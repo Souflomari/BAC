@@ -1,0 +1,1095 @@
+notion: suivi-temporel-vitesse
+skill_code: pc_suivi_temporel_vitesse
+
+# Misconception inventory (summit-conversion ride-along). Namespace:
+# mc.physics.pc_suivi_temporel_vitesse.<slug>. Each incorrect distractor below
+# carries the id of the model it reveals (per-distractor tagging); each family
+# meets the ≥3-item floor (see coverage_summary at the bottom, floor_met: true).
+misconceptions:
+  - id: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
+    label: >-
+      Mauvais choix ou mauvaise compréhension d'une méthode de suivi (rôle de la
+      trempe, conductimétrie, suivi de gaz, spectrophotométrie) et de la
+      condition de variation monotone avec l'avancement.
+  - id: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
+    label: >-
+      Passage fautif de la courbe à la vitesse volumique : oubli du facteur
+      1/V, multiplication par V, corde (vitesse moyenne) au lieu de tangente,
+      sécante asymétrique, oubli de la conversion d'unité de temps.
+  - id: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+    label: >-
+      Allure fausse de x(t) ou v(t) : vitesse constante (droite), réaction qui
+      accélère, rebond ou oscillation de la vitesse, seuil de démarrage.
+  - id: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
+    label: >-
+      t½ mal défini : moitié de la durée totale, lu sur v(t) au lieu de x(t),
+      confondu avec la fin de réaction, ou réduit à x_max sans la rapidité.
+  - id: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
+    label: >-
+      Facteurs cinétiques (concentration, température) mal appliqués à v ou t½ :
+      sens inversé, effet nié, ou refus de conclure qualitativement.
+  - id: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
+    label: >-
+      Mauvaise cause du ralentissement : le temps lui-même, l'obstacle des
+      produits, une dilution/augmentation de volume, ou une baisse spontanée de
+      température — au lieu de la chute de concentration des réactifs.
+
+items:
+  - id: STV-1
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
+    stem: >
+      Lors d'un suivi temporel par titrage, pourquoi bloque-t-on (« trempe »)
+      chaque prélèvement avant de le doser ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Pour ralentir fortement la réaction dans l'échantillon prélevé, afin
+          que sa composition ne change plus pendant le temps nécessaire au
+          dosage.
+        correct: true
+      - id: B
+        text: "Pour rendre le changement de couleur à l'équivalence plus facile à repérer, la trempe éclaircissant la solution prélevée."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
+        feedback: >
+          La trempe ne vise pas le repérage de l'équivalence (une question de
+          choix d'indicateur) : elle vise à bloquer cinétiquement l'échantillon.
+          Sans elle, la réaction continuerait pendant le dosage et fausserait
+          la mesure de l'avancement à l'instant du prélèvement.
+      - id: C
+        text: "Parce qu'un dosage ne peut se faire qu'à froid, quelle que soit la réaction étudiée et quel que soit le réactif titrant employé."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
+        feedback: >
+          Ce n'est pas une règle générale du dosage : c'est spécifique au
+          suivi temporel d'une transformation encore en cours, où l'échantillon
+          prélevé doit être figé pour représenter fidèlement l'instant du
+          prélèvement.
+      - id: D
+        text: "Pour éviter que le prélèvement ne réagisse avec le dioxygène de l'air ambiant pendant son transfert vers le bécher."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
+        feedback: >
+          Le risque ici n'est pas une réaction parasite avec l'air, mais la
+          poursuite de la transformation étudiée elle-même dans l'échantillon,
+          pendant toute la durée du dosage.
+    correct_feedback: >
+      La trempe combine dilution et refroidissement : elle actionne les deux
+      facteurs cinétiques du chapitre précédent (concentration, température)
+      dans le sens qui ralentit, jusqu'à figer l'avancement de l'échantillon.
+    solution: |
+      Un dosage prend du temps. Sans blocage, la réaction continuerait dans
+      l'échantillon prélevé et le résultat du dosage ne représenterait plus
+      l'avancement au moment du prélèvement. La trempe (dilution brutale +
+      refroidissement) abaisse fortement concentration et température dans
+      l'échantillon, donc sa vitesse de réaction, donc son avancement reste
+      pratiquement figé pendant le dosage.
+
+  - id: STV-2
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
+    stem: >
+      Quelle méthode de suivi temporel exploite directement le fait qu'une
+      transformation chimique dégage un gaz ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le suivi manométrique (mesure de pression) ou la mesure du volume de gaz dégagé."
+        correct: true
+      - id: B
+        text: "La conductimétrie, qui suit l'évolution de la conductivité de la solution."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
+        feedback: >
+          La conductimétrie suit la variation de la conductivité globale de
+          la solution, liée aux ions consommés ou formés — elle ne concerne
+          pas directement un gaz dégagé.
+      - id: C
+        text: "La spectrophotométrie, qui suit l'absorbance d'une espèce colorée du mélange."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
+        feedback: >
+          La spectrophotométrie exploite une espèce colorée en solution (loi
+          de Beer-Lambert) ; elle ne mesure rien sur un gaz dégagé.
+      - id: D
+        text: "Le titrage, qui dose une espèce dans des prélèvements successifs."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
+        feedback: >
+          Le titrage est une méthode chimique générale, applicable à toute
+          transformation par prélèvement et dosage. Elle ne s'appuie pas
+          spécifiquement sur le dégagement gazeux, contrairement au suivi
+          manométrique ou volumétrique.
+    correct_feedback: >
+      Quand une réaction libère un gaz, la quantité de gaz formé est
+      directement liée à l'avancement : mesurer sa pression (volume fermé) ou
+      son volume (pression constante) suit donc directement la réaction.
+    solution: |
+      Une réaction qui dégage un gaz produit une quantité de gaz
+      proportionnelle à l'avancement x. Mesurer la pression dans une enceinte
+      à volume constant, ou le volume de gaz recueilli à pression constante,
+      donne donc une grandeur qui varie de façon monotone avec x : c'est
+      exactement la condition nécessaire à tout suivi temporel.
+
+  - id: STV-3
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
+    stem: >
+      Quelle est l'expression correcte de la vitesse volumique de réaction $v$,
+      à partir de l'avancement $x(t)$ et du volume $V$ du mélange réactionnel
+      (supposé constant) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$v = \\dfrac{1}{V}\\dfrac{dx}{dt}$"
+        correct: true
+      - id: B
+        text: "$v = \\dfrac{dx}{dt}$"
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
+        feedback: >
+          Cette expression dépend de la quantité totale de matière en jeu,
+          donc de la taille de l'échantillon — pas d'une grandeur comparable
+          d'une expérience à l'autre. Il manque la division par $V$.
+      - id: C
+        text: "$v = V\\dfrac{dx}{dt}$"
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
+        feedback: >
+          Multiplier par $V$ au lieu de diviser accentue encore la dépendance
+          à la taille de l'échantillon, à l'opposé de l'effet recherché.
+      - id: D
+        text: "$v = \\dfrac{1}{V}\\dfrac{dV}{dt}$"
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
+        feedback: >
+          Cette expression ne fait même pas intervenir l'avancement $x$ : ce
+          n'est pas la vitesse volumique de réaction.
+    correct_feedback: >
+      $v = \dfrac{1}{V}\dfrac{dx}{dt}$, en $\text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$ :
+      la pente de la tangente à $x(t)$, divisée par le volume.
+    solution: |
+      La vitesse volumique de réaction se définit à partir de la dérivée de
+      l'avancement par rapport au temps, divisée par le volume du mélange :
+      $v = \dfrac{1}{V}\dfrac{dx}{dt}$. La division par $V$ rend $v$
+      indépendante de la taille de l'échantillon.
+
+  - id: STV-4
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
+    stem: >
+      On réalise deux fois la même réaction, avec les mêmes concentrations
+      initiales, mais dans un volume total deux fois plus grand pour la
+      seconde. Que peut-on dire de $dx/dt$ et de $v$ dans les deux expériences,
+      à un instant correspondant ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $dx/dt$ est environ deux fois plus grande dans le grand volume, mais
+          $v$ est sensiblement la même dans les deux cas.
+        correct: true
+      - id: B
+        text: "$v$ est environ deux fois plus grande dans le grand volume, tandis que $dx/dt$ y est identique."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
+        feedback: >
+          C'est justement pour éviter cette dépendance à la taille de
+          l'échantillon qu'on divise par $V$ dans la définition de $v$ : $v$
+          ne double pas.
+      - id: C
+        text: "$dx/dt$ est la même dans les deux expériences, tout comme la vitesse volumique $v$ qui en découle."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
+        feedback: >
+          Le grand volume contient environ deux fois plus d'entités
+          réactives (mêmes concentrations, volume double), donc environ deux
+          fois plus de quantité de matière réagit par seconde : $dx/dt$
+          n'est pas conservée.
+      - id: D
+        text: "$v$ et $dx/dt$ sont tous deux environ deux fois plus grands dans le grand volume que dans le petit.
+        Doubler le volume doublerait donc les deux grandeurs à la fois."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
+        feedback: >
+          $dx/dt$ double bien, mais $v$ — la vitesse volumique — est
+          construite justement pour ne pas dépendre de la taille de
+          l'échantillon : elle reste sensiblement la même.
+    correct_feedback: >
+      À concentrations égales, la fréquence des chocs efficaces par unité de
+      volume est la même dans les deux expériences : $v$ ne change pas, même
+      si $dx/dt$ double avec la quantité totale de matière.
+    solution: |
+      Le volume double avec les mêmes concentrations initiales : il y a deux
+      fois plus d'entités réactives en tout, donc dx/dt est environ deux fois
+      plus grande. Mais les concentrations, donc la fréquence des chocs
+      efficaces par unité de volume, sont identiques : v, qui divise par V,
+      reste sensiblement la même dans les deux expériences.
+
+  - id: STV-5
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+    stem: >
+      Comment évolue la vitesse volumique de réaction $v(t)$ au cours d'une
+      transformation chimique lente typique, entre le début et la fin ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$v(t)$ est maximale au tout début et diminue continûment, en tendant vers zéro quand la réaction s'achève."
+        correct: true
+      - id: B
+        text: "$v(t)$ reste rigoureusement constante du début à la fin de la transformation étudiée."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+        feedback: >
+          Une vitesse constante donnerait une courbe $x(t)$ en ligne droite.
+          Or les mesures montrent une courbe qui ralentit nettement : la
+          pente diminue au fil du temps.
+      - id: C
+        text: "$v(t)$ augmente continûment jusqu'à la fin de la réaction, où elle atteint son maximum."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+        feedback: >
+          C'est l'inverse de ce qu'on observe : la pente de $x(t)$ diminue
+          avec le temps, elle n'augmente pas.
+      - id: D
+        text: "$v(t)$ diminue d'abord, puis augmente à nouveau en toute fin de réaction, avant de s'annuler."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+        feedback: >
+          Une transformation lente typique, sans intervention extérieure, ne
+          montre pas ce rebond : $x(t)$ reste concave (sa pente ne fait que
+          diminuer) du début jusqu'à la fin.
+    correct_feedback: >
+      Les réactifs sont consommés au fil de la réaction : leurs concentrations
+      chutent, donc les chocs efficaces se raréfient, donc $v(t)$ diminue sans
+      cesse, d'un maximum au départ vers zéro à la fin.
+    solution: |
+      Au fur et à mesure que la réaction avance, les quantités de réactifs
+      restants diminuent, donc leurs concentrations diminuent, donc la
+      fréquence des chocs efficaces par unité de temps diminue. v(t) est donc
+      maximale tout au début (v0) et décroît continûment vers zéro à mesure
+      que la transformation s'achève.
+
+  - id: STV-6
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
+    stem: >
+      Comment définit-on le temps de demi-réaction $t_{1/2}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'instant où l'avancement $x(t)$ atteint la moitié de sa valeur maximale $x_{max}$."
+        correct: true
+      - id: B
+        text: "L'instant où la moitié de la durée totale de la réaction s'est écoulée."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
+        feedback: >
+          Puisque la vitesse n'est pas constante (elle est plus grande au
+          début), l'avancement ne progresse pas linéairement avec le temps :
+          x atteint la moitié de $x_{max}$ bien avant que la moitié de la
+          durée totale ne soit écoulée.
+      - id: C
+        text: "L'instant où la vitesse volumique $v(t)$ vaut la moitié de sa valeur initiale $v(0)$."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
+        feedback: >
+          $t_{1/2}$ se définit à partir de la courbe d'avancement $x(t)$, pas
+          à partir de la courbe de vitesse $v(t)$ : ces deux courbes
+          atteignent « la moitié » de leur échelle à des instants différents
+          en général.
+      - id: D
+        text: "L'instant où la transformation est totalement terminée, c'est-à-dire où $x(t) = x_{max}$."
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
+        feedback: >
+          Cela décrit la fin de la réaction (avancement maximal atteint), pas
+          sa moitié. $t_{1/2}$ correspond à $x = x_{max}/2$, un instant bien
+          antérieur à la fin de la transformation.
+    correct_feedback: >
+      $t_{1/2}$ est l'instant où $x(t_{1/2}) = x_{max}/2$ : comme $x(t)$
+      croît continûment sans jamais reculer, cet instant existe et est unique.
+    solution: |
+      x(t) croît continûment de 0 à x_max sans jamais redescendre : elle
+      traverse donc une seule fois la valeur x_max/2. Cet instant est, par
+      définition, le temps de demi-réaction t_1/2. Graphiquement : on repère
+      x_max (le plateau), on calcule sa moitié, et on lit l'abscisse du point
+      où la courbe atteint cette valeur.
+
+  - id: STV-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+    stem: >
+      On mesure la quantité de diiode formé $I_2$, minute après minute, dès
+      le mélange des réactifs $S_2O_8^{2-}$ et $I^-$. Quelle allure attend-on
+      pour la courbe $x(t)$, dans le cas d'une transformation lente typique ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Une courbe qui monte rapidement au début, puis de plus en plus
+          lentement, jusqu'à devenir presque plate.
+        correct: true
+      - id: B
+        text: >-
+          Une droite qui monte à rythme constant, du début à la fin.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+        feedback: >-
+          Une droite correspondrait à une vitesse constante ; or la vitesse
+          d'une transformation chimique n'est pas constante, elle diminue au
+          cours du temps.
+      - id: C
+        text: >-
+          Une courbe qui monte de plus en plus vite jusqu'à la fin de la
+          réaction.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+        feedback: >-
+          C'est l'inverse de ce qu'on observe : la montée est la plus raide
+          au tout début, pas à la fin.
+      - id: D
+        text: >-
+          Une courbe strictement horizontale jusqu'à un instant précis, puis
+          une montée brutale.
+          La transformation n'aurait alors commencé qu'au moment de ce décrochement.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+        feedback: >-
+          Rien ne justifie un tel seuil : dès le mélange des réactifs, la
+          transformation commence à avancer, sans palier initial.
+    correct_feedback: >
+      La transformation avance vite au début puis ralentit continûment :
+      x(t) est une courbe concave, jamais une droite.
+    solution: |
+      Une transformation chimique n'avance pas à rythme constant : elle est
+      la plus rapide au tout début (réactifs les plus concentrés) puis
+      ralentit sans cesse. La courbe x(t) grimpe donc vite puis de plus en
+      plus lentement, sans jamais former une droite.
+
+  - id: STV-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+    stem: >
+      Une réaction est suivie par conductimétrie ; la conductivité $\sigma$
+      de la solution croît de façon monotone avec l'avancement $x$. Quelle
+      allure attend-on pour la courbe $\sigma(t)$, dans le cas d'une
+      transformation lente typique ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Une courbe qui croît rapidement au début, puis de plus en plus
+          lentement, en tendant vers un palier.
+        correct: true
+      - id: B
+        text: >-
+          Une droite qui croît à rythme rigoureusement constant, du début jusqu'à la fin
+          du suivi.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+        feedback: >-
+          $\sigma$ suit l'avancement $x$, qui n'évolue pas à rythme
+          constant : sa croissance ralentit continûment, elle ne forme pas
+          une droite.
+      - id: C
+        text: >-
+          Une courbe qui décroît d'abord, puis se met à croître de nouveau en fin de
+          réaction.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+        feedback: >-
+          Rien ne justifie une phase de décroissance initiale : $\sigma$
+          croît de façon monotone dès le début, comme l'énoncé le précise.
+      - id: D
+        text: >-
+          Une courbe qui croît de plus en plus vite, jusqu'à la toute fin de la réaction
+          suivie.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+        feedback: >-
+          C'est l'inverse de l'allure réelle : la croissance est la plus
+          rapide au début, pas à la fin.
+    correct_feedback: >
+      Comme x(t), toute grandeur qui lui est liée de façon monotone hérite
+      de son allure : montée rapide puis ralentissement progressif vers un
+      palier.
+    solution: |
+      Une grandeur monotone en x hérite de l'allure de x(t) : rapide au
+      début, de plus en plus lente ensuite, vers un palier quand la
+      réaction s'achève. Ce n'est jamais une droite ni une courbe qui
+      accélère.
+
+  - id: STV-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+    stem: >
+      Une réaction dégage un gaz ; on suit son volume $V_{gaz}$ minute après
+      minute, dès le mélange des réactifs. Quelle allure attend-on pour la
+      courbe $V_{gaz}(t)$, dans le cas d'une transformation lente typique ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Une courbe qui monte rapidement au début, puis de plus en plus
+          lentement, jusqu'à un palier proche du volume maximal.
+        correct: true
+      - id: B
+        text: >-
+          Une droite qui monte à rythme rigoureusement constant, jusqu'à atteindre le
+          volume maximal de gaz dégagé.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+        feedback: >-
+          Le dégagement gazeux suit l'avancement x, dont la vitesse diminue
+          au cours du temps : la courbe ralentit, elle ne reste pas une
+          droite.
+      - id: C
+        text: >-
+          Une courbe en dents de scie, qui monte puis redescend plusieurs fois avant de
+          se stabiliser.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+        feedback: >-
+          Le volume de gaz déjà recueilli ne peut pas disparaître : la
+          courbe ne peut que croître ou stagner, jamais osciller.
+      - id: D
+        text: >-
+          Une courbe qui reste nulle un long moment, puis monte brutalement en toute fin
+          de réaction.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+        feedback: >-
+          Le dégagement commence dès le mélange des réactifs, sans délai :
+          il n'y a pas de palier initial à zéro.
+    correct_feedback: >
+      Même logique que pour x(t) : montée rapide au début, ralentissement
+      continu ensuite, vers un palier — jamais une droite.
+    solution: |
+      Le volume de gaz dégagé est directement lié à l'avancement x : sa
+      courbe hérite de l'allure de x(t), rapide au début puis de plus en
+      plus lente, sans jamais former de droite ni d'irrégularité.
+
+  - id: STV-10
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
+    stem: >
+      Pourquoi ne peut-on pas suivre n'importe quelle transformation
+      chimique par conductimétrie ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce que la conductimétrie ne renseigne sur l'avancement que si des ions
+          apparaissent ou disparaissent en faisant varier la conductivité de façon
+          monotone avec x ; sans espèce ionique concernée, elle ne bouge pas.
+        correct: true
+      - id: B
+        text: >-
+          Parce que la conductimétrie ne peut mesurer qu'une seule espèce chimique à la
+          fois, contrairement au titrage qui les dose toutes ensemble dans un même
+          prélèvement.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
+        feedback: >-
+          Ce n'est pas la vraie limite : la conductivité mesurée est
+          globale, le problème est l'absence de variation monotone quand
+          aucune espèce ionique n'est concernée.
+      - id: C
+        text: >-
+          Parce que la conductimétrie, comme le titrage, est une méthode destructive qui
+          consomme l'échantillon prélevé et interdit donc de suivre un même mélange tout
+          au long de la transformation.
+          Il faudrait préparer un nouveau bécher pour chaque point de mesure.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
+        feedback: >-
+          C'est l'inverse : la conductimétrie est une méthode physique
+          continue et non destructive, contrairement au titrage.
+      - id: D
+        text: >-
+          Parce que la conductivité mesurée ne dépend jamais de la concentration des
+          ions présents en solution, mais seulement de la nature du solvant et de la
+          température.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee
+        feedback: >-
+          C'est faux et contredit le principe même de la méthode : la
+          conductivité dépend justement de la concentration des ions
+          présents.
+    correct_feedback: >
+      Toute méthode de suivi n'a de sens que si la grandeur mesurée varie
+      de façon monotone avec x — c'est ce test qui décide, pas la seule
+      disponibilité de l'appareil.
+    solution: |
+      Une méthode de suivi n'est utilisable que si la grandeur mesurée
+      varie de façon monotone avec l'avancement. La conductimétrie ne
+      convient donc que si la réaction fait apparaître ou disparaître des
+      ions ; sinon la conductivité resterait constante et ne dirait rien
+      de l'avancement.
+
+  - id: STV-11
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
+    stem: >
+      Dans l'exemple travaillé, on a mesuré $x(12\ \text{min}) =
+      3{,}4\ \text{mmol}$ et $x(20\ \text{min}) = 4{,}3\ \text{mmol}$, avec
+      $V = 0{,}100\ \text{L}$. En utilisant la sécante symétrique entre ces
+      deux points, quelle est la vitesse volumique de réaction $v$ à
+      $t = 16\ \text{min}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $v(16\ \text{min}) \approx 1{,}9\times10^{-5}\
+          \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$ (pente $\approx
+          0{,}1125\ \text{mmol/min}$, convertie en mol/s puis divisée par
+          $V$).
+        correct: true
+      - id: B
+        text: >-
+          $v(16\ \text{min}) \approx 1{,}9\times10^{-6}\
+          \text{mol}\cdot\text{s}^{-1}$, en oubliant de diviser la pente
+          par $V$.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
+        feedback: >-
+          Sans la division par $V$, on obtient $dx/dt$, pas la vitesse
+          volumique de réaction : il manque le facteur $1/V$.
+      - id: C
+        text: >-
+          $v(16\ \text{min}) \approx 1{,}3\times10^{-5}\
+          \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$, en utilisant la
+          sécante entre $t=16$ et $t=20\ \text{min}$ seulement.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
+        feedback: >-
+          Une sécante à un seul côté de l'instant visé approche moins bien
+          la tangente que la sécante symétrique, qui encadre l'instant des
+          deux côtés.
+      - id: D
+        text: >-
+          $v(16\ \text{min}) \approx 1{,}1\times10^{-3}\
+          \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$, en oubliant de
+          convertir les minutes en secondes.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente
+        feedback: >-
+          Sans conversion en secondes, la vitesse est surestimée d'un
+          facteur 60 : l'unité de temps doit être cohérente avec l'unité SI
+          attendue.
+    correct_feedback: >
+      La sécante symétrique donne la pente ; on la convertit en mol/s puis
+      on divise par V — jamais l'inverse, et jamais sans convertir l'unité
+      de temps.
+    solution: |
+      pente ≈ (4,3 − 3,4)/(20 − 12) = 0,1125 mmol/min = 1,875×10⁻⁶ mol/s.
+      v(16 min) = pente/V = 1,875×10⁻⁶/0,100 ≈ 1,9×10⁻⁵ mol·L⁻¹·s⁻¹.
+
+  - id: STV-12
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
+    stem: >
+      Pourquoi la vitesse volumique de réaction $v(t)$ diminue-t-elle au
+      cours du temps, dans une transformation chimique typique, sans
+      intervention extérieure ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Les concentrations des réactifs diminuent au fur et à mesure que
+          la réaction avance, donc les chocs efficaces entre entités
+          réactives deviennent moins fréquents.
+        correct: true
+      - id: B
+        text: >-
+          Les produits formés font obstacle physiquement aux réactifs et les empêchent
+          progressivement de se rencontrer dans le volume du mélange réactionnel.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
+        feedback: >-
+          Ce n'est pas le mécanisme retenu : c'est la baisse de
+          concentration des réactifs eux-mêmes, pas un obstacle créé par
+          les produits, qui raréfie les chocs efficaces.
+      - id: C
+        text: >-
+          La température du mélange diminue spontanément au cours de la réaction, ce qui
+          ralentit d'autant les entités réactives.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
+        feedback: >-
+          Rien n'indique une baisse spontanée de température ; la baisse de
+          concentration des réactifs suffit à elle seule à expliquer le
+          ralentissement.
+      - id: D
+        text: >-
+          Le volume du mélange augmente progressivement au cours de la réaction, ce qui
+          dilue les réactifs et espace leurs rencontres.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
+        feedback: >-
+          Le volume est supposé constant tout au long de la transformation ;
+          ce sont les quantités de réactifs qui diminuent, pas le volume qui
+          augmente.
+    correct_feedback: >
+      Moins de réactifs restants, c'est moins d'entités par unité de
+      volume, donc moins de chocs efficaces par seconde : v diminue.
+    solution: |
+      Les quantités de réactifs restants diminuent continûment à mesure
+      que x augmente : moins d'entités réactives par unité de volume, donc
+      moins de chocs efficaces par seconde, donc une vitesse plus faible.
+
+  - id: STV-13
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
+    stem: >
+      Deux expériences étudient la même réaction $S_2O_8^{2-}/I^-$, à la
+      même température, mais l'expérience 2 démarre avec des concentrations
+      initiales en réactifs deux fois plus grandes que dans l'expérience 1.
+      Comment se compare $v(t=0)$ entre les deux expériences ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $v(t=0)$ est plus grande dans l'expérience 2 : des concentrations
+          initiales plus élevées augmentent la fréquence des chocs
+          efficaces dès le début.
+        correct: true
+      - id: B
+        text: >-
+          $v(t=0)$ est la même dans les deux expériences, car la vitesse
+          volumique ne dépend que du temps écoulé, jamais des
+          concentrations.
+          Deux mélanges de compositions différentes partiraient donc à la même vitesse.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
+        feedback: >-
+          C'est faux : la vitesse dépend directement des concentrations des
+          réactifs, via la fréquence des chocs efficaces — c'est le facteur
+          cinétique concentration.
+      - id: C
+        text: >-
+          $v(t=0)$ est plus petite dans l'expérience 2, car des
+          concentrations plus élevées ralentissent les chocs entre
+          entités.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
+        feedback: >-
+          C'est l'inverse : plus de réactifs par unité de volume augmente,
+          et non diminue, la fréquence des chocs efficaces.
+      - id: D
+        text: >-
+          On ne peut rien dire sans connaître le volume exact de chaque
+          mélange.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
+        feedback: >-
+          La vitesse volumique compare des concentrations, pas des
+          quantités brutes : à concentrations connues, la comparaison ne
+          nécessite pas le volume.
+    correct_feedback: >
+      Le facteur cinétique concentration joue dès l'instant initial : plus
+      de réactifs par unité de volume, plus de chocs efficaces, une vitesse
+      initiale plus grande.
+    solution: |
+      Le facteur cinétique concentration (chapitre précédent) s'applique
+      ici : des concentrations initiales plus élevées augmentent la
+      fréquence des chocs efficaces, donc v(t=0) est plus grande dans
+      l'expérience aux concentrations doublées.
+
+  - id: STV-14
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
+    stem: >
+      Un suivi cinétique donne $x_{max} = 6{,}0\ \text{mmol}$, et le tableau
+      de mesures indique $x(5\ \text{min}) = 2{,}0\ \text{mmol}$,
+      $x(10\ \text{min}) = 3{,}0\ \text{mmol}$, $x(15\ \text{min}) =
+      3{,}9\ \text{mmol}$. Quel est le temps de demi-réaction $t_{1/2}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $t_{1/2} = 10\ \text{min}$, car $x_{max}/2 = 3{,}0\ \text{mmol}$,
+          valeur atteinte exactement à $t = 10\ \text{min}$.
+        correct: true
+      - id: B
+        text: >-
+          $t_{1/2}$ ne peut pas être déterminé sans connaître la durée
+          totale de la réaction.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
+        feedback: >-
+          $t_{1/2}$ se lit directement dès qu'on connaît $x_{max}$ et le
+          tableau de $x(t)$, sans avoir besoin de la durée totale de la
+          réaction.
+      - id: C
+        text: >-
+          $t_{1/2} = 5\ \text{min}$, car c'est l'instant où $x(t)$
+          commence tout juste à croître.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
+        feedback: >-
+          $t_{1/2}$ correspond à $x=x_{max}/2$, pas au tout début de la
+          réaction : à $t=5$ min, $x$ ne vaut que $2{,}0\ \text{mmol}$, pas
+          $3{,}0\ \text{mmol}$.
+      - id: D
+        text: >-
+          $t_{1/2} = 15\ \text{min}$, car c'est l'instant où $x(t)$ est le
+          plus proche de $x_{max}$ dans le tableau.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
+        feedback: >-
+          Être proche de $x_{max}$ correspond à la fin de la réaction, pas
+          à sa moitié ; $t_{1/2}$ exige $x=x_{max}/2$ exactement, atteint à
+          $t=10$ min.
+    correct_feedback: >
+      $t_{1/2}$ se lit directement : on calcule $x_{max}/2$, puis on
+      cherche cette valeur dans le tableau ou sur la courbe.
+    solution: |
+      x_max/2 = 6,0/2 = 3,0 mmol. Le tableau donne x(10 min) = 3,0 mmol
+      exactement, donc t_1/2 = 10 min.
+
+  - id: STV-15
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
+    stem: >
+      Deux expériences étudient la même réaction lente, avec les mêmes
+      concentrations initiales, mais l'expérience 2 est menée à une
+      température plus élevée que l'expérience 1. Que peut-on dire des
+      deux temps de demi-réaction $t_{1/2}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $t_{1/2}$ est plus court dans l'expérience 2 : une température
+          plus élevée augmente les chocs efficaces, donc l'avancement
+          atteint $x_{max}/2$ plus vite.
+        correct: true
+      - id: B
+        text: >-
+          $t_{1/2}$ est identique dans les deux expériences, car $t_{1/2}$ ne dépend que
+          de $x_{max}$ et jamais de la rapidité avec laquelle la réaction se déroule.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
+        feedback: >-
+          $t_{1/2}$ est une DURÉE : elle dépend de la rapidité à laquelle x
+          progresse, pas seulement de la valeur $x_{max}$ visée.
+      - id: C
+        text: >-
+          $t_{1/2}$ est plus long dans l'expérience 2, car une température plus élevée
+          ralentit les réactions chimiques en dispersant l'énergie des entités.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
+        feedback: >-
+          C'est l'inverse du facteur cinétique température : une
+          température plus élevée accélère une réaction, elle ne la
+          ralentit pas.
+      - id: D
+        text: >-
+          On ne peut rien dire sans connaître les concentrations initiales exactes
+          utilisées dans chacune des deux expériences comparées.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
+        feedback: >-
+          Les concentrations initiales sont ici égales et ne varient pas ;
+          seule la température diffère, ce qui suffit à trancher via le
+          facteur cinétique température.
+    correct_feedback: >
+      Comparer deux $t_{1/2}$ revient à comparer la rapidité de deux
+      transformations : ici, la température plus élevée accélère
+      l'expérience 2, donc raccourcit son $t_{1/2}$.
+    solution: |
+      Une température plus élevée est un facteur cinétique qui accélère la
+      réaction (chocs plus fréquents et plus efficaces) : l'expérience 2
+      atteint x_max/2 plus tôt, donc son t_1/2 est plus court que celui de
+      l'expérience 1.
+
+  - id: STV-16
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
+    stem: >
+      On suit la réaction $Zn + 2H^+ \rightarrow Zn^{2+} + H_2$ en mesurant
+      le volume de gaz dégagé, deux fois : même température, même masse de
+      zinc en excès, mais l'expérience 2 démarre avec une concentration
+      initiale en $H^+$ plus faible que l'expérience 1. Quel est l'effet
+      attendu sur $t_{1/2}$ de l'expérience 2 par rapport à l'expérience 1 ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $t_{1/2}$ est plus long dans l'expérience 2 : une concentration
+          initiale plus faible réduit les chocs efficaces, donc ralentit la
+          réaction et retarde l'instant où $x=x_{max}/2$.
+        correct: true
+      - id: B
+        text: >-
+          $t_{1/2}$ est plus court dans l'expérience 2, car une quantité moindre de
+          réactif demande logiquement moins de temps pour être entièrement consommée.
+          Diviser la concentration initiale par deux diviserait donc aussi $t_{1/2}$.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
+        feedback: >-
+          Moins de réactif change $x_{max}$ (la quantité à atteindre), pas
+          la rapidité des chocs efficaces ; ici c'est la concentration,
+          donc la vitesse, qui diminue.
+      - id: C
+        text: >-
+          $t_{1/2}$ ne change pas, car la concentration initiale n'influence que
+          $x_{max}$ et jamais la vitesse à laquelle la réaction progresse.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
+        feedback: >-
+          La concentration est un facteur cinétique à part entière : elle
+          gouverne directement la fréquence des chocs efficaces, donc la
+          vitesse.
+      - id: D
+        text: >-
+          On ne peut pas comparer les deux $t_{1/2}$ sans connaître les concentrations
+          exactes en $H^+$ dans chacune des deux expériences.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques
+        feedback: >-
+          Le sens de la comparaison (concentration plus faible → réaction
+          plus lente → $t_{1/2}$ plus long) se déduit qualitativement du
+          facteur cinétique, sans valeurs numériques.
+    correct_feedback: >
+      Le facteur cinétique concentration s'applique : moins de $H^+$ au
+      départ, moins de chocs efficaces, une réaction plus lente et un
+      $t_{1/2}$ plus long.
+    solution: |
+      Une concentration initiale plus faible en réactif réduit la
+      fréquence des chocs efficaces (facteur cinétique concentration) : la
+      réaction est plus lente, donc l'expérience 2 atteint x_max/2 plus
+      tard — son t_1/2 est plus long que celui de l'expérience 1.
+
+  - id: STV-17
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
+    stem: >
+      Pour une réaction lente $A + B \rightarrow C$ suivie par titrage, on
+      relève $[A](t_1) = 0{,}060\ \text{mol/L}$ et $[A](t_2) =
+      0{,}020\ \text{mol/L}$, avec $t_2 > t_1$ et $v(t_1) > v(t_2)$. Quelle
+      explication physique est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La concentration de $A$ a diminué entre $t_1$ et $t_2$, donc les
+          chocs efficaces entre entités réactives sont devenus moins
+          fréquents : c'est ce qui explique la baisse de $v$.
+        correct: true
+      - id: B
+        text: >-
+          $v$ a diminué parce que le temps écoulé est plus grand : $v$ diminue
+          automatiquement avec $t$, indépendamment des concentrations en présence dans
+          le mélange.
+          Une horloge suffirait donc à prédire la vitesse, sans aucun dosage.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
+        feedback: >-
+          Le temps n'est pas la cause directe : c'est la baisse de
+          concentration des réactifs, via les chocs efficaces, qui
+          explique la baisse de $v$.
+      - id: C
+        text: >-
+          $v$ a diminué car le volume du mélange a augmenté entre $t_1$ et $t_2$, ce qui
+          a dilué les réactifs et espacé leurs rencontres.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
+        feedback: >-
+          Le volume est supposé constant dans ce chapitre ; c'est la
+          consommation du réactif $A$, pas une dilution, qui explique la
+          baisse de concentration.
+      - id: D
+        text: >-
+          $v$ a diminué car la température du mélange a chuté entre $t_1$ et $t_2$,
+          ralentissant d'autant les entités réactives.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
+        feedback: >-
+          Rien n'indique un changement de température ; la seule donnée
+          fournie, la baisse de concentration de $A$, suffit à expliquer
+          la baisse de $v$.
+    correct_feedback: >
+      Moins de réactif $A$ par unité de volume, c'est moins de chocs
+      efficaces par seconde : la baisse de concentration explique
+      directement la baisse de $v$.
+    solution: |
+      [A] passe de 0,060 à 0,020 mol/L entre t1 et t2 : moins d'entités
+      réactives par unité de volume, donc moins de chocs efficaces, donc
+      une vitesse plus faible à t2 qu'à t1.
+
+  - id: STV-18
+    rung: "R5"
+    difficulty_level: 5
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
+    stem: >
+      Pour une transformation lente sans aucune intervention extérieure
+      (pas d'ajout de réactif, température constante), un élève affirme :
+      « Après avoir bien ralenti vers $t=30\ \text{min}$, la vitesse
+      $v(t)$ va sans doute remonter un peu vers $t=45\ \text{min}$, avant
+      de retomber à zéro. » Cette affirmation est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : sans intervention extérieure, les concentrations des
+          réactifs ne font que diminuer, donc $v(t)$ décroît continûment,
+          sans jamais remonter, jusqu'à s'annuler.
+        correct: true
+      - id: B
+        text: >-
+          Oui, car la vitesse d'une réaction chimique suit naturellement des
+          oscillations avant de finir par s'annuler complètement.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse
+        feedback: >-
+          Rien dans le mécanisme des chocs efficaces ne prévoit
+          d'oscillation : sans changement des concentrations, $v$ ne peut
+          que décroître.
+      - id: C
+        text: >-
+          Oui, car à mesure que les produits s'accumulent dans le mélange, ils finissent
+          par accélérer la réaction en toute fin de parcours, jusqu'à une remontée
+          nette.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
+        feedback: >-
+          C'est la concentration des RÉACTIFS, pas l'accumulation des
+          produits, qui gouverne la fréquence des chocs efficaces dans ce
+          modèle.
+      - id: D
+        text: >-
+          On ne peut pas savoir sans mesurer : la théorie ne permet aucune prédiction
+          sur ce point précis de l'évolution.
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause
+        feedback: >-
+          Le modèle des chocs efficaces prédit justement une décroissance
+          continue et monotone de $v$, sans qu'une nouvelle mesure soit
+          nécessaire pour le savoir.
+    correct_feedback: >
+      Les concentrations des réactifs ne font que diminuer au cours du
+      temps : $v(t)$ décroît donc continûment, sans jamais remonter,
+      jusqu'à s'annuler.
+    solution: |
+      Sans intervention extérieure, les quantités de réactifs restants ne
+      font que diminuer : la fréquence des chocs efficaces ne peut donc
+      que diminuer elle aussi. v(t) décroît continûment vers zéro, sans
+      rebond possible.
+
+# ── Coverage summary (item-author) ──────────────────────────────────────
+# Rung distribution: R0=3 (STV-7..9), R1=3 (STV-1,2,10), R2=3 (STV-3,4,11),
+#   R3=3 (STV-5,12,13), R4=3 (STV-6,14,15), R5=3 (STV-16,17,18). 18 items.
+#
+# Per-MISCONCEPTION coverage (summit-conversion ride-along; floor: ≥3 items
+# carrying ≥1 distractor tagged with the misconception):
+#   methode-suivi-inadaptee          : STV-1, STV-2, STV-10             → 3
+#   vitesse-mal-reliee-a-la-pente    : STV-3, STV-4, STV-11             → 3
+#   allure-vitesse-fausse            : STV-5, STV-7, STV-8, STV-9,
+#                                      STV-18(B)                        → 5
+#   demi-reaction-mal-definie        : STV-6, STV-14, STV-15(B)         → 3
+#   facteurs-cinetiques-mal-appliques: STV-13, STV-15(C,D), STV-16      → 3
+#   vitesse-baisse-mauvaise-cause    : STV-12, STV-17, STV-18(C,D)      → 3
+# floor_met: true  (all six families ≥3, no family padded with a weak item —
+#   every tagged distractor names a distinct, specific model, not a generic
+#   "wrong" option). STV-15 and STV-18 contribute to two families each through
+#   distinct distractors (dual coverage), which is legitimate per-distractor
+#   tagging, not double-counting of a single distractor.
+#
+# In-lesson checkpoints (checkpoints.yaml) surface clones of STV-3 / STV-5 /
+# STV-6 / STV-15 plus one original commit item (cp-r0-predict); those inline
+# clones do NOT adjust the per-misconception tally above.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
+# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
+# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
+# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# web/scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
+# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
+# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul.
+  per_misconception:
+    mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee:           { count: 3, items: [STV-1, STV-2, STV-10] }
+    mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente:     { count: 3, items: [STV-3, STV-4, STV-11] }
+    mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse:             { count: 5, items: [STV-5, STV-7, STV-8, STV-9, STV-18] }
+    mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie:         { count: 3, items: [STV-6, STV-14, STV-15] }
+    mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques: { count: 3, items: [STV-13, STV-15, STV-16] }
+    mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause:     { count: 3, items: [STV-12, STV-17, STV-18] }
+  total_items: 18
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 3
+    R2: 3
+    R3: 3
+    R4: 3
+    R5: 3
+  honest_state: >-
+    Les six misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Cinq y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

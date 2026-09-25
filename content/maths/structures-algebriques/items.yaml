@@ -1,0 +1,1544 @@
+notion: structures-algebriques
+skill_code: maths_structures_alg
+
+misconceptions:
+  # Ajoutée le 2026-09-05 en taguant les items R1-R6, jusque-là muets.
+  - id: mc.math.structures_algebriques.loi-modulaire-mal-calculee
+    label: "« Le calcul modulo n donne un résultat hors de l'ensemble, ou le mauvais reste »"
+    description: >
+      Sur une loi définie par un reste (l'horloge modulo 12, $\mathbb{Z}/n\mathbb{Z}$),
+      l'élève garde le résultat de l'addition usuelle, en donne l'opposé négatif,
+      ou se trompe de reste — perdant de vue que la loi n'a de sens que ramenée
+      dans l'ensemble.
+    contradicts_principle: >
+      Une loi modulaire compose puis RAMÈNE dans l'ensemble : $x \oplus y$ est le
+      reste de $x+y$ dans la division par $n$, toujours compris entre $0$ et
+      $n-1$. Un résultat négatif, ou supérieur à $n-1$, signale que la deuxième
+      étape a été oubliée.
+
+  - id: mc.math.structures_algebriques.neutre-vs-symetrique
+    label: "« Le symétrique d'un élément, c'est l'élément neutre »"
+    description: "L'élève confond deux rôles distincts : le neutre $e$ (un seul élément, fixé pour tout $E$, qui ne change rien à personne) et le symétrique $x'$ d'un élément $x$ (un élément qui dépend de $x$, et qui, combiné à $x$, ramène au neutre). Face à la question « quel est le symétrique de $x$ ? », l'élève répond « $e$ » au lieu de chercher l'élément qui, combiné à $x$, donne $e$."
+    contradicts_principle: "Par définition, $x'$ est symétrique de $x$ si $x \\star x' = x' \\star x = e$. Sauf cas particulier où $x=e$ lui-même, $x' \\neq e$ : par exemple dans $(\\mathbb{Z}/4\\mathbb{Z},+)$, le symétrique de $1$ est $3$ (car $1+3=4\\equiv 0$), pas $0$ (car $1+0=1\\neq 0$)."
+
+  - id: mc.math.structures_algebriques.axiome-oublie
+    label: "« Trois propriétés sur quatre suffisent pour conclure qu'on a un groupe »"
+    description: "L'élève vérifie une partie des quatre axiomes du groupe (typiquement loi interne, associativité, neutre) et conclut directement à l'existence d'un groupe, sans vérifier que CHAQUE élément possède un symétrique — ou suppose cette existence automatique dès qu'il y a un neutre."
+    contradicts_principle: "Un groupe exige les QUATRE axiomes simultanément : loi interne, associativité, existence d'un neutre, ET existence d'un symétrique pour CHAQUE élément de $E$. L'existence d'un neutre ne garantit rien sur les symétriques : dans $(\\mathbb{Z}/4\\mathbb{Z},\\times)$, il y a bien un neutre ($1$), mais $2$ n'a aucun symétrique ($2\\times k$ ne vaut jamais $1$) — donc ce n'est pas un groupe malgré les trois premiers axiomes vérifiés."
+
+  - id: mc.math.structures_algebriques.groupe-anneau
+    label: "« Un anneau, c'est deux lois qui sont chacune un groupe » / « un anneau est automatiquement un corps »"
+    description: "L'élève surcharge la définition de l'anneau en exigeant pour la seconde loi ($\\times$) les mêmes propriétés que pour la première ($+$) — en particulier un symétrique pour chaque élément — ou conclut qu'un anneau est nécessairement un corps sans vérifier l'inversibilité de tous les éléments non nuls pour $\\times$."
+    contradicts_principle: "Un anneau $(E,+,\\times)$ exige que $(E,+)$ soit un groupe commutatif, mais demande seulement à $\\times$ d'être associative et distributive par rapport à $+$ — rien n'exige de symétrique pour $\\times$. Passer de l'anneau au corps exige une condition strictement plus forte, ajoutée à part : que TOUT élément non nul ait un symétrique pour $\\times$. $(\\mathbb{Z},+,\\times)$ est un anneau mais pas un corps, précisément parce que $2$ n'a pas de symétrique pour $\\times$ dans $\\mathbb{Z}$."
+
+  - id: mc.math.structures_algebriques.cloture-non-verifiee
+    label: "« Le résultat reste forcément dans $E$, pas besoin de vérifier »"
+    description: "L'élève calcule le résultat d'une opération comme si l'ensemble de départ était $\\mathbb{Z}$ (ou $\\mathbb{R}$) tout entier, sans réduire modulo $n$ ni vérifier que le résultat appartient bien à $E$ — il traite la loi comme automatiquement interne, sans jamais tester la condition sur chaque cas."
+    contradicts_principle: "Une loi de composition interne doit renvoyer, pour TOUT couple $(x,y) \\in E \\times E$, un résultat qui reste DANS $E$. Sur $\\mathbb{Z}/n\\mathbb{Z}$, cela exige de réduire modulo $n$ (ex : $9+5=14$, mais $9 \\oplus 5=2$ modulo $12$) ; un seul couple qui s'échappe hors de $E$ suffit à casser la propriété (ex : $3-5=-2 \\notin \\mathbb{N}$)."
+
+  - id: mc.math.structures_algebriques.assoc-commut-confusion
+    label: "« Commutativité et associativité, c'est la même chose »"
+    description: "L'élève confond commutativité (échanger l'ordre de DEUX éléments : $x \\star y = y \\star x$) et associativité (déplacer les parenthèses entre TROIS éléments : $(x \\star y) \\star z = x \\star (y \\star z)$) — il identifie l'une en croyant vérifier l'autre, ou pense qu'une loi commutative est automatiquement associative, ou l'inverse."
+    contradicts_principle: "Ce sont deux propriétés indépendantes, qui portent sur un nombre différent d'éléments et se vérifient différemment (la commutativité se lit sur la symétrie de la table ; l'associativité se teste par le calcul, sur des triplets). Une loi peut avoir l'une sans l'autre : la composition de fonctions est toujours associative mais pas toujours commutative (R4)."
+
+  - id: mc.math.structures_algebriques.generalisation-hative
+    label: "« Ça marche sur un exemple (ou quelques-uns), donc ça marche toujours »"
+    description: "L'élève vérifie une propriété (commutativité, associativité, ou l'appartenance à une catégorie de structure) sur un seul couple, un seul triplet, ou un nombre restreint d'exemples, et conclut directement qu'elle est vraie en général — pour tous les éléments de $E$, ou pour tous les groupes/anneaux — au lieu de la démontrer pour le cas général ou de vérifier systématiquement (table entière, argument d'héritage)."
+    contradicts_principle: "Une propriété universelle (« pour tous $x,y \\in E$ », « tout groupe... ») doit être établie soit par une vérification exhaustive (table entière, pour un ensemble fini), soit par un argument valable pour le cas général (héritage depuis une loi déjà connue) — jamais par un seul exemple ou une poignée de cas particuliers, qui ne prouvent rien pour les autres."
+
+  - id: mc.math.structures_algebriques.groupe-implique-commutatif
+    label: "« Un groupe est automatiquement commutatif »"
+    description: "L'élève croit que la commutativité découle automatiquement des quatre axiomes du groupe (loi interne, associativité, neutre, symétrique), au lieu de la traiter comme une propriété indépendante et supplémentaire, qui définit une sous-catégorie à part : le groupe commutatif (abélien)."
+    contradicts_principle: "Les quatre axiomes du groupe n'impliquent pas la commutativité : il existe des groupes non commutatifs (par exemple, la composition de $f(x)=x+1$ et $g(x)=2x$ n'est pas commutative). La commutativité doit être vérifiée séparément — sur la table (symétrie par rapport à la diagonale) ou par le calcul — et c'est elle qui distingue un groupe quelconque d'un groupe commutatif (R4)."
+
+items:
+
+  # ── neutre-vs-symetrique ─────────────────────────────────────────────
+  - id: SA-1
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, symetrique]
+    stem: >
+      Dans $(\mathbb{Z}/5\mathbb{Z}, +)$, quel est le symétrique de $2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$3$"
+        correct: true
+      - id: B
+        text: "$0$"
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          $0$ est le neutre de $(\mathbb{Z}/5\mathbb{Z},+)$ — pas le symétrique
+          de $2$. Le symétrique de $2$ est l'élément $x$ tel que $2+x \equiv 0
+          \pmod 5$ : $2+0=2 \neq 0$, donc $0$ ne convient pas. Modèle erroné :
+          « le symétrique d'un élément, c'est le neutre ».
+      - id: C
+        text: "$2$"
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          $2+2=4 \not\equiv 0 \pmod 5$ : $2$ n'est pas son propre symétrique
+          ici (ce n'est vrai que pour certains éléments, pas pour tous — il
+          faut vérifier, pas supposer).
+      - id: D
+        text: "$5$"
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          $5$ n'est même pas un élément de $\mathbb{Z}/5\mathbb{Z} = \{0,1,2,3,4\}$ :
+          un symétrique doit appartenir à l'ensemble $E$ lui-même.
+    correct_feedback: >
+      $2+3=5 \equiv 0 \pmod 5$ : le symétrique de $2$ est bien $3$, distinct
+      du neutre $0$.
+    solution: |
+      Le neutre de $(\mathbb{Z}/5\mathbb{Z},+)$ est $0$. On cherche $x$ tel que :
+      $$2 + x \equiv 0 \pmod 5$$
+      $x=3$ convient, car $2+3=5\equiv 0 \pmod 5$. Le symétrique de $2$ est $3$.
+
+  - id: SA-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, symetrique]
+    stem: >
+      On munit $E=\{e,a,b\}$ d'une loi $\star$ dont le neutre est $e$, et dont
+      la table est donnée ci-dessous :
+
+      | $\star$ | $e$ | $a$ | $b$ |
+      |---|---|---|---|
+      | $e$ | $e$ | $a$ | $b$ |
+      | $a$ | $a$ | $b$ | $e$ |
+      | $b$ | $b$ | $e$ | $a$ |
+
+      Quel est le symétrique de $a$ pour cette loi ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$b$"
+        correct: true
+      - id: B
+        text: "$e$"
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          $e$ est le neutre de la loi — pas le symétrique de $a$. Sur la
+          table, $a \star e = a \neq e$ : combiner $a$ avec le neutre ne
+          ramène pas au neutre, ça redonne $a$. Modèle erroné : « le
+          symétrique d'un élément, c'est le neutre ».
+      - id: C
+        text: "$a$"
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          Sur la table, $a \star a = b \neq e$ : $a$ n'est pas son propre
+          symétrique ici. Il faut lire la ligne de $a$ jusqu'à trouver la
+          case qui contient $e$.
+      - id: D
+        text: "Il n'existe pas de symétrique pour $a$"
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          Regarde bien la ligne de $a$ dans la table : $a \star b = e$. Le
+          symétrique existe bel et bien, c'est $b$.
+    correct_feedback: >
+      Sur la ligne de $a$, la case sous la colonne $b$ contient $e$ : donc
+      $a \star b = e$, et par symétrie de la table $b \star a = e$ aussi.
+      Le symétrique de $a$ est $b$, pas le neutre $e$.
+    solution: |
+      On cherche, dans la ligne de $a$, la colonne où apparaît le neutre $e$.
+      La table donne $a \star b = e$ (et on vérifie $b \star a = e$ aussi).
+      Le symétrique de $a$ est donc $b$.
+
+  # ── axiome-oublie ─────────────────────────────────────────────────────
+  - id: SA-3
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, axiomes_groupe]
+    stem: >
+      On munit $E=\{0,1,2,3\}$ de la multiplication modulo $4$, c'est-à-dire
+      $(\mathbb{Z}/4\mathbb{Z}, \times)$. Cette loi est interne, associative,
+      et possède un élément neutre ($1$). Peut-on en conclure que
+      $(E,\times)$ est un groupe ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : il faut encore vérifier que chaque élément possède un symétrique, et $2$ n'en a pas."
+        correct: true
+      - id: B
+        text: "Oui : les trois propriétés vérifiées suffisent à définir un groupe."
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        feedback: >
+          Un groupe exige QUATRE axiomes, pas trois : loi interne,
+          associativité, neutre, ET symétrique pour chaque élément. Ici $2
+          \times 0 = 0$, $2\times1=2$, $2\times2=0$, $2\times3=2$ — jamais
+          $1$. $2$ n'a pas de symétrique : la quatrième condition échoue.
+          Modèle erroné : « trois propriétés sur quatre suffisent ».
+      - id: C
+        text: "Oui : dès qu'il existe un neutre, chaque élément est automatiquement son propre symétrique."
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        also_reveals: [mc.math.structures_algebriques.neutre-vs-symetrique]
+        feedback: >
+          L'existence d'un neutre ne garantit rien sur les symétriques —
+          ce sont deux axiomes séparés, à vérifier séparément. Ici $2\times2=0
+          \neq 1$ : $2$ n'est pas son propre symétrique, et n'en a aucun
+          autre non plus. Modèle erroné : confondre l'existence du neutre
+          avec l'existence automatique des symétriques.
+      - id: D
+        text: "Non : la loi n'est pas interne sur $E$."
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: >
+          La loi EST bien interne : toutes les cases de la table de $\times$
+          modulo $4$ restent dans $\{0,1,2,3\}$. Le problème n'est pas là —
+          il est dans l'axiome du symétrique.
+    correct_feedback: >
+      Trois axiomes vérifiés ne suffisent pas : il faut vérifier les quatre.
+      Ici $2$ n'a pas de symétrique pour $\times$ ($2\times k$ ne vaut jamais
+      $1$ pour $k \in \{0,1,2,3\}$), donc $(\mathbb{Z}/4\mathbb{Z},\times)$
+      n'est pas un groupe — bien que ce soit, avec $+$, un anneau.
+    solution: |
+      On teste si $2$ possède un symétrique, en parcourant sa ligne de table :
+      $$2\times 0=0, \quad 2\times1=2, \quad 2\times2=0, \quad 2\times3=2$$
+      Le résultat $1$ (celui du neutre) n'apparaît jamais. $2$ n'a donc pas
+      de symétrique pour $\times$ : le quatrième axiome du groupe échoue, et
+      $(\mathbb{Z}/4\mathbb{Z},\times)$ n'est pas un groupe, malgré la loi
+      interne, l'associativité et l'existence d'un neutre.
+
+  - id: SA-4
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, axiomes_groupe]
+    stem: >
+      Sur une table de loi donnée pour un ensemble $E$ à $4$ éléments, un
+      élève vérifie que la loi est interne, qu'elle est commutative (la
+      table est symétrique par rapport à sa diagonale), et qu'il existe un
+      élément neutre. Il conclut que $(E,\star)$ est un groupe. Que lui
+      manque-t-il pour que sa conclusion soit valide ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Vérifier que la loi est associative, ET que chaque élément possède un symétrique — la commutativité n'est pas un des axiomes du groupe."
+        correct: true
+      - id: B
+        text: "Rien de plus : ces trois propriétés suffisent à elles seules à définir un groupe commutatif."
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        feedback: >
+          La commutativité n'est même pas un des quatre axiomes du groupe —
+          un groupe peut très bien ne pas être commutatif. Les vrais
+          axiomes manquants ici sont l'associativité et l'existence d'un
+          symétrique pour chaque élément. Modèle erroné : « trois
+          propriétés lues sur la table suffisent ».
+      - id: C
+        text: "Vérifier que la loi est associative ; l'existence des symétriques est automatique dès lors qu'un élément neutre a été trouvé dans la table."
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        feedback: >
+          L'existence d'un symétrique pour chaque élément est un axiome à
+          part entière, indépendant du neutre — il n'est jamais
+          automatique. Il faut le vérifier explicitement, élément par
+          élément, en cherchant dans chaque ligne si le neutre apparaît.
+      - id: D
+        text: "Vérifier que $E$ est bien un ensemble fini, condition sans laquelle la structure de groupe ne peut pas être établie."
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        feedback: >
+          La finitude de $E$ n'est pas une condition du groupe : des
+          groupes infinis existent (par exemple $(\mathbb{Z}, +)$). Ce
+          n'est pas ce qui manque ici.
+    correct_feedback: >
+      Un groupe exige quatre axiomes précis : loi interne, associativité,
+      neutre, symétrique pour chaque élément. La commutativité n'en fait
+      pas partie (elle définit le groupe COMMUTATIF, une propriété en plus).
+      Ici, associativité et symétriques restent à vérifier avant de conclure.
+    solution: |
+      Les quatre axiomes du groupe sont : loi interne, associativité,
+      existence d'un neutre, existence d'un symétrique pour CHAQUE élément.
+      L'élève n'a vérifié que la loi interne et le neutre — la
+      commutativité, qu'il a vérifiée, n'est pas un axiome du groupe (c'est
+      une propriété additionnelle, celle du groupe commutatif). Il lui
+      manque donc de vérifier l'associativité et l'existence d'un
+      symétrique pour chacun des quatre éléments.
+
+  # ── groupe-anneau ─────────────────────────────────────────────────────
+  - id: SA-5
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, anneau]
+    stem: >
+      Laquelle de ces affirmations définit correctement la structure
+      d'anneau $(E, +, \times)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$(E,+)$ est un groupe commutatif, $\\times$ est associative, et $\\times$ est distributive par rapport à $+$."
+        correct: true
+      - id: B
+        text: "$(E,+)$ et $(E,\\times)$ sont tous les deux des groupes commutatifs."
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
+        feedback: >
+          Un anneau n'exige PAS que $\times$ forme un groupe : ça
+          obligerait chaque élément, y compris le neutre $0$ de $+$, à
+          avoir un symétrique pour $\times$ — impossible, car $0 \times x
+          = 0$ ne vaut jamais $1$. Seule $(E,+)$ doit être un groupe
+          commutatif ; $\times$ n'a besoin que d'associativité et de
+          distributivité. Modèle erroné : « un anneau, ce sont deux
+          groupes ».
+      - id: C
+        text: "$(E,+,\\times)$ est un groupe pour une loi combinée $+$ et $\\times$ appliquées ensemble."
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
+        feedback: >
+          Il n'existe pas de « loi combinée » de ce genre dans la
+          définition de l'anneau : $+$ et $\times$ restent deux lois
+          distinctes, chacune avec ses propres exigences.
+      - id: D
+        text: "$\\times$ est une loi de groupe, et $+$ ne sert qu'à définir la distributivité."
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
+        feedback: >
+          C'est l'inverse de la définition : c'est $+$ qui doit être un
+          groupe commutatif (avec un neutre $0$ et un symétrique pour
+          chaque élément), pas $\times$. Exiger que $\times$ soit une loi
+          de groupe reviendrait à exiger l'inversibilité de tous les
+          éléments pour $\times$ — c'est la définition du CORPS, pas de
+          l'anneau.
+    correct_feedback: >
+      C'est exactement la définition : $(E,+)$ groupe commutatif,
+      $\times$ associative, et $\times$ distributive par rapport à $+$
+      (à gauche et à droite). Rien n'exige de symétrique pour $\times$.
+    solution: |
+      **Définition de l'anneau $(E,+,\times)$ :**
+      1. $(E,+)$ est un groupe commutatif (neutre $0$).
+      2. $\times$ est associative sur $E$.
+      3. $\times$ est distributive par rapport à $+$ :
+      $$x \times (y+z) = x\times y + x \times z, \qquad (y+z)\times x = y\times x + z \times x$$
+      Aucune exigence de symétrique pour $\times$ : c'est ce qui distingue
+      l'anneau du corps (chapitre 9).
+
+  - id: SA-6
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, corps]
+    stem: >
+      $(\mathbb{Z}, +, \times)$ est un anneau. Est-ce aussi un corps ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non, car certains éléments non nuls de $\\mathbb{Z}$ (par exemple $2$) n'ont pas de symétrique pour $\\times$ dans $\\mathbb{Z}$."
+        correct: true
+      - id: B
+        text: "Oui, car $(\\mathbb{Z},+,\\times)$ vérifie déjà tous les axiomes d'un anneau, et tout anneau est un corps."
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
+        feedback: >
+          Vérifier les axiomes de l'anneau ne suffit pas pour conclure
+          qu'on a un corps : le corps ajoute une exigence strictement plus
+          forte, l'inversibilité de TOUS les éléments non nuls pour
+          $\times$. $2 \in \mathbb{Z}$ est non nul et n'a pas de symétrique
+          pour $\times$ dans $\mathbb{Z}$ : la condition supplémentaire
+          échoue. Modèle erroné : « un anneau est automatiquement un
+          corps ».
+      - id: C
+        text: "Non, car $(\\mathbb{Z},+)$ n'est pas un groupe commutatif, l'addition n'y étant pas partout définie."
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
+        feedback: >
+          $(\mathbb{Z},+)$ EST un groupe commutatif (neutre $0$, symétrique
+          de $x$ égal à $-x$, commutatif) — ce n'est pas là que ça bloque.
+          Le problème est spécifique à la seconde loi $\times$.
+      - id: D
+        text: "Oui, car $2$ possède bien un symétrique pour la multiplication, à savoir le nombre $\\frac{1}{2}$."
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: >
+          $\frac{1}{2}$ n'appartient pas à $\mathbb{Z}$ : le symétrique
+          doit se trouver DANS l'ensemble $E$ étudié, pas dans un ensemble
+          plus grand qui le contient. Comme aucun entier ne vérifie
+          $2x=1$, $2$ n'a pas de symétrique pour $\times$ dans $\mathbb{Z}$.
+    correct_feedback: >
+      Exact : $(\mathbb{Z},+,\times)$ est un anneau, mais pas un corps,
+      car $2$ (entre autres) n'a pas de symétrique pour $\times$ dans
+      $\mathbb{Z}$ — la seule valeur candidate, $\frac{1}{2}$, n'est pas
+      un entier.
+    solution: |
+      $(\mathbb{Z},+,\times)$ est bien un anneau (chapitre 7). Pour être un corps,
+      il faudrait en plus que tout entier non nul ait un symétrique pour
+      $\times$ dans $\mathbb{Z}$. Prenons $2$ : l'équation $2x=1$ n'a pas
+      de solution entière (la seule solution réelle est $x=\frac{1}{2}
+      \notin \mathbb{Z}$). Donc $2$ n'a pas de symétrique pour $\times$
+      dans $\mathbb{Z}$, et $(\mathbb{Z},+,\times)$ n'est **pas** un corps
+      — contrairement à $(\mathbb{Q},+,\times)$, où tout rationnel non nul
+      $\frac{a}{b}$ a pour symétrique $\frac{b}{a}$.
+
+  # ── R0 : accroche (l'horloge qui boucle) ────────────────────────────────
+  - id: SA-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, lci, cloture]
+    stem: >
+      Sur l'horloge à 12 heures (chapitre 1), on définit $\oplus$ par : on additionne
+      normalement, puis on garde le reste modulo $12$. Que vaut $10 \oplus 6$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$16$"
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: >
+          $16$ est bien $10+6$, mais ce n'est pas le résultat de $\oplus$ : il
+          faut encore réduire modulo $12$. $16$ n'appartient même pas à
+          l'ensemble des heures $\{0,1,\ldots,11\}$ — un résultat de $\oplus$
+          doit toujours rester dans cet ensemble.
+      - id: B
+        text: "$4$"
+        correct: true
+      - id: C
+        text: "$-4$"
+        correct: false
+        misconception: mc.math.structures_algebriques.loi-modulaire-mal-calculee
+        feedback: >
+          Le reste d'une division euclidienne est toujours positif ou nul :
+          $16 = 1\times12+4$, le reste est $4$, pas $-4$.
+      - id: D
+        text: "$6$"
+        correct: false
+        misconception: mc.math.structures_algebriques.loi-modulaire-mal-calculee
+        feedback: >
+          $6$ est l'un des deux termes de départ, pas le résultat de
+          $10\oplus6$ : il faut bien additionner les deux heures, puis
+          réduire modulo $12$, pas recopier l'un des deux nombres.
+    correct_feedback: >
+      $10+6=16$, et $16$ divisé par $12$ laisse un reste de $4$ (puisque
+      $16=1\times12+4$) : donc $10\oplus6=4$, exactement comme $10$h $+\,6$h
+      ramène à $4$h sur le cadran.
+    solution: |
+      On calcule d'abord la somme usuelle :
+      $$10+6=16$$
+      puis on réduit modulo $12$ :
+      $$16 = 1\times12+4$$
+      Le reste est $4$ : $10\oplus6=4$.
+
+  - id: SA-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, symetrique]
+    stem: >
+      Sur l'horloge (addition modulo $12$, chapitre 1), quelle heure faut-il ajouter
+      à $8$h pour revenir à $0$h, l'heure neutre ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0$h"
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          $0$h est l'heure neutre elle-même — pas l'heure opposée à $8$h :
+          $8\oplus0=8\neq0$. Ajouter le neutre à $8$h ne ramène pas à $0$h,
+          ça redonne $8$h.
+      - id: B
+        text: "$12$h"
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: >
+          $12$h n'existe pas sur ce cadran : les heures vont de $0$ à $11$
+          seulement. Une heure opposée doit être un élément de cet ensemble
+          lui-même, pas une valeur qui s'en échappe.
+      - id: C
+        text: "$4$h"
+        correct: true
+      - id: D
+        text: "$8$h"
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          $8\oplus8=16$, qui laisse un reste de $4$ modulo $12$, pas $0$ :
+          $8$h n'est pas sa propre heure opposée ici.
+    correct_feedback: >
+      $8\oplus4=12\equiv0\pmod{12}$ : l'heure opposée à $8$h est bien $4$h.
+      L'heure neutre $0$h est un élément à part, distinct de l'heure opposée
+      de $8$h.
+    solution: |
+      On cherche $x$ tel que :
+      $$8\oplus x \equiv 0 \pmod{12}$$
+      $x=4$ convient, car $8+4=12\equiv0\pmod{12}$. L'heure opposée à $8$h
+      est $4$h.
+
+  - id: SA-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, commutativite]
+    stem: >
+      Le calcul $3\oplus7 = 7\oplus3$ (sur l'horloge, modulo $12$, chapitre 1)
+      illustre quelle propriété de $\oplus$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'associativité : la façon de grouper les termes ne change pas le résultat."
+        correct: false
+        misconception: mc.math.structures_algebriques.assoc-commut-confusion
+        feedback: >
+          L'associativité met en jeu TROIS éléments et le placement des
+          parenthèses (par exemple $(3\oplus7)\oplus x$ comparé à
+          $3\oplus(7\oplus x)$). Ici il n'y a que deux éléments, dont on a
+          simplement échangé l'ordre : c'est la commutativité, pas
+          l'associativité.
+      - id: B
+        text: "L'existence d'un élément neutre."
+        correct: false
+        misconception: mc.math.structures_algebriques.assoc-commut-confusion
+        feedback: >
+          Aucun des deux membres n'est $0$h, l'heure neutre : ce calcul ne
+          parle pas du neutre, mais de l'ordre dans lequel on combine les
+          deux termes.
+      - id: C
+        text: "L'existence d'un symétrique pour $3$."
+        correct: false
+        misconception: mc.math.structures_algebriques.assoc-commut-confusion
+        feedback: >
+          Le symétrique de $3$h serait l'heure qui, ajoutée à $3$h, redonne
+          $0$h — ici le résultat est $10$h, pas $0$h : ce calcul ne teste
+          pas le symétrique.
+      - id: D
+        text: "La commutativité : l'ordre des deux termes ne change pas le résultat."
+        correct: true
+    correct_feedback: >
+      Échanger l'ordre des deux termes ($3\oplus7$ contre $7\oplus3$) sans
+      changer le résultat, c'est exactement la définition de la
+      commutativité.
+    solution: |
+      $3\oplus7 = 10$ et $7\oplus3=10$ : les deux membres coïncident quand on
+      échange l'ordre des deux termes combinés. C'est la définition même de
+      la commutativité : $x\oplus y = y\oplus x$.
+
+  # ── R1 : loi de composition interne ─────────────────────────────────────
+  - id: SA-10
+    rung: "R1"
+    difficulty_level: 1
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, lci]
+    stem: >
+      On munit $E=\mathbb{Z}$ de la division usuelle $\div$. Est-ce une loi
+      de composition interne sur $E$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui : la division de deux entiers reste toujours un entier."
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: >
+          C'est faux en général : $3\div2=1{,}5$, qui n'est pas un entier.
+          Il ne suffit pas de supposer que le résultat reste dans $E$ — il
+          faut le vérifier, et un seul contre-exemple suffit à casser la
+          propriété.
+      - id: B
+        text: "Non : par exemple $3\\div2=1{,}5$, qui n'appartient pas à $\\mathbb{Z}$."
+        correct: true
+      - id: C
+        text: "Non, car $\\mathbb{Z}$ ne contient pas de nombres décimaux, donc aucune division n'est jamais possible."
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: >
+          Certaines divisions restent bien dans $\mathbb{Z}$ (par exemple
+          $6\div2=3$) : ce n'est pas qu'AUCUNE division ne fonctionne — il
+          suffit d'UN SEUL couple qui s'échappe hors de $E$ pour casser la
+          propriété, comme $3\div2$.
+      - id: D
+        text: "Oui, sauf pour la division par $0$."
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: >
+          Même en écartant la division par $0$, $3\div2=1{,}5\notin\mathbb{Z}$
+          montre que le problème ne vient pas seulement de la division par
+          $0$ : la division de deux entiers n'est en général pas un entier.
+    correct_feedback: >
+      Il suffit d'un seul couple qui s'échappe hors de $E$ pour casser la
+      propriété : $3\div2=1{,}5\notin\mathbb{Z}$, donc $\div$ n'est pas une
+      loi de composition interne sur $\mathbb{Z}$.
+    solution: |
+      Teste un couple : $3\div2=1{,}5$. Or $1{,}5\notin\mathbb{Z}$. Un seul
+      couple suffit à casser la propriété : $\div$ n'est pas une loi de
+      composition interne sur $\mathbb{Z}$.
+
+  - id: SA-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, lci]
+    stem: >
+      On propose la table suivante pour une loi $\#$ sur $E=\{0,1,2\}$ :
+
+      | $\#$ | $0$ | $1$ | $2$ |
+      |---|---|---|---|
+      | $0$ | $0$ | $1$ | $2$ |
+      | $1$ | $1$ | $2$ | $3$ |
+      | $2$ | $2$ | $3$ | $4$ |
+
+      Cette table définit-elle une loi de composition interne sur $E$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : les cases $(1,2)$, $(2,1)$ et $(2,2)$ contiennent $3$ ou $4$, qui ne sont pas des éléments de $E$."
+        correct: true
+      - id: B
+        text: "Oui : chaque case du tableau contient bien un résultat calculé à partir de deux éléments de $E$."
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: >
+          Que le résultat soit calculé à partir de deux éléments de $E$ ne
+          garantit pas qu'il reste dans $E$ : ici $2+2=4$, qui sort de
+          l'ensemble $E$. Il faut vérifier chaque case, pas seulement
+          l'existence d'un calcul.
+      - id: C
+        text: "Oui, car la table est bien remplie sur toutes ses cases, sans case vide."
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: >
+          Une table sans case vide n'est pas la même chose qu'une table dont
+          toutes les cases appartiennent à $E$ : ici, les cases ne sont pas
+          vides, mais certaines contiennent $3$ et $4$, qui sont hors de $E$.
+      - id: D
+        text: "Non, car la table n'est pas symétrique par rapport à la diagonale."
+        correct: false
+        misconception: mc.math.structures_algebriques.assoc-commut-confusion
+        feedback: >
+          Cette table EST en réalité symétrique (compare par exemple la
+          case $(1,2)$ et sa réflexion $(2,1)$ : toutes deux valent $3$) —
+          la symétrie de la table teste la COMMUTATIVITÉ, pas le caractère
+          interne de la loi. Le vrai problème est que certaines cases
+          contiennent des valeurs hors de $E$, comme $3$ et $4$.
+    correct_feedback: >
+      Une loi est interne seulement si TOUTES les cases restent dans $E$.
+      Ici, $1\#2=3$, $2\#1=3$ et $2\#2=4$ sortent de $E=\{0,1,2\}$ : un seul
+      cas suffit à casser la propriété, donc $\#$ n'est pas une loi de
+      composition interne sur $E$.
+    solution: |
+      On parcourt chaque case du tableau. Toutes contiennent un élément de
+      $E$, sauf trois : $1\#2=3$, $2\#1=3$ et $2\#2=4$, qui sortent de
+      $E=\{0,1,2\}$. Un seul cas suffit à casser la propriété : $\#$ n'est
+      pas une loi de composition interne sur $E$.
+
+  - id: SA-12
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, lci]
+    stem: >
+      Soit $E$ l'ensemble des entiers impairs. Est-ce que l'addition usuelle
+      $+$ est une loi de composition interne sur $E$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui : la somme de deux entiers impairs reste toujours impaire."
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: >
+          C'est l'inverse : la somme de deux entiers impairs est toujours
+          PAIRE (par exemple $3+5=8$, $7+9=16$), jamais impaire. Il ne
+          suffit pas de supposer que le résultat reste dans $E$ — un seul
+          contre-exemple, comme $3+5=8$, casse la propriété.
+      - id: B
+        text: "Oui, car $E$ est infini, et une loi sur un ensemble infini est toujours interne."
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: >
+          La taille (finie ou infinie) de $E$ n'a aucun rapport avec le
+          caractère interne d'une loi : ce qui compte est uniquement que
+          CHAQUE résultat reste dans $E$, ce qui échoue dès que $3+5=8$
+          sort de $E$.
+      - id: C
+        text: "Non : par exemple $3+5=8$, qui est pair, donc n'appartient pas à $E$."
+        correct: true
+      - id: D
+        text: "Non, car $E$ ne contient pas $0$, qui devrait être l'élément neutre."
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          Le caractère interne d'une loi ne dépend pas de l'existence d'un
+          neutre — ce sont deux questions séparées (loi interne = premier
+          axiome ; neutre = troisième axiome du groupe). Ici le problème
+          est bien que $3+5=8$ sort de $E$, pas l'absence de neutre.
+    correct_feedback: >
+      Un seul contre-exemple suffit : $3+5=8$ est pair, donc hors de $E$
+      (l'ensemble des entiers impairs). L'addition n'est donc pas une loi
+      de composition interne sur $E$ — alors que la multiplication, elle,
+      le serait (le produit de deux impairs est toujours impair).
+    solution: |
+      Teste un couple : $3+5=8$. Or $8$ est pair, donc $8\notin E$. Un seul
+      couple suffit à casser la propriété : l'addition n'est pas une loi de
+      composition interne sur l'ensemble des entiers impairs.
+
+  # ── R2 : propriétés d'une loi (associativité / commutativité) ──────────
+  - id: SA-13
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, associativite]
+    stem: >
+      On munit $\mathbb{R}$ de la loi $\star$ définie par $x\star y = x+y+1$.
+      Calcule $(2\star3)\star4$ et $2\star(3\star4)$. Que peut-on en
+      conclure ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux résultats coïncident, donc $\\star$ est commutative."
+        correct: false
+        misconception: mc.math.structures_algebriques.assoc-commut-confusion
+        feedback: >
+          Ce calcul met en jeu TROIS éléments et compare deux façons de
+          placer les parenthèses — c'est un test d'ASSOCIATIVITÉ, pas de
+          commutativité (qui, elle, comparerait $x\star y$ et $y\star x$
+          pour DEUX éléments).
+      - id: B
+        text: "Les deux résultats coïncident pour ce triplet précis, donc $\\star$ est associative pour tous les triplets de $\\mathbb{R}$ — un seul triplet suffit à le prouver."
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: >
+          Un seul triplet ne prouve jamais une propriété pour tous les
+          triplets — ici l'associativité tient réellement pour tous les
+          triplets, mais ça se justifie par un argument général (les deux
+          membres valent toujours $x+y+z+2$, quel que soit le triplet), pas
+          par ce seul exemple numérique.
+      - id: C
+        text: "$(2\\star3)\\star4 = 10$ et $2\\star(3\\star4) = 11$ : les deux résultats diffèrent, donc $\\star$ n'est pas associative."
+        correct: false
+        misconception: mc.math.structures_algebriques.assoc-commut-confusion
+        feedback: >
+          Recalcule : $2\star3=2+3+1=6$, puis $6\star4=6+4+1=11$ (pas
+          $10$ — le « $+1$ » de la définition de $\star$ doit être ajouté
+          à chaque application de la loi, une fois par étape).
+      - id: D
+        text: "$(2\\star3)\\star4=11$ et $2\\star(3\\star4)=11$ : les deux résultats coïncident pour ce triplet, cohérent avec le fait que $\\star$ est associative sur $\\mathbb{R}$."
+        correct: true
+    correct_feedback: >
+      Les deux calculs donnent $11$ : $(2\star3)\star4=6\star4=11$ et
+      $2\star(3\star4)=2\star8=11$. C'est cohérent avec l'associativité de
+      $\star$, qui tient en réalité pour tout triplet $(x,y,z)$ car les
+      deux membres valent toujours $x+y+z+2$.
+    solution: |
+      $$(2\star3)\star4 = (2+3+1)\star4 = 6\star4 = 6+4+1 = 11$$
+      $$2\star(3\star4) = 2\star(3+4+1) = 2\star8 = 2+8+1 = 11$$
+      Les deux membres coïncident. Plus généralement, pour tout triplet
+      $(x,y,z)$ : $(x\star y)\star z = x+y+z+2$ et $x\star(y\star z)=x+y+z+2$
+      — l'associativité tient toujours, pas seulement pour ce triplet.
+
+  # ── R3 : structure de groupe (les quatre axiomes) ──────────────────────
+  - id: SA-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, axiomes_groupe]
+    stem: >
+      Soit $E$ l'ensemble des entiers pairs, muni de l'addition usuelle $+$.
+      On vérifie que $+$ est interne sur $E$ (la somme de deux pairs est
+      paire), associative (héritée de $\mathbb{Z}$), et que $0$ est neutre.
+      $(E,+)$ est-il un groupe ?
+    type: mcq
+    choices:
+      - id: A
+        text: "On ne peut pas savoir : il faudrait vérifier un par un chacun des symétriques, ce qui est matériellement impossible puisque l'ensemble $E$ des entiers pairs est infini."
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: >
+          Comme pour l'associativité (héritée de $\mathbb{Z}$), on peut
+          donner un argument GÉNÉRAL, valable pour tout $x$ pair, sans
+          tester un par un : si $x=2k$, alors $-x=2(-k)$ est pair aussi,
+          donc le symétrique existe toujours et reste dans $E$. Un ensemble
+          infini n'empêche pas une vérification générale.
+      - id: B
+        text: "Oui : il reste à vérifier que chaque élément pair $x$ a un symétrique pair, ce qui est le cas — le symétrique de $x$ est $-x$, qui est pair dès que $x$ l'est. Les quatre axiomes sont vérifiés."
+        correct: true
+      - id: C
+        text: "Non : il manque de vérifier que $0$ est bien un entier pair, faute de quoi l'élément neutre n'appartiendrait pas à l'ensemble $E$ considéré."
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          $0$ est bien un entier pair ($0=2\times0$), donc $0\in E$ : le
+          neutre appartient bien à l'ensemble. Ce n'est pas ce qui bloque
+          ici — la question restante est celle du symétrique, pas celle du
+          neutre.
+      - id: D
+        text: "Non : les trois propriétés déjà vérifiées ne suffisent pas, et ici l'entier $2$ ne possède aucun symétrique qui soit lui-même pair."
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          Faux : le symétrique de $2$ pour $+$ est $-2$, qui EST pair, donc
+          appartient bien à $E$ — contrairement à l'exemple différent de
+          $(\mathbb{Z}/4\mathbb{Z},\times)$ vu précédemment (où c'était la
+          loi $\times$, pas $+$, et où $2$ n'avait effectivement pas de
+          symétrique). Il ne faut pas transposer la conclusion d'un exercice
+          à un autre sans revérifier.
+    correct_feedback: >
+      Les quatre axiomes sont vérifiés : loi interne (pair+pair=pair),
+      associative (héritée de $\mathbb{Z}$), neutre ($0$, qui est pair), et
+      symétrique pour chaque élément ($-x$ est pair dès que $x$ l'est).
+      $(E,+)$ est bien un groupe — un sous-groupe de $(\mathbb{Z},+)$, en
+      fait.
+    solution: |
+      Il reste à vérifier le quatrième axiome : pour tout $x$ pair, $x=2k$,
+      son symétrique $-x=2(-k)$ est également pair, donc appartient à $E$.
+      Les quatre axiomes (interne, associative, neutre, symétrique pour
+      chaque élément) sont tous vérifiés : $(E,+)$ est un groupe.
+
+  # ── R4 : groupe commutatif (abélien) ────────────────────────────────────
+  - id: SA-15
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, groupe_commutatif]
+    stem: >
+      Après avoir vérifié que $(\mathbb{Z}/4\mathbb{Z},+)$ et le groupe des
+      symétries du rectangle sont tous deux commutatifs, un élève affirme :
+      « Un groupe est toujours commutatif. » A-t-il raison ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui : la commutativité de la loi découle automatiquement des quatre axiomes qui définissent un groupe, il est inutile de la vérifier."
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-implique-commutatif
+        feedback: >
+          Les quatre axiomes du groupe (interne, associative, neutre,
+          symétrique pour chaque élément) n'impliquent pas la commutativité :
+          c'est une propriété indépendante, en plus, qui définit le groupe
+          COMMUTATIF (chapitre 6). Des groupes non commutatifs existent bel et bien.
+      - id: B
+        text: "Non, mais seulement parce que $(\\mathbb{Z}/4\\mathbb{Z},+)$ vérifie la commutativité tandis que sa loi $\\times$ ne vérifie pas l'associativité."
+        correct: false
+        misconception: mc.math.structures_algebriques.assoc-commut-confusion
+        feedback: >
+          L'associativité de $\times$ sur $\mathbb{Z}/4\mathbb{Z}$ est bien
+          vérifiée (héritée de $\mathbb{Z}$, chapitre 3) — ce n'est pas là que ça
+          bloque. Et la question porte sur le groupe $(\mathbb{Z}/4\mathbb{Z},+)$,
+          pas sur $\times$ : il ne faut pas mélanger les deux lois ni les
+          deux propriétés.
+      - id: C
+        text: "Non : il existe des groupes non commutatifs — par exemple, la composition de $f(x)=x+1$ et $g(x)=2x$ ne donne pas le même résultat dans les deux ordres."
+        correct: true
+      - id: D
+        text: "Oui : tous les exemples de groupes rencontrés jusqu'ici étaient commutatifs, donc c'est une propriété générale des groupes."
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: >
+          Le fait que quelques exemples particuliers soient commutatifs ne
+          prouve rien pour TOUS les groupes — il faudrait un argument
+          général, qui n'existe justement pas ici : la composition de
+          $f(x)=x+1$ et $g(x)=2x$ fournit un contre-exemple explicite.
+    correct_feedback: >
+      La commutativité n'est PAS une conséquence des quatre axiomes du
+      groupe : c'est une propriété indépendante, en plus, qui définit le
+      groupe COMMUTATIF (chapitre 6). Des groupes non commutatifs existent bel et
+      bien — la composition de fonctions en donne un exemple.
+    solution: |
+      Les quatre axiomes du groupe sont indépendants de la commutativité.
+      Le contre-exemple du chapitre 6 le montre : avec $f(x)=x+1$ et $g(x)=2x$,
+      $(f\circ g)(0)=1$ alors que $(g\circ f)(0)=2$ — la composition n'est
+      pas commutative ici, bien que la composition soit une loi de groupe sur
+      l'ensemble des **bijections** de $\mathbb{R}$ vers $\mathbb{R}$ — auquel
+      $f$ et $g$ appartiennent toutes deux (associative, de neutre $id$, et
+      chaque bijection y a une réciproque). Un groupe n'est donc pas toujours
+      commutatif.
+
+  - id: SA-16
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, groupe_commutatif]
+    stem: >
+      Reprends $f(x)=x+1$ et $g(x)=2x$ (chapitre 6). Calcule $(f\circ g)(3)$ et
+      $(g\circ f)(3)$. Que montre ce calcul ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$(f\\circ g)(3)=7$ et $(g\\circ f)(3)=8$ : les deux résultats diffèrent, ce qui confirme, sur un nouvel exemple, que $\\circ$ n'est pas commutative pour $f$ et $g$."
+        correct: true
+      - id: B
+        text: "$(f\\circ g)(3) = g(f(3)) = 8$ et $(g\\circ f)(3)=f(g(3))=7$ : on retrouve les deux mêmes valeurs, simplement échangées d'un calcul à l'autre."
+        correct: false
+        misconception: mc.math.structures_algebriques.assoc-commut-confusion
+        feedback: >
+          $(f\circ g)(x)$ signifie « appliquer $g$ d'abord, puis $f$ »,
+          c'est-à-dire $f(g(x))$ — pas $g(f(x))$. Ici
+          $(f\circ g)(3)=f(g(3))=f(6)=7$, et $(g\circ f)(3)=g(f(3))=g(4)=8$ :
+          les définitions sont interverties dans cette réponse.
+      - id: C
+        text: "$(f\\circ g)(3)=7$ et $(g\\circ f)(3)=8$, donc la composition n'est jamais commutative, quelles que soient les deux fonctions que l'on choisit."
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: >
+          Ce calcul montre que $\circ$ n'est pas commutative pour CES DEUX
+          fonctions précises — pas que la composition n'est JAMAIS
+          commutative en général : le groupe des symétries du rectangle
+          (chapitres 4 à 6), lui, a une loi de composition parfaitement commutative.
+      - id: D
+        text: "$(f\\circ g)(3)=7$ et $(g\\circ f)(3)=7$ : les deux résultats coïncident, donc la composition est bien commutative pour ce couple de fonctions."
+        correct: false
+        misconception: mc.math.structures_algebriques.assoc-commut-confusion
+        feedback: >
+          Recalcule $(g\circ f)(3)$ : $f(3)=4$, puis $g(4)=8$ — pas $7$.
+          Les deux résultats sont bien différents ($7$ et $8$), pas égaux.
+    correct_feedback: >
+      $(f\circ g)(3) = f(g(3)) = f(6) = 7$ et $(g\circ f)(3) = g(f(3)) =
+      g(4) = 8$. Les résultats diffèrent : ce nouvel exemple confirme,
+      comme au chapitre 6 avec $x=0$, que la composition de $f$ et $g$ n'est pas
+      commutative.
+    solution: |
+      $$g(3)=6, \quad f(6)=7 \quad\Rightarrow\quad (f\circ g)(3)=7$$
+      $$f(3)=4, \quad g(4)=8 \quad\Rightarrow\quad (g\circ f)(3)=8$$
+      $7\neq8$ : la composition de $f$ et $g$ n'est pas commutative, pour
+      ce couple de valeurs comme pour celui du cours ($x=0$).
+
+  - id: SA-17
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, groupe_commutatif]
+    stem: >
+      Dans le groupe des symétries du rectangle $(E,\circ)$ (chapitre 4), calcule
+      $s_v\circ r$ et $r\circ s_v$ à l'aide de la table. Le groupe est-il
+      commutatif pour ce couple ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$s_v\\circ r = s_h$ et $r\\circ s_v = s_h$, mais cela ne prouve rien : la composition de fonctions n'est jamais commutative, comme le montre le contre-exemple de $f$ et $g$ du cours."
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: >
+          Un seul contre-exemple (celui de $f$ et $g$) montre que CETTE
+          composition précise n'est pas commutative — il ne prouve rien
+          pour toutes les autres lois de composition. Ce groupe-ci a une
+          table entièrement symétrique (chapitre 6), donc il EST commutatif : il
+          faut vérifier au cas par cas, pas généraliser un résultat négatif
+          à toutes les situations.
+      - id: B
+        text: "$s_v\\circ r = s_h$ mais $r\\circ s_v = r$, donc ce couple ne commute pas."
+        correct: false
+        misconception: mc.math.structures_algebriques.assoc-commut-confusion
+        feedback: >
+          Relis la table : ligne $r$, colonne $s_v$ donne $s_h$, pas $r$.
+          Les deux résultats sont en réalité égaux ($s_h$ dans les deux
+          cas).
+      - id: C
+        text: "Pas besoin de calculer : un groupe est toujours commutatif, donc $s_v\\circ r$ et $r\\circ s_v$ sont forcément égaux."
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-implique-commutatif
+        feedback: >
+          Un groupe n'est pas toujours commutatif (chapitre 6) : c'est une
+          propriété indépendante des quatre axiomes du groupe, à vérifier
+          séparément — pas une conséquence automatique. Ici le calcul
+          confirme bien l'égalité, mais parce que LA TABLE DE CE GROUPE
+          PRÉCIS est symétrique, pas parce que « tout groupe est
+          commutatif ».
+      - id: D
+        text: "$s_v\\circ r = s_h$ et $r\\circ s_v = s_h$ : les deux coïncident, cohérent avec le fait que ce groupe est commutatif (table entièrement symétrique, chapitre 6)."
+        correct: true
+    correct_feedback: >
+      $s_v\circ r = s_h$ (ligne $s_v$, colonne $r$) et $r\circ s_v = s_h$
+      (ligne $r$, colonne $s_v$) : les deux coïncident, ce qui est cohérent
+      avec la symétrie de la table entière déjà observée au chapitre 6 — ce groupe
+      est commutatif.
+    solution: |
+      Sur la table du chapitre 4 : ligne $s_v$, colonne $r$ donne $s_h$ ; ligne
+      $r$, colonne $s_v$ donne aussi $s_h$. Les deux résultats coïncident,
+      comme pour toutes les autres paires (la table entière est symétrique
+      par rapport à sa diagonale) : le groupe des symétries du rectangle
+      est commutatif.
+
+  # ── R5 : structure d'anneau ──────────────────────────────────────────────
+  - id: SA-18
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, anneau]
+    stem: >
+      Dans $(\mathbb{Z}/4\mathbb{Z},+,\times)$, calcule $3\times(2+3)$ et
+      $3\times2+3\times3$ (tous les calculs se font modulo $4$). Que montre
+      ce calcul ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Rien du tout : un seul triplet ne prouve jamais une propriété valable pour tous les triplets, donc ce calcul ne dit pas si $\\times$ est distributive sur tout $\\mathbb{Z}/4\\mathbb{Z}$."
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: >
+          Comme pour l'associativité (chapitres 3 et 4), on peut invoquer un argument
+          d'HÉRITAGE : la distributivité de $\times$ sur $+$ est déjà vraie
+          sur $\mathbb{Z}$ pour tous les triplets, et cette propriété se
+          transmet telle quelle au calcul modulo $4$ (chapitre 7). Ce n'est donc
+          pas un simple exemple isolé qui reste incertain.
+      - id: B
+        text: "$3\\times(2+3) = 3\\times1=3$ et $3\\times2+3\\times3 = 2+1=3$ : les deux membres coïncident, cohérent avec la distributivité de $\\times$ par rapport à $+$, déjà établie en général (chapitre 7) pour cet anneau."
+        correct: true
+      - id: C
+        text: "$3\\times(2+3) = 3\\times1=3$, mais $3\\times2+3\\times3 = 6+9=15$ si l'on oublie de réduire modulo $4$, si bien que les deux membres ne coïncident pas."
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: >
+          Dans $\mathbb{Z}/4\mathbb{Z}$, tous les résultats doivent être
+          réduits modulo $4$ : $6+9=15$, et $15$ modulo $4$ vaut $3$ (car
+          $15=3\times4+3$) — donc $3\times2+3\times3=3$ dans
+          $\mathbb{Z}/4\mathbb{Z}$, égal à l'autre membre. Oublier de
+          réduire modulo $4$ fait croire à tort que l'égalité échoue.
+      - id: D
+        text: "Les deux membres coïncident, ce qui montre que $(\\mathbb{Z}/4\\mathbb{Z},\\times)$ est lui-même un groupe pour la multiplication modulo quatre."
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
+        feedback: >
+          La distributivité ne dit rien sur le fait que
+          $(\mathbb{Z}/4\mathbb{Z},\times)$ soit un groupe — c'est une
+          question séparée (celle du symétrique pour $\times$), et on a
+          déjà vu au chapitre 7 que $2$ n'a pas de symétrique pour $\times$ :
+          $(\mathbb{Z}/4\mathbb{Z},\times)$ n'est pas un groupe.
+    correct_feedback: >
+      $3\times(2+3) = 3\times1 = 3$ et $3\times2+3\times3 = 2+1 = 3$ (tous
+      les calculs réduits modulo $4$) : les deux membres coïncident,
+      cohérent avec la distributivité, valable ici pour tout triplet par
+      héritage depuis $\mathbb{Z}$.
+    solution: |
+      $$3\times(2+3) = 3\times1 = 3 \pmod 4$$
+      $$3\times2+3\times3 = 6+9 = 15 \equiv 3\pmod 4$$
+      Les deux membres valent $3$ : la distributivité tient pour ce
+      triplet, et plus généralement pour tout triplet, par héritage depuis
+      $\mathbb{Z}$.
+
+  - id: SA-19
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, anneau]
+    stem: >
+      Soit $E=2\mathbb{Z}$ l'ensemble des entiers pairs, muni de $+$ et
+      $\times$ usuels. On admet que $(E,+)$ est un groupe commutatif, que
+      $\times$ est associative et distributive par rapport à $+$. Remarque
+      que $1\notin E$ (donc $\times$ n'a pas de neutre dans $E$).
+      $(E,+,\times)$ est-il tout de même un anneau ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : la définition d'un anneau exige que la multiplication possède un élément neutre, si bien que l'absence du nombre $1$ dans l'ensemble $E$ empêche $(E,+,\\times)$ d'en être un."
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
+        feedback: >
+          La définition de l'anneau (chapitre 7) n'exige PAS que $\times$ ait un
+          neutre : un anneau exige seulement que $(E,+)$ soit un groupe
+          commutatif, et que $\times$ soit associative et distributive par
+          rapport à $+$. L'absence de neutre pour $\times$ n'est pas un
+          obstacle.
+      - id: B
+        text: "Non : $(E,+)$ n'est pas un groupe commutatif, car l'ensemble $E=2\\mathbb{Z}$ des entiers pairs ne contient pas l'élément neutre $0$ de l'addition."
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
+        feedback: >
+          $0$ est bien un entier pair ($0=2\times0$), donc $0\in E$ :
+          $(E,+)$ est bien un groupe commutatif (neutre $0$, symétrique de
+          $x$ égal à $-x$, qui est pair dès que $x$ l'est). Le problème
+          n'est pas là.
+      - id: C
+        text: "Oui : la définition de l'anneau n'exige aucun neutre pour $\\times$ — seulement que $(E,+)$ soit un groupe commutatif et que $\\times$ soit associative et distributive."
+        correct: true
+      - id: D
+        text: "Non : la définition d'un anneau exige que chaque élément non nul possède un symétrique pour la multiplication, condition qui échoue clairement ici."
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
+        feedback: >
+          C'est la définition du CORPS (chapitre 9), pas de l'anneau : un anneau
+          n'exige aucun symétrique pour $\times$. Confondre les deux fait
+          croire qu'un anneau doit se comporter comme
+          $(\mathbb{Q},+,\times)$, alors que $(\mathbb{Z},+,\times)$
+          (anneau, pas corps) montre bien que ce n'est pas exigé.
+    correct_feedback: >
+      La définition de l'anneau (chapitre 7) n'exige pas de neutre pour $\times$,
+      seulement que $(E,+)$ soit un groupe commutatif et que $\times$ soit
+      associative et distributive par rapport à $+$ — toutes ces conditions
+      sont vérifiées ici. $(2\mathbb{Z},+,\times)$ est donc bien un anneau,
+      même sans élément neutre pour $\times$.
+    solution: |
+      Les trois exigences de la définition de l'anneau (chapitre 7) sont vérifiées :
+      $(E,+)$ groupe commutatif, $\times$ associative, $\times$ distributive
+      par rapport à $+$. Aucune de ces trois exigences ne porte sur
+      l'existence d'un neutre pour $\times$ : $(2\mathbb{Z},+,\times)$ est
+      un anneau, bien que $1\notin2\mathbb{Z}$.
+
+  # ── R6 : structure de corps ──────────────────────────────────────────────
+  - id: SA-20
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, corps]
+    stem: >
+      On admet que $(\mathbb{Z}/5\mathbb{Z},+,\times)$ est un anneau, et que
+      $\times$ y est commutative. Sachant que $1\times1=1$,
+      $2\times3=6\equiv1$, $3\times2=6\equiv1$, $4\times4=16\equiv1$ (tous
+      modulo $5$), $(\mathbb{Z}/5\mathbb{Z},+,\times)$ est-il un corps ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui : chacun des quatre éléments non nuls ($1,2,3,4$) possède un symétrique pour $\\times$ dans $\\mathbb{Z}/5\\mathbb{Z}$ (respectivement $1$, $3$, $2$, $4$), donc la condition supplémentaire du corps est satisfaite."
+        correct: true
+      - id: B
+        text: "Non : comme dans $\\mathbb{Z}$, certains éléments non nuls de cet ensemble n'ont aucun symétrique pour la multiplication modulo cinq."
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: >
+          Cette conclusion, vraie pour $\mathbb{Z}$ (chapitre 9) et pour
+          $(\mathbb{Z}/4\mathbb{Z},\times)$ (chapitre 7), ne se transpose pas
+          automatiquement à $\mathbb{Z}/5\mathbb{Z}$ : ici, les calculs
+          donnés montrent que $1,2,3,4$ ont chacun un symétrique. Il faut
+          vérifier CE cas précis, pas recopier la conclusion d'un exemple
+          différent.
+      - id: C
+        text: "Non : $(\\mathbb{Z}/5\\mathbb{Z},+,\\times)$ n'est même pas un anneau, car le nombre $5$ n'est pas premier et la structure s'effondre."
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
+        feedback: >
+          $5$ est bien un nombre premier, et de toute façon la primalité
+          de $n$ ne détermine pas si $(\mathbb{Z}/n\mathbb{Z},+,\times)$
+          est un anneau : TOUT $(\mathbb{Z}/n\mathbb{Z},+,\times)$, quel
+          que soit $n$, est un anneau (même $\mathbb{Z}/4\mathbb{Z}$, où
+          $4$ n'est pas premier, chapitre 7). C'est le fait d'être un CORPS qui
+          dépend de la primalité de $n$.
+      - id: D
+        text: "Oui, mais seulement pour les éléments $1$ et $4$, qui sont chacun leur propre symétrique — les éléments $2$ et $3$, eux, n'ont besoin d'aucun symétrique pour cela."
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          La définition du corps exige un symétrique pour TOUS les
+          éléments non nuls, pas seulement ceux qui sont leur propre
+          symétrique. Et de toute façon $2$ et $3$ ONT bien un symétrique
+          ($2\times3=1$) — ce ne sont pas des exceptions dispensées de la
+          règle.
+    correct_feedback: >
+      Tous les éléments non nuls de $\mathbb{Z}/5\mathbb{Z}$ ($1,2,3,4$)
+      possèdent un symétrique pour $\times$ dans $\mathbb{Z}/5\mathbb{Z}$
+      lui-même : $(\mathbb{Z}/5\mathbb{Z},+,\times)$ est donc un corps —
+      contrairement à $(\mathbb{Z}/4\mathbb{Z},+,\times)$, où $2$ n'a pas
+      de symétrique pour $\times$ (chapitre 7).
+    solution: |
+      On vérifie, pour chaque élément non nul, l'existence d'un symétrique
+      pour $\times$ dans $\mathbb{Z}/5\mathbb{Z}$ :
+      $$
+      1\times1=1, \quad 2\times3=6\equiv1, \quad 3\times2=6\equiv1, \quad
+      4\times4=16\equiv1 \pmod 5
+      $$
+      Chacun des quatre éléments non nuls a bien un symétrique. Comme
+      $(\mathbb{Z}/5\mathbb{Z},+,\times)$ est déjà un anneau avec $\times$
+      commutative, la condition supplémentaire du corps est remplie :
+      $(\mathbb{Z}/5\mathbb{Z},+,\times)$ est un corps.
+
+  - id: SA-21
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, corps]
+    stem: >
+      Quelle affirmation distingue correctement un corps $(E,+,\times)$
+      d'un simple anneau $(E,+,\times)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Dans un corps, $(E,+)$ est un groupe, alors que dans un anneau la loi $+$ n'a besoin d'être qu'une loi interne sur l'ensemble considéré."
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
+        feedback: >
+          Dès la définition de l'anneau (chapitre 7), $(E,+)$ doit DÉJÀ être un
+          groupe commutatif — ce n'est pas une exigence propre au corps. Ce
+          qui distingue le corps, c'est une condition sur $\times$
+          (commutativité et symétrique pour tout élément non nul), pas sur
+          $+$.
+      - id: B
+        text: "Dans un corps, l'élément neutre $0$ de l'addition doit lui aussi posséder un symétrique pour la multiplication, ce qu'un anneau n'exige pas."
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
+        feedback: >
+          Au contraire : $0\times x=0$ pour tout $x$, donc $0$ ne peut
+          JAMAIS avoir de symétrique pour $\times$ (il faudrait
+          $0\times x=1$, impossible). La définition du corps exclut
+          justement $0$ : c'est TOUT ÉLÉMENT NON NUL qui doit avoir un
+          symétrique.
+      - id: C
+        text: "Un corps est un anneau dans lequel les deux lois $+$ et $\\times$ jouent exactement le même rôle, de façon parfaitement symétrique."
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
+        feedback: >
+          Non : même dans un corps, $+$ et $\times$ restent dissymétriques
+          — c'est $0$ (neutre de $+$) qui est justement exclu de l'exigence
+          de symétrique pour $\times$. Les deux lois ne jouent jamais un
+          rôle parfaitement symétrique.
+      - id: D
+        text: "Dans un corps, $\\times$ est commutative ET tout élément non nul possède un symétrique pour $\\times$ ; un anneau n'exige ni l'une ni l'autre de ces deux conditions."
+        correct: true
+    correct_feedback: >
+      La ligne qui sépare l'anneau du corps (synthèse du chapitre 9) : $\times$ doit
+      être commutative, et TOUT élément non nul doit avoir un symétrique
+      pour $\times$ — ce qui suppose, au passage, que $\times$ ait un neutre
+      $1$ (un anneau unitaire, chapitre 8) : sans neutre, « symétrique »
+      n'aurait pas de sens. Rien de plus n'est exigé sur $+$, qui est déjà
+      un groupe commutatif dès la définition de l'anneau.
+    solution: |
+      D'après la synthèse du chapitre 9 : un anneau exige $(E,+)$ groupe
+      commutatif, $\times$ associative et distributive. Un corps ajoute
+      deux conditions supplémentaires sur $\times$ seulement : $\times$
+      commutative, et tout élément non nul inversible pour $\times$ (sur
+      un anneau unitaire — c'est le neutre $1$ qui donne un sens au mot
+      « inversible »). C'est
+      exactement ce qui sépare $(\mathbb{Z},+,\times)$ (anneau) de
+      $(\mathbb{Q},+,\times)$ (corps).
+
+  # ── R7 : pour t'entraîner (application) ─────────────────────────────────
+  - id: SA-22
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, axiomes_groupe, synthese]
+    stem: >
+      On munit $E=\{0,1,2,3,4\}$ de l'addition modulo $5$. Lequel de ces raisonnements vérifie correctement,
+      sans en sauter aucun, que $(E,+)$ est un groupe commutatif ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Loi interne, associativité, élément neutre $0$ : ces trois vérifications suffisent à conclure, la commutativité d'un groupe fini étant de toute façon automatique dès lors que l'ensemble considéré ne compte qu'un nombre fini d'éléments distincts."
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-implique-commutatif
+        also_reveals: [mc.math.structures_algebriques.axiome-oublie]
+        feedback: >
+          La commutativité n'est jamais automatique pour un groupe, fini
+          ou non : c'est une propriété indépendante des quatre axiomes,
+          qui doit se lire sur la symétrie de la table — ce qui n'a pas été
+          fait ici. Il manque aussi la vérification du symétrique pour
+          chaque élément (le quatrième axiome du groupe), sans laquelle on
+          ne peut de toute façon pas conclure à un groupe.
+      - id: B
+        text: "Loi interne (chaque somme réduite modulo $5$ reste dans $E$), associative (héritée de $\\mathbb{Z}$), neutre $0$, chacun des cinq éléments a un symétrique ($0\\to0$, $1\\to4$, $2\\to3$, $3\\to2$, $4\\to1$), et la table est symétrique par rapport à la diagonale : les quatre axiomes du groupe et la commutativité sont tous vérifiés."
+        correct: true
+      - id: C
+        text: "Il suffit de vérifier que $0$ est bien l'élément neutre et que la table est symétrique par rapport à sa diagonale : cela garantit d'un seul coup la structure de groupe et sa commutativité."
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        feedback: >
+          La symétrie de la table donne la commutativité, mais ne dit rien
+          sur la loi interne, l'associativité, ni l'existence des
+          symétriques : ce sont des axiomes séparés, chacun à vérifier
+          indépendamment.
+      - id: D
+        text: "Loi interne, élément neutre $0$, symétrique pour chacun des cinq éléments : ces trois vérifications suffisent, l'associativité de la loi étant automatique dès qu'un neutre a été trouvé."
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        feedback: >
+          L'associativité n'est jamais automatique du fait de l'existence
+          d'un neutre — ce sont deux axiomes indépendants. Ici
+          l'associativité se justifie par héritage depuis $\mathbb{Z}$
+          (comme au chapitre 3), mais elle doit être explicitement mentionnée, pas
+          supposée.
+    correct_feedback: >
+      Vérifier un groupe (et sa commutativité) exige de passer en revue,
+      sans en sauter aucun : loi interne, associativité, neutre, symétrique
+      pour CHAQUE élément, et enfin la symétrie de la table pour la
+      commutativité. $(\mathbb{Z}/5\mathbb{Z},+)$ vérifie tout cela : c'est
+      un groupe commutatif.
+    solution: |
+      1. Loi interne : chaque somme, réduite modulo $5$, reste dans $E$.
+      2. Associative : héritée de l'associativité de $+$ sur $\mathbb{Z}$.
+      3. Neutre : $0$.
+      4. Symétrique pour chaque élément : $0\to0$, $1\to4$, $2\to3$,
+         $3\to2$, $4\to1$.
+
+      Les quatre axiomes du groupe sont vérifiés. La table est de plus
+      symétrique par rapport à sa diagonale : $(\mathbb{Z}/5\mathbb{Z},+)$
+      est un groupe commutatif.
+
+  - id: SA-23
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, neutre, application]
+    stem: >
+      On munit $E=\mathbb{R}\setminus\{1\}$ de la loi $\star$ définie, pour
+      tous $x,y\in E$, par $x\star y = x+y-xy$. Quel est l'élément neutre de
+      $(E,\star)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$1$"
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          $1$ est justement l'élément EXCLU de $E$ (c'est le seul réel sans
+          symétrique pour cette loi) — ce n'est pas le neutre. Teste :
+          $x\star1 = x+1-x=1$, qui ne redonne jamais $x$ (sauf si $x=1$,
+          exclu) : $1$ n'est pas neutre.
+      - id: B
+        text: "Il n'existe pas d'élément neutre pour cette loi."
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          Il existe bien un neutre : en résolvant $x+e-xe=x$ pour tout $x$,
+          on trouve $e(1-x)=0$ pour tout $x$, ce qui impose $e=0$ — et on
+          vérifie que $x\star0=x+0-0=x$. Le neutre existe, c'est $0$.
+      - id: C
+        text: "$0$"
+        correct: true
+      - id: D
+        text: "$-1$"
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          Teste $x\star(-1) = x+(-1)-x\times(-1) = x-1+x=2x-1$, qui n'est
+          égal à $x$ que si $x=-1$ : ce n'est pas vrai pour tout $x$, donc
+          $-1$ n'est pas neutre.
+    correct_feedback: >
+      On cherche $e$ tel que $x\star e=x$ pour tout $x\in E$ :
+      $x+e-xe=x \Rightarrow e(1-x)=0$ pour tout $x$, ce qui impose $e=0$
+      (car $1-x$ n'est pas toujours nul). On vérifie :
+      $x\star0 = x+0-x\times0=x$. Le neutre est $0$.
+    solution: |
+      On résout, pour tout $x\in E$ :
+      $$x\star e = x \iff x+e-xe=x \iff e(1-x)=0$$
+      Comme cette égalité doit tenir pour TOUT $x$ (et $1-x$ n'est pas
+      toujours nul), il faut $e=0$. Vérification :
+      $x\star0=x+0-x\times0=x$. L'élément neutre est $0$.
+
+  - id: SA-24
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, symetrique, application]
+    stem: >
+      Pour la même loi $\star$ sur $E=\mathbb{R}\setminus\{1\}$ (définie par
+      $x\star y=x+y-xy$, de neutre $0$), quel est le symétrique de $3$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\frac{3}{2}$"
+        correct: true
+      - id: B
+        text: "$0$"
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          $0$ est le neutre de $\star$, pas le symétrique de $3$ :
+          $3\star0=3\neq0$. Le symétrique de $3$ est l'élément $x$ tel que
+          $3\star x=0$, ce qui donne $x=\frac{3}{2}$, pas $0$.
+      - id: C
+        text: "$-3$"
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          Teste : $3\star(-3) = 3+(-3)-3\times(-3) = 0+9=9\neq0$ : $-3$ ne
+          convient pas.
+      - id: D
+        text: "$3$"
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          Teste : $3\star3 = 3+3-9=-3\neq0$ : $3$ n'est pas son propre
+          symétrique ici (ce n'était vrai que pour un autre élément dans un
+          exercice précédent — il faut vérifier chaque élément séparément,
+          pas supposer).
+    correct_feedback: >
+      On cherche $x'$ tel que $3\star x'=0$ : $3+x'-3x'=0 \Rightarrow
+      -2x'=-3 \Rightarrow x'=\frac{3}{2}$. Vérification :
+      $3\star\frac{3}{2} = 3+\frac{3}{2}-\frac{9}{2} = \frac{6+3-9}{2}=0$.
+      Le symétrique de $3$ est $\frac{3}{2}$, distinct du neutre $0$.
+    solution: |
+      On résout $3\star x'=0$ :
+      $$3+x'-3x'=0 \iff -2x'=-3 \iff x'=\frac{3}{2}$$
+      Vérification : $3\star\frac{3}{2} = 3+\frac{3}{2}-3\times\frac{3}{2} =
+      3+1{,}5-4{,}5=0$. Le symétrique de $3$ est $\frac{3}{2}$.
+
+# ── Coverage summary (B4 fan-out, SA-7..SA-24 appended) ────────────────────
+# Per rung — target: EXACTLY 3 each:
+#   R0: SA-7, SA-8, SA-9                    → 3
+#   R1: SA-10, SA-11, SA-12                 → 3
+#   R2: SA-1, SA-2, SA-13                   → 3
+#   R3: SA-3, SA-4, SA-14                   → 3
+#   R4: SA-15, SA-16, SA-17                 → 3
+#   R5: SA-5, SA-18, SA-19                  → 3
+#   R6: SA-6, SA-20, SA-21                  → 3
+#   R7: SA-22, SA-23, SA-24                 → 3
+# Per misconception (primary tag; also_reveals noted separately) — floor ≥3:
+#   neutre-vs-symetrique         : SA-1B, SA-2B, SA-8A, SA-24B            = 4  (+1 also_reveals: SA-3C)
+#   axiome-oublie                : SA-3B, SA-3C, SA-4B, SA-4C, SA-22C, SA-22D = 6  (+1 also_reveals: SA-22A)
+#   groupe-anneau                : SA-5B, SA-5D, SA-6B, SA-18D, SA-19A, SA-19D, SA-21A, SA-21B = 8
+#   cloture-non-verifiee (new)   : SA-7A, SA-8B, SA-10A, SA-11B, SA-12A, SA-18C = 6
+#   assoc-commut-confusion (new) : SA-9A, SA-13A, SA-15B                  = 3
+#   generalisation-hative (new)  : SA-13B, SA-15D, SA-16C, SA-17A, SA-20B = 5
+#   groupe-implique-commutatif (new): SA-15A, SA-17C, SA-22A              = 3
+# All 7 misconceptions clear the ≥3 floor.
+# ⚠ BLOC PÉRIMÉ (constaté revue vague 1, 2026-09-12) — NE PAS S'Y FIER.
+#   Deux raisons, indépendantes : (1) il compte PAR TAG PRIMAIRE, méthode
+#   abandonnée ; le `coverage_summary` publié en pied de fichier compte au
+#   niveau ITEM (un item compte dès qu'un de ses distracteurs porte le
+#   modèle), et c'est lui que la machine lit. (2) Il est antérieur à
+#   SA-25/SA-26 et à la HUITIÈME misconception
+#   (`loi-modulaire-mal-calculee`) : « 7 misconceptions » et « no items
+#   added » sont tous deux faux aujourd'hui. Les chiffres justes, recomptés
+#   depuis les tags bruts par les deux critiques : R1 4, R2 4, total 26,
+#   neutre 9, axiome 3, groupe-anneau 6, clôture 8, assoc-commut 6,
+#   généralisation 7, groupe-implique-commutatif 3, loi-modulaire 3.
+#
+# Re-audit (summit-conversion pass, 2026-07-14) — SA-1..SA-24 re-checked by
+# hand against the seven-misconception inventory above : every distractor
+# carries a real primary tag and all seven models still clear the ≥3 floor
+# (no under-covered model). Floor already met before this pass ; no items
+# added, no counts edited. The in-lesson checkpoints (checkpoints.yaml) surface
+# clones inline and are NOT counted against this end-bank floor.
+
+  # ── loi-modulaire-mal-calculee ─────────────────────────────────────────
+  # Ajoutés le 2026-09-05 : cette famille siégeait à UN seul item du banc,
+  # donc très en dessous du plancher de 3. Deux énoncés distincts — calculer
+  # dans la loi (SA-25), puis chercher un symétrique qui oblige à y revenir
+  # (SA-26) — plutôt que deux clones du même geste.
+  - id: SA-25
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, loi_modulaire]
+    stem: >
+      Sur le cadran d'une horloge, on note $E=\{0,1,\dots,11\}$ l'ensemble des
+      heures affichées et l'on définit la loi $\oplus$ par : « ajouter les deux
+      durées, puis lire l'heure que l'aiguille indique ». Que vaut
+      $9 \oplus 7$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$16$ : la somme se calcule comme d'habitude, et l'horloge affiche $16$"
+        correct: false
+        misconception: mc.math.structures_algebriques.loi-modulaire-mal-calculee
+        feedback: >
+          $16$ n'est pas dans $E$ : aucune horloge à douze heures n'affiche
+          $16$. La loi $\oplus$ n'est pas l'addition usuelle — elle est
+          l'addition SUIVIE du retour dans l'ensemble. Sans cette seconde
+          étape, le résultat sort de $E$ et la loi cesse d'être interne.
+      - id: B
+        text: "$4$ : on calcule $9+7=16$, puis $16 = 12 + 4$, donc l'aiguille indique $4$"
+        correct: true
+      - id: C
+        text: "$-4$ : on retranche la somme au tour complet, $12 - 16 = -4$"
+        correct: false
+        misconception: mc.math.structures_algebriques.loi-modulaire-mal-calculee
+        feedback: >
+          Le retour dans $E$ se fait en retranchant des tours complets AU
+          résultat, pas l'inverse : $16 - 12 = 4$, et non $12 - 16$. Un
+          nombre négatif n'est pas davantage une heure affichable que $16$ :
+          les deux erreurs sont la même, au signe près.
+      - id: D
+        text: >-
+          Aucune valeur : la loi n'est pas interne sur $E$, puisque $9+7=16$
+          n'appartient pas à $E$
+        correct: false
+        misconception: mc.math.structures_algebriques.loi-modulaire-mal-calculee
+        feedback: >
+          C'est confondre une ÉTAPE du calcul avec son résultat. La loi
+          $\oplus$ comprend le retour dans $E$ ; son résultat est $4$, qui
+          appartient bien à $E$. La loi est donc parfaitement interne — c'est
+          même exactement ce que le passage au reste garantit.
+    correct_feedback: >
+      $9 \oplus 7 = 4$. La loi de l'horloge, c'est l'addition PUIS le retour
+      dans $E$ : $9+7 = 16$, et $16 - 12 = 4$. Cette seconde étape n'est pas
+      un détail de présentation — c'est elle qui fait de $\oplus$ une loi
+      interne sur $E$.
+    solution: |
+      $$9 + 7 = 16 = 1\times 12 + 4$$
+      Le reste de la division euclidienne de $16$ par $12$ vaut $4$, donc
+      $$9 \oplus 7 = 4$$
+      Autrement dit $16 \equiv 4 \pmod{12}$. Le contrôle est immédiat : le
+      résultat d'une loi interne sur $E$ appartient à $E$. Tout résultat hors
+      de $\{0,1,\dots,11\}$ signale qu'on a oublié de revenir dans l'ensemble.
+
+  - id: SA-26
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, symetrique, loi_modulaire]
+    stem: >
+      Dans le groupe $(\mathbb{Z}/7\mathbb{Z}, +)$, dont les éléments sont les
+      classes $\{0,1,2,3,4,5,6\}$ et dont le neutre est $0$, quel est le
+      symétrique de $5$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-5$, l'opposé de $5$"
+        correct: false
+        misconception: mc.math.structures_algebriques.loi-modulaire-mal-calculee
+        feedback: >
+          $-5$ n'est pas un élément de $\mathbb{Z}/7\mathbb{Z}$ : les seuls
+          éléments sont $0$ à $6$. L'opposé usuel n'est qu'une étape — il faut
+          le ramener dans l'ensemble : $-5 + 7 = 2$. C'est la même exigence que
+          pour l'addition : tout calcul se termine par un retour dans $E$.
+      - id: B
+        text: "$0$, puisque $0$ est le neutre du groupe"
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: >
+          Le neutre et le symétrique sont deux rôles distincts. Le neutre $0$
+          est unique et ne change rien à personne ; le symétrique de $5$ est
+          l'élément qui, AJOUTÉ à $5$, redonne le neutre. Or $5 + 0 = 5 \neq 0$.
+      - id: C
+        text: "$2$, car $5 + 2 = 7 \\equiv 0 \\pmod 7$"
+        correct: true
+      - id: D
+        text: "$1$, car $5 + 1 = 6$ et $6$ a pour reste $0$ dans la division par $6$"
+        correct: false
+        misconception: mc.math.structures_algebriques.loi-modulaire-mal-calculee
+        feedback: >
+          Le module est $7$, pas $6$ : c'est $\mathbb{Z}/7\mathbb{Z}$. Réduire
+          modulo un autre entier donne un résultat qui n'a plus rien à voir avec
+          la loi étudiée. Ici $6 = 0\times 7 + 6$, donc $6 \equiv 6$, pas $0$.
+    correct_feedback: >
+      Le symétrique de $5$ est $2$ : $5 + 2 = 7 \equiv 0 \pmod 7$, et le neutre
+      est bien $0$. Le réflexe qui l'obtient sans tâtonner : le symétrique de
+      $x$ dans $(\mathbb{Z}/n\mathbb{Z},+)$ est $n - x$, ramené dans
+      l'ensemble.
+    solution: |
+      On cherche $x'$ tel que $5 + x' \equiv 0 \pmod 7$, avec
+      $x' \in \{0,\dots,6\}$ :
+      $$5 + x' = 7 \quad\Longrightarrow\quad x' = 2$$
+      Vérification dans les deux sens : $5 + 2 = 7 \equiv 0$ et
+      $2 + 5 = 7 \equiv 0$. Le symétrique de $5$ est donc $2$.
+      Règle générale : dans $(\mathbb{Z}/n\mathbb{Z},+)$, le symétrique de $x$
+      non nul est $n - x$. Pour $x = 0$, le symétrique est $0$ lui-même.
+
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.math.structures_algebriques.loi-modulaire-mal-calculee: { count: 3, items: [SA-7, SA-25, SA-26] }
+    mc.math.structures_algebriques.neutre-vs-symetrique:       { count: 9, items: [SA-1, SA-2, SA-8, SA-12, SA-14, SA-20, SA-23, SA-24, SA-26] }
+    mc.math.structures_algebriques.axiome-oublie:              { count: 3, items: [SA-3, SA-4, SA-22] }
+    mc.math.structures_algebriques.groupe-anneau:              { count: 6, items: [SA-5, SA-6, SA-18, SA-19, SA-20, SA-21] }
+    mc.math.structures_algebriques.cloture-non-verifiee:       { count: 8, items: [SA-3, SA-6, SA-7, SA-8, SA-10, SA-11, SA-12, SA-18] }
+    mc.math.structures_algebriques.assoc-commut-confusion:     { count: 6, items: [SA-9, SA-11, SA-13, SA-15, SA-16, SA-17] }
+    mc.math.structures_algebriques.generalisation-hative:      { count: 7, items: [SA-13, SA-14, SA-15, SA-16, SA-17, SA-18, SA-20] }
+    mc.math.structures_algebriques.groupe-implique-commutatif: { count: 3, items: [SA-15, SA-17, SA-22] }
+  total_items: 26
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 4
+    R2: 4
+    R3: 3
+    R4: 3
+    R5: 3
+    R6: 3
+    R7: 3
+  honest_state: >-
+    Les huit misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Trois y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

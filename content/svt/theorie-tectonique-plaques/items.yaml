@@ -1,0 +1,608 @@
+notion: theorie-tectonique-plaques
+skill_code: svt_tectonique_plaques
+misconceptions:
+  # Inventaire écrit le 2026-09-05, tiré des feedbacks déjà présents.
+  - id: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+    label: "« Dérive des continents et tectonique des plaques : même théorie, ou ordre inversé, ou preuves réfutées »"
+    description: >
+      L'élève confond l'intuition de Wegener et la théorie complète, inverse
+      leur ordre chronologique, ou croit que le rejet de 1912 a porté sur les
+      PREUVES (fossiles, concordance des côtes) plutôt que sur le mécanisme.
+    contradicts_principle: >
+      La dérive des continents (Wegener, 1912) est l'intuition initiale ; la
+      tectonique des plaques (1960-1970) est la théorie qui lui a donné son
+      mécanisme — expansion océanique, convection mantellique. Les quatre
+      arguments de Wegener n'ont JAMAIS été invalidés : ils restent cités
+      aujourd'hui. Ce qui manquait était un moteur physiquement plausible, et
+      c'est ce manque, non une preuve fausse, qui a valu cinquante ans de rejet.
+
+  - id: mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers
+    label: "« On inverse la cause et la conséquence, ou on lit la mauvaise grandeur »"
+    description: >
+      Devant une preuve, l'élève renverse le raisonnement : la vitesse de dépôt
+      expliquerait l'âge des sédiments, les séismes causeraient la convection,
+      le GPS mesurerait la convection elle-même, les bandes magnétiques
+      enregistreraient une intensité et non une orientation.
+    contradicts_principle: >
+      Les bandes enregistrent l'ORIENTATION du champ au moment de la
+      solidification, pas son intensité. L'âge croissant vient de la roche
+      volcanique elle-même, plus jeune près de la dorsale. Le GPS mesure le
+      DÉPLACEMENT de points en surface, jamais la convection, qui se produit en
+      profondeur. Et c'est la convection qui entraîne les plaques, dont le
+      mouvement produit ensuite séismes et volcanisme aux frontières.
+
+  - id: mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus
+    label: "« Les continents glissent sur un plancher fixe, ou les plaques flottent sur l'eau — et croûte = lithosphère »"
+    description: >
+      L'élève se représente mal ce qui bouge et ce qui porte : un continent
+      glissant sur un plancher océanique immobile, des plaques flottant sur
+      l'eau des océans, des plaques continentales soudées à un manteau rigide,
+      voire suspendues au-dessus du vide. Et il confond les deux découpages du
+      globe, croûte et lithosphère, ou inverse leur inclusion.
+    contradicts_principle: >
+      Deux limites, deux critères : croûte/manteau est une limite de
+      COMPOSITION chimique, lithosphère/asthénosphère une limite de
+      COMPORTEMENT mécanique. La LITHOSPHÈRE inclut la croûte plus la partie
+      rigide du manteau supérieur — elle est plus épaisse que la croûte, jamais
+      l'inverse. Elle repose sur l'asthénosphère, ductile mais SOLIDE, qui flue
+      sur des millions d'années. C'est le plancher océanique lui-même qui se
+      crée et se déplace, en emportant tout ce qu'il porte.
+
+  - id: mc.svt.svt_tectonique_plaques.repartition-uniforme-des-seismes
+    label: "« Séismes et volcans se répartissent uniformément sur le globe »"
+    description: >
+      L'élève lit la sismicité comme une propriété globale de la Terre plutôt
+      que comme le tracé de lignes précises.
+    contradicts_principle: >
+      Séismes et volcans se CONCENTRENT le long de lignes fines — les frontières
+      de plaques. C'est cette concentration, et non une répartition uniforme,
+      qui dessine les plaques et fait la force de la preuve.
+
+items:
+  - id: TTP-1
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: svt_tectonique_plaques
+    tags: [derive_continents, tectonique_plaques, histoire_des_sciences]
+    stem: >
+      Wegener, en 1912, a proposé la dérive des continents ; aujourd'hui, on
+      enseigne la théorie de la tectonique des plaques. Quelle affirmation
+      décrit correctement la relation entre ces deux idées ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La dérive des continents est l'intuition initiale de Wegener — l'observation que les continents ont bougé ; la tectonique des plaques est la théorie moderne complète, qui ajoute le mécanisme qui lui manquait."
+        correct: true
+      - id: B
+        text: "Ce sont deux noms différents pour exactement la même théorie, proposée intégralement par Wegener dès 1912 et simplement rebaptisée par les manuels au cours du XXe siècle."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+        feedback: >
+          C'est confondre l'intuition initiale et la théorie complète.
+          L'hypothèse de Wegener a justement été rejetée pendant près de
+          cinquante ans parce qu'il lui manquait un mécanisme crédible ;
+          ce mécanisme (expansion océanique, convection mantellique) n'a été
+          établi que des décennies plus tard. Wegener n'a pas proposé la
+          tectonique des plaques telle qu'on la connaît aujourd'hui.
+      - id: C
+        text: "La tectonique des plaques a précédé la dérive des continents : cette dernière n'est qu'une simplification pédagogique moderne, forgée après coup pour rendre la théorie accessible aux élèves."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+        feedback: >
+          C'est l'ordre chronologique inverse. La dérive des continents de
+          Wegener (1912) est historiquement antérieure ; la tectonique des
+          plaques (années 1960-1970) est venue après, en s'appuyant sur des
+          découvertes que Wegener n'avait pas (expansion océanique,
+          anomalies magnétiques).
+      - id: D
+        text: "La dérive des continents est fausse et a été entièrement remplacée par la tectonique des plaques, qui repose sur des observations nouvelles et n'a aucun rapport avec les arguments de Wegener.
+        Les arguments paléontologiques de 1912 seraient donc aujourd'hui sans valeur."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+        feedback: >
+          Les quatre arguments de Wegener (concordance des côtes, fossiles,
+          structures géologiques, traces climatiques) n'ont jamais été
+          invalidés : ils restent aujourd'hui cités comme preuves de
+          l'ancienne Pangée. Ce qui manquait n'était pas la validité des
+          preuves, mais le mécanisme physique. La tectonique des plaques
+          intègre ces arguments, elle ne les jette pas.
+    correct_feedback: >
+      La dérive des continents est l'observation initiale et globalement
+      juste de Wegener, restée incomplète faute de mécanisme ; la tectonique
+      des plaques est la théorie moderne qui reprend cette observation et lui
+      ajoute enfin un moteur physique plausible, la convection mantellique.
+    solution: |
+      **Ce qui ne change pas entre les deux :** les quatre arguments de
+      Wegener (côtes, fossiles, géologie, paléoclimat) restent valides et
+      intégrés tels quels dans la théorie moderne.
+
+      **Ce qui change :** la tectonique des plaques ajoute ce qui manquait à
+      Wegener — le mécanisme de l'expansion océanique (renouvellement du
+      plancher, anomalies magnétiques symétriques, âge croissant des
+      sédiments) et le moteur de la convection mantellique, qui expliquent
+      enfin COMMENT et POURQUOI les continents se déplacent.
+
+  - id: TTP-2
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: svt_tectonique_plaques
+    tags: [rejet_hypothese, moteur, histoire_des_sciences]
+    stem: >
+      Au début du XXe siècle, la communauté scientifique a rejeté l'hypothèse
+      de Wegener malgré des arguments (concordance des côtes, fossiles,
+      structures géologiques, traces climatiques) déjà convaincants sur le
+      papier. Pourquoi ce rejet ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce qu'aucun mécanisme physique plausible n'expliquait comment des continents entiers pourraient se déplacer à travers un plancher océanique rigide ; les forces proposées par Wegener étaient bien trop faibles."
+        correct: true
+      - id: B
+        text: "Parce que les fossiles identiques trouvés sur des continents séparés se sont révélés être, après vérification, des espèces différentes que seule une ressemblance superficielle rapprochait.
+        Leur répartition actuelle s'expliquerait donc sans aucun déplacement des continents."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+        feedback: >
+          C'est l'inverse : c'est justement parce qu'il s'agissait de la MÊME
+          espèce (Mesosaurus, Glossopteris) sur des continents séparés par un
+          océan infranchissable que l'argument paléontologique restait fort.
+          Le problème n'a jamais été la qualité des preuves, mais l'absence
+          de mécanisme.
+      - id: C
+        text: "Parce que la concordance des côtes entre l'Afrique et l'Amérique du Sud a été démontrée comme une simple coïncidence géométrique, sans plus de signification qu'un hasard de tracé."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+        feedback: >
+          La concordance des côtes n'a jamais été invalidée : elle reste
+          citée aujourd'hui comme une preuve valide. Ce n'est pas la preuve
+          qui a été réfutée, c'est le mécanisme proposé par Wegener pour
+          l'expliquer qui s'est révélé physiquement impossible.
+      - id: D
+        text: "Parce qu'à cette époque on ignorait encore l'existence des fossiles retrouvés sur plusieurs continents séparés, et l'argument le plus fort de Wegener n'était donc pas disponible."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+        feedback: >
+          Ces fossiles étaient déjà connus et cités par Wegener lui-même
+          parmi ses arguments en 1912. Le rejet ne vient pas d'un manque de
+          connaissance des preuves, mais du calcul (notamment celui du
+          géophysicien Jeffreys) montrant que les forces invoquées par
+          Wegener étaient bien trop faibles.
+    correct_feedback: >
+      Les preuves de Wegener n'ont jamais été réfutées. Ce qui a manqué,
+      c'est un mécanisme physique crédible : les forces qu'il proposait
+      (marées, force centrifuge) étaient des millions de fois trop faibles
+      pour déplacer des continents à travers un plancher océanique rigide.
+    solution: |
+      **Ce qui n'a pas été remis en cause :** les quatre arguments de
+      Wegener (chapitre 2) sont restés valides.
+
+      **Ce qui a coulé l'hypothèse :** l'absence de moteur physiquement
+      plausible. Wegener imaginait les continents « labourant » le plancher
+      océanique, poussés par les marées et la force centrifuge terrestre —
+      des forces calculées, par des physiciens comme Jeffreys, comme bien
+      trop faibles pour ce travail. Une observation juste, un mécanisme
+      intenable : voilà pourquoi l'hypothèse a été mise de côté pendant
+      près de cinquante ans, jusqu'à la découverte de l'expansion océanique
+      (chapitre 4).
+
+  - id: TTP-3
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: svt_tectonique_plaques
+    tags: [expansion_oceanique, anomalies_magnetiques, age_sediments]
+    stem: >
+      De part et d'autre d'une dorsale océanique, on observe des bandes
+      d'anomalies magnétiques disposées en un motif symétrique par rapport à
+      l'axe de la dorsale, et l'âge des sédiments les plus anciens augmente
+      régulièrement à mesure qu'on s'éloigne de cet axe. Que démontre le
+      mieux cette double observation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que le plancher océanique se forme en continu au niveau de la dorsale et s'écarte ensuite symétriquement de part et d'autre, chaque flanc emportant l'enregistrement des inversions du champ magnétique."
+        correct: true
+      - id: B
+        text: "Que le champ magnétique terrestre est plus intense près des dorsales qu'ailleurs : c'est cette variation d'intensité avec la distance à l'axe qui dessine les bandes observées de part et d'autre."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers
+        feedback: >
+          Les bandes n'enregistrent pas une variation d'INTENSITÉ du champ
+          magnétique, mais son ORIENTATION (nord ou sud) au moment où la
+          roche s'est solidifiée. La symétrie vient du fait que chaque flanc
+          enregistre la même succession d'inversions, pas d'une intensité
+          plus forte près de la dorsale.
+      - id: C
+        text: "Que les sédiments océaniques se déposent plus vite près de la dorsale qu'au large, ce qui explique que leur âge croisse régulièrement à mesure que l'on s'éloigne de l'axe de la dorsale."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers
+        feedback: >
+          Cela inverse la cause et la conséquence. L'âge croissant ne vient
+          pas d'une vitesse de dépôt différente, mais du fait que la roche
+          volcanique elle-même, sous les sédiments, est plus jeune près de
+          la dorsale et plus ancienne au large : elle a eu plus ou moins de
+          temps pour accumuler des sédiments par-dessus, selon son propre
+          âge.
+      - id: D
+        text: "Que les continents dérivent indépendamment du plancher océanique : celui-ci resterait fixe pendant que les continents se déplacent au-dessus de lui, y imprimant les bandes observées."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus
+        feedback: >
+          C'est exactement l'inverse de ce que montre l'expansion océanique :
+          c'est le plancher océanique lui-même qui se crée et se déplace, en
+          emportant avec lui tout ce qu'il porte, continents compris. Ce
+          n'est pas un continent qui glisse seul sur un plancher fixe — c'est
+          l'idée du mécanisme de Wegener (chapitre 3), qui s'est révélée intenable.
+    correct_feedback: >
+      La symétrie des bandes magnétiques et l'âge croissant des sédiments
+      avec la distance à l'axe sont deux preuves indépendantes du même
+      phénomène : le plancher océanique se crée en continu à la dorsale et
+      s'écarte ensuite dans les deux sens, comme un tapis roulant.
+    solution: |
+      **Symétrie magnétique :** chaque flanc de la dorsale enregistre, au
+      moment de sa formation, l'orientation du champ magnétique terrestre.
+      Un plancher qui se crée à l'axe et s'écarte également des deux côtés
+      doit produire la même séquence d'inversions, en miroir — c'est ce
+      qu'on observe.
+
+      **Âge croissant des sédiments :** la roche près de l'axe est jeune (peu
+      de temps pour accumuler des sédiments), la roche loin de l'axe est
+      ancienne (beaucoup de temps accumulé). Ce gradient est la signature
+      directe d'une création continue à l'axe, suivie d'un écartement.
+
+  - id: TTP-4
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: svt_tectonique_plaques
+    tags: [lithosphere, croute, asthenosphere]
+    stem: >
+      Quelle affirmation décrit correctement la différence entre la croûte
+      et la lithosphère ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La croûte est définie par sa composition chimique (continentale ou océanique) ; la lithosphère est une couche mécanique, plus épaisse et rigide, qui inclut la croûte ET le sommet froid du manteau."
+        correct: true
+      - id: B
+        text: "Croûte et lithosphère désignent exactement la même couche : ce sont deux noms interchangeables pour la même enveloppe rigide du globe, l'un employé par les chimistes, l'autre par les mécaniciens."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus
+        feedback: >
+          Ce sont deux limites différentes, définies par deux critères
+          différents : la limite croûte/manteau est une limite de
+          COMPOSITION chimique ; la limite lithosphère/asthénosphère est une
+          limite de COMPORTEMENT mécanique (rigide contre ductile), située
+          plus bas, à l'intérieur même du manteau. Une plaque tectonique est
+          un morceau de lithosphère, pas seulement de croûte.
+      - id: C
+        text: "La lithosphère est une fine pellicule située à la surface de la croûte, plus mince qu'elle : elle correspond à la partie superficielle des roches, altérée par le contact avec l'air et l'eau."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus
+        feedback: >
+          C'est l'inverse : la lithosphère est plus ÉPAISSE que la croûte,
+          puisqu'elle inclut la croûte plus une partie rigide du manteau
+          située juste en dessous. Ce n'est pas une pellicule superficielle
+          plus fine que la croûte.
+      - id: D
+        text: "La croûte inclut la lithosphère et une partie du manteau ; la lithosphère n'est qu'une sous-partie de la croûte, définie par sa seule composition chimique et non par ses propriétés mécaniques."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus
+        feedback: >
+          La relation d'inclusion est inversée : c'est la LITHOSPHÈRE qui
+          inclut la croûte (plus la partie rigide du manteau supérieur), pas
+          l'inverse. La croûte est une sous-partie de la lithosphère, pas le
+          contraire.
+    correct_feedback: >
+      La croûte (limite de composition chimique) et la lithosphère (limite de
+      comportement mécanique, rigide contre ductile) ne se superposent pas :
+      la lithosphère est plus épaisse, elle inclut la croûte et le sommet
+      rigide du manteau. C'est un morceau de lithosphère, pas de croûte
+      seule, qui constitue une plaque tectonique.
+    solution: |
+      **Croûte :** définie par la composition chimique (granite continental,
+      basalte océanique) — la couche la plus superficielle.
+
+      **Lithosphère :** définie par le comportement mécanique (rigide,
+      cassante) — elle inclut la croûte ET la partie supérieure, froide et
+      rigide, du manteau.
+
+      **Asthénosphère :** sous la lithosphère, même roche mantellique mais
+      plus chaude, donc ductile (capable de fluer très lentement sans être
+      liquide).
+
+      Une plaque tectonique est un bloc de lithosphère ; elle ne s'arrête pas
+      à la limite croûte/manteau, elle se prolonge dans le manteau supérieur
+      rigide.
+
+  - id: TTP-5
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: svt_tectonique_plaques
+    tags: [asthenosphere, plaques_flottantes, ductile]
+    stem: >
+      Une élève affirme : « les plaques tectoniques flottent sur les océans,
+      comme des radeaux sur l'eau. » Qu'est-ce qui ne va pas dans cette
+      affirmation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les plaques reposent sur l'asthénosphère, une couche du manteau ductile mais SOLIDE : elle flue très lentement, sur des millions d'années, sans jamais être liquide ; l'eau des océans n'a aucun rôle porteur."
+        correct: true
+      - id: B
+        text: "C'est correct : les plaques flottent bel et bien sur l'eau des océans, et c'est cette couche liquide qui leur permet de se déplacer librement à la surface du globe."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus
+        feedback: >
+          C'est confondre l'eau des océans (qui n'a aucun rôle mécanique de
+          soutien, elle repose simplement dans les creux du relief rigide)
+          avec l'asthénosphère ductile du manteau, qui se trouve sous la
+          lithosphère. Une plaque entièrement continentale, sans aucun océan
+          à sa surface, repose exactement de la même façon sur
+          l'asthénosphère et se déplace tout autant.
+      - id: C
+        text: "C'est correct, mais uniquement pour les plaques entièrement océaniques ; les plaques continentales, elles, sont fixées directement au manteau rigide et ne peuvent pas se déplacer de la même façon."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus
+        feedback: >
+          Toutes les plaques, qu'elles portent un océan, un continent, ou les
+          deux à leur surface, reposent de la même manière sur
+          l'asthénosphère ductile en profondeur. Il n'existe pas de plaque
+          continentale « fixée » directement à un manteau rigide sans
+          intermédiaire ductile.
+      - id: D
+        text: "C'est faux : les plaques ne reposent sur rien du tout, elles sont suspendues au-dessus du vide qui occupe le centre de la Terre et s'y déplacent sans rencontrer de résistance."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus
+        feedback: >
+          Les plaques (blocs de lithosphère rigide) reposent bel et bien sur
+          une couche matérielle, l'asthénosphère ductile du manteau — elles
+          ne flottent pas dans le vide. L'erreur de l'affirmation initiale
+          n'est pas d'imaginer un support, mais de confondre ce support (une
+          roche ductile) avec de l'eau liquide.
+    correct_feedback: >
+      Les plaques ne flottent pas sur l'eau des océans : elles reposent sur
+      l'asthénosphère, une roche mantellique ductile mais solide, capable de
+      fluer très lentement. L'eau des océans n'a aucun rôle de soutien
+      mécanique.
+    solution: |
+      **L'erreur à corriger :** confondre l'eau des océans (sans rôle
+      mécanique) avec l'asthénosphère (le vrai support ductile des plaques).
+
+      **Ce qui est vrai :** l'asthénosphère est une roche du manteau, plus
+      chaude que la lithosphère, capable de se déformer très lentement sans
+      être liquide. C'est sur elle, et non sur l'eau, que reposent toutes
+      les plaques — qu'elles portent un océan, un continent, ou les deux.
+
+  - id: TTP-6
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: svt_tectonique_plaques
+    tags: [preuves_modernes, seismes_volcans, gps, convection]
+    stem: >
+      La répartition mondiale des séismes et des volcans, ainsi que les
+      mesures GPS actuelles, sont considérées comme des preuves modernes de
+      la tectonique des plaques. Pourquoi ces deux types d'observations
+      sont-elles si convaincantes ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce qu'elles montrent, en temps réel et indépendamment des reconstitutions du passé, que les frontières de plaques sont des zones de déformation active aujourd'hui même : séismes et volcans alignés, déplacements mesurés au GPS."
+        correct: true
+      - id: B
+        text: "Parce que les séismes et les volcans se répartissent uniformément sur toute la surface du globe, ce qui confirme que la Terre entière est également active et se déforme partout de la même manière.
+        Un séisme serait donc aussi probable au centre d'un continent qu'à sa bordure."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.repartition-uniforme-des-seismes
+        feedback: >
+          C'est l'inverse de ce qu'on observe : séismes et volcans se
+          concentrent le long de lignes fines et précises (les frontières de
+          plaques), pas de manière uniforme sur tout le globe. C'est
+          justement cette concentration, et non une répartition uniforme,
+          qui constitue la preuve.
+      - id: C
+        text: "Parce que le GPS mesure directement la vitesse de la convection mantellique à la surface du globe, donnant ainsi accès au moteur même du déplacement des plaques et non à ses seuls effets."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers
+        feedback: >
+          Le GPS mesure le déplacement de points à la surface des plaques,
+          pas la convection elle-même, qui se produit en profondeur dans le
+          manteau et n'est pas directement accessible à une mesure de
+          position en surface. Le déplacement mesuré est la CONSÉQUENCE de
+          la convection, pas la convection elle-même.
+      - id: D
+        text: "Parce que les séismes et les volcans sont la cause de la convection mantellique, dont le GPS permet ensuite de mesurer les effets à la surface des continents et des planchers océaniques."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers
+        feedback: >
+          La causalité est inversée : c'est la convection mantellique (chapitre 8)
+          qui entraîne le mouvement des plaques, et ce mouvement produit, à
+          leurs frontières, séismes et volcanisme. Les séismes et les
+          volcans sont une conséquence en surface, pas la cause du moteur
+          profond.
+    correct_feedback: >
+      Ces observations sont convaincantes parce qu'elles montrent la
+      tectonique des plaques en train de se produire maintenant, et pas
+      seulement dans le passé géologique : concentration précise des
+      séismes et volcans sur les frontières de plaques, déplacements
+      directement mesurés par GPS, à des vitesses cohérentes avec celles
+      déduites de l'âge des roches océaniques (chapitre 4).
+    solution: |
+      **Séismes et volcans :** concentrés le long de lignes fines qui
+      dessinent exactement les frontières de plaques (chapitre 6) — une répartition
+      qui n'aurait aucune raison d'exister si les plaques n'étaient pas des
+      blocs rigides en mouvement relatif.
+
+      **GPS :** mesure directe, année après année, du déplacement de points à
+      la surface de différentes plaques — à des vitesses cohérentes avec
+      celles déduites indirectement de l'âge du plancher océanique (chapitre 4).
+
+      **Ce que ça prouve ensemble :** la tectonique des plaques n'est pas
+      seulement une reconstitution du passé ; c'est un phénomène mesurable,
+      actif aujourd'hui.
+
+  # ── DEUX ITEMS AJOUTÉS LE 2026-09-05 ───────────────────────────────────────
+  # Motif : trois des quatre erreurs déclarées étaient sous le plancher de 3
+  # items du banc, donc inévaluables. Périmètre : lesson.md, R1 à R8.
+  - id: TTP-7
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: svt_tectonique_plaques
+    tags: [seismes_volcans, frontieres_de_plaques, preuves_modernes]
+    stem: >
+      Sur une carte mondiale des épicentres de séismes, les points ne
+      couvrent pas la surface du globe : ils dessinent des lignes fines et
+      continues, longues de milliers de kilomètres. Que vaut cette
+      observation comme preuve ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle dessine directement les frontières de plaques : c'est là que deux plaques rigides se rencontrent et libèrent des contraintes, l'intérieur des plaques restant comparativement calme."
+        correct: true
+      - id: B
+        text: "Elle montre que l'activité sismique se répartit de façon homogène sur toute la surface du globe, les lignes observées ne traduisant que la densité inégale des stations de mesure selon les régions."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.repartition-uniforme-des-seismes
+        feedback: >
+          La concentration est réelle, pas un artefact d'observation : elle se
+          retrouve à toutes les échelles et sur toutes les époques
+          enregistrées. Et c'est justement cette CONCENTRATION, non une
+          répartition uniforme, qui dessine les plaques.
+      - id: C
+        text: "Elle prouve que les séismes sont la cause du mouvement des plaques : c'est la libération répétée d'énergie le long de ces lignes qui met peu à peu les plaques en mouvement les unes par rapport aux autres."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers
+        feedback: >
+          La causalité est inversée. C'est la convection mantellique qui
+          entraîne les plaques ; leur mouvement produit ensuite, à leurs
+          frontières, séismes et volcanisme. Les séismes sont une conséquence
+          en surface, jamais le moteur.
+      - id: D
+        text: "Elle ne prouve rien de plus que la dérive des continents de Wegener, qui avait déjà décrit ces alignements en 1912 et en avait fait le principal de ses quatre arguments en faveur de sa théorie."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+        feedback: >
+          Les quatre arguments de Wegener sont la concordance des côtes, les
+          fossiles, les structures géologiques et les traces climatiques — pas
+          la sismicité mondiale, dont les relevés systématiques sont bien
+          postérieurs et appartiennent aux preuves MODERNES.
+    correct_feedback: >
+      Séismes et volcans se concentrent le long de lignes fines : les
+      frontières de plaques. C'est cette concentration, observable en temps
+      réel et indépendamment de toute reconstitution du passé, qui fait la
+      force de la preuve.
+    solution: |
+      **Ce que l'observation montre.** Une répartition très inégale : des
+      lignes actives, de vastes intérieurs calmes.
+
+      **Ce qu'on en déduit.** Que la lithosphère est découpée en morceaux
+      rigides — les plaques — dont les bords seuls sont le siège de
+      contraintes libérées brutalement.
+
+      **Le sens de la causalité.** Convection mantellique → mouvement des
+      plaques → séismes et volcanisme aux frontières. Jamais l'inverse.
+
+  - id: TTP-8
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: svt_tectonique_plaques
+    tags: [gps, convection, preuves_modernes, moteur]
+    stem: >
+      Des mesures GPS montrent que l'Amérique du Sud et l'Afrique s'écartent
+      d'environ $2\ \text{cm}$ par an. Que mesure-t-on exactement, et que
+      peut-on en conclure sur le moteur du mouvement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "On mesure le déplacement de points situés à la surface des plaques ; le moteur, lui, reste en profondeur et n'est pas directement accessible à une mesure de position."
+        correct: true
+      - id: B
+        text: "On mesure directement la vitesse de la convection mantellique, le GPS donnant accès au mouvement des cellules de convection elles-mêmes à travers celui des points de surface."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers
+        feedback: >
+          Le GPS ne mesure que des POSITIONS en surface. La convection se
+          produit dans le manteau, en profondeur : on l'infère, on ne la relève
+          pas. Confondre les deux, c'est prendre l'effet mesuré pour la cause
+          supposée.
+      - id: C
+        text: "On mesure une dérive qui se répartit de façon égale sur toute la surface du globe : chaque point de la croûte s'écarte de ses voisins à peu près à la même vitesse, sans zone privilégiée."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.repartition-uniforme-des-seismes
+        feedback: >
+          Les vitesses relevées par GPS ne sont pas uniformes : elles varient
+          fortement selon la plaque et la frontière considérée, et l'intérieur
+          d'une plaque se déforme très peu. C'est cette structure inégale qui
+          révèle le découpage en plaques rigides.
+      - id: D
+        text: "On mesure la confirmation directe de l'hypothèse que Wegener avait formulée dès 1912, laquelle avait été rejetée précisément parce que ses preuves étaient jugées insuffisantes par ses contemporains."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+        feedback: >
+          Le rejet de 1912 ne portait pas sur les preuves de Wegener — elles
+          n'ont jamais été invalidées — mais sur l'absence d'un MÉCANISME
+          physiquement plausible. Ce que le GPS apporte est une mesure du
+          mouvement, pas une réhabilitation de preuves qui tenaient déjà.
+    correct_feedback: >
+      Le GPS mesure le déplacement de points à la surface des plaques — en
+      temps réel, indépendamment de toute reconstitution du passé. Le moteur,
+      la convection mantellique, se déduit de ce mouvement ; il ne se mesure
+      pas directement.
+    solution: |
+      **Ce que l'instrument relève.** Des positions, donc des déplacements de
+      surface, avec une précision millimétrique.
+
+      **Ce que ces déplacements établissent.** Que les plaques bougent
+      aujourd'hui, à des vitesses de quelques centimètres par an — le fait que
+      Wegener ne pouvait pas mesurer.
+
+      **Ce qu'ils n'établissent pas directement.** Le moteur. La convection
+      mantellique est une inférence, appuyée sur d'autres arguments
+      (tomographie, flux de chaleur), non une lecture d'écran GPS.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
+# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
+# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
+# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# web/scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
+# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
+# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul.
+  per_misconception:
+    mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise:         { count: 4, items: [TTP-1, TTP-2, TTP-7, TTP-8] }
+    mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers:                        { count: 4, items: [TTP-3, TTP-6, TTP-7, TTP-8] }
+    mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus: { count: 3, items: [TTP-3, TTP-4, TTP-5] }
+    mc.svt.svt_tectonique_plaques.repartition-uniforme-des-seismes:            { count: 3, items: [TTP-6, TTP-7, TTP-8] }
+  total_items: 8
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    # Mesuré le 2026-09-19 sur les 62 notions : 51 portent au moins un item
+    # au barreau R0 et 50 au DERNIER barreau. Un zéro ici n'est donc PAS une
+    # fatalité de structure, c'est un état de cette notion — il s'écrit.
+    R0: 0   # l'accroche ne porte aucun item de banc
+    R1: 1
+    R2: 1
+    R3: 1
+    R4: 2
+    # R5 — « Les plaques lithosphériques et leurs frontières » — n'a AUCUN item
+    # de banc. Le zéro est ÉCRIT, pas tu : un compte absent n'est pas un compte
+    # neutre.
+    R5: 0
+    R6: 2
+    R7: 1
+    R8: 0   # le chapitre « Pour t'entraîner » ne porte aucun item de banc
+  honest_state: >-
+    Les quatre misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Deux y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse. TROU CONNU, écrit le 2026-09-19 :
+    le barreau R5 — les quatre types de frontières, et le geste « identifier
+    une frontière à partir de ses manifestations » — n'est évalué par aucun
+    item du banc. La sonde cp-r5 ne rattrape rien : la méthode ci-dessus
+    pose que les checkpoints ne comptent pas. La porte ne peut pas le voir,
+    elle ne lit que `floor_met` et `total_items`.

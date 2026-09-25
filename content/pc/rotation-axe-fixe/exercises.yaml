@@ -1,0 +1,188 @@
+# Attempt-first exercises (summit-conversion pass, per
+# docs/pipeline/SUMMIT-CONVERSION-RECIPE.md). Rendered by AttemptFirstExercise
+# via [[exercise:<id>]] markers in lesson.md: the student sees the question,
+# commits to an attempt, and only then unlocks the expert reasoning. Printed
+# solutions at the summit are a template-v2 failure
+# (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE (template v2 blocking box). r-bac is a faithful
+# transcription of the ONLY dedicated national exercise found for this notion
+# (docs/sujets/pc/rotation-axe-fixe.md — Statut: vérifié): 2011, session
+# rattrapage, épreuve Sciences Physiques (SPC) PC, code sujet RS28, exercice
+# "Mécanique", 1ère situation only (2,25 points) — "Étude dynamique d'une
+# grue", source AlloSchool https://www.alloschool.com/element/94449. The 2ème
+# situation of that same sujet (oscillateur horizontal) is out of scope for
+# this notion (cross-listed under systemes-oscillants / aspects-energetiques)
+# and is not transcribed here.
+#
+# r-variation reuses the SAME symbol names as r-bac (M, r, m, J_Delta, T,
+# theta-double-dot) with fresh numbers and a different dressing (a treuil de
+# chantier instead of a grue) — the same convention used by the RLC exemplar
+# (r8-bac / r9-variation both reuse L, C, R, T_0, k). This avoids the YAML
+# single-quote trap of using an ASCII apostrophe as a "prime" mark inside a
+# single-quoted steps[].math scalar.
+
+notion: rotation-axe-fixe
+
+exercises:
+  - id: r-bac
+    title: "Exercice de type bac"
+    sourcing:
+      status: sourced
+      required_for_done: true
+      note: >-
+        2011, session rattrapage — épreuve Sciences Physiques (SPC), BIOF
+        PC, code sujet RS28, exercice "Mécanique", 1ère situation
+        uniquement ("Étude dynamique d'une grue", 2,25 points sur les 5,5
+        de l'exercice). Source AlloSchool https://www.alloschool.com/element/94449,
+        transcrit et vérifié dans docs/sujets/pc/rotation-axe-fixe.md
+        (Statut: vérifié, re-fetch indépendant AlloSchool + diff OK).
+    intro: |-
+      On modélise une grue par une poulie $(\mathcal{P})$ homogène de rayon $r = 20\ \text{cm}$, susceptible de tourner autour d'un axe horizontal $(\Delta)$ fixe confondu avec son axe de symétrie, et un solide $(S_1)$ de masse $m_1 = 50\ \text{kg}$, relié à la poulie $(\mathcal{P})$ par un fil inextensible, de masse négligeable, passant sans glisser sur la gorge de la poulie au cours du mouvement. $J_\Delta$ désigne le moment d'inertie de la poulie $(\mathcal{P})$ par rapport à l'axe de rotation $(\Delta)$.
+
+      La poulie $(\mathcal{P})$ tourne sous l'action d'un moteur lui communiquant un couple moteur de moment constant $\mathcal{M} = 104{,}2\ \text{N}\cdot\text{m}$, entraînant le solide $(S_1)$ vers le haut. On repère la position du centre d'inertie $G_1$ du solide $(S_1)$ à un instant $t$ par l'ordonnée $z$ dans un repère $(O, \vec{k})$ galiléen, l'axe $(O,\vec k)$ étant vertical ascendant. $G_1$ coïncide avec l'origine $O$ du repère à l'instant $t_0 = 0$. On néglige tous les frottements et on prendra $g = 10\ \text{m}\cdot\text{s}^{-2}$.
+    questions:
+      - id: q1
+        part: "1ère situation — Étude dynamique d'une grue (rotation de la poulie)"
+        stem: |-
+          En appliquant la deuxième loi de Newton (au solide $(S_1)$, en translation) et la relation fondamentale de la dynamique de rotation (à la poulie $(\mathcal{P})$, en rotation autour de $(\Delta)$) au système {poulie, $S_1$, fil}, montrer que l'accélération $a_{G_1}$ du mouvement de $G_1$ s'écrit :
+
+          $$a_{G_1} = \frac{\mathcal{M}\cdot r - m_1\cdot g\cdot r^2}{m_1\cdot r^2 + J_\Delta}$$
+        reasoning: |-
+          On isole d'abord le solide $(S_1)$, en translation verticale. Deux forces s'exercent sur lui : son poids $m_1\vec g$ et la tension $\vec T$ du fil. La deuxième loi de Newton, projetée sur l'axe ascendant, donne une première équation reliant $a_{G_1}$ et $T$.
+
+          On isole ensuite la poulie $(\mathcal{P})$, en rotation autour de $(\Delta)$. Deux moments agissent : le moment moteur $\mathcal{M}$, qui entraîne la poulie, et le moment de la tension du fil (la même tension que celle exercée sur $S_1$, par la troisième loi de Newton), qui s'exerce tangentiellement sur la gorge, à la distance $r$ de l'axe — elle freine la rotation qui soulève $S_1$. Le poids de la poulie et la réaction de l'axe ont un bras de levier nul par rapport à $(\Delta)$ (l'axe passe par le centre de la poulie) : ils n'apparaissent pas dans ce bilan. La relation fondamentale de la dynamique de rotation donne une deuxième équation, reliant l'accélération angulaire de la poulie et cette même tension $T$.
+
+          Le fil est inextensible et ne glisse pas sur la gorge de la poulie : un point du fil se déplace exactement comme le point de la poulie avec lequel il est en contact, à la distance $r$ de l'axe. La vitesse de ce point vaut donc $r$ fois la vitesse angulaire de la poulie — et c'est aussi, puisque le fil est inextensible, la vitesse de $S_1$. En dérivant une fois de plus, l'accélération de $S_1$ et l'accélération angulaire de la poulie sont liées par ce même facteur $r$. C'est cette condition de non-glissement qui permet de relier les deux équations précédentes en une seule.
+
+          Il ne reste plus qu'à combiner les trois relations pour éliminer la tension $T$ (inconnue et non demandée) et l'accélération angulaire de la poulie, afin de ne garder que $a_{G_1}$.
+        steps:
+          - math: 'm_1\,a_{G_1} = T - m_1\,g'
+            note: >-
+              Deuxième loi de Newton sur le solide (S1), projeté sur l'axe
+              ascendant : le poids et la tension du fil sont les deux
+              seules forces qui s'exercent sur lui.
+          - math: 'J_\Delta\,\ddot\theta = \mathcal{M} - T\cdot r'
+            note: >-
+              Relation fondamentale de la dynamique de rotation appliquée
+              à la poulie : le moment moteur entraîne, le moment de la
+              tension du fil (bras de levier r) freine.
+          - math: '\ddot\theta = \frac{a_{G_1}}{r}'
+            note: >-
+              Condition de non-glissement du fil sur la gorge de la
+              poulie : elle relie l'accélération linéaire de (S1) à
+              l'accélération angulaire de la poulie.
+          - math: 'T = \frac{\mathcal{M}}{r} - \frac{J_\Delta\,a_{G_1}}{r^2}'
+            note: >-
+              On isole la tension T à partir de la relation fondamentale,
+              en y remplaçant l'accélération angulaire par a_G1 / r.
+          - math: 'm_1\,a_{G_1} = \frac{\mathcal{M}}{r} - \frac{J_\Delta\,a_{G_1}}{r^2} - m_1\,g'
+            note: >-
+              On substitue cette expression de la tension dans l'équation
+              de Newton écrite sur (S1) — la tension a disparu.
+          - math: 'a_{G_1}\left(m_1 + \frac{J_\Delta}{r^2}\right) = \frac{\mathcal{M}}{r} - m_1\,g'
+            note: "On regroupe tous les termes en a_G1 d'un même côté."
+          - math: '\boxed{a_{G_1} = \dfrac{\mathcal{M}\cdot r - m_1\cdot g\cdot r^2}{m_1\cdot r^2 + J_\Delta}}'
+            note: >-
+              On multiplie numérateur et dénominateur par r carré : on
+              retrouve exactement la forme demandée par l'énoncé.
+      - id: q2
+        stem: |-
+          L'étude expérimentale du mouvement de $G_1$ a permis d'établir l'équation horaire $z = 0{,}2\,t^2$, avec $z$ en mètre et $t$ en seconde. Déterminer le moment d'inertie $J_\Delta$ de la poulie $(\mathcal{P})$ par rapport à l'axe $(\Delta)$.
+        reasoning: |-
+          L'équation horaire donnée ne comporte ni terme constant ni terme linéaire en $t$ : c'est cohérent avec un départ du repos à $t_0 = 0$, $G_1$ confondu avec $O$ à cet instant — exactement les conditions initiales précisées dans l'énoncé. Une telle équation horaire est celle d'un mouvement rectiligne uniformément accéléré, de la forme $z(t) = \frac12\,a_{G_1}\,t^2$. En identifiant terme à terme avec $z = 0{,}2\,t^2$, on lit directement l'accélération : $\frac12\,a_{G_1} = 0{,}2$.
+
+          Il reste à réutiliser la relation établie à la question précédente — mais cette fois, c'est $a_{G_1}$ qui est connue (on vient de la calculer) et $J_\Delta$ qui est l'inconnue à isoler, alors que c'était l'inverse à la question 1. C'est la même équation, lue dans l'autre sens.
+        steps:
+          - math: 'a_{G_1} = 2\times 0{,}2 = 0{,}4\ \text{m}\cdot\text{s}^{-2}'
+            note: >-
+              Identification par comparaison avec la forme générale d'un
+              mouvement uniformément accéléré partant du repos, z(t) =
+              (1/2) a t^2.
+          - math: 'J_\Delta = \dfrac{\mathcal{M}\cdot r - m_1\cdot g\cdot r^2}{a_{G_1}} - m_1\cdot r^2'
+            note: >-
+              On repart de la relation de la question 1 et on isole cette
+              fois J_Delta au lieu de a_G1 — même équation, autre
+              inconnue.
+          - math: '\mathcal{M}\cdot r = 104{,}2\times 0{,}20 = 20{,}84 \qquad\qquad m_1\cdot g\cdot r^2 = 50\times 10\times 0{,}20^2 = 20{,}0'
+            note: "Calcul séparé des deux termes du numérateur."
+          - math: 'J_\Delta = \dfrac{20{,}84 - 20{,}0}{0{,}4} - 50\times 0{,}20^2 = \dfrac{0{,}84}{0{,}4} - 2{,}0 = 2{,}1 - 2{,}0'
+            note: >-
+              Le quotient donne la somme (m1 r carré + J_Delta) ; on
+              retranche ensuite m1 r carré pour isoler J_Delta seul.
+          - math: '\boxed{J_\Delta = 0{,}10\ \text{kg}\cdot\text{m}^2}'
+            note: "Moment d'inertie de la poulie par rapport à son axe (Delta)."
+
+  # ── r-variation — anti-mémorisation : même structure profonde (poulie +
+  # solide suspendu + moteur, la même chaîne de raisonnement que r-bac), un
+  # enrobage différent (un treuil de chantier plutôt qu'une grue) et des
+  # valeurs numériques fraîches, pour que la reconnaissance de la procédure
+  # prime sur le rappel d'un résultat mémorisé.
+  - id: r-variation
+    title: "Variation fraîche"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation
+        à être un sujet réel. Le sujet réel est r-bac (sourcé ci-dessus).
+    intro: |-
+      Même structure profonde que l'exercice précédent, enrobage différent : cette fois, un treuil de chantier plutôt qu'une grue. Le but est que tu ne puisses pas mémoriser la solution — tu dois reconnaître quelle procédure s'applique.
+
+      Un treuil de chantier est modélisé par une poulie $(\mathcal{P})$ homogène de rayon $r = 25\ \text{cm}$, tournant sans frottement autour d'un axe horizontal $(\Delta)$ fixe confondu avec son axe de symétrie. Un seau de gravats, assimilé à un solide $(S_2)$ de masse $m_2 = 80\ \text{kg}$, est relié à la poulie $(\mathcal{P})$ par un câble inextensible, de masse négligeable, passant sans glisser sur la gorge de la poulie. $J_\Delta$ désigne le moment d'inertie de la poulie $(\mathcal{P})$ par rapport à l'axe $(\Delta)$.
+
+      Le moteur du treuil communique à la poulie un couple moteur de moment constant $\mathcal{M} = 210{,}4\ \text{N}\cdot\text{m}$, entraînant le seau $(S_2)$ vers le haut. On repère la position du centre d'inertie $G_2$ du seau à un instant $t$ par l'ordonnée $z$ dans un repère $(O, \vec{k})$ galiléen, l'axe $(O,\vec k)$ étant vertical ascendant, avec $G_2$ confondu avec $O$ à $t_0 = 0$ (le seau part du repos). On néglige tous les frottements et on prend $g = 10\ \text{m}\cdot\text{s}^{-2}$.
+    questions:
+      - id: q1
+        stem: |-
+          En appliquant la deuxième loi de Newton (au seau $(S_2)$, en translation) et la relation fondamentale de la dynamique de rotation (à la poulie $(\mathcal{P})$, en rotation autour de $(\Delta)$), montrer que l'accélération $a_{G_2}$ du mouvement de $G_2$ s'écrit :
+
+          $$a_{G_2} = \frac{\mathcal{M}\cdot r - m_2\cdot g\cdot r^2}{m_2\cdot r^2 + J_\Delta}$$
+        reasoning: |-
+          La démarche est identique à celle de l'exercice précédent — c'est exactement le point : reconnaître que l'habillage a changé (un treuil et un seau au lieu d'une grue et une charge) mais pas la procédure. On isole le seau $(S_2)$ en translation (deuxième loi de Newton, poids et tension du câble), on isole la poulie $(\mathcal{P})$ en rotation (relation fondamentale, moment moteur et moment de la tension), et on relie les deux par la condition de non-glissement du câble sur la gorge, $a_{G_2} = r\,\ddot\theta$. On combine ensuite pour éliminer la tension et l'accélération angulaire, exactement comme avant — seuls les nombres changent.
+        steps:
+          - math: 'm_2\,a_{G_2} = T - m_2\,g'
+            note: >-
+              Deuxième loi de Newton sur le seau (S2), projeté sur l'axe
+              ascendant.
+          - math: 'J_\Delta\,\ddot\theta = \mathcal{M} - T\cdot r'
+            note: >-
+              Relation fondamentale de la dynamique de rotation sur la
+              poulie du treuil : même structure que dans l'exercice
+              précédent.
+          - math: '\ddot\theta = \frac{a_{G_2}}{r}'
+            note: >-
+              Condition de non-glissement du câble sur la gorge de la
+              poulie : le même geste que pour le fil de la grue.
+          - math: 'T = \frac{\mathcal{M}}{r} - \frac{J_\Delta\,a_{G_2}}{r^2}'
+            note: "On isole la tension à partir de la relation fondamentale."
+          - math: 'm_2\,a_{G_2} = \frac{\mathcal{M}}{r} - \frac{J_\Delta\,a_{G_2}}{r^2} - m_2\,g'
+            note: "On substitue dans l'équation de Newton écrite sur (S2)."
+          - math: 'a_{G_2}\left(m_2 + \frac{J_\Delta}{r^2}\right) = \frac{\mathcal{M}}{r} - m_2\,g'
+            note: "On regroupe les termes en a_G2."
+          - math: '\boxed{a_{G_2} = \dfrac{\mathcal{M}\cdot r - m_2\cdot g\cdot r^2}{m_2\cdot r^2 + J_\Delta}}'
+            note: >-
+              On multiplie par r carré des deux côtés : on retrouve la
+              forme demandée.
+      - id: q2
+        stem: |-
+          L'étude expérimentale du mouvement de $G_2$ a permis d'établir l'équation horaire $z = 0{,}25\,t^2$, avec $z$ en mètre et $t$ en seconde. Déterminer le moment d'inertie $J_\Delta$ de la poulie $(\mathcal{P})$ par rapport à l'axe $(\Delta)$.
+        reasoning: |-
+          Même lecture qu'à la question précédente : l'équation horaire $z = 0{,}25\,t^2$, sans terme constant ni linéaire, correspond à un départ du repos, de la forme $z(t) = \frac12\,a_{G_2}\,t^2$. On identifie $\frac12\,a_{G_2} = 0{,}25$, donc $a_{G_2} = 0{,}5\ \text{m}\cdot\text{s}^{-2}$ — un nombre différent de l'exercice précédent, mais lu exactement de la même façon.
+
+          On réinjecte cette valeur dans la relation de la question 1, cette fois pour isoler $J_\Delta$ plutôt que $a_{G_2}$.
+        steps:
+          - math: 'a_{G_2} = 2\times 0{,}25 = 0{,}5\ \text{m}\cdot\text{s}^{-2}'
+            note: >-
+              Identification par comparaison avec z(t) = (1/2) a t^2,
+              comme à la question précédente.
+          - math: 'J_\Delta = \dfrac{\mathcal{M}\cdot r - m_2\cdot g\cdot r^2}{a_{G_2}} - m_2\cdot r^2'
+            note: "On isole J_Delta dans la relation établie à la question 1."
+          - math: '\mathcal{M}\cdot r = 210{,}4\times 0{,}25 = 52{,}6 \qquad\qquad m_2\cdot g\cdot r^2 = 80\times 10\times 0{,}25^2 = 50{,}0'
+            note: "Calcul séparé des deux termes du numérateur."
+          - math: 'J_\Delta = \dfrac{52{,}6 - 50{,}0}{0{,}5} - 80\times 0{,}25^2 = \dfrac{2{,}6}{0{,}5} - 5{,}0 = 5{,}2 - 5{,}0'
+            note: >-
+              Le quotient donne (m2 r carré + J_Delta) ; on retranche m2 r
+              carré pour isoler J_Delta.
+          - math: '\boxed{J_\Delta = 0{,}20\ \text{kg}\cdot\text{m}^2}'
+            note: "Moment d'inertie de la poulie du treuil par rapport à son axe."

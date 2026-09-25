@@ -1,0 +1,382 @@
+notion: geometrie-espace
+skill_code: maths_geometrie_espace
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — maths géométrie espace)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong GEOMETRIC model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT altered
+# by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict            (in R0)         — COMMIT gate: turns the cube-hook's
+#                                              "prends position" into a real MCQ
+#                                              commit. Probes perspective-fiable.
+#   cp-r2-scalaire-vectoriel (after R3)      — rupture gate: produit scalaire vs
+#                                              produit vectoriel — une aire se lit
+#                                              sur ‖u∧v‖, jamais sur u·v ; et il
+#                                              reste le facteur ½. Probes
+#                                              scalaire-vectoriel-confondus.
+#   cp-r6-plan-normal        (after R6)      — rupture gate: équation cartésienne
+#                                              d'un plan via vecteur normal — les
+#                                              coefficients SONT la normale, d se
+#                                              fixe avec un point. Probes
+#                                              plan-constante-mal-determinee.
+#   cp-r8-distance           (after R8)      — rupture gate: distance point-plan —
+#                                              dénominateur = ‖n‖ = √(a²+b²+c²),
+#                                              jamais a+b+c ; valeur absolue au
+#                                              numérateur. Probes
+#                                              distance-denominateur-somme.
+#   cp-r9-intersection       (before r-bac)  — rupture gate: intersection
+#                                              plan/sphère — on calcule d, on la
+#                                              compare à R, PUIS on conclut
+#                                              (cercle / tangent), rayon par
+#                                              Pythagore R²−d². Probes
+#                                              intersection-sphere-plan-erreur.
+#
+# EVERY distractor carries a named misconception id from this notion's inventory
+# (items.yaml). Option lengths are balanced so the correct choice is never the
+# conspicuously longest.
+#
+# Boundary guard: 2ème Bac SExp — repère orthonormé de l'espace, produit scalaire
+# (expression analytique, orthogonalité, angle), produit vectoriel (norme = aire),
+# produit mixte / volume, droite (paramétrique / cartésienne), plan (vecteur
+# normal, équation), positions relatives, distances point-plan / point-droite,
+# sphère (équation, intersection avec un plan). No off-syllabus tooling.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the cube-hook's commit)
+  #        Turns "prends position" into a real MCQ commit before the
+  #        R2 reveal (où l'on tranche par le produit scalaire).
+  #        Probes perspective-fiable — se fier au dessin en perspective.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: maths_geometrie_espace
+    tags: [checkpoint, formative, misconception_driven, maths_geometrie_espace, hook_commit]
+    primary_misconception: mc.math.maths_geometrie_espace.perspective-fiable
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Dans le cube $ABCDEFGH$, on regarde la grande diagonale $(AG)$ et la
+      diagonale de la face du bas $(BD)$. **Avant de lire la suite, engage-toi :**
+      leurs directions sont-elles perpendiculaires, et peux-tu le savoir en
+      regardant le dessin ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Oui, elles sont perpendiculaires : sur le dessin, l'angle entre elles
+          paraît bien droit.
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.perspective-fiable
+        feedback: |
+          Modèle détecté : « on lit l'angle sur le dessin ». Une perspective
+          **déforme** les angles : un angle qui paraît droit sur le papier ne
+          l'est pas forcément dans l'espace. Le dessin ne peut pas trancher —
+          seul un calcul de coordonnées le pourra. (La réponse, obtenue au chapitre 3 :
+          leurs directions SONT orthogonales, mais on ne le sait qu'en calculant.)
+
+      - id: B
+        text: |
+          Leurs directions sont orthogonales, mais seul un calcul de coordonnées
+          peut le prouver — le dessin ne suffit pas.
+        correct: true
+        feedback: |
+          Exact — et c'est tout l'esprit du chapitre. À l'oeil, sur une
+          perspective, impossible de trancher. Une fois les points placés dans un
+          repère, le produit scalaire des vecteurs directeurs donne $0$ (chapitre 3) : les
+          directions sont bien orthogonales. Nuance de vocabulaire à venir :
+          « orthogonales » (directions), pas « perpendiculaires » — car $(AG)$ et
+          $(BD)$ ne se coupent pas.
+
+      - id: C
+        text: |
+          La question n'a pas de sens : $(AG)$ et $(BD)$ ne se coupent pas, on ne
+          peut donc pas parler d'angle entre elles.
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.orthogonal-vs-perpendiculaire
+        feedback: |
+          Modèle détecté : « pas d'intersection, donc pas d'angle ». Deux droites
+          de l'espace qui ne se coupent pas ont pourtant des **directions**, et on
+          peut comparer ces directions : c'est l'orthogonalité (produit scalaire
+          des vecteurs directeurs). La question a un sens ; c'est le mot
+          « perpendiculaires » qui sera réservé aux droites sécantes.
+
+      - id: D
+        text: |
+          Oui, forcément : deux diagonales d'un cube sont toujours
+          perpendiculaires entre elles.
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.raisonnement-spatial-naif
+        feedback: |
+          Modèle détecté : un « fait » spatial inventé. Il n'existe aucune règle
+          « deux diagonales d'un cube sont perpendiculaires » — $(AG)$ traverse
+          tout le solide, $(BD)$ vit dans une face. On ne conclut pas par un
+          slogan géométrique : on place des coordonnées et on calcule.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r2-scalaire-vectoriel | placed AFTER R3
+  #        Rupture gate: produit scalaire vs produit vectoriel. Une aire
+  #        se lit sur ‖u∧v‖ (un vecteur), jamais sur u·v (un nombre lié à
+  #        l'angle) ; et le triangle est la MOITIÉ du parallélogramme.
+  #        Probes scalaire-vectoriel-confondus. Clone of GE-2.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-scalaire-vectoriel
+    rung: "R3"
+    habilete: utilisation
+    skill_code: maths_geometrie_espace
+    tags: [checkpoint, formative, misconception_driven, maths_geometrie_espace, produit_vectoriel]
+    primary_misconception: mc.math.maths_geometrie_espace.scalaire-vectoriel-confondus
+    item_source: clone_of_GE-2
+    lesson_placement: after_R3
+
+    stem: |
+      Soit $O$, $A$, $B$ avec $\overrightarrow{OA}=\vec{u}(2,0,0)$ et
+      $\overrightarrow{OB}=\vec{v}(1,2,0)$. On donne $\vec{u}\wedge\vec{v}=(0,0,4)$.
+      Quelle est l'aire du triangle $OAB$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $2$
+        correct: true
+        feedback: |
+          Exact. La norme du produit vectoriel, $\|\vec{u}\wedge\vec{v}\|=4$, est
+          l'aire du **parallélogramme** ; le triangle $OAB$ en occupe la moitié,
+          d'où $\dfrac{4}{2}=2$. Une aire se lit toujours sur $\vec{u}\wedge\vec{v}$,
+          jamais sur $\vec{u}\cdot\vec{v}$.
+
+      - id: B
+        text: |
+          $4$
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.aire-oubli-demi
+        feedback: |
+          $4=\|\vec{u}\wedge\vec{v}\|$ est bien calculé, mais c'est l'aire du
+          **parallélogramme** construit sur $\vec{u}$ et $\vec{v}$. Le triangle
+          n'en est que la moitié : il manque la division par $2$.
+
+      - id: C
+        text: |
+          $1$
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.scalaire-vectoriel-confondus
+        feedback: |
+          Ce résultat vient du produit **scalaire** $\vec{u}\cdot\vec{v}=2$ divisé
+          par $2$. Le produit scalaire est un nombre lié à l'angle — il ne mesure
+          aucune aire. Une aire se lit sur la norme du produit **vectoriel**.
+
+      - id: D
+        text: |
+          $8$
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.oubli-racine
+        feedback: |
+          On a utilisé $\|\vec{u}\wedge\vec{v}\|^2/2=16/2=8$ : la norme au carré à
+          la place de la norme. Il faut d'abord prendre la racine,
+          $\|\vec{u}\wedge\vec{v}\|=\sqrt{0^2+0^2+4^2}=4$, avant de diviser par $2$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r6-plan-normal | placed AFTER R6
+  #        Rupture gate: équation cartésienne d'un plan via vecteur
+  #        normal — les coefficients (a,b,c) SONT les coordonnées de la
+  #        normale, la constante d se fixe avec un point du plan.
+  #        Probes plan-constante-mal-determinee. Clone of GE-22.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-plan-normal
+    rung: "R6"
+    habilete: utilisation
+    skill_code: maths_geometrie_espace
+    tags: [checkpoint, formative, misconception_driven, maths_geometrie_espace, plan, vecteur_normal]
+    primary_misconception: mc.math.maths_geometrie_espace.plan-constante-mal-determinee
+    item_source: clone_of_GE-22
+    lesson_placement: after_R6
+
+    stem: |
+      Le plan $\mathcal P$ passe par $A(1,-2,3)$ et admet pour vecteur normal
+      $\vec{n}(2,-1,4)$. Quelle est une équation cartésienne de $\mathcal P$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $2x-y+4z-16=0$
+        correct: true
+        feedback: |
+          Exact. Les coefficients de $x,y,z$ sont les coordonnées de $\vec{n}$,
+          d'où $2x-y+4z+d=0$ ; puis $A\in\mathcal P$ donne
+          $2(1)-(-2)+4(3)+d=0$, soit $16+d=0$ et $d=-16$.
+
+      - id: B
+        text: |
+          $2x-y+4z+16=0$
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
+        feedback: |
+          Bon vecteur normal, mais erreur de signe sur la constante :
+          $d=-(2\times1+(-1)\times(-2)+4\times3)=-16$, pas $+16$. On oublie le
+          signe « moins » devant $ax_A+by_A+cz_A$.
+
+      - id: C
+        text: |
+          $2x-y+4z-2=0$
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.plan-constante-mal-determinee
+        feedback: |
+          La constante a été prise comme la somme brute des coordonnées de $A$
+          ($1-2+3=2$), au lieu de $d=-(2x_A-y_A+4z_A)=-16$. Il faut évaluer
+          $\vec{n}\cdot\overrightarrow{OA}$, pas additionner les coordonnées de $A$.
+
+      - id: D
+        text: |
+          $x-2y+3z-14=0$
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.normal-vs-directeur
+        feedback: |
+          On a pris les coordonnées de $A(1,-2,3)$ comme vecteur normal. Mais $A$
+          est un **point** du plan, pas sa direction perpendiculaire : le vecteur
+          normal est $\vec{n}(2,-1,4)$, donné. Les coefficients de l'équation
+          viennent de $\vec{n}$, jamais du point.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r8-distance | placed AFTER R8
+  #        Rupture gate: distance d'un point à un plan — dénominateur =
+  #        ‖n‖ = √(a²+b²+c²) (jamais a+b+c), valeur absolue au numérateur.
+  #        Probes distance-denominateur-somme. Clone of GE-6.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r8-distance
+    rung: "R8"
+    habilete: utilisation
+    skill_code: maths_geometrie_espace
+    tags: [checkpoint, formative, misconception_driven, maths_geometrie_espace, distance, plan]
+    primary_misconception: mc.math.maths_geometrie_espace.distance-denominateur-somme
+    item_source: clone_of_GE-6
+    lesson_placement: after_R8
+
+    stem: |
+      Le plan $\mathcal P$ a pour équation $x+2y+2z-3=0$. Quelle est la distance
+      du point $M(1,1,1)$ au plan $\mathcal P$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $\dfrac{2}{3}$
+        correct: true
+        feedback: |
+          Exact : $d(M,\mathcal P)=\dfrac{|1+2+2-3|}{\sqrt{1^2+2^2+2^2}}=\dfrac{2}{3}$.
+          Numérateur = équation évaluée en $M$, en valeur absolue ; dénominateur =
+          norme du vecteur normal.
+
+      - id: B
+        text: |
+          $2$
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.distance-oubli-division
+        feedback: |
+          C'est le numérateur $|1+2+2-3|=2$ tout seul : on a oublié de diviser par
+          $\|\vec{n}\|=\sqrt{1^2+2^2+2^2}=3$. Un numérateur n'est pas une distance.
+
+      - id: C
+        text: |
+          $\dfrac{2}{5}$
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.distance-denominateur-somme
+        feedback: |
+          On a divisé par la **somme** des coefficients $1+2+2=5$, au lieu de la
+          **norme** $\sqrt{1^2+2^2+2^2}=3$. La formule utilise $\sqrt{a^2+b^2+c^2}$,
+          jamais $a+b+c$.
+
+      - id: D
+        text: |
+          $-\dfrac{2}{3}$
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.oubli-valeur-absolue
+        feedback: |
+          Une distance est toujours positive ou nulle. Le signe de
+          $ax_0+by_0+cz_0+d$ dépend du côté du plan où se trouve $M$ — c'est
+          pourquoi la formule impose une **valeur absolue** au numérateur.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r9-intersection | placed BEFORE [[exercise:r-bac]]
+  #        Rupture gate: intersection plan/sphère — on calcule d, on la
+  #        compare à R, PUIS on conclut (cercle si d<R, tangent si d=R) ;
+  #        rayon du cercle par Pythagore r=√(R²−d²). Mirrors r-bac's
+  #        numbers (d=√3, R=√5). Probes intersection-sphere-plan-erreur.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r9-intersection
+    rung: "R9"
+    habilete: raisonnement
+    skill_code: maths_geometrie_espace
+    tags: [checkpoint, formative, misconception_driven, maths_geometrie_espace, sphere, intersection, bac_style]
+    primary_misconception: mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur
+    # item_source : AUCUN. L'étiquette « clone_of_GE-30 » portée ici jusqu'au
+    # 2026-09-12 était fausse — GE-30 emploie d=3, R=5, r=4. Les nombres réels
+    # recopiaient r-bac (R=√5, d=√3), c'est-à-dire les réponses de ses questions
+    # 2 et 3a, servies avant l'essai. Re-numéroté en R=√11, d=√7, r=2.
+    lesson_placement: before_bac
+
+    stem: |
+      Une sphère $(S)$ a pour centre $\Omega$ et rayon $R=\sqrt{11}$. Un plan
+      $\mathcal P$ vérifie $d(\Omega,\mathcal P)=\sqrt{7}$. Quelle est la nature de
+      l'intersection de $(S)$ et $\mathcal P$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Un cercle de rayon $2$, puisque $d<R$.
+        correct: true
+        feedback: |
+          Exact. On compare d'abord : $\sqrt{7}<\sqrt{11}$, donc $d<R$ et
+          l'intersection est un cercle. Son rayon vient de Pythagore
+          ($R^2=d^2+r^2$) : $r=\sqrt{R^2-d^2}=\sqrt{11-7}=2$.
+
+      - id: B
+        text: |
+          Le plan est tangent à la sphère en un seul point, puisque $d<R$.
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur
+        feedback: |
+          Critère inversé : la tangence correspond à $d=R$, pas à $d<R$. Ici
+          $d=\sqrt{7}<R=\sqrt{11}$ : le plan **traverse** la sphère, l'intersection
+          est un cercle (pas un point).
+
+      - id: C
+        text: |
+          Un cercle de rayon $4$, égal à $R^2-d^2=11-7$.
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.oubli-racine
+        feedback: |
+          $R^2-d^2=4$ est le **carré** du rayon du cercle : la racine finale a été
+          oubliée. Le rayon est $r=\sqrt{R^2-d^2}=2$, pas $4$.
+
+      - id: D
+        text: |
+          Un cercle de rayon $\sqrt{18}$, car $\sqrt{R^2+d^2}=\sqrt{11+7}$.
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur
+        feedback: |
+          Erreur de signe dans Pythagore : le triangle $\Omega H M$ est rectangle
+          en $H$ avec $R$ pour hypoténuse, donc $R^2=d^2+r^2$ et $r=\sqrt{R^2-d^2}$
+          — un **moins**. On n'ajoute jamais $d^2$ à $R^2$.

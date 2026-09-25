@@ -1,0 +1,399 @@
+# ════════════════════════════════════════════════════════════════════════
+# Frontière curriculaire — Sciences Mathématiques (SM-A / SM-B) · MATHÉMATIQUES
+#
+# Cadre source : « Cadre de référence de l'examen national du baccalauréat —
+#   Mathématiques — Sciences Mathématiques » (MEN/CNEEO). Cadre 2015 en vigueur
+#   pour la session 2026 (version « option français » 2025 : CDR_EXAM_NAT_BAC_25).
+#   PDF officiel = image SCANNÉE sans couche texte → voir docs/cadre/sources/README-maths.md
+#
+#   Coef 9 · 4h · l'épreuve la plus dense du bac scientifique marocain.
+#
+# ════════════════════════════════════════════════════════════════════════
+# STATUT : PROPOSITION — NON AUTORITATIVE.
+#   Ne devient fiable qu'après les TROIS portes (RULES §5) :
+#     1. relecture longue Gemini (couverture) ;
+#     2. research-challenger (attaque de la couche `derived`) ;
+#     3. validation humaine (profondeur).
+# ════════════════════════════════════════════════════════════════════════
+#
+# ── Convention de provenance (spécifique maths ; PAS de `cadre p.N` ici) ──
+#   research-consensus → corroboré par ≥2 sources indépendantes (synthèse
+#                        pdfmath.com + cadre.yaml/bac-reference.md du dépôt +
+#                        COMPOSITION des examens nationaux SM 2008-2025).
+#   derived            → reconstruit du programme SM standard + expertise.
+#                        NON vérifié verbatim. À VALIDER.
+#   ⚠ PDF officiel scanné/non-texte → aucune page ne peut être citée sans la
+#     fabriquer. Aucune provenance `cadre p.N` n'est utilisée.
+#
+# ── Structure ──  domaines → sous_domaines → chapitres → {programme, savoir_faire, limites}
+# ════════════════════════════════════════════════════════════════════════
+
+filiere: sciences_mathematiques       # SM-A et SM-B (même cadre maths)
+matiere: mathematiques
+series_concernees: [sciences_mathematiques_a, sciences_mathematiques_b]
+cadre_annee: 2015
+cadre_session: 2026
+coefficient: 9                        # source: research-consensus (fiable, non contesté)
+duree_epreuve_h: 4                    # source: research-consensus
+
+habiletes_ratios_examen:              # source: research-consensus (cadre.yaml + pdfmath)
+  application_directe: 40             # niveau 1
+  application_non_explicite: 40       # niveau 2
+  synthese_situations_inhabituelles: 20   # niveau 3 (plus exigeant qu'en SExp : 20 vs 15)
+  # NB : cellules du Tableau de spécification non lisibles (PDF scanné) → non reproduites.
+
+# Insight structurel (bac-reference §7) : SM ajoute des DOMAINES ENTIERS absents de
+# SExp — arithmétique, structures algébriques (+ espaces vectoriels), sommes de
+# Riemann, Rolle & accroissements finis — et NE TESTE PAS la géométrie de l'espace
+# au national (contrairement à SExp). Répartition 50/50 (vs 55/45 en SExp).
+
+domaines:
+
+  # ══════════════════════════════════════════════════════════════════════
+  - id: analyse
+    nom: "Analyse"
+    poids: { part_examen: 50 }        # source: research-consensus (pdfmath + cadre.yaml)
+    sous_domaines:
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: suites_numeriques
+        nom: "Suites numériques"
+        poids: { part_domaine: "Analyse", note: "répartition interne Analyse non publiée à cette granularité" }   # source: derived
+        competences_ciblees:          # source: research-consensus (pdfmath : 5 capacités)
+          - "Étudier une suite, déterminer sa limite (comparaison, limite monotone, u_{n+1}=f(u_n)), et exploiter les suites adjacentes."
+        chapitres:
+          - id: suites_convergence
+            nom: "Suites : récurrence, convergence, suites adjacentes"
+            lesson_slug: suites-numeriques
+            programme:                # source: research-consensus (pdfmath) + derived (suites adjacentes)
+              - "Récurrence ; suites majorées/minorées/bornées ; monotonie ; suites arithmétiques et géométriques."
+              - "Limite d'une suite ; opérations ; théorèmes de comparaison et des gendarmes ; théorème de la limite monotone."
+              - "Suites u_{n+1}=f(u_n) : convergence et détermination de la limite."
+              - "Suites adjacentes ; critère de convergence."   # source: derived — spécificité SM
+            savoir_faire:             # source: derived
+              - "Démontrer par récurrence ; étudier monotonie et bornitude."
+              - "Déterminer une limite (opérations, gendarmes, limite monotone) ; résoudre ℓ=f(ℓ) pour u_{n+1}=f(u_n)."
+              - "Reconnaître deux suites adjacentes et conclure à leur convergence vers une limite commune."
+            limites:                  # source: derived
+              - "Pas de critère de Cauchy formel ; convergence via limite monotone / suites adjacentes. Pas de séries."
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: limites_continuite
+        nom: "Limites et continuité (avec fonction réciproque)"
+        poids: { part_domaine: "Analyse" }   # source: derived
+        competences_ciblees:          # source: research-consensus (pdfmath : 7 capacités)
+          - "Maîtriser limites et continuité, appliquer le TVI (et la dichotomie), et étudier la fonction réciproque d'une fonction continue strictement monotone."
+        chapitres:
+          - id: limites_continuite_reciproque
+            nom: "Limites, continuité, TVI et fonction réciproque"
+            lesson_slug: limites-continuite
+            programme:                # source: research-consensus (pdfmath) + derived (réciproque, limites trigo)
+              - "Limites (point / infini) ; opérations ; formes indéterminées."
+              - "Continuité en un point / sur un intervalle ; image d'un segment ; TVI ; dichotomie."
+              - "Fonction réciproque d'une fonction continue strictement monotone : existence, continuité, sens de variation, courbe."   # source: derived — spécificité SM
+              - "Limites de fonctions trigonométriques (lim (sin x)/x = 1, etc.)."   # source: derived
+            savoir_faire:             # source: derived
+              - "Lever une forme indéterminée (factorisation, conjugué, terme dominant, limites trigonométriques de référence)."
+              - "Appliquer le TVI ; localiser une solution par dichotomie."
+              - "Établir l'existence de f⁻¹, déterminer son sens de variation et tracer sa courbe (symétrie par rapport à y=x)."
+            limites:                  # source: derived
+              - "Réciproque : cadre d'une fonction continue STRICTEMENT MONOTONE sur un intervalle. La dérivée de f⁻¹ est traitée au chapitre dérivabilité."
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: derivation_etude_fonctions
+        nom: "Dérivabilité, étude de fonctions, log, exp, équations différentielles"
+        poids: { part_domaine: "Analyse", note: "sous-domaine le plus lourd (20 capacités, pdfmath)" }   # source: research-consensus
+        competences_ciblees:          # source: research-consensus (pdfmath : 20 capacités, le plus dense)
+          - "Étudier une fonction (dérivabilité, Rolle et accroissements finis, variations, concavité, courbe), maîtriser log/exp et les fonctions puissances, et résoudre les équations différentielles y'=ay+b et y''+ay'+by=0."
+        chapitres:
+
+          - id: derivabilite_rolle_taf
+            nom: "Dérivabilité, théorème de Rolle et des accroissements finis"
+            lesson_slug: derivabilite-etude-fonctions   # ne couvre PAS Rolle/TAF → voir coverage_notes
+            programme:                # source: research-consensus (pdfmath cite explicitement Rolle + inégalité des accroissements finis)
+              - "Dérivabilité en un point / sur un intervalle ; dérivée d'une composée ; dérivée de la réciproque."
+              - "Théorème de Rolle ; théorème des accroissements finis (TAF) ; INÉGALITÉ des accroissements finis."   # source: research-consensus (nommés par pdfmath) — spécifique SM
+              - "Dérivées successives ; signe de f' et variations ; concavité, dérivée seconde, points d'inflexion ; branches infinies ; étude complète."
+            savoir_faire:             # source: derived
+              - "Étudier la dérivabilité (y compris à gauche/à droite, demi-tangentes) ; dériver une composée et une réciproque."
+              - "Appliquer le théorème de Rolle et le TAF ; utiliser l'inégalité des accroissements finis pour majorer |f(b)−f(a)| ou étudier une suite u_{n+1}=f(u_n)."
+              - "Dresser un tableau de variations, étudier concavité et points d'inflexion, tracer la courbe."
+            limites:                  # source: derived
+              - "Rolle/TAF au programme SM (absents en SExp). Pas de formule de Taylor-Lagrange ni de développements limités (hors programme 2e Bac)."
+
+          - id: fonction_logarithme
+            nom: "Fonction logarithme (et logarithme de base a)"
+            lesson_slug: fonction-logarithme
+            programme:                # source: research-consensus (pdfmath) + derived (base a)
+              - "ln : définition (primitive de 1/x s'annulant en 1), propriétés algébriques, dérivée, limites, étude, nombre e."
+              - "Logarithme décimal ; logarithme de base a ; équations et inéquations."   # base a : source derived
+            savoir_faire:             # source: derived
+              - "Exploiter les propriétés algébriques et les limites de référence de ln."
+              - "Dériver et étudier des fonctions contenant ln(u) ; résoudre équations/inéquations logarithmiques."
+            limites:                  # source: derived
+              - "Fonctions puissances x^α et log de base a traitées en lien avec exp/ln."
+
+          - id: fonction_exponentielle
+            nom: "Fonction exponentielle (et exponentielle de base a, fonctions puissances)"
+            lesson_slug: fonction-exponentielle
+            programme:                # source: research-consensus (pdfmath) + derived (base a, puissances)
+              - "exp = réciproque de ln ; propriétés algébriques, dérivée, croissances comparées, étude, courbe."
+              - "Exponentielle de base a (a^x = e^{x ln a}) ; fonctions puissances x^α (α réel) ; primitives faisant intervenir exp."   # base a / puissances : source derived — spécifique SM
+            savoir_faire:             # source: derived
+              - "Manipuler exp et e^u ; exploiter les croissances comparées."
+              - "Étudier a^x et x^α (domaine, dérivée, variations, limites)."
+              - "Résoudre équations/inéquations exponentielles ; reconnaître les primitives u'·e^u."
+            limites:                  # source: derived
+              - "Fonctions puissances : α réel quelconque ; pas de fonctions hyperboliques (ch, sh) qui sont hors programme."
+
+          - id: equations_differentielles
+            nom: "Équations différentielles"
+            lesson_slug: equations-differentielles   # ne couvre PAS y''+ay'+by=0 générale → voir coverage_notes
+            programme:                # source: research-consensus (pdfmath : « y'=ay+b et y''+ay'+by=0 »)
+              - "Équations y'=ay et y'=ay+b : solutions, condition initiale."
+              - "Équation linéaire du second ordre à coefficients constants y''+ay'+by=0 : équation caractéristique, forme des solutions selon le discriminant (cas y''+ω²y=0 inclus)."   # source: research-consensus — spécifique SM (SExp s'arrête à y''+ω²y=0)
+            savoir_faire:             # source: derived
+              - "Résoudre y'=ay+b avec condition initiale."
+              - "Écrire et résoudre l'équation caractéristique de y''+ay'+by=0 ; donner la forme des solutions (Δ>0, Δ=0, Δ<0) et fixer les constantes."
+            limites:                  # source: derived — frontière de profondeur SM vs SExp
+              - "SM : équation caractéristique du 2e ordre à coefficients constants et SANS second membre. Pas de second membre non constant (pas de solution particulière/variation de la constante générale)."
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: calcul_integral
+        nom: "Calcul intégral (primitives, sommes de Riemann, intégration par parties)"
+        poids: { part_domaine: "Analyse", note: "≈ 7 capacités (pdfmath)" }   # source: research-consensus
+        competences_ciblees:          # source: research-consensus (pdfmath : Riemann sums, fonctions définies par intégrale)
+          - "Calculer et encadrer des intégrales (primitives, sommes de Riemann, intégration par parties) et étudier des fonctions définies par une intégrale ; calculer aires et volumes."
+        chapitres:
+
+          - id: primitives
+            nom: "Fonctions primitives"
+            lesson_slug: null          # LACUNE : pas de leçon primitives dédiée (dispersé) — voir coverage_notes
+            programme:                # source: derived (chapitre programme SM standard)
+              - "Primitive d'une fonction continue ; primitives des fonctions usuelles ; formes u'·uⁿ, u'/u, u'·e^u, u'·cos u, u'·sin u ; primitive vérifiant une condition."
+            savoir_faire:             # source: derived
+              - "Déterminer une primitive par lecture inverse des dérivées et par reconnaissance de formes ; imposer une condition."
+            limites:                  # source: derived
+              - "Pas de primitives par changement de variable formel (ce dernier n'est pas au programme 2e Bac)."
+
+          - id: integrale_riemann_ipp
+            nom: "Intégrale, sommes de Riemann, intégration par parties, aires et volumes"
+            lesson_slug: calcul-integral   # ne couvre PAS les sommes de Riemann → voir coverage_notes
+            programme:                # source: research-consensus (pdfmath : « Riemann sums, functions defined by integrals »)
+              - "Intégrale d'une fonction continue ; SOMMES DE RIEMANN (approche par sommes) ; linéarité, Chasles, positivité, comparaison ; inégalité de la moyenne, valeur moyenne."   # Riemann : research-consensus — spécifique SM
+              - "Intégration par parties ; fonctions définies par une intégrale (x ↦ ∫ₐˣ f) ; calcul d'aires et de volumes de révolution."
+            savoir_faire:             # source: derived
+              - "Encadrer/approcher une intégrale par des sommes de Riemann ; calculer une intégrale par primitive."
+              - "Appliquer l'intégration par parties ; étudier une fonction définie par une intégrale (dérivée, variations)."
+              - "Calculer une aire entre courbes et un volume de révolution."
+            limites:                  # source: derived
+              - "Sommes de Riemann : construction/encadrement ; pas d'intégrale de Riemann abstraite (théorie de la mesure). Pas d'intégrales impropres/généralisées."
+
+  # ══════════════════════════════════════════════════════════════════════
+  - id: algebre_geometrie
+    nom: "Algèbre et géométrie"
+    poids: { part_examen: 50 }        # source: research-consensus (pdfmath + cadre.yaml)
+    # Répartition interne (research-consensus : pdfmath + composition des examens nationaux) :
+    #   Nombres complexes + Structures algébriques ≈ 35 %
+    #   Arithmétique + Dénombrement-Probabilités   ≈ 15 %
+    #   Géométrie de l'espace : NON TESTÉE au national (programme mais hors épreuve)
+    sous_domaines:
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: nombres_complexes
+        nom: "Nombres complexes"
+        poids: { part_examen_bloc: 35, note: "bloc « Complexes + Structures » ≈ 35 % ; partage interne dérivé" }   # source: research-consensus (bloc) / derived (partage)
+        competences_ciblees:          # source: research-consensus (pdfmath : formes, zⁿ=a, transformations)
+          - "Maîtriser les formes d'un complexe, la formule de Moivre et les racines n-ièmes, résoudre des équations dans ℂ, et exploiter les transformations géométriques (rotation, homothétie, similitude)."
+        chapitres:
+
+          - id: complexes_formes
+            nom: "Formes, opérations, module et argument"
+            lesson_slug: nombres-complexes-1
+            programme:                # source: research-consensus (pdfmath)
+              - "Forme algébrique, conjugué, module ; forme trigonométrique et exponentielle ; argument ; propriétés (produit, quotient, puissance)."
+            savoir_faire:             # source: derived
+              - "Effectuer les opérations dans ℂ ; passer d'une forme à l'autre ; exploiter module et argument."
+            limites: []               # (voir chapitre suivant)
+
+          - id: complexes_moivre_racines_transformations
+            nom: "Moivre, racines n-ièmes, équations et transformations géométriques"
+            lesson_slug: nombres-complexes-2
+            programme:                # source: research-consensus (pdfmath : zⁿ=a, transformations, linéarisation)
+              - "Formule de Moivre ; linéarisation ; racines n-ièmes de l'unité et d'un complexe ; résolution de zⁿ=a."   # racines n-ièmes : spécifique SM
+              - "Résolution d'équations dans ℂ (second degré à coefficients complexes, équations se ramenant au 2e degré)."
+              - "Interprétation géométrique : module/argument comme distance/angle ; transformations (translation, homothétie, ROTATION, similitude directe z'=az+b) ; nature de configurations (triangle, cercle, alignement)."
+            savoir_faire:             # source: derived
+              - "Appliquer Moivre ; linéariser cosⁿ/sinⁿ ; déterminer et représenter les racines n-ièmes."
+              - "Résoudre zⁿ=a et des équations du second degré à coefficients complexes."
+              - "Caractériser une similitude directe (rapport, angle, centre) ; démontrer une propriété de configuration par les affixes."
+            limites:                  # source: derived — frontière SM vs SExp (profondeur)
+              - "SM va jusqu'aux racines n-ièmes générales, aux équations à coefficients COMPLEXES et aux similitudes — profondeur absente de SExp."
+              - "Pas de similitudes indirectes/antidéplacements approfondis (au-delà de z ↦ conjugué) ; pas de géométrie projective."
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: structures_algebriques
+        nom: "Structures algébriques et espaces vectoriels"
+        poids: { part_examen_bloc: 35, note: "bloc « Complexes + Structures » ≈ 35 % ; partage interne dérivé" }   # source: research-consensus (bloc) / derived (partage)
+        competences_ciblees:          # source: research-consensus (pdfmath : groupes/anneaux/corps, espaces vectoriels, bases, indépendance linéaire, homomorphismes)
+          - "Reconnaître et démontrer les structures de groupe, anneau, corps ; manipuler les espaces vectoriels (sous-espaces, familles libres/génératrices, bases) et les homomorphismes."
+        chapitres:
+
+          - id: lois_groupes_anneaux_corps
+            nom: "Lois de composition, groupes, anneaux, corps"
+            lesson_slug: structures-algebriques
+            programme:                # source: research-consensus (pdfmath)
+              - "Loi de composition interne ; propriétés (associativité, commutativité, élément neutre, symétrique) ; partie stable."
+              - "Groupe, sous-groupe, groupe commutatif ; homomorphisme de groupes."   # homomorphismes : research-consensus (pdfmath)
+              - "Anneau (unitaire, commutatif, intègre) ; corps."
+            savoir_faire:             # source: derived
+              - "Vérifier qu'une loi confère une structure (dresser/lire une table ; vérifier les axiomes)."
+              - "Démontrer qu'un ensemble muni d'une loi est un groupe / sous-groupe ; reconnaître un anneau, un corps."
+              - "Étudier un homomorphisme (noyau, image, propriétés)."
+            limites:                  # source: derived
+              - "Structures classiques (groupe/anneau/corps) ; pas de théorie de Galois, pas de quotients au-delà de ℤ/nℤ comme exemple."
+
+          - id: espaces_vectoriels
+            nom: "Espaces vectoriels"
+            lesson_slug: null          # LACUNE : la leçon structures-algebriques ne couvre PAS les e.v. — voir coverage_notes
+            programme:                # source: research-consensus (pdfmath : « vector spaces, bases and linear independence »)
+              - "Espace vectoriel réel ; sous-espace vectoriel ; combinaison linéaire ; famille génératrice, famille libre, base ; dimension (en dimension finie) ; applications linéaires."
+            savoir_faire:             # source: derived
+              - "Démontrer qu'un ensemble est un sous-espace vectoriel ; déterminer une base et la dimension."
+              - "Étudier la liberté/génération d'une famille ; reconnaître une application linéaire (noyau, image)."
+            limites:                  # source: derived
+              - "Espaces vectoriels de dimension finie ; pas de réduction d'endomorphismes (valeurs propres/diagonalisation — hors 2e Bac), pas de produit scalaire euclidien abstrait."
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: arithmetique
+        nom: "Arithmétique dans ℤ"
+        poids: { part_examen_bloc: 15, note: "bloc « Arithmétique + Probabilités » ≈ 15 % ; partage interne dérivé" }   # source: research-consensus (bloc) / derived (partage)
+        competences_ciblees:          # source: research-consensus (pdfmath : divisibilité, Euclide, Bézout, ℤ/nℤ)
+          - "Utiliser divisibilité, congruences, PGCD (Euclide, Bézout), Gauss, nombres premiers et l'arithmétique modulaire (ℤ/nℤ) pour résoudre des problèmes et des équations diophantiennes."
+        chapitres:
+          - id: arithmetique_z
+            nom: "Divisibilité, congruences, Bézout, Gauss, nombres premiers, équations diophantiennes"
+            lesson_slug: arithmetique
+            programme:                # source: research-consensus (pdfmath)
+              - "Divisibilité dans ℤ ; division euclidienne ; congruences modulo n et calculs de restes."
+              - "PGCD, algorithme d'Euclide ; PPCM ; nombres premiers entre eux ; théorème de Bézout ; théorème de Gauss."
+              - "Nombres premiers ; décomposition en facteurs premiers ; arithmétique dans ℤ/nℤ."
+              - "Équations diophantiennes ax+by=c."
+            savoir_faire:             # source: derived
+              - "Poser une division euclidienne ; calculer un reste par congruences ; établir des critères de divisibilité."
+              - "Calculer un PGCD (Euclide) ; déterminer les coefficients de Bézout (remontée) ; appliquer le théorème de Gauss."
+              - "Décomposer en facteurs premiers ; résoudre une équation diophantienne (solution particulière + solution générale)."
+            limites:                  # source: derived — spécifique SM (absent de SExp)
+              - "Arithmétique élémentaire dans ℤ. Pas de fonction indicatrice d'Euler comme théorème central, pas de RSA/cryptographie formelle, pas de résidus quadratiques."
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: denombrement_probabilites
+        nom: "Dénombrement et calcul des probabilités"
+        poids: { part_examen_bloc: 15, note: "bloc « Arithmétique + Probabilités » ≈ 15 % ; partage interne dérivé" }   # source: research-consensus (bloc) / derived (partage)
+        competences_ciblees:          # source: research-consensus (pdfmath : combinatoire, conditionnelle, binomiale)
+          - "Dénombrer et calculer des probabilités (conditionnelles, indépendance) ; exploiter la variable aléatoire et la loi binomiale."
+        chapitres:
+          - id: denombrement
+            nom: "Dénombrement"
+            lesson_slug: denombrement
+            programme:                # source: research-consensus (pdfmath)
+              - "Principe multiplicatif ; p-listes ; arrangements ; permutations ; combinaisons ; triangle de Pascal."
+            savoir_faire:             # source: derived
+              - "Choisir le bon modèle de dénombrement ; calculer arrangements, permutations, combinaisons."
+            limites: []               # (voir chapitre suivant)
+          - id: probabilites
+            nom: "Probabilités, variable aléatoire, loi binomiale"
+            lesson_slug: probabilites-conditionnelles   # ne couvre PAS variable aléatoire / loi binomiale → voir coverage_notes
+            programme:                # source: research-consensus (pdfmath)
+              - "Probabilité, équiprobabilité ; probabilité conditionnelle ; arbre pondéré ; probabilités totales ; indépendance."
+              - "Variable aléatoire : loi, espérance, variance, écart-type ; épreuve de Bernoulli ; loi binomiale."
+            savoir_faire:             # source: derived
+              - "Calculer une probabilité (dénombrement, conditionnelle, totales) ; utiliser un arbre pondéré."
+              - "Reconnaître l'indépendance ; déterminer la loi, l'espérance d'une variable aléatoire ; exploiter la loi binomiale."
+            limites:                  # source: derived
+              - "Loi binomiale (Bernoulli répété) ; pas de loi continue, pas d'approximation gaussienne, pas de statistique inférentielle."
+
+      # ──────────────────────────────────────────────────────────────────
+      # GÉOMÉTRIE DANS L'ESPACE — au PROGRAMME SM mais NON TESTÉE au national.
+      # ──────────────────────────────────────────────────────────────────
+      - id: geometrie_espace_hors_examen
+        nom: "Géométrie dans l'espace (programme SM — NON testée à l'examen national)"
+        poids: { part_examen: 0 }     # source: research-consensus (pdfmath « Géométrie de l'espace : Non » + composition des examens nationaux SM 2008-2025 : aucun exercice de géométrie)
+        _statut: "AU PROGRAMME, HORS ÉPREUVE NATIONALE. Enseignée/évaluée en contrôle continu, mais le cadre de l'examen national SM ne l'inclut pas. Divergence majeure avec SExp (où elle vaut 15 %)."
+        competences_ciblees:          # source: derived
+          - "Utiliser produit scalaire/vectoriel et géométrie analytique dans l'espace (usage programme ; non mobilisé à l'examen national)."
+        chapitres:
+          - id: geometrie_espace_programme
+            nom: "Produit scalaire/vectoriel, droites, plans, sphère (programme)"
+            lesson_slug: geometrie-espace
+            programme:                # source: derived (programme SM ; hors cadre d'examen)
+              - "Repère orthonormé ; produit scalaire dans l'espace ; produit vectoriel (aire, normale) ; produit mixte / déterminant / volume."
+              - "Droites et plans (représentations, positions relatives) ; distances ; sphère (équation, intersection avec un plan)."
+            savoir_faire:             # source: derived
+              - "Calculer produit scalaire, produit vectoriel, produit mixte ; déterminer équations de droites/plans, distances, intersections."
+            limites:                  # source: derived — LE point le plus contre-intuitif du fichier
+              - "⚠ Bien que la leçon geometrie-espace existe et couvre produit vectoriel ET produit mixte (notions SM), ce sous-domaine N'EST PAS testé à l'examen national SM. À CONFIRMER par la relecture Gemini du cadre scanné + validation humaine (un ancien candidat SM tranchera immédiatement)."
+
+# ════════════════════════════════════════════════════════════════════════
+# EXCLUSIONS TRANSVERSALES (frontière anti-hors-programme SM) — source: derived
+# ════════════════════════════════════════════════════════════════════════
+exclusions_transversales:             # source: derived — À VALIDER
+  - { topic: "Développements limités / formule de Taylor", raison: "Hors 2e Bac ; l'approximation locale s'arrête au TAF." }
+  - { topic: "Intégrales impropres / généralisées", raison: "Hors programme ; intégrale sur un segment de fonction continue." }
+  - { topic: "Réduction d'endomorphismes (valeurs propres, diagonalisation)", raison: "Hors 2e Bac ; les espaces vectoriels s'arrêtent aux bases/dimension/applications linéaires." }
+  - { topic: "Théorie de Galois, corps finis au-delà de ℤ/nℤ", raison: "Hors programme." }
+  - { topic: "Lois de probabilité continues, statistique inférentielle", raison: "Hors 2e Bac ; on s'arrête à la loi binomiale." }
+  - { topic: "Fonctions hyperboliques (ch, sh, th)", raison: "Hors programme." }
+  - { topic: "Géométrie de l'espace comme objet d'EXAMEN NATIONAL", raison: "Au programme mais NON testée au national (voir sous-domaine dédié)." }
+
+# ════════════════════════════════════════════════════════════════════════
+# COVERAGE_NOTES — mapping cadre ↔ nos 14 leçons content/maths/ (source: derived)
+# ════════════════════════════════════════════════════════════════════════
+coverage_notes:
+  intro: >
+    Les 14 leçons content/maths/ sont orientées SM et couvrent bien la plupart des
+    chapitres. Restent des LACUNES (chapitres du cadre SM sans leçon dédiée, ou
+    notions SM absentes d'une leçon existante) — listées ci-dessous, à corriger en
+    amont de l'authoring.
+
+  chapitres_cadre_sans_lecon:         # lesson_slug: null
+    - chapitre: "Fonctions primitives (chapitre systématique)"
+      lesson_slug: null
+      note: "Dispersé (calcul-integral R1, fonction-exponentielle R6) ; pas de chapitre systématique des primitives usuelles/formes. LACUNE."
+    - chapitre: "Espaces vectoriels (sous-espaces, familles libres/génératrices, bases, dimension, applications linéaires)"
+      lesson_slug: null
+      note: "La leçon structures-algebriques (R1-R6) s'arrête aux groupes/anneaux/corps — les ESPACES VECTORIELS, pourtant au cadre SM, n'ont PAS de leçon. LACUNE PRIORITAIRE."
+    - chapitre: "Variable aléatoire, loi de probabilité, espérance, LOI BINOMIALE"
+      lesson_slug: null
+      note: "probabilites-conditionnelles couvre conditionnel/indépendance/totales mais PAS la variable aléatoire ni la loi binomiale. LACUNE PRIORITAIRE."
+
+  notions_manquantes_dans_lecons_existantes:   # la leçon existe mais une notion SM du cadre y manque
+    - lesson_slug: derivabilite-etude-fonctions
+      manque: "Théorème de ROLLE et théorème/inégalité des ACCROISSEMENTS FINIS (nommés explicitement par le cadre SM ; R1-R5 ne les traitent pas)."
+    - lesson_slug: calcul-integral
+      manque: "SOMMES DE RIEMANN (construction/encadrement de l'intégrale). Fonctions définies par une intégrale (x↦∫ₐˣf) à vérifier."
+    - lesson_slug: equations-differentielles
+      manque: "Équation générale du 2e ordre y''+ay'+by=0 (équation caractéristique, cas Δ>0/Δ=0/Δ<0). La leçon (R4) ne traite que y''+ω²y=0."
+    - lesson_slug: limites-continuite
+      manque: "Théorème/dérivée de la FONCTION RÉCIPROQUE ; LIMITES TRIGONOMÉTRIQUES (lim (sin x)/x). À vérifier."
+    - lesson_slug: fonction-exponentielle
+      manque: "Exponentielle de base a (a^x) et FONCTIONS PUISSANCES x^α. À vérifier."
+    - lesson_slug: fonction-logarithme
+      manque: "Logarithme de base a (au-delà du log décimal en R6). À vérifier."
+    - lesson_slug: suites-numeriques
+      manque: "OK (R9 traite les suites adjacentes) — pas de lacune apparente."
+
+  divergences_majeures_sm:
+    - "SM TESTE arithmétique + structures algébriques (2 leçons entières) — inexistantes en SExp."
+    - "SM NE TESTE PAS la géométrie de l'espace au national (contrairement à SExp, 15 %) — bien que la leçon geometrie-espace existe et que produit vectoriel/mixte soient des notions SM."
+    - "SM complexes vont jusqu'aux racines n-ièmes, zⁿ=a, coefficients complexes, similitudes (bien plus profond que SExp)."
+    - "SM analyse ajoute Rolle/TAF, sommes de Riemann, 2e ordre général, fonction réciproque, fonctions puissances/base a."
+    - "Nombres complexes = 2 leçons (nc-1, nc-2) pour 1 sous-domaine du cadre."
+
+  claims_derives_les_plus_faibles:    # à attaquer en priorité (research-challenger)
+    - "« Géométrie de l'espace NON testée au national SM » (part_examen: 0). Sourcé (pdfmath explicite + composition 2008-2025) mais CONTRE-INTUITIF et à confirmer par un ancien candidat SM."
+    - "Partage interne du bloc 35 % (Complexes vs Structures) et du bloc 15 % (Arithmétique vs Probabilités) — seuls les TOTAUX de bloc sont sourcés."
+    - "Inclusion des espaces vectoriels au cadre SM (research-consensus via pdfmath « vector spaces, bases » ; à confirmer contre le cadre scanné)."
+    - "Périmètre exact de l'équation du 2e ordre (y''+ay'+by=0 générale vs seulement y''+ω²y=0) en SM."
+    - "Toutes les limites/exclusions (couche dérivée anti-hors-programme) — par construction non imprimées au cadre."
+</content>

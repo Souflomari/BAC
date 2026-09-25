@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 580" width="640" height="580"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Trois orbites circulaires de rayons différents autour de la Terre, avec leurs périodes calculées par la 3e loi de Kepler : seule l’orbite de rayon géostationnaire donne une période de 24 heures, les deux autres donnent des périodes différentes.">
+  <title>Balayer le rayon — une seule orbite donne T = 24 h</title>
+  <!--
+    orbites-gravite.svg — figure figée (STATIQUE), compagne de la scène
+    manipulable [[embed:orbites-gravite]]. Jusqu'au 2026-09-23 elle en
+    tenait lieu (la spec prescrivait PhET "Gravity and Orbits", jamais
+    livré) : TROIS rayons fixes au lieu d'un curseur de rayon continu. La
+    scène 3D de première partie (ADR 0041) livre désormais le curseur
+    continu, le plan, le sens et le référentiel, et elle vient AVANT, juste
+    après la liste des trois conditions : l'élève découvre en pariant, la
+    prose explique ensuite. Cette figure illustre cette explication, à la
+    fin de « Arrête-toi » — STAGED (balayage de trois rayons, puis mise en
+    évidence du seul qui convient) — et c'est elle qui couvre l'impression
+    et l'absence de WebGL, où le canvas n'existe pas. Sert CH-KEP-3
+    ("n'importe quelle altitude peut être géostationnaire"), avec leurs
+    périodes calculées par la 3e loi de R10.
+
+    Rayons choisis en proportion du rayon géostationnaire r_geo (R10) :
+    r₁ = 0,5·r_geo, r₂ = r_geo, r₃ = 1,5·r_geo — pixels 70/140/210
+    (même ratio 0,5:1:1,5), centre C=(320,310).
+
+    Périodes — 3e loi de Kepler établie en R10, T = T_geo·(r/r_geo)^1,5,
+    avec T_geo = 24 h :
+      r₁=0,5·r_geo → T₁ = 24·0,5^1,5 = 24·0,3536 ≈ 8,5 h
+      r₂=r_geo     → T₂ = 24 h                              (géostationnaire)
+      r₃=1,5·r_geo → T₃ = 24·1,5^1,5 = 24·1,8371 ≈ 44,1 h ≈ 44 h
+
+    Positions des satellites (angles choisis pour la lisibilité, la valeur
+    de l'angle n'a pas de sens physique ici) :
+      S₁, θ=−90° sur R1  : C+(0,−70)              = (320,240)
+      S₂, θ=−45° sur R2  : C+(140·0.707,−140·0.707) = (419.0,211.0)
+      S₃, θ=−135° sur R3 : C+(−210·0.707,−210·0.707) = (171.53,161.53)
+
+    Rôle des couleurs :
+      Terre                              : --figure-ink-soft (fond léger)
+      orbites 1 et 3 (ne conviennent pas) : --figure-ink-soft (pointillé)
+      orbite 2 (géostationnaire, la seule
+      qui convient)                       : --figure-accent
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="24" text-anchor="middle" font-size="12" font-weight="600"
+        letter-spacing="0.01em" fill="var(--figure-ink)">
+    Balayer le rayon de l’orbite — un seul rayon donne T = 24 h
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="20" y="36" width="600" height="520" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — données : Terre et trois orbites
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <circle cx="320" cy="310" r="70" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-dasharray="6,4"/>
+    <circle cx="320" cy="310" r="140" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-dasharray="6,4"/>
+    <circle cx="320" cy="310" r="210" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-dasharray="6,4"/>
+
+    <circle cx="320" cy="310" r="40" fill="var(--figure-ink-soft)" fill-opacity="0.20" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="320" y="315" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-ink)">Terre</text>
+
+    <circle cx="320" cy="240" r="5" fill="var(--figure-ink)"/>
+    <circle cx="419.0" cy="211.0" r="5" fill="var(--figure-ink)"/>
+    <circle cx="171.53" cy="161.53" r="5" fill="var(--figure-ink)"/>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — mécanisme : les trois périodes, via la 3e loi (R10)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <text x="320" y="222" text-anchor="middle" font-size="11" fill="var(--figure-ink)">r₁ = 0,5·r<tspan dy="2" font-size="8">géo</tspan><tspan dy="-2"> → T₁ ≈ 8,5 h</tspan></text>
+    <text x="429" y="199" text-anchor="start" font-size="11" fill="var(--figure-ink)">r₂ = r<tspan dy="2" font-size="8">géo</tspan><tspan dy="-2"> → T₂ = 24 h</tspan></text>
+    <text x="161.53" y="145" text-anchor="middle" font-size="11" fill="var(--figure-ink)">r₃ = 1,5·r<tspan dy="2" font-size="8">géo</tspan><tspan dy="-2"> → T₃ ≈ 44 h</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : seule l'orbite géostationnaire convient
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <circle cx="320" cy="310" r="140" fill="none" stroke="var(--figure-accent)" stroke-width="2.6"/>
+    <circle cx="419.0" cy="211.0" r="9" fill="none" stroke="var(--figure-accent)" stroke-width="2.4"/>
+    <circle cx="419.0" cy="211.0" r="5" fill="var(--figure-accent)"/>
+
+    <text x="320" y="548" text-anchor="middle" font-size="12" fill="var(--figure-accent)">seul r₂ donne T = 24 h — la condition « T = T_Terre » fixe un rayon UNIQUE</text>
+  </g><!-- /step-3 -->
+
+</svg>

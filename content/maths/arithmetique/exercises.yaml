@@ -1,0 +1,228 @@
+# Attempt-first exercises (summit-conversion campaign — maths, arithmétique).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md :
+# l'élève voit la question, s'engage sur un essai, et n'accède au raisonnement
+# expert qu'ensuite. Une solution imprimée au sommet est un échec template-v2
+# (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` est CÔTÉ-AUTEUR UNIQUEMENT (jamais rendu) : tant que status !=
+# sourced, la notion n'est PAS TERMINÉE. r-bac est un sujet national VÉRIFIÉ
+# (2019 session normale, examen national Sciences Mathématiques A/B, option
+# française BIOF, code NS 24F, AlloSchool element/68482 — statut « vérifié »
+# dans docs/sujets/maths/arithmetique.md, Exercice 3, 3 points). Chapitre
+# SPÉCIFIQUE à la filière Sciences Mathématiques (SM) — absent de l'épreuve
+# Sciences Expérimentales. r-variation est un jumeau frais anti-mémorisation
+# (même chaîne d'outils, autres nombres ; status not-applicable).
+#
+# OUTIL HORS-RUNG : la question 1.d mobilise le PETIT THÉORÈME DE FERMAT
+# (p premier, p ∤ a ⟹ a^(p−1) ≡ 1 [p]), qui n'a pas de rung dédié dans la
+# leçon. Il est légitime au programme SM et surfacé via le rupture-gate
+# cp-r6-fermat (checkpoints.yaml), placé juste avant l'exercice ; le manque
+# côté banque est déclaré honnêtement dans items.yaml (coverage_summary,
+# fermat-condition-ou-exposant sous plancher).
+
+notion: arithmetique
+
+exercises:
+  # ── r-bac — le sujet national VÉRIFIÉ (Exercice 3, SM 2019) ───────────────
+  # Transcription fidèle de docs/sujets/maths/arithmetique.md
+  # → « 2019 — session normale — Exercice 3 ». On admet 2969 premier (année
+  # amazighe). Chaîne canonique : Bézout → inverse modulaire → puissances de
+  # congruences → petit théorème de Fermat → « premier divise une puissance ⟹
+  # premier divise la base » (lemme d'Euclide, R6). Enchaîne R4 → R2 → R6.
+  - id: r-bac
+    title: "Exercice de type bac — congruences modulo un premier, Bézout et petit théorème de Fermat (2019)"
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national Sciences Mathématiques (A) et
+        (B), option française (BIOF), Mathématiques, 4 h, coef 9, code NS 24F,
+        barème 3 points (Exercice 3, « Arithmétique »). Source AlloSchool
+        element/68482. Transcription vérifiée : docs/sujets/maths/arithmetique.md,
+        statut « vérifié » (agent-vérificateur-adversarial, 2026-07-12, diff
+        caractère-par-caractère conforme au scan) ; chapitre spécifique à la
+        filière Sciences Mathématiques.
+    intro: |-
+      **Arithmétique (examen national Sciences Mathématiques, session normale 2019).**
+
+      On admet que $2969$ (l'année amazighe actuelle) est un **nombre premier**. Soient $n$ et $m$ deux entiers naturels vérifiant $n^8 + m^8 \equiv 0 \pmod{2969}$.
+
+      L'exercice enchaîne les outils du chapitre dans une chaîne serrée : on fabrique d'abord un inverse de $n$ modulo $2969$ avec le théorème de Bézout, on en déduit des congruences de puissances, puis le petit théorème de Fermat produit une contradiction qui force $2969 \mid n$ — et enfin l'équivalence complète. Rien de neuf à deviner : chaque question applique un geste déjà construit dans la leçon (le petit théorème de Fermat, lui, est rappelé au moment où on en a besoin).
+    questions:
+      - id: q1a
+        part: "Partie A — Un inverse de $n$ modulo $2969$ par Bézout"
+        stem: |-
+          **(0,5 pt)** On suppose dans cette partie que $2969$ **ne divise pas** $n$. En utilisant le théorème de Bézout, montrer qu'il existe un entier $u$ tel que $u\,n \equiv 1 \pmod{2969}$.
+        reasoning: |-
+          $2969$ est premier : ses seuls diviseurs positifs sont $1$ et $2969$. Comme on suppose $2969 \nmid n$, le seul diviseur commun possible de $2969$ et $n$ est $1$, donc $\mathrm{PGCD}(2969, n) = 1$ : ils sont **premiers entre eux** (chapitre 5).
+
+          Le théorème de Bézout donne alors des entiers $u, v$ tels que $u\,n + 2969\,v = 1$. On lit cette égalité **modulo $2969$** : le terme $2969\,v$ est un multiple de $2969$, donc congru à $0$, et il reste $u\,n \equiv 1 \pmod{2969}$. L'entier $u$ est un **inverse de $n$** modulo $2969$.
+        steps:
+          - math: '\mathrm{PGCD}(2969,\,n) = 1'
+            note: "2969 premier et 2969 ne divise pas n : leur seul diviseur commun est 1 (chapitre 5)."
+          - math: 'u\,n + 2969\,v = 1'
+            note: "Théorème de Bézout, appliqué à une paire d'entiers premiers entre eux (chapitre 5)."
+          - math: 'u\,n \equiv 1 \pmod{2969}'
+            note: "On réduit modulo 2969 : le terme 2969·v est ≡ 0."
+      - id: q1b
+        stem: |-
+          **(0,5 pt)** En déduire que $(u\,m)^8 \equiv -1 \pmod{2969}$, puis que $(u\,m)^{2968} \equiv -1 \pmod{2969}$. *(On remarque que $2968 = 8 \times 371$.)*
+        reasoning: |-
+          On part de la relation de l'énoncé $n^8 + m^8 \equiv 0 \pmod{2969}$, donc $m^8 \equiv -\,n^8$. On multiplie par $u^8$ pour faire apparaître $(u\,m)^8$ d'un côté et $(u\,n)^8$ de l'autre — et $(u\,n)^8 \equiv 1$ puisque $u\,n \equiv 1$ (compatibilité des congruences avec les puissances, chapitre 3).
+
+          Il reste à monter en exposant. Comme $2968 = 8 \times 371$, on écrit $(u\,m)^{2968} = \big((u\,m)^8\big)^{371}$, donc $(u\,m)^{2968} \equiv (-1)^{371}$. L'exposant $371$ est **impair**, donc $(-1)^{371} = -1$ : c'est là que le « $371$ impair » fait tout le travail.
+        steps:
+          - math: 'm^8 \equiv -\,n^8 \pmod{2969}'
+            note: "Réécriture directe de n^8 + m^8 ≡ 0."
+          - math: '(u\,m)^8 = u^8\,m^8 \equiv u^8\,(-\,n^8) = -\,(u\,n)^8 \equiv -1 \pmod{2969}'
+            note: "On multiplie par u^8 ; (u·n)^8 ≡ 1 car u·n ≡ 1 (chapitre 3)."
+          - math: '(u\,m)^{2968} = \big((u\,m)^8\big)^{371} \equiv (-1)^{371} = -1 \pmod{2969}'
+            note: "2968 = 8×371 ; 371 est impair, donc (−1)^371 = −1."
+      - id: q1c
+        stem: |-
+          **(0,5 pt)** Montrer que $2969$ ne divise pas $u\,m$.
+        reasoning: |-
+          Raisonnement par l'absurde. Si $2969 \mid u\,m$, alors $u\,m \equiv 0 \pmod{2969}$, donc toute puissance de $u\,m$ est aussi $\equiv 0$ ; en particulier $(u\,m)^8 \equiv 0$.
+
+          Or on vient d'établir $(u\,m)^8 \equiv -1 \pmod{2969}$. On aurait donc $0 \equiv -1$, c'est-à-dire $2969 \mid 1$ — impossible, puisque $2969 > 1$. La supposition est absurde : $2969$ ne divise pas $u\,m$.
+        steps:
+          - math: '(u\,m)^8 \equiv 0 \pmod{2969}'
+            note: "Supposons par l'absurde 2969 | u·m : sa puissance 8-ième est alors ≡ 0."
+          - math: '0 \equiv -1 \pmod{2969} \implies 2969 \mid 1'
+            note: "Mais (u·m)^8 ≡ −1 (question b) : d'où 0 ≡ −1, soit 2969 divise 1."
+          - math: '2969 \nmid 1 \implies 2969 \nmid u\,m'
+            note: "2969 > 1 ne divise pas 1 : la supposition tombe."
+      - id: q1d
+        stem: |-
+          **(0,5 pt)** En déduire qu'on a aussi $(u\,m)^{2968} \equiv 1 \pmod{2969}$.
+        reasoning: |-
+          C'est ici qu'intervient le **petit théorème de Fermat** : si $p$ est un nombre premier et si $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod{p}$.
+
+          On applique ce théorème avec $p = 2969$ (premier, admis) et $a = u\,m$. La condition $p \nmid a$ est exactement le résultat de la question précédente : $2969 \nmid u\,m$. Comme $p - 1 = 2968$, il vient directement $(u\,m)^{2968} \equiv 1 \pmod{2969}$.
+        steps:
+          - math: '(u\,m)^{2968} \equiv 1 \pmod{2969}'
+            note: "Petit théorème de Fermat : p premier et p ∤ a ⟹ a^(p−1) ≡ 1 [p]. Ici p = 2969, p − 1 = 2968, et 2969 ∤ u·m (question c)."
+      - id: q2a
+        part: "Partie B — $2969$ divise $n$, puis l'équivalence"
+        stem: |-
+          **(0,5 pt)** En utilisant les résultats précédents, montrer que $2969$ **divise** $n$.
+        reasoning: |-
+          On confronte les deux congruences obtenues pour **le même nombre** $(u\,m)^{2968}$ : la question (b) donne $-1$, la question (d) donne $1$. Donc $-1 \equiv 1 \pmod{2969}$, c'est-à-dire $2969 \mid \big(1 - (-1)\big) = 2$.
+
+          Mais $2969 > 2$ ne peut pas diviser $2$ : contradiction. Or tout ce raisonnement (Partie A) reposait sur la seule supposition $2969 \nmid n$. C'est donc cette supposition qui est fausse : $2969$ divise $n$.
+        steps:
+          - math: '-1 \equiv (u\,m)^{2968} \equiv 1 \pmod{2969}'
+            note: "Même nombre, deux valeurs : (b) donne −1, (d) donne 1."
+          - math: '-1 \equiv 1 \pmod{2969} \implies 2969 \mid 2'
+            note: "1 − (−1) = 2 devrait être un multiple de 2969."
+          - math: '2969 \nmid 2 \implies 2969 \mid n'
+            note: "Contradiction : la supposition 2969 ∤ n est intenable, donc 2969 divise n."
+      - id: q2b
+        stem: |-
+          **(0,5 pt)** Montrer que $n^8 + m^8 \equiv 0 \pmod{2969}$ si et seulement si $n \equiv 0 \pmod{2969}$ et $m \equiv 0 \pmod{2969}$.
+        reasoning: |-
+          Deux implications à établir.
+
+          **Sens réciproque ($\Longleftarrow$).** Si $n \equiv 0$ et $m \equiv 0 \pmod{2969}$, alors $n^8 \equiv 0$ et $m^8 \equiv 0$, donc leur somme $n^8 + m^8 \equiv 0$. Immédiat.
+
+          **Sens direct ($\Longrightarrow$).** Supposons $n^8 + m^8 \equiv 0 \pmod{2969}$. Le raisonnement de la Partie A montre que l'hypothèse $2969 \nmid n$ mène à une contradiction ; donc $2969 \mid n$, soit $n \equiv 0$. Alors $m^8 \equiv -\,n^8 \equiv 0 \pmod{2969}$, donc $2969 \mid m^8$. Comme $2969$ est **premier**, le lemme d'Euclide (chapitre 7) donne $2969 \mid m$, c'est-à-dire $m \equiv 0$.
+        steps:
+          - math: 'n \equiv 0 \ \text{et}\ m \equiv 0 \pmod{2969} \implies n^8 + m^8 \equiv 0 \pmod{2969}'
+            note: "Sens ⟸ : une somme de deux multiples de 2969 est un multiple de 2969."
+          - math: 'n^8 + m^8 \equiv 0 \pmod{2969} \implies 2969 \mid n \implies n \equiv 0 \pmod{2969}'
+            note: "Sens ⟹ : la question (2a) donne 2969 | n."
+          - math: 'm^8 \equiv 0 \pmod{2969} \implies 2969 \mid m^8 \implies 2969 \mid m'
+            note: "Puis m^8 ≡ 0 ; 2969 premier, le lemme d'Euclide (chapitre 7) donne 2969 | m, soit m ≡ 0."
+
+  # ── r-variation — jumeau frais anti-mémorisation (PAS un vrai sujet) ──────
+  # Même chaîne profonde que r-bac (Bézout → inverse → (u·m)^4 ≡ −1 → Fermat →
+  # équivalence) avec un autre premier et un autre exposant : p = 101, relation
+  # n^4 + m^4 ≡ 0 [101], avec 100 = 4×25 (25 impair, donc (−1)^25 = −1).
+  # Résultats exacts vérifiés à la main.
+  - id: r-variation
+    title: "Variation fraîche — un autre premier, un autre exposant"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2019, sourcé). Le premier
+        p = 101 et l'exposant 4 sont choisis pour que la même chaîne d'outils
+        donne des résultats exacts vérifiés à la main (100 = 4×25, 25 impair).
+    intro: |-
+      Même structure profonde que le sujet précédent, habillage différent : un autre nombre premier, un autre exposant. Le but est que tu ne puisses pas recopier la solution de $2019$ — tu dois reconnaître que la **même chaîne d'outils** (Bézout $\to$ inverse modulaire $\to$ puissances de congruences $\to$ petit théorème de Fermat $\to$ équivalence) s'applique quels que soient les nombres.
+
+      On admet que $101$ est un **nombre premier**. Soient $n$ et $m$ deux entiers naturels vérifiant $n^4 + m^4 \equiv 0 \pmod{101}$.
+    questions:
+      - id: q1a
+        part: "Partie A — Un inverse de $n$ modulo $101$ par Bézout"
+        stem: |-
+          On suppose que $101$ **ne divise pas** $n$. En utilisant le théorème de Bézout, montrer qu'il existe un entier $u$ tel que $u\,n \equiv 1 \pmod{101}$.
+        reasoning: |-
+          $101$ est premier et $101 \nmid n$ : leur seul diviseur commun est $1$, donc $\mathrm{PGCD}(101, n) = 1$ (chapitre 5). Le théorème de Bézout fournit alors $u, v$ tels que $u\,n + 101\,v = 1$, qu'on lit modulo $101$ : $u\,n \equiv 1$. L'entier $u$ est un inverse de $n$ modulo $101$.
+        steps:
+          - math: '\mathrm{PGCD}(101,\,n) = 1'
+            note: "101 premier et 101 ∤ n : premiers entre eux (chapitre 5)."
+          - math: 'u\,n + 101\,v = 1'
+            note: "Théorème de Bézout (chapitre 5)."
+          - math: 'u\,n \equiv 1 \pmod{101}'
+            note: "Réduction modulo 101 : 101·v ≡ 0."
+      - id: q1b
+        stem: |-
+          En déduire que $(u\,m)^4 \equiv -1 \pmod{101}$, puis que $(u\,m)^{100} \equiv -1 \pmod{101}$. *(On remarque que $100 = 4 \times 25$.)*
+        reasoning: |-
+          De $n^4 + m^4 \equiv 0$, on tire $m^4 \equiv -\,n^4$. On multiplie par $u^4$ : $(u\,m)^4 \equiv -(u\,n)^4 \equiv -1$, car $(u\,n)^4 \equiv 1$ (chapitre 3).
+
+          Puis $100 = 4 \times 25$ donne $(u\,m)^{100} = \big((u\,m)^4\big)^{25} \equiv (-1)^{25}$. L'exposant $25$ est **impair**, donc $(-1)^{25} = -1$.
+        steps:
+          - math: 'm^4 \equiv -\,n^4 \pmod{101}'
+            note: "Réécriture de n^4 + m^4 ≡ 0."
+          - math: '(u\,m)^4 = u^4\,m^4 \equiv -\,(u\,n)^4 \equiv -1 \pmod{101}'
+            note: "On multiplie par u^4 ; (u·n)^4 ≡ 1 (chapitre 3)."
+          - math: '(u\,m)^{100} = \big((u\,m)^4\big)^{25} \equiv (-1)^{25} = -1 \pmod{101}'
+            note: "100 = 4×25 ; 25 impair, donc (−1)^25 = −1."
+      - id: q1c
+        stem: |-
+          Montrer que $101$ ne divise pas $u\,m$.
+        reasoning: |-
+          Par l'absurde : si $101 \mid u\,m$, alors $(u\,m)^4 \equiv 0 \pmod{101}$. Mais on a montré $(u\,m)^4 \equiv -1$, d'où $0 \equiv -1$, soit $101 \mid 1$ — impossible. Donc $101 \nmid u\,m$.
+        steps:
+          - math: '(u\,m)^4 \equiv 0 \pmod{101}'
+            note: "Supposons par l'absurde 101 | u·m."
+          - math: '0 \equiv -1 \pmod{101} \implies 101 \mid 1'
+            note: "Mais (u·m)^4 ≡ −1 (question b) : contradiction."
+          - math: '101 \nmid 1 \implies 101 \nmid u\,m'
+            note: "101 > 1 ne divise pas 1."
+      - id: q1d
+        stem: |-
+          En déduire qu'on a aussi $(u\,m)^{100} \equiv 1 \pmod{101}$.
+        reasoning: |-
+          On applique le **petit théorème de Fermat** ($p$ premier, $p \nmid a \Rightarrow a^{p-1} \equiv 1 \pmod{p}$) avec $p = 101$ et $a = u\,m$. La condition $101 \nmid u\,m$ vient d'être établie, et $p - 1 = 100$ : donc $(u\,m)^{100} \equiv 1 \pmod{101}$.
+        steps:
+          - math: '(u\,m)^{100} \equiv 1 \pmod{101}'
+            note: "Petit théorème de Fermat : p = 101, p − 1 = 100, et 101 ∤ u·m (question c)."
+      - id: q2a
+        part: "Partie B — $101$ divise $n$, puis l'équivalence"
+        stem: |-
+          En utilisant les résultats précédents, montrer que $101$ **divise** $n$.
+        reasoning: |-
+          Le même nombre $(u\,m)^{100}$ vaut $-1$ (question b) et $1$ (question d) : donc $-1 \equiv 1 \pmod{101}$, soit $101 \mid 2$ — impossible puisque $101 > 2$. La seule supposition faite étant $101 \nmid n$, c'est elle qui est fausse : $101$ divise $n$.
+        steps:
+          - math: '-1 \equiv (u\,m)^{100} \equiv 1 \pmod{101}'
+            note: "Deux valeurs pour le même nombre : (b) donne −1, (d) donne 1."
+          - math: '-1 \equiv 1 \pmod{101} \implies 101 \mid 2'
+            note: "1 − (−1) = 2 devrait être un multiple de 101."
+          - math: '101 \nmid 2 \implies 101 \mid n'
+            note: "Contradiction : la supposition 101 ∤ n tombe, donc 101 divise n."
+      - id: q2b
+        stem: |-
+          Montrer que $n^4 + m^4 \equiv 0 \pmod{101}$ si et seulement si $n \equiv 0 \pmod{101}$ et $m \equiv 0 \pmod{101}$.
+        reasoning: |-
+          **Sens réciproque ($\Longleftarrow$).** Si $n \equiv 0$ et $m \equiv 0$, alors $n^4 \equiv 0$ et $m^4 \equiv 0$, donc $n^4 + m^4 \equiv 0$.
+
+          **Sens direct ($\Longrightarrow$).** Si $n^4 + m^4 \equiv 0$, la Partie A force $101 \mid n$, soit $n \equiv 0$. Alors $m^4 \equiv -\,n^4 \equiv 0$, donc $101 \mid m^4$ ; $101$ étant premier, le lemme d'Euclide (chapitre 7) donne $101 \mid m$, soit $m \equiv 0$.
+        steps:
+          - math: 'n \equiv 0 \ \text{et}\ m \equiv 0 \pmod{101} \implies n^4 + m^4 \equiv 0 \pmod{101}'
+            note: "Sens ⟸ : somme de deux multiples de 101."
+          - math: 'n^4 + m^4 \equiv 0 \pmod{101} \implies 101 \mid n \implies n \equiv 0 \pmod{101}'
+            note: "Sens ⟹ : question (2a)."
+          - math: 'm^4 \equiv 0 \pmod{101} \implies 101 \mid m^4 \implies 101 \mid m'
+            note: "101 premier, lemme d'Euclide (chapitre 7) : 101 | m, soit m ≡ 0."

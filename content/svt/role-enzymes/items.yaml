@@ -1,0 +1,690 @@
+notion: role-enzymes
+skill_code: svt_role_enzymes
+misconceptions:
+  # Inventaire écrit le 2026-09-05, tiré des feedbacks déjà présents sur les
+  # distracteurs — aucun n'était tagué, donc le modèle apprenant ne pouvait
+  # rien conclure de cette notion.
+  - id: mc.svt.svt_role_enzymes.enzyme-consommee-par-la-reaction
+    label: "« L'enzyme est consommée, ou dégradée, par la réaction qu'elle catalyse »"
+    description: >
+      L'élève traite l'enzyme comme un réactif : chaque molécule ne servirait
+      qu'une fois, la quantité disponible limiterait la quantité de produit, et
+      une activité qui cesse s'expliquerait par un stock épuisé.
+    contradicts_principle: >
+      Une enzyme est un BIOCATALYSEUR : elle ressort intacte de chaque cycle et
+      recommence. C'est le substrat qui est transformé, jamais l'enzyme. Une
+      seule molécule d'amylase coupe un très grand nombre de molécules d'amidon
+      — c'est pourquoi le goût sucré continue d'augmenter sans salive nouvelle.
+
+  - id: mc.svt.svt_role_enzymes.enzyme-usee-ou-modifiee-par-la-catalyse
+    label: "« En catalysant, l'enzyme se modifie : site actif occupé, structure changée, efficacité qui baisse »"
+    description: >
+      Variante plus fine de la précédente : l'élève admet que l'enzyme survit,
+      mais la croit altérée par son travail — produits collés au site actif,
+      structure épousant désormais la forme des produits, efficacité déclinant
+      au fil du temps.
+    contradicts_principle: >
+      Les produits, dont la forme ne correspond plus au site actif une fois la
+      liaison rompue, sont RELÂCHÉS ; l'enzyme retrouve exactement la forme
+      qu'elle avait avant la fixation. C'est cette restitution à l'identique qui
+      permet la réutilisation, et elle est la définition même d'un catalyseur.
+
+  - id: mc.svt.svt_role_enzymes.specificites-substrat-action-confondues
+    label: "« Spécificité de substrat et spécificité d'action, c'est la même chose »"
+    description: >
+      L'élève ne distingue pas QUI l'enzyme reconnaît de CE QU'ELLE FAIT à ce
+      substrat : il lit une expérience à trois substrats comme une preuve de
+      spécificité d'action, ou une analyse des produits d'un seul tube comme une
+      preuve de spécificité de substrat. Variante : il nie toute spécificité.
+    contradicts_principle: >
+      Deux questions distinctes, deux expériences distinctes. Comparer plusieurs
+      substrats (amidon, saccharose, protéine) teste la spécificité de SUBSTRAT.
+      Analyser les produits obtenus sur un seul substrat — toujours du maltose,
+      jamais du glucose libre — teste la spécificité d'ACTION.
+
+  - id: mc.svt.svt_role_enzymes.effet-attribue-au-substrat
+    label: "« Ce qu'on observe s'explique par le substrat ou le milieu, pas par l'enzyme »"
+    description: >
+      Devant chaque résultat, l'élève cherche la cause ailleurs que dans
+      l'enzyme : le sucre était déjà présent dans l'amidon, la salive elle-même
+      est sucrée, l'amidon est plus réactif, l'amidon se dégrade à la chaleur,
+      l'amidon change de nature dans l'estomac, ou il n'en reste plus.
+    contradicts_principle: >
+      Dans chacune de ces expériences, c'est l'ENZYME qui est la variable : sans
+      amylase, mâcher plus longtemps ne produit aucun sucre ; sans amylase, les
+      trois tubes restent inertes ; à 60 °C ou à pH 2, c'est le site actif de
+      l'amylase qui est déformé, pas l'amidon qui disparaît.
+
+  - id: mc.svt.svt_role_enzymes.optimum-ignore
+    label: "« Plus la température monte, plus l'enzyme est active »"
+    description: >
+      L'élève applique une loi monotone (« plus chaud = plus rapide ») et traite
+      la chute observée au-delà de l'optimum comme une anomalie expérimentale.
+    contradicts_principle: >
+      « Plus chaud = plus actif » ne vaut que JUSQU'À l'optimum thermique
+      (~37 °C pour l'amylase salivaire). Au-delà, la chaleur excessive dénature
+      la protéine : la chute est le résultat attendu, reproductible, et c'est
+      elle qui définit l'existence d'un optimum.
+
+  - id: mc.svt.svt_role_enzymes.denaturation-reversible
+    label: "« Une enzyme dénaturée redevient active si on rétablit de bonnes conditions »"
+    description: >
+      L'élève traite la dénaturation comme une simple mise en veille : revenir à
+      37 °C, ou à un pH neutre, restaurerait l'activité initiale.
+    contradicts_principle: >
+      Une chaleur excessive rompt les liaisons faibles qui maintiennent le
+      repliement de la protéine, le plus souvent de façon IRRÉVERSIBLE. Revenir
+      à une température favorable ne reconstruit pas le site actif détruit.
+
+items:
+  - id: RE-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: svt_role_enzymes
+    tags: [enzyme, biocatalyseur, non_consommee]
+    stem: >
+      Un élève mâche un gros morceau de pain pendant deux minutes sans
+      avaler : le goût sucré continue d'augmenter tout du long, alors
+      qu'aucune goutte de salive supplémentaire n'est produite. Quelle est
+      la meilleure explication de cette observation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'amylase salivaire n'est pas consommée par la réaction qu'elle catalyse : chaque molécule d'amylase peut couper de nombreuses molécules d'amidon les unes après les autres, ressortant inchangée à chaque cycle."
+        correct: true
+      - id: B
+        text: "Chaque molécule d'amylase ne peut couper qu'une seule molécule d'amidon avant d'être consommée ; c'est parce que la salive contient énormément de molécules d'amylase que la réaction continue."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.enzyme-consommee-par-la-reaction
+        feedback: >
+          C'est l'idée que l'énoncé contredit directement : si chaque
+          amylase était consommée après une seule coupure, la quantité de
+          maltose produite serait limitée par la quantité de salive présente
+          au départ, et s'arrêterait bien avant deux minutes de mastication
+          continue. Une enzyme n'est jamais consommée par la réaction
+          qu'elle catalyse — c'est justement ce qui définit un
+          biocatalyseur.
+      - id: C
+        text: "L'amidon du pain contenait déjà du maltose caché, que la mastication libère peu à peu sans aucune transformation chimique."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.effet-attribue-au-substrat
+        feedback: >
+          L'amidon lui-même n'a pas de goût sucré : ce n'est pas une
+          libération d'un sucre déjà présent, mais une véritable
+          transformation chimique (une hydrolyse) de l'amidon en maltose,
+          réalisée par l'amylase au fur et à mesure de la mastication.
+      - id: D
+        text: "La salive elle-même est sucrée, et le goût perçu vient uniquement de sa dilution progressive dans la bouche."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.effet-attribue-au-substrat
+        feedback: >
+          Ce n'est pas la salive qui a un goût sucré : c'est le maltose
+          produit par l'hydrolyse enzymatique de l'amidon du pain. Sans
+          amidon à transformer, mâcher plus longtemps ne produirait aucun
+          goût sucré supplémentaire.
+    correct_feedback: >
+      Une enzyme est un biocatalyseur : elle accélère une réaction sans
+      jamais y être consommée. Une même molécule d'amylase peut donc couper
+      de très nombreuses molécules d'amidon successivement, ce qui explique
+      que le goût sucré continue d'augmenter tant que de l'amidon reste
+      disponible, sans qu'il soit besoin d'ajouter de salive.
+    solution: |
+      **Ce qu'il faut écarter :** l'idée que l'amylase serait consommée
+      comme un réactif ordinaire, ou que le sucre serait déjà présent avant
+      la mastication.
+
+      **Le mécanisme réel :** l'amylase salivaire catalyse l'hydrolyse de
+      l'amidon en maltose sans être elle-même transformée par cette
+      réaction. Elle ressort de chaque cycle enzyme-substrat identique à ce
+      qu'elle était avant, prête à traiter une nouvelle molécule d'amidon —
+      c'est ce recommencement en boucle qui explique la production continue
+      de maltose.
+
+  - id: RE-2
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: svt_role_enzymes
+    tags: [site_actif, cle_serrure, complexe_enzyme_substrat]
+    stem: >
+      D'après le modèle clé-serrure et le mécanisme du complexe
+      enzyme-substrat, que devient une enzyme immédiatement après avoir
+      relâché les produits de la réaction qu'elle vient de catalyser ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Son site actif retrouve une forme libre et inchangée, identique à celle d'avant la fixation du substrat, prête à accueillir une nouvelle molécule de substrat."
+        correct: true
+      - id: B
+        text: "Son site actif reste occupé en permanence par les produits formés, ce qui l'empêche de réagir une seconde fois avec un nouveau substrat."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.enzyme-usee-ou-modifiee-par-la-catalyse
+        feedback: >
+          C'est l'inverse du mécanisme décrit : les produits, dont la forme
+          ne correspond plus au site actif une fois la liaison rompue, sont
+          justement relâchés pour cette raison. Un site actif occupé en
+          permanence contredirait le fait qu'une même enzyme traite de
+          nombreuses molécules de substrat les unes après les autres.
+      - id: C
+        text: "Sa structure change définitivement pour épouser la forme des produits obtenus, ce qui modifie sa spécificité pour la suite."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.enzyme-usee-ou-modifiee-par-la-catalyse
+        feedback: >
+          Ce n'est pas ce qui se passe : l'enzyme ressort du cycle avec la
+          même structure et la même forme de site actif qu'avant d'y entrer
+          — c'est précisément ce qui lui permet d'être réutilisée un très
+          grand nombre de fois sans jamais être consommée ni modifiée.
+      - id: D
+        text: "Elle est dégradée par la réaction, exactement comme le substrat, et doit être resynthétisée avant de pouvoir agir à nouveau."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.enzyme-consommee-par-la-reaction
+        feedback: >
+          Une enzyme n'est pas dégradée par la réaction qu'elle catalyse :
+          c'est le substrat qui est transformé en produit(s), pas l'enzyme.
+          C'est exactement cette absence de consommation qui définit un
+          biocatalyseur.
+    correct_feedback: >
+      Une fois les produits relâchés, l'enzyme retrouve un site actif libre
+      et structurellement inchangé, prêt pour un nouveau cycle avec une
+      autre molécule de substrat — c'est ce qui permet à une même enzyme de
+      catalyser un très grand nombre de réactions successives.
+    solution: |
+      **Le cycle enzyme-substrat :** rencontre du substrat de forme
+      complémentaire → formation du complexe enzyme-substrat → réaction
+      (ici une hydrolyse) → les produits, de forme différente du substrat
+      initial, ne correspondent plus au site actif et sont relâchés →
+      l'enzyme, inchangée, est libre pour un nouveau cycle.
+
+      **Ce que cela confirme :** l'enzyme n'est jamais transformée par la
+      réaction — seul le substrat l'est.
+
+  - id: RE-3
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: svt_role_enzymes
+    tags: [specificite_substrat, specificite_action]
+    stem: >
+      On ajoute de l'amylase salivaire séparément à trois tubes contenant
+      respectivement de l'amidon, du saccharose, et une protéine (même
+      température, même pH, même durée). Seul le tube contenant l'amidon
+      montre une réaction. Quelle propriété de l'enzyme ce résultat
+      démontre-t-il ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La spécificité de substrat : l'amylase ne réagit qu'avec l'amidon, et pas avec les autres molécules testées, même chimiquement proches (le saccharose)."
+        correct: true
+      - id: B
+        text: "La spécificité d'action : ce résultat montre que l'amylase réalise toujours la même transformation chimique, quel que soit le substrat en présence."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.specificites-substrat-action-confondues
+        feedback: >
+          C'est confondre les deux spécificités. Ce résultat renseigne sur
+          QUI réagit avec l'amylase (seul l'amidon), pas sur CE QUE l'amylase
+          fait à ce substrat une fois qu'elle le reconnaît. Pour montrer la
+          spécificité d'action, il faudrait observer, dans le seul tube où
+          une réaction a lieu, si l'amylase produit toujours le même
+          composé ou des composés différents.
+      - id: C
+        text: "Ce résultat ne prouve rien de particulier : n'importe quelle enzyme donnerait le même résultat avec n'importe quel substrat testé."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.specificites-substrat-action-confondues
+        feedback: >
+          Ce résultat est au contraire très informatif : il montre que
+          l'amylase ne réagit qu'avec un substrat précis parmi trois
+          proposés. Une enzyme sans spécificité de substrat réagirait avec
+          les trois tubes, ce qui n'est pas observé ici.
+      - id: D
+        text: "Cela prouve seulement que l'amidon est plus réactif chimiquement que le saccharose ou les protéines, indépendamment de la présence de l'amylase."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.effet-attribue-au-substrat
+        feedback: >
+          Le résultat dépend de la présence de l'amylase et de la forme de
+          son site actif, pas d'une réactivité chimique générale de
+          l'amidon : c'est la complémentarité de forme entre le site actif
+          de l'amylase et l'amidon (modèle clé-serrure) qui explique
+          pourquoi seul ce tube réagit.
+    correct_feedback: >
+      Seul le tube contenant l'amidon réagit : l'amylase salivaire ne
+      reconnaît, dans son site actif, que la forme de l'amidon — ni celle du
+      saccharose, ni celle des protéines. C'est la spécificité de substrat.
+    solution: |
+      **Ce que teste l'expérience :** en faisant varier le substrat proposé
+      (amidon, saccharose, protéine) tout en gardant la même enzyme, on
+      teste à QUI l'amylase s'adresse.
+
+      **Résultat :** seule la molécule d'amidon est reconnue et transformée.
+
+      **Conclusion :** l'amylase possède une spécificité de substrat étroite
+      — son site actif n'est complémentaire que de la forme de l'amidon.
+
+  - id: RE-4
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: svt_role_enzymes
+    tags: [specificite_substrat, specificite_action]
+    stem: >
+      Dans le tube où l'amylase salivaire est mise en présence d'amidon, on
+      analyse en continu les produits formés au cours du temps : on ne
+      détecte jamais que du maltose, jamais de glucose libre ni aucun autre
+      composé, bien que la chaîne d'amidon contienne de nombreuses liaisons
+      chimiques différentes. Quelle propriété de l'enzyme ce résultat
+      démontre-t-il ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La spécificité d'action : l'amylase réalise toujours la même transformation chimique sur son substrat, produisant systématiquement le même composé."
+        correct: true
+      - id: B
+        text: "La spécificité de substrat : ce résultat montre que l'amylase ne réagit qu'avec l'amidon, et avec aucune autre molécule."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.specificites-substrat-action-confondues
+        feedback: >
+          C'est confondre les deux spécificités. Cette expérience-ci ne
+          compare pas plusieurs substrats différents : elle observe un seul
+          tube, où l'amidon est déjà en train de réagir, et regarde
+          uniquement CE QUE l'enzyme en fait dans la durée. Montrer la
+          spécificité de substrat demanderait de comparer plusieurs
+          substrats différents, comme dans l'expérience à trois tubes.
+      - id: C
+        text: "Cela prouve que l'amidon ne contient en réalité qu'un seul type de liaison chimique, ce qui limite mécaniquement les produits possibles."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.effet-attribue-au-substrat
+        feedback: >
+          L'amidon contient bien plusieurs types de liaisons chimiques en
+          principe attaquables ; ce n'est donc pas une limitation du
+          substrat qui explique l'uniformité du produit obtenu, mais le
+          comportement de l'enzyme elle-même, qui ne catalyse toujours que
+          la même coupure, quelles que soient les autres liaisons présentes
+          dans la molécule.
+      - id: D
+        text: "Cela montre que l'amylase perd progressivement son efficacité au cours du temps, produisant de moins en moins de composés variés."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.enzyme-usee-ou-modifiee-par-la-catalyse
+        feedback: >
+          L'énoncé ne porte pas sur une baisse d'efficacité dans le temps,
+          mais sur la nature du produit obtenu : à chaque instant, c'est
+          toujours du maltose, et rien d'autre, qui est produit — une
+          question de type de transformation réalisée, pas de quantité ou de
+          vitesse.
+    correct_feedback: >
+      Même si l'amidon contient en principe plusieurs liaisons chimiques
+      attaquables, l'amylase réalise toujours et uniquement la même coupure,
+      produisant toujours du maltose. C'est la spécificité d'action : une
+      fois le substrat reconnu, l'enzyme ne réalise jamais qu'une seule
+      transformation, toujours la même.
+    solution: |
+      **Ce que teste l'expérience :** en observant, dans un seul tube où la
+      réaction a déjà lieu, si le produit obtenu varie ou reste identique
+      dans le temps, on teste CE QUE l'amylase fait à son substrat, pas à
+      QUI elle s'adresse.
+
+      **Résultat :** toujours du maltose, jamais un autre produit.
+
+      **Conclusion :** l'amylase possède une spécificité d'action — elle ne
+      réalise qu'un seul type de transformation chimique sur son substrat,
+      toujours identique.
+
+  - id: RE-5
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: svt_role_enzymes
+    tags: [temperature, optimum, denaturation]
+    stem: >
+      On mesure la vitesse de production de maltose par l'amylase salivaire
+      à différentes températures, de 0°C à 60°C. La vitesse augmente
+      progressivement jusqu'à 37°C, puis chute brutalement au-delà de 45°C
+      environ, pour devenir quasiment nulle à 60°C. Comment interpréter
+      correctement cette observation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'activité de l'amylase est maximale à un optimum thermique (autour de 37°C) ; au-delà, la chaleur excessive dénature la protéine et déforme son site actif, ce qui fait chuter durablement son activité."
+        correct: true
+      - id: B
+        text: "Plus la température augmente, plus l'amylase devrait être active ; la chute observée au-delà de 45°C n'est qu'une anomalie expérimentale ponctuelle, sans lien avec le fonctionnement normal de l'enzyme."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.optimum-ignore
+        feedback: >
+          Ce n'est pas une anomalie : c'est un résultat attendu et
+          reproductible. « Plus chaud = toujours plus actif » n'est vrai
+          que jusqu'à l'optimum thermique ; au-delà, l'activité chute parce
+          que la chaleur excessive dénature la protéine et déforme le site
+          actif — un phénomène biologique réel, pas un artefact.
+      - id: C
+        text: "La chute d'activité au-delà de 45°C montre seulement que l'amidon lui-même se dégrade à haute température, indépendamment de l'état de l'enzyme."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.effet-attribue-au-substrat
+        feedback: >
+          C'est l'enzyme, et non le substrat, qui est principalement
+          affectée par cette gamme de température dans ce contexte : c'est
+          la dénaturation du site actif de l'amylase qui explique la perte
+          d'activité, pas une dégradation de l'amidon.
+      - id: D
+        text: "Si on refroidit ensuite l'enzyme testée à 60°C jusqu'à 37°C, son activité devrait revenir à son niveau initial, puisque la température redevient favorable."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.denaturation-reversible
+        feedback: >
+          C'est l'erreur inverse de la dénaturation thermique : une chaleur
+          excessive rompt les liaisons faibles qui maintiennent le
+          repliement de la protéine, de façon le plus souvent irréversible.
+          Revenir à une température favorable ne restaure pas la forme
+          initiale du site actif une fois la protéine dénaturée.
+    correct_feedback: >
+      L'activité enzymatique augmente avec la température jusqu'à un
+      optimum thermique, puis chute au-delà : une chaleur excessive dénature
+      la protéine, déforme son site actif, et cette perte d'activité est le
+      plus souvent irréversible.
+    solution: |
+      **Ce qu'il faut écarter :** l'idée que l'activité enzymatique
+      augmente sans limite avec la température, ou que la chute observée
+      est un simple artefact.
+
+      **Le mécanisme réel :** en dessous de l'optimum, la chaleur accélère
+      les rencontres enzyme-substrat (effet physique, réversible). Au-delà
+      de l'optimum, la chaleur rompt les liaisons faibles qui maintiennent
+      le repliement de la protéine : celle-ci se dénature, son site actif se
+      déforme, et l'activité chute durablement.
+
+  - id: RE-6
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: svt_role_enzymes
+    tags: [ph_optimum, digestion, amylase, pepsine]
+    stem: >
+      L'amylase salivaire, très active dans la bouche, devient quasiment
+      inactive une fois le bol alimentaire mélangé au suc gastrique très
+      acide de l'estomac. Quelle est l'explication correcte de cette perte
+      d'activité ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le pH très acide de l'estomac s'éloigne fortement de l'optimum de pH de l'amylase (proche de la neutralité), ce qui déforme progressivement son site actif et fait chuter son activité."
+        correct: true
+      - id: B
+        text: "L'amylase est entièrement consommée dans la bouche avant même d'atteindre l'estomac, et il n'en reste simplement plus assez pour agir."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.enzyme-consommee-par-la-reaction
+        feedback: >
+          Une enzyme n'est jamais consommée par la réaction qu'elle
+          catalyse : ce n'est pas une question de quantité épuisée, mais de
+          conditions de milieu défavorables. L'amylase qui atteint l'estomac
+          est structurellement la même qu'en bouche ; c'est le pH du milieu
+          qui l'empêche désormais de fonctionner.
+      - id: C
+        text: "L'amidon change de nature chimique en entrant dans l'estomac, ce qui le rend méconnaissable pour l'amylase, indépendamment de tout effet du pH sur l'enzyme."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.effet-attribue-au-substrat
+        feedback: >
+          Ce n'est pas l'amidon qui change de nature : c'est l'amylase
+          elle-même dont le site actif est déformé par un pH trop éloigné de
+          son optimum. Le problème vient de l'enzyme confrontée à un
+          environnement défavorable, pas d'une transformation du substrat.
+      - id: D
+        text: "L'amylase reste parfaitement fonctionnelle dans l'estomac ; c'est seulement l'absence d'amidon restant qui explique qu'aucune réaction supplémentaire n'y soit observée."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.effet-attribue-au-substrat
+        feedback: >
+          Il reste en général de l'amidon non digéré au moment où le bol
+          alimentaire atteint l'estomac ; ce n'est donc pas un manque de
+          substrat qui explique l'arrêt de la réaction, mais bien la perte
+          d'activité de l'amylase elle-même, causée par le pH gastrique trop
+          éloigné de son optimum.
+    correct_feedback: >
+      Chaque enzyme digestive a un optimum de pH propre, correspondant au
+      segment du tube digestif où elle agit naturellement. Le pH très acide
+      de l'estomac, très éloigné de l'optimum de l'amylase, déforme son site
+      actif et fait chuter son activité — exactement comme un excès de
+      température le ferait.
+    solution: |
+      **Ce qu'il faut écarter :** l'idée d'une enzyme consommée, d'un
+      substrat transformé chimiquement par le pH, ou d'un simple manque de
+      substrat.
+
+      **Le mécanisme réel :** l'optimum de pH de l'amylase salivaire est
+      proche de la neutralité. Le pH très acide de l'estomac déforme son
+      site actif, exactement comme le ferait un excès de température — ce
+      qui explique pourquoi l'hydrolyse de l'amidon s'arrête presque
+      entièrement une fois dans l'estomac, où une autre enzyme (la pepsine),
+      adaptée à ce pH acide, prend le relais pour un autre substrat (les
+      protéines).
+
+  # ── TROIS ITEMS AJOUTÉS LE 2026-09-05 ──────────────────────────────────────
+  # Motif : quatre des six erreurs déclarées étaient sous le plancher de 3
+  # items du banc, donc inévaluables par le modèle apprenant. Ces trois items
+  # comblent exactement ce déficit, dans le périmètre de lesson.md (R3 et R4).
+  - id: RE-7
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: svt_role_enzymes
+    tags: [temperature, denaturation, optimum]
+    stem: >
+      On porte un tube d'amylase salivaire à $70\,^\circ\text{C}$ pendant dix
+      minutes, puis on le ramène soigneusement à $37\,^\circ\text{C}$ avant
+      d'y ajouter de l'amidon. Aucune production de maltose n'est détectée.
+      Quelle explication est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La chaleur excessive a rompu les liaisons faibles qui maintenaient le repliement de la protéine : le site actif est détruit, et revenir à une température favorable ne le reconstruit pas."
+        correct: true
+      - id: B
+        text: "L'absence de réaction ne peut être qu'un défaut de manipulation : une fois la température ramenée à sa valeur optimale, l'amylase retrouve nécessairement l'activité qu'elle avait avant le chauffage."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.denaturation-reversible
+        feedback: >
+          C'est traiter la dénaturation comme une simple mise en veille. La
+          chaleur excessive rompt le repliement de la protéine, le plus
+          souvent de façon IRRÉVERSIBLE : rétablir la température ne
+          reconstruit pas un site actif détruit.
+      - id: C
+        text: "À $70\\,^\\circ\\text{C}$ l'amylase travaillait au contraire à plein régime et a transformé, en dix minutes, la totalité de l'amidon présent dans le tube avant même l'ajout."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.optimum-ignore
+        feedback: >
+          « Plus chaud = plus actif » ne vaut que JUSQU'À l'optimum thermique,
+          voisin de $37\,^\circ\text{C}$ pour l'amylase salivaire. Au-delà de
+          $45\,^\circ\text{C}$ environ, l'activité chute. Et l'énoncé précise
+          que l'amidon n'est ajouté qu'APRÈS le retour à $37\,^\circ\text{C}$.
+      - id: D
+        text: "L'amylase s'est usée pendant ces dix minutes de chauffage, chaque molécule ayant épuisé le nombre limité de coupures qu'elle est capable de réaliser au cours de son existence."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.enzyme-usee-ou-modifiee-par-la-catalyse
+        feedback: >
+          Une enzyme ne s'use pas en catalysant : elle ressort intacte de
+          chaque cycle et recommence indéfiniment. Et ici elle n'a rien
+          catalysé du tout pendant le chauffage, faute de substrat. Ce qui l'a
+          détruite, c'est la chaleur elle-même.
+    correct_feedback: >
+      Au-delà de son optimum thermique, la chaleur rompt les liaisons faibles
+      qui maintiennent le repliement de la protéine : le site actif perd sa
+      forme. Cette dénaturation est le plus souvent irréversible — revenir à
+      $37\,^\circ\text{C}$ ne restaure rien.
+    solution: |
+      **Ce que fait la chaleur excessive :** elle ne ralentit pas l'enzyme,
+      elle la déforme. Les liaisons faibles qui tiennent le repliement cèdent,
+      et le site actif — cette cavité de forme très précise — cesse d'exister.
+
+      **Pourquoi le retour à 37 °C ne suffit pas :** la température favorable
+      permet à une enzyme INTACTE de bien travailler ; elle ne replie pas une
+      protéine déjà dénaturée.
+
+      **À retenir :** l'optimum thermique décrit une activité maximale, pas un
+      seuil au-delà duquel on pourrait faire mieux.
+
+  - id: RE-8
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: svt_role_enzymes
+    tags: [specificite_substrat, specificite_action]
+    stem: >
+      Deux expériences sont menées sur l'amylase salivaire. (1) Sur l'amidon,
+      l'analyse des produits ne détecte jamais que du maltose, à tout instant.
+      (2) Mise en présence de saccharose, puis d'une protéine, l'amylase ne
+      produit rien. Quelles propriétés ces deux expériences mettent-elles en
+      évidence, dans cet ordre ?
+    type: mcq
+    choices:
+      - id: A
+        text: "D'abord la spécificité d'action (ce que l'enzyme fait à son substrat), puis la spécificité de substrat (quelles molécules elle accepte dans son site actif)."
+        correct: true
+      - id: B
+        text: "D'abord la spécificité de substrat, puis la spécificité d'action : la première expérience montre déjà que seul l'amidon convient, la seconde précise ensuite la nature de la transformation réalisée."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.specificites-substrat-action-confondues
+        feedback: >
+          Les deux sont interverties. L'expérience (1) ne compare AUCUN autre
+          substrat : elle observe un seul tube et regarde le produit obtenu —
+          c'est la spécificité d'action. L'expérience (2), elle, compare trois
+          substrats sans analyser les produits : c'est la spécificité de
+          substrat.
+      - id: C
+        text: "Les deux mettent en évidence la même et unique propriété, la spécificité de substrat, la seconde ne faisant que confirmer sur d'autres molécules ce que la première avait déjà établi sur l'amidon."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.specificites-substrat-action-confondues
+        feedback: >
+          Ce sont bien deux propriétés distinctes, qui répondent à deux
+          questions différentes : QUI l'enzyme accepte (substrat) et CE
+          QU'ELLE EN FAIT (action). Une enzyme pourrait accepter un seul
+          substrat et lui faire subir plusieurs transformations différentes —
+          ce n'est pas ce qu'on observe ici.
+      - id: D
+        text: "Aucune des deux ne renseigne sur l'enzyme : l'amidon ne contient qu'un seul type de liaison hydrolysable, et le saccharose comme la protéine sont chimiquement trop stables pour réagir."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.effet-attribue-au-substrat
+        feedback: >
+          L'amidon contient plusieurs types de liaisons en principe
+          attaquables, et saccharose comme protéines sont hydrolysés sans
+          difficulté par d'AUTRES enzymes. Dans les deux expériences, la
+          variable est l'amylase, pas la réactivité propre des molécules.
+    correct_feedback: >
+      Deux questions, deux expériences. Analyser les produits obtenus sur un
+      seul substrat teste la spécificité d'ACTION ; comparer plusieurs
+      substrats sans regarder les produits teste la spécificité de SUBSTRAT.
+    solution: |
+      **Expérience (1) — un seul substrat, plusieurs produits possibles.**
+      L'amidon est déjà en train de réagir ; on regarde CE QUI SORT. Toujours
+      du maltose, jamais du glucose libre : l'amylase réalise toujours la même
+      transformation. C'est la spécificité d'ACTION.
+
+      **Expérience (2) — plusieurs substrats, une seule question.** On ne
+      regarde pas les produits, on regarde s'il se passe quelque chose. Seul
+      l'amidon réagit : l'amylase n'accepte qu'un substrat précis dans son
+      site actif. C'est la spécificité de SUBSTRAT.
+
+      **Le repère :** demande-toi ce que l'expérience fait VARIER. Le
+      substrat ? spécificité de substrat. Rien, et on observe le produit ?
+      spécificité d'action.
+
+  - id: RE-9
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: svt_role_enzymes
+    tags: [ph_optimum, denaturation, digestion]
+    stem: >
+      Le bol alimentaire, très acide en sortie d'estomac, est neutralisé dans
+      l'intestin grêle : le pH y remonte au voisinage de la neutralité.
+      L'amylase salivaire qui a traversé l'estomac y retrouve-t-elle son
+      activité ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : le pH très acide de l'estomac a déformé son site actif, et le retour à un pH favorable ne restaure pas cette forme perdue — c'est l'amylase pancréatique qui prend le relais dans l'intestin."
+        correct: true
+      - id: B
+        text: "Oui : le pH acide n'avait fait que suspendre son activité le temps de la traversée de l'estomac, si bien qu'elle reprend son travail dès que le milieu redevient neutre autour d'elle."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.denaturation-reversible
+        feedback: >
+          Un pH très éloigné de l'optimum ne met pas l'enzyme en pause : il
+          déforme son site actif, comme le fait une chaleur excessive. Cette
+          dénaturation ne se défait pas quand les conditions redeviennent
+          favorables.
+      - id: C
+        text: "Oui, et son activité y dépasse même celle qu'elle avait en bouche : l'efficacité d'une enzyme augmente avec l'écart de pH qu'elle a subi auparavant, l'acidité jouant un rôle activateur."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.optimum-ignore
+        feedback: >
+          Il n'existe aucune loi de ce genre. Une enzyme a un pH OPTIMAL — de
+          part et d'autre, son activité diminue, et un écart important la
+          dénature. S'éloigner de l'optimum n'a jamais rendu une enzyme plus
+          efficace.
+      - id: D
+        text: "Non, mais pour une autre raison : l'amylase salivaire a été entièrement consommée dans la bouche, où chaque molécule a servi une fois, si bien qu'il n'en atteint jamais l'intestin."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.enzyme-consommee-par-la-reaction
+        feedback: >
+          Une enzyme n'est jamais consommée par la réaction qu'elle catalyse :
+          l'amylase qui quitte la bouche est en quantité inchangée. Ce n'est
+          pas une question de stock épuisé, mais de conditions de milieu qui
+          l'ont dénaturée.
+    correct_feedback: >
+      Un pH trop éloigné de l'optimum déforme le site actif, exactement comme
+      une chaleur excessive — et cette déformation ne se défait pas quand le
+      milieu redevient favorable. La digestion de l'amidon se poursuit dans
+      l'intestin grâce à une autre enzyme, l'amylase pancréatique.
+    solution: |
+      **Ce que fait un pH extrême :** il modifie les charges électriques qui
+      maintiennent le repliement de la protéine. Le site actif perd sa forme
+      précise — même mécanisme que la dénaturation thermique.
+
+      **Pourquoi le retour à la neutralité ne suffit pas :** un pH favorable
+      permet à une enzyme intacte de travailler, il ne replie pas une protéine
+      dénaturée.
+
+      **Comment l'organisme s'en accommode :** chaque compartiment digestif a
+      ses propres enzymes, dont l'optimum correspond au pH local — pepsine en
+      milieu gastrique acide, amylase pancréatique en milieu intestinal.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
+# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
+# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
+# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# web/scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
+# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
+# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul.
+  per_misconception:
+    mc.svt.svt_role_enzymes.enzyme-consommee-par-la-reaction:        { count: 4, items: [RE-1, RE-2, RE-6, RE-9] }
+    mc.svt.svt_role_enzymes.enzyme-usee-ou-modifiee-par-la-catalyse: { count: 3, items: [RE-2, RE-4, RE-7] }
+    mc.svt.svt_role_enzymes.specificites-substrat-action-confondues: { count: 3, items: [RE-3, RE-4, RE-8] }
+    mc.svt.svt_role_enzymes.effet-attribue-au-substrat:              { count: 6, items: [RE-1, RE-3, RE-4, RE-5, RE-6, RE-8] }
+    mc.svt.svt_role_enzymes.optimum-ignore:                          { count: 3, items: [RE-5, RE-7, RE-9] }
+    mc.svt.svt_role_enzymes.denaturation-reversible:                 { count: 3, items: [RE-5, RE-7, RE-9] }
+  total_items: 9
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    # Les barreaux à ZÉRO sont ÉCRITS, pas omis (2026-09-19, §11.93).
+    # RECTIFIÉ le même jour : R0 et R7 avaient été dits « exemptés par
+    # convention ». Ils ne le sont pas. Mesuré sur les 62 notions : 51 portent
+    # au moins un item à R0, 50 au dernier barreau. Tous les barreaux comptent.
+    #
+    # R5 — la concentration en substrat et le PALIER DE SATURATION — n'a AUCUN
+    # item de banc. Le chapitre est pourtant enseigné, mis en scène (figure
+    # étagée) et sa misconception rompue en prose ; mais il ne porte aucune
+    # ligne du registre, et sa seule sonde est un checkpoint, que ce fichier
+    # exclut lui-même du modèle apprenant. C'est aussi le savoir-faire le plus
+    # quantitatif du cadre pour cette notion (lire une courbe vitesse–[substrat]
+    # et une courbe vitesse–[enzyme], et relier chaque forme au site actif).
+    # Mesuré le 2026-09-19 sur les 62 notions : 51 portent au moins un item
+    # au barreau R0 et 50 au DERNIER barreau. Un zéro ici n'est donc PAS une
+    # fatalité de structure, c'est un état de cette notion — il s'écrit.
+    R0: 0   # l'accroche ne porte aucun item de banc
+    R1: 1
+    R2: 1
+    R3: 3
+    R4: 3
+    R5: 0
+    R6: 1
+    R7: 0   # le chapitre « Pour t'entraîner » ne porte aucun item de banc
+  honest_state: >-
+    Les six misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Quatre y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

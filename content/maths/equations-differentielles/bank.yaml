@@ -1,0 +1,166 @@
+# bank.yaml — la banque « S'entraîner » de equations-differentielles (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# marqueurs exercise dans lesson.md — c'est la couche de VOLUME derrière le
+# sommet de leçon (r-bac + r-variation, marqueurs exercise à R6), pas la rampe
+# embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml).
+#
+# UNE SEULE ENTRÉE : docs/sujets/maths/equations-differentielles.md ne
+# recense qu'UN SEUL sujet, statut « vérifié — agent-vérificateur-adversarial,
+# 2026-07-12 » : 2022 session normale, Exercice 4 (« Équations différentielles
+# et calcul intégral », NS 22F, AlloSchool element/136586, barème total 2,5
+# points). Cet exercice se partage en deux moitiés indépendantes sur des
+# notions différentes :
+#   - questions 1) a) et 1) b) : calcul intégral (primitive + IPP) — hors
+#     périmètre de cette notion, transcrites dans la banque SŒUR
+#     content/maths/calcul-integral/bank.yaml (PAS écrite ici, PAS dupliquée
+#     ici) ;
+#   - questions 2) a) et 2) b) : équations différentielles, barème 1 point —
+#     LA SEULE moitié transcrite ci-dessous.
+# Introuvable = absent : aucun autre sujet vérifié n'existe pour cette notion
+# à ce jour, donc la banque ne compte qu'une entrée.
+#
+# NOTE ÉDITORIALE (pour la revue — RECOUPEMENT CONNU ET ASSUMÉ) : bk-2022-n-x4
+# transcrit LE MÊME sujet que le sommet de leçon r-bac (exercises.yaml,
+# marqueur exercise r-bac à R6) — c'est le seul sujet 2022 recensé pour
+# cette notion, et il n'y a donc pas d'autre choix pour peupler la banque tout
+# en restant fidèle au census. Converti quand même, conformément au verdict
+# standing sur les doublons (BANK-SPEC §1 : « la banque est le volume derrière
+# le sommet, jamais son remplacement » — un notion avec une seule annale
+# vérifiée voit cette annale apparaître aux DEUX endroits, sommet ET banque,
+# plutôt que de laisser la banque vide). Même décision déjà posée sur
+# bk-2022-n-x3 de content/maths/fonction-exponentielle/bank.yaml et
+# bk-2019-n-x2 de content/maths/nombres-complexes-1/bank.yaml. Le `reasoning`
+# ci-dessous est rédigé FRAIS, à la voix experte de la maison — jamais copié
+# depuis exercises.yaml — mais aboutit nécessairement à la même méthode
+# (l'équation caractéristique n'a qu'une seule façon correcte de s'appliquer
+# ici).
+#
+# SCOPE NOTE (divulgation honnête, authoring-side — même écart déjà signalé
+# dans exercises.yaml pour r-bac) : la question 2 a) résout $(E) :
+# y''-2y'+y=0$ par l'ÉQUATION CARACTÉRISTIQUE (racine double $r=1$, solution
+# générale $(Ax+B)e^{rx}$).
+#
+# MISE À JOUR (revue vague 1, 2026-09-12) : CET ÉCART N'EXISTE PLUS. Ce qui
+# suit décrit la leçon d'AVANT la passe R4-bis du 2026-08-27
+# (docs/audits/lesson-completeness-docket.md:90, item A5). Le rung R4 traite
+# désormais le cas général $ay''+by'+cy=0$ par l'équation caractéristique,
+# avec les trois cas du discriminant. Le `reasoning` ci-dessous a été
+# réaligné en conséquence : il renvoie au chapitre 5 au lieu de prétendre
+# qu'il ne l'enseigne pas. Ce qui reste vrai : aucun item du banc ne teste
+# encore l'équation caractéristique générale, et le cas $\Delta=0$ — le SEUL
+# attesté dans un sujet vérifié — n'a toujours pas d'exemple travaillé.
+#
+# [état antérieur] Le rung R4 ne traitait formellement
+# que le cas particulier $y''+\omega^2y=0$ (sans terme en $y'$, admis sans
+# démonstration de la réciproque) ; il n'enseignait pas la méthode générale de
+# l'équation caractéristique $ar^2+br+c=0$ pour $ay''+by'+cy=0$, ni la
+# distinction racine double / racines distinctes / racines complexes. Cette
+# méthode EST au programme 2ème Bac Sciences Expérimentales (le sujet 2022 le
+# confirme), et le `reasoning` de bk-2022-n-x4 ci-dessous est rédigé de
+# façon AUTOPORTANTE (il explique d'où vient l'équation caractéristique,
+# sans supposer que R4 l'a déjà introduite) — exactement le traitement déjà
+# choisi pour r-bac dans exercises.yaml. Une passe R4-bis (cas Δ>0 / Δ=0 /
+# Δ<0 via l'équation caractéristique) reste le suivi pédagogique recommandé,
+# non résolu par cet auteur.
+#
+# CONVENTION PRIMES (divulgation authoring-side) : le contrat single-quoted
+# de `steps[].math` exige de DOUBLER chaque apostrophe littérale ($y''$
+# demanderait quatre apostrophes d'affilée dans la source YAML — voir
+# fonction-exponentielle/bank.yaml pour le même écueil sur $f''$). Ici, la
+# question 2 a) ne fait JAMAIS apparaître de prime dans ses `steps[].math` :
+# l'équation caractéristique porte sur $r$, pas sur $y$, donc $y''$ et $y'$
+# ne vivent que dans `stem`/`reasoning` (block scalars `|-`, où l'apostrophe
+# est un caractère ordinaire, sans aucun escaping). La question 2 b) fait
+# apparaître UNE seule prime, $h'$, dans deux lignes de `steps[].math` — ces
+# deux lignes n'ont besoin d'aucune commande LaTeX à antislash (juste des
+# exposants et des parenthèses), donc elles sont écrites en YAML
+# DOUBLE-quoted (où l'apostrophe est aussi un caractère ordinaire, sans
+# escaping), exactement comme le fait déjà exercises.yaml pour les mêmes
+# lignes de calcul de $h'$. Aucune ligne de ce fichier n'a besoin de cumuler
+# à la fois une double-prime ($y''$) ET une commande à antislash dans un
+# même `steps[].math` — le cas qui forcerait le quadruple-apostrophe ne se
+# présente donc pas ici ; s'il devait se présenter dans une future entrée, la
+# marche à suivre est la notation $y^{\prime\prime}$ (commande LaTeX, aucun
+# caractère apostrophe dans la source YAML, aucun escaping requis).
+
+notion: maths/equations-differentielles
+
+entries:
+  # ── bk-2022-n-x4 — 2022 N, Exercice 4 (partie éq. diff.) : racine double, identification d'une solution ──
+  - id: bk-2022-n-x4
+    title: "Équation du second ordre à racine double : résoudre puis identifier une solution"
+    source:
+      year: 2022
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 4 — Équations différentielles"
+    bareme_total: 1
+    duration_min: 6
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques, option française), Mathématiques (3 h, coef 7), code NS
+        22F, AlloSchool element/136586 (Exercice 4, « Équations
+        différentielles et calcul intégral » ; barème total de l'exercice
+        2,5 points — SEULE la partie équations différentielles, questions 2
+        a) et 2 b), barème 1 point, est transcrite ici ; la partie calcul
+        intégral, questions 1 a) et 1 b), relève de la banque sœur
+        content/maths/calcul-integral/bank.yaml et n'est pas dupliquée dans
+        ce fichier). Transcription fidèle de l'entrée « vérifié —
+        agent-vérificateur-adversarial, 2026-07-12 » de
+        docs/sujets/maths/equations-differentielles.md, section « 2022 —
+        session normale — Exercice 4 » (source re-fetchée indépendamment
+        vers course-438/upload-84495, page 3, diff conforme au scan ;
+        intitulé et code NS 22F confirmés). RECOUPEMENT CONNU ET ASSUMÉ
+        (verdict standing, BANK-SPEC §1) : c'est le même sujet que le sommet
+        de leçon r-bac (exercises.yaml, marqueur exercise r-bac à R6) —
+        le seul sujet 2022 recensé pour cette notion, converti quand même
+        pour que la banque reste le corpus complet des annales vérifiées.
+        Voir la NOTE ÉDITORIALE et la SCOPE NOTE en tête de fichier.
+    intro: |-
+      **Équations différentielles (examen national, session normale 2022, Sciences Expérimentales BIOF).**
+
+      On considère la fonction $h$ définie sur $\mathbb{R}$ par $h(x) = (x+1)e^{x}$.
+
+      *(Les questions 1) a) et 1) b) du sujet portent sur le calcul intégral — hors du périmètre de cette notion, transcrites dans la banque sœur `calcul-integral/bank.yaml`.)*
+    questions:
+      - id: q2a
+        part: "Résoudre l'équation caractéristique et donner la solution générale"
+        stem: |-
+          **(0,5 pt)** Résoudre l'équation différentielle $(E) : y'' - 2y' + y = 0$
+        reasoning: |-
+          $(E)$ est une équation linéaire du second ordre à coefficients constants, $y''-2y'+y=0$ — exactement le cas général traité à la fin du chapitre 5. L'outil qui s'applique ici est l'**équation caractéristique** : on cherche une solution de la forme $y=e^{rx}$, et comme chaque dérivée de $e^{rx}$ multiplie simplement par $r$ (donc $y'=re^{rx}$, $y''=r^2e^{rx}$), remplacer dans $(E)$ donne $e^{rx}\left(r^2-2r+1\right)=0$. Le facteur $e^{rx}$ n'est jamais nul, donc résoudre $(E)$ revient exactement à annuler le polynôme $r^2-2r+1$.
+
+          Ce polynôme a pour discriminant $0$ : une **racine double**. C'est précisément ce cas — celui du chapitre 5, Cas 2, par opposition aux deux racines distinctes du Cas 1 et aux racines complexes du Cas 3 — qui impose le facteur $x$ supplémentaire dans la solution générale $(Ax+B)e^{rx}$ : une équation du second ordre réclame **deux** constantes libres, et $Ax+B$ en fournit deux, là où une simple constante $C$ devant $e^{rx}$ n'en fournirait qu'une.
+        steps:
+          - math: 'r^{2} - 2r + 1 = 0'
+            note: "Équation caractéristique associée à (E) : on cherche r tel que $y = e^{rx}$ soit solution, ce qui transforme (E) en un polynôme en r."
+          - math: '\Delta = (-2)^{2} - 4\times 1\times 1 = 4 - 4 = 0'
+            note: "Discriminant nul : le second degré en r admet une racine double."
+          - math: 'r = \dfrac{2}{2} = 1 \quad (\text{racine double, issue de } \Delta = 0)'
+            note: "L'unique racine (double) de l'équation caractéristique vaut r = 1."
+          - math: 'y(x) = (A\,x+B)\,e^{x}, \quad A,B \in \mathbb{R}'
+            note: "Solution générale de (E) dans le cas racine double : le facteur (Ax+B) remplace la simple constante C du cas racine simple."
+      - id: q2b
+        part: "Identifier h dans la famille de solutions"
+        stem: |-
+          **(0,5 pt)** Montrer que la fonction $h$ est la solution de $(E)$ qui vérifie les conditions $h(0) = 1$ et $h'(0) = 2$
+        reasoning: |-
+          Deux choses à établir, dans l'ordre. D'abord, que $h$ appartient bien à la famille de solutions trouvée en a) : $h(x)=(x+1)e^{x}$ a exactement la forme $(Ax+B)e^{x}$, avec $A=1$ et $B=1$ — pas besoin de reprendre le calcul depuis $(E)$, la question a) a déjà réglé une fois pour toutes que toute fonction de cette forme est solution. Ensuite, que $h$ est bien **la** solution associée aux deux conditions $h(0)=1$ et $h'(0)=2$ — et comme une solution du second ordre est fixée de façon unique par la donnée conjointe de $y(0)$ et $y'(0)$ (deux conditions pour deux constantes), il suffit de vérifier ces deux égalités sur $h$, sans chercher $A$ et $B$ séparément : ils sont déjà connus par construction ($A=1$, $B=1$).
+
+          On calcule donc $h'(x)$ (dérivée d'un produit), puis on évalue $h$ et $h'$ en $0$.
+        steps:
+          - math: 'h(x) = (x+1)e^{x} = (1\times x + 1)e^{x}'
+            note: "h a la forme (Ax+B)e^x avec A = 1 et B = 1 : c'est donc une solution de (E), d'après la question a)."
+          - math: "h'(x) = e^{x} + (x+1)e^{x} = (x+2)e^{x}"
+            note: "Dérivée d'un produit, u(x) = x+1 et $v(x) = e^{x}$ : (uv)' = u'v + uv'."
+          - math: 'h(0) = (0+1)e^{0} = 1'
+            note: "Première condition vérifiée : h(0) = 1."
+          - math: "h'(0) = (0+2)e^{0} = 2"
+            note: "Seconde condition vérifiée : h'(0) = 2 — les deux conditions imposées sont satisfaites, donc h est bien la solution de (E) associée à ces conditions."

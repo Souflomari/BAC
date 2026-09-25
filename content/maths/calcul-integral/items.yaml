@@ -1,0 +1,3038 @@
+notion: calcul-integral
+skill_code: maths_calcul_integral   # proposed; supabase-architect reconciles at step 7
+
+# ── Misconception inventory (summit-conversion backfill) ──────────────────────
+# Added by the summit-conversion pass: this legacy end-bank (CI-1..CI-30) was
+# authored BEFORE per-distractor misconception tagging. The backfill (a) names
+# the notion's cognitive-error models, (b) sets an item-level
+# `primary_misconception` on every item, (c) adds per-distractor `misconception`
+# tags on the items backing the four rupture-gate checkpoints + the predict gate,
+# and (d) reports the honest floor in `coverage_summary` (§6) — including the
+# models that do NOT yet meet the ≥3 floor. Ids follow mc.math.<skill_code>.<slug>.
+misconceptions:
+  - id: mc.math.maths_calcul_integral.primitive-vs-derivee
+    label: "Confondre primitive et dérivée (mauvais sens de vérification)"
+    description: >-
+      Pour intégrer, l'élève dérive (ou, pour vérifier qu'une fonction $F$ est
+      une primitive de $f$, il l'intègre, ou il teste $h'=F$ au lieu de $F'=h$,
+      ou il croit qu'une primitive « est » la fonction). Les deux opérations
+      inverses — dériver et primitiver — sont interverties.
+    contradicts_principle: >-
+      Une primitive $F$ de $f$ est DÉFINIE par $F'=f$. On vérifie donc une
+      primitive en DÉRIVANT la candidate et en contrôlant qu'on retombe sur $f$ ;
+      on ne l'intègre pas, et $F\neq f$ en général.
+  - id: mc.math.maths_calcul_integral.constante-et-bornes
+    label: "Mauvais traitement de la primitive et de l'évaluation aux bornes"
+    description: >-
+      L'élève croit que la constante d'une primitive change le résultat, ou
+      évalue mal aux bornes : $F(b)$ seul, $F(a)-F(b)$ (ordre inversé), ou
+      $F(b-a)$ au lieu de $F(b)-F(a)$.
+    contradicts_principle: >-
+      $\int_a^b f = F(b)-F(a)$ : la constante additive s'annule dans la
+      soustraction (le résultat ne dépend pas de la primitive choisie), l'ordre
+      est toujours « borne du haut moins borne du bas », et la soustraction porte
+      sur les VALEURS de $F$, pas sur les bornes.
+  - id: mc.math.maths_calcul_integral.linearite-abusive
+    label: "Linéarité mal appliquée (produit, ou coefficient ignoré)"
+    description: >-
+      L'élève étend la linéarité au produit ($\int fg = \int f \cdot \int g$), ou
+      oublie/déplace un coefficient constant, ou traite le terme constant comme
+      s'il ne se multipliait pas par la longueur de l'intervalle.
+    contradicts_principle: >-
+      La linéarité ne porte que sur la SOMME et le FACTEUR CONSTANT :
+      $\int(f+g)=\int f+\int g$ et $\int kf=k\int f$. Elle ne dit rien du produit
+      de deux fonctions, et chaque coefficient doit multiplier sa propre
+      intégrale avant de combiner.
+  - id: mc.math.maths_calcul_integral.chasles-mal-appliquee
+    label: "Relation de Chasles mal appliquée (addition/signe/découpage)"
+    description: >-
+      En reliant des intégrales par Chasles, l'élève additionne là où il faut
+      soustraire, se trompe de signe, ignore le découpage, ou croit que $c$ doit
+      être entre $a$ et $b$ (ou oublie la convention $\int_b^a=-\int_a^b$).
+    contradicts_principle: >-
+      $\int_a^b f = \int_a^c f + \int_c^b f$ pour tout réel $c$ (grâce aux
+      conventions $\int_a^a=0$ et $\int_b^a=-\int_a^b$). On ISOLE le terme
+      cherché par soustraction ; on n'additionne pas les deux intégrales connues.
+  - id: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+    label: "L'intégrale signée prise pour l'aire (signe ignoré)"
+    description: >-
+      L'élève prend $\int_a^b f$ pour l'aire même quand $f$ change de signe, ou
+      prend la valeur absolue de l'intégrale GLOBALE, ou change le signe global,
+      au lieu de découper selon le signe de $f$.
+    contradicts_principle: >-
+      $\int_a^b f$ n'est l'aire que si $f$ garde un signe constant. Quand $f$
+      change de signe, il faut DÉCOUPER aux racines (Chasles), prendre l'opposé
+      là où $f\le 0$ et l'intégrale telle quelle là où $f\ge 0$, puis additionner
+      — le découpage précède la valeur absolue.
+  - id: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
+    label: "Intégration par parties : mauvais choix de u/v' ou mauvais signe"
+    description: >-
+      L'élève dérive le facteur qui ne se simplifie pas (p. ex. $e^x$), prend le
+      produit entier comme $u$, croit que l'IPP ne s'applique pas à un « seul
+      terme », ou met un « + » au lieu du « − » dans la formule.
+    contradicts_principle: >-
+      $\int_a^b uv' = [uv]_a^b - \int_a^b u'v$ : on choisit $u$ dont la dérivée
+      est plus simple et $v'$ dont une primitive est immédiate ; le terme de bord
+      est soustrait de l'intégrale du produit dérivé-primitivé.
+  - id: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
+    label: "Valeur moyenne mal normalisée (division par b−a oubliée)"
+    description: >-
+      L'élève rend l'intégrale elle-même comme valeur moyenne, divise par une
+      borne au lieu de la longueur, multiplie par $b-a$ au lieu de diviser, ou
+      confond la valeur moyenne avec $f$ au milieu de l'intervalle.
+    contradicts_principle: >-
+      $\mu = \dfrac{1}{b-a}\int_a^b f$ : on DIVISE l'intégrale par la LONGUEUR
+      $b-a$ de l'intervalle. Ce n'est ni l'intégrale seule, ni $f\!\left(\frac{a+b}{2}\right)$
+      (sauf pour une fonction affine).
+  - id: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+    label: "Inégalité de la moyenne : facteur (b−a) oublié ou m/M mal choisis"
+    description: >-
+      L'élève encadre $\int_a^b f$ par $m$ et $M$ sans multiplier par $b-a$,
+      multiplie par une borne au lieu de la longueur, ou choisit mal le minimum
+      $m$ et le maximum $M$ (bornes de l'intervalle au lieu de valeurs de $f$,
+      ou $m$ et $M$ intervertis).
+    contradicts_principle: >-
+      Si $m\le f\le M$ sur $[a,b]$, alors $m(b-a)\le \int_a^b f\le M(b-a)$ : les
+      DEUX bornes se multiplient par la LONGUEUR $b-a$, et $m,M$ sont le minimum
+      et le maximum des VALEURS de $f$ sur l'intervalle.
+  - id: mc.math.maths_calcul_integral.hypothese-non-verifiee
+    label: "Positivité/comparaison appliquées sans vérifier l'hypothèse"
+    description: >-
+      L'élève applique la positivité sans $a\le b$ (bornes inversées), ou la
+      comparaison en se contentant de l'inégalité aux bornes au lieu de
+      l'intervalle entier, ou conclut à une égalité des intégrales à partir de
+      $f\le g$.
+    contradicts_principle: >-
+      La positivité exige $a\le b$ (sinon $\int_b^a f=-\int_a^b f\le 0$) ; la
+      comparaison exige $f\le g$ sur TOUT $[a,b]$ (elle applique la positivité à
+      $g-f\ge 0$ partout). $f\le g$ donne $\int f\le\int g$, pas l'égalité.
+  - id: mc.math.maths_calcul_integral.aire-naive-geometrique
+    label: "Estimer l'aire sous une courbe par un raccourci géométrique naïf"
+    description: >-
+      Devant une aire sous une courbe, l'élève l'estime par une forme simple
+      (rectangle à la vitesse/hauteur maximale, triangle, rectangle au point
+      milieu) et prend cette estimation pour la valeur exacte.
+    contradicts_principle: >-
+      Une formule de géométrie plane suppose un contour de segments de droite.
+      Sous une courbe, seule l'intégrale $\int_a^b f$ donne l'aire exacte ; les
+      raccourcis rectangle/triangle ne sont que des majorants ou minorants.
+  - id: mc.math.maths_calcul_integral.conversion-unites-aire
+    label: "Conversion u.a. → cm² en multipliant par l'échelle une seule fois"
+    description: >-
+      L'élève convertit une aire en u.a. vers des cm² en multipliant par
+      l'échelle une seule fois (ou en additionnant), au lieu de multiplier par le
+      carré de l'échelle.
+    contradicts_principle: >-
+      $1$ u.a. est l'aire d'un carré de côté $1$ : si l'échelle est $k$ cm par
+      unité sur chaque axe, alors $1$ u.a. $=k^2$ cm² — le facteur s'applique aux
+      DEUX dimensions de l'aire.
+
+  # ── Rung « volume d'un solide de révolution » (spec-extension.md, R9/R10) ──
+  # 5 misconceptions neuves, copiées telles quelles depuis spec-extension.md §5.
+  - id: mc.math.maths_calcul_integral.volume-oubli-du-carre
+    label: "Volume de révolution : le rayon n'est pas élevé au carré"
+    description: >-
+      L'élève écrit $V=\pi\int_a^b f(x)\,\mathrm{d}x$ : il a retenu le $\pi$ et
+      l'intégrale, mais traite la tranche comme si son aire était proportionnelle
+      au rayon $f(x)$, et non à son carré. Il transporte l'aire sous la courbe
+      (une somme de longueurs) dans une question de volume, en lui collant un
+      $\pi$ devant.
+    contradicts_principle: >-
+      La tranche perpendiculaire à $(Ox)$ à l'abscisse $x$ est un DISQUE de rayon
+      $f(x)$ : son aire vaut $\pi f(x)^2$, pas $\pi f(x)$. Doubler $f$ QUADRUPLE
+      la tranche. D'où $V=\pi\int_a^b \big(f(x)\big)^2\,\mathrm{d}x$.
+  - id: mc.math.maths_calcul_integral.volume-circonference-vs-disque
+    label: "Volume de révolution : la circonférence prise pour le disque (ou « un tour complet = ×2π »)"
+    description: >-
+      L'élève écrit $V=2\pi\int_a^b f(x)\,\mathrm{d}x$, par l'une de deux routes
+      qui donnent toujours le même nombre : soit il prend la CIRCONFÉRENCE
+      $2\pi r$ du cercle pour l'aire du disque, soit il raisonne « un tour complet
+      vaut $2\pi$ radians, donc le volume est l'aire de la région multipliée par
+      $2\pi$ ».
+    contradicts_principle: >-
+      La tranche est un disque PLEIN : ce qui s'accumule est son AIRE $\pi f(x)^2$,
+      pas son périmètre $2\pi f(x)$ (un périmètre est une longueur). Et l'angle de
+      rotation ne se multiplie pas à l'aire : les points de la région sont à des
+      distances différentes de l'axe, donc ils ne balaient pas tous la même chose.
+  - id: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+    label: "Volume de révolution : l'intégrale rendue telle quelle, sans le facteur π"
+    description: >-
+      L'élève calcule $\int_a^b \big(f(x)\big)^2\,\mathrm{d}x$ et annonce ce
+      nombre comme le volume. Modèle sous-jacent : « pour l'aire, l'intégrale
+      DONNAIT la réponse ; pour le volume, ce doit être pareil » — l'intégrale est
+      prise pour la réponse elle-même, sans facteur géométrique.
+    contradicts_principle: >-
+      L'intégrale accumule l'AIRE DES TRANCHES, et l'aire d'une tranche de rayon
+      $f(x)$ vaut $\pi f(x)^2$ : le $\pi$ fait partie de la grandeur accumulée, il
+      n'est pas un ornement. $V=\pi\int_a^b \big(f(x)\big)^2\,\mathrm{d}x$, jamais
+      $\int_a^b \big(f(x)\big)^2\,\mathrm{d}x$ seule.
+  - id: mc.math.maths_calcul_integral.volume-carre-mal-place
+    label: "Volume de révolution : le carré posé sur l'intégrale au lieu de la fonction"
+    description: >-
+      L'élève écrit $V=\pi\left(\int_a^b f(x)\,\mathrm{d}x\right)^2$ : il sait
+      qu'un carré intervient, mais il l'applique au RÉSULTAT de l'intégration au
+      lieu de la fonction sous le signe intégral. C'est la linéarité étendue au
+      produit ($\int f\cdot f = \int f \cdot \int f$), appliquée au carré.
+    contradicts_principle: >-
+      $\left(\int_a^b f\right)^2 \neq \int_a^b f^2$ : l'intégrale n'est pas
+      multiplicative (chapitre 3). Le carré porte sur la FONCTION, parce qu'il
+      vient du rayon de la tranche : on carre d'abord $f(x)$, on intègre ensuite.
+  - id: mc.math.maths_calcul_integral.conversion-unites-volume
+    label: "Conversion u.v. → cm³ avec le facteur de l'aire (k²) au lieu du cube (k³)"
+    description: >-
+      Pour convertir un volume exprimé en unités de volume, l'élève multiplie par
+      le carré de l'échelle (le facteur qu'il a appris pour les AIRES), ou par
+      l'échelle seule, ou ne convertit pas du tout. Il compte deux directions là
+      où il y en a trois. Voir aussi `conversion-unites-aire` pour le cas 2D.
+    contradicts_principle: >-
+      $1$ u.v. est le volume du CUBE bâti sur l'unité : dans un repère orthonormé
+      d'unité $k$ cm, $1$ u.v. $=k^3$ cm³ (et $1$ u.a. $=k^2$ cm²). Une longueur se
+      convertit avec $k$, une aire avec $k^2$, un volume avec $k^3$ — le facteur
+      compte les DIRECTIONS.
+
+items:
+
+  - id: CI-1
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [primitive_integrale, definition]
+    primary_misconception: mc.math.maths_calcul_integral.constante-et-bornes
+    stem: >
+      Soit $f(x) = x^2$ sur $[1,3]$. Pour calculer $\int_1^3 f(x)\,\mathrm{d}x$,
+      un élève utilise la primitive $F(x) = \dfrac{x^3}{3} + 5$ au lieu de
+      $\dfrac{x^3}{3}$. Que vaut le résultat obtenu avec cette primitive ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{26}{3}$"
+        correct: true
+      - id: B
+        text: "$\\dfrac{41}{3}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
+        feedback: >
+          Ce choix ajoute $5$ au résultat final, comme si la constante ne
+          disparaissait pas. Mais $F(3)-F(1) = \left(9+5\right) -
+          \left(\tfrac13+5\right)$ : les deux $5$ s'annulent dans la
+          soustraction, exactement comme démontré au chapitre 2. Le résultat ne
+          dépend jamais de la constante choisie pour la primitive.
+      - id: C
+        text: "$-\\dfrac{26}{3}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
+        feedback: >
+          Ce résultat correspond à $F(1)-F(3)$ au lieu de $F(3)-F(1)$ :
+          l'ordre des bornes a été inversé. L'intégrale $\int_1^3$ se calcule
+          toujours borne du haut moins borne du bas.
+      - id: D
+        text: "$14$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
+        feedback: >
+          $14$ est la valeur de $F(3)$ seule — la soustraction de $F(1)$ a
+          été complètement oubliée. Une intégrale $\int_a^b f$ n'est jamais
+          la valeur d'une primitive en un seul point, c'est toujours une
+          différence $F(b)-F(a)$.
+    correct_feedback: >
+      La constante ajoutée à une primitive s'annule toujours dans la
+      soustraction $F(b)-F(a)$ : $\left(9+5\right)-\left(\tfrac13+5\right) =
+      9-\tfrac13 = \tfrac{26}{3}$, exactement le même résultat qu'avec la
+      primitive $\tfrac{x^3}{3}$ seule.
+    solution: |
+      **Avec $F(x)=\dfrac{x^3}{3}$ :**
+      $$\int_1^3 x^2\,\mathrm{d}x = F(3)-F(1) = 9 - \frac13 = \frac{26}{3}$$
+
+      **Avec $F(x)=\dfrac{x^3}{3}+5$ :**
+      $$F(3)-F(1) = \left(9+5\right) - \left(\frac13+5\right) = 9 - \frac13 = \frac{26}{3}$$
+
+      Les deux calculs donnent exactement le même nombre : la constante $+5$
+      s'annule dans la soustraction, quel que soit son rôle.
+
+  - id: CI-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [linearite]
+    primary_misconception: mc.math.maths_calcul_integral.linearite-abusive
+    stem: >
+      On donne $\int_0^2 f(x)\,\mathrm{d}x = 5$ et $\int_0^2 g(x)\,\mathrm{d}x
+      = 3$. Que vaut $\int_0^2 \big(3f(x)-2g(x)\big)\,\mathrm{d}x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$9$"
+        correct: true
+      - id: B
+        text: "$2$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        feedback: >
+          Ce choix calcule $5-3=2$, en ignorant complètement les coefficients
+          $3$ et $2$. La linéarité dit que chaque intégrale doit d'abord être
+          multipliée par son propre coefficient avant de combiner :
+          $3\times 5 - 2\times 3$, pas $5-3$.
+      - id: C
+        text: "$21$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        feedback: >
+          Ce choix calcule $3\times 5 + 2\times 3 = 21$ : le signe moins
+          entre les deux termes a été remplacé par un plus. L'expression
+          demandée est une différence, $3f-2g$, pas une somme.
+      - id: D
+        text: "$-9$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        feedback: >
+          Ce choix calcule $2\times 3 - 3\times 5 = -9$ : les deux termes ont
+          été inversés. Le premier terme de l'expression $3f-2g$ correspond
+          au coefficient de $f$ ($3\times 5$), pas à celui de $g$.
+    correct_feedback: >
+      Par linéarité, $\int_0^2 (3f-2g)(x)\,\mathrm{d}x = 3\int_0^2 f(x)\,
+      \mathrm{d}x - 2\int_0^2 g(x)\,\mathrm{d}x = 3\times 5 - 2\times 3 =
+      15-6=9$.
+    solution: |
+      **Linéarité (chapitre 3) :**
+      $$\int_0^2 \big(3f(x)-2g(x)\big)\,\mathrm{d}x = 3\int_0^2 f(x)\,\mathrm{d}x - 2\int_0^2 g(x)\,\mathrm{d}x$$
+
+      **Application numérique :**
+      $$3\times 5 - 2\times 3 = 15-6 = 9$$
+
+  - id: CI-3
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [positivite, comparaison]
+    primary_misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
+    stem: >
+      Pour tout $x \in [1,4]$, on a $0 \leq f(x) \leq g(x)$, et
+      $\int_1^4 g(x)\,\mathrm{d}x = 10$. Que peut-on affirmer avec certitude
+      sur $\int_1^4 f(x)\,\mathrm{d}x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0 \\leq \\int_1^4 f(x)\\,\\mathrm{d}x \\leq 10$"
+        correct: true
+      - id: B
+        text: "$\\int_1^4 f(x)\\,\\mathrm{d}x = 10$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
+        feedback: >
+          $f \leq g$ ne veut pas dire $f=g$ : on sait seulement que $f$ reste
+          en dessous de $g$, pas qu'elle lui est égale. Rien dans l'énoncé ne
+          permet de conclure à une égalité exacte des deux intégrales.
+      - id: C
+        text: "$\\int_1^4 f(x)\\,\\mathrm{d}x \\geq 10$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
+        feedback: >
+          C'est l'inégalité inversée. Puisque $f \leq g$ sur tout
+          l'intervalle, la comparaison du chapitre 5 donne $\int_1^4 f \leq \int_1^4
+          g = 10$, pas l'inverse.
+      - id: D
+        text: "On ne peut rien affirmer, car le signe de $f$ n'est pas garanti."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
+        feedback: >
+          L'énoncé donne justement $0 \leq f(x)$ sur tout l'intervalle : le
+          signe de $f$ est garanti positif. Combinée à $f \leq g$, la
+          positivité et la comparaison du chapitre 5 suffisent pour encadrer
+          $\int_1^4 f$ entre $0$ et $10$.
+    correct_feedback: >
+      Par positivité, $\int_1^4 f(x)\,\mathrm{d}x \geq 0$ (car $f \geq 0$).
+      Par comparaison, $\int_1^4 f(x)\,\mathrm{d}x \leq \int_1^4 g(x)\,
+      \mathrm{d}x = 10$ (car $f \leq g$). Les deux bornes combinées donnent
+      l'encadrement.
+    solution: |
+      **Positivité (chapitre 5) :** $f \geq 0$ sur $[1,4]$, donc
+      $$\int_1^4 f(x)\,\mathrm{d}x \geq 0$$
+
+      **Comparaison (chapitre 5) :** $f \leq g$ sur $[1,4]$, donc
+      $$\int_1^4 f(x)\,\mathrm{d}x \leq \int_1^4 g(x)\,\mathrm{d}x = 10$$
+
+      **Conclusion :** $0 \leq \int_1^4 f(x)\,\mathrm{d}x \leq 10$.
+
+  - id: CI-4
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [valeur_moyenne]
+    primary_misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
+    stem: >
+      On donne $\int_2^5 f(x)\,\mathrm{d}x = 12$. Quelle est la valeur
+      moyenne de $f$ sur $[2,5]$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$4$"
+        correct: true
+      - id: B
+        text: "$12$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
+        feedback: >
+          Ce choix oublie complètement de diviser par la longueur de
+          l'intervalle. La valeur moyenne n'est pas l'intégrale elle-même,
+          c'est l'intégrale divisée par $b-a$.
+      - id: C
+        text: "$2{,}4$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
+        feedback: >
+          Ce choix divise par $5$ (la borne supérieure seule) au lieu de
+          $b-a=5-2=3$ (la longueur de l'intervalle). Le dénominateur de la
+          valeur moyenne est toujours une longueur, jamais une borne isolée.
+      - id: D
+        text: "$36$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
+        feedback: >
+          Ce choix multiplie $12$ par $3$ au lieu de diviser. La définition
+          de la valeur moyenne est $\mu = \dfrac{1}{b-a}\int_a^b f(x)\,
+          \mathrm{d}x$ — une division, pas une multiplication par $(b-a)$.
+    correct_feedback: >
+      $\mu = \dfrac{1}{b-a}\int_a^b f(x)\,\mathrm{d}x = \dfrac{1}{5-2}\times
+      12 = \dfrac{12}{3} = 4$.
+    solution: |
+      **Définition (chapitre 7) :**
+      $$\mu = \frac{1}{b-a}\int_a^b f(x)\,\mathrm{d}x = \frac{1}{5-2}\times 12$$
+
+      $$\mu = \frac{12}{3} = 4$$
+
+  - id: CI-5
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [integration_par_parties]
+    primary_misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
+    stem: >
+      Pour calculer $\int_0^1 x\,e^{2x}\,\mathrm{d}x$ par intégration par
+      parties, quel choix de $u$ et $v'$ est le plus efficace ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$u=x$ et $v'=e^{2x}$"
+        correct: true
+      - id: B
+        text: "$u=e^{2x}$ et $v'=x$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
+        feedback: >
+          Dériver $e^{2x}$ redonne $2e^{2x}$ : ça ne simplifie rien, la
+          fonction exponentielle reste aussi compliquée après dérivation.
+          En plus, primitiver $x$ donne $\tfrac{x^2}{2}$, qui complique le
+          produit au lieu de le simplifier. Le facteur à dériver doit
+          devenir PLUS simple, pas rester identique.
+      - id: C
+        text: "$u=x\\,e^{2x}$ et $v'=1$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
+        feedback: >
+          Prendre le produit entier comme $u$ ne sépare rien : dériver
+          $x\,e^{2x}$ (règle du produit) redonne une expression aussi
+          compliquée que celle de départ, voire plus. L'IPP n'a d'intérêt
+          que si on sépare les deux facteurs du produit d'origine.
+      - id: D
+        text: "L'intégration par parties ne s'applique pas ici, car il n'y a qu'un seul terme."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
+        feedback: >
+          $x\,e^{2x}$ est bien un produit de deux fonctions différentes,
+          $x$ et $e^{2x}$ — exactement la situation où l'IPP s'applique. Ce
+          n'est pas parce que l'expression s'écrit sans signe $\times$
+          explicite qu'il n'y a pas de produit.
+    correct_feedback: >
+      Avec $u=x$, $u'=1$ est plus simple que $u$ — c'est le signal que
+      $u=x$ est le bon choix. Et $v'=e^{2x}$ se primitive facilement en
+      $v=\tfrac12 e^{2x}$. Le terme en $v'$ disparaît au profit d'un terme
+      en $u'\cdot v$ plus simple, exactement le mécanisme du chapitre 8.
+    solution: |
+      **Choix : $u=x$ ($u'=1$), $v'=e^{2x}$ ($v=\tfrac12 e^{2x}$).**
+
+      L'IPP transforme le produit $x \cdot e^{2x}$ (où $x$ ne se simplifie
+      qu'en disparaissant par dérivation) en un terme de bord moins
+      $\int \tfrac12 e^{2x}\,\mathrm{d}x$, une intégrale immédiate. Le choix
+      inverse ($u=e^{2x}$) ne simplifie jamais rien, car dériver
+      l'exponentielle la reproduit à l'identique.
+
+  - id: CI-6
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: maths_calcul_integral
+    tags: [aires, changement_de_signe]
+    primary_misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+    stem: >
+      La courbe de $f(x)=x^2-4$ change de signe sur $[0,3]$ (racine en
+      $x=2$) : $f \leq 0$ sur $[0,2]$ et $f \geq 0$ sur $[2,3]$. Quelle est
+      la bonne démarche pour calculer l'AIRE (et non l'intégrale signée)
+      entre la courbe et l'axe des abscisses sur $[0,3]$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Calculer directement $\\int_0^3 f(x)\\,\\mathrm{d}x$ et prendre ce nombre comme l'aire."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+        feedback: >
+          $\int_0^3 f(x)\,\mathrm{d}x = -3$ : la partie où $f \leq 0$
+          soustrait de la valeur au lieu de s'ajouter à l'aire. Ce nombre
+          n'est même pas positif — ce ne peut pas être une aire.
+      - id: B
+        text: "Calculer $\\int_0^3 f(x)\\,\\mathrm{d}x$, puis prendre sa valeur absolue."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+        feedback: >
+          $\left|\int_0^3 f(x)\,\mathrm{d}x\right| = |-3| = 3$, mais l'aire
+          réelle vaut $\tfrac{23}{3}\approx 7{,}67$. Prendre la valeur
+          absolue APRÈS avoir tout additionné ne corrige pas l'annulation
+          partielle qui a déjà eu lieu entre la partie négative et la partie
+          positive.
+      - id: C
+        text: "Découper en $[0,2]$ et $[2,3]$, calculer $-\\int_0^2 f(x)\\,\\mathrm{d}x$ et $\\int_2^3 f(x)\\,\\mathrm{d}x$ séparément, puis additionner."
+        correct: true
+      - id: D
+        text: "Calculer $-\\int_0^3 f(x)\\,\\mathrm{d}x$ directement, en supposant que la courbe entière est sous l'axe."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+        feedback: >
+          $f$ n'est PAS sous l'axe sur tout l'intervalle : elle est positive
+          sur $[2,3]$. Traiter tout l'intervalle comme s'il était
+          uniformément négatif ignore le changement de signe en $x=2$.
+    correct_feedback: >
+      Il faut découper au point où $f$ change de signe (Chasles, chapitre 4),
+      prendre l'opposé de l'intégrale là où $f \leq 0$, garder l'intégrale
+      telle quelle là où $f \geq 0$, puis additionner :
+      $\tfrac{16}{3}+\tfrac{7}{3} = \tfrac{23}{3}$ u.a. — exactement le
+      calcul fait au chapitre 9.
+    solution: |
+      **Découpage à la racine $x=2$ (Chasles, chapitre 4) :**
+
+      Sur $[0,2]$, $f \leq 0$ : $\text{aire}_{[0,2]} = -\int_0^2 f(x)\,\mathrm{d}x = \dfrac{16}{3}$
+
+      Sur $[2,3]$, $f \geq 0$ : $\text{aire}_{[2,3]} = \int_2^3 f(x)\,\mathrm{d}x = \dfrac{7}{3}$
+
+      **Aire totale (somme, jamais différence) :**
+      $$\text{aire} = \frac{16}{3}+\frac{7}{3} = \frac{23}{3}\ \text{u.a.}$$
+
+      À comparer aux deux pièges : l'intégrale directe donne $-3$ (signée,
+      pas une aire), et sa valeur absolue donne $3$ (toujours faux, car
+      l'annulation a déjà eu lieu avant la valeur absolue).
+
+  - id: CI-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_calcul_integral
+    tags: [accroche, aire_sous_courbe]
+    primary_misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
+    stem: >
+      Sur $[0,2]$, une voiture roule avec $v(t)=t^2$ (en m/s). Pourquoi ne
+      peut-on pas calculer la distance parcourue avec une simple formule
+      d'aire de rectangle ou de triangle, comme on le ferait pour une
+      vitesse constante ou une vitesse qui croît proportionnellement au
+      temps ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La courbe de $v$ est une parabole : ni le contour d'un rectangle ni celui d'un triangle n'épouse sa forme courbe."
+        correct: true
+      - id: B
+        text: "Parce que la vitesse devient bien trop grande à la fin de l'intervalle pour que ces formules restent applicables."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
+        feedback: >
+          Ce raisonnement fait dépendre la méthode de la taille des
+          nombres, alors que c'est la forme du contour (droite ou courbe)
+          qui décide si une formule de géométrie plane s'applique — pas
+          l'ampleur des valeurs de $v(t)$.
+      - id: C
+        text: "Parce que la voiture part de l'arrêt, avec $v(0)=0$, ce qui interdit d'utiliser la moindre formule d'aire usuelle."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
+        feedback: >
+          Un rectangle ou un triangle peut très bien avoir un côté de
+          hauteur nulle en un point — ce n'est pas $v(0)=0$ qui pose
+          problème, c'est le fait que $v(t)=t^2$ ne trace ni une droite
+          horizontale ni une droite oblique entre $t=0$ et $t=2$.
+      - id: D
+        text: "Parce que le temps $t$ n'est pas une longueur : on ne peut donc pas parler d'aire sous une courbe de vitesse."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
+        feedback: >
+          Sur un graphique vitesse-temps, l'aire sous la courbe se lit bien
+          comme une distance (produit vitesse × temps), quelles que soient
+          les unités des axes — c'est le principe rappelé au début du chapitre.
+          Le problème n'est pas la nature des axes, c'est la forme courbe
+          du contour.
+    correct_feedback: >
+      Une formule d'aire de géométrie plane (rectangle, triangle) suppose
+      un contour fait de segments de droite. Ici, $v(t)=t^2$ trace une
+      parabole : aucun découpage en rectangles ou en triangles ne colle
+      exactement à ce contour courbe.
+    solution: |
+      Un rectangle correspond à une vitesse constante ; un triangle
+      correspond à une vitesse qui croît proportionnellement au temps (une
+      droite). Ici, $v(t)=t^2$ n'est ni l'une ni l'autre : c'est une
+      parabole, un contour courbe qu'aucune formule de géométrie plane
+      classique ne mesure exactement. C'est précisément le problème que ce
+      chapitre va résoudre, à partir du chapitre 2.
+
+  - id: CI-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_calcul_integral
+    tags: [accroche, estimation]
+    primary_misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
+    stem: >
+      Toujours avec $v(t)=t^2$ sur $[0,2]$ : la droite reliant les points
+      $(0,0)$ et $(2,4)$ délimite, avec l'axe des temps, un triangle
+      d'aire $\frac12 \times 2 \times 4 = 4$. Sans calculer précisément
+      l'aire sous la parabole, peux-tu dire si elle est plus grande, plus
+      petite, ou égale à cette aire de $4$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Plus grande que $4$, car la vitesse augmente de plus en plus vite : la courbe finit par dépasser la droite avant $t=2$."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
+        feedback: >
+          Vérifie sur un point intermédiaire, $t=1$ : la parabole vaut
+          $v(1)=1$, alors que la droite (qui va de $0$ à $4$ en $2$
+          secondes) vaut $2\times1=2$ à cet instant. La parabole est EN
+          DESSOUS de la droite sur tout l'intervalle, pas au-dessus — la
+          vitesse s'accélère mais reste plus lente que la droite jusqu'à ce
+          qu'elles se rejoignent exactement en $t=2$.
+      - id: B
+        text: "Égale à $4$, puisque les deux courbes partagent les mêmes valeurs en $t=0$ et $t=2$."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
+        feedback: >
+          Partager les mêmes valeurs aux deux extrémités ne suffit pas à
+          rendre les aires égales : entre ces deux points, la parabole et
+          la droite empruntent des chemins différents, donc délimitent des
+          aires différentes avec l'axe des temps.
+      - id: C
+        text: "Plus petite que $4$, car sur tout l'intervalle, $t^2$ reste en dessous de la droite reliant $(0,0)$ à $(2,4)$."
+        correct: true
+      - id: D
+        text: "Impossible à savoir sans calculer précisément l'intégrale."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
+        feedback: >
+          On peut comparer deux aires sans les calculer exactement,
+          simplement en comparant les hauteurs des deux courbes point par
+          point sur l'intervalle — c'est cette idée de comparaison, sans
+          calcul explicite, que tu retrouveras formalisée plus loin dans ce
+          chapitre.
+    correct_feedback: >
+      Sur $[0,2]$, la parabole $t^2$ reste toujours en dessous de la droite
+      reliant $(0,0)$ à $(2,4)$ (vérifie-le en $t=1$ : $1<2$). L'aire sous
+      la parabole est donc strictement plus petite que l'aire du triangle,
+      $4$ — cohérent avec la valeur exacte $\frac83\approx2{,}67$ trouvée
+      au chapitre 2.
+    solution: |
+      Compare $t^2$ à la droite $y=2t$ (qui relie $(0,0)$ à $(2,4)$) sur
+      $[0,2]$ : $2t-t^2 = t(2-t) \geq 0$ pour $t \in [0,2]$, donc $t^2 \leq
+      2t$ sur tout l'intervalle. L'aire sous la parabole est donc
+      inférieure ou égale à l'aire sous la droite, qui est $4$. La valeur
+      exacte, calculée au chapitre 2, est $\frac83\approx2{,}67 < 4$.
+
+  - id: CI-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_calcul_integral
+    tags: [accroche, vitesse_moyenne_intuition]
+    primary_misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
+    stem: >
+      Un élève raisonne ainsi : « La vitesse maximale de la voiture sur
+      $[0,2]$ est $v(2)=4$ m/s. Si elle avait roulé tout le temps à cette
+      vitesse, elle aurait parcouru $4\times2=8$ m. » Que peut-on dire de
+      la distance réellement parcourue par rapport à ce chiffre de $8$ m ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est exactement égale à $8$ m, car c'est la vitesse atteinte en fin de trajet qui détermine la distance totale parcourue."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
+        feedback: >
+          La vitesse à l'instant final ne résume pas tout le trajet : la
+          voiture a roulé plus lentement pendant presque tout l'intervalle
+          $[0,2]$, avant d'atteindre $4$ m/s seulement à la toute fin.
+      - id: B
+        text: "Elle est supérieure à $8$ m, car la voiture accélère sans cesse et dépasse donc les $4$ m/s bien avant l'instant $t=2$."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
+        feedback: >
+          Sur l'intervalle $[0,2]$, $v(t)=t^2$ est croissante et atteint
+          son maximum PRÉCISÉMENT en $t=2$, avec $v(2)=4$ — elle ne dépasse
+          jamais $4$ m/s sur cet intervalle, elle l'atteint seulement à
+          l'instant final.
+      - id: C
+        text: "On ne peut rien en dire du tout, car $4\\times2$ est un calcul de vitesse et non un calcul de distance parcourue."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
+        feedback: >
+          Une vitesse constante multipliée par une durée donne bien une
+          distance (m/s $\times$ s = m) — le calcul $4\times2=8$ m est
+          dimensionnellement correct pour une vitesse CONSTANTE de $4$
+          m/s. Le problème n'est pas ce calcul en lui-même, mais
+          l'hypothèse que la voiture aurait roulé à $4$ m/s pendant tout le
+          trajet.
+      - id: D
+        text: "Elle est strictement inférieure à $8$ m, car la voiture n'a atteint $4$ m/s qu'à l'instant final $t=2$ — elle a roulé plus lentement le reste du temps."
+        correct: true
+    correct_feedback: >
+      $8$ m suppose une vitesse constamment égale à $4$ m/s, alors que la
+      voiture démarre à l'arrêt et n'atteint $4$ m/s qu'à l'instant $t=2$.
+      Comme elle a roulé moins vite pendant tout le reste du trajet, la
+      distance réelle est strictement inférieure à $8$ m — cohérent avec la
+      valeur exacte $\frac83\approx2{,}67$ m.
+    solution: |
+      Le raisonnement de l'élève suppose une vitesse constante égale au
+      maximum atteint sur l'intervalle. Mais $v(t)=t^2 < 4$ pour tout
+      $t \in [0,2[$ : la voiture roule plus lentement que $4$ m/s pendant
+      tout le trajet, sauf à l'instant final. La distance réelle,
+      $\frac83\approx2{,}67$ m, est donc bien inférieure à $8$ m —
+      utiliser la vitesse maximale comme si elle était constante donne
+      systématiquement une SURESTIMATION de la distance.
+
+  - id: CI-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [primitive_integrale, variable_muette]
+    primary_misconception: mc.math.maths_calcul_integral.constante-et-bornes
+    stem: >
+      On sait que $\ln$ est une primitive de $t \mapsto \dfrac1t$ sur
+      $\left]0,+\infty\right[$. En appliquant la définition de l'intégrale
+      du chapitre 2, que vaut $\displaystyle\int_2^x \frac1t\,\mathrm{d}t$ pour
+      $x>2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\ln(x) - \\ln(t)$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
+        feedback: >
+          $t$ est la variable d'intégration : une fois la primitive
+          évaluée aux bornes, $t$ ne doit plus apparaître dans le résultat.
+          La définition demande $F(x)-F(2)$, où $F=\ln$ est évaluée aux
+          DEUX bornes numériques $x$ et $2$, jamais à la lettre $t$
+          elle-même.
+      - id: B
+        text: "$\\ln(x) - \\ln(2)$"
+        correct: true
+      - id: C
+        text: "$\\ln(x)$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
+        feedback: >
+          Ce résultat oublie de soustraire la valeur de la primitive à la
+          borne inférieure, $\ln(2)$. La définition du chapitre 2 est toujours une
+          différence $F(b)-F(a)$, jamais la valeur de $F$ au seul point
+          $b$.
+      - id: D
+        text: "$\\ln(x-2)$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
+        feedback: >
+          Ce choix applique la primitive à la DIFFÉRENCE des bornes,
+          $\ln(x-2)$, au lieu de calculer la différence des valeurs de la
+          primitive, $\ln(x)-\ln(2)$. La définition est $F(b)-F(a)$, pas
+          $F(b-a)$ : la soustraction porte sur les valeurs de $F$, pas sur
+          les bornes avant d'appliquer $F$.
+    correct_feedback: >
+      Par définition (chapitre 2), $\int_2^x \frac1t\,\mathrm{d}t = F(x)-F(2)$ où
+      $F=\ln$. Donc $\int_2^x \frac1t\,\mathrm{d}t = \ln(x)-\ln(2)$ : la
+      variable d'intégration $t$ disparaît, remplacée par les deux bornes
+      numériques évaluées séparément dans $\ln$.
+    solution: |
+      **Définition (chapitre 2) appliquée à $F=\ln$ :**
+      $$\int_2^x \frac1t\,\mathrm{d}t = F(x)-F(2) = \ln(x)-\ln(2)$$
+
+      La lettre $t$ n'est qu'une variable muette utilisée pour décrire la
+      fonction à intégrer ; une fois la primitive évaluée aux bornes $x$ et
+      $2$, elle n'apparaît plus dans le résultat.
+
+  - id: CI-11
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [primitive_integrale, definition]
+    primary_misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+    stem: >
+      Un élève affirme : « Pour calculer $\int_{-2}^{1} x\,\mathrm{d}x$
+      avec la définition $F(b)-F(a)$, il faut d'abord vérifier que
+      $x\geq0$ sur $[-2,1]$, sinon la formule ne s'applique pas — or ici
+      $x$ est négatif sur une partie de l'intervalle, donc on ne peut pas
+      utiliser cette définition directement. » Cette affirmation est-elle
+      correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui : la définition $F(b)-F(a)$ ne s'applique que si la fonction $f$ reste positive sur tout l'intervalle d'intégration."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
+        feedback: >
+          Non — relis la définition du chapitre 2 : elle suppose seulement que $f$
+          est CONTINUE sur $[a,b]$, sans aucune condition de signe. C'est
+          seulement l'INTERPRÉTATION en aire (« $\int_a^b f$ est l'aire
+          sous la courbe ») qui exige $f\geq0$, pas la définition
+          elle-même.
+      - id: B
+        text: "Non, mais il faut changer le signe de la primitive partout où $f<0$, avant de procéder à son évaluation."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+        feedback: >
+          On n'a jamais besoin de « changer le signe » de la primitive. La
+          primitive de $x\mapsto x$ est $F(x)=\frac{x^2}{2}$, quelle que
+          soit la partie de l'intervalle où $x$ est négatif — le signe de
+          $f$ n'intervient nulle part dans le calcul de $F(b)-F(a)$.
+      - id: C
+        text: "Non : la définition $F(b)-F(a)$ vaut pour toute fonction continue sur $[a,b]$, que $f$ garde un signe constant ou non."
+        correct: true
+      - id: D
+        text: "Non, car la fonction $f(x)=x$ n'admet aucune primitive sur un intervalle contenant des valeurs négatives de $x$."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
+        feedback: >
+          $f(x)=x$ est parfaitement continue sur $\mathbb{R}$, y compris
+          sur les réels négatifs, et admet la primitive
+          $F(x)=\frac{x^2}{2}$ sur tout $\mathbb{R}$. Le signe de $x$
+          n'empêche en rien l'existence d'une primitive.
+    correct_feedback: >
+      La définition du chapitre 2 exige seulement que $f$ soit continue sur
+      $[a,b]$ — aucune condition de signe. Le fait que $\int_a^b f(x)\,
+      \mathrm{d}x$ représente une AIRE est une interprétation
+      supplémentaire, valable uniquement quand $f\geq0$ ; la définition
+      elle-même, $F(b)-F(a)$, fonctionne pour toute fonction continue, quel
+      que soit son signe.
+    solution: |
+      **Définition (chapitre 2) :** $\int_{-2}^1 x\,\mathrm{d}x = F(1)-F(-2)$ avec
+      $F(x)=\frac{x^2}{2}$, sans aucune condition sur le signe de $f$.
+
+      $$\int_{-2}^1 x\,\mathrm{d}x = \frac{1}{2} - \frac{4}{2} = \frac12 - 2 = -\frac32$$
+
+      Le résultat est négatif — cohérent avec le fait que $f(x)=x<0$
+      domine sur une plus grande portion de $[-2,1]$. Ce nombre négatif
+      n'est PAS une aire (l'interprétation en aire du chapitre 2 suppose
+      $f\geq0$), mais c'est bien la valeur de l'intégrale au sens de la
+      définition.
+
+  - id: CI-12
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [linearite, produit_de_fonctions]
+    primary_misconception: mc.math.maths_calcul_integral.linearite-abusive
+    stem: >
+      On donne $\int_0^1 f(x)\,\mathrm{d}x = 2$ et $\int_0^1 g(x)\,
+      \mathrm{d}x = 3$. Un élève en déduit que $\int_0^1 f(x)g(x)\,
+      \mathrm{d}x = 6$. Ce raisonnement est-il valide ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, car la linéarité de l'intégrale permet précisément de multiplier les deux intégrales l'une par l'autre."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        feedback: >
+          La linéarité (chapitre 3) ne porte que sur les SOMMES et les produits
+          par un facteur CONSTANT — $\int(f+g)=\int f+\int g$ et $\int kf =
+          k\int f$. Elle ne dit rien sur le produit de deux fonctions
+          $f(x)g(x)$ : en général, $\int_a^b f(x)g(x)\,\mathrm{d}x \neq
+          \left(\int_a^b f(x)\,\mathrm{d}x\right)\times\left(\int_a^b
+          g(x)\,\mathrm{d}x\right)$.
+      - id: B
+        text: "Oui, mais à la seule condition que $f$ et $g$ soient toutes les deux positives sur l'intervalle $[0,1]$."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        feedback: >
+          Le signe de $f$ et $g$ ne change rien au problème : même pour
+          deux fonctions positives, l'intégrale d'un produit n'est en
+          général pas le produit des intégrales. Contre-exemple : $f=g=x$
+          sur $[0,1]$ donne $\int_0^1 x\,\mathrm{d}x=\frac12$, mais
+          $\int_0^1 x^2\,\mathrm{d}x=\frac13 \neq \left(\frac12\right)^2=
+          \frac14$.
+      - id: C
+        text: "On ne peut rien en dire sans connaître au préalable les expressions exactes des deux fonctions $f$ et $g$."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
+        feedback: >
+          On peut au moins affirmer que ce raisonnement particulier —
+          multiplier les deux intégrales — n'est PAS une règle valide de
+          l'intégrale, quelles que soient $f$ et $g$. Ce n'est pas un
+          manque d'information qui pose problème ici, c'est l'application
+          d'une règle inexistante.
+      - id: D
+        text: "Non, car la linéarité ne s'applique qu'aux sommes et aux produits par une constante, jamais au produit de deux fonctions."
+        correct: true
+    correct_feedback: >
+      La linéarité de l'intégrale (chapitre 3) ne concerne que $\int(f+g)$ et
+      $\int kf$ pour $k$ CONSTANT. Le produit $f(x)g(x)$ de deux fonctions
+      n'a pas de règle de décomposition aussi simple : en général,
+      $\int_a^b f(x)g(x)\,\mathrm{d}x \neq \int_a^b f(x)\,\mathrm{d}x
+      \times \int_a^b g(x)\,\mathrm{d}x$. (C'est même pour traiter certains
+      produits que l'intégration par parties, chapitre 8, sera nécessaire.)
+    solution: |
+      La linéarité (chapitre 3) s'écrit $\int_a^b(f+g) = \int_a^b f + \int_a^b g$
+      et $\int_a^b kf = k\int_a^b f$ — uniquement pour une somme ou un
+      facteur CONSTANT $k$. Un produit de deux fonctions $f(x)g(x)$
+      n'entre dans aucun de ces deux cas : $f(x)$ n'est pas une constante,
+      donc rien ne permet de sortir $f$ de l'intégrale pour la multiplier
+      par $\int g$. Contre-exemple : avec $f(x)=g(x)=x$ sur $[0,1]$,
+      $\int_0^1 x\,\mathrm{d}x = \frac12$, mais $\int_0^1 x\cdot x\,
+      \mathrm{d}x = \int_0^1 x^2\,\mathrm{d}x = \frac13 \neq
+      \frac12\times\frac12=\frac14$.
+
+  - id: CI-13
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [linearite, terme_constant]
+    primary_misconception: mc.math.maths_calcul_integral.linearite-abusive
+    stem: >
+      Calcule $\displaystyle\int_1^4 \big(2x+7\big)\,\mathrm{d}x$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$22$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
+        feedback: >
+          Ce calcul ajoute le terme constant $7$ une seule fois à
+          $\int_1^4 2x\,\mathrm{d}x=15$, comme s'il ne fallait pas le
+          multiplier par la longueur de l'intervalle. Une primitive de la
+          fonction constante $x\mapsto7$ est $x\mapsto7x$ : sa
+          contribution sur $[1,4]$ est $7\times4-7\times1=7\times(4-1)=21$,
+          pas $7$.
+      - id: B
+        text: "$36$"
+        correct: true
+      - id: C
+        text: "$15$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
+        feedback: >
+          Ce calcul oublie complètement la contribution du terme constant
+          $7$ — seul $\int_1^4 2x\,\mathrm{d}x=15$ a été calculé. Par
+          linéarité, il faut ajouter $\int_1^4 7\,\mathrm{d}x=21$.
+      - id: D
+        text: "$43$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
+        feedback: >
+          Ce calcul multiplie le terme constant par la borne supérieure
+          $b=4$ au lieu de la longueur de l'intervalle $b-a=4-1=3$ :
+          $7\times4=28$ au lieu de $7\times3=21$. Le facteur multiplicatif
+          est toujours $b-a$, jamais une borne isolée.
+    correct_feedback: >
+      Par linéarité, $\int_1^4(2x+7)\,\mathrm{d}x = \int_1^4 2x\,
+      \mathrm{d}x + \int_1^4 7\,\mathrm{d}x$. Une primitive de $2x$ est
+      $x^2$, donc $\int_1^4 2x\,\mathrm{d}x = 16-1=15$. Une primitive de la
+      fonction constante $7$ est $7x$, donc $\int_1^4 7\,\mathrm{d}x =
+      28-7=21$. Total : $15+21=36$.
+    solution: |
+      **Terme par terme (linéarité) :**
+      $$\int_1^4 2x\,\mathrm{d}x = \Big[x^2\Big]_1^4 = 16-1=15$$
+      $$\int_1^4 7\,\mathrm{d}x = \Big[7x\Big]_1^4 = 28-7=21$$
+
+      **Somme :**
+      $$\int_1^4(2x+7)\,\mathrm{d}x = 15+21=36$$
+
+      **Vérification avec la primitive globale** $F(x)=x^2+7x$ :
+      $$F(4)-F(1) = (16+28)-(1+7) = 44-8=36$$
+
+  - id: CI-14
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [chasles]
+    primary_misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
+    stem: >
+      On donne $\int_0^7 f(x)\,\mathrm{d}x = 20$ et $\int_3^7 f(x)\,
+      \mathrm{d}x = 9$. Que vaut $\int_0^3 f(x)\,\mathrm{d}x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$29$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
+        feedback: >
+          Ce choix additionne les deux intégrales données, $20+9=29$, au
+          lieu d'isoler $\int_0^3 f$ dans la relation de Chasles
+          $\int_0^7 f = \int_0^3 f + \int_3^7 f$. Il faut ici SOUSTRAIRE,
+          pas additionner : $\int_0^3 f = 20-9$.
+      - id: B
+        text: "$20$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
+        feedback: >
+          Ce choix reprend directement $\int_0^7 f(x)\,\mathrm{d}x$ sans
+          tenir compte du découpage en $c=3$ : la relation de Chasles
+          relie les trois intégrales entre elles, elle ne permet pas
+          d'ignorer $\int_3^7 f=9$.
+      - id: C
+        text: "$11$"
+        correct: true
+      - id: D
+        text: "$-11$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
+        feedback: >
+          Ce choix inverse le signe du résultat, comme si la relation de
+          Chasles s'écrivait $\int_3^7 f = \int_0^3 f - \int_0^7 f$. Or
+          c'est $\int_0^7 f = \int_0^3 f + \int_3^7 f$ qui est vraie, donc
+          $\int_0^3 f = \int_0^7 f - \int_3^7 f = 20-9=11$, pas l'opposé.
+    correct_feedback: >
+      Par Chasles avec $c=3$ : $\int_0^7 f(x)\,\mathrm{d}x = \int_0^3
+      f(x)\,\mathrm{d}x + \int_3^7 f(x)\,\mathrm{d}x$, donc $20 =
+      \int_0^3 f(x)\,\mathrm{d}x + 9$, d'où $\int_0^3 f(x)\,\mathrm{d}x =
+      11$.
+    solution: |
+      **Chasles en $c=3$ :**
+      $$\int_0^7 f(x)\,\mathrm{d}x = \int_0^3 f(x)\,\mathrm{d}x + \int_3^7 f(x)\,\mathrm{d}x$$
+      $$20 = \int_0^3 f(x)\,\mathrm{d}x + 9$$
+      $$\int_0^3 f(x)\,\mathrm{d}x = 20-9 = 11$$
+
+  - id: CI-15
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [chasles, convention_bornes]
+    primary_misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
+    stem: >
+      On donne $\int_2^6 f(x)\,\mathrm{d}x = 15$. Que vaut $\int_6^2
+      f(x)\,\mathrm{d}x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-15$"
+        correct: true
+      - id: B
+        text: "$15$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
+        feedback: >
+          Inverser l'ordre des bornes change le signe de l'intégrale, par
+          convention : $\int_6^2 f(x)\,\mathrm{d}x = -\int_2^6 f(x)\,
+          \mathrm{d}x$. Garder $15$ revient à ignorer cette convention,
+          comme si l'ordre des bornes n'avait aucune importance.
+      - id: C
+        text: "$\\dfrac{1}{15}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
+        feedback: >
+          Inverser l'ordre des bornes change le SIGNE de l'intégrale, ce
+          n'est pas une opération qui inverse sa valeur (comme un inverse
+          multiplicatif). La convention est $\int_6^2 f = -\int_2^6 f$,
+          une négation, pas une division.
+      - id: D
+        text: "On ne peut pas savoir, car $6>2$ alors que l'intégrale s'écrit habituellement avec la borne du bas plus petite que celle du haut."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
+        feedback: >
+          C'est justement pour ce genre de cas que la convention du chapitre 4
+          existe : elle donne un sens à $\int_b^a$ même quand $b>a$, à
+          savoir $\int_b^a f(x)\,\mathrm{d}x = -\int_a^b f(x)\,\mathrm{d}x$.
+          Ce n'est pas une situation indéterminée, c'est une définition.
+    correct_feedback: >
+      Par la convention du chapitre 4, $\int_b^a f(x)\,\mathrm{d}x = -\int_a^b
+      f(x)\,\mathrm{d}x$. Donc $\int_6^2 f(x)\,\mathrm{d}x = -\int_2^6
+      f(x)\,\mathrm{d}x = -15$.
+    solution: |
+      **Convention (chapitre 4) :**
+      $$\int_6^2 f(x)\,\mathrm{d}x = -\int_2^6 f(x)\,\mathrm{d}x = -15$$
+
+      Cette convention découle directement de la définition $F(b)-F(a)$ :
+      échanger les bornes échange les deux termes de la soustraction, ce
+      qui change le signe du résultat.
+
+  - id: CI-16
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [chasles, hors_intervalle]
+    primary_misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
+    stem: >
+      On donne $\int_0^2 f(x)\,\mathrm{d}x = 4$ et $\int_0^5 f(x)\,
+      \mathrm{d}x = 10$. Que vaut $\int_2^5 f(x)\,\mathrm{d}x$ ? (Remarque :
+      ici on te demande d'appliquer Chasles avec $c=0$, un point qui n'est
+      PAS entre $2$ et $5$.)
+    type: mcq
+    choices:
+      - id: A
+        text: "La relation de Chasles ne s'applique pas ici, car $0$ n'est pas compris entre $2$ et $5$."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
+        feedback: >
+          La relation de Chasles est vraie pour n'importe quel réel $c$, y
+          compris un $c$ situé en dehors du segment délimité par les deux
+          bornes de l'intégrale recherchée — c'est justement ce que
+          permettent les conventions sur $\int_a^a$ et $\int_b^a=-\int_a^b$
+          vues au début du chapitre 4.
+      - id: B
+        text: "$14$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
+        feedback: >
+          Ce choix additionne les deux intégrales données, $4+10=14$, sans
+          respecter la structure de la relation de Chasles. Ici $c=0$
+          n'est pas entre les bornes $2$ et $5$ : il faut écrire
+          $\int_0^5 f = \int_0^2 f + \int_2^5 f$ et isoler le terme
+          recherché, pas simplement additionner les deux valeurs connues.
+      - id: C
+        text: "$-6$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
+        feedback: >
+          Ce choix calcule $4-10$ au lieu de $10-4$ : l'ordre de la
+          soustraction dans $\int_0^5 f = \int_0^2 f + \int_2^5 f$ a été
+          inversé. C'est $\int_2^5 f$ qu'on isole en écrivant
+          $\int_2^5 f = \int_0^5 f - \int_0^2 f$, donc $10-4$, pas $4-10$.
+      - id: D
+        text: "$6$"
+        correct: true
+    correct_feedback: >
+      Par Chasles en $c=0$ (même si $0$ n'est pas entre $2$ et $5$, la
+      relation reste valable) : $\int_0^5 f(x)\,\mathrm{d}x = \int_0^2
+      f(x)\,\mathrm{d}x + \int_2^5 f(x)\,\mathrm{d}x$, donc $10 = 4 +
+      \int_2^5 f(x)\,\mathrm{d}x$, d'où $\int_2^5 f(x)\,\mathrm{d}x = 6$.
+    solution: |
+      **Chasles en $c=0$ (valable même si $0 \notin [2,5]$) :**
+      $$\int_0^5 f(x)\,\mathrm{d}x = \int_0^2 f(x)\,\mathrm{d}x + \int_2^5 f(x)\,\mathrm{d}x$$
+      $$10 = 4 + \int_2^5 f(x)\,\mathrm{d}x$$
+      $$\int_2^5 f(x)\,\mathrm{d}x = 6$$
+
+  - id: CI-17
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [positivite, ordre_des_bornes]
+    primary_misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
+    stem: >
+      Soit $f$ continue et $f\geq0$ sur $[2,5]$. Un élève en déduit que
+      $\int_5^2 f(x)\,\mathrm{d}x \geq 0$. A-t-il raison ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, car $f\\geq0$ garantit que toute intégrale de $f$ est positive, quel que soit l'ordre des bornes."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
+        feedback: >
+          La propriété de positivité du chapitre 5 exige explicitement $a\leq b$ :
+          elle dit $\int_a^b f \geq 0$ quand $a\leq b$ et $f\geq0$ sur
+          $[a,b]$. Ici les bornes sont inversées ($5$ puis $2$), donc cette
+          propriété ne s'applique pas directement à $\int_5^2 f$.
+      - id: B
+        text: "Non : inverser les bornes change toujours le signe — $\\int_5^2 f(x)\\,\\mathrm{d}x = -\\int_2^5 f(x)\\,\\mathrm{d}x \\leq 0$ par positivité."
+        correct: true
+      - id: C
+        text: "Non, car $f\\geq0$ sur $[2,5]$ n'implique rien du tout sur le signe d'aucune intégrale de $f$."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
+        feedback: >
+          $f\geq0$ sur $[2,5]$ implique bien quelque chose : $\int_2^5
+          f(x)\,\mathrm{d}x \geq 0$ (bornes dans l'ordre croissant). C'est
+          seulement pour $\int_5^2 f$ — bornes inversées — que le signe
+          change, via la convention du chapitre 4.
+      - id: D
+        text: "Oui, car une aire est toujours positive, quel que soit le sens dans lequel on la parcourt."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+        feedback: >
+          $\int_5^2 f(x)\,\mathrm{d}x$ n'est pas une aire, c'est une
+          intégrale signée avec les bornes inversées : par convention
+          (chapitre 4), $\int_5^2 f = -\int_2^5 f$. Le signe négatif vient de
+          cette convention sur l'ordre des bornes, pas d'un changement de
+          sens de « parcours » d'une aire.
+    correct_feedback: >
+      La positivité (chapitre 5) donne $\int_2^5 f(x)\,\mathrm{d}x \geq 0$, car les
+      bornes sont dans l'ordre croissant ($2\leq5$) et $f\geq0$. Mais
+      $\int_5^2 f(x)\,\mathrm{d}x = -\int_2^5 f(x)\,\mathrm{d}x$
+      (convention du chapitre 4), donc $\int_5^2 f(x)\,\mathrm{d}x \leq 0$ :
+      l'inversion des bornes change le signe.
+    solution: |
+      **Positivité (chapitre 5), bornes dans l'ordre croissant :**
+      $$\int_2^5 f(x)\,\mathrm{d}x \geq 0 \quad (\text{car } 2\leq5 \text{ et } f\geq0 \text{ sur } [2,5])$$
+
+      **Convention (chapitre 4) pour les bornes inversées :**
+      $$\int_5^2 f(x)\,\mathrm{d}x = -\int_2^5 f(x)\,\mathrm{d}x \leq 0$$
+
+      La propriété de positivité exige $a\leq b$ ; l'appliquer sans
+      vérifier l'ordre des bornes donne un signe faux.
+
+  - id: CI-18
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [comparaison, intervalle_entier]
+    primary_misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
+    stem: >
+      On sait que $f(1)\leq g(1)$ et $f(4)\leq g(4)$, mais on ne sait rien
+      sur le signe de $g(x)-f(x)$ pour les $x$ strictement entre $1$ et
+      $4$. Peut-on en déduire que $\int_1^4 f(x)\,\mathrm{d}x \leq
+      \int_1^4 g(x)\,\mathrm{d}x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, car il suffit que l'inégalité soit vraie aux bornes de l'intervalle pour qu'elle soit vraie sur tout l'intervalle par continuité."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
+        feedback: >
+          La continuité ne garantit rien de tel : $f$ et $g$ peuvent très
+          bien vérifier $f\leq g$ aux deux bornes tout en ayant $g<f$
+          quelque part au milieu de l'intervalle (les deux courbes peuvent
+          se croiser deux fois entre $1$ et $4$). La propriété du chapitre 5 exige
+          l'inégalité sur TOUT l'intervalle, sans exception.
+      - id: B
+        text: "Oui, car la propriété de comparaison ne porte que sur les valeurs de $f$ et $g$ aux bornes de l'intégrale."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
+        feedback: >
+          C'est l'inverse : la propriété de comparaison du chapitre 5 porte sur le
+          comportement de $f$ et $g$ SUR TOUT L'INTERVALLE $[a,b]$, pas
+          seulement en $x=a$ et $x=b$. Ce qui se passe strictement entre
+          les bornes compte tout autant.
+      - id: C
+        text: "Non, car la comparaison des intégrales ne s'applique qu'à des fonctions positives."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
+        feedback: >
+          La comparaison (chapitre 5) ne demande pas que $f$ et $g$ soient
+          positives — seulement que $f\leq g$ sur tout l'intervalle. La
+          démonstration du chapitre 5 applique la positivité à la différence
+          $g-f$, ce qui fonctionne même si $f$ et $g$ prennent des valeurs
+          négatives.
+      - id: D
+        text: "Non : la comparaison des intégrales exige $f(x)\\leq g(x)$ pour TOUT $x$ de l'intervalle $[1,4]$, pas seulement aux deux extrémités."
+        correct: true
+    correct_feedback: >
+      La propriété de comparaison du chapitre 5 s'appuie sur $f\leq g$ sur TOUT
+      l'intervalle $[a,b]$ (elle applique la positivité à $g-f\geq0$
+      partout). Une inégalité vérifiée seulement aux deux bornes ne suffit
+      pas : $f$ et $g$ pourraient très bien se croiser entre $1$ et $4$,
+      rendant la conclusion fausse.
+    solution: |
+      La démonstration de la comparaison (chapitre 5) applique la positivité à
+      $g-f\geq0$ **sur tout l'intervalle** $[a,b]$. Si $g-f$ n'est
+      positive qu'aux deux bornes mais change de signe entre les deux,
+      rien ne garantit $\int_a^b(g-f)\geq0$ — l'hypothèse de la propriété
+      n'est simplement pas vérifiée. Sans information sur $[1,4]$ tout
+      entier, on ne peut rien conclure sur l'ordre des deux intégrales.
+
+  - id: CI-19
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [inegalite_moyenne]
+    primary_misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+    stem: >
+      Soit $f$ continue sur $[3,8]$ avec $2\leq f(x)\leq6$ pour tout
+      $x\in[3,8]$. D'après l'inégalité de la moyenne, quel encadrement
+      peut-on donner pour $\int_3^8 f(x)\,\mathrm{d}x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2 \\leq \\int_3^8 f(x)\\,\\mathrm{d}x \\leq 6$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+        feedback: >
+          Ce choix oublie de multiplier $m=2$ et $M=6$ par la longueur de
+          l'intervalle $b-a=8-3=5$. L'inégalité de la moyenne s'écrit
+          $m(b-a)\leq\int_a^b f\leq M(b-a)$ — sans ce facteur, l'encadrement
+          obtenu est celui de $f(x)$ elle-même, pas celui de son intégrale
+          sur un intervalle de longueur $5$.
+      - id: B
+        text: "$16 \\leq \\int_3^8 f(x)\\,\\mathrm{d}x \\leq 48$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+        feedback: >
+          Ce choix multiplie $m$ et $M$ par $8$ (la borne supérieure
+          seule) au lieu de $b-a=8-3=5$ (la longueur de l'intervalle). Le
+          facteur à utiliser est toujours une LONGUEUR d'intervalle,
+          jamais une borne isolée.
+      - id: C
+        text: "$10 \\leq \\int_3^8 f(x)\\,\\mathrm{d}x \\leq 30$"
+        correct: true
+      - id: D
+        text: "$10 \\leq \\int_3^8 f(x)\\,\\mathrm{d}x \\leq 6$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+        feedback: >
+          Ce choix multiplie correctement $m=2$ par $b-a=5$ (donnant
+          $10$), mais oublie de faire la même chose pour $M=6$, qui reste
+          tel quel. Les DEUX bornes $m$ et $M$ doivent être multipliées
+          par $b-a$ : $M(b-a)=6\times5=30$, pas $6$.
+    correct_feedback: >
+      Par l'inégalité de la moyenne, $m(b-a)\leq\int_a^b f(x)\,\mathrm{d}x
+      \leq M(b-a)$ avec $m=2$, $M=6$, $b-a=5$ : $2\times5\leq\int_3^8
+      f(x)\,\mathrm{d}x\leq6\times5$, soit $10\leq\int_3^8 f(x)\,
+      \mathrm{d}x\leq30$.
+    solution: |
+      **Inégalité de la moyenne (chapitre 6), $m=2$, $M=6$, $b-a=8-3=5$ :**
+      $$m(b-a) \leq \int_3^8 f(x)\,\mathrm{d}x \leq M(b-a)$$
+      $$2\times5 \leq \int_3^8 f(x)\,\mathrm{d}x \leq 6\times5$$
+      $$10 \leq \int_3^8 f(x)\,\mathrm{d}x \leq 30$$
+
+  - id: CI-20
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [inegalite_moyenne, monotonie]
+    primary_misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+    stem: >
+      Soit $f(x)=\sqrt{x}$ sur $[4,9]$ (fonction croissante). Pour
+      appliquer l'inégalité de la moyenne, quelles valeurs faut-il prendre
+      pour $m$ et $M$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$m=9$ et $M=4$, car on prend toujours la borne du haut pour $m$ et celle du bas pour $M$."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+        feedback: >
+          Il n'y a pas de règle fixe « borne du haut pour $m$ » : $m$ et
+          $M$ sont respectivement le minimum et le maximum de $f$ SUR
+          L'INTERVALLE, ce qui dépend du sens de variation de $f$. Ici $f$
+          est croissante, donc son minimum est atteint à la borne
+          INFÉRIEURE ($x=4$) et son maximum à la borne SUPÉRIEURE ($x=9$)
+          — pas l'inverse.
+      - id: B
+        text: "$m=\\sqrt{9}=3$ et $M=\\sqrt{4}=2$, car $f$ est croissante donc ses valeurs augmentent en dépassant la racine de la borne du haut."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+        feedback: >
+          Les valeurs de $m$ et $M$ sont inversées par rapport à leur
+          définition : $m$ doit être le PLUS PETIT des deux, $M$ le PLUS
+          GRAND. Ici $3>2$, donc ce choix nomme « $m$ » la plus grande
+          valeur — une erreur d'étiquetage qui rendrait l'encadrement
+          final incohérent ($m>M$ n'a pas de sens).
+      - id: C
+        text: "$m=4$ et $M=9$, en utilisant directement les bornes de l'intervalle sans passer par $f$."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+        feedback: >
+          $m$ et $M$ sont le minimum et le maximum de $f(x)$ —
+          c'est-à-dire des valeurs de la fonction $\sqrt{x}$ — pas les
+          bornes $4$ et $9$ de l'intervalle lui-même. Il faut évaluer $f$
+          en ces bornes : $f(4)=2$ et $f(9)=3$.
+      - id: D
+        text: "$m=\\sqrt{4}=2$ et $M=\\sqrt{9}=3$, car $f$ est croissante sur $[4,9]$ : son minimum est atteint en $x=4$ et son maximum en $x=9$."
+        correct: true
+    correct_feedback: >
+      $f(x)=\sqrt x$ est croissante sur $[4,9]$, donc son minimum sur cet
+      intervalle est atteint à la borne inférieure, $f(4)=2$, et son
+      maximum à la borne supérieure, $f(9)=3$. D'où $m=2$ et $M=3$ —
+      exactement le même raisonnement que pour $e^x$ au chapitre 6.
+    solution: |
+      $f(x)=\sqrt x$ est croissante sur $[4,9]$ (dérivée $f'(x)=\frac{1}{2\sqrt x}>0$), donc son minimum
+      est atteint en $x=4$ (la borne inférieure) et son maximum en $x=9$
+      (la borne supérieure) : $m=f(4)=2$ et $M=f(9)=3$. On aurait alors
+      $2\times5\leq\int_4^9\sqrt x\,\mathrm{d}x\leq3\times5$, soit
+      $10\leq\int_4^9\sqrt x\,\mathrm{d}x\leq15$.
+
+  - id: CI-21
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [inegalite_moyenne, valeur_absolue]
+    primary_misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+    stem: >
+      Soit $f$ continue sur $[0,4]$ avec $|f(x)|\leq3$ pour tout
+      $x\in[0,4]$. D'après le corollaire de l'inégalité de la moyenne, que
+      peut-on affirmer sur $\left|\int_0^4 f(x)\,\mathrm{d}x\right|$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\left|\\int_0^4 f(x)\\,\\mathrm{d}x\\right| \\leq 3$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+        feedback: >
+          Ce choix oublie de multiplier le majorant $M=3$ par la longueur
+          de l'intervalle, $b-a=4-0=4$. Le corollaire s'écrit
+          $\left|\int_a^b f\right|\leq M(b-a)$, pas $\left|\int_a^b
+          f\right|\leq M$.
+      - id: B
+        text: "$\\left|\\int_0^4 f(x)\\,\\mathrm{d}x\\right| \\leq 12$"
+        correct: true
+      - id: C
+        text: "$\\left|\\int_0^4 f(x)\\,\\mathrm{d}x\\right| \\geq 12$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+        feedback: >
+          Le corollaire donne une borne SUPÉRIEURE au module de
+          l'intégrale, pas une borne inférieure : $|f|\leq M$ garantit que
+          l'intégrale ne peut pas devenir trop grande en valeur absolue,
+          pas qu'elle est nécessairement grande. Le sens de l'inégalité
+          est inversé.
+      - id: D
+        text: "On ne peut rien affirmer, car on ne connaît pas le signe de $f$."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
+        feedback: >
+          Le corollaire du chapitre 6 s'applique précisément à $|f(x)|\leq M$ sans
+          avoir besoin de connaître le signe de $f$ — c'est tout l'intérêt
+          de raisonner sur la valeur absolue de $f$ plutôt que sur $f$
+          elle-même. Le signe de $f$ n'est pas nécessaire ici.
+    correct_feedback: >
+      D'après le corollaire du chapitre 6 (appliqué à $m=-M$), $\left|\int_a^b
+      f(x)\,\mathrm{d}x\right| \leq M(b-a)$. Ici $M=3$ et $b-a=4$, donc
+      $\left|\int_0^4 f(x)\,\mathrm{d}x\right| \leq 3\times4=12$.
+    solution: |
+      **Corollaire (chapitre 6) :** si $|f(x)|\leq M$ sur $[a,b]$, alors
+      $$\left|\int_a^b f(x)\,\mathrm{d}x\right| \leq M(b-a)$$
+
+      Ici $M=3$, $b-a=4-0=4$ :
+      $$\left|\int_0^4 f(x)\,\mathrm{d}x\right| \leq 3\times4=12$$
+
+  - id: CI-22
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [valeur_moyenne, calcul_complet]
+    primary_misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
+    stem: >
+      Calcule la valeur moyenne de $f(x)=2x+1$ sur $[1,4]$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$6$"
+        correct: true
+      - id: B
+        text: "$18$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
+        feedback: >
+          Ce résultat est la valeur de $\int_1^4(2x+1)\,\mathrm{d}x$
+          seule, sans division par la longueur de l'intervalle
+          $b-a=4-1=3$. La valeur moyenne est TOUJOURS l'intégrale divisée
+          par $b-a$, jamais l'intégrale seule.
+      - id: C
+        text: "$9$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
+        feedback: >
+          Ce résultat correspond à $f(4)=2\times4+1=9$, la valeur de $f$ à
+          la borne supérieure seule. La valeur moyenne de $f$ sur tout
+          l'intervalle n'est pas la valeur de $f$ en un seul point — c'est
+          une moyenne sur l'ensemble de l'intervalle, calculée via
+          l'intégrale.
+      - id: D
+        text: "$4{,}5$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
+        feedback: >
+          Ce résultat divise $18$ par $4$ (la borne supérieure) au lieu de
+          $3$ (la longueur de l'intervalle $b-a=4-1$). Le dénominateur de
+          la valeur moyenne est toujours $b-a$, jamais une borne isolée.
+    correct_feedback: >
+      $\int_1^4(2x+1)\,\mathrm{d}x = \big[x^2+x\big]_1^4 = (16+4)-(1+1) =
+      18$. Puis $\mu = \dfrac{1}{4-1}\times18 = \dfrac{18}{3}=6$.
+    solution: |
+      **Intégrale :**
+      $$\int_1^4(2x+1)\,\mathrm{d}x = \Big[x^2+x\Big]_1^4 = (16+4)-(1+1) = 18$$
+
+      **Valeur moyenne (chapitre 7) :**
+      $$\mu = \frac{1}{4-1}\times18 = \frac{18}{3} = 6$$
+
+  - id: CI-23
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [valeur_moyenne, interpretation]
+    primary_misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
+    stem: >
+      Soit $f(x)=x^2$ sur $[0,4]$. Un élève affirme que la valeur moyenne
+      de $f$ sur $[0,4]$ est $f\left(\dfrac{0+4}{2}\right) = f(2) = 4$,
+      « puisque c'est la valeur de $f$ au milieu de l'intervalle ». Cette
+      affirmation est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, la valeur moyenne d'une fonction est toujours sa valeur au point milieu de l'intervalle."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
+        feedback: >
+          C'est une confusion fréquente mais fausse en général : la valeur
+          moyenne est définie par $\mu=\frac{1}{b-a}\int_a^b f(x)\,
+          \mathrm{d}x$, pas par $f\left(\frac{a+b}2\right)$. Ces deux
+          nombres ne coïncident que pour certaines fonctions particulières
+          (par exemple les fonctions affines), pas pour $x^2$.
+      - id: B
+        text: "Oui, car $x^2$ est symétrique par rapport à l'axe des ordonnées, donc sa valeur moyenne se lit directement au centre de l'intervalle."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
+        feedback: >
+          La symétrie de $x^2$ par rapport à l'axe des ordonnées (en
+          $x=0$) ne dit rien sur son comportement sur l'intervalle
+          $[0,4]$, qui ne contient pas de partie symétrique par rapport à
+          $x=0$. La valeur moyenne se calcule par la définition du chapitre 7, pas
+          en invoquant une symétrie qui ne s'applique pas ici.
+      - id: C
+        text: "Non : la valeur moyenne se calcule par $\\mu=\\frac{1}{b-a}\\int_a^b f(x)\\,\\mathrm{d}x$, et ce nombre ne coïncide en général pas avec $f$ évaluée au milieu de l'intervalle."
+        correct: true
+      - id: D
+        text: "Non, car la formule de la valeur moyenne ne s'applique qu'à des fonctions affines."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
+        feedback: >
+          La définition de la valeur moyenne (chapitre 7) s'applique à TOUTE
+          fonction continue, pas seulement aux fonctions affines — c'est
+          d'ailleurs pour une fonction affine que la valeur moyenne
+          coïnciderait avec la valeur au milieu de l'intervalle, un cas
+          particulier plutôt qu'une restriction.
+    correct_feedback: >
+      La vraie valeur moyenne est $\mu=\dfrac{1}{4-0}\int_0^4 x^2\,
+      \mathrm{d}x = \dfrac14\times\dfrac{64}{3} = \dfrac{16}{3}\approx
+      5{,}33$, différente de $f(2)=4$. Pour une fonction convexe comme
+      $x^2$, la valeur moyenne intègre le comportement de toute la courbe,
+      pas seulement le point central — les deux notions ne coïncident
+      que pour certaines fonctions particulières, comme les fonctions affines.
+    solution: |
+      **Calcul de la vraie valeur moyenne :**
+      $$\int_0^4 x^2\,\mathrm{d}x = \left[\frac{x^3}{3}\right]_0^4 = \frac{64}{3}$$
+      $$\mu = \frac{1}{4-0}\times\frac{64}{3} = \frac{16}{3} \approx 5{,}33$$
+
+      **Comparaison :** $f(2)=4 \neq \frac{16}{3}\approx5{,}33$. La valeur
+      moyenne n'est pas, en général, la valeur de $f$ au milieu de
+      l'intervalle — l'égalité vaut, par exemple, pour les fonctions affines
+      (où la courbe EST la droite reliant ses extrémités).
+
+  - id: CI-24
+    rung: "R7"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [integration_par_parties, formule]
+    primary_misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
+    stem: >
+      Pour calculer $\int_0^1 x\,e^x\,\mathrm{d}x$, on pose $u=x$ ($u'=1$)
+      et $v'=e^x$ ($v=e^x$). Quelle est la formule correcte issue de
+      l'intégration par parties ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\int_0^1 x\\,e^x\\,\\mathrm{d}x = \\big[x\\,e^x\\big]_0^1 + \\int_0^1 e^x\\,\\mathrm{d}x$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
+        feedback: >
+          Le signe entre le terme de bord et l'intégrale restante est un
+          MOINS, pas un plus. La formule de l'IPP est $\int_a^b uv' =
+          [uv]_a^b - \int_a^b u'v$ — le signe moins vient directement de
+          la règle de dérivation du produit isolée au chapitre 8, pas d'un choix
+          arbitraire.
+      - id: B
+        text: "$\\int_0^1 x\\,e^x\\,\\mathrm{d}x = \\big[x\\,e^x\\big]_0^1 - \\int_0^1 e^x\\,\\mathrm{d}x$"
+        correct: true
+      - id: C
+        text: "$\\int_0^1 x\\,e^x\\,\\mathrm{d}x = \\big[e^x\\big]_0^1 - \\int_0^1 x\\,e^x\\,\\mathrm{d}x$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
+        feedback: >
+          Le terme de bord $[uv]_a^b$ doit contenir le PRODUIT
+          $u(x)v(x)=x\,e^x$, pas seulement $v(x)=e^x$ seul. Oublier le
+          facteur $u=x$ dans le terme de bord ignore une partie de la
+          formule.
+      - id: D
+        text: "$\\int_0^1 x\\,e^x\\,\\mathrm{d}x = \\big[x\\,e^x\\big]_0^1 - \\int_0^1 x\\,e^x\\,\\mathrm{d}x$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
+        feedback: >
+          L'intégrale restante dans la formule de l'IPP est $\int_a^b
+          u'(x)v(x)\,\mathrm{d}x$, c'est-à-dire $\int_0^1 1\times e^x\,
+          \mathrm{d}x=\int_0^1 e^x\,\mathrm{d}x$ — pas une répétition de
+          l'intégrale de départ $\int_0^1 x\,e^x\,\mathrm{d}x$. Si
+          l'intégrale restante était identique à celle de départ, l'IPP ne
+          ferait progresser aucun calcul.
+    correct_feedback: >
+      La formule de l'IPP (chapitre 8) est $\int_a^b u(x)v'(x)\,\mathrm{d}x =
+      \big[u(x)v(x)\big]_a^b - \int_a^b u'(x)v(x)\,\mathrm{d}x$. Avec
+      $u=x$, $u'=1$, $v=e^x$ : $\int_0^1 x\,e^x\,\mathrm{d}x =
+      \big[x\,e^x\big]_0^1 - \int_0^1 1\times e^x\,\mathrm{d}x =
+      \big[x\,e^x\big]_0^1 - \int_0^1 e^x\,\mathrm{d}x$.
+    solution: |
+      **Formule générale (chapitre 8) :**
+      $$\int_a^b u(x)v'(x)\,\mathrm{d}x = \big[u(x)v(x)\big]_a^b - \int_a^b u'(x)v(x)\,\mathrm{d}x$$
+
+      Avec $u=x$ ($u'=1$) et $v'=e^x$ ($v=e^x$) :
+      $$\int_0^1 x\,e^x\,\mathrm{d}x = \big[x\,e^x\big]_0^1 - \int_0^1 e^x\,\mathrm{d}x$$
+
+      (Le calcul complet donne $1$, comme dans l'exemple travaillé du chapitre 8.)
+
+  - id: CI-25
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [integration_par_parties, choix_u_v]
+    primary_misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
+    stem: >
+      Pour calculer $\int_1^2 x^2\ln(x)\,\mathrm{d}x$ par intégration par
+      parties, quel choix de $u$ et $v'$ est le plus efficace ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$u=\\ln(x)$ et $v'=x^2$"
+        correct: true
+      - id: B
+        text: "$u=x^2$ et $v'=\\ln(x)$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
+        feedback: >
+          Ce choix demande de trouver une primitive de $\ln(x)$ pour
+          obtenir $v$ — or cette primitive ($x\ln(x)-x$) n'est pas
+          immédiate, elle nécessite elle-même une intégration par
+          parties. Le bon réflexe est de primitiver le facteur dont une
+          primitive est directe ($x^2$), et de dériver l'autre.
+      - id: C
+        text: "$u=x^2\\ln(x)$ et $v'=1$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
+        feedback: >
+          Prendre le produit entier comme $u$ ne sépare rien : dériver
+          $x^2\ln(x)$ (règle du produit) redonne une expression aussi
+          compliquée, voire plus. L'IPP n'a d'intérêt que si on sépare les
+          deux facteurs du produit d'origine, $x^2$ et $\ln(x)$.
+      - id: D
+        text: "L'intégration par parties ne s'applique pas ici, car $\\ln(x)$ n'est pas un polynôme."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe
+        feedback: >
+          L'IPP ne demande à aucun moment que les facteurs soient des
+          polynômes — elle s'applique à tout produit de deux fonctions
+          dérivables, comme $x^2$ et $\ln(x)$ ici. C'est même l'exemple
+          typique où l'IPP est indispensable, précisément parce que
+          $\ln(x)$ n'a pas de primitive immédiate à mémoriser en dehors de
+          ce mécanisme.
+    correct_feedback: >
+      Avec $u=\ln(x)$, $u'=\dfrac1x$ est plus simple que $\ln(x)$
+      lui-même — le signal que $u=\ln(x)$ est le bon choix. Et $v'=x^2$ se
+      primitive immédiatement en $v=\dfrac{x^3}{3}$. Le produit
+      $u\cdot v'$, difficile à intégrer directement, devient un produit
+      $u'\cdot v$ plus simple : $\dfrac1x\times\dfrac{x^3}{3}=
+      \dfrac{x^2}{3}$, une intégrale immédiate.
+    solution: |
+      **Choix : $u=\ln(x)$ ($u'=\dfrac1x$), $v'=x^2$
+      ($v=\dfrac{x^3}{3}$).**
+
+      $$\int_1^2 x^2\ln(x)\,\mathrm{d}x = \left[\frac{x^3}{3}\ln(x)\right]_1^2 - \int_1^2 \frac{x^3}{3}\times\frac1x\,\mathrm{d}x = \left[\frac{x^3}{3}\ln(x)\right]_1^2 - \int_1^2 \frac{x^2}{3}\,\mathrm{d}x$$
+
+      Le choix inverse ($u=x^2$, $v'=\ln(x)$) exigerait de connaître
+      d'avance une primitive de $\ln(x)$ — ce qui n'est pas immédiat et
+      nécessiterait lui-même une IPP.
+
+  - id: CI-26
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: maths_calcul_integral
+    tags: [aires, entre_deux_courbes]
+    primary_misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+    stem: >
+      Les courbes de $f(x)=x+2$ et $g(x)=x^2$ se coupent en $x=-1$ et
+      $x=2$. Sur $]-1,2[$, la droite $f$ est au-dessus de la parabole $g$.
+      Quelle est la bonne démarche pour calculer l'aire de la région
+      comprise entre les deux courbes ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Calculer $\\int_{-1}^2 \\big(g(x)-f(x)\\big)\\,\\mathrm{d}x = \\int_{-1}^2 \\big(x^2-x-2\\big)\\,\\mathrm{d}x$, car on prend toujours « la deuxième courbe moins la première » dans ce genre de calcul."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+        feedback: >
+          Il n'y a pas de convention « deuxième moins première » : il faut
+          toujours soustraire la fonction du DESSOUS à la fonction du
+          DESSUS, jamais l'inverse par automatisme. Ici $f$ est au-dessus
+          de $g$, donc c'est $f-g$ qu'il faut intégrer, pas $g-f$ — sinon
+          on obtient un résultat négatif, qui n'est pas une aire.
+      - id: B
+        text: "Calculer $\\int_{-1}^2 f(x)\\,\\mathrm{d}x - \\int_{-1}^2 g(x)\\,\\mathrm{d}x$, ce qui revient par linéarité à $\\int_{-1}^2 \\big(f(x)-g(x)\\big)\\,\\mathrm{d}x$ — celle du dessus moins celle du dessous."
+        correct: true
+      - id: C
+        text: "Calculer $\\int_{-1}^2 f(x)\\,\\mathrm{d}x + \\int_{-1}^2 g(x)\\,\\mathrm{d}x$, en additionnant les deux aires sous chaque courbe."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+        feedback: >
+          Additionner les deux intégrales ne donne pas l'aire ENTRE les
+          deux courbes : cela reviendrait à empiler les deux régions au
+          lieu de mesurer l'écart entre elles. L'aire entre deux courbes se
+          calcule en intégrant leur DIFFÉRENCE (dessus moins dessous), pas
+          leur somme.
+      - id: D
+        text: "Calculer directement $\\big(f(2)-g(2)\\big) - \\big(f(-1)-g(-1)\\big)$, la différence des valeurs de $f-g$ aux deux points d'intersection."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+        feedback: >
+          Aux deux points d'intersection, $f(x)-g(x)=0$ (c'est la
+          définition même de ces points) : ce calcul donnerait $0-0=0$, ce
+          qui n'est manifestement pas l'aire recherchée. L'aire s'obtient
+          en INTÉGRANT $f-g$ sur l'intervalle, pas en évaluant $f-g$ aux
+          bornes puis en soustrayant ces valeurs.
+    correct_feedback: >
+      Comme $f\geq g$ sur tout $]-1,2[$ (le signe de $f-g$ ne change pas
+      entre les deux points d'intersection), l'aire s'obtient directement
+      par $\int_{-1}^2\big(f(x)-g(x)\big)\,\mathrm{d}x$ — la fonction du
+      dessus moins celle du dessous, jamais l'inverse.
+    solution: |
+      **Intersections :** $f(x)=g(x) \iff x+2=x^2 \iff x^2-x-2=0 \iff
+      (x-2)(x+1)=0 \iff x=-1$ ou $x=2$.
+
+      **Signe de $f-g$ sur $]-1,2[$ :** en $x=0$, $f(0)=2>g(0)=0$, donc
+      $f\geq g$ sur tout l'intervalle (le signe ne change pas entre les
+      deux intersections).
+
+      **Aire :**
+      $$\text{aire} = \int_{-1}^2 \big(f(x)-g(x)\big)\,\mathrm{d}x = \int_{-1}^2 \big(x+2-x^2\big)\,\mathrm{d}x = \left[\frac{x^2}{2}+2x-\frac{x^3}{3}\right]_{-1}^2$$
+
+      $$= \left(2+4-\frac83\right) - \left(\frac12-2+\frac13\right) = \frac{10}{3} - \left(-\frac{7}{6}\right) = \frac{20}{6}+\frac{7}{6} = \frac{27}{6} = \frac92$$
+
+      $$\text{aire} = \frac92\ \text{u.a.}$$
+
+  - id: CI-27
+    rung: "R8"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [aires, unites_aire]
+    primary_misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+    stem: >
+      Dans un repère où chaque axe est gradué à raison de $3\ \text{cm}$
+      par unité, une aire calculée par intégration vaut $5$ u.a. Quelle
+      est cette aire en cm² ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$15\\ \\text{cm}^2$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+        feedback: >
+          Ce calcul multiplie $5$ u.a. par $3$ une seule fois. Mais $1$
+          u.a. est l'aire d'un CARRÉ de côté $1$, donc dans ce repère, $1$
+          u.a. $= 3\,\text{cm}\times3\,\text{cm}=9\,\text{cm}^2$ — le
+          facteur d'échelle doit être appliqué aux DEUX dimensions de
+          l'aire (longueur ET largeur), pas une seule fois.
+      - id: B
+        text: "$8\\ \\text{cm}^2$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+        feedback: >
+          Ce résultat correspond à $5+3$, comme si l'on ajoutait l'échelle
+          du repère à l'aire en u.a. La conversion entre u.a. et cm² est
+          une MULTIPLICATION par le facteur d'échelle au carré, jamais une
+          addition.
+      - id: C
+        text: "$45\\ \\text{cm}^2$"
+        correct: true
+      - id: D
+        text: "$5\\ \\text{cm}^2$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+        feedback: >
+          Ce choix ne convertit pas du tout : il garde le nombre $5$ tel
+          quel, en changeant seulement l'unité affichée de u.a. à cm².
+          Mais u.a. et cm² ne sont pas la même unité de mesure dans ce
+          repère : $1$ u.a. correspond ici à $9\,\text{cm}^2$, pas à
+          $1\,\text{cm}^2$.
+    correct_feedback: >
+      $1$ u.a. est l'aire du carré de côté $1$ dans le repère, donc ici
+      $1\,\text{u.a.} = 3\,\text{cm}\times3\,\text{cm} = 9\,\text{cm}^2$.
+      L'aire cherchée vaut donc $5\times9=45\,\text{cm}^2$.
+    solution: |
+      **Conversion de l'unité d'aire :**
+      $$1\ \text{u.a.} = 3\ \text{cm} \times 3\ \text{cm} = 9\ \text{cm}^2$$
+
+      **Aire cherchée :**
+      $$5\ \text{u.a.} \times 9\ \text{cm}^2/\text{u.a.} = 45\ \text{cm}^2$$
+
+      Le facteur d'échelle s'applique aux deux dimensions de l'aire —
+      jamais une seule fois — car une aire est un produit de deux
+      longueurs.
+
+  - id: CI-28
+    rung: "R10"
+    difficulty_level: 5
+    skill_code: maths_calcul_integral
+    tags: [synthese, chasles, integration_par_parties, aires]
+    primary_misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+    stem: >
+      Soit $f(x)=(x-2)e^x$ sur $[0,3]$. On a établi par IPP qu'une
+      primitive de $f$ est $F(x)=(x-3)e^x$. Sachant que $f$ change de
+      signe en $x=2$ ($f\leq0$ sur $[0,2]$, $f\geq0$ sur $[2,3]$), quelle
+      est la bonne démarche pour calculer l'AIRE délimitée par la courbe
+      de $f$, l'axe des abscisses, et les droites $x=0$ et $x=3$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Découper en $[0,2]$ et $[2,3]$ par Chasles, calculer $-\\big(F(2)-F(0)\\big)$ pour l'aire sur $[0,2]$ et $F(3)-F(2)$ pour celle sur $[2,3]$, puis additionner."
+        correct: true
+      - id: B
+        text: "Calculer directement $F(3)-F(0)$ et prendre ce nombre comme l'aire cherchée, puisque $F$ est une primitive de $f$ sur tout l'intervalle $[0,3]$."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+        feedback: >
+          $F(3)-F(0) = \int_0^3 f(x)\,\mathrm{d}x$ est l'intégrale SIGNÉE
+          sur tout l'intervalle : comme $f$ change de signe en $x=2$, les
+          parties positive et négative s'annulent partiellement dans cette
+          différence, donc ce nombre n'est pas l'aire — exactement le
+          piège identifié au chapitre 9.
+      - id: C
+        text: "Calculer $\\left|F(3)-F(0)\\right|$, en prenant la valeur absolue du résultat global."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+        feedback: >
+          Prendre la valeur absolue APRÈS avoir tout combiné ne corrige
+          pas l'annulation partielle entre la partie où $f\leq0$ et celle
+          où $f\geq0$ : il faut découper en $x=2$ AVANT de prendre les
+          valeurs absolues, comme vu au chapitre 9, pas après avoir calculé
+          l'intégrale globale.
+      - id: D
+        text: "Calculer $F(2)-F(0)$ pour l'aire sur $[0,2]$ et $F(3)-F(2)$ pour celle sur $[2,3]$, sans changer le moindre signe, puis additionner les deux résultats."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+        feedback: >
+          Sur $[0,2]$, $f\leq0$, donc $F(2)-F(0)=\int_0^2 f(x)\,
+          \mathrm{d}x$ est NÉGATIF — ce n'est pas encore l'aire de ce
+          morceau, il faut en prendre l'OPPOSÉ. Additionner ce nombre
+          négatif directement au morceau positif ne redonne pas la vraie
+          aire totale.
+    correct_feedback: >
+      Comme $f$ change de signe en $x=2$, il faut découper (Chasles, chapitre 4)
+      et traiter chaque morceau selon son signe : l'opposé de l'intégrale
+      là où $f\leq0$, l'intégrale telle quelle là où $f\geq0$, puis
+      additionner — exactement la méthode du chapitre 9, appliquée ici à une
+      primitive obtenue par IPP (chapitre 8).
+    solution: |
+      **Sur $[0,2]$, $f\leq0$ :**
+      $$\text{aire}_{[0,2]} = -\big(F(2)-F(0)\big) = -\Big((-1)e^2-(-3)e^0\Big) = -\big(-e^2+3\big) = e^2-3$$
+
+      **Sur $[2,3]$, $f\geq0$ :**
+      $$\text{aire}_{[2,3]} = F(3)-F(2) = 0\cdot e^3-(-e^2) = e^2$$
+
+      **Aire totale (somme) :**
+      $$\text{aire} = (e^2-3)+e^2 = 2e^2-3\ \text{u.a.}$$
+
+  - id: CI-29
+    rung: "R10"
+    difficulty_level: 4
+    skill_code: maths_calcul_integral
+    tags: [synthese, comparaison, valeur_moyenne]
+    primary_misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
+    stem: >
+      Soient $f$ et $g$ deux fonctions continues sur $[2,6]$ telles que
+      $f(x) \leq g(x)$ pour tout $x \in [2,6]$. On donne que la valeur
+      moyenne de $f$ sur $[2,6]$ vaut $3$. Que peut-on affirmer avec
+      certitude sur la valeur moyenne de $g$ sur $[2,6]$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La valeur moyenne de $g$ vaut exactement $3$ également, car les deux fonctions sont comparables sur le même intervalle."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+        feedback: >
+          $f\leq g$ n'implique pas $f=g$, donc rien ne garantit que leurs
+          valeurs moyennes coïncident. On sait seulement que celle de $g$
+          est au moins celle de $f$, pas qu'elle lui est égale.
+      - id: B
+        text: "On ne peut rien affirmer sur la valeur moyenne de $g$ sans connaître son expression explicite."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.hypothese-non-verifiee
+        feedback: >
+          On PEUT affirmer quelque chose : la comparaison $f\leq g$ (chapitre 5),
+          combinée à la définition de la valeur moyenne (chapitre 7), donne
+          directement $\mu_g\geq\mu_f=3$, sans avoir besoin de connaître
+          l'expression de $g$.
+      - id: C
+        text: "La valeur moyenne de $g$ est inférieure ou égale à $3$, car $g$ étant plus grande que $f$, son intégrale « compense » en étant plus petite en moyenne."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+        feedback: >
+          C'est l'inégalité inversée. $f\leq g$ sur tout l'intervalle
+          donne $\int f\leq\int g$ (chapitre 5), donc en divisant par $b-a>0$ (ce
+          qui ne change pas le sens de l'inégalité), $\mu_f\leq\mu_g$ — la
+          valeur moyenne de $g$ est AU MOINS celle de $f$, pas au plus.
+      - id: D
+        text: "La valeur moyenne de $g$ est supérieure ou égale à $3$, mais elle n'est pas déterminée précisément."
+        correct: true
+    correct_feedback: >
+      Par comparaison (chapitre 5), $f\leq g$ sur $[2,6]$ donne $\int_2^6 f(x)\,
+      \mathrm{d}x \leq \int_2^6 g(x)\,\mathrm{d}x$. En divisant les deux
+      membres par $b-a=4>0$ (ce qui préserve le sens de l'inégalité), on
+      obtient $\mu_f\leq\mu_g$, donc $\mu_g\geq3$ — sans pouvoir dire plus
+      précisément quelle est cette valeur.
+    solution: |
+      **Comparaison (chapitre 5) :** $f\leq g$ sur $[2,6]$ $\Rightarrow$
+      $$\int_2^6 f(x)\,\mathrm{d}x \leq \int_2^6 g(x)\,\mathrm{d}x$$
+
+      **Division par $b-a=4>0$ (préserve le sens) :**
+      $$\frac{1}{4}\int_2^6 f(x)\,\mathrm{d}x \leq \frac14\int_2^6 g(x)\,\mathrm{d}x$$
+      $$\mu_f \leq \mu_g$$
+
+      Comme $\mu_f=3$, on conclut $\mu_g\geq3$ — un encadrement, pas une
+      valeur exacte, puisque l'énoncé ne donne aucune autre information
+      sur $g$.
+
+  - id: CI-30
+    rung: "R10"
+    difficulty_level: 4
+    skill_code: maths_calcul_integral
+    tags: [synthese, integration_par_parties, valeur_moyenne]
+    primary_misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
+    stem: >
+      Soit $q(x)=(2-x)e^x$ sur $[0,2]$. Une intégration par parties donne
+      $\int_0^2 q(x)\,\mathrm{d}x = e^2-3$. Quelle est la valeur moyenne de
+      $q$ sur $[0,2]$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$e^2-3$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
+        feedback: >
+          Ce choix reprend directement la valeur de l'intégrale, sans la
+          diviser par la longueur de l'intervalle $b-a=2-0=2$. La valeur
+          moyenne n'est jamais l'intégrale elle-même, c'est l'intégrale
+          divisée par $b-a$.
+      - id: B
+        text: "$\\dfrac{e^2-3}{2}$"
+        correct: true
+      - id: C
+        text: "$2(e^2-3)$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
+        feedback: >
+          Ce choix MULTIPLIE l'intégrale par $b-a=2$ au lieu de la
+          DIVISER. La définition de la valeur moyenne est
+          $\mu=\dfrac{1}{b-a}\int_a^b f(x)\,\mathrm{d}x$ — une division
+          par $b-a$, pas une multiplication.
+      - id: D
+        text: "$\\dfrac{e^2-3}{e^2}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee
+        feedback: >
+          Ce choix divise l'intégrale par $q(2)=e^2$ (une valeur de la
+          fonction) au lieu de diviser par la longueur de l'intervalle
+          $b-a=2$. Le dénominateur de la valeur moyenne est toujours une
+          LONGUEUR d'intervalle, jamais une valeur de la fonction
+          elle-même.
+    correct_feedback: >
+      $\mu = \dfrac{1}{b-a}\int_a^b q(x)\,\mathrm{d}x = \dfrac{1}{2-0}
+      \times(e^2-3) = \dfrac{e^2-3}{2}$.
+    solution: |
+      **Valeur moyenne (chapitre 7), appliquée au résultat de l'IPP :**
+      $$\mu = \frac{1}{2-0}\int_0^2 q(x)\,\mathrm{d}x = \frac{e^2-3}{2}$$
+
+      (Vérification de l'intégrale par IPP : avec $u=2-x$, $u'=-1$,
+      $v'=e^x$, $v=e^x$ : $\int_0^2(2-x)e^x\,\mathrm{d}x =
+      \big[(2-x)e^x\big]_0^2 + \int_0^2 e^x\,\mathrm{d}x = (0-2) +
+      \big[e^x\big]_0^2 = -2+(e^2-1) = e^2-3$.)
+
+# ── Coverage summary (summit-conversion backfill — HONEST STATE) ──────────────
+# Counts are by item-level `primary_misconception` (each of the 30 items has
+# exactly one). The four rupture-gate models (linearite-abusive,
+# chasles-mal-appliquee, integrale-signee-vs-aire, ipp-mauvais-choix-ou-signe)
+# and the predict-gate model (aire-naive-geometrique) all meet the ≥3 floor.
+# Three models do NOT yet meet it — surfaced here, not padded (see §6).
+  # Ajoutés le 2026-09-05 : quatre familles sous le plancher de 3 items du banc —
+  # `primitive-vs-derivee` (1 item), `conversion-unites-aire` (1),
+  # `linearite-abusive` (2), `chasles-mal-appliquee` (2). Quatre items, quatre
+  # gestes distincts : vérifier une primitive, combiner linéarité et Chasles sur
+  # des intégrales données, puis deux conversions d'unités d'aire — celle où les
+  # deux échelles diffèrent, celle où elles coïncident.
+  - id: CI-31
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [primitive]
+    primary_misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
+    stem: >
+      On veut vérifier qu'une fonction $F$ est bien une primitive de $f$ sur un
+      intervalle $I$. Quel calcul faut-il faire ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Dériver $F$, et vérifier que $F'(x) = f(x)$ pour tout $x$ de $I$"
+        correct: true
+      - id: B
+        text: "Dériver $f$, et vérifier que $f'(x) = F(x)$ pour tout $x$ de $I$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
+        feedback: >
+          Les deux rôles sont intervertis. « $F$ est une primitive de $f$ »
+          signifie que $f$ est la dérivée de $F$, pas l'inverse. Le test rapide :
+          $F$ est la fonction « la plus compliquée », celle dont on redescend en
+          dérivant ; c'est donc elle qu'on dérive.
+      - id: C
+        text: "Intégrer $F$ sur $I$, et vérifier qu'on retrouve $f$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
+        feedback: >
+          Intégrer $F$ ferait remonter d'un cran de plus, dans la mauvaise
+          direction — et on obtiendrait une primitive de $F$, pas $f$. Vérifier
+          une primitive se fait toujours en DÉRIVANT : c'est l'opération dont on
+          sait qu'elle est mécanique et sans ambiguïté.
+      - id: D
+        text: "Vérifier que $F$ et $f$ prennent la même valeur en au moins un point de $I$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
+        feedback: >
+          Une primitive n'est pas une fonction qui « ressemble » à $f$ ni qui la
+          croise : c'est une fonction dont la DÉRIVÉE vaut $f$ partout sur $I$.
+          $F(x) = x^2$ et $f(x) = 2x$ se croisent en $0$ et en $2$, mais c'est
+          $F' = f$ qui fait de $F$ une primitive, pas ces rencontres.
+    correct_feedback: >
+      On dérive $F$ et on vérifie $F' = f$ sur $I$. C'est la définition même :
+      $F$ est une primitive de $f$ lorsque $F$ est dérivable sur $I$ et que sa
+      dérivée y vaut $f$.
+    solution: |
+      **La définition.** $F$ est une primitive de $f$ sur $I$ lorsque $F$ est
+      dérivable sur $I$ et que
+      $$F'(x) = f(x) \quad \text{pour tout } x \in I$$
+
+      **Pourquoi on vérifie dans ce sens-là.** Dériver est mécanique : les
+      formules s'appliquent sans choix à faire. Primitiver ne l'est pas — il
+      faut reconnaître une forme. Une vérification doit passer par l'opération
+      sûre, donc par la dérivation.
+
+      **Exemple.** $f(x) = 2x\,e^{x^2}$ et $F(x) = e^{x^2}$ : on dérive $F$,
+      $F'(x) = 2x\,e^{x^2} = f(x)$, c'est vérifié. Toute fonction
+      $F(x) = e^{x^2} + k$ convient aussi : les primitives d'une fonction ne
+      diffèrent que d'une constante.
+
+  - id: CI-32
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [linearite, chasles]
+    primary_misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
+    stem: >
+      On donne $\displaystyle\int_0^2 f(x)\,\mathrm{d}x = 3$ et
+      $\displaystyle\int_2^5 f(x)\,\mathrm{d}x = 4$. Soit $g$ la fonction
+      définie par $g(x) = 2f(x) + 1$. Que vaut
+      $\displaystyle\int_0^5 g(x)\,\mathrm{d}x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$19$, soit $2 \\times 7$ pour la partie en $2f$, plus $5$ pour le terme constant"
+        correct: true
+      - id: B
+        text: "$15$, le terme constant $+1$ ajoutant une unité au résultat"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        feedback: >
+          Le terme constant ne s'ajoute pas tel quel : il s'INTÈGRE, donc il se
+          multiplie par la longueur de l'intervalle.
+          $\int_0^5 1\,\mathrm{d}x = 5 - 0 = 5$, pas $1$. Géométriquement,
+          c'est l'aire d'un rectangle de hauteur $1$ et de largeur $5$.
+      - id: C
+        text: "$7$, en calculant d'abord $\\int_0^5 f = 4 - 3 = 1$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
+        feedback: >
+          La relation de Chasles ADDITIONNE les morceaux consécutifs :
+          $\int_0^5 f = \int_0^2 f + \int_2^5 f = 3 + 4 = 7$. La soustraction
+          n'apparaît que lorsqu'on renverse une borne
+          ($\int_b^a = -\int_a^b$), ce qui n'est pas le cas ici : les deux
+          intervalles se suivent, de $0$ à $2$ puis de $2$ à $5$.
+      - id: D
+        text: "$14$, l'intégrale du terme constant étant nulle puisque la dérivée d'une constante est nulle"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
+        feedback: >
+          C'est la DÉRIVÉE d'une constante qui est nulle ; son intégrale, elle,
+          ne l'est pas — une primitive de $1$ est $x$. Les deux opérations sont
+          inverses l'une de l'autre : ce qui disparaît en dérivant réapparaît en
+          intégrant.
+    correct_feedback: >
+      $\int_0^5 f = 3 + 4 = 7$ par Chasles, puis
+      $\int_0^5 g = 2\times 7 + 1\times(5-0) = 14 + 5 = 19$ par linéarité — le
+      terme constant s'intégrant sur toute la longueur de l'intervalle.
+    solution: |
+      **Chasles**, pour recoller les deux morceaux :
+      $$
+      \int_0^5 f(x)\,\mathrm{d}x = \int_0^2 f(x)\,\mathrm{d}x
+      + \int_2^5 f(x)\,\mathrm{d}x = 3 + 4 = 7
+      $$
+
+      **Linéarité**, pour traiter $g = 2f + 1$ :
+      $$
+      \int_0^5 g(x)\,\mathrm{d}x = 2\int_0^5 f(x)\,\mathrm{d}x
+      + \int_0^5 1\,\mathrm{d}x
+      $$
+      $$= 2 \times 7 + (5-0) = 14 + 5 = 19$$
+
+      Le point qui coûte le plus de points en épreuve est le second terme :
+      $\int_a^b k\,\mathrm{d}x = k(b-a)$, jamais $k$ tout seul.
+
+  - id: CI-33
+    rung: "R8"
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [aire, unites_daire]
+    primary_misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+    stem: >
+      Dans un repère orthogonal, l'unité vaut $2\ \text{cm}$ sur l'axe des
+      abscisses et $3\ \text{cm}$ sur celui des ordonnées. L'aire d'un domaine
+      situé sous une courbe vaut $5$ unités d'aire. Quelle est cette aire en
+      $\text{cm}^2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$10\\ \\text{cm}^2$, en multipliant par l'échelle des abscisses"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+        feedback: >
+          Une aire se mesure dans DEUX directions : convertir n'en compte
+          qu'une. L'unité d'aire est le rectangle bâti sur les deux unités
+          d'axe, donc $1\ \text{u.a.} = 2 \times 3 = 6\ \text{cm}^2$. Le
+          contrôle des dimensions suffit à voir l'erreur : multiplier par une
+          seule longueur donnerait des centimètres, pas des centimètres carrés.
+      - id: B
+        text: "$30\\ \\text{cm}^2$, l'unité d'aire valant $2 \\times 3 = 6\\ \\text{cm}^2$"
+        correct: true
+      - id: C
+        text: "$25\\ \\text{cm}^2$, en multipliant par la somme des deux échelles"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+        feedback: >
+          Les échelles se MULTIPLIENT, elles ne s'additionnent pas : l'aire d'un
+          rectangle est le produit de ses côtés, pas leur somme. Ici
+          $1\ \text{u.a.} = 2 \times 3 = 6\ \text{cm}^2$, et non $2 + 3 = 5$.
+      - id: D
+        text: "$5\\ \\text{cm}^2$ : l'aire ne change pas, seule l'unité dans laquelle on l'exprime change"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+        feedback: >
+          L'aire du domaine ne change pas, en effet — mais le NOMBRE qui la
+          mesure change avec l'unité, exactement comme une même longueur vaut
+          $1\ \text{m}$ ou $100\ \text{cm}$. Ici l'unité d'aire vaut
+          $6\ \text{cm}^2$, donc $5$ u.a. font $30\ \text{cm}^2$.
+    correct_feedback: >
+      $1\ \text{u.a.} = 2 \times 3 = 6\ \text{cm}^2$ : c'est l'aire du rectangle
+      construit sur les deux unités d'axe. Donc
+      $5\ \text{u.a.} = 5 \times 6 = 30\ \text{cm}^2$.
+    solution: |
+      **L'unité d'aire.** C'est l'aire du rectangle bâti sur une unité
+      d'abscisse et une unité d'ordonnée :
+      $$1\ \text{u.a.} = 2\ \text{cm} \times 3\ \text{cm} = 6\ \text{cm}^2$$
+
+      **La conversion.**
+      $$\mathcal{A} = 5\ \text{u.a.} = 5 \times 6 = 30\ \text{cm}^2$$
+
+      **Le réflexe qui protège.** Une aire est un produit de DEUX longueurs :
+      toute conversion d'aire fait donc intervenir les deux échelles. Si les
+      deux unités d'axe sont égales à $k$ cm, la conversion se fait en
+      multipliant par $k^2$ — jamais par $k$, jamais par $2k$.
+
+  - id: CI-34
+    rung: "R8"
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [aire, unites_daire]
+    primary_misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+    stem: >
+      Dans un repère orthonormé où l'unité vaut $1{,}5\ \text{cm}$ sur les deux
+      axes, l'aire d'un domaine vaut $4$ unités d'aire. Combien cela fait-il de
+      $\text{cm}^2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$6\\ \\text{cm}^2$, en multipliant l'aire par $1{,}5$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+        feedback: >
+          Multiplier une fois par l'échelle convertit une LONGUEUR, pas une
+          aire. L'unité d'aire est un carré de côté $1{,}5\ \text{cm}$, donc
+          elle vaut $1{,}5^2 = 2{,}25\ \text{cm}^2$ : la conversion se fait par
+          le CARRÉ de l'échelle.
+      - id: B
+        text: "$9\\ \\text{cm}^2$, l'unité d'aire valant $1{,}5^2 = 2{,}25\\ \\text{cm}^2$"
+        correct: true
+      - id: C
+        text: "$12\\ \\text{cm}^2$, en multipliant par $1{,}5$ pour chacun des deux axes, soit par $3$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+        feedback: >
+          « Une fois pour chaque axe » se traduit par une MULTIPLICATION des
+          deux facteurs, pas par leur somme : $1{,}5 \times 1{,}5 = 2{,}25$, et
+          non $1{,}5 + 1{,}5 = 3$. L'aire d'un carré est le produit de ses
+          côtés.
+      - id: D
+        text: "$4\\ \\text{cm}^2$, l'unité d'aire valant par définition un centimètre carré"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-aire
+        feedback: >
+          L'unité d'aire n'est pas fixée d'avance : elle dépend du repère
+          choisi. Ici elle vaut $1{,}5^2 = 2{,}25\ \text{cm}^2$ ; dans un repère
+          où l'unité vaut $1\ \text{cm}$ sur les deux axes, elle vaudrait
+          effectivement $1\ \text{cm}^2$ — mais ce n'est qu'un cas particulier.
+    correct_feedback: >
+      $1\ \text{u.a.} = 1{,}5^2 = 2{,}25\ \text{cm}^2$, donc
+      $4\ \text{u.a.} = 4 \times 2{,}25 = 9\ \text{cm}^2$. Une aire se convertit
+      par le CARRÉ de l'échelle.
+    solution: |
+      L'unité d'aire est le carré construit sur l'unité des deux axes :
+      $$1\ \text{u.a.} = (1{,}5)^2 = 2{,}25\ \text{cm}^2$$
+      d'où
+      $$\mathcal{A} = 4 \times 2{,}25 = 9\ \text{cm}^2$$
+
+      **La règle générale.** Si l'unité vaut $a$ cm en abscisse et $b$ cm en
+      ordonnée, alors $1\ \text{u.a.} = ab\ \text{cm}^2$. Dans un repère
+      orthonormé d'unité $k$, cela se réduit à $k^2$.
+
+      **Le contrôle par les dimensions.** Une longueur se convertit avec un
+      facteur d'échelle, une aire avec son carré, un volume avec son cube. Une
+      conversion d'aire qui ne fait apparaître l'échelle qu'une seule fois est
+      fausse avant même le calcul.
+
+  # ── Rung R9/R10 : le volume d'un solide de révolution ──────────────────────
+  # Ajoutés le 2026-09-23, depuis spec-extension.md §7.2, ramp CI-35→CI-50 ;
+  # révisés le 2026-09-24 après critique bac-fidélité/pédagogie : CI-35, CI-40
+  # et CI-45 RETIRÉS (ids non réutilisés — recall d'une graine de scène, borne
+  # de conversion non montrée par la réponse, doublon de cadrage avec CI-37) ;
+  # CI-44 re-semée (translatée de CI-39) ; CI-50 perd un choix. 13 items
+  # restants, CI-36→CI-50 (les ids retirés ne sont pas recyclés).
+  # `habilete` porte le triplet MATHS (application_directe / _non_explicite /
+  # synthese, spec §1.3), pas le triplet Physique-Chimie des checkpoints
+  # voisins (fid-S5.20). CI-47 est le tronc identique du futur
+  # cp-volume-unite (checkpoints.yaml, item_source: clone_of_CI-47) — ne pas
+  # toucher son stem ni ses choix.
+  - id: CI-36
+    rung: "R9"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, calcul_direct]
+    primary_misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+    stem: >
+      La courbe de $f(x)=x$ sur $[0,1]$ tourne d'un tour complet autour de
+      l'axe des abscisses. Que vaut le volume du solide engendré, en unités
+      de volume ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{\\pi}{2}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+        feedback: >
+          Modèle détecté : le rayon non élevé au carré. Ce calcul donne
+          $\pi\int_0^1 x\,\mathrm{d}x$ — le rayon $f(x)=x$, pas son carré.
+          La tranche a pour aire $\pi f(x)^2=\pi x^2$, pas $\pi f(x)$.
+      - id: B
+        text: "$\\dfrac{\\pi}{3}$"
+        correct: true
+      - id: C
+        text: "$\\dfrac{1}{3}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : l'intégrale rendue telle quelle, sans le $\pi$.
+          $\int_0^1 x^2\,\mathrm{d}x=\frac13$ est bien l'intégrale à poser,
+          mais ce qui s'accumule est l'aire de la tranche, $\pi
+          f(x)^2=\pi x^2$ : le $\pi$ est dans la grandeur accumulée, il
+          reste donc devant l'intégrale.
+      - id: D
+        text: "$\\dfrac{\\pi}{4}$"
+        correct: false
+        misconception: [mc.math.maths_calcul_integral.volume-carre-mal-place, mc.math.maths_calcul_integral.linearite-abusive]
+        feedback: >
+          Double modèle détecté : le carré posé sur l'intégrale au lieu de
+          la fonction. Ce calcul vaut $\pi\left(\int_0^1 x\,\mathrm{d}x
+          \right)^2=\pi\times\left(\frac12\right)^2$ — mais $\left(\int
+          f\right)^2\neq\int f^2$ (chapitre 3) : le carré doit porter sur
+          $f(x)$ avant l'intégration, pas sur le résultat.
+    correct_feedback: >
+      $V=\pi\int_0^1 x^2\,\mathrm{d}x=\pi\left[\dfrac{x^3}{3}\right]_0^1=
+      \dfrac{\pi}{3}$ u.v. — le cas le plus simple : la fonction identité,
+      élevée au carré, reste immédiate à intégrer.
+    solution: |
+      **Le rayon.** $f(x)=x$, donc la tranche à l'abscisse $x$ a pour aire
+      $\pi f(x)^2=\pi x^2$.
+
+      $$V=\pi\int_0^1 x^2\,\mathrm{d}x = \pi\left[\frac{x^3}{3}\right]_0^1 = \frac{\pi}{3}\ \text{u.v.}$$
+
+  - id: CI-37
+    rung: "R9"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, abstrait]
+    primary_misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+    stem: >
+      On sait que $f$ est continue et positive sur $[1,4]$, avec
+      $\displaystyle\int_1^4 f(x)\,\mathrm{d}x = 3$ et $\displaystyle\int_1^4
+      \big(f(x)\big)^2\,\mathrm{d}x = 5$. La courbe de $f$ sur $[1,4]$ tourne
+      d'un tour complet autour de l'axe des abscisses. Que vaut le volume du
+      solide engendré, en unités de volume ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$3\\pi$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+        feedback: >
+          Modèle détecté : le rayon non élevé au carré. $3\pi=\pi
+          \int_1^4 f(x)\,\mathrm{d}x$ utilise $\int f$, pas $\int f^2$ — ce
+          nombre mesurerait une aire multipliée par $\pi$, pas un volume.
+      - id: B
+        text: "$9\\pi$"
+        correct: false
+        misconception: [mc.math.maths_calcul_integral.volume-carre-mal-place, mc.math.maths_calcul_integral.linearite-abusive]
+        feedback: >
+          Double modèle détecté : le carré posé sur l'intégrale au lieu de
+          la fonction. $9\pi=\pi\times3^2=\pi\left(\int_1^4 f(x)\,
+          \mathrm{d}x\right)^2$ — mais $\left(\int f\right)^2\neq\int f^2$
+          (chapitre 3) : ici $9\neq5$, la preuve qu'on ne passe pas de
+          l'un à l'autre en élevant au carré après coup.
+      - id: C
+        text: "$5\\pi$"
+        correct: true
+      - id: D
+        text: "$5$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : l'intégrale rendue telle quelle, sans le $\pi$.
+          $\int_1^4 \big(f(x)\big)^2\,\mathrm{d}x=5$ est bien l'intégrale à
+          poser, mais ce qui s'accumule est l'aire de la tranche,
+          $\pi\big(f(x)\big)^2$ : le $\pi$ est dans la grandeur accumulée,
+          il reste donc devant l'intégrale.
+    correct_feedback: >
+      Aucun calcul de $f$ n'est nécessaire : la formule $V=\pi\int_a^b
+      f(x)^2\,\mathrm{d}x$ ne demande que $\int f^2$, donné ici
+      directement : $V=\pi\times5=5\pi$ u.v.
+    solution: |
+      La formule $V=\pi\int_a^b f(x)^2\,\mathrm{d}x$ ne demande que
+      $\int f^2$ — jamais $f$ elle-même :
+
+      $$V=\pi\int_1^4 \big(f(x)\big)^2\,\mathrm{d}x = \pi\times5 = 5\pi\ \text{u.v.}$$
+
+      Aucun calcul de $f$ n'était nécessaire ; c'est tout l'intérêt du
+      cadrage abstrait.
+
+  - id: CI-38
+    rung: "R9"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, tranche, aire_disque]
+    primary_misconception: mc.math.maths_calcul_integral.volume-circonference-vs-disque
+    stem: >
+      La courbe d'une fonction $f$, continue et positive, tourne d'un tour
+      complet autour de l'axe des abscisses. À l'abscisse $x$, on lit
+      $f(x)=1{,}5$. Quelle est l'aire de la tranche (le disque) obtenue en
+      coupant le solide par un plan perpendiculaire à l'axe en ce point ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$3\\pi$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-circonference-vs-disque
+        feedback: >
+          Modèle détecté : la circonférence prise pour le disque.
+          $2\pi\times1{,}5=3\pi$ est le PÉRIMÈTRE du cercle de rayon
+          $1{,}5$ — une longueur. La tranche est un disque PLEIN : c'est
+          son aire qui s'accumule le long de l'axe, pas son tour.
+      - id: B
+        text: "$2{,}25\\pi$"
+        correct: true
+      - id: C
+        text: "$1{,}5\\pi$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+        feedback: >
+          Modèle détecté : le rayon non élevé au carré. $\pi\times1{,}5$
+          traite l'aire comme si elle était proportionnelle au rayon.
+          L'aire d'un disque est $\pi r^2$ : passe le rayon de $1{,}5$ à
+          $3$, et l'aire ne double pas, elle quadruple.
+      - id: D
+        text: "$2{,}25$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : la grandeur rendue telle quelle, sans le $\pi$.
+          $1{,}5^2=2{,}25$ est bien le carré à calculer, mais l'aire d'un
+          disque a besoin du facteur $\pi$ : $2{,}25$ est l'aire du carré
+          de côté $1{,}5$ ; le facteur $\pi$ est ce qui distingue le carré
+          du disque.
+    correct_feedback: >
+      La tranche est un disque plein de rayon $1{,}5$ : son aire vaut
+      $\pi\times1{,}5^2=2{,}25\pi$. C'est cette aire, et non le rayon ni le
+      périmètre, qui s'accumule le long de l'axe pour donner le volume.
+    solution: |
+      **La tranche est un disque, pas un cercle.** À rayon $f(x)=1{,}5$, son
+      aire est
+
+      $$\pi\times1{,}5^2 = 2{,}25\pi$$
+
+      — à distinguer du périmètre $2\pi\times1{,}5=3\pi$ (une longueur) et
+      du rayon simplement multiplié par $\pi$, $1{,}5\pi$ (le carré
+      oublié).
+
+  - id: CI-39
+    rung: "R9"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, critique_raisonnement]
+    primary_misconception: mc.math.maths_calcul_integral.volume-circonference-vs-disque
+    stem: >
+      Un élève affirme : « La courbe de $f(x)=x$ sur $[1,3]$ tourne d'un tour
+      complet autour de l'axe des abscisses ; un tour complet valant $2\pi$,
+      le volume engendré est $2\pi$ fois l'aire sous la courbe, c'est-à-dire
+      $2\pi\times4=8\pi$. » Quel est le volume réellement engendré, en
+      unités de volume ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$4\\pi$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+        feedback: >
+          Modèle détecté : le rayon non élevé au carré. $4\pi=\pi\int_1^3
+          x\,\mathrm{d}x$ utilise le rayon $f(x)=x$ sans le mettre au
+          carré.
+      - id: B
+        text: "$\\dfrac{26\\pi}{3}$"
+        correct: true
+      - id: C
+        text: "$8\\pi$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-circonference-vs-disque
+        feedback: >
+          C'est exactement le calcul de l'élève, et son modèle est faux :
+          un tour complet ne multiplie pas l'aire par $2\pi$. Les points
+          de la région ne sont pas tous à la même distance de l'axe —
+          celui de hauteur $1$ décrit un cercle de rayon $1$, celui de
+          hauteur $2$ un cercle deux fois plus grand : un seul facteur ne
+          peut pas convenir à tous.
+      - id: D
+        text: "$\\dfrac{26}{3}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : l'intégrale rendue telle quelle, sans le $\pi$.
+          $\int_1^3 x^2\,\mathrm{d}x=\frac{26}{3}$ est bien l'intégrale à
+          poser, mais ce qui s'accumule est l'aire de la tranche, $\pi
+          f(x)^2=\pi x^2$ : le $\pi$ est dans la grandeur accumulée, il
+          reste donc devant l'intégrale.
+    correct_feedback: >
+      La tranche à l'abscisse $x$ est un disque d'aire $\pi x^2$, pas
+      $2\pi$ fois l'aire de la région. $V=\pi\int_1^3 x^2\,\mathrm{d}x=
+      \pi\left[\dfrac{x^3}{3}\right]_1^3=\pi\left(9-\dfrac13\right)=
+      \dfrac{26\pi}{3}$ u.v.
+    solution: |
+      **Ce que dit l'élève :** un tour complet ferait $V=2\pi\times
+      \text{aire}$. **Ce qui est vrai :** la tranche à l'abscisse $x$ est
+      un disque d'aire $\pi x^2$, pas $2\pi$ fois l'aire de la région.
+
+      $$V=\pi\int_1^3 x^2\,\mathrm{d}x = \pi\left[\frac{x^3}{3}\right]_1^3 = \pi\left(9-\frac13\right) = \frac{26\pi}{3}\ \text{u.v.}$$
+
+      L'aire sous la courbe vaut $\int_1^3 x\,\mathrm{d}x=4$ ;
+      $2\pi\times4=8\pi$ n'est qu'une coïncidence de façade, pas le bon
+      calcul.
+
+  - id: CI-41
+    rung: "R9"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, cone, verification]
+    primary_misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+    stem: >
+      On considère la droite d'équation $f(x)=\dfrac{x}{3}$ sur $[0,6]$. En
+      tournant d'un tour complet autour de l'axe des abscisses, elle engendre
+      un cône de rayon $r=f(6)=2$ et de hauteur $h=6$. Que vaut le volume de
+      ce cône, calculé comme une intégrale ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$6\\pi$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+        feedback: >
+          Modèle détecté : le rayon non élevé au carré. $6\pi=\pi
+          \int_0^6 \frac{x}{3}\,\mathrm{d}x$ utilise le rayon $f(x)=
+          \frac{x}{3}$ sans le mettre au carré — et la vérification par la
+          formule du collège le confirme faux : $\frac{\pi r^2h}{3}=
+          \frac{\pi\times4\times6}{3}=8\pi$, pas $6\pi$.
+      - id: B
+        text: "$8\\pi$"
+        correct: true
+      - id: C
+        text: "$8$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : l'intégrale rendue telle quelle, sans le $\pi$.
+          $\int_0^6 \left(\frac{x}{3}\right)^2\mathrm{d}x=8$ est bien
+          l'intégrale à poser, mais ce qui s'accumule est l'aire de la
+          tranche, $\pi f(x)^2$ : le $\pi$ est dans la grandeur accumulée,
+          il reste donc devant l'intégrale.
+      - id: D
+        text: "$12\\pi$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-circonference-vs-disque
+        feedback: >
+          Modèle détecté : la circonférence prise pour le disque.
+          $12\pi=2\pi\int_0^6 \frac{x}{3}\,\mathrm{d}x$ double l'aire au
+          lieu de la faire dépendre du carré du rayon — la formule du
+          cône, $\frac{\pi r^2h}{3}=8\pi$, ne redonne jamais $12\pi$.
+    correct_feedback: >
+      $V=\pi\int_0^6 \left(\dfrac{x}{3}\right)^2\mathrm{d}x=\pi\int_0^6
+      \dfrac{x^2}{9}\,\mathrm{d}x=\dfrac{\pi}{9}\left[\dfrac{x^3}{3}
+      \right]_0^6=\dfrac{\pi}{9}\times72=8\pi$ u.v. Vérification par la
+      formule du collège : $\dfrac{\pi r^2h}{3}=\dfrac{\pi\times2^2\times
+      6}{3}=8\pi$. Identique.
+    solution: |
+      **Mise en place.** $f(x)=\frac{x}{3}$ sur $[0,6]$ engendre un cône de
+      rayon $r=f(6)=2$ et de hauteur $h=6$.
+
+      $$V=\pi\int_0^6 \left(\frac{x}{3}\right)^2\mathrm{d}x = \frac{\pi}{9}\left[\frac{x^3}{3}\right]_0^6 = \frac{\pi}{9}\times72 = 8\pi\ \text{u.v.}$$
+
+      **Vérification.** $\dfrac{\pi r^2h}{3}=\dfrac{\pi\times4\times6}{3}=8\pi$.
+      Identique.
+
+  - id: CI-42
+    rung: "R9"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, calcul_direct]
+    primary_misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+    stem: >
+      Soit $f(x)=x^2$ sur $[0,1]$. Sa courbe tourne d'un tour complet autour
+      de l'axe des abscisses. Que vaut le volume du solide engendré, en
+      unités de volume ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{1}{5}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : l'intégrale rendue telle quelle, sans le $\pi$.
+          $\int_0^1 (x^2)^2\,\mathrm{d}x=\int_0^1 x^4\,\mathrm{d}x=\frac15$
+          est bien l'intégrale à poser, mais ce qui s'accumule est l'aire
+          de la tranche, $\pi\big(f(x)\big)^2=\pi x^4$ : le $\pi$ est dans
+          la grandeur accumulée, il reste donc devant l'intégrale.
+      - id: B
+        text: "$\\dfrac{2\\pi}{3}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-circonference-vs-disque
+        feedback: >
+          Modèle détecté : la circonférence prise pour le disque.
+          $\frac{2\pi}{3}=2\pi\int_0^1 x^2\,\mathrm{d}x$ double l'aire au
+          lieu de mettre le rayon $f(x)=x^2$ au carré.
+      - id: C
+        text: "$\\dfrac{\\pi}{3}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+        feedback: >
+          Modèle détecté : le rayon non élevé au carré. $\frac{\pi}{3}=
+          \pi\int_0^1 x^2\,\mathrm{d}x$ utilise le rayon $f(x)=x^2$
+          directement, sans l'élever lui-même au carré — or la tranche a
+          pour rayon $f(x)$, donc pour aire $\pi\big(f(x)\big)^2=\pi x^4$.
+      - id: D
+        text: "$\\dfrac{\\pi}{5}$"
+        correct: true
+    correct_feedback: >
+      Le rayon de la tranche est $f(x)=x^2$, donc son aire est
+      $\pi\big(f(x)\big)^2=\pi x^4$. $V=\pi\int_0^1 x^4\,\mathrm{d}x=
+      \pi\left[\dfrac{x^5}{5}\right]_0^1=\dfrac{\pi}{5}$ u.v.
+    solution: |
+      **Le rayon est $f(x)=x^2$**, donc son carré vaut $x^4$ :
+
+      $$V=\pi\int_0^1 x^4\,\mathrm{d}x = \pi\left[\frac{x^5}{5}\right]_0^1 = \frac{\pi}{5}\ \text{u.v.}$$
+
+  - id: CI-43
+    rung: "R9"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, exponentielle]
+    primary_misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+    stem: >
+      Soit $f(x)=e^{-x}$ sur $\left[0,\ln 2\right]$. Sa courbe tourne d'un
+      tour complet autour de l'axe des abscisses. Que vaut le volume du
+      solide engendré, en unités de volume ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{\\pi}{2}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+        feedback: >
+          Modèle détecté : le rayon non élevé au carré. $\frac{\pi}{2}=
+          \pi\int_0^{\ln 2} e^{-x}\,\mathrm{d}x$ utilise le rayon
+          $f(x)=e^{-x}$ sans le mettre au carré, alors que la tranche a
+          pour aire $\pi\big(f(x)\big)^2=\pi e^{-2x}$.
+      - id: B
+        text: "$\\dfrac{3\\pi}{8}$"
+        correct: true
+      - id: C
+        text: "$\\dfrac{\\pi}{4}$"
+        correct: false
+        misconception: [mc.math.maths_calcul_integral.volume-carre-mal-place, mc.math.maths_calcul_integral.linearite-abusive]
+        feedback: >
+          Double modèle détecté : le carré posé sur l'intégrale au lieu de
+          la fonction. $\frac{\pi}{4}=\pi\left(\int_0^{\ln 2} e^{-x}\,
+          \mathrm{d}x\right)^2=\pi\times\left(\frac12\right)^2$ — mais
+          $\left(\int f\right)^2\neq\int f^2$ (chapitre 3) : le carré doit
+          porter sur $f(x)=e^{-x}$ avant l'intégration.
+      - id: D
+        text: "$\\dfrac{3}{8}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : l'intégrale rendue telle quelle, sans le $\pi$.
+          $\int_0^{\ln 2} e^{-2x}\,\mathrm{d}x=\frac38$ est bien
+          l'intégrale à poser, mais ce qui s'accumule est l'aire de la
+          tranche, $\pi f(x)^2$ : le $\pi$ est dans la grandeur accumulée,
+          il reste donc devant l'intégrale.
+    correct_feedback: >
+      $f(x)^2=e^{-2x}$ s'intègre immédiatement : $\int_0^{\ln 2} e^{-2x}\,
+      \mathrm{d}x=\left[-\dfrac12 e^{-2x}\right]_0^{\ln 2}=-\dfrac18+
+      \dfrac12=\dfrac38$. D'où $V=\dfrac{3\pi}{8}$ u.v.
+    solution: |
+      $$f(x)^2 = e^{-2x}, \qquad \int_0^{\ln 2} e^{-2x}\,\mathrm{d}x = \left[-\frac12 e^{-2x}\right]_0^{\ln 2} = -\frac18+\frac12 = \frac38$$
+
+      $$V = \pi\times\frac38 = \frac{3\pi}{8}\ \text{u.v.}$$
+
+  - id: CI-44
+    rung: "R9"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, carre_mal_place]
+    primary_misconception: [mc.math.maths_calcul_integral.volume-carre-mal-place, mc.math.maths_calcul_integral.linearite-abusive]
+    stem: >
+      Pour calculer le volume engendré par la rotation d'un tour complet
+      autour de l'axe des abscisses de la courbe de $f(x)=x+2$ sur $[0,1]$,
+      un élève écrit $V=\pi\left(\displaystyle\int_0^1 (x+2)\,\mathrm{d}x
+      \right)^2$. Quel est le volume réellement engendré, en unités de
+      volume ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{25\\pi}{4}$"
+        correct: false
+        misconception: [mc.math.maths_calcul_integral.volume-carre-mal-place, mc.math.maths_calcul_integral.linearite-abusive]
+        feedback: >
+          C'est exactement le calcul de l'élève, et son modèle est faux.
+          $\int_0^1 (x+2)\,\mathrm{d}x=\frac52$, donc son expression vaut
+          $\pi\times\left(\frac52\right)^2=\frac{25\pi}{4}$ — mais
+          $\left(\int f\right)^2\neq\int f^2$ (chapitre 3) : le carré doit
+          porter sur $f(x)=x+2$ AVANT l'intégration, pas sur le résultat
+          $\frac52$.
+      - id: B
+        text: "$\\dfrac{5\\pi}{2}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-oubli-du-carre
+        feedback: >
+          Modèle détecté : le rayon non élevé au carré. $\frac{5\pi}{2}=
+          \pi\int_0^1 (x+2)\,\mathrm{d}x$ utilise le rayon $f(x)=x+2$ sans
+          le mettre au carré.
+      - id: C
+        text: "$\\dfrac{19\\pi}{3}$"
+        correct: true
+      - id: D
+        text: "$\\dfrac{19}{3}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : l'intégrale rendue telle quelle, sans le $\pi$.
+          $\int_0^1 (x+2)^2\,\mathrm{d}x=\frac{19}{3}$ est bien l'intégrale
+          à poser, mais ce qui s'accumule est l'aire de la tranche,
+          $\pi\big(f(x)\big)^2$ : le $\pi$ est dans la grandeur accumulée,
+          il reste donc devant l'intégrale.
+    correct_feedback: >
+      Le carré doit porter sur la fonction, pas sur l'intégrale :
+      $\big(f(x)\big)^2=(x+2)^2=x^2+4x+4$, et $\int_0^1 (x^2+4x+4)\,
+      \mathrm{d}x=\left[\dfrac{x^3}{3}+2x^2+4x\right]_0^1=\dfrac13+2+4=
+      \dfrac{19}{3}$. D'où $V=\dfrac{19\pi}{3}$ u.v.
+    solution: |
+      **Le carré doit porter sur la fonction, avant l'intégration :**
+
+      $$\big(f(x)\big)^2=(x+2)^2=x^2+4x+4$$
+      $$V=\pi\int_0^1 (x^2+4x+4)\,\mathrm{d}x = \pi\left[\frac{x^3}{3}+2x^2+4x\right]_0^1 = \pi\left(\frac13+2+4\right) = \frac{19\pi}{3}\ \text{u.v.}$$
+
+      **Ce que fait l'élève :** $\int_0^1(x+2)\,\mathrm{d}x=\frac52$, puis
+      $\pi\times\left(\frac52\right)^2=\frac{25\pi}{4}$ — le carré
+      appliqué au résultat, pas à la fonction. Contre-exemple général sur
+      $[0,1]$ : $\int x=\frac12$ donne $\left(\int x\right)^2=\frac14$,
+      alors que $\int x^2=\frac13\neq\frac14$.
+
+  - id: CI-46
+    rung: "R9"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, unites_volume]
+    primary_misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+    stem: >
+      Dans un repère orthonormé où l'unité vaut $2\ \text{cm}$ sur chaque
+      axe, un volume de révolution vaut $5$ unités de volume. Quel est ce
+      volume en $\text{cm}^3$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$20\\ \\text{cm}^3$, en multipliant par $2^2$, comme pour une aire"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Modèle détecté : le facteur de l'AIRE ($k^2$) appliqué à un
+          volume. $1$ u.v. n'est pas un carré mais un CUBE bâti sur
+          l'unité : il faut compter trois directions, pas deux.
+      - id: B
+        text: "$10\\ \\text{cm}^3$, en multipliant par l'échelle $2$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Modèle détecté : le facteur d'une LONGUEUR ($k$) appliqué à un
+          volume. Multiplier une seule fois par l'échelle convertirait une
+          longueur ; un volume est un produit de TROIS longueurs.
+      - id: C
+        text: "$40\\ \\text{cm}^3$, l'unité de volume valant $2^3=8\\ \\text{cm}^3$"
+        correct: true
+      - id: D
+        text: "$5\\ \\text{cm}^3$, le nombre restant inchangé d'une unité à l'autre"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Modèle détecté : aucune conversion appliquée. u.v. et cm³ ne
+          coïncident que lorsque l'unité du repère vaut $1$ cm ; ici elle
+          vaut $2$ cm, donc le nombre change bel et bien.
+    correct_feedback: >
+      $1$ u.v. est le volume du cube bâti sur l'unité : $1$ u.v.
+      $=2^3=8\ \text{cm}^3$. D'où $5$ u.v. $=5\times8=40\ \text{cm}^3$.
+    solution: |
+      $$1\ \text{u.v.} = 2^3 = 8\ \text{cm}^3$$
+      $$5\ \text{u.v.} = 5\times8 = 40\ \text{cm}^3$$
+
+  - id: CI-47
+    rung: "R9"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, unites_volume]
+    primary_misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+    stem: >
+      Dans un repère orthonormé où l'unité vaut $3\ \text{cm}$ sur chaque
+      axe, un volume de révolution vaut $2\pi$ unités de volume. Quel est ce
+      volume en $\text{cm}^3$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$6\\pi\\ \\text{cm}^3$, en multipliant par l'échelle $3$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Modèle détecté : le facteur d'une LONGUEUR ($k$) appliqué à un
+          volume. Un volume est un produit de trois longueurs ;
+          multiplier une seule fois par l'échelle ne convertirait qu'une
+          longueur.
+      - id: B
+        text: "$54\\pi\\ \\text{cm}^3$, l'unité de volume valant $3^3=27\\ \\text{cm}^3$"
+        correct: true
+      - id: C
+        text: "$18\\pi\\ \\text{cm}^3$, en multipliant par $3^2$, comme pour une aire"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Modèle détecté : le facteur de l'AIRE ($k^2$) appliqué à un
+          volume. $1$ u.v. est le volume d'un CUBE, pas l'aire d'un
+          carré : il faut le cube de l'échelle, pas son carré.
+      - id: D
+        text: "$2\\pi\\ \\text{cm}^3$, le nombre restant inchangé d'une unité à l'autre"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Modèle détecté : aucune conversion appliquée. u.v. et cm³ ne
+          coïncident que lorsque l'unité du repère vaut $1$ cm ; ici elle
+          vaut $3$ cm, donc le nombre change bel et bien.
+    correct_feedback: >
+      $1$ u.v. $=3^3=27\ \text{cm}^3$. D'où $2\pi$ u.v.
+      $=2\pi\times27=54\pi\ \text{cm}^3$.
+    solution: |
+      $$1\ \text{u.v.} = 3^3 = 27\ \text{cm}^3$$
+      $$2\pi\ \text{u.v.} = 2\pi\times27 = 54\pi\ \text{cm}^3$$
+
+  - id: CI-48
+    rung: "R9"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, unites_volume, comparaison]
+    primary_misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+    stem: >
+      Un solide de révolution a un volume de $3$ unités de volume. Dans un
+      repère orthonormé où $\|\vec i\,\|=1\ \text{cm}$, puis dans un repère
+      orthonormé où $\|\vec i\,\|=2\ \text{cm}$, ce volume vaut
+      respectivement, en $\text{cm}^3$ :
+    type: mcq
+    choices:
+      - id: A
+        text: "$3$ et $12$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Le premier repère ($k=1$) est correct : $1$ u.v. $=1^3=1\
+          \text{cm}^3$, le nombre ne change pas. Mais le second ($k=2$)
+          applique le facteur de l'AIRE, $2^2=4$, au lieu du CUBE $2^3=8$ :
+          $3\times4=12$ compte deux directions là où il y en a trois.
+      - id: B
+        text: "$3$ et $6$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Le premier repère ($k=1$) est correct. Mais le second ($k=2$)
+          applique le facteur d'une LONGUEUR, $2$, au lieu du CUBE $2^3=8$ :
+          une seule direction sur les trois qui composent un volume.
+      - id: C
+        text: "$3$ et $24$"
+        correct: true
+      - id: D
+        text: "$3$ et $3$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Le premier repère ($k=1$) est correct. Mais le second ($k=2$)
+          n'applique AUCUNE conversion : c'est justement parce que le bac
+          écrit souvent $\|\vec i\,\|=1$ cm — où u.v. et cm³ coïncident —
+          que cette conversion est facile à oublier le jour où l'unité
+          change.
+    correct_feedback: >
+      Avec $k=1$ : $1$ u.v. $=1^3=1\ \text{cm}^3$, donc $3$ u.v.
+      $=3\ \text{cm}^3$ — le nombre ne bouge pas, et c'est bien pour ça que
+      la conversion passe inaperçue au bac. Avec $k=2$ : $1$ u.v.
+      $=2^3=8\ \text{cm}^3$, donc $3$ u.v. $=24\ \text{cm}^3$.
+    solution: |
+      **Avec $k=1$ :** $1$ u.v. $=1^3=1\ \text{cm}^3$, donc $3$ u.v.
+      $=3\ \text{cm}^3$ — le nombre ne bouge pas.
+
+      **Avec $k=2$ :** $1$ u.v. $=2^3=8\ \text{cm}^3$, donc $3$ u.v.
+      $=24\ \text{cm}^3$.
+
+      C'est parce que le bac écrit presque toujours $\|\vec i\,\|=1$ cm
+      que cette conversion ne s'exerce jamais — jusqu'au jour où l'énoncé
+      change d'unité.
+
+  # CI-49 — synthèse R10 : la donnée (une IPP déjà résolue, ∫ln x = e²+1) fixe
+  # ∫f² directement, sans passer par le choix « f au carré ou pas ». Un
+  # élève « oubli-du-carre » n'a donc, dans cette graine précise, aucune
+  # valeur DISTINCTE à produire (il devrait intégrer √(ln x), non fourni) —
+  # taguer ce distracteur aurait exigé un nombre non dérivable des données ou
+  # aurait fait coïncider deux modèles. Gardé : `sans-pi` et deux variantes
+  # de `conversion-unites-volume` (k² et ×1), qui restent honnêtement
+  # calculables sur cette graine. Décision d'auteur, pas une case du tableau
+  # §7.2 laissée vide par erreur — voir le rapport de livraison.
+  - id: CI-49
+    rung: "R10"
+    habilete: synthese
+    difficulty_level: 5
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, synthese, integration_par_parties, unites_volume]
+    primary_misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+    stem: >
+      Soit $f$ la fonction définie sur $\left[1,e^2\right]$ par
+      $f(x)=\sqrt{\ln x}$. On donne $\displaystyle\int_1^{e^2} \ln x\,
+      \mathrm{d}x = e^2+1$. Dans un repère orthonormé où $\|\vec
+      i\,\|=2\ \text{cm}$, quel est, en $\text{cm}^3$, le volume du solide
+      engendré par la rotation d'un tour complet autour de l'axe des
+      abscisses de la portion de courbe de $f$ relative à $\left[1,e^2
+      \right]$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$4\\pi(e^2+1)\\ \\text{cm}^3$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Le volume en u.v. est correct, $\pi(e^2+1)$, mais la conversion
+          applique le facteur de l'AIRE, $2^2=4$, au lieu du CUBE $2^3=8$ :
+          deux directions comptées sur trois.
+      - id: B
+        text: "$8(e^2+1)\\ \\text{cm}^3$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : l'intégrale rendue telle quelle, sans le $\pi$.
+          $f(x)^2=\ln x$, donc $\int_1^{e^2}\big(f(x)\big)^2\,
+          \mathrm{d}x=e^2+1$ — mais il manque le $\pi$ avant de convertir :
+          $8(e^2+1)$ oublie la moitié du travail de la rotation.
+      - id: C
+        text: "$8\\pi(e^2+1)\\ \\text{cm}^3$"
+        correct: true
+      - id: D
+        text: "$\\pi(e^2+1)\\ \\text{cm}^3$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.conversion-unites-volume
+        feedback: >
+          Le volume en u.v. est correct, $\pi(e^2+1)$, mais aucune
+          conversion n'a été appliquée : ici $\|\vec i\,\|=2$ cm, pas $1$
+          cm, donc $1$ u.v. $=2^3=8\ \text{cm}^3$, pas $1\ \text{cm}^3$.
+    correct_feedback: >
+      $f(x)^2=\big(\sqrt{\ln x}\big)^2=\ln x$ : le carré supprime la
+      racine, et l'intégrale voulue est exactement celle qui est donnée.
+      $V=\pi\int_1^{e^2}\ln x\,\mathrm{d}x=\pi(e^2+1)$ u.v. Avec $\|\vec
+      i\,\|=2$ cm, $1$ u.v. $=2^3=8\ \text{cm}^3$, donc
+      $V=8\pi(e^2+1)\ \text{cm}^3$.
+    solution: |
+      **Le carré fait disparaître la racine :** $f(x)^2=\ln x$, et
+      l'intégrale voulue est exactement celle qui est donnée :
+
+      $$V = \pi\int_1^{e^2}\ln x\,\mathrm{d}x = \pi(e^2+1)\ \text{u.v.}$$
+
+      **La conversion** ($\|\vec i\,\|=2$ cm) : $1$ u.v. $=2^3=8\
+      \text{cm}^3$, donc
+
+      $$V = 8\pi(e^2+1)\ \text{cm}^3$$
+
+  - id: CI-50
+    rung: "R10"
+    habilete: synthese
+    difficulty_level: 5
+    skill_code: maths_calcul_integral
+    tags: [volume_revolution, synthese, integration_par_parties, carre_mal_place]
+    primary_misconception: [mc.math.maths_calcul_integral.volume-carre-mal-place, mc.math.maths_calcul_integral.linearite-abusive]
+    stem: >
+      Soit $f$ la fonction définie sur $[1,e]$ par $f(x)=\sqrt{x\ln x}$. On
+      donne $\displaystyle\int_1^e t\ln t\,\mathrm{d}t = \dfrac{e^2+1}{4}$.
+      Quel est le volume, en unités de volume, du solide engendré par la
+      rotation d'un tour complet autour de l'axe des abscisses de la
+      portion de courbe de $f$ relative à $[1,e]$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{\\pi(e^2+1)^2}{16}$"
+        correct: false
+        misconception: [mc.math.maths_calcul_integral.volume-carre-mal-place, mc.math.maths_calcul_integral.linearite-abusive]
+        feedback: >
+          Modèle détecté : le carré posé sur l'intégrale au lieu de la
+          fonction. Ce choix reprend la valeur donnée comme si elle était
+          $\int_1^e f(x)\,\mathrm{d}x$, puis l'élève au carré — mais
+          $f(x)^2=x\ln x$ est déjà le résultat du carré : l'intégrale
+          donnée EST $\int_1^e f^2$, elle n'a pas besoin d'être élevée au
+          carré une seconde fois.
+      - id: B
+        text: "$\\dfrac{e^2+1}{4}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.volume-integrale-sans-pi
+        feedback: >
+          Modèle détecté : l'intégrale rendue telle quelle, sans le $\pi$.
+          $f(x)^2=x\ln x$, donc $\int_1^e \big(f(x)\big)^2\,\mathrm{d}x=
+          \frac{e^2+1}{4}$ est la bonne intégrale, mais il manque le $\pi$
+          qui en fait un volume.
+      - id: C
+        text: "$\\dfrac{\\pi(e^2+1)}{4}$"
+        correct: true
+    correct_feedback: >
+      $f(x)^2=\big(\sqrt{x\ln x}\big)^2=x\ln x$ : le carré supprime la
+      racine, et l'intégrale voulue, $\int_1^e x\ln x\,\mathrm{d}x$, est
+      exactement celle qui est donnée (avec $t$ renommée $x$). $V=
+      \pi\times\dfrac{e^2+1}{4}=\dfrac{\pi(e^2+1)}{4}$ u.v. — le montage
+      standard d'une question de volume au bac : une racine dans $f$, une
+      IPP qui vient d'être préparée.
+    solution: |
+      **Le carré fait disparaître la racine :** $f(x)^2=x\ln x$, et
+      l'intégrale voulue, $\int_1^e x\ln x\,\mathrm{d}x$, est exactement
+      celle qui est donnée (avec $t$ renommée $x$) :
+
+      $$V = \pi\int_1^e \big(f(x)\big)^2\,\mathrm{d}x = \pi\times\frac{e^2+1}{4} = \frac{\pi(e^2+1)}{4}\ \text{u.v.}$$
+
+      Le montage est celui du bac (§8.1/§8.4) : une racine dans $f$ pour
+      que $f^2$ soit une intégrale déjà rencontrée.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05 (CI-31→CI-34), le 2026-09-23 pour le rung « volume
+# d'un solide de révolution » (CI-35→CI-50, spec-extension.md §7.2), puis
+# RÉVISÉ le 2026-09-24 après critique bac-fidélité/pédagogie :
+#   - CI-35, CI-40, CI-45 RETIRÉS (ids non réutilisés) : CI-35 ne faisait que
+#     rejouer la graine de la scène/de l'exemple travaillé (rappel, pas
+#     diagnostic) ; CI-40 avait un distracteur `×8` qui affirmait un déficit
+#     de conversion d'unité que la réponse ne montre pas ; CI-45 doublait le
+#     cadrage de CI-37. Le rung était aussi sur-pondéré face au cadre (16
+#     items pour une demi-ligne de savoir-faire).
+#   - CI-44 re-semée : `f(x)=x+2` sur `[0,1]` (clé `19π/3`), remplaçant
+#     `f(x)=x+1` sur `[0,2]` — translatée de CI-39 (`f=x` sur `[1,3]`), même
+#     solide, même clé `26π/3` que CI-39 avant la correction.
+#   - CI-50 perd son choix `circonference` : `2π∫f²` n'est pas le modèle
+#     enregistré (`volume-circonference-vs-disque` est `2π∫f`, jamais
+#     `2π∫f²`) ; l'item passe à 3 choix.
+#   - CI-38/CI-41 : `habilete` échangées (CI-38 → application_directe,
+#     CI-41 → application_non_explicite).
+#   - Les feedbacks « ∫f² sans π » qui prétendaient que `∫f²` seule « mesure
+#     l'aire des tranches accumulées » sont corrigés (CI-36/CI-37/CI-39/
+#     CI-41/CI-42/CI-43, plus CI-44 re-semée et CI-49/CI-50 déjà exacts) :
+#     l'aire d'une tranche est `πf(x)²`, le `π` fait partie de la grandeur
+#     accumulée — `∫f²` est la bonne intégrale à poser, pas déjà une aire.
+# Le rung tombe à 13 items (R9: 11, R10: 5) sur cinq misconceptions, toutes
+# encore au-dessus du plancher mais avec moins de marge qu'avant la coupe.
+# L'ancien commentaire (2026-09-05) déclarait `floor_met: false` et demandait
+# nommément la suite : « écrire au moins 3 items sur primitive-vs-derivee —
+# vérifier une primitive en DÉRIVANT, le sens intégrer/dériver, $F' = h$ contre
+# $h' = F$ ». C'est exactement ce que fait CI-31, et CI-32 y ajoute le piège de
+# la constante dont on croit l'intégrale nulle « puisque la dérivée d'une
+# constante l'est ». CI-33 et CI-34 referment la conversion d'unités d'aire.
+# Tableau GÉNÉRÉ contre la convention de la chaîne, gardé par
+# web/scripts/resume-couverture.mjs.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.math.maths_calcul_integral.primitive-vs-derivee:            { count: 3, items: [CI-11, CI-31, CI-32] }
+    mc.math.maths_calcul_integral.constante-et-bornes:             { count: 5, items: [CI-1, CI-10, CI-13, CI-15, CI-17] }
+    mc.math.maths_calcul_integral.linearite-abusive:               { count: 8, items: [CI-2, CI-12, CI-32, CI-36, CI-37, CI-43, CI-44, CI-50] }
+    mc.math.maths_calcul_integral.chasles-mal-appliquee:           { count: 3, items: [CI-14, CI-16, CI-32] }
+    mc.math.maths_calcul_integral.integrale-signee-vs-aire:        { count: 5, items: [CI-6, CI-11, CI-17, CI-26, CI-28] }
+    mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe:      { count: 3, items: [CI-5, CI-24, CI-25] }
+    mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee:   { count: 4, items: [CI-4, CI-22, CI-23, CI-30] }
+    mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur: { count: 4, items: [CI-19, CI-20, CI-21, CI-29] }
+    mc.math.maths_calcul_integral.hypothese-non-verifiee:          { count: 8, items: [CI-3, CI-11, CI-12, CI-17, CI-18, CI-21, CI-23, CI-29] }
+    mc.math.maths_calcul_integral.aire-naive-geometrique:          { count: 3, items: [CI-7, CI-8, CI-9] }
+    mc.math.maths_calcul_integral.conversion-unites-aire:          { count: 3, items: [CI-27, CI-33, CI-34] }
+    mc.math.maths_calcul_integral.volume-oubli-du-carre:           { count: 8, items: [CI-36, CI-37, CI-38, CI-39, CI-41, CI-42, CI-43, CI-44] }
+    mc.math.maths_calcul_integral.volume-circonference-vs-disque:  { count: 4, items: [CI-38, CI-39, CI-41, CI-42] }
+    mc.math.maths_calcul_integral.volume-integrale-sans-pi:        { count: 10, items: [CI-36, CI-37, CI-38, CI-39, CI-41, CI-42, CI-43, CI-44, CI-49, CI-50] }
+    mc.math.maths_calcul_integral.volume-carre-mal-place:          { count: 5, items: [CI-36, CI-37, CI-43, CI-44, CI-50] }
+    mc.math.maths_calcul_integral.conversion-unites-volume:        { count: 4, items: [CI-46, CI-47, CI-48, CI-49] }
+  total_items: 47
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 4
+    R2: 3
+    R3: 4
+    R4: 3
+    R5: 3
+    R6: 3
+    R7: 3
+    R8: 5
+    R9: 11
+    R10: 5
+  note_tagage_par_distracteur: >-
+    Ce banc est antérieur au marquage par distracteur. La passe de conversion du
+    sommet a posé un `primary_misconception` sur les 30 items d'origine, puis
+    des tags par distracteur sur les quatre canoniques des portes de rupture
+    (CI-2 linéarité, CI-6 signe, CI-16 Chasles, CI-25 intégration par parties).
+    Le marquage par distracteur du RESTE des items de calcul — et des
+    distracteurs hétérogènes de l'accroche CI-7/8/9, dont les raisons d'erreur
+    ne se ramènent pas toutes à un modèle unique — reste une passe à faire. Les
+    items ajoutés depuis (CI-31 à CI-34, puis CI-36 à CI-50 pour le rung
+    volume — CI-35/CI-40/CI-45 retirés le 2026-09-24) portent, eux, un tag sur
+    chaque distracteur.
+  honest_state: >-
+    Seize misconceptions déclarées (onze historiques + cinq du rung volume),
+    toutes couvertes, aucune sous le plancher. Cinq y siègent EXACTEMENT
+    (3 items) — `primitive-vs-derivee`, `chasles-mal-appliquee`,
+    `ipp-mauvais-choix-ou-signe`, `aire-naive-geometrique`,
+    `conversion-unites-aire` — la marge y est nulle et tout retrait d'item la
+    casse. Les cinq misconceptions du rung volume gardent une marge réelle
+    après la coupe du 2026-09-24 (de 4 à 10 items chacune) ; les deux plus
+    tendues sont désormais `conversion-unites-volume` et
+    `volume-circonference-vs-disque`, à 4 items chacune — une seule marge
+    d'item au-dessus du plancher, à surveiller si une future passe retire
+    encore un item du rung. `linearite-abusive` reste au-dessus du plancher
+    exact (8
+    items, dual-tag ADR 0009 sur `π(∫f)²` : CI-36, CI-37, CI-43, CI-44,
+    CI-50) mais avec une marge réduite par le retrait de CI-45.

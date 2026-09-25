@@ -1,0 +1,231 @@
+# Attempt-first exercises (summit-conversion campaign — maths pilot).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2023 session
+# normale, Mathématiques SExp BIOF, code NS 22F, AlloSchool element/137482 —
+# statut « vérifié » in docs/sujets/maths/probabilites-conditionnelles.md).
+# r-variation is a fresh anti-memorisation twin (same skills — conditionnement,
+# arbre pondéré, variable aléatoire et sa loi — with different sacs, different
+# numbers, and a SUM X=a+b instead of a product; status not-applicable).
+
+notion: probabilites-conditionnelles
+
+exercises:
+  # ── r-bac — the VERIFIED 2023 national sujet (Ex. 3, SExp) ────────────────
+  # Faithful transcription of docs/sujets/maths/probabilites-conditionnelles.md
+  # → "2023 — session normale — Exercice 3". Deux urnes U1, U2 ; on tire a de
+  # U1, on la met dans U2, puis on tire b de U2. Événements A (a=1) et B (ab=2),
+  # probabilité conditionnelle p(A/B), variable aléatoire X=ab et sa loi. Le
+  # transfert de la boule rend le second tirage DÉPENDANT du premier — c'est ce
+  # qui donne son sens au conditionnement.
+  - id: r-bac
+    title: "Exercice de type bac — deux urnes, conditionnement et variable aléatoire (2023)"
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — examen national SExp BIOF, AlloSchool NS22F
+        (Exercice 3, « Calcul des probabilités » ; barème 3 points). Filière
+        SVT et Sciences Physiques, option française. Transcription vérifiée :
+        re-fetch AlloSchool element/137482 + diff page 3 OK
+        (docs/sujets/maths/probabilites-conditionnelles.md, statut « vérifié »).
+    intro: |-
+      **Calcul des probabilités (examen national, session normale 2023).**
+
+      Une urne $U_1$ contient six boules portant les nombres 0, 0, 1, 1, 1, 2, et une urne $U_2$ contient cinq boules portant les nombres 1, 1, 1, 2, 2. On suppose que toutes les boules sont indiscernables au toucher.
+
+      On considère l'expérience aléatoire suivante : « on tire une boule de l'urne $U_1$ et on note le nombre $a$ qu'elle porte, puis on la place dans l'urne $U_2$ ; ensuite on tire une boule de l'urne $U_2$ et on note le nombre $b$ qu'elle porte ».
+
+      Point de vigilance qui fait tout l'exercice : en plaçant la boule tirée de $U_1$ dans $U_2$, on **modifie la composition de $U_2$**. Le second tirage dépend donc du premier — les probabilités portées sur la deuxième branche de l'arbre sont **conditionnelles**.
+
+      On considère les événements :
+      - $A$ : « la boule tirée de l'urne $U_1$ porte le nombre 1 » ;
+      - $B$ : « le produit $ab$ est égal à 2 ».
+    questions:
+      - id: q1a
+        part: "Partie A — Modéliser l'expérience et calculer $p(A)$ et $p(B)$"
+        stem: |-
+          **(0,5 pt)** Calculer $p(A)$, la probabilité de l'événement $A$.
+        reasoning: |-
+          L'événement $A$ ne concerne que le **premier** tirage, dans $U_1$ : il ne dépend pas du tout de ce qui se passera dans $U_2$. On compte donc simplement, parmi les boules de $U_1$, la proportion de celles qui portent le nombre 1. Comme les boules sont indiscernables au toucher, le tirage est équiprobable : $p(A)$ est le rapport du nombre de cas favorables au nombre de cas possibles. Sur les six boules de $U_1$ (0, 0, 1, 1, 1, 2), trois portent le nombre 1.
+        steps:
+          - math: 'p(A) = \dfrac{3}{6} = \dfrac{1}{2}'
+            note: "Trois boules « 1 » parmi les six boules de U1 (tirage équiprobable, boules indiscernables)."
+      - id: q1b
+        stem: |-
+          **(0,5 pt)** Montrer que $p(B) = \dfrac{1}{4}$. *(On pourra s'aider de l'arbre des possibilités.)*
+        reasoning: |-
+          On cherche $p(B)$ avec $B$ : « $ab = 2$ ». Un produit de deux nombres vaut 2 de deux façons seulement : $1 \times 2$ ou $2 \times 1$. L'événement $B$ se réalise donc sur exactement **deux chemins** de l'arbre : « $a=1$ puis $b=2$ » et « $a=2$ puis $b=1$ » (le cas $a=0$ donne toujours un produit nul).
+
+          Pour chaque chemin, on applique la règle de l'arbre vue en cours : on **multiplie** le long de la branche, en prenant sur la deuxième branche la probabilité **conditionnelle** — car après avoir posé la boule tirée dans $U_2$, cette urne compte désormais six boules, avec une composition qui dépend de $a$. Les deux chemins étant incompatibles, on **additionne** enfin leurs probabilités.
+        steps:
+          - math: 'p(a=1) = \dfrac{3}{6} = \dfrac{1}{2}, \qquad p(a=2) = \dfrac{1}{6}'
+            note: "Probabilités du premier tirage, lues sur U1 (trois « 1 » et un « 2 » sur six boules)."
+          - math: 'p(a=1,\ b=2) = p(a=1)\times p(b=2 \mid a=1) = \dfrac{1}{2}\times\dfrac{2}{6} = \dfrac{1}{6}'
+            note: "On a ajouté le « 1 » dans U2 : U2 = {1,1,1,1,2,2}, soit deux « 2 » sur six, d'où p(b=2 sachant a=1) = 2/6."
+          - math: 'p(a=2,\ b=1) = p(a=2)\times p(b=1 \mid a=2) = \dfrac{1}{6}\times\dfrac{3}{6} = \dfrac{1}{12}'
+            note: "On a ajouté le « 2 » dans U2 : U2 = {1,1,1,2,2,2}, soit trois « 1 » sur six, d'où p(b=1 sachant a=2) = 3/6."
+          - math: 'p(B) = \dfrac{1}{6} + \dfrac{1}{12} = \dfrac{2}{12} + \dfrac{1}{12} = \dfrac{3}{12} = \dfrac{1}{4}'
+            note: "Les deux chemins sont incompatibles : on additionne leurs probabilités."
+      - id: q2
+        part: "Partie B — Une probabilité conditionnelle : $p(A/B)$"
+        stem: |-
+          **(0,75 pt)** Calculer $p(A/B)$, la probabilité de l'événement $A$ sachant que l'événement $B$ est réalisé.
+        reasoning: |-
+          « Sachant $B$ » est le signal du conditionnement : on **restreint l'univers à $B$** et on mesure $A$ à l'intérieur. La formule est $p(A/B) = \dfrac{p(A \cap B)}{p(B)}$ — c'est le dénominateur $p(B)$ qui accomplit ce rétrécissement.
+
+          Le numérateur $p(A \cap B)$ correspond à « $a = 1$ **et** $ab = 2$ », c'est-à-dire « $a=1$ et $b=2$ » : parmi les deux chemins qui donnent $B$, un seul ($a=1$, $b=2$) réalise aussi $A$. C'est exactement la feuille déjà calculée à la question 1b. On divise ensuite par $p(B) = \dfrac{1}{4}$.
+
+          Deux pièges à éviter : ne pas répondre $p(A \cap B) = \dfrac{1}{6}$ en oubliant de diviser (ce serait confondre la conditionnelle et l'intersection), et ne pas diviser par $p(A)$ au lieu de $p(B)$ (ce serait calculer $p(B/A)$, la question renversée).
+        steps:
+          - math: 'p(A \cap B) = p(a=1,\ b=2) = \dfrac{1}{6}'
+            note: "A∩B = « a=1 ET ab=2 » : seul le chemin (a=1, b=2) réalise à la fois A et B. Feuille déjà obtenue en 1b."
+          - math: 'p(A/B) = \dfrac{p(A \cap B)}{p(B)} = \dfrac{\ 1/6\ }{\ 1/4\ } = \dfrac{1}{6}\times 4 = \dfrac{4}{6} = \dfrac{2}{3}'
+            note: "On divise par p(B) = 1/4 (l'univers est restreint à B), pas par p(A)."
+      - id: q3a
+        part: "Partie C — La variable aléatoire $X = ab$ et sa loi"
+        stem: |-
+          Soit $X$ la variable aléatoire qui associe à chaque résultat de l'expérience le produit $ab$.
+
+          **(0,25 pt)** Montrer que $p(X = 0) = \dfrac{1}{3}$.
+        reasoning: |-
+          Un produit est nul dès qu'un de ses facteurs est nul : $X = 0 \iff a = 0 \ \text{ou}\ b = 0$. Mais regardons de près quand $b$ peut valoir 0. Une boule « 0 » ne peut apparaître dans $U_2$ que si on l'y a apportée depuis $U_1$ — c'est-à-dire seulement si $a = 0$. Si $a \neq 0$ (donc $a=1$ ou $a=2$), on n'ajoute aucun « 0 » à $U_2$, donc $b \in \{1, 2\}$ et le produit n'est jamais nul.
+
+          Conclusion : l'événement « $X = 0$ » se réduit exactement à « $a = 0$ ». Sa probabilité se lit sur $U_1$.
+        steps:
+          - math: 'X = 0 \iff a = 0'
+            note: "Si a≠0, aucune boule « 0 » n'est ajoutée à U2, donc b≠0 et ab≠0 : le produit n'est nul que si a=0."
+          - math: 'p(X=0) = p(a=0) = \dfrac{2}{6} = \dfrac{1}{3}'
+            note: "Deux boules « 0 » parmi les six de U1."
+      - id: q3b
+        stem: |-
+          **(0,5 pt)** Donner la loi de probabilité de $X$. *(On remarquera que les valeurs prises par $X$ sont 0, 1, 2 et 4.)*
+        reasoning: |-
+          Les valeurs possibles de $X = ab$ sont 0, 1, 2 et 4. On connaît déjà deux d'entre elles : $p(X=0) = \dfrac{1}{3}$ (question 3a) et $p(X=2) = p(B) = \dfrac{1}{4}$ (question 1b, puisque « $X=2$ » est exactement « $ab=2$ »).
+
+          Il reste $p(X=1)$ et $p(X=4)$, chacune obtenue par un unique chemin de l'arbre : $ab=1$ n'arrive que si $a=1$ et $b=1$ ; $ab=4$ n'arrive que si $a=2$ et $b=2$. On multiplie le long de chaque branche avec la bonne probabilité conditionnelle. Enfin, le **contrôle indispensable** : la somme des probabilités de la loi doit valoir 1.
+        steps:
+          - math: 'p(X=1) = p(a=1,\ b=1) = \dfrac{1}{2}\times\dfrac{4}{6} = \dfrac{4}{12} = \dfrac{1}{3}'
+            note: "ab=1 uniquement si a=1 et b=1. Après ajout du « 1 », U2 compte quatre « 1 » sur six, d'où p(b=1 sachant a=1)=4/6."
+          - math: 'p(X=2) = p(B) = \dfrac{1}{4} = \dfrac{3}{12}'
+            note: "Déjà établi en 1b : « X=2 » est exactement l'événement « ab=2 »."
+          - math: 'p(X=4) = p(a=2,\ b=2) = \dfrac{1}{6}\times\dfrac{3}{6} = \dfrac{1}{12}'
+            note: "ab=4 uniquement si a=2 et b=2. Après ajout du « 2 », U2 compte trois « 2 » sur six, d'où p(b=2 sachant a=2)=3/6."
+          - math: 'p(X=0)+p(X=1)+p(X=2)+p(X=4) = \dfrac{4}{12}+\dfrac{4}{12}+\dfrac{3}{12}+\dfrac{1}{12} = \dfrac{12}{12} = 1'
+            note: "Contrôle : la somme des probabilités d'une loi vaut toujours 1. C'est vérifié."
+          - math: '\begin{array}{c|cccc} x_i & 0 & 1 & 2 & 4 \\ \hline p(X = x_i) & \dfrac{1}{3} & \dfrac{1}{3} & \dfrac{1}{4} & \dfrac{1}{12} \end{array}'
+            note: "La loi de probabilité de X, présentée sous forme de tableau."
+      - id: q3c
+        stem: |-
+          **(0,5 pt)** On considère les événements $M$ : « le produit $ab$ est pair non nul » et $N$ : « le produit $ab$ est égal à 1 ». Montrer que les événements $M$ et $N$ sont équiprobables.
+        reasoning: |-
+          Il suffit de traduire chaque événement en termes de valeurs de $X$, puis de comparer les probabilités.
+
+          $M$ (« $ab$ pair non nul ») rassemble les valeurs de $X$ qui sont paires **et** non nulles : ce sont 2 et 4 (la valeur 0 est paire mais nulle, donc exclue ; la valeur 1 est impaire). Donc $M$ correspond à « $X=2$ ou $X=4$ ». $N$ (« $ab=1$ ») correspond exactement à « $X=1$ ». On calcule les deux probabilités à partir de la loi de la question 3b et on les compare.
+        steps:
+          - math: 'M = (X=2)\ \cup\ (X=4), \qquad N = (X=1)'
+            note: "Les valeurs paires non nulles de X sont 2 et 4 ; N est l'événement X=1."
+          - math: 'p(M) = p(X=2) + p(X=4) = \dfrac{1}{4} + \dfrac{1}{12} = \dfrac{3}{12} + \dfrac{1}{12} = \dfrac{4}{12} = \dfrac{1}{3}'
+            note: "Les événements (X=2) et (X=4) sont incompatibles : on additionne."
+          - math: 'p(N) = p(X=1) = \dfrac{1}{3}'
+            note: "Lu directement sur la loi de X."
+          - math: 'p(M) = p(N) = \dfrac{1}{3}'
+            note: "Même probabilité : M et N sont donc équiprobables."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ────────
+  # Same deep skills as r-bac (modéliser un tirage avec transfert, arbre à
+  # branches conditionnelles, probabilité conditionnelle, variable aléatoire et
+  # sa loi) with different sacs, different numbers, and a SUM X=a+b instead of a
+  # product — so the student cannot memorise the 2023 sujet and must recognise
+  # that the same machinery applies when the surface changes.
+  - id: r-variation
+    title: "Variation fraîche — deux sacs, une somme aléatoire"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2023, sourcé). Nombres et
+        contexte choisis pour donner des fractions exactes vérifiées à la main.
+    intro: |-
+      Même structure profonde que le sujet précédent, habillage différent : deux sacs, un transfert d'un jeton, une probabilité conditionnelle, et une variable aléatoire — mais ici $X$ est une **somme** $a+b$ (et non un produit), avec d'autres nombres. Le but est que tu ne puisses pas recopier la solution du sujet 2023 : tu dois reconnaître que la même machinerie (arbre à branches conditionnelles, conditionnement, loi) s'applique.
+
+      Un sac $S_1$ contient quatre jetons portant les nombres 1, 1, 2, 3. Un sac $S_2$ contient trois jetons portant les nombres 1, 2, 2. Les jetons sont indiscernables au toucher.
+
+      Expérience : on tire un jeton de $S_1$ (on note sa valeur $a$), on le place dans $S_2$, puis on tire un jeton de $S_2$ (on note sa valeur $b$). Comme pour le sujet, placer le jeton de $S_1$ dans $S_2$ rend le second tirage **dépendant** du premier.
+
+      On considère les événements $C$ : « $a = 2$ » et $D$ : « $a + b = 4$ ».
+    questions:
+      - id: q1a
+        part: "Partie A — Modéliser et calculer $p(C)$ et $p(D)$"
+        stem: |-
+          Calculer $p(C)$, la probabilité que le jeton tiré de $S_1$ porte le nombre 2.
+        reasoning: |-
+          Comme pour $p(A)$ dans le sujet, l'événement $C$ ne concerne que le premier tirage, dans $S_1$. On compte la proportion de jetons « 2 » parmi les quatre jetons de $S_1$ (1, 1, 2, 3) : il y en a un seul.
+        steps:
+          - math: 'p(C) = p(a=2) = \dfrac{1}{4}'
+            note: "Un seul jeton « 2 » parmi les quatre jetons de S1."
+      - id: q1b
+        stem: |-
+          Montrer que $p(D) = \dfrac{1}{4}$, où $D$ : « $a + b = 4$ ». *(On pourra construire l'arbre.)*
+        reasoning: |-
+          On cherche les chemins pour lesquels $a + b = 4$. Les couples possibles sont $(a,b) = (1,3)$, $(2,2)$ ou $(3,1)$. Mais $(1,3)$ est **impossible** : si $a=1$, le sac $S_2$ devient $\{1,1,2,2\}$ et ne contient aucun jeton « 3 », donc $b \neq 3$. Restent deux chemins, $(2,2)$ et $(3,1)$.
+
+          Pour chacun, on multiplie le long de la branche avec la probabilité conditionnelle (composition de $S_2$ mise à jour après le transfert), puis on additionne — les deux chemins sont incompatibles.
+        steps:
+          - math: 'p(a=2,\ b=2) = p(a=2)\times p(b=2 \mid a=2) = \dfrac{1}{4}\times\dfrac{3}{4} = \dfrac{3}{16}'
+            note: "On a ajouté le « 2 » dans S2 : S2 = {1,2,2,2}, soit trois « 2 » sur quatre, d'où p(b=2 sachant a=2)=3/4."
+          - math: 'p(a=3,\ b=1) = p(a=3)\times p(b=1 \mid a=3) = \dfrac{1}{4}\times\dfrac{1}{4} = \dfrac{1}{16}'
+            note: "On a ajouté le « 3 » dans S2 : S2 = {1,2,2,3}, soit un « 1 » sur quatre, d'où p(b=1 sachant a=3)=1/4."
+          - math: 'p(D) = \dfrac{3}{16} + \dfrac{1}{16} = \dfrac{4}{16} = \dfrac{1}{4}'
+            note: "Somme des deux chemins incompatibles. Le chemin (a=1, b=3) est impossible : il ne compte pas."
+      - id: q2
+        part: "Partie B — La probabilité conditionnelle $p(C/D)$"
+        stem: |-
+          Calculer $p(C/D)$, la probabilité que $a = 2$ sachant que $a + b = 4$.
+        reasoning: |-
+          Même geste que pour $p(A/B)$ dans le sujet : on restreint l'univers à $D$ et on divise. Le numérateur $p(C \cap D)$ est « $a = 2$ **et** $a+b=4$ », c'est-à-dire « $a=2$ et $b=2$ » — exactement le premier chemin calculé en 1b. On divise par $p(D) = \dfrac{1}{4}$, pas par $p(C)$.
+        steps:
+          - math: 'p(C \cap D) = p(a=2,\ b=2) = \dfrac{3}{16}'
+            note: "Parmi les deux chemins donnant D, seul (a=2, b=2) réalise aussi C."
+          - math: 'p(C/D) = \dfrac{p(C \cap D)}{p(D)} = \dfrac{\ 3/16\ }{\ 1/4\ } = \dfrac{3}{16}\times 4 = \dfrac{12}{16} = \dfrac{3}{4}'
+            note: "On divise par p(D)=1/4 (univers restreint à D)."
+      - id: q3a
+        part: "Partie C — La variable aléatoire $X = a + b$ et sa loi"
+        stem: |-
+          On pose $X = a + b$. Montrer que $p(X = 2) = \dfrac{1}{4}$.
+        reasoning: |-
+          La plus petite somme possible est $a + b = 2$, et elle ne s'obtient que d'une seule façon : $a = 1$ et $b = 1$ (les deux plus petites valeurs). On multiplie le long de cette unique branche, avec la probabilité conditionnelle de tirer un « 1 » dans $S_2$ après y avoir ajouté le « 1 ».
+        steps:
+          - math: 'p(X=2) = p(a=1,\ b=1) = \dfrac{1}{2}\times\dfrac{2}{4} = \dfrac{1}{2}\times\dfrac{1}{2} = \dfrac{1}{4}'
+            note: "a=1 avec p=2/4=1/2 (deux « 1 » sur quatre dans S1) ; après ajout du « 1 », S2={1,1,2,2}, deux « 1 » sur quatre, d'où p(b=1 sachant a=1)=1/2."
+      - id: q3b
+        stem: |-
+          Donner la loi de probabilité de $X$. *(Les valeurs prises par $X$ sont 2, 3, 4, 5 et 6.)*
+        reasoning: |-
+          On parcourt les valeurs de $X = a+b$. On connaît déjà $p(X=2) = \dfrac{1}{4}$ (question 3a) et $p(X=4) = p(D) = \dfrac{1}{4}$ (question 1b, puisque « $X=4$ » est exactement « $a+b=4$ »). On calcule les trois autres — 3, 5 et 6 — en rassemblant, pour chacune, tous les chemins qui la produisent, puis on **vérifie que la somme vaut 1**.
+        steps:
+          - math: 'p(X=3) = p(a=1,\ b=2) + p(a=2,\ b=1) = \dfrac{1}{2}\times\dfrac{2}{4} + \dfrac{1}{4}\times\dfrac{1}{4} = \dfrac{4}{16} + \dfrac{1}{16} = \dfrac{5}{16}'
+            note: "Deux chemins donnent la somme 3 : (a=1,b=2) et (a=2,b=1). On rassemble les deux."
+          - math: 'p(X=4) = p(D) = \dfrac{1}{4} = \dfrac{4}{16}'
+            note: "Déjà établi en 1b : « X=4 » est exactement « a+b=4 »."
+          - math: 'p(X=5) = p(a=3,\ b=2) = \dfrac{1}{4}\times\dfrac{2}{4} = \dfrac{2}{16} = \dfrac{1}{8}'
+            note: "Somme 5 uniquement par (a=3, b=2) ; après ajout du « 3 », S2={1,2,2,3}, deux « 2 » sur quatre."
+          - math: 'p(X=6) = p(a=3,\ b=3) = \dfrac{1}{4}\times\dfrac{1}{4} = \dfrac{1}{16}'
+            note: "Somme 6 uniquement par (a=3, b=3) ; un seul « 3 » sur quatre dans S2 après le transfert."
+          - math: 'p(X=2)+p(X=3)+p(X=4)+p(X=5)+p(X=6) = \dfrac{4}{16}+\dfrac{5}{16}+\dfrac{4}{16}+\dfrac{2}{16}+\dfrac{1}{16} = \dfrac{16}{16} = 1'
+            note: "Contrôle : la somme des probabilités vaut 1. La loi est cohérente."
+          - math: '\begin{array}{c|ccccc} x_i & 2 & 3 & 4 & 5 & 6 \\ \hline p(X = x_i) & \dfrac{1}{4} & \dfrac{5}{16} & \dfrac{1}{4} & \dfrac{1}{8} & \dfrac{1}{16} \end{array}'
+            note: "La loi de probabilité de X = a+b, sous forme de tableau."
+      - id: q3c
+        stem: |-
+          Montrer que les événements « $X = 2$ » et « $X = 4$ » sont équiprobables.
+        reasoning: |-
+          Exactement comme la dernière question du sujet (montrer que deux événements sont équiprobables), il suffit de comparer leurs probabilités, lues sur la loi de $X$. On a trouvé $p(X=2) = \dfrac{1}{4}$ et $p(X=4) = \dfrac{1}{4}$.
+        steps:
+          - math: 'p(X=2) = \dfrac{1}{4}, \qquad p(X=4) = \dfrac{1}{4}'
+            note: "Valeurs lues sur la loi de X (questions 3a et 1b)."
+          - math: 'p(X=2) = p(X=4) = \dfrac{1}{4}'
+            note: "Même probabilité : les deux événements sont équiprobables."

@@ -1,0 +1,1943 @@
+notion: ondes-mecaniques-progressives
+skill_code: pc_ondes_mecaniques_progressives
+
+# Misconception inventory (backfilled in the summit-conversion campaign). This
+# end bank was authored BEFORE the structured inventory existed
+# (`misconceptions: []`), so items carry an item-level `primary_misconception`
+# here, and every distractor now carries a per-distractor `misconception:`
+# field (mirroring checkpoints.yaml). See coverage_summary at the end of this
+# file for honest counts and the under-covered models flagged for a follow-up
+# item pass. Ids are shared with checkpoints.yaml.
+#
+# Boundary: onde mécanique progressive NON périodique — pas de longueur d'onde
+# ni de période spatiale à ce stade (chapitre suivant : ondes progressives
+# PÉRIODIQUES). Transport d'énergie sans transport de matière ; type
+# transversal/longitudinal ; célérité (propriété du milieu) ≠ vitesse d'un
+# point ; retard τ = d/v et y_M(t) = y_S(t−τ) ; dimensions du front d'onde.
+misconceptions:
+  - id: mc.physics.pc_omp.onde-transporte-matiere
+    label: "« L'onde transporte la matière : le milieu (l'eau, la corde) voyage avec elle, le point atteint dérive au lieu d'osciller sur place »"
+    description: "L'élève croit que la matière est entraînée par l'onde — le bouchon dérive, l'eau / le spectateur / le point de corde fait le trajet de S vers M."
+    contradicts_principle: "Transport d'énergie SANS transport de matière : chaque point du milieu oscille autour de sa position de repos et y revient une fois la perturbation passée. Seule la perturbation (et l'énergie) se propage de proche en proche."
+  - id: mc.physics.pc_omp.onde-sans-energie
+    label: "« L'onde ne transporte pas d'énergie : le point revient à sa place, donc rien ne lui a été transmis »"
+    description: "L'élève nie le transport d'énergie — objet immobile, effet du vent, illusion d'optique, ou « revient à sa place donc rien reçu »."
+    contradicts_principle: "Faire osciller un point (le faire monter puis descendre) exige de l'énergie, apportée par l'onde. Revenir à sa position de repos ne veut pas dire n'avoir rien reçu : l'énergie a été transmise, puis relayée au point suivant."
+  - id: mc.physics.pc_omp.onde-sans-milieu
+    label: "« Une onde mécanique peut se propager dans le vide, comme la lumière »"
+    description: "L'élève pense qu'une onde mécanique n'a pas besoin de milieu matériel, ou que le milieu n'a aucun rôle dans la transmission de la perturbation."
+    contradicts_principle: "Une onde MÉCANIQUE exige un milieu matériel déformable et élastique : c'est en écartant puis en rappelant chaque point qu'elle se relaie. Sans milieu, rien à déformer, pas d'onde. Se passer de milieu est le propre des ondes électromagnétiques."
+  - id: mc.physics.pc_omp.confusion-transversale-longitudinale
+    label: "« Mauvais classement transversale / longitudinale »"
+    description: "L'élève applique mal le critère : il ne compare pas la direction du déplacement de la matière à celle de propagation, généralise un exemple, ou croit le critère réservé aux fluides."
+    contradicts_principle: "Le type se lit en comparant DEUX directions : déplacement de la matière perpendiculaire à la propagation → transversale ; déplacement parallèle → longitudinale. Ce critère vaut pour tout milieu matériel (corde, ressort, tige, air), pas seulement les fluides."
+  - id: mc.physics.pc_omp.celerite-depend-source
+    label: "« La célérité dépend de la source : amplitude, forme ou intensité de la perturbation (ou de la distance / du temps) »"
+    description: "L'élève croit qu'une perturbation plus ample ou plus forte va plus vite, ou que l'onde accélère avec la distance parcourue ou le temps écoulé."
+    contradicts_principle: "La célérité ne dépend QUE du milieu (nature et état). Ni l'amplitude, ni la forme de la perturbation à la source, ni la distance parcourue, ni le temps écoulé ne la changent, tant que le milieu est le même."
+  - id: mc.physics.pc_omp.celerite-est-vitesse-point
+    label: "« La célérité de l'onde est la vitesse de déplacement d'un point du milieu »"
+    description: "L'élève confond la vitesse de propagation de la perturbation avec la vitesse du mouvement de va-et-vient d'un point du milieu."
+    contradicts_principle: "La célérité v = d/Δt est la vitesse à laquelle la perturbation AVANCE dans le milieu. Un point du milieu ne se propage pas : il oscille sur place autour de sa position de repos. Les deux vitesses sont distinctes."
+  - id: mc.physics.pc_omp.retard-relation-fausse
+    label: "« Mauvaise relation du retard : τ = v/d, τ = d·v, oubli de conversion, ou y_M(t) = y_S(t+τ) / y_S(t)−τ »"
+    description: "L'élève inverse ou déforme τ = d/v (ou la relation y_M(t) = y_S(t−τ)) : rapport inversé, produit, unités non converties, signe +τ (viole la causalité), retard soustrait à l'élongation, facteur v parasite."
+    contradicts_principle: "Le retard est τ = d/v (distance divisée par célérité, unités cohérentes). Et y_M(t) = y_S(t−τ) : M rejoue à l'identique, plus tard de τ, le mouvement de S — jamais en avance (t+τ violerait la causalité), jamais amplifié."
+  - id: mc.physics.pc_omp.front-onde-dimension
+    label: "« Mauvais nombre de dimensions du front d'onde (ou front fixé par la forme du récipient) »"
+    description: "L'élève confond onde à 1 / 2 / 3 dimensions (corde, surface, air), ou croit que la forme du front dépend de la forme du contenant."
+    contradicts_principle: "Le nombre de dimensions est fixé par la géométrie du milieu — le nombre de directions dans lesquelles chaque point est relié à des voisins : corde 1D (deux voisins), surface 2D (front circulaire), air 3D (front sphérique). Indépendant de la forme du récipient."
+  - id: mc.physics.pc_omp.son-nature
+    label: "« Mauvaise nature du son : transversal, ou propagé selon une seule direction »"
+    description: "L'élève croit le son transversal (comme une corde) ou propagé selon une seule direction de l'espace."
+    contradicts_principle: "Le son est une onde mécanique LONGITUDINALE (compressions/dilatations dans la direction de propagation), tridimensionnelle à partir d'une source ponctuelle, et exige un milieu matériel."
+  - id: mc.physics.pc_omp.periodicite-hors-cadre
+    label: "« Appliquer la périodicité spatiale (longueur d'onde λ = v·T) à une perturbation unique non périodique »"
+    description: "L'élève importe λ = v·T (notion des ondes périodiques) pour une perturbation isolée, ou confond longueur d'onde et retard, ou invoque une fréquence pour un signal non périodique."
+    contradicts_principle: "Une perturbation unique n'a ni période T ni longueur d'onde λ : λ = v·T ne concerne que les ondes PÉRIODIQUES (chapitre suivant). Le décalage entre deux points d'une onde progressive est gouverné par le retard τ = d/v."
+  - id: mc.physics.pc_omp.photo-film-confondus
+    label: "« Confondre la PHOTO de la corde (élongation en fonction de la distance x, à un instant figé) et le FILM d'un point (élongation en fonction du temps t, à une abscisse figée) »"
+    description: "L'élève lit ou dessine un graphe sans identifier son axe des abscisses. Formes : recopier le geste de la source y_S(t) tel quel comme aspect de la corde, au lieu de son MIROIR (le point le plus éloigné de S rejoue ce que S a fait en PREMIER) ; lire une durée sur une photo (ou une distance sur un film) sans passer par la célérité ; conclure d'un graphe qu'un point « monte puis descend » alors que le graphe montre une corde, ou l'inverse. Ce modèle répond CORRECTEMENT à toute question purement numérique sur τ = d/v : il ne se révèle qu'en demandant de LIRE ou de DESSINER une corde."
+    contradicts_principle: "Une photo et un film sont deux coupes différentes du même phénomène : la photo fige le temps et parcourt l'espace, le film fige l'espace et parcourt le temps. Sur une photo, une largeur est une DISTANCE (on passe à une durée en divisant par v) et la forme est le geste de la source RETOURNÉ, parce qu'on remonte le temps du geste en s'éloignant de S. Sur un film, l'abscisse est une DURÉE et la courbe de M est celle de S décalée de +τ vers la droite."
+
+items:
+  - id: OMP-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: []
+    primary_misconception: mc.physics.pc_omp.onde-transporte-matiere
+    stem: >
+      Qu'est-ce qui caractérise, avant tout, une onde mécanique progressive ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La propagation d'une perturbation dans un milieu matériel, avec
+          transport d'énergie mais sans transport de matière.
+        correct: true
+      - id: B
+        text: >-
+          La propagation d'une perturbation avec transport de matière, mais
+          sans transport d'énergie.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-transporte-matiere
+        feedback: >
+          C'est exactement l'inverse. Chaque point du milieu revient à sa
+          position de repos une fois la perturbation passée (pas de transport
+          de matière) ; c'est l'énergie de la perturbation qui, elle, avance
+          de proche en proche.
+      - id: C
+        text: >-
+          Un phénomène qui, comme la lumière, n'a besoin d'aucun milieu
+          matériel pour se propager.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-sans-milieu
+        feedback: >
+          C'est le contraire : une onde MÉCANIQUE a justement besoin d'un
+          milieu matériel déformable et élastique (corde, eau, air, solide)
+          pour exister. Se passer de tout milieu est le propre des ondes
+          électromagnétiques, pas des ondes mécaniques.
+      - id: D
+        text: >-
+          Un phénomène où chaque point du milieu, une fois atteint, se
+          déplace définitivement dans le sens de la propagation.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-transporte-matiere
+        feedback: >
+          Un point du milieu oscille autour de sa position de repos et y
+          revient une fois la perturbation passée : il ne se déplace jamais
+          définitivement dans le sens de propagation. C'est la perturbation
+          qui avance, pas la matière.
+    correct_feedback: >
+      Une onde mécanique progressive transporte de l'énergie de proche en
+      proche dans un milieu matériel, sans jamais transporter la matière
+      elle-même : chaque point oscille sur place puis revient à sa position
+      de repos.
+    solution: |
+      Une onde mécanique progressive nécessite un milieu matériel déformable
+      et élastique. La perturbation se propage de point en point : chaque
+      point est écarté par son voisin (il reçoit de l'énergie), puis rappelé
+      vers sa position de repos par l'élasticité du milieu (il n'y a donc pas
+      de déplacement net de matière). L'énergie, elle, continue son chemin
+      vers le point suivant. D'où : transport d'énergie, sans transport de
+      matière.
+
+  - id: OMP-2
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: []
+    primary_misconception: mc.physics.pc_omp.onde-sans-energie
+    stem: >
+      Un bouchon de liège flotte sur un étang. Une vague créée au loin
+      atteint le bouchon, qui se met à osciller verticalement puis revient,
+      la vague passée, à peu près à sa position initiale. Quelle affirmation
+      décrit correctement ce qui s'est passé ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          L'eau sous le bouchon a oscillé sur place, en relayant le mouvement
+          à l'eau suivante ; le bouchon a reçu de l'énergie, sans être
+          entraîné vers le bord.
+        correct: true
+      - id: B
+        text: >-
+          L'eau qui portait le bouchon a été transportée jusqu'à lui depuis le point
+          d'impact initial de la perturbation.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-transporte-matiere
+        feedback: >
+          Si l'eau elle-même avait voyagé jusqu'au bouchon, celui-ci aurait
+          dérivé vers le bord en suivant ce courant. Or il revient à sa
+          position initiale : c'est la perturbation qui a voyagé, pas l'eau.
+      - id: C
+        text: >-
+          Le bouchon n'a reçu aucune énergie : il a seulement bougé sous l'effet du
+          vent, au moment précis où la vague est passée sous lui.
+          Par temps parfaitement calme, le bouchon resterait donc immobile au passage de la vague.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-sans-energie
+        feedback: >
+          Le bouchon monte et descend précisément parce que l'onde lui
+          transmet de l'énergie mécanique en le faisant osciller — ce n'est
+          pas un effet du vent, c'est l'effet direct de l'onde qui transporte
+          de l'énergie sans transporter de matière.
+      - id: D
+        text: >-
+          Puisque le bouchon revient à sa position initiale, on peut en conclure
+          qu'aucune énergie ne lui a été transmise.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-sans-energie
+        feedback: >
+          Revenir à sa position initiale ne veut pas dire « n'avoir rien
+          reçu » : le bouchon a bel et bien monté et redescendu, ce qui exige
+          de l'énergie. Cette énergie a ensuite continué son chemin vers les
+          points suivants — elle n'a pas disparu, elle est passée.
+    correct_feedback: >
+      Le bouchon oscille parce que l'eau sous lui oscille, relayant la
+      perturbation (et l'énergie qu'elle porte) vers les points suivants,
+      sans qu'aucune matière n'ait vraiment voyagé jusqu'à lui.
+    solution: |
+      Le mécanisme de proche en proche : chaque molécule d'eau, une fois
+      écartée par sa voisine, est rappelée vers sa position de repos par
+      cohésion, après avoir transmis le mouvement (et l'énergie) à la
+      molécule suivante. Le bouchon suit fidèlement ce mouvement local :
+      il oscille, reçoit de l'énergie, mais ne dérive pas, parce que l'eau
+      qui le porte ne dérive pas non plus.
+
+  - id: OMP-3
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: []
+    primary_misconception: mc.physics.pc_omp.confusion-transversale-longitudinale
+    stem: >
+      Sur une corde tendue horizontalement, on secoue une extrémité
+      verticalement, vers le haut puis vers le bas. Quel est le type de
+      l'onde qui se propage le long de la corde ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Transversale."
+        correct: true
+      - id: B
+        text: "Longitudinale."
+        correct: false
+        misconception: mc.physics.pc_omp.confusion-transversale-longitudinale
+        feedback: >
+          Longitudinale voudrait dire que les points de la corde se
+          déplacent dans la même direction que la propagation (horizontale).
+          Ici, chaque point se déplace verticalement : c'est perpendiculaire
+          à la propagation, donc transversale.
+      - id: C
+        text: "À la fois transversale et longitudinale."
+        correct: false
+        misconception: mc.physics.pc_omp.confusion-transversale-longitudinale
+        feedback: >
+          Les deux catégories sont définies par la comparaison entre une
+          seule direction de déplacement et la direction de propagation :
+          pour une onde donnée, cette comparaison donne un seul résultat, pas
+          les deux à la fois.
+      - id: D
+        text: "On ne peut pas le dire sans connaître la célérité de l'onde."
+        correct: false
+        misconception: mc.physics.pc_omp.confusion-transversale-longitudinale
+        feedback: >
+          Le type de l'onde (transversale ou longitudinale) se détermine en
+          comparant la direction du déplacement de la matière à la direction
+          de propagation. La célérité n'entre pas dans ce critère.
+    correct_feedback: >
+      Les points de la corde se déplacent verticalement, perpendiculairement
+      à la direction de propagation qui est horizontale : c'est le critère
+      même d'une onde transversale.
+    solution: |
+      Direction du déplacement des points de la corde : verticale.
+      Direction de propagation : horizontale, le long de la corde.
+      Les deux directions sont perpendiculaires, donc l'onde est
+      transversale.
+
+  - id: OMP-4
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: []
+    primary_misconception: mc.physics.pc_omp.celerite-depend-source
+    stem: >
+      De quoi dépend la célérité d'une onde mécanique se propageant dans un
+      milieu donné (une corde tendue, par exemple) ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Uniquement des propriétés du milieu (nature, état) — pas de la
+          forme ni de l'amplitude de la perturbation créée à la source.
+        correct: true
+      - id: B
+        text: >-
+          Principalement de l'amplitude de la perturbation : plus la
+          perturbation créée à la source est grande, plus l'onde va vite.
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-depend-source
+        feedback: >
+          La célérité ne dépend pas de l'amplitude de la perturbation :
+          qu'on crée une perturbation ample ou discrète, dans le même milieu,
+          l'onde voyage toujours à la même vitesse. Seul le milieu fixe la
+          célérité.
+      - id: C
+        text: >-
+          De la distance déjà parcourue depuis la source : plus l'onde s'est
+          déjà éloignée, plus elle va vite.
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-depend-source
+        feedback: >
+          Ceci confond la célérité (fixée par le milieu, constante) avec le
+          retard (qui, lui, dépend bien de la distance parcourue via
+          $\tau = d/v$). La célérité elle-même ne change pas avec la
+          distance dans un milieu homogène.
+      - id: D
+        text: >-
+          Du temps écoulé depuis le début de la perturbation : l'onde
+          accélère à mesure qu'elle avance.
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-depend-source
+        feedback: >
+          Dans un milieu homogène, la célérité reste constante au cours du
+          temps : rien dans le mécanisme de propagation de proche en proche
+          ne fait « accélérer » l'onde à mesure qu'elle avance.
+    correct_feedback: >
+      La célérité est une propriété du milieu — sa rigidité et son inertie —
+      jamais de la source : la même onde, dans le même milieu, voyage
+      toujours à la même vitesse, quelle que soit la perturbation créée.
+    solution: |
+      La célérité $v$ est fixée par la force de rappel et l'inertie du
+      milieu, qui déterminent la vitesse à laquelle la perturbation se
+      relaie de proche en proche. Ni l'amplitude, ni la forme de la
+      perturbation à la source, ni la distance déjà parcourue, ni le temps
+      écoulé ne modifient cette valeur : $v$ reste la même tant que le
+      milieu ne change pas.
+
+  - id: OMP-5
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: []
+    primary_misconception: mc.physics.pc_omp.retard-relation-fausse
+    stem: >
+      Une source $S$ vibre, et un point $M$ du milieu, situé à une distance
+      $d$ de $S$, reproduit son mouvement avec un retard $\tau = d/v$.
+      Quelle relation relie correctement $y_M(t)$ et $y_S(t)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$y_M(t) = y_S(t - \\tau)$"
+        correct: true
+      - id: B
+        text: "$y_M(t) = y_S(t) - \\tau$"
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Ici, $\tau$ (un temps) est soustrait à une élongation $y_S(t)$ (une
+          longueur) : les deux grandeurs n'ont pas la même dimension, cette
+          expression n'a pas de sens physique. Le retard doit s'appliquer à
+          l'instant considéré, pas à l'élongation.
+      - id: C
+        text: "$y_M(t) = y_S(t + \\tau)$"
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Cette expression ferait bouger $M$ AVANT $S$ (à l'instant $t$, on
+          lirait ce que $S$ fera plus tard, à $t+\tau$) : ça viole la
+          causalité, $M$ ne peut reproduire que ce que $S$ a DÉJÀ fait.
+      - id: D
+        text: "$y_M(t) = v \\cdot y_S(t - \\tau)$"
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Rien ne justifie de multiplier l'élongation par la célérité $v$ :
+          $M$ reproduit le même mouvement que $S$, à l'identique, seulement
+          décalé dans le temps — pas amplifié ou réduit par un facteur $v$.
+    correct_feedback: >
+      $M$ rejoue, à l'instant $t$, exactement ce que $S$ a fait à l'instant
+      $t - \tau$ : la même forme de mouvement, seulement retardée de $\tau$.
+    solution: |
+      Si $S$ effectue un mouvement à un instant $t'$, ce mouvement apparaît
+      en $M$ à l'instant $t = t' + \tau$ (le temps que la perturbation mette
+      $\tau$ pour parcourir la distance $d$). En isolant $t'$ :
+      $t' = t - \tau$. Le mouvement que $M$ affiche à l'instant $t$ est donc
+      celui que $S$ affichait à $t - \tau$, d'où $y_M(t) = y_S(t - \tau)$.
+
+  - id: OMP-6
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: []
+    primary_misconception: mc.physics.pc_omp.son-nature
+    stem: >
+      Une onde sonore, émise par une petite source ponctuelle dans l'air,
+      se propage. Quelle affirmation la décrit correctement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          C'est une onde longitudinale, faite de compressions et de dilatations de l'air
+          dans le sens de la propagation, et elle exige un milieu matériel.
+        correct: true
+      - id: B
+        text: >-
+          C'est une onde transversale, exactement comme celle qui parcourt une corde
+          tendue que l'on secoue.
+        correct: false
+        misconception: mc.physics.pc_omp.son-nature
+        feedback: >
+          Le son se propage par des compressions et des dilatations de
+          l'air DANS la direction de propagation, pas perpendiculairement à
+          elle : c'est une onde longitudinale, pas transversale.
+      - id: C
+        text: >-
+          Elle se propage aussi bien dans le vide que dans l'air, exactement comme le
+          fait la lumière.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-sans-milieu
+        feedback: >
+          Le son est une onde MÉCANIQUE : il a besoin d'un milieu matériel
+          (air, eau, solide) pour se propager, et ne se propage pas dans le
+          vide. C'est justement ce qui le distingue d'une onde
+          électromagnétique comme la lumière.
+      - id: D
+        text: >-
+          Elle se propage uniquement selon une seule direction de l'espace, exactement
+          comme une onde qui parcourt une corde tendue.
+          Un point de la surface situé hors de cette direction ne serait donc jamais atteint.
+        correct: false
+        misconception: mc.physics.pc_omp.front-onde-dimension
+        feedback: >
+          Une petite source dans l'air est reliée à des voisins dans toutes
+          les directions de l'espace : le son se propage dans les trois
+          dimensions, avec un front d'onde sphérique — pas selon une seule
+          direction comme sur une corde.
+    correct_feedback: >
+      Le son est une onde mécanique longitudinale, qui exige un milieu
+      matériel et se propage dans les trois dimensions de l'espace à partir
+      d'une source ponctuelle.
+    solution: |
+      Le son se propage par compressions/dilatations successives de l'air,
+      dans la même direction que la propagation : onde longitudinale. Comme
+      toute onde mécanique, elle nécessite un milieu matériel élastique et
+      ne se propage pas dans le vide. Une petite source étant reliée à des
+      voisins dans toutes les directions de l'espace, le front d'onde est
+      une sphère qui s'agrandit : onde à trois dimensions.
+
+  - id: OMP-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [transport_energie_matiere, milieu_deplace_globalement]
+    primary_misconception: mc.physics.pc_omp.onde-transporte-matiere
+    stem: >
+      Dans la scène d'ouverture, les cercles créés par le caillou
+      s'élargissent jusqu'à atteindre un bouchon de liège qui flotte près du
+      bord. Qu'observe-t-on réellement, une fois que la vague est passée sur
+      le bouchon ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le bouchon a monté puis redescendu plusieurs fois, et se retrouve,
+          la vague passée, à peu près à sa position de départ.
+        correct: true
+      - id: B
+        text: >-
+          Le bouchon a été poussé par la vague et a lentement dérivé vers le
+          bord de l'étang.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-transporte-matiere
+        feedback: >
+          C'est confondre la vague avec un courant. Si l'eau elle-même avait
+          voyagé jusqu'au bouchon, il aurait dérivé ; or il revient à sa
+          position de départ, ce qui montre que l'eau sous lui oscille sur
+          place, elle ne dérive pas.
+      - id: C
+        text: >-
+          Le bouchon est resté parfaitement immobile : une vague sur l'eau
+          ne peut rien transmettre à un objet aussi léger.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-sans-energie
+        feedback: >
+          Le bouchon monte et descend précisément parce que la vague lui
+          transmet de l'énergie : ce n'est pas rien transmettre, c'est
+          transmettre de l'énergie sans transmettre de matière.
+      - id: D
+        text: >-
+          Le bouchon a suivi exactement la même trajectoire que le caillou
+          et a fini par couler au fond de l'étang.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-transporte-matiere
+        feedback: >
+          C'est confondre le caillou, qui crée la perturbation en un point,
+          avec la perturbation elle-même, qui se relaie ensuite de proche en
+          proche dans l'eau sans que le caillou ni l'eau ne voyagent
+          jusqu'au bouchon.
+    correct_feedback: >
+      Le bouchon oscille sur place et revient à sa position de départ : la
+      vague lui a transmis de l'énergie, sans jamais le faire dériver ni le
+      couler.
+    solution: |
+      Une fois la vague passée, le bouchon est revenu à peu près à sa
+      position initiale : il a seulement oscillé verticalement pendant le
+      passage de la perturbation. Il n'a ni dérivé vers le bord (ce qui
+      supposerait un transport de matière), ni coulé en suivant le caillou
+      (ce qui confondrait la source et la perturbation), ni ignoré la vague
+      (ce qui nierait le transport d'énergie).
+
+  - id: OMP-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [transport_energie_matiere, milieu_deplace_globalement]
+    primary_misconception: mc.physics.pc_omp.onde-transporte-matiere
+    stem: >
+      Toujours à propos du bouchon : la vague l'a bien fait bouger, sans que
+      l'eau elle-même n'ait fait tout le trajet jusqu'à lui. Qu'est-ce qui a
+      donc réellement voyagé du point d'impact du caillou jusqu'au bouchon ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          L'énergie de la perturbation, relayée de molécule d'eau en
+          molécule d'eau, chacune oscillant sur place sans être elle-même
+          transportée jusqu'au bouchon.
+        correct: true
+      - id: B
+        text: >-
+          Rien n'a réellement voyagé : ce qu'on croit voir bouger n'est
+          qu'un effet de la lumière qui se reflète différemment sur l'eau
+          agitée.
+          Dans l'obscurité totale, aucune propagation ne serait donc observable.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-sans-energie
+        feedback: >
+          Le bouchon monte et descend réellement : ce mouvement exige de
+          l'énergie, qui a bien voyagé jusqu'à lui. Ce n'est pas un effet
+          optique, c'est le mécanisme même de la propagation de proche en
+          proche.
+      - id: C
+        text: >-
+          Le caillou lui-même, qui a continué sa trajectoire sous l'eau
+          jusqu'à atteindre le bouchon.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-transporte-matiere
+        feedback: >
+          Le caillou coule au point d'impact ; c'est là que s'arrête son
+          propre trajet. Ce qui continue au-delà, ce n'est pas le caillou,
+          c'est la perturbation qu'il a créée, relayée d'une molécule d'eau
+          à la suivante.
+      - id: D
+        text: >-
+          L'eau elle-même, qui s'est déplacée en un courant continu depuis
+          le point d'impact jusqu'au bouchon.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-transporte-matiere
+        feedback: >
+          Si l'eau avait vraiment été transportée jusqu'au bouchon, il
+          aurait dérivé avec ce courant. Chaque molécule d'eau oscille sur
+          place et revient à sa position de repos : elle ne voyage pas
+          jusqu'au bouchon.
+    correct_feedback: >
+      Ce qui voyage, c'est l'énergie de la perturbation, relayée de molécule
+      en molécule — jamais l'eau elle-même, ni le caillou.
+    solution: |
+      Chaque molécule d'eau, une fois écartée par sa voisine, est rappelée
+      vers sa position de repos après avoir transmis le mouvement — et
+      l'énergie qui l'accompagne — à la molécule suivante. C'est cette
+      énergie relayée de proche en proche qui parvient jusqu'au bouchon,
+      pas l'eau elle-même, et pas le caillou.
+
+  - id: OMP-9
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [milieu_materiel_necessaire, milieu_deplace_globalement]
+    primary_misconception: mc.physics.pc_omp.onde-sans-milieu
+    stem: >
+      Toujours au bord de cet étang : pourquoi la vague ne pourrait-elle ni
+      se former, ni se propager jusqu'au bouchon, s'il n'y avait pas d'eau
+      dans l'étang ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce qu'une onde mécanique a besoin d'un milieu matériel
+          déformable à perturber : sans eau, il n'y a rien que le caillou
+          puisse écarter puis relayer de proche en proche.
+        correct: true
+      - id: B
+        text: >-
+          Ce n'est pas vraiment nécessaire : une onde peut tout aussi bien
+          se propager dans le vide, l'eau ne fait qu'accélérer le
+          phénomène.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-sans-milieu
+        feedback: >
+          C'est l'inverse : une onde MÉCANIQUE a justement besoin d'un
+          milieu matériel pour exister, et ne se propage jamais dans le
+          vide. Se passer de tout milieu est le propre des ondes
+          électromagnétiques, pas des ondes mécaniques.
+      - id: C
+        text: >-
+          Parce que c'est l'eau elle-même qui doit être transportée jusqu'au
+          bouchon pour le faire bouger : sans eau, rien ne pourrait
+          matériellement l'atteindre.
+          Le niveau au point de départ devrait donc baisser à mesure que l'onde progresse.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-transporte-matiere
+        feedback: >
+          L'eau n'est pas transportée jusqu'au bouchon : chaque molécule
+          oscille sur place et relaie le mouvement à sa voisine. Ce qui
+          manquerait sans eau, ce n'est pas un « transporteur » de matière,
+          c'est le milieu déformable nécessaire pour que la perturbation
+          existe et se relaie.
+      - id: D
+        text: >-
+          Parce que l'eau ne sert qu'à faire flotter le bouchon ; elle n'a
+          aucun rôle dans la transmission de la perturbation elle-même.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-sans-milieu
+        feedback: >
+          L'eau n'est pas un simple support flottant : c'est elle qui
+          relaie la perturbation, molécule après molécule, du point
+          d'impact jusqu'au bouchon. Sans elle, il n'y aurait ni
+          perturbation à relayer, ni bouchon flottant à faire bouger.
+    correct_feedback: >
+      Sans milieu matériel déformable, il n'y a rien à écarter ni à
+      relayer de proche en proche : une onde mécanique ne peut tout
+      simplement pas exister.
+    solution: |
+      Une onde mécanique progressive exige un milieu matériel déformable et
+      élastique : c'est en écartant puis en rappelant chaque point de ce
+      milieu que la perturbation se relaie de proche en proche. Sans eau,
+      le caillou n'aurait rien à déformer, et aucune onde ne pourrait ni se
+      former, ni se propager jusqu'au bouchon.
+
+  - id: OMP-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [transport_energie_matiere, milieu_deplace_globalement]
+    primary_misconception: mc.physics.pc_omp.onde-transporte-matiere
+    stem: >
+      Lors d'une « ola » dans un stade, chaque spectateur se lève puis se
+      rassoit à sa place, dans l'ordre, ce qui donne l'impression d'une
+      vague qui fait le tour des gradins. Quelle affirmation décrit
+      correctement ce qui se passe réellement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Aucun spectateur ne change de siège : c'est le mouvement « se lever puis se
+          rasseoir », transmis de proche en proche, qui donne l'illusion d'un
+          déplacement.
+        correct: true
+      - id: B
+        text: >-
+          Chaque spectateur, une fois debout, se déplace physiquement vers le siège
+          suivant, ce qui fait progressivement le tour complet du stade.
+          Après un tour, chaque spectateur se retrouverait donc à sa place de départ.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-transporte-matiere
+        feedback: >
+          Si chaque spectateur changeait vraiment de siège, il finirait le
+          tour du stade dans un autre fauteuil que le sien. Or chacun reste
+          à sa place : c'est le mouvement, pas la personne, qui est relayé
+          de spectateur en spectateur.
+      - id: C
+        text: >-
+          La ola n'est pas un véritable exemple d'onde, car se lever puis se rasseoir ne
+          demande aucune énergie particulière.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-sans-energie
+        feedback: >
+          Se lever demande bien de l'énergie musculaire, transmise (au sens
+          figuré) de spectateur en spectateur par l'enchaînement des
+          mouvements : c'est justement ce qui fait de la ola un bon exemple
+          de transport d'énergie sans transport de matière.
+      - id: D
+        text: >-
+          Une fois la ola passée, chaque spectateur reste debout, car un mouvement, une
+          fois transmis à quelqu'un, ne s'arrête plus jamais.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-transporte-matiere
+        feedback: >
+          Chaque spectateur se rassoit peu après s'être levé : il revient à
+          sa position de repos, exactement comme chaque point d'un milieu
+          matériel une fois la perturbation passée. Rien n'oblige un point
+          perturbé à rester déplacé indéfiniment.
+    correct_feedback: >
+      La ola illustre exactement le mécanisme de l'onde : chaque spectateur
+      reste à sa place et revient s'asseoir, mais le mouvement, lui, se
+      relaie de proche en proche tout autour du stade.
+    solution: |
+      Chaque spectateur fait la même chose, l'un après l'autre : il se lève
+      (il reçoit le signal de son voisin), puis il se rassoit (il revient à
+      sa position initiale), en ayant transmis le mouvement au spectateur
+      suivant. Personne ne fait le tour du stade ; seul le mouvement,
+      relayé de proche en proche, le fait.
+
+  - id: OMP-11
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [onde_transversale_longitudinale]
+    primary_misconception: mc.physics.pc_omp.confusion-transversale-longitudinale
+    stem: >
+      Un ressort horizontal est tendu entre deux mains. On comprime
+      brièvement une extrémité puis on la relâche : une zone de spires
+      resserrées se forme et voyage le long de l'axe du ressort. Quel est le
+      type de cette onde ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Longitudinale : les spires se resserrent puis s'écartent dans la
+          même direction que celle où la compression avance, le long de
+          l'axe du ressort.
+        correct: true
+      - id: B
+        text: >-
+          Transversale : les spires se déplacent nécessairement
+          perpendiculairement à l'axe du ressort.
+        correct: false
+        misconception: mc.physics.pc_omp.confusion-transversale-longitudinale
+        feedback: >
+          C'est l'inverse de ce qui se passe ici : les spires se déplacent
+          le long de l'axe même du ressort, dans la direction de
+          propagation, pas perpendiculairement à elle — c'est justement le
+          critère d'une onde longitudinale.
+      - id: C
+        text: >-
+          On ne peut pas la classer comme transversale ou longitudinale,
+          car cette onde se propage en réalité dans les trois dimensions de
+          l'espace, comme le son.
+        correct: false
+        misconception: mc.physics.pc_omp.confusion-transversale-longitudinale
+        feedback: >
+          Le nombre de dimensions de propagation (ici, une seule : le long
+          du ressort) et le type transversal/longitudinal sont deux
+          critères différents, qui répondent à deux questions différentes.
+          Le premier compte les directions où l'onde peut avancer ; le
+          second compare la direction du déplacement de la matière à celle
+          de la propagation.
+      - id: D
+        text: >-
+          Longitudinale seulement parce que le ressort est tenu
+          horizontalement ; si on le tenait verticalement, l'onde serait
+          transversale.
+        correct: false
+        misconception: mc.physics.pc_omp.confusion-transversale-longitudinale
+        feedback: >
+          Le type de l'onde ne dépend pas de l'orientation absolue du
+          ressort dans l'espace (horizontale ou verticale), mais de la
+          comparaison entre la direction du déplacement des spires et la
+          direction de propagation — ces deux directions restent
+          parallèles, que le ressort soit horizontal ou vertical.
+    correct_feedback: >
+      Les spires se déplacent le long de l'axe du ressort, exactement dans
+      la direction où la compression avance : c'est le critère même d'une
+      onde longitudinale.
+    solution: |
+      Direction du déplacement des spires : le long de l'axe du ressort.
+      Direction de propagation : le long de l'axe du ressort. Les deux
+      directions coïncident, donc l'onde est longitudinale — quelle que
+      soit l'orientation du ressort dans l'espace, et indépendamment du
+      nombre de dimensions dans lequel il se propage.
+
+  - id: OMP-12
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [onde_transversale_longitudinale]
+    primary_misconception: mc.physics.pc_omp.confusion-transversale-longitudinale
+    stem: >
+      On frappe l'extrémité d'une longue tige métallique horizontale par un
+      coup sec donné dans l'axe même de la tige. Une onde de compression se
+      propage le long de la tige. Quel est le type de cette onde ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Longitudinale : chaque tranche de métal est comprimée puis étirée
+          dans la même direction que celle où l'onde avance.
+        correct: true
+      - id: B
+        text: >-
+          Transversale, car un coup sec donné sur un objet crée toujours un
+          déplacement perpendiculaire à la direction du coup.
+        correct: false
+        misconception: mc.physics.pc_omp.confusion-transversale-longitudinale
+        feedback: >
+          Il n'y a pas de règle générale liant la brièveté d'un coup à la
+          direction du déplacement qu'il produit : ici, le coup est donné
+          DANS l'axe de la tige, et c'est dans cet axe que la matière se
+          déplace — donc parallèlement à la propagation, pas
+          perpendiculairement.
+      - id: C
+        text: >-
+          On ne peut pas savoir : le critère transversal/longitudinal ne
+          s'applique qu'aux ondes dans un fluide (eau, air), pas dans un
+          solide comme cette tige.
+        correct: false
+        misconception: mc.physics.pc_omp.confusion-transversale-longitudinale
+        feedback: >
+          Le critère (comparer la direction du déplacement de la matière à
+          la direction de propagation) s'applique à tout milieu matériel,
+          solide compris — c'est ce même critère qui classe l'onde sur une
+          corde tendue, elle aussi un solide déformable.
+      - id: D
+        text: >-
+          Transversale, car l'exemple de l'onde à la surface de l'eau, vu
+          en cours, montre que toute onde mécanique est transversale.
+        correct: false
+        misconception: mc.physics.pc_omp.confusion-transversale-longitudinale
+        feedback: >
+          Un seul exemple ne fait pas une règle générale : l'onde à la
+          surface de l'eau est transversale à cause de la façon dont l'eau
+          est rappelée vers l'équilibre, mais chaque situation s'analyse
+          avec le même critère, pas en généralisant un exemple déjà vu.
+    correct_feedback: >
+      Le déplacement de la matière (compression le long de l'axe) coïncide
+      avec la direction de propagation (le long de la tige) : c'est une
+      onde longitudinale, exactement comme dans un ressort.
+    solution: |
+      Direction du déplacement de la matière : le long de l'axe de la
+      tige. Direction de propagation : le long de l'axe de la tige. Les
+      deux directions coïncident, donc l'onde est longitudinale. Le
+      critère transversal/longitudinal s'applique à tout milieu matériel
+      élastique — corde, ressort, tige solide, air — pas seulement aux
+      fluides, et il s'évalue à chaque fois par la même comparaison de
+      directions, jamais par généralisation d'un exemple déjà rencontré.
+
+  - id: OMP-13
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [celerite_retard]
+    primary_misconception: mc.physics.pc_omp.retard-relation-fausse
+    stem: >
+      Une onde progresse le long d'une corde à la célérité
+      $v = 2{,}5\ \text{m/s}$. La source $S$ commence à vibrer à l'instant
+      $t = 0$. Un point $M$ de la corde est situé à $d = 75\ \text{cm}$ de
+      $S$. À quel instant $M$ commence-t-il à son tour à bouger ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$t = 0{,}3\\ \\text{s}$, par le retard $\\tau = d/v$ avec $d$ en mètres"
+        correct: true
+      - id: B
+        text: >-
+          $t = 30\ \text{s}$, en gardant $d = 75$ (sans convertir les
+          centimètres en mètres) dans $\tau = d/v$.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Il faut convertir $d = 75\ \text{cm}$ en mètres avant de diviser
+          par $v$ (exprimée en m/s) : $d = 0{,}75\ \text{m}$, d'où
+          $\tau = 0{,}75/2{,}5 = 0{,}3\ \text{s}$, pas $30\ \text{s}$.
+      - id: C
+        text: >-
+          $t \approx 3{,}33\ \text{s}$, obtenu avec
+          $\tau = v/d = 2{,}5/0{,}75$.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Le retard se calcule avec la distance DIVISÉE par la célérité,
+          $\tau = d/v$, pas l'inverse. Avec le bon rapport,
+          $\tau = 0{,}75/2{,}5 = 0{,}3\ \text{s}$.
+      - id: D
+        text: >-
+          $t = 0\ \text{s}$ : $M$ commence à bouger en même temps que $S$,
+          puisqu'ils appartiennent à la même corde.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Une célérité finie ($v = 2{,}5\ \text{m/s}$, pas infinie) signifie
+          justement que la perturbation met un temps non nul pour parcourir
+          la distance $d$ : appartenir à la même corde ne rend pas la
+          transmission instantanée.
+    correct_feedback: >
+      $\tau = d/v = 0{,}75/2{,}5 = 0{,}3\ \text{s}$ : $M$ commence à bouger
+      $0{,}3\ \text{s}$ après $S$, ni avant, ni en même temps.
+    solution: |
+      $$\tau = \frac{d}{v} = \frac{0{,}75}{2{,}5} = 0{,}3\ \text{s}$$
+      $M$ commence donc à reproduire le mouvement de $S$ à l'instant
+      $t = 0{,}3\ \text{s}$.
+
+  - id: OMP-14
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [front_onde_dimension]
+    primary_misconception: mc.physics.pc_omp.front-onde-dimension
+    stem: >
+      Une perturbation est créée en un point de la surface d'une grande
+      piscine, loin de tout bord. Quelle est la forme du front d'onde qui en
+      résulte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Un cercle qui s'agrandit : chaque point est relié à des voisins tout autour de
+          lui, et l'onde s'y propage en deux dimensions.
+        correct: true
+      - id: B
+        text: >-
+          Une droite qui s'éloigne dans une seule direction, exactement comme sur une
+          corde tendue que l'on secoue.
+        correct: false
+        misconception: mc.physics.pc_omp.front-onde-dimension
+        feedback: >
+          Sur une corde, chaque point n'a que deux voisins (gauche et
+          droite) : une seule dimension suffit. Sur une surface d'eau,
+          chaque point a des voisins tout autour de lui dans le plan : la
+          perturbation s'étend dans toutes ces directions à la fois, pas
+          selon une seule droite.
+      - id: C
+        text: >-
+          Une sphère qui s'agrandit, exactement comme le fait une onde sonore qui se
+          propage dans l'air.
+        correct: false
+        misconception: mc.physics.pc_omp.front-onde-dimension
+        feedback: >
+          Une sphère suppose des voisins dans les trois dimensions de
+          l'espace, comme dans l'air. La surface de l'eau est un plan (deux
+          dimensions) : les points ne sont reliés qu'à des voisins de ce
+          plan, pas au-dessus ni en dessous, donc le front d'onde reste un
+          cercle, pas une sphère.
+      - id: D
+        text: >-
+          Un carré qui s'agrandit, dont la forme est entièrement dictée par la forme
+          rectangulaire du bassin de la piscine.
+        correct: false
+        misconception: mc.physics.pc_omp.front-onde-dimension
+        feedback: >
+          Le front d'onde est fixé par le mécanisme de propagation
+          isotrope à partir de la source (le même relais dans toutes les
+          directions du plan), pas par la forme du récipient qui contient
+          l'eau — c'est un cercle qui s'agrandit, quelle que soit la forme
+          du bassin, tant que le front n'atteint pas encore les bords.
+    correct_feedback: >
+      Chaque point de la surface est relié à des voisins tout autour de lui
+      dans le plan : le front d'onde est un cercle qui s'agrandit, la
+      signature d'une onde à deux dimensions.
+    solution: |
+      La géométrie du milieu fixe le nombre de directions disponibles
+      autour de la source : sur une surface (deux dimensions), chaque
+      point est relié à des voisins tout autour de lui dans le plan, donc
+      la perturbation s'étend également dans toutes les directions du
+      plan. Le front d'onde — l'ensemble des points atteints au même
+      instant — dessine donc un cercle qui s'agrandit, indépendamment de la
+      forme du récipient qui contient l'eau.
+
+  - id: OMP-15
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [front_onde_dimension, onde_transversale_longitudinale]
+    primary_misconception: mc.physics.pc_omp.front-onde-dimension
+    stem: >
+      On considère trois situations : (1) une onde le long d'un long
+      ressort horizontal tenu à une extrémité ; (2) une onde sonore émise
+      par une cloche, en plein air ; (3) une vague créée par une pierre
+      jetée dans un grand lac. Quel est, dans l'ordre, le nombre de
+      dimensions de propagation de chacune de ces ondes ?
+    type: mcq
+    choices:
+      - id: A
+        text: "(1) une dimension, (2) trois dimensions, (3) deux dimensions."
+        correct: true
+      - id: B
+        text: "(1) deux dimensions, (2) trois dimensions, (3) deux dimensions."
+        correct: false
+        misconception: mc.physics.pc_omp.front-onde-dimension
+        feedback: >
+          Un ressort, même s'il a une épaisseur physique visible, ne relie
+          chaque spire qu'à ses deux voisines immédiates le long de son
+          axe : c'est ce nombre de voisins directs qui fixe le nombre de
+          dimensions de propagation, pas l'épaisseur ou l'aspect visible de
+          l'objet. La compression ne peut avancer que dans les deux sens le
+          long de l'axe : une seule dimension.
+      - id: C
+        text: "(1) une dimension, (2) une dimension, (3) deux dimensions."
+        correct: false
+        misconception: mc.physics.pc_omp.front-onde-dimension
+        feedback: >
+          Une cloche, comme toute petite source dans l'air, est reliée à
+          des voisins dans toutes les directions de l'espace autour
+          d'elle — le son ne part pas en ligne droite dans une seule
+          direction, il s'étend en sphère grandissante autour de la source :
+          trois dimensions, pas une.
+      - id: D
+        text: "(1) trois dimensions, (2) trois dimensions, (3) trois dimensions."
+        correct: false
+        misconception: mc.physics.pc_omp.front-onde-dimension
+        feedback: >
+          Le nombre de dimensions n'est pas une propriété universelle de
+          « toute onde » : c'est la géométrie du milieu (le nombre de
+          voisins directs de chaque point) qui le fixe, et elle diffère
+          d'un milieu à l'autre — une, deux ou trois, selon le cas.
+    correct_feedback: >
+      Le ressort ne relie chaque point qu'à deux voisins le long de son
+      axe (une dimension) ; l'air relie chaque point à des voisins dans
+      toutes les directions de l'espace (trois dimensions) ; la surface du
+      lac relie chaque point à des voisins dans le plan (deux dimensions).
+    solution: |
+      Le nombre de dimensions de propagation dépend uniquement de la
+      géométrie du milieu, c'est-à-dire du nombre de directions dans
+      lesquelles chaque point est relié à des voisins : (1) le long d'un
+      ressort, deux voisins seulement (gauche, droite) → une dimension ;
+      (2) dans l'air, autour d'une petite source, des voisins dans toutes
+      les directions de l'espace → trois dimensions, front sphérique ;
+      (3) sur la surface d'un lac, des voisins tout autour dans le plan →
+      deux dimensions, front circulaire.
+
+  - id: OMP-16
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [celerite_retard, amplitude_source]
+    primary_misconception: mc.physics.pc_omp.celerite-depend-source
+    stem: >
+      On mesure la célérité du son avec deux microphones distants de
+      $d = 1{,}36\ \text{m}$ : l'oscilloscope affiche un décalage
+      $\Delta t = 4{,}0\ \text{ms}$ entre les deux signaux captés lors d'un
+      premier clic. On répète ensuite l'expérience avec un clic beaucoup
+      plus fort (une source sonore plus intense), sans rien changer
+      d'autre. Que peut-on dire de la valeur de $v$ obtenue dans ce second
+      essai ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $v = d/\Delta t = 1{,}36 / (4{,}0\times10^{-3}) = 340\ \text{m/s}$
+          dans les deux essais : l'intensité du clic ne change rien à la
+          célérité du son, qui ne dépend que du milieu (l'air, ici).
+        correct: true
+      - id: B
+        text: >-
+          $v$ sera plus grande dans le second essai, car un clic plus fort
+          envoie plus d'énergie, et plus d'énergie signifie une onde plus
+          rapide.
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-depend-source
+        feedback: >
+          L'énergie transportée par l'onde et sa célérité sont deux choses
+          différentes : un clic plus fort transporte effectivement plus
+          d'énergie, mais la vitesse à laquelle cette énergie se propage
+          reste fixée par l'air seul, pas par la quantité d'énergie
+          envoyée.
+      - id: C
+        text: >-
+          $v$ sera plus petite dans le second essai, car un son plus fort
+          est plus « lourd » à transporter pour l'air, ce qui ralentit sa
+          progression.
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-depend-source
+        feedback: >
+          Rien dans le mécanisme de propagation de proche en proche ne
+          rend une perturbation plus ample plus « lourde » à relayer :
+          c'est la rigidité et l'inertie de l'air lui-même, pas l'intensité
+          du clic, qui fixent la vitesse de relais.
+      - id: D
+        text: >-
+          $v = \Delta t / d = (4{,}0\times10^{-3}) / 1{,}36 \approx
+          2{,}9\times10^{-3}\ \text{s/m}$, une grandeur qu'on retient comme
+          la célérité dans ce cas.
+          L'unité obtenue, en secondes par mètre, serait alors celle d'une vitesse.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Ce rapport a la dimension de l'inverse d'une vitesse (s/m), pas
+          d'une vitesse (m/s) : la célérité se calcule avec la distance
+          divisée par la durée, $v = d/\Delta t$, jamais l'inverse.
+    correct_feedback: >
+      La célérité du son ne dépend que de l'air traversé, jamais de
+      l'intensité de la source : $v = 340\ \text{m/s}$ dans les deux
+      essais, quelle que soit la force du clic.
+    solution: |
+      $$
+      v = \frac{d}{\Delta t} = \frac{1{,}36}{4{,}0\times10^{-3}} =
+      340\ \text{m/s}
+      $$
+      Cette valeur est indépendante de l'intensité du clic, car la
+      célérité est une propriété du milieu (l'air), pas de la source : le
+      second essai donnerait exactement le même résultat.
+
+  - id: OMP-17
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [celerite_retard, onde_transversale_longitudinale]
+    primary_misconception: mc.physics.pc_omp.retard-relation-fausse
+    stem: >
+      On observe une onde progressive le long d'un long ressort horizontal :
+      une compression créée à l'extrémité $S$ se propage à la célérité
+      $v = 1{,}5\ \text{m/s}$. Un repère $M$, situé à $d = 90\ \text{cm}$ de
+      $S$, montre les spires se resserrer puis s'écarter le long de l'axe
+      horizontal du ressort, avec un retard $\tau$ par rapport à $S$.
+      Quelles sont, à la fois, la valeur de $\tau$ et le type de cette
+      onde ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\tau = d/v = 0{,}9/1{,}5 = 0{,}6\ \text{s}$ ; l'onde est
+          longitudinale, car les spires se déplacent dans la même direction
+          que la propagation (l'axe horizontal du ressort).
+        correct: true
+      - id: B
+        text: >-
+          $\tau = d/v = 0{,}9/1{,}5 = 0{,}6\ \text{s}$ ; l'onde est
+          transversale, car un déplacement de spires est toujours
+          perpendiculaire à l'axe du ressort.
+          Un ressort ne pourrait donc jamais porter d'onde longitudinale.
+        correct: false
+        misconception: mc.physics.pc_omp.confusion-transversale-longitudinale
+        feedback: >
+          Le calcul de $\tau$ est correct, mais le type est faux : les
+          spires se déplacent ici LE LONG de l'axe du ressort (elles se
+          resserrent puis s'écartent dans cette direction), pas
+          perpendiculairement à lui — c'est le critère même d'une onde
+          longitudinale, pas transversale.
+      - id: C
+        text: >-
+          $\tau = v/d = 1{,}5/0{,}9 \approx 1{,}67\ \text{s}$ ; l'onde est
+          longitudinale.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Le type (longitudinale) est correct, mais le calcul de $\tau$
+          inverse le rapport : le retard se calcule avec la distance
+          divisée par la célérité, $\tau = d/v = 0{,}9/1{,}5 =
+          0{,}6\ \text{s}$, pas $v/d$.
+      - id: D
+        text: >-
+          $\tau = d \times v = 0{,}9 \times 1{,}5 = 1{,}35\ \text{s}$ ;
+          l'onde est longitudinale.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Le type (longitudinale) est correct, mais le retard se calcule en
+          DIVISANT la distance par la célérité, $\tau = d/v$, pas en les
+          multipliant : $\tau = 0{,}9/1{,}5 = 0{,}6\ \text{s}$, pas
+          $1{,}35\ \text{s}$.
+    correct_feedback: >
+      $\tau = d/v = 0{,}6\ \text{s}$, et le déplacement des spires
+      (parallèle à la propagation) signe une onde longitudinale : les deux
+      réponses sont indépendantes, il faut les obtenir toutes les deux
+      correctement.
+    solution: |
+      **Retard :**
+      $$\tau = \frac{d}{v} = \frac{0{,}9}{1{,}5} = 0{,}6\ \text{s}$$
+
+      **Type :** les spires se déplacent le long de l'axe horizontal du
+      ressort, exactement la direction de propagation de la compression :
+      les deux directions coïncident, donc l'onde est longitudinale.
+
+  - id: OMP-18
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [amplitude_source, celerite_retard]
+    primary_misconception: mc.physics.pc_omp.celerite-depend-source
+    stem: >
+      Deux perturbations sont créées successivement sur la même corde
+      tendue, dans les mêmes conditions de tension : la première par un
+      petit coup sec (faible amplitude), la seconde par un coup beaucoup
+      plus fort (grande amplitude). Les deux perturbations doivent
+      parcourir la même distance $d$ jusqu'à un même point $M$. Comparé au
+      premier coup, le second met-il plus de temps, moins de temps, ou
+      exactement le même temps pour atteindre $M$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Exactement le même temps : la célérité $v$ ne dépend que de la corde, de sa
+          tension et de sa masse linéique, jamais de l'amplitude de la perturbation
+          créée.
+        correct: true
+      - id: B
+        text: >-
+          Moins de temps, car une perturbation de plus grande amplitude transporte
+          davantage d'énergie, et l'énergie voyage plus vite le long de la corde.
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-depend-source
+        feedback: >
+          Une perturbation plus ample transporte effectivement plus
+          d'énergie, mais la vitesse à laquelle cette énergie se propage
+          (la célérité) ne dépend que de la corde, jamais de la quantité
+          d'énergie transportée : $v$, et donc $\tau = d/v$, restent les
+          mêmes.
+      - id: C
+        text: >-
+          Plus de temps, car une perturbation plus ample est plus « lourde » à
+          transmettre d'un point à l'autre, ce qui ralentit d'autant sa progression.
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-depend-source
+        feedback: >
+          Rien dans le mécanisme de propagation de proche en proche ne rend
+          une perturbation plus ample plus « lourde » à relayer : c'est la
+          tension et la masse linéique de la corde, pas l'amplitude du
+          coup, qui fixent la vitesse de relais.
+      - id: D
+        text: >-
+          On ne peut pas comparer les deux cas sans connaître la fréquence à laquelle
+          chacun des deux coups a été donné.
+        correct: false
+        misconception: mc.physics.pc_omp.periodicite-hors-cadre
+        feedback: >
+          Un coup sec unique n'est pas un phénomène périodique : il n'a pas
+          de fréquence à proprement parler (cette notion concerne les ondes
+          périodiques, pas une perturbation isolée). La comparaison ne
+          nécessite que la célérité $v$, fixée par la corde, et la distance
+          $d$, la même dans les deux cas.
+    correct_feedback: >
+      La célérité est une propriété du milieu, jamais de la perturbation
+      créée à la source : les deux coups, quelle que soit leur amplitude,
+      mettent exactement le même temps $\tau = d/v$ pour atteindre $M$.
+    solution: |
+      $\tau = d/v$ : $d$ est la même distance dans les deux cas, et $v$ est
+      fixée uniquement par la corde (tension, masse linéique), pas par
+      l'amplitude du coup qui a créé la perturbation. Les deux
+      perturbations, malgré leur amplitude différente, mettent donc
+      exactement le même temps à atteindre $M$.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# COVERAGE SUMMARY (backfilled in the summit-conversion campaign)
+#
+# This end bank (OMP-1…OMP-18) was authored BEFORE a structured misconception
+# inventory existed (`misconceptions: []`). This pass adds the inventory, tags
+# each item with an item-level `primary_misconception`, and gives EVERY
+# distractor a per-distractor `misconception:` field (additive only — no stem,
+# feedback, correct_feedback or solution was deleted or weakened). Counts below
+# are ITEM-LEVEL (each item counted once, by its `primary_misconception`).
+#
+# HONEST DISCLOSURE (recipe §6): the whole-inventory ≥3 floor is NOT met, and
+# it is NOT padded to fake it. 4 of the 10 models reach ≥3 end-bank items; 6 are
+# under-covered and flagged for a follow-up item pass. Two of those six
+# (celerite-est-vitesse-point, periodicite-hors-cadre) are currently surfaced
+# only by in-lesson checkpoints (cp-r3-celerite-vs-point, cp-r3-periodicite) and
+# by a single distractor (periodicite-hors-cadre on OMP-18 D); closing them to
+# the floor would require NEW end-bank stems, deliberately deferred rather than
+# padded here.
+# ──────────────────────────────────────────────────────────────────────────────
+  # Ajoutés le 2026-09-05 : trois familles sous le plancher de 3 items du banc —
+  # `celerite-est-vitesse-point` (AUCUN item : elle n'était sondée que par un
+  # checkpoint, ce qui ne compte pas), `son-nature` (1) et
+  # `periodicite-hors-cadre` (1). Trois items, trois situations : une secousse
+  # unique chronométrée, le son dans une salle, un raisonnement à critiquer.
+  - id: OMP-19
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [celerite, retard, perturbation_unique]
+    stem: >
+      On envoie UNE seule secousse le long d'une corde tendue de
+      $8{,}0\ \text{m}$. Elle met $0{,}40\ \text{s}$ pour parcourir la corde
+      d'un bout à l'autre. Qu'en déduire ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La célérité vaut $c = 8{,}0/0{,}40 =
+          20\ \text{m}\cdot\text{s}^{-1}$ : c'est la perturbation qui avance
+          à cette vitesse, pas la matière
+        correct: true
+      - id: B
+        text: >-
+          Chaque point de la corde se déplace à
+          $20\ \text{m}\cdot\text{s}^{-1}$ le long de la corde, du départ vers
+          l'arrivée
+          si bien qu'un point marqué à la craie finirait par atteindre l'autre extrémité
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-est-vitesse-point
+        feedback: >
+          Aucun point de la corde ne voyage : chacun monte, redescend, et
+          retrouve sa place. C'est la PERTURBATION qui se déplace, pas la
+          matière — le bouchon sur l'eau ne rejoint jamais le bord. La célérité
+          mesure la progression du signal ; la vitesse d'un point, elle, est
+          verticale et varie sans cesse au cours de son va-et-vient.
+      - id: C
+        text: >-
+          La longueur d'onde vaut $\lambda = c\,T$ avec $T = 0{,}40\ \text{s}$,
+          soit $\lambda = 8{,}0\ \text{m}$
+        correct: false
+        misconception: mc.physics.pc_omp.periodicite-hors-cadre
+        feedback: >
+          Une perturbation UNIQUE n'a ni période ni longueur d'onde : ces deux
+          grandeurs décrivent la répétition, et il n'y a rien qui se répète ici.
+          $0{,}40\ \text{s}$ est un RETARD — la durée que met le signal pour
+          aller d'un bout à l'autre — pas une période. La relation
+          $\lambda = c\,T$ appartient aux ondes périodiques.
+      - id: D
+        text: >-
+          La célérité dépend de la force avec laquelle on a produit la
+          secousse : une secousse plus vive irait plus vite
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-depend-source
+        feedback: >
+          La célérité est une propriété du MILIEU — ici la tension de la corde
+          et sa masse par unité de longueur — pas de la source. Une secousse
+          plus vive donne une perturbation de plus grande amplitude, qui
+          voyage exactement à la même vitesse.
+    correct_feedback: >
+      $c = d/\Delta t = 8{,}0/0{,}40 = 20\ \text{m}\cdot\text{s}^{-1}$. C'est la
+      vitesse de propagation de la perturbation le long de la corde ; les points
+      de la corde, eux, ne font que monter et redescendre sur place.
+    solution: |
+      $$
+      c = \frac{d}{\Delta t} = \frac{8{,}0}{0{,}40}
+      = 20\ \text{m}\cdot\text{s}^{-1}
+      $$
+      **Ce que ce nombre est.** La vitesse à laquelle la déformation progresse
+      dans le milieu. Elle ne dépend que du milieu.
+
+      **Ce qu'il n'est pas.** La vitesse d'un point de la corde : celle-là est
+      verticale, varie à chaque instant, s'annule aux extrémités du va-et-vient,
+      et son déplacement net est nul — le point revient toujours à sa place.
+
+      **Et il n'y a ici ni période ni longueur d'onde**, puisque rien ne se
+      répète : $0{,}40\ \text{s}$ est le retard de propagation d'un bout à
+      l'autre.
+
+  - id: OMP-20
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [son, onde_longitudinale, trois_dimensions]
+    stem: >
+      Un haut-parleur émet un son dans une salle. Comment cette onde se
+      propage-t-elle ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          C'est une onde longitudinale — l'air est comprimé et dilaté DANS la
+          direction de propagation — et elle se propage en trois dimensions
+        correct: true
+      - id: B
+        text: >-
+          C'est une onde transversale comme sur une corde : les molécules d'air
+          vibrent perpendiculairement à la direction de propagation
+        correct: false
+        misconception: mc.physics.pc_omp.son-nature
+        feedback: >
+          Le son est LONGITUDINAL : les molécules d'air oscillent le long de la
+          direction de propagation, créant des zones de compression et de
+          dilatation. Une onde transversale demanderait à l'air de résister au
+          cisaillement, ce qu'un fluide ne fait pas — c'est justement pourquoi
+          le son ne peut pas être transversal dans l'air.
+      - id: C
+        text: >-
+          Elle se propage selon une seule direction, celle vers laquelle le
+          haut-parleur est tourné
+        correct: false
+        misconception: mc.physics.pc_omp.son-nature
+        feedback: >
+          Le son se propage à TROIS dimensions : ses fronts d'onde sont des
+          sphères qui s'éloignent de la source. L'expérience la plus ordinaire
+          le montre — on entend un haut-parleur en se plaçant derrière lui, ou
+          dans la pièce voisine. Sa direction n'affecte que l'intensité reçue,
+          pas l'existence de la propagation.
+      - id: D
+        text: >-
+          Les molécules d'air voyagent du haut-parleur jusqu'à l'oreille, à la
+          célérité du son, soit environ $340\ \text{m}\cdot\text{s}^{-1}$
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-est-vitesse-point
+        feedback: >
+          Une onde transporte de l'énergie, pas de la matière. Chaque molécule
+          d'air oscille autour d'une position moyenne qu'elle ne quitte pas ;
+          c'est la compression qui voyage de proche en proche. Si l'air lui-même
+          se déplaçait à $340\ \text{m}\cdot\text{s}^{-1}$, écouter de la
+          musique serait une expérience venteuse.
+    correct_feedback: >
+      Le son est une onde mécanique LONGITUDINALE à trois dimensions : l'air se
+      comprime et se dilate dans la direction même de propagation, et les fronts
+      d'onde sont des sphères. Aucune molécule ne voyage — seule la
+      perturbation se propage.
+    solution: |
+      **Longitudinale.** Le haut-parleur pousse et tire l'air devant lui,
+      créant des zones de surpression et de dépression qui se succèdent le long
+      de la direction de propagation. Les molécules oscillent donc PARALLÈLEMENT
+      à cette direction — c'est la définition d'une onde longitudinale.
+      Un fluide ne transmet pas le cisaillement : une onde transversale y est
+      impossible.
+
+      **À trois dimensions.** Les fronts d'onde sont des sphères centrées sur la
+      source. C'est pourquoi on entend un son en se plaçant n'importe où autour
+      d'un haut-parleur.
+
+      **Sans transport de matière.** Chaque molécule oscille autour d'une
+      position fixe ; l'énergie, elle, se propage.
+
+  - id: OMP-21
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [perturbation_unique, retard, critique_de_raisonnement]
+    stem: >
+      Un élève observe une vague UNIQUE traverser une cuve et écrit : « sa
+      longueur d'onde vaut $\lambda = c\,T$ ; comme la vague met $2\ \text{s}$
+      à traverser la cuve, $T = 2\ \text{s}$ ». Que penser de ce raisonnement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Deux erreurs : une perturbation unique n'a ni période ni longueur
+          d'onde, et la durée de traversée est un retard
+        correct: true
+      - id: B
+        text: >-
+          Une seule erreur : la relation est bonne, mais $T$ désigne la durée
+          pendant laquelle un point du milieu reste en mouvement, pas la durée
+          de traversée
+        correct: false
+        misconception: mc.physics.pc_omp.periodicite-hors-cadre
+        feedback: >
+          Le problème n'est pas la valeur de $T$, c'est son existence même. Une
+          période suppose quelque chose qui se répète, donc une source
+          périodique. Ici la source a produit UNE perturbation et s'est arrêtée :
+          il n'y a ni période, ni fréquence, ni longueur d'onde à calculer.
+      - id: C
+        text: >-
+          Le raisonnement tient si l'on remplace $c$ par la vitesse du point le
+          plus haut de la vague, qui est la vraie vitesse de l'onde
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-est-vitesse-point
+        feedback: >
+          La célérité n'est pas la vitesse d'un point du milieu : les deux sont
+          des grandeurs différentes, l'une horizontale et constante, l'autre
+          verticale et variable. Et remplacer $c$ ne réglerait rien, puisque le
+          $T$ de la relation n'existe pas dans cette situation.
+      - id: D
+        text: >-
+          Le raisonnement vaudrait pour une vague, mais pas pour un son, qui n'a
+          ni longueur d'onde ni période parce qu'il est longitudinal
+        correct: false
+        misconception: mc.physics.pc_omp.son-nature
+        feedback: >
+          Être longitudinal n'empêche nullement d'être périodique : un son pur
+          a une fréquence, une période et une longueur d'onde parfaitement
+          définies — c'est même ce qui fixe sa hauteur. Longitudinal et
+          périodique décrivent deux choses indépendantes : la DIRECTION de la
+          vibration, et sa RÉPÉTITION.
+    correct_feedback: >
+      Deux erreurs superposées. D'abord, une perturbation unique n'a ni période
+      ni longueur d'onde : ces grandeurs supposent une source périodique.
+      Ensuite, $2\ \text{s}$ est le retard de propagation d'un bord à l'autre —
+      la durée que met le signal pour parcourir la cuve — jamais une période.
+    solution: |
+      **Première erreur : le cadre.** $\lambda = c\,T$ appartient aux ondes
+      progressives PÉRIODIQUES. Elle décrit la double périodicité : la source se
+      répète toutes les $T$ secondes, le milieu recopie ce motif tous les
+      $\lambda$ mètres. Une perturbation isolée ne se répète pas ; il n'y a rien
+      dont mesurer la période.
+
+      **Seconde erreur : la grandeur lue.** Les $2\ \text{s}$ mesurent le RETARD
+      $\tau$ entre l'entrée et la sortie de la cuve :
+      $$\tau = \frac{d}{c}$$
+      C'est cette relation-là qui s'applique ici, et elle donne la célérité si
+      l'on connaît la largeur de la cuve.
+
+      **Ce qu'on peut légitimement calculer** sur une perturbation unique : sa
+      célérité, son retard entre deux points, son amplitude. Pas sa période.
+
+  # Ajoutés le 2026-09-24 (spec-scene-corde.md §8.3, §13 q.3 et q.7) : le
+  # onzième modèle `photo-film-confondus` — l'élève lit ou dessine un graphe
+  # sans identifier son axe des abscisses — et un item de plus sur
+  # `celerite-est-vitesse-point`, dont la famille du banc ne tenait qu'à une
+  # étiquette (OMP-20 D) que son propre feedback contredit (REVIEW-2026-09-19).
+  - id: OMP-22
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [photo, film, aspect_corde]
+    primary_misconception: mc.physics.pc_omp.photo-film-confondus
+    stem: >
+      La source $S$, à l'extrémité d'une corde tendue, monte de $0$ à
+      $2{,}0\ \text{cm}$ en $0{,}10\ \text{s}$, puis reste immobile en
+      position haute. La célérité des perturbations sur cette corde vaut
+      $5{,}0\ \text{m/s}$. On photographie la corde entière à l'instant
+      $t_1 = 0{,}30\ \text{s}$. Quel est l'aspect de la corde sur cette
+      photo ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La corde n'est déformée que sur les $6\ \text{cm}$ qui suivent
+          $S$, et reste au repos au-delà.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Vérifie l'opération sur les unités, le contrôle le moins cher de
+          la physique : une durée divisée par une célérité donne
+          $\text{s} \div (\text{m}/\text{s})$, ce n'est pas une longueur.
+          Pour savoir jusqu'où la perturbation est allée en
+          $0{,}30\ \text{s}$, il faut MULTIPLIER :
+          $v\,t_1 = 5{,}0 \times 0{,}30 = 1{,}50\ \text{m}$ — c'est la
+          position du front, pas $6\ \text{cm}$.
+      - id: B
+        text: >-
+          Toute la corde est déformée, l'élongation décroissant
+          progressivement à mesure qu'on s'éloigne de $S$, jusqu'à devenir
+          nulle loin en avant.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Une élongation qui décroît progressivement jusqu'à l'infini
+          suppose une célérité infinie, donc aucun front. Ici
+          $v = 5{,}0\ \text{m/s}$ est finie : il existe un point le plus
+          avancé, à $v\,t_1 = 1{,}50\ \text{m}$, au-delà duquel la corde
+          n'a strictement rien reçu. Ce n'est pas une décroissance
+          continue : c'est un plateau, une pente, puis le repos strict.
+      - id: C
+        text: >-
+          La corde est à $2{,}0\ \text{cm}$ de $S$ jusqu'à
+          $1{,}00\ \text{m}$, descend en pente jusqu'à $0$ à
+          $1{,}50\ \text{m}$, et reste au repos au-delà.
+        correct: true
+      - id: D
+        text: >-
+          La corde est au repos jusqu'à $1{,}00\ \text{m}$, puis monte en
+          pente jusqu'à $2{,}0\ \text{cm}$ à $1{,}50\ \text{m}$, et reste à
+          $2{,}0\ \text{cm}$ au-delà.
+        correct: false
+        misconception: mc.physics.pc_omp.photo-film-confondus
+        feedback: >
+          C'est le graphe du geste recopié tel quel le long de la corde —
+          l'erreur la plus fréquente de cette question de bac. Le point le
+          plus avancé (à $1{,}50\ \text{m}$) vient juste d'être atteint : il
+          n'a eu le temps de rejouer que le tout début du geste, c'est-à-dire
+          zéro, pas $2{,}0\ \text{cm}$. Et rien ne peut bouger au-delà du
+          front. En parcourant la corde de $S$ vers l'avant, on remonte le
+          temps du geste : la photo est le geste retourné.
+    correct_feedback: >
+      Trois gestes, dans l'ordre. Où est le front ?
+      $v\,t_1 = 5{,}0 \times 0{,}30 = 1{,}50\ \text{m}$. De quel côté la
+      pente ? Du côté du front, puisqu'il rejoue le DÉBUT du geste. Quelle
+      largeur ? La montée a duré $0{,}10\ \text{s}$, soit
+      $5{,}0 \times 0{,}10 = 0{,}50\ \text{m}$ de corde : la pente va de
+      $1{,}00$ à $1{,}50\ \text{m}$.
+    solution: |
+      **Le front.** La perturbation avance à $v = 5{,}0\ \text{m/s}$ ; à
+      l'instant $t_1 = 0{,}30\ \text{s}$, elle a parcouru
+      $v\,t_1 = 5{,}0 \times 0{,}30 = 1{,}50\ \text{m}$. Au-delà, la corde
+      n'a encore rien reçu : elle est au repos.
+
+      **Le sens de la pente.** Le point le plus avancé (à $1{,}50\ \text{m}$)
+      vient juste d'être atteint : il ne rejoue que le tout début du geste
+      de $S$, c'est-à-dire une élongation nulle. Le point juste après $S$,
+      lui, a été atteint depuis $0{,}30\ \text{s}$ : il a eu le temps de
+      rejouer toute la montée, il est donc à $2{,}0\ \text{cm}$. En
+      s'éloignant de $S$, on remonte donc le temps du geste : la pente
+      descend vers l'avant.
+
+      **La largeur de la pente.** La montée de $S$ a duré $0{,}10\ \text{s}$,
+      soit $v \times 0{,}10 = 0{,}50\ \text{m}$ de corde. La pente occupe
+      donc les $0{,}50\ \text{m}$ situés entre $1{,}00\ \text{m}$ et
+      $1{,}50\ \text{m}$ ; avant $1{,}00\ \text{m}$, tous les points ont fini
+      de monter, la corde y est plate à $2{,}0\ \text{cm}$.
+
+  - id: OMP-23
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [photo, lecture_graphique, distance_vs_duree]
+    primary_misconception: mc.physics.pc_omp.photo-film-confondus
+    stem: >
+      Sur une corde de célérité $v = 5{,}0\ \text{m/s}$, un élève dispose
+      d'un graphe où, en abscisse, figure la distance $x$ à la source, en
+      mètres ; la corde y est déformée entre $x = 0{,}60\ \text{m}$ et
+      $x = 1{,}10\ \text{m}$, et au repos partout ailleurs. Il en conclut :
+      « la perturbation a duré $0{,}50\ \text{s}$ ». Que penser de cette
+      conclusion ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Il a raison : sur un graphe de ce type, la largeur d'une
+          déformation EST, directement, la durée du geste qui l'a créée —
+          ici $0{,}50\ \text{s}$.
+        correct: false
+        misconception: mc.physics.pc_omp.photo-film-confondus
+        feedback: >
+          Sur ce graphe, l'abscisse est une distance $x$, pas un temps $t$
+          — c'est l'énoncé qui le dit. Une largeur en mètres n'est jamais
+          directement une durée en secondes, même quand les deux nombres se
+          ressemblent : $0{,}50\ \text{m}$ n'est pas $0{,}50\ \text{s}$.
+          Pour passer de l'un à l'autre, il faut diviser par la célérité,
+          jamais lire l'un pour l'autre.
+      - id: B
+        text: >-
+          Il a tort : une largeur en mètres n'est pas une durée.
+          Divisée par la célérité, elle donne
+          $0{,}50/5{,}0 = 0{,}10\ \text{s}$.
+        correct: true
+      - id: C
+        text: >-
+          Il a tort, mais l'erreur est dans le sens du calcul : il fallait
+          MULTIPLIER par la célérité,
+          $0{,}50 \times 5{,}0 = 2{,}5\ \text{s}$, pas diviser.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Diviser ou multiplier n'est pas affaire d'intuition, c'est
+          affaire d'unités. $0{,}50\ \text{m} \times 5{,}0\ \text{m/s} =
+          2{,}5\ \text{m}^2/\text{s}$ : ce n'est pas une durée. Pour
+          convertir une distance en durée, on DIVISE par la célérité —
+          l'inverse du calcul qui donnerait une distance à partir d'une
+          durée : $0{,}50/5{,}0 = 0{,}10\ \text{s}$.
+      - id: D
+        text: >-
+          Il a tort : pour passer d'une largeur à une durée, il faut la
+          période de la source — et l'énoncé ne la donne pas.
+        correct: false
+        misconception: mc.physics.pc_omp.periodicite-hors-cadre
+        feedback: >
+          Une déformation unique, isolée entre deux zones au repos, n'a pas
+          de fréquence à chercher : la fréquence décrit une répétition, et
+          rien ici ne se répète. La durée du geste se déduit de la largeur
+          de la déformation et de la célérité, $x/v$ — aucune donnée de
+          plus n'est nécessaire.
+    correct_feedback: >
+      L'élève a fait l'erreur la plus fréquente de cette question de bac :
+      confondre les deux axes. Sur ce graphe, l'abscisse est une distance
+      ($x$, en mètres) : la largeur de la déformation,
+      $1{,}10 - 0{,}60 = 0{,}50\ \text{m}$, est une longueur de corde, pas
+      une durée. Pour obtenir la durée du geste, on divise par la
+      célérité : $0{,}50/5{,}0 = 0{,}10\ \text{s}$.
+    solution: |
+      Le graphe donné a pour abscisse la distance $x$ à la source (c'est
+      écrit dans l'énoncé), pas le temps. La déformation occupe
+      $1{,}10 - 0{,}60 = 0{,}50\ \text{m}$ de corde.
+
+      Cette largeur est une DISTANCE. Pour la convertir en durée, on divise
+      par la célérité — jamais l'inverse :
+      $$\frac{0{,}50}{5{,}0} = 0{,}10\ \text{s}$$
+
+      La perturbation a donc duré $0{,}10\ \text{s}$, pas $0{,}50\ \text{s}$ :
+      l'élève a lu un nombre en mètres comme s'il était en secondes.
+
+  - id: OMP-24
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [photo, film, miroir]
+    primary_misconception: mc.physics.pc_omp.photo-film-confondus
+    stem: >
+      Le film du point $M$ d'une corde montre une montée rapide
+      ($0{,}05\ \text{s}$) suivie d'une descente lente ($0{,}15\ \text{s}$).
+      On photographie ensuite la corde à un instant où la perturbation la
+      parcourt en entier. De quel côté se trouve le flanc raide de la bosse
+      sur cette photo ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Du côté de $S$ : c'est là que la montée rapide a été produite,
+          donc c'est là qu'elle doit apparaître sur la photo.
+        correct: false
+        misconception: mc.physics.pc_omp.photo-film-confondus
+        feedback: >
+          C'est l'inverse. Le point juste à côté de $S$ a été atteint il y
+          a longtemps : il a eu le temps de rejouer TOUTE la bosse, montée
+          et descente confondues — il est donc déjà revenu à zéro, pas en
+          train de raidir. C'est le point le plus loin, celui que la
+          perturbation vient juste d'atteindre, qui rejoue le tout début du
+          geste : la montée rapide. Le flanc raide est devant, pas derrière.
+      - id: B
+        text: >-
+          La photo montre une bosse symétrique : l'asymétrie du geste ne
+          se voit que sur le film, jamais sur la photo.
+        correct: false
+        misconception: mc.physics.pc_omp.photo-film-confondus
+        feedback: >
+          La photo garde la forme du geste — RETOURNÉE, pas symétrisée.
+          Rien, dans le mécanisme de propagation de proche en proche, ne
+          vient arrondir ou égaliser les deux flancs : la montée rapide
+          ($0{,}05\ \text{s}$) reste courte, la descente lente
+          ($0{,}15\ \text{s}$) reste longue, seulement échangées de côté.
+          La bosse sur la photo est donc, elle aussi, asymétrique — flanc
+          raide devant, traîne douce derrière.
+      - id: C
+        text: >-
+          Le flanc raide s'adoucit à mesure qu'il avance, parce que
+          l'avant d'une bosse se propage plus vite que son arrière.
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-depend-source
+        feedback: >
+          Sur cette corde, tous les points de la perturbation avancent à
+          la même célérité — elle ne dépend que du milieu, jamais de la
+          partie de la bosse considérée. La bosse se translate sans se
+          déformer : ni l'avant ni l'arrière ne va plus vite que l'autre.
+          Ce qui change de côté, c'est le sens de lecture du geste, pas sa
+          vitesse de propagation.
+      - id: D
+        text: >-
+          Du côté du front, loin de $S$ : l'avant de la bosse rejoue
+          toujours ce que $S$ a fait en premier, la montée rapide.
+        correct: true
+    correct_feedback: >
+      Même règle qu'une photo isolée : le point le plus avancé vient
+      d'être atteint, il ne rejoue que le DÉBUT du geste — ici la montée
+      rapide, $0{,}05\ \text{s}$. Le flanc raide (produit en premier) se
+      retrouve donc devant, côté front ; la traîne douce (la descente
+      lente, $0{,}15\ \text{s}$, produite en dernier) reste derrière, côté
+      $S$. La photo est le film retourné.
+    solution: |
+      Le geste de $S$, dans l'ordre où il se produit : montée rapide
+      ($0{,}05\ \text{s}$), puis descente lente ($0{,}15\ \text{s}$).
+
+      Sur la photo, on remonte le temps du geste en s'éloignant de $S$ :
+      le point le plus avancé (le front) vient juste d'être atteint, il ne
+      rejoue que le tout début du geste — la montée rapide. Le point juste
+      après $S$, lui, a été atteint depuis longtemps : il rejoue la fin du
+      geste — la descente lente.
+
+      La photo montre donc un flanc raide du côté du front (la montée
+      rapide, retournée en pente raide côté avant) et une longue traîne
+      douce du côté de $S$ (la descente lente, retournée en pente douce
+      côté arrière) — l'exact inverse du film.
+
+  - id: OMP-25
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [celerite, retard, vitesse_point]
+    primary_misconception: mc.physics.pc_omp.celerite-est-vitesse-point
+    stem: >
+      Sur la corde de l'exemple travaillé du cours, la source $S$ monte de
+      $0$ à $3{,}0\ \text{cm}$ en $0{,}10\ \text{s}$, puis reste immobile
+      en position haute. Un point $M$, à $d = 1{,}2\ \text{m}$ de $S$,
+      commence à bouger avec un retard $\tau = 0{,}30\ \text{s}$, et met
+      lui aussi $0{,}10\ \text{s}$ pour monter de $0$ à $3{,}0\ \text{cm}$.
+      Que valent, respectivement, la célérité de la perturbation le long
+      de la corde et la vitesse moyenne à laquelle $M$ monte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $v = d/\tau = 1{,}2/0{,}30 = 4{,}0\ \text{m/s}$ pour la
+          perturbation ; $0{,}030/0{,}10 = 0{,}30\ \text{m/s}$ pour $M$ —
+          deux vitesses distinctes, la seconde environ treize fois plus
+          petite que la première.
+        correct: true
+      - id: B
+        text: >-
+          $4{,}0\ \text{m/s}$ pour les deux : c'est la vitesse à laquelle
+          $M$ lui-même avance le long de la corde, en même temps qu'il
+          monte.
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-est-vitesse-point
+        feedback: >
+          Deux mouvements bien différents se superposent ici, et il faut
+          les compter séparément. $M$ OSCILLE : il monte de
+          $3{,}0\ \text{cm}$ en $0{,}10\ \text{s}$, verticalement, puis
+          s'arrête — sa vitesse moyenne de montée vaut
+          $0{,}030/0{,}10 = 0{,}30\ \text{m/s}$. La perturbation, elle,
+          AVANCE le long de la corde, horizontalement, à
+          $4{,}0\ \text{m/s}$. $M$ ne se déplace jamais le long de la
+          corde : il reste à $d = 1{,}2\ \text{m}$ de $S$, du début à la
+          fin.
+      - id: C
+        text: >-
+          $v = \tau/d = 0{,}30/1{,}2 = 0{,}25\ \text{m/s}$ pour la
+          perturbation ; $0{,}30\ \text{m/s}$ pour la montée de $M$.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Le retard se calcule avec la distance DIVISÉE par la célérité,
+          $\tau = d/v$, donc $v = d/\tau$ — pas l'inverse. Avec le bon
+          rapport : $v = 1{,}2/0{,}30 = 4{,}0\ \text{m/s}$, pas
+          $0{,}25\ \text{m/s}$.
+      - id: D
+        text: >-
+          $M$ n'a pas de vitesse propre à part : c'est la matière de la
+          corde elle-même qui est transportée jusqu'à lui à
+          $4{,}0\ \text{m/s}$, et cette translation est ce qu'on appelle
+          sa « montée ».
+        correct: false
+        misconception: mc.physics.pc_omp.onde-transporte-matiere
+        feedback: >
+          Aucun point de la corde ne voyage le long d'elle : chaque point,
+          une fois atteint, oscille verticalement autour de sa position de
+          repos, puis y reste (ici, il monte et s'arrête en haut). C'est
+          la PERTURBATION — pas la matière de la corde — qui avance à
+          $4{,}0\ \text{m/s}$ ; la « montée » de $M$ est un mouvement
+          vertical sur place, mesuré séparément : $0{,}30\ \text{m/s}$.
+    correct_feedback: >
+      Deux vitesses, deux axes, à ne jamais mélanger. La CÉLÉRITÉ mesure
+      l'avancée de la perturbation le long de la corde :
+      $v = d/\tau = 1{,}2/0{,}30 = 4{,}0\ \text{m/s}$. La vitesse de $M$
+      mesure sa MONTÉE, verticale, sur place :
+      $0{,}030/0{,}10 = 0{,}30\ \text{m/s}$, treize fois moins. $M$ ne
+      quitte jamais l'abscisse $d = 1{,}2\ \text{m}$.
+    solution: |
+      **La célérité de la perturbation** se calcule avec le retard et la
+      distance parcourue le long de la corde :
+      $$v = \frac{d}{\tau} = \frac{1{,}2}{0{,}30} = 4{,}0\ \text{m/s}$$
+
+      **La vitesse moyenne de montée de $M$** se calcule avec la hauteur
+      parcourue et la durée de cette montée — un mouvement vertical, sur
+      place :
+      $$\frac{0{,}030}{0{,}10} = 0{,}30\ \text{m/s}$$
+
+      Deux vitesses, deux directions, deux définitions : l'une décrit à
+      quelle vitesse la perturbation SE PROPAGE le long de la corde,
+      l'autre à quelle vitesse un point du milieu OSCILLE verticalement
+      sur place. $M$, lui, reste en permanence à $d = 1{,}2\ \text{m}$ de
+      $S$ : seule son élongation change, jamais son abscisse.
+
+  # Ajouté le 2026-09-24 (revue à deux critiques) : le savoir-faire « proposer
+  # un montage de mesure du retard temporel ou de la célérité » était à 0 %
+  # dans le banc (REVIEW-2026-09-19, §« Pour le propriétaire »). Item de
+  # protocole, pas de calcul : choisir le bon geste de mesure, pas la bonne
+  # formule.
+  - id: OMP-26
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [protocole_mesure, application_experimentale, celerite_retard]
+    primary_misconception: mc.physics.pc_omp.celerite-est-vitesse-point
+    stem: >
+      On veut mesurer la célérité d'un ébranlement unique, produit une
+      seule fois à une extrémité $S$ d'une corde tendue. On dispose, au
+      choix, d'une caméra qui prend un nombre connu d'images par seconde,
+      ou de deux détecteurs de passage placés le long de la corde et
+      reliés à un chronomètre. Quel protocole permet de déterminer
+      correctement cette célérité ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Filmer la corde, choisir deux photos numérotées, mesurer sur la
+          SECONDE seulement la distance entre $S$ et le front de
+          l'ébranlement, puis diviser cette distance par la durée séparant
+          les deux prises.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          La distance mesurée part de $S$, à l'instant du départ de
+          l'ébranlement ; la durée utilisée, elle, ne compte que
+          l'intervalle ENTRE les deux photos, pas depuis ce départ. Les
+          deux bornes ne correspondent pas — c'est comme chronométrer
+          seulement le dernier tronçon d'un trajet, puis diviser par la
+          distance totale parcourue depuis le départ. Il faut soit mesurer
+          l'AVANCÉE du front entre les deux photos (une différence de
+          positions), soit diviser la distance totale depuis $S$ par la
+          durée totale écoulée depuis le départ — jamais mélanger une
+          borne totale et une borne partielle.
+      - id: B
+        text: >-
+          Filmer à cadence connue, repérer le front sur deux photos
+          numérotées, et diviser son avancée par la durée qui les sépare :
+          le nombre d'intervalles multiplié par la durée d'un intervalle.
+        correct: true
+      - id: C
+        text: >-
+          Filmer la corde à un nombre d'images par seconde connu, choisir
+          deux photos numérotées, mesurer de combien la hauteur du sommet
+          de l'ébranlement a changé entre les deux prises, et diviser
+          cette hauteur par la durée qui les sépare.
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-est-vitesse-point
+        feedback: >
+          Cette hauteur mesure le déplacement VERTICAL d'un point de la
+          corde — sa propre montée ou descente sur place — pas l'avancée
+          HORIZONTALE de l'ébranlement le long de la corde. Diviser une
+          hauteur par une durée donne bien une vitesse, mais celle d'un
+          point qui oscille, pas celle de la perturbation qui se propage :
+          deux mouvements différents, deux vitesses différentes. Pour la
+          célérité, il faut suivre un même point identifiable de la FORME
+          (son front, par exemple) le long de la corde, pas la hauteur
+          d'un point fixe.
+      - id: D
+        text: >-
+          Produire plusieurs ébranlements d'amplitudes différentes (un
+          coup léger, un coup franc), chronométrer chacun entre deux
+          détecteurs placés à distance fixe, et comparer les célérités
+          obtenues pour voir si la source influence la propagation.
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-depend-source
+        feedback: >
+          La célérité ne dépend que du milieu — ici la corde, sa tension,
+          sa masse par unité de longueur — jamais de l'amplitude du coup
+          qui crée l'ébranlement. Faire varier la source ne teste rien qui
+          puisse changer la célérité : les deux mesures redonneraient, aux
+          incertitudes près, la même valeur. Un protocole qui cherche à
+          FAIRE VARIER la célérité doit faire varier le MILIEU (la
+          distance entre les points de mesure, la tension de la corde),
+          jamais l'ébranlement lui-même.
+    correct_feedback: >
+      Le protocole correct isole un même point IDENTIFIABLE de la forme de
+      l'ébranlement (son front, par exemple) et suit son AVANCÉE le long
+      de la corde — une distance horizontale — entre deux instants connus.
+      Diviser cette avancée par la durée écoulée (nombre d'intervalles ×
+      durée d'un intervalle) donne la célérité ; mesurer une hauteur
+      donnerait la vitesse d'un point, pas celle de la perturbation.
+    solution: |
+      **Ce qu'il faut suivre.** Un ébranlement conserve sa forme en se
+      propageant (chapitre 2) : on peut donc repérer, sur deux photos
+      numérotées (ou deux passages devant des détecteurs), le MÊME point
+      de cette forme — son front, par exemple — et mesurer de combien il a
+      AVANCÉ le long de la corde.
+
+      **Ce qu'il ne faut pas mesurer.** La hauteur d'un point de la corde
+      décrit son mouvement VERTICAL, sur place : c'est une autre vitesse,
+      celle d'un point qui oscille, pas celle de la perturbation qui
+      avance. Et une distance mesurée depuis $S$ sur une seule photo,
+      divisée par une durée qui ne part pas de $S$, mélange deux origines
+      différentes.
+
+      **Le calcul.** Avec une caméra à un nombre d'images par seconde
+      connu, la durée entre deux photos numérotées s'obtient en
+      multipliant le nombre d'intervalles qui les séparent par la durée
+      d'un intervalle ; avec deux détecteurs, cette durée se lit
+      directement au chronomètre. Dans les deux cas :
+      $$v = \dfrac{\text{avancée du même point de la forme}}{\text{durée écoulée entre les deux mesures}}$$
+      Cette célérité ne dépend que de la corde : elle ne change ni si l'on
+      change l'amplitude du coup, ni si l'on change la paire de photos
+      choisie, tant que le milieu reste le même.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après OMP-19, OMP-20 et OMP-21. L'ancien déclarait
+# franchement `floor_met: false` et nommait la dette — mais il comptait au
+# `primary_misconception` (une tête d'affiche par item) là où la chaîne compte
+# au distracteur. Sous la convention de la chaîne, quatre des huit familles
+# qu'il donnait pour courtes étaient déjà au plancher ; il restait
+# `celerite-est-vitesse-point` (AUCUN item de banc : elle n'était sondée que
+# par un checkpoint, ce qui ne compte pas), `son-nature` (1) et
+# `periodicite-hors-cadre` (1). Tableau GÉNÉRÉ contre
+# web/scripts/lib/couverture-compte.mjs, gardé par
+# web/scripts/resume-couverture.mjs.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul ; les paris de la scène
+    corde-photo-film non plus. Tableau recompté contre
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.physics.pc_omp.onde-transporte-matiere:              { count: 7, items: [OMP-1, OMP-2, OMP-7, OMP-8, OMP-9, OMP-10, OMP-25] }
+    mc.physics.pc_omp.onde-sans-energie:                    { count: 4, items: [OMP-2, OMP-7, OMP-8, OMP-10] }
+    mc.physics.pc_omp.onde-sans-milieu:                     { count: 3, items: [OMP-1, OMP-6, OMP-9] }
+    mc.physics.pc_omp.confusion-transversale-longitudinale: { count: 4, items: [OMP-3, OMP-11, OMP-12, OMP-17] }
+    mc.physics.pc_omp.celerite-depend-source:               { count: 6, items: [OMP-4, OMP-16, OMP-18, OMP-19, OMP-24, OMP-26] }
+    mc.physics.pc_omp.celerite-est-vitesse-point:           { count: 5, items: [OMP-19, OMP-20, OMP-21, OMP-25, OMP-26] }
+    mc.physics.pc_omp.retard-relation-fausse:               { count: 8, items: [OMP-5, OMP-13, OMP-16, OMP-17, OMP-22, OMP-23, OMP-25, OMP-26] }
+    mc.physics.pc_omp.front-onde-dimension:                 { count: 3, items: [OMP-6, OMP-14, OMP-15] }
+    mc.physics.pc_omp.son-nature:                           { count: 3, items: [OMP-6, OMP-20, OMP-21] }
+    mc.physics.pc_omp.periodicite-hors-cadre:               { count: 4, items: [OMP-18, OMP-19, OMP-21, OMP-23] }
+    mc.physics.pc_omp.photo-film-confondus:                 { count: 3, items: [OMP-22, OMP-23, OMP-24] }
+  total_items: 26
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 4
+    R2: 3
+    R3: 9
+    R4: 4
+    R5: 3
+  honest_state: >-
+    Les onze misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Quatre y siègent EXACTEMENT (3 items) : onde-sans-milieu,
+    front-onde-dimension, son-nature, et la onzième, photo-film-confondus
+    (ouverte le 2026-09-24 avec la scène corde-photo-film, spec §8) — la
+    marge y est nulle et tout retrait d'item la casse. OMP-25 et OMP-26
+    remontent celerite-est-vitesse-point à 5, ce qui laisse enfin de la marge
+    si l'étiquette contestée d'OMP-20 D (REVIEW-2026-09-19) venait à tomber.
+    OMP-26 est le premier item du banc sur le savoir-faire « proposer un
+    montage de mesure » (0 % jusqu'ici) — un QCM de protocole, pas encore
+    une production.

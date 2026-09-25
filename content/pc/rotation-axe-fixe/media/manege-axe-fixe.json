@@ -1,0 +1,266 @@
+{
+  "slug": "manege-axe-fixe",
+  "tool": "scene3d",
+  "type": "manipulable",
+  "scene": "manege-rotation",
+  "title_fr": "Le manège, en trois dimensions : ce qui fait vraiment tourner",
+  "caption_fr": "Un manège, un enfant, un poids de 245 N, une poussée de 30 N — et un axe qu'on peut basculer. Cinq étapes : à chaque fois tu paries d'abord, puis la scène tourne (ou pas) pendant quelques secondes.",
+  "etapes": [
+    {
+      "id": "poids-parallele",
+      "titre": "Ce poids fait-il tourner le manège ?",
+      "consigne": "Le manège est un disque libre de tourner autour de son axe vertical : rien ne le freine. Un enfant de $25\\ \\text{kg}$ s'assoit tout au bord, à $1{,}50\\ \\text{m}$ de l'axe. Son poids vaut $245\\ \\text{N}$ — huit fois une poussée de $30\\ \\text{N}$, celle d'un enfant qui pousse le manège. Tu regardes la scène de côté, comme on la verrait depuis la cour.",
+      "pari": {
+        "question": "Le moment de ce poids par rapport à l'axe $\\Delta$ vaut…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "dF",
+            "texte": "$1{,}50 \\times 245 = 367{,}5\\ \\text{N}\\cdot\\text{m}$ : une grande force, au bout du plus grand bras de levier du disque",
+            "juste": false,
+            "misconception": "mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe",
+            "retour": "Tu as multiplié une distance par une force sans regarder **la direction de cette force par rapport à l'axe**. Regarde ce que la course vient de donner : $4{,}0$ secondes, et l'angle est resté à $0{,}0$ rad. Tourne maintenant la vue au-dessus : le poids est parallèle à l'axe — d'en haut, il se réduit à un point, il ne pousse vers aucun côté du cercle."
+          },
+          {
+            "id": "petit",
+            "texte": "un moment plus petit que $367{,}5$, parce qu'une partie seulement du poids agit",
+            "juste": false,
+            "misconception": "mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe",
+            "retour": "Si une partie seulement du poids agissait, le manège aurait tourné un peu pendant ces $4{,}0$ secondes ; il n'a pas bougé d'un degré. L'idée de regarder une **partie** de la force est la bonne, mais la part du poids qui se trouve dans le plan de rotation n'est pas petite : elle est **nulle**. Regarde la scène d'en haut : une force entièrement parallèle à l'axe n'a aucune composante dans ce plan."
+          },
+          {
+            "id": "nul",
+            "texte": "$0$ : ce poids ne fait pas tourner le manège",
+            "juste": true,
+            "retour": "Oui. Sa droite d'action est verticale, comme l'axe : elle lui est parallèle, et elle n'a rien dans le plan où le manège peut tourner. Attention quand même à la bonne raison : ce n'est pas parce que l'axe « retient » le disque — l'axe le retient aussi quand tu pousses tangentiellement, et là il part."
+          }
+        ]
+      },
+      "suite": "Passe la force en **radiale** : $30\\ \\text{N}$ horizontale, droit vers l'axe — elle non plus ne le fait pas tourner, et sa droite d'action passe par $\\Delta$. Puis en **tangentielle** : la même $30\\ \\text{N}$, tournée d'un quart de tour, et il part. Trois forces, une seule qui fait tourner — et ce n'est pas la plus grande.",
+      "controles": [
+        "force"
+      ],
+      "lectures": [
+        "moment",
+        "angle"
+      ],
+      "etat": {
+        "force": "poids",
+        "axe": "vertical",
+        "r_sieges": 1.5,
+        "r_poussee": 1.5,
+        "occupants": "un",
+        "vue": "cote"
+      }
+    },
+    {
+      "id": "axe-bascule",
+      "titre": "Le même poids, un autre axe",
+      "consigne": "On bascule l'axe. Le manège devient une roue verticale : le même disque, le même enfant, toujours à $1{,}50\\ \\text{m}$ de l'axe, toujours $245\\ \\text{N}$. Son siège est arrêté à l'horizontale, à hauteur de l'axe. Rien n'a changé du poids ni de la distance. L'axe, lui, a changé de direction.",
+      "pari": {
+        "question": "Le moment de son poids par rapport à $\\Delta$ vaut maintenant…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "encore-nul",
+            "texte": "$0$, comme tout à l'heure : un poids ne fait jamais tourner",
+            "juste": false,
+            "misconception": "mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe",
+            "retour": "C'est la généralisation que l'étape précédente rendait tentante, et c'est celle qu'il faut casser : la course vient de le montrer, la roue est partie et le siège est descendu d'un quart de tour. Au lâcher, la lecture valait $367{,}5\\ \\text{N}\\cdot\\text{m}$. Le moment n'est pas une propriété de la force toute seule — il se calcule **par rapport à un axe**, et cet axe-là n'a plus la même direction."
+          },
+          {
+            "id": "mgd",
+            "texte": "$1{,}50 \\times 245 = 367{,}5\\ \\text{N}\\cdot\\text{m}$",
+            "juste": true,
+            "retour": "Oui — et c'est **exactement le nombre que tu as écarté à l'étape 1**. Ni la force, ni le point d'application, ni la distance n'ont changé : seul l'axe a tourné. Au lâcher, le poids était perpendiculaire à l'axe, entièrement dans le plan de rotation, et son bras de levier valait les $1{,}50\\ \\text{m}$ tracés au départ. Pendant la descente, ce bras a fondu : à l'équilibre, siège sous l'axe, il est nul — et le moment aussi."
+          },
+          {
+            "id": "force-brute",
+            "texte": "$245\\ \\text{N}\\cdot\\text{m}$ : c'est la valeur du poids",
+            "juste": false,
+            "misconception": "mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier",
+            "retour": "$245$ est une **force**, en newtons ; un moment est en newton-mètres. Au lâcher, le segment tracé de l'axe jusqu'à la droite d'action mesurait $1{,}50\\ \\text{m}$ : c'est lui qui multiplie la force, $1{,}50 \\times 245 = 367{,}5$ — la valeur que la lecture affiche « au lâcher »."
+          }
+        ]
+      },
+      "suite": "Rebascule l'axe à la verticale, et regarde la lecture passer de $367{,}5$ à $0{,}0$ sans que le poids ait bougé d'un newton. Puis relance avec l'axe horizontal et suis le **segment du bras de levier** : il raccourcit à mesure que le siège descend, et il est nul quand le siège arrive sous l'axe — la droite d'action passe alors par $\\Delta$. C'est la position d'équilibre du pendule pesant, que le chapitre 7 étudiera.",
+      "controles": [
+        "axe"
+      ],
+      "lectures": [
+        "moment",
+        "angle"
+      ],
+      "etat": {
+        "force": "poids",
+        "axe": "horizontal",
+        "r_sieges": 1.5,
+        "r_poussee": 1.5,
+        "occupants": "un",
+        "vue": "biais"
+      }
+    },
+    {
+      "id": "deux-points",
+      "titre": "Deux points, un seul angle",
+      "consigne": "Le deuxième enfant s'assoit en face, comme dans l'accroche ; tous les deux sont maintenant à $0{,}30\\ \\text{m}$ de l'axe. On pousse le bord tangentiellement, $30\\ \\text{N}$, pendant $4{,}0\\ \\text{s}$. Deux points sont marqués : le siège, à $0{,}30\\ \\text{m}$ de l'axe, et un repère peint sur le bord, à $1{,}50\\ \\text{m}$. Regarde-les partir ensemble.",
+      "pari": {
+        "question": "Pendant ces $4{,}0$ secondes, le repère du bord et le siège…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "meme-angle",
+            "texte": "tournent du même angle, mais le bord parcourt un chemin bien plus long",
+            "juste": true,
+            "retour": "Oui : même angle — $5{,}0\\ \\text{rad}$ pour les deux — et deux chemins très différents, $1{,}50\\ \\text{m}$ contre $7{,}50\\ \\text{m}$. C'est $s = d\\,\\theta$, donc $v = d\\,\\omega$ : une seule vitesse angulaire, autant de vitesses linéaires que de distances à l'axe."
+          },
+          {
+            "id": "meme-vitesse",
+            "texte": "vont à la même vitesse : ils sont sur le même disque, qui tourne d'un seul bloc",
+            "juste": false,
+            "misconception": "mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable",
+            "retour": "Regarde les deux arcs à l'arrivée : $1{,}50\\ \\text{m}$ et $7{,}50\\ \\text{m}$, parcourus dans le **même** temps. Deux chemins différents dans le même temps, ce ne peut pas être la même vitesse. Ce qui est commun au disque, c'est $\\omega$, en **rad/s** — pas $v$, en m/s."
+          },
+          {
+            "id": "bord-plus-angle",
+            "texte": "le bord tourne d'un plus grand angle que le siège : il va plus vite",
+            "juste": false,
+            "misconception": "mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable",
+            "retour": "Regarde où finissent les deux arcs : sur le **même** rayon peint, resté droit — le siège et le repère du bord ont tourné du même angle, $5{,}0\\ \\text{rad}$. Le bord ne va pas plus vite en angle ; il va plus vite en mètres par seconde, parce qu'il parcourt, dans le même temps, un cercle cinq fois plus grand."
+          }
+        ]
+      },
+      "suite": "Fais glisser l'instant, en avant, en arrière : le rayon peint reste droit, les deux points gardent le même angle, et le bord parcourt toujours cinq fois le chemin du siège — il est cinq fois plus loin de l'axe. Arrête-toi à $t = 3{,}2\\ \\text{s}$ : $\\omega$ y vaut $2{,}0\\ \\text{rad/s}$, et la fiche affiche $0{,}60$ et $3{,}00\\ \\text{m/s}$ — les deux nombres de l'exemple travaillé du chapitre 2.",
+      "controles": ["instant"],
+      "lectures": [
+        "points",
+        "angle",
+        "omega"
+      ],
+      "etat": {
+        "force": "tangentielle",
+        "axe": "vertical",
+        "r_sieges": 0.3,
+        "r_poussee": 1.5,
+        "occupants": "deux",
+        "vue": "biais"
+      }
+    },
+    {
+      "id": "repartition",
+      "titre": "Les mêmes enfants, cinq fois plus loin",
+      "consigne": "À l'étape précédente, la même poussée pendant $4{,}0$ secondes a amené le manège à $2{,}5\\ \\text{rad/s}$, soit $5{,}0\\ \\text{rad}$ parcourus, avec les enfants à $0{,}30\\ \\text{m}$ de l'axe. Ils vont maintenant s'asseoir tout au bord, à $1{,}50\\ \\text{m}$ — **cinq fois plus loin**. Même poussée, même durée, même masse totale embarquée : $110\\ \\text{kg}$ dans les deux cas. Tu regardes d'en haut, pour lire les angles.",
+      "pari": {
+        "question": "À la fin des mêmes $4{,}0$ secondes, la vitesse angulaire sera…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "deux-et-demi",
+            "texte": "deux fois et demie plus petite ($1{,}0\\ \\text{rad/s}$)",
+            "juste": true,
+            "retour": "Oui : $5{,}0\\ \\text{rad}$ tout à l'heure, $2{,}0\\ \\text{rad}$ maintenant. La grandeur affichée à droite passe de $72{,}0$ à $180{,}0$ — le disque y met toujours $67{,}5$, et les enfants passent de $4{,}5$ à $112{,}5$. Elle a un nom, un symbole et une unité : c'est l'objet du chapitre 4."
+          },
+          {
+            "id": "lineaire",
+            "texte": "cinq fois plus petite ($0{,}5\\ \\text{rad/s}$) : la distance est multipliée par cinq",
+            "juste": false,
+            "misconception": "mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise",
+            "retour": "La distance compte au **carré**, pas proportionnellement : cinq fois plus loin, la part des enfants est multipliée par $25$ — elle passe de $4{,}5$ à $112{,}5$. Mais le disque, lui, n'a pas bougé : ses $67{,}5$ restent. Le total ne fait donc que $2{,}5$ fois plus, et $\\omega$ tombe à $1{,}0$, pas à $0{,}5$."
+          },
+          {
+            "id": "vingt-cinq",
+            "texte": "vingt-cinq fois plus petite ($0{,}1\\ \\text{rad/s}$) : la distance compte au carré",
+            "juste": false,
+            "misconception": "mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee",
+            "retour": "Le carré, tu l'as vu juste. Mais tu l'as appliqué à **tout** le système : le disque n'a pas déménagé, sa part ne change pas d'un gramme. Seule la part des enfants est multipliée par $25$ ($4{,}5 \\to 112{,}5$), et le total passe de $72{,}0$ à $180{,}0$ — $2{,}5$ fois, pas $25$."
+          }
+        ]
+      },
+      "suite": "Fais glisser les sièges d'un bout à l'autre et relance : $67{,}5 + 2\\times 25\\,r^2$, et la course répond. À $0{,}30\\ \\text{m}$ tu retrouves $72{,}0$ ; à $1{,}50\\ \\text{m}$, $180{,}0$. La trace pointillée garde la position finale de l'essai précédent : les deux angles restent côte à côte.",
+      "controles": [
+        "distance"
+      ],
+      "lectures": [
+        "omega",
+        "angle",
+        "inertie"
+      ],
+      "etat": {
+        "force": "tangentielle",
+        "axe": "vertical",
+        "r_sieges": 1.5,
+        "r_poussee": 1.5,
+        "occupants": "deux",
+        "vue": "dessus"
+      }
+    },
+    {
+      "id": "libre",
+      "titre": "À toi : où t'asseoir, où pousser",
+      "consigne": "Tout s'ouvre. Tu choisis où les enfants s'assoient et où tu pousses ; la force vaut toujours $30\\ \\text{N}$, la poussée dure toujours $4{,}0\\ \\text{s}$. Deux lectures de plus s'allument, avec des noms que tu ne connais pas encore : $J_\\Delta$ et $\\ddot\\theta$. Tu peux jouer sans elles — et revenir ici au chapitre 4, où $J_\\Delta = 67{,}5 + 2\\times 25\\,r^2$ est exactement le calcul que tu feras, puis au chapitre 5, où $\\ddot\\theta = \\Sigma\\mathcal{M}_\\Delta / J_\\Delta$ sera démontrée.",
+      "pari": {
+        "question": "Tu veux que le manège démarre le plus vite possible. Deux réglages à choisir : où s'assoient les enfants, et où tu pousses. Le meilleur, c'est…",
+        "choix": [
+          {
+            "id": "tout-au-bord",
+            "texte": "enfants au bord ($1{,}50$) **et** poussée au bord ($1{,}50$) : loin de l'axe, tout est plus efficace",
+            "juste": false,
+            "misconception": "mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise",
+            "retour": "Loin de l'axe, c'est meilleur pour la **force** et pire pour la **masse** : le levier multiplie l'efficacité d'une poussée, mais une masse éloignée **résiste** davantage. Essaie : $\\ddot\\theta = 0{,}250$ ici, contre $0{,}625$ en rapprochant seulement les enfants. Le même mot « loin » ne fait pas la même chose aux deux."
+          },
+          {
+            "id": "tout-pres",
+            "texte": "enfants près de l'axe ($0{,}30$) **et** poussée près de l'axe ($0{,}20$)",
+            "juste": false,
+            "misconception": "mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier",
+            "retour": "Tu as rapproché les enfants — bien — et tu as rapproché la poussée aussi, ce qui l'écrase : $6{,}0\\ \\text{N}\\cdot\\text{m}$ au lieu de $45{,}0$. Essaie : $\\ddot\\theta = 0{,}083$, presque huit fois moins que le meilleur réglage. Près de l'axe, une force perd son levier."
+          },
+          {
+            "id": "enfants-pres",
+            "texte": "enfants près de l'axe ($0{,}30$) **et** poussée au bord ($1{,}50$)",
+            "juste": true,
+            "retour": "Oui : le plus grand moment ($45{,}0\\ \\text{N}\\cdot\\text{m}$) et la plus petite résistance ($72{,}0$). $\\ddot\\theta = 0{,}625\\ \\text{rad}\\cdot\\text{s}^{-2}$, contre $0{,}250$ et $0{,}083$ pour les deux autres réglages. La distance joue deux rôles opposés : loin pour la force, près pour la masse."
+          }
+        ]
+      },
+      "suite": "Vérifie les trois, un par un : $0{,}625$ · $0{,}250$ · $0{,}083$ rad·s⁻². Puis repasse la force en **poids** : à la verticale de l'axe, elle a beau valoir $245\\ \\text{N}$, la lecture reste à $0{,}0$ et le manège ne part pas.",
+      "controles": [
+        "force",
+        "distance",
+        "bras"
+      ],
+      "lectures": [
+        "moment",
+        "inertie",
+        "acceleration",
+        "omega",
+        "angle",
+        "points"
+      ],
+      "etat": {
+        "force": "tangentielle",
+        "axe": "vertical",
+        "r_sieges": 1.5,
+        "r_poussee": 1.5,
+        "occupants": "deux",
+        "vue": "biais"
+      }
+    }
+  ],
+  "boundary": "Cadre (rotation_axe_fixe, 2ème Bac PC/SM) : le moment d'une force par rapport à un axe fixe, scalaire signé, $\\mathcal{M}_\\Delta = \\pm\\,d\\cdot F$ ; $J_\\Delta$ DONNÉ ($\\frac12MR^2 = 67{,}5$ pour le disque, plus $\\sum m_i d_i^2$ pour les enfants) ; la course est un mouvement uniformément varié ($\\omega = \\ddot\\theta\\,t$, $\\theta = \\frac12\\ddot\\theta\\,t^2$). Aucun moment cinétique ni produit vectoriel ; aucune intégrale de $J$ ; aucun solide libre ; aucune oscillation, période ni amplitude (la course à axe basculé s'arrête à l'équilibre) ; aucun frottement ; aucune force oblique (dans tout état atteignable le moment est exactement nul, ou $d\\times F$ avec une force entièrement dans le plan perpendiculaire à $\\Delta$) ; aucun système composé ; aucune accélération normale ; ce n'est pas une mesure de TP.",
+  "fit_caveat": "Les deux distances avancent par pas de 0,10 m, pour que les valeurs de la leçon soient atteintes exactement (J = 72,0 et 180,0 ; M = 6,0 et 45,0). Une seule échelle de flèches, 1,00 m pour 100 N : le poids (245 N) mesure 2,45 m, la poussée (30 N) 0,30 m — le rapport 8:1 est l'argument. Temps réel (1:1). La course s'arrête à t = 4,0 s (axe vertical, image figée, sans frottement le manège continuerait) ou à l'équilibre (axe basculé, ≈ 1,08 s). P = m g = 245 N avec le g = 9,8 m·s⁻² du chapitre 7. Frottements nuls.",
+  "fallback_note": "Sans WebGL, le panneau le dit et garde les paris, les réglages et les calculs. La figure du moment d'une force, juste au-dessus, couvre le cas plan mais PAS le cas parallèle — c'est précisément ce que la 3D apporte, et c'est pourquoi le paragraphe « Trois façons d'avoir un moment nul », juste en dessous, l'écrit en prose. À l'impression, le panneau disparaît et la prose reste.",
+  "pedagogy_wiring": {
+    "why_3d": "La figure plane dessine l'axe comme un point (⊙) et toutes les forces dans le plan de la page : une force parallèle à l'axe y est indessinable. Changer de point de vue révèle ce que la figure plane énonce sans le montrer — et la même force donne 0 avec un axe vertical, jusqu'à m g d avec un axe horizontal (siège à l'horizontale) : c'est la DIRECTION de l'axe qui décide (spec §2).",
+    "predict_then_reveal": "Chaque étape pose un pari avant toute preuve ; le verdict attend la course entière (revele_apres_course: 1), sauf l'étape libre, dont le pari compare trois réglages (verdict immédiat, puis les contrôles s'ouvrent pour les vérifier). Avant le pari : aucune lecture, aucune droite d'action, aucun bras de levier, aucun arc, aucune trace, aucun bouton de course.",
+    "misconceptions": [
+      "mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe",
+      "mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier",
+      "mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable",
+      "mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise",
+      "mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee"
+    ]
+  },
+  "spec_ref": "content/pc/rotation-axe-fixe/spec-scene-manege.md §5 (contrôles, état, lectures), §6 (la course), §7 (les cinq étapes), §9 (la frontière).",
+  "adr_ref": "docs/decisions/0041-scenes-3d-de-premiere-partie.md"
+}

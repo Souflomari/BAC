@@ -1,0 +1,359 @@
+notion: nombres-complexes-1
+skill_code: maths_complexes_algebrique
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — maths, complexes)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong MATHEMATICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT altered
+# by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict        (in R0)          — COMMIT gate: turns the accroche's
+#                                           « prends position » into a real MCQ
+#                                           commit before the reveal. Probes
+#                                           carre-reel-peut-etre-negatif.
+#   cp-r3-conjugue       (after R3)       — rupture gate: z + z̄ (= 2a) vs z − z̄
+#                                           (= 2bi). Probes conjugue-somme-vs-
+#                                           difference.
+#   cp-r4-module-parties (after R4)       — rupture gate: le module se calcule par
+#                                           Pythagore, ce n'est ni la partie
+#                                           réelle ni une somme des parties.
+#                                           Probes module-lineaire.
+#   cp-r5-difference     (after R5)       — rupture gate: la distance AB, c'est
+#                                           |z_B − z_A| (différence), pas |z_B| ni
+#                                           |z_A + z_B|. Probes distance-affixe-
+#                                           brute.
+#   cp-bac-exponentielle (before r-bac)   — rupture gate: passer de la forme
+#                                           algébrique à la forme exponentielle
+#                                           ((1/2)a = e^{-iπ/3}), sans confondre
+#                                           module/argument avec parties réelle/
+#                                           imaginaire. Amorce la rotation du
+#                                           sujet. Probes algebrique-exponentielle-
+#                                           conversion.
+#
+# EVERY distractor carries a named misconception id from this notion's inventory
+# (items.yaml `misconceptions:`). Option lengths are balanced so the correct
+# choice is never the conspicuously longest.
+#
+# Boundary guard: 2ème Bac SExp nombres complexes — forme algébrique, parties
+# réelle/imaginaire, conjugué, module, plan complexe (affixe, distance
+# |z_B − z_A|), et — pour l'exercice national — équation du second degré dans ℂ,
+# rotation traduite par z' = e^{iθ}z et le pont forme algébrique ↔ exponentielle.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the accroche's commit)
+  #        Turns « prends position » into a real MCQ commit before the
+  #        reveal (« C'est exactement ce choix que les mathématiciens
+  #        ont fait »). Probes carre-reel-peut-etre-negatif.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: maths_complexes_algebrique
+    tags: [checkpoint, formative, misconception_driven, maths_complexes_algebrique, hook_commit]
+    primary_misconception: mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      L'équation $x^2 = -1$ n'a aucune solution dans $\mathbb{R}$. En suivant le
+      schéma déjà déroulé trois fois ($\mathbb{N} \to \mathbb{Z} \to \mathbb{Q} \to \mathbb{R}$,
+      chaque fois pour donner une solution à une équation qui n'en avait pas),
+      que va-t-on faire ? **Engage-toi avant de lire la suite.**
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          Poser un nouveau nombre $i$ tel que $i^2 = -1$, et bâtir avec lui un calcul cohérent — le même geste qu'aux étapes précédentes.
+        correct: true
+        feedback: |-
+          Exact — c'est précisément le choix des mathématiciens : on prolonge
+          $\mathbb{R}$ en posant $i$ tel que $i^2 = -1$, puis on construit tout un
+          calcul cohérent autour de lui. Toute la leçon fait ce travail.
+
+      - id: B
+        text: |-
+          S'arrêter là : puisqu'aucun carré ne peut être négatif, l'équation $x^2 = -1$ est une impasse absolument définitive, dans tout ensemble de nombres imaginable.
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif
+        feedback: |-
+          Modèle détecté : « aucun carré n'est jamais négatif, dans aucun
+          ensemble ». La règle « carré $\geq 0$ » est vraie dans $\mathbb{R}$,
+          mais elle est **propre à $\mathbb{R}$** ; rien n'interdit de construire
+          un ensemble plus grand où un carré peut valoir $-1$. C'est justement ce
+          qu'on va faire.
+
+      - id: C
+        text: |-
+          Écrire directement $x = \sqrt{-1}$ et le manipuler avec les règles usuelles de la racine carrée, comme on écrit $\sqrt{4} = 2$.
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+        feedback: |-
+          Modèle détecté : appliquer $\sqrt{\ }$ à $-1$ par les règles usuelles.
+          Mais la racine carrée n'est définie que sur les réels positifs ou nuls ;
+          on ne peut pas l'appliquer telle quelle à $-1$. Le nombre $i$ est
+          **posé** par la propriété $i^2 = -1$, pas obtenu en calculant une racine.
+
+      - id: D
+        text: |-
+          Continuer à chercher dans $\mathbb{R}$ : il existe forcément un réel, sans doute irrationnel, dont le carré vaut $-1$, on ne l'a pas encore débusqué.
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif
+        feedback: |-
+          Modèle détecté : « la solution existe dans $\mathbb{R}$, cachée ». Non :
+          pour **tout** réel $x$, $x^2 \geq 0$. Aucun réel, rationnel ou
+          irrationnel, n'a un carré négatif — contrairement à $x^2 = 2$ qui, lui,
+          gagnait bien une solution irrationnelle en passant de $\mathbb{Q}$ à
+          $\mathbb{R}$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r3-conjugue | placed AFTER R3
+  #        Rupture gate: z + z̄ (= 2a, réel) vs z − z̄ (= 2bi, imaginaire
+  #        pur). Clone of NBCOMPLEX-14's stem shape. Probes
+  #        conjugue-somme-vs-difference.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-conjugue
+    rung: "R3"
+    habilete: utilisation
+    skill_code: maths_complexes_algebrique
+    tags: [checkpoint, formative, misconception_driven, maths_complexes_algebrique, conjugue]
+    primary_misconception: mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference
+    item_source: clone_of_NBCOMPLEX-14
+    lesson_placement: in_R3
+
+    stem: |
+      Pour $z = a + bi$ (avec $a, b$ réels), on sait que $z + \overline{z} = 2a$,
+      un nombre réel. Que vaut alors la différence $z - \overline{z}$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$2bi$ : les parties réelles s'annulent dans la différence."
+        correct: true
+        feedback: |-
+          Exact : $z - \overline{z} = (a + bi) - (a - bi) = 2bi$. Les parties
+          réelles s'annulent ($a - a = 0$), les parties imaginaires s'ajoutent :
+          le résultat est un **imaginaire pur**, le double de $\text{Im}(z)$
+          multiplié par $i$.
+
+      - id: B
+        text: "$2a$, comme la somme $z + \\overline{z}$."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference
+        feedback: |-
+          C'est $z + \overline{z}$ qui vaut $2a$ (les parties imaginaires
+          s'annulent dans la **somme**). Dans la **différence**, ce sont au
+          contraire les parties réelles qui s'annulent, et les imaginaires qui
+          s'ajoutent : $z - \overline{z} = 2bi$.
+
+      - id: C
+        text: "$0$, car $z$ et son conjugué se compensent."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference
+        feedback: |-
+          $z$ et $\overline{z}$ ne se compensent pas en général. Ici seules les
+          parties réelles s'annulent ($a - a = 0$) ; la partie imaginaire, elle,
+          double : $bi - (-bi) = 2bi$. Le résultat n'est nul que si $b = 0$.
+
+      - id: D
+        text: "$2a - 2bi$, en soustrayant terme à terme sans changer les signes."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: |-
+          Erreur de distribution du signe moins. Il faut soustraire
+          $\overline{z} = a - bi$ **en entier** : $-(a - bi) = -a + bi$. D'où
+          $z - \overline{z} = (a + bi) + (-a + bi) = 2bi$, pas $2a - 2bi$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r4-module-parties | placed AFTER R4
+  #        Rupture gate: le module se calcule par Pythagore
+  #        (√(a²+b²)), ce n'est ni la partie réelle, ni une somme des
+  #        parties, ni la somme des carrés sans racine. Clone of
+  #        NBCOMPLEX-5. Probes module-lineaire (+ module/argument vs
+  #        parties réelle/imaginaire, + oubli de la racine).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-module-parties
+    rung: "R4"
+    habilete: utilisation
+    skill_code: maths_complexes_algebrique
+    tags: [checkpoint, formative, misconception_driven, maths_complexes_algebrique, module]
+    primary_misconception: mc.math.maths_complexes_algebrique.module-lineaire
+    item_source: clone_of_NBCOMPLEX-5
+    lesson_placement: in_R4
+
+    stem: |
+      Pour le nombre complexe $z = -3 + 4i$, on cherche son **module** $|z|$.
+      Quelle réponse est correcte ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$|z| = \\sqrt{(-3)^2 + 4^2} = 5$, la racine de la somme des carrés."
+        correct: true
+        feedback: |-
+          Exact : le module est $|z| = \sqrt{a^2 + b^2} = \sqrt{9 + 16} = \sqrt{25} = 5$.
+          C'est la longueur $OM$ — une distance, obtenue par le théorème de
+          Pythagore sur les deux coordonnées.
+
+      - id: B
+        text: "$1$, en additionnant la partie réelle et la partie imaginaire ($-3 + 4$)."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-lineaire
+        feedback: |-
+          Le module n'est pas une somme des parties. $|z| = \sqrt{a^2 + b^2}$
+          combine les deux coordonnées par une somme de **carrés** sous une
+          racine, comme une distance : $\sqrt{(-3)^2 + 4^2} = 5$, pas $-3 + 4 = 1$.
+
+      - id: C
+        text: "$-3$, car le module d'un nombre complexe est tout simplement sa partie réelle."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-argument-vs-parties
+        feedback: |-
+          Confusion module ↔ partie réelle. Le module $|z|$ n'est ni la partie
+          réelle $a$, ni la partie imaginaire $b$ : c'est la distance $OM = \sqrt{a^2 + b^2}$,
+          toujours positive ou nulle (un module négatif comme $-3$ est d'ailleurs
+          impossible).
+
+      - id: D
+        text: "$25$, la somme des carrés des deux parties, $(-3)^2 + 4^2$."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-oubli-racine
+        feedback: |-
+          Tu as calculé $a^2 + b^2 = 25$, mais oublié la **racine carrée**
+          finale. Le module est $\sqrt{a^2 + b^2} = \sqrt{25} = 5$, pas $25$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r5-difference | placed AFTER R5
+  #        Rupture gate: la distance AB est |z_B − z_A| (module d'une
+  #        DIFFÉRENCE d'affixes), pas |z_B| ni |z_A + z_B|. Clone of
+  #        NBCOMPLEX-6. Probes distance-affixe-brute.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-difference
+    rung: "R5"
+    habilete: utilisation
+    skill_code: maths_complexes_algebrique
+    tags: [checkpoint, formative, misconception_driven, maths_complexes_algebrique, geometrie]
+    primary_misconception: mc.math.maths_complexes_algebrique.distance-affixe-brute
+    item_source: clone_of_NBCOMPLEX-6
+    lesson_placement: after_R5
+
+    stem: |
+      $A$ et $B$ ont pour affixes respectives $z_A = 2 + 5i$ et $z_B = 6 + 2i$.
+      Que vaut la distance $AB$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$5$, car $AB = |z_B - z_A| = |4 - 3i|$."
+        correct: true
+        feedback: |-
+          Exact : la distance $AB$ est le module de la **différence** des
+          affixes. $z_B - z_A = 4 - 3i$, donc $AB = \sqrt{4^2 + (-3)^2} = \sqrt{25} = 5$.
+
+      - id: B
+        text: "$2\\sqrt{10}$, car $AB = |z_B| = |6 + 2i|$."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.distance-affixe-brute
+        feedback: |-
+          $|z_B|$ est la distance de $B$ à l'**origine** $O$, pas la distance de
+          $A$ à $B$. Il faut d'abord soustraire les affixes : $AB = |z_B - z_A|$,
+          jamais $|z_B|$ seul.
+
+      - id: C
+        text: "$\\sqrt{113}$, car $AB = |z_A + z_B| = |8 + 7i|$."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.distance-affixe-brute
+        feedback: |-
+          Tu as **additionné** les affixes au lieu de les soustraire. La distance
+          entre deux points est le module de leur **différence** $z_B - z_A$
+          (l'affixe du vecteur $\overrightarrow{AB}$), pas de leur somme.
+
+      - id: D
+        text: "$7$, car $AB = |x_B - x_A| + |y_B - y_A| = 4 + 3$."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-lineaire
+        feedback: |-
+          On n'additionne pas les écarts de coordonnées : on applique Pythagore.
+          $AB = \sqrt{(x_B - x_A)^2 + (y_B - y_A)^2} = \sqrt{4^2 + 3^2} = 5$, pas
+          $4 + 3 = 7$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-bac-exponentielle | placed BEFORE [[exercise:r-bac]]
+  #        Rupture gate: le pont forme algébrique ↔ exponentielle qui
+  #        fait la question 3 du sujet 2019, ((1/2)a = e^{-iπ/3}), sans
+  #        confondre module/argument avec parties réelle/imaginaire.
+  #        Probes algebrique-exponentielle-conversion (+ module/argument
+  #        vs parties).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-bac-exponentielle
+    rung: "R6"
+    habilete: raisonnement
+    skill_code: maths_complexes_algebrique
+    tags: [checkpoint, formative, misconception_driven, maths_complexes_algebrique, forme_exponentielle, bac_style]
+    primary_misconception: mc.math.maths_complexes_algebrique.algebrique-exponentielle-conversion
+    item_source: original
+    lesson_placement: before_bac
+
+    stem: |
+      Dans le sujet 2019, la rotation de centre $O$ et d'angle $-\dfrac{\pi}{3}$
+      s'écrit $z' = e^{-i\pi/3}\,z$, et l'énoncé affirme $z' = \dfrac{1}{2}a\,z$
+      avec $a = 1 - i\sqrt{3}$. Pour le prouver, il faut relier $\dfrac{1}{2}a$ à
+      $e^{-i\pi/3}$. Laquelle de ces affirmations est **correcte** ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$\\dfrac{1}{2}a = \\dfrac{1}{2} - \\dfrac{\\sqrt{3}}{2}i = e^{-i\\pi/3}$."
+        correct: true
+        feedback: |-
+          Exact : $\dfrac{1}{2}a = \dfrac{1}{2}(1 - i\sqrt{3}) = \dfrac{1}{2} - \dfrac{\sqrt{3}}{2}i$,
+          et $e^{-i\pi/3} = \cos\!\left(-\dfrac{\pi}{3}\right) + i\sin\!\left(-\dfrac{\pi}{3}\right) = \dfrac{1}{2} - \dfrac{\sqrt{3}}{2}i$.
+          Les deux formes algébriques coïncident : la rotation s'écrit bien
+          $z' = \dfrac{1}{2}a\,z$.
+
+      - id: B
+        text: "$e^{-i\\pi/3} = -\\dfrac{\\pi}{3} + i$ : on lit l'exponentielle comme partie réelle $-\\dfrac{\\pi}{3}$ et partie imaginaire $1$."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-argument-vs-parties
+        feedback: |-
+          Confusion argument ↔ partie réelle. Dans $e^{i\theta}$, l'angle
+          $\theta$ est l'**argument**, pas la partie réelle. La forme algébrique
+          s'obtient par $e^{i\theta} = \cos\theta + i\sin\theta$ : ici
+          $\dfrac{1}{2} - \dfrac{\sqrt{3}}{2}i$, où $-\dfrac{\pi}{3}$ n'apparaît plus.
+
+      - id: C
+        text: "$\\dfrac{1}{2}a$ a pour module $\\dfrac{1}{2}$ et pour argument $1 - \\sqrt{3}$."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-argument-vs-parties
+        feedback: |-
+          On a pris la partie réelle pour le module et la partie imaginaire pour
+          l'argument. Or $a = 1 - i\sqrt{3}$ a pour module $|a| = \sqrt{1 + 3} = 2$
+          et pour argument $-\dfrac{\pi}{3}$ ; donc $\dfrac{1}{2}a$ a pour module
+          $1$ et argument $-\dfrac{\pi}{3}$ — c'est $e^{-i\pi/3}$.
+
+      - id: D
+        text: "$e^{-i\\pi/3} = \\dfrac{1}{2} + \\dfrac{\\sqrt{3}}{2}i$, car le signe de l'angle ne change pas le sinus."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.algebrique-exponentielle-conversion
+        feedback: |-
+          Erreur de signe dans la conversion. Le sinus est **impair** :
+          $\sin\!\left(-\dfrac{\pi}{3}\right) = -\sin\!\left(\dfrac{\pi}{3}\right) = -\dfrac{\sqrt{3}}{2}$.
+          Donc $e^{-i\pi/3} = \dfrac{1}{2} - \dfrac{\sqrt{3}}{2}i$, avec un signe
+          **moins** — c'est bien $\dfrac{1}{2}a$.

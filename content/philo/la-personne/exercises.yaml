@@ -1,0 +1,385 @@
+# Attempt-first exercises (summit-conversion campaign). Rendered by
+# AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md: the
+# student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered — see rlc-serie's header
+# comment for the audit U3/C2 rule this follows): while status != sourced,
+# the notion is NOT DONE.
+#
+# PHILO judgment call — no steps[], no math (docs/pipeline/SUMMIT-CONVERSION-
+# RECIPE.md, "Philo" addendum): every question's `reasoning` carries the
+# full philosophical argument in prose — thèse identification, argument
+# analysis, position justification — never a stepped derivation.
+#
+# r-bac/r-variation sourcing decision (per the recipe addendum's decision
+# rule): docs/sujets/philo/la-personne.md carries exactly TWO verified
+# entries for this notion (both "Statut: vérifié — re-fetch indépendant +
+# diff conforme (agent-vérificateur, 2026-07-15)", both profsalmi قولة) —
+# "2022 — session normale" (« لا شيء يدعونا إلى احترام الشخص وتقديره سوى
+# سلطته وثروته المادية » — value reduced to power/wealth) and "2015 —
+# session normale" (« عندما أرفض أن أُعامَل بوصفي شيئا، فإنني أؤكد ذاتي
+# باعتباري شخصا » — refusing to be treated as a thing affirms the self as a
+# person). Per the recipe's decision rule (≥2 verified entries → default to
+# reusing the second for r-variation with status:sourced, and route
+# whichever text is richer/more novel to r-bac since its reasoning can
+# bridge back to taught material), the target lesson (content/philo/
+# la-personne/lesson.md) was read FIRST to judge which text maps onto
+# already-taught rungs:
+#   - The 2022 قولة maps CLEANLY onto R2 alone: it is, almost word for word,
+#     the naive claim R2's prix/dignité, fin-en-soi/moyen mechanism is built
+#     to refute (nothing but power/wealth commands respect → Kant's prix,
+#     not dignité). No new axis; the lesson already teaches everything the
+#     exercise needs. → routed to r-variation (status: sourced, per the
+#     rule), the SAFER mapping.
+#   - The 2015 قولة is richer: "refuser d'être traité comme une chose"
+#     echoes R2's moyen/fin vocabulary almost exactly, AND "j'affirme ma
+#     valeur" echoes R6's dépersonnalisation (réduire à un pur moyen, un
+#     objet interchangeable) — but it adds something neither rung states
+#     directly: the citation makes MY OWN ACT of refusal the thing that
+#     affirms my status as person, where R2's Kantian dignity is a standing,
+#     static fact (a nature one simply HAS) and R6's dépersonnalisation is
+#     an act OTHERS commit or fail to commit against me. Nowhere does R0-R7
+#     pose the question the 2015 citation's own المطلوب names directly —
+#     مصدر قيمة الشخص, "the SOURCE of the person's value" — as possibly
+#     lying, even in part, in the subject's own active self-assertion rather
+#     than purely in a possessed rational nature or a reconnaissance
+#     granted/refused by others. That is a genuinely novel angle relative to
+#     R0-R7's otherwise static framing of both Kant's criterion and R6's
+#     dépersonnalisation. → routed to r-bac (the richer, more defensible
+#     choice per the addendum, since its `reasoning` below explicitly
+#     bridges back to R2 and R6 rather than silently assuming the axis was
+#     already taught) — and primed by a dedicated checkpoint
+#     (cp-bac-affirmation) immediately before it, mirroring how la-liberte's
+#     Bakounine r-bac (a comparably novel axis) got its own priming
+#     checkpoint (cp-bac-autrui) rather than being dropped on the student
+#     cold.
+#
+# Sourcing honesty note (both exercises): docs/sujets/philo/la-personne.md's
+# own file header states "L'arabe est l'artefact à vérifier ; la traduction
+# française est une aide de travail, non vérifiée au même titre" and "Sources
+# = reproductions typées, pas le scan officiel" — both facts are carried
+# into each `sourcing.note` below rather than silently dropped, per the
+# recipe addendum's instruction to note this honestly. Unlike some
+# la-liberte.md entries, neither la-personne.md entry gives an AlloSchool
+# element/scan code — the notes below reproduce exactly, and only, the
+# provenance the bank entries actually supply (profsalmi URL + the
+# agent-vérificateur re-fetch/diff line), without inventing one.
+
+notion: la-personne
+
+exercises:
+  # ── r-bac — VERIFIED 2015 session normale sujet (قولة) ────────────────────
+  # Faithful transcription of docs/sujets/philo/la-personne.md → "2015 —
+  # session normale — Sujet (قولة)". Real bac text, not built for this
+  # lesson. Arabic + French copied verbatim from the sujets-bank file
+  # (verified programmatically — see the task's verification pass, not
+  # eyeballed).
+  - id: r-bac
+    title: "Exercice de type bac — la source de la valeur de la personne (قولة, 2015 N)"
+    sourcing:
+      status: sourced
+      note: >-
+        2015 session normale — source profsalmi
+        (https://www.profsalmi.com/2024/07/Exam-nat-alwade3-albachari.html),
+        قولة ; texte transcrit intégralement dans
+        docs/sujets/philo/la-personne.md (entrée « 2015 — session normale —
+        Sujet (قولة) »), statut « vérifié — re-fetch indépendant + diff
+        conforme (agent-vérificateur, 2026-07-15) ». Filière : شعب علمية —
+        الفلسفة, 2 h, coef 2 ; مجزوءة الوضع البشري, axe الشخص بوصفه قيمة.
+        Aucun AlloSchool element/scan code n'est donné pour cette entrée de
+        la banque (contrairement à certaines entrées de la-liberte.md) —
+        source = reproduction typée (profsalmi), pas le scan officiel du
+        ministère ; cette note reprend exactement, et seulement, la
+        provenance que l'entrée fournit réellement, sans en inventer une.
+        L'arabe est l'artefact vérifié par l'agent-vérificateur ; la
+        traduction française qui l'accompagne est, de l'aveu même du fichier
+        source, une aide de travail non vérifiée au même titre — mise en
+        garde reprise ici honnêtement, pas silencieusement effacée.
+    intro: |-
+      **Sujet réel, examen national de philosophie, 2015 (session normale) —
+      un sujet (une citation à expliquer et discuter) :**
+
+      **Texte arabe (original) :**
+
+      > « عندما أرفض أن أُعامَل بوصفي شيئا، فإنني أؤكد ذاتي باعتباري شخصا. »
+      >
+      > المطلوب : انطلاقا من القولة، بيّن(ي) مصدر قيمة الشخص.
+
+      **Traduction de travail française :**
+
+      > « Lorsque je refuse d'être traité comme une chose, j'affirme mon moi en tant
+      > que personne. »
+      >
+      > Consigne : à partir de cette citation, montre la source de la valeur de la
+      > personne.
+
+      Cette citation te demande de trouver la SOURCE de la valeur de la
+      personne — exactement ce que le chapitre 3 (Kant) et le chapitre 7 (dépersonnalisation) ont
+      déjà construit, mais sous un angle qu'aucun des deux chapitres ne nomme
+      frontalement : ici, c'est un ACTE du sujet lui-même — refuser d'être
+      traité comme une chose — qui semble affirmer sa valeur, plutôt qu'une
+      nature raisonnable simplement possédée (chapitre 3) ou une reconnaissance que
+      d'autres accordent ou retirent (chapitre 7).
+    questions:
+      - id: q1
+        part: "Partie 1 — Dégager la thèse"
+        stem: |-
+          Formule en une phrase précise ce que la citation affirme : selon
+          elle, qu'est-ce qui, très exactement, « affirme » ma valeur de
+          personne ? Ne te contente pas de dire « le refus » — précise le
+          refus de QUOI.
+        reasoning: |-
+          La citation construit une équivalence resserrée : « lorsque JE
+          REFUSE d'être traité comme une chose » (la condition) « je
+          m'affirme comme personne » (la conséquence). Ce n'est donc pas ma
+          simple existence, ni ma seule nature, qui « affirme » ma valeur —
+          c'est un acte précis : le refus d'un certain TRAITEMENT, celui qui
+          me réduirait à une chose.
+
+          Il faut résister à deux lectures qui affaiblissent la thèse. La
+          première consiste à la lire comme un simple constat psychologique
+          (« je me sens mieux quand on me respecte ») — la citation dit bien
+          plus : elle fait de ce refus la SOURCE (مصدر) de ma valeur, pas
+          seulement un effet agréable qui l'accompagne. La seconde consiste
+          à l'ignorer complètement et à répondre comme si la question portait
+          sur la nature raisonnable en général (chapitre 3) — la citation, elle,
+          met l'accent sur un geste, un refus actif, pas sur une possession
+          passive.
+      - id: q2
+        part: "Partie 2 — Confronter à Kant (chapitre 3)"
+        stem: |-
+          « Être traité comme une chose » est exactement le langage que le chapitre 3
+          utilise pour décrire ce que Kant interdit (réduire un être
+          raisonnable à un pur moyen). En quoi la citation rejoint-elle ce
+          critère kantien — et en quoi semble-t-elle ajouter quelque chose
+          que Kant, tel que le chapitre 3 le présente, ne dit pas explicitement ?
+        reasoning: |-
+          Le rapprochement est direct : pour Kant, ce qui a un prix est
+          remplaçable par un équivalent, comme une chose ; ce qui a une
+          dignité ne l'est pas. Refuser d'« être traité comme une chose »,
+          c'est très exactement refuser d'être réduit ENTIÈREMENT à un
+          instrument, sans jamais être reconnu comme fin en soi — le cœur du
+          principe kantien tel que le chapitre 3 le construit.
+
+          Mais le chapitre 3 présente ce critère comme un FAIT : un être raisonnable
+          EST une fin en soi, par sa seule nature, que cette nature soit
+          reconnue ou non, revendiquée ou non par le sujet lui-même. La
+          citation, elle, met l'accent sur autre chose : c'est MOI qui
+          refuse, c'est mon propre acte qui « affirme » (أُؤَكِّد) ma valeur.
+          Le chapitre 3 ne dit à aucun moment que la dignité aurait besoin d'être
+          affirmée par un acte du sujet pour exister — c'est précisément le
+          point que la citation semble ajouter, et qu'il faudra interroger
+          en partie 4 : l'affirmation de soi crée-t-elle la valeur, ou se
+          contente-t-elle de la manifester ?
+      - id: q3
+        part: "Partie 3 — Confronter au chapitre 7 (dépersonnalisation)"
+        stem: |-
+          Le chapitre 7 construit la dépersonnalisation comme un acte le plus souvent
+          commis par D'AUTRES (réduire quelqu'un à un instrument). Comment
+          la citation, qui parle d'un refus que JE fais moi-même,
+          s'articule-t-elle avec ce mécanisme — sans s'y réduire purement et
+          simplement ?
+        reasoning: |-
+          Le chapitre 7 décrit la dépersonnalisation comme une reconnaissance sociale
+          qui peut être étendue ou retirée — et rappelle que certaines
+          luttes historiques (l'abolition de l'esclavage, l'extension des
+          droits civiques) sont, au fond, des luttes pour faire RECONNAÎTRE
+          comme personnes à part entière des individus qu'on ne traitait que
+          comme de simples individus. Ces luttes ne sont pas restées
+          purement passives : elles ont nécessairement impliqué, du côté des
+          personnes dépersonnalisées elles-mêmes, un refus actif d'accepter
+          ce traitement — exactement le geste que nomme la citation.
+
+          La citation éclaire donc un aspect que le chapitre 7, centré sur l'acte de
+          CEUX QUI dépersonnalisent, ne développe pas en détail : le point
+          de vue de la personne dépersonnalisée elle-même, et son propre
+          refus comme moment de cette lutte. Attention cependant à ne pas
+          la réduire purement et simplement au mécanisme du chapitre 7 : le chapitre 7 parle
+          d'un statut retiré ou reconnu par la société ; la citation, elle,
+          parle d'un moi qui « s'affirme » — un geste du sujet, pas
+          seulement un verdict social qui finirait par changer.
+      - id: q4
+        part: "Partie 4 — Discuter : le refus CRÉE-t-il la valeur, ou la MANIFESTE-t-il ?"
+        stem: |-
+          Si la valeur de la personne dépendait ENTIÈREMENT de son propre
+          refus actif d'être traitée comme une chose, que faudrait-il en
+          conclure pour une personne qui, comme les esclaves cités au chapitre 7, ne
+          PEUT PAS refuser (parce qu'elle en est empêchée) ? Utilise le chapitre 7 pour
+          trancher cette difficulté.
+        reasoning: |-
+          Si l'on prenait la citation au pied de la lettre — le refus actif
+          est la SOURCE, donc la condition nécessaire, de ma valeur —, il
+          faudrait en conclure qu'une personne empêchée de refuser, réduite
+          au silence ou à l'impuissance totale, n'aurait alors plus aucune
+          valeur de personne. C'est précisément ce que le chapitre 7 interdit de
+          conclure : à propos de l'esclavage, il distingue la dignité, qu'aucune
+          décision humaine ne peut retirer, de sa RECONNAISSANCE, qu'une société
+          peut refuser — y compris, donc, par l'impossibilité
+          pratique de résister ou de refuser.
+
+          Le point d'équilibre, à assumer clairement : le refus de la
+          citation ne CRÉE pas la valeur de la personne à partir de rien —
+          la dignité kantienne (chapitre 3) est déjà là, intrinsèque, que le sujet
+          l'affirme ou non. Mais le refus ACTIF, quand il est possible, est
+          ce par quoi cette valeur se manifeste, se fait reconnaître, se
+          défend contre une tentative de réification — un geste qui compte
+          moralement et politiquement (chapitre 7), sans pour autant être la
+          condition métaphysique dont dépendrait l'existence même de la
+          dignité. Confondre les deux, c'est soit rendre la dignité des plus
+          vulnérables optionnelle (dangereux), soit nier toute portée au
+          courage de ceux qui, historiquement, ont refusé (appauvrissant).
+
+  # ── r-variation — VERIFIED 2022 session normale sujet (قولة) ──────────────
+  # Reuses the OTHER verified text rather than fabricating a twin (see the
+  # file-header note on this decision). Faithful transcription of
+  # docs/sujets/philo/la-personne.md → "2022 — session normale — Sujet
+  # (قولة)". Maps directly onto R2's own content (Kant, prix vs dignité) —
+  # no new axis to bridge, unlike r-bac.
+  - id: r-variation
+    title: "Une variation pour ne pas mémoriser — pouvoir, richesse et la valeur de la personne (قولة, 2022 N)"
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — source profsalmi
+        (https://www.profsalmi.com/2024/07/Exam-nat-alwade3-albachari.html),
+        قولة (le الموضوع الثاني de cette session) ; texte transcrit
+        intégralement dans docs/sujets/philo/la-personne.md (entrée « 2022 —
+        session normale — Sujet (قولة) »), statut « vérifié — re-fetch
+        indépendant + diff conforme (agent-vérificateur, 2026-07-15) ».
+        Filière : شعب علمية — الفلسفة, 2 h, coef 2 ; مجزوءة الوضع البشري, axe
+        الشخص بوصفه قيمة. Aucun AlloSchool element/scan code n'est donné pour
+        cette entrée de la banque — cette note reprend exactement, et
+        seulement, la provenance que l'entrée fournit réellement, sans en
+        inventer une. L'arabe est l'artefact vérifié par l'agent-
+        vérificateur ; la traduction française qui l'accompagne est, de
+        l'aveu même du fichier source, une aide de travail non vérifiée au
+        même titre.
+    intro: |-
+      **Sujet réel, examen national de philosophie, 2022 (session normale) —
+      un sujet (une citation à expliquer et discuter) :**
+
+      **Texte arabe (original) :**
+
+      > « لا شيء يدعونا إلى احترام الشخص وتقديره سوى سلطته وثروته المادية. »
+      >
+      > المطلوب : انطلاقا من القولة، بيّن(ي) ما إذا كانت قيمة الشخص تتوقف، فقط، على السلطة والثروة المادية.
+
+      **Traduction de travail française :**
+
+      > « Rien ne nous invite à respecter la personne et à l'estimer, sinon son pouvoir
+      > et sa richesse matérielle. »
+      >
+      > Consigne : à partir de cette citation, montre si la valeur de la personne
+      > dépend uniquement du pouvoir et de la richesse matérielle.
+
+      Contrairement à r-bac, cette citation ne t'emmène pas sur un axe
+      nouveau : c'est exactement le terrain du chapitre 3 (Kant, prix et dignité).
+      Le but n'est pas d'apprendre autre chose, c'est de reconnaître que la
+      même argumentation s'applique quand la provocation change d'habillage
+      — ici, une affirmation cynique plutôt qu'une question ouverte.
+    questions:
+      - id: q1
+        part: "Partie 1 — Comprendre la citation"
+        stem: |-
+          Reformule ce que la citation affirme en une phrase, puis nomme
+          précisément, avec le vocabulaire du chapitre 3, le type de valeur
+          auquel elle réduit la personne.
+        reasoning: |-
+          La citation affirme une thèse cynique et radicale : RIEN d'autre
+          que le pouvoir et la richesse matérielle d'un individu ne
+          justifierait qu'on le respecte ou qu'on l'estime — pas sa
+          raison, pas son humanité, seulement ce qu'il possède ou contrôle.
+
+          Avec le vocabulaire précis du chapitre 3 : la citation réduit la valeur de
+          la personne à un pur PRIX — une valeur relative, qui varie selon
+          la fortune ou le pouvoir de chacun, et qui admet un équivalent
+          (on peut toujours imaginer quelqu'un de plus riche ou de plus
+          puissant). Elle nie, sans le nommer explicitement, toute DIGNITÉ
+          au sens kantien — cette valeur absolue, sans équivalent, que le chapitre 3
+          attribue à tout être raisonnable indépendamment de sa fortune.
+      - id: q2
+        part: "Partie 2 — Mobiliser Kant (chapitre 3)"
+        stem: |-
+          En t'appuyant précisément sur la distinction prix/dignité du chapitre 3,
+          réfute la citation : pourquoi le pouvoir et la richesse ne
+          peuvent-ils jamais, chez Kant, fonder à eux seuls le respect dû
+          à une personne ?
+        reasoning: |-
+          Le chapitre 3 est explicite : ce qui a un prix est remplaçable par un
+          équivalent — perdre l'un, c'est simplement pouvoir le remplacer
+          par un autre. Le pouvoir et la richesse matérielle sont
+          exactement de cette nature : ils varient d'un individu à l'autre,
+          se mesurent, se comparent, et n'ont donc, par définition, rien
+          d'absolu ni d'irremplaçable.
+
+          Le critère kantien du respect, lui, ne porte pas là-dessus : c'est
+          la nature raisonnable de l'être — sa capacité d'autonomie, de se
+          donner à lui-même sa propre loi — qui fonde sa dignité, valeur
+          sans équivalent. Un être humain sans pouvoir ni fortune possède
+          exactement la même nature raisonnable, et donc la même dignité,
+          qu'un être richissime et puissant : la citation confond
+          purement et simplement ces deux registres, en faisant du premier
+          (le prix, variable) le fondement de ce qui, chez Kant, ne peut
+          reposer que sur le second (la dignité, absolue).
+      - id: q3
+        part: "Partie 3 — Approfondir avec le chapitre 7 (dépersonnalisation)"
+        stem: |-
+          Si une société adoptait vraiment cette citation comme principe —
+          si elle ne respectait ses membres qu'en proportion de leur
+          pouvoir et de leur richesse — quel mécanisme du chapitre 7 se
+          mettrait en place pour ceux qui n'en ont pas ?
+        reasoning: |-
+          Une société qui appliquerait littéralement cette citation
+          réduirait, de fait, tous ceux qui manquent de pouvoir ou de
+          richesse au rang de simples individus, privés du respect dû aux
+          personnes — exactement le mécanisme que le chapitre 7 appelle
+          dépersonnalisation : cesser de traiter un être comme une fin en
+          soi, pour le réduire à un pur moyen ou objet interchangeable.
+
+          Le chapitre 7 cite l'esclavage comme l'exemple le plus radical de ce
+          mécanisme, et le rattache précisément à cette même logique : un
+          être humain « privé à la fois de dignité (réduit à un pur moyen
+          de production) ». La citation de cet exercice n'est donc pas
+          seulement une provocation abstraite : c'est, si on la prend au
+          sérieux comme principe d'organisation sociale, la justification
+          théorique exacte de ce que le chapitre 7 décrit comme l'exemple le plus
+          radical de dépersonnalisation — juger la valeur d'un être humain à
+          ce qu'il possède plutôt qu'à ce qu'il est.
+      - id: q4
+        part: "Partie 4 — Esquisser une réponse argumentée (méthode du chapitre 8)"
+        stem: |-
+          En t'appuyant sur la méthode construite au chapitre 8 (analyse des
+          termes, problématique, plan dialectique), esquisse en quelques
+          lignes comment répondre à la consigne : la valeur de la personne
+          dépend-elle uniquement du pouvoir et de la richesse matérielle ?
+        reasoning: |-
+          Analyse des termes : « rien ne nous invite... sinon » construit
+          une exclusivité radicale — la citation ne dit pas que le pouvoir
+          et la richesse COMPTENT, elle dit qu'ils sont les SEULS critères
+          possibles, niant implicitement toute dignité au sens du chapitre 3.
+          Problématique : si l'on constate, empiriquement, qu'un pouvoir ou
+          une fortune imposent souvent un respect social de fait, comment
+          concilier cette observation avec l'exigence, posée par Kant, d'un
+          respect dû à tout être raisonnable INDÉPENDAMMENT de ce qu'il
+          possède — et jusqu'où une société qui suivrait la citation à la
+          lettre risquerait-elle de basculer dans la dépersonnalisation
+          décrite au chapitre 7 ?
+
+          Plan dialectique esquissé : **I. Thèse** — dans les faits, le
+          respect social semble souvent suivre le pouvoir et la richesse ;
+          la citation ne fait, en apparence, que décrire un fonctionnement
+          social observable, pas inventer une règle absurde. **II.
+          Antithèse** — mais confondre ce fait social avec une règle MORALE
+          ferait du prix (variable, comparable) le fondement de ce qui, chez
+          Kant, ne peut reposer que sur la dignité (absolue, universelle) —
+          une confusion catégorielle, pas une simple description. **III.
+          Dépassement** — reconnaître que le pouvoir et la richesse
+          produisent, de fait, une déférence sociale n'oblige à rien
+          moralement : le chapitre 7 montre où mène, historiquement, le fait de faire
+          de cette déférence le SEUL critère de la valeur d'un être humain.
+          Retiens la structure, pas seulement le contenu : c'est le même
+          mouvement thèse/antithèse/dépassement pratiqué au chapitre 8 sur un sujet
+          différent — reconnaître cette structure sous un nouvel habillage
+          est tout le but de cette variation.

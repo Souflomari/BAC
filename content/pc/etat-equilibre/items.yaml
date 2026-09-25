@@ -1,0 +1,1757 @@
+notion: etat-equilibre
+skill_code: pc_etat_equilibre
+# Misconception inventory (backfilled in the summit-conversion pass, mirroring
+# content/pc/rc-charge/items.yaml's convention). This end bank (EE-1…EE-24) was
+# authored BEFORE the inventory existed (`misconceptions: []`). The four "gated"
+# ids below are those the summit-conversion campaign named in checkpoints.yaml
+# (cp-r0-predict/cp-r1-dynamique, cp-r2-tau-total, cp-r3-qr-evolue,
+# cp-r4-k-constante): their gold-standard per-distractor `misconception:`
+# tagging is mirrored here. The remaining ids were surfaced honestly while
+# tagging every existing distractor against what each stem actually diagnoses —
+# not invented ahead of the items. See coverage_summary at the end for honest
+# counts (gated floor met; non-gated shortfalls disclosed, not padded).
+misconceptions:
+  - id: mc.physics.pc_etat_equilibre.equilibre-est-un-arret
+    label: "« L'équilibre chimique, c'est la réaction qui s'arrête »"
+    description: "L'élève voit une grandeur observable (couleur, pH, conductivité) se figer et conclut que la réaction est terminée / que plus rien ne se produit, comme pour une transformation totale atteignant xmax."
+    contradicts_principle: "Un équilibre est DYNAMIQUE : la réaction directe et la réaction inverse continuent toutes deux, à la même vitesse. Ce qui s'arrête, c'est l'évolution nette des concentrations (leurs effets se compensent), pas les réactions. La relance immédiate après ajout d'un réactif le prouve."
+  - id: mc.physics.pc_etat_equilibre.reactif-epuise-transformation-totale
+    label: "« À l'équilibre, un réactif a été totalement épuisé (transformation forcément totale) »"
+    description: "L'élève croit que la couleur/grandeur figée signifie qu'un réactif a disparu, donc que la transformation est totale (τ = 1)."
+    contradicts_principle: "Pour une transformation limitée, τ < 1 : réactifs ET produits coexistent en quantités notables à l'équilibre. Atteindre l'équilibre ne veut pas dire épuiser un réactif."
+  - id: mc.physics.pc_etat_equilibre.une-reaction-domine
+    label: "« Une des deux réactions (directe ou inverse) s'arrête ou domine/bloque l'autre »"
+    description: "L'élève imagine qu'à l'équilibre une seule réaction se produit, ou que l'une empêche l'autre, au lieu de deux réactions de même vitesse."
+    contradicts_principle: "À l'équilibre les deux réactions se produisent SIMULTANÉMENT et à la MÊME vitesse ; aucune ne domine ni ne bloque l'autre. C'est l'égalité des vitesses, pas une domination, qui annule le bilan net."
+  - id: mc.physics.pc_etat_equilibre.tau-mal-interprete
+    label: "« Mauvaise interprétation du taux d'avancement final τ »"
+    description: "L'élève confond τ avec la fraction de réactif restant, le calcule par rapport au résidu (voire τ > 1), conclut « totale » pour τ < 1, ou croit qu'il faut connaître K pour l'obtenir."
+    contradicts_principle: "τ = xf/xmax, fraction de l'avancement MAXIMAL atteinte. Comparé à 1 : τ = 1 (ou proche) = totale ; τ nettement < 1 = limitée. Il se calcule sans K, à partir de xf (mesuré) et xmax (stœchiométrie, réactif limitant)."
+  - id: mc.physics.pc_etat_equilibre.qr-construction-erronee
+    label: "« Mauvaise construction du quotient de réaction Qr »"
+    description: "L'élève oublie les exposants (coefficients stœchiométriques), inverse réactifs et produits, inclut le solvant ou un solide pur, ou écrit une différence au lieu d'un rapport."
+    contradicts_principle: "Qr = [produits]^coeff / [réactifs]^coeff : un RAPPORT produits sur réactifs, chaque coefficient devenant un exposant, le solvant en excès et les solides purs étant exclus."
+  - id: mc.physics.pc_etat_equilibre.confond-qr-et-k
+    label: "« Qr et K sont la même chose / Qr est constant / K varie »"
+    description: "L'élève ne distingue pas le quotient Qr (variable, à tout instant) de la constante K (fixe) : il croit Qr = K en permanence, ou que K évolue au cours de la transformation."
+    contradicts_principle: "Qr se recalcule à chaque instant et évolue avec l'avancement ; K est la valeur FIXE (réaction + température) que Qr atteint SEULEMENT à l'équilibre. Qr,éq = K, mais Qr ≠ K avant l'équilibre."
+  - id: mc.physics.pc_etat_equilibre.k-depend-etat-initial
+    label: "« K dépend des concentrations initiales, du volume ou de la quantité de matière »"
+    description: "L'élève croit que changer l'état initial (concentrations, volume, dilution) change K, souvent parce que τ, lui, en dépend bel et bien."
+    contradicts_principle: "K ne dépend que de l'équation de la réaction et de la température. Deux expériences sur la même réaction à la même température donnent le même K, même si leurs τ diffèrent. Diluer change Qr, jamais K."
+  - id: mc.physics.pc_etat_equilibre.k-independant-temperature
+    label: "« K ne dépend de rien d'autre que l'équation, même pas de la température »"
+    description: "L'élève retient que K est indépendant des concentrations initiales, et sur-généralise en oubliant que K dépend aussi de la température."
+    contradicts_principle: "K dépend de DEUX choses : la réaction ET la température. Il est indépendant des concentrations initiales et du volume, mais changer la température peut changer K."
+  - id: mc.physics.pc_etat_equilibre.qr-croit-par-nature
+    label: "« Qr augmente par nature / par un facteur extérieur (volume, K qui croît) »"
+    description: "L'élève explique la croissance de Qr par une propriété universelle de Qr, un changement de volume, ou une augmentation de K, au lieu du mécanisme numérateur croissant / dénominateur décroissant."
+    contradicts_principle: "Qr croît ici parce que le sens direct l'emporte : le numérateur (produits) augmente pendant que le dénominateur (réactifs) diminue. Ce n'est ni une loi universelle, ni un effet de volume (constant), ni K qui bouge."
+  - id: mc.physics.pc_etat_equilibre.dilution-effet-universel
+    label: "« La dilution a toujours le même effet sur τ (règle universelle) »"
+    description: "L'élève croit que diluer fait toujours diminuer (ou toujours augmenter) τ, ou que diluer ne change pas Qr, indépendamment de la stœchiométrie."
+    contradicts_principle: "Diluer multiplie Qr par f^((a+b)-(c+d)) : le sens de l'effet sur τ dépend du SIGNE de (a+b)-(c+d), donc de la réaction. K, lui, ne change jamais lors d'une dilution."
+  - id: mc.physics.pc_etat_equilibre.critere-evolution-errone
+    label: "« Mauvaise application du critère d'évolution Qr,i vs K »"
+    description: "L'élève se trompe de sens (Qr,i > K interprété comme sens direct), juge sur la grandeur absolue de Qr,i au lieu de le comparer à K, ou croit qu'il faut τ pour prédire le sens."
+    contradicts_principle: "Le critère compare Qr,i à K : Qr,i < K donne le sens direct ; Qr,i > K donne le sens inverse ; Qr,i = K signale l'équilibre. Seule la comparaison à K compte (pas la valeur absolue), et τ n'est pas nécessaire."
+
+items:
+
+  # ── équilibre = réaction arrêtée (canonique) ────────────────────────────────
+  - id: EE-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.equilibre-est-un-arret
+    stem: >
+      Un système chimique atteint un état d'équilibre : ses concentrations
+      cessent de varier. Que peut-on affirmer sur les réactions directe et
+      inverse à cet instant ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elles se produisent toutes les deux, à la même vitesse l'une que l'autre."
+        correct: true
+      - id: B
+        text: "Elles se sont toutes les deux arrêtées : plus aucune transformation ne se produit."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.equilibre-est-un-arret
+        feedback: >
+          C'est confondre l'arrêt de l'évolution OBSERVABLE des concentrations
+          avec l'arrêt des réactions elles-mêmes. À l'équilibre, la réaction
+          directe et la réaction inverse continuent toutes les deux, sans
+          discontinuer : c'est justement parce qu'elles se produisent à la
+          même vitesse que leur effet net s'annule. Un équilibre chimique est
+          dynamique, jamais un arrêt.
+      - id: C
+        text: "Seule la réaction directe continue ; la réaction inverse ne s'est jamais produite."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.une-reaction-domine
+        feedback: >
+          Si seule la réaction directe continuait, les produits continueraient
+          à s'accumuler et les concentrations ne cesseraient pas de varier.
+          Pour que le bilan net soit nul, il faut que les deux réactions,
+          directe ET inverse, se produisent, à la même vitesse.
+      - id: D
+        text: "La réaction directe s'est arrêtée ; seule la réaction inverse continue."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.une-reaction-domine
+        feedback: >
+          Même erreur que « seule la réaction directe continue », dans l'autre
+          sens : si seule la
+          réaction inverse continuait, les produits seraient consommés sans
+          être reformés, et les concentrations varieraient encore. Les deux
+          réactions doivent coexister, à vitesses égales, pour que rien ne
+          bouge macroscopiquement.
+    correct_feedback: >
+      Un état d'équilibre est dynamique : la réaction directe et la réaction
+      inverse se produisent en permanence, toutes les deux, à la même vitesse.
+      Leur effet net s'annule, mais aucune des deux ne s'arrête.
+    solution: |
+      À l'équilibre, la vitesse de la réaction directe est égale à la vitesse
+      de la réaction inverse. Chaque seconde, autant de produit se forme
+      (réaction directe) qu'il s'en consomme en sens inverse (réaction
+      inverse) : le bilan net est nul, donc les concentrations globales ne
+      bougent plus. Mais microscopiquement, les deux réactions n'ont jamais
+      cessé de se produire.
+
+  # ── équilibre = réaction arrêtée (variant, expérience de perturbation) ──────
+  - id: EE-2
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.equilibre-est-un-arret
+    stem: >
+      Un mélange d'ions $Fe^{3+}$ et $SCN^-$ atteint un équilibre : sa couleur
+      rouge (due au complexe $FeSCN^{2+}$) cesse de s'intensifier. On ajoute
+      alors, sans changer le volume, une pincée supplémentaire de $SCN^-$
+      solide : la couleur s'intensifie de nouveau. Que montre cette
+      observation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que la réaction n'était pas terminée : les ions Fe3+ restants étaient toujours capables de réagir."
+        correct: true
+      - id: B
+        text: "Que la réaction était bien terminée, et que l'ajout de SCN- déclenche une toute nouvelle réaction, sans rapport avec la première."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.equilibre-est-un-arret
+        feedback: >
+          C'est la même équation qui se poursuit, pas une nouvelle réaction :
+          rien ne distingue chimiquement les ions Fe3+ présents avant et après
+          l'ajout. S'ils réagissent de nouveau, c'est que la réaction directe
+          de l'équation d'origine n'avait pas cessé d'être possible - elle
+          était seulement compensée par la réaction inverse avant l'ajout.
+      - id: C
+        text: "Que la couleur observée avant l'ajout n'était pas un vrai équilibre, puisqu'un équilibre ne peut jamais être perturbé."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.equilibre-est-un-arret
+        feedback: >
+          C'est l'inverse qui est vrai : un état d'équilibre est précisément
+          un état qui PEUT être perturbé et qui évolue alors vers un nouvel
+          équilibre - c'est ce qu'on vient d'observer. Ce n'est pas parce que
+          l'ajout de SCN- change les choses que l'état de départ n'était pas
+          un équilibre ; c'en était bien un, tant qu'on ne le perturbait pas.
+      - id: D
+        text: "Que l'ajout de SCN- a fait disparaître le Fe3+ déjà présent, sans nouvelle réaction."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.equilibre-est-un-arret
+        feedback: >
+          Rien ne fait « disparaître » du Fe3+ par simple ajout de SCN- sans
+          réaction : c'est justement la réaction directe (Fe3+ + SCN- donnant
+          davantage de complexe) qui consomme du Fe3+ ici, et c'est elle que
+          l'intensification de couleur révèle.
+    correct_feedback: >
+      Si la réaction avait vraiment cessé (dans les deux sens), les ions Fe3+
+      restants seraient inertes et l'ajout de SCN- ne changerait rien. La
+      couleur qui s'intensifie de nouveau prouve que la réaction directe était
+      toujours possible : l'équilibre précédent n'était pas un arrêt, mais un
+      point où les deux réactions se compensaient.
+    solution: |
+      L'ajout de SCN- élève instantanément [SCN-] sans changer [Fe3+] ni
+      [FeSCN2+]. Si le système était vraiment figé (aucune réaction
+      possible), rien ne devrait se passer. Or la couleur s'intensifie :
+      la réaction directe reprend, ce qui prouve que les ions Fe3+ étaient
+      toujours disponibles et réactifs avant même l'ajout - l'équilibre
+      précédent était dynamique, pas un arrêt.
+
+  # ── confondre Qr et K (canonique) ────────────────────────────────────────────
+  - id: EE-3
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
+    stem: >
+      Pour la réaction $Fe^{3+}+SCN^- \rightleftharpoons FeSCN^{2+}$ à une
+      température donnée, $K \approx 1{,}9 \times 10^3$. Dans un mélange qui
+      n'a pas encore atteint l'équilibre, on calcule $Q_r = 400$ à un instant
+      donné. Que peut-on affirmer ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$Q_r$ va augmenter, car $Q_{r,i} < K$ : le système évolue dans le sens direct."
+        correct: true
+      - id: B
+        text: "Le système est déjà à l'équilibre, puisque $Q_r$ a une valeur bien définie à cet instant."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
+        feedback: >
+          $Q_r$ est calculable à N'IMPORTE QUEL instant d'une transformation,
+          pas seulement à l'équilibre - avoir une valeur numérique ne signifie
+          pas que le système est stabilisé. L'équilibre correspond
+          précisément au cas particulier où $Q_r$ cesse de varier et devient
+          égal à $K$ ; ici, $Q_r = 400 \neq K \approx 1{,}9\times10^3$, donc ce
+          n'est pas encore le cas.
+      - id: C
+        text: "La valeur de $K$ annoncée doit être fausse, puisque $Q_r \\neq K$ pour ce mélange."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
+        feedback: >
+          $Q_r$ et $K$ ne sont censés être égaux QU'À L'ÉQUILIBRE. Tant que la
+          transformation n'a pas atteint son état final, $Q_r$ prend
+          n'importe quelle valeur différente de $K$ - ce n'est absolument pas
+          une contradiction, c'est le fonctionnement normal du quotient de
+          réaction en cours de transformation.
+      - id: D
+        text: "$Q_r$ restera égal à $400$, car cette valeur définit déjà la constante d'équilibre de cette réaction."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
+        feedback: >
+          $400$ n'est que la valeur de $Q_r$ à CET instant précis, pas la
+          constante d'équilibre : $K$ est déjà connu ($\approx 1{,}9\times10^3$)
+          et il ne dépend pas de l'instant choisi. $Q_r$, lui, va continuer
+          à évoluer (ici, à augmenter) jusqu'à rejoindre cette valeur fixe.
+    correct_feedback: >
+      $Q_{r,i} = 400 < K \approx 1{,}9\times10^3$ : le critère d'évolution
+      impose un sens direct - $Q_r$ va augmenter jusqu'à rejoindre $K$, valeur
+      qu'il n'atteindra qu'à l'équilibre.
+    solution: |
+      $Q_r$ et $K$ ne sont pas la même chose : $Q_r$ se calcule à tout
+      instant à partir des concentrations présentes, alors que $K$ est LA
+      valeur particulière que prend $Q_r$ une fois l'équilibre atteint.
+      Ici, $Q_{r,i} = 400 < K \approx 1{,}9\times10^3$ : d'après le critère
+      d'évolution, le système évolue dans le sens direct, et $Q_r$ va
+      augmenter progressivement jusqu'à devenir égal à $K$.
+
+  # ── confondre Qr et K (variant, distinction conceptuelle directe) ───────────
+  - id: EE-4
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
+    stem: >
+      Quelle affirmation décrit correctement la différence entre le quotient
+      de réaction $Q_r$ et la constante d'équilibre $K$ d'une réaction donnée,
+      à température fixée ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Qr peut être calculé à tout instant de la transformation à partir des concentrations présentes ; K est la valeur particulière de Qr une fois l'équilibre atteint."
+        correct: true
+      - id: B
+        text: "Qr et K désignent exactement la même grandeur sous deux noms différents, l'un employé pendant la réaction et l'autre à la fin."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
+        feedback: >
+          Ce sont deux grandeurs liées mais distinctes : $Q_r$ varie au cours
+          du temps (il suit l'avancement de la transformation), alors que $K$
+          est une valeur fixe, propre à la réaction et à la température,
+          atteinte seulement à l'équilibre. Confondre les deux, c'est perdre
+          l'information la plus utile de $Q_r$ : sa capacité à suivre où en
+          est le système avant l'équilibre.
+      - id: C
+        text: "K varie au cours du temps exactement comme Qr, mais plus lentement, ce qui explique qu'on le mesure une fois l'équilibre atteint."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
+        feedback: >
+          $K$ ne varie pas du tout au cours d'une transformation donnée (à
+          température fixée) : c'est $Q_r$ seul qui évolue, en se rapprochant
+          progressivement de $K$. $K$ est une constante - c'est même son nom.
+      - id: D
+        text: "Qr est une constante fixée une fois pour toutes par la réaction, alors que K varie selon l'instant précis auquel on choisit de l'évaluer.
+        Un tableau d'avancement donnerait donc toujours la même valeur de $Q_r$."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
+        feedback: >
+          C'est l'inverse exact de la réalité : c'est $Q_r$ qui varie selon
+          l'instant considéré (il dépend des concentrations présentes à cet
+          instant), et $K$ qui est fixe, déterminé uniquement par la réaction
+          et la température.
+    correct_feedback: >
+      $Q_r$ suit la transformation à chaque instant ; $K$ est la valeur figée
+      que $Q_r$ atteint quand l'équilibre s'installe : $Q_{r,eq} = K$.
+    solution: |
+      $Q_r$ est un outil de suivi : il se recalcule à chaque instant, à partir
+      des concentrations telles qu'elles sont alors, et il change de valeur
+      tant que la réaction avance. $K$ est le point d'arrivée de ce suivi :
+      la valeur unique que $Q_r$ atteint et conserve une fois l'équilibre
+      installé, fixée par la réaction et la température, jamais par l'instant
+      d'observation.
+
+  # ── K dépend de l'état initial (canonique) ──────────────────────────────────
+  - id: EE-5
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
+    stem: >
+      Deux expériences étudient la même réaction
+      $Fe^{3+}+SCN^- \rightleftharpoons FeSCN^{2+}$, à la même température,
+      mais avec des concentrations initiales différentes. L'expérience 1
+      atteint un taux d'avancement final $\tau_1 = 0{,}60$ ; l'expérience 2
+      atteint $\tau_2 = 0{,}79$. Que peut-on en conclure sur les constantes
+      d'équilibre $K_1$ et $K_2$ de ces deux expériences ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$K_1 = K_2$ : la constante d'équilibre ne dépend que de la réaction et de la température, pas des concentrations initiales, même si $\\tau$ diffère."
+        correct: true
+      - id: B
+        text: "$K_1 \\neq K_2$, car des taux d'avancement différents signalent forcément des constantes d'équilibre différentes pour les deux expériences."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
+        feedback: >
+          $\tau$ dépend bien de l'état initial (des quantités choisies au
+          départ), mais $K$ n'en dépend pas : c'est justement ce qui rend
+          possible d'avoir deux $\tau$ différents pour une seule et même
+          valeur de $K$. Un $\tau$ différent ne prouve rien sur $K$.
+      - id: C
+        text: "$K_2 > K_1$, car l'expérience 2 présente un taux d'avancement plus élevé, signe d'une réaction nettement plus favorisée dans ce cas."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
+        feedback: >
+          Un $\tau$ plus élevé dans l'expérience 2 ne vient pas d'un $K$ plus
+          grand ici : il vient du fait que les concentrations initiales de
+          l'expérience 2 sont moins équilibrées entre les deux réactifs (l'un
+          est plus en excès que dans l'expérience 1), ce qui pousse davantage
+          le réactif limitant à réagir, à $K$ strictement identique.
+      - id: D
+        text: "On ne peut rien conclure sans connaître les concentrations initiales exactes utilisées dans chacune des deux expériences comparées."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
+        feedback: >
+          C'est justement l'inverse : le principe central de ce chapitre est que
+          $K$ ne dépend PAS des concentrations initiales - donc, pour une même
+          réaction à une même température, $K_1 = K_2$ quelles que soient ces
+          concentrations, sans même avoir besoin de les connaître.
+    correct_feedback: >
+      $K$ est fixé par la réaction et la température, jamais par les
+      concentrations de départ : $K_1 = K_2$, même si $\tau_1 \neq \tau_2$.
+    solution: |
+      $\tau$ mesure jusqu'où va la réaction dans les conditions PARTICULIÈRES
+      d'une expérience donnée (il dépend des quantités initiales choisies).
+      $K$, lui, décrit la réaction elle-même, indépendamment de la façon dont
+      on l'a préparée : deux expériences sur la même réaction, à la même
+      température, donnent toujours la même valeur de $K$, même si leurs
+      concentrations initiales - et donc leurs $\tau$ - diffèrent.
+
+  # ── K dépend de l'état initial (variant, dilution) ──────────────────────────
+  - id: EE-6
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
+    stem: >
+      On dilue un mélange à l'équilibre par un facteur $f=10$. Immédiatement
+      après la dilution (avant toute nouvelle réaction), comment ont changé
+      $Q_r$ et $K$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Qr a changé (il s'écarte de sa valeur à l'équilibre) ; K, lui, n'a pas changé - c'est justement cet écart qui va faire évoluer le système vers un nouvel équilibre."
+        correct: true
+      - id: B
+        text: "K a changé, car diluer le mélange modifie la quantité de matière effectivement disponible pour réagir dans le volume considéré."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
+        feedback: >
+          $K$ ne dépend que de la réaction et de la température, jamais de la
+          quantité de matière ou du volume utilisés - diluer ne change donc
+          jamais $K$. C'est $Q_r$, calculé avec les nouvelles concentrations
+          diluées, qui s'écarte momentanément de $K$.
+      - id: C
+        text: "Qr et K ont tous les deux changé dans les mêmes proportions, si bien que le système se retrouve toujours à l'équilibre juste après la dilution.
+        Une dilution ne déplacerait donc jamais un équilibre."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
+        feedback: >
+          $K$ ne change jamais lors d'une dilution (à température constante).
+          Seul $Q_r$ change - et il ne change pas dans les mêmes proportions
+          que $K$ « resterait » puisque $K$, précisément, ne bouge pas du
+          tout. C'est cet écart entre le nouveau $Q_r$ et $K$ qui prouve que
+          le système n'est plus à l'équilibre.
+      - id: D
+        text: "Ni Qr ni K n'ont changé, puisque diluer ne fait qu'ajouter de l'eau, qui n'entre pas dans l'expression du quotient de réaction."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.dilution-effet-universel
+        feedback: >
+          Même si l'eau n'apparaît pas dans $Q_r$, diluer divise TOUTES les
+          concentrations des espèces qui, elles, apparaissent dans $Q_r$ - donc
+          $Q_r$ change bel et bien (il est multiplié par une puissance du
+          facteur de dilution). Seul $K$ reste inchangé.
+    correct_feedback: >
+      Diluer change instantanément les concentrations, donc $Q_r$ ; mais $K$,
+      fixé par la réaction et la température, ne bouge jamais. L'écart entre
+      le nouveau $Q_{r,i}$ et $K$ est ce qui déclenche l'évolution vers un
+      nouvel équilibre.
+    solution: |
+      Diviser toutes les concentrations par le facteur de dilution $f$
+      multiplie $Q_r$ par $f^{(a+b)-(c+d)}$ (les exposants de l'équation) :
+      $Q_r$ change donc immédiatement, avant même que la réaction n'ait eu le
+      temps de répondre. $K$, en revanche, ne dépend que de la réaction et de
+      la température - il reste rigoureusement le même. C'est parce que
+      $Q_{r,i} \neq K$ juste après la dilution que le système se remet à
+      évoluer, vers un nouvel équilibre où $Q_r$ rejoindra de nouveau $K$.
+
+  # ── R0 : couleur figée ≠ réactifs épuisés (léger, accroche) ─────────────────
+  - id: EE-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.reactif-epuise-transformation-totale
+    stem: >
+      Dans l'expérience de l'accroche, la couleur rouge du mélange
+      $Fe^{3+}/SCN^-$ cesse de s'intensifier, puis repart aussitôt dès qu'on
+      ajoute un peu de $SCN^-$ solide, sans changer le volume. Que peut-on en
+      conclure sur l'état du mélange juste avant cet ajout ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le mélange avait épuisé tout son SCN- ; sans cet ajout, plus rien
+          n'aurait jamais pu se former.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.reactif-epuise-transformation-totale
+        feedback: >
+          Si SCN- avait été totalement consommé, la transformation serait
+          totale ; or le Fe3+ restait, lui, disponible en quantité notable
+          avant même l'ajout, signe d'une transformation limitée, pas d'un
+          réactif totalement épuisé.
+      - id: B
+        text: >-
+          Le mélange n'avait pas cessé d'être capable de réagir : les ions
+          Fe3+ étaient toujours présents et disponibles.
+        correct: true
+      - id: C
+        text: >-
+          La réaction s'était complètement arrêtée, dans les deux sens, avant
+          l'ajout.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.equilibre-est-un-arret
+        feedback: >
+          Une réaction vraiment arrêtée dans les deux sens ne pourrait pas
+          repartir par simple ajout d'un réactif ; qu'elle reparte prouve
+          qu'elle se poursuivait déjà, seulement compensée.
+      - id: D
+        text: >-
+          L'ajout de SCN- déclenche une réaction chimique nouvelle, sans
+          rapport avec celle qui produisait la couleur au départ.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.equilibre-est-un-arret
+        feedback: >
+          C'est exactement la même équation qui se poursuit : rien ne
+          distingue chimiquement le Fe3+ présent avant et après l'ajout, donc
+          c'est la réaction directe d'origine qui reprend.
+    correct_feedback: >
+      Un mélange dont la couleur reste figée n'est pas forcément "vidé" de
+      ses réactifs : ici, le Fe3+ restait disponible, prêt à réagir dès qu'on
+      lui en donne l'occasion.
+    solution: |
+      L'ajout de SCN- élève sa concentration sans changer celle de Fe3+ ni du
+      complexe. Si la réaction avait cessé (arrêt ou réactif épuisé), rien ne
+      devrait se reproduire. Or la couleur s'intensifie : le Fe3+ était bien
+      resté disponible, ce qui écarte à la fois l'arrêt total et
+      l'épuisement du réactif.
+
+  # ── R0 : équilibre dynamique, pas un arrêt ni une domination (léger, accroche) ──
+  - id: EE-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.equilibre-est-un-arret
+    stem: >
+      Toujours dans l'accroche : une fois la couleur stabilisée, si l'on
+      n'ajoute plus rien au mélange, que peut-on prédire sur la suite,
+      uniquement à partir de ce que l'expérience a montré ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elle restera constante uniquement parce qu'il ne reste plus du tout
+          de Fe3+ ni de SCN- disponibles.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.reactif-epuise-transformation-totale
+        feedback: >
+          À l'équilibre, Fe3+ et SCN- restent présents en quantité notable
+          (transformation limitée) ; ce n'est pas leur épuisement total qui
+          explique la couleur constante.
+      - id: B
+        text: >-
+          Elle restera constante parce que la réaction inverse a pris le
+          dessus et empêche désormais complètement la réaction directe de se
+          reproduire.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.une-reaction-domine
+        feedback: >
+          Ce n'est pas qu'une réaction bloque l'autre : les deux se
+          produisent en permanence, à la même vitesse l'une que l'autre, sans
+          qu'aucune ne domine ni ne s'arrête.
+      - id: C
+        text: >-
+          Elle restera rigoureusement constante, mais cela ne signifie pas
+          qu'aucune réaction n'a plus lieu au niveau microscopique.
+        correct: true
+      - id: D
+        text: >-
+          Elle restera constante parce que les deux réactions, directe et
+          inverse, se sont toutes les deux arrêtées.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.equilibre-est-un-arret
+        feedback: >
+          Si les deux réactions s'étaient réellement arrêtées, ajouter un
+          réactif ne changerait plus rien ; or on sait qu'elles continuent,
+          à vitesses égales.
+    correct_feedback: >
+      La couleur figée traduit une compensation exacte entre deux réactions
+      qui continuent toutes les deux, pas un arrêt ni la domination de l'une
+      sur l'autre.
+    solution: |
+      Rien dans l'accroche n'indique un arrêt : la relance immédiate de la
+      couleur après ajout de SCN- montre que les deux réactions
+      continuaient déjà, à vitesses égales, sans qu'aucune ne domine ni ne
+      cesse.
+
+  # ── R0 : le mécanisme s'applique quel que soit le réactif ajouté (léger) ────
+  - id: EE-9
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.reactif-epuise-transformation-totale
+    stem: >
+      Toujours à partir de la seule expérience de l'accroche (sans aucune
+      formule pour l'instant) : si, au lieu d'ajouter du SCN-, on avait
+      ajouté un peu de Fe3+ supplémentaire au mélange stabilisé, à quoi
+      peut-on s'attendre ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Rien ne devrait se passer, car les ions SCN- disponibles avaient déjà été
+          totalement consommés avant même cet ajout de Fe3+.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.reactif-epuise-transformation-totale
+        feedback: >
+          Comme pour Fe3+, le SCN- restait présent en quantité notable à
+          l'équilibre (transformation limitée) ; son épuisement total
+          n'explique pas la couleur figée.
+      - id: B
+        text: "Rien ne devrait se passer, car la réaction est déjà terminée et le mélange a atteint son état final définitif."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.equilibre-est-un-arret
+        feedback: >
+          L'ajout de SCN- dans l'accroche a déjà montré que la réaction
+          n'était pas terminée ; le même raisonnement s'applique à un ajout
+          de Fe3+.
+      - id: C
+        text: >-
+          La couleur devrait diminuer, car ajouter davantage de réactif consommerait une
+          partie du complexe coloré déjà formé.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.une-reaction-domine
+        feedback: >
+          Ajouter un réactif ne peut pas consommer le complexe déjà formé ;
+          au contraire, davantage de réactif favorise la réaction qui LE
+          forme, pas celle qui le détruit.
+      - id: D
+        text: >-
+          Comme pour l'ajout de SCN-, la couleur devrait s'intensifier de
+          nouveau : rien n'indique que le mélange était figé, seulement
+          compensé.
+        correct: true
+    correct_feedback: >
+      Le même raisonnement s'applique quel que soit le réactif ajouté : le
+      mélange stabilisé restait capable de réagir davantage, dans le sens
+      qui consomme ce qu'on vient d'ajouter en excès.
+    solution: |
+      Ajouter du Fe3+ élève sa concentration sans rien changer aux autres,
+      exactement comme pour l'ajout de SCN- dans l'accroche. La réaction
+      directe (qui consomme Fe3+ et SCN- pour former le complexe) reprend le
+      dessus, et la couleur s'intensifie de nouveau.
+
+  # ── équilibre dynamique : pourquoi les vitesses s'égalisent (variant, causal) ──
+  - id: EE-10
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.une-reaction-domine
+    stem: >
+      D'après le mécanisme du chapitre 2, pourquoi la vitesse de la réaction
+      directe finit-elle par devenir strictement égale à celle de la
+      réaction inverse, dans le mélange $Fe^{3+}/SCN^-$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce que [Fe3+] et [SCN-] diminuent (ralentissant la réaction
+          directe) tandis que [FeSCN2+] augmente (accélérant la réaction
+          inverse), jusqu'à ce que les deux vitesses se rejoignent.
+        correct: true
+      - id: B
+        text: >-
+          Parce que la réaction directe s'arrête net dès l'instant où la réaction
+          inverse démarre à son tour dans le mélange.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.une-reaction-domine
+        feedback: >
+          Les deux réactions ne s'arrêtent jamais l'une après l'autre ;
+          elles ralentissent ou accélèrent progressivement jusqu'à égaler
+          leurs vitesses, sans qu'aucune ne s'annule.
+      - id: C
+        text: >-
+          Parce que les ions Fe3+ et SCN- finissent par être totalement consommés dans
+          le mélange, ce qui annule complètement la vitesse de la réaction directe qui
+          les mettait en jeu.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.reactif-epuise-transformation-totale
+        feedback: >
+          Dans ce mélange (tau=0,60), Fe3+ et SCN- restent présents en
+          quantité notable à l'équilibre ; ce n'est pas leur épuisement
+          total qui égalise les vitesses.
+      - id: D
+        text: >-
+          Parce qu'on a ajouté de l'eau en cours de réaction, ce qui a dilué le mélange
+          et ralenti d'autant la réaction directe.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.dilution-effet-universel
+        feedback: >
+          Aucune eau n'a été ajoutée dans cette expérience ; le
+          ralentissement de la réaction directe vient de la consommation de
+          Fe3+ et SCN- par la réaction elle-même, pas d'une dilution qui n'a
+          pas eu lieu.
+    correct_feedback: >
+      Deux évolutions opposées et progressives - pas des arrêts brusques -
+      amènent les deux vitesses à se rejoindre : c'est le mécanisme du
+      chapitre 2.
+    solution: |
+      La vitesse directe dépend de [Fe3+] et [SCN-], qui diminuent
+      progressivement (sans jamais s'annuler ici, tau=0,60) ; la vitesse
+      inverse dépend de [FeSCN2+], qui augmente. L'une ralentit pendant que
+      l'autre accélère, jusqu'à égalité exacte - ni arrêt, ni épuisement
+      total, ni facteur extérieur.
+
+  # ── sens de tau : fraction de xmax, pas fraction de réactif restant (canonique) ──
+  - id: EE-11
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+    stem: >
+      Que signifie exactement un taux d'avancement final $\tau = 0{,}60$
+      pour une réaction ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          60% des réactifs initiaux sont encore présents à l'équilibre,
+          quelle que soit la réaction.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+        feedback: >
+          $\tau$ mesure la fraction de l'avancement MAXIMAL atteinte à
+          l'équilibre, pas directement la fraction de réactif restant ; ces
+          deux nombres ne coïncident pas en général.
+      - id: B
+        text: >-
+          60% de l'avancement maximal possible a été atteint à l'équilibre ;
+          il reste, à l'équilibre, des réactifs non consommés.
+        correct: true
+      - id: C
+        text: >-
+          $\tau=0{,}60$ signifie que la transformation est totale, puisque
+          plus de la moitié de l'avancement possible a été franchi.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+        feedback: >
+          Seul $\tau=1$ (ou très proche) signale une transformation totale ;
+          $\tau=0{,}60$ signale au contraire une transformation nettement
+          limitée.
+      - id: D
+        text: >-
+          $\tau=0{,}60$ n'a de sens que si l'on connaît d'abord la valeur de
+          K de la réaction.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+        feedback: >
+          $\tau$ se calcule uniquement à partir de l'avancement final
+          observé et de l'avancement maximal théorique ($x_f/x_{max}$) ; il
+          ne nécessite pas de connaître K au préalable.
+    correct_feedback: >
+      $\tau$ compare ce qui a été atteint à ce qui aurait été possible au
+      maximum - pas ce qui reste, et pas un rapport à K.
+    solution: |
+      tau = xf/xmax : la fraction de l'avancement maximal théorique
+      réellement atteinte à l'équilibre. tau=0,60 signifie que 60% de cet
+      avancement maximal a été parcouru, et qu'il reste donc des réactifs
+      non consommés - une transformation limitée, indépendante de K.
+
+  # ── calcul de tau : par rapport à xmax, pas au résidu (variant, numérique) ──
+  - id: EE-12
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+    stem: >
+      Un mélange équimolaire ($c_0 = 5{,}0\times10^{-3}\ \text{mol/L}$ pour
+      $Fe^{3+}$ et $SCN^-$) atteint un équilibre où
+      $[FeSCN^{2+}]_{eq} = 4{,}0\times10^{-3}\ \text{mol/L}$. Détermine
+      $\tau$ et conclus sur le caractère de la transformation.
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\tau = 4{,}0\\times10^{-3}/1{,}0\\times10^{-3} = 4{,}0$."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+        feedback: >
+          $\tau$ se calcule par rapport à l'avancement MAXIMAL
+          ($x_{max}=c_0$ ici), pas par rapport à la concentration de réactif
+          restant - cette erreur mène même à $\tau>1$, physiquement
+          impossible.
+      - id: B
+        text: "$\\tau = 0{,}80$, donc la transformation est totale."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+        feedback: >
+          Seul $\tau=1$ (ou très proche) correspond à une transformation
+          totale ; $\tau=0{,}80$ laisse subsister $1{,}0\times10^{-3}$
+          mol/L de chaque réactif à l'équilibre, ce qui reste limité.
+      - id: C
+        text: >-
+          $\tau = 4{,}0\times10^{-3}/5{,}0\times10^{-3} = 0{,}80$ :
+          transformation limitée, bien que nettement avancée.
+        correct: true
+      - id: D
+        text: >-
+          $\tau$ ne peut jamais dépasser la valeur $0{,}60$ trouvée dans la
+          leçon pour cette réaction.
+          Le taux d'avancement final serait donc une propriété de la réaction seule.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+        feedback: >
+          $\tau$ n'est pas une valeur fixe attachée à la réaction - elle
+          dépend des concentrations initiales choisies ; ce qui reste fixe
+          pour une même réaction et température, c'est K, pas $\tau$.
+    correct_feedback: >
+      $\tau = [FeSCN^{2+}]_{eq}/c_0 = 0{,}80$ : nettement inférieur à 1,
+      donc une transformation limitée, malgré son avancement important.
+    solution: |
+      xmax=c0=5,0e-3 mol/L (stoechiométrie 1:1, quantités égales). tau =
+      4,0e-3/5,0e-3 = 0,80. Il reste, à l'équilibre, [Fe3+]eq=[SCN-]eq=
+      1,0e-3 mol/L de chaque réactif : transformation limitée, pas totale.
+
+  # ── critère totale/limitée : comparer tau à 1, pas autre chose (canonique) ──
+  - id: EE-13
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+    stem: >
+      Pour décider si une transformation chimique est totale ou limitée,
+      quel est le bon critère ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Observer si une grandeur macroscopique (couleur, pH...) cesse de
+          varier : si elle se stabilise, la transformation est totale.
+          Aucun équilibre chimique ne pourrait donc être observé au laboratoire.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+        feedback: >
+          Une grandeur macroscopique se stabilise dès que l'équilibre est
+          atteint, que la transformation soit totale OU limitée ; la
+          stabilisation seule ne permet pas de trancher.
+      - id: B
+        text: "Comparer Qr à K : si Qr=K, la transformation est totale."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
+        feedback: >
+          $Q_r=K$ signale seulement que l'équilibre est atteint, quelle que
+          soit sa position ; c'est $\tau$, comparé à 1, qui tranche entre
+          totale et limitée.
+      - id: C
+        text: >-
+          Regarder si l'équation est écrite avec une double flèche : elle
+          signale alors nécessairement $\tau < 0{,}5$.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+        feedback: >
+          La double flèche signale seulement une transformation non totale
+          ($\tau<1$), pas un seuil précis comme $0{,}5$ ; $\tau$ peut valoir
+          $0{,}99$ comme $0{,}05$ avec la même notation.
+      - id: D
+        text: >-
+          Comparer le taux d'avancement final $\tau$ à 1 : $\tau=1$ (ou très
+          proche) signale une transformation totale ; $\tau<1$ nettement,
+          une transformation limitée.
+        correct: true
+    correct_feedback: >
+      Seul $\tau$, comparé à 1, distingue rigoureusement une transformation
+      totale d'une transformation limitée.
+    solution: |
+      Le critère est tau = xf/xmax comparé à 1. Ni la stabilisation d'une
+      grandeur observable (qui se produit dans les deux cas), ni la
+      comparaison Qr/K (qui signale seulement l'équilibre, pas sa
+      position), ni le type de flèche seul ne donnent un seuil précis.
+
+  # ── construction de Qr : exposants = coefficients, produits/réactifs (canonique) ──
+  - id: EE-14
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.qr-construction-erronee
+    stem: >
+      Pour la réaction $2A + B \rightleftharpoons 3C$ (toutes les espèces
+      dissoutes), quelle est l'expression correcte du quotient de réaction
+      $Q_r$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$Q_r = [C]^3/([A]^2[B])$"
+        correct: true
+      - id: B
+        text: "$Q_r = [C]/([A][B])$"
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.qr-construction-erronee
+        feedback: >
+          Chaque concentration doit être élevée à la puissance de son
+          coefficient stoechiométrique - ici 3 pour C, 2 pour A - sinon
+          l'expression ne reflète plus l'équation.
+      - id: C
+        text: "$Q_r = [A]^2[B]/[C]^3$"
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.qr-construction-erronee
+        feedback: >
+          $Q_r$ se définit comme produits sur réactifs, pas l'inverse ;
+          inverser le rapport inverse aussi le sens de variation de $Q_r$ au
+          cours de la réaction.
+      - id: D
+        text: "$Q_r = [C]^3 - [A]^2[B]$"
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.qr-construction-erronee
+        feedback: >
+          Un quotient est un RAPPORT (une division), pas une différence ;
+          $Q_r$ se construit en divisant le produit des concentrations des
+          produits par celui des réactifs.
+    correct_feedback: >
+      Produits sur réactifs, chaque coefficient devenant un exposant :
+      c'est exactement la règle de construction de $Q_r$.
+    solution: |
+      Qr = (concentrations des produits, exposant = coefficient) /
+      (concentrations des réactifs, exposant = coefficient) =
+      [C]^3/([A]^2[B]).
+
+  # ── construction de Qr : exclusion du solvant / solide pur (variant) ────────
+  - id: EE-15
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.qr-construction-erronee
+    stem: >
+      Pour une réaction en solution aqueuse impliquant l'eau comme solvant,
+      en large excès, et une espèce dissoute $X$, comment l'eau doit-elle
+      apparaître dans l'expression de $Q_r$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elle doit apparaître, mais seulement si elle est un réactif et
+          pas si elle est un produit.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.qr-construction-erronee
+        feedback: >
+          Le critère n'est pas "réactif ou produit" mais "la concentration
+          varie-t-elle de façon mesurable" : le solvant en excès (ou un
+          solide pur) est omis dans les deux rôles.
+      - id: B
+        text: >-
+          Elle n'apparaît pas dans $Q_r$, car sa concentration ne varie
+          pratiquement pas au cours de la réaction (elle est en large excès
+          en tant que solvant).
+        correct: true
+      - id: C
+        text: >-
+          Elle doit apparaître au dénominateur, avec un exposant égal à son
+          coefficient stoechiométrique, comme n'importe quel réactif.
+          Diluer un mélange aqueux changerait donc la valeur de $K$.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.qr-construction-erronee
+        feedback: >
+          Le solvant en large excès ne voit pas sa concentration varier de
+          façon mesurable ; on l'omet de $Q_r$, contrairement aux espèces
+          dissoutes.
+      - id: D
+        text: >-
+          Elle n'apparaît jamais dans aucune expression de $Q_r$, quelle que
+          soit la réaction, même si elle n'est pas en large excès.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.qr-construction-erronee
+        feedback: >
+          La règle d'exclusion ne vaut que si l'eau est en large excès (ou
+          un solide pur) ; si sa concentration variait de façon
+          significative, elle devrait apparaître dans $Q_r$.
+    correct_feedback: >
+      Seules les espèces dont la concentration varie réellement avec
+      l'avancement entrent dans $Q_r$ ; le solvant en excès (ou un solide
+      pur) en est exclu.
+    solution: |
+      Le critère d'exclusion de Qr porte sur la variation réelle de
+      concentration, pas sur le statut réactif/produit ni sur une règle
+      universelle sans condition : un solvant en large excès garde une
+      concentration quasi constante, donc n'apparaît pas dans Qr.
+
+  # ── pourquoi Qr croît : mécanisme, pas règle universelle (variant) ──────────
+  - id: EE-16
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.qr-croit-par-nature
+    stem: >
+      Au cours d'une transformation qui part sans aucun produit
+      ($Q_{r,i}=0$ au départ), pourquoi $Q_r$ ne peut-il qu'augmenter, tant
+      que la réaction directe l'emporte sur l'inverse ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce que $Q_r$ est par nature une fonction croissante du temps, quelle que
+          soit la réaction considérée et quel que soit son point de départ.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.qr-croit-par-nature
+        feedback: >
+          $Q_r$ n'augmente que si la réaction directe l'emporte à cet
+          instant (ici, parce qu'on part sans produit) ; si le système
+          partait avec un excès de produit, $Q_r$ diminuerait vers K.
+      - id: B
+        text: >-
+          Parce que le volume du mélange diminue au cours de la réaction, ce qui fait
+          mécaniquement grimper toutes les concentrations en présence dans le milieu.
+          Une estérification en solution se ferait donc dans un volume qui se réduit.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.qr-croit-par-nature
+        feedback: >
+          Le volume est supposé constant tout au long de la transformation ;
+          c'est la consommation des réactifs et la formation du produit, pas
+          un changement de volume, qui fait évoluer $Q_r$.
+      - id: C
+        text: >-
+          Parce que le numérateur de $Q_r$ (concentrations des produits)
+          augmente pendant que son dénominateur (concentrations des
+          réactifs) diminue : un tel rapport ne peut qu'augmenter.
+        correct: true
+      - id: D
+        text: >-
+          Parce que la constante $K$ augmente elle-même progressivement à mesure que la
+          réaction avance, entraînant $Q_r$ avec elle vers le haut.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
+        feedback: >
+          K est fixée par la réaction et la température ; elle ne varie
+          jamais au cours d'une transformation donnée - c'est $Q_r$ seul qui
+          évolue, en se rapprochant de la valeur fixe K.
+    correct_feedback: >
+      Un numérateur qui grandit divisé par un dénominateur qui rétrécit :
+      $Q_r$ ne peut que croître dans ce cas précis, tant que le sens direct
+      l'emporte.
+    solution: |
+      [FeSCN2+] (numérateur) augmente pendant que [Fe3+] et [SCN-]
+      (dénominateur) diminuent, tant que la réaction directe domine : le
+      rapport Qr ne peut donc qu'augmenter - ni par une propriété
+      universelle de Qr, ni par un changement de volume, ni parce que K
+      bougerait.
+
+  # ── K dépend aussi de la température, pas seulement des concentrations (variant) ──
+  - id: EE-17
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.k-independant-temperature
+    stem: >
+      On répète la même réaction
+      $Fe^{3+}+SCN^- \rightleftharpoons FeSCN^{2+}$ deux fois, avec
+      exactement les mêmes concentrations initiales, mais à deux
+      températures différentes (25 °C puis 40 °C). Que peut-on affirmer sur
+      les deux constantes d'équilibre obtenues, $K_1$ (à 25 °C) et $K_2$
+      (à 40 °C) ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $K_1 = K_2$ nécessairement, puisque la constante d'équilibre $K$ ne dépend
+          jamais de rien d'autre que de l'équation de la réaction elle-même.
+          Chauffer un mélange ne changerait donc pas sa constante d'équilibre.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.k-independant-temperature
+        feedback: >
+          K dépend de DEUX choses : la réaction ET la température - il est
+          indépendant des concentrations initiales et du volume, mais pas de
+          la température.
+      - id: B
+        text: >-
+          Comme les concentrations initiales sont rigoureusement identiques dans les
+          deux cas, on a forcément $K_1 = K_2$ à l'arrivée.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
+        feedback: >
+          Ce ne sont pas les concentrations initiales qui fixent K, qu'elles
+          soient identiques ou non ; c'est la température qui peut le faire
+          varier, et ici elle diffère justement entre les deux expériences.
+      - id: C
+        text: >-
+          On ne peut rien dire de ces deux valeurs, car $K$ n'est définie qu'à une seule
+          température de référence, et jamais à $40\,^\circ\text{C}$.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.k-independant-temperature
+        feedback: >
+          K est définissable à n'importe quelle température fixée, y
+          compris 40 °C ; ce n'est pas une grandeur réservée à une unique
+          température de référence.
+      - id: D
+        text: >-
+          Rien ne garantit qu'elles soient égales : $K$ ne dépend jamais que de la
+          réaction et de la température, donc un changement de température peut changer
+          sa valeur.
+        correct: true
+    correct_feedback: >
+      K est fixé par la réaction ET la température ; changer l'une des deux
+      peut changer K - seules les concentrations initiales et le volume
+      n'ont aucun effet sur lui.
+    solution: |
+      K ne dépend que de deux choses : l'équation de la réaction et la
+      température. Les deux expériences partagent la même équation mais pas
+      la même température : rien n'impose donc K1=K2, contrairement au cas
+      où seules les concentrations initiales changeraient (K resterait alors
+      identique).
+
+  # ── sens d'évolution : Qr,i > K impose le sens inverse (variant, numérique) ──
+  - id: EE-18
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.critere-evolution-errone
+    stem: >
+      Toujours pour $Fe^{3+}+SCN^- \rightleftharpoons FeSCN^{2+}$
+      ($K \approx 1{,}9\times10^3$ à cette température), un autre mélange,
+      pas encore à l'équilibre, présente à un instant donné
+      $[Fe^{3+}] = 5{,}0\times10^{-4}\ \text{mol/L}$,
+      $[SCN^-] = 2{,}0\times10^{-4}\ \text{mol/L}$,
+      $[FeSCN^{2+}] = 3{,}0\times10^{-3}\ \text{mol/L}$. Calcule $Q_{r,i}$
+      à cet instant et prédis le sens d'évolution.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $Q_{r,i} = 3{,}0\times10^4 > K$ : le système évolue dans le sens
+          inverse (le complexe se dissocie).
+        correct: true
+      - id: B
+        text: >-
+          $Q_{r,i} = 3{,}0\times10^4 > K$, donc le système évolue dans le
+          sens direct, car un $Q_r$ grand signifie qu'il reste "de la marge"
+          pour avancer davantage.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.critere-evolution-errone
+        feedback: >
+          C'est l'inverse : un $Q_{r,i}$ plus grand que K signale un excès
+          de produit par rapport à l'équilibre, ce qui pousse le système
+          vers le sens INVERSE, pas vers davantage de formation de produit.
+      - id: C
+        text: >-
+          En calculant $Q_r = [Fe^{3+}][SCN^-]/[FeSCN^{2+}] = 3{,}3\times10^{-5}$,
+          on trouve $Q_{r,i}<K$, donc le sens direct.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.qr-construction-erronee
+        feedback: >
+          $Q_r$ se construit produits sur réactifs, pas l'inverse ; avec la
+          bonne expression, $Q_{r,i}=3{,}0\times10^4$, largement supérieur à
+          K, ce qui inverse la conclusion.
+      - id: D
+        text: >-
+          Puisque $Q_{r,i}$ est différent de K, on ne peut rien prédire sans
+          connaître aussi $\tau$ de ce mélange.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+        feedback: >
+          Le critère d'évolution ne repose que sur la comparaison entre
+          $Q_{r,i}$ et K ; $\tau$ n'est ni nécessaire ni utile pour prédire
+          un sens d'évolution.
+    correct_feedback: >
+      $Q_{r,i}=3{,}0\times10^4$, très supérieur à $K\approx1{,}9\times10^3$ :
+      excès de complexe par rapport à l'équilibre, donc sens inverse.
+    solution: |
+      Qr,i = 3,0e-3/(5,0e-4 x 2,0e-4) = 3,0e-3/1,0e-7 = 3,0e4. Comme
+      Qr,i > K≈1,9e3, le critère impose un sens inverse : une partie du
+      complexe va se dissocier jusqu'à ce que Qr redescende à K.
+
+  # ── Qr,i = K : équilibre, pas un déclencheur de sens (canonique) ────────────
+  - id: EE-19
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.confond-qr-et-k
+    stem: >
+      Un système présente, à un instant donné, $Q_{r,i}$ exactement égal à
+      $K$. Que peut-on affirmer avec certitude ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le système va évoluer dans le sens inverse, car atteindre $K$ signifie qu'il a
+          « trop avancé » et qu'il doit maintenant reculer.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.critere-evolution-errone
+        feedback: >
+          Atteindre $Q_{r,i}=K$ n'est pas "trop avancer" : c'est le point
+          d'équilibre stable de la réaction, sans excès de produit ni de
+          réactif - aucune évolution nette ne s'ensuit.
+      - id: B
+        text: >-
+          Le système est à l'équilibre à cet instant : macroscopiquement,
+          plus aucune évolution nette ne se produit (même si les réactions
+          directe et inverse continuent, à vitesses égales).
+        correct: true
+      - id: C
+        text: >-
+          Le système va immédiatement évoluer dans le sens direct, car l'égalité
+          $Q_{r,i}=K$ est justement la condition qui déclenche le départ de la réaction
+          directe.
+          Un système déjà à l'équilibre se remettrait donc à évoluer.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.critere-evolution-errone
+        feedback: >
+          $Q_{r,i}=K$ signale l'absence d'évolution nette, ni dans le sens
+          direct ni dans le sens inverse - ce n'est le déclencheur d'aucun
+          des deux sens.
+      - id: D
+        text: >-
+          On ne peut rien affirmer sans connaître également le taux d'avancement final
+          $\tau$ atteint par ce système à l'équilibre.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+        feedback: >
+          Le critère $Q_{r,i}=K$ suffit à lui seul pour conclure que le
+          système est à l'équilibre ; $\tau$ décrit autre chose (jusqu'où
+          l'avancement est allé), pas le critère d'évolution instantané.
+    correct_feedback: >
+      $Q_{r,i}=K$ signale l'équilibre : les vitesses directe et inverse
+      sont égales, et plus aucune évolution nette des concentrations ne se
+      produit.
+    solution: |
+      Par définition, Qr,eq=K. Si Qr,i=K à un instant donné, ce système est
+      déjà à l'équilibre : le critère (Qr,i<K sens direct, Qr,i>K sens
+      inverse) ne s'applique dans aucun des deux sens - il n'y a plus
+      d'évolution nette.
+
+  # ── dilution : le signe de (a+b)-(c+d) dépend de la réaction (variant) ──────
+  - id: EE-20
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.dilution-effet-universel
+    stem: >
+      Pour une réaction $A \rightleftharpoons B + C$ (un seul réactif, deux
+      produits, toutes espèces dissoutes), on dilue un mélange à
+      l'équilibre par un facteur $f=5$. Quel est l'effet, immédiatement
+      après la dilution, sur $Q_r$ comparé à $K$, puis sur $\tau$ une fois
+      le nouvel équilibre atteint ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Diluer multiplie $Q_r$ par $f$ (ici par 5), comme dans le cas
+          Fe3+/SCN- vu en cours, donc $\tau$ diminue ici aussi.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.dilution-effet-universel
+        feedback: >
+          L'effet de la dilution dépend du signe de (somme des coefficients
+          réactifs) moins (somme des coefficients produits), qui vaut ici
+          1-2=-1, contrairement à l'exemple Fe3+/SCN- du cours (2-1=+1) :
+          ici, diluer DIMINUE $Q_r$.
+      - id: B
+        text: >-
+          Diluer ne change ni $Q_r$ ni K, puisque K est indépendant du
+          volume et $Q_r$, calculé à partir des mêmes concentrations
+          relatives, l'est donc aussi.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.dilution-effet-universel
+        feedback: >
+          K seul est indépendant du volume ; $Q_r$ se recalcule avec les
+          concentrations RÉELLES après dilution, qui ont bien été divisées
+          par f - $Q_r$ change donc immédiatement.
+      - id: C
+        text: >-
+          Diluer divise $Q_r$ par $f$ (ici par 5) : le système se retrouve
+          avec $Q_{r,i}<K$, donc il évolue dans le sens direct, et $\tau$
+          augmente par rapport à sa valeur avant dilution.
+        correct: true
+      - id: D
+        text: >-
+          Diluer fait bien baisser $Q_r$ sous K, donc le système évolue
+          dans le sens direct ; mais cela n'a aucun effet sur $\tau$,
+          puisque seul K détermine $\tau$.
+          Deux mélanges de compositions différentes auraient donc le même taux final.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+        feedback: >
+          C'est l'inverse : K reste fixe, mais $\tau$, lui, dépend de
+          l'état initial (ici, de la dilution) - l'évolution vers le sens
+          direct qui vient d'être prédite va justement faire augmenter
+          $\tau$.
+    correct_feedback: >
+      Ici $(a+b)-(c+d)=1-2=-1$ : diluer DIVISE $Q_r$ par f, contrairement
+      au cas Fe3+/SCN- du cours - le sens de l'effet dépend de la
+      stoechiométrie exacte de chaque réaction, jamais d'une règle
+      universelle.
+    solution: |
+      Diviser les concentrations par f multiplie Qr par f^((a+b)-(c+d)) =
+      f^(-1) = 1/f ici (un seul réactif, deux produits) : Qr diminue, se
+      retrouve inférieur à K, donc le système évolue dans le sens direct -
+      et tau augmente par rapport à avant dilution. K, lui, ne change
+      jamais.
+
+  # ── dilution : (a+b)=(c+d) → aucun effet, pas une règle universelle (variant) ──
+  - id: EE-21
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.dilution-effet-universel
+    stem: >
+      On ajoute de l'eau pure (sans rien ajouter d'autre) à un mélange en
+      équilibre pour lequel $(a+b) = (c+d)$ exactement (autant d'espèces
+      dissoutes du côté réactifs que du côté produits). Quel est l'effet de
+      cette dilution ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Diluer fait toujours diminuer $\tau$, quelle que soit la
+          réaction, car ajouter de l'eau dilue nécessairement le produit
+          davantage que les réactifs.
+          Le sens du déplacement ne dépendrait donc pas des coefficients de l'équation.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.dilution-effet-universel
+        feedback: >
+          L'effet de la dilution sur $\tau$ dépend du signe de
+          $(a+b)-(c+d)$, pas d'une règle universelle ; ici, ce nombre est
+          nul, donc diluer ne modifie ni $Q_r$ ni $\tau$.
+      - id: B
+        text: >-
+          Diluer change K, car K dépend lui aussi des concentrations, donc
+          du volume utilisé.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
+        feedback: >
+          K ne dépend que de la réaction et de la température, jamais des
+          concentrations ni du volume - diluer ne change jamais K, quel que
+          soit le signe de $(a+b)-(c+d)$.
+      - id: C
+        text: >-
+          Diluer fait toujours augmenter $\tau$, car ajouter de l'eau
+          favorise nécessairement la formation de produits supplémentaires.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.dilution-effet-universel
+        feedback: >
+          Ce n'est vrai que lorsque le sens direct augmente le nombre
+          d'espèces dissoutes ($(a+b)<(c+d)$) ; ici $(a+b)=(c+d)$, donc
+          diluer ne favorise aucun sens.
+      - id: D
+        text: >-
+          Aucun effet : $Q_r$ n'est pas modifié par la dilution dans ce cas
+          particulier (l'exposant $(a+b)-(c+d)$ vaut 0), donc le système
+          reste à l'équilibre, et $\tau$ ne change pas.
+        correct: true
+    correct_feedback: >
+      Quand $(a+b)=(c+d)$, le facteur $f^{(a+b)-(c+d)}$ vaut $f^0=1$ :
+      diluer ne change ni $Q_r$ ni la position de l'équilibre.
+    solution: |
+      Diluer multiplie Qr par f^((a+b)-(c+d)). Ici cet exposant est nul,
+      donc ce facteur vaut 1 : Qr reste rigoureusement égal à K après
+      dilution, le système demeure à l'équilibre, et tau ne change pas - un
+      cas particulier, pas une absence générale d'effet de la dilution.
+
+  # ── application bac : construction de Qr pour une réaction nouvelle (chromate/dichromate) ──
+  - id: EE-22
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.qr-construction-erronee
+    stem: >
+      Pour l'équilibre entre ions chromate et dichromate,
+      $2\,CrO_4^{2-} + 2\,H^+ \rightleftharpoons Cr_2O_7^{2-} + H_2O$, en
+      solution aqueuse (l'eau étant le solvant, en large excès), quelle est
+      l'expression correcte du quotient de réaction $Q_r$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$Q_r = [Cr_2O_7^{2-}]/([CrO_4^{2-}]^2[H^+]^2)$"
+        correct: true
+      - id: B
+        text: "$Q_r = [Cr_2O_7^{2-}][H_2O]/([CrO_4^{2-}]^2[H^+]^2)$"
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.qr-construction-erronee
+        feedback: >
+          L'eau est ici le solvant, en large excès : sa concentration ne
+          varie pas de façon mesurable, donc elle n'apparaît pas dans
+          $Q_r$, comme toute espèce solvant ou solide pur.
+      - id: C
+        text: "$Q_r = [Cr_2O_7^{2-}]/([CrO_4^{2-}][H^+])$"
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.qr-construction-erronee
+        feedback: >
+          Chaque concentration doit être élevée à la puissance de son
+          coefficient stoechiométrique - ici 2 pour $CrO_4^{2-}$ et pour
+          $H^+$ - sinon $Q_r$ ne reflète plus la bonne équation.
+      - id: D
+        text: "$Q_r = [CrO_4^{2-}]^2[H^+]^2/[Cr_2O_7^{2-}]$"
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.qr-construction-erronee
+        feedback: >
+          $Q_r$ se définit comme produits sur réactifs, pas l'inverse ; ici
+          le produit dissous est $Cr_2O_7^{2-}$ (l'eau étant exclue), et les
+          réactifs sont $CrO_4^{2-}$ et $H^+$.
+    correct_feedback: >
+      Produits (hors solvant) sur réactifs, chaque coefficient devenant un
+      exposant : $[Cr_2O_7^{2-}]$ au numérateur,
+      $[CrO_4^{2-}]^2[H^+]^2$ au dénominateur.
+    solution: |
+      L'eau, solvant en large excès, est exclue de Qr. Les coefficients (2
+      pour CrO4^2- et H+, 1 pour Cr2O7^2-) deviennent des exposants :
+      Qr = [Cr2O7^2-]/([CrO4^2-]^2[H+]^2).
+
+  # ── application bac : tau se calcule via le réactif limitant (variant, Cu2+/NH3) ──
+  - id: EE-23
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+    stem: >
+      On mélange une solution d'ions $Cu^{2+}$ et une solution d'ammoniac
+      $NH_3$ pour former le complexe
+      $Cu^{2+} + 4\,NH_3 \rightleftharpoons Cu(NH_3)_4^{2+}$. Les
+      concentrations initiales valent
+      $c_1 = 2{,}0\times10^{-3}\ \text{mol/L}$ ($Cu^{2+}$, réactif
+      limitant) et $c_2 = 1{,}20\times10^{-2}\ \text{mol/L}$ ($NH_3$, en
+      excès). À l'équilibre,
+      $[Cu(NH_3)_4^{2+}]_{eq} = 1{,}6\times10^{-3}\ \text{mol/L}$.
+      Détermine $\tau$ (par rapport au réactif limitant) et conclus sur le
+      caractère de la transformation.
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\tau = 1{,}6\\times10^{-3}/1{,}20\\times10^{-2} \\approx 0{,}13$ : transformation très peu avancée.
+        Le taux d'avancement se calculerait donc sans passer par l'avancement maximal."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+        feedback: >
+          $\tau$ se calcule par rapport à l'avancement MAXIMAL, fixé par le
+          réactif LIMITANT ($Cu^{2+}$, en défaut face à la stoechiométrie
+          1:4) - pas par rapport au réactif en excès ($NH_3$).
+      - id: B
+        text: >-
+          $\tau = 1{,}6\times10^{-3}/2{,}0\times10^{-3} = 0{,}80$ :
+          transformation limitée ($\tau<1$), bien qu'assez avancée.
+        correct: true
+      - id: C
+        text: "$\\tau=0{,}80$, donc la transformation est totale, l'avancement final étant proche de 1."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+        feedback: >
+          Seul $\tau=1$ (ou très proche) signale une transformation
+          totale ; $\tau=0{,}80$ laisse subsister $0{,}4\times10^{-3}$
+          mol/L de $Cu^{2+}$ non consommé, ce qui reste limité.
+      - id: D
+        text: "$\\tau = 1{,}6\\times10^{-3}/(2{,}0\\times10^{-3}/4) = 3{,}2$ : transformation plus que totale."
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+        feedback: >
+          L'avancement maximal est directement fixé par la quantité
+          initiale du réactif limitant $Cu^{2+}$ (coefficient 1) - il ne
+          faut pas le diviser par le coefficient d'un AUTRE réactif ($NH_3$,
+          coefficient 4).
+    correct_feedback: >
+      $x_{max}=c_1=2{,}0\times10^{-3}\ \text{mol/L}$ ($Cu^{2+}$ limitant) ;
+      $\tau=1{,}6\times10^{-3}/2{,}0\times10^{-3}=0{,}80$ : transformation
+      limitée.
+    solution: |
+      Cu2+ est limitant (il faudrait 4xc1=8,0e-3 mol/L de NH3, largement
+      disponible). xmax=c1=2,0e-3 mol/L. tau = 1,6e-3/2,0e-3 = 0,80 < 1 :
+      transformation limitée.
+
+  # ── application bac : sens d'évolution, comparaison à K pas à l'intuition (variant) ──
+  - id: EE-24
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.critere-evolution-errone
+    stem: >
+      Pour la réaction $Cu^{2+} + 4\,NH_3 \rightleftharpoons Cu(NH_3)_4^{2+}$
+      étudiée ci-dessus, $K \approx 4{,}1\times10^{9}$ à cette température.
+      On prépare un nouveau mélange, à un instant donné, pas encore à
+      l'équilibre, avec $[Cu^{2+}] = 1{,}0\times10^{-3}\ \text{mol/L}$,
+      $[NH_3] = 1{,}0\times10^{-2}\ \text{mol/L}$,
+      $[Cu(NH_3)_4^{2+}] = 5{,}0\times10^{-4}\ \text{mol/L}$. Calcule
+      $Q_{r,i}$ et prédis le sens d'évolution.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          En calculant $Q_r = ([Cu^{2+}][NH_3]^4)/[Cu(NH_3)_4^{2+}] =
+          2{,}0\times10^{-8}$, on trouve $Q_{r,i}<K$, donc le sens direct.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.qr-construction-erronee
+        feedback: >
+          $Q_r$ se construit produits sur réactifs, pas l'inverse ; avec la
+          bonne expression, $Q_{r,i}=5{,}0\times10^7$, ce qui, comparé à K,
+          confirme un sens direct, mais pour la bonne raison.
+      - id: B
+        text: >-
+          $Q_{r,i}=5{,}0\times10^7$ est un très grand nombre, donc le
+          système évolue dans le sens inverse.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.critere-evolution-errone
+        feedback: >
+          Ce n'est pas la grandeur absolue de $Q_{r,i}$ qui compte, mais sa
+          comparaison à K : bien que $5{,}0\times10^7$ semble grand, il
+          reste très inférieur à $K\approx4{,}1\times10^9$, ce qui impose un
+          sens direct.
+      - id: C
+        text: >-
+          $Q_{r,i} = 5{,}0\times10^7 < K \approx 4{,}1\times10^9$ : le
+          système évolue dans le sens direct (davantage de complexe se
+          forme).
+        correct: true
+      - id: D
+        text: >-
+          On ne peut pas conclure sans connaître aussi $\tau$ de ce nouveau
+          mélange.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+        feedback: >
+          Comparer $Q_{r,i}$ à K suffit, à lui seul, à prédire le sens
+          d'évolution ; $\tau$ ne décrit qu'un état final, pas un instant
+          intermédiaire.
+    correct_feedback: >
+      $Q_{r,i}=5{,}0\times10^7$, bien inférieur à $K\approx4{,}1\times10^9$ :
+      le système évolue dans le sens direct, vers davantage de complexe.
+    solution: |
+      Qr,i = 5,0e-4/(1,0e-3 x (1,0e-2)^4) = 5,0e-4/1,0e-11 = 5,0e7. Comme
+      Qr,i < K≈4,1e9, le critère impose un sens direct : le complexe va
+      continuer à se former jusqu'à ce que Qr rejoigne K.
+
+  # ── K indépendant de l'état initial (backfill gated : k-depend-etat-initial 2→3) ──
+  - id: EE-25
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
+    stem: >
+      On étudie une même réaction en solution aqueuse, à température constante.
+      Parmi les opérations suivantes appliquées au système, laquelle modifie la
+      valeur de la constante d'équilibre $K$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Doubler toutes les concentrations initiales des réactifs, puisqu'on
+          engage alors deux fois plus de matière dans la réaction.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
+        feedback: >
+          $K$ ne dépend pas de la quantité de matière engagée : doubler les
+          concentrations initiales change l'état initial (et donc $\tau$), mais
+          pas $K$, qui reste fixé par la réaction et la température.
+      - id: B
+        text: "Aucune de ces opérations : à température fixée, $K$ ne dépend ni des concentrations initiales, ni du volume."
+        correct: true
+      - id: C
+        text: >-
+          Diluer le mélange en ajoutant de l'eau distillée, car cela modifie
+          toutes les concentrations qui figurent dans l'expression de $K$.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
+        feedback: >
+          Diluer modifie les concentrations à un instant donné (donc $Q_r$),
+          mais pas $K$ : au nouvel équilibre atteint après dilution, on retrouve
+          exactement la même valeur de $K$. Seul $Q_r$ s'écarte momentanément.
+      - id: D
+        text: >-
+          Retirer une partie du solvant, ce qui concentre les espèces et fait donc augmenter $K$.
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
+        feedback: >
+          $K$ est indépendant des concentrations : concentrer ou diluer la solution déplace le système — $Q_{r}$ s'écarte de $K$, puis y revient — mais ne change jamais la valeur de $K$ elle-même, fixée par la seule température, à réaction donnée.
+    correct_feedback: >
+      À température fixée, aucune de ces opérations ne change $K$ : ni doubler
+      les concentrations, ni diluer, ni comprimer. $K$ ne dépend que de la
+      réaction et de la température ; c'est $\tau$ (et la valeur instantanée de
+      $Q_r$) qui répond à l'état initial.
+    solution: |
+      K ne dépend que de l'équation de la réaction et de la température. Doubler
+      les concentrations initiales, diluer, ou changer le volume modifient
+      l'état initial (donc tau et la valeur instantanee de Qr), mais jamais K.
+      Seul un changement de température peut modifier K. La bonne réponse est
+      donc « aucune de ces opérations ».
+
+# ──────────────────────────────────────────────────────────────────────────────
+# COVERAGE SUMMARY (summit-conversion campaign — etat-equilibre floor backfill)
+#
+# This end bank (EE-1…EE-24) was authored BEFORE the misconception inventory
+# existed (`misconceptions: []`). This pass: (1) built the inventory by tagging
+# every existing distractor against what each stem actually diagnoses — not
+# invented ahead of the items; (2) added an item-level `primary_misconception`
+# to every item and a per-distractor `misconception:` field to every
+# correct:false choice (additive only — no stem, feedback, correct answer,
+# solution or rung was altered or removed); (3) added ONE new item (EE-25) to
+# close the last gated floor (k-depend-etat-initial, 2→3). Counts below are
+# ITEM-LEVEL (one item = one count, by its `primary_misconception`).
+# ──────────────────────────────────────────────────────────────────────────────
+  # Ajoutés le 2026-09-05 : deux familles siégeaient à UN item du banc, donc
+  # très en dessous du plancher de 3 — `k-independant-temperature` et
+  # `qr-croit-par-nature`. Les deux items les visent ensemble, sur deux
+  # situations distinctes : deux températures comparées (EE-26), puis une
+  # température changée en cours de route (EE-27).
+  - id: EE-26
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.k-independant-temperature
+    stem: >
+      On réalise deux fois la même transformation limitée, à partir du MÊME
+      état initial : une fois à $25\,^\circ\text{C}$, une fois à
+      $60\,^\circ\text{C}$. On mesure des taux d'avancement finaux différents.
+      Comment l'expliquer ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La constante d'équilibre $K$ dépend de la température : à
+          $60\,^\circ\text{C}$ elle ne vaut plus la même chose, donc l'état
+          d'équilibre atteint n'est pas le même
+        correct: true
+      - id: B
+        text: >-
+          $K$ ne dépend que de l'équation de la réaction, jamais des conditions :
+          les deux expériences ont donc le même $K$, et l'écart mesuré ne peut
+          venir que d'une erreur d'expérience
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.k-independant-temperature
+        feedback: >
+          $K$ est indépendant de l'ÉTAT INITIAL — concentrations, volume,
+          quantités engagées — et c'est ce qui en fait une constante utile. Mais
+          il dépend de la TEMPÉRATURE : c'est la seule grandeur qui le modifie.
+          Sur-généraliser « $K$ ne dépend de rien » revient à effacer la seule
+          dépendance qu'il ait.
+      - id: C
+        text: >-
+          $Q_r$ croît par nature au cours du temps ; à $60\,^\circ\text{C}$ la
+          réaction est simplement plus rapide, donc $Q_r$ a eu le temps de
+          monter plus haut avant la mesure
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.qr-croit-par-nature
+        feedback: >
+          $Q_r$ n'a aucune tendance propre à croître : il monte ici parce que
+          les produits (au numérateur) se forment pendant que les réactifs (au
+          dénominateur) se consomment. Et surtout, la mesure est faite À
+          L'ÉQUILIBRE : attendre plus longtemps ne changerait plus rien. La
+          vitesse décide de QUAND l'équilibre est atteint, jamais d'OÙ il se
+          situe.
+      - id: D
+        text: >-
+          Les concentrations initiales étant les mêmes, seul le volume du
+          récipient peut avoir changé, et c'est lui qui a déplacé $K$
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
+        feedback: >
+          Le volume fait partie de l'état initial, et $K$ n'en dépend pas :
+          changer le volume peut modifier $\tau$, jamais $K$. L'énoncé précise
+          d'ailleurs que l'état initial est identique ; la seule chose qui
+          diffère est la température.
+    correct_feedback: >
+      $K$ dépend de la température, et d'elle seule. Deux expériences menées au
+      même état initial mais à deux températures n'ont donc pas la même
+      constante d'équilibre, donc pas le même état final : c'est ce que mesure
+      l'écart des taux d'avancement.
+    solution: |
+      Ce que $K$ IGNORE : les concentrations initiales, le volume, les
+      quantités de matière engagées. C'est précisément ce qui en fait une
+      constante caractéristique de la réaction — deux états initiaux différents,
+      à la même température, conduisent à la même valeur de $K$.
+
+      Ce dont $K$ DÉPEND : la température, et elle seule.
+
+      Ici l'état initial est identique et la température diffère : c'est donc
+      $K$ qui a changé, donc l'état d'équilibre, donc $\tau$.
+
+      Le piège tient à une bonne leçon mal bornée. « $K$ est indépendant de
+      l'état initial » est vrai ; « $K$ est indépendant de tout » est faux.
+
+  - id: EE-27
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.qr-croit-par-nature
+    stem: >
+      Un système chimique a atteint son état d'équilibre : $Q_r$ ne varie plus
+      et vaut $K$. On élève alors la température, sans rien ajouter ni retirer.
+      On observe que le système évolue de nouveau, jusqu'à un nouvel état où
+      $Q_r$ se stabilise à une autre valeur. Quelle explication est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          L'élévation de température a modifié $K$ ; le système n'est donc plus
+          à l'équilibre et évolue jusqu'à ce que $Q_r$ rejoigne la nouvelle
+          valeur de $K$
+        correct: true
+      - id: B
+        text: >-
+          $Q_r$ s'est remis à croître de lui-même, comme il le fait toujours
+          tant qu'une réaction n'est pas complètement terminée
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.qr-croit-par-nature
+        feedback: >
+          $Q_r$ n'est pas une grandeur qui croît par nature : c'est un rapport
+          calculé à partir des concentrations du moment. Il augmente quand les
+          produits se forment, il DIMINUE quand la réaction évolue en sens
+          inverse — ce qui est le cas ici si la nouvelle valeur de $K$ est plus
+          petite. Sa variation suit le système, elle ne le précède pas.
+      - id: C
+        text: >-
+          $K$ ne dépendant que de l'équation de la réaction, il n'a pas bougé :
+          c'est le chauffage qui a dilaté le mélange, et cette dilution seule
+          explique la nouvelle valeur de $Q_r$
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.k-independant-temperature
+        feedback: >
+          $K$ dépend de la température : c'est même sa seule dépendance. Une
+          dilatation ne peut d'ailleurs pas expliquer un état stable
+          différent — si $K$ était inchangé, le système reviendrait à
+          $Q_r = K$, donc à la même valeur qu'avant.
+      - id: D
+        text: >-
+          Le système évolue nécessairement dans le sens direct, puisqu'un
+          système hors d'équilibre consomme toujours ses réactifs
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.critere-evolution-errone
+        feedback: >
+          Le sens d'évolution se lit dans la comparaison de $Q_{r,i}$ et de
+          $K$, pas dans une règle universelle : si $Q_{r,i} < K$ le système
+          évolue dans le sens direct, si $Q_{r,i} > K$ dans le sens inverse.
+          Ici, tout dépend de la façon dont la nouvelle valeur de $K$ se situe
+          par rapport à l'ancienne.
+    correct_feedback: >
+      Élever la température change $K$. Le système, dont le $Q_r$ valait
+      l'ancien $K$, se retrouve hors d'équilibre et évolue — dans le sens
+      direct ou inverse selon que le nouveau $K$ est plus grand ou plus petit —
+      jusqu'à ce que $Q_r$ rejoigne cette nouvelle valeur.
+    solution: |
+      **Avant.** $Q_r = K(T_1)$ : le système est à l'équilibre, plus rien
+      n'évolue à l'échelle macroscopique.
+
+      **On chauffe.** $K$ dépend de la température : il passe de $K(T_1)$ à
+      $K(T_2) \neq K(T_1)$. Les concentrations, elles, n'ont pas eu le temps de
+      changer — donc $Q_r$ vaut encore $K(T_1)$.
+
+      **Le critère d'évolution s'applique alors :**
+      $$
+      Q_r < K(T_2) \Rightarrow \text{sens direct} \qquad
+      Q_r > K(T_2) \Rightarrow \text{sens inverse}
+      $$
+
+      **Après.** Le système s'arrête quand $Q_r = K(T_2)$ : un nouvel équilibre,
+      à une nouvelle valeur.
+
+      À retenir : $Q_r$ ne pousse rien. C'est un indicateur, pas un moteur.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05. L'ancien déclarait franchement `floor_met: false` et
+# listait six familles non gatées sous le plancher — mais il comptait au
+# `primary_misconception` (une tête d'affiche par item), pas au distracteur
+# comme le fait la chaîne. Sous la convention de la chaîne, quatre de ces six
+# étaient déjà au plancher ; il restait `k-independant-temperature` (1 item) et
+# `qr-croit-par-nature` (1). EE-26 et EE-27 les referment. Tableau GÉNÉRÉ,
+# gardé par web/scripts/resume-couverture.mjs.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.physics.pc_etat_equilibre.equilibre-est-un-arret:               { count: 5, items: [EE-1, EE-2, EE-7, EE-8, EE-9] }
+    mc.physics.pc_etat_equilibre.reactif-epuise-transformation-totale: { count: 4, items: [EE-7, EE-8, EE-9, EE-10] }
+    mc.physics.pc_etat_equilibre.une-reaction-domine:                  { count: 4, items: [EE-1, EE-8, EE-9, EE-10] }
+    mc.physics.pc_etat_equilibre.tau-mal-interprete:                   { count: 8, items: [EE-11, EE-12, EE-13, EE-18, EE-19, EE-20, EE-23, EE-24] }
+    mc.physics.pc_etat_equilibre.qr-construction-erronee:              { count: 5, items: [EE-14, EE-15, EE-18, EE-22, EE-24] }
+    mc.physics.pc_etat_equilibre.confond-qr-et-k:                      { count: 4, items: [EE-3, EE-4, EE-13, EE-16] }
+    mc.physics.pc_etat_equilibre.k-depend-etat-initial:                { count: 6, items: [EE-5, EE-6, EE-17, EE-21, EE-25, EE-26] }
+    mc.physics.pc_etat_equilibre.k-independant-temperature:            { count: 3, items: [EE-17, EE-26, EE-27] }
+    mc.physics.pc_etat_equilibre.qr-croit-par-nature:                  { count: 3, items: [EE-16, EE-26, EE-27] }
+    mc.physics.pc_etat_equilibre.dilution-effet-universel:             { count: 4, items: [EE-6, EE-10, EE-20, EE-21] }
+    mc.physics.pc_etat_equilibre.critere-evolution-errone:             { count: 4, items: [EE-18, EE-19, EE-24, EE-27] }
+  total_items: 27
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 3
+    R2: 3
+    R3: 4
+    R4: 5
+    R5: 3
+    R6: 3
+    R7: 3
+  gated_misconceptions:
+    # Les familles nommées par les portes de conversion du sommet
+    # (checkpoints.yaml) — un ÉCHO formatif du banc, qui ne compte pas deux
+    # fois : cp-r0-predict et cp-r1-dynamique visent equilibre-est-un-arret,
+    # cp-r2-tau-total vise tau-mal-interprete, cp-r3-qr-evolue vise
+    # confond-qr-et-k, cp-r4-k-constante vise k-depend-etat-initial.
+    - mc.physics.pc_etat_equilibre.equilibre-est-un-arret
+    - mc.physics.pc_etat_equilibre.tau-mal-interprete
+    - mc.physics.pc_etat_equilibre.confond-qr-et-k
+    - mc.physics.pc_etat_equilibre.k-depend-etat-initial
+  gated_floor: 3
+  gated_floor_met: true
+  honest_state: >-
+    Les onze misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Deux y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

@@ -1,0 +1,202 @@
+# Attempt-first exercises (summit-conversion campaign — maths).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2022 session
+# normale, Mathématiques SExp BIOF, code NS 22F, AlloSchool element/136586 —
+# statut « vérifié » in docs/sujets/maths/denombrement.md). r-variation is a
+# fresh anti-memorisation twin (same skills — tirage simultané, combinaisons,
+# principes additif/multiplicatif, probabilité comme quotient de dénombrements —
+# with a people/committee surface instead of an urn, different numbers, and the
+# « au moins » question solved by the COMPLEMENT rather than by summing cases;
+# status not-applicable).
+
+notion: denombrement
+
+exercises:
+  # ── r-bac — the VERIFIED 2022 national sujet (Ex. 3, SExp) ────────────────
+  # Faithful transcription of docs/sujets/maths/denombrement.md → "2022 —
+  # session normale — Exercice 3". Urne de 10 boules (3 blanches, 3 vertes,
+  # 4 rouges) ; tirage simultané de 3. Quatre événements (aucune rouge ;
+  # 3 blanches ou 3 vertes ; exactement une rouge ; au moins deux rouges) qui
+  # font travailler, dans l'ordre : la combinaison comme univers, le principe
+  # additif (« ou » d'événements incompatibles), le principe multiplicatif
+  # (« et » de deux groupes), et la réunion de cas (« au moins »).
+  - id: r-bac
+    title: "Exercice de type bac — tirage simultané de 3 boules, probabilités par dénombrement (2022)"
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national SExp BIOF, AlloSchool
+        element/136586, code NS 22F (Exercice 3, « Calcul des probabilités » ;
+        barème 3 points). Filière SVT et Sciences Physiques, option française.
+        Transcription vérifiée (docs/sujets/maths/denombrement.md, statut
+        « vérifié » par agent-vérificateur-adversarial le 2026-07-12 : source
+        re-fetchée et diff caractère-par-caractère conforme au scan). 2022
+        session normale.
+    intro: |-
+      **Calcul des probabilités (examen national, session normale 2022).**
+
+      Une urne contient dix boules : trois boules blanches, trois boules vertes et quatre boules rouges, indiscernables au toucher. On tire au hasard et simultanément trois boules de l'urne.
+
+      Point de méthode qui gouverne tout l'exercice : le mot **« simultanément »** signale un tirage **sans ordre et sans remise** — chaque résultat est un sous-ensemble de 3 boules, et on le compte avec une **combinaison** $\binom{n}{p}$. Comme les boules sont indiscernables au toucher, tous ces tirages sont **équiprobables** : chaque probabilité demandée sera donc un **quotient de dénombrements**, $\dfrac{\text{card}(E)}{\text{card}(\Omega)}$, et ce dénominateur $\text{card}(\Omega)$ — le nombre total de tirages possibles — sera le même pour toutes les questions. À toi de le calculer.
+
+      On considère les événements :
+      - $A$ : « n'obtenir aucune boule rouge » ;
+      - $B$ : « obtenir trois boules blanches ou trois boules vertes » ;
+      - $C$ : « obtenir exactement une boule rouge » ;
+      - $D$ : « obtenir au moins deux boules rouges ».
+    questions:
+      - id: q1
+        part: "Partie A — L'univers et deux comptages directs"
+        stem: |-
+          **(0,75 pt)** Montrer que $p(A) = \dfrac{1}{6}$, où $A$ est l'événement « n'obtenir aucune boule rouge ».
+        reasoning: |-
+          « Aucune boule rouge » veut dire que les trois boules tirées sont toutes prises **parmi les non-rouges**. Il y a $3 + 3 = 6$ boules non-rouges (les 3 blanches et les 3 vertes). Le tirage étant simultané, on compte un sous-ensemble de 3 parmi ces 6 : c'est $\binom{6}{3}$, sans ordre.
+
+          Le dénominateur, lui, est le nombre total de tirages possibles de 3 boules parmi les 10 : $\text{card}(\Omega) = \binom{10}{3} = 120$. L'équiprobabilité (boules indiscernables) autorise alors $p(A) = \dfrac{\text{card}(A)}{\text{card}(\Omega)}$.
+        steps:
+          - math: '\text{card}(\Omega) = \binom{10}{3} = \dfrac{10 \times 9 \times 8}{3 \times 2 \times 1} = 120'
+            note: "Tirage simultané de 3 boules parmi 10 : une combinaison, sans ordre. C'est le dénominateur commun à toutes les questions."
+          - math: '\text{card}(A) = \binom{6}{3} = \dfrac{6 \times 5 \times 4}{3 \times 2 \times 1} = 20'
+            note: "Aucune rouge : les 3 boules sont choisies parmi les 6 non-rouges (3 blanches et 3 vertes)."
+          - math: 'p(A) = \dfrac{\text{card}(A)}{\text{card}(\Omega)} = \dfrac{20}{120} = \dfrac{1}{6}'
+            note: "Équiprobabilité : quotient du nombre de cas favorables par le nombre de cas possibles."
+      - id: q2
+        stem: |-
+          **(0,75 pt)** Calculer $p(B)$, où $B$ est l'événement « obtenir trois boules blanches ou trois boules vertes ».
+        reasoning: |-
+          Le mot **« ou »** relie ici deux événements qui **ne peuvent pas se produire en même temps** : un tirage de 3 boules ne peut pas être à la fois « les 3 blanches » et « les 3 vertes ». Ces deux événements sont **incompatibles**, donc c'est le **principe additif** — on additionne leurs cardinaux, on ne les multiplie pas.
+
+          Or il n'y a qu'une seule façon de prendre « les 3 blanches » (on prend les 3 blanches, il n'y en a pas d'autres) : $\binom{3}{3} = 1$. De même $\binom{3}{3} = 1$ pour les 3 vertes.
+        steps:
+          - math: '\binom{3}{3} = 1'
+            note: "Une seule façon de choisir les 3 boules blanches : les prendre toutes les trois."
+          - math: '\binom{3}{3} = 1'
+            note: "Une seule façon de choisir les 3 boules vertes."
+          - math: '\text{card}(B) = 1 + 1 = 2'
+            note: "« 3 blanches » et « 3 vertes » sont incompatibles : principe additif, on additionne les deux cas."
+          - math: 'p(B) = \dfrac{2}{120} = \dfrac{1}{60}'
+            note: "Même dénominateur 120 que pour toutes les autres questions."
+      - id: q3
+        part: "Partie B — Un tirage « mixte » : le principe multiplicatif"
+        stem: |-
+          **(0,75 pt)** Montrer que $p(C) = \dfrac{1}{2}$, où $C$ est l'événement « obtenir exactement une boule rouge ».
+        reasoning: |-
+          « Exactement une rouge » se décompose en deux choix qui se font **ensemble** : choisir **la** boule rouge parmi les 4 rouges, **et** choisir les **2 autres** boules parmi les 6 non-rouges. Le mot-clé « et » entre deux groupes distincts déclenche le **principe multiplicatif** : on multiplie les deux combinaisons.
+
+          Attention à ne pas additionner ($\binom{4}{1} + \binom{6}{2}$ n'aurait aucun sens ici) : chaque façon de choisir la rouge se combine avec chacune des façons de choisir les deux non-rouges.
+        steps:
+          - math: '\binom{4}{1} = 4'
+            note: "Choisir la seule boule rouge parmi les 4 rouges."
+          - math: '\binom{6}{2} = \dfrac{6 \times 5}{2 \times 1} = 15'
+            note: "Choisir les 2 autres boules parmi les 6 non-rouges (blanches ou vertes)."
+          - math: '\text{card}(C) = \binom{4}{1} \times \binom{6}{2} = 4 \times 15 = 60'
+            note: "« une rouge ET deux non-rouges » : deux choix qui se combinent, principe multiplicatif."
+          - math: 'p(C) = \dfrac{60}{120} = \dfrac{1}{2}'
+            note: "Quotient de dénombrements, dénominateur 120."
+      - id: q4
+        part: "Partie C — « Au moins » : réunir tous les cas favorables"
+        stem: |-
+          **(0,75 pt)** Calculer $p(D)$, où $D$ est l'événement « obtenir au moins deux boules rouges ».
+        reasoning: |-
+          « Au moins deux rouges » ne se compte pas d'un seul geste : il faut d'abord le **traduire en cas disjoints**. « Au moins deux » signifie « exactement deux » **ou** « exactement trois » — et il n'y a pas plus de trois rouges possibles dans un tirage de 3. Ces deux cas sont incompatibles, donc principe additif : on compte chacun, puis on additionne.
+
+          Chaque cas est lui-même un comptage **multiplicatif** (des rouges **et** des non-rouges), comme à la question précédente. On n'oublie pas $\binom{6}{0} = 1$ pour le cas « trois rouges » : choisir zéro boule parmi les non-rouges, il n'y a qu'une façon de ne rien prendre.
+        steps:
+          - math: '\binom{4}{2} \times \binom{6}{1} = 6 \times 6 = 36'
+            note: "Exactement 2 rouges : 2 rouges parmi 4, ET 1 non-rouge parmi 6."
+          - math: '\binom{4}{3} \times \binom{6}{0} = 4 \times 1 = 4'
+            note: "Exactement 3 rouges : 3 rouges parmi 4, et aucune non-rouge (une seule façon de n'en choisir aucune)."
+          - math: '\text{card}(D) = 36 + 4 = 40'
+            note: "« au moins 2 » = « exactement 2 » ou « exactement 3 » : deux cas incompatibles, on additionne."
+          - math: 'p(D) = \dfrac{40}{120} = \dfrac{1}{3}'
+            note: "Contrôle : p(0 rouge) + p(1 rouge) + p(2 rouges) + p(3 rouges) = (20 + 60 + 36 + 4)/120 = 120/120 = 1. Cohérent."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ────────
+  # Same deep skills as r-bac (tirage simultané, combinaisons, principe additif
+  # « ou » d'incompatibles, principe multiplicatif « et » de deux groupes,
+  # probabilité comme quotient de dénombrements) but on a PEOPLE surface
+  # (choisir un comité) instead of an urn, different numbers, and — the twist —
+  # the « au moins » question is solved by the COMPLEMENT (1 − p(aucun) − p(un))
+  # rather than by summing the favourable cases. So the student cannot recopy
+  # the 2022 solution and must recognise the same machinery under a new skin.
+  - id: r-variation
+    title: "Variation fraîche — un comité de 3, probabilités par dénombrement"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2022, sourcé). Nombres et
+        contexte choisis pour rester exacts, vérifiés à la main.
+    intro: |-
+      Même machinerie que le sujet précédent (tirage simultané, combinaisons, probabilité comme quotient de dénombrements), mais on change complètement l'habillage : on ne tire plus des boules dans une urne, on choisit des personnes dans un club. Le but est que tu ne recopies pas le sujet 2022 : à toi de reconnaître, sous l'habillage, quelle machinerie s'applique.
+
+      Un club compte huit membres : cinq filles et trois garçons. On choisit au hasard et simultanément trois membres pour former un comité (sans distinction de rôle).
+
+      L'univers $\Omega$ est l'ensemble des comités possibles — choisir 3 personnes parmi 8, sans ordre. On considère les événements :
+      - $A$ : « le comité ne compte aucun garçon » ;
+      - $B$ : « le comité est composé de trois filles ou de trois garçons » ;
+      - $C$ : « le comité compte exactement un garçon » ;
+      - $D$ : « le comité compte au moins deux garçons ».
+    questions:
+      - id: q1a
+        part: "Partie A — L'univers et deux comptages directs"
+        stem: |-
+          Calculer $p(A)$, la probabilité que le comité ne compte aucun garçon.
+        reasoning: |-
+          Comme pour « aucune boule rouge » dans le sujet, « aucun garçon » veut dire que les trois membres sont pris **parmi les cinq filles**. On compte donc un sous-ensemble de 3 parmi 5 : $\binom{5}{3}$, sans ordre. Le dénominateur est $\text{card}(\Omega) = \binom{8}{3} = 56$.
+        steps:
+          - math: '\text{card}(\Omega) = \binom{8}{3} = \dfrac{8 \times 7 \times 6}{3 \times 2 \times 1} = 56'
+            note: "Choisir 3 membres parmi 8, sans ordre : une combinaison. Dénominateur commun."
+          - math: '\text{card}(A) = \binom{5}{3} = \dfrac{5 \times 4 \times 3}{3 \times 2 \times 1} = 10'
+            note: "Aucun garçon : les 3 membres sont pris parmi les 5 filles."
+          - math: 'p(A) = \dfrac{10}{56} = \dfrac{5}{28}'
+            note: "Quotient de dénombrements."
+      - id: q1b
+        stem: |-
+          Calculer $p(B)$, la probabilité que le comité soit composé de trois filles ou de trois garçons.
+        reasoning: |-
+          Même geste que pour « 3 blanches ou 3 vertes » : le « ou » relie deux événements **incompatibles** (un comité de 3 ne peut pas être à la fois « 3 filles » et « 3 garçons »), donc principe additif. On compte $\binom{5}{3}$ façons d'avoir 3 filles et $\binom{3}{3}$ façon d'avoir 3 garçons, puis on additionne.
+        steps:
+          - math: '\binom{5}{3} = 10'
+            note: "Nombre de comités formés de 3 filles (parmi les 5 filles)."
+          - math: '\binom{3}{3} = 1'
+            note: "Une seule façon de prendre les 3 garçons."
+          - math: '\text{card}(B) = 10 + 1 = 11'
+            note: "« 3 filles » et « 3 garçons » sont incompatibles : principe additif."
+          - math: 'p(B) = \dfrac{11}{56}'
+            note: "Dénominateur 56."
+      - id: q2
+        part: "Partie B — Un comité « mixte » : le principe multiplicatif"
+        stem: |-
+          Calculer $p(C)$, la probabilité que le comité compte exactement un garçon.
+        reasoning: |-
+          « Exactement un garçon » se décompose en deux choix simultanés : choisir **le** garçon parmi les 3, **et** choisir les **2 autres** membres parmi les 5 filles. Le « et » entre deux groupes distincts déclenche le principe multiplicatif : on multiplie les deux combinaisons.
+        steps:
+          - math: '\binom{3}{1} = 3'
+            note: "Choisir le seul garçon parmi les 3 garçons."
+          - math: '\binom{5}{2} = \dfrac{5 \times 4}{2 \times 1} = 10'
+            note: "Choisir les 2 autres membres parmi les 5 filles."
+          - math: '\text{card}(C) = \binom{3}{1} \times \binom{5}{2} = 3 \times 10 = 30'
+            note: "« un garçon ET deux filles » : principe multiplicatif."
+          - math: 'p(C) = \dfrac{30}{56} = \dfrac{15}{28}'
+            note: "Quotient de dénombrements."
+      - id: q3
+        part: "Partie C — « Au moins » par le complémentaire"
+        stem: |-
+          Calculer $p(D)$, la probabilité que le comité compte au moins deux garçons. *(On pourra passer par l'événement contraire.)*
+        reasoning: |-
+          Ici on éclaire la même idée que le sujet sous un autre angle. « Au moins deux garçons » est l'événement **contraire** de « au plus un garçon », c'est-à-dire de « aucun garçon **ou** exactement un garçon ». Or ces deux-là, on les a déjà comptés : $\text{card}(A) = 10$ (aucun garçon) et $\text{card}(C) = 30$ (exactement un garçon), incompatibles entre eux.
+
+          Donc $p(D) = 1 - p(\text{aucun}) - p(\text{un seul})$. C'est souvent plus court que de sommer « exactement 2 » et « exactement 3 ». On peut d'ailleurs le vérifier par le comptage direct.
+        steps:
+          - math: 'p(\text{aucun garçon}) + p(\text{un garçon}) = \dfrac{10}{56} + \dfrac{30}{56} = \dfrac{40}{56}'
+            note: "Les cas « au plus un garçon » : déjà obtenus aux questions A et C, et incompatibles entre eux."
+          - math: 'p(D) = 1 - \dfrac{40}{56} = \dfrac{16}{56} = \dfrac{2}{7}'
+            note: "Passage au complémentaire : p(contraire) = 1 − p(événement)."
+          - math: '\binom{3}{2} \times \binom{5}{1} + \binom{3}{3} \times \binom{5}{0} = 3 \times 5 + 1 \times 1 = 16'
+            note: "Contrôle par comptage direct : exactement 2 garçons (3 × 5) plus exactement 3 garçons (1). On retrouve bien 16, soit 16/56 = 2/7."

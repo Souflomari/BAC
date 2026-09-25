@@ -1,0 +1,115 @@
+# ════════════════════════════════════════════════════════════════════════
+# Exam-shape reference — Moroccan science baccalauréat (2 Bac)
+# Reconciled from two independent research syntheses. Companion to the
+# per-filière curriculum boundaries in docs/cadre/curriculum/ (see ADR 0018).
+# This file = exam SHAPE (streams × coefficients × durations × weights ×
+# habileté ratios × format). The boundaries = exam CONTENT (savoir-faire).
+#
+# Provenance:
+#   research-consensus → both syntheses agree (secondary sources).
+#   cadre p.N          → confirmed from an official cadre PDF we hold.
+#   contested          → secondary sources disagree; value adopted as WORKING
+#                        consensus, PENDING the official MEN per-stream
+#                        coefficient table.
+# ════════════════════════════════════════════════════════════════════════
+
+grading:
+  formula:                          # research-consensus
+    examen_national:   0.50         # 2e Bac, standardized nationwide
+    examen_regional:   0.25         # taken at end of 1ère Bac
+    controle_continu:  0.25         # 2e Bac
+  presel_concours:                  # post-bac concours use national/regional only
+    examen_national:   0.75
+    examen_regional:   0.25
+  pass_threshold: 10                # /20
+  eliminatory:
+    national_subject_below: 5       # <5/20 in any national subject → automatic fail
+    regional_below: 3               # <3/20 regional → eliminatory (no regional rattrapage)
+  rattrapage_band: [8, 9.99]        # moyenne in this band → rattrapage session
+  mentions:                         # /20 thresholds
+    passable:   [10, 12]
+    assez_bien: [12, 14]
+    bien:       [14, 16]
+    tres_bien:  [16, 18]
+    excellent:  [18, 20]
+
+# Niveaux d'habileté — cognitive-demand ratios. DIFFER by subject AND stream.
+habiletes_ratios:
+  maths_sciences_maths:             # SM-A / SM-B — research-consensus
+    application_directe: 40
+    application_non_explicite: 40
+    synthese_situations_inhabituelles: 20
+  maths_sciences_exp:               # PC / SVT — cadre p.6 (2022 maths cadre)
+    application_directe: 50
+    application_non_explicite: 35
+    synthese_situations_inhabituelles: 15
+  physique_chimie_sciences_exp:     # cadre p.18-19 (2025 PC cadre) — subject-specific split
+    utilisation_ressources: 50
+    application_experimentale: 15
+    resolution_probleme: 35
+
+streams:
+
+  sciences_mathematiques_a:
+    nom: "Sciences Mathématiques A"
+    subjects:
+      mathematiques:    { coefficient: 9, duration_h: 4 }   # research-consensus
+      physique_chimie:  { coefficient: 7, duration_h: 4 }   # research-consensus
+      svt:              { coefficient: 3, duration_h: 2 }   # research-consensus
+      philosophie:      { coefficient: 2 }
+      langue_etrangere: { coefficient: 2 }
+
+  sciences_mathematiques_b:
+    nom: "Sciences Mathématiques B"
+    subjects:
+      mathematiques:      { coefficient: 9, duration_h: 4 }
+      physique_chimie:    { coefficient: 7, duration_h: 4 }
+      sciences_ingenieur: { coefficient: 3 }                # replaces SVT
+      philosophie:        { coefficient: 2 }
+      langue_etrangere:   { coefficient: 2 }
+
+  sciences_physiques:                                       # the "PC" stream
+    nom: "Sciences Physiques (PC)"
+    subjects:
+      physique_chimie:  { coefficient: 7, duration_h: 3 }   # duration: cadre p.4 (2025 PC cadre)
+      mathematiques:    { coefficient: 7, duration_h: 3, source: contested, note: "coefficient contested 7-vs-5; adopted 7 pending official MEN per-stream table" }
+      svt:              { coefficient: 5, duration_h: 3 }   # svt coef = 5 not 2 — research-consensus
+      philosophie:      { coefficient: 2 }
+      langue_etrangere: { coefficient: 2 }
+
+  sciences_vie_terre:
+    nom: "Sciences de la Vie et de la Terre (SVT)"
+    subjects:
+      svt:              { coefficient: 7, duration_h: 3 }   # research-consensus
+      physique_chimie:  { coefficient: 5, duration_h: 3 }
+      mathematiques:    { coefficient: 7, duration_h: 3, source: contested, note: "coefficient contested 7-vs-3/5; adopted 7 pending official MEN per-stream table" }
+      philosophie:      { coefficient: 2 }
+      langue_etrangere: { coefficient: 2 }
+
+# Subject-level domain weights (high-level; sous-domaine detail lives in the
+# curriculum boundary files — and must match them, same source).
+domain_weights:
+  maths_sciences_exp:               # cadre p.6 (2022)
+    analyse: 55
+    algebre_geometrie: 45           # produit scalaire/vectoriel 15 + nombres complexes & probabilités 30
+  physique_chimie_sciences_exp:     # cadre p.18 (2025)
+    physique: 67                    # Mécanique 27 / Électricité 21 / Ondes 11 / Nucléaire 8
+    chimie: 33                      # Non totales 10 / Sens d'évolution 10 / Méthode contrôle 7 / Rapides-lentes 6
+  svt_stream:                       # research-consensus
+    restitution_connaissances: 25   # Part I (5/20)
+    raisonnement_communication: 75  # Part II (15/20)
+
+exam_format:                        # research-consensus + cadre confirmations
+  physique_chimie:
+    structure: "3 à 4 exercices thématiques indépendants"   # cadre p.4 (2025)
+    calculatrice: "scientifique non programmable"
+  svt:
+    structure: "Partie I restitution (5 pts) + Partie II raisonnement & communication graphique (15 pts)"
+  mathematiques:
+    structure: "plusieurs exercices ; question de synthèse terminale (niveau 3)"
+
+session_2026:                       # research-consensus (MEN 2025-2026 calendar)
+  national_normale: "2026-06-04 .. 2026-06-06"
+  national_resultats: "2026-06-17"
+  national_rattrapage: "2026-07-02 .. 2026-07-04"
+  regional: "2026-06-01 .. 2026-06-02"

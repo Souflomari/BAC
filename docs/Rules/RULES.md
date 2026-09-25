@@ -155,36 +155,42 @@ calibrated as the rebuild gets underway and recorded here when settled.
 
 ## 5. The multi-model architecture
 
-Work routes to the best-fit model across **three separate budgets**, to
-maximize capability without wasting any one budget.
+Work routes to the best-fit model across the **5-family budgets** (Fable 5,
+Opus 5, Sonnet 5, and the Gemini media lane), to maximize capability without
+wasting any one budget.
 
-- **Opus** — orchestration and hard-reasoning/judgment work: the
-  orchestrator that plans and routes, the pedagogy-design judgment calls, the
-  curriculum/correctness review, the schema/migration design (the risky
-  10%). Reserved for work where being subtly wrong is costly and hard to
-  catch.
-- **Sonnet** — high-volume structured execution *from Opus's specs*: content
-  authoring, exercise authoring, frontend component building. The thinking is
-  done upstream by Opus; Sonnet executes it faithfully, fast, at quality.
-- **Gemini** (via API key) — media generation (imagery, diagrams, video) and
-  long-context bulk processing (ingesting curriculum documents, the exam
-  corpus, source material). A separate budget; pure additive capacity.
+- **Fable 5 — orchestration & planning.** The main session: plans a build,
+  routes to specialists, runs the producer→critic→revise loop, holds both
+  gates, arbitrates conflicting findings, and does the audit / reconciliation /
+  planning passes.
+- **Opus 5 — hard reasoning & judgment.** The pedagogy-design judgment calls,
+  every critic, the curriculum/correctness review, the schema/migration design
+  (the risky 10%), the research extraction. Reserved for work where being subtly
+  wrong is costly and hard to catch; the orchestrator escalates the hardest
+  single calls here.
+- **Sonnet 5 — high-volume structured execution *from a spec*.** Content
+  authoring, item authoring, coded visuals, frontend component building, the
+  adversarial research check. The thinking is done upstream; Sonnet 5 executes
+  it faithfully, fast, at quality.
+- **Gemini** (via API key) — media generation (imagery, video) and long-context
+  bulk processing (ingesting curriculum documents, the exam corpus, source
+  material). A separate budget; pure additive capacity.
 
-The Opus→Sonnet handoff quality depends entirely on the spec quality: Opus
-must produce specs detailed enough that Sonnet executes faithfully rather
-than guessing. This handoff quality is to be **verified early** (author
-sample content both ways, compare), not assumed.
+The spec→execution handoff quality depends entirely on the spec: the design
+tier must produce specs detailed enough that Sonnet 5 executes faithfully
+rather than guessing. Verified early (author sample content both ways,
+compare), not assumed.
 
 Narration (**ElevenLabs**) is **deferred** — content is authored
 *voice-ready* (written to be spoken aloud) now, so narration drops in cleanly
 later.
 
-`[STATUS: not yet decided]` — the exact agent roster, each agent's specific
-model assignment, and the precise mechanics of how a single notion flows
-through the agents (the content-production pipeline) are being designed and
-will be recorded here and as actual files in `.claude/agents/` when settled.
-The fate of the previously-drafted-but-never-activated `pr-reviewer` agent is
-also undecided.
+**RESOLVED.** The full agent roster, each agent's model tier and tools, and
+the notion workflow live in **`docs/agents/ROSTER.md`** (v2 — the 5-family era),
+built into the `.claude/agents/*.md` files and recorded in the roster ADR. All
+17 agent files are live and both critic waves have fired. `pr-reviewer` is
+active by roster; its first real run is the next production push that goes
+through the gate.
 
 ---
 
@@ -219,6 +225,17 @@ frontend (Next.js, per ADR 0016).
   retired Flutter frontend. Preserved: the Supabase backend and auth, the
   misconception schema and framework, the pedagogy and cadre knowledge, the
   ADR trail, and the vision.
+- **Standing rule — dead Flutter platform:** The Flutter frontend was retired
+  (ADR 0016, Next.js rebuild). Any remaining Flutter artifacts are to be
+  DELETED, never patched or nursed back to green. When a Flutter-related
+  failure surfaces (e.g. a CI failure), the response is removal, not a
+  dependency patch. Git history preserves everything — including the
+  toolchain-fix commit `f61bff6` — so deletion is non-destructive.
+  **EXÉCUTÉ le 2026-08-15** : `mobile/` (178 fichiers) supprimé, avec
+  `mockups/`, `admin/`, `eval-harness/`, `shared/` et `GO_LIVE.md`. Il ne
+  reste aucun workflow CI Flutter (`.github/workflows/` ne contient que
+  `gates.yml`). La règle reste en vigueur pour tout artefact qui
+  réapparaîtrait ; elle ne désigne plus de dette ouverte.
 - **Mine before wiping.** Nothing is deleted until the old version has been
   checked for anything worth recovering. Git history makes the wipe safe —
   nothing is ever truly lost once it's in history — but the recovery pass
@@ -259,6 +276,19 @@ human re-explaining the guardrails each time. Specifically:
   anomalies before proceeding rather than working around them.
 - **Stay in lane.** Each agent owns a scope and routes rather than reaching
   outside it (roster forthcoming, §5).
+- **Dispatch work with a brief, not a re-explanation.** The template and the
+  protocol rules (point at governing docs, never restate them; name the
+  machine acceptance rows; state prerequisite assumptions; executor reports
+  decisions + unanswered questions; the dispatcher verifies, measures, and
+  commits) live in `docs/pipeline/day7-briefs/README.md` — written and then
+  validated by the July-2026 portability test (ADR 0025 §2.10): a question
+  the pointed-at docs should have answered is a SPEC BUG — log it, answer
+  minimally, tighten the doc.
+- **The QA loop has three legs, none optional** (DESIGN-BIBLE §13,
+  July-2026 amendment): dom-truth (mechanical, self-syncing), gestalt
+  against named references (taste), and a PERIODIC INDEPENDENT FRESH-EYE
+  AUDIT of the deployed site — every in-repo instrument sees only what it
+  was told to see, and only the third leg sees what users actually reach.
 
 ---
 

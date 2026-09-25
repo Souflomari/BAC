@@ -1,0 +1,614 @@
+{
+  "_pourquoi": "Chaque entrée est un ESSAI ROUGE rendu REJOUABLE. Jusqu'ici, « porte vérifiée rouge » était une phrase dans un document : invérifiable six mois plus tard, et fausse pour trois d'entre elles (§11.104). Ici c'est une commande. `de` doit exister tel quel dans `fichier` ; si le texte du corpus bouge, l'essai sort en code 2 (« rien à casser, donc rien de mesuré ») et se répare en une ligne.",
+  "essais": [
+    {
+      "id": "§11.99 (a)",
+      "quoi": "un chemin …/*.mjs cité qui ne résout pas depuis la racine",
+      "notion": "content/maths/arithmetique",
+      "fichier": "../content/maths/arithmetique/items.yaml",
+      "de": "web/scripts/resume-couverture.mjs",
+      "vers": "web/scripts/porte-qui-nexiste-pas.mjs"
+    },
+    {
+      "id": "§11.99 (b)",
+      "quoi": "une couverture nulle affirmée au PRÉSENT contre le tableau du même fichier",
+      "notion": "content/maths/arithmetique",
+      "fichier": "../content/maths/arithmetique/items.yaml",
+      "de": "dont `fermat-condition-ou-exposant` sans AUCUN item AVANT cet ajout — elle n'était sondée",
+      "vers": "dont `fermat-condition-ou-exposant` sans AUCUN item de banc, sondée"
+    },
+    {
+      "id": "§11.100 (a)",
+      "quoi": "un renvoi de chapitre sans article (« de chapitre 3 »)",
+      "notion": "content/maths/limites-continuite",
+      "fichier": "../content/maths/limites-continuite/lesson.md",
+      "de": "Le tableau du chapitre 1 montrait",
+      "vers": "Le tableau de chapitre 1 montrait"
+    },
+    {
+      "id": "§11.100 (b)",
+      "quoi": "une capitale en milieu de phrase (« : Le chapitre 3 »)",
+      "notion": "content/maths/limites-continuite",
+      "fichier": "../content/maths/limites-continuite/lesson.md",
+      "de": "approche : par valeurs inférieures",
+      "vers": "approche : Le chapitre 1 et par valeurs inférieures"
+    },
+    {
+      "id": "§11.100 (c)",
+      "quoi": "une minuscule en ouverture de phrase (« chapitres 3 et 4 ont… »)",
+      "notion": "content/maths/limites-continuite",
+      "fichier": "../content/maths/limites-continuite/lesson.md",
+      "de": "**Le tableau du chapitre 1 avait raison**",
+      "vers": "chapitres 1 et 2 avaient raison",
+      "note": "CETTE PORTE ÉTAIT AVEUGLE jusqu'au 2026-09-20 (§11.105) : son ancre \\n\\n était mangée par l'aplatissement du pli. C'est l'essai qui l'a révélé."
+    },
+    {
+      "id": "§11.100 (d)",
+      "quoi": "un renvoi de chapitre SUJET sans article (« — chapitres 2 à 7 portent »)",
+      "notion": "content/maths/limites-continuite",
+      "fichier": "../content/maths/limites-continuite/lesson.md",
+      "de": "C'est un point important",
+      "vers": "— chapitres 1 et 2 montrent que c'est un point important"
+    },
+    {
+      "id": "§11.70",
+      "quoi": "un renvoi qui cite deux fois le même chapitre (« chapitre 2 et 2 »)",
+      "notion": "content/pc/rc-charge",
+      "fichier": "../content/pc/rc-charge/lesson.md",
+      "de": "Maintenant tu fermes l'interrupteur.",
+      "vers": "Maintenant tu fermes l'interrupteur (chapitre 2 et 2)."
+    },
+    {
+      "id": "§11.77",
+      "quoi": "un « chapitre N » NU qui dépasse le nombre de chapitres de la leçon hôte",
+      "notion": "content/pc/rc-charge",
+      "fichier": "../content/pc/rc-charge/lesson.md",
+      "de": "Imagine le montage le plus simple du monde.",
+      "vers": "Imagine le montage le plus simple du monde, revu au chapitre 99."
+    },
+    {
+      "id": "§11.89",
+      "quoi": "un renvoi RELATIF qui sort de la leçon (« chapitre précédent » dans le chapitre 1)",
+      "notion": "content/pc/rc-charge",
+      "fichier": "../content/pc/rc-charge/lesson.md",
+      "de": "Un générateur qui délivre une tension constante $E$",
+      "vers": "Comme au chapitre précédent, un générateur qui délivre une tension constante $E$"
+    },
+    {
+      "id": "§11.73",
+      "quoi": "un code de barreau R<n> NU dans du texte rendu de YAML",
+      "notion": "content/pc/rc-charge",
+      "fichier": "../content/pc/rc-charge/items.yaml",
+      "de": "    stem: >",
+      "vers": "    stem: >-\n      Comme on l'a vu en R3 —"
+    },
+    {
+      "id": "§11.71",
+      "quoi": "un `lesson_placement` qui ment sur la position du marqueur",
+      "notion": "content/pc/rc-charge",
+      "fichier": "../content/pc/rc-charge/checkpoints.yaml",
+      "de": "lesson_placement: after_R3",
+      "vers": "lesson_placement: in_R3",
+      "attendu": "avertissement",
+      "motif": "déclare « in_R3 » mais son marqueur est à",
+      "note": "AVERTISSEMENT PAR DESSEIN, pas porte : son en-tête le dit (« rien ne casse pour l'élève, et un auteur peut légitimement vouloir poser un marqueur ailleurs »). La mesurer au code de sortie la déclarerait aveugle à tort. On exige donc qu'elle reste verte ET que son avertissement apparaisse."
+    },
+    {
+      "id": "§11.72",
+      "quoi": "un barème qui ne tombe pas sur son propre total",
+      "notion": "content/pc/aspects-energetiques",
+      "fichier": "../content/pc/aspects-energetiques/bank.yaml",
+      "de": "    bareme_total: 2.0",
+      "vers": "    bareme_total: 7.0"
+    },
+    {
+      "id": "§11.108",
+      "quoi": "l'ÉCART de sur-affirmation entre clés et distracteurs se creuse",
+      "porte": "node scripts/indice-absolu.mjs --porte",
+      "notion": "content/svt/genetique-humaine",
+      "fichier": "../content/svt/genetique-humaine/items.yaml",
+      "de": "L'allèle est dominant, puisqu'il a bien fini par s'exprimer chez l'enfant.",
+      "vers": "L'allèle est dominant : un allèle qui s'exprime chez l'enfant est toujours dominant.",
+      "note": "La casse vise un item qui porte DÉJÀ deux absolus : les deux premiers sens d'indice-absolu exigent l'unicité et restent donc muets. Vérifié — la sortie ne contient QUE la ligne ÉCART. C'est la démonstration que ce troisième sens garde quelque chose que les deux autres laissent passer (ADR 0034, décision 7)."
+    },
+    {
+      "id": "§11.209",
+      "quoi": "un absolu GRATUIT sur un distracteur, noyé sous des items propres (le masque du ratio)",
+      "porte": "node scripts/indice-absolu.mjs --porte",
+      "notion": "content/philo/la-liberte",
+      "fichier": "../content/philo/la-liberte/items.yaml",
+      "de": "items:\n  - id: LIB-1\n",
+      "vers": "items:\n  - id: ESSAI-MASQUE-0\n    type: mcq\n    stem: x\n    choices:\n      - {id: A, text: la bonne, correct: true}\n      - {id: B, text: une autre, correct: false}\n      - {id: C, text: une troisième, correct: false}\n      - {id: D, text: une quatrième, correct: false}\n  - id: ESSAI-MASQUE-1\n    type: mcq\n    stem: x\n    choices:\n      - {id: A, text: la bonne, correct: true}\n      - {id: B, text: une autre, correct: false}\n      - {id: C, text: une troisième, correct: false}\n      - {id: D, text: une quatrième, correct: false}\n  - id: ESSAI-MASQUE-2\n    type: mcq\n    stem: x\n    choices:\n      - {id: A, text: la bonne, correct: true}\n      - {id: B, text: une autre, correct: false}\n      - {id: C, text: une troisième, correct: false}\n      - {id: D, text: une quatrième, correct: false}\n  - id: ESSAI-MASQUE-3\n    type: mcq\n    stem: x\n    choices:\n      - {id: A, text: la bonne, correct: true}\n      - {id: B, text: une autre, correct: false}\n      - {id: C, text: une troisième, correct: false}\n      - {id: D, text: une quatrième, correct: false}\n  - id: ESSAI-MASQUE-4\n    type: mcq\n    stem: x\n    choices:\n      - {id: A, text: la bonne, correct: true}\n      - {id: B, text: une autre, correct: false}\n      - {id: C, text: une troisième, correct: false}\n      - {id: D, text: une quatrième, correct: false}\n  - id: ESSAI-MASQUE-5\n    type: mcq\n    stem: x\n    choices:\n      - {id: A, text: la bonne, correct: true}\n      - {id: B, text: une autre, correct: false}\n      - {id: C, text: une troisième, correct: false}\n      - {id: D, text: une quatrième, correct: false}\n  - id: ESSAI-MASQUE-6\n    type: mcq\n    stem: x\n    choices:\n      - {id: A, text: la bonne, correct: true}\n      - {id: B, text: une autre, correct: false}\n      - {id: C, text: une troisième, correct: false}\n      - {id: D, text: une quatrième, correct: false}\n  - id: ESSAI-MASQUE-7\n    type: mcq\n    stem: x\n    choices:\n      - {id: A, text: la bonne, correct: true}\n      - {id: B, text: une autre — toujours, correct: false}\n      - {id: C, text: une troisième, correct: false}\n      - {id: D, text: une quatrième, correct: false}\n  - id: LIB-1\n",
+      "note": "Sept items sans absolu et un huitième dont UN distracteur dit « toujours ». L'écart des TAUX baisse (+26,4 → +20,8 points : les items propres diluent le taux des distracteurs plus vite que celui des clés) et l'ancienne porte, qui comparait des ratios, restait VERTE sur cette notion. Le COMPTE (distracteurs sur-affirmants au-delà du taux des clés) passe de 19 à 20 : ROUGE. C'est la démonstration que le troisième sens compare désormais des nombres, comme les deux autres (§11.209)."
+    },
+    {
+      "id": "§11.103 (a)",
+      "quoi": "un distracteur ordinaire devient un REFUS (le nombre d'items qui tirent monte)",
+      "porte": "node scripts/indice-refus.mjs --porte",
+      "fichier": "../content/svt/genetique-humaine/items.yaml",
+      "de": "11 paires d'autosomes et 12 paires de gonosomes.",
+      "vers": "On ne peut pas conclure sans refaire le caryotype.",
+      "note": "L'item visé ne contenait AUCUN refus : le convertir en crée un unique, donc le tell se met à tirer. Un item qui en portait déjà un aurait fait DESCENDRE la tranche — c'est la faute du premier essai (§11.105)."
+    },
+    {
+      "id": "§11.103 (b)",
+      "quoi": "le seul refus VRAI d'une notion cesse d'en être un",
+      "porte": "node scripts/indice-refus.mjs --porte",
+      "fichier": "../content/maths/suites-numeriques/items.yaml",
+      "de": "text: \"On ne peut rien conclure sur la monotonie : être bornée",
+      "vers": "text: \"Être bornée ne renseigne en rien sur la monotonie : être bornée",
+      "note": "Les deux seuls items du corpus où « on ne peut pas conclure » est la bonne réponse sont ce qui empêche le corpus d'enseigner que refuser est toujours faux. Les perdre est la régression à empêcher."
+    },
+    {
+      "id": "§11.104",
+      "quoi": "l'union des ficelles rapporte plus qu'hier (le CLANG, que rien d'autre ne garde)",
+      "porte": "node scripts/eleve-ruse.mjs --porte",
+      "fichier": "../content/pc/piles/items.yaml",
+      "de": "C'est la cathode, borne -.",
+      "vers": "C'est la daniell, borne -.",
+      "note": "Échange d'un mot de LONGUEUR IDENTIQUE contre un mot du tronc : n'ajoute ni longueur, ni absolu, ni refus — rien qu'un écho. Vérifié : indice-longueur, indice-absolu et indice-refus restent VERTS sur exactement cette casse."
+    },
+    {
+      "id": "§11.39",
+      "quoi": "un `total_items` de coverage_summary qui ne correspond plus au fichier",
+      "porte": "node scripts/resume-couverture.mjs --porte",
+      "fichier": "../content/svt/genetique-humaine/items.yaml",
+      "de": "  total_items: 9",
+      "vers": "  total_items: 41"
+    },
+    {
+      "id": "§11.29",
+      "quoi": "un chemin de fichier cité en zone VIVANTE qui ne mène nulle part",
+      "porte": "node scripts/liens-fichiers.mjs --porte",
+      "fichier": "../docs/audits/INSTRUMENTS.md",
+      "de": "| `web/scripts/validate-content.mjs` |",
+      "vers": "| `web/scripts/valide-le-contenu-qui-nexiste-pas.mjs` |"
+    },
+    {
+      "id": "§11.84",
+      "quoi": "la clé devient VISIBLEMENT la plus longue (≥ 20 caractères ET ≥ 20 %)",
+      "porte": "node scripts/indice-longueur.mjs --porte",
+      "fichier": "../content/svt/genetique-humaine/items.yaml",
+      "de": "écarte une localisation sur le chromosome Y.\"",
+      "vers": "écarte une localisation sur le chromosome Y, ce que confirme par ailleurs l'examen attentif de l'arbre généalogique fourni dans l'énoncé de cet exercice.\"",
+      "note": "GH-8 choisi parce que sa clé DÉPASSE déjà la deuxième de 2 caractères — un écart invisible, donc non exploitable. La rallonger le rend VISIBLE. C'est exactement la frontière que garde indice-longueur, et que eleve-ruse partage depuis §11.107."
+    },
+    {
+      "id": "§11.112",
+      "quoi": "un distracteur de la PORTE D'ENGAGEMENT redevient muet",
+      "porte": "node scripts/porte-engagement.mjs --porte",
+      "fichier": "../content/pc/rlc-serie/checkpoints.yaml",
+      "de": "        # produisait qu'un demi-signal.\n        misconception: mc.physics.rlc_serie.resistance-entretient-oscillations",
+      "vers": "        # produisait qu'un demi-signal.\n        misconception: null",
+      "note": "Exactement l'état d'avant le 2026-09-20 : le choix « sans résistance, rien ne peut changer » portait un null explicite mais SANS raison écrite, alors que la famille M1 le décrit mot pour mot.\n\nL'ANCRE EST LONGUE À DESSEIN. Premier jet : `de` valait la seule ligne `misconception: mc…resistance-entretient-oscillations`, qui apparaît TROIS fois dans ce fichier — la casse tombait sur un autre point d'arrêt et la porte d'engagement restait, à juste titre, verte. Troisième fois de la journée que l'essai vise le mauvais exemplaire (§11.105, §11.103 a). L'ancre inclut donc la dernière ligne du commentaire, qui n'existe qu'ici."
+    },
+    {
+      "id": "§11.113",
+      "quoi": "un artefact du modèle apprenant dérive du corpus, plancher FRANCHI",
+      "porte": "node scripts/build-learner-inputs.mjs --verifie",
+      "fichier": "src/lib/learner-model-data.json",
+      "de": "\"mc.physics.pc_energie.confusion-v-et-v-carre\": 3",
+      "vers": "\"mc.physics.pc_energie.confusion-v-et-v-carre\": 2",
+      "note": "La casse reproduit EXACTEMENT l'état trouvé le 2026-09-20 : l'artefact disait 3 (plancher atteint, donc évaluable) pendant que le corpus était tombé à 1. C'est l'écart qui change ce que l'élève voit — le modèle propose une remédiation que le banc ne peut plus évaluer. RETOURNÉE le 2026-09-23 (§11.189) : le corpus est remonté à 3 (AE-35, AE-36), le motif `: 1` avait disparu et l'essai sortait MUET. La casse franchit désormais le plancher dans l'AUTRE sens — l'artefact dit 2 (inévaluable) pendant que le banc en porte 3 : une famille que le banc sait évaluer resterait muette à jamais. Même porte, même plancher, l'autre direction."
+    },
+    {
+      "id": "§11.114",
+      "quoi": "une rampe qui atteignait un sujet de bac SOURCÉ redescend",
+      "porte": "node scripts/rampe-bac.mjs --porte",
+      "fichier": "../content/maths/suites-numeriques/exercises.yaml",
+      "de": "      status: sourced",
+      "vers": "      status: unsourced",
+      "note": "Le sens INVERSE — ajouter un sommet sourcé — n'est pas gardé, et c'est voulu : c'est le travail qu'on souhaite, pas une régression à empêcher."
+    },
+    {
+      "id": "§11.118a",
+      "quoi": "un point d'arrêt recopie l'énoncé d'un item sans le déclarer — l'item reste au chapitre, l'élève voit deux fois la même question",
+      "porte": "node scripts/enonces-jumeaux.mjs --porte",
+      "fichier": "../content/pc/rlc-serie/checkpoints.yaml",
+      "de": "    item_source: clone_of_RLC-M1-1",
+      "vers": "    item_source: new",
+      "note": "La promesse est textuelle dans LESSON-EXPERIENCE-SPEC §1.1 (« pour que la même question n'apparaisse jamais deux fois ») ; rien ne la gardait."
+    },
+    {
+      "id": "§11.118b",
+      "quoi": "une déclaration `clone_of_X` dont l'id est PENDANT — ItemsSection ne retire rien, et la ligne donne l'illusion inverse",
+      "porte": "node scripts/enonces-jumeaux.mjs --porte",
+      "fichier": "../content/pc/rlc-serie/checkpoints.yaml",
+      "de": "clone_of_RLC-M4-1",
+      "vers": "clone_of_RLC-M4-999",
+      "note": "La SECONDE direction (ADR 0031) : sans elle, la porte 118a se passe en écrivant n'importe quel `clone_of_`."
+    },
+    {
+      "id": "§11.118c",
+      "quoi": "deux items de la MÊME notion posent le même énoncé — le cliquet intra recule de 1 à 2",
+      "porte": "node scripts/enonces-jumeaux.mjs --porte",
+      "fichier": "../content/maths/arithmetique/items.yaml",
+      "de": "      Quel est le reste de la division de $2^{2023}$ par $3$ ?",
+      "vers": "      Dans la division euclidienne de $250$ par $7$, quel est le reste ?",
+      "note": "Cliquet, pas porte franche : le corpus en porte 1 intra + 1 inter au 2026-09-20, consignés pour le propriétaire (spec-level). Le cliquet dit seulement qu'ils ne peuvent pas AUGMENTER."
+    },
+    {
+      "id": "§11.119a",
+      "quoi": "la seule marche basse d'une notion disparaît — plus aucun item de niveau 1 au premier barreau",
+      "porte": "node scripts/rampe-entree.mjs --porte",
+      "fichier": "../content/maths/limites-continuite/items.yaml",
+      "de": "  - id: LIMCONT-7\n    rung: \"R0\"\n    difficulty_level: 1",
+      "vers": "  - id: LIMCONT-7\n    rung: \"R0\"\n    difficulty_level: 3",
+      "note": "L'ancre porte l'id ET le barreau : `difficulty_level: 1` seul apparaît des dizaines de fois dans le fichier, et casser la mauvaise occurrence est le piège de §11.112."
+    },
+    {
+      "id": "§11.119b",
+      "quoi": "le sommet d'une rampe redescend au niveau de son entrée — la notion ne monte plus",
+      "porte": "node scripts/rampe-entree.mjs --porte",
+      "fichier": "../content/svt/role-enzymes/items.yaml",
+      "de": "  - id: RE-6\n    rung: \"R6\"\n    difficulty_level: 4",
+      "vers": "  - id: RE-6\n    rung: \"R6\"\n    difficulty_level: 1",
+      "note": "Le SECOND sens : le premier cliquet se satisfait d'UN item de niveau 1 posé en tête d'une notion par ailleurs plate."
+    },
+    {
+      "id": "§11.121",
+      "quoi": "une prose rendue désigne un choix par sa LETTRE — or les propositions sont mélangées au rendu, la lettre est fausse à l'écran",
+      "notion": "content/maths/probabilites-conditionnelles",
+      "fichier": "../content/maths/probabilites-conditionnelles/items.yaml",
+      "de": "La valeur $0{,}9$ dépasserait",
+      "vers": "La valeur $0{,}9$ (choix B) dépasserait",
+      "note": "Porte FRANCHE : 7 occurrences mesurées le 2026-09-20 sur 5 notions et 4 matières, toutes corrigées en nommant le contenu au lieu de la lettre. Portée limitée à items.yaml et checkpoints.yaml — seuls fichiers dont les propositions passent par lib/shuffle.ts."
+    },
+    {
+      "id": "§11.121 bis",
+      "quoi": "une prose rendue désigne un choix par sa POSITION (« le choix précédent ») — aussi faux que par sa lettre, une fois les propositions mélangées",
+      "notion": "content/pc/etat-equilibre",
+      "fichier": "../content/pc/etat-equilibre/items.yaml",
+      "de": "Même erreur que « seule la réaction directe continue », dans l'autre",
+      "vers": "Même erreur que le choix précédent, dans l'autre",
+      "note": "Le renvoi par RANG (« la première réponse ») n'est délibérément PAS gardé : 18 signalements sur le corpus, zéro vrai — en philosophie c'est la première réponse DU TEXTE. 18 corrections fausses pour 0 vraie (ADR 0034 §9)."
+    },
+    {
+      "id": "§11.122",
+      "quoi": "une porte que la CI atteint par `npm run` (ou par le crochet prebuild) disparaît de la batterie locale — dérive invisible jusqu'ici",
+      "porte": "node scripts/batterie-locale.mjs --garde",
+      "fichier": "scripts/batterie-locale.mjs",
+      "de": "  { nom: \"generate-tokens\", cmd: [\"scripts/generate-tokens.mjs\", \"--check\"] },",
+      "vers": "",
+      "note": "La garde ne lisait que les appels directs sous `node` : elle voyait 28 des 36 scripts réellement lancés. `--garde` existe pour qu'elle soit mesurable à part — un essai rouge ne prouve rien sur une commande déjà rouge pour une autre raison (§11.104)."
+    },
+    {
+      "id": "§11.123",
+      "quoi": "un instrument que personne ne lance sort du catalogue — donc devient introuvable",
+      "porte": "node scripts/batterie-locale.mjs --garde",
+      "fichier": "../docs/audits/INSTRUMENTS.md",
+      "de": "| `web/scripts/wide-measure.mjs` |",
+      "vers": "| `web/scripts/wide-measure-renomme-pour-l-essai.mjs` |",
+      "note": "Le SENS INVERSE de §11.122 : celui-là demande « la CI lance-t-elle une porte que j'ignore ? », celui-ci « existe-t-il un script que personne ne lance et qu'aucun catalogue ne nomme ? ». Quatre étaient dans ce cas, dont wide-measure.mjs, dont l'en-tête demandait d'être rejoué."
+    },
+    {
+      "id": "§11.124a",
+      "quoi": "une notion mène jusqu'à un vrai sujet de bac puis s'arrête — plus de variation fraîche derrière, donc un sommet mémorisable",
+      "porte": "node scripts/rampe-bac.mjs --porte",
+      "fichier": "../content/maths/arithmetique/exercises.yaml",
+      "de": "  - id: r-variation",
+      "vers": "  - id: r-second-sujet",
+      "note": "CET ESSAI A D'ABORD RENVOYÉ « AVEUGLE », et il avait raison : le bloc --porte de rampe-bac sort par process.exit avant la fin du fichier, et les deux sens neufs, écrits plus bas, ne tournaient jamais sous --porte. Déplacés dans le bloc. Un essai rouge ne sert à rien s'il ne peut pas contredire celui qui l'écrit."
+    },
+    {
+      "id": "§11.124b",
+      "quoi": "une variation fraîche perd sa note de conception — l'affirmation « anti-mémorisation » reste, sa raison disparaît",
+      "porte": "node scripts/rampe-bac.mjs --porte",
+      "fichier": "../content/maths/arithmetique/exercises.yaml",
+      "de": "      status: not-applicable\n      note: >-\n        Variation construite exprès (anti-mémorisation)",
+      "vers": "      status: not-applicable\n      note_retiree_pour_l_essai: >-\n        Variation construite exprès (anti-mémorisation)",
+      "note": "L'ancre porte `status:` ET le début de la note : `note:` seul apparaît des dizaines de fois dans le fichier. Cliquet à 2 (philo/la-verite, philo/le-devoir)."
+    },
+    {
+      "id": "§11.125",
+      "quoi": "la liste de mots que la porte accents LIT perd une forme que la réparation CONNAÎT — la sonde devient plus étroite que le correcteur",
+      "porte": "python3 ../scripts/accents-francais.py --verifier scripts/accents.mots.json",
+      "fichier": "scripts/accents.mots.json",
+      "de": "\"theoreme\",",
+      "vers": "",
+      "note": "Le fichier a DEUX producteurs — le script Python et la campagne, qui y ajoute à la main les formes corrigées. Son en-tête n'en nommait qu'un et interdisait l'autre : un `--exporter` nu aurait effacé 192 formes (846 committées contre 654 produites). L'export FUSIONNE désormais, et cette porte garde le sens qui reste : rien de connu du script ne doit manquer à la liste."
+    },
+    {
+      "id": "§11.128a",
+      "quoi": "une migration récente perd son bloc de vérification — elle peut désormais sembler réussir en ne faisant silencieusement rien",
+      "porte": "node scripts/portes-migrations.mjs --porte",
+      "fichier": "../backend/supabase/migrations/048_user_events_and_notion_progress.sql",
+      "de": "DO $verify$",
+      "vers": "-- bloc retire pour l essai",
+      "note": "PIÈGE payé ici : PostgreSQL accepte le dollar-quoting NOMMÉ. Une première version de la porte cherchait `DO $$` et déclarait 49 migrations sur 50 sans bloc — une catastrophe imaginaire. Et le premier essai remplaçait `$verify$` par un autre tag entre dollars, que le motif reconnaissait encore : l'essai était mal bâti, pas la porte."
+    },
+    {
+      "id": "§11.128b",
+      "quoi": "une table est créée sans que RLS soit activée dans le même fichier — entre la création et le rattrapage, elle est lisible par tous",
+      "porte": "node scripts/portes-migrations.mjs --porte",
+      "fichier": "../backend/supabase/migrations/049_user_notion_misconception_states.sql",
+      "de": "ENABLE ROW LEVEL SECURITY",
+      "vers": "ENABLE ROW LEVEL SECURITYX",
+      "note": "Cet essai a révélé une LÂCHETÉ de la porte : sans frontière finale, `ENABLE ROW LEVEL SECURITY_xxx` passait. `\\b` ajouté. L'essai était mal bâti ET la porte était lâche — les deux corrigés."
+    },
+    {
+      "id": "§11.129",
+      "quoi": "une notion perd sa figure MANIPULABLE — l'élève retombe à regarder une image là où il pouvait agir",
+      "porte": "node scripts/media-manipulable.mjs --porte",
+      "fichier": "../content/maths/limites-continuite/media/asymptotes.interactive.json",
+      "de": "{",
+      "vers": "{\"_casse_pour_l_essai\"",
+      "note": "Cliquet à une seule direction : 9/62 au 2026-09-20. CET ESSAI EST REVENU AVEUGLE À SA PREMIÈRE ÉCRITURE, et il avait raison : la porte comptait les NOMS DE FICHIERS, donc un `.interactive.json` au JSON cassé — mort au rendu — comptait encore comme manipulable. Elle PARSE désormais. Le sens inverse (en ajouter) n'est pas gardé : c'est le travail qu'on souhaite."
+    },
+    {
+      "id": "§11.131a",
+      "quoi": "une constante physique déclarée FAUSSE — la pesanteur passe de 9,8 à 8,9 m/s²",
+      "porte": "node scripts/constantes-physiques.mjs --porte",
+      "fichier": "../content/pc/aspects-energetiques/lesson.md",
+      "de": "g\\approx9{,}8\\ \\text{m/s}^2",
+      "vers": "g\\approx8{,}9\\ \\text{m/s}^2",
+      "note": "L'angle mort que `arithmetique-rendue` DÉCLARE dans son propre en-tête : une chaîne juste entre ses segments et fausse contre le monde. Toute l'arithmétique qui suivrait un g à 8,9 serait impeccable."
+    },
+    {
+      "id": "§11.131b",
+      "quoi": "une vitesse supérieure à c AFFIRMÉE (5,0×10⁸ m/s) dans une leçon qui ne la dénonce pas",
+      "porte": "node scripts/constantes-physiques.mjs --porte",
+      "fichier": "../content/pc/aspects-energetiques/lesson.md",
+      "de": "g\\approx9{,}8\\ \\text{m/s}^2",
+      "vers": "v = 5{,}0\\times10^{8}\\ \\text{m/s}",
+      "note": "Aucun arrondi n'excuse une vitesse supraluminique. Le fichier n'est dans aucune exemption : la porte doit la voir sans discussion."
+    },
+    {
+      "id": "§11.131c",
+      "quoi": "l'exemption est-elle (fichier, valeur) ou couvre-t-elle tout le fichier ? Une NOUVELLE valeur supraluminique dans un fichier DÉJÀ exempté",
+      "porte": "node scripts/constantes-physiques.mjs --porte",
+      "fichier": "../content/pc/propagation-onde-lumineuse/bank.yaml",
+      "de": "4\\cdot10^{8}\\ \\text{m.s}^{-1}",
+      "vers": "9\\cdot10^{8}\\ \\text{m.s}^{-1}",
+      "note": "Le sens qui empêche l'exemption de devenir une porte dérobée. Trois passages écrivent EXPRÈS une vitesse supraluminique pour nommer le piège ; s'ils étaient exemptés par FICHIER, toute faute future dans ces trois fichiers passerait en silence. Ils le sont par (fichier, valeur), et cet essai le prouve."
+    },
+    {
+      "id": "§11.132a",
+      "quoi": "un distracteur perd son retour — l'élève qui le choisit apprend qu'il a tort, jamais pourquoi",
+      "porte": "node scripts/validate-content.mjs --strict content/svt/soi-non-soi",
+      "fichier": "../content/svt/soi-non-soi/items.yaml",
+      "de": "        feedback: >\n          La tolérance montre au contraire que la non-réaction contre le\n          soi résulte d'un processus actif (l'élimination des cellules\n          immunitaires auto-réactives pendant la vie embryonnaire), pas\n          d'une catégorie figée dès le départ.",
+      "vers": "        note_interne: rien",
+      "note": "Porte franche : 5 920 distracteurs sur 5 920 portent un retour au 2026-09-20. La porte ne regarde QUE `correct: false` — les 1 612 champs vides du corpus sont tous sur la BONNE réponse, qui s'explique dans `solution` ; les compter aurait produit 1 612 signalements dont aucun n'est un défaut."
+    },
+    {
+      "id": "§11.132b",
+      "quoi": "deux choix d'un même item reçoivent le MÊME retour — celui qui prend D lit l'explication écrite pour C",
+      "porte": "node scripts/validate-content.mjs --strict content/svt/soi-non-soi",
+      "fichier": "../content/svt/soi-non-soi/items.yaml",
+      "de": "        feedback: >\n          La tolérance montre au contraire que la non-réaction contre le\n          soi résulte d'un processus actif (l'élimination des cellules\n          immunitaires auto-réactives pendant la vie embryonnaire), pas\n          d'une catégorie figée dès le départ.",
+      "vers": "        feedback: >\n          Le non-soi (agents pathogènes, greffons éventuels) peut se\n          présenter à tout âge, y compris très tôt après la naissance. La\n          tolérance ne repose pas sur l'absence de non-soi, mais sur\n          l'élimination précoce des cellules immunitaires qui auraient\n          réagi contre le soi lui-même.",
+      "note": "Le sens sans lequel un copier-coller entre deux distracteurs passerait : le champ serait bel et bien REMPLI. Mesuré à l'armement : 0 doublon sur 7 894 retours."
+    },
+    {
+      "id": "§11.133",
+      "quoi": "un item ne dit RIEN à l'élève qui répond juste — ni solution, ni correct_feedback, ni feedback sur le bon choix",
+      "porte": "node scripts/validate-content.mjs --strict content/philo/analyse-de-texte",
+      "fichier": "../content/philo/analyse-de-texte/items.yaml",
+      "de": "    correct_feedback: |-\n      La copie B ne redit pas le contenu de la phrase : elle identifie ce que",
+      "vers": "    note_interne: |-\n      La copie B ne redit pas le contenu de la phrase : elle identifie ce que",
+      "note": "Le champ `correct_feedback` était écrit sur 1 678 items des 62 notions et lu par AUCUN composant : 49 items de cette notion n'avaient donc rien à montrer. La porte vise l'UNION des trois canaux, jamais `solution` seule — exiger `solution` aurait condamné un dessin légitime. (Premier jet MUET : l'essai écrivait `correct_feedback: >` alors que le corpus use de `|-`. Un essai muet n'est pas un verdict sur la porte — c'est un défaut de l'essai, quatrième verdict d'ADR 0034.)"
+    },
+    {
+      "id": "§11.134",
+      "quoi": "un canal NEUF apparaît dans le corpus et aucun code ne le lit — il voyagera jusqu'au navigateur sans jamais s'afficher",
+      "porte": "node scripts/champs-morts.mjs --porte",
+      "fichier": "../content/svt/soi-non-soi/items.yaml",
+      "de": "notion: soi-non-soi",
+      "vers": "notion: soi-non-soi\nessai_rouge_canal_inedit:\n  - inedit: 1\n  - inedit: 2\n  - inedit: 3\n  - inedit: 4\n  - inedit: 5",
+      "note": "PREMIER JET AVEUGLE, et l'essai avait tort : il renommait `misconception:` en une clé inédite, mais le harnais casse UNE occurrence par dessein (« un essai rouge doit isoler UN défaut ») — une seule, contre un seuil documenté de cinq. Verdict AMBIGU tranché du côté de l'essai (ADR 0034). Le second jet injecte cinq occurrences en une seule édition. Le seuil de cinq n'est pas une mollesse : en dessous on attrape la coquille d'un auteur, pas un canal."
+    },
+    {
+      "id": "§11.135a",
+      "quoi": "une spec prescrit un manipulable qui n'est ni livré ni remplacé par écrit — la promesse de manipulation tombe sans un mot",
+      "porte": "node scripts/dette-manipulable.mjs --porte",
+      "fichier": "../content/pc/chute-mouvements-plans/spec-extension.md",
+      "de": "[[embed:euler-taille-de-pas]]",
+      "vers": "[[embed:un-manipulable-jamais-livre]]",
+      "note": "La ligne dure de CLAUDE.md, décision ouverte n°4. Les six substitutions existantes sont TOUTES écrites, chacune nommant ce qui est perdu — la porte exige ce même geste de toute prescription future."
+    },
+    {
+      "id": "§11.135b",
+      "quoi": "une septième substitution de manipulable apparaît — une chose de plus que l'élève ne peut plus toucher",
+      "porte": "node scripts/dette-manipulable.mjs --porte",
+      "fichier": "../content/pc/chute-mouvements-plans/media/trajectoire-parabolique.svg",
+      "de": "trajectoire-parabolique.svg — STAGED",
+      "vers": "trajectoire-parabolique.svg — figure figée qui remplace l'embed manipulable [[embed:trajectoire-parabolique]]. STAGED",
+      "note": "Cliquet à 6, mesuré au 2026-09-20. Chaque substitution est honnêtement écrite une par une ; c'est leur NOMBRE qui doit rester sous les yeux — il ne l'était nulle part."
+    },
+    {
+      "id": "§11.136",
+      "quoi": "une spec neuve nomme un item qui n'existe sous aucune forme — personne ne peut vérifier que la figure sert ce qu'elle annonce",
+      "porte": "node scripts/tracabilite-spec.mjs --porte",
+      "fichier": "../content/pc/aspects-energetiques/spec-extension.md",
+      "de": "**Item AE-R5-1**",
+      "vers": "**Item AE-R5-1** (sert AE-INEXISTANT-99)",
+      "note": "CLIQUET, pas porte franche, et c'est délibéré : 20 étiquettes sont dans cet état, héritées d'un schéma d'identifiants que le corpus a abandonné. Une porte franche serait rouge en permanence, et un rouge permanent est un rouge qu'on apprend à ignorer. La pédagogie, elle, est LIVRÉE : les barreaux visés sont couverts."
+    },
+    {
+      "id": "§11.140",
+      "quoi": "un item est accroché à un barreau dont lesson.md ne porte aucun titre — il ne peut être ni présenté au bon endroit, ni compté dans un dénominateur honnête",
+      "porte": "node scripts/tracabilite-spec.mjs --porte",
+      "fichier": "../content/svt/soi-non-soi/items.yaml",
+      "de": "rung: \"R1\"",
+      "vers": "rung: \"R94\"",
+      "note": "CLIQUET à 16 — le compte exact du §11.69, retrouvé notion par notion et barreau par barreau par une mesure indépendante. C'est une porte d'owner ouverte (rattachement éditorial), donc un cliquet : il empêche la classe de GRANDIR. `validate-content` le signalait déjà, mais en AVERTISSEMENT et une fois par barreau — or §11.69 a justement été trouvé en triant « les avertissements que personne ne relit parce qu'ils ne bloquent rien »."
+    },
+    {
+      "id": "§11.141",
+      "quoi": "un barreau garde son chapitre mais perd son dernier item — l'élève le LIT et ne peut rien y tenter",
+      "porte": "node scripts/tracabilite-spec.mjs --porte",
+      "fichier": "../content/svt/chaines-de-montagnes/checkpoints.yaml",
+      "de": "rung: \"R0\"",
+      "vers": "rung: \"R1\"",
+      "note": "L'INVERSE exact du §11.140, mesuré dans la même boucle et sur le même relevé de titres : deux directions d'une seule relation. PREMIER JET AVEUGLE, et l'essai avait tort — il déplaçait un item d'un barreau qui en portait trois, donc le barreau restait peuplé. Il faut un barreau à UN SEUL item pour le vider d'un seul remplacement ; `svt/chaines-de-montagnes` R0 est le seul du corpus. Cliquet à 13, dont DOUZE en SVT."
+    },
+    {
+      "id": "§11.142",
+      "quoi": "gates.yml cesse d'être du YAML valide — GitHub refuse le workflow, AUCUNE porte ne tourne, et la garde continue d'y lire des lignes au motif",
+      "porte": "node scripts/batterie-locale.mjs --garde",
+      "fichier": "../.github/workflows/gates.yml",
+      "de": "- name: \"Traçabilité spec→item (cliquet : une spec neuve nomme un item qui existe)\"",
+      "vers": "- name: Traçabilité spec→item (cliquet : une spec neuve nomme un item qui existe)",
+      "note": "Le défaut EXACT commis le 2026-09-20 : un « : » non cité dans un nom d'étape. Il a vécu six commits sans que rien ne le dise, parce que la CI n'avait plus de runner depuis la veille — le seul lecteur qui aurait protesté était absent. L'essai remet la citation à l'envers ; la garde doit crier."
+    },
+    {
+      "id": "§11.158",
+      "quoi": "une égalité entièrement numérique devenue fausse dans une leçon",
+      "notion": "content/maths/denombrement",
+      "fichier": "../content/maths/denombrement/lesson.md",
+      "de": "$26^3 = 17\\,576$",
+      "vers": "$26^3 = 15\\,576$",
+      "porte": "node scripts/calculs-numeriques.mjs --porte"
+    },
+    {
+      "id": "§11.159",
+      "quoi": "un paragraphe entier d'une leçon recopié dans une autre",
+      "notion": "content/maths/limites-continuite",
+      "fichier": "../content/maths/limites-continuite/lesson.md",
+      "de": "## Pour t'entraîner",
+      "vers": "## Pour t'entraîner\n\nRépondre proprement à cette question demande tous les outils de ce chapitre : montrer qu'une suite ne descend jamais en dessous d'un certain seuil (majorer, minorer), montrer qu'elle est décroissante (monotonie), établir qu'une suite décroissante et minorée est forcément convergente (un théorème qu'on va énoncer et comprendre en profondeur — sa démonstration complète est hors programme), et enfin calculer la valeur exacte de la limite. On construit ces outils un par un — et à la fin de cette leçon, on referme complètement la question du réservoir.",
+      "porte": "node scripts/prose-jumelle.mjs --porte"
+    },
+    {
+      "id": "§11.160",
+      "quoi": "un « $ » orphelin dans un champ de texte — quatre portes cessent de lire le passage",
+      "notion": "content/maths/denombrement",
+      "fichier": "../content/maths/denombrement/items.yaml",
+      "de": "text: \"Le cadenas Y, car il a plus de roues (4 contre 3)\"",
+      "vers": "text: \"$Le cadenas Y, car il a plus de roues (4 contre 3)\"",
+      "porte": "node scripts/dollars-apparies.mjs --porte"
+    },
+    {
+      "id": "§11.163",
+      "quoi": "un lookbehind réintroduit dans le code du produit — mort à l'analyse sur iOS 15",
+      "notion": "web/src/lib",
+      "fichier": "src/lib/frenchTypography.ts",
+      "de": "`(\\\\p{L})${APOSTROPHE_STRAIGHT}(?=\\\\p{L})`",
+      "vers": "`(?<=\\\\p{L})${APOSTROPHE_STRAIGHT}(?=\\\\p{L})`",
+      "porte": "node scripts/syntaxe-vieux-moteurs.mjs --porte"
+    },
+    {
+      "id": "§11.164 (a)",
+      "quoi": "la couture gauche : l'apostrophe qui ferme un nœud de texte avant du gras (« l'**amylase** ») ne devient plus typographique",
+      "notion": "web/src/lib",
+      "fichier": "src/lib/remarkFrenchTypography.ts",
+      "de": "gauche.value = gauche.value.slice(0, -1) + APOSTROPHE_TYPO;",
+      "vers": "gauche.value = gauche.value.slice(0, -1) + \"'\";",
+      "porte": "node --test scripts/test-typographie.mjs"
+    },
+    {
+      "id": "§11.164 (b)",
+      "quoi": "la couture droite : l'apostrophe qui ouvre un nœud de texte après du gras (« **l**'amylase »)",
+      "notion": "web/src/lib",
+      "fichier": "src/lib/remarkFrenchTypography.ts",
+      "de": "droite.value = APOSTROPHE_TYPO + droite.value.slice(1);",
+      "vers": "droite.value = \"'\" + droite.value.slice(1);",
+      "porte": "node --test scripts/test-typographie.mjs"
+    },
+    {
+      "id": "§11.164 (c)",
+      "quoi": "l'exclusion du code et des maths : `l'` devant `$x$` n'est pas une élision française et doit rester droite",
+      "notion": "web/src/lib",
+      "fichier": "src/lib/remarkFrenchTypography.ts",
+      "de": "  \"linkReference\",",
+      "vers": "  \"linkReference\",\n  \"inlineCode\",\n  \"inlineMath\",",
+      "porte": "node --test scripts/test-typographie.mjs"
+    },
+    {
+      "id": "§11.165",
+      "quoi": "la typographie française ré-appliquée DANS le LaTeX — l'espace fine devant « ; » coupe la commande \\; en deux",
+      "notion": "web/src/lib",
+      "fichier": "src/lib/frenchTypography.ts",
+      "de": "if (!s.includes(\"$\")) return regles(s);",
+      "vers": "if (!s.includes(\"\\uFFFF\")) return regles(s);",
+      "porte": "node --test scripts/test-typographie.mjs"
+    },
+    {
+      "id": "§11.166",
+      "quoi": "un « 1. » en tête de sur-titre rouvre une liste ordonnée dans un <p> — HTML invalide, hydratation rompue",
+      "notion": "web/src/lib",
+      "fichier": "src/lib/markdownEnLigne.ts",
+      "de": ".replace(/^([ \\t]*)(\\d{1,9})([.)])/gm, \"$1$2\\\\$3\")",
+      "vers": ".replace(/^([ \\t]*)(\\d{1,9})([.)])/gm, \"$1$2$3\")",
+      "porte": "node --test scripts/test-typographie.mjs"
+    },
+    {
+      "id": "§11.168 (a)",
+      "quoi": "la règle de barème ne lit que la PREMIÈRE étiquette d'un énoncé groupé — une copie parfaite vaut 19,25/20",
+      "notion": "web/src/lib",
+      "fichier": "src/lib/bareme.ts",
+      "de": "return trouvees.reduce((s, m) => s + parseFloat(m[1].replace(\",\", \".\")), 0);",
+      "vers": "return parseFloat(trouvees[0][1].replace(\",\", \".\"));",
+      "porte": "node scripts/bareme-ferme.mjs --porte"
+    },
+    {
+      "id": "§11.168 (b)",
+      "quoi": "une étiquette de points faussée dans le corpus — l'exercice distribue plus que son barème annoncé",
+      "notion": "content/pc/rc-charge",
+      "fichier": "../content/pc/rc-charge/bank.yaml",
+      "de": "- **(0,25 pt)** la tension $u_C$ aux bornes du condensateur ;",
+      "vers": "- **(0,75 pt)** la tension $u_C$ aux bornes du condensateur ;",
+      "porte": "node scripts/bareme-ferme.mjs --porte"
+    },
+    {
+      "id": "§11.170",
+      "quoi": "l'étiquette « Partiel » arrondie à deux décimales — « 0,13 » affiché pour 0,125 compté, sur 518 questions",
+      "notion": "web/src/lib",
+      "fichier": "src/lib/bareme.ts",
+      "de": "const arrondi = Math.round(n * 1000) / 1000;",
+      "vers": "const arrondi = Math.round(n * 100) / 100;",
+      "porte": "node scripts/bareme-ferme.mjs --porte"
+    },
+    {
+      "id": "§11.172",
+      "quoi": "deux figures d'une même leçon définissent le même id DIFFÉREMMENT, et il est déréférencé — la seconde définition est ignorée sans un mot",
+      "notion": "content/pc/electrolyse",
+      "fichier": "../content/pc/electrolyse/media/electrolyse-eau-cellule.svg",
+      "de": "<stop offset=\"0%\"   stop-color=\"var(--figure-surface)\"/>\n      <stop offset=\"100%\" stop-color=\"var(--figure-grid)\"/>\n    </linearGradient>",
+      "vers": "<stop offset=\"0%\"   stop-color=\"var(--figure-accent)\"/>\n      <stop offset=\"100%\" stop-color=\"var(--figure-grid)\"/>\n    </linearGradient>",
+      "porte": "node scripts/figures-id-divergents.mjs --porte"
+    },
+    {
+      "id": "§11.172 (b)",
+      "quoi": "collision d'identifiant entre DEUX NOTIONS — invisible sur une page de leçon, mais une épreuve réunit les figures de plusieurs notions",
+      "notion": "content/pc/electrolyse",
+      "fichier": "../content/pc/electrolyse/media/cellule-electrolyse.svg",
+      "de": "<linearGradient id=\"liquid-grad\"",
+      "vers": "<linearGradient id=\"ce-arrow\"",
+      "porte": "node scripts/figures-id-divergents.mjs --porte"
+    },
+    {
+      "id": "§11.195 (a)",
+      "quoi": "le mode sombre de la porte figures retombe sur l'ancien découpage des jetons — il mesure le thème CLAIR une seconde fois, vert",
+      "notion": "web/scripts",
+      "fichier": "scripts/figure-preview.mjs",
+      "de": "const bloc = sombre ? blocClair + blocSombre : blocClair;",
+      "vers": "const bloc = sombre ? css.slice(css.indexOf(\".dark\")) : blocClair;",
+      "porte": "node scripts/figure-preview.mjs --dark --jetons",
+      "motif": "INSTRUMENT MUET",
+      "note": "C'EST LE DÉFAUT RÉEL, pas un défaut inventé : du 2026-09-05 au 2026-09-24, la porte « contraste — thème sombre » de la CI prenait le texte de `.dark` jusqu'à la fin du fichier, où le bloc `@media print` redéclare les jetons clairs — les PNG « -sombre » étaient identiques à l'octet près aux clairs. Vu en regardant une figure neuve dans les deux thèmes."
+    },
+    {
+      "id": "§11.195 (b)",
+      "quoi": "le bloc `.dark` des jetons perd la surface des figures — le thème sombre composé a la surface du clair",
+      "notion": "web/src/app",
+      "fichier": "src/app/tokens.generated.css",
+      "de": "  --figure-surface: #1A1917;\n",
+      "vers": "",
+      "porte": "node scripts/figure-preview.mjs --dark --jetons",
+      "motif": "INSTRUMENT MUET",
+      "note": "Le sens PRODUIT du même contrôle : une refonte du thème qui oublie de surcharger la surface en sombre. La porte ne doit pas rendre un vert sur des figures rendues en clair sous un nom sombre."
+    },
+    {
+      "id": "§11.195 (c)",
+      "quoi": "un pari de scène 3D nomme une misconception que la notion ne déclare pas — un modèle fantôme, que rien ne vérifiait",
+      "notion": "content/maths/calcul-integral",
+      "fichier": "../content/maths/calcul-integral/media/solide-de-revolution.json",
+      "de": "\"misconception\": \"mc.math.maths_calcul_integral.volume-circonference-vs-disque\"",
+      "vers": "\"misconception\": \"mc.math.maths_calcul_integral.volume-circonference-vs-disque-fantome\"",
+      "motif": "NON DÉCLARÉE",
+      "note": "La règle §11.58 (un tag de distracteur doit être déclaré) ne lisait que items.yaml et checkpoints.yaml ; les paris des scènes lui échappaient. Vue en construisant la sixième scène, dont la spec exige l'ordre inverse : le modèle déclaré AVANT la scène (spec-scene-manege §8.5)."
+    }
+  ]
+}

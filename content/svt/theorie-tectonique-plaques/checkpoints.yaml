@@ -1,0 +1,495 @@
+notion: theorie-tectonique-plaques
+skill_code: svt_tectonique_plaques
+
+# ──────────────────────────────────────────────────────────────────────────────
+# POINTS D'ARRÊT DANS LA LEÇON (campagne de conversion du sommet — SVT)
+#
+# Sondes formatives posées DANS la leçon, pas le banc de fin. Aucun score,
+# aucune série, aucun décompte ; le plancher du banc n'est pas modifié.
+#
+# Placement (identifiants = marqueurs [[checkpoint:…]] de lesson.md) :
+#   cp-r0-predict     (DANS le chapitre 1) — le puzzle et le fossile.
+#   cp-r1-wegener     (après le chapitre 2) — la force d'un faisceau.
+#   cp-r2-rejet       (après le chapitre 3) — pourquoi l'idée a été rejetée.
+#   cp-r3-expansion   (après le chapitre 4) — lire les anomalies dans le bon
+#                     sens.
+#   cp-r4-lithosphere (après le chapitre 5) — croûte n'est pas lithosphère.
+#   cp-r5-frontieres  (après le chapitre 6) — trois types, trois bilans.
+#   cp-r6-repartition (après le chapitre 7) — la carte n'est pas uniforme.
+#   cp-r7-moteur      (après le chapitre 8) — ce que la convection explique.
+#
+# CHAQUE distracteur porte un identifiant réel de l'inventaire de items.yaml.
+# Aucune erreur nouvelle n'est déclarée : les sondes réutilisent les quatre
+# modèles existants, pour ne pas rouvrir de dette de couverture.
+#
+# (2026-09-19 : cette garde disait « SVT/PC ». Le cadre déclare la variante
+# PC de la SVT « DISTINCTE — non extraite » (docs/cadre/curriculum/svt.yaml,
+# bloc `variante_pc`) : rien dans le dépôt ne permet d'affirmer que ce
+# périmètre vaut pour la filière PC. Restreint à la filière SVT ; à rouvrir
+# quand la variante sera extraite.)
+# Garde de périmètre : 2ème Bac, filière SVT — de la dérive des continents à la
+# tectonique des plaques, expansion océanique, structure du globe, frontières
+# de plaques, preuves modernes, convection mantellique. Le détail des chaînes
+# de montagnes relève de la notion voisine.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: svt_tectonique_plaques
+    tags: [checkpoint, formative, misconception_driven, svt_tectonique_plaques, hook_commit]
+    primary_misconception: mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Deux continents séparés par tout l'Atlantique s'emboîtent presque, et
+      portent les fossiles d'un même reptile d'eau douce. **Engage-toi avant
+      de lire la suite :** quelle explication te paraît la meilleure ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Les deux continents étaient autrefois réunis en un seul bloc, puis se sont éloignés l'un de l'autre en se déplaçant à la surface du globe."
+        correct: true
+        feedback: |
+          C'est bien l'hypothèse de Wegener, et tu viens de la reconstruire à
+          partir de deux faits seulement. La leçon va en ajouter deux autres —
+          les structures géologiques et les traces glaciaires — puis affronter
+          la vraie difficulté, celle qui a fait rejeter l'idée pendant
+          cinquante ans : par quel mécanisme ?
+
+      - id: B
+        text: "Un pont continental aujourd'hui effondré reliait autrefois les deux rives, permettant à l'animal de passer d'un continent à l'autre sans qu'aucun d'eux ne bouge."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+        feedback: |
+          Modèle détecté — et c'est celui que la communauté scientifique a
+          longtemps préféré, ce qui rend l'erreur intéressante. Le pont
+          expliquerait le fossile, mais pas l'emboîtement des côtes, ni la
+          continuité des structures géologiques, ni les traces glaciaires. C'est
+          le FAISCEAU d'indices qui départage, pas un indice isolé.
+
+      - id: C
+        text: "Les continents ont toujours occupé leur position actuelle, et une même espèce y est apparue deux fois indépendamment, dans des milieux comparables."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+        feedback: |
+          Modèle détecté : expliquer la ressemblance par une convergence
+          fortuite. Il ne s'agit pas d'espèces voisines mais de la même, et
+          d'un reptile d'EAU DOUCE, incapable de traverser un océan. À quoi
+          s'ajoute l'emboîtement des côtes, qu'aucune apparition indépendante
+          n'expliquerait.
+
+      - id: D
+        text: "Les deux continents flottent sur l'eau des océans et se sont écartés en dérivant à sa surface, comme deux radeaux poussés par les courants marins."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus
+        feedback: |
+          Modèle détecté : faire flotter les continents sur l'eau. Ils reposent
+          sur des roches, pas sur l'océan — et le fond des océans est lui-même
+          fait de roche, comme le montrera le chapitre 4. La bonne intuition du
+          mouvement est là, mais le support est faux, et c'est précisément ce
+          qui manquait à Wegener.
+
+  - id: cp-r1-wegener
+    rung: "R1"
+    habilete: comprehension
+    skill_code: svt_tectonique_plaques
+    tags: [checkpoint, formative, misconception_driven, svt_tectonique_plaques]
+    primary_misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |
+      Qu'est-ce qui fait la force du dossier réuni par Wegener en 1912 ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Le fait que quatre arguments d'origines totalement différentes — forme des côtes, fossiles, structures géologiques, traces glaciaires — désignent tous la même reconstitution."
+        correct: true
+        feedback: |
+          Oui, et c'est un mode de preuve qu'il faut savoir reconnaître. Chaque
+          argument, pris seul, admettrait une explication de rechange. Ensemble,
+          ils rendent la coïncidence invraisemblable : il faudrait quatre
+          explications indépendantes, qui tomberaient toutes juste au même
+          endroit du globe.
+
+      - id: B
+        text: "Le fait qu'il disposait de mesures GPS montrant le déplacement des continents, ce qui rendait sa démonstration directement vérifiable dès sa publication."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+        feedback: |
+          Modèle détecté : mettre les preuves modernes au début de l'histoire.
+          Les mesures GPS datent des années 1990, quatre-vingts ans après
+          Wegener — et c'est justement parce qu'elles lui manquaient que son
+          hypothèse est restée indémontrable de son vivant.
+
+      - id: C
+        text: "Le fait qu'il ait proposé un mécanisme physique complet, la convection du manteau, capable de rendre compte du déplacement des continents."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+        feedback: |
+          Modèle détecté : attribuer à Wegener le moteur qui lui a manqué. C'est
+          exactement l'inverse : l'absence de mécanisme crédible est ce qui a
+          fait rejeter sa théorie, et la convection mantellique n'a été proposée
+          comme moteur que bien plus tard (chapitre 8).
+
+      - id: D
+        text: "Le fait que les fossiles de reptiles d'eau douce, à eux seuls, ne pouvaient recevoir aucune autre explication que le déplacement des continents."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+        feedback: |
+          Modèle détecté : faire porter la preuve par un seul indice. Les
+          fossiles, isolés, admettaient une explication concurrente très
+          défendue à l'époque — les ponts continentaux. La force du dossier ne
+          vient pas d'un argument imparable mais de leur convergence.
+
+  - id: cp-r2-rejet
+    rung: "R2"
+    habilete: comprehension
+    skill_code: svt_tectonique_plaques
+    tags: [checkpoint, formative, misconception_driven, svt_tectonique_plaques]
+    primary_misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |
+      Pourquoi l'hypothèse de Wegener a-t-elle été rejetée pendant près d'un
+      demi-siècle ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Parce qu'aucun de ses arguments n'a résisté à la vérification : les côtes ne s'emboîtaient pas vraiment, et les fossiles se sont révélés appartenir à des espèces différentes."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+        feedback: |
+          Modèle détecté : croire que les arguments de Wegener ont été réfutés.
+          Aucun ne l'a jamais été — ils sont tous encore valables aujourd'hui, et
+          la leçon les reprend tels quels. Ce qui manquait n'était pas la
+          solidité des observations, c'était une cause capable de produire le
+          mouvement.
+
+      - id: B
+        text: "Parce qu'il ne proposait aucun mécanisme capable de déplacer des continents, et que ceux qu'il évoquait étaient bien trop faibles pour cela."
+        correct: true
+        feedback: |
+          Exactement, et cette histoire vaut la peine d'être retenue : une
+          hypothèse peut avoir raison et être rejetée à bon droit, faute de
+          mécanisme. Ce qui a fini par la faire accepter n'est pas un cinquième
+          argument de surface, c'est la découverte de ce qui se passe au FOND
+          des océans.
+
+      - id: C
+        text: "Parce que la théorie de la tectonique des plaques, déjà établie à l'époque, expliquait les mêmes faits sans faire appel à un déplacement des continents."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+        feedback: |
+          Modèle détecté : inverser l'ordre des deux théories. La tectonique des
+          plaques est postérieure — elle date des années 1960 et elle est
+          l'héritière de la dérive des continents, pas sa rivale. Elle lui a
+          apporté ce qui lui manquait : le moteur et le bon objet mobile.
+
+      - id: D
+        text: "Parce qu'on savait déjà que les continents glissaient sur un plancher océanique fixe, ce qui contredisait directement le modèle proposé par Wegener."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus
+        feedback: |
+          Modèle détecté : imaginer un plancher océanique fixe sur lequel les
+          continents glisseraient. Le chapitre 4 établira le contraire : c'est
+          le plancher océanique lui-même qui se renouvelle et se déplace, en
+          emportant les continents. Rien ne glisse sur rien.
+
+  - id: cp-r3-expansion
+    rung: "R3"
+    habilete: application
+    skill_code: svt_tectonique_plaques
+    tags: [checkpoint, formative, misconception_driven, svt_tectonique_plaques]
+    primary_misconception: mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |
+      De part et d'autre d'une dorsale océanique, les bandes d'anomalies
+      magnétiques se répondent en miroir, et les sédiments sont d'autant plus
+      épais et anciens qu'on s'éloigne de l'axe. Que démontrent ces deux
+      observations ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Que le plancher océanique se forme à l'axe de la dorsale puis s'écarte de part et d'autre, emportant avec lui l'enregistrement de son âge."
+        correct: true
+        feedback: |
+          Oui, et les deux observations disent la même chose par deux voies
+          indépendantes. La symétrie magnétique montre que les deux moitiés du
+          plancher sont sorties du même endroit ; le gradient de sédiments
+          mesure le temps écoulé depuis. C'est la pièce qui manquait à Wegener.
+
+      - id: B
+        text: "Que le plancher océanique est le plus ancien à l'axe de la dorsale, où il s'est déposé le premier, et de plus en plus récent quand on s'en éloigne."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers
+        feedback: |
+          Modèle détecté : lire le gradient d'âge à l'envers. L'observation dit
+          exactement le contraire : les sédiments les plus épais et les plus
+          anciens sont les plus ÉLOIGNÉS de l'axe. Le raisonnement à faire est
+          simple — plus une portion de plancher est vieille, plus elle a eu le
+          temps de s'écarter et d'accumuler des sédiments.
+
+      - id: C
+        text: "Que le champ magnétique terrestre est plus intense au niveau des dorsales, ce qui aimante plus fortement les roches à proximité immédiate de l'axe."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers
+        feedback: |
+          Modèle détecté : lire une différence d'intensité là où il s'agit d'une
+          alternance de POLARITÉ. Les bandes n'enregistrent pas la force du
+          champ mais son sens, qui s'est inversé de nombreuses fois. Et c'est la
+          symétrie de cette alternance, non son intensité, qui prouve
+          l'expansion.
+
+      - id: D
+        text: "Que les continents labourent le plancher océanique en avançant, et laissent derrière eux des traînées de sédiments symétriques de part et d'autre de leur trajet."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus
+        feedback: |
+          Modèle détecté : le continent qui laboure un plancher passif — l'image
+          même que ces observations réfutent. Le plancher n'est pas traversé, il
+          est créé : il naît à la dorsale et s'écarte, emportant les continents
+          qui y sont soudés.
+
+  - id: cp-r4-lithosphere
+    rung: "R4"
+    habilete: comprehension
+    skill_code: svt_tectonique_plaques
+    tags: [checkpoint, formative, misconception_driven, svt_tectonique_plaques]
+    primary_misconception: mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus
+    item_source: original
+    lesson_placement: after_R4
+
+    stem: |
+      Qu'est-ce qu'une plaque lithosphérique, exactement, et sur quoi se
+      déplace-t-elle ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "C'est la croûte seule, terrestre ou océanique, qui glisse sur le manteau resté immobile en dessous d'elle."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus
+        feedback: |
+          Modèle détecté : confondre croûte et lithosphère. La lithosphère
+          comprend la croûte ET la partie supérieure du manteau, solidaires : la
+          limite qui compte n'est pas chimique mais mécanique, entre le rigide
+          et le ductile. C'est pour cela que le manteau se retrouve des deux
+          côtés de la frontière.
+
+      - id: B
+        text: "C'est un bloc rigide fait de la croûte et du manteau supérieur, qui se déplace sur l'asthénosphère, ductile et capable de se déformer lentement."
+        correct: true
+        feedback: |
+          Oui — et retiens que la distinction est mécanique. Lithosphère et
+          asthénosphère se différencient par leur comportement (rigide contre
+          ductile), pas par leur composition : le manteau appartient aux deux.
+          C'est cette couche ductile en dessous qui rend le déplacement possible.
+
+      - id: C
+        text: "C'est un continent entier, dont les limites coïncident avec les côtes : chaque continent forme une plaque, et les océans en sont dépourvus."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus
+        feedback: |
+          Modèle détecté : faire coïncider plaque et continent. Les frontières
+          de plaques ne suivent presque jamais les côtes : la plaque
+          sud-américaine, par exemple, porte à la fois le continent et la moitié
+          ouest de l'Atlantique. Une plaque peut être entièrement océanique.
+
+      - id: D
+        text: "C'est un radeau de roches légères qui flotte sur une couche liquide en fusion, entièrement fondue, où il se déplace librement en tous sens."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus
+        feedback: |
+          Modèle détecté : rendre l'asthénosphère liquide. Elle est solide, mais
+          ductile — capable de se déformer très lentement, sur des millions
+          d'années, comme un solide qui flue. Si elle était liquide, elle ne
+          transmettrait pas les ondes sismiques de cisaillement, ce que
+          l'observation dément.
+
+  - id: cp-r5-frontieres
+    rung: "R5"
+    habilete: application
+    skill_code: svt_tectonique_plaques
+    tags: [checkpoint, formative, misconception_driven, svt_tectonique_plaques]
+    primary_misconception: mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |
+      Si de la lithosphère océanique se crée en permanence aux dorsales et que
+      la Terre garde un rayon constant, que doit-il nécessairement se passer
+      ailleurs ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Une quantité équivalente de lithosphère doit disparaître, ce qui se produit aux frontières convergentes où une plaque plonge dans le manteau."
+        correct: true
+        feedback: |
+          Oui : c'est un bilan, et il doit se fermer. La subduction est la
+          contrepartie obligée de l'accrétion — d'où la profondeur croissante
+          des séismes le long d'un plan qui s'enfonce, signature directe de la
+          plaque qui descend.
+
+      - id: B
+        text: "La lithosphère créée s'accumule sans compensation, et la surface des océans augmente de façon continue depuis la formation de la Terre."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers
+        feedback: |
+          Modèle détecté : accepter une création sans destruction. L'énoncé
+          l'exclut — un rayon constant impose une surface constante. Et
+          l'observation le confirme : le plancher océanique le plus ancien a
+          environ 200 millions d'années, alors que la Terre en a 4,5 milliards.
+          L'ancien a donc bien été détruit.
+
+      - id: C
+        text: "Les continents doivent s'éroder à la même vitesse, l'équilibre se faisant entre la lithosphère océanique créée et la matière continentale emportée par les fleuves."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers
+        feedback: |
+          Modèle détecté : chercher la compensation dans un phénomène de
+          surface. L'érosion déplace des sédiments, elle ne fait disparaître
+          aucune lithosphère : la matière reste à la surface du globe. Le bilan
+          ne peut se fermer que par un retour de lithosphère dans le manteau.
+
+      - id: D
+        text: "Toutes les frontières de plaques doivent être des dorsales, la création de lithosphère étant le seul phénomène observé aux limites des plaques."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers
+        feedback: |
+          Modèle détecté : généraliser un type de frontière à tous les autres.
+          Le tableau du chapitre les range en trois familles : divergentes
+          (création), convergentes (destruction ou épaississement),
+          transformantes (ni l'un ni l'autre) — la convergence y occupant deux
+          lignes, subduction et collision. C'est précisément cette diversité qui permet au bilan de
+          se fermer.
+
+  - id: cp-r6-repartition
+    rung: "R6"
+    habilete: raisonnement
+    skill_code: svt_tectonique_plaques
+    tags: [checkpoint, formative, misconception_driven, svt_tectonique_plaques]
+    primary_misconception: mc.svt.svt_tectonique_plaques.repartition-uniforme-des-seismes
+    item_source: original
+    lesson_placement: after_R6
+
+    stem: |
+      On reporte sur une carte du monde tous les épicentres de séismes et tous
+      les volcans actifs. Que voit-on, et qu'est-ce que cela démontre ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Une répartition à peu près uniforme sur tout le globe, ce qui montre que les contraintes s'exercent partout de la même façon dans une enveloppe continue."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.repartition-uniforme-des-seismes
+        feedback: |
+          Modèle détecté : imaginer une répartition uniforme. La carte montre
+          l'inverse, et de façon spectaculaire : de longues bandes étroites,
+          séparant de vastes domaines quasiment muets. C'est même cette
+          concentration qui a servi à TRACER les frontières de plaques.
+
+      - id: B
+        text: "Des alignements étroits qui dessinent des lanières autour de vastes zones calmes : ces lanières sont les frontières de plaques, et les zones calmes leur intérieur rigide."
+        correct: true
+        feedback: |
+          Exactement, et le raisonnement mérite d'être explicité. Si la
+          lithosphère était une enveloppe continue soumise partout aux mêmes
+          contraintes, séismes et volcans seraient dispersés. Leur concentration
+          en lanières prouve qu'il existe des blocs rigides distincts, et que
+          l'essentiel de la déformation se joue à leurs limites.
+
+      - id: C
+        text: "Des concentrations aux pôles et à l'équateur, la rotation de la Terre imposant aux roches des contraintes maximales le long de ces cercles particuliers."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.repartition-uniforme-des-seismes
+        feedback: |
+          Modèle détecté : chercher un schéma géométrique lié à la rotation. Les
+          alignements observés ne suivent ni l'équateur ni les méridiens : ils
+          suivent les dorsales, les fosses et les grandes failles, c'est-à-dire
+          les frontières de plaques.
+
+      - id: D
+        text: "Des séismes uniquement là où deux plaques s'écartent, les frontières convergentes ne produisant que du volcanisme sans jamais de séisme associé."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.repartition-uniforme-des-seismes
+        feedback: |
+          Modèle détecté : réserver la sismicité à un seul type de frontière.
+          Les séismes les plus profonds et les plus puissants sont au contraire
+          ceux des zones de SUBDUCTION, où ils dessinent un plan incliné qui
+          suit la plaque plongeante — l'un des arguments les plus directs de
+          toute la leçon.
+
+  - id: cp-r7-moteur
+    rung: "R7"
+    habilete: comprehension
+    skill_code: svt_tectonique_plaques
+    tags: [checkpoint, formative, misconception_driven, svt_tectonique_plaques]
+    primary_misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+    item_source: original
+    lesson_placement: after_R7
+
+    stem: |
+      Qu'est-ce que la convection mantellique apporte, que les arguments de
+      Wegener ne pouvaient pas fournir ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Une cause physique au mouvement : la chaleur interne met en circulation un manteau ductile, et cette circulation entraîne les plaques posées dessus."
+        correct: true
+        feedback: |
+          Oui — et c'est ce qui transforme une reconstitution en théorie. Les
+          quatre arguments de 1912 montraient QUE les continents avaient bougé ;
+          la convection dit COMMENT. Le manque de cette réponse est exactement
+          ce qui avait fait rejeter l'hypothèse pendant cinquante ans.
+
+      - id: B
+        text: "Une preuve supplémentaire du déplacement, du même ordre que les fossiles et les traces glaciaires, qui vient s'ajouter au faisceau réuni par Wegener."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.histoire-de-la-theorie-mal-comprise
+        feedback: |
+          Modèle détecté : ranger le moteur parmi les preuves. Ce n'est pas un
+          cinquième argument mais une réponse à une autre question. Le dossier
+          de Wegener était déjà convaincant sur le FAIT du déplacement ; ce qui
+          manquait était sa cause.
+
+      - id: C
+        text: "Une explication du glissement des continents sur le plancher océanique, en montrant que ce plancher est assez lisse pour les laisser passer."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.enveloppes-et-support-des-plaques-confondus
+        feedback: |
+          Modèle détecté : conserver l'image du continent qui glisse. Rien ne
+          glisse sur le plancher océanique : celui-ci fait partie des plaques et
+          se déplace avec elles. Le mouvement se produit plus bas, entre
+          lithosphère rigide et asthénosphère ductile.
+
+      - id: D
+        text: "Une datation du début du mouvement, en calculant depuis combien de temps le manteau circule et donc depuis quand les continents ont commencé à s'écarter."
+        correct: false
+        misconception: mc.svt.svt_tectonique_plaques.preuve-lue-a-lenvers
+        feedback: |
+          Modèle détecté : demander au moteur ce que fournissent les datations.
+          L'âge de l'ouverture d'un océan se lit dans les roches — âges
+          radiométriques du plancher, épaisseur des sédiments (chapitre 4). La
+          convection explique le mouvement, elle ne le date pas.

@@ -1,0 +1,2273 @@
+notion: aspects-energetiques
+skill_code: pc_energie
+
+misconceptions:
+  - id: mc.physics.pc_energie.epe-force-rappel-traitee-constante
+    label: "« Le travail de la force de rappel vaut force × distance, sans le facteur ½ »"
+    description: "L'élève applique la formule du travail d'une force CONSTANTE ($W=F\\times d$) à la force de rappel du ressort, alors que celle-ci croît linéairement de $0$ à $kx$ pendant l'étirement. Il calcule $W=kx\\times x=kx^2$, en oubliant que seule la force MOYENNE ($\\frac12 kx$) doit être multipliée par la distance."
+    contradicts_principle: "Le travail d'une force variable est l'aire sous la courbe $F(x)$ : pour $F=kx$ (droite de $(0,0)$ à $(x,kx)$), cette aire est un triangle, $\\frac12\\times x\\times(kx)=\\frac12 kx^2$ — la moitié du rectangle $kx^2$ qui supposerait la force déjà égale à $kx$ dès le départ."
+
+  - id: mc.physics.pc_energie.epe-depend-masse-ou-vitesse
+    label: "« L'énergie potentielle élastique dépend de la masse ou de la vitesse du solide »"
+    description: "L'élève importe dans $E_{pe}$ des habitudes propres à $E_c$ : il pense que l'énergie stockée dans le ressort dépend de la masse accrochée ou de la vitesse instantanée du solide, ou encore qu'elle change de signe selon que le ressort est étiré ou comprimé."
+    contradicts_principle: "$E_{pe}=\\frac12 kx^2$ ne dépend que de la raideur $k$ et de l'écart $x$ à l'équilibre ; $x$ étant élevé au carré, $E_{pe}$ est identique en étirement et en compression de même amplitude, et ne contient ni la masse ni la vitesse — ces deux grandeurs vivent dans $E_c$, un réservoir séparé."
+
+  - id: mc.physics.pc_energie.epe-confondue-avec-epp
+    label: "« L'énergie stockée dans le ressort est de nature gravitationnelle ($E_{pp}=mgz$) »"
+    description: "L'élève ne distingue pas l'énergie potentielle élastique de l'énergie potentielle de pesanteur : face à un ressort horizontal, il cherche à expliquer l'énergie stockée par une variation d'altitude, alors que $z$ ne change pas du tout dans ce montage."
+    contradicts_principle: "L'énergie élastique $E_{pe}=\\frac12 kx^2$ est stockée dans la déformation du ressort, une nature physique différente de l'énergie de pesanteur $E_{pp}=mgz$ ; sur un ressort horizontal, $z$ est constante et $E_{pp}$ ne varie pas, alors que $E_{pe}$ varie bel et bien avec $x$."
+
+  - id: mc.physics.pc_energie.torsion-moment-traite-constant
+    label: "« Le travail du couple de rappel vaut moment × angle, sans le facteur ½ »"
+    description: "L'élève transpose au pendule de torsion l'erreur du ressort : il traite le moment de rappel $M=C\\theta$ comme s'il valait déjà cette intensité dès le début de la torsion, et calcule $W=C\\theta\\times\\theta=C\\theta^2$, au lieu de reconnaître le moment MOYEN $\\frac12 C\\theta$ sur tout le trajet."
+    contradicts_principle: "Le travail du couple de rappel est l'aire du triangle sous $M(\\theta)=C\\theta$, soit $\\frac12\\times\\theta\\times(C\\theta)=\\frac12 C\\theta^2$ — la moitié de ce que donnerait un moment supposé constant, égal à sa valeur finale dès le départ."
+
+  - id: mc.physics.pc_energie.torsion-ep-depend-inertie-j
+    label: "« L'énergie potentielle de torsion dépend du moment d'inertie J du disque »"
+    description: "L'élève fusionne les deux réservoirs d'énergie du pendule de torsion : pensant que $J$ caractérise « l'énergie du disque » en général, il l'introduit dans $E_{p,torsion}$, alors que $J$ appartient exclusivement à l'énergie cinétique de rotation."
+    contradicts_principle: "$E_{p,torsion}=\\frac12 C\\theta^2$ ne dépend que de la constante de torsion $C$ et de l'angle $\\theta$ ; le moment d'inertie $J$ n'intervient que dans l'énergie cinétique de rotation $E_c=\\frac12 J\\dot\\theta^2$, jamais dans le réservoir de rappel."
+
+  - id: mc.physics.pc_energie.torsion-ec-formule-translation
+    label: "« L'énergie cinétique du disque en rotation vaut ½mv² »"
+    description: "L'élève applique la formule de l'énergie cinétique de TRANSLATION à un solide qui tourne, sans reconnaître qu'un disque en rotation n'a pas une vitesse unique $v$ mais une vitesse angulaire $\\dot\\theta$ commune à tous ses points."
+    contradicts_principle: "Pour un solide en rotation autour d'un axe fixe, l'énergie cinétique est $E_c=\\frac12 J\\dot\\theta^2$ — l'analogue rotationnel exact de $\\frac12 mv^2$, avec $J$ (moment d'inertie) au rôle de $m$ et $\\dot\\theta$ au rôle de $v$."
+
+  - id: mc.physics.pc_energie.pendule-ralentir-egale-perdre-energie
+    label: "« Le pendule ralentit près des extrémités, donc il perd de l'énergie mécanique »"
+    description: "L'élève confond la chute de l'énergie cinétique (visible dans le ralentissement) avec une perte de l'énergie mécanique totale, sans voir que ce que $E_c$ perd, $E_{pp}$ le gagne intégralement."
+    contradicts_principle: "Sans frottement, $E_m=E_c+E_{pp}$ est constante (établie par le TEC, la tension du fil ne travaillant jamais) : le ralentissement près des extrémités traduit une conversion de $E_c$ vers $E_{pp}$, pas une perte d'énergie."
+
+  - id: mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil
+    label: "« La hauteur gagnée par le pendule est la longueur du fil L (ou l'arc Lθ) »"
+    description: "L'élève applique $E_{pp}=mgz$ en prenant pour $z$ la longueur du fil $L$, ou la longueur de l'arc parcouru $L\\theta$, au lieu de la vraie élévation verticale entre la position à l'angle $\\theta$ et le point le plus bas."
+    contradicts_principle: "La hauteur gagnée est la projection géométrique $z=L(1-\\cos\\theta)$ ; ni $L$ seul (longueur du fil, une distance constante qui n'est pas une hauteur), ni $L\\theta$ (longueur de l'arc, une distance curviligne le long de la trajectoire, pas une élévation verticale)."
+
+  - id: mc.physics.pc_energie.pendule-em-maximale-en-bas
+    label: "« L'énergie mécanique est maximale en bas, ou Ec et Epp sont toujours égales »"
+    description: "L'élève confond l'énergie mécanique constante avec l'énergie cinétique, qui elle varie et culmine au point bas ; ou généralise une égalité de passage ($E_c=E_{pp}$, vraie à des positions particulières) en une règle permanente valable partout."
+    contradicts_principle: "$E_m$ ne varie pas : elle n'est ni maximale ni minimale nulle part. C'est $E_c$ qui est maximale au point le plus bas et $E_{pp}$ qui est maximale aux écarts extrêmes ; $E_c=E_{pp}$ seulement aux positions où les deux courbes du diagramme d'énergie se croisent."
+
+  # ── Generic-energy misconceptions (R0–R4 / R8) — backfilled during the
+  # summit-conversion pass to give every legacy item a formal misconception
+  # mapping. These items were originally built as a DIFFICULTY RAMP (≈3 per
+  # rung), not as a per-misconception coverage bank, so several of these
+  # generic models sit BELOW the ≥3-item floor (honestly reported in
+  # coverage_summary §6). Only the gate/rupture targets and the R5/R6/R7
+  # oscillator set are guaranteed at floor.
+  - id: mc.physics.pc_energie.travail-poids-depend-du-chemin
+    label: "« Le travail du poids — donc la vitesse d'arrivée — dépend de la longueur ou de la forme du chemin »"
+    description: "L'élève pense qu'un chemin plus long (ou plus court, ou d'une certaine forme) modifie le travail du poids et donc la vitesse d'arrivée : il calcule $mgs$ avec la longueur du chemin $s$, ou conclut qu'une des deux trajectoires arrive plus vite."
+    contradicts_principle: "$W(\\vec P)_{A\\to B}=mg(z_A-z_B)$ ne dépend que de la dénivelée entre le départ et l'arrivée, jamais de la longueur, de la forme ou de la durée du trajet ; à dénivelée et frottements égaux, la vitesse d'arrivée est identique quel que soit le chemin."
+  - id: mc.physics.pc_energie.frottement-restitue-energie
+    label: "« Le frottement peut restituer de l'énergie au solide (l'échauffement lui rend de la vitesse) »"
+    description: "L'élève croit que le frottement fournit de l'énergie au solide, ou que son travail peut être positif — par exemple qu'il augmente $E_m$ ou la vitesse d'arrivée."
+    contradicts_principle: "Le frottement s'oppose toujours au mouvement : son travail est résistant ($W(\\vec f)\\le 0$), il ne fait que dissiper de l'énergie mécanique en chaleur. $\\Delta E_m=W(\\vec f)\\le 0$ : le frottement ne peut jamais augmenter $E_m$ ni la vitesse."
+  - id: mc.physics.pc_energie.energie-oublie-facteur-demi
+    label: "« Énergie cinétique sans le facteur ½ (ou $v^2=gh$ sans le facteur 2) »"
+    description: "L'élève écrit $E_c=mv^2$ au lieu de $\\frac12 mv^2$, ou applique $v^2=gh$ au lieu de $v^2=2gh$ — le facteur numérique de l'énergie cinétique est omis."
+    contradicts_principle: "$E_c=\\frac12 mv^2$ : le facteur $\\frac12$ vient de l'intégration du travail ; le TEC en chute libre donne $\\frac12 mv^2=mgh$, donc $v^2=2gh$, jamais $v^2=gh$."
+  - id: mc.physics.pc_energie.ec-mauvaise-dependance-en-v
+    label: "« L'énergie cinétique varie comme $v$ (ou $v^3$, ou pas du tout), pas comme $v^2$ »"
+    description: "L'élève traite $E_c$ comme proportionnelle à $v$ (doubler $v$ doublerait $E_c$), ou à une autre puissance, ou la croit indépendante de la vitesse."
+    contradicts_principle: "$E_c=\\frac12 mv^2\\propto v^2$ : doubler $v$ multiplie $E_c$ par $2^2=4$, jamais par $2$ ni par $8$ ; et $E_c$ dépend bien de $v$, pas seulement de $m$."
+  - id: mc.physics.pc_energie.energie-oublie-masse
+    label: "« Formule d'énergie ou de travail écrite sans la masse »"
+    description: "L'élève omet la masse : il calcule $gh$ au lieu de $mgh$, ou $\\frac12 v^2$ au lieu de $\\frac12 mv^2$, ou oublie de diviser par $m$ pour remonter à la vitesse."
+    contradicts_principle: "L'énergie cinétique $\\frac12 mv^2$ et le travail du poids $mgh$ contiennent tous deux la masse ; l'omettre change la valeur (et les unités) — même si la masse se simplifie parfois, elle doit d'abord être écrite des deux côtés."
+  - id: mc.physics.pc_energie.ec-grandeur-vectorielle
+    label: "« L'énergie cinétique est un vecteur / dépend de la direction du mouvement »"
+    description: "L'élève pense que $E_c$ porte une direction (comme $\\vec v$), ou qu'elle dépend de l'orientation du mouvement, ou qu'elle est « motrice » ou « résistante »."
+    contradicts_principle: "$E_c=\\frac12 mv^2$ est une grandeur scalaire, toujours positive, qui ne dépend que de la NORME $v$ de la vitesse — jamais de sa direction ; « motrice/résistante » qualifie le travail d'une force, pas l'énergie cinétique."
+  - id: mc.physics.pc_energie.travail-oublie-cos
+    label: "« Le travail d'une force vaut $F\\times d$ sans le $\\cos\\theta$ (ou avec $\\sin\\theta$) »"
+    description: "L'élève oublie le facteur $\\cos\\theta$ du produit scalaire, utilise $\\sin\\theta$ à la place, ou se trompe sur le signe (motrice/résistante) qui en découle."
+    contradicts_principle: "$W(\\vec F)=\\vec F\\cdot\\vec{AB}=F\\,d\\,\\cos\\theta$ : c'est la composante de $\\vec F$ ALIGNÉE avec le déplacement qui travaille, donc $\\cos\\theta$ (pas $\\sin\\theta$) ; le signe du travail suit celui de $\\cos\\theta$."
+  - id: mc.physics.pc_energie.force-perpendiculaire-travaille
+    label: "« Une force perpendiculaire au déplacement (réaction normale) travaille »"
+    description: "L'élève attribue un travail non nul à la réaction normale $\\vec N$ (ou à toute force perpendiculaire au déplacement), par exemple $W(\\vec N)=N\\times d$, ou le croit dépendant de l'angle du plan."
+    contradicts_principle: "$\\vec N$ reste perpendiculaire au déplacement : $\\theta=90^\\circ$, $\\cos\\theta=0$, donc $W(\\vec N)=0$ quelle que soit sa norme ou l'inclinaison du plan — une force perpendiculaire au déplacement ne travaille jamais."
+  - id: mc.physics.pc_energie.energie-oublie-g
+    label: "« Énergie potentielle de pesanteur ou travail du poids sans le facteur $g$ »"
+    description: "L'élève écrit $E_{pp}=mz$ ou $W(\\vec P)=mh$ au lieu de $mgz$ / $mgh$ — l'intensité de la pesanteur $g$ est omise."
+    contradicts_principle: "$E_{pp}=mgz$ et $W(\\vec P)=mgh$ contiennent l'intensité de la pesanteur $g\\approx 9{,}8\\ \\text{m/s}^2$ ; l'omettre divise le résultat par $\\approx 9{,}8$ et lui retire ses unités d'énergie."
+  - id: mc.physics.pc_energie.confond-ec-et-em
+    label: "« L'énergie cinétique est confondue avec l'énergie mécanique »"
+    description: "L'élève traite $E_c$ et $E_m$ comme la même grandeur : il pose $E_c=E_m$ à un instant où l'altitude n'est pas nulle, ou en déduit une vitesse sans soustraire $E_{pp}$."
+    contradicts_principle: "$E_m=E_c+E_{pp}$ : $E_c$ n'égale $E_m$ que là où $E_{pp}=0$ ; ailleurs il faut soustraire $E_{pp}$ pour obtenir $E_c$, puis la vitesse. Confondre les deux surestime systématiquement la vitesse."
+  - id: mc.physics.pc_energie.em-conservee-malgre-frottement
+    label: "« L'énergie mécanique se conserve toujours, même en présence de frottement »"
+    description: "L'élève applique la conservation de $E_m$ sans vérifier l'absence de frottement : il ignore le terme $W(\\vec f)$ dans le bilan, ou affirme que $\\Delta E_m=0$ alors qu'un frottement agit."
+    contradicts_principle: "$E_m$ ne se conserve QUE sans frottement ; dès qu'un frottement travaille, $\\Delta E_m=W(\\vec f)<0$ — l'ignorer revient à annoncer une vitesse finale plus grande que la vitesse réelle."
+  - id: mc.physics.pc_energie.signe-travail-poids
+    label: "« Erreur de signe sur le travail du poids ou sur la relation $W(\\vec P)=-\\Delta E_{pp}$ »"
+    description: "L'élève se trompe sur le signe du travail du poids (positif en montée), ou donne à $W(\\vec P)$ et $\\Delta E_{pp}$ le même signe."
+    contradicts_principle: "$W(\\vec P)=-\\Delta E_{pp}$ : à la montée, le poids résiste ($W(\\vec P)<0$) et $E_{pp}$ augmente ($\\Delta E_{pp}>0$) ; les deux sont toujours de signes opposés, jamais identiques."
+  - id: mc.physics.pc_energie.confusion-v-et-v-carre
+    label: "« $v^2$ confondu avec $v$ (oubli de la racine carrée) »"
+    description: "L'élève annonce la valeur de $v^2$ comme si c'était la vitesse, en oubliant de prendre la racine carrée à la fin du calcul."
+    contradicts_principle: "$v^2=2gh$ donne le CARRÉ de la vitesse ; il reste à extraire $v=\\sqrt{2gh}$ — livrer $v^2$ pour $v$ confond une vitesse au carré avec une vitesse."
+
+items:
+  - id: AE-1
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_energie
+    tags: [travail_poids, chemin]
+    stem: >
+      Une bille de masse $m = 0{,}20\ \text{kg}$ descend, sans frottement,
+      une piste incurvée entre un point de départ $A$ et un point d'arrivée
+      $B$. La dénivelée entre $A$ et $B$ vaut $h = 4{,}0\ \text{m}$, mais la
+      longueur réelle du chemin suivi (le long de la piste incurvée) vaut
+      $s = 6{,}0\ \text{m}$. On prend $g \approx 9{,}8\ \text{m/s}^2$. Que
+      vaut le travail du poids $W(\vec P)$ entre $A$ et $B$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 7{,}8\\ \\text{J}$"
+        correct: true
+      - id: B
+        text: "$\\approx 11{,}8\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
+        feedback: >
+          Ce résultat vient du calcul $mgs$, en utilisant la longueur du
+          chemin ($s = 6{,}0\ \text{m}$) au lieu de la dénivelée. Le travail
+          du poids ne dépend que de la différence d'altitude entre le départ
+          et l'arrivée, jamais de la longueur ni de la forme du chemin
+          parcouru : ici seule la dénivelée $h = 4{,}0\ \text{m}$ compte.
+      - id: C
+        text: "$\\approx 3{,}9\\ \\text{J}$ (deux fois moins qu'en chute libre directe, car la rampe est plus longue que la dénivelée)"
+        correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
+        feedback: >
+          Ce choix suppose qu'un chemin plus long "dilue" le travail du
+          poids sur une plus grande distance. C'est l'inverse d'une erreur
+          fréquente, mais la même confusion : la longueur du chemin
+          n'intervient pas du tout dans $W(\vec P)$, ni pour l'augmenter ni
+          pour le diminuer. Seule la dénivelée $h$ compte.
+      - id: D
+        text: "$\\approx 39\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-masse
+        feedback: >
+          Ce nombre correspond à $gh$ seul, sans multiplier par la masse
+          $m = 0{,}20\ \text{kg}$. Le travail du poids est $W(\vec P) = mgh$ :
+          il manque le facteur $m$, et le résultat n'a d'ailleurs pas les
+          bonnes unités pour une énergie sans lui.
+    correct_feedback: >
+      $W(\vec P) = mgh = 0{,}20 \times 9{,}8 \times 4{,}0 \approx 7{,}8\ \text{J}$.
+      Le travail du poids ne dépend que de la dénivelée $h$ entre $A$ et
+      $B$ — la longueur réelle du chemin ($6{,}0\ \text{m}$ ici) n'entre
+      jamais dans le calcul.
+    solution: |
+      **Le travail du poids ne dépend que de l'altitude de départ et
+      d'arrivée**, jamais du chemin suivi (établi au chapitre 4) :
+      $$W(\vec P)_{A \to B} = mg\,(z_A - z_B) = mgh$$
+
+      **Application numérique**, avec $h = 4{,}0\ \text{m}$ (la dénivelée,
+      pas la longueur du chemin $s = 6{,}0\ \text{m}$) :
+      $$W(\vec P) = 0{,}20 \times 9{,}8 \times 4{,}0 \approx 7{,}8\ \text{J}$$
+
+      La longueur $s = 6{,}0\ \text{m}$ donnée dans l'énoncé est une
+      information non pertinente pour ce calcul — elle ne sert qu'à tester
+      si on sait ignorer la longueur du chemin.
+
+  - id: AE-2
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [travail_poids, chemin]
+    stem: >
+      Un solide de masse $m$ descend, sans frottement, une dénivelée
+      $h = 2{,}5\ \text{m}$, une fois via une rampe rectiligne, une fois
+      via une rampe en forme de S (même dénivelé $h$, même masse, mais un
+      chemin plus long et beaucoup plus sinueux). Compare le travail du
+      poids sur les deux rampes, entre le départ et l'arrivée.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Il est exactement le même sur les deux rampes, car il ne dépend
+          que de la dénivelée $h$, pas de la forme du chemin.
+        correct: true
+      - id: B
+        text: >-
+          Il est plus grand sur la rampe en S, car le poids a plus de temps
+          et plus de distance pour agir sur un chemin plus long.
+        correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
+        feedback: >
+          Le travail du poids ne dépend ni du temps mis à parcourir le
+          chemin, ni de la longueur de ce chemin — seulement de la
+          différence d'altitude $z_A - z_B$. Un chemin deux fois plus long
+          ne donne pas un travail deux fois plus grand : la formule
+          $W(\vec P) = mg(z_A - z_B)$ ne contient aucune longueur de chemin.
+      - id: C
+        text: >-
+          Il est plus petit sur la rampe en S, car les virages successifs
+          annulent une partie du travail du poids.
+        correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
+        feedback: >
+          Les détours horizontaux de la rampe en S ne retranchent rien : à
+          chaque instant, seule la composante verticale du déplacement
+          contribue au travail du poids (la composante horizontale lui est
+          perpendiculaire, donc ne travaille jamais). Les allers-retours
+          horizontaux s'annulent dans la somme, mais ils ne "coûtent" ni ne
+          "font gagner" de travail au poids.
+      - id: D
+        text: >-
+          Impossible à comparer sans connaître la forme exacte de chaque
+          rampe.
+        correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
+        feedback: >
+          La formule $W(\vec P) = mg(z_A - z_B)$ ne demande de connaître que
+          les altitudes de départ et d'arrivée, jamais la forme du chemin.
+          On peut donc comparer les deux travaux sans rien savoir de plus
+          sur la forme des rampes.
+    correct_feedback: >
+      Le travail du poids est $mgh$ dans les deux cas, car il ne dépend que
+      de la dénivelée $h = 2{,}5\ \text{m}$ — identique pour les deux
+      rampes. La forme du chemin (rectiligne ou en S) ne change rien.
+    solution: |
+      **Le mécanisme (chapitre 4) :** décompose n'importe quel chemin entre $A$ et
+      $B$ en petits déplacements rectilignes. Sur chacun, seule la
+      composante verticale contribue au travail du poids (la composante
+      horizontale lui est perpendiculaire). En sommant sur tout le chemin,
+      les altitudes intermédiaires s'annulent deux à deux : il ne reste que
+      la dénivelée totale $h$.
+
+      **Conclusion :** $W(\vec P) = mgh$ pour les deux rampes — le
+      résultat est rigoureusement identique, malgré la longueur et la
+      forme très différentes des deux chemins.
+
+  - id: AE-3
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_energie
+    tags: [energie_cinetique, energie_mecanique]
+    stem: >
+      Une bille glisse sans frottement sur une piste. Son énergie
+      mécanique vaut $E_m = 6{,}0\ \text{J}$, constante tout au long du
+      mouvement (référence d'altitude prise au point le plus bas de la
+      piste). Au sommet de la piste, la bille est instantanément immobile
+      ($v = 0$). Quelle est son énergie cinétique $E_c$ en ce point ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$E_c = 0\\ \\text{J}$"
+        correct: true
+      - id: B
+        text: "$E_c = 6{,}0\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.confond-ec-et-em
+        feedback: >
+          Ce choix confond $E_c$ avec $E_m$. C'est la SOMME
+          $E_c + E_{pp}$ qui vaut $6{,}0\ \text{J}$ partout, pas $E_c$
+          toute seule. Au sommet, $v = 0$ impose $E_c = \frac12 m v^2 = 0$
+          — les $6{,}0\ \text{J}$ y sont entièrement sous forme d'énergie
+          potentielle $E_{pp}$.
+      - id: C
+        text: >-
+          On ne peut pas savoir sans connaître la masse de la bille.
+        correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-masse
+        feedback: >
+          $E_c = \frac12 m v^2$ : avec $v = 0$, ce produit est nul quelle
+          que soit la valeur de $m$. La masse n'est donc pas nécessaire
+          ici — $v = 0$ suffit à conclure $E_c = 0$.
+      - id: D
+        text: >-
+          $E_c = 3{,}0\ \text{J}$, la moitié de l'énergie mécanique, répartie
+          également entre $E_c$ et $E_{pp}$.
+        correct: false
+        misconception: mc.physics.pc_energie.pendule-em-maximale-en-bas
+        feedback: >
+          Il n'existe aucune règle de partage à 50/50 entre $E_c$ et
+          $E_{pp}$ : leur répartition dépend de la vitesse et de l'altitude
+          à chaque instant, pas d'une proportion fixe. Ici, $v = 0$ impose
+          $E_c = 0$ exactement, pas la moitié de $E_m$.
+    correct_feedback: >
+      Au sommet, $v = 0$ donc $E_c = \frac12 m v^2 = 0\ \text{J}$. Toute
+      l'énergie mécanique $E_m = 6{,}0\ \text{J}$ y est stockée sous forme
+      d'énergie potentielle de pesanteur : $E_c$ et $E_m$ ne sont jamais la
+      même grandeur, sauf par coïncidence numérique.
+    solution: |
+      **Ce qui est donné :** $E_m = E_c + E_{pp} = 6{,}0\ \text{J}$,
+      constante (pas de frottement). Au sommet, $v = 0$.
+
+      **Calcul direct de $E_c$ au sommet :**
+      $$E_c = \frac{1}{2} m v^2 = \frac{1}{2} m \times 0^2 = 0\ \text{J}$$
+
+      **Conséquence pour $E_{pp}$ :** puisque $E_m = E_c + E_{pp}$ est
+      constante et vaut $6{,}0\ \text{J}$, et que $E_c = 0$ au sommet,
+      $E_{pp} = 6{,}0\ \text{J}$ en ce point. $E_c$ et $E_m$ ne coïncident
+      qu'au hasard des instants, jamais par définition.
+
+  - id: AE-4
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_energie
+    tags: [energie_cinetique, energie_mecanique, energie_potentielle]
+    stem: >
+      Une bille de masse $m = 0{,}20\ \text{kg}$ part du repos au sommet
+      d'une piste sans frottement. Son énergie mécanique, constante tout
+      au long du mouvement, vaut $E_m = 4{,}9\ \text{J}$ (référence
+      d'altitude au point le plus bas de la piste, $z = 0$). On prend
+      $g \approx 9{,}8\ \text{m/s}^2$. Quelle est la vitesse de la bille
+      quand elle atteint l'altitude $z = 1{,}0\ \text{m}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 5{,}4\\ \\text{m/s}$"
+        correct: true
+      - id: B
+        text: "$7{,}0\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_energie.confond-ec-et-em
+        feedback: >
+          Ce résultat vient de $v = \sqrt{2 E_m / m}$, en confondant
+          $E_c$ avec $E_m$ tout entière. Il faut d'abord soustraire
+          l'énergie potentielle $E_{pp} = mgz$ à cette altitude : la bonne
+          relation est $E_c = E_m - E_{pp}$, pas $E_c = E_m$.
+      - id: C
+        text: "$\\approx 2{,}4\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-masse
+        feedback: >
+          Ce résultat oublie de diviser par la masse dans
+          $E_c = \frac12 m v^2$ : il correspond à $v = \sqrt{2 E_c}$ au
+          lieu de $v = \sqrt{2 E_c / m}$. La masse doit apparaître au
+          dénominateur sous la racine.
+      - id: D
+        text: "$\\approx 6{,}9\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-g
+        feedback: >
+          Ce résultat vient d'un calcul de $E_{pp}$ sans le facteur $g$
+          (soit $E_{pp} = mz$ au lieu de $E_{pp} = mgz$). L'énergie
+          potentielle de pesanteur contient bien $g$ : oublier ce facteur
+          fausse la valeur de $E_{pp}$ soustraite à $E_m$.
+    correct_feedback: >
+      $E_{pp} = mgz = 0{,}20 \times 9{,}8 \times 1{,}0 \approx 1{,}96\ \text{J}$,
+      donc $E_c = E_m - E_{pp} \approx 2{,}94\ \text{J}$, et
+      $v = \sqrt{2 E_c / m} \approx 5{,}4\ \text{m/s}$.
+    solution: |
+      **Énergie potentielle à $z = 1{,}0\ \text{m}$ :**
+      $$E_{pp} = mgz = 0{,}20 \times 9{,}8 \times 1{,}0 \approx 1{,}96\ \text{J}$$
+
+      **Énergie cinétique à cette altitude** (par $E_m = E_c + E_{pp}$,
+      $E_m$ constante car pas de frottement) :
+      $$E_c = E_m - E_{pp} \approx 4{,}9 - 1{,}96 \approx 2{,}94\ \text{J}$$
+
+      **Vitesse :**
+      $$v = \sqrt{\frac{2 E_c}{m}} = \sqrt{\frac{2 \times 2{,}94}{0{,}20}} \approx 5{,}4\ \text{m/s}$$
+
+      $E_c$ n'est jamais directement égale à $E_m$ dès que l'altitude n'est
+      pas nulle : il faut toujours soustraire $E_{pp}$ au préalable.
+
+  - id: AE-6
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [energie_mecanique, frottement]
+    stem: >
+      Un solide de masse $m = 0{,}50\ \text{kg}$ descend une piste avec
+      frottement. Entre le point $A$ (départ) et le point $B$, son
+      altitude diminue de $\Delta z = 1{,}2\ \text{m}$, et le travail des
+      frottements entre $A$ et $B$ vaut $W(\vec f) = -1{,}0\ \text{J}$. On
+      prend $g \approx 9{,}8\ \text{m/s}^2$. Quelle est la variation
+      d'énergie mécanique $\Delta E_m = E_{m,B} - E_{m,A}$ entre $A$ et
+      $B$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\Delta E_m = -1{,}0\\ \\text{J}$"
+        correct: true
+      - id: B
+        text: "$\\Delta E_m = 0\\ \\text{J}$, car l'énergie mécanique se conserve toujours"
+        correct: false
+        misconception: mc.physics.pc_energie.em-conservee-malgre-frottement
+        feedback: >
+          L'énergie mécanique ne se conserve QUE en l'absence de
+          frottement. Ici, un frottement agit et dissipe de l'énergie : sa
+          contribution ne doit pas être oubliée dans le bilan.
+          $\Delta E_m$ est exactement égale au travail du frottement, pas à
+          zéro.
+      - id: C
+        text: "$\\Delta E_m \\approx 4{,}9\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.confond-ec-et-em
+        feedback: >
+          Ce résultat correspond en réalité à $\Delta E_c$ (la variation
+          d'énergie cinétique, obtenue en ajoutant le travail du poids et
+          celui du frottement), pas à $\Delta E_m$. La variation de
+          l'énergie MÉCANIQUE est plus simple : elle est égale au seul
+          travail du frottement, puisque le travail du poids est déjà
+          "absorbé" dans la variation de $E_{pp}$.
+      - id: D
+        text: "$\\Delta E_m = +1{,}0\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.signe-travail-poids
+        feedback: >
+          Le travail du frottement est toujours résistant (négatif) : il
+          ne peut jamais AUGMENTER l'énergie mécanique. Le signe correct
+          est celui de $W(\vec f)$ lui-même, soit $-1{,}0\ \text{J}$, pas
+          $+1{,}0\ \text{J}$.
+    correct_feedback: >
+      $\Delta E_m = W(\vec f) = -1{,}0\ \text{J}$ : la variation de
+      l'énergie mécanique est exactement égale au travail du frottement,
+      quelle que soit la dénivelée — le travail du poids est déjà pris en
+      compte dans la variation de $E_{pp}$, il ne réapparaît pas dans
+      $\Delta E_m$.
+    solution: |
+      **Le résultat général établi au chapitre 5 :** quand les forces qui
+      s'exercent sont le poids, une réaction qui ne travaille pas, et un
+      frottement, le TEC donne $\Delta E_c = -\Delta E_{pp} + W(\vec f)$,
+      donc :
+      $$\Delta E_m = \Delta E_c + \Delta E_{pp} = W(\vec f)$$
+
+      **Application ici :**
+      $$\Delta E_m = W(\vec f) = -1{,}0\ \text{J}$$
+
+      Le travail du poids ($mg\Delta z \approx 5{,}88\ \text{J}$) n'entre
+      PAS dans ce calcul : il est déjà comptabilisé dans la variation de
+      $E_{pp}$, qui fait partie de $E_m$. Ce qui reste dans $\Delta E_m$,
+      c'est uniquement l'effet des forces qui ne sont ni le poids ni une
+      réaction perpendiculaire au mouvement — ici, le frottement.
+
+  - id: AE-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_energie
+    tags: [intuition, chemin]
+    stem: >
+      Deux billes identiques, de même masse, sont lâchées sans vitesse
+      initiale depuis la même hauteur $h$ au-dessus du sol. La première
+      tombe en chute libre verticale. La seconde descend un toboggan
+      incurvé, partant du même point de départ et arrivant au même niveau,
+      mais par un chemin beaucoup plus long et sinueux. On néglige les
+      frottements dans les deux cas. Laquelle des deux billes arrive au sol
+      avec la plus grande vitesse ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux billes arrivent avec exactement la même vitesse."
+        correct: true
+      - id: B
+        text: >-
+          La bille en chute libre arrive plus vite, car son trajet est plus
+          direct.
+        correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
+        feedback: >
+          Un chemin plus court ne donne pas une vitesse d'arrivée plus
+          grande : le travail du poids, donc la vitesse finale, ne dépend
+          que de la dénivelée $h$, identique pour les deux billes.
+      - id: C
+        text: >-
+          La bille sur le toboggan arrive plus vite, car son trajet plus
+          long lui donne plus de temps pour prendre de la vitesse.
+        correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
+        feedback: >
+          Un chemin plus long ne donne pas non plus plus de vitesse : seule
+          la dénivelée $h$ compte pour le travail du poids, jamais la
+          longueur du trajet.
+      - id: D
+        text: "Impossible de savoir sans connaître la forme exacte du toboggan."
+        correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
+        feedback: >
+          La forme du chemin n'intervient pas dans le résultat : la
+          dénivelée commune et l'absence de frottement suffisent à conclure,
+          sans connaître la géométrie précise du toboggan.
+    correct_feedback: >
+      Les deux billes partent et arrivent aux mêmes altitudes, sans
+      frottement : leur vitesse finale ne dépend que de cette dénivelée
+      commune, jamais de la forme ou de la longueur du chemin suivi.
+    solution: |
+      Sans frottement, seul le poids travaille, et son travail ne dépend
+      que de la dénivelée $h$ (identique pour les deux billes), jamais du
+      chemin suivi. Les deux billes ont donc exactement la même vitesse
+      finale, malgré des trajets très différents.
+
+  - id: AE-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_energie
+    tags: [intuition, chemin, temps_vs_vitesse]
+    stem: >
+      Reprends les deux billes de l'exercice précédent (même hauteur $h$,
+      même masse, sans frottement, chute libre contre toboggan sinueux).
+      Compare cette fois non seulement leur vitesse d'arrivée, mais aussi la
+      durée du trajet. Quelle affirmation est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux billes arrivent en même temps et à la même vitesse."
+        correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
+        feedback: >
+          Le toboggan impose un chemin plus long à parcourir : sa durée de
+          trajet est donc plus longue, même si la vitesse finale, elle, est
+          la même dans les deux cas.
+      - id: B
+        text: >-
+          La bille sur le toboggan met plus de temps à arriver, mais les
+          deux billes arrivent à la même vitesse.
+        correct: true
+      - id: C
+        text: >-
+          La bille sur le toboggan met plus de temps ET arrive avec une
+          vitesse plus faible, car son trajet est plus long.
+        correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
+        feedback: >
+          La longueur du chemin allonge la durée du trajet, mais elle ne
+          change rien à la vitesse finale, qui ne dépend que de la
+          dénivelée.
+      - id: D
+        text: >-
+          La bille en chute libre met plus de temps à arriver, car elle a
+          moins de distance pour accélérer.
+        correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
+        feedback: >
+          C'est l'inverse : un trajet plus court se parcourt en moins de
+          temps, à dénivelée égale — c'est la bille sur le toboggan qui met
+          le plus de temps, pas celle en chute libre.
+    correct_feedback: >
+      La durée du trajet dépend de la longueur du chemin (plus longue pour
+      le toboggan), mais la vitesse finale ne dépend que de la dénivelée
+      $h$ — les deux notions ne varient pas ensemble.
+    solution: |
+      Le toboggan impose un chemin plus long : le trajet y dure plus
+      longtemps. Mais le travail du poids, donc la vitesse finale, ne
+      dépend que de la dénivelée $h$, commune aux deux billes : "plus long"
+      ne veut pas dire "plus lent à l'arrivée".
+
+  - id: AE-9
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: pc_energie
+    tags: [intuition, frottement, chemin]
+    stem: >
+      Modifie une dernière fois l'exercice : la bille en chute libre tombe
+      toujours sans frottement, mais cette fois le toboggan présente des
+      frottements non négligeables sur tout son trajet. Les deux billes
+      partent toujours de la même hauteur $h$, sans vitesse initiale.
+      Que peut-on dire des deux vitesses d'arrivée ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Les deux billes arrivent malgré tout à la même vitesse, car seule la dénivelée
+          compte, quel que soit le trajet suivi.
+        correct: false
+        misconception: mc.physics.pc_energie.em-conservee-malgre-frottement
+        feedback: >
+          Ce résultat ("seule la dénivelée compte") n'est vrai que pour le
+          travail du poids ; dès qu'un frottement s'exerce, il apporte sa
+          propre contribution, négative, au bilan d'énergie cinétique.
+      - id: B
+        text: >-
+          La bille sur le toboggan arrive plus vite, car le frottement
+          échauffe la piste et lui restitue de l'énergie.
+        correct: false
+        misconception: mc.physics.pc_energie.frottement-restitue-energie
+        feedback: >
+          Le frottement dissipe de l'énergie, il n'en restitue jamais au
+          solide : son travail est toujours résistant (négatif), donc il ne
+          peut qu'abaisser la vitesse d'arrivée.
+      - id: C
+        text: >-
+          La bille sur le toboggan arrive avec une vitesse plus faible qu'en chute
+          libre, car le frottement dissipe de l'énergie sur son trajet.
+        correct: true
+      - id: D
+        text: "Impossible de savoir sans connaître la valeur exacte du frottement."
+        correct: false
+        misconception: mc.physics.pc_energie.em-conservee-malgre-frottement
+        feedback: >
+          La valeur exacte n'est pas nécessaire pour connaître le sens de
+          l'effet : tout frottement non nul retranche de l'énergie
+          cinétique, donc la bille du toboggan arrive nécessairement moins
+          vite, quelle que soit l'intensité du frottement.
+    correct_feedback: >
+      Avec frottement sur le toboggan, le TEC ajoute un travail résistant
+      supplémentaire par rapport à la chute libre : l'énergie cinétique
+      finale, donc la vitesse, y est nécessairement plus faible.
+    solution: |
+      Sur le toboggan, le TEC devient
+      $\Delta E_c = W(\vec P) + W(\vec N) + W(\vec f)$, avec $W(\vec f) < 0$.
+      Le même $W(\vec P)$ qu'en chute libre est amputé de ce terme négatif :
+      l'énergie cinétique, donc la vitesse d'arrivée, y est strictement
+      plus faible.
+
+  - id: AE-10
+    rung: "R1"
+    difficulty_level: 1
+    skill_code: pc_energie
+    tags: [energie_cinetique]
+    stem: >
+      Un solide de masse $m = 0{,}40\ \text{kg}$ se déplace en translation à
+      la vitesse $v = 5{,}0\ \text{m/s}$. Quelle est son énergie cinétique
+      $E_c$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$10{,}0\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-facteur-demi
+        feedback: >
+          Ce résultat oublie le facteur $\frac12$ dans $E_c = \frac12 m v^2$
+          : il correspond à $m v^2$ sans le diviser par deux.
+      - id: B
+        text: "$1{,}0\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.ec-mauvaise-dependance-en-v
+        feedback: >
+          Ce résultat utilise $v$ au lieu de $v^2$ (soit $\frac12 m v$) :
+          l'énergie cinétique varie comme le carré de la vitesse, jamais
+          comme la vitesse elle-même.
+      - id: C
+        text: "$12{,}5\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-masse
+        feedback: >
+          Ce résultat correspond à $\frac12 v^2$ sans la masse $m$ : la
+          formule $E_c = \frac12 m v^2$ exige de multiplier par $m$, pas de
+          l'omettre.
+      - id: D
+        text: "$5{,}0\\ \\text{J}$"
+        correct: true
+    correct_feedback: >
+      $E_c = \frac12 m v^2 = \frac12 \times 0{,}40 \times 5{,}0^2 = 5{,}0\ \text{J}$.
+    solution: |
+      $$E_c = \frac{1}{2} m v^2 = \frac{1}{2} \times 0{,}40 \times 5{,}0^2 = 5{,}0\ \text{J}$$
+
+  - id: AE-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_energie
+    tags: [energie_cinetique]
+    stem: >
+      La vitesse d'un mobile double, sa masse restant inchangée. Comment
+      varie son énergie cinétique $E_c$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est multipliée par 4."
+        correct: true
+      - id: B
+        text: "Elle est multipliée par 2, comme la vitesse."
+        correct: false
+        misconception: mc.physics.pc_energie.ec-mauvaise-dependance-en-v
+        feedback: >
+          $E_c$ varie comme le carré de la vitesse, pas comme la vitesse
+          elle-même : doubler $v$ multiplie $v^2$ par 4, pas par 2.
+      - id: C
+        text: "Elle est multipliée par 8."
+        correct: false
+        misconception: mc.physics.pc_energie.ec-mauvaise-dependance-en-v
+        feedback: >
+          $E_c$ dépend de $v^2$, pas de $v^3$ : doubler $v$ multiplie $E_c$
+          par $2^2 = 4$, pas par $2^3 = 8$.
+      - id: D
+        text: "Elle ne change pas, car seule la masse détermine l'énergie cinétique."
+        correct: false
+        misconception: mc.physics.pc_energie.ec-mauvaise-dependance-en-v
+        feedback: >
+          $E_c = \frac12 m v^2$ dépend explicitement de $v$, pas seulement
+          de $m$ : faire varier la vitesse fait nécessairement varier $E_c$.
+    correct_feedback: >
+      $E_c \propto v^2$ : doubler $v$ multiplie $v^2$, donc $E_c$, par
+      $2^2 = 4$.
+    solution: |
+      $$\frac{E_c'}{E_c} = \frac{\frac12 m (2v)^2}{\frac12 m v^2} = \frac{4v^2}{v^2} = 4$$
+      L'énergie cinétique est multipliée par 4, jamais par 2.
+
+  - id: AE-12
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_energie
+    tags: [energie_cinetique, grandeur_scalaire]
+    stem: >
+      Deux solides identiques, de masse $m = 0{,}30\ \text{kg}$, se
+      déplacent tous deux à la même norme de vitesse $v = 4{,}0\ \text{m/s}$
+      : l'un horizontalement, l'autre verticalement vers le bas. Que
+      peut-on dire de leurs énergies cinétiques respectives ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elles sont différentes, car $E_c$ est un vecteur orienté comme
+          $\vec v$.
+        correct: false
+        misconception: mc.physics.pc_energie.ec-grandeur-vectorielle
+        feedback: >
+          $E_c$ est une grandeur scalaire, pas un vecteur : elle ne porte
+          aucune direction, contrairement au vecteur vitesse dont elle
+          dérive.
+      - id: B
+        text: >-
+          Elles sont égales : $E_c$ ne dépend que de la norme de la
+          vitesse, pas de sa direction.
+        correct: true
+      - id: C
+        text: >-
+          Elles sont différentes, car il faut connaître la direction du
+          mouvement pour savoir si l'énergie est motrice ou résistante.
+        correct: false
+        misconception: mc.physics.pc_energie.ec-grandeur-vectorielle
+        feedback: >
+          "Motrice" ou "résistante" qualifie le travail d'une force selon
+          sa direction par rapport au déplacement, pas l'énergie cinétique
+          elle-même, qui ne dépend que de $v$ et $m$.
+      - id: D
+        text: >-
+          Impossible de comparer sans connaître la trajectoire complète de
+          chaque solide.
+        correct: false
+        misconception: mc.physics.pc_energie.ec-grandeur-vectorielle
+        feedback: >
+          $E_c = \frac12 m v^2$ ne demande que la masse et la norme de la
+          vitesse à l'instant considéré, jamais la trajectoire suivie.
+    correct_feedback: >
+      $E_c = \frac12 m v^2$ ne fait intervenir que la norme $v$, pas la
+      direction : les deux énergies cinétiques valent ici $2{,}4\ \text{J}$,
+      quelle que soit l'orientation du mouvement.
+    solution: |
+      $$E_c = \frac12 m v^2 = \frac12 \times 0{,}30 \times 4{,}0^2 = 2{,}4\ \text{J}$$
+      dans les deux cas : la formule ne contient que la norme $v$, jamais
+      une direction.
+
+  - id: AE-13
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_energie
+    tags: [travail_force, signe_travail]
+    stem: >
+      Une force constante $\vec F$, de norme $F = 10\ \text{N}$, s'exerce
+      sur un solide pendant un déplacement rectiligne $AB$ de longueur
+      $d = 5{,}0\ \text{m}$. L'angle entre $\vec F$ et $\vec{AB}$ vaut
+      $\theta = 60^\circ$. Quel est le travail $W(\vec F)$ de cette force ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $50\ \text{J}$ (le travail vaut simplement $F \times d$, sans
+          tenir compte de l'angle)
+        correct: false
+        misconception: mc.physics.pc_energie.travail-oublie-cos
+        feedback: >
+          Le travail est un produit scalaire, $W(\vec F) = F d \cos\theta$
+          : il faut multiplier par $\cos\theta$, pas ignorer l'angle entre
+          la force et le déplacement.
+      - id: B
+        text: >-
+          $\approx 43\ \text{J}$ (en utilisant $\sin\theta$ au lieu de
+          $\cos\theta$)
+        correct: false
+        misconception: mc.physics.pc_energie.travail-oublie-cos
+        feedback: >
+          C'est $\cos\theta$ qui intervient dans le travail d'une force,
+          pas $\sin\theta$ : ce dernier mesurerait la composante
+          perpendiculaire au déplacement, qui ne travaille jamais.
+      - id: C
+        text: "$25\\ \\text{J}$ (par $W = F\\,d\\cos\\theta$, l'angle intervenant par son cosinus)"
+        correct: true
+      - id: D
+        text: >-
+          $-25\ \text{J}$ (la force serait résistante dès que $\theta$
+          n'est pas nul)
+        correct: false
+        misconception: mc.physics.pc_energie.travail-oublie-cos
+        feedback: >
+          Le travail n'est négatif que si $\cos\theta < 0$, c'est-à-dire
+          $90^\circ < \theta \leq 180^\circ$ ; ici $\theta = 60^\circ < 90^\circ$
+          donne $\cos\theta > 0$, donc un travail positif (moteur).
+    correct_feedback: >
+      $W(\vec F) = F d \cos\theta = 10 \times 5{,}0 \times \cos 60^\circ = 25\ \text{J}$.
+    solution: |
+      $$W(\vec F) = F \times d \times \cos\theta = 10 \times 5{,}0 \times 0{,}5 = 25\ \text{J}$$
+      $\theta = 60^\circ < 90^\circ$ donne $\cos\theta > 0$ : la force est
+      motrice, travail positif.
+
+  - id: AE-14
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_energie
+    tags: [travail_force, reaction_normale]
+    stem: >
+      Un solide glisse sur un plan incliné, avec frottement, sous l'effet
+      de son poids, de la réaction normale $\vec N$ du plan et du
+      frottement $\vec f$. Concernant le travail $W(\vec N)$ de la réaction
+      normale pendant le déplacement, quelle affirmation est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $W(\vec N) = N \times d$, car $\vec N$ agit sur toute la distance
+          parcourue $d$.
+        correct: false
+        misconception: mc.physics.pc_energie.force-perpendiculaire-travaille
+        feedback: >
+          Cette formule ignore que $\vec N$ est perpendiculaire au
+          déplacement : seule la composante d'une force alignée avec le
+          déplacement travaille, et $\vec N$ n'en a aucune ici.
+      - id: B
+        text: >-
+          $W(\vec N)$ est négatif, car $\vec N$ s'oppose à l'enfoncement du
+          solide dans le plan.
+        correct: false
+        misconception: mc.physics.pc_energie.force-perpendiculaire-travaille
+        feedback: >
+          S'opposer à l'enfoncement (perpendiculaire au plan) n'est pas la
+          même chose que s'opposer au déplacement (le long du plan) : c'est
+          ce deuxième critère qui détermine le signe du travail, et ici
+          l'angle est de $90^\circ$, donc le travail est nul, pas négatif.
+      - id: C
+        text: "$W(\\vec N)$ dépend de l'angle $\\alpha$ du plan incliné."
+        correct: false
+        misconception: mc.physics.pc_energie.force-perpendiculaire-travaille
+        feedback: >
+          C'est la norme de $N$ (par exemple $N = mg\cos\alpha$) qui dépend
+          de l'angle, pas son travail : $\vec N$ reste perpendiculaire au
+          déplacement quel que soit $\alpha$, donc $W(\vec N) = 0$ toujours.
+      - id: D
+        text: >-
+          $W(\vec N) = 0$, quelle que soit la valeur de $N$, car $\vec N$
+          est perpendiculaire au déplacement.
+        correct: true
+    correct_feedback: >
+      $\vec N$ reste perpendiculaire au déplacement (qui suit le plan) à
+      chaque instant : $\cos 90^\circ = 0$, donc $W(\vec N) = 0$, quelle que
+      soit sa norme.
+    solution: |
+      $\vec N$ est toujours perpendiculaire au déplacement le long du plan,
+      donc $\theta = 90^\circ$ et $\cos\theta = 0$ :
+      $$W(\vec N) = N \times d \times \cos 90^\circ = 0$$
+      indépendamment de la valeur de $N$ ou de l'angle $\alpha$ du plan.
+
+  - id: AE-15
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [tec, chute_libre]
+    stem: >
+      Un objet est lâché sans vitesse initiale et tombe en chute libre,
+      frottements négligés, d'une hauteur $h = 10\ \text{m}$. On prend
+      $g \approx 9{,}8\ \text{m/s}^2$. Quelle est sa vitesse au sol,
+      déterminée par le théorème de l'énergie cinétique ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 14{,}0\\ \\text{m/s}$ (par $v = \\sqrt{2gh}$, la masse n'intervenant pas)"
+        correct: true
+      - id: B
+        text: >-
+          $\approx 9{,}9\ \text{m/s}$ (en oubliant le facteur 2 dans
+          $v^2 = 2gh$)
+        correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-facteur-demi
+        feedback: >
+          Le TEC donne $\frac12 m v^2 = mgh$, donc $v^2 = 2gh$ : oublier le
+          facteur 2 revient à écrire $E_c = mv^2$ au lieu de
+          $E_c = \frac12 m v^2$.
+      - id: C
+        text: "Impossible de calculer sans connaître la masse de l'objet."
+        correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-masse
+        feedback: >
+          La masse se simplifie des deux côtés de l'égalité TEC
+          ($\frac12 m v^2 = mgh$) : $v = \sqrt{2gh}$ ne dépend pas de $m$,
+          il n'est donc pas nécessaire de la connaître.
+      - id: D
+        text: >-
+          $196\ \text{m/s}$ (en oubliant de prendre la racine carrée de
+          $v^2$)
+        correct: false
+        misconception: mc.physics.pc_energie.confusion-v-et-v-carre
+        feedback: >
+          $v^2 = 2gh = 196$ est le carré de la vitesse, pas la vitesse
+          elle-même : il faut encore prendre la racine carrée pour obtenir
+          $v$.
+    correct_feedback: >
+      $v = \sqrt{2gh} = \sqrt{2 \times 9{,}8 \times 10} = \sqrt{196} = 14{,}0\ \text{m/s}$.
+    solution: |
+      $$\frac12 m v^2 - 0 = mgh \implies v = \sqrt{2gh} = \sqrt{2 \times 9{,}8 \times 10} = 14{,}0\ \text{m/s}$$
+      La masse se simplifie : elle n'est jamais nécessaire pour ce calcul.
+
+  - id: AE-16
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [travail_poids, energie_potentielle]
+    stem: >
+      Un solide de masse $m = 0{,}30\ \text{kg}$ monte d'une hauteur
+      $h = 2{,}0\ \text{m}$ (chemin quelconque, sans frottement). On prend
+      $g \approx 9{,}8\ \text{m/s}^2$. Quels sont le travail du poids
+      $W(\vec P)$ et la variation d'énergie potentielle $\Delta E_{pp}$
+      correspondants ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$W(\\vec P) \\approx +5{,}9\\ \\text{J}$ ; $\\Delta E_{pp} \\approx -5{,}9\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.signe-travail-poids
+        feedback: >
+          Le poids s'oppose ici au déplacement, qui est vers le haut : son
+          travail est donc résistant (négatif), pas positif, quelle que
+          soit la distance parcourue.
+      - id: B
+        text: "$W(\\vec P) \\approx -5{,}9\\ \\text{J}$ ; $\\Delta E_{pp} \\approx +5{,}9\\ \\text{J}$"
+        correct: true
+      - id: C
+        text: "$W(\\vec P) \\approx -5{,}9\\ \\text{J}$ ; $\\Delta E_{pp} \\approx -5{,}9\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.signe-travail-poids
+        feedback: >
+          La relation est $W(\vec P) = -\Delta E_{pp}$ : si $W(\vec P)$ est
+          négatif, $\Delta E_{pp}$ doit être positif, pas de même signe.
+      - id: D
+        text: "$W(\\vec P) \\approx -0{,}60\\ \\text{J}$ ; $\\Delta E_{pp} \\approx +0{,}60\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-g
+        feedback: >
+          Ce résultat oublie le facteur $g$ dans $W(\vec P) = mgh$ (calcul
+          $mh$ au lieu de $mgh$) : l'énergie potentielle de pesanteur
+          contient bien $g$.
+    correct_feedback: >
+      Le solide monte : le poids s'y oppose, $W(\vec P) = -mgh \approx -5{,}9\ \text{J}$,
+      et $\Delta E_{pp} = -W(\vec P) \approx +5{,}9\ \text{J}$.
+    solution: |
+      $$W(\vec P) = mg(z_A - z_B) = -mgh = -0{,}30 \times 9{,}8 \times 2{,}0 \approx -5{,}9\ \text{J}$$
+      $$\Delta E_{pp} = -W(\vec P) \approx +5{,}9\ \text{J}$$
+      Le solide monte : le poids résiste (travail négatif), l'énergie
+      potentielle augmente.
+
+  - id: AE-19
+    rung: "R8"
+    difficulty_level: 5
+    skill_code: pc_energie
+    tags: [tec, frottement, application_bac]
+    stem: >
+      Un traîneau de masse $m = 60\ \text{kg}$ part sans vitesse initiale du
+      sommet d'une piste inclinée rectiligne de longueur $L = 50\ \text{m}$,
+      telle que $\sin\alpha = 0{,}20$. Un frottement constant, opposé au
+      mouvement, de norme $f = 30\ \text{N}$, s'exerce sur toute la piste
+      inclinée. Au bas de la piste, le traîneau aborde une portion
+      horizontale où le frottement devient $f' = 150\ \text{N}$, jusqu'à
+      l'arrêt complet. On prend $g \approx 9{,}8\ \text{m/s}^2$. Quelle
+      distance $d'$ le traîneau parcourt-il sur la portion horizontale
+      avant de s'arrêter ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 29{,}2\\ \\text{m}$"
+        correct: true
+      - id: B
+        text: "$\\approx 39{,}2\\ \\text{m}$"
+        correct: false
+        misconception: mc.physics.pc_energie.em-conservee-malgre-frottement
+        feedback: >
+          Ce résultat oublie le travail du frottement sur la piste inclinée
+          (comme si $E_m$ y était conservée) : il faut retrancher
+          $f \times L$ à $W(\vec P)$ avant d'aborder la portion horizontale.
+      - id: C
+        text: "$\\approx 186{,}0\\ \\text{m}$"
+        correct: false
+        misconception: mc.physics.pc_energie.travail-poids-depend-du-chemin
+        feedback: >
+          Ce résultat utilise $mgL$ au lieu de $mgL\sin\alpha$ pour le
+          travail du poids : seule la dénivelée $h = L\sin\alpha$ compte,
+          pas la longueur $L$ de la piste inclinée.
+      - id: D
+        text: "$\\approx 146{,}0\\ \\text{m}$"
+        correct: false
+        misconception: mc.physics.pc_energie.em-conservee-malgre-frottement
+        feedback: >
+          Ce résultat utilise le frottement de la piste inclinée
+          ($f = 30\ \text{N}$) au lieu de celui de la portion horizontale
+          ($f' = 150\ \text{N}$) pour calculer la distance d'arrêt.
+    correct_feedback: >
+      $E_{c,bas} = mgL\sin\alpha - fL = 5\,880 - 1\,500 = 4\,380\ \text{J}$,
+      puis $d' = E_{c,bas} / f' = 4\,380 / 150 \approx 29{,}2\ \text{m}$.
+    solution: |
+      $$W(\vec P) = mgL\sin\alpha = 60 \times 9{,}8 \times 50 \times 0{,}20 = 5\,880\ \text{J}$$
+      $$W(\vec f) = -fL = -30 \times 50 = -1\,500\ \text{J}$$
+      $$E_{c,bas} = 5\,880 - 1\,500 = 4\,380\ \text{J}$$
+      Sur le plat, $W(\vec P) = 0$ : $E_{c,bas} = f' d' \implies d' = 4\,380 / 150 \approx 29{,}2\ \text{m}$.
+
+  - id: AE-20
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: pc_energie
+    tags: [energie_mecanique, frottement, raisonnement_qualitatif]
+    stem: >
+      Un skieur descend une piste inclinée avec frottement, en partant du
+      repos. On refait l'expérience en doublant la norme du frottement sur
+      la piste inclinée, toutes les autres grandeurs (masse, angle,
+      distance parcourue) restant inchangées. La vitesse au bas de la piste
+      sera-t-elle plus grande, plus petite, ou égale à celle du premier
+      essai ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Égale, car le travail du poids ne change pas."
+        correct: false
+        misconception: mc.physics.pc_energie.em-conservee-malgre-frottement
+        feedback: >
+          $\Delta E_c$ dépend de la somme de tous les travaux, pas
+          seulement de $W(\vec P)$ : doubler $W(\vec f)$ (négatif) change
+          nécessairement $E_c$, même si $W(\vec P)$ reste identique.
+      - id: B
+        text: >-
+          Plus petite : doubler le frottement double la valeur absolue
+          (négative) de $W(\vec f)$, donc $E_c$ en bas de la piste diminue,
+          et $v$ diminue aussi.
+        correct: true
+      - id: C
+        text: >-
+          Plus grande, car un frottement plus important échauffe davantage la piste et
+          lui restitue cette énergie sous forme de mouvement.
+        correct: false
+        misconception: mc.physics.pc_energie.frottement-restitue-energie
+        feedback: >
+          Le frottement dissipe de l'énergie, il n'en restitue jamais au
+          solide : son travail reste résistant (négatif), donc augmenter le
+          frottement ne peut qu'abaisser la vitesse finale.
+      - id: D
+        text: "Impossible à dire sans refaire tout le calcul numériquement."
+        correct: false
+        misconception: mc.physics.pc_energie.em-conservee-malgre-frottement
+        feedback: >
+          Le TEC permet un raisonnement qualitatif sans refaire le calcul :
+          $W(\vec P)$ inchangé, $W(\vec f)$ plus négatif $\implies E_c$ plus
+          petite, donc $v$ plus petite, sans recalculer aucun nombre.
+    correct_feedback: >
+      $E_{c,bas} = W(\vec P) + W(\vec f)$ ; $W(\vec P)$ est inchangé, mais
+      $W(\vec f)$ (négatif) double en valeur absolue : $E_{c,bas}$ diminue,
+      donc $v$ diminue.
+    solution: |
+      $E_{c,bas} = W(\vec P) + W(\vec f)$, avec $W(\vec P)$ inchangé et
+      $W(\vec f)$ deux fois plus négatif. $E_{c,bas}$ diminue donc, et avec
+      elle $v_{bas}$ : pas besoin de refaire le calcul numérique pour
+      conclure sur le sens de la variation.
+
+  - id: AE-21
+    rung: "R8"
+    difficulty_level: 5
+    skill_code: pc_energie
+    tags: [tec, frottement, application_bac]
+    stem: >
+      Un solide de masse $m = 1{,}5\ \text{kg}$ part sans vitesse initiale
+      et descend une piste avec frottement. Son altitude diminue de
+      $\Delta z = 3{,}0\ \text{m}$, et sa vitesse mesurée en bas de la piste
+      vaut $v = 6{,}0\ \text{m/s}$. On prend $g \approx 9{,}8\ \text{m/s}^2$.
+      Quel est le travail des frottements $W(\vec f)$ sur ce trajet ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 27\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.signe-travail-poids
+        feedback: >
+          Ce résultat ignore le travail du poids dans le bilan (comme si
+          $E_{c,bas} = W(\vec f)$ seul) : il faut écrire le TEC complet,
+          $E_{c,bas} = W(\vec P) + W(\vec f)$, pour isoler $W(\vec f)$.
+      - id: B
+        text: "$\\approx +17{,}1\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.signe-travail-poids
+        feedback: >
+          Le frottement est nécessairement résistant : son travail est
+          négatif. Le signe correct ici est celui de
+          $W(\vec f) = E_{c,bas} - W(\vec P)$, soit $-17{,}1\ \text{J}$, pas
+          $+17{,}1\ \text{J}$.
+      - id: C
+        text: "$\\approx -17{,}1\\ \\text{J}$"
+        correct: true
+      - id: D
+        text: "$\\approx 9{,}9\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-facteur-demi
+        feedback: >
+          Ce résultat oublie le facteur $\frac12$ dans $E_c = \frac12 m v^2$
+          (calcul $mv^2 = 54\ \text{J}$ au lieu de $27\ \text{J}$), ce qui
+          fausse ensuite $W(\vec f)$.
+    correct_feedback: >
+      $W(\vec P) = mg\Delta z \approx 44{,}1\ \text{J}$,
+      $E_{c,bas} = \frac12 m v^2 = 27\ \text{J}$, donc par le TEC
+      $W(\vec f) = E_{c,bas} - W(\vec P) \approx -17{,}1\ \text{J}$.
+    solution: |
+      $$W(\vec P) = mg\Delta z = 1{,}5 \times 9{,}8 \times 3{,}0 \approx 44{,}1\ \text{J}$$
+      $$E_{c,bas} = \frac12 m v^2 = \frac12 \times 1{,}5 \times 6{,}0^2 = 27\ \text{J}$$
+      $$E_{c,bas} = W(\vec P) + W(\vec f) \implies W(\vec f) = 27 - 44{,}1 \approx -17{,}1\ \text{J}$$
+
+  # ══════════════════════════════════════════════════════════════
+  # R5 — NEW: ressort, énergie potentielle élastique E_pe = ½kx² (3 items)
+  # Misconceptions: epe-force-rappel-traitee-constante, epe-depend-masse-ou-vitesse,
+  # epe-confondue-avec-epp — each item's 3 distractors rotate through all three.
+  # ══════════════════════════════════════════════════════════════
+
+  - id: AE-22
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [misconception_driven, energie_potentielle_elastique, resolution]
+    stem: >
+      Un solide de masse $m = 0{,}40\ \text{kg}$ est accroché à un ressort
+      horizontal de raideur $k = 40\ \text{N/m}$, sans frottement. On étire
+      le ressort depuis sa position d'équilibre jusqu'à un allongement
+      $x = 5{,}0\ \text{cm}$. Quelle est l'énergie potentielle élastique
+      $E_{pe}$ emmagasinée dans le ressort à cet instant ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\approx 0{,}10\ \text{J}$, en calculant le travail comme force
+          finale × distance : $kx \times x$.
+        correct: false
+        misconception: mc.physics.pc_energie.epe-force-rappel-traitee-constante
+        also_reveals: []
+        feedback: >
+          Ce calcul traite la force de rappel $kx$ comme si elle valait déjà
+          cette intensité dès le départ de l'étirement. En réalité elle
+          croît de $0$ à $kx$ : le travail est l'aire du triangle sous
+          $F(x)=kx$, soit $\frac12 kx^2$ — exactement la moitié de ce
+          résultat.
+      - id: B
+        text: >-
+          Impossible de conclure sans connaître la vitesse du solide à cet
+          instant, car $E_{pe}$ dépend aussi de la vitesse.
+        correct: false
+        misconception: mc.physics.pc_energie.epe-depend-masse-ou-vitesse
+        also_reveals: []
+        feedback: >
+          $E_{pe} = \frac12 kx^2$ ne dépend que de $k$ et de $x$ : la
+          vitesse (comme la masse) n'y figure pas du tout, elle vit dans
+          $E_c$, une grandeur séparée. On peut calculer $E_{pe}$ sans rien
+          savoir de la vitesse.
+      - id: C
+        text: "$\\approx 0{,}05\\ \\text{J}$ (par $E_{pe} = \\tfrac12 k x^2$ ; le facteur $\\tfrac12$ vient de ce que la force croît avec l'allongement)"
+        correct: true
+      - id: D
+        text: >-
+          $\approx 0{,}20\ \text{J}$, l'énergie stockée étant de nature
+          gravitationnelle : $E_{pe} = mgx$.
+        correct: false
+        misconception: mc.physics.pc_energie.epe-confondue-avec-epp
+        also_reveals: []
+        feedback: >
+          Ce calcul confond $E_{pe}$ avec l'énergie potentielle de
+          pesanteur $E_{pp}=mgz$. Sur ce montage horizontal, l'altitude $z$
+          du solide ne change jamais : l'énergie stockée dans le ressort
+          n'a rien de gravitationnel, c'est une énergie élastique, d'une
+          nature différente.
+    correct_feedback: >
+      $E_{pe} = \frac12 kx^2 = \frac12 \times 40 \times (0{,}050)^2 =
+      0{,}050\ \text{J}$. Ni la masse ni la vitesse n'interviennent, et
+      l'altitude ne joue aucun rôle sur ce montage horizontal.
+    solution: |
+      $$E_{pe} = \frac{1}{2}kx^2 = \frac{1}{2}\times 40 \times (0{,}050)^2 = 0{,}050\ \text{J}$$
+
+      Le facteur $\frac12$ vient de la force moyenne $\frac12 kx$ sur le
+      trajet d'étirement (la force de rappel croît de $0$ à $kx$, elle ne
+      vaut pas $kx$ dès le départ). Ni $m$ ni $v$ n'apparaissent dans cette
+      expression : ils vivent dans $E_c$, pas dans $E_{pe}$.
+
+  - id: AE-23
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: pc_energie
+    tags: [misconception_driven, energie_potentielle_elastique, utilisation]
+    stem: >
+      Un même ressort, de raideur $k$, est d'abord étiré de
+      $x = +3{,}0\ \text{cm}$ par rapport à sa position d'équilibre, puis
+      comprimé de $x = -3{,}0\ \text{cm}$. Que peut-on dire de l'énergie
+      potentielle élastique stockée dans les deux cas ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elle est identique dans les deux cas, car $E_{pe} = \frac12 kx^2$
+          ne dépend que de $x^2$.
+        correct: true
+      - id: B
+        text: >-
+          Elle est positive en étirement et négative en compression, car
+          $x$ change de signe.
+        correct: false
+        misconception: mc.physics.pc_energie.epe-depend-masse-ou-vitesse
+        also_reveals: []
+        feedback: >
+          $E_{pe} = \frac12 kx^2$ contient $x^2$, jamais $x$ seul : le carré
+          d'un nombre négatif est positif, exactement comme celui d'un
+          nombre positif. $E_{pe}$ ne peut pas devenir négative, quel que
+          soit le signe de $x$.
+      - id: C
+        text: >-
+          Elle est plus grande en étirement, car le ressort stocke alors
+          aussi de l'énergie de pesanteur en plus de l'énergie élastique.
+        correct: false
+        misconception: mc.physics.pc_energie.epe-confondue-avec-epp
+        also_reveals: []
+        feedback: >
+          Il n'y a pas d'énergie de pesanteur en jeu ici : le mouvement
+          reste horizontal, l'altitude ne change pas. L'énergie stockée,
+          dans les deux cas, est uniquement élastique — $E_{pe} = \frac12
+          kx^2$, sans terme gravitationnel additionnel.
+      - id: D
+        text: >-
+          Elle vaut $kx^2$ dans les deux cas, le travail de la force de
+          rappel valant force finale × distance.
+        correct: false
+        misconception: mc.physics.pc_energie.epe-force-rappel-traitee-constante
+        also_reveals: []
+        feedback: >
+          $kx^2$ correspond à une force de rappel traitée comme constante
+          et égale à sa valeur finale $kx$ dès le départ. La vraie force de
+          rappel croît de $0$ à $kx$ : le travail (donc $E_{pe}$) est
+          l'aire du triangle, $\frac12 kx^2$ — la moitié de $kx^2$.
+    correct_feedback: >
+      $E_{pe}(+3{,}0\ \text{cm}) = \frac12 k (0{,}030)^2$ et
+      $E_{pe}(-3{,}0\ \text{cm}) = \frac12 k (-0{,}030)^2$ : comme
+      $(-0{,}030)^2 = (0{,}030)^2$, les deux valeurs sont rigoureusement
+      identiques, quel que soit $k$.
+    solution: |
+      $x$ est élevé au carré dans $E_{pe} = \frac12 kx^2$ :
+      $(+0{,}030)^2 = (-0{,}030)^2 = 9{,}0\times10^{-4}\ \text{m}^2$.
+      L'énergie potentielle élastique est donc identique en étirement et en
+      compression de même amplitude — elle ne dépend ni du signe de $x$, ni
+      de la masse, ni de l'altitude.
+
+  - id: AE-24
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_energie
+    tags: [misconception_driven, energie_potentielle_elastique, application_experimentale]
+    stem: >
+      Lors d'une expérience, on enregistre les courbes $E_c(x)$, $E_{pe}(x)$
+      et $E_m(x)$ d'un oscillateur élastique horizontal sans frottement, en
+      fonction de la position $x$. Quelle affirmation décrit correctement ce
+      diagramme d'énergie ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La courbe $E_{pe}(x)$ dépend de la masse $m$ du solide accroché :
+          deux solides de masses différentes sur le même ressort donneraient
+          deux courbes $E_{pe}(x)$ différentes.
+        correct: false
+        misconception: mc.physics.pc_energie.epe-depend-masse-ou-vitesse
+        also_reveals: []
+        feedback: >
+          $E_{pe} = \frac12 kx^2$ ne contient pas $m$ : la courbe $E_{pe}(x)$
+          est la même quelle que soit la masse accrochée. C'est la courbe
+          $E_c(x) = E_m - E_{pe}(x)$ qui dépend indirectement de $m$, via
+          $E_m$ et $v_{max}$.
+      - id: B
+        text: >-
+          La courbe $E_{pe}(x)$ est en réalité l'énergie potentielle de
+          pesanteur du solide, qui varie parce que le ressort modifie
+          l'altitude au cours de l'oscillation.
+        correct: false
+        misconception: mc.physics.pc_energie.epe-confondue-avec-epp
+        also_reveals: []
+        feedback: >
+          Sur un ressort horizontal, l'altitude ne varie pas du tout
+          pendant l'oscillation : $E_{pe}(x)$ ne peut donc pas être une
+          énergie de pesanteur déguisée. C'est une énergie élastique,
+          stockée dans la déformation du ressort, pas dans un changement
+          d'altitude.
+      - id: C
+        text: >-
+          La parabole $E_{pe}(x)$ atteint, à $x=X_m$, une valeur deux fois
+          plus grande que $\frac12 kX_m^2$, car le travail de la force de
+          rappel se calcule comme $kX_m^2$.
+        correct: false
+        misconception: mc.physics.pc_energie.epe-force-rappel-traitee-constante
+        also_reveals: []
+        feedback: >
+          $kX_m^2$ suppose la force de rappel constante et égale à sa
+          valeur finale dès le départ de l'étirement. La vraie courbe
+          $E_{pe}(x) = \frac12 kx^2$ vaut exactement la moitié de cette
+          valeur en tout point $x$ — c'est elle qui est tracée sur le
+          diagramme, pas $kx^2$.
+      - id: D
+        text: >-
+          $E_{pe}$ dessine une parabole minimale en $x=0$ ; $E_c$ dessine la
+          parabole inversée, maximale en $x=0$ ; $E_m$ est une droite
+          horizontale.
+        correct: true
+    correct_feedback: >
+      Sur ce diagramme, $E_{pe} = \frac12 kx^2$ (parabole, minimum nul en
+      $x=0$), $E_c = E_m - E_{pe}$ (parabole inversée, maximum en $x=0$, où
+      la vitesse est maximale), et $E_m$ reste une droite horizontale — le
+      plafond que ni $E_c$ ni $E_{pe}$ ne dépassent.
+    solution: |
+      Aux positions extrêmes $x=\pm X_m$, le solide s'arrête un instant :
+      $E_c=0$, toute l'énergie est dans le ressort ($E_{pe}=E_m$). Au
+      passage par l'équilibre $x=0$ : $E_{pe}=0$, toute l'énergie est
+      cinétique, la vitesse y est maximale. Entre les deux, les deux
+      courbes se croisent là où $E_c = E_{pe}$. $E_m$, elle, reste
+      constante en tout point du diagramme — c'est la définition même de
+      la conservation sans frottement.
+
+  # ══════════════════════════════════════════════════════════════
+  # R6 — NEW: torsion, énergie potentielle de torsion E_p,torsion = ½Cθ² (3 items)
+  # Misconceptions: torsion-moment-traite-constant, torsion-ep-depend-inertie-j,
+  # torsion-ec-formule-translation — each item's 3 distractors rotate through all three.
+  # ══════════════════════════════════════════════════════════════
+
+  - id: AE-25
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [misconception_driven, energie_torsion, resolution]
+    stem: >
+      Un fil de torsion de constante $C = 0{,}16\ \text{N·m/rad}$ est tordu
+      d'un angle $\theta = 0{,}20\ \text{rad}$ depuis sa position de repos.
+      Quelle est l'énergie potentielle de torsion $E_{p,torsion}$
+      emmagasinée dans le fil ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\approx 6{,}4\times10^{-3}\ \text{J}$, en calculant le travail
+          comme moment final × angle : $C\theta \times \theta$.
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-moment-traite-constant
+        also_reveals: []
+        feedback: >
+          Ce calcul traite le moment de rappel $C\theta$ comme s'il valait
+          déjà cette intensité dès le début de la torsion. En réalité il
+          croît de $0$ à $C\theta$ : le travail est l'aire du triangle sous
+          $M(\theta)=C\theta$, soit $\frac12 C\theta^2$ — la moitié de ce
+          résultat.
+      - id: B
+        text: "$\\approx 3{,}2\\times10^{-3}\\ \\text{J}$ (par $E_{pt} = \\tfrac12 C\\theta^2$ ; le facteur $\\tfrac12$ vient de ce que le moment croît avec l'angle)"
+        correct: true
+      - id: C
+        text: >-
+          Impossible de calculer sans connaître le moment d'inertie $J$ du
+          disque, qui intervient dans l'énergie potentielle de torsion.
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-ep-depend-inertie-j
+        also_reveals: []
+        feedback: >
+          $E_{p,torsion} = \frac12 C\theta^2$ ne dépend que de $C$ et de
+          $\theta$ : le moment d'inertie $J$ n'y figure jamais, il
+          caractérise l'énergie cinétique de rotation, un réservoir
+          séparé. On peut calculer $E_{p,torsion}$ sans connaître $J$.
+      - id: D
+        text: >-
+          Il faut connaître la vitesse linéaire $v$ d'un point du bord du
+          disque, car l'énergie stockée vaut $\frac12 m v^2$.
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-ec-formule-translation
+        also_reveals: []
+        feedback: >
+          $\frac12 m v^2$ est la formule de l'énergie cinétique de
+          TRANSLATION, pas celle de l'énergie potentielle de torsion. Ici,
+          on demande l'énergie stockée dans le fil,
+          $E_{p,torsion} = \frac12 C\theta^2$ — aucune vitesse n'y
+          intervient.
+    correct_feedback: >
+      $E_{p,torsion} = \frac12 C\theta^2 = \frac12 \times 0{,}16 \times
+      (0{,}20)^2 = 3{,}2\times10^{-3}\ \text{J}$. Ni $J$ ni aucune vitesse
+      n'interviennent : seuls $C$ et $\theta$ comptent.
+    solution: |
+      $$E_{p,torsion} = \frac{1}{2}C\theta^2 = \frac{1}{2}\times 0{,}16\times(0{,}20)^2 = 3{,}2\times10^{-3}\ \text{J}$$
+
+      Le facteur $\frac12$ vient du moment moyen $\frac12 C\theta$ sur tout
+      le trajet de torsion (le moment de rappel croît de $0$ à $C\theta$).
+      Le moment d'inertie $J$ n'apparaît pas : il vit dans
+      $E_c = \frac12 J\dot\theta^2$, un réservoir distinct.
+
+  - id: AE-26
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [misconception_driven, energie_torsion, utilisation]
+    stem: >
+      Un pendule de torsion (disque de moment d'inertie $J$, fil de
+      constante de torsion $C$) oscille sans frottement à l'angle $\theta$,
+      avec une vitesse angulaire $\dot\theta$. Quelle est l'expression
+      correcte de son énergie mécanique $E_m$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $E_m = \frac12 C\dot\theta^2 + \frac12 J\theta^2$ (les rôles de
+          $J$ et $C$ sont échangés).
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-ep-depend-inertie-j
+        also_reveals: []
+        feedback: >
+          Ici les deux réservoirs sont intervertis : $C$ (le rappel) s'est
+          retrouvé associé à $\dot\theta$ (le mouvement), et $J$
+          (l'inertie) associé à $\theta$ (l'écart). Le bon appariement est :
+          $J$ avec $\dot\theta$ dans $E_c$, $C$ avec $\theta$ dans $E_p$ —
+          jamais l'inverse.
+      - id: B
+        text: >-
+          $E_m = \frac12 m v^2 + \frac12 C\theta^2$, avec $v$ la vitesse
+          linéaire d'un point du disque.
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-ec-formule-translation
+        also_reveals: []
+        feedback: >
+          Le disque ne translate pas, il tourne : ses différents points
+          n'ont pas tous la même vitesse linéaire $v$, seulement une
+          vitesse angulaire $\dot\theta$ commune. L'énergie cinétique de
+          rotation s'écrit $\frac12 J\dot\theta^2$, pas $\frac12 mv^2$.
+      - id: C
+        text: >-
+          $E_m = \frac12 J\dot\theta^2 + C\theta^2$, le terme de torsion étant calculé
+          comme le moment final multiplié par l'angle.
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-moment-traite-constant
+        also_reveals: []
+        feedback: >
+          $C\theta^2$ traite le moment de rappel comme constant, égal à sa
+          valeur finale $C\theta$ dès le début de la torsion. Le vrai terme
+          potentiel est l'aire du triangle sous $M(\theta)=C\theta$, soit
+          $\frac12 C\theta^2$.
+      - id: D
+        text: "$E_m = \\frac12 J\\dot\\theta^2 + \\frac12 C\\theta^2$, somme de l'énergie cinétique de rotation et de l'énergie potentielle de torsion"
+        correct: true
+    correct_feedback: >
+      $E_m = E_c + E_{p,torsion} = \frac12 J\dot\theta^2 + \frac12
+      C\theta^2$ : l'inertie $J$ dans le terme cinétique (associée à
+      $\dot\theta$), le rappel $C$ dans le terme potentiel (associé à
+      $\theta$) — les deux réservoirs ne se mélangent jamais.
+    solution: |
+      Les deux réservoirs, côte à côte : l'inertie ($J$) vit dans
+      $E_c=\frac12 J\dot\theta^2$, exactement comme $m$ vit dans
+      $\frac12 mv^2$ pour le ressort ; le rappel ($C$) vit dans
+      $E_p=\frac12 C\theta^2$, exactement comme $k$ vit dans
+      $\frac12 kx^2$. $E_m = \frac12 J\dot\theta^2 + \frac12 C\theta^2$ est
+      donc la seule expression cohérente avec cette répartition.
+
+  - id: AE-27
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_energie
+    tags: [misconception_driven, energie_torsion, utilisation]
+    stem: >
+      Un pendule de torsion (disque de moment d'inertie $J$, fil de
+      constante de torsion $C$) est tordu d'un angle $\theta_0$ puis lâché
+      sans vitesse angulaire. Quelle affirmation, sur son énergie à
+      l'instant du lâcher, est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Au lâcher, toute l'énergie est stockée sous la forme
+          $E_{p,torsion} = \frac12 C\theta_0^2$ ; elle ne dépend ni de $J$
+          ni d'aucune vitesse.
+        correct: true
+      - id: B
+        text: >-
+          Au lâcher, l'énergie stockée vaut $C\theta_0^2$, le moment de
+          rappel étant traité comme constant, égal à sa valeur finale
+          $C\theta_0$.
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-moment-traite-constant
+        also_reveals: []
+        feedback: >
+          Le moment de rappel croît de $0$ à $C\theta_0$ pendant la
+          torsion, il ne vaut pas $C\theta_0$ dès le départ. Le travail
+          (donc l'énergie stockée) est l'aire du triangle sous
+          $M(\theta)=C\theta$, soit $\frac12 C\theta_0^2$ — la moitié de
+          $C\theta_0^2$.
+      - id: C
+        text: >-
+          Au lâcher, l'énergie stockée dépend du moment d'inertie $J$ du
+          disque : un disque plus lourd stocke plus d'énergie pour le même
+          angle $\theta_0$.
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-ep-depend-inertie-j
+        also_reveals: []
+        feedback: >
+          $E_{p,torsion} = \frac12 C\theta_0^2$ ne dépend que de la
+          constante de torsion $C$ et de l'angle $\theta_0$ : deux disques
+          de moments d'inertie différents, montés sur le même fil et
+          tordus au même angle, stockent exactement la même énergie. $J$
+          n'intervient que dans l'énergie cinétique, nulle ici puisque le
+          disque part du repos.
+      - id: D
+        text: >-
+          Au lâcher, on ne peut rien affirmer sans connaître la vitesse
+          linéaire $v$ d'un point du bord du disque, car l'énergie
+          cinétique de rotation se calcule par $\frac12 m v^2$.
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-ec-formule-translation
+        also_reveals: []
+        feedback: >
+          Au lâcher, la vitesse angulaire est nulle par hypothèse
+          ($\dot\theta_0 = 0$), donc $E_c=0$ quelle que soit la formule
+          utilisée : la question ne porte que sur l'énergie potentielle,
+          qui ne demande aucune vitesse. Et l'énergie cinétique d'un disque
+          en rotation se calcule par $\frac12 J\dot\theta^2$, jamais par
+          $\frac12 mv^2$.
+    correct_feedback: >
+      Au lâcher, $\dot\theta_0 = 0$ donc $E_c=0$ : toute l'énergie
+      mécanique est potentielle, $E_m = E_{p,torsion} = \frac12
+      C\theta_0^2$, une expression qui ne fait intervenir ni $J$ ni aucune
+      vitesse.
+    solution: |
+      $$E_m = \frac12 J\dot\theta_0^2 + \frac12 C\theta_0^2 = \frac12 C\theta_0^2 \quad (\dot\theta_0 = 0)$$
+
+      Toute l'énergie est, à cet instant, stockée dans le fil de torsion —
+      $J$ n'intervient pas dans ce résultat, il n'aurait joué que si le
+      disque avait déjà une vitesse angulaire.
+
+  # ══════════════════════════════════════════════════════════════
+  # R7 — NEW: pendule pesant, énergie mécanique (petites oscillations) (3 items)
+  # Misconceptions: pendule-ralentir-egale-perdre-energie, pendule-hauteur-egale-longueur-fil,
+  # pendule-em-maximale-en-bas — each item's 3 distractors rotate through all three.
+  # ══════════════════════════════════════════════════════════════
+
+  - id: AE-28
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [misconception_driven, pendule_pesant, resolution]
+    stem: >
+      Un pendule simple oscille sans frottement entre les écarts extrêmes
+      $\pm\theta_m$. Au moment où il atteint l'écart maximal $\theta_m$
+      (vitesse nulle, un instant), que peut-on dire de son énergie ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $E_m$ est plus petite qu'au point le plus bas, car le pendule a
+          ralenti jusqu'à s'arrêter : il a perdu de l'énergie.
+        correct: false
+        misconception: mc.physics.pc_energie.pendule-ralentir-egale-perdre-energie
+        also_reveals: []
+        feedback: >
+          Le pendule n'a rien perdu : ce que $E_c$ perd en ralentissant,
+          $E_{pp}$ le gagne intégralement, en montant. Sans frottement,
+          $E_m = E_c + E_{pp}$ reste constante — c'est une conversion, pas
+          une perte.
+      - id: B
+        text: >-
+          $E_c = 0$ et $E_m = E_{pp}$ (maximale à cet instant) ; $E_m$ a la
+          même valeur qu'au point le plus bas.
+        correct: true
+      - id: C
+        text: >-
+          $E_{pp} = mgL$ à cet instant, la hauteur gagnée étant la longueur
+          du fil.
+        correct: false
+        misconception: mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil
+        also_reveals: []
+        feedback: >
+          La longueur du fil $L$ n'est pas une hauteur. La vraie élévation,
+          entre l'écart $\theta_m$ et le point le plus bas, est
+          $z = L(1-\cos\theta_m)$, toujours strictement inférieure à $L$
+          (sauf pour $\theta_m = 90°$).
+      - id: D
+        text: >-
+          $E_m$ est maximale au point le plus bas, minimale à l'écart
+          maximal $\theta_m$.
+        correct: false
+        misconception: mc.physics.pc_energie.pendule-em-maximale-en-bas
+        also_reveals: []
+        feedback: >
+          $E_m$ ne varie pas du tout : elle n'est ni maximale ni minimale
+          nulle part, c'est exactement le sens de sa conservation. C'est
+          $E_c$ qui est maximale en bas et nulle à $\theta_m$ — ne pas
+          confondre $E_c$ avec $E_m$.
+    correct_feedback: >
+      Sans frottement, $E_m$ est constante : à l'écart maximal, $v=0$ donc
+      $E_c=0$, et toute l'énergie mécanique est potentielle,
+      $E_m = E_{pp}(\theta_m)$ — la même valeur qu'au point le plus bas, où
+      c'est $E_c$ qui portait toute l'énergie.
+    solution: |
+      $\Delta E_c = W(\vec P) + W(\vec T) = W(\vec P) = -\Delta E_{pp}$ (la
+      tension du fil, radiale, ne travaille jamais), donc $\Delta E_m = 0$.
+      À $\theta_m$, $v=0 \Rightarrow E_c=0$ et $E_m = E_{pp}(\theta_m)$,
+      exactement la valeur de $E_m$ au point le plus bas — le pendule n'a
+      rien perdu, il a tout converti.
+
+  - id: AE-29
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [misconception_driven, pendule_pesant, utilisation]
+    stem: >
+      Un pendule simple de longueur $L = 0{,}80\ \text{m}$ est écarté d'un
+      angle $\theta = 0{,}40\ \text{rad}$ par rapport à la verticale
+      ($\cos 0{,}40\ \text{rad} \approx 0{,}921$). De combien son point
+      matériel s'est-il élevé par rapport au point le plus bas ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\approx 0{,}80\ \text{m}$, en prenant la longueur du fil $L$
+          comme hauteur.
+        correct: false
+        misconception: mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil
+        also_reveals: []
+        feedback: >
+          $L$ est la longueur du fil, pas une hauteur : au point le plus
+          bas, le point matériel est déjà à une distance verticale $L$
+          sous le point de suspension. Ce qui compte est la VARIATION de
+          cette distance verticale entre $\theta$ et $\theta=0$, soit
+          $L(1-\cos\theta)$, toujours plus petite que $L$.
+      - id: B
+        text: >-
+          Cette hauteur ne sert à rien pour l'énergie potentielle : en
+          montant, le pendule ralentit et perd de l'énergie mécanique, il
+          n'y a pas de conservation à exploiter ici.
+        correct: false
+        misconception: mc.physics.pc_energie.pendule-ralentir-egale-perdre-energie
+        also_reveals: []
+        feedback: >
+          Sans frottement, l'énergie mécanique se conserve toujours, y
+          compris ici : le ralentissement du pendule en montant traduit une
+          conversion de $E_c$ en $E_{pp}$, pas une perte. La hauteur
+          calculée sert précisément à quantifier cette conversion via
+          $E_{pp} = mgz$.
+      - id: C
+        text: "$\\approx 6{,}3\\ \\text{cm}$ (par $h = L(1-\\cos\\theta)$, la dénivelée du centre par rapport au point bas)"
+        correct: true
+      - id: D
+        text: >-
+          $\approx 6{,}3\ \text{cm}$, et à cet instant $E_c = E_{pp}$,
+          comme c'est toujours le cas au cours du mouvement.
+        correct: false
+        misconception: mc.physics.pc_energie.pendule-em-maximale-en-bas
+        also_reveals: []
+        feedback: >
+          La hauteur calculée est correcte, mais l'affirmation qui
+          l'accompagne ne l'est pas : $E_c = E_{pp}$ n'est vraie qu'à des
+          positions particulières (là où les deux courbes se croisent sur
+          le diagramme d'énergie), jamais en permanence tout au long du
+          mouvement.
+    correct_feedback: >
+      $z = L(1-\cos\theta) = 0{,}80\times(1-0{,}921) = 0{,}80\times0{,}079
+      \approx 0{,}063\ \text{m} = 6{,}3\ \text{cm}$ — ni la longueur du fil
+      $L=0{,}80\ \text{m}$, ni la longueur de l'arc $L\theta \approx
+      0{,}32\ \text{m}$.
+    solution: |
+      $$z = L - L\cos\theta = L(1-\cos\theta) = 0{,}80\times(1-0{,}921) \approx 0{,}063\ \text{m}$$
+
+      C'est la projection verticale géométrique de l'écart, pas la longueur
+      du fil ($0{,}80\ \text{m}$) ni la longueur de l'arc parcouru
+      ($L\theta \approx 0{,}32\ \text{m}$).
+
+  - id: AE-30
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_energie
+    tags: [misconception_driven, pendule_pesant, application_experimentale]
+    stem: >
+      Pour un pendule pesant oscillant sans frottement, on trace $E_c$,
+      $E_{pp}$ et $E_m$ en fonction du temps sur un enregistrement
+      expérimental. Quelle affirmation décrit correctement ce qu'on
+      observe ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $E_c$ est maximale au passage par le point le plus bas ; $E_{pp}$
+          est maximale aux écarts extrêmes ; $E_m$ reste une droite
+          horizontale constante.
+        correct: true
+      - id: B
+        text: >-
+          $E_m$ diminue légèrement à chaque écart extrême, car le pendule y
+          ralentit avant de repartir.
+        correct: false
+        misconception: mc.physics.pc_energie.pendule-ralentir-egale-perdre-energie
+        also_reveals: []
+        feedback: >
+          Le ralentissement aux écarts extrêmes est celui de $E_c$, pas de
+          $E_m$. Sans frottement, la courbe $E_m(t)$ reste rigoureusement
+          plate : elle ne dessine aucune baisse, même temporaire, aux
+          instants où le pendule s'arrête un instant.
+      - id: C
+        text: >-
+          Sur l'axe des altitudes utilisé pour tracer $E_{pp}$, la
+          variation d'altitude est $L\theta$ (la longueur de l'arc
+          parcouru), pas $L(1-\cos\theta)$.
+        correct: false
+        misconception: mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil
+        also_reveals: []
+        feedback: >
+          $L\theta$ est une longueur d'arc, une distance parcourue le long
+          de la trajectoire courbe — pas une élévation verticale. La courbe
+          $E_{pp}(t)$ est construite à partir de la vraie hauteur
+          $z = L(1-\cos\theta)$, la seule cohérente avec $E_{pp}=mgz$.
+      - id: D
+        text: >-
+          $E_{pp}$ est maximale au point le plus bas, là où le pendule va
+          le plus vite.
+        correct: false
+        misconception: mc.physics.pc_energie.pendule-em-maximale-en-bas
+        also_reveals: []
+        feedback: >
+          C'est l'inverse : au point le plus bas, $z=0$ donc $E_{pp}=0$ —
+          c'est $E_c$ qui y est maximale, précisément parce que la vitesse
+          y est la plus grande. $E_{pp}$ est maximale aux écarts extrêmes,
+          où le pendule s'arrête un instant.
+    correct_feedback: >
+      Sur l'enregistrement, $E_c(t)$ et $E_{pp}(t)$ oscillent en antiphase
+      (l'une monte quand l'autre descend), $E_c$ culminant au point bas et
+      $E_{pp}$ culminant aux extrémités ; leur somme $E_m(t)$, elle, reste
+      une droite horizontale — la signature d'un mouvement sans frottement.
+    solution: |
+      Au point le plus bas ($\theta=0$, $z=0$) : $E_{pp}=0$, $E_c$
+      maximale, vitesse maximale. Aux écarts extrêmes ($\theta=\pm\theta_m$) :
+      $v=0$, $E_c=0$, $E_{pp}$ maximale. Entre les deux, $E_c$ et $E_{pp}$
+      s'échangent en permanence, mais leur somme $E_c+E_{pp}=E_m$ ne varie
+      jamais — c'est exactement ce qu'affirme la conservation de l'énergie
+      mécanique sans frottement.
+
+  # ── Quatre items ajoutés le 2026-09-05 pour amener au plancher les SEPT
+  #    familles qui y siégeaient en dessous : ec-grandeur-vectorielle (1 item),
+  #    energie-oublie-g (1), force-perpendiculaire-travaille (1),
+  #    travail-oublie-cos (1), confond-ec-et-em (2),
+  #    ec-mauvaise-dependance-en-v (2), frottement-restitue-energie (2).
+  #    Le résumé en fin de fichier annonçait `floor_met: true` : c'est la plus
+  #    grosse des quatre dérives relevées par web/scripts/resume-couverture.mjs.
+  #    Chaque item porte TROIS familles distinctes sur ses trois distracteurs,
+  #    de sorte que quatre items suffisent à combler onze places.
+  - id: AE-31
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [energie_cinetique, dependance_en_v, grandeur_scalaire]
+    stem: >
+      Un chariot roule à $v = 3{,}0\ \text{m/s}$ sur une table horizontale
+      située à $1{,}0\ \text{m}$ au-dessus du sol. On double sa vitesse, tout
+      le reste étant inchangé. Par combien son énergie cinétique est-elle
+      multipliée ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Par 2 : l'énergie cinétique suit la vitesse, donc doubler l'une
+          double l'autre
+        correct: false
+        misconception: mc.physics.pc_energie.ec-mauvaise-dependance-en-v
+        feedback: >
+          $E_c = \frac12 mv^2$ : c'est le CARRÉ de la vitesse qui intervient.
+          Doubler $v$ multiplie $E_c$ par $2^2 = 4$, pas par 2 — c'est la
+          raison pour laquelle une voiture qui roule deux fois plus vite met
+          quatre fois plus de distance à s'arrêter.
+      - id: B
+        text: >-
+          Par 4 : l'énergie cinétique varie comme le CARRÉ de la vitesse,
+          $E_c = \frac12 mv^2$, et $2^2 = 4$
+        correct: true
+      - id: C
+        text: >-
+          Par 4 si le chariot continue dans le même sens ; s'il repart en sens
+          inverse, son énergie cinétique change aussi de signe
+        correct: false
+        misconception: mc.physics.pc_energie.ec-grandeur-vectorielle
+        feedback: >
+          $E_c$ est une grandeur SCALAIRE, toujours positive : elle ne dépend
+          que de la NORME de la vitesse. Un chariot lancé vers la gauche à
+          $6{,}0\ \text{m/s}$ a exactement la même énergie cinétique que le
+          même chariot lancé vers la droite à la même allure.
+      - id: D
+        text: >-
+          Par 4 seulement si la table était au niveau du sol : à
+          $1{,}0\ \text{m}$ de hauteur, l'énergie potentielle s'ajoute à
+          l'énergie cinétique et le rapport n'est plus 4
+        correct: false
+        misconception: mc.physics.pc_energie.confond-ec-et-em
+        feedback: >
+          C'est l'énergie MÉCANIQUE $E_m = E_c + E_{pp}$ qui contiendrait ce
+          terme d'altitude — pas l'énergie cinétique. $E_c = \frac12 mv^2$
+          ignore complètement la hauteur : la table peut être au sol ou au
+          sommet d'un immeuble, le rapport reste 4.
+    correct_feedback: >
+      $E_c = \frac12 mv^2$ dépend du CARRÉ de la vitesse : la multiplier par 2
+      multiplie l'énergie cinétique par $2^2 = 4$. L'altitude de la table,
+      elle, n'entre que dans l'énergie potentielle de pesanteur.
+    solution: |
+      $$
+      E_c = \frac{1}{2}mv^2 \qquad\text{et}\qquad
+      E_c' = \frac{1}{2}m(2v)^2 = \frac{1}{2}m \times 4v^2 = 4\,E_c
+      $$
+      Le rapport ne fait intervenir ni la masse (elle se simplifie), ni la
+      direction du mouvement (seule la norme $v$ figure dans la formule), ni
+      l'altitude (qui appartient à $E_{pp} = mgz$, pas à $E_c$).
+
+  - id: AE-32
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [travail_force_constante, produit_scalaire, reaction_normale]
+    stem: >
+      Une caisse est tirée sur $d = 5{,}0\ \text{m}$ le long d'un sol
+      horizontal par une force $\vec F$ de norme $F = 40\ \text{N}$, inclinée
+      de $\theta = 60^\circ$ au-dessus de l'horizontale. Le sol exerce sur elle
+      une réaction normale $\vec N$ verticale. Quels sont les travaux de
+      $\vec F$ et de $\vec N$ sur ce déplacement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $W(\vec F) = F\,d\cos 60^\circ = 40 \times 5{,}0 \times 0{,}50 =
+          100\ \text{J}$, et $W(\vec N) = 0\ \text{J}$ puisque
+          $\cos 90^\circ = 0$
+        correct: true
+      - id: B
+        text: >-
+          $W(\vec F) = F \times d = 200\ \text{J}$ et $W(\vec N) = 0\ \text{J}$
+          : la force entière accompagne le déplacement
+        correct: false
+        misconception: mc.physics.pc_energie.travail-oublie-cos
+        feedback: >
+          Seule la composante de $\vec F$ ALIGNÉE avec le déplacement
+          travaille, d'où le facteur $\cos\theta$ du produit scalaire :
+          $W(\vec F) = \vec F \cdot \vec{AB} = F\,d\cos 60^\circ = 100\
+          \text{J}$. La composante verticale, elle, ne déplace rien.
+      - id: C
+        text: >-
+          $W(\vec F) = 100\ \text{J}$ et $W(\vec N) = N \times d$ : la
+          réaction du sol accompagne la caisse sur toute la distance
+        correct: false
+        misconception: mc.physics.pc_energie.force-perpendiculaire-travaille
+        feedback: >
+          $\vec N$ est verticale et le déplacement horizontal : l'angle vaut
+          $90^\circ$, donc $\cos 90^\circ = 0$ et $W(\vec N) = 0\ \text{J}$.
+          Une force perpendiculaire au déplacement ne travaille jamais, si
+          grande soit sa norme — « accompagner » n'est pas « travailler ».
+      - id: D
+        text: >-
+          $W(\vec F) = 100\ \text{J}$, mais ce travail est dirigé vers l'avant
+          : comme l'énergie cinétique qu'il produit, c'est une grandeur qui
+          porte une direction
+        correct: false
+        misconception: mc.physics.pc_energie.ec-grandeur-vectorielle
+        feedback: >
+          La valeur est juste, l'interprétation non. Le travail et l'énergie
+          cinétique sont des SCALAIRES : ils ont un signe, jamais une
+          direction. « Moteur » ou « résistant » qualifie le SIGNE du travail
+          d'une force, ce qui n'en fait pas un vecteur.
+    correct_feedback: >
+      $W(\vec F) = F\,d\cos\theta = 40 \times 5{,}0 \times \cos 60^\circ =
+      40 \times 5{,}0 \times 0{,}50 = 100\ \text{J}$, et $W(\vec N) = 0$ car
+      $\vec N$ est perpendiculaire au déplacement.
+    solution: |
+      Le travail d'une force constante sur un déplacement rectiligne est le
+      produit scalaire de la force par le déplacement :
+      $$W(\vec F) = \vec F \cdot \vec{AB} = F\,d\,\cos\theta$$
+      Pour $\vec F$, $\theta = 60^\circ$ :
+      $$W(\vec F) = 40 \times 5{,}0 \times 0{,}50 = 100\ \text{J}$$
+      Pour $\vec N$, verticale alors que le déplacement est horizontal,
+      $\theta = 90^\circ$ :
+      $$W(\vec N) = N \times d \times \cos 90^\circ = 0\ \text{J}$$
+      Le poids, lui aussi vertical, ne travaille pas davantage.
+
+  - id: AE-33
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [travail_du_poids, plan_incline, reaction_normale]
+    stem: >
+      Un solide de masse $m = 2{,}0\ \text{kg}$ glisse de $d = 4{,}0\ \text{m}$
+      le long d'un plan incliné à $30^\circ$ : il descend donc d'une hauteur
+      $h = 2{,}0\ \text{m}$. La réaction normale du plan vaut
+      $N = 17\ \text{N}$. On prend $g = 10\ \text{N/kg}$. Quel bilan des
+      travaux du poids et de la réaction normale est correct ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $W(\vec P) = m\,h = 4{,}0\ \text{J}$ et $W(\vec N) = 0\ \text{J}$
+        correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-g
+        feedback: >
+          Il manque l'intensité de la pesanteur : le travail du poids vaut
+          $mgh$, pas $mh$. L'oubli de $g$ divise le résultat par environ 10 et
+          lui retire ses unités — $m\,h$ s'exprime en $\text{kg}\cdot
+          \text{m}$, ce qui n'est pas une énergie.
+      - id: B
+        text: >-
+          $W(\vec P) = m\,g\,h = 40\ \text{J}$ et $W(\vec N) = 0\ \text{J}$
+        correct: true
+      - id: C
+        text: >-
+          $W(\vec P) = m\,g\,d = 80\ \text{J}$ et $W(\vec N) = 0\ \text{J}$ :
+          le poids agit sur toute la longueur parcourue
+        correct: false
+        misconception: mc.physics.pc_energie.travail-oublie-cos
+        feedback: >
+          Remplacer $h$ par $d$, c'est oublier le $\cos\theta$ du produit
+          scalaire : $W(\vec P) = P\,d\cos 60^\circ = mgd\cos 60^\circ = mgh$.
+          Seule la DÉNIVELÉE compte, jamais la longueur du chemin — c'est ce
+          qui fait du poids une force conservative.
+      - id: D
+        text: >-
+          $W(\vec P) = 40\ \text{J}$ et $W(\vec N) = N\,d = 68\ \text{J}$ : la
+          réaction du plan soutient le solide pendant toute la glissade
+        correct: false
+        misconception: mc.physics.pc_energie.force-perpendiculaire-travaille
+        feedback: >
+          $\vec N$ est perpendiculaire au plan, donc au déplacement qui se
+          fait le long du plan : $\cos 90^\circ = 0$ et $W(\vec N) = 0$. Sa
+          norme n'y change rien, et l'inclinaison du plan non plus — c'est la
+          perpendicularité seule qui annule le travail.
+    correct_feedback: >
+      $W(\vec P) = mgh = 2{,}0 \times 10 \times 2{,}0 = 40\ \text{J}$ : la
+      dénivelée, jamais la longueur du plan. Et $W(\vec N) = 0$, la réaction
+      normale étant perpendiculaire au déplacement.
+    solution: |
+      **Le poids.** Sa direction fait un angle de $60^\circ$ avec le
+      déplacement le long du plan, donc
+      $$W(\vec P) = P\,d\cos 60^\circ = mg\,d\cos 60^\circ = mg\,h$$
+      puisque $d\cos 60^\circ = d\sin 30^\circ = h$. Numériquement :
+      $$W(\vec P) = 2{,}0 \times 10 \times 2{,}0 = 40\ \text{J}$$
+      **La réaction normale.** Perpendiculaire au plan, donc au déplacement :
+      $$W(\vec N) = N\,d\cos 90^\circ = 0\ \text{J}$$
+      Deux contrôles à garder : $mgh$ contient TOUJOURS $g$, et une force
+      perpendiculaire au déplacement a TOUJOURS un travail nul.
+
+  - id: AE-34
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_energie
+    tags: [energie_mecanique, frottement, bilan_energetique]
+    stem: >
+      Un skieur de masse $m = 60\ \text{kg}$ part du repos et descend une
+      piste de dénivelée $h = 20\ \text{m}$. Il arrive en bas à
+      $v = 15\ \text{m/s}$. On prend $g = 10\ \text{N/kg}$. Quelle énergie les
+      frottements ont-ils dissipée pendant la descente ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $1{,}2\times10^{3}\ \text{J}$ : l'énergie disponible au départ vaut
+          $m\,h = 1200\ \text{J}$, et elle a été entièrement dissipée
+        correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-g
+        feedback: >
+          L'énergie potentielle de pesanteur vaut $mgz$, pas $mz$ : au départ,
+          $E_{pp} = mgh = 60 \times 10 \times 20 = 1{,}2\times10^{4}\
+          \text{J}$, dix fois plus. Sans $g$, le nombre obtenu n'est même pas
+          une énergie.
+      - id: B
+        text: >-
+          $1{,}88\times10^{4}\ \text{J}$ : on additionne l'énergie potentielle
+          du départ et l'énergie cinétique d'arrivée
+        correct: false
+        misconception: mc.physics.pc_energie.signe-travail-poids
+        feedback: >
+          L'énergie cinétique d'arrivée n'est pas une perte : c'est
+          justement la part de l'énergie de départ qui a SURVÉCU. Elle se
+          soustrait, elle ne s'ajoute — sinon la piste aurait fourni plus
+          d'énergie qu'elle n'en contenait.
+      - id: C
+        text: >-
+          Rien n'est dissipé : le frottement échauffe les skis, et cette
+          chaleur est restituée au mouvement, si bien que le bilan est nul
+        correct: false
+        misconception: mc.physics.pc_energie.frottement-restitue-energie
+        feedback: >
+          La chaleur produite part dans la neige et dans l'air : elle ne
+          revient jamais au skieur sous forme de mouvement. Le travail du
+          frottement est toujours résistant, $W(\vec f) \le 0$, donc
+          $\Delta E_m \le 0$. Si rien n'était dissipé, le skieur arriverait à
+          $20\ \text{m/s}$ et non à $15$.
+      - id: D
+        text: >-
+          $5{,}25\times10^{3}\ \text{J}$ : c'est l'énergie potentielle du
+          départ moins l'énergie cinétique d'arrivée
+        correct: true
+    correct_feedback: >
+      $E_{pp}$ au départ vaut $mgh = 1{,}2\times10^{4}\ \text{J}$ ; l'énergie
+      cinétique d'arrivée vaut $\frac12 mv^2 = 6{,}75\times10^{3}\ \text{J}$.
+      La différence, $5{,}25\times10^{3}\ \text{J}$, est passée en chaleur :
+      c'est $|W(\vec f)|$.
+    solution: |
+      Le skieur part du repos, donc $E_c$ initiale nulle. En prenant le bas de
+      la piste comme référence d'altitude :
+      $$
+      E_m(\text{départ}) = mgh = 60 \times 10 \times 20 = 1{,}2\times10^{4}\
+      \text{J}
+      $$
+      $$
+      E_m(\text{arrivée}) = \frac{1}{2}mv^2 = \frac{1}{2}\times 60 \times
+      15^2 = 6{,}75\times10^{3}\ \text{J}
+      $$
+      La variation d'énergie mécanique est égale au travail des forces non
+      conservatives, ici le seul frottement :
+      $$
+      \Delta E_m = W(\vec f) = 6{,}75\times10^{3} - 1{,}2\times10^{4}
+      = -5{,}25\times10^{3}\ \text{J}
+      $$
+      Les frottements ont donc dissipé $5{,}25\times10^{3}\ \text{J}$, soit
+      environ 44 % de l'énergie de départ. Contrôle : sans frottement, le
+      skieur arriverait à $v = \sqrt{2gh} = 20\ \text{m/s}$ ; il arrive à
+      $15\ \text{m/s}$, ce qui confirme une perte.
+
+  # ── AE-35 et AE-36 (2026-09-23) — la racine carrée oubliée, dans les deux
+  # oscillateurs où l'élève remonte à une vitesse. Écrits pour ramener
+  # `confusion-v-et-v-carre` au plancher après le réétiquetage honnête du
+  # 2026-09-19 (AE-4 D, AE-19 C). Chaque distracteur porte une famille
+  # DISTINCTE, et chacun sort d'un calcul que l'on peut refaire : le nombre
+  # du distracteur est exactement celui que produit l'erreur nommée.
+  - id: AE-35
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [pendule_pesant, energie_mecanique, vitesse]
+    stem: >
+      Un pendule simple de longueur $L = 2{,}0\ \text{m}$ est lâché sans
+      vitesse initiale depuis un écart $\theta_0 = 60^\circ$ avec la verticale.
+      Les frottements sont négligés et on prend $g = 10\ \text{N/kg}$. Quelle
+      est la vitesse de la masse quand elle passe par la position la plus
+      basse ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$20\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_energie.confusion-v-et-v-carre
+        feedback: >
+          $2gz = 20$ est le CARRÉ de la vitesse : il s'exprime en
+          $\text{m}^2/\text{s}^2$, pas en $\text{m/s}$. Il reste à prendre la
+          racine, $v = \sqrt{20} \approx 4{,}5\ \text{m/s}$. Contrôle de bon
+          sens : $20\ \text{m/s}$, c'est $72\ \text{km/h}$ pour une masse
+          tombée d'un mètre.
+      - id: B
+        text: "$6{,}3\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil
+        feedback: >
+          Ce nombre vient de $v^2 = 2gL$, comme si la masse descendait de toute
+          la longueur du fil. Elle ne descend que de la différence d'altitude
+          entre l'écart $\theta_0$ et la verticale :
+          $z = L(1-\cos\theta_0) = 2{,}0 \times (1 - 0{,}5) = 1{,}0\ \text{m}$.
+      - id: C
+        text: "$4{,}5\\ \\text{m/s}$"
+        correct: true
+      - id: D
+        text: "$3{,}2\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-facteur-demi
+        feedback: >
+          Ce nombre vient de $v^2 = gz$ : le facteur 2 a disparu. La
+          conservation de l'énergie mécanique s'écrit
+          $\frac12 mv^2 = mgz$, donc $v^2 = 2gz$ — le $\frac12$ de l'énergie
+          cinétique devient un 2 de l'autre côté.
+    correct_feedback: >
+      La masse descend de $z = L(1-\cos 60^\circ) = 1{,}0\ \text{m}$ ; la
+      conservation de l'énergie mécanique donne $v^2 = 2gz = 20\
+      \text{m}^2/\text{s}^2$, puis $v = \sqrt{20} \approx 4{,}5\ \text{m/s}$.
+    solution: |
+      **La hauteur de chute.** Entre l'écart $\theta_0$ et la verticale, la
+      masse descend de
+      $$z = L(1-\cos\theta_0) = 2{,}0 \times (1 - 0{,}5) = 1{,}0\ \text{m}$$
+      **Le bilan.** La tension du fil est perpendiculaire au déplacement, elle
+      ne travaille pas ; sans frottement, l'énergie mécanique se conserve :
+      $$\frac12 m v^2 = m g z \implies v^2 = 2gz = 2 \times 10 \times 1{,}0 = 20\ \text{m}^2/\text{s}^2$$
+      **La vitesse.** $v = \sqrt{20} \approx 4{,}5\ \text{m/s}$.
+
+      Deux contrôles à garder : l'unité de $2gz$ est le $\text{m}^2/\text{s}^2$
+      — c'est un carré de vitesse, pas encore une vitesse ; et la masse n'a
+      servi à rien, elle se simplifie.
+
+  - id: AE-36
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [energie_potentielle_elastique, energie_mecanique, vitesse]
+    stem: >
+      Un ressort horizontal de raideur $k = 250\ \text{N/m}$, comprimé de
+      $x = 8{,}0\ \text{cm}$, est libéré et propulse un palet de masse
+      $m = 100\ \text{g}$ sur un banc horizontal, sans frottement. Quelle est
+      la vitesse du palet au moment où il quitte le ressort, revenu à sa
+      longueur à vide ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$5{,}7\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_energie.epe-force-rappel-traitee-constante
+        feedback: >
+          Ce nombre suppose $E_{pe} = kx^2 = 1{,}6\ \text{J}$, le double de la
+          vraie valeur. La force du ressort décroît de $kx$ à $0$ pendant la
+          détente : l'énergie restituée est l'aire d'un triangle,
+          $\frac12 kx^2 = 0{,}80\ \text{J}$, pas celle d'un rectangle.
+      - id: B
+        text: "$2{,}8\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-facteur-demi
+        feedback: >
+          Ce nombre vient de $mv^2 = 0{,}80\ \text{J}$ : le $\frac12$ de
+          l'énergie cinétique a disparu. Avec $\frac12 mv^2 = 0{,}80\
+          \text{J}$, on trouve $v^2 = 2 \times 0{,}80 / 0{,}100 = 16\
+          \text{m}^2/\text{s}^2$.
+      - id: C
+        text: "$16\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_energie.confusion-v-et-v-carre
+        feedback: >
+          $16$ est la valeur de $v^2$, en $\text{m}^2/\text{s}^2$ : le calcul
+          est juste jusqu'à la dernière ligne, et la racine carrée manque.
+          $v = \sqrt{16} = 4{,}0\ \text{m/s}$ — un palet lancé à
+          $16\ \text{m/s}$ (près de $58\ \text{km/h}$) par un petit ressort de
+          laboratoire aurait dû alerter.
+      - id: D
+        text: "$4{,}0\\ \\text{m/s}$"
+        correct: true
+    correct_feedback: >
+      Le ressort restitue $E_{pe} = \frac12 kx^2 = 0{,}80\ \text{J}$,
+      entièrement transformée en énergie cinétique : $v^2 = 2E_c/m = 16\
+      \text{m}^2/\text{s}^2$, donc $v = \sqrt{16} = 4{,}0\ \text{m/s}$.
+    solution: |
+      **L'énergie stockée.** Avec $x = 0{,}080\ \text{m}$ :
+      $$E_{pe} = \frac12 k x^2 = \frac12 \times 250 \times 0{,}080^2 = 0{,}80\ \text{J}$$
+      **Le bilan.** Le banc est horizontal ($E_{pp}$ constante) et sans
+      frottement : l'énergie mécanique se conserve, et toute l'énergie
+      élastique devient cinétique quand le ressort retrouve sa longueur à vide.
+      $$\frac12 m v^2 = 0{,}80\ \text{J} \implies v^2 = \frac{2 \times 0{,}80}{0{,}100} = 16\ \text{m}^2/\text{s}^2$$
+      **La vitesse.** $v = \sqrt{16} = 4{,}0\ \text{m/s}$.
+
+      Attention aux unités d'entrée : $x$ en mètres ($0{,}080$, pas $8{,}0$)
+      et $m$ en kilogrammes ($0{,}100$, pas $100$).
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, et c'était la plus grosse des quatre dérives relevées
+# par web/scripts/resume-couverture.mjs : SEPT familles siégeaient sous le plancher
+# pendant que le fichier déclarait `floor_met: true`.
+#
+# L'ancien résumé disait vrai à l'écriture : son `scope_note` annonçait
+# franchement ne couvrir que les neuf misconceptions R5/R6/R7 de sa passe, et
+# que « R0-R4 et R8 n'ont aucune couverture formelle ». Une passe ultérieure a
+# déclaré treize familles de plus et tagué les items hérités : le périmètre a
+# plus que doublé, le drapeau est resté. D'où l'écart mesuré —
+# ec-grandeur-vectorielle (1 item), energie-oublie-g (1),
+# force-perpendiculaire-travaille (1), travail-oublie-cos (1),
+# confond-ec-et-em (2), ec-mauvaise-dependance-en-v (2),
+# frottement-restitue-energie (2).
+#
+# Quatre items les y amènent : AE-31 (R1, dépendance en $v^2$ et caractère
+# scalaire), AE-32 (R2, produit scalaire et réaction normale sur un sol
+# horizontal), AE-33 (R2, travail du poids sur un plan incliné : $mgh$, pas
+# $mh$ ni $mgd$), AE-34 (R4, bilan énergétique d'une descente avec frottement).
+# Chacun porte TROIS familles distinctes sur ses trois distracteurs, de sorte
+# que quatre items comblent onze places. R1, R2 et R4 portent désormais 4 items.
+#
+# UNE AUTRE AFFIRMATION de l'ancien résumé était devenue fausse et disparaît :
+# « AE-19/20/21 ne portent aucun tag formel de misconception ». Ils en portent
+# tous depuis la passe de tagage (confusion-v-et-v-carre,
+# em-conservee-malgre-frottement, frottement-restitue-energie,
+# energie-oublie-facteur-demi, signe-travail-poids). Ce qui reste vrai de cette
+# note — le fond ski/traîneau de ces trois items, là où le chapitre R8 rebâti
+# appelle des bilans d'oscillateurs — est conservé plus bas.
+#
+# Le tableau ci-dessous est GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs).
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item. Les checkpoints ne comptent
+    pas — le modèle apprenant est bâti sur le banc de fin seul.
+  per_misconception:
+    mc.physics.pc_energie.epe-force-rappel-traitee-constante:    { count: 4, items: [AE-22, AE-23, AE-24, AE-36] }
+    mc.physics.pc_energie.epe-depend-masse-ou-vitesse:           { count: 3, items: [AE-22, AE-23, AE-24] }
+    mc.physics.pc_energie.epe-confondue-avec-epp:                { count: 3, items: [AE-22, AE-23, AE-24] }
+    mc.physics.pc_energie.torsion-moment-traite-constant:        { count: 3, items: [AE-25, AE-26, AE-27] }
+    mc.physics.pc_energie.torsion-ep-depend-inertie-j:           { count: 3, items: [AE-25, AE-26, AE-27] }
+    mc.physics.pc_energie.torsion-ec-formule-translation:        { count: 3, items: [AE-25, AE-26, AE-27] }
+    mc.physics.pc_energie.pendule-ralentir-egale-perdre-energie: { count: 3, items: [AE-28, AE-29, AE-30] }
+    mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil:    { count: 4, items: [AE-28, AE-29, AE-30, AE-35] }
+    mc.physics.pc_energie.pendule-em-maximale-en-bas:            { count: 4, items: [AE-3, AE-28, AE-29, AE-30] }
+    mc.physics.pc_energie.travail-poids-depend-du-chemin:        { count: 5, items: [AE-1, AE-2, AE-7, AE-8, AE-19] }
+    mc.physics.pc_energie.frottement-restitue-energie:           { count: 3, items: [AE-9, AE-20, AE-34] }
+    mc.physics.pc_energie.energie-oublie-facteur-demi:           { count: 5, items: [AE-10, AE-15, AE-21, AE-35, AE-36] }
+    mc.physics.pc_energie.ec-mauvaise-dependance-en-v:           { count: 3, items: [AE-10, AE-11, AE-31] }
+    mc.physics.pc_energie.energie-oublie-masse:                  { count: 5, items: [AE-1, AE-3, AE-4, AE-10, AE-15] }
+    mc.physics.pc_energie.ec-grandeur-vectorielle:               { count: 3, items: [AE-12, AE-31, AE-32] }
+    mc.physics.pc_energie.travail-oublie-cos:                    { count: 3, items: [AE-13, AE-32, AE-33] }
+    mc.physics.pc_energie.force-perpendiculaire-travaille:       { count: 3, items: [AE-14, AE-32, AE-33] }
+    mc.physics.pc_energie.energie-oublie-g:                      { count: 4, items: [AE-4, AE-16, AE-33, AE-34] }
+    mc.physics.pc_energie.confond-ec-et-em:                      { count: 4, items: [AE-3, AE-4, AE-6, AE-31] }
+    mc.physics.pc_energie.em-conservee-malgre-frottement:        { count: 4, items: [AE-6, AE-9, AE-19, AE-20] }
+    mc.physics.pc_energie.signe-travail-poids:                   { count: 4, items: [AE-6, AE-16, AE-21, AE-34] }
+    mc.physics.pc_energie.confusion-v-et-v-carre:                { count: 3, items: [AE-15, AE-35, AE-36] }   # au plancher depuis le 2026-09-23 — voir la note
+  total_items: 33
+  floor: 3
+  floor_met: true
+  honest_state_2026_09_19: >-
+    Le plancher N'EST PAS atteint, et il ne l'a jamais été : il était tenu par
+    trois étiquettes que leur propre retour démentait. AE-4/B disait « en
+    confondant Ec avec Em » (7,0 m/s = racine(2x4,9/0,20) — c'est bien
+    confond-ec-et-em, pas un demi oublié) ; AE-4/D disait « un calcul de Epp
+    sans le facteur g » (6,9 m/s, c'est energie-oublie-g) ; AE-19/C disait
+    « mgL au lieu de mgL.sin(alpha) » (186,0 — c'est
+    travail-poids-depend-du-chemin). Les trois sont réétiquetées d'après leur
+    retour et leur nombre. Conséquence assumée plutôt que maquillée :
+    confusion-v-et-v-carre retombe de 3 à 1 (AE-15/D seul, « en oubliant de
+    prendre la racine carrée »). Il faut DEUX items neufs pour la ramener au
+    plancher — ou décider qu'une étourderie d'exécution n'est pas un modèle
+    physique faux et la retirer du registre. Arbitrage du propriétaire ; on ne
+    remet pas de fausses étiquettes pour reverdir un compte.
+  resolution_2026_09_23: >-
+    Comblé par l'écriture, pas par un compte : AE-35 (R7, pendule lâché à
+    $60^\circ$, $v^2 = 20$ livré pour $v$) et AE-36 (R5, palet propulsé par un
+    ressort, $v^2 = 16$ livré pour $v$). Dans les deux, le distracteur est le
+    nombre exact que produit la racine oubliée, et son retour nomme le
+    contrôle qui l'attrape — l'unité ($\text{m}^2/\text{s}^2$) et l'ordre de
+    grandeur. Les deux autres distracteurs de chaque item portent des familles
+    distinctes (facteur 2 ou ½ oublié, hauteur prise égale au fil, $kx^2$ sans
+    le ½). Des deux voies laissées au propriétaire, c'est celle qui ne retire
+    rien du registre ; l'autre (juger qu'une étourderie d'exécution n'est pas
+    un modèle physique) reste ouverte et n'est pas tranchée ici.
+  ramp_coverage:
+    R0: 3
+    R1: 4
+    R2: 5
+    R3: 3
+    R4: 4
+    R5: 4
+    R6: 3
+    R7: 4
+    R8: 3
+    note: >-
+      Le plancher de barreau (>= 3 items) est tenu partout. R1, R2 et R4 en
+      portent 4 depuis l'ajout de AE-31 à AE-34 ; R5 et R7 depuis celui de
+      AE-36 et AE-35 (2026-09-23).
+  historique:
+    removed_items: >-
+      AE-5, AE-17 et AE-18 (ancien R5, « TEC contre 2e loi de Newton sur un
+      plan incliné ») ont été retirés lors de la passe R5/R6/R7 : contenu hors
+      cadre, sans chapitre d'accueil après la renumérotation. Les identifiants
+      ne sont pas réattribués — d'où les trous AE-5, AE-17, AE-18 dans la
+      numérotation.
+    retagged_items: >-
+      AE-19, AE-20 et AE-21 sont passés du barreau R6 au barreau R8 lors de la
+      même passe (changement de champ seul, contenu inchangé).
+  r8_content_note: >-
+    AE-19/20/21 tiennent le barreau R8 avec des scénarios ski/traîneau de TEC
+    avec frottement, là où le R8 rebâti appelle des bilans énergétiques
+    d'OSCILLATEURS (ressort, torsion, pendule) — spec-extension.md §0.5/§6. Ils
+    portent bien, eux, des tags de misconception depuis la passe de tagage ;
+    c'est leur HABILLAGE qui n'a pas suivi la refonte du chapitre. Suite
+    recommandée : une fois le contenu R8 rebâti, les remplacer par des items
+    exerçant un bilan complet d'oscillateur, en réutilisant les ids EPE/torsion
+    /pendule existants plutôt qu'en en créant de nouveaux (R8 recombine les
+    mécanismes de R5-R7, il n'a pas d'inventaire propre).
+  honest_state: >-
+    Les 22 misconceptions déclarées sont couvertes, aucune sous le plancher
+    (vrai à nouveau depuis le 2026-09-23 ; faux du 2026-09-19 au 2026-09-23,
+    voir honest_state_2026_09_19). Douze y siègent EXACTEMENT (3 items) : la
+    marge est nulle et tout retrait d'item la casse. Le plafond de spec-extension.md §7 (6 items par
+    misconception) n'est atteint nulle part.

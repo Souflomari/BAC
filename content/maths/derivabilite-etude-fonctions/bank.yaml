@@ -1,0 +1,560 @@
+# bank.yaml — la banque « S'entraîner » de derivabilite-etude-fonctions
+# (BANK-SPEC v1). FICHIER FONDATEUR : cette notion n'avait pas de banque
+# avant cette conversion — c'est la PREMIÈRE entrée.
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : cette entrée ne porte aucun marqueur exercise
+# dans lesson.md — c'est la couche de VOLUME derrière le sommet de leçon,
+# pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). UNE entrée :
+#   - bk-2018-n-x4 — 2018, session NORMALE, le Problème (11 points),
+#     filière Sciences Expérimentales (SVT et Sciences Physiques, option
+#     française), code NS 22F. Convertie depuis
+#     docs/sujets/_incoming/maths-sexp-2018-n.md, statut « VÉRIFIÉ » —
+#     passe adversariale indépendante du 2026-08-27, CLEARÉE POUR
+#     CONVERSION avec une réserve nommée (le symbole de II-5, traité en
+#     reconstruction éditoriale ci-dessous, jamais comme une lecture).
+# Introuvable = absent, jamais inventé : aucun autre sujet vérifié n'est
+# recensé à ce jour pour cette notion, donc la banque ne compte qu'une
+# carte (la rail affichera « 1 sujet », pas un chiffre de façade).
+#
+# ─────────────────────────────────────────────────────────────────────────
+# POURQUOI UNE SEULE ENTRÉE À 11 POINTS, ET PAS QUATRE — critère qui vaut
+# pour tout le corpus, pas seulement ce fichier.
+#
+# Le Problème pèse 4,75 pt en derivabilite-etude-fonctions (dominant),
+# 2,25 en limites-continuite, 2,00 en calcul-integral, 2,00 en
+# suites-numeriques, et fonction-exponentielle le traverse en transversal
+# (voir la table de poids plus bas). On aurait PU partitionner en quatre
+# cartes, une par notion, comme le corpus le fait ailleurs pour des
+# exercices multi-domaines réellement indépendants. On ne l'a PAS fait ici,
+# et la raison n'est pas affaire de goût : elle est IMPRIMÉE DANS LE SUJET
+# LUI-MÊME.
+#
+# La question III-1 porte, dans son propre énoncé, « ( on pourra utiliser
+# le résultat de la question II)3)b) ) ». Une entrée `suites-numeriques`
+# autonome hériterait d'une consigne qui renvoie à une question absente de
+# la carte — un renvoi imprimé qui deviendrait FAUX pour l'élève qui
+# l'ouvre seule, pas une simple gêne rédactionnelle. La même dépendance
+# existe côté calcul intégral : II-6c (l'aire) ne se calcule qu'en sachant
+# QUI est au-dessus de qui sur [0,1], établi en II-2b, qui est du domaine
+# derivabilite-etude-fonctions — une entrée `calcul-integral` isolée
+# devrait réimporter ce résultat, donc le dupliquer.
+#
+# RÈGLE POUR LE CORPUS : ON NE PARTITIONNE PAS À TRAVERS UN RENVOI IMPRIMÉ.
+# Quand une question cite EXPLICITEMENT, dans le texte du sujet, le numéro
+# d'une autre question du même problème (« on pourra utiliser le résultat
+# de la question X »), les deux questions restent dans la MÊME entrée de
+# banque, même si leurs domaines diffèrent. Le sujet a déjà tranché sa
+# propre cohérence interne ; le découpage par notion ne doit jamais la
+# rompre. (Cf. le précédent inverse : bk-2021-n-x1 dans
+# content/maths/fonction-exponentielle/bank.yaml partitionne bien un
+# exercice en deux cartes, mais SEULEMENT parce que ses parties II et III
+# ne sont adossées à AUCUN renvoi imprimé vers la partie I.)
+#
+# Les quatre domaines non dominants restent honorés au point d'usage, dans
+# le `reasoning` de chaque question — jamais réduits au silence.
+# ─────────────────────────────────────────────────────────────────────────
+#
+# TABLE DE POIDS (question par question, recomptée indépendamment de
+# docs/sujets/_incoming/maths-sexp-2018-n.md — voir le recompte du barème
+# plus bas pour le détail arithmétique) :
+#
+#   | Domaine                        | Questions                          | Points |
+#   |---------------------------------|-------------------------------------|--------|
+#   | derivabilite-etude-fonctions    | I-1, I-2, II-2a, II-2b, II-3a,      | 4,75   |
+#   | (DOMINANT)                      | II-3b, II-3c, II-4a, II-4b, II-5    |        |
+#   | limites-continuite              | II-1a, II-1b, II-1c, II-1d          | 2,25   |
+#   | calcul-integral                 | II-6a, II-6b, II-6c                 | 2,00   |
+#   | suites-numeriques               | III-1, III-2, III-3                 | 2,00   |
+#   | fonction-exponentielle          | transversal — e^x et e^-x portent   | (non   |
+#   |                                  | g, f, f', f'', H, h et les deux     | chif-  |
+#   |                                  | intégrales                          | frable)|
+#
+# `fonction-logarithme` N'EST PAS CROSS-LISTÉ. Le recensement amont
+# suspectait « ln|exp (?) » — c'est FAUX pour ce sujet : recherche de « ln »
+# et « log » sur les quatre pages de la couche texte du PDF source, ZÉRO
+# occurrence. Le Problème est de l'exponentielle pure, du début à la fin.
+#
+# LE TABLEAU DE VARIATIONS DE g (Partie I, donné par l'énoncé) EST DÉCRIT
+# CI-DESSOUS SANS g(0)=0. Le sujet imprime un tableau à trois lignes, SANS
+# colonne intermédiaire : x de -∞ à +∞, un seul « + » pour g'(x) sur toute
+# la largeur, une seule flèche montante pour g(x) de -∞ à +∞ — AUCUNE
+# valeur n'y figure. Si g(0)=0 y était marqué, la question I-1 (« Vérifier
+# que g(0)=0 ») serait vidée de son sens ; l'intro ci-dessous respecte donc
+# scrupuleusement cette absence, vérifiée par la passe adversariale du
+# 2026-08-27 sur l'image ET sur la couche texte du PDF (qui ne porte, pour
+# ce bloc, que « x −∞ +∞ / ′ g(x) + / +∞ … g(x) … −∞ » et rien d'autre).
+#
+# LE SYMBOLE DE II-5 (« f(4) ⊔ 4.2 ») — RECONSTRUCTION ÉDITORIALE, PAS UNE
+# LECTURE. La passe adversariale a ouvert le PDF source (pas seulement les
+# JPEG) : entre « (4) » et « 4.2 », il n'existe AUCUN point de code — le
+# symbole est physiquement absent du document. Ce qu'un lecteur visuel
+# prend pour un glyphe est une image 2×2 px (Image191) dont le masque alpha
+# dessine un rectangle creux fermé sur ses quatre côtés (un « caractère
+# manquant » classique), dont la barre du haut, large de 0,59 px une fois
+# ramenée aux 150 dpi du raster, s'est perdue à l'export — c'est CELA seul
+# qui donne l'illusion d'un « ⊔ » plutôt qu'un « □ ». La lecture $\approx$
+# retenue dans le stem de q-II-5 ci-dessous est adjugée PAR CONSÉQUENCE
+# MATHÉMATIQUE ($f(4)=12e^{-4}+4=4{,}2198\ldots \ne 4{,}2$), exactement
+# comme le $\mathbb{N}^*$ de bk-2017-n-x4 dans
+# content/maths/fonction-exponentielle/bank.yaml (même discipline : la
+# donnée manquante est comblée POUR L'ÉLÈVE, avec une note explicite disant
+# que le document source ne la porte pas, jamais silencieusement).
+#
+# LES DEUX AUTRES BOÎTES « CARACTÈRE MANQUANT » DU MÊME SUJET (ℝ en
+# Exercice 1 q3-a, ℂ en Exercice 2 q1, page 2 du scan) sont HORS PÉRIMÈTRE
+# de ce fichier : elles vivent respectivement dans bk-2018-n-x1
+# (content/maths/geometrie-espace/bank.yaml) et bk-2018-n-x2
+# (content/maths/nombres-complexes-1/bank.yaml), déjà converties, non
+# retouchées ici. NUANCE DE LA VÉRIFICATION, à retenir : le PDF servi porte,
+# dans ses métadonnées, Producer = Creator = Microsoft® Word 2013,
+# CreationDate = 2018-12-12 — c'est un EXPORT WORD, pas un scan direct du
+# fascicule remis aux candidats en juin 2018. Les trois défauts de symbole
+# sont donc, selon toute vraisemblance, des artefacts de CETTE chaîne de
+# production (export → rastérisation), pas nécessairement des défauts du
+# sujet imprimé original. La distinction est faite ici plutôt que tue.
+#
+# L'ANOMALIE DU <title> HTML SERVI PAR ALLOSCHOOL, ET SON ARBITRAGE.
+# AlloSchool sert ce sujet (et 53 autres éléments du même cours) sous un
+# `<title>` qui nomme la filière « Sciences et Technologies » — ce n'est ni
+# SExp ni SM. Ce fichier NOMME LA FILIÈRE D'APRÈS LE CARTOUCHE DU SCAN,
+# JAMAIS D'APRÈS LE TITRE — et le cartouche, imprimé en toutes lettres sur
+# les quatre pages, dit sans ambiguïté « مسلك علوم الحياة والأرض ومسلك
+# العلوم الفيزيائية — خيار فرنسية » (SVT + Sciences Physiques, option
+# française = Sciences Expérimentales). L'anomalie est SYSTÉMATIQUE
+# (54/54 éléments du cours la portent) et DÉCOUPLÉE DU FICHIER : AlloSchool
+# sert le MÊME fichier, octet pour octet (MD5 identiques), sous QUATRE
+# cours distincts (Sciences Physiques, SVT, Sc. et Techn. Électriques,
+# Sc. et Techn. Mécaniques), avec un unique libellé collé aux quatre. Le
+# sens de l'erreur nous est favorable : le fichier servi EST le sujet
+# SVT + SP (son cartouche le dit), ce sont les cours STE et STM qui
+# reçoivent le mauvais fichier — pas nous. Verdict de la vérification :
+# PASS, la passe de transcription n'est pas rejetée.
+#
+# AUCUN DÉFAUT MATHÉMATIQUE, AUCUN DÉFAUT DE BARÈME. Vingt barèmes de marge
+# relevés et recomptés TROIS FOIS par la vérification (couche texte du PDF,
+# recadrage ×5 de la seule colonne de marge, et le CORRIGÉ OFFICIEL —
+# AlloSchool element/94704, code NR 22F, qui détaille l'attribution des
+# points question par question) : les trois instruments concordent
+# EXACTEMENT, total 11,00. Quinze identités mathématiques indépendantes
+# re-dérivées symboliquement (`sympy`, passe du 2026-08-27) se referment
+# toutes sans exception. Aucune donnée manquante, aucune question
+# incalculable.
+#
+# PROTOCOLE DE SOURCING (résumé — détail complet dans le fichier source).
+# Quatre contrôles anti-CDN faits : année ET code NS22F relus sur CHACUNE
+# des quatre pages (recadrage ×3 à ×10, diff au pixel du cartouche entre
+# p. 2/3/4, couche texte du PDF) ; recoupement NON VISUEL par trois
+# instruments (OCR tesseract AVANT toute lecture visuelle, couche texte du
+# PDF au point de code, re-dérivation symbolique sympy des 15 identités) ;
+# MD5 + SECOND téléchargement (User-Agent différent, no-cache,
+# cache-buster : 4/4 octet-pour-octet identiques) ; `<title>` HTML servi,
+# arbitré ci-dessus. La clé de décodage Adobe Symbol (SymbolMT incorporée,
+# Identity-H, codes en U+F000+code Symbol) a permis de lire directement,
+# SANS ambiguïté, tous les crochets d'intervalle (7 `[` / 7 `]`, comptés
+# et répartis un par un), les 17 occurrences de ∞, les 4 flèches `\to` des
+# limites, les 2 intégrales et l'unique `\le` de la Partie III — aucun
+# piège de glyphe substitué comme celui de SM 2017 N (pas de `£`/`³` ici).
+# ─────────────────────────────────────────────────────────────────────────
+# Raisonnement rédigé à la voix experte de la maison sur 100 % des
+# questions ; barème transcrit tel quel dans les énoncés ; conventions
+# KaTeX (block scalars pour la prose, KaTeX brut entre apostrophes simples
+# dans steps[].math — apostrophe DOUBLÉE pour un prime littéral, $f'(x)$
+# s'écrit `f''(x)` dans la source YAML single-quoted ; $f''(x)$ (dérivée
+# seconde) est notée $f^{(2)}(x)$ dans steps[].math pour éviter
+# l'empilement d'apostrophes — même convention que
+# content/maths/fonction-exponentielle/bank.yaml — mais reste $f''$ dans
+# les champs `stem`/`reasoning` en block scalar, sans contrainte
+# d'échappement là). Chaque extension d'une croissance comparée au-delà de
+# la forme exacte du R4 de `fonction-exponentielle` ($e^t/t\to+\infty$) est
+# RAMENÉE explicitement à cette forme par un changement de variable, jamais
+# admise en l'air — même discipline que le « piège nommé » déjà documenté
+# dans content/maths/fonction-logarithme/bank.yaml (ligne « Écrire
+# ln x/(x²-1) ∼ ln x/x² sans justifier… »).
+
+notion: maths/derivabilite-etude-fonctions
+
+entries:
+  # ── bk-2018-n-x4 — 2018 N, le Problème (SExp, 11 pts) : étude complète
+  # d'une fonction exponentielle, calcul intégral et suite u_{n+1}=f(u_n) ──
+  # Position « x4 » CONFIRMÉE (pas déduite) par recoupement avec les trois
+  # autres pièces du même sujet, déjà en banque : bk-2018-n-x1
+  # (content/maths/geometrie-espace/bank.yaml, Exercice 1), bk-2018-n-x2
+  # (content/maths/nombres-complexes-1/bank.yaml, Exercice 2), bk-2018-n-x3
+  # (content/maths/denombrement/bank.yaml, Exercice 3) — le Problème est la
+  # quatrième et dernière pièce du sujet. NE PAS reconvertir les trois
+  # premières : web/src/lib/examens.ts somme les bareme_total, un doublon
+  # fausserait le /20 de l'épreuve.
+  - id: bk-2018-n-x4
+    title: "Étude complète d'une fonction exponentielle : asymptote oblique, deux points d'inflexion, calcul intégral et suite récurrente"
+    source:
+      year: 2018
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Problème"
+    bareme_total: 11
+    duration_min: 66
+    sourcing:
+      status: sourced
+      note: >-
+        2018 session normale — examen national Sciences Expérimentales (SVT
+        et Sciences Physiques, BIOF, option française), Mathématiques
+        (3 h, coef 7), code NS 22F, AlloSchool element/94699 (le Problème,
+        « Étude d'une fonction numérique, calcul intégral et suites
+        numériques », 11 points — dernière pièce du sujet, après les
+        Exercices 1, 2 et 3 déjà en banque, voir la NOTE en tête de fichier
+        pour la confirmation de position). Transcription VÉRIFIÉE par une
+        passe adversariale indépendante du 2026-08-27
+        (docs/sujets/_incoming/maths-sexp-2018-n.md, statut « VÉRIFIÉ —
+        CLEARÉ POUR CONVERSION ») : re-fetch complet (4 JPEG + PDF source),
+        quatre contrôles anti-CDN (année/code sur chaque page, recoupement
+        non visuel par trois instruments, MD5 + second téléchargement,
+        <title> HTML arbitré), plus le CORRIGÉ OFFICIEL (element/94704,
+        code NR 22F) qui confirme le barème question par question. Vingt
+        barèmes recomptés trois fois (couche texte du PDF, recadrage ×5 de
+        la marge, corrigé officiel), total 11,00 exact, aucun écart. Quinze
+        identités mathématiques re-dérivées symboliquement (sympy),
+        aucun défaut mathématique trouvé. UNE réserve nommée : le symbole
+        de relation de la question II-5 (« f(4) ⊔ 4.2 ») est physiquement
+        absent du document source (image 2×2 px, masque alpha en
+        rectangle creux, aucun point de code entre « ) » et « 4.2 » dans le
+        flux du PDF) ; converti ici en $\approx$ par conséquence
+        mathématique ($f(4)=12e^{-4}+4=4{,}2198\ldots$), jamais présenté à
+        l'élève comme une lecture — voir la note dédiée dans le stem de
+        q-II-5 ci-dessous. Le tableau de variations de $g$ (Partie I) est
+        décrit ci-dessous SANS $g(0)=0$, absent du document, conformément à
+        ce que la vérification a mesuré sur l'image et sur la couche texte
+        du PDF.
+    intro: |-
+      **Problème (examen national, session normale 2018, Sciences Expérimentales — SVT et Sciences Physiques, option française) — 11 points.**
+
+      On considère la fonction $g$ définie sur $\mathbb{R}$ par :
+
+      $$g(x) = e^{x} - x^{2} + 3x - 1$$
+
+      **Le tableau de variations de $g$ est fourni par le sujet** (Partie I), tel qu'imprimé — reproduis-le mentalement tel quel, sans y ajouter de valeur : une seule ligne de signe pour $g'(x)$, un unique $+$ sur toute la largeur, et une seule flèche montante pour $g(x)$, de $-\infty$ à $+\infty$. **Aucune valeur intermédiaire n'y figure** — en particulier, $g(0)=0$ n'y est **pas** marqué : c'est précisément ce que la première question te demande d'établir. Un tableau qui porterait déjà ce zéro viderait la question de son sens.
+
+      On considère ensuite la fonction $f$ définie sur $\mathbb{R}$ par :
+
+      $$f(x) = \left(x^{2} - x\right)e^{-x} + x$$
+
+      et $(C)$ sa courbe représentative dans un repère orthonormé $(O, \vec{i}, \vec{j})$ *(unité : 1 cm)*.
+
+      **Le fil du problème.** Trois parties, qui s'enchaînent — rien n'est indépendant, et chaque question **prélève** un résultat déjà établi plus haut plutôt que de repartir de zéro. La Partie I fournit le signe de $g$ ; la Partie II s'en sert pour le sens de variation de $f$, via l'identité $f'=g\cdot e^{-x}$, puis construit toute l'étude de $f$ (limites, asymptote oblique, position relative à cette asymptote, tableau de variations, deux points d'inflexion, tracé, deux intégrales et une aire). La Partie III étudie une suite $u_{n+1}=f(u_n)$, et son tout premier énoncé le dit lui-même, en toutes lettres : « ( on pourra utiliser le résultat de la question II)3)b) ) » — c'est exactement ce renvoi imprimé qui interdit de séparer cette partie du reste du problème.
+    questions:
+      - id: qI1
+        part: "Partie I — Le tableau de g, sans la valeur en 0"
+        stem: |-
+          **(0,25 pt)** Vérifier que $g(0) = 0$.
+        reasoning: |-
+          « Vérifier » ne demande aucune recherche : substitue directement $x=0$ dans l'expression de $g$, terme à terme, dans l'ordre où le sujet l'écrit ($e^x$, $-x^2$, $+3x$, $-1$), et regarde si le résultat annoncé tombe. C'est une lecture de calcul, pas une résolution — et c'est cette valeur, une fois établie, qui va servir de pivot à la question suivante : le tableau donné par l'énoncé montre que $g$ est strictement croissante, mais ne dit RIEN sur où elle s'annule. C'est ce zéro-ci qui comble le tableau.
+        steps:
+          - math: 'g(0) = e^{0} - 0^{2} + 3\times0 - 1'
+            note: "On remplace x par 0 dans chacun des quatre termes de g."
+          - math: 'g(0) = 1 - 0 + 0 - 1 = 0'
+            note: "e puissance 0 vaut 1 ; les deux termes en x s'annulent ; il reste 1 moins 1."
+      - id: qI2
+        part: "Partie I — Signe de g sur les deux intervalles"
+        stem: |-
+          **(0,5 pt)** Déterminer le signe de $g(x)$ sur chacun des intervalles $\left]-\infty, 0\right]$ et $\left[0, +\infty\right[$.
+        reasoning: |-
+          Le tableau donné par le sujet dit que $g$ est **strictement croissante sur $\mathbb{R}$** — rien de plus, aucune valeur n'y est marquée. Combine cette monotonie avec l'unique valeur concrète que tu possèdes, $g(0)=0$ (question précédente) : une fonction strictement croissante range ses valeurs dans le **même ordre** que les $x$ qu'elle range. Donc comparer $x$ à $0$ revient à comparer $g(x)$ à $g(0)=0$ — dans le même sens.
+        steps:
+          - math: 'g \text{ strictement croissante sur } \mathbb{R} \quad (\text{tableau donné par l''énoncé})'
+            note: "Donnée du tableau imprime : un seul signe plus pour g prime, sur toute la droite réelle."
+          - math: 'x \le 0 \ \Longrightarrow\ g(x) \le g(0) = 0 \qquad\text{et}\qquad x \ge 0 \ \Longrightarrow\ g(x) \ge g(0) = 0'
+            note: "Une fonction strictement croissante conserve l'ordre : on compare chaque x a 0, et g(x) suit."
+      - id: qII1a
+        part: "Partie II, 1) — Limites de f et asymptote oblique en +∞"
+        stem: |-
+          **(0,5 pt)** Vérifier que $f(x) = \dfrac{x^{2}}{e^{x}} - \dfrac{x}{e^{x}} + x$ pour tout $x$ de $\mathbb{R}$ puis montrer que $\displaystyle\lim_{x \to +\infty} f(x) = +\infty$.
+        reasoning: |-
+          Deux tâches emboîtées. La première est une pure réécriture algébrique : distribue $e^{-x}=\dfrac1{e^x}$ sur les deux termes de $x^2-x$. Rien à limiter encore — mais c'est CETTE forme précise, « polynôme divisé par $e^x$ », que la seconde tâche exige.
+
+          Pour la limite, ne te contente jamais d'invoquer « croissances comparées » en l'air : ramène chaque fraction à la forme EXACTE du chapitre 5 de la leçon « Fonction exponentielle » ($e^t/t\to+\infty$ quand $t\to+\infty$). $\dfrac{x}{e^x}$ en est l'inverse direct. $\dfrac{x^2}{e^x}$ demande un pas de plus : pose $t=\dfrac x2$ — exactement le changement de variable que le cours utilise lui-même pour établir $e^x/x\to+\infty$ — pour l'écrire comme un carré de cette même forme.
+
+          Les deux fractions s'effacent ; il ne reste que le $+x$, qui part vers $+\infty$. Une somme d'un terme qui s'annule et d'un terme qui diverge : pas d'indétermination, la limite suit le terme qui explose.
+        steps:
+          - math: 'f(x) = (x^{2}-x)e^{-x}+x = x^{2}e^{-x} - x\,e^{-x} + x = \dfrac{x^{2}}{e^{x}} - \dfrac{x}{e^{x}} + x'
+            note: "On distribue e a la puissance moins x sur les deux termes de x carré moins x, puis on écrit e a la puissance moins x comme 1 sur e a la puissance x."
+          - math: '\dfrac{x}{e^{x}} = \dfrac{1}{e^{x}/x} \longrightarrow 0 \quad \left(\text{inverse de } \dfrac{e^{x}}{x}\to+\infty,\ \text{chapitre 5}\right)'
+            note: "x sur e puissance x est l'inverse direct de la croissance comparée de référence du chapitre 5 de « Fonction exponentielle »."
+          - math: 't=\dfrac{x}{2}\ (\to+\infty \text{ quand } x\to+\infty), \qquad \dfrac{x^{2}}{e^{x}} = \dfrac{(2t)^{2}}{e^{2t}} = 4\left(\dfrac{t}{e^{t}}\right)^{2} \longrightarrow 0'
+            note: "Même changement de variable que celui du cours pour établir e^x/x -> plus l'infini : on ramene x carré sur e puissance x a la forme exacte du chapitre 5, élevée au carré."
+          - math: '\lim_{x\to+\infty} f(x) = 0 - 0 + \lim_{x\to+\infty} x = +\infty'
+            note: "Les deux fractions s'effacent ; il ne reste que le terme plus x, qui part vers plus l'infini : pas d'indetermination."
+      - id: qII1b
+        part: "Partie II, 1) — Limites de f et asymptote oblique en +∞"
+        stem: |-
+          **(0,75 pt)** Calculer $\displaystyle\lim_{x \to +\infty}\left(f(x) - x\right)$ puis en déduire que $(C)$ admet une asymptote $(D)$ au voisinage de $+\infty$ d'équation $y = x$.
+        reasoning: |-
+          $f(x)-x$ n'est rien de nouveau à calculer : dans l'expression de départ, le $+x$ de $f$ s'annule exactement avec le $-x$ qu'on soustrait, et il reste $(x^2-x)e^{-x}$ — c'est-à-dire les DEUX MÊMES fractions $\dfrac{x^2}{e^x}-\dfrac{x}{e^x}$ que la question précédente vient de montrer tendre vers $0$ chacune. Même limite, même raison, sans rien recalculer.
+
+          La déduction, elle, n'est pas un théorème séparé à invoquer : un écart qui tend vers $0$ à l'infini, c'est LA définition même d'une asymptote oblique — la distance verticale entre $(C)$ et $(D)$ devient négligeable.
+        steps:
+          - math: 'f(x) - x = (x^{2}-x)e^{-x} = \dfrac{x^{2}}{e^{x}} - \dfrac{x}{e^{x}}'
+            note: "Le plus x de f s'annule avec le moins x qu'on soustrait ; il reste la même forme qu'a la question précédente."
+          - math: '\lim_{x\to+\infty}\left(f(x)-x\right) = 0 - 0 = 0 \quad (\text{mêmes deux limites qu''en question 1a})'
+            note: "Les deux fractions s'effacent, exactement comme dans la question précédente : rien a recalculer."
+          - math: '\lim_{x\to+\infty}\left(f(x)-x\right)=0 \ \Longrightarrow\ (C) \text{ admet pour asymptote } (D): y=x \text{ au voisinage de } +\infty'
+            note: "Écart nul à l'infini entre la courbe et la droite : c'est la définition même d'une asymptote oblique, pas un théorème a part."
+      - id: qII1c
+        part: "Partie II, 1) — Limite de f en −∞"
+        stem: |-
+          **(0,5 pt)** Vérifier que : $f(x) = \dfrac{x^{2} - x + x e^{x}}{e^{x}}$ pour tout $x$ de $\mathbb{R}$ puis calculer $\displaystyle\lim_{x \to -\infty} f(x)$.
+        reasoning: |-
+          Pourquoi le sujet te fait vérifier CETTE forme avant de calculer la limite : si tu essaies la limite directement sur l'écriture de départ $(x^2-x)e^{-x}+x$ en $-\infty$, tu tombes sur $(+\infty)+(-\infty)$ — une vraie indétermination, puisque $x^2-x\to+\infty$ et $e^{-x}\to+\infty$ font exploser le premier terme, pendant que $+x\to-\infty$. La réécriture au même dénominateur $e^x$ transforme cette bagarre en une seule fraction, où numérateur et dénominateur se traitent séparément.
+
+          Numérateur : $x^2-x\to+\infty$ (terme dominant $x^2$), et $x\,e^x\to0$ — c'est le corollaire de croissance comparée du chapitre 5, tel quel, sans extension à justifier. Le numérateur part donc vers $+\infty$. Dénominateur : $e^x\to0^+$, toujours strictement positif. Une quantité qui explose divisée par une quantité positive qui s'efface part elle aussi vers $+\infty$.
+        steps:
+          - math: 'f(x) = \dfrac{x^{2}}{e^{x}} - \dfrac{x}{e^{x}} + x = \dfrac{x^{2}}{e^{x}} - \dfrac{x}{e^{x}} + \dfrac{x\,e^{x}}{e^{x}} = \dfrac{x^{2}-x+x\,e^{x}}{e^{x}}'
+            note: "On met x au même dénominateur e a la puissance x que les deux autres termes de la question 1a."
+          - math: '\lim_{x\to-\infty}\left(x^{2}-x\right) = +\infty \qquad \lim_{x\to-\infty} x\,e^{x} = 0 \quad (\text{corollaire de la leçon Fonction exponentielle})'
+            note: "x carré moins x part vers plus l'infini (terme dominant x carré) ; x fois e puissance x s'efface en moins l'infini, corollaire direct du chapitre 5."
+          - math: '\lim_{x\to-\infty}\left(x^{2}-x+x\,e^{x}\right) = +\infty \qquad \lim_{x\to-\infty} e^{x} = 0^{+}'
+            note: "Le numérateur part vers plus l'infini ; le dénominateur s'efface en restant strictement positif."
+          - math: '\lim_{x\to-\infty} f(x) = +\infty'
+            note: "Une quantité qui part vers plus l'infini, divisée par une quantité positive qui s'efface, part elle aussi vers plus l'infini."
+      - id: qII1d
+        part: "Partie II, 1) — Branche parabolique en −∞"
+        stem: |-
+          **(0,5 pt)** Montrer que $\displaystyle\lim_{x \to -\infty}\dfrac{f(x)}{x} = -\infty$ et interpréter le résultat géométriquement.
+        reasoning: |-
+          Repars de l'écriture de départ de $f$ et divise chaque terme par $x$ : $\dfrac{x^2-x}{x}$ se simplifie en $x-1$ (division terme à terme d'un polynôme par $x$, valable pour $x\ne0$), et il reste $(x-1)e^{-x}+1$.
+
+          En $-\infty$ : $x-1\to-\infty$, et $e^{-x}\to+\infty$ (pose $X=-x\to+\infty$, c'est directement la première limite du chapitre 5, $e^X\to+\infty$, rien qu'un changement de nom de variable). Un produit de deux limites infinies **n'est jamais une forme indéterminée** — contrairement à une somme du type $\infty-\infty$ — le signe se lit directement par la règle des signes : négatif fois positif donne $-\infty$.
+
+          Interprétation : un rapport $f(x)/x$ qui part à l'infini (et non vers une valeur finie) signifie que $(C)$ ne rejoint AUCUNE droite oblique en $-\infty$ — elle s'écrase contre la direction verticale. C'est la définition même d'une branche parabolique de direction $(Oy)$.
+        steps:
+          - math: '\dfrac{f(x)}{x} = \dfrac{(x^{2}-x)e^{-x}+x}{x} = \dfrac{x^{2}-x}{x}\,e^{-x} + 1 = (x-1)e^{-x}+1'
+            note: "On divise chaque terme de f(x) par x ; x carré moins x sur x se simplifie en x moins 1."
+          - math: '\lim_{x\to-\infty}(x-1) = -\infty \qquad \lim_{x\to-\infty} e^{-x} = \lim_{X\to+\infty} e^{X} = +\infty \quad (X=-x,\ \text{chapitre 5 de Fonction exponentielle})'
+            note: "x moins 1 part vers moins l'infini ; e puissance moins x, avec X = moins x, redonne directement la première limite du chapitre 5."
+          - math: '\lim_{x\to-\infty} (x-1)e^{-x} = -\infty \quad (\text{produit de deux limites infinies, jamais indetermine}) \ \Longrightarrow\ \lim_{x\to-\infty}\dfrac{f(x)}{x} = -\infty'
+            note: "Un produit de deux quantités infinies se lit par la règle des signes : négatif fois positif donne moins l'infini, sans indetermination."
+          - math: '\lim_{x\to-\infty}\dfrac{f(x)}{x} = -\infty \ (\text{limite infinie}) \ \Longrightarrow\ (C) \text{ admet une branche parabolique de direction } (Oy) \text{ en } -\infty'
+            note: "Rapport infini, pas une valeur finie : la courbe ne rejoint aucune droite oblique, elle s'ecrase contre la direction verticale."
+      - id: qII2a
+        part: "Partie II, 2) — Position relative de (C) et (D)"
+        stem: |-
+          **(0,25 pt)** Montrer $f(x) - x$ et $x^{2} - x$ ont le même signe pour tout $x$ de $\mathbb{R}$.
+        reasoning: |-
+          Tu as déjà l'expression : $f(x)-x=(x^2-x)e^{-x}$ (établie en 1b). Le facteur $e^{-x}$ est **strictement positif pour tout réel $x$** — l'exponentielle ne s'annule jamais et ne change jamais de signe (chapitre 2 de « Fonction exponentielle »). Multiplier $x^2-x$ par un facteur toujours strictement positif change sa grandeur mais jamais son signe : les deux quantités sont donc toujours du même signe, sans qu'aucun cas particulier ne soit à distinguer.
+        steps:
+          - math: 'f(x)-x = (x^{2}-x)e^{-x} \quad (\text{déjà établi en question } 1b)'
+            note: "Même calcul que la question 1b, reutilise directement."
+          - math: 'e^{-x} > 0 \quad (\forall x \in \mathbb{R}) \quad (\text{chapitre 2 de Fonction exponentielle, l''exponentielle ne s''annule jamais})'
+            note: "Le facteur e puissance moins x est toujours strictement positif, quel que soit x réel."
+          - math: '\text{multiplier par un facteur strictement positif conserve le signe} \ \Longrightarrow\ f(x)-x \text{ et } x^{2}-x \text{ ont le même signe}'
+            note: "Un produit par un nombre strictement positif ne renverse jamais le signe du facteur restant."
+      - id: qII2b
+        part: "Partie II, 2) — Position relative de (C) et (D)"
+        stem: |-
+          **(0,5 pt)** En déduire que $(C)$ est au dessus de $(D)$ sur chacun des intervalles $\left]-\infty, 0\right]$ et $\left[1, +\infty\right[$, et en dessous de $(D)$ sur l'intervalle $\left[0, 1\right]$.
+        reasoning: |-
+          Factorise $x^2-x=x(x-1)$ : ses deux racines, $0$ et $1$, découpent $\mathbb{R}$ en trois zones. À l'extérieur de $[0,1]$, les deux facteurs $x$ et $x-1$ sont du même signe (produit positif) ; à l'intérieur, ils sont de signes opposés (produit négatif).
+
+          Par la question précédente, $f(x)-x$ copie exactement ce signe. Or $f(x)-x\ge0$ signifie « $(C)$ au-dessus de $(D)$ » (l'ordonnée de la courbe dépasse celle de la droite), et $f(x)-x\le0$ signifie « en dessous ». Le résultat suit terme à terme.
+
+          Remarque utile pour la construction de la courbe (question 5) : aux deux racines elles-mêmes, $f(0)-0=0$ et $f(1)-1=0$ — $(C)$ ne se contente pas de changer de côté, elle **touche exactement** $(D)$ en ces deux points.
+        steps:
+          - math: 'x^{2}-x = x(x-1)'
+            note: "Facteur commun x, pour lire le signe sur les trois zones séparées par les racines 0 et 1."
+          - math: 'x(x-1) \ge 0 \text{ sur } \left]-\infty,0\right] \cup \left[1,+\infty\right[ \qquad x(x-1) \le 0 \text{ sur } \left[0,1\right]'
+            note: "Deux facteurs du même signe hors de [0,1] (produit positif) ; de signes opposés a l'intérieur (produit négatif)."
+          - math: 'f(x)-x \ge 0 \Longleftrightarrow (C) \text{ au-dessus de } (D) \qquad f(x)-x \le 0 \Longleftrightarrow (C) \text{ en dessous de } (D)'
+            note: "Même signe que x(x-1), par la question 2a : le signe de f(x) moins x se lit directement sur les trois zones."
+      - id: qII3a
+        part: "Partie II, 3) — Dérivée de f et lien avec g"
+        stem: |-
+          **(0,75 pt)** Montrer que $f'(x) = g(x)e^{-x}$ pour tout $x$ de $\mathbb{R}$.
+        reasoning: |-
+          Dérive $f(x)=(x^2-x)e^{-x}+x$ terme à terme. Le produit $(x^2-x)e^{-x}$ demande la règle du produit, avec $u=x^2-x$ ($u'=2x-1$) et $v=e^{-x}$ ($v'=-e^{-x}$, dérivée de $e^u$ avec $u=-x$, chapitre 4 de « Fonction exponentielle »). Ajoute la dérivée du $+x$, qui vaut $1$.
+
+          La dernière étape n'est pas un calcul, c'est une VÉRIFICATION d'égalité : développe $g(x)e^{-x}$ de ton côté et compare terme à terme avec ce que tu viens d'obtenir pour $f'$. Le terme $e^x\cdot e^{-x}$ de $g(x)e^{-x}$ se simplifie en $1$ — c'est précisément ce $1$ qui vient rejoindre le « $+1$ » de $f'$, et le reste coïncide exactement.
+        steps:
+          - math: '\bigl[(x^{2}-x)e^{-x}\bigr]^{\prime} = (2x-1)e^{-x} + (x^{2}-x)(-e^{-x}) = \bigl[(2x-1)-(x^{2}-x)\bigr]e^{-x}'
+            note: "Règle du produit : dérivée de x carré moins x, fois e puissance moins x, plus x carré moins x fois la dérivée de e puissance moins x."
+          - math: '(2x-1)-(x^{2}-x) = -x^{2}+3x-1 \ \Longrightarrow\ f''(x) = \left(-x^{2}+3x-1\right)e^{-x} + 1'
+            note: "On simplifie l'expression entre crochets, puis on ajoute la dérivée du terme plus x, qui vaut 1."
+          - math: 'g(x)e^{-x} = \left(e^{x}-x^{2}+3x-1\right)e^{-x} = e^{x}e^{-x} + \left(-x^{2}+3x-1\right)e^{-x} = 1 + \left(-x^{2}+3x-1\right)e^{-x}'
+            note: "On developpe g(x) fois e puissance moins x : le terme e puissance x fois e puissance moins x vaut exactement 1."
+          - math: 'f''(x) = 1 + \left(-x^{2}+3x-1\right)e^{-x} = g(x)e^{-x}'
+            note: "Les deux expressions coïncident terme a terme : l'égalité demandee est vérifiée."
+      - id: qII3b
+        part: "Partie II, 3) — Sens de variation de f"
+        stem: |-
+          **(0,5 pt)** En déduire que la fonction $f$ est décroissante sur $\left]-\infty, 0\right]$ et croissante sur $\left[0, +\infty\right[$.
+        reasoning: |-
+          Le signe de $f'(x)=g(x)e^{-x}$ est celui de $g(x)$ SEUL : $e^{-x}$ étant toujours strictement positif, il ne pèse jamais sur le signe (même argument qu'en question 2a). Il ne reste donc qu'à relire le signe de $g$, déjà établi en Partie I question 2 : négatif sur $]-\infty,0]$, positif sur $[0,+\infty[$. Le lien entre le signe de $f'$ et le sens de variation de $f$ est le résultat central du chapitre 5 de cette leçon : $f'\le0$ signifie $f$ décroissante, $f'\ge0$ signifie $f$ croissante.
+        steps:
+          - math: 'e^{-x} > 0 \ (\forall x) \ \Longrightarrow\ \text{le signe de } f''(x) \text{ est celui de } g(x)'
+            note: "Le facteur e puissance moins x étant toujours positif, il ne change jamais le signe : seul g(x) decide."
+          - math: 'g(x) \le 0 \text{ sur } \left]-\infty,0\right] \ (\text{Partie I, question 2}) \ \Longrightarrow\ f''(x) \le 0 \ \Longrightarrow\ f \text{ décroissante sur cet intervalle}'
+            note: "Résultat de la Partie I question 2, reutilise ici : g négatif entraine f prime négatif."
+          - math: 'g(x) \ge 0 \text{ sur } \left[0,+\infty\right[ \ (\text{Partie I, question 2}) \ \Longrightarrow\ f''(x) \ge 0 \ \Longrightarrow\ f \text{ croissante sur cet intervalle}'
+            note: "Même raisonnement sur l'autre intervalle : g positif entraine f prime positif (chapitre 5, signe de f prime donne le sens de variation)."
+      - id: qII3c
+        part: "Partie II, 3) — Tableau de variations de f"
+        stem: |-
+          **(0,25 pt)** Dresser le tableau de variations de la fonction $f$.
+        reasoning: |-
+          Dresser un tableau, ce n'est jamais recalculer : c'est rassembler ce qui est déjà établi. Tu as les deux limites aux bornes ($+\infty$ en $-\infty$, question 1c ; $+\infty$ en $+\infty$, question 1a) et le sens de variation (décroissante puis croissante, question 3b, avec le pivot en $x=0$). Il manque une seule pièce que le sujet ne redemande pas explicitement mais que le tableau exige : la valeur au pivot, $f(0)$ — un calcul immédiat à partir de la définition de $f$.
+        steps:
+          - math: 'f(0) = (0^{2}-0)e^{0} + 0 = 0'
+            note: "Valeur du minimum, au point pivot x=0 : nécessaire pour compléter le tableau."
+          - math: '\lim_{x\to-\infty} f(x) = +\infty \ (\text{question 1c}) \qquad \lim_{x\to+\infty} f(x) = +\infty \ (\text{question 1a})'
+            note: "Les deux limites aux bornes, déjà calculees, se reportent telles quelles dans le tableau."
+          - math: 'f \text{ décroît de } +\infty \text{ a } 0 \text{ sur } \left]-\infty,0\right], \text{ puis croit de } 0 \text{ a } +\infty \text{ sur } \left[0,+\infty\right['
+            note: "Assemblage du sens de variation (question 3b) avec les deux limites et la valeur au minimum : le tableau complet."
+      - id: qII4a
+        part: "Partie II, 4) — Dérivée seconde de f"
+        stem: |-
+          **(0,25 pt)** Vérifier que $f''(x) = \left(x^{2} - 5x + 4\right)e^{-x}$ pour tout $x$ de $\mathbb{R}$.
+        reasoning: |-
+          $f''$ est la dérivée de $f'$. Repars de la forme $f'(x)=1+(-x^2+3x-1)e^{-x}$ établie en 3a : la dérivée de la constante $1$ est nulle, il ne reste qu'à dériver le produit $(-x^2+3x-1)e^{-x}$ par la même règle du produit qu'en 3a, avec cette fois $u=-x^2+3x-1$ ($u'=-2x+3$) et $v=e^{-x}$ ($v'=-e^{-x}$).
+        steps:
+          - math: '\bigl[(-x^{2}+3x-1)e^{-x}\bigr]^{\prime} = (-2x+3)e^{-x} + (-x^{2}+3x-1)(-e^{-x})'
+            note: "Règle du produit, appliquee au second terme de f prime ; la dérivée de la constante 1, premier terme de f prime, est nulle."
+          - math: '(-2x+3)+(x^{2}-3x+1) = x^{2}-5x+4 \ \Longrightarrow\ f^{(2)}(x) = \left(x^{2}-5x+4\right)e^{-x}'
+            note: "On regroupe les deux morceaux entre parenthèses : le résultat coincide avec l'expression demandee."
+      - id: qII4b
+        part: "Partie II, 4) — Deux points d'inflexion"
+        stem: |-
+          **(0,5 pt)** En déduire que la courbe $(C)$ admet deux points d'inflexion d'abscisses respectives $1$ et $4$.
+        reasoning: |-
+          Un point d'inflexion, ce n'est pas « $f''$ s'annule » — c'est « $f''$ s'annule EN CHANGEANT DE SIGNE » (chapitre 6). Factorise $x^2-5x+4=(x-1)(x-4)$ : deux racines simples et distinctes. Comme $e^{-x}$ est toujours strictement positif, le signe de $f''$ est exactement celui de $(x-1)(x-4)$, qui bascule réellement à chacune de ces deux racines (positif à l'extérieur de $[1,4]$, négatif à l'intérieur) — ce n'est pas un simple contact avec zéro, c'est un vrai changement de signe, aux DEUX endroits.
+        steps:
+          - math: 'x^{2}-5x+4 = (x-1)(x-4) \qquad e^{-x}>0 \ (\forall x) \ \Longrightarrow\ \text{signe de } f^{(2)}(x) = \text{signe de } (x-1)(x-4)'
+            note: "On factorise le trinôme ; le facteur exponentiel, toujours positif, ne pèse jamais sur le signe."
+          - math: '(x-1)(x-4) < 0 \text{ sur } \left]1,4\right[ \qquad (x-1)(x-4) > 0 \text{ ailleurs, avec changement strict en } x=1 \text{ et } x=4'
+            note: "Deux racines simples et distinctes : le signe bascule réellement à chaque racine, pas un simple contact avec zéro."
+          - math: 'f^{(2)} \text{ s''annule en changeant de signe en } x=1 \text{ et en } x=4 \ \Longrightarrow\ (C) \text{ admet deux points d''inflexion, d''abscisses } 1 \text{ et } 4'
+            note: "Définition du point d'inflexion (chapitre 6) : changement STRICT de signe de la dérivée seconde, verifie ici aux deux racines."
+      - id: qII5
+        part: "Partie II, 5) — Construction de (D) et (C)"
+        stem: |-
+          **(1 pt)** Construire $(D)$ et $(C)$ dans le même repère $\left(O, \vec{i}, \vec{j}\right)$ *(on prend : $f(4) \approx 4{,}2$)*.
+
+          **Note sur ce symbole (fidèle au document source, pas une lecture).** À cet endroit précis, le sujet officiel tel que servi ne porte **aucun caractère du tout** entre « $f(4)$ » et « $4{,}2$ » : le PDF pose une image de 2×2 pixels (un masque alpha en rectangle creux) dont la barre du haut s'est perdue à la rastérisation — il n'y a pas de point de code dans le flux du document, donc rien à décoder. Le symbole $\approx$ retenu ici est une **reconstruction éditoriale**, adjugée uniquement par conséquence mathématique : $f(4) = (16-4)e^{-4}+4 = 12e^{-4}+4 = 4{,}2198\ldots$, ce qui exclut une égalité stricte et rend $\approx$ la seule relation cohérente avec la valeur imprimée $4{,}2$.
+        reasoning: |-
+          Construire, ici, ne demande aucun nouveau calcul : c'est assembler, dans le bon repère, tout ce que les questions précédentes ont déjà établi.
+
+          De $-\infty$ (question 1c, 1d) : $f\to+\infty$, avec une branche parabolique de direction $(Oy)$ — une remontée de plus en plus abrupte, presque verticale, à mesure que $x$ diminue. La courbe descend ensuite (décroissante, question 3b) jusqu'au minimum en $(0,0)$ (question 3c), puis remonte (croissante) vers $+\infty$ (question 1a), en se rapprochant de plus en plus de la droite $(D):y=x$ (asymptote établie en question 1b).
+
+          Sur cette montée finale, deux repères précis à placer : les deux points d'inflexion, d'abscisses $1$ et $4$ (question 4b), et le point $\left(4\,;\,f(4)\right)$, juste **au-dessus** de $(D)$ puisque $f(4)\approx4{,}2>4$ — cohérent avec la question 2b, qui place $(C)$ au-dessus de $(D)$ sur $[1,+\infty[$.
+
+          Détail utile pour un tracé fidèle : la question 2b a montré que $(C)$ touche EXACTEMENT $(D)$ en $x=0$ et $x=1$ (les deux racines de $x^2-x$), passe au-dessus d'elle avant $0$ et après $1$, et en dessous entre les deux — ce sont ces deux points de contact, pas de simples croisements approximatifs, qui ancrent la portion centrale du tracé. Le repère est orthonormé, unité $1$ cm (déclarée en tête de Partie II) : respecter cette échelle est ce qui rend le dessin lisible.
+      - id: qII6a
+        part: "Partie II, 6) — Primitive de h et première intégrale"
+        stem: |-
+          **(0,5 pt)** Montrer que la fonction $H : x \mapsto \left(x^{2} + 2x + 2\right)e^{-x}$ est une primitive de la fonction $h : x \mapsto -\,x^{2}\,e^{-x}$ sur $\mathbb{R}$ puis en déduire que $\displaystyle\int_{0}^{1} x^{2}e^{-x}\,dx = \dfrac{2e - 5}{e}$.
+        reasoning: |-
+          Deux tâches, à ne pas confondre. « Montrer qu'une fonction proposée est une primitive » ne demande jamais d'intégrer — ça demande de **dériver** la fonction proposée et de retomber sur $h$. $H$ est un produit, règle du produit habituelle.
+
+          Une fois $H'=h$ confirmé, la déduction se fait via la définition du chapitre 2 de « Calcul intégral » ($\int_a^b = F(b)-F(a)$) — mais applique-la à $h$, pas directement à ce qu'on te demande : $x^2e^{-x}=-h(x)$ (l'opposé de $h$), donc l'intégrale cherchée est l'OPPOSÉE de $\int_0^1 h(x)\,dx$, que $H$ calcule.
+        steps:
+          - math: 'H''(x) = (2x+2)e^{-x} + (x^{2}+2x+2)(-e^{-x}) = \bigl[(2x+2)-(x^{2}+2x+2)\bigr]e^{-x} = -x^{2}e^{-x} = h(x)'
+            note: "Règle du produit sur H, puis simplification : on retrouve exactement h(x)."
+          - math: '\int_{0}^{1} x^{2}e^{-x}\,dx = -\int_{0}^{1} h(x)\,dx = -\bigl[H(1)-H(0)\bigr] = H(0)-H(1)'
+            note: "x carré e puissance moins x est l'oppose de h(x) : on change le signe de l'intégrale de h, définie par H (chapitre 2)."
+          - math: 'H(0) = (0+0+2)e^{0} = 2 \qquad H(1) = (1+2+2)e^{-1} = \dfrac{5}{e}'
+            note: "Valeurs de H aux deux bornes."
+          - math: '\int_{0}^{1} x^{2}e^{-x}\,dx = 2 - \dfrac{5}{e} = \dfrac{2e-5}{e}'
+            note: "Différence des deux valeurs, mise au même dénominateur e."
+      - id: qII6b
+        part: "Partie II, 6) — Intégration par parties"
+        stem: |-
+          **(0,75 pt)** à l'aide d'une intégration par parties montrer que $\displaystyle\int_{0}^{1} x e^{-x}\,dx = \dfrac{e - 2}{e}$.
+        reasoning: |-
+          $x\,e^{-x}$ est un produit dont aucun des deux facteurs ne se primitive facilement avec l'autre en place — le signal exact du chapitre 8 de « Calcul intégral » pour sortir l'intégration par parties. Choisis $u=x$ (à dériver, ça devient $1$ : plus simple) et $v'=e^{-x}$ (à primitiver, immédiat) — jamais l'inverse : dériver $e^{-x}$ ne le simplifierait pas, il resterait une exponentielle.
+        steps:
+          - math: 'u = x,\quad u^{\prime}=1,\qquad v^{\prime}=e^{-x},\quad v=-e^{-x}'
+            note: "On derive x (ca devient 1) et on primitive e puissance moins x (ca devient moins e puissance moins x)."
+          - math: '\int_{0}^{1} x\,e^{-x}\,dx = \bigl[-x\,e^{-x}\bigr]_{0}^{1} - \int_{0}^{1} \bigl(-e^{-x}\bigr)\,dx = \bigl[-x\,e^{-x}\bigr]_{0}^{1} + \int_{0}^{1} e^{-x}\,dx'
+            note: "Formule de l'intégration par parties (chapitre 8 de « Calcul intégral ») : terme de bord moins l'intégrale de u prime fois v."
+          - math: '\bigl[-x\,e^{-x}\bigr]_{0}^{1} = -1\times e^{-1} - 0 = -\dfrac{1}{e}'
+            note: "En 1 : moins e puissance moins 1. En 0 : le terme s'annule (le facteur x est nul)."
+          - math: '\int_{0}^{1} e^{-x}\,dx = \bigl[-e^{-x}\bigr]_{0}^{1} = -e^{-1} - (-1) = 1 - \dfrac{1}{e}'
+            note: "Primitive immédiate de e puissance moins x."
+          - math: '\int_{0}^{1} x\,e^{-x}\,dx = -\dfrac{1}{e} + 1 - \dfrac{1}{e} = 1 - \dfrac{2}{e} = \dfrac{e-2}{e}'
+            note: "On additionne le terme de bord et l'intégrale restante, puis on met au même dénominateur e."
+      - id: qII6c
+        part: "Partie II, 6) — Aire entre (C) et (D)"
+        stem: |-
+          **(0,75 pt)** Calculer en $cm^{2}$ l'aire du domaine plan limité par $(C)$ et $(D)$ et les droites d'équations $x = 0$ et $x = 1$.
+        reasoning: |-
+          Une aire entre deux courbes s'obtient en intégrant la différence DU DESSUS MOINS LE DESSOUS (chapitre 9 de « Calcul intégral »), jamais dans un ordre arbitraire. Il faut donc savoir qui est où sur $[0,1]$ : la question 2b l'a établi, $(C)$ est **en dessous** de $(D)$ sur cet intervalle. C'est donc $x-f(x)$ — et non $f(x)-x$, qui donnerait un nombre négatif — qu'il faut intégrer.
+
+          Le repère est orthonormé, unité $1$ cm, donc $1$ unité d'aire vaut exactement $1\,\text{cm}^2$ : le résultat de l'intégrale se lit directement en $\text{cm}^2$, sans conversion. Et $x-f(x)$, une fois développé, n'est rien d'autre que la différence des deux intégrales déjà calculées aux questions 6a et 6b — aucun nouveau calcul d'intégrale à faire.
+        steps:
+          - math: '\text{sur } [0,1],\ (C) \text{ est en dessous de } (D) \quad (\text{question } 2b) \ \Longrightarrow\ \text{Aire} = \int_{0}^{1} \bigl(x-f(x)\bigr)\,dx \times 1\,\text{cm}^{2}'
+            note: "On integre le dessus (D) moins le dessous (C), positif sur [0,1] ; unité d'aire = 1 cm carré car le repère est orthonormé d'unité 1 cm."
+          - math: 'x - f(x) = -\bigl(f(x)-x\bigr) = -(x^{2}-x)e^{-x} = x\,e^{-x} - x^{2}e^{-x}'
+            note: "On reprend l'expression de f(x) moins x déjà établie en 2a, et on en change le signe."
+          - math: '\int_{0}^{1}\bigl(x-f(x)\bigr)\,dx = \int_{0}^{1} x\,e^{-x}\,dx - \int_{0}^{1} x^{2}e^{-x}\,dx = \dfrac{e-2}{e} - \dfrac{2e-5}{e}'
+            note: "La différence se scinde en exactement les deux intégrales des questions 6b et 6a, déjà calculees : rien a recalculer."
+          - math: '\dfrac{e-2}{e} - \dfrac{2e-5}{e} = \dfrac{(e-2)-(2e-5)}{e} = \dfrac{3-e}{e} = \dfrac{3}{e}-1'
+            note: "On regroupe au même dénominateur e."
+          - math: '\text{Aire} = \left(\dfrac{3}{e}-1\right)\text{cm}^{2} \approx 0{,}10\ \text{cm}^{2} \quad (\text{positif car } e<3)'
+            note: "Résultat positif : e vaut environ 2,72, donc 3 sur e depasse 1."
+      - id: qIII1
+        part: "Partie III — Encadrer la suite entre 0 et 1"
+        stem: |-
+          **(0,75 pt)** Montrer que $0 \le u_{n} \le 1$ pour tout $n$ de $\mathbb{N}$ *( on pourra utiliser le résultat de la question II)3)b) )*.
+        reasoning: |-
+          La suite est définie par récurrence ($u_{n+1}=f(u_n)$) : la propriété à démontrer se prouve donc par récurrence (chapitre 2 de « Suites numériques », le mécanisme des dominos), pas par un calcul direct.
+
+          Initialisation immédiate : $u_0=\frac12\in[0,1]$.
+
+          Hérédité : c'est ICI que le renvoi imprimé par le sujet intervient — « le résultat de la question II)3)b) », c'est-à-dire la monotonie de $f$. $f$ est croissante sur $[0,+\infty[$, qui contient $[0,1]$ tout entier ; une fonction croissante **transporte l'ordre** : encadrer $u_n$ entre $0$ et $1$ encadre donc $f(u_n)$ entre $f(0)$ et $f(1)$, dans le même sens. Il ne reste qu'à calculer ces deux bords — $f(0)=0$ (déjà vu en 3c) et $f(1)=(1-1)e^{-1}+1=1$ — pour conclure $0\le u_{n+1}\le1$, et boucler la récurrence.
+        steps:
+          - math: 'u_{0} = \dfrac12 \ \Longrightarrow\ 0 \le u_{0} \le 1'
+            note: "Initialisation : le premier terme est bien dans l'intervalle."
+          - math: '\text{Hérédité\,: on suppose } 0 \le u_{n} \le 1. \ f \text{ croissante sur } [0,+\infty[ \supseteq [0,1] \quad (\text{question II-3b})'
+            note: "On reutilise la monotonie de f, déjà établie, sur l'intervalle qui contient u_n : c'est le renvoi imprime par le sujet."
+          - math: 'f \text{ croissante} \ \Longrightarrow\ f(0) \le f(u_{n}) \le f(1)'
+            note: "Une fonction croissante conserve l'ordre : encadrer u_n encadre f(u_n) de la même façon."
+          - math: 'f(0) = 0 \quad (\text{déjà calcule en 3c}) \qquad f(1) = (1-1)e^{-1}+1 = 1'
+            note: "Valeurs de f aux deux bords 0 et 1 de l'intervalle."
+          - math: '0 \le f(u_{n}) \le 1 \Longleftrightarrow 0 \le u_{n+1} \le 1 \ \Longrightarrow\ \text{la propriété est vraie pour tout } n \in \mathbb{N}'
+            note: "u_n+1 est par définition f(u_n) : l'hérédité est établie, la récurrence conclut pour tout n."
+      - id: qIII2
+        part: "Partie III — Décroissance de la suite"
+        stem: |-
+          **(0,5 pt)** Montrer que la suite $(u_{n})$ est décroissante.
+        reasoning: |-
+          Le signe de $u_{n+1}-u_n=f(u_n)-u_n$ décide de la monotonie. Ici, ce n'est PAS le résultat de II-3b qui sert (utilisé à la question précédente), mais celui de la question **II-2a** : « $f(x)-x$ a le même signe que $x^2-x$ », vrai pour tout réel $x$, donc en particulier pour $x=u_n$.
+
+          Or la question précédente vient d'enfermer $u_n$ dans $[0,1]$ pour tout $n$. Sur cet intervalle, $u_n(u_n-1)\le0$ : $u_n$ y est positif ou nul, $u_n-1$ y est négatif ou nul, leur produit est donc négatif ou nul. D'où $f(u_n)-u_n\le0$, c'est-à-dire $u_{n+1}\le u_n$, pour tout $n$.
+        steps:
+          - math: 'u_{n+1}-u_{n} = f(u_{n})-u_{n}'
+            note: "Par définition de la suite, u_n+1 vaut f(u_n)."
+          - math: 'f(u_{n})-u_{n} \text{ a le même signe que } u_{n}^{2}-u_{n} = u_{n}(u_{n}-1) \quad (\text{question II-2a, appliquee en } x=u_n)'
+            note: "Résultat général de la question 2a, reutilise ici en remplaçant x par u_n."
+          - math: '0 \le u_{n} \le 1 \quad (\text{question III-1}) \ \Longrightarrow\ u_{n} \ge 0 \text{ et } u_{n}-1 \le 0 \ \Longrightarrow\ u_{n}(u_{n}-1) \le 0'
+            note: "Sur [0,1], un facteur positif ou nul fois un facteur négatif ou nul donne un produit négatif ou nul."
+          - math: 'u_{n+1}-u_{n} \le 0 \ \Longrightarrow\ (u_{n}) \text{ est décroissante}'
+            note: "Le signe du terme suivant moins le terme courant est négatif ou nul, pour tout n : la suite décroît."
+      - id: qIII3
+        part: "Partie III — Convergence et limite"
+        stem: |-
+          **(0,75 pt)** En déduire que $(u_{n})$ est convergente et déterminer sa limite.
+        reasoning: |-
+          Deux étapes distinctes. D'abord la convergence, garantie SANS connaître la valeur : $(u_n)$ est décroissante (III-2) et minorée par $0$ (III-1) — c'est exactement l'hypothèse du théorème de la limite monotone (chapitre 8 de « Suites numériques »).
+
+          Ensuite, trouver la valeur : c'est la méthode du chapitre 9 de « Suites numériques » pour les suites $u_{n+1}=f(u_n)$. $f$ est continue sur $\mathbb{R}$ (somme et produit de fonctions continues), donc si $u_n\to L$, passer à la limite dans $u_{n+1}=f(u_n)$ donne $L=f(L)$ — $L$ est un **point fixe** de $f$. Résous cette équation : $(L^2-L)e^{-L}+L=L$ se simplifie en $(L^2-L)e^{-L}=0$, et comme $e^{-L}$ n'est jamais nul, il reste $L(L-1)=0$, donc $L=0$ ou $L=1$.
+
+          Pour trancher entre les deux, réutilise la monotonie : la suite décroît à partir de $u_0=\frac12$, donc **tous** ses termes — et leur limite — restent $\le\frac12$. Comme $\frac12<1$, la valeur $L=1$ est impossible : il reste $L=0$.
+        steps:
+          - math: '(u_{n}) \text{ décroissante (III-2), minorée par } 0 \text{ (III-1)} \ \Longrightarrow\ (u_{n}) \text{ converge vers une limite } L\in[0,1] \quad (\text{théorème de la limite monotone, chapitre 8 de Suites numériques})'
+            note: "Décroissante et minorée : la convergence est garantie sans connaître encore la valeur de la limite."
+          - math: 'f \text{ continue sur } \mathbb{R} \ (\text{somme et produit de fonctions continues}),\ u_{n+1}=f(u_{n}) \ \Longrightarrow\ L = f(L) \quad (\text{chapitre 9 de Suites numériques})'
+            note: "On passe a la limite dans la relation de récurrence : la continuité de f permet d'échanger limite et f."
+          - math: 'f(L)=L \iff (L^{2}-L)e^{-L}=0 \iff L^{2}-L=0 \iff L(L-1)=0 \iff L=0 \text{ ou } L=1'
+            note: "e puissance moins L n'est jamais nul : seul le facteur L(L moins 1) peut s'annuler."
+          - math: '(u_{n}) \text{ décroissante et } u_{0}=\dfrac12 \ \Longrightarrow\ L \le \dfrac12 < 1 \ \Longrightarrow\ L \ne 1 \ \Longrightarrow\ L = 0'
+            note: "La suite décroît à partir d'un demi : la limite ne peut pas être 1, donc elle vaut 0."

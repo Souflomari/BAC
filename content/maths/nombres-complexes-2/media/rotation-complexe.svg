@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 560" width="640" height="560"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img" aria-label="Dans le plan complexe, le point A (affixe 2i) est le centre d’une rotation d’angle θ = π/2 qui envoie le point B (affixe 3+2i) sur le point C (affixe 5i). Les segments AB et AC, marqués de repères de longueur égale, ont la même longueur 3 ; l’arc entre eux indique l’angle de rotation θ.">
+  <title>Rotation de centre A, d’angle π/2 : B envoyé sur C</title>
+  <!--
+    rotation-complexe.svg — figure STAGED (LESSON-EXPERIENCE-SPEC.md §2) pour
+    R7 (exercice type-bac, question 4) : l'écriture complexe d'une rotation,
+    z' - z_A = e^{iθ}(z - z_A), illustrée avec les valeurs mêmes du texte :
+    z_A = 2i, z_B = 3+2i, z_C = 5i, θ = π/2, et la vérification
+    z_C - z_A = i(z_B - z_A) déjà faite en prose.
+
+    Pourquoi CET exemple (et pas celui du R5, c=1+i) : le R5 combine
+    rotation ET homothétie (|c|=√2 ≠ 1), donc AB ≠ AB' — pas adapté à des
+    repères de longueur égale. Le R7 (c = e^{iπ/2} = i, |c| = 1) est une
+    rotation PURE : AB = AC = 3, exactement ce que la consigne demande de
+    marquer par des ticks.
+
+    Repère écran : px = 220 + 60·Re(z) ,  py = 400 - 60·Im(z)
+    (origine O en (220,400) ; échelle 60 px/unité).
+      O (0)       -> (220,400)
+      A (2i)      -> (220,280)   [centre de la rotation]
+      B (3+2i)    -> (400,280)
+      C (5i)      -> (220,100)   [image de B]
+    Vecteur AB (px) = (180,0)  — longueur 3 unités = 180 px.
+    Vecteur AC (px) = (0,-180) — longueur 3 unités = 180 px. AB = AC : ✓.
+    Angle (AB,AC) : de la direction 0° (AB, vers la droite) à 90° (AC, vers
+    le haut) en tournant dans le sens direct (trigonométrique) — cohérent
+    avec θ = +π/2 et c = i = e^{iπ/2}.
+
+    Arc θ : rayon 1 unité (60 px) autour de A, de l'angle 0° à 90°,
+    approximé par une Bézier quadratique dont le point de contrôle est sur
+    la bissectrice (45°) à distance 1×√2 du centre (même technique que
+    moment-force.svg). Petite flèche à l'extrémité (vers C) pour montrer
+    le sens de la rotation (direct).
+
+    Repères de longueur égale (ticks) : un seul trait perpendiculaire au
+    milieu de AB et de AC — même style, même couleur (ink) sur les deux,
+    indépendamment de la couleur du segment lui-même, précisément pour
+    signaler "même longueur" sans ambiguïté.
+
+    Couleurs : axes Re/Im, origine O, centre A, point B, segment AB,
+    ticks — --figure-ink / --figure-ink-soft (structure neutre, "avant").
+    Arc θ (+ sa flèche + son étiquette), point C, segment AC, la formule
+    encadrée — --figure-accent (seul foyer : la rotation / l'image).
+
+    Mise en étapes (geste d'enseignement : le point de départ, puis la
+    rotation qui agit, puis l'image obtenue, puis sa preuve algébrique) :
+      step-1 : les données de départ — le centre A et le point B, reliés
+               par le segment AB (neutre, "avant").
+      step-2 : la rotation agit — l'arc θ qui montre l'angle et le sens
+               de la rotation appliquée en A.
+      step-3 : l'image obtenue — le point C, le segment AC (accent), et
+               les repères de longueur égale sur AB/AC (la rotation
+               conserve les distances).
+      step-4 : la vérification algébrique — la formule encadrée,
+               instanciée avec les valeurs de l'exercice.
+    Les step-N sont les DERNIERS enfants du <svg>, non-stepped chrome
+    (cadre, titres, axes) avant eux — assembleSvg réinjecte toujours les
+    groupes gardés juste avant </svg>, dans l'ordre croissant. La
+    "légende" en prose (redondante avec les captions du sidecar) a été
+    retirée ; le sidecar rotation-complexe.stages.json porte les captions.
+  -->
+
+  <rect x="20" y="34" width="600" height="460" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <text x="320" y="14" text-anchor="middle" font-size="12.5" font-weight="600"
+        fill="var(--figure-ink)">Rotation de centre A et d’angle θ = π/2</text>
+  <text x="320" y="28" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">A(2i), B(3+2i), C(5i) — cette rotation envoie B sur C</text>
+
+  <!-- ── Axes Re / Im (repère neutre) ──────────────────────────────────── -->
+  <line x1="110" y1="400" x2="500" y2="400" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,4"/>
+  <polygon points="500,400 488,395.5 488,404.5" fill="var(--figure-ink-soft)"/>
+  <text x="485" y="416" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">Re</text>
+
+  <line x1="220" y1="400" x2="220" y2="50" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,4"/>
+  <polygon points="220,50 215.5,61 224.5,61" fill="var(--figure-ink-soft)"/>
+  <text x="233" y="60" text-anchor="start" font-size="11" fill="var(--figure-ink-soft)">Im</text>
+
+  <circle cx="220" cy="400" r="2.5" fill="var(--figure-ink-soft)"/>
+  <text x="203" y="412" text-anchor="middle" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">O</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les données de départ : le centre A et le point B,
+       reliés par le segment AB (neutre, "avant" la rotation)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <line x1="220" y1="280" x2="400" y2="280" stroke="var(--figure-ink)" stroke-width="2"/>
+
+    <circle cx="220" cy="280" r="6.5" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <circle cx="220" cy="280" r="2" fill="var(--figure-ink)"/>
+    <text x="192" y="286" text-anchor="middle" font-size="14" font-style="italic" fill="var(--figure-ink)">A</text>
+    <text x="192" y="300" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">(centre)</text>
+
+    <circle cx="400" cy="280" r="4.5" fill="var(--figure-ink)"/>
+    <text x="420" y="278" text-anchor="start" font-size="14" font-style="italic" fill="var(--figure-ink)">B</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la rotation agit : l'arc θ (sens direct) autour de A
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="M280,280 Q280,220 220,220" fill="none" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <polygon points="212,220 220,216 220,224" fill="var(--figure-accent)"/>
+    <text x="292" y="208" text-anchor="middle" font-size="13" font-style="italic" fill="var(--figure-accent)">θ</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — l'image obtenue : le point C, le segment AC (accent),
+       et les repères de longueur égale sur AB/AC
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <line x1="220" y1="280" x2="220" y2="100" stroke="var(--figure-accent)" stroke-width="2.2"/>
+
+    <line x1="310" y1="272" x2="310" y2="288" stroke="var(--figure-ink)" stroke-width="2"/>
+    <line x1="212" y1="190" x2="228" y2="190" stroke="var(--figure-ink)" stroke-width="2"/>
+
+    <circle cx="220" cy="100" r="4.5" fill="var(--figure-accent)"/>
+    <text x="240" y="104" text-anchor="start" font-size="14" font-style="italic" fill="var(--figure-accent)">C</text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — la vérification algébrique (formule encadrée,
+       instanciée avec les valeurs de l'exercice)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <rect x="150" y="428" width="340" height="58" rx="6" fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="320" y="450" text-anchor="middle" font-size="14" font-style="italic" fill="var(--figure-accent)">z&#8242; &#8722; z<tspan dy="4" font-size="10" font-style="normal">A</tspan><tspan dy="-4"> = e</tspan><tspan dy="-7" font-size="10">i&#952;</tspan><tspan dy="7"> (z &#8722; z</tspan><tspan dy="4" font-size="10" font-style="normal">A</tspan><tspan dy="-4">)</tspan></text>
+    <text x="320" y="474" text-anchor="middle" font-size="11.5" font-style="italic" fill="var(--figure-accent)"><tspan font-style="normal">ici : </tspan>z<tspan dy="4" font-size="8.5" font-style="normal">C</tspan><tspan dy="-4"> &#8722; z</tspan><tspan dy="4" font-size="8.5" font-style="normal">A</tspan><tspan dy="-4"> = i (z</tspan><tspan dy="4" font-size="8.5" font-style="normal">B</tspan><tspan dy="-4"> &#8722; z</tspan><tspan dy="4" font-size="8.5" font-style="normal">A</tspan><tspan dy="-4">) = 3i</tspan></text>
+  </g><!-- /step-4 -->
+
+</svg>

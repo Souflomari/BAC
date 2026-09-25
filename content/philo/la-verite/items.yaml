@@ -1,0 +1,2161 @@
+notion: la-verite
+skill_code: philo_la_verite
+
+# Misconception inventory — summit-conversion campaign (Philo pilot #2, after
+# la-liberte). This file previously carried `misconceptions: []` and no
+# per-distractor tags (the same Gap-4 state la-liberte started from). Built
+# from scratch by reading R0-R9 rung by rung and mining each rung's own
+# "erreur à éviter" box first (recipe's philo addendum), then cross-checked
+# against the 30 legacy end-bank items (VERITE-1..30) to make sure every
+# recurring wrong model actually present in the bank has a home. Id
+# convention: mc.philo.la_verite.<name> — this notion's OWN namespace (not
+# cross-referencing la-liberte's or analyse-de-texte's ids), per the recipe's
+# instruction to give each notion its own tagged copy even where the
+# underlying confusion rhymes with another lesson's (e.g.
+# methode-dissertation-appliquee-mecaniquement echoes la-liberte's id of the
+# same name and analyse-de-texte's problematique-est-reformulation, since all
+# three lessons teach the same dissertation/problématique method).
+misconceptions:
+  - id: mc.philo.la_verite.accord-nombre-fait-verite
+    label: "« Le nombre de témoins, leur assurance, ou la richesse d'un récit suffit à établir un fait »"
+    description: >-
+      L'élève traite le nombre de témoins qui s'accordent, la force de leur
+      conviction, ou la richesse en détails d'un récit, comme une preuve
+      suffisante de sa vérité — sans se demander si ces témoins pourraient
+      s'être trompés ensemble, ou si un récit détaillé peut être détaillé et
+      faux à la fois.
+    contradicts_principle: >-
+      Le nombre de témoins sûrs d'eux, la force de leur assurance, ou le
+      luxe de détails d'un récit, ne garantit rien : des groupes entiers de
+      témoins parfaitement sincères se sont déjà trompés ensemble, en
+      reconstruisant sans le vouloir un souvenir commun.
+
+  - id: mc.philo.la_verite.relativisme-chacun-sa-verite
+    label: "« Chacun sa vérité » (le relativisme confondu avec la prudence)"
+    description: >-
+      L'élève dissout une contradiction réelle entre deux énoncés
+      mutuellement exclusifs en affirmant que chacun serait vrai « à sa
+      manière », refusant ainsi de poser le problème plutôt que de le
+      résoudre.
+    contradicts_principle: >-
+      Deux énoncés mutuellement exclusifs sur un même fait ne peuvent pas
+      être vrais tous les deux à la fois. Dire « chacun sa vérité » ne
+      résout pas la contradiction : cela refuse de la poser.
+
+  - id: mc.philo.la_verite.difficulte-justifie-renoncer-a-chercher
+    label: "« C'est trop difficile à établir (ou l'exemple est trivial), donc il n'y a rien à chercher »"
+    description: >-
+      L'élève conclut de la difficulté pratique à établir un fait, ou du
+      caractère apparemment anecdotique d'un exemple, qu'aucune vérité
+      n'existe sur la question, ou qu'il vaudrait mieux renoncer à la
+      chercher — au lieu d'y voir une difficulté à surmonter.
+    contradicts_principle: >-
+      La difficulté à établir avec certitude ce qui s'est passé n'annule
+      jamais l'existence du fait, ni l'exigence de continuer à le chercher —
+      et un exemple simple en apparence peut porter un problème
+      philosophique réel, construit pièce par pièce tout au long de la
+      leçon.
+
+  - id: mc.philo.la_verite.reel-confondu-verite
+    label: "« Le réel et la vérité (ou l'opinion) sont la même chose »"
+    description: >-
+      L'élève traite le réel lui-même comme s'il pouvait être vrai ou faux,
+      ou confond ce qui est indépendamment de nous avec ce qu'un sujet (ou
+      la majorité) en pense.
+    contradicts_principle: >-
+      Le réel est, simplement — ni vrai ni faux. La vérité est une propriété
+      qu'on attribue à un énoncé à propos du réel, pas au réel lui-même, ni
+      à ce qu'une majorité en pense.
+
+  - id: mc.philo.la_verite.opinion-confondue-verite
+    label: "« Une opinion sincère et ferme est, par cela seul, vraie »"
+    description: >-
+      L'élève prend la sincérité ou la fermeté d'une conviction comme une
+      garantie suffisante de sa vérité, ou inversement refuse qu'une
+      « vraie » opinion puisse être fausse.
+    contradicts_principle: >-
+      Une opinion, aussi sincère et ferme soit-elle, ne suffit jamais, à
+      elle seule, à la rendre vraie : on peut croire sincèrement un énoncé
+      entièrement faux.
+
+  - id: mc.philo.la_verite.coherence-confondue-correspondance
+    label: "« Cohérence interne et correspondance au réel sont le même critère (ou l'un est sans valeur, ou garantit une certitude absolue) »"
+    description: >-
+      L'élève confond le critère de cohérence (l'accord interne d'un
+      système d'énoncés) avec celui de correspondance (l'adéquation au
+      réel) — en les traitant comme identiques ou automatiquement liés à la
+      réussite pratique, en rejetant l'un comme sans valeur, en lui prêtant
+      une certitude qu'aucun des deux ne garantit seul, ou en confondant
+      l'incohérence MUTUELLE de deux récits avec l'incohérence INTERNE de
+      chacun.
+    contradicts_principle: >-
+      Un système peut être parfaitement cohérent — comme le modèle de
+      Ptolémée, prédictif pendant plus de mille ans — et pourtant
+      rigoureusement faux. La cohérence interne ne garantit jamais, à elle
+      seule, la correspondance au réel ; et deux récits mutuellement
+      exclusifs peuvent chacun, pris séparément, être parfaitement
+      cohérents.
+
+  - id: mc.philo.la_verite.certitude-suffit-a-verite
+    label: "« Être certain (ou reconnu comme fiable) suffit à être dans le vrai »"
+    description: >-
+      L'élève prend le degré de conviction d'un sujet — ou un statut
+      d'autorité accordé sans justification à l'un plutôt qu'à l'autre —
+      comme un critère suffisant de la vérité d'un énoncé.
+    contradicts_principle: >-
+      La certitude est un état subjectif, variable d'une personne à
+      l'autre ; la vérité est une propriété de l'énoncé, indépendante du
+      degré de conviction de celui qui l'affirme. Être certain, même
+      sincèrement et totalement, ne garantit jamais d'être dans le vrai.
+
+  - id: mc.philo.la_verite.acces-direct-au-reel-sans-interpretation
+    label: "« Les faits (ou une preuve matérielle) parlent d'eux-mêmes, sans interprétation »"
+    description: >-
+      L'élève croit qu'on peut accéder à un réel brut, totalement extérieur
+      à toute pensée, sans jamais avoir besoin de l'interpréter — y compris
+      via une preuve en apparence objective comme une vidéo ou un
+      instrument.
+    contradicts_principle: >-
+      Même les faits les plus « objectifs » en apparence doivent être lus,
+      entendus, interprétés par un esprit faillible : on ne sort jamais
+      complètement de la pensée pour vérifier, de l'extérieur, l'adéquation
+      d'un énoncé au réel.
+
+  - id: mc.philo.la_verite.obstacle-epistemologique-mal-compris
+    label: "« Un obstacle épistémologique est un obstacle matériel, une théorie rivale, ou quelque chose à rejeter sans l'interroger »"
+    description: >-
+      L'élève confond l'obstacle épistémologique de Bachelard — une
+      résistance interne à l'esprit du chercheur, une évidence spontanée —
+      avec un obstacle purement matériel ou pratique, une théorie
+      scientifique rivale à réfuter, une incompatibilité entre deux
+      systèmes cohérents, ou pense qu'il faut l'écarter d'emblée plutôt que
+      le rompre et l'interroger activement.
+    contradicts_principle: >-
+      Un obstacle épistémologique est interne, logé dans l'esprit du
+      chercheur — une habitude de pensée, une évidence trop vite acceptée
+      (l'opinion, le sens commun) — pas un manque de moyens matériels, une
+      théorie concurrente, ni une simple incompatibilité logique entre
+      systèmes ; et il doit être interrogé et rompu, non écarté sans examen.
+
+  - id: mc.philo.la_verite.doute-methodique-mal-compris
+    label: "« Le doute cartésien vise à confirmer les sens, ou est un obstacle à la vérité qu'il faudrait abandonner »"
+    description: >-
+      L'élève décrit de façon erronée le mécanisme, la portée ou le rôle du
+      doute méthodique — croyant, par exemple, qu'il finit par confirmer la
+      fiabilité des sens et du monde extérieur, qu'il épargne les vérités
+      mathématiques, ou qu'il serait l'ennemi de la vérité plutôt que
+      l'outil qui y conduit.
+    contradicts_principle: >-
+      Le doute cartésien est une méthode, un moyen provisoire de faire le
+      tri, qui pousse le doute jusqu'aux vérités mathématiques elles-mêmes
+      (hypothèse du malin génie) — et c'est précisément cet outil, pas un
+      obstacle à écarter, qui conduit Descartes au cogito.
+
+  - id: mc.philo.la_verite.doute-methodique-confondu-scepticisme
+    label: "« Le doute cartésien conclut qu'on ne peut jamais rien savoir »"
+    description: >-
+      L'élève traite le doute méthodique de Descartes comme un scepticisme
+      généralisé qui aboutirait à l'impossibilité de toute connaissance
+      certaine — y compris parfois en étendant cette impossibilité à des
+      énoncés ordinaires hors du contexte cartésien.
+    contradicts_principle: >-
+      Le doute cartésien est un outil provisoire au service d'une certitude
+      à trouver, pas une conclusion négative définitive : Descartes trouve,
+      avec le cogito, une certitude qui résiste absolument à ce doute.
+
+  - id: mc.philo.la_verite.cogito-etendu-a-tort
+    label: "« Le cogito garantit la vérité de tout ce que je pense avec assurance »"
+    description: >-
+      L'élève étend à tort la certitude absolue du cogito à d'autres
+      contenus de pensée — n'importe quelle pensée tenue avec la même
+      assurance, les vérités mathématiques, ou le classe comme une vérité
+      scientifique parmi d'autres, soumise à la falsifiabilité.
+    contradicts_principle: >-
+      Le cogito garantit seulement qu'il existe un sujet pensant — pas que
+      le contenu particulier de telle ou telle de mes pensées, aussi
+      assurée soit-elle, soit vrai ; et ce n'est pas une théorie empirique
+      falsifiable comme les lois scientifiques dont parle Popper.
+
+  - id: mc.philo.la_verite.critere-restreint-a-un-domaine-a-tort
+    label: "« Ce critère (ou cette notion) ne s'applique qu'à un seul domaine, jamais aux autres »"
+    description: >-
+      L'élève restreint arbitrairement la portée d'un critère ou d'une
+      notion — par exemple la correspondance aux seuls énoncés
+      mathématiques, ou le fallibilisme aux seules sciences — sans
+      justification dans le texte ou la leçon.
+    contradicts_principle: >-
+      Rien dans la leçon ne restreint ainsi la portée de ces notions : la
+      correspondance s'applique aussi bien à un fait ordinaire (R2) qu'à un
+      énoncé scientifique, et le fallibilisme comme le relativisme
+      concernent, chacun à leur façon, aussi bien les sciences que les
+      affaires courantes.
+
+  - id: mc.philo.la_verite.non-refutee-jugee-douteuse
+    label: "« Non-encore-réfutée » veut dire « à moitié fausse » ou « jamais testée »"
+    description: >-
+      L'élève confond le statut d'une théorie corroborée mais toujours
+      révisable (« non-encore-réfutée ») avec une théorie douteuse, à
+      moitié fausse, ou au contraire jamais mise à l'épreuve.
+    contradicts_principle: >-
+      Une théorie corroborée a résisté aux tests les plus sévères qu'on ait
+      pu lui faire subir — une solidité réelle, qui n'équivaut jamais à une
+      preuve absolue et définitive, mais qui n'est pas non plus une marque
+      de doute ou d'absence de test.
+
+  - id: mc.philo.la_verite.confirmation-prouve-la-verite
+    label: "« Un grand nombre de confirmations (ou l'irréfutabilité d'une théorie) prouve qu'elle est vraie »"
+    description: >-
+      L'élève croit qu'accumuler des observations confirmantes, ou qu'une
+      théorie compatible avec absolument tout résultat possible, prouve ou
+      renforce la vérité d'une loi générale — alors que Popper y voit au
+      contraire un signe de faiblesse scientifique.
+    contradicts_principle: >-
+      Aucun nombre, même immense, d'observations confirmantes ne peut
+      prouver définitivement une loi générale vraie : il suffirait d'un
+      seul contre-exemple pour la réfuter d'un coup. Une théorie compatible
+      avec tout résultat possible ne prend, à l'inverse, aucun risque
+      testable — ce n'est pas une force, mais un signe qu'elle n'est
+      peut-être pas authentiquement scientifique.
+
+  - id: mc.philo.la_verite.falsifiable-confondu-refutee
+    label: "« Falsifiable » veut dire « souvent réfutée »"
+    description: >-
+      L'élève confond le fait qu'une théorie soit falsifiable EN PRINCIPE
+      (une observation pourrait, hypothétiquement, la mettre en défaut)
+      avec le fait qu'elle soit EFFECTIVEMENT et fréquemment réfutée.
+    contradicts_principle: >-
+      Une théorie falsifiable et solidement corroborée peut résister, avec
+      succès, à de nombreux tests sérieux, sans jamais avoir été réfutée —
+      falsifiable en principe n'implique pas réfutée en fait.
+
+  - id: mc.philo.la_verite.mensonge-confondu-erreur
+    label: "« Mentir et se tromper sincèrement, c'est la même chose (ou une affaire de contenu, pas d'intention) »"
+    description: >-
+      L'élève fait porter la différence entre mensonge et erreur sincère
+      sur le contenu de l'énoncé (vrai ou faux) ou sur le degré de
+      certitude, plutôt que sur l'intention de tromper autrui — ou nie
+      purement et simplement qu'une telle différence existe.
+    contradicts_principle: >-
+      La différence entre mentir et se tromper ne tient jamais au contenu
+      de l'énoncé, ni au degré d'assurance : mentir, c'est affirmer, en le
+      sachant, un énoncé qu'on tient soi-même pour faux, avec l'intention
+      de tromper — une erreur sincère n'a, par définition, aucune intention
+      de ce genre.
+
+  - id: mc.philo.la_verite.propagande-mal-caracterisee
+    label: "« La propagande s'appuie sur des théories falsifiables ou des faits vérifiés par correspondance »"
+    description: >-
+      L'élève décrit la propagande comme une démarche rigoureuse, exposée à
+      la réfutation ou fondée sur une correspondance stricte aux faits,
+      plutôt que comme une entreprise qui substitue cohérence rassurante et
+      certitude fabriquée à une réelle correspondance, en se protégeant
+      systématiquement de toute réfutation.
+    contradicts_principle: >-
+      La propagande substitue un récit cohérent et rassurant à une réelle
+      correspondance avec les faits, fabrique de la certitude et un
+      consensus apparent comme un succédané de vérité, et se protège, par
+      construction, de toute réfutation possible — l'exact inverse de
+      l'idéal popperien.
+
+  - id: mc.philo.la_verite.fallibilisme-confondu-relativisme
+    label: "« Fallibilisme et relativisme, c'est la même chose »"
+    description: >-
+      L'élève déduit à tort du fallibilisme (aucune connaissance n'est
+      jamais absolument certaine) que toutes les opinions se valent
+      également (le relativisme) — ou inverse l'attribution des deux
+      positions entre leurs défenseurs respectifs.
+    contradicts_principle: >-
+      Accepter qu'une certitude parfaite soit hors de portée dans presque
+      tous les cas n'implique pas que deux versions contradictoires se
+      valent également : l'une peut correspondre aux faits, l'autre non,
+      même si l'établir avec une certitude absolue reste difficile.
+
+  - id: mc.philo.la_verite.methode-dissertation-appliquee-mecaniquement
+    label: "« Les gestes de la méthode (problématiser, mobiliser un auteur, construire un dépassement) sont interchangeables ou mécaniques »"
+    description: >-
+      L'élève traite la problématisation comme une simple annonce de plan
+      ou une généralité vague sans tension réelle, croit qu'un dépassement
+      se réduit à répéter la thèse ou à choisir simplement l'antithèse, ou
+      pense qu'un sujet nouveau se résout en recyclant tel quel un
+      paragraphe déjà rédigé pour un cas différent.
+    contradicts_principle: >-
+      Une problématique met en évidence une tension réelle entre deux
+      positions légitimes en apparence ; un dépassement construit une
+      position nouvelle qui tient compte de la thèse et de l'antithèse,
+      sans se réduire à répéter l'une ou choisir simplement l'autre ; et
+      transférer la méthode à un sujet nouveau exige de mobiliser les
+      rungs pertinents pour CE sujet, pas de recycler mécaniquement un
+      paragraphe déjà écrit pour un autre.
+
+items:
+  - id: VERITE-1
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: philo_la_verite
+    tags: [correspondance, aristote, adequation]
+    stem: >
+      Selon la théorie de la correspondance défendue par Aristote, qu'est-ce
+      qui fait qu'un énoncé comme « il pleut » est vrai ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'énoncé s'intègre sans contradiction à l'ensemble des autres énoncés que je tiens déjà pour vrais, en parfait accord interne avec eux."
+        correct: false
+        misconception: mc.philo.la_verite.coherence-confondue-correspondance
+        feedback: >
+          C'est le critère de la théorie de la COHÉRENCE (chapitre 4), pas celui de
+          la correspondance : Aristote exige une adéquation avec le réel
+          lui-même, pas seulement un accord interne entre énoncés.
+      - id: B
+        text: "Il y a adéquation entre l'énoncé et la réalité : il est vrai si, et seulement si, il pleut effectivement."
+        correct: true
+      - id: C
+        text: "La personne qui prononce cet énoncé en est absolument certaine, sans le moindre doute."
+        correct: false
+        misconception: mc.philo.la_verite.certitude-suffit-a-verite
+        feedback: >
+          C'est confondre certitude et vérité (chapitre 7) : une conviction, aussi
+          totale soit-elle, ne garantit jamais, à elle seule, que l'énoncé
+          auquel elle s'attache est vrai.
+      - id: D
+        text: "Un grand nombre de personnes s'accordent à dire que c'est le cas."
+        correct: false
+        misconception: mc.philo.la_verite.accord-nombre-fait-verite
+        feedback: >
+          L'accord du plus grand nombre n'est ni la correspondance avec le
+          réel, ni même la cohérence logique d'un système -- un consensus,
+          même large, peut parfaitement se tromper collectivement.
+    correct_feedback: >
+      Pour Aristote, un énoncé est vrai s'il y a adéquation entre ce qu'il
+      affirme et ce qui est réellement le cas -- une correspondance qui ne
+      dépend ni de la conviction de celui qui parle, ni de l'accord du plus
+      grand nombre.
+    solution: |
+      **Le critère :** l'adéquation -- un accord exact entre ce que l'énoncé
+      affirme et ce qui est réellement le cas.
+
+      **Pourquoi il semble si naturel :** le discours doit se plier au réel,
+      et non l'inverse -- c'est le réel qui rend l'énoncé vrai ou faux.
+
+      **Sa limite (chapitre 3) :** vérifier cette adéquation exige toujours de
+      comparer l'énoncé à une autre pensée, une autre perception -- on ne
+      sort jamais complètement de la pensée pour la vérifier de l'extérieur.
+
+  - id: VERITE-2
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [coherence, correspondance, ptolemee]
+    stem: >
+      Le modèle géocentrique de Ptolémée -- la Terre immobile au centre de
+      l'univers, avec des épicycles ajustés pour rendre compte des
+      trajectoires observées -- est resté en usage pendant plus de mille
+      ans, remarquablement cohérent et prédictif. Que montre cet exemple, à
+      propos de la théorie de la cohérence ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que la cohérence et la correspondance désignent, en réalité, exactement le même critère de vérité, appliqué à deux domaines différents et donc toujours interchangeables."
+        correct: false
+        misconception: mc.philo.la_verite.coherence-confondue-correspondance
+        feedback: >
+          Ce sont deux critères distincts, qui peuvent se dissocier -- c'est
+          précisément ce que montre l'exemple : un système cohérent
+          (Ptolémée) qui ne correspond pourtant pas au réel.
+      - id: B
+        text: "Que Ptolémée avait raison, puisque son modèle a permis de faire des prédictions astronomiques exactes pendant des siècles."
+        correct: false
+        misconception: mc.philo.la_verite.coherence-confondue-correspondance
+        feedback: >
+          Prédire correctement pendant longtemps n'établit pas qu'une
+          théorie est vraie -- la Terre n'est pas immobile au centre de
+          l'univers, malgré la cohérence et l'utilité prédictive, un temps,
+          du modèle de Ptolémée.
+      - id: C
+        text: "Que la cohérence interne d'un système est un critère inutile, sans aucune valeur pour juger de la vérité d'un énoncé."
+        correct: false
+        misconception: mc.philo.la_verite.coherence-confondue-correspondance
+        feedback: >
+          La leçon ne rejette pas la cohérence comme sans valeur -- elle en
+          montre seulement la limite : cohérent ne veut pas dire
+          automatiquement vrai, pas que la cohérence ne compte pour rien.
+      - id: D
+        text: "Qu'un système d'énoncés peut être parfaitement cohérent et pourtant faux : la cohérence interne ne garantit jamais, à elle seule, la correspondance au réel."
+        correct: true
+    correct_feedback: >
+      La cohérence est un critère accessible sans sortir de la pensée, mais
+      elle ne suffit pas : un système peut être parfaitement cohérent,
+      comme le modèle de Ptolémée, et pourtant rigoureusement faux.
+    solution: |
+      **Le critère de cohérence :** un énoncé est tenu pour vrai s'il
+      s'intègre sans contradiction à un système d'autres énoncés déjà
+      admis -- un critère purement interne, qui n'exige pas de sortir de la
+      pensée.
+
+      **Sa limite :** le modèle de Ptolémée était d'une remarquable
+      cohérence mathématique, prédictif pendant plus de mille ans -- et
+      pourtant faux. Un système peut être cohérent et pourtant ne pas
+      correspondre au réel.
+
+  - id: VERITE-3
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [bachelard, obstacle_epistemologique, rupture]
+    stem: >
+      Que désigne précisément un « obstacle épistémologique », au sens que
+      lui donne Bachelard ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Un manque de données ou d'instruments qui empêche, provisoirement, d'accéder à la vérité, et que la seule accumulation de nouvelles observations, dans le même sens, suffit à résorber, sans qu'aucune rupture dans la manière de penser ne soit requise."
+        correct: false
+        misconception: mc.philo.la_verite.obstacle-epistemologique-mal-compris
+        feedback: >
+          C'est confondre l'obstacle épistémologique (interne, une manière
+          de penser à rompre) avec un obstacle purement matériel ou
+          pratique -- celui-là se résout en accumulant plus de données dans
+          le même sens, ce que Bachelard juge précisément insuffisant.
+      - id: B
+        text: "La théorie scientifique concurrente qu'il faut réfuter par l'expérience avant d'établir la sienne."
+        correct: false
+        misconception: mc.philo.la_verite.obstacle-epistemologique-mal-compris
+        feedback: >
+          Un obstacle épistémologique n'est pas une théorie rivale
+          extérieure -- c'est une résistance interne à l'esprit du
+          chercheur lui-même, une évidence trop vite acceptée.
+      - id: C
+        text: "Un obstacle interne à l'esprit du chercheur -- une habitude de pensée, une évidence spontanée (l'opinion, le sens commun) -- qu'il faut rompre pour connaître, non un simple manque de moyens matériels."
+        correct: true
+      - id: D
+        text: "La difficulté à faire cohabiter deux systèmes d'énoncés également cohérents mais incompatibles."
+        correct: false
+        misconception: mc.philo.la_verite.obstacle-epistemologique-mal-compris
+        feedback: >
+          C'est la limite de la théorie de la cohérence (chapitre 4), un problème
+          distinct -- pas ce que Bachelard nomme obstacle épistémologique,
+          qui désigne une résistance interne à la connaissance, pas une
+          simple incompatibilité entre deux systèmes cohérents.
+    correct_feedback: >
+      Un obstacle épistémologique est une résistance interne, logée dans
+      l'esprit -- une évidence spontanée comme l'opinion ou le sens commun
+      -- que la connaissance scientifique doit activement rompre, non un
+      simple manque de moyens matériels.
+    solution: |
+      **Le geste bachelardien :** la vérité scientifique n'est jamais une
+      lecture immédiate du réel -- elle se construit CONTRE des
+      représentations spontanées.
+
+      **L'obstacle épistémologique :** interne, pas externe -- une habitude
+      de pensée, une évidence trop vite acceptée (l'opinion, le sens
+      commun), qu'il faut rompre plutôt que confirmer par plus
+      d'observations.
+
+      **La rupture épistémologique :** on connaît toujours CONTRE une
+      connaissance antérieure, en surmontant ce qui, dans l'esprit
+      lui-même, fait obstacle à la connaissance.
+
+  - id: VERITE-4
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [descartes, doute_methodique, cogito]
+    stem: >
+      Au terme du doute méthodique le plus radical -- y compris l'hypothèse
+      d'un malin génie capable de tromper jusque dans les raisonnements les
+      plus simples --, qu'est-ce qui, selon Descartes, résiste absolument à
+      ce doute ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Douter est déjà un acte de pensée, ce qui prouve qu'il existe un sujet pensant qui l'accomplit : « je pense, donc je suis »."
+        correct: true
+      - id: B
+        text: "L'existence du monde extérieur et la fiabilité des sens, puisque le doute, une fois poussé à son terme, finit par les confirmer."
+        correct: false
+        misconception: mc.philo.la_verite.doute-methodique-mal-compris
+        feedback: >
+          C'est l'inverse : le doute cartésien met précisément en question
+          la fiabilité des sens et l'existence certaine du monde extérieur
+          -- établir cela avec certitude exige, chez Descartes, un tout
+          autre travail, non abordé dans cette leçon.
+      - id: C
+        text: "Rien ne résiste à ce doute : Descartes conclut qu'aucune certitude n'est jamais possible."
+        correct: false
+        misconception: mc.philo.la_verite.doute-methodique-confondu-scepticisme
+        feedback: >
+          C'est confondre le doute MÉTHODIQUE de Descartes, un outil
+          provisoire au service d'une certitude à trouver, avec un
+          scepticisme qui conclurait qu'on ne peut jamais rien savoir --
+          Descartes trouve au contraire, avec le cogito, une certitude
+          indubitable.
+      - id: D
+        text: "La vérité des raisonnements mathématiques les plus simples, comme « deux et trois font cinq », qui échappe à toute remise en question."
+        correct: false
+        misconception: mc.philo.la_verite.cogito-etendu-a-tort
+        feedback: >
+          C'est précisément ce que l'hypothèse du malin génie soumet, elle
+          aussi, au doute -- le cogito ne porte pas sur le contenu de telle
+          ou telle pensée (même mathématique), mais sur le simple fait
+          qu'il y ait une pensée.
+    correct_feedback: >
+      Même si tout le reste est douteux, l'acte même de douter prouve
+      qu'il existe une pensée, donc un sujet pensant qui existe : « je
+      pense, donc je suis » -- la première certitude absolument
+      indubitable.
+    solution: |
+      **L'escalade du doute :** les sens (déjà trompeurs), puis la
+      distinction veille/rêve, puis les vérités mathématiques elles-mêmes
+      (hypothèse du malin génie).
+
+      **Ce qui résiste :** douter est un acte de pensée -- donc il existe un
+      sujet pensant. « Je pense, donc je suis » (Discours de la méthode,
+      1637).
+
+      **La limite à ne pas dépasser :** le cogito garantit seulement
+      l'existence du sujet pensant, pas la vérité du contenu de telle ou
+      telle pensée particulière.
+
+  - id: VERITE-5
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [certitude, verite, temoignage]
+    stem: >
+      Deux témoins, également sincères et sûrs d'eux, donnent des versions
+      opposées et incompatibles d'un même événement. Que peut-on en
+      conclure, à la lumière de la distinction entre certitude et vérité ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que les deux témoignages sont également vrais, chacun selon la vérité propre à celui qui l'énonce."
+        correct: false
+        misconception: mc.philo.la_verite.relativisme-chacun-sa-verite
+        feedback: >
+          Les deux énoncés sont mutuellement exclusifs sur un fait précis
+          -- ils ne peuvent pas être vrais tous les deux à la fois ; dire
+          « chacun sa vérité » ici confond la sincérité de la conviction
+          avec la vérité de l'énoncé.
+      - id: B
+        text: "Que le témoin le plus certain de lui a nécessairement raison, puisque le doute serait, lui, le signe d'un souvenir moins fiable, la force de la conviction mesurant alors, à elle seule, la vérité du témoignage."
+        correct: false
+        misconception: mc.philo.la_verite.certitude-suffit-a-verite
+        feedback: >
+          C'est exactement l'erreur que ce chapitre dénonce : le DEGRÉ de
+          certitude d'un témoin ne garantit rien quant à la vérité de son
+          témoignage -- des témoins sincères et sûrs d'eux se sont déjà
+          trompés, y compris ensemble.
+      - id: C
+        text: "Qu'aucun des deux témoignages ne peut être vrai, puisque la présence d'un désaccord prouve qu'aucune vérité n'existe sur cette question."
+        correct: false
+        misconception: mc.philo.la_verite.difficulte-justifie-renoncer-a-chercher
+        feedback: >
+          Le désaccord entre deux opinions ne prouve pas l'absence de
+          vérité -- il prouve seulement qu'au moins l'un des deux témoins
+          se trompe ; le fait lui-même (ce qui s'est réellement passé)
+          reste déterminé, même si on peine à l'établir avec certitude.
+      - id: D
+        text: "Qu'être certain, même sincèrement et totalement, ne garantit jamais d'être dans le vrai : la certitude est un état subjectif du sujet, la vérité une propriété de l'énoncé, et les deux peuvent se dissocier."
+        correct: true
+    correct_feedback: >
+      La certitude est un état subjectif ; la vérité, une propriété de
+      l'énoncé. Les deux peuvent parfaitement se dissocier -- être certain
+      ne garantit jamais d'être dans le vrai.
+    solution: |
+      **Deux plans distincts :** la certitude (psychologique, subjective,
+      variable) et la vérité (propriété de l'énoncé, indépendante de la
+      conviction de celui qui l'affirme).
+
+      **L'erreur la plus fréquente :** juger « qui a raison » au seul degré
+      d'assurance de chacun, plutôt qu'à ce qui correspond effectivement
+      aux faits.
+
+      **L'exception qui confirme la règle :** le cogito de Descartes (chapitre 6)
+      est remarquable précisément parce qu'il fait coïncider certitude et
+      vérité -- un cas unique, pas la norme.
+
+  - id: VERITE-6
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: philo_la_verite
+    tags: [popper, falsifiabilite, science]
+    stem: >
+      Selon le critère de falsifiabilité de Popper, pourquoi une théorie
+      compatible avec absolument n'importe quelle observation possible, et
+      qu'on peut toujours ajuster après coup pour absorber toute objection,
+      n'est-elle pas une théorie scientifique digne de ce nom ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce qu'une théorie scientifique doit être prouvée définitivement vraie par un nombre suffisant d'observations qui la confirment, l'accumulation des confirmations finissant par établir sa vérité de manière certaine, définitive et hors de tout doute."
+        correct: false
+        misconception: mc.philo.la_verite.confirmation-prouve-la-verite
+        feedback: >
+          C'est l'inverse de la logique de Popper : aucun nombre
+          d'observations confirmantes ne prouve jamais une loi générale
+          définitivement vraie -- c'est justement pour cela qu'il faut un
+          autre critère, la falsifiabilité, plutôt que l'accumulation de
+          confirmations.
+      - id: B
+        text: "Parce qu'une théorie scientifique doit interdire certains résultats observables, pour qu'une observation puisse en principe la réfuter : celle qu'aucune observation ne pourrait mettre en défaut ne prend aucun risque testable."
+        correct: true
+      - id: C
+        text: "Parce qu'une théorie scientifique doit être fréquemment réfutée par l'expérience pour progresser."
+        correct: false
+        misconception: mc.philo.la_verite.falsifiable-confondu-refutee
+        feedback: >
+          C'est confondre « falsifiable » (qui pourrait en principe être
+          réfutée par une observation) avec « fréquemment réfutée » -- une
+          théorie falsifiable et solidement corroborée peut résister, avec
+          succès, à de nombreux tests sérieux, sans jamais avoir été
+          réfutée.
+      - id: D
+        text: "Parce qu'une théorie qui explique n'importe quel résultat observable est, au contraire, plus puissante et donc plus scientifique qu'une théorie plus limitée, qui s'interdit d'avance certaines observations."
+        correct: false
+        misconception: mc.philo.la_verite.confirmation-prouve-la-verite
+        feedback: >
+          C'est exactement l'erreur que Popper dénonce : une théorie
+          capable d'absorber n'importe quelle observation sans jamais être
+          mise en défaut ne prend aucun risque testable -- ce n'est pas une
+          force, mais un signe qu'elle n'est peut-être pas authentiquement
+          scientifique.
+    correct_feedback: >
+      Une théorie scientifique doit être falsifiable : elle doit interdire
+      certains résultats observables, de sorte qu'une observation future
+      puisse, en principe, la réfuter. Une théorie compatible avec tout
+      résultat possible ne prend aucun risque testable.
+    solution: |
+      **Le problème préalable :** aucune accumulation de confirmations ne
+      prouve définitivement une loi générale vraie -- il suffit d'un seul
+      contre-exemple pour la réfuter.
+
+      **Le critère de démarcation :** une théorie est scientifique si elle
+      est falsifiable -- si une observation pourrait, en principe, la
+      contredire.
+
+      **La conclusion :** une vérité scientifique n'est jamais « prouvée
+      vraie » définitivement -- seulement non-encore-réfutée, corroborée
+      par les tests les plus sérieux, toujours révisable.
+
+  - id: VERITE-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: philo_la_verite
+    tags: [temoignage, faits, verite]
+    stem: >
+      Dans la situation du chapitre 1 (la soirée de samedi), un élève répond : « Il
+      suffit de croire la version portée par le plus de témoins, ou par les
+      témoins qui semblent les plus sûrs d'eux. » Quelle erreur cette
+      réponse commet-elle ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle traite le nombre de témoins et la force de leur conviction comme une preuve, alors que compter les têtes ou mesurer l'assurance ne dit rien sur ce qui s'est réellement passé."
+        correct: true
+      - id: B
+        text: "Elle ne commet aucune erreur : un accord large entre témoins sincères, interrogés indépendamment les uns des autres, suffit largement à établir solidement un fait aussi ordinaire que celui-là."
+        correct: false
+        misconception: mc.philo.la_verite.accord-nombre-fait-verite
+        feedback: >
+          Un consensus, même large et sincère, peut se tromper
+          collectivement -- des groupes entiers de témoins se sont déjà
+          trompés ensemble.
+      - id: C
+        text: "Son erreur est de croire qu'on pourra un jour savoir ce qui s'est passé, alors qu'aucune certitude n'est jamais possible dans ce genre d'affaire."
+        correct: false
+        misconception: mc.philo.la_verite.difficulte-justifie-renoncer-a-chercher
+        feedback: >
+          C'est confondre la difficulté pratique à établir un fait avec
+          l'impossibilité qu'un fait existe -- ce n'est pas l'erreur commise
+          ici.
+      - id: D
+        text: "Son erreur est de confondre le réel et la vérité, une distinction subtile que la leçon n'a pas encore introduite formellement à ce stade précoce, et qu'on ne peut donc pas encore lui reprocher de ne pas maîtriser."
+        correct: false
+        misconception: mc.philo.la_verite.reel-confondu-verite
+        feedback: >
+          Ce n'est pas la distinction réel/vérité qui est en jeu ici, mais
+          le fait de prendre le nombre ou l'assurance des témoins pour une
+          preuve.
+    correct_feedback: >
+      Compter les témoins ou mesurer leur assurance ne remplace jamais un
+      critère de vérité : des groupes entiers de témoins sincères se sont
+      déjà trompés ensemble.
+    solution: |
+      Le nombre de témoins sûrs d'eux, ou la force de leur assurance, ne
+      garantit rien : des groupes de témoins parfaitement sincères se sont
+      déjà trompés ensemble, en reconstruisant un souvenir commun. Compter
+      les têtes ne dit encore rien sur ce qui s'est réellement passé.
+
+  - id: VERITE-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: philo_la_verite
+    tags: [relativisme, contradiction, temoignage]
+    stem: >
+      Toujours dans la situation du chapitre 1, un autre élève répond : « Sans
+      preuve extérieure, on ne peut jamais vraiment savoir : chacun a, au
+      fond, sa propre vérité. » Pourquoi cette réponse pose-t-elle
+      problème ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce qu'elle a raison de dire qu'aucune vérité n'existe ici, mais elle a tort de dire que chacun a la sienne : il n'y a tout simplement rien à trouver, et poursuivre l'enquête serait une pure perte de temps pour tout le monde."
+        correct: false
+        misconception: mc.philo.la_verite.difficulte-justifie-renoncer-a-chercher
+        feedback: >
+          La leçon ne conclut jamais qu'aucune vérité n'existe ici -- un
+          fait déterminé a bien eu lieu, même s'il est difficile à établir.
+      - id: B
+        text: "Parce que les deux versions sont mutuellement exclusives sur un même fait (Karim a parlé ou non) : dire « chacun sa vérité » ne résout jamais la contradiction, il refuse seulement de la poser."
+        correct: true
+      - id: C
+        text: "Parce qu'elle confond la théorie de la correspondance et la théorie de la cohérence, deux critères qu'il ne faut jamais confondre."
+        correct: false
+        misconception: mc.philo.la_verite.coherence-confondue-correspondance
+        feedback: >
+          Ces deux théories ne sont pas encore introduites à ce stade de la
+          leçon -- ce n'est pas l'erreur en jeu ici.
+      - id: D
+        text: "Parce qu'elle a en réalité raison : sans preuve matérielle comme une vidéo, aucun fait ne peut jamais être établi, et il vaut mieux ne pas chercher à trancher."
+        correct: false
+        misconception: mc.philo.la_verite.difficulte-justifie-renoncer-a-chercher
+        feedback: >
+          Renoncer à chercher n'est jamais la conclusion de la leçon -- la
+          difficulté à établir un fait n'annule pas l'exigence de le
+          chercher.
+    correct_feedback: >
+      Les deux versions ne peuvent pas être vraies en même temps : dire
+      « chacun sa vérité » ne résout pas la contradiction, il refuse de la
+      poser.
+    solution: |
+      Soit Karim a dit cette phrase, soit il ne l'a pas dite -- aucun fait
+      ne rend les deux affirmations vraies à la fois. « Chacun sa vérité »
+      confond ici l'opinion (ce qu'on croit) avec la vérité (ce qui est
+      effectivement le cas), et refuse de poser le problème.
+
+  - id: VERITE-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: philo_la_verite
+    tags: [problematique, methode, verite]
+    stem: >
+      Au-delà de la simple question « qui dit vrai », que cherche à
+      mettre en évidence l'exemple de la soirée de samedi (chapitre 1) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que la vérité est, en réalité, toujours relative à chaque témoin, et qu'aucun critère commun ne pourra jamais être trouvé."
+        correct: false
+        misconception: mc.philo.la_verite.relativisme-chacun-sa-verite
+        feedback: >
+          C'est précisément la conclusion relativiste que le chapitre 1 met en
+          difficulté, pas ce que l'exemple établit.
+      - id: B
+        text: "Que seule une preuve matérielle indiscutable, comme une vidéo, pourrait un jour clore définitivement ce genre de dispute, sans laisser aucune place à l'interprétation."
+        correct: false
+        misconception: mc.philo.la_verite.acces-direct-au-reel-sans-interpretation
+        feedback: >
+          Le chapitre 3 montrera au contraire que même une preuve « objective » comme
+          une vidéo doit être interprétée par un esprit.
+      - id: C
+        text: "Que ni le nombre ou l'assurance des témoins, ni le simple refus de trancher, ne suffisent -- et qu'il faut se demander ce qui fait qu'un énoncé est vrai, et si une certitude vraiment fondée est possible."
+        correct: true
+      - id: D
+        text: "Que ce genre de dispute ordinaire entre camarades est en réalité totalement sans intérêt philosophique, puisqu'elle porte sur un simple fait trivial et anecdotique plutôt que sur une vérité scientifique digne d'être examinée sérieusement."
+        correct: false
+        misconception: mc.philo.la_verite.difficulte-justifie-renoncer-a-chercher
+        feedback: >
+          La leçon construit au contraire toute sa problématique à partir
+          de cet exemple, jusqu'à sa dernière page (chapitre 9).
+    correct_feedback: >
+      Ni compter les témoins ni refuser de trancher ne suffit : il faut un
+      critère de ce qui fait qu'un énoncé est vrai, et se demander si une
+      certitude fondée est possible.
+    solution: |
+      Les deux réponses spontanées échouent : compter les témoins ne
+      prouve rien, et « chacun sa vérité » refuse le problème plutôt que de
+      le résoudre. La leçon pose donc deux questions : qu'est-ce qui fait
+      qu'un énoncé est vrai, et peut-on atteindre une certitude fondée ?
+
+  - id: VERITE-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: philo_la_verite
+    tags: [reel, opinion, verite]
+    stem: >
+      Quelle affirmation distingue correctement le réel, l'opinion et la
+      vérité, tels que le chapitre 2 les définit ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le réel et la vérité désignent la même chose : dire qu'un fait est vrai revient à dire qu'il est réel, sans différence entre les deux."
+        correct: false
+        misconception: mc.philo.la_verite.reel-confondu-verite
+        feedback: >
+          Le réel n'est ni vrai ni faux en lui-même (une pierre n'est ni
+          vraie ni fausse) -- la vérité qualifie un énoncé à propos du
+          réel, pas le réel lui-même.
+      - id: B
+        text: "L'opinion et la vérité désignent la même chose dès lors que le sujet qui l'énonce est parfaitement sincère et convaincu."
+        correct: false
+        misconception: mc.philo.la_verite.opinion-confondue-verite
+        feedback: >
+          Une opinion sincère et ferme peut pourtant être fausse -- la
+          sincérité ne suffit jamais, à elle seule, à rendre un énoncé
+          vrai.
+      - id: C
+        text: "Le réel désigne ce que la majorité des sujets pense être vrai à un moment donné de l'histoire, tandis que l'opinion désigne, à l'inverse, ce qu'un savant reconnu établit après une longue et rigoureuse vérification expérimentale."
+        correct: false
+        misconception: mc.philo.la_verite.reel-confondu-verite
+        feedback: >
+          Ces définitions sont inversées : le réel est indépendant de ce
+          qu'on en pense, et l'opinion désigne la croyance d'un sujet,
+          savant ou non.
+      - id: D
+        text: "Le réel est ce qui est indépendamment de nous ; l'opinion est ce qu'un sujet tient pour vrai ; la vérité est une propriété qu'on attribue à un énoncé, pas au réel ni à la conviction du sujet."
+        correct: true
+    correct_feedback: >
+      Trois choses distinctes : le réel (ce qui est), l'opinion (ce qu'un
+      sujet croit), et la vérité (une propriété de l'énoncé, indépendante
+      des deux premières).
+    solution: |
+      Le réel désigne ce qui est, indépendamment de ce qu'on en pense.
+      L'opinion désigne ce qu'un sujet tient pour vrai, à un degré de
+      conviction qui lui est propre. La vérité, elle, est une propriété
+      qu'on attribue à un énoncé -- pas au réel, ni à la conviction du
+      sujet.
+
+  - id: VERITE-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: philo_la_verite
+    tags: [reel, verite, jugement]
+    stem: >
+      Pourquoi peut-on dire, selon le chapitre 2, qu'« une pierre n'est ni vraie ni
+      fausse » ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que la vérité est une propriété qu'on attribue à un énoncé ou à un jugement à propos du réel, jamais au réel lui-même, qui est, simplement."
+        correct: true
+      - id: B
+        text: "Parce qu'une pierre, contrairement à un être vivant capable de conscience et de langage, n'a pas d'opinion sur elle-même, et ne peut donc, par construction, jamais se tromper sur sa propre nature."
+        correct: false
+        misconception: mc.philo.la_verite.reel-confondu-verite
+        feedback: >
+          La question n'est pas de savoir si la pierre a une opinion, mais
+          que la vérité ne qualifie jamais le réel lui-même, seulement un
+          énoncé à son sujet.
+      - id: C
+        text: "Parce que la vérité d'un énoncé sur une pierre dépend uniquement de la certitude de celui qui l'observe."
+        correct: false
+        misconception: mc.philo.la_verite.certitude-suffit-a-verite
+        feedback: >
+          C'est confondre certitude et vérité (chapitre 7) -- la conviction de
+          l'observateur ne rend jamais, à elle seule, un énoncé vrai.
+      - id: D
+        text: "Parce qu'aucun énoncé sur le monde matériel ne peut jamais être vrai ou faux avec certitude."
+        correct: false
+        misconception: mc.philo.la_verite.doute-methodique-confondu-scepticisme
+        feedback: >
+          Le chapitre 2 ne dit jamais que les énoncés sur le monde matériel échappent
+          au vrai et au faux -- il distingue seulement le réel (ni vrai ni
+          faux) de l'énoncé à son sujet.
+    correct_feedback: >
+      Le réel est, simplement -- ni vrai ni faux. C'est l'énoncé à son
+      propos qui peut, lui, être vrai ou faux.
+    solution: |
+      La vérité est une propriété du jugement, pas de la chose. Une pierre
+      est ou n'est pas -- elle n'affirme rien. C'est l'énoncé « cette
+      pierre est grise », par exemple, qui peut être vrai ou faux, selon
+      qu'il correspond ou non à ce qui est.
+
+  - id: VERITE-12
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: philo_la_verite
+    tags: [opinion, sincerite, verite]
+    stem: >
+      Sarah affirme, sincèrement et avec une entière conviction, une
+      version des faits qui se révèle ensuite fausse. Que faut-il en
+      conclure, à ce stade de la leçon (chapitre 2) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que Sarah n'avait, en réalité, aucune opinion véritable sur ce qui s'est passé ce soir-là, puisqu'une vraie opinion, digne de ce nom, ne peut jamais se révéler fausse une fois les faits établis."
+        correct: false
+        misconception: mc.philo.la_verite.opinion-confondue-verite
+        feedback: >
+          Le chapitre 2 définit l'opinion comme ce qu'un sujet tient pour vrai -- et
+          une opinion, aussi sincère soit-elle, peut parfaitement être
+          fausse.
+      - id: B
+        text: "Que la sincérité et la fermeté d'une opinion ne suffisent jamais, à elles seules, à la rendre vraie : on peut croire sincèrement un énoncé faux."
+        correct: true
+      - id: C
+        text: "Que ce cas montre que l'opinion et le réel sont, au fond, la même chose : ce que Sarah croit fait partie du réel qu'elle a vécu."
+        correct: false
+        misconception: mc.philo.la_verite.reel-confondu-verite
+        feedback: >
+          L'opinion de Sarah est un fait psychologique réel, mais son
+          contenu (ce qu'elle croit s'être passé) reste distinct du fait
+          qu'elle rapporte.
+      - id: D
+        text: "Que la vérité, ici, dépend seulement de ce que Sarah pense en son for intérieur, puisque c'est elle qui a vécu la scène."
+        correct: false
+        misconception: mc.philo.la_verite.opinion-confondue-verite
+        feedback: >
+          Avoir vécu la scène ne garantit pas un souvenir fidèle -- la
+          vérité de l'énoncé dépend de ce qui s'est passé, pas de la
+          conviction de la narratrice.
+    correct_feedback: >
+      Une opinion sincère et ferme peut être fausse : la sincérité ne
+      suffit jamais, à elle seule, à garantir la vérité d'un énoncé.
+    solution: |
+      Sarah et Karim ont chacun une opinion ferme et sincère -- mais avoir
+      une opinion ferme ne suffit jamais à la rendre exacte. On peut
+      croire, de la manière la plus sincère qui soit, un énoncé
+      entièrement faux.
+
+  - id: VERITE-13
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: philo_la_verite
+    tags: [correspondance, limite, pensee]
+    stem: >
+      Quelle est la limite de la théorie de la correspondance, telle
+      qu'elle apparaît dès qu'on cherche à l'appliquer concrètement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Qu'elle est fausse : la vérité n'est jamais affaire d'adéquation au réel, mais seulement de cohérence interne d'un système d'énoncés."
+        correct: false
+        misconception: mc.philo.la_verite.coherence-confondue-correspondance
+        feedback: >
+          La limite montrée n'invalide pas la correspondance comme critère
+          -- elle montre seulement la difficulté pratique à vérifier
+          l'adéquation avec une certitude absolue.
+      - id: B
+        text: "Qu'il suffit de disposer d'une preuve matérielle suffisamment nette, comme une vidéo haute définition tournée sous un bon éclairage, pour accéder directement au réel sans aucune interprétation possible, ce qui lève définitivement et pour toujours cette limite."
+        correct: false
+        misconception: mc.philo.la_verite.acces-direct-au-reel-sans-interpretation
+        feedback: >
+          Même une vidéo doit être regardée et interprétée par un esprit
+          faillible -- on n'accède jamais à un réel totalement extérieur à
+          toute pensée.
+      - id: C
+        text: "Pour vérifier qu'un énoncé correspond au réel, il faut le comparer à ce réel au moyen d'une autre pensée ou perception : on ne sort jamais complètement de la pensée pour constater, de l'extérieur, l'adéquation."
+        correct: true
+      - id: D
+        text: "Que cette théorie ne s'applique qu'aux énoncés mathématiques, jamais aux faits du monde ordinaire comme la soirée du chapitre 1."
+        correct: false
+        misconception: mc.philo.la_verite.critere-restreint-a-un-domaine-a-tort
+        feedback: >
+          Rien dans la leçon ne restreint ainsi la correspondance -- le chapitre 3
+          l'applique justement à un fait ordinaire, la soirée du chapitre 1.
+    correct_feedback: >
+      Comparer un énoncé au réel exige toujours une autre pensée, une
+      autre perception -- on ne sort jamais complètement de la pensée pour
+      vérifier, de l'extérieur, l'adéquation.
+    solution: |
+      Établir qu'un énoncé correspond au réel suppose de le comparer à ce
+      réel -- mais cette comparaison passe toujours par une pensée, une
+      perception, un témoignage, eux-mêmes faillibles. Même une vidéo doit
+      être interprétée : on ne sort jamais complètement de la pensée.
+
+  - id: VERITE-14
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: philo_la_verite
+    tags: [correspondance, interpretation, faits]
+    stem: >
+      Un élève résume la théorie de la correspondance ainsi : « Il suffit
+      de s'en remettre aux faits : ils parlent d'eux-mêmes. » Quelle
+      erreur cette formule commet-elle ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle a tort sur le fond : les faits ne rendent jamais un énoncé vrai ou faux, seule la cohérence interne d'un système le peut."
+        correct: false
+        misconception: mc.philo.la_verite.coherence-confondue-correspondance
+        feedback: >
+          C'est remplacer la correspondance par la cohérence (chapitre 4) -- deux
+          critères distincts, que la formule ne confond pourtant pas de
+          cette façon.
+      - id: B
+        text: "Elle a tort de parler de « faits » : selon Aristote, seule la certitude du sujet qui affirme un énoncé peut le rendre vrai."
+        correct: false
+        misconception: mc.philo.la_verite.certitude-suffit-a-verite
+        feedback: >
+          C'est confondre certitude et vérité -- Aristote fait au contraire
+          dépendre la vérité du réel, non de la conviction du sujet.
+      - id: C
+        text: "Elle est en réalité exacte : les faits, une fois établis par un instrument suffisamment fiable et régulièrement étalonné, ne nécessitent plus aucune interprétation humaine pour être compris et transmis correctement à autrui."
+        correct: false
+        misconception: mc.philo.la_verite.acces-direct-au-reel-sans-interpretation
+        feedback: >
+          C'est exactement l'erreur : même un instrument fiable produit des
+          données qu'il faut encore interpréter -- un son confus, une image
+          floue.
+      - id: D
+        text: "Elle oublie que même les faits les plus « objectifs » en apparence (une vidéo, un témoignage) doivent être interprétés par un esprit -- on n'accède jamais à un réel brut totalement extérieur à toute pensée."
+        correct: true
+    correct_feedback: >
+      Aucun fait ne « parle de lui-même » : même le plus objectif en
+      apparence doit être lu, entendu, interprété par un esprit faillible.
+    solution: |
+      Les faits les plus « objectifs » en apparence -- une vidéo, un
+      enregistrement -- doivent encore être regardés, entendus,
+      interprétés. Cette interprétation est elle-même une pensée
+      faillible : on ne sort jamais complètement de la pensée.
+
+  - id: VERITE-15
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [coherence, theoreme, pensee]
+    stem: >
+      Pourquoi le critère de cohérence peut-il sembler plus praticable,
+      dans certains cas, que celui de correspondance ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce qu'il est vérifiable depuis l'intérieur de la pensée : il suffit d'examiner le système d'énoncés lui-même, sans sortir vers un réel brut inaccessible en dernier ressort -- comme pour un théorème mathématique."
+        correct: true
+      - id: B
+        text: "Parce qu'il permet de trancher instantanément entre deux récits contradictoires, dès lors que l'un des deux est plus détaillé que l'autre."
+        correct: false
+        misconception: mc.philo.la_verite.accord-nombre-fait-verite
+        feedback: >
+          La cohérence ne départage jamais deux récits mutuellement
+          exclusifs mais chacun cohérent pris séparément -- le détail d'un
+          récit n'y change rien.
+      - id: C
+        text: "Parce qu'il revient exactement au même critère que la correspondance, appliqué simplement à des énoncés abstraits plutôt qu'à des faits concrets."
+        correct: false
+        misconception: mc.philo.la_verite.coherence-confondue-correspondance
+        feedback: >
+          Ce sont deux critères distincts : la cohérence juge un accord
+          interne entre énoncés, la correspondance exige une adéquation
+          avec un réel extérieur au discours.
+      - id: D
+        text: "Parce qu'il garantit, à la différence de la correspondance, une certitude absolue et définitive, tout à fait comparable à celle que Descartes obtient avec le cogito au terme de son doute méthodique le plus radical."
+        correct: false
+        misconception: mc.philo.la_verite.coherence-confondue-correspondance
+        feedback: >
+          La cohérence n'offre aucune certitude absolue -- l'exemple de
+          Ptolémée (parfaitement cohérent et pourtant faux) le montre
+          justement.
+    correct_feedback: >
+      La cohérence s'examine sans sortir de la pensée : il suffit de
+      vérifier qu'un énoncé s'intègre sans contradiction au système déjà
+      admis, comme pour un théorème.
+    solution: |
+      Le critère de cohérence est entièrement accessible depuis
+      l'intérieur de la pensée -- pour l'appliquer, il suffit d'examiner le
+      système lui-même, sans jamais avoir besoin de sortir vers un réel
+      brut inaccessible en dernier ressort.
+
+  - id: VERITE-16
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [coherence, temoignage, limite]
+    stem: >
+      Dans la dispute du chapitre 1, la version de Karim (confirmée en détail par
+      deux amis) et celle de Sarah sont, prises séparément, toutes deux
+      parfaitement cohérentes. Que montre ce fait, une fois appliqué le
+      critère de cohérence ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que les deux versions sont, de ce fait, également vraies, puisque chacune satisfait au critère de cohérence."
+        correct: false
+        misconception: mc.philo.la_verite.relativisme-chacun-sa-verite
+        feedback: >
+          Les deux récits sont mutuellement exclusifs sur un même fait --
+          ils ne peuvent pas être vrais tous les deux, même si chacun,
+          pris séparément, est cohérent.
+      - id: B
+        text: "Que la cohérence interne ne suffit jamais, à elle seule, à départager deux récits mutuellement exclusifs mais chacun cohérent pris séparément."
+        correct: true
+      - id: C
+        text: "Que la version de Karim est nécessairement la vraie, puisqu'elle est confirmée par deux témoins supplémentaires, ce qui la rend plus cohérente que celle de Sarah."
+        correct: false
+        misconception: mc.philo.la_verite.accord-nombre-fait-verite
+        feedback: >
+          Le nombre de témoins qui confirment un récit n'est pas ce que
+          mesure la cohérence -- et le chapitre 1 a déjà montré que compter les têtes
+          ne prouve rien.
+      - id: D
+        text: "Que ni l'une ni l'autre version n'est cohérente, puisqu'elles se contredisent mutuellement."
+        correct: false
+        misconception: mc.philo.la_verite.coherence-confondue-correspondance
+        feedback: >
+          Chaque récit, pris séparément, est cohérent en lui-même -- c'est
+          leur incompatibilité mutuelle qui pose problème, pas une
+          incohérence interne à l'un ou l'autre.
+    correct_feedback: >
+      Deux récits mutuellement exclusifs peuvent être, chacun pris
+      séparément, parfaitement cohérents -- la cohérence seule ne permet
+      donc pas de les départager.
+    solution: |
+      Prise séparément, chaque version forme un récit cohérent, sans
+      contradiction interne. Cela révèle la limite du critère : la
+      cohérence ne suffit jamais à départager deux récits mutuellement
+      exclusifs mais chacun, pris seul, parfaitement cohérent.
+
+  - id: VERITE-17
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [bachelard, rupture, construction]
+    stem: >
+      Que signifie, selon Bachelard, l'idée que la connaissance
+      scientifique se construit « contre » l'évidence première, et non
+      par simple accumulation d'observations ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que les observations scientifiques doivent être répétées le plus grand nombre de fois possible, par le plus grand nombre d'observateurs indépendants possible, avant de pouvoir être définitivement acceptées comme vraies, de la même manière que le critère de cohérence l'exigerait déjà."
+        correct: false
+        misconception: mc.philo.la_verite.confirmation-prouve-la-verite
+        feedback: >
+          C'est réduire Bachelard à une logique d'accumulation de
+          confirmations -- exactement ce qu'il refuse : connaître, c'est
+          rompre, pas seulement accumuler dans le même sens.
+      - id: B
+        text: "Que l'évidence des sens est toujours fausse, et qu'il faut donc rejeter systématiquement toute observation sensible en sciences."
+        correct: false
+        misconception: mc.philo.la_verite.obstacle-epistemologique-mal-compris
+        feedback: >
+          Bachelard n'affirme jamais que l'évidence sensible est toujours
+          fausse -- il invite à l'interroger comme un obstacle possible, pas
+          à la rejeter systématiquement.
+      - id: C
+        text: "Que connaître, ce n'est jamais accumuler passivement des observations qui vont dans le sens de ce qu'on croyait déjà, mais rompre activement avec une évidence spontanée tenue, à tort, pour un point de départ fiable."
+        correct: true
+      - id: D
+        text: "Que la rupture épistémologique consiste, pour tout chercheur sérieux, à réfuter méthodiquement la théorie scientifique rivale la mieux établie de son époque, afin de pouvoir légitimement la remplacer par la sienne propre."
+        correct: false
+        misconception: mc.philo.la_verite.obstacle-epistemologique-mal-compris
+        feedback: >
+          La rupture bachelardienne vise une résistance interne à l'esprit
+          du chercheur lui-même (une évidence spontanée), pas une théorie
+          rivale extérieure à réfuter.
+    correct_feedback: >
+      Connaître scientifiquement, c'est rompre activement avec ce qu'on
+      tenait pour évident -- pas accumuler passivement des observations qui
+      confirment ce qu'on croyait déjà.
+    solution: |
+      La vérité scientifique n'est jamais une lecture immédiate du réel :
+      elle se construit par un travail actif de la raison, contre des
+      représentations spontanées -- les obstacles épistémologiques. C'est
+      la rupture épistémologique.
+
+  - id: VERITE-18
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [bachelard, obstacle_epistemologique, memoire]
+    stem: >
+      Bachelard écrit : « L'opinion pense mal ; elle ne pense pas. »
+      Appliqué à la certitude immédiate de Sarah dans le chapitre 1 (« je m'en
+      souviens très clairement, donc c'est ainsi »), que suggère cette
+      formule ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que Sarah a tort parce qu'elle a une opinion, alors que Karim, sûr de son souvenir, exprime au contraire une connaissance déjà scientifiquement établie."
+        correct: false
+        misconception: mc.philo.la_verite.certitude-suffit-a-verite
+        feedback: >
+          Rien ne permet de ranger la certitude de Karim du côté de la
+          science plutôt que de celle de Sarah -- les deux sont, également,
+          des souvenirs vécus comme évidents.
+      - id: B
+        text: "Que la mémoire, étant un obstacle épistémologique, ne peut jamais servir de point de départ à une enquête, et qu'il faut donc l'écarter entièrement plutôt que l'interroger."
+        correct: false
+        misconception: mc.philo.la_verite.obstacle-epistemologique-mal-compris
+        feedback: >
+          Un obstacle épistémologique doit être interrogé et dépassé, pas
+          écarté d'emblée comme s'il n'avait aucune valeur de point de
+          départ.
+      - id: C
+        text: "Que seule une preuve rigoureusement scientifique, comme une expertise judiciaire menée par des spécialistes reconnus, pense véritablement correctement, tandis que le simple souvenir d'un témoin ordinaire ne pense jamais correctement, en toute circonstance et sans aucune exception possible."
+        correct: false
+        misconception: mc.philo.la_verite.obstacle-epistemologique-mal-compris
+        feedback: >
+          C'est une généralisation absolue que Bachelard ne formule pas --
+          il vise une évidence spontanée acceptée sans examen, pas le
+          témoignage en général et en toute circonstance.
+      - id: D
+        text: "Que cette évidence spontanée -- la mémoire vécue comme un simple enregistrement fidèle -- est précisément le genre d'obstacle qu'il faut interroger plutôt qu'accepter sans discussion, la mémoire reconstruisant plus qu'elle n'enregistre."
+        correct: true
+    correct_feedback: >
+      La certitude immédiate du souvenir est le genre d'évidence spontanée
+      que Bachelard invite à interroger : la mémoire reconstruit plus
+      qu'elle n'enregistre fidèlement.
+    solution: |
+      Bachelard se méfie de l'opinion et du sens commun -- l'évidence
+      immédiate des sens ou de la mémoire. Ta propre certitude « je m'en
+      souviens très clairement » est précisément ce genre d'évidence à
+      traiter comme un obstacle à interroger, pas comme un point de départ
+      fiable.
+
+  - id: VERITE-19
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [descartes, doute_methodique, scepticisme]
+    stem: >
+      En quoi le doute cartésien diffère-t-il d'un scepticisme qui
+      conclurait qu'on ne peut jamais rien savoir ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le doute cartésien est une méthode provisoire, un moyen de faire le tri pour découvrir un fondement certain, non une conclusion négative définitive -- et Descartes trouve effectivement, avec le cogito, une certitude indubitable."
+        correct: true
+      - id: B
+        text: "Il n'en diffère pas vraiment : Descartes, comme le sceptique, conclut finalement qu'aucune connaissance certaine n'est possible, y compris sur l'existence du sujet pensant."
+        correct: false
+        misconception: mc.philo.la_verite.doute-methodique-confondu-scepticisme
+        feedback: >
+          C'est l'inverse : Descartes trouve, avec le cogito, une
+          certitude qui résiste absolument -- son doute n'aboutit pas à une
+          impasse sceptique généralisée.
+      - id: C
+        text: "Il en diffère parce que Descartes ne doute jamais réellement des vérités mathématiques les plus simples, seulement des données incertaines fournies par les sens, contrairement au sceptique radical qui doute absolument de tout, sans aucune exception ni hiérarchie."
+        correct: false
+        misconception: mc.philo.la_verite.doute-methodique-mal-compris
+        feedback: >
+          L'hypothèse du malin génie étend justement le doute cartésien
+          jusqu'aux vérités mathématiques les plus simples -- il ne les
+          épargne pas.
+      - id: D
+        text: "Il en diffère parce que le doute cartésien s'arrête, par principe, dès qu'un grand nombre suffisant de témoins indépendants s'accordent sur un même fait, alors que le sceptique, lui, continue obstinément de douter même dans un tel cas de figure."
+        correct: false
+        misconception: mc.philo.la_verite.accord-nombre-fait-verite
+        feedback: >
+          Le nombre de témoins d'accord n'est jamais, chez Descartes, un
+          critère d'arrêt du doute -- seul ce qui résiste au doute le plus
+          radical compte.
+    correct_feedback: >
+      Le doute cartésien est un outil provisoire au service d'une
+      certitude à trouver, pas une conclusion négative définitive : c'est
+      justement ce que le cogito vient démontrer.
+    solution: |
+      Le doute de Descartes n'est pas un scepticisme qui s'arrêterait au
+      constat qu'on ne peut rien savoir -- c'est une méthode, un moyen
+      provisoire de faire le tri, pour découvrir un fondement qu'aucun
+      doute ne pourrait plus jamais ébranler : le cogito.
+
+  - id: VERITE-20
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [descartes, cogito, limite]
+    stem: >
+      Une fois le cogito établi, peut-on en déduire que tout ce que je
+      pense ou crois avec assurance est vrai ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui : puisque « je pense donc je suis » est indubitable, toute pensée que j'ai avec la même assurance l'est également."
+        correct: false
+        misconception: mc.philo.la_verite.cogito-etendu-a-tort
+        feedback: >
+          C'est précisément l'extension abusive que la leçon met en garde
+          contre : le cogito garantit seulement l'existence du sujet
+          pensant, pas le contenu de ses pensées particulières.
+      - id: B
+        text: "Non : le cogito garantit seulement qu'il existe un sujet pensant, pas que le contenu particulier de telle ou telle de mes pensées ou croyances soit vrai."
+        correct: true
+      - id: C
+        text: "Oui, mais seulement pour les pensées mathématiques les plus élémentaires, que Descartes rangerait, une fois le cogito établi comme fondement, dans la même catégorie de certitude absolue et définitive que le cogito lui-même."
+        correct: false
+        misconception: mc.philo.la_verite.cogito-etendu-a-tort
+        feedback: >
+          L'hypothèse du malin génie soumet justement les vérités
+          mathématiques au doute -- Descartes ne leur accorde pas la même
+          certitude absolue qu'au cogito.
+      - id: D
+        text: "Non, parce que le cogito lui-même reste, en réalité, une hypothèse seulement probable, jamais complètement indubitable."
+        correct: false
+        misconception: mc.philo.la_verite.doute-methodique-confondu-scepticisme
+        feedback: >
+          La leçon présente au contraire le cogito comme la première
+          certitude absolument certaine et indubitable, sans faille
+          possible.
+    correct_feedback: >
+      Le cogito garantit seulement l'existence d'un sujet pensant -- pas
+      la vérité du contenu de telle ou telle pensée particulière, même
+      tenue avec la même assurance.
+    solution: |
+      Ce que le cogito établit précisément, c'est une certitude sur le
+      simple fait qu'il y ait une pensée -- pas sur le contenu de cette
+      pensée, toujours faillible. Étendre cette certitude à tout ce que je
+      crois serait une généralisation abusive.
+
+  - id: VERITE-21
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [certitude, verite, confusion]
+    stem: >
+      Pourquoi la confusion entre certitude et vérité est-elle si
+      fréquente et si tentante, selon la leçon ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que la certitude et la vérité sont, en réalité, rigoureusement identiques dans absolument tous les cas, sans aucune exception possible, et qu'il n'y a donc, à proprement parler, aucune confusion sérieuse à éviter ici."
+        correct: false
+        misconception: mc.philo.la_verite.certitude-suffit-a-verite
+        feedback: >
+          La leçon distingue justement deux plans -- l'un psychologique et
+          subjectif, l'autre objectif -- qui peuvent parfaitement se
+          dissocier.
+      - id: B
+        text: "Parce que seuls les menteurs distinguent certitude et vérité ; une personne honnête, elle, est certaine uniquement de ce qui est vrai."
+        correct: false
+        misconception: mc.philo.la_verite.certitude-suffit-a-verite
+        feedback: >
+          L'honnêteté d'un témoin ne garantit jamais la vérité de son
+          témoignage -- Sarah est sincère, sûre d'elle, et pourtant peut
+          se tromper.
+      - id: C
+        text: "Parce que, dans la plupart des cas ordinaires, une forte conviction accompagne effectivement un énoncé vrai -- mais cette coïncidence fréquente n'est jamais une garantie."
+        correct: true
+      - id: D
+        text: "Parce que la vérité, comme la certitude, varie d'une personne à l'autre selon son point de vue, ce qui les rend, de fait, équivalentes."
+        correct: false
+        misconception: mc.philo.la_verite.relativisme-chacun-sa-verite
+        feedback: >
+          La vérité, à la différence de la certitude, ne varie pas selon le
+          sujet -- c'est une propriété de l'énoncé, indépendante du degré
+          de conviction de chacun.
+    correct_feedback: >
+      Une forte conviction accompagne souvent un énoncé vrai -- mais cette
+      coïncidence fréquente n'est jamais une garantie : rien, dans le
+      simple fait d'être certain, ne produit la vérité.
+    solution: |
+      Dans la plupart des cas ordinaires, on est effectivement certain de
+      ce qui est vrai -- d'où la tentation de confondre les deux plans.
+      Mais cette coïncidence fréquente n'est jamais une garantie : un
+      énoncé peut être tenu pour absolument certain et pourtant faux.
+
+  - id: VERITE-22
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [cogito, certitude, verite]
+    stem: >
+      En quoi le cogito cartésien (chapitre 6) est-il, selon le chapitre 7, une exception
+      plutôt que la règle générale ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que le cogito est, en réalité, le seul énoncé de toute la philosophie dont on peut douter, contrairement à tous les autres qui sont certains par nature."
+        correct: false
+        misconception: mc.philo.la_verite.doute-methodique-mal-compris
+        feedback: >
+          C'est l'inverse exact : le cogito est précisément ce qui résiste
+          absolument au doute le plus radical, pas ce dont on peut douter.
+      - id: B
+        text: "Parce qu'ailleurs, c'est la vérité qui garantit la certitude : tout énoncé vrai est nécessairement cru avec une certitude totale par celui qui le connaît."
+        correct: false
+        misconception: mc.philo.la_verite.certitude-suffit-a-verite
+        feedback: >
+          Une théorie scientifique corroborée (chapitre 8) peut être vraie sans que
+          personne n'en soit absolument certain -- la vérité d'un énoncé
+          n'entraîne jamais automatiquement la certitude de quiconque.
+      - id: C
+        text: "Parce que le cogito est une vérité scientifique parmi tant d'autres, au même titre qu'une loi physique, dont Popper (chapitre 8) a depuis montré qu'elle reste, comme toutes les autres théories scientifiques, seulement provisoire, corroborée et falsifiable."
+        correct: false
+        misconception: mc.philo.la_verite.cogito-etendu-a-tort
+        feedback: >
+          Le cogito n'est pas une théorie empirique falsifiable comme les
+          lois scientifiques de Popper -- c'est une certitude d'un tout
+          autre ordre, atteinte par le doute philosophique.
+      - id: D
+        text: "Parce qu'il constitue le seul point où la certitude subjective et la vérité objective coïncident parfaitement ; partout ailleurs, être certain ne garantit jamais d'être dans le vrai."
+        correct: true
+    correct_feedback: >
+      Le cogito est remarquable précisément parce qu'il fait coïncider,
+      pour une fois, certitude et vérité -- un cas unique, pas la norme.
+    solution: |
+      Descartes a trouvé, avec le cogito, un point précis où la certitude
+      subjective et la vérité objective coïncident. Mais ce point est
+      unique, presque exceptionnel dans sa perfection -- partout ailleurs,
+      certitude et vérité restent deux plans distincts.
+
+  - id: VERITE-23
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: philo_la_verite
+    tags: [popper, corroboration, falsifiabilite]
+    stem: >
+      Que signifie précisément dire qu'une théorie scientifique est
+      « corroborée » plutôt que « prouvée vraie », selon Popper ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Qu'elle a résisté aux tests les plus sévères qu'on ait pu lui faire subir jusqu'ici, ce qui est une solidité réelle -- mais qui n'équivaut jamais à une preuve absolue et définitive, la théorie restant toujours révisable."
+        correct: true
+      - id: B
+        text: "Que la théorie est à moitié fausse, ou du moins douteuse, puisqu'elle n'a pas encore atteint le statut de vérité complète et définitive."
+        correct: false
+        misconception: mc.philo.la_verite.non-refutee-jugee-douteuse
+        feedback: >
+          C'est exactement l'erreur que la leçon nomme explicitement :
+          « non-encore-réfutée » ne veut pas dire « à moitié fausse » ou
+          « douteuse ».
+      - id: C
+        text: "Qu'elle a été confirmée, sur une très longue période, par un nombre suffisamment grand d'observations indépendantes pour qu'on puisse désormais légitimement la considérer comme définitivement et absolument vraie, à l'abri pour toujours de toute réfutation future, quelle qu'elle soit."
+        correct: false
+        misconception: mc.philo.la_verite.confirmation-prouve-la-verite
+        feedback: >
+          Aucun nombre d'observations confirmantes ne prouve jamais une loi
+          générale définitivement vraie -- c'est précisément ce que Popper
+          conteste.
+      - id: D
+        text: "Qu'elle n'a en réalité jamais été testée bien sérieusement par personne, ce qui expliquerait, à lui seul, qu'aucune observation contraire ne l'ait encore mise en défaut jusqu'à présent."
+        correct: false
+        misconception: mc.philo.la_verite.non-refutee-jugee-douteuse
+        feedback: >
+          C'est l'inverse : une théorie corroborée est justement celle qui
+          a été soumise aux tests les plus sérieux, sans être réfutée.
+    correct_feedback: >
+      Une théorie corroborée a résisté aux tests les plus sévères -- une
+      solidité réelle, mais jamais une preuve absolue et définitive.
+    solution: |
+      Une théorie scientifique n'est jamais « prouvée vraie » une fois
+      pour toutes -- elle est, au mieux, non-encore-réfutée, corroborée
+      par les tests les plus sérieux, mais toujours révisable si une
+      observation future venait la contredire.
+
+  - id: VERITE-24
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: philo_la_verite
+    tags: [popper, confirmation, refutation]
+    stem: >
+      Pourquoi, selon Popper, la confirmation d'une loi générale par un
+      très grand nombre d'observations (« tous les cygnes observés sont
+      blancs ») ne peut-elle jamais la prouver définitivement vraie ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que les observations passées ne portent jamais, à strictement parler, sur le même objet numériquement identique que les observations futures, ce qui rendrait toute généralisation, par principe logique, absolument impossible à formuler valablement."
+        correct: false
+        misconception: mc.philo.la_verite.confirmation-prouve-la-verite
+        feedback: >
+          Ce n'est pas l'argument de Popper -- il ne nie pas qu'on puisse
+          formuler des lois générales, il nie seulement qu'on puisse les
+          prouver définitivement par accumulation.
+      - id: B
+        text: "Parce qu'il suffirait d'un seul contre-exemple, découvert demain (un cygne noir), pour réfuter d'un coup ce que des millions d'observations semblaient confirmer : la confirmation s'accumule lentement, la réfutation peut être immédiate et décisive."
+        correct: true
+      - id: C
+        text: "Parce qu'un grand nombre d'observations rend, au contraire, une théorie moins scientifique, la simplicité d'une théorie peu testée étant, pour Popper, un gage de sa vérité."
+        correct: false
+        misconception: mc.philo.la_verite.confirmation-prouve-la-verite
+        feedback: >
+          C'est l'inverse : pour Popper, une théorie qui a résisté à de
+          nombreux tests sévères est mieux corroborée, pas moins
+          scientifique.
+      - id: D
+        text: "Parce que la cohérence interne d'une loi générale suffit, à elle seule, à garantir sa vérité, indépendamment de toute observation empirique."
+        correct: false
+        misconception: mc.philo.la_verite.coherence-confondue-correspondance
+        feedback: >
+          C'est réimporter le critère de cohérence (chapitre 4) dans un cadre
+          empirique où Popper exige au contraire une exposition au risque
+          de réfutation par l'observation.
+    correct_feedback: >
+      La confirmation s'accumule lentement et ne prouve jamais rien
+      définitivement ; il suffit d'un seul contre-exemple pour réfuter
+      d'un coup ce que des millions d'observations semblaient confirmer.
+    solution: |
+      Aucun nombre, même immense, d'observations confirmantes ne peut
+      prouver définitivement une loi générale vraie. Il suffirait d'un
+      seul cygne noir pour réfuter ce que des millions d'observations
+      semblaient confirmer -- la réfutation, contrairement à la
+      confirmation, peut être immédiate et décisive.
+
+  - id: VERITE-25
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: philo_la_verite
+    tags: [mensonge, intention, erreur]
+    stem: >
+      En quoi mentir diffère-t-il de se tromper sincèrement (comme Sarah a
+      pu se tromper sur ce qu'elle a entendu) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Se tromper sincèrement, c'est toujours et nécessairement énoncer un énoncé objectivement faux, sans le savoir ; mentir, c'est au contraire toujours énoncer un énoncé objectivement vrai que l'on présenterait délibérément comme faux : la différence porte donc entièrement sur le contenu factuel de l'énoncé prononcé, jamais sur l'intention véritable de celui qui parle."
+        correct: false
+        misconception: mc.philo.la_verite.mensonge-confondu-erreur
+        feedback: >
+          La différence ne tient jamais au contenu (vrai ou faux) de
+          l'énoncé -- on peut mentir en disant, par accident, quelque
+          chose de vrai qu'on croit soi-même faux.
+      - id: B
+        text: "Il n'y a, en réalité, aucune différence : toute erreur, même sincère, est une forme de mensonge envers soi-même et envers autrui."
+        correct: false
+        misconception: mc.philo.la_verite.mensonge-confondu-erreur
+        feedback: >
+          La leçon distingue au contraire nettement l'erreur sincère (sans
+          intention de tromper) du mensonge (intention délibérée de
+          tromper).
+      - id: C
+        text: "La différence ne tient pas au contenu de l'énoncé (vrai ou faux), mais à l'intention : mentir, c'est affirmer, en le sachant, un énoncé qu'on tient soi-même pour faux, pour tromper autrui."
+        correct: true
+      - id: D
+        text: "Mentir, c'est simplement être moins certain de ce qu'on affirme que quelqu'un qui se trompe sincèrement mais avec assurance."
+        correct: false
+        misconception: mc.philo.la_verite.mensonge-confondu-erreur
+        feedback: >
+          Le degré de certitude n'est pas ce qui définit le mensonge --
+          on peut mentir avec une assurance totale, ou se tromper
+          sincèrement avec la même assurance.
+    correct_feedback: >
+      La différence tient à l'intention, non au contenu : mentir, c'est
+      affirmer, en le sachant, un énoncé qu'on tient soi-même pour faux.
+    solution: |
+      Sarah peut se tromper de bonne foi, sans intention de tromper.
+      Mentir, c'est tout autre chose : affirmer, en le sachant, un énoncé
+      qu'on tient soi-même pour faux, avec l'intention de faire croire à
+      autrui quelque chose qu'on ne croit pas soi-même.
+
+  - id: VERITE-26
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: philo_la_verite
+    tags: [propagande, coherence, refutation]
+    stem: >
+      Selon la leçon, comment la propagande exploite-t-elle
+      « méthodiquement » les distinctions construites dans cette leçon ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle s'appuie systématiquement sur des théories rigoureusement falsifiables, exactement au sens que Popper donne à ce terme, qu'elle expose volontairement au risque de la réfutation publique pour gagner en crédibilité durable auprès de son public."
+        correct: false
+        misconception: mc.philo.la_verite.propagande-mal-caracterisee
+        feedback: >
+          C'est l'inverse : la propagande se protège, par construction, de
+          toute réfutation possible, en s'ajustant sans cesse pour absorber
+          toute objection.
+      - id: B
+        text: "Elle s'appuie uniquement sur des faits vérifiés par correspondance stricte avec le réel, ce qui la rend, en un sens, aussi rigoureuse qu'une démarche scientifique."
+        correct: false
+        misconception: mc.philo.la_verite.propagande-mal-caracterisee
+        feedback: >
+          La propagande substitue au contraire un récit cohérent et
+          rassurant (chapitre 4) à une réelle correspondance avec les faits (chapitre 3).
+      - id: C
+        text: "Elle se distingue du mensonge en ce qu'elle n'implique jamais d'intention de tromper, mais seulement des erreurs sincères répétées à grande échelle."
+        correct: false
+        misconception: mc.philo.la_verite.mensonge-confondu-erreur
+        feedback: >
+          La propagande partage au contraire avec le mensonge cette
+          intention de faire croire ce qu'on ne croit pas soi-même, à plus
+          grande échelle.
+      - id: D
+        text: "Elle substitue un récit cohérent et rassurant à une réelle correspondance avec les faits, et fabrique de la certitude et un consensus apparent comme un succédané de vérité, sans jamais s'exposer à une réfutation possible."
+        correct: true
+    correct_feedback: >
+      La propagande substitue cohérence à correspondance, certitude et
+      consensus apparent à vérité, et se protège de toute réfutation
+      possible -- exactement l'inverse de l'idéal popperien.
+    solution: |
+      La propagande exploite méthodiquement les confusions de la leçon :
+      un récit cohérent (chapitre 4) à la place d'une correspondance aux faits
+      (chapitre 3), une certitude fabriquée (chapitre 7) à la place de la vérité, et une
+      protection systématique contre toute réfutation (l'inverse du chapitre 8).
+
+  - id: VERITE-27
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: philo_la_verite
+    tags: [fallibilisme, relativisme, popper]
+    stem: >
+      Quelle est la différence exacte entre le fallibilisme (l'idée
+      qu'aucune connaissance n'est jamais absolument certaine, Popper — chapitre 8)
+      et le relativisme (l'idée que toutes les opinions se valent) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le fallibilisme n'implique pas le relativisme : accepter qu'une certitude parfaite soit hors de portée n'implique pas que toutes les versions se valent également -- l'une peut correspondre aux faits, l'autre non, même si l'établir avec certitude reste difficile."
+        correct: true
+      - id: B
+        text: "Ce sont, en réalité, deux noms différents pour désigner rigoureusement la même position philosophique : puisqu'aucune certitude absolue n'est jamais possible en dehors du cogito, il s'ensuivrait logiquement, et nécessairement, qu'aucune opinion n'est jamais plus fondée qu'une autre."
+        correct: false
+        misconception: mc.philo.la_verite.fallibilisme-confondu-relativisme
+        feedback: >
+          C'est exactement l'inférence fausse que la leçon dénonce :
+          accepter le fallibilisme n'entraîne pas que toutes les opinions
+          se valent.
+      - id: C
+        text: "Le fallibilisme s'applique uniquement aux sciences, tandis que le relativisme s'applique uniquement aux faits ordinaires comme la dispute du chapitre 1, ce qui les rend incomparables."
+        correct: false
+        misconception: mc.philo.la_verite.critere-restreint-a-un-domaine-a-tort
+        feedback: >
+          Rien dans la leçon ne restreint ainsi les deux notions à des
+          domaines séparés et incomparables.
+      - id: D
+        text: "Le relativisme est la position de Popper (chapitre 8), tandis que le fallibilisme est la position que la propagande exploite pour imposer son récit."
+        correct: false
+        misconception: mc.philo.la_verite.fallibilisme-confondu-relativisme
+        feedback: >
+          Ces attributions sont inversées : Popper défend le fallibilisme,
+          et c'est le relativisme (« chacun sa vérité ») que la propagande
+          exploite.
+    correct_feedback: >
+      Accepter qu'une certitude parfaite soit hors de portée n'implique
+      pas que toutes les versions se valent : l'une peut correspondre aux
+      faits, l'autre non.
+    solution: |
+      Le fallibilisme n'implique pas le relativisme. La version de Sarah
+      et celle de Karim ne se valent pas également : l'une correspond aux
+      faits, l'autre non, même si l'établir avec certitude reste
+      difficile -- et c'est cette différence que mensonge et propagande
+      comptent sur la lassitude pour faire oublier.
+
+  - id: VERITE-28
+    rung: "R9"
+    difficulty_level: 4
+    skill_code: philo_la_verite
+    tags: [methode, problematique, dissertation]
+    stem: >
+      Une bonne problématique doit mettre en évidence une tension entre
+      deux positions légitimes, à laquelle la copie devra répondre.
+      Laquelle des formulations suivantes, pour le sujet « Peut-on être
+      certain de détenir la vérité ? », est une véritable problématique
+      plutôt qu'une simple reformulation du sujet ?
+    type: mcq
+    choices:
+      - id: A
+        text: "« Peut-on être certain de détenir la vérité ? Nous verrons d'abord, exemples concrets à l'appui, que la réponse est clairement oui, puis nous verrons ensuite, avec la même rigueur, qu'elle est tout aussi clairement non, avant de proposer pour finir une conclusion qui tranchera nettement entre les deux positions présentées successivement l'une après l'autre. »"
+        correct: false
+        misconception: mc.philo.la_verite.methode-dissertation-appliquee-mecaniquement
+        feedback: >
+          C'est une simple annonce de plan, sans tension formulée -- ce
+          n'est pas encore une problématique.
+      - id: B
+        text: "« Si le cogito semble montrer qu'une certitude absolument indubitable est possible, comment expliquer que la science la plus rigoureuse renonce à jamais clore une théorie sur une telle certitude -- faut-il conclure que détenir la vérité est ailleurs illusoire, ou qu'il existe une façon d'y progresser sans la posséder ? »"
+        correct: true
+      - id: C
+        text: "« La vérité, comme chacun sait déjà intuitivement, est une notion notoirement difficile à définir avec précision, et cette difficulté bien connue a occupé de très nombreux philosophes tout au long de l'histoire de la pensée occidentale, depuis l'Antiquité jusqu'à nos jours. »"
+        correct: false
+        misconception: mc.philo.la_verite.methode-dissertation-appliquee-mecaniquement
+        feedback: >
+          C'est une généralité vague, sans aucune tension ni question
+          précise -- une accroche possible, pas une problématique.
+      - id: D
+        text: "« Certains philosophes disent qu'on peut être certain de détenir la vérité, d'autres disent tout le contraire : les deux points de vue se valent finalement tout autant l'un que l'autre, et il n'existe donc, sur ce sujet, aucune réponse vraiment tranchée à espérer trouver. »"
+        correct: false
+        misconception: mc.philo.la_verite.relativisme-chacun-sa-verite
+        feedback: >
+          C'est la même esquive relativiste que « chacun sa vérité » en
+          chapitre 1, transposée à la dissertation -- elle refuse la tension plutôt
+          que de la poser.
+    correct_feedback: >
+      Une véritable problématique met en tension le cogito (une certitude
+      indubitable semble possible) et le fallibilisme popperien (la
+      science renonce à toute clôture définitive) -- sans se contenter
+      d'annoncer un plan ou d'esquiver la question.
+    solution: |
+      La tension construite par la leçon : le cogito semble montrer
+      qu'une certitude absolue est possible, mais la science la plus
+      rigoureuse (Popper) refuse justement cette clôture définitive.
+      Une problématique formule cette tension en question, sans
+      l'esquiver ni se contenter de l'annoncer.
+
+  - id: VERITE-29
+    rung: "R9"
+    difficulty_level: 4
+    skill_code: philo_la_verite
+    tags: [methode, plan_dialectique, depassement]
+    stem: >
+      Dans un plan dialectique (thèse / antithèse / dépassement) sur ce
+      sujet, que doit précisément accomplir la partie III (le
+      dépassement) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Répéter les arguments de la partie I en les formulant autrement, pour bien montrer qu'ils restent valables malgré l'antithèse."
+        correct: false
+        misconception: mc.philo.la_verite.methode-dissertation-appliquee-mecaniquement
+        feedback: >
+          Le dépassement n'est jamais une simple répétition de la thèse --
+          il doit produire une position nouvelle qui tient compte de
+          l'antithèse.
+      - id: B
+        text: "Démontrer, preuves détaillées à l'appui, que la thèse défendue dans la partie I était en réalité entièrement fausse depuis le tout début du raisonnement, et que seule l'antithèse développée en partie II mérite d'être retenue dans la conclusion finale."
+        correct: false
+        misconception: mc.philo.la_verite.methode-dissertation-appliquee-mecaniquement
+        feedback: >
+          Choisir simplement l'antithèse contre la thèse n'est pas un
+          dépassement -- c'est une synthèse qui doit être construite, pas
+          un simple choix entre les deux.
+      - id: C
+        text: "Montrer que renoncer à la certitude absolue partout, hormis au cogito, n'oblige pas à renoncer à l'exigence de chercher le vrai -- en s'appuyant par exemple sur le fallibilisme popperien et la rupture bachelardienne."
+        correct: true
+      - id: D
+        text: "Introduire un tout nouvel exemple, sans lien avec les parties I et II, pour montrer l'étendue de sa culture philosophique."
+        correct: false
+        misconception: mc.philo.la_verite.methode-dissertation-appliquee-mecaniquement
+        feedback: >
+          Le dépassement doit prolonger et articuler la thèse et
+          l'antithèse déjà construites, pas introduire un exemple sans
+          lien avec elles.
+    correct_feedback: >
+      Le dépassement montre que renoncer à la certitude absolue, sauf au
+      cogito, n'oblige pas à renoncer à l'exigence de chercher le vrai --
+      une synthèse, non une répétition ni un simple choix.
+    solution: |
+      Le dépassement (partie III) reprend le fallibilisme popperien
+      (accepter le provisoire permet de progresser) et la rupture
+      bachelardienne (la connaissance avance en rompant, pas en
+      s'installant dans une fausse certitude) pour montrer que l'exigence
+      de vérité subsiste, même sans certitude absolue.
+
+  - id: VERITE-30
+    rung: "R9"
+    difficulty_level: 4
+    skill_code: philo_la_verite
+    tags: [methode, transfert, doute]
+    stem: >
+      Pour le sujet « Le doute est-il l'ennemi de la vérité ? » -- une
+      variante proposée en fin de leçon -- laquelle des démarches
+      suivantes applique correctement la méthode construite dans cette
+      leçon, plutôt que de se contenter de reformuler le cas du cogito
+      déjà traité ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Répondre uniquement en reformulant le paragraphe déjà rédigé sur le cogito à l'étape 5, puisque le doute cartésien épuise à lui seul toute la question posée par ce nouveau sujet."
+        correct: false
+        misconception: mc.philo.la_verite.methode-dissertation-appliquee-mecaniquement
+        feedback: >
+          Traiter ce nouveau sujet comme une simple redite du paragraphe
+          cartésien déjà rédigé, c'est manquer le doute fallibiliste de
+          Popper (chapitre 8), tout aussi pertinent ici.
+      - id: B
+        text: "Répondre que le doute est toujours et nécessairement l'ennemi déclaré de la vérité, puisque Descartes lui-même aurait été contraint de l'abandonner totalement et définitivement dès l'instant précis où il a trouvé le cogito, ce qui prouverait, une fois pour toutes, que douter et connaître authentiquement le vrai sont deux démarches strictement incompatibles l'une avec l'autre."
+        correct: false
+        misconception: mc.philo.la_verite.doute-methodique-mal-compris
+        feedback: >
+          C'est mal lire Descartes : le doute est la méthode même qui
+          conduit au cogito, pas un obstacle qu'il faudrait abandonner
+          pour atteindre le vrai.
+      - id: C
+        text: "Répondre que la question ne mérite pas de plan dialectique, puisque la réponse est évidemment non, le doute n'ayant aucun rapport avec la recherche de la vérité."
+        correct: false
+        misconception: mc.philo.la_verite.relativisme-chacun-sa-verite
+        feedback: >
+          C'est refuser la tension du sujet plutôt que de la poser -- la
+          même esquive que « chacun sa vérité » au chapitre 1, transposée ici.
+      - id: D
+        text: "Distinguer le doute méthodique, provisoire et au service d'une certitude à construire (Descartes, chapitre 6), du doute scientifique fallibiliste, qui reste actif en permanence sans jamais se clore (Popper, chapitre 8) -- pour montrer que le doute peut, dans les deux cas, être un allié de la vérité plutôt qu'un ennemi."
+        correct: true
+    correct_feedback: >
+      Le doute cartésien et le doute fallibiliste de Popper sont deux
+      formes distinctes d'un même allié de la vérité, pas un obstacle --
+      une variante qui mobilise les chapitres 6 et 8 sans se réduire au cogito déjà
+      traité.
+    solution: |
+      Traiter ce sujet exige de mobiliser deux formes de doute distinctes
+      : le doute méthodique cartésien (provisoire, au service d'une
+      certitude) et le doute fallibiliste popperien (permanent, jamais
+      clos). Se contenter de reformuler le paragraphe sur le cogito manque
+      la moitié de la question.
+
+  # Ajoutés le 2026-09-05 : sept familles sous le plancher de 3 items du banc —
+  # quatre à un item (le vocabulaire de Popper et la propagande), trois à deux
+  # (opinion, portée d'un critère, mensonge contre erreur). CORRIGÉ le
+  # 2026-09-19 : la note disait « Quatre items, onze places » — il y en a CINQ
+  # (VERITE-31 à VERITE-35). « Onze places » était le BESOIN (4 familles × 2 +
+  # 3 familles × 1) ; la livraison est de quatorze places. Besoin et livraison
+  # étaient mélangés sans le dire.
+  - id: VERITE-31
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: philo_la_verite
+    tags: [popper, falsifiabilite, corroboration]
+    stem: >
+      Une théorie scientifique a résisté à tous les tests qu'on lui a fait
+      subir. Un élève écrit : « elle est donc démontrée vraie ». Quelle
+      correction Popper apporterait-il ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Qu'elle est corroborée, c'est-à-dire non encore réfutée : un statut solide et provisoire, jamais une démonstration de vérité définitive."
+        correct: true
+      - id: B
+        text: "Qu'elle est au contraire douteuse, puisque « non encore réfutée » signifie qu'elle attend encore d'être mise à l'épreuve pour de bon."
+        correct: false
+        misconception: mc.philo.la_verite.non-refutee-jugee-douteuse
+        feedback: >
+          « Non encore réfutée » ne veut pas dire « non encore testée » — c'est
+          même l'inverse : le statut ne s'obtient qu'APRÈS des tests sévères, et
+          plus ils sont nombreux et exigeants, plus la corroboration est forte.
+          Ce qui reste ouvert, c'est l'avenir : un test futur pourrait échouer.
+          Le provisoire n'est pas le douteux.
+      - id: C
+        text: "Qu'une théorie qui résiste ainsi cesse d'être falsifiable, la falsifiabilité désignant le fait d'être fréquemment réfutée par l'expérience."
+        correct: false
+        misconception: mc.philo.la_verite.falsifiable-confondu-refutee
+        feedback: >
+          Falsifiable signifie réfutable EN PRINCIPE : on peut dire d'avance
+          quelle observation, si elle se produisait, mettrait la théorie en
+          défaut. C'est un critère de forme, pas un bilan d'échecs. Une théorie
+          jamais réfutée reste parfaitement falsifiable — et c'est précisément ce
+          qui fait d'elle une théorie scientifique plutôt qu'un dogme.
+      - id: D
+        text: "Que puisque aucune théorie n'est jamais certaine, aucune ne vaut mieux qu'une autre : toutes les opinions se valent également."
+        correct: false
+        misconception: mc.philo.la_verite.fallibilisme-confondu-relativisme
+        feedback: >
+          Le fallibilisme dit qu'aucune connaissance n'est absolument certaine ;
+          le relativisme dit que toutes se valent. Le premier n'entraîne pas le
+          second — au contraire, il suppose qu'on puisse comparer : une théorie
+          corroborée par mille tests sévères vaut mieux qu'une hypothèse jamais
+          éprouvée, même si aucune des deux n'est certaine.
+    correct_feedback: >
+      Popper remplace « démontrée vraie » par CORROBORÉE : la théorie a résisté
+      aux tentatives de réfutation, ce qui est un titre sérieux et toujours
+      révisable. Aucune accumulation de confirmations ne démontre une loi
+      universelle ; un seul contre-exemple la réfute.
+    solution: |
+      **L'asymétrie logique, au cœur de l'argument.** Aucun nombre
+      d'observations favorables ne démontre un énoncé universel : « tous les
+      cygnes sont blancs » reste indémontrable, quel que soit le nombre de
+      cygnes blancs observés. Une seule observation contraire, en revanche, le
+      réfute définitivement.
+
+      **D'où le statut d'une théorie qui tient.** Elle est corroborée : elle a
+      subi des tests susceptibles de la démentir, et n'a pas été démentie. Ce
+      titre est d'autant plus fort que les tests étaient sévères.
+
+      **Trois mots à ne pas confondre.**
+      - *Falsifiable* : réfutable en principe — un critère de forme.
+      - *Réfutée* : effectivement démentie par l'expérience.
+      - *Corroborée* : testée sévèrement et non réfutée jusqu'ici.
+
+  - id: VERITE-32
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: philo_la_verite
+    tags: [propagande, popper, verite-et-pouvoir]
+    stem: >
+      Qu'est-ce qui distingue le plus nettement une théorie scientifique d'un
+      discours de propagande ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La théorie dit d'avance ce qui la mettrait en défaut et s'expose à ce test ; la propagande organise sa cohérence de façon qu'aucun fait ne puisse jamais la contredire."
+        correct: true
+      - id: B
+        text: "La propagande repose elle aussi sur des énoncés falsifiables et vérifiés par correspondance aux faits ; elle s'en distingue seulement par l'intention de celui qui la diffuse."
+        correct: false
+        misconception: mc.philo.la_verite.propagande-mal-caracterisee
+        feedback: >
+          La propagande ne s'expose pas au démenti : elle réinterprète tout ce
+          qui la contrarie comme une confirmation de plus — un échec devient un
+          complot, une objection devient une preuve d'hostilité. C'est cette
+          IMMUNITÉ construite qui la caractérise, et non la seule mauvaise
+          intention. Un discours peut être sincère et rester impossible à
+          réfuter.
+      - id: C
+        text: "La théorie scientifique n'a jamais été réfutée, tandis que la propagande l'a été de nombreuses fois : c'est le nombre de démentis qui les sépare."
+        correct: false
+        misconception: mc.philo.la_verite.falsifiable-confondu-refutee
+        feedback: >
+          Le critère ne porte pas sur le nombre de démentis subis, mais sur la
+          POSSIBILITÉ d'en subir. Une théorie scientifique peut avoir été
+          réfutée — c'est arrivé à beaucoup — et rester scientifique ; un
+          discours de propagande n'est jamais réfuté, précisément parce qu'il est
+          construit pour ne pas pouvoir l'être.
+      - id: D
+        text: "La théorie scientifique est une vérité définitive, tandis que la propagande n'est que provisoirement acceptée en attendant qu'on la vérifie."
+        correct: false
+        misconception: mc.philo.la_verite.non-refutee-jugee-douteuse
+        feedback: >
+          Les deux termes sont intervertis. C'est la théorie scientifique qui est
+          provisoire — corroborée, jamais démontrée définitivement — et c'est la
+          propagande qui se présente comme certaine et close. Le provisoire est
+          ici du côté de la rigueur, pas du côté du soupçon.
+    correct_feedback: >
+      Le partage passe par l'exposition au démenti. Une théorie scientifique dit
+      d'avance quelle observation la mettrait en défaut ; un discours de
+      propagande est agencé pour absorber toute objection — ce qui le contredit
+      devient une preuve de plus.
+    solution: |
+      **Le critère de démarcation.** Ce n'est pas la certitude, ni la sincérité,
+      ni même la vérité du contenu : c'est la RÉFUTABILITÉ. Une théorie
+      scientifique prend un risque — elle interdit certains faits, et si l'un
+      d'eux survient, elle tombe.
+
+      **Ce que fait la propagande.** Elle supprime le risque. Tout événement,
+      favorable ou non, est réinterprété comme une confirmation : la victoire
+      prouve la justesse de la cause, la défaite prouve la puissance de l'ennemi.
+      Ce qui explique tout n'explique plus rien.
+
+      **Pourquoi l'intention ne suffit pas à caractériser.** Un discours peut
+      être diffusé de bonne foi et rester irréfutable ; c'est sa STRUCTURE, et
+      non l'état d'esprit de qui le tient, que le critère examine. L'intention
+      distingue le mensonge de l'erreur — une autre question.
+
+  - id: VERITE-33
+    rung: "R8"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [mensonge, erreur, intention, propagande]
+    stem: >
+      Un professeur affirme devant sa classe une date historique erronée, qu'il
+      croit sincèrement exacte. Un autre affirme une date qu'il sait fausse,
+      pour appuyer sa démonstration. En quoi les deux cas diffèrent-ils ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Par l'intention : le premier se trompe, le second ment. Le contenu énoncé est faux dans les deux cas, mais seul le second cherche à tromper autrui."
+        correct: true
+      - id: B
+        text: "Ils ne diffèrent pas vraiment : ce qui compte est que l'énoncé soit faux, et un énoncé faux reste un énoncé faux quelle que soit la tête de celui qui le prononce."
+        correct: false
+        misconception: mc.philo.la_verite.mensonge-confondu-erreur
+        feedback: >
+          Le contenu est en effet identique, et c'est justement ce qui montre que
+          la différence est ailleurs. Le mensonge suppose que le menteur SACHE
+          le vrai et dise autre chose dans l'intention de tromper. L'erreur
+          sincère n'engage pas la même responsabilité — on la corrige, on ne la
+          reproche pas moralement.
+      - id: C
+        text: "Par le degré de certitude : le premier hésite intérieurement, tandis que le second est absolument certain de ce qu'il avance à sa classe."
+        correct: false
+        misconception: mc.philo.la_verite.mensonge-confondu-erreur
+        feedback: >
+          La certitude n'est pas le bon critère. Le professeur qui se trompe est
+          parfaitement certain de sa date : c'est même pour cela qu'il l'énonce.
+          Et le menteur, lui, est certain du contraire de ce qu'il dit. La
+          différence tient à la relation entre ce qu'on croit et ce qu'on dit,
+          pas à la force de la croyance.
+      - id: D
+        text: "Par le domaine : en histoire, l'exactitude d'une date est une affaire d'opinion, alors que la distinction du vrai et du faux n'a de sens qu'en mathématiques."
+        correct: false
+        misconception: mc.philo.la_verite.critere-restreint-a-un-domaine-a-tort
+        feedback: >
+          Rien ne justifie de restreindre ainsi la vérité aux mathématiques. Une
+          date historique est vraie ou fausse selon qu'elle correspond ou non à
+          ce qui a eu lieu — c'est exactement la définition par correspondance.
+          Ce qui varie d'un domaine à l'autre, ce sont les MOYENS d'établir le
+          vrai, pas l'existence du partage.
+    correct_feedback: >
+      La différence est d'INTENTION, non de contenu. Les deux énoncés sont
+      également faux ; seul le second est un mensonge, parce que celui qui le
+      profère connaît le vrai et dit autre chose pour tromper. On corrige une
+      erreur, on reproche un mensonge.
+    solution: |
+      **Ce que les deux cas ont en commun.** Un énoncé faux, prononcé devant un
+      auditoire qui le reçoit.
+
+      **Ce qui les sépare.** La relation entre ce que le locuteur CROIT et ce
+      qu'il DIT :
+      - *Erreur* : il dit ce qu'il croit ; sa croyance se trouve fausse.
+      - *Mensonge* : il dit le contraire de ce qu'il croit, pour que l'autre le
+        croie.
+
+      **La conséquence morale.** L'erreur relève de la connaissance : on la
+      corrige. Le mensonge relève du rapport à autrui : il instrumentalise sa
+      confiance, et c'est à ce titre qu'on le blâme.
+
+      **Le cas limite instructif.** Un menteur peut dire le VRAI par accident, en
+      croyant mentir. L'énoncé est alors exact et l'acte reste un mensonge :
+      preuve que le partage ne porte pas sur le contenu.
+
+  - id: VERITE-34
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: philo_la_verite
+    tags: [opinion, verite, portee-des-criteres]
+    stem: >
+      « J'en suis absolument convaincu, donc c'est vrai. » Que manque cette
+      inférence ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que la conviction est un état de celui qui pense, tandis que la vérité est une propriété de l'énoncé : la force du sentiment ne fait rien à la relation entre l'énoncé et ce qui est."
+        correct: true
+      - id: B
+        text: "Rien, à condition que la conviction soit sincère et ferme : une opinion tenue avec constance et bonne foi est par là même une opinion vraie."
+        correct: false
+        misconception: mc.philo.la_verite.opinion-confondue-verite
+        feedback: >
+          Sincérité et fermeté sont des qualités du sujet, pas de l'énoncé. On
+          peut être absolument sincère et absolument dans l'erreur — l'histoire
+          des sciences est faite de convictions fermes et fausses. Ce qui rend
+          un énoncé vrai, c'est son accord avec ce qui est, jamais l'intensité
+          avec laquelle on y adhère.
+      - id: C
+        text: "Que cette inférence ne vaut qu'en mathématiques, seul domaine où l'on peut parler de vérité : ailleurs, chacun est légitime à tenir son opinion pour vraie."
+        correct: false
+        misconception: mc.philo.la_verite.critere-restreint-a-un-domaine-a-tort
+        feedback: >
+          Deux erreurs empilées. L'inférence ne vaut nulle part, mathématiques
+          comprises — une démonstration n'est pas valide parce qu'on y croit
+          fort. Et restreindre la vérité à un domaine est arbitraire : « il a
+          plu hier » est vrai ou faux selon qu'il a plu ou non, sans qu'aucune
+          conviction n'y change quoi que ce soit.
+      - id: D
+        text: "Que l'énoncé pourrait être faux sans que celui qui le tient soit pour autant un menteur, ce qui suffit à rendre l'inférence acceptable."
+        correct: false
+        misconception: mc.philo.la_verite.mensonge-confondu-erreur
+        feedback: >
+          La remarque est juste — se tromper n'est pas mentir — mais elle ne
+          répare rien : elle explique seulement qu'on ne reprochera pas l'erreur.
+          L'inférence, elle, reste invalide : de « je suis convaincu », on ne
+          peut pas conclure « c'est vrai », que la sincérité soit entière ou
+          non.
+    correct_feedback: >
+      La conviction décrit un état du sujet, la vérité une propriété de
+      l'énoncé. Aucune intensité de croyance ne fabrique un accord avec ce qui
+      est : on peut être absolument certain et absolument dans l'erreur — et
+      l'histoire des sciences en est faite.
+    solution: |
+      **Deux registres qu'il faut séparer.**
+      - *La certitude* : un état psychologique, mesurable en degrés, propre à
+        celui qui pense.
+      - *La vérité* : une relation entre un énoncé et ce qui est, indépendante
+        de qui l'énonce.
+
+      **Pourquoi le passage de l'un à l'autre échoue.** Si la certitude faisait
+      la vérité, deux personnes également certaines de thèses contraires
+      auraient toutes deux raison. L'histoire des sciences abonde en
+      convictions massives et fausses — les épicycles, le phlogistique.
+
+      **Le sens de la distinction.** Elle ne dévalorise pas la certitude : elle
+      la remet à sa place. La certitude peut être le RÉSULTAT d'une vérité
+      établie ; elle n'en est jamais la preuve.
+
+  - id: VERITE-35
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: philo_la_verite
+    tags: [fallibilisme, relativisme, propagande]
+    stem: >
+      « Puisque la science se corrige sans cesse, ses affirmations ne valent pas
+      mieux que celles d'un discours militant. » Que répondre à cette objection ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que se corriger est précisément ce qui les sépare : la science expose ses énoncés au démenti et en tire des révisions, là où un discours militant absorbe toute objection sans jamais rien réviser."
+        correct: true
+      - id: B
+        text: "Rien : si aucune connaissance n'est jamais certaine, alors aucune ne peut prétendre valoir plus qu'une autre, et toutes les opinions se valent également."
+        correct: false
+        misconception: mc.philo.la_verite.fallibilisme-confondu-relativisme
+        feedback: >
+          Le fallibilisme dit qu'aucune connaissance n'est absolument certaine ;
+          le relativisme dit qu'elles se valent toutes. Passer du premier au
+          second suppose qu'entre deux énoncés faillibles on ne puisse pas
+          choisir — or on le peut : celui qui a résisté à des tests sévères vaut
+          mieux que celui qui n'en a subi aucun. Reconnaître qu'on peut se
+          tromper, c'est justement se donner les moyens de corriger.
+      - id: C
+        text: "Que le discours militant s'appuie lui aussi sur des énoncés réfutables et des faits vérifiés ; la différence entre les deux n'est finalement qu'une affaire de style et de ton."
+        correct: false
+        misconception: mc.philo.la_verite.propagande-mal-caracterisee
+        feedback: >
+          Ce qui caractérise un discours de propagande n'est pas son ton, c'est
+          son IMMUNITÉ : il est agencé de façon qu'aucun fait ne puisse le
+          démentir — l'objection devient une preuve d'hostilité, l'échec une
+          preuve de complot. Un énoncé qu'aucune observation ne pourrait mettre
+          en défaut ne prend aucun risque, et c'est pour cela qu'il n'apprend
+          rien.
+      - id: D
+        text: "Que l'objection part d'un fait inexact : une théorie corroborée est définitivement établie, et la science ne revient jamais sur ce qu'elle a démontré."
+        correct: false
+        misconception: mc.philo.la_verite.non-refutee-jugee-douteuse
+        feedback: >
+          La science revient bel et bien sur ses théories — la mécanique
+          newtonienne a été dépassée sans avoir jamais été « mal faite ». Nier la
+          révisabilité pour défendre la science lui retire ce qui fait sa force.
+          Le bon argument est l'inverse : c'est parce qu'elle se corrige qu'elle
+          vaut mieux qu'un discours qui ne le fait pas.
+    correct_feedback: >
+      L'objection retourne à l'envers ce qu'elle observe. La révisabilité n'est
+      pas une faiblesse de la science, c'est son opération propre : elle expose
+      ses énoncés au démenti et les corrige quand ils échouent. Un discours qui
+      ne se corrige jamais n'est pas plus sûr — il est seulement à l'abri de
+      l'épreuve.
+    solution: |
+      **Le glissement de l'objection.** Elle passe de « aucune connaissance
+      n'est certaine » (le fallibilisme) à « toutes se valent » (le
+      relativisme). Le second ne suit pas du premier : on peut comparer deux
+      énoncés faillibles, par le nombre et la sévérité des tests qu'ils ont
+      subis.
+
+      **Ce que la correction prouve.** Qu'il existe un contrôle extérieur —
+      l'expérience — capable de faire plier une théorie. Un discours que rien ne
+      peut faire plier n'est pas mieux fondé : il est simplement hors d'atteinte.
+
+      **La formule à retenir.** Reconnaître qu'on peut se tromper est la
+      condition pour se corriger. Le fallibilisme est donc l'exact contraire de
+      l'indifférence relativiste : il est ce qui rend la critique possible.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après VERITE-31 à VERITE-35. Sept familles sous le
+# plancher : le vocabulaire de Popper (corroborée, falsifiable, réfutée), la
+# caractérisation de la propagande, le passage abusif du faillibilisme au
+# relativisme, l'opinion prise pour la vérité, la portée d'un critère
+# arbitrairement restreinte, et le partage mensonge/erreur. Tableau GÉNÉRÉ,
+# gardé par web/scripts/resume-couverture.mjs.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.philo.la_verite.accord-nombre-fait-verite:                    { count: 5, items: [VERITE-1, VERITE-7, VERITE-15, VERITE-16, VERITE-19] }
+    mc.philo.la_verite.relativisme-chacun-sa-verite:                 { count: 6, items: [VERITE-5, VERITE-9, VERITE-16, VERITE-21, VERITE-28, VERITE-30] }
+    mc.philo.la_verite.difficulte-justifie-renoncer-a-chercher:      { count: 4, items: [VERITE-5, VERITE-7, VERITE-8, VERITE-9] }
+    mc.philo.la_verite.reel-confondu-verite:                         { count: 4, items: [VERITE-7, VERITE-10, VERITE-11, VERITE-12] }
+    mc.philo.la_verite.opinion-confondue-verite:                     { count: 3, items: [VERITE-10, VERITE-12, VERITE-34] }
+    mc.philo.la_verite.coherence-confondue-correspondance:           { count: 8, items: [VERITE-1, VERITE-2, VERITE-8, VERITE-13, VERITE-14, VERITE-15, VERITE-16, VERITE-24] }
+    mc.philo.la_verite.certitude-suffit-a-verite:                    { count: 7, items: [VERITE-1, VERITE-5, VERITE-11, VERITE-14, VERITE-18, VERITE-21, VERITE-22] }
+    mc.philo.la_verite.acces-direct-au-reel-sans-interpretation:     { count: 3, items: [VERITE-9, VERITE-13, VERITE-14] }
+    mc.philo.la_verite.obstacle-epistemologique-mal-compris:         { count: 3, items: [VERITE-3, VERITE-17, VERITE-18] }
+    mc.philo.la_verite.doute-methodique-mal-compris:                 { count: 4, items: [VERITE-4, VERITE-19, VERITE-22, VERITE-30] }
+    mc.philo.la_verite.doute-methodique-confondu-scepticisme:        { count: 4, items: [VERITE-4, VERITE-11, VERITE-19, VERITE-20] }
+    mc.philo.la_verite.cogito-etendu-a-tort:                         { count: 3, items: [VERITE-4, VERITE-20, VERITE-22] }
+    mc.philo.la_verite.critere-restreint-a-un-domaine-a-tort:        { count: 4, items: [VERITE-13, VERITE-27, VERITE-33, VERITE-34] }
+    mc.philo.la_verite.non-refutee-jugee-douteuse:                   { count: 4, items: [VERITE-23, VERITE-31, VERITE-32, VERITE-35] }
+    mc.philo.la_verite.confirmation-prouve-la-verite:                { count: 4, items: [VERITE-6, VERITE-17, VERITE-23, VERITE-24] }
+    mc.philo.la_verite.falsifiable-confondu-refutee:                 { count: 3, items: [VERITE-6, VERITE-31, VERITE-32] }
+    mc.philo.la_verite.mensonge-confondu-erreur:                     { count: 4, items: [VERITE-25, VERITE-26, VERITE-33, VERITE-34] }
+    mc.philo.la_verite.propagande-mal-caracterisee:                  { count: 3, items: [VERITE-26, VERITE-32, VERITE-35] }
+    mc.philo.la_verite.fallibilisme-confondu-relativisme:            { count: 3, items: [VERITE-27, VERITE-31, VERITE-35] }
+    mc.philo.la_verite.methode-dissertation-appliquee-mecaniquement: { count: 3, items: [VERITE-28, VERITE-29, VERITE-30] }
+  total_items: 35
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 4
+    R2: 3
+    R3: 3
+    R4: 3
+    R5: 3
+    R6: 3
+    R7: 5
+    R8: 5
+    R9: 3
+  honest_state: >-
+    Les vingt misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Huit y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

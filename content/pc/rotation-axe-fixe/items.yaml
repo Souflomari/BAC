@@ -1,0 +1,2414 @@
+notion: rotation-axe-fixe
+skill_code: pc_rotation_axe_fixe
+
+# Misconception inventory (backfilled in the summit-conversion pass, per
+# docs/pipeline/SUMMIT-CONVERSION-RECIPE.md §6). This end bank was authored
+# BEFORE the inventory existed (misconceptions: []), so every item now
+# carries an item-level `primary_misconception`, and every distractor now
+# carries a `misconception:` tag mapped to the nearest real inventory
+# model. See coverage_summary at the end of this file for honest
+# per-model counts — several models fall short of the floor because this
+# pass only tags existing items; it does not author new ones (an honest
+# gap, not padded — flagged for a follow-up item pass).
+misconceptions:
+  - id: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+    label: >-
+      « Ce qui détermine la résistance d'un solide au changement de
+      rotation, c'est la masse totale embarquée — pas comment elle est
+      répartie par rapport à l'axe »
+    description: >-
+      L'élève transpose le raisonnement de la translation (seule la masse
+      totale compte dans $\vec F = m\vec a$) à la rotation, où la
+      répartition compte au moins autant. Recouvre plusieurs formes :
+      croire que « même masse totale » implique « même comportement » ;
+      supposer une dépendance linéaire en $d$ plutôt qu'en $d^2$ ; croire
+      qu'une masse loin de l'axe est « plus efficacement entraînée » (par
+      transposition erronée du principe du levier des forces à la masse
+      embarquée) ; ou croire que la longueur d'un solide le long de l'axe
+      (plutôt que sa distance perpendiculaire à l'axe) change son moment
+      d'inertie.
+    contradicts_principle: >-
+      $J_\Delta = \sum_i m_i\,d_i^2$ : chaque masse compte au carré de sa
+      distance à l'axe (pas seulement sa quantité), une masse loin de
+      l'axe RÉSISTE davantage au changement de rotation (elle ne facilite
+      rien), et seule la distance perpendiculaire à l'axe intervient —
+      jamais la position le long de l'axe.
+  - id: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+    label: >-
+      « Ce qui compte pour faire tourner un solide, c'est l'intensité de
+      la force — pas où ni comment elle s'applique »
+    description: >-
+      L'élève confond la force elle-même avec son moment : ignore le bras
+      de levier $d$ (traite $\mathcal{M}_\Delta(\vec F)$ comme s'il valait
+      $F$ seule, ou confond même les unités N et N·m), inverse le sens du
+      principe du levier (croit qu'une force appliquée plus près de l'axe
+      produit un effet plus grand), ou ne teste pas si la force a une
+      composante tangentielle avant de lui attribuer un moment non nul.
+    contradicts_principle: >-
+      $\mathcal{M}_\Delta(\vec F) = \pm\,d\cdot F$, où $d$ est la distance
+      entre l'axe et la LIGNE D'ACTION de la force : une force intense
+      appliquée exactement sur l'axe, ou dirigée radialement (sans
+      composante tangentielle), a un moment rigoureusement NUL, quelle que
+      soit son intensité ; et à force égale, c'est le plus grand bras de
+      levier qui produit le plus grand moment, jamais l'inverse.
+  - id: mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe
+    label: >-
+      « Une force loin de l'axe a forcément un moment : sa DIRECTION par
+      rapport à l'axe ne change rien »
+    description: >-
+      L'élève calcule $d\cdot F$ sans regarder la direction de la force par
+      rapport à l'AXE. Formes : attribuer un moment non nul à une force
+      parallèle à l'axe (le poids d'un enfant assis au bord d'un manège
+      horizontal, « $1{,}50 \times 245$ ») ; prendre la distance du point
+      d'application à l'axe pour bras de levier alors que la droite d'action
+      est parallèle à l'axe ; croire que le moment est une propriété de la
+      force seule, indépendante de l'axe choisi. Forme SYMÉTRIQUE, née de la
+      correction de la première : après avoir vu qu'un poids ne fait pas
+      tourner un manège d'axe vertical, généraliser « un poids ne fait jamais
+      tourner » et refuser son moment au pendule pesant, dont l'axe est
+      horizontal.
+    contradicts_principle: >-
+      Le moment d'une force par rapport à un axe $\Delta$ est nul dès que sa
+      droite d'action RENCONTRE l'axe ou lui est PARALLÈLE ; seule la
+      composante de la force située dans le plan perpendiculaire à $\Delta$
+      peut faire tourner, et le bras de levier est la distance de $\Delta$ à
+      la droite d'action de cette composante. Le moment n'est donc pas une
+      propriété de la force seule : la même force, au même point, à la même
+      distance, donne $0$ avec un axe vertical et jusqu'à $mgd$ avec un axe
+      horizontal (le bras de levier étant celui de la position occupée).
+  - id: mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable
+    label: >-
+      « $\omega$ et $v$ sont la même grandeur : un point du solide a la
+      même vitesse que la vitesse angulaire du solide »
+    description: >-
+      L'élève recopie la valeur numérique de $\omega$ (en rad/s) comme si
+      c'était déjà une vitesse linéaire (en m/s) pour un point donné, ou
+      inversement lit une distance comme si c'était une vitesse — en
+      oubliant que $v = d\,\omega$ dépend de la distance $d$ du point à
+      l'axe, alors que $\omega$ est commune à tout le solide (y compris,
+      dans le cas limite $d=0$, pour un point exactement sur l'axe).
+    contradicts_principle: >-
+      $\omega$ est une propriété du solide entier en rotation, la même
+      pour tous ses points ; $v = d\,\omega$ est une propriété LOCALE, qui
+      varie d'un point à l'autre selon sa distance $d$ à l'axe (nulle
+      exactement sur l'axe, maximale au bord).
+  - id: mc.physics.pc_rotation_axe_fixe.cinematique-angulaire-derivees-confondues
+    label: >-
+      « $\theta(t)$, $\omega$ et $\ddot\theta$ sont interchangeables — on
+      peut lire l'un à la place d'un autre »
+    description: >-
+      L'élève confond l'abscisse angulaire $\theta(t)$ (une fonction du
+      temps) avec sa dérivée $\omega = \dot\theta$ (un taux de variation,
+      souvent constant même quand $\theta(t)$ ne l'est pas), ou confond de
+      la même façon $\omega$ avec $\ddot\theta$ — par exemple en oubliant
+      d'intégrer une accélération angulaire constante pour obtenir la
+      vitesse angulaire à un instant donné.
+    contradicts_principle: >-
+      $\omega = \dot\theta = d\theta/dt$ et $\ddot\theta = d\omega/dt$ sont
+      des dérivées successives, pas des synonymes : $\theta(t) = 3{,}0\,t$
+      donne une $\omega$ CONSTANTE ($3{,}0\ \text{rad/s}$), et une
+      $\ddot\theta$ constante ne donne $\omega(t)$ qu'après intégration,
+      $\omega = \ddot\theta\,t$ (en partant du repos).
+  - id: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
+    label: >-
+      « $\sum \mathcal{M}_\Delta(\vec F_{ext}) = J_\Delta\,\ddot\theta$ se
+      manipule au choix — multiplier, inverser, ou croire qu'un moment
+      reste nécessaire pour que la rotation continue »
+    description: >-
+      L'élève applique mal la relation fondamentale de la dynamique de
+      rotation : multiplie $\mathcal{M}_\Delta$ et $J_\Delta$ au lieu de
+      diviser, inverse le rapport, croit qu'un $J_\Delta$ plus grand donne
+      une accélération angulaire plus grande (au lieu de plus petite), ou
+      — cas particulier le plus profond — croit que $\sum
+      \mathcal{M}_\Delta(\vec F_{ext}) = 0$ signifie que la rotation
+      s'arrête, alors que ça signifie seulement que $\omega$ reste
+      constante.
+    contradicts_principle: >-
+      $\ddot\theta = \mathcal{M}_\Delta/J_\Delta$ — le moment AU
+      NUMÉRATEUR, le moment d'inertie AU DÉNOMINATEUR, exactement comme $a
+      = F/m$ en translation ; et $\sum \mathcal{M}_\Delta(\vec F_{ext}) =
+      0 \Rightarrow \ddot\theta = 0$ décrit une vitesse angulaire
+      CONSTANTE (l'analogue rotationnel du principe d'inertie), jamais un
+      arrêt.
+  - id: mc.physics.pc_rotation_axe_fixe.energie-cinetique-rotation-formule-fausse
+    label: >-
+      « $E_c = \frac12 J_\Delta\,\omega^2$ se simplifie : on peut oublier
+      le $\frac12$, ou utiliser $\omega$ au lieu de $\omega^2$ »
+    description: >-
+      L'élève oublie le facteur $\frac12$ dans $E_c = \frac12
+      J_\Delta\,\omega^2$, ou utilise $\omega$ à la place de $\omega^2$ —
+      en perdant la dépendance quadratique en $\omega$ (doubler $\omega$
+      quadruple $E_c$, pas seulement double).
+    contradicts_principle: >-
+      $E_c = \frac12 J_\Delta\,\omega^2$ vient directement de $E_c = \frac12
+      m v^2$ appliquée point par point puis sommée (R3) : ni le facteur
+      $\frac12$, ni l'exposant $2$ sur $\omega$, ne sont optionnels.
+  - id: mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee
+    label: >-
+      « Le moment d'inertie d'un système composite ne s'obtient pas en
+      additionnant les contributions de chaque partie »
+    description: >-
+      L'élève multiplie les moments d'inertie de deux parties d'un système
+      au lieu de les additionner, ignore complètement la contribution
+      d'une partie (souvent une masse ponctuelle ajoutée), ou réutilise la
+      formule d'un solide homogène simple pour un système composite non
+      homogène au lieu de sommer les contributions séparément.
+    contradicts_principle: >-
+      $J_\Delta$ est ADDITIF : le moment d'inertie d'un système composé de
+      plusieurs parties est la SOMME des moments d'inertie de chaque
+      partie par rapport au même axe, $J_{total} = \sum_k J_k$ — jamais un
+      produit, et jamais une contribution oubliée.
+  - id: mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones
+    label: >-
+      « Pour le pendule pesant, le bras de levier du poids est $d$
+      directement, et sa période propre suit la formule du pendule
+      simple »
+    description: >-
+      L'élève prend $d = \Delta G$ lui-même comme bras de levier du poids
+      (au lieu de $d\sin\theta$), utilise $\cos\theta$ au lieu de
+      $\sin\theta$, prend l'angle $\theta$ lui-même comme bras de levier,
+      réutilise la formule du pendule simple $T_0 = 2\pi\sqrt{L/g}$ (masse
+      ponctuelle) pour un solide étendu, inverse le rapport
+      $J_\Delta/(mgd)$ sous la racine, oublie le facteur $2\pi$, ou croit
+      que $T_0$ dépend de $J_\Delta$ autrement que par une racine carrée
+      croissante.
+    contradicts_principle: >-
+      Le bras de levier du poids est $d\sin\theta$ (le côté opposé à
+      $\theta$ dans le triangle rectangle $\Delta G$/verticale), et la
+      période propre du pendule PESANT (solide étendu) est $T_0 =
+      2\pi\sqrt{J_\Delta/(mgd)}$ — qui ne coïncide avec la formule du
+      pendule SIMPLE que dans le cas particulier d'une masse ponctuelle —
+      une fonction croissante de $J_\Delta$, mais en $\sqrt{J_\Delta}$, pas
+      en $J_\Delta$.
+  - id: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+    label: >-
+      « Un autre mécanisme (frottement, force cachée, force centrifuge,
+      matériau…) ou une donnée manquante explique l'écart observé — pas la
+      répartition de la masse ou la relation déjà en jeu »
+    description: >-
+      Face à un écart de comportement déjà entièrement expliqué par la
+      répartition de la masse (ou par une relation du chapitre déjà
+      donnée), l'élève invoque une variable non mentionnée dans l'énoncé,
+      un mécanisme non pertinent (frottement différentiel, force cachée,
+      force centrifuge dans un référentiel fixe, matériau), ou déclare la
+      question impossible à trancher sans une donnée qui n'est en réalité
+      pas nécessaire.
+    contradicts_principle: >-
+      Chaque situation de ce chapitre est entièrement déterminée par les
+      grandeurs déjà données dans l'énoncé et la relation physique
+      applicable ($v=d\omega$, $\mathcal{M}_\Delta=dF$,
+      $J_\Delta=\sum_i m_id_i^2$, $\mathcal{M}_\Delta=J_\Delta\ddot\theta$,
+      $E_c=\frac12 J_\Delta\omega^2$) ; invoquer un mécanisme ou une
+      donnée absente de cette relation revient à ne pas avoir identifié
+      laquelle s'applique.
+
+items:
+  - id: ROT-1
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_rotation_axe_fixe
+    tags: [moment_force, bras_de_levier]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+    stem: >
+      On pousse une porte lourde, toujours perpendiculairement à la porte
+      (donc tangentiellement), avec une force de même intensité $F$, dans
+      deux essais : essai 1, à $d_1 = 0{,}80\ \text{m}$ des gonds (près de la
+      poignée) ; essai 2, à $d_2 = 0{,}10\ \text{m}$ des gonds (près des
+      gonds). Que peut-on dire de l'effet de rotation obtenu dans les deux
+      essais ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          L'essai 1 produit un moment huit fois plus grand que l'essai 2,
+          car $d_1/d_2 = 8$.
+        correct: true
+      - id: B
+        text: >-
+          Les deux essais produisent le même effet de rotation, puisque la
+          force $F$ est la même dans les deux cas.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+        feedback: >
+          Ce choix confond la force elle-même avec son moment. Une force ne
+          fait pas tourner « à elle seule » : son effet de rotation est
+          $\mathcal{M}_\Delta(\vec F) = d \cdot F$, où $d$ est le bras de
+          levier. Même intensité $F$, mais des distances $d$ différentes,
+          donnent des moments différents — ici huit fois plus grand pour
+          l'essai 1. Modèle erroné : « ce qui compte, c'est la force, pas où
+          elle s'applique. »
+      - id: C
+        text: >-
+          L'essai 2 produit un effet plus grand, car pousser près des gonds
+          demande plus d'effort, donc plus de force.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+        feedback: >
+          Ce choix inverse le principe du levier. La question compare deux
+          essais où la force $F$ appliquée est déjà fixée comme identique ;
+          dans la réalité, c'est justement PARCE QU'il faudrait plus de force
+          près des gonds pour obtenir le même moment que pousser y est plus
+          difficile — pas parce que, à force égale, ça produirait un effet
+          plus grand. À $F$ égale, c'est l'essai avec le plus grand bras de
+          levier qui l'emporte.
+      - id: D
+        text: "On ne peut rien dire sans connaître la masse de la porte."
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          Le moment d'une force appliquée, $\mathcal{M}_\Delta(\vec F) = d
+          \cdot F$, ne dépend que de la distance à l'axe et de l'intensité de
+          la force — pas de la masse du solide. La masse interviendra plus
+          tard, dans le moment d'inertie $J_\Delta$, pour savoir COMMENT la
+          porte répond à ce moment (son accélération angulaire) — mais pas
+          pour calculer le moment lui-même.
+    correct_feedback: >
+      $\mathcal{M}_\Delta(\vec F) = d \cdot F$ : à force égale, le moment est
+      proportionnel au bras de levier $d$. Ici $d_1/d_2 = 0{,}80/0{,}10 = 8$,
+      donc l'essai 1 produit un moment huit fois plus grand — c'est le
+      principe même du levier.
+    solution: |
+      **Moment de chaque essai (formule générale) :**
+      $$\mathcal{M}_\Delta(\vec F)_1 = d_1 \times F \qquad \mathcal{M}_\Delta(\vec F)_2 = d_2 \times F$$
+
+      **Rapport des deux moments :**
+      $$\frac{\mathcal{M}_\Delta(\vec F)_1}{\mathcal{M}_\Delta(\vec F)_2} = \frac{d_1}{d_2} = \frac{0{,}80}{0{,}10} = 8$$
+
+      Le moment de l'essai 1 (poussée sur la poignée, loin des gonds) est
+      huit fois plus grand que celui de l'essai 2 (poussée près des gonds),
+      pour une force de même intensité. C'est pour cela qu'il est tellement
+      plus facile d'ouvrir une porte en poussant sur la poignée qu'en
+      poussant près des gonds.
+
+  - id: ROT-2
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [moment_force, moment_nul, bras_de_levier]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+    stem: >
+      Un technicien exerce une force très intense $F = 500\ \text{N}$,
+      tangentielle, exactement sur l'axe de rotation d'une roue (donc à une
+      distance $d = 0$ de cet axe). Que peut-on dire de l'effet de cette
+      force sur la rotation de la roue ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le moment de cette force par rapport à l'axe est nul : elle ne
+          fait pas tourner la roue, quelle que soit son intensité.
+        correct: true
+      - id: B
+        text: >-
+          Une force aussi intense produit forcément un grand moment, donc la roue
+          accélère fortement dès qu'on l'applique.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+        feedback: >
+          Ce choix confond l'intensité d'une force avec son moment. Le
+          moment vaut $\mathcal{M}_\Delta(\vec F) = d \cdot F$ ; ici $d = 0$,
+          donc $\mathcal{M}_\Delta(\vec F) = 0$, quelle que soit la valeur de
+          $F$ — même $500\ \text{N}$. Une force réelle et intense peut donc
+          avoir un effet de rotation strictement nul. Modèle erroné :
+          « grande force = grand effet de rotation », en oubliant le bras de
+          levier.
+      - id: C
+        text: "Le moment vaut $F = 500\\ \\text{N}\\cdot\\text{m}$, puisque c'est l'intensité de la force qui le fixe."
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+        feedback: >
+          Ce choix lit directement la valeur de la force comme si c'était
+          déjà un moment — au passage, en confondant même les unités (le
+          newton, unité de force, avec le newton-mètre, unité de moment). Le
+          moment se calcule par $d \cdot F$, jamais en recopiant $F$ ; ici il
+          vaut $0 \times 500 = 0\ \text{N}\cdot\text{m}$.
+      - id: D
+        text: >-
+          Il est impossible d'appliquer une force exactement sur l'axe de rotation, si
+          bien que la question n'a pas de sens.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          C'est physiquement tout à fait possible (une force peut s'exercer
+          sur l'axe lui-même, par exemple par frottement dans un palier). Le
+          point important n'est pas de savoir si la situation est réalisable,
+          mais ce qui arrive au moment de la force quand le bras de levier
+          $d$ vaut $0$ : il s'annule, quelle que soit l'intensité de la
+          force.
+    correct_feedback: >
+      $\mathcal{M}_\Delta(\vec F) = d \cdot F = 0 \times 500 = 0\ \text{N}\cdot\text{m}$.
+      Une force appliquée exactement sur l'axe a toujours un bras de levier
+      nul, donc un moment nul : elle ne fait tourner le solide en aucune
+      façon, aussi intense soit-elle.
+    solution: |
+      **Formule du moment :**
+      $$\mathcal{M}_\Delta(\vec F) = d \cdot F$$
+
+      **Application, avec $d = 0$ :**
+      $$\mathcal{M}_\Delta(\vec F) = 0 \times 500 = 0\ \text{N}\cdot\text{m}$$
+
+      Le moment est nul quelle que soit la valeur de $F$, parce que le bras
+      de levier est nul. C'est exactement pour cette raison que la réaction
+      d'un axe sur un solide (qui s'applique toujours sur l'axe lui-même) a
+      un moment nul par rapport à cet axe, et disparaît systématiquement des
+      équations de rotation.
+
+  - id: ROT-3
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_rotation_axe_fixe
+    tags: [moment_inertie, repartition_masse]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+    stem: >
+      Deux systèmes ont exactement la même masse totale $m = 4{,}0\ \text{kg}$
+      et tournent autour du même axe $\Delta$. Le système 1 est une tige
+      homogène de longueur $L = 2{,}0\ \text{m}$ (axe perpendiculaire passant
+      par le milieu). Le système 2 est constitué de deux masses ponctuelles
+      de $2{,}0\ \text{kg}$ chacune, fixées aux deux extrémités d'une tige
+      sans masse de même longueur $2{,}0\ \text{m}$. Comparer les moments
+      d'inertie $J_1$ et $J_2$ des deux systèmes par rapport à $\Delta$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $J_2 = 3\,J_1$ : même masse totale, mais $J_\Delta$ très différent,
+          car la masse du système 2 est concentrée loin de l'axe.
+        correct: true
+      - id: B
+        text: >-
+          $J_1 = J_2$, car les deux systèmes ont la même masse totale et la
+          même longueur.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+        feedback: >
+          Ce choix suppose que $J_\Delta$ ne dépend que de la masse totale
+          (et de l'encombrement), pas de sa répartition. Or $J_\Delta =
+          \sum_i m_i d_i^2$ : chaque masse compte au carré de sa distance à
+          l'axe. Concentrer la même masse aux extrémités (loin de l'axe) au
+          lieu de l'étaler uniformément (dont une bonne partie reste près de
+          l'axe) change radicalement $J_\Delta$, même à masse et longueur
+          totales égales. Modèle erroné : « même masse ⇒ même $J_\Delta$. »
+      - id: C
+        text: >-
+          $J_1 > J_2$, car la tige homogène est un solide continu, donc plus
+          « lourde » à faire tourner.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          La continuité de la matière n'entre pour rien dans $J_\Delta$ :
+          seule compte la distribution de la masse par rapport à l'axe,
+          $\sum_i m_i d_i^2$. Le calcul donne l'inverse de ce que ce choix
+          affirme : c'est le système avec la masse concentrée loin de l'axe
+          (le système 2) qui a le $J_\Delta$ le plus grand.
+      - id: D
+        text: >-
+          Il est impossible de comparer les deux sans connaître le matériau
+          des tiges.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          Le matériau n'intervient que par la masse totale, déjà donnée et
+          identique dans les deux systèmes. $J_\Delta$ ne dépend que des
+          masses et de leurs distances à l'axe — pas de la nature du
+          matériau en tant que telle.
+    correct_feedback: >
+      $J_1 = \tfrac{1}{12}mL^2 = \tfrac{1}{12}\times 4{,}0\times 2{,}0^2
+      \approx 1{,}33\ \text{kg}\cdot\text{m}^2$. $J_2 = 2 \times 2{,}0 \times
+      1{,}0^2 = 4{,}0\ \text{kg}\cdot\text{m}^2$ (chaque masse ponctuelle est
+      à $d = L/2 = 1{,}0\ \text{m}$ de l'axe). $J_2/J_1 = 3{,}0$ : même masse
+      totale, même longueur, mais un $J_\Delta$ trois fois plus grand pour le
+      système où la masse est concentrée aux extrémités.
+    solution: |
+      **Système 1 — tige homogène (valeur usuelle, chapitre 4) :**
+      $$J_1 = \frac{1}{12}mL^2 = \frac{1}{12}\times 4{,}0\times 2{,}0^2 = \frac{1}{12}\times 16 \approx 1{,}33\ \text{kg}\cdot\text{m}^2$$
+
+      **Système 2 — deux masses ponctuelles à $d = L/2 = 1{,}0\ \text{m}$ de l'axe :**
+      $$J_2 = 2 \times m_{point} \times d^2 = 2 \times 2{,}0 \times 1{,}0^2 = 4{,}0\ \text{kg}\cdot\text{m}^2$$
+
+      **Comparaison :**
+      $$\frac{J_2}{J_1} = \frac{4{,}0}{1{,}33} = 3{,}0$$
+
+      Même masse totale ($4{,}0\ \text{kg}$), même longueur ($2{,}0\ \text{m}$),
+      mais $J_2$ vaut trois fois $J_1$ : la répartition de la masse par
+      rapport à l'axe, pas seulement sa quantité, détermine $J_\Delta$.
+
+  - id: ROT-4
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [moment_inertie, repartition_masse, additivite]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+    stem: >
+      Sur un tourniquet (portique rotatif), on fixe deux valises identiques,
+      de masse $m = 5{,}0\ \text{kg}$ chacune, mais à des distances
+      différentes de l'axe $\Delta$ : la valise A à $d_A = 0{,}20\ \text{m}$,
+      la valise B à $d_B = 1{,}0\ \text{m}$. Comparer la contribution de
+      chaque valise au moment d'inertie total du tourniquet.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La valise B contribue $25$ fois plus que la valise A au moment
+          d'inertie, bien qu'elles aient la même masse.
+        correct: true
+      - id: B
+        text: >-
+          Les deux valises contribuent de façon rigoureusement identique, puisqu'elles
+          ont exactement la même masse.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+        feedback: >
+          Ce choix suppose qu'à masse égale, la contribution à $J_\Delta$ est
+          forcément la même, quelle que soit la position. Mais la
+          contribution d'une masse ponctuelle est $m\,d^2$, pas $m$ tout
+          seul : la distance à l'axe compte, et elle compte au carré. Modèle
+          erroné : « même masse ⇒ même contribution à $J_\Delta$. »
+      - id: C
+        text: >-
+          La valise B contribue $5$ fois plus que la valise A, car elle est placée $5$
+          fois plus loin de l'axe.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+        feedback: >
+          Ce choix repère bien que la distance joue un rôle, mais suppose une
+          dépendance linéaire en $d$. La contribution est $m\,d^2$ : une
+          distance $5$ fois plus grande donne un facteur $5^2 = 25$, pas $5$.
+          C'est précisément cette dépendance en $d^2$ (et non en $d$) qui
+          rend la répartition de la masse si déterminante.
+      - id: D
+        text: >-
+          La valise A contribue davantage, car elle est plus proche de l'axe et donc
+          plus « stable » en rotation.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+        feedback: >
+          Cette réponse inverse le sens de la relation et invoque une notion
+          (la « stabilité ») qui n'entre pas dans la définition de
+          $J_\Delta$. Être plus proche de l'axe RÉDUIT la contribution d'une
+          masse au moment d'inertie ($d^2$ plus petit), ça ne l'augmente pas.
+    correct_feedback: >
+      Contribution de A : $m\,d_A^2 = 5{,}0\times 0{,}20^2 = 0{,}20\
+      \text{kg}\cdot\text{m}^2$. Contribution de B : $m\,d_B^2 = 5{,}0\times
+      1{,}0^2 = 5{,}0\ \text{kg}\cdot\text{m}^2$. Rapport : $5{,}0/0{,}20 =
+      25$. Même masse, mais une contribution $25$ fois plus grande pour la
+      valise la plus éloignée — la dépendance en $d^2$, pas en $d$.
+    solution: |
+      **Contribution de chaque valise, $m\,d^2$ :**
+      $$J_A = m\,d_A^2 = 5{,}0 \times 0{,}20^2 = 0{,}20\ \text{kg}\cdot\text{m}^2$$
+      $$J_B = m\,d_B^2 = 5{,}0 \times 1{,}0^2 = 5{,}0\ \text{kg}\cdot\text{m}^2$$
+
+      **Rapport :**
+      $$\frac{J_B}{J_A} = \frac{5{,}0}{0{,}20} = 25$$
+
+      La distance est multipliée par $5$ ($d_B/d_A = 1{,}0/0{,}20 = 5$), et la
+      contribution est multipliée par $5^2 = 25$ — la signature de la
+      dépendance en $d^2$ de $J_\Delta = \sum_i m_i d_i^2$.
+
+  - id: ROT-5
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_rotation_axe_fixe
+    tags: [vitesse_angulaire, vitesse_lineaire]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable
+    stem: >
+      Un disque tourne à une vitesse angulaire constante $\omega = 4{,}0\
+      \text{rad/s}$ autour de son axe de symétrie. Deux points sont repérés
+      sur le disque : le point $A$ à $d_A = 0{,}10\ \text{m}$ de l'axe, le
+      point $B$ à $d_B = 0{,}40\ \text{m}$ de l'axe. Comparer les vitesses
+      linéaires $v_A$ et $v_B$ de ces deux points.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $v_A = 0{,}40\ \text{m/s}$ et $v_B = 1{,}6\ \text{m/s}$ : les deux
+          points ont la même vitesse angulaire mais des vitesses linéaires
+          différentes.
+        correct: true
+      - id: B
+        text: >-
+          $v_A = v_B = 4{,}0\ \text{m/s}$, puisque les deux points appartiennent au même
+          disque, qui tourne à $\omega = 4{,}0\ \text{rad/s}$.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable
+        feedback: >
+          Ce choix recopie directement la valeur numérique de $\omega$ (en
+          rad/s) comme si c'était déjà une vitesse en m/s pour chaque point.
+          $\omega$ est la même pour tout le disque, mais la vitesse
+          LINÉAIRE d'un point dépend de sa distance à l'axe : $v = d\,\omega$.
+          Confondre les deux revient à confondre une vitesse angulaire avec
+          une vitesse linéaire — deux grandeurs différentes, avec des unités
+          différentes.
+      - id: C
+        text: >-
+          $v_A = 0{,}10\ \text{m/s}$ et $v_B = 0{,}40\ \text{m/s}$, en lisant
+          directement la distance à l'axe comme si elle était une vitesse.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable
+        feedback: >
+          Ce choix lit les distances elles-mêmes comme si elles étaient des
+          vitesses, en oubliant complètement $\omega$. La relation correcte
+          est $v = d\,\omega$ : il faut multiplier chaque distance par la
+          vitesse angulaire commune, pas se contenter de la distance seule.
+      - id: D
+        text: >-
+          On ne peut pas comparer $v_A$ et $v_B$ sans connaître au préalable le rayon
+          total du disque en rotation.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          Le rayon total du disque n'est pas nécessaire ici : seules comptent
+          la distance de chaque point à l'axe et la vitesse angulaire
+          commune $\omega$, via $v = d\,\omega$.
+    correct_feedback: >
+      $v = d\,\omega$ : $v_A = 0{,}10 \times 4{,}0 = 0{,}40\ \text{m/s}$ et
+      $v_B = 0{,}40 \times 4{,}0 = 1{,}6\ \text{m/s}$. Même $\omega$ pour tout
+      le disque, mais des vitesses linéaires différentes selon la distance à
+      l'axe — le point le plus loin va toujours plus vite.
+    solution: |
+      **Relation entre vitesse linéaire et vitesse angulaire :**
+      $$v = d\,\omega$$
+
+      **Point A :**
+      $$v_A = d_A \times \omega = 0{,}10 \times 4{,}0 = 0{,}40\ \text{m/s}$$
+
+      **Point B :**
+      $$v_B = d_B \times \omega = 0{,}40 \times 4{,}0 = 1{,}6\ \text{m/s}$$
+
+      $\omega = 4{,}0\ \text{rad/s}$ est commune à tout le disque, y compris
+      au centre ($d=0$, donc $v=0$ là) ; seule la vitesse linéaire varie
+      d'un point à l'autre, proportionnellement à sa distance à l'axe.
+
+  - id: ROT-6
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [vitesse_angulaire, vitesse_lineaire]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable
+    stem: >
+      Une roue de vélo de rayon $R = 0{,}35\ \text{m}$ tourne à une vitesse
+      angulaire $\omega = 20\ \text{rad/s}$. Quelle est la vitesse linéaire
+      d'un point situé sur le pneu, au bord de la roue ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$v = 7{,}0\\ \\text{m/s}$, par la relation $v = R\\,\\omega$"
+        correct: true
+      - id: B
+        text: "$v = 20\\ \\text{m/s}$, car c'est la valeur de $\\omega$."
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable
+        feedback: >
+          Ce choix reprend la valeur numérique de $\omega$ (en rad/s) et la
+          rebaptise vitesse en m/s. Ce sont deux grandeurs différentes, aux
+          unités différentes : il faut multiplier $\omega$ par le rayon $R$
+          pour obtenir la vitesse linéaire du bord, $v = R\,\omega$ — jamais
+          lire $\omega$ directement comme une vitesse.
+      - id: C
+        text: "$v = 0{,}35\\ \\text{m/s}$, car c'est le rayon de la roue."
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable
+        feedback: >
+          Ce choix prend le rayon lui-même comme si c'était la vitesse,
+          en oubliant complètement $\omega$. La vitesse du point au bord est
+          $v = R\,\omega$, pas $R$ seul.
+      - id: D
+        text: "On ne peut pas savoir sans connaître la masse de la roue."
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          La masse n'intervient pas dans cette relation purement
+          cinématique. Elle compterait pour le moment d'inertie $J_\Delta$
+          (donc pour la dynamique de la roue), mais pas pour calculer la
+          vitesse linéaire d'un point à partir de $\omega$ et de sa distance
+          à l'axe.
+    correct_feedback: >
+      $v = R\,\omega = 0{,}35 \times 20 = 7{,}0\ \text{m/s}$. La vitesse
+      angulaire $\omega$ (en rad/s) et la vitesse linéaire $v$ (en m/s) sont
+      deux grandeurs distinctes, reliées par la distance à l'axe — ici le
+      rayon $R$, puisqu'on regarde un point du bord.
+    solution: |
+      **Relation entre vitesse linéaire et vitesse angulaire, au bord de la roue :**
+      $$v = R\,\omega$$
+
+      **Application numérique :**
+      $$v = 0{,}35 \times 20 = 7{,}0\ \text{m/s}$$
+
+      $\omega = 20\ \text{rad/s}$ décrit la rotation de toute la roue ; $v =
+      7{,}0\ \text{m/s}$ est la vitesse linéaire du seul point situé au bord,
+      à la distance $R$ de l'axe.
+
+  - id: ROT-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_rotation_axe_fixe
+    tags: [repartition_masse, intuition_manege]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+    stem: >
+      On reprend le manège de l'accroche : deux enfants de même masse
+      s'assoient sur un disque tournant librement autour d'un axe vertical
+      fixe. Un troisième enfant pousse toujours le bord du manège avec la
+      même force horizontale, pendant la même durée, dans deux essais.
+      Essai 1 : les enfants sont assis tout près de l'axe. Essai 2 : ils
+      sont assis tout au bord. Que peut-on dire de la vitesse angulaire
+      atteinte à la fin de la poussée, dans les deux essais ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          L'essai 1 (enfants près de l'axe) atteint une vitesse angulaire
+          plus grande que l'essai 2, bien que la masse totale embarquée
+          soit identique dans les deux essais.
+        correct: true
+      - id: B
+        text: >-
+          Les deux essais atteignent la même vitesse angulaire, car ce qui
+          compte pour la rotation, comme en translation, c'est uniquement
+          la masse totale embarquée.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+        feedback: >
+          Ce choix transpose directement le raisonnement de la translation
+          (où seule la masse totale compte dans $\vec F = m\vec a$) à la
+          rotation, où il ne s'applique pas. La répartition de la masse par
+          rapport à l'axe change complètement la réponse du système, même à
+          masse totale égale. Modèle erroné : « seule la masse totale
+          compte, peu importe sa répartition ».
+      - id: C
+        text: >-
+          L'essai 2 (enfants au bord) atteint une vitesse angulaire plus
+          grande, car plus la masse est loin de l'axe, plus elle est
+          efficacement entraînée par la poussée, comme pour le bras de
+          levier d'une force.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+        feedback: >
+          Ce choix confond deux effets opposés. Plus une FORCE est
+          appliquée loin de l'axe, plus son moment est grand — c'est vrai,
+          et c'est le principe du levier. Mais ici, ce n'est pas le point
+          d'application de la poussée qui change entre les deux essais
+          (il reste au bord dans les deux cas) : c'est la position des
+          enfants, c'est-à-dire de la masse embarquée. Plus une masse est
+          loin de l'axe, plus elle RÉSISTE au changement de rotation — elle
+          ne facilite rien. Modèle erroné : « loin de l'axe, tout devient
+          plus efficace, y compris la masse embarquée ».
+      - id: D
+        text: >-
+          Impossible de répondre sans connaître la vitesse de la main de
+          l'enfant qui pousse.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          La vitesse de la main qui pousse n'est pas une donnée nécessaire
+          ici : on compare deux essais où la force exercée, son point
+          d'application et sa durée sont déjà identiques. Seule change la
+          répartition de la masse embarquée — c'est elle qui suffit à
+          expliquer la différence, sans autre donnée.
+    correct_feedback: >
+      À masse totale égale, c'est la répartition de cette masse par rapport
+      à l'axe qui détermine la résistance du système au changement de
+      rotation. Une masse proche de l'axe s'oppose moins à la mise en
+      rotation qu'une masse éloignée : l'essai 1 atteint donc une vitesse
+      angulaire plus grande. Ce sera formalisé au chapitre 4 avec le
+      moment d'inertie $J_\Delta$.
+    solution: |
+      Les deux essais partagent tout, sauf un détail : où sont assis les
+      enfants.
+
+      - Masse totale embarquée : identique dans les deux essais.
+      - Force de poussée, point d'application, durée : identiques.
+      - Seule différence : la distance des enfants à l'axe.
+
+      Ce n'est donc ni la force, ni la masse totale qui expliquent l'écart
+      observé, mais la répartition de la masse par rapport à l'axe :
+      proche de l'axe, elle résiste peu au changement de rotation ; loin de
+      l'axe, elle y résiste beaucoup plus. L'essai 1 (enfants près de
+      l'axe) atteint donc la vitesse angulaire la plus grande.
+
+  - id: ROT-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_rotation_axe_fixe
+    tags: [repartition_masse, intuition_manege]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+    stem: >
+      Sur une roue de loterie (disque tournant librement autour d'un axe
+      fixe en son centre), on colle des jetons de même masse totale dans
+      deux configurations : configuration 1, tous les jetons sont collés
+      près du centre ; configuration 2, tous les jetons sont collés sur le
+      pourtour de la roue. On fait tourner les deux roues avec exactement
+      le même geste (même force, au même endroit, pendant le même temps),
+      en partant du repos dans les deux cas. Qu'est-ce qui explique que les
+      deux roues ne réagissent pas de la même façon, alors que la masse
+      totale collée est identique ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          C'est la vitesse angulaire initiale des deux roues qui n'est pas la même au
+          moment où on les lâche.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          L'énoncé précise que les deux roues partent du repos : leur
+          vitesse angulaire initiale est nulle dans les deux cas, donc
+          identique. Ce n'est pas là que se trouve la différence entre les
+          deux essais.
+      - id: B
+        text: >-
+          À masse totale égale et geste identique, les deux roues doivent nécessairement
+          réagir de la même façon.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+        feedback: >
+          C'est exactement le raisonnement de la translation, où seule la
+          masse totale compte. En rotation, il ne suffit pas : la
+          répartition de cette masse par rapport à l'axe change la
+          réponse du système, même à masse totale et geste identiques.
+          Modèle erroné : « même masse totale ⇒ même comportement ».
+      - id: C
+        text: >-
+          C'est la répartition de la masse par rapport à l'axe qui change le
+          comportement : une masse loin de l'axe résiste davantage au changement de
+          rotation, même à masse totale égale.
+        correct: true
+      - id: D
+        text: >-
+          C'est le matériau des jetons, bois ou métal, qui change leur résistance à la
+          rotation, indépendamment de leur masse comme de leur position sur le disque.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          À masse égale, la nature du matériau n'intervient pas : ce qui
+          compte, c'est la masse elle-même et sa distance à l'axe, pas de
+          quoi elle est faite. Deux jetons de masses identiques, l'un en
+          bois et l'autre en métal, placés à la même distance de l'axe,
+          contribuent exactement de la même façon.
+    correct_feedback: >
+      La masse totale ne suffit jamais à décrire la résistance d'un système
+      au changement de rotation : ce qui compte, c'est comment cette masse
+      est répartie par rapport à l'axe. Une masse proche de l'axe s'oppose
+      peu au changement de rotation ; une masse éloignée s'y oppose
+      beaucoup plus, à masse égale.
+    solution: |
+      Les deux roues partagent tout : masse totale collée, geste (force,
+      point d'application, durée), état de repos initial. Seule diffère la
+      position des jetons par rapport à l'axe.
+
+      C'est cette répartition — proche ou loin de l'axe — qui détermine la
+      résistance de chaque roue au changement de rotation, indépendamment
+      de la masse totale, du matériau, ou de toute autre donnée non
+      mentionnée ici.
+
+  - id: ROT-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_rotation_axe_fixe
+    tags: [repartition_masse, intuition_manege]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+    stem: >
+      Reprenons le manège de l'accroche : pour une poussée identique, le
+      manège où les enfants sont assis près du centre s'élance plus vite
+      que celui où ils sont assis au bord, bien que la masse totale
+      embarquée soit la même dans les deux essais. Quelle est la bonne
+      explication de cette observation ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le manège où les enfants sont près du centre subit moins de frottement au
+          niveau de l'axe, ce qui le fait tourner plus vite pour une même poussée.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          Rien dans l'énoncé n'indique un frottement différent selon la
+          position des enfants : l'axe est le même dans les deux essais.
+          Le frottement n'est pas le mécanisme en jeu ici — c'est la
+          répartition de la masse embarquée qui gouverne la résistance au
+          changement de rotation, pas une hypothèse de frottement non
+          mentionnée.
+      - id: B
+        text: >-
+          La masse totale ne suffit pas à décrire la résistance d'un système à changer
+          sa rotation : ce qui compte, c'est la façon dont cette masse est répartie par
+          rapport à l'axe.
+        correct: true
+      - id: C
+        text: >-
+          La poussée exercée par le troisième enfant est en réalité plus forte quand les
+          enfants sont assis près du centre, car il rencontre alors moins de résistance
+          au bord du manège.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          L'énoncé précise que la poussée est « toujours la même » dans
+          les deux essais : la force exercée ne change pas. Ce choix
+          invente une différence de force qui n'existe pas dans l'énoncé,
+          au lieu de reconnaître que c'est la répartition de la masse
+          embarquée, et non la force, qui explique l'écart.
+      - id: D
+        text: >-
+          Les enfants assis au bord subissent une force centrifuge qui s'oppose
+          directement à la poussée, ce qui ralentit d'autant la mise en rotation du
+          manège.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          Il n'existe pas de « force centrifuge » réelle agissant sur les
+          enfants dans le référentiel du sol (fixe) : c'est une force
+          fictive qui n'apparaît que dans un référentiel tournant, hors du
+          cadre de ce chapitre. Le vrai mécanisme n'invoque aucune force
+          supplémentaire : c'est la répartition de la masse par rapport à
+          l'axe qui détermine la résistance au changement de rotation.
+    correct_feedback: >
+      Ce que révèle l'accroche, c'est que la masse totale ne suffit jamais
+      à décrire la réponse d'un système à une poussée en rotation : sa
+      répartition par rapport à l'axe compte tout autant, sinon plus. Ce
+      sera formalisé au chapitre 4 avec le moment d'inertie $J_\Delta$.
+    solution: |
+      L'observation (même poussée, même masse totale, réponses
+      différentes) ne peut s'expliquer ni par un frottement variable, ni
+      par une force qui varierait secrètement, ni par une force fictive.
+      La seule variable qui change réellement entre les deux essais est la
+      répartition de la masse embarquée par rapport à l'axe — c'est elle
+      qui explique l'écart observé.
+
+  - id: ROT-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_rotation_axe_fixe
+    tags: [abscisse_angulaire, vitesse_angulaire]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.cinematique-angulaire-derivees-confondues
+    stem: >
+      Un disque tourne autour de son axe fixe. Son abscisse angulaire est
+      donnée par $\theta(t) = 3{,}0\,t$ (en radians, $t$ en secondes), à
+      partir de l'instant $t=0$. Quelle est la vitesse angulaire $\omega$
+      de ce disque ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\omega$ n'est pas constante : elle vaut $3{,}0\,t$, exactement
+          comme $\theta(t)$.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.cinematique-angulaire-derivees-confondues
+        feedback: >
+          Ce choix confond l'abscisse angulaire $\theta(t)$ (une position
+          angulaire, qui change avec $t$) et la vitesse angulaire $\omega$
+          (le taux de variation de $\theta$, obtenu en dérivant). Ici
+          $\theta(t) = 3{,}0\,t$ est linéaire en $t$, donc sa dérivée
+          $\omega = \dot\theta$ est une CONSTANTE, $3{,}0\ \text{rad/s}$ —
+          pas une fonction du temps recopiée depuis $\theta(t)$.
+      - id: B
+        text: >-
+          Impossible de connaître $\omega$ sans savoir la valeur de
+          $\theta$ à un instant donné.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.cinematique-angulaire-derivees-confondues
+        feedback: >
+          $\omega = \dot\theta$ est le taux de variation de $\theta$, pas
+          sa valeur à un instant précis. Ici, $\theta(t)$ est donnée sous
+          forme d'une fonction explicite du temps : il suffit de la
+          dériver pour obtenir $\omega$, sans avoir besoin de choisir un
+          instant particulier.
+      - id: C
+        text: "$\\omega = 3{,}0\\ \\text{rad/s}$, constante : c'est le coefficient devant $t$"
+        correct: true
+      - id: D
+        text: >-
+          $\omega = \dfrac{1}{3{,}0} \approx 0{,}33\ \text{rad/s}$, en
+          inversant le coefficient devant $t$.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.cinematique-angulaire-derivees-confondues
+        feedback: >
+          Il n'y a aucune raison d'inverser le coefficient : $\theta(t) =
+          3{,}0\,t$ signifie directement que $\theta$ croît de
+          $3{,}0\ \text{rad}$ à chaque seconde, donc $\omega = \dot\theta =
+          3{,}0\ \text{rad/s}$. L'inversion ne correspond à aucune
+          opération justifiée par la définition de $\omega$.
+    correct_feedback: >
+      $\omega = \dot\theta = \dfrac{d\theta}{dt}$. Pour $\theta(t) =
+      3{,}0\,t$, la dérivée par rapport à $t$ est simplement le
+      coefficient : $\omega = 3{,}0\ \text{rad/s}$, une constante, ce qui
+      correspond à une rotation uniforme.
+    solution: |
+      **Définition de la vitesse angulaire :**
+      $$\omega = \dot\theta = \frac{d\theta}{dt}$$
+
+      **Application à $\theta(t) = 3{,}0\,t$ :**
+      $$\omega = \frac{d}{dt}(3{,}0\,t) = 3{,}0\ \text{rad/s}$$
+
+      $\theta(t)$ décrit la POSITION angulaire, qui change avec $t$ ;
+      $\omega$ décrit sa VITESSE de variation. Ici $\omega$ est constante,
+      ce qui signifie que le disque tourne à vitesse angulaire uniforme.
+
+  - id: ROT-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_rotation_axe_fixe
+    tags: [vitesse_angulaire, vitesse_lineaire]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable
+    stem: >
+      Un disque tourne à vitesse angulaire constante $\omega = 5{,}0\
+      \text{rad/s}$ autour de son axe $\Delta$, qui passe par son centre
+      $O$. Que peut-on dire de la vitesse angulaire et de la vitesse
+      linéaire du point $O$, exactement sur l'axe ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le point $O$ a une vitesse linéaire $v = 5{,}0\ \text{m/s}$, comme tous les
+          autres points du disque, puisque $\omega$ y est la même partout.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable
+        feedback: >
+          $\omega$ est bien la même pour tout le disque, mais ce n'est pas
+          vrai de la vitesse LINÉAIRE : $v = d\,\omega$ dépend de la
+          distance $d$ à l'axe, qui n'est pas la même pour tous les
+          points. Modèle erroné : « puisque $\omega$ est uniforme, $v$
+          l'est aussi ».
+      - id: B
+        text: >-
+          Le point $O$ a la même vitesse angulaire que tout le disque
+          ($\omega = 5{,}0\ \text{rad/s}$), mais sa vitesse linéaire est
+          nulle, car $v = d\,\omega$ avec $d = 0$.
+        correct: true
+      - id: C
+        text: >-
+          Le point $O$ n'a aucune vitesse angulaire, puisqu'il ne se déplace pas lorsque
+          le disque tourne.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable
+        feedback: >
+          Ce choix confond l'absence de déplacement LINÉAIRE (v=0 pour ce
+          point précis) avec l'absence de vitesse angulaire. $\omega$ est
+          une propriété du solide entier en rotation, pas d'un point
+          particulier : elle vaut $5{,}0\ \text{rad/s}$ pour le disque
+          entier, y compris pour le point $O$, même si $O$ ne bouge pas.
+      - id: D
+        text: >-
+          On ne peut rien dire du point $O$ sans connaître au préalable le rayon du
+          disque en rotation.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          Le rayon total du disque n'est pas nécessaire ici : $O$ est
+          exactement sur l'axe, donc sa distance à l'axe est $d=0$, quelle
+          que soit la taille du disque. $v = d\,\omega = 0$ ne dépend pas
+          du rayon.
+    correct_feedback: >
+      $\omega$ est commune à tout le disque, y compris exactement sur
+      l'axe : $\omega = 5{,}0\ \text{rad/s}$ pour le point $O$ aussi. Mais
+      sa vitesse linéaire $v = d\,\omega = 0 \times 5{,}0 = 0\ \text{m/s}$
+      est nulle, parce que $O$ est à distance nulle de l'axe : le centre
+      d'un disque qui tourne ne bouge pas, même quand le disque tourne
+      vite.
+    solution: |
+      **Vitesse angulaire, commune à tout le disque :**
+      $$\omega = 5{,}0\ \text{rad/s} \quad \text{(y compris pour } O\text{)}$$
+
+      **Vitesse linéaire du point $O$, avec $d_O = 0$ :**
+      $$v_O = d_O\,\omega = 0 \times 5{,}0 = 0\ \text{m/s}$$
+
+      Le point situé exactement sur l'axe a toujours une vitesse linéaire
+      nulle, quelle que soit la vitesse angulaire du solide — c'est le cas
+      limite $d=0$ de $v=d\,\omega$.
+
+  - id: ROT-12
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [moment_force, moment_nul, bras_de_levier]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+    stem: >
+      On exerce une force $\vec F$ de $40\ \text{N}$ sur le bord d'une
+      roue, à une distance $d = 0{,}25\ \text{m}$ de l'axe $\Delta$, mais
+      cette fois la force est dirigée radialement — exactement vers le
+      centre de la roue, sans aucune composante tangentielle. Quel est le
+      moment de cette force par rapport à $\Delta$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\mathcal{M}_\Delta(\vec F) = d \times F = 0{,}25 \times 40 = 10\
+          \text{N}\cdot\text{m}$, puisque la force est appliquée à $d=0{,}25\ \text{m}$
+          de l'axe.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+        feedback: >
+          Ce choix applique la formule $d \times F$ sans vérifier que la
+          force est bien tangentielle. Le bras de levier utile n'est pas
+          simplement la distance du point d'application à l'axe, mais la
+          distance entre l'axe et la LIGNE D'ACTION de la force — ici,
+          cette ligne d'action passe par l'axe (la force est radiale),
+          donc le bras de levier réel est nul, quelle que soit la distance
+          $d$ du point d'application.
+      - id: B
+        text: >-
+          Une force appliquée loin de l'axe a toujours un moment non nul, quelle que
+          soit la direction dans laquelle on l'exerce.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+        feedback: >
+          Ce n'est vrai que si la force a une composante tangentielle. Une
+          force purement radiale, même appliquée loin de l'axe, tend à
+          rapprocher ou éloigner le point de l'axe le long du rayon, pas à
+          le faire tourner autour de l'axe : son moment est nul. Modèle
+          erroné : « loin de l'axe ⇒ moment forcément non nul ».
+      - id: C
+        text: >-
+          On ne peut pas calculer de moment pour une force qui ne fait pas tourner le
+          solide sur lequel elle s'applique.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+        feedback: >
+          Le moment d'une force se calcule toujours, quelle que soit la
+          force — y compris quand ce calcul donne précisément zéro. Un
+          moment nul n'est pas une absence de calcul possible : c'est un
+          résultat parfaitement défini, qui signale que cette force n'a
+          aucun effet de rotation.
+      - id: D
+        text: >-
+          $\mathcal{M}_\Delta(\vec F) = 0$ : une force purement radiale n'a
+          pas de bras de levier utile pour la rotation, même si elle n'est
+          pas appliquée sur l'axe.
+        correct: true
+    correct_feedback: >
+      Le moment d'une force dépend de la distance entre l'axe et la LIGNE
+      D'ACTION de la force, pas seulement de la distance de son point
+      d'application. Une force radiale a une ligne d'action qui passe par
+      l'axe : son bras de levier est nul, donc son moment est nul, même
+      loin de l'axe et même pour une force intense. C'est la deuxième des
+      « deux façons d'avoir un moment nul » vues au chapitre 3.
+    solution: |
+      **Rappel — deux façons d'avoir un moment nul (chapitre 3) :**
+      - force appliquée exactement sur l'axe ($d=0$) ;
+      - force dirigée radialement, sans composante tangentielle (le cas
+        présent).
+
+      **Ici**, la force est radiale : sa ligne d'action passe par l'axe
+      $\Delta$, donc son bras de levier réel est nul :
+      $$\mathcal{M}_\Delta(\vec F) = 0$$
+
+      malgré $F = 40\ \text{N} \neq 0$ et un point d'application situé à
+      $d = 0{,}25\ \text{m}$ de l'axe. Une force ne fait tourner un solide
+      que par sa composante TANGENTIELLE.
+
+  - id: ROT-13
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_rotation_axe_fixe
+    tags: [moment_inertie, additivite]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee
+    stem: >
+      Un disque plein homogène de masse $M = 8{,}0\ \text{kg}$ et de rayon
+      $R = 0{,}50\ \text{m}$ tourne autour de son axe de symétrie $\Delta$.
+      On fixe sur son bord une masse ponctuelle $m = 2{,}0\ \text{kg}$,
+      exactement à $d = R = 0{,}50\ \text{m}$ de l'axe. Quel est le moment
+      d'inertie total du système (disque + masse) par rapport à $\Delta$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $J_{total} = 1{,}5\ \text{kg}\cdot\text{m}^2$ (somme de
+          $J_{disque}=1{,}0\ \text{kg}\cdot\text{m}^2$ et
+          $J_{masse}=0{,}5\ \text{kg}\cdot\text{m}^2$).
+        correct: true
+      - id: B
+        text: >-
+          $J_{total} = \frac{1}{2}(M+m)R^2 = \frac{1}{2}\times 10\times
+          0{,}25 = 1{,}25\ \text{kg}\cdot\text{m}^2$, en traitant la masse
+          ajoutée comme si elle faisait partie du disque homogène.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee
+        feedback: >
+          La formule $\frac12 mR^2$ n'est valable que pour un disque plein
+          HOMOGÈNE, où la masse est répartie en continu sur toute la
+          surface. Une masse ponctuelle ajoutée sur le bord n'est pas
+          répartie de cette façon : elle contribue pour $m\,d^2$
+          directement, sans le facteur $\frac12$. Il faut calculer les
+          deux contributions séparément, puis les additionner.
+      - id: C
+        text: >-
+          $J_{total} = J_{disque} \times J_{masse} = 1{,}0\times 0{,}5 =
+          0{,}50\ \text{kg}\cdot\text{m}^2$, en multipliant les deux
+          contributions.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee
+        feedback: >
+          Le moment d'inertie d'un système composite est la SOMME des
+          moments d'inertie de chacune de ses parties par rapport au même
+          axe, jamais leur produit. $J_{total} = J_{disque} + J_{masse}$,
+          pas $J_{disque} \times J_{masse}$.
+      - id: D
+        text: >-
+          $J_{total} = 1{,}0\ \text{kg}\cdot\text{m}^2$, car seule la
+          masse du disque compte : une masse ponctuelle ajoutée sur le
+          bord ne contribue pas au moment d'inertie.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee
+        feedback: >
+          Toute masse contribue à $J_\Delta$ dès qu'elle est entraînée en
+          rotation, qu'elle soit répartie en continu (le disque) ou
+          concentrée en un point (la masse ajoutée) : $J_\Delta = \sum_i
+          m_i d_i^2$ inclut chaque masse, sans exception. Ignorer la masse
+          ajoutée viole directement l'additivité de $J_\Delta$.
+    correct_feedback: >
+      $J_{disque} = \frac12 MR^2 = \frac12\times 8{,}0\times 0{,}50^2 =
+      1{,}0\ \text{kg}\cdot\text{m}^2$. $J_{masse} = m\,d^2 = 2{,}0\times
+      0{,}50^2 = 0{,}5\ \text{kg}\cdot\text{m}^2$. Par additivité,
+      $J_{total} = 1{,}0 + 0{,}5 = 1{,}5\ \text{kg}\cdot\text{m}^2$.
+    solution: |
+      **Contribution du disque (valeur usuelle, chapitre 4) :**
+      $$
+      J_{disque} = \frac{1}{2}MR^2 = \frac{1}{2}\times 8{,}0\times
+      0{,}50^2 = 1{,}0\ \text{kg}\cdot\text{m}^2
+      $$
+
+      **Contribution de la masse ponctuelle, à $d=0{,}50\ \text{m}$ :**
+      $$
+      J_{masse} = m\,d^2 = 2{,}0\times 0{,}50^2 = 0{,}5\
+      \text{kg}\cdot\text{m}^2
+      $$
+
+      **Par additivité (chapitre 4) :**
+      $$
+      J_{total} = J_{disque} + J_{masse} = 1{,}0 + 0{,}5 = 1{,}5\
+      \text{kg}\cdot\text{m}^2
+      $$
+
+  - id: ROT-14
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_rotation_axe_fixe
+    tags: [relation_fondamentale, dynamique_rotation]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
+    stem: >
+      Le tambour d'un lave-linge, assimilé à un cylindre homogène de
+      moment d'inertie $J_\Delta = 0{,}45\ \text{kg}\cdot\text{m}^2$ par
+      rapport à son axe de rotation $\Delta$, est entraîné par un moteur
+      qui exerce un moment constant $\mathcal{M}_\Delta = 3{,}6\
+      \text{N}\cdot\text{m}$. L'axe est sans frottement. Quelle est
+      l'accélération angulaire $\ddot\theta$ du tambour ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\ddot\theta = \mathcal{M}_\Delta \times J_\Delta = 3{,}6\times
+          0{,}45 \approx 1{,}6\ \text{rad/s}^2$, en multipliant les deux
+          grandeurs.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
+        feedback: >
+          La relation fondamentale est $\sum \mathcal{M}_\Delta(\vec
+          F_{ext}) = J_\Delta\,\ddot\theta$, ce qui donne $\ddot\theta =
+          \mathcal{M}_\Delta / J_\Delta$ — une DIVISION, pas une
+          multiplication. C'est exactement l'analogue de $a = F/m$ en
+          translation, jamais $a = F\times m$.
+      - id: B
+        text: "$\\ddot\\theta = 8{,}0\\ \\text{rad/s}^2$, par $\\ddot\\theta = \\mathcal{M}_\\Delta / J_\\Delta$, la vitesse initiale n'intervenant pas"
+        correct: true
+      - id: C
+        text: >-
+          $\ddot\theta = J_\Delta / \mathcal{M}_\Delta = 0{,}45/3{,}6
+          \approx 0{,}125\ \text{rad/s}^2$, en inversant le rapport.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
+        feedback: >
+          Ce choix inverse le numérateur et le dénominateur. La relation
+          fondamentale donne $\ddot\theta = \mathcal{M}_\Delta / J_\Delta$
+          — le moment de force AU NUMÉRATEUR, le moment d'inertie AU
+          DÉNOMINATEUR — jamais l'inverse.
+      - id: D
+        text: >-
+          $\ddot\theta$ ne peut pas être calculée sans connaître la
+          vitesse angulaire initiale du tambour.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          La relation fondamentale $\sum \mathcal{M}_\Delta(\vec F_{ext}) =
+          J_\Delta\,\ddot\theta$ relie l'accélération angulaire
+          INSTANTANÉE au moment et au moment d'inertie, sans référence à
+          la vitesse angulaire à cet instant — exactement comme $a=F/m$ en
+          translation ne nécessite pas de connaître $v$.
+    correct_feedback: >
+      $\ddot\theta = \mathcal{M}_\Delta / J_\Delta = 3{,}6 / 0{,}45 =
+      8{,}0\ \text{rad/s}^2$. La réaction de l'axe, sans frottement, a un
+      moment nul (chapitre 3) : le moment du moteur est donc le seul terme du
+      bilan.
+    solution: |
+      **Relation fondamentale de la dynamique de rotation :**
+      $$\sum \mathcal{M}_\Delta(\vec F_{ext}) = J_\Delta\,\ddot\theta$$
+
+      **Seul le moment du moteur contribue** (axe sans frottement, réaction
+      de moment nul) :
+      $$\ddot\theta = \frac{\mathcal{M}_\Delta}{J_\Delta} = \frac{3{,}6}{0{,}45} = 8{,}0\ \text{rad/s}^2$$
+
+  - id: ROT-15
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [relation_fondamentale, dynamique_rotation]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
+    stem: >
+      Deux volants d'inertie, de moments d'inertie différents $J_1 =
+      2{,}0\ \text{kg}\cdot\text{m}^2$ et $J_2 = 8{,}0\
+      \text{kg}\cdot\text{m}^2$ par rapport à leurs axes respectifs, sont
+      chacun soumis au même moment de force $\mathcal{M}_\Delta = 4{,}0\
+      \text{N}\cdot\text{m}$, l'axe étant sans frottement dans les deux
+      cas. En partant du repos, lequel des deux atteint la plus grande
+      vitesse angulaire après la même durée de mise en rotation ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le volant 2 (le plus inertiel, $J_2=8{,}0\ \text{kg}\cdot
+          \text{m}^2$), car un moment d'inertie plus grand entraîne une
+          accélération angulaire plus grande, comme une plus grande masse
+          entraînerait une plus grande accélération en translation.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
+        feedback: >
+          C'est l'inverse : $\ddot\theta = \mathcal{M}_\Delta / J_\Delta$
+          — le moment d'inertie est au DÉNOMINATEUR, exactement comme la
+          masse dans $a = F/m$. Une plus grande masse (ou un plus grand
+          $J_\Delta$) donne une accélération plus PETITE, pas plus
+          grande, à force (ou moment) égale.
+      - id: B
+        text: >-
+          Les deux volants atteignent la même vitesse angulaire, car ils
+          sont soumis au même moment de force.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
+        feedback: >
+          Le moment de force n'est qu'un des deux termes de la relation
+          fondamentale : $\ddot\theta = \mathcal{M}_\Delta / J_\Delta$
+          dépend aussi de $J_\Delta$, qui est différent pour les deux
+          volants. Un même moment appliqué à des moments d'inertie
+          différents donne des accélérations, donc des vitesses
+          angulaires finales, différentes.
+      - id: C
+        text: >-
+          On ne peut pas comparer sans connaître la masse totale de chaque
+          volant.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          Le moment d'inertie $J_\Delta$ est déjà donné pour chaque volant :
+          c'est précisément la grandeur qui encapsule à la fois la masse
+          et sa répartition, et c'est elle seule qui intervient dans la
+          relation fondamentale — pas besoin de la masse séparément.
+      - id: D
+        text: >-
+          Le volant 1 (le moins inertiel, $J_1=2{,}0\ \text{kg}\cdot
+          \text{m}^2$) : à moment égal, une accélération angulaire
+          $\ddot\theta = \mathcal{M}_\Delta/J_\Delta$ plus grande, donc une
+          vitesse angulaire plus grande après le même temps.
+        correct: true
+    correct_feedback: >
+      $\ddot\theta_1 = 4{,}0/2{,}0 = 2{,}0\ \text{rad/s}^2$ et $\ddot
+      \theta_2 = 4{,}0/8{,}0 = 0{,}5\ \text{rad/s}^2$. Le volant 1 accélère
+      quatre fois plus vite ; en partant du repos, il atteint donc une
+      vitesse angulaire quatre fois plus grande après la même durée
+      ($\omega = \ddot\theta\,t$).
+    solution: |
+      **Accélération angulaire de chaque volant :**
+      $$\ddot\theta_1 = \frac{\mathcal{M}_\Delta}{J_1} = \frac{4{,}0}{2{,}0} = 2{,}0\ \text{rad/s}^2$$
+      $$\ddot\theta_2 = \frac{\mathcal{M}_\Delta}{J_2} = \frac{4{,}0}{8{,}0} = 0{,}5\ \text{rad/s}^2$$
+
+      **En partant du repos**, $\omega = \ddot\theta\,t$ : à durée $t$
+      égale, $\omega_1 = 4\,\omega_2$. Le volant 1, moins inertiel,
+      accélère plus vite et atteint donc la plus grande vitesse angulaire.
+      C'est l'exact analogue rotationnel de « à force égale, l'objet le
+      moins massif accélère le plus ».
+
+  - id: ROT-16
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: pc_rotation_axe_fixe
+    tags: [energie_cinetique_rotation, moment_inertie]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.energie-cinetique-rotation-formule-fausse
+    stem: >
+      Un volant d'inertie de moment d'inertie $J_\Delta = 0{,}60\
+      \text{kg}\cdot\text{m}^2$ tourne à la vitesse angulaire $\omega =
+      10\ \text{rad/s}$ autour de son axe fixe $\Delta$. Quelle est son
+      énergie cinétique de rotation ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $E_c = J_\Delta\,\omega^2 = 0{,}60\times 100 = 60\ \text{J}$, en
+          oubliant le facteur $\frac12$.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.energie-cinetique-rotation-formule-fausse
+        feedback: >
+          La formule est $E_c = \frac12 J_\Delta\,\omega^2$ : le facteur
+          $\frac12$ n'est pas optionnel, il vient directement de $E_c =
+          \frac12 m v^2$ appliquée point par point (chapitre 4). L'oublier double
+          le résultat.
+      - id: B
+        text: >-
+          $E_c = \frac12 J_\Delta\,\omega = \frac12\times 0{,}60\times 10 =
+          3{,}0\ \text{J}$, en utilisant $\omega$ au lieu de $\omega^2$.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.energie-cinetique-rotation-formule-fausse
+        feedback: >
+          $E_c = \frac12 J_\Delta\,\omega^2$ dépend du CARRÉ de $\omega$,
+          pas de $\omega$ elle-même — exactement comme $E_c=\frac12mv^2$
+          dépend du carré de $v$. Utiliser $\omega$ seule sous-estime
+          fortement l'énergie.
+      - id: C
+        text: "$E_c = 30\\ \\text{J}$, par $E_c = \\tfrac12 J_\\Delta\\,\\omega^2$, sans la masse"
+        correct: true
+      - id: D
+        text: >-
+          On ne peut pas calculer $E_c$ sans connaître la masse du volant,
+          car l'énergie cinétique dépend toujours de la masse.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          $J_\Delta$ encapsule déjà tout ce qu'il faut savoir sur la masse
+          ET sa répartition par rapport à l'axe : $E_c = \frac12
+          J_\Delta\,\omega^2$ ne demande rien de plus. Redemander la masse
+          séparément est une donnée redondante, déjà contenue dans
+          $J_\Delta$.
+    correct_feedback: >
+      $E_c = \frac12 J_\Delta\,\omega^2 = \frac12\times 0{,}60\times 10^2 =
+      \frac12\times 0{,}60\times 100 = 30\ \text{J}$.
+    solution: |
+      **Énergie cinétique de rotation (chapitre 6) :**
+      $$E_c = \frac{1}{2}J_\Delta\,\omega^2$$
+
+      **Application numérique :**
+      $$E_c = \frac{1}{2}\times 0{,}60\times 10^2 = \frac{1}{2}\times 0{,}60\times 100 = 30\ \text{J}$$
+
+  - id: ROT-17
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: pc_rotation_axe_fixe
+    tags: [energie_cinetique_rotation, moment_inertie]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.energie-cinetique-rotation-formule-fausse
+    stem: >
+      Un solide tournant autour d'un axe fixe voit sa vitesse angulaire
+      doubler ($\omega$ devient $2\,\omega$), son moment d'inertie
+      $J_\Delta$ restant inchangé. Comment évolue son énergie cinétique de
+      rotation $E_c$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $E_c$ est multipliée par $4$, car $E_c = \frac12 J_\Delta
+          \omega^2$ dépend du carré de $\omega$.
+        correct: true
+      - id: B
+        text: "$E_c$ est multipliée par $2$, comme $\\omega$."
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.energie-cinetique-rotation-formule-fausse
+        feedback: >
+          $E_c$ ne dépend pas linéairement de $\omega$, mais de $\omega^2$.
+          Doubler $\omega$ multiplie donc $\omega^2$ par $2^2=4$, pas par
+          $2$ : la dépendance quadratique amplifie l'effet d'un changement
+          de $\omega$.
+      - id: C
+        text: >-
+          $E_c$ ne change pas, puisque $J_\Delta$ (qui gouverne
+          l'inertie) reste le même.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.energie-cinetique-rotation-formule-fausse
+        feedback: >
+          $J_\Delta$ n'est pas le seul facteur de $E_c = \frac12
+          J_\Delta\,\omega^2$ : $\omega^2$ compte tout autant, et il
+          quadruple ici puisque $\omega$ double. $J_\Delta$ inchangé ne
+          signifie pas $E_c$ inchangée.
+      - id: D
+        text: >-
+          $E_c$ est multipliée par $2$ : peu importe si c'est $J_\Delta$
+          ou $\omega$ qui double, un facteur $2$ sur l'un des deux termes
+          du produit double toujours $E_c$.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.energie-cinetique-rotation-formule-fausse
+        feedback: >
+          $J_\Delta$ et $\omega$ n'interviennent pas de la même façon dans
+          $E_c = \frac12 J_\Delta\,\omega^2$ : $J_\Delta$ y intervient de
+          façon LINÉAIRE (doubler $J_\Delta$ double $E_c$), mais $\omega$
+          y intervient au CARRÉ (doubler $\omega$ quadruple $E_c$). Ce ne
+          sont pas des rôles équivalents.
+    correct_feedback: >
+      $E_c = \frac12 J_\Delta\,\omega^2$ : remplacer $\omega$ par $2\omega$
+      donne $E_c' = \frac12 J_\Delta\,(2\omega)^2 = 4\times \frac12
+      J_\Delta\,\omega^2 = 4\,E_c$. La dépendance en $\omega^2$ (et non en
+      $\omega$) est la même que dans $E_c=\frac12 mv^2$ pour $v$.
+    solution: |
+      **Énergie cinétique avant et après doublement de $\omega$ :**
+      $$E_c = \frac{1}{2}J_\Delta\,\omega^2 \qquad E_c' = \frac{1}{2}J_\Delta\,(2\omega)^2 = \frac{1}{2}J_\Delta\times 4\omega^2 = 4\,E_c$$
+
+      Le facteur $J_\Delta$ intervient linéairement, le facteur $\omega$
+      intervient au carré : doubler $\omega$ quadruple $E_c$, tandis que
+      doubler $J_\Delta$ (à $\omega$ fixée) ne ferait que doubler $E_c$.
+
+  - id: ROT-18
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [energie_cinetique_rotation, additivite]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee
+    stem: >
+      Un disque de moment d'inertie $J_{disque} = 3{,}0\
+      \text{kg}\cdot\text{m}^2$ porte, fixée sur son bord, une masse
+      ponctuelle dont la contribution au moment d'inertie total vaut
+      $J_{masse} = 2{,}0\ \text{kg}\cdot\text{m}^2$. L'ensemble tourne à
+      $\omega = 4{,}0\ \text{rad/s}$. Quelle est l'énergie cinétique de
+      rotation totale du système ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $E_c = \frac12\times 3{,}0\times 4{,}0^2 = 24\ \text{J}$, en
+          ignorant la contribution de la masse ponctuelle.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee
+        feedback: >
+          $J_\Delta$ est additif (chapitre 4) : le moment d'inertie total inclut
+          la contribution du disque ET celle de la masse ponctuelle, $J_
+          {total} = J_{disque} + J_{masse}$. Ignorer la masse ajoutée
+          revient à calculer l'énergie du disque seul, pas celle du
+          système complet.
+      - id: B
+        text: >-
+          $E_c = \frac12\times(3{,}0\times 2{,}0)\times 4{,}0^2 = 48\
+          \text{J}$, en multipliant les deux moments d'inertie au lieu de
+          les additionner.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee
+        feedback: >
+          L'additivité de $J_\Delta$ pour un système composite se traduit
+          par une SOMME, jamais un produit : $J_{total} = J_{disque} +
+          J_{masse}$, pas $J_{disque}\times J_{masse}$.
+      - id: C
+        text: >-
+          $E_c = J_{total}\times\omega^2 = 5{,}0\times 16 = 80\ \text{J}$,
+          en oubliant le facteur $\frac12$.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.energie-cinetique-rotation-formule-fausse
+        feedback: >
+          Le moment d'inertie total $J_{total}=5{,}0\ \text{kg}\cdot
+          \text{m}^2$ est ici correctement calculé par addition, mais le
+          facteur $\frac12$ de $E_c=\frac12 J_\Delta \omega^2$ a été
+          oublié : cela double le résultat par rapport à la vraie valeur.
+      - id: D
+        text: "$E_c = 40\\ \\text{J}$, les deux moments d'inertie s'additionnant avant le calcul"
+        correct: true
+    correct_feedback: >
+      $J_{total} = J_{disque}+J_{masse} = 3{,}0+2{,}0 = 5{,}0\
+      \text{kg}\cdot\text{m}^2$ (additivité, chapitre 4). $E_c = \frac12
+      J_{total}\,\omega^2 = \frac12\times 5{,}0\times 4{,}0^2 = \frac12
+      \times 5{,}0\times 16 = 40\ \text{J}$.
+    solution: |
+      **Moment d'inertie total, par additivité (chapitre 4) :**
+      $$J_{total} = J_{disque} + J_{masse} = 3{,}0 + 2{,}0 = 5{,}0\ \text{kg}\cdot\text{m}^2$$
+
+      **Énergie cinétique de rotation (chapitre 6) :**
+      $$E_c = \frac{1}{2}J_{total}\,\omega^2 = \frac{1}{2}\times 5{,}0\times 4{,}0^2 = \frac{1}{2}\times 5{,}0\times 16 = 40\ \text{J}$$
+
+      L'additivité de $J_\Delta$ établie au chapitre 4 se transmet directement au
+      calcul de l'énergie cinétique totale, à condition d'utiliser le bon
+      $J_{total}$ (une somme, jamais un produit) et de ne pas oublier le
+      facteur $\frac12$.
+
+  - id: ROT-19
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [pendule_pesant, moment_force]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones
+    stem: >
+      Un pendule pesant (solide de masse $m = 1{,}2\ \text{kg}$, centre
+      d'inertie $G$ à $d = \Delta G = 0{,}40\ \text{m}$ de l'axe $\Delta$)
+      est écarté de $\theta = 30°$ par rapport à la verticale. On prend $g
+      \approx 9{,}8\ \text{m/s}^2$. Quel est le moment du poids par
+      rapport à $\Delta$ à cet instant ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\mathcal{M}_\Delta(\vec P) = -mg\,d\sin\theta \approx -1{,}2 \times
+          9{,}8\times 0{,}40\times \sin 30° \approx -2{,}4\ \text{N}\cdot\text{m}$, le
+          bras de levier valant $d\sin\theta$
+        correct: true
+      - id: B
+        text: >-
+          $\mathcal{M}_\Delta(\vec P) = -mg\,d \approx -1{,}2\times 9{,}8
+          \times 0{,}40 \approx -4{,}7\ \text{N}\cdot\text{m}$, en oubliant
+          le facteur $\sin\theta$ et en prenant directement $d$ comme bras
+          de levier.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones
+        feedback: >
+          Le vrai bras de levier du poids n'est pas $d=\Delta G$ lui-même,
+          mais la distance entre l'axe et la LIGNE D'ACTION verticale du
+          poids, qui vaut $d\sin\theta$ (chapitre 7). Prendre $d$ seul revient à
+          ignorer que le bras de levier change avec l'angle d'écart —
+          il ne serait égal à $d$ que si $\theta = 90°$.
+      - id: C
+        text: >-
+          $\mathcal{M}_\Delta(\vec P) = -mg\,d\cos\theta \approx -1{,}2
+          \times 9{,}8\times 0{,}40\times \cos 30° \approx -4{,}1\
+          \text{N}\cdot\text{m}$, en utilisant $\cos\theta$ au lieu de
+          $\sin\theta$.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones
+        feedback: >
+          C'est le sinus, pas le cosinus, qui donne le bras de levier
+          ici : dans le triangle rectangle formé par $\Delta$, $G$ et la
+          verticale, le bras de levier $d\sin\theta$ est le côté OPPOSÉ à
+          l'angle $\theta$, pas le côté adjacent. À $\theta=0$ (pendule à
+          la verticale), le bras de levier doit être nul — ce que donne
+          $\sin 0 = 0$, pas $\cos 0 = 1$.
+      - id: D
+        text: >-
+          $\mathcal{M}_\Delta(\vec P) = -mg\,\theta \approx -1{,}2\times
+          9{,}8\times 0{,}524 \approx -6{,}2\ \text{N}\cdot\text{m}$ (avec
+          $\theta$ en radians), en utilisant l'angle lui-même comme bras
+          de levier.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones
+        feedback: >
+          Le bras de levier est une DISTANCE (en mètres), pas un angle :
+          $\theta$ (même exprimé en radians) n'a pas les bonnes unités
+          pour jouer ce rôle. Le bras de levier correct est $d\sin\theta$,
+          où $d$ est bien une longueur et $\sin\theta$ un facteur sans
+          dimension.
+    correct_feedback: >
+      Le bras de levier du poids est $d\sin\theta$ (chapitre 7, triangle rectangle
+      $\Delta G$/verticale) : $\mathcal{M}_\Delta(\vec P) = -mg\,d\sin
+      \theta = -1{,}2\times 9{,}8\times 0{,}40\times 0{,}50 \approx
+      -2{,}4\ \text{N}\cdot\text{m}$. Le signe négatif traduit le fait que
+      ce moment ramène toujours $\theta$ vers $0$.
+    solution: |
+      **Moment du poids par rapport à $\Delta$ (chapitre 7) :**
+      $$\mathcal{M}_\Delta(\vec P) = -mg\,d\sin\theta$$
+
+      **Application numérique**, avec $\sin 30° = 0{,}50$ :
+      $$\mathcal{M}_\Delta(\vec P) = -1{,}2\times 9{,}8\times 0{,}40\times 0{,}50 \approx -2{,}4\ \text{N}\cdot\text{m}$$
+
+      Le bras de levier réel n'est pas $d$ tout seul, mais $d\sin\theta$ :
+      la composante du segment $\Delta G$ perpendiculaire à la direction
+      verticale du poids.
+
+  - id: ROT-20
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [pendule_pesant, periode_propre]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones
+    stem: >
+      Un pendule pesant a un moment d'inertie $J_\Delta = 0{,}18\
+      \text{kg}\cdot\text{m}^2$ par rapport à son axe, une masse $m =
+      0{,}90\ \text{kg}$, et un centre d'inertie situé à $d = 0{,}25\
+      \text{m}$ de l'axe. On prend $g \approx 9{,}8\ \text{m/s}^2$.
+      Quelle est sa période propre des petites oscillations $T_0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $T_0 = 2\pi\sqrt{\dfrac{d}{g}} = 2\pi\sqrt{\dfrac{0{,}25}{9{,}8}}
+          \approx 1{,}0\ \text{s}$, en réutilisant la formule du pendule
+          simple $T_0=2\pi\sqrt{L/g}$ avec $d$ à la place de $L$.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones
+        feedback: >
+          $T_0 = 2\pi\sqrt{L/g}$ est la formule du PENDULE SIMPLE (masse
+          ponctuelle), vue à un autre chapitre. Le pendule PESANT est un
+          solide étendu, dont la masse n'est pas concentrée en un seul
+          point : sa période propre fait intervenir $J_\Delta$, pas
+          seulement $d$ et $g$. C'est la formule $T_0 = 2\pi\sqrt{J_\Delta
+          /(mgd)}$ (chapitre 7) qui s'applique ici, jamais celle du pendule simple.
+      - id: B
+        text: >-
+          $T_0 = 2\pi\sqrt{\dfrac{mgd}{J_\Delta}} =
+          2\pi\sqrt{\dfrac{2{,}205}{0{,}18}} \approx 22\ \text{s}$, en
+          inversant le rapport sous la racine.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones
+        feedback: >
+          La formule est $T_0 = 2\pi\sqrt{J_\Delta/(mgd)}$ : le moment
+          d'inertie AU NUMÉRATEUR de la fraction sous la racine, $mgd$ AU
+          DÉNOMINATEUR. Inverser ce rapport change radicalement le
+          résultat.
+      - id: C
+        text: >-
+          $T_0 = 2\pi\sqrt{\dfrac{J_\Delta}{mgd}} =
+          2\pi\sqrt{\dfrac{0{,}18}{2{,}205}} \approx 1{,}8\ \text{s}$
+        correct: true
+      - id: D
+        text: >-
+          $T_0 = \sqrt{\dfrac{J_\Delta}{mgd}} \approx 0{,}29\ \text{s}$, en
+          oubliant le facteur $2\pi$.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones
+        feedback: >
+          Le facteur $2\pi$ vient de la résolution de l'équation
+          harmonique $\ddot\theta + \omega_0^2\theta=0$ (chapitre sur les
+          systèmes oscillants) : $T_0 = 2\pi/\omega_0$, pas $1/\omega_0$.
+          L'omettre sous-estime fortement la période propre.
+    correct_feedback: >
+      $mgd = 0{,}90\times 9{,}8\times 0{,}25 = 2{,}205\ \text{N}\cdot
+      \text{m}$. $T_0 = 2\pi\sqrt{J_\Delta/(mgd)} = 2\pi\sqrt{0{,}18/
+      2{,}205} = 2\pi\sqrt{0{,}0816} \approx 1{,}8\ \text{s}$.
+    solution: |
+      **Calcul intermédiaire :**
+      $$mg\,d = 0{,}90\times 9{,}8\times 0{,}25 = 2{,}205\ \text{N}\cdot\text{m}$$
+
+      **Période propre (chapitre 7) :**
+      $$T_0 = 2\pi\sqrt{\frac{J_\Delta}{mg\,d}} = 2\pi\sqrt{\frac{0{,}18}{2{,}205}} = 2\pi\sqrt{0{,}0816} \approx 1{,}8\ \text{s}$$
+
+      Cette formule ne coïncide avec celle du pendule simple
+      ($T_0=2\pi\sqrt{L/g}$) que dans le cas particulier d'une masse
+      ponctuelle ; pour un solide étendu, $J_\Delta$ remplace $mL^2$.
+
+  - id: ROT-21
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [pendule_pesant, periode_propre]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones
+    stem: >
+      Deux pendules pesants ont la même masse $m$ et le même centre
+      d'inertie à la même distance $d$ de leur axe respectif, mais des
+      moments d'inertie différents : $J_1 = 0{,}10\ \text{kg}\cdot
+      \text{m}^2$ pour le premier, $J_2 = 0{,}40\ \text{kg}\cdot
+      \text{m}^2$ pour le second (sa masse est plus étalée autour de
+      l'axe). Lequel des deux a la plus grande période propre $T_0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le pendule 1 ($J_1=0{,}10\ \text{kg}\cdot\text{m}^2$) : un
+          moment d'inertie plus petit donnerait une période propre plus
+          grande, par une relation inverse entre les deux grandeurs.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones
+        feedback: >
+          $T_0 = 2\pi\sqrt{J_\Delta/(mgd)}$ est une fonction CROISSANTE de
+          $J_\Delta$ (il est au numérateur, sous la racine) : plus $J_
+          \Delta$ est grand, plus $T_0$ est grande — pas l'inverse. Le
+          pendule le plus « inertiel » (le plus résistant au changement de
+          rotation) oscille plus lentement, pas plus vite.
+      - id: B
+        text: >-
+          Le pendule 2 ($J_2=0{,}40\ \text{kg}\cdot\text{m}^2$) : $T_0$
+          croît avec $J_\Delta$, donc un moment d'inertie plus grand donne
+          une période plus grande — ici $T_0$ est doublée puisque $J_2 =
+          4\,J_1$.
+        correct: true
+      - id: C
+        text: >-
+          Les deux pendules ont la même période $T_0$, car $J_\Delta$
+          n'intervient pas dans la formule de la période propre d'un
+          pendule pesant.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones
+        feedback: >
+          $J_\Delta$ est justement l'une des trois grandeurs de $T_0 =
+          2\pi\sqrt{J_\Delta/(mgd)}$, avec $m$ et $d$ : elle n'est
+          absolument pas absente de la formule. Deux pendules de même $m$
+          et $d$ mais de $J_\Delta$ différents ont nécessairement des
+          périodes propres différentes.
+      - id: D
+        text: >-
+          Le pendule 2 a une période quatre fois plus grande que le
+          pendule 1, car $T_0$ est proportionnel à $J_\Delta$ (sans racine
+          carrée).
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones
+        feedback: >
+          $T_0$ est proportionnel à $\sqrt{J_\Delta}$, pas à $J_\Delta$
+          lui-même : la racine carrée est une partie essentielle de la
+          formule. Un $J_\Delta$ multiplié par $4$ multiplie $T_0$ par
+          $\sqrt{4}=2$, pas par $4$.
+    correct_feedback: >
+      $T_0 = 2\pi\sqrt{J_\Delta/(mgd)}$, avec $m$, $g$, $d$ identiques
+      pour les deux pendules : seul $J_\Delta$ change. $T_{0,2}/T_{0,1} =
+      \sqrt{J_2/J_1} = \sqrt{4} = 2$ : le pendule 2, avec un $J_\Delta$
+      quatre fois plus grand, a une période propre deux fois plus grande.
+    solution: |
+      **Rapport des périodes propres, à $m$, $g$, $d$ fixés :**
+      $$\frac{T_{0,2}}{T_{0,1}} = \sqrt{\frac{J_2}{J_1}} = \sqrt{\frac{0{,}40}{0{,}10}} = \sqrt{4} = 2$$
+
+      Le pendule 2, dont la masse est plus étalée autour de l'axe (donc
+      $J_\Delta$ plus grand), oscille deux fois plus lentement — sa
+      période propre est le double de celle du pendule 1.
+
+  - id: ROT-22
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_rotation_axe_fixe
+    tags: [synthese, relation_fondamentale]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+    stem: >
+      Une poulie d'entraînement, assimilée à un disque homogène de masse
+      $m = 4{,}0\ \text{kg}$ et de rayon $R = 0{,}20\ \text{m}$, peut
+      tourner sans frottement autour de son axe de symétrie $\Delta$. Une
+      courroie exerce sur sa jante une force tangentielle constante $F =
+      8{,}0\ \text{N}$ pendant $t = 2{,}0\ \text{s}$, la poulie partant du
+      repos. Quelle est la vitesse angulaire $\omega$ atteinte par la
+      poulie à la fin de cette durée ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\omega = 20\ \text{rad/s}$, en prenant directement
+          l'accélération angulaire $\ddot\theta$ comme vitesse angulaire,
+          sans la multiplier par la durée $t$.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.cinematique-angulaire-derivees-confondues
+        feedback: >
+          $\ddot\theta = 20\ \text{rad/s}^2$ est bien correcte comme étape
+          intermédiaire, mais c'est une ACCÉLÉRATION, pas une vitesse : il
+          faut encore intégrer, $\omega = \ddot\theta\,t$, pour obtenir la
+          vitesse angulaire à l'instant $t_1$. Confondre les deux revient
+          à confondre $\ddot\theta$ et $\omega$ — deux grandeurs
+          différentes, d'unités différentes ($\text{rad/s}^2$ contre
+          $\text{rad/s}$).
+      - id: B
+        text: >-
+          $\omega = 200\ \text{rad/s}$, en utilisant directement $F =
+          8{,}0\ \text{N}$ comme moment de la force, sans la multiplier
+          par le bras de levier $R$.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+        feedback: >
+          Le moment de la force tangentielle appliquée sur la jante est
+          $\mathcal{M}_\Delta(\vec F) = R\times F$, pas $F$ seule (chapitre 3) : le
+          bras de levier n'est pas optionnel. L'omettre revient à
+          confondre l'intensité d'une force avec son moment.
+      - id: C
+        text: >-
+          $\omega = 0{,}80\ \text{rad/s}$, en prenant le moment d'inertie
+          égal à la masse ($J_\Delta = m$), sans tenir compte du rayon.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+        feedback: >
+          Le moment d'inertie d'un disque est $J_\Delta = \frac12 mR^2$
+          (chapitre 4), pas $m$ tout seul : il dépend aussi de la répartition de
+          la masse par rapport à l'axe, via $R^2$. Confondre $J_\Delta$
+          avec la masse ignore complètement la géométrie du disque.
+      - id: D
+        text: "$\\omega = 40\\ \\text{rad/s}$, en passant par $\\mathcal{M}_\\Delta = F R$, puis $\\ddot\\theta = \\mathcal{M}_\\Delta/J_\\Delta$ avec $J_\\Delta = \\tfrac12 mR^2$, et enfin $\\omega = \\ddot\\theta\\,t$"
+        correct: true
+    correct_feedback: >
+      $J_\Delta = \frac12 mR^2 = \frac12\times 4{,}0\times 0{,}20^2 =
+      0{,}08\ \text{kg}\cdot\text{m}^2$. $\mathcal{M}_\Delta(\vec F) =
+      R\times F = 0{,}20\times 8{,}0 = 1{,}6\ \text{N}\cdot\text{m}$.
+      $\ddot\theta = \mathcal{M}_\Delta/J_\Delta = 1{,}6/0{,}08 = 20\
+      \text{rad/s}^2$. En partant du repos, $\omega = \ddot\theta\,t =
+      20\times 2{,}0 = 40\ \text{rad/s}$.
+    solution: |
+      **Moment d'inertie du disque (chapitre 4) :**
+      $$J_\Delta = \frac{1}{2}mR^2 = \frac{1}{2}\times 4{,}0\times 0{,}20^2 = 0{,}08\ \text{kg}\cdot\text{m}^2$$
+
+      **Moment de la force tangentielle sur la jante (chapitre 3), bras de levier $R$ :**
+      $$\mathcal{M}_\Delta(\vec F) = R\times F = 0{,}20\times 8{,}0 = 1{,}6\ \text{N}\cdot\text{m}$$
+
+      **Accélération angulaire (relation fondamentale, chapitre 5) :**
+      $$\ddot\theta = \frac{\mathcal{M}_\Delta(\vec F)}{J_\Delta} = \frac{1{,}6}{0{,}08} = 20\ \text{rad/s}^2$$
+
+      **Vitesse angulaire après $t=2{,}0\ \text{s}$, en partant du repos :**
+      $$\omega = \ddot\theta\,t = 20\times 2{,}0 = 40\ \text{rad/s}$$
+
+  - id: ROT-23
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [moment_inertie, synthese]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+    stem: >
+      Une pièce de monnaie, assimilée à un disque plein homogène, et un
+      rouleau de papier essuie-tout, assimilé à un cylindre plein
+      homogène, ont exactement la même masse $m$ et le même rayon $R$,
+      mais le rouleau est deux fois plus long que la pièce n'est épaisse.
+      On exerce sur chacun, tangentiellement au bord, le même moment de
+      force $\mathcal{M}_\Delta$, pendant la même durée, en partant du
+      repos. Lequel des deux atteint la plus grande vitesse angulaire ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Les deux atteignent exactement la même vitesse angulaire : $J_\Delta = \frac12
+          mR^2$ pour un disque comme pour un cylindre, et ne dépend jamais de la
+          longueur selon l'axe.
+        correct: true
+      - id: B
+        text: >-
+          Le rouleau (le plus long) atteint une vitesse angulaire plus
+          petite, car sa masse est répartie sur une plus grande longueur,
+          donc plus loin de l'axe.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+        feedback: >
+          Ce choix confond deux directions différentes : la longueur du
+          rouleau se déploie LE LONG de l'axe de rotation, pas
+          perpendiculairement à lui. Le moment d'inertie $J_\Delta =
+          \sum_i m_i d_i^2$ ne dépend que de la distance des masses à
+          l'axe (dans le plan perpendiculaire à l'axe), jamais de leur
+          position le long de l'axe lui-même — c'est exactement la
+          remarque faite pour le cylindre au chapitre 4.
+      - id: C
+        text: >-
+          La pièce de monnaie (la plus courte) atteint une vitesse
+          angulaire plus petite, car elle est plus « compacte », donc plus
+          difficile à faire tourner.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          La « compacité » n'est pas une grandeur qui figure dans $J_
+          \Delta = \frac12 mR^2$ : seules la masse et le rayon comptent.
+          À masse et rayon égaux, la forme plus ou moins allongée le long
+          de l'axe ne change rien à la résistance au changement de
+          rotation.
+      - id: D
+        text: >-
+          On ne peut pas savoir sans connaître la longueur exacte du rouleau et
+          l'épaisseur exacte de la pièce de monnaie.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          C'est précisément la remarque faite au chapitre 4 : pour un cylindre
+          plein homogène tournant autour de son axe de révolution, $J_
+          \Delta = \frac12 mR^2$ ne contient ni la longueur ni
+          l'épaisseur. Ces deux informations ne sont donc pas nécessaires
+          pour répondre.
+    correct_feedback: >
+      Un disque plein et un cylindre plein homogènes de même masse et même
+      rayon ont exactement le même $J_\Delta = \frac12 mR^2$, quelle que
+      soit leur longueur (ou épaisseur) le long de l'axe (chapitre 4) : à moment
+      de force égal et durée égale, ils atteignent donc rigoureusement la
+      même vitesse angulaire.
+    solution: |
+      **Moment d'inertie, identique pour les deux solides (chapitre 4) :**
+      $$J_{disque} = J_{cylindre} = \frac{1}{2}mR^2$$
+
+      Cette expression ne contient ni la longueur du cylindre ni
+      l'épaisseur du disque : la répartition de la masse AUTOUR de l'axe
+      (via $R$) est ce qui compte, pas son étalement LE LONG de l'axe.
+
+      **Conséquence**, par la relation fondamentale $\ddot\theta =
+      \mathcal{M}_\Delta/J_\Delta$ : à $\mathcal{M}_\Delta$ et $J_\Delta$
+      égaux, les deux solides ont la même $\ddot\theta$, donc la même
+      $\omega$ après la même durée, en partant du repos.
+
+  - id: ROT-24
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [relation_fondamentale, synthese]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
+    stem: >
+      On fait tourner la roue arrière d'un vélo posé sur un pied
+      d'entretien (la roue n'est plus en contact avec le sol) en
+      actionnant les pédales, jusqu'à atteindre une vitesse angulaire
+      $\omega = 12\ \text{rad/s}$. On arrête alors brusquement de pédaler ;
+      l'axe de la roue est parfaitement sans frottement et on néglige
+      toute résistance de l'air. Que devient le mouvement de la roue
+      ensuite ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La roue s'arrête immédiatement, puisque plus rien ne la fait tourner une fois le pédalage interrompu."
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
+        feedback: >
+          Ce choix suppose qu'un moment moteur est nécessaire pour
+          MAINTENIR la rotation — l'équivalent, pour la rotation, de
+          croire qu'une force est nécessaire pour maintenir un mouvement
+          en translation. Or $\sum \mathcal{M}_\Delta(\vec F_{ext}) = 0$
+          donne $\ddot\theta = 0$ (relation fondamentale) : la vitesse
+          angulaire reste CONSTANTE, elle ne s'annule pas.
+      - id: B
+        text: >-
+          La roue ralentit progressivement puis finit par s'arrêter d'elle-même, car son
+          moment d'inertie « se consomme » peu à peu au fil du temps.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
+        feedback: >
+          $J_\Delta$ est une propriété géométrique fixe de la roue (sa
+          masse et sa répartition par rapport à l'axe) : ce n'est pas une
+          ressource qui s'épuise avec le temps. Rien dans la relation
+          fondamentale ne fait diminuer $J_\Delta$ après l'arrêt du
+          pédalage.
+      - id: C
+        text: >-
+          La roue continue de tourner indéfiniment à $\omega = 12\ \text{rad/s}$ : le
+          moment moteur disparu, $\sum \mathcal{M}_\Delta(\vec F_{ext}) = 0$, donc
+          $\ddot\theta = 0$ et la vitesse angulaire reste constante.
+        correct: true
+      - id: D
+        text: >-
+          La roue continue de tourner, mais en accélérant peu à peu, car plus aucune
+          force ne s'oppose désormais à son mouvement.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
+        feedback: >
+          L'absence de moment résultant donne $\ddot\theta = 0$
+          (accélération NULLE), pas une accélération positive : « plus
+          rien ne s'y oppose » signifie que $\omega$ reste constante, pas
+          qu'elle augmente. Confondre les deux revient à oublier que
+          $\ddot\theta=0$ décrit un état de vitesse angulaire constante,
+          exactement comme en translation un objet sans force résultante
+          garde une vitesse constante, sans accélérer.
+    correct_feedback: >
+      Une fois le pédalage arrêté, le seul moment restant est celui de la
+      réaction de l'axe — toujours nul (chapitre 3, axe sans frottement) : $\sum
+      \mathcal{M}_\Delta(\vec F_{ext}) = 0$, donc $\ddot\theta = 0$
+      (relation fondamentale, chapitre 5). La roue continue de tourner à $\omega =
+      12\ \text{rad/s}$, indéfiniment, sans jamais ralentir ni accélérer.
+    solution: |
+      **Bilan des moments après l'arrêt du pédalage :** seule la réaction
+      de l'axe subsiste, et son moment est toujours nul (chapitre 3 : elle
+      s'applique sur l'axe lui-même). Donc :
+      $$\sum \mathcal{M}_\Delta(\vec F_{ext}) = 0$$
+
+      **Relation fondamentale (chapitre 5) :**
+      $$J_\Delta\,\ddot\theta = 0 \quad\Rightarrow\quad \ddot\theta = 0$$
+
+      La vitesse angulaire reste constante, égale à $12\ \text{rad/s}$,
+      indéfiniment — l'exact analogue rotationnel du principe d'inertie :
+      sans moment résultant, pas de changement de vitesse angulaire, ni
+      ralentissement ni accélération.
+
+  # Ajouté le 2026-09-05 : deux familles siégeaient à 2 items du banc, donc
+  # sous le plancher de 3 — `cinematique-angulaire-derivees-confondues` et
+  # `moment-inertie-additivite-erronee`. Un seul item les vise toutes les deux,
+  # parce qu'un système composite mis en rotation les fait apparaître ensemble :
+  # il faut ADDITIONNER les contributions, puis DÉRIVER l'abscisse angulaire.
+  - id: ROT-25
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [moment_inertie, systeme_composite, cinematique_angulaire]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee
+    stem: >
+      Un disque homogène de moment d'inertie $J_0 = 0{,}20\ \text{kg}\cdot
+      \text{m}^2$ tourne autour de son axe. On y fixe une petite masse
+      ponctuelle $m = 0{,}50\ \text{kg}$ à la distance $r = 0{,}40\ \text{m}$
+      de l'axe. L'abscisse angulaire de l'ensemble s'écrit alors
+      $\theta(t) = 6{,}0\,t$ (en radians, $t$ en secondes). Que valent le
+      moment d'inertie du système et sa vitesse angulaire ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $J_\Delta = J_0 + mr^2 = 0{,}28\ \text{kg}\cdot\text{m}^2$ et
+          $\omega = \dot\theta = 6{,}0\ \text{rad}\cdot\text{s}^{-1}$, constante
+        correct: true
+      - id: B
+        text: >-
+          $J_\Delta = J_0 \times mr^2 = 0{,}016\ \text{kg}\cdot\text{m}^2$ et
+          $\omega = 6{,}0\ \text{rad}\cdot\text{s}^{-1}$
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee
+        feedback: >
+          Les moments d'inertie s'ADDITIONNENT, ils ne se multiplient pas :
+          $J_\Delta = \sum m_i r_i^2$ est une somme sur toutes les masses du
+          système, donc ajouter une masse ne peut qu'augmenter $J_\Delta$. Ici
+          la multiplication le fait au contraire chuter à $0{,}016$, soit dix
+          fois MOINS que le disque seul — un système alourdi qui deviendrait
+          plus facile à mettre en rotation.
+      - id: C
+        text: >-
+          $J_\Delta = 0{,}28\ \text{kg}\cdot\text{m}^2$, et
+          $\omega = \theta(t) = 6{,}0\,t$ : la vitesse angulaire augmente donc
+          avec le temps
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.cinematique-angulaire-derivees-confondues
+        feedback: >
+          $\theta(t)$ est la POSITION angulaire, $\omega$ son taux de variation :
+          $\omega = \dot\theta$. Dériver $\theta(t) = 6{,}0\,t$ donne la
+          constante $6{,}0\ \text{rad}\cdot\text{s}^{-1}$ — l'angle croît, la
+          vitesse angulaire ne bouge pas. C'est le mouvement de rotation
+          UNIFORME, exactement comme $x(t) = vt$ décrit une translation à
+          vitesse constante.
+      - id: D
+        text: >-
+          $J_\Delta = J_0 = 0{,}20\ \text{kg}\cdot\text{m}^2$, la masse
+          ponctuelle étant trop petite pour compter, et
+          $\omega = 6{,}0\ \text{rad}\cdot\text{s}^{-1}$
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee
+        feedback: >
+          Ce n'est pas la masse qui décide, c'est $mr^2$ : ici
+          $0{,}50 \times 0{,}40^2 = 0{,}080\ \text{kg}\cdot\text{m}^2$, soit
+          40 % du disque entier. Une petite masse placée LOIN de l'axe pèse
+          lourd dans un moment d'inertie — c'est tout le principe du volant
+          d'inertie, dont la matière est concentrée sur la jante.
+    correct_feedback: >
+      $J_\Delta = J_0 + mr^2 = 0{,}20 + 0{,}50 \times 0{,}40^2 =
+      0{,}28\ \text{kg}\cdot\text{m}^2$ : les contributions s'additionnent. Et
+      $\omega = \dot\theta = 6{,}0\ \text{rad}\cdot\text{s}^{-1}$ : la dérivée
+      d'une fonction affine du temps est une constante.
+    solution: |
+      **Le moment d'inertie.** Il se construit comme une somme :
+      $$J_\Delta = \sum_i m_i r_i^2 = J_0 + m r^2$$
+      $$
+      J_\Delta = 0{,}20 + 0{,}50 \times (0{,}40)^2 = 0{,}20 + 0{,}080
+      = 0{,}28\ \text{kg}\cdot\text{m}^2
+      $$
+      Contrôle : ajouter de la matière ne peut qu'AUGMENTER la résistance au
+      changement de rotation. Tout résultat inférieur à $J_0$ est faux d'avance.
+
+      **La vitesse angulaire.** Elle est la dérivée de l'abscisse angulaire :
+      $$
+      \omega = \dot\theta = \frac{\mathrm{d}}{\mathrm{d}t}(6{,}0\,t)
+      = 6{,}0\ \text{rad}\cdot\text{s}^{-1}
+      $$
+      constante : la rotation est uniforme. $\theta$ croît, $\omega$ non,
+      $\ddot\theta = 0$.
+
+  # Ajoutés le 2026-09-24, suite à spec-scene-manege.md §8.2-8.3 : la scène
+  # « manège » distingue deux modèles jusque-là fusionnés sous
+  # `moment-force-sans-bras-de-levier` — appliquer d×F sans bras de levier
+  # (ignorer le bras) et appliquer d×F sans regarder la DIRECTION de la force
+  # par rapport à l'axe (bras correct, direction ignorée). Le second modèle,
+  # `moment-force-direction-vs-axe`, ouvre ici avec son plancher de 3 items —
+  # ROT-26 et ROT-27 en R2 (le cas parallèle, sous deux formes), ROT-28 en R6
+  # (co-étiqueté avec la famille pendule pesant : la forme SYMÉTRIQUE de la
+  # même erreur, « un poids ne fait jamais tourner », y est visée).
+  - id: ROT-26
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_rotation_axe_fixe
+    tags: [moment_force, moment_nul, axe_direction]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe
+    stem: >
+      Un manège est un disque horizontal qui tourne autour d'un axe vertical
+      fixe $\Delta$ passant par son centre. Un enfant de $25\ \text{kg}$
+      s'assoit tout au bord, à $1{,}50\ \text{m}$ de l'axe. On prend
+      $g = 9{,}8\ \text{m}\cdot\text{s}^{-2}$. Que vaut le moment de son
+      poids par rapport à $\Delta$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $367{,}5\ \text{N}\cdot\text{m}$, en multipliant les $245\
+          \text{N}$ du poids par les $1{,}50\ \text{m}$ qui séparent
+          l'enfant de l'axe.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe
+        feedback: >
+          Ce calcul prend la plus grande distance disponible sur ce disque,
+          $1{,}50\ \text{m}$, mais le bras de levier ne se lit pas
+          seulement sur la position du point d'application : il faut
+          regarder la direction de la force par rapport à l'axe. Le poids
+          est vertical, et l'axe $\Delta$ l'est aussi : sa droite d'action
+          lui est donc parallèle, et une force parallèle à l'axe n'a rien
+          dans le plan où le manège peut tourner. Le produit
+          $1{,}50\times245$ multiplie une distance par une force qui ne
+          fait rien tourner — le nombre existe, mais il ne représente aucun
+          effet de rotation.
+      - id: B
+        text: >-
+          $0\ \text{N}\cdot\text{m}$ : le poids de l'enfant est vertical,
+          donc parallèle à l'axe $\Delta$, sans composante dans le plan de
+          rotation.
+        correct: true
+      - id: C
+        text: >-
+          $245\ \text{N}\cdot\text{m}$ : c'est la valeur du poids de
+          l'enfant, déjà exprimée dans l'unité du moment.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+        feedback: >
+          Ce choix recopie $245$, qui est une force, en newtons ; un moment
+          se mesure en newton-mètres et se calcule par $d\times F$, jamais
+          en recopiant $F$ tel quel. Et ici, même ce calcul serait hors de
+          propos : le poids est parallèle à l'axe $\Delta$, donc son moment
+          est rigoureusement nul.
+      - id: D
+        text: >-
+          Environ $184\ \text{N}\cdot\text{m}$ : l'axe reprend la moitié
+          du poids de l'enfant, et l'autre moitié, $122{,}5\ \text{N}$,
+          agit à $1{,}50\ \text{m}$ de l'axe.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          Rien dans l'énoncé ne partage le poids entre l'axe et le manège :
+          ce partage est inventé. Et même une moitié du poids resterait
+          verticale, donc parallèle à l'axe $\Delta$ : quelle que soit la
+          part de la force qu'on retient, une force parallèle à l'axe n'a
+          aucune composante dans le plan de rotation, et son moment par
+          rapport à $\Delta$ est nul.
+    correct_feedback: >
+      Le poids de l'enfant est vertical, exactement comme l'axe $\Delta$ :
+      sa droite d'action lui est donc parallèle. Une force parallèle à
+      l'axe n'a aucune composante dans le plan perpendiculaire à $\Delta$ —
+      le seul plan où un moment peut exister : $\mathcal{M}_\Delta(\vec P) =
+      0$, malgré les $245\ \text{N}$ de la force et le $1{,}50\ \text{m}$
+      qui la sépare de l'axe.
+    solution: |
+      **Ce qui décide, ce n'est pas la distance à l'axe, c'est la direction
+      de la force par rapport à cet axe.**
+
+      Le poids de l'enfant :
+      $$P = mg = 25 \times 9{,}8 = 245\ \text{N}$$
+
+      est une force verticale. Le manège tourne autour d'un axe $\Delta$
+      lui aussi vertical : la droite d'action du poids est donc
+      **parallèle** à $\Delta$.
+
+      Le moment d'une force par rapport à un axe est nul dès que sa droite
+      d'action rencontre l'axe **ou lui est parallèle** :
+      $$\mathcal{M}_\Delta(\vec P) = 0$$
+
+      Appliquer $d\times F$ sans vérifier cette condition —
+      $1{,}50\times245 = 367{,}5$ — revient à multiplier une distance par
+      une force qui n'a aucune composante dans le plan de rotation : le
+      nombre existe, mais il ne correspond à aucun effet réel.
+
+  - id: ROT-27
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [moment_force, moment_nul, axe_direction]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe
+    stem: >
+      Un manège tourne autour d'un axe vertical fixe $\Delta$. On applique
+      au même point $A$, situé à $1{,}20\ \text{m}$ de l'axe, trois forces
+      successives de même intensité $F = 100\ \text{N}$ : $\vec F_1$
+      verticale vers le bas, $\vec F_2$ horizontale dirigée droit vers
+      l'axe, $\vec F_3$ horizontale perpendiculaire au rayon $\Delta A$.
+      Lesquelles de ces forces font tourner le manège ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\vec F_1$ et $\vec F_3$ : les deux sont appliquées à
+          $1{,}20\ \text{m}$ de l'axe $\Delta$.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe
+        feedback: >
+          La distance à l'axe est la même pour les trois forces,
+          $1{,}20\ \text{m}$ : ce n'est donc pas elle qui les départage.
+          $\vec F_1$ est verticale, comme l'axe $\Delta$ : sa droite
+          d'action lui est parallèle, et son moment est nul, même
+          appliquée à $1{,}20\ \text{m}$. Seule $\vec F_3$ est
+          perpendiculaire au rayon $\Delta A$, avec une composante
+          tangentielle complète.
+      - id: B
+        text: >-
+          Les trois forces ont le même moment, $120\ \text{N}\cdot\text{m}$
+          : même intensité, même point d'application $A$.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+        feedback: >
+          Même intensité et même point d'application ne donnent pas le même
+          moment : la direction de chaque force par rapport à l'axe
+          $\Delta$ compte tout autant. $\vec F_1$ est parallèle à l'axe
+          (moment nul), $\vec F_2$ est radiale, sa droite d'action passant
+          par $\Delta$ (moment nul aussi) : seule $\vec F_3$, tangentielle,
+          donne $1{,}20\times100 = 120\ \text{N}\cdot\text{m}$.
+      - id: C
+        text: >-
+          $\vec F_3$ seule : sa droite d'action est perpendiculaire au
+          rayon $\Delta A$, donc entièrement dans le plan de rotation.
+        correct: true
+      - id: D
+        text: >-
+          $\vec F_2$ seule : dirigée droit vers l'axe, c'est elle qui
+          transmet le mieux sa force au manège.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+        feedback: >
+          La droite d'action d'une force dirigée droit vers l'axe passe par
+          $\Delta$ : son bras de levier est nul, et son moment aussi, quelle
+          que soit son intensité. Pour faire tourner, une force doit avoir
+          une composante perpendiculaire au rayon : c'est $\vec F_3$,
+          entièrement tangentielle, qui donne
+          $1{,}20\times100 = 120\ \text{N}\cdot\text{m}$.
+    correct_feedback: >
+      Seule $\vec F_3$ a un moment non nul : perpendiculaire au rayon
+      $\Delta A$, elle est entièrement tangentielle,
+      $\mathcal{M}_\Delta(\vec F_3) = 1{,}20\times100 = 120\
+      \text{N}\cdot\text{m}$. $\vec F_1$, verticale, est parallèle à l'axe
+      $\Delta$ (lui aussi vertical) : moment nul. $\vec F_2$, dirigée droit
+      vers l'axe, est radiale : sa droite d'action passe par $\Delta$,
+      moment nul aussi.
+    solution: |
+      **Trois forces, même intensité, même point d'application — mais
+      trois directions différentes par rapport à l'axe $\Delta$.**
+
+      $\vec F_1$ est verticale. L'axe $\Delta$ est vertical (le manège
+      tourne autour d'un axe vertical) : la droite d'action de $\vec F_1$
+      lui est donc **parallèle**.
+      $$\mathcal{M}_\Delta(\vec F_1) = 0$$
+
+      $\vec F_2$ est horizontale, dirigée droit vers l'axe : sa droite
+      d'action **rencontre** $\Delta$.
+      $$\mathcal{M}_\Delta(\vec F_2) = 0$$
+
+      $\vec F_3$ est horizontale, perpendiculaire au rayon $\Delta A$ :
+      elle est entièrement tangentielle, dans le plan perpendiculaire à
+      $\Delta$.
+      $$\mathcal{M}_\Delta(\vec F_3) = 1{,}20 \times 100 = 120\
+      \text{N}\cdot\text{m}$$
+
+      Trois forces de même intensité, appliquées au même point, à la même
+      distance de l'axe — et une seule fait tourner le manège. Ce n'est ni
+      l'intensité ni la distance qui décide : c'est la direction de la
+      force par rapport à l'axe.
+
+  - id: ROT-28
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_rotation_axe_fixe
+    tags: [moment_force, axe_direction, pendule_pesant]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe
+    stem: >
+      Une barre homogène de longueur $L = 0{,}80\ \text{m}$ et de masse
+      $m = 2{,}5\ \text{kg}$ tourne autour d'un axe fixe $\Delta$ passant
+      par une de ses extrémités ; son centre d'inertie $G$ est à
+      $\Delta G = 0{,}40\ \text{m}$ de l'axe. On prend
+      $g = 9{,}8\ \text{m}\cdot\text{s}^{-2}$.
+      Cas 1 : $\Delta$ est vertical (la barre balaie un plan horizontal).
+      Cas 2 : $\Delta$ est horizontal, la barre pouvant tourner dans un
+      plan vertical ; on la maintient à l'horizontale avant de la lâcher.
+      Comparer le moment du poids dans les deux cas.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Les deux valent $9{,}8\ \text{N}\cdot\text{m}$ : même poids,
+          même distance $\Delta G$ dans les deux cas.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe
+        feedback: >
+          Le poids et la distance $\Delta G$ sont en effet identiques dans
+          les deux cas — mais c'est la direction du poids par rapport à
+          l'axe $\Delta$ qui décide du moment. Dans
+          le cas 1, l'axe est vertical et le poids aussi : ils sont
+          parallèles, le moment y est nul. Dans le cas 2 seulement, l'axe
+          horizontal rend le poids perpendiculaire à $\Delta$, ce qui donne
+          le moment non nul.
+      - id: B
+        text: >-
+          Les deux valent $0\ \text{N}\cdot\text{m}$ : un poids est dirigé
+          vers le bas, il ne fait pas tourner la barre.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe
+        feedback: >
+          C'est la généralisation que le cas 1 rend tentante — et c'est
+          justement elle qu'il faut casser : le poids n'a pas changé entre
+          les deux cas, mais l'axe si. Dans le cas 1 (axe vertical), le
+          poids lui est parallèle : moment nul. Dans le cas 2 (axe
+          horizontal), le même poids devient perpendiculaire à l'axe : il
+          a maintenant un bras de levier, $\Delta G$, et un moment bien
+          réel, $9{,}8\ \text{N}\cdot\text{m}$.
+      - id: C
+        text: >-
+          Cas 1 : $0\ \text{N}\cdot\text{m}$ ; cas 2 :
+          $19{,}6\ \text{N}\cdot\text{m}$, en prenant la longueur de la
+          barre, $0{,}80\ \text{m}$, comme bras de levier.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones
+        feedback: >
+          Le cas 1 est correct. Mais dans le cas 2, le poids s'applique en
+          $G$ : le bras de levier n'est pas la longueur de
+          la barre, c'est la distance de l'axe au centre d'inertie $G$,
+          soit $\Delta G = 0{,}40\ \text{m}$ — la moitié de la longueur,
+          pas la longueur entière. Le moment vaut $9{,}8\
+          \text{N}\cdot\text{m}$, pas le double.
+      - id: D
+        text: >-
+          Cas 1 : $0\ \text{N}\cdot\text{m}$ ; cas 2 :
+          $9{,}8\ \text{N}\cdot\text{m}$ — le poids n'a pas changé, c'est
+          la direction de l'axe qui décide.
+        correct: true
+    correct_feedback: >
+      Dans les deux cas, le poids vaut $P = mg = 2{,}5\times9{,}8 =
+      24{,}5\ \text{N}$, appliqué au même point $G$, à la même distance
+      $\Delta G = 0{,}40\ \text{m}$. Seul l'axe change de direction. Cas 1
+      (axe vertical) : le poids, vertical, lui est parallèle — moment nul.
+      Cas 2 (axe horizontal, barre à l'horizontale) : le poids est
+      perpendiculaire à l'axe, entièrement dans le plan de rotation —
+      $\mathcal{M}_\Delta = P\times\Delta G = 24{,}5\times0{,}40 =
+      9{,}8\ \text{N}\cdot\text{m}$.
+    solution: |
+      **Le poids ne change pas ; c'est l'axe qui change de direction.**
+
+      Poids de la barre :
+      $$P = mg = 2{,}5 \times 9{,}8 = 24{,}5\ \text{N}$$
+
+      **Cas 1 — axe $\Delta$ vertical.** La barre balaie un plan
+      horizontal : le poids, vertical, est **parallèle** à $\Delta$.
+      $$\mathcal{M}_\Delta(\vec P)_{\text{cas 1}} = 0$$
+
+      **Cas 2 — axe $\Delta$ horizontal, barre à l'horizontale.** Le
+      poids, toujours vertical, est maintenant **perpendiculaire** à
+      l'axe : il est entièrement dans le plan de rotation, avec pour bras
+      de levier la distance $\Delta G = 0{,}40\ \text{m}$ (et non la
+      longueur de la barre, $0{,}80\ \text{m}$).
+      $$\mathcal{M}_\Delta(\vec P)_{\text{cas 2}} = P \times \Delta G =
+      24{,}5 \times 0{,}40 = 9{,}8\ \text{N}\cdot\text{m}$$
+
+      Même poids, même $\Delta G$, même point d'application — et deux
+      moments radicalement différents, $0$ puis $9{,}8\ \text{N}\cdot
+      \text{m}$ : c'est la direction de l'axe, seule, qui a tout changé.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05. L'ancien déclarait franchement `floor_met: false` et
+# nommait ce qui manquait — mais il comptait au `primary_misconception` (une
+# tête d'affiche par item), pas au distracteur comme le fait la chaîne. Les
+# deux conventions sont légitimes ; elles ne donnent simplement pas le même
+# chiffre, et c'est celle de la chaîne qui décide de ce que le modèle apprenant
+# peut évaluer. Sous cette convention, deux familles seulement restaient sous
+# le plancher : `cinematique-angulaire-derivees-confondues` et
+# `moment-inertie-additivite-erronee`, à 2 items chacune. ROT-25 les vise
+# ensemble. Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
+# RÉGÉNÉRÉ le 2026-09-24 : dixième modèle (`moment-force-direction-vs-axe`,
+# spec-scene-manege §8.2) et ROT-26…28. Recompter a montré que la ligne de
+# `mecanisme-alternatif-…` omettait ROT-2 (12 écrits, 13 réels) — la porte ne
+# vérifie que `total_items` et `floor_met`, pas les lignes : un tableau dit
+# « généré » ne l'est que si on le régénère.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise:                   { count: 6, items: [ROT-3, ROT-4, ROT-7, ROT-8, ROT-22, ROT-23] }
+    mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier:                 { count: 6, items: [ROT-1, ROT-2, ROT-12, ROT-22, ROT-26, ROT-27] }
+    mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe:                    { count: 3, items: [ROT-26, ROT-27, ROT-28] }
+    mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable:                     { count: 3, items: [ROT-5, ROT-6, ROT-11] }
+    mc.physics.pc_rotation_axe_fixe.cinematique-angulaire-derivees-confondues:        { count: 3, items: [ROT-10, ROT-22, ROT-25] }
+    mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee:              { count: 3, items: [ROT-14, ROT-15, ROT-24] }
+    mc.physics.pc_rotation_axe_fixe.energie-cinetique-rotation-formule-fausse:        { count: 3, items: [ROT-16, ROT-17, ROT-18] }
+    mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee:                { count: 3, items: [ROT-13, ROT-18, ROT-25] }
+    mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones: { count: 4, items: [ROT-19, ROT-20, ROT-21, ROT-28] }
+    mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort: { count: 14, items: [ROT-1, ROT-2, ROT-3, ROT-5, ROT-6, ROT-7, ROT-8, ROT-9, ROT-11, ROT-14, ROT-15, ROT-16, ROT-23, ROT-26] }
+  total_items: 28
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 4   # ROT-6 rapatrié de R4 le 2026-09-19 : son énoncé est un pur v = R.omega
+    R2: 5   # ROT-26, ROT-27 (2026-09-24) : le cas PARALLÈLE du moment nul, que la leçon n'écrivait pas
+    R3: 4
+    R4: 2   # conséquence ASSUMÉE : le barreau de la relation fondamentale, coeur du chapitre, ne porte plus que deux items (ROT-14, ROT-15)
+    R5: 3
+    R6: 4   # ROT-28 : la même barre, deux axes — co-étiquetée avec la famille du pendule pesant
+    R7: 3
+  note_banc_herite: >-
+    Le banc ROT-1…ROT-24 a été écrit AVANT que l'inventaire de misconceptions
+    existe : il portait des `tags:` mais aucun `primary_misconception` ni aucun
+    `misconception:` par distracteur. Une passe ultérieure les a ajoutés de
+    façon additive, sans toucher un seul énoncé, choix, retour ou corrigé.
+    `mecanisme-alternatif-ou-donnees-invoquees-a-tort` y est le tag le plus
+    fréquent au niveau du distracteur — « inventer une variable ou un mécanisme
+    dont l'énoncé ne parle pas » est la forme récurrente du troisième
+    distracteur dans ce banc hérité — alors qu'un seul item en fait sa tête
+    d'affiche.
+  honest_state: >-
+    Les dix misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Six y siègent EXACTEMENT (3 items), dont la neuve
+    (`moment-force-direction-vs-axe`) : la marge est nulle et tout retrait
+    d'item la casse.

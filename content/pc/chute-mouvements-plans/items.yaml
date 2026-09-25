@@ -1,0 +1,2203 @@
+notion: chute-mouvements-plans
+skill_code: pc_chute_plans
+misconceptions:
+  # ── la famille PROJECTILE (indépendance des axes, symétrie de la parabole).
+  #    Déclarée le 2026-09-05 : les checkpoints cp-r0-predict et cp-symetrie
+  #    visaient ces cinq erreurs depuis leur écriture, mais aucune n'était
+  #    déclarée ici — un diagnostic sans libellé, que rien ne pouvait afficher.
+  # Quatre familles ajoutées le 2026-09-05 en taguant les 24 items du banc,
+  # jusque-là muets : elles couvrent la grandeur mesurée (portée, flèche,
+  # angle), la mise en équation, l'orientation des axes, et la force de Lorentz.
+  - id: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
+    label: "« Portée, flèche et longueur de trajectoire sont interchangeables — et l'angle optimal est le plus grand »"
+    description: >
+      L'élève confond la PORTÉE (distance horizontale) avec la hauteur
+      maximale, la longueur réelle du trajet ou la vitesse d'impact ; il place
+      la portée maximale à $90^\circ$ ; il fait varier flèche et portée comme
+      $v_0$ plutôt que comme $v_0^2$ ; ou il croit deux angles complémentaires
+      identiques en tout.
+    contradicts_principle: >
+      La PORTÉE est la distance horizontale entre le lancement et le retour au
+      sol ; la FLÈCHE est la hauteur maximale. La portée est maximale à
+      $45^\circ$ — tirer à la verticale la réduit à zéro. Les deux varient en
+      $v_0^2$ : doubler $v_0$ les quadruple. Et deux angles complémentaires
+      donnent la MÊME portée, jamais la même flèche.
+
+  - id: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
+    label: "« Le coefficient, le signe ou le facteur ½ de l'équation de trajectoire est faux »"
+    description: >
+      Dans $y(x) = \tan\alpha\\,x - \dfrac{g}{2v_0^2\cos^2\alpha}x^2$, l'élève
+      oublie le facteur $2$ du dénominateur, se trompe de signe sur le terme en
+      $x^2$, oublie le $\cos^2\alpha$, ou applique la formule de la flèche à la
+      portée (et réciproquement).
+    contradicts_principle: >
+      Le terme en $x^2$ est TOUJOURS négatif — la trajectoire est une parabole
+      tournée vers le bas — et son coefficient porte $2v_0^2\cos^2\alpha$ au
+      dénominateur. Flèche $f = \dfrac{v_{0y}^2}{2g}$ et portée
+      $D = \dfrac{v_0^2\sin 2\alpha}{g}$ sont deux formules distinctes.
+
+  - id: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
+    label: "« Le signe de $a_y$ ou la projection de $v_0$ ne dépend pas de l'axe choisi »"
+    description: >
+      L'élève écrit $a_y = +g$ sur un axe orienté vers le haut, échange sinus et
+      cosinus dans la projection de la vitesse initiale, ou justifie $a_x = 0$
+      par une propriété de la vitesse plutôt que par celle de la force.
+    contradicts_principle: >
+      $\vec g$ pointe vers le bas : sur un axe $Oy$ orienté vers le HAUT,
+      $a_y = -g$. La composante VERTICALE de $\vec v_0$ est
+      $v_{0y} = v_0\sin\alpha$, l'horizontale $v_0\cos\alpha$. Et $a_x = 0$
+      parce que le POIDS n'a pas de composante horizontale — pas parce que
+      $v_{0x}$ serait nulle.
+
+  - id: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
+    label: "« La force de Lorentz accélère la particule, ou ignore le signe de la charge »"
+    description: >
+      L'élève lui prête une trajectoire parabolique comme un projectile, une
+      accélération dans le sens du mouvement, aucun effet sur une charge
+      positive, ou un rayon qui augmenterait avec $B$ ou avec $|q|$.
+    contradicts_principle: >
+      La force de Lorentz est PERPENDICULAIRE à la vitesse : elle en change la
+      direction, jamais la norme — d'où un mouvement circulaire UNIFORME. Le
+      rayon vaut $R = \dfrac{m v_0}{|q|B}$ : il croît avec $v_0$ et $m$,
+      décroît avec $B$ et $|q|$. Deux charges opposées tournent dans des sens
+      contraires, sur des cercles de même rayon.
+
+  - id: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
+    label: "« La vitesse horizontale varie comme la verticale : elle ralentit à la montée, repart à la descente »"
+    description: "L'élève lie les deux axes : il applique à $v_x$ le profil de $v_y$, comme si le mouvement était d'un seul bloc."
+    contradicts_principle: "Le poids est purement vertical, donc $a_x = 0$ à chaque instant et $v_x(t) = v_{0x}$ reste constante du lancer à l'impact. Les deux axes sont indépendants : seul $v_y$ ralentit, s'annule au sommet, puis repart."
+
+  - id: mc.physics.pc_chute_plans.vitesse-nulle-au-sommet
+    label: "« Au sommet de la trajectoire, la vitesse du projectile est nulle »"
+    description: "L'élève transpose à la vitesse entière ce qui ne vaut que pour sa composante verticale : il conclut que le projectile s'arrête un instant au sommet."
+    contradicts_principle: "Au sommet, c'est $v_y$ qui s'annule, jamais $v_x$ : la vitesse y vaut exactement $v_{0x}$ et elle est horizontale. Un projectile ne s'arrête pas en l'air."
+
+  - id: mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale
+    label: "« Le poids accélère aussi le mouvement horizontal »"
+    description: "L'élève fait agir le poids sur les deux axes à la fois : la chute, en accélérant, entraînerait selon lui l'ensemble du mouvement, horizontale comprise."
+    contradicts_principle: "La projection horizontale du poids est nulle. Aucune force n'agit selon $x$ (frottements négligés), donc $a_x = 0$ : le poids ne peut ni accélérer ni ralentir le mouvement horizontal."
+
+  - id: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
+    label: "« En chute libre, la masse change la trajectoire (le plus lourd tombe plus vite, le plus léger va plus loin) »"
+    description: "L'élève garde l'intuition d'Aristote : un corps plus lourd serait davantage entraîné vers le sol, un corps plus léger plus facile à propulser."
+    contradicts_principle: "La deuxième loi donne $m\\vec{a} = m\\vec{g}$, d'où $\\vec{a} = \\vec{g}$ : la masse se simplifie et n'intervient nulle part. Mêmes conditions initiales, même accélération, donc trajectoires superposées — tant qu'il n'y a pas de frottement."
+
+  - id: mc.physics.pc_chute_plans.descente-plus-courte-que-montee
+    label: "« La descente d'un projectile est plus rapide, donc plus courte en durée, que sa montée »"
+    description: "L'élève brise la symétrie de la parabole : parce que le projectile arrive vite au sol, il en déduit que la descente a duré moins longtemps que la montée."
+    contradicts_principle: "$y(t)$ est une parabole symétrique par rapport à son sommet : la descente dure exactement autant que la montée. Aller plus vite à l'arrivée ne signifie pas mettre moins de temps."
+
+  - id: mc.physics.pc_chute_plans.frottement-disparait-a-vlim
+    label: "« A la vitesse limite, il n'y a plus de force / la force de frottement a disparu »"
+    description: "L'élève confond « somme des forces nulle » (a=0 a v_lim) et « aucune force ne s'exerce » ; il croit que le frottement s'annule au moment ou la vitesse se stabilise."
+    contradicts_principle: "A $v_\\ell$, l'accélération est nulle parce que le frottement et le poids se compensent exactement ($k\\,v_\\ell = mg$) : le frottement y est au contraire maximal, pas absent."
+
+  - id: mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement
+    label: "« Avec frottement, l'objet accelere indéfiniment / tombe de plus en plus vite tout du long »"
+    description: "L'élève ignore que le frottement croit avec la vitesse et finit par compenser le poids ; il generalise le comportement du régime initial ($a=g$) a toute la chute."
+    contradicts_principle: "L'accélération décroît continûment depuis $g$ (régime initial) vers 0 (régime permanent) à mesure que $kv$ se rapproche de $mg$ ; la vitesse plafonne a $v_\\ell=mg/k$, elle n'augmente pas indéfiniment."
+
+  - id: mc.physics.pc_chute_plans.masse-jamais-determinante-en-chute
+    label: "« La masse ne joue jamais dans une chute (comme en chute libre) »"
+    description: "L'élève transpose la règle du chapitre 2 ($a=g$ indépendant de $m$) au cas avec frottement, sans remarquer que $v_\\ell=mg/k$ contient $m$."
+    contradicts_principle: "Cette règle ne vaut que sans frottement. Des qu'un frottement fluide entre en jeu, $v_\\ell=mg/k$ dépend de $m$ : deux objets de même forme mais de masses différentes n'ont pas la même vitesse limite."
+
+  - id: mc.physics.pc_chute_plans.euler-donne-valeur-exacte
+    label: "« La méthode d'Euler donne la valeur exacte de $v(t)$ »"
+    description: "L'élève croit que la récurrence d'Euler résout exactement l'équation différentielle, quel que soit le pas $\\Delta t$."
+    contradicts_principle: "Euler suppose la pente constante sur chaque pas, ce qui n'est vrai qu'approximativement ; l'erreur diminue quand $\\Delta t$ diminue, mais ne s'annule jamais pour un pas fini."
+
+  - id: mc.physics.pc_chute_plans.euler-oubli-dt
+    label: "« $v_{i+1}=v_i+a_i$ » (oubli du facteur $\\Delta t$)"
+    description: "L'élève additionne directement l'accélération a la vitesse, sans la multiplier par la durée du pas — incohérence dimensionnelle non détectée."
+    contradicts_principle: "$a_i\\,\\Delta t$ est homogène a une vitesse (accélération x temps) ; $v_i+a_i$ additionnerait une vitesse et une accélération, ce qui n'a pas de sens physique."
+
+  - id: mc.physics.pc_chute_plans.euler-pente-non-recalculee
+    label: "« La pente $a_i$ reste fixe (égale à $g$) à chaque pas, comme en chute libre »"
+    description: "L'élève n'actualise pas $a_i$ à partir de $v_i$ à chaque étape ; il applique implicitement le modèle sans frottement tout au long du tableau."
+    contradicts_principle: "$a_i=g-\\frac{k}{m}v_i$ dépend de $v_i$ et doit être recalculée à chaque ligne : c'est cette actualisation qui fait apparaître l'effet du frottement (la pente décroît ligne après ligne)."
+
+  - id: mc.physics.pc_chute_plans.orbite-sans-gravite
+    label: "« En orbite il n'y a pas de gravite / le satellite ne subit aucune force »"
+    description: "L'élève explique l'apesanteur par une absence de gravite plutôt que par une chute libre permanente."
+    contradicts_principle: "La gravite est exactement la force qui courbe la trajectoire en orbite ; sans elle, par inertie, le satellite partirait en ligne droite. L'apesanteur ressentie vient d'une chute libre continue, pas d'une absence de force."
+
+  - id: mc.physics.pc_chute_plans.orbite-necessite-force-tangentielle
+    label: "« Il faut une force dans le sens du mouvement (ou un moteur) pour maintenir le satellite en orbite »"
+    description: "L'élève croit qu'un mouvement circulaire uniforme necessite une force motrice tangentielle, en plus de la force centripete."
+    contradicts_principle: "La seule force est centripete (perpendiculaire a la vitesse) ; elle ne pousse jamais vers l'avant. La norme de la vitesse se maintient seule, par inertie, des lors qu'aucune force tangentielle n'agit."
+
+  - id: mc.physics.pc_chute_plans.vitesse-orbitale-depend-masse-satellite
+    label: "« Un satellite plus lourd doit aller plus vite (ou plus lentement) sur la même orbite »"
+    description: "L'élève croit que la masse du satellite intervient dans sa vitesse orbitale, par analogie avec d'autres contextes ou la masse compte."
+    contradicts_principle: "$v=\\sqrt{GM/r}$ ne contient pas la masse $m$ du satellite : elle se simplifie dans la 2e loi. Sur une orbite de rayon donne, tous les satellites ont la même vitesse, quelle que soit leur masse."
+
+  - id: mc.physics.pc_chute_plans.kepler3-exposants-inverses
+    label: "« La 3e loi de Kepler s'écrit $T/r$, $T^3/r^2$ ou $T^2/r^2$ = constante » (exposants mal memorises)"
+    description: "L'élève retient mal la position des exposants dans la 3e loi, faute de repartir de son établissement."
+    contradicts_principle: "L'établissement (egaler $v=\\sqrt{GM/r}$ et $v=2\\pi r/T$) donne directement $T^2/r^3=4\\pi^2/GM$ : le carré est sur la période, le cube sur le rayon."
+
+  - id: mc.physics.pc_chute_plans.geostationnaire-immobile-absolu
+    label: "« Le satellite géostationnaire est immobile dans l'espace / n'a pas de vitesse »"
+    description: "L'élève confond « immobile par rapport au sol » et « immobile dans l'absolu », en oubliant le référentiel géocentrique."
+    contradicts_principle: "Dans le référentiel géocentrique, le satellite géostationnaire parcourt un cercle a sa vitesse orbitale (quelques km/s) ; il n'est immobile que par rapport a un observateur au sol, parce qu'il tourne a la même vitesse angulaire que la Terre."
+
+  - id: mc.physics.pc_chute_plans.geostationnaire-toute-altitude
+    label: "« N'importe quelle altitude peut être géostationnaire »"
+    description: "L'élève ne voit pas que la condition $T=T_{Terre}$ combinée a la 3e loi impose un rayon unique."
+    contradicts_principle: "$T^2/r^3=4\\pi^2/GM_T$ relie $T$ et $r$ de façon biunivoque pour un astre donne : se donner $T=24\\ \\text{h}$ determine une seule valeur de $r$, pas une plage de rayons possibles."
+items:
+  - id: CMP-1
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Un projectile est lance dans le champ de pesanteur, frottements de l'air
+      négligés. Que devient la composante horizontale $v_x$ de sa vitesse
+      pendant le vol ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle reste constante, car aucune force horizontale n'agit sur le projectile"
+        correct: true
+      - id: B
+        text: "Elle diminue progressivement au cours du vol, jusqu'à finir par s'annuler"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
+        feedback: >
+          Rien ne freine horizontalement : les frottements sont négligés et le
+          poids est vertical. Sur l'axe horizontal, $a_x = 0$, donc $v_x$ ne
+          diminue pas.
+      - id: C
+        text: "Elle augmente, entraînée par la chute du projectile vers le sol"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale
+        feedback: >
+          La chute agit sur la composante VERTICALE. Les deux mouvements sont
+          indépendants : le poids étant vertical, il ne modifie pas $v_x$.
+      - id: D
+        text: "Elle s'annule au sommet de la trajectoire, comme la composante verticale"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-nulle-au-sommet
+        feedback: >
+          C'est $v_y$ qui s'annule au sommet, pas $v_x$. Au sommet la vitesse
+          est purement horizontale et vaut justement $v_x = v_{0x}$.
+    correct_feedback: >
+      Exact : sur l'axe horizontal la 2e loi donne $a_x = 0$, donc
+      $v_x = v_{0x}$ reste constante tout le vol. C'est ce qui rend les deux
+      axes indépendants.
+    solution: |
+      Bilan : seul le poids $\vec P = m\vec g$ agit, et il est vertical.
+      Projection de la 2e loi sur l'axe horizontal :
+      $$m a_x = 0$$
+      $$a_x = 0 \implies v_x = v_{0x} = \text{constante}$$
+      Le mouvement horizontal est uniforme ; seul l'axe vertical subit $g$.
+
+  - id: CMP-2
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Au sommet de sa trajectoire (la fleche), quelle est la vitesse du
+      projectile ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Horizontale et non nulle, égale à $v_{0x}$"
+        correct: true
+      - id: B
+        text: "Nulle"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-nulle-au-sommet
+        feedback: >
+          Au sommet, seule la composante VERTICALE $v_y$ s'annule. La
+          composante horizontale $v_x = v_{0x}$ subsiste : la vitesse totale
+          n'est donc pas nulle.
+      - id: C
+        text: "Verticale, dirigée vers le bas"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-nulle-au-sommet
+        feedback: >
+          Juste après le sommet la vitesse aura une composante verticale vers
+          le bas, mais AU sommet $v_y = 0$ : la vitesse y est purement
+          horizontale.
+      - id: D
+        text: "Maximale sur toute la trajectoire"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-nulle-au-sommet
+        feedback: >
+          C'est au contraire ou la vitesse est MINIMALE (il ne reste que
+          $v_x$). Elle est maximale au départ et a l'arrivée au sol.
+    correct_feedback: >
+      Oui : au sommet $v_y = 0$ mais $v_x = v_{0x} \neq 0$. La vitesse y est
+      horizontale et minimale, jamais nulle.
+    solution: |
+      Le sommet est défini par $v_y = 0$ (la montée s'arrete, la descente
+      commence). Mais l'axe horizontal reste uniforme :
+      $$v_x = v_{0x} = v_0\cos\alpha \neq 0$$
+      La vitesse au sommet vaut donc $v_{0x}$, horizontale.
+
+  - id: CMP-3
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Deux billes de masses différentes sont lancées avec exactement la même
+      vitesse initiale (même valeur, même angle), frottements négligés. Que
+      peut-on dire de leurs trajectoires ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elles sont identiques, car l'accélération $\\vec a = \\vec g$ ne dépend pas de la masse"
+        correct: true
+      - id: B
+        text: "La bille la plus lourde retombe plus vite et va moins loin"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
+        feedback: >
+          C'est l'intuition trompeuse. La 2e loi donne $m\vec a = m\vec g$,
+          d'ou $\vec a = \vec g$ : la masse se simplifie. Même accélération,
+          même trajectoire.
+      - id: C
+        text: "La bille la plus legere va plus loin"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
+        feedback: >
+          Sans frottements, la masse n'intervient pas : $\vec a = \vec g$ pour
+          les deux. Les trajectoires se superposent exactement.
+      - id: D
+        text: "On ne peut pas savoir sans connaître les masses"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
+        feedback: >
+          On peut : justement parce que $\vec a = \vec g$ est indépendant de
+          la masse, la valeur des masses n'a aucune importance ici.
+    correct_feedback: >
+      Exact. $m\vec a = m\vec g \Rightarrow \vec a = \vec g$ : la masse
+      disparaît. Mêmes conditions initiales et même accélération donnent la
+      même trajectoire.
+    solution: |
+      2e loi, le poids étant la seule force :
+      $$m\vec a = m\vec g$$
+      $$\vec a = \vec g$$
+      L'accélération ne dépend pas de $m$. A conditions initiales égales, les
+      deux billes suivent la même trajectoire.
+
+  - id: CMP-4
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Dans l'étude d'un tir, comment definit-on la PORTÉE ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La distance horizontale entre le point de lancement et le point de retour au sol"
+        correct: true
+      - id: B
+        text: "La hauteur maximale atteinte par le projectile au cours de son vol"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
+        feedback: >
+          Ca, c'est la FLECHE (hauteur du sommet). La portée est une distance
+          HORIZONTALE, mesurée au sol.
+      - id: C
+        text: "La longueur totale de la trajectoire réellement parcourue par le projectile"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
+        feedback: >
+          La portée n'est pas la longueur de l'arc parabolique, mais la
+          distance horizontale entre le départ et l'arrivée au sol.
+      - id: D
+        text: "La vitesse du projectile au moment précis de son impact sur le sol"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
+        feedback: >
+          Une portée est une distance (en mètres), pas une vitesse. Ne
+          confonds pas la grandeur avec sa dimension.
+    correct_feedback: >
+      Oui : la portée est la distance horizontale sol-a-sol. A ne pas
+      confondre avec la fleche, qui est la hauteur maximale (verticale).
+    solution: |
+      Deux grandeurs a distinguer :
+      - la FLECHE : hauteur maximale (verticale) atteinte au sommet, ou
+      $v_y = 0$ ;
+      - la PORTÉE : distance horizontale entre le lancement et le retour au
+      sol ($y = 0$ de nouveau).
+
+  - id: CMP-5
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Pour une vitesse initiale $v_0$ donnée (sol horizontal, frottements
+      négligés), pour quel angle de lancement la portée est-elle maximale ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$45^\\circ$"
+        correct: true
+      - id: B
+        text: "$90^\\circ$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
+        feedback: >
+          A $90^\circ$ le tir est vertical : la portée est nulle (le projectile
+          retombe au point de départ). C'est un maximum de FLECHE, pas de
+          portée.
+      - id: C
+        text: "$30^\\circ$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
+        feedback: >
+          $30^\circ$ donne une portée, mais pas la plus grande : $\sin(2\alpha)
+          = \sin 60^\circ < 1$. Le maximum de $\sin(2\alpha)$ est atteint pour
+          $2\alpha = 90^\circ$.
+      - id: D
+        text: "$60^\\circ$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
+        feedback: >
+          $60^\circ$ donne la même portée que $30^\circ$ (angles
+          complementaires : $\sin 120^\circ = \sin 60^\circ$), mais pas le
+          maximum, atteint a $45^\circ$.
+    correct_feedback: >
+      Exact : la portée vaut $D = \dfrac{v_0^2 \sin(2\alpha)}{g}$, maximale
+      quand $\sin(2\alpha) = 1$, soit $2\alpha = 90^\circ$, donc
+      $\alpha = 45^\circ$.
+    solution: |
+      La portée sur sol horizontal s'écrit :
+      $$D = \frac{v_0^2 \sin(2\alpha)}{g}$$
+      Elle est maximale lorsque $\sin(2\alpha) = 1$ :
+      $$2\alpha = 90^\circ \implies \alpha = 45^\circ$$
+
+  - id: CMP-6
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Une particule chargée penetre avec une vitesse $\vec v_0$ dans un champ
+      magnétique uniforme $\vec B$ perpendiculaire à $\vec v_0$ (poids négligé).
+      Quelle est la nature de son mouvement dans le champ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Circulaire uniforme : la force de Lorentz, perpendiculaire à la vitesse, n'en change pas la norme et courbe la trajectoire en cercle"
+        correct: true
+      - id: B
+        text: "Parabolique, exactement comme celle d'un projectile lancé dans le champ de pesanteur"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
+        feedback: >
+          C'est confondre la force de Lorentz avec une force constante comme le
+          poids. La force $\vec F = q\vec v\wedge\vec B$ n'a pas une direction
+          fixe : elle reste perpendiculaire a une vitesse qui tourne. Une force
+          de norme constante toujours perpendiculaire à $\vec v$ donne un
+          cercle, pas une parabole.
+      - id: C
+        text: "Rectiligne accélérée : la force de Lorentz communique sans cesse de la vitesse supplémentaire à la particule chargée"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
+        feedback: >
+          La force de Lorentz est perpendiculaire à $\vec v$ : elle ne travaille
+          pas, donc la norme de la vitesse ne change pas ($dv/dt = 0$). Elle
+          devie la particule sans l'accélérer ni la ralentir.
+      - id: D
+        text: "Rectiligne uniforme : aucune force ne vient dévier la particule chargée de sa direction initiale de propagation"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
+        feedback: >
+          Comme $\vec B \perp \vec v_0$, la force $\vec F = q\vec v\wedge\vec B$
+          n'est pas nulle (sa norme vaut $|q|\,v_0\,B$) : elle courbe bel et
+          bien la trajectoire. Le mouvement n'est pas rectiligne.
+    correct_feedback: >
+      Oui : $\vec F = q\vec v\wedge\vec B$ est toujours perpendiculaire a
+      $\vec v$. Sa composante tangentielle étant nulle, la norme $v = v_0$ reste
+      constante ; sa composante normale courbe la trajectoire en un cercle de
+      rayon $R = \dfrac{m\,v_0}{|q|\,B}$. C'est un mouvement circulaire uniforme.
+    solution: |
+      Bilan : seule la force de Lorentz $\vec F = q\vec v\wedge\vec B$ agit
+      (poids négligé), toujours perpendiculaire à $\vec v$. On projette la 2e loi
+      dans la base de Freinet.
+      Sur la tangente (la force n'a pas de composante tangentielle) :
+      $$m\frac{dv}{dt} = 0 \implies v = v_0 = \text{constante}$$
+      Sur la normale, avec $F = |q|\,v_0\,B$ et $a_N = v_0^2 / R$ :
+      $$m\frac{v_0^2}{R} = |q|\,v_0\,B \implies R = \frac{m\,v_0}{|q|\,B}$$
+      Vitesse de norme constante et rayon constant : mouvement circulaire
+      uniforme.
+
+  - id: CMP-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Un joueur de basket tire en cloche vers le panier : le ballon ralentit
+      nettement en montant, puis redescend de plus en plus vite. Un élève en
+      conclut que ce ralentissement concerne tout le mouvement du ballon. Que
+      peut-on dire, en réalité, du déplacement horizontal (de gauche a
+      droite) du ballon pendant ce même vol ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il ralentit lui aussi en montant, avant de reprendre de la vitesse en redescendant, comme le mouvement vertical"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
+        feedback: >
+          C'est confondre les deux axes. Le mouvement vertical ralentit puis
+          repart, mais le mouvement horizontal n'a aucune raison d'en faire
+          autant : les deux sont indépendants.
+      - id: B
+        text: "Il se poursuit a vitesse constante pendant tout le vol, sans jamais ralentir ni accélérer"
+        correct: true
+      - id: C
+        text: "Il s'arrete completement au sommet de la trajectoire, en même temps que le ballon cesse de monter"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-nulle-au-sommet
+        feedback: >
+          C'est la vitesse VERTICALE qui s'annule au sommet, pas
+          l'horizontale : au sommet, le ballon garde exactement sa vitesse
+          horizontale de départ.
+      - id: D
+        text: "Il accelere progressivement du début a la fin du vol, car le poids agit sur tout le mouvement"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale
+        feedback: >
+          Le poids est une force purement verticale : il n'a aucune
+          composante horizontale, donc il ne peut ni accélérer ni ralentir le
+          mouvement horizontal.
+    correct_feedback: >
+      Oui : aucune force horizontale n'agit (le poids est vertical), donc la
+      vitesse horizontale ne change jamais pendant tout le vol.
+    solution: |
+      Seul le poids agit, et il est vertical : sa projection horizontale est
+      nulle a tout instant, donc $a_x = 0$ et $v_x$ reste constante du début
+      a la fin du vol, indépendamment de ce que fait $v_y$.
+
+  - id: CMP-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      On lance, avec exactement la même vitesse initiale (même valeur, même
+      angle), une balle de tennis et une boule de petanque, frottements de
+      l'air négligés. Laquelle va le plus loin ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La boule de petanque, plus lourde, va plus loin car elle est moins freinee par sa propre inertie"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
+        feedback: >
+          En chute libre, la masse disparaît de la deuxième loi
+          ($\vec a = \vec g$) : une masse plus grande ne donne aucun
+          avantage de portée.
+      - id: B
+        text: "Impossible a dire sans connaître les masses exactes des deux objets"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
+        feedback: >
+          On peut au contraire conclure sans les masses : c'est justement
+          parce que $\vec a = \vec g$ ne dépend pas de $m$ que leur valeur
+          est inutile ici.
+      - id: C
+        text: "Aucune des deux : les deux suivent exactement la même trajectoire, quelle que soit leur masse"
+        correct: true
+      - id: D
+        text: "La balle de tennis, plus legere, va plus loin car elle est plus facile a propulser"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
+        feedback: >
+          Sans frottements, la masse n'intervient nulle part dans le
+          mouvement : être plus legere ne donne aucun avantage de portée.
+    correct_feedback: >
+      Exact : $\vec a = \vec g$ ne dépend pas de $m$. Mêmes conditions
+      initiales, même accélération, donc même trajectoire, quelle que soit la
+      masse.
+    solution: |
+      $$m\vec a = m\vec g \implies \vec a = \vec g$$
+      La masse se simplifie completement. A conditions initiales identiques,
+      les deux objets suivent rigoureusement la même trajectoire.
+
+  - id: CMP-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Le poids d'un projectile est une force verticale, dirigée vers le bas.
+      Cette force a-t-elle un effet sur le déplacement horizontal du
+      projectile ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, un peu : même verticale, une force finit toujours par influencer un peu tous les axes du mouvement"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale
+        feedback: >
+          Une force n'influence que les axes ou elle a une composante non
+          nulle. Le poids étant purement vertical, sa composante horizontale
+          est exactement nulle, pas seulement petite.
+      - id: B
+        text: "Oui, completement : c'est elle qui fait ralentir puis repartir le ballon horizontalement, comme elle le fait verticalement"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale
+        feedback: >
+          C'est confondre les deux axes. Le poids agit uniquement sur l'axe
+          vertical ; l'axe horizontal n'est soumis a aucune force, donc a
+          aucun ralentissement.
+      - id: C
+        text: "Cela dépend de l'angle de lancement : plus l'angle est grand, plus le poids agit horizontalement"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale
+        feedback: >
+          L'angle de lancement change la direction de la vitesse initiale,
+          pas la direction du poids : celui-ci reste vertical quel que soit
+          l'angle choisi.
+      - id: D
+        text: "Non, aucun : une force purement verticale n'a pas de composante horizontale, donc elle ne peut pas modifier le mouvement horizontal"
+        correct: true
+    correct_feedback: >
+      Exact : projete sur l'axe horizontal, le poids donne une composante
+      nulle à chaque instant, donc $a_x = 0$ quel que soit l'angle de
+      lancement.
+    solution: |
+      Le poids $\vec P = m\vec g$ est purement vertical. Sa projection sur
+      un axe horizontal vaut $0$ a tout instant, donc $a_x = 0$ : aucune
+      force horizontale n'agit, quel que soit l'angle de lancement.
+
+  - id: CMP-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      On étudie une chute libre verticale avec un axe $Oy$ orienté vers le
+      HAUT. Un élève écrit $a_y = +g$ au lieu de $a_y = -g$. D'ou vient cette
+      erreur ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il a oublié que $\\vec g$ pointe vers le bas, donc dans le sens opposé à $Oy$ : sa composante sur cet axe est négative, $a_y = -g$"
+        correct: true
+      - id: B
+        text: "Il n'y a aucune erreur : $a_y = +g$ reste vrai quel que soit le sens choisi pour orienter l'axe"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
+        feedback: >
+          Le signe de $a_y$ dépend entièrement du sens choisi pour $Oy$. Avec
+          $Oy$ vers le haut, $\vec g$ (vers le bas) a une composante
+          négative : $a_y = -g$, pas $+g$.
+      - id: C
+        text: "L'erreur vient d'avoir oublié la masse du projectile dans l'écriture de la deuxième loi de Newton"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
+        feedback: >
+          La masse n'est pas en cause ici : elle se simplifie des le départ
+          ($\vec a = \vec g$). L'erreur porte uniquement sur le signe, lie a
+          l'orientation de l'axe.
+      - id: D
+        text: "L'erreur vient d'avoir pris une vitesse initiale positive au lieu de la prendre négative sur cet axe"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
+        feedback: >
+          Le signe de $v_{0y}$ est indépendant de celui de $a_y$ : c'est une
+          erreur sur l'accélération (projection de $\vec g$), pas sur la
+          vitesse initiale.
+    correct_feedback: >
+      Avec $Oy$ vers le haut, $\vec g$ pointe dans le sens oppose a l'axe :
+      $g_y = -g$, donc $a_y = -g$. Ce signe vient uniquement du choix
+      d'orientation de l'axe, pas d'une règle universelle.
+    solution: |
+      $Oy$ vers le haut, $\vec g$ vers le bas : $\vec g$ est oppose au sens
+      de l'axe, donc sa composante est négative.
+      $$a_y = g_y = -g$$
+      Avec $Oy$ vers le bas, on aurait trouve $a_y = +g$ : le signe suit le
+      choix d'axe, il n'est pas fixe une fois pour toutes.
+
+  - id: CMP-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Une balle est lancée verticalement vers le haut avec une vitesse
+      initiale $v_{0y}=9{,}8\ \text{m/s}$, depuis le sol. Elle atteint son
+      sommet a $t=1{,}0\ \text{s}$. Combien de temps met-elle, après ce
+      sommet, pour retomber au sol ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Moins de 1,0 s, car en redescendant la balle est plus rapide donc elle met moins de temps"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.descente-plus-courte-que-montee
+        feedback: >
+          Aller plus vite a l'arrivée ne veut pas dire mettre moins de temps :
+          $y(t)$ est une parabole symétrique par rapport a son sommet, ce qui
+          impose une durée de descente égale a celle de la montée.
+      - id: B
+        text: "Exactement 1,0 s : la montée et la descente prennent le même temps, par symétrie de $y(t)$"
+        correct: true
+      - id: C
+        text: "Plus de 1,0 s, car il faut d'abord que la vitesse s'annule avant de pouvoir redescendre"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.descente-plus-courte-que-montee
+        feedback: >
+          La vitesse s'annule justement AU sommet, a $t=1{,}0\ \text{s}$ : ce
+          n'est pas un délai supplémentaire, c'est l'instant même ou la
+          montée se termine et la descente commence.
+      - id: D
+        text: "Impossible à savoir sans connaître la hauteur exacte atteinte au sommet"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.descente-plus-courte-que-montee
+        feedback: >
+          La symétrie de la parabole $y(t)$ donne directement
+          $t_{sol} = 2\,t_{sommet}$, sans avoir besoin de calculer la hauteur
+          du sommet.
+    correct_feedback: >
+      $t_{sol} = 2\,t_{sommet}$ : la parabole $y(t)$ est symétrique par
+      rapport a son sommet, donc montée et descente prennent exactement le
+      même temps, ici $1{,}0\ \text{s}$ chacune.
+    solution: |
+      $y(t) = v_{0y}t - \frac{1}{2}gt^2$ est une parabole en $t$, symétrique
+      par rapport a $t_{sommet}$. Donc $t_{sol} = 2\,t_{sommet} = 2{,}0\
+      \text{s}$, soit $2{,}0 - 1{,}0 = 1{,}0\ \text{s}$ après le sommet.
+
+  - id: CMP-12
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Un projectile est lance avec une vitesse initiale de norme $v_0$,
+      faisant un angle $\alpha$ au-dessus de l'horizontale. Quelle est
+      l'expression correcte de sa composante verticale initiale $v_{0y}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$v_{0y} = v_0 \\cos\\alpha$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
+        feedback: >
+          C'est l'expression de $v_{0x}$, pas de $v_{0y}$ : $\cos\alpha$
+          projette sur l'axe horizontal, $\sin\alpha$ sur l'axe vertical.
+      - id: B
+        text: "$v_{0y} = v_0 \\tan\\alpha$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
+        feedback: >
+          $\tan\alpha$ est le rapport $v_{0y}/v_{0x}$, pas une composante de
+          $v_0$ elle-même : ce n'est pas la bonne fonction trigonométrique
+          pour projeter directement $v_0$.
+      - id: C
+        text: "$v_{0y} = v_0 \\sin\\alpha$"
+        correct: true
+      - id: D
+        text: "$v_{0y} = v_0$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
+        feedback: >
+          Cela reviendrait a ignorer l'angle $\alpha$, comme si tout $v_0$
+          était vertical : ce n'est vrai que dans le cas particulier
+          $\alpha = 90^\circ$.
+    correct_feedback: >
+      Exact : $v_{0y} = v_0\sin\alpha$. Vérification aux cas extrêmes :
+      $\alpha=90^\circ$ donne $v_{0y}=v_0$ (lancer vertical), $\alpha=0^\circ$
+      donne $v_{0y}=0$ (lancer horizontal).
+    solution: |
+      La projection de $\vec v_0$ sur l'axe vertical $Oy$ donne
+      $v_{0y} = v_0\sin\alpha$, et sur l'axe horizontal $Ox$,
+      $v_{0x} = v_0\cos\alpha$ — deux fonctions trigonometriques distinctes
+      pour deux axes distincts.
+
+  - id: CMP-13
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Pour un projectile soumis uniquement a son poids (frottements
+      négligés), pourquoi peut-on affirmer que $a_x = 0$ à chaque instant du
+      vol ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que la vitesse horizontale initiale $v_{0x}$ est toujours nulle au départ du mouvement"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
+        feedback: >
+          $v_{0x}$ n'est nulle que dans le cas particulier d'un lancer
+          vertical ($\alpha=90^\circ$). En général $v_{0x}=v_0\cos\alpha \neq
+          0$, et pourtant $a_x=0$ quand même.
+      - id: B
+        text: "Parce que la masse du projectile est trop faible pour que $g$ puisse agir horizontalement sur lui"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
+        feedback: >
+          La masse n'a aucun rôle ici : $a_x=0$ vient uniquement de la
+          direction du poids (verticale), pas de la valeur de la masse,
+          petite ou grande.
+      - id: C
+        text: "Parce qu'au sommet de la trajectoire la vitesse horizontale s'annule elle aussi, ce qui donne $a_x=0$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-nulle-au-sommet
+        feedback: >
+          C'est $v_y$ qui s'annule au sommet, pas $v_x$ : $v_x$ garde la
+          valeur $v_{0x}$ à chaque instant, y compris au sommet.
+      - id: D
+        text: "Parce que le poids est une force purement verticale : sa projection sur l'axe horizontal est nulle à chaque instant"
+        correct: true
+    correct_feedback: >
+      Oui : le poids est la seule force, et il est purement vertical, donc sa
+      composante sur $Ox$ est nulle a tout instant, d'ou $a_x=0$ tout au long
+      du vol.
+    solution: |
+      Bilan : seul $\vec P = m\vec g$ agit. Projection sur $Ox$ :
+      $$m a_x = P_x = 0 \implies a_x = 0$$
+      Ceci vient de la direction de $\vec P$ (verticale), et non de la masse
+      ni des conditions initiales.
+
+  - id: CMP-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Un projectile est lance avec $v_0 = 20\ \text{m/s}$ et $\alpha=45^\circ$
+      (donc $\sin\alpha=\cos\alpha\approx 0{,}71$, $\cos^2\alpha=0{,}50$,
+      $\tan\alpha=1{,}0$), $g\approx 9{,}8\ \text{m/s}^2$. Quelle est
+      l'équation de sa trajectoire $y(x)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$y(x) = x - 0{,}0245\\,x^2$"
+        correct: true
+      - id: B
+        text: "$y(x) = x - 0{,}049\\,x^2$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
+        feedback: >
+          Ce coefficient oublie le facteur $2$ au dénominateur :
+          $g/(2v_0^2\cos^2\alpha)$, pas $g/(v_0^2\cos^2\alpha)$.
+      - id: C
+        text: "$y(x) = x - 0{,}0173\\,x^2$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
+        feedback: >
+          Ce coefficient utilise $\cos\alpha$ au lieu de $\cos^2\alpha$ au
+          dénominateur : la formule exige le carré de $\cos\alpha$.
+      - id: D
+        text: "$y(x) = x + 0{,}0245\\,x^2$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
+        feedback: >
+          Erreur de signe : la parabole s'ouvre vers le BAS (le second terme
+          se retranche), conséquence directe du signe négatif de $g$ dans
+          $a_y=-g$.
+    correct_feedback: >
+      $y(x) = \tan\alpha\cdot x - \dfrac{g}{2v_0^2\cos^2\alpha}x^2 = x -
+      0{,}0245\,x^2$, avec $\tan\alpha=1{,}0$ et
+      $g/(2\times400\times0{,}50)=0{,}0245$.
+    solution: |
+      $$y(x) = \tan\alpha \cdot x - \frac{g}{2v_0^2\cos^2\alpha}x^2$$
+      $$
+      y(x) = 1{,}0\,x - \frac{9{,}8}{2\times 400\times 0{,}50}\,x^2 =
+      x - 0{,}0245\,x^2
+      $$
+
+  - id: CMP-15
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      L'équation de la trajectoire
+      $y(x) = \tan\alpha \cdot x - \dfrac{g}{2v_0^2\cos^2\alpha}x^2$ a été
+      obtenue en éliminant le temps entre $x(t)$ et $y(t)$. Que peut-on dire
+      de la masse $m$ du projectile dans cette équation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle a disparu seulement à cette étape, en se simplifiant au moment de l'élimination du temps entre les deux équations"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
+        feedback: >
+          Elle avait déjà disparu bien avant : des la deuxième loi de Newton,
+          $\vec a_G = \vec g$ ne contient plus $m$. L'élimination du temps
+          n'a rien simplifie de plus a ce sujet.
+      - id: B
+        text: "Elle n'apparaît nulle part : elle a déjà disparu des la deuxième loi de Newton ($\\vec a_G = \\vec g$), avant même d'écrire $x(t)$ et $y(t)$"
+        correct: true
+      - id: C
+        text: "Elle est cachée dans le terme $g$, qui dépend en réalité légèrement de la masse du projectile considéré"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
+        feedback: >
+          $g$ est l'accélération de pesanteur du lieu, indépendante de la
+          masse de l'objet qui tombe : ce n'est pas une propriété du
+          projectile.
+      - id: D
+        text: "Elle intervient implicitement à travers $v_0$, qui dépend lui-même de la masse du lanceur utilisé"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
+        feedback: >
+          $v_0$ est une donnée du problème (la vitesse a laquelle l'objet est
+          lance), pas une conséquence de la masse de qui que ce soit dans
+          cette équation.
+    correct_feedback: >
+      Exact : $m$ disparaît des la deuxième loi de Newton
+      ($\vec a_G = \vec g$), donc elle n'a jamais figure dans $x(t)$, $y(t)$,
+      ni dans $y(x)$.
+    solution: |
+      $m\vec a_G = m\vec g \implies \vec a_G = \vec g$ : $m$ se simplifie des
+      cette première étape. Toutes les équations qui suivent ($x(t)$, $y(t)$,
+      $y(x)$) en heritent, sans jamais faire reapparaitre $m$.
+
+  - id: CMP-16
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Avec $v_0=25\ \text{m/s}$, $\sin\alpha=0{,}60$, $\cos\alpha=0{,}80$,
+      $g\approx9{,}8\ \text{m/s}^2$, l'équation de la trajectoire est
+      $y(x) = 0{,}75\,x - 0{,}01225\,x^2$. Quelle est la hauteur $y$ du
+      projectile lorsqu'il a parcouru $x=10\ \text{m}$ horizontalement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$y = 7{,}5\\ \\text{m}$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
+        feedback: >
+          Ce calcul oublie completement le second terme
+          ($0{,}01225\,x^2$) de l'équation.
+      - id: B
+        text: "$y \\approx 7{,}4\\ \\text{m}$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
+        feedback: >
+          Ce calcul oublie d'élever $x$ au carré dans le second terme
+          ($0{,}01225\times x$ au lieu de $0{,}01225\times x^2$).
+      - id: C
+        text: "$y \\approx 6{,}3\\ \\text{m}$"
+        correct: true
+      - id: D
+        text: "$y \\approx 8{,}7\\ \\text{m}$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
+        feedback: >
+          Erreur de signe : le second terme se RETRANCHE (parabole vers le
+          bas), il ne s'ajoute pas au premier.
+    correct_feedback: >
+      $y(10) = 0{,}75\times10 - 0{,}01225\times10^2 = 7{,}5 - 1{,}225 \approx
+      6{,}3\ \text{m}$.
+    solution: |
+      $$
+      y(10) = 0{,}75\times 10 - 0{,}01225\times 10^2 = 7{,}5 - 1{,}225
+      \approx 6{,}3\ \text{m}
+      $$
+
+  - id: CMP-17
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Un ballon est lance avec $v_0 = 18\ \text{m/s}$, $\sin\alpha = 0{,}50$
+      (donc $v_{0y}=9{,}0\ \text{m/s}$), $g\approx 9{,}8\ \text{m/s}^2$.
+      Quelle est la fleche du tir ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$f \\approx 28{,}6\\ \\text{m}$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
+        feedback: >
+          C'est la formule de la PORTÉE ($v_0^2\sin(2\alpha)/g$) qui a été
+          utilisée ici, pas celle de la fleche.
+      - id: B
+        text: "$f \\approx 8{,}3\\ \\text{m}$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
+        feedback: >
+          Ce calcul oublie le facteur $2$ au dénominateur :
+          $f=v_{0y}^2/(2g)$, pas $v_{0y}^2/g$.
+      - id: C
+        text: "$f \\approx 16{,}5\\ \\text{m}$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
+        feedback: >
+          Ce calcul utilise $v_0^2$ au lieu de $v_{0y}^2$ : la fleche ne
+          dépend que de la composante VERTICALE de la vitesse initiale.
+      - id: D
+        text: "$f \\approx 4{,}1\\ \\text{m}$"
+        correct: true
+    correct_feedback: >
+      $f = v_{0y}^2/(2g) = 9{,}0^2/(2\times9{,}8) = 81/19{,}6 \approx
+      4{,}1\ \text{m}$.
+    solution: |
+      $$
+      f = \frac{v_{0y}^2}{2g} = \frac{9{,}0^2}{2\times 9{,}8} =
+      \frac{81}{19{,}6} \approx 4{,}1\ \text{m}
+      $$
+
+  - id: CMP-18
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Pour un même angle de lancement $\alpha$, on double la vitesse initiale
+      $v_0$ d'un tir. Que deviennent la fleche $f$ et la portée $D$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elles sont toutes les deux multipliees par 4, car $f$ et $D$ dependent de $v_0^2$"
+        correct: true
+      - id: B
+        text: "Elles sont toutes les deux multipliees par 2, comme $v_0$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
+        feedback: >
+          $f$ et $D$ dependent de $v_0^2$, pas de $v_0$ : doubler $v_0$
+          multiplie donc $v_0^2$ par $4$, pas par $2$.
+      - id: C
+        text: "Seule la portée double ; la fleche ne change pas, car elle ne dépend que de l'angle"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
+        feedback: >
+          $f=v_0^2\sin^2\alpha/(2g)$ dépend elle aussi de $v_0^2$ : elle
+          change avec $v_0$, exactement comme la portée.
+      - id: D
+        text: "Elles sont toutes les deux multipliees par 8"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
+        feedback: >
+          $f$ et $D$ dependent de $v_0^2$ (une puissance 2), pas de $v_0^3$ :
+          doubler $v_0$ multiplie donc par $2^2=4$, pas par $2^3=8$.
+    correct_feedback: >
+      $f$ et $D$ contiennent toutes deux $v_0^2$ et rien d'autre en $v_0$ :
+      doubler $v_0$ multiplie donc les deux par $2^2=4$.
+    solution: |
+      $$
+      f = \frac{v_0^2\sin^2\alpha}{2g} \qquad D =
+      \frac{v_0^2\sin(2\alpha)}{g}
+      $$
+      Les deux formules ne contiennent $v_0$ qu'au carré : doubler $v_0$
+      multiplie donc $f$ et $D$ par $2^2=4$, pas par $2$.
+
+  - id: CMP-19
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Deux tirs, a la même vitesse $v_0$, sont effectues avec des angles
+      complementaires $\alpha_1 = 20^\circ$ et $\alpha_2 = 70^\circ$. Que
+      peut-on affirmer ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux tirs ont la même portée ET la même fleche, puisque les angles sont complementaires"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
+        feedback: >
+          Seule la portée est égale pour des angles complementaires
+          ($\sin(2\alpha)$ identique). La fleche dépend de $\sin^2\alpha$,
+          qui diffère : le tir le plus incline monte plus haut.
+      - id: B
+        text: "Les deux tirs ont la même portée, mais le tir a $70^\\circ$ a la fleche la plus grande"
+        correct: true
+      - id: C
+        text: "Le tir a $70^\\circ$ a la plus grande portée, car un angle plus grand rapproche le tir de la verticale, donc du maximum"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
+        feedback: >
+          La portée dépend de $\sin(2\alpha)$, maximale a $45^\circ$ puis
+          redescendante : $20^\circ$ et $70^\circ$ donnent en réalité la
+          MÊME portée, ni l'un ni l'autre n'est supérieur.
+      - id: D
+        text: "Le tir a $20^\\circ$ a la plus grande fleche, car un angle plus petit donne un tir plus tendu et plus efficace"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
+        feedback: >
+          C'est l'inverse : la fleche $f=v_0^2\sin^2\alpha/(2g)$ croit avec
+          $\alpha$. Le tir le plus incline ($70^\circ$) monte plus haut, pas
+          celui a $20^\circ$.
+    correct_feedback: >
+      $\sin(2\times20^\circ)=\sin(2\times70^\circ)$ : même portée. Mais
+      $\sin^2(70^\circ) > \sin^2(20^\circ)$ : le tir le plus incline a la
+      fleche la plus grande.
+    solution: |
+      Portée : $\sin(2\alpha_1)=\sin(40^\circ)=\sin(140^\circ)=\sin(2\alpha_2)$
+      (angles complementaires), donc $D_1=D_2$.
+      Fleche : $\sin^2(70^\circ) > \sin^2(20^\circ)$, donc $f_2 > f_1$.
+
+  - id: CMP-20
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Deux particules, l'une de charge positive et l'autre de charge
+      négative (même masse, même valeur $|q|$), entrent avec la même vitesse
+      $\vec v_0$ dans le même champ $\vec B$ perpendiculaire à $\vec v_0$.
+      Que peut-on dire de leurs trajectoires ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elles suivent exactement la même trajectoire, car le champ magnétique ne dépend pas du signe de la charge"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
+        feedback: >
+          Contrairement a la chute libre (ou la masse disparaît), le SIGNE
+          de la charge intervient directement dans le sens de
+          $\vec F = q\vec v\wedge\vec B$ : il ne disparaît pas.
+      - id: B
+        text: "La particule positive n'est pas déviée du tout, seule la négative subit la force de Lorentz"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
+        feedback: >
+          La force de Lorentz agit sur toute charge non nulle, positive ou
+          négative ; seul son SENS change avec le signe de $q$, pas son
+          existence.
+      - id: C
+        text: "Elles décrivent des cercles de même rayon $R=mv_0/(|q|B)$, mais courbes en sens opposés, selon le signe de la charge"
+        correct: true
+      - id: D
+        text: "Les deux sont déviées dans le même sens, mais avec des rayons différents selon le signe de la charge"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
+        feedback: >
+          $R=mv_0/(|q|B)$ ne dépend que de la VALEUR de $q$ (identique ici),
+          pas de son signe : c'est le SENS de la courbure qui diffère, pas le
+          rayon.
+    correct_feedback: >
+      $R=mv_0/(|q|B)$ est identique pour les deux (même $|q|$), mais le sens
+      de $\vec F=q\vec v\wedge\vec B$ s'inverse avec le signe de $q$ : les
+      deux cercles sont courbes en sens opposés.
+    solution: |
+      Même $m$, $v_0$, $|q|$, $B$ donc même $R$. Mais
+      $\vec F = q\vec v\wedge\vec B$ change de sens quand $q$ change de
+      signe : les deux trajectoires sont deux cercles de même rayon, courbes
+      de part et d'autre de la direction initiale.
+
+  - id: CMP-21
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Le rayon de la trajectoire circulaire d'une particule chargée dans un
+      champ magnétique uniforme vaut $R = \dfrac{m\,v_0}{|q|\,B}$. Laquelle
+      de ces modifications, prise seule (toutes les autres grandeurs restant
+      fixees), AUGMENTE ce rayon ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Augmenter le champ magnétique $B$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
+        feedback: >
+          $B$ est au dénominateur : l'augmenter DIMINUE le rayon, il ne
+          l'augmente pas.
+      - id: B
+        text: "Augmenter la charge $|q|$ de la particule"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
+        feedback: >
+          $|q|$ est au dénominateur : l'augmenter DIMINUE le rayon, il ne
+          l'augmente pas.
+      - id: C
+        text: "Diminuer la masse $m$ de la particule"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise
+        feedback: >
+          $m$ est au numérateur : la DIMINUER réduit le rayon ; c'est
+          l'AUGMENTER qui l'agrandirait.
+      - id: D
+        text: "Augmenter la vitesse initiale $v_0$"
+        correct: true
+    correct_feedback: >
+      $v_0$ est au numérateur de $R=mv_0/(|q|B)$ : l'augmenter augmente $R$.
+      $B$ et $|q|$ sont au dénominateur (les augmenter réduit $R$) ; $m$ est
+      au numérateur (la diminuer réduit $R$).
+    solution: |
+      $$R = \frac{m\,v_0}{|q|\,B}$$
+      Seule une augmentation du numérateur ($m$ ou $v_0$) augmente $R$.
+      Parmi les options, seule l'augmentation de $v_0$ correspond a ce cas.
+
+  - id: CMP-22
+    rung: "R11"
+    difficulty_level: 4
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Un jet d'eau est lance avec $v_0 = 15\ \text{m/s}$, $\sin\alpha =
+      0{,}60$, $\cos\alpha = 0{,}80$, $g\approx 9{,}8\ \text{m/s}^2$ (sol
+      horizontal, frottements négligés). Quelle est la portée de ce jet ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$D \\approx 22{,}0\\ \\text{m}$"
+        correct: true
+      - id: B
+        text: "$D \\approx 11{,}0\\ \\text{m}$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
+        feedback: >
+          Ce calcul oublie le facteur $2$ : $D=2v_{0x}v_{0y}/g$, pas
+          $v_{0x}v_{0y}/g$.
+      - id: C
+        text: "$D \\approx 4{,}1\\ \\text{m}$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
+        feedback: >
+          C'est la formule de la FLECHE ($v_{0y}^2/(2g)$) qui a été utilisée
+          ici, pas celle de la portée.
+      - id: D
+        text: "$D \\approx 16{,}5\\ \\text{m}$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
+        feedback: >
+          Les composantes ont été inversées : c'est $v_{0x}$ (horizontale)
+          qui multiplie $t_{portee}$ pour donner une distance, pas $v_{0y}$.
+    correct_feedback: >
+      $D = v_0^2\sin(2\alpha)/g = 15^2\times2\times0{,}60\times0{,}80/9{,}8
+      = 216/9{,}8 \approx 22{,}0\ \text{m}$.
+    solution: |
+      $v_{0x}=12\ \text{m/s}$, $v_{0y}=9{,}0\ \text{m/s}$,
+      $t_{portee}=2v_{0y}/g\approx1{,}84\ \text{s}$.
+      $$
+      D = v_{0x}\times t_{portee} \approx 12\times1{,}84 \approx
+      22{,}0\ \text{m}
+      $$
+
+  - id: CMP-23
+    rung: "R11"
+    difficulty_level: 4
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Une pierre est lancée horizontalement du haut d'une falaise, avec une
+      vitesse initiale $v_0 = 8{,}0\ \text{m/s}$ (donc $\alpha=0^\circ$,
+      $v_{0y}=0$), frottements négligés. Elle heurte le sol en contrebas
+      après une trajectoire courbe. Que vaut sa vitesse horizontale juste
+      avant l'impact, comparée a $v_0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est supérieure à $8{,}0\\ \\text{m/s}$, car la chute lui communique de la vitesse dans toutes les directions, y compris horizontalement"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
+        feedback: >
+          Le poids, qui provoque la chute, est purement vertical : il ne
+          communique aucune vitesse supplémentaire a l'axe horizontal.
+      - id: B
+        text: "Elle vaut encore exactement $8{,}0\\ \\text{m/s}$ : que le sol soit plus bas que le point de lancement ne change rien a $a_x=0$"
+        correct: true
+      - id: C
+        text: "Elle est inférieure à $8{,}0\\ \\text{m/s}$, car une partie de la vitesse initiale se convertit progressivement en vitesse verticale"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
+        feedback: >
+          Les deux axes sont indépendants : $v_{0x}$ ne se « convertit » pas
+          en $v_y$, elle reste intacte pendant que $v_y$ se construit
+          séparément sous l'effet de $g$.
+      - id: D
+        text: "Impossible a dire sans connaître la hauteur de la falaise"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
+        feedback: >
+          $a_x=0$ tient à chaque instant, quelle que soit la durée du vol ou
+          la hauteur de chute : $v_x$ reste $v_{0x}$, hauteur connue ou non.
+    correct_feedback: >
+      $a_x=0$ tout au long du vol, quelle que soit la hauteur de la falaise :
+      $v_x$ reste égale à $v_0=8{,}0\ \text{m/s}$ du lancer jusqu'a
+      l'impact.
+    solution: |
+      Seul le poids agit, purement vertical : $a_x=0$ à chaque instant, quel
+      que soit le niveau du sol d'arrivée. $v_x(t)=v_{0x}=8{,}0\ \text{m/s}$
+      reste donc constante jusqu'a l'impact.
+
+  - id: CMP-24
+    rung: "R11"
+    difficulty_level: 4
+    skill_code: pc_chute_plans
+    tags: []
+    stem: >
+      Dans toute cette étude, on suppose les frottements de l'air
+      négligeables. Dans un chapitre précédent, on a vu qu'un objet tombant
+      avec frottements fluides finit par atteindre un régime permanent, a
+      vitesse limite constante. Un élève affirme : « Même ici, si le vol dure
+      assez longtemps, la vitesse horizontale $v_x$ finira par se stabiliser
+      a une valeur limite, à cause de l'air. » Que penser de cette
+      affirmation, dans le cadre du modèle étudié ici (frottements
+      négligés) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est vraie : comme dans une chute avec frottements, la vitesse $v_x$ finit toujours par se stabiliser, quel que soit le modèle utilisé pour la décrire"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
+        feedback: >
+          Cela importe le résultat d'un AUTRE modèle (avec frottements). Ici,
+          les frottements sont explicitement négligés : rien ne peut faire
+          varier $v_x$, ni la stabiliser a une limite.
+      - id: B
+        text: "Elle est vraie uniquement pour de très longues portées, où les frottements de l'air finissent par ne plus pouvoir être négligés"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
+        feedback: >
+          L'hypothèse « frottements négligés » est posée pour tout le
+          problème, pas seulement pour les courtes distances : elle ne
+          s'efface pas d'elle-même au-dela d'une certaine portée.
+      - id: C
+        text: "Elle est hors-sujet ici : le modèle étudié néglige explicitement les frottements, donc $v_x = v_{0x}$ reste rigoureusement constante, sans jamais tendre vers une valeur limite"
+        correct: true
+      - id: D
+        text: "Elle est fausse, mais c'est la vitesse VERTICALE $v_y$, et non $v_x$, qui se stabiliserait à une vitesse limite dans ce modèle"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
+        feedback: >
+          Dans CE modèle (frottements négligés), aucune des deux composantes
+          ne se stabilise a une limite : $v_y$ croit indéfiniment en valeur
+          absolue, elle ne plafonne pas non plus.
+    correct_feedback: >
+      Le régime permanent avec vitesse limite est un résultat du modèle AVEC
+      frottements fluides, étudié ailleurs. Ici, les frottements sont
+      négligés par hypothèse : $v_x=v_{0x}$ reste rigoureusement constante,
+      sans jamais tendre vers une limite.
+    solution: |
+      Aucune force horizontale n'agit ($a_x=0$) tant que les frottements sont
+      négligés : $v_x=v_{0x}$ constante. Le régime permanent / vitesse
+      limite appartient a un modèle différent (chute avec frottements), non
+      applicable ici par hypothèse.
+
+  # ══════════════════════════════════════════════════════════════
+  # R7 — chute avec frottement fluide : v_lim, tau, regimes (3 items)
+  # ══════════════════════════════════════════════════════════════
+
+  - id: CMP-25
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, frottement_fluide, utilisation]
+    stem: >
+      Un solide de masse $m$ tombe verticalement dans un fluide, soumis a un
+      frottement linéaire $\vec f = -k\vec v$. Après un certain temps, sa
+      vitesse atteint la valeur limite $v_\ell$ et ne varie plus. Que peut-on
+      affirmer, a cet instant, sur l'accélération et sur la force de
+      frottement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'accélération est nulle (la somme des forces est nulle), mais la force de frottement, elle, est à son maximum : aucune force n'a disparu, $k\\,v_\\ell = mg$"
+        correct: true
+      - id: B
+        text: "L'accélération est nulle et la force de frottement est nulle elle aussi : puisque plus rien ne change, plus aucune force n'agit"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.frottement-disparait-a-vlim
+        also_reveals: []
+        feedback: >
+          Somme nulle ne veut pas dire absence de force. A $v_\ell$, le
+          frottement est au contraire maximal, exactement égal au poids
+          ($k v_\ell = mg$) : c'est leur somme qui s'annule, pas le
+          frottement lui-même.
+      - id: C
+        text: "L'accélération n'atteint jamais zéro : l'objet continue d'accélérer indéfiniment, la « vitesse limite » n'est qu'une impression"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement
+        also_reveals: []
+        feedback: >
+          C'est l'inverse : le frottement croit avec $v$ et finit par
+          egaler le poids, ce qui annule l'accélération. Une vraie vitesse
+          limite existe ; ce n'est pas une illusion de mesure.
+      - id: D
+        text: "$v_\\ell$ est la même pour tous les objets, quelle que soit leur masse, comme en chute libre sans frottement"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-jamais-determinante-en-chute
+        also_reveals: []
+        feedback: >
+          Ceci n'est vrai que sans frottement (chapitre 2). Avec frottement,
+          $v_\ell = mg/k$ contient $m$ : deux objets de masses différentes
+          n'ont pas la même vitesse limite.
+    correct_feedback: >
+      Exact : a $v_\ell$, $dv/dt=0$ donc la somme des forces est nulle, ce
+      qui impose $k v_\ell = mg$ — le frottement y est maximal, égal au
+      poids, pas nul.
+    solution: |
+      Bilan : poids $mg$ et frottement $kv$ (frottement linéaire), axe
+      oriente vers le bas.
+      $$m\frac{dv}{dt} = mg - kv \implies \frac{dv}{dt} = g - \frac{k}{m}v$$
+      A $v_\ell$, l'accélération est nulle :
+      $$g - \frac{k}{m}v_\ell = 0 \implies k v_\ell = mg$$
+      Le frottement est donc maximal a cet instant, exactement égal au
+      poids ; c'est leur somme (donc l'accélération) qui s'annule, pas le
+      frottement.
+
+  - id: CMP-26
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, frottement_fluide, resolution]
+    stem: >
+      Une bille de masse $m=0{,}20\ \text{kg}$ est lâchée sans vitesse
+      initiale dans un liquide visqueux ; le frottement est linéaire, de
+      coefficient $k=2{,}0\ \text{kg/s}$ ($g\approx9{,}8\ \text{m/s}^2$). La
+      2e loi donne $\dfrac{dv}{dt}=9{,}8-10{,}0\,v$ ($v$ en m/s, $t$ en s).
+      Que valent l'accélération a $t=0$ et la vitesse limite $v_\ell$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$v_\\ell$ correspond à l'instant ou le frottement s'annule completement ; comme $k=2{,}0\\ \\text{kg/s}\\neq 0$, cette bille n'atteint jamais de vitesse limite"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.frottement-disparait-a-vlim
+        also_reveals: []
+        feedback: >
+          $v_\ell$ ne correspond pas a un frottement nul, mais a une
+          accélération nulle : le frottement, lui, est alors maximal
+          ($k v_\ell = mg$). Cette bille atteint bien une vitesse limite,
+          comme tout objet soumis a un frottement qui croit avec $v$.
+      - id: B
+        text: "A $t=0$, $a=9{,}8\\ \\text{m/s}^2$, et cette accélération continue de croitre par la suite : la vitesse de la bille augmente donc indéfiniment"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement
+        also_reveals: []
+        feedback: >
+          C'est l'inverse : à mesure que $v$ augmente, le frottement $kv$
+          augmente aussi et se rapproche du poids, donc l'accélération
+          DIMINUE. Elle s'annule a $v_\ell=0{,}98\ \text{m/s}$ ; la vitesse
+          ne croit pas indéfiniment.
+      - id: C
+        text: "A $t=0$, $a=9{,}8\\ \\text{m/s}^2$ (comme en chute libre, le frottement est nul car $v=0$) ; en annulant l'accélération dans l'équation, $v_\\ell = mg/k = 0{,}98\\ \\text{m/s}$"
+        correct: true
+      - id: D
+        text: "$v_\\ell = mg/k$ ne dépend en réalité pas de $m$ : une bille deux fois plus lourde, dans le même liquide, atteindrait exactement la même vitesse limite $0{,}98\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-jamais-determinante-en-chute
+        also_reveals: []
+        feedback: >
+          La formule $v_\ell = mg/k$ contient explicitement $m$ : une bille
+          deux fois plus lourde aurait $v_\ell$ deux fois plus grand
+          ($1{,}96\ \text{m/s}$), pas la même valeur.
+    correct_feedback: >
+      Exact : a $t=0$, $v=0$ donc le frottement est nul et
+      $a=g=9{,}8\ \text{m/s}^2$ (comme en chute libre) ; en annulant
+      l'accélération, $v_\ell = mg/k = 0{,}20\times9{,}8/2{,}0 =
+      0{,}98\ \text{m/s}$.
+    solution: |
+      Régime initial ($v=0$) :
+      $$a(0) = 9{,}8 - 10{,}0\times0 = 9{,}8\ \text{m/s}^2$$
+      comme en chute libre, le frottement étant nul a cet instant.
+      Vitesse limite ($a=0$) :
+      $$
+      0 = 9{,}8 - 10{,}0\,v_\ell \implies v_\ell = \frac{9{,}8}{10{,}0} =
+      0{,}98\ \text{m/s}
+      $$
+      soit, avec les grandeurs symboliques, $v_\ell = mg/k =
+      0{,}20\times9{,}8/2{,}0 = 0{,}98\ \text{m/s}$.
+
+  - id: CMP-27
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, frottement_fluide, application_experimentale]
+    stem: >
+      Sur un graphe $v=f(t)$ obtenu en TP pour deux billes de même forme
+      (donc même $k$) mais de masses $m_1 < m_2$, lâchées sans vitesse dans
+      le même fluide (frottement linéaire), on observe deux courbes
+      distinctes, chacune montant vers une asymptote horizontale. Que
+      peut-on en conclure ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux asymptotes marquent l'instant où le frottement disparaît sur chaque bille ; au-delà de cet instant, seul le poids agit encore"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.frottement-disparait-a-vlim
+        also_reveals: []
+        feedback: >
+          Au palier, le frottement n'a pas disparu : il est au contraire
+          maximal et égal au poids ($kv_\ell = mg$). Ce qui s'annule, c'est
+          la somme des forces, pas le frottement lui-même.
+      - id: B
+        text: "Les deux courbes montent vers des paliers différents : la bille $m_2$ (la plus lourde) se stabilise a une vitesse limite plus grande, car $v_\\ell = mg/k$ croit avec $m$"
+        correct: true
+      - id: C
+        text: "Ce ne sont pas de vrais paliers : si l'enregistrement durait plus longtemps, les deux courbes continueraient tranquillement de monter"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement
+        also_reveals: []
+        feedback: >
+          Un palier sur $v=f(t)$ marque au contraire une vraie
+          stabilisation : l'accélération y est nulle parce que le
+          frottement a rejoint le poids. Prolonger l'enregistrement ne
+          ferait pas remonter la courbe.
+      - id: D
+        text: "Les deux billes devraient se stabiliser exactement à la même vitesse : la masse n'a aucun effet sur un mouvement de chute dans un fluide"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-jamais-determinante-en-chute
+        also_reveals: []
+        feedback: >
+          C'est vrai seulement sans frottement (chapitre 2). Ici, avec
+          frottement, $v_\ell=mg/k$ dépend de $m$ : la bille la plus lourde
+          atteint un palier plus haut.
+    correct_feedback: >
+      Exact : $v_\ell = mg/k$ croit avec $m$ (a $k$ égal), donc la bille la
+      plus lourde ($m_2$) se stabilise a une vitesse limite plus grande que
+      la bille $m_1$ — contraste direct avec la chute libre, ou la masse
+      n'intervenait pas.
+    solution: |
+      $v_\ell = mg/k$, a $k$ fixe (même forme). Une masse plus grande donne
+      un $v_\ell$ plus grand : la courbe de $m_2$ monte vers une asymptote
+      plus haute que celle de $m_1$. C'est « la masse qui revient » par
+      rapport a la chute libre (chapitre 2 a 3), ou $v_\ell$ n'existait même
+      pas ($a=g$ pour tous, quelle que soit la masse).
+
+  # ══════════════════════════════════════════════════════════════
+  # R8 — methode d'Euler (3 items)
+  # ══════════════════════════════════════════════════════════════
+
+  - id: CMP-28
+    rung: "R8"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, methode_euler, utilisation]
+    stem: >
+      Dans la méthode d'Euler appliquee a une équation différentielle
+      $\dfrac{dv}{dt}=a(v)$, avec un pas de temps $\Delta t$, comment
+      obtient-on $v_{i+1}$ à partir de $v_i$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$v_{i+1}=v_i+a_i$, ou $a_i$ est l'accélération calculée à partir de $v_i$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-oubli-dt
+        also_reveals: []
+        feedback: >
+          Cette expression additionne une vitesse et une accélération :
+          incoherence dimensionnelle. Il manque le facteur $\Delta t$
+          (accélération x temps = vitesse).
+      - id: B
+        text: "$v_{i+1}=v_i+g\\,\\Delta t$, en gardant $a=g$ fixe à chaque pas"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-pente-non-recalculee
+        also_reveals: []
+        feedback: >
+          Garder $a=g$ fixe revient a ignorer tout frottement (ou toute
+          autre force dépendant de $v$) : ca redonne la chute libre, pas la
+          solution de l'équation différentielle étudiée.
+      - id: C
+        text: "$v_{i+1}$ est la valeur exacte de $v$ à l'instant $t_{i+1}$, quel que soit le pas $\\Delta t$ choisi"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-donne-valeur-exacte
+        also_reveals: []
+        feedback: >
+          C'est une approximation, pas une valeur exacte : la pente est
+          supposée constante sur tout le pas, ce qui n'est vrai
+          qu'approximativement. L'écart avec la vraie courbe se réduit
+          quand $\Delta t$ diminue, sans jamais s'annuler pour un pas fini.
+      - id: D
+        text: "$v_{i+1}=v_i+a_i\\,\\Delta t$, avec $a_i$ recalcule à chaque pas à partir de l'équation différentielle en $v_i$"
+        correct: true
+    correct_feedback: >
+      Exact : c'est la formule d'Euler. Le facteur $\Delta t$ est
+      indispensable (homogénéité), et $a_i$ doit être recalcule à chaque
+      pas à partir de $v_i$ courant, sinon on perd l'effet de la force qui
+      dépend de $v$.
+    solution: |
+      $$
+      v_{i+1} = v_i + \left(\frac{dv}{dt}\right)_i \Delta t = v_i +
+      a_i\,\Delta t, \qquad a_i = g - \frac{k}{m}v_i
+      $$
+      Deux points a vérifier à chaque application : le facteur $\Delta t$
+      (homogénéité) et le recalcul de $a_i$ à partir de $v_i$ courant, pas
+      d'une valeur figee.
+
+  - id: CMP-29
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, methode_euler, resolution]
+    stem: >
+      Pour une bille en chute avec frottement, on relève $v_i=2{,}0\
+      \text{m/s}$ et $a_i=6{,}0\ \text{m/s}^2$ (calculé à partir de
+      l'équation différentielle à $v_i$), avec un pas
+      $\Delta t=0{,}10\ \text{s}$. Quelle est la valeur d'Euler de
+      $v_{i+1}$, et que dire de sa précision ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$v_{i+1}=2{,}0+6{,}0\\times0{,}10=2{,}6\\ \\text{m/s}$, une valeur approchée (elle se rapprocherait de la vraie courbe si $\\Delta t$ était plus petit)"
+        correct: true
+      - id: B
+        text: "$v_{i+1}=2{,}0+6{,}0=8{,}0\\ \\text{m/s}$ : on ajoute directement $a_i$ a $v_i$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-oubli-dt
+        also_reveals: []
+        feedback: >
+          $a_i$ doit être multiplie par $\Delta t$ avant d'être ajoute a
+          $v_i$ : sans ce facteur, on additionne une vitesse et une
+          accélération, ce qui n'est pas homogène.
+      - id: C
+        text: "$v_{i+1}=2{,}0+9{,}8\\times0{,}10\\approx2{,}98\\ \\text{m/s}$ : on utilise $g$ plutôt que de recalculer $a_i$ à partir de l'équation différentielle"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-pente-non-recalculee
+        also_reveals: []
+        feedback: >
+          $a_i=6{,}0\ \text{m/s}^2$ est déjà la valeur correcte, issue de
+          l'équation différentielle a $v_i=2{,}0\ \text{m/s}$ ; utiliser
+          $g=9{,}8\ \text{m/s}^2$ a la place revient a ignorer le
+          frottement déjà installe.
+      - id: D
+        text: "$v_{i+1}=2{,}6\\ \\text{m/s}$, exactement, quel que soit $\\Delta t$ choisi : la méthode d'Euler ne fait aucune approximation"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-donne-valeur-exacte
+        also_reveals: []
+        feedback: >
+          La valeur $2{,}6\ \text{m/s}$ est correcte, mais elle reste
+          approchée : Euler suppose la pente constante sur tout le pas, ce
+          qui n'est vrai qu'a la limite $\Delta t \to 0$.
+    correct_feedback: >
+      Exact : $v_{i+1}=v_i+a_i\Delta t = 2{,}0+6{,}0\times0{,}10=
+      2{,}6\ \text{m/s}$. Cette valeur reste une approximation, meilleure
+      quand $\Delta t$ est plus petit.
+    solution: |
+      $$
+      v_{i+1} = v_i + a_i\,\Delta t = 2{,}0 + 6{,}0\times0{,}10 =
+      2{,}0+0{,}60 = 2{,}6\ \text{m/s}
+      $$
+      C'est une valeur approchée, obtenue en supposant la pente constante
+      ($=a_i$) sur tout le pas $\Delta t$.
+
+  - id: CMP-30
+    rung: "R8"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, methode_euler, application_experimentale]
+    stem: >
+      Pour compléter un tableau d'Euler d'une chute avec frottement, un
+      élève pressé décide de garder $a_i=9{,}8\ \text{m/s}^2$ fixe à
+      toutes les lignes, au lieu de recalculer
+      $a_i=9{,}8-10{,}0\,v_i$ à chaque étape. Que produit ce raccourci, et
+      que dit-il, plus généralement, de la précision de la méthode
+      d'Euler ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Rien ne change : dans l'équation différentielle, $a_i$ ne dépend pas vraiment de $v_i$, mais seulement du temps écoulé depuis le début"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-pente-non-recalculee
+        also_reveals: []
+        feedback: >
+          Au contraire : $a_i=g-\frac{k}{m}v_i$ dépend explicitement de
+          $v_i$ (via le frottement). Garder $a_i=g$ fixe revient a annuler
+          artificiellement l'effet du frottement à chaque ligne.
+      - id: B
+        text: "Le tableau reste exact malgré ce raccourci : la méthode d'Euler donne de toute façon la valeur exacte de $v(t)$ à chaque ligne"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-donne-valeur-exacte
+        also_reveals: []
+        feedback: >
+          La méthode d'Euler n'est jamais exacte, même sans ce raccourci :
+          elle suppose la pente constante sur chaque pas, ce qui reste une
+          approximation qui s'ameliore seulement quand $\Delta t$ diminue.
+      - id: C
+        text: "Ce raccourci revient à ignorer le frottement, et l'on retrouve la droite de la chute libre ; la méthode d'Euler, elle, ne donne jamais qu'une valeur approchée"
+        correct: true
+      - id: D
+        text: "Le vrai problème de ce tableau, c'est d'avoir oublié de multiplier $a_i$ par le pas $\\Delta t$ à chaque ligne — et non pas d'avoir gardé $a_i$ fixe"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.euler-oubli-dt
+        also_reveals: []
+        feedback: >
+          Le facteur $\Delta t$ est bien present dans la récurrence
+          ($v_{i+1}=v_i+a_i\Delta t$) ; le problème décrit ici porte sur
+          $a_i$ garde fixe, pas sur un $\Delta t$ manquant.
+    correct_feedback: >
+      Exact : garder $a_i=g$ fixe supprime l'effet du frottement (on
+      retombe sur la droite de la chute libre) ; indépendamment de cela,
+      Euler reste par nature une méthode approchée, d'autant meilleure que
+      $\Delta t$ est petit.
+    solution: |
+      Avec $a_i=g$ fixe, la recurrence devient $v_{i+1}=v_i+g\Delta t$ :
+      c'est exactement la suite d'Euler de la chute libre (sans
+      frottement), une droite de pente $g$, qui ne rejoint jamais
+      l'asymptote $v_\ell$. Le bon calcul recalcule $a_i=g-\frac{k}{m}v_i$
+      à chaque ligne, ce qui fait decroitre la pente et fait tendre $v_i$
+      vers $v_\ell$. Dans les deux cas, Euler ne donne que des valeurs
+      approchées, d'autant plus fideles que $\Delta t$ est petit.
+
+  # ══════════════════════════════════════════════════════════════
+  # R9 — gravitation et mouvement circulaire : force centripete (3 items)
+  # ══════════════════════════════════════════════════════════════
+
+  - id: CMP-31
+    rung: "R9"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, gravitation_satellite, utilisation]
+    stem: >
+      Un satellite décrit une orbite circulaire autour de la Terre. Quelle
+      force subit-il, et dans quelle direction agit-elle ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Aucune force : a cette altitude, la gravite terrestre ne se fait plus sentir"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.orbite-sans-gravite
+        also_reveals: []
+        feedback: >
+          Si la gravite disparaissait vraiment, aucune force ne courberait
+          la trajectoire : par inertie, le satellite partirait en ligne
+          droite. Or il reste sur une orbite fermée : une force agit bel et
+          bien, et c'est la gravite.
+      - id: B
+        text: "La force gravitationnelle, centripete (dirigée vers le centre de la Terre), perpendiculaire a la vitesse à chaque instant"
+        correct: true
+      - id: C
+        text: "Une force dans le sens du mouvement, qui le pousse continuellement vers l'avant"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.orbite-necessite-force-tangentielle
+        also_reveals: []
+        feedback: >
+          La force gravitationnelle est centripete, donc perpendiculaire a
+          la vitesse : elle ne pousse jamais vers l'avant. Aucune force
+          tangentielle n'est nécessaire pour maintenir le mouvement.
+      - id: D
+        text: "La force gravitationnelle, centripete ; mais un satellite plus lourd doit orbiter plus vite qu'un satellite léger, sur la même orbite, pour ne pas retomber"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-orbitale-depend-masse-satellite
+        also_reveals: []
+        feedback: >
+          La vitesse orbitale $v=\sqrt{GM_T/r}$ ne contient pas la masse du
+          satellite : elle se simplifie dans la 2e loi. Un satellite plus
+          lourd suit la même orbite a la même vitesse qu'un satellite
+          léger.
+    correct_feedback: >
+      Exact : la seule force est la force gravitationnelle, dirigée en
+      permanence vers le centre de la Terre, donc perpendiculaire a la
+      vitesse — une force centripete.
+    solution: |
+      La force gravitationnelle $\vec F = G\frac{M_T m}{r^2}\vec u$ pointe
+      toujours vers le centre de la Terre, donc perpendiculairement a la
+      vitesse (tangente au cercle). Elle est donc centripete : c'est elle
+      qui courbe la trajectoire en cercle, sans jamais accélérer ni
+      ralentir le satellite (elle ne travaille pas).
+
+  - id: CMP-32
+    rung: "R9"
+    difficulty_level: 4
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, gravitation_satellite, resolution]
+    stem: >
+      La 2e loi projetée sur la normale donne la vitesse orbitale d'un
+      satellite en orbite circulaire de rayon $r$ autour de la Terre
+      (masse $M_T$). Quelle est cette vitesse, et de quoi depend-elle ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$v=\\sqrt{GM_T/r}$, mais un satellite deux fois plus lourd irait deux fois plus vite sur la même orbite"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-orbitale-depend-masse-satellite
+        also_reveals: []
+        feedback: >
+          La masse du satellite apparaît des deux cotes de la 2e loi
+          projetée ($mv^2/r = GM_Tm/r^2$) et se simplifie completement : la
+          formule finale $v=\sqrt{GM_T/r}$ ne la contient plus.
+      - id: B
+        text: "La question n'a pas de sens : en orbite, aucune force n'agit, donc rien n'impose de vitesse particulière"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.orbite-sans-gravite
+        also_reveals: []
+        feedback: >
+          Une force agit bien : la gravite, centripete. C'est justement
+          elle qui, via la 2e loi, impose la vitesse orbitale à chaque
+          rayon $r$.
+      - id: C
+        text: "$v$ dépend de la poussée d'un moteur qui maintient le satellite sur son orbite, pas seulement de $G$, $M_T$ et $r$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.orbite-necessite-force-tangentielle
+        also_reveals: []
+        feedback: >
+          Aucun moteur n'intervient : la seule force est la gravite, déjà
+          centripete. La 2e loi seule, sans propulsion, donne
+          $v=\sqrt{GM_T/r}$.
+      - id: D
+        text: "$v=\\sqrt{GM_T/r}$, indépendante de la masse du satellite (elle se simplifie dans la 2e loi)"
+        correct: true
+    correct_feedback: >
+      Exact : en projetant la 2e loi sur la normale,
+      $mv^2/r = GM_Tm/r^2$, la masse $m$ du satellite se simplifie ;
+      $v=\sqrt{GM_T/r}$ ne dépend que de l'astre central et du rayon de
+      l'orbite.
+    solution: |
+      $$
+      m\frac{v^2}{r} = G\frac{M_T m}{r^2} \implies v^2 = \frac{GM_T}{r}
+      \implies v = \sqrt{\frac{GM_T}{r}}
+      $$
+      La masse $m$ du satellite disparaît : deux satellites de masses
+      différentes, sur la même orbite, ont exactement la même vitesse.
+
+  - id: CMP-33
+    rung: "R9"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, gravitation_satellite, utilisation]
+    stem: >
+      Pourquoi un astronaute « flotte-t-il » a l'intérieur d'une station
+      spatiale en orbite ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il est en chute libre permanente : la gravite continue d'agir sur lui et sur la station, a la même accélération, et courbe leur trajectoire commune en une orbite fermée"
+        correct: true
+      - id: B
+        text: "Il n'y a plus de gravite a cette altitude, donc plus rien ne le retient"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.orbite-sans-gravite
+        also_reveals: []
+        feedback: >
+          Si la gravite disparaissait, la station partirait en ligne droite
+          (inertie) au lieu de suivre une orbite fermée. La gravite agit
+          toujours, a peine plus faible qu'au sol.
+      - id: C
+        text: "La station est munie d'un système de propulsion qui compense en permanence la gravite, ce qui annule son poids"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.orbite-necessite-force-tangentielle
+        also_reveals: []
+        feedback: >
+          Aucune propulsion n'est nécessaire pour l'apesanteur ressentie :
+          c'est la chute libre commune de l'astronaute et de la station,
+          tous deux soumis a la même accélération gravitationnelle, qui
+          supprime le contact différentiel.
+      - id: D
+        text: "Il flotte parce que sa propre masse est trop faible pour que la gravite terrestre agisse efficacement sur lui, contrairement a la station elle-même"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vitesse-orbitale-depend-masse-satellite
+        also_reveals: []
+        feedback: >
+          La gravite agit sur toute masse, petite ou grande :
+          $F=GM_Tm/r^2$ n'est jamais nulle pour $m\neq0$. Ce n'est pas une
+          question de masse insuffisante.
+    correct_feedback: >
+      Exact : l'astronaute et la station tombent ensemble, a la même
+      accélération gravitationnelle, sans jamais atteindre le sol grâce a
+      leur vitesse orbitale — c'est l'apesanteur, pas une absence de
+      gravite.
+    solution: |
+      La gravite agit sur l'astronaute exactement comme sur la station
+      (même accélération, indépendante de la masse). Les deux étant en
+      chute libre permanente l'un par rapport a l'autre, il n'y a pas de
+      contact différentiel entre l'astronaute et les parois : c'est ce qui
+      donne la sensation de flotter, sans que la gravite ait disparu.
+
+  # ══════════════════════════════════════════════════════════════
+  # R10 — 3e loi de Kepler (circulaire) et satellite geostationnaire (3 items)
+  # ══════════════════════════════════════════════════════════════
+
+  - id: CMP-34
+    rung: "R10"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, kepler_geostationnaire, resolution]
+    stem: >
+      Pour les satellites d'un même astre en orbite circulaire, la 3e loi
+      de Kepler relie la période $T$ et le rayon $r$ de l'orbite. Laquelle
+      de ces affirmations est exacte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$T^3/r^2 = 4\\pi^2/GM$ = constante"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.kepler3-exposants-inverses
+        also_reveals: []
+        feedback: >
+          C'est l'inverse : l'établissement (egaler $v=\sqrt{GM/r}$ et
+          $v=2\pi r/T$) donne le carré sur la période et le cube sur le
+          rayon, pas l'inverse.
+      - id: B
+        text: "Chaque rayon d'orbite possible a sa propre constante $T^2/r^3$ : rien n'empeche de choisir une orbite de n'importe quel rayon pour une période donnée"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.geostationnaire-toute-altitude
+        also_reveals: []
+        feedback: >
+          Au contraire, $T^2/r^3$ est LA MÊME constante pour tous les
+          satellites d'un même astre (elle ne dépend que de $M$). Fixer
+          $T$ determine donc un $r$ unique, pas une famille de rayons
+          possibles.
+      - id: C
+        text: "$T^2/r^3 = 4\\pi^2/GM$ = constante, pour tous les satellites d'un même astre central — y compris un satellite géostationnaire, qui n'echappe a aucune loi physique en paraissant immobile depuis le sol"
+        correct: true
+      - id: D
+        text: "Cette relation ne concerne que les satellites en mouvement ; un satellite géostationnaire, étant immobile, n'a pas de $T$ a proprement parler et echappe a la 3e loi"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.geostationnaire-immobile-absolu
+        also_reveals: []
+        feedback: >
+          Un satellite géostationnaire a bien une période
+          $T\approx24\ \text{h}$ (dans le référentiel géocentrique, il
+          parcourt un cercle) : la 3e loi s'applique a lui exactement comme
+          aux autres satellites.
+    correct_feedback: >
+      Exact : en egalant $v=\sqrt{GM/r}$ (2e loi) et $v=2\pi r/T$
+      (géométrie du cercle), on obtient $T^2/r^3=4\pi^2/GM$, une constante
+      propre a l'astre central, valable pour tout satellite, géostationnaire
+      compris.
+    solution: |
+      $$
+      \frac{2\pi r}{T} = \sqrt{\frac{GM}{r}} \implies \frac{4\pi^2
+      r^2}{T^2} = \frac{GM}{r} \implies \frac{T^2}{r^3} =
+      \frac{4\pi^2}{GM}
+      $$
+      Le membre de droite ne dépend que de $M$ (l'astre central) :
+      $T^2/r^3$ est donc la même constante pour tous ses satellites, y
+      compris un satellite géostationnaire.
+
+  - id: CMP-35
+    rung: "R10"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, kepler_geostationnaire, utilisation]
+    stem: >
+      Un satellite géostationnaire est décrit comme « fixe au-dessus d'un
+      point de l'equateur ». Est-il réellement immobile ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Sa période $T$ et son rayon $r$ vérifient $T^3/r^2=4\\pi^2/GM_T$, ce qui explique à soi seul son immobilité apparente au-dessus du sol"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.kepler3-exposants-inverses
+        also_reveals: []
+        feedback: >
+          La formule elle-même est fausse (exposants inverses : c'est
+          $T^2/r^3$, pas $T^3/r^2$), et surtout ce n'est pas une formule
+          qui « explique une immobilité » — c'est une relation entre $T$ et
+          $r$, qui vaut pour tout satellite, immobile ou non par rapport au
+          sol.
+      - id: B
+        text: "Il est immobile seulement pour un observateur au sol ; dans le référentiel géocentrique, il parcourt un cercle à la vitesse $v=\\sqrt{GM_T/r}$"
+        correct: true
+      - id: C
+        text: "Il est totalement immobile dans l'espace, sans aucune vitesse, et cela dans n'importe quel référentiel que l'on choisisse"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.geostationnaire-immobile-absolu
+        also_reveals: []
+        feedback: >
+          « Immobile » n'a de sens que par rapport a un référentiel. Dans
+          le référentiel géocentrique, ce satellite se deplace bel et
+          bien, a sa vitesse orbitale ; ce n'est que par rapport au sol
+          qu'il parait fixe.
+      - id: D
+        text: "N'importe quel satellite, à n'importe quelle altitude, peut être rendu géostationnaire simplement en ajustant convenablement sa vitesse"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.geostationnaire-toute-altitude
+        also_reveals: []
+        feedback: >
+          La 3e loi impose une relation biunivoque entre $T$ et $r$ pour un
+          astre donne : seul un rayon précis donne $T=T_{Terre}$. Changer
+          la vitesse a un autre rayon ne redonnerait pas la bonne période.
+    correct_feedback: >
+      Exact : « géostationnaire » décrit une immobilité relative au sol,
+      due a une vitesse angulaire égale a celle de la Terre. Dans le
+      référentiel géocentrique, le satellite parcourt réellement un
+      cercle, a une vitesse de l'ordre de 3 km/s.
+    solution: |
+      Dans le référentiel géocentrique, le satellite géostationnaire suit
+      un mouvement circulaire uniforme a la vitesse $v=\sqrt{GM_T/r}$
+      (chapitre 10), non nulle. Il n'est « immobile » que par rapport a un
+      point du sol, parce que sa vitesse angulaire est exactement égale a
+      celle de la rotation terrestre : le sol et le satellite tournent
+      ensemble, d'ou l'impression de fixite relative.
+
+  - id: CMP-36
+    rung: "R10"
+    difficulty_level: 4
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, kepler_geostationnaire, resolution]
+    stem: >
+      Quelles conditions un satellite doit-il remplir pour être
+      géostationnaire, et combien d'altitudes différentes satisfont ces
+      conditions autour de la Terre ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il suffit que le satellite ait une vitesse nulle par rapport au sol dès son lancement ; aucune condition sur la période n'est alors nécessaire"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.geostationnaire-immobile-absolu
+        also_reveals: []
+        feedback: >
+          Une vitesse nulle par rapport au sol au lancement ne garantit
+          rien pour la suite : c'est la condition sur la PÉRIODE
+          ($T=T_{Terre}$), combinée au plan équatorial et au sens de
+          rotation, qui maintient le satellite au-dessus du même point.
+      - id: B
+        text: "N'importe quelle altitude convient, du moment que le satellite décrit une orbite circulaire autour de la Terre et dans le bon sens"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.geostationnaire-toute-altitude
+        also_reveals: []
+        feedback: >
+          Une orbite circulaire quelconque a une période donnée par la 3e
+          loi, différente de 24 h sauf a un rayon précis : un satellite
+          « quelconque » derive par rapport au sol, il n'est pas
+          géostationnaire.
+      - id: C
+        text: "Il suffit que la relation $T^3=r^2\\times(4\\pi^2/GM_T)$ soit vérifiée, ce qui laisse plusieurs rayons possibles pour une même période"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.kepler3-exposants-inverses
+        also_reveals: []
+        feedback: >
+          Cette formule inverse les exposants de la 3e loi (qui est
+          $T^2/r^3=4\pi^2/GM_T$, pas $T^3/r^2=\ldots$) ; et même corrigée,
+          elle donnerait un seul $r$ pour un $T$ donne, pas plusieurs.
+      - id: D
+        text: "$T=T_{\\text{Terre}}\\approx24\\ \\text{h}$, orbite dans le plan équatorial, même sens que la rotation terrestre ; la 3e loi fixe alors un rayon unique"
+        correct: true
+    correct_feedback: >
+      Exact : les trois conditions (période terrestre, plan équatorial,
+      même sens de rotation) sont simultanément nécessaires ; combinees a
+      la 3e loi, elles fixent une unique valeur de $r$ (environ
+      $4{,}2\times10^7\ \text{m}$ pour la Terre), donc une seule altitude
+      géostationnaire possible.
+    solution: |
+      Trois conditions simultanees : $T=T_{Terre}\approx24\ \text{h}$ (ou
+      $86\,164\ \text{s}$), orbite équatoriale, même sens que la rotation
+      terrestre. La 3e loi, appliquee avec $T=T_{Terre}$, donne :
+      $$
+      r = \left(\frac{GM_T\,T^2}{4\pi^2}\right)^{1/3} \approx
+      4{,}2\times10^7\ \text{m}
+      $$
+      une valeur unique : il n'existe qu'une seule altitude géostationnaire
+      autour d'un astre donne.
+
+  # ── Deux items ajoutés le 2026-09-05 pour amener
+  #    `descente-plus-courte-que-montee` au plancher de 3 items du banc.
+  #    Elle y siégeait à UN seul item (CMP-11) alors que le résumé de
+  #    couverture ci-dessous annonçait `floor_met: true` : le résumé avait été
+  #    écrit quand l'inventaire ne comptait que les 12 misconceptions R7-R10,
+  #    et n'a pas été retourné quand la passe du 2026-09-05 a tagué les items
+  #    hérités R0-R6/R11 et déclaré leurs neuf familles. C'est exactement le
+  #    défaut que web/scripts/resume-couverture.mjs garde désormais.
+  #    Les deux items visent la MÊME erreur par deux gestes distincts — lire
+  #    une vitesse de retour (CMP-37), critiquer un raisonnement écrit
+  #    (CMP-38) — pour ne pas être trois clones de CMP-11.
+  - id: CMP-37
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, chute_libre_verticale, utilisation]
+    stem: >
+      Une balle est lancée verticalement vers le haut depuis le sol, avec une
+      vitesse initiale $v_0 = 15\ \text{m/s}$. Les frottements sont négligés.
+      Avec quelle vitesse repasse-t-elle par son point de départ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$15\\ \\text{m/s}$, dirigée vers le bas : $v_y(t)$ est une droite qui vaut $+v_0$ au départ et $-v_0$ au retour"
+        correct: true
+      - id: B
+        text: "Plus de $15\\ \\text{m/s}$ : la balle redescend plus vite qu'elle n'est montée, donc elle repasse plus vite qu'au départ"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.descente-plus-courte-que-montee
+        also_reveals: []
+        feedback: >
+          C'est la même intuition que « la descente dure moins longtemps » : on
+          prête au retour un avantage que la symétrie interdit. $v_y(t) = v_0 -
+          gt$ est une droite ; elle vaut $+v_0$ au départ, s'annule au sommet,
+          et vaut $-v_0$ quand la balle repasse à la même altitude — jamais
+          davantage.
+      - id: C
+        text: "$15\\ \\text{m/s}$, dirigée vers le haut : sur un axe orienté vers le haut l'accélération vaut $+g$, la vitesse garde son sens"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
+        also_reveals: []
+        feedback: >
+          La valeur est juste, le sens ne l'est pas. Sur un axe $Oy$ orienté
+          vers le HAUT, $\vec g$ pointe dans le sens opposé à l'axe, donc
+          $a_y = -g$ : la vitesse décroît, s'annule, puis devient négative. La
+          balle repasse par son point de départ en descendant.
+      - id: D
+        text: "Cela dépend de sa masse : une balle plus lourde repasse au point de départ plus vite qu'une balle plus légère"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
+        also_reveals: []
+        feedback: >
+          La deuxième loi donne $m\vec a = m\vec g$, donc $\vec a = \vec g$ :
+          la masse se simplifie et n'apparaît nulle part dans
+          $v_y(t) = v_0 - gt$. Deux balles lancées à la même vitesse repassent
+          à la même vitesse, lourde ou légère.
+    correct_feedback: >
+      La balle repasse à $15\ \text{m/s}$, vers le bas. $v_y(t) = v_0 - gt$
+      étant une droite, la vitesse perdue à la montée est exactement regagnée
+      à la descente : même altitude, même valeur de vitesse, sens opposé.
+    solution: |
+      Axe $Oy$ vertical vers le haut, origine au sol, frottements négligés :
+      $$a_y = -g \quad\Longrightarrow\quad v_y(t) = v_0 - gt$$
+      Le retour au point de départ a lieu à l'instant $t_r$ tel que
+      $y(t_r) = 0$, avec $y(t) = v_0 t - \tfrac{1}{2}gt^2$ :
+      $$t_r = \frac{2v_0}{g}$$
+      D'où
+      $$v_y(t_r) = v_0 - g\cdot\frac{2v_0}{g} = -v_0 = -15\ \text{m/s}$$
+      soit $15\ \text{m/s}$ dirigée vers le bas.
+
+  - id: CMP-38
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, chute_libre_verticale, resolution]
+    stem: >
+      Un élève écrit, à propos d'une balle lancée verticalement vers le haut
+      qui retombe à son point de départ : « La montée a duré
+      $0{,}80\ \text{s}$. Comme la balle redescend de plus en plus vite, la
+      descente a duré moins de $0{,}80\ \text{s}$. » Que penser de ce
+      raisonnement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Sa conclusion est fausse : la descente repasse par les mêmes vitesses que la montée, dans l'ordre inverse — elle dure donc $0{,}80\\ \\text{s}$ elle aussi"
+        correct: true
+      - id: B
+        text: "Sa conclusion est juste : la balle arrive plus vite qu'elle n'est partie, et une phase parcourue à plus grande vitesse prend donc moins de temps"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.descente-plus-courte-que-montee
+        also_reveals: []
+        feedback: >
+          Le raisonnement confond la vitesse FINALE et la vitesse MOYENNE. La
+          descente finit plus vite que la montée n'a commencé, mais elle
+          commence à zéro : les deux phases parcourent la même hauteur avec
+          exactement le même profil de vitesse, l'un renversé dans le temps.
+          $y(t)$ est une parabole symétrique par rapport à son sommet.
+      - id: C
+        text: "Sa conclusion est fausse, mais pour une autre raison : il oublie que la vitesse horizontale de la balle diminue à la montée puis repart à la descente"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
+        also_reveals: []
+        feedback: >
+          Doublement faux : cette balle est lancée VERTICALEMENT, elle n'a
+          aucune vitesse horizontale. Et même pour un lancer oblique, $v_x$ ne
+          varierait pas : le poids étant vertical, $a_x = 0$ et
+          $v_x(t) = v_{0x}$ du lancer à l'impact.
+      - id: D
+        text: "Sa conclusion dépend de la masse : pour une balle lourde la descente est plus courte, pour une balle légère les deux durées s'égalisent"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-influe-en-chute-libre
+        also_reveals: []
+        feedback: >
+          En chute libre, $\vec a = \vec g$ : la masse s'est simplifiée et
+          n'intervient dans aucune durée. Une balle de plomb et une balle de
+          liège lancées à la même vitesse ont la même montée et la même
+          descente — c'est le frottement, pas la masse, qui les séparerait.
+    correct_feedback: >
+      Le raisonnement est faux. Arriver vite ne veut pas dire mettre peu de
+      temps : la descente commence à vitesse nulle et repasse exactement par
+      les vitesses de la montée, dans l'ordre inverse. Les deux phases durent
+      $0{,}80\ \text{s}$ chacune, et le vol entier $1{,}6\ \text{s}$.
+    solution: |
+      Avec $Oy$ vers le haut et l'origine au point de lancement :
+      $$y(t) = v_0 t - \tfrac{1}{2}gt^2 = t\left(v_0 - \tfrac{1}{2}gt\right)$$
+      C'est une parabole de sommet $t_s = v_0/g$, qui s'annule en $t = 0$ et
+      en $t = 2v_0/g = 2t_s$. La courbe est symétrique par rapport à la
+      verticale $t = t_s$ : la durée de montée $t_s$ et la durée de descente
+      $2t_s - t_s = t_s$ sont égales.
+      Ici $t_s = 0{,}80\ \text{s}$, donc la descente dure elle aussi
+      $0{,}80\ \text{s}$ et le vol entier $1{,}6\ \text{s}$.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, et il faut dire pourquoi : la version précédente
+# annonçait `floor_met: true` en ne comptant QUE les douze misconceptions
+# R7-R10 de la passe qui l'avait écrite. Son `scope_note` l'assumait
+# franchement — « R0-R6 et R11 n'ont aucune couverture formelle » — et c'était
+# vrai ce jour-là. Puis une passe ultérieure a déclaré neuf familles de plus et
+# tagué les items hérités : le périmètre du fichier avait changé, le drapeau
+# non. Résultat, `descente-plus-courte-que-montee` est restée à UN item du banc
+# pendant que le fichier se déclarait au plancher.
+#
+# C'est le mode de rot que web/scripts/resume-couverture.mjs garde désormais : un
+# tableau que rien ne réexécute est juste le jour où on l'écrit, et faux le
+# lendemain. Il ne vérifie pas les décomptes par misconception ci-dessous
+# (le corpus les tient selon six conventions différentes, toutes légitimes) —
+# il vérifie les deux affirmations qui n'ont qu'un sens possible : `floor_met`
+# et `total_items`. Les deux sont désormais VRAIES, et le resteront ou la
+# porte tombera.
+#
+# CE QUI A CHANGÉ EN CONTENU : deux items, CMP-37 et CMP-38, écrits pour
+# amener `descente-plus-courte-que-montee` de 1 à 3 items du banc. R1 porte
+# donc 5 items au lieu de 3 — un dépassement assumé du plancher de barreau,
+# pas un déséquilibre : c'est le barreau où vit la symétrie montée/descente.
+#
+# CE QUI RESTE VRAI DE L'ANCIEN RÉSUMÉ, et mérite de survivre :
+#   • les douze misconceptions R7-R10 siègent EXACTEMENT au plancher (3 items
+#     chacune), sans marge : retirer un seul item de R7-R10 casse aussitôt le
+#     plancher des trois misconceptions qu'il portait. Couverture mince — pas
+#     rembourrée, mince — et candidate naturelle à une prochaine passe.
+#   • l'écho inter-chapitres nommé par spec-extension.md §6 : les items
+#     CMP-31/D, CMP-32/A et CMP-33/D touchent à la fois
+#     `vitesse-orbitale-depend-masse-satellite` et l'indépendance de la masse
+#     établie en R2/R3. Aucun co-marquage formel n'a été posé ; le renvoi vit
+#     dans les `feedback:` de ces distracteurs.
+#   • le mélange d'habiletés de la passe R7-R10 (~42/42/17 en
+#     utilisation/résolution/application expérimentale contre une cible
+#     ~50/35/15) : la résolution y est légèrement sur-pondérée, entraînée par
+#     l'équation différentielle et la méthode d'Euler. Dans la tolérance, et
+#     signalé plutôt que corrigé par rembourrage.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs
+    distracteurs la portent (l'élève n'en coche qu'un). Les checkpoints ne
+    comptent pas — le modèle apprenant est construit sur le banc de fin seul.
+    C'est la convention de web/scripts/lib/couverture-compte.mjs, celle de la
+    chaîne, et le tableau ci-dessous est GÉNÉRÉ contre elle.
+  per_misconception:
+    mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises:    { count: 4, items: [CMP-4, CMP-5, CMP-18, CMP-19] }
+    mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie:     { count: 4, items: [CMP-14, CMP-16, CMP-17, CMP-22] }
+    mc.physics.pc_chute_plans.signe-et-projection-mal-poses:           { count: 4, items: [CMP-10, CMP-12, CMP-13, CMP-37] }
+    mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise:           { count: 3, items: [CMP-6, CMP-20, CMP-21] }
+    mc.physics.pc_chute_plans.vx-varie-pendant-le-vol:                 { count: 5, items: [CMP-1, CMP-7, CMP-23, CMP-24, CMP-38] }
+    mc.physics.pc_chute_plans.vitesse-nulle-au-sommet:                 { count: 4, items: [CMP-1, CMP-2, CMP-7, CMP-13] }
+    mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale:             { count: 3, items: [CMP-1, CMP-7, CMP-9] }
+    mc.physics.pc_chute_plans.masse-influe-en-chute-libre:             { count: 6, items: [CMP-3, CMP-8, CMP-13, CMP-15, CMP-37, CMP-38] }
+    mc.physics.pc_chute_plans.descente-plus-courte-que-montee:         { count: 3, items: [CMP-11, CMP-37, CMP-38] }
+    mc.physics.pc_chute_plans.frottement-disparait-a-vlim:             { count: 3, items: [CMP-25, CMP-26, CMP-27] }
+    mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement:  { count: 3, items: [CMP-25, CMP-26, CMP-27] }
+    mc.physics.pc_chute_plans.masse-jamais-determinante-en-chute:      { count: 3, items: [CMP-25, CMP-26, CMP-27] }
+    mc.physics.pc_chute_plans.euler-donne-valeur-exacte:               { count: 3, items: [CMP-28, CMP-29, CMP-30] }
+    mc.physics.pc_chute_plans.euler-oubli-dt:                          { count: 3, items: [CMP-28, CMP-29, CMP-30] }
+    mc.physics.pc_chute_plans.euler-pente-non-recalculee:              { count: 3, items: [CMP-28, CMP-29, CMP-30] }
+    mc.physics.pc_chute_plans.orbite-sans-gravite:                     { count: 3, items: [CMP-31, CMP-32, CMP-33] }
+    mc.physics.pc_chute_plans.orbite-necessite-force-tangentielle:     { count: 3, items: [CMP-31, CMP-32, CMP-33] }
+    mc.physics.pc_chute_plans.vitesse-orbitale-depend-masse-satellite: { count: 3, items: [CMP-31, CMP-32, CMP-33] }
+    mc.physics.pc_chute_plans.kepler3-exposants-inverses:              { count: 3, items: [CMP-34, CMP-35, CMP-36] }
+    mc.physics.pc_chute_plans.geostationnaire-immobile-absolu:         { count: 3, items: [CMP-34, CMP-35, CMP-36] }
+    mc.physics.pc_chute_plans.geostationnaire-toute-altitude:          { count: 3, items: [CMP-34, CMP-35, CMP-36] }
+  total_items: 38
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 5
+    R2: 3
+    R3: 3
+    R4: 3
+    R5: 3
+    R6: 3
+    R7: 3
+    R8: 3
+    R9: 3
+    R10: 3
+    R11: 3
+    note: >-
+      Le plancher de barreau (>= 3 items par barreau) est tenu partout. R1 en
+      porte 5 depuis l'ajout de CMP-37 et CMP-38.
+  honest_state: >-
+    Les 21 misconceptions déclarées sont couvertes, aucune sous le plancher.
+    Quinze d'entre elles y siègent EXACTEMENT (3 items) : la marge est nulle et
+    tout retrait d'item la casse.

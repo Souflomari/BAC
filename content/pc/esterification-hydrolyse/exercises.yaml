@@ -1,0 +1,150 @@
+# Attempt-first exercises (summit-conversion campaign).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2018 session
+# normale, PC BIOF, code NS28F, AlloSchool element/57726 — statut « vérifié »
+# in docs/sujets/pc/esterification-hydrolyse.md, Exercice I Partie 2, sous-
+# partie « Réaction entre l'acide lactique et le méthanol »). r-variation is a
+# fresh anti-memorisation twin (same skills, different couple/numbers,
+# status not-applicable).
+
+notion: esterification-hydrolyse
+
+exercises:
+  # ── r-bac — VERIFIED 2018 national sujet (acide lactique + méthanol) ──────
+  # Faithful transcription of docs/sujets/pc/esterification-hydrolyse.md →
+  # "2018 — session normale — Exercice I (Partie 2, sous-partie 2)". Énoncé
+  # intégralement textuel (aucune figure dans cette sous-partie). Mélange
+  # équimolaire n0 = 1e-3 mol d'acide lactique CH3-CH(OH)-COOH + n0 = 1e-3 mol
+  # de méthanol CH3-OH, chauffé à reflux ; on obtient n_E = 6e-4 mol d'ester E.
+  - id: r-bac
+    title: "Exercice de type bac — estérification acide lactique + méthanol (2018)"
+    sourcing:
+      status: sourced
+      note: >-
+        2018 session normale — examen national Sciences Physiques (SPC) BIOF,
+        code NS28F, Exercice I Partie 2 sous-partie 2 (« Réaction entre l'acide
+        lactique et le méthanol » ; barème de la sous-partie estérification
+        ≈ 2,25 pt). Transcription vérifiée : re-fetch AlloSchool element/57726
+        + diff OK (docs/sujets/pc/esterification-hydrolyse.md).
+    intro: |-
+      **Réaction entre l'acide lactique et le méthanol (examen national, session normale 2018).**
+
+      On mélange dans un ballon une quantité $n_0 = 10^{-3}\ \text{mol}$ d'acide lactique $CH_3-CH(OH)-COOH$ avec la même quantité $n_0 = 10^{-3}\ \text{mol}$ de méthanol pur $CH_3-OH$, puis on chauffe à reflux le mélange réactionnel pendant une certaine durée.
+
+      À la fin de la réaction, on obtient une quantité $n_E = 6\times10^{-4}\ \text{mol}$ d'un ester E.
+    questions:
+      - id: q1
+        part: "Partie 1 — Caractériser la réaction"
+        stem: |-
+          **(0,5 pt)** Citer deux caractéristiques de cette réaction.
+        reasoning: |-
+          On demande la « carte d'identité » de l'estérification, telle que la leçon l'a établie. Deux traits suffisent :
+
+          - **Elle est lente** : à température ambiante et sans catalyseur, plusieurs jours seraient nécessaires pour atteindre l'état final (chapitre 5) — c'est justement pourquoi l'énoncé chauffe à reflux.
+          - **Elle est limitée (non totale)** : elle n'épuise jamais les réactifs. L'acide et l'alcool subsistent aux côtés de l'ester et de l'eau, parce que l'hydrolyse inverse coexiste en permanence dans le même mélange (chapitre 3). Le rendement $r < 1$ calculé à la question 4 le confirmera chiffres à l'appui.
+
+          (Un troisième trait accepté : la réaction est **athermique** — son effet thermique est presque négligeable, chapitre 5.)
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Proposer deux facteurs cinétiques permettant d'accélérer la réaction d'estérification.
+        reasoning: |-
+          Un **facteur cinétique** agit sur la *vitesse* de la réaction, jamais sur son état final (chapitre 5). Les deux facteurs cinétiques au programme sont :
+
+          - **La température** : chauffer (ici, le chauffage à reflux) augmente l'agitation thermique, donc la fréquence et l'énergie des chocs efficaces entre l'acide et l'alcool.
+          - **La concentration des réactifs** : partir de réactifs plus concentrés augmente la fréquence de ces chocs.
+
+          Le piège de la leçon vaut d'être rappelé : ces deux leviers accélèrent l'arrivée à l'équilibre **sans en déplacer la position** — le rendement final reste le même. (L'ajout d'un catalyseur acide accélère lui aussi, mais c'est une catalyse ; ce n'est pas, au sens strict du programme, un facteur cinétique.)
+      - id: q3
+        part: "Partie 2 — Équation et rendement"
+        stem: |-
+          **(0,5 pt)** Écrire, en utilisant les formules semi-développées, l'équation de la réaction ayant lieu entre l'acide lactique et le méthanol.
+        reasoning: |-
+          On applique la règle du chapitre 2 : le groupe $-COOH$ de l'acide et le groupe $-OH$ de l'alcool se combinent ; il en part une molécule d'eau, et les deux restes de chaîne se relient par le groupe ester $-COO-$. Le méthanol apporte son $-OH$ ; le groupe $-OH$ porté par le carbone central de l'acide lactique, lui, ne participe pas — c'est le $-COOH$ qui réagit. L'équation, avec la double flèche de la réaction limitée, s'écrit donc :
+
+          $$CH_3-CH(OH)-COOH + CH_3-OH \rightleftharpoons CH_3-CH(OH)-COO-CH_3 + H_2O$$
+
+          L'ester formé, $CH_3-CH(OH)-COO-CH_3$, est le **2-hydroxypropanoate de méthyle** (couramment appelé lactate de méthyle).
+      - id: q4
+        stem: |-
+          **(0,75 pt)** Calculer le rendement $r$ de cette réaction à la fin de l'expérience.
+        reasoning: |-
+          Le rendement rapporte l'ester réellement obtenu à celui qu'aurait donné une réaction **totale** : $r = \dfrac{n_E}{n_{max}}$. Il faut donc l'avancement maximal. Le mélange est équimolaire et tous les coefficients stoechiométriques valent $1$ : si la réaction était totale, les deux réactifs s'épuiseraient ensemble. L'avancement maximal vaut alors $x_{max} = n_0$, et l'ester maximal $n_{max} = x_{max} = n_0$. Il ne reste qu'à faire le rapport avec l'ester réellement formé.
+        steps:
+          - math: 'x_{max} = n_0 = 10^{-3}\ \text{mol} \implies n_{max} = x_{max} = 10^{-3}\ \text{mol}'
+            note: "Mélange équimolaire, coefficients tous égaux à 1 : les deux réactifs s'épuiseraient en même temps si la réaction était totale — l'ester maximal vaut n0."
+          - math: 'r = \frac{n_E}{n_{max}} = \frac{6\times10^{-4}}{10^{-3}}'
+            note: "On rapporte l'ester réellement formé (6e-4 mol) à l'ester maximal possible (1e-3 mol)."
+          - math: '\boxed{r = 0{,}60 = 60\ \%}'
+            note: "r < 1 confirme le trait « limitée » de la question 1 : la réaction n'a pas épuisé les réactifs."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ────────
+  # Same deep skills as r-bac (caractériser la réaction, citer des facteurs
+  # cinétiques, écrire/nommer l'ester en formules semi-développées, calculer un
+  # rendement) with a different couple (acide butanoïque + éthanol) and fresh
+  # numbers, plus one deeper question (q5) on the cinétique-vs-déplacement
+  # distinction — so the student cannot recopy r-bac and must recognise which
+  # procedure applies.
+  - id: r-variation
+    title: "Une variation pour ne pas mémoriser"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2018, sourcé).
+    intro: |-
+      Même structure profonde que l'exercice précédent, couple et chiffres différents. Le but est que tu ne puisses pas recopier la solution du sujet 2018 — tu dois reconnaître quelle procédure s'applique.
+
+      On réalise l'estérification entre l'acide butanoïque $CH_3-CH_2-CH_2-COOH$ et l'éthanol $CH_3-CH_2-OH$. On mélange $n_0 = 0{,}50\ \text{mol}$ d'acide avec $n_0 = 0{,}50\ \text{mol}$ d'éthanol, puis on chauffe à reflux en présence de quelques gouttes d'acide sulfurique. Une fois l'état final atteint, on mesure une quantité $n_E = 0{,}33\ \text{mol}$ d'ester.
+    questions:
+      - id: q1
+        stem: |-
+          Citer deux caractéristiques de la réaction d'estérification mise en jeu.
+        reasoning: |-
+          Les traits ne dépendent pas du couple choisi — c'est exactement le point de cette variation. L'estérification est :
+
+          - **lente** (d'où le chauffage à reflux, qui accélère sans changer l'état final) ;
+          - **limitée** (non totale) : acide et alcool ne disparaissent jamais complètement, car l'hydrolyse inverse coexiste. On peut ajouter qu'elle est **athermique**.
+
+          Le rendement mesuré à la question 4 vaudra à nouveau moins que $1$ : la signature d'une réaction limitée.
+      - id: q2
+        stem: |-
+          Citer deux facteurs cinétiques permettant d'accélérer cette réaction, et préciser leur effet sur le rendement final.
+        reasoning: |-
+          Les deux facteurs cinétiques du programme sont **la température** (le chauffage à reflux) et **la concentration des réactifs**. Tous deux augmentent la fréquence des chocs efficaces, donc la vitesse.
+
+          Sur le rendement final : **aucun effet**. Un facteur cinétique change *quand* on atteint l'équilibre, pas *où* il se situe (chapitre 5). Ici l'acide sulfurique joue en plus le rôle de catalyseur — il accélère l'estérification et l'hydrolyse dans les mêmes proportions, sans déplacer l'équilibre.
+      - id: q3
+        stem: |-
+          Écrire, en formules semi-développées, l'équation de la réaction, puis nommer l'ester obtenu.
+        reasoning: |-
+          Même geste qu'au sujet : le $-COOH$ de l'acide butanoïque et le $-OH$ de l'éthanol se combinent, une molécule d'eau part, et le groupe ester $-COO-$ relie les deux restes de chaîne.
+
+          $$CH_3-CH_2-CH_2-COOH + CH_3-CH_2-OH \rightleftharpoons CH_3-CH_2-CH_2-COO-CH_2-CH_3 + H_2O$$
+
+          Nomenclature (chapitre 2) : l'acide butanoïque donne le radical « butanoate » ; l'éthanol donne « éthyle ». L'ester est le **butanoate d'éthyle**.
+      - id: q4
+        stem: |-
+          Calculer le rendement $r$ de la réaction.
+        reasoning: |-
+          Comme au sujet : mélange équimolaire, coefficients tous égaux à $1$, donc l'avancement maximal vaut $x_{max} = n_0$ et l'ester maximal $n_{max} = n_0$. On rapporte l'ester formé à ce maximum.
+        steps:
+          - math: 'n_{max} = x_{max} = n_0 = 0{,}50\ \text{mol}'
+            note: "Équimolaire, coefficients égaux à 1 : l'ester maximal d'une réaction totale vaudrait n0."
+          - math: 'r = \frac{n_E}{n_{max}} = \frac{0{,}33}{0{,}50} = 0{,}66'
+            note: "Application numérique."
+          - math: '\boxed{r \approx 0{,}66 = 66\ \%}'
+            note: "Proche des deux tiers attendus pour une estérification simple (acide et alcool à chaîne linéaire, quantités égales)."
+      - id: q5
+        stem: |-
+          Deux élèves cherchent à obtenir davantage d'ester. Le premier propose d'ajouter encore plus d'acide sulfurique ; le second propose de repartir avec un excès d'éthanol (par exemple $1{,}0\ \text{mol}$ d'éthanol pour $0{,}50\ \text{mol}$ d'acide). Lequel a raison ? Justifie à l'aide du critère $Q_r/K$.
+        reasoning: |-
+          Il faut séparer *accélérer* de *déplacer l'équilibre* (chapitres 5 et 6).
+
+          Le **premier élève a tort** : l'acide sulfurique est un catalyseur. Il n'apparaît ni dans l'équation bilan ni dans l'expression de $K$ ; il accélère l'estérification et l'hydrolyse à parts égales, donc ne touche pas à la position de l'équilibre. Plus de catalyseur $\Rightarrow$ même rendement, atteint plus vite.
+
+          Le **second élève a raison** : partir d'un excès d'éthanol augmente le dénominateur de $Q_r = \dfrac{[ester][eau]}{[acide][alcool]}$ dès le mélange initial. $Q_{r,i}$ part alors plus bas que $K$, et le système doit avancer davantage dans le sens direct pour rejoindre $K$ — ce qui consomme une plus grande **proportion** de l'acide (le réactif limitant). C'est un déplacement réel de l'équilibre : le rendement rapporté à l'acide augmente.

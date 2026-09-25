@@ -1,0 +1,147 @@
+# Attempt-first exercises (summit-conversion campaign).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2018 session
+# normale, PC BIOF, code NS28F, AlloSchool element/57726 — statut « vérifié »
+# in docs/sujets/pc/ondes-mecaniques-progressives.md). r-variation is a fresh
+# anti-memorisation twin (same skills, different numbers/context, status
+# not-applicable).
+
+notion: ondes-mecaniques-progressives
+
+exercises:
+  # ── r-bac — the VERIFIED 2018 national sujet, Exercice II (ultrasons) ─────
+  # Faithful transcription of docs/sujets/pc/ondes-mecaniques-progressives.md →
+  # "2018 — session normale — Exercice II". Setup: cuve de pétrole ; deux
+  # émetteurs E1 (air) / E2 (pétrole) reliés à un GBF émettent à t0 = 0 ; deux
+  # récepteurs R1 (air) / R2 (pétrole) à la distance L = 1,84 m ; oscilloscope
+  # 2 ms/div. On lit le retard τ entre les deux salves (décalage de 2 divisions
+  # → 4,0 ms), on établit τ = L(1/V_air − 1/V_p), on en déduit V_p ≈ 1,3·10³ m/s.
+  - id: r-bac
+    title: "Exercice de type bac — célérité d'une onde ultrasonore (2018)"
+    sourcing:
+      status: sourced
+      note: >-
+        2018 session normale — examen national PC BIOF, AlloSchool NS28F
+        (Exercice II — ondes ultrasonores, détermination de la célérité dans le
+        pétrole ; barème 2,5 pt, épreuve de Sciences Physiques SPC, 3 h, coef 7).
+        Transcription vérifiée : re-fetch indépendant AlloSchool (element/57726)
+        + diff OK (docs/sujets/pc/ondes-mecaniques-progressives.md).
+        RÉSERVE, alignée le 2026-09-19 sur l'aveu de bank.yaml (bk-2018-n-x2) :
+        la valeur « le décalage mesure 2 divisions » ne figure PAS dans la fiche
+        source, qui dit seulement « nombre de divisions du décalage à lire sur
+        le scan ». C'est une LECTURE d'auteur, jamais confirmée par une mesure
+        au pixel indépendante — et elle porte tout le résultat (tau = 4,0 ms,
+        puis V_p). Une mesure au pixel de la figure 2 du sujet 2018 fermerait ce
+        point ici ET dans bank.yaml d'un seul coup.
+    intro: |-
+      **Détermination de la célérité d'une onde ultrasonore dans un liquide (examen national, session normale 2018).**
+
+      Les ondes mécaniques ne se propagent que dans un milieu matériel, et leur célérité dépend du milieu traversé (elle croît avec la densité du milieu). Pour déterminer la valeur approximative de la célérité $V_p$ d'une onde ultrasonore dans le pétrole liquide, on réalise l'expérience suivante.
+
+      Dans une cuve contenant du pétrole, on fixe à l'une des extrémités deux émetteurs $E_1$ et $E_2$ reliés à un générateur GBF. À l'instant $t_0 = 0$, les deux émetteurs émettent chacun une onde ultrasonore : l'une se propage dans l'air (partie haute de la cuve), l'autre dans le pétrole (partie basse). À l'autre extrémité, deux récepteurs $R_1$ (dans l'air) et $R_2$ (dans le pétrole), placés à la distance $L$ des émetteurs, captent les deux ondes. On visualise sur un oscilloscope les deux signaux reçus : deux salves décalées horizontalement, celle qui a voyagé dans le pétrole (le milieu le plus rapide) arrivant avant celle de l'air.
+
+      **Données :** les deux ondes parcourent la même distance $L = 1{,}84\ \text{m}$ ; célérité des ultrasons dans l'air $V_{air} = 340\ \text{m.s}^{-1}$ ; sensibilité horizontale de l'oscilloscope $2\ \text{ms/div}$ ; sur l'écran, le décalage horizontal entre les débuts des deux salves mesure $2$ divisions.
+    questions:
+      - id: q1
+        part: "Partie 1 — Nature de l'onde ultrasonore"
+        stem: |-
+          **(0,5 pt)** Les ondes ultrasonores sont-elles longitudinales ou transversales ? Justifier.
+        reasoning: |-
+          Les ultrasons sont des ondes sonores (de fréquence trop élevée pour être audibles). Comme tout son, leur propagation se fait par compressions et dilatations successives du milieu, dans la même direction que celle où l'onde avance. Le déplacement de la matière est donc **parallèle** à la direction de propagation — c'est exactement le critère d'une onde **longitudinale** (le même mécanisme que la compression qui court le long d'un ressort). Il n'y a pas ici de déplacement perpendiculaire à la propagation, comme il y en aurait sur une corde : l'onde ultrasonore est **longitudinale**.
+      - id: q2
+        part: "Partie 2 — Exploiter l'oscillogramme et déterminer $V_p$"
+        stem: |-
+          **(0,5 pt)** En exploitant l'oscillogramme, déterminer la valeur du retard temporel $\tau$ entre les deux ondes reçues par $R_1$ et $R_2$.
+        reasoning: |-
+          Le retard $\tau$ est le décalage temporel entre les débuts des deux salves : les deux ondes sont parties ensemble ($t_0 = 0$), mais celle qui a voyagé dans l'air (plus lente) arrive après celle du pétrole. On mesure d'abord ce décalage en **divisions** sur l'écran, puis on le convertit en secondes grâce à la sensibilité horizontale (base de temps) : chaque division vaut $2\ \text{ms}$.
+        steps:
+          - math: '\tau = 2\ \text{div} \times 2\ \text{ms/div} = 4{,}0\ \text{ms} = 4{,}0\times10^{-3}\ \text{s}'
+            note: "Décalage de 2 divisions à l'écran, converti via la base de temps 2 ms par division."
+      - id: q3
+        stem: |-
+          **(0,75 pt)** Montrer que l'expression du retard s'écrit sous la forme $\tau = L\left(\dfrac{1}{V_{air}} - \dfrac{1}{V_p}\right)$.
+        reasoning: |-
+          Chaque onde parcourt la même distance $L$, mais à une célérité différente, donc en un temps différent. La durée de parcours dans un milieu, c'est la distance divisée par la célérité : $t = L/V$. L'onde dans l'air met $t_{air} = L/V_{air}$, celle dans le pétrole met $t_p = L/V_p$. Comme $V_p > V_{air}$, l'onde du pétrole arrive la première ; le retard de l'onde de l'air sur celle du pétrole est la différence de ces deux durées. On met ensuite $L$ en facteur.
+        steps:
+          - math: 't_{air} = \dfrac{L}{V_{air}} \qquad t_{p} = \dfrac{L}{V_{p}}'
+            note: "Durée de parcours de chaque onde sur la distance L : temps = distance / célérité."
+          - math: '\tau = t_{air} - t_{p} = \dfrac{L}{V_{air}} - \dfrac{L}{V_{p}}'
+            note: "Le retard est la différence des durées ; l'onde de l'air (plus lente) arrive après celle du pétrole."
+          - math: '\tau = L\left(\dfrac{1}{V_{air}} - \dfrac{1}{V_{p}}\right)'
+            note: "On met L en facteur."
+      - id: q4
+        stem: |-
+          **(0,75 pt)** En déduire la valeur approchée de la célérité $V_p$ de l'onde ultrasonore dans le pétrole.
+        reasoning: |-
+          On tient une relation entre $\tau$ (mesuré), $L$ et $V_{air}$ (données) et la seule inconnue $V_p$. On isole donc $\dfrac{1}{V_p}$, puis on inverse pour obtenir $V_p$. Numériquement, $\dfrac{1}{V_p}$ est une petite différence de deux termes voisins : on garde assez de chiffres pour ne pas perdre la précision.
+        steps:
+          - math: '\dfrac{1}{V_p} = \dfrac{1}{V_{air}} - \dfrac{\tau}{L}'
+            note: "On isole 1/V_p dans la relation précédente."
+          - math: '\dfrac{1}{V_p} = \dfrac{1}{340} - \dfrac{4{,}0\times10^{-3}}{1{,}84} = 2{,}94\times10^{-3} - 2{,}17\times10^{-3} = 7{,}7\times10^{-4}\ \text{s.m}^{-1}'
+            note: "Application numérique : V_air = 340 m/s, τ = 4,0 ms, L = 1,84 m."
+          - math: 'V_p = \dfrac{1}{7{,}7\times10^{-4}} \approx 1{,}3\times10^{3}\ \text{m.s}^{-1}'
+            note: "On inverse. La celerite dans le petrole est bien superieure a celle dans l'air : c'est la RIGIDITE du liquide (tres peu compressible) qui l'explique, pas sa densite — le chapitre 4 dit qu'a rigidite egale, un milieu plus lourd est plus LENT. L'enonce du sujet raccourcit en « croit avec la densite »."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ────────
+  # Same deep skills as r-bac (nature transversale/longitudinale, retard,
+  # célérité, mouvement d'un point) with a totally different surface: a rope +
+  # vibreur instead of ultrasound in a liquid, and the y_M(t) = y_S(t−τ)
+  # description instead of the two-medium 1/V_air − 1/V_p derivation — so the
+  # student cannot memorise r-bac and must recognise which relation applies.
+  # The expert reasoning is MOVED from the lesson's former printed R5 exercise
+  # (attempt-first now), nothing invented.
+  - id: r-variation
+    title: "Variation fraîche — perturbation sur une corde"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2018, sourcé).
+    intro: |-
+      Même famille de compétences que le sujet précédent (nature de l'onde, retard, célérité, mouvement d'un point du milieu), tout autre habillage : une corde et un vibreur, à la place des ultrasons dans un liquide. Le but est que tu ne puisses pas recopier la solution — tu dois reconnaître quelle relation s'applique.
+
+      Une corde tendue horizontalement a son extrémité $S$ reliée à un vibreur. À l'instant $t = 0$, $S$ effectue un bref aller-retour vers le haut : son élongation $y_S$ croît linéairement de $0$ à $a = 2\ \text{cm}$ entre $t = 0$ et $t = 20\ \text{ms}$, puis redescend linéairement de $2\ \text{cm}$ à $0$ entre $t = 20\ \text{ms}$ et $t = 40\ \text{ms}$, puis reste nulle. Un point $M$ de la corde, situé à $d = 60\ \text{cm}$ de $S$, ne commence à reproduire ce mouvement qu'à l'instant $t = 300\ \text{ms}$.
+    questions:
+      - id: q1
+        stem: |-
+          Quel est le retard $\tau$ du mouvement de $M$ par rapport à celui de $S$ ?
+        reasoning: |-
+          Le retard est, par définition, le délai entre l'instant où $S$ commence son mouvement ($t = 0$) et l'instant où $M$ commence à reproduire ce même mouvement. Ici $M$ démarre à $t = 300\ \text{ms}$, donc le retard se lit directement, sans calcul :
+
+          $$\tau = 300\ \text{ms} - 0 = 300\ \text{ms} = 0{,}3\ \text{s}$$
+      - id: q2
+        stem: |-
+          En déduire la célérité $v$ de l'onde le long de la corde.
+        reasoning: |-
+          On connaît maintenant le retard $\tau$ et la distance $d$ parcourue par la perturbation pour aller de $S$ à $M$. La relation $\tau = d/v$ se retourne directement pour donner la célérité — la vitesse à laquelle la perturbation avance le long de la corde (à ne pas confondre avec la vitesse de va-et-vient d'un point de la corde).
+        steps:
+          - math: 'v = \dfrac{d}{\tau} = \dfrac{0{,}60}{0{,}30} = 2{,}0\ \text{m.s}^{-1}'
+            note: "On convertit d = 60 cm = 0,60 m avant de diviser par τ = 0,30 s."
+      - id: q3
+        stem: |-
+          Cette onde est-elle transversale ou longitudinale ? Justifier.
+        reasoning: |-
+          Le critère est toujours le même : comparer la direction du déplacement de la matière à la direction de propagation. Le point $M$ se déplace **verticalement** (son élongation $y_M$ monte puis descend), alors que la perturbation avance **horizontalement** le long de la corde. Les deux directions sont perpendiculaires : l'onde est **transversale**.
+      - id: q4
+        stem: |-
+          Décrire le mouvement du point $M$, c'est-à-dire $y_M(t)$.
+        reasoning: |-
+          On applique la relation centrale $y_M(t) = y_S(t - \tau)$ : $M$ rejoue exactement le mouvement de $S$, à l'identique, mais décalé de $\tau = 0{,}3\ \text{s}$. Concrètement : $y_M(t) = 0$ tant que $t < 300\ \text{ms}$ (la perturbation n'est pas encore arrivée) ; puis $y_M$ croît de $0$ à $2\ \text{cm}$ entre $300\ \text{ms}$ et $320\ \text{ms}$ ; puis redescend de $2\ \text{cm}$ à $0$ entre $320\ \text{ms}$ et $340\ \text{ms}$ ; puis reste nulle. C'est la même forme que $y_S$, simplement translatée de $0{,}3\ \text{s}$ vers la droite.
+      - id: q5
+        stem: |-
+          Un second point $M_2$ est situé à $d_2 = 90\ \text{cm}$ de $S$. À quel instant commence-t-il à bouger ?
+        reasoning: |-
+          La célérité est une propriété du milieu — la même corde, la même tension — donc la valeur $v = 2{,}0\ \text{m.s}^{-1}$ trouvée pour $M$ vaut aussi pour $M_2$, sans refaire l'expérience. On calcule le nouveau retard avec la nouvelle distance.
+        steps:
+          - math: '\tau_2 = \dfrac{d_2}{v} = \dfrac{0{,}90}{2{,}0} = 0{,}45\ \text{s} = 450\ \text{ms}'
+            note: "Même v (propriété du milieu), nouvelle distance d_2 = 90 cm."
+      - id: q6
+        stem: |-
+          Un camarade affirme : « la corde se déplace de $S$ jusqu'à $M$, c'est ça, une onde ». Que penser de cette affirmation ?
+        reasoning: |-
+          L'affirmation confond ce qui **transporte** (la perturbation, et l'énergie qu'elle porte) avec ce qui **se déplace physiquement** (chaque point de la corde). Un point donné de la corde, une fois la perturbation passée, revient à sa position de repos — il n'a jamais voyagé de $S$ vers $M$. Ce qui a voyagé, c'est le mouvement lui-même, relayé de proche en proche le long de la corde : transport d'énergie, sans transport de matière.

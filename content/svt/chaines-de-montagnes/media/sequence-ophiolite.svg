@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 400"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Colonne verticale d’une séquence ophiolitique, du haut vers le bas : basaltes en coussins, gabbro, puis péridotite — la structure exacte d’un plancher océanique. On retrouve cette même séquence intacte, coincée entre deux blocs de granite continental, à plusieurs milliers de mètres d’altitude. Cette séquence ne peut pas être une variété de croûte continentale : les basaltes en coussins ne se forment que sous l’eau — c’est un vrai morceau de plancher océanique préservé, la preuve qu’un océan a existé ici puis s’est refermé.">
+  <title>La séquence ophiolitique : la preuve d’un plancher océanique préservé</title>
+
+  <!--
+    sequence-ophiolite.svg — STAGED, 3 étapes (R3).
+
+      step-1 : la colonne telle que formée à une dorsale océanique, de haut
+               en bas : basaltes en coussins / gabbro / péridotite.
+      step-2 : + la même colonne, retrouvée intacte, coincée entre deux
+               blocs de granite continental, en altitude — la colonne du
+               step-1 n'est jamais redessinée, seuls les deux blocs de
+               granite et le contexte d'altitude sont AJOUTÉS autour d'elle.
+      step-3 : + le contraste qui exclut l'origine continentale — un « ✕ »
+               sur chaque bloc de granite (jamais de coussins/gabbro/
+               péridotite dans du granite) et la conclusion : un vrai
+               morceau de plancher océanique, donc un océan a existé.
+
+    Ordre de la colonne (haut → bas), jamais modifié : basaltes en coussins,
+    gabbro, péridotite — l'ordre exact exigé par le brief. Aucun pli ni
+    chevauchement ici (domaine de plis-chevauchement.svg, R4) : cette
+    figure ne montre qu'une superposition verticale simple.
+
+    Convention couleur : la colonne ophiolitique porte l'accent SEULEMENT
+    à l'étape 3 (l'impossibilité d'une origine continentale) — aux étapes
+    1 et 2, elle reste en tons neutres (ink / ink-soft / grid), au même
+    titre que les blocs de granite, pour que rien ne présume la preuve
+    avant qu'elle soit établie. Les blocs de granite restent, à toutes les
+    étapes, dans le registre clair --figure-surface / --figure-ink-soft
+    (brief : « register plus clair que la colonne »).
+
+    Simplification pédagogique assumée : les « coussins » du basalte sont
+    suggérés par quelques arcs schématiques le long du sommet de la
+    colonne, pas une texture réaliste — seul le principe (mise en place
+    sous l'eau) compte ici.
+  -->
+
+  <text x="350" y="24" text-anchor="middle"
+        font-size="12.5" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Une séquence ophiolitique, preuve d’un plancher océanique préservé
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — La colonne telle que formée à la dorsale
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Contexte marin, discret -->
+    <path d="M300,58 q10,-8 20,0 t20,0 t20,0 t20,0 t20,0"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="350" y="46" text-anchor="middle" font-size="9" font-style="italic" fill="var(--figure-ink-soft)">
+      à la dorsale océanique (milieu marin)
+    </text>
+
+    <!-- Basaltes en coussins (sommet) -->
+    <rect x="300" y="70" width="100" height="80" fill="var(--figure-grid)" opacity="0.55" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <path d="M306,72 a6,6 0 0 1 12,0 M320,72 a6,6 0 0 1 12,0 M334,72 a6,6 0 0 1 12,0 M348,72 a6,6 0 0 1 12,0 M362,72 a6,6 0 0 1 12,0 M376,72 a6,6 0 0 1 12,0 M390,72 a6,6 0 0 1 8,0"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="350" y="114" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--figure-ink)">
+      basaltes en coussins
+    </text>
+
+    <!-- Gabbro (milieu) -->
+    <rect x="300" y="150" width="100" height="80" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="350" y="194" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--figure-ink)">
+      gabbro
+    </text>
+
+    <!-- Péridotite (base, manteau) -->
+    <rect x="300" y="230" width="100" height="80" fill="var(--figure-ink-soft)" opacity="0.35" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="350" y="274" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--figure-ink)">
+      péridotite
+    </text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — Retrouvée intacte entre deux blocs de granite
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <rect x="110" y="70" width="190" height="240" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="205" y="186" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">
+      granite
+    </text>
+    <text x="205" y="200" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">
+      (croûte continentale)
+    </text>
+
+    <rect x="400" y="70" width="190" height="240" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="495" y="186" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">
+      granite
+    </text>
+    <text x="495" y="200" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">
+      (croûte continentale)
+    </text>
+
+    <line x1="110" y1="310" x2="590" y2="310" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="350" y="332" text-anchor="middle" font-size="10" font-style="italic" fill="var(--figure-ink-soft)">
+      coincée ici, à plusieurs milliers de mètres d’altitude
+    </text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — Le contraste : impossible origine continentale
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <rect x="296" y="66" width="108" height="248" rx="4"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2.4"/>
+
+    <text x="205" y="220" text-anchor="middle" font-size="9" font-weight="600" fill="var(--figure-accent)">
+      ✕ jamais de coussins
+    </text>
+    <text x="495" y="220" text-anchor="middle" font-size="9" font-weight="600" fill="var(--figure-accent)">
+      ✕ jamais de coussins
+    </text>
+
+    <text x="350" y="352" text-anchor="middle" font-size="10" font-weight="700" fill="var(--figure-accent)">
+      granite ≠ basalte/gabbro/péridotite : deux origines, deux densités
+    </text>
+    <text x="350" y="372" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--figure-accent)">
+      un vrai plancher océanique préservé — la preuve qu’un océan a existé ici
+    </text>
+  </g><!-- /step-3 -->
+
+</svg>

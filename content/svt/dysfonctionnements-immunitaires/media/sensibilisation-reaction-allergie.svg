@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 280"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Les deux phases de l’allergie : lors du premier contact, les mastocytes se couvrent d’IgE sans aucun symptôme (sensibilisation) ; ce n’est que lors d’un contact ultérieur que l’allergène ponte deux IgE déjà fixées, déclenchant la dégranulation et la libération d’histamine (réaction).">
+  <title>Les deux phases de la réaction allergique : sensibilisation puis réaction</title>
+
+  <!--
+    sensibilisation-reaction-allergie.svg — figure STATIQUE (pas de step-groups).
+    Cible précise : l'erreur classique nommée en R1 du lesson.md — croire que
+    c'est la PREMIÈRE rencontre avec l'allergène qui pourrait déclencher la
+    réaction. Le texte est explicite : « Sans IgE déjà fixées sur les
+    mastocytes lors du premier contact, aucun pontage n'est possible — c'est
+    pour ça que la sensibilisation, la première fois, ne produit jamais la
+    réaction : les mastocytes ne sont pas encore armés. » Le schéma montre
+    donc deux panneaux du MÊME mastocyte : Phase 1, couvert d'IgE (produites
+    par les plasmocytes) mais sans allergène pontant — aucun symptôme ; Phase
+    2, un contact ultérieur où l'allergène (qui porte plusieurs copies du
+    même motif) ponte deux IgE déjà fixées, déclenchant la dégranulation.
+
+    Convention couleur : les IgE (et l'accent visuel autour du pontage, qui
+    n'est qu'une mise en évidence de ces mêmes IgE en action) portent
+    --figure-accent dans les DEUX panneaux — c'est la seule idée que ce
+    schéma marque : ce sont les IgE déjà là qui rendent la réaction
+    possible. L'allergène, le mastocyte et les granules d'histamine restent
+    en --figure-ink / --figure-ink-soft (neutres, non l'idée centrale).
+
+    Simplification pédagogique assumée : la sélection clonale des
+    lymphocytes B (avec l'aide des T4) n'est pas re-diagrammée dans le
+    détail (déjà vue dans les leçons précédentes) — seul un petit
+    plasmocyte symbolise l'origine des IgE. L'allergène du tout premier
+    contact n'est pas représenté en phase 1 (il est déjà éliminé au moment
+    où les IgE se fixent) : ne pas le montrer évite de laisser croire, à
+    tort, qu'il pourrait déclencher quelque chose dès ce moment-là.
+  -->
+
+  <!-- Titre : l'idée corrective, en toutes lettres -->
+  <text x="340" y="16" text-anchor="middle"
+        font-size="13" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    <tspan x="340" y="16">Le premier contact ARME les mastocytes,</tspan>
+    <tspan x="340" y="32">seul un contact ultérieur déclenche la réaction</tspan>
+  </text>
+
+  <!-- Séparateur vertical entre les deux phases -->
+  <line x1="340" y1="46" x2="340" y2="272"
+        stroke="var(--figure-grid)" stroke-width="1.2" stroke-dasharray="4,4"/>
+
+  <!-- ── En-têtes de panneaux ───────────────────────────────── -->
+  <text x="172" y="54" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-ink)">
+    Phase 1 — premier contact
+  </text>
+  <text x="172" y="69" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">
+    (sensibilisation — silencieuse)
+  </text>
+
+  <text x="508" y="54" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-ink)">
+    Phase 2 — contact ultérieur
+  </text>
+  <text x="508" y="69" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">
+    (réaction — brutale, minutes)
+  </text>
+
+  <!-- ══════════════════ PANNEAU GAUCHE — Phase 1 ══════════════════ -->
+
+  <!-- Mastocyte -->
+  <ellipse cx="172" cy="175" rx="68" ry="48"
+           fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+  <text x="172" y="192" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    mastocyte
+  </text>
+
+  <!-- Plasmocyte produisant les IgE -->
+  <circle cx="64" cy="205" r="14"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <text x="64" y="227" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">
+    plasmocyte
+  </text>
+  <path d="M 77,197 Q 96,168 120,144" fill="none"
+        stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="3,3" opacity="0.7"/>
+  <polygon points="124,140 111,138 116,150" fill="var(--figure-ink-soft)" opacity="0.8"/>
+
+  <!-- IgE fixées (pied = Fc vers le mastocyte, bras = Fab vers l'extérieur) -->
+  <!-- IgE L1 -->
+  <line x1="128" y1="140" x2="128" y2="127" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="128" y1="127" x2="120" y2="117" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="128" y1="127" x2="136" y2="117" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="120" cy="117" r="2.4" fill="var(--figure-accent)"/>
+  <circle cx="136" cy="117" r="2.4" fill="var(--figure-accent)"/>
+  <!-- IgE L2 -->
+  <line x1="172" y1="127" x2="172" y2="114" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="172" y1="114" x2="164" y2="104" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="172" y1="114" x2="180" y2="104" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="164" cy="104" r="2.4" fill="var(--figure-accent)"/>
+  <circle cx="180" cy="104" r="2.4" fill="var(--figure-accent)"/>
+  <!-- IgE L3 -->
+  <line x1="216" y1="140" x2="216" y2="127" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="216" y1="127" x2="208" y2="117" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="216" y1="127" x2="224" y2="117" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="208" cy="117" r="2.4" fill="var(--figure-accent)"/>
+  <circle cx="224" cy="117" r="2.4" fill="var(--figure-accent)"/>
+
+  <!-- Légende panneau gauche -->
+  <text x="172" y="244" text-anchor="middle" font-size="11" fill="var(--figure-ink)">
+    IgE fixées par leur pied sur le mastocyte
+  </text>
+  <text x="172" y="260" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    → armement silencieux, 0 symptôme
+  </text>
+
+  <!-- ══════════════════ PANNEAU DROIT — Phase 2 ══════════════════ -->
+
+  <!-- Mastocyte (même cellule, même IgE déjà en place) -->
+  <ellipse cx="508" cy="175" rx="68" ry="48"
+           fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+  <text x="508" y="192" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    mastocyte
+  </text>
+
+  <!-- IgE R1 -->
+  <line x1="464" y1="140" x2="464" y2="127" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="464" y1="127" x2="456" y2="117" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="464" y1="127" x2="472" y2="117" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="456" cy="117" r="2.4" fill="var(--figure-accent)"/>
+  <circle cx="472" cy="117" r="2.4" fill="var(--figure-accent)"/>
+  <!-- IgE R2 -->
+  <line x1="508" y1="127" x2="508" y2="114" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="508" y1="114" x2="500" y2="104" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="508" y1="114" x2="516" y2="104" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="500" cy="104" r="2.4" fill="var(--figure-accent)"/>
+  <circle cx="516" cy="104" r="2.4" fill="var(--figure-accent)"/>
+  <!-- IgE R3 -->
+  <line x1="552" y1="140" x2="552" y2="127" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="552" y1="127" x2="544" y2="117" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="552" y1="127" x2="560" y2="117" stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="544" cy="117" r="2.4" fill="var(--figure-accent)"/>
+  <circle cx="560" cy="117" r="2.4" fill="var(--figure-accent)"/>
+
+  <!-- Allergène pontant les IgE R1 et R2 (2 copies du même motif reconnu) -->
+  <line x1="472" y1="117" x2="477" y2="112" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+  <line x1="500" y1="104" x2="495" y2="107" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+  <ellipse cx="486" cy="110" rx="13" ry="7"
+           fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+  <!-- Mise en évidence du pontage : les DEUX IgE déjà fixées, pas une nouveauté -->
+  <circle cx="486" cy="110" r="20" fill="none"
+          stroke="var(--figure-accent)" stroke-width="1.4" stroke-dasharray="3,3" opacity="0.55"/>
+  <line x1="486" y1="96" x2="486" y2="102" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+  <text x="486" y="90" text-anchor="middle" font-size="10" fill="var(--figure-ink)">
+    allergène
+  </text>
+
+  <!-- Dégranulation : granules d'histamine libérés (marques minimales) -->
+  <line x1="460" y1="209" x2="452" y2="217" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+  <circle cx="452" cy="217" r="1.6" fill="var(--figure-ink-soft)"/>
+  <line x1="484" y1="221" x2="479" y2="230" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+  <circle cx="479" cy="230" r="1.6" fill="var(--figure-ink-soft)"/>
+  <line x1="508" y1="223" x2="508" y2="233" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+  <circle cx="508" cy="233" r="1.6" fill="var(--figure-ink-soft)"/>
+  <line x1="532" y1="221" x2="537" y2="230" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+  <circle cx="537" cy="230" r="1.6" fill="var(--figure-ink-soft)"/>
+  <line x1="556" y1="209" x2="564" y2="217" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+  <circle cx="564" cy="217" r="1.6" fill="var(--figure-ink-soft)"/>
+
+  <!-- Légende panneau droit -->
+  <text x="508" y="244" text-anchor="middle" font-size="11" fill="var(--figure-ink)">
+    Allergène pontant 2 IgE déjà fixées
+  </text>
+  <text x="508" y="260" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    → dégranulation, histamine, minutes
+  </text>
+</svg>

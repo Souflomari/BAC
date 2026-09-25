@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Mécanisme d’estérification, bilan de liaisons en trois étapes, dans un même repère : l’acide carboxylique R-C(=O)-O-H avec son groupe carboxyle -COOH repéré, et l’alcool H-O-R' avec son groupe hydroxyle -OH repéré ; les atomes qui partent — le -O-H terminal de l’acide et le H de l’alcool — se combinent en une molécule d’eau ; puis l’ester R-C(=O)-O-R' se forme en dessous, groupe ester -COO- annoté, l’eau libérée à côté, et le symbole ⇌ rappelant que la réaction est réversible.">
+  <title>Estérification — bilan de liaisons, des réactifs à l&#8217;ester</title>
+  <!--
+    condensation-ester.svg — STAGED (LESSON-EXPERIENCE-SPEC.md §2.5, geste
+    d'enseignement : « on regarde d'abord les groupes fonctionnels des
+    réactifs, puis ce qui en part, puis ce qu'on obtient »).
+
+    UN SEUL PANNEAU (pas trois panneaux empilés séparés) : anhydride-alcool.svg
+    (content/pc/controle-catalyse/media/anhydride-alcool.svg) est le modèle
+    structural le plus proche pour ce type de bilan de liaisons, MAIS son
+    rendu à trois bandes dépend de VERTICALLY_STACKED_PANELS
+    (web/src/components/notion/MediaDiagram.tsx), une allowlist de code
+    d'app qui ne contient que "regimes-uc" et "trois-discontinuites" — pas
+    ce slug, et l'ajouter est hors du périmètre d'un agent de contenu.
+    StagedFigure (web/src/components/notion/StagedFigure.tsx) RETIRE les
+    groupes step-N futurs du DOM mais ne CROP PAS le viewBox pour un slug
+    hors de cette liste : une figure à trois bandes cachées, non listée,
+    afficherait donc un grand espace vide sous la première bande à
+    l'étape 1. Cette figure suit donc EXACTEMENT la convention de
+    rendement-esterification.svg / critere-qr-k.svg de ce même dossier :
+    un seul panneau persistant, où chaque étape AJOUTE du contenu dans un
+    espace encore libre, sans jamais avoir besoin de retirer ou redessiner
+    ce qu'une étape précédente a posé (les groupes des étapes antérieures
+    restent visibles, adoucis à 0.55 d'opacité — jamais retirés tant que
+    leur propre étape a été atteinte).
+
+    step-1 (persistant, y≈60..165)   : les réactifs — l'acide
+      R-C(=O)-O-H, avec son groupe carboxyle -COOH encadré (pointillé
+      accent) et étiqueté ; l'alcool H-O-R', avec son groupe hydroxyle -OH
+      encadré et étiqueté.
+    step-2 (ajoute, y≈140..225)      : ce qui part — AUCUN squelette
+      redessiné : une capsule accent entoure le -O-H terminal de l'acide
+      DÉJÀ TRACÉ à l'étape 1 (mêmes coordonnées), un cercle accent entoure
+      le H de l'alcool déjà tracé ; deux flèches courbes pointillées
+      accent, parties de ces deux repères, convergent vers une étiquette
+      H₂O nouvellement posée dans l'espace encore libre sous les réactifs.
+    step-3 (ajoute, y≈250..335)      : le produit — l'ester R-C(=O)-O-R',
+      dessiné pour la première fois dans l'espace encore libre plus bas
+      (groupe ester -COO- encadré et étiqueté), « + H₂O » à côté (l'eau,
+      redevenue contexte neutre, ink-soft), le symbole ⇌ (l'hydrolyse,
+      réaction inverse, vue au rung R2) et un bandeau de lecture.
+
+    Simplification assumée (déclarée, même niveau que anhydride-alcool.svg) :
+    ce schéma trace un bilan de liaisons cohérent avec la phrase du rung R1
+    du texte (« un atome d'hydrogène et un groupe -OH se réarrangent pour
+    former une molécule d'eau »/« ce qui reste des deux chaînes se lie par
+    un nouveau groupe, le groupe ester -COO- ») — pas un mécanisme
+    réactionnel complet à flèches d'électrons ni une revendication sur quel
+    atome d'oxygène précis provient de l'acide ou de l'alcool (hors
+    programme ; le texte lui-même reste générique sur ce point). Les
+    groupes R et R' restent génériques, condensés, cohérents avec la
+    notation du rung R1 lui-même ($R-COOH$, $R'-OH$).
+
+    Rôle des couleurs (une seule couleur distinctive, --figure-accent) :
+      groupe carboxyle -COOH, groupe hydroxyle -OH (étape 1, encadrés)   : accent
+      atomes qui partent + flèches vers H₂O (étape 2)                    : accent
+      H₂O au centre de l'attention (étape 2)                             : accent
+      groupe ester -COO- (étape 3, encadré)                              : accent
+      squelette moléculaire (R, C, O, H, liaisons), H₂O redevenu contexte
+        (étape 3), ⇌ et sa note                                          : ink / ink-soft
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Estérification — bilan de liaisons, des réactifs à l&#8217;ester
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="20" y="34" width="600" height="325" rx="8"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les réactifs, groupes fonctionnels repérés
+       (persistant : jamais retiré, seulement adouci ensuite)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Acide : R-C(=O)-O-H -->
+    <text x="100" y="126" font-size="15" font-style="italic" fill="var(--figure-ink)">R</text>
+    <line x1="115" y1="122" x2="147" y2="122" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="154" y="126" font-size="14" fill="var(--figure-ink)">C</text>
+    <line x1="150" y1="110" x2="150" y2="80" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <line x1="158" y1="110" x2="158" y2="80" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <text x="154" y="72" font-size="13" fill="var(--figure-ink)">O</text>
+    <line x1="162" y1="122" x2="190" y2="122" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="198" y="126" font-size="13" fill="var(--figure-ink)">O</text>
+    <line x1="207" y1="122" x2="229" y2="122" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="237" y="126" font-size="14" fill="var(--figure-ink)">H</text>
+
+    <!-- Encadré carboxyle -COOH -->
+    <rect x="138" y="58" width="112" height="76" rx="8"
+          fill="var(--figure-accent)" fill-opacity="0.08"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="3,2"/>
+    <text x="194" y="150" text-anchor="middle" font-size="9.5" font-weight="600"
+          fill="var(--figure-accent)">carboxyle</text>
+    <text x="194" y="162" text-anchor="middle" font-size="9.5" font-weight="600"
+          fill="var(--figure-accent)">-COOH</text>
+
+    <text x="273" y="126" text-anchor="middle" font-size="18" fill="var(--figure-ink)">+</text>
+
+    <!-- Alcool : H-O-R' -->
+    <text x="298" y="126" font-size="14" fill="var(--figure-ink)">H</text>
+    <line x1="308" y1="122" x2="330" y2="122" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="338" y="126" font-size="13" fill="var(--figure-ink)">O</text>
+    <line x1="347" y1="122" x2="369" y2="122" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="377" y="126" font-size="15" fill="var(--figure-ink)"
+          ><tspan font-style="italic">R</tspan><tspan dy="-4" font-size="10">&#8242;</tspan></text>
+
+    <!-- Encadré hydroxyle -OH -->
+    <rect x="286" y="105" width="65" height="29" rx="7"
+          fill="var(--figure-accent)" fill-opacity="0.08"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="3,2"/>
+    <text x="318" y="150" text-anchor="middle" font-size="9.5" font-weight="600"
+          fill="var(--figure-accent)">hydroxyle -OH</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — ajoute : ce qui part (-OH de l'acide + H de
+       l'alcool, déjà tracés à l'étape 1) → H2O
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Capsule accent sur le -O-H terminal DÉJÀ TRACÉ (mêmes coordonnées) -->
+    <ellipse cx="218" cy="122" rx="34" ry="13"
+             fill="var(--figure-accent)" fill-opacity="0.14"
+             stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="3,2"/>
+
+    <!-- Cercle accent sur le H de l'alcool DÉJÀ TRACÉ (mêmes coordonnées) -->
+    <circle cx="298" cy="122" r="13" fill="var(--figure-accent)" fill-opacity="0.14"
+            stroke="var(--figure-accent)" stroke-width="1.4"/>
+
+    <!-- Deux flèches courbes, parties de ces repères, vers H2O -->
+    <path d="M222,146 Q246,182 254,212" fill="none" stroke="var(--figure-accent)"
+          stroke-width="1.6" stroke-dasharray="4,3" marker-end="url(#arrow-h2o-1)"/>
+    <path d="M300,136 Q288,178 270,210" fill="none" stroke="var(--figure-accent)"
+          stroke-width="1.6" stroke-dasharray="4,3" marker-end="url(#arrow-h2o-2)"/>
+
+    <!-- H2O, foyer de l'étape, dans l'espace encore libre -->
+    <text x="266" y="228" text-anchor="middle" font-size="15" font-weight="600"
+          fill="var(--figure-accent)">H<tspan dy="4" font-size="10">2</tspan><tspan dy="-4">O</tspan></text>
+
+    <defs>
+      <marker id="arrow-h2o-1" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 Z" fill="var(--figure-accent)"/>
+      </marker>
+      <marker id="arrow-h2o-2" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 Z" fill="var(--figure-accent)"/>
+      </marker>
+    </defs>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — ajoute : le produit (dessiné pour la première
+       fois, dans l'espace encore libre), et la réversibilité
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Ester : R-C(=O)-O-R' -->
+    <text x="60" y="304" font-size="15" font-style="italic" fill="var(--figure-ink)">R</text>
+    <line x1="75" y1="300" x2="103" y2="300" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="110" y="304" font-size="14" fill="var(--figure-ink)">C</text>
+    <line x1="106" y1="288" x2="106" y2="260" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <line x1="114" y1="288" x2="114" y2="260" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <text x="110" y="252" font-size="13" fill="var(--figure-ink)">O</text>
+    <line x1="118" y1="300" x2="146" y2="300" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="154" y="304" font-size="13" fill="var(--figure-ink)">O</text>
+    <line x1="163" y1="300" x2="185" y2="300" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="193" y="304" font-size="15" fill="var(--figure-ink)"
+          ><tspan font-style="italic">R</tspan><tspan dy="-4" font-size="10">&#8242;</tspan></text>
+
+    <!-- Encadré groupe ester -COO- -->
+    <rect x="98" y="250" width="102" height="62" rx="8"
+          fill="var(--figure-accent)" fill-opacity="0.1"
+          stroke="var(--figure-accent)" stroke-width="1.3"/>
+    <text x="149" y="328" text-anchor="middle" font-size="9.5" font-weight="600"
+          fill="var(--figure-accent)">groupe ester -COO-</text>
+
+    <text x="233" y="304" text-anchor="middle" font-size="18" fill="var(--figure-ink)">+</text>
+
+    <!-- H2O, redevenu contexte neutre -->
+    <text x="266" y="304" font-size="14" fill="var(--figure-ink-soft)">H<tspan
+          dy="4" font-size="9.5">2</tspan><tspan dy="-4">O</tspan></text>
+
+    <!-- Réversibilité -->
+    <text x="340" y="308" font-size="20" fill="var(--figure-ink)">&#8652;</text>
+    <text x="340" y="332" text-anchor="middle" font-size="9.5"
+          fill="var(--figure-ink-soft)">réaction réversible</text>
+
+    <!-- Bandeau de lecture -->
+    <rect x="400" y="272" width="200" height="34" rx="6" fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="500" y="294" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-accent)">estérification &#8652; hydrolyse</text>
+  </g><!-- /step-3 -->
+
+</svg>

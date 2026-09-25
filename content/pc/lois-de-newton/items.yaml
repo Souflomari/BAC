@@ -1,0 +1,2967 @@
+notion: lois-de-newton
+skill_code: pc_lois_newton
+misconceptions:
+  # Namespace: mc.physics.pc_lois_newton.<slug>. Backfilled in the summit-
+  # conversion pass. Each INCORRECT distractor below carries the id of the
+  # model it reveals (per-distractor tagging); each item also carries an
+  # item-level primary_misconception. See coverage_summary at the bottom for
+  # honest counts and the one under-covered model flagged for a follow-up pass.
+  - id: mc.physics.pc_lois_newton.force-entretient-mouvement
+    label: "Le mouvement a besoin d'une force qui l'entretient (Aristote)"
+    description: >-
+      L'élève croit qu'un objet en mouvement a besoin d'une force vers l'avant
+      pour continuer, et que sans force motrice il s'arrête aussitôt — le repos
+      serait l'état « naturel ». Contredit le principe d'inertie
+      (Σ des forces = 0 ⇔ vecteur vitesse constant) : c'est la VARIATION du
+      mouvement qui réclame une cause, pas le mouvement lui-même.
+  - id: mc.physics.pc_lois_newton.impetus-elan-stocke
+    label: "L'élan reçu au lancer serait stocké puis s'épuiserait"
+    description: >-
+      Théorie de l'impetus : une « force » reçue au lancer resterait dans
+      l'objet et se dissiperait avec la distance ou le temps. Après le lâcher,
+      aucune force horizontale n'agit : rien n'est stocké, rien ne s'épuise.
+  - id: mc.physics.pc_lois_newton.force-verticale-composante-horizontale
+    label: "Une force verticale (poids, réaction normale) aurait une composante horizontale"
+    description: >-
+      L'élève attribue au poids ou à la réaction normale une composante
+      horizontale qui « pousserait » ou « freinerait » le mouvement. Sur un sol
+      horizontal, ces forces sont verticales, donc sans effet horizontal.
+  - id: mc.physics.pc_lois_newton.force-liee-a-vitesse
+    label: "La force (ou l'accélération) serait liée à la vitesse, pas à la résultante"
+    description: >-
+      L'élève relie Σ des forces à la vitesse (force ∝ vitesse), ou place
+      l'accélération dans le sens de la vitesse / la fait dépendre de la vitesse.
+      La 2e loi relie la résultante à l'accélération : Σ des forces = m·a.
+  - id: mc.physics.pc_lois_newton.masse-inertie-mal-comprise
+    label: "Rôle de la masse (inertie) mal compris dans la 2e loi"
+    description: >-
+      À force égale, l'élève croit que l'accélération est indépendante de la
+      masse, ou qu'un solide plus massif accélère davantage. Or a = (Σ forces)/m :
+      à force égale, plus la masse est grande, moins l'accélération est grande.
+  - id: mc.physics.pc_lois_newton.resultante-mal-composee
+    label: "Résultante mal composée, ou division par la mauvaise grandeur"
+    description: >-
+      L'élève additionne des forces de sens opposés, ne garde que la plus
+      grande, oublie de diviser par la masse, ou divise par le poids mg au lieu
+      de la masse m.
+  - id: mc.physics.pc_lois_newton.masse-poids-confondus
+    label: "Masse et poids (et g) confondus"
+    description: >-
+      L'élève croit que le poids gouverne la chute (« plus lourd tombe plus
+      vite »), que la masse change selon le lieu, ou que g est le même partout.
+      Masse (kg, scalaire, invariante) et poids (N, vecteur, P = mg avec g
+      dépendant du lieu) sont de natures différentes.
+  - id: mc.physics.pc_lois_newton.chute-depend-masse
+    label: "La cinématique de la chute libre dépendrait de la masse"
+    description: >-
+      L'élève pense que la durée ou la vitesse de chute dépend de la masse, ou
+      qu'il faut connaître la masse pour conclure. En chute libre a = g : la
+      masse se simplifie entièrement.
+  - id: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+    label: "Erreurs sur les relations du mouvement uniformément accéléré"
+    description: >-
+      Oublier le facteur ½ (ou 2) dans h = ½·g·t², oublier la racine carrée
+      dans v = √(2·a·d), ou traiter un mouvement accéléré comme à vitesse
+      constante (h = g·t, v = a·d).
+  - id: mc.physics.pc_lois_newton.action-reaction-meme-corps
+    label: "Paire action-réaction confondue avec deux forces en équilibre sur un même corps"
+    description: >-
+      L'élève prend deux forces appliquées au MÊME corps (par exemple le poids
+      et la réaction normale d'un livre) pour une paire action-réaction, ou
+      croit qu'une paire A-R « se compense ». Une paire A-R relie deux corps
+      différents.
+  - id: mc.physics.pc_lois_newton.action-reaction-inegale-ou-conditionnelle
+    label: "Les forces d'une paire action-réaction seraient inégales ou conditionnelles"
+    description: >-
+      L'élève croit que le corps le plus massif (ou le plus rapide) exerce la
+      plus grande force, que les normes ne sont pas exactement égales, ou que la
+      réaction n'existe pas si le corps reste immobile. La 3e loi impose
+      l'égalité stricte des normes, à tout instant.
+  - id: mc.physics.pc_lois_newton.mouvement-absolu
+    label: "Le mouvement existerait « dans l'absolu », sans référentiel"
+    description: >-
+      L'élève croit qu'un objet est en mouvement (ou au repos) « dans l'absolu »,
+      qu'il existe un référentiel privilégié, ou lie le mouvement à l'effort
+      fourni. Tout mouvement est relatif à un référentiel choisi.
+  - id: mc.physics.pc_lois_newton.referentiel-toujours-galileen
+    label: "Un référentiel accéléré traité comme galiléen (ou terrestre nié galiléen)"
+    description: >-
+      Dans un référentiel non galiléen (bus qui freine), l'élève invoque une
+      force réelle pour expliquer la mise en mouvement apparente, ou nie que le
+      référentiel terrestre soit galiléen. Les lois de Newton ne s'appliquent
+      directement qu'en référentiel galiléen.
+  - id: mc.physics.pc_lois_newton.vitesse-scalaire
+    label: "Le vecteur vitesse réduit à un nombre, ou mal orienté"
+    description: >-
+      L'élève réduit la vitesse à sa seule norme (perte de la direction), la
+      dirige vers le centre de la courbe (direction de l'accélération), ou la
+      confond avec une corde entre deux positions. Le vecteur vitesse est
+      tangent à la trajectoire, dans le sens du mouvement.
+  - id: mc.physics.pc_lois_newton.bilan-forces-incorrect
+    label: "Bilan des forces incomplet ou avec une force fictive"
+    description: >-
+      L'élève oublie une force réelle (réaction normale, poids), ou ajoute une
+      « force du mouvement » sans interaction qui l'origine. Chaque force doit
+      correspondre à une interaction identifiable.
+  - id: mc.physics.pc_lois_newton.role-normale-mal-compris
+    label: "Réaction normale mal comprise (valeur, direction, ce qu'elle équilibre)"
+    description: >-
+      L'élève annule la réaction normale pendant le glissement, la rend égale au
+      frottement, la fait compenser la traction, ou la croit indéterminable sans
+      le frottement. La réaction normale équilibre la composante du poids
+      perpendiculaire au support.
+  - id: mc.physics.pc_lois_newton.projection-plan-incline
+    label: "Erreurs de projection du poids sur un plan incliné"
+    description: >-
+      L'élève intervertit sin et cos en décomposant le poids, prend N = mg comme
+      à l'horizontale, ou traite la descente d'un plan incliné comme une chute
+      libre (a = g). Le long du plan : mg·sinα ; perpendiculairement : mg·cosα.
+  - id: mc.physics.pc_lois_newton.frottement-mal-traite
+    label: "Frottement ignoré ou de signe inversé"
+    description: >-
+      L'élève oublie le frottement dans le calcul, ou l'ajoute au lieu de le
+      retrancher. Le frottement s'oppose au mouvement : sa composante le long de
+      l'axe du mouvement est négative.
+  - id: mc.physics.pc_lois_newton.frottement-absent-accelere
+    label: "Supprimer le frottement ferait accélérer l'objet"
+    description: >-
+      L'élève croit qu'en l'absence de frottement l'objet accélère, comme si
+      enlever un frein revenait à ajouter un moteur. Sans force motrice,
+      supprimer le frottement maintient la vitesse constante (inertie), il ne
+      l'augmente pas.
+  # Vingtième modèle. Ajouté le 2026-09-24, spec pedagogy-architect
+  # content/pc/lois-de-newton/spec-scene-tremplin.md §8.2 : les
+  # 33 items existants décrivent tous des mouvements RECTILIGNES ; ce modèle
+  # y répond juste et reste invisible tant que la trajectoire ne tourne pas.
+  - id: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+    label: "L'accélération traitée comme un NOMBRE : dérivée de la vitesse-nombre, sans composante normale, et dont le signe seul dirait la nature du mouvement"
+    description: >-
+      L'élève dérive la NORME de la vitesse au lieu du VECTEUR vitesse. Cinq
+      formes. Forme A — une seule composante : à norme constante dans un virage il
+      conclut a = 0 (la direction qui tourne ne compte pas), ou, quand la norme
+      varie, il laisse l'accélération inchangée (la composante tangentielle ne
+      compte pas). Forme B — la normale mal orientée : il admet une composante
+      normale mais la dirige vers l'EXTÉRIEUR du virage, au lieu du centre de
+      courbure. Forme C — la loi de a_N perdue : a_N croîtrait comme v et non
+      comme v², ou avec R au lieu de 1/R, ou ne dépendrait ni de v ni de R.
+      Forme D — la nature lue sur un nombre : « accéléré » parce que a n'est pas
+      nul, ou la norme de a prise égale à sa seule composante tangentielle ; alors
+      que la nature se lit sur le SIGNE de a·v, qui ne dépend d'aucun axe choisi.
+      Forme E — la composition perdue : ‖a‖ obtenue en additionnant ou en
+      soustrayant a_T et a_N comme deux nombres, alors que ce sont deux
+      composantes PERPENDICULAIRES d'un même vecteur, composées par Pythagore
+      (‖a‖ = √(a_T² + a_N²)), jamais par une somme ou une différence algébrique.
+      Ce modèle répond CORRECTEMENT à tout exercice RECTILIGNE — c'est-à-dire aux
+      33 items et aux 6 entrées de banque actuelles de la notion : sur une droite,
+      dériver la norme ou le vecteur revient au même au signe près. Il ne se révèle
+      qu'en demandant ce que devient l'accélération quand la TRAJECTOIRE TOURNE.
+
+items:
+  - id: LDN-1
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_lois_newton
+    tags: [principe_inertie, force_mouvement]
+    primary_misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+    stem: >
+      Un palet glisse sur une glace parfaitement lisse (frottements négligés),
+      en ligne droite, à vitesse constante de $3\ \text{m/s}$, longtemps après
+      qu'on a cessé de le pousser. Que vaut la somme vectorielle des forces
+      extérieures qui s'exercent sur le palet pendant ce trajet ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\sum \\vec{F}_{ext} = \\vec{0}$ : le mouvement rectiligne uniforme n'exige aucune force."
+        correct: true
+      - id: B
+        text: >-
+          $\sum \vec{F}_{ext}$ est non nulle, dirigée vers l'avant, dans le
+          sens du mouvement.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+        feedback: >
+          Ce choix suppose qu'une vitesse non nulle exige une force dans sa
+          propre direction pour se maintenir. Or un vecteur vitesse constant
+          ne réclame aucune force : c'est sa VARIATION, pas son existence,
+          qui a besoin d'une cause. Ici $\vec{v}_G$ ne change ni en norme ni
+          en direction, donc $\vec{a}_G = \vec{0}$, donc par la deuxième loi
+          $\sum \vec{F}_{ext} = \vec{0}$.
+      - id: C
+        text: >-
+          $\sum \vec{F}_{ext}$ est non nulle, dirigée vers l'arrière, pour
+          freiner progressivement le palet jusqu'à l'arrêt.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+        feedback: >
+          L'énoncé précise que la vitesse reste constante sur tout le trajet
+          étudié : il n'y a ici aucun ralentissement à expliquer. Une force
+          résultante non nulle produirait justement un changement de vitesse,
+          ce qui contredit l'observation.
+      - id: D
+        text: >-
+          $\sum \vec{F}_{ext}$ est non nulle, et sa norme est proportionnelle
+          à la vitesse du palet.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-liee-a-vitesse
+        feedback: >
+          Il n'existe aucune loi reliant directement force et vitesse de
+          cette façon. La deuxième loi de Newton relie la force à
+          l'ACCÉLÉRATION ($\sum \vec{F}_{ext} = m\vec{a}_G$), pas à la
+          vitesse elle-même. Une vitesse constante correspond à une
+          accélération nulle, donc à une force résultante nulle, quelle que
+          soit la valeur de cette vitesse.
+    correct_feedback: >
+      Un vecteur vitesse constant signifie une accélération nulle. Par la
+      deuxième loi de Newton, $\sum \vec{F}_{ext} = m\vec{a}_G = \vec{0}$.
+      C'est exactement le principe d'inertie : aucune force n'est nécessaire
+      pour maintenir un mouvement rectiligne uniforme.
+    solution: |
+      **Ce qui est observé :** $\vec{v}_G$ constant (même norme, même
+      direction) sur tout le trajet.
+
+      **Ce que ça implique :** $\vec{a}_G = \dfrac{d\vec{v}_G}{dt} = \vec{0}$.
+
+      **Par la deuxième loi de Newton :**
+      $$\sum \vec{F}_{ext} = m\,\vec{a}_G = \vec{0}$$
+
+      Aucune force résultante n'est nécessaire pour qu'un solide continue en
+      ligne droite à vitesse constante — c'est le mouvement lui-même qui ne
+      demande rien, seul un changement de mouvement demanderait une force.
+
+  - id: LDN-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_lois_newton
+    tags: [principe_inertie, force_mouvement]
+    primary_misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+    stem: >
+      Un élève lance un chariot d'un coup de main sur un sol horizontal
+      parfaitement lisse (frottements négligés), puis lâche prise. Le chariot
+      continue alors à rouler en ligne droite, à vitesse quasiment constante,
+      sur une longue distance. Qu'est-ce qui fait avancer le chariot après que
+      la main l'a quitté ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Rien : aucune force n'est nécessaire pour qu'il continue, tant
+          qu'aucune force ne s'y oppose (principe d'inertie).
+        correct: true
+      - id: B
+        text: >-
+          Une force résiduelle transmise par la main au moment du lancer, qui
+          s'épuise progressivement pendant que le chariot avance.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.impetus-elan-stocke
+        feedback: >
+          C'est l'idée d'un « élan » qui s'userait avec la distance parcourue
+          — une intuition ancienne, mais elle ne correspond à aucune force
+          réelle mesurable après le lâcher. Une fois la main retirée, plus
+          aucune force horizontale n'est exercée par elle sur le chariot : le
+          mouvement se poursuit seul, par inertie, sans qu'aucune force ne
+          « s'épuise ».
+      - id: C
+        text: >-
+          La réaction normale du sol, qui pousse le chariot vers l'avant.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-verticale-composante-horizontale
+        feedback: >
+          La réaction normale du sol est perpendiculaire au sol, donc
+          verticale ici — elle ne peut avoir aucune composante horizontale
+          vers l'avant. Elle équilibre le poids, elle ne propulse rien.
+      - id: D
+        text: >-
+          Son propre poids, qui posséderait une composante horizontale vers
+          l'avant.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-verticale-composante-horizontale
+        feedback: >
+          Le poids est toujours vertical, dirigé vers le bas — sur un sol
+          horizontal, il n'a aucune composante horizontale. Il ne peut donc
+          pas expliquer une avancée horizontale du chariot.
+    correct_feedback: >
+      Une fois lancé, sans frottement ni force horizontale supplémentaire, le
+      chariot n'a besoin d'aucune force pour continuer à vitesse constante :
+      c'est exactement le principe d'inertie. Ce qui aurait besoin d'une force,
+      c'est un changement de sa vitesse — pas son maintien.
+    solution: |
+      Après le lâcher, aucune force horizontale ne s'exerce plus sur le
+      chariot (frottements négligés). D'après le principe d'inertie, un
+      solide soumis à une somme de forces nulle garde un vecteur vitesse
+      constant. Le chariot continue donc en ligne droite, à vitesse
+      constante, sans qu'aucune force ne soit nécessaire pour l'entretenir.
+      L'idée d'une force qui « s'épuiserait » avec la distance ne correspond
+      à aucune force physique identifiable une fois le contact avec la main
+      terminé.
+
+  - id: LDN-3
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [deuxieme_loi, masse_inertie]
+    primary_misconception: mc.physics.pc_lois_newton.masse-inertie-mal-comprise
+    stem: >
+      On applique la même force horizontale $\sum F_{ext} = 20\ \text{N}$ à
+      deux chariots initialement immobiles, de masses $m_A = 10\ \text{kg}$
+      et $m_B = 40\ \text{kg}$ (frottements négligés dans les deux cas). Que
+      peut-on dire de leurs accélérations $a_A$ et $a_B$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $a_A = 2{,}0\ \text{m/s}^2$ et $a_B = 0{,}5\ \text{m/s}^2$ : le
+          chariot A accélère quatre fois plus vite que B.
+        correct: true
+      - id: B
+        text: >-
+          $a_A = a_B$, car la force appliquée est la même dans les deux cas.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.masse-inertie-mal-comprise
+        feedback: >
+          Ce choix ignore le rôle de la masse dans la deuxième loi. La force
+          est identique, mais $a = F/m$ : à force égale, un solide plus
+          massif (ici $m_B$, quatre fois plus grand que $m_A$) accélère
+          proportionnellement moins. Une même force ne produit pas le même
+          effet sur des masses différentes.
+      - id: C
+        text: >-
+          $a_B > a_A$, car le chariot B, plus lourd, accélère davantage sous
+          l'effet de la même force.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.masse-inertie-mal-comprise
+        feedback: >
+          C'est l'inverse de ce que dit la deuxième loi : la masse mesure
+          l'inertie, c'est-à-dire la résistance à changer de vitesse. Plus un
+          solide est massif, moins il accélère pour une même force, il
+          n'accélère pas davantage.
+      - id: D
+        text: >-
+          On ne peut rien dire des accélérations sans connaître les vitesses
+          initiales des deux chariots.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-liee-a-vitesse
+        feedback: >
+          L'accélération, à un instant donné, ne dépend que de la force
+          résultante et de la masse ($a = \sum F_{ext}/m$) — pas de la
+          vitesse à cet instant. Les deux chariots partent d'ailleurs du
+          repos ici, mais même avec des vitesses initiales différentes, le
+          calcul de $a$ à partir de $F$ et $m$ resterait inchangé.
+    correct_feedback: >
+      $a_A = F/m_A = 20/10 = 2{,}0\ \text{m/s}^2$ et
+      $a_B = F/m_B = 20/40 = 0{,}5\ \text{m/s}^2$. Le rapport des
+      accélérations est exactement l'inverse du rapport des masses : la
+      masse est la mesure de l'inertie d'un solide.
+    solution: |
+      **Deuxième loi de Newton appliquée à chaque chariot séparément :**
+      $$a_A = \frac{F}{m_A} = \frac{20}{10} = 2{,}0\ \text{m}\cdot\text{s}^{-2}$$
+      $$a_B = \frac{F}{m_B} = \frac{20}{40} = 0{,}5\ \text{m}\cdot\text{s}^{-2}$$
+
+      Le rapport $a_A/a_B = 4$ correspond exactement au rapport inverse des
+      masses $m_B/m_A = 4$ : à force égale, l'accélération est inversement
+      proportionnelle à la masse.
+
+  - id: LDN-4
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [troisieme_loi, action_reaction]
+    primary_misconception: mc.physics.pc_lois_newton.action-reaction-meme-corps
+    stem: >
+      Un livre est posé, immobile, sur une table horizontale. Il est soumis à
+      deux forces : son poids $\vec{P}$ et la réaction normale de la table
+      $\vec{N}$, avec $\vec{P} + \vec{N} = \vec{0}$. Quelle est la force qui
+      forme réellement une paire d'action-réaction (troisième loi de Newton)
+      avec $\vec{N}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le poids $\vec{P}$ du livre, puisque $\vec{P} = -\vec{N}$.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.action-reaction-meme-corps
+        feedback: >
+          $\vec{P}$ et $\vec{N}$ ont bien même norme et sens opposés, mais
+          elles s'exercent toutes les deux SUR LE MÊME CORPS (le livre) :
+          c'est un équilibre (conséquence du principe d'inertie), pas une
+          paire d'action-réaction. Une paire action-réaction relie toujours
+          deux forces exercées sur deux corps DIFFÉRENTS.
+      - id: B
+        text: >-
+          La force exercée par le livre sur la table, réciproque exacte de
+          $\vec{N}$.
+        correct: true
+      - id: C
+        text: >-
+          Aucune force : la réaction normale n'a pas de réciproque tant que
+          le livre reste immobile.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.action-reaction-inegale-ou-conditionnelle
+        feedback: >
+          La troisième loi s'applique à TOUTE interaction, que les corps
+          soient immobiles ou non — elle ne dépend d'aucune condition de
+          mouvement ou d'équilibre. La réaction normale a bien une
+          réciproque, à chaque instant.
+      - id: D
+        text: >-
+          La force de frottement entre le livre et la table.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.action-reaction-meme-corps
+        feedback: >
+          Rien dans l'énoncé n'indique de frottement (le livre est
+          simplement posé, immobile, sans tendance à glisser). Et même s'il y
+          en avait un, le frottement serait une force distincte, pas la
+          réciproque de la réaction normale.
+    correct_feedback: >
+      La réciproque d'une force s'exerce toujours sur l'AUTRE corps de
+      l'interaction. $\vec{N}$ est exercée par la table sur le livre ; sa
+      réciproque, exercée par le livre sur la table, est
+      $\vec{N}_{livre \to table} = -\vec{N}_{table \to livre}$ — une force qui
+      agit sur la table, pas sur le livre.
+    solution: |
+      **Ce qu'il ne faut pas confondre :** $\vec{P}$ et $\vec{N}$ s'exercent
+      toutes deux sur le livre et s'annulent parce que le livre est immobile
+      (principe d'inertie) — ce n'est PAS une paire d'action-réaction.
+
+      **La vraie paire de $\vec{N}$ :** la troisième loi relie deux forces
+      exercées sur deux corps différents, issues d'une seule interaction.
+      L'interaction ici est celle entre la table et le livre : la table
+      exerce $\vec{N}_{table \to livre}$ sur le livre, et le livre exerce en
+      retour $\vec{N}_{livre \to table} = -\vec{N}_{table \to livre}$ sur la
+      table. C'est cette dernière force, exercée SUR LA TABLE, qui est la
+      réciproque cherchée.
+
+  - id: LDN-5
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: pc_lois_newton
+    tags: [chute_libre, masse_poids]
+    primary_misconception: mc.physics.pc_lois_newton.masse-poids-confondus
+    stem: >
+      On lâche, au même instant et sans vitesse initiale, depuis la même
+      hauteur, une bille en acier de masse $200\ \text{g}$ et une bille en
+      plastique de masse $20\ \text{g}$, sur Terre, en négligeant les
+      frottements de l'air. Laquelle touche le sol en premier ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La bille en acier, car elle est plus lourde, donc elle tombe plus
+          vite.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.masse-poids-confondus
+        feedback: >
+          C'est la confusion classique entre masse et poids. En chute libre,
+          $\vec{P} = m\vec{a}_G$ donne $m\vec{g} = m\vec{a}_G$, donc
+          $\vec{a}_G = \vec{g}$ : la masse se simplifie ENTIÈREMENT de
+          l'équation. Un objet plus lourd n'a ni plus ni moins d'accélération
+          en chute libre — le poids plus grand est exactement compensé par
+          une inertie plus grande.
+      - id: B
+        text: >-
+          Les deux billes touchent le sol exactement au même instant, car
+          $\vec{a}_G = \vec{g}$ ne dépend pas de la masse.
+        correct: true
+      - id: C
+        text: >-
+          La bille en plastique, car elle est plus légère et subit donc moins
+          de résistance.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.chute-depend-masse
+        feedback: >
+          L'énoncé précise que les frottements de l'air sont négligés : il
+          n'y a donc aucune résistance différente entre les deux billes ici.
+          Sans cette hypothèse, la forme et la masse pourraient jouer sur la
+          résistance de l'air, mais ce n'est pas le cas étudié.
+      - id: D
+        text: >-
+          Impossible à déterminer sans connaître le poids exact de chaque
+          bille.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.chute-depend-masse
+        feedback: >
+          C'est l'inverse : la valeur du poids de chaque bille n'est pas
+          nécessaire, car elle disparaît du résultat. $\vec{a}_G = \vec{g}$ ne
+          dépend ni de la masse ni du poids de l'objet qui tombe — c'est
+          justement ce qui rend la réponse déterminable sans ces valeurs.
+    correct_feedback: >
+      En chute libre, $\vec{P} = m\vec{a}_G$ avec $\vec{P} = m\vec{g}$ donne
+      $\vec{a}_G = \vec{g}$ : la masse se simplifie complètement. Les deux
+      billes ont donc la même accélération, la même vitesse à chaque instant,
+      et touchent le sol exactement en même temps.
+    solution: |
+      **Deuxième loi appliquée à la chute libre (seul le poids agit) :**
+      $$\vec{P} = m\,\vec{a}_G \quad \Longrightarrow \quad m\,\vec{g} = m\,\vec{a}_G \quad \Longrightarrow \quad \vec{a}_G = \vec{g}$$
+
+      La masse $m$ disparaît de l'équation : l'accélération de chute libre ne
+      dépend ni de la masse ni du poids de l'objet. Les deux billes,
+      lâchées ensemble depuis la même hauteur, ont donc rigoureusement la
+      même accélération à chaque instant — elles touchent le sol au même
+      moment, malgré leurs masses très différentes.
+
+  - id: LDN-6
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_lois_newton
+    tags: [plan_incline, methode, projection]
+    primary_misconception: mc.physics.pc_lois_newton.frottement-mal-traite
+    stem: >
+      Un solide de masse $m = 2{,}0\ \text{kg}$ glisse sans vitesse initiale
+      sur un plan incliné d'angle $\alpha = 30^\circ$ par rapport à l'horizontale.
+      Les frottements exercent une force de norme $f = 3{,}0\ \text{N}$,
+      opposée au sens de la descente. On prend $g \approx 9{,}8\ \text{m/s}^2$
+      et $\sin 30^\circ = 0{,}5$. Quelle est la valeur de l'accélération $a_G$ du
+      solide, dans le sens de la descente ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$a_G \\approx 3{,}4\\ \\text{m/s}^2$"
+        correct: true
+      - id: B
+        text: "$a_G \\approx 4{,}9\\ \\text{m/s}^2$"
+        correct: false
+        misconception: mc.physics.pc_lois_newton.frottement-mal-traite
+        feedback: >
+          Ce résultat correspond à $g\sin\alpha$ seul, sans avoir soustrait
+          le terme de frottement $f/m$. Le bilan des forces projeté sur l'axe
+          de la descente est $mg\sin\alpha - f = ma_G$ : le frottement doit
+          être retranché, pas oublié.
+      - id: C
+        text: "$a_G \\approx 6{,}4\\ \\text{m/s}^2$"
+        correct: false
+        misconception: mc.physics.pc_lois_newton.frottement-mal-traite
+        feedback: >
+          Ce résultat correspond à $g\sin\alpha + f/m$ : le frottement a été
+          AJOUTÉ au lieu d'être soustrait. Or le frottement s'oppose au
+          mouvement (à la descente) : sa composante selon l'axe de la
+          descente est négative, donc elle se retranche de la composante
+          motrice du poids, elle ne s'y ajoute pas.
+      - id: D
+        text: "$a_G \\approx 7{,}0\\ \\text{m/s}^2$"
+        correct: false
+        misconception: mc.physics.pc_lois_newton.projection-plan-incline
+        feedback: >
+          Ce résultat vient d'une confusion entre $\sin\alpha$ et
+          $\cos\alpha$ dans la projection du poids : c'est
+          $mg\sin\alpha$ (et non $mg\cos\alpha$) qui donne la composante du
+          poids le long du plan, celle qui entraîne le solide vers le bas de
+          la pente. $mg\cos\alpha$ est la composante perpendiculaire, celle
+          qui équilibre la réaction normale $N$.
+    correct_feedback: >
+      Projection selon l'axe de la descente : $mg\sin\alpha - f = ma_G$, donc
+      $a_G = g\sin\alpha - f/m = 9{,}8 \times 0{,}5 - 3{,}0/2{,}0 = 4{,}9 -
+      1{,}5 = 3{,}4\ \text{m/s}^2$.
+    solution: |
+      **Projection de la deuxième loi selon l'axe de la descente :**
+      $$mg\sin\alpha - f = m\,a_G$$
+
+      **Isoler $a_G$ :**
+      $$a_G = g\sin\alpha - \frac{f}{m}$$
+
+      **Application numérique :**
+      $$a_G = 9{,}8 \times 0{,}5 - \frac{3{,}0}{2{,}0} = 4{,}9 - 1{,}5 = 3{,}4\ \text{m}\cdot\text{s}^{-2}$$
+
+      Le frottement réduit l'accélération motrice due au poids
+      ($g\sin\alpha = 4{,}9\ \text{m/s}^2$) d'une quantité $f/m = 1{,}5\
+      \text{m/s}^2$ — jamais l'inverse, car il s'oppose toujours au
+      mouvement.
+
+  - id: LDN-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_lois_newton
+    tags: [principe_inertie, impetus, force_mouvement]
+    primary_misconception: mc.physics.pc_lois_newton.impetus-elan-stocke
+    stem: >
+      Sur une glace idéale parfaitement lisse (aucun frottement), une fois la
+      main partie et rien ne touchant le palet horizontalement, que prévoit-on
+      pour son mouvement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Il ralentit puis finit par s'arrêter, car l'élan communiqué par la
+          main s'épuise peu à peu.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.impetus-elan-stocke
+        feedback: >
+          C'est l'idée d'un « élan » qui s'userait progressivement — une
+          intuition ancienne (proche de la théorie de l'impetus), mais elle
+          ne correspond à aucune force réelle. Une fois la main retirée,
+          aucune force horizontale ne s'exerce plus sur le palet : rien ne
+          « s'épuise », car il n'y a rien à épuiser.
+      - id: B
+        text: >-
+          Il continue indéfiniment, en ligne droite, à vitesse constante.
+        correct: true
+      - id: C
+        text: >-
+          Il accélère, car plus rien ne le freine.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.frottement-absent-accelere
+        feedback: >
+          L'absence de frottement explique pourquoi le palet NE RALENTIT PAS,
+          mais elle ne crée aucune force nouvelle qui le ferait accélérer.
+          Supprimer un frein n'équivaut pas à ajouter un moteur : sans force
+          motrice horizontale, la vitesse reste constante, elle n'augmente
+          pas.
+      - id: D
+        text: >-
+          Il s'arrête net dès que la main le quitte.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+        feedback: >
+          Cela suppose qu'un mouvement ne peut exister qu'en présence
+          continue d'une force qui le maintient. Or c'est l'inverse : c'est
+          un CHANGEMENT de vitesse qui exige une force, pas le maintien d'une
+          vitesse déjà acquise. Sans force horizontale (frottement négligé),
+          rien ne peut faire chuter la vitesse à zéro instantanément.
+    correct_feedback: >
+      Sur une glace parfaitement lisse, aucune force horizontale ne s'exerce
+      sur le palet une fois la main retirée : $\sum \vec{F}_{ext} = \vec{0}$.
+      Par le principe d'inertie, le palet garde alors un vecteur vitesse
+      constant — il continue en ligne droite, à vitesse constante,
+      indéfiniment.
+    solution: |
+      **Situation idéalisée :** aucun frottement, aucune force horizontale
+      appliquée après le lâcher.
+
+      **Principe d'inertie :** un solide soumis à une somme de forces
+      extérieures nulle garde un vecteur vitesse constant (en norme et en
+      direction).
+
+      Le palet continue donc indéfiniment, en ligne droite, à la vitesse
+      qu'il avait au moment où la main l'a lâché. Aucune force ne le
+      maintient en mouvement, et aucune force ne le freine : c'est le
+      mouvement lui-même qui ne demande rien.
+
+  - id: LDN-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_lois_newton
+    tags: [principe_inertie, frottement, impetus]
+    primary_misconception: mc.physics.pc_lois_newton.impetus-elan-stocke
+    stem: >
+      En réalité, sur une vraie patinoire, le palet ralentit très légèrement
+      sur une grande distance. Qu'est-ce qui en est responsable ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le frottement résiduel de la glace (et de l'air), non nul mais très
+          faible.
+        correct: true
+      - id: B
+        text: >-
+          L'épuisement progressif de la force communiquée par la main au
+          lancer.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.impetus-elan-stocke
+        feedback: >
+          Aucune force ne subsiste « stockée » dans le palet après le
+          lancer : une fois le contact avec la main terminé, la main n'exerce
+          plus rien sur le palet. Le ralentissement observé a une cause
+          extérieure et présente — le frottement — pas une cause passée qui
+          s'épuiserait avec le temps.
+      - id: C
+        text: >-
+          Rien de particulier : tout mouvement finit naturellement par
+          s'arrêter.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+        feedback: >
+          Ce n'est pas une propriété générale du mouvement : sur une glace
+          quasi sans frottement, un palet peut glisser presque indéfiniment.
+          S'il ralentit ici, c'est à cause d'une force réelle et
+          identifiable (le frottement), pas parce que le repos serait l'état
+          « naturel » vers lequel tout mouvement tendrait spontanément.
+      - id: D
+        text: >-
+          Son poids, qui finit par le tirer vers l'arrière.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-verticale-composante-horizontale
+        feedback: >
+          Le poids est vertical, dirigé vers le bas — il n'a aucune
+          composante horizontale sur une patinoire plane et ne peut donc pas
+          freiner un mouvement horizontal. Le ralentissement horizontal
+          vient d'une force horizontale : le frottement, pas le poids.
+    correct_feedback: >
+      Une vraie patinoire n'est jamais parfaitement lisse : un frottement
+      résiduel, faible mais non nul, exerce une force horizontale opposée au
+      mouvement. Cette force, même petite, suffit à produire une accélération
+      non nulle qui ralentit progressivement le palet sur une grande
+      distance.
+    solution: |
+      **Différence avec le cas idéal :** dans la réalité, $\sum \vec{F}_{ext}$
+      n'est pas rigoureusement nulle : un frottement résiduel (glace, air)
+      s'exerce, même s'il est faible.
+
+      **Conséquence :** $\vec{a}_G$ n'est pas rigoureusement nul non plus,
+      mais dirigée en sens opposé au mouvement, d'où un ralentissement lent
+      et progressif — observable seulement sur une grande distance.
+
+      Le poids et la force de la main n'entrent pas en jeu ici : le premier
+      est vertical, la seconde a cessé de s'exercer dès le lâcher.
+
+  - id: LDN-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_lois_newton
+    tags: [principe_inertie, frottement, force_mouvement]
+    primary_misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+    stem: >
+      Dans la vie courante, un objet qu'on cesse de pousser finit toujours
+      par s'arrêter. Pourquoi cela ne contredit-il pas l'idée qu'un palet
+      pourrait, lui, glisser presque indéfiniment ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce que les objets de tous les jours sont plus lourds, donc plus difficiles
+          à maintenir en mouvement une fois qu'on cesse de les pousser.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+        feedback: >
+          La masse n'est pas ce qui arrête un objet : un objet plus massif
+          n'a besoin d'aucune force pour continuer à vitesse constante, tout
+          comme un objet léger. Ce qui arrête un objet, c'est une force
+          extérieure (le frottement), pas sa propre masse.
+      - id: B
+        text: >-
+          Parce qu'on applique dans la vie courante une force bien trop faible pour
+          entretenir durablement le mouvement de l'objet que l'on pousse.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+        feedback: >
+          Cela suppose qu'un mouvement à vitesse constante a besoin d'une
+          force pour être « entretenu ». Or par le principe d'inertie, une
+          vitesse constante ne demande aucune force : ce qui manque dans la
+          vie courante n'est pas une force d'entretien, c'est l'absence de
+          frottement.
+      - id: C
+        text: >-
+          Parce que dans la vie courante il y a toujours des frottements qui
+          freinent ; sur une glace quasi sans frottement, il n'y a presque
+          rien pour l'arrêter.
+        correct: true
+      - id: D
+        text: >-
+          Parce que le palet sur la glace est un cas très particulier, où les lois du
+          mouvement ne s'appliquent pas de la même manière qu'ailleurs.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+        feedback: >
+          Les mêmes lois de Newton s'appliquent partout, sans exception. Le
+          palet sur glace n'est pas un cas à part physiquement différent :
+          c'est simplement une situation où le frottement, présent partout
+          ailleurs, devient quasiment négligeable.
+    correct_feedback: >
+      Le principe d'inertie s'applique dans les deux cas. La différence
+      observée vient uniquement de la présence ou de l'absence de frottement :
+      dans la vie courante, le frottement est important et arrête rapidement
+      les objets ; sur une glace quasi sans frottement, presque rien ne
+      s'oppose au mouvement, qui se poursuit alors très longtemps.
+    solution: |
+      **Même loi, contextes différents :** dans les deux cas, un solide
+      soumis à une somme de forces nulle garde une vitesse constante
+      (principe d'inertie).
+
+      **Ce qui change :** dans la vie courante, les frottements (sol, air)
+      sont rarement négligeables : $\sum \vec{F}_{ext} \neq \vec{0}$, d'où un
+      ralentissement rapide. Sur une glace quasi parfaite, le frottement est
+      quasi nul : $\sum \vec{F}_{ext} \approx \vec{0}$, d'où un mouvement qui
+      persiste presque sans changement.
+
+      Il ne s'agit donc pas de deux physiques différentes, mais d'une seule
+      loi appliquée à deux niveaux de frottement très différents.
+
+  - id: LDN-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_lois_newton
+    tags: [referentiel, mouvement_relatif]
+    primary_misconception: mc.physics.pc_lois_newton.mouvement-absolu
+    stem: >
+      Un voyageur est assis, immobile dans son siège, dans un train qui roule
+      à vitesse constante. Laquelle de ces affirmations est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Il est immobile par rapport au train et en mouvement par rapport au
+          quai — aucune des deux descriptions n'est « plus vraie ».
+        correct: true
+      - id: B
+        text: >-
+          Il est en mouvement « dans l'absolu », indépendamment de tout référentiel
+          choisi pour décrire son déplacement.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.mouvement-absolu
+        feedback: >
+          Le mouvement n'existe que relativement à un référentiel choisi : il
+          n'y a pas de mouvement « absolu » qui se passerait de préciser par
+          rapport à quoi on l'observe. Le voyageur est en mouvement par
+          rapport au quai, mais immobile par rapport au train — les deux
+          descriptions sont également valables, chacune dans son
+          référentiel.
+      - id: C
+        text: >-
+          Il est immobile « dans l'absolu », puisqu'il ne bouge pas dans son siège
+          pendant toute la durée du trajet.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.mouvement-absolu
+        feedback: >
+          Ne pas bouger DANS le train ne signifie pas être immobile « dans
+          l'absolu ». Par rapport au quai (référentiel terrestre), le
+          voyageur se déplace bel et bien à la vitesse du train. Il n'existe
+          pas de référentiel privilégié qui donnerait le mouvement
+          « vrai ».
+      - id: D
+        text: >-
+          On ne peut pas dire qu'il est en mouvement, puisqu'il ne fait aucun effort et
+          ne se déplace pas lui-même.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.mouvement-absolu
+        feedback: >
+          Le mouvement (ou son absence) se définit par la position par
+          rapport à un référentiel au cours du temps, pas par l'effort
+          musculaire fourni. Le voyageur peut être en mouvement par rapport
+          au quai sans fournir aucun effort, exactement comme il reste
+          immobile par rapport au train sans effort non plus.
+    correct_feedback: >
+      Le mouvement est toujours relatif à un référentiel. Par rapport au
+      train, le voyageur est immobile ; par rapport au quai (référentiel
+      terrestre), il se déplace à la vitesse du train. Ces deux descriptions
+      ne se contredisent pas : elles décrivent le même voyageur dans deux
+      référentiels différents.
+    solution: |
+      **Ce que dit la relativité du mouvement :** la position, la trajectoire
+      et la vitesse d'un objet ne prennent sens que relativement à un
+      référentiel choisi.
+
+      **Dans le référentiel du train :** le voyageur ne change pas de
+      position par rapport au train — il y est immobile.
+
+      **Dans le référentiel terrestre (le quai) :** la position du voyageur
+      change au cours du temps à la même vitesse que le train — il y est en
+      mouvement.
+
+      Ces deux affirmations sont simultanément vraies, chacune dans son
+      référentiel : il n'existe pas de mouvement « absolu » indépendant de
+      tout référentiel.
+
+  - id: LDN-11
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [referentiel, referentiel_non_galileen, pseudo_force]
+    primary_misconception: mc.physics.pc_lois_newton.referentiel-toujours-galileen
+    stem: >
+      Dans un bus qui freine brutalement, une balle posée sur la tablette se
+      met à rouler vers l'avant, sans que rien de visible ne la pousse.
+      Qu'est-ce que cela montre ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Une force réelle, dirigée vers l'avant et transmise par le freinage du bus,
+          s'exerce sur la balle et la met en mouvement.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.referentiel-toujours-galileen
+        feedback: >
+          Aucun objet n'exerce de force réelle vers l'avant sur la balle :
+          rien ne la touche ni ne la pousse dans ce sens. L'apparente mise en
+          mouvement vient du fait que c'est le BUS qui décélère sous la
+          balle, pas d'une force qui agirait sur la balle elle-même.
+      - id: B
+        text: >-
+          Une force mystérieuse s'exerce sur la balle, ce qui prouve qu'aucun
+          référentiel n'est réellement fiable pour décrire un mouvement.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.referentiel-toujours-galileen
+        feedback: >
+          Il ne s'agit pas d'une vraie force physique, mais d'un effet
+          apparent propre aux référentiels non galiléens (accélérés). Cela ne
+          remet pas en cause TOUS les référentiels : dans un référentiel
+          galiléen (comme la route, approximativement), la deuxième loi de
+          Newton s'applique parfaitement, sans aucune force mystérieuse à
+          invoquer.
+      - id: C
+        text: >-
+          Le référentiel terrestre lui-même n'est pas galiléen, ce que révèle ici le
+          comportement inattendu de la balle sur la tablette.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.referentiel-toujours-galileen
+        feedback: >
+          Le référentiel terrestre est, en très bonne approximation, galiléen
+          pour ce type de situation (le bus, la route). C'est le bus EN TRAIN
+          DE FREINER qui est accéléré par rapport à la route, et donc non
+          galiléen — ce n'est pas une propriété de tous les référentiels liés
+          à la Terre.
+      - id: D
+        text: >-
+          Le référentiel du bus qui freine n'est pas galiléen : un objet peut
+          y sembler se mettre en mouvement sans qu'aucune force réelle ne
+          s'exerce sur lui.
+        correct: true
+    correct_feedback: >
+      Le bus qui freine est un référentiel accéléré, donc non galiléen. Dans
+      un tel référentiel, la deuxième loi de Newton ($\sum \vec{F}_{ext} =
+      m\vec{a}$) ne s'applique pas directement aux forces réelles seules : un
+      objet peut sembler accélérer sans qu'aucune force réelle ne s'exerce
+      sur lui. Dans le référentiel terrestre (galiléen), en revanche, la
+      balle reste bien en mouvement rectiligne uniforme pendant que le bus
+      ralentit sous elle.
+    solution: |
+      **Ce qui se passe réellement (référentiel terrestre, galiléen) :** au
+      moment du freinage, aucune force horizontale ne s'exerce sur la balle
+      (frottement négligé sur la tablette lisse) : elle continue par inertie
+      à sa vitesse d'avant le freinage, pendant que le bus, lui, ralentit.
+
+      **Ce qui est observé depuis le bus :** vu depuis l'intérieur du bus qui
+      décélère, la balle semble accélérer vers l'avant — alors qu'aucune
+      force réelle ne la pousse.
+
+      **Conclusion :** le référentiel du bus qui freine est non galiléen ;
+      l'apparente mise en mouvement de la balle n'est pas due à une force
+      réelle, mais au fait que le référentiel d'observation lui-même
+      accélère.
+
+  - id: LDN-12
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_lois_newton
+    tags: [vecteur_vitesse, trajectoire, translation]
+    primary_misconception: mc.physics.pc_lois_newton.vitesse-scalaire
+    stem: >
+      Un solide en translation parcourt une trajectoire courbe. À un instant
+      donné, que peut-on dire du vecteur vitesse $\vec{v}_G$ de son centre
+      d'inertie ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Il est tangent à la trajectoire au point où se trouve $G$, dirigé
+          dans le sens du mouvement.
+        correct: true
+      - id: B
+        text: >-
+          C'est simplement la vitesse en m/s : un nombre, sans direction.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.vitesse-scalaire
+        feedback: >
+          La vitesse en m/s n'est que la NORME du vecteur vitesse. Le
+          mouvement possède aussi une direction et un sens, portés par le
+          vecteur $\vec{v}_G$ tout entier — réduire la vitesse à un simple
+          nombre fait perdre toute l'information directionnelle, essentielle
+          dès que la trajectoire n'est pas rectiligne.
+      - id: C
+        text: >-
+          Il est dirigé vers le centre de la courbe.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.vitesse-scalaire
+        feedback: >
+          C'est la direction de l'ACCÉLÉRATION (ou d'une de ses composantes)
+          dans un mouvement courbe, pas celle de la vitesse. Le vecteur
+          vitesse, lui, est toujours tangent à la trajectoire — il indique
+          où va le solide à cet instant, pas vers quoi sa trajectoire se
+          courbe.
+      - id: D
+        text: >-
+          Il est dirigé selon la corde reliant deux positions successives,
+          quel que soit l'intervalle.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.vitesse-scalaire
+        feedback: >
+          Ceci décrit un vecteur vitesse MOYENNE entre deux instants
+          séparés d'une durée finie, pas la vitesse à un instant précis. La
+          vitesse INSTANTANÉE est la limite de cette corde quand l'intervalle
+          de temps tend vers zéro — elle devient alors tangente à la
+          trajectoire, et non plus une corde reliant deux points distincts.
+    correct_feedback: >
+      Le vecteur vitesse instantané $\vec{v}_G$ est toujours tangent à la
+      trajectoire décrite par $G$, orienté dans le sens du mouvement, quelle
+      que soit la forme (droite ou courbe) de cette trajectoire.
+    solution: |
+      **Définition du vecteur vitesse instantané :**
+      $$\vec{v}_G = \lim_{\Delta t \to 0} \frac{\overrightarrow{GG'}}{\Delta t}$$
+      où $G'$ est la position de $G$ à l'instant $t+\Delta t$.
+
+      **Passage à la limite :** quand $\Delta t \to 0$, le point $G'$ se
+      rapproche de $G$ le long de la trajectoire, et la corde
+      $\overrightarrow{GG'}$ devient tangente à la trajectoire en $G$.
+
+      Le vecteur vitesse est donc, à chaque instant, tangent à la
+      trajectoire au point occupé par $G$, et orienté dans le sens du
+      parcours — que la trajectoire soit rectiligne ou courbe.
+
+  - id: LDN-13
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [principe_inertie, bilan_forces, force_mouvement]
+    primary_misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+    stem: >
+      Une caisse est tirée sur un sol horizontal par une force de traction
+      horizontale $\vec{F}$ et se déplace en ligne droite à vitesse
+      constante ; le frottement $\vec{f}$ s'oppose au mouvement. Que peut-on
+      affirmer ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Nécessairement $F > f$, sinon la caisse n'avancerait pas.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+        feedback: >
+          C'est confondre le maintien d'une vitesse constante avec sa mise en
+          mouvement initiale. Une fois la caisse déjà en mouvement à vitesse
+          constante, aucune force nette n'est nécessaire pour la maintenir :
+          $F > f$ produirait au contraire une ACCÉLÉRATION, donc une vitesse
+          qui augmente — ce qui contredit l'énoncé.
+      - id: B
+        text: >-
+          $\sum \vec{F}_{ext} = \vec{0}$ : $\vec{F}$ et $\vec{f}$ se
+          compensent exactement ($F = f$), de même que $\vec{P}$ et
+          $\vec{N}$.
+        correct: true
+      - id: C
+        text: >-
+          $F = 0$ : puisque la vitesse ne change pas, aucune force de
+          traction n'est utile.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.frottement-mal-traite
+        feedback: >
+          Vitesse constante signifie somme des forces nulle, pas absence
+          totale de forces. Ici, le frottement $\vec{f}$ existe bel et bien
+          et s'oppose au mouvement ; il faut une force de traction $\vec{F}$
+          de même norme pour l'équilibrer exactement et obtenir
+          $\sum \vec{F}_{ext} = \vec{0}$.
+      - id: D
+        text: >-
+          On ne peut rien conclure sans connaître la masse de la caisse.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.masse-inertie-mal-comprise
+        feedback: >
+          Le fait que $\sum \vec{F}_{ext} = \vec{0}$ découle directement de
+          $\vec{a}_G = \vec{0}$ (vitesse constante) via la deuxième loi de
+          Newton, $\sum \vec{F}_{ext} = m\vec{a}_G$ — et ceci reste vrai quelle
+          que soit la valeur de $m$, puisque $m \times \vec{0} = \vec{0}$
+          pour toute masse.
+    correct_feedback: >
+      Vitesse constante $\Rightarrow$ $\vec{a}_G = \vec{0}$ $\Rightarrow$
+      $\sum \vec{F}_{ext} = \vec{0}$ (deuxième loi de Newton). Les quatre
+      forces se compensent deux à deux : $\vec{P}$ et $\vec{N}$
+      (verticalement), $\vec{F}$ et $\vec{f}$ (horizontalement), avec donc
+      $F = f$.
+    solution: |
+      **Observation :** la caisse se déplace en ligne droite à vitesse
+      constante, donc $\vec{a}_G = \vec{0}$.
+
+      **Deuxième loi de Newton :**
+      $$\sum \vec{F}_{ext} = m\,\vec{a}_G = \vec{0}$$
+
+      **Bilan des forces :** $\vec{P}$, $\vec{N}$, $\vec{F}$, $\vec{f}$.
+      Verticalement, $\vec{P} + \vec{N} = \vec{0}$. Horizontalement,
+      $\vec{F} + \vec{f} = \vec{0}$, donc $F = f$ (mêmes normes, sens
+      opposés).
+
+      La force de traction n'est donc ni nulle ni supérieure au frottement :
+      elle lui est exactement égale, ce qui permet à la vitesse de rester
+      constante sans jamais changer.
+
+  - id: LDN-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [deuxieme_loi, vecteur_acceleration, sens_mouvement]
+    primary_misconception: mc.physics.pc_lois_newton.force-liee-a-vitesse
+    stem: >
+      Un solide se déplace vers la droite. On lui applique une force
+      résultante $\sum \vec{F}_{ext}$ dirigée vers la gauche (sens opposé au
+      mouvement). Que peut-on dire de $\vec{a}_G$ à cet instant ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\vec{a}_G$ est dirigée vers la gauche, dans le sens de
+          $\sum \vec{F}_{ext}$ : le solide ralentit.
+        correct: true
+      - id: B
+        text: >-
+          $\vec{a}_G$ est dirigée vers la droite, dans le sens du mouvement.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-liee-a-vitesse
+        feedback: >
+          Ceci confond la direction de l'accélération avec celle de la
+          vitesse. La deuxième loi de Newton relie $\vec{a}_G$ à la force
+          résultante, $\vec{a}_G = \sum \vec{F}_{ext}/m$ — pas à la vitesse.
+          Ici $\sum \vec{F}_{ext}$ pointe vers la gauche, donc $\vec{a}_G$
+          aussi, même si le solide se déplace encore vers la droite à cet
+          instant.
+      - id: C
+        text: >-
+          $\vec{a}_G = \vec{0}$, puisque le solide se déplace toujours vers
+          la droite.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-liee-a-vitesse
+        feedback: >
+          Se déplacer encore dans une direction ne signifie pas que
+          l'accélération y est nulle. Une force résultante non nulle produit
+          toujours une accélération non nulle ($\vec{a}_G = \sum
+          \vec{F}_{ext}/m \neq \vec{0}$ ici) : le solide ralentit,
+          c'est-à-dire que sa vitesse diminue progressivement, même s'il
+          continue de se déplacer vers la droite pendant un temps.
+      - id: D
+        text: >-
+          $\vec{a}_G$ est perpendiculaire au mouvement.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-liee-a-vitesse
+        feedback: >
+          Rien n'impose une perpendicularité ici. La deuxième loi de Newton
+          donne $\vec{a}_G$ EXACTEMENT dans la direction de
+          $\sum \vec{F}_{ext}$, qui est colinéaire à la direction du
+          mouvement (vers la gauche), et non perpendiculaire à elle.
+    correct_feedback: >
+      Par la deuxième loi de Newton, $\vec{a}_G$ est toujours colinéaire et de
+      même sens que $\sum \vec{F}_{ext}$, quelle que soit la direction de la
+      vitesse à cet instant. Ici $\sum \vec{F}_{ext}$ pointe vers la gauche,
+      donc $\vec{a}_G$ aussi : la vitesse (vers la droite) diminue
+      progressivement, le solide ralentit.
+    solution: |
+      **Deuxième loi de Newton :**
+      $$\vec{a}_G = \frac{\sum \vec{F}_{ext}}{m}$$
+
+      $\vec{a}_G$ a donc exactement la direction et le sens de
+      $\sum \vec{F}_{ext}$ — ici, vers la gauche.
+
+      **Effet sur le mouvement :** le solide se déplaçant vers la droite avec
+      une accélération dirigée vers la gauche voit sa vitesse diminuer en
+      norme (elle reste dirigée vers la droite tant qu'elle n'est pas
+      annulée) : le mouvement est ralenti, pas inversé instantanément ni
+      stoppé net.
+
+  - id: LDN-15
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [deuxieme_loi, calcul, resultante]
+    primary_misconception: mc.physics.pc_lois_newton.resultante-mal-composee
+    stem: >
+      Un solide de masse $m = 4{,}0\ \text{kg}$ est soumis à deux forces
+      horizontales : $\vec{F}_1$ vers la droite, $F_1 = 30\ \text{N}$, et
+      $\vec{F}_2$ vers la gauche, $F_2 = 10\ \text{N}$ (frottements
+      négligés). Quelle est la valeur de son accélération ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$a = \\dfrac{30+10}{4{,}0} = 10\\ \\text{m/s}^2$"
+        correct: false
+        misconception: mc.physics.pc_lois_newton.resultante-mal-composee
+        feedback: >
+          Ce calcul ADDITIONNE les deux forces au lieu de tenir compte de
+          leurs sens opposés. $\vec{F}_1$ et $\vec{F}_2$ pointent dans des
+          directions contraires : il faut les soustraire (calculer leur
+          RÉSULTANTE algébrique), pas additionner leurs normes comme si elles
+          s'ajoutaient dans le même sens.
+      - id: B
+        text: "$a = \\dfrac{30-10}{4{,}0} = 5{,}0\\ \\text{m/s}^2$ (vers la droite)"
+        correct: true
+      - id: C
+        text: "$a = \\dfrac{30}{4{,}0} = 7{,}5\\ \\text{m/s}^2$"
+        correct: false
+        misconception: mc.physics.pc_lois_newton.resultante-mal-composee
+        feedback: >
+          Ce calcul ignore complètement $\vec{F}_2$, comme si seule la plus
+          grande force comptait. Or c'est la RÉSULTANTE des deux forces
+          (leur somme vectorielle) qui détermine l'accélération, pas la plus
+          grande force prise isolément : $\vec{F}_2$ doit être soustraite de
+          $\vec{F}_1$.
+      - id: D
+        text: "$a = 20\\ \\text{m/s}^2$"
+        correct: false
+        misconception: mc.physics.pc_lois_newton.resultante-mal-composee
+        feedback: >
+          Ce résultat prend la résultante des forces (20 N) mais oublie de
+          diviser par la masse. La deuxième loi de Newton donne
+          $a = \sum F_{ext}/m$ : il faut diviser la résultante par la masse
+          pour obtenir une accélération, pas utiliser directement la valeur
+          en newtons comme si elle était déjà en m/s².
+    correct_feedback: >
+      La résultante des forces horizontales vaut
+      $\sum F_{ext} = F_1 - F_2 = 30 - 10 = 20\ \text{N}$ (vers la droite,
+      sens de la plus grande force). Par la deuxième loi de Newton,
+      $a = \sum F_{ext}/m = 20/4{,}0 = 5{,}0\ \text{m/s}^2$.
+    solution: |
+      **Résultante des forces (projection sur l'axe horizontal, droite
+      positive) :**
+      $$\sum F_{ext} = F_1 - F_2 = 30 - 10 = 20\ \text{N}$$
+
+      **Deuxième loi de Newton :**
+      $$a = \frac{\sum F_{ext}}{m} = \frac{20}{4{,}0} = 5{,}0\ \text{m}\cdot\text{s}^{-2}$$
+
+      L'accélération est dirigée vers la droite (sens de la résultante,
+      c'est-à-dire de la force la plus grande, $F_1$).
+
+  - id: LDN-16
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [troisieme_loi, action_reaction, masse_force]
+    primary_misconception: mc.physics.pc_lois_newton.action-reaction-inegale-ou-conditionnelle
+    stem: >
+      Un camion lourd entre en collision avec une petite voiture. Pendant le
+      choc, comment se comparent la force exercée par le camion sur la
+      voiture, $\vec{F}_{c\to v}$, et celle exercée par la voiture sur le
+      camion, $\vec{F}_{v\to c}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elles ont exactement la même norme et des sens opposés ($\vec{F}_{v\to c} =
+          -\vec{F}_{c\to v}$), quelles que soient leurs masses ; ce sont leurs effets
+          qui diffèrent.
+        correct: true
+      - id: B
+        text: >-
+          Le camion exerce sur la voiture une force plus grande que l'inverse, car il
+          est bien plus massif qu'elle.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.action-reaction-inegale-ou-conditionnelle
+        feedback: >
+          La troisième loi de Newton ne dépend jamais des masses des deux
+          corps en interaction : elle est toujours vraie, quelles que soient
+          leurs masses. Ce qui diffère avec la masse, c'est l'EFFET de la
+          force (l'accélération $a = F/m$), pas la force elle-même : la
+          petite voiture, moins massive, subit une accélération bien plus
+          grande pour une force de même norme.
+      - id: C
+        text: >-
+          Le camion exerce sur la voiture une force plus grande que l'inverse, car il
+          possède beaucoup plus d'élan.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.action-reaction-inegale-ou-conditionnelle
+        feedback: >
+          La quantité de mouvement (l'« élan ») du camion avant le choc ne
+          détermine pas la norme de la force qu'il exerce pendant le choc :
+          la troisième loi impose l'égalité stricte des deux forces
+          d'interaction, indépendamment de la vitesse ou de la masse de
+          chaque véhicule avant la collision.
+      - id: D
+        text: >-
+          La voiture exerce sur le camion une force plus grande que l'inverse,
+          puisqu'elle est bien plus accélérée et bien plus endommagée par le choc.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.action-reaction-inegale-ou-conditionnelle
+        feedback: >
+          Un effet plus visible (plus de dégâts, plus d'accélération) ne
+          signifie pas une force plus grande : la voiture, moins massive,
+          subit une accélération plus grande pour la MÊME force que celle
+          reçue par le camion ($a = F/m$, et $m$ est petit pour la voiture).
+          Les deux forces d'interaction restent de norme identique.
+    correct_feedback: >
+      La troisième loi de Newton s'applique quelles que soient les masses des
+      deux corps : $\vec{F}_{v\to c} = -\vec{F}_{c\to v}$, toujours, à chaque
+      instant du choc. Seuls les EFFETS diffèrent, car $a = F/m$ : la petite
+      voiture, moins massive, subit une accélération bien plus grande que le
+      camion pour cette même force.
+    solution: |
+      **Troisième loi de Newton (principe des actions réciproques) :** pour
+      toute interaction entre deux corps, les deux forces exercées l'une sur
+      l'autre ont même norme, même direction, et des sens opposés — cela ne
+      dépend ni de la masse, ni de la vitesse, ni de l'état des corps.
+      $$\vec{F}_{v\to c} = -\vec{F}_{c\to v}$$
+
+      **Ce qui diffère réellement :** l'accélération de chaque véhicule,
+      $a = F/m$. Le camion, très massif, subit une petite accélération sous
+      cette force ; la voiture, peu massive, subit une grande accélération
+      sous cette MÊME force — d'où l'impression trompeuse que le camion
+      « exerce une force plus grande ».
+
+  - id: LDN-17
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [troisieme_loi, action_reaction, corps_differents]
+    primary_misconception: mc.physics.pc_lois_newton.action-reaction-meme-corps
+    stem: >
+      Les deux forces d'une paire action-réaction ont même norme et sens
+      opposés. Pourquoi ne se compensent-elles JAMAIS entre elles ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elles se compensent effectivement l'une l'autre : c'est bien pourquoi deux
+          corps en interaction restent toujours à l'équilibre.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.action-reaction-meme-corps
+        feedback: >
+          C'est une confusion fréquente : deux forces ne se « compensent »
+          (au sens d'un équilibre) que si elles s'appliquent sur le MÊME
+          corps. Une paire action-réaction s'exerce sur DEUX corps
+          différents, chacun subissant une seule des deux forces — l'état
+          d'équilibre ou de mouvement de chaque corps dépend de TOUTES les
+          forces qui s'exercent SUR LUI, pas d'une compensation entre les
+          deux forces de la paire.
+      - id: B
+        text: >-
+          Elles ne se compensent pas, parce qu'elles n'ont pas tout à fait la même
+          norme, l'une étant toujours légèrement plus grande.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.action-reaction-inegale-ou-conditionnelle
+        feedback: >
+          La troisième loi de Newton impose au contraire une égalité EXACTE
+          des normes, sans aucune exception ni approximation. La raison pour
+          laquelle elles ne se compensent pas n'est pas une différence de
+          norme, mais le fait qu'elles s'exercent sur deux corps différents.
+      - id: C
+        text: >-
+          Elles ne se compensent pas, parce que l'une des deux est plus grande que
+          l'autre selon la masse du corps qui la subit.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.action-reaction-inegale-ou-conditionnelle
+        feedback: >
+          La norme des deux forces d'une paire action-réaction est
+          rigoureusement identique, indépendamment des masses des deux
+          corps. La masse influence l'accélération produite par la force
+          ($a = F/m$), pas la force elle-même ni son égalité avec sa
+          réciproque.
+      - id: D
+        text: >-
+          Parce qu'elles s'exercent sur deux corps différents ; on
+          n'additionne (pour un bilan/équilibre) que des forces appliquées au
+          même corps.
+        correct: true
+    correct_feedback: >
+      Une compensation (ou un équilibre) ne se calcule qu'entre forces
+      appliquées à UN MÊME corps. Une paire action-réaction relie toujours
+      deux forces appliquées à deux corps différents : elles ne s'additionnent
+      donc jamais dans un même bilan de forces, même si elles ont
+      individuellement même norme et sens opposés.
+    solution: |
+      **Rappel de la troisième loi :** pour une interaction entre un corps A
+      et un corps B, $\vec{F}_{A\to B} = -\vec{F}_{B\to A}$ — même norme, sens
+      opposés.
+
+      **Le point essentiel :** $\vec{F}_{A\to B}$ s'exerce SUR B, et
+      $\vec{F}_{B\to A}$ s'exerce SUR A. Ce sont deux corps différents.
+
+      **Conséquence :** pour étudier l'équilibre ou le mouvement d'un corps,
+      on fait le bilan de TOUTES les forces qui s'exercent SUR CE CORPS
+      précisément — jamais en mélangeant une force reçue par A avec une force
+      reçue par B. Une paire action-réaction ne peut donc jamais apparaître
+      entièrement dans le bilan des forces d'un seul et même corps.
+
+  - id: LDN-18
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: pc_lois_newton
+    tags: [bilan_forces, poids, reaction_normale, frottement]
+    primary_misconception: mc.physics.pc_lois_newton.bilan-forces-incorrect
+    stem: >
+      Une caisse est tirée sur un sol horizontal par une force horizontale
+      $\vec{F}$, avec frottement. Quel est le bilan CORRECT des forces
+      extérieures sur la caisse ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La force de traction $\vec{F}$ et le frottement $\vec{f}$ seulement, les deux
+          forces horizontales.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.bilan-forces-incorrect
+        feedback: >
+          Ce bilan oublie deux forces pourtant bien présentes : le poids
+          $\vec{P}$ (la caisse a une masse, donc un poids) et la réaction
+          normale $\vec{N}$ exercée par le sol (le sol empêche la caisse de
+          s'enfoncer). Un bilan de forces doit recenser TOUTES les
+          interactions du système avec l'extérieur, pas seulement les forces
+          horizontales visibles.
+      - id: B
+        text: >-
+          Le poids $\vec{P}$, la réaction normale $\vec{N}$, la force de
+          traction $\vec{F}$, le frottement $\vec{f}$ — quatre forces.
+        correct: true
+      - id: C
+        text: >-
+          Le poids $\vec{P}$, la réaction $\vec{N}$, la traction $\vec{F}$, le
+          frottement $\vec{f}$, plus une « force du mouvement » vers l'avant.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.bilan-forces-incorrect
+        feedback: >
+          Il n'existe aucune force physique associée au simple fait d'être en
+          mouvement. Chaque force du bilan doit correspondre à une
+          interaction identifiable (avec la Terre, avec le sol, avec la
+          corde de traction) : ajouter une « force du mouvement » sans
+          origine physique revient à réintroduire l'idée fausse qu'un
+          mouvement a besoin d'être « alimenté » par une force qui lui est
+          propre.
+      - id: D
+        text: >-
+          Le poids $\vec{P}$, la force de traction $\vec{F}$ et le frottement $\vec{f}$,
+          sans la réaction normale du sol.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.bilan-forces-incorrect
+        feedback: >
+          Oublier $\vec{N}$ revient à ignorer que le sol empêche la caisse de
+          s'enfoncer sous l'effet de son poids. Tant que la caisse reste en
+          contact avec le sol, celui-ci exerce nécessairement une réaction
+          normale $\vec{N}$, verticale, qui équilibre (au moins en partie) le
+          poids.
+    correct_feedback: >
+      Le bilan complet des forces extérieures comprend toutes les
+      interactions réelles de la caisse avec son environnement : la Terre
+      (poids $\vec{P}$), le sol (réaction normale $\vec{N}$ et frottement
+      $\vec{f}$), et la corde ou la main qui tire (force de traction
+      $\vec{F}$) — quatre forces, ni plus, ni moins.
+    solution: |
+      **Méthode du bilan des forces :** recenser chaque objet en CONTACT (ou
+      en interaction à distance) avec la caisse.
+
+      - La Terre exerce le poids $\vec{P}$ (interaction à distance,
+        gravitationnelle).
+      - Le sol exerce la réaction normale $\vec{N}$ (empêche l'enfoncement)
+        et le frottement $\vec{f}$ (s'oppose au glissement).
+      - La corde (ou la main) exerce la force de traction $\vec{F}$.
+
+      Aucune autre interaction n'existe : il n'y a ni « force du mouvement »
+      ni force qui apparaîtrait du simple fait que la caisse avance. Le bilan
+      correct compte donc exactement quatre forces.
+
+  - id: LDN-19
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [bilan_forces, projection, reaction_normale]
+    primary_misconception: mc.physics.pc_lois_newton.role-normale-mal-compris
+    stem: >
+      Pour une caisse tirée horizontalement sur un sol plat (mouvement
+      horizontal), pourquoi la réaction normale $N$ n'apparaît-elle PAS dans
+      l'équation selon l'axe horizontal ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce que $\vec{N}$ est verticale (perpendiculaire au sol) : elle
+          n'a aucune composante selon l'axe horizontal.
+        correct: true
+      - id: B
+        text: >-
+          Parce que la réaction normale $N$ est nulle tant que la caisse glisse sur le
+          sol horizontal.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.role-normale-mal-compris
+        feedback: >
+          $\vec{N}$ n'est pas nulle pendant le glissement : le sol continue
+          d'exercer une réaction normale non nulle tant que la caisse reste
+          en contact avec lui, glissante ou non. Ce qui est vrai, c'est que
+          sa DIRECTION (verticale) fait que sa composante HORIZONTALE est
+          nulle — mais $\vec{N}$ elle-même, verticalement, ne s'annule pas.
+      - id: C
+        text: >-
+          Parce que $\vec{N}$ est toujours égale au frottement et s'annule donc avec lui
+          dans l'équation.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.role-normale-mal-compris
+        feedback: >
+          $\vec{N}$ (verticale) et $\vec{f}$ (horizontale) sont deux forces
+          perpendiculaires entre elles : elles n'ont pas la même direction et
+          ne peuvent donc pas « s'annuler » l'une avec l'autre. $\vec{N}$
+          s'équilibre avec $\vec{P}$ (les deux verticales), et $\vec{f}$
+          s'équilibre avec $\vec{F}$ (les deux horizontales) — ce sont deux
+          équilibres séparés, sur deux axes différents.
+      - id: D
+        text: >-
+          Parce que $\vec{N}$ compense exactement la force de traction $\vec{F}$
+          appliquée à la caisse.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.role-normale-mal-compris
+        feedback: >
+          $\vec{N}$ est verticale et $\vec{F}$ est horizontale ici : deux
+          forces de directions différentes ne peuvent pas se « compenser »
+          entre elles au sens d'un équilibre. $\vec{N}$ compense le poids
+          $\vec{P}$ (verticalement) ; $\vec{F}$ est compensée par le
+          frottement $\vec{f}$ (horizontalement) — pas par $\vec{N}$.
+    correct_feedback: >
+      Pour projeter la deuxième loi de Newton sur un axe, seules les
+      composantes des forces le long de CET axe interviennent. $\vec{N}$
+      étant perpendiculaire au sol (donc verticale, pour un sol horizontal),
+      sa projection sur l'axe horizontal est nulle : elle n'apparaît donc que
+      dans l'équation verticale, où elle équilibre le poids $\vec{P}$.
+    solution: |
+      **Méthode de projection :** on projette $\sum \vec{F}_{ext} =
+      m\vec{a}_G$ sur deux axes perpendiculaires (ici, horizontal et
+      vertical).
+
+      **Selon l'axe vertical :** $\vec{P}$ et $\vec{N}$ sont toutes deux
+      verticales ; elles s'équilibrent : $N = P = mg$ (mouvement purement
+      horizontal, $a_{G,vertical} = 0$).
+
+      **Selon l'axe horizontal :** $\vec{N}$ et $\vec{P}$, étant verticales,
+      ont une projection NULLE sur cet axe. Seules $\vec{F}$ et $\vec{f}$
+      (horizontales) contribuent : $F - f = m\,a_G$.
+
+      $\vec{N}$ n'est donc pas absente du problème — elle intervient
+      pleinement dans l'équation verticale — mais elle est simplement absente
+      de l'équation HORIZONTALE, du seul fait de sa direction perpendiculaire
+      à cet axe.
+
+  - id: LDN-20
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [deuxieme_loi, calcul, frottement]
+    primary_misconception: mc.physics.pc_lois_newton.frottement-mal-traite
+    stem: >
+      Une caisse de masse $m = 5{,}0\ \text{kg}$ glisse sur un sol horizontal,
+      tirée par une force horizontale $F = 25\ \text{N}$ dans le sens du
+      mouvement ; le frottement vaut $f = 10\ \text{N}$. Quelle est
+      l'accélération $a_G$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$a_G = \\dfrac{25+10}{5{,}0} = 7{,}0\\ \\text{m/s}^2$"
+        correct: false
+        misconception: mc.physics.pc_lois_newton.frottement-mal-traite
+        feedback: >
+          Ce calcul additionne $F$ et $f$ comme si elles agissaient dans le
+          même sens. Or le frottement s'oppose toujours au mouvement, donc à
+          $\vec{F}$ : il faut le RETRANCHER, pas l'ajouter, pour obtenir la
+          résultante horizontale.
+      - id: B
+        text: "$a_G = \\dfrac{F-f}{m} = \\dfrac{25-10}{5{,}0} = 3{,}0\\ \\text{m/s}^2$"
+        correct: true
+      - id: C
+        text: "$a_G = \\dfrac{25}{5{,}0} = 5{,}0\\ \\text{m/s}^2$"
+        correct: false
+        misconception: mc.physics.pc_lois_newton.frottement-mal-traite
+        feedback: >
+          Ce calcul ignore complètement le frottement $f$, comme s'il
+          n'existait pas. Or l'énoncé précise que $f = 10\ \text{N}$ agit
+          bien sur la caisse, en s'opposant au mouvement : il doit être
+          soustrait de $F$ dans le calcul de la résultante horizontale.
+      - id: D
+        text: "$a_G \\approx 0{,}3\\ \\text{m/s}^2$ (en divisant par le poids $mg = 49\\ \\text{N}$)"
+        correct: false
+        misconception: mc.physics.pc_lois_newton.resultante-mal-composee
+        feedback: >
+          La deuxième loi de Newton divise la résultante des forces par la
+          MASSE $m$ (en kg), pas par le POIDS $mg$ (en newtons) — ce sont deux
+          grandeurs de nature différente. Diviser par $mg$ au lieu de $m$
+          mélange une force et une masse, et donne un résultat sans sens
+          physique correct pour une accélération.
+    correct_feedback: >
+      La résultante horizontale vaut $F - f = 25 - 10 = 15\ \text{N}$
+      (le frottement s'oppose à la traction). Par la deuxième loi de Newton,
+      $a_G = (F-f)/m = 15/5{,}0 = 3{,}0\ \text{m/s}^2$.
+    solution: |
+      **Bilan horizontal :** $\vec{F}$ (moteur, dans le sens du mouvement) et
+      $\vec{f}$ (résistant, opposé au mouvement).
+
+      **Projection de la deuxième loi sur l'axe horizontal :**
+      $$F - f = m\,a_G$$
+
+      **Isoler $a_G$ :**
+      $$a_G = \frac{F-f}{m} = \frac{25-10}{5{,}0} = \frac{15}{5{,}0} = 3{,}0\ \text{m}\cdot\text{s}^{-2}$$
+
+      Il faut bien utiliser la MASSE $m = 5{,}0\ \text{kg}$ (et non le poids
+      $mg = 49\ \text{N}$) dans cette division, conformément à
+      $\sum \vec{F}_{ext} = m\vec{a}_G$.
+
+  - id: LDN-21
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [chute_libre, masse_poids, gravite]
+    primary_misconception: mc.physics.pc_lois_newton.masse-poids-confondus
+    stem: >
+      Un même objet est lâché en chute libre, sans vitesse initiale et depuis
+      la même hauteur, une fois sur Terre ($g \approx 9{,}8\ \text{N/kg}$) et
+      une fois sur la Lune ($g \approx 1{,}6\ \text{N/kg}$). Comparez la durée
+      de chute et la masse de l'objet.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La chute dure exactement le même temps sur la Lune et sur Terre, car $a_G = g$
+          ne dépend pas du lieu où l'on se trouve.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.masse-poids-confondus
+        feedback: >
+          Il est vrai que $a_G = g$ ne dépend pas de la MASSE de l'objet —
+          mais $g$ lui-même dépend du LIEU (de la planète). Ici $g$ change
+          bel et bien entre la Terre et la Lune : l'indépendance par rapport
+          à la masse ne doit pas être confondue avec une indépendance par
+          rapport au lieu.
+      - id: B
+        text: >-
+          La chute dure plus longtemps sur la Lune ($g$ plus faible ⇒
+          $a_G$ plus faible) ; la masse de l'objet est identique aux deux
+          endroits.
+        correct: true
+      - id: C
+        text: >-
+          La chute est plus courte sur la Lune, car l'objet y est plus léger et tombe
+          donc plus rapidement vers le sol.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.chute-depend-masse
+        feedback: >
+          Ceci confond « léger » (poids plus faible) avec une chute plus
+          rapide, et c'est même l'inverse qui se produit : un $g$ plus
+          faible donne une accélération de chute plus faible, donc une chute
+          PLUS LONGUE, pas plus courte. Le poids diminue sur la Lune, mais
+          cela ralentit la chute, ne l'accélère pas.
+      - id: D
+        text: >-
+          La masse de l'objet est plus faible sur la Lune, ce qui modifie la durée de sa
+          chute depuis la même hauteur.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.masse-poids-confondus
+        feedback: >
+          La masse est une propriété intrinsèque de l'objet (quantité de
+          matière), elle ne change pas selon le lieu où l'objet se trouve. Ce
+          qui change d'un astre à l'autre, c'est le POIDS ($P = mg$), à cause
+          de $g$ qui varie — pas la masse $m$, qui reste rigoureusement la
+          même sur Terre et sur la Lune.
+    correct_feedback: >
+      En chute libre, $\vec{a}_G = \vec{g}$ : l'accélération ne dépend pas de
+      la masse de l'objet, mais elle dépend bien du lieu, via $g$. Comme
+      $g_{Lune} < g_{Terre}$, la chute est plus lente, donc plus longue sur la
+      Lune. La masse de l'objet, en revanche, reste identique sur les deux
+      astres : c'est une propriété de l'objet, pas du lieu.
+    solution: |
+      **Deuxième loi appliquée à la chute libre :**
+      $$
+      \vec{P} = m\vec{a}_G \quad\text{avec}\quad \vec{P} = m\vec{g}
+      \quad\Longrightarrow\quad \vec{a}_G = \vec{g}
+      $$
+
+      **Ce qui ne dépend pas de la masse :** $a_G = g$, quel que soit $m$ —
+      donc la masse de l'objet ne change ni sur Terre ni sur la Lune, et
+      n'influence à aucun moment la durée de chute.
+
+      **Ce qui dépend du lieu :** $g$ lui-même est différent sur Terre
+      ($\approx 9{,}8\ \text{m/s}^2$) et sur la Lune ($\approx
+      1{,}6\ \text{m/s}^2$). Une accélération plus faible sur la Lune signifie
+      que la vitesse augmente plus lentement : pour parcourir la même
+      hauteur $h$, il faut donc PLUS de temps sur la Lune que sur Terre.
+
+  - id: LDN-22
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [chute_libre, calcul, cinematique]
+    primary_misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+    stem: >
+      On lâche un objet sans vitesse initiale, en chute libre, depuis une
+      hauteur $h = 45\ \text{m}$. On prend $g = 10\ \text{m/s}^2$. Combien de
+      temps met-il pour atteindre le sol ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$t = \\sqrt{\\dfrac{h}{g}} = \\sqrt{4{,}5} \\approx 2{,}1\\ \\text{s}$"
+        correct: false
+        misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+        feedback: >
+          Ce calcul oublie le facteur 2 dans la relation
+          $h = \tfrac{1}{2}g t^2$ : il faut isoler $t$ à partir de
+          $t^2 = 2h/g$, pas $t^2 = h/g$. Cette omission fait sous-estimer le
+          temps de chute.
+      - id: B
+        text: "$t = \\dfrac{h}{g} = 4{,}5\\ \\text{s}$"
+        correct: false
+        misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+        feedback: >
+          Ce calcul traite la chute comme un mouvement à vitesse CONSTANTE
+          égale à $g$ (comme si $h = g \times t$), ce qui reviendrait à
+          confondre $g$ (une accélération) avec une vitesse. En chute libre,
+          la vitesse augmente progressivement à partir de zéro : la relation
+          correcte entre $h$, $g$ et $t$ est $h = \tfrac{1}{2}g t^2$, pas
+          $h = g t$.
+      - id: C
+        text: "$t = \\sqrt{\\dfrac{2h}{g}} = \\sqrt{\\dfrac{2\\times 45}{10}} = \\sqrt{9} = 3{,}0\\ \\text{s}$"
+        correct: true
+      - id: D
+        text: >-
+          Impossible sans connaître la masse de l'objet.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.chute-depend-masse
+        feedback: >
+          La durée de chute libre ne dépend pas de la masse de l'objet :
+          $\vec{a}_G = \vec{g}$ est valable quelle que soit la masse (elle se
+          simplifie dans l'équation $m\vec{g} = m\vec{a}_G$). La relation
+          $h = \tfrac{1}{2}g t^2$ ne fait intervenir que $h$ et $g$, jamais la
+          masse : le temps de chute est donc parfaitement déterminable sans
+          elle.
+    correct_feedback: >
+      En chute libre sans vitesse initiale, $h = \tfrac{1}{2}g t^2$, donc
+      $t = \sqrt{2h/g} = \sqrt{2\times 45/10} = \sqrt{9} = 3{,}0\ \text{s}$.
+    solution: |
+      **Relation position-temps en chute libre (départ du repos) :**
+      $$h = \frac{1}{2} g\, t^2$$
+
+      **Isoler $t$ :**
+      $$t = \sqrt{\frac{2h}{g}}$$
+
+      **Application numérique :**
+      $$t = \sqrt{\frac{2\times 45}{10}} = \sqrt{9} = 3{,}0\ \text{s}$$
+
+      Cette durée ne dépend ni de la masse ni du poids de l'objet : seuls $h$
+      et $g$ interviennent dans le calcul.
+
+  - id: LDN-23
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [plan_incline, projection, reaction_normale]
+    primary_misconception: mc.physics.pc_lois_newton.projection-plan-incline
+    stem: >
+      Un solide de masse $m = 2{,}0\ \text{kg}$ repose/glisse sur un plan
+      incliné d'angle $\alpha = 30^\circ$. On prend $g = 9{,}8\ \text{m/s}^2$
+      et $\cos 30^\circ \approx 0{,}87$. Quelle est la valeur de la réaction
+      normale $N$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$N = mg = 19{,}6\\ \\text{N}$"
+        correct: false
+        misconception: mc.physics.pc_lois_newton.projection-plan-incline
+        feedback: >
+          C'est le réflexe valable sur un sol HORIZONTAL, où $N = P$. Sur un
+          plan INCLINÉ, la réaction normale équilibre seulement la
+          composante du poids PERPENDICULAIRE au plan, pas le poids entier :
+          il faut projeter $\vec{P}$ selon la direction perpendiculaire au
+          plan, ce qui introduit un facteur $\cos\alpha$.
+      - id: B
+        text: "$N = mg\\sin\\alpha = 9{,}8\\ \\text{N}$"
+        correct: false
+        misconception: mc.physics.pc_lois_newton.projection-plan-incline
+        feedback: >
+          Ceci utilise $\sin\alpha$ au lieu de $\cos\alpha$. C'est la
+          composante du poids LE LONG du plan (celle qui entraîne le solide
+          dans la pente) qui s'exprime avec $\sin\alpha$ ; la composante
+          PERPENDICULAIRE au plan, celle que $\vec{N}$ équilibre, s'exprime
+          avec $\cos\alpha$.
+      - id: C
+        text: "$N = mg\\cos\\alpha = 2{,}0 \\times 9{,}8 \\times 0{,}87 \\approx 17\\ \\text{N}$"
+        correct: true
+      - id: D
+        text: >-
+          Impossible sans connaître le frottement $f$.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.role-normale-mal-compris
+        feedback: >
+          La réaction normale $N$ résulte de l'équilibre PERPENDICULAIRE au
+          plan, entre $\vec{N}$ et la composante perpendiculaire du poids.
+          Le frottement $\vec{f}$, lui, est parallèle au plan : il
+          n'intervient pas dans cet équilibre perpendiculaire, donc $N$ se
+          calcule sans connaître $f$.
+    correct_feedback: >
+      Perpendiculairement au plan, $\vec{N}$ équilibre la composante du
+      poids perpendiculaire au plan, $mg\cos\alpha$ : $N = mg\cos\alpha =
+      2{,}0 \times 9{,}8 \times 0{,}87 \approx 17\ \text{N}$.
+    solution: |
+      **Projection selon l'axe perpendiculaire au plan incliné :**
+      $$N - mg\cos\alpha = 0 \quad\Longrightarrow\quad N = mg\cos\alpha$$
+
+      **Application numérique :**
+      $$N = 2{,}0 \times 9{,}8 \times 0{,}87 \approx 17\ \text{N}$$
+
+      Sur un plan incliné, $N$ n'équilibre que la composante du poids
+      perpendiculaire au plan ($mg\cos\alpha$), pas le poids entier ($mg$) :
+      c'est seulement sur un sol horizontal ($\alpha = 0$, $\cos\alpha = 1$)
+      que $N = mg$.
+
+  - id: LDN-24
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [plan_incline, deuxieme_loi, masse_inertie]
+    primary_misconception: mc.physics.pc_lois_newton.projection-plan-incline
+    stem: >
+      Sur un plan incliné SANS frottement, d'angle $\alpha$, un solide glisse
+      en partant du repos. De quoi dépend son accélération $a_G$ le long du
+      plan ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$a_G = g$, indépendante de l'angle."
+        correct: false
+        misconception: mc.physics.pc_lois_newton.projection-plan-incline
+        feedback: >
+          Ceci traite le plan incliné comme une chute libre complète, comme
+          si le solide tombait verticalement. Or seule la composante du
+          poids LE LONG du plan entraîne le solide dans cette direction : elle
+          vaut $mg\sin\alpha$, pas $mg$ tout entier — l'accélération dépend
+          donc bien de l'angle $\alpha$, et vaut $g\sin\alpha$, pas $g$.
+      - id: B
+        text: "$a_G$ dépend de la masse : plus le solide est lourd, plus il accélère."
+        correct: false
+        misconception: mc.physics.pc_lois_newton.masse-inertie-mal-comprise
+        feedback: >
+          Comme en chute libre, la masse se simplifie entièrement dans
+          l'équation du mouvement sur un plan incliné sans frottement :
+          $mg\sin\alpha = ma_G$ donne $a_G = g\sin\alpha$, où $m$ disparaît
+          complètement. Un solide plus lourd n'accélère donc ni plus ni
+          moins vite qu'un solide léger sur le même plan.
+      - id: C
+        text: "$a_G = g\\sin\\alpha$ : elle dépend de l'angle $\\alpha$ et de $g$, mais PAS de la masse du solide."
+        correct: true
+      - id: D
+        text: "$a_G = g\\cos\\alpha$."
+        correct: false
+        misconception: mc.physics.pc_lois_newton.projection-plan-incline
+        feedback: >
+          C'est une confusion entre $\sin\alpha$ et $\cos\alpha$ : la
+          composante du poids LE LONG du plan (celle qui produit
+          l'accélération dans le sens de la descente) s'exprime avec
+          $\sin\alpha$, tandis que $\cos\alpha$ correspond à la composante
+          PERPENDICULAIRE au plan, celle qu'équilibre la réaction normale
+          $N$.
+    correct_feedback: >
+      Sans frottement, la projection de la deuxième loi le long du plan donne
+      $mg\sin\alpha = m a_G$, donc $a_G = g\sin\alpha$ : la masse se simplifie
+      complètement (comme en chute libre), et seule l'accélération dépend de
+      l'angle $\alpha$ et de $g$.
+    solution: |
+      **Projection de la deuxième loi le long du plan (sans frottement) :**
+      $$mg\sin\alpha = m\,a_G$$
+
+      **Isoler $a_G$ :**
+      $$a_G = g\sin\alpha$$
+
+      La masse $m$ disparaît de l'équation, exactement comme en chute libre
+      verticale : deux solides de masses différentes, lâchés sur le même
+      plan incliné sans frottement, ont la même accélération et arrivent en
+      bas en même temps.
+
+  - id: LDN-25
+    rung: "R8"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [principe_inertie, frottement, force_mouvement]
+    primary_misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+    stem: >
+      Une caisse est tirée à vitesse $v$ sur un sol horizontal, puis la corde
+      est coupée ; le frottement continue de s'exercer. La caisse
+      s'arrête-t-elle immédiatement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : elle continue puis ralentit progressivement. Le frottement seul donne
+          une accélération opposée au mouvement, et il faut une durée finie pour annuler
+          la vitesse.
+        correct: true
+      - id: B
+        text: >-
+          Oui, elle s'arrête net dès l'instant où la corde est coupée : il n'y a plus
+          aucune force motrice pour la faire avancer.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+        feedback: >
+          Ceci suppose qu'un mouvement a besoin d'une force qui le maintient
+          en continu, et que sa disparition arrête tout instantanément. Or
+          c'est un CHANGEMENT de vitesse qui exige une force ; la vitesse
+          acquise avant la coupure ne disparaît pas d'elle-même. Seule
+          l'accélération produite par le frottement peut la réduire, et cela
+          prend un temps non nul.
+      - id: C
+        text: >-
+          Non, elle continue indéfiniment à vitesse constante, puisque plus rien ne la
+          tire et que rien ne vient donc modifier son mouvement rectiligne.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.frottement-mal-traite
+        feedback: >
+          Ceci oublie que le frottement continue bel et bien de s'exercer
+          après la coupure de la corde. $\sum \vec{F}_{ext} = \vec{f} \neq
+          \vec{0}$ : il existe donc une accélération non nulle, opposée au
+          mouvement, qui réduit progressivement la vitesse — la caisse ne
+          garde pas une vitesse constante indéfiniment.
+      - id: D
+        text: >-
+          Oui, le frottement du sol l'arrête instantanément dès que la traction de la
+          corde cesse de s'exercer sur elle.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+        feedback: >
+          Une force, même non nulle, produit une ACCÉLÉRATION finie
+          ($a = f/m$), pas un arrêt instantané. Passer d'une vitesse $v$ non
+          nulle à une vitesse nulle demande un temps $\Delta t = v/a$ non
+          nul : le frottement ralentit la caisse progressivement, il ne
+          l'arrête pas en un instant.
+    correct_feedback: >
+      Après la coupure, seule $\vec{f}$ agit horizontalement :
+      $\sum \vec{F}_{ext} = \vec{f} \neq \vec{0}$, donc $\vec{a}_G \neq
+      \vec{0}$, dirigée en sens opposé au mouvement. La caisse ralentit
+      progressivement — ni arrêt instantané, ni vitesse constante indéfinie.
+    solution: |
+      **Après la coupure de la corde :** seules $\vec{P}$, $\vec{N}$ et
+      $\vec{f}$ subsistent. Verticalement, $\vec{P}$ et $\vec{N}$
+      s'équilibrent. Horizontalement, seule $\vec{f}$ agit, opposée au
+      mouvement.
+
+      **Deuxième loi de Newton :**
+      $$-f = m\,a_G \quad\Longrightarrow\quad a_G = -\frac{f}{m}$$
+
+      Cette accélération, non nulle mais finie, réduit progressivement la
+      norme de $\vec{v}_G$ jusqu'à zéro, au bout d'une durée
+      $\Delta t = v/(f/m) = mv/f$ non nulle. La caisse ne s'arrête donc ni
+      instantanément, ni jamais (elle finit bien par s'arrêter, contrairement
+      au cas sans frottement).
+
+  - id: LDN-26
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: pc_lois_newton
+    tags: [deuxieme_loi, calcul, cinematique]
+    primary_misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+    stem: >
+      Une caisse de masse $m = 20\ \text{kg}$, initialement au repos, est
+      tirée par une force horizontale $T = 90\ \text{N}$ ; le frottement vaut
+      $f = 50\ \text{N}$. Quelle vitesse atteint-elle après $d = 4{,}0\
+      \text{m}$ ? (On donne $a = \dfrac{T-f}{m}=2{,}0\ \text{m/s}^2$.)
+    type: mcq
+    choices:
+      - id: A
+        text: "$v = 2ad = 2\\times 2{,}0\\times 4{,}0 = 16\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+        feedback: >
+          Ce résultat correspond à $v^2 = 2ad = 16$, mais oublie de prendre
+          la racine carrée. $v^2$ vaut bien $16\ \text{m}^2/\text{s}^2$, mais
+          la VITESSE $v$ est la racine carrée de cette quantité, soit
+          $4{,}0\ \text{m/s}$, pas $16\ \text{m/s}$.
+      - id: B
+        text: "$v = \\sqrt{2ad}$ avec $a = T/m = 4{,}5$ : $v = 6{,}0\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_lois_newton.frottement-mal-traite
+        feedback: >
+          Ce résultat vient d'un calcul qui ignore le frottement : avec
+          $a = T/m = 90/20 = 4{,}5\ \text{m/s}^2$ au lieu de la valeur
+          correcte $a = (T-f)/m = 2{,}0\ \text{m/s}^2$ donnée dans l'énoncé,
+          on obtient $v^2 = 2\times 4{,}5\times 4{,}0 = 36$, soit $v =
+          6{,}0\ \text{m/s}$. Le frottement doit pourtant bien être soustrait
+          de la tension pour obtenir la résultante correcte.
+      - id: C
+        text: "$v = \\sqrt{2ad} = \\sqrt{2\\times 2{,}0\\times 4{,}0} = \\sqrt{16} = 4{,}0\\ \\text{m/s}$"
+        correct: true
+      - id: D
+        text: "$v = a\\,d = 2{,}0 \\times 4{,}0 = 8{,}0\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+        feedback: >
+          Ce résultat utilise la relation $v = a \times d$ (comme si $v$
+          était proportionnelle à $d$), ce qui correspondrait à un mouvement
+          à accélération nulle et vitesse déjà établie. Or ici la caisse
+          PART DU REPOS avec une accélération constante : la relation correcte
+          entre vitesse et distance parcourue est $v^2 = 2ad$ (et non $v =
+          a\,d$), car la vitesse continue d'augmenter tout au long du
+          parcours.
+    correct_feedback: >
+      Avec $a = 2{,}0\ \text{m/s}^2$ constante et un départ du repos, la
+      relation vitesse-distance donne $v^2 = 2ad = 2\times 2{,}0\times 4{,}0 =
+      16$, donc $v = \sqrt{16} = 4{,}0\ \text{m/s}$.
+    solution: |
+      **Relation vitesse-distance (accélération constante, départ du
+      repos) :**
+      $$v^2 = 2\,a\,d$$
+
+      **Application numérique :**
+      $$
+      v^2 = 2 \times 2{,}0 \times 4{,}0 = 16 \quad\Longrightarrow\quad v =
+      \sqrt{16} = 4{,}0\ \text{m/s}
+      $$
+
+      Il est essentiel de bien prendre la racine carrée : $v^2$ (en
+      $\text{m}^2/\text{s}^2$) n'est pas directement une vitesse, et la
+      relation $v = a\,d$ ne s'applique qu'à des cas particuliers, pas à un
+      mouvement uniformément accéléré partant du repos.
+
+  - id: LDN-27
+    rung: "R8"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: [deuxieme_loi, masse_inertie, poids]
+    primary_misconception: mc.physics.pc_lois_newton.masse-inertie-mal-comprise
+    stem: >
+      On remplace la caisse par une caisse de masse double $2m$ (donc de
+      poids double), tirée par la même tension $T$ et freinée par le même
+      frottement $f$. Que devient l'accélération, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          L'accélération reste inchangée, puisque ni la tension $T$ ni le frottement $f$
+          n'ont été modifiés dans ce nouveau montage.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.masse-inertie-mal-comprise
+        feedback: >
+          La résultante des forces ($T - f$) est en effet inchangée, mais
+          l'accélération $a = \sum F_{ext}/m$ dépend aussi de la masse : avec
+          $m$ doublée au dénominateur, $a$ est nécessairement divisée par
+          deux, même si le numérateur reste identique. Oublier $m$ dans cette
+          division fait conclure à tort à une accélération inchangée.
+      - id: B
+        text: >-
+          L'accélération est divisée par deux ($a = \sum F_{ext}/m$, $m$
+          doublée) ; le poids, bien que doublé, n'intervient pas dans
+          l'équation horizontale (compensé par $\vec{N}$).
+        correct: true
+      - id: C
+        text: >-
+          L'accélération est divisée par deux à cause du poids doublé de la caisse, qui
+          la freine deux fois plus qu'auparavant.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.masse-poids-confondus
+        feedback: >
+          La valeur numérique (divisée par deux) est correcte, mais la
+          raison invoquée ne l'est pas : le poids est vertical et ne
+          « freine » jamais un mouvement horizontal — il est entièrement
+          compensé par la réaction normale $\vec{N}$, elle aussi doublée,
+          et n'apparaît donc pas dans l'équation horizontale. C'est la masse
+          $m$ au dénominateur de $a = \sum F_{ext}/m$, pas le poids, qui
+          explique la division par deux.
+      - id: D
+        text: >-
+          L'accélération double, car un objet plus lourd subit une force plus grande et
+          accélère donc davantage sous l'effet de cette force accrue.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.masse-inertie-mal-comprise
+        feedback: >
+          C'est l'inverse de la deuxième loi de Newton : à résultante de
+          forces égale ($T - f$ inchangée ici), un objet plus massif accélère
+          MOINS, pas plus, car $a = \sum F_{ext}/m$ diminue quand $m$
+          augmente. La masse mesure l'inertie, c'est-à-dire la résistance
+          au changement de vitesse — elle ne rend jamais l'accélération plus
+          grande.
+    correct_feedback: >
+      La résultante horizontale $T - f$ ne change pas, mais la masse double :
+      $a_{nouveau} = (T-f)/(2m) = a_{ancien}/2$. Le poids, doublé lui aussi,
+      reste sans effet sur l'équation horizontale car il est intégralement
+      compensé par la réaction normale $\vec{N}$ (elle aussi doublée),
+      verticalement.
+    solution: |
+      **Bilan horizontal (inchangé en nature) :** $T - f = m\,a$, donc pour
+      la nouvelle masse $2m$ :
+      $$
+      T - f = 2m\,a_{nouveau} \quad\Longrightarrow\quad a_{nouveau} =
+      \frac{T-f}{2m} = \frac{a_{ancien}}{2}
+      $$
+
+      **Rôle du poids doublé :** verticalement, $2mg$ est exactement
+      compensé par la nouvelle réaction normale $N' = 2mg$ — le poids double
+      bien, mais il n'entre jamais dans l'équation horizontale, qui ne
+      dépend que de $T$, $f$ et $m$.
+
+      L'accélération est donc divisée par deux uniquement parce que la masse
+      (l'inertie) a doublé au dénominateur — pas parce que le poids, plus
+      grand, « freinerait » davantage.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# COVERAGE SUMMARY (summit-conversion floor backfill, lois-de-newton).
+# This 27-item end bank was authored BEFORE the misconception inventory existed
+# (`misconceptions: []`). This pass populates the inventory (19 models), adds an
+# item-level `primary_misconception` to every item, AND tags every incorrect
+# distractor with the model it reveals (per-distractor gold standard, mirroring
+# checkpoints.yaml). Counts below are honest; no count is padded.
+# ──────────────────────────────────────────────────────────────────────────────
+  # Ajoutés le 2026-09-05 : dix familles sous le plancher de 3 items du banc,
+  # cinq à un item et cinq à deux. SIX items (LDN-28 à LDN-33), dix-huit places
+  # — trois de plus que les quinze requises ; le surplus va à
+  # referentiel-toujours-galileen (1 -> 5) et vitesse-scalaire (1 -> 4).
+  # Chaque distracteur porte une famille distincte.
+  - id: LDN-28
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.mouvement-absolu
+    stem: >
+      Un passager assis dans un train qui roule à vitesse constante. Est-il en
+      mouvement, et à quelle vitesse ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La question n'a de sens qu'une fois le référentiel précisé : immobile
+          dans le référentiel du train, en mouvement dans celui du quai
+        correct: true
+      - id: B
+        text: >-
+          Il est en mouvement dans l'absolu, puisqu'il se déplace réellement :
+          le référentiel n'est qu'une commodité de description
+        correct: false
+        misconception: mc.physics.pc_lois_newton.mouvement-absolu
+        feedback: >
+          Il n'existe pas de référentiel privilégié. Dire « il se déplace
+          réellement » suppose un point de vue absolu que la physique ne connaît
+          pas : le sol lui-même tourne avec la Terre, qui tourne autour du
+          Soleil. Tout mouvement est relatif à un référentiel, qu'il faut donc
+          nommer avant de répondre.
+      - id: C
+        text: >-
+          Il est immobile, et le restera même si le train freine brutalement,
+          le référentiel du train étant galiléen en toutes circonstances
+        correct: false
+        misconception: mc.physics.pc_lois_newton.referentiel-toujours-galileen
+        feedback: >
+          Un train qui freine est un référentiel ACCÉLÉRÉ, donc non galiléen :
+          les passagers y sont projetés vers l'avant sans qu'aucune interaction
+          ne les pousse. Le principe d'inertie n'y vaut plus, et c'est justement
+          ce qui permet de reconnaître un référentiel non galiléen.
+      - id: D
+        text: >-
+          Sa vitesse vaut $120$, un nombre qui suffit à la décrire entièrement
+        correct: false
+        misconception: mc.physics.pc_lois_newton.vitesse-scalaire
+        feedback: >
+          Il manque deux choses : l'unité, et surtout la DIRECTION. La vitesse
+          est un vecteur — norme, direction, sens. Deux trains de même norme
+          allant l'un vers l'autre n'ont pas la même vitesse, et c'est cette
+          différence qui décide de ce qui va se passer.
+    correct_feedback: >
+      Tout mouvement est relatif : le passager est immobile dans le référentiel
+      du train et en mouvement dans celui du quai. Aucune des deux descriptions
+      n'est plus vraie que l'autre — il faut seulement dire laquelle on adopte.
+    solution: |
+      **La relativité du mouvement.** Décrire un mouvement, c'est toujours le
+      rapporter à un solide de référence. Sans référentiel nommé, « il bouge »
+      n'est ni vrai ni faux : la question est incomplète.
+
+      **Les deux réponses, toutes deux correctes.**
+      - Référentiel du train : le passager est immobile.
+      - Référentiel du quai : il avance à la vitesse du train.
+
+      **Le vecteur vitesse.** Il ne se réduit pas à un nombre : il porte une
+      direction et un sens. C'est ce qui permettra d'écrire $\vec a$ comme sa
+      variation, et de comprendre qu'un mouvement circulaire uniforme est
+      accéléré bien que la norme ne change pas.
+
+  - id: LDN-29
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.frottement-absent-accelere
+    stem: >
+      Un palet glisse en ligne droite à vitesse constante sur une table à
+      coussin d'air, où les frottements sont négligeables. Que se passe-t-il si
+      l'on supprime complètement ce qui reste de frottement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Rien de plus : le palet continue à la même vitesse, en ligne droite,
+          indéfiniment
+        correct: true
+      - id: B
+        text: >-
+          Il accélère : sans frottement pour le retenir, plus rien ne s'oppose à
+          sa progression
+        correct: false
+        misconception: mc.physics.pc_lois_newton.frottement-absent-accelere
+        feedback: >
+          Enlever un frein n'équivaut pas à ajouter un moteur. Accélérer demande
+          une force RÉSULTANTE non nulle dans le sens du mouvement ; il n'y en a
+          aucune. Le principe d'inertie est explicite : sans force résultante, la
+          vitesse — vecteur — reste constante.
+      - id: C
+        text: >-
+          Il accélère, car il faut ajouter au bilan la force du mouvement qui
+          l'anime et que le frottement contrariait
+        correct: false
+        misconception: mc.physics.pc_lois_newton.bilan-forces-incorrect
+        feedback: >
+          Il n'existe pas de « force du mouvement ». Chaque force doit
+          correspondre à une INTERACTION identifiable avec un autre corps : le
+          poids (Terre), la réaction normale (table), le frottement (table).
+          Le mouvement n'est pas un partenaire d'interaction — c'est un état,
+          pas une cause.
+      - id: D
+        text: >-
+          Impossible à dire : le référentiel de la table étant accéléré, donc non
+          galiléen, le principe d'inertie ne s'y applique pas
+        correct: false
+        misconception: mc.physics.pc_lois_newton.referentiel-toujours-galileen
+        feedback: >
+          Une table posée au sol n'est pas accélérée : le référentiel terrestre
+          est considéré comme galiléen pour des expériences de cette durée et de
+          cette échelle. Ce sont les référentiels en accélération — un bus qui
+          freine, un manège qui tourne — qui ne le sont pas.
+    correct_feedback: >
+      Rien ne change : le palet poursuit son mouvement rectiligne uniforme. Le
+      principe d'inertie dit exactement cela — sans force résultante, le vecteur
+      vitesse reste constant. Supprimer une force résistante ne crée pas de force
+      motrice.
+    solution: |
+      **Le bilan des forces.** Poids $\vec P$ (interaction avec la Terre),
+      réaction normale $\vec R_N$ (interaction avec la table). Elles se
+      compensent : $\sum \vec F_{ext} = \vec 0$.
+
+      **Le principe d'inertie.** Dans un référentiel galiléen, si la somme des
+      forces extérieures est nulle, le centre d'inertie est au repos ou en
+      mouvement rectiligne uniforme. Ici : mouvement rectiligne uniforme,
+      indéfiniment.
+
+      **L'intuition à défaire.** Nous vivons entourés de frottements : arrêter
+      demande de ne rien faire, avancer demande un effort. D'où l'idée qu'un
+      mouvement « a besoin » d'une force, et qu'ôter le frein libère une
+      poussée. Ni l'un ni l'autre n'est vrai.
+
+  - id: LDN-30
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.bilan-forces-incorrect
+    stem: >
+      Une caisse est tirée à vitesse constante sur un sol horizontal par une
+      corde horizontale. Quel bilan des forces est correct ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Poids, réaction normale, traction de la corde et frottement : quatre
+          forces, dont la somme est nulle
+        correct: true
+      - id: B
+        text: >-
+          Poids, réaction normale, traction, frottement, plus la force d'inertie
+          qui accompagne le mouvement de la caisse
+        correct: false
+        misconception: mc.physics.pc_lois_newton.bilan-forces-incorrect
+        feedback: >
+          Une force exige une interaction avec un corps identifiable : la Terre,
+          le sol, la corde. Aucune « force d'inertie » n'a de partenaire dans un
+          référentiel galiléen — l'inertie est la PROPRIÉTÉ qu'a un corps de
+          résister au changement de vitesse, pas une force qui s'exercerait sur
+          lui.
+      - id: C
+        text: >-
+          Poids, réaction normale et traction seulement, le poids fournissant la
+          composante horizontale qui freine le mouvement
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-verticale-composante-horizontale
+        feedback: >
+          Sur un sol horizontal, le poids est vertical : sa composante
+          horizontale est nulle, il ne peut donc ni pousser ni freiner
+          latéralement. Ce qui freine, c'est le frottement, force horizontale
+          exercée par le sol et opposée au déplacement — et le bilan ne peut pas
+          s'en passer.
+      - id: D
+        text: >-
+          Le bilan dépend du référentiel : dans celui de la caisse, qui n'est pas
+          galiléen, une force supplémentaire apparaît
+        correct: false
+        misconception: mc.physics.pc_lois_newton.referentiel-toujours-galileen
+        feedback: >
+          La caisse avance à vitesse CONSTANTE : son référentiel est en
+          translation rectiligne uniforme par rapport au sol, donc galiléen lui
+          aussi. Aucune force supplémentaire n'y apparaît. Ce sont les
+          référentiels accélérés qui font surgir des forces sans interaction.
+    correct_feedback: >
+      Quatre forces : le poids (Terre), la réaction normale (sol), la traction
+      (corde) et le frottement (sol). La vitesse étant constante, leur somme est
+      nulle — les verticales se compensent entre elles, les horizontales entre
+      elles.
+    solution: |
+      **La règle de construction d'un bilan.** Une force par INTERACTION, et une
+      seule. On liste les corps en contact ou à distance :
+      - la Terre → le poids $\vec P$, vertical vers le bas ;
+      - le sol → la réaction normale $\vec R_N$, verticale vers le haut, et le
+        frottement $\vec f$, horizontal opposé au mouvement ;
+      - la corde → la traction $\vec T$, horizontale.
+
+      **La condition de vitesse constante.**
+      $$
+      \sum \vec F_{ext} = \vec 0
+      \quad\Longrightarrow\quad R_N = P \ \text{ et } \ T = f
+      $$
+
+      **Ce qu'on n'ajoute jamais.** Une force du mouvement, une force d'inertie,
+      un élan : aucune n'a de partenaire d'interaction dans un référentiel
+      galiléen.
+
+  - id: LDN-31
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.resultante-mal-composee
+    stem: >
+      Un solide de masse $m = 4{,}0\ \text{kg}$ est soumis à deux forces
+      horizontales de sens opposés : $F_1 = 30\ \text{N}$ vers la droite et
+      $F_2 = 10\ \text{N}$ vers la gauche. Que vaut son accélération ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $5{,}0\ \text{m}\cdot\text{s}^{-2}$, dirigée vers la droite comme la
+          résultante des deux forces
+        correct: true
+      - id: B
+        text: >-
+          $10\ \text{m}\cdot\text{s}^{-2}$ vers la droite, en additionnant les
+          deux intensités avant de diviser par la masse
+        correct: false
+        misconception: mc.physics.pc_lois_newton.resultante-mal-composee
+        feedback: >
+          Deux forces de sens OPPOSÉS se retranchent : la résultante vaut
+          $30 - 10 = 20\ \text{N}$, pas $40$. La deuxième loi porte sur la
+          somme VECTORIELLE des forces, et le sens compte autant que
+          l'intensité.
+      - id: C
+        text: >-
+          $5{,}0\ \text{m}\cdot\text{s}^{-2}$, mais la direction ne peut pas être
+          précisée : une accélération est un nombre, pas un vecteur
+        correct: false
+        misconception: mc.physics.pc_lois_newton.vitesse-scalaire
+        feedback: >
+          La valeur est juste, la conclusion non. $\sum \vec F = m\vec a$ est une
+          égalité entre VECTEURS : l'accélération a la même direction et le même
+          sens que la résultante — ici vers la droite. Réduire une grandeur
+          vectorielle à sa norme fait perdre l'essentiel de l'information.
+      - id: D
+        text: >-
+          $20\ \text{m}\cdot\text{s}^{-2}$, car sans frottement mentionné le
+          solide accélère d'autant plus
+        correct: false
+        misconception: mc.physics.pc_lois_newton.frottement-absent-accelere
+        feedback: >
+          L'absence de frottement ne s'ajoute pas au calcul : elle signifie
+          simplement qu'aucune force supplémentaire ne figure au bilan.
+          L'accélération vient de la résultante des forces PRÉSENTES, divisée par
+          la masse — et $20\ \text{N}$ est cette résultante, pas l'accélération.
+    correct_feedback: >
+      $\sum \vec F = 30 - 10 = 20\ \text{N}$ vers la droite, donc
+      $a = 20/4{,}0 = 5{,}0\ \text{m}\cdot\text{s}^{-2}$, dans le même sens. La
+      deuxième loi est vectorielle : le sens de l'accélération est celui de la
+      résultante.
+    solution: |
+      **La résultante.** Les deux forces sont colinéaires et de sens opposés :
+      $$
+      \sum \vec F_{ext} = F_1 - F_2 = 30 - 10 = 20\ \text{N}
+      \ \text{(vers la droite)}
+      $$
+
+      **La deuxième loi.**
+      $$
+      \sum \vec F_{ext} = m\,\vec a
+      \quad\Longrightarrow\quad
+      a = \frac{20}{4{,}0} = 5{,}0\ \text{m}\cdot\text{s}^{-2}
+      $$
+      Le vecteur $\vec a$ a la même direction et le même sens que la résultante.
+
+      **Les deux contrôles à faire systématiquement.** Diviser par la MASSE (en
+      kg), jamais par le poids $mg$ ; et composer les forces vectoriellement,
+      donc en tenant compte des sens.
+
+  - id: LDN-32
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+    stem: >
+      Un objet est lâché sans vitesse initiale et tombe en chute libre pendant
+      $t = 2{,}0\ \text{s}$. On prend $g = 10\ \text{m}\cdot\text{s}^{-2}$. De
+      quelle hauteur est-il tombé ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $40\ \text{m}$ : la chute étant uniformément accélérée, la hauteur
+          vaut $g\,t^{2}$
+        correct: false
+        misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+        feedback: >
+          Le facteur $\frac12$ manque, et il double le résultat.
+          $h = \frac12 g t^{2}$ : la vitesse croît LINÉAIREMENT de $0$ à $gt$,
+          donc sa moyenne vaut $\frac{gt}{2}$, et la distance est cette moyenne
+          multipliée par la durée. C'est le même $\frac12$ que dans l'énergie
+          cinétique, et il vient du même endroit.
+      - id: B
+        text: >-
+          $20\ \text{m}$ : la hauteur vaut $h = \frac{1}{2}g t^{2}
+          = \frac{1}{2}\times 10 \times 2{,}0^{2}$
+        correct: true
+      - id: C
+        text: >-
+          $10\ \text{m}$ : la réaction du sol s'oppose au poids pendant toute la
+          chute et réduit l'accélération de moitié
+        correct: false
+        misconception: mc.physics.pc_lois_newton.role-normale-mal-compris
+        feedback: >
+          Pendant la chute, l'objet n'est en contact avec rien : il n'y a aucune
+          réaction normale. Celle-ci n'apparaît que lorsqu'un support s'oppose à
+          l'enfoncement — donc à l'impact, brutalement. En chute libre, le poids
+          est la seule force, et l'accélération vaut exactement $g$.
+      - id: D
+        text: >-
+          $0\ \text{m}$ : le poids et la force que l'objet exerce en retour sur
+          la Terre se compensent, donc il ne tombe pas
+        correct: false
+        misconception: mc.physics.pc_lois_newton.action-reaction-meme-corps
+        feedback: >
+          Les deux forces d'une paire action-réaction s'exercent sur des corps
+          DIFFÉRENTS : le poids sur l'objet, l'attraction en retour sur la Terre.
+          Elles ne peuvent donc jamais se compenser — se compenser suppose d'agir
+          sur le même corps. Si elles le faisaient, rien ne tomberait jamais.
+    correct_feedback: >
+      $h = \frac{1}{2}g t^{2} = \frac{1}{2} \times 10 \times 4{,}0 =
+      20\ \text{m}$. Le facteur $\frac12$ vient de l'intégration : la vitesse
+      croît linéairement, la distance parcourue est la moyenne de la vitesse
+      multipliée par la durée.
+    solution: |
+      **La mise en équation.** Chute libre : seule force le poids, donc
+      $\vec a = \vec g$. En prenant l'axe vertical descendant, origine au point
+      de lâcher, et $v_0 = 0$ :
+      $$v(t) = g\,t \qquad h(t) = \frac{1}{2}g\,t^{2}$$
+
+      **L'application.**
+      $$h = \frac{1}{2} \times 10 \times (2{,}0)^{2} = 20\ \text{m}$$
+
+      **D'où vient le $\frac{1}{2}$.** La vitesse passe de $0$ à $g t$
+      linéairement : sa moyenne vaut $\frac{gt}{2}$, et la distance est cette
+      moyenne multipliée par la durée. Oublier ce facteur double le résultat.
+
+      **Le bilan pendant la chute.** Une seule force, le poids. Pas de réaction
+      normale (aucun contact), et la force que l'objet exerce sur la Terre
+      s'applique à la TERRE, pas à lui.
+
+  - id: LDN-33
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.mouvement-absolu
+    stem: >
+      Deux voitures roulent côte à côte sur l'autoroute, exactement à la même
+      vitesse. Un conducteur dit : « l'autre voiture est immobile ». A-t-il
+      raison ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Oui dans son référentiel, où l'autre voiture ne se déplace pas ; non
+          dans celui de la route, où les deux avancent
+        correct: true
+      - id: B
+        text: >-
+          Non : les deux voitures roulent réellement, donc elles sont en
+          mouvement, et aucun point de vue ne peut rendre cela faux
+        correct: false
+        misconception: mc.physics.pc_lois_newton.mouvement-absolu
+        feedback: >
+          « Rouler réellement » suppose un référentiel absolu que la physique ne
+          reconnaît pas. Dans le référentiel de la première voiture, la seconde
+          est rigoureusement immobile — sa distance ne varie pas — et cette
+          description est aussi légitime que l'autre. Le mouvement n'est pas une
+          propriété du corps, mais une relation.
+      - id: C
+        text: >-
+          Non : sa voiture ne peut pas servir de référentiel, puisqu'elle est
+          elle-même en mouvement
+        correct: false
+        misconception: mc.physics.pc_lois_newton.referentiel-toujours-galileen
+        feedback: >
+          N'importe quel solide peut servir de référentiel — c'est même le
+          principe. La question n'est pas de savoir s'il bouge (par rapport à
+          quoi ?) mais s'il est GALILÉEN, c'est-à-dire non accéléré. Une voiture
+          à vitesse constante l'est autant que la route.
+      - id: D
+        text: >-
+          Oui, puisque leurs vitesses ont la même valeur : deux vitesses de même
+          norme sont identiques, la direction n'entrant pas en compte
+        correct: false
+        misconception: mc.physics.pc_lois_newton.vitesse-scalaire
+        feedback: >
+          La conclusion est juste, le raisonnement non — et il tomberait en
+          défaut si les deux voitures se croisaient en sens inverse : mêmes
+          normes, vitesses relatives doublées. Une vitesse est un vecteur ; deux
+          vitesses ne sont égales que si la direction et le sens le sont aussi.
+    correct_feedback: >
+      Il a raison dans son référentiel : la distance entre les deux voitures ne
+      varie pas, donc l'autre y est immobile. Dans le référentiel de la route,
+      les deux avancent. Les deux descriptions sont exactes — elles ne se
+      rapportent pas au même solide de référence.
+    solution: |
+      **Le principe.** Un mouvement se décrit toujours par rapport à un
+      référentiel. Changer de référentiel change la description, sans qu'aucune
+      ne soit « la vraie ».
+
+      **Les deux descriptions.**
+      - Référentiel de la première voiture : la seconde est immobile.
+      - Référentiel de la route : les deux avancent à la même vitesse.
+
+      **Le critère qui compte vraiment.** Non pas « ce référentiel bouge-t-il ? »
+      — la question est vide sans second référentiel — mais « est-il
+      GALILÉEN ? », c'est-à-dire non accéléré. Une voiture à vitesse constante
+      l'est ; la même voiture en train de freiner ne l'est plus.
+
+  # Ajoutés le 2026-09-24 — spec pedagogy-architect
+  # content/pc/lois-de-newton/spec-scene-tremplin.md §8.2-§8.3 :
+  # QUATRE items (LDN-34 à LDN-37) pour le vingtième modèle,
+  # acceleration-traitee-comme-un-nombre — dériver la NORME de la vitesse au
+  # lieu du VECTEUR, structurellement invisible sur les 33 items rectilignes
+  # existants (il y répond juste). Placés AVANT l'énoncé de la deuxième loi :
+  # aucune force, aucune masse, aucun newton, aucune « centripète/centrifuge ».
+  # RÉVISÉS le 2026-09-25 — revue vague 1 (item-author) : LDN-37 ne
+  # discriminait pas le modèle (stem rectiligne, où a_N est structurellement
+  # nul) — réécrit sur le tremplin (arc), gaz puis freinage, a_N non nul et
+  # qui disparaît du produit a·v. La clause « quel que soit l'axe choisi »,
+  # seul absolu des quatre clés, déplacée du choix A vers le tronc. LDN-34 :
+  # formule + valeur retirées de la clé (seule à les porter). LDN-36 : le
+  # dos d'âne nommé « arc de cercle » (le bac ne donne un rayon de courbure
+  # que pour un arc). AJOUT de LDN-38 (R8, la composition ‖a‖=√(a_T²+a_N²),
+  # Forme E déclarée ci-dessus) : CINQ items (LDN-34 à LDN-38).
+  - id: LDN-34
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+    stem: >
+      Un motard aborde un tremplin circulaire de rayon $R = 20\ \text{m}$ et le
+      parcourt en tenant exactement sa vitesse : son compteur affiche
+      $18\ \text{m/s}$ à l'entrée, au milieu et à la sortie du tremplin. Que
+      peut-on dire du vecteur accélération de la moto au milieu du tremplin ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non nul, perpendiculaire à la vitesse, et dirigé vers le centre
+          du tremplin.
+        correct: true
+      - id: B
+        text: >-
+          Nul, puisque la vitesse affichée par le compteur ne change pas
+          entre l'entrée et la sortie.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          C'est la NORME de la vitesse qui ne change pas ici ; le vecteur
+          vitesse, lui, tourne de 28° entre l'entrée et la sortie du
+          tremplin. L'accélération mesure la variation du VECTEUR, pas celle
+          du nombre affiché au compteur : un mouvement circulaire à vitesse
+          tenue est accéléré bien que sa norme reste constante.
+      - id: C
+        text: >-
+          Perpendiculaire à la vitesse, mais dirigé vers l'extérieur du
+          tremplin, loin du centre.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          La trajectoire s'incurve vers le centre du tremplin ; une
+          composante d'accélération dirigée vers l'extérieur la courberait
+          dans l'autre sens. Le vecteur unitaire normal pointe, par
+          définition, vers le centre de courbure — jamais à l'opposé.
+      - id: D
+        text: >-
+          Dirigé vers l'avant, dans le sens du mouvement, car il faut bien
+          quelque chose pour entraîner la moto.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.force-entretient-mouvement
+        feedback: >
+          Une accélération dirigée vers l'avant ferait grandir la norme de
+          la vitesse ; or l'énoncé précise qu'elle reste la même du début à
+          la fin du tremplin. Ce n'est pas parce qu'un mobile avance qu'il
+          lui faut une accélération dans le sens du mouvement : c'est la
+          variation du vecteur vitesse, direction comprise, qui définit
+          l'accélération.
+    correct_feedback: >
+      Un vecteur vitesse peut changer de deux façons indépendantes : sa
+      norme et sa direction. Ici la norme reste $18\ \text{m/s}$ tout du
+      long, mais la direction tourne à mesure que la moto suit la courbe du
+      tremplin — c'est cette rotation que mesure la composante normale de
+      l'accélération, $v^2/R$, dirigée vers le centre.
+    solution: |
+      **Ce que dit le compteur, et ce qu'il ne dit pas.** La norme de la
+      vitesse reste $18\ \text{m/s}$ à l'entrée, au milieu et à la sortie :
+      rien ne le contredit. Mais un vecteur vitesse porte aussi une
+      direction, et celle-ci tourne à mesure que la moto suit la courbe du
+      tremplin — le compteur ne montre que la norme, jamais la direction.
+
+      **Le calcul.** L'accélération se décompose en une composante le long
+      du mouvement (nulle ici, puisque la norme ne change pas) et une
+      composante perpendiculaire, dirigée vers le centre de courbure :
+      $$a_N = \frac{v^2}{R} = \frac{18^2}{20} = \frac{324}{20} = 16{,}2\ \text{m/s}^2$$
+
+      **Ce qu'il faut en retenir.** Un mouvement circulaire à vitesse tenue
+      est accéléré, alors même que le compteur n'indique aucun changement.
+
+  - id: LDN-35
+    rung: "R8"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+    stem: >
+      Sur un tremplin circulaire de rayon $R = 20\ \text{m}$ pris à vitesse
+      tenue, la composante normale de l'accélération vaut
+      $4{,}05\ \text{m/s}^2$ à $9{,}0\ \text{m/s}$. Que vaut-elle (i) à
+      $18\ \text{m/s}$ sur ce même tremplin, puis (ii) à $18\ \text{m/s}$
+      sur un tremplin de rayon $R = 10\ \text{m}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $16{,}2\ \text{m/s}^2$, puis $32{,}4\ \text{m/s}^2$.
+        correct: true
+      - id: B
+        text: >-
+          $8{,}10\ \text{m/s}^2$, puis $16{,}2\ \text{m/s}^2$.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          Doubler la vitesse ne double pas la composante normale de
+          l'accélération, il la quadruple : elle varie comme le carré de la
+          vitesse, pas comme la vitesse elle-même.
+      - id: C
+        text: >-
+          $16{,}2\ \text{m/s}^2$, puis $8{,}10\ \text{m/s}^2$.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          Le rayon est au dénominateur de $v^2/R$, pas au numérateur : un
+          tremplin plus serré (rayon plus petit) réclame une composante
+          normale plus grande, pas plus petite.
+      - id: D
+        text: >-
+          $16{,}2\ \text{m/s}^2$, puis $64{,}8\ \text{m/s}^2$.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          Le carré porte sur la vitesse seule : diviser le rayon par deux
+          double la composante normale, il ne la quadruple pas. $v^2/R$
+          n'élève pas $R$ au carré.
+    correct_feedback: >
+      La composante normale de l'accélération vaut $v^2/R$ : elle varie
+      comme le carré de la vitesse et comme l'inverse du rayon. Un contrôle
+      simple, sans division : le produit $a_N \times R$ vaut $v^2$ dans les
+      deux cas, soit $324$.
+    solution: |
+      **La relation.** $a_N = \dfrac{v^2}{R}$, où $R$ est le rayon du
+      tremplin.
+
+      **(i) Même tremplin, vitesse doublée.**
+      $$a_N = \frac{18^2}{20} = \frac{324}{20} = 16{,}2\ \text{m/s}^2$$
+      quatre fois la valeur à $9{,}0\ \text{m/s}$ ($4{,}05 \times 4 =
+      16{,}2$), parce que la vitesse intervient au carré.
+
+      **(ii) Même vitesse, rayon divisé par deux.**
+      $$a_N = \frac{18^2}{10} = \frac{324}{10} = 32{,}4\ \text{m/s}^2$$
+      le double de (i), parce que le rayon est au dénominateur.
+
+      **Vérification.** $a_N \times R$ vaut $324$ dans les deux cas,
+      exactement $v^2$.
+
+  - id: LDN-36
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+    stem: >
+      Une voiture franchit le sommet d'un dos d'âne, modélisé au sommet par
+      un arc de cercle de rayon $R = 50\ \text{m}$, à la vitesse constante
+      de $20\ \text{m/s}$. Au sommet, quelle est la direction de la
+      composante normale de son accélération, et quelle est sa valeur ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Vers le bas, droit vers le centre de courbure ;
+          $a_N = v^2/R = 8{,}0\ \text{m/s}^2$.
+        correct: true
+      - id: B
+        text: >-
+          Vers le haut, comme la route qui pousse la voiture ;
+          $a_N = 8{,}0\ \text{m/s}^2$.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          Le vecteur unitaire normal ne pointe ni « vers le haut » ni « du
+          côté de la route » : il pointe vers le centre de courbure,
+          c'est-à-dire du côté concave de la trajectoire. Au sommet d'une
+          bosse, ce centre est en dessous de la route, pas au-dessus.
+      - id: C
+        text: >-
+          Nulle, car la vitesse de la voiture reste constante au passage du
+          sommet.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          La norme de la vitesse est constante, mais sa direction ne l'est
+          pas : au sommet, la voiture passe de « monter » à « descendre ».
+          C'est ce changement de direction que mesure la composante normale
+          de l'accélération, non nulle même à vitesse tenue.
+      - id: D
+        text: >-
+          Vers le bas, vers le centre de courbure ;
+          $a_N = v/R = 0{,}40\ \text{m/s}^2$.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          $v/R$ n'est même pas une accélération : son unité est celle de
+          l'inverse d'un temps, pas celle d'une accélération. C'est
+          $v^2/R$, avec la vitesse au carré, qui donne des mètres par
+          seconde au carré.
+    correct_feedback: >
+      Au sommet d'un dos d'âne, le centre de courbure de la trajectoire est
+      sous la route : la composante normale de l'accélération y pointe vers
+      le bas, avec $a_N = v^2/R = 20^2/50 = 8{,}0\ \text{m/s}^2$.
+    solution: |
+      **Où est le centre de courbure.** Au sommet d'une bosse, la
+      trajectoire est concave vers le bas : son centre de courbure se
+      trouve sous la route, pas au-dessus. Le vecteur unitaire normal
+      pointe toujours vers ce centre.
+
+      **Le calcul.**
+      $$a_N = \frac{v^2}{R} = \frac{20^2}{50} = \frac{400}{50} = 8{,}0\ \text{m/s}^2$$
+
+      **Contrôle dimensionnel.** $v/R$ donnerait
+      $\mathrm{m\,s^{-1}}/\mathrm{m} = \mathrm{s^{-1}}$, l'inverse d'un
+      temps — pas une accélération. Seul $v^2/R$ a la bonne dimension,
+      $\mathrm{L\,T^{-2}}$.
+
+  - id: LDN-37
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+    stem: >
+      Sur le tremplin circulaire de rayon $R = 20\ \text{m}$, au même point
+      de l'arc, la moto passe deux fois à $v = 18\ \text{m/s}$ : une fois
+      moteur relancé ($dv/dt = +4{,}5\ \text{m/s}^2$), une fois freins
+      serrés ($dv/dt = -4{,}5\ \text{m/s}^2$). Pour savoir si le mouvement
+      est accéléré ou retardé, on calcule le produit scalaire
+      $\vec a\cdot\vec v$. Que vaut-il dans chaque cas ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $+81{,}0\ \text{m}^2/\text{s}^3$ moteur relancé (accéléré), puis
+          $-81{,}0\ \text{m}^2/\text{s}^3$ au freinage (retardé), quel que
+          soit l'axe choisi.
+        correct: true
+      - id: B
+        text: >-
+          $+81{,}0\ \text{m}^2/\text{s}^3$ dans les deux cas : tant que la
+          moto avance, le produit est toujours positif.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          $\vec a\cdot\vec v$ ne dit pas dans quel sens la moto avance : il
+          dit si la norme de la vitesse grandit ou diminue. Il vaut
+          $a_T\,v$, avec $v>0$ : son signe est celui de $dv/dt$, pas celui
+          du déplacement — ici $dv/dt$ change de signe entre les deux
+          passages, donc $\vec a\cdot\vec v$ aussi.
+      - id: C
+        text: >-
+          Au freinage, $\vec a\cdot\vec v$ devient
+          $+81{,}0\ \text{m}^2/\text{s}^3$ si l'on choisit un axe orienté
+          vers l'arrière : le signe dépend de l'axe.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          C'est le signe d'une COMPOSANTE qui dépend de l'axe choisi pour
+          projeter $\vec a$ ; le produit scalaire $\vec a\cdot\vec v$, lui,
+          n'en dépend pas — c'est exactement pour cette raison que le
+          programme demande ce produit plutôt qu'un signe de composante.
+      - id: D
+        text: >-
+          $\|\vec a\| = 16{,}8\ \text{m/s}^2$ dans les deux cas : la norme
+          de l'accélération ne changeant pas, la nature du mouvement ne
+          change pas non plus.
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          La norme $\|\vec a\| = \sqrt{a_T^2+a_N^2}$ est en effet la même
+          aux gaz et au freinage (la composante normale
+          $a_N = 16{,}2\ \text{m/s}^2$ ne dépend pas du régime) — mais la
+          NATURE du mouvement ne se lit pas sur cette norme : elle se lit
+          sur le SIGNE de $\vec a\cdot\vec v = a_T\,v$, qui change avec
+          $dv/dt$. Deux mouvements de natures opposées peuvent avoir
+          exactement la même norme d'accélération.
+    correct_feedback: >
+      $\vec a\cdot\vec v = a_T\,v$, car la composante normale, perpendiculaire
+      à $\vec v$, ne contribue pas au produit scalaire. Avec
+      $v = 18\ \text{m/s} > 0$ dans les deux cas, le signe de
+      $\vec a\cdot\vec v$ est exactement celui de $dv/dt$ :
+      $+81{,}0\ \text{m}^2/\text{s}^3$ moteur relancé (accéléré),
+      $-81{,}0\ \text{m}^2/\text{s}^3$ au freinage (retardé) — sans qu'aucun
+      axe n'ait dû être choisi.
+    solution: |
+      **Le produit scalaire, terme à terme.** Dans la base de Freinet,
+      $\vec a = \dfrac{dv}{dt}\vec u_T + \dfrac{v^2}{R}\vec u_N$ et
+      $\vec v = v\,\vec u_T$. Comme $\vec u_N$ est perpendiculaire à
+      $\vec u_T$ :
+      $$\vec a\cdot\vec v = \left(\frac{dv}{dt}\vec u_T + \frac{v^2}{R}\vec u_N\right)\cdot\left(v\,\vec u_T\right) = \frac{dv}{dt}\,v$$
+
+      La composante normale $a_N = v^2/R = 18^2/20 = 16{,}2\ \text{m/s}^2$
+      existe bel et bien ici (la trajectoire est un arc, pas une droite) —
+      mais elle DISPARAÎT du produit, précisément parce qu'elle est
+      perpendiculaire à $\vec v$.
+
+      **L'application numérique.**
+      $$\text{moteur relancé : } \vec a\cdot\vec v = (+4{,}5)\times18 = +81{,}0\ \text{m}^2/\text{s}^3 \quad\text{(accéléré)}$$
+      $$\text{freinage : } \vec a\cdot\vec v = (-4{,}5)\times18 = -81{,}0\ \text{m}^2/\text{s}^3 \quad\text{(retardé)}$$
+
+      **Pourquoi ce produit, et pas un signe de composante, ni la norme de
+      $\vec a$.** Une composante de $\vec a$ change de signe selon l'axe
+      choisi pour la projeter ; le produit scalaire $\vec a\cdot\vec v$,
+      lui, ne dépend d'aucun axe. Et la norme
+      $\|\vec a\| = \sqrt{a_T^2+a_N^2} = 16{,}8\ \text{m/s}^2$ est la MÊME
+      dans les deux régimes : c'est le signe de $\vec a\cdot\vec v$, pas sa
+      valeur absolue ni celle de $\vec a$, qui distingue accéléré de
+      retardé.
+
+  # Ajouté le 2026-09-25 — revue vague 1, cinquième item du vingtième
+  # modèle : la COMPOSITION des deux composantes (Pythagore), qu'aucun des
+  # quatre premiers n'exerçait. Situation S5 du descripteur de scène
+  # (v = 12 m/s en B, R = 20 m, freinage).
+  - id: LDN-38
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+    stem: >
+      Sur le tremplin circulaire de rayon $R = 20\ \text{m}$, au point
+      d'entrée $B$, la moto roule à $v = 12\ \text{m/s}$ et freine
+      ($dv/dt = -4{,}50\ \text{m/s}^2$). Quelle est la norme du vecteur
+      accélération en ce point ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\|\vec a\| = \sqrt{a_T^2+a_N^2} = \sqrt{4{,}50^2+7{,}20^2} =
+          8{,}49\ \text{m/s}^2$
+        correct: true
+      - id: B
+        text: >-
+          $\|\vec a\| = a_T + a_N = 4{,}50+7{,}20 = 11{,}7\ \text{m/s}^2$
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          $a_T$ et $a_N$ sont deux composantes PERPENDICULAIRES d'un même
+          vecteur (l'une tangente à la trajectoire, l'autre normale, vers
+          le centre) : les additionner comme deux nombres revient à les
+          traiter comme colinéaires. Seul le théorème de Pythagore compose
+          deux vecteurs orthogonaux — $\|\vec a\| = \sqrt{a_T^2+a_N^2}$ —,
+          et cette norme est plus petite que la somme des deux normes.
+      - id: C
+        text: >-
+          $\|\vec a\| = a_N - a_T = 7{,}20-4{,}50 = 2{,}70\ \text{m/s}^2$
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          Soustraire une composante de l'autre ne donnerait la norme de
+          leur somme que si $a_T$ et $a_N$ étaient colinéaires, de sens
+          opposés. Ici elles sont PERPENDICULAIRES ($\vec u_T \perp
+          \vec u_N$ par construction de la base de Freinet) : ni la somme
+          ni la différence de leurs normes ne composent correctement deux
+          vecteurs orthogonaux — seul $\sqrt{a_T^2+a_N^2}$ le fait.
+      - id: D
+        text: >-
+          $\|\vec a\| = a_T = 4{,}50\ \text{m/s}^2$ (seule la composante
+          tangentielle)
+        correct: false
+        misconception: mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre
+        feedback: >
+          Cette composante traduit bien le freinage, mais elle n'est pas
+          seule : la trajectoire est courbe ici, donc une composante
+          normale $a_N = v^2/R = 12^2/20 = 7{,}20\ \text{m/s}^2$ existe
+          aussi — et elle est même plus grande que $a_T$ en valeur absolue.
+          La norme du vecteur accélération combine les deux composantes
+          par Pythagore, pas la seule composante tangentielle.
+    correct_feedback: >
+      $a_T$ et $a_N$ sont les deux composantes du vecteur $\vec a$ dans la
+      base de Freinet, et elles sont perpendiculaires par construction : la
+      norme de leur somme vectorielle suit le théorème de Pythagore, pas
+      une addition ou une soustraction algébrique.
+      $\|\vec a\| = \sqrt{4{,}50^2+7{,}20^2} = \sqrt{72{,}09} =
+      8{,}49\ \text{m/s}^2$.
+    solution: |
+      **Les deux composantes, dans la base de Freinet.**
+      $$a_T = \frac{dv}{dt} = -4{,}50\ \text{m/s}^2 \qquad a_N = \frac{v^2}{R} = \frac{12^2}{20} = \frac{144}{20} = 7{,}20\ \text{m/s}^2$$
+
+      **Pourquoi Pythagore, et pas une somme.** $\vec u_T$ et $\vec u_N$
+      sont, par construction, perpendiculaires : $\vec a = a_T\vec u_T +
+      a_N\vec u_N$ est la somme de deux vecteurs orthogonaux, dont la norme
+      se calcule comme l'hypoténuse d'un triangle rectangle de côtés
+      $|a_T|$ et $a_N$ — jamais comme une somme ou une différence
+      algébrique de deux nombres.
+
+      **Le calcul.**
+      $$\|\vec a\| = \sqrt{a_T^2+a_N^2} = \sqrt{(-4{,}50)^2+7{,}20^2} = \sqrt{20{,}25+51{,}84} = \sqrt{72{,}09} = 8{,}49\ \text{m/s}^2$$
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après LDN-28 à LDN-33. Dix familles siégeaient sous le
+# plancher de 3 items du banc : la relativité du mouvement, le référentiel
+# galiléen, le caractère vectoriel de la vitesse, le bilan des forces, l'idée
+# qu'ôter le frottement accélère — et cinq erreurs de calcul ou de lecture des
+# trois lois. Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
+# MIS À JOUR À LA MAIN le 2026-09-25, revue vague 1 : ajout de LDN-38
+# (acceleration-traitee-comme-un-nombre, Forme E — la composition). Aucun
+# autre item retiré ni déplacé ; les dix-neuf autres comptes sont inchangés.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.physics.pc_lois_newton.force-entretient-mouvement:                { count: 7, items: [LDN-1, LDN-7, LDN-8, LDN-9, LDN-13, LDN-25, LDN-34] }
+    mc.physics.pc_lois_newton.impetus-elan-stocke:                       { count: 3, items: [LDN-2, LDN-7, LDN-8] }
+    mc.physics.pc_lois_newton.force-verticale-composante-horizontale:    { count: 3, items: [LDN-2, LDN-8, LDN-30] }
+    mc.physics.pc_lois_newton.force-liee-a-vitesse:                      { count: 3, items: [LDN-1, LDN-3, LDN-14] }
+    mc.physics.pc_lois_newton.masse-inertie-mal-comprise:                { count: 4, items: [LDN-3, LDN-13, LDN-24, LDN-27] }
+    mc.physics.pc_lois_newton.resultante-mal-composee:                   { count: 3, items: [LDN-15, LDN-20, LDN-31] }
+    mc.physics.pc_lois_newton.masse-poids-confondus:                     { count: 3, items: [LDN-5, LDN-21, LDN-27] }
+    mc.physics.pc_lois_newton.chute-depend-masse:                        { count: 3, items: [LDN-5, LDN-21, LDN-22] }
+    mc.physics.pc_lois_newton.erreur-cinematique-uniforme:               { count: 3, items: [LDN-22, LDN-26, LDN-32] }
+    mc.physics.pc_lois_newton.action-reaction-meme-corps:                { count: 3, items: [LDN-4, LDN-17, LDN-32] }
+    mc.physics.pc_lois_newton.action-reaction-inegale-ou-conditionnelle: { count: 3, items: [LDN-4, LDN-16, LDN-17] }
+    mc.physics.pc_lois_newton.mouvement-absolu:                          { count: 3, items: [LDN-10, LDN-28, LDN-33] }
+    mc.physics.pc_lois_newton.referentiel-toujours-galileen:             { count: 5, items: [LDN-11, LDN-28, LDN-29, LDN-30, LDN-33] }
+    mc.physics.pc_lois_newton.vitesse-scalaire:                          { count: 4, items: [LDN-12, LDN-28, LDN-31, LDN-33] }
+    mc.physics.pc_lois_newton.bilan-forces-incorrect:                    { count: 3, items: [LDN-18, LDN-29, LDN-30] }
+    mc.physics.pc_lois_newton.role-normale-mal-compris:                  { count: 3, items: [LDN-19, LDN-23, LDN-32] }
+    mc.physics.pc_lois_newton.projection-plan-incline:                   { count: 3, items: [LDN-6, LDN-23, LDN-24] }
+    mc.physics.pc_lois_newton.frottement-mal-traite:                     { count: 5, items: [LDN-6, LDN-13, LDN-20, LDN-25, LDN-26] }
+    mc.physics.pc_lois_newton.frottement-absent-accelere:                { count: 3, items: [LDN-7, LDN-29, LDN-31] }
+    mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre:      { count: 5, items: [LDN-34, LDN-35, LDN-36, LDN-37, LDN-38] }
+  total_items: 38
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 5
+    R2: 4
+    R3: 6
+    R4: 3
+    R5: 4
+    R6: 4
+    R7: 3
+    R8: 6
+  honest_state: >-
+    Les vingt misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Quatorze y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse. La vingtième,
+    acceleration-traitee-comme-un-nombre (2026-09-24, le tremplin
+    circulaire ; complétée le 2026-09-25 par LDN-38, la composition
+    ‖a‖ = √(a_T² + a_N²)), en a désormais cinq : marge 2, au même niveau que
+    referentiel-toujours-galileen et frottement-mal-traite (5 chacune) et
+    loin derrière force-entretient-mouvement (7). Les trois distracteurs de
+    LDN-38 qui composent a_T et a_N par somme ou différence (au lieu de
+    Pythagore) sont tagués sous ce même modèle plutôt que sous
+    resultante-mal-composee : la description déclarée de ce dernier vise
+    spécifiquement la composition de FORCES colinéaires de sens opposés (et
+    la division par la mauvaise grandeur), pas la composition de deux
+    composantes d'accélération PERPENDICULAIRES — un mécanisme différent,
+    même si le geste fautif (additionner au lieu de composer) se
+    ressemble. Signalé pour revue plutôt que tranché en silence.

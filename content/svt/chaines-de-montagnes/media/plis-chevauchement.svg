@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-27 -2 754 404"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Coupe de terrain montrant, à gauche, des couches sédimentaires plissées avec le raccourcissement horizontal qu’elles traduisent, et à droite, un chevauchement plaçant un calcaire plus ancien directement au-dessus d’un grès plus jeune le long d’un plan de fracture incliné.">
+  <title>Plis et chevauchement : la signature du raccourcissement</title>
+
+  <!--
+    plis-chevauchement.svg — figure STATIQUE (pas de step-groups).
+
+    Cible précise : l'erreur classique nommée en R4 du lesson.md — voir des
+    couches plissées ou un chevauchement comme une simple curiosité de
+    paysage, sans lien avec un mécanisme. Le schéma montre UNE coupe de
+    terrain (au sens de l'exercice R7) avec deux points d'observation :
+      - à gauche : des couches plissées, avec un comparatif explicite de
+        longueur (≈100 km à plat → 60-70 km une fois pliées) qui rend visible
+        le RACCOURCISSEMENT ;
+      - à droite : un chevauchement le long d'un plan de fracture incliné,
+        où un calcaire PLUS ANCIEN repose directement AU-DESSUS d'un grès
+        PLUS JEUNE — l'ordre inversé qui, à lui seul, est la preuve qu'un
+        bloc de croûte a été charrié par-dessus un autre (R4, repris
+        littéralement dans l'exercice travaillé R7, Q3).
+
+    Le symbole de rupture (////) sur la ligne de surface, entre les deux
+    zones, signale — convention classique des coupes géologiques — que les
+    deux points observés sont pris "ailleurs sur la coupe" (R7), pas
+    nécessairement à distance réelle proportionnée l'un de l'autre.
+
+    Convention couleur : l'accent (--figure-accent) marque UNE SEULE idée —
+    le plan de chevauchement et le bloc de calcaire plus ancien qu'il porte
+    au-dessus du grès plus jeune (l'inversion d'âge, la preuve à elle seule).
+    Tout le reste (plis, raccourcissement, grès) reste en ink/ink-soft
+    neutres : contexte et mécanisme associé, pas le point culminant.
+  -->
+
+  <!-- Titre -->
+  <text x="350" y="26" text-anchor="middle"
+        font-size="14" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Une même coupe de terrain : plis et chevauchement
+  </text>
+
+  <!-- ── Ligne de surface (avec rupture conventionnelle vers x=350) ──── -->
+  <line x1="40" y1="90" x2="341" y2="90" stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="359" y1="90" x2="660" y2="90" stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- symbole de rupture -->
+  <line x1="344" y1="84" x2="354" y2="96" stroke="var(--figure-ink)" stroke-width="1.4"/>
+  <line x1="350" y1="84" x2="360" y2="96" stroke="var(--figure-ink)" stroke-width="1.4"/>
+  <text x="350" y="108" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">
+    (plus loin sur la même coupe)
+  </text>
+
+  <!-- ── En-têtes des deux zones ──────────────────────────────────── -->
+  <text x="190" y="70" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--figure-ink)">
+    Plis
+  </text>
+  <text x="505" y="70" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--figure-ink)">
+    Chevauchement
+  </text>
+
+  <!-- ══════════════════════ ZONE GAUCHE — PLIS ══════════════════════ -->
+
+  <!-- Deux couches sédimentaires plissées, concordantes -->
+  <path d="M60,115 C90,101 110,101 140,115 C170,129 190,129 220,115 C250,101 270,101 300,115 L320,115"
+        fill="none" stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <path d="M60,150 C90,136 110,136 140,150 C170,164 190,164 220,150 C250,136 270,136 300,150 L320,150"
+        fill="none" stroke="var(--figure-ink-soft)" stroke-width="2"/>
+
+  <text x="190" y="195" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    couches sédimentaires plissées
+  </text>
+
+  <!-- Comparatif de longueur : avant / après le plissement -->
+  <line x1="55" y1="222" x2="315" y2="222" stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="4,3"/>
+  <line x1="55" y1="217" x2="55" y2="227" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+  <line x1="315" y1="217" x2="315" y2="227" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+  <text x="185" y="213" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">
+    avant le plissement : ≈ 100 km
+  </text>
+
+  <line x1="100" y1="248" x2="270" y2="248" stroke="var(--figure-ink)" stroke-width="1.7"/>
+  <line x1="100" y1="242" x2="100" y2="254" stroke="var(--figure-ink)" stroke-width="1.7"/>
+  <line x1="270" y1="242" x2="270" y2="254" stroke="var(--figure-ink)" stroke-width="1.7"/>
+  <text x="185" y="264" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)">
+    après le plissement : 60–70 km
+  </text>
+
+  <!-- ══════════════════════ ZONE DROITE — CHEVAUCHEMENT ═════════════ -->
+
+  <!-- Bloc supérieur (chevauchant) : calcaire, PLUS ANCIEN -->
+  <path d="M360,90 L660,90 L660,210 L360,150 Z"
+        fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.6"/>
+
+  <!-- Bloc inférieur (en place) : grès, plus jeune -->
+  <path d="M360,150 L660,210 L660,290 L360,290 Z"
+        fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+
+  <!-- litage discret dans le grès, non déformé -->
+  <line x1="370" y1="225" x2="650" y2="225" stroke="var(--figure-grid)" stroke-width="1"/>
+  <line x1="370" y1="250" x2="650" y2="250" stroke="var(--figure-grid)" stroke-width="1"/>
+  <line x1="370" y1="275" x2="650" y2="275" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- plan de chevauchement, mis en évidence (déjà tracé comme bord commun
+       des deux blocs ci-dessus ; repassé ici en accent pour le distinguer
+       nettement des bords externes) -->
+  <line x1="360" y1="150" x2="660" y2="210" stroke="var(--figure-accent)" stroke-width="2.6" stroke-linecap="round"/>
+
+  <!-- flèche de charriage : le bloc supérieur glisse vers le haut et vers
+       l'extérieur, par-dessus le bloc inférieur -->
+  <path d="M480,140 L432,107" fill="none" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="432,107 444,110 438,120" fill="var(--figure-accent)"/>
+
+  <text x="510" y="122" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-accent)">
+    Calcaire — plus ancien
+  </text>
+  <!-- REMONTÉES de 22 px (2026-09-04) : le plan de chevauchement, qui descend
+       de y=186 à y=210 sur la largeur du texte, rayait la seconde ligne sur
+       33 % — l'étiquette du plan barrée par le plan. -->
+  <text x="600" y="164" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-accent)">
+    chevauchement
+  </text>
+  <text x="600" y="176" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">
+    (plan de fracture incliné)
+  </text>
+
+  <text x="510" y="252" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-ink-soft)">
+    Grès — plus jeune
+  </text>
+
+  <!-- ── Synthèse (les deux zones racontent la même histoire) ────────── -->
+  <text x="350" y="345" text-anchor="middle" font-size="12" fill="var(--figure-ink)">
+    Un calcaire plus ancien reposant sur un grès plus jeune : ordre impossible par simple dépôt — la preuve du chevauchement.
+  </text>
+  <text x="350" y="365" text-anchor="middle" font-size="11.5" fill="var(--figure-ink-soft)">
+    Plis et chevauchement racontent la même histoire : la croûte raccourcit à l’horizontale et s’épaissit à la verticale.
+  </text>
+</svg>

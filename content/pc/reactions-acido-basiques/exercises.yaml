@@ -1,0 +1,185 @@
+# Attempt-first exercises (summit-conversion campaign).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2021 session
+# normale, PC BIOF, AlloSchool element/127287 — statut « vérifié » in
+# docs/sujets/pc/reactions-acido-basiques.md, Partie 2 : dosage pH-métrique +
+# identification d'un acide carboxylique). r-variation is a fresh
+# anti-mémorisation twin (même cluster de compétences — dosage, équivalence,
+# concentration, indicateur, demi-équivalence — mais base faible dosée par acide
+# fort au lieu d'acide faible dosé par base forte ; numéros et contexte
+# différents ; status not-applicable).
+
+notion: reactions-acido-basiques
+
+exercises:
+  # ── r-bac — le VERIFIED 2021 national sujet, Partie 2 (dosage + identification) ──
+  # Transcription fidèle de docs/sujets/pc/reactions-acido-basiques.md → « 2021 —
+  # session normale — Exercice I (Partie 2) ». On dose Va = 20 mL d'une solution
+  # Sa d'un acide carboxylique AH (concentration Ca inconnue) par la soude
+  # Cb = 0,1 mol/L. La courbe pH = f(Vb) est un dosage acide faible / base forte :
+  # départ vers pH ≈ 3, saut d'équivalence marqué au voisinage de VbE ≈ 20 mL,
+  # palier final vers pH ≈ 12. pH(Sa) = 2,88. Table de pKA fournie pour identifier
+  # AH. Les sous-questions 1.x / 2.x / 3 sont aplaties en q-ids plats (addendum PC
+  # de la recette).
+  - id: r-bac
+    title: "Exercice de type bac — dosage et identification d'un acide carboxylique (2021)"
+    sourcing:
+      status: sourced
+      required_for_done: true
+      note: >-
+        2021 session normale — examen national PC BIOF, AlloSchool NS28F,
+        element/127287 (Exercice I, Partie 2 — dosage pH-métrique d'un acide
+        carboxylique puis identification ; barème ≈ 4,5 pt sur les 7 pt de
+        l'exercice). Transcription vérifiée : re-fetch indépendant AlloSchool +
+        diff OK (docs/sujets/pc/reactions-acido-basiques.md, statut « vérifié »
+        agent-vérificateur 2026-07-11).
+    intro: |-
+      **Dosage et identification d'un acide carboxylique (examen national, session normale 2021).**
+
+      Un flacon, dont l'étiquette est illisible, contient une solution aqueuse $S_a$ d'un acide carboxylique de formule et de concentration inconnues. On note $\text{AH}$ l'acide carboxylique et $\text{A}^-$ sa base conjuguée. Toutes les mesures sont réalisées à $25\,^\circ\text{C}$ (produit ionique de l'eau $K_e = 10^{-14}$).
+
+      **Dosage.** On dose un volume $V_a = 20\ \text{mL}$ de la solution $S_a$ de concentration $C_a$ par une solution aqueuse $S_b$ d'hydroxyde de sodium $\left(\text{Na}^+_{(aq)} + \text{HO}^-_{(aq)}\right)$ de concentration $C_b = 10^{-1}\ \text{mol/L}$. La courbe de la figure 2 représente les variations du pH du mélange réactionnel en fonction du volume $V_b$ de solution basique versée : c'est un dosage d'acide faible par base forte. L'axe des ordonnées $\text{pH}$ est gradué $2,\ 4,\ 6,\ 8,\ 10,\ 12$ et l'axe des abscisses $V_b\ (\text{mL})$ est gradué $5,\ 10,\ 15,\ 20,\ 25$. La courbe part de $\text{pH} \approx 3$, présente un saut d'équivalence marqué au voisinage de $V_b = 20\ \text{mL}$ (le pH montant rapidement d'environ $6$ à environ $11$), puis un palier final vers $\text{pH} \approx 12$.
+
+      **Identification.** La solution $S_a$ est préparée par dissolution de l'acide $\text{AH}$ dans l'eau ; la mesure du pH de $S_a$ donne $\text{pH} = 2{,}88$. On dispose du tableau des $pK_A$ suivant : $\text{HCOOH}/\text{HCOO}^-$ : $3{,}75$ ; $\text{C}_6\text{H}_5\text{COOH}/\text{C}_6\text{H}_5\text{COO}^-$ : $4{,}2$ ; $\text{CH}_3\text{COOH}/\text{CH}_3\text{COO}^-$ : $4{,}75$ ; $\text{CH}_3\text{CH}_2\text{COOH}/\text{CH}_3\text{CH}_2\text{COO}^-$ : $4{,}9$.
+    questions:
+      - id: q1
+        part: "1) Dosage de l'acide carboxylique"
+        stem: |-
+          **(0,5 pt)** Écrire l'équation de la réaction du dosage.
+        reasoning: |-
+          La réaction support d'un titrage doit être totale, rapide et unique : on l'écrit donc avec une **flèche simple** (chapitre 10). Ici l'acide faible $\text{AH}$ cède son proton à l'ion hydroxyde $\text{HO}^-$ de la soude, base forte. On combine le couple $\text{AH}/\text{A}^-$ (agissant en acide) et le couple $\text{H}_2\text{O}/\text{HO}^-$ (l'ion $\text{HO}^-$ agissant en base) ; le proton échangé s'annule dans le bilan.
+
+          $$\text{AH}_{(aq)} + \text{HO}^-_{(aq)} \rightarrow \text{A}^-_{(aq)} + \text{H}_2\text{O}_{(l)}$$
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Déterminer graphiquement les coordonnées $\text{pH}_E$ et $V_{bE}$ du point d'équivalence.
+        reasoning: |-
+          L'équivalence est le **milieu du saut** de pH — le point d'inflexion de la courbe (chapitre 11) — et non le point où $\text{pH} = 7$. On le repère par la méthode des tangentes (deux tangentes parallèles aux branches encadrant le saut, puis la médiane équidistante) ou par le maximum de la dérivée $d\text{pH}/dV$. Le saut étant centré au voisinage de $V_b = 20\ \text{mL}$ et s'étendant d'environ $\text{pH} = 6$ à $\text{pH} = 11$, on lit :
+
+          $$V_{bE} \approx 20\ \text{mL} \qquad \text{pH}_E \approx 8{,}5$$
+
+          On note que $\text{pH}_E > 7$ : c'est cohérent avec un acide faible dosé par une base forte, car à l'équivalence il ne reste, comme espèce du couple, que la base conjuguée $\text{A}^-$, qui rend le milieu basique.
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Déterminer la valeur de la concentration $C_a$.
+        reasoning: |-
+          À l'équivalence, les réactifs ont été introduits dans les proportions stœchiométriques ($1{:}1$ ici) : la quantité d'acide initialement présente égale la quantité de base versée. Cela se traduit par la relation d'équivalence $C_a V_a = C_b V_{bE}$ — une égalité de **quantités de matière**, jamais une valeur de pH imposée. On isole $C_a$.
+        steps:
+          - math: 'C_a\,V_a = C_b\,V_{bE}'
+            note: "Relation d'équivalence : égalité des quantités de matière (chapitre 10)."
+          - math: 'C_a = \dfrac{C_b\,V_{bE}}{V_a} = \dfrac{0{,}1 \times 20}{20} = 0{,}1\ \text{mol/L}'
+            note: "Application numérique : VbE = 20 mL lu au saut, Va = 20 mL, Cb = 0,1 mol/L."
+      - id: q4
+        part: "2) Identification de l'acide carboxylique"
+        stem: |-
+          **(0,5 pt)** Écrire l'équation de la réaction de l'acide $\text{AH}$ avec l'eau.
+        reasoning: |-
+          Contrairement à la réaction de dosage (totale, flèche simple), la mise en solution d'un acide **faible** dans l'eau est une transformation **limitée** : elle s'arrête sur un état d'équilibre. On l'écrit donc avec une **double flèche** $\rightleftharpoons$. L'acide $\text{AH}$ cède un proton à l'eau, qui joue ici le rôle de base (couple $\text{H}_3\text{O}^+/\text{H}_2\text{O}$).
+
+          $$\text{AH}_{(aq)} + \text{H}_2\text{O}_{(l)} \rightleftharpoons \text{A}^-_{(aq)} + \text{H}_3\text{O}^+_{(aq)}$$
+      - id: q5
+        stem: |-
+          **(0,5 pt)** La mesure du pH de la solution $S_a$ donne $\text{pH} = 2{,}88$. Montrer que le taux d'avancement final de la réaction de $\text{AH}$ avec l'eau est $\tau \approx 1{,}32\ \%$.
+        reasoning: |-
+          Le taux d'avancement final compare l'avancement réellement atteint à l'avancement maximal d'une réaction supposée totale : $\tau = x_f / x_{max}$. Comme chaque acide ayant réagi libère un ion $\text{H}_3\text{O}^+$, l'avancement final se lit sur $[\text{H}_3\text{O}^+]_{eq}$, tandis que $x_{max}$ correspondrait à la conversion de tout l'acide apporté, soit une concentration $C_a$. On retrouve d'abord $[\text{H}_3\text{O}^+]_{eq}$ à partir du pH.
+        steps:
+          - math: '[\text{H}_3\text{O}^+]_{eq} = 10^{-\text{pH}} = 10^{-2{,}88} \approx 1{,}32 \times 10^{-3}\ \text{mol/L}'
+            note: "On retrouve la concentration effective en ions oxonium depuis le pH."
+          - math: '\tau = \dfrac{[\text{H}_3\text{O}^+]_{eq}}{C_a} = \dfrac{1{,}32 \times 10^{-3}}{0{,}1} \approx 1{,}32 \times 10^{-2} = 1{,}32\ \%'
+            note: "τ = avancement final / avancement maximal ; ici x_max correspond à la conversion de tout AH, soit Ca."
+      - id: q6
+        stem: |-
+          **(0,75 pt)** Déterminer l'expression du quotient de réaction $Q_{r,\text{éq}}$ à l'équilibre en fonction de $C_a$ et $\tau$, puis vérifier que sa valeur est $Q_{r,\text{éq}} \approx 1{,}77 \times 10^{-5}$.
+        reasoning: |-
+          On dresse les concentrations à l'équilibre à l'aide de $\tau$. Chaque acide ayant réagi donne un $\text{A}^-$ et un $\text{H}_3\text{O}^+$, donc $[\text{A}^-]_{eq} = [\text{H}_3\text{O}^+]_{eq} = \tau C_a$, tandis qu'il reste $[\text{AH}]_{eq} = C_a(1 - \tau)$ d'acide non dissocié. On reporte ces trois concentrations dans le quotient de réaction associé à l'équation de la question 4.
+        steps:
+          - math: 'Q_{r,\text{éq}} = \dfrac{[\text{A}^-]_{eq}\,[\text{H}_3\text{O}^+]_{eq}}{[\text{AH}]_{eq}} = \dfrac{(\tau C_a)(\tau C_a)}{C_a(1-\tau)} = \dfrac{C_a\,\tau^2}{1-\tau}'
+            note: "Concentrations à l'équilibre exprimées avec τ : [A-] = [H3O+] = τ Ca, [AH] = Ca(1 − τ)."
+          - math: 'Q_{r,\text{éq}} = \dfrac{0{,}1 \times \left(1{,}32 \times 10^{-2}\right)^2}{1 - 1{,}32 \times 10^{-2}} \approx 1{,}77 \times 10^{-5}'
+            note: "Application numérique : Ca = 0,1 mol/L et τ = 1,32 %."
+      - id: q7
+        stem: |-
+          **(0,5 pt)** Identifier l'acide carboxylique $\text{AH}$ à l'aide du tableau des $pK_A$ fourni. Justifier.
+        reasoning: |-
+          À l'équilibre, le quotient de réaction atteint la constante d'équilibre de la réaction de $\text{AH}$ avec l'eau — c'est précisément la constante d'acidité $K_A$ du couple $\text{AH}/\text{A}^-$. On en déduit $pK_A = -\log K_A$, qu'on compare au tableau : la valeur trouvée désigne le couple, donc l'acide.
+
+          La valeur $pK_A \approx 4{,}75$ coïncide avec le couple $\text{CH}_3\text{COOH}/\text{CH}_3\text{COO}^-$ : l'acide $\text{AH}$ est l'**acide éthanoïque** (acide acétique), $\text{CH}_3\text{COOH}$.
+        steps:
+          - math: 'K_A = Q_{r,\text{éq}} \approx 1{,}77 \times 10^{-5}'
+            note: "À l'équilibre, le quotient de réaction atteint la constante d'équilibre : ici K_A du couple."
+          - math: 'pK_A = -\log K_A = -\log\left(1{,}77 \times 10^{-5}\right) \approx 4{,}75'
+            note: "Valeur à comparer au tableau des pKA."
+      - id: q8
+        part: "3) Exploitation de la courbe de dosage"
+        stem: |-
+          **(0,75 pt)** Déterminer le volume $V_{b1}$ de la solution basique versée, au cours du dosage, pour que $\dfrac{[\text{AH}_{(aq)}]}{[\text{A}^-_{(aq)}]} = 2{,}24$.
+        reasoning: |-
+          Pendant le dosage, avant l'équivalence, la réaction support est totale : chaque mole de $\text{HO}^-$ versée convertit une mole de $\text{AH}$ en $\text{A}^-$. La quantité de base conjuguée formée est donc $n(\text{A}^-) = C_b V_{b1}$, et il reste $n(\text{AH}) = C_a V_a - C_b V_{b1} = C_b V_{bE} - C_b V_{b1}$ (puisque $C_a V_a = C_b V_{bE}$). Comme les deux espèces sont dans le même volume total, le rapport des concentrations égale le rapport des quantités de matière.
+        steps:
+          - math: '\dfrac{[\text{AH}]}{[\text{A}^-]} = \dfrac{n(\text{AH})}{n(\text{A}^-)} = \dfrac{C_b V_{bE} - C_b V_{b1}}{C_b V_{b1}} = \dfrac{V_{bE} - V_{b1}}{V_{b1}}'
+            note: "Réaction de dosage totale : la base versée forme autant de A- ; même volume total, donc rapport des concentrations = rapport des quantités."
+          - math: '\dfrac{V_{bE} - V_{b1}}{V_{b1}} = 2{,}24 \implies V_{b1} = \dfrac{V_{bE}}{1 + 2{,}24} = \dfrac{20}{3{,}24} \approx 6{,}2\ \text{mL}'
+            note: "On isole Vb1 ; VbE = 20 mL. Vb1 < VbE/2 : AH reste bien majoritaire, cohérent avec le rapport > 1."
+
+  # ── r-variation — jumeau anti-mémorisation frais (PAS un vrai sujet) ─────────
+  # Même cluster de compétences que r-bac (équation de dosage, relation
+  # d'équivalence et concentration, signe de pHE, choix de l'indicateur,
+  # demi-équivalence) mais RETOURNÉ : ici une BASE faible (ammoniac) dosée par un
+  # ACIDE fort. La courbe pH = f(Va) DÉCROÎT, pHE < 7, et l'espèce restante à
+  # l'équivalence est l'acide conjugué NH4+ — pour que l'élève ne recopie pas
+  # r-bac et doive reconnaître quelle procédure s'applique.
+  - id: r-variation
+    title: "Variation fraîche — dosage d'une base faible par un acide fort"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2021 session normale,
+        sourcé).
+    intro: |-
+      Même cluster de compétences que l'exercice précédent, contexte retourné : ici on dose une **base faible** par un **acide fort**. La courbe $\text{pH} = f(V_a)$ va donc **décroître**, et le pH à l'équivalence sera différent — à toi de reconnaître ce qui change et ce qui reste.
+
+      Un flacon contient une solution aqueuse $S_b$ d'ammoniac $\text{NH}_3$ (couple $\text{NH}_4^+/\text{NH}_3$) de concentration $C_b$ inconnue. On dose un volume $V_b = 20{,}0\ \text{mL}$ de $S_b$ par une solution d'acide chlorhydrique $\left(\text{H}_3\text{O}^+_{(aq)} + \text{Cl}^-_{(aq)}\right)$ de concentration $C_a = 5{,}0 \times 10^{-2}\ \text{mol/L}$. Toutes les mesures sont faites à $25\,^\circ\text{C}$ ($K_e = 10^{-14}$). Sur la courbe $\text{pH} = f(V_a)$ obtenue (décroissante), la méthode des tangentes donne un volume équivalent $V_{aE} = 16{,}0\ \text{mL}$.
+    questions:
+      - id: q1
+        stem: |-
+          Écrire l'équation de la réaction du dosage.
+        reasoning: |-
+          Réaction support d'un titrage : totale, rapide, unique — **flèche simple**. Ici c'est la base faible $\text{NH}_3$ qui capte un proton de l'ion $\text{H}_3\text{O}^+$ apporté par l'acide fort. On combine le couple $\text{NH}_4^+/\text{NH}_3$ ($\text{NH}_3$ en base) et le couple $\text{H}_3\text{O}^+/\text{H}_2\text{O}$ ($\text{H}_3\text{O}^+$ en acide).
+
+          $$\text{NH}_{3(aq)} + \text{H}_3\text{O}^+_{(aq)} \rightarrow \text{NH}_{4(aq)}^+ + \text{H}_2\text{O}_{(l)}$$
+      - id: q2
+        stem: |-
+          Écrire la relation à l'équivalence, puis déterminer la concentration $C_b$ de la solution $S_b$.
+        reasoning: |-
+          À l'équivalence, l'acide versé a exactement consommé la base présente (proportions stœchiométriques $1{:}1$) : $C_b V_b = C_a V_{aE}$. C'est la même relation de quantités de matière que dans l'exercice sourcé — seuls les rôles acide/base sont échangés. On isole $C_b$.
+        steps:
+          - math: 'C_b\,V_b = C_a\,V_{aE}'
+            note: "Relation d'équivalence : égalité des quantités de matière."
+          - math: 'C_b = \dfrac{C_a\,V_{aE}}{V_b} = \dfrac{5{,}0 \times 10^{-2} \times 16{,}0}{20{,}0} = 4{,}0 \times 10^{-2}\ \text{mol/L}'
+            note: "Application numérique : VaE = 16,0 mL, Vb = 20,0 mL."
+      - id: q3
+        stem: |-
+          Sans calcul, en raisonnant sur l'espèce présente à l'équivalence, indiquer si $\text{pH}_E$ est supérieur, inférieur ou égal à $7$.
+        reasoning: |-
+          À l'équivalence, toute la base $\text{NH}_3$ a été convertie en son acide conjugué $\text{NH}_4^+$. La solution contient alors, comme espèce du couple, un **acide faible** ($\text{NH}_4^+$), qui rend le milieu **acide** : $\text{pH}_E < 7$. C'est cohérent avec la lecture $\text{pH}_E \approx 5{,}5$ et avec l'allure décroissante de la courbe. Attention à ne pas plaquer « équivalence $\Rightarrow \text{pH} = 7$ » : cela n'est vrai que pour un acide fort dosé par une base forte.
+      - id: q4
+        stem: |-
+          On lit $\text{pH}_E \approx 5{,}5$ au milieu du saut. Pour repérer l'équivalence par un indicateur coloré, on dispose de l'hélianthine ($3{,}1$–$4{,}4$), du rouge de méthyle ($4{,}2$–$6{,}2$) et du bleu de bromothymol, BBT ($6{,}0$–$7{,}6$). Lequel choisir ? Justifier.
+        reasoning: |-
+          Le critère de choix (chapitre 12) : la zone de virage de l'indicateur doit **encadrer** $\text{pH}_E$, pour que le changement de couleur se produise au voisinage du saut. On teste chaque zone contre $\text{pH}_E \approx 5{,}5$ : l'hélianthine ($3{,}1$–$4{,}4$) ne contient pas $5{,}5$ — écartée ; le BBT ($6{,}0$–$7{,}6$) ne contient pas non plus $5{,}5$ — écarté ; seul le **rouge de méthyle** ($4{,}4$–$6{,}2$) contient $5{,}5$ : c'est lui qu'on retient. Le critère n'est pas « virer à $\text{pH} = 7$ » : chaque indicateur vire dans sa propre zone.
+      - id: q5
+        stem: |-
+          On lit $\text{pH} = 9{,}2$ à la demi-équivalence ($V_a = V_{aE}/2 = 8{,}0\ \text{mL}$). En déduire le rapport $\dfrac{[\text{NH}_3]}{[\text{NH}_4^+]}$ à ce point, puis le $pK_A$ du couple $\text{NH}_4^+/\text{NH}_3$.
+        reasoning: |-
+          À la demi-équivalence, la moitié de la base initiale a été convertie en acide conjugué : les deux formes du couple sont présentes en quantités égales, donc leur rapport vaut $1$. La relation entre pH et $pK_A$ (chapitre 6) donne alors, au logarithme de $1$ près, $\text{pH} = pK_A$ : la demi-équivalence livre directement le $pK_A$. C'est un point **distinct** de l'équivalence — à ne pas confondre avec elle.
+        steps:
+          - math: '\dfrac{[\text{NH}_3]}{[\text{NH}_4^+]} = 1'
+            note: "À la demi-équivalence, la moitié de la base a réagi : les deux formes du couple sont à égalité."
+          - math: '\log\dfrac{[\text{NH}_3]}{[\text{NH}_4^+]} = \text{pH} - pK_A \implies \log 1 = 0 = \text{pH} - pK_A \implies pK_A = \text{pH} = 9{,}2'
+            note: "La demi-équivalence donne directement le pKA du couple (ici lu 9,2)."

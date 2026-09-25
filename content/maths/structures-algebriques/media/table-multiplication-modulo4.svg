@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 550"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Table de la loi multiplicative sur Z/4Z = {0,1,2,3} : grille 5x5. La case ligne 2, colonne 3 est encadrée en accent (valeur 2) pour l’exemple travaillé 2 fois 3 égale 6 congru à 2 modulo 4. La ligne et la colonne du 1 recopient l’en-tête, montrant que 1 est neutre pour la multiplication. La ligne du 2 (0,2,0,2) ne contient jamais 1 : 2 n’a pas de symétrique pour la multiplication, donc Z/4Z muni de la seule multiplication n’est pas un groupe, bien que Z/4Z muni de l’addition et de la multiplication soit un anneau.">
+  <title>Table de (Z/4Z, ×) — le neutre, et où l’axiome du symétrique échoue</title>
+
+  <!--
+    table-multiplication-modulo4.svg — R5, deuxième exemple ("un second
+    exemple, fini cette fois : (Z/4Z,+,×)"). DISTINCTE de table-groupe.svg
+    (R2), qui table la loi ADDITIVE — celle-ci table la loi MULTIPLICATIVE,
+    même ensemble E={0,1,2,3}. Reprend exactement les valeurs de la table
+    du texte (lesson.md lignes 273-278).
+
+    STAGÉE (LESSON-EXPERIENCE-SPEC §2.5) — geste "grille → données → lecture",
+    dans l'ordre exact du texte : la grille vide d'abord, puis les valeurs
+    (avec l'exemple travaillé 2×3=6≡2 annoté juste après, comme le texte le
+    fait), puis les deux lectures qui comptent pour la suite du chapitre —
+    le neutre (1), puis l'échec de l'axiome du symétrique pour 2, qui separe
+    "(Z/4Z,×) n'est pas un groupe" de "(Z/4Z,+,×) est un anneau".
+      step-1 : la grille nue — cadre, lignes, en-têtes 0,1,2,3 SEULEMENT
+               (aucune valeur de corps, aucune couleur d'interprétation —
+               à la différence de table-groupe.svg, qui préteinte déjà le 0
+               dès le step-1 puisque le neutre EST tout son sujet ; ici le
+               step-1 est délibérément neutre : la lecture vient plus tard).
+      step-2 : les 16 valeurs remplies + l'exemple travaillé annoté
+               2 × 3 = 6 ≡ 2 (mod 4), à la case (ligne 2, colonne 3).
+      step-3 : la ligne ET la colonne du 1 teintées — elles recopient
+               l'en-tête : 1 est neutre pour ×.
+      step-4 : la ligne du 2 teintée (0,2,0,2 — jamais 1) : 2 n'a pas de
+               symétrique pour × → l'axiome 4 échoue → encart de conclusion,
+               (Z/4Z,×) n'est pas un groupe, mais (Z/4Z,+,×) reste un anneau.
+
+    Layout (grille 5×5, cellules 70×70, origine x=140,y=70) — IDENTIQUE à
+    table-groupe.svg pour la continuité visuelle du chapitre :
+      colonne 0 = en-tête de ligne ; ligne 0 = en-tête de colonne ;
+      cellules (r,c) pour r,c=1..4 : valeur = ((r-1)×(c-1)) mod 4.
+
+    Convention de couleur (5 tokens seulement) :
+      cellules d'en-tête (ligne 0, colonne 0)       : --figure-ink-soft, teinte faible
+      case de l'exemple travaillé (2,3)             : --figure-accent, cadre + teinte
+      ligne et colonne du neutre 1 (corps)           : --figure-accent, teinte faible
+      les deux cellules d'en-tête "1" (le neutre)    : --figure-accent, teinte forte
+      ligne du 2 (corps), l'axiome qui échoue        : --figure-accent, teinte faible
+      la cellule d'en-tête "2" (ligne)                : --figure-accent, teinte forte
+      encart de conclusion (step-4)                   : --figure-accent, fond très faible
+      grille / cadre                                  : --figure-grid / --figure-ink-soft
+      texte des valeurs                               : --figure-ink
+  -->
+
+  <!-- Fond du panneau -->
+  <rect x="20" y="10" width="640" height="520" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- Titre -->
+  <text x="340" y="34" text-anchor="middle" font-size="15" font-weight="600"
+        letter-spacing="0.01em" fill="var(--figure-ink)">Table de (ℤ/4ℤ, ×) : neutre pour ×, et l’axiome qui échoue</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — la grille nue : cadre + en-têtes 0,1,2,3 seulement
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Teintes d'en-tête (ligne 0 et colonne 0 du tableau) -->
+    <rect x="140" y="70"  width="70" height="70" fill="var(--figure-ink-soft)" fill-opacity="0.09"/>
+    <rect x="210" y="70"  width="70" height="70" fill="var(--figure-ink-soft)" fill-opacity="0.09"/>
+    <rect x="280" y="70"  width="70" height="70" fill="var(--figure-ink-soft)" fill-opacity="0.09"/>
+    <rect x="350" y="70"  width="70" height="70" fill="var(--figure-ink-soft)" fill-opacity="0.09"/>
+    <rect x="420" y="70"  width="70" height="70" fill="var(--figure-ink-soft)" fill-opacity="0.09"/>
+    <rect x="140" y="140" width="70" height="70" fill="var(--figure-ink-soft)" fill-opacity="0.09"/>
+    <rect x="140" y="210" width="70" height="70" fill="var(--figure-ink-soft)" fill-opacity="0.09"/>
+    <rect x="140" y="280" width="70" height="70" fill="var(--figure-ink-soft)" fill-opacity="0.09"/>
+    <rect x="140" y="350" width="70" height="70" fill="var(--figure-ink-soft)" fill-opacity="0.09"/>
+
+    <!-- Cadre et grille -->
+    <rect x="140" y="70" width="350" height="350" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
+    <line x1="280" y1="70" x2="280" y2="420" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="350" y1="70" x2="350" y2="420" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="420" y1="70" x2="420" y2="420" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="210" y1="70" x2="210" y2="420" stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
+    <line x1="140" y1="210" x2="490" y2="210" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="140" y1="280" x2="490" y2="280" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="140" y1="350" x2="490" y2="350" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="140" y1="140" x2="490" y2="140" stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
+
+    <!-- En-têtes seulement : le symbole × et 0,1,2,3 sur les deux axes -->
+    <text x="175" y="111" text-anchor="middle" font-size="16" font-weight="600" fill="var(--figure-ink-soft)">×</text>
+    <text x="245" y="112" text-anchor="middle" font-size="20" font-weight="600" fill="var(--figure-ink)">0</text>
+    <text x="315" y="112" text-anchor="middle" font-size="20" font-weight="600" fill="var(--figure-ink)">1</text>
+    <text x="385" y="112" text-anchor="middle" font-size="20" font-weight="600" fill="var(--figure-ink)">2</text>
+    <text x="455" y="112" text-anchor="middle" font-size="20" font-weight="600" fill="var(--figure-ink)">3</text>
+
+    <text x="175" y="182" text-anchor="middle" font-size="20" font-weight="600" fill="var(--figure-ink)">0</text>
+    <text x="175" y="252" text-anchor="middle" font-size="20" font-weight="600" fill="var(--figure-ink)">1</text>
+    <text x="175" y="322" text-anchor="middle" font-size="20" font-weight="600" fill="var(--figure-ink)">2</text>
+    <text x="175" y="392" text-anchor="middle" font-size="20" font-weight="600" fill="var(--figure-ink)">3</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — les 16 valeurs + l'exemple travaillé 2×3=6≡2 (mod 4)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- ligne x=0 : 0,0,0,0 -->
+    <text x="245" y="182" text-anchor="middle" font-size="20" fill="var(--figure-ink)">0</text>
+    <text x="315" y="182" text-anchor="middle" font-size="20" fill="var(--figure-ink)">0</text>
+    <text x="385" y="182" text-anchor="middle" font-size="20" fill="var(--figure-ink)">0</text>
+    <text x="455" y="182" text-anchor="middle" font-size="20" fill="var(--figure-ink)">0</text>
+
+    <!-- ligne x=1 : 0,1,2,3 -->
+    <text x="245" y="252" text-anchor="middle" font-size="20" fill="var(--figure-ink)">0</text>
+    <text x="315" y="252" text-anchor="middle" font-size="20" fill="var(--figure-ink)">1</text>
+    <text x="385" y="252" text-anchor="middle" font-size="20" fill="var(--figure-ink)">2</text>
+    <text x="455" y="252" text-anchor="middle" font-size="20" fill="var(--figure-ink)">3</text>
+
+    <!-- ligne x=2 : 0,2,0,2 -->
+    <text x="245" y="322" text-anchor="middle" font-size="20" fill="var(--figure-ink)">0</text>
+    <text x="315" y="322" text-anchor="middle" font-size="20" fill="var(--figure-ink)">2</text>
+    <text x="385" y="322" text-anchor="middle" font-size="20" fill="var(--figure-ink)">0</text>
+    <text x="455" y="322" text-anchor="middle" font-size="20" fill="var(--figure-ink)">2</text>
+
+    <!-- ligne x=3 : 0,3,2,1 -->
+    <text x="245" y="392" text-anchor="middle" font-size="20" fill="var(--figure-ink)">0</text>
+    <text x="315" y="392" text-anchor="middle" font-size="20" fill="var(--figure-ink)">3</text>
+    <text x="385" y="392" text-anchor="middle" font-size="20" fill="var(--figure-ink)">2</text>
+    <text x="455" y="392" text-anchor="middle" font-size="20" fill="var(--figure-ink)">1</text>
+
+    <!-- Exemple travaillé : case (ligne 2, colonne 3) = 2 -->
+    <rect x="420" y="280" width="70" height="70" fill="var(--figure-accent)" fill-opacity="0.18"
+          stroke="var(--figure-accent)" stroke-width="2.2"/>
+    <line x1="490" y1="315" x2="516" y2="315" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <circle cx="490" cy="315" r="3" fill="var(--figure-accent)"/>
+    <text x="522" y="309" text-anchor="start" font-size="12" fill="var(--figure-ink)">2 × 3 = 6</text>
+    <text x="522" y="324" text-anchor="start" font-size="10" fill="var(--figure-ink-soft)">≡ 2 (mod 4)</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — ligne et colonne du 1 : 1 est neutre pour ×
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Teinte accent : ligne du 1 (corps) -->
+    <rect x="210" y="210" width="70" height="70" fill="var(--figure-accent)" fill-opacity="0.13"/>
+    <rect x="280" y="210" width="70" height="70" fill="var(--figure-accent)" fill-opacity="0.13"/>
+    <rect x="350" y="210" width="70" height="70" fill="var(--figure-accent)" fill-opacity="0.13"/>
+    <rect x="420" y="210" width="70" height="70" fill="var(--figure-accent)" fill-opacity="0.13"/>
+
+    <!-- Teinte accent : colonne du 1 (corps) -->
+    <rect x="280" y="140" width="70" height="70" fill="var(--figure-accent)" fill-opacity="0.13"/>
+    <rect x="280" y="280" width="70" height="70" fill="var(--figure-accent)" fill-opacity="0.13"/>
+    <rect x="280" y="350" width="70" height="70" fill="var(--figure-accent)" fill-opacity="0.13"/>
+
+    <!-- Teinte forte : les deux cellules d'en-tête "1" — le neutre lui-même -->
+    <rect x="140" y="210" width="70" height="70" fill="var(--figure-accent)" fill-opacity="0.32"/>
+    <rect x="280" y="70"  width="70" height="70" fill="var(--figure-accent)" fill-opacity="0.32"/>
+
+    <!-- Annotation -->
+    <path d="M133,210 L126,210 L126,280 L133,280" fill="none" stroke="var(--figure-accent)" stroke-width="1.5" stroke-linecap="round"/>
+    <text x="122" y="241" text-anchor="end" font-size="13" font-weight="600" fill="var(--figure-accent)">1 : neutre</text>
+    <text x="122" y="256" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">(pour ×)</text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — ligne du 2 : jamais 1 → pas de symétrique → pas un groupe
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <!-- Teinte accent : ligne du 2 (corps) -->
+    <rect x="210" y="280" width="70" height="70" fill="var(--figure-accent)" fill-opacity="0.13"/>
+    <rect x="280" y="280" width="70" height="70" fill="var(--figure-accent)" fill-opacity="0.13"/>
+    <rect x="350" y="280" width="70" height="70" fill="var(--figure-accent)" fill-opacity="0.13"/>
+    <rect x="420" y="280" width="70" height="70" fill="var(--figure-accent)" fill-opacity="0.13"/>
+
+    <!-- Teinte forte : la cellule d'en-tête "2" (ligne) -->
+    <rect x="140" y="280" width="70" height="70" fill="var(--figure-accent)" fill-opacity="0.32"/>
+
+    <!-- Annotation -->
+    <path d="M133,280 L126,280 L126,350 L133,350" fill="none" stroke="var(--figure-accent)" stroke-width="1.5" stroke-linecap="round"/>
+    <text x="122" y="311" text-anchor="end" font-size="13" font-weight="600" fill="var(--figure-accent)">2 : jamais 1</text>
+    <text x="122" y="326" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">dans sa ligne</text>
+
+    <!-- Encart de conclusion -->
+    <rect x="90" y="440" width="500" height="64" rx="8" fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="340" y="463" text-anchor="middle" font-size="13" font-weight="600" fill="var(--figure-accent)">(ℤ/4ℤ, ×) n’est pas un groupe : l’axiome 4 échoue pour 2.</text>
+    <text x="340" y="484" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">Pourtant (ℤ/4ℤ, +, ×) reste un anneau.</text>
+  </g><!-- /step-4 -->
+
+</svg>

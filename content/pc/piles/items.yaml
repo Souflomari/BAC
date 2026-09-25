@@ -1,0 +1,1597 @@
+notion: piles
+skill_code: pc_piles
+
+misconceptions:
+  - id: mc.physics.pc_piles.anode-cathode-polarite
+    label: "« On confond anode/cathode ou leur polarité (piège 'réduction = négatif') »"
+    description: "L'élève intervertit anode et cathode, ou associe l'oxydation à la borne + et la réduction à la borne -, souvent séduit par le fait que 'réduction' évoque une diminution."
+    contradicts_principle: "L'anode est le siège de l'oxydation (les électrons libérés s'y accumulent) : c'est la borne -. La cathode est le siège de la réduction (elle s'appauvrit en électrons) : c'est la borne +. Le sens réel des électrons fixe le signe, pas la sonorité des mots."
+
+  - id: mc.physics.pc_piles.courant-sens-electrons
+    label: "« Le courant conventionnel circule dans le même sens que les électrons »"
+    description: "L'élève fait suivre au courant le sens réel de déplacement des électrons, ou nie l'existence d'un sens conventionnel du courant."
+    contradicts_principle: "Le courant conventionnel est défini comme le sens de déplacement de charges positives : il est toujours opposé au déplacement réel des électrons (charges négatives). Dans le circuit extérieur, les électrons vont de - vers +, le courant de + vers -."
+
+  - id: mc.physics.pc_piles.pile-source-illimitee
+    label: "« Une pile branchée ne s'use pas / est une source d'énergie illimitée »"
+    description: "L'élève croit qu'une pile peut débiter indéfiniment, comme si la réaction se régénérait, ou que la quantité totale d'électricité disponible ne dépend pas du réactif limitant."
+    contradicts_principle: "Chaque coulomb débité correspond, par Q = n(e⁻)·F, à une quantité irréversible de réactif consommé. La charge totale disponible est fixée par le réactif limitant ; une pile est un réservoir fini qui s'épuise (Qr,i tend vers K)."
+
+  - id: mc.physics.pc_piles.qr-evolution-equilibre
+    label: "« Qr,i n'évolue pas vers K (usure de la pile mal comprise) »"
+    description: "L'élève pense que Qr,i diminue, reste constant, ou n'a aucun rapport avec l'affaiblissement de la pile, ou confond la simple présence des espèces avec l'équilibre."
+    contradicts_principle: "Pendant le fonctionnement, Qr,i évolue vers K (ici il augmente : [Zn²⁺] monte, [Cu²⁺] baisse). L'écart Qr,i–K alimente la f.é.m. ; en se réduisant, il fait chuter la tension jusqu'à l'usure. L'équilibre, c'est Qr,i = K, pas la coexistence des espèces."
+
+  - id: mc.physics.pc_piles.calcul-quantite-electricite
+    label: "« Erreurs sur Q = I·Δt = n(e⁻)·F et le passage à la masse »"
+    description: "L'élève écrit Q comme un quotient, oublie de convertir les unités (mA, h), ignore la dépendance en Δt, ou saute la stœchiométrie n(e⁻) vers n(espèce)."
+    contradicts_principle: "Q = I·Δt est un produit (I en A, Δt en s) ; puis n(e⁻) = Q/F ; puis on passe à la matière via la stœchiométrie de la demi-équation, avant de multiplier par la masse molaire."
+
+  - id: mc.physics.pc_piles.expression-quotient-reaction
+    label: "« Mauvaise construction du quotient de réaction Qr »"
+    description: "L'élève inclut les solides purs dans Qr, inverse produits et réactifs, oublie les exposants stœchiométriques, ou juge une valeur 'grande/petite' sans la comparer à K."
+    contradicts_principle: "Qr = produits/réactifs, avec les seules espèces dissoutes et leurs exposants stœchiométriques ; les solides purs n'y figurent pas. Le sens d'évolution se lit en comparant Qr à K, pas en jugeant Qr dans l'absolu."
+
+  - id: mc.physics.pc_piles.fem-mal-comprise
+    label: "« La f.é.m. est mal comprise (à vide vs en charge, signe, valeur universelle) »"
+    description: "L'élève confond la f.é.m. (tension à vide) avec la tension en charge, inverse l'ordre cathode/anode dans E = V+ - V-, ou croit 1,1 V universel pour toute pile."
+    contradicts_principle: "La f.é.m. E = V(cathode) - V(anode) = V+ - V- se mesure à courant quasi nul (à vide). Elle dépend des couples et des concentrations (via l'écart Qr,i–K) : ni universelle, ni égale à la tension en charge, qui est plus faible."
+
+  - id: mc.physics.pc_piles.pile-nature-mal-comprise
+    label: "« La nature d'une pile est mal comprise (séparer bloque / crée de l'énergie / change la réaction) »"
+    description: "L'élève croit que séparer les réactifs empêche la réaction, que la pile fabrique une énergie nouvelle, ou que la réaction change de nature dans le montage en pile."
+    contradicts_principle: "C'est la même réaction spontanée, mêmes réactifs et produits : seul le trajet des électrons change (par le fil au lieu du contact). La pile ne crée rien - elle redirige vers un courant l'énergie déjà libérée, qui sinon partait en chaleur."
+
+  - id: mc.physics.pc_piles.role-constituants
+    label: "« Le rôle des constituants (fil, pont salin, électrode, disposition) est mal compris »"
+    description: "L'élève croit que le pont salin transporte les électrons, qu'une demi-pile n'a pas besoin d'électrode solide, ou plonge l'électrode dans la mauvaise solution."
+    contradicts_principle: "Le fil transporte les électrons ; le pont salin maintient l'électroneutralité (ions inertes), sans mélanger les réactifs. Chaque demi-pile associe une électrode solide (forme réduite) à sa propre solution ; l'électrode échange les électrons avec le circuit."
+
+items:
+
+  # ── confondre anode/cathode et borne +/- (canonique) ────────────────────────
+  - id: PILES-1
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Dans une pile Daniell en fonctionnement, l'électrode de zinc est le
+      siège de l'oxydation ($Zn \to Zn^{2+} + 2e^-$) et l'électrode de cuivre
+      est le siège de la réduction ($Cu^{2+} + 2e^- \to Cu$). Quel est le nom
+      de l'électrode de cuivre, et quelle est sa polarité ?
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est la cathode, borne +."
+        correct: true
+      - id: B
+        text: "C'est la cathode, borne -."
+        correct: false
+        misconception: mc.physics.pc_piles.anode-cathode-polarite
+        feedback: >
+          Le nom est juste (la réduction se produit bien à la cathode), mais
+          la polarité est inversée. La réduction CONSOMME des électrons :
+          l'électrode qui s'en appauvrit devient relativement plus positive,
+          pas plus négative. Le mot « réduction » évoque une diminution, ce
+          qui pousse à tort vers « négatif » - mais c'est le sens réel de
+          circulation des électrons qui fixe le signe, pas la sonorité du mot.
+      - id: C
+        text: "C'est l'anode, borne +."
+        correct: false
+        misconception: mc.physics.pc_piles.anode-cathode-polarite
+        feedback: >
+          L'anode est par définition l'électrode où se produit l'OXYDATION -
+          or c'est ici le zinc, pas le cuivre, qui s'oxyde. L'électrode de
+          cuivre, siège de la réduction, s'appelle la cathode, pas l'anode.
+      - id: D
+        text: "C'est l'anode, borne -."
+        correct: false
+        misconception: mc.physics.pc_piles.anode-cathode-polarite
+        feedback: >
+          Double confusion : d'une part le nom (l'anode est le siège de
+          l'oxydation, qui a lieu ici au zinc, pas au cuivre), d'autre part la
+          polarité (une anode, quand il s'agit bien de l'électrode
+          d'oxydation, est la borne -, jamais la borne +). L'électrode de
+          cuivre est la cathode, borne +.
+    correct_feedback: >
+      L'électrode où se produit la réduction s'appelle la cathode. Comme la
+      réduction consomme des électrons, cette électrode s'appauvrit en
+      électrons et devient, relativement, la borne + de la pile.
+    solution: |
+      **Nommer l'électrode :** la réduction ($Cu^{2+}+2e^- \to Cu$) se produit
+      à l'électrode de cuivre - par définition, l'électrode où a lieu la
+      réduction s'appelle la **cathode**.
+
+      **Trouver la polarité :** la réduction consomme des électrons, elle en
+      tire hors du métal. L'électrode s'appauvrit en électrons, donc elle
+      devient, par rapport au reste du circuit, relativement chargée
+      positivement : c'est la **borne +**.
+
+      **Conclusion :** l'électrode de cuivre est la cathode, borne +.
+
+  # ── confondre anode/cathode et borne +/- (variant, sens inverse : polarité → mécanisme) ──
+  - id: PILES-2
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Sur une pile en fonctionnement, un voltmètre indique que l'électrode A
+      est la borne négative. Que peut-on en conclure sur ce qui se produit
+      à cette électrode ?
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est le siège de l'oxydation : c'est l'anode."
+        correct: true
+      - id: B
+        text: "C'est le siège de la réduction : c'est la cathode."
+        correct: false
+        misconception: mc.physics.pc_piles.anode-cathode-polarite
+        feedback: >
+          C'est l'inverse : la cathode (siège de la réduction) est toujours
+          la borne +, jamais la borne -, parce que la réduction consomme des
+          électrons et appauvrit l'électrode, la rendant relativement plus
+          positive. Une borne négative signale une électrode qui ACCUMULE des
+          électrons, donc une oxydation.
+      - id: C
+        text: "On ne peut rien conclure sans connaître la nature chimique de l'électrode."
+        correct: false
+        misconception: mc.physics.pc_piles.anode-cathode-polarite
+        feedback: >
+          Le lien entre polarité et mécanisme (oxydation/réduction) ne dépend
+          pas de la nature chimique de l'électrode : il découle uniquement du
+          sens de circulation des électrons. Une borne - accumule des
+          électrons - c'est nécessairement une oxydation, quelle que soit
+          l'espèce chimique en jeu.
+      - id: D
+        text: "C'est forcément l'électrode de zinc, car le zinc est toujours l'anode."
+        correct: false
+        misconception: mc.physics.pc_piles.anode-cathode-polarite
+        feedback: >
+          Rien n'impose que ce soit spécifiquement du zinc : ce qui identifie
+          l'anode, c'est le mécanisme (oxydation, électrons en excès), pas une
+          liste de métaux à mémoriser. Le zinc est l'anode dans la pile
+          Daniell parce que le calcul de $Q_{r,i}$ face à $K$ (chapitre 3) impose
+          ce sens-là pour CE couple précis - pas parce que « le zinc est
+          toujours l'anode » par principe.
+    correct_feedback: >
+      Une borne - accumule des électrons en excès : c'est la signature de
+      l'oxydation. L'électrode où se produit l'oxydation s'appelle l'anode.
+    solution: |
+      Une électrode négative est, par définition électrique, une électrode où
+      les électrons s'accumulent avant de partir dans le circuit extérieur.
+      Or seule l'oxydation LIBÈRE des électrons dans le métal - la réduction,
+      elle, en consomme. Une borne - est donc nécessairement le siège d'une
+      oxydation, c'est-à-dire l'anode.
+
+  # ── sens des électrons vs sens du courant (canonique) ───────────────────────
+  - id: PILES-3
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Dans le circuit extérieur d'une pile en fonctionnement, les électrons
+      circulent de la borne - vers la borne +. Dans quel sens circule le
+      courant électrique conventionnel, dans ce même circuit extérieur ?
+    type: mcq
+    choices:
+      - id: A
+        text: "De la borne + vers la borne -, en sens inverse des électrons."
+        correct: true
+      - id: B
+        text: "De la borne - vers la borne +, dans le même sens que les électrons."
+        correct: false
+        misconception: mc.physics.pc_piles.courant-sens-electrons
+        feedback: >
+          Le courant électrique conventionnel a été défini, par convention
+          historique, comme le sens de déplacement de charges POSITIVES.
+          Les électrons, porteurs réels du courant dans un fil, sont des
+          charges négatives : leur déplacement équivaut à un déplacement de
+          charges positives en sens INVERSE. Le courant et les électrons
+          circulent donc en sens opposés, jamais dans le même sens.
+      - id: C
+        text: "Il n'y a pas de courant électrique conventionnel, seulement un déplacement d'électrons."
+        correct: false
+        misconception: mc.physics.pc_piles.courant-sens-electrons
+        feedback: >
+          Le courant conventionnel est une description valide et utilisée en
+          permanence (c'est ce qu'affiche un ampèremètre, c'est le sens
+          indiqué sur tous les schémas de circuit) : ce n'est pas une fiction
+          à écarter, c'est une convention de signe, fixée avant la découverte
+          de l'électron, qui coexiste avec le déplacement réel des électrons.
+      - id: D
+        text: "Le sens du courant dépend de la nature chimique des électrodes utilisées."
+        correct: false
+        misconception: mc.physics.pc_piles.courant-sens-electrons
+        feedback: >
+          Le sens du courant conventionnel n'a rien à voir avec la nature
+          chimique des électrodes : c'est une pure convention électrique
+          (sens des charges positives), toujours opposée au sens réel des
+          électrons, quel que soit le couple oxydant/réducteur utilisé dans
+          la pile.
+    correct_feedback: >
+      Le courant conventionnel est défini en sens inverse du déplacement réel
+      des électrons (qui sont des charges négatives) : dans le circuit
+      extérieur, il va donc de + vers -.
+    solution: |
+      Les électrons vont de - vers + dans le circuit extérieur (donnée de
+      l'énoncé). Le courant conventionnel est, par construction historique,
+      toujours défini en sens inverse du déplacement réel des porteurs de
+      charge négatifs. Il circule donc de + vers -, dans ce même circuit
+      extérieur.
+
+  # ── sens des électrons vs sens du courant (variant, sens inverse : courant → électrons) ──
+  - id: PILES-4
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Sur le schéma d'une pile Daniell en fonctionnement, un courant
+      électrique circule, dans le circuit extérieur, de l'électrode de cuivre
+      (cathode) vers l'électrode de zinc (anode). Dans ce même circuit
+      extérieur, dans quel sens se déplacent réellement les électrons ?
+    type: mcq
+    choices:
+      - id: A
+        text: "De l'anode (zinc) vers la cathode (cuivre) - donc en sens inverse du courant."
+        correct: true
+      - id: B
+        text: "De la cathode (cuivre) vers l'anode (zinc) - le même sens que le courant."
+        correct: false
+        misconception: mc.physics.pc_piles.courant-sens-electrons
+        feedback: >
+          Le courant conventionnel et le déplacement réel des électrons sont
+          toujours en sens opposés dans un circuit, quelle que soit la pile
+          considérée. Si le courant va de la cathode vers l'anode, les
+          électrons, eux, vont nécessairement de l'anode vers la cathode.
+      - id: C
+        text: "Les électrons ne se déplacent pas dans le circuit extérieur ; seuls les ions se déplacent en solution."
+        correct: false
+        misconception: mc.physics.pc_piles.courant-sens-electrons
+        feedback: >
+          C'est l'inverse qui décrit le circuit : les ÉLECTRONS circulent
+          dans le fil du circuit extérieur (produits par l'oxydation à
+          l'anode, consommés par la réduction à la cathode) ; ce sont les
+          IONS qui assurent, eux, la conduction à l'intérieur des solutions
+          et du pont salin, pas dans le fil.
+      - id: D
+        text: "Dans les deux sens à la fois, en alternance."
+        correct: false
+        misconception: mc.physics.pc_piles.courant-sens-electrons
+        feedback: >
+          Une pile délivre un courant continu, dans un seul sens, tant que la
+          réaction évolue spontanément dans le même sens (celui fixé par la
+          comparaison entre $Q_{r,i}$ et $K$). Il n'y a pas d'alternance ici -
+          ce comportement caractériserait un courant alternatif, pas celui
+          d'une pile.
+    correct_feedback: >
+      Le courant conventionnel et les électrons circulent toujours en sens
+      opposés dans le circuit extérieur : si le courant va de la cathode vers
+      l'anode, les électrons vont de l'anode vers la cathode.
+    solution: |
+      Donnée : le courant va de la cathode (cuivre) vers l'anode (zinc) dans
+      le circuit extérieur. Le courant conventionnel est, par construction,
+      toujours en sens inverse du déplacement réel des électrons. Les
+      électrons circulent donc en sens inverse du courant : de l'anode
+      (zinc) vers la cathode (cuivre) - cohérent avec le mécanisme de la
+      pile, puisque c'est bien à l'anode que l'oxydation les produit.
+
+  # ── croire que la pile ne s'use pas (canonique, calcul Q = IΔt = n(e-)F) ────
+  - id: PILES-5
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Une pile Daniell débite un courant $I = 100\ \text{mA}$ pendant
+      $\Delta t = 1\ \text{h}\ 00$. On donne
+      $F \approx 9{,}65\times10^{4}\ \text{C/mol}$. Quelle affirmation est
+      correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$Q = I\\,\\Delta t = 360\\ \\text{C}$, ce qui correspond à $n(e^-)=Q/F\\approx 3{,}7\\times10^{-3}\\ \\text{mol}$ d'électrons échangés - donc à une quantité limitée de zinc consommé."
+        correct: true
+      - id: B
+        text: "La pile peut fonctionner indéfiniment tant qu'on la laisse branchée, car la réaction chimique se recrée en permanence.
+        Aucun réactif ne serait donc consommé au cours du fonctionnement."
+        correct: false
+        misconception: mc.physics.pc_piles.pile-source-illimitee
+        feedback: >
+          Chaque coulomb débité correspond, par $Q = n(e^-)\,F$, à une
+          quantité précise et irréversible de zinc oxydé à l'anode. La lame
+          de zinc contient une masse FINIE de métal, qui ne se régénère pas :
+          une pile n'est pas une source d'énergie illimitée, c'est un
+          réservoir fini d'énergie chimique.
+      - id: C
+        text: "$Q = I / \\Delta t = 100/3600 \\approx 0{,}028\\ \\text{C}$"
+        correct: false
+        misconception: mc.physics.pc_piles.calcul-quantite-electricite
+        feedback: >
+          La quantité d'électricité se calcule par un PRODUIT, $Q = I\,\Delta
+          t$ (un débit multiplié par une durée donne une quantité totale), pas
+          par un quotient. De plus, $I$ doit être converti en ampères
+          ($100\ \text{mA} = 0{,}100\ \text{A}$) avant le calcul.
+      - id: D
+        text: "La quantité d'électricité débitée ne dépend pas de la durée de fonctionnement, seulement du courant."
+        correct: false
+        misconception: mc.physics.pc_piles.calcul-quantite-electricite
+        feedback: >
+          $Q = I\,\Delta t$ dépend explicitement des deux grandeurs : à
+          courant $I$ fixé, une durée $\Delta t$ deux fois plus longue
+          débite deux fois plus de charge. Ignorer $\Delta t$ revient à
+          confondre un débit (le courant) avec une quantité accumulée (la
+          charge).
+    correct_feedback: >
+      $Q = I\,\Delta t = 0{,}100 \times 3600 = 360\ \text{C}$, donc
+      $n(e^-)=Q/F\approx 3{,}7\times10^{-3}\ \text{mol}$ d'électrons échangés -
+      une quantité de matière bien précise et finie, qui correspond à une
+      masse de zinc consommée elle aussi finie.
+    solution: |
+      **Quantité d'électricité :**
+      $$Q = I\,\Delta t = 0{,}100 \times 3600 = 360\ \text{C}$$
+
+      **Quantité de matière d'électrons échangés :**
+      $$n(e^-) = \frac{Q}{F} = \frac{360}{9{,}65\times10^{4}} \approx 3{,}7\times10^{-3}\ \text{mol}$$
+
+      Cette quantité d'électrons correspond, via la demi-équation
+      $Zn \to Zn^{2+}+2e^-$, à une quantité de matière de zinc bien précise
+      et non renouvelable : la pile consomme réellement son réactif, elle ne
+      le régénère pas.
+
+  # ── croire que la pile ne s'use pas (variant, lien Q_r,i → K) ───────────────
+  - id: PILES-6
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Au fur et à mesure qu'une pile Daniell fonctionne, la concentration en
+      $Zn^{2+}$ augmente et celle en $Cu^{2+}$ diminue dans les deux
+      demi-piles. Comment évolue $Q_{r,i} = [Zn^{2+}]/[Cu^{2+}]$ au cours du
+      temps, et que se passe-t-il quand $Q_{r,i}$ se rapproche de $K$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$Q_{r,i}$ augmente progressivement ; quand il se rapproche de $K$, la f.é.m. de la pile s'effondre et elle cesse de débiter un courant utile."
+        correct: true
+      - id: B
+        text: "$Q_{r,i}$ diminue progressivement ; la pile devient de plus en plus performante avec le temps."
+        correct: false
+        misconception: mc.physics.pc_piles.qr-evolution-equilibre
+        feedback: >
+          Le numérateur $[Zn^{2+}]$ augmente et le dénominateur $[Cu^{2+}]$
+          diminue : un rapport dont le numérateur grandit et le dénominateur
+          rétrécit ne peut qu'AUGMENTER, jamais diminuer. Une pile ne devient
+          jamais plus performante avec le temps - elle s'affaiblit.
+      - id: C
+        text: "$Q_{r,i}$ reste constant tant que la pile fonctionne : seule sa valeur à l'équilibre compte."
+        correct: false
+        misconception: mc.physics.pc_piles.qr-evolution-equilibre
+        feedback: >
+          $Q_{r,i}$ se recalcule à chaque instant à partir des concentrations
+          présentes, et celles-ci changent en permanence tant que la pile
+          débite du courant (c'est justement ce courant qui traduit la
+          réaction en cours). $Q_{r,i}$ ne peut donc pas rester constant
+          pendant le fonctionnement.
+      - id: D
+        text: "La pile continue à fonctionner à la même intensité indéfiniment ; $Q_{r,i}$ n'a aucun rapport avec son fonctionnement au cours du temps."
+        correct: false
+        misconception: mc.physics.pc_piles.pile-source-illimitee
+        feedback: >
+          C'est au contraire $Q_{r,i}$ qui explique pourquoi l'intensité
+          disponible chute avec le temps : la f.é.m. de la pile est liée à
+          l'écart entre $Q_{r,i}$ et $K$, et cet écart se réduit à mesure que
+          $Q_{r,i}$ grimpe vers $K$. Une pile ne fonctionne jamais
+          indéfiniment à intensité constante.
+    correct_feedback: >
+      $Q_{r,i}$ ne peut qu'augmenter ici (numérateur qui grandit, dénominateur
+      qui rétrécit). En se rapprochant de $K$, il réduit l'écart qui alimente
+      la f.é.m. de la pile : elle s'affaiblit, jusqu'à ne plus pouvoir
+      débiter de courant utile - c'est l'usure de la pile.
+    solution: |
+      $[Zn^{2+}]$ grandit, $[Cu^{2+}]$ rétrécit : leur rapport
+      $Q_{r,i}=[Zn^{2+}]/[Cu^{2+}]$ ne peut donc qu'augmenter au cours du
+      fonctionnement de la pile. Comme la f.é.m. de la pile traduit
+      électriquement l'écart entre $Q_{r,i}$ et $K$ (chapitre 6), cet écart qui
+      se réduit progressivement fait chuter la tension disponible - jusqu'à
+      ce que la pile ne puisse plus débiter de courant utile dans un circuit
+      extérieur. C'est exactement la même mécanique que l'évolution vers
+      l'équilibre étudiée dans le chapitre sur l'état d'équilibre, appliquée
+      ici au fonctionnement d'une pile.
+
+  # ── croire que séparer les réactifs empêche la réaction (R0) ────────────────
+  - id: PILES-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Dans le montage de l'accroche, la lame de zinc et la solution d'ions
+      $Cu^{2+}$ ne sont plus dans le même bécher : elles sont séparées,
+      reliées seulement par un fil (avec un ampèremètre) et par un pont
+      salin. Un camarade affirme : « comme le zinc et les ions $Cu^{2+}$ ne
+      se touchent plus directement, la réaction ne peut plus avoir lieu, et
+      l'ampèremètre doit rester à zéro ». Que penser de cette affirmation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est fausse : le zinc cède toujours ses électrons aux ions $Cu^{2+}$, seulement à distance, via le fil - l'ampèremètre dévie bel et bien, preuve que c'est la même réaction, réorganisée pour passer par un détour plutôt que par un contact."
+        correct: true
+      - id: B
+        text: "Elle est correcte : sans contact direct entre le zinc et les ions $Cu^{2+}$, aucun transfert d'électrons n'est possible, donc l'ampèremètre reste effectivement à zéro tant que les béchers restent séparés.
+        Une pile ne pourrait donc pas fonctionner avec ses deux compartiments séparés."
+        correct: false
+        misconception: mc.physics.pc_piles.pile-nature-mal-comprise
+        feedback: >
+          Ce n'est pas le contact direct qui est indispensable, mais un
+          chemin - quel qu'il soit - pour que les électrons cédés par le
+          zinc rejoignent les ions $Cu^{2+}$. Le fil offre justement ce
+          chemin : la réaction se produit bel et bien, et c'est précisément
+          elle qui fait dévier l'ampèremètre.
+      - id: C
+        text: "Elle est fausse, mais pas pour la bonne raison : le pont salin achemine les ions $Cu^{2+}$ jusqu'à la lame de zinc, recréant ainsi un contact direct entre les deux espèces au sein d'un même bécher."
+        correct: false
+        misconception: mc.physics.pc_piles.role-constituants
+        feedback: >
+          Le pont salin ne transporte pas les espèces réactives
+          ($Zn^{2+}$, $Cu^{2+}$) d'un bécher à l'autre - il ne fait
+          circuler que des ions inertes (comme $K^+$, $NO_3^-$), pour
+          maintenir l'électroneutralité de chaque solution. Le zinc et les
+          ions $Cu^{2+}$ restent bien séparés, chacun dans son bécher ;
+          c'est le fil, pas le pont salin, qui permet l'échange
+          d'électrons.
+      - id: D
+        text: "Elle est fausse, mais pas pour la bonne raison : la réaction ne redémarre que si un générateur extérieur impose un courant dans le circuit, comme dans une électrolyse, la pile seule ne produisant rien."
+        correct: false
+        misconception: mc.physics.pc_piles.pile-nature-mal-comprise
+        feedback: >
+          Ici, aucun générateur n'est branché : c'est au contraire la
+          réaction chimique elle-même, spontanée, qui impose le courant -
+          c'est justement ce qui définit une pile, à l'opposé d'une
+          électrolyse où un générateur force une réaction qui ne serait pas
+          spontanée seule.
+    correct_feedback: >
+      Séparer les deux réactifs ne bloque pas la réaction : le zinc cède
+      toujours ses électrons aux ions $Cu^{2+}$, simplement par un détour
+      obligé via le fil. C'est cette réaction, toujours spontanée, qui fait
+      dévier l'ampèremètre.
+    solution: |
+      Ce qui permet la réaction, ce n'est pas le contact physique direct
+      entre le zinc et les ions $Cu^{2+}$, mais l'existence d'un chemin
+      pour les électrons cédés par le zinc. Ce chemin, ici, c'est le fil
+      conducteur : les électrons y circulent du zinc vers le compartiment
+      cuivre, où ils sont captés par les ions $Cu^{2+}$. La réaction a bien
+      lieu - c'est exactement ce qui fait dévier l'ampèremètre - simplement
+      redirigée plutôt qu'empêchée.
+
+  # ── croire qu'une pile fabrique de l'énergie électrique nouvelle (R0) ───────
+  - id: PILES-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Toujours à propos de l'accroche : dans le tube à essai (contact
+      direct), la réaction $Zn + Cu^{2+} \rightarrow Zn^{2+} + Cu$ libère de
+      l'énergie sous forme de chaleur. Dans le montage en pile (réactifs
+      séparés), cette même réaction permet d'allumer une diode. Un élève en
+      déduit : « la pile fabrique de l'énergie électrique en plus de
+      l'énergie chimique de la réaction - c'est une source d'énergie
+      supplémentaire ». Que penser de cette déduction ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est fausse : la pile ne crée aucune énergie supplémentaire - elle capte et redirige, sous forme électrique exploitable, l'énergie déjà libérée par la même réaction chimique, plutôt que de la laisser se dissiper en chaleur."
+        correct: true
+      - id: B
+        text: "Elle est correcte : la pile ajoute de l'énergie électrique à l'énergie chimique déjà libérée par la réaction, ce qui explique qu'elle puisse alimenter un moteur alors que le tube à essai ne le peut pas.
+        L'énergie fournie au circuit dépasserait donc celle libérée par la réaction."
+        correct: false
+        misconception: mc.physics.pc_piles.pile-nature-mal-comprise
+        feedback: >
+          Aucune énergie n'est ajoutée : c'est la même quantité d'énergie,
+          libérée par la même réaction chimique, qui change simplement de
+          destination (électrique plutôt que thermique). Une pile ne
+          fabrique jamais d'énergie à partir de rien.
+      - id: C
+        text: "Elle est fausse, mais pas pour la bonne raison : séparer les réactifs rend la réaction plus intense, ce qui libère davantage d'énergie totale que par contact direct dans le tube à essai."
+        correct: false
+        misconception: mc.physics.pc_piles.pile-nature-mal-comprise
+        feedback: >
+          Chimiquement, c'est très exactement la même réaction (mêmes
+          réactifs, mêmes produits, même $K$) : elle libère la même
+          quantité totale d'énergie, que les réactifs soient séparés ou en
+          contact. Seul le chemin emprunté par cette énergie change, pas sa
+          quantité totale.
+      - id: D
+        text: "Elle est fausse, mais pas pour la bonne raison : la pile capte d'abord la chaleur dégagée par la réaction, puis la convertit en courant électrique, comme un petit moteur thermique."
+        correct: false
+        misconception: mc.physics.pc_piles.pile-nature-mal-comprise
+        feedback: >
+          Il n'y a pas de conversion en deux étapes en passant par la
+          chaleur : les électrons cédés par le zinc empruntent directement
+          le fil, sans jamais se dissiper localement en agitation
+          thermique - c'est justement ce détour direct, et non un passage
+          par la chaleur, qui rend l'énergie récupérable sous forme
+          électrique.
+    correct_feedback: >
+      La pile ne crée rien : elle redirige, vers un circuit exploitable,
+      l'énergie déjà libérée par la même réaction chimique qui, par contact
+      direct, se dissiperait en chaleur.
+    solution: |
+      La quantité totale d'énergie libérée par la réaction
+      $Zn + Cu^{2+} \rightarrow Zn^{2+} + Cu$ ne dépend que de la réaction
+      elle-même (mêmes réactifs, mêmes produits, même $K$), pas du montage
+      utilisé. Ce que change le montage en pile, c'est le chemin emprunté
+      par cette énergie : au lieu de se dissiper localement en chaleur
+      (contact direct), elle emprunte le fil sous forme de courant
+      électrique exploitable. Rien n'est créé, rien n'est ajouté -
+      seulement redirigé.
+
+  # ── croire que la réaction change de nature chimique dans une pile (R0) ─────
+  - id: PILES-9
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Toujours à propos de l'accroche : par contact direct, la réaction
+      s'écrit $Zn + Cu^{2+} \rightarrow Zn^{2+} + Cu$. Dans le montage en
+      pile, avec le zinc et les ions $Cu^{2+}$ séparés, un élève affirme :
+      « ce n'est plus la même réaction chimique : dans la pile, il doit
+      forcément se former d'autres produits, sinon comment expliquer qu'on
+      récupère de l'électricité au lieu de la chaleur ? » Que penser de
+      cette affirmation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est fausse : c'est chimiquement la même réaction, avec les mêmes réactifs ($Zn$, $Cu^{2+}$) et les mêmes produits ($Zn^{2+}$, $Cu$) - seul le trajet emprunté par les électrons cédés change."
+        correct: true
+      - id: B
+        text: "Elle est correcte : la présence d'un ampèremètre et d'un pont salin dans le montage transforme nécessairement la nature chimique de la réaction, qui produit alors des espèces différentes."
+        correct: false
+        misconception: mc.physics.pc_piles.pile-nature-mal-comprise
+        feedback: >
+          La présence d'un instrument de mesure ou d'un dispositif de
+          séparation ne change jamais la nature chimique d'une réaction :
+          les mêmes espèces réagissent, seulement organisées différemment
+          dans l'espace.
+      - id: C
+        text: "Elle est fausse, mais pas pour la bonne raison : il s'agit bien de la même réaction, mais son sens s'inverse dans le montage en pile (le cuivre s'oxyderait, le zinc se réduirait)."
+        correct: false
+        misconception: mc.physics.pc_piles.pile-nature-mal-comprise
+        feedback: >
+          Rien, dans le fait de séparer les réactifs, n'inverse le sens
+          d'évolution de la réaction : le sens reste déterminé par la
+          comparaison de $Q_{r,i}$ à $K$ (chapitre sur l'évolution
+          spontanée), pas par la façon dont le montage est organisé. Le
+          zinc s'oxyde toujours, que ce soit par contact direct ou dans une
+          pile.
+      - id: D
+        text: "Elle est fausse, mais pas pour la bonne raison : dans la pile, seule une partie du zinc réagit réellement, l'autre partie servant uniquement de conducteur électrique inerte."
+        correct: false
+        misconception: mc.physics.pc_piles.pile-nature-mal-comprise
+        feedback: >
+          Tout le zinc consommé au cours du fonctionnement de la pile est
+          réellement oxydé en $Zn^{2+}$ (on le quantifiera plus loin dans
+          la leçon, via $Q=I\Delta t$) : la lame de zinc ne joue pas un
+          double rôle de « réactif » et de « simple fil » - c'est
+          l'électrode où l'oxydation a lieu.
+    correct_feedback: >
+      Même réaction, mêmes réactifs, mêmes produits : seul le trajet
+      emprunté par les électrons change, ce qui redirige l'énergie vers le
+      courant plutôt que vers la chaleur.
+    solution: |
+      La séparation physique des réactifs ne change ni les réactifs, ni les
+      produits, ni le sens de la réaction (toujours fixé par $Q_{r,i}$ face
+      à $K$) : c'est très exactement la même transformation chimique. Ce
+      qui change, c'est uniquement le chemin emprunté par les électrons
+      cédés par le zinc - via le fil plutôt qu'au contact direct - ce qui
+      redirige l'énergie libérée vers un courant électrique exploitable.
+
+  # ── rôle du pont salin : croire qu'il transporte les électrons du circuit (R1) ──
+  - id: PILES-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Dans le montage de la pile Daniell, on relie le zinc et le cuivre par
+      un fil (avec un ampèremètre), mais on retire le pont salin qui
+      reliait les deux béchers. Que se passe-t-il ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le courant, d'abord mesurable, s'arrête presque aussitôt : sans pont salin, les charges positives s'accumulent côté zinc (excès de $Zn^{2+}$) et se raréfient côté cuivre (perte de $Cu^{2+}$), ce déséquilibre électrique s'opposant lui-même à la poursuite de la réaction."
+        correct: true
+      - id: B
+        text: "Le courant s'arrête immédiatement et totalement, car le pont salin est le trajet emprunté par les électrons, au même titre que le fil de connexion : sans lui le circuit électronique est rompu et plus aucune charge ne circule.
+        Des électrons circuleraient donc librement dans une solution ionique."
+        correct: false
+        misconception: mc.physics.pc_piles.role-constituants
+        feedback: >
+          Les électrons ne passent jamais par le pont salin : leur unique
+          trajet est le fil conducteur, qui reste intact ici. Ce que rompt
+          l'absence de pont salin, c'est l'équilibre des charges dans les
+          solutions, pas le passage des électrons dans le fil.
+      - id: C
+        text: "Rien ne change : le pont salin n'a aucun rôle sur le fonctionnement électrique de la pile, il ne sert qu'à relier visuellement les deux béchers l'un à l'autre sur la paillasse."
+        correct: false
+        misconception: mc.physics.pc_piles.role-constituants
+        feedback: >
+          Le pont salin a un rôle électrique essentiel : sans lui,
+          l'accumulation de charges positives côté zinc et leur
+          raréfaction côté cuivre s'opposent très vite à la réaction
+          elle-même, donc au courant. Ce n'est pas un simple lien visuel.
+      - id: D
+        text: "Le courant s'inverse de sens, car le déséquilibre de charges impose à la réaction de repartir dans le sens inverse ($Cu \\rightarrow Cu^{2+}+2e^-$ et $Zn^{2+}+2e^- \\rightarrow Zn$), et l'ampèremètre dévie de l'autre côté."
+        correct: false
+        misconception: mc.physics.pc_piles.role-constituants
+        feedback: >
+          Le déséquilibre de charges ne renverse pas le sens de la
+          réaction (celui-ci reste fixé par la comparaison de $Q_{r,i}$ à
+          $K$, vue au chapitre sur l'évolution spontanée) - il freine puis
+          bloque la réaction dans son sens direct, sans en imposer le sens
+          inverse.
+    correct_feedback: >
+      Sans pont salin, l'accumulation de charges positives d'un côté et
+      leur raréfaction de l'autre s'opposent très vite à la réaction : le
+      courant chute presque aussitôt à zéro.
+    solution: |
+      Le pont salin ne transporte pas les électrons (seul le fil le fait) :
+      il maintient l'électroneutralité de chaque solution. Sans lui, la
+      solution de zinc s'enrichit en charges positives ($Zn^{2+}$ produit)
+      tandis que celle de cuivre s'en appauvrit ($Cu^{2+}$ consommé) - ce
+      déséquilibre électrique freine puis bloque très vite la réaction
+      elle-même, donc le courant.
+
+  # ── définition de la demi-pile : croire que l'électrode solide est superflue (R1) ──
+  - id: PILES-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Un élève veut construire une demi-pile $Zn^{2+}/Zn$. Il verse une
+      solution de sulfate de zinc dans un bécher, mais n'y plonge aucune
+      lame de zinc métallique, pensant qu'une demi-pile n'a besoin que des
+      ions dissous du couple. Que penser de cette démarche ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est incomplète : une demi-pile associe toujours les deux formes du couple - ici, la forme oxydée $Zn^{2+}$ en solution ET la forme réduite $Zn$ sous forme d'électrode solide, qui échange les électrons avec le circuit extérieur."
+        correct: true
+      - id: B
+        text: "Elle est suffisante : seuls les ions dissous du couple comptent pour une demi-pile, l'électrode solide ne jouant qu'un rôle de support mécanique, sans la moindre importance électrique dans le montage.
+        N'importe quel métal conviendrait donc comme électrode."
+        correct: false
+        misconception: mc.physics.pc_piles.role-constituants
+        feedback: >
+          L'électrode solide n'est pas un simple support : c'est elle qui
+          échange réellement les électrons avec le circuit extérieur (elle
+          s'oxyde ou se réduit). Sans elle, aucun échange d'électrons n'est
+          possible avec le fil - la demi-pile ne peut pas fonctionner.
+      - id: C
+        text: "Elle est incomplète, mais il faudrait y plonger une lame de cuivre et non de zinc, pour que les électrons échangés avec le circuit extérieur soient bien ceux du cuivre métallique."
+        correct: false
+        misconception: mc.physics.pc_piles.role-constituants
+        feedback: >
+          Chaque demi-pile est associée à un seul couple oxydant/réducteur
+          : l'électrode doit être la forme réduite de CE couple, donc du
+          zinc métallique pour la demi-pile $Zn^{2+}/Zn$ - pas du cuivre,
+          qui appartient à l'autre couple, dans l'autre demi-pile.
+      - id: D
+        text: "Elle est incomplète, il faudrait plonger à la fois une lame de zinc ET une lame de cuivre dans ce même bécher pour obtenir une demi-pile complète."
+        correct: false
+        misconception: mc.physics.pc_piles.role-constituants
+        feedback: >
+          Une demi-pile ne contient qu'un seul couple oxydant/réducteur,
+          donc une seule électrode (ici, le zinc). Réunir deux métaux
+          différents dans un même bécher reviendrait à mélanger les deux
+          demi-piles - ce n'est plus le montage à détour forcé étudié dans
+          cette leçon.
+    correct_feedback: >
+      Une demi-pile associe toujours les deux formes du même couple : les
+      ions $Zn^{2+}$ en solution ET l'électrode de zinc métallique, seule
+      capable d'échanger des électrons avec le circuit extérieur.
+    solution: |
+      Une demi-pile n'est pas réduite à la solution : elle associe la
+      solution contenant la forme oxydée du couple (ici $Zn^{2+}$) et une
+      électrode constituée de la forme réduite (ici le zinc métallique).
+      C'est l'électrode, et elle seule, qui peut céder ou capter des
+      électrons vers le fil du circuit extérieur - sans elle, aucun échange
+      électronique n'est possible.
+
+  # ── construction du montage : inverser l'électrode et sa propre solution (R1) ──
+  - id: PILES-12
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Pour construire la pile Daniell, un élève place la lame de zinc dans
+      le bécher contenant la solution de sulfate de CUIVRE, et la lame de
+      cuivre dans le bécher contenant la solution de sulfate de ZINC, en
+      pensant que « c'est là que la réaction
+      $Zn + Cu^{2+} \rightarrow Zn^{2+}+Cu$ doit se produire, puisque le
+      zinc doit rencontrer les ions $Cu^{2+}$ ». Que penser de ce montage ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il est incorrect : chaque électrode doit plonger dans la solution contenant sa propre espèce dissoute (le zinc dans une solution de $Zn^{2+}$, le cuivre dans une solution de $Cu^{2+}$) - c'est cette séparation qui force les électrons à passer par le fil."
+        correct: true
+      - id: B
+        text: "Il est correct : puisque la réaction nécessite que le zinc rencontre les ions $Cu^{2+}$, il faut bien plonger le zinc directement dans la solution qui les contient."
+        correct: false
+        misconception: mc.physics.pc_piles.role-constituants
+        feedback: >
+          C'est exactement ce qu'on cherche à éviter : plonger le zinc
+          directement dans une solution contenant des ions $Cu^{2+}$
+          recrée un contact direct, où les électrons sautent localement
+          d'une espèce à l'autre - on retrouve le tube à essai de
+          l'accroche, pas une pile qui force un détour par le fil.
+      - id: C
+        text: "Peu importe l'agencement : le courant mesuré serait rigoureusement le même dans les deux configurations, seule l'esthétique du montage change."
+        correct: false
+        misconception: mc.physics.pc_piles.role-constituants
+        feedback: >
+          L'agencement n'est pas indifférent : plonger une électrode dans
+          la mauvaise solution recrée un contact direct entre réactifs
+          (ici, le zinc et les ions $Cu^{2+}$), ce qui court-circuite le
+          détour par le fil et empêche tout courant mesurable exploitable.
+      - id: D
+        text: "Le montage est incorrect, mais uniquement parce que le pont salin doit être orienté dans un sens précis pour compenser cette inversion - une fois le pont salin correctement orienté, tout fonctionne alors normalement.
+        Retourner le pont salin inverserait donc la polarité de la pile."
+        correct: false
+        misconception: mc.physics.pc_piles.role-constituants
+        feedback: >
+          Le pont salin ne peut pas compenser une inversion
+          électrode/solution : son rôle se limite à maintenir
+          l'électroneutralité de chaque solution en cours de
+          fonctionnement, pas à réparer un contact direct entre réactifs
+          créé par une mauvaise disposition initiale.
+    correct_feedback: >
+      Chaque électrode doit rester dans la solution contenant sa PROPRE
+      espèce dissoute : c'est cette séparation, électrode par couple, qui
+      force les électrons à emprunter le fil plutôt que le contact direct.
+    solution: |
+      Le principe du chapitre 2 est de séparer physiquement les deux espèces
+      qui échangent des électrons, chacune dans sa propre demi-pile (couple
+      + électrode). Plonger le zinc dans la solution de $Cu^{2+}$ recrée
+      exactement le contact direct de l'accroche : les électrons sautent
+      localement, sans passer par le fil. Le bon montage place le zinc
+      dans une solution de $Zn^{2+}$ et le cuivre dans une solution de
+      $Cu^{2+}$, chacun dans son propre bécher.
+
+  # ── exclure les solides de Qr : intégrer la masse des électrodes (R2) ───────
+  - id: PILES-13
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Pour la pile Daniell ($Zn + Cu^{2+} \rightarrow Zn^{2+} + Cu$), un
+      élève écrit le quotient de réaction en y intégrant les deux
+      électrodes métalliques : $Q_{r,i} = \dfrac{[Zn^{2+}]_i \times
+      m_{Zn}}{[Cu^{2+}]_i \times m_{Cu}}$, avec $m_{Zn}$ et $m_{Cu}$ les
+      masses des deux lames. Que penser de cette expression ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est fausse : le zinc et le cuivre métalliques sont des solides purs, qui n'entrent jamais dans l'expression de $Q_r$ - l'expression correcte, pour prédire quelle électrode va céder ses électrons, est $Q_{r,i} = [Zn^{2+}]_i / [Cu^{2+}]_i$, sans les masses des lames."
+        correct: true
+      - id: B
+        text: "Elle est correcte : la masse de chaque électrode influence directement le sens dans lequel la pile va évoluer, une lame plus massive « poussant » davantage la réaction dans son propre sens, comme le ferait une concentration plus élevée.
+        Doubler l'épaisseur d'une lame changerait donc le sens d'évolution."
+        correct: false
+        misconception: mc.physics.pc_piles.expression-quotient-reaction
+        feedback: >
+          La masse des électrodes solides n'entre jamais dans $Q_r$ ni
+          dans le critère de spontanéité : seules les concentrations des
+          espèces dissoutes ($Zn^{2+}$, $Cu^{2+}$) comptent. Une lame plus
+          massive dure simplement plus longtemps avant de s'épuiser (chapitre
+            7), elle n'influence pas le sens de la réaction.
+      - id: C
+        text: "Elle est fausse, mais uniquement dans l'ordre : il faudrait écrire $Q_{r,i} = \\dfrac{m_{Cu}\\times[Cu^{2+}]_i}{m_{Zn}\\times[Zn^{2+}]_i}$, en plaçant les produits au numérateur."
+        correct: false
+        misconception: mc.physics.pc_piles.expression-quotient-reaction
+        feedback: >
+          Peu importe l'ordre : les masses des solides purs ($Zn$, $Cu$)
+          n'ont pas leur place dans $Q_r$, quelle que soit la façon de les
+          combiner aux concentrations.
+      - id: D
+        text: "Elle est fausse, il manque aussi les volumes des deux solutions dans l'expression, en plus des masses des lames métalliques plongées dans chacun des béchers."
+        correct: false
+        misconception: mc.physics.pc_piles.expression-quotient-reaction
+        feedback: >
+          $Q_r$ se construit uniquement à partir des concentrations
+          molaires des espèces dissoutes, qui intègrent déjà implicitement
+          les volumes des solutions : il n'y a ni volume séparé, ni masse
+          de solide à ajouter dans son expression.
+    correct_feedback: >
+      Un solide pur (ici, le zinc et le cuivre métalliques) n'entre jamais
+      dans $Q_r$ : seules les concentrations des espèces dissoutes
+      comptent.
+    solution: |
+      Règle vue au chapitre sur l'évolution spontanée, appliquée ici à la
+      pile : un solide pur n'entre jamais dans l'expression de $Q_r$.
+      Seules les espèces dissoutes, $Zn^{2+}$ et $Cu^{2+}$, y figurent :
+      $Q_{r,i} = [Zn^{2+}]_i / [Cu^{2+}]_i$. Les masses des électrodes
+      n'ont aucun rôle dans le sens de la réaction ; elles déterminent
+      seulement combien de temps la pile pourra fonctionner (chapitre 7).
+
+  # ── comparer Qr,i à K : juger « grand »/« petit » sans comparer à K (R2) ────
+  - id: PILES-14
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      On construit une pile avec, initialement, $[Zn^{2+}]_i = 2{,}0\
+      \text{mol/L}$ (très concentrée) et $[Cu^{2+}]_i = 1{,}0\times10^{-5}\
+      \text{mol/L}$ (trace). On donne $K \approx 1{,}8\times10^{37}$ pour
+      la réaction $Zn + Cu^{2+} \rightleftharpoons Zn^{2+} + Cu$. Quelle
+      électrode s'oxyde dans ce cas précis ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$Q_{r,i} = [Zn^{2+}]_i/[Cu^{2+}]_i = 2{,}0\\times10^{5} \\ll K$ : le système évolue quand même dans le sens direct, le zinc s'oxyde toujours - même avec ces concentrations extrêmes, l'écart à $K$ reste énorme (32 ordres de grandeur)."
+        correct: true
+      - id: B
+        text: "Puisque $[Zn^{2+}]_i$ est très supérieure à $[Cu^{2+}]_i$, c'est le cuivre qui s'oxyde ici : il y a déjà « trop » de $Zn^{2+}$ dans le mélange pour que le zinc puisse continuer à s'oxyder.
+        Le sens d'évolution se lirait donc sur la seule concentration la plus forte."
+        correct: false
+        misconception: mc.physics.pc_piles.expression-quotient-reaction
+        feedback: >
+          Ce n'est pas la comparaison entre les deux concentrations
+          elles-mêmes qui tranche, mais la comparaison de leur RAPPORT
+          $Q_{r,i}$ à $K$. Ici $Q_{r,i} = 2{,}0\times10^5$ reste des
+          dizaines d'ordres de grandeur plus petit que
+          $K \approx 1{,}8\times10^{37}$ : malgré une concentration
+          élevée en $Zn^{2+}$, le système évolue toujours dans le sens
+          direct.
+      - id: C
+        text: "$Q_{r,i} = 2{,}0\\times10^{5}$ est une valeur très grande, donc $Q_{r,i} > K$ : le système évolue dans le sens inverse, c'est le cuivre qui s'oxyde."
+        correct: false
+        misconception: mc.physics.pc_piles.expression-quotient-reaction
+        feedback: >
+          $2{,}0\times10^{5}$ n'est « grand » qu'en apparence : comparé à
+          $K \approx 1{,}8\times10^{37}$, il lui reste 32 ordres de
+          grandeur d'écart, donc $Q_{r,i}$ est en réalité bien plus PETIT
+          que $K$. Juger « grand » ou « petit » dans l'absolu, sans
+          comparer effectivement à $K$, mène droit à l'erreur.
+      - id: D
+        text: "Le système est déjà à l'équilibre, puisque les deux espèces $Zn^{2+}$ et $Cu^{2+}$ sont présentes simultanément dans les deux demi-piles."
+        correct: false
+        misconception: mc.physics.pc_piles.qr-evolution-equilibre
+        feedback: >
+          La simple présence des deux espèces ne signifie pas l'équilibre
+          : l'équilibre correspond précisément à $Q_{r,i}=K$, une égalité
+          numérique précise, pas à la coexistence des espèces. Ici
+          $Q_{r,i}=2{,}0\times10^5$ est très loin de
+          $K\approx1{,}8\times10^{37}$ : le système est loin de
+          l'équilibre.
+    correct_feedback: >
+      Même avec un excès de $Zn^{2+}$, $Q_{r,i}$ reste écrasé par un $K$
+      encore bien plus grand : le sens direct l'emporte, le zinc s'oxyde
+      toujours.
+    solution: |
+      $$
+      Q_{r,i} = \frac{[Zn^{2+}]_i}{[Cu^{2+}]_i} =
+      \frac{2{,}0}{1{,}0\times10^{-5}} = 2{,}0\times10^{5}
+      $$
+      Comparé à $K \approx 1{,}8\times10^{37}$, cette valeur reste encore
+      32 ordres de grandeur plus petite : $Q_{r,i} \ll K$, donc le système
+      évolue dans le sens direct, quelle que soit l'impression donnée par
+      la valeur « élevée » en apparence de $[Zn^{2+}]_i$. Le zinc s'oxyde,
+      les ions $Cu^{2+}$ se réduisent.
+
+  # ── construire Qr : inverser produit et réactif au numérateur/dénominateur (R2) ──
+  - id: PILES-15
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Pour prédire quelle électrode s'oxyde dans une pile Daniell avec
+      $[Zn^{2+}]_i = 1{,}0\times10^{-3}\ \text{mol/L}$ et $[Cu^{2+}]_i =
+      2{,}0\times10^{-1}\ \text{mol/L}$ ($K\approx1{,}8\times10^{37}$), un
+      élève calcule $Q_{r,i} = [Cu^{2+}]_i/[Zn^{2+}]_i = 200$, puis
+      conclut : « $Q_{r,i}=200 \ll K$, donc le zinc s'oxyde ». Que penser
+      de ce raisonnement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il contient une erreur d'expression qui, ici, ne change pas la conclusion : $Q_r$ vaut $[Zn^{2+}]/[Cu^{2+}]$ (produit sur réactif), pas l'inverse - avec la bonne expression, $Q_{r,i}=5{,}0\\times10^{-3} \\ll K$, donc le zinc s'oxyde bien."
+        correct: true
+      - id: B
+        text: "Il est parfaitement correct : peu importe que $Q_r$ soit écrit $[Zn^{2+}]/[Cu^{2+}]$ ou son inverse, tant qu'on le compare à la même valeur de $K$, la conclusion tirée reste valable dans tous les cas.
+        Inverser numérateur et dénominateur ne changerait donc pas la conclusion."
+        correct: false
+        misconception: mc.physics.pc_piles.expression-quotient-reaction
+        feedback: >
+          $Q_r$ a une définition fixe : produits (ici $Zn^{2+}$) au
+          numérateur, réactifs (ici $Cu^{2+}$) au dénominateur, d'après
+          l'équation telle qu'elle est écrite. Inverser change la valeur
+          numérique de $Q_r$ (ici $200$ contre $5{,}0\times10^{-3}$) : la
+          comparaison à $K$ n'est valable qu'avec la bonne expression,
+          même si dans ce cas précis les deux versions mènent par
+          coïncidence à la même conclusion, à cause de l'écart énorme
+          entre $Q_r$ et $K$ dans les deux cas.
+      - id: C
+        text: "Il est faux, et avec la bonne expression, la conclusion s'inverse : c'est en réalité le cuivre qui s'oxyderait."
+        correct: false
+        misconception: mc.physics.pc_piles.expression-quotient-reaction
+        feedback: >
+          Avec l'expression correcte,
+          $Q_{r,i}=[Zn^{2+}]_i/[Cu^{2+}]_i=5{,}0\times10^{-3}$, qui reste
+          très inférieur à $K\approx1{,}8\times10^{37}$ : le sens reste
+          direct, le zinc s'oxyde bien. L'erreur d'expression, ici, ne
+          change donc pas la conclusion finale (à cause de l'écart énorme
+          à $K$), mais le raisonnement intermédiaire restait faux.
+      - id: D
+        text: "Il est faux, mais uniquement parce que les concentrations n'ont pas été converties dans la bonne unité avant le calcul."
+        correct: false
+        misconception: mc.physics.pc_piles.expression-quotient-reaction
+        feedback: >
+          Les concentrations sont bien données en mol/L, l'unité attendue
+          - il n'y a pas d'erreur d'unité ici. L'erreur porte sur
+          l'expression même de $Q_r$ : les produits ($Zn^{2+}$) doivent
+          être au numérateur, les réactifs ($Cu^{2+}$) au dénominateur,
+          pas l'inverse.
+    correct_feedback: >
+      L'expression utilisée est inversée (réactif au numérateur, produit
+      au dénominateur) : la bonne expression donne
+      $Q_{r,i}=5{,}0\times10^{-3}$, toujours très inférieur à $K$ - la
+      conclusion finale reste juste par coïncidence, pas le raisonnement.
+    solution: |
+      $Q_r$ se construit toujours produits au numérateur, réactifs au
+      dénominateur : ici, $Q_{r,i} = [Zn^{2+}]_i/[Cu^{2+}]_i =
+      \frac{1{,}0\times10^{-3}}{2{,}0\times10^{-1}} = 5{,}0\times10^{-3}$,
+      pas $[Cu^{2+}]_i/[Zn^{2+}]_i = 200$ comme calculé par l'élève. Les
+      deux valeurs restent, par un pur hasard lié à l'écart énorme entre
+      $Q_r$ et $K$ pour cette réaction, très inférieures à
+      $K\approx1{,}8\times10^{37}$ : la conclusion qualitative (sens
+      direct, zinc oxydé) reste donc juste, mais uniquement par
+      coïncidence - l'expression de $Q_r$ utilisée par l'élève était bien
+      fausse.
+
+  # ── confondre anode/cathode et borne +/- (variant 2, piège « réduction=négatif ») ──
+  - id: PILES-16
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      On construit une pile avec les couples $Ag^+/Ag$ et $Fe^{2+}/Fe$.
+      Sachant que, pour cette pile, l'électrode d'argent est le siège de la
+      réduction ($Ag^+ + e^- \rightleftharpoons Ag$) et l'électrode de fer
+      le siège de l'oxydation ($Fe \rightleftharpoons Fe^{2+}+2e^-$),
+      quelle est la polarité de l'électrode de fer ?
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est l'anode, borne -, siège de l'oxydation du fer : c'est là que les électrons sont produits."
+        correct: true
+      - id: B
+        text: "C'est l'anode, borne +, car l'oxydation, contrairement à la réduction, serait associée à une électrode positive."
+        correct: false
+        misconception: mc.physics.pc_piles.anode-cathode-polarite
+        feedback: >
+          C'est l'inverse. L'oxydation LIBÈRE des électrons dans le métal
+          - ils s'y accumulent, ce qui rend l'électrode relativement plus
+          négative, pas plus positive. L'impression que « oxydation »
+          sonne plus « actif » donc « positif » ne reflète pas le
+          mécanisme réel des électrons.
+      - id: C
+        text: "C'est la cathode, borne -, car le terme « cathode » évoquerait, par sa sonorité, le siège où les électrons sont produits en excès."
+        correct: false
+        misconception: mc.physics.pc_piles.anode-cathode-polarite
+        feedback: >
+          C'est l'électrode de fer, siège de l'OXYDATION, qui s'appelle
+          l'anode - la cathode désigne toujours le siège de la réduction
+          (ici, l'argent). Se fier à la sonorité des mots plutôt qu'à leur
+          définition (anode = oxydation, cathode = réduction) mène à
+          l'erreur.
+      - id: D
+        text: "C'est la cathode, borne +, comme pour n'importe quelle électrode où un métal solide est présent."
+        correct: false
+        misconception: mc.physics.pc_piles.anode-cathode-polarite
+        feedback: >
+          La présence d'un métal solide ne suffit pas à nommer l'électrode
+          : les deux électrodes de cette pile (argent et fer) sont des
+          métaux solides, et pourtant l'une est l'anode, l'autre la
+          cathode - c'est le mécanisme (oxydation ou réduction) qui
+          décide, pas la simple présence d'un solide.
+    correct_feedback: >
+      Le fer s'oxyde : c'est l'anode. Les électrons qu'il libère s'y
+      accumulent, la rendant relativement négative - c'est la borne -.
+    solution: |
+      L'électrode où se produit l'oxydation s'appelle toujours l'anode,
+      quel que soit le métal en jeu. L'oxydation libère des électrons dans
+      le métal : ils s'y accumulent, rendant cette électrode relativement
+      plus négative que l'autre - c'est la borne -. Ici, le fer s'oxyde :
+      il est donc l'anode, borne -, tandis que l'argent, siège de la
+      réduction, est la cathode, borne +.
+
+  # ── sens des électrons vs sens du courant (variant 2, chaîne anode→électrons→courant) ──
+  - id: PILES-17
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Dans une pile constituée des couples $Ni^{2+}/Ni$ et $Ag^+/Ag$,
+      l'électrode de nickel est le siège de l'oxydation
+      ($Ni \rightleftharpoons Ni^{2+}+2e^-$). Dans le circuit extérieur,
+      quel est le sens du courant électrique conventionnel ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le nickel, siège de l'oxydation, est l'anode (borne -) ; les électrons y sont produits et circulent, dans le circuit extérieur, du nickel vers l'argent (de - vers +) ; le courant conventionnel, en sens inverse, circule donc de l'argent vers le nickel (de + vers -)."
+        correct: true
+      - id: B
+        text: "Le nickel est l'anode, borne - ; les électrons vont du nickel vers l'argent ; le courant suit donc le même trajet, du nickel vers l'argent."
+        correct: false
+        misconception: mc.physics.pc_piles.courant-sens-electrons
+        feedback: >
+          Les deux premières déductions sont justes (nickel = anode = -,
+          électrons de - vers +), mais la dernière étape inverse la règle
+          : le courant conventionnel circule toujours en sens inverse des
+          électrons, donc de l'argent vers le nickel, pas dans le même
+          sens.
+      - id: C
+        text: "Le nickel, siège de l'oxydation, est la cathode, donc la borne + de la pile ; les électrons vont par conséquent de l'argent vers le nickel dans le circuit extérieur, et le courant conventionnel va du nickel vers l'argent.
+        L'électrode où se produit l'oxydation serait donc la borne positive."
+        correct: false
+        misconception: mc.physics.pc_piles.anode-cathode-polarite
+        feedback: >
+          L'électrode où se produit l'oxydation s'appelle l'anode, pas la
+          cathode - c'est la cathode qui est le siège de la réduction.
+          Cette confusion de départ (nickel = anode, pas cathode) inverse
+          toute la suite du raisonnement.
+      - id: D
+        text: "Le nickel est bien l'anode, borne -, et les électrons vont du nickel vers l'argent - mais le courant conventionnel n'a pas de sens propre dans le circuit extérieur, il dépend de l'appareil de mesure utilisé."
+        correct: false
+        misconception: mc.physics.pc_piles.courant-sens-electrons
+        feedback: >
+          Le courant conventionnel a un sens parfaitement défini, fixé par
+          la convention historique (sens inverse du déplacement des
+          électrons, porteurs négatifs) : il ne dépend d'aucun appareil de
+          mesure. Ici, il circule de l'argent vers le nickel, de + vers -.
+    correct_feedback: >
+      Nickel = anode (-), électrons de - vers +, courant conventionnel en
+      sens inverse : de + (argent) vers - (nickel).
+    solution: |
+      Le nickel s'oxyde : c'est l'anode, borne -. Les électrons qu'il
+      libère circulent, dans le circuit extérieur, du nickel vers l'argent
+      (de - vers +). Le courant conventionnel, toujours défini en sens
+      inverse du déplacement réel des électrons, circule donc de l'argent
+      vers le nickel (de + vers -).
+
+  # ── formule de la f.é.m. : inverser cathode et anode dans E = V+ - V- (R5) ──
+  - id: PILES-18
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Pour une pile Daniell en fonctionnement normal (zinc = anode, cuivre
+      = cathode), un élève écrit la f.é.m. ainsi : $E = V_{Zn} - V_{Cu}$
+      (potentiel de l'anode moins potentiel de la cathode). Que penser de
+      cette expression, et de son signe ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est fausse : la f.é.m. se définit comme $E = V_{\\text{cathode}} - V_{\\text{anode}}$, soit ici $V_{Cu}-V_{Zn}$ (la borne + moins la borne -), et non l'inverse ; l'expression de l'élève donnerait une valeur négative."
+        correct: true
+      - id: B
+        text: "Elle est correcte, et il est tout à fait normal qu'une pile en fonctionnement affiche une f.é.m. négative."
+        correct: false
+        misconception: mc.physics.pc_piles.fem-mal-comprise
+        feedback: >
+          Une pile qui fonctionne normalement (zinc anode/-, cuivre
+          cathode/+) affiche toujours une f.é.m. positive, par définition
+          $E=V_{\text{cathode}}-V_{\text{anode}}=V_+-V_-$. Une valeur
+          négative signalerait une inversion (mauvais branchement du
+          voltmètre, ou électrodes échangées), pas un fonctionnement
+          normal.
+      - id: C
+        text: "L'ordre de soustraction n'a pas d'importance : $V_{Zn}-V_{Cu}$ et $V_{Cu}-V_{Zn}$ donnent nécessairement la même valeur positive pour une pile en fonctionnement."
+        correct: false
+        misconception: mc.physics.pc_piles.fem-mal-comprise
+        feedback: >
+          L'ordre de soustraction change le signe du résultat, comme pour
+          toute différence : $V_{Zn}-V_{Cu}$ et $V_{Cu}-V_{Zn}$ sont
+          opposés l'un de l'autre, pas égaux. Seul
+          $V_{\text{cathode}}-V_{\text{anode}}$ (ici $V_{Cu}-V_{Zn}$)
+          donne la f.é.m. positive attendue pour une pile qui fonctionne
+          normalement.
+      - id: D
+        text: "Elle est correcte, car l'anode, siège de l'oxydation, est toujours l'électrode de potentiel le plus élevé, donc $V_{\\text{anode}}$ doit apparaître en premier dans la soustraction, avant celui de la cathode."
+        correct: false
+        misconception: mc.physics.pc_piles.anode-cathode-polarite
+        feedback: >
+          C'est l'inverse : l'anode, où les électrons s'accumulent
+          (oxydation), est l'électrode de potentiel le plus bas (borne -),
+          pas le plus élevé. C'est la cathode qui a le potentiel le plus
+          élevé - c'est donc elle qui doit apparaître en premier dans
+          $E=V_{\text{cathode}}-V_{\text{anode}}$.
+    correct_feedback: >
+      La f.é.m. se définit toujours borne + moins borne -, soit ici
+      $V_{Cu}-V_{Zn}$ : l'expression de l'élève, inversée, donnerait une
+      valeur négative, incompatible avec le fonctionnement normal de la
+      pile.
+    solution: |
+      Par définition, $E = V_{\text{cathode}} - V_{\text{anode}} = V_+ -
+      V_-$. Pour la pile Daniell, le cuivre est la cathode (+) et le zinc
+      l'anode (-) : $E = V_{Cu} - V_{Zn}$, une valeur positive.
+      L'expression de l'élève, $V_{Zn}-V_{Cu}$, est l'opposée de la bonne
+      : elle donnerait une valeur négative, ce qui ne correspond pas à une
+      pile en fonctionnement normal.
+
+  # ── confondre f.é.m. à vide et tension en charge (R5) ───────────────────────
+  - id: PILES-19
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      On branche un voltmètre directement entre les deux bornes d'une pile
+      Daniell, sans rien connecter d'autre : il affiche $1{,}1\ \text{V}$.
+      On retire le voltmètre et on branche à la place une lampe qui
+      consomme un courant important : la tension à ses bornes affiche
+      alors $0{,}9\ \text{V}$, une valeur plus faible. Un élève en
+      conclut : « la f.é.m. de la pile a changé, elle vaut maintenant
+      $0{,}9\ \text{V}$ ». Que penser de cette conclusion ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est fausse : la f.é.m. $E$ se définit comme la tension mesurée à courant quasiment nul (à vide, avec le voltmètre) - elle vaut donc $1{,}1$ V. Les $0{,}9$ V lus avec la lampe sont une tension en charge."
+        correct: true
+      - id: B
+        text: "Elle est correcte : la f.é.m. est simplement la tension mesurée aux bornes de la pile, quel que soit l'appareil branché - elle vaut donc $0{,}9$ V dès qu'une lampe est connectée.
+        La tension ne baisserait donc jamais quand un courant est débité."
+        correct: false
+        misconception: mc.physics.pc_piles.fem-mal-comprise
+        feedback: >
+          La f.é.m. a une définition précise : c'est la tension mesurée à
+          courant quasiment nul (voltmètre seul, à vide), pas la tension
+          mesurée n'importe quand. Une fois qu'un récepteur consommant du
+          courant est branché, la tension mesurée chute en dessous de $E$
+          - ce n'est plus la f.é.m., même si elle reste une tension bien
+          réelle.
+      - id: C
+        text: "Les deux valeurs mesurent la même grandeur $E$ ; l'écart entre $1{,}1$ V et $0{,}9$ V s'explique uniquement par l'imprécision des appareils de mesure utilisés."
+        correct: false
+        misconception: mc.physics.pc_piles.fem-mal-comprise
+        feedback: >
+          L'écart n'est pas une simple imprécision de mesure : il traduit
+          un phénomène physique réel, le fait qu'un courant important
+          circule dans le second cas (à travers la lampe), ce qui fait
+          chuter la tension disponible en dessous de la f.é.m. $E=1{,}1$
+          V, mesurée elle à courant quasiment nul.
+      - id: D
+        text: "L'écart montre que la pile s'est usée entre les deux mesures : sa f.é.m. réelle a diminué de $1{,}1$ V à $0{,}9$ V à cause de la consommation du zinc."
+        correct: false
+        misconception: mc.physics.pc_piles.fem-mal-comprise
+        feedback: >
+          Ce n'est pas l'usure de la pile (qui se manifeste sur une durée
+          bien plus longue, via la consommation progressive du réactif)
+          qui explique cet écart immédiat : c'est la différence entre une
+          mesure à courant quasiment nul (voltmètre seul, $E=1{,}1$ V) et
+          une mesure en charge, avec un courant important qui traverse la
+          lampe (tension plus faible que $E$).
+    correct_feedback: >
+      La f.é.m. se mesure à courant quasiment nul (à vide) : elle reste
+      $1{,}1$ V. La valeur mesurée en charge, avec la lampe, est une
+      tension plus faible, pas la f.é.m. elle-même.
+    solution: |
+      La définition de la f.é.m. (chapitre 6) est précise : c'est la tension
+      mesurée à courant quasiment nul, typiquement avec un voltmètre seul
+      branché aux bornes. Ici, $E=1{,}1$ V reste la f.é.m. de la pile. La
+      valeur $0{,}9$ V, mesurée avec une lampe qui consomme un courant
+      important, est une tension EN CHARGE - toujours plus faible que $E$
+      dès qu'un courant non négligeable circule - mais ce n'est pas la
+      f.é.m., et ce n'est pas non plus le signe d'une usure de la pile à
+      cet instant précis.
+
+  # ── croire que la f.é.m. est une constante universelle pour toute pile (R5) ──
+  - id: PILES-20
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Un élève affirme : « toute pile a une f.é.m. de $1{,}1\ \text{V}$,
+      puisque c'est la valeur qu'on trouve pour la pile Daniell ». Que
+      penser de cette affirmation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est fausse : $1{,}1$ V est la f.é.m. typique de la pile Daniell précisément, dans les conditions usuelles de concentration - une pile bâtie sur d'autres couples, ou à d'autres concentrations, aura une f.é.m. différente."
+        correct: true
+      - id: B
+        text: "Elle est correcte : la f.é.m. d'une pile est une constante physique universelle, comme la constante de Faraday, qui ne dépend ni des couples utilisés ni des concentrations mises en jeu.
+        Toutes les piles auraient donc la même f.é.m., quels que soient leurs couples."
+        correct: false
+        misconception: mc.physics.pc_piles.fem-mal-comprise
+        feedback: >
+          La f.é.m. n'est en rien une constante universelle : elle dépend
+          directement des couples oxydant/réducteur utilisés (chaque pile
+          a sa propre réaction, donc son propre $K$) et des concentrations
+          initiales (via l'écart entre $Q_{r,i}$ et $K$). $1{,}1$ V est
+          une valeur particulière à la pile Daniell dans des conditions
+          usuelles, pas une constante générale.
+      - id: C
+        text: "Elle est fausse, mais seulement parce que la f.é.m. dépend de la taille des électrodes utilisées, pas de la nature des couples oxydant/réducteur."
+        correct: false
+        misconception: mc.physics.pc_piles.fem-mal-comprise
+        feedback: >
+          La taille des électrodes (leur masse, leur surface) n'influence
+          pas la f.é.m. - elle joue seulement sur la durée de vie de la
+          pile (chapitre 7). C'est la nature des couples oxydant/réducteur, et
+          les concentrations initiales, qui déterminent la f.é.m., pas la
+          géométrie des électrodes.
+      - id: D
+        text: "Elle est fausse, mais uniquement parce que la f.é.m. ne dépend que de la température, identique pour toute pile à une température donnée."
+        correct: false
+        misconception: mc.physics.pc_piles.fem-mal-comprise
+        feedback: >
+          La température influence bien $K$, donc indirectement la
+          f.é.m., mais elle n'est pas le seul facteur : deux piles à la
+          même température, utilisant des couples différents (donc des
+          $K$ différents) ou des concentrations initiales différentes,
+          auront en général des f.é.m. différentes.
+    correct_feedback: >
+      $1{,}1$ V n'est pas universel : c'est la valeur typique de LA pile
+      Daniell, dans des conditions usuelles - une autre pile, avec
+      d'autres couples ou d'autres concentrations, a en général une f.é.m.
+      différente.
+    solution: |
+      La f.é.m. traduit électriquement l'écart entre $Q_{r,i}$ et $K$
+      (chapitre 6) : elle dépend donc directement de la réaction (donc des
+      couples oxydant/réducteur utilisés, donc de $K$) et des
+      concentrations initiales (donc de $Q_{r,i}$). $1{,}1$ V n'est que la
+      valeur typique obtenue pour la pile Daniell précisément, dans des
+      conditions usuelles de concentration - rien ne garantit cette valeur
+      pour une pile différente.
+
+  # ── croire que la pile ne s'use pas (variant 2, calcul du dépôt cathodique) ──
+  - id: PILES-21
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Une pile Daniell débite un courant constant $I = 250\ \text{mA}$
+      pendant $\Delta t = 45\ \text{min}$. On donne $F\approx9{,}65\times
+      10^4\ \text{C/mol}$ et $M(Cu)=63{,}5\ \text{g/mol}$. Un élève calcule
+      la masse de cuivre déposée à la cathode ainsi : $m(Cu) =
+      I\times\Delta t\times M(Cu) = 0{,}250\times2700\times63{,}5\approx
+      4{,}3\times10^{4}\ \text{g}$. Que penser de ce calcul, et quelle est
+      la masse correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le calcul est faux : il saute les étapes $Q=I\\Delta t$, $n(e^-)=Q/F$ et $n(Cu)=n(e^-)/2$ - la masse réellement déposée est d'environ $0{,}22$ g, et non $4{,}3\\times10^4$ g."
+        correct: true
+      - id: B
+        text: "Le calcul est correct : multiplier directement $I$, $\\Delta t$ et $M(Cu)$ donne bien la masse de cuivre déposée sur l'électrode, sans qu'aucune étape intermédiaire soit nécessaire."
+        correct: false
+        misconception: mc.physics.pc_piles.calcul-quantite-electricite
+        feedback: >
+          Cette formule oublie deux étapes essentielles : convertir la
+          charge $Q=I\Delta t$ en quantité de matière d'électrons via
+          $n(e^-)=Q/F$ (diviser par la constante de Faraday), puis en
+          quantité de matière de cuivre via la stœchiométrie de la
+          demi-équation ($n(Cu)=n(e^-)/2$). Sans ces étapes, le résultat
+          obtenu ($4{,}3\times10^4$ g, soit 43 kg de cuivre) est
+          physiquement absurde pour une pile de laboratoire.
+      - id: C
+        text: "Il manque une seule étape : $n(Cu) = n(e^-) = Q/F \\approx 7{,}0\\times10^{-3}$ mol, chaque ion $Cu^{2+}$ captant un électron, donc $m(Cu)\\approx0{,}44$ g."
+        correct: false
+        misconception: mc.physics.pc_piles.calcul-quantite-electricite
+        feedback: >
+          Chaque ion $Cu^{2+}$ réduit capte 2 électrons (demi-équation
+          $Cu^{2+}+2\,e^-\rightleftharpoons Cu$) : il faut donc diviser
+          $n(e^-)$ par 2 pour obtenir $n(Cu)$, pas les assimiler
+          directement. La masse correcte est environ $0{,}22$ g, pas
+          $0{,}44$ g.
+      - id: D
+        text: "Correctement calculée avec les bonnes étapes, la masse de cuivre déposée est d'environ $0{,}23$ g, obtenue en utilisant $M(Zn)=65{,}4$ g/mol à la place de $M(Cu)$, les deux métaux ayant des masses molaires presque égales."
+        correct: false
+        misconception: mc.physics.pc_piles.calcul-quantite-electricite
+        feedback: >
+          Même si les deux masses molaires sont proches, c'est bien
+          $M(Cu)=63{,}5$ g/mol qu'il faut utiliser pour une masse de
+          CUIVRE déposée à la cathode - utiliser $M(Zn)$ mélangerait les
+          deux électrodes, même si l'écart numérique final reste ici
+          discret.
+    correct_feedback: >
+      Il faut passer par $Q=I\Delta t$, puis $n(e^-)=Q/F$, puis
+      $n(Cu)=n(e^-)/2$ avant de multiplier par $M(Cu)$ : la masse correcte
+      est environ $0{,}22$ g, pas $4{,}3\times10^4$ g.
+    solution: |
+      $$Q = I\,\Delta t = 0{,}250 \times 2700 = 675\ \text{C}$$
+      $$
+      n(e^-) = \frac{Q}{F} = \frac{675}{9{,}65\times10^4} \approx
+      7{,}0\times10^{-3}\ \text{mol}
+      $$
+      À la cathode, $Cu^{2+}+2\,e^- \rightleftharpoons Cu$ : chaque ion
+      $Cu^{2+}$ réduit capte 2 électrons, donc
+      $$n(Cu) = \frac{n(e^-)}{2} \approx 3{,}5\times10^{-3}\ \text{mol}$$
+      $$
+      m(Cu) = n(Cu)\times M(Cu) \approx 3{,}5\times10^{-3}\times63{,}5
+      \approx 0{,}22\ \text{g}
+      $$
+
+  # ── application bac : sens + polarité + sens du courant, synthèse (R7, fraîche) ──
+  - id: PILES-22
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      On réalise une pile avec les couples $Ni^{2+}/Ni$ ($[Ni^{2+}]_i =
+      1{,}0\times10^{-2}\ \text{mol/L}$) et $Ag^+/Ag$ ($[Ag^+]_i =
+      5{,}0\times10^{-2}\ \text{mol/L}$), pour la réaction $Ni + 2\,Ag^+
+      \rightleftharpoons Ni^{2+} + 2\,Ag$, avec
+      $K\approx1\times10^{35}$. Quelle affirmation regroupe
+      correctement le sens d'évolution, la polarité des électrodes, et le
+      sens du courant dans le circuit extérieur ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$Q_{r,i}=[Ni^{2+}]_i/[Ag^+]_i^2 = 4{,}0 \\ll K$ : sens direct, le nickel s'oxyde (anode, borne -) et les ions $Ag^+$ se réduisent (argent = cathode, borne +) ; dans le circuit extérieur, les électrons vont du nickel vers l'argent, le courant conventionnel de l'argent vers le nickel."
+        correct: true
+      - id: B
+        text: "$Q_{r,i}=4{,}0 \\ll K$ : sens direct, le nickel s'oxyde, mais c'est la cathode (borne +) ; l'argent, qui se réduit, est alors l'anode (borne -) de la pile ainsi construite."
+        correct: false
+        misconception: mc.physics.pc_piles.anode-cathode-polarite
+        feedback: >
+          L'électrode d'oxydation (ici le nickel) s'appelle toujours
+          l'anode, jamais la cathode - et elle est toujours la borne -,
+          jamais la borne +. C'est l'argent, siège de la réduction, qui
+          est la cathode, borne +.
+      - id: C
+        text: "$Q_{r,i}=4{,}0 \\ll K$ : sens direct, nickel = anode (-), argent = cathode (+) ; mais dans le circuit extérieur, le courant conventionnel va du nickel vers l'argent, et les électrons de l'argent vers le nickel, à l'inverse du trajet réel.
+        Courant conventionnel et électrons circuleraient donc dans le même sens."
+        correct: false
+        misconception: mc.physics.pc_piles.courant-sens-electrons
+        feedback: >
+          C'est l'inverse : les électrons, produits par l'oxydation à
+          l'anode, vont du nickel vers l'argent (de - vers +) ; le courant
+          conventionnel, toujours en sens inverse des électrons, va donc
+          de l'argent vers le nickel (de + vers -), pas le contraire.
+      - id: D
+        text: "$Q_{r,i}=[Ni^{2+}]_i/[Ag^+]_i = 0{,}20 \\ll K$ : sens direct, nickel = anode (-), argent = cathode (+) ; électrons du nickel vers l'argent, courant de l'argent vers le nickel."
+        correct: false
+        misconception: mc.physics.pc_piles.expression-quotient-reaction
+        feedback: >
+          Le coefficient stœchiométrique de $Ag^+$ dans l'équation est 2 :
+          il doit apparaître comme exposant dans $Q_r$, soit
+          $Q_{r,i}=[Ni^{2+}]_i/[Ag^+]_i^{\,2}$, pas au premier degré. La
+          conclusion qualitative (sens direct) reste ici la même par
+          chance, mais l'expression de $Q_r$ utilisée est incorrecte.
+    correct_feedback: >
+      $Q_{r,i}=[Ni^{2+}]_i/[Ag^+]_i^{\,2}=4{,}0 \ll K$ : sens direct.
+      Nickel = anode (-), argent = cathode (+) ; électrons de - vers +,
+      courant conventionnel de + vers -.
+    solution: |
+      $$
+      Q_{r,i} = \frac{[Ni^{2+}]_i}{[Ag^+]_i^{\,2}} =
+      \frac{1{,}0\times10^{-2}}{(5{,}0\times10^{-2})^2} = 4{,}0
+      $$
+      $Q_{r,i}=4{,}0 \ll K\approx7{,}0\times10^{16}$ : le système évolue
+      dans le sens direct. Le nickel s'oxyde : c'est l'anode, borne -.
+      L'argent se réduit : c'est la cathode, borne +. Dans le circuit
+      extérieur, les électrons vont du nickel vers l'argent (de - vers
+      +) ; le courant conventionnel, en sens inverse, va de l'argent vers
+      le nickel (de + vers -).
+
+  # ── application bac : f.é.m. à vide + usure chiffrée, synthèse (R7, fraîche) ──
+  - id: PILES-23
+    rung: "R7"
+    difficulty_level: 5
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Une pile est construite avec les couples $Ni^{2+}/Ni$ et
+      $Cu^{2+}/Cu$, pour la réaction $Ni + Cu^{2+} \rightleftharpoons
+      Ni^{2+} + Cu$. On mesure, à vide, une f.é.m. $E \approx 0{,}6\
+      \text{V}$. La pile débite ensuite un courant constant $I = 200\
+      \text{mA}$ pendant $\Delta t = 4\ \text{h}$. On donne
+      $F\approx9{,}65\times10^4\ \text{C/mol}$, $M(Ni)=58{,}7\
+      \text{g/mol}$. Quelle masse de nickel a été consommée à l'anode
+      pendant cette durée, et que peut-on dire de $E$ pendant ce temps ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$Q=I\\Delta t=0{,}200\\times14400=2880$ C ; $n(e^-)=Q/F\\approx2{,}98\\times10^{-2}$ mol ; $n(Ni)=n(e^-)/2\\approx1{,}49\\times10^{-2}$ mol ; $m(Ni)\\approx0{,}88$ g. Pendant ce temps, $Q_{r,i}$ se rapproche de $K$ : la f.é.m. réelle disponible diminue progressivement en dessous de $0{,}6$ V, même si l'énoncé donne sa valeur initiale à vide."
+        correct: true
+      - id: B
+        text: "$Q=I\\Delta t=0{,}200\\times4=0{,}8$ C ; $n(e^-)\\approx8{,}3\\times10^{-6}$ mol ; $n(Ni)\\approx4{,}1\\times10^{-6}$ mol ; $m(Ni)\\approx2{,}4\\times10^{-4}$ g."
+        correct: false
+        misconception: mc.physics.pc_piles.calcul-quantite-electricite
+        feedback: >
+          $\Delta t$ doit être converti en SECONDES avant d'utiliser
+          $Q=I\Delta t$ (unité de $Q$ en coulombs, avec $I$ en ampères et
+          $\Delta t$ en secondes) : $4$ h $=14400$ s, pas $4$. Utiliser
+          des heures directement sous-estime $Q$ d'un facteur $3600$.
+      - id: C
+        text: "$Q=2880$ C ; $n(e^-)\\approx2{,}98\\times10^{-2}$ mol ; $n(Ni)=n(e^-)\\approx2{,}98\\times10^{-2}$ mol (une mole de nickel par mole d'électrons) ; $m(Ni)\\approx1{,}75$ g."
+        correct: false
+        misconception: mc.physics.pc_piles.calcul-quantite-electricite
+        feedback: >
+          La demi-équation $Ni^{2+}+2\,e^-\rightleftharpoons Ni$ montre
+          que chaque atome de nickel échange 2 électrons, pas 1 : il faut
+          diviser $n(e^-)$ par 2 pour obtenir $n(Ni)$, pas les assimiler
+          directement. La masse correcte est environ $0{,}88$ g, pas
+          $1{,}75$ g.
+      - id: D
+        text: "$Q=2880$ C, $n(e^-)\\approx2{,}98\\times10^{-2}$ mol, $n(Ni)\\approx1{,}49\\times10^{-2}$ mol, $m(Ni)\\approx0{,}88$ g - et la f.é.m. reste rigoureusement égale à $0{,}6$ V tout au long du fonctionnement, puisque c'est une caractéristique fixe de la pile, inscrite dans sa construction.
+        La consommation des réactifs n'affecterait donc jamais la tension à vide."
+        correct: false
+        misconception: mc.physics.pc_piles.qr-evolution-equilibre
+        feedback: >
+          La f.é.m. n'est pas une caractéristique fixe et immuable : elle
+          traduit l'écart entre $Q_{r,i}$ et $K$, qui se réduit à mesure
+          que la pile fonctionne (le nickel s'oxyde, $[Ni^{2+}]$ augmente,
+          $[Cu^{2+}]$ diminue). $E\approx0{,}6$ V n'est que sa valeur à
+          cet instant (mesurée à vide, en début de fonctionnement) - elle
+          diminue progressivement ensuite.
+    correct_feedback: >
+      $Q=2880$ C, $n(e^-)\approx2{,}98\times10^{-2}$ mol,
+      $n(Ni)\approx1{,}49\times10^{-2}$ mol, $m(Ni)\approx0{,}88$ g. La
+      f.é.m. n'est pas figée : elle faiblit progressivement à mesure que
+      $Q_{r,i}$ se rapproche de $K$.
+    solution: |
+      $$Q = I\,\Delta t = 0{,}200 \times 14400 = 2880\ \text{C}$$
+      $$
+      n(e^-) = \frac{Q}{F} = \frac{2880}{9{,}65\times10^4} \approx
+      2{,}98\times10^{-2}\ \text{mol}
+      $$
+      À l'anode, $Ni \rightleftharpoons Ni^{2+}+2\,e^-$ : chaque atome de
+      nickel libère 2 électrons, donc
+      $$n(Ni) = \frac{n(e^-)}{2} \approx 1{,}49\times10^{-2}\ \text{mol}$$
+      $$
+      m(Ni) = n(Ni)\times M(Ni) \approx 1{,}49\times10^{-2}\times58{,}7
+      \approx 0{,}88\ \text{g}
+      $$
+      Pendant ce fonctionnement, le nickel s'oxyde, $[Ni^{2+}]$ augmente et
+      $[Cu^{2+}]$ diminue : $Q_{r,i}$ se rapproche donc de $K$, ce qui
+      réduit progressivement la f.é.m. disponible en dessous de sa valeur
+      initiale $E\approx0{,}6$ V, mesurée à vide en début de
+      fonctionnement.
+
+  # ── application bac : quantité totale d'électricité indépendante du courant (R7, fraîche) ──
+  - id: PILES-24
+    rung: "R7"
+    difficulty_level: 5
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Deux piles Daniell identiques (même quantité initiale de zinc et de
+      solutions) sont utilisées séparément : la pile 1 débite un courant
+      constant $I_1=50\ \text{mA}$, la pile 2 un courant constant
+      $I_2=500\ \text{mA}$, dix fois plus grand. Un élève affirme : « la
+      pile 2 s'épuise dix fois plus vite en temps, mais les deux piles
+      délivrent, sur toute leur durée de vie, à peu près la même quantité
+      totale d'électricité $Q_{\text{totale}}$ - car cette quantité totale
+      ne dépend que de la masse de zinc disponible, pas du courant
+      demandé ». Que penser de cette affirmation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est essentiellement juste : $Q_{\\text{totale}} = n(e^-)_{\\text{max}}\\times F$ est fixée par la quantité de zinc disponible au départ, quel que soit le courant choisi ; comme $Q=I\\Delta t$, un courant dix fois plus fort épuise cette même quantité dix fois plus vite."
+        correct: true
+      - id: B
+        text: "Elle est fausse : la pile 2, qui débite un courant dix fois plus grand, délivre aussi dix fois plus de quantité d'électricité totale sur toute sa durée de vie, avant de s'épuiser."
+        correct: false
+        misconception: mc.physics.pc_piles.pile-source-illimitee
+        feedback: >
+          La quantité totale d'électricité disponible est fixée par la
+          quantité de réactif limitant (le zinc), pas par le courant
+          demandé : $Q_{\text{totale}}=n(e^-)_{\text{max}}\times F$ ne
+          dépend que de $n(Zn)_{\text{disponible}}$. Un courant plus grand
+          ne « débloque » pas plus de charge - il consomme la même réserve
+          totale plus rapidement, en un temps plus court.
+      - id: C
+        text: "Elle est fausse : la pile 2, en imposant un courant plus fort, consomme le zinc de façon nettement moins efficace, ce qui réduit la quantité totale d'électricité qu'elle peut délivrer avant de s'épuiser.
+        La quantité d'électricité disponible dépendrait donc de l'intensité débitée."
+        correct: false
+        misconception: mc.physics.pc_piles.pile-source-illimitee
+        feedback: >
+          Rien, dans la relation $Q=I\Delta t=n(e^-)F$, ne rend la
+          consommation du zinc « moins efficace » à courant plus élevé :
+          chaque mole d'électrons échangée correspond toujours à la même
+          quantité de zinc oxydé, quel que soit le courant. La quantité
+          totale disponible reste fixée par la masse de zinc, pas par la
+          vitesse à laquelle on la consomme.
+      - id: D
+        text: "Elle est fausse : les deux piles, étant identiques au départ, s'épuisent forcément après exactement la même durée $\\Delta t$, quel que soit le courant qu'on leur fait débiter."
+        correct: false
+        misconception: mc.physics.pc_piles.pile-source-illimitee
+        feedback: >
+          Les deux piles contiennent certes la même quantité de zinc au
+          départ, mais elles ne la consomment pas à la même VITESSE : à
+          courant $I$ plus grand, la même quantité totale de charge
+          $Q_{\text{totale}}$ est atteinte en un temps
+          $\Delta t = Q_{\text{totale}}/I$ plus court. La pile 2, dix fois
+          plus sollicitée, s'épuise donc environ dix fois plus vite en
+          temps, pas à la même date que la pile 1.
+    correct_feedback: >
+      $Q_{\text{totale}}$ est fixée par la quantité de zinc disponible, pas
+      par le courant : un courant dix fois plus grand épuise la même
+      réserve en un temps dix fois plus court, sans changer
+      $Q_{\text{totale}}$.
+    solution: |
+      La quantité totale d'électricité que peut délivrer une pile avant
+      épuisement est fixée par la quantité de réactif limitant disponible
+      au départ : $Q_{\text{totale}} = n(e^-)_{\text{max}}\times F$, avec
+      $n(e^-)_{\text{max}} = 2\,n(Zn)_{\text{disponible}}$ pour le couple
+      $Zn^{2+}/Zn$. Cette quantité ne dépend pas du courant $I$ choisi.
+      Puisque $Q=I\Delta t$, un courant plus grand atteint la même
+      $Q_{\text{totale}}$ en un temps $\Delta t = Q_{\text{totale}}/I$
+      plus court : la pile 2 (courant dix fois plus grand) s'épuise donc
+      environ dix fois plus vite en temps, tout en délivrant, sur toute sa
+      durée de vie, sensiblement la même quantité totale d'électricité que
+      la pile 1.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# COVERAGE SUMMARY (summit-conversion ride-along — per-distractor tagging pass)
+#
+# Every incorrect distractor of every item now carries a `misconception:` id
+# from the inventory declared at the top of this file (72 distractors tagged,
+# 0 null). An item counts once toward a misconception if ANY of its distractors
+# carries that id. The in-lesson checkpoints (checkpoints.yaml) surface clones
+# of PILES-1/3/5/6 and one original commit item; they do NOT alter these
+# counts (no double-counting).
+# ──────────────────────────────────────────────────────────────────────────────
+coverage_summary:
+  per_misconception:
+    mc.physics.pc_piles.anode-cathode-polarite: 6
+    # PILES-1, PILES-2, PILES-16, PILES-17, PILES-18, PILES-22
+    mc.physics.pc_piles.courant-sens-electrons: 4
+    # PILES-3, PILES-4, PILES-17, PILES-22
+    mc.physics.pc_piles.pile-source-illimitee: 3
+    # PILES-5, PILES-6, PILES-24
+    mc.physics.pc_piles.qr-evolution-equilibre: 3
+    # PILES-6, PILES-14, PILES-23
+    mc.physics.pc_piles.calcul-quantite-electricite: 3
+    # PILES-5, PILES-21, PILES-23
+    mc.physics.pc_piles.expression-quotient-reaction: 4
+    # PILES-13, PILES-14, PILES-15, PILES-22
+    mc.physics.pc_piles.fem-mal-comprise: 3
+    # PILES-18, PILES-19, PILES-20
+    mc.physics.pc_piles.pile-nature-mal-comprise: 3
+    # PILES-7, PILES-8, PILES-9
+    mc.physics.pc_piles.role-constituants: 4
+    # PILES-7, PILES-10, PILES-11, PILES-12
+  total_items: 24
+  floor_met: true   # all 9 misconceptions >= 3 items (minimum reached is 3)
+  ramp_coverage:
+    # From each item's own `rung:` field.
+    R0: 3   # PILES-7, PILES-8, PILES-9
+    R1: 3   # PILES-10, PILES-11, PILES-12
+    R2: 3   # PILES-13, PILES-14, PILES-15
+    R3: 3   # PILES-1, PILES-2, PILES-16
+    R4: 3   # PILES-3, PILES-4, PILES-17
+    R5: 3   # PILES-18, PILES-19, PILES-20
+    R6: 3   # PILES-5, PILES-6, PILES-21
+    R7: 3   # PILES-22, PILES-23, PILES-24
+  note: >
+    Legacy end-bank (24 items, PILES-1..24) tagged per-distractor during the
+    summit-conversion ride-along. The inventory was consolidated to 9
+    misconception families so every family clears the >=3 floor without
+    padding: the many narrow "faux, mais pas pour la bonne raison" distractors
+    fold into the broadest family they exemplify (e.g. the fém sign/à-vide/
+    universelle variants all map to fem-mal-comprise; the pont-salin/électrode/
+    disposition variants to role-constituants). No counts are faked; each
+    listed item genuinely carries the tag on at least one distractor.

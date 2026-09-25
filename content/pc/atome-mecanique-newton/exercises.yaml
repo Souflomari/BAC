@@ -1,0 +1,140 @@
+# Attempt-first exercises (summit-conversion pass — PC named exception).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered — audit U3). r-bac is the
+# ONE deliberately unsourced PC lesson in the campaign (plan-owner-locked
+# exception, target ≤5, philo-only otherwise): after an exhaustive search
+# (18 sessions normales + 3 rattrapages, 2008–2025 — see
+# docs/sujets/pc/atome-mecanique-newton.md), no dedicated national PC-SPC
+# exam exercise on this theme exists. r-bac is the lesson's own pre-existing
+# original exercise (already labeled "non un sujet officiel" before this
+# conversion), MOVED into the attempt-first schema, not new physics — its
+# `required_for_done` is honestly `false` so it never blocks a "done" gate
+# under an unsourced status (the validator's `--strict` hard-fails that
+# combination the other way around).
+#
+# Arithmetic note: transcribing r-bac surfaced a pre-existing computational
+# slip in the legacy lesson.md prose for the He+ numeric answer (it read
+# v ≈ 3,1×10^6 m/s / T ≈ 5,3×10^-17 s). Recomputed here and cross-checked
+# against R2's own hydrogen worked example (which IS internally consistent):
+# v ≈ 4,41×10^6 m/s, T ≈ 3,70×10^-17 s. Corrected in this transcription —
+# nothing else about the method, the given data, or the physics changed.
+
+notion: atome-mecanique-newton
+
+exercises:
+  - id: r-bac
+    title: "Exercice de type bac"
+    sourcing:
+      status: unsourced
+      required_for_done: false
+      note: >-
+        Aucun exercice national dédié trouvé après recherche exhaustive (18
+        sessions normales + 3 rattrapages, 2008–2025) — voir
+        docs/sujets/pc/atome-mecanique-newton.md. Exercice original du
+        cours, non un sujet officiel.
+    intro: |-
+      On modélise un ion hélium simplement ionisé, $\text{He}^+$ (un noyau de charge $+2e$ autour duquel tourne un seul électron), par le modèle planétaire de ce chapitre. On donne $k \approx 9{,}0 \times 10^{9}\ \text{N}\cdot\text{m}^2\cdot\text{C}^{-2}$, $e \approx 1{,}6 \times 10^{-19}\ \text{C}$, $m_e \approx 9{,}1 \times 10^{-31}\ \text{kg}$, et on prend, pour cet ion, un rayon d'orbite $r = 2{,}6 \times 10^{-11}\ \text{m}$.
+    questions:
+      - id: q1
+        part: "Partie 1 — Établir la force et la vitesse"
+        stem: |-
+          Établir l'expression de la force de Coulomb entre l'électron et le noyau de cet ion, en fonction de $k$, $e$ et $r$.
+        reasoning: |-
+          Le noyau porte une charge $+2e$ (deux protons) et non $+e$ — c'est le seul changement par rapport à l'hydrogène des chapitres 2 à 3 ; il faut le faire apparaître dès la mise en équation, pas seulement à la fin.
+
+          Le noyau a pour charge $q_1 = +2e$, l'électron $q_2 = -e$.
+        steps:
+          - math: 'F_C = k\frac{\lvert q_1 q_2\rvert}{r^2}'
+            note: "La norme de la force de Coulomb entre les deux charges, à distance r — la même expression générale qu'au chapitre 2."
+          - math: 'F_C = k\frac{2e \times e}{r^2}'
+            note: "On remplace $q_1$ par $+2e$ (charge du noyau de He⁺) et $q_2$ par $-e$ (électron) ; seule cette valeur change par rapport à l'hydrogène."
+          - math: '\boxed{F_C = \frac{2ke^2}{r^2}}'
+            note: "Expression finale, prête pour appliquer la deuxième loi de Newton à la question suivante."
+      - id: q2
+        stem: |-
+          En appliquant la deuxième loi de Newton au mouvement circulaire uniforme de l'électron, établir l'expression de sa vitesse $v$.
+        reasoning: |-
+          Même méthode qu'au chapitre 3 — seule la force change (facteur $2$ en plus), donc on refait le même calcul avec ce facteur, sans repartir de zéro.
+        steps:
+          - math: '\frac{2ke^2}{r^2} = m_e\frac{v^2}{r}'
+            note: "Deuxième loi de Newton projetée sur la direction normale (vers le centre) — même geste qu'au chapitre 3, avec la force établie en Q1."
+          - math: 'v^2 = \frac{2ke^2}{m_e r}'
+            note: "On multiplie les deux membres par r, puis on isole $v^2$ en divisant par $m_e$."
+          - math: '\boxed{v = \sqrt{\frac{2ke^2}{m_e r}}}'
+            note: "On prend la racine carrée (une vitesse est positive)."
+      - id: q3
+        part: "Partie 2 — Calcul numérique et limites de la mécanique"
+        stem: |-
+          Calculer numériquement $v$, puis la période de révolution $T$.
+        reasoning: |-
+          Application numérique directe des expressions établies aux questions précédentes, avec les données de l'énoncé.
+        steps:
+          - math: 'v = \sqrt{\frac{2 \times 9{,}0\times10^{9} \times (1{,}6\times10^{-19})^2}{9{,}1\times10^{-31}\times 2{,}6\times10^{-11}}} \approx 4{,}41\times10^{6}\ \text{m/s}'
+            note: "On substitue les valeurs numériques dans l'expression de $v$ obtenue en Q2."
+          - math: 'T = \frac{2\pi r}{v} = \frac{2\pi \times 2{,}6\times10^{-11}}{4{,}41\times10^{6}} \approx 3{,}70\times10^{-17}\ \text{s}'
+            note: "Même relation qu'au chapitre 3 : $T = 2\\pi r / v$, avec le $v$ qu'on vient de calculer."
+      - id: q4
+        stem: |-
+          Cet électron reste-t-il indéfiniment sur cette orbite ? Justifier en une ou deux phrases à l'aide des limites de la mécanique de Newton discutées dans ce chapitre.
+        reasoning: |-
+          La question ne demande aucun calcul supplémentaire — elle teste si tu distingues ce que la mécanique calcule (une orbite stable, en apparence) de ce qu'elle est incapable d'expliquer (la stabilité réelle de l'atome).
+
+          Non, pas d'après la physique classique complète : l'électron, en accélération centripète permanente, devrait rayonner de l'énergie électromagnétique et s'effondrer sur le noyau en une fraction de seconde extrêmement courte — exactement le paradoxe du chapitre 4. Le calcul mécanique de la question 3 décrit une orbite à rayon fixe, mais il ne prouve pas que ce rayon reste fixe dans le temps : c'est précisément là où la mécanique de Newton (associée à l'électromagnétisme classique) atteint sa limite.
+
+  - id: r-variation
+    title: "Variation fraîche"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel, une fois sourcé, serait r-bac.
+    intro: |-
+      Même structure profonde que l'exercice précédent, enrobage différent. Le but est que tu ne puisses pas mémoriser la solution — tu dois reconnaître quelle procédure s'applique.
+
+      On modélise un ion lithium doublement ionisé, $\text{Li}^{2+}$ (un noyau de charge $+3e$ autour duquel tourne un seul électron), par le modèle planétaire de ce chapitre. On donne $k \approx 9{,}0 \times 10^{9}\ \text{N}\cdot\text{m}^2\cdot\text{C}^{-2}$, $e \approx 1{,}6 \times 10^{-19}\ \text{C}$, $m_e \approx 9{,}1 \times 10^{-31}\ \text{kg}$, et on prend, pour cet ion, un rayon d'orbite $r = 1{,}8 \times 10^{-11}\ \text{m}$.
+    questions:
+      - id: q1
+        stem: |-
+          Établir l'expression de la force de Coulomb entre l'électron et le noyau de cet ion, en fonction de $k$, $e$ et $r$.
+        reasoning: |-
+          Avant de recopier le facteur $2$ de l'exercice précédent : le noyau ici porte la charge $+3e$ (trois protons), pas $+2e$ — c'est exactement le réflexe à éviter. Si tu as écrit $2ke^2/r^2$ ici, c'est le modèle « la formule mémorisée s'applique telle quelle » qui a parlé ; il faut relire l'énoncé et adapter le facteur.
+        steps:
+          - math: 'F_C = k\frac{\lvert q_1 q_2\rvert}{r^2}'
+            note: "Même expression générale qu'au chapitre 2 — elle ne change jamais, seule la charge du noyau change d'un ion à l'autre."
+          - math: 'F_C = k\frac{3e \times e}{r^2}'
+            note: "$q_1 = +3e$ (noyau du lithium doublement ionisé), $q_2 = -e$ (électron) : le facteur devant $ke^2$ est $3$, pas $2$."
+          - math: '\boxed{F_C = \frac{3ke^2}{r^2}}'
+            note: "Expression finale — le facteur $3$ vient uniquement de la charge du noyau de cet ion."
+      - id: q2
+        stem: |-
+          En appliquant la deuxième loi de Newton au mouvement circulaire uniforme de l'électron, établir l'expression de sa vitesse $v$.
+        reasoning: |-
+          La démarche est identique à l'exercice précédent — c'est exactement le point : reconnaître que l'habillage a changé (un autre ion, un autre facteur) mais pas la procédure.
+        steps:
+          - math: '\frac{3ke^2}{r^2} = m_e\frac{v^2}{r}'
+            note: "Deuxième loi de Newton projetée sur la direction normale, avec la force de Q1."
+          - math: 'v^2 = \frac{3ke^2}{m_e r}'
+            note: "On multiplie par r, on isole $v^2$ en divisant par $m_e$ — même geste que dans l'exercice précédent et qu'au chapitre 3."
+          - math: '\boxed{v = \sqrt{\frac{3ke^2}{m_e r}}}'
+            note: "Le facteur $3$ reste SOUS la racine : il multiplie $v^2$, pas $v$."
+      - id: q3
+        stem: |-
+          Calculer numériquement $v$, puis la période de révolution $T$.
+        reasoning: |-
+          Même application numérique que dans l'exercice précédent, avec les nouvelles valeurs de cet énoncé — un rayon plus petit et un facteur $3$ au lieu de $2$.
+        steps:
+          - math: 'v = \sqrt{\frac{3 \times 9{,}0\times10^{9} \times (1{,}6\times10^{-19})^2}{9{,}1\times10^{-31}\times 1{,}8\times10^{-11}}} \approx 6{,}50\times10^{6}\ \text{m/s}'
+            note: "On substitue les valeurs numériques dans l'expression de $v$ obtenue en Q2."
+          - math: 'T = \frac{2\pi r}{v} = \frac{2\pi \times 1{,}8\times10^{-11}}{6{,}50\times10^{6}} \approx 1{,}74\times10^{-17}\ \text{s}'
+            note: "Même relation qu'au chapitre 3 : $T = 2\\pi r / v$."
+      - id: q4
+        stem: |-
+          Cet électron reste-t-il indéfiniment sur cette orbite ? Justifier en une ou deux phrases à l'aide des limites de la mécanique de Newton discutées dans ce chapitre.
+        reasoning: |-
+          Même question, même réponse de fond, quel que soit l'ion : le paradoxe du chapitre 4 ne dépend ni de la charge du noyau ni du rayon choisi.
+
+          Non : l'électron, en accélération centripète permanente ($a_N = v^2/r \neq 0$, quel que soit l'ion), devrait rayonner de l'énergie électromagnétique et s'effondrer sur le noyau en un temps extrêmement court. Le calcul de la question 3 décrit une orbite stable à rayon fixe, mais — exactement comme pour He⁺ — il ne prouve pas que ce rayon reste constant dans le temps : c'est le rayonnement d'une charge accélérée, extérieur à la mécanique, qui répond à cette question, et sa réponse contredit la stabilité observée.

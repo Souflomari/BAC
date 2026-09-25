@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 340" width="660" height="340"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Courbe v(t) d’un solide en chute verticale avec frottement fluide : montée depuis 0 vers l’asymptote v limite, tangente à l’origine de pente g coupant l’asymptote en t = tau, et deux zones annotées, régime initial près de l’origine et régime permanent près de l’asymptote.">
+  <title>Vitesse v(t) en chute avec frottement — v_lim et τ</title>
+  <!--
+    vitesse-vs-temps-frottement.svg — STAGED (LESSON-EXPERIENCE-SPEC §2.5 :
+    un graphe est TOUJOURS staged, ordre axes → données → lecture).
+      step-1 : le repère (axes t / v).
+      step-2 : la courbe v(t) — donnée/mesurée (jamais dérivée analytiquement,
+               cf. R7 "La limite du cadre" : on ne résout pas l'ODE à la main).
+      step-3 : lecture — tangente à l'origine (pente g) coupant l'asymptote
+               v_lim en t = τ, zones "régime initial" / "régime permanent".
+
+    Reprend exactement l'exemple numérique filé en R7 (bille dans un liquide
+    visqueux) : m = 0,20 kg, k = 2,0 kg/s, g ≈ 9,8 m/s² ⇒ v_lim = mg/k =
+    0,98 m/s, τ = m/k = 0,10 s (texte : "τ = 0,10 s").
+
+    Échelle du tracé : origine (t=0,v=0) = (90,230). scale_t = 1100 px/s
+    (τ ↔ 110 px). scale_v = 140 px/(m/s) (v_lim = 0,98 ↔ 137,2 px, asymptote
+    tracée à y = 230 − 137,2 ≈ 90... arrondi à y=90 pour une jolie marge).
+
+    Tangente à l'origine : pente en pixels = hauteur/tau_px = 137,2/110 =
+    1,2473, EXACTEMENT (scale_v/scale_t)·g = pente réelle mise à l'échelle.
+    Elle part de (90,230) et coupe l'asymptote (y=90) à x = 90+110 = 200,
+    soit t = τ = 0,10 s — pas une coïncidence graphique, une propriété de
+    la construction (même principe que i-etablissement.svg / RL).
+
+    Courbe v(t) — polyligne calculée point par point via la forme
+    v/v_lim = 1 − e^(−t/τ) (la forme qu'on LIRAIT sur une courbe expérimentale
+    réelle ; on ne l'enseigne ni ne la dérive dans le texte — R7 "limite du
+    cadre"). Points (s = t/τ, f(s) = 1−e^(−s)), convertis par
+    x = 90 + 110·s, y = 230 − 137,2·f(s) :
+      s=0    f=0        → (90,230)
+      s=0.25 f=0.2212   → (117.5,199.65)
+      s=0.5  f=0.3935   → (145,176.02)
+      s=0.75 f=0.5276   → (172.5,157.61)
+      s=1.0  f=0.6321   → (200,143.27)   ← t = τ
+      s=1.5  f=0.7769   → (255,123.40)
+      s=2.0  f=0.8647   → (310,111.36)
+      s=2.5  f=0.9179   → (365,104.06)
+      s=3.0  f=0.9502   → (420,99.63)
+      s=4.0  f=0.9817   → (530,95.31)
+      s=4.5  f=0.9889   → (585,94.32)
+    puis un court prolongement quasi plat jusqu'à x=625 (bord du panneau).
+
+    Rôle des couleurs :
+      courbe v(t) (grandeur d'intérêt)                : --figure-accent
+      tangente, asymptote, repère τ, brackets de zones : --figure-ink-soft
+      axes                                             : --figure-ink-soft
+
+    Les captions sont portées par vitesse-vs-temps-frottement.stages.json
+    (figcaption hors-SVG) — aucun texte de légende baké ici.
+  -->
+
+  <!-- Titre -->
+  <text x="330" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Chute avec frottement — v(t), vitesse limite v<tspan dy="3" font-size="8.5">ℓ</tspan><tspan dy="-3"> et temps caractéristique τ</tspan>
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="30" y="32" width="600" height="248" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le repère : axes t / v
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <line x1="90" y1="230" x2="632" y2="230"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="632,230 620,225.5 620,234.5" fill="var(--figure-ink-soft)"/>
+    <line x1="90" y1="230" x2="90" y2="58"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="90,58 85.5,69 94.5,69" fill="var(--figure-ink-soft)"/>
+    <text x="639" y="234" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">t</text>
+    <text x="82" y="62" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">v</text>
+    <text x="82" y="238" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — données : la courbe v(t)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="
+      M90,230
+      L117.5,199.65 L145,176.02 L172.5,157.61 L200,143.27
+      L255,123.40 L310,111.36 L365,104.06 L420,99.63
+      L530,95.31 L585,94.32 L625,93.7
+    " fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="440" y="185" font-size="11" font-style="italic" fill="var(--figure-accent)">v(t)</text>
+    <text x="440" y="198" font-size="9" fill="var(--figure-ink-soft)">(courbe relevée expérimentalement)</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : tangente/τ, asymptote v_lim, zones
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Asymptote v_lim -->
+    <line x1="90" y1="90" x2="625" y2="90"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <text x="80" y="94" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)">v<tspan dy="3" font-size="7.5">ℓ</tspan></text>
+
+    <!-- Tangente à l'origine, pente g — coupe l'asymptote exactement à t=τ -->
+    <line x1="90" y1="230" x2="200" y2="90"
+          stroke="var(--figure-ink-soft)" stroke-width="1.8" stroke-dasharray="6,4" stroke-linecap="round"/>
+    <!-- REMONTÉE ET ANCRÉE À DROITE (2026-09-04) : posée à (106;196) elle
+         était couchée sur la tangente qu'elle nomme (qui passe en x≈114 à
+         cette hauteur) et s'en trouvait rayée sur 33 %. Plus bas, entre la
+         tangente et la courbe, la bande fait 15 px — trop peu ; plus haut,
+         entre l'axe et la tangente, elle en fait 50, et c'est là que
+         l'étiquette tient. -->
+    <text x="148" y="150" text-anchor="end" font-size="10" font-style="italic" fill="var(--figure-ink-soft)">pente g</text>
+
+    <!-- Repère à t = τ -->
+    <circle cx="200" cy="90" r="3.2" fill="var(--figure-ink-soft)"/>
+    <line x1="200" y1="226" x2="200" y2="234" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="200" y1="90" x2="200" y2="230" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="200" y="248" text-anchor="middle" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">τ</text>
+
+    <!-- Bracket "régime initial" (près de l'origine) -->
+    <line x1="90" y1="262" x2="145" y2="262" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="90" y1="257" x2="90" y2="267" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="145" y1="257" x2="145" y2="267" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="117.5" y="278" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">régime initial</text>
+    <text x="117.5" y="291" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">(a ≈ g, comme en chute libre)</text>
+
+    <!-- Bracket "régime permanent" (près de l'asymptote) -->
+    <line x1="420" y1="262" x2="625" y2="262" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="420" y1="257" x2="420" y2="267" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="625" y1="257" x2="625" y2="267" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="522.5" y="278" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">régime permanent</text>
+    <text x="522.5" y="291" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">(v ≈ v<tspan dy="2" font-size="7">ℓ</tspan><tspan dy="-2">, a ≈ 0 — mais f = kv reste ≠ 0)</tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

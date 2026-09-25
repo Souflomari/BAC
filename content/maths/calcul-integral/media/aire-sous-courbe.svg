@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img"
+     aria-label="Aire sous la courbe v(t) = t au carré : la région hachurée entre l’axe des abscisses et la droite t = b, où b se fait glisser (ou se pilote au curseur) le long de la courbe pour voir l’intégrale se recalculer en direct.">
+  <title>Aire sous une courbe — v(t) = t², étape par étape puis manipulable</title>
+  <!--
+    aire-sous-courbe.svg — STAGED + MANIPULABLE (docs/design/INTERACTIVE-FIGURE-SPEC.md).
+    step-1 : la courbe v(t) = t² seule (0 à 2,2).
+    step-2 : + la région hachurée entre 0 et b, le repère de b, la boîte
+             formule — c'est ICI que la manipulation se déverrouille
+             (aire-sous-courbe.interactive.json, unlockAfterStage = 2) :
+             glisser #point-mobile (ou le curseur) recalcule #region-path,
+             #bound-label, #formule-borne, #formule-valeur en direct
+             (web/src/lib/interactive-figures/aire-sous-courbe.ts).
+
+    Fonction tracée : v(t) = t², sur [0, 2,2] (l'exemple de l'accroche R0,
+    résolu au R1 : la distance parcourue par une voiture dont la vitesse
+    instantanée est v(t) = t², entre t = 0 s et t = 2 s).
+
+    Correspondance repère -> pixels :
+      x_px = 80 + 150·t ,  y_px = 350 - 60·v   (v = t²)
+      domaine manipulable de b : [0,3 ; 2,0] — 2,0 est à la fois l'exemple
+      travaillé au R1 (aire = 8/3) ET le plafond visuel du panneau
+      (y(t) = 350-60t² doit rester au-dessus de la flèche de l'axe, y≈50 ;
+      au-delà de t≈2,24 la courbe sortirait du panneau).
+
+    Le prolongement décoratif de la courbe entre t=2,0 et t=2,2 (hors du
+    domaine manipulable) reste un simple habillage statique inchangé :
+    il montre que la courbe continue au-delà de b_max, sans jamais avoir
+    besoin d'être recalculé.
+
+    La région hachurée est régénérée par échantillonnage à NOMBRE FIXE de
+    points (24), pas au pas absolu de 0,1 de l'original statique — la forme
+    reste mathématiquement identique (même v=t² exact à chaque point) pour
+    n'importe quel b du domaine, voir clipLineToPanel-style dans le module
+    .ts pour le détail.
+
+    Rôle des couleurs (inchangé de l'original) :
+      région hachurée, repère ponctuel, bornes a/b, formule : --figure-accent
+      courbe (step-1, structure donnée)                    : --figure-ink
+      prolongement décoratif, axes, labels d'axes           : --figure-ink-soft
+
+    Les captions sont portées par aire-sous-courbe.stages.json — aucun
+    texte de légende baké ici (même convention que tangente-derivee.svg).
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Aire sous une courbe — v(t) = t²
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="32" width="590" height="350" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- Axes — ink-soft, chrome neutre, toujours visibles -->
+  <line x1="80" y1="350" x2="610" y2="350"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="610,350 598,345.5 598,354.5" fill="var(--figure-ink-soft)"/>
+  <line x1="80" y1="350" x2="80" y2="50"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+  <text x="617" y="354" font-size="12" font-style="italic"
+        fill="var(--figure-ink-soft)">t</text>
+  <text x="72" y="54" text-anchor="end" font-size="12" font-style="italic"
+        fill="var(--figure-ink-soft)">v</text>
+
+  <!-- Prolongement décoratif au-delà de b_max=2,0 — habillage statique,
+       jamais recalculé (voir commentaire ci-dessus) -->
+  <path d="M380,110 L395,85.4 L410,59.6"
+        fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.6"
+        stroke-dasharray="4,3" stroke-linecap="round"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — la courbe seule
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <path d="M80,350 L92.5,349.58 L105,348.33 L117.5,346.25 L130,343.33
+             L142.5,339.58 L155,335 L167.5,329.58 L180,323.33 L192.5,316.25
+             L205,308.33 L217.5,299.58 L230,290 L242.5,279.58 L255,268.33
+             L267.5,256.25 L280,243.33 L292.5,229.58 L305,215 L317.5,199.58
+             L330,183.33 L342.5,166.25 L355,148.33 L367.5,129.58 L380,110"
+          fill="none" stroke="var(--figure-ink)"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="300" y="100" font-size="13" font-style="italic"
+          fill="var(--figure-ink)">v(t) = t²</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la région hachurée entre 0 et b — déverrouille la
+       manipulation (aire-sous-courbe.interactive.json, unlockAfterStage = 2)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path id="region-path"
+          d="M80,350 L92.5,349.58 L105,348.33 L117.5,346.25 L130,343.33
+             L142.5,339.58 L155,335 L167.5,329.58 L180,323.33 L192.5,316.25
+             L205,308.33 L217.5,299.58 L230,290 L242.5,279.58 L255,268.33
+             L267.5,256.25 L280,243.33 L292.5,229.58 L305,215 L317.5,199.58
+             L330,183.33 L342.5,166.25 L355,148.33 L367.5,129.58 L380,110
+             L380,350 Z"
+          fill="var(--figure-accent)" fill-opacity="0.18"
+          stroke="var(--figure-accent)" stroke-width="2" stroke-linejoin="round"/>
+
+    <!-- Point mobile — poignée glissable, coin de la région -->
+    <circle id="point-mobile" cx="380" cy="110" r="3.2" style="cursor:grab"
+            fill="var(--figure-accent)"/>
+    <circle id="point-mobile-halo" cx="380" cy="110" r="9" style="cursor:grab"
+            fill="var(--figure-accent)" opacity="0"/>
+
+    <!-- Bornes a et b, sur l'axe des t -->
+    <text x="80" y="366" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">a = 0</text>
+    <text id="bound-label" x="380" y="366" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">b = 2</text>
+
+    <!-- Boîte formule — pointe vers la région hachurée -->
+    <line x1="440" y1="120" x2="280" y2="270"
+          stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="280" cy="270" r="2.5" fill="var(--figure-accent)"/>
+
+    <rect x="440" y="70" width="185" height="72" rx="8"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="532" y="86" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-accent)">aire hachurée</text>
+    <text id="formule-borne" x="532" y="112" text-anchor="middle" font-size="12.5"
+          fill="var(--figure-accent)">sur [0 ; 2]</text>
+    <text id="formule-valeur" x="532" y="136" text-anchor="middle" font-size="12.5"
+          fill="var(--figure-accent)">≈ 2,67 m</text>
+  </g><!-- /step-2 -->
+
+</svg>

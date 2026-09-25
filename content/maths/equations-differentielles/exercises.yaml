@@ -1,0 +1,136 @@
+# Attempt-first exercises (summit-conversion campaign — maths, équations différentielles).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md :
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered) : while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2022 session
+# normale, Mathématiques SExp BIOF, code NS 22F — statut « vérifié » in
+# docs/sujets/maths/equations-differentielles.md, Exercice 4, partie
+# équations différentielles). r-variation is a fresh anti-memorisation twin
+# (same chain — équation caractéristique du 2nd ordre → solution générale →
+# conditions initiales — with distinct-real-roots numbers ; status
+# not-applicable).
+#
+# SCOPE NOTE (relecture humaine) : r-bac résout une équation du 2nd ordre à
+# coefficients constants par l'ÉQUATION CARACTÉRISTIQUE (racine double).
+# MISE À JOUR (revue vague 1, 2026-09-12) : la phrase qui suivait — « la leçon
+# (R4) ne traite que y''+ω²y=0 et admet la théorie générale hors de sa
+# portée » — est PÉRIMÉE : la passe R4-bis recommandée en fin de note A ÉTÉ
+# FAITE le 2026-08-27, et R4 traite les trois cas du discriminant. Le
+# raisonnement autoportant reste valable, il n'est simplement plus contraint.
+# Ce qui reste dû : le cas Δ=0 — le seul attesté dans un sujet vérifié — n'a
+# toujours aucun exemple travaillé dans la leçon, ni aucun item au banc. La
+# méthode caractéristique EST au programme 2ème Bac Sciences Expérimentales
+# (le sujet 2022 le confirme). Le raisonnement de r-bac est donc AUTOPORTANT ;
+# une passe R4-bis (cas Δ>0 / Δ=0 / Δ<0 via r²+pr+q=0) est le suivi recommandé.
+
+notion: equations-differentielles
+
+exercises:
+  # ── r-bac — the VERIFIED 2022 national sujet (Ex. 4, SExp, partie éq. diff.) ──
+  - id: r-bac
+    title: "Exercice de type bac — équation du 2nd ordre et identification d'une solution (2022)"
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques, option française), Mathématiques, code NS 22F, barème 2,5
+        points (Exercice 4, « Équations différentielles et calcul intégral » ;
+        seule la partie équations différentielles est transcrite ici, la partie
+        calcul intégral relève de calcul-integral). Source AlloSchool
+        element/136586. Transcription vérifiée :
+        docs/sujets/maths/equations-differentielles.md, statut « vérifié »
+        (agent-vérificateur-adversarial, 2026-07-12, source re-fetchée et diff
+        conforme au scan).
+    intro: |-
+      **Équations différentielles (examen national, session normale 2022).**
+
+      On considère la fonction $h$ définie sur $\mathbb{R}$ par $h(x) = (x+1)e^{x}$.
+
+      Cet exercice porte sur une équation différentielle **du second ordre** à coefficients constants. Deux gestes s'enchaînent : d'abord résoudre l'équation en toute généralité, ensuite reconnaître qu'une fonction donnée en fait partie et vérifie deux conditions imposées. *(Les questions 1) du sujet portent sur le calcul intégral et sont traitées dans le chapitre correspondant.)*
+    questions:
+      - id: q2a
+        part: "Résoudre l'équation différentielle $(E)$"
+        stem: |-
+          **(0,5 pt)** Résoudre l'équation différentielle $(E) : y'' - 2y' + y = 0$.
+        reasoning: |-
+          Une équation différentielle **linéaire du second ordre à coefficients constants** $ay''+by'+cy=0$ se résout en passant par son **équation caractéristique** $ar^2+br+c=0$ : on cherche d'abord pour quelles valeurs de $r$ la fonction $e^{rx}$ est solution.
+
+          Ici $(E) : y''-2y'+y=0$ donne l'équation caractéristique $r^2-2r+1=0$. Son discriminant est $\Delta=(-2)^2-4\times1\times1=0$ : discriminant **nul**, donc une **racine double** $r=1$. Le cours donne, dans ce cas, la forme de **toutes** les solutions : $y(x)=(Ax+B)e^{rx}$ avec ici $r=1$. Retiens que le facteur $Ax+B$ (et non une simple constante) est la signature du cas $\Delta=0$ — c'est le $x$ devant l'exponentielle qui distingue la racine double des deux autres cas.
+        steps:
+          - math: 'r^{2} - 2r + 1 = 0'
+            note: "Équation caractéristique associée à y''−2y'+y=0."
+          - math: '\Delta = (-2)^{2} - 4 \times 1 \times 1 = 0'
+            note: "Discriminant nul → racine double."
+          - math: '\Delta = 0 \implies r = \dfrac{-(-2)}{2 \times 1} = 1'
+            note: "Racine double r = 1."
+          - math: 'y(x) = (A\,x + B)\,e^{x}, \quad A, B \in \mathbb{R}'
+            note: "Cas racine double : solution générale $(Ax+B)e^{rx}$ avec $r=1$."
+      - id: q2b
+        part: "Identifier $h$ comme la solution vérifiant deux conditions"
+        stem: |-
+          **(0,5 pt)** Montrer que la fonction $h$ est la solution de $(E)$ qui vérifie les conditions $h(0) = 1$ et $h'(0) = 2$.
+        reasoning: |-
+          Deux choses à établir. **D'abord** que $h$ est bien une solution de $(E)$ : il suffit de reconnaître que $h(x)=(x+1)e^{x}$ a exactement la forme générale $(Ax+B)e^{x}$ trouvée en a), avec $A=1$ et $B=1$. **Ensuite** que $h$ vérifie les deux conditions imposées, $h(0)=1$ et $h'(0)=2$.
+
+          On calcule $h'(x)$ par la dérivée d'un produit, puis on évalue $h$ et $h'$ en $0$. Comme une solution d'une équation du **second** ordre est entièrement déterminée par la donnée de $y(0)$ **et** $y'(0)$ (deux conditions pour deux constantes $A,B$), vérifier ces deux valeurs suffit à dire que $h$ est **la** solution — pas seulement une solution — associée à ces conditions.
+        steps:
+          - math: 'h(x) = (x+1)\,e^{x} = (1\cdot x + 1)\,e^{x}'
+            note: "h a la forme (Ax+B)e^x avec A=1 et B=1 : c'est donc une solution de (E)."
+          - math: "h'(x) = e^{x} + (x+1)e^{x} = (x+2)e^{x}"
+            note: "Dérivée du produit : (uv)' = u'v + uv'."
+          - math: "h(0) = (0+1)e^{0} = 1"
+            note: "Première condition : h(0)=1 vérifiée."
+          - math: "h'(0) = (0+2)e^{0} = 2"
+            note: "Seconde condition : h'(0)=2 vérifiée — A et B sont ainsi fixés de manière unique."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ────────────
+  - id: r-variation
+    title: "Variation fraîche — une autre équation du 2nd ordre, deux racines distinctes"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à être
+        un sujet réel. Le sujet réel est r-bac (2022, sourcé). Équation, fonction
+        et conditions choisies pour donner des résultats exacts (racines entières,
+        constantes entières) vérifiés à la main. Cas « deux racines réelles
+        distinctes » (Δ>0), complémentaire du cas « racine double » de r-bac.
+    intro: |-
+      Même chaîne d'outils que le sujet 2022 (équation caractéristique → solution générale → deux conditions initiales), habillage différent : une autre équation, dont l'équation caractéristique a cette fois **deux racines distinctes**. Le but est que tu ne recopies pas la solution de r-bac — tu dois reconnaître que la **même méthode** s'applique, quel que soit le nombre de racines.
+
+      On considère l'équation différentielle $(E') : y'' - 3y' + 2y = 0$.
+    questions:
+      - id: qa
+        part: "Résoudre $(E')$"
+        stem: |-
+          Résoudre l'équation différentielle $(E') : y'' - 3y' + 2y = 0$.
+        reasoning: |-
+          Même geste qu'en r-bac : l'équation caractéristique est $r^2-3r+2=0$. Ici le discriminant est **strictement positif**, l'équation se factorise $(r-1)(r-2)=0$ : **deux racines distinctes** $r_1=1$ et $r_2=2$. Dans ce cas (et c'est la différence avec la racine double), la solution générale est une **combinaison de deux exponentielles** $y(x)=A\,e^{r_1 x}+B\,e^{r_2 x}$ — pas de facteur $x$ devant, contrairement au cas $\Delta=0$.
+        steps:
+          - math: 'r^{2} - 3r + 2 = 0'
+            note: "Équation caractéristique de (E')."
+          - math: 'r^{2} - 3r + 2 = (r-1)(r-2) = 0 \implies r = 1 \ \text{ou}\ r = 2'
+            note: "Deux racines réelles distinctes."
+          - math: 'y(x) = A\,e^{x} + B\,e^{2x}, \quad A, B \in \mathbb{R}'
+            note: "Cas deux racines distinctes : solution générale $A e^{r1 x} + B e^{r2 x}$."
+      - id: qb
+        part: "Déterminer la solution vérifiant deux conditions"
+        stem: |-
+          Déterminer la solution $f$ de $(E')$ qui vérifie $f(0) = 1$ et $f'(0) = -1$.
+        reasoning: |-
+          La solution générale a **deux** constantes $A$ et $B$ : il faut donc **deux** conditions pour les fixer, et elles sont fournies par $f(0)$ et $f'(0)$. On dérive la solution générale, on évalue en $0$, et on résout le **système** de deux équations à deux inconnues. C'est l'analogue, pour le second ordre, du « une condition fixe la constante » du premier ordre — sauf qu'ici il en faut deux, une par constante.
+        steps:
+          - math: 'f(x) = A\,e^{x} + B\,e^{2x}'
+            note: "Solution générale (E')."
+          - math: "f'(x) = A e^{x} + 2B e^{2x}"
+            note: "Dérivée terme à terme."
+          - math: "f(0) = A + B = 1"
+            note: "Première condition f(0)=1."
+          - math: "f'(0) = A + 2B = -1"
+            note: "Seconde condition f'(0)=−1."
+          - math: 'A + B = 1, \quad A + 2B = -1 \implies B = -2,\ \ A = 3'
+            note: "Résolution du système (soustraction des deux équations)."
+          - math: 'f(x) = 3\,e^{x} - 2\,e^{2x}'
+            note: "Vérif : f(0)=3−2=1 ; f'(0)=3−4=−1. Cohérent."

@@ -1,0 +1,172 @@
+# Attempt-first exercises (summit-conversion campaign).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2020 session
+# normale, PC BIOF, code NS28F, AlloSchool element/109742 — statut « vérifié »
+# in docs/sujets/pc/noyaux-masse-energie.md), restreint à son volet
+# masse-énergie (équation de désintégration, énergie libérée, défaut de masse) ;
+# le volet décroissance du même exercice (constante λ, activité) relève du
+# chapitre decroissance-radioactive et n'est pas repris ici. r-variation est un
+# jumeau anti-mémorisation frais (mêmes savoir-faire, nombres/contexte
+# différents, status not-applicable).
+
+notion: noyaux-masse-energie
+
+exercises:
+  # ── r-bac — le VERIFIED 2020 national sujet (volet masse-énergie) ─────────
+  # Transcription fidèle de docs/sujets/pc/noyaux-masse-energie.md → « 2020 —
+  # session normale — Exercice III » (désintégration du polonium 210). On
+  # retient les questions masse-énergie (équation α ; énergie libérée lue sur
+  # le diagramme d'énergie ; défaut de masse en kg). Le diagramme d'énergie est
+  # transcrit EN MOTS dans l'intro (trois niveaux, du plus haut au plus bas).
+  - id: r-bac
+    title: "Exercice de type bac — désintégration du polonium 210 (2020)"
+    sourcing:
+      status: sourced
+      note: >-
+        2020 session normale — examen national PC BIOF, AlloSchool
+        element/109742 (code NS28F ; Exercice III, volet masse-énergie —
+        barème 1,5 pt sur les 2,5 pt de l'exercice ; le volet décroissance
+        λ/activité relève de decroissance-radioactive). Transcription vérifiée :
+        re-fetch AlloSchool element/109742 + diff OK
+        (docs/sujets/pc/noyaux-masse-energie.md).
+    intro: |-
+      **Désintégration du polonium 210 (examen national, session normale 2020).**
+
+      Le polonium, de symbole $\text{Po}$ et de numéro atomique $Z = 84$, est un métal radioactif rare. La désintégration d'un noyau de polonium 210 produit un noyau de plomb $^{A}_{Z}\text{Pb}$ avec émission d'une particule $\alpha$.
+
+      **Données :** $1\ \text{u} = 931{,}41\ \text{MeV}/c^2$ ; $1\ \text{u} = 1{,}66\times10^{-27}\ \text{kg}$.
+
+      **Diagramme d'énergie.** L'énoncé fournit un diagramme portant trois niveaux d'énergie (en MeV), du plus haut au plus bas :
+
+      - $E = 1{,}971820\times10^{5}\ \text{MeV}$ : le système des nucléons **séparés**, soit $126\ \text{neutrons} + 84\ \text{protons}$ ;
+      - $E = 1{,}955372\times10^{5}\ \text{MeV}$ : le **noyau** $^{210}_{84}\text{Po}$ ;
+      - $E = 1{,}955318\times10^{5}\ \text{MeV}$ : les **produits de désintégration** $^{A}_{Z}\text{Pb} + \ ^{4}_{2}\text{He}$.
+
+      Plus un niveau est bas, plus le système correspondant est lié (moins riche en énergie).
+    questions:
+      - id: q1
+        part: "Partie A — Écrire l'équation de la désintégration"
+        stem: |-
+          **(0,5 pt)** Écrire l'équation de la désintégration du polonium 210 en déterminant le nombre de masse $A$ et le numéro atomique $Z$ du noyau de plomb.
+        reasoning: |-
+          Une désintégration nucléaire conserve deux grandeurs séparément — c'est la double loi de Soddy, rencontrée au chapitre précédent : le nombre de nucléons $A$ (conservation de $A$) et le nombre de charge $Z$ (conservation de $Z$). La particule $\alpha$ n'est rien d'autre que le noyau d'hélium $^{4}_{2}\text{He}$ : elle emporte $4$ nucléons et $2$ charges. On écrit donc l'équation avec les deux inconnues, puis on impose que chaque total soit le même de part et d'autre de la flèche — jamais l'un sans l'autre, sinon le noyau fils est mal identifié.
+        steps:
+          - math: '^{210}_{84}\text{Po} \longrightarrow\ ^{A}_{Z}\text{Pb} + \ ^{4}_{2}\text{He}'
+            note: "On pose l'équation avec les deux inconnues A et Z ; la particule α est le noyau d'hélium ⁴₂He."
+          - math: 'A + 4 = 210 \implies A = 206'
+            note: "Conservation du nombre de nucléons A : le total des nucléons est le même avant et après."
+          - math: 'Z + 2 = 84 \implies Z = 82'
+            note: "Conservation du nombre de charge Z : les 84 charges du polonium se répartissent entre le plomb et la particule α."
+          - math: '\boxed{^{210}_{84}\text{Po} \longrightarrow\ ^{206}_{82}\text{Pb} + \ ^{4}_{2}\text{He}}'
+            note: "Le noyau fils est le plomb 206 : les deux bilans, sur A et sur Z, sont satisfaits."
+      - id: q2
+        part: "Partie B — Exploiter le diagramme d'énergie"
+        stem: |-
+          **(0,5 pt)** À l'aide du diagramme d'énergie, calculer l'énergie libérée $E_{lib}$ lors de la désintégration d'un noyau de polonium 210.
+        reasoning: |-
+          L'énergie libérée est la **descente** du système, du niveau du noyau de polonium vers le niveau des produits de désintégration (plus bas). Elle se lit directement comme la différence entre ces deux niveaux — inutile de repasser par les masses. C'est bien le niveau du polonium qui est le plus haut des deux : le système part de là et « tombe » vers les produits, et cette chute d'énergie est ce qui est libéré. On ne prend pas le sommet (nucléons séparés) ici : ce sommet sert à l'énergie de liaison, pas à l'énergie de la désintégration.
+        steps:
+          - math: 'E_{lib} = E(^{210}_{84}\text{Po}) - E(^{206}_{82}\text{Pb} + \ ^{4}_{2}\text{He})'
+            note: "L'énergie libérée est l'écart entre le niveau du noyau et le niveau des produits (le plus bas)."
+          - math: 'E_{lib} = 1{,}955372\times10^{5} - 1{,}955318\times10^{5}'
+            note: "On lit les deux niveaux sur le diagramme, en MeV."
+          - math: 'E_{lib} = 0{,}000054\times10^{5} = 5{,}4\ \text{MeV}'
+            note: "La désintégration d'un noyau de polonium 210 libère 5,4 MeV."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Calculer le défaut de masse $\Delta m$ du noyau de polonium 210, exprimé en kilogramme ($\text{kg}$).
+        reasoning: |-
+          Le défaut de masse d'un noyau et son énergie de liaison sont deux mesures de la même chose, reliées par $E_l = \Delta m\,c^2$ (chapitre 3). L'énergie de liaison du polonium se lit sur le diagramme : c'est l'écart entre le sommet (les $126$ neutrons et $84$ protons **séparés**) et le niveau du noyau assemblé — l'énergie qu'il faudrait fournir pour tout dissocier. Une fois $E_l$ obtenue en MeV, on remonte à $\Delta m$ en divisant par le facteur $931{,}41\ \text{MeV}/\text{u}$, ce qui donne la masse en unités $\text{u}$ ; puis on convertit ces $\text{u}$ en kilogrammes par $1\ \text{u} = 1{,}66\times10^{-27}\ \text{kg}$. On ne mélange jamais des $\text{u}$ avec $c$ en $\text{m/s}$ : on passe par le facteur, puis par le kilogramme.
+        steps:
+          - math: 'E_l(\text{Po}) = E(126\,\text{n} + 84\,\text{p}) - E(^{210}_{84}\text{Po})'
+            note: "L'énergie de liaison du noyau est l'écart entre le sommet (nucléons séparés) et le niveau du noyau."
+          - math: 'E_l(\text{Po}) = 1{,}971820\times10^{5} - 1{,}955372\times10^{5} = 1644{,}8\ \text{MeV}'
+            note: "On lit les deux niveaux : l'écart vaut 0,016448×10⁵ MeV."
+          - math: '\Delta m = \frac{E_l}{c^2} = \frac{1644{,}8}{931{,}41}\ \text{u} \approx 1{,}766\ \text{u}'
+            note: "On convertit l'énergie de liaison en masse via 1 u = 931,41 MeV/c² : on divise les MeV par ce facteur."
+          - math: '\Delta m \approx 1{,}766 \times 1{,}66\times10^{-27} \approx 2{,}93\times10^{-27}\ \text{kg}'
+            note: "On convertit enfin les u en kilogrammes via 1 u = 1,66×10⁻²⁷ kg."
+
+  # ── r-variation — jumeau anti-mémorisation frais (PAS un sujet réel) ──────
+  # Mêmes savoir-faire que r-bac (écrire l'équation α avec conservation A/Z ;
+  # lire une énergie libérée et une énergie de liaison sur un diagramme
+  # d'énergie ; convertir un défaut de masse en kg), mais sur le RADIUM 226 →
+  # RADON 222, avec des niveaux différents et deux angles neufs : l'énergie de
+  # liaison PAR NUCLÉON (R3) et la variation de masse de la réaction déduite de
+  # E_lib (signe de Δm, R4). Le but : que l'élève ne recopie pas le polonium et
+  # reconnaisse quel geste s'applique.
+  - id: r-variation
+    title: "Variation fraîche — désintégration du radium 226"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2020, sourcé). Le diagramme
+        d'énergie du radium ci-dessous est fabriqué pour l'exercice, cohérent
+        avec les valeurs réelles connues du radium 226.
+    intro: |-
+      Même structure profonde que l'exercice précédent, enrobage différent : ici le noyau père est le **radium 226**, de symbole $\text{Ra}$ et de numéro atomique $Z = 88$, qui se désintègre en émettant une particule $\alpha$ pour donner un noyau de radon $^{A}_{Z}\text{Rn}$. Le but est que tu ne puisses pas recopier la solution du polonium — tu dois reconnaître quel geste s'applique.
+
+      **Données :** $1\ \text{u} = 931{,}5\ \text{MeV}/c^2$ ; $1\ \text{u} = 1{,}66\times10^{-27}\ \text{kg}$.
+
+      **Diagramme d'énergie** (trois niveaux, en MeV, du plus haut au plus bas) :
+
+      - $E = 2{,}122303\times10^{5}\ \text{MeV}$ : les nucléons **séparés**, soit $138\ \text{neutrons} + 88\ \text{protons}$ ;
+      - $E = 2{,}104983\times10^{5}\ \text{MeV}$ : le **noyau** $^{226}_{88}\text{Ra}$ ;
+      - $E = 2{,}104934\times10^{5}\ \text{MeV}$ : les **produits** $^{A}_{Z}\text{Rn} + \ ^{4}_{2}\text{He}$.
+    questions:
+      - id: q1
+        stem: |-
+          Écrire l'équation de la désintégration du radium 226 en déterminant $A$ et $Z$ du noyau de radon.
+        reasoning: |-
+          Le geste est identique au sujet, seul le noyau change : on impose ensemble la conservation de $A$ et celle de $Z$, la particule $\alpha$ étant le noyau $^{4}_{2}\text{He}$ ($4$ nucléons, $2$ charges). Reconnaître que l'habillage a changé mais pas la procédure, c'est exactement le point de l'exercice.
+        steps:
+          - math: '^{226}_{88}\text{Ra} \longrightarrow\ ^{A}_{Z}\text{Rn} + \ ^{4}_{2}\text{He}'
+            note: "On pose l'équation avec les inconnues A et Z."
+          - math: 'A + 4 = 226 \implies A = 222'
+            note: "Conservation du nombre de nucléons A."
+          - math: 'Z + 2 = 88 \implies Z = 86'
+            note: "Conservation du nombre de charge Z."
+          - math: '\boxed{^{226}_{88}\text{Ra} \longrightarrow\ ^{222}_{86}\text{Rn} + \ ^{4}_{2}\text{He}}'
+            note: "Le noyau fils est le radon 222."
+      - id: q2
+        stem: |-
+          À l'aide du diagramme d'énergie, calculer l'énergie libérée $E_{lib}$ par la désintégration d'un noyau de radium 226.
+        reasoning: |-
+          Comme pour le polonium, l'énergie libérée est la descente du niveau du noyau vers le niveau des produits — la différence entre ces deux niveaux, et non l'écart avec le sommet des nucléons séparés (celui-là sert à l'énergie de liaison, pas à la désintégration).
+        steps:
+          - math: 'E_{lib} = E(^{226}_{88}\text{Ra}) - E(^{222}_{86}\text{Rn} + \ ^{4}_{2}\text{He})'
+            note: "Écart entre le niveau du noyau et le niveau des produits."
+          - math: 'E_{lib} = 2{,}104983\times10^{5} - 2{,}104934\times10^{5} = 0{,}000049\times10^{5}'
+            note: "On lit les deux niveaux sur le diagramme."
+          - math: 'E_{lib} = 4{,}9\ \text{MeV}'
+            note: "La désintégration libère 4,9 MeV par noyau."
+      - id: q3
+        stem: |-
+          Calculer le défaut de masse $\Delta m$ du noyau de radium 226 (en $\text{u}$ puis en $\text{kg}$), puis son énergie de liaison **par nucléon** $E_l/A$. Situer le radium sur la courbe d'Aston par rapport à un noyau de masse intermédiaire ($E_l/A \approx 8{,}8\ \text{MeV/nucléon}$).
+        reasoning: |-
+          L'énergie de liaison du radium se lit comme l'écart entre le sommet (nucléons séparés) et le niveau du noyau, exactement comme au chapitre 3 ; on en tire $\Delta m$ par $\Delta m = E_l/c^2$, en divisant par $931{,}5\ \text{MeV}/\text{u}$, puis on convertit en kilogrammes. La nouveauté par rapport au sujet, c'est la dernière étape : diviser $E_l$ par le nombre de nucléons $A$ pour obtenir $E_l/A$, la seule grandeur qui permet de comparer honnêtement la solidité de noyaux de tailles différentes (chapitre 4). Un noyau lourd comme le radium se situe sur la partie **descendante** de la courbe d'Aston : son $E_l/A$ est plus petit que celui des noyaux de masse intermédiaire (autour du fer), ce qui explique qu'une transformation vers des noyaux mieux liés puisse libérer de l'énergie. (Ce qui décide de l'instabilité elle-même, c'est le rapport $N/Z$, vu au chapitre précédent.)
+        steps:
+          - math: 'E_l(\text{Ra}) = 2{,}122303\times10^{5} - 2{,}104983\times10^{5} = 1732{,}0\ \text{MeV}'
+            note: "Écart entre le sommet (nucléons séparés) et le niveau du noyau."
+          - math: '\Delta m = \frac{1732{,}0}{931{,}5}\ \text{u} \approx 1{,}859\ \text{u} \approx 1{,}859 \times 1{,}66\times10^{-27} \approx 3{,}09\times10^{-27}\ \text{kg}'
+            note: "On passe des MeV aux u via le facteur 931,5, puis des u aux kg via 1,66×10⁻²⁷ kg."
+          - math: '\frac{E_l}{A} = \frac{1732{,}0}{226} \approx 7{,}66\ \text{MeV/nucléon}'
+            note: "On divise l'énergie de liaison TOTALE par le nombre de nucléons A = 226."
+          - math: '7{,}66 < 8{,}8'
+            note: "Le radium (7,66) est moins lié par nucléon qu'un noyau de masse intermédiaire (8,8) : il est sur la partie descendante de la courbe d'Aston, du côté des noyaux lourds instables."
+      - id: q4
+        stem: |-
+          Sans utiliser de nouvelles masses, retrouver la variation de masse $\Delta m_{\text{réaction}} = m_{\text{produits}} - m_{\text{réactifs}}$ de cette désintégration à partir de $E_{lib}$, et justifier son signe.
+        reasoning: |-
+          Puisque la désintégration libère de l'énergie, les produits sont forcément plus légers que le noyau de départ : la variation de masse de la réaction est **négative**, et sa valeur absolue correspond exactement à $E_{lib}$ par $E_{lib} = |\Delta m_{\text{réaction}}|\,c^2$ (chapitre 5). On remonte donc à $\Delta m_{\text{réaction}}$ en divisant $E_{lib}$ par le facteur $931{,}5$, sans avoir besoin des masses individuelles — le diagramme d'énergie a déjà tout dit. Le signe négatif n'est pas un détail : c'est lui qui dit que la réaction est spontanée (elle libère, elle ne consomme pas).
+        steps:
+          - math: '\Delta m_{\text{réaction}} = -\frac{E_{lib}}{c^2} = -\frac{4{,}9}{931{,}5}\ \text{u}'
+            note: "L'énergie libérée fixe la valeur absolue ; le signe est négatif car les produits sont plus légers."
+          - math: '\Delta m_{\text{réaction}} \approx -5{,}3\times10^{-3}\ \text{u} < 0'
+            note: "Δm de la réaction négatif : produits plus légers que le réactif, donc énergie libérée et désintégration spontanée."

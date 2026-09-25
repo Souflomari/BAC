@@ -1,0 +1,1875 @@
+notion: fonction-exponentielle
+skill_code: maths_fonction_exponentielle
+misconceptions:
+  # ── Misconception inventory (summit-conversion floor backfill — HONEST) ────
+  # Ce bank hérité avait `misconceptions: []` : aucun modèle nommé, aucun tag par
+  # distracteur. Le backfill ci-dessous (a) nomme les MODÈLES faux que ce
+  # chapitre doit confronter, alignés sur les rupture-gates de la leçon,
+  # (b) ajoute un `primary_misconception` par item, (c) tague chaque distracteur
+  # (par défaut le modèle primaire de l'item ; un `misconception` distinct quand
+  # le distracteur relève d'un autre modèle — voir secondary_coverage), et
+  # (d) rapporte un `coverage_summary` HONNÊTE en pied de fichier. Aucun compte
+  # n'est gonflé ; depuis le complément EXP-28…EXP-31, le plancher (>=3 par
+  # modèle) EST atteint — `floor_met: true`, recompté depuis les tags bruts.
+  - id: mc.math.maths_fonction_exponentielle.exp-signe-ou-domaine
+    label: "e^x pourrait être négatif ou nul, ou ne pas être défini partout"
+    description: >-
+      L'élève croit que e^x peut devenir négatif ou nul (0 dans l'image), ou
+      qu'il faudrait restreindre le domaine de exp comme pour ln ; il peut aussi
+      généraliser « e^x > 0 » a une fonction entière (ex. e^x + 2x - 3) pour
+      conclure a tort qu'elle ne s'annule jamais.
+    contradicts_principle: >-
+      exp est définie sur R tout entier, a valeurs dans ]0,+inf[ : e^x > 0 pour
+      tout réel x, et 0 n'est jamais atteint (asymptote y=0 en -inf). C'est ln,
+      pas exp, qui a un domaine restreint.
+  - id: mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues
+    label: "e^0, e^1, E(0) mal evalues ; ln(e^x) et e^{ln x} confondues"
+    description: >-
+      L'élève se trompe sur les valeurs remarquables (e^0=0, e^1=1, E(0)=e…) ou
+      confond les deux identités de réciprocité : ln(e^x)=x (vraie pour tout x)
+      et e^{ln x}=x (seulement pour x>0), ou croit « E(0) indefini car ln(0)
+      n'existe pas ».
+    contradicts_principle: >-
+      e^0=1 (car ln 1=0) et e^1=e (car ln e=1). ln(e^x)=x tient pour TOUT réel x
+      (e^x>0 toujours), tandis que e^{ln x}=x exige x>0. E(0) cherche le réel dont
+      le ln vaut 0 : c'est 1, parfaitement défini.
+  - id: mc.math.maths_fonction_exponentielle.bijection-existence-unicite
+    label: "bijection de ln / corollaire du TVI mal appliques"
+    description: >-
+      L'élève confond le domaine ]0,+inf[ de ln (entrées) avec son image R
+      (valeurs, négatives comprises), croit a 0 ou plusieurs solutions la ou la
+      stricte monotonie en garantit exactement une, ou applique le TVI sans
+      reunir continuite + stricte monotonie + changement de signe.
+    contradicts_principle: >-
+      ln realise une bijection de ]0,+inf[ sur R : pour tout réel k (même
+      négatif), ln(x)=k a une unique solution. Le corollaire du TVI (continuité +
+      stricte monotonie + changement de signe) donne existence ET unicite.
+  - id: mc.math.maths_fonction_exponentielle.somme-produit-confondus
+    label: "e^{a+b} = e^a + e^b, ou e^a x e^b = e^{a x b}"
+    description: >-
+      L'élève garde l'addition au lieu de la transformer (e^{a+b}=e^a+e^b), ou
+      croit que multiplier deux exponentielles multiplie leurs exposants
+      (e^a x e^b = e^{a x b}). La règle « somme d'exposants -> produit » est mal
+      encodee.
+    contradicts_principle: >-
+      Propriété fondatrice : e^{a+b} = e^a x e^b — une SOMME d'exposants devient
+      un PRODUIT d'exponentielles. exp ne se distribue pas sur une somme
+      (e^{a+b} != e^a+e^b), et un produit d'exponentielles ADDITIONNE les
+      exposants (e^a x e^b = e^{a+b}, pas e^{a x b}).
+  - id: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur
+    label: "e^{-a} mal gere ; différence lue comme quotient ; signe d'exposant"
+    description: >-
+      L'élève applique mal les règles dérivées du produit : e^{-a} devient -e^a
+      (change le signe) ou e^a (ignore le signe) au lieu de 1/e^a ; une
+      différence e^a - e^b est lue comme e^{a-b} (règle du quotient plaquee sur
+      une soustraction) ; ou le signe/la combinaison des exposants dans un
+      produit est erroné.
+    contradicts_principle: >-
+      e^{-a} = 1/e^a (toujours strictement positif). Le QUOTIENT donne la
+      différence d'exposants : e^a / e^b = e^{a-b}, pas la soustraction
+      e^a - e^b. Dans un produit, les exposants s'additionnent en conservant
+      leur signe.
+  - id: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+    label: "(e^u)' = e^u, = u', ou = u e^u (au lieu de u' e^u)"
+    description: >-
+      En dérivant e^{u(x)}, l'élève oublie un morceau : e^u seul (u' oublie), u'
+      seul (l'exponentielle perdue), u e^u (u au lieu de u'), ou derive mal
+      l'intérieur u. Inclut la règle du produit tronquee ou l'erreur de signe
+      quand exp apparaît dans un produit.
+    contradicts_principle: >-
+      (e^u)' = u' e^u, sans aucune condition de signe sur u : « dérivée de
+      l'intérieur, fois l'exponentielle de l'intérieur ». Les deux facteurs sont
+      indispensables. Pour un produit, on applique (uv)' = u'v + uv' en entier.
+  - id: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+    label: "e^x/x lu comme 0, 1, ou « pas de limite » (FI non levée)"
+    description: >-
+      L'élève conclut a l'envers ou pas du tout : e^x/x -> 0 (sens de ln), ou
+      inf/inf lu comme 1, ou « forme indeterminee = limite inexistante ». Il
+      croit que e^x croit comme x.
+    contradicts_principle: >-
+      Croissances comparees : lim_{x->+inf} e^x/x = +inf — e^x ecrase x (le sens
+      oppose de ln x / x -> 0). Une forme indéterminée n'est pas une absence de
+      limite : elle exige un calcul pour trancher.
+  - id: mc.math.maths_fonction_exponentielle.limite-exp-moins-infini
+    label: "lim_{-inf} e^x = -inf / oscille / mauvaise branche"
+    description: >-
+      L'élève traite e^x comme x en -inf (limite -inf), croit qu'il oscille, ou
+      place l'asymptote y=0 du mauvais cote (en +inf). Il confond aussi la
+      limite en -inf avec le comportement en +inf.
+    contradicts_principle: >-
+      lim_{x->-inf} e^x = 0 : la courbe admet l'asymptote horizontale y=0 en
+      -inf, jamais franchie (e^x>0). exp est strictement monotone, elle
+      n'oscille pas ; en +inf, au contraire, e^x -> +inf.
+  - id: mc.math.maths_fonction_exponentielle.inegalite-reference-erreur
+    label: "e^x >= x+1 mal appliquee (oubli du +1, sens inverse, e^{x+1})"
+    description: >-
+      En exploitant l'inégalité de référence e^x >= x+1, l'élève oublie le « +1 »
+      (compare e^a a a), inverse le sens (<= au lieu de >=), ou confond le nombre
+      x+1 avec l'exponentielle e^{x+1}.
+    contradicts_principle: >-
+      Pour tout réel x, e^x >= x+1 (la courbe de exp reste au-dessus de sa
+      tangente en 0, par convexité). En x=a, cela donne e^a >= a+1 (le nombre),
+      pas e^a >= a ni e^a >= e^{a+1}.
+  - id: mc.math.maths_fonction_exponentielle.allure-courbe-erreur
+    label: "exp aurait un minimum / decroitrait ; tangente ou symétrie erronees"
+    description: >-
+      L'élève prete a exp un profil « en creux » (décroissante puis croissante,
+      minimum en 0), confond convexité et existence d'un minimum, se trompe sur
+      la tangente en 0 (oubli du +1, pente e, tangente horizontale), ou applique
+      mal la symétrie par rapport a y=x avec la courbe de ln.
+    contradicts_principle: >-
+      (e^x)'=e^x>0 partout : exp est strictement croissante sur R, sans minimum
+      ni maximum. Sa tangente en 0 est y=x+1 (pente e^0=1). Convexité = courbe
+      au-dessus de ses tangentes, pas un minimum. La symétrie par rapport a y=x
+      echange les coordonnées d'un point.
+  - id: mc.math.maths_fonction_exponentielle.primitive-exp-erreur
+    label: "primitive de e^x / u'e^u traitee comme une puissance ou tronquee"
+    description: >-
+      L'élève primitive e^x « comme une puissance » (e^{x+1}/(x+1)), place la
+      constante dans l'exposant (e^{x+C}), ou, pour u'e^u, garde/oublie un
+      facteur, met u' dans l'exposant, ou multiplie e^u par u.
+    contradicts_principle: >-
+      exp est sa propre primitive : les primitives de e^x sont e^x + C (constante
+      ADDITIVE). Les primitives de u'e^u sont e^u + C — on identifie u, on
+      verifie que le facteur devant e^u est exactement u' (quitte a ajuster par
+      une constante).
+  - id: mc.math.maths_fonction_exponentielle.resolution-exp-erreur
+    label: "e^{x+1}=3 => x+1=3 ; injectivite mal appliquee ; sens/domaine errones"
+    description: >-
+      En resolvant equations/inequations : l'élève « efface » e sans passer par
+      ln (e^{x+1}=3 => x+1=3), applique mal l'injectivite (e^A=e^B => A=-B),
+      inverse le sens d'une inéquation (comme si exp decroissait), ajoute une
+      condition de domaine inutile, se trompe en isolant x, ou confond ln(3)-1
+      avec ln(3-1).
+    contradicts_principle: >-
+      exp est strictement croissante et injective sur R, définie partout (aucune
+      condition de domaine) : e^A=e^B <=> A=B, e^A<=e^B <=> A<=B (sens conserve).
+      e^x=k (k>0) <=> x=ln k, et ln(k)-1 n'est pas ln(k-1).
+  - id: mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible
+    label: "e^x = k<=0 « résolu » ; différence d'exponentielles toujours positive"
+    description: >-
+      L'élève résout e^x = -4 comme e^x = 4 ou écrit ln(-4) / -ln(4), au lieu de
+      conclure a l'absence de solution ; ou il croit qu'une différence de deux
+      exponentielles est toujours positive.
+    contradicts_principle: >-
+      e^x > 0 pour tout réel x : e^x = k n'a de solution que si k>0 (alors
+      x=ln k) ; pour k<=0, aucune solution. « e^x>0 » porte sur chaque
+      exponentielle prise SEULE, pas sur une différence e^A - e^B, qui peut être
+      négative.
+items:
+  - id: EXP-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_fonction_exponentielle
+    tags: ["signe", "domaine"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.exp-signe-ou-domaine
+    stem: >
+      Pour $x$ très négatif (par exemple $x=-1000$), que peut-on affirmer sur
+      $e^x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$e^x$ reste strictement positif, mais devient extrêmement proche de $0$."
+        correct: true
+      - id: B
+        text: "$e^x$ finit par devenir négatif pour des valeurs assez négatives de $x$."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.exp-signe-ou-domaine
+        feedback: >
+          $e^x$ est TOUJOURS strictement positif, quel que soit le réel $x$ —
+          c'est la définition même de $\exp$ comme réciproque de $\ln$ (son
+          image est $]0,+\infty[$, jamais un nombre négatif). Aussi négatif
+          que soit $x$, $e^x$ se rapproche de $0$ sans jamais le franchir.
+      - id: C
+        text: "$e^x$ devient exactement nul, c'est-à-dire égal à $0$, pour $x$ très négatif."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.exp-signe-ou-domaine
+        feedback: >
+          $0$ n'est pas dans l'image de $\exp$ : il n'existe aucun réel $x$
+          tel que $e^x=0$, exactement parce que $\ln(0)$ n'existe pas — il
+          n'y a rien à « défaire » pour $y=0$. $e^x$ s'approche de $0$ sans
+          jamais l'atteindre.
+      - id: D
+        text: "$e^x$ n'est tout simplement pas défini lorsque $x$ est très négatif."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.exp-signe-ou-domaine
+        feedback: >
+          C'est $\ln$ qui a un domaine restreint ($]0,+\infty[$), pas $\exp$.
+          $\exp$ est définie sur $\mathbb{R}$ tout entier, sans aucune
+          restriction — c'est justement ce qui la distingue de $\ln$.
+    correct_feedback: >
+      Exactement : $e^x>0$ pour tout réel $x$ (rien n'y échappe), et quand
+      $x\to-\infty$, $e^x\to0$ sans jamais atteindre $0$ — c'est l'asymptote
+      horizontale $y=0$ de la courbe de $\exp$.
+    solution: |
+      **Fait fondamental (chapitre 2) :** $\exp(x)>0$ pour tout réel $x$, car
+      l'image de $\exp$ est $]0,+\infty[$ (c'est le domaine de $\ln$).
+
+      **Comportement en $-\infty$ (chapitre 5) :** $\displaystyle\lim_{x\to-\infty} e^x = 0$,
+      mais cette limite n'est jamais atteinte : $e^x$ reste strictement
+      positif à chaque instant, aussi petit soit-il.
+
+  - id: EXP-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_fonction_exponentielle
+    tags: ["proprietes-algebriques", "somme-produit"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.somme-produit-confondus
+    stem: >
+      Pour tous réels $a$ et $b$, quelle égalité est toujours vraie ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$e^{a+b} = e^a + e^b$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.somme-produit-confondus
+        feedback: >
+          C'est la confusion la plus fréquente sur ce chapitre : la
+          propriété qui transforme une SOMME d'exposants en produit
+          concerne le produit $e^a\times e^b$, pas la somme $e^a+e^b$. Teste
+          avec $a=b=0$ : $e^{0+0}=e^0=1$, alors que $e^0+e^0=1+1=2$ — les
+          deux ne coïncident pas.
+      - id: B
+        text: "$e^{a+b} = e^a \\times e^b$"
+        correct: true
+      - id: C
+        text: "$e^{a}\\times e^{b} = e^{a\\times b}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.somme-produit-confondus
+        feedback: >
+          Ici, ce sont les EXPOSANTS qui s'additionnent quand les facteurs
+          se multiplient ($e^a\times e^b=e^{a+b}$) — pas les arguments $a$ et
+          $b$ qui se multiplient entre eux à l'intérieur d'un nouvel
+          exposant. C'est l'inverse de la bonne règle.
+      - id: D
+        text: "$e^{a}-e^{b} = e^{a-b}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur
+        feedback: >
+          Une DIFFÉRENCE d'exponentielles n'est pas l'exponentielle d'une
+          différence. La propriété analogue à $a-b$ concerne le quotient :
+          $\dfrac{e^a}{e^b}=e^{a-b}$ (grâce à $e^{-b}=\frac{1}{e^b}$), pas la
+          soustraction $e^a-e^b$.
+    correct_feedback: >
+      Exactement : $e^{a+b}=e^a\times e^b$ est la propriété centrale du
+      chapitre — elle transforme une somme d'exposants en produit, exactement
+      l'inverse de ce que fait $\ln$ sur un produit.
+    solution: |
+      **Propriété (produit), établie au chapitre 3 :** pour tous réels $a$ et $b$ :
+      $$e^{a+b} = e^a \times e^b$$
+      Elle se démontre en comparant les logarithmes des deux membres et en
+      utilisant l'injectivité de $\ln$.
+
+  - id: EXP-3
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_fonction_exponentielle
+    tags: ["proprietes-algebriques", "oppose"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur
+    stem: >
+      Pour tout réel $a$, que vaut $e^{-a}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-e^a$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur
+        feedback: >
+          Ce choix change le SIGNE du résultat au lieu de prendre son
+          inverse. Mais $e^{-a}$, comme n'importe quelle valeur de $\exp$,
+          reste toujours strictement positif (chapitre 2) — ce n'est jamais
+          l'opposé (négatif) de $e^a$. La propriété de l'opposé porte sur
+          l'exposant, pas sur le signe du résultat.
+      - id: B
+        text: "$\\dfrac{1}{e^a}$"
+        correct: true
+      - id: C
+        text: "$\\dfrac{1}{-e^a}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur
+        feedback: >
+          Ce choix cumule deux erreurs : il prend bien l'inverse, mais y
+          ajoute aussi un signe négatif. Le résultat serait négatif — or
+          $e^{-a}>0$ toujours (chapitre 2), quelle que soit la valeur de $a$. La
+          bonne réponse ne comporte aucun signe négatif.
+      - id: D
+        text: "$e^a$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur
+        feedback: >
+          Ce choix ignore complètement le signe négatif de l'exposant, comme
+          si $e^{-a}$ et $e^a$ étaient la même chose. Un exposant négatif
+          signifie « prendre l'inverse », pas « ignorer le signe ».
+    correct_feedback: >
+      Exactement : $e^a\times e^{-a}=e^{a+(-a)}=e^0=1$, donc en divisant par
+      $e^a$ (jamais nul), $e^{-a}=\dfrac{1}{e^a}$.
+    solution: |
+      **Démonstration (chapitre 3) :** applique la propriété du produit à $a$ et
+      $-a$ :
+      $$e^a \times e^{-a} = e^{a+(-a)} = e^0 = 1$$
+      Comme $e^a\neq0$ (toujours strictement positif), on divise les deux
+      membres par $e^a$ :
+      $$e^{-a} = \frac{1}{e^a}$$
+
+  - id: EXP-4
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: ["derivee", "exp-u"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+    stem: >
+      Quelle est la dérivée de $f(x) = e^{3x^2+1}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$f'(x) = 6x\\,e^{3x^2+1}$"
+        correct: true
+      - id: B
+        text: "$f'(x) = e^{3x^2+1}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          Tu as oublié de multiplier par la dérivée de l'intérieur. La
+          formule est $(e^u)'=u'e^u$, pas $e^u$ tout seul — ici
+          $u'(x)=6x$ ne doit pas disparaître.
+      - id: C
+        text: "$f'(x) = 6x$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          Tu as calculé $u'(x)=6x$ (correct) mais oublié de multiplier par
+          $e^{u(x)}=e^{3x^2+1}$. La dérivée d'une exponentielle composée est
+          un produit, pas seulement le facteur $u'$.
+      - id: D
+        text: "$f'(x) = 3x^2\\,e^{3x^2+1}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          Erreur de dérivation de l'intérieur : $u(x)=3x^2+1$ a pour dérivée
+          $u'(x)=6x$ (le facteur $3$ se multiplie par l'exposant $2$ de
+          $x^2$), pas $3x^2$ — tu as recopié $u(x)$ au lieu de calculer
+          $u'(x)$.
+    correct_feedback: >
+      Oui : avec $u(x)=3x^2+1$ et $u'(x)=6x$,
+      $(e^u)'(x) = u'(x)e^{u(x)} = 6x\,e^{3x^2+1}$.
+    solution: |
+      $u(x) = 3x^2+1$, donc $u'(x) = 6x$ :
+      $$f'(x) = u'(x)\,e^{u(x)} = 6x\,e^{3x^2+1}$$
+
+  - id: EXP-5
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: ["limites", "croissances-comparees"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to +\infty} \dfrac{e^x}{x}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$+\\infty$"
+        correct: true
+      - id: B
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+        feedback: >
+          C'est le résultat de croissances comparées pour $\ln$, pas pour
+          $\exp$ — tu as inversé le sens. Ici, $e^x$ grossit infiniment plus
+          VITE que $x$ (pas plus lentement) : leur rapport explose vers
+          $+\infty$, il ne s'écrase pas vers $0$.
+      - id: C
+        text: "$1$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+        feedback: >
+          Un rapport de deux quantités qui tendent toutes deux vers
+          $+\infty$ ne vaut pas automatiquement $1$ — ça dépend de LAQUELLE
+          grossit plus vite. Ici $e^x$ grossit infiniment plus vite que $x$,
+          donc le rapport diverge vers $+\infty$, pas vers $1$.
+      - id: D
+        text: >-
+          La limite n'existe pas, car $\dfrac{\infty}{\infty}$ est une forme
+          indéterminée non levée
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+        feedback: >
+          C'est vrai que $\frac{\infty}{\infty}$ est une forme
+          indéterminée — mais « indéterminée » veut dire qu'il faut un calcul
+          supplémentaire pour trancher, pas que la limite n'existe pas. Le
+          résultat de croissances comparées lève précisément cette
+          indétermination : la limite existe et vaut $+\infty$.
+    correct_feedback: >
+      Exactement : c'est le résultat de croissances comparées pour $\exp$ —
+      $e^x$ grossit infiniment plus vite que $x$, donc leur rapport diverge
+      vers $+\infty$ (le sens opposé de ce qui se passait pour $\ln(x)/x$).
+    solution: |
+      C'est le résultat de croissances comparées (démontré via l'inégalité
+      $e^t\geq t+1$ appliquée à $t=x/2$, puis élévation au carré et
+      comparaison) :
+      $$\lim_{x \to +\infty} \frac{e^x}{x} = +\infty$$
+
+  - id: EXP-6
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: maths_fonction_exponentielle
+    tags: ["equations", "passage-par-ln"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.resolution-exp-erreur
+    stem: >
+      Résous dans $\mathbb{R}$ l'équation $e^{x+1} = 3$. Que vaut $x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$x = \\ln(3)-1$"
+        correct: true
+      - id: B
+        text: "$x = 2$ (car $x+1=3$)"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.resolution-exp-erreur
+        feedback: >
+          Tu as traité $e^{x+1}=3$ comme si c'était directement $x+1=3$, en
+          « effaçant » le $e$ sans rien faire d'autre. Mais $e^{x+1}=3$ ne
+          dit pas que l'exposant vaut $3$ — il faut appliquer $\ln$ aux deux
+          membres pour « défaire » l'exponentielle : $\ln(e^{x+1})=\ln(3)$,
+          donc $x+1=\ln(3)$, pas $x+1=3$.
+      - id: C
+        text: "$x = \\ln(3)+1$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.resolution-exp-erreur
+        feedback: >
+          L'égalité $\ln(3)=x+1$ est correcte, mais l'isolement de $x$
+          comporte une erreur de signe : il faut SOUSTRAIRE $1$ des deux
+          côtés ($x=\ln(3)-1$), pas l'ajouter.
+      - id: D
+        text: "$x = \\ln(2)$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.resolution-exp-erreur
+        feedback: >
+          Ce choix confond $\ln(3)-1$ (la bonne expression, où l'on
+          soustrait $1$ APRÈS avoir pris le logarithme) avec $\ln(3-1)=\ln(2)$
+          (où l'on soustrait $1$ À L'INTÉRIEUR du logarithme, avant de le
+          calculer). Ce sont deux quantités différentes : $\ln(3)-1\neq\ln(2)$.
+    correct_feedback: >
+      Exactement : $e^{x+1}=3 \iff x+1=\ln(3)$ (en appliquant $\ln$ aux deux
+      membres, tous deux strictement positifs) $\iff x=\ln(3)-1$.
+    solution: |
+      **Puisque $3>0$**, $3$ est bien dans l'image de $\exp$ : une solution
+      existe. On applique $\ln$ aux deux membres (identité fondamentale du
+      chapitre 2, $\ln(e^t)=t$) :
+      $$e^{x+1} = 3 \iff \ln\big(e^{x+1}\big) = \ln(3)$$
+      $$\iff x+1 = \ln(3)$$
+      $$\iff x = \ln(3)-1$$
+      $$\mathcal{S} = \{\ln(3)-1\}$$
+
+  - id: EXP-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_fonction_exponentielle
+    tags: ["accroche", "valeurs-remarquables", "prediction"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues
+    stem: >
+      Avant de lire la suite du chapitre : on cherche une fonction $E$ qui «
+      défait » ce que fait $\ln$, c'est-à-dire telle que $\ln(E(k))=k$ pour
+      tout réel $k$. Sachant que $\ln(1)=0$, que devrait valoir $E(0)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$E(0) = 0$, car $0$ est un « élément neutre » que $E$ devrait laisser inchangé."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues
+        feedback: >
+          $E(0)$ doit vérifier $\ln(E(0))=0$ — ce n'est pas une histoire
+          d'« élément neutre » recopié tel quel, mais une vraie condition à
+          satisfaire. Or $\ln(0)$ n'existe même pas, donc $E(0)$ ne peut pas
+          valoir $0$ ; c'est $1$ qui vérifie $\ln(1)=0$.
+      - id: B
+        text: "$E(0) = 1$, car $1$ est l'unique réel dont le logarithme vaut $0$."
+        correct: true
+      - id: C
+        text: "$E(0)$ n'est pas défini, car $\\ln(0)$ n'existe pas."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues
+        feedback: >
+          Confusion entre deux rôles différents : ici, $0$ n'est PAS l'entrée
+          dont on prendrait le logarithme, c'est la VALEUR que doit prendre
+          $\ln(E(0))$. La question porte sur quel réel $x$ vérifie
+          $\ln(x)=0$ — et ce réel existe bel et bien, c'est $x=1$.
+      - id: D
+        text: "$E(0) = e$, car $e$ est la valeur de référence de ce chapitre."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues
+        feedback: >
+          $e$ est la valeur qui répond à une autre question : c'est le réel
+          dont le logarithme vaut $1$ (donc ce serait plutôt $E(1)$). Pour
+          $E(0)$, il faut le réel dont le logarithme vaut $0$, qui est $1$,
+          pas $e$.
+    correct_feedback: >
+      Exactement : $\ln(1)=0$, donc le réel dont le logarithme vaut $0$ est
+      $1$. C'est précisément ce que le chapitre 2 confirmera : $\exp(0)=1$.
+    solution: |
+      **Ce qu'on cherche :** le réel $x$ tel que $\ln(x)=0$.
+
+      On sait (chapitre précédent) que $\ln(1)=0$, et que $\ln$ est
+      strictement croissante donc injective : $1$ est le SEUL réel dont le
+      logarithme s'annule. Donc $E(0)=1$ — ce que le chapitre 2 nommera $\exp(0)=1$.
+
+  - id: EXP-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_fonction_exponentielle
+    tags: ["accroche", "somme-produit", "prediction"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.somme-produit-confondus
+    stem: >
+      Toujours en anticipant : $\ln$ transforme un produit en somme,
+      $\ln(uv)=\ln(u)+\ln(v)$. Si $E$ est la fonction qui défait $\ln$,
+      comment $E(a+b)$ devrait-il s'exprimer en fonction de $E(a)$ et
+      $E(b)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$E(a+b) = E(a) + E(b)$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.somme-produit-confondus
+        feedback: >
+          Ce choix garde l'addition telle quelle au lieu de la transformer —
+          l'erreur symétrique de ce que fait $\ln$ sur un produit. Si $E$
+          « défait » $\ln$, elle doit faire le trajet INVERSE : transformer
+          une somme en produit, pas la recopier.
+      - id: B
+        text: "$E(a+b) = E(a) - E(b)$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur
+        feedback: >
+          Confond « défaire une somme » avec « soustraire ». L'opération
+          inverse de la transformation « produit devient somme » (faite par
+          $\ln$) doit rester une MULTIPLICATION du côté de $E$, pas une
+          soustraction.
+      - id: C
+        text: "$E(a+b) = E(a) \\times E(b)$"
+        correct: true
+      - id: D
+        text: "$E(a+b) = \\dfrac{E(a)}{E(b)}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur
+        feedback: >
+          Bon réflexe de changer d'opération, mais mauvais choix : la
+          division correspond à défaire une DIFFÉRENCE ($a-b$), pas une
+          somme ($a+b$). Pour une somme d'arguments, c'est la multiplication
+          qui convient.
+    correct_feedback: >
+      Exactement la bonne anticipation : $\ln$ transforme un produit en
+      somme, donc sa réciproque doit transformer une somme en produit. Le chapitre 3
+      le démontrera proprement : $\exp(a+b) = \exp(a)\times\exp(b)$.
+    solution: |
+      **Intuition à valider plus tard (chapitre 3) :** puisque $\ln(uv)=\ln(u)+\ln(v)$
+      transforme un produit en somme, la fonction $E$ qui défait $\ln$ doit
+      transformer une somme en produit :
+      $$E(a+b) = E(a) \times E(b)$$
+      Ce sera démontré rigoureusement au chapitre 3 via l'injectivité de $\ln$.
+
+  - id: EXP-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_fonction_exponentielle
+    tags: ["accroche", "bijection", "existence-unicite"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.bijection-existence-unicite
+    stem: >
+      $\ln$ réalise une bijection de $]0,+\infty[$ vers $\mathbb{R}$. Que
+      garantit précisément ce fait pour l'équation $\ln(x) = -50$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle admet une unique solution $x \\in\\, ]0,+\\infty[$ — ni aucune, ni plusieurs."
+        correct: true
+      - id: B
+        text: "Elle n'admet aucune solution, car $-50$ est négatif et $\\ln$ ne prend que des valeurs positives."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.bijection-existence-unicite
+        feedback: >
+          Confusion entre le DOMAINE de $\ln$ (les entrées $x$, qui doivent
+          être positives) et son ENSEMBLE D'ARRIVÉE (les valeurs $\ln(x)$,
+          qui couvrent tout $\mathbb{R}$, y compris les négatifs). La
+          bijectivité affirme justement que $\ln$ atteint TOUT réel, positif
+          ou négatif.
+      - id: C
+        text: "Elle admet exactement deux solutions, une positive et une proche de zéro."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.bijection-existence-unicite
+        feedback: >
+          C'est la stricte croissance de $\ln$ (donc son injectivité) qui
+          garantit qu'il ne peut jamais y avoir deux solutions distinctes à
+          $\ln(x)=k$. L'intuition « deux solutions » vient peut-être
+          d'équations comme $x^2=k$, mais $\ln$ ne se comporte pas ainsi.
+      - id: D
+        text: "On ne peut rien affirmer sans calculer $x$ explicitement, car $\\ln$ n'a pas de formule inverse connue à ce stade."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.bijection-existence-unicite
+        feedback: >
+          C'est exactement la distinction que ce chapitre installe : ne pas
+          savoir ÉCRIRE la solution (vrai, pour l'instant) n'empêche pas de
+          savoir qu'elle EXISTE et qu'elle est UNIQUE (garanti par la
+          bijectivité, indépendamment de toute formule).
+    correct_feedback: >
+      Exactement : la bijectivité de $\ln$ garantit existence ET unicité pour
+      tout réel $k$ — y compris $k=-50$ — même si, à ce stade, on ne sait pas
+      encore écrire cette solution autrement que comme « le réel dont le
+      logarithme vaut $-50$ ».
+    solution: |
+      **Ce que « bijection » garantit :** pour tout réel $k$, l'équation
+      $\ln(x)=k$ admet une unique solution $x\in\,]0,+\infty[$ — ni zéro
+      solution, ni plusieurs. C'est vrai pour $k=-50$ comme pour n'importe
+      quel autre réel. La fonction $\exp$ (introduite au chapitre 2) donnera enfin un
+      nom à cette solution : $x=\exp(-50)$.
+
+  - id: EXP-10
+    rung: "R1"
+    difficulty_level: 1
+    skill_code: maths_fonction_exponentielle
+    tags: ["valeurs-remarquables", "exp-0-exp-1"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues
+    stem: >
+      Que valent $e^{0}$ et $e^{1}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$e^{0}=0$ et $e^{1}=1$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues
+        feedback: >
+          $\exp$ n'est pas une fonction du type « la sortie recopie
+          l'entrée » : $e^0$ vaut $1$, pas $0$, exactement parce que
+          $\ln(1)=0$ (élément neutre MULTIPLICATIF, pas additif). Cette
+          confusion inverse aussi $e^1$, qui vaut $e\approx2{,}718$, pas $1$.
+      - id: B
+        text: "$e^{0}=1$ et $e^{1}=1$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues
+        feedback: >
+          $e^0$ est correct, mais $e^1$ ne redonne pas $1$ : $e^1=e$ par
+          définition même du nombre $e$ (le réel dont le logarithme vaut
+          $1$). Ces deux valeurs remarquables sont différentes, ne les
+          confonds pas.
+      - id: C
+        text: "$e^{0}=e$ et $e^{1}=1$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues
+        feedback: >
+          Les deux valeurs sont inversées : c'est $e^0$ qui vaut $1$ (car
+          $\ln(1)=0$) et $e^1$ qui vaut $e$ (car $\ln(e)=1$) — pas le
+          contraire.
+      - id: D
+        text: "$e^{0}=1$ et $e^{1}=e$"
+        correct: true
+    correct_feedback: >
+      Exactement : $e^0=1$ car $\ln(1)=0$, et $e^1=e$ car $e$ est PAR
+      DÉFINITION le réel dont le logarithme vaut $1$.
+    solution: |
+      **$e^0$ :** l'unique réel positif dont le logarithme vaut $0$ est $1$
+      (car $\ln(1)=0$, et $\ln$ est injective) : $e^0=1$.
+
+      **$e^1$ :** l'unique réel positif dont le logarithme vaut $1$ est, par
+      définition, le nombre $e$ : $e^1=e\approx2{,}718$.
+
+  - id: EXP-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_fonction_exponentielle
+    tags: ["identite-fondamentale", "domaine"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues
+    stem: >
+      Laquelle de ces identités est vraie pour TOUT réel $x$, sans aucune
+      condition supplémentaire ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$e^{\\ln(x)} = x$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues
+        feedback: >
+          Cette identité n'est valable que pour $x>0$ (il faut que $\ln(x)$
+          soit défini) — elle n'a aucun sens pour $x\leq0$. Contrairement à
+          $\ln(e^x)=x$, qui elle tient pour absolument tout réel $x$, car
+          $e^x$ est toujours strictement positif et donc toujours dans le
+          domaine de $\ln$.
+      - id: B
+        text: "$\\ln(e^{x}) = x$"
+        correct: true
+      - id: C
+        text: "$\\ln(e^{x}) = e^{x}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues
+        feedback: >
+          Confond l'identité fondamentale $\ln(e^x)=x$ avec une simplification
+          erronée qui laisserait $e^x$ inchangé. $\ln$ et $\exp$ sont
+          réciproques : leur composition redonne l'entrée $x$, pas $e^x$.
+      - id: D
+        text: "$e^{\\ln(x)} = 1$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues
+        feedback: >
+          La composition de deux réciproques redonne l'entrée de départ, pas
+          une constante fixe : $e^{\ln(x)}=x$ (pour $x>0$), pas $1$
+          systématiquement — sauf dans le cas particulier $x=1$.
+    correct_feedback: >
+      Exactement : $\ln(e^x)=x$ est vraie pour TOUT réel $x$, sans condition,
+      car $e^x>0$ toujours. C'est $e^{\ln(x)}=x$ qui, elle, exige $x>0$.
+    solution: |
+      Les deux identités fondamentales du chapitre 2 :
+      $$\ln(e^x) = x \ \text{pour TOUT réel } x \qquad\qquad e^{\ln(x)} = x \ \text{pour tout } x>0 \text{ seulement}$$
+      La première ne demande aucune condition car $e^x$ est toujours dans le
+      domaine de $\ln$ (toujours strictement positif). La seconde exige
+      $x>0$, sinon $\ln(x)$ n'est même pas défini.
+
+  - id: EXP-12
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_fonction_exponentielle
+    tags: ["proprietes-algebriques", "notation-puissance"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur
+    stem: >
+      Écris $e^{4}\times e^{-7}$ sous la forme $e^{k}$, pour un entier $k$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$e^{-28}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur
+        feedback: >
+          Tu as MULTIPLIÉ les exposants ($4\times(-7)=-28$) au lieu de les
+          ADDITIONNER. C'est la règle $(e^a)^n=e^{na}$ (puissance d'une
+          exponentielle) que tu appliques ici — mais $e^a\times e^b=e^{a+b}$
+          (produit de deux exponentielles) est une règle différente.
+      - id: B
+        text: "$e^{11}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur
+        feedback: >
+          Tu as additionné les exposants en oubliant le signe négatif de
+          $-7$ : $4+7=11$ au lieu de $4+(-7)=-3$. Le signe de chaque exposant
+          doit être conservé dans la somme.
+      - id: C
+        text: "$e^{-3}$"
+        correct: true
+      - id: D
+        text: "$e^{3}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur
+        feedback: >
+          Tu as SOUSTRAIT les exposants ($7-4=3$) au lieu de les additionner,
+          comme si la règle était $e^a\times e^b=e^{b-a}$. La règle du
+          produit transforme toujours une somme d'exposants, jamais une
+          différence.
+    correct_feedback: >
+      Exactement : $e^{a}\times e^{b}=e^{a+b}$, donc
+      $e^{4}\times e^{-7}=e^{4+(-7)}=e^{-3}$.
+    solution: |
+      D'après la propriété du produit (chapitre 3) : $e^a\times e^b=e^{a+b}$.
+      $$e^{4}\times e^{-7} = e^{4+(-7)} = e^{-3}$$
+
+  - id: EXP-13
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: ["derivee", "exp-u", "chaine"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+    stem: >
+      Quelle est la dérivée de $f(x) = e^{4-x}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$f'(x) = -e^{4-x}$"
+        correct: true
+      - id: B
+        text: "$f'(x) = e^{4-x}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          Tu as oublié de multiplier par $u'(x)$. La formule est
+          $(e^u)'=u'e^u$ : ici $u(x)=4-x$ donne $u'(x)=-1$, qui ne doit pas
+          disparaître de la dérivée.
+      - id: C
+        text: "$f'(x) = (4-x)\\,e^{4-x}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          Tu as multiplié par $u(x)=4-x$ (la fonction elle-même) au lieu de
+          $u'(x)=-1$ (sa dérivée). La formule $(e^u)'=u'e^u$ fait intervenir
+          la DÉRIVÉE de $u$, pas $u$ recopiée telle quelle.
+      - id: D
+        text: "$f'(x) = -e^{-x}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          Tu as fait disparaître le $4$ constant à l'intérieur de l'exposant
+          dans la réponse finale, comme si une constante additive n'avait
+          aucun rôle dans $e^{u(x)}$. Or $u'(x)=-1$ certes, mais l'exposant
+          final reste $u(x)=4-x$ tout entier — le $4$ ne disparaît que de la
+          DÉRIVÉE de $u$, pas de $u$ lui-même.
+    correct_feedback: >
+      Exactement : avec $u(x)=4-x$ et $u'(x)=-1$,
+      $(e^u)'(x)=u'(x)e^{u(x)}=-e^{4-x}$.
+    solution: |
+      $u(x) = 4-x$, donc $u'(x) = -1$ :
+      $$f'(x) = u'(x)\,e^{u(x)} = -1\times e^{4-x} = -e^{4-x}$$
+
+  - id: EXP-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: ["derivee", "produit", "exp-u"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+    stem: >
+      Quelle est la dérivée de $h(x) = -3x\,e^{x}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$h'(x) = -3e^{x}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          $h$ est un PRODUIT de deux fonctions ($-3x$ et $e^x$), donc la
+          règle est $(uv)'=u'v+uv'$. Ici tu as gardé seulement le terme
+          $u'v=-3e^x$, en oubliant complètement le second terme $uv'=-3xe^x$.
+      - id: B
+        text: "$h'(x) = -3x\\,e^{x}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          Tu as gardé seulement le terme $uv'=-3xe^x$, en oubliant le premier
+          terme de la règle du produit $u'v=-3e^x$ (avec $u(x)=-3x$,
+          $u'(x)=-3$, $v(x)=e^x$).
+      - id: C
+        text: "$h'(x) = -3e^{x} + 3x\\,e^{x}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          Erreur de signe sur le second terme : $uv'=(-3x)\times e^x=-3xe^x$
+          (négatif), pas $+3xe^x$. Le signe négatif de $u(x)=-3x$ doit rester
+          dans les deux termes de la somme $u'v+uv'$.
+      - id: D
+        text: "$h'(x) = -3e^{x} - 3x\\,e^{x}$"
+        correct: true
+    correct_feedback: >
+      Exactement : avec $u(x)=-3x$, $u'(x)=-3$, $v(x)=e^x$, $v'(x)=e^x$,
+      $(uv)'=u'v+uv'=-3e^x-3xe^x$.
+    solution: |
+      $h=uv$ avec $u(x)=-3x$ ($u'(x)=-3$) et $v(x)=e^x$ ($v'(x)=e^x$) :
+      $$h'(x) = u'(x)v(x)+u(x)v'(x) = -3e^x + (-3x)e^x = -3e^x-3x\,e^x$$
+
+  - id: EXP-15
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: maths_fonction_exponentielle
+    tags: ["limites", "limite-moins-infini"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.limite-exp-moins-infini
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to -\infty} e^{x}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-\\infty$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.limite-exp-moins-infini
+        feedback: >
+          Tu traites $e^x$ comme s'il se comportait comme $x$ lui-même en
+          $-\infty$ (une fonction qui diverge vers $-\infty$). Mais $e^x$
+          reste TOUJOURS strictement positif, quel que soit $x$ — il ne peut
+          donc jamais diverger vers $-\infty$ ; il se rapproche de $0$.
+      - id: B
+        text: "$0$"
+        correct: true
+      - id: C
+        text: "$+\\infty$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.limite-exp-moins-infini
+        feedback: >
+          C'est le comportement de $e^x$ en $+\infty$, pas en $-\infty$ — tu
+          as utilisé la mauvaise limite pour la mauvaise direction. En
+          $-\infty$, $e^x$ tend vers $0$ (asymptote horizontale $y=0$), pas
+          vers $+\infty$.
+      - id: D
+        text: "La limite n'existe pas (elle oscille indéfiniment)."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.limite-exp-moins-infini
+        feedback: >
+          $\exp$ est strictement monotone (croissante) sur tout $\mathbb{R}$,
+          elle ne peut donc pas osciller. Cette confusion vient peut-être de
+          fonctions trigonométriques ; $e^x$ n'a aucun comportement
+          oscillant, et sa limite en $-\infty$ existe bien : elle vaut $0$.
+    correct_feedback: >
+      Exactement : $\displaystyle\lim_{x\to-\infty}e^x=0$ — la courbe de
+      $\exp$ admet l'asymptote horizontale $y=0$ en $-\infty$, jamais
+      atteinte puisque $e^x>0$ toujours.
+    solution: |
+      En posant $X=-x$ (donc $x\to-\infty \iff X\to+\infty$) et en utilisant
+      $e^x=\dfrac{1}{e^{-x}}=\dfrac{1}{e^X}$ :
+      $$\lim_{x\to-\infty} e^x = \lim_{X\to+\infty} \frac{1}{e^X} = 0$$
+      car $e^X\to+\infty$ quand $X\to+\infty$.
+
+  - id: EXP-16
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: ["inegalite-reference", "e-x-superieur-x-plus-1"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.inegalite-reference-erreur
+    stem: >
+      On sait que pour tout réel $x$, $e^{x} \geq x+1$. Que peut-on en
+      déduire sur $e^{4}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$e^{4} \\geq 5$"
+        correct: true
+      - id: B
+        text: "$e^{4} \\geq 4$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.inegalite-reference-erreur
+        feedback: >
+          Tu as oublié le « $+1$ » de l'inégalité $e^x\geq x+1$ : en $x=4$,
+          il faut comparer $e^4$ à $4+1=5$, pas directement à $4$.
+      - id: C
+        text: "$e^{4} \\leq 5$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.inegalite-reference-erreur
+        feedback: >
+          Tu as inversé le sens de l'inégalité. La propriété est
+          $e^x\geq x+1$ (le graphe de $\exp$ reste AU-DESSUS de sa tangente
+          en $0$, par convexité), pas $\leq$.
+      - id: D
+        text: "$e^{4} \\geq e^{5}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.inegalite-reference-erreur
+        feedback: >
+          Tu as confondu l'expression affine $x+1$ avec $e^{x+1}$ : l'inégalité
+          de référence compare $e^x$ au nombre $x+1$ lui-même (ici $5$), pas
+          à l'exponentielle $e^{x+1}$.
+    correct_feedback: >
+      Exactement : en remplaçant $x$ par $4$ dans $e^x\geq x+1$, on obtient
+      $e^4 \geq 4+1=5$.
+    solution: |
+      L'inégalité de référence (chapitre 5) est valable pour TOUT réel $x$ :
+      $$e^x \geq x+1$$
+      En $x=4$ :
+      $$e^4 \geq 4+1 = 5$$
+
+  - id: EXP-17
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: maths_fonction_exponentielle
+    tags: ["tangente", "droite-y-egale-x-plus-1"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.allure-courbe-erreur
+    stem: >
+      Quelle est l'équation de la tangente à la courbe de $\exp$ au point
+      d'abscisse $0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$y = x$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.allure-courbe-erreur
+        feedback: >
+          Tu as oublié le terme constant. La tangente en $0$ a pour équation
+          $y=e^0+(e^0)(x-0)=1+x$ : le « $+1$ » (qui vient de $\exp(0)=1$) ne
+          doit pas disparaître.
+      - id: B
+        text: "$y = e\\,x$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.allure-courbe-erreur
+        feedback: >
+          Tu as confondu le coefficient directeur de la tangente en $0$
+          (qui vaut $\exp'(0)=\exp(0)=1$) avec $\exp(1)=e$. Le coefficient
+          directeur en $x=0$ est $1$, pas $e$.
+      - id: C
+        text: "$y = x+1$"
+        correct: true
+      - id: D
+        text: "$y = 1$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.allure-courbe-erreur
+        feedback: >
+          Tu as gardé seulement le terme constant $\exp(0)=1$ (l'ordonnée du
+          point de tangence), en oubliant le terme de pente. La tangente
+          n'est pas horizontale : son coefficient directeur vaut
+          $\exp'(0)=1$, pas $0$.
+    correct_feedback: >
+      Exactement : $y=\exp(0)+\exp'(0)(x-0)=1+1\times x=x+1$ — et tu
+      reconnais là l'inégalité de référence $e^x\geq x+1$ du chapitre 5 !
+    solution: |
+      La tangente en $a=0$ a pour équation générale
+      $y=\exp(a)+\exp'(a)(x-a)$. Avec $\exp(0)=1$ et $\exp'(0)=\exp(0)=1$ :
+      $$y = 1 + 1\times(x-0) = x+1$$
+
+  - id: EXP-18
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: ["symetrie", "courbe-ln-exp"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.allure-courbe-erreur
+    stem: >
+      La courbe de $\ln$ passe par le point $(e,1)$ (puisque $\ln(e)=1$).
+      Par symétrie des courbes de $\ln$ et $\exp$ par rapport à la droite
+      $y=x$, quel point se trouve nécessairement sur la courbe de $\exp$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$(e,1)$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.allure-courbe-erreur
+        feedback: >
+          Tu as gardé le point inchangé, sans appliquer la symétrie. Une
+          symétrie par rapport à $y=x$ ÉCHANGE les deux coordonnées : le
+          symétrique de $(e,1)$ est $(1,e)$, pas $(e,1)$ lui-même.
+      - id: B
+        text: "$(-e,-1)$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.allure-courbe-erreur
+        feedback: >
+          Tu as appliqué une symétrie centrale (par rapport à l'origine, qui
+          change les signes) au lieu d'une symétrie axiale par rapport à la
+          droite $y=x$ (qui échange les coordonnées sans changer leurs
+          signes).
+      - id: C
+        text: "$(0,1)$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.allure-courbe-erreur
+        feedback: >
+          $(0,1)$ est bien un point de la courbe de $\exp$ (car $e^0=1$),
+          mais ce n'est PAS le symétrique de $(e,1)$ — c'est un point
+          totalement différent. Le symétrique de $(e,1)$ par rapport à $y=x$
+          s'obtient en échangeant ses deux coordonnées : $(1,e)$.
+      - id: D
+        text: "$(1,e)$"
+        correct: true
+    correct_feedback: >
+      Exactement : une symétrie par rapport à $y=x$ échange les coordonnées.
+      $(e,1)$ sur la courbe de $\ln$ devient $(1,e)$ sur la courbe de $\exp$
+      — et on vérifie : $e^1=e$.
+    solution: |
+      Les courbes de deux fonctions réciproques sont symétriques par rapport
+      à la droite $y=x$ (chapitre 6), ce qui échange systématiquement les
+      coordonnées de chaque point : $(a,b)$ sur la courbe de $\ln$ devient
+      $(b,a)$ sur la courbe de $\exp$.
+      $$(e,1) \text{ sur } \ln \quad\Longrightarrow\quad (1,e) \text{ sur } \exp$$
+      Vérification directe : $e^1=e$, donc $(1,e)$ est bien sur la courbe de
+      $\exp$.
+
+  - id: EXP-19
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: ["tableau-variations", "convexite"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.allure-courbe-erreur
+    stem: >
+      Laquelle de ces affirmations décrit correctement le tableau de
+      variations et l'allure de la courbe de $\exp$ sur $\mathbb{R}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\exp$ est strictement croissante sur $\\mathbb{R}$, de limite $-\\infty$ en $-\\infty$ à $+\\infty$ en $+\\infty$."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.limite-exp-moins-infini
+        feedback: >
+          Erreur sur la limite en $-\infty$ : $\exp$ ne diverge jamais vers
+          $-\infty$, elle reste toujours strictement positive. La limite en
+          $-\infty$ est $0$ (asymptote horizontale $y=0$), pas $-\infty$.
+      - id: B
+        text: "$\\exp$ est strictement croissante sur $\\mathbb{R}$, de limite $0$ en $-\\infty$ à $+\\infty$ en $+\\infty$, sans jamais s'annuler ni changer de sens."
+        correct: true
+      - id: C
+        text: "$\\exp$ est strictement décroissante sur $]-\\infty,0]$ puis strictement croissante sur $[0,+\\infty[$."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.allure-courbe-erreur
+        feedback: >
+          Ce profil « en creux » (décroissante puis croissante) décrit une
+          fonction comme $x\mapsto x^2$, pas $\exp$. $\exp$ est strictement
+          croissante sur $\mathbb{R}$ TOUT ENTIER, sans jamais changer de
+          sens de variation — sa dérivée $e^x$ est toujours strictement
+          positive, jamais nulle.
+      - id: D
+        text: "$\\exp$ est strictement croissante sur $\\mathbb{R}$, mais atteint un minimum en $x=0$ où $\\exp(0)=1$, en raison de sa convexité."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.allure-courbe-erreur
+        feedback: >
+          Confond convexité et existence d'un minimum. La convexité de $\exp$
+          signifie que sa courbe reste au-dessus de chacune de ses tangentes
+          — pas qu'elle a un minimum. Une fonction strictement croissante
+          sur tout $\mathbb{R}$ n'a JAMAIS de minimum : $\exp(0)=1$ est juste
+          une valeur parmi d'autres, pas un minimum.
+    correct_feedback: >
+      Exactement : croissance stricte sur tout $\mathbb{R}$ (car $(e^x)'=e^x>0$
+      toujours), de $0$ (exclu) en $-\infty$ à $+\infty$ en $+\infty$.
+    solution: |
+      Rassemblé au chapitre 6 : $\exp$ est définie sur $\mathbb{R}$, $(e^x)'=e^x>0$
+      pour tout $x$ donc $\exp$ est strictement croissante sur $\mathbb{R}$
+      tout entier, avec $\displaystyle\lim_{x\to-\infty}e^x=0$ et
+      $\displaystyle\lim_{x\to+\infty}e^x=+\infty$ (chapitre 5). Une seule ligne
+      strictement croissante dans le tableau de variations, sans minimum ni
+      maximum.
+
+  - id: EXP-20
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: ["primitives", "forme-u-prime-e-u"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.primitive-exp-erreur
+    stem: >
+      Quelle est une primitive de $f(x) = 3x^{2}\,e^{x^{3}}$ sur
+      $\mathbb{R}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$F(x) = e^{x^{3}} + C$"
+        correct: true
+      - id: B
+        text: "$F(x) = 3x^{2}\\,e^{x^{3}} + C$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.primitive-exp-erreur
+        feedback: >
+          Tu as recopié $f(x)$ lui-même au lieu d'en chercher une primitive.
+          La règle « primitive de $u'e^u$ est $e^u$ » signifie qu'on ENLÈVE
+          le facteur $u'$ de l'écriture finale, pas qu'on le garde.
+      - id: C
+        text: "$F(x) = x^{3}\\,e^{x^{3}} + C$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.primitive-exp-erreur
+        feedback: >
+          Tu as multiplié $e^{u(x)}$ par $u(x)=x^3$ en plus. La primitive de
+          $u'e^u$ est simplement $e^{u}$ — sans facteur multiplicatif
+          supplémentaire devant l'exponentielle.
+      - id: D
+        text: "$F(x) = e^{3x^{2}} + C$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.primitive-exp-erreur
+        feedback: >
+          Tu as mis $u'(x)=3x^2$ (la dérivée) À LA PLACE de $u(x)=x^3$ dans
+          l'exposant. C'est $u(x)$, pas $u'(x)$, qui doit apparaître dans
+          l'exposant de la primitive.
+    correct_feedback: >
+      Exactement : avec $u(x)=x^3$, $u'(x)=3x^2$, $f$ est bien de la forme
+      $u'e^u$, dont une primitive est $e^{u(x)}=e^{x^3}$.
+    solution: |
+      Reconnaître la forme $u'e^u$ : $u(x)=x^3$, $u'(x)=3x^2$ — exactement le
+      facteur devant $e^{x^3}$ dans $f$. Une primitive de $u'e^u$ est $e^u$ :
+      $$F(x) = e^{x^{3}} + C$$
+
+  - id: EXP-21
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_fonction_exponentielle
+    tags: ["primitives", "facteur-manquant"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.primitive-exp-erreur
+    stem: >
+      Quelle est une primitive de $g(x) = 5x\,e^{x^{2}}$ sur $\mathbb{R}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$G(x) = 5\\,e^{x^{2}} + C$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.primitive-exp-erreur
+        feedback: >
+          Ici $u(x)=x^2$ donne $u'(x)=2x$ — mais $g(x)=5x$ ne comporte pas
+          exactement ce facteur $2x$, seulement $x$. Il faut écrire
+          $5x=\dfrac{5}{2}\times2x$ pour faire apparaître $u'$, ce qui laisse
+          un facteur $\dfrac{5}{2}$ devant la primitive — pas $5$ tout seul.
+      - id: B
+        text: "$G(x) = e^{x^{2}} + C$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.primitive-exp-erreur
+        feedback: >
+          Tu as complètement perdu le coefficient $5$ de $g(x)=5xe^{x^2}$.
+          Après avoir fait apparaître le facteur manquant $2$ (car
+          $u'(x)=2x$), il reste un coefficient $\dfrac{5}{2}$ devant la
+          primitive, pas $1$.
+      - id: C
+        text: "$G(x) = \\dfrac{5}{2}\\,e^{x^{2}} + C$"
+        correct: true
+      - id: D
+        text: "$G(x) = \\dfrac{5}{2}x^{2}\\,e^{x^{2}} + C$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.primitive-exp-erreur
+        feedback: >
+          Tu as gardé un facteur $x^2$ devant l'exponentielle dans la
+          primitive, comme s'il s'agissait d'une règle de produit. La
+          primitive de $u'e^u$ est $e^u$ seul (multiplié par la constante
+          nécessaire), sans facteur $x^2$ supplémentaire.
+    correct_feedback: >
+      Exactement : avec $u(x)=x^2$, $u'(x)=2x$, on écrit
+      $5x=\dfrac{5}{2}\times2x$ pour faire apparaître $u'e^u$ ; une primitive
+      est donc $\dfrac{5}{2}e^{x^2}$.
+    solution: |
+      $u(x)=x^2$ donne $u'(x)=2x$. Le facteur devant $e^{x^2}$ dans $g$ est
+      $5x$, pas exactement $2x$ : on fait apparaître $u'$ en écrivant
+      $$5x\,e^{x^2} = \frac{5}{2}\times\big(2x\,e^{x^2}\big)$$
+      Une primitive de $2x\,e^{x^2}$ est $e^{x^2}$, donc :
+      $$G(x) = \frac{5}{2}e^{x^{2}} + C$$
+
+  - id: EXP-22
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: maths_fonction_exponentielle
+    tags: ["primitives", "primitive-usuelle"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.primitive-exp-erreur
+    stem: >
+      Les primitives de $x \mapsto e^{x}$ sur $\mathbb{R}$ sont les
+      fonctions...
+    type: mcq
+    choices:
+      - id: A
+        text: "$x \\mapsto e^{x+C}$, où $C$ est une constante réelle quelconque."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.primitive-exp-erreur
+        feedback: >
+          La constante d'intégration s'AJOUTE à la fonction, elle ne se
+          place pas à l'intérieur de l'exposant. $e^{x+C}=e^x\times e^C$
+          n'est pas la même famille de fonctions que $e^x+C$.
+      - id: B
+        text: "$x \\mapsto \\dfrac{e^{x+1}}{x+1}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.primitive-exp-erreur
+        feedback: >
+          Tu as appliqué le schéma de primitive des puissances
+          ($x^n \to \dfrac{x^{n+1}}{n+1}$) à l'exponentielle, comme si $e^x$
+          suivait la même règle. Mais $e^x$ est un cas particulier : elle
+          est SA PROPRE primitive (à une constante près), elle ne « monte »
+          pas d'un cran comme une puissance.
+      - id: C
+        text: "$x \\mapsto x\\,e^{x}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.primitive-exp-erreur
+        feedback: >
+          Ce n'est pas une primitive de $e^x$ : en dérivant $xe^x$ (règle du
+          produit), on obtient $e^x+xe^x$, pas $e^x$. La primitive la plus
+          simple de $e^x$ est $e^x$ lui-même, sans facteur $x$
+          supplémentaire.
+      - id: D
+        text: "$x \\mapsto e^{x} + C$, où $C$ est une constante réelle quelconque."
+        correct: true
+    correct_feedback: >
+      Exactement : $\exp$ est SA PROPRE primitive (comme elle est sa propre
+      dérivée) — unique parmi les fonctions usuelles du programme.
+    solution: |
+      Puisque $(e^x)'=e^x$ (chapitre 4), $\exp$ est sa propre primitive :
+      $$\text{les primitives de } x\mapsto e^x \text{ sont } x\mapsto e^x+C,\ C\in\mathbb{R}$$
+
+  - id: EXP-23
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: maths_fonction_exponentielle
+    tags: ["inequations", "domaine-vs-ln"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.resolution-exp-erreur
+    stem: >
+      Résous dans $\mathbb{R}$ l'inéquation $e^{3x-1} \leq e^{x+5}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\mathcal{S} = [3,+\\infty[$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.resolution-exp-erreur
+        feedback: >
+          Tu as inversé le sens de l'inégalité, comme si $\exp$ était
+          DÉCROISSANTE. Or $\exp$ est strictement CROISSANTE sur
+          $\mathbb{R}$ : $e^A\leq e^B \iff A\leq B$, le sens se conserve, il
+          ne s'inverse jamais.
+      - id: B
+        text: "$\\mathcal{S} = ]-\\infty,3]$"
+        correct: true
+      - id: C
+        text: "$\\mathcal{S} = ]-\\infty,2]$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.resolution-exp-erreur
+        feedback: >
+          Erreur de signe en regroupant les termes : $3x-1\leq x+5$ donne
+          $3x-x\leq5+1$ (on ajoute $1$ des deux côtés), pas $3x-x\leq5-1$.
+          Le $-1$ devient $+1$ en passant de l'autre côté de l'inégalité.
+      - id: D
+        text: "$\\mathcal{S} = ]\\frac{1}{3},3]$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.resolution-exp-erreur
+        feedback: >
+          Tu as ajouté une condition de signe sur les exposants (par exemple
+          $3x-1>0$), comme on le ferait avec $\ln$. Mais $\exp$ ne restreint
+          JAMAIS l'ensemble des solutions par une condition de domaine —
+          elle est définie sur $\mathbb{R}$ tout entier, sans exception. La
+          réponse obtenue par l'injectivité est finale, telle quelle.
+    correct_feedback: >
+      Exactement : $\exp$ strictement croissante préserve le sens de
+      l'inégalité, et sans aucune condition de domaine à poser :
+      $3x-1\leq x+5 \iff x\leq3$.
+    solution: |
+      $\exp$ étant strictement croissante sur $\mathbb{R}$, sans condition de
+      domaine à vérifier :
+      $$e^{3x-1} \leq e^{x+5} \iff 3x-1 \leq x+5$$
+      $$\iff 2x \leq 6 \iff x \leq 3$$
+      $$\mathcal{S} = \,]-\infty,3]$$
+
+  - id: EXP-24
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: ["equations", "pas-de-solution"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible
+    stem: >
+      Résous dans $\mathbb{R}$ l'équation $e^{x} = -4$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\mathcal{S} = \\varnothing$ (aucune solution)"
+        correct: true
+      - id: B
+        text: "$x = \\ln(-4)$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible
+        feedback: >
+          Tu as appliqué la méthode générale « $e^x=k \iff x=\ln(k)$ » sans
+          vérifier que $k>0$ d'abord. Ici $k=-4<0$, donc $\ln(-4)$ n'existe
+          même pas : cette méthode ne s'applique que si $k>0$.
+      - id: C
+        text: "$x = -\\ln(4)$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible
+        feedback: >
+          Tu as cru qu'il fallait placer un signe négatif devant $\ln$ pour
+          obtenir une valeur négative de $e^x$. Mais
+          $e^{-\ln(4)}=\dfrac{1}{4}$, un nombre strictement POSITIF — jamais
+          négatif. Aucun réel $x$ ne peut donner $e^x<0$.
+      - id: D
+        text: "$x = \\ln(4)$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible
+        feedback: >
+          Tu as ignoré le signe négatif de $-4$ en résolvant $e^x=4$ à la
+          place. Mais l'équation posée est $e^x=-4$, et $e^x$ ne peut jamais
+          être négatif : il n'y a aucune solution, quel que soit le signe
+          qu'on ajoute ou enlève.
+    correct_feedback: >
+      Exactement : $e^x>0$ pour tout réel $x$, donc $e^x$ ne peut jamais
+      atteindre une valeur négative comme $-4$. Aucun calcul n'est
+      nécessaire.
+    solution: |
+      $e^x>0$ pour tout réel $x$ (chapitre 2) : $e^x$ ne peut jamais être négatif.
+      Comme $-4<0$, l'équation $e^x=-4$ n'a donc aucune solution :
+      $$\mathcal{S} = \varnothing$$
+
+  - id: EXP-25
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: maths_fonction_exponentielle
+    tags: ["equations", "injectivite", "application"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.resolution-exp-erreur
+    stem: >
+      Résous dans $\mathbb{R}$ l'équation $e^{3x-4} = e^{x+6}$. Que vaut
+      $x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$x = 1$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.resolution-exp-erreur
+        feedback: >
+          Erreur de signe en regroupant les termes : $3x-4=x+6$ donne
+          $3x-x=6+4$ (le $-4$ devient $+4$ en passant de l'autre côté), pas
+          $3x-x=6-4$.
+      - id: B
+        text: "$x = 10$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.resolution-exp-erreur
+        feedback: >
+          Tu es correctement arrivé à $2x=10$, mais tu as oublié de diviser
+          par $2$ à la dernière étape. $2x=10$ donne $x=5$, pas $x=10$.
+      - id: C
+        text: "$x = 5$"
+        correct: true
+      - id: D
+        text: "$x = -\\dfrac{1}{2}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.resolution-exp-erreur
+        feedback: >
+          Mauvaise application de l'injectivité : $e^A=e^B$ équivaut à
+          $A=B$ (les exposants sont ÉGAUX), pas à $A=-B$ (opposés). Tu as
+          résolu $3x-4=-(x+6)$ au lieu de $3x-4=x+6$.
+    correct_feedback: >
+      Exactement : par injectivité de $\exp$, $3x-4=x+6 \iff 2x=10 \iff x=5$.
+    solution: |
+      $\exp$ étant injective sur $\mathbb{R}$ (aucune condition de domaine à
+      poser) :
+      $$e^{3x-4} = e^{x+6} \iff 3x-4 = x+6$$
+      $$\iff 2x = 10 \iff x = 5$$
+      $$\mathcal{S} = \{5\}$$
+
+  - id: EXP-26
+    rung: "R8"
+    difficulty_level: 5
+    skill_code: maths_fonction_exponentielle
+    tags: ["tvi", "existence-unicite", "application"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.bijection-existence-unicite
+    stem: >
+      Soit $g$ définie sur $\mathbb{R}$ par $g(x) = e^{x}+2x-3$. On admet
+      que $g$ est strictement croissante sur $\mathbb{R}$, avec
+      $\displaystyle\lim_{x\to-\infty}g(x)=-\infty$ et
+      $\displaystyle\lim_{x\to+\infty}g(x)=+\infty$. Que peut-on conclure
+      sur l'équation $g(x)=0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle admet au moins une solution, mais on ne peut rien dire sur son unicité sans étudier le signe de $g''$."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.bijection-existence-unicite
+        feedback: >
+          C'est la STRICTE MONOTONIE (déjà admise dans l'énoncé) qui
+          garantit l'unicité dans le corollaire du TVI — pas la convexité ni
+          le signe de $g''$. Nul besoin d'étudier une dérivée seconde ici :
+          continuité + changement de signe + stricte monotonie suffisent
+          pour conclure existence ET unicité.
+      - id: B
+        text: "Elle n'admet aucune solution, car $e^{x}>0$ toujours, donc $g(x)>0$ toujours."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.exp-signe-ou-domaine
+        feedback: >
+          Tu as généralisé « $e^x>0$ toujours » à toute la fonction $g$, en
+          oubliant les termes $+2x-3$. Ce n'est pas parce que $e^x$ reste
+          positif que $g(x)=e^x+2x-3$ le reste aussi : pour $x$ très
+          négatif, $2x-3\to-\infty$ l'emporte et $g(x)\to-\infty$.
+      - id: C
+        text: "Elle admet une infinité de solutions, car $g$ est continue et change de signe entre $-\\infty$ et $+\\infty$."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.bijection-existence-unicite
+        feedback: >
+          Continuité + changement de signe garantit l'EXISTENCE d'au moins
+          une solution (TVI de base) — mais tu oublies que la stricte
+          monotonie de $g$ (donnée dans l'énoncé) garantit en plus
+          l'UNICITÉ. Le corollaire du TVI conclut donc « exactement une »
+          solution, pas « une infinité ».
+      - id: D
+        text: "Elle admet une unique solution dans $\\mathbb{R}$, par le corollaire du théorème des valeurs intermédiaires."
+        correct: true
+    correct_feedback: >
+      Exactement : continuité (car dérivable), changement de signe entre les
+      deux limites infinies, ET stricte monotonie réunis donnent le
+      corollaire du TVI : une unique solution.
+    solution: |
+      $g$ est continue (dérivable) et strictement croissante sur
+      $\mathbb{R}$, avec $\displaystyle\lim_{x\to-\infty}g(x)=-\infty<0$ et
+      $\displaystyle\lim_{x\to+\infty}g(x)=+\infty>0$. Par le corollaire du
+      théorème des valeurs intermédiaires (continuité + stricte monotonie +
+      changement de signe), l'équation $g(x)=0$ admet une **unique**
+      solution dans $\mathbb{R}$.
+
+  - id: EXP-27
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: maths_fonction_exponentielle
+    tags: ["signe", "comparaison-exponentielles", "application"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible
+    stem: >
+      Étudie le signe de $k(x) = e^{3x-2}-e^{x}$ sur $\mathbb{R}$
+      (indication : compare directement les deux exposants, en utilisant la
+      stricte croissance de $\exp$).
+    type: mcq
+    choices:
+      - id: A
+        text: "$k(x)>0$ pour tout réel $x$, car une différence de deux exponentielles est toujours positive."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible
+        feedback: >
+          « $e^x>0$ toujours » porte sur CHAQUE exponentielle prise
+          séparément, pas sur leur DIFFÉRENCE. $k(x)=e^{3x-2}-e^x$ est une
+          soustraction, qui peut parfaitement être négative — par exemple
+          quand $3x-2<x$, c'est-à-dire $x<1$.
+      - id: B
+        text: "$k(x) < 0$ pour $x<1$, $k(x)=0$ pour $x=1$, et $k(x)>0$ pour $x>1$."
+        correct: true
+      - id: C
+        text: "$k(x)<0$ pour $x<1$ et $k(x)>0$ pour $x>1$, mais on ne peut rien dire du signe en $x=1$ sans calculer $k(1)$ séparément."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.resolution-exp-erreur
+        feedback: >
+          Pas besoin d'un calcul séparé : en $x=1$, les deux exposants
+          $3x-2$ et $x$ sont ÉGAUX ($3(1)-2=1$), donc par injectivité de
+          $\exp$, $e^{3x-2}=e^{x}$ et $k(1)=0$ découle directement de la
+          même comparaison d'exposants que pour le reste du signe.
+      - id: D
+        text: "$k(x)>0$ pour $x<1$ et $k(x)<0$ pour $x>1$."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.resolution-exp-erreur
+        feedback: >
+          Sens inversé : tu compares $3x-2$ et $x$ comme si $\exp$ était
+          DÉCROISSANTE (un exposant plus grand donnerait une valeur plus
+          petite). Mais $\exp$ est strictement CROISSANTE : $3x-2>x
+          \Rightarrow e^{3x-2}>e^x$, donc $k(x)>0$ pour $x>1$, pas $x<1$.
+    correct_feedback: >
+      Exactement : $k(x)$ a le même signe que $(3x-2)-x=2x-2$, car $\exp$
+      est strictement croissante — $k(x)\geq0 \iff 3x-2\geq x \iff x\geq1$.
+    solution: |
+      $\exp$ étant strictement croissante sur $\mathbb{R}$ :
+      $$k(x) \geq 0 \iff e^{3x-2}\geq e^{x} \iff 3x-2\geq x \iff 2x\geq2 \iff x\geq1$$
+      Donc $k(x)<0$ pour $x<1$, $k(1)=0$, et $k(x)>0$ pour $x>1$.
+
+
+# ── Coverage summary (summit-conversion floor backfill — HONEST §6) ────────
+# Ce bank etait un LEGACY end-bank (`misconceptions: []`, tags absents). Le
+# backfill ci-dessus a ajoute l'inventaire (13 modeles alignes sur les
+# rupture-gates), un `primary_misconception` par item, et un `misconception`
+# par distracteur. NOTE (revue vague 1) : les comptes ci-dessous etaient BY
+# PRIMARY, methode ABANDONNEE — la table publiee en pied de fichier compte au
+# niveau ITEM (un item compte des qu'un de ses distracteurs porte le modele),
+# et c'est elle que la machine lit. Sous BY PRIMARY, cinq familles sur treize
+# tomberaient sous le plancher. Ils sont reels, non gonfles.
+  # Ajoutés le 2026-09-05 : sept familles siégeaient sous le plancher de 3 items
+  # du banc — croissances-comparees-inversees (1), inegalite-reference-erreur
+  # (1), puis cinq à 2 items (exp-signe-ou-domaine, bijection-existence-unicite,
+  # somme-produit-confondus, limite-exp-moins-infini,
+  # exp-valeur-negative-impossible). Neuf places à combler, quatre items de trois
+  # distracteurs : l'ajustement est exact, chaque distracteur porte une famille
+  # distincte.
+  - id: EXP-28
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: [croissances_comparees, inegalite_de_reference]
+    primary_misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to +\infty} \frac{e^x}{x}$, et quel
+      argument le justifie le plus simplement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $+\infty$ : c'est la croissance comparée de référence, l'exponentielle
+          l'emportant sur toute puissance de $x$
+        correct: true
+      - id: B
+        text: >-
+          $0$, comme $\dfrac{\ln x}{x}$ : au voisinage de $+\infty$, le
+          dénominateur finit par l'emporter sur le numérateur
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+        feedback: >
+          C'est la limite de $\dfrac{\ln x}{x}$, pas celle de $\dfrac{e^x}{x}$ :
+          les deux fonctions sont réciproques l'une de l'autre, et leurs
+          croissances comparées vont donc en sens opposés. $\ln$ croît plus
+          lentement que $x$, $\exp$ croît plus vite — et plus vite que $x^n$
+          pour tout entier $n$.
+      - id: C
+        text: >-
+          $1$ : le quotient est de la forme $\dfrac{+\infty}{+\infty}$, et deux
+          infinis de même nature se compensent
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+        feedback: >
+          « $\infty/\infty$ » n'est pas un nombre, c'est une forme
+          INDÉTERMINÉE : elle signale seulement que le calcul direct ne conclut
+          pas. Selon les fonctions en jeu, la limite peut valoir $0$, un réel
+          quelconque, ou $+\infty$. Ici, c'est justement le rôle du théorème de
+          croissance comparée de trancher.
+      - id: D
+        text: >-
+          On peut minorer par l'inégalité de référence : $e^x \geqslant x$, donc
+          $\dfrac{e^x}{x} \geqslant 1$, ce qui donne $1$ pour limite
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.inegalite-reference-erreur
+        feedback: >
+          Deux erreurs. L'inégalité de référence est $e^x \geqslant x + 1$ — le
+          « $+1$ » n'est pas décoratif, c'est lui qui rend l'inégalité stricte
+          en $0$ et qui sert dans les démonstrations. Et surtout, une
+          minoration par $1$ ne donne pas la limite $1$ : elle dit seulement que
+          la limite est $\geqslant 1$.
+    correct_feedback: >
+      $\displaystyle\lim_{x \to +\infty} \frac{e^x}{x} = +\infty$. C'est la
+      croissance comparée de référence : l'exponentielle l'emporte sur toute
+      puissance de $x$. Le repère qui évite l'inversion : $\exp$ et $\ln$ sont
+      réciproques, donc leurs croissances comparées vont en sens opposés.
+    solution: |
+      **Le résultat de cours.**
+      $$
+      \lim_{x \to +\infty} \frac{e^x}{x} = +\infty
+      \qquad\text{et plus généralement}\qquad
+      \lim_{x \to +\infty} \frac{e^x}{x^n} = +\infty \ \ (n \in \mathbb{N})
+      $$
+
+      **Le contraste à retenir.** Du côté du logarithme, tout s'inverse :
+      $$\lim_{x \to +\infty} \frac{\ln x}{x} = 0$$
+      C'est cohérent : $\exp$ et $\ln$ sont réciproques l'une de l'autre, donc
+      leurs courbes sont symétriques par rapport à la droite $y = x$. L'une
+      s'échappe au-dessus, l'autre s'aplatit en dessous.
+
+      **Pourquoi la forme indéterminée n'est pas une impasse.** $\infty/\infty$
+      dit seulement que le calcul terme à terme ne conclut pas ; c'est
+      précisément ce que les théorèmes de croissance comparée servent à lever.
+
+  - id: EXP-29
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: maths_fonction_exponentielle
+    tags: [equation, bijection, tvi]
+    primary_misconception: mc.math.maths_fonction_exponentielle.bijection-existence-unicite
+    stem: >
+      Soit $f$ définie sur $\mathbb{R}$ par $f(x) = e^x + x - 3$. Que peut-on
+      affirmer des solutions de l'équation $f(x) = 0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elle admet exactement une solution : $f$ est continue, strictement
+          croissante sur $\mathbb{R}$, de limites $-\infty$ et $+\infty$
+        correct: true
+      - id: B
+        text: >-
+          Elle n'admet aucune solution : $e^x > 0$ pour tout $x$, donc
+          $e^x + x - 3$ ne peut pas s'annuler
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.exp-signe-ou-domaine
+        feedback: >
+          $e^x > 0$ est vrai, mais ne se transmet pas à $e^x + x - 3$ : les deux
+          autres termes peuvent être négatifs et l'emporter. En $x = 0$ par
+          exemple, $f(0) = 1 + 0 - 3 = -2 < 0$. La positivité de $\exp$ ne dit
+          rien du signe d'une expression qui la contient.
+      - id: C
+        text: >-
+          Elle admet deux solutions : une exponentielle croise une droite en
+          deux points, comme le montre l'allure des deux courbes
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.bijection-existence-unicite
+        feedback: >
+          C'est vrai pour certaines droites — $y = 3x$ coupe $y = e^x$ deux fois
+          — mais pas ici. Le raisonnement sûr ne passe pas par une intuition
+          graphique : $f'(x) = e^x + 1 > 0$ sur $\mathbb{R}$, donc $f$ est
+          STRICTEMENT croissante ; une fonction strictement monotone et continue
+          s'annule au plus une fois.
+      - id: D
+        text: >-
+          On ne peut pas conclure : le corollaire du théorème des valeurs
+          intermédiaires ne s'applique que sur un intervalle fermé borné
+          $[a\,;b]$
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.bijection-existence-unicite
+        feedback: >
+          Le corollaire s'applique sur tout intervalle, ouvert ou non, borné ou
+          non, à condition de remplacer les images des bornes par les LIMITES
+          aux bornes. Ici $\lim_{-\infty} f = -\infty$ et
+          $\lim_{+\infty} f = +\infty$ : $0$ est bien compris entre les deux, et
+          la stricte croissance donne l'unicité.
+    correct_feedback: >
+      Exactement une solution. $f$ est continue et dérivable sur $\mathbb{R}$
+      avec $f'(x) = e^x + 1 > 0$, donc strictement croissante ; ses limites sont
+      $-\infty$ et $+\infty$. Le corollaire du théorème des valeurs
+      intermédiaires donne l'existence, la stricte monotonie donne l'unicité.
+    solution: |
+      **Continuité et dérivabilité.** $f$ est somme de fonctions dérivables sur
+      $\mathbb{R}$, donc dérivable, donc continue.
+
+      **Sens de variation.**
+      $$f'(x) = e^x + 1 > 0 \quad \text{pour tout } x \in \mathbb{R}$$
+      donc $f$ est strictement croissante sur $\mathbb{R}$.
+
+      **Limites aux bornes.**
+      $$
+      \lim_{x \to -\infty} f(x) = 0 + (-\infty) - 3 = -\infty
+      \qquad \lim_{x \to +\infty} f(x) = +\infty
+      $$
+
+      **Conclusion.** $f$ réalise une bijection de $\mathbb{R}$ sur
+      $\mathbb{R}$ ; $0$ appartient à l'image, donc l'équation $f(x) = 0$ admet
+      une solution, et une seule. On peut l'encadrer : $f(0) = -2 < 0$ et
+      $f(1) = e - 2 > 0$, donc $\alpha \in \,]0\,;1[$.
+
+  - id: EXP-30
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: [proprietes_algebriques, limites, equations]
+    primary_misconception: mc.math.maths_fonction_exponentielle.somme-produit-confondus
+    stem: >
+      Trois affirmations sont proposées sur la fonction exponentielle. Laquelle
+      est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $e^{a} \times e^{b} = e^{a+b}$ pour tous réels $a$ et $b$ : le produit
+          des images correspond à la somme des exposants
+        correct: true
+      - id: B
+        text: >-
+          $e^{a+b} = e^{a} + e^{b}$ : l'exponentielle transforme la somme en
+          somme, comme toute fonction usuelle
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.somme-produit-confondus
+        feedback: >
+          C'est précisément ce que l'exponentielle NE fait pas : elle transforme
+          la somme en PRODUIT, $e^{a+b} = e^a \times e^b$. Un contre-exemple
+          règle la question en trois secondes :
+          $e^{0+0} = e^0 = 1$, alors que $e^0 + e^0 = 2$.
+      - id: C
+        text: >-
+          $\displaystyle\lim_{x \to -\infty} e^x = -\infty$, l'exponentielle
+          suivant en $-\infty$ le comportement de $x$
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.limite-exp-moins-infini
+        feedback: >
+          $\displaystyle\lim_{x \to -\infty} e^x = 0^{+}$ : la courbe s'écrase
+          sur l'axe des abscisses, qui est asymptote horizontale en $-\infty$.
+          Une limite $-\infty$ contredirait d'ailleurs $e^x > 0$ : une fonction
+          strictement positive ne peut pas tendre vers $-\infty$.
+      - id: D
+        text: >-
+          L'équation $e^x = -4$ a pour solution $x = \ln 4$, obtenue en prenant
+          le logarithme des deux membres
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible
+        feedback: >
+          $e^x = -4$ n'a AUCUNE solution : $e^x$ est strictement positive pour
+          tout réel $x$. Le passage au logarithme est illégitime ici, puisque
+          $\ln$ n'est pas défini sur les négatifs — écrire $\ln(-4)$ ou changer
+          discrètement le signe sont deux façons de contourner la conclusion,
+          qui est justement qu'il n'y a rien à résoudre.
+    correct_feedback: >
+      $e^{a} \times e^{b} = e^{a+b}$ : c'est la propriété fondamentale de
+      l'exponentielle, celle qui transforme les sommes en produits — l'exact
+      symétrique du logarithme, qui transforme les produits en sommes.
+    solution: |
+      **La propriété fondamentale.**
+      $$
+      e^{a+b} = e^a \times e^b \qquad \text{d'où} \qquad
+      e^{-a} = \frac{1}{e^a}, \quad e^{a-b} = \frac{e^a}{e^b}, \quad
+      \left(e^a\right)^n = e^{na}
+      $$
+      Elle est le miroir de $\ln(ab) = \ln a + \ln b$ : l'une transforme les
+      sommes en produits, l'autre les produits en sommes.
+
+      **Les limites de référence.**
+      $$
+      \lim_{x \to -\infty} e^x = 0^{+} \qquad
+      \lim_{x \to +\infty} e^x = +\infty
+      $$
+      L'axe des abscisses est asymptote horizontale en $-\infty$ — jamais en
+      $+\infty$.
+
+      **Le signe.** $e^x > 0$ pour tout réel $x$. Une équation $e^x = k$ avec
+      $k \leqslant 0$ n'a donc pas de solution, et il n'y a rien à calculer :
+      la réponse est « aucune solution ».
+
+  - id: EXP-31
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: maths_fonction_exponentielle
+    tags: [croissances_comparees, forme_indeterminee]
+    primary_misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+    stem: >
+      On veut déterminer $\displaystyle\lim_{x \to +\infty}\left(e^x -
+      x^2\right)$. Quel raisonnement conclut correctement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Écrire $e^x - x^2 = x^2\left(\dfrac{e^x}{x^2} - 1\right)$ : la
+          croissance comparée donne $\dfrac{e^x}{x^2} \to +\infty$, donc le
+          produit tend vers $+\infty$
+        correct: true
+      - id: B
+        text: >-
+          Utiliser l'inégalité de référence $e^x \geqslant x$ : il vient
+          $e^x - x^2 \geqslant x - x^2$, dont la limite est $+\infty$
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.inegalite-reference-erreur
+        feedback: >
+          Deux fautes en une ligne. L'inégalité de référence est
+          $e^x \geqslant x+1$, pas $e^x \geqslant x$ — le « $+1$ » fait partie
+          de l'énoncé. Et surtout $x - x^2 = x(1-x)$ tend vers $-\infty$ : une
+          minoration par une quantité qui tend vers $-\infty$ ne prouve
+          strictement rien.
+      - id: C
+        text: >-
+          Par croissance comparée, $\dfrac{e^x}{x^2} \to 0$ : c'est donc $x^2$
+          qui l'emporte, et la limite vaut $-\infty$
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+        feedback: >
+          La croissance comparée dit l'inverse : $\dfrac{e^x}{x^n} \to +\infty$
+          pour tout entier $n$ — l'exponentielle l'emporte sur toute puissance.
+          C'est du côté du logarithme que le quotient tend vers $0$
+          ($\ln x / x \to 0$), et confondre les deux revient à échanger une
+          fonction avec sa réciproque.
+      - id: D
+        text: >-
+          Aucun : la limite est de la forme indéterminée $\infty - \infty$, donc
+          elle n'existe pas
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
+        feedback: >
+          « Forme indéterminée » ne veut pas dire « pas de limite » : cela veut
+          dire que le calcul terme à terme ne conclut pas, et qu'il faut
+          transformer l'écriture. Ici, mettre $x^2$ en facteur suffit à lever
+          l'indétermination — et la limite existe bel et bien.
+    correct_feedback: >
+      $e^x - x^2 = x^2\left(\dfrac{e^x}{x^2} - 1\right)$. Par croissance
+      comparée, $\dfrac{e^x}{x^2} \to +\infty$, donc la parenthèse tend vers
+      $+\infty$ et le produit aussi. La limite vaut $+\infty$.
+    solution: |
+      **L'obstacle.** $e^x \to +\infty$ et $x^2 \to +\infty$ : la différence est
+      une forme indéterminée $\infty - \infty$. Le calcul direct ne conclut pas ;
+      il faut changer d'écriture.
+
+      **La factorisation.** On met en facteur le terme qu'on soupçonne d'être le
+      plus faible :
+      $$e^x - x^2 = x^2\left(\frac{e^x}{x^2} - 1\right)$$
+
+      **La croissance comparée.**
+      $$
+      \lim_{x \to +\infty} \frac{e^x}{x^2} = +\infty
+      \quad\Longrightarrow\quad
+      \lim_{x \to +\infty}\left(\frac{e^x}{x^2} - 1\right) = +\infty
+      $$
+
+      **La conclusion.** Produit de $x^2 \to +\infty$ par une parenthèse qui
+      tend vers $+\infty$ :
+      $$\lim_{x \to +\infty}\left(e^x - x^2\right) = +\infty$$
+
+      **Le réflexe transférable.** Devant $\infty - \infty$, factoriser par le
+      terme dominant transforme la différence en produit — et les produits, eux,
+      se traitent sans indétermination dès qu'on connaît le signe des facteurs.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après EXP-28 à EXP-31. Sept familles siégeaient sous
+# le plancher de 3 items du banc — deux à un item, cinq à deux. Neuf places à
+# combler, quatre items : croissances comparées et inégalité de référence
+# (EXP-28, EXP-31), bijection et signe de l'exponentielle (EXP-29), propriétés
+# algébriques, limite en $-\infty$ et équation sans solution (EXP-30). Tableau
+# GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.math.maths_fonction_exponentielle.exp-signe-ou-domaine:              { count: 3, items: [EXP-1, EXP-26, EXP-29] }
+    mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues: { count: 3, items: [EXP-7, EXP-10, EXP-11] }
+    mc.math.maths_fonction_exponentielle.bijection-existence-unicite:       { count: 3, items: [EXP-9, EXP-26, EXP-29] }
+    mc.math.maths_fonction_exponentielle.somme-produit-confondus:           { count: 3, items: [EXP-2, EXP-8, EXP-30] }
+    mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur:   { count: 4, items: [EXP-2, EXP-3, EXP-8, EXP-12] }
+    mc.math.maths_fonction_exponentielle.derivee-exp-composee:              { count: 3, items: [EXP-4, EXP-13, EXP-14] }
+    mc.math.maths_fonction_exponentielle.croissances-comparees-inversees:   { count: 3, items: [EXP-5, EXP-28, EXP-31] }
+    mc.math.maths_fonction_exponentielle.limite-exp-moins-infini:           { count: 3, items: [EXP-15, EXP-19, EXP-30] }
+    mc.math.maths_fonction_exponentielle.inegalite-reference-erreur:        { count: 3, items: [EXP-16, EXP-28, EXP-31] }
+    mc.math.maths_fonction_exponentielle.allure-courbe-erreur:              { count: 3, items: [EXP-17, EXP-18, EXP-19] }
+    mc.math.maths_fonction_exponentielle.primitive-exp-erreur:              { count: 3, items: [EXP-20, EXP-21, EXP-22] }
+    mc.math.maths_fonction_exponentielle.resolution-exp-erreur:             { count: 4, items: [EXP-6, EXP-23, EXP-25, EXP-27] }
+    mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible:    { count: 3, items: [EXP-24, EXP-27, EXP-30] }
+  total_items: 31
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 3
+    R2: 4
+    R3: 3
+    R4: 5
+    R5: 3
+    R6: 3
+    R7: 4
+    R8: 3
+  honest_state: >-
+    Les treize misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Onze y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

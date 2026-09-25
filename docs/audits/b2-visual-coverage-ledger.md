@@ -1,0 +1,864 @@
+# B2 — Visual Coverage Fan-Out Ledger
+
+**Status:** COMPLETE (all 10 waves shipped; 47/47 lessons, 266/266 chapters
+judged, 127 figures built — see "Campaign close" at the end). Sibling to
+`docs/audits/fable-day3-ledger.md`,
+scoped strictly to Part B2 of the chapter-level visual-coverage campaign —
+building StagedFigures for the 47 lessons remaining after the B1 pilot
+(maths ×13 / pc ×24 / svt ×10, 266 gap chapters). Contract:
+`docs/design/LESSON-EXPERIENCE-SPEC.md` §2.5 — every verdict below traces
+to a §2.5 clause (graph → always staged; schema/diagram → ≥3 layers +
+genuine teaching gesture; trivial/narrative → whole prose, honest decline).
+
+**Precedent (B1 pilot):** commits `1911aa2` (svt/theorie-tectonique-plaques),
+`7432db8` (svt/theorie-tectonique-plaques, corrected below), `97255f0`
+(pc/lois-de-newton), plus the maths/arithmetique commit. 23 chapters
+judged, 15 STAGE / 8 DECLINE, `validate-content.mjs` clean,
+`dom-truth.mjs` 155/155, screenshots confirmed light+dark. Human approved
+proceeding to B2 fan-out ("OK, proceed").
+
+**Out of scope:** philosophie (11 lessons, 84 chapters) — deliberate
+zero-visual decision, `docs/audits/fable-day3-ledger.md` §16. Not touched
+by this campaign.
+
+**Update discipline:** this ledger is appended after EVERY wave closes,
+not just at the end (`docs/pipeline/post-fable-work-order.md` Item 3's own
+rule, carried forward here).
+
+**Structural flags carried into every relevant wave's agent prompts:**
+- `content/maths/probabilites-conditionnelles/lesson.md` (wave M3): R1–R5
+  are nested `### ` headings under one `## Décortiquer` container, not flat
+  `## R<n>`.
+- `content/pc/rlc-serie/lesson.md` (wave P4): has an anomalous
+  `R9 — Variation fraîche` (an `[[exercise:]]` stub, no prose) — judged on
+  its own merits, not assumed STAGE or DECLINE.
+- SVT capstone "Pour t'entraîner" chapters (waves S1/S2) are NOT exempt by
+  convention — every capstone is judged normally.
+
+---
+
+## Wave plan
+
+| Wave | Matière | Lessons | Status |
+|---|---|---|---|
+| M1 | maths | calcul-integral, denombrement, derivabilite-etude-fonctions, equations-differentielles, fonction-exponentielle | done (16 STAGE / 18 DECLINE, 16 figures, validated, dom-truth 155/155) |
+| M2 | maths | fonction-logarithme, geometrie-espace, limites-continuite, nombres-complexes-1 | done (14 STAGE / 13 DECLINE, 14 figures, validated, dom-truth 155/155) |
+| M3 | maths | nombres-complexes-2, probabilites-conditionnelles, structures-algebriques, suites-numeriques | done (15 STAGE / 10 DECLINE, 15 figures, validated, dom-truth 155/155) |
+| P1 | pc | aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans, controle-catalyse, decroissance-radioactive | done (12 STAGE / 12 DECLINE, 12 figures, validated, dom-truth 155/155) |
+| P2 | pc | dipole-rl, electrolyse, esterification-hydrolyse, etat-equilibre, evolution-spontanee | done (13 STAGE / 15 DECLINE, 13 figures, validated, dom-truth 155/155) |
+| P3 | pc | noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques, ondes-mecaniques-progressives, piles | done (10 STAGE / 13 DECLINE, 10 figures, validated, dom-truth 155/155) |
+| P4 | pc | propagation-onde-lumineuse, rc-charge, reactions-acido-basiques, rlc-serie, rotation-axe-fixe | done (9 STAGE / 12 DECLINE, 9 figures) |
+| P5 | pc | suivi-temporel-vitesse, systemes-oscillants, transformations-deux-sens, transformations-lentes-rapides | done (7 STAGE / 10 DECLINE, 7 figures) |
+| S1 | svt | chaines-de-montagnes, dysfonctionnements-immunitaires, genetique-humaine, genetique-populations, granitisation-deformation | done (14 STAGE / 18 DECLINE, 14 figures) |
+| S2 | svt | liberation-energie-matiere-organique, moyens-de-defense, role-enzymes, soi-non-soi, transmission-caracteres | done (16 STAGE ch / 19 DECLINE, 17 figures) |
+
+---
+
+## Wave log
+
+### Wave M1 — maths: calcul-integral, denombrement, derivabilite-etude-fonctions, equations-differentielles, fonction-exponentielle
+
+**Judgment** (pedagogy-architect × 5):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| calcul-integral | R0 | DECLINE | predict-first hook, payload delivered by existing R1 figure |
+| calcul-integral | R2 | DECLINE | linearity proved purely symbolically, no load-bearing graph |
+| calcul-integral | R3 | STAGE | `chasles-decoupage-aire` — Chasles area-splitting, graph auto-staged |
+| calcul-integral | R4 | STAGE | `comparaison-aires-nichees` — nested-region comparison, graph |
+| calcul-integral | R5 | STAGE | `inegalite-moyenne-rectangles` — sandwiched-rectangles, graph |
+| calcul-integral | R6 | STAGE | `valeur-moyenne-rectangle` — equal-area flattening, graph |
+| calcul-integral | R7 | DECLINE | IPP is pure symbolic method, no area to read |
+| calcul-integral | R9 | DECLINE | practice chapter, would duplicate R1/R6/R8 gestures |
+| denombrement | R0 | DECLINE | narrative hook, deliberately withholds the count until R2 |
+| denombrement | R2 | STAGE | `p-liste-cadenas` — slot diagram, replacement-invariance gesture |
+| denombrement | R3 | STAGE | `arrangement-reservoir` — depleting-reservoir contrast to R2 |
+| denombrement | R4 | DECLINE | permutation is p=n endpoint of R3's mechanism, no new gesture |
+| denombrement | R6 | STAGE | `triangle-pascal` — triangle built by its own recurrence relation |
+| denombrement | R7 | STAGE | `urne-deux-couleurs` — two-color urn, confronts ET/× misconception |
+| denombrement | R8 | DECLINE | practice chapter, reuses R7's two-pool decomposition |
+| derivabilite-etude-fonctions | R0 | DECLINE | secant/tangent gesture already staged one chapter later at R1 |
+| derivabilite-etude-fonctions | R2 | STAGE | `regle-produit-aire` — product-rule area construction, confronts (uv)'=u'v' misconception |
+| derivabilite-etude-fonctions | R3 | DECLINE | chain rule intuition already stated vividly by gear analogy in prose |
+| derivabilite-etude-fonctions | R5 | STAGE | `etude-fonction-rationnelle` — full-study graph, culminating méthode complète |
+| derivabilite-etude-fonctions | R6 | DECLINE | practice chapter, student produces the table themselves (AttemptFirst) |
+| equations-differentielles | R0 | STAGE | `refroidissement-modeles` — predict-then-reveal, constant-rate vs decay graph |
+| equations-differentielles | R1 | DECLINE | algebraic uniqueness proof, family-of-curves already at R3 |
+| equations-differentielles | R2 | DECLINE | palier-family visualization already carried by R3's existing figure |
+| equations-differentielles | R4 | STAGE | `oscillateur-periode` — period/amplitude read on y''+ω²y=0 solution |
+| equations-differentielles | R5 | STAGE | `rc-charge-decharge` — RC charge/discharge palier contrast |
+| equations-differentielles | R6 | DECLINE | practice chapter, would pre-solve or duplicate R4/R5 |
+| fonction-exponentielle | R0 | DECLINE | predict-first hook, spoils R1's reciprocity reveal |
+| fonction-exponentielle | R1 | STAGE | `exp-reciproque-de-ln` — two-track number-line reciprocity diagram |
+| fonction-exponentielle | R2 | DECLINE | pure algebraic property-building, no structural layers |
+| fonction-exponentielle | R3 | DECLINE | derivative established algebraically, geometry owned by R5 |
+| fonction-exponentielle | R4 | STAGE | `exp-au-dessus-de-x-plus-1` — global inequality e^x ≥ x+1, graph |
+| fonction-exponentielle | R6 | DECLINE | antiderivative pattern-matching, no structural content |
+| fonction-exponentielle | R7 | DECLINE | procedural equation-solving by injectivity |
+| fonction-exponentielle | R8 | STAGE | `etude-f-e-x-plus-x-moins-2` — TVI existence/uniqueness graph |
+
+**Wave M1 judgment tally: 16 STAGE / 18 DECLINE** (34 chapters judged).
+
+**Build** (diagram-author × 5):
+
+| Lesson | Figure slug | Chapter | Stages |
+|---|---|---|---|
+| calcul-integral | chasles-decoupage-aire | R3 | 3 |
+| calcul-integral | comparaison-aires-nichees | R4 | 3 |
+| calcul-integral | inegalite-moyenne-rectangles | R5 | 3 |
+| calcul-integral | valeur-moyenne-rectangle | R6 | 3 |
+| denombrement | p-liste-cadenas | R2 | 3 |
+| denombrement | arrangement-reservoir | R3 | 3 |
+| denombrement | triangle-pascal | R6 | 3 |
+| denombrement | urne-deux-couleurs | R7 | 3 |
+| derivabilite-etude-fonctions | regle-produit-aire | R2 | 4 |
+| derivabilite-etude-fonctions | etude-fonction-rationnelle | R5 | 5 |
+| equations-differentielles | refroidissement-modeles | R0 | 4 |
+| equations-differentielles | oscillateur-periode | R4 | 3 |
+| equations-differentielles | rc-charge-decharge | R5 | 3 |
+| fonction-exponentielle | exp-reciproque-de-ln | R1 | 4 |
+| fonction-exponentielle | exp-au-dessus-de-x-plus-1 | R4 | 4 |
+| fonction-exponentielle | etude-f-e-x-plus-x-moins-2 | R8 | 4 |
+
+**Verification:**
+- `validate-content.mjs content/maths/<slug>` — pass ×5 (all clean)
+- anti-contract grep (`#[0-9a-fA-F]{3,6}|currentColor|foreignObject`) — pass ×5 (all clean)
+- `npm run build` — clean
+- `dom-truth.mjs` — 155/155, 0 fail
+- screenshot spot-check (light+dark) — `denombrement` R6 `triangle-pascal`: renders correctly both themes, construction-rule feeder arrows and symmetry axis read clearly
+
+**Commit:** `bcb1309` — pushed y.
+
+**Running tally: 5/47 lessons done, 34/266 chapters judged, 16 STAGE / 18 DECLINE.**
+
+### Wave M2 — maths: fonction-logarithme, geometrie-espace, limites-continuite, nombres-complexes-1
+
+**Judgment** (pedagogy-architect × 4):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| fonction-logarithme | R0 | DECLINE | narrative hook, would pre-empt R2's product→sum mechanism reveal |
+| fonction-logarithme | R1 | STAGE | `ln-aire-sous-courbe` — area-under-1/t, unique geometric payload for ln's sign |
+| fonction-logarithme | R2 | DECLINE | pure algebraic derivation chain, no graph |
+| fonction-logarithme | R3 | DECLINE | procedural chain-rule application, no curve constructed in prose |
+| fonction-logarithme | R4 | STAGE | `croissances-comparees-ln` — ln vs x growth-race graph, distinct from R5 |
+| fonction-logarithme | R6 | DECLINE | procedural equation-solving, no geometric schema |
+| fonction-logarithme | R7 | DECLINE | practice chapter, would undercut attempt-first exercises |
+| geometrie-espace | R0 | STAGE | `cube-diagonales` — shared referent for R0/R1/R2 arc, visual-intuition-fails hook |
+| geometrie-espace | R1 | STAGE | `distance-deux-pythagore` — distance formula via two stacked Pythagoras |
+| geometrie-espace | R2 | DECLINE | algebraic dot-product content, geometric payoff already at R0 |
+| geometrie-espace | R3 | STAGE | `produit-vectoriel-aire` — cross product orthogonality + area mechanism |
+| geometrie-espace | R4 | STAGE | `parallelepipede-volume` — volume = base × height via projection |
+| geometrie-espace | R5 | STAGE | `droite-point-direction` — parametric line, confronts "line = segment" misconception |
+| geometrie-espace | R7 | STAGE | `positions-droite-droite` — parallel/secant/skew trichotomy, the hardest 3D-specific idea |
+| geometrie-espace | R8 | STAGE | `distance-point-plan` — perpendicular-projection distance mechanism |
+| geometrie-espace | R10 | DECLINE | practice chapter, would reveal the method the exercises test |
+| limites-continuite | R0 | STAGE | `limite-trou` — open-circle ghost-point graph, seeds R1/R3 |
+| limites-continuite | R2 | STAGE | `indetermination-trois-courbes` — three ∞−∞ functions, three different limits |
+| limites-continuite | R3 | DECLINE | symbol-level algebraic FI-lifting, geometry owned by R0/R1 |
+| limites-continuite | R4 | STAGE | `trois-discontinuites` — 3-panel graph, one per failing continuity condition |
+| limites-continuite | R6 | STAGE | `cubique-trois-racines` — TVI on 3 monotone pieces, three root crossings |
+| nombres-complexes-1 | R0 | STAGE | `tour-des-ensembles` — nested ℕ⊂ℤ⊂ℚ⊂ℝ⊂ℂ set-extension diagram |
+| nombres-complexes-1 | R1 | DECLINE | single-layer Re/Im formula callout, not a teaching-gesture build |
+| nombres-complexes-1 | R2 | DECLINE | procedural algebra, vector interpretation deliberately deferred to R5 |
+| nombres-complexes-1 | R3 | DECLINE | conjugate's one figure-worthy idea (reflection) deferred to R5 |
+| nombres-complexes-1 | R4 | DECLINE | module kept algebraic here, geometric meaning deferred to R5 |
+| nombres-complexes-1 | R6 | DECLINE | practice chapter, lesson itself says no drawing needed |
+
+**Wave M2 judgment tally: 14 STAGE / 13 DECLINE** (27 chapters judged).
+
+**Build** (diagram-author × 4):
+
+| Lesson | Figure slug | Chapter | Stages |
+|---|---|---|---|
+| fonction-logarithme | ln-aire-sous-courbe | R1 | 4 |
+| fonction-logarithme | croissances-comparees-ln | R4 | 4 |
+| geometrie-espace | cube-diagonales | R0 | 3 |
+| geometrie-espace | distance-deux-pythagore | R1 | 4 |
+| geometrie-espace | produit-vectoriel-aire | R3 | 3 |
+| geometrie-espace | parallelepipede-volume | R4 | 3 |
+| geometrie-espace | droite-point-direction | R5 | 3 |
+| geometrie-espace | positions-droite-droite | R7 | 3 |
+| geometrie-espace | distance-point-plan | R8 | 3 |
+| limites-continuite | limite-trou | R0 | 3 |
+| limites-continuite | indetermination-trois-courbes | R2 | 3 |
+| limites-continuite | trois-discontinuites | R4 | 4 |
+| limites-continuite | cubique-trois-racines | R6 | 3 |
+| nombres-complexes-1 | tour-des-ensembles | R0 | 5 |
+
+**Verification:**
+- `validate-content.mjs content/maths/<slug>` — pass ×4 (all clean)
+- anti-contract grep (`#[0-9a-fA-F]{3,6}|currentColor|foreignObject`) — pass ×4 (all clean)
+- `npm run build` — clean
+- App-code fix: registered `trois-discontinuites: 4` in `MediaDiagram.tsx`'s `VERTICALLY_STACKED_PANELS` allowlist (the 4-panel figure needed viewBox cropping to avoid blank canvas during early stages — same class of fix as the B1 pilot's flagged `frontieres-plaques-quatre-types` gap; confirmed the 700px viewBox divides evenly into 4×175 panels before registering)
+- `dom-truth.mjs` — 155/155, 0 fail (also caught and fixed an unrelated stale-server issue: an orphaned prior server instance on port 4173 was serving cached HTML referencing pre-rebuild chunk hashes, causing ChunkLoadErrors on deep-linked chapter navigation; killed via `fuser -k 4173/tcp` and restarted clean — dom-truth itself runs its own self-managed server on a separate port so was unaffected throughout)
+- screenshot spot-check (light+dark) — `limites-continuite` R4 `trois-discontinuites`: confirmed the crop fix works (stage 1 shows only panel 1, no blank space; final stage shows all 4 panels correctly). `geometrie-espace` R0 `cube-diagonales`: cavalière projection, dashed hidden edges, and the ⊥? callout all render correctly
+
+**Commit:** `c025506` — pushed y.
+
+**Running tally: 9/47 lessons done, 61/266 chapters judged, 30 STAGE / 31 DECLINE.**
+
+### Wave M3 — maths: nombres-complexes-2, probabilites-conditionnelles, structures-algebriques, suites-numeriques
+
+**Judgment** (pedagogy-architect × 4):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| nombres-complexes-2 | R0 | STAGE | `multiplication-par-i` — predict-then-reveal, 90° rotation reading |
+| nombres-complexes-2 | R1 | STAGE | `argument-forme-trigo` — foundational Argand construction, (a,b)↔(r,θ) |
+| nombres-complexes-2 | R2 | DECLINE | algebraic derivation, geometric meaning already at R0/R5 |
+| nombres-complexes-2 | R3 | STAGE | `spirale-moivre` — power spiral, confronts "argument × n" misconception |
+| nombres-complexes-2 | R5 | STAGE | `rotation-homothetie` — two-step transformation, R0's payoff |
+| nombres-complexes-2 | R6 | STAGE | `nature-triangle-w` — grounds the reading-table in a concrete configuration |
+| probabilites-conditionnelles | R0 | DECLINE | predict-then-reveal hook, payload deferred to R5 |
+| probabilites-conditionnelles | R1 | STAGE | `univers-restreint` — proportional-area mosaic, conditioning = shrinking universe |
+| probabilites-conditionnelles | R3 | STAGE | `independant-vs-incompatible` — unit-square contrast, confronts core misconception |
+| structures-algebriques | R0 | DECLINE | narrative hook, single-layer, precedent `congruence-horloge` |
+| structures-algebriques | R1 | DECLINE | single-layer table observation, duplicates R2's staged table |
+| structures-algebriques | R3 | STAGE | `symetries-rectangle` — geometric symmetry group, vertex-permutation composition |
+| structures-algebriques | R4 | DECLINE | commutativity mechanism already staged at R2 |
+| structures-algebriques | R5 | STAGE | `table-multiplication-modulo4` — distinct table, bridges anneau→corps |
+| structures-algebriques | R6 | STAGE | `echelle-structures` — cumulative-strengthening ladder synthesis |
+| structures-algebriques | R7 | DECLINE | practice chapter, would pre-reveal attempt-first tables |
+| suites-numeriques | R0 | STAGE | `reservoir-premiers-termes` — predict-then-reveal, terms-plot payoff |
+| suites-numeriques | R1 | DECLINE | domino cascade is atmospheric metaphor, not a structural diagram |
+| suites-numeriques | R2 | DECLINE | algebraic/procedural, no graph invoked |
+| suites-numeriques | R3 | STAGE | `suite-bornee-non-monotone` — confronts "bounded ≠ monotone" misconception |
+| suites-numeriques | R4 | DECLINE | purely algebraic monotonicity method |
+| suites-numeriques | R6 | STAGE | `theoreme-gendarmes` — canonical squeeze theorem graph |
+| suites-numeriques | R7 | STAGE | `convergence-monotone-plancher` — confronts "L ≠ minorant" misconception |
+| suites-numeriques | R9 | STAGE | `suites-adjacentes-etau` — closing-vise graph, matches prose metaphor |
+| suites-numeriques | R10 | DECLINE | practice chapter, would duplicate R7/R8 |
+
+**Wave M3 judgment tally: 15 STAGE / 10 DECLINE** (25 chapters judged).
+
+**Build** (diagram-author × 4):
+
+| Lesson | Figure slug | Chapter | Stages |
+|---|---|---|---|
+| nombres-complexes-2 | multiplication-par-i | R0 | 3 |
+| nombres-complexes-2 | argument-forme-trigo | R1 | 3 |
+| nombres-complexes-2 | spirale-moivre | R3 | 4 |
+| nombres-complexes-2 | rotation-homothetie | R5 | 3 |
+| nombres-complexes-2 | nature-triangle-w | R6 | 3 |
+| probabilites-conditionnelles | univers-restreint | R1 | 4 |
+| probabilites-conditionnelles | independant-vs-incompatible | R3 | 3 |
+| structures-algebriques | symetries-rectangle | R3 | 3 |
+| structures-algebriques | table-multiplication-modulo4 | R5 | 4 |
+| structures-algebriques | echelle-structures | R6 | 4 |
+| suites-numeriques | reservoir-premiers-termes | R0 | 3 |
+| suites-numeriques | suite-bornee-non-monotone | R3 | 3 |
+| suites-numeriques | theoreme-gendarmes | R6 | 3 |
+| suites-numeriques | convergence-monotone-plancher | R7 | 3 |
+| suites-numeriques | suites-adjacentes-etau | R9 | 3 |
+
+**Verification:**
+- `validate-content.mjs content/maths/<slug>` — pass ×4 (all clean)
+- anti-contract grep — pass ×4 (probabilites-conditionnelles' pre-existing `arbre-pondere.svg` carries legacy hex colors predating the token system, untouched by this wave; both new files in that lesson confirmed clean on their own)
+- `npm run build` — clean
+- `dom-truth.mjs` — 155/155, 0 fail (learned from wave M2's stale-server incident — used `fuser -k 4173/tcp` before restarting this time, no recurrence)
+- screenshot spot-check (light+dark) — `nombres-complexes-2` R3 `spirale-moivre` and `probabilites-conditionnelles` R1 `univers-restreint`: both render correctly, correct geometry, correct probability readings boxed clearly
+
+**Known non-blocking gap flagged by the nombres-complexes-2 build agent:** `NotionBody.tsx`'s `FIGURE_ARIA_LABELS` map (a manually-curated slug → French aria-label lookup) has only 5 entries, all from the original pc/rlc-serie StagedFigure work; every other figure in the 90+-figure corpus — including all of B1's and B2's new figures — already falls back to `figureAriaLabel()`'s `slug.replace(/-/g," ")` default, which is plain but functional (not broken). This is a pre-existing condition across the whole corpus, not a regression from this campaign; retroactively curating entries for 90+ slugs is out of scope for content-only diagram-author agents and is not blocking. Worth a dedicated accessibility-polish pass at some point, tracked here rather than actioned mid-campaign.
+
+**Commit:** pending (this wave commits together with this ledger update).
+
+**Running tally: 13/47 lessons done, 86/266 chapters judged, 45 STAGE / 41 DECLINE. Maths matière COMPLETE (13/13 remaining lessons done, plus the arithmetique pilot — all 14 maths lessons now have full chapter-level visual judgment).**
+
+### Wave P1 — pc: aspects-energetiques, atome-mecanique-newton, chute-mouvements-plans, controle-catalyse, decroissance-radioactive
+
+**Judgment** (pedagogy-architect × 5):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| aspects-energetiques | R0 | DECLINE | narrative hook, payoff already lives at R3 |
+| aspects-energetiques | R1 | STAGE | `ec-parabole` — Ec vs v graph, confronts linear-vs-quadratic intuition |
+| aspects-energetiques | R2 | STAGE | `travail-force-signe` — work-sign tool, motrice/nulle/résistante |
+| aspects-energetiques | R5 | STAGE | `plan-incline-travaux` — energetic reading of incline, d→Δz=d·sinα |
+| aspects-energetiques | R6 | DECLINE | practice chapter, would pre-reveal the exercise's answer |
+| atome-mecanique-newton | R0 | DECLINE | narrative paradox hook, payload at R2 |
+| atome-mecanique-newton | R1 | DECLINE | order-of-magnitude comparison, table already carries it |
+| atome-mecanique-newton | R2 | STAGE | `bilan-forces-orbite` — centripetal force balance, 4-stage construction |
+| atome-mecanique-newton | R3 | STAGE | `spirale-rayonnement` — radiation-collapse paradox, causal sequence |
+| atome-mecanique-newton | R5 | DECLINE | practice chapter, reapplies R2's method |
+| chute-mouvements-plans | R0 | DECLINE | narrative hook, deliberately withholds the answer |
+| chute-mouvements-plans | R1 | STAGE | `symetrie-montee-descente` — 2-panel graph, montée=descente symmetry |
+| chute-mouvements-plans | R3 | DECLINE | algebraic elimination of t, result already visualized at R4 |
+| chute-mouvements-plans | R7 | DECLINE | practice chapter, duplicates R4/R6 |
+| controle-catalyse | R0 | DECLINE | narrative hook, no structure to build |
+| controle-catalyse | R1 | STAGE | `anhydride-alcool` — atom-tracked mechanism, no-water-byproduct |
+| controle-catalyse | R3 | STAGE | `trois-catalyses` — phase-classification, 3-panel homogène/hétérogène/enzymatique |
+| controle-catalyse | R4 | STAGE | `savon-amphiphile` — structure-property link, hydrophile/hydrophobe |
+| controle-catalyse | R5 | DECLINE | practice chapter, click-theater risk |
+| decroissance-radioactive | R0 | DECLINE | narrative hook, payload at R3's motion figure |
+| decroissance-radioactive | R1 | STAGE | `vallee-stabilite` — (Z,N) valley, confronts "gros=instable" misconception |
+| decroissance-radioactive | R2 | STAGE | `desintegrations-nz` — decay-displacement on the valley, β⁻/β⁺ trap |
+| decroissance-radioactive | R5 | STAGE | `datation-c14` — dating graph, living-equilibrium plateau + inverse read |
+| decroissance-radioactive | R6 | DECLINE | practice chapter, would duplicate R4/R5 |
+
+**Wave P1 judgment tally: 12 STAGE / 12 DECLINE** (24 chapters judged).
+
+**Build** (diagram-author × 5):
+
+| Lesson | Figure slug | Chapter | Stages |
+|---|---|---|---|
+| aspects-energetiques | ec-parabole | R1 | 3 |
+| aspects-energetiques | travail-force-signe | R2 | 4 |
+| aspects-energetiques | plan-incline-travaux | R5 | 3 |
+| atome-mecanique-newton | bilan-forces-orbite | R2 | 4 |
+| atome-mecanique-newton | spirale-rayonnement | R3 | 3 |
+| chute-mouvements-plans | symetrie-montee-descente | R1 | 3 |
+| controle-catalyse | anhydride-alcool | R1 | 3 |
+| controle-catalyse | trois-catalyses | R3 | 3 |
+| controle-catalyse | savon-amphiphile | R4 | 3 |
+| decroissance-radioactive | vallee-stabilite | R1 | 3 |
+| decroissance-radioactive | desintegrations-nz | R2 | 5 |
+| decroissance-radioactive | datation-c14 | R5 | 3 |
+
+**Verification:**
+- `validate-content.mjs content/pc/<slug>` — pass ×5 (all clean)
+- anti-contract grep — pass ×5 (decroissance-radioactive's grep hits were false positives: `#decay-batch-1` etc. are SVG element ID references inside a pre-existing, untouched motion-figure comment, not colors)
+- `npm run build` — clean
+- `dom-truth.mjs` — 155/155, 0 fail (used `fuser -k 4173/tcp` before restart per the M2 lesson learned — no stale-server recurrence)
+- screenshot spot-check (light+dark) — `decroissance-radioactive` R2 `desintegrations-nz`: all 5 stages read clearly, β⁻/β⁺ opposite-vector confrontation visible. `controle-catalyse` R3 `trois-catalyses`: three-panel phase classification (homogène/hétérogène/enzymatique) renders cleanly both themes
+
+**Commit:** `f21e27c` — pushed y.
+
+**Running tally: 18/47 lessons done, 110/266 chapters judged, 57 STAGE / 53 DECLINE.**
+
+### Wave P2 — pc: dipole-rl, electrolyse, esterification-hydrolyse, etat-equilibre, evolution-spontanee
+
+**Judgment** (pedagogy-architect × 5):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| dipole-rl | R0 | DECLINE | narrative hook, would duplicate R2's schema or spoil R2/R3's curve |
+| dipole-rl | R1 | STAGE | `bobine-modele-rl` — coil model construction, real object → idealization → law |
+| dipole-rl | R4 | STAGE | `bilan-puissance-energie` — power-balance branching, dissipé vs stocké |
+| dipole-rl | R5 | STAGE | `oscillogramme-exercice` — graph, tangent/asymptote reading task |
+| electrolyse | R0 | DECLINE | narrative hook, would duplicate R2's cell schematic |
+| electrolyse | R1 | DECLINE | mechanism belongs to R2's canonical cell figure |
+| electrolyse | R3 | STAGE | `seuil-tension-electrolyse` — tension threshold, confronts "any generator suffices" |
+| electrolyse | R4 | DECLINE | formula + arithmetic, no data graph |
+| electrolyse | R5 | STAGE | `electrolyse-eau-cellule` — water-electrolysis cell, distinct system from R2 |
+| electrolyse | R6 | DECLINE | recap-plus-exercises chapter |
+| esterification-hydrolyse | R0 | DECLINE | narrative hook, no structure to build |
+| esterification-hydrolyse | R1 | STAGE | `condensation-ester` — atom-tracked condensation mechanism |
+| esterification-hydrolyse | R2 | STAGE | `vitesses-equilibre-dynamique` — opposing-rate graph, confronts "equilibrium=arrêt" |
+| esterification-hydrolyse | R4 | STAGE | `catalyse-meme-palier` — same-plateau graph, accelerates not displaces |
+| esterification-hydrolyse | R5 | STAGE | `qr-k-deplacement` — Qr/K gauge, confronts "K fixed so nothing moves" |
+| esterification-hydrolyse | R6 | DECLINE | practice chapter |
+| etat-equilibre | R0 | DECLINE | narrative hook, atmospheric or pre-reveals |
+| etat-equilibre | R2 | STAGE | `jauge-avancement-tau` — advancement gauge, limited vs total contrast |
+| etat-equilibre | R3 | DECLINE | Qr(t) graph already owned by R4's existing figure |
+| etat-equilibre | R5 | STAGE | `critere-evolution-qr-k` — directional Qr axis, confronts direction misconception |
+| etat-equilibre | R6 | DECLINE | algebraic scaling relation, would rehash R5's axis |
+| etat-equilibre | R7 | DECLINE | practice/recap chapter |
+| evolution-spontanee | R0 | DECLINE | narrative hook, atmospheric |
+| evolution-spontanee | R1 | DECLINE | electron-counting algebra, already staged as KaTeX |
+| evolution-spontanee | R3 | STAGE | `transfert-direct-chaleur` — microscopic contact/jump/heat mechanism |
+| evolution-spontanee | R4 | STAGE | `direct-vs-pile` — contrast schema, the discriminating test itself |
+| evolution-spontanee | R5 | DECLINE | conceptual synthesis, no exact structure to carry |
+| evolution-spontanee | R6 | DECLINE | practice/recap chapter |
+
+**Wave P2 judgment tally: 13 STAGE / 15 DECLINE** (28 chapters judged).
+
+**Build** (diagram-author × 5):
+
+| Lesson | Figure slug | Chapter | Stages |
+|---|---|---|---|
+| dipole-rl | bobine-modele-rl | R1 | 3 |
+| dipole-rl | bilan-puissance-energie | R4 | 3 |
+| dipole-rl | oscillogramme-exercice | R5 | 3 |
+| electrolyse | seuil-tension-electrolyse | R3 | 3 |
+| electrolyse | electrolyse-eau-cellule | R5 | 4 |
+| esterification-hydrolyse | condensation-ester | R1 | 3 |
+| esterification-hydrolyse | vitesses-equilibre-dynamique | R2 | 3 |
+| esterification-hydrolyse | catalyse-meme-palier | R4 | 3 |
+| esterification-hydrolyse | qr-k-deplacement | R5 | 3 |
+| etat-equilibre | jauge-avancement-tau | R2 | 3 |
+| etat-equilibre | critere-evolution-qr-k | R5 | 3 |
+| evolution-spontanee | transfert-direct-chaleur | R3 | 3 |
+| evolution-spontanee | direct-vs-pile | R4 | 3 |
+
+**Verification:**
+- `validate-content.mjs content/pc/<slug>` — pass ×5 (all clean)
+- anti-contract grep — pass ×13 new SVGs (all clean; `electrolyse-eau-cellule` deliberately reuses R2's `liquid-grad` gradient for family coherence, gradient stops are token-based)
+- App-code fix: added `electrolyse-eau-cellule` to `MediaDiagram.tsx`'s `STRUCTURAL_SLUGS` (same width-capped cell-schema family as the already-listed `cellule-electrolyse` — flagged by the build agent, applied during verification)
+- `npm run build` — clean
+- `dom-truth.mjs` — 155/155, 0 fail
+- screenshot spot-check (light+dark) — `electrolyse` R5 `electrolyse-eau-cellule`: width-cap confirmed, 2:1 gas-ratio panel and ⇌/→ notation correct. `esterification-hydrolyse` R5 `qr-k-deplacement`: stacked-fraction Qr, K pivot, sens-direct/répétable annotations all read cleanly
+- Notable build-agent self-correction: esterification-hydrolyse's agent initially drafted `condensation-ester` as stacked panels, discovered the `VERTICALLY_STACKED_PANELS` allowlist dependency on its own, and rebuilt as a single persistent panel — no app-code change needed for it
+
+**Commit:** pending (this wave commits together with this ledger update).
+
+**Running tally: 23/47 lessons done, 138/266 chapters judged, 70 STAGE / 68 DECLINE.**
+
+### Wave P3 — pc: noyaux-masse-energie, ondes-em-modulation, ondes-mecaniques-periodiques, ondes-mecaniques-progressives, piles
+
+**Judgment** (pedagogy-architect × 5):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| noyaux-masse-energie | R0 | DECLINE | predict-first hook, quantitative payoff belongs to R4 |
+| noyaux-masse-energie | R1 | DECLINE | single boxed postulate + unit conversion, already staged as prose equations |
+| noyaux-masse-energie | R4 | STAGE | `nucleaire-vs-chimique` — log-scale energy-per-reaction bars, ×10⁷ made visceral |
+| noyaux-masse-energie | R5 | DECLINE | worked-exercise chapter, Aston placement owned by R3 |
+| ondes-em-modulation | R0 | DECLINE | predict-then-reveal narrative hook |
+| ondes-em-modulation | R1 | STAGE | `antenne-quart-onde` — λ/4 scale comparison, 75km vs 83m absurdity |
+| ondes-em-modulation | R4 | STAGE | `detecteur-crete` — peak-detector envelope recovery graph |
+| ondes-em-modulation | R5 | STAGE | `circuit-accorde-selection` — tuned L‖C carrier selection, strictly qualitative (cadre exclusion respected) |
+| ondes-em-modulation | R6 | DECLINE | exercise hands the trace verbally, drawing it would spoil the reading work |
+| ondes-mecaniques-periodiques | R0 | DECLINE | payload already carried by R2's double-periodicite |
+| ondes-mecaniques-periodiques | R1 | STAGE | `heritage-periode-retard` — delay shifts, doesn't stretch; non-sinusoidal waveform |
+| ondes-mecaniques-periodiques | R4 | STAGE | `son-longitudinal-compressions` — longitudinal vs transverse, λ between compressions |
+| ondes-mecaniques-periodiques | R5 | DECLINE | recap + numeric exercise, no new concept |
+| ondes-mecaniques-progressives | R0 | STAGE | `bouchon-oscille-sur-place` — predict-then-reveal cork, energy travels not water |
+| ondes-mecaniques-progressives | R4 | STAGE | `front-onde-dimensions` — 1D two points → 2D circle → 3D sphere |
+| ondes-mecaniques-progressives | R5 | DECLINE | student computes/constructs themselves, solution-graph would spoil |
+| piles | R0 | DECLINE | hook, would front-run R1's pile-daniell |
+| piles | R2 | STAGE | `qr-vs-k-echelle` — log axis, 38-orders gap + discharge evolution arrow |
+| piles | R3 | DECLINE | naming/word-association argument, visual anchor subsumed by R4 |
+| piles | R4 | STAGE | `courant-vs-electrons` — two antiparallel arrows, electrons first then convention |
+| piles | R5 | DECLINE | definition + formula, dynamics already on R2's scale |
+| piles | R6 | DECLINE | linear formula chain, boxes would be click theater |
+| piles | R7 | DECLINE | recap chapter, visuals live at R1/R4 |
+
+**Wave P3 judgment tally: 10 STAGE / 13 DECLINE** (23 chapters judged).
+
+**Build** (diagram-author × 5):
+
+| Lesson | Figure slug | Chapter | Stages |
+|---|---|---|---|
+| noyaux-masse-energie | nucleaire-vs-chimique | R4 | 4 |
+| ondes-em-modulation | antenne-quart-onde | R1 | 3 |
+| ondes-em-modulation | detecteur-crete | R4 | 3 |
+| ondes-em-modulation | circuit-accorde-selection | R5 | 3 |
+| ondes-mecaniques-periodiques | heritage-periode-retard | R1 | 3 |
+| ondes-mecaniques-periodiques | son-longitudinal-compressions | R4 | 3 |
+| ondes-mecaniques-progressives | bouchon-oscille-sur-place | R0 | 3 |
+| ondes-mecaniques-progressives | front-onde-dimensions | R4 | 3 |
+| piles | qr-vs-k-echelle | R2 | 3 |
+| piles | courant-vs-electrons | R4 | 3 |
+
+**Verification:**
+- `validate-content.mjs content/pc/<slug>` — pass ×5 (all clean)
+- anti-contract grep — pass ×10 new SVGs (all clean)
+- App-code fix: added `courant-vs-electrons` to `MediaDiagram.tsx`'s `STRUCTURAL_SLUGS` (reuses `pile-daniell`'s exact cell geometry, which is registered). Checked the axis-diagram family precedent: `critere-qr-k`/`quotient-vers-K` are deliberately NOT registered, so `qr-vs-k-echelle` and `seuil-tension-electrolyse` correctly stay unregistered
+- Marker-duplication check on ondes-em-modulation (its build agent reported "4 insertions" for 3 figures): grep confirms exactly 5 markers, 3 new + 2 pre-existing — the report was a miscount, no duplicate
+- `npm run build` — clean
+- `dom-truth.mjs` — 155/155, 0 fail
+- screenshot spot-check (light+dark) — `piles` R4 `courant-vs-electrons`: width-capped, antiparallel e⁻/I arrows read clearly. `ondes-mecaniques-progressives` R4 `front-onde-dimensions`: 1D/2D/3D panels with two-points/circle/sphere fronts all render cleanly
+
+**Commit:** pending (this wave commits together with this ledger update).
+
+**Running tally: 28/47 lessons done, 161/266 chapters judged, 80 STAGE / 81 DECLINE.**
+
+### Wave P4 — pc: propagation-onde-lumineuse, rc-charge, reactions-acido-basiques, rlc-serie (R9 only), rotation-axe-fixe
+
+**Judgment** (pedagogy-architect × 5):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| propagation-onde-lumineuse | R0 | STAGE | `cloche-a-vide-son-lumiere` — bell-jar contrast, sound dies / light survives |
+| propagation-onde-lumineuse | R1 | DECLINE | E↔B mechanism deliberately out of program scope, prose carries it |
+| propagation-onde-lumineuse | R2 | DECLINE | definitional/computational (n=c/v), equations carry it |
+| propagation-onde-lumineuse | R4 | STAGE | `lambda-nu-changement-milieu` — λ shrinks, ν unchanged → colour unchanged |
+| propagation-onde-lumineuse | R6 | DECLINE | exercise reuses R3's diffraction setup |
+| rc-charge | R0 | STAGE | `saut-ou-montee` — predict-then-reveal jump-vs-rise, strictly qualitative |
+| rc-charge | R5 | STAGE | `exo-oscillogramme` — the exercise's reading graph, tangent + 63% |
+| reactions-acido-basiques | R0 | DECLINE | narrative hook, two pH values carried by prose |
+| reactions-acido-basiques | R1 | STAGE | `transfert-proton-ammonium` — proton cede/capture, H⁺ cancels like e⁻ |
+| reactions-acido-basiques | R2 | DECLINE | procedural pH conversions, R3's scale owns the axis |
+| reactions-acido-basiques | R3 | STAGE | `echelle-acide-neutre-basique` — pH 7 derived from Ke, kills "petit pH = basique" |
+| reactions-acido-basiques | R4 | DECLINE | procedural KA reconstruction, axis figure would duplicate family |
+| reactions-acido-basiques | R6 | STAGE | `fort-vs-faible-avancement` — equal c, divergent extent, closes R0 loop |
+| reactions-acido-basiques | R8 | DECLINE | recap + exercises |
+| rlc-serie | R9 | DECLINE | bare exercise stub; visual work done by R8's regimes-uc, re-scaffolding would fight the variation-fraîche purpose |
+| rotation-axe-fixe | R0 | DECLINE | narrative hook, contrast delivered quantitatively at R3 |
+| rotation-axe-fixe | R1 | STAGE | `omega-vitesse-point` — one ω, many v; radian construction |
+| rotation-axe-fixe | R4 | DECLINE | symbolic derivation, dictionary already a prose table |
+| rotation-axe-fixe | R5 | DECLINE | formula built at R3, arithmetic additivity check |
+| rotation-axe-fixe | R6 | STAGE | `pendule-pesant-bras-levier` — constructs the d·sinθ lever arm |
+| rotation-axe-fixe | R7 | DECLINE | recap + practice, geometry carried by R2's moment-force |
+
+**Wave P4 judgment tally: 9 STAGE / 12 DECLINE** (21 chapters judged).
+
+**Build** (diagram-author × 4 — rlc-serie needed none, its only gap chapter was DECLINED):
+
+| Lesson | Figure slug | Chapter | Stages |
+|---|---|---|---|
+| propagation-onde-lumineuse | cloche-a-vide-son-lumiere | R0 | 3 |
+| propagation-onde-lumineuse | lambda-nu-changement-milieu | R4 | 3 |
+| rc-charge | saut-ou-montee | R0 | 3 |
+| rc-charge | exo-oscillogramme | R5 | 3 |
+| reactions-acido-basiques | transfert-proton-ammonium | R1 | 4 |
+| reactions-acido-basiques | echelle-acide-neutre-basique | R3 | 3 |
+| reactions-acido-basiques | fort-vs-faible-avancement | R6 | 3 |
+| rotation-axe-fixe | omega-vitesse-point | R1 | 3 |
+| rotation-axe-fixe | pendule-pesant-bras-levier | R6 | 3 |
+
+**Verification:**
+- `validate-content.mjs content/pc/<slug>` — pass ×4 (all clean)
+- anti-contract grep — pass ×9 new SVGs, with ONE documented exception:
+  `lambda-nu-changement-milieu.svg` uses a literal red hex (#C0392B) for the
+  two identical colour swatches, because perceived colour IS the pedagogical
+  content there (same red both sides of the medium change). This mirrors the
+  pre-existing, comment-documented exception in the same lesson's
+  `dispersion-prisme.svg` and reuses its exact red for consistency
+- `npm run build` — clean
+- `dom-truth.mjs` — 155/155, 0 fail
+- screenshot spot-check (light+dark) — `reactions-acido-basiques` R1
+  `transfert-proton-ammonium` at stage 4/4: half-equations with cède/capte
+  arrows, H⁺ capsule strike-through, net equation — clean in both themes
+- Deep-link note: R1 of reactions-acido-basiques renders at `?chapitre=2`
+  (index shifted by intro chapters) — worth remembering for future spot-checks
+
+**Flagged (pre-existing, NOT touched):** `reactions-acido-basiques/lesson.md`
+~line 170 says pH 2 vs pH 9 differ by "un million de fois" — the ratio is
+10⁷ (dix millions). For the content-author lane, recorded in the
+reactions-acido-basiques marker commit (4f29284).
+
+**Commits:** this wave shipped incrementally as build agents completed
+(stop-hook cadence), not as one batch commit: `3f08aa6` (rc-charge),
+`480f388` (propagation-onde-lumineuse), `1490219` + `23d9196`
+(reactions-acido-basiques media), `4f29284` (reactions-acido-basiques
+markers), `5f64296` (rotation-axe-fixe first figure), plus the closing
+commit carrying pendule-pesant-bras-levier and this ledger update. All
+content identical in outcome to a single wave commit; every partial commit
+was validated (validate-content + anti-contract grep) before pushing.
+
+**Running tally: 33/47 lessons done, 182/266 chapters judged, 89 STAGE / 93 DECLINE.**
+
+### Wave P5 — pc: suivi-temporel-vitesse, systemes-oscillants, transformations-deux-sens, transformations-lentes-rapides
+
+**Judgment** (pedagogy-architect × 4):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| suivi-temporel-vitesse | R0 | STAGE | `prediction-avancement` — predict-then-reveal: droite constante vs courbe qui ralentit, allure only |
+| suivi-temporel-vitesse | R1 | DECLINE | procedural catalog of monitoring methods, conceptual prose |
+| suivi-temporel-vitesse | R3 | STAGE | `tangentes-decroissantes` — two tangents of falling steepness make the deceleration itself visible (R2 owns the single-tangent method) |
+| suivi-temporel-vitesse | R5 | DECLINE | exercise supplies all values numerically; tangent/t½ gestures owned by R2/R4 figures |
+| systemes-oscillants | R0 | DECLINE | narrative hook; payload delivered by R1's pendule-elastique + sandbox |
+| systemes-oscillants | R3 | STAGE | `bilan-pendule-simple` — circular geometry + force decomposition (−mg sinθ, tension radial, mass cancels); no existing media covers pendulums |
+| systemes-oscillants | R4 | DECLINE | recap/analogy chapter; torsion schema is single-layer, staging would be click-theatre |
+| systemes-oscillants | R7 | DECLINE | exercises supply data verbally; visual work done by R1/R5 figures + sandbox |
+| transformations-deux-sens | R0 | DECLINE | narrative hook; its only figure idea is R4's avancement-limite gesture |
+| transformations-deux-sens | R1 | STAGE | `sens-direct-inverse` — constructs the ⇌ notation: sens direct → sens inverse → coexistence |
+| transformations-deux-sens | R2 | DECLINE | procedural binary criterion; a decision fork is not a progressive build |
+| transformations-deux-sens | R3 | STAGE | `experiences-miroir` — composition track, two mirror departures converging on coexistence |
+| transformations-lentes-rapides | R0 | DECLINE | narrative accroche; timescale contrast carried by R1's lente-rapide |
+| transformations-lentes-rapides | R2 | DECLINE | symbolic half-equation recap, equations carry it |
+| transformations-lentes-rapides | R3 | STAGE | `facteurs-cinetiques` — A/B/C controlled comparison, one variable isolated per stage |
+| transformations-lentes-rapides | R4 | STAGE | `chocs-efficaces` — entities → collision → efficace/inefficace pivot → the two levers |
+| transformations-lentes-rapides | R5 | DECLINE | algebraic/criterion/qualitative questions; visual work done by R3/R4 figures |
+
+**Wave P5 judgment tally: 7 STAGE / 10 DECLINE** (17 chapters judged — closes the pc matière's judgment).
+
+**Build** (diagram-author × 4):
+
+| Lesson | Figure slug | Chapter | Stages |
+|---|---|---|---|
+| suivi-temporel-vitesse | prediction-avancement | R0 | 3 |
+| suivi-temporel-vitesse | tangentes-decroissantes | R3 | 3 |
+| systemes-oscillants | bilan-pendule-simple | R3 | 4 |
+| transformations-deux-sens | sens-direct-inverse | R1 | 3 |
+| transformations-deux-sens | experiences-miroir | R3 | 4 |
+| transformations-lentes-rapides | comparaison-facteurs-cinetiques | R3 | 4 |
+| transformations-lentes-rapides | chocs-efficaces | R4 | 5 |
+
+**Slug-collision incident (new campaign rule):** the judgment proposed
+`facteurs-cinetiques` for transformations-lentes-rapides R3, but
+`controle-catalyse` already owns that slug — and the app's slug-keyed maps
+(`FIGURE_ARIA_LABELS`, `STRUCTURAL_SLUGS`, `VERTICALLY_STACKED_PANELS`)
+are global, so a duplicate would cross-contaminate both lessons' rendering.
+Caught before any file was written (a corpus-wide duplicate audit found
+zero existing duplicates); the build agent was redirected mid-flight and
+shipped `comparaison-facteurs-cinetiques` instead. **Rule going forward:
+every proposed slug is checked for corpus uniqueness before build launch**
+— applied to S1/S2 prompts.
+
+**Verification:**
+- `validate-content.mjs content/pc/<slug>` — pass ×4 (all clean)
+- anti-contract grep — pass ×7 new SVGs (all clean; `&#`-entity false
+  positives excluded as usual)
+- French aria labels added to `FIGURE_ARIA_LABELS` for all 7 new figures
+  (a first for the campaign — one build agent started the practice, the
+  orchestrator completed it for the wave; M1–P4 figures still rely on the
+  slug-derived fallback, a pre-existing corpus-wide polish gap)
+- `comparaison-facteurs-cinetiques` deliberately NOT registered in
+  `VERTICALLY_STACKED_PANELS` (matches the unregistered `trois-catalyses`
+  precedent; its stage-4 overlay lives inside earlier rows' bounds)
+- `npm run build` — clean
+- `dom-truth.mjs` — 155/155, 0 fail
+- screenshot spot-check (light+dark) — `systemes-oscillants` R3
+  `bilan-pendule-simple` at stage 4/4 (the wave's geometrically riskiest
+  figure, hand-derived arc math): trajectory arc through équilibre,
+  tension colinear with the string, accented −mg sin θ, struck-through
+  mass in the equation box — clean in both themes (renders at `?chapitre=4`)
+
+**Commits:** `71c78e7` (judgment), `5f4e508` (suivi-temporel-vitesse),
+`b43e152` (transformations-lentes-rapides), `96c62ed`
+(transformations-deux-sens), `d8dce33` (systemes-oscillants), plus the
+closing ledger commit. Incremental per-lesson cadence, every commit
+validated before push.
+
+**Running tally: 37/47 lessons done, 199/266 chapters judged, 96 STAGE / 103 DECLINE. PC matière COMPLETE (24/24 remaining lessons done — all pc lessons now have full chapter-level visual judgment). Remaining: svt waves S1+S2 (10 lessons, 67 gap chapters).**
+
+
+### Wave S1 — svt: chaines-de-montagnes, dysfonctionnements-immunitaires, genetique-humaine, genetique-populations, granitisation-deformation
+
+**Judgment** (pedagogy-architect × 5):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| chaines-de-montagnes | R0 | DECLINE | narrative hook (fossils at the summit) |
+| chaines-de-montagnes | R1 | STAGE | `subduction-andes` — slab plunge → water release → arc melting → Wadati-Benioff plane |
+| chaines-de-montagnes | R2 | STAGE | `collision-himalaya` — Téthys closure → contact halts subduction → crust doubles 35→70 km |
+| chaines-de-montagnes | R3 | STAGE | `sequence-ophiolite` — ocean-floor column found impossibly high = proof an ocean closed |
+| chaines-de-montagnes | R5 | STAGE | `enfouissement-exhumation` — a rock's burial-to-30 km-then-exhumed journey |
+| chaines-de-montagnes | R6 | DECLINE | synthesis/recap, indices already carried by R3/R4/R5 |
+| chaines-de-montagnes | R7 | DECLINE | capstone verbal exercise, earlier figures carry the visuals |
+| dysfonctionnements-immunitaires | R0 | DECLINE | narrative accroche (the second sting) |
+| dysfonctionnements-immunitaires | R2 | STAGE | `rupture-tolerance-deux-voies` — tolerance fails → cellular (T1 diabetes) vs humoral (RA) fork |
+| dysfonctionnements-immunitaires | R3 | STAGE | `vih-lt4-charge-virale` — the canonical LT4/charge-virale vs time graph, three phases + threshold |
+| dysfonctionnements-immunitaires | R4 | DECLINE | vaccination mechanism flagged as prior-lesson review; kinetics belong to R6 |
+| dysfonctionnements-immunitaires | R5 | DECLINE | sérothérapie is one idea (ready-made antibodies); kinetics belong to R6 |
+| dysfonctionnements-immunitaires | R6 | STAGE | `titre-anticorps-vaccin-serum` — the mirror-image titre curves the chapter tells you to read |
+| dysfonctionnements-immunitaires | R7 | DECLINE | capstone synthesis, no new figure it hinges on |
+| genetique-humaine | R0 | DECLINE | narrative hook (why colour-blindness hits men) |
+| genetique-humaine | R1 | DECLINE | pedigree-convention vocabulary; legend already in R2's figure |
+| genetique-humaine | R3 | DECLINE | logical-deduction checklist; transmission gesture is R4's |
+| genetique-humaine | R4 | STAGE | `croisement-lie-x` — X-linked cross built column-by-column + hemizygosity punchline |
+| genetique-humaine | R5 | STAGE | `proba-enfant-atteint` — conditional-probability tree: strike, renormalize, weight branches |
+| genetique-humaine | R6 | DECLINE | practice; same X-linked gesture as R4 with H/h, would spoil attempt-first |
+| genetique-populations | R0 | DECLINE | narrative hook (the invisible carrier) |
+| genetique-populations | R2 | STAGE | `echiquier-gametes` — gamete grid deriving p²+2pq+q²=1, margins→cells→collect→equation |
+| genetique-populations | R3 | DECLINE | HW-conditions checklist, definitional |
+| genetique-populations | R4 | DECLINE | q²→q→2pq calculation method, procedural |
+| genetique-populations | R5 | DECLINE | catalog of four independent evolutionary forces, enumeration not a build |
+| genetique-populations | R6 | DECLINE | capstone procedural application (mucoviscidose) |
+| granitisation-deformation | R0 | DECLINE | narrative accroche (a granite in open air) |
+| granitisation-deformation | R1 | STAGE | `pli-faille-profondeur` — one bed, one compression, brittle-vs-ductile decided by depth |
+| granitisation-deformation | R2 | STAGE | `facies-jauge-profondeur` — one pélite descending, schiste→gneiss→migmatite as depth-gauge |
+| granitisation-deformation | R3 | STAGE | `solidus-seuil-anatexie` — P-T diagram: path + dry solidus + water-lowered solidus + crossing |
+| granitisation-deformation | R5 | STAGE | `exhumation-erosion-granite` — uplift + erosion strip overburden to expose the granite root |
+| granitisation-deformation | R6 | DECLINE | capstone coupe exercise, would spoil or duplicate |
+
+**Wave S1 judgment tally: 14 STAGE / 18 DECLINE** (32 chapters judged).
+
+**Slug-uniqueness pre-check:** all 14 proposed slugs verified corpus-unique
+before build launch (the P5 rule), zero collisions. Note two distinct
+exhumation figures — `enfouissement-exhumation` (chaines-de-montagnes R5,
+a single rock's vertical journey) and `exhumation-erosion-granite`
+(granitisation-deformation R5, the granite-root unroofing) — deliberately
+different slugs, different gestures, no collision.
+
+**Build** (diagram-author × 5):
+
+| Lesson | Figure slug | Chapter | Stages | Width |
+|---|---|---|---|---|
+| chaines-de-montagnes | subduction-andes | R1 | 4 | wide-band |
+| chaines-de-montagnes | collision-himalaya | R2 | 4 | wide-band (stacked time-panels) |
+| chaines-de-montagnes | sequence-ophiolite | R3 | 3 | structural (680px) |
+| chaines-de-montagnes | enfouissement-exhumation | R5 | 3 | structural (680px) |
+| dysfonctionnements-immunitaires | rupture-tolerance-deux-voies | R2 | 4 | structural (680px) |
+| dysfonctionnements-immunitaires | vih-lt4-charge-virale | R3 | 4 | wide-band |
+| dysfonctionnements-immunitaires | titre-anticorps-vaccin-serum | R6 | 4 | wide-band |
+| genetique-humaine | croisement-lie-x | R4 | 5 | structural (680px) |
+| genetique-humaine | proba-enfant-atteint | R5 | 5 | wide-band |
+| genetique-populations | echiquier-gametes | R2 | 4 | structural (680px) |
+| granitisation-deformation | pli-faille-profondeur | R1 | 4 | structural (680px) |
+| granitisation-deformation | facies-jauge-profondeur | R2 | 4 | structural (680px) |
+| granitisation-deformation | solidus-seuil-anatexie | R3 | 5 | wide-band |
+| granitisation-deformation | exhumation-erosion-granite | R5 | 4 | structural (680px) |
+
+**Concurrent app-file edits (new observation):** unlike prior waves where
+the orchestrator solely owned `NotionBody.tsx`/`MediaDiagram.tsx`, four of
+the five S1 build agents (all but dysfonctionnements) chose to self-register
+their own `FIGURE_ARIA_LABELS` + `STRUCTURAL_SLUGS` entries — several
+writing to the same two shared files concurrently. Post-hoc audit confirmed
+NO lost updates: all 11 self-registered aria labels present exactly once,
+all 8 expected-structural slugs registered exactly once, all 6 expected
+wide-band slugs correctly absent from STRUCTURAL_SLUGS, and `npm run build`
+compiled clean (no duplicate-key TS error). The orchestrator added the 3
+remaining dysfonctionnements aria labels + the 1 rupture-tolerance-deux-voies
+structural entry in the reconciliation pass. It worked this time, but agents
+writing shared app files concurrently is a real lost-update hazard — future
+waves should instruct build agents to leave app-file registration to the
+orchestrator (the dysfonctionnements agent's behaviour, which was cleanest).
+
+**Verification:**
+- `validate-content.mjs content/svt/<slug>` — pass ×5 (all clean)
+- anti-contract grep — pass ×14 new SVGs (all clean)
+- all 14 slugs have French `FIGURE_ARIA_LABELS`; 8 compact figures registered
+  in `STRUCTURAL_SLUGS` (680px cap), 6 wide-band correctly excluded (verified
+  by membership audit)
+- `npm run build` — clean (also the concurrent-edit integrity check)
+- `dom-truth.mjs` — 155/155, 0 fail
+- screenshot spot-check (light+dark), three types sampled: `vih-lt4-charge-virale`
+  (dual-curve graph, shared axes + ~200/mm³ threshold + 3 phases), `croisement-lie-x`
+  (structural-capped Punnett with the accented hemizygous XᵃY son + superscript
+  notation), `solidus-seuil-anatexie` (wide-band P-T graph, path + dry/wet solidus
+  + anatexie crossing) — all clean in both themes
+- `collision-himalaya` uses stacked time-panels (StagedFigure's additive
+  contract can't shrink an earlier ocean under a later one) — same precedent
+  as this lesson family's `frontieres-plaques-quatre-types`
+
+**Commits:** `2a238dd` (judgment), `393162c` (genetique-populations),
+`cf7c9d7` (chaines-de-montagnes + its app entries), `63ef22a`
+(dysfonctionnements + granitisation content), plus the closing commit
+carrying genetique-humaine content, the reconciled app files, and this
+ledger update.
+
+**Running tally: 42/47 lessons done, 231/266 chapters judged, 110 STAGE / 121 DECLINE.**
+
+### Wave S2 — svt: liberation-energie-matiere-organique, moyens-de-defense, role-enzymes, soi-non-soi, transmission-caracteres
+
+**Judgment** (pedagogy-architect × 5; the two "Pour t'entraîner" exercise
+chapters initially omitted from the agent prompts — liberation R8, moyens
+R9 — were judged directly by the orchestrator against §2.5, both clean
+DECLINE, restoring full 35/35 coverage):
+
+| Lesson | Chapter | Verdict | Reason / slug |
+|---|---|---|---|
+| liberation-energie-matiere-organique | R0 | DECLINE | narrative sprint/marathon hook |
+| liberation-energie-matiere-organique | R1 | STAGE | `atp-hydrolyse-cycle` — charge repulsion → hydrolyse → regeneration loop (R7 never touches ATP) |
+| liberation-energie-matiere-organique | R2 | STAGE | `glycolyse-bilan-atp` — invest −2 then repay +4, net +2 (confronts "net = 4") |
+| liberation-energie-matiere-organique | R3 | STAGE | `krebs-bilan-carbone` — carbon accounting to 6 CO₂ = complete oxidation |
+| liberation-energie-matiere-organique | R4 | STAGE | `chimiosmose-atp-synthase` — the ETC/gradient/ATP-synthase mechanism R7 only labels |
+| liberation-energie-matiere-organique | R5 | DECLINE | energy-balance recap, a totals table not a curve |
+| liberation-energie-matiere-organique | R6 | DECLINE | fermentation mechanism already owned by R7 |
+| liberation-energie-matiere-organique | R8 | DECLINE | exercise (flask A/B respiration vs fermentation), visual work carried by R7 |
+| moyens-de-defense | R0 | DECLINE | narrative wound hook |
+| moyens-de-defense | R2 | STAGE | `phagocytose-etapes` — one cell's chimiotactisme→adhérence→ingestion→digestion→rejet |
+| moyens-de-defense | R3 | DECLINE | innate-limits narrative bridge, a comparison table |
+| moyens-de-defense | R4 | STAGE | `selection-clonale` — the SELECTION of one clone from the repertoire (R7 starts post-selection) |
+| moyens-de-defense | R5 | STAGE | `anticorps-agglutination` — bivalence → crosslink → mark-not-destroy |
+| moyens-de-defense | R6 | STAGE | `lt8-cytotoxicite` — soi-modifié recognition + induced apoptosis (R7 only produces the CTL) |
+| moyens-de-defense | R8 | STAGE | `reponse-primaire-secondaire` — the primary-vs-secondary titre graph |
+| moyens-de-defense | R9 | DECLINE | exercise supplies titre data verbally = R8's figure; attempt-first |
+| role-enzymes | R0 | DECLINE | narrative bread→sweet hook |
+| role-enzymes | R1 | DECLINE | definitional; "never consumed" is R2's cycle-figure punchline |
+| role-enzymes | R3 | STAGE | `double-specificite` — substrate-choice vs action separated spatially |
+| role-enzymes | R4 | STAGE ×2 | `courbe-temperature` (bell + denaturation collapse) + `courbe-ph` (two enzyme optima) |
+| role-enzymes | R5 | STAGE | `concentration-substrat-enzyme` — saturation plateau vs proportional line, two-panel |
+| role-enzymes | R6 | DECLINE | digestive-enzyme reference table, recap |
+| role-enzymes | R7 | DECLINE | exercise, hinges on curves already staged at R4/R5 |
+| soi-non-soi | R0 | DECLINE | narrative transfusion/graft hook |
+| soi-non-soi | R1 | DECLINE | self/non-self conceptual boundary, narrative |
+| soi-non-soi | R2 | STAGE | `specificite-cle-serrure` — antigen-antibody complementarity, fit vs no-fit |
+| soi-non-soi | R4 | STAGE | `agglutination-transfusion` — transfusion agglutination mechanism (distinct from R3's CMH-graft axis) |
+| soi-non-soi | R5 | DECLINE | non-self category catalog, parallel not a build |
+| soi-non-soi | R6 | DECLINE | exercise applies R4's compatibility logic |
+| transmission-caracteres | R0 | DECLINE | narrative mice hook |
+| transmission-caracteres | R1 | DECLINE | vocabulary definitions, a prose table |
+| transmission-caracteres | R2 | DECLINE | P×P→F1 is a trivial 1-case cross; meiosis gesture owned by R3 |
+| transmission-caracteres | R4 | STAGE | `echiquier-dihybride` — the 4×4 grid giving 9:3:3:1 (distinct scale from R3's 2×2) |
+| transmission-caracteres | R5 | STAGE | `test-cross-deux-hypotheses` — two-branch inference revealing a hidden genotype |
+| transmission-caracteres | R6 | DECLINE | exercise instructs the student to build the échiquier themselves |
+
+**Wave S2 judgment tally: 16 STAGE chapters → 17 figures / 19 DECLINE**
+(35 chapters judged — role-enzymes R4 is the campaign's only chapter to
+warrant two figures, the temperature and pH enzyme-kinetics graphs).
+
+**Slug-uniqueness pre-check:** all 17 proposed slugs verified corpus-unique
+before build launch, zero collisions (including the collision-prone generic
+`courbe-temperature`/`courbe-ph`).
+
+**Build** (diagram-author × 5, 17 figures):
+
+| Lesson | Figure slug | Chapter | Stages | Width |
+|---|---|---|---|---|
+| liberation-energie-matiere-organique | atp-hydrolyse-cycle | R1 | 3 | structural |
+| liberation-energie-matiere-organique | glycolyse-bilan-atp | R2 | 4 | structural |
+| liberation-energie-matiere-organique | krebs-bilan-carbone | R3 | 4 | structural |
+| liberation-energie-matiere-organique | chimiosmose-atp-synthase | R4 | 5 | wide-band |
+| moyens-de-defense | phagocytose-etapes | R2 | 5 | structural |
+| moyens-de-defense | selection-clonale | R4 | 4 | structural |
+| moyens-de-defense | anticorps-agglutination | R5 | 4 | structural |
+| moyens-de-defense | lt8-cytotoxicite | R6 | 4 | structural |
+| moyens-de-defense | reponse-primaire-secondaire | R8 | 4 | wide-band |
+| role-enzymes | double-specificite | R3 | 4 | structural |
+| role-enzymes | courbe-temperature | R4 | 4 | wide-band |
+| role-enzymes | courbe-ph | R4 | 3 | wide-band |
+| role-enzymes | concentration-substrat-enzyme | R5 | 4 | wide-band |
+| soi-non-soi | specificite-cle-serrure | R2 | 3 | structural |
+| soi-non-soi | agglutination-transfusion | R4 | 4 | structural |
+| transmission-caracteres | echiquier-dihybride | R4 | 5 | structural |
+| transmission-caracteres | test-cross-deux-hypotheses | R5 | 4 | structural |
+
+**App-file rule fix (worked):** unlike S1 (where four agents self-registered
+into the shared app files concurrently), all five S2 build agents were
+explicitly told NOT to touch `NotionBody.tsx`/`MediaDiagram.tsx`. Every agent
+complied — the orchestrator did the single clean registration pass: 12
+compact figures into `STRUCTURAL_SLUGS`, all 17 aria labels into
+`FIGURE_ARIA_LABELS`, 5 wide-band figures (chimiosmose-atp-synthase,
+reponse-primaire-secondaire, courbe-temperature, courbe-ph,
+concentration-substrat-enzyme) deliberately excluded from the cap. No race,
+no lost updates.
+
+**Verification:**
+- `validate-content.mjs content/svt/<slug>` — pass ×5 (all clean)
+- anti-contract grep — pass ×17 new SVGs (all clean)
+- all 17 slugs registered in `FIGURE_ARIA_LABELS`; 12 compact figures in
+  `STRUCTURAL_SLUGS`, 5 wide-band excluded (membership audit clean)
+- `npm run build` — clean
+- `dom-truth.mjs` — 155/155, 0 fail
+- screenshot spot-check, four types sampled: `chimiosmose-atp-synthase`
+  (wide-band membrane cross-section, light — gradient/ATP-synthase/O₂ all
+  legible at full width), `phagocytose-etapes` (structural 5-step storyboard,
+  dark), `courbe-temperature` (wide-band kinetics graph, light — bell +
+  denaturation collapse), `echiquier-dihybride` (structural-capped 4×4 grid,
+  dark — all 16 genotypes + legend + 9:3:3:1 legible even at the 680px cap) —
+  all clean in the sampled themes
+
+**Commits:** `cccf052` (judgment), `ebbe0ab` (role-enzymes), `7b03c61`
+(soi-non-soi), `e5b1d03` (transmission-caracteres), `91b11e0`
+(moyens-de-defense), `2c097c8` (liberation-energie), plus the closing commit
+carrying the reconciled app files and this ledger update.
+
+**Running tally: 47/47 lessons done, 266/266 chapters judged, 126 STAGE / 140 DECLINE, 127 figures built. SVT matière COMPLETE. B2 CAMPAIGN COMPLETE.**
+
+---
+
+## Campaign close — B2 visual fan-out
+
+Every one of the 47 lessons remaining after the B1 pilot has had every gap
+chapter judged at the chapter level against `LESSON-EXPERIENCE-SPEC.md`
+§2.5, and every STAGE verdict has been built, validated, and shipped.
+
+**Final numbers (B2 only, excludes the B1 pilot's 23 chapters / 15 figures):**
+- **47 lessons**, all three science matières (maths 13, pc 24, svt 10).
+- **266 gap chapters judged** — 126 STAGE, 140 DECLINE. The ~47% STAGE rate
+  reflects the §2.5 discipline: graphs and genuine ≥3-layer teaching gestures
+  are staged; narrative hooks, definitional vocab, procedural recaps, and
+  attempt-first exercises are honestly declined rather than given decorative
+  figures.
+- **127 StagedFigures built** (126 STAGE chapters + role-enzymes R4's second
+  figure). Every figure: `--figure-*` tokens only, native-SVG math, a
+  `.stages.json` sidecar with stage-count parity, an aria label, and a
+  wide-band/structural width decision.
+- **10 waves**, matière-pure, ≤5 lessons each, each closed with
+  validate-content + anti-contract grep + `npm run build` + full
+  `dom-truth.mjs` (155/155 every wave) + a light/dark screenshot spot-check,
+  committed and pushed incrementally (no single mega-commit).
+
+**Philosophie stays a deliberate zero** (11 lessons, 84 chapters) per
+`fable-day3-ledger.md` §16 — not re-litigated.
+
+**Two process lessons recorded for the next maintainer:**
+1. **Figure slugs must be corpus-unique** — the app keys `FIGURE_ARIA_LABELS`,
+   `STRUCTURAL_SLUGS`, `VERTICALLY_STACKED_PANELS` by bare slug, so a
+   duplicate cross-contaminates two lessons' rendering. Caught once in P5
+   (`facteurs-cinetiques` → `comparaison-facteurs-cinetiques`); a
+   pre-build uniqueness check became standard from S1 on.
+2. **Build agents must not write shared app files concurrently** — S1's four
+   self-registering agents happened to avoid a lost update, but S2's
+   explicit "orchestrator owns the app files" rule is the safe pattern and
+   should be the standing instruction.
+
+**What this did NOT do:** the ≥3-questions-per-chapter items track (Part B3
+pilot + B4 fan-out) is untouched — it retains its own human checkpoint per
+the approved plan and has not begun.

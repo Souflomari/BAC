@@ -1,0 +1,1246 @@
+# bank.yaml — la banque « S'entraîner » de calcul-integral (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : cette entrée ne porte aucun marqueur exercise
+# dans lesson.md — c'est la couche de VOLUME derrière le sommet de leçon
+# (r-bac + r-variation, exercises.yaml, marqueur exercise r-bac à R9), pas la
+# rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). DEUX entrées, dans l'ordre chronologique :
+#   1. bk-2022-n-x4 — 2022, session NORMALE, Exercice 4, filière SVT et
+#      Sciences Physiques (SExp, BIOF), code NS 22F (AlloSchool
+#      element/136586, re-fetch indépendant + diff conforme au scan,
+#      agent-vérificateur-adversarial, 2026-07-12). SEUL sujet « vérifié »
+#      recensé pour la partie « calcul intégral » dans
+#      docs/sujets/maths/calcul-integral.md — et partiel : seule la question 1
+#      de l'exercice relève de cette notion (voir PARTITION DU SUJET).
+#   2. bk-2024-r-x2 — 2024, session de RATTRAPAGE, Exercice 2, filière
+#      Sciences Mathématiques (SM A et B, BIOF), code RS 25 (AlloSchool
+#      element/145741, re-fetch indépendant + re-dérivation intégrale,
+#      agent-vérificateur-adversarial, 2026-08-23), converti depuis
+#      docs/sujets/_incoming/maths-sm-2024-r.md — le fichier de notion ne
+#      recense pas encore le rattrapage. PREMIÈRE entrée de session de
+#      rattrapage ET première entrée de filière SM de ce fichier. Exercice
+#      repris EN ENTIER (10 questions, 3,5 pts) : rien à partitionner.
+# Introuvable = absent, jamais inventé : aucun autre sujet vérifié n'est
+# recensé à ce jour pour cette notion, donc la banque ne compte que ces deux
+# cartes (la rail affichera « 2 sujets », pas un chiffre de façade).
+#
+# ── SCOPE NOTES (à lire avant toute revue de bk-2024-r-x2) ────────────────
+# 1. SOMMES DE RIEMANN — HORS DU PÉRIMÈTRE DE lesson.md. La question 1-b de
+#    bk-2024-r-x2 repose sur le théorème des sommes de Riemann. Aucun rung de
+#    lesson.md (R0–R9) ne le porte, et checkpoints.yaml énonce explicitement
+#    la borne : « Pas de sommes de Riemann formelles » (calibrage SExp).
+#    docs/cadre/curriculum/maths-sm.yaml le dit de son côté, chapitre
+#    `integrale_riemann_ipp` : `lesson_slug: calcul-integral   # ne couvre PAS
+#    les sommes de Riemann`. Or les sommes de Riemann SONT au programme SM
+#    (c'est l'un des domaines que SM ajoute à SExp). Le raisonnement de 1-b
+#    énonce donc le théorème explicitement, comme un fait admis du programme
+#    SM, sans le maquiller en conséquence d'un rung qui ne l'établit pas.
+#    ARBITRAGE OWNER : cette leçon a besoin d'un rung « sommes de Riemann »
+#    (ou d'une variante SM) pour que cette carte soit adossée à sa propre
+#    filière. Signalé, pas contourné.
+# 2. ARCTAN — ABSENT DU CORPUS ENTIER. La question 1-a demande une primitive
+#    de 1/(1+x^2), c'est-à-dire arctan. Aucune leçon de content/maths/ ne
+#    définit arctan (contrôle par grep sur lesson.md, items.yaml et
+#    checkpoints.yaml des 14 notions : seule une mention en passant de
+#    « arctangente » dans nombres-complexes-2/lesson.md, et un commentaire
+#    dans un SVG d'equations-differentielles). La question est donc
+#    inabordable avec le seul corpus actuel. Le raisonnement rappelle
+#    (arctan)' = 1/(1+x^2) et arctan(1) = pi/4 comme primitives de référence
+#    du programme SM. ARBITRAGE OWNER : lacune de corpus, à combler dans la
+#    leçon « Dérivabilité et étude des fonctions » (qui porte déjà la fonction
+#    réciproque) ou dans un chapitre « Primitives » — dossier
+#    content/maths/primitives/ qui n'existe pas encore (déjà signalé par la
+#    NOTE DE VALIDATION en pied de lesson.md, point 2).
+# 3. FILIÈRE MIXTE DANS UNE MÊME BANQUE. bk-2022-n-x4 est SExp,
+#    bk-2024-r-x2 est SM. Le badge rendu les sépare (BANK-SPEC §3.1), mais la
+#    leçon, elle, est calibrée SExp — un élève SExp qui ouvre la carte 2024
+#    tombera sur deux outils qui ne sont pas à son programme (sommes de
+#    Riemann, arctan). ARBITRAGE OWNER : filtrage par filière des cartes de
+#    banque, ou mention explicite « SM » plus visible sur la carte.
+# 4. CROSS-LIST NON CONVERTI. docs/sujets/_incoming/maths-sm-2024-r.md classe
+#    l'Exercice 2 sous calcul-integral (dominant) avec cross-list
+#    suites-numeriques et fonction-exponentielle. Il est repris EN ENTIER ici
+#    et n'a été dupliqué dans aucune de ces deux banques — les emprunts sont
+#    nommés dans les raisonnements (gendarmes = Suites numériques R6 ;
+#    croissance de exp = Fonction exponentielle), pas re-démontrés.
+# 5. RATTRAPAGE — PORTÉE EXACTE DE LA FORMULE. bk-2024-r-x2 est la première
+#    entrée de rattrapage DE CE FICHIER, pas du corpus : la campagne du même
+#    soir (2026-08-23) a également ajouté bk-2023-r-x3 et bk-2024-r-x4 à
+#    content/maths/structures-algebriques/bank.yaml. Formulation honnête
+#    retenue partout, ici comme dans la note de sourcing.
+# ─────────────────────────────────────────────────────────────────────────
+# Raisonnement rédigé À NEUF, à la voix experte de la maison, sur 100 % des
+# questions (jamais copié depuis exercises.yaml — voir NOTE ÉDITORIALE
+# ci-dessous) ; barème transcrit tel quel dans les énoncés ; conventions
+# KaTeX (block scalars pour la prose, KaTeX brut entre apostrophes simples
+# dans steps[].math — dérivée notée avec \prime, jamais une apostrophe
+# littérale — notes sans backslash).
+#
+# PARTITION DU SUJET (à lire avant toute conversion ultérieure) : l'exercice
+# 2022 complet s'intitule « Équations différentielles et calcul intégral »
+# et vaut 2,5 pts au total. Il se scinde en deux parties indépendantes sur le
+# même énoncé : la question 1 (a, b — 0,75 + 0,75 = 1,5 pt), reprise ici dans
+# son intégralité, porte sur le calcul intégral (primitive, intégration par
+# parties) ; la question 2 (a, b), qui résout l'équation différentielle
+# y'' - 2y' + y = 0 (1 pt), n'a AUCUN rapport avec cette notion et doit être
+# convertie séparément dans un bank.yaml SŒUR sous
+# content/maths/equations-differentielles/ (fichier non créé par cet auteur
+# — hors scope de cette tâche). `bareme_total` ci-dessous (1,5) est donc le
+# barème de la partie calcul intégral SEULE, pas celui de l'exercice complet
+# (2,5).
+#
+# NOTE ÉDITORIALE (recoupement, pour la revue — BANK-SPEC §1) : bk-2022-n-x4
+# transcrit EXACTEMENT le même sujet, la même fonction h(x) = (x+1)e^x, les
+# mêmes questions 1a/1b, les mêmes bornes et les mêmes résultats numériques
+# (I = 1/e, J = (e-2)/e) que le sommet de leçon r-bac (exercises.yaml,
+# marqueur exercise r-bac à R9 — exercises.yaml le dit explicitement dans son
+# propre en-tête : « r-bac est un sujet national vérifié »). Il figure ici
+# quand même, pour que la banque reste le corpus complet des annales
+# vérifiées de la notion : « la banque est le volume derrière le sommet,
+# jamais son remplacement » (BANK-SPEC §1). Même décision, prise dans le
+# même sens, que bk-2019-n-x2 de content/maths/nombres-complexes-1/bank.yaml,
+# bk-2023-n-x3 de content/maths/probabilites-conditionnelles/bank.yaml et
+# bk-2020-n-x1 de content/pc/piles/bank.yaml. Conséquence honnête : le
+# recoupement porte sur bk-2022-n-x4 SEULEMENT ; bk-2024-r-x2, ajoutée le
+# 2026-08-23, ne recoupe aucun sommet — exercises.yaml de cette notion ne
+# contient que r-bac (2022, sourcé) et r-variation (jumeau inventé,
+# anti-mémorisation), vérifié par grep : aucun sourcé sur 2024. À l'arbitrage
+# de l'owner si l'on préfère l'écarter de la banque pour éviter le
+# recoupement sur la même page. Le `reasoning` des deux questions ci-dessous
+# est rédigé indépendamment de celui d'exercises.yaml (voix distincte, mêmes
+# mathématiques, mêmes résultats numériques — vérifiés en double) : ce n'est
+# pas une recopie.
+#
+# AJOUT DU 2026-08-27 — bk-2023-n-x2 (2023, session NORMALE, filière SM,
+# Exercice 2 — 2,25 points). TROISIÈME entrée de ce fichier, convertie depuis
+# docs/sujets/_incoming/maths-sm-2023-n.md (agent-vérificateur-adversarial,
+# 2026-08-27, statut « vérifié » — re-fetch indépendant + re-dérivation,
+# AUCUN défaut trouvé dans le corps de l'exercice). Exercice repris EN
+# ENTIER (5 questions, 2,25 pts) : rien à partitionner — tout l'exercice
+# relève du calcul intégral (une somme de Riemann construite point par
+# point, qui converge vers une intégrale). Jumeau éditorial de bk-2024-r-x2
+# ci-dessus, dans ce même fichier : les deux sont des sommes de Riemann SM
+# qui convergent par encadrement + gendarmes, mais bk-2023-n-x2 construit sa
+# somme géométriquement (distances $M_kM_{k+1}$ sur la courbe de $e^x$, via
+# le théorème des accroissements finis pour produire les points intermédiaires
+# $c_k$) là où bk-2024-r-x2 part d'une somme algébrique déjà donnée — deux
+# façons différentes d'arriver à une somme de Riemann, qui se complètent
+# plus qu'elles ne se répètent.
+#
+# RÉSERVE DE PORTÉE SUR CETTE VÉRIFICATION — à lire avant de s'appuyer
+# dessus. La passe qui a validé cet énoncé PRÉCÈDE la règle du 2026-08-27.
+# Une passe ultérieure, sur SM 2025 normale, a découvert qu'AlloSchool peut
+# servir depuis son cache CDN un AUTRE sujet que celui demandé — et qu'une
+# lecture visuelle, la transcription sous les yeux, « retrouve » alors
+# l'énoncé attendu sur des pages qui ne le contiennent pas. Le protocole du
+# sas exige depuis quatre contrôles (docs/sujets/_incoming/README.md,
+# « la lecture visuelle seule ne suffit pas ») : année imprimée relue sur
+# CHAQUE page, recoupement par un instrument NON visuel, MD5 consignés avec
+# un second téléchargement, contrôle du `<title>` servi.
+#   Ce que cette passe-ci a fait : re-dérivation des URLs d'images depuis le
+#   HTML, CONTRÔLE DU `<title>` SERVI (qui nommait la bonne année et la
+#   bonne filière), lecture des pages comme images avec recadrages, et
+#   re-dérivation mathématique de toutes les identités de l'énoncé.
+#   Ce qu'elle n'a pas fait : l'année page par page, le recoupement non
+#   visuel, les MD5 avec second téléchargement.
+# Le contrôle du `<title>` est un vrai garde-fou — il vient du HTML, pas de
+# l'attente du lecteur, et c'est lui qui a mis la passe SM 2025 sur la piste.
+# Risque résiduel FAIBLE MAIS NON NUL : le panachage constaté en 2025
+# touchait les images alors que la page HTML, elle, était correcte.
+# À L'ARBITRAGE DE L'OWNER : re-passer ce sujet sous le protocole complet,
+# ou accepter le niveau de preuve ci-dessus. Cette réserve est recopiée ici
+# — et pas seulement laissée dans le fichier `_incoming` — parce que c'est
+# CE fichier-ci qu'un mainteneur lira le jour où il se demandera d'où sort
+# l'énoncé qu'il a sous les yeux.
+#
+# SCOPE NOTE ADDITIONNELLE (bk-2023-n-x2) : au-delà des sommes de Riemann
+# (déjà signalées SCOPE NOTE 1 ci-dessus — hors socle R0–R9 de cette leçon,
+# au programme SM, admises et appliquées explicitement), cette entrée
+# mobilise un outil supplémentaire qu'aucune des deux entrées précédentes de
+# ce fichier n'utilise : le théorème des accroissements finis (TAF), qui
+# porte la question 1-a EN ENTIER (construction des points intermédiaires
+# $c_k$). Le docket de complétude (docs/audits/lesson-completeness-docket.md,
+# catégorie C) note que Rolle et le TAF sont spécifiques SM et volontairement
+# non promus au rang de rung dans `derivabilite-etude-fonctions` — leur usage
+# ici est donc légitime pour ce sujet SM, mais le théorème est énoncé, ses
+# hypothèses vérifiées et son application faite explicitement au point
+# d'usage (question 1-a), jamais supposé acquis. Domaine
+# `derivabilite-etude-fonctions`, déjà pratiqué ailleurs dans le corpus SM
+# (content/maths/fonction-exponentielle/bank.yaml, bk-2019-n-x4 ; et la
+# question III-2-b de bk-2023-n-x1, content/maths/fonction-logarithme/bank.yaml,
+# ajoutée le même soir).
+#
+# AJOUT DU 2026-08-27 (2) — bk-2024-n-x2 (2024, session NORMALE, filière SM,
+# Exercice 2 — 2,5 points). QUATRIÈME entrée de ce fichier, convertie depuis
+# docs/sujets/_incoming/maths-sm-2024-n.md (agent-vérificateur-adversarial,
+# 2026-08-27, statut « vérifié » — re-fetch indépendant + re-dérivation,
+# AUCUN défaut trouvé dans le corps de l'exercice). Exercice repris EN
+# ENTIER (5 questions, 2,5 pts) : rien à partitionner — tout l'exercice
+# relève du calcul intégral (une fonction définie par une intégrale, sa
+# bijection réciproque, une somme de Riemann qui en découle). Jumeau
+# éditorial de bk-2024-r-x2 ci-dessus, dans ce même fichier — MÊME position
+# d'exercice (Exercice 2) et même filière (SM), mais SESSION différente
+# (normale contre rattrapage) et construction distincte : bk-2024-r-x2 part
+# d'une somme algébrique déjà donnée ($u_n=\sum n/(n^2+k^2)$) qui converge
+# vers $\pi/4$ par la primitive arctan ; bk-2024-n-x2 construit sa somme de
+# Riemann à partir de la bijection réciproque $F^{-1}$ d'une fonction
+# elle-même définie par une intégrale — deux mécanismes de somme de Riemann
+# distincts, qui se complètent plus qu'ils ne se répètent.
+#
+# RÉSERVE DE PORTÉE SUR CETTE VÉRIFICATION (bk-2024-n-x2) — à lire avant de
+# s'appuyer dessus. La passe qui a validé cet énoncé PRÉCÈDE elle aussi la
+# règle du 2026-08-27, exactement comme la réserve déjà posée plus haut pour
+# bk-2023-n-x2 — même situation, sujet différent. Une passe ultérieure, sur
+# SM 2025 normale, a découvert qu'AlloSchool peut servir depuis son cache
+# CDN un AUTRE sujet que celui demandé — et qu'une lecture visuelle, la
+# transcription sous les yeux, « retrouve » alors l'énoncé attendu sur des
+# pages qui ne le contiennent pas. Le protocole du sas exige depuis quatre
+# contrôles (docs/sujets/_incoming/README.md, « la lecture visuelle seule ne
+# suffit pas ») : année imprimée relue sur CHAQUE page, recoupement par un
+# instrument NON visuel, MD5 consignés avec un second téléchargement,
+# contrôle du `<title>` servi.
+#   Ce que cette passe-ci a fait : re-dérivation des URLs d'images depuis le
+#   HTML, CONTRÔLE DU `<title>` SERVI (« Examen National Mathématiques
+#   Sciences Maths 2024 Normale - Sujet » — qui nomme la bonne année et la
+#   bonne filière), lecture des pages comme images avec recadrages LANCZOS
+#   ×2, et re-dérivation mathématique de toutes les identités des deux
+#   exercices transcrits (celui-ci, et bk-2024-n-x1,
+#   content/maths/fonction-logarithme/bank.yaml, même sujet, même passe).
+#   Ce qu'elle n'a pas fait : l'année page par page, le recoupement non
+#   visuel, les MD5 avec second téléchargement.
+# Le contrôle du `<title>` est un vrai garde-fou — il vient du HTML, pas de
+# l'attente du lecteur, et c'est lui qui a mis la passe SM 2025 sur la
+# piste. Risque résiduel FAIBLE MAIS NON NUL, pour les mêmes raisons que la
+# réserve posée pour bk-2023-n-x2. À L'ARBITRAGE DE L'OWNER : re-passer ce
+# sujet sous le protocole complet, ou accepter le niveau de preuve
+# ci-dessus. Cette réserve est recopiée ici — et pas seulement laissée dans
+# le fichier `_incoming` — parce que c'est CE fichier-ci qu'un mainteneur
+# lira le jour où il se demandera d'où sort l'énoncé qu'il a sous les yeux.
+#
+# SCOPE NOTE 6 (bk-2024-n-x2) : au-delà des sommes de Riemann (SCOPE NOTE 1
+# ci-dessus, qui couvre désormais aussi cette entrée — même lacune de
+# lesson.md, même statut de fait admis du programme SM), cette entrée
+# mobilise un outil supplémentaire absent des trois entrées précédentes de
+# ce fichier : le théorème de la dérivée d'une fonction réciproque (question
+# 2-b — la légitimité du changement de variable $u=F^{-1}(t)$ repose sur la
+# dérivabilité de $F^{-1}$, jamais supposée acquise). Domaine
+# `derivabilite-etude-fonctions`, rung « La dérivée de la réciproque en un
+# point » (disponible depuis la passe du 2026-08-22, docket A6) — même outil
+# que celui déjà ponté pour $(g^{-1})'(1)$ dans bk-2024-n-x4,
+# content/maths/fonction-logarithme/bank.yaml, la même conversion.
+
+notion: maths/calcul-integral
+
+entries:
+  # ── bk-2022-n-x4 — 2022 N, Exercice 4 (partie « calcul intégral ») :
+  # primitive d'un produit vérifiée par dérivation, puis IPP réutilisant I ──
+  # Même sujet que le sommet de leçon r-bac (exercises.yaml). Voir note
+  # éditoriale en tête de fichier.
+  - id: bk-2022-n-x4
+    title: "Primitive d'un produit en exponentielle, puis intégration par parties"
+    source:
+      year: 2022
+      session: normale
+      filiere: "SExp"
+      exercise_label: "Exercice 4 — partie « calcul intégral »"
+    bareme_total: 1.5
+    duration_min: 9
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques, option française), Mathématiques (3 h, coef 7), code
+        NS 22F, Exercice 4 « Équations différentielles et calcul intégral »
+        — partie calcul intégral seulement (questions 1a et 1b, 1,5 pt sur
+        les 2,5 pts de l'exercice complet ; la partie équation différentielle,
+        question 2, appartient à une notion différente et n'est pas reprise
+        ici). Transcription vérifiée : re-fetch AlloSchool indépendant
+        element/136586 (course-438/upload-84495, p.3), diff conforme au
+        scan, statut « vérifié » dans docs/sujets/maths/calcul-integral.md.
+        NB : ce même sujet sous-tend aussi le sommet de leçon r-bac
+        (exercises.yaml, marqueur exercise r-bac à R9) — recoupement assumé,
+        voir NOTE ÉDITORIALE en tête de fichier ; c'est l'unique sujet
+        « vérifié » recensé à ce jour pour la partie calcul intégral de
+        cette notion, donc la banque ne compte qu'une entrée.
+    intro: |-
+      **Équations différentielles et calcul intégral (examen national, session normale 2022) — partie « calcul intégral ».**
+
+      On considère la fonction $h$ définie sur $\mathbb{R}$ par $h(x) = (x+1)e^x$.
+
+      Le sujet complet vaut 2,5 pts et enchaîne une équation différentielle et ce calcul intégral ; seule la partie « calcul intégral » (1,5 pt, questions 1a et 1b ci-dessous) est reprise ici.
+    questions:
+      - id: q1a
+        part: "Question 1a — Vérifier une primitive, puis calculer $I$"
+        stem: |-
+          **(0,75 pt)** Vérifier que la fonction $x \mapsto x\,e^x$ est une primitive de la fonction $h$ sur $\mathbb{R}$, puis calculer $I = \displaystyle\int_{-1}^{0} h(x)\,\mathrm{d}x$.
+        reasoning: |-
+          Deux tâches sont emboîtées ici, et il ne faut pas les confondre.
+
+          « Vérifier qu'une fonction proposée est une primitive » ne demande jamais d'intégrer : ça demande de **dériver** la fonction proposée et de retomber sur $h$. $x \mapsto x\,e^x$ est un produit, donc on applique la règle de dérivation d'un produit avec $u(x)=x$ et $v(x)=e^x$ (chapitre « Dérivabilité et étude des fonctions »).
+
+          Une fois la primitive $F(x)=x\,e^x$ confirmée, calculer $I$ ne demande rien de plus que la définition du chapitre 2 : $I = F(0)-F(-1)$. le chapitre 2 a déjà réglé une inquiétude possible — le choix de la primitive ne change jamais le résultat, puisqu'une éventuelle constante additive s'annulerait dans la soustraction — donc on prend directement cette primitive, la plus simple à écrire, sans en chercher une autre. Le seul point à surveiller : le signe en $x=-1$, où $F(-1) = -1\times e^{-1} = -e^{-1}$ est négatif, et l'on soustrait ce nombre négatif.
+        steps:
+          - math: '\bigl(x\,e^x\bigr)^{\prime} = 1\cdot e^x + x\cdot e^x = (x+1)e^x = h(x)'
+            note: "On dérive la candidate x fois e^x (règle du produit) et on retrouve h(x) : c'est bien une primitive de h."
+          - math: 'I = \int_{-1}^{0} h(x)\,\mathrm{d}x = \bigl[x\,e^x\bigr]_{-1}^{0} = 0\cdot e^{0} - (-1)\cdot e^{-1}'
+            note: "Définition du chapitre 2 : F(0) moins F(-1), avec F(x) = x fois e^x."
+          - math: 'I = 0 - \bigl(-e^{-1}\bigr) = e^{-1} = \dfrac{1}{e}'
+            note: "En 0, x fois e^x vaut 0 ; en -1, il vaut -1/e. Donc I = 0 moins (-1/e) = 1/e."
+      - id: q1b
+        part: "Question 1b — Une intégration par parties : le calcul de $J$"
+        stem: |-
+          **(0,75 pt)** À l'aide d'une intégration par parties, calculer $J = \displaystyle\int_{-1}^{0} (x+1)^2 e^x\,\mathrm{d}x$.
+        reasoning: |-
+          $(x+1)^2 e^x$ est un produit de deux facteurs qui ne se primitivent pas facilement l'un sans l'autre — exactement le signal repéré au chapitre 8 pour sortir l'intégration par parties. Reste à décider lequel des deux facteurs on dérive et lequel on primitive.
+
+          Dériver $(x+1)^2$ donne $2(x+1)$ — un facteur de degré plus bas, donc plus simple. Primitiver $e^x$ redonne $e^x$ — immédiat. On pose donc $u=(x+1)^2$ (à dériver) et $v'=e^x$ (à primitiver), jamais l'inverse : prendre $u=e^x$ ne simplifierait rien, puisque dériver l'exponentielle la laisse identique à elle-même.
+
+          La formule du chapitre 8, $\int u\,v' = [uv] - \int u'v$, transforme alors $J$ en un terme de bord moins $\displaystyle\int_{-1}^{0} 2(x+1)e^x\,\mathrm{d}x$. Et ce n'est pas une nouvelle intégrale à calculer depuis zéro : $(x+1)e^x$, c'est exactement $h(x)$ — la fonction de la question 1a, déjà intégrée sur ce même intervalle. L'intégrale restante vaut donc $2I$, directement, sans reprendre le calcul depuis le départ.
+        steps:
+          - math: 'u = (x+1)^2,\quad u^{\prime} = 2(x+1),\qquad v^{\prime} = e^x,\quad v = e^x'
+            note: "On dérive (x+1) au carré (ça devient 2(x+1)) et on primitive e^x (ça reste e^x)."
+          - math: 'J = \bigl[(x+1)^2 e^x\bigr]_{-1}^{0} - \int_{-1}^{0} 2(x+1)e^x\,\mathrm{d}x'
+            note: "Formule du chapitre 8 : terme de bord moins l'intégrale du produit dérivé fois primitivé."
+          - math: '\bigl[(x+1)^2 e^x\bigr]_{-1}^{0} = (0+1)^2 e^{0} - (-1+1)^2 e^{-1} = 1 - 0 = 1'
+            note: "En 0 : 1 au carré fois 1 = 1. En -1 : 0 au carré fois 1/e = 0. Le terme de bord vaut 1."
+          - math: '\int_{-1}^{0} 2(x+1)e^x\,\mathrm{d}x = 2\int_{-1}^{0} (x+1)e^x\,\mathrm{d}x = 2\int_{-1}^{0} h(x)\,\mathrm{d}x = 2I'
+            note: "(x+1)e^x, c'est exactement h(x) : l'intégrale restante vaut 2 fois I, déjà calculé à la question 1a."
+          - math: 'J = 1 - 2I = 1 - \dfrac{2}{e} = \dfrac{e-2}{e}'
+            note: "Terme de bord (1) moins 2I (2/e). Résultat positif car e est environ 2,72, donc supérieur à 2."
+
+  # ── bk-2024-r-x2 — 2024 R (SM), Exercice 2 : sommes de Riemann, encadrement
+  # de e^x - 1 par e*x, et convergence de w_n vers pi/4 ──
+  # PREMIÈRE entrée de session de RATTRAPAGE et PREMIÈRE entrée de filière SM
+  # de ce fichier (bk-2022-n-x4 est une session normale, filière SExp).
+  # Exercice repris EN ENTIER (les 10 questions, 3,5 pts) : contrairement à
+  # bk-2022-n-x4, il n'y a rien à partitionner — tout l'exercice relève du
+  # calcul intégral, avec deux emprunts explicites (gendarmes en 1-b et 5-b,
+  # chapitre « Suites numériques » R6 ; encadrement de exp en 3, chapitre
+  # « Fonction exponentielle »). Voir SCOPE NOTES en tête de fichier : deux
+  # outils mobilisés ici — les sommes de Riemann et la primitive arctan de
+  # 1/(1+x^2) — N'EXISTENT PAS dans lesson.md ni ailleurs dans le corpus ; ils
+  # sont énoncés explicitement dans les raisonnements, jamais rattachés à un
+  # rung qui ne les porte pas.
+  - id: bk-2024-r-x2
+    title: "Sommes de Riemann et encadrement de l'exponentielle"
+    source:
+      year: 2024
+      session: rattrapage
+      filiere: "SM"
+      exercise_label: "Exercice 2"
+    bareme_total: 3.5
+    duration_min: 21
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session de rattrapage — examen national Sciences Mathématiques
+        (A et B), option française (BIOF), Mathématiques, 4 h, coef 9, code
+        sujet RS 25, AlloSchool element/145741 (Exercice 2, « analyse »,
+        barème 3,5 points ; page 3 du scan sur 5, image
+        upload-87449/0003-big.jpg, consignes page 1 ; aucune figure sur ce
+        sujet — absence prouvée page par page par le vérificateur, pas
+        supposée). Transcription fidèle de l'entrée « vérifié » de
+        docs/sujets/_incoming/maths-sm-2024-r.md, section « 2024 — session
+        rattrapage — Exercice 2 » (re-fetch AlloSchool indépendant +
+        re-dérivation intégrale, agent-vérificateur-adversarial, 2026-08-23) ;
+        docs/sujets/maths/calcul-integral.md ne recense pas encore le
+        rattrapage, d'où la conversion depuis le fichier _incoming.
+        PREMIÈRE entrée de session de rattrapage ET première entrée de filière
+        SM de CE fichier ; la campagne du même soir (2026-08-23) en a ajouté
+        d'autres ailleurs dans le corpus maths
+        (content/maths/structures-algebriques/bank.yaml, bk-2023-r-x3 et
+        bk-2024-r-x4) — la formule « première du corpus » ne vaut donc que
+        pour ce fichier, pas pour le corpus entier.
+        RE-DÉMONSTRATION INDÉPENDANTE de tous les résultats, aucun repris de
+        la source sans recalcul, aucun arrondi de complaisance :
+        (1) l'intégrale de 1/(1+x^2) sur [0;1] vaut pi/4, par la primitive
+        arctan ; (2) n/(n^2+k^2) = (1/n) x 1/(1+(k/n)^2), donc u_n est la
+        somme de Riemann de f(x)=1/(1+x^2) sur [0;1] à pas 1/n et u_n tend
+        vers pi/4 — contrôles à la main : u_1 = 1/2, u_2 = 2/5 + 2/8 = 13/20
+        = 0,65, et numériquement u_1000 = 0,78515 contre pi/4 = 0,78540 ;
+        (3) sur [0;1], (1+x^2)^2 >= 1 donc l'intégrande de la question 2 est
+        <= 1 et l'intégrale <= 1 (valeur exacte, calculée seulement comme
+        contrôle et HORS PROGRAMME 2e Bac : pi/8 + 1/4 = 0,6427 — la
+        majoration par 1 est donc large, ce qui est exactement ce que le
+        barème de 0,25 pt annonce) ; (4) 0 <= e^x - 1 <= e.x sur [0;1] via
+        g(x) = e.x - e^x + 1, g(0) = 0 et g croissante car g'(x) = e - e^x >= 0
+        pour x <= 1 — l'encadrement est FAUX hors de [0;1], contrôle : en
+        x = 2, e^2 - 1 = 6,389 alors que 2e = 5,437 ; (5) l'intégration de (4)
+        entre 0 et x donne 0 <= e^x - 1 - x <= (e/2)x^2 ; (6) x_k = n/(n^2+k^2)
+        vérifie 0 < x_k < 1/n <= 1 pour k dans {1,...,n}, ce qui autorise (5)
+        terme à terme, d'où 0 <= w_n - u_n <= (e/2) somme des x_k^2 ;
+        (7) la dérivée de (1+x^2)^(-2) vaut -4x/(1+x^2)^3, strictement
+        négative sur ]0;1] ; (8) la décroissance donne, sur chaque tranche
+        [(k-1)/n ; k/n], la minoration de l'intégrale par (1/n)(1+(k/n)^2)^(-2) ;
+        (9) x_k^2 = (1/n) x [(1/n)(1+(k/n)^2)^(-2)], donc par (8) puis Chasles
+        puis (3), la somme des x_k^2 est <= 1/n, d'où 0 <= w_n - u_n <= e/(2n)
+        — contrôles : n = 1 donne w_1 - u_1 = racine(e) - 3/2 = 0,1487 face à
+        e/2 = 1,359 ; n = 20000 donne w_n - u_n = 1,61.10^-5 face à
+        e/(2n) = 6,80.10^-5, cohérent avec la re-dérivation du vérificateur ;
+        (10) gendarmes sur w_n - u_n puis w_n = u_n + (w_n - u_n) donne
+        w_n -> pi/4. Barème recompté question par question sur la source :
+        0,25 + 0,5 + 0,25 + 0,5 + 0,25 + 0,25 + 0,25 + 0,25 + 0,5 + 0,5 = 3,5,
+        et le regroupement par numéro de question retombe sur le découpage du
+        scan (0,75 + 0,25 + 0,75 + 0,75 + 1 = 3,5).
+        SCOPE : les sommes de Riemann (question 1-b) et la primitive arctan
+        (question 1-a) ne sont portées par AUCUN rung de lesson.md ni par
+        aucune autre leçon du corpus — voir SCOPE NOTES 1 et 2 en tête de
+        fichier ; les raisonnements les énoncent comme des faits admis du
+        programme SM, sans les maquiller en conséquences d'un rung existant.
+    intro: |-
+      **Analyse — sommes de Riemann et encadrement de l'exponentielle (examen national, session de rattrapage 2024, Sciences Mathématiques — Exercice 2, 3,5 points).**
+
+      *Le fil de l'exercice.* Tout part d'une seule intégrale, $\displaystyle\int_0^1 \frac{1}{1+x^2}\,\mathrm{d}x$, et d'une seule idée : la somme $u_n = \sum_{k=1}^{n} \frac{n}{n^2+k^2}$ est **exactement** une somme de Riemann de $x \mapsto \frac{1}{1+x^2}$ sur $[0,1]$ — il suffit de factoriser $n^2$ au dénominateur pour la voir. Sa limite tombe alors sans calcul supplémentaire.
+
+      La suite $(w_n)$ remplace chaque terme $\frac{n}{n^2+k^2}$ par $e^{\frac{n}{n^2+k^2}} - 1$. Comme $e^t - 1 \approx t$ quand $t$ est petit, on devine que $w_n$ et $u_n$ finissent par se confondre — mais deviner ne suffit pas. Les questions 2 à 5 construisent, brique par brique, la **majoration explicite** de l'écart : d'abord $0 \leq e^t - 1 - t \leq \frac{e}{2}t^2$, puis la somme des carrés $\sum \left(\frac{n}{n^2+k^2}\right)^2$ comparée à une intégrale découpée en tranches, jusqu'à l'encadrement final $0 \leq w_n - u_n \leq \frac{e}{2n}$, qui tend vers $0$. Chaque question est une marche de cet escalier : aucune n'est décorative.
+    questions:
+      - id: q1-a
+        part: "Question 1 — L'intégrale de référence, puis la somme de Riemann"
+        stem: |-
+          **(0,25 pt)** Calculer l'intégrale : $\displaystyle\int_0^1 \frac{1}{1+x^2}\, dx$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Calculer une intégrale, c'est toujours le même geste depuis le chapitre 2 : trouver une primitive $F$ de l'intégrande, puis écrire $F(b)-F(a)$. Toute la question tient donc dans une seule reconnaissance — quelle fonction a pour dérivée $\dfrac{1}{1+x^2}$ ?
+
+          C'est la fonction **arctangente**, la réciproque de la restriction de $\tan$ à $\left]-\frac{\pi}{2},\frac{\pi}{2}\right[$ : par construction, $\arctan$ est dérivable sur $\mathbb{R}$ et
+
+          $$\left(\arctan x\right)^{\prime} = \frac{1}{1+x^2}$$
+
+          C'est une primitive de référence du programme de Sciences Mathématiques, au même titre que $\ln$ pour $\dfrac1x$ ou $e^x$ pour lui-même : elle se reconnaît, elle ne se redémontre pas en pleine épreuve. Le $0{,}25$ point du barème dit d'ailleurs exactement cela — c'est une question de lecture, pas de calcul.
+
+          Applique alors la définition du chapitre 2 :
+
+          $$\int_0^1 \frac{1}{1+x^2}\,\mathrm{d}x = \left[\arctan x\right]_0^1 = \arctan(1) - \arctan(0)$$
+
+          $\tan\left(\frac{\pi}{4}\right) = 1$ et $\frac{\pi}{4}$ appartient bien à $\left]-\frac{\pi}{2},\frac{\pi}{2}\right[$, donc $\arctan(1) = \dfrac{\pi}{4}$ ; et $\tan(0)=0$ donne $\arctan(0)=0$.
+
+          $$\boxed{\int_0^1 \frac{1}{1+x^2}\,\mathrm{d}x = \frac{\pi}{4}}$$
+
+          **Le piège à éviter.** Le réflexe « je divise par la dérivée du dénominateur » : écrire $\displaystyle\int \frac{1}{1+x^2}\,\mathrm{d}x = \frac{\ln(1+x^2)}{2x}$ ou quelque chose d'approchant. Ce réflexe vient de la forme $\dfrac{u^{\prime}}{u}$, dont une primitive est $\ln|u|$ — mais ici le numérateur est $1$, pas $2x$. La forme $\dfrac{u^{\prime}}{u}$ ne s'applique **pas**, et rien ne permet de « sortir » un $\dfrac{1}{2x}$ d'une intégrale : $x$ est la variable d'intégration, jamais une constante qu'on met devant le signe somme. Retiens plutôt le résultat que cette question installe : $\dfrac{\pi}{4}$ est la valeur vers laquelle tout l'exercice va converger, deux fois.
+        steps:
+          - math: '\left(\arctan x\right)^{\prime} = \dfrac{1}{1+x^2} \qquad (x \in \mathbb{R})'
+            note: "Primitive de référence du programme SM : arctan est la primitive de 1/(1+x^2) qui s'annule en 0."
+          - math: '\int_0^1 \dfrac{1}{1+x^2}\,\mathrm{d}x = \bigl[\arctan x\bigr]_0^1 = \arctan(1) - \arctan(0)'
+            note: "Définition du chapitre 2 : F(1) moins F(0)."
+          - math: '\arctan(1) = \dfrac{\pi}{4},\qquad \arctan(0) = 0 \qquad\Longrightarrow\qquad \int_0^1 \dfrac{1}{1+x^2}\,\mathrm{d}x = \dfrac{\pi}{4}'
+            note: "tan(pi/4) = 1 et tan(0) = 0, avec pi/4 dans l'intervalle de définition de arctan."
+      - id: q1-b
+        part: "Question 1 — L'intégrale de référence, puis la somme de Riemann"
+        stem: |-
+          **(0,5 pt)** Pour tout entier $n \geq 1$, on pose : $u_n = \displaystyle\sum_{k=1}^{k=n} \frac{n}{n^2+k^2}$
+
+          Montrer que la suite $(u_n)_{n\geq 1}$ est convergente puis déterminer sa limite.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On te demande la limite d'une somme dont le **nombre de termes grandit avec $n$** — donc aucune règle d'opérations sur les limites ne s'applique : on ne peut pas « passer à la limite terme par terme » quand le nombre de termes bouge. Le seul outil du programme SM qui traite ce cas s'appelle **somme de Riemann**, et il faut faire apparaître sa forme exacte :
+
+          $$S_n = \frac{1}{n}\sum_{k=1}^{n} f\!\left(\frac{k}{n}\right) \xrightarrow[n\to+\infty]{} \int_0^1 f(x)\,\mathrm{d}x \qquad (f \text{ continue sur } [0,1])$$
+
+          Le geste qui révèle cette forme est toujours le même : **factoriser la puissance de $n$ la plus haute** au dénominateur, pour ne plus voir que le rapport $\frac{k}{n}$.
+
+          $$\frac{n}{n^2+k^2} = \frac{n}{n^2\left(1+\dfrac{k^2}{n^2}\right)} = \frac{1}{n}\cdot\frac{1}{1+\left(\dfrac{k}{n}\right)^2}$$
+
+          Le facteur $\dfrac1n$ sort de la somme, et il reste exactement $f\!\left(\frac{k}{n}\right)$ avec $f(x) = \dfrac{1}{1+x^2}$ :
+
+          $$u_n = \frac{1}{n}\sum_{k=1}^{n} f\!\left(\frac{k}{n}\right)$$
+
+          $f$ est continue sur $[0,1]$ (quotient de fonctions continues, dénominateur $1+x^2 \geq 1$ ne s'annulant jamais). Le théorème s'applique : $(u_n)$ **converge**, et sa limite est l'intégrale — celle que la question 1-a vient de calculer.
+
+          $$\boxed{\lim_{n\to+\infty} u_n = \int_0^1 \frac{1}{1+x^2}\,\mathrm{d}x = \frac{\pi}{4}}$$
+
+          **Le contrôle qui rassure.** Calcule les premiers termes à la main : $u_1 = \dfrac{1}{1+1} = \dfrac12$, puis $u_2 = \dfrac{2}{4+1}+\dfrac{2}{4+4} = \dfrac25+\dfrac14 = \dfrac{13}{20} = 0{,}65$. La suite monte vers $\dfrac{\pi}{4} \approx 0{,}785$ — cohérent.
+
+          **Le piège à éviter.** Perdre le facteur $\dfrac1n$. C'est LUI qui fait la somme de Riemann : sans lui, la somme $\sum f\!\left(\frac{k}{n}\right)$ compte $n$ termes qui ne tendent pas vers $0$, et elle diverge vers $+\infty$. Second piège, plus discret : s'inquiéter parce que la somme démarre à $k=1$ et non à $k=0$. Les deux conventions — extrémités gauches ou droites des $n$ tranches de $[0,1]$ — donnent la **même** limite ; ce qui compte, c'est que les points $\frac{k}{n}$ balaient $[0,1]$ avec un pas de $\frac1n$.
+        steps:
+          - math: '\dfrac{n}{n^2+k^2} = \dfrac{n}{n^2\left(1+\left(\frac{k}{n}\right)^2\right)} = \dfrac{1}{n}\cdot\dfrac{1}{1+\left(\frac{k}{n}\right)^{2}}'
+            note: "On factorise n^2 au dénominateur pour ne plus voir que le rapport k/n."
+          - math: 'u_n = \dfrac{1}{n}\sum_{k=1}^{n} f\!\left(\dfrac{k}{n}\right) \qquad\text{avec}\qquad f(x) = \dfrac{1}{1+x^2}'
+            note: "Forme exacte d'une somme de Riemann : le facteur 1/n devant, f(k/n) dedans."
+          - math: 'f \text{ continue sur } [0,1] \ \Longrightarrow\ \lim_{n\to+\infty} u_n = \int_0^1 f(x)\,\mathrm{d}x'
+            note: "Théorème des sommes de Riemann (programme SM) : la continuité de f sur [0,1] est l'unique hypothèse à vérifier."
+          - math: '\lim_{n\to+\infty} u_n = \int_0^1 \dfrac{1}{1+x^2}\,\mathrm{d}x = \dfrac{\pi}{4}'
+            note: "L'intégrale est celle de la question 1-a : rien de nouveau à calculer."
+      - id: q2
+        part: "Question 2 — Une majoration volontairement grossière"
+        stem: |-
+          **(0,25 pt)** Montrer que : $\displaystyle\int_0^1 \frac{1}{\left(1+x^2\right)^2}\, dx \leq 1$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Première réaction à corriger : on ne te demande **pas** de calculer cette intégrale. Regarde le barème — $0{,}25$ point. Une valeur exacte ne vaudrait jamais si peu ; on te demande une **majoration**, et la majoration la plus simple qui soit. C'est le chapitre 5 (comparaison) qui est visé, pas une primitive.
+
+          Le geste : majorer l'intégrande par une constante sur $[0,1]$, puis intégrer l'inégalité.
+
+          Pour $x \in [0,1]$ — en fait pour tout réel $x$ — on a $x^2 \geq 0$, donc :
+
+          $$1+x^2 \geq 1 \quad\Longrightarrow\quad \left(1+x^2\right)^2 \geq 1 \quad\Longrightarrow\quad \frac{1}{\left(1+x^2\right)^2} \leq 1$$
+
+          (le passage au carré conserve l'inégalité parce que les deux membres sont positifs ; le passage à l'inverse la retourne, pour la même raison.)
+
+          Applique la comparaison du chapitre 5 sur $[0,1]$, où les bornes sont bien dans l'ordre $0 \leq 1$ :
+
+          $$\int_0^1 \frac{1}{\left(1+x^2\right)^2}\,\mathrm{d}x \leq \int_0^1 1\,\mathrm{d}x = \bigl[x\bigr]_0^1 = 1$$
+
+          $$\boxed{\int_0^1 \frac{1}{\left(1+x^2\right)^2}\,\mathrm{d}x \leq 1}$$
+
+          C'est aussi, mot pour mot, l'inégalité de la moyenne du chapitre 6 avec $M=1$ et $b-a=1$ : les deux rédactions valent le même point.
+
+          **Le piège à éviter.** Vouloir la valeur exacte. Elle existe — elle vaut $\dfrac{\pi}{8}+\dfrac14 \approx 0{,}643$ — mais elle s'obtient par un changement de variable ou une intégration par parties astucieuse qui **ne sont pas au programme de 2ème Bac**. En te lançant dedans, tu perds dix minutes sur une question à $0{,}25$ point, et tu rates les questions 4 et 5 qui en valent $1{,}75$. Retiens la leçon générale : **quand un énoncé demande $\leq$ et non $=$, il demande une majoration, et le barème te dit à quel point elle a le droit d'être grossière.** Ici $0{,}643 \leq 1$ : la majoration est large, et c'est parfaitement suffisant pour la question 5-a.
+        steps:
+          - math: '(\forall x \in [0,1])\ ;\quad x^2 \geq 0 \ \Longrightarrow\ 1+x^2 \geq 1 \ \Longrightarrow\ \left(1+x^2\right)^{2} \geq 1'
+            note: "Les deux membres sont positifs, donc le passage au carré conserve le sens de l'inégalité."
+          - math: '(\forall x \in [0,1])\ ;\quad \dfrac{1}{\left(1+x^2\right)^{2}} \leq 1'
+            note: "Passage à l'inverse entre nombres strictement positifs : le sens s'inverse."
+          - math: '\int_0^1 \dfrac{1}{\left(1+x^2\right)^{2}}\,\mathrm{d}x \leq \int_0^1 1\,\mathrm{d}x = \bigl[x\bigr]_0^1 = 1'
+            note: "Comparaison du chapitre 5, bornes dans l'ordre 0 <= 1. Rédaction équivalente : inégalité de la moyenne (chapitre 6) avec M = 1."
+      - id: q3-a
+        part: "Question 3 — Encadrer $e^x-1$, puis $e^x-1-x$"
+        stem: |-
+          **(0,5 pt)** Montrer que : $\left(\forall x \in [0,1]\right)$ ; $0 \leq e^x - 1 \leq e.x$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux inégalités, deux méthodes différentes — ne pas chercher à les traiter d'un seul bloc.
+
+          **L'inégalité de gauche** sort directement de la stricte croissance de $\exp$ (chapitre « Fonction exponentielle ») : pour $x \geq 0$,
+
+          $$e^x \geq e^0 = 1 \quad\Longrightarrow\quad e^x - 1 \geq 0$$
+
+          **L'inégalité de droite** ne se démontre pas en « manipulant » l'inégalité de départ — on ne sait pas encore qu'elle est vraie, donc on n'a pas le droit de partir d'elle. La méthode générale, celle qui marche toujours : **étudier le signe de la différence**. On pose
+
+          $$g(x) = e\,x - e^x + 1 \qquad \text{sur } [0,1]$$
+
+          et l'objectif devient : montrer $g \geq 0$ sur $[0,1]$.
+
+          $g$ est dérivable sur $[0,1]$ et $g^{\prime}(x) = e - e^x$. Or $\exp$ est croissante, donc pour $x \leq 1$ on a $e^x \leq e^1 = e$, c'est-à-dire $g^{\prime}(x) \geq 0$ sur $[0,1]$ : $g$ y est croissante.
+
+          Une fonction croissante sur $[0,1]$ est minorée par sa valeur en $0$ :
+
+          $$g(0) = e\times 0 - e^0 + 1 = 0 - 1 + 1 = 0$$
+
+          Donc $g(x) \geq g(0) = 0$ pour tout $x \in [0,1]$, ce qui est exactement $e^x - 1 \leq e\,x$.
+
+          $$\boxed{\left(\forall x \in [0,1]\right)\ ;\quad 0 \leq e^x - 1 \leq e\,x}$$
+
+          **Le piège à éviter, et il est majeur pour la suite.** L'inégalité de droite est **fausse en dehors de $[0,1]$** — ce n'est pas une précaution de rédaction, c'est une vraie frontière. Vérifie en $x=2$ : $e^2 - 1 \approx 6{,}39$, alors que $e \times 2 \approx 5{,}44$. L'inégalité s'effondre. La raison se lit sur $g^{\prime}$ : dès que $x > 1$, $e^x > e$ et $g^{\prime}$ devient négative, donc $g$ redescend et finit par passer sous $0$. Retiens-le : à la question 4-a, il faudra **vérifier** que les nombres auxquels on applique cet encadrement sont bien dans $[0,1]$. Sans cette vérification, tout l'exercice s'écroule.
+        steps:
+          - math: '(\forall x \in [0,1])\ ;\quad x \geq 0 \ \Longrightarrow\ e^{x} \geq e^{0} = 1 \ \Longrightarrow\ e^{x} - 1 \geq 0'
+            note: "Inégalité de gauche : stricte croissance de exp, rien de plus."
+          - math: 'g(x) = e\,x - e^{x} + 1 \quad\text{sur } [0,1],\qquad g^{\prime}(x) = e - e^{x}'
+            note: "On étudie le signe de la différence, jamais l'inégalité elle-même."
+          - math: '(\forall x \in [0,1])\ ;\quad x \leq 1 \ \Longrightarrow\ e^{x} \leq e \ \Longrightarrow\ g^{\prime}(x) \geq 0'
+            note: "exp croissante : sur [0,1] la dérivée de g est positive, donc g est croissante."
+          - math: 'g(0) = 0 - 1 + 1 = 0 \quad\text{et } g \text{ croissante} \ \Longrightarrow\ (\forall x \in [0,1])\ ;\ g(x) \geq 0'
+            note: "Une fonction croissante sur [0,1] est minorée par sa valeur en 0."
+          - math: '(\forall x \in [0,1])\ ;\quad 0 \leq e^{x} - 1 \leq e\,x'
+            note: "g(x) >= 0 se réécrit exactement e^x - 1 <= e.x."
+      - id: q3-b
+        part: "Question 3 — Encadrer $e^x-1$, puis $e^x-1-x$"
+        stem: |-
+          **(0,25 pt)** En déduire que : $\left(\forall x \in [0,1]\right)$ ; $0 \leq e^x - 1 - x \leq \dfrac{e}{2} x^2$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le « en déduire » interdit de repartir d'une nouvelle étude de fonction : il faut **utiliser** la question 3-a. Compare les deux énoncés — à gauche $e^x-1$ devient $e^x-1-x$, à droite $e\,x$ devient $\dfrac{e}{2}x^2$. Ces deux transformations sont la **même** : ce sont les primitives, prises entre $0$ et $x$. Le geste est donc d'intégrer l'encadrement de 3-a.
+
+          Attention d'abord à une précaution de rédaction : dans 3-a la variable s'appelle $x$, et c'est aussi $x$ qui va servir de borne. On renomme donc la variable d'intégration en $t$.
+
+          Soit $x \in [0,1]$. Pour tout $t \in [0,x]$, on a $t \in [0,1]$ (puisque $[0,x] \subset [0,1]$), donc 3-a s'applique :
+
+          $$0 \leq e^t - 1 \leq e\,t$$
+
+          Les bornes sont dans l'ordre ($0 \leq x$), donc la comparaison du chapitre 5 autorise à intégrer les trois membres entre $0$ et $x$ :
+
+          $$\int_0^x 0\,\mathrm{d}t \ \leq\ \int_0^x \left(e^t-1\right)\mathrm{d}t \ \leq\ \int_0^x e\,t\,\mathrm{d}t$$
+
+          Reste à calculer les trois morceaux, par le chapitre 2. Le membre de gauche vaut $0$. Le membre du milieu, avec la primitive $t \mapsto e^t - t$ :
+
+          $$\int_0^x \left(e^t-1\right)\mathrm{d}t = \bigl[e^t - t\bigr]_0^x = \left(e^x - x\right) - \left(e^0 - 0\right) = e^x - x - 1$$
+
+          Et le membre de droite, avec $t \mapsto \dfrac{t^2}{2}$ :
+
+          $$\int_0^x e\,t\,\mathrm{d}t = e\left[\frac{t^2}{2}\right]_0^x = \frac{e}{2}x^2$$
+
+          $$\boxed{\left(\forall x \in [0,1]\right)\ ;\quad 0 \leq e^x - 1 - x \leq \frac{e}{2}x^2}$$
+
+          **Le piège à éviter.** Intégrer une inégalité n'est légitime que si les bornes sont **dans l'ordre croissant** — c'est une hypothèse explicite du chapitre 5, pas un détail. Ici $0 \leq x$ le garantit, mais il faut le dire. Et garde en tête ce que cet encadrement raconte : $e^x$ est coincé entre $1+x$ et $1+x+\frac{e}{2}x^2$. Quand $x$ est petit, l'erreur commise en remplaçant $e^x-1$ par $x$ est d'ordre $x^2$ — donc négligeable devant $x$. C'est exactement le levier qui va faire s'effondrer l'écart $w_n-u_n$ dans les questions suivantes.
+        steps:
+          - math: 'x \in [0,1] \ \Longrightarrow\ [0,x] \subset [0,1] \ \Longrightarrow\ (\forall t \in [0,x])\ ;\ 0 \leq e^{t} - 1 \leq e\,t'
+            note: "Question 3-a appliquée à t, après renommage de la variable pour ne pas confondre variable et borne."
+          - math: '\int_0^x 0\,\mathrm{d}t \ \leq\ \int_0^x \left(e^{t}-1\right)\mathrm{d}t \ \leq\ \int_0^x e\,t\,\mathrm{d}t'
+            note: "Comparaison du chapitre 5, licite parce que les bornes sont dans l'ordre 0 <= x."
+          - math: '\int_0^x \left(e^{t}-1\right)\mathrm{d}t = \bigl[e^{t} - t\bigr]_0^x = e^{x} - x - 1'
+            note: "Primitive de e^t - 1 : e^t - t. En 0 elle vaut 1, d'où le -1 final."
+          - math: '\int_0^x e\,t\,\mathrm{d}t = e\left[\dfrac{t^{2}}{2}\right]_0^x = \dfrac{e}{2}x^{2}'
+            note: "e est une constante : elle sort par linéarité (chapitre 3)."
+          - math: '(\forall x \in [0,1])\ ;\quad 0 \leq e^{x} - 1 - x \leq \dfrac{e}{2}x^{2}'
+            note: "L'erreur commise en remplaçant e^x - 1 par x est d'ordre x au carré."
+      - id: q4-a
+        part: "Question 4 — L'écart $w_n-u_n$, et une intégrale par tranches"
+        stem: |-
+          **(0,25 pt)** Pour tout entier $n \geq 1$, on pose : $w_n = \displaystyle\sum_{k=1}^{k=n} \left( e^{\frac{n}{n^2+k^2}} - 1 \right)$
+
+          Montrer que pour tout entier $n \geq 1$, on a : $0 \leq w_n - u_n \leq \dfrac{e}{2} \displaystyle\sum_{k=1}^{k=n} \left( \frac{n}{n^2+k^2} \right)^2$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Compare les deux sommes : $w_n$ et $u_n$ ont le **même nombre de termes**, indexés par le même $k$. On peut donc les soustraire terme à terme — et l'inégalité demandée n'est rien d'autre que celle de 3-b, appliquée $n$ fois puis additionnée.
+
+          Pose, pour alléger, $x_k = \dfrac{n}{n^2+k^2}$. Alors $u_n = \sum_{k=1}^n x_k$ et $w_n = \sum_{k=1}^n \left(e^{x_k}-1\right)$, donc :
+
+          $$w_n - u_n = \sum_{k=1}^{n}\left(e^{x_k}-1\right) - \sum_{k=1}^{n} x_k = \sum_{k=1}^{n}\left(e^{x_k}-1-x_k\right)$$
+
+          **La vérification sans laquelle rien ne tient.** La question 3-b n'est valable que pour un argument dans $[0,1]$ — et on a vu en 3-a que l'encadrement est faux au-delà. Il faut donc prouver $x_k \in [0,1]$. Pour $k \in \{1,\dots,n\}$ et $n \geq 1$ :
+
+          $$n^2 + k^2 > n^2 \quad\Longrightarrow\quad 0 < x_k = \frac{n}{n^2+k^2} < \frac{n}{n^2} = \frac{1}{n} \leq 1$$
+
+          Donc $x_k \in\ ]0,1[\ \subset [0,1]$ : 3-b s'applique à chaque $x_k$.
+
+          $$\left(\forall k \in \{1,\dots,n\}\right)\ ;\quad 0 \leq e^{x_k}-1-x_k \leq \frac{e}{2}x_k^2$$
+
+          On somme ces $n$ encadrements (additionner des inégalités de même sens est toujours licite) :
+
+          $$0 \leq \sum_{k=1}^{n}\left(e^{x_k}-1-x_k\right) \leq \frac{e}{2}\sum_{k=1}^{n} x_k^2$$
+
+          $$\boxed{0 \leq w_n - u_n \leq \frac{e}{2}\sum_{k=1}^{n}\left(\frac{n}{n^2+k^2}\right)^{2}}$$
+
+          **Le piège à éviter.** Appliquer 3-b sans vérifier que $x_k$ est dans $[0,1]$. C'est la faute la plus coûteuse de l'exercice, et la plus facile à commettre : l'encadrement « a l'air » universel, il ne l'est pas. Le correcteur cherche cette ligne. Note d'ailleurs que la majoration $x_k < \frac1n$ est bien plus forte que ce qu'on demande ici — c'est la même idée, en plus fin, qui reviendra en 5-a.
+        steps:
+          - math: 'x_k = \dfrac{n}{n^2+k^2},\qquad u_n = \sum_{k=1}^{n} x_k,\qquad w_n = \sum_{k=1}^{n}\left(e^{x_k}-1\right)'
+            note: "Même indexation, même nombre de termes : les deux sommes se soustraient terme à terme."
+          - math: 'w_n - u_n = \sum_{k=1}^{n}\left(e^{x_k}-1-x_k\right)'
+            note: "Regroupement terme à terme, licite car les deux sommes ont exactement n termes."
+          - math: '(\forall k \in \{1,\dots,n\})\ ;\quad n^2+k^2 > n^2 \ \Longrightarrow\ 0 < x_k < \dfrac{n}{n^2} = \dfrac{1}{n} \leq 1'
+            note: "Vérification indispensable : chaque x_k est dans [0,1], donc la question 3-b s'y applique."
+          - math: '(\forall k \in \{1,\dots,n\})\ ;\quad 0 \leq e^{x_k}-1-x_k \leq \dfrac{e}{2}x_k^{2}'
+            note: "Question 3-b appliquée à x = x_k."
+          - math: '0 \leq w_n - u_n \leq \dfrac{e}{2}\sum_{k=1}^{n}\left(\dfrac{n}{n^2+k^2}\right)^{2}'
+            note: "On additionne les n encadrements : additionner des inégalités de même sens est toujours licite."
+      - id: q4-b
+        part: "Question 4 — L'écart $w_n-u_n$, et une intégrale par tranches"
+        stem: |-
+          **(0,25 pt)** Montrer que la fonction : $x \mapsto \left(1+x^2\right)^{-2}$ est strictement décroissante sur $[0,1]$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une question de méthode pure, à $0{,}25$ point : le sens de variation se lit sur le signe de la dérivée (chapitre « Dérivabilité et étude des fonctions »). Nomme la fonction pour pouvoir en parler :
+
+          $$\varphi(x) = \left(1+x^2\right)^{-2}$$
+
+          C'est une puissance d'une fonction, de la forme $u^{\alpha}$ avec $u(x)=1+x^2$ et $\alpha=-2$, dont la dérivée est $\alpha\,u^{\prime}u^{\alpha-1}$. Ici $u^{\prime}(x)=2x$, donc :
+
+          $$\varphi^{\prime}(x) = -2 \times 2x \times \left(1+x^2\right)^{-3} = \frac{-4x}{\left(1+x^2\right)^{3}}$$
+
+          Le dénominateur $\left(1+x^2\right)^3$ est strictement positif pour tout réel $x$ (c'est le cube d'un nombre $\geq 1$). Le signe de $\varphi^{\prime}$ est donc celui de $-4x$ :
+
+          $$\left(\forall x \in\ ]0,1]\right)\ ;\quad \varphi^{\prime}(x) < 0$$
+
+          $\varphi$ est donc **strictement décroissante sur $[0,1]$**.
+
+          **Une autre rédaction, sans dérivée, tout aussi valable.** Sur $[0,1]$, $x \mapsto x^2$ est strictement croissante, donc $x \mapsto 1+x^2$ l'est aussi, à valeurs $\geq 1 > 0$ ; élever au carré conserve la croissance pour des nombres positifs, donc $x \mapsto \left(1+x^2\right)^2$ est strictement croissante et strictement positive ; passer à l'inverse retourne le sens. Conclusion identique.
+
+          **Le piège à éviter.** Voir $\varphi^{\prime}(0)=0$ et en conclure que la décroissance n'est « pas stricte » sur $[0,1]$. C'est faux : une dérivée qui s'annule en un point **isolé** n'empêche jamais la stricte monotonie — le théorème demande $\varphi^{\prime} \leq 0$ avec annulation en des points isolés seulement, ce qui est bien le cas ici (seul $x=0$). Ne rate pas non plus l'exposant $-3$ : dériver $u^{-2}$ donne $-2u^{\prime}u^{-3}$, l'exposant **descend** de $1$ même quand il est négatif.
+        steps:
+          - math: '\varphi(x) = \left(1+x^2\right)^{-2},\qquad u(x) = 1+x^2,\qquad u^{\prime}(x) = 2x'
+            note: "Forme u puissance alpha avec alpha = -2 : la dérivée vaut alpha fois u prime fois u puissance (alpha - 1)."
+          - math: '\varphi^{\prime}(x) = -2 \times 2x \times \left(1+x^2\right)^{-3} = \dfrac{-4x}{\left(1+x^2\right)^{3}}'
+            note: "L'exposant descend de 1 : de -2 il passe à -3, même pour un exposant négatif."
+          - math: '\left(1+x^2\right)^{3} > 0 \ \Longrightarrow\ \operatorname{signe}\left(\varphi^{\prime}(x)\right) = \operatorname{signe}(-4x)'
+            note: "Le dénominateur est le cube d'un nombre supérieur ou égal à 1, donc strictement positif."
+          - math: '\left(\forall x \in\ ]0,1]\right)\ ;\ \varphi^{\prime}(x) < 0 \ \Longrightarrow\ \varphi \text{ strictement décroissante sur } [0,1]'
+            note: "L'annulation en x = 0 est isolée : elle n'empêche pas la stricte décroissance."
+      - id: q4-c
+        part: "Question 4 — L'écart $w_n-u_n$, et une intégrale par tranches"
+        stem: |-
+          **(0,25 pt)** En déduire que pour tout entier $n \geq 1$ et pour tout entier $k \in \{1, 2, \ldots, n\}$, on a :
+          $$\frac{1}{n}\left(1+\left(\frac{k}{n}\right)^2\right)^{-2} \leq \int_{\frac{k-1}{n}}^{\frac{k}{n}} \left(1+x^2\right)^{-2} dx$$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Regarde le membre de gauche : $\dfrac{1}{n}$ est exactement la **longueur** de l'intervalle d'intégration $\left[\frac{k-1}{n},\frac{k}{n}\right]$, et $\left(1+\left(\frac{k}{n}\right)^2\right)^{-2}$ est exactement $\varphi\!\left(\frac{k}{n}\right)$, la valeur de $\varphi$ à l'**extrémité droite** de cet intervalle. Le membre de gauche est donc l'aire d'un rectangle : largeur $\frac1n$, hauteur $\varphi\!\left(\frac{k}{n}\right)$. L'inégalité dit que ce rectangle est **sous** la courbe. C'est le chapitre 6 (inégalité de la moyenne), ou le chapitre 5 appliqué à une fonction constante — au choix.
+
+          D'abord, l'intervalle est bien dans le domaine où l'on sait travailler : pour $k \in \{1,\dots,n\}$, $\dfrac{k-1}{n} \geq 0$ et $\dfrac{k}{n} \leq 1$, donc $\left[\frac{k-1}{n},\frac{k}{n}\right] \subset [0,1]$.
+
+          Ensuite, la minoration de $\varphi$ sur cette tranche. $\varphi$ est décroissante sur $[0,1]$ (question 4-b), et tout $x$ de la tranche vérifie $x \leq \dfrac{k}{n}$ :
+
+          $$\left(\forall x \in \left[\tfrac{k-1}{n},\tfrac{k}{n}\right]\right)\ ;\quad x \leq \frac{k}{n} \ \Longrightarrow\ \varphi(x) \geq \varphi\!\left(\frac{k}{n}\right)$$
+
+          $\varphi\!\left(\frac{k}{n}\right)$ est une **constante** sur cette tranche ($k$ et $n$ y sont fixés, seul $x$ varie). Intègre l'inégalité sur $\left[\frac{k-1}{n},\frac{k}{n}\right]$, dont les bornes sont dans l'ordre :
+
+          $$\int_{\frac{k-1}{n}}^{\frac{k}{n}} \varphi(x)\,\mathrm{d}x \ \geq\ \int_{\frac{k-1}{n}}^{\frac{k}{n}} \varphi\!\left(\frac{k}{n}\right)\mathrm{d}x = \varphi\!\left(\frac{k}{n}\right) \times \left(\frac{k}{n}-\frac{k-1}{n}\right) = \frac{1}{n}\,\varphi\!\left(\frac{k}{n}\right)$$
+
+          $$\boxed{\frac{1}{n}\left(1+\left(\frac{k}{n}\right)^2\right)^{-2} \leq \int_{\frac{k-1}{n}}^{\frac{k}{n}} \left(1+x^2\right)^{-2}\mathrm{d}x}$$
+
+          **Le piège à éviter.** Se tromper d'extrémité. $\varphi$ **décroît** : sur la tranche, son **minimum** est atteint à droite, en $\frac{k}{n}$, et son maximum à gauche, en $\frac{k-1}{n}$. C'est donc la valeur de **droite** qui minore l'intégrale — et l'énoncé demande bien une minoration. Si tu prends l'extrémité gauche, tu obtiens une majoration, l'inégalité part dans l'autre sens, et la question 5-a devient impossible à conclure : la chaîne entière repose sur ce choix d'extrémité.
+        steps:
+          - math: '(\forall k \in \{1,\dots,n\})\ ;\quad \left[\tfrac{k-1}{n},\tfrac{k}{n}\right] \subset [0,1]'
+            note: "(k-1)/n est positif ou nul et k/n est inférieur ou égal à 1 : la tranche vit bien dans [0,1]."
+          - math: '\left(\forall x \in \left[\tfrac{k-1}{n},\tfrac{k}{n}\right]\right)\ ;\quad x \leq \dfrac{k}{n} \ \Longrightarrow\ \varphi(x) \geq \varphi\!\left(\dfrac{k}{n}\right)'
+            note: "phi décroît (question 4-b) : son minimum sur la tranche est atteint à l'extrémité DROITE."
+          - math: '\int_{\frac{k-1}{n}}^{\frac{k}{n}} \varphi(x)\,\mathrm{d}x \geq \int_{\frac{k-1}{n}}^{\frac{k}{n}} \varphi\!\left(\dfrac{k}{n}\right)\mathrm{d}x = \varphi\!\left(\dfrac{k}{n}\right) \times \dfrac{1}{n}'
+            note: "phi(k/n) est une constante sur la tranche : son intégrale est la constante fois la longueur 1/n."
+          - math: '\dfrac{1}{n}\left(1+\left(\dfrac{k}{n}\right)^{2}\right)^{-2} \leq \int_{\frac{k-1}{n}}^{\frac{k}{n}} \left(1+x^2\right)^{-2}\mathrm{d}x'
+            note: "Un rectangle de largeur 1/n et de hauteur phi(k/n) tient sous la courbe sur cette tranche."
+      - id: q5-a
+        part: "Question 5 — La conclusion : $w_n$ tend vers $\\pi/4$"
+        stem: |-
+          **(0,5 pt)** Montrer que pour tout entier $n \geq 1$, on a : $0 \leq w_n - u_n \leq \dfrac{e}{2n}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** C'est la question charnière : elle branche ensemble tout ce qui précède. La question 4-a a majoré l'écart par $\dfrac{e}{2}\sum x_k^2$ ; il suffit donc de montrer que $\sum_{k=1}^n x_k^2 \leq \dfrac1n$. Et le seul outil disponible pour majorer cette somme est la question 4-c — encore faut-il faire apparaître sa forme exacte.
+
+          **Le calcul qui débloque tout.** Reprends la factorisation de la question 1-b :
+
+          $$x_k = \frac{n}{n^2+k^2} = \frac{1}{n}\left(1+\left(\frac{k}{n}\right)^2\right)^{-1}$$
+
+          Élève au carré :
+
+          $$x_k^2 = \frac{1}{n^2}\left(1+\left(\frac{k}{n}\right)^2\right)^{-2} = \frac{1}{n} \times \underbrace{\left[\frac{1}{n}\left(1+\left(\frac{k}{n}\right)^2\right)^{-2}\right]}_{\text{c’est le membre de gauche de 4-c}}$$
+
+          C'est là toute l'astuce : $x_k^2$ n'est pas la quantité de 4-c, c'est **$\dfrac1n$ fois** cette quantité. Applique alors 4-c :
+
+          $$x_k^2 \leq \frac{1}{n}\int_{\frac{k-1}{n}}^{\frac{k}{n}} \left(1+x^2\right)^{-2}\mathrm{d}x$$
+
+          Somme sur $k$ de $1$ à $n$. Les $n$ intégrales portent sur des tranches consécutives et adjacentes : $\left[0,\frac1n\right]$, $\left[\frac1n,\frac2n\right]$, …, $\left[\frac{n-1}{n},1\right]$. Par la relation de Chasles (chapitre 4), appliquée $n-1$ fois, elles se recollent exactement en une seule intégrale de $0$ à $1$ :
+
+          $$\sum_{k=1}^{n} x_k^2 \ \leq\ \frac{1}{n}\sum_{k=1}^{n}\int_{\frac{k-1}{n}}^{\frac{k}{n}} \left(1+x^2\right)^{-2}\mathrm{d}x \ =\ \frac{1}{n}\int_{0}^{1}\left(1+x^2\right)^{-2}\mathrm{d}x$$
+
+          Et la question 2 dit précisément que cette intégrale est $\leq 1$ :
+
+          $$\sum_{k=1}^{n} x_k^2 \ \leq\ \frac{1}{n} \times 1 = \frac{1}{n}$$
+
+          Il ne reste qu'à reporter dans 4-a :
+
+          $$0 \leq w_n - u_n \leq \frac{e}{2}\sum_{k=1}^{n} x_k^2 \leq \frac{e}{2} \times \frac{1}{n}$$
+
+          $$\boxed{\left(\forall n \geq 1\right)\ ;\quad 0 \leq w_n - u_n \leq \frac{e}{2n}}$$
+
+          **Le contrôle qui rassure.** Pour $n=1$ : $w_1 - u_1 = e^{1/2}-1-\frac12 = \sqrt{e}-\frac32 \approx 0{,}149$, face à $\frac{e}{2} \approx 1{,}359$. L'encadrement tient largement, comme prévu — les majorations successives ont été généreuses.
+
+          **Le piège à éviter.** Oublier le facteur $\dfrac1n$ en passant de $x_k^2$ au membre de gauche de 4-c. Si tu écris directement $x_k^2 \leq \int_{\frac{k-1}{n}}^{\frac{k}{n}}\varphi$, tu conclus $\sum x_k^2 \leq 1$ puis $w_n - u_n \leq \dfrac{e}{2}$ — une majoration **par une constante**, qui ne tend pas vers $0$ et ne permet plus de conclure quoi que ce soit à la question 5-b. Tout l'exercice se joue sur ce $\dfrac1n$ : c'est lui qui transforme une borne inutile en une borne qui s'effondre.
+        steps:
+          - math: 'x_k = \dfrac{n}{n^2+k^2} = \dfrac{1}{n}\left(1+\left(\dfrac{k}{n}\right)^{2}\right)^{-1}'
+            note: "Même factorisation qu'à la question 1-b."
+          - math: 'x_k^{2} = \dfrac{1}{n^{2}}\left(1+\left(\dfrac{k}{n}\right)^{2}\right)^{-2} = \dfrac{1}{n}\times\left[\dfrac{1}{n}\left(1+\left(\dfrac{k}{n}\right)^{2}\right)^{-2}\right]'
+            note: "Le crochet est EXACTEMENT le membre de gauche de 4-c ; x_k au carré vaut 1/n fois ce crochet."
+          - math: 'x_k^{2} \leq \dfrac{1}{n}\int_{\frac{k-1}{n}}^{\frac{k}{n}} \left(1+x^2\right)^{-2}\mathrm{d}x'
+            note: "Question 4-c multipliée par 1/n, qui est positif : le sens de l'inégalité est conservé."
+          - math: '\sum_{k=1}^{n} x_k^{2} \leq \dfrac{1}{n}\sum_{k=1}^{n}\int_{\frac{k-1}{n}}^{\frac{k}{n}} \left(1+x^2\right)^{-2}\mathrm{d}x = \dfrac{1}{n}\int_{0}^{1}\left(1+x^2\right)^{-2}\mathrm{d}x'
+            note: "Les n tranches sont adjacentes : la relation de Chasles (chapitre 4) les recolle en une seule intégrale de 0 à 1."
+          - math: '\int_0^1 \left(1+x^2\right)^{-2}\mathrm{d}x \leq 1 \quad\Longrightarrow\quad \sum_{k=1}^{n} x_k^{2} \leq \dfrac{1}{n}'
+            note: "C'est la question 2, qui trouve ici son unique emploi de tout l'exercice."
+          - math: '0 \leq w_n - u_n \leq \dfrac{e}{2}\sum_{k=1}^{n} x_k^{2} \leq \dfrac{e}{2}\times\dfrac{1}{n} = \dfrac{e}{2n}'
+            note: "Report dans la question 4-a. Contrôle pour n = 1 : racine de e moins 3/2, soit 0,149, contre e/2 = 1,359."
+      - id: q5-b
+        part: "Question 5 — La conclusion : $w_n$ tend vers $\\pi/4$"
+        stem: |-
+          **(0,5 pt)** En déduire que la suite $(w_n)_{n\geq 1}$ est convergente et déterminer sa limite.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux choses sont demandées — la convergence, puis la valeur — et elles s'obtiennent d'un même mouvement. On ne sait rien de $w_n$ directement ; on sait seulement deux choses : ce que vaut la limite de $u_n$ (question 1-b) et à quel point $w_n$ est proche de $u_n$ (question 5-a). Le geste : écrire $w_n$ **comme la somme de ce qu'on connaît**.
+
+          **Premier temps — l'écart tend vers $0$.** La question 5-a donne :
+
+          $$\left(\forall n \geq 1\right)\ ;\quad 0 \leq w_n - u_n \leq \frac{e}{2n}$$
+
+          Or $\displaystyle\lim_{n\to+\infty} \frac{e}{2n} = 0$ (c'est $\frac{e}{2}$ fois $\frac1n$, et $e$ est une constante) et la suite constante nulle tend vers $0$. Le théorème des gendarmes (chapitre « Suites numériques », chapitre 7) s'applique aux trois membres :
+
+          $$\lim_{n\to+\infty} \left(w_n - u_n\right) = 0$$
+
+          **Deuxième temps — recomposer $w_n$.** L'écriture qui conclut :
+
+          $$w_n = u_n + \left(w_n - u_n\right)$$
+
+          C'est une somme de deux suites **convergentes** : $u_n \to \dfrac{\pi}{4}$ (question 1-b) et $w_n - u_n \to 0$. La limite d'une somme est la somme des limites :
+
+          $$\lim_{n\to+\infty} w_n = \frac{\pi}{4} + 0$$
+
+          $$\boxed{(w_n)_{n\geq 1} \text{ converge, et } \lim_{n\to+\infty} w_n = \frac{\pi}{4}}$$
+
+          **Ce que l'exercice a vraiment construit.** L'intuition de départ était simple : quand $t$ est petit, $e^t-1 \approx t$, donc $w_n \approx u_n$. Mais « approximativement égal » n'est pas un argument de démonstration — et c'est pour cela que les questions 2 à 5-a existent : elles transforment un $\approx$ en un $\leq \frac{e}{2n}$ explicite, une borne qu'on peut faire tendre vers $0$. C'est le mouvement typique de l'analyse : remplacer une intuition par une majoration chiffrée.
+
+          **Le piège à éviter.** Écrire « $w_n - u_n \to 0$ donc $w_n$ et $u_n$ ont la même limite » sans dire que $(u_n)$ **converge**. Le raisonnement serait faux en général : $w_n = n+\frac1n$ et $u_n = n$ vérifient $w_n - u_n \to 0$ alors qu'aucune des deux ne converge. C'est la convergence de $(u_n)$, établie en 1-b, qui rend la conclusion légitime — et c'est exactement pour ça que l'écriture $w_n = u_n + (w_n-u_n)$ vaut mieux qu'une phrase : elle exhibe la somme de deux suites convergentes.
+        steps:
+          - math: '(\forall n \geq 1)\ ;\quad 0 \leq w_n - u_n \leq \dfrac{e}{2n} \qquad\text{et}\qquad \lim_{n\to+\infty}\dfrac{e}{2n} = 0'
+            note: "Question 5-a, plus la limite de e/(2n) : e est une constante, 1/n tend vers 0."
+          - math: '\lim_{n\to+\infty}\left(w_n - u_n\right) = 0'
+            note: "Théorème des gendarmes (Suites numériques, chapitre 7) appliqué aux trois membres."
+          - math: 'w_n = u_n + \left(w_n - u_n\right)'
+            note: "L'écriture qui conclut : w_n est la somme de deux suites dont on connaît les limites."
+          - math: '\lim_{n\to+\infty} w_n = \dfrac{\pi}{4} + 0 = \dfrac{\pi}{4}'
+            note: "Limite d'une somme de deux suites convergentes. La convergence de u_n vient de la question 1-b."
+
+  # ── bk-2023-n-x2 — 2023 N (SM), Exercice 2 : distances M_kM_(k+1) sur la
+  #    courbe de e^x, TAF, sommes de Riemann, limite = integrale de racine
+  #    de 1 + e^(2x) ──
+  # TROISIÈME entrée de ce fichier. Voir AJOUT DU 2026-08-27 et SCOPE NOTE
+  # ADDITIONNELLE en tête de fichier.
+  - id: bk-2023-n-x2
+    title: "Distances entre points consécutifs sur la courbe de l'exponentielle : théorème des accroissements finis, encadrement, et limite par sommes de Riemann"
+    source:
+      year: 2023
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 2 — Analyse (2,25 points)"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — examen national Mathématiques, filière
+        Sciences Mathématiques (A) et (B), option française (BIOF), 4 h,
+        coefficient 9, code sujet NS 24F, AlloSchool element/142490
+        (course-436/upload-85316), page 3 sur 5 (consignes en page 1 ;
+        l'exercice 2 tient entier sur cette seule page). Barème de
+        l'exercice : 2,25 points, annoncé en page 1 (carte des composantes :
+        Ex1 = 7,75 ; Ex2 = 2,25 ; Ex3 = 3,5 ; Ex4 = 3 ; Ex5 = 3,5 ; somme =
+        20). Recompte question par question sur l'énoncé transcrit : 0,5(1-a)
+        + 0,25(1-b) + 0,5(1-c) + 0,5(2-a) + 0,5(2-b) = 2,25, cinq items —
+        conforme au recompte annoncé pour cet exercice et à l'en-tête
+        « EXERCICE2 : (2.25 points) » du scan ; aucun écart ici, contrairement
+        à l'exercice 1 du même sujet (voir bk-2023-n-x1,
+        content/maths/fonction-logarithme/bank.yaml, sourcing.note). Transcription
+        vérifiée par une passe adversariale indépendante (2026-08-27,
+        docs/sujets/_incoming/maths-sm-2023-n.md, statut « vérifié ») :
+        re-fetch de element/142490, lecture de la page 3 SUR L'IMAGE — jamais
+        sur le texte transcrit —, recadrages ×6 à ×12 sur les exposants et
+        bornes de sommation litigieux, re-dérivation mathématique complète de
+        chaque « montrer que » de l'énoncé. Résultat : AUCUN défaut trouvé
+        dans le corps de l'exercice. NOTE DE LECTURE (mojibake) : quatre des
+        six occurrences du glyphe cassé « ,, » lu ≤ dans le sujet entier
+        tombent ici (question 1-c ×2, question 2-a ×2) — même glyphe qu'à
+        l'exercice 1 (double virgule basse « „ », posée sur la ligne de base,
+        sans valeur informative), lu ≤ par le même argument (égalité au rang
+        $n=0$ de l'exercice 1, III-2-c — voir bk-2023-n-x1, sourcing.note).
+        Les exposants de la question 1-c ($e^{2k/n}$ à gauche,
+        $e^{2(k+1)/n}$ à droite) et les bornes de sommation de la question
+        2-a ($k=0$ à $n-1$ à gauche, $k=1$ à $n$ à droite, même exposant
+        $e^{2k/n}$ des deux côtés) ont été relus au zoom ×6 à ×7 : aucune
+        inversion. Aucune figure n'est imprimée dans ce sujet. CONTRE-CALCUL
+        INDÉPENDANT, refait pour cette conversion et non recopié du fichier
+        source : les cinq identités ont été redérivées séparément (voir le
+        `reasoning` de chaque question) ; aucun écart avec la re-dérivation
+        du vérificateur adversarial — en particulier 1-a (le TAF produit
+        exactement $\frac1n e^{c_k}$), 1-b (Pythagore sur les deux
+        coordonnées), 2-a (le changement d'indice $j=k+1$ transforme
+        exactement la somme de droite de 1-c en celle imprimée), et 2-b
+        (les deux sommes encadrantes sont des sommes de Riemann de la même
+        fonction $h(x)=\sqrt{1+e^{2x}}$, continue sur $[0,1]$). FILIÈRE —
+        POINT CRITIQUE : `source.filiere` doit valoir « SM », impérativement
+        — voir la note complète dans bk-2023-n-x1
+        (content/maths/fonction-logarithme/bank.yaml, même conversion, même
+        soir) : les identifiants `bk-2023-n-x1`/`bk-2023-n-x2` existent déjà
+        dans le corpus, mais sous une épreuve SExp différente (code NS 22F,
+        element/137482, content/maths/geometrie-espace/bank.yaml et
+        content/maths/nombres-complexes-1/bank.yaml) ; c'est `filiere` qui
+        sépare les deux épreuves de 2023 normale dans
+        web/src/lib/examens.ts. AJOUT AU CORPUS : avec l'ajout jumeau de
+        bk-2023-n-x1 (Exercice 1) dans
+        content/maths/fonction-logarithme/bank.yaml, cette conversion fait
+        passer l'épreuve SM 2023 normale de 10,00/20 à 20,00/20, complète,
+        dans Examens blancs.
+    intro: |-
+      **Distances sur la courbe de l'exponentielle, et une somme qui devient une intégrale (examen national, Sciences Mathématiques, session normale 2023 — Exercice 2, 2,25 points).**
+
+      On considère $x \mapsto e^x$ et sa courbe représentative $(\Gamma)$ dans un repère orthonormé $(O,\vec i,\vec j)$. Pour $n \in \mathbb{N}^{*}$ fixé et $k \in \{0,1,\ldots,n\}$, on place le point $M_k$ de $(\Gamma)$ d'abscisse $\dfrac{k}{n}$ : les $n+1$ points $M_0,\ldots,M_n$ sont régulièrement espacés en abscisse entre $0$ et $1$. On note $S_n = \displaystyle\sum_{k=0}^{n-1} M_kM_{k+1}$ la somme des distances entre points consécutifs.
+
+      *Le fil de l'exercice.* La question 1 construit, pour chaque segment $[M_k,M_{k+1}]$, un encadrement de sa longueur — en passant par le **théorème des accroissements finis**, énoncé et appliqué exactement au point où il sert (ce théorème n'appartient pas au socle de cette leçon). La question 2 somme ces $n$ encadrements et reconnaît, dans les deux sommes qui en résultent, deux **sommes de Riemann** de la même fonction $h(x)=\sqrt{1+e^{2x}}$ (outil du programme SM, lui aussi hors socle des chapitres 1 à 10 de cette leçon) — d'où la limite $S_n \to \displaystyle\int_0^1 \sqrt{1+e^{2x}}\,dx$.
+
+      *Aucune figure n'accompagne ce sujet. La carte des domaines : question 1-a mobilise le théorème des accroissements finis (domaine « dérivabilité et étude des fonctions », hors socle) ; le reste — distance entre deux points, encadrement, somme, sommes de Riemann, passage à la limite — relève de ce chapitre et du chapitre « suites numériques ».*
+    questions:
+      - id: q1a
+        part: "Question 1 — Le théorème des accroissements finis, applique a e^x"
+        stem: |-
+          **1- a)** (0,5 pt) Montrer que : $\forall k \in \{0\,;1\,;\ldots\,;(n-1)\}\ \ \exists\, c_k \in\, \left]\dfrac{k}{n}\,;\dfrac{k+1}{n}\right[$ tel que : $e^{\frac{k+1}{n}} - e^{\frac{k}{n}} = \dfrac{1}{n}\,e^{c_k}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé demande l'existence d'un point **intermédiaire** $c_k$ reliant une différence de deux valeurs de $e^x$ à une seule valeur de sa dérivée, multipliée par l'écart des abscisses. C'est très exactement la conclusion du **théorème des accroissements finis** — un théorème qui n'appartient pas au socle de cette leçon (domaine « dérivabilité et étude des fonctions »), et qu'il faut donc énoncer avant de l'appliquer.
+
+          **Le théorème des accroissements finis (TAF), énoncé ici.** Si $h$ est continue sur $[p,q]$ et dérivable sur $]p,q[$, alors il existe $c \in\, ]p,q[$ tel que $h(q)-h(p) = h'(c)\,(q-p)$.
+
+          **Les hypothèses, vérifiées pour $h(x)=e^x$ sur $\left[\dfrac{k}{n},\dfrac{k+1}{n}\right]$.** La fonction exponentielle est continue sur $\mathbb{R}$ tout entier, donc en particulier sur l'intervalle fermé $\left[\dfrac{k}{n},\dfrac{k+1}{n}\right]$ ; elle est dérivable sur $\mathbb{R}$, donc sur l'intervalle ouvert $\left]\dfrac{k}{n},\dfrac{k+1}{n}\right[$, avec $h'(x)=e^x$. Les deux hypothèses du TAF sont réunies.
+
+          **L'application.** Le TAF donne l'existence de $c_k \in\, \left]\dfrac{k}{n},\dfrac{k+1}{n}\right[$ tel que :
+
+          $$e^{\frac{k+1}{n}} - e^{\frac{k}{n}} = e^{c_k}\left(\frac{k+1}{n}-\frac{k}{n}\right) = e^{c_k}\cdot\frac{1}{n}$$
+
+          puisque $\dfrac{k+1}{n}-\dfrac{k}{n} = \dfrac{1}{n}$.
+
+          $$\boxed{\exists\, c_k \in\, \left]\frac{k}{n},\frac{k+1}{n}\right[\ ;\quad e^{\frac{k+1}{n}} - e^{\frac{k}{n}} = \frac{1}{n}\,e^{c_k}}$$
+
+          **Ce que ce résultat prépare.** $c_k$ n'est **pas** calculable explicitement — le TAF garantit son existence, jamais sa valeur. Toute la suite de l'exercice (questions 1-b et 1-c) va travailler avec cette existence seule, en encadrant $c_k$ **entre** les deux bornes qui le contiennent, sans jamais chercher à le déterminer.
+
+          **Le piège nommé de cette question.** Oublier de vérifier — ou même de mentionner — les deux hypothèses du TAF (continuité sur le fermé, dérivabilité sur l'ouvert) avant de l'appliquer : elles sont vraies ici parce que $\exp$ est dérivable sur $\mathbb{R}$ tout entier, un fait qu'il faut citer, pas supposer. Second piège : écrire l'accroissement des abscisses à l'envers, $\dfrac{k}{n}-\dfrac{k+1}{n}$ au lieu de $\dfrac{k+1}{n}-\dfrac{k}{n}$ — cela changerait le signe du résultat.
+        steps:
+          - math: 'h(x) = e^x \text{ continue sur } \mathbb{R}, \text{ dérivable sur } \mathbb{R}, \quad h^{\prime}(x) = e^x'
+            note: "Exponentielle continue et dérivable partout : les deux hypothèses du TAF sont acquises sur tout intervalle."
+          - math: '\exists\, c_k \in\, \left]\dfrac{k}{n},\dfrac{k+1}{n}\right[\ ;\quad h\!\left(\dfrac{k+1}{n}\right) - h\!\left(\dfrac{k}{n}\right) = h^{\prime}(c_k)\left(\dfrac{k+1}{n}-\dfrac{k}{n}\right) \quad (\text{TAF})'
+            note: "Théorème des accroissements finis, hors socle de cette leçon, énoncé et applique ici a h = exp."
+          - math: '\dfrac{k+1}{n}-\dfrac{k}{n} = \dfrac1n \quad\Longrightarrow\quad \boxed{e^{\frac{k+1}{n}} - e^{\frac{k}{n}} = \dfrac1n\,e^{c_k}}'
+            note: "L'écart des abscisses vaut 1/n ; h'(c_k) = e puissance c_k puisque h = exp."
+      - id: q1b
+        stem: |-
+          **1- b)** (0,25 pt) Montrer que : $\forall k \in \{0\,;1\,;\ldots\,;(n-1)\}\ ;\quad M_kM_{k+1} = \dfrac{1}{n}\sqrt{1 + e^{2c_k}}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $M_kM_{k+1}$ est une distance entre deux points du plan : le réflexe est la formule de Pythagore, avec les coordonnées de $M_k$ et $M_{k+1}$ données par l'énoncé de tête.
+
+          **Les coordonnées.** $M_k = \left(\dfrac{k}{n}\,;\,e^{\frac{k}{n}}\right)$ et $M_{k+1} = \left(\dfrac{k+1}{n}\,;\,e^{\frac{k+1}{n}}\right)$.
+
+          **L'écart des abscisses.** $\dfrac{k+1}{n} - \dfrac{k}{n} = \dfrac1n$.
+
+          **L'écart des ordonnées.** C'est exactement le résultat de la question 1-a : $e^{\frac{k+1}{n}} - e^{\frac{k}{n}} = \dfrac1n e^{c_k}$.
+
+          **La formule de la distance.**
+
+          $$M_kM_{k+1} = \sqrt{\left(\frac1n\right)^2 + \left(\frac1n e^{c_k}\right)^2} = \sqrt{\frac{1}{n^2} + \frac{1}{n^2}e^{2c_k}} = \sqrt{\frac{1}{n^2}\left(1+e^{2c_k}\right)}$$
+
+          Comme $\dfrac{1}{n^2}>0$, on peut sortir sa racine du radical : $\sqrt{\dfrac{1}{n^2}} = \dfrac1n$ (et $n>0$, donc pas de valeur absolue à porter) :
+
+          $$\boxed{M_kM_{k+1} = \frac1n\sqrt{1+e^{2c_k}}}$$
+
+          **Ce qui rend ce calcul immédiat.** Aucune nouvelle donnée n'est mobilisée : l'écart des abscisses est une constante ($\frac1n$, la largeur commune à tous les segments), et l'écart des ordonnées est **exactement** la quantité que la question 1-a vient de fournir. La question ne fait qu'assembler les deux dans une seule formule connue.
+
+          **Le piège nommé de cette question.** Recalculer $e^{\frac{k+1}{n}}-e^{\frac{k}{n}}$ depuis le début au lieu de réutiliser directement le résultat de 1-a — c'est possible, mais ça ignore que l'énoncé a construit la question précédente précisément pour cet usage. Second piège, plus discret : oublier de sortir $\dfrac1n$ du radical, et laisser une réponse du type $\sqrt{\frac{1+e^{2c_k}}{n^2}}$ non simplifiée — juste mathématiquement, mais pas la forme demandée par l'énoncé.
+        steps:
+          - math: 'M_k = \left(\dfrac{k}{n}\,;\,e^{\frac{k}{n}}\right), \qquad M_{k+1} = \left(\dfrac{k+1}{n}\,;\,e^{\frac{k+1}{n}}\right)'
+            note: "Coordonnées données par l'énoncé de tête de l'exercice."
+          - math: '\Delta x = \dfrac{k+1}{n}-\dfrac{k}{n} = \dfrac1n, \qquad \Delta y = e^{\frac{k+1}{n}}-e^{\frac{k}{n}} = \dfrac1n e^{c_k} \quad (\text{question 1-a})'
+            note: "Écart des abscisses constant ; écart des ordonnées repris tel quel de la question 1-a."
+          - math: 'M_kM_{k+1} = \sqrt{(\Delta x)^2+(\Delta y)^2} = \sqrt{\dfrac{1}{n^2}+\dfrac{1}{n^2}e^{2c_k}} = \sqrt{\dfrac{1}{n^2}\left(1+e^{2c_k}\right)}'
+            note: "Formule de la distance entre deux points (Pythagore), appliquee aux deux écarts."
+          - math: '\boxed{M_kM_{k+1} = \dfrac1n\sqrt{1+e^{2c_k}}}'
+            note: "On sort la racine de 1 sur n au carré, égale a 1/n car n > 0."
+      - id: q1c
+        stem: |-
+          **1- c)** (0,5 pt) En déduire que : $\forall k \in \{0\,;1\,;\ldots\,;(n-1)\}\ ;\quad \dfrac{1}{n}\sqrt{1 + e^{\frac{2k}{n}}} \le M_kM_{k+1} \le \dfrac{1}{n}\sqrt{1 + e^{\frac{2(k+1)}{n}}}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $M_kM_{k+1}$ dépend de $c_k$, un point qu'on ne connaît pas précisément — mais dont on connaît l'**encadrement** : $c_k \in\, \left]\dfrac{k}{n},\dfrac{k+1}{n}\right[$ (question 1-a). Le geste consiste à encadrer la fonction qui, à $c_k$, associe $M_kM_{k+1}$, en utilisant sa monotonie.
+
+          **La fonction à étudier.** D'après la question 1-b, $M_kM_{k+1} = \dfrac1n\sqrt{1+e^{2c_k}}$ : c'est $\dfrac1n\varphi(c_k)$ avec $\varphi(t)=\sqrt{1+e^{2t}}$.
+
+          **La monotonie de $\varphi$.** $t \mapsto e^{2t}$ est strictement croissante (composée de $t\mapsto 2t$, croissante, et de $\exp$, strictement croissante) ; $t\mapsto 1+e^{2t}$ l'est donc aussi, à valeurs strictement positives ; et $t\mapsto\sqrt{t}$ est strictement croissante sur $]0,+\infty[$. Composée de fonctions strictement croissantes, $\varphi$ est **strictement croissante** sur $\mathbb{R}$.
+
+          **L'encadrement, par monotonie.** $c_k \in\, \left]\dfrac{k}{n},\dfrac{k+1}{n}\right[$ signifie $\dfrac{k}{n} < c_k < \dfrac{k+1}{n}$. Comme $\varphi$ est strictement croissante, elle conserve l'ordre :
+
+          $$\varphi\!\left(\frac{k}{n}\right) < \varphi(c_k) < \varphi\!\left(\frac{k+1}{n}\right)$$
+
+          c'est-à-dire $\sqrt{1+e^{\frac{2k}{n}}} < \sqrt{1+e^{2c_k}} < \sqrt{1+e^{\frac{2(k+1)}{n}}}$. En multipliant par $\dfrac1n>0$ (ce qui conserve le sens) :
+
+          $$\frac1n\sqrt{1+e^{\frac{2k}{n}}} < M_kM_{k+1} < \frac1n\sqrt{1+e^{\frac{2(k+1)}{n}}}$$
+
+          Cette inégalité est **stricte** ; l'énoncé demande la version **large** ($\le$), qui en découle immédiatement — un résultat strict implique toujours le résultat large correspondant :
+
+          $$\boxed{\frac1n\sqrt{1+e^{\frac{2k}{n}}} \le M_kM_{k+1} \le \frac1n\sqrt{1+e^{\frac{2(k+1)}{n}}}}$$
+
+          **Ce que cet encadrement prépare.** $c_k$ a maintenant totalement disparu de l'écriture : $M_kM_{k+1}$ est encadré par deux quantités qui ne dépendent plus que de $k$ et de $n$, directement calculables. C'est cette disparition qui va rendre la sommation de la question 2-a possible.
+
+          **Le piège nommé de cette question.** Intervertir les deux bornes — écrire la borne en $\frac{2(k+1)}{n}$ à gauche —, en oubliant que $\varphi$ est **croissante** : la borne associée au **plus petit** argument ($\frac{k}{n}$) doit être la **plus petite**, donc à gauche.
+        steps:
+          - math: '\varphi(t) = \sqrt{1+e^{2t}} \quad\text{strictement croissante sur } \mathbb{R} \quad (\text{composee de fonctions croissantes})'
+            note: "e puissance 2t croissante, plus 1 reste croissant et positif, racine carrée croissante : la composée est croissante."
+          - math: '\dfrac{k}{n} < c_k < \dfrac{k+1}{n} \ \Longrightarrow\ \varphi\!\left(\dfrac{k}{n}\right) < \varphi(c_k) < \varphi\!\left(\dfrac{k+1}{n}\right) \quad (\varphi \text{ croissante})'
+            note: "Encadrement de c_k (question 1-a) transporte par la monotonie stricte de phi."
+          - math: '\dfrac1n\sqrt{1+e^{\frac{2k}{n}}} < M_kM_{k+1} < \dfrac1n\sqrt{1+e^{\frac{2(k+1)}{n}}} \quad (\text{multiplication par } \dfrac1n>0)'
+            note: "M_kM_(k+1) = (1/n) phi(c_k) par la question 1-b ; on multiplie l'encadrement de phi(c_k) par 1/n."
+          - math: '\boxed{\dfrac1n\sqrt{1+e^{\frac{2k}{n}}} \le M_kM_{k+1} \le \dfrac1n\sqrt{1+e^{\frac{2(k+1)}{n}}}}'
+            note: "Le résultat strict implique la version large demandee par l'énoncé."
+      - id: q2a
+        part: "Question 2 — La suite (S_n) des longueurs, et sa limite"
+        stem: |-
+          **2)** Soit $(S_n)_{n \in \mathbb{N}^{*}}$ la suite numérique définie par : $\forall n \in \mathbb{N}^{*}\ ;\quad S_n = \displaystyle\sum_{k=0}^{n-1} M_kM_{k+1}$
+
+          **a)** (0,5 pt) Vérifier que : $\forall n \in \mathbb{N}^{*}\ ;\quad \dfrac{1}{n}\displaystyle\sum_{k=0}^{n-1}\sqrt{1 + e^{\frac{2k}{n}}} \le S_n \le \dfrac{1}{n}\displaystyle\sum_{k=1}^{n}\sqrt{1 + e^{\frac{2k}{n}}}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $S_n$ est **une somme** de $n$ termes $M_kM_{k+1}$ ($k$ de $0$ à $n-1$), chacun encadré par la question 1-c. Additionner $n$ inégalités de même sens, terme à terme, est toujours licite : c'est le geste qui produit l'encadrement de $S_n$.
+
+          **La somme des bornes de gauche, directe.**
+
+          $$\sum_{k=0}^{n-1} \frac1n\sqrt{1+e^{\frac{2k}{n}}} = \frac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2k}{n}}}$$
+
+          — c'est déjà exactement le membre de gauche demandé.
+
+          **La somme des bornes de droite, qui demande un changement d'indice.**
+
+          $$\sum_{k=0}^{n-1} \frac1n\sqrt{1+e^{\frac{2(k+1)}{n}}} = \frac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2(k+1)}{n}}}$$
+
+          Pose $j = k+1$ : quand $k$ parcourt $\{0,\ldots,n-1\}$, $j$ parcourt $\{1,\ldots,n\}$, et $\dfrac{2(k+1)}{n}$ devient $\dfrac{2j}{n}$ :
+
+          $$\frac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2(k+1)}{n}}} = \frac1n\sum_{j=1}^{n}\sqrt{1+e^{\frac{2j}{n}}}$$
+
+          Le nom de l'indice de sommation n'a aucune importance ; renomme $j$ en $k$ :
+
+          $$= \frac1n\sum_{k=1}^{n}\sqrt{1+e^{\frac{2k}{n}}}$$
+
+          — exactement le membre de droite demandé.
+
+          **On somme les $n$ encadrements de la question 1-c**, pour $k=0,\ldots,n-1$ :
+
+          $$\sum_{k=0}^{n-1}\frac1n\sqrt{1+e^{\frac{2k}{n}}} \ \le\ \sum_{k=0}^{n-1} M_kM_{k+1} \ \le\ \sum_{k=0}^{n-1}\frac1n\sqrt{1+e^{\frac{2(k+1)}{n}}}$$
+
+          Le terme du milieu est $S_n$ par définition ; les deux bornes viennent d'être réécrites ci-dessus :
+
+          $$\boxed{\frac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2k}{n}}} \ \le\ S_n \ \le\ \frac1n\sum_{k=1}^{n}\sqrt{1+e^{\frac{2k}{n}}}}$$
+
+          **Ce qui vient de se passer, à bien remarquer.** La somme de droite porte **le même exposant** $e^{\frac{2k}{n}}$ que la somme de gauche — ce n'est pas $e^{\frac{2(k+1)}{n}}$ qui survit : c'est le **décalage d'indice** ($k=1$ à $n$ au lieu de $k=0$ à $n-1$) qui absorbe entièrement le « $+1$ ». Les deux sommes sont la même fonction évaluée sur deux fenêtres d'indices qui se chevauchent sur $n-1$ termes et diffèrent chacune d'un seul terme aux extrémités.
+
+          **Le piège nommé de cette question.** Laisser l'exposant $e^{\frac{2(k+1)}{n}}$ dans la somme de droite sans faire le changement d'indice — c'est une erreur de transcription qui ne « saute pas aux yeux » parce que la formule reste vraie mathématiquement (c'est la même somme), mais ce n'est **pas** la forme que l'énoncé demande de vérifier. Le changement d'indice n'est pas cosmétique : c'est lui qui prépare la reconnaissance des sommes de Riemann en 2-b.
+        steps:
+          - math: '\sum_{k=0}^{n-1}\dfrac1n\sqrt{1+e^{\frac{2k}{n}}} = \dfrac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2k}{n}}}'
+            note: "Somme des bornes de gauche de la question 1-c : déjà la forme demandee."
+          - math: '\sum_{k=0}^{n-1}\dfrac1n\sqrt{1+e^{\frac{2(k+1)}{n}}} \ \underset{j=k+1}{=}\ \dfrac1n\sum_{j=1}^{n}\sqrt{1+e^{\frac{2j}{n}}} = \dfrac1n\sum_{k=1}^{n}\sqrt{1+e^{\frac{2k}{n}}}'
+            note: "Changement d'indice j = k+1 : le +1 de l'exposant est absorbe par le décalage des bornes de sommation."
+          - math: '\sum_{k=0}^{n-1}\dfrac1n\sqrt{1+e^{\frac{2k}{n}}} \le \sum_{k=0}^{n-1} M_kM_{k+1} \le \sum_{k=0}^{n-1}\dfrac1n\sqrt{1+e^{\frac{2(k+1)}{n}}}'
+            note: "On additionne les n encadrements de la question 1-c, pour k de 0 a n-1."
+          - math: '\boxed{\dfrac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2k}{n}}} \le S_n \le \dfrac1n\sum_{k=1}^{n}\sqrt{1+e^{\frac{2k}{n}}}}'
+            note: "S_n est le terme du milieu par définition ; les deux bornes viennent d'être reecrites ci-dessus."
+      - id: q2b
+        stem: |-
+          **b)** (0,5 pt) En déduire que : $\displaystyle\lim_{n \to +\infty} S_n = \int_0^1 \sqrt{1 + e^{2x}}\ dx$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Les deux sommes qui encadrent $S_n$ (question 2-a) ont exactement la forme d'une **somme de Riemann** — un outil du programme SM qui n'appartient pas au socle de cette leçon, et qu'il faut donc énoncer avant de l'utiliser, comme pour le TAF de la question 1-a.
+
+          **Le théorème des sommes de Riemann, énoncé ici.** Si $h$ est continue sur $[0,1]$, alors :
+
+          $$
+          \frac1n\sum_{k=0}^{n-1} h\!\left(\frac{k}{n}\right) \xrightarrow[n\to+\infty]{} \int_0^1 h(x)\,dx
+          \qquad\text{et}\qquad
+          \frac1n\sum_{k=1}^{n} h\!\left(\frac{k}{n}\right) \xrightarrow[n\to+\infty]{} \int_0^1 h(x)\,dx
+          $$
+
+          — les sommes aux points **gauches** et aux points **droits** de la subdivision régulière de $[0,1]$ convergent toutes deux vers la même intégrale.
+
+          **L'identification de $h$.** Pose $h(x) = \sqrt{1+e^{2x}}$. $h$ est continue sur $[0,1]$ (composée de $x\mapsto e^{2x}$, continue, de $t\mapsto 1+t$, continue, et de $\sqrt{\cdot}$, continue sur $]0,+\infty[$ où $1+e^{2x}$ reste toujours strictement positif). Les deux bornes de la question 2-a sont exactement :
+
+          $$
+          \frac1n\sum_{k=0}^{n-1} h\!\left(\frac{k}{n}\right) \quad\text{(points gauches)}
+          \qquad\text{et}\qquad
+          \frac1n\sum_{k=1}^{n} h\!\left(\frac{k}{n}\right) \quad\text{(points droits)}
+          $$
+
+          **L'application du théorème.** $h$ étant continue sur $[0,1]$, les deux sommes convergent **toutes deux** vers $\displaystyle\int_0^1 h(x)\,dx = \int_0^1 \sqrt{1+e^{2x}}\,dx$.
+
+          **La conclusion, par le théorème des gendarmes.** L'encadrement de la question 2-a place $S_n$ entre deux suites qui tendent vers la **même** limite :
+
+          $$
+          \frac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2k}{n}}} \longrightarrow \int_0^1\sqrt{1+e^{2x}}\,dx
+          \qquad\text{et}\qquad
+          \frac1n\sum_{k=1}^{n}\sqrt{1+e^{\frac{2k}{n}}} \longrightarrow \int_0^1\sqrt{1+e^{2x}}\,dx
+          $$
+
+          Le théorème des gendarmes force $S_n$, coincé entre les deux, à converger vers cette même valeur :
+
+          $$\boxed{\lim_{n\to+\infty} S_n = \int_0^1 \sqrt{1+e^{2x}}\,dx}$$
+
+          **Ce que le problème vient de démontrer, relu d'ensemble.** $S_n$ est la longueur d'une ligne brisée qui relie $n+1$ points **sur** la courbe $(\Gamma)$ ; à la limite, elle tend vers $\displaystyle\int_0^1\sqrt{1+\bigl(e^x\bigr)'^2}\,dx = \int_0^1\sqrt{1+e^{2x}}\,dx$ — la formule de la **longueur d'un arc de courbe**, ici retrouvée à la main, terme par terme, sans qu'elle n'ait jamais été énoncée comme telle dans l'exercice. C'est le TAF de la question 1-a qui a fabriqué la dérivée $e^{c_k} \approx (e^x)'$ à l'intérieur de chaque distance, et les sommes de Riemann de la question 2-b qui l'ont fait converger vers l'intégrale.
+
+          **Le piège nommé de cette question.** Appliquer le théorème des sommes de Riemann à une seule des deux sommes et en conclure directement la limite de $S_n$, sans passer par l'encadrement puis les gendarmes — $S_n$ lui-même n'est **ni** l'une **ni** l'autre des deux sommes, seulement coincé entre elles ; c'est cette position d'otage entre deux suites de même limite, et rien d'autre, qui donne la limite de $S_n$.
+        steps:
+          - math: 'h(x) = \sqrt{1+e^{2x}} \quad\text{continue sur } [0,1] \quad (\text{composee de fonctions continues, } 1+e^{2x}>0)'
+            note: "Vérification de l'hypothèse de continuité, seule exigée par le théorème des sommes de Riemann."
+          - math: '\dfrac1n\sum_{k=0}^{n-1} h\!\left(\dfrac{k}{n}\right) \to \int_0^1 h(x)\,dx \quad\text{et}\quad \dfrac1n\sum_{k=1}^{n} h\!\left(\dfrac{k}{n}\right) \to \int_0^1 h(x)\,dx \quad (\text{sommes de Riemann, hors socle, programme SM})'
+            note: "Théorème des sommes de Riemann : points gauches ET points droits convergent vers la même intégrale."
+          - math: '\dfrac1n\sum_{k=0}^{n-1}\sqrt{1+e^{\frac{2k}{n}}} \le S_n \le \dfrac1n\sum_{k=1}^{n}\sqrt{1+e^{\frac{2k}{n}}} \quad (\text{question 2-a}), \quad \text{les deux bornes} \to \int_0^1 \sqrt{1+e^{2x}}\,dx'
+            note: "Les deux bornes de l'encadrement de 2-a sont exactement les deux sommes de Riemann ci-dessus."
+          - math: '\boxed{\lim_{n\to+\infty} S_n = \int_0^1 \sqrt{1+e^{2x}}\,dx} \quad (\text{théorème des gendarmes})'
+            note: "S_n coince entre deux suites de même limite : la limite lui est imposée."
+  # ── bk-2024-n-x2 — 2024 N, Exercice 2 : F(x) = integrale de e^(t^2), sa
+  #    bijection reciproque F^-1, somme de Riemann et changement de variable ──
+  - id: bk-2024-n-x2
+    title: "F(x) = ∫₀ˣ eᵗ² dt, sa bijection réciproque F⁻¹, une somme de Riemann et le changement de variable qui donne ℓ = (e−1)/(2β)"
+    source:
+      year: 2024
+      session: normale
+      filiere: "SM"
+      exercise_label: "Exercice 2 — Analyse (2,5 points)"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session normale — examen national Mathématiques, filière
+        Sciences Mathématiques (A) et (B), option française (BIOF), 4 h,
+        coefficient 9, code sujet NS 24F, AlloSchool element/145739
+        (course-436/upload-87447), page 3 sur 5 (consignes en page 1 ;
+        l'exercice 2 tient entier sur cette seule page). Barème de
+        l'exercice : 2,5 points, annoncé en page 1 (carte des composantes :
+        Ex1 = 7,5 ; Ex2 = 2,5 ; Ex3 = 3,5 ; « EXERCICE5 » imprimé = 3,5 pour
+        les structures algébriques ; « EXERCICE4 » imprimé = 3 pour
+        l'arithmétique ; somme = 20 — voir NOTE ÉDITORIALE de
+        content/maths/fonction-logarithme/bank.yaml pour le croisement de
+        numérotation p. 1 / corps sur ces deux derniers, sans effet sur cet
+        exercice). Recompte question par question, refait indépendamment sur
+        l'énoncé transcrit : 0,5(q1-a) + 0,5(q1-b) + 0,5(q2-a) + 0,5(q2-b) +
+        0,5(q2-c) = 2,5, CINQ items — conforme au recompte du fichier source
+        lui-même (« 0,5+0,5+0,5+0,5+0,5 = 2,5 ») et au barème de marge
+        relevé par le vérificateur. Aucun écart de comptage. Transcription
+        vérifiée par une passe adversariale indépendante (2026-08-27,
+        docs/sujets/_incoming/maths-sm-2024-n.md, statut « vérifié ») :
+        re-fetch de element/145739, CONTRÔLE DU `<title>` SERVI (« Examen
+        National Mathématiques Sciences Maths 2024 Normale - Sujet »),
+        lecture de la page 3 sur l'image — jamais sur le texte transcrit —,
+        recadrages LANCZOS ×2 sur les bornes de la somme $S_n$ ($k=1$ à
+        $k=n$, dessous/dessus) et sur la position de $\beta$ à l'intérieur
+        de $F^{-1}$, et re-dérivation mathématique complète des cinq
+        « montrer que »/« en déduire » de l'exercice. AUCUN DÉFAUT TROUVÉ
+        dans le corps de cet exercice (contrairement à l'exercice 1 du même
+        sujet, qui porte une correction mineure de ponctuation — voir
+        bk-2024-n-x1, content/maths/fonction-logarithme/bank.yaml).
+        CONTRE-CALCUL INDÉPENDANT, refait pour cette conversion et non
+        recopié du fichier source : $F'(x)=e^{x^2}>0$ sur $[0,1]$ (q1-a) ;
+        $F$ bijection de $[0,1]$ sur $[0,\beta]$ par le corollaire du TVI
+        (q1-b) ; $(S_n)$ est la somme de Riemann à droite de
+        $u\mapsto F^{-1}(u\beta)$, continue par composition, d'où sa
+        convergence vers $\frac1\beta\int_0^\beta F^{-1}(t)\,dt$ (q2-a) ; le
+        changement de variable $u=F^{-1}(t)$ — légitime parce que $F$ est
+        une bijection $C^1$ de dérivée $F'(u)=e^{u^2}$ qui ne s'annule
+        jamais, donc $F^{-1}$ est elle-même dérivable sur $[0,\beta]$
+        (théorème de la dérivée d'une fonction réciproque) — donne
+        $\int_0^\beta F^{-1}(t)\,dt = \int_0^1 u\,e^{u^2}\,du$ (q2-b) ; et
+        $\int_0^1 u\,e^{u^2}\,du = \left[\frac12 e^{u^2}\right]_0^1 =
+        \frac{e-1}{2}$, d'où $\ell=\frac{e-1}{2\beta}$ (q2-c). Aucun écart
+        avec la re-dérivation du vérificateur adversarial. FILIÈRE — POINT
+        CRITIQUE : `source.filiere` doit valoir « SM », impérativement (voir
+        bk-2024-r-x2 ci-dessus dans ce même fichier pour la distinction avec
+        le rattrapage 2024 — même position d'exercice x2, filière identique
+        SM, mais SESSION différente et construction entièrement différente :
+        bk-2024-r-x2 part d'une somme algébrique déjà donnée
+        ($u_n=\sum n/(n^2+k^2)$) convergeant vers $\pi/4$ par arctan ;
+        bk-2024-n-x2 construit sa somme de Riemann à partir de la bijection
+        réciproque d'une fonction elle-même définie par une intégrale).
+        AJOUT AU CORPUS : avec l'ajout jumeau de bk-2024-n-x1 (Exercice 1)
+        dans content/maths/fonction-logarithme/bank.yaml, cette conversion
+        fait passer l'épreuve SM 2024 normale de 10,00/20 à 20,00/20,
+        complète, dans Examens blancs.
+    intro: |-
+      **Fonction définie par une intégrale, bijection réciproque et somme de Riemann (examen national, Sciences Mathématiques, session normale 2024 — Exercice 2, 2,5 points).**
+
+      Soit $F$ la fonction numérique définie sur $[0,1]$ par $F(x) = \displaystyle\int_0^x e^{t^2}\,dt$.
+
+      *Le fil de l'exercice.* La question 1 établit que $F$ est continue, strictement croissante, donc bijective de $[0,1]$ vers $[0,\beta]$ avec $\beta = \displaystyle\int_0^1 e^{t^2}\,dt$. La question 2 construit, à l'aide de la bijection réciproque $F^{-1}$, une somme $S_n$ qui est une somme de Riemann — outil du programme SM, hors socle de cette leçon — et calcule sa limite $\ell$ par un changement de variable qui repose sur la dérivabilité de $F^{-1}$.
+
+      *Aucune figure n'accompagne ce sujet. Carte des domaines : la construction de $F$ et le calcul final de $\ell$ relèvent de ce chapitre (calcul intégral) ; l'existence de la bijection $F^{-1}$ et sa dérivée relèvent du chapitre « dérivabilité et étude des fonctions » (pontées au point d'usage, hors socle de cette leçon) ; la convergence de $(S_n)$ relève à la fois des sommes de Riemann (calcul intégral, programme SM, hors socle) et du chapitre « suites numériques » ; l'intégrande $e^{t^2}$ est un objet du chapitre « fonction exponentielle ».*
+    questions:
+      - id: q1a
+        part: "Question 1 — F continue, strictement croissante, bijective"
+        stem: |-
+          **1- a)** (0,5 pt) Montrer que $F$ est continue, strictement croissante sur $[0\,;1]$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $F(x)=\displaystyle\int_0^x e^{t^2}\,dt$ est, par définition même de l'intégrale comme primitive (chapitre 2 de ce chapitre — exactement le geste qui donnait $\int_1^x \frac1t\,dt=\ln x$), une primitive de $t\mapsto e^{t^2}$ sur $[0,1]$, décalée pour s'annuler en $0$.
+
+          $t\mapsto e^{t^2}$ est continue sur $[0,1]$ (composée de $t\mapsto t^2$, continue, et de $\exp$, continue — domaine « fonction exponentielle »), donc elle y admet des primitives (fait admis pour toute fonction continue sur un intervalle). $F$ est l'une de ces primitives : elle est donc **dérivable** sur $[0,1]$, avec $F^{\prime}(x) = e^{x^2}$.
+
+          L'exponentielle est strictement positive en tout point de $\mathbb{R}$, donc $F^{\prime}(x) = e^{x^2} > 0$ pour tout $x\in[0,1]$ : $F$ est **strictement croissante**. Étant dérivable, $F$ est en particulier **continue**.
+
+          **Le piège nommé de cette question.** Vouloir calculer $F(x)$ explicitement pour en étudier le sens de variation — $t\mapsto e^{t^2}$ n'a **aucune primitive exprimable** avec les fonctions usuelles du programme. Toute la force de cette question tient dans le fait qu'on n'a **jamais besoin** de connaître $F(x)$ : le signe de $F^{\prime}$ suffit, et $F^{\prime}$, lui, est connu immédiatement.
+        steps:
+          - math: 't \mapsto e^{t^2} \text{ continue sur } [0,1] \quad (\text{composee, admet des primitives})'
+            note: "Fonction continue sur un intervalle : elle y admet des primitives (fait admis)."
+          - math: 'F \text{ est une primitive de } t\mapsto e^{t^2} \text{ sur } [0,1] \implies F \text{ dérivable}, \quad F^{\prime}(x) = e^{x^2}'
+            note: "Définition de l'intégrale comme primitive (chapitre 2), appliquee a F elle-même."
+          - math: 'F^{\prime}(x) = e^{x^2} > 0 \ \forall x \implies F \text{ strictement croissante sur } [0,1]; \quad F \text{ dérivable} \implies F \text{ continue}'
+            note: "Exponentielle toujours strictement positive : le signe de F prime est immédiat."
+      - id: q1b
+        stem: |-
+          **1- b)** (0,5 pt) En déduire que $F$ est une bijection de $[0\,;1]$ vers $[0\,;\beta]$ avec $\beta = \displaystyle\int_0^1 e^{t^2}\,dt$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » : il ne reste rien à calculer, seulement à appliquer le corollaire du théorème des valeurs intermédiaires à ce que la question 1-a vient d'établir — continuité et stricte monotonie, exactement les deux hypothèses de ce corollaire (chapitre « dérivabilité et étude des fonctions », hors socle de ce chapitre).
+
+          **Le corollaire du TVI, rappelé ici.** Si $g$ est continue et strictement monotone sur un intervalle $I$, alors $g$ réalise une bijection de $I$ sur l'intervalle image $J=g(I)$, délimité par les valeurs (ou limites) de $g$ aux bornes de $I$, dans l'ordre qui suit son sens de variation.
+
+          **L'application.** $F$ est continue et strictement croissante sur $[0,1]$ (question 1-a). $F$ étant croissante, l'intervalle image se lit dans le même ordre que les bornes de $[0,1]$ :
+
+          $$J = \bigl[F(0),\,F(1)\bigr]$$
+
+          $F(0)=\displaystyle\int_0^0 e^{t^2}\,dt = 0$ (intégrale entre deux bornes égales), et $F(1)=\displaystyle\int_0^1 e^{t^2}\,dt = \beta$ par définition même de $\beta$ donnée par l'énoncé. Donc $J=[0,\beta]$.
+
+          $$\boxed{F \text{ realise une bijection de } [0,1] \text{ sur } [0,\beta]}$$
+
+          **Le piège nommé de cette question.** Écrire l'intervalle image dans le mauvais ordre par réflexe — ici $F$ croît, donc l'ordre de $[0,1]$ se conserve, mais ce ne serait pas vrai si $F$ décroissait (le pont complet entre sens de variation et ordre des bornes est démontré au chapitre « dérivabilité et étude des fonctions »). Deuxième piège : oublier de justifier séparément la continuité **et** la stricte monotonie — le TVI seul donnerait l'existence d'un antécédent, jamais son unicité.
+        steps:
+          - math: 'F \text{ continue et strictement croissante sur } [0,1] \quad (\text{question 1-a})'
+            note: "Les deux hypothèses du corollaire du TVI, déjà etablies."
+          - math: 'F(0) = \int_0^0 e^{t^2}\,dt = 0, \qquad F(1) = \int_0^1 e^{t^2}\,dt = \beta \quad (\text{définition de beta})'
+            note: "Images des bornes : F croissante donc l'intervalle image suit le même ordre."
+          - math: 'F \text{ bijection de } [0,1] \text{ sur } J = [F(0), F(1)] = [0,\beta] \quad (\text{corollaire du TVI, hors socle de ce chapitre})'
+            note: "Corollaire du théorème des valeurs intermédiaires : continuité + stricte monotonie."
+      - id: q2a
+        part: "Question 2 — La suite (S_n), somme de Riemann via F inverse"
+        stem: |-
+          On note $F^{-1}$ la bijection réciproque de $F$. Pour tout $n \in \mathbb{N}^{*}$, on pose : $S_n = \dfrac{1}{n}\displaystyle\sum_{k=1}^{k=n} F^{-1}\!\left(\dfrac{k}{n}\beta\right)$
+
+          **2- a)** (0,5 pt) Montrer que la suite $(S_n)_{n \in \mathbb{N}^{*}}$ est convergente de limite $\ell = \dfrac{1}{\beta}\displaystyle\int_0^{\beta} F^{-1}(t)\,dt$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $S_n$ a la forme $\dfrac1n\displaystyle\sum_{k=1}^n \varphi\!\left(\dfrac{k}{n}\right)$, avec $\varphi(u) = F^{-1}(u\beta)$ : c'est une **somme de Riemann** aux points **droits** de la subdivision régulière de $[0,1]$ — outil du programme SM qui n'appartient pas au socle de ce chapitre, et qu'il faut donc énoncer avant de l'utiliser.
+
+          **Le théorème des sommes de Riemann, énoncé ici.** Si $h$ est continue sur $[0,1]$, alors $\dfrac1n\displaystyle\sum_{k=1}^{n} h\!\left(\dfrac{k}{n}\right) \xrightarrow[n\to+\infty]{} \displaystyle\int_0^1 h(u)\,du$.
+
+          **La continuité de $\varphi$, à vérifier avant d'appliquer le théorème.** $F$ est une bijection continue et strictement croissante de $[0,1]$ sur $[0,\beta]$ (question 1-b) : sa réciproque $F^{-1}$ est donc elle-même continue sur $[0,\beta]$ (une bijection continue strictement monotone sur un intervalle a une réciproque continue — chapitre « dérivabilité et étude des fonctions »). $u\mapsto u\beta$ est continue sur $[0,1]$ à valeurs dans $[0,\beta]$, donc par composition $\varphi(u) = F^{-1}(u\beta)$ est continue sur $[0,1]$.
+
+          **L'application du théorème.**
+
+          $$S_n = \frac1n\sum_{k=1}^n \varphi\!\left(\frac{k}{n}\right) \xrightarrow[n\to+\infty]{} \int_0^1 \varphi(u)\,du = \int_0^1 F^{-1}(u\beta)\,du$$
+
+          **Le changement de variable qui donne la forme demandée.** Pose $t=u\beta$ (linéaire, $\beta>0$ fixé) : $dt = \beta\,du$, et les bornes $u=0\mapsto t=0$, $u=1\mapsto t=\beta$. Donc :
+
+          $$\int_0^1 F^{-1}(u\beta)\,du = \frac1\beta\int_0^\beta F^{-1}(t)\,dt$$
+
+          $$\boxed{\lim_{n\to+\infty} S_n = \ell = \frac1\beta\int_0^\beta F^{-1}(t)\,dt}$$
+
+          **Le piège nommé de cette question.** Confondre le rôle du $\frac1n$ et celui du $\beta$ : le $\frac1n$ est le pas de la subdivision — c'est lui qui fait de $S_n$ une somme de Riemann — tandis que le $\beta$, lui, est **interne** à $F^{-1}$, un simple facteur d'échelle qui redimensionne $[0,1]$ en $[0,\beta]$. Les deux ne jouent pas le même rôle et il ne faut surtout pas les échanger.
+        steps:
+          - math: '\varphi(u) = F^{-1}(u\beta), \qquad S_n = \dfrac1n\sum_{k=1}^{n} \varphi\!\left(\dfrac{k}{n}\right)'
+            note: "S_n reconnue comme somme de Riemann aux points droits, de pas 1/n."
+          - math: 'F^{-1} \text{ continue sur } [0,\beta] \ (\text{réciproque de bijection continue}), \quad u \mapsto u\beta \text{ continue} \implies \varphi \text{ continue sur } [0,1]'
+            note: "Hypothèse de continuité du théorème des sommes de Riemann, vérifiée par composition."
+          - math: 'S_n \xrightarrow[n\to+\infty]{} \int_0^1 \varphi(u)\,du = \int_0^1 F^{-1}(u\beta)\,du \quad (\text{sommes de Riemann, hors socle, programme SM})'
+            note: "Application du théorème des sommes de Riemann a phi, continue sur [0,1]."
+          - math: 't = u\beta,\ dt = \beta\,du \implies \int_0^1 F^{-1}(u\beta)\,du = \dfrac1\beta\int_0^\beta F^{-1}(t)\,dt = \ell'
+            note: "Changement de variable linéaire t = u fois beta pour retomber sur la forme demandee."
+      - id: q2b
+        stem: |-
+          **2- b)** (0,5 pt) Montrer que $\ell = \dfrac{1}{\beta}\displaystyle\int_0^1 u\,e^{u^2}\,du$
+
+          *(On pourra effectuer le changement de variable $u = F^{-1}(t)$)*
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'indication impose le changement de variable $u=F^{-1}(t)$ dans $\displaystyle\int_0^\beta F^{-1}(t)\,dt$ (question 2-a). Un tel changement de variable n'est légitime que si la fonction qui relie $u$ et $t$ est **dérivable** — ce qui n'est pas immédiat ici, puisque $F^{-1}$ n'a jamais été construite explicitement : c'est exactement le rôle du théorème de la dérivée d'une fonction réciproque (chapitre « dérivabilité et étude des fonctions », hors socle de ce chapitre), qu'il faut énoncer et vérifier avant de s'en servir.
+
+          **Le théorème de la dérivée d'une fonction réciproque, énoncé ici.** Soit $g$ une bijection d'un intervalle $I$ sur $J$, dérivable en un point $a$ de $I$, et $b=g(a)$. Si $g^{\prime}(a)\ne 0$, alors $g^{-1}$ est dérivable en $b$, et $\left(g^{-1}\right)^{\prime}(b) = \dfrac{1}{g^{\prime}(a)}$.
+
+          **Les hypothèses, vérifiées pour $F$ sur $[0,1]$.** $F$ est une bijection de $[0,1]$ sur $[0,\beta]$ (question 1-b), dérivable en tout point de $[0,1]$ avec $F^{\prime}(x)=e^{x^2}$ (question 1-a), et $F^{\prime}(x)=e^{x^2}$ **ne s'annule jamais** (l'exponentielle est toujours strictement positive). Le théorème s'applique donc en **tout** point de $[0,1]$ : $F^{-1}$ est dérivable en tout point de $[0,\beta]$, avec $\left(F^{-1}\right)^{\prime}(t) = \dfrac{1}{F^{\prime}\!\left(F^{-1}(t)\right)}$. C'est cette dérivabilité, acquise partout et non en un seul point, qui rend légitime le changement de variable $u=F^{-1}(t)$ sur l'intégrale entière $\displaystyle\int_0^\beta F^{-1}(t)\,dt$, et non pas seulement en un point isolé.
+
+          **Le changement de variable, mené concrètement.** Poser $u=F^{-1}(t)$ équivaut à $t=F(u)$ (définition même de la réciproque). En différentiant cette relation (licite, puisque $F$ est dérivable, avec $F^{\prime}(u)=e^{u^2}$) :
+
+          $$t = F(u) \implies dt = F^{\prime}(u)\,du = e^{u^2}\,du$$
+
+          **Les bornes.** $t=0 \iff u=F^{-1}(0)$ ; or $F(0)=0$ (question 1-b), donc $F^{-1}(0)=0$. $t=\beta \iff u=F^{-1}(\beta)$ ; or $F(1)=\beta$ (question 1-b), donc $F^{-1}(\beta)=1$.
+
+          **La substitution.**
+
+          $$\int_0^\beta F^{-1}(t)\,dt = \int_0^1 u\cdot e^{u^2}\,du$$
+
+          puisque $F^{-1}(t)=u$ dans l'intégrande, et $dt=e^{u^2}du$. En reprenant le résultat de la question 2-a :
+
+          $$\boxed{\ell = \frac1\beta\int_0^\beta F^{-1}(t)\,dt = \frac1\beta\int_0^1 u\,e^{u^2}\,du}$$
+
+          **Le piège nommé de cette question.** Effectuer le changement de variable comme un pur geste mécanique — remplacer $F^{-1}(t)$ par $u$ et $dt$ par $F^{\prime}(u)du$ sans jamais justifier que $F^{-1}$ est dérivable. Le résultat numérique serait identique, mais la démonstration perdrait son fondement : c'est précisément parce que $F^{\prime}$ ne s'annule jamais sur $[0,1]$ que $F^{-1}$ est dérivable **partout** sur $[0,\beta]$, et donc que le changement de variable est licite sur l'intégrale entière, pas seulement suggéré par l'énoncé comme un raccourci de calcul.
+        steps:
+          - math: 'F \text{ bijection dérivable sur } [0,1], \quad F^{\prime}(x) = e^{x^2} \ne 0 \ \forall x \implies F^{-1} \text{ dérivable sur } [0,\beta]'
+            note: "Théorème de la dérivée d'une fonction réciproque, hors socle de ce chapitre : F prime ne s'annule jamais."
+          - math: 'u = F^{-1}(t) \iff t = F(u) \implies dt = F^{\prime}(u)\,du = e^{u^2}\,du'
+            note: "Differentiation de t = F(u), licite car F dérivable de dérivée connue."
+          - math: 't=0 \implies u = F^{-1}(0) = 0 \ (\text{car } F(0)=0), \qquad t=\beta \implies u = F^{-1}(\beta) = 1 \ (\text{car } F(1)=\beta)'
+            note: "Bornes transportees via F(0)=0 et F(1)=beta, etablies a la question 1-b."
+          - math: '\int_0^\beta F^{-1}(t)\,dt = \int_0^1 u\,e^{u^2}\,du \implies \boxed{\ell = \dfrac1\beta\int_0^1 u\,e^{u^2}\,du}'
+            note: "Substitution complete : intégrande, différentielle et bornes tous transportes."
+      - id: q2c
+        stem: |-
+          **2- c)** (0,5 pt) En déduire que : $\ell = \dfrac{e-1}{2\beta}$
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Il reste un seul calcul, purement mécanique : une primitive de $u\mapsto u\,e^{u^2}$. La forme $u\,e^{u^2}$ est du type $u^{\prime}(x)\,e^{u(x)}$ avec $u(x)=x^2$ (à une constante $\frac12$ près) : c'est la dérivée d'une composée $e^{u(x)}$, reconnaissable directement sans changement de variable supplémentaire.
+
+          **La primitive.** $\dfrac{d}{du}\left[\dfrac12 e^{u^2}\right] = \dfrac12 \times 2u \times e^{u^2} = u\,e^{u^2}$ : la fonction $u\mapsto \dfrac12 e^{u^2}$ est donc une primitive de $u\mapsto u\,e^{u^2}$ sur $\mathbb{R}$, en particulier sur $[0,1]$.
+
+          **Le calcul.**
+
+          $$\int_0^1 u\,e^{u^2}\,du = \left[\frac12 e^{u^2}\right]_0^1 = \frac12 e^{1} - \frac12 e^{0} = \frac{e-1}{2}$$
+
+          **La conclusion**, en reprenant la question 2-b :
+
+          $$\ell = \frac1\beta \times \frac{e-1}{2} = \boxed{\frac{e-1}{2\beta}}$$
+
+          **Ce que le problème vient de démontrer, relu d'ensemble.** La moyenne des valeurs de $F^{-1}$ sur $[0,\beta]$ — c'est ce que $\ell$ représente, à $\frac1\beta$ près (chapitre 7, valeur moyenne d'une fonction) — ne dépendait, au bout du compte, que de $e$ et de $\beta$ : la fonction $F^{-1}$ elle-même n'a jamais eu besoin d'être connue explicitement, exactement comme $F$ à la question 1-a. Le changement de variable de la question 2-b a transporté tout le problème sur le terrain où $F$, elle, **est** connue.
+
+          **Le piège nommé de cette question.** Refaire un changement de variable ($w=u^2$, par exemple) alors que la primitive $\frac12 e^{u^2}$ se lit directement, en reconnaissant la forme $u^{\prime}e^u$ composée — un détour inutile sur une question à $0{,}5$ point qui se termine en une ligne.
+        steps:
+          - math: '\left(\dfrac12 e^{u^2}\right)^{\prime} = u\,e^{u^2} \quad (\text{primitive directe, forme } u^{\prime}e^{u})'
+            note: "Reconnaissance de la forme dérivée d'une composée, sans changement de variable supplémentaire."
+          - math: '\int_0^1 u\,e^{u^2}\,du = \left[\dfrac12 e^{u^2}\right]_0^1 = \dfrac12 e - \dfrac12 = \dfrac{e-1}{2}'
+            note: "Evaluation de la primitive entre 0 et 1."
+          - math: '\ell = \dfrac1\beta \times \dfrac{e-1}{2} = \boxed{\dfrac{e-1}{2\beta}}'
+            note: "Report dans l'expression de ell établie a la question 2-b."

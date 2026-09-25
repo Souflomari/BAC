@@ -1,0 +1,275 @@
+/**
+ * La chaîne « dérivées » — de la pente au collège jusqu'au nombre dérivé.
+ * Première chaîne construite selon NORTH-STAR-V2.
+ *
+ * Ce fichier EST le contenu. Il n'y a pas de leçon à côté : si une idée
+ * n'entre pas dans une figure + deux phrases + une action, c'est qu'elle
+ * n'est pas encore assez décomposée.
+ *
+ * LA RÈGLE (NORTH-STAR-V2 §4), vérifiée par `scripts/regle-atelier.mjs` :
+ *   R1  tout écran a une action
+ *   R2  ≤ 2 phrases visibles
+ *   R3  toute réponse fausse porte SON feedback (jamais un « faux » sec)
+ *   R4  aucun prérequis supposé sans être testé
+ */
+
+export interface Option {
+  id: string;
+  label: string;
+  correct?: boolean;
+  /** R3 — pourquoi CE raisonnement-là mène à CE résultat-là. */
+  feedback?: string;
+  /** R3 (forme visuelle) — ce que la réponse fausse DONNE sur la figure.
+   *  Un tuteur ne rédige pas un paragraphe : il trace ta pente à côté de
+   *  la bonne et te laisse voir l'écart. */
+  montre?: number;
+  /** R3 — quand l'erreur ne PEUT pas se tracer (question conceptuelle,
+   *  pas de grandeur à dessiner), on le déclare ici. Le but n'est pas
+   *  d'ouvrir une échappatoire mais de rendre l'omission COMPTABLE :
+   *  le script la signale au lieu de la laisser passer en silence. */
+  nonTracable?: string;
+}
+
+export interface Ecran {
+  id: string;
+  competence: string;
+  /** La figure porte l'idée (R5). `null` seulement si l'action EST la figure. */
+  figure: "pente" | "secante" | null;
+  /**
+   * L'ÉTAT DE DÉPART de la figure, déclaré par l'écran.
+   *
+   * Audit du 2026-08-15 : « d'après la figure, que vaut f′(1) ? » s'affichait
+   * au-dessus d'une figure montrant pente = 3,60 et h = 1,60. La réponse
+   * attendue (2) n'était lisible nulle part. Même problème sur l'écran qui
+   * dit « plus B s'approche, plus (AB) épouse la courbe » alors que B venait
+   * d'être replacé au loin.
+   *
+   * Le correctif n'est pas de traîner l'état de l'écran précédent : chaque
+   * question suppose une situation PRÉCISE, et c'est à l'écran de la poser.
+   * Un écran qui parle d'une figure doit ouvrir sur la figure dont il parle.
+   */
+  depart?: { h?: number; bx?: number; by?: number };
+  /**
+   * Fige les commandes de la figure. Pour un écran dont l'énoncé cite des
+   * valeurs (« ici on avance de 4 et on monte de 2 ») : laisser les curseurs
+   * actifs permettait à l'élève de changer la figure sous un énoncé qui,
+   * lui, ne bougeait pas — et la « bonne réponse » validait alors un résultat
+   * faux (audit 2026-08-15, P0-4).
+   */
+  fige?: boolean;
+  /** ≤ 2 phrases (R2). */
+  texte: string;
+  question: string;
+  type: "choix" | "reglage";
+  options?: Option[];
+  /** Pour `reglage` : la valeur que l'élève doit obtenir sur la figure. */
+  cible?: number;
+  tolerance?: number;
+  aide?: string;
+  /** Ce qu'on retient — montré APRÈS la bonne réponse, jamais avant. */
+  acquis?: string;
+}
+
+export interface Competence {
+  id: string;
+  titre: string;
+  niveau: "collège" | "lycée" | "bac";
+  /** R4 — les parents dans la chaîne, testés par le diagnostic. */
+  requiert: string[];
+}
+
+export const COMPETENCES: Competence[] = [
+  { id: "lire-pente", titre: "Lire une pente", niveau: "collège", requiert: [] },
+  { id: "taux-variation", titre: "Le taux de variation", niveau: "lycée", requiert: ["lire-pente"] },
+  { id: "secante", titre: "La pente d’une sécante", niveau: "lycée", requiert: ["taux-variation"] },
+  { id: "tangente", titre: "De la sécante à la tangente", niveau: "bac", requiert: ["secante"] },
+  { id: "nombre-derive", titre: "Le nombre dérivé f′(a)", niveau: "bac", requiert: ["tangente"] },
+];
+
+export const ECRANS: Ecran[] = [
+  // ── lire-pente (collège) : le socle que personne ne revoit ────────────
+  {
+    id: "p1",
+    competence: "lire-pente",
+    figure: "pente",
+    // L'énoncé cite 4 et 2 : la figure DOIT montrer 4 et 2, et ne pas bouger.
+    depart: { bx: 4, by: 2 },
+    fige: true,
+    texte: "Une pente, c’est une comparaison : ce qu’on monte pour ce qu’on avance.",
+    question: "Ici on avance de 4 et on monte de 2. En avançant de 1 seulement, de combien monte-t-on ?",
+    type: "choix",
+    options: [
+      { id: "a", label: "0,5", correct: true },
+      {
+        id: "b", label: "2", montre: 2,
+        feedback: "2, c’est ce qu’on monte en avançant de 4 — pas en avançant de 1. Cette montée doit être partagée en 4 parts égales.",
+      },
+      {
+        id: "c", label: "4", montre: 4,
+        feedback: "4, c’est ce qu’on AVANCE, pas ce qu’on monte. Les deux nombres ne jouent pas le même rôle : on monte 2 pendant qu’on avance 4.",
+      },
+      {
+        id: "d", label: "8", montre: 8,
+        feedback: "Tu as multiplié 2 par 4. Mais avancer MOINS fait monter MOINS : en avançant 4 fois moins, on monte 4 fois moins. On divise.",
+      },
+    ],
+    acquis: "pente = (ce qu’on monte) ÷ (ce qu’on avance). Ici 2 ÷ 4 = 0,5.",
+  },
+  {
+    id: "p2",
+    competence: "lire-pente",
+    figure: "pente",
+    texte: "À toi. Les deux curseurs changent le triangle sous la droite.",
+    question: "Règle la figure pour obtenir une pente égale à 2.",
+    type: "reglage",
+    cible: 2,
+    tolerance: 0.001,
+    aide: "Il faut monter deux fois plus qu’on avance. Par exemple monter 4 en avançant 2.",
+    acquis: "Plusieurs triangles donnent la même pente : 4/2, 2/1… c’est le RAPPORT qui compte, pas les nombres eux-mêmes.",
+  },
+
+  // ── taux-variation ───────────────────────────────────────────────────
+  {
+    id: "t1",
+    competence: "taux-variation",
+    figure: "pente",
+    texte: "Sur une droite, ce rapport ne change jamais, où qu’on place le triangle.",
+    question: "Que se passe-t-il pour une COURBE, où la raideur change d’un endroit à l’autre ?",
+    type: "choix",
+    options: [
+      {
+        id: "a", label: "Il faut préciser entre quels points on mesure",
+        correct: true,
+      },
+      {
+        id: "b", label: "La pente n’existe pas pour une courbe", nonTracable: "réponse sur la nature d’une courbe, aucune grandeur à tracer",
+        feedback: "Elle existe — sinon on ne pourrait pas dire qu’une route est plus raide à un endroit qu’à un autre. Ce qui change, c’est qu’elle ne vaut plus la même chose partout.",
+      },
+      {
+        id: "c", label: "On prend la pente de la courbe entière", nonTracable: "réponse sur la nature d’une courbe, aucune grandeur à tracer",
+        feedback: "Une courbe n’a pas UNE pente : elle est raide ici, plate là. Une seule valeur pour tout le tracé effacerait justement ce qui nous intéresse.",
+      },
+    ],
+    acquis: "Sur une courbe, une pente ne veut rien dire toute seule : il faut dire entre QUELS points.",
+  },
+
+  // ── secante ──────────────────────────────────────────────────────────
+  // Retour owner : « l'écran 4 rate encore le rythme ». Il enchaînait
+  // directement « une courbe n'a pas UNE pente » et « que devient la pente
+  // quand B tend vers A » — soit la courbe, la notation f(x), les points A
+  // et B, la sécante ET le passage à la limite en un seul écran. Les deux
+  // écrans ci-dessous découpent cette marche : d'abord LIRE une pente sur
+  // une courbe (le geste), puis NOMMER l'écart h (la notation). La question
+  // de la limite ne vient qu'après.
+  {
+    id: "s0",
+    competence: "secante",
+    figure: "secante",
+    depart: { h: 1.6 },
+    texte: "Voici la courbe de f(x) = x². A est fixé, et B se déplace le long de la courbe.",
+    question: "Fais glisser B jusqu’à ce que la pente de (AB) affiche 3.",
+    type: "reglage",
+    cible: 3,
+    tolerance: 0.1,
+    aide: "La pente est écrite sous la figure. Éloigne B de A pour la faire monter, rapproche-le pour la faire descendre.",
+    acquis: "Entre deux points d’une courbe, une pente se lit exactement comme sur une droite : ce qu’on monte pour ce qu’on avance.",
+  },
+  {
+    id: "s2",
+    competence: "secante",
+    figure: "secante",
+    depart: { h: 1.6 },
+    texte: "L’écart entre A et B porte un nom : h. Il est affiché sous la figure.",
+    question: "Place B pour que h vaille 1, puis lis la pente de (AB).",
+    type: "choix",
+    options: [
+      { id: "a", label: "3, c’est-à-dire 2 + h", correct: true },
+      {
+        id: "b", label: "1, la même valeur que h", montre: 1,
+        feedback: "h mesure ce qu’on AVANCE de A vers B, pas ce qu’on monte. Ton trait monte de 1 pendant qu’il avance de 1 ; la sécante, elle, grimpe bien plus vite que ça.",
+      },
+      {
+        id: "c", label: "2, quelle que soit la position de B", montre: 2,
+        feedback: "Ton trait se pose exactement sur la droite en pointillés — celle qu’on VISE quand B colle à A. La sécante passe au-dessus : tant que B reste à distance, sa pente dépasse 2.",
+      },
+    ],
+    acquis: "La pente de (AB) vaut 2 + h. Ce n’est pas un nombre fixe : elle dépend de l’écart h qu’on a laissé.",
+  },
+  {
+    id: "s1",
+    competence: "secante",
+    figure: "secante",
+    depart: { h: 1.6 },
+    texte: "Tu viens de le voir : ce nombre dépend de l’endroit où tu poses B.",
+    question: "Et si tu rapproches B de A autant que tu peux, que fait cette pente ?",
+    type: "choix",
+    options: [
+      { id: "a", label: "Elle diminue et se stabilise vers 2", correct: true },
+      {
+        id: "b", label: "Elle diminue jusqu’à 0", montre: 0,
+        feedback: "Regarde le nombre affiché quand tu pousses le curseur à fond : il descend vers 2, pas vers 0. Une pente nulle voudrait dire une droite horizontale — or (AB) reste clairement montante.",
+      },
+      {
+        id: "c", label: "Elle augmente", nonTracable: "la figure montre déjà le nombre en direct : l’élève lit sa propre erreur",
+        feedback: "Essaie : le nombre affiché DESCEND quand B se rapproche. Loin de A, la courbe est déjà bien plus raide ; en revenant vers A, on revient vers une portion moins raide.",
+      },
+      {
+        id: "d", label: "Elle ne change pas", nonTracable: "la figure montre déjà le nombre en direct : l’élève lit sa propre erreur",
+        feedback: "C’est vrai sur une DROITE, pas sur une courbe. Bouge le curseur : le nombre affiché change à chaque cran.",
+      },
+    ],
+    acquis: "Quand h devient tout petit, 2 + h devient tout proche de 2. La sécante n’atteint jamais cette valeur : elle s’en approche.",
+  },
+
+  // ── tangente ─────────────────────────────────────────────────────────
+  {
+    id: "g1",
+    competence: "tangente",
+    figure: "secante",
+    depart: { h: 0.08 },
+    texte: "Plus B s’approche, plus (AB) épouse la courbe en A : elle ne la traverse plus, elle la frôle.",
+    question: "Pourquoi ne peut-on pas simplement poser B exactement sur A ?",
+    type: "choix",
+    options: [
+      {
+        id: "a", label: "Parce qu’il faudrait diviser par 0", correct: true,
+      },
+      {
+        id: "b", label: "Parce que la pente deviendrait infinie", nonTracable: "porte sur l’existence du quotient, pas sur une valeur traçable",
+        feedback: "Non : le nombre affiché reste tout près de 2, il ne s’emballe pas. Le problème n’est pas que le résultat explose, c’est que le CALCUL devient impossible — le dénominateur h serait nul.",
+      },
+      {
+        id: "c", label: "On peut, et la pente vaut 0", nonTracable: "porte sur l’existence du quotient, pas sur une valeur traçable",
+        feedback: "Si B est sur A, il n’y a plus deux points, donc plus de droite (AB) du tout — et le quotient s’écrirait 0/0, qui ne désigne aucun nombre.",
+      },
+    ],
+    acquis: "En h = 0 le quotient n’existe pas. On regarde donc vers quoi il TEND quand h s’approche de 0 — c’est ça, une limite.",
+  },
+
+  // ── nombre-derive ────────────────────────────────────────────────────
+  {
+    id: "d1",
+    competence: "nombre-derive",
+    figure: "secante",
+    depart: { h: 0.08 },
+    texte: "Cette valeur limite porte un nom : le nombre dérivé de f en 1, noté f′(1).",
+    question: "D’après la figure, que vaut f′(1) pour f(x) = x² ?",
+    type: "choix",
+    options: [
+      { id: "a", label: "2", correct: true },
+      {
+        id: "b", label: "1", montre: 1,
+        feedback: "1, c’est la valeur de x où l’on se place (le point A est en x = 1), ou encore f(1) = 1. Le nombre dérivé n’est pas une hauteur : c’est une PENTE.",
+      },
+      {
+        id: "c", label: "2 + h", nonTracable: "l’expression dépend de h ; la figure l’affiche déjà en direct",
+        feedback: "C’est la pente de la sécante, qui dépend encore de h. f′(1) est ce qu’il en reste quand h disparaît — donc un nombre fixe, sans h.",
+      },
+      {
+        id: "d", label: "x²", nonTracable: "confusion fonction/pente, sans grandeur distincte à tracer",
+        feedback: "x² est la fonction elle-même, pas sa pente. f′(1) est un NOMBRE : la raideur de la courbe au point précis x = 1.",
+      },
+    ],
+    acquis: "f′(1) = 2 : au point A, la courbe monte exactement 2 fois plus vite qu’elle n’avance. C’est tout ce que dit une dérivée.",
+  },
+];

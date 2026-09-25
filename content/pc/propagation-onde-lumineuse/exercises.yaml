@@ -1,0 +1,184 @@
+# Attempt-first exercises (summit-conversion campaign).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2021 session
+# normale, PC BIOF, code NS28F, AlloSchool element/127287 — statut « vérifié »
+# in docs/sujets/pc/propagation-onde-lumineuse.md). r-variation is a fresh
+# anti-memorisation twin (same skills, different numbers/context,
+# status not-applicable).
+
+notion: propagation-onde-lumineuse
+
+exercises:
+  # ── r-bac — the VERIFIED 2021 national sujet, Exercice II ────────────────
+  # Faithful transcription of docs/sujets/pc/propagation-onde-lumineuse.md →
+  # "2021 — session normale — Exercice II". Trois volets : (1) décomposition
+  # de la lumière blanche par un prisme → spectre ; (2) deux radiations (rouge
+  # et jaune) dans le prisme : fréquence, célérités, dispersion ; (3)
+  # diffraction par une fente puis par un cheveu, avec exploitation de la
+  # courbe L = f(D). Les figures sont transcrites EN PROSE (pas de renvoi à un
+  # SVG qui encoderait d'autres nombres).
+  - id: r-bac
+    title: "Exercice de type bac — propagation des ondes lumineuses (2021)"
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session normale — examen national PC BIOF, AlloSchool NS28F
+        (Exercice II « Propagation des ondes lumineuses » ; barème 3 points).
+        Transcription vérifiée : re-fetch indépendant AlloSchool element/127287
+        + diff OK (docs/sujets/pc/propagation-onde-lumineuse.md, statut
+        « vérifié »).
+    intro: |-
+      **Propagation des ondes lumineuses (examen national, session normale 2021).**
+
+      Un faisceau cylindrique de lumière blanche, émis par une source $S$, arrive perpendiculairement à la première face d'un prisme $(P)$ en verre. Le faisceau issu du prisme tombe sur un écran $(E)$, où l'on observe un spectre lumineux étalé en couleurs.
+
+      **Données** (utiles pour les questions 2 à 4) :
+
+      - célérité de la lumière dans le vide : $c = 3\times10^{8}\ \text{m.s}^{-1}$ ;
+      - longueur d'onde de la radiation **rouge** dans le prisme : $\lambda_r = 474\ \text{nm}$ ;
+      - fréquence de la radiation rouge : $\nu_r = 3{,}91\times10^{14}\ \text{Hz}$ ;
+      - longueurs d'onde de la radiation **jaune** : $\lambda_{0j} = 589\ \text{nm}$ dans le vide, et $\lambda_j = 355\ \text{nm}$ dans le prisme.
+
+      Travaille chaque question sur papier, engage une réponse, puis seulement ouvre le raisonnement expert et compare-le au tien.
+    questions:
+      - id: q1
+        part: "Partie 1 — Décomposition de la lumière blanche par le prisme"
+        stem: |-
+          **(0,25 pt)** L'expérience du prisme montre, sur l'écran $(E)$, un spectre étalé en plusieurs couleurs. Parmi les trois propositions suivantes, choisis celle qui est juste. La lumière blanche :
+
+          - **A.** est monochromatique ;
+          - **B.** n'est formée que de deux radiations différentes ;
+          - **C.** est polychromatique.
+        reasoning: |-
+          Un prisme ne crée pas des couleurs à partir de rien : il ne fait que dévier différemment des couleurs **déjà présentes** dans le faisceau incident (c'est la dispersion, revue au chapitre 6). Si l'écran montre tout un spectre étalé, c'est donc que la lumière blanche contenait, dès le départ, un mélange de plusieurs longueurs d'onde. Une lumière d'une seule couleur (monochromatique) ressortirait en un unique trait dévié, jamais en spectre. La bonne réponse est donc **C : la lumière blanche est polychromatique** (elle superpose toutes les couleurs du spectre visible).
+      - id: q2
+        part: "Partie 2 — Deux radiations dans le prisme : fréquence, célérités, dispersion"
+        stem: |-
+          **(0,5 pt)** On éclaire maintenant le prisme successivement par deux radiations, l'une rouge, l'autre jaune. Calculer la fréquence $\nu_j$ de la radiation jaune.
+        reasoning: |-
+          La fréquence d'une radiation est **imposée par la source** et ne dépend pas du milieu traversé (chapitre 5) : on peut donc la calculer à partir de la longueur d'onde **dans le vide** $\lambda_{0j}$, la seule des deux valeurs qui ne dépend pas du trajet. La relation qui relie fréquence, longueur d'onde et célérité est $\lambda = v/\nu$ ; dans le vide, $v = c$, donc $\lambda_{0j} = c/\nu_j$, d'où $\nu_j = c/\lambda_{0j}$. Attention à convertir la longueur d'onde en mètres avant de diviser.
+        steps:
+          - math: '\lambda_{0j} = \dfrac{c}{\nu_j} \implies \nu_j = \dfrac{c}{\lambda_{0j}}'
+            note: "On part de λ = c/ν dans le vide, puis on isole la fréquence."
+          - math: '\nu_j = \dfrac{3\times10^{8}}{589\times10^{-9}} \approx 5{,}09\times10^{14}\ \text{Hz}'
+            note: "Application numérique : λ_0j = 589 nm convertie en mètres."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Calculer les célérités $v_j$ et $v_r$ des radiations jaune et rouge **dans le prisme**.
+        reasoning: |-
+          À l'intérieur du prisme, chaque radiation garde sa fréquence (invariante) mais possède une longueur d'onde propre au milieu ($\lambda_j$ et $\lambda_r$, toutes deux données). La célérité dans le prisme se retrouve alors directement par $v = \lambda\,\nu$, en prenant pour chaque couleur la longueur d'onde **dans le prisme** et la fréquence correspondante. Pour le rouge, $\nu_r$ est donnée ; pour le jaune, on réutilise $\nu_j$ calculée à la question précédente.
+        steps:
+          - math: 'v_j = \lambda_j\,\nu_j = 355\times10^{-9}\times 5{,}09\times10^{14} \approx 1{,}81\times10^{8}\ \text{m.s}^{-1}'
+            note: "On prend λ_j (dans le prisme) et ν_j (question 2)."
+          - math: 'v_r = \lambda_r\,\nu_r = 474\times10^{-9}\times 3{,}91\times10^{14} \approx 1{,}85\times10^{8}\ \text{m.s}^{-1}'
+            note: "On prend λ_r (dans le prisme) et ν_r (donnée)."
+      - id: q4
+        stem: |-
+          **(0,25 pt)** Quelle propriété du prisme est mise en évidence par les résultats de la question précédente ?
+        reasoning: |-
+          Les deux célérités trouvées sont **différentes** : $v_j \approx 1{,}81\times10^{8}\ \text{m.s}^{-1}$ pour le jaune, $v_r \approx 1{,}85\times10^{8}\ \text{m.s}^{-1}$ pour le rouge. Or dans un milieu, $v = c/n$ : deux vitesses différentes signifient deux indices différents, donc l'indice du verre **dépend de la couleur** (de la fréquence) de la radiation. C'est exactement la propriété qui rend la dispersion possible (chapitre 6) : le prisme est un **milieu dispersif**. C'est pour cela que la lumière blanche, mélange de plusieurs couleurs, en ressort étalée en spectre.
+      - id: q5
+        part: "Partie 3 — Diffraction par une fente, puis par un cheveu"
+        stem: |-
+          **(0,5 pt)** On éclaire maintenant, avec une radiation laser de longueur d'onde $\lambda$, une fente fine horizontale de largeur $a = 0{,}06\ \text{mm}$. Sur un écran placé à la distance $D$ de la fente, on observe une figure de diffraction : des taches alignées verticalement, dont la tache centrale a une largeur $L$. Établir l'expression de $L$ en fonction de $\lambda$, $a$ et $D$ (l'angle $\theta$ étant petit, on prend $\tan\theta \approx \theta$).
+        reasoning: |-
+          La diffraction étale le faisceau de part et d'autre de la direction incidente, sur un demi-écart angulaire $\theta = \lambda/a$ (formule du chapitre 4). Sur l'écran, à la distance $D$, ce demi-angle se traduit par une demi-largeur de la tache centrale $L/2 = D\tan\theta$. Comme $\theta$ est petit, $\tan\theta \approx \theta = \lambda/a$, donc $L/2 = D\lambda/a$. La tache étant symétrique, sa largeur totale est le double.
+        steps:
+          - math: '\theta = \dfrac{\lambda}{a} \qquad \text{et} \qquad \dfrac{L}{2} = D\tan\theta \approx D\,\theta'
+            note: "Demi-écart angulaire de diffraction, et demi-largeur lue sur l'écran (petits angles)."
+          - math: '\dfrac{L}{2} = D\cdot\dfrac{\lambda}{a} \implies \boxed{L = \dfrac{2\lambda D}{a}}'
+            note: "La tache centrale est symétrique : largeur totale = 2 × demi-largeur."
+      - id: q6
+        stem: |-
+          **(0,5 pt)** On fait varier la distance $D$ et on mesure à chaque fois la largeur $L$. Le graphe de $L$ en fonction de $D$ est une **droite passant par l'origine**. Sur ce graphe, l'axe des ordonnées $L$ est gradué en centimètres ($0{,}8\ ;\ 1{,}6\ ;\ 2{,}4$) et l'axe des abscisses $D$ en centimètres ($50\ ;\ 100\ ;\ 150$) ; on peut y lire, par exemple, $L = 2{,}4\ \text{cm}$ pour $D = 120\ \text{cm}$. En exploitant cette courbe, montrer que $\lambda = 600\ \text{nm}$.
+        reasoning: |-
+          L'expression établie à la question précédente, $L = \dfrac{2\lambda D}{a}$, est de la forme $L = p\,D$ : c'est bien une droite passant par l'origine, de **pente** $p = \dfrac{2\lambda}{a}$. La pente se lit donc directement sur le graphe comme le rapport $L/D$ d'un point de la droite. En l'isolant, $\lambda = \dfrac{p\,a}{2}$ — il ne reste qu'à convertir $a$ en mètres.
+        steps:
+          - math: 'p = \dfrac{L}{D} = \dfrac{2{,}4\ \text{cm}}{120\ \text{cm}} = 2{,}0\times10^{-2}'
+            note: "Pente de la droite, lue sur un point du graphe (grandeur sans dimension)."
+          - math: '\lambda = \dfrac{p\,a}{2} = \dfrac{2{,}0\times10^{-2}\times 0{,}06\times10^{-3}}{2} = 6{,}0\times10^{-7}\ \text{m} = 600\ \text{nm}'
+            note: "On isole λ à partir de la pente p = 2λ/a, avec a = 0,06 mm = 6×10⁻⁵ m."
+      - id: q7
+        stem: |-
+          **(0,5 pt)** On fixe l'écran à la distance $D_i = 2\ \text{m}$ de la fente, et on remplace la fente par un **cheveu fin** de diamètre $d$. Avec la même radiation ($\lambda = 600\ \text{nm}$), on obtient une tache centrale de largeur $L_i = 3\ \text{cm}$. Déterminer le diamètre $d$ du cheveu.
+        reasoning: |-
+          Un fil fin diffracte comme une fente de même largeur : la formule $L = \dfrac{2\lambda D}{a}$ s'applique encore, en remplaçant simplement la largeur de fente $a$ par le diamètre $d$ du cheveu. On connaît maintenant $\lambda$, $D_i$ et la largeur mesurée $L_i$ ; on isole $d$. C'est ce qui permet, en pratique, de mesurer l'épaisseur d'un cheveu sans microscope — la diffraction transforme une largeur microscopique en une tache large de plusieurs centimètres.
+        steps:
+          - math: 'L_i = \dfrac{2\lambda D_i}{d} \implies d = \dfrac{2\lambda D_i}{L_i}'
+            note: "Même loi que pour la fente, avec le diamètre d à la place de a ; on isole d."
+          - math: 'd = \dfrac{2\times 600\times10^{-9}\times 2}{3\times10^{-2}} = 8\times10^{-5}\ \text{m} = 80\ \mu\text{m} = 0{,}08\ \text{mm}'
+            note: "Application numérique : λ = 600 nm, D_i = 2 m, L_i = 3 cm = 0,03 m."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ────────
+  # Same deep skills as r-bac (fréquence invariante, v = c/n, λ = λ0/n,
+  # diffraction θ = λ/a et L = 2λD/a, mesure d'un diamètre par diffraction,
+  # dispersion et dépendance de n avec la couleur) avec d'autres nombres, un
+  # laser vert, un liquide au lieu d'un prisme, un calcul direct de θ (au lieu
+  # d'une lecture de graphe) et un verre flint pour la dispersion — pour que
+  # l'élève ne puisse pas recopier le sujet 2021 et doive reconnaître la
+  # procédure qui s'applique.
+  - id: r-variation
+    title: "Variation fraîche"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2021, sourcé).
+    intro: |-
+      Même structure profonde que l'exercice précédent, enrobage différent : un laser **vert** de longueur d'onde dans le vide $\lambda_0 = 532\ \text{nm}$, un calcul **direct** de l'écart angulaire (au lieu d'une lecture de graphe), une cuve de liquide transparent (au lieu d'un prisme), et un verre flint pour la dispersion. Le but est que tu ne puisses pas recopier la solution du sujet 2021 : tu dois reconnaître **quelle procédure** s'applique quand les nombres, le milieu et la méthode changent.
+
+      On prendra $c = 3\times10^{8}\ \text{m.s}^{-1}$.
+    questions:
+      - id: q1
+        stem: |-
+          Le laser vert éclaire une fente fine de largeur $a = 0{,}10\ \text{mm}$ ; un écran est placé à la distance $D = 2{,}0\ \text{m}$. Calculer l'écart angulaire $\theta$ de diffraction, puis la largeur $L$ de la tache centrale sur l'écran (petits angles : $\tan\theta \approx \theta$).
+        reasoning: |-
+          C'est la démarche de la partie 3 du sujet, mais menée à l'endroit : au lieu de lire une pente sur un graphe, on applique directement $\theta = \lambda_0/a$ puis $L = 2\lambda_0 D/a$. Reconnaître que la longueur d'onde à utiliser est $\lambda_0$ (celle dans l'air/le vide, là où se fait la diffraction), et convertir $\lambda_0$ et $a$ en mètres avant de diviser, est tout l'enjeu.
+        steps:
+          - math: '\theta = \dfrac{\lambda_0}{a} = \dfrac{532\times10^{-9}}{0{,}10\times10^{-3}} \approx 5{,}3\times10^{-3}\ \text{rad}'
+            note: "λ_0 = 532 nm et a = 0,10 mm, tous deux convertis en mètres."
+          - math: 'L = \dfrac{2\lambda_0 D}{a} = 2\times 5{,}3\times10^{-3}\times 2{,}0 \approx 2{,}1\times10^{-2}\ \text{m} = 2{,}1\ \text{cm}'
+            note: "L = 2Dθ : la tache centrale mesure environ 2,1 cm de large."
+      - id: q2
+        stem: |-
+          On dirige ensuite le même faisceau vert dans une cuve remplie d'un liquide transparent d'indice de réfraction $n = 1{,}47$. Calculer la vitesse $v$ de propagation de la lumière dans ce liquide, ainsi que sa longueur d'onde $\lambda$ dans le liquide.
+        reasoning: |-
+          Deux relations des chapitres 3 et 5, à ne pas confondre : la vitesse se retrouve par $v = c/n$ (l'indice ralentit la lumière, $v < c$ car $n \geq 1$), et la longueur d'onde dans le milieu par $\lambda = \lambda_0/n$ (elle diminue, puisque $v$ diminue et que $\nu$ reste fixe). Ce sont les mêmes gestes que dans le sujet, transposés d'un prisme à un liquide.
+        steps:
+          - math: 'v = \dfrac{c}{n} = \dfrac{3\times10^{8}}{1{,}47} \approx 2{,}04\times10^{8}\ \text{m.s}^{-1}'
+            note: "v < c, cohérent avec n ≥ 1 (le liquide ralentit la lumière)."
+          - math: '\lambda = \dfrac{\lambda_0}{n} = \dfrac{532}{1{,}47} \approx 362\ \text{nm}'
+            note: "La longueur d'onde diminue dans le liquide ; on peut garder les nm."
+      - id: q3
+        stem: |-
+          La couleur perçue de ce faisceau change-t-elle lorsqu'il pénètre dans le liquide ? Justifie à partir de la fréquence.
+        reasoning: |-
+          Le piège serait de conclure à partir de la valeur numérique de $\lambda$ dans le liquide. Or ce qui fixe la couleur perçue, c'est la **fréquence** $\nu$ — et elle est imposée par la source, donc **invariante** en changeant de milieu (chapitre 5). On la calcule dans le vide, $\nu = c/\lambda_0$, et cette valeur reste la même dans le liquide. Le faisceau reste donc vert, même si sa longueur d'onde y vaut numériquement $362\ \text{nm}$.
+        steps:
+          - math: '\nu = \dfrac{c}{\lambda_0} = \dfrac{3\times10^{8}}{532\times10^{-9}} \approx 5{,}6\times10^{14}\ \text{Hz}'
+            note: "Fréquence imposée par la source ; elle ne change pas dans le liquide."
+      - id: q4
+        stem: |-
+          On remplace la fente par un cheveu fin, l'écran restant à $D_i = 2{,}0\ \text{m}$. Avec le même laser vert, la tache centrale mesure $L_i = 2{,}7\ \text{cm}$. Déterminer le diamètre $d$ du cheveu.
+        reasoning: |-
+          Un cheveu diffracte comme une fente de même largeur : on réutilise $L = \dfrac{2\lambda_0 D}{a}$ en remplaçant $a$ par le diamètre $d$, puis on isole $d = \dfrac{2\lambda_0 D_i}{L_i}$. Même geste que la question 7 du sujet, avec d'autres nombres et une largeur mesurée au lieu d'un diamètre donné.
+        steps:
+          - math: 'd = \dfrac{2\lambda_0 D_i}{L_i} = \dfrac{2\times 532\times10^{-9}\times 2{,}0}{2{,}7\times10^{-2}} \approx 7{,}9\times10^{-5}\ \text{m}'
+            note: "λ_0 = 532 nm, D_i = 2,0 m, L_i = 2,7 cm = 0,027 m."
+          - math: 'd \approx 79\ \mu\text{m} \approx 0{,}08\ \text{mm}'
+            note: "Ordre de grandeur réaliste pour un cheveu humain."
+      - id: q5
+        stem: |-
+          On envoie enfin de la lumière blanche à travers un prisme en verre flint, pour lequel $n_{rouge} = 1{,}613$ et $n_{violet} = 1{,}632$. Quelle couleur, du rouge ou du violet, est la plus déviée par le prisme ? Laquelle se propage le plus vite **dans le verre** ? Justifie.
+        reasoning: |-
+          Tout se joue sur l'indice, qui dépend de la couleur (chapitre 6). La loi de Descartes rapproche d'autant plus le rayon réfracté de la normale que $n$ est grand : puisque $n_{violet} > n_{rouge}$, le **violet est le plus dévié**. Et comme $v = c/n$, un indice plus grand donne une vitesse plus faible : le **rouge**, d'indice plus petit, se propage **le plus vite** dans le verre. C'est cette double dépendance en $n$ — déviation et vitesse — qui étale la lumière blanche en spectre, exactement comme la question 4 du sujet le mettait en évidence avec les célérités du rouge et du jaune.
+        steps:
+          - math: 'v_{rouge} = \dfrac{c}{n_{rouge}} = \dfrac{3\times10^{8}}{1{,}613} \approx 1{,}86\times10^{8}\ \text{m.s}^{-1}'
+            note: "Indice plus petit pour le rouge : vitesse plus grande."
+          - math: 'v_{violet} = \dfrac{c}{n_{violet}} = \dfrac{3\times10^{8}}{1{,}632} \approx 1{,}84\times10^{8}\ \text{m.s}^{-1} < v_{rouge}'
+            note: "Le violet, d'indice plus grand, est le plus lent et le plus dévié."

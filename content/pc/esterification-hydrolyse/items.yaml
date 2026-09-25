@@ -1,0 +1,1677 @@
+notion: esterification-hydrolyse
+skill_code: pc_esterification_hydrolyse
+
+# Misconception inventory (backfilled in this floor-closing pass, mirroring
+# content/pc/rc-charge/items.yaml's convention). The four "gated" misconceptions
+# below are the ones the summit-conversion campaign named in checkpoints.yaml
+# (cp-r0-predict, cp-r2-limitee, cp-r3-avancement, cp-r4-catalyseur,
+# cp-r5-deplacement): their gold-standard per-distractor `misconception:`
+# tagging is mirrored here. The remaining ids were surfaced honestly while
+# tagging every existing distractor against what each stem actually diagnoses
+# — not invented ahead of the items. See coverage_summary at the end for the
+# honest count per misconception (gated floor met; non-gated shortfalls
+# disclosed, not padded).
+misconceptions:
+  - id: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+    label: "« Le catalyseur augmente le rendement de l'estérification »"
+    description: "L'élève croit qu'ajouter un catalyseur acide déplace l'équilibre (vers l'ester ou vers l'hydrolyse), et donc change le taux d'avancement final τ."
+    contradicts_principle: "Un catalyseur ne figure jamais dans l'expression de K ni dans l'équation bilan : il accélère l'estérification ET l'hydrolyse dans les mêmes proportions, sans changer le rapport des vitesses qui fixe K. Il change quand l'équilibre est atteint, jamais où il se situe."
+  - id: mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement
+    label: "« Chauffer améliore le rendement de l'estérification »"
+    description: "L'élève croit que chauffer plus fort déplace l'équilibre (dans un sens ou dans l'autre), et donc change τ."
+    contradicts_principle: "Le chauffage est un facteur cinétique : il accélère les deux sens à la fois. L'estérification étant quasi athermique, K (donc τ) ne varie presque pas avec la température."
+  - id: mc.physics.pc_esterification_hydrolyse.esterification-totale
+    label: "« L'estérification finit par être totale : acide et alcool disparaissent complètement »"
+    description: "L'élève croit qu'avec assez de temps, de catalyseur, ou de chauffage, l'acide et l'alcool sont entièrement consommés."
+    contradicts_principle: "L'ester et l'eau formés peuvent réagir en sens inverse (hydrolyse) dès qu'ils existent : les quatre espèces coexistent indéfiniment à l'équilibre. Ni le temps, ni le catalyseur, ni le chauffage ne font franchir cet équilibre."
+  - id: mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal
+    label: "« L'avancement final x_f est égal à l'avancement maximal x_max (τ=1) »"
+    description: "L'élève confond l'état d'équilibre (atteint) avec l'épuisement complet des réactifs limitants (avancement maximal stoechiométrique)."
+    contradicts_principle: "Pour une réaction limitée, x_f < x_max, donc τ = x_f/x_max < 1 : il reste toujours de l'acide et de l'alcool à l'équilibre. « L'évolution s'arrête » (équilibre) ne veut pas dire « les réactifs sont épuisés » (avancement maximal)."
+  - id: mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester
+    label: "« Confusion sur laquelle des quatre espèces est l'ester »"
+    description: "L'élève ne repère pas correctement l'ester parmi acide, alcool, ester, eau dans l'équation."
+    contradicts_principle: "L'ester est l'unique espèce portant le groupe -COO- encadré par deux chaînes carbonées R et R' ; ce repère structural ne varie jamais, quel que soit le couple acide/alcool choisi."
+  - id: mc.physics.pc_esterification_hydrolyse.nomenclature-radicaux-inverses
+    label: "« Inversion des radicaux acide/alcool dans le nom de l'ester »"
+    description: "L'élève inverse les deux moitiés du nom (« -oate » et « de -yle »), ou invente des suffixes qui n'existent pas."
+    contradicts_principle: "Le radical qui précède « -oate » vient toujours de l'acide, celui qui suit « de » vient toujours de l'alcool — jamais l'inverse, et sans autre suffixe possible."
+  - id: mc.physics.pc_esterification_hydrolyse.confond-k-et-qr
+    label: "« Confusion entre K (fixe) et Qr (variable) »"
+    description: "L'élève attribue à K des variations qui ne concernent que Qr, ou croit qu'aucun geste sur la composition ne peut rien changer puisque K est fixe."
+    contradicts_principle: "K ne dépend que de la réaction et de la température ; Qr, lui, varie à chaque instant avec les concentrations. C'est l'écart Qr/K, pas K lui-même, qui gouverne l'évolution du système."
+  - id: mc.physics.pc_esterification_hydrolyse.equilibre-percu-comme-arret
+    label: "« À l'équilibre, les réactions s'arrêtent »"
+    description: "L'élève croit qu'à l'équilibre, plus aucune transformation ne se produit (au lieu d'un équilibre dynamique où les deux sens continuent à vitesses égales)."
+    contradicts_principle: "À l'équilibre, l'estérification et l'hydrolyse se produisent toujours, en permanence, à la même vitesse l'une que l'autre : c'est cette égalité de vitesses, pas un arrêt, qui fige la composition."
+  - id: mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau
+    label: "« Erreur de manipulation algébrique entre K et τ »"
+    description: "L'élève oublie la racine carrée, inverse le rapport produits/réactifs, ou divise par la mauvaise quantité en passant de K à τ (ou de τ à K)."
+    contradicts_principle: "Pour l'estérification simple, K = τ²/(1-τ)² : il faut élever au carré (ou extraire la racine carrée) correctement, et toujours placer produits (ester, eau) au numérateur, réactifs (acide, alcool) au dénominateur."
+  - id: mc.physics.pc_esterification_hydrolyse.tau-depend-de-n0
+    label: "« τ dépend de la quantité initiale n0 »"
+    description: "L'élève croit qu'augmenter ou diminuer n0 (à proportions égales) change le taux d'avancement final τ."
+    contradicts_principle: "Dans l'estérification simple, n0 se simplifie complètement dans l'expression de K = τ²/(1-τ)² : τ ne dépend que de K, jamais de la quantité de matière engagée."
+  - id: mc.physics.pc_esterification_hydrolyse.cinetique-thermodynamique-confondues
+    label: "« Confusion générale entre un effet cinétique (vitesse) et un effet thermodynamique (position de l'équilibre) »"
+    description: "L'élève pense qu'il faut connaître la vitesse ou le temps pour connaître la position de l'équilibre, ou inversement qu'un geste qui déplace réellement l'équilibre (retirer un produit) n'est qu'un effet de vitesse."
+    contradicts_principle: "La vitesse (accélérer, ralentir) et la position de l'équilibre (τ, fixée par K et par Qr,i) sont deux choses indépendantes : le temps mis pour l'atteindre ne fait pas partie de ce qui détermine où il se situe."
+  - id: mc.physics.pc_esterification_hydrolyse.obstacle-physique-invente
+    label: "« Un obstacle physique empêcherait la réaction, plutôt qu'un équilibre chimique »"
+    description: "L'élève invente un obstacle matériel (l'eau formée gênerait physiquement la rencontre des molécules) plutôt que de reconnaître la réaction inverse (hydrolyse) comme la cause de la limitation."
+    contradicts_principle: "Rien n'empêche physiquement les molécules de se rencontrer dans un mélange liquide homogène : c'est la coexistence de l'estérification et de l'hydrolyse, pas un obstacle matériel, qui limite la conversion."
+
+items:
+
+  # ── confondre accélérer (catalyseur) et déplacer l'équilibre (canonique) ────
+  - id: EH-1
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+    stem: >
+      Deux flacons contiennent le même mélange équimolaire d'acide éthanoïque
+      et d'éthanol (estérification simple, $K=4$). Le flacon A est laissé à
+      température ambiante, sans catalyseur ; le flacon B reçoit quelques
+      gouttes d'acide sulfurique concentré comme catalyseur. Une fois les deux
+      flacons stabilisés, comment se comparent les taux d'avancement finaux
+      $\tau_A$ et $\tau_B$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\tau_A = \\tau_B \\approx 66{,}7\\,\\%$ ; seul le temps nécessaire pour atteindre l'équilibre diffère entre les deux flacons."
+        correct: true
+      - id: B
+        text: "$\\tau_B > \\tau_A$, car le catalyseur favorise la formation de l'ester."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+        feedback: >
+          Un catalyseur acide accélère l'estérification ET l'hydrolyse, dans
+          les mêmes proportions - il ne favorise aucun des deux sens plus que
+          l'autre. Le rapport de leurs vitesses, qui fixe la position de
+          l'équilibre, reste inchangé : $\tau_B$ vaut la même chose que
+          $\tau_A$, atteint simplement plus vite.
+      - id: C
+        text: "$\\tau_B > \\tau_A$, car le catalyseur déplace l'équilibre vers la droite."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+        feedback: >
+          Un catalyseur n'apparaît jamais dans l'expression de la constante
+          d'équilibre $K$ : il n'a aucune prise sur la position de
+          l'équilibre, seulement sur la vitesse à laquelle le système
+          l'atteint. « Déplacer l'équilibre » et « accélérer la réaction »
+          sont deux effets différents, et le catalyseur ne produit que le
+          second.
+      - id: D
+        text: "On ne peut pas comparer $\\tau_A$ et $\\tau_B$ sans connaître le temps exact mis par chaque flacon pour se stabiliser."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.cinetique-thermodynamique-confondues
+        feedback: >
+          Le temps mis pour atteindre l'équilibre n'entre pour rien dans la
+          composition de cet équilibre : $\tau$ ne dépend que de $K$ (donc de
+          la réaction et de la température), jamais de la vitesse à laquelle
+          on y arrive.
+    correct_feedback: >
+      Le catalyseur accélère l'estérification et l'hydrolyse à parts égales :
+      il ne change ni $K$ ni $\tau$, seulement le temps nécessaire pour
+      atteindre le même équilibre. $\tau_A = \tau_B \approx 2/3$.
+    solution: |
+      Un catalyseur ouvre un chemin réactionnel qui demande moins d'énergie,
+      pour les DEUX réactions à la fois (estérification et hydrolyse). Il
+      accélère donc les deux vitesses dans les mêmes proportions, sans changer
+      leur rapport - qui est justement ce qui fixe $K$. Le catalyseur ne
+      figure dans aucune expression de $K$ ou de $Q_r$ : il n'a aucun effet
+      sur la position de l'équilibre.
+
+      **Conclusion :** $\tau_A = \tau_B \approx 66{,}7\,\%$. Seule la durée
+      pour atteindre l'équilibre diffère (plusieurs jours contre environ une
+      heure).
+
+  # ── confondre accélérer (chauffage) et déplacer l'équilibre (variant) ───────
+  - id: EH-2
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement
+    stem: >
+      Le même mélange équimolaire (acide + alcool, $K=4$) est chauffé à
+      reflux dans un flacon C, sans catalyseur, plutôt que laissé à
+      température ambiante comme dans le flacon A ($\tau_A \approx 66{,}7\,\%$).
+      Une fois l'équilibre atteint dans le flacon C, comment se compare
+      $\tau_C$ à $\tau_A$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\tau_C \\approx \\tau_A \\approx 66{,}7\\,\\%$ : le chauffage accélère l'estérification et l'hydrolyse dans les mêmes proportions, et la réaction est quasi athermique."
+        correct: true
+      - id: B
+        text: "$\\tau_C > \\tau_A$, car la chaleur apportée par le chauffage favorise nettement la formation des produits."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement
+        feedback: >
+          Le chauffage est un facteur cinétique : il augmente la fréquence et
+          l'énergie des chocs entre entités, dans les deux sens à la fois.
+          Comme l'estérification (et l'hydrolyse) sont des réactions quasi
+          athermiques, chauffer ne déplace quasiment pas $K$ - la chaleur
+          apportée n'avantage pas la formation des produits plus que celle
+          des réactifs.
+      - id: C
+        text: "$\\tau_C < \\tau_A$, car chauffer un mélange favorise toujours la réaction inverse, ici l'hydrolyse."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement
+        feedback: >
+          Rien n'indique ici que l'hydrolyse serait favorisée par la chaleur :
+          l'estérification est une réaction quasi athermique, donc sa
+          constante d'équilibre $K$ varie très peu avec la température, dans
+          un sens comme dans l'autre. Le chauffage reste, dans ce cas, un
+          levier essentiellement cinétique.
+      - id: D
+        text: "Impossible à dire sans connaître précisément la vitesse de chacune des deux réactions, l'estérification comme l'hydrolyse."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.cinetique-thermodynamique-confondues
+        feedback: >
+          La vitesse de chaque réaction détermine le temps mis pour atteindre
+          l'équilibre, pas sa position. Ici, la question porte sur $\tau$ à
+          l'équilibre, qui ne dépend que de $K$ - et $K$ change à peine avec
+          la température pour une réaction quasi athermique.
+    correct_feedback: >
+      Chauffer accélère les deux sens de la réaction à la fois (chocs
+      efficaces plus fréquents et plus énergétiques), sans avantager l'un des
+      deux sens plus que l'autre pour une réaction quasi athermique.
+      $\tau_C \approx \tau_A \approx 2/3$.
+    solution: |
+      Le chauffage augmente l'agitation thermique des molécules, donc la
+      fréquence des chocs ET la proportion de chocs suffisamment
+      énergétiques - pour l'estérification comme pour l'hydrolyse à la fois.
+      Comme la réaction dégage ou absorbe très peu de chaleur (elle est
+      qualifiée d'athermique), sa constante d'équilibre $K$ ne varie
+      quasiment pas avec la température.
+
+      **Conclusion :** $\tau_C \approx \tau_A \approx 66{,}7\,\%$. Le
+      chauffage raccourcit fortement le temps nécessaire pour atteindre
+      l'équilibre, sans en changer la composition.
+
+  # ── mal identifier ester vs acide/alcool dans l'équation (canonique) ────────
+  - id: EH-3
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester
+    stem: >
+      Dans l'équation
+      $CH_3CH_2COOH + CH_3OH \rightleftharpoons CH_3CH_2COOCH_3 + H_2O$,
+      quelle espèce est l'ester ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$CH_3CH_2COOCH_3$"
+        correct: true
+      - id: B
+        text: "$CH_3CH_2COOH$"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester
+        feedback: >
+          C'est l'acide propanoïque : il porte le groupe $-COOH$ seul, pas le
+          groupe ester $-COO-$ relié à deux chaînes carbonées. C'est un
+          réactif de l'estérification (et un produit de l'hydrolyse), pas
+          l'ester.
+      - id: C
+        text: "$CH_3OH$"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester
+        feedback: >
+          C'est le méthanol : il porte le groupe hydroxyle $-OH$ seul, sans
+          groupe ester. C'est l'alcool de cette réaction, pas l'ester formé.
+      - id: D
+        text: "$H_2O$"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester
+        feedback: >
+          C'est l'eau, le sous-produit de l'estérification (et le réactif de
+          l'hydrolyse) - toujours $H_2O$, jamais l'espèce organique formée.
+    correct_feedback: >
+      L'ester est la seule espèce qui porte le groupe $-COO-$ entre deux
+      chaînes carbonées : ici, $CH_3CH_2COOCH_3$ (propanoate de méthyle).
+    solution: |
+      Le repère ne varie jamais : l'ester est la molécule qui contient le
+      groupe ester $-COO-$ pris en sandwich entre un radical issu de l'acide
+      et un radical issu de l'alcool. $CH_3CH_2COOH$ est l'acide (groupe
+      $-COOH$ seul), $CH_3OH$ est l'alcool (groupe $-OH$ seul), $H_2O$ est
+      l'eau. Seul $CH_3CH_2COOCH_3$ correspond à la définition de l'ester.
+
+  # ── quel geste améliore vraiment le rendement (canonique) ───────────────────
+  - id: EH-4
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+    stem: >
+      Pour améliorer réellement le rendement d'une estérification - c'est-à-dire
+      augmenter le taux d'avancement final $\tau$ - lequel des gestes
+      suivants fonctionne ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Verser, dès le départ, un excès de l'un des deux réactifs."
+        correct: true
+      - id: B
+        text: "Ajouter davantage de catalyseur acide."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+        feedback: >
+          Le catalyseur accélère l'estérification et l'hydrolyse à parts
+          égales : il n'apparaît dans aucune expression de $K$, donc il ne
+          change jamais $\tau$, quelle que soit la quantité utilisée.
+      - id: C
+        text: "Chauffer le mélange plus fort."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement
+        feedback: >
+          Chauffer est un facteur cinétique : ça accélère l'atteinte de
+          l'équilibre, mais la réaction étant quasi athermique, $K$ (et donc
+          $\tau$) ne change quasiment pas avec la température.
+      - id: D
+        text: "Attendre plus longtemps que le mélange se stabilise."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.esterification-totale
+        feedback: >
+          Une fois l'équilibre atteint, $\tau$ ne bouge plus : attendre
+          encore ne change rien à la composition du mélange, qui est déjà
+          stabilisée.
+    correct_feedback: >
+      Un excès de réactif augmente le dénominateur de $Q_r$ dès le mélange
+      initial : $Q_{r,i}$ part en dessous de $K$, ce qui pousse le système à
+      avancer davantage dans le sens direct - c'est un déplacement réel de
+      l'équilibre, contrairement au catalyseur, au chauffage, ou au temps
+      d'attente.
+    solution: |
+      Trois des quatre choix (catalyseur, chauffage, attente) jouent sur la
+      VITESSE d'atteindre l'équilibre, pas sur sa position - $\tau$ reste
+      identique dans les trois cas. Seul l'excès de réactif change la
+      composition initiale du système, donc $Q_{r,i}$, ce qui déplace
+      réellement l'équilibre et augmente $\tau$ (le chapitre 6 le montre
+      numériquement : $66{,}7\,\%$ sans excès contre $84{,}5\,\%$ avec un
+      excès d'alcool, pour $K=4$).
+
+  # ── élimination de l'eau et confusion K/Qr (variant) ─────────────────────────
+  - id: EH-5
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.confond-k-et-qr
+    stem: >
+      On retire, par distillation et au fur et à mesure de sa formation, une
+      partie de l'eau produite par une estérification en cours. Quel est
+      l'effet de ce geste sur le système ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$Q_r$ diminue en dessous de $K$, ce qui relance la réaction dans le sens direct : la conversion de l'acide augmente."
+        correct: true
+      - id: B
+        text: "Aucun effet : puisque $K$ ne change jamais à température fixée, retirer de l'eau ne peut rien changer à l'issue de la réaction."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.confond-k-et-qr
+        feedback: >
+          C'est confondre $K$ (qui reste fixe, à température constante) et
+          $Q_r$ (qui varie dès que les concentrations changent, y compris
+          parce qu'on en a retiré une partie à la main). Retirer de l'eau
+          déséquilibre $Q_r$ par rapport à $K$, ce qui relance la réaction -
+          même si $K$, lui, ne bouge pas.
+      - id: C
+        text: "$K$ diminue, ce qui relance la réaction dans le sens direct."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.confond-k-et-qr
+        feedback: >
+          C'est $Q_r$ qui varie ici, pas $K$. $K$ ne dépend que de la réaction
+          et de la température, jamais d'une manipulation comme le retrait
+          d'un produit du mélange.
+      - id: D
+        text: "La réaction accélère, mais la quantité finale d'ester obtenue n'est pas modifiée."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.cinetique-thermodynamique-confondues
+        feedback: >
+          C'est confondre vitesse et position de l'équilibre. Ici, c'est
+          justement la position de l'équilibre qui se déplace : retirer de
+          l'eau force le système à en reformer une partie, ce qui consomme
+          davantage d'acide et d'alcool et augmente la quantité finale
+          d'ester.
+    correct_feedback: >
+      Retirer de l'eau diminue le numérateur de $Q_r$ instantanément :
+      $Q_{r,i}$ passe en dessous de $K$, et le système réagit dans le sens
+      direct pour s'en rapprocher de nouveau - ce qui consomme davantage
+      d'acide et d'alcool. Répété en continu, ce geste permet d'approcher une
+      conversion quasi totale.
+    solution: |
+      $$Q_r = \frac{[ester][eau]}{[acide][alcool]}$$
+
+      Retirer de l'eau diminue $[eau]$, donc diminue $Q_r$ à cet instant :
+      $Q_{r,i} < K$. D'après le critère d'évolution, le système évolue alors
+      dans le sens direct (estérification) pour reformer une partie de l'eau
+      retirée et rejoindre $K$ à nouveau - ce qui consomme, au passage, de
+      l'acide et de l'alcool supplémentaires. $K$ lui-même ne change pas : ce
+      n'est pas lui qui bouge, c'est le rapport $Q_r/K$ qu'on vient de
+      déséquilibrer.
+
+  # ── nomenclature d'un ester (variant) ────────────────────────────────────────
+  - id: EH-6
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.nomenclature-radicaux-inverses
+    stem: >
+      Quel est le nom de l'ester formé par réaction entre l'acide méthanoïque
+      $HCOOH$ et le propan-1-ol $CH_3CH_2CH_2OH$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Méthanoate de propyle"
+        correct: true
+      - id: B
+        text: "Propanoate de méthyle"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.nomenclature-radicaux-inverses
+        feedback: >
+          Ce nom inverse les deux radicaux : « propanoate de méthyle »
+          correspondrait à un ester formé à partir de l'acide propanoïque et
+          du méthanol - l'inverse des réactifs donnés dans cet énoncé. Le
+          radical qui précède « -oate » vient toujours de l'acide, celui qui
+          suit « de » vient toujours de l'alcool.
+      - id: C
+        text: "Propyloate de méthanyle"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.nomenclature-radicaux-inverses
+        feedback: >
+          Ces suffixes n'existent pas. La règle est fixe : le radical de
+          l'acide (terminaison « -oïque » remplacée par « -oate ») suivi de
+          « de » puis du radical de l'alcool (terminaison « -yle ») - jamais
+          l'inverse des suffixes.
+      - id: D
+        text: "Méthanol de propanoïque"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.nomenclature-radicaux-inverses
+        feedback: >
+          Ce choix recopie simplement les noms des deux réactifs de départ,
+          sans appliquer la règle de nomenclature de l'ester (radical en
+          « -oate » suivi de « de » et du radical en « -yle »).
+    correct_feedback: >
+      L'acide méthanoïque donne le radical « méthanoate » ; le propan-1-ol
+      donne le radical « propyle ». L'ester $HCOOCH_2CH_2CH_3$ s'appelle donc
+      méthanoate de propyle.
+    solution: |
+      **Étape 1 - radical de l'acide :** acide méthanoïque $\rightarrow$
+      « méthanoate » (terminaison « -oïque » remplacée par « -oate »).
+
+      **Étape 2 - radical de l'alcool :** propan-1-ol $\rightarrow$
+      « propyle » (terminaison « -yle »).
+
+      **Étape 3 - assembler :** « méthanoate » + « de » + « propyle » =
+      **méthanoate de propyle**, correspondant à la molécule
+      $HCOOCH_2CH_2CH_3$.
+
+  # ── réaction non totale : équilibre vs manque de temps/catalyseur (R0) ──────
+  - id: EH-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.esterification-totale
+    stem: >
+      Dans le ballon décrit en introduction, après plusieurs heures de
+      chauffage à reflux, un test chimique révèle qu'il reste, indéfiniment,
+      de l'acide éthanoïque et de l'éthanol non transformés, aux côtés de
+      l'ester et de l'eau déjà formés. Que peut-on en conclure sur cette
+      réaction ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il s'agit d'une erreur expérimentale : dans une estérification normale, l'acide et l'alcool finissent toujours par disparaître complètement."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.esterification-totale
+        feedback: >
+          Ce n'est pas une erreur : cette coexistence indéfinie des quatre
+          espèces est le comportement normal de l'estérification, pas une
+          anomalie à corriger.
+      - id: B
+        text: "La réaction n'est pas totale : elle atteint un état où les quatre espèces coexistent indéfiniment, quelle que soit la durée de chauffage."
+        correct: true
+      - id: C
+        text: "Le chauffage n'a pas duré assez longtemps ; avec encore plus de temps, l'acide et l'alcool finiraient par disparaître."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.esterification-totale
+        feedback: >
+          Prolonger le chauffage ne change rien à cette coexistence : ce
+          n'est pas une question de durée insuffisante, mais d'un état
+          d'équilibre que le système ne dépasse jamais.
+      - id: D
+        text: "Il manque du catalyseur : avec davantage d'acide sulfurique, l'acide et l'alcool seraient entièrement consommés."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+        feedback: >
+          Le catalyseur accélère la réaction sans jamais changer sa quantité
+          finale : plus de catalyseur mène au même équilibre, seulement plus
+          vite.
+    correct_feedback: >
+      Le test chimique montre que l'acide et l'alcool subsistent
+      indéfiniment aux côtés de l'ester et de l'eau : la réaction n'est pas
+      totale, elle atteint un équilibre entre les quatre espèces.
+    solution: |
+      L'estérification et son inverse, l'hydrolyse, coexistent en permanence
+      dans le même mélange, ce qui empêche l'acide et l'alcool de disparaître
+      complètement, quelle que soit la durée de chauffage ou la quantité de
+      catalyseur. Le système atteint un état d'équilibre, jamais une
+      transformation totale.
+
+  # ── groupe caractéristique ester, sur l'équation concrète du R0 ─────────────
+  - id: EH-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester
+    stem: >
+      Reprends l'équation de l'estérification donnée en introduction :
+      $CH_3COOH + C_2H_5OH \rightleftharpoons CH_3COOC_2H_5 + H_2O$.
+      Laquelle de ces quatre espèces est l'ester ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$CH_3COOH$"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester
+        feedback: >
+          C'est l'acide éthanoïque, qui porte le groupe $-COOH$ seul : un
+          réactif, pas l'ester formé.
+      - id: B
+        text: "$C_2H_5OH$"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester
+        feedback: >
+          C'est l'éthanol, qui porte le groupe hydroxyle $-OH$ seul :
+          l'alcool, pas l'ester.
+      - id: C
+        text: "$CH_3COOC_2H_5$"
+        correct: true
+      - id: D
+        text: "$H_2O$"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester
+        feedback: >
+          C'est l'eau, le sous-produit de la réaction, toujours $H_2O$ -
+          jamais l'espèce organique formée.
+    correct_feedback: >
+      $CH_3COOC_2H_5$ est la seule espèce qui porte le groupe $-COO-$ entre
+      deux chaînes carbonées : c'est l'ester, l'éthanoate d'éthyle.
+    solution: |
+      Le repère ne varie jamais : l'ester est la molécule qui contient le
+      groupe $-COO-$ encadré par deux chaînes carbonées. $CH_3COOH$ est
+      l'acide, $C_2H_5OH$ est l'alcool, $H_2O$ est l'eau ; seul
+      $CH_3COOC_2H_5$ correspond à la définition de l'ester.
+
+  # ── quel levier change vraiment le résultat (prédiction, R0) ────────────────
+  - id: EH-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement
+    stem: >
+      Un chimiste veut repartir avec plus d'ester à la fin de son
+      estérification. Il hésite entre trois pistes : ajouter encore plus de
+      catalyseur, chauffer plus fort, ou verser un excès d'un des deux
+      réactifs au départ. Laquelle de ces trois pistes change réellement la
+      quantité finale d'ester obtenue ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Ajouter encore plus de catalyseur."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+        feedback: >
+          Le catalyseur accélère la réaction sans changer sa position
+          finale : plus de catalyseur veut dire plus vite, pas plus d'ester.
+      - id: B
+        text: "Chauffer plus fort."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement
+        feedback: >
+          Chauffer accélère aussi la réaction, dans les deux sens à la fois,
+          sans changer la quantité finale d'ester obtenue.
+      - id: C
+        text: "Aucune des trois : la quantité d'ester obtenue est toujours fixée par la réaction, quoi qu'on fasse."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.confond-k-et-qr
+        feedback: >
+          Une des trois pistes change bel et bien la quantité finale
+          d'ester : ce n'est donc pas vrai qu'aucun levier n'a d'effet sur le
+          résultat.
+      - id: D
+        text: "Verser un excès d'un des deux réactifs au départ."
+        correct: true
+    correct_feedback: >
+      Seul l'excès de réactif change la composition initiale du système,
+      donc déplace réellement l'équilibre vers plus d'ester ; le catalyseur
+      et le chauffage ne font qu'accélérer l'arrivée au même résultat.
+    solution: |
+      Trois leviers sont proposés, mais un seul change la position de
+      l'équilibre : le catalyseur et le chauffage sont des leviers
+      cinétiques (ils changent la vitesse), tandis qu'un excès de réactif
+      change la composition initiale du système, donc le résultat final.
+
+  # ── nomenclature d'un ester, sens direct, couple frais (R1) ──────────────────
+  - id: EH-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.nomenclature-radicaux-inverses
+    stem: >
+      Quel est le nom de l'ester formé par réaction entre l'acide propanoïque
+      $CH_3CH_2COOH$ et l'éthanol $C_2H_5OH$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Propanoate d'éthyle"
+        correct: true
+      - id: B
+        text: "Éthanoate de propyle"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.nomenclature-radicaux-inverses
+        feedback: >
+          Ce nom correspond à l'ester formé à partir de l'acide éthanoïque
+          et du propan-1-ol - l'inverse du couple donné ici.
+      - id: C
+        text: "Propanyloate d'éthanoate"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.nomenclature-radicaux-inverses
+        feedback: >
+          Ces suffixes n'existent pas et sont inversés par rapport à la
+          règle : « -oate » vient de l'acide, « -yle » vient de l'alcool.
+      - id: D
+        text: "Acide propanoïque éthylique"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.nomenclature-radicaux-inverses
+        feedback: >
+          Ce n'est pas la nomenclature d'un ester : un ester se nomme par
+          ses deux radicaux, « -oate de -yle », pas en juxtaposant les noms
+          des réactifs.
+    correct_feedback: >
+      L'acide propanoïque donne « propanoate » ; l'éthanol donne « éthyle ».
+      L'ester $CH_3CH_2COOC_2H_5$ s'appelle donc propanoate d'éthyle.
+    solution: |
+      Radical de l'acide : propanoïque $\rightarrow$ propanoate. Radical de
+      l'alcool : éthanol $\rightarrow$ éthyle. Assemblés : propanoate
+      d'éthyle, soit $CH_3CH_2COOC_2H_5$.
+
+  # ── groupe caractéristique ester, sur l'équation générale R/R' (R1) ─────────
+  - id: EH-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester
+    stem: >
+      Dans l'équation générale
+      $R-COOH + R'-OH \rightleftharpoons R-COO-R' + H_2O$, quel groupe
+      caractéristique permet de reconnaître spécifiquement l'ester, et de le
+      distinguer de l'acide et de l'alcool ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-COOH$, le groupe carboxyle porté par l'acide carboxylique."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester
+        feedback: >
+          C'est le groupe qui caractérise l'acide carboxylique, présent dans
+          le réactif $R-COOH$, pas dans l'ester $R-COO-R'$.
+      - id: B
+        text: "$-COO-$, le groupe ester, encadré par les deux chaînes carbonées $R$ et $R'$."
+        correct: true
+      - id: C
+        text: "$-OH$, le groupe hydroxyle porté par l'alcool de départ."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester
+        feedback: >
+          C'est le groupe qui caractérise l'alcool, présent dans le réactif
+          $R'-OH$, et absent de l'ester formé.
+      - id: D
+        text: "$C=O$ seul, le groupe carbonyle commun à plusieurs familles."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester
+        feedback: >
+          Le carbonyle seul, sans les deux chaînes carbonées de part et
+          d'autre, ne suffit pas à identifier l'ester : il faut le groupe
+          $-COO-$ complet.
+    correct_feedback: >
+      Le groupe ester $-COO-$, encadré par $R$ et $R'$, est le seul repère
+      qui identifie sans ambiguïté l'ester parmi les quatre espèces.
+    solution: |
+      L'acide porte $-COOH$, l'alcool porte $-OH$ : ce sont les groupes des
+      réactifs. L'ester, lui, se reconnaît au groupe $-COO-$ relié à deux
+      chaînes carbonées, $R$ d'un côté et $R'$ de l'autre.
+
+  # ── équilibre dynamique : les deux réactions continuent (R2) ────────────────
+  - id: EH-12
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.equilibre-percu-comme-arret
+    stem: >
+      Un mélange équimolaire d'acide et d'alcool atteint un état
+      d'équilibre : l'odeur de l'ester cesse de s'intensifier. Que peut-on
+      affirmer sur l'estérification et l'hydrolyse à cet instant précis ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux réactions se sont arrêtées : plus aucune transformation ne se produit dans le mélange."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.equilibre-percu-comme-arret
+        feedback: >
+          C'est confondre l'arrêt de l'évolution observable (l'odeur ne
+          change plus) avec l'arrêt des réactions elles-mêmes, qui
+          continuent toutes les deux.
+      - id: B
+        text: "Seule l'estérification continue ; l'hydrolyse ne s'est jamais vraiment mise en route."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.equilibre-percu-comme-arret
+        feedback: >
+          Si seule l'estérification continuait, l'ester s'accumulerait
+          encore et l'odeur continuerait de s'intensifier.
+      - id: C
+        text: "Les deux réactions se produisent toujours, à la même vitesse l'une que l'autre."
+        correct: true
+      - id: D
+        text: "Seule l'hydrolyse continue ; l'estérification s'est arrêtée dès que l'ester a commencé à se former."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.equilibre-percu-comme-arret
+        feedback: >
+          Si seule l'hydrolyse continuait, l'ester serait consommé sans être
+          reformé, et son odeur diminuerait.
+    correct_feedback: >
+      L'équilibre est dynamique : estérification et hydrolyse se produisent
+      en permanence, toutes les deux, à la même vitesse.
+    solution: |
+      À l'équilibre, la vitesse de l'estérification égale celle de
+      l'hydrolyse : les deux réactions continuent sans discontinuer, mais
+      leur effet net s'annule, ce qui explique que l'odeur cesse de changer.
+
+  # ── pourquoi acide/alcool ne disparaissent jamais (mécanisme, R2) ───────────
+  - id: EH-13
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.esterification-totale
+    stem: >
+      Pourquoi l'acide et l'alcool ne disparaissent-ils jamais complètement
+      au cours d'une estérification, même après un temps très long ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que la réaction est bien trop lente pour se terminer, même après plusieurs jours d'attente."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.esterification-totale
+        feedback: >
+          C'est confondre vitesse et position d'équilibre : même accélérée
+          par un catalyseur, la réaction s'arrête au même point.
+      - id: B
+        text: "Parce qu'il faudrait davantage de catalyseur acide pour parvenir à consommer tout l'acide et tout l'alcool restants."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+        feedback: >
+          Le catalyseur ne change jamais la quantité finale d'acide et
+          d'alcool restants, quelle que soit la quantité utilisée.
+      - id: C
+        text: "Parce que l'eau formée au cours de la réaction empêche physiquement l'acide et l'alcool restants de se rencontrer."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.obstacle-physique-invente
+        feedback: >
+          Rien n'empêche physiquement les molécules de se rencontrer dans ce
+          mélange liquide homogène : la limite vient de l'hydrolyse, pas
+          d'un obstacle physique.
+      - id: D
+        text: "Parce que l'ester et l'eau formés peuvent eux-mêmes réagir en sens inverse (hydrolyse), donc les quatre espèces coexistent en permanence."
+        correct: true
+    correct_feedback: >
+      Dès que de l'ester et de l'eau se forment, ils peuvent réagir en sens
+      inverse (hydrolyse), ce qui empêche l'acide et l'alcool de disparaître
+      complètement.
+    solution: |
+      Estérification et hydrolyse coexistent toujours dans le même
+      mélange : c'est cette coexistence, pas un manque de temps, de
+      catalyseur, ou un obstacle physique, qui limite la conversion de
+      l'acide et de l'alcool.
+
+  # ── rendement : calcul de τ à partir de K (R3) ───────────────────────────────
+  - id: EH-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau
+    stem: >
+      Pour un autre couple acide/alcool, dans les conditions de
+      l'estérification simple (quantités initiales égales $n_0$, chaînes
+      linéaires), on mesure $K = 9$ à une certaine température. Quelle est
+      la valeur de $\tau$ à l'équilibre ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\tau = 0{,}75$"
+        correct: true
+      - id: B
+        text: "$\\tau = 0{,}90$"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau
+        feedback: >
+          Cette valeur vient d'avoir résolu $\dfrac{\tau}{1-\tau} = 9$
+          directement, en oubliant la racine carrée : $\dfrac{\tau}{1-\tau}
+          = \sqrt{K} = 3$, pas $9$.
+      - id: C
+        text: "On ne peut pas calculer $\\tau$ sans connaître $n_0$."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.tau-depend-de-n0
+        feedback: >
+          Le calcul du chapitre 4 montre que $n_0$ disparaît de l'expression de
+          $K$ : $\tau$ ne dépend que de $K$, jamais de la quantité de
+          matière engagée.
+      - id: D
+        text: "$\\tau = \\dfrac{1}{9} \\approx 0{,}11$"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau
+        feedback: >
+          Cette valeur inverse la relation entre $K$ et $\tau$ : un $K$ plus
+          grand correspond à un $\tau$ plus grand, pas plus petit.
+    correct_feedback: >
+      $\dfrac{\tau^2}{(1-\tau)^2} = 9 \Rightarrow \dfrac{\tau}{1-\tau} = 3
+      \Rightarrow \tau = 0{,}75$.
+    solution: |
+      $\dfrac{\tau^2}{(1-\tau)^2} = K = 9$, donc $\dfrac{\tau}{1-\tau} =
+      \sqrt{9} = 3$, donc $\tau = 3(1-\tau)$, soit $4\tau = 3$ et
+      $\tau = 0{,}75$.
+
+  # ── rendement : indépendance de τ vis-à-vis de n0 (R3) ──────────────────────
+  - id: EH-15
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.tau-depend-de-n0
+    stem: >
+      On réalise une estérification simple avec $n_0 = 0{,}50$ mol d'acide
+      et $0{,}50$ mol d'alcool ($K=4$), et on obtient $\tau \approx 0{,}667$
+      à l'équilibre. On refait l'expérience en doublant les deux quantités
+      initiales ($n_0 = 1{,}0$ mol de chaque), toutes choses égales par
+      ailleurs. Quel est l'effet sur $\tau$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\tau$ double lui aussi, et atteint donc environ $1{,}33$ à l'équilibre."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.tau-depend-de-n0
+        feedback: >
+          $\tau$ est une proportion, toujours comprise entre $0$ et $1$ :
+          c'est la quantité de matière d'ester formée qui double, pas
+          $\tau$.
+      - id: B
+        text: "$\\tau$ reste inchangé, toujours environ $0{,}667$ ; seule la quantité de matière convertie double en valeur absolue."
+        correct: true
+      - id: C
+        text: "$\\tau$ diminue de moitié, et atteint donc environ $0{,}33$ à l'équilibre."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.tau-depend-de-n0
+        feedback: >
+          Rien dans $K = \dfrac{\tau^2}{(1-\tau)^2}$ ne fait intervenir
+          $n_0$ : doubler $n_0$ ne peut donc pas diviser $\tau$ par deux.
+      - id: D
+        text: "On ne peut pas le savoir sans refaire entièrement le calcul avec les nouvelles quantités."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.tau-depend-de-n0
+        feedback: >
+          $n_0$ disparaît complètement de l'expression de $K$ : $\tau$ ne
+          dépend que de $K$, pas besoin de refaire le calcul.
+    correct_feedback: >
+      $n_0$ n'apparaît nulle part dans $K = \dfrac{\tau^2}{(1-\tau)^2}$ :
+      doubler les quantités initiales double la quantité d'ester produite,
+      mais laisse $\tau$ inchangé.
+    solution: |
+      Le chapitre 4 montre que $n_0$ se simplifie complètement dans
+      l'expression de $K$ : $\tau$ ne dépend que de $K$ (donc de la réaction
+      et de la température), jamais de la quantité de matière engagée.
+
+  # ── rendement : calcul de K à partir de τ mesuré, sens inverse (R3) ─────────
+  - id: EH-16
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau
+    stem: >
+      On réalise une estérification simple avec $n_0 = 0{,}50$ mol d'acide
+      et $0{,}50$ mol d'alcool. À l'équilibre, on mesure
+      $n(ester)_{eq} = 0{,}30$ mol. Quelle est la valeur de la constante
+      d'équilibre $K$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$K \\approx 0{,}44$"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau
+        feedback: >
+          Cette valeur inverse le rapport produits/réactifs : $K$ place
+          l'ester et l'eau au numérateur, l'acide et l'alcool au
+          dénominateur.
+      - id: B
+        text: "$K \\approx 0{,}18$"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau
+        feedback: >
+          Cette valeur vient d'avoir divisé par la quantité totale initiale
+          ($1{,}0$ mol) plutôt que par $n_0$ d'un seul réactif :
+          $\tau = \dfrac{0{,}30}{0{,}50} = 0{,}6$.
+      - id: C
+        text: "$K = 2{,}25$"
+        correct: true
+      - id: D
+        text: "$K = 1{,}5$"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau
+        feedback: >
+          Cette valeur vient d'avoir oublié d'élever $\dfrac{\tau}{1-\tau}$
+          au carré : $K = \left(\dfrac{\tau}{1-\tau}\right)^2$.
+    correct_feedback: >
+      $\tau = \dfrac{0{,}30}{0{,}50} = 0{,}6$, donc
+      $K = \dfrac{\tau^2}{(1-\tau)^2} = \dfrac{0{,}36}{0{,}16} = 2{,}25$.
+    solution: |
+      $n(acide)_{eq} = n(alcool)_{eq} = 0{,}50 - 0{,}30 = 0{,}20$ mol, donc
+      $K = \dfrac{0{,}30 \times 0{,}30}{0{,}20 \times 0{,}20} = 2{,}25$.
+
+  # ── catalyseur : structure/expression de K (variant, R4) ────────────────────
+  - id: EH-17
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+    stem: >
+      Laquelle de ces affirmations sur le catalyseur acide (par exemple
+      l'acide sulfurique) utilisé dans une estérification est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il figure dans l'expression de $K$, ce qui explique qu'il change la position de l'équilibre."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+        feedback: >
+          Un catalyseur ne figure jamais dans l'expression de $K$ ni dans
+          l'équation bilan : il n'a aucune prise sur la position de
+          l'équilibre.
+      - id: B
+        text: "Il accélère seulement l'estérification, pas l'hydrolyse, ce qui déplace l'équilibre vers la droite."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+        feedback: >
+          Un catalyseur accélère les deux sens à la fois, dans les mêmes
+          proportions : il ne favorise ni l'estérification ni l'hydrolyse
+          plus que l'autre.
+      - id: C
+        text: "Il permet d'atteindre un taux d'avancement final supérieur à celui obtenu sans catalyseur, mais seulement si on chauffe en même temps."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+        feedback: >
+          Chauffer est, comme le catalyseur, un facteur cinétique :
+          combiner les deux accélère l'arrivée à l'équilibre, mais ne
+          change jamais sa position.
+      - id: D
+        text: "Il figure dans le mécanisme mais jamais dans l'expression de $K$ ; il accélère les deux sens (estérification et hydrolyse) dans les mêmes proportions."
+        correct: true
+    correct_feedback: >
+      Le catalyseur agit uniquement sur la vitesse : il accélère
+      l'estérification et l'hydrolyse à parts égales, sans jamais apparaître
+      dans $K$.
+    solution: |
+      Un catalyseur ouvre un chemin réactionnel qui demande moins d'énergie,
+      pour les deux réactions à la fois, sans changer leur rapport de
+      vitesses - c'est justement ce rapport qui fixe $K$.
+
+  # ── proportion des réactifs : ajout d'ester, direction de Qr (R5) ───────────
+  - id: EH-18
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.confond-k-et-qr
+    stem: >
+      Un système acide + alcool + ester + eau est à l'équilibre ($K=4$). On
+      ajoute, sans changer le volume, une certaine quantité d'ester pur au
+      mélange. Que se passe-t-il ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$Q_r$ augmente au-dessus de $K$ : le système évolue dans le sens inverse (hydrolyse) pour le rejoindre, donc une partie de l'ester ajouté est reconsommée."
+        correct: true
+      - id: B
+        text: "$Q_r$ diminue en dessous de $K$ : le système évolue dans le sens direct, ce qui produit encore plus d'ester."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.confond-k-et-qr
+        feedback: >
+          L'ester figure au numérateur de $Q_r$ : en ajouter augmente $Q_r$,
+          ce n'est pas en retirer qui le diminue.
+      - id: C
+        text: "Rien ne change : $K$ reste fixe à température constante, donc l'ajout d'ester ne peut pas affecter la composition finale."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.confond-k-et-qr
+        feedback: >
+          C'est confondre $K$ (fixe à température constante) et $Q_r$ (qui
+          varie dès que les concentrations changent, y compris quand on en
+          ajoute).
+      - id: D
+        text: "Le système reste à l'équilibre, car ajouter un produit ne fait qu'accélérer la réaction inverse sans en changer l'issue finale."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.cinetique-thermodynamique-confondues
+        feedback: >
+          Ajouter de l'ester change la composition du système, donc $Q_r$ :
+          ce n'est pas un effet cinétique comme le catalyseur, c'est un
+          déplacement réel.
+    correct_feedback: >
+      L'ester figure au numérateur de $Q_r$ : en ajouter fait dépasser
+      $Q_{r,i} > K$, ce qui relance le système en sens inverse (hydrolyse).
+    solution: |
+      $Q_r = \dfrac{[ester][eau]}{[acide][alcool]}$ : ajouter de l'ester
+      augmente $[ester]$, donc $Q_r$ dépasse $K$, et le système évolue en
+      sens inverse pour reconsommer une partie de l'ester ajouté.
+
+  # ── nomenclature bac-style, couple frais (R6) ────────────────────────────────
+  - id: EH-19
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.nomenclature-radicaux-inverses
+    stem: >
+      On réalise l'estérification entre l'acide butanoïque
+      $CH_3CH_2CH_2COOH$ et le méthanol $CH_3OH$. Quel est le nom de
+      l'ester obtenu ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Méthanoate de butyle"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.nomenclature-radicaux-inverses
+        feedback: >
+          Ce nom inverse les deux radicaux : « méthanoate de butyle »
+          correspondrait à l'acide méthanoïque et au butan-1-ol, l'inverse
+          des réactifs donnés.
+      - id: B
+        text: "Butanoate de méthyle"
+        correct: true
+      - id: C
+        text: "Butyloate de méthanyle"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.nomenclature-radicaux-inverses
+        feedback: >
+          Ces suffixes n'existent pas : c'est le radical de l'acide qui
+          prend « -oate », celui de l'alcool qui prend « -yle ».
+      - id: D
+        text: "Acide butanoïque de méthanol"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.nomenclature-radicaux-inverses
+        feedback: >
+          Ce choix recopie les noms des réactifs sans appliquer la règle de
+          nomenclature de l'ester.
+    correct_feedback: >
+      L'acide butanoïque donne « butanoate » ; le méthanol donne « méthyle ».
+      L'ester s'appelle donc butanoate de méthyle.
+    solution: |
+      Radical de l'acide : butanoïque $\rightarrow$ butanoate. Radical de
+      l'alcool : méthanol $\rightarrow$ méthyle. Assemblés : butanoate de
+      méthyle, soit $CH_3CH_2CH_2COOCH_3$.
+
+  # ── rendement bac-style : calcul de K, chiffres frais (R6) ──────────────────
+  - id: EH-20
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau
+    stem: >
+      Un chimiste réalise une estérification simple entre un acide
+      carboxylique et un alcool, tous deux à chaîne linéaire, en partant de
+      $n_0 = 0{,}30$ mol de chacun. À l'équilibre, il mesure
+      $n(ester)_{eq} = 0{,}24$ mol. Quelle est la valeur de la constante
+      d'équilibre $K$ de cette réaction ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$K \\approx 0{,}06$"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau
+        feedback: >
+          Cette valeur inverse le rapport produits/réactifs : $K$ place
+          l'ester et l'eau au numérateur, l'acide et l'alcool au
+          dénominateur.
+      - id: B
+        text: "$K = 4$"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau
+        feedback: >
+          Cette valeur vient d'avoir oublié d'élever $\dfrac{\tau}{1-\tau}
+          = 4$ au carré : $K = 4^2 = 16$.
+      - id: C
+        text: "$K = 16$"
+        correct: true
+      - id: D
+        text: "$K \\approx 0{,}44$"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau
+        feedback: >
+          Cette valeur vient d'avoir divisé par la quantité totale initiale
+          ($0{,}60$ mol) plutôt que par $n_0$ d'un seul réactif.
+    correct_feedback: >
+      $\tau = \dfrac{0{,}24}{0{,}30} = 0{,}8$, donc
+      $K = \dfrac{\tau^2}{(1-\tau)^2} = \dfrac{0{,}64}{0{,}04} = 16$.
+    solution: |
+      $n(acide)_{eq} = n(alcool)_{eq} = 0{,}30 - 0{,}24 = 0{,}06$ mol, donc
+      $K = \dfrac{0{,}24 \times 0{,}24}{0{,}06 \times 0{,}06} = 16$.
+
+  # ── synthèse bac-style : élimination de l'ester, pas seulement l'eau (R6) ───
+  - id: EH-21
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.cinetique-thermodynamique-confondues
+    stem: >
+      Dans certains montages, l'ester formé est plus volatil que les autres
+      espèces du mélange et peut être distillé au fur et à mesure de sa
+      formation, exactement comme on distillerait l'eau. Un élève affirme :
+      « Retirer l'ester ne peut pas améliorer le rendement, puisque c'est
+      justement l'ester qu'on veut obtenir - le retirer revient à s'en
+      priver. » Cette affirmation est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, l'élève a raison : retirer le produit que l'on cherche justement à obtenir ne peut jamais améliorer un rendement, quel que soit le mécanisme invoqué pour l'expliquer."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.confond-k-et-qr
+        feedback: >
+          Il faut distinguer l'ester présent dans le ballon à un instant
+          donné de la quantité totale récupérée dans le distillat, qui,
+          elle, augmente.
+      - id: B
+        text: "Non, mais seulement parce que retirer l'ester revient exactement au même que retirer l'eau : les deux gestes n'ont d'effet que sur la vitesse de la réaction, jamais sur le rendement final obtenu."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.cinetique-thermodynamique-confondues
+        feedback: >
+          Retirer l'ester ou l'eau diminue le numérateur de $Q_r$, ce qui
+          déplace réellement l'équilibre - ce n'est pas un simple effet de
+          vitesse comme le catalyseur.
+      - id: C
+        text: "Non, mais seulement si l'on retire aussi une partie de l'eau au même moment ; retirer l'ester seul, sans toucher à l'eau, ne change rigoureusement rien à la valeur de $Q_r$."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.confond-k-et-qr
+        feedback: >
+          $Q_r$ dépend du produit $[ester][eau]$ : diminuer $[ester]$ seul
+          suffit déjà à faire repasser $Q_r$ sous $K$.
+      - id: D
+        text: "Non : retirer l'ester du mélange diminue $[ester]$ dans $Q_r$, donc $Q_{r,i}$ repasse sous $K$ et relance l'estérification, qui reforme de l'ester en continu."
+        correct: true
+    correct_feedback: >
+      Retirer l'ester diminue $[ester]$ dans $Q_r$, donc relance
+      l'estérification pour en reformer : la quantité totale récupérée dans
+      le distillat augmente.
+    solution: |
+      Retirer l'ester ou l'eau a le même effet sur $Q_r$ : les deux figurent
+      au numérateur, donc les retirer fait repasser $Q_{r,i}$ sous $K$ et
+      relance la réaction directe en continu.
+
+  # ── chauffage bref puis refroidissement : toujours pas de déplacement ───────
+  # (floor-closing: chauffage-augmente-rendement 2→3)
+  - id: EH-22
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement
+    stem: >
+      On reprend le même mélange équimolaire acide + alcool (estérification
+      simple, $K=4$), mais cette fois on compare deux protocoles différents :
+      le flacon P est chauffé à reflux en continu jusqu'à stabilisation ; le
+      flacon Q est chauffé très fort pendant seulement les dix premières
+      minutes, puis laissé refroidir et se stabiliser à température
+      ambiante, sans catalyseur. Comment se comparent les taux d'avancement
+      finaux $\tau_P$ et $\tau_Q$, une fois les deux flacons stabilisés ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\tau_Q > \\tau_P$ : les dix minutes de chauffage intense ont permis de « pousser » la réaction plus loin, avant que le refroidissement ne fige cet avancement supplémentaire."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement
+        feedback: >
+          Modèle « le chauffage déplace l'équilibre » à nouveau - même bref,
+          un passage à haute température n'entraîne aucun déplacement
+          permanent : l'estérification est quasi athermique, donc $\tau$
+          dépend de $K$, qui varie à peine avec la température, à n'importe
+          quel instant du protocole.
+      - id: B
+        text: "$\\tau_P \\approx \\tau_Q \\approx 66{,}7\\,\\%$ : dans les deux cas, l'équilibre final ne dépend que de $K$ à la température finale (ambiante), pas du chemin thermique suivi pour y arriver."
+        correct: true
+      - id: C
+        text: "$\\tau_P > \\tau_Q$ : seul un chauffage continu jusqu'au bout permet d'atteindre le taux maximal ; un chauffage interrompu laisse la réaction inachevée à un niveau plus bas."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement
+        feedback: >
+          Le chauffage ne fait qu'accélérer l'arrivée à l'équilibre, dans
+          les deux flacons ; qu'il soit maintenu ou interrompu ne change
+          rien à la composition finale, seulement au temps mis pour
+          l'atteindre.
+      - id: D
+        text: "Impossible de comparer sans connaître précisément la durée exacte pendant laquelle chaque flacon a mis pour se stabiliser."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.cinetique-thermodynamique-confondues
+        feedback: >
+          Le temps mis pour atteindre l'équilibre est une information
+          cinétique, sans lien avec sa position : $\tau$ ne dépend que de
+          $K$ à la température finale, jamais du chemin ou de la durée
+          empruntés pour y parvenir.
+    correct_feedback: >
+      L'estérification étant quasi athermique, $K$ varie à peine avec la
+      température, et surtout l'équilibre final ne dépend que de la
+      température À LAQUELLE il se stabilise (ici, ambiante pour les deux),
+      pas du chemin thermique suivi. $\tau_P \approx \tau_Q \approx 2/3$.
+    solution: |
+      Ce que change une différence de protocole thermique, c'est uniquement
+      la vitesse à laquelle chaque flacon atteint son équilibre - jamais la
+      composition de cet équilibre, qui ne dépend que de $K$ à la
+      température où le système se stabilise. Les deux flacons finissent
+      par se stabiliser à peu près à la même composition, car $K$ à reflux
+      et $K$ à température ambiante sont quasiment égaux (réaction quasi
+      athermique) : $\tau_P \approx \tau_Q \approx 2/3$, exactement comme
+      aux chapitres précédents. Seule la durée pour s'y stabiliser diffère.
+
+  # ── temps + catalyseur ne rendent jamais la réaction totale ─────────────────
+  # (floor-closing: esterification-totale 2→3)
+  - id: EH-23
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.esterification-totale
+    stem: >
+      Un élève, avant d'avoir étudié ce chapitre, fait le raisonnement
+      suivant : « Si on laisse le ballon à reflux deux fois plus longtemps -
+      quatre heures au lieu de deux -, on obtiendra deux fois plus d'ester ;
+      et si on chauffe suffisamment longtemps, disons plusieurs jours, on
+      finira par convertir la totalité de l'acide initial en ester. » Que
+      peut-on dire de ce raisonnement, à la lumière de ce que tu as appris
+      sur l'estérification ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il est vrai sur les deux points : l'estérification progresse tant qu'on chauffe le mélange, et elle finit nécessairement par consommer tout l'acide si l'on patiente assez longtemps."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.esterification-totale
+        feedback: >
+          Modèle « l'estérification finit par être totale ». Non : l'ester
+          et l'eau formés réagissent en sens inverse (hydrolyse) dès qu'ils
+          apparaissent, ce qui fige la composition à un équilibre bien avant
+          l'épuisement de l'acide - quelle que soit la durée de chauffage.
+      - id: B
+        text: "Il devient vrai si l'on ajoute, en plus du temps, davantage de catalyseur acide en cours de route : c'est la combinaison des deux qui permettrait d'épuiser l'acide de départ."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+        feedback: >
+          Le catalyseur ne fait qu'accélérer l'arrivée à l'équilibre, il ne
+          le déplace jamais, quelle que soit la quantité utilisée ou la
+          durée écoulée : combiner temps et catalyseur ne fait qu'atteindre
+          plus vite le même équilibre incomplet.
+      - id: C
+        text: "Il est faux sur les deux points : une fois l'équilibre atteint, prolonger le chauffage ne change plus rien à la composition du mélange, et ni l'acide ni l'alcool ne disparaissent jamais."
+        correct: true
+      - id: D
+        text: "Il est faux seulement sur le premier point, doubler la durée ne doublant pas l'ester ; le second point reste vrai, il faut simplement chauffer beaucoup plus longtemps que quelques jours."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.esterification-totale
+        feedback: >
+          Le second point reste tout aussi faux, quelle que soit la durée
+          envisagée : les quatre espèces coexistent indéfiniment à
+          l'équilibre, l'acide et l'alcool ne disparaissant jamais
+          complètement, pas même après un temps extrêmement long.
+    correct_feedback: >
+      Les deux affirmations de l'élève supposent une réaction totale, qui
+      n'existe pas ici : l'équilibre est atteint bien avant que quatre
+      heures ne s'écoulent, et prolonger le chauffage indéfiniment ne fait
+      jamais disparaître complètement l'acide et l'alcool.
+    solution: |
+      Ce raisonnement calque, à tort, l'estérification sur une réaction
+      totale et proportionnelle au temps. En réalité, dès que de l'ester et
+      de l'eau se forment, ils peuvent réagir en sens inverse (hydrolyse) :
+      le système atteint un état d'équilibre où les quatre espèces
+      coexistent indéfiniment, généralement en quelques heures, bien avant
+      que « quatre heures » ou « plusieurs jours » ne changent quoi que ce
+      soit. Doubler la durée de chauffage, une fois l'équilibre atteint, ne
+      double donc pas la quantité d'ester - et aucune durée, aussi longue
+      soit-elle, ne fait disparaître complètement l'acide et l'alcool.
+
+  # ── avancement maximal vs avancement final, calcul direct (nouveau) ─────────
+  # (floor-closing: avancement-final-egale-maximal 0→3, item 1/3)
+  - id: EH-24
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal
+    stem: >
+      Pour une estérification simple, on part de $n_0 = 1{,}0$ mol d'acide
+      et $n_0 = 1{,}0$ mol d'alcool ($K=4$, donc $\tau \approx 0{,}667$,
+      comme au chapitre 4). Quelles sont les valeurs de l'avancement maximal
+      $x_{max}$ (si la réaction était totale) et de l'avancement final $x_f$
+      (réellement atteint à l'équilibre) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$x_{max} = x_f \\approx 0{,}667$ mol : l'avancement maximal, c'est justement la valeur atteinte à l'équilibre, par définition."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal
+        feedback: >
+          C'est confondre les deux définitions. $x_{max}$ est une borne
+          stoechiométrique théorique (ce qu'on obtiendrait si toute la
+          réaction, l'acide entier, était consommé) ; $x_f$ est ce que la
+          réaction atteint réellement à l'équilibre. Ici $x_{max}=1{,}0$
+          mol, $x_f\approx0{,}667$ mol : ce sont deux valeurs différentes,
+          pas la même par définition.
+      - id: B
+        text: "$x_{max} = 0{,}667$ mol et $x_f = 1{,}0$ mol : c'est l'avancement final qui représente la limite stoechiométrique complète, une fois l'équilibre atteint."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal
+        feedback: >
+          Les deux valeurs sont inversées, et le sens même de $x_{max}$ est
+          mal compris : $x_{max}=n_0=1{,}0$ mol est la borne stoechiométrique
+          (fixe, indépendante de l'équilibre), tandis que $x_f=\tau n_0
+          \approx 0{,}667$ mol est toujours inférieur ou égal à $x_{max}$,
+          jamais supérieur.
+      - id: C
+        text: "$x_{max} = 4{,}0$ mol."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau
+        feedback: >
+          $K=4$ est une constante d'équilibre, sans dimension et sans lien
+          direct avec une quantité de matière en mol. $x_{max}$ se lit
+          uniquement à partir de la stoechiométrie et des quantités
+          initiales ($x_{max}=n_0=1{,}0$ mol ici), jamais à partir de $K$.
+      - id: D
+        text: "$x_{max} = 1{,}0$ mol (limité par l'acide, réactif en quantité égale à l'alcool) ; $x_f = \\tau \\, n_0 \\approx 0{,}667$ mol, strictement inférieur à $x_{max}$."
+        correct: true
+    correct_feedback: >
+      $x_{max}=n_0=1{,}0$ mol est une borne stoechiométrique fixe ;
+      $x_f=\tau n_0\approx0{,}667$ mol est ce que la réaction, limitée par
+      l'équilibre, atteint réellement - $x_f<x_{max}$, donc
+      $\tau=x_f/x_{max}<1$.
+    solution: |
+      L'avancement maximal $x_{max}$ se lit sur la stoechiométrie seule, en
+      imaginant la réaction totale : ici, l'acide (comme l'alcool) est en
+      quantité $n_0=1{,}0$ mol, donc $x_{max}=1{,}0$ mol.
+
+      L'avancement final $x_f$ est celui réellement atteint, fixé par $K$
+      via $\tau=x_f/x_{max}=x_f/n_0\approx0{,}667$, donc
+      $x_f\approx0{,}667$ mol.
+
+      $x_f < x_{max}$ : il reste, à l'équilibre, $n_0 - x_f \approx
+      0{,}333$ mol d'acide et d'alcool non convertis - la signature d'une
+      réaction limitée.
+
+  # ── équilibre atteint ≠ réactifs épuisés, conceptuel (nouveau) ──────────────
+  # (floor-closing: avancement-final-egale-maximal 0→3, item 2/3)
+  - id: EH-25
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal
+    stem: >
+      Après un long moment de chauffage à reflux, la quantité d'ester dans
+      le ballon cesse d'augmenter : le système a atteint son état
+      d'équilibre. Peut-on en conclure que tout l'acide initial a bien été
+      transformé, c'est-à-dire que l'avancement a atteint sa valeur maximale
+      possible ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui : puisque la quantité d'ester ne bouge plus, c'est qu'il n'y a plus d'acide disponible pour continuer la réaction."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal
+        feedback: >
+          C'est confondre « la composition ne change plus » (équilibre) et
+          « il n'y a plus de réactif » (avancement maximal atteint). Ici,
+          l'acide et l'alcool restent présents en quantité non nulle et
+          détectable, aux côtés de l'ester et de l'eau, indéfiniment.
+      - id: B
+        text: "Non : atteindre l'équilibre signifie seulement que la composition ne change plus, pas que les réactifs sont épuisés. Il reste de l'acide et de l'alcool non transformés, aux côtés de l'ester et de l'eau."
+        correct: true
+      - id: C
+        text: "Oui, car un système chimique cesse toujours d'évoluer précisément au moment où l'un des réactifs est épuisé."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal
+        feedback: >
+          Ce n'est vrai que pour une réaction totale. Ici, la réaction est
+          limitée : elle cesse d'évoluer (en apparence) parce que les
+          vitesses des deux sens (estérification, hydrolyse) s'égalisent,
+          bien avant que l'acide ne soit épuisé.
+      - id: D
+        text: "On ne peut pas conclure avec certitude, mais il est raisonnable de penser qu'il ne reste que des traces négligeables d'acide, ce qui revient à peu près à un avancement maximal."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal
+        feedback: >
+          Ce n'est pas une question de « traces négligeables » : pour
+          l'estérification simple étudiée, la proportion d'acide restant à
+          l'équilibre est loin d'être négligeable (de l'ordre du tiers de la
+          quantité initiale, pour $K=4$) - l'avancement final $x_f$ reste
+          nettement inférieur à $x_{max}$, pas juste « à peu près » égal.
+    correct_feedback: >
+      L'équilibre fige la composition, mais ne l'amène jamais à
+      l'épuisement des réactifs : il reste toujours de l'acide et de
+      l'alcool, aux côtés de l'ester et de l'eau - l'avancement final $x_f$
+      reste strictement inférieur à l'avancement maximal $x_{max}$.
+    solution: |
+      Que l'odeur (ou la quantité d'ester) cesse de changer signale
+      seulement que les vitesses de l'estérification et de l'hydrolyse sont
+      devenues égales : c'est la définition de l'équilibre, pas celle d'une
+      réaction totale. Un test chimique, à cet instant, révèle
+      systématiquement la présence résiduelle d'acide et d'alcool :
+      l'avancement final $x_f$ est donc strictement inférieur à
+      l'avancement maximal stoechiométrique $x_{max}$, quel que soit le
+      temps écoulé.
+
+  # ── avancement maximal vs final, bac-style avec chiffres frais (nouveau) ────
+  # (floor-closing: avancement-final-egale-maximal 0→3, item 3/3)
+  - id: EH-26
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal
+    stem: >
+      Un chimiste réalise une estérification simple entre un acide et un
+      alcool à chaîne linéaire, en partant de $n_0=0{,}40$ mol de chacun.
+      Après un temps très long, une chromatographie confirme que le système
+      a atteint son état d'équilibre, avec $n(ester)_{eq}=0{,}32$ mol.
+      Peut-on affirmer que l'avancement a atteint sa valeur maximale
+      $x_{max}$ ? Justifie à l'aide d'un calcul.
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui : puisque le système est à l'équilibre après un temps très long, cela signifie que la réaction est allée à son terme, donc $x_f=x_{max}=0{,}40$ mol."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal
+        feedback: >
+          « Équilibre » et « terme de la réaction » ne sont pas synonymes
+          ici. Le fait mesuré ($n(ester)_{eq}=0{,}32$ mol, pas $0{,}40$
+          mol) montre justement que $x_f<x_{max}$ : la réaction s'est
+          arrêtée à un équilibre, pas à l'épuisement de l'acide.
+      - id: B
+        text: "On ne peut rien dire sur $x_{max}$ sans connaître d'abord $K$."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau
+        feedback: >
+          $x_{max}$ ne dépend que de la stoechiométrie et des quantités
+          initiales ($x_{max}=n_0=0{,}40$ mol ici), jamais de $K$. C'est
+          $\tau$ (et donc, indirectement, $K$) qui dépend de la position de
+          l'équilibre - pas $x_{max}$, qui est une donnée de départ.
+      - id: C
+        text: "Non : $x_{max}=n_0=0{,}40$ mol, alors que l'avancement réellement atteint est $x_f=n(ester)_{eq}=0{,}32$ mol $< x_{max}$ ; le taux d'avancement final vaut $\\tau=x_f/x_{max}=0{,}80<1$."
+        correct: true
+      - id: D
+        text: "Oui, car $0{,}32$ mol d'ester formé est déjà très proche de $0{,}40$ mol : la différence est négligeable, donc on peut considérer que $x_f\\approx x_{max}$."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal
+        feedback: >
+          $\tau=0{,}32/0{,}40=0{,}80$, soit $80\,\%$ : ce n'est pas
+          négligeable, il reste $20\,\%$ de l'acide (et de l'alcool) non
+          convertis, soit $0{,}080$ mol chacun. Sur le plan des principes,
+          « proche » et « égal » restent deux choses différentes :
+          $x_f<x_{max}$ reste strictement vrai.
+    correct_feedback: >
+      $x_{max}=n_0=0{,}40$ mol (borne stoechiométrique) ; $x_f=0{,}32$ mol
+      (avancement réellement atteint à l'équilibre) : $x_f<x_{max}$, donc
+      $\tau=0{,}80<1$. Il reste $0{,}080$ mol d'acide et d'alcool non
+      convertis.
+    solution: |
+      L'avancement maximal se lit sur la stoechiométrie seule : les deux
+      réactifs étant en quantités égales, $x_{max}=n_0=0{,}40$ mol.
+
+      L'avancement final, mesuré, est $x_f=n(ester)_{eq}=0{,}32$ mol.
+
+      $\tau=\dfrac{x_f}{x_{max}}=\dfrac{0{,}32}{0{,}40}=0{,}80$.
+
+      Comme $\tau<1$, l'équilibre est atteint AVANT l'épuisement de
+      l'acide : il reste $n_0-x_f=0{,}080$ mol d'acide (et autant d'alcool)
+      non transformés, malgré le temps très long écoulé.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# COVERAGE SUMMARY (misconception floor closed in this pass — end-bank backfill
+# for the esterification-hydrolyse summit-conversion campaign, mirroring
+# content/pc/rc-charge/items.yaml's backfill convention)
+#
+# EH-1…EH-21 (originally authored against a RUNG floor only, no misconception
+# inventory) now carry an item-level `primary_misconception` AND a
+# per-distractor `misconception:` tag on every `correct:false` choice,
+# mirroring checkpoints.yaml's gold standard. EH-22…EH-26 are new, closing the
+# ≥3-item floor for the three gated misconceptions that were short
+# (chauffage-augmente-rendement, esterification-totale) or entirely absent
+# (avancement-final-egale-maximal) from the original 21-item bank. No existing
+# item was deleted, weakened, or had its correct answer, stem, feedback, or
+# rung altered — additive only.
+# ──────────────────────────────────────────────────────────────────────────────
+  # Ajoutés le 2026-09-05 : trois familles sous le plancher de 3 items du banc —
+  # `equilibre-percu-comme-arret` (1 item), `obstacle-physique-invente` (1) et
+  # `tau-depend-de-n0` (2). Les deux items les visent ensemble : ce qui se passe
+  # à l'échelle des molécules quand plus rien ne bouge (EH-27), puis ce que
+  # devient $\tau$ quand on triple les quantités engagées (EH-28).
+  - id: EH-27
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.equilibre-percu-comme-arret
+    stem: >
+      Un mélange d'acide éthanoïque et d'éthanol a atteint son état
+      d'équilibre : les quantités de chacune des quatre espèces ne varient
+      plus. Que se passe-t-il alors à l'échelle des molécules ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Les deux réactions continuent à se produire, à des vitesses égales :
+          il se forme autant d'ester qu'il s'en hydrolyse à chaque instant
+        correct: true
+      - id: B
+        text: >-
+          Plus rien ne se produit : les deux réactions se sont arrêtées, ce qui
+          est précisément ce que signifie « état d'équilibre »
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.equilibre-percu-comme-arret
+        feedback: >
+          L'équilibre chimique est DYNAMIQUE, pas statique. Ce qui est constant,
+          ce sont les quantités globales ; les molécules, elles, continuent de
+          réagir dans les deux sens. La preuve expérimentale existe : en
+          remplaçant l'oxygène de l'alcool par un isotope, on le retrouve dans
+          l'ester bien après que les quantités ont cessé de bouger.
+      - id: C
+        text: >-
+          L'eau formée s'est accumulée autour des molécules d'acide et les
+          empêche désormais de rencontrer physiquement l'alcool
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.obstacle-physique-invente
+        feedback: >
+          Aucun obstacle matériel n'intervient : les molécules continuent de se
+          rencontrer et de réagir. Ce qui limite la transformation n'est pas un
+          encombrement, c'est l'existence de la réaction INVERSE — l'hydrolyse
+          de l'ester par l'eau formée. C'est une compétition entre deux
+          réactions, pas un embouteillage.
+      - id: D
+        text: >-
+          L'estérification s'est arrêtée et seule l'hydrolyse continue, ce qui
+          explique que les quantités ne bougent plus
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.equilibre-percu-comme-arret
+        feedback: >
+          Si seule l'hydrolyse continuait, l'ester disparaîtrait peu à peu : les
+          quantités bougeraient, et dans un sens bien précis. Que rien ne varie
+          exige au contraire que les DEUX réactions se poursuivent, et
+          exactement à la même vitesse.
+    correct_feedback: >
+      À l'équilibre, les deux réactions se poursuivent à vitesses égales :
+      autant d'ester se forme qu'il s'en hydrolyse. Les quantités globales sont
+      figées, l'activité moléculaire ne l'est pas — c'est ce qu'on appelle un
+      équilibre dynamique.
+    solution: |
+      **Ce qui est constant.** Les quantités de matière des quatre espèces :
+      acide, alcool, ester, eau. C'est ce que mesure l'expérimentateur.
+
+      **Ce qui ne l'est pas.** L'activité moléculaire. L'estérification se
+      poursuit à la vitesse $v_1$, l'hydrolyse à la vitesse $v_2$, et
+      l'équilibre est exactement l'état où $v_1 = v_2$ : chaque molécule d'ester
+      formée est compensée par une molécule d'ester hydrolysée.
+
+      **La vérification expérimentale.** En marquant l'oxygène de l'alcool par
+      un isotope $^{18}\text{O}$, on le retrouve progressivement dans l'ester
+      bien après que les quantités ont cessé de varier. Rien ne bouge en
+      apparence, tout bouge en réalité.
+
+      **Ce qui limite la transformation** n'est donc ni un manque de réactifs,
+      ni un obstacle physique : c'est la réaction inverse.
+
+  - id: EH-28
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.tau-depend-de-n0
+    stem: >
+      On mélange $1{,}0\ \text{mol}$ d'acide éthanoïque et $1{,}0\ \text{mol}$
+      d'éthanol : le taux d'avancement final vaut $\tau \approx 0{,}67$. On
+      recommence avec $3{,}0\ \text{mol}$ de chacun, à la même température. Que
+      vaut alors $\tau$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Environ $0{,}67$ encore : tripler les deux quantités à proportions
+          égales multiplie de la même façon l'avancement final et l'avancement
+          maximal
+        correct: true
+      - id: B
+        text: >-
+          Nettement plus, proche de $1$ : avec trois fois plus de réactifs, les
+          rencontres sont plus nombreuses et la réaction va donc plus loin
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.tau-depend-de-n0
+        feedback: >
+          Plus de rencontres, c'est une réaction plus RAPIDE, pas une réaction
+          qui va plus loin. $\tau$ mesure la position de l'équilibre, fixée par
+          la constante $K$ : tripler les deux quantités triple aussi bien
+          l'avancement final que l'avancement maximal, et leur rapport ne bouge
+          pas.
+      - id: C
+        text: >-
+          Moins que $0{,}67$ : l'eau formée est trois fois plus abondante et
+          gêne d'autant la rencontre des molécules d'acide et d'alcool
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.obstacle-physique-invente
+        feedback: >
+          L'eau formée agit bien, mais chimiquement, pas physiquement : elle
+          hydrolyse l'ester. Or elle est ici trois fois plus abondante face à
+          trois fois plus d'ester — la compétition entre les deux sens est
+          exactement la même qu'avant. Aucun encombrement matériel n'entre en
+          jeu.
+      - id: D
+        text: >-
+          On ne peut pas le prévoir : les réactions s'arrêtent à l'équilibre, et
+          le moment de cet arrêt dépend des quantités engagées au départ
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.equilibre-percu-comme-arret
+        feedback: >
+          Rien ne s'arrête à l'équilibre : les deux réactions s'y poursuivent à
+          vitesses égales. Et l'état d'équilibre est parfaitement prévisible —
+          il est fixé par $K$, qui ne dépend que de la température. C'est même
+          pour cette raison que $\tau \approx 2/3$ est un repère du chapitre.
+    correct_feedback: >
+      $\tau \approx 0{,}67$ à nouveau. Tripler les deux quantités à proportions
+      égales triple $x_f$ et $x_{max}$ dans le même rapport : leur quotient,
+      donc $\tau$, ne change pas. Pour déplacer cet équilibre, il faut changer
+      les proportions (un excès d'un réactif) ou retirer l'un des produits.
+    solution: |
+      Le taux d'avancement final est un RAPPORT :
+      $$\tau = \frac{x_f}{x_{max}}$$
+      Partir de $3{,}0\ \text{mol}$ au lieu de $1{,}0$, en gardant les mêmes
+      proportions, multiplie $x_{max}$ par 3. La constante d'équilibre $K$,
+      elle, est inchangée — elle ne dépend que de la température — donc l'état
+      d'équilibre se situe au même endroit relatif : $x_f$ est lui aussi
+      multiplié par 3.
+
+      Le rapport reste donc $\approx 0{,}67$, soit le repère $2/3$ du mélange
+      équimolaire acide + alcool primaire.
+
+      **Ce qui déplacerait vraiment l'équilibre** : changer les PROPORTIONS
+      (un excès d'un réactif) ou retirer l'un des produits au fur et à mesure.
+      Pas la simple mise à l'échelle.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05. L'ancien déclarait franchement `floor_met: false` et
+# nommait quatre familles non gatées sous le plancher — au décompte par
+# `primary_misconception`. Sous la convention de la chaîne (au distracteur),
+# il en restait trois : `equilibre-percu-comme-arret` (1 item),
+# `obstacle-physique-invente` (1) et `tau-depend-de-n0` (2). EH-27 et EH-28 les
+# referment. Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement:        { count: 7, items: [EH-1, EH-4, EH-7, EH-9, EH-13, EH-17, EH-23] }
+    mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement:         { count: 4, items: [EH-2, EH-4, EH-9, EH-22] }
+    mc.physics.pc_esterification_hydrolyse.esterification-totale:                { count: 4, items: [EH-4, EH-7, EH-13, EH-23] }
+    mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal:       { count: 3, items: [EH-24, EH-25, EH-26] }
+    mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester:        { count: 3, items: [EH-3, EH-8, EH-11] }
+    mc.physics.pc_esterification_hydrolyse.nomenclature-radicaux-inverses:       { count: 3, items: [EH-6, EH-10, EH-19] }
+    mc.physics.pc_esterification_hydrolyse.confond-k-et-qr:                      { count: 4, items: [EH-5, EH-9, EH-18, EH-21] }
+    mc.physics.pc_esterification_hydrolyse.equilibre-percu-comme-arret:          { count: 3, items: [EH-12, EH-27, EH-28] }
+    mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau:                 { count: 5, items: [EH-14, EH-16, EH-20, EH-24, EH-26] }
+    mc.physics.pc_esterification_hydrolyse.tau-depend-de-n0:                     { count: 3, items: [EH-14, EH-15, EH-28] }
+    mc.physics.pc_esterification_hydrolyse.cinetique-thermodynamique-confondues: { count: 6, items: [EH-1, EH-2, EH-5, EH-18, EH-21, EH-22] }
+    mc.physics.pc_esterification_hydrolyse.obstacle-physique-invente:            { count: 3, items: [EH-13, EH-27, EH-28] }
+  total_items: 28
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 3
+    R2: 5
+    R3: 5
+    R4: 4
+    R5: 3
+    R6: 5
+  gated_misconceptions:
+    # Les familles nommées par les portes de conversion du sommet
+    # (cp-r0-predict, cp-r2-limitee, cp-r3-avancement, cp-r4-catalyseur,
+    # cp-r5-deplacement) — écho formatif, jamais recompté ici.
+    - mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement
+    - mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement
+    - mc.physics.pc_esterification_hydrolyse.esterification-totale
+    - mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal
+  gated_floor: 3
+  gated_floor_met: true
+  honest_state: >-
+    Les douze misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Six y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

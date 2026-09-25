@@ -1,0 +1,282 @@
+# Ondes mécaniques progressives
+
+---
+
+## R0 — Accroche : le bouchon qui ne rejoint jamais le bord
+
+Tu es au bord d'un étang parfaitement calme. Un pêcheur a posé un bouchon de liège sur l'eau, à quelques mètres du bord. Tu lances un caillou au milieu de l'étang. Des cercles se forment autour du point d'impact et s'élargissent, de plus en plus loin, jusqu'à atteindre le bouchon.
+
+Avant de lire la suite, engage-toi vraiment : à ton avis, quand la vague circulaire atteint le bouchon, que fait-il ? Est-ce qu'il se met à glisser sur l'eau, poussé par la vague, jusqu'à dériver vers le bord de l'étang ? Ou fait-il autre chose ? Prends position, en une phrase, avant de continuer.
+
+[[checkpoint:cp-r0-predict]]
+
+Voici ce qu'on observe réellement, si on filme la scène : le bouchon ne dérive pas vers le bord. Il monte, redescend, remonte — il oscille presque sur place, pendant que la vague, elle, continue son chemin vers le bord et au-delà. Une fois la vague passée, le bouchon est revenu, à peu de choses près, à sa position de départ.
+
+Si tu avais prédit que le bouchon serait entraîné vers le bord, ta prédiction et la réalité se contredisent — c'est précisément cet écart qu'on va comprendre. Si tu avais deviné juste, la vraie question commence maintenant : la vague a bien transporté quelque chose jusqu'au bouchon — elle l'a fait bouger, elle lui a donné de l'énergie pour monter et descendre — mais elle ne lui a pas fait traverser l'étang. Qu'est-ce qui voyage, alors, si ce n'est pas l'eau elle-même ?
+
+[[figure:bouchon-oscille-sur-place]]
+
+C'est tout l'objet de cette leçon : comprendre ce qu'est une onde mécanique progressive, ce qui s'y propage réellement, et comment décrire ce voyage dans le temps et dans l'espace.
+
+---
+
+## R1 — Le mécanisme : une perturbation qui voyage, une matière qui reste
+
+### Définition
+
+Une **onde mécanique progressive** est le phénomène par lequel une **perturbation** — une déformation locale créée en un point d'un milieu matériel — se propage de proche en proche dans ce milieu, **sans transport de matière**, mais **avec transport d'énergie**.
+
+Trois conditions se cachent dans cette phrase, et chacune compte :
+
+- Il faut un **milieu matériel** : une corde, de l'eau, de l'air, un solide. Une onde mécanique ne se propage jamais dans le vide — c'est elle qui a besoin d'une matière à déformer pour exister. (Les ondes électromagnétiques, elles, s'en passent ; ce n'est pas le sujet ici.)
+- Ce milieu doit être **déformable et élastique** : déformable pour qu'on puisse y créer une perturbation, élastique pour que chaque point déplacé soit rappelé vers sa position de repos une fois la perturbation passée.
+- La perturbation **avance** dans le milieu : elle atteint des points de plus en plus loin de la source, au fil du temps.
+
+### Pourquoi l'énergie voyage sans que la matière voyage
+
+Voici le mécanisme, et il vaut la peine de le voir une fois pour de bon.
+
+Imagine le milieu comme une longue chaîne de petits éléments, chacun relié à ses voisins par une liaison élastique (les fibres d'une corde, les molécules d'eau tenues entre elles, les couches d'air qui se poussent et se tirent). Quand tu écartes le premier élément de sa position de repos, la liaison élastique entraîne le voisin avec lui. Mais ce voisin, dès qu'il est écarté à son tour, subit lui aussi une force de rappel qui le tire vers *sa propre* position de repos — il ne continue pas indéfiniment dans le sens de la perturbation, il finit par revenir.
+
+Chaque élément fait donc la même chose, l'un après l'autre : il s'écarte (il reçoit de l'énergie de son voisin précédent), puis il revient vers sa position de repos (la force de rappel l'y ramène), en transmettant au passage la perturbation — et l'énergie qui l'accompagne — à l'élément suivant. Aucun élément ne voyage jusqu'au bout de la chaîne. Chacun oscille autour de l'endroit où il était déjà. Mais la perturbation, elle, avance d'élément en élément — « de proche en proche » — et avec elle, l'énergie qu'elle transporte.
+
+[[checkpoint:cp-r1-transport]]
+
+C'est exactement ce que fait la « ola » dans un stade : chaque spectateur se lève puis se rassoit à sa place — personne ne fait le tour du stade — et pourtant la vague, elle, fait bien le tour visuellement, en un temps donné. Le déplacement collectif qu'on voit n'est pas le déplacement d'une personne : c'est la transmission, de siège en siège, d'un même mouvement.
+
+Voilà ce qui se cache derrière « transport d'énergie sans transport de matière » : ce n'est pas une formule à retenir, c'est la conséquence directe de la façon dont une perturbation se relaie entre voisins dans un milieu élastique.
+
+[[motion:onde-qui-avance]]
+
+<!-- Pointeur d'échelle (jamais bloquant) : la question de la répétition dans
+     le temps de la perturbation (période, fréquence, longueur d'onde) est
+     volontairement laissée de côté ici — elle est traitée dans le chapitre
+     suivant, « Ondes mécaniques progressives périodiques ». -->
+
+On ne se demande pas ici si la perturbation se répète dans le temps, ni à quel rythme — cette question-là, celle de la périodicité et de la longueur d'onde, est le sujet du chapitre suivant.
+
+### Applique le mécanisme : reviens au bouchon
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* avant d'aller plus loin, on vérifie que le mécanisme qu'on vient de décrire explique vraiment ce qu'on a observé en ouverture — sinon, ce ne serait qu'une histoire jolie mais inutile.
+
+Le bouchon flotte sur un point précis de la surface de l'eau. Quand la perturbation créée par le caillou atteint ce point, la molécule d'eau juste sous le bouchon est écartée de sa position de repos par sa voisine (celle qui a été perturbée juste avant elle) : elle monte. Mais elle est elle-même reliée par cohésion à ses propres voisines, qui la rappellent vers sa position d'équilibre : elle redescend. Pendant ce court aller-retour, elle a transmis le mouvement — et l'énergie qui va avec — à la molécule suivante, un peu plus loin vers le bord. Et ainsi de suite.
+
+Le bouchon, posé sur cette portion d'eau, suit fidèlement ce mouvement local : il monte et redescend avec elle. Il ne dérive pas, parce que l'eau sous lui ne dérive pas non plus — elle oscille sur place, exactement comme chaque élément de la chaîne. Ce qui a vraiment traversé l'étang jusqu'au bouchon, ce n'est pas de l'eau : c'est la perturbation, relayée de molécule en molécule, portant avec elle l'énergie qu'il a fallu pour faire monter et descendre chaque point rencontré sur son passage.
+
+
+---
+
+## R2 — Ondes transversales et longitudinales
+
+### Le critère : comparer deux directions
+
+Une onde mécanique progressive se classe en observant **deux directions** : celle selon laquelle la perturbation déplace la matière, et celle selon laquelle l'onde avance.
+
+- Une onde est **transversale** quand la perturbation déplace les points du milieu **perpendiculairement** à la direction de propagation.
+- Une onde est **longitudinale** quand la perturbation déplace les points du milieu **parallèlement** à la direction de propagation.
+
+### Pourquoi cette direction n'est pas un hasard
+
+Ce n'est pas un choix arbitraire : c'est la nature de la force de rappel dans le milieu qui l'impose.
+
+Sur une corde tendue horizontalement, si tu écartes un point vers le haut, c'est la **tension** de la corde qui le rappelle — et cette tension agit pour ramener le point **dans l'alignement de la corde**, c'est-à-dire verticalement, perpendiculairement à la corde elle-même. Le déplacement est donc perpendiculaire à la direction dans laquelle la corde s'étend (et donc à la direction de propagation) : l'onde est transversale.
+
+Dans un ressort qu'on comprime puis relâche à une extrémité, la force de rappel qui s'oppose à la compression agit **dans l'axe même du ressort** — c'est la nature de l'élasticité d'un ressort comprimé de pousser dans la direction où il a été comprimé, pas sur le côté. Le déplacement des spires se fait donc **dans la même direction** que celle où la perturbation avance : l'onde est longitudinale.
+
+### Distingue les deux cas
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* dans chaque cas, on identifie d'abord la direction du déplacement de la matière, puis on la compare à la direction de propagation — ce sont ces deux directions, et seulement elles, qui tranchent.
+
+**Cas 1 — le ressort.** Tu tiens un ressort horizontal tendu entre tes deux mains. Tu comprimes brièvement une extrémité puis tu la relâches : une zone de spires resserrées se forme et voyage le long de l'axe du ressort, vers l'autre extrémité. Les spires, à l'endroit où passe la compression, se rapprochent puis s'écartent **le long de l'axe horizontal du ressort** — exactement la direction dans laquelle la compression se propage.
+
+Direction du déplacement des spires : horizontale, le long du ressort. Direction de propagation : horizontale, le long du ressort. Les deux directions coïncident : c'est une onde **longitudinale**.
+
+**Cas 2 — la corde de Melde.** Tu tiens une corde tendue horizontalement et tu donnes un coup sec vers le haut à une extrémité. Une bosse se forme et voyage le long de la corde, horizontalement, vers l'autre extrémité — mais chaque point de la corde, à son tour, se déplace **verticalement** (vers le haut puis vers le bas) quand la bosse passe par lui.
+
+Direction du déplacement des points de la corde : verticale. Direction de propagation : horizontale. Les deux directions sont perpendiculaires : c'est une onde **transversale**.
+
+[[figure:transverse-longitudinal]]
+
+*Et la surface de l'eau de l'accroche ?* Le bouchon se déplace verticalement (il monte, il redescend), alors que la vague avance horizontalement, à la surface, vers le bord. Même critère, même conclusion : c'est encore une onde transversale.
+
+---
+
+## R3 — Célérité, retard, et la relation entre $y_S$ et $y_M$
+
+Avant de lire quoi que ce soit de ce chapitre, va le chercher. Ci-dessous, une corde tendue de quatre mètres : à gauche, la main $S$ qui va lui donner une secousse ; plus loin, un point $M$ que tu pourras déplacer. On appellera **élongation** la hauteur d'un point au-dessus de sa position de repos — $y_S(t)$ pour la main, $y_M(t)$ pour le point $M$. La corde n'est dessinée à l'avance nulle part : sa forme est calculée pendant que tu regardes, à partir du seul geste de la main. Deux appareils t'attendent : un **film**, qui trace l'élongation d'un point au fil du temps, et une **photo**, qui fige la corde entière à un instant choisi. Tu paries d'abord, la corde répond ensuite.
+
+Une donnée de l'appareil, mesurée une fois pour toutes : sur cette corde-là, une secousse met $0{,}30\ \text{s}$ pour aller de $S$ jusqu'à $M$, qui est à $1{,}2\ \text{m}$. Ce qui **fixe** cette durée est précisément l'objet de ce chapitre.
+
+[[embed:corde-photo-film]]
+
+### La célérité : de quoi elle dépend, et de quoi elle ne dépend pas
+
+La **célérité** $v$ d'une onde mécanique est la vitesse à laquelle la perturbation avance dans le milieu :
+
+$$v = \frac{d}{\Delta t}$$
+
+où $d$ est la distance parcourue par la perturbation pendant la durée $\Delta t$.
+
+Voici ce qui fixe la valeur de $v$, et ce qui ne la fixe pas. La célérité dépend **uniquement du milieu** dans lequel l'onde se propage — de sa nature (une corde, de l'eau, de l'air, un solide) et de son état (une corde plus ou moins tendue, un gaz plus ou moins chaud). Le mécanisme derrière ça : c'est la « rigidité » du milieu (la force de rappel qui ramène chaque point à sa position d'équilibre) et son inertie (la masse qu'il faut mettre en mouvement) qui, ensemble, fixent la vitesse à laquelle la perturbation se relaie de proche en proche. Un milieu plus rigide, ou plus léger, relaie la perturbation plus vite ; un milieu plus mou, ou plus lourd, la relaie plus lentement.
+
+Ce qui ne change **rien** à $v$ : la source elle-même. Que la perturbation créée à la source soit ample ou discrète, brève ou étalée dans le temps, la même onde, dans le même milieu, voyage toujours à la même célérité. La forme de la perturbation façonne ce qui voyage — pas la vitesse à laquelle ça voyage.
+
+[[checkpoint:cp-r3-celerite-vs-point]]
+
+### L'outil qui vérifie une formule sans la connaître : l'équation aux dimensions
+
+Un sujet donne parfois une expression de la célérité en fonction des grandeurs du milieu — par exemple $v=\sqrt{g\,h}$ pour une onde à la surface d'une eau peu profonde, ou $v=\sqrt{F/\mu}$ pour une corde tendue — et demande d'en **vérifier l'homogénéité**. La question paraît étrange la première fois : comment vérifier une formule qu'on n'a pas démontrée ? Justement en ne regardant pas ce qu'elle dit, mais **de quelle nature** est chaque terme.
+
+**Le principe.** Une égalité physique ne peut relier que des grandeurs de **même nature**. On ne compare pas une longueur à une durée. Écrire l'équation aux dimensions, c'est remplacer chaque grandeur par sa nature — notée entre crochets — et vérifier que les deux membres retombent sur la même.
+
+Trois dimensions de base suffisent presque toujours en mécanique : la **longueur** $\text{L}$, la **masse** $\text{M}$, le **temps** $\text{T}$. Tout le reste s'en déduit par les définitions :
+
+$$
+[v] = \frac{[d]}{[\Delta t]} = \text{L}\cdot\text{T}^{-1}
+\qquad
+[a] = \frac{[v]}{[\Delta t]} = \text{L}\cdot\text{T}^{-2}
+\qquad
+[F] = [m][a] = \text{M}\cdot\text{L}\cdot\text{T}^{-2}
+$$
+
+Aucune de ces trois n'est à mémoriser : chacune se **retrouve** en une seconde depuis sa définition, et c'est le seul geste à savoir faire.
+
+**Un exemple complet.** Vérifions $v=\sqrt{g\,h}$, où $g$ est l'intensité de la pesanteur et $h$ la profondeur.
+
+$g$ est une accélération, donc $[g] = \text{L}\cdot\text{T}^{-2}$. $h$ est une longueur, donc $[h] = \text{L}$. Le produit :
+
+$$[g\,h] = \text{L}\cdot\text{T}^{-2}\times\text{L} = \text{L}^{2}\cdot\text{T}^{-2}$$
+
+et sa racine carrée :
+
+$$\left[\sqrt{g\,h}\,\right] = \text{L}\cdot\text{T}^{-1}$$
+
+C'est exactement $[v]$. **La relation est homogène.**
+
+**Ce que ce contrôle prouve, et ce qu'il ne prouve pas.** Il prouve qu'une formule *peut* être juste. Il ne prouve **jamais** qu'elle l'est : $v=\sqrt{g\,h}$ et $v=3\sqrt{g\,h}$ sont toutes deux homogènes, et une seule est vraie. L'analyse dimensionnelle ne voit pas les coefficients sans dimension. Mais elle attrape, en dix secondes et sans rien connaître de la physique du problème, toute erreur d'exposant, d'oubli de facteur ou de racine mal placée — c'est-à-dire la grande majorité des erreurs de recopie.
+
+*Cet outil ne sert pas qu'ici.* Il vaut pour toutes les formules de mécanique et d'électricité que tu croiseras : vérifie que $\tau = RC$ est bien un temps, que $\frac{1}{2}Li^2$ est bien une énergie, que $2\pi\sqrt{m/k}$ est bien une durée. Prends le réflexe sur ce chapitre, garde-le pour tous les autres — c'est le contrôle le moins cher de toute la physique.
+
+### Le retard $\tau$
+
+Puisque $v$ est fixée par le milieu, une perturbation qui parcourt une distance $d$ met un temps bien précis à le faire. Ce temps s'appelle le **retard** $\tau$ : le délai entre l'instant où la source $S$ crée la perturbation et l'instant où un point $M$, situé à la distance $d$ de $S$, la reçoit à son tour.
+
+$$\tau = \frac{d}{v}$$
+
+C'est exactement la même relation que $v = d/\Delta t$, lue dans l'autre sens : connaissant $v$ (propriété du milieu) et $d$ (une distance qu'on mesure), on prédit $\tau$, le temps qu'il faudra attendre.
+
+### La relation $y_M(t) = y_S(t - \tau)$ — et pourquoi elle est vraie
+
+Voici le résultat central de cette leçon. Note $y_S(t)$ l'élongation (le déplacement par rapport à la position de repos) de la source $S$ à l'instant $t$, et $y_M(t)$ celle d'un point $M$ situé à la distance $d$ de $S$.
+
+D'après le mécanisme de propagation de proche en proche (chapitre 2), chaque point du milieu ne fait que **relayer**, sans le déformer, ce que son voisin vient de faire, un court instant plus tard. Sur toute la distance $d$ qui sépare $S$ de $M$, cette relève se répète, point après point, et le délai total accumulé est précisément le retard $\tau = d/v$. Autrement dit : $M$ reproduit fidèlement, à chaque instant, ce que $S$ a fait $\tau$ plus tôt — ni plus tôt, ni déformé, seulement plus tard.
+
+Formalisons. Si $S$ a effectué un mouvement particulier à un instant $t'$, ce même mouvement apparaît en $M$ à l'instant $t = t' + \tau$. On veut l'élongation de $M$ en fonction de $t$ : on isole $t'$.
+
+$$t = t' + \tau$$
+
+$$t' = t - \tau$$
+
+Le mouvement que $M$ affiche à l'instant $t$ est donc celui que $S$ affichait à l'instant $t' = t - \tau$ :
+
+$$y_M(t) = y_S(t - \tau)$$
+
+Cette relation dit exactement ce que montrait le mécanisme : la courbe $y_M(t)$ est la courbe $y_S(t)$, **identique dans sa forme**, seulement décalée dans le temps de $\tau$. $M$ ne fait rien de nouveau ; il rejoue, en retard, ce que $S$ a déjà fait.
+
+### La photo et le film : deux graphiques, deux questions
+
+Il y a deux façons de dessiner ce qui se passe sur la corde, et l'examen les demande toutes les deux. Avant de lire un graphe, pose-toi **une seule** question : qu'y a-t-il sur l'axe horizontal ?
+
+- **Le film d'un point.** En abscisse, le **temps** $t$. On choisit un point — $M$, par exemple — et on note sa hauteur seconde après seconde. C'est la courbe $y_M(t)$, et c'est elle que décrit la relation $y_M(t) = y_S(t-\tau)$ : la même courbe que celle de la main, décalée vers la **droite** de $\tau$. Vers la droite, c'est-à-dire **plus tard** : $M$ ne peut pas bouger avant d'avoir été atteint.
+- **La photo de la corde.** En abscisse, la **distance** $x$ depuis $S$. On fige le temps à un instant $t_1$ et on dessine la corde entière. C'est ce qu'un sujet demande quand il parle de « l'aspect de la corde à l'instant $t_1$ » (ou, pour une cuve, de « l'aspect de la surface de l'eau »).
+
+Et voici ce qui piège tout le monde : **la photo n'est pas le geste recopié — c'est le geste retourné.** La raison tient en une phrase. Le point le plus éloigné de $S$ qui bouge est celui qui vient **juste** d'être atteint : il ne rejoue donc que le tout **début** du geste. Le point juste à côté de $S$, lui, a été atteint depuis longtemps : il en rejoue la **fin**. En parcourant la corde de $S$ vers l'avant, on **remonte le temps** du geste.
+
+Reprends la main de l'exemple travaillé : elle monte de $0$ à $3\ \text{cm}$ en $0{,}1\ \text{s}$, puis elle **reste** en haut ; la célérité vaut $4\ \text{m/s}$. Photographions la corde à $t_1 = 0{,}25\ \text{s}$. Le front — le point le plus avancé — est à $v\,t_1 = 4 \times 0{,}25 = 1{,}00\ \text{m}$ de $S$, et il est exactement à zéro : il vient d'être atteint. Le geste de montée a duré $0{,}1\ \text{s}$, soit $4 \times 0{,}1 = 0{,}40\ \text{m}$ de corde : la pente occupe donc les $40\ \text{cm}$ situés entre $0{,}60$ et $1{,}00\ \text{m}$. Avant $0{,}60\ \text{m}$, tous les points ont fini de monter : la corde y est plate, à $3\ \text{cm}$. Au-delà de $1{,}00\ \text{m}$, la perturbation n'est pas encore arrivée : la corde y est plate, à zéro. **Un plateau haut du côté de la main, une pente qui descend vers l'avant, rien au-delà du front** — l'exact retourné du graphe du geste.
+
+Le contrôle qui ne coûte rien, et qui sauve la question à l'examen : sur une photo, **la largeur d'une déformation est une distance**, pas une durée. Pour passer de l'une à l'autre, on divise ou on multiplie par $v$ — jamais autre chose.
+
+[[figure:onde-propagation-retard]]
+
+### Calcule un retard, puis décris le mouvement
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* on calcule $\tau$ en premier, car c'est lui qui indique **à partir de quel instant** $M$ commence à bouger — impossible de décrire $y_M(t)$ sans d'abord savoir combien de temps le mouvement met à parvenir jusqu'à $M$.
+
+Une onde se propage le long d'une corde tendue à la célérité $v = 4\ \text{m/s}$. La source $S$, à l'instant $t = 0$, commence un mouvement : son élongation $y_S$ croît linéairement de $0$ à $3\ \text{cm}$ entre $t=0$ et $t=0{,}1\ \text{s}$, puis reste constante, égale à $3\ \text{cm}$. Un point $M$ de la corde est situé à $d = 1{,}2\ \text{m}$ de $S$.
+
+Calculons le retard :
+
+$$\tau = \frac{d}{v} = \frac{1{,}2}{4} = 0{,}3\ \text{s}$$
+
+$M$ reproduit donc exactement le mouvement de $S$, mais $0{,}3\ \text{s}$ plus tard. Concrètement : $y_M(t) = 0$ tant que $t < 0{,}3\ \text{s}$ (le mouvement n'est pas encore arrivé jusqu'à $M$) ; puis $y_M$ croît linéairement de $0$ à $3\ \text{cm}$ entre $t = 0{,}3\ \text{s}$ et $t = 0{,}4\ \text{s}$ (le même aller que celui de $S$, décalé de $\tau$) ; puis $y_M$ reste constante, égale à $3\ \text{cm}$, pour $t > 0{,}4\ \text{s}$.
+
+*Et la même situation, vue par l'autre axe.* Un sujet peut demander la suite : « représenter l'aspect de la corde à l'instant $t_1 = 0{,}35\ \text{s}$ ». Deux gestes, dans cet ordre. **Un :** où est le front ? À $v\,t_1 = 4 \times 0{,}35 = 1{,}40\ \text{m}$ de $S$ — au-delà, la corde n'a pas encore bougé. **Deux :** de quel côté la pente ? Du côté du **front**, puisque le front rejoue le début du geste ; elle est large de $4 \times 0{,}1 = 0{,}40\ \text{m}$. La corde est donc à $3\ \text{cm}$ de $S$ jusqu'à $1{,}00\ \text{m}$, redescend jusqu'à zéro à $1{,}40\ \text{m}$, et reste plate ensuite. Et $M$, à $1{,}2\ \text{m}$ ? Il tombe au milieu de la pente, à $1{,}5\ \text{cm}$ — exactement ce que disait son film : à $0{,}35\ \text{s}$, $M$ est à mi-chemin d'une montée commencée à $0{,}3\ \text{s}$. La photo et le film disent la même chose, chacun sur son axe.
+
+[[checkpoint:cp-r3-retard]]
+
+[[checkpoint:cp-r3-periodicite]]
+
+---
+
+## R4 — Ondes à une, deux, trois dimensions : le cas du son
+
+### Ce qui fixe la forme du front d'onde
+
+L'ensemble des points atteints par la perturbation au même instant s'appelle le **front d'onde**. Sa forme dépend d'une seule chose : dans combien de directions le milieu relie-t-il chaque point à ses voisins, à partir de la source ?
+
+- **Une dimension.** Sur une corde tendue, chaque point n'est relié qu'à deux voisins : celui de gauche et celui de droite. La perturbation ne peut donc avancer que dans ces deux sens, le long de la corde. C'est une onde à une dimension.
+- **Deux dimensions.** Sur la surface de l'eau, chaque point est relié à des voisins tout autour de lui, dans le plan de la surface. Une perturbation créée en un point s'étend donc également dans toutes les directions du plan : le front d'onde dessine un cercle qui s'agrandit. C'est une onde à deux dimensions — exactement ce que montrait le caillou de l'accroche.
+- **Trois dimensions.** Dans l'air, chaque point est relié à des voisins dans toutes les directions de l'espace. Une perturbation créée en un point s'étend donc dans les trois dimensions : le front d'onde est une sphère qui grandit. C'est une onde à trois dimensions.
+
+| Nombre de dimensions | Exemple | Forme du front d'onde |
+|---|---|---|
+| Une | Onde le long d'une corde tendue | Deux points, qui s'écartent de la source |
+| Deux | Vague à la surface de l'eau | Cercle qui s'agrandit |
+| Trois | Onde sonore dans l'air | Sphère qui s'agrandit |
+
+[[figure:front-onde-dimensions]]
+
+Rien de nouveau dans le mécanisme : c'est toujours la même propagation de proche en proche (chapitre 2) — seule la géométrie du milieu change le nombre de directions disponibles autour de la source.
+
+### L'onde sonore
+
+Le son est une onde mécanique — elle a donc besoin d'un milieu matériel, et ne se propage pas dans le vide. Elle se propage dans l'air, mais tout aussi bien dans l'eau ou dans un solide, avec une célérité qui dépend du milieu traversé (elle est par exemple plus grande dans l'eau ou dans un solide que dans l'air, ces milieux étant plus « rigides » vis-à-vis de la compression).
+
+Le son est une onde **longitudinale** : sa propagation se fait par des compressions et des dilatations successives de l'air, dans la même direction que celle où le son avance — exactement le mécanisme du ressort étudié au chapitre 3, mais appliqué aux couches d'air plutôt qu'aux spires.
+
+Dans l'air, dans les conditions ordinaires, la célérité du son vaut environ $340\ \text{m/s}$ — une valeur qu'on mesure expérimentalement, avec exactement la même méthode que celle utilisée pour une onde sur une corde.
+
+### Mesurer une célérité avec deux microphones
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* on applique la méthode du chapitre 4 (mesurer un retard entre deux points séparés d'une distance connue, en déduire $v = d/\tau$), transposée ici du fil d'une corde à l'air ambiant.
+
+On place deux microphones $M_1$ et $M_2$, alignés avec une source sonore, séparés d'une distance $d = 1{,}02\ \text{m}$. Chaque microphone est relié à une voie d'un oscilloscope à deux voies. La source émet un bref signal (un clic). Sur l'écran, les deux signaux apparaissent décalés d'une durée $\Delta t = 3{,}0\ \text{ms}$ : c'est le retard entre les deux microphones, exactement comme le retard $\tau$ entre $S$ et $M$ au chapitre 4.
+
+$$v = \frac{d}{\Delta t} = \frac{1{,}02}{3{,}0\times10^{-3}} = 340\ \text{m/s}$$
+
+Cette valeur, obtenue par la mesure, est cohérente avec la célérité usuelle du son dans l'air.
+
+---
+
+## R5 — Pour t'entraîner
+
+### Récapitulatif express
+
+- Une onde mécanique progressive : une perturbation qui se propage de proche en proche dans un milieu matériel, sans transport de matière, avec transport d'énergie.
+- Transversale (déplacement $\perp$ à la propagation, ex. corde) ou longitudinale (déplacement $\parallel$ à la propagation, ex. ressort, son).
+- Célérité $v = d/\Delta t$ : dépend uniquement du milieu (nature, état), jamais de la forme de la perturbation à la source.
+- Retard $\tau = d/v$, et $y_M(t) = y_S(t - \tau)$ : $M$ rejoue le mouvement de $S$, à l'identique, avec ce retard.
+- Deux graphes à ne jamais confondre : le **film** d'un point ($y$ en fonction du **temps** : la courbe de $S$ décalée vers la droite de $\tau$) et la **photo** de la corde ($y$ en fonction de la **distance** : le geste **retourné**, front à $v\,t$, rien au-delà). Sur une photo, une largeur est une distance ; on passe à une durée en divisant par $v$.
+- Ondes à une (corde), deux (surface de l'eau) ou trois (son) dimensions : la géométrie du milieu fixe la forme du front d'onde.
+
+### Exercice de type bac
+
+À toi. Ce qui suit est un exercice d'examen national — **2018 (session normale)**, sur la détermination de la célérité d'une onde ultrasonore dans un liquide. C'est le format que tu retrouveras le jour J. Pour chaque question : cherche d'abord sur papier, engage une réponse, puis seulement ouvre le raisonnement expert et compare-le au tien.
+
+[[exercise:r-bac]]
+
+### Une variation pour ne pas mémoriser
+
+Même famille de compétences (nature de l'onde, retard, célérité, mouvement d'un point du milieu), tout autre habillage : une corde et un vibreur, à la place des ultrasons dans un liquide. À toi de reconnaître quelle relation s'applique quand le contexte et les nombres changent.
+
+[[exercise:r-variation]]

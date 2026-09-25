@@ -1,0 +1,452 @@
+notion: chaines-de-montagnes
+skill_code: svt_chaines_montagnes
+
+# ──────────────────────────────────────────────────────────────────────────────
+# POINTS D'ARRÊT DANS LA LEÇON (campagne de conversion du sommet — SVT)
+#
+# Sondes formatives posées DANS la leçon, pas le banc de fin. Aucun score,
+# aucune série, aucun décompte ; le plancher du banc n'est pas modifié.
+#
+# Placement (identifiants = marqueurs [[checkpoint:…]] de lesson.md) :
+#   cp-r0-predict      (DANS le chapitre 1) — le calcaire à fossiles marins au
+#                      sommet de l'Everest.
+#   cp-r1-himalaya     (à la fin du chapitre 2) — la leçon posait DÉJÀ ici un
+#                      « prends position » rhétorique sur l'Himalaya ; il
+#                      devient un engagement réel, avant la réponse du
+#                      chapitre 3.
+#   cp-r2-collision    (après le chapitre 3) — pourquoi la subduction s'arrête.
+#   cp-r3-ophiolite    (après le chapitre 4) — la séquence trahit l'origine.
+#   cp-r4-chevauchement (après le chapitre 5) — raccourcir, pas étirer.
+#   cp-r5-metamorphisme (après le chapitre 6) — d'où vient la pression.
+#   cp-r6-suture       (DANS le chapitre 7, avant la fermeture de l’arc) —
+#                      quatre indices, une histoire.
+#
+# CHAQUE distracteur porte un identifiant réel de l'inventaire de items.yaml.
+# Aucune erreur nouvelle n'est déclarée : les sondes réutilisent les cinq
+# modèles existants, pour ne pas rouvrir de dette de couverture.
+#
+# (2026-09-19 : cette garde disait « SVT/PC ». Le cadre déclare la variante
+# PC de la SVT « DISTINCTE — non extraite » (docs/cadre/curriculum/svt.yaml,
+# bloc `variante_pc`) : rien dans le dépôt ne permet d'affirmer que ce
+# périmètre vaut pour la filière PC. Restreint à la filière SVT ; à rouvrir
+# quand la variante sera extraite.)
+# Garde de périmètre : 2ème Bac, filière SVT — chaîne de subduction et chaîne de
+# collision, ophiolites, plis et chevauchements, métamorphisme de
+# l'enfouissement, suture. La granitisation et l'anatexie relèvent de la notion
+# voisine.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: svt_chaines_montagnes
+    tags: [checkpoint, formative, misconception_driven, svt_chaines_montagnes, hook_commit]
+    primary_misconception: mc.svt.svt_chaines_montagnes.histoire-de-la-chaine-mal-reconstituee
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Au sommet de l'Everest, la dernière roche avant le ciel est un calcaire
+      contenant des fossiles d'organismes marins. **Engage-toi avant de lire
+      la suite :** comment est-ce possible ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Ce calcaire s'est déposé au fond d'une mer, puis a été soulevé de plusieurs milliers de mètres par la construction de la chaîne elle-même."
+        correct: true
+        feedback: |
+          Oui — et toute la leçon consiste à établir COMMENT. La roche n'a pas
+          changé de nature : elle a changé d'altitude, portée par un
+          raccourcissement et un empilement dont tu vas apprendre à lire les
+          traces (plis, chevauchements, métamorphisme). L'Everest est un fond
+          de mer soulevé.
+
+      - id: B
+        text: "Le niveau de la mer atteignait autrefois 8 800 mètres et recouvrait toute la région, la roche n'ayant jamais bougé depuis son dépôt."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.histoire-de-la-chaine-mal-reconstituee
+        feedback: |
+          Modèle détecté : faire monter la mer plutôt que la roche. Un tel
+          niveau marin noierait la quasi-totalité des continents, ce dont
+          aucune trace n'existe. Et surtout, cette explication laisse la roche
+          immobile — alors que les roches voisines sont plissées, chevauchées et
+          métamorphisées, c'est-à-dire visiblement déplacées.
+
+      - id: C
+        text: "Ces fossiles ont été transportés par le vent et les eaux de ruissellement depuis les plaines indiennes, puis se sont accumulés au sommet de la chaîne."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.roche-mal-identifiee
+        feedback: |
+          Modèle détecté : expliquer par un transport de surface ce qui est un
+          trait de la roche elle-même. Les fossiles ne sont pas posés au sommet :
+          ils sont inclus dans le calcaire, qui s'est formé autour d'eux au fond
+          de la mer. C'est la roche entière qui a été déplacée, pas son contenu.
+
+      - id: D
+        text: "Le calcaire s'est formé sur place, en altitude, à partir de coquilles apportées par des oiseaux marins au cours de millions d'années d'accumulation."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.roche-mal-identifiee
+        feedback: |
+          Modèle détecté : inventer un mode de formation qui évite le
+          déplacement. Un calcaire à faune marine se forme en milieu marin, par
+          accumulation et cimentation sur un fond de mer — pas par un dépôt
+          aérien. L'origine de la roche est le premier indice, et il est sans
+          ambiguïté.
+
+  - id: cp-r1-himalaya
+    rung: "R1"
+    habilete: raisonnement
+    skill_code: svt_chaines_montagnes
+    tags: [checkpoint, formative, misconception_driven, svt_chaines_montagnes]
+    primary_misconception: mc.svt.svt_chaines_montagnes.subduction-collision-confondues
+    item_source: original
+    lesson_placement: end_R1
+
+    stem: |
+      L'Himalaya naît lui aussi de la convergence de deux plaques. **Engage-toi
+      avant de lire la suite :** y trouve-t-on, comme dans les Andes, un
+      volcanisme actif et des séismes de plus en plus profonds ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Oui, et pour la même raison : toute convergence de plaques implique qu'une lithosphère plonge, donc le volcanisme et les séismes profonds qui l'accompagnent."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.subduction-collision-confondues
+        feedback: |
+          Modèle détecté : faire de la subduction le mécanisme unique de toute
+          convergence — et c'est la prédiction la plus naturelle à ce stade, ce
+          qui la rend précieuse. Elle est fausse, et le chapitre suivant montre
+          pourquoi : quand les deux plaques en présence sont continentales,
+          aucune ne peut plonger.
+
+      - id: B
+        text: "Non : l'Himalaya ne présente ni volcanisme actif ni séismes profonds, alors qu'il est né d'une convergence — c'est cette différence qu'il faut expliquer."
+        correct: true
+        feedback: |
+          C'est le fait observé, et il est déroutant si l'on croit que
+          convergence signifie subduction. La comparaison entre les Andes et
+          l'Himalaya est le vrai sujet du chapitre suivant : deux chaînes,
+          deux mécanismes, deux signatures de terrain qui n'ont presque rien en
+          commun.
+
+      - id: C
+        text: "Oui, mais seulement en profondeur : les volcans himalayens sont enfouis sous l'épaisseur de la chaîne et n'atteignent jamais la surface, ce qui les rend indétectables."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.subduction-collision-confondues
+        feedback: |
+          Modèle détecté : sauver la subduction en cachant ses effets. Un
+          volcanisme actif enfoui resterait détectable par la sismicité et par
+          les mesures thermiques, et la subduction elle-même laisserait un plan
+          de séismes profonds. Ni l'un ni l'autre n'est observé.
+
+      - id: D
+        text: "Non, parce que l'Himalaya est une chaîne trop ancienne : la subduction qui l'a formé s'est arrêtée depuis longtemps, et le volcanisme s'est simplement éteint avec l'âge."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.subduction-collision-confondues
+        feedback: |
+          Modèle détecté : expliquer par le vieillissement ce qui tient au
+          mécanisme. L'Himalaya est au contraire une chaîne JEUNE et toujours
+          active — elle se soulève encore aujourd'hui. Ce n'est pas une chaîne
+          de subduction éteinte, c'est une chaîne d'un autre type.
+
+  - id: cp-r2-collision
+    rung: "R2"
+    habilete: comprehension
+    skill_code: svt_chaines_montagnes
+    tags: [checkpoint, formative, misconception_driven, svt_chaines_montagnes]
+    primary_misconception: mc.svt.svt_chaines_montagnes.subduction-collision-confondues
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |
+      Pourquoi la subduction qui refermait la Téthys s'est-elle arrêtée net
+      quand l'Inde est entrée en contact avec l'Asie ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Parce que la croûte continentale est trop peu dense pour s'enfoncer dans le manteau : dès que les deux blocs en présence sont continentaux, plus rien ne peut plonger."
+        correct: true
+        feedback: |
+          Oui, et c'est un argument de densité, pas de force. La lithosphère
+          océanique refroidie est plus dense que l'asthénosphère et y plonge de
+          son propre poids ; la croûte continentale, riche en granite, flotte.
+          La convergence continue — mais elle ne peut plus s'évacuer vers le bas,
+          alors elle épaissit.
+
+      - id: B
+        text: "Parce que la vitesse de convergence des deux plaques est devenue trop faible pour entretenir la subduction, qui exige un rapprochement rapide et continu."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.subduction-collision-confondues
+        feedback: |
+          Modèle détecté : chercher la cause dans la vitesse. La convergence
+          Inde-Asie se poursuit encore aujourd'hui, à plusieurs centimètres par
+          an — c'est même ce qui continue de soulever l'Himalaya. Ce qui a
+          changé, c'est la nature de la lithosphère en présence, pas son
+          mouvement.
+
+      - id: C
+        text: "Parce que la chaîne de montagnes formée au-dessus est devenue si lourde qu'elle a bloqué par son poids la plaque qui tentait de plonger sous elle."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.pression-metamorphique-mal-situee
+        feedback: |
+          Modèle détecté : faire agir le relief de surface sur des processus
+          profonds. Une chaîne de montagnes, même très haute, pèse peu au regard
+          des forces en jeu à l'échelle de la lithosphère — et la chaîne est une
+          CONSÉQUENCE de l'arrêt de la subduction, pas sa cause.
+
+      - id: D
+        text: "Parce que toute la lithosphère océanique avait été engloutie, et qu'une chaîne de collision n'est jamais qu'une chaîne de subduction ayant épuisé son océan."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.subduction-collision-confondues
+        feedback: |
+          Modèle détecté : une moitié juste, une moitié fausse. L'océan a bien
+          été entièrement englouti — c'est le point de départ. Mais ce qui suit
+          n'est pas la même chaîne devenue vieille : c'est un autre mécanisme,
+          avec d'autres signatures de terrain (pas de volcanisme, séismes
+          superficiels, épaississement au lieu de destruction).
+
+  - id: cp-r3-ophiolite
+    rung: "R3"
+    habilete: application
+    skill_code: svt_chaines_montagnes
+    tags: [checkpoint, formative, misconception_driven, svt_chaines_montagnes]
+    primary_misconception: mc.svt.svt_chaines_montagnes.roche-mal-identifiee
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |
+      Au milieu d'une chaîne de collision, on trouve un ensemble de roches
+      sombres et denses empilées dans l'ordre suivant : basaltes en coussins
+      au sommet, gabbro en dessous, péridotite à la base. Que conclure ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "C'est une ophiolite : cette séquence reproduit la structure verticale d'une lithosphère océanique, donc un fragment d'océan disparu, préservé de la subduction."
+        correct: true
+        feedback: |
+          Exactement, et l'argument fort est l'ORDRE. Une composition sombre
+          isolée pourrait s'expliquer autrement ; retrouver les trois étages
+          empilés dans le bon sens, coincés entre deux blocs de croûte
+          continentale, ne s'explique que d'une façon. Les basaltes en coussins
+          signent à eux seuls une mise en place sous l'eau.
+
+      - id: B
+        text: "C'est une variété sombre de croûte continentale : toute roche trouvée au cœur d'une chaîne continentale appartient nécessairement à cette croûte."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.roche-mal-identifiee
+        feedback: |
+          Modèle détecté : déduire l'origine d'une roche de sa position — et ce
+          raisonnement efface précisément la preuve recherchée. La croûte
+          continentale est faite de granite, clair et riche en silice, avec une
+          densité bien plus faible. Ce sont deux compositions et deux origines
+          physiquement distinctes.
+
+      - id: C
+        text: "C'est un granite ayant subi un métamorphisme intense, qui l'a assombri et densifié tout en réorganisant ses minéraux en trois niveaux successifs."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.roche-mal-identifiee
+        feedback: |
+          Modèle détecté : expliquer par le métamorphisme un changement de
+          composition chimique. Le métamorphisme réorganise les minéraux à
+          l'état solide, il ne transforme pas une roche riche en silice en
+          péridotite riche en fer et en magnésium. Et il n'a aucune raison de
+          produire l'ordre exact d'un plancher océanique.
+
+      - id: D
+        text: "C'est une coulée volcanique récente, mise en place après la formation de la chaîne, dont le refroidissement a produit trois textures différentes selon la profondeur."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.roche-mal-identifiee
+        feedback: |
+          Modèle détecté : lire une coulée là où la séquence est structurale.
+          Une coulée récente reposerait AU-DESSUS des roches de la chaîne, sans
+          être chevauchée ni déformée par elles. Et les basaltes en coussins
+          exigent un refroidissement sous l'eau, ce qu'un sommet de chaîne
+          continentale ne fournit pas.
+
+  - id: cp-r4-chevauchement
+    rung: "R4"
+    habilete: comprehension
+    skill_code: svt_chaines_montagnes
+    tags: [checkpoint, formative, misconception_driven, svt_chaines_montagnes]
+    primary_misconception: mc.svt.svt_chaines_montagnes.deformation-mal-interpretee
+    item_source: original
+    lesson_placement: after_R4
+
+    stem: |
+      Dans une chaîne, on observe une faille inclinée le long de laquelle un
+      paquet de couches anciennes repose au-dessus de couches plus récentes.
+      Qu'est-ce que cette structure enregistre ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Un raccourcissement horizontal : c'est un chevauchement, où un bloc a été poussé par-dessus l'autre, ce qui empile les terrains et épaissit la croûte."
+        correct: true
+        feedback: |
+          Oui, et l'anomalie d'âge est le meilleur indice. Dans une pile
+          sédimentaire non déformée, le plus ancien est toujours en dessous.
+          Trouver l'ancien au-dessus du récent signifie qu'un paquet entier a
+          été transporté par-dessus l'autre — un raccourcissement, comme les
+          plis qui l'accompagnent.
+
+      - id: B
+        text: "Un étirement horizontal : la faille traduit un écartement des deux blocs, l'un ayant glissé vers le bas le long du plan incliné sous l'effet de son poids."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.deformation-mal-interpretee
+        feedback: |
+          Modèle détecté : lire un chevauchement comme une faille normale. Le
+          test est géométrique : dans un étirement, le bloc supérieur DESCEND le
+          long du plan, ce qui met du récent au-dessus de l'ancien et allonge
+          l'ensemble. Ici c'est l'inverse — et c'est cohérent avec une chaîne,
+          où tout se raccourcit.
+
+      - id: C
+        text: "Un ordre de dépôt particulier : les sédiments les plus anciens se sont déposés en dernier, au-dessus des plus récents, ce qui explique leur position actuelle."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.deformation-mal-interpretee
+        feedback: |
+          Modèle détecté : sauver l'ordre observé en modifiant l'ordre de dépôt.
+          Un sédiment ne peut pas se déposer avant celui qu'il recouvre : c'est
+          le principe de superposition. L'inversion observée n'est donc pas
+          sédimentaire mais TECTONIQUE — la structure a bougé après le dépôt.
+
+      - id: D
+        text: "Rien de particulier sur les contraintes : les failles enregistrent des mouvements, tandis que les plis relèvent d'un phénomène sans rapport avec eux."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.deformation-mal-interpretee
+        feedback: |
+          Modèle détecté : séparer plis et chevauchements. Ce sont deux réponses
+          à la MÊME contrainte de raccourcissement, à deux profondeurs
+          différentes : la roche plie là où elle est ductile, casse et chevauche
+          là où elle est cassante. Les trouver ensemble est la signature d'une
+          compression.
+
+  - id: cp-r5-metamorphisme
+    rung: "R5"
+    habilete: raisonnement
+    skill_code: svt_chaines_montagnes
+    tags: [checkpoint, formative, misconception_driven, svt_chaines_montagnes]
+    primary_misconception: mc.svt.svt_chaines_montagnes.pression-metamorphique-mal-situee
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |
+      On trouve, affleurant au sommet d'une chaîne de collision, une roche
+      métamorphique dont les minéraux ne se forment qu'à très haute pression.
+      D'où vient cette pression ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Du poids de la colonne de roches qui la surmontait quand elle était enfouie à grande profondeur ; elle a ensuite été ramenée en surface par l'érosion et le soulèvement."
+        correct: true
+        feedback: |
+          Oui — et c'est un raisonnement en deux temps qu'il faut savoir tenir.
+          La roche témoigne d'une profondeur PASSÉE, pas de sa position
+          actuelle. Elle a été enfouie sous l'épaississement de la chaîne, y a
+          acquis ses minéraux, puis a été exhumée. Sa présence au sommet est
+          donc la preuve d'un enfouissement suivi d'un soulèvement.
+
+      - id: B
+        text: "De l'altitude à laquelle elle se trouve : plus on monte dans une chaîne, plus la pression exercée sur les roches augmente, ce qui les métamorphise sur place."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.pression-metamorphique-mal-situee
+        feedback: |
+          Modèle détecté : inverser le sens de variation de la pression. Elle
+          diminue quand on monte — un sommet supporte moins de roche au-dessus
+          de lui, pas plus. La haute pression ne peut venir que d'une position
+          bien plus PROFONDE que celle où on trouve la roche aujourd'hui.
+
+      - id: C
+        text: "Du poids de la montagne elle-même, qui comprime les roches de son sommet sous les milliers de mètres de relief qu'elle porte au-dessus d'elles."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.pression-metamorphique-mal-situee
+        feedback: |
+          Modèle détecté : chercher la charge dans le relief. Une roche au
+          SOMMET n'a rien au-dessus d'elle — c'est le point le plus haut. Et
+          même au pied de la chaîne, quelques milliers de mètres de relief
+          restent très loin des dizaines de kilomètres d'enfouissement que ces
+          minéraux exigent.
+
+      - id: D
+        text: "De la compression horizontale exercée par les deux plaques, qui suffit à elle seule à métamorphiser une roche restée en surface pendant toute la collision."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.pression-metamorphique-mal-situee
+        feedback: |
+          Modèle détecté : confondre la contrainte tectonique avec la pression
+          lithostatique. La compression horizontale déforme — elle plisse et
+          chevauche — mais le métamorphisme de haute pression demande
+          l'enfouissement, c'est-à-dire une charge de roches au-dessus. Une
+          roche restée en surface ne peut pas l'acquérir.
+
+  - id: cp-r6-suture
+    rung: "R6"
+    habilete: raisonnement
+    skill_code: svt_chaines_montagnes
+    tags: [checkpoint, formative, misconception_driven, svt_chaines_montagnes]
+    primary_misconception: mc.svt.svt_chaines_montagnes.histoire-de-la-chaine-mal-reconstituee
+    item_source: original
+    lesson_placement: in_R6
+
+    stem: |
+      Dans une chaîne, on relève : un alignement d'ophiolites, des
+      chevauchements de part et d'autre de cet alignement, des roches
+      métamorphiques de haute pression, et aucun volcanisme actif. Que
+      raconte cet ensemble ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Un océan s'est refermé par subduction, puis deux marges continentales sont entrées en collision : l'alignement d'ophiolites marque la ligne de fermeture, la suture."
+        correct: true
+        feedback: |
+          Oui — et c'est ce que veut dire « reconstituer l'histoire d'une
+          chaîne ». Chaque indice date une étape : l'ophiolite atteste l'océan,
+          sa position en ligne marque l'endroit exact où il s'est refermé, les
+          chevauchements et le métamorphisme enregistrent la collision,
+          l'absence de volcanisme dit que la subduction est terminée.
+
+      - id: B
+        text: "Les quatre indices n'ont pas de rapport entre eux : les ophiolites se trouvent là par hasard, et leur alignement est une coïncidence sans signification géologique."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.histoire-de-la-chaine-mal-reconstituee
+        feedback: |
+          Modèle détecté : refuser de lire une histoire dans un faisceau
+          d'indices. Un alignement n'est jamais fortuit en géologie : il
+          matérialise une structure. Ici, c'est la trace de l'ancien océan,
+          pincé entre les deux marges au moment où elles se sont soudées.
+
+      - id: C
+        text: "La chaîne est une chaîne de subduction encore active, l'absence de volcanisme s'expliquant par une simple période de repos entre deux épisodes éruptifs."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.subduction-collision-confondues
+        feedback: |
+          Modèle détecté : maintenir l'hypothèse de la subduction contre
+          l'ensemble des indices. Les ophiolites chevauchées et le
+          métamorphisme de haute pression ne s'observent pas dans une marge
+          active de type andin : ils signent l'épaississement d'une collision,
+          où la subduction s'est arrêtée.
+
+      - id: D
+        text: "Les roches métamorphiques et les ophiolites se sont formées sur place, dans la chaîne, sans avoir jamais été déplacées de l'endroit où on les trouve aujourd'hui."
+        correct: false
+        misconception: mc.svt.svt_chaines_montagnes.histoire-de-la-chaine-mal-reconstituee
+        feedback: |
+          Modèle détecté : la roche qui n'a pas bougé. Les deux indices disent
+          le contraire, chacun à sa façon : une ophiolite s'est formée sous un
+          océan qui n'existe plus, une roche de haute pression s'est formée à
+          des dizaines de kilomètres de profondeur. Les deux ont voyagé, et
+          c'est ce voyage qui raconte l'histoire de la chaîne.

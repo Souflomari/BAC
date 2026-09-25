@@ -1,0 +1,152 @@
+# Attempt-first exercises (summit-conversion campaign — systemes-oscillants).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2018 session
+# normale, PC BIOF, code NS28F, AlloSchool element/57726 — statut « vérifié »
+# in docs/sujets/pc/systemes-oscillants.md). Only the OSCILLATION questions of
+# that Partie II are transcribed here (lecture du graphe x(t)) ; the ENERGY
+# questions of the same exam (E_pe, travail de la force de rappel) are
+# cross-listed to the lesson aspects-energetiques. r-variation is a fresh
+# anti-mémorisation twin (same skills, different numbers/framing,
+# status not-applicable).
+
+notion: systemes-oscillants
+
+exercises:
+  # ── r-bac — the VERIFIED 2018 national sujet, Ex IV Partie II (oscillation) ──
+  # Faithful transcription of docs/sujets/pc/systemes-oscillants.md → "2018 —
+  # session normale — Exercice IV (Partie II)". Solide-ressort horizontal,
+  # K = 35 N/m, écarté de X_m puis lâché sans vitesse, sans frottement ; on
+  # étudie x(t) = X_m cos(2πt/T_0 + φ) à partir de la courbe (figure 4). La
+  # question 1 du sujet (déterminer X_m, T_0, φ) est ici aplatie en q-ids
+  # séparés (addendum PC de la recette) ; l'assemblage de x(t) clôt l'étude.
+  - id: r-bac
+    title: "Exercice de type bac — pendule élastique solide-ressort (2018)"
+    sourcing:
+      status: sourced
+      note: >-
+        2018 session normale — examen national PC BIOF, AlloSchool NS28F
+        (Exercice IV, Partie II — pendule élastique solide-ressort ; barème
+        2,0 pt sur les 5,5 pt de l'exercice). Transcription vérifiée :
+        re-fetch indépendant AlloSchool element/57726 + diff OK
+        (docs/sujets/pc/systemes-oscillants.md, statut « vérifié »). Seules les
+        questions d'oscillation (lecture du graphe x(t) : X_m, T_0, φ) sont
+        transcrites ici ; les questions énergétiques de la même partie (E_pe à
+        t_1, travail de la force de rappel) relèvent de la leçon
+        aspects-energetiques.
+    intro: |-
+      **Étude d'un oscillateur mécanique (examen national, session normale 2018).**
+
+      On modélise une partie d'une machine par un oscillateur horizontal : un solide $(S)$, de centre d'inertie $G$ et de masse $m$, est fixé à l'extrémité d'un ressort horizontal à spires non jointives, de masse négligeable et de raideur $K = 35\ \text{N.m}^{-1}$. L'autre extrémité du ressort est attachée à un support immobile.
+
+      On écarte $(S)$ de sa position d'équilibre d'une distance $X_m$, puis on le lâche **sans vitesse initiale**. Le solide oscille **sans frottements** sur le plan horizontal. On étudie le mouvement de $G$ dans un repère $(O, \vec{i})$ lié à un référentiel terrestre galiléen, l'origine $O$ coïncidant avec la position de $G$ à l'équilibre. On repère la position de $G$ par l'abscisse $x$.
+
+      L'équation horaire du mouvement s'écrit sous la forme $x(t) = X_m\cos\left(\dfrac{2\pi t}{T_0} + \varphi\right)$.
+
+      La courbe de la figure 4 représente $x$ (en $\text{cm}$) en fonction du temps $t$ (en $\text{s}$) : c'est une sinusoïde dont les ordonnées sont graduées à $-6,\ -3,\ 3,\ 6$ et l'axe des temps repéré aux valeurs $0{,}5$ et $1$. La courbe **part de son minimum** à $t = 0$, remonte jusqu'à son maximum au repère $t = 0{,}5\ \text{s}$, puis revient à son minimum au repère $t = 1\ \text{s}$ ; ses extrema se posent exactement sur les deux graduations extrêmes de l'axe des ordonnées.
+    questions:
+      - id: q1
+        part: "Partie II — Lire le graphe $x(t)$ et déterminer les caractéristiques du mouvement"
+        stem: |-
+          **(0,25 pt)** Déterminer graphiquement l'amplitude $X_m$ du mouvement.
+        reasoning: |-
+          L'amplitude, c'est l'écart maximal du solide par rapport à l'équilibre — la valeur la plus grande atteinte par $|x|$, lue directement sur l'axe des ordonnées. Aucun calcul : la courbe monte jusqu'à $+6\ \text{cm}$ et descend jusqu'à $-6\ \text{cm}$, symétriquement autour de $x = 0$. C'est donc la graduation extrême de la sinusoïde qui donne $X_m$.
+
+          $$X_m = 6\ \text{cm} = 6{,}0\times10^{-2}\ \text{m}$$
+      - id: q2
+        stem: |-
+          **(0,25 pt)** Déterminer graphiquement la période propre $T_0$, puis en déduire la pulsation propre $\omega_0$.
+        reasoning: |-
+          La période propre, c'est la durée d'un cycle complet — l'intervalle de temps entre deux passages successifs par un même état (même position **et** même sens). Sur la courbe, le plus simple est de repérer deux minima consécutifs : le solide est à son minimum à $t = 0$, puis de nouveau à son minimum à $t = 1\ \text{s}$. Entre les deux, un aller-retour complet s'est déroulé.
+
+          Un contrôle rapide confirme la lecture : de $t = 0$ (minimum) à $t = 0{,}5\ \text{s}$ (maximum), il s'est écoulé une demi-période, soit $T_0/2 = 0{,}5\ \text{s}$ — cohérent avec $T_0 = 1\ \text{s}$.
+
+          On passe ensuite de la période à la pulsation avec le facteur $2\pi$ (attention : $\omega_0$ se compte en $\text{rad/s}$, pas en $\text{Hz}$).
+
+          $$T_0 = 1\ \text{s}$$
+        steps:
+          - math: '\omega_0 = \frac{2\pi}{T_0} = \frac{2\pi}{1} = 2\pi \approx 6{,}28\ \text{rad/s}'
+            note: "On applique la relation entre pulsation et période. Le facteur 2π est incontournable : il convertit une durée en un rythme angulaire (rad/s)."
+      - id: q3
+        stem: |-
+          **(0,25 pt)** Déterminer la phase à l'origine $\varphi$ à partir des conditions initiales du lâcher.
+        reasoning: |-
+          On n'invente pas $\varphi$ : on le lit dans les conditions initiales, exactement comme au chapitre 3. Le solide part de son écart maximal négatif, $x(0) = -X_m$, et il est lâché **sans vitesse**, $v(0) = 0$. On injecte $t = 0$ dans l'équation horaire et on identifie.
+
+          La condition sur la position suffit presque à trancher : $\cos\varphi = -1$ n'a qu'une solution dans $[0, 2\pi[$, à savoir $\varphi = \pi$. La condition sur la vitesse sert alors de vérification — et elle passe, car $\sin\pi = 0$ donne bien $v(0) = 0$.
+        steps:
+          - math: 'x(0) = X_m\cos\varphi = -X_m \implies \cos\varphi = -1 \implies \varphi = \pi\ \text{rad}'
+            note: "Position initiale : le solide démarre à l'écart maximal négatif, donc x(0) = -X_m."
+          - math: 'v(0) = -X_m\,\omega_0\sin\varphi = -X_m\,\omega_0\sin\pi = 0'
+            note: "Contrôle : la vitesse initiale est bien nulle (sin π = 0), conforme au lâcher sans vitesse. La valeur φ = π est confirmée."
+      - id: q4
+        stem: |-
+          **(hors barème — synthèse maison)** En déduire l'équation horaire numérique $x(t)$ du mouvement.
+        reasoning: |-
+          Les trois déterminations précédentes ne sont pas des résultats isolés : ce sont exactement les trois constantes de la forme donnée $x(t) = X_m\cos(2\pi t/T_0 + \varphi)$. Écrire l'équation horaire, c'est simplement les y reporter — l'amplitude $X_m$, la pulsation $\omega_0 = 2\pi/T_0$, et la phase $\varphi$. Un dernier contrôle en $t = 0$ vérifie qu'on retombe sur le point de départ lu au graphe.
+        steps:
+          - math: 'x(t) = X_m\cos\left(\frac{2\pi}{T_0}t + \varphi\right) = 6{,}0\times10^{-2}\cos\left(2\pi t + \pi\right)\ \text{(m)}'
+            note: "On reporte X_m = 6,0×10⁻² m, T_0 = 1 s (soit une pulsation 2π rad/s) et φ = π."
+          - math: 'x(0) = 6{,}0\times10^{-2}\cos\pi = -6{,}0\times10^{-2}\ \text{m}'
+            note: "Contrôle final : à t = 0 on retrouve bien x = -6 cm, le minimum lu sur la courbe."
+
+  # ── r-variation — fresh anti-mémorisation twin (NOT a real sujet) ──────────
+  # Same deep skills as r-bac (T_0/ω_0 d'une mesure, remonter à k via ω_0²=k/m,
+  # écrire x(t) à partir des conditions initiales, reconnaître un régime
+  # amorti) mais avec d'autres nombres, un lâcher depuis +X_m (φ = 0, l'autre
+  # cas de R2) et une mesure « N oscillations en une durée » au lieu d'une
+  # lecture de courbe graduée — pour que la procédure du sujet 2018 ne puisse
+  # pas être recopiée telle quelle.
+  - id: r-variation
+    title: "Variation fraîche"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2018, sourcé).
+    intro: |-
+      Même structure profonde que l'exercice précédent, enrobage différent : ici la période ne se lit pas sur une courbe graduée mais se déduit d'un comptage d'oscillations, le lâcher se fait depuis l'écart maximal **positif** (et non négatif), et une question d'amortissement referme l'étude. Le but est que tu ne puisses pas recopier la solution du sujet 2018 — tu dois reconnaître quelle procédure s'applique.
+
+      Un solide de masse $m = 0{,}40\ \text{kg}$ est accroché à un ressort horizontal de raideur $k$ **inconnue**, l'autre extrémité étant fixe ; il glisse sur un banc horizontal à frottement négligeable. On l'écarte de $X_m = 5{,}0\ \text{cm}$ dans le sens positif, puis on le lâche **sans vitesse initiale** à $t = 0$. Un dispositif de mesure indique que le solide effectue $5$ oscillations complètes en $2{,}0\ \text{s}$. On prendra $\pi^2 \approx 10$ pour les applications numériques.
+    questions:
+      - id: q1
+        stem: |-
+          Déterminer la période propre $T_0$, puis la pulsation propre $\omega_0$ du mouvement.
+        reasoning: |-
+          Le piège d'entrée : l'énoncé donne la durée de PLUSIEURS cycles, pas d'un seul. Il faut diviser par le nombre d'oscillations avant tout, sinon on confond « durée totale » et « période ». Une fois $T_0$ obtenue, on passe à la pulsation par le même facteur $2\pi$ qu'au sujet — en gardant en tête que $\omega_0$ est en $\text{rad/s}$.
+        steps:
+          - math: 'T_0 = \frac{2{,}0}{5} = 0{,}40\ \text{s}'
+            note: "Durée totale divisée par le nombre d'oscillations complètes : 5 cycles en 2,0 s."
+          - math: '\omega_0 = \frac{2\pi}{T_0} = \frac{2\pi}{0{,}40} = 5\pi \approx 15{,}7\ \text{rad/s}'
+            note: "Passage période → pulsation. Le facteur 2π distingue ω₀ (rad/s) de la fréquence f₀ (Hz)."
+      - id: q2
+        stem: |-
+          En déduire la raideur $k$ du ressort.
+        reasoning: |-
+          On inverse la relation $\omega_0 = \sqrt{k/m}$ établie au chapitre 2 pour le pendule élastique — c'est le même $\omega_0$ qu'on vient de mesurer, donc $k$ se déduit directement, sans nouvelle expérience. Ici l'inconnue est $k$ (pas $m$, comme au sujet) : c'est le point de la variation, reconnaître laquelle des deux grandeurs on cherche.
+        steps:
+          - math: '\omega_0^2 = \frac{k}{m} \implies k = m\,\omega_0^2'
+            note: "On isole k dans la relation de la pulsation propre du pendule élastique."
+          - math: 'k = 0{,}40 \times (5\pi)^2 = 0{,}40 \times 25\pi^2 \approx 0{,}40 \times 250 = 100\ \text{N/m}'
+            note: "Application numérique avec π² ≈ 10, donc (5π)² = 25π² ≈ 250."
+      - id: q3
+        stem: |-
+          Écrire l'équation horaire $x(t)$ du mouvement.
+        reasoning: |-
+          On identifie $X_m$ et $\varphi$ à partir des conditions initiales, comme au sujet — mais le lâcher est différent. Ici le solide part de l'écart maximal **positif**, $x(0) = +X_m$, sans vitesse : c'est le cas $\varphi = 0$ du chapitre 3 (et non $\varphi = \pi$ comme au sujet 2018, où le départ était du côté négatif). Reconnaître ce changement de signe, c'est tout l'intérêt de la variation.
+        steps:
+          - math: 'x(0) = X_m\cos\varphi = +X_m \implies \cos\varphi = 1 \implies \varphi = 0'
+            note: "Départ depuis l'écart maximal positif : x(0) = +X_m, d'où φ = 0 (à comparer au φ = π du sujet, où le départ était négatif)."
+          - math: 'x(t) = X_m\cos(\omega_0 t) = 5{,}0\times10^{-2}\cos(5\pi t)\ \text{(m)}'
+            note: "On reporte X_m = 5,0×10⁻² m, ω₀ = 5π rad/s et φ = 0."
+      - id: q4
+        stem: |-
+          On refait l'expérience en ajoutant un léger frottement fluide. Le dispositif indique que l'intervalle entre deux passages successifs par l'écart maximal du même côté reste voisin de $0{,}40\ \text{s}$, mais que cet écart maximal diminue à chaque aller-retour. Quel régime observe-t-on ? Justifier.
+        reasoning: |-
+          La question teste directement la trichotomie du chapitre 7 — reconnaître le régime à partir de deux indices, pas réciter une définition. Deux faits sont donnés : (1) les oscillations persistent, avec un intervalle de temps régulier entre extrêmes ; (2) l'amplitude décroît d'un cycle au suivant. C'est la signature exacte du **régime pseudo-périodique**, pour un amortissement faible.
+
+          Le point à ne pas rater : l'intervalle reste voisin de $0{,}40\ \text{s}$, c'est-à-dire de la période propre $T_0$. C'est cohérent avec ce qu'on a établi au chapitre 7 — le frottement fait fuir l'amplitude (via le terme $h\dot{x}$), mais ne touche pas au terme de rappel $kx$ qui fixe le rythme ; pour un amortissement faible, $T \approx T_0$. Ce n'est ni le régime périodique (l'amplitude ne serait pas décroissante), ni un régime apériodique (il n'y aurait plus d'aller-retour du tout).

@@ -1,0 +1,1455 @@
+# The truth gates, run on GitHub's machines so they cost zero session usage.
+# Mirrors the local per-commit discipline: validate-content --strict on every
+# notion dir, the Next build (prebuild = token drift check), dom-truth
+# (which runs token-gate as its Gate 0), and the model-id hygiene gate on the
+# surfaces where model identifiers must never appear.
+name: gates
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: gates-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    # MARGE, pas remède (2026-09-05). Le run 442 a été tué par la limite de
+    # 30 min au milieu de la porte ancres, emportant les deux étapes suivantes
+    # (données, hygiène model-id) — mais la CAUSE n'était pas le budget : la
+    # porte ancres avait FINI son travail et ne rendait pas la main (un
+    # `next start` non-`unref()` gardait la boucle d'événements en vie).
+    # C'est réparé dans `scripts/ancres-uniques.mjs`. Le budget relevé reste
+    # comme marge pour un runner lent, pas comme correctif.
+    #
+    # Le résultat s'affichait « cancelled » — le mot exact que produit aussi
+    # `cancel-in-progress: true` ci-dessus. Deux causes, un seul mot : devant
+    # un « cancelled », vérifier les ÉTAPES avant de conclure.
+    #
+    # Découpage relevé sur ce run (ubuntu-latest, cache chaud) :
+    #   install + chromium  74 s · build 148 s · dom-truth 276 s
+    #   figures clair 53 s · figures sombre 52 s · presse-papier 360 s
+    #   impression 171 s · typo 94 s · accents 85 s · cliquets ~1 s
+    #   ancres ≥ 489 s (tuée avant la fin)
+    #
+    # Total observé jusqu'à la coupe : ~30 min. 50 min laisse la marge d'un
+    # runner lent sans masquer un blocage réel.
+    #
+    # RE-MESURÉ le 2026-09-05, après l'ouverture des 39 épreuves : run 451,
+    # VERT en 28 min 35 s de bout en bout — trois portes balaient désormais
+    # 39 pages de plus chacune (chacune ouverte en deux clics), et une porte
+    # neuve, `formules`, en balaie 101. Le budget de 50 min tient ; il n'a pas
+    # besoin d'être relevé, et le relever masquerait de nouveau un blocage.
+    #
+    # RE-MESURÉ le soir du 2026-09-05, run 458 (rouge à la porte zoom, voulu :
+    # les 49 débords étaient encore là) — découpage relevé jusqu'à la coupe :
+    #   install + chromium 50 s · build 110 s · dom-truth 241 s
+    #   figures clair 46 s · figures sombre 46 s
+    #   presse-papier 447 s (729 s la veille au soir avec le collage riche ;
+    #     la porte ne le mesure plus en mode porte)
+    #   impression 349 s · typo 163 s · accents 153 s · zoom 207 s (105 pages,
+    #     320 px)
+    # Cumul à la porte zoom : 30 min 25 s. Les portes suivantes (formules,
+    # cliquets, ancres, données, model-id) coûtaient ~4 min sur le run 451.
+    # Le budget de 50 min tient toujours ; le prochain run VERT donnera le
+    # total de bout en bout.
+    # RE-MESURÉ la nuit du 2026-09-05, run 470, le premier VERT avec la porte
+    # zoom : 38 min 12 s de bout en bout (job démarré à +18 s). Par étape :
+    # build 2 min 19 s · dom-truth 4 min 32 s · figures 52 s + 52 s ·
+    # presse-papier 8 min 59 s · impression 6 min 30 s · typographie 2 min 58 s
+    # · accents 2 min 45 s · zoom 3 min 06 s · formules + cliquets + ancres +
+    # données + model-id ≈ 3 min 49 s. Reste ~12 min sous le budget de 50 min.
+    # RE-MESURÉ le 2026-09-06, run 483 (après la nuit des §11.20–11.26 : révélation
+    # progressive, contexte de chapitre stable, portée prose-measure doublée) :
+    # VERT en 39 min 24 s. Le budget de 50 min tient.
+    # RE-MESURÉ le 2026-09-11, run 490 (attente honnête avant l'hydratation, ADR
+    # 0032, + la vérification « HTML servi » de dom-truth) : VERT en 39 min 02 s.
+    #
+    # RELEVÉ À 80 MIN le 2026-09-23 (§11.188) — et cette fois ce n'est PAS un
+    # blocage masqué. Douze jours sans runner (quota du dépôt privé) ; le dépôt
+    # devenu public, le run 744 a repris la porte ENTIÈRE pour la première fois
+    # depuis le run 490 : 36 étapes sur 36 VERTES, puis coupé à 50 min pile au
+    # milieu de la porte accents, 24 étapes jamais lancées. Aucune étape n'a
+    # traîné : chacune a fini son travail. Ce qui a changé, c'est le TRAVAIL —
+    # les portes armées depuis le run 490 sans qu'aucun runner ne puisse les
+    # chronométrer. Relevé sur le run 744 :
+    #   stockage refusé 7 min 32 s · réduire les animations 5 min 30 s ·
+    #   désaccords d'hydratation 2 min 08 s · verdict QCM 2 min 54 s ·
+    #   LaTeX nu 1 min 23 s · presse-papier 8 min 38 s · impression 6 min 02 s
+    # Estimation de bout en bout avec les étapes coupées (accents, zoom,
+    # formules, cliquets, ancres, données, model-id ≈ 10 min, d'après les runs
+    # 470–490) et la scène 3D (~3 min) : ~63 min. 80 min garde la marge d'un
+    # runner lent ET attrape encore un vrai blocage. Le dépôt étant public, les
+    # minutes ne coûtent rien au propriétaire ; si le dépôt redevient privé, la
+    # question du budget redevient la sienne (DECISIONS §17, même raisonnement).
+    # Le vrai remède à la LATENCE, s'il en faut un : découper le job en deux ou
+    # trois jobs parallèles (le build partagé en artefact) — écrit en §11.188,
+    # pas fait ici.
+    #
+    # RELEVÉ À 90 MIN le 2026-09-23 (§11.190). L'estimation de ~63 min était
+    # encore une estimation : le run 746 — le PREMIER entièrement vert depuis le
+    # run 490, 62 étapes sur 62 — a pris 67 min 50 s (les deux scènes 3D :
+    # 5 min 00 s et 4 min 01 s, vert puis rouge). La troisième scène lance sa
+    # particule et attend ses courses en temps réel, deux passages : ~6 min
+    # mesurées en local (plus lent que le runner). ~74 min attendues : sous 80,
+    # mais sans la marge d'un runner lent. 90 la rend.
+    #
+    # LES SCÈNES SORTIES DE CE JOB (§11.192). Avec la quatrième scène, l'addition
+    # approchait 85 min : les quatre portes de scène 3D tournent maintenant dans
+    # le job `scenes`, en parallèle. Ce job-ci redescend vers ~60 min ; le
+    # plafond de 90 reste jusqu'à ce qu'un run le mesure.
+    #
+    # MESURÉ au run 755 (2026-09-24, cinq jobs, tous VERTS) : ce job, 44 min
+    # 00 s — stockage refusé 7:29, presse-papier 6:01, impression 4:53, réduire
+    # les animations 4:43, dom-truth 3:20 ; c'est lui qui fait le mur du run.
+    # En parallèle : `scenes` 41 min 44 s (le manège seul 18:16), `scene-champ`
+    # 27 min 46 s, `qcm` 19 min 48 s, `telephone` 7 min 48 s. L'estimation de
+    # ~60 min était haute ; 90 garde le double — pas touché.
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      # next/font/google fetches fonts at build time; the cache gives the
+      # loader a fallback when the runner's fetch to Google flakes (the
+      # "Cannot read properties of null (reading '1')" build failure) and
+      # speeds up rebuilds.
+      - name: Cache Next.js build cache
+        uses: actions/cache@v4
+        with:
+          path: web/.next/cache
+          key: nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-${{ github.sha }}
+          restore-keys: |
+            nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-
+
+      # web/ pins playwright-core; install the matching Chromium build and
+      # hand its path to dom-truth via PW_CHROMIUM_PATH.
+      - name: Install Chromium for dom-truth
+        run: npx playwright@1.61.1 install --with-deps chromium
+
+      # TESTS UNITAIRES (ajoutés en CI le 2026-09-05). Ils existaient et ne
+      # tournaient QUE localement — donc, en pratique, quand quelqu'un y
+      # pensait. Ils gardent les deux moitiés du modèle apprenant : le calcul
+      # (test-learner-model), la typographie française appliquée au texte que
+      # l'élève lit (test-typographie : apostrophes, guillemets, espaces fines,
+      # et la liaison insécable nombre-unité — dont le lookahead qui empêche
+      # « 3 mètres » de se lier), l'ACTION PRINCIPALE de l'accueil
+      # (test-session : quelle notion proposer et si l'on dit « commencer » ou
+      # « reprendre » — le lien le plus important du site, qui n'avait aucun
+      # test alors que sa fonction est pure), et le chemin d'écriture client, chemin de
+      # PERTE compris (test-attempt-events : réessai unique à 4 s, borne de 20, 401,
+      # coupure réseau). Ils sont rapides et sans navigateur ; ils passent
+      # avant tout le reste pour échouer vite.
+      #
+      # test-examens est la seule exception à « sans navigateur ni contenu » :
+      # il charge le corpus réel, parce que les CINQ défauts d'ordre déjà
+      # corrigés dans `lib/examens.ts` venaient tous de la rencontre entre une
+      # règle et un libellé particulier — aucun jeu d'essai inventé ne les
+      # aurait produits. Il coûte une dizaine de secondes. Son PREMIER test
+      # vérifie que le corpus est CHARGÉ : `lib/content.ts` résout sa racine
+      # depuis le répertoire courant et rend une liste VIDE ailleurs, sans
+      # erreur, ce qui rendrait les douze autres verts pour rien.
+      #
+      # test-melange re-mesure une AFFIRMATION SUR DES DONNÉES, pas sur du
+      # code : « le biais rédactionnel sur le choix A disparaît après
+      # mélange ». Elle peut cesser d'être vraie sans qu'une ligne change —
+      # il suffit d'ajouter des items. Elle emploie deux témoins : la
+      # distribution est plate APRÈS, et le biais existe encore AVANT (sans
+      # quoi « c'est plat » serait vert avec le mélange retiré). Il compare
+      # aussi le comportement des DEUX copies de l'algorithme — item-stats et
+      # dom-truth en portent chacune une, et celle d'item-stats n'était
+      # gardée par rien.
+      #
+      # test-noyaux garde ce que la porte au navigateur de « la courbe et les
+      # noyaux » ne peut pas voir : la probabilité par pas du tirage est
+      # 1 − e^(−λΔt) et non λΔt — (1 − p)^32 = 0,5 à 10⁻¹² près. Un biais de
+      # 1 % sur p décale la survie à une demi-vie de 0,24 écart-type sur 1 024
+      # noyaux : aucun comptage ne le verrait.
+      #
+      # test-diffraction garde le modèle du « banc de diffraction » : les 28
+      # largeurs de la table de la spec à trois chiffres (la précision qui rend
+      # VRAI à l'écran a × L = 0,240), les 17 positions de l'écran, et le fil
+      # qui diffracte comme la fente de 0,080 mm AU BIT PRÈS (une seule fonction).
+      #
+      # test-tremplin garde le modèle du « tremplin circulaire » : les tables
+      # A à E de la spec (a_N = v²/R aux 12 couples, ‖a‖ aux 36 réglages, a·v et
+      # la nature), le ZÉRO de la composante normale sur la droite — une
+      # BRANCHE, pas un rayon infini —, la géométrie (C à 18°, le cercle tangent
+      # à la droite en B) et la course (partie à −9,0 m, arrêtée en B).
+      #
+      # test-modulation garde le modèle du « banc de modulation » : les 9
+      # couples (U0, Sm) de la table des extrema, le PLANCHER de U_min à 0 —
+      # une branche, pas un arrondi —, les 4 crans de porteuse (des comptages
+      # ENTIERS), les zéros de l'enveloppe surmodulée, et la récurrence du
+      # détecteur identique à celle de la spec à 10⁻¹² tant que m < 1.
+      #
+      # test-electrolyse garde le modèle du « banc d'électrolyse » : les tables
+      # A à E de la spec (Q, les deux masses au milligramme, n(e⁻) et le
+      # quotient Q/n(e⁻) sur les valeurs AFFICHÉES — 9,65·10⁴ à six charges,
+      # 9,70·10⁴ à la septième), les deux couples de même charge, l'invariance
+      # au câblage, et la tension absente de TOUTE fonction de calcul.
+      #
+      # test-plan-complexe garde le modèle EXACT du « plan complexe » : les
+      # tables A à E de la spec en FORMES exactes (ℚ(√3)[i], jamais un
+      # flottant affiché) et en valeurs recalculées par une seconde voie, la
+      # borne −π réécrite +π à c = −2, z' depuis a ET b (jamais depuis a et ω),
+      # ω recoupé par la définition, les 85 états dans le cadre [−9 ; 9]².
+      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange · noyaux · diffraction · tremplin · modulation · électrolyse · plan complexe)
+        run: |
+          npm run test-learner-model
+          npm run test-attempt-events
+          npm run test-typographie
+          npm run test-session
+          npm run test-examens
+          npm run test-melange
+          npm run test-noyaux
+          npm run test-diffraction
+          npm run test-tremplin
+          npm run test-modulation
+          npm run test-electrolyse
+          npm run test-plan-complexe
+
+      # PORTE LIENS (2026-09-05). Ce projet se pilote par ses documents :
+      # `.claude/CLAUDE.md` envoie vers la vision, la vision vers les règles,
+      # les agents vers la bible de design, un runbook de bascule vers des
+      # migrations. Chacun de ces renvois est une INSTRUCTION, et un renvoi
+      # qui ne mène nulle part est une instruction qu'on croit avoir donnée.
+      # Trouvé en armant la porte : `docs/Product/` ET `docs/product/`
+      # existaient tous les deux — VISION.md et DESIGN-BIBLE.md dans le
+      # premier, 23 renvois vers le second, dont ceux de CLAUDE.md, du README,
+      # du HANDOFF et de NEUF agents. Chaque agent à qui l'on disait « lis la
+      # vision d'abord » lisait le vide ; et sur une machine insensible à la
+      # casse (Windows, cf. branch-test.ps1) les deux répertoires entrent en
+      # collision. Deux zones : la zone VIVANTE est franche, la zone d'ARCHIVE
+      # (ADR, registres, CHANGELOG) nomme délibérément le disparu et n'est que
+      # comptée. L'exception vit dans le fichier : `CHEMIN DISPARU: <chemin>`.
+      - name: Porte liens (un renvoi mène quelque part)
+        run: node scripts/liens-fichiers.mjs --porte
+
+      - name: validate-content (strict, every notion)
+        run: |
+          dirs=$(find ../content -mindepth 2 -maxdepth 2 -type d -not -path '*_media-test*' | sed 's|^\.\./||' | sort)
+          test -n "$dirs"
+          node scripts/validate-content.mjs --strict $dirs
+
+      # L'INVENTAIRE K-8 NE DOIT PLUS POUVOIR VIEILLIR EN SILENCE.
+      # docs/audits/lectures-graphiques.md recense la surface que K-8 désigne
+      # comme jamais re-mesurée. Sa version À LA MAIN avait dérivé de 47
+      # entrées en six jours sans que rien ne le signale : le chiffre que la
+      # fiche K-8 et le HANDOFF citaient était faux par défaut. Le document est
+      # désormais généré, et cette porte échoue s'il est périmé — c'est-à-dire
+      # dès qu'une conversion ajoute des entrées sans régénérer l'inventaire.
+      # Remède : node scripts/lectures-graphiques.mjs, puis committer le .md.
+      - name: Inventaire K-8 à jour
+        run: node scripts/lectures-graphiques.mjs --check
+
+      # One retry: the next/font Google fetch is the known transient here.
+      - name: Build
+        run: npm run build || { echo "::warning::build retry (next/font fetch flake)"; npm run build; }
+
+      # Known cold-boot flake (documented in the session ledger): on a cold
+      # server the forbidden-text sweep can race KaTeX hydration and read the
+      # mid-render text (e.g. "T0T_0T0"). The standing remedy is a rerun; CI is
+      # always a cold boot, so encode it. Real fix (hydration-settle wait in
+      # dom-truth before text sweeps) is a Phase D item.
+      # Two retries: the cold-runner flakes are independent single-check
+      # timing races (KaTeX hydration text-sweep; staged-reveal opacity read
+      # mid-animation) — run 31538723279 drew BOTH in one job. Real fix
+      # (settle-waits in dom-truth before timing-sensitive sweeps) = Phase D.
+      - name: dom-truth
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run dom-truth \
+            || { echo "::warning::dom-truth cold-boot retry 1"; npm run dom-truth; } \
+            || { echo "::warning::dom-truth cold-boot retry 2"; npm run dom-truth; }
+
+      # PORTE PRÉFÉRENCES APRÈS SECOURS (2026-09-20, §11.149). Le thème et la
+      # taille du texte vivent sur <html>, posés avant la peinture par un script
+      # en ligne. Quand l'hydratation échoue — un désaccord, une exception —,
+      # React refait un rendu client complet, réapplique les attributs déclarés
+      # du layout, et les DEUX préférences disparaissent sans que rien ne le
+      # dise. L'élève ne voit pas d'erreur : la page repasse simplement en clair
+      # et le texte agrandi redevient petit.
+      #
+      # DEUX SENS, dans la même étape, parce qu'un vert seul ne prouve rien ici :
+      # la porte tourne d'abord normalement (elle doit être VERTE), puis en
+      # `--essai-rouge`, garde neutralisée dans le bundle servi (elle doit
+      # CRIER). Une porte qui reste verte les deux fois est aveugle, et le
+      # second passage est le seul à pouvoir le dire (ADR 0034).
+      - name: "Préférences après un rendu de secours (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run preferences-secours
+          node scripts/preferences-secours.mjs --essai-rouge
+
+      # PORTE DÉSACCORDS D'HYDRATATION (2026-09-20, §11.150). La porte
+      # précédente garde ce qu'un désaccord COÛTE ; celle-ci compte ceux que le
+      # produit porte vraiment — deux questions distinctes, et un vert sur la
+      # première ne répond pas à la seconde. Un désaccord n'affiche aucune
+      # erreur : la page est simplement rendue DEUX fois, et les réglages
+      # d'affichage posés sur <html> tombent avec le premier rendu. Cliquet à 0
+      # sur les 118 routes prérendues, ~60 s. Le second passage fabrique un
+      # désaccord et exige que le balayage le voie — sans quoi le 0 ne vaut rien.
+      - name: "Désaccords d'hydratation (cliquet 0, puis essai rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run desaccords-hydratation
+          node scripts/desaccords-hydratation.mjs --essai-rouge
+
+      # PORTE MARGE D'ÉTIQUETTE (2026-09-20, §11.152). Les figures déclarent
+      # `font-family="'IBM Plex Sans', system-ui, sans-serif"` et IBM Plex Sans
+      # n'est chargée NULLE PART — ni dans l'image, ni par l'application. Chaque
+      # appareil retombe donc sur SA police, et une étiquette réglée au pixel
+      # près contre la substitution d'un seul moteur est un pari sur la police
+      # d'un inconnu : mesuré, +17 % de largeur sur la même chaîne entre deux
+      # moteurs, ce qui coupait « V (mL) » dans Firefox sur quatre figures.
+      # La porte mesure la MARGE de chaque étiquette en % de sa propre largeur —
+      # une grandeur indépendante du navigateur — et tient le compte sous 15 %.
+      # Cliquet à 30 sur 4 108 textes. Second passage : l'essai rouge.
+      - name: "Marge des étiquettes de figure (cliquet 30, puis essai rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run marge-etiquettes
+          node scripts/marge-etiquettes.mjs --essai-rouge
+
+      # PORTE STOCKAGE REFUSÉ (2026-09-20, §11.154). Navigation privée,
+      # « bloquer les données de site », appareil d'école verrouillé : dans tous
+      # ces cas `localStorage` ne rend pas null, il LÈVE — et il lève à l'ACCÈS,
+      # pas seulement à l'écriture. Une lecture non protégée dans un rendu n'est
+      # donc pas une préférence perdue, c'est une leçon perdue. La porte parcourt
+      # accueil → leçon → répondre → épreuve avec le stockage qui lève, et le
+      # compare à un TÉMOIN sans sabotage. Elle vérifie d'abord que le refus est
+      # EFFECTIF : une colonne « refusé » qui n'a rien refusé rendrait un vert
+      # vide. Second passage : l'essai rouge (JavaScript bloqué → elle doit crier).
+      - name: "Stockage refusé (parcours complet, puis essai rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run stockage-refuse
+          node scripts/stockage-refuse.mjs --essai-rouge
+
+      # PORTE « RÉDUIRE LES ANIMATIONS » (2026-09-20, §11.155). Le mécanisme
+      # existait et dom-truth le vérifiait — sur UNE figure, dans UNE leçon.
+      # C'est la preuve qu'il fonctionne, pas la mesure de ce qu'il ATTEINT
+      # (ADR 0031). Cette porte balaie les 66 pages dans les DEUX réglages :
+      # 22 182 transitions en réglage normal, 0 sous « reduce ». Le témoin est
+      # obligatoire — si le réglage normal ne montrait aucun mouvement, le zéro
+      # ne prouverait rien. Second sens : les deux voies de mouvement ont des
+      # contrats OPPOSÉS et justes (MotionDiagram retire sa barre, MotionStage
+      # la garde parce que l'élève déroule lui-même), et la voie se lit dans le
+      # dépôt (`*.motion.json`), pas dans le DOM. Puis l'essai rouge.
+      - name: "Réduire les animations (66 pages, deux sens, puis essai rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run mouvement-reduit
+          node scripts/mouvement-reduit.mjs --essai-rouge
+
+      # PORTE CALCULS NUMÉRIQUES (2026-09-20, §11.158). Une erreur de calcul
+      # dans un corrigé est le pire défaut possible : l'élève qui refait le
+      # calcul et trouve autre chose conclut que c'est LUI qui se trompe. Sur
+      # 21 938 expressions contenant un « = », 543 sont entièrement numériques
+      # donc calculables sans rien interpréter ; les 11 écarts trouvés sont TOUS
+      # expliqués par trois familles structurelles (arithmétique modulaire,
+      # erreur citée pour être réfutée, raisonnement par l'absurde) — un tuteur
+      # qui confronte les misconceptions et qui démontre contient des égalités
+      # fausses EXPRÈS. Le cliquet ne porte donc que sur les écarts INEXPLIQUÉS.
+      - name: "Calculs numériques du corpus (cliquet 0 inexpliqué)"
+        run: npm run calculs-numeriques
+
+      # PORTE PROSE JUMELLE (2026-09-20, §11.159). §11.118 garde les ÉNONCÉS
+      # d'items jumeaux ; la prose des leçons n'avait jamais été comparée à
+      # elle-même. Un élève qui lit deux notions et retrouve le même paragraphe
+      # apprend que le produit récite au lieu d'expliquer. Deux cliquets :
+      # recouvrement maximum (4,4 % mesuré, seuil 8 %) et plus long passage
+      # présent dans DEUX leçons seulement (41 mots mesurés, seuil 60). Ce
+      # second critère est la clé : un gabarit se répète dans BEAUCOUP de leçons
+      # (la méthode de dissertation est dans les douze de philosophie), un
+      # copier-coller n'existe que dans deux.
+      - name: "Prose jumelle entre leçons (deux cliquets)"
+        run: npm run prose-jumelle
+
+      # PORTE « DOLLARS APPARIÉS » (2026-09-20, §11.160). Quatre portes déjà
+      # armées — validate-content, eleve-ruse, accents-campagne, dom-truth —
+      # retirent les maths avec `/\$[^$]*\$/g` avant de lire le texte. Ce motif
+      # apparie de gauche à droite : tant que chaque champ a un nombre PAIR de
+      # « $ », il retire exactement les formules ; un seul dollar orphelin et il
+      # avale tout le passage suivant, si bien que les quatre portes cessent
+      # silencieusement de le lire — en restant VERTES. Mesuré : 73 611 champs,
+      # 0 impair. La propriété tient ; rien ne la tenait. Cliquet à 0.
+      - name: "Dollars appariés dans les champs de contenu (cliquet 0)"
+        run: npm run dollars-apparies
+
+      # PORTE « VIEUX MOTEURS » (2026-09-21, §11.163). Sur Android le moteur se
+      # met à jour seul ; sur iPhone il est soudé au système — un 6s, un 7, un
+      # SE restent en iOS 15 et ne verront jamais Safari 16.4. Une syntaxe
+      # inconnue n'y dégrade pas : elle lève une SyntaxError, le morceau meurt,
+      # et l'élève voit une page blanche que « Recharger » ne répare pas. Le
+      # regex lookbehind est exactement ce cas (Safari 16.4, mars 2023). Deux
+      # cliquets : 0 dans `src/` (corrigé ce jour dans frenchTypography) et 1
+      # dans le paquet (mdast-util-gfm-autolink-literal, décision owner §14).
+      - name: "Syntaxe livrée pour vieux moteurs (2 cliquets)"
+        run: npm run syntaxe-vieux-moteurs
+
+      # PORTE FIGURES (2026-09-04). figure-preview mesure sept classes de
+      # défaut sur les 258 SVG statiques ; CINQ sont armées, et seulement
+      # parce qu'elles sont propres dans les DEUX thèmes :
+      #   · « déborde »      — un texte qui sort du cadre de la figure ;
+      #   · « hors panneau » — un texte qui sort de SON panneau et se fait
+      #     donc attribuer au panneau voisin ;
+      #   · « contraste grave » / « contraste faible » — un texte sous le
+      #     seuil de SC 1.4.3 contre ce qui est VRAIMENT peint derrière lui
+      #     (modèle de peinture proposé, puis VÉRIFIÉ aux pixels) ;
+      #   · « texte invisible » / « texte recouvert » — un texte effacé par
+      #     une étape ultérieure, les étapes étant cumulatives.
+      # Les deux autres (chevauchements, tracés qui barrent) restent des
+      # OUTILS : leur classe n'est pas vide, et armer une porte sur une
+      # classe sale oblige à la désarmer le lendemain.
+      # Les exceptions légitimes sont déclarées DANS les fichiers
+      # (data-hors-panneau, data-rature, RECOUVREMENT ASSUMÉ:), jamais ici.
+      #
+      # DEUX PASSES, CLAIR ET SOMBRE, et ce n'est pas du zèle : un aplat
+      # d'accent à mi-opacité tombe sur la MÊME couleur dans les deux thèmes
+      # alors que l'encre bascule — un texte posé là passe d'un côté et échoue
+      # de l'autre. Trois défauts n'existaient qu'en sombre (2026-09-04).
+      #
+      # La porte ne voit que la passe RAPIDE (le modèle, vérifié aux pixels
+      # sur ses seuls candidats) : elle manque ~17 % des cas. Pour certifier
+      # un corpus, c'est `--pixels-tous` qu'il faut, et il prend ~25 min.
+      - name: Porte figures (cadre, panneau, contraste — thème clair)
+        run: |
+          # Chemins relatifs à la RACINE du dépôt : figure-preview les résout
+          # contre elle, pas contre le cwd (même convention que
+          # validate-content, qui fait le même sed juste au-dessus).
+          svgs=$(find ../content -path '*/media/*.svg' -not -name '*.motion.svg' | sed 's|^\.\./||' | sort)
+          test -n "$svgs"
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/figure-preview.mjs --porte $svgs
+
+      - name: Porte figures (contraste — thème sombre)
+        run: |
+          svgs=$(find ../content -path '*/media/*.svg' -not -name '*.motion.svg' | sed 's|^\.\./||' | sort)
+          test -n "$svgs"
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/figure-preview.mjs --dark --porte $svgs
+
+      # PORTE GLYPHES CONFONDUS (2026-09-24). La cmap de Geist 1.7.2 rattache
+      # « ω » (U+03C9) au glyphe de « Ω » (U+03A9) : toute vitesse angulaire
+      # écrite en texte dans l'interface s'affichait en OHM. Le texte source
+      # était juste, et `polices-de-repli` ne pouvait rien voir — Geist PRÉTEND
+      # avoir le glyphe, il n'y a pas de repli. La porte dessine chaque
+      # caractère de l'inventaire du produit dans chaque pile de polices du
+      # site RENDU (corps, lecture en gras et en italique, mono) ; deux
+      # caractères différents au même glyphe rougissent, sauf équivalents NFKC
+      # et homoglyphes de même sens listés un par un. Le second passage charge
+      # le fichier Geist BRUT, sans la plage unicode de layout.tsx, et doit y
+      # entendre ω = Ω, et rien d'autre — le jour où il ne l'entend plus, Geist
+      # a corrigé sa cmap et la plage peut partir. ~20 s les deux.
+      - name: "Porte glyphes confondus (une police ne dessine pas ω comme Ω — vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run glyphes-confondus
+          node scripts/glyphes-confondus.mjs --essai-rouge
+
+      # PORTE PRESSE-PAPIER (2026-09-05). Un élève qui révise RECOPIE : ce
+      # qu'il colle est un rendu du produit au même titre que la page. KaTeX
+      # écrit chaque formule deux fois — un arbre MathML pour les lecteurs
+      # d'écran, un arbre HTML pour l'œil — et le premier, masqué
+      # VISUELLEMENT (clip-path, 1×1 px), reste dans la SÉLECTION. Résultat
+      # mesuré avant correctif : 138 773 caractères parasites sur 62 leçons,
+      # soit une formule doublée partout où il y en a une.
+      #
+      # La porte compare trois copies faites par ⌘A/⌘C pour de vrai : la page
+      # livrée, la page idéale (MathML retiré du rendu) et un TÉMOIN qui rend
+      # la sélection au MathML. Elle ne conclut que si le témoin voit le
+      # défaut — un instrument aveugle ne certifie rien.
+      # §11.98 — LE LIEN INTERNE QUI NE MÈNE NULLE PART.
+      # L'instrument existait depuis le début et n'était pas en CI : il pouvait
+      # donc pourrir sans que personne le sache. Il a été relancé le 2026-09-19
+      # et sa PORTÉE corrigée dans le même geste — il balayait 10 routes fixes
+      # + les 62 notions = 72 pages, et AUCUNE épreuve. Son « 0 lien mort » ne
+      # portait que sur le versant leçon. Il visite maintenant 111 pages, les
+      # 39 épreuves comprises, énumérées par la même source que les portes
+      # impression et presse-papier — une épreuve neuve y entre toute seule.
+      # Vérifié rouge (une cible 404 injectée → exit 1, la cible et la page qui
+      # la cite sont nommées) puis vert (111 pages, 108 cibles, 0 morte).
+      - name: Porte liens internes (aucun <a href> du site ne mène à un 404)
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/liens-internes.mjs
+
+      # ── La porte qui garde les autres portes (ADR 0033) ──────────────────
+      # Une porte verte peut ne rien garantir : son scan ne tourne peut-être sur
+      # RIEN — un champ que plus aucun fichier ne porte, un glob qui ne résout
+      # plus, une extension renommée. Elle imprime le même ✓ qu'une porte qui a
+      # tout balayé. Cet instrument lance validate-content sous couverture V8 et
+      # distingue une branche d'échec inerte — normale quand rien n'échoue — d'un
+      # scan MORT, par la largeur de la région à compteur zéro.
+      #
+      # Il ne remplace PAS `essai-rouge.mjs`, qui, lui, trouve la porte dont le
+      # scan tourne mais dont le motif ne reconnaît plus le défaut. Ce second cas
+      # demande une mutation écrite à la main par porte, donc il reste hors CI.
+      # Aucun des deux ne suffit seul.
+      #
+      # Vérifié ROUGE en tuant deux portes différentes (un nom de fichier
+      # inexistant dans leur boucle), sur les bons numéros de ligne ; vérifié
+      # VERT quand un motif est rendu introuvable, à juste titre — le scan
+      # s'exécute encore. État au 2026-09-20 : 73 points d'échec, 0 porte morte.
+      - name: Porte des portes (aucune porte de validate-content ne scanne le vide)
+        run: node scripts/portee-portes.mjs
+
+      - name: Essais rouges (chaque porte armée peut-elle encore devenir ROUGE ?)
+        run: node scripts/essais-rouges.mjs
+
+      - name: Porte presse-papier (une formule copiée ne sort qu'une fois)
+        run: |
+          routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)
+          test -n "$routes"
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          # LES 39 ÉPREUVES (2026-09-05) : copier une formule du corrigé pour la
+          # coller dans ses notes est un geste d'élève, et c'est là que les
+          # formules sont les plus denses (711 sur un seul sujet). Ouvertes en
+          # deux clics. Mesuré à la main avant d'entrer ici : 39 pages,
+          # 29 325 formules, zéro caractère en trop.
+          examens=$(node scripts/routes-examens.mjs)
+          test -n "$examens"
+          node scripts/copie-maths.mjs --porte $routes $examens
+
+      # PORTE IMPRESSION (2026-09-05). Un élève de terminale IMPRIME : pour
+      # annoter au stylo, pour réviser sans écran, pour emporter en salle
+      # d'étude. La feuille est un rendu du produit au même titre que la page.
+      # `globals.css` portait trois blocs @media print soignés que RIEN ne
+      # vérifiait — et l'un d'eux ne couvrait pas les jetons de figure : un
+      # élève qui lit en thème SOMBRE imprimait des aplats noirs pleine page.
+      # Six contrôles par page, dans les deux thèmes, sur les 62 leçons plus
+      # l'accueil, /examens et une page de matière.
+      - name: Porte impression (le papier n'a pas de thème)
+        run: |
+          routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)
+          test -n "$routes"
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          # LES 39 ÉPREUVES (2026-09-05). Un élève imprime un sujet pour le
+          # faire au stylo — c'est l'usage le plus naturel de cette page. Elle
+          # n'était pas dans la liste, et l'aurait passée sans rien mesurer :
+          # l'énoncé n'entre dans le DOM qu'après « Commencer ». Ouverte pour
+          # de bon : 7 sujets sur 39 débordaient la colonne imprimable, tous à
+          # cause de PHRASES françaises enfermées dans `\boxed{\text{…}}` —
+          # une formule KaTeX ne se coupe pas, 1 147 px sur une colonne de 717.
+          examens=$(node scripts/routes-examens.mjs)
+          test -n "$examens"
+          node scripts/impression.mjs --porte $routes $examens / /examens /matieres/pc
+
+      # PORTE TYPOGRAPHIE (2026-09-05). `remarkFrenchTypography` normalise la
+      # PROSE des leçons ; il ne voyait rien du reste — et le reste est
+      # visible. Mesuré : le corps d'une leçon écrivait « le pendule
+      # d’énergie » et le rail des chapitres, à trois centimètres, « le
+      # pendule d'énergie ». ~1 100 écarts hors prose (figures, \text{} des
+      # formules, titres, libellés du programme), tous corrigés À LEUR SOURCE.
+      # La porte lit le texte RENDU, chapitres dépliés, et attribue chaque
+      # écart au site de rendu — donc à l'endroit où le corriger.
+      - name: Porte typographie française
+        run: |
+          routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)
+          test -n "$routes"
+          # LES 39 ÉPREUVES (2026-09-05). Une seule figurait ici, et elle
+          # revenait verte : la porte ne cliquait pas « Commencer », donc elle
+          # mesurait le masthead. Ouvertes pour de bon : 626 écarts, sur les
+          # 39 sujets sans exception — en-têtes d'exercice et libellés de
+          # partie, les deux champs rendus en texte NU, hors markdown.
+          examens=$(node scripts/routes-examens.mjs)
+          test -n "$examens"
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/typo-francaise.mjs --porte $routes $examens / /examens \
+            /matieres/pc /matieres/maths /matieres/svt /matieres/philo /commencer \
+            /atelier /connexion /options/wide/m1
+
+      # PORTE LaTeX NU (2026-09-21, §11.166). Sur une page de maths, l'élève
+      # lisait « Partie II — Le plan complexe $(O;\vec{u},\vec{v})$ : $a=1+i$ » —
+      # dollars et contre-obliques compris. 150 formules affichées telles quelles
+      # sur 26 pages, depuis deux sites de rendu : le sur-titre de partie était
+      # écrit en texte nu. Et la porte typographie ne le voyait pas, parce qu'un
+      # SECOND défaut le masquait (§11.165) : la règle française posait une fine
+      # devant le « ; » de la formule, ce que cette porte-là exigeait justement.
+      # Deux axes : ce que l'élève LIT, et ce qu'un lecteur d'écran ÉPELLERAIT.
+      # PORTE BARÈME FERMÉ (2026-09-21, §11.168). Le geste : ouvrir les 39
+      # épreuves, marquer TOUTES les questions « juste », lire la note.
+      # Deux épreuves refusaient le 20/20 à une copie parfaite — 19,25 et
+      # 19,75 — parce que la règle de lecture ne retenait que la PREMIÈRE
+      # étiquette d'un énoncé groupé (« a) (0,25 pt) … b) (0,25 pt) … »).
+      # Arithmétique pure : ni build, ni navigateur. Elle importe la règle du
+      # produit (src/lib/bareme.ts) au lieu de la recopier — une porte qui
+      # recopie vérifie sa propre copie (ADR 0033).
+      # PORTE IDENTIFIANTS DE FIGURES (2026-09-21, §11.172). En SVG, « url(#id) »
+      # se résout dans TOUT le document, pas dans la figure : deux définitions du
+      # même id sur une page, et c'est la PREMIÈRE qui gagne, partout. Tant
+      # qu'elles sont identiques, personne ne voit rien — c'est l'état
+      # d'aujourd'hui. Le jour où quelqu'un modifie UNE des deux, la figure
+      # éditée continue de peindre avec l'ancienne, sans erreur ni avertissement.
+      # La porte ne crie QUE sur cette condition, pas sur les doublons
+      # inoffensifs que 49 notions sur 51 portent déjà.
+      - name: Porte identifiants de figures
+        run: node scripts/figures-id-divergents.mjs --porte
+
+      - name: Porte barème fermé
+        run: node scripts/bareme-ferme.mjs --porte
+
+      # §11.175 — la moitié d'un document de leçon (53,7 %) est la charge RSC,
+      # ce que l'App Router sérialise pour hydrater les composants CLIENT.
+      # Tout ce qui passe en prop à une frontière client y repart en double du
+      # DOM déjà rendu. `MarginRail` et `ChapterMenuCompact` recevaient la
+      # leçon ENTIÈRE pour n'en tirer qu'une liste de titres : 2 × 49 ko sur
+      # `suites-numeriques`. La sonde cherche une ligne de titre BRUTE (avec
+      # son code de barreau `R<n> — `, que le rendu retire toujours) : la
+      # trouver dans le document, c'est trouver la SOURCE, pas l'affiché.
+      - name: Porte source de leçon en double
+        run: node scripts/source-en-double.mjs --porte
+
+      # PORTE MANIFESTES DU HEADER (2026-09-22, §11.180). Le header offre deux
+      # commandes alimentées par des manifestes calculés côté SERVEUR : le
+      # panneau « Notions » et la palette ⌘K. Quand une page oublie de les
+      # passer, RIEN ne casse et rien ne le dit — le panneau s'ouvre sur 720 px
+      # de vide et ⌘K ne trouve aucune notion. C'est arrivé sur /connexion (ni
+      # notions ni épreuves : la page était un composant CLIENT, elle ne POUVAIT
+      # pas appeler des manifestes serveur) et sur /atelier (notions sans
+      # épreuves). La porte énumère les types de page depuis `src/app` au lieu
+      # de lire une liste écrite à la main : un type NEUF hors table la fait
+      # rougir plutôt que d'être sauté en silence.
+      #
+      # DEUX PASSAGES, comme la porte préférences : vert d'abord, puis
+      # `--essai-rouge` qui retire ce que la porte compte et exige des zéros.
+      # Une porte verte les deux fois est aveugle, et seul le second passage
+      # peut le dire (ADR 0034).
+      - name: "Manifestes du header (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run header-manifestes
+          node scripts/header-manifestes.mjs --essai-rouge
+
+      # LE VERDICT DES QCM est dans le job `qcm`, plus bas, sur le corpus ENTIER
+      # (62 leçons) et EN PARALLÈLE de celui-ci (§11.193, DÉCISIONS §17). Il
+      # tournait ici sur six leçons, faute de budget.
+
+      # LES CINQ PORTES DE SCÈNE 3D sont dans le job `scenes`, plus bas, qui
+      # tourne EN PARALLÈLE de celui-ci (§11.192, §11.193).
+
+      - name: Porte LaTeX nu
+        run: |
+          routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)
+          test -n "$routes"
+          examens=$(node scripts/routes-examens.mjs)
+          test -n "$examens"
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/latex-nu.mjs --porte $routes $examens / /examens \
+            /matieres/pc /matieres/maths /matieres/svt /matieres/philo /commencer \
+            /atelier /connexion
+
+      # PORTE ACCENTS (2026-09-05). Le corpus contenait, à côté d'une prose
+      # soignée, des passages entiers écrits sans le moindre accent —
+      # « egalite verifiee », « L'eleve croit que la recurrence d'Euler resout
+      # exactement l'equation differentielle ». Mesuré sur le texte RENDU :
+      # 128 occurrences sur 65 pages, dans des libellés d'items et des titres
+      # d'exercices que l'élève lit. Un support de révision qui écrit
+      # « theoreme » enseigne une orthographe fausse à un élève qui composera
+      # en français ; et un produit qui n'accentue pas son français se lit
+      # comme un brouillon. 4 060 accents rendus à la source, corpus à zéro.
+      # La sonde et le script de réparation lisent la MÊME liste de mots
+      # (web/scripts/accents.mots.json), pour qu'une sonde plus étroite que la
+      # réparation ne puisse pas déclarer propre ce qu'elle ne sait pas voir.
+      # §11.125 — LA LISTE QUE LA PORTE LIT COUVRE-T-ELLE CE QUE LA RÉPARATION
+      # CONNAÎT ? `accents.mots.json` a DEUX producteurs : le script Python et
+      # la campagne, qui y ajoute à la main les formes qu'elle a corrigées. Son
+      # en-tête n'en nommait qu'un et interdisait l'autre — un `--exporter` nu
+      # aurait effacé 192 formes gagnées, en silence. L'export fusionne
+      # désormais ; ceci vérifie qu'aucune forme connue du script ne manque.
+      - name: Liste accents à jour (la sonde lit ce que la réparation connaît)
+        run: python3 ../scripts/accents-francais.py --verifier scripts/accents.mots.json
+
+      - name: Porte accents (le français du produit s'écrit accentué)
+        run: |
+          routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)
+          test -n "$routes"
+          # LES 39 ÉPREUVES (2026-09-05). Elles n'avaient JAMAIS été balayées :
+          # la liste ne portait que /examens, la page de LISTE. Et même
+          # nommées, les 39 pages seraient revenues vertes — `EpreuveShell`
+          # démarre au « seuil » et l'énoncé n'entre dans le DOM qu'après
+          # « Commencer ». Les deux portes cliquent maintenant ce bouton.
+          examens=$(node scripts/routes-examens.mjs)
+          test -n "$examens"
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/accents-manquants.mjs --porte $routes $examens / /atelier /examens
+
+      # PORTE ZOOM (2026-09-05, soir). SC 1.4.4 : le texte doublé ne doit ni
+      # sortir du cadre ni être COUPÉ par une boîte `overflow-hidden`. Le
+      # HANDOFF consignait « 227 → 0 » pour cette mesure ; relancée, elle
+      # rendait 61 débords réels, puis 8 cartes d'épreuve qui coupaient leur
+      # contenu et 36 px de débord sur presque toutes les leçons à 320 px —
+      # trois vagues de défauts qu'aucune porte ne gardait (HANDOFF §11.17,
+      # §11.18). Une seule largeur ici, 320 px : la plus étroite que le
+      # produit promet, et celle qui a vu ce que 360 ne voyait pas. Le corpus
+      # entier, 105 pages, les 39 épreuves ouvertes en deux clics ; ~4 min
+      # mesurées sur la machine de travail. L'instrument lance son propre
+      # serveur et REFUSE de mesurer une page dont une feuille de style
+      # répond ≥ 400 — une page sans son CSS n'est pas une page.
+      - name: Porte zoom (texte à 200 %, rien ne sort du cadre, rien n'est coupé)
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/zoom-sweep.mjs --porte --largeurs=320
+
+      # PORTE FORMULES (2026-09-05). KaTeX, quand il n'arrive pas à lire une
+      # formule, ne disparaît pas : il PEINT LA SOURCE, en rouge. Un élève en
+      # correction d'épreuve lisait « \qquad\Longrightarrow\qquad v_L =
+      # \frac{c}{n_L}$$ » à la place du raisonnement — 49 formules, sur 11 des
+      # 39 sujets. Cause : un bloc `$$…$$` dont les délimiteurs ne sont pas
+      # SEULS sur leur ligne ; le lecteur markdown ne voit pas le bloc et passe
+      # le `$$` de clôture à KaTeX, qui refuse. 215 blocs remis en forme
+      # canonique dans 47 fichiers. La porte ouvre les épreuves en DEUX temps —
+      # « Commencer » puis « Terminer » — parce que le corrigé, où vivaient les
+      # 49, n'entre dans le DOM qu'à la seconde action.
+      - name: Porte formules (aucune formule affichée en LaTeX brut)
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/formules-rendues.mjs --porte
+
+      # CLIQUET INDICE-LONGUEUR (2026-09-05). `item-stats` disait déjà, en
+      # toutes lettres, que la bonne réponse est la plus longue bien plus
+      # souvent que le hasard ne l'explique — et que le mélange des choix n'y
+      # change rien. Personne n'avait agi. Mesuré : 1 465 items éligibles,
+      # 38 % où la clé est la plus longue, 24 % où l'avance se VOIT (≥ 20
+      # caractères ET ≥ 20 % de la deuxième). Un élève qui coche le plus long
+      # sans lire répondait juste bien au-delà des 25 % du hasard, et le
+      # diagnostic qui pilote tout le produit s'en trouvait faussé.
+      # La SVT entière est repassée à 0 % exploitable ; le cliquet garde le
+      # terrain repris : une notion en dette ne peut plus s'aggraver, une
+      # notion neuve naît sous plafond. Ce n'est pas une porte franche —
+      # exiger 25 % partout échouerait au premier commit et serait désarmé.
+      - name: Cliquet indice-longueur (la clé ne se dénonce pas par sa taille)
+        run: node scripts/indice-longueur.mjs --porte
+
+      # CLIQUET INDICE-ABSOLU (2026-09-05). L'autre chose qu'un item dit sans
+      # le dire. Tous les manuels de stratégie de QCM enseignent la même règle :
+      # « barre les réponses qui contiennent toujours, jamais, uniquement,
+      # aucun ». Elle marchait ici : sur 106 items, éliminer tout ce qui
+      # sur-affirme ne laissait qu'UNE réponse debout, et c'était la bonne 54
+      # fois — 51 % contre 25 % au hasard. Ramené à 0 ; le cliquet garde les
+      # deux sens, car le remède (rendre à la clé l'absolu VRAI qui lui revient)
+      # crée le défaut symétrique s'il est appliqué sans regarder.
+      - name: Cliquet indice-absolu (la clé n'est pas la seule à ne pas sur-affirmer)
+        run: node scripts/indice-absolu.mjs --porte
+
+      - name: Cliquet indice-refus (le choix qui ne s'engage pas n'est pas barrable à vue)
+        run: node scripts/indice-refus.mjs --porte
+
+      - name: Cliquet eleve-ruse (l'union des ficelles de QCM ne rapporte pas plus qu'hier)
+        run: node scripts/eleve-ruse.mjs --porte
+
+      - name: Porte d'engagement (l'élève parie dans l'accroche, le produit retient)
+        run: node scripts/porte-engagement.mjs --porte
+
+      # « pour que la même question n'apparaisse jamais deux fois » —
+      # LESSON-EXPERIENCE-SPEC §1.1, mot pour mot. Le mécanisme existe
+      # (`item_source: clone_of_<id>` retire l'item du chapitre) et les 132
+      # clones du corpus le déclarent ; rien ne gardait qu'il en reste ainsi.
+      # Deux directions, parce qu'une seule se contourne : le clone NU (énoncé
+      # recopié, rien de déclaré) et la déclaration PENDANTE (un id qui
+      # n'existe pas, donc rien de retiré). Les deux à 0 ; les trois essais
+      # rouges §11.118a/b/c les prouvent rejouables.
+      - name: Énoncés jumeaux (la même question jamais deux fois dans une leçon)
+        run: node scripts/enonces-jumeaux.mjs --porte
+
+      - name: Artefacts du modèle apprenant à jour (plancher et carte item→misconception)
+        run: node scripts/build-learner-inputs.mjs --verifie
+
+      - name: Cliquet rampe-bac (une rampe qui atteignait un sujet réel ne redescend pas)
+        run: node scripts/rampe-bac.mjs --porte
+
+      # L'AUTRE BOUT DE LA MÊME RAMPE. rampe-bac mesure le sommet ; celui-ci
+      # mesure l'entrée — par où un élève EN DIFFICULTÉ commence, ce que la
+      # VISION promet en propre. Deux cliquets à une seule direction : les
+      # notions sans aucun item de niveau 1 au premier barreau (12) et celles
+      # dont la pente est < 1 cran (4). On empêche la régression, on n'exige
+      # pas la réparation : réparer est un travail éditorial (§11.119).
+      - name: Cliquet rampe-entree (la marche d'entrée d'une notion ne disparaît pas)
+        run: node scripts/rampe-entree.mjs --porte
+
+      # §11.128 — LES NON-NÉGOCIABLES DE SÛRETÉ PRODUCTION, MESURÉS. CLAUDE.md
+      # les énonce « toujours en vigueur » et les dérive d'incidents réels : un
+      # bloc de vérification qui asserte la CARDINALITÉ de l'état final (leçon
+      # de 046 — une migration qui semble réussir en ne faisant silencieusement
+      # rien), et RLS activée dans la migration qui CRÉE la table (leçons 040 et
+      # 047). Les deux tiennent ; rien ne les mesurait.
+      - name: Non-négociables migrations (bloc de vérification + RLS à la création)
+        run: node scripts/portes-migrations.mjs --porte
+
+      # §11.129 — La VISION distingue par MATIÈRE ce que « bien enseigné » veut
+      # dire, en termes d'INTERACTION : maths demande des manipulables, pc dit
+      # que « c'est là que les simulations paient le plus », et SVT — « la
+      # pensée SVT est visuelle, donc elle a besoin de vraies interactions de
+      # construction de schéma, PAS d'images affichées ». 9 notions sur 62 en
+      # portent, 0 en SVT. Cliquet : on n'en perd pas.
+      - name: Cliquet media-manipulable (une figure manipulable ne redevient pas une image)
+        run: node scripts/media-manipulable.mjs --porte
+
+      - name: Constantes physiques (juste contre le monde, pas seulement entre segments)
+        run: node scripts/constantes-physiques.mjs --porte
+
+      - name: Champs morts (un champ écrit dans le corpus que aucun code ne lit)
+        run: node scripts/champs-morts.mjs --porte
+
+      - name: Dette de manipulation (une prescription d'embed est livrée ou remplacée PAR ÉCRIT)
+        run: node scripts/dette-manipulable.mjs --porte
+
+      - name: "Traçabilité spec→item (cliquet : une spec neuve nomme un item qui existe)"
+        run: node scripts/tracabilite-spec.mjs --porte
+
+      # CLIQUET COUVERTURE-DIAGNOSTIQUE (2026-09-05). Le seul fil qui relie
+      # « l'élève se trompe » à « le produit sait quoi lui proposer ensuite »
+      # est un champ : `misconception:` sur un distracteur. 1 017 distracteurs
+      # sur 4 855 n'en portaient aucun, 47 tags pointaient un id non déclaré,
+      # et 17 notions sur 62 étaient AVEUGLES (aucune misconception au
+      # plancher de 3 items du banc, donc jamais évaluable). Le cliquet garde
+      # ce qui a été repris : sans-tag et fantômes ne peuvent que descendre,
+      # le nombre de misconceptions évaluables ne peut que monter.
+      - name: Cliquet couverture-diagnostique (le moteur doit voir quelque chose)
+        run: node scripts/couverture-diagnostique.mjs --porte
+
+      # PORTES RESUME-COUVERTURE (2026-09-05). Le corpus se documente lui-même :
+      # chaque items.yaml se termine par un `coverage_summary` écrit à la main,
+      # lu par les humains qui reprennent la notion — et par rien d'autre. Rien
+      # ne le réexécute, donc il est juste le jour où on l'écrit et faux le
+      # lendemain. Mesuré : QUATRE notions déclaraient `floor_met: true` avec 15
+      # misconceptions sous le plancher, deux d'entre elles en expliquant même
+      # de bonne foi pourquoi leur périmètre se limitait aux ids qu'elles
+      # comptaient — périmètre qu'une passe ultérieure avait doublé sans
+      # retourner le drapeau. Les 15 sont comblées ; la porte tient les deux
+      # affirmations qui n'ont qu'un sens possible (`floor_met`, `total_items`)
+      # dans les DEUX directions, pour qu'une campagne d'items réussie doive
+      # aussi venir retourner le drapeau.
+      - name: Portes resume-couverture (un fichier ne se déclare pas complet à tort)
+        run: node scripts/resume-couverture.mjs --porte
+
+      - name: Porte arithmetique-rendue (les nombres que l'élève LIT tombent juste)
+        run: node scripts/arithmetique-rendue.mjs --strict
+
+      # PORTE DONNÉES (2026-09-05). Ce que le produit coûte au FORFAIT de
+      # l'élève, qui n'est pas ce que le chronomètre montre. `next/link`
+      # précharge par défaut tout lien entré dans le champ de vision, et ce
+      # trafic part APRÈS la peinture : invisible au LCP, au temps de
+      # blocage, aux captures, à `cls-sweep` — et facturé par l'opérateur.
+      # Mesuré : l'accueil tirait 6,5 Mo en défilant, 91 % du transfert, pour
+      # 62 leçons dont l'élève en ouvre une ; une séance de révision coûtait
+      # 8,72 Mo, soit 117 séances dans un forfait de 1 Go.
+      # Le préchargement est passé du champ de vision à l'INTENTION (survol,
+      # focus, doigt posé) dans le seul `src/components/ui/Lien.tsx` : 1,38 Mo
+      # la séance, 743 dans le même forfait.
+      # La porte a DEUX sens, et c'est ce qui la rend utile : couper tout
+      # préchargement passerait le contrôle « rien sans geste » en rendant la
+      # navigation plus lente partout. Elle exige donc AUSSI que le survol
+      # précharge, et que l'économiseur de données soit honoré.
+      # PORTE ANCRES (2026-09-05). Chaque titre de leçon porte une ancre « § »
+      # qui permet à l'élève de copier un lien profond vers la section qu'il
+      # lit. Depuis la pagination par chapitres, `LessonRenderer` est appelé
+      # une fois par SEGMENT et `rehype-slug` remet son compteur d'unicité à
+      # zéro à chaque passe : deux sections homonymes de deux chapitres
+      # différents recevaient le MÊME id. Mesuré : huit titres « L'erreur à
+      # repérer » avec le même id dans maths/suites-numeriques — sept ancres
+      # sur huit renvoyaient à la première. Le compteur est désormais PARTAGÉ
+      # (web/src/lib/rehypeSlugPartage.ts) et la première occurrence garde son
+      # id nu, donc les liens déjà partagés survivent.
+      # La porte ne juge QUE les ids de titres : les ids internes des SVG sont
+      # dupliqués eux aussi (une même figure posée plusieurs fois) mais sans
+      # effet — vérifié deux fois, cf. l'en-tête du script.
+      - name: Porte ancres (deux sections ne partagent pas un lien profond)
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/ancres-uniques.mjs --porte
+
+      - name: Porte données (défiler une liste ne coûte rien au forfait)
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/donnees-sweep.mjs --porte
+
+      - name: Model-id hygiene gate
+        working-directory: .
+        run: |
+          if grep -rnE 'claude-(opus|sonnet|fable|haiku)' content/ docs/sujets/ web/src/ animations/ 2>/dev/null; then
+            echo "Model identifier found in a surface where none may appear." >&2
+            exit 1
+          fi
+          echo "clean"
+
+  # LES SCÈNES 3D, DANS LEUR PROPRE JOB (2026-09-23, §11.192 ; cinq depuis
+  # §11.193). Cinq portes de scène, vert puis rouge, rendues par SwiftShader :
+  # celle du champ magnétique lance sa
+  # particule et attend ses courses en TEMPS RÉEL (mesuré en local : ~9 min par
+  # passage, deux passages). Ajoutées au job `gates`, elles le portaient vers
+  # ~85 min — sous le plafond de 90, sans la marge d'un runner lent (le run 746,
+  # 62 étapes vertes, a pris 67 min 50 s avec DEUX scènes). Le remède écrit en
+  # §11.188 était de découper le job, build partagé en artefact ; ce découpage-ci
+  # est le plus petit : les scènes ne lisent que le `.next` qu'elles bâtissent
+  # elles-mêmes (chaque porte lève son propre `next start`), elles ne dépendent
+  # d'aucune autre étape, et aucune autre étape ne dépend d'elles. Le build est
+  # donc refait ici plutôt que transmis — deux à trois minutes de runner contre
+  # un artefact de `.next` à téléverser et à restaurer. Les jobs partent
+  # ensemble ; le mur est celui du plus long. Mesuré au run 748 (quatre
+  # scènes) : `scenes` 34 min 12 s, dont 18 min 12 s pour le champ magnétique ;
+  # `gates` 51 min 34 s.
+  scenes:
+    runs-on: ubuntu-latest
+    # MESURÉ au run 749 (cinq scènes, vert puis rouge) : 40 min 18 s, dont
+    # 18 min 24 s pour le champ magnétique seul (orbite 4:49, sphère 3:57,
+    # vectoriel 5:12, révolution 4:08). La sixième scène (le manège, des
+    # courses en temps réel) et la famille ergonomie ajoutée à chaque porte
+    # l'auraient mené au plafond de 60 : le champ magnétique part dans SON job
+    # (`scene-champ`, ci-dessous), qui tourne en même temps. Ici : quatre
+    # scènes + le manège, ~40 min attendues (le manège seul, vert puis rouge,
+    # ~18 min : ses courses sont en temps réel, 556 s par passage sur un banc
+    # calme, passe à 390 px comprise) ; 60 garde la marge d'un runner lent.
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      # next/font/google fetches fonts at build time; the cache gives the
+      # loader a fallback when the runner's fetch to Google flakes (the
+      # "Cannot read properties of null (reading '1')" build failure) and
+      # speeds up rebuilds.
+      - name: Cache Next.js build cache
+        uses: actions/cache@v4
+        with:
+          path: web/.next/cache
+          key: nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-${{ github.sha }}
+          restore-keys: |
+            nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-
+
+      # web/ pins playwright-core; install the matching Chromium build and
+      # hand its path to the scene gates via PW_CHROMIUM_PATH.
+      - name: Install Chromium for the scene gates
+        run: npx playwright@1.61.1 install --with-deps chromium
+
+      # One retry: the next/font Google fetch is the known transient here.
+      - name: Build
+        run: npm run build || { echo "::warning::build retry (next/font fetch flake)"; npm run build; }
+
+      # PORTE SCÈNE 3D (2026-09-23, §11.187, ADR 0041). La première scène 3D de
+      # première partie — l'orbite géostationnaire, pc/chute-mouvements-plans
+      # R10 — promet quatre choses, et une scène 3D peut les trahir sans qu'aucune
+      # autre porte le voie : un canvas n'a ni texte ni DOM à lire.
+      #   1. three.js ne se charge pas avec la leçon (`window.__THREE__` indéfini
+      #      avant l'ouverture) — un manifeste de build ne voit pas un import()
+      #      paresseux (ADR 0039) ;
+      #   2. les nombres affichés sont justes, recalculés par une SECONDE
+      #      implémentation de Kepler aux constantes de la leçon, et une seule
+      #      position du curseur coche « T = 24 h » (CH-KEP-3) ;
+      #   3. les PIXELS disent la physique : géostationnaire vu du sol → images
+      #      identiques à 0, 6 et 18 h ; hors du bon rayon, ou dans le référentiel
+      #      géocentrique → elles diffèrent et la tache d'accent se déplace ;
+      #   4. chaque étape n'ouvre que son contrôle et pose l'état qu'elle annonce.
+      # WebGL tourne sur SwiftShader (aucune carte graphique sur le runner). Si
+      # WebGL manque, la porte sort MUET — en échec, jamais en vert (ADR 0034).
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` qui retourne l'attente de
+      # chaque famille (G faussé de 3 %, identiques ↔ différentes, three.js
+      # exigé avant le clic, contrôles d'une autre étape) : les quatre familles
+      # doivent crier.
+      - name: "Scène 3D de l'orbite (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-orbite
+          node scripts/scene-orbite.mjs --essai-rouge
+
+      # PORTE SCÈNE 3D « SPHÈRE, PLAN, DROITE » (2026-09-23, §11.189, ADR 0041).
+      # La deuxième scène (maths/geometrie-espace, R9), bâtie sur les mêmes
+      # pièces que l'orbite. Mêmes quatre promesses, vérifiées sur le rendu :
+      # rien avant le clic ; les nombres (d, r = √(R² − d²), la corde) recalculés
+      # par une SECONDE implémentation — l'exemple travaillé z = 0 → √5 affiché
+      # tel quel, la tangence exacte sur la grille de 0,1 ; les PIXELS d'accent
+      # (cercle / point / rien ; le cercle vu de dessus rétrécit quand d croît ;
+      # une droite à la même distance donne deux points, pas un cercle) ; les
+      # paris et les étapes. Plus : aucun LaTeX brut dans le panneau OUVERT (la
+      # porte LaTeX nu ne lit que la scène fermée).
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — dont la misconception même
+      # de la leçon, r recalculé avec R² + d² : les sept familles doivent crier.
+      - name: "Scène 3D de la sphère (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-sphere
+          node scripts/scene-sphere.mjs --essai-rouge
+
+      # PORTE SCÈNE 3D « LE PRODUIT VECTORIEL » (2026-09-23, §11.191, ADR 0041).
+      # La quatrième scène (maths/geometrie-espace, R3). Les nombres (u ∧ v, sa
+      # norme, les aires, les deux produits scalaires nuls) recalculés par une
+      # SECONDE implémentation de la formule de la leçon sur une grille
+      # (θ, ‖v‖, φ, ordre) ; l'exemple travaillé AB ∧ AC = (0 ; 0 ; 4) tel quel ;
+      # les PIXELS de la flèche du produit, vue de côté — elle monte pour u ∧ v,
+      # descend pour v ∧ u, mesure moitié moins à 30° qu'à 90°, disparaît à 0°.
+      # Et avant le pari, rien ne répond.
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` (l'ordre des facteurs
+      # ignoré) : les huit familles doivent crier.
+      - name: "Scène 3D du produit vectoriel (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-vectoriel
+          node scripts/scene-vectoriel.mjs --essai-rouge
+
+      # PORTE SCÈNE 3D « LE SOLIDE DE RÉVOLUTION » (2026-09-24, §11.193, ADR 0041).
+      # La cinquième scène (maths/calcul-integral, R9 — le volume de révolution,
+      # savoir-faire des deux filières jusque-là absent du corpus). Les volumes
+      # des trois fonctions recalculés par une SECONDE voie (Simpson sur f², et
+      # non la primitive du produit), la coupe et la conversion 1 u.v. = k³ cm³ ;
+      # les PIXELS dans les deux sens : vue le long de l'axe, la coupe est un
+      # disque PLEIN et un cercle, du rayon que le produit dit ; de biais, une
+      # ellipse ; chaque tranche empilée a le rayon de f en son milieu. Et la
+      # FRONTIÈRE SExp : les tranches s'affichent, elles ne s'additionnent
+      # jamais (aucun Σ, aucune « somme », le volume lu ne dépend pas de n).
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — dont la misconception même
+      # de la leçon, le rayon non élevé au carré : les neuf familles doivent crier.
+      - name: "Scène 3D du solide de révolution (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-revolution
+          node scripts/scene-revolution.mjs --essai-rouge
+
+      # PORTE SCÈNE 3D « LE MANÈGE » (2026-09-24, §11.195, ADR 0041). La sixième
+      # scène (pc/rotation-axe-fixe, R2) : le moment d'une force PAR RAPPORT À UN
+      # AXE. Le poids d'un enfant au bord (245 N, à 1,50 m) ne fait pas tourner
+      # le manège ; l'axe basculé, le même poids donne 367,5 N·m. Les nombres
+      # par une SECONDE voie (J = ½MR² + 2mr², θ̈ = M/J, ω et θ à 4,0 s, la
+      # fiche v = dω, s = dθ) ; les PIXELS dans les deux sens (le poids : 4,0 s
+      # sans un pixel qui bouge ; la poussée tangentielle : il part ; 286° et
+      # 115° lus du dessus ; la roue qui descend de 90° ; la flèche du poids
+      # qui s'écrase vue d'en haut ; le bras de levier qui fond, et AUCUN bras
+      # pour une force parallèle à l'axe) ; la frontière (ni moment cinétique,
+      # ni période) ; et la famille ERGONOMIE partagée (clavier, téléphone).
+      # Depuis la revue des captures (même jour) : AUCUNE ÉTAPE NE RÉPOND À UN
+      # PARI SUIVANT (l'étape 3 ouvrait les sièges, et donnait à lire la réponse
+      # de l'étape 4) ; LES ÉTIQUETTES SE LISENT (ni chevauchées, ni barrées par
+      # leur flèche, ni hors du cadre — à 1 280 et à 390 px).
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — dont J sans le disque et le
+      # poids qui tournerait : les seize familles doivent crier.
+      - name: "Scène 3D du manège (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-manege
+          node scripts/scene-manege.mjs --essai-rouge
+
+  # LE CHAMP MAGNÉTIQUE, SEUL (2026-09-24). Sa porte est la plus longue des
+  # scènes (18 min 24 s au run 749, vert puis rouge : des courses en ralenti,
+  # quatre couples charge × sens lus aux pixels). Seule dans son job, elle
+  # tourne pendant que `scenes` passe les cinq autres : le mur est celui du plus
+  # long des deux, pas leur somme.
+  scene-champ:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      # next/font/google fetches fonts at build time; the cache gives the
+      # loader a fallback when the runner's fetch to Google flakes (the
+      # "Cannot read properties of null (reading '1')" build failure) and
+      # speeds up rebuilds.
+      - name: Cache Next.js build cache
+        uses: actions/cache@v4
+        with:
+          path: web/.next/cache
+          key: nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-${{ github.sha }}
+          restore-keys: |
+            nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-
+
+      # web/ pins playwright-core; install the matching Chromium build and
+      # hand its path to the scene gates via PW_CHROMIUM_PATH.
+      - name: Install Chromium for the scene gates
+        run: npx playwright@1.61.1 install --with-deps chromium
+
+      # One retry: the next/font Google fetch is the known transient here.
+      - name: Build
+        run: npm run build || { echo "::warning::build retry (next/font fetch flake)"; npm run build; }
+
+      # PORTE SCÈNE 3D « UNE PARTICULE CHARGÉE DANS UN CHAMP MAGNÉTIQUE »
+      # (2026-09-23, §11.190, ADR 0041). La troisième scène (pc/chute-mouvements-
+      # plans, R6), sur les mêmes pièces. Elle LANCE la particule et attend la
+      # course en temps réel (2 ns de vol par seconde) : les nombres (R, F, la
+      # déviation de l'exemple travaillé, le demi-tour quand R < ℓ) recalculés
+      # par une SECONDE implémentation ; le CÔTÉ où la trajectoire s'infléchit,
+      # lu dans les PIXELS pour les quatre couples charge × sens du champ ; le
+      # cercle dessiné deux fois plus petit quand B double ; la vitesse lue
+      # constante pendant la course. Et, comme les deux autres depuis §11.190 :
+      # AVANT LE PARI, RIEN NE RÉPOND. Depuis §11.192, le GLYPHE du champ : vu
+      # comme le manuel, l'entrant se lit ⊗ et le sortant ⊙ — lu à l'échelle
+      # de l'écran, entre deux repères que le produit pose.
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — dont la misconception même
+      # de la leçon (un rayon qui croîtrait avec B ; le côté de v ∧ B sans le
+      # signe de q) : les dix familles doivent crier.
+      - name: "Scène 3D du champ magnétique (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-lorentz
+          node scripts/scene-lorentz.mjs --essai-rouge
+
+      # PORTE « LA CUVE À ONDES » (2026-09-24, HANDOFF §11.197, ADR 0041 addendum).
+      # Le premier manipulable PLAN (pc/ondes-mecaniques-periodiques, R5) : un
+      # champ d'onde CALCULÉ dans le navigateur (différences finies, grille de
+      # 0,5 mm), vu de dessus, qui solde une substitution de la dette de
+      # manipulation. Une simulation ne se recalcule pas par un second solveur :
+      # la seconde voie établit des INVARIANTS — λ = c/f et a/λ par égalité de
+      # chaîne ; a et λ en cellules entières ; λ MESURÉE sur l'eau, la même
+      # devant et derrière la paroi, juste à 3 % et jamais égale au bit près à
+      # c/f (une mesure, pas un écho) ; la fréquence au flotteur des deux côtés ;
+      # à λ fixée, le signal à 60° croît quand l'ouverture se referme ; à
+      # ouverture fixée, il croît quand λ s'allonge. Les PIXELS dans les deux
+      # sens : l'ombre d'une ouverture de 8λ reste calme, celle d'une ouverture
+      # de λ/4 s'agite ; une seule ouverture, de la largeur annoncée. Et pas un
+      # octet de three.js, panneau ouvert. Dans ce job, pas dans `scenes` : ses
+      # courses sont calculées, et c'est ici que le mur a de la marge.
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — dont une célérité fausse
+      # dans la seconde voie : les dix-sept familles visées doivent crier.
+      - name: "Cuve à ondes (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-cuve
+          node scripts/scene-cuve.mjs --essai-rouge
+
+      # PORTE « LA CORDE : LA PHOTO ET LE FILM » (2026-09-24, HANDOFF §11.201,
+      # ADR 0041 addendum de l'après-midi). Le deuxième manipulable PLAN
+      # (pc/ondes-mecaniques-progressives, R3) : une corde de 4 m calculée par la
+      # seule relation de la leçon, y(x, t) = y_S(t − x/v) — une translation,
+      # aucun solveur. Une seconde voie ANALYTIQUE, donc des NOMBRES refaits par
+      # la porte (chaque τ, front, élongation, chaîne de mesure de la caméra) ;
+      # et les PIXELS dans les deux sens : la photo est le MIROIR du geste (elle
+      # DESCEND vers le front), M rejoue la même courbe τ plus tard, M n'avance
+      # pas, la célérité ne dépend pas du geste, aucune onde ne revient, un seul
+      # geste ; la bosse de l'étape 1 est son propre miroir (sinon elle
+      # répondrait au pari de l'étape 2) ; le front suit le curseur de l'instant ;
+      # aucun éclair (WCAG 2.3.1). Pas un octet de three.js.
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — les vingt-sept familles
+      # visées doivent crier.
+      - name: "La corde, la photo et le film (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-corde
+          node scripts/scene-corde.mjs --essai-rouge
+
+      # PORTE « LA COURBE ET LES NOYAUX » (2026-09-24, HANDOFF §11.202, ADR 0041
+      # addendum du soir). Le troisième manipulable PLAN
+      # (pc/decroissance-radioactive, en tête de R4), et le premier à porter
+      # DEUX VOIES DE CALCUL : la COURBE est la loi en forme fermée — la porte
+      # refait ses nombres par égalité de chaîne (N(t) au curseur aux 21
+      # positions, la largeur du crochet aux 25 départs, λ, τ, A) et lit ses
+      # PIXELS (le quadrillage du bac, la courbe convexe qui passe par le
+      # croisement (8 j ; 2), le crochet d'un intervalle majeur où qu'on le pose) ;
+      # la GRILLE est un tirage — la porte n'en vérifie que des INVARIANTS, avec
+      # des bandes à ±5σ (compte à une demi-vie, écart relatif qui décroît avec
+      # la population, motif qui change d'un tirage à l'autre, aucune case qui
+      # se rallume). Ce qu'aucun comptage ne verrait (λΔt au lieu de
+      # 1 − e^(−λΔt) : 0,24σ sur 1 024 noyaux), elle le LIT dans `data-p-pas`.
+      # Et la frontière du §9 est une sonde PAR FORME (√, \sqrt, écart typ,
+      # dater, datant…) : l'essai rouge les injecte une à une.
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — les vingt-six familles
+      # visées doivent crier, et les cinquante-cinq formes être vues.
+      - name: "La courbe et les noyaux (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-noyaux
+          node scripts/scene-noyaux.mjs --essai-rouge
+
+      # PORTE « LE BANC DE DIFFRACTION » (2026-09-24, HANDOFF §11.204). Le
+      # quatrième manipulable PLAN (pc/propagation-onde-lumineuse, en tête de
+      # R3), sans temps ni course : la révélation pose le réglage que le pari
+      # interrogeait. ANALYTIQUE : la porte refait L = 2λD/a, θ, la pente, λ
+      # déduite et le diamètre du cheveu par égalité de chaîne (les 28
+      # combinaisons, les 17 positions de l'écran), et lit les PIXELS dans les
+      # deux sens — la tache contre la règle (échelle LUE sur les graduations),
+      # l'éventail fixe quand l'écran recule, l'exagération ×10 constante, la
+      # fente-symbole identique aux sept pièces, les creux voisins et leur
+      # éclat, le graphe par l'origine. La relation elle-même est un état qui
+      # fuit : « λ/a » n'existe pas avant S2, ni « 2λD » avant S3. Et, depuis
+      # la vague 2 : la révélation DIT le réglage qu'elle pose, le curseur ne
+      # parle qu'une fois par cran, les lectures ne nomment que ce qui est à
+      # l'écran, la pièce cochée se voit sans le pointeur, le graphe tient au
+      # téléphone — et aucune étiquette sans fond n'est posée sur de l'encre.
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — les vingt-sept familles
+      # visées doivent crier, et chaque forme de la frontière être vue.
+      - name: "Le banc de diffraction (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-diffraction
+          node scripts/scene-diffraction.mjs --essai-rouge
+
+      # PORTE « LE TREMPLIN CIRCULAIRE » (2026-09-25, HANDOFF §11.206). Le
+      # cinquième manipulable PLAN (pc/lois-de-newton, R3), et le premier à
+      # COURSE dont l'engagement pose un réglage : la moto part à −9,0 m et
+      # s'arrête en B, au ralenti ×6 mesuré contre l'HORLOGE. ANALYTIQUE : la
+      # porte refait v, a_N = v²/R, a_T, ‖a‖, a·v et la nature aux 36 réglages
+      # (et le long de l'arc), et lit les PIXELS dans les deux sens — la piste
+      # LUE (une droite à 10°, un cercle de rayon R × l'échelle lue sur le
+      # témoin, que la droite touche en B), la flèche à l'échelle du SECOND
+      # témoin, la composante normale à 90° de la piste lue et vers le centre du
+      # cercle lu, la pointe de a au bout du parallélogramme, le signe de a·v
+      # contre l'angle DESSINÉ, et, sur la droite, aucune composante normale.
+      # La relation est un état qui fuit : ni « v au carré » avant S2, ni v²/R
+      # avant S3, ni dv/dt ni a·v avant S4.
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — les familles visées doivent
+      # crier, et chaque forme de la frontière être vue.
+      - name: "Le tremplin circulaire (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-tremplin
+          node scripts/scene-tremplin.mjs --essai-rouge
+
+      # PORTE « LE BANC DE MODULATION » (2026-09-25, HANDOFF §11.207). Le
+      # sixième manipulable PLAN (pc/ondes-em-modulation, en tête de R3), sans
+      # temps ni course, et le premier dont la révélation fait APPARAÎTRE un
+      # étage du schéma (le détecteur, à S4). ANALYTIQUE, détecteur compris : la
+      # porte refait U_max, U_min, A, m lu et m réglé aux 9 couples, les
+      # comptages de porteuse, R0C0 et la fenêtre aux 20 couples, et lit les
+      # PIXELS dans les deux sens — l'échelle LUE sur le quadrillage (quatre
+      # traits fins par division), l'ENVELOPPE INERTE aux quatre porteuses (la
+      # mesure centrale, lue aux extrema de la porteuse t_k = k·Tp/2), le
+      # comptage par les passages à zéro, les crêtes contre les extrema
+      # affichés, le pincement et ses crêtes RETOURNÉES (opposition de phase),
+      # aucune crête retournée à m = 1, la courbe du condensateur contre la
+      # récurrence rejouée, le décrochage. La chaîne
+      # est un état qui fuit : ni U_max avant S2, ni m < 1 avant S3, ni R0C0
+      # avant S4 ; et la table des états atteignables est réécrite ICI.
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — les familles visées doivent
+      # crier, et chaque forme de la frontière être vue.
+      - name: "Le banc de modulation (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-modulation
+          node scripts/scene-modulation.mjs --essai-rouge
+
+      # PORTE « FIGURES MANIPULABLES » (2026-09-24, HANDOFF §11.199). Chaque
+      # `.interactive.json` du corpus — l'inventaire est lu dans content/, pas
+      # écrit ici : celles d'aujourd'hui ET celles de demain. Sur le rendu réel :
+      # le curseur n'existe qu'à la dernière étape ; à quatre positions, chaque
+      # cible liée du SVG porte exactement ce que le module calcule ; la lecture
+      # est le gabarit rempli ; le curseur mesure ≥ 44 px ; et, pour les figures
+      # qu'elle nomme, une seconde voie recalcule la physique depuis la lecture
+      # (le pH : jamais « 0 » ni « 100 », ce que la leçon réfute). dom-truth
+      # porte cinq balayages écrits à la main ; une sixième figure n'était vue
+      # par rien.
+      - name: "Figures manipulables (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run figures-manipulables
+          node scripts/figures-manipulables.mjs --essai-rouge
+
+
+  # LA LARGEUR D'UN TÉLÉPHONE, EN CI (DÉCISIONS §16, levée par son prémisse).
+  # `etroit-sweep` mesure le corpus entier — les leçons chapitres dépliés, les
+  # épreuves ouvertes en deux clics, les pages de matière — à 320, 360 et 390 px,
+  # sur un fait binaire du document : `scrollWidth > innerWidth`. Référence
+  # inscrite : 0 débord. Le 2026-09-22 elle a rattrapé une régression que rien
+  # d'autre n'avait vue (0 → 185 débords, §11.181). Elle ne tournait qu'à la
+  # main, parce que le job unique avait un budget de 50 min et que trois
+  # largeurs en auraient mangé la marge. Les deux raisons sont tombées : le
+  # dépôt est public (les minutes ne coûtent rien au propriétaire), et un job
+  # PARALLÈLE n'allonge pas le mur. Son propre build, son propre `next start`.
+  # Mesurée en local le 2026-09-24 : 108 pages × 3 largeurs, 0 débord, 6 min
+  # 02 s ; son essai rouge (un bloc de 2 000 px posé dans quatre pages avant la
+  # mesure) : 4 débords sur 4, la porte sait rougir.
+  telephone:
+    runs-on: ubuntu-latest
+    # install + build + balayage + essai rouge : 7 min 48 s au run 749 (le
+    # balayage, 3 min 55 s sur le runner contre 6 min en local).
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Cache Next.js build cache
+        uses: actions/cache@v4
+        with:
+          path: web/.next/cache
+          key: nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-${{ github.sha }}
+          restore-keys: |
+            nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-
+
+      - name: Install Chromium for the phone-width sweep
+        run: npx playwright@1.61.1 install --with-deps chromium
+
+      # One retry: the next/font Google fetch is the known transient here.
+      - name: Build
+        run: npm run build || { echo "::warning::build retry (next/font fetch flake)"; npm run build; }
+
+      - name: "Porte téléphone (320, 360, 390 px : aucun débord horizontal)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npx next start -p 3433 > /tmp/next-etroit.log 2>&1 &
+          for i in $(seq 1 60); do curl -sf -o /dev/null http://localhost:3433/ && break; sleep 1; done
+          node scripts/etroit-sweep.mjs
+          node scripts/etroit-sweep.mjs --essai-rouge
+
+      # PORTE « LE BANC D'ÉLECTROLYSE » (2026-09-25, HANDOFF §11.208). Le
+      # septième manipulable PLAN (pc/electrolyse, en tête de R4), à COURSE.
+      # ICI et non dans `scene-champ` ni `scenes` : ces deux jobs tiennent déjà
+      # 43 et 42 min sur leurs 50 et 60 (run 773) ; celui-ci 8 sur 40. ANALYTIQUE :
+      # la porte refait Q, les deux masses, n(e⁻) et le quotient aux 27 états —
+      # et la ligne N12, la démonstration : aux trois tensions, les mêmes
+      # chaînes AU CARACTÈRE PRÈS (27 états, 9 jeux de valeurs) — et lit les
+      # PIXELS dans les deux sens : le dépôt contre le témoin « 1 g », l'aiguille
+      # (du côté du sens, immobile quand la tension change), les flèches du
+      # courant et des électrons, le croisement des fils, les rôles posés sur
+      # la lame de la borne +, le bain qui fonce sans virer. La course est
+      # mesurée contre l'HORLOGE (Δt/900).
+      #
+      # DEUX PASSAGES : vert, puis `--essai-rouge` — les familles visées doivent
+      # crier, et chaque forme de la frontière être vue.
+      - name: "Le banc d'électrolyse (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-electrolyse
+          node scripts/scene-electrolyse.mjs --essai-rouge
+
+      # PORTE « LE PLAN COMPLEXE » (2026-09-25, HANDOFF §11.209). Le huitième
+      # manipulable PLAN, et le premier des mathématiques sans 3D
+      # (maths/nombres-complexes-2, en tête de R5). ANALYTIQUE et EXACT : la
+      # porte refait chaque nombre en flottants ET compare les FORMES exactes
+      # aux tables de la spec (« 2\sqrt{5} » et « 4,47 » sont le même nombre et
+      # pas la même réponse), aux 70 + 15 états. Aux PIXELS, dans les deux
+      # sens : l'échelle LUE sur les graduations (isotropie, cadre carré), les
+      # points cherchés comme des disques à la place que leur affixe demande,
+      # l'arc lu entre les deux BONNES directions (jamais depuis l'axe réel), le
+      # point fixe immobile, le balayage qui garde les invariants écrits.
+      # Ici, dans `telephone`, pour la même raison que l'électrolyse (budget).
+      - name: "Le plan complexe (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-plan-complexe
+          node scripts/scene-plan-complexe.mjs --essai-rouge
+
+  # LE VERDICT DES QCM SUR LE CORPUS ENTIER (DÉCISIONS §17, levée par son
+  # prémisse, comme §16). `verdict-qcm` répond à la question la plus grave du
+  # produit — l'élève qui répond JUSTE est-il dit juste ? — et le job `gates`
+  # ne la posait qu'à six leçons, faute de budget : le corpus entier coûtait
+  # ~13 min locales, le job unique en avait 50 et les avait déjà mangées. Les
+  # deux raisons sont tombées : le dépôt est public, et un job PARALLÈLE
+  # n'allonge pas le mur. Un item cassé SEUL — une donnée mal formée qu'aucune
+  # porte de contenu n'attrape — n'est vu que par le corpus entier.
+  # Vert sur les 62 leçons (chaque item, chaque point d'arrêt, dans les deux
+  # sens), puis l'essai rouge sur les six leçons historiques : il prouve que
+  # la porte sait rougir, dans CE job, sur CE build (ADR 0034).
+  qcm:
+    runs-on: ubuntu-latest
+    # install + build + 62 leçons + essai rouge : 19 min 54 s au run 749 (le
+    # corpus, 14 min 39 s sur le runner — pas plus lent qu'en local, 15 min 04 s
+    # ; l'essai rouge, 1 min 26 s). L'estimation « ~40 min » extrapolait le
+    # rapport ×2,4 mesuré sur six leçons (run 744) : faux d'un facteur deux, ce
+    # que seul le premier passage pouvait dire. 75 garde la marge d'un runner
+    # lent, et attrape toujours un vrai blocage.
+    timeout-minutes: 75
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Cache Next.js build cache
+        uses: actions/cache@v4
+        with:
+          path: web/.next/cache
+          key: nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-${{ github.sha }}
+          restore-keys: |
+            nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-
+
+      - name: Install Chromium for the QCM verdict
+        run: npx playwright@1.61.1 install --with-deps chromium
+
+      # One retry: the next/font Google fetch is the known transient here.
+      - name: Build
+        run: npm run build || { echo "::warning::build retry (next/font fetch flake)"; npm run build; }
+
+      # PORTE VERDICT QCM (2026-09-22, §11.184). `dom-truth` portait depuis
+      # longtemps une note qu'aucun instrument n'avait levée :
+      #   TODO(post-answer states): the solution <summary> and correctness rows
+      #   only exist after answering an item — battery v2 should drive one
+      #   interaction.
+      # Personne ne vérifiait donc l'état APRÈS RÉPONSE. C'est le pire défaut
+      # possible pour ce produit : un élève à qui l'on dit « faux » alors qu'il
+      # a juste n'apprend pas — il perd confiance dans le seul juge qu'il a.
+      #
+      # La porte rejoue le MÊME mélange déterministe que le produit
+      # (`lib/shuffle.ts`, graine = id de l'item) pour savoir à quelle POSITION
+      # la bonne réponse atterrit, clique cette position et exige
+      # « Bonne réponse. », puis clique un distracteur et exige l'inverse —
+      # chaque item de banque, chaque point d'arrêt. Aucune comparaison de
+      # texte rendu : la typographie et KaTeX le réécrivent (ADR 0039).
+      #
+      # DEUX PASSAGES : vert sur le corpus entier, puis `--essai-rouge` qui
+      # décale de −1 la position attendue — la cible « juste » tombe alors sur
+      # un distracteur ET la cible « distracteur » sur la vraie bonne réponse,
+      # donc les DEUX sens doivent crier. Une porte verte les deux fois est
+      # aveugle (ADR 0034). L'essai rouge garde les six leçons historiques (une
+      # par famille de contenu) : il prouve que la porte sait rougir, pas que
+      # le corpus est juste — c'est le premier passage qui le dit.
+      - name: "Verdict des QCM — le corpus entier (vert), puis six leçons (rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          node scripts/verdict-qcm.mjs --porte
+          lecons="/notions/maths/suites-numeriques /notions/pc/rlc-serie /notions/philo/la-liberte /notions/svt/liberation-energie-matiere-organique /notions/maths/nombres-complexes-1 /notions/pc/ondes-mecaniques-progressives"
+          node scripts/verdict-qcm.mjs --essai-rouge $lecons

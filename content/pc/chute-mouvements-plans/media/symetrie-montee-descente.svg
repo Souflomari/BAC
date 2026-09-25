@@ -1,0 +1,247 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Deux panneaux empilés partageant le même axe des temps t, de 0 à 2 secondes. En haut, la vitesse verticale v_y(t) : une droite descendante de +9,8 m/s à t=0 jusqu’à -9,8 m/s à t=2s, qui s’annule exactement à t=1s. En bas, la position y(t) : une parabole tournée vers le bas, nulle en t=0 et t=2s, avec un maximum de 4,9 m à t=1s. Un repère vertical commun à t=1s relie les deux panneaux, marquant à la fois l’annulation de v_y et le sommet de y. Deux crochets sous la parabole marquent les intervalles [0,1] et [1,2] seconde, de même largeur, montrant que le temps de descente vaut exactement deux fois le temps de montée.">
+  <title>Chute libre verticale — symétrie montée/descente entre v_y(t) et y(t)</title>
+  <!--
+    symetrie-montee-descente.svg — STAGED (LESSON-EXPERIENCE-SPEC.md §2.5 :
+    graphe, toujours stagé, ordre canonique axes → données → lecture).
+      step-1 : les deux panneaux, leurs axes et leurs gridlines légères,
+               échelles fixées (v_y ∈ [-10,+10] m/s ; y ∈ [0,5] m ;
+               t ∈ [0,2] s, PARTAGÉ par les deux panneaux).
+      step-2 : les données — la droite v_y(t) et la parabole y(t) de
+               l'exemple travaillé du rung R1 (balle lancée à la verticale,
+               v0y = 9,8 m/s depuis le sol).
+      step-3 : la lecture — un unique repère vertical à t_sommet = 1,0 s
+               qui traverse LES DEUX panneaux (v_y=0 en haut, y_max en
+               bas), puis deux crochets de largeur égale sous la parabole
+               ([0,1] montée, [1,2] descente) qui rendent visible
+               t_sol = 2 × t_sommet.
+
+    Reprend EXACTEMENT l'exemple travaillé du texte (R1) :
+      v0y = 9,8 m/s, y0 = 0, g ≈ 9,8 m/s²
+      v_y(t) = 9,8 − 9,8t            (droite)
+      y(t)   = 9,8t − 4,9t²          (parabole)
+      t_sommet = 1,0 s  →  v_y(1,0) = 0 ;  y(1,0) = 9,8 − 4,9 = 4,9 m (=y_max)
+      t_sol    = 2,0 s  →  y(2,0) = 19,6 − 19,6 = 0 ;  t_sol = 2 × t_sommet
+
+    AXE DES TEMPS PARTAGÉ (littéral, pas seulement une convention d'échelle) :
+    un seul axe t, arrondi et étiqueté "t (s)", porté par le panneau du BAS
+    (baseline y=0 du panneau y(t), l'endroit physiquement le plus naturel
+    pour un axe horizontal). Le panneau du HAUT ne porte PAS son propre axe
+    horizontal fléché : seulement l'axe vertical v_y (fléché, avec ses
+    propres graduations ±10) et une ligne de référence v_y=0, fine, SANS
+    flèche — techniquement une "ligne de niveau", pas un axe (même
+    convention qu'énergie-oscillateur.svg pour sa ligne E_m=constante).
+    Les deux panneaux restent alignés sur la MÊME échelle temporelle
+    (scale_t identique, origines t=0 à la même abscisse x=80) et sont reliés
+    par des gridlines verticales légères qui traversent continûment
+    l'espace vide entre les deux panneaux — c'est cette continuité visuelle
+    qui EST le "axe des temps partagé", pas une duplication de deux axes
+    indépendants comme dans double-periodicite.svg (où x et t sont deux
+    grandeurs réellement différentes, donc deux axes réellement distincts).
+
+    ÉCHELLES (calculées, pas devinées) :
+      scale_t     = 220 px/s     x(t) = 80 + 220·t
+      TOP (v_y)   : baseline_vy=0 à y=106 px ; scale_v = 6 px/(m/s)
+                    ypx_top(v_y) = 106 − 6·v_y
+      BOTTOM (y)  : baseline_y=0 à y=347 px ; scale_y = 24 px/m
+                    ypx_bot(y)   = 347 − 24·y
+
+    Repères de bord d'échelle (vérifiés) :
+      t=0   → x=80    t=0,5 → x=190   t=1,0 → x=300
+      t=1,5 → x=410   t=2,0 → x=520
+      v_y=+10 → y=46 (limite haute)   v_y=-10 → y=166 (limite basse)
+      y=5     → y=227 (limite haute)  y=0     → y=347 (baseline)
+
+    DROITE v_y(t) = 9,8 − 9,8t — deux points suffisent (c'est une droite) :
+      t=0 : v_y=9,8  → x=80,  ypx=106−6×9,8=47,2
+      t=2 : v_y=-9,8 → x=520, ypx=106+6×9,8=164,8
+      Vérification au milieu (t=1, v_y=0) : (47,2+164,8)/2 = 106 = baseline ✓
+      — la droite passe exactement par (300,106), le point v_y=0.
+
+    PARABOLE y(t) = 9,8t − 4,9t² — polyligne, pas=0,1 s, t=0 à 2 (21 points),
+    x=80+220t, ypx=347−24y (valeurs vérifiées, symétriques autour de t=1) :
+      t=0,0 y=0,000  x=80   ypx=347,00
+      t=0,1 y=0,931  x=102  ypx=324,66
+      t=0,2 y=1,764  x=124  ypx=304,66
+      t=0,3 y=2,499  x=146  ypx=287,02
+      t=0,4 y=3,136  x=168  ypx=271,74
+      t=0,5 y=3,675  x=190  ypx=258,80
+      t=0,6 y=4,116  x=212  ypx=248,22
+      t=0,7 y=4,459  x=234  ypx=239,98
+      t=0,8 y=4,704  x=256  ypx=234,10
+      t=0,9 y=4,851  x=278  ypx=230,58
+      t=1,0 y=4,900  x=300  ypx=229,40   ← sommet, y_max
+      t=1,1 y=4,851  x=322  ypx=230,58   (symétrique de t=0,9)
+      t=1,2 y=4,704  x=344  ypx=234,10   (symétrique de t=0,8)
+      t=1,3 y=4,459  x=366  ypx=239,98   (symétrique de t=0,7)
+      t=1,4 y=4,116  x=388  ypx=248,22   (symétrique de t=0,6)
+      t=1,5 y=3,675  x=410  ypx=258,80   (symétrique de t=0,5)
+      t=1,6 y=3,136  x=432  ypx=271,74   (symétrique de t=0,4)
+      t=1,7 y=2,499  x=454  ypx=287,02   (symétrique de t=0,3)
+      t=1,8 y=1,764  x=476  ypx=304,66   (symétrique de t=0,2)
+      t=1,9 y=0,931  x=498  ypx=324,66   (symétrique de t=0,1)
+      t=2,0 y=0,000  x=520  ypx=347,00
+
+    Rôle des couleurs :
+      droite v_y(t), parabole y(t) (les données)              : --figure-accent
+      repère vertical t_sommet, marqueurs, crochets, libellés
+      de lecture (step-3)                                     : --figure-accent
+      axes, graduations, "0"/"5"/"±10", ligne de niveau v_y=0,
+      gridlines légères (step-1, chrome neutre)                : --figure-ink-soft / --figure-grid
+
+    Les captions sont portées par symetrie-montee-descente.stages.json
+    (figcaption hors-SVG) — aucun texte de légende baké ici (même
+    convention que trajectoire-parabolique.svg / deflexion-magnetique.svg).
+  -->
+
+  <!-- Titre (chrome non-stagé, comme double-periodicite.svg) -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Chute libre verticale — symétrie montée/descente entre <tspan
+        font-style="italic">v</tspan><tspan dy="3" font-size="8.5" font-style="italic">y</tspan><tspan
+        dy="-3">(t) et </tspan><tspan font-style="italic">y</tspan><tspan>(t)</tspan>
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — axes : les deux panneaux, leurs axes, leurs gridlines
+       légères, échelles fixées
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+
+    <!-- ── PANNEAU HAUT — v_y(t), v_y ∈ [-10,+10] m/s ──────────────────── -->
+    <rect x="40" y="32" width="580" height="148" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Axe vertical v_y (fléché) -->
+    <line x1="80" y1="172" x2="80" y2="40"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,40 75.5,51 84.5,51" fill="var(--figure-ink-soft)"/>
+
+    <!-- Ligne de niveau v_y = 0 — PAS un axe (pas de flèche) : c'est la
+         référence de niveau que le panneau du bas porte comme vrai axe t -->
+    <line x1="80" y1="106" x2="580" y2="106"
+          stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+
+    <!-- Graduations ±10 -->
+    <line x1="76" y1="46" x2="84" y2="46" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="70" y="50" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">+10</text>
+    <line x1="76" y1="166" x2="84" y2="166" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="70" y="170" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">−10</text>
+    <text x="70" y="110" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Étiquette d'axe -->
+    <text x="70" y="34" text-anchor="end" font-size="11" fill="var(--figure-ink-soft)"><tspan
+          font-style="italic">v</tspan><tspan dy="3" font-size="8" font-style="italic">y</tspan><tspan
+          dy="-3"> (m/s)</tspan></text>
+
+    <!-- Gridlines légères horizontales (limites d'échelle) -->
+    <line x1="80" y1="46" x2="580" y2="46" stroke="var(--figure-grid)" stroke-width="0.8" stroke-dasharray="3,3"/>
+    <line x1="80" y1="166" x2="580" y2="166" stroke="var(--figure-grid)" stroke-width="0.8" stroke-dasharray="3,3"/>
+
+    <!-- ── PANNEAU BAS — y(t), y ∈ [0,5] m ─────────────────────────────── -->
+    <rect x="40" y="210" width="580" height="160" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Axe vertical y (fléché) -->
+    <line x1="80" y1="347" x2="80" y2="218"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,218 75.5,229 84.5,229" fill="var(--figure-ink-soft)"/>
+
+    <!-- Axe horizontal t — LE seul axe des temps fléché de toute la figure,
+         partagé par les deux panneaux -->
+    <line x1="80" y1="347" x2="580" y2="347"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="580,347 568,342.5 568,351.5" fill="var(--figure-ink-soft)"/>
+
+    <!-- Graduation 5 -->
+    <line x1="76" y1="227" x2="84" y2="227" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="70" y="231" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">5</text>
+    <text x="70" y="351" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Étiquettes d'axe -->
+    <text x="70" y="214" text-anchor="end" font-size="11" fill="var(--figure-ink-soft)"><tspan
+          font-style="italic">y</tspan><tspan> (m)</tspan></text>
+    <text x="587" y="351" font-size="11" fill="var(--figure-ink-soft)"><tspan
+          font-style="italic">t</tspan><tspan> (s)</tspan></text>
+
+    <!-- Gridline légère horizontale (limite d'échelle) -->
+    <line x1="80" y1="227" x2="580" y2="227" stroke="var(--figure-grid)" stroke-width="0.8" stroke-dasharray="3,3"/>
+
+    <!-- ── Gridlines verticales PARTAGÉES — traversent les deux panneaux et
+         l'espace vide entre eux : c'est ce qui rend visible l'axe des
+         temps commun (t=0,5 / t=1,0 / t=1,5) ───────────────────────────── -->
+    <line x1="190" y1="40" x2="190" y2="347" stroke="var(--figure-grid)" stroke-width="0.8" stroke-dasharray="3,3"/>
+    <line x1="300" y1="40" x2="300" y2="347" stroke="var(--figure-grid)" stroke-width="0.8" stroke-dasharray="3,3"/>
+    <line x1="410" y1="40" x2="410" y2="347" stroke="var(--figure-grid)" stroke-width="0.8" stroke-dasharray="3,3"/>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — données : la droite v_y(t) et la parabole y(t)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- v_y(t) = 9,8 − 9,8t — droite exacte, deux points suffisent -->
+    <line x1="80" y1="47.2" x2="520" y2="164.8"
+          stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+
+    <!-- y(t) = 9,8t − 4,9t² — polyligne calculée, pas=0,1s (voir tête de fichier) -->
+    <path d="
+      M80,347 L102,324.66 L124,304.66 L146,287.02 L168,271.74
+      L190,258.8 L212,248.22 L234,239.98 L256,234.1 L278,230.58
+      L300,229.4
+      L322,230.58 L344,234.1 L366,239.98 L388,248.22 L410,258.8
+      L432,271.74 L454,287.02 L476,304.66 L498,324.66 L520,347
+    " fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : repère commun à t_sommet=1,0s (les deux panneaux),
+       puis les deux crochets de largeur égale sous la parabole
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Repère vertical unique à t_sommet=1,0s, traversant LES DEUX panneaux -->
+    <line x1="300" y1="40" x2="300" y2="347"
+          stroke="var(--figure-accent)" stroke-width="1.6" stroke-dasharray="5,3"/>
+
+    <!-- Marqueur + libellé : v_y = 0 (panneau du haut, croisement avec la droite) -->
+    <circle cx="300" cy="106" r="3.2" fill="var(--figure-accent)"/>
+    <text x="308" y="100" font-size="11" fill="var(--figure-accent)"><tspan
+          font-style="italic">v</tspan><tspan dy="3" font-size="8" font-style="italic">y</tspan><tspan
+          dy="-3"> = 0</tspan></text>
+
+    <!-- Marqueur + libellé : y_max ≈ 4,9 m (panneau du bas, sommet de la parabole) -->
+    <circle cx="300" cy="229.4" r="3.2" fill="var(--figure-accent)"/>
+    <text x="308" y="223" font-size="11" fill="var(--figure-accent)"><tspan
+          font-style="italic">y</tspan><tspan dy="3" font-size="8" font-style="italic">max</tspan><tspan
+          dy="-3"> ≈ 4,9 m</tspan></text>
+
+    <!-- Crochet montée : [0,1] s, sous la parabole -->
+    <line x1="80" y1="335" x2="80" y2="341" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <line x1="300" y1="335" x2="300" y2="341" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <line x1="80" y1="338" x2="300" y2="338" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="190" y="332" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-accent)">montée</text>
+
+    <!-- Crochet descente : [1,2] s, sous la parabole — MÊME largeur que montée -->
+    <line x1="520" y1="335" x2="520" y2="341" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <line x1="300" y1="338" x2="520" y2="338" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="410" y="332" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-accent)">descente</text>
+
+    <!-- Graduations de temps sur l'axe partagé : t_sommet et t_sol -->
+    <line x1="300" y1="342" x2="300" y2="352" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="300" y="362" text-anchor="middle" font-size="11" fill="var(--figure-accent)"><tspan
+          font-style="italic">t</tspan><tspan dy="3" font-size="7.5">sommet</tspan><tspan
+          dy="-3"> = 1,0 s</tspan></text>
+
+    <line x1="520" y1="342" x2="520" y2="352" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="520" y="362" text-anchor="middle" font-size="11" fill="var(--figure-accent)"><tspan
+          font-style="italic">t</tspan><tspan dy="3" font-size="7.5">sol</tspan><tspan
+          dy="-3"> = 2,0 s</tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

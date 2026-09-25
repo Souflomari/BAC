@@ -1,0 +1,359 @@
+notion: arithmetique
+skill_code: maths_arithmetique
+
+# ──────────────────────────────────────────────────────────────────────────────
+# CHECKPOINTS IN-LEÇON (summit-conversion campaign — maths arithmétique)
+#
+# Sondes FORMATIVES, calmes, placées DANS la leçon — PAS la banque de fin
+# (items.yaml). Même schéma d'item, mais NI score, NI streak, NI décompte. Le
+# feedback d'une mauvaise réponse nomme le MODÈLE arithmétique erroné, pas
+# seulement le fait de s'être trompé. Le plancher ≥3-par-modèle de la banque
+# (items.yaml) n'est PAS modifié par ces checkpoints (clones surfacés inline,
+# non recomptés).
+#
+# Placement (les ids correspondent aux marqueurs [[checkpoint:…]] de lesson.md) :
+#   cp-r0-predict     (dans R0)          — COMMIT gate : transforme le « prends
+#                                          position : possible ou impossible ? »
+#                                          des deux bidons en un vrai engagement,
+#                                          avant la révélation. Sonde
+#                                          diophantienne-critere-existence.
+#   cp-r2-congruence  (fin R2)           — rupture gate : réduire une puissance
+#                                          dans une congruence, et normaliser le
+#                                          reste dans [0, n[. Sonde
+#                                          congruence-puissance-mal-reduite.
+#   cp-r3-pgcd-ppcm   (fin R3)           — rupture gate : PGCD vs PPCM (et vs
+#                                          produit), et « plus grand » diviseur
+#                                          commun. Sonde pgcd-vs-ppcm.
+#   cp-r5-gauss       (fin R5)           — rupture gate : Gauss / a|bc sans la
+#                                          condition PGCD=1. Sonde
+#                                          gauss-condition-ignoree.
+#   cp-r6-fermat      (avant r-bac)      — rupture gate : petit théorème de
+#                                          Fermat (p premier, p∤a ⟹ a^(p−1)≡1),
+#                                          l'outil de la question 1.d du sujet,
+#                                          hors-rung. Sonde
+#                                          fermat-condition-ou-exposant.
+#
+# CHAQUE distracteur porte un id de modèle nommé de l'inventaire de la notion
+# (items.yaml). Les longueurs d'options sont équilibrées : la bonne réponse
+# n'est jamais la plus longue.
+#
+# Garde-fou périmètre : 2ème Bac Sciences Mathématiques — divisibilité, division
+# euclidienne, congruences, PGCD/PPCM, algorithme d'Euclide, Bézout, Gauss,
+# nombres premiers, décomposition, équations diophantiennes ax+by=c. Le petit
+# théorème de Fermat est au programme SM et légitime pour un sujet type-bac.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placé DANS R0 (l'engagement des deux bidons)
+  #        Transforme « prends position : possible ou impossible ? » en un vrai
+  #        commit, avant la révélation « Voici une suite qui fonctionne ».
+  #        Sonde diophantienne-critere-existence (atteignable ⟺ multiple du PGCD).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, hook_commit]
+    primary_misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Avec un bidon de $3$ L et un bidon de $5$ L, sans graduation (remplir,
+      vider, transvaser), **engage-toi avant de lire la suite** : peux-tu
+      obtenir exactement $1$ L ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Non : avec deux bidons, on ne peut jamais isoler moins d'eau que le
+          plus petit des deux (ici $3$ L).
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: |
+          Modèle détecté : « on ne descend pas sous le plus petit bidon ». Faux :
+          toute quantité atteignable est de la forme $3u + 5v$ (avec
+          $u, v \in \mathbb{Z}$), donc un multiple de $\mathrm{PGCD}(3,5) = 1$ —
+          en particulier $1$ L est atteignable. La taille des
+          bidons n'est pas le critère ; le PGCD l'est.
+      - id: B
+        text: |
+          Oui, c'est possible avec la bonne suite de transvasements.
+        correct: true
+        feedback: |
+          Exact — et ce n'est pas de la chance. $\mathrm{PGCD}(3,5) = 1$ : par
+          Bézout, $3 \times 2 + 5 \times (-1) = 1$, ce qui décrit la manœuvre
+          (remplir deux fois le bidon de $3$ L, retirer l'équivalent d'un bidon de
+          $5$ L). C'est la coprimalité de $3$ et $5$ qui rend $1$ L atteignable,
+          pas leur nature.
+      - id: C
+        text: |
+          Oui, mais uniquement parce que $3$ et $5$ sont deux nombres premiers.
+        correct: false
+        misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
+        feedback: |
+          La conclusion est bonne, la raison non. Ce qui compte, c'est que $3$ et
+          $5$ soient **premiers entre eux** ($\mathrm{PGCD} = 1$), pas qu'ils
+          soient premiers. La paire $(4,9)$, dont aucun terme n'est premier,
+          permet elle aussi de mesurer $1$ L. « Premier » qualifie un nombre ;
+          « premiers entre eux » qualifie une paire.
+      - id: D
+        text: |
+          Non : $1$ litre est plus petit que $3$, donc trop petit pour être
+          mesuré exactement.
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: |
+          Modèle détecté : « trop petit pour être mesuré ». La taille de la cible
+          n'a rien à voir : on isole exactement un volume égal à $\mathrm{PGCD}$
+          des deux capacités. Ici $\mathrm{PGCD}(3,5) = 1$, donc $1$ L est bel et
+          bien atteignable, aussi petit soit-il.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r2-congruence | placé FIN R2
+  #        Rupture gate : réduire une puissance dans une congruence (ramener
+  #        l'exposant via un cycle) ET normaliser le reste dans [0, n[.
+  #        Sonde congruence-puissance-mal-reduite. Clone d'AR-12.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-congruence
+    rung: "R2"
+    habilete: utilisation
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, congruences]
+    primary_misconception: mc.math.maths_arithmetique.congruence-puissance-mal-reduite
+    item_source: clone_of_AR-12
+    lesson_placement: after_R2
+
+    stem: |
+      Quel est le reste de la division euclidienne de $3^{2024}$ par $5$ ?
+      *(On pourra chercher un cycle : $3^1, 3^2, 3^3, 3^4$ modulo $5$.)*
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $3$
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-puissance-mal-reduite
+        feedback: |
+          Modèle détecté : on garde la base sans réduire l'exposant. Le cycle est
+          $3^1 \equiv 3,\ 3^2 \equiv 4,\ 3^3 \equiv 2,\ 3^4 \equiv 1 \pmod 5$ :
+          période $4$. Comme $2024 = 4 \times 506$, on est en fin de cycle,
+          $3^{2024} \equiv 1$, pas $3$.
+      - id: B
+        text: |
+          $1$
+        correct: true
+        feedback: |
+          Exact. $3^4 = 81 \equiv 1 \pmod 5$ : les puissances de $3$ sont
+          périodiques de période $4$. Et $2024 = 4 \times 506$, donc
+          $3^{2024} = (3^4)^{506} \equiv 1^{506} \equiv 1 \pmod 5$.
+      - id: C
+        text: |
+          $0$
+        correct: false
+        misconception: mc.math.maths_arithmetique.prime-divise-produit
+        feedback: |
+          Un reste nul signifierait $5 \mid 3^{2024}$. Mais $5$ est premier et ne
+          divise pas $3$ ; il ne divise donc aucune puissance de $3$ (un premier
+          qui divise un produit divise l'un des facteurs). Le reste ne peut pas
+          être $0$.
+      - id: D
+        text: |
+          $5$
+        correct: false
+        misconception: mc.math.maths_arithmetique.reste-non-normalise
+        feedback: |
+          Un reste modulo $5$ appartient toujours à $\{0, 1, 2, 3, 4\}$ : il ne
+          peut jamais valoir $5$. Un reste doit être ramené dans $[0, 5[$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r3-pgcd-ppcm | placé FIN R3
+  #        Rupture gate : PGCD vs PPCM (et vs produit a×b), et « plus grand »
+  #        diviseur commun. Sonde pgcd-vs-ppcm. Clone d'AR-3.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-pgcd-ppcm
+    rung: "R3"
+    habilete: utilisation
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, pgcd, ppcm]
+    primary_misconception: mc.math.maths_arithmetique.pgcd-vs-ppcm
+    item_source: clone_of_AR-3
+    lesson_placement: after_R3
+
+    stem: |
+      Que vaut $\mathrm{PGCD}(24, 36)$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $72$
+        correct: false
+        misconception: mc.math.maths_arithmetique.pgcd-vs-ppcm
+        feedback: |
+          $72$ est le PPCM (plus petit multiple commun), pas le PGCD. Un PGCD est
+          un **diviseur** commun : il ne peut pas dépasser $24$, le plus petit des
+          deux nombres.
+      - id: B
+        text: |
+          $12$
+        correct: true
+        feedback: |
+          Exact. Par l'algorithme d'Euclide : $36 = 24 \times 1 + 12$, puis
+          $24 = 12 \times 2 + 0$. Le dernier reste non nul, $12$, est le PGCD (et
+          $12$ divise bien $24$ et $36$).
+      - id: C
+        text: |
+          $864$, c'est-à-dire le produit $24 \times 36$.
+        correct: false
+        misconception: mc.math.maths_arithmetique.pgcd-vs-ppcm
+        feedback: |
+          Multiplier les deux nombres ne donne ni le PGCD ni le PPCM. Le produit
+          $a \times b$ vaut $\mathrm{PGCD}(a,b) \times \mathrm{PPCM}(a,b)$ ; le
+          PGCD cherché est un diviseur commun, donc au plus $24$.
+      - id: D
+        text: |
+          $6$
+        correct: false
+        misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
+        feedback: |
+          $6$ divise bien $24$ et $36$, mais ce n'est pas le **plus grand** :
+          $12$ les divise aussi ($24 = 12 \times 2$, $36 = 12 \times 3$). Le PGCD
+          est le plus grand des diviseurs communs.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r5-gauss | placé FIN R5
+  #        Rupture gate : Gauss / a|bc appliqué SANS vérifier PGCD(a,b)=1.
+  #        Sonde gauss-condition-ignoree. Clone d'AR-18.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-gauss
+    rung: "R5"
+    habilete: raisonnement
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, gauss]
+    primary_misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
+    item_source: clone_of_AR-18
+    lesson_placement: after_R5
+
+    stem: |
+      On sait que $12 \mid 8 \times 9$ (car $8 \times 9 = 72 = 12 \times 6$).
+      Peut-on en déduire que $12 \mid 8$ ou $12 \mid 9$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Oui : puisque $12$ divise le produit, il divise forcément l'un des deux
+          facteurs.
+        correct: false
+        misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
+        feedback: |
+          Modèle détecté : Gauss appliqué sans sa condition. La règle
+          « $a \mid bc \Rightarrow a \mid b$ ou $a \mid c$ » ne s'applique que si
+          $a$ est **premier avec** l'un des facteurs. Ici
+          $\mathrm{PGCD}(12,8)=4$ et $\mathrm{PGCD}(12,9)=3$ : la condition
+          manque, et de fait $12 \nmid 8$, $12 \nmid 9$.
+      - id: B
+        text: |
+          Non : Gauss exige $\mathrm{PGCD} = 1$, non vérifié ici.
+        correct: true
+        feedback: |
+          Exact. Le théorème de Gauss réclame $\mathrm{PGCD}(a,b) = 1$. Or
+          $\mathrm{PGCD}(12,8) = 4$ et $\mathrm{PGCD}(12,9) = 3$ : aucune des deux
+          coprimalités n'est satisfaite, donc on ne peut rien conclure — et en
+          effet $12$ ne divise ni $8$ ni $9$.
+      - id: C
+        text: |
+          Oui, car $12 = 4 \times 3$, avec $4 \mid 8$ et $3 \mid 9$.
+        correct: false
+        misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
+        feedback: |
+          Répartir les facteurs de $12$ entre $8$ et $9$ ne prouve pas que $12$
+          divise l'un des deux. $4 \mid 8$ et $3 \mid 9$ sont vrais, mais il
+          faudrait **tout** le facteur $12$ dans un seul nombre : ni $12 \mid 8$
+          ni $12 \mid 9$.
+      - id: D
+        text: |
+          Non, uniquement parce que $12$ n'est pas un nombre premier.
+        correct: false
+        misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
+        feedback: |
+          La conclusion est correcte, la raison non. Ce n'est pas la non-primalité
+          de $12$ qui bloque, mais l'absence de coprimalité entre $12$ et les
+          facteurs. La condition de Gauss porte sur $\mathrm{PGCD} = 1$, pas sur le
+          fait d'être premier.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r6-fermat | placé AVANT [[exercise:r-bac]]
+  #        Rupture gate : petit théorème de Fermat (p premier, p∤a ⟹
+  #        a^(p−1) ≡ 1 [p]) — l'outil de la question 1.d du sujet, hors-rung.
+  #        Reproduit le couple (p = 2969, exposant 2968) de r-bac.
+  #        Sonde fermat-condition-ou-exposant. item_source original.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-fermat
+    rung: "R6"
+    habilete: raisonnement
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, fermat, bac_style]
+    primary_misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+    item_source: original
+    lesson_placement: before_bac
+
+    stem: |
+      Soit $p$ un nombre premier et $a$ un entier tel que $p \nmid a$. D'après le
+      petit théorème de Fermat, à quoi est congru $a^{p-1}$ modulo $p$ ?
+      *(Par exemple, avec $p = 2969$ : que vaut $a^{2968}$ modulo $2969$ ?)*
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $a^{p-1} \equiv -1 \pmod{p}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: |
+          C'est le piège du sujet 2019 : avant d'appliquer Fermat, on avait
+          $(u\,m)^{2968} \equiv -1$. Le petit théorème de Fermat donne l'autre
+          valeur, $+1$ ; c'est justement la confrontation $-1 \equiv 1$ qui fournit
+          la contradiction. La conclusion de Fermat est $a^{p-1} \equiv 1$.
+      - id: B
+        text: |
+          $a^{p-1} \equiv 1 \pmod{p}$
+        correct: true
+        feedback: |
+          Exact. Petit théorème de Fermat : si $p$ est premier et $p \nmid a$,
+          alors $a^{p-1} \equiv 1 \pmod{p}$. La condition $p \nmid a$ est
+          essentielle — sans elle ($p \mid a$), on aurait $a^{p-1} \equiv 0$. Ici
+          $a^{2968} \equiv 1 \pmod{2969}$.
+      - id: C
+        text: |
+          $a^{p-1} \equiv a \pmod{p}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: |
+          Confusion d'exposant. La forme « $\equiv a$ » est celle de $a^{p}$
+          ($a^p \equiv a \pmod p$, valable pour tout $a$). Le petit théorème de
+          Fermat sur $a^{p-1}$, lui, donne $\equiv 1$ (quand $p \nmid a$).
+      - id: D
+        text: |
+          $a^{p-1} \equiv 0 \pmod{p}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.prime-divise-produit
+        feedback: |
+          $a^{p-1} \equiv 0$ signifierait $p \mid a^{p-1}$, donc $p \mid a$ ($p$
+          premier). Or l'hypothèse est justement $p \nmid a$ : le reste ne peut pas
+          être $0$. Fermat donne $\equiv 1$.

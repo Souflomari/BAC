@@ -1,0 +1,297 @@
+notion: ondes-mecaniques-periodiques
+skill_code: pc_ondes_mecaniques_periodiques
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — OMPP)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong PHYSICAL model, not just the fact of being wrong.
+# The end-bank >=3-per-misconception floor lives in items.yaml and is NOT
+# altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict            (in R0)     — COMMIT gate: turns the rhetorical
+#                                          "prends position" of the hook into a
+#                                          real MCQ commit before the reveal.
+#                                          Probes OND-DP-1 (T et λ indépendantes).
+#   cp-r2-double-periodicite (after R2)  — rupture gate: the DOUBLE PERIODICITY
+#                                          link λ = cT. Probes OND-DP-1. Clone of
+#                                          OMPP-9's stem.
+#   cp-r5-diffraction        (after R5)  — rupture gate: the DIFFRACTION condition
+#                                          a ≲ λ. Probes OND-DIF-1. Clone of
+#                                          OMPP-19's stem.
+#   cp-r6-dispersif          (after R6)  — rupture gate: the definition of a
+#                                          DISPERSIVE medium (c depends on f).
+#                                          Probes OND-DISP-1. Clone of OMPP-22's
+#                                          stem.
+#
+# Every distractor carries a real misconception id from items.yaml's inventory
+# (no null tags). The correct choice is deliberately NOT the longest option in
+# any item. cp-r0-predict is an original commit item (not in the end bank); the
+# three rupture gates clone the cleanest end-bank stems without adjusting any
+# end-bank tally (inline surfacing does not double-count).
+#
+# Boundary guard: onde mécanique progressive périodique. Diffraction traitée
+# QUALITATIVEMENT (condition a ≲ λ, caractéristiques conservées) — pas de
+# θ = λ/a, pas de diffraction de la lumière (réservées à onde-lumineuse). Milieu
+# dispersif DÉFINI seulement (c dépend de f) — aucun traitement quantitatif.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns "prends position avant de continuer" into a real MCQ
+  #        commit before the experiment reveal. Probes:
+  #        OND-DP-1 (T et λ perçues comme indépendantes).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [checkpoint, formative, misconception_driven, pc_ondes_mecaniques_periodiques, hook_commit]
+    primary_misconception: OND-DP-1
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Une onde progressive périodique parcourt une corde. Deux répétitions
+      coexistent : l'**espacement des bosses** sur une photo (dans l'espace) et
+      l'**intervalle de temps** entre deux passages d'un point par le même
+      mouvement (dans le temps). Sont-elles indépendantes, ou nécessairement
+      liées ? **Engage-toi — c'est ta prédiction.**
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Nécessairement liées : dès que la corde et le vibreur sont fixés, resserrer l'une resserre aussi l'autre."
+        correct: true
+        feedback: |
+          Exact — et c'est le bon réflexe. Ce ne sont pas deux réglages
+          indépendants : la relation $\lambda = cT$, qu'on va dériver au chapitre 3, les
+          soude. Resserre le rythme du vibreur (diminue $T$), à célérité $c$
+          fixée par la corde, et l'espacement des bosses $\lambda$ se resserre
+          dans les mêmes proportions. La vraie question devient : **pourquoi**
+          ce lien existe-t-il, et comment se calcule-t-il ?
+
+      - id: B
+        text: "Complètement indépendantes : on peut resserrer le rythme du vibreur dans le temps sans que l'espacement des bosses dans l'espace ne change en quoi que ce soit."
+        correct: false
+        misconception: OND-DP-1
+        feedback: |
+          Modèle détecté : « deux réglages séparés ». C'est justement ce que
+          l'expérience contredit : quand on resserre le rythme du vibreur sans
+          toucher à la corde, les bosses se rapprochent aussi, toutes seules.
+          Si les deux étaient indépendantes, cela n'aurait aucune raison de se
+          produire. Elles sont liées par $\lambda = cT$.
+
+      - id: C
+        text: "Ce sont la même grandeur, écrite une fois en secondes, une fois en mètres."
+        correct: false
+        misconception: OND-DP-2
+        feedback: |
+          Modèle détecté : « $T$ et $\lambda$, une seule grandeur en deux
+          unités ». Non : $T$ est une **durée** (secondes), $\lambda$ une
+          **distance** (mètres) — deux natures physiques différentes. Elles sont
+          *liées* par $\lambda = cT$, mais elles ne sont pas la même chose
+          changée d'unité.
+
+      - id: D
+        text: "Si les deux semblent varier ensemble, c'est une coïncidence, sans lien nécessaire."
+        correct: false
+        misconception: OND-DP-1
+        feedback: |
+          Modèle détecté : « coïncidence ». Ce n'en est jamais une : dès que la
+          source et le milieu sont fixés, la répétition temporelle et la
+          répétition spatiale sont **forcées** d'aller ensemble — c'est tout
+          l'objet de la relation $\lambda = cT$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r2-double-periodicite | placed AFTER R2
+  #        Rupture gate: the DOUBLE PERIODICITY link λ = cT (temporal
+  #        T and spatial λ are two faces of one phenomenon). Clone of
+  #        OMPP-9's stem. Probes OND-DP-1.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-double-periodicite
+    rung: "R2"
+    habilete: utilisation
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [checkpoint, formative, misconception_driven, pc_ondes_mecaniques_periodiques]
+    primary_misconception: OND-DP-1
+    item_source: clone_of_OMPP-9
+    lesson_placement: after_R2
+
+    stem: |
+      On vient de dériver $\lambda = cT$. Comment la répétition **temporelle**
+      ($T$) et la répétition **spatiale** ($\lambda$) d'une onde progressive
+      périodique sont-elles reliées ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Deux faces d'un même phénomène, liées par $\\lambda = cT$ : changer le rythme de la source change l'espacement spatial. Vrai pour toute onde périodique."
+        correct: true
+        feedback: |
+          Exact. Le lien vient du seul fait que chaque point rejoue le mouvement
+          de la source avec retard — sans aucune hypothèse sur la forme du
+          mouvement. Il vaut donc pour n'importe quelle onde périodique, corde
+          ou son, sinusoïdale ou non.
+
+      - id: B
+        text: "Deux phénomènes indépendants : on peut resserrer le rythme de la source sans que l'espacement spatial des bosses ne change, l'un n'entraîne pas l'autre."
+        correct: false
+        misconception: OND-DP-1
+        feedback: |
+          Modèle détecté : « indépendants ». C'est le contraire de l'expérience :
+          resserrer le rythme de la source resserre toujours l'espacement
+          spatial, en proportion. $\lambda = cT$ interdit de bouger l'un sans
+          l'autre, à $c$ fixée.
+
+      - id: C
+        text: "Une seule grandeur exprimée dans deux unités : $T$ en secondes, $\\lambda$ en mètres, c'est la même chose."
+        correct: false
+        misconception: OND-DP-2
+        feedback: |
+          Modèle détecté : « même grandeur, deux unités ». Une durée et une
+          distance ne sont pas interchangeables : $T$ se lit sur l'évolution
+          d'**un point** au cours du temps, $\lambda$ sur une **photo** de tout
+          le milieu. Elles sont reliées, pas identiques.
+
+      - id: D
+        text: "Reliées seulement si la source vibre sinusoïdalement ; sinon indépendantes."
+        correct: false
+        misconception: OND-DP-1
+        feedback: |
+          Modèle détecté : « lien réservé au sinusoïdal ». La dérivation de
+          $\lambda = cT$ n'a jamais supposé une source sinusoïdale : elle ne
+          repose que sur le retard et la périodicité. Le lien est **général** ;
+          le cas sinusoïdal n'est qu'un cas particulier qui s'y ajoute.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r5-diffraction | placed AFTER R5
+  #        Rupture gate: the DIFFRACTION condition a ≲ λ (a comparison
+  #        of two lengths, not an absolute value). Clone of OMPP-19's
+  #        stem. Probes OND-DIF-1.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-diffraction
+    rung: "R5"
+    habilete: utilisation
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [checkpoint, formative, misconception_driven, pc_ondes_mecaniques_periodiques, diffraction]
+    primary_misconception: OND-DIF-1
+    item_source: clone_of_OMPP-19
+    lesson_placement: after_R5
+
+    stem: |
+      Une onde progressive périodique, de longueur d'onde $\lambda$, arrive sur
+      une ouverture (une fente) de largeur $a$. Dans quel cas la diffraction
+      sera-t-elle notable derrière l'ouverture ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Quand $a$ est de l'ordre de $\\lambda$, ou plus petite ($a \\lesssim \\lambda$)."
+        correct: true
+        feedback: |
+          Exact. Ce qui décide n'est jamais la valeur absolue de $a$, mais sa
+          **comparaison** à $\lambda$. Dès que $a$ se rapproche de $\lambda$, ou
+          passe en dessous, l'onde s'étale nettement derrière l'ouverture,
+          comme si la fente devenait une nouvelle source.
+
+      - id: B
+        text: "Quand $a$ est très grande devant $\\lambda$ ($a \\gg \\lambda$), afin de bien laisser passer l'onde et d'observer un effet marqué."
+        correct: false
+        misconception: OND-DIF-1
+        feedback: |
+          Modèle détecté : condition inversée. Une grande ouverture laisse
+          justement l'onde filer **presque tout droit**, sans étalement notable.
+          C'est au contraire une ouverture petite — de l'ordre de $\lambda$ ou
+          moins — qui fait diffracter nettement.
+
+      - id: C
+        text: "Quand $a$ devient très petite : l'onde se concentre alors en un faisceau de plus en plus fin, dans le prolongement direct de la fente, comme un jet d'eau forcé par un trou étroit."
+        correct: false
+        misconception: OND-DIF-3
+        feedback: |
+          Modèle détecté : intuition « jet d'eau ». C'est l'inverse : plus
+          l'ouverture est étroite (vers $\lambda$), plus l'onde **s'étale** sur
+          un large domaine angulaire — elle ne se concentre pas en un faisceau
+          fin.
+
+      - id: D
+        text: "Quand la fréquence de l'onde diminue au passage de la fente."
+        correct: false
+        misconception: OND-DIF-2
+        feedback: |
+          Modèle détecté : une fréquence qui changerait au passage. Une fente
+          n'est pas une source : elle ne modifie ni $f$, ni $\lambda$, ni $c$.
+          La condition de diffraction ne porte pas sur $f$, mais sur la
+          comparaison entre $a$ et $\lambda$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r6-dispersif | placed AFTER R6
+  #        Rupture gate: the definition of a DISPERSIVE medium (c
+  #        depends on f). Clone of OMPP-22's stem. Probes OND-DISP-1.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-dispersif
+    rung: "R6"
+    habilete: utilisation
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [checkpoint, formative, misconception_driven, pc_ondes_mecaniques_periodiques, milieu_dispersif]
+    primary_misconception: OND-DISP-1
+    item_source: clone_of_OMPP-22
+    lesson_placement: after_R6
+
+    stem: |
+      Qu'est-ce qui définit un milieu **dispersif**, pour une onde mécanique
+      périodique ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Un milieu où la célérité $c$ de l'onde dépend de sa fréquence $f$."
+        correct: true
+        feedback: |
+          Exact. Le test est opératoire : on envoie deux ondes de fréquences
+          différentes et on compare leurs célérités. Différentes → dispersif ;
+          égales → non dispersif. Rien à voir avec une perte d'énergie ou un
+          changement de fréquence.
+
+      - id: B
+        text: "Un milieu où la célérité de l'onde est une constante fixe, la même pour toutes les fréquences qui le traversent, quel que soit leur nombre."
+        correct: false
+        misconception: OND-DISP-1
+        feedback: |
+          Modèle détecté : « $c$ toujours constante ». C'est la définition d'un
+          milieu **non** dispersif. Dans un milieu dispersif, au contraire, la
+          célérité varie d'une fréquence à l'autre — c'est le raffinement exact
+          de « le milieu fixe $c$ » vu aux chapitres 2 et 5.
+
+      - id: C
+        text: "Un milieu qui absorbe l'énergie de l'onde et l'atténue au fil de sa propagation."
+        correct: false
+        misconception: OND-DISP-2
+        feedback: |
+          Modèle détecté : dispersion confondue avec absorption. La dispersion
+          ne concerne que la dépendance de $c$ en $f$, jamais une perte
+          d'énergie. Un milieu peut disperser sans atténuer, et inversement :
+          deux propriétés indépendantes.
+
+      - id: D
+        text: "Un milieu où la fréquence de l'onde change au cours de sa propagation."
+        correct: false
+        misconception: OND-DISP-3
+        feedback: |
+          Modèle détecté : une fréquence qui dériverait en route. La fréquence
+          reste celle qu'a imposée la source, dispersif ou non. Ce qui dépend de
+          la fréquence, dans un milieu dispersif, c'est la célérité — pas
+          l'inverse.

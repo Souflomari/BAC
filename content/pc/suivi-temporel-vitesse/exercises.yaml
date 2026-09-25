@@ -1,0 +1,176 @@
+# Attempt-first exercises (summit-conversion campaign — suivi-temporel-vitesse).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2021 session
+# normale, PC BIOF, code NS28F, AlloSchool element/127287 — statut « vérifié »
+# in docs/sujets/pc/suivi-temporel-vitesse.md, Exercice I Partie 1 : étude
+# cinétique de la saponification, suivie par conductimétrie). r-variation is a
+# fresh anti-memorisation twin (même savoir-faire, autre contexte/nombres, une
+# méthode de suivi et de lecture différentes ; status not-applicable).
+
+notion: suivi-temporel-vitesse
+
+exercises:
+  # ── r-bac — le VERIFIED sujet 2021 (session normale), Exercice I Partie 1 ──
+  # Transcription fidèle de docs/sujets/pc/suivi-temporel-vitesse.md → « 2021 —
+  # session normale — Exercice I (Partie 1) ». Saponification de l'éthanoate
+  # d'éthyle par la soude, suivie par conductimétrie. σ = 0,25 − 160 x. La
+  # figure (courbe σ(t) décroissante, tangente (T) tracée en t₁ = 4 min) est
+  # DÉCRITE en toutes lettres dans l'intro : on ne référence PAS un SVG
+  # (les SVG de media/ encodent l'exemple de la leçon, pas ce sujet).
+  - id: r-bac
+    title: "Exercice de type bac — cinétique de la saponification (2021)"
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session normale — examen national PC BIOF (Sciences Physiques),
+        code sujet NS28F, AlloSchool element/127287 (Exercice I, Partie 1 —
+        étude cinétique de la saponification par conductimétrie ; barème ≈ 2,5
+        pt sur les 7 pt de l'exercice). Transcription vérifiée : re-fetch
+        indépendant AlloSchool + diff OK (docs/sujets/pc/suivi-temporel-vitesse.md).
+    intro: |-
+      **Étude cinétique d'une saponification (examen national, session normale 2021).**
+
+      L'une des plus anciennes réactions de synthèse est la fabrication du savon. On étudie ici, **par conductimétrie**, la cinétique de la réaction de synthèse d'un savon entre l'éthanoate d'éthyle $\text{CH}_3\text{COOC}_2\text{H}_5$ (introduit en excès) et une solution aqueuse d'hydroxyde de sodium $\text{Na}^+_{(aq)} + \text{HO}^-_{(aq)}$.
+
+      À l'instant $t = 0$ pris comme origine des dates, on introduit l'ester en excès dans un ballon contenant une quantité $n_0(\text{HO}^-) = 10^{-3}\ \text{mol}$ d'ions hydroxyde ; le mélange réactionnel a un volume $V_0 = 100\ \text{mL}$. À température constante, la réaction, totale, est modélisée par :
+
+      $$\text{CH}_3\text{COOC}_2\text{H}_{5(aq)} + \text{HO}^-_{(aq)} \rightarrow \text{CH}_3\text{COO}^-_{(aq)} + \text{C}_2\text{H}_5\text{OH}_{(aq)}$$
+
+      On mesure à chaque instant la conductivité $\sigma$ du mélange. La courbe $\sigma(t)$ **part de $\sigma = 0{,}25\ \text{S.m}^{-1}$ à $t = 0$ et décroît** (allure exponentielle) vers un palier voisin de $0{,}09\ \text{S.m}^{-1}$ ; l'axe des temps est gradué $4,\ 8,\ 12,\ 16,\ 20$ (en min). La droite $(T)$ est la **tangente à la courbe au point d'abscisse $t_1 = 4\ \text{min}$**. La conductivité s'exprime en fonction de l'avancement $x$ par :
+
+      $$\sigma = 0{,}25 - 160\,x \qquad (\sigma \text{ en } \text{S.m}^{-1},\ x \text{ en mol})$$
+    questions:
+      - id: q1
+        part: "Partie 1 — Tableau d'avancement et avancement final"
+        stem: |-
+          **(0,75 pt)** Dresser le tableau d'avancement de la réaction et déterminer la valeur de l'avancement final $x_f$, sachant que la réaction est totale.
+        reasoning: |-
+          Le tableau d'avancement fixe, ligne par ligne, ce que devient chaque espèce : l'éthanoate d'éthyle et $\text{HO}^-$ sont consommés (coefficient $1$ chacun), l'ion éthanoate et l'éthanol apparaissent. Pour l'avancement final, on cherche le réactif limitant — celui qui s'annule le premier. Ici l'ester est introduit **en excès**, donc c'est $\text{HO}^-$ qui limite. La réaction étant **totale**, $\text{HO}^-$ est intégralement consommé, et l'avancement final vaut exactement la quantité initiale d'hydroxyde.
+        steps:
+          - math: 'n(\text{HO}^-) = n_0(\text{HO}^-) - x = 10^{-3} - x \quad (\text{mol})'
+            note: "Quantité d'ions hydroxyde restante à l'avancement x (coefficient 1)."
+          - math: 'n_0(\text{HO}^-) - x_f = 0 \implies x_f = n_0(\text{HO}^-)'
+            note: "Réaction totale : le réactif limitant (HO⁻, l'ester étant en excès) est entièrement consommé."
+          - math: '\boxed{x_f = 10^{-3}\ \text{mol} = 1{,}0\ \text{mmol}}'
+            note: "Avancement final : fixé par la quantité initiale d'hydroxyde."
+      - id: q2
+        part: "Partie 1 — Temps de demi-réaction et vitesse volumique"
+        stem: |-
+          **(0,25 pt)** Définir le temps de demi-réaction $t_{1/2}$.
+        reasoning: |-
+          Le temps de demi-réaction est l'instant où l'avancement atteint la **moitié de sa valeur finale** : $x(t_{1/2}) = \dfrac{x_f}{2}$. C'est une définition posée sur la courbe d'avancement $x(t)$, pas sur la durée totale : comme $x(t)$ ne fait que croître, de $0$ à $x_f$, sans jamais reculer, la valeur $x_f/2$ est traversée une fois et une seule — ce qui rend $t_{1/2}$ parfaitement défini, sans ambiguïté.
+      - id: q3
+        stem: |-
+          **(0,5 pt)** À l'aide de l'expression $\sigma = 0{,}25 - 160\,x$ et de la courbe, déterminer la valeur de $t_{1/2}$.
+        reasoning: |-
+          On ne lit pas $t_{1/2}$ directement sur l'axe des temps : la courbe donne $\sigma(t)$, pas $x(t)$. La stratégie est donc de **traduire la condition $x = x_f/2$ en une condition sur $\sigma$**, la seule grandeur portée en ordonnée. On calcule la conductivité correspondant à $x = x_f/2$ grâce à la relation linéaire fournie, puis on lit sur la courbe l'abscisse de l'instant où $\sigma$ atteint cette valeur.
+        steps:
+          - math: 'x = \dfrac{x_f}{2} = \dfrac{10^{-3}}{2} = 0{,}5\times10^{-3}\ \text{mol}'
+            note: "Moitié de l'avancement final déterminé en q1."
+          - math: '\sigma\!\left(\tfrac{x_f}{2}\right) = 0{,}25 - 160 \times 0{,}5\times10^{-3} = 0{,}25 - 0{,}08 = 0{,}17\ \text{S.m}^{-1}'
+            note: "On convertit la condition sur x en condition sur σ, la grandeur lue en ordonnée."
+          - math: '\sigma = 0{,}17\ \text{S.m}^{-1} \ \Rightarrow\ \boxed{t_{1/2} \approx 8\ \text{min}}'
+            note: "Lecture graphique : abscisse du point de la courbe où σ = 0,17 S/m."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Montrer que la vitesse volumique de la réaction à un instant $t$ s'écrit sous la forme $v = -\dfrac{1}{160\,V_0}\dfrac{d\sigma}{dt}$.
+        reasoning: |-
+          La vitesse volumique de réaction se définit à partir de l'avancement : $v = \dfrac{1}{V_0}\dfrac{dx}{dt}$. Mais ici on ne mesure pas $x$, on mesure $\sigma$ ; il faut donc exprimer $x$ en fonction de $\sigma$ à l'aide de la relation linéaire donnée, puis dériver. L'inversion de $\sigma = 0{,}25 - 160\,x$ donne $x = \dfrac{0{,}25 - \sigma}{160}$ ; en la dérivant, un signe moins apparaît — c'est normal, car $\sigma$ décroît quand l'avancement $x$ croît.
+        steps:
+          - math: 'v = \dfrac{1}{V_0}\dfrac{dx}{dt}'
+            note: "Définition de la vitesse volumique de réaction (chapitre 3)."
+          - math: '\sigma = 0{,}25 - 160\,x \implies x = \dfrac{0{,}25 - \sigma}{160} \implies \dfrac{dx}{dt} = -\dfrac{1}{160}\dfrac{d\sigma}{dt}'
+            note: "On inverse la relation σ(x), puis on dérive (0,25 est une constante)."
+          - math: '\boxed{v = \dfrac{1}{V_0}\left(-\dfrac{1}{160}\dfrac{d\sigma}{dt}\right) = -\dfrac{1}{160\,V_0}\dfrac{d\sigma}{dt}}'
+            note: "Le signe moins traduit que σ diminue quand l'avancement augmente."
+      - id: q5
+        stem: |-
+          **(0,5 pt)** Déterminer, en $\text{mol.m}^{-3}.\text{min}^{-1}$, la valeur $v_1$ de cette vitesse à l'instant $t_1 = 4\ \text{min}$.
+        reasoning: |-
+          $\dfrac{d\sigma}{dt}$ à $t_1$ est la **pente de la tangente $(T)$** tracée en ce point : on lit ses coordonnées pour l'estimer. Cette pente est négative (la conductivité décroît) ; injectée dans la formule de q4, le signe moins la rend positive, comme il se doit pour une vitesse. Un seul piège d'unité : pour obtenir $v_1$ en $\text{mol.m}^{-3}.\text{min}^{-1}$, il faut exprimer $V_0$ en $\text{m}^3$, pas en litres.
+        steps:
+          - math: '\left.\dfrac{d\sigma}{dt}\right|_{t_1} \approx -0{,}01\ \text{S.m}^{-1}.\text{min}^{-1}'
+            note: "Pente de la tangente (T) lue au point t₁ = 4 min (lecture graphique, pente négative)."
+          - math: 'V_0 = 100\ \text{mL} = 100\times10^{-6}\ \text{m}^3 = 10^{-4}\ \text{m}^3'
+            note: "Conversion en m³, imposée par l'unité demandée (mol.m⁻³.min⁻¹)."
+          - math: 'v_1 = -\dfrac{1}{160\,V_0}\left.\dfrac{d\sigma}{dt}\right|_{t_1} = -\dfrac{1}{160 \times 10^{-4}} \times (-0{,}01)'
+            note: "On remplace dans v = −1/(160 V₀) · dσ/dt."
+          - math: '\boxed{v_1 \approx 0{,}63\ \text{mol.m}^{-3}.\text{min}^{-1}}'
+            note: "Résultat positif : la vitesse est bien positive (les deux signes moins se compensent)."
+
+  # ── r-variation — jumeau anti-mémorisation frais (PAS un vrai sujet) ──────
+  # Mêmes savoir-faire profonds que r-bac (tableau d'avancement + réactif
+  # limitant → x_max ; définir et lire t½ ; vitesse volumique v = (1/V)(dx/dt) ;
+  # pourquoi v décroît via les chocs efficaces ; facteur cinétique), mais :
+  # spectrophotométrie au lieu de conductimétrie, tableau x(t) au lieu d'une
+  # relation σ = f(x), et sécante symétrique au lieu d'une tangente tracée —
+  # pour que l'élève ne puisse pas recopier r-bac et doive reconnaître la
+  # procédure.
+  - id: r-variation
+    title: "Variation fraîche"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2021, sourcé).
+    intro: |-
+      Même structure profonde que le sujet précédent, habillage différent : ici la transformation est suivie par **spectrophotométrie** (et non par conductimétrie), on dispose d'un **tableau de mesures de $x(t)$** (et non d'une relation $\sigma = f(x)$ avec tangente tracée), et l'on estime la vitesse par une **sécante symétrique**. Le but est que tu ne puisses pas recopier la solution du sujet 2021 : tu dois reconnaître quelle procédure s'applique quand la méthode de suivi et la méthode de lecture changent.
+
+      On étudie la réaction lente $\text{S}_2\text{O}_8^{2-} + 2\,\text{I}^- \rightarrow 2\,\text{SO}_4^{2-} + \text{I}_2$, qui forme du diiode $\text{I}_2$ coloré. On mélange $n_0(\text{S}_2\text{O}_8^{2-}) = 2{,}0\ \text{mmol}$ d'ions peroxodisulfate avec des ions iodure $\text{I}^-$ **en large excès**, dans un volume total $V = 250\ \text{mL} = 0{,}250\ \text{L}$ supposé constant. Le suivi spectrophotométrique donne les valeurs de l'avancement $x$ (en mmol) : $0{,}0$ à $t = 0$ ; $0{,}6$ à $2\ \text{min}$ ; $1{,}0$ à $4\ \text{min}$ ; $1{,}3$ à $6\ \text{min}$ ; $1{,}5$ à $8\ \text{min}$ ; $1{,}75$ à $12\ \text{min}$ ; $1{,}9$ à $16\ \text{min}$ ; $1{,}98$ à $24\ \text{min}$.
+    questions:
+      - id: q1
+        part: "Partie 1 — Avancement maximal"
+        stem: |-
+          Dresser le tableau d'avancement et déterminer l'avancement maximal $x_{max}$.
+        reasoning: |-
+          Même geste que dans le sujet, autres espèces : on cherche le réactif limitant. L'ion iodure $\text{I}^-$ est en large excès, donc c'est le peroxodisulfate $\text{S}_2\text{O}_8^{2-}$ (coefficient $1$) qui s'annule le premier. En admettant la réaction totale, l'avancement maximal vaut la quantité initiale de peroxodisulfate.
+        steps:
+          - math: 'n(\text{S}_2\text{O}_8^{2-}) = 2{,}0 - x, \qquad n(\text{I}^-) = n_0(\text{I}^-) - 2x \quad (\text{mmol})'
+            note: "Peroxodisulfate consommé (coeff. 1), iodure consommé deux fois plus vite (coeff. 2)."
+          - math: 'n(\text{S}_2\text{O}_8^{2-}) = 0 \implies \boxed{x_{max} = 2{,}0\ \text{mmol}}'
+            note: "S₂O₈²⁻ est limitant (I⁻ en excès) : c'est lui qui fixe x_max."
+      - id: q2
+        part: "Partie 1 — Vitesse volumique, demi-réaction, ralentissement"
+        stem: |-
+          Calculer la vitesse volumique de réaction $v$ à l'instant $t = 4\ \text{min}$, par la méthode de la sécante symétrique.
+        reasoning: |-
+          Comme on ne dispose que d'un tableau de mesures (pas d'une tangente tracée), on estime la pente de $x(t)$ à $t = 4\ \text{min}$ par la **sécante symétrique** : la droite qui joint les deux points du tableau encadrant symétriquement cet instant, $t = 2\ \text{min}$ et $t = 6\ \text{min}$. On calcule sa pente, on convertit en $\text{mol.s}^{-1}$, puis on **divise par $V$** — jamais l'inverse.
+        steps:
+          - math: '\text{pente} \approx \dfrac{x(6) - x(2)}{6 - 2} = \dfrac{1{,}3 - 0{,}6}{4} = 0{,}175\ \text{mmol.min}^{-1}'
+            note: "Sécante symétrique autour de t = 4 min (points encadrants t = 2 et t = 6 min)."
+          - math: 'v(4\ \text{min}) = \dfrac{1}{V}\times\text{pente} = \dfrac{0{,}175\times10^{-3}}{0{,}250 \times 60}'
+            note: "On divise la pente par V, et on convertit les minutes en secondes (×60 au dénominateur)."
+          - math: '\boxed{v(4\ \text{min}) \approx 1{,}2\times10^{-5}\ \text{mol.L}^{-1}.\text{s}^{-1}}'
+            note: "Vitesse volumique à t = 4 min."
+      - id: q3
+        stem: |-
+          Déterminer graphiquement le temps de demi-réaction $t_{1/2}$.
+        reasoning: |-
+          On applique la définition : $t_{1/2}$ est l'instant où $x = \dfrac{x_{max}}{2}$. On calcule cette moitié, puis on cherche la valeur correspondante dans le tableau (ou l'abscisse du point sur la courbe) — plutôt que de la deviner.
+        steps:
+          - math: '\dfrac{x_{max}}{2} = \dfrac{2{,}0}{2} = 1{,}0\ \text{mmol}'
+            note: "Moitié de l'avancement maximal déterminé en q1."
+          - math: 'x(4\ \text{min}) = 1{,}0\ \text{mmol} \implies \boxed{t_{1/2} = 4\ \text{min}}'
+            note: "Le tableau donne directement x = 1,0 mmol à t = 4 min."
+      - id: q4
+        stem: |-
+          Calculer $v$ à l'instant $t = 12\ \text{min}$ par la même méthode, comparer à $v(4\ \text{min})$, et expliquer l'écart à l'aide du modèle des chocs efficaces.
+        reasoning: |-
+          Même méthode qu'en q2, autour de $t = 12\ \text{min}$ : sécante symétrique entre $t = 8\ \text{min}$ et $t = 16\ \text{min}$. Le résultat sera nettement plus petit qu'à $t = 4\ \text{min}$, et l'interprétation compte autant que le nombre : entre ces deux instants, les réactifs ont continué à être consommés, donc leurs concentrations ont diminué ; les entités réactives se croisent moins souvent, les chocs efficaces par seconde se raréfient, et la vitesse volumique chute. C'est le même mécanisme que celui du chapitre précédent, appliqué à l'évolution d'une seule expérience dans le temps.
+        steps:
+          - math: '\text{pente} \approx \dfrac{x(16) - x(8)}{16 - 8} = \dfrac{1{,}9 - 1{,}5}{8} = 0{,}05\ \text{mmol.min}^{-1}'
+            note: "Sécante symétrique autour de t = 12 min (points encadrants t = 8 et t = 16 min)."
+          - math: 'v(12\ \text{min}) = \dfrac{0{,}05\times10^{-3}}{0{,}250 \times 60} \approx 3{,}3\times10^{-6}\ \text{mol.L}^{-1}.\text{s}^{-1}'
+            note: "Même conversion min → s et division par V qu'en q2."
+          - math: '\dfrac{v(4\ \text{min})}{v(12\ \text{min})} \approx \dfrac{1{,}2\times10^{-5}}{3{,}3\times10^{-6}} \approx 3{,}5'
+            note: "La vitesse a été divisée par environ 3,5 : une chute nette, pas une petite variation."
+      - id: q5
+        stem: |-
+          Sans aucun calcul : si l'on refaisait la même expérience à une température plus élevée (mêmes quantités initiales), le temps de demi-réaction $t_{1/2}$ serait-il plus court ou plus long ? Justifier.
+        reasoning: |-
+          On combine un facteur cinétique du chapitre précédent et la définition graphique de $t_{1/2}$. Une température plus élevée augmente la fréquence et l'efficacité des chocs entre entités réactives : la réaction avance plus vite, donc l'avancement atteint $x_{max}/2$ plus tôt. Comme $x_{max}$ ne dépend, lui, que des quantités initiales (inchangées), c'est bien l'instant où la courbe atteint la même hauteur $x_{max}/2$ qui se déplace vers la gauche : $t_{1/2}$ est **plus court**. Comparer deux $t_{1/2}$, c'est comparer directement la rapidité de deux transformations.

@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 500"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Échiquier de croisement lié à l’X : mère porteuse XᴬXᵃ (gamètes Xᴬ et Xᵃ, chacun 1/2) croisée avec père sain XᴬY (gamètes Xᴬ et Y, chacun 1/2). Filles : XᴬXᴬ et XᴬXᵃ, toutes saines. Fils : XᴬY sain et XᵃY atteint. Le fils XᵃY est hémizygote — un seul X, aucun second X pour masquer Xᵃ — contrairement à sa sœur XᴬXᵃ, porteuse mais saine grâce au Xᴬ qui masque Xᵃ. Bilan : 0 % des filles atteintes, 50 % des fils atteints.">
+  <title>Croisement lié à l’X — échiquier et hémizygotie du fils atteint</title>
+
+  <!--
+    croisement-lie-x.svg — figure STAGED, 5 étapes
+    (docs/design/LESSON-EXPERIENCE-SPEC.md §2).
+
+    Placement : R4, juste après le paragraphe qui clôt l'échiquier
+    XᴬXᵃ (mère) × XᴬY (père) — la famille du daltonisme introduite au R3 —
+    et juste avant "L'erreur classique à éviter ici". Cette figure REND en
+    5 étapes le même échiquier que le tableau markdown qui le précède
+    immédiatement dans le texte, construit colonne par colonne plutôt que
+    donné d'un coup.
+
+    Idée UNIQUE portée par l'accent (var(--figure-accent)), étapes 4→5 :
+    pourquoi le fils XᵃY est atteint alors que sa sœur XᴬXᵃ — qui a reçu
+    exactement le même Xᵃ maternel ! — reste seulement porteuse : c'est
+    l'hémizygotie masculine (un seul X, donc aucun second X pour masquer
+    Xᵃ). Tout le reste (cadre, en-têtes, les trois autres génotypes) reste
+    en ink/ink-soft neutres — ce ne sont pas les idées que cette figure met
+    en avant, seulement la structure nécessaire pour les lire.
+
+    Mise en scène (colonne par colonne, comme le tableau du texte) :
+      step-1 : cadre 2×2 VIDE + parents et leurs gamètes (mère XᴬXᵃ,
+               père XᴬY) — aucun génotype d'enfant encore rempli.
+      step-2 : colonne Xᴬ du père remplie → XᴬXᴬ (fille saine),
+               XᴬXᵃ (fille saine, porteuse).
+      step-3 : colonne Y du père remplie → XᴬY (fils sain),
+               XᵃY (fils atteint).
+      step-4 : anneau accent sur la case XᵃY + les deux repères de
+               comparaison (fils hémizygote atteint vs sœur porteuse
+               masquée) — AJOUTÉS par-dessus, le texte des cases du
+               step-3 n'est jamais retouché.
+      step-5 : bilan par sexe (0 % des filles atteintes, 50 % des fils).
+
+    Notation : allèle en exposant du chromosome X qui le porte —
+    Xᴬ (sain, dominant), Xᵃ (drépanocytaire/daltonien, récessif) — JAMAIS
+    la notation autosomale A//a du reste de la leçon (contraste voulu avec
+    pedigree-drepanocytose.svg et proba-enfant-atteint.svg, qui restent,
+    eux, en A//a).
+
+    Layout (viewBox 640×500, largeur alignée sur pedigree-drepanocytose.svg
+    pour cohérence visuelle dans la même leçon) :
+      Titre                            y=24
+      Boîte père (père sain, XᴬY)      x310–610, y48–96
+      Connecteurs père → en-têtes col  x385 / x535,  y96→152
+      Ligne d'en-tête (gamètes père)   x190–610, y152–196
+      Ligne "fille" (gamète Xᴬ, mère)  y196–274
+      Ligne "fils"  (gamète Xᵃ, mère)  y274–352
+      Boîte mère (mère porteuse XᴬXᵃ)  x30–150,  y196–352
+      Connecteurs mère → en-têtes lig  y235 / 313, x150→190
+      Cadre extérieur                 x190–610, y152–352
+      step-4 anneau + repères          y352–404
+      step-5 bilan par sexe            y408–472
+  -->
+
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="320" y="24" text-anchor="middle"
+          font-size="13" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Croisement lié à l’X : mère porteuse × père sain
+    </text>
+
+    <!-- Boîte père -->
+    <rect x="310" y="48" width="300" height="48" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
+    <text x="460" y="68" text-anchor="middle" font-size="12" fill="var(--figure-ink)">Père sain</text>
+    <text x="460" y="87" text-anchor="middle" font-size="14" font-style="italic" font-weight="700"
+          fill="var(--figure-ink)">X<tspan dy="-5" font-size="9.5">A</tspan><tspan dy="5">Y</tspan></text>
+
+    <!-- Connecteurs père → colonnes -->
+    <line x1="385" y1="96" x2="385" y2="146" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round"/>
+    <polygon points="385,152 380,143 390,143" fill="var(--figure-ink-soft)"/>
+    <line x1="535" y1="96" x2="535" y2="146" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round"/>
+    <polygon points="535,152 530,143 540,143" fill="var(--figure-ink-soft)"/>
+
+    <!-- Boîte mère -->
+    <rect x="30" y="196" width="120" height="156" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
+    <text x="90" y="266" text-anchor="middle" font-size="12" fill="var(--figure-ink)">Mère</text>
+    <text x="90" y="282" text-anchor="middle" font-size="12" fill="var(--figure-ink)">porteuse</text>
+    <text x="90" y="302" text-anchor="middle" font-size="14" font-style="italic" font-weight="700"
+          fill="var(--figure-ink)">X<tspan dy="-5" font-size="9.5">A</tspan><tspan dy="5">X</tspan><tspan dy="-5" font-size="9.5">a</tspan></text>
+
+    <!-- Connecteurs mère → lignes -->
+    <line x1="150" y1="235" x2="184" y2="235" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round"/>
+    <polygon points="190,235 181,230 181,240" fill="var(--figure-ink-soft)"/>
+    <line x1="150" y1="313" x2="184" y2="313" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round"/>
+    <polygon points="190,313 181,308 181,318" fill="var(--figure-ink-soft)"/>
+
+    <!-- Cadre extérieur -->
+    <rect x="190" y="152" width="420" height="200" rx="6" fill="none"
+          stroke="var(--figure-ink)" stroke-width="2.2"/>
+
+    <!-- Lignes internes du cadre -->
+    <line x1="310" y1="152" x2="310" y2="352" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="460" y1="152" x2="460" y2="352" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="190" y1="196" x2="610" y2="196" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="190" y1="274" x2="610" y2="274" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+
+    <!-- En-tête colonne Xᴬ (père) -->
+    <text x="385" y="172" text-anchor="middle" font-size="11" fill="var(--figure-ink)">Gamète <tspan font-style="italic" font-weight="700">X</tspan><tspan font-style="italic" font-weight="700" font-size="8" dy="-5">A</tspan></text>
+    <text x="385" y="188" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(1/2, père)</text>
+
+    <!-- En-tête colonne Y (père) -->
+    <text x="535" y="172" text-anchor="middle" font-size="11" fill="var(--figure-ink)">Gamète <tspan font-style="italic" font-weight="700">Y</tspan></text>
+    <text x="535" y="188" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(1/2, père)</text>
+
+    <!-- En-tête ligne Xᴬ (mère) -->
+    <text x="250" y="228" text-anchor="middle" font-size="11" fill="var(--figure-ink)">Gamète <tspan font-style="italic" font-weight="700">X</tspan><tspan font-style="italic" font-weight="700" font-size="8" dy="-5">A</tspan></text>
+    <text x="250" y="246" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(1/2, mère)</text>
+
+    <!-- En-tête ligne Xᵃ (mère) -->
+    <text x="250" y="306" text-anchor="middle" font-size="11" fill="var(--figure-ink)">Gamète <tspan font-style="italic" font-weight="700">X</tspan><tspan font-style="italic" font-weight="700" font-size="8" dy="-5">a</tspan></text>
+    <text x="250" y="324" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(1/2, mère)</text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!-- Case (Xᴬ mère, Xᴬ père) → XᴬXᴬ fille saine -->
+    <text x="385" y="228" text-anchor="middle" font-size="13" font-style="italic" font-weight="700"
+          fill="var(--figure-ink)">X<tspan dy="-5" font-size="9">A</tspan><tspan dy="5">X</tspan><tspan dy="-5" font-size="9">A</tspan></text>
+    <text x="385" y="248" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(fille saine)</text>
+
+    <!-- Case (Xᵃ mère, Xᴬ père) → XᴬXᵃ fille saine, porteuse -->
+    <text x="385" y="306" text-anchor="middle" font-size="13" font-style="italic" font-weight="700"
+          fill="var(--figure-ink)">X<tspan dy="-5" font-size="9">A</tspan><tspan dy="5">X</tspan><tspan dy="-5" font-size="9">a</tspan></text>
+    <text x="385" y="326" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(fille saine, porteuse)</text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- Case (Xᴬ mère, Y père) → XᴬY fils sain -->
+    <text x="535" y="228" text-anchor="middle" font-size="13" font-style="italic" font-weight="700"
+          fill="var(--figure-ink)">X<tspan dy="-5" font-size="9">A</tspan><tspan dy="5">Y</tspan></text>
+    <text x="535" y="248" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(fils sain)</text>
+
+    <!-- Case (Xᵃ mère, Y père) → XᵃY fils atteint -->
+    <text x="535" y="306" text-anchor="middle" font-size="13" font-style="italic" font-weight="700"
+          fill="var(--figure-ink)">X<tspan dy="-5" font-size="9">a</tspan><tspan dy="5">Y</tspan></text>
+    <text x="535" y="326" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(fils atteint)</text>
+  </g><!-- /step-3 -->
+
+  <g id="step-4">
+    <!-- Anneau accent sur la case XᵃY (ajout par-dessus, le texte du step-3 n'est pas retouché) -->
+    <rect x="464" y="278" width="142" height="70" rx="7" fill="var(--figure-accent)" fill-opacity="0.1"
+          stroke="var(--figure-accent)" stroke-width="2.6"/>
+
+    <!-- Repère depuis la case XᴬXᵃ (contraste, neutre) -->
+    <line x1="385" y1="352" x2="385" y2="366" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3,3"/>
+    <text x="385" y="380" text-anchor="middle" font-size="10" fill="var(--figure-ink)"><tspan font-style="italic" font-weight="700">X</tspan><tspan font-style="italic" font-weight="700" font-size="7.5" dy="-4">A</tspan><tspan dy="4"> masque </tspan><tspan font-style="italic" font-weight="700">X</tspan><tspan font-style="italic" font-weight="700" font-size="7.5" dy="-4">a</tspan></text>
+    <text x="385" y="396" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">→ porteuse, saine</text>
+
+    <!-- Repère depuis la case XᵃY (accent — l'idée de la figure) -->
+    <line x1="535" y1="352" x2="535" y2="366" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="535" y="380" text-anchor="middle" font-size="10" font-weight="600" fill="var(--figure-accent)">pas de second X</text>
+    <text x="535" y="396" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--figure-accent)">→ atteint (1 copie suffit)</text>
+  </g><!-- /step-4 -->
+
+  <g id="step-5">
+    <line x1="190" y1="410" x2="610" y2="410" stroke="var(--figure-grid)" stroke-width="1.2"/>
+
+    <rect x="310" y="422" width="150" height="50" rx="8" fill="var(--figure-surface)"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="385" y="442" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-ink)">Filles</text>
+    <text x="385" y="461" text-anchor="middle" font-size="12" fill="var(--figure-ink-soft)">0 % atteintes</text>
+
+    <rect x="460" y="422" width="150" height="50" rx="8" fill="var(--figure-accent)" fill-opacity="0.1"
+          stroke="var(--figure-accent)" stroke-width="2"/>
+    <text x="535" y="442" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-accent)">Fils</text>
+    <text x="535" y="461" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-accent)">50 % atteints</text>
+  </g><!-- /step-5 -->
+</svg>

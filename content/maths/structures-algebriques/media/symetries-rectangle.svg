@@ -1,0 +1,260 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 860"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Le groupe des symétries du rectangle ABCD, non carré, A(0,0), B(6,0), C(6,4), D(0,4), centre O, avec ses deux axes de symétrie. Les quatre éléments id, s indice h, s indice v, r (rotation 180°) sont montrés comme quatre permutations des sommets, avec des flèches d’échange : id ne bouge rien ; s indice h échange A et D, B et C ; s indice v échange A et B, D et C ; r échange A et C, B et D. Enfin, la composition s indice h rond s indice v est suivie sur le sommet A : s indice v envoie A sur B, puis s indice h envoie ce B sur C, effet net A vers C, concluant s indice h rond s indice v égale r.">
+  <title>Le groupe des symétries du rectangle : les quatre éléments et une composition</title>
+
+  <!--
+    symetries-rectangle.svg — R3 (deuxième exemple travaillé : le groupe des
+    symétries du rectangle). STAGED (LESSON-EXPERIENCE-SPEC.md §2.5 — schéma
+    à 3 couches, l'ordre EST le geste d'enseignement du texte : on pose le
+    rectangle, puis on énumère les quatre transformations comme permutations
+    des sommets, puis on suit un calcul de composition précis).
+
+    Reprend EXACTEMENT les coordonnées du texte (lesson.md, R3, deuxième
+    exemple) : A=(0,0), B=(6,0), C=(6,4), D=(0,4) — rectangle non carré,
+    AB le côté long, BC le côté court.
+
+    Repère écran (échelle 40 px/unité, origine à x=230 pour la figure
+    principale) :
+      A(0,0) -> (230,250)   B(6,0) -> (470,250)
+      C(6,4) -> (470,90)    D(0,4) -> (230,90)
+      O, centre (3,2) -> (350,170)
+
+    Mise en étapes (restagée 3→5, audit figure-stage-depth : les quatre
+    éléments arrivaient d'un coup — désormais chaque symétrie a son beat ;
+    id, transformation nulle, est absorbé dans le décor qu'il restitue
+    à l'identique) :
+
+    STEP-1 — le décor et l'élément trivial :
+      rectangle ABCD, sommets étiquetés avec leurs coordonnées, centre O,
+      les deux axes de symétrie (horizontal et vertical, passant par O)
+      tracés faiblement (--figure-ink-soft, pointillé) ; l'annonce de
+      l'ensemble E = {id, s_h, s_v, r} ; et le panneau id — aucune
+      flèche : rien ne bouge, c'est le rectangle tel quel.
+
+    Les panneaux miniatures gardent la même orientation que le rectangle
+    principal — bas-gauche=A, bas-droit=B, haut-droit=C, haut-gauche=D —
+    pour que les flèches d'échange se lisent directement. Chaque flèche
+    d'échange est une ligne droite légèrement décalée en parallèle du
+    bord (ou, pour r, la diagonale elle-même), avec un petit triangle à
+    chaque extrémité (double pointe = échange mutuel). Dans chaque
+    panneau de réflexion, l'axe de la symétrie est tracé en pointillé
+    faible pour que les échanges se lisent CONTRE leur axe.
+
+    STEP-2 — s_h seul : symétrie d'axe horizontal — échange A<->D (bord
+      gauche) et B<->C (bord droit) : deux flèches verticales, doubles
+      pointes, de part et d'autre de l'axe horizontal du panneau.
+
+    STEP-3 — s_v seul : symétrie d'axe vertical — échange A<->B (bord
+      bas) et D<->C (bord haut) : deux flèches horizontales, doubles
+      pointes, de part et d'autre de l'axe vertical du panneau.
+
+    STEP-4 — r seul : rotation 180° — échange A<->C et B<->D : les deux
+      diagonales, doubles pointes.
+
+    STEP-5 — la composition s_h ∘ s_v, en suivant le sommet A (reprend
+    EXACTEMENT le calcul du texte : "s_v envoie A sur B ; puis s_h envoie
+    ce B sur C. Donc A ↦ C […] Donc s_h ∘ s_v = r.") : un rectangle frais
+    (même échelle que le principal), avec deux flèches dirigées successives
+    (A→B étiquetée s_v, puis B→C étiquetée s_h, chacune décalée en dehors
+    du rectangle) et une flèche diagonale accent, en pointillé, A→C
+    (l'« effet net »), puis un encart de conclusion : s_h ∘ s_v = r.
+
+    Rôle des couleurs (5 tokens seulement) :
+      structure (rectangles, sommets, axes, flèches de mécanisme s_v/s_h) :
+        --figure-ink / --figure-ink-soft
+      SEUL foyer accent : la flèche « effet net » A→C et l'encart de
+        conclusion s_h ∘ s_v = r — la même hiérarchie que rotation-complexe.svg
+        (mécanisme = neutre, conclusion = accent).
+  -->
+
+  <!-- Fond du panneau -->
+  <rect x="20" y="10" width="660" height="840" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- Titre -->
+  <text x="350" y="34" text-anchor="middle" font-size="15" font-weight="600"
+        letter-spacing="0.01em" fill="var(--figure-ink)">Le groupe des symétries du rectangle ABCD</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le décor (rectangle, sommets, centre, axes),
+       l'annonce de E, et l'élément trivial id
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Axes de symétrie, faibles -->
+    <line x1="195" y1="170" x2="505" y2="170" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5 4"/>
+    <line x1="350" y1="55" x2="350" y2="285" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5 4"/>
+
+    <!-- Rectangle -->
+    <rect x="230" y="90" width="240" height="160" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
+
+    <!-- Centre O -->
+    <circle cx="350" cy="170" r="3" fill="var(--figure-ink-soft)"/>
+    <text x="358" y="164" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">O</text>
+
+    <!-- Sommets -->
+    <circle cx="230" cy="250" r="4" fill="var(--figure-ink)"/>
+    <circle cx="470" cy="250" r="4" fill="var(--figure-ink)"/>
+    <circle cx="470" cy="90"  r="4" fill="var(--figure-ink)"/>
+    <circle cx="230" cy="90"  r="4" fill="var(--figure-ink)"/>
+
+    <!-- Étiquettes + coordonnées -->
+    <text x="214" y="266" text-anchor="end" font-size="14" font-style="italic" fill="var(--figure-ink)">A</text>
+    <text x="214" y="282" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">(0,0)</text>
+
+    <text x="486" y="266" text-anchor="start" font-size="14" font-style="italic" fill="var(--figure-ink)">B</text>
+    <text x="486" y="282" text-anchor="start" font-size="10" fill="var(--figure-ink-soft)">(6,0)</text>
+
+    <text x="486" y="74" text-anchor="start" font-size="14" font-style="italic" fill="var(--figure-ink)">C</text>
+    <text x="486" y="58" text-anchor="start" font-size="10" fill="var(--figure-ink-soft)">(6,4)</text>
+
+    <text x="214" y="74" text-anchor="end" font-size="14" font-style="italic" fill="var(--figure-ink)">D</text>
+    <text x="214" y="58" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">(0,4)</text>
+    <text x="350" y="304" text-anchor="middle" font-size="13" font-weight="600" fill="var(--figure-ink)"
+          >E = {id, s<tspan dy="4" font-size="70%">h</tspan><tspan dy="-4">, s</tspan><tspan dy="4" font-size="70%">v</tspan><tspan dy="-4">, r} : les quatre permutations des sommets</tspan></text>
+
+    <!-- ── Panneau 1 : id (cx = 100) — aucune flèche ─────────────────────── -->
+    <text x="100" y="325" text-anchor="middle" font-size="15" font-style="italic" font-weight="600" fill="var(--figure-ink)">id</text>
+    <rect x="40" y="358" width="120" height="84" rx="8" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <circle cx="40"  cy="442" r="3" fill="var(--figure-ink)"/>
+    <circle cx="160" cy="442" r="3" fill="var(--figure-ink)"/>
+    <circle cx="160" cy="358" r="3" fill="var(--figure-ink)"/>
+    <circle cx="40"  cy="358" r="3" fill="var(--figure-ink)"/>
+    <text x="28"  y="454" text-anchor="end"   font-size="9" fill="var(--figure-ink)">A</text>
+    <text x="172" y="454" text-anchor="start" font-size="9" fill="var(--figure-ink)">B</text>
+    <text x="172" y="349" text-anchor="start" font-size="9" fill="var(--figure-ink)">C</text>
+    <text x="28"  y="349" text-anchor="end"   font-size="9" fill="var(--figure-ink)">D</text>
+    <text x="100" y="480" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">chaque sommet reste fixe</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — les quatre éléments de E, comme permutations des sommets
+       ══════════════════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — s_h seule : la réflexion d'axe horizontal
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- ── Panneau 2 : s_h (cx = 270) — échange A<->D et B<->C ───────────── -->
+    <text x="270" y="325" text-anchor="middle" font-size="15" font-style="italic" font-weight="600" fill="var(--figure-ink)"
+          >s<tspan dy="4" font-size="70%">h</tspan></text>
+    <rect x="210" y="358" width="120" height="84" rx="8" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <circle cx="210" cy="442" r="3" fill="var(--figure-ink)"/>
+    <circle cx="330" cy="442" r="3" fill="var(--figure-ink)"/>
+    <circle cx="330" cy="358" r="3" fill="var(--figure-ink)"/>
+    <circle cx="210" cy="358" r="3" fill="var(--figure-ink)"/>
+    <text x="198" y="454" text-anchor="end"   font-size="9" fill="var(--figure-ink)">A</text>
+    <text x="342" y="454" text-anchor="start" font-size="9" fill="var(--figure-ink)">B</text>
+    <text x="342" y="349" text-anchor="start" font-size="9" fill="var(--figure-ink)">C</text>
+    <text x="198" y="349" text-anchor="end"   font-size="9" fill="var(--figure-ink)">D</text>
+    <!-- flèche gauche A<->D, double pointe, décalée à gauche du bord -->
+    <line x1="196" y1="358" x2="196" y2="442" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <polygon points="196,350 192,358 200,358" fill="var(--figure-ink)"/>
+    <polygon points="196,450 192,442 200,442" fill="var(--figure-ink)"/>
+    <!-- flèche droite B<->C, double pointe, décalée à droite du bord -->
+    <line x1="344" y1="358" x2="344" y2="442" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <polygon points="344,350 340,358 348,358" fill="var(--figure-ink)"/>
+    <polygon points="344,450 340,442 348,442" fill="var(--figure-ink)"/>
+    <text x="270" y="480" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">A ↔ D,  B ↔ C</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — s_v seule : la réflexion d'axe vertical
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- ── Panneau 3 : s_v (cx = 440) — échange A<->B et D<->C ───────────── -->
+    <text x="440" y="325" text-anchor="middle" font-size="15" font-style="italic" font-weight="600" fill="var(--figure-ink)"
+          >s<tspan dy="4" font-size="70%">v</tspan></text>
+    <rect x="380" y="358" width="120" height="84" rx="8" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <circle cx="380" cy="442" r="3" fill="var(--figure-ink)"/>
+    <circle cx="500" cy="442" r="3" fill="var(--figure-ink)"/>
+    <circle cx="500" cy="358" r="3" fill="var(--figure-ink)"/>
+    <circle cx="380" cy="358" r="3" fill="var(--figure-ink)"/>
+    <text x="368" y="454" text-anchor="end"   font-size="9" fill="var(--figure-ink)">A</text>
+    <text x="512" y="454" text-anchor="start" font-size="9" fill="var(--figure-ink)">B</text>
+    <text x="512" y="349" text-anchor="start" font-size="9" fill="var(--figure-ink)">C</text>
+    <text x="368" y="349" text-anchor="end"   font-size="9" fill="var(--figure-ink)">D</text>
+    <!-- flèche basse A<->B, double pointe, décalée sous le bord -->
+    <line x1="380" y1="456" x2="500" y2="456" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <polygon points="372,456 380,452 380,460" fill="var(--figure-ink)"/>
+    <polygon points="508,456 500,452 500,460" fill="var(--figure-ink)"/>
+    <!-- flèche haute D<->C, double pointe, décalée au-dessus du bord -->
+    <line x1="380" y1="344" x2="500" y2="344" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <polygon points="372,344 380,340 380,348" fill="var(--figure-ink)"/>
+    <polygon points="508,344 500,340 500,348" fill="var(--figure-ink)"/>
+    <text x="440" y="480" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">A ↔ B,  D ↔ C</text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — r seule : la rotation d'un demi-tour
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <!-- ── Panneau 4 : r, rotation 180° (cx = 610) — échange A<->C et B<->D  -->
+    <text x="610" y="325" text-anchor="middle" font-size="15" font-style="italic" font-weight="600" fill="var(--figure-ink)"
+          >r<tspan font-style="normal" font-size="70%" dy="-3"> (180°)</tspan></text>
+    <rect x="550" y="358" width="120" height="84" rx="8" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <circle cx="550" cy="442" r="3" fill="var(--figure-ink)"/>
+    <circle cx="670" cy="442" r="3" fill="var(--figure-ink)"/>
+    <circle cx="670" cy="358" r="3" fill="var(--figure-ink)"/>
+    <circle cx="550" cy="358" r="3" fill="var(--figure-ink)"/>
+    <text x="538" y="454" text-anchor="end"   font-size="9" fill="var(--figure-ink)">A</text>
+    <text x="682" y="454" text-anchor="start" font-size="9" fill="var(--figure-ink)">B</text>
+    <text x="682" y="349" text-anchor="start" font-size="9" fill="var(--figure-ink)">C</text>
+    <text x="538" y="349" text-anchor="end"   font-size="9" fill="var(--figure-ink)">D</text>
+    <!-- diagonale A<->C, double pointe -->
+    <line x1="550" y1="442" x2="670" y2="358" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <polygon points="665.1,361.4 660.8,369.3 656.2,362.7" fill="var(--figure-ink)"/>
+    <polygon points="554.9,438.6 563.8,437.3 559.2,430.7" fill="var(--figure-ink)"/>
+    <!-- diagonale B<->D, double pointe -->
+    <line x1="670" y1="442" x2="550" y2="358" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <polygon points="554.9,361.4 563.8,362.7 559.2,369.3" fill="var(--figure-ink)"/>
+    <polygon points="665.1,438.6 660.8,430.7 656.2,437.3" fill="var(--figure-ink)"/>
+    <text x="610" y="480" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">A ↔ C,  B ↔ D</text>
+  </g><!-- /step-4 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la composition s_h ∘ s_v, en suivant le sommet A
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-5">
+    <text x="350" y="512" text-anchor="middle" font-size="13" font-weight="600" fill="var(--figure-ink)"
+          >La composition s<tspan dy="4" font-size="70%">h</tspan><tspan dy="-4"> ∘ s</tspan><tspan dy="4" font-size="70%">v</tspan><tspan dy="-4"> : suivre le sommet A</tspan></text>
+
+    <!-- Rectangle frais, même échelle que le rectangle principal -->
+    <rect x="230" y="540" width="240" height="160" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <circle cx="230" cy="700" r="4" fill="var(--figure-ink)"/>
+    <circle cx="470" cy="700" r="4" fill="var(--figure-ink)"/>
+    <circle cx="470" cy="540" r="4" fill="var(--figure-ink)"/>
+    <circle cx="230" cy="540" r="4" fill="var(--figure-ink)"/>
+    <text x="214" y="714" text-anchor="end"   font-size="13" font-style="italic" fill="var(--figure-ink)">A</text>
+    <text x="486" y="714" text-anchor="start" font-size="13" font-style="italic" fill="var(--figure-ink)">B</text>
+    <text x="486" y="530" text-anchor="start" font-size="13" font-style="italic" fill="var(--figure-ink)">C</text>
+    <text x="214" y="530" text-anchor="end"   font-size="13" font-style="italic" fill="var(--figure-ink)">D</text>
+
+    <!-- Flèche 1 : s_v envoie A sur B (décalée sous le bord, dirigée) -->
+    <line x1="230" y1="700" x2="230" y2="720" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="230" y1="720" x2="462" y2="720" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <polygon points="470,720 462,716 462,724" fill="var(--figure-ink)"/>
+    <line x1="470" y1="706" x2="470" y2="720" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="350" y="738" text-anchor="middle" font-size="13" fill="var(--figure-ink)"
+          >s<tspan dy="4" font-size="70%">v</tspan><tspan dy="-4"> : A ↦ B</tspan></text>
+
+    <!-- Flèche 2 : s_h envoie ce B sur C (décalée à droite du bord, dirigée) -->
+    <line x1="470" y1="700" x2="490" y2="700" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="490" y1="700" x2="490" y2="548" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <polygon points="490,540 486,548 494,548" fill="var(--figure-ink)"/>
+    <line x1="470" y1="540" x2="490" y2="540" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="505" y="622" text-anchor="start" font-size="13" fill="var(--figure-ink)"
+          >s<tspan dy="4" font-size="70%">h</tspan><tspan dy="-4"> : B ↦ C</tspan></text>
+
+    <!-- Flèche « effet net » A -> C, accent, en pointillé -->
+    <line x1="230" y1="700" x2="455.0" y2="550.0" stroke="var(--figure-accent)" stroke-width="2.2" stroke-dasharray="6 4"/>
+    <polygon points="463.3,544.4 457.8,554.2 452.2,545.8" fill="var(--figure-accent)"/>
+    <text x="300" y="588" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--figure-accent)">effet net</text>
+
+    <!-- Encart de conclusion -->
+    <rect x="200" y="770" width="300" height="54" rx="8" fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="350" y="793" text-anchor="middle" font-size="17" font-weight="700" fill="var(--figure-accent)"
+          >s<tspan dy="4" font-size="60%">h</tspan><tspan dy="-4"> ∘ s</tspan><tspan dy="4" font-size="60%">v</tspan><tspan dy="-4"> = r</tspan></text>
+    <text x="350" y="812" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">même effet que la rotation de 180°</text>
+  </g><!-- /step-5 -->
+
+</svg>

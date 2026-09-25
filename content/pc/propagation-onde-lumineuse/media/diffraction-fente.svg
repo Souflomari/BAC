@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" width="640" height="440"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Diffraction d’une onde lumineuse par une fente fine de largeur a : onde plane incidente, étalement angulaire théta = lambda/a jusqu’à un écran situé à la distance D, tache centrale de largeur L.">
+  <title>Diffraction par une fente de largeur a</title>
+  <!--
+    diffraction-fente.svg — figure STAGED (4 étapes), R3 (diffraction).
+
+    Géométrie (calculée, pas devinée) :
+      Sommet de l'étalement (sortie de la fente) : (190,208)
+      Écran                                        : x = 560   → D_px = 370
+      Rayons diffractés jusqu'à (560,148) et (560,268) → Rise = 60
+      θ_visuel = Rise / D_px = 60/370 ≈ 0,1622 rad (≈ 9,3°) — l'angle RÉEL
+      (θ = λ/a, de l'ordre de 10⁻³ rad pour le cas traité en R3) est bien
+      trop petit pour être dessiné : l'angle est ici EXAGÉRÉ pour la
+      lisibilité, comme dans tout schéma de manuel. Ce qui est physiquement
+      exact, en revanche, c'est la relation de construction :
+        Rise = D_px × θ_visuel  ⇔  L/2 = D·θ  (exactement respectée ici).
+      tan(θ_visuel) = 0,1590 vs θ_visuel = 0,1622 → écart ≈ 0,8 %,
+      l'approximation petits angles reste cohérente à l'échelle du schéma.
+
+      Tache centrale sur l'écran : rect y=148..268 (hauteur 120 = 2×Rise),
+      bracket L sur la même plage — donc L = 2×(D·θ) par construction.
+
+    Rôle des couleurs :
+      accent      : le phénomène (rayons diffractés, angle θ, tache L)
+      ink         : éléments structurels opaques (barrière, écran)
+      ink-soft    : repères géométriques neutres (a, D, λ, axe non dévié)
+
+    Mise en étapes — le geste d'enseignement suit exactement la prose de R3 :
+      step-1 : le montage — onde plane incidente sur une fente de largeur a.
+      step-2 : la prédiction naïve de l'optique géométrique (trajet non dévié).
+      step-3 : le phénomène réel — l'onde diffractée s'étale sur ±θ.
+      step-4 : la conséquence mesurable — écran, tache centrale L, distance D.
+    Chrome non-stepped (titre, fond de panneau) placé AVANT tout step-N —
+    aucun contenu non-stepped n'est intercalé entre des groupes (piège
+    d'assemblage du renderer : StagedFigure.tsx ré-injecte step-1..N,
+    ascendant, juste avant `</svg>` à chaque étape).
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Diffraction par une fente de largeur <tspan font-style="italic">a</tspan>
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="24" y="30" width="592" height="362" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — Le montage : onde plane incidente + fente de largeur a
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- ── Onde plane incidente : fronts d'onde verticaux ─────────────── -->
+    <line x1="76"  y1="148" x2="76"  y2="268" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="96"  y1="148" x2="96"  y2="268" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="116" y1="148" x2="116" y2="268" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="136" y1="148" x2="136" y2="268" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="156" y1="148" x2="156" y2="268" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+
+    <!-- Flèche de propagation -->
+    <line x1="64" y1="133" x2="150" y2="133"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round"/>
+    <polygon points="150,133 138,128.5 138,137.5" fill="var(--figure-ink-soft)"/>
+    <text x="106" y="122" text-anchor="middle" font-size="10"
+          fill="var(--figure-ink-soft)">onde plane incidente</text>
+
+    <!-- Repère λ (espacement entre deux fronts d'onde consécutifs) -->
+    <line x1="136" y1="272" x2="136" y2="286" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="156" y1="272" x2="156" y2="286" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="136" y1="280" x2="156" y2="280" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="146" y="300" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">λ</text>
+
+    <!-- ── Barrière opaque avec fente de largeur a ─────────────────────── -->
+    <rect x="170" y="78"  width="20" height="110"
+          fill="var(--figure-ink-soft)" fill-opacity="0.22"
+          stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <rect x="170" y="228" width="20" height="110"
+          fill="var(--figure-ink-soft)" fill-opacity="0.22"
+          stroke="var(--figure-ink)" stroke-width="1.5"/>
+
+    <!-- Repère a (largeur de la fente) -->
+    <line x1="152" y1="188" x2="160" y2="188" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="152" y1="228" x2="160" y2="228" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="156" y1="188" x2="156" y2="228" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="140" y="212" text-anchor="end" font-size="12" font-style="italic"
+          fill="var(--figure-ink-soft)">a</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — La prédiction naïve : trajet non dévié (optique géométrique)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line x1="190" y1="208" x2="560" y2="208"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,4"/>
+    <text x="375" y="196" text-anchor="middle" font-size="9"
+          fill="var(--figure-ink-soft)">trajet prévu sans diffraction</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — Le phénomène réel : étalement diffracté, ± θ
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <line x1="190" y1="208" x2="560" y2="148"
+          stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="190" y1="208" x2="560" y2="268"
+          stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Arc d'angle θ, entre l'axe non dévié et le rayon diffracté supérieur -->
+    <path d="M 224 208 A 34 34 0 0 0 223.6 202.6"
+          fill="none" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <text x="234" y="196" font-size="12" font-style="italic" fill="var(--figure-accent)">θ</text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — La conséquence mesurable : écran, tache centrale L, distance D
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <!-- ── Écran ────────────────────────────────────────────────────────── -->
+    <line x1="560" y1="78" x2="560" y2="338" stroke="var(--figure-ink)" stroke-width="2"/>
+    <line x1="560" y1="95"  x2="552" y2="85"  stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="560" y1="120" x2="552" y2="110" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="560" y1="296" x2="552" y2="286" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="560" y1="321" x2="552" y2="311" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+
+    <!-- Tache centrale lumineuse -->
+    <rect x="560" y="148" width="16" height="120" rx="3"
+          fill="var(--figure-accent)" fill-opacity="0.28"/>
+
+    <!-- Repère L (largeur de la tache centrale) -->
+    <line x1="586" y1="148" x2="594" y2="148" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <line x1="586" y1="268" x2="594" y2="268" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <line x1="590" y1="148" x2="590" y2="268" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <text x="604" y="212" text-anchor="start" font-size="12" font-style="italic"
+          fill="var(--figure-accent)">L</text>
+
+    <!-- Repère D (distance fente–écran) -->
+    <line x1="190" y1="338" x2="190" y2="360" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="560" y1="338" x2="560" y2="360" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="190" y1="360" x2="560" y2="360" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="190" y1="355" x2="190" y2="365" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="560" y1="355" x2="560" y2="365" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="375" y="378" text-anchor="middle" font-size="12" font-style="italic"
+          fill="var(--figure-ink-soft)">D</text>
+  </g><!-- /step-4 -->
+
+</svg>

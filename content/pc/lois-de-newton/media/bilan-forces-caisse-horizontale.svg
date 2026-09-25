@@ -1,0 +1,95 @@
+<svg viewBox="0 0 720 470" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Une caisse sur un sol horizontal, tirée par une force F dans le sens du mouvement et freinée par un frottement f : bilan des quatre forces (poids P vers le bas, réaction normale N vers le haut, F horizontale, f horizontale opposée), repère Ox horizontal et Oy vertical, et la lecture des projections — N égale P sur Oy, seule la différence F moins f subsiste sur Ox.">
+  <title>Caisse sur sol horizontal — bilan des forces, repère, projection</title>
+  <!--
+    bilan-forces-caisse-horizontale.svg — figure STAGED (4 étapes), le
+    pendant "cas plat" de plan-incline-forces.svg (R7), pour le R5 :
+    la méthode de résolution appliquée SANS décomposition sin/cos.
+    Géométrie et échelle reprennent les valeurs EXACTES de l'exemple
+    travaillé du R5 : m = 2,0 kg, F = 8,0 N, f = 3,0 N, g = 9,8 m·s⁻²,
+    donc P = N = mg = 19,6 N.
+    Échelle (divulguée en pied de figure) : 8 px ↔ 1 N, donc P = N ≈
+    157 px, F = 64 px. SEULE exagération : f (3,0 N → 24 px réels) est
+    doublée à 48 px pour rester lisible, même convention que
+    plan-incline-forces.svg.
+    Convention de flèche identique aux figures sœurs : hampe = longueur
+    − 12 px, pointe sur les 12 derniers px, base ± 5 px perpendiculaire ;
+    petit repère directionnel (trait + chevron) à côté de chaque étiquette.
+    Deliberately simpler que plan-incline-forces.svg : pas de décomposition
+    du poids (le sol est horizontal, P et N restent verticaux) — R5
+    enseigne la méthode sur le cas facile, R7 l'étend au cas incliné.
+    Focus accent : la lecture des projections (étape 4) — le POURQUOI
+    seule F − f survit sur Ox.
+    Étapes (reprend l'ordre du texte : montage, bilan, repère, projection) :
+    (1) la caisse sur le sol, tirée ;
+    (2) les quatre forces P, N, F, f ;
+    (3) le repère Ox (sens du mouvement), Oy (vertical) ;
+    (4) la lecture : N = P sur Oy, F − f seule sur Ox.
+  -->
+  <rect width="720" height="470" fill="var(--figure-surface)"/>
+
+  <!-- ── Divulgation d'échelle ──────────────────────────────────────── -->
+  <text x="360" y="452" text-anchor="middle" font-size="12" fill="var(--figure-ink-soft)">Échelle : 8 px ↔ 1 N (m = 2,0 kg, g = 9,8 m·s<tspan dy="-4" font-size="70%">−2</tspan><tspan dy="4">). Seule la norme de </tspan><tspan font-style="italic">f</tspan> (3,0 N) est exagérée ×2 pour rester lisible.</text>
+
+  <g id="step-1">
+    <!-- ── Le sol ─────────────────────────────────────────────────────── -->
+    <line x1="60" y1="280" x2="660" y2="280" stroke="var(--figure-ink)" stroke-width="2"/>
+
+    <!-- ── La caisse ──────────────────────────────────────────────────── -->
+    <rect x="310" y="220" width="100" height="60" rx="3"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2"/>
+    <circle cx="360" cy="250" r="4" fill="var(--figure-ink)"/>
+    <text x="372" y="246" font-size="15" font-style="italic" fill="var(--figure-ink)">G</text>
+  </g>
+
+  <g id="step-2">
+    <!-- P : poids, vertical, vers le bas, 157 px -->
+    <line x1="360" y1="250" x2="360" y2="395" stroke="var(--figure-ink)" stroke-width="2.5"/>
+    <polygon points="360,407 355,395 365,395" fill="var(--figure-ink)"/>
+    <line x1="380" y1="370" x2="380" y2="382" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <polyline points="377,378 380,382 383,378" fill="none" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <text x="374" y="392" font-size="16" font-style="italic" fill="var(--figure-ink)">P</text>
+
+    <!-- N : réaction normale, vertical, vers le haut, 157 px -->
+    <line x1="360" y1="250" x2="360" y2="105" stroke="var(--figure-ink)" stroke-width="2.5"/>
+    <polygon points="360,93 355,105 365,105" fill="var(--figure-ink)"/>
+    <line x1="380" y1="130" x2="380" y2="118" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <polyline points="377,122 380,118 383,122" fill="none" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <text x="374" y="112" font-size="16" font-style="italic" fill="var(--figure-ink)">N</text>
+
+    <!-- F : force motrice, horizontale, sens du mouvement, 64 px -->
+    <line x1="360" y1="250" x2="412" y2="250" stroke="var(--figure-ink)" stroke-width="2.5"/>
+    <polygon points="424,250 412,245 412,255" fill="var(--figure-ink)"/>
+    <line x1="430" y1="225" x2="442" y2="225" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <polyline points="438,222 442,225 438,228" fill="none" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <text x="430" y="242" font-size="16" font-style="italic" fill="var(--figure-ink)">F</text>
+
+    <!-- f : frottement, horizontal, opposé au mouvement, 48 px (exagéré ×2) -->
+    <line x1="360" y1="250" x2="324" y2="250" stroke="var(--figure-ink)" stroke-width="2.5"/>
+    <polygon points="312,250 324,245 324,255" fill="var(--figure-ink)"/>
+    <line x1="280" y1="225" x2="268" y2="225" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <polyline points="272,222 268,225 272,228" fill="none" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <text x="296" y="242" text-anchor="end" font-size="16" font-style="italic" fill="var(--figure-ink)">f</text>
+  </g>
+
+  <g id="step-3">
+    <!-- ── Le repère Ox / Oy ────────────────────────────────────────────
+         décalé du coin de la caisse pour ne pas superposer les flèches
+         de force -->
+    <circle cx="430" cy="280" r="3" fill="var(--figure-ink-soft)"/>
+    <text x="418" y="276" text-anchor="end" font-size="13" font-style="italic" fill="var(--figure-ink-soft)">O</text>
+    <line x1="430" y1="280" x2="498" y2="280" stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
+    <polygon points="510,280 498,275 498,285" fill="var(--figure-ink-soft)"/>
+    <text x="522" y="284" font-size="14" font-style="italic" fill="var(--figure-ink-soft)">x</text>
+    <line x1="430" y1="280" x2="430" y2="212" stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
+    <polygon points="430,200 425,212 435,212" fill="var(--figure-ink-soft)"/>
+    <text x="430" y="192" text-anchor="middle" font-size="14" font-style="italic" fill="var(--figure-ink-soft)">y</text>
+    <path d="M 438 280 L 438 272 L 430 272" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  </g>
+
+  <g id="step-4">
+    <!-- ── La lecture des projections (accent, le point de méthode) ───── -->
+    <text x="470" y="150" font-size="14" fill="var(--figure-accent)"><tspan x="470" dy="0">N = P</tspan><tspan x="470" dy="17" font-size="12">(s’annulent sur Oy)</tspan></text>
+    <text x="360" y="305" text-anchor="middle" font-size="14" fill="var(--figure-accent)">F − f seule subsiste sur Ox</text>
+  </g>
+</svg>

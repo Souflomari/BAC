@@ -1,0 +1,489 @@
+notion: dysfonctionnements-immunitaires
+skill_code: svt_dysfonctionnements_immunitaires
+
+# ──────────────────────────────────────────────────────────────────────────────
+# POINTS D'ARRÊT DANS LA LEÇON (campagne de conversion du sommet — SVT)
+#
+# Sondes formatives posées DANS la leçon, pas le banc de fin. Aucun score,
+# aucune série, aucun décompte ; le plancher du banc n'est pas modifié.
+#
+# Placement (identifiants = marqueurs [[checkpoint:…]] de lesson.md) :
+#   cp-r0-predict     (DANS le chapitre 1) — porte d'engagement sur le cas de
+#                     Karim : le mécanisme est bon, c'est la cible qui ne l'est
+#                     pas.
+#   cp-r1-allergie    (après le chapitre 2) — les deux temps : sensibilisation
+#                     silencieuse, puis réaction brutale.
+#   cp-r2-auto-immune (après le chapitre 3) — le seul critère qui sépare
+#                     allergie et auto-immunité est la CIBLE.
+#   cp-r3-vih         (après le chapitre 4) — le VIH reconnaît CD4, il ne
+#                     détruit pas au hasard.
+#   cp-r4-vaccination (après le chapitre 5) — un vaccin apporte un antigène.
+#   cp-r5-serotherapie (après le chapitre 6) — un sérum apporte des molécules,
+#                     qui ne se multiplient pas.
+#   cp-r6-deux-courbes (DANS le chapitre 7) — lire les deux titres d'anticorps.
+#     (Corrigé le 2026-09-19 : disait « après le chapitre 7 » ; le marqueur est
+#     posé à lesson.md:262, à l'intérieur du chapitre, et `lesson_placement`
+#     dit bien `in_R6`.)
+#
+# CHAQUE distracteur porte un identifiant réel de l'inventaire de items.yaml.
+# Aucune erreur nouvelle n'est déclarée ici : les sondes réutilisent les six
+# modèles existants, pour ne pas rouvrir de dette de couverture.
+#
+# (2026-09-19 : cette garde disait « SVT/PC ». Le cadre déclare la variante
+# PC de la SVT « DISTINCTE — non extraite » (docs/cadre/curriculum/svt.yaml,
+# bloc `variante_pc`) : rien dans le dépôt ne permet d'affirmer que ce
+# périmètre vaut pour la filière PC. Restreint à la filière SVT ; à rouvrir
+# quand la variante sera extraite.)
+# Garde de périmètre : 2ème Bac, filière SVT — allergie (IgE, mastocytes, histamine,
+# choc anaphylactique), maladies auto-immunes, déficits immunitaires et VIH,
+# vaccination, sérothérapie. Les mécanismes de la réponse immunitaire normale
+# sont supposés acquis (notion précédente) et ne sont pas re-testés ici.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | posé DANS le chapitre 1
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: svt_dysfonctionnements_immunitaires
+    tags: [checkpoint, formative, misconception_driven, svt_dysfonctionnements_immunitaires, hook_commit]
+    primary_misconception: mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      La seconde piqûre de guêpe met Karim en danger en quelques minutes, alors
+      que la première n'avait produit qu'une rougeur. **Engage-toi avant de
+      lire la suite :** qu'est-ce qui ne va pas chez lui ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Son système immunitaire s'est retourné contre ses propres cellules : la violence de la réaction signe une rupture de la tolérance au soi."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus
+        feedback: |
+          Modèle détecté : lire tout dérèglement immunitaire violent comme une
+          auto-immunité. Ce qui sépare les dérèglements n'est pas leur
+          intensité, c'est leur CIBLE. Ici la cible est extérieure — une
+          protéine du venin de guêpe — et c'est bien ce qui range le cas de
+          Karim du côté de l'allergie, non de l'auto-immunité.
+
+      - id: B
+        text: "Rien, dans le mécanisme lui-même : mémoire et rapidité fonctionnent comme prévu. C'est la cible qui ne le mérite pas — une protéine du venin, inoffensive pour la plupart des gens."
+        correct: true
+        feedback: |
+          C'est exactement cela, et c'est le fil de toute la leçon. La réponse
+          secondaire de Karim est rapide et intense, comme la leçon précédente
+          l'annonçait : le mécanisme n'est pas cassé. Ce qui a dérapé, c'est le
+          choix de la cible lors de la première piqûre. Tu verras au chapitre 2
+          par quel dispositif précis — les IgE et les mastocytes.
+
+      - id: C
+        text: "Son système immunitaire s'est effondré : incapable de contenir le venin, il laisse la réaction gagner tout l'organisme faute de coordination."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus
+        feedback: |
+          Modèle détecté : confondre un excès de réponse avec une absence de
+          réponse. Un déficit immunitaire se manifeste par des infections que
+          l'organisme ne parvient plus à contenir, pas par une réaction
+          fulgurante. Ici, le système réagit trop, pas trop peu.
+
+      - id: D
+        text: "C'est une question d'âge : à huit ans son système immunitaire était trop immature pour réagir, et il réagit désormais normalement à un venin réellement toxique."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.critere-de-distinction-non-pertinent
+        feedback: |
+          Modèle détecté : expliquer par l'âge ce qui s'explique par le
+          mécanisme. Une allergie peut apparaître à tout âge, et le venin d'une
+          guêpe n'est pas devenu plus toxique entre-temps — la même piqûre
+          n'aurait provoqué chez la plupart des gens qu'une rougeur locale. La
+          différence est dans ce que l'organisme de Karim a fabriqué entre les
+          deux piqûres.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-allergie | posé APRÈS le chapitre 2
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-allergie
+    rung: "R1"
+    habilete: comprehension
+    skill_code: svt_dysfonctionnements_immunitaires
+    tags: [checkpoint, formative, misconception_driven, svt_dysfonctionnements_immunitaires]
+    primary_misconception: mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |
+      Pourquoi la toute première exposition à un allergène ne déclenche-t-elle
+      jamais la crise, alors que la seconde peut être violente ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Parce que la première dose reçue est toujours trop faible pour dépasser le seuil de déclenchement ; c'est l'accumulation des doses qui finit par provoquer la crise."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.critere-de-distinction-non-pertinent
+        feedback: |
+          Modèle détecté : chercher l'explication dans la dose plutôt que dans
+          le mécanisme. Une piqûre de guêpe délivre à peu près la même quantité
+          de venin les deux fois — et une trace d'arachide peut suffire chez un
+          sujet sensibilisé. Ce n'est pas la quantité d'allergène qui a changé,
+          c'est l'état des mastocytes de Karim.
+
+      - id: B
+        text: "Parce que le premier contact ne fait que sensibiliser : il fait produire des IgE qui vont se fixer sur les mastocytes, sans provoquer le moindre symptôme."
+        correct: true
+        feedback: |
+          Oui — et le mot « sensibiliser » dit tout. Le premier contact arme les
+          mastocytes en les recouvrant d'IgE, en silence. Le second contact
+          trouve ces mastocytes prêts : l'allergène ponte deux IgE voisines, le
+          mastocyte dégranule, l'histamine part d'un coup. Sans le premier
+          contact, aucun pontage n'est possible.
+
+      - id: C
+        text: "Parce que la première exposition déclenche une maladie auto-immune silencieuse, qui ne devient visible qu'au moment où l'organisme rencontre de nouveau la même molécule."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus
+        feedback: |
+          Modèle détecté : glisser de l'allergie à l'auto-immunité. Rien, ici,
+          n'est dirigé contre le soi : les IgE de Karim reconnaissent une
+          protéine du venin, une molécule parfaitement extérieure à lui. Une
+          maladie auto-immune, à l'inverse, vise une molécule de l'organisme
+          lui-même.
+
+      - id: D
+        text: "Parce que les anticorps produits lors du premier contact ont d'abord été entièrement éliminés, et qu'il faut une seconde exposition pour en refabriquer en quantité suffisante."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.immunite-passive-mal-comprise
+        feedback: |
+          Modèle détecté : traiter les anticorps du premier contact comme
+          disparus sans laisser de trace. Les IgE ne circulent pas librement en
+          attendant d'être dégradées : elles se fixent par leur pied sur les
+          mastocytes de la peau et des muqueuses, et c'est là qu'elles
+          attendent, prêtes. La seconde exposition ne relance pas une
+          production, elle trouve le dispositif déjà en place.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-auto-immune | posé APRÈS le chapitre 3
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-auto-immune
+    rung: "R2"
+    habilete: raisonnement
+    skill_code: svt_dysfonctionnements_immunitaires
+    tags: [checkpoint, formative, misconception_driven, svt_dysfonctionnements_immunitaires]
+    primary_misconception: mc.svt.svt_dysfonctionnements_immunitaires.critere-de-distinction-non-pertinent
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |
+      Deux patients. Chez le premier, on trouve dans le sang des anticorps
+      dirigés contre une protéine de sa propre thyroïde. Chez le second, des
+      anticorps dirigés contre une protéine du pollen de bouleau. Sur quoi
+      repose la distinction entre leurs deux affections ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Sur la nature de la cible visée : une molécule du soi chez le premier, une molécule extérieure et inoffensive chez le second."
+        correct: true
+        feedback: |
+          Oui — et c'est le seul critère de fond. Auto-immunité : la tolérance
+          au soi s'est rompue, le système fonctionne mais se trompe de cible.
+          Allergie : la cible est bien extérieure, mais elle ne représentait
+          aucun danger. Dans les deux cas le mécanisme immunitaire lui-même est
+          intact ; c'est son objet qui est en cause.
+
+      - id: B
+        text: "Sur l'origine de l'affection : la maladie auto-immune est toujours héréditaire, tandis que l'allergie est toujours déclenchée par un agent extérieur rencontré au cours de la vie."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.critere-de-distinction-non-pertinent
+        feedback: |
+          Modèle détecté : remplacer le critère de mécanisme par un critère
+          d'origine. Les deux affections peuvent comporter une part de terrain
+          familial, et les deux se déclenchent au cours de la vie. Ce qui les
+          sépare est ce que les anticorps reconnaissent, rien d'autre.
+
+      - id: C
+        text: "Sur l'âge d'apparition : les maladies auto-immunes ne se déclarent qu'à l'âge adulte, les allergies exclusivement pendant l'enfance."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.critere-de-distinction-non-pertinent
+        feedback: |
+          Modèle détecté : chercher un critère extérieur au mécanisme. Les deux
+          surviennent à tout âge — une allergie peut se déclarer à quarante ans,
+          un diabète de type 1 dans l'enfance. L'âge ne dit rien de la cible
+          attaquée, et c'est la cible qui définit l'affection.
+
+      - id: D
+        text: "Sur l'intensité de la réaction : la maladie auto-immune est une allergie devenue si forte qu'elle finit par atteindre les organes du patient lui-même."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus
+        feedback: |
+          Modèle détecté : ranger les deux dérèglements sur une même échelle
+          d'intensité. Une allergie très violente — un choc anaphylactique —
+          reste dirigée contre l'allergène extérieur : elle ne « devient » pas
+          auto-immune en s'aggravant. Ce sont deux cibles différentes, pas deux
+          degrés.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r3-vih | posé APRÈS le chapitre 4
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-vih
+    rung: "R3"
+    habilete: comprehension
+    skill_code: svt_dysfonctionnements_immunitaires
+    tags: [checkpoint, formative, misconception_driven, svt_dysfonctionnements_immunitaires]
+    primary_misconception: mc.svt.svt_dysfonctionnements_immunitaires.cible-du-vih-mal-identifiee
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |
+      Chez un patient séropositif non traité, on observe année après année une
+      chute du nombre de lymphocytes T4, tandis que le nombre de granulocytes
+      reste dans les valeurs normales. Comment expliquer cette dissociation ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Le VIH détruit indifféremment tous les globules blancs ; les granulocytes, plus nombreux au départ, mettent simplement plus longtemps à s'effondrer."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.cible-du-vih-mal-identifiee
+        feedback: |
+          Modèle détecté : prêter au VIH une destruction générale. Un virus
+          n'entre que dans les cellules dont il reconnaît les molécules de
+          surface — ici le récepteur CD4. Les granulocytes n'en portent pas :
+          ils ne sont pas infectés, et leur nombre reste normal aussi longtemps
+          qu'on suit le patient.
+
+      - id: B
+        text: "Le VIH reconnaît le récepteur CD4, porté par les lymphocytes T4 et non par les granulocytes : seule cette population-là est infectée puis détruite."
+        correct: true
+        feedback: |
+          Exact. Le VIH est un virus spécifique comme les autres, et sa clé
+          d'entrée est le CD4. La gravité du SIDA ne tient donc pas à l'étendue
+          des cellules détruites, mais à leur ROLE : les LT4 coordonnent toute
+          la réponse adaptative. Les perdre, c'est perdre le chef d'orchestre,
+          pas tout l'orchestre d'un coup.
+
+      - id: C
+        text: "Le VIH bloque la phagocytose : les granulocytes survivent mais deviennent inutiles, et la chute mesurée ne concerne donc que les cellules encore actives."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.cible-du-vih-mal-identifiee
+        feedback: |
+          Modèle détecté : déplacer l'attaque du VIH vers l'immunité innée. La
+          phagocytose n'est pas bloquée par le virus, et ce n'est pas de ce
+          côté-là que le système s'effondre. Ce que le SIDA détruit, c'est la
+          coordination de l'immunité ADAPTATIVE, par la perte des LT4.
+
+      - id: D
+        text: "Le patient fabrique des auto-anticorps dirigés contre ses propres lymphocytes T4 : c'est cette réaction auto-immune, et non le virus, qui les fait disparaître."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.dysfonctionnements-confondus
+        feedback: |
+          Modèle détecté : requalifier un déficit immunitaire en maladie
+          auto-immune. Le SIDA relève d'une tout autre catégorie : la
+          destruction des LT4 est le fait direct du virus, qui les infecte et
+          les tue en s'y multipliant. Aucune rupture de la tolérance au soi
+          n'est en jeu.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r4-vaccination | posé APRÈS le chapitre 5
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-vaccination
+    rung: "R4"
+    habilete: comprehension
+    skill_code: svt_dysfonctionnements_immunitaires
+    tags: [checkpoint, formative, misconception_driven, svt_dysfonctionnements_immunitaires]
+    primary_misconception: mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues
+    item_source: original
+    lesson_placement: after_R4
+
+    stem: |
+      Que contient exactement une dose de vaccin, et qu'est-ce que l'organisme
+      du vacciné en fait ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Des anticorps prêts à l'emploi, produits en laboratoire, qui protègent le vacciné dès l'injection et le resteront tant qu'ils circulent dans son sang."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues
+        feedback: |
+          Modèle détecté : échanger le vaccin et le sérum. C'est la
+          sérothérapie qui apporte des anticorps tout faits, avec une action
+          immédiate et brève. Le vaccin apporte l'antigène, et rien d'autre :
+          les anticorps, c'est le vacciné qui les fabriquera — ce qui demande
+          du temps, mais laisse une mémoire.
+
+      - id: B
+        text: "Un antigène rendu inoffensif, que le vacciné traite comme une première rencontre : il sélectionne et multiplie ses propres lymphocytes, et garde des cellules mémoire."
+        correct: true
+        feedback: |
+          Oui. C'est une réponse primaire, provoquée délibérément et sans la
+          maladie : lente à s'installer (plusieurs jours à quelques semaines,
+          d'où les injections successives de la primo-vaccination), mais
+          durable, parce qu'elle laisse derrière elle des lymphocytes mémoire.
+          On dit qu'elle est **active** : le travail est fait par le vacciné.
+
+      - id: C
+        text: "Des lymphocytes mémoire prélevés sur un donneur immunisé, qui se multiplient ensuite chez le vacciné et y reconstituent la population manquante."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.immunite-passive-mal-comprise
+        feedback: |
+          Modèle détecté : imaginer qu'on transfère des cellules vivantes qui
+          repeupleraient le receveur. Aucune cellule immunitaire n'est
+          transférée par un vaccin — et des lymphocytes venus d'un autre
+          individu seraient d'ailleurs reconnus comme du non-soi. Le vaccin
+          apporte un antigène, le receveur fait le reste.
+
+      - id: D
+        text: "Un antigène qui rend le vacciné capable de reconnaître n'importe quel agent infectieux, et cela définitivement, sans qu'aucun rappel ne soit jamais nécessaire."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.vaccin-protection-universelle
+        feedback: |
+          Modèle détecté : généraliser la protection vaccinale dans ses deux
+          dimensions à la fois. Elle est doublement bornée : un vaccin protège
+          contre UN agent, celui dont il porte l'antigène ; et la population de
+          lymphocytes mémoire décroît avec les années, d'où les rappels.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-r5-serotherapie | posé APRÈS le chapitre 6
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-serotherapie
+    rung: "R5"
+    habilete: raisonnement
+    skill_code: svt_dysfonctionnements_immunitaires
+    tags: [checkpoint, formative, misconception_driven, svt_dysfonctionnements_immunitaires]
+    primary_misconception: mc.svt.svt_dysfonctionnements_immunitaires.immunite-passive-mal-comprise
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |
+      Un blessé non vacciné reçoit un sérum antitétanique. Trois mois plus tard,
+      il se blesse de nouveau dans les mêmes conditions. Est-il encore protégé ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Oui : les anticorps injectés se sont multipliés dans son organisme depuis l'injection, et leur nombre a même augmenté au fil des semaines."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.immunite-passive-mal-comprise
+        feedback: |
+          Modèle détecté : traiter un anticorps comme une cellule vivante. Un
+          anticorps est une molécule : il ne se divise pas, ne se reproduit pas,
+          et son nombre ne peut que décroître à partir de l'injection. Seule une
+          cellule — un plasmocyte du patient lui-même — pourrait en produire de
+          nouveaux, et la sérothérapie n'en fabrique aucun.
+
+      - id: B
+        text: "Non : les anticorps empruntés ont été éliminés en quelques semaines, et aucune cellule mémoire n'a été produite puisque ses propres lymphocytes n'ont jamais été activés."
+        correct: true
+        feedback: |
+          C'est cela, et les deux raisons se tiennent. Les anticorps injectés
+          sont des protéines étrangères, dégradées progressivement ; et comme le
+          patient n'a lui-même sélectionné aucun lymphocyte, rien ne subsiste
+          derrière eux. La protection s'efface aussi vite qu'elle est apparue —
+          d'où la recommandation de vacciner en parallèle.
+
+      - id: C
+        text: "Oui : toute rencontre avec un antigène laisse toujours une mémoire immunitaire, et le sérum a donc immunisé durablement le blessé contre la toxine tétanique."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues
+        feedback: |
+          Modèle détecté : prêter au sérum la mémoire qui appartient au vaccin.
+          Il n'y a pas eu de rencontre avec un antigène : on a injecté des
+          ANTICORPS, pas la toxine. Le système immunitaire du patient n'a rien
+          eu à reconnaître, donc rien à mémoriser — c'est le sens du mot
+          « passive ».
+
+      - id: D
+        text: "La question ne se pose pas : un apport d'anticorps venus d'un autre organisme n'a jamais d'effet propre, seule une réponse produite par le patient pouvant protéger qui que ce soit."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.immunite-passive-mal-comprise
+        feedback: |
+          Modèle détecté : la faute symétrique — juger l'apport extérieur
+          inutile. Les anticorps injectés agissent parfaitement, et tout de
+          suite : ils neutralisent la toxine dès leur arrivée, sans attendre
+          aucune sélection clonale. C'est précisément ce qui rend la
+          sérothérapie irremplaçable en urgence. Ce qui leur manque, c'est la
+          durée.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-6 | id: cp-r6-deux-courbes | posé APRÈS le chapitre 7
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-deux-courbes
+    rung: "R6"
+    habilete: application
+    skill_code: svt_dysfonctionnements_immunitaires
+    tags: [checkpoint, formative, misconception_driven, svt_dysfonctionnements_immunitaires]
+    primary_misconception: mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues
+    item_source: original
+    lesson_placement: in_R6
+
+    stem: |
+      On suit le titre d'anticorps de deux patients. Chez le premier, il est
+      déjà très élevé dès les premières heures, puis décroît jusqu'à s'annuler
+      en quelques semaines. Chez le second, il reste nul plusieurs jours, monte
+      ensuite, et se maintient à un niveau appréciable des mois plus tard.
+      Qu'a reçu chacun ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Le premier a été vacciné, le second a reçu un sérum : le vaccin agit tout de suite, le sérum met du temps mais dure."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.vaccination-serotherapie-confondues
+        feedback: |
+          Modèle détecté : une confusion très fréquente de cette leçon, dans
+          sa forme complète — les deux propriétés inversées d'un coup. Retiens
+          la logique plutôt que le tableau : ce qu'on apporte tout fait agit
+          immédiatement et s'épuise ; ce que l'organisme doit construire prend
+          du temps et laisse une mémoire.
+
+      - id: B
+        text: "Le premier a reçu un sérum, le second a été vacciné : les anticorps empruntés sont là dès l'injection puis disparaissent, ceux du vacciné arrivent tard et persistent."
+        correct: true
+        feedback: |
+          Oui, et les deux courbes sont presque des miroirs. Le pic immédiat
+          suivi d'une décroissance ne peut venir que d'anticorps déjà fabriqués
+          ailleurs. Le plateau nul des premiers jours, lui, est la signature
+          d'une réponse primaire en train de se construire — sélection, puis
+          expansion clonale, puis sécrétion.
+
+      - id: C
+        text: "Les deux ont été vaccinés, contre deux agents différents : la différence entre les courbes vient uniquement du nombre d'injections reçues par chacun."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.vaccin-protection-universelle
+        feedback: |
+          Modèle détecté : croire qu'une vaccination peut produire n'importe
+          quel profil de réponse. Le nombre d'injections module la hauteur du
+          plateau, jamais le délai initial : aucune vaccination ne peut faire
+          apparaître des anticorps dans l'heure, parce que le vacciné doit
+          d'abord sélectionner puis multiplier ses lymphocytes.
+
+      - id: D
+        text: "Le premier a reçu un sérum dont les anticorps se sont multipliés puis épuisés, le second un sérum plus concentré dont la réserve a duré plusieurs mois."
+        correct: false
+        misconception: mc.svt.svt_dysfonctionnements_immunitaires.immunite-passive-mal-comprise
+        feedback: |
+          Modèle détecté : faire varier la durée d'un sérum avec sa
+          concentration, comme si les anticorps injectés se comportaient en
+          population vivante. Ils ne se multiplient pas et sont éliminés au
+          même rythme quelle que soit la dose de départ : une dose double
+          décale la courbe, elle ne lui donne pas un plateau durable.

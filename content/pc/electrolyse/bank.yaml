@@ -1,0 +1,1435 @@
+# bank.yaml — la banque « S'entraîner » de electrolyse (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le
+# sommet de leçon (r-bac + r-variation, exercises.yaml), pas la rampe
+# embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Chaque entrée est une transcription FIDÈLE d'une entrée
+# « vérifié » de docs/sujets/pc/electrolyse.md (re-fetch AlloSchool + diff
+# indépendant — trois passes pour le sujet 2018, re-lecture de contrôle
+# indépendante des corrections de la passe adversariale pour le sujet 2022,
+# README §3). Raisonnement rédigé à la voix experte de la maison sur 100 % des
+# questions, en citant les rungs R1–R5 de la leçon (lesson.md) là où c'est
+# naturel ; barème transcrit tel quel dans les énoncés (tag « (x,xx pt) »
+# ajouté — la source docs/sujets ne porte que « (x,xx) ») ; conventions KaTeX
+# (block scalars pour la prose, KaTeX brut entre apostrophes simples dans
+# steps[].math, notes de steps sans backslash, ASCII).
+#
+# NOTE ÉDITORIALE (recoupement, pour la revue) : docs/sujets/pc/electrolyse.md
+# recense TROIS sujets « vérifié » à ce jour. Le premier, 2019 N Exercice I
+# (Partie 1, électrolyse d'une solution aqueuse d'iodure de zinc), est
+# EXACTEMENT le même sujet que le sommet de leçon r-bac (exercises.yaml,
+# marqueur [[exercise:r-bac]] à R6 « Pour t'entraîner ») : mêmes données,
+# mêmes questions, mêmes réponses numériques (Δt ≈ 157 min). Il figure ici
+# pour que la banque soit le corpus complet des annales vérifiées de la
+# notion (BANK-SPEC §1) — recoupement assumé, même disposition que piles
+# bk-2020-n-x1 et rc-charge bk-2019-n-x3. Le raisonnement ci-dessous est
+# rédigé de nouveau (voix maison), pas copié de exercises.yaml. À
+# l'arbitrage de l'owner si l'on préfère écarter cette entrée de la banque
+# pour éviter le recoupement sur la même page. Le deuxième sujet, 2018 N
+# Exercice I (Partie I, électrolyse du bromure de plomb), ne recoupe rien :
+# il est nouveau dans le corpus de cette notion. Le troisième sujet, 2022 N
+# Exercice 1 (Partie 1, chromage d'une plaque d'acier par électrolyse d'une
+# solution de chlorure de chrome (III)), ne recoupe rien non plus : couple
+# $Cr^{3+}/Cr$, générateur sans polarité précisée (identification par
+# observation, pas par branchement) et QCM sont inédits dans le corpus de
+# cette notion. Le quatrième sujet, 2023 R Exercice 1 (Partie I, électrolyse
+# d'une solution aqueuse de bromure de zinc), vient de
+# docs/sujets/_incoming/pc-spc-2023-r.md — le sujet complet de la session de
+# rattrapage 2023, vérifié par une passe adversariale (2026-08-23), pas
+# encore reversé dans le fichier de notion. FLAG DE JUMELAGE (pour la revue,
+# pas un recoupement) : c'est le frère quasi jumeau de bk-2019-n-x1 — même
+# cation $Zn^{2+}$, même halogénure en face, même tube en U à électrodes de
+# graphite, même câblage (électrode B à gauche sur la borne $+$, électrode A
+# à droite sur la borne $-$), mêmes constantes $1F = 9{,}65\cdot10^{4}$ et
+# $M(Zn) = 65{,}4$. Ce qui diffère, et qui justifie de garder les deux : le
+# bromure au lieu de l'iodure (dibrome en solution, pas un gaz), une question
+# 1 posée en QCM à quatre propositions (dont une sur l'équilibre et une sur
+# l'évolution de $[Br^-]$ — deux angles absents de 2019), et surtout la loi
+# de Faraday posée dans l'AUTRE SENS : 2019 remonte de la masse déposée vers
+# la durée, 2023 R descend du couple $(I, \Delta t)$ vers la masse, et exige
+# d'abord la relation LITTÉRALE. Les deux entrées se complètent donc au lieu
+# de se répéter. Le cinquième sujet, 2022 R Exercice 1 (§1, électrolyse d'une
+# solution aqueuse de chlorure d'or (III) pour dorer une plaque de cuivre),
+# vient de docs/sujets/_incoming/pc-spc-2022-r.md — vérifié par re-fetch
+# indépendant + re-dérivation (vérificateur adversarial, 2026-08-22), pas
+# encore reversé dans le fichier de notion. Aucun recoupement avec les
+# quatre entrées ci-dessus : couple $Au^{3+}/Au$ inédit, facteur $3$ (et non
+# $2$) à la cathode, et surtout une question 1 sans AUCUNE figure fournie —
+# c'est la seule entrée de cette banque où le schéma complet du montage est
+# à construire par l'élève depuis le texte seul, l'anode s'y déduisant des
+# deux observations chimiques (dépôt d'or, dégagement de dichlore) plutôt
+# que d'une polarité déjà dessinée sur un dispositif donné. Sa Partie 2,
+# indépendante (étude d'une solution aqueuse de méthylamine), est transcrite
+# sous content/pc/reactions-acido-basiques, entrée bk-2022-r-x1b. Le sixième
+# sujet, 2015 N Exercice 1 (Première Partie, électrolyse d'une solution
+# concentrée de chlorure de sodium), vient de
+# docs/sujets/_incoming/pc-2015-n.md — vérifié par une passe adversariale
+# indépendante (2026-08-28) : 5 contrôles de provenance, figure re-mesurée
+# en composantes connexes sur le bitmap natif, 27/27 questions du sujet
+# re-dérivées. Recoupement PARTIEL avec bk-2019-n-x1 : même couple
+# $H_2O/H_2$ à la cathode (l'eau se réduit, milieu qui devient basique),
+# mais l'anode y échange les ions chlorure et non les ions iodure, et
+# aucune valeur numérique ne coïncide ($I=3$ A, $\Delta t=25$ min,
+# $V_m=25{,}0$ L/mol ici, contre $I=0{,}5$ A et aucun $V_m$ là-bas — la
+# question posée en 2019 chiffre une DURÉE à partir d'une masse déposée à
+# la cathode, celle-ci un VOLUME de gaz à partir d'un courant donné à
+# l'anode). **CHOIX DE L'`id` : voir la note de sourcing de l'entrée
+# elle-même** — le suffixe -x1 sans lettre est déjà pris par
+# `bk-2015-n-x1` dans `content/pc/etat-equilibre/bank.yaml` (une pièce
+# différente du même Exercice 1), donc cette entrée porte -x1b
+# (docs/grounding/known-issues.md K-7 bis). Le nombre d'entrées — et donc ce
+# que la rail affichera — fait foi dans le fichier lui-même,
+# `grep -c '^  - id: bk-'`, jamais dans cette note : elle annonçait 6 entrées
+# alors que le fichier en porte neuf.
+#
+# SCOPE NOTE (technique mobilisée au-delà de ce que la leçon montre
+# explicitement pas à pas — pontée au point d'usage dans le raisonnement de
+# la question concernée, PAS corrigée ni simplifiée ici) :
+#   - bk-2018-n-x1, q4 : convertir une quantité de matière de dibrome gazeux
+#     en volume exige la relation n = V/V_m (volume molaire des gaz).
+#     Aucun rung de cette leçon (lesson.md) n'introduit le volume molaire ni
+#     cette conversion — R4 chiffre uniquement des MASSES déposées ou
+#     dissoutes (n → m via la masse molaire), jamais un volume de gaz. Le
+#     pont (n(Br2) → V(Br2) via V_m, donnée dans l'énoncé) est fait au
+#     point d'usage dans le raisonnement de la question 4. Signalé pour
+#     l'orchestrateur / pedagogy-architect : soit R5 (applications) gagne
+#     une mention du volume molaire, soit la question reste balisée hors
+#     rung comme telle. Pas corrigé unilatéralement ici.
+#   - bk-2023-r-x1, q1 (proposition C du QCM) : trancher « au cours de
+#     l'électrolyse le système est en équilibre » demande le critère
+#     d'évolution — un système à l'équilibre a $Q_r = K$ et n'évolue plus —
+#     qui appartient à la leçon précédente (piles / évolution spontanée),
+#     pas aux rungs d'ici. Cette leçon MENTIONNE bien $Q_{r,i}$ face à $K$
+#     (R1, R3) mais n'énonce jamais l'équivalence « équilibre = plus
+#     d'évolution nette », ni le fait que le forçage ÉLOIGNE $Q_r$ de $K$
+#     au lieu de l'en rapprocher. Le pont est refait en une ligne au point
+#     d'usage dans le raisonnement de la question 1 (jamais « on admet »).
+#     Signalé pour l'orchestrateur / pedagogy-architect : soit R1 gagne une
+#     phrase sur le sens de variation de $Q_r$ sous forçage, soit la
+#     question reste balisée hors rung comme telle. Pas corrigé
+#     unilatéralement ici.
+#   - bk-2015-n-x1b, q3 : même pont que bk-2018-n-x1, q4 (voir ci-dessus) —
+#     convertir une quantité de matière de dichlore gazeux en volume exige
+#     n = V/V_m (volume molaire des gaz). Aucun rung de cette leçon
+#     n'introduit cette relation ; pontée au point d'usage dans le
+#     raisonnement de la question 3.
+#   - bk-2011-n-x1b, q3 : comparer la quantité d'ions Ag+ DISPONIBLE dans
+#     chaque solution à la quantité NÉCESSAIRE pour déposer m(Ag) (question
+#     2) reprend le principe du réactif limitant — déjà vu ailleurs dans le
+#     corpus (ex. suivi-temporel-vitesse, rung R2, tableau d'avancement) —
+#     mais aucun rung de CETTE leçon ne l'applique explicitement à une
+#     quantité d'ions consommés par électrolyse : R4 chiffre toujours un
+#     dépôt à partir d'un courant et d'une durée, jamais une limite de
+#     stock d'ions disponibles. Pontée au point d'usage dans le
+#     raisonnement de la question 3.
+#
+# NOTE ÉDITORIALE — bk-2011-n-x1b (2026-08-29, ajout). Seconde partie de
+# l'exercice de Chimie du sujet 2011 N (argenture d'une pièce de cuivre par
+# électrolyse d'une solution de nitrate d'argent) ; la première partie
+# (cinétique par mesure de pression) est en banque sous
+# content/pc/suivi-temporel-vitesse/bank.yaml, entrée bk-2011-n-x1. **S2,
+# NUMÉROTATION CORRIGÉE DANS LA CARTE** : le sujet officiel titre CETTE
+# partie « Partie I : Etude quantitative d'une électrolyse » — la
+# DEUXIÈME occurrence de « Partie I » dans le même exercice (la p. 1
+# annonce pourtant bien deux volets distincts, et le corrigé non officiel
+# la retitre en silence « Partie II »). Le titre étudiant porte la
+# numérotation vraie, avec une note. **LA DEMI-ÉQUATION DE CATHODE DU
+# CORRIGÉ NON OFFICIEL EST FAUSSE** (voir `sourcing.note` de l'entrée) :
+# $Ag^+ + 2e^- \rightleftharpoons Ag$, non équilibrée — la demi-équation
+# correcte utilisée ici est $Ag^+ + e^- \rightleftharpoons Ag$, un seul
+# électron par atome d'argent déposé, cohérent avec la propre chaîne
+# numérique du corrigé ($n(Ag)=n(e^-)$). Aucun recoupement numérique avec
+# les cinq autres sujets de cette banque : couple $Ag^+/Ag$ inédit ici,
+# générateur sans polarité marquée (identification des électrodes par
+# observation, comme bk-2018-n-x1), et une question de choix de solution
+# suffisante (q3) absente ailleurs dans ce fichier.
+
+notion: pc/electrolyse
+
+entries:
+  # ── bk-2018-n-x1 — 2018 N, Exercice I (Partie I) : électrolyse du bromure de plomb ──
+  - id: bk-2018-n-x1
+    title: "Électrolyse du bromure de plomb : anode, équations aux électrodes, intensité et volume de dibrome par la loi de Faraday"
+    source:
+      year: 2018
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice I — Partie I : électrolyse du bromure de plomb"
+    bareme_total: 2
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2018 session normale — examen national PC BIOF, code NS28F
+        (Exercice I, Partie I — électrolyse du bromure de plomb à haute
+        température ; barème de la partie = 2 pt sur les 7 pt de l'exercice
+        complet, dont la Partie II — réactions de l'acide lactique — se
+        répartit entre reactions-acido-basiques.md et
+        esterification-hydrolyse.md). Transcription vérifiée en trois passes
+        indépendantes (README §3) : re-fetch AlloSchool element/57726 + diff
+        caractère par caractère (passe 1→2, correction des indices $(aq)$
+        inventés au couple $Pb^{2+}/Pb_{(s)}$ et $Br_{2(g)}/Br^-$ — absents
+        du scan), puis re-lecture indépendante d'un troisième agent
+        confirmant la notation corrigée conforme au scan (zoom ×9, crop au
+        pixel ; docs/sujets/pc/electrolyse.md, statut « vérifié »,
+        2026-08-06). Physique re-dérivée et cohérente : $n(Pb)=0{,}100$ mol
+        $\Rightarrow I \approx 5{,}4$ A ; $n(Br_2)=n(Pb) \Rightarrow
+        V(Br_2) \approx 7{,}05$ L. Aucun recoupement avec le sommet de leçon
+        (r-bac/exercises.yaml transcrit le sujet 2019, iodure de zinc — voir
+        l'en-tête du fichier).
+    intro: |-
+      **Électrolyse d'un composé ionique : le bromure de plomb (examen national, session normale 2018, Exercice I — Partie I).**
+
+      On réalise l'électrolyse du bromure de plomb $Pb^{2+} + 2\,Br^-$ à haute température par un générateur fournissant un courant électrique d'intensité $I$ constante.
+
+      Au cours de cette électrolyse, le métal plomb se dépose sur l'une des électrodes et au niveau de l'autre, il se forme le gaz dibrome.
+
+      Au cours du fonctionnement de l'électrolyseur pendant la durée $\Delta t = 3600\ \text{s}$, la masse de plomb déposé est : $m = 20{,}72\ \text{g}$.
+
+      **Données :** les 2 couples mis en jeu : $Pb^{2+}/Pb_{(s)}$ et $Br_{2(g)}/Br^-$ ; la constante de Faraday : $F = 9{,}65 \cdot 10^{4}\ \text{C.mol}^{-1}$ ; le volume molaire des gaz dans les conditions de l'expérience : $V_m = 70{,}5\ \text{L.mol}^{-1}$ ; la masse molaire du plomb : $M(Pb) = 207{,}2\ \text{g.mol}^{-1}$.
+
+      *(Aucune figure dans cette partie ; énoncé intégralement textuel.)*
+    questions:
+      - id: q1
+        part: "Partie I — Électrolyse d'un composé ionique : le bromure de plomb"
+        stem: |-
+          **(0,25 pt)** Donner le nom de l'électrode (anode ou cathode) au niveau de laquelle se forme le dibrome.
+        reasoning: |-
+          Comme au chapitre 2, l'anode et la cathode se distinguent par le mécanisme — ici, aucun schéma de branchement n'est même fourni, donc aucune polarité à lire. Il suffit de regarder les deux couples donnés : $Pb^{2+}/Pb_{(s)}$ est le couple du plomb, qui se dépose (donc une réduction) ; le dibrome ne peut venir que de l'autre couple, $Br_{2(g)}/Br^-$, où $Br_2$ est la forme oxydée. Former du $Br_2$ à partir de $Br^-$, c'est perdre des électrons — une oxydation — et l'électrode où se produit une oxydation est, par définition, l'anode (chapitre 2).
+
+          Le dibrome se forme donc à l'**anode**.
+      - id: q2
+        stem: |-
+          **(0,75 pt)** Écrire les équations des réactions aux électrodes, ainsi que l'équation bilan lors de l'électrolyse.
+        reasoning: |-
+          Même geste qu'au chapitre 2 : une demi-équation par électrode, dans le sens que le mécanisme impose, puis la somme équilibrée en électrons. À l'anode (question 1), les ions bromure s'oxydent en dibrome. À la cathode — l'autre électrode, où le plomb se dépose, donc une réduction — les ions plomb captent des électrons. Les deux demi-équations échangent chacune $2\,e^-$ : ils s'annulent directement dans la somme, sans multiplier ni l'une ni l'autre.
+        steps:
+          - math: '2\,Br^- \rightleftharpoons Br_{2(g)} + 2\,e^-'
+            note: "A l'anode : oxydation des ions bromure, dégagement de dibrome."
+          - math: 'Pb^{2+} + 2\,e^- \rightleftharpoons Pb_{(s)}'
+            note: "A la cathode : réduction des ions plomb, dépôt de plomb métal."
+          - math: 'Pb^{2+} + 2\,Br^- \rightarrow Pb_{(s)} + Br_{2(g)}'
+            note: "Bilan : les 2 électrons de chaque cote s'eliminent."
+      - id: q3
+        part: "Partie I — Loi de Faraday : intensité et volume de dibrome"
+        stem: |-
+          **(0,5 pt)** Déterminer la valeur de l'intensité $I$ du courant électrique passant dans le circuit pendant la durée $\Delta t$.
+        reasoning: |-
+          On remonte la chaîne du chapitre 5, dans le sens inverse de l'exemple travaillé de la leçon (qui partait d'un courant connu pour trouver une masse) : ici c'est la masse déposée qui est connue, et c'est le courant qu'il faut en tirer. La masse de plomb donne d'abord sa quantité de matière ; la demi-équation de la question 2 dit que chaque atome de plomb déposé a mobilisé **deux** électrons ; la constante de Faraday convertit ces électrons en quantité d'électricité $Q$ ; et $Q = I\,\Delta t$, à intensité constante, livre enfin $I$ une fois $\Delta t$ connu (donnée de l'énoncé).
+        steps:
+          - math: 'n(Pb) = \frac{m}{M(Pb)} = \frac{20{,}72}{207{,}2}'
+            note: "La masse de plomb deposee devient une quantité de matière."
+          - math: '\boxed{n(Pb) = 0{,}100\ \text{mol}}'
+            note: "Valeur ronde, signe d'un jeu de données cohérent."
+          - math: 'n(e^-) = 2\,n(Pb) = 0{,}200\ \text{mol}'
+            note: "Chaque atome de plomb depose a consomme 2 électrons (Pb2+ + 2e- -> Pb, question 2)."
+          - math: 'Q = n(e^-)\,F = 0{,}200\times 9{,}65\times10^{4}'
+            note: "Quantité d'electricite, par la constante de Faraday."
+          - math: '\boxed{Q = 1{,}93\times10^{4}\ \text{C}}'
+            note: "Application numérique."
+          - math: 'I = \frac{Q}{\Delta t} = \frac{1{,}93\times10^{4}}{3600}'
+            note: "On isole I dans Q = I.Delta t (intensité constante), avec Delta t donne dans l'énoncé."
+          - math: '\boxed{I \approx 5{,}4\ \text{A}}'
+            note: "Intensité du courant impose par le générateur."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Calculer, dans les conditions de l'expérience, le volume $V$ du gaz dibrome formé pendant $\Delta t$.
+        reasoning: |-
+          convertir une quantité de matière de gaz en volume par le volume molaire $V_m$ est posé au chapitre 6 — le chapitre 5 chiffre des masses déposées, jamais des volumes de gaz ; c'est une relation générale de chimie ($n = V/V_m$), mobilisée ici sans qu'aucun chapitre ne l'introduise. On commence par la stœchiométrie, qui elle relève bien du chapitre 2 : le bilan de la question 2 associe un $Br_2$ formé à chaque $Pb$ déposé (même nombre d'électrons échangés de chaque côté), donc $n(Br_2) = n(Pb) = 0{,}100\ \text{mol}$, déjà calculé à la question 3 — pas besoin de repasser par les électrons. Il reste à convertir cette quantité de matière en volume, avec le volume molaire donné dans l'énoncé.
+        steps:
+          - math: 'n(Br_2) = n(Pb) = 0{,}100\ \text{mol}'
+            note: "Bilan de la question 2 : un Br2 forme pour un Pb depose (même nombre d'électrons echanges)."
+          - math: 'V = n(Br_2)\times V_m = 0{,}100\times 70{,}5'
+            note: "Conversion mole -> volume par le volume molaire des gaz, donne dans l'énoncé (chapitre 6)."
+          - math: '\boxed{V = 7{,}05\ \text{L}}'
+            note: "Volume de dibrome degage pendant Delta t."
+
+  # ── bk-2019-n-x1 — 2019 N, Exercice I (Partie 1) : électrolyse d'iodure de zinc ──
+  # Même sujet que le sommet de leçon r-bac (exercises.yaml). Voir la NOTE
+  # ÉDITORIALE en tête de fichier pour le recoupement assumé.
+  - id: bk-2019-n-x1
+    title: "Électrolyse d'une solution aqueuse d'iodure de zinc : anode, équations aux électrodes et durée par la loi de Faraday"
+    source:
+      year: 2019
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice I — Partie 1 : électrolyse d'une solution aqueuse d'iodure de zinc"
+    bareme_total: 2
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national PC BIOF, code NS28F
+        (Exercice I, Partie 1 — électrolyse d'une solution aqueuse d'iodure
+        de zinc entre deux électrodes de graphite A et B ; barème de la
+        partie = 2 pt sur les 7 pt de l'exercice complet, dont la Partie 2 —
+        étude conductimétrique de l'acide benzoïque — est transcrite sous
+        reactions-acido-basiques.md). Transcription vérifiée : re-fetch
+        indépendant AlloSchool element/68300 + diff OK (agent-vérificateur,
+        2026-07-11 ; docs/sujets/pc/electrolyse.md, statut « vérifié »).
+        FLAG RECOUPEMENT (voir l'en-tête du fichier) : ce même sujet
+        sous-tend le sommet de leçon r-bac (exercises.yaml, marqueur
+        [[exercise:r-bac]] à R6 « Pour t'entraîner ») — recoupement assumé,
+        même disposition que piles bk-2020-n-x1 ; le raisonnement ci-dessous
+        est rédigé de nouveau (voix maison), pas copié de exercises.yaml.
+    intro: |-
+      **Électrolyse d'une solution aqueuse d'iodure de zinc (examen national, session normale 2019, Exercice I — Partie 1).**
+
+      On réalise l'électrolyse d'une solution aqueuse d'iodure de zinc $\text{Zn}^{2+}_{(aq)} + 2\,\text{I}^-_{(aq)}$, en utilisant deux électrodes A et B en graphite. On observe un dégagement du gaz diiode au niveau d'une électrode et la formation d'un dépôt de zinc au niveau de l'autre électrode.
+
+      La figure ci-contre représente le schéma du dispositif expérimental utilisé pour réaliser cette électrolyse.
+
+      **Données :** $1\text{F} = 9{,}65 \cdot 10^{4}\ \text{C.mol}^{-1}$ ; les deux couples mis en jeu sont : $\text{Zn}^{2+}_{(aq)}/\text{Zn}_{(s)}$ et $\text{I}_{2(g)}/\text{I}^-_{(aq)}$ ; la masse molaire du zinc : $M(\text{Zn}) = 65{,}4\ \text{g.mol}^{-1}$.
+
+      **Figure (schéma du dispositif).** Un générateur $G$ (bornes $+$ à gauche, $-$ à droite) alimente un tube en U contenant la solution d'iodure de zinc. Deux électrodes en graphite plongent dans la solution : **Électrode B** (branche de gauche, reliée à la borne $+$) et **Électrode A** (branche de droite, reliée à la borne $-$).
+    questions:
+      - id: q1
+        part: "Partie 1 — Électrolyse d'une solution aqueuse d'iodure de zinc"
+        stem: |-
+          **(0,5 pt)** Parmi les deux électrodes A et B, préciser l'anode. Justifier la réponse.
+        reasoning: |-
+          L'anode se définit sans ambiguïté, en électrolyse comme en pile : c'est l'électrode où se produit l'oxydation (chapitre 2). Reste à savoir laquelle des deux, A ou B, est concernée — et c'est le générateur qui tranche (chapitre 3) : sa borne $+$ arrache des électrons à l'électrode qu'elle alimente, ce qui y force précisément une oxydation. Sur le schéma, la borne $+$ du générateur $G$ est reliée à l'**électrode B**. C'est donc B qui est l'anode ; l'électrode A, reliée à la borne $-$, est la cathode (siège de la réduction).
+      - id: q2
+        stem: |-
+          **(0,75 pt)** Écrire l'équation de la réaction à chaque électrode et l'équation bilan lors de l'électrolyse.
+        reasoning: |-
+          À l'anode B (borne $+$), le générateur arrache des électrons : parmi les deux couples fournis, seul $\text{I}_2/\text{I}^-$ peut en céder ici, donc les ions iodure s'oxydent en diiode — cohérent avec le dégagement gazeux observé. À la cathode A (borne $-$), le générateur pousse des électrons : le couple $\text{Zn}^{2+}/\text{Zn}$ fonctionne alors en réduction, les ions zinc les captent et se déposent en métal — cohérent avec le dépôt observé. Les deux demi-équations échangent chacune $2\,e^-$ : ils s'annulent directement dans la somme, sans multiplier ni l'une ni l'autre.
+        steps:
+          - math: '2\,I^-_{(aq)} \rightleftharpoons I_{2(g)} + 2\,e^-'
+            note: "Anode B (borne +) : oxydation des ions iodure."
+          - math: 'Zn^{2+}_{(aq)} + 2\,e^- \rightleftharpoons Zn_{(s)}'
+            note: "Cathode A (borne -) : réduction des ions zinc."
+          - math: 'Zn^{2+}_{(aq)} + 2\,I^-_{(aq)} \rightarrow Zn_{(s)} + I_{2(g)}'
+            note: "Bilan : les 2 électrons de chaque cote s'eliminent."
+      - id: q3
+        part: "Partie 1 — Quantité d'électricité et durée de l'électrolyse"
+        stem: |-
+          **(0,75 pt)** Pendant la durée $\Delta t$ de l'électrolyse, un courant électrique d'intensité constante $I = 0{,}5\ \text{A}$ circule dans le circuit ; il se forme alors un dépôt de zinc de masse $m = 1{,}6\ \text{g}$. Déterminer $\Delta t$ en minutes.
+        reasoning: |-
+          On repart de la masse de zinc déposée pour remonter, étape par étape, jusqu'à la durée — la chaîne du chapitre 5, parcourue à l'envers cette fois (l'exemple travaillé de la leçon partait d'un courant connu pour trouver une masse). La demi-équation de la question 2, $Zn^{2+}+2\,e^-\rightleftharpoons Zn$, dit que chaque atome de zinc déposé a mobilisé deux électrons : c'est ce facteur $2$ qui relie $n(Zn)$ à $n(e^-)$. La constante de Faraday convertit ensuite $n(e^-)$ en quantité d'électricité $Q$, et $Q=I\,\Delta t$ — à intensité constante — livre finalement $\Delta t$, qu'il ne reste plus qu'à convertir en minutes comme demandé.
+        steps:
+          - math: 'n(Zn) = \frac{m}{M(Zn)} = \frac{1{,}6}{65{,}4}'
+            note: "La masse de zinc deposee devient une quantité de matière."
+          - math: '\boxed{n(Zn) \approx 2{,}45\times10^{-2}\ \text{mol}}'
+            note: "Application numérique."
+          - math: 'n(e^-) = 2\,n(Zn) \approx 4{,}89\times10^{-2}\ \text{mol}'
+            note: "Chaque atome de zinc depose a consomme 2 électrons (Zn2+ + 2e- -> Zn, question 2)."
+          - math: 'Q = n(e^-)\,F \approx 4{,}89\times10^{-2}\times 9{,}65\times10^{4}'
+            note: "Quantité d'electricite, par la constante de Faraday."
+          - math: '\boxed{Q \approx 4{,}72\times10^{3}\ \text{C}}'
+            note: "Application numérique."
+          - math: '\Delta t = \frac{Q}{I} = \frac{4{,}72\times10^{3}}{0{,}5}'
+            note: "On isole Delta t dans Q = I.Delta t, intensité constante donnée dans l'énoncé."
+          - math: '\boxed{\Delta t \approx 9{,}44\times10^{3}\ \text{s}}'
+            note: "Durée en secondes."
+          - math: '\Delta t \approx \frac{9{,}44\times10^{3}}{60}'
+            note: "Conversion en minutes, demandee par l'énoncé."
+          - math: '\boxed{\Delta t \approx 157\ \text{min}}'
+            note: "Soit environ 2 h 37 min."
+
+  # ── bk-2022-n-x1 — 2022 N, Exercice 1 (Partie 1) : chromage d'une plaque d'acier par électrolyse ──
+  - id: bk-2022-n-x1
+    title: "Chromage d'une plaque d'acier par électrolyse : cathode, réactions aux électrodes (QCM) et masse de chrome déposée par la loi de Faraday"
+    source:
+      year: 2022
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — Partie 1 : chromage d'une plaque d'acier par électrolyse"
+    bareme_total: 2.25
+    duration_min: 13
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national PC BIOF, code NS 28F
+        (Exercice 1, Partie 1 — chromage d'une plaque d'acier par
+        électrolyse ; barème de la partie = 2,25 pt sur les 7 pt de
+        l'exercice complet, dont la Partie 2 — étude de quelques propriétés
+        d'une solution aqueuse d'acide propanoïque — relève de
+        reactions-acido-basiques.md). Transcription vérifiée par re-lecture
+        de contrôle indépendante des corrections de la passe adversariale
+        (agent-relecteur-de-contrôle, 2026-08-07), diff OK contre
+        upload-84516/0002-big.jpg (docs/sujets/pc/electrolyse.md, statut
+        « vérifié ») ; barème en marge recompté au zoom ×2 :
+        $0{,}5+0{,}5+0{,}5+0{,}75=2{,}25$. Physique re-dérivée et cohérente
+        (recontrôlée indépendamment ici) : $n(e^-) = I\Delta t/F =
+        2\times7200/96500 \approx 0{,}1492$ mol $\Rightarrow n(Cr) =
+        n(e^-)/3 \approx 4{,}97\times10^{-2}$ mol $\Rightarrow m(Cr)
+        \approx 2{,}59$ g ; cathode = plaque d'acier (réduction
+        $Cr^{3+}+3e^- \to Cr$), anode = électrode de graphite (oxydation
+        de l'eau, dégagement de $O_2$) ; une seule réponse juste par QCM
+        (2.1 = A, 2.2 = B). Aucun recoupement avec le sommet de leçon
+        (r-bac transcrit le sujet 2019, iodure de zinc) ni avec
+        bk-2018-n-x1 (bromure de plomb) — voir l'en-tête du fichier.
+    intro: |-
+      **Chromage d'une plaque d'acier par électrolyse (examen national, session normale 2022, Exercice 1 — Partie 1).**
+
+      *L'électrolyse est un processus de conversion de l'énergie électrique en énergie chimique. Parmi ses applications on trouve la couverture d'objets par une fine couche de métal et ce pour les protéger de la corrosion. On se propose, dans cette partie, d'étudier le chromage d'une plaque d'acier par électrolyse.*
+
+      Pour réaliser cette électrolyse, on plonge totalement une plaque en acier dans une solution aqueuse de chlorure de chrome (III) $Cr^{3+}_{(aq)} + 3\,Cl^-_{(aq)}$ et on la relie à l'un des pôles d'un générateur $G$. L'autre pôle du générateur est relié à une électrode en graphite (figure 1). En fermant l'interrupteur $K$, un courant électrique d'intensité constante $I = 2\ \text{A}$ circule alors dans le circuit. On observe un dégagement de dioxygène $O_{2(g)}$ au niveau de l'électrode en graphite et un dépôt uniforme de chrome sur la plaque d'acier.
+
+      **Données :** les couples mis en jeu : $Cr^{3+}_{(aq)}/Cr_{(s)}$ et $O_{2(g)}/H_2O_{(l)}$ ; $1\text{F} = 96500\ \text{C.mol}^{-1}$ ; la masse molaire du chrome : $M(Cr) = 52\ \text{g.mol}^{-1}$.
+
+      **Figure 1 (schéma du dispositif).** Un générateur $G$ (en haut, au centre du schéma) est relié par un fil à un interrupteur $K$ (en haut à droite, à droite de $G$). Un bécher contient la solution de chlorure de chrome (III) $Cr^{3+}_{(aq)} + 3\,Cl^-_{(aq)}$, dans laquelle plongent deux électrodes reliées au circuit : à gauche, la **plaque en acier** (reliée au générateur $G$) ; à droite, l'**électrode en graphite** (reliée à l'interrupteur $K$).
+    questions:
+      - id: q1
+        part: "Partie 1 — Chromage d'une plaque d'acier par électrolyse"
+        stem: |-
+          **(0,5 pt)** Identifier l'électrode qui joue le rôle de la cathode. Justifier votre réponse.
+        reasoning: |-
+          Comme au chapitre 2, l'anode et la cathode se distinguent par le mécanisme qui s'y produit, pas par leur position sur le schéma — et ici, aucune polarité de générateur n'est même précisée, donc rien à lire de ce côté-là. Il faut repartir des deux observations données : un dépôt de chrome métallique sur la plaque d'acier, et un dégagement de dioxygène gazeux à l'électrode de graphite. Un dépôt de métal à partir d'un ion en solution, c'est cet ion qui capte des électrons pour redevenir un atome métal — une réduction (chapitre 2) — et l'électrode où se produit une réduction est, par définition, la cathode.
+
+          La **plaque d'acier** est donc la cathode : c'est là que les ions $Cr^{3+}$ de la solution sont réduits en chrome métal, qui vient s'y déposer. (L'électrode de graphite, siège du dégagement de $O_2$ — une oxydation de l'eau — est l'anode.)
+      - id: q2
+        part: "Partie 1 — Réactions aux électrodes (QCM)"
+        stem: |-
+          **(0,5 pt)** L'équation de la réaction au niveau de l'électrode de graphite s'écrit ainsi :
+
+          | | |
+          |---|---|
+          | A | $2\,H_2O_{(\ell)} \rightleftharpoons O_{2(g)} + 4\,H^+_{(aq)} + 4\,e^-$ |
+          | B | $Cr^{3+}_{(aq)} + 3\,e^- \rightleftharpoons Cr_{(s)}$ |
+          | C | $2\,O^{2-}_{(aq)} \rightleftharpoons O_{2(g)} + 4\,e^-$ |
+          | D | $2\,H_2O_{(\ell)} \rightleftharpoons O_{2(g)} + 2\,H_{2(g)}$ |
+        reasoning: |-
+          L'électrode de graphite est l'anode (question précédente) : il s'y produit une oxydation, celle qui dégage le dioxygène observé. Reste à identifier la bonne demi-équation parmi les quatre proposées.
+
+          B décrit une réduction (l'ion $Cr^{3+}$ qui capte des électrons) : c'est la réaction de la plaque d'acier, pas celle du graphite. Faux ici. C invente une espèce $O^{2-}_{(aq)}$ absente des données — le seul couple fourni pour l'oxygène est $O_{2(g)}/H_2O_{(l)}$, pas $O_2/O^{2-}$. Faux. D ne fait apparaître aucun électron échangé : ce n'est pas une demi-équation redox, elle ne peut donc pas décrire ce qui se produit à une électrode. Faux.
+
+          A est la seule à exploiter le couple donné $O_{2(g)}/H_2O_{(l)}$ dans le bon sens — l'eau oxydée en dioxygène, avec libération d'électrons — cohérent avec l'oxydation attendue à l'anode et le dégagement de $O_2$ observé au graphite. $\boxed{\text{A}}$.
+      - id: q3
+        stem: |-
+          **(0,5 pt)** L'équation de la réaction au niveau de la plaque d'acier s'écrit ainsi :
+
+          | | |
+          |---|---|
+          | A | $2\,H_2O_{(\ell)} \rightleftharpoons O_{2(g)} + 4\,H^+_{(aq)} + 4\,e^-$ |
+          | B | $Cr^{3+}_{(aq)} + 3\,e^- \rightleftharpoons Cr_{(s)}$ |
+          | C | $Cr^{2+}_{(aq)} + 2\,e^- \rightleftharpoons Cr_{(s)}$ |
+          | D | $2\,H_2O_{(\ell)} \rightleftharpoons O_{2(g)} + 2\,H_{2(g)}$ |
+        reasoning: |-
+          La plaque d'acier est la cathode (question 1) : il s'y produit une réduction, celle qui dépose le chrome métal observé.
+
+          A et D décrivent toutes deux une transformation à l'électrode de graphite (l'oxydation de l'eau) : hors sujet ici, à la plaque d'acier. C propose de réduire un ion $Cr^{2+}_{(aq)}$ — cet ion n'apparaît nulle part dans les données, qui ne donnent que le couple $Cr^{3+}/Cr$. Faux.
+
+          B réduit exactement l'ion donné dans les données, $Cr^{3+}_{(aq)}$, en chrome métal $Cr_{(s)}$ — cohérent avec le dépôt de chrome observé sur la plaque d'acier. $\boxed{\text{B}}$.
+      - id: q4
+        part: "Partie 1 — Masse de chrome déposée (loi de Faraday)"
+        stem: |-
+          **(0,75 pt)** L'électrolyse a duré $\Delta t = 2\ \text{h}$. Déterminer la masse $m(Cr)$ de chrome déposé sur la plaque d'acier.
+        reasoning: |-
+          On applique la même chaîne qu'au chapitre 5 — courant et durée donnent la quantité d'électricité, la constante de Faraday la convertit en quantité de matière d'électrons — mais avec un coefficient différent de celui des exemples travaillés de la leçon : la demi-équation de la question 2.2 dit que chaque atome de chrome déposé mobilise **trois** électrons, pas deux. C'est exactement le geste décrit au chapitre 6 pour la galvanoplastie — l'objet à recouvrir (ici la plaque d'acier) est branché en cathode, et son dépôt métallique se chiffre par cette même loi de Faraday ; le chrome y est d'ailleurs cité comme exemple de métal déposé. On convertit d'abord la durée en secondes, indispensable avant tout calcul de charge.
+        steps:
+          - math: '\Delta t = 2\times 3600 = 7200\ \text{s}'
+            note: "Conversion de la durée en secondes avant tout calcul de charge."
+          - math: 'Q = I\,\Delta t = 2\times 7200 = 1{,}44\times10^{4}\ \text{C}'
+            note: "Quantité d'electricite debitee par le générateur."
+          - math: 'n(e^-) = \frac{Q}{F} = \frac{1{,}44\times10^{4}}{96500}'
+            note: "Loi de Faraday : conversion de la charge en quantité de matière d'électrons."
+          - math: '\boxed{n(e^-) \approx 0{,}1492\ \text{mol}}'
+            note: "Application numérique."
+          - math: 'n(Cr) = \frac{n(e^-)}{3} \approx \frac{0{,}1492}{3}'
+            note: "Cr3+ + 3 e- -> Cr (question 2.2) : trois électrons par atome de chrome depose, pas deux comme dans les exemples de la leçon."
+          - math: '\boxed{n(Cr) \approx 4{,}97\times10^{-2}\ \text{mol}}'
+            note: "Application numérique."
+          - math: 'm(Cr) = n(Cr)\times M(Cr) \approx 4{,}97\times10^{-2}\times 52'
+            note: "Conversion mole -> masse par la masse molaire du chrome."
+          - math: '\boxed{m(Cr) \approx 2{,}59\ \text{g}}'
+            note: "Masse de chrome deposee sur la plaque d'acier pendant Delta t."
+
+  # ── bk-2023-r-x1 — 2023 R, Exercice 1 (Partie I) : électrolyse du bromure de zinc ──
+  - id: bk-2023-r-x1
+    title: "Électrolyse du bromure de zinc"
+    source:
+      year: 2023
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — Partie I : électrolyse d'une solution aqueuse de bromure de zinc"
+    bareme_total: 2.75
+    duration_min: 16
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code RS 28F, scan course-422/upload-85310, pages 2
+        et 3 sur 6 (Exercice 1, Partie I — électrolyse d'une solution
+        aqueuse de bromure de zinc ; barème de la partie =
+        $0{,}5+1+0{,}25+1 = 2{,}75$ pt sur les 7 pt de l'exercice complet,
+        dont la Partie II — dosage d'une solution aqueuse de triméthylamine
+        — relève de reactions-acido-basiques.md). Source :
+        docs/sujets/_incoming/pc-spc-2023-r.md, statut « vérifié » — passe
+        adversariale du 2026-08-23 : les 6 pages re-fetchées indépendamment,
+        texte des quatre exercices recontrôlé caractère par caractère
+        (couples, $1F$, $M(Zn)$, $I = 82$ mA), et la figure du tube en U
+        re-décrite DEPUIS LE DESSIN (topologie du câblage confirmée : le
+        retour de gauche part bien du côté « + », donc l'électrode (B) est
+        sur la borne $+$ ; description enrichie du niveau de liquide et de
+        la géométrie du circuit extérieur, qui manquaient). Physique
+        re-dérivée et recontrôlée ici : $Q = I\Delta t = 0{,}082 \times
+        3600 = 295{,}2$ C $\Rightarrow n(e^-) = Q/F \approx
+        3{,}06\times10^{-3}$ mol $\Rightarrow n(Zn) \approx
+        1{,}53\times10^{-3}$ mol $\Rightarrow m(Zn) \approx 0{,}100$ g —
+        la relation littérale $m(Zn) = I\Delta t\,M(Zn)/2F$ exigée par
+        l'énoncé tombe exactement. QCM de la question 1 : une seule
+        proposition juste (B). Jumelage assumé avec bk-2019-n-x1 (même
+        cation, même montage, loi de Faraday posée dans l'autre sens) —
+        voir l'en-tête du fichier.
+    intro: |-
+      **Électrolyse d'une solution aqueuse de bromure de zinc (examen national, session de rattrapage 2023 — Exercice 1, Partie I, 2,75 points).**
+
+      *Cet exercice propose d'étudier une réaction d'oxydo-réduction forcée dans une première partie et une réaction acido-basique dans une deuxième partie.*
+
+      On réalise l'électrolyse d'une solution aqueuse (S) de bromure de zinc $\left(\text{Zn}^{2+}_{(aq)} + 2\,\text{Br}^{-}_{(aq)}\right)$ de volume $V$ en utilisant un générateur fournissant un courant d'intensité constante $I$ et des électrodes en graphite (figure ci-contre). Au cours de cette électrolyse, le métal zinc se dépose sur l'une des électrodes.
+
+      **Données :** couples (Ox / Red) intervenant dans cette électrolyse : $\text{Br}_{2(aq)}/\text{Br}^{-}_{(aq)}$ ; $\text{Zn}^{2+}_{(aq)}/\text{Zn}_{(s)}$ ; le faraday : $1\,\text{F} = 9{,}65\cdot10^{4}\ \text{C.mol}^{-1}$ ; masse molaire : $M(\text{Zn}) = 65{,}4\ \text{g.mol}^{-1}$ ; $I = 82\ \text{mA}$.
+
+      **Figure (schéma, sans numéro — « figure ci-contre »).** La cellule d'électrolyse est un tube en U contenant la solution. En haut, le générateur est représenté par un cercle marqué « G » : le signe $+$ est imprimé à gauche du cercle, le signe $-$ à sa droite. Le circuit extérieur est tracé comme un cadre — depuis $G$, le fil part à gauche et à droite jusqu'aux deux angles supérieurs, redescend, puis revient horizontalement vers l'intérieur, si bien que la silhouette générale est celle d'un $T$ posé sur le tube en U. À l'extrémité intérieure de chacun de ces deux retours commence une électrode : un trait vertical épais qui descend dans la branche correspondante du tube et plonge dans la solution. Chaque branche du U est dessinée par deux traits fins (ses parois) et porte, à mi-hauteur, un court trait horizontal marquant le niveau du liquide ; les électrodes traversent ce niveau et s'arrêtent au-dessus du coude. Une flèche horizontale venant de la gauche pointe sur l'électrode de la branche gauche, avec la légende « Électrode (B) en graphite » — cette électrode est donc celle qui est reliée à la borne $+$ ; une flèche venant de la droite pointe sur l'électrode de la branche droite, légende « Électrode (A) en graphite » (reliée à la borne $-$). Une troisième flèche, en bas à droite, pointe vers le flanc droit du coude du tube en U avec la légende « Solution aqueuse de bromure de zinc ».
+    questions:
+      - id: q1
+        part: "Partie I — Lire le montage : qui est l'anode, et que devient la solution"
+        stem: |-
+          **(0,5 pt)** Parmi les propositions suivantes, choisir la proposition juste.
+
+          | | |
+          |---|---|
+          | **A** | L'électrode (A) est l'anode. |
+          | **B** | L'électrode (B) est le siège d'une oxydation. |
+          | **C** | Au cours de l'électrolyse le système est en équilibre. |
+          | **D** | $\left[\text{Br}^{-}_{(aq)}\right]$ augmente au cours du temps. |
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Un QCM à quatre propositions ne se joue pas au flair : chacune porte sur un point différent de la leçon, et la bonne méthode est de les éliminer une à une avec l'outil qui convient. Ici deux propositions (A et B) se règlent par le câblage, une (C) par le statut de la transformation, une (D) par ce qui se passe réellement aux électrodes. Le seul fait à établir d'abord, et il suffit pour A et B, c'est **qui est l'anode**.
+
+          Le chapitre 3 le tranche sans détour : en électrolyse, c'est le générateur qui impose la polarité, et sa borne $+$ *tire* les électrons hors de l'électrode qu'elle alimente — ce qui y force une oxydation. L'électrode reliée à la borne $+$ est donc l'**anode**, et celle reliée à la borne $-$ la **cathode**. Sur la figure, le signe $+$ est imprimé à gauche du cercle $G$ et le fil de gauche rejoint l'**électrode (B)** ; le signe $-$ est à droite, et le fil de droite rejoint l'**électrode (A)**.
+
+          **A — fausse.** L'électrode (A) est sur la borne $-$ : c'est la cathode, siège de la réduction. C'est d'ailleurs là que le zinc se dépose, comme l'annonce l'énoncé.
+
+          **B — juste.** L'électrode (B) est sur la borne $+$ : c'est l'anode, donc le siège d'une **oxydation** (celle des ions bromure, question suivante).
+
+          **C — fausse.** Le pont à faire ici sort des chapitres de cette leçon, et il tient en une ligne qu'on refait plutôt que de l'admettre : un système à l'équilibre chimique a $Q_r = K$ et **n'évolue plus** — aucune espèce n'y apparaît ni n'y disparaît en net. Or ici du zinc se dépose en continu tant que le générateur débite : le système évolue, donc $Q_r \neq K$, donc il n'est pas à l'équilibre. Pire — et c'est tout le sens du chapitre 2 — le générateur force le sens que le critère d'évolution interdirait : loin de rapprocher $Q_r$ de $K$, l'électrolyse l'en **éloigne**. Une électrolyse est par construction un système hors équilibre, maintenu de force.
+
+          **D — fausse.** À l'anode (B), ce sont précisément les ions $\text{Br}^{-}$ qui sont oxydés en dibrome : ils sont **consommés**. Leur concentration diminue au cours du temps, elle n'augmente pas.
+
+          La réponse est donc $\boxed{\text{B}}$.
+
+          **Le piège de cette question.** Il est double, et les deux moitiés visent le même réflexe : appliquer à l'électrolyse ce qu'on a appris de la pile. D'abord la polarité — dans une pile, l'anode est la borne $-$ ; ici c'est l'exact opposé (chapitre 3), et un élève qui transporte la règle de la pile choisit A au lieu de B. Ensuite l'ordre alphabétique : rien n'oblige (A) à être à gauche et (B) à droite, et sur ce schéma c'est justement l'inverse — c'est le signe imprimé à côté du cercle $G$ qu'on lit, pas l'ordre des lettres.
+      - id: q2
+        part: "Partie I — Les réactions aux électrodes"
+        stem: |-
+          **(1 pt)** Écrire l'équation de la réaction qui se produit au niveau de la cathode et celle qui se produit au niveau de l'anode.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Une demi-équation par électrode, écrite dans le sens que le mécanisme impose — jamais dans le sens où le couple est écrit dans les données. C'est le geste du chapitre 2 : on décide d'abord *oxydation ou réduction*, et le sens de la flèche suit.
+
+          La cathode est l'électrode (A), sur la borne $-$ (question 1) : le générateur y **pousse** des électrons, une espèce en solution doit donc les capter — une réduction. Des deux couples fournis, seul $\text{Zn}^{2+}/\text{Zn}$ a un oxydant capable de se réduire en un solide, et l'énoncé confirme l'observation : le métal zinc se dépose.
+
+          L'anode est l'électrode (B), sur la borne $+$ : le générateur y **tire** des électrons, une espèce doit donc en céder — une oxydation. Il reste le couple $\text{Br}_{2}/\text{Br}^{-}$, dont la forme réduite $\text{Br}^{-}$ est justement présente en solution : elle s'oxyde en dibrome.
+
+          Les deux demi-équations échangent chacune $2\,e^-$ : elles sont directement compatibles, sans qu'il faille en multiplier aucune.
+
+          **Le piège de cette question.** Il est dans l'état physique du dibrome. Le réflexe, entretenu par tous les exercices d'électrolyse d'halogénures à haute température, est d'écrire $\text{Br}_{2(g)}$ et de parler d'un dégagement gazeux. Ici les données disent $\text{Br}_{2(aq)}/\text{Br}^{-}_{(aq)}$ : on est en **solution aqueuse**, le dibrome formé reste dissous. Recopier l'indice donné dans l'énoncé, plutôt que celui qu'on croit connaître, coûte zéro effort et évite une équation fausse. Piège jumeau, plus classique : écrire la demi-équation de l'anode dans le sens où le couple est présenté ($\text{Br}_2 \rightarrow \text{Br}^-$) — le couple s'écrit toujours Ox/Red, mais le sens de la flèche, lui, est décidé par l'électrode, pas par les données.
+        steps:
+          - math: 'Zn^{2+}_{(aq)} + 2\,e^- \rightleftharpoons Zn_{(s)}'
+            note: "Cathode = électrode (A), borne - : réduction des ions zinc, dépôt de métal."
+          - math: '2\,Br^{-}_{(aq)} \rightleftharpoons Br_{2(aq)} + 2\,e^-'
+            note: "Anode = électrode (B), borne + : oxydation des ions bromure."
+      - id: q3
+        stem: |-
+          **(0,25 pt)** Écrire l'équation bilan de la réaction de cette électrolyse.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le bilan est la somme des deux demi-équations, arrangée pour que **plus aucun électron n'y figure** : les électrons sont des intermédiaires qui passent d'une électrode à l'autre par le fil, ils ne sont ni réactif ni produit du bilan.
+
+          Ici la somme se fait telle quelle : la cathode consomme $2\,e^-$, l'anode en libère $2$ — même nombre des deux côtés, ils s'éliminent sans qu'on ait à multiplier quoi que ce soit.
+
+          **Le piège de cette question.** C'est de croire que « les électrons s'annulent » est une règle automatique. Elle n'est vraie que quand les deux demi-équations en échangent le **même nombre** — ce qui est le cas ici par chance, $2$ contre $2$. Compare avec l'électrolyse de l'eau du chapitre 6 : la cathode y échange $2\,e^-$, l'anode $4$, et il faut **doubler la demi-équation cathodique** avant de sommer, sinon le bilan traîne des électrons parasites. Le réflexe correct n'est donc pas « ils s'annulent », c'est « je compte les électrons de chaque côté, puis je multiplie s'il le faut ». Ici le compte tombe juste du premier coup, et c'est tout.
+        steps:
+          - math: 'Zn^{2+}_{(aq)} + 2\,e^- \rightleftharpoons Zn_{(s)}'
+            note: "Demi-equation de la cathode (question 2)."
+          - math: '2\,Br^{-}_{(aq)} \rightleftharpoons Br_{2(aq)} + 2\,e^-'
+            note: "Demi-equation de l'anode (question 2)."
+          - math: '\boxed{Zn^{2+}_{(aq)} + 2\,Br^{-}_{(aq)} \rightarrow Zn_{(s)} + Br_{2(aq)}}'
+            note: "Somme : les 2 électrons de chaque cote s'eliminent, fleche simple pour une équation bilan."
+      - id: q4
+        part: "Partie I — La loi de Faraday : d'abord la relation littérale, ensuite le chiffre"
+        stem: |-
+          **(1 pt)** Au bout d'une heure $(\Delta t = 1\,\text{h})$ d'électrolyse, il se dépose une masse $m(\text{Zn})$ de zinc sur l'une des électrodes. Établir la relation : $m(\text{Zn}) = \dfrac{I.\Delta t.M(\text{Zn})}{2F}$. Calculer la valeur de $m(\text{Zn})$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'énoncé demande la relation **avant** le nombre, et c'est le bon ordre : la formule à établir n'est pas une formule à retenir, c'est le résultat de la chaîne du chapitre 5 écrite en lettres au lieu d'être écrite en chiffres. On la construit maillon par maillon, chacun justifié, et le facteur $2$ du dénominateur apparaîtra tout seul là où il doit apparaître — il ne se plaque pas à la fin.
+
+          **Maillon 1 — du courant à la charge.** L'intensité est constante (énoncé), donc la quantité d'électricité qui a traversé la cellule pendant $\Delta t$ vaut $Q = I\,\Delta t$.
+
+          **Maillon 2 — de la charge aux électrons.** C'est la loi de Faraday du chapitre 5 : cette même charge, comptée en moles d'électrons, vaut $Q = n(e^-)\,F$. On en tire $n(e^-) = \dfrac{I\,\Delta t}{F}$.
+
+          **Maillon 3 — des électrons au zinc.** C'est ici, et seulement ici, que le $2$ entre en scène : la demi-équation de la cathode (question 2) dit que chaque ion $\text{Zn}^{2+}$ qui devient un atome de zinc capte **deux** électrons. Donc $n(Zn) = \dfrac{n(e^-)}{2}$.
+
+          **Maillon 4 — du zinc à sa masse.** La masse molaire fait le dernier pas : $m(Zn) = n(Zn)\,M(Zn)$.
+
+          En enchaînant les quatre, on obtient exactement la relation demandée. Il ne reste qu'à convertir les deux données en unités SI avant de chiffrer.
+
+          **Le contrôle qui rassure.** La relation qu'on vient de construire est mot pour mot celle que l'énoncé annonçait : les quatre maillons étaient donc les bons, et le facteur $2$ est bien au dénominateur — pas au numérateur, pas ailleurs.
+
+          **Le piège de cette question.** Il est triple, et chacun des trois fait perdre le point entier. **Les unités d'abord** : $I$ est donnée en **milliampères** et $\Delta t$ en **heures** ; garder $82$ et $1$ tels quels donne $m \approx 2{,}8\times10^{-2}\ \text{g}$, un résultat faux d'un facteur $3{,}6$ — et qui ne se dénonce pas tout seul, car il reste d'un ordre de grandeur plausible. **Le facteur $2$ ensuite** : il ne vient pas du $2$ qui traîne dans la formule de la solution $\text{Zn}^{2+} + 2\,\text{Br}^-$, mais du nombre d'électrons de la demi-équation **cathodique**. La preuve : dans l'exercice 2022 de cette même banque, le chrome se dépose selon $\text{Cr}^{3+} + 3\,e^-$ et c'est un $3$ qui apparaît au dénominateur. On lit le coefficient sur la demi-équation, jamais sur la formule du sel. **Le volume $V$ enfin** : l'énoncé donne un volume de solution, sans valeur numérique, et il ne sert à rien — la loi de Faraday compte des électrons passés dans le fil, pas de la matière disponible en solution. C'est une donnée muette ; la chercher fait perdre du temps, l'utiliser fait perdre le point.
+        steps:
+          - math: 'Q = I\,\Delta t'
+            note: "Maillon 1 : quantité d'electricite debitee, a intensité constante (chapitre 5)."
+          - math: 'Q = n(e^-)\,F \implies n(e^-) = \frac{I\,\Delta t}{F}'
+            note: "Maillon 2 : loi de Faraday, la même charge comptée en moles d'électrons."
+          - math: 'n(Zn) = \frac{n(e^-)}{2} = \frac{I\,\Delta t}{2\,F}'
+            note: "Maillon 3 : Zn2+ + 2 e- -> Zn (question 2), deux électrons par atome depose."
+          - math: '\boxed{m(Zn) = n(Zn)\,M(Zn) = \frac{I\,\Delta t\,M(Zn)}{2\,F}}'
+            note: "Maillon 4 : masse molaire. La relation demandee est etablie."
+          - math: 'I = 82\ \text{mA} = 0{,}082\ \text{A} \qquad \Delta t = 1\ \text{h} = 3600\ \text{s}'
+            note: "Conversions en unités SI, obligatoires avant toute application numérique."
+          - math: 'I\,\Delta t = 0{,}082 \times 3600 = 295{,}2\ \text{C}'
+            note: "Charge totale passee en une heure."
+          - math: 'm(Zn) = \frac{295{,}2 \times 65{,}4}{2 \times 9{,}65\times10^{4}} = \frac{1{,}9306\times10^{4}}{1{,}93\times10^{5}}'
+            note: "Numérateur et dénominateur calcules séparément, pour garder le controle des puissances de dix."
+          - math: '\boxed{m(Zn) \approx 0{,}100\ \text{g}}'
+            note: "Masse de zinc deposee a la cathode (électrode A) en une heure."
+
+  # ── bk-2022-r-x1 — 2022 R, Exercice 1 (§1) : électrolyse du chlorure d'or (III) ──
+  # SEULE entrée de cette banque sans figure fournie : la question 1 demande
+  # de CONSTRUIRE le schéma (pas de le lire), et l'anode s'y déduit des deux
+  # observations chimiques, pas d'une polarité déjà dessinée. Voir l'en-tête
+  # du fichier pour le recoupement (aucun) avec les quatre autres entrées.
+  # Sa Partie 2, indépendante, vit sous content/pc/reactions-acido-basiques,
+  # entrée bk-2022-r-x1b (étude d'une solution aqueuse de méthylamine).
+  - id: bk-2022-r-x1
+    title: "Électrolyse d'une solution de chlorure d'or (III) : schéma du montage sans figure, anode, et durée d'un dépôt d'or par la loi de Faraday"
+    source:
+      year: 2022
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — §1 : électrolyse d'une solution aqueuse de chlorure d'or (III)"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28F, AlloSchool
+        https://www.alloschool.com/element/136624, scan
+        course-422/upload-84519, pages 2 et 3 sur 8 (Exercice 1 — §1,
+        électrolyse d'une solution aqueuse de chlorure d'or (III) pour dorer
+        une plaque de cuivre ; barème de la partie recompté question par
+        question sur l'énoncé source : 0,75 + 0,75 + 0,75 = 2,25 pt, sur les
+        7 pt de l'exercice complet, dont le §2 — étude d'une solution
+        aqueuse de méthylamine — est indépendant et transcrit sous
+        content/pc/reactions-acido-basiques, entrée bk-2022-r-x1b). Source :
+        docs/sujets/_incoming/pc-spc-2022-r.md, statut « vérifié — re-fetch
+        indépendant + re-dérivation (vérificateur adversarial, 2026-08-22) ».
+        Cet exercice ne porte aucune figure imprimée : le schéma du montage
+        (question 1) est intégralement à construire depuis le texte, comme
+        l'énoncé lui-même le demande ; aucune polarité de générateur n'y est
+        donnée d'avance, contrairement à bk-2019-n-x1, bk-2022-n-x1 et
+        bk-2023-r-x1 de cette même banque. Physique re-dérivée ici,
+        indépendamment des « Contrôles de cohérence » du vérificateur (qui ne
+        portent que sur le §2 de cet exercice, pas sur cette partie) :
+        $n(Au) = m(Au)/M(Au) = 0{,}031/197 \approx 1{,}57\times10^{-4}$ mol
+        $\Rightarrow n(e^-) = 3\,n(Au) \approx 4{,}72\times10^{-4}$ mol (le
+        facteur $3$ vient de la demi-équation $Au^{3+}+3e^-\rightleftharpoons Au$,
+        pas $2$) $\Rightarrow Q = n(e^-)\,F \approx 45{,}6$ C
+        $\Rightarrow \Delta t = Q/I \approx 911$ s $\approx 15{,}2\ \text{min}$.
+        Aucune valeur cible n'était donnée pour $\Delta t$ dans la source
+        (contrairement à $\tau$, $Q_{r,\text{éq}}$, $pK_A$, $V_{aE}$ et
+        $\text{pH}_E$ du §2, tous explicitement recoupés par le
+        vérificateur) : ce contre-calcul est donc une dérivation neuve, pas
+        une vérification d'une valeur déjà annoncée. Aucun recoupement avec
+        les autres entrées de cette banque : le couple $Au^{3+}/Au$, le
+        facteur $3$, et une question de schéma sans aucune figure imprimée
+        sont inédits dans le corpus de la notion (voir l'en-tête du fichier).
+    intro: |-
+      **Électrolyse d'une solution aqueuse de chlorure d'or (III) (examen national, session de rattrapage 2022, Exercice 1 — §1, 2,25 points).**
+
+      On étudie dans cette partie l'électrolyse d'une solution aqueuse de chlorure d'or (III) pour déposer une fine couche d'or métallique sur une plaque de cuivre.
+
+      On plonge totalement une plaque de cuivre dans une solution aqueuse de chlorure d'or (III) $\left(\text{Au}^{3+}_{(aq)} + 3\,\text{Cl}^-_{(aq)}\right)$ et on la relie à l'un des pôles d'un générateur électrique $G$, puis on relie l'autre pôle de $G$ à une électrode de graphite immergée dans la même solution.
+
+      Le générateur débite un courant électrique d'intensité constante $I = 50\ \text{mA}$, pendant une durée $\Delta t$.
+
+      Au cours de cette électrolyse, on observe un dépôt métallique d'or sur la plaque du cuivre et un dégagement gazeux de dichlore $\text{Cl}_{2(g)}$ au niveau de l'électrode de graphite.
+
+      **Données :** les couples mis en jeu : $\text{Au}^{3+}_{(aq)}/\text{Au}_{(s)}$ et $\text{Cl}_{2(g)}/\text{Cl}^-_{(aq)}$ ; la masse molaire de l'or : $M(\text{Au}) = 197\ \text{g.mol}^{-1}$ ; $1F = 9{,}65\cdot10^{4}\ \text{C.mol}^{-1}$.
+
+      *(Aucune figure dans cette partie ; énoncé intégralement textuel — c'est à toi de construire le schéma demandé à la question 1.)*
+
+      *La Partie 2 de cet exercice, indépendante, étudie une solution aqueuse de méthylamine : elle vit sous la notion « Réactions acido-basiques », entrée du sujet 2022 (rattrapage).*
+    questions:
+      - id: q1
+        stem: |-
+          **(0,75 pt)** Faire un schéma du dispositif expérimental utilisé pour cette électrolyse, en précisant l'anode et le sens du courant dans le circuit extérieur de l'électrolyseur.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Cette question ne fournit ni figure ni polarité de générateur : contrairement aux autres sujets de cette banque (le sujet 2018, le sujet 2019, le sujet 2022 (session normale), le sujet 2023), où le schéma ou les bornes $+$/$-$ sont déjà donnés, ici c'est à toi de le construire à partir du texte seul, et d'en tirer l'anode et le sens du courant — jamais l'inverse.
+
+          **Le seul point de départ solide : ce qu'on observe, pas une polarité supposée.** Le chapitre 2 le rappelle : anode et cathode se distinguent par le mécanisme, oxydation ou réduction, jamais par une position sur le papier. L'énoncé donne deux observations : un dépôt métallique d'or sur la plaque de cuivre, et un dégagement gazeux de dichlore à l'électrode de graphite. Un dépôt de métal à partir d'un ion en solution, c'est cet ion qui capte des électrons pour redevenir un atome métal — une réduction. La plaque de cuivre est donc la **cathode**. Un dégagement de dichlore à partir des ions chlorure, c'est $\text{Cl}^-$ qui cède des électrons — une oxydation. L'électrode de graphite est donc l'**anode**.
+
+          **La polarité, ensuite (chapitre 3).** Dans une cellule d'électrolyse, c'est le générateur qui impose la polarité, et elle est l'exact opposé de la pile : l'anode est reliée à la borne $+$, la cathode à la borne $-$. L'électrode de graphite (anode) est donc reliée à la borne $+$ du générateur $G$ ; la plaque de cuivre (cathode), à la borne $-$.
+
+          **Le sens du courant dans le circuit extérieur.** Le courant conventionnel sort du générateur par sa borne $+$ et rejoint, par le fil, l'électrode qui y est reliée — ici l'électrode de graphite (l'anode). De l'autre côté, il repart de la plaque de cuivre par son propre fil, pour revenir au générateur par la borne $-$, refermant la boucle. (La question ne porte que sur le circuit extérieur ; la conduction à l'intérieur de la cellule, par les ions de la solution, n'est pas demandée ici.)
+
+          **Ce qu'il faut faire apparaître sur le schéma.** Un bécher contenant la solution $\text{Au}^{3+}_{(aq)}+3\,\text{Cl}^-_{(aq)}$ ; la plaque de cuivre plongée d'un côté, l'électrode de graphite de l'autre ; chacune reliée par un fil au générateur $G$ ; les signes $+$ et $-$ portés aux bornes correspondantes (graphite = $+$, cuivre = $-$) ; une flèche de courant partant de la borne $+$ vers l'électrode de graphite, une autre partant de la plaque de cuivre vers la borne $-$ ; l'étiquette « anode » sous l'électrode de graphite.
+
+          **Le piège de cette question.** Ne pars jamais d'une polarité devinée pour en déduire les électrodes : c'est l'inverse. Aucune polarité n'est donnée dans l'énoncé — c'est le mécanisme observé (dépôt de métal = réduction, dégagement de $\text{Cl}_2$ = oxydation) qui fixe l'anode et la cathode ; la polarité n'en est qu'une conséquence, via le chapitre 3. Deviner une borne au hasard avant de raisonner sur les observations, c'est courir une chance sur deux de se tromper.
+      - id: q2
+        stem: |-
+          **(0,75 pt)** Écrire l'équation de la réaction chimique ayant lieu au niveau de chaque électrode ainsi que l'équation bilan.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Même geste qu'au chapitre 2 : une demi-équation par électrode, dans le sens que le mécanisme impose (question précédente), puis la somme équilibrée en électrons.
+
+          À l'anode (électrode de graphite), les ions chlorure s'oxydent en dichlore. À la cathode (plaque de cuivre), les ions or (III) se réduisent en or métal.
+
+          Les deux demi-équations n'échangent pas le même nombre d'électrons — $2$ pour le chlore, $3$ pour l'or — donc, contrairement au sujet 2018 ou au sujet 2022 (session normale) de cette même banque (où les deux demi-équations s'annulaient directement), elles ne se somment pas telles quelles : il faut multiplier chacune pour aligner le nombre d'électrons échangés, au plus petit commun multiple de $2$ et $3$, soit $6$.
+        steps:
+          - math: '2\,Cl^-_{(aq)} \rightleftharpoons Cl_{2(g)} + 2\,e^-'
+            note: "A l'anode (électrode de graphite) : oxydation des ions chlorure."
+          - math: 'Au^{3+}_{(aq)} + 3\,e^- \rightleftharpoons Au_{(s)}'
+            note: "A la cathode (plaque de cuivre) : réduction des ions or (III), dépôt d'or métal."
+          - math: '\left(2\,Cl^-_{(aq)} \rightleftharpoons Cl_{2(g)} + 2\,e^-\right)\times 3 \qquad \left(Au^{3+}_{(aq)} + 3\,e^- \rightleftharpoons Au_{(s)}\right)\times 2'
+            note: "PPCM(2,3) = 6 électrons : on multiplie chaque demi-equation pour aligner le nombre d'électrons echanges avant de sommer."
+          - math: '\boxed{2\,Au^{3+}_{(aq)} + 6\,Cl^-_{(aq)} \rightarrow 2\,Au_{(s)} + 3\,Cl_{2(g)}}'
+            note: "Bilan : les 6 électrons de chaque cote s'eliminent."
+      - id: q3
+        stem: |-
+          **(0,75 pt)** Trouver, en minutes (min), la durée $\Delta t$ nécessaire au dépôt d'une masse d'or $m(\text{Au}) = 0{,}031\ \text{g}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On remonte la chaîne du chapitre 5 : masse déposée $\to$ quantité de matière d'or $\to$ quantité d'électrons (via le coefficient de la demi-équation de la **cathode**, question précédente) $\to$ quantité d'électricité (loi de Faraday) $\to$ durée, à intensité constante. Le facteur qui divise ici est **3**, pas $2$ comme dans les exemples travaillés du cours (chapitre 5, dépôt de zinc) ou dans les autres entrées de cette banque (bromure de plomb, iodure de zinc, bromure de zinc) : il vient directement de $Au^{3+}+3\,e^-\rightleftharpoons Au$, la demi-équation de la cathode établie à la question précédente — jamais d'une constante à mémoriser.
+        steps:
+          - math: 'n(Au) = \frac{m(Au)}{M(Au)} = \frac{0{,}031}{197}'
+            note: "La masse d'or deposee devient une quantité de matière."
+          - math: '\boxed{n(Au) \approx 1{,}57\times10^{-4}\ \text{mol}}'
+            note: "Application numérique."
+          - math: 'n(e^-) = 3\,n(Au) \approx 3\times1{,}57\times10^{-4}'
+            note: "Chaque atome d'or depose a consomme 3 électrons (Au3+ + 3e- -> Au, question précédente) : le facteur est 3, pas 2 comme dans les autres entrées de cette banque."
+          - math: '\boxed{n(e^-) \approx 4{,}72\times10^{-4}\ \text{mol}}'
+            note: "Application numérique."
+          - math: 'Q = n(e^-)\,F \approx 4{,}72\times10^{-4}\times 9{,}65\times10^{4}'
+            note: "Quantité d'electricite, par la constante de Faraday."
+          - math: '\boxed{Q \approx 45{,}6\ \text{C}}'
+            note: "Application numérique."
+          - math: '\Delta t = \frac{Q}{I} = \frac{45{,}6}{0{,}050}'
+            note: "On isole Delta t dans Q = I.Delta t (intensité constante I = 50 mA = 0,050 A, donnée dans l'énoncé)."
+          - math: '\boxed{\Delta t \approx 911\ \text{s}}'
+            note: "Durée en secondes."
+          - math: '\Delta t \approx \frac{911}{60}'
+            note: "Conversion en minutes, demandee par l'énoncé."
+          - math: '\boxed{\Delta t \approx 15{,}2\ \text{min}}'
+            note: "Soit environ 15 min 11 s : durée courte, coherente avec une fine couche d'or et un courant faible de 50 mA."
+
+  # ── bk-2015-n-x1b — 2015 N, Exercice 1 (Première Partie) : électrolyse d'une solution de chlorure de sodium ──
+  # Voir la NOTE ÉDITORIALE en tête de fichier pour le choix du suffixe b
+  # (le suffixe x1 sans lettre est déjà pris par une pièce différente du
+  # même Exercice 1, en banque sous content/pc/etat-equilibre/bank.yaml).
+  - id: bk-2015-n-x1b
+    title: "Électrolyse d'une solution concentrée de chlorure de sodium : anode et cathode par la polarité du générateur, équations aux électrodes, et volume de dichlore par la loi de Faraday"
+    source:
+      year: 2015
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — Première Partie : électrolyse d'une solution de chlorure de sodium"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2015 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28, AlloSchool element/94472 (Exercice 1,
+        Première Partie — électrolyse d'une solution concentrée de chlorure
+        de sodium ; barème de la partie = 2,25 pt, sous-total IMPRIMÉ dans
+        le corps du sujet, page 2 (« Première Partie (2,25 points) »), sur
+        les 07 pt de l'exercice complet, dont la Deuxième Partie (4,75 pt)
+        se répartit en deux : le §1 (acide benzoïque + eau, 2,25 pt) est
+        DÉJÀ en banque sous content/pc/etat-equilibre/bank.yaml, entrée
+        bk-2015-n-x1 ; le §2 (estérification, 2,50 pt) est transcrit sous
+        content/pc/esterification-hydrolyse/bank.yaml, entrée
+        bk-2015-n-x1c — pas de double comptage entre les trois entrées.
+        CHOIX DE L'`id` : ce sujet numérote ses exercices (Ex 1 à Ex 4),
+        contrairement à PC 2010 et 2012, qui n'en numérotent aucun ; le
+        suffixe -x1 SANS lettre est déjà pris par `bk-2015-n-x1`
+        (Deuxième Partie, §1), qui vivait en banque avant que cette
+        campagne ne transcrive le reste du sujet. Cette entrée-ci, qui
+        transcrit la PREMIÈRE Partie de l'exercice (physiquement la
+        première sur le scan, mais la deuxième pièce entrée en banque
+        puisque x1 était déjà pris), porte donc le suffixe b — même
+        convention que bk-2010-n-x4b/x4c ou bk-2022-r-x3b/x3c ailleurs
+        dans ce corpus, pour un exercice réparti entre plusieurs notions
+        (docs/grounding/known-issues.md K-7 bis). Barème recompté par
+        appariement marge↔question sur le scan : 0,5+0,75+1 = 2,25 pt,
+        conforme au sous-total imprimé. Transcription vérifiée par une
+        passe adversariale indépendante (2026-08-28,
+        docs/sujets/_incoming/pc-2015-n.md, statut « VÉRIFIÉ — clearé pour
+        conversion ») : 5 contrôles de provenance (dont un cinquième,
+        inédit, comparant les trois exemplaires byte-identiques servis par
+        course-421/422/423), figure re-mesurée par analyse en composantes
+        connexes sur le bitmap natif (le `+` du générateur est à GAUCHE du
+        cercle, relié à l'électrode (B) ; le `−` à DROITE, relié à
+        l'électrode (A) — topologie du fil tracée ligne par ligne, pas
+        devinée), et 27 questions du sujet entier re-dérivées, dont les
+        trois de ce bloc. Physique re-dérivée ici, conforme à la source :
+        $Q = I\Delta t = 3\times1500 = 4500$ C $\Rightarrow n(e^-) =
+        Q/\mathcal{F} \approx 4{,}66\times10^{-2}$ mol $\Rightarrow
+        n(Cl_2) = n(e^-)/2 \approx 2{,}33\times10^{-2}$ mol $\Rightarrow
+        V(Cl_2) = n(Cl_2)\times V_m \approx 0{,}583$ L — aucune divergence
+        avec la source.
+    intro: |-
+      **Électrolyse d'une solution concentrée de chlorure de sodium (examen national, session normale 2015, Exercice 1 — Première Partie, 2,25 points).**
+
+      L'électrolyse permet d'obtenir des gaz d'une grande pureté.
+
+      On réalise l'électrolyse d'une solution concentrée de chlorure de sodium $(\text{Na}^+_{(aq)} + \text{Cl}^-_{(aq)})$ : on obtient un dégagement de dichlore au voisinage de l'une des électrodes, et un dégagement de dihydrogène au voisinage de l'autre électrode ; de plus, le milieu réactionnel devient basique au cours de la transformation chimique.
+
+      **Données :**
+      - Les couples intervenant dans la transformation chimique : $(\text{H}_2\text{O}_{(\ell)}/\text{H}_{2(g)})$ et $(\text{Cl}_{2(g)}/\text{Cl}^-_{(aq)})$ ;
+      - Le faraday : $\mathcal{F} = 9{,}65\times10^{4}\ \text{C.mol}^{-1}$ ;
+      - Le volume molaire dans les conditions de l'expérience : $V_m = 25{,}0\ \text{L.mol}^{-1}$.
+
+      **Figure (schéma du dispositif, sans numéro imprimé).** Un tube en U contient la solution. En haut, un générateur — un cercle traversé par le fil du circuit — porte le signe $+$ à sa **gauche** et le signe $-$ à sa **droite**. Le fil descend de chaque côté vers une électrode : celle de gauche, reliée à la borne $+$, porte l'étiquette « Électrode (B) » ; celle de droite, reliée à la borne $-$, porte l'étiquette « Électrode (A) ». Chaque branche du tube porte, en haut, une sortie de gaz (« Sortie du gaz ») — le dessin ne dit pas quel gaz sort de quel côté, c'est précisément ce que les questions 1 et 2 établissent. En bas, une légende désigne la « Solution concentrée de chlorure de sodium ».
+    questions:
+      - id: q1
+        part: "Première Partie — Électrolyse d'une solution de chlorure de sodium"
+        stem: |-
+          **1-** (0,5 pt) Déterminer laquelle, parmi les électrodes (A) et (B), joue le rôle de l'anode, et celle qui joue le rôle de la cathode.
+        reasoning: |-
+          Comme au chapitre 2, l'anode et la cathode se distinguent par le mécanisme qui s'y produit — jamais par leur position sur le papier. Mais ici, contrairement au sujet 2022 (rattrapage) de cette même banque (électrolyse de l'or, sans aucune polarité dessinée), le générateur EST représenté avec ses deux bornes : c'est donc le chapitre 3 qui tranche directement. En électrolyse, c'est le générateur qui impose la polarité, et sa borne $+$ arrache des électrons à l'électrode qu'elle alimente — ce qui y force une oxydation.
+
+          Sur la figure, le signe $+$ est à GAUCHE du cercle du générateur, et le fil de gauche rejoint l'électrode (B) ; le signe $-$ est à DROITE, et le fil de droite rejoint l'électrode (A).
+
+          L'électrode (B), reliée à la borne $+$, est donc l'**anode** (siège de l'oxydation) ; l'électrode (A), reliée à la borne $-$, est la **cathode** (siège de la réduction).
+
+          **Le piège de cette question.** Deviner la polarité au lieu de la lire : elle est bel et bien donnée sur ce sujet (contrairement au sujet 2022 (rattrapage)), et rien n'oblige la borne $+$ à être à droite ou à gauche par convention — c'est le signe imprimé à côté du cercle qui tranche, ici à gauche.
+      - id: q2
+        stem: |-
+          **2-** (0,75 pt) Écrire l'équation de la réaction ayant lieu au voisinage de chaque électrode, et l'équation bilan de cette électrolyse.
+        reasoning: |-
+          Même geste qu'au chapitre 2 : une demi-équation par électrode, dans le sens que le mécanisme impose, puis la somme équilibrée en électrons.
+
+          À l'anode (B), il faut une espèce qui CÈDE des électrons. Parmi les deux couples donnés, seul $\text{Cl}^-$ — la forme réduite du couple $\text{Cl}_2/\text{Cl}^-$ — peut le faire : il s'oxyde en dichlore, cohérent avec le dégagement de gaz observé à ce voisinage.
+
+          À la cathode (A), il faut une espèce qui CAPTE des électrons. Aucun cation métallique n'est en jeu ici (contrairement au chromage ou au dorage d'autres entrées de cette banque) : c'est l'eau elle-même, via le couple $\text{H}_2\text{O}/\text{H}_2$, qui se réduit en dihydrogène — en libérant, au passage, des ions hydroxyde $\text{HO}^-$. C'est exactement ce qui explique le second fait rapporté par l'énoncé : le milieu devient basique.
+
+          Les deux demi-équations échangent chacune $2\,e^-$ : elles s'annulent directement dans la somme, sans qu'il faille en multiplier aucune.
+
+          **Le piège de cette question.** Chercher un cation métallique à réduire à la cathode, par réflexe (c'est le cas dans la plupart des autres électrolyses de cette banque) : ici la solution ne contient que $\text{Na}^+$, un ion qui n'est PAS réductible en solution aqueuse (il ne fait partie d'aucun des deux couples donnés) — c'est l'eau du solvant qui réagit à sa place, et c'est ce détail qui produit la basicité observée.
+        steps:
+          - math: '2\,Cl^-_{(aq)} \rightleftharpoons Cl_{2(g)} + 2\,e^-'
+            note: "A l'anode (B) : oxydation des ions chlorure."
+          - math: '2\,H_2O_{(\ell)} + 2\,e^- \rightleftharpoons H_{2(g)} + 2\,HO^-_{(aq)}'
+            note: "A la cathode (A) : réduction de l'eau, libération d'ions hydroxyde - explique le milieu qui devient basique."
+          - math: '\boxed{2\,H_2O_{(\ell)} + 2\,Cl^-_{(aq)} \rightarrow H_{2(g)} + Cl_{2(g)} + 2\,HO^-_{(aq)}}'
+            note: "Bilan : les 2 électrons de chaque cote s'eliminent."
+      - id: q3
+        part: "Première Partie — Loi de Faraday : volume de dichlore"
+        stem: |-
+          **3-** (1 pt) Le générateur alimente le circuit avec un courant électrique d'intensité constante $I = 3\ \text{A}$. Calculer le volume du dichlore formé pendant la durée $\Delta t = 25\ \text{min}$.
+        reasoning: |-
+          On applique la chaîne du chapitre 5, dans le sens direct cette fois (contrairement au sujet 2019 ou au sujet 2023 de cette même banque, où c'était une masse ou une durée à retrouver) : le courant et la durée sont donnés, donc la quantité d'électricité $Q$ se calcule directement ; la constante de Faraday la convertit en quantité de matière d'électrons ; et la demi-équation de l'ANODE (question 2) — pas celle de la cathode, puisque c'est le dichlore, formé à l'anode, qui est demandé ici — dit que chaque molécule de $\text{Cl}_2$ mobilise deux électrons.
+
+          convertir cette quantité de matière de gaz en volume par le volume molaire $V_m$ est posé au chapitre 6 — le chapitre 5 ne chiffre que des masses déposées, jamais des volumes de gaz. C'est une relation générale de chimie ($n = V/V_m$), mobilisée ici sans qu'aucun chapitre ne l'introduise, avec le $V_m$ donné dans l'énoncé.
+        steps:
+          - math: '\Delta t = 25\ \text{min} = 25\times60 = 1500\ \text{s}'
+            note: "Conversion de la durée en secondes avant tout calcul de charge."
+          - math: 'Q = I\,\Delta t = 3\times1500 = 4500\ \text{C}'
+            note: "Quantité d'electricite debitee par le générateur, intensité constante (chapitre 5)."
+          - math: 'n(e^-) = \frac{Q}{\mathcal{F}} = \frac{4500}{9{,}65\times10^{4}}'
+            note: "Loi de Faraday : conversion de la charge en quantité de matière d'électrons."
+          - math: '\boxed{n(e^-) \approx 4{,}66\times10^{-2}\ \text{mol}}'
+            note: "Application numérique."
+          - math: 'n(Cl_2) = \frac{n(e^-)}{2} \approx \frac{4{,}66\times10^{-2}}{2}'
+            note: "2 Cl- -> Cl2 + 2 e- (question 2, demi-equation de l'anode) : deux électrons par molécule de dichlore formée."
+          - math: '\boxed{n(Cl_2) \approx 2{,}33\times10^{-2}\ \text{mol}}'
+            note: "Application numérique."
+          - math: 'V(Cl_2) = n(Cl_2)\times V_m \approx 2{,}33\times10^{-2}\times25{,}0'
+            note: "Conversion mole -> volume par le volume molaire des gaz, donne dans l'énoncé (chapitre 6, même pont que le sujet 2018)."
+          - math: '\boxed{V(Cl_2) \approx 0{,}583\ \text{L}}'
+            note: "Volume de dichlore degage pendant Delta t."
+
+  # ── bk-2011-n-x1b — 2011 N, Chimie seconde partie [imprimée « Partie I »,
+  #    S2] : argenture d'une pièce de cuivre par électrolyse ──
+  - id: bk-2011-n-x1b
+    title: "Argenture d'une pièce de cuivre par électrolyse d'une solution de nitrate d'argent : demi-équations, masse déposée par la loi de Faraday, et choix de la solution suffisante"
+    source:
+      year: 2011
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Chimie — « Partie I » [sic, seconde partie] : Étude quantitative d'une électrolyse"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2011 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28, AlloSchool element/94445 (Chimie, seconde
+        partie — argenture d'une pièce de cuivre par électrolyse d'une
+        solution de nitrate d'argent ; barème 2,50 pt (1+1+0,5), 3
+        questions, sur les 07,00 pt de l'exercice de Chimie complet, dont
+        la première partie — suivi cinétique par mesure de pression — est
+        transcrite à part sous content/pc/suivi-temporel-vitesse/bank.yaml,
+        entrée bk-2011-n-x1 ; pas de double comptage : 4,50+2,50=7,00).
+        CHOIX DE L'`id` : le suffixe `b` suit le patron déjà établi ailleurs
+        dans ce corpus pour la seconde partie d'un exercice de Chimie (ex.
+        bk-2015-n-x1b, docs/grounding/known-issues.md K-7 bis).
+        Transcription source vérifiée par une passe adversariale
+        indépendante du 2026-08-29 (docs/sujets/_incoming/pc-2011-n.md,
+        statut « VÉRIFIÉ — clearé pour conversion »), 27/27 questions du
+        sujet re-dérivées. **S2, PORTÉ MAIS NUMÉROTÉ CORRECTEMENT DANS LA
+        CARTE** : le titre imprimé par le sujet officiel pour cette partie
+        est, mot pour mot, « Partie I : Étude quantitative d'une
+        électrolyse » — la DEUXIÈME occurrence de « Partie I » dans le même
+        exercice de Chimie (la page 1 annonce pourtant bien deux volets
+        distincts, et le corrigé non officiel lui-même la retitre en
+        silence « Partie II »). Le titre ci-dessous porte la numérotation
+        VRAIE (« seconde partie »), avec cette note ; `exercise_label`
+        documente le texte tel qu'imprimé entre guillemets. **LA
+        DEMI-ÉQUATION DE CATHODE DU CORRIGÉ NON OFFICIEL EST FAUSSE** : ce
+        corrigé (TelmidTice / talamidi.com, même signature interne,
+        authentifié par MD5 mais non officiel) imprime, dans ses deux
+        exemplaires retrouvés, $Ag^+ + 2e^- \rightleftharpoons Ag$ — non
+        équilibrée en électrons — alors que sa PROPRE chaîne numérique
+        utilise $n(Ag)=n(e^-)$, soit un seul électron par atome d'argent.
+        La demi-équation correcte, utilisée ci-dessous, est $Ag^+_{(aq)} +
+        e^- \rightleftharpoons Ag_{(s)}$ ; le corrigé n'est cité que comme
+        RECOUPEMENT de valeurs (m(Ag) ≈ 1,51 g ; (S2) permet d'obtenir
+        cette masse), jamais comme source d'une équation. Coquilles de
+        langue reproduites verbatim, non corrigées (G7 « complétement »
+        pour « complètement » ; T1 doubles espaces) — voir
+        docs/sujets/_incoming/pc-2011-n.md §9 pour le registre complet.
+    intro: |-
+      **Argenture d'une pièce de cuivre par électrolyse (examen national, session normale 2011 — Chimie, seconde partie, 2,50 points sur les 7,00 de l'exercice complet).**
+
+      *(Le sujet officiel imprime le titre de cette partie « Partie I : Étude quantitative d'une électrolyse » — la DEUXIÈME occurrence de « Partie I » dans le même exercice de Chimie ; c'est un défaut du sujet, consigné, la numérotation ci-dessus est la vraie.)*
+
+      *La première partie de cet exercice — le suivi cinétique de l'action de l'acide sulfurique sur le zinc par mesure de pression — est indépendante et traitée à part, sous la notion « Suivi temporel d'une transformation » (entrée du sujet 2011). Rien de ce qui suit n'en dépend.*
+
+      La galvanisation est l'une des applications industrielles de l'électrolyse, visant à recouvrir un métal par une couche fine d'un autre métal, dans un but de protection ou d'esthétique.
+
+      Le but de cet exercice est l'étude de l'opération d'argenture d'une pièce de cuivre à l'aide de l'électrolyse.
+
+      **Données :**
+      - Les couples intervenants : $\left(O_{2(g)}/H_2O_{(\ell)}\right)$ et $\left(Ag^+_{(aq)}/Ag_{(s)}\right)$ ;
+      - $1\ \mathcal{F} = 96500\ \text{C.mol}^{-1}$ ;
+      - La masse molaire atomique de l'argent : $M(Ag) = 108\ \text{g.mol}^{-1}$.
+
+      On immerge complétement *(« complétement » tel qu'imprimé, pour « complètement ».)* une plaque de cuivre dans une solution $(S)$ de nitrate d'argent $\left(Ag^+_{(aq)} + NO_3^{-}{}_{(aq)}\right)$ de concentration molaire $C$ et de volume $V=0{,}5\ \text{L}$. On relie la plaque par un fil conducteur à l'un des pôles d'un générateur électrique $G$, dont l'autre pôle est relié à une électrode en graphite (figure 2). Après la fermeture de l'interrupteur $K$, le générateur $G$ alimente, pendant $\Delta t = 45\ \text{min}$, le circuit par un courant d'intensité constante $I=0{,}5\ \text{A}$. On obtient un dégagement du dioxygène $O_2$ au voisinage de l'électrode de graphite et un dépôt d'argent de façon uniforme sur l'autre électrode.
+
+      **Figure 2 (schéma du dispositif).** Un générateur $G$ (cercle, en haut au centre), deux fils descendant de part et d'autre — AUCUNE polarité $+/-$ n'est marquée sur $G$. Branche de gauche : interrupteur $K$ (ouvert), puis une électrode rectangulaire blanche, non hachurée, partiellement immergée, étiquetée « Plaque de cuivre ». Branche de droite : une électrode rectangulaire hachurée, plus grande, immergée, étiquetée « Électrode de graphite ». Le bécher contient la « Solution de nitrate d'argent ».
+    questions:
+      - id: q1
+        stem: |-
+          **(1 pt)** Écrire la demi-équation modélisant la transformation ayant lieu au voisinage de chaque électrode.
+        reasoning: |-
+          Comme au chapitre 2 : on décide d'abord OXYDATION ou RÉDUCTION à chaque électrode, à partir de ce que l'énoncé OBSERVE — aucune polarité n'est marquée sur le générateur $G$ (figure 2), donc rien à lire de ce côté-là, exactement comme pour le sujet 2018 dans cette même banque. Un dépôt de métal à partir d'un ion en solution est une RÉDUCTION : l'énoncé dit que l'argent se dépose sur la plaque de cuivre, donc c'est là que $Ag^+$ capte un électron pour redevenir $Ag$ métal — la plaque de cuivre est la cathode. Un dégagement de dioxygène au voisinage de l'électrode de graphite est une OXYDATION de l'eau (seul couple disponible pour l'oxygène dans les données) — l'électrode de graphite est l'anode.
+        steps:
+          - math: 'Ag^+_{(aq)} + e^- \rightleftharpoons Ag_{(s)}'
+            note: "Cathode = plaque de cuivre : réduction des ions argent, un seul électron par atome depose."
+          - math: '2\,H_2O_{(\ell)} \rightleftharpoons O_{2(g)} + 4\,H^+_{(aq)} + 4\,e^-'
+            note: "Anode = électrode de graphite : oxydation de l'eau, dégagement de dioxygène."
+      - id: q2
+        stem: |-
+          **(1 pt)** Trouver l'expression de la masse $m(Ag)$ d'argent formé en fonction de : $I$, $\Delta t$, $M(Ag)$ et $\mathcal{F}$. Calculer sa valeur.
+        reasoning: |-
+          La chaîne du chapitre 5, dans le sens direct : le courant et la durée donnent la quantité d'électricité $Q$ ; la constante de Faraday la convertit en quantité de matière d'électrons ; et la demi-équation de la cathode (question 1) dit qu'un seul électron dépose un atome d'argent — contrairement au zinc ou au plomb d'autres sujets de cette banque, où il en fallait deux.
+        steps:
+          - math: 'Q = I\,\Delta t \qquad n(e^-) = \frac{Q}{\mathcal{F}} = \frac{I\,\Delta t}{\mathcal{F}}'
+            note: "Quantité d'electricite puis quantité de matière d'électrons, loi de Faraday (chapitre 5)."
+          - math: 'n(Ag) = n(e^-) \quad \text{(un seul électron par atome d argent, question 1)}'
+            note: "Coefficient 1 dans la demi-equation de cathode : n(Ag) = n(e-), pas n(e-)/2."
+          - math: '\boxed{m(Ag) = n(Ag)\times M(Ag) = \frac{I\,\Delta t\,M(Ag)}{\mathcal{F}}}'
+            note: "Expression littérale demandee."
+          - math: '\Delta t = 45\ \text{min} = 2700\ \text{s}'
+            note: "Conversion de la durée en secondes avant application numérique."
+          - math: 'n(e^-) = \frac{0{,}5\times2700}{96500} \approx 1{,}40\times10^{-2}\ \text{mol}'
+            note: "Application numérique de la loi de Faraday."
+          - math: '\boxed{m(Ag) = 1{,}40\times10^{-2}\times108 \approx 1{,}51\ \text{g}}'
+            note: "Masse d'argent deposee pendant Delta t."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** On dispose de deux solutions $(S_1)$ et $(S_2)$ de nitrate d'argent, de concentrations respectives $C_1 = 1{,}8\times10^{-2}\ \text{mol.L}^{-1}$ et $C_2 = 3\times10^{-2}\ \text{mol.L}^{-1}$ et de même volume $V = 0{,}5\ \text{L}$. Déterminer parmi ces deux solutions celle qui permet d'obtenir la masse $m(Ag)$.
+        reasoning: |-
+          aucun chapitre de cette leçon ne compare explicitement une quantité d'ions DISPONIBLE à une quantité NÉCESSAIRE — le chapitre 5 suppose toujours assez de réactif en solution. Le principe reste celui d'un réactif limitant (déjà vu ailleurs dans le corpus, ex. « Suivi temporel d'une transformation — vitesse de réaction ») : une solution ne peut fournir le dépôt calculé à la question 2 que si elle contient AU MOINS $n(Ag) \approx 1{,}40\times10^{-2}\ \text{mol}$ d'ions $Ag^+$ — sans quoi la solution s'épuise avant la fin des $\Delta t = 45\ \text{min}$, et le dépôt réel s'arrête plus tôt, avec une masse plus faible que $m(Ag)$.
+        steps:
+          - math: 'n_1(Ag^+) = C_1\times V = 1{,}8\times10^{-2}\times0{,}5 = 9{,}0\times10^{-3}\ \text{mol}'
+            note: "Quantité d'ions Ag+ disponible dans (S1)."
+          - math: '9{,}0\times10^{-3} < 1{,}40\times10^{-2} \implies (S_1)\ \text{insuffisante\,: dépôt limite a } 9{,}0\times10^{-3}\times108 \approx 0{,}972\ \text{g}'
+            note: "(S1) n'a pas assez d'ions Ag+ pour soutenir le dépôt complet calcule a la question 2."
+          - math: 'n_2(Ag^+) = C_2\times V = 3\times10^{-2}\times0{,}5 = 1{,}5\times10^{-2}\ \text{mol}'
+            note: "Quantité d'ions Ag+ disponible dans (S2)."
+          - math: '1{,}5\times10^{-2} > 1{,}40\times10^{-2} \implies (S_2)\ \text{suffisante\,: jusqu a } 1{,}5\times10^{-2}\times108 \approx 1{,}62\ \text{g}'
+            note: "(S2) contient plus d'ions Ag+ que nécessaire : le dépôt complet m(Ag) est atteignable, avec des ions restants."
+          - math: '\boxed{(S_2)\ \text{permet d obtenir la masse } m(Ag) \approx 1{,}51\ \text{g}}'
+            note: "Réponse : (S2), seule des deux a fournir assez d'ions Ag+."
+
+  # ── bk-2013-r-x1 — 2013 R, Chimie, Première partie : électrolyse d'une solution de chlorure de nickel II ──
+  #
+  # NOTE ÉDITORIALE — bk-2013-r-x1 (2026-09-04, ajout). Sujet SPC 2013
+  # SESSION DE RATTRAPAGE, code d'examen RS28, converti depuis
+  # docs/sujets/_incoming/pc-2013-r.md — statut « ✅ VÉRIFIÉ », passe
+  # adversariale indépendante close le 2026-09-03 : sept blocs sur sept,
+  # 33/33 questions re-dérivées et résolubles, barème 20,00 recompté par
+  # QUATRE chemins (marge française par coordonnées, compte des questions,
+  # sous-totaux imprimés, marge arabe relue au rendu) plus un cinquième
+  # instrument (OCR de la seule colonne de marge, jeu de caractères
+  # restreint aux chiffres) — 33 mentions, 20,00, valeur par valeur.
+  #
+  # CHOIX DE L'`id`, ET POURQUOI. Le sujet NE NUMÉROTE AUCUN exercice : sa
+  # page 1 écrit « Le sujet se compose de quatre exercices : Un exercice de
+  # chimie et trois exercices de physique », et le corps les introduit par
+  # leur domaine (Chimie, Physique nucléaire, Electricité, Mécanique),
+  # jamais par « Exercice N ». Les identifiants encodent donc la POSITION
+  # SUR LA COPIE (convention K-7 bis) — Chimie = x1, et ses trois parties
+  # portent x1 / x1b / x1c. Les `exercise_label` sont écrits FIDÈLES à ce
+  # que le sujet imprime, sans numéro inventé : depuis le correctif du
+  # 2026-09-03, `lib/examens.ts` lit la position sur l'identifiant dès
+  # qu'aucun libellé de l'épreuve ne porte « Exercice N » (`numeroDepuisId`),
+  # de sorte que l'épreuve s'ordonne et se compte correctement — quatre
+  # exercices, dans l'ordre Chimie / nucléaire / électricité / mécanique.
+  #
+  # RÉPARTITION DU BARÈME (aucun double comptage). L'exercice de Chimie
+  # vaut 07,00 pt imprimés = 2,00 (cette entrée, électrolyse) + 2,25
+  # (bk-2013-r-x1b, content/pc/reactions-acido-basiques/bank.yaml) + 2,75
+  # (bk-2013-r-x1c, content/pc/esterification-hydrolyse/bank.yaml). Les
+  # sept entrées du sujet totalisent 2,00 + 2,25 + 2,75 + 2,50 + 2,25 +
+  # 2,75 + 5,50 = 20,00 exactement.
+  #
+  # DÉFAUT DE L'ÉDITION OFFICIELLE FRANÇAISE, DÉCLARÉ ET CORRIGÉ ICI (D1).
+  # L'édition française de ce sujet est MINISTÉRIELLE — établie par trois
+  # preuves refaites : pied de page vide sur 6 pages sur 6 (aucun crédit de
+  # traducteur), libellé d'époque « (الترجمة الفرنسية) » sans le cadre
+  # anachronique « المسالك الدولية », et surtout le code d'examen RS28
+  # encadré, imprimé À L'IDENTIQUE dans les DEUX cartouches. Un écart
+  # français/arabe n'est donc PAS un artefact de traduction professorale :
+  # c'est un défaut du document OFFICIEL servi aux élèves francophones. Le
+  # document officiel imprime, dans ses données, « La masse molaire du
+  # cuivre : M(Ni) = 58,7 g.mol⁻¹ » — le mot est faux (58,7 g/mol est la
+  # masse molaire du NICKEL ; celle du cuivre vaut 63,5), le symbole et la
+  # valeur sont justes, et l'original arabe écrit bien « الكتلة المولية
+  # للنيكل » = « la masse molaire du nickel ». Aucune question n'en devient
+  # insoluble. L'entrée écrit « nickel » et le déclare au point d'usage.
+  - id: bk-2013-r-x1
+    title: "Électrolyse d'une solution de chlorure de nickel II : les deux couples mis en jeu, les équations aux électrodes et la masse de nickel déposée"
+    source:
+      year: 2013
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Chimie — Première partie : Électrolyse d'une solution de chlorure de Nickel II"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2013 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code d'examen RS28 (durée 3 h, coefficient 7),
+        AlloSchool element/94461 (édition française, cours course-422 ;
+        exemplaires jumeaux 94460 / 94462, upload-70329) ; original arabe
+        element/39382 et son corrigé element/39383 (cours arabophone
+        course-311). Chimie, Première partie — électrolyse d'une solution
+        de chlorure de nickel II ; barème 2,00 pt (0,5 + 0,75 + 0,75),
+        3 questions, sur les 07,00 pt imprimés de l'exercice de Chimie
+        complet. RÉPARTITION SANS DOUBLE COMPTAGE : 2,00 (cette entrée) +
+        2,25 (bk-2013-r-x1b, content/pc/reactions-acido-basiques/bank.yaml,
+        réaction de l'acide méthanoïque avec l'eau) + 2,75 (bk-2013-r-x1c,
+        content/pc/esterification-hydrolyse/bank.yaml, synthèse du
+        méthanoate d'éthyle) = 7,00, le sous-total imprimé « Chimie :
+        (07 points) ». Source vérifiée par une passe adversariale
+        indépendante du 2026-09-03 (docs/sujets/_incoming/pc-2013-r.md,
+        statut « ✅ VÉRIFIÉ », 7 blocs sur 7) : re-fetch complet des neuf
+        fichiers avec double téléchargement et comparaison octet à octet,
+        barème recompté par quatre chemins (20,00 chaque fois, 33 mentions
+        pour 33 questions), 33/33 questions re-dérivées — ici m = 0,5474 g.
+        L'ÉDITION FRANÇAISE EST MINISTÉRIELLE (code RS28 encadré, imprimé à
+        l'identique dans les deux cartouches ; pieds de page vides sur 6/6 ;
+        aucun crédit de traducteur) : les écarts français/arabe sont donc
+        des défauts du DOCUMENT OFFICIEL francophone, jamais des artefacts
+        de traduction professorale. DÉFAUT DÉCLARÉ ET RÉPARÉ (D1) : le
+        document officiel imprime « La masse molaire du cuivre :
+        M(Ni) = 58,7 g.mol⁻¹ » — terme faux, l'arabe écrit « du nickel » et
+        58,7 g/mol EST la masse molaire du nickel (celle du cuivre vaut
+        63,5) ; le symbole et la valeur imprimés sont justes, et aucune
+        question n'en devient insoluble. L'entrée écrit « nickel » et
+        déclare la correction dans les données. TRAIT SYSTÉMATIQUE DE
+        L'ÉDITION (T7) : « Nickel » porte la majuscule à ses 7 occurrences
+        et « nickel » minuscule n'apparaît jamais — l'entrée applique
+        l'orthographe française (nom commun) sans prétendre « corriger » le
+        sujet ; l'`exercise_label` conserve la graphie imprimée. Coquilles
+        de langue reproduites verbatim, non réparées : « industrièl »,
+        « immérgées », « les couples (Oxydant/Réducteur), intervenants »
+        (participe présent accordé + virgule parasite), « et dégagement du
+        dichlore » (article manquant) — registre complet en
+        docs/sujets/_incoming/pc-2013-r.md §5.1 et V.9. LE CORRIGÉ ARABE
+        N'EST QU'UN TÉMOIN DE VALEURS, JAMAIS UN ARBITRE (K-8) : la passe
+        lui a trouvé quatre défauts de raisonnement documentés, et sa
+        partie électrolyse n'a été lue qu'en survol — aucune valeur de
+        cette entrée n'en provient.
+    # DÉFAUT DE L'ÉDITION OFFICIELLE, DÉCLARÉ ET RÉPARÉ ICI (D1), 2026-09-04.
+    # Le document officiel francophone imprime, mot pour mot : « La masse
+    # molaire du cuivre : M(Ni) = 58,7 g.mol-1 ». Le MOT est faux : 58,7
+    # g/mol est la masse molaire du NICKEL (celle du cuivre vaut 63,5), et
+    # l'original arabe RS28 écrit bien « الكتلة المولية للنيكل », « la masse
+    # molaire du nickel ». Le symbole M(Ni) et la valeur 58,7 imprimés sont,
+    # eux, corrects, et c'est le nickel que la question 3 demande de peser :
+    # aucune question ne devient insoluble, et la réparation ne touche qu'un
+    # mot. Elle est faite ici, et déclarée, plutôt que faite en silence.
+    # IMPORTANT POUR LA CLASSIFICATION : l'édition française de ce sujet est
+    # MINISTÉRIELLE (code d'examen RS28 encadré, imprimé à l'identique dans
+    # les deux cartouches ; pieds de page vides sur les six pages ; aucun
+    # crédit de traducteur). Ce n'est donc PAS un artefact de traduction
+    # professorale — c'est un défaut de l'édition OFFICIELLE de langue
+    # française. Voir docs/sujets/_incoming/pc-2013-r.md, D1 et V.7/V.8.
+    intro: |-
+      **Électrolyse d'une solution de chlorure de nickel II (examen national, session de rattrapage 2013 — Chimie, Première partie, 2,00 points sur les 07,00 de l'exercice de Chimie).**
+
+      *Les deux autres parties du même exercice de Chimie sont indépendantes et vivent ailleurs : la réaction de l'acide méthanoïque avec l'eau (2,25 pt) sous « Réactions acido-basiques » (entrée du sujet 2013), et la synthèse du méthanoate d'éthyle (2,75 pt) sous « Estérification et hydrolyse » (entrée du sujet 2013). Rien de ce qui suit n'en dépend ; 2,00 + 2,25 + 2,75 = 7,00, le barème imprimé.*
+
+      L'électrolyse a plusieurs applications dans le domaine industrièl *(« industrièl » tel qu'imprimé, pour « industriel »)*, en particulier la synthèse de quelques métaux et gaz. Le but de cet exercice est la synthèse du métal nickel par la technique d'électrolyse.
+
+      **Données :**
+      - La masse molaire du **nickel**
+           : $M(\text{Ni}) = 58{,}7\ \text{g.mol}^{-1}$ ;
+      - La constante de Faraday : $\mathcal{F} = 9{,}65\times10^{4}\ \text{C.mol}^{-1}$. *(Le sujet compose ce symbole en écriture calligraphique — notation d'époque, pas un glyphe cassé.)*
+
+      Pour produire le métal nickel, on réalise l'électrolyse d'une solution de chlorure de nickel II de formule $\left(\text{Ni}^{2+}_{(aq)} + 2\,\text{C}\ell^{-}_{(aq)}\right)$. *(Le chlore est noté $\text{C}\ell$ dans les deux éditions du sujet : c'est la convention marocaine, à reproduire et non à « corriger ».)*
+
+      On verse cette solution dans un électrolyseur en forme de U, et on y fait circuler, entre deux électrodes immérgées *(sic, pour « immergées »)* dans la solution, un courant électrique continu, d'intensité constante $I = 0{,}5\ \text{A}$, pendant une durée d'une heure ($\Delta t = 1\ \text{h}$).
+
+      La cathode est en platine, et l'anode en graphite. On constate, au cours de l'électrolyse, un dépôt de nickel sur la cathode et dégagement du dichlore au voisinage de l'anode.
+    questions:
+      - id: q1
+        part: "Chimie, Première partie — Électrolyse d'une solution de chlorure de nickel II"
+        stem: |-
+          **1-** (0,5 pt) Préciser les couples (Oxydant/Réducteur), intervenants dans cette électrolyse. *(« intervenants » et la virgule qui le précède sont tels qu'imprimés — le participe présent est invariable, et la virgule est parasite.)*
+        reasoning: |-
+          C'est le geste du chapitre 2, et il se fait **sans regarder la polarité du générateur** : l'énoncé n'en donne aucune, mais il donne mieux — il dit ce qu'on **observe** à chaque électrode.
+
+          - Sur la **cathode** (en platine), il se forme un **dépôt de nickel métallique**. Un ion métallique qui redevient métal a **gagné** des électrons : c'est une **réduction**, et le couple qui la porte est $\left(\text{Ni}^{2+}_{(aq)}/\text{Ni}_{(s)}\right)$.
+          - Au voisinage de l'**anode** (en graphite), il se **dégage du dichlore**. L'ion chlorure de la solution a **perdu** un électron pour devenir $\text{C}\ell_2$ : c'est une **oxydation**, et le couple est $\left(\text{C}\ell_{2(g)}/\text{C}\ell^{-}_{(aq)}\right)$.
+
+          Le nom des deux électrodes suit alors le chapitre 3, et il est le même dans une pile et dans un électrolyseur : **la cathode est le siège de la réduction, l'anode celui de l'oxydation**. Ce qui s'inverse entre pile et électrolyse, c'est la **polarité** — dans un électrolyseur, l'anode est reliée à la borne **+** du générateur et la cathode à la borne **−** —, jamais la définition.
+
+          **Le piège de cette question.** Chercher la polarité pour décider qui est la cathode : elle n'est pas donnée ici, et il n'en faut pas. L'observation chimique suffit, et c'est toujours elle qui est la plus sûre — un dépôt de métal est une réduction, un dégagement de dihalogène à partir de son ion est une oxydation.
+      - id: q2
+        stem: |-
+          **2-** (0,75 pt) Écrire l'équation modélisant la réaction ayant lieu au voisinage de chaque électrode, et l'équation bilan modélisant cette transformation. *(« Écrire », E majuscule non accentué, tel qu'imprimé.)*
+        reasoning: |-
+          On écrit chaque demi-équation dans le sens où elle a réellement lieu (chapitre 2), puis on les additionne en **égalisant les électrons** : c'est cette égalisation qui donne le bilan, et elle est ici immédiate parce que les deux demi-équations mettent en jeu **deux** électrons chacune.
+
+          À la cathode, la réduction du cation nickel consomme deux électrons par atome déposé. À l'anode, l'oxydation de deux ions chlorure en libère deux et forme une molécule de dichlore. Les deux nombres coïncident : on somme membre à membre, les électrons disparaissent, et il reste le bilan.
+
+          **Contrôle gratuit sur le bilan.** À gauche comme à droite, on compte un nickel, deux chlores, et une charge totale nulle ($+2 - 2 = 0$ à gauche, $0$ à droite). Une équation bilan d'électrolyse qui ne s'équilibre pas en charge est fausse avant même d'être lue.
+        steps:
+          - math: '\text{Ni}^{2+}_{(aq)} + 2\,e^{-} \rightarrow \text{Ni}_{(s)}'
+            note: "Cathode (en platine) : réduction des ions nickel II, deux électrons par atome depose."
+          - math: '2\,\text{C}\ell^{-}_{(aq)} \rightarrow \text{C}\ell_{2(g)} + 2\,e^{-}'
+            note: "Anode (en graphite) : oxydation des ions chlorure, dégagement de dichlore."
+          - math: '\boxed{\text{Ni}^{2+}_{(aq)} + 2\,\text{C}\ell^{-}_{(aq)} \rightarrow \text{Ni}_{(s)} + \text{C}\ell_{2(g)}}'
+            note: "Équation bilan : les deux demi-equations mettent en jeu deux électrons chacune, la somme les elimine."
+      - id: q3
+        stem: |-
+          **3-** (0,75 pt) Trouver la masse $m$ du dépôt du métal nickel ainsi produit.
+        reasoning: |-
+          C'est la chaîne du chapitre 5, prise dans le sens direct — et c'est exactement la même loi de Faraday que dans une pile, appliquée à l'envers : ici c'est le générateur qui impose la quantité d'électricité, et la chimie qui suit.
+
+          Trois maillons, dans cet ordre :
+
+          1. le courant et la durée donnent la **quantité d'électricité** $Q = I\,\Delta t$ ;
+          2. la constante de Faraday la convertit en **quantité de matière d'électrons**, $n(e^-) = Q/\mathcal{F}$ ;
+          3. la **demi-équation de la cathode** (question 2) dit combien d'électrons il faut par atome déposé — **deux** ici, pas un : $n(\text{Ni}) = n(e^-)/2$.
+
+          Ce facteur $2$ est le seul endroit où l'on peut se tromper sans que le calcul proteste : il ne vient pas de la loi de Faraday, mais de la demi-équation qu'on vient d'écrire.
+
+          **Le piège d'unité.** $\Delta t$ est donné en heures et $\mathcal{F}$ est en coulombs par mole : il faut passer en **secondes** avant tout, sans quoi la masse sort 3 600 fois trop petite.
+        steps:
+          - math: '\Delta t = 1\ \text{h} = 3600\ \text{s}'
+            note: "Conversion préalable : la constante de Faraday est en C par mole, donc le temps doit être en secondes."
+          - math: 'Q = I\,\Delta t = 0{,}5\times 3600 = 1800\ \text{C}'
+            note: "Quantité d'electricite debitee pendant l'électrolyse (chapitre 5)."
+          - math: 'n(e^-) = \frac{Q}{\mathcal{F}} = \frac{1800}{9{,}65\times10^{4}} \approx 1{,}865\times10^{-2}\ \text{mol}'
+            note: "Quantité de matière d'électrons echanges, loi de Faraday."
+          - math: 'n(\text{Ni}) = \frac{n(e^-)}{2} \approx 9{,}33\times10^{-3}\ \text{mol}'
+            note: "Deux électrons par atome depose, d'après la demi-equation de cathode écrite a la question 2."
+          - math: '\boxed{m = \frac{I\,\Delta t}{2\,\mathcal{F}}\,M(\text{Ni}) = \frac{0{,}5\times3600}{2\times9{,}65\times10^{4}}\times 58{,}7 \approx 0{,}547\ \text{g}}'
+            note: "Masse de nickel deposee, environ 0,55 g. La valeur re-derivee par la passe de vérification est 0,5474 g."
+
+  # ── bk-2012-r-x1 — 2012 R, Chimie, Première partie : électrolyse d'une solution de bromure de cuivre II ──
+  #
+  # NOTE ÉDITORIALE — bk-2012-r-x1 (2026-09-04, ajout). Sujet SPC 2012
+  # SESSION DE RATTRAPAGE, code d'examen RS28, converti depuis
+  # docs/sujets/_incoming/pc-2012-r.md — statut « ✅ VÉRIFIÉ », vérifié en
+  # DEUX passes : une passe adversariale du 2026-09-03 (sections V.1–V.14,
+  # tuée par une limite de session) puis une CLÔTURE indépendante du
+  # 2026-09-04 qui n'a rien contresigné sur parole — elle a re-téléchargé
+  # les fichiers et REJOUÉ elle-même tout ce dont dépend le statut d'un
+  # bloc : le barème du bloc, les valeurs de figure qu'il publie, les
+  # défauts qui le concernent. Six blocs sur six signés, 31/31 questions
+  # re-dérivées et résolubles, barème 20,00 par CINQ chemins (dont deux
+  # refaits à la clôture, sur les deux éditions).
+  #
+  # CHOIX DE L'`id`, ET POURQUOI. Le sujet NE NUMÉROTE AUCUN exercice — ni
+  # en français ni en arabe. Sa page 1 imprime « Le sujet se compose de
+  # quatre exercices : Un exercice de chimie et trois exercices de
+  # physique », et son corps nomme les rubriques par discipline (Chimie,
+  # Les ondes, Electricité, Mécanique / الكيمياء, الموجات, الكهرباء,
+  # الميكانيك). Les identifiants encodent donc la POSITION SUR LA COPIE
+  # (convention K-7 bis) : la Chimie est le PREMIER bloc, d'où x1, et ses
+  # deux parties portent x1 (cette entrée) et x1b. Les `exercise_label`
+  # sont écrits FIDÈLES à ce que le sujet imprime, SANS numéro inventé —
+  # depuis le correctif du 2026-09-03, `lib/examens.ts` lit la position sur
+  # l'identifiant dès qu'aucun libellé de l'épreuve ne porte « Exercice N »
+  # (`numeroDepuisId`), de sorte que l'épreuve s'ordonne Chimie / ondes /
+  # électricité / mécanique et compte QUATRE exercices. La vérification a
+  # simulé les deux issues (§ V.14) : les deux passent, et l'issue
+  # « libellés verbatim » ne coûte plus rien depuis le correctif.
+  #
+  # RÉPARTITION DU BARÈME (aucun double comptage). L'exercice de Chimie
+  # vaut 07,00 pt imprimés = 3,00 (cette entrée, électrolyse) + 4,00
+  # (bk-2012-r-x1b, content/pc/suivi-temporel-vitesse/bank.yaml, cinétique
+  # de l'hydrolyse d'un ester). Le sujet dit lui-même « Les deux parties
+  # sont indépendantes ». Les six entrées du sujet totalisent 3,00 + 4,00 +
+  # 2,50 + 3,00 + 2,00 + 5,50 = 20,00 exactement.
+  #
+  # DÉFAUT DE L'ÉDITION OFFICIELLE FRANÇAISE, DÉCLARÉ ET CORRIGÉ ICI (F4).
+  # L'édition française de ce sujet est MINISTÉRIELLE — établie par six
+  # preuves : code d'examen `RS28` imprimé au cartouche, mention d'époque
+  # « الموضوع (الترجمة الفرنسية) » sans le cadre anachronique « المسالك
+  # الدولية » de 2014+, filière et coefficient de 2012, pieds de page
+  # VIDES sur 6 pages sur 6 (aucun crédit de traducteur — l'inverse exact
+  # de PC 2010 R), colonne « Barème » miroir valeur par valeur du
+  # « سلم التنقيط » arabe, et gabarit de page 1 identique. Un écart
+  # français/arabe n'est donc PAS un artefact de traduction professorale :
+  # c'est un défaut du document OFFICIEL servi aux élèves francophones.
+  # Le bandeau de la page 2 imprime « Première partie (03 points) :
+  # Electrolyse de la solution de cuivre II. » — « bromure de » MANQUE,
+  # alors que le sommaire de la page 1 est correct et que l'original arabe
+  # écrit « برومور النحاس II » à ses TROIS occurrences. « La solution de
+  # cuivre II » ne désigne rien : c'est le contre-ion bromure qui est oxydé
+  # à l'anode. Aucune question n'en devient insoluble (le paragraphe
+  # suivant donne la formule complète). L'entrée écrit « bromure de
+  # cuivre II » et déclare la réparation au point d'usage.
+  #
+  # DÉFAUT AJOUTÉ PAR LA VÉRIFICATION (A2), REPRODUIT VERBATIM. « il se
+  # forme ainsi du dibrome Br₂(ℓ) au voisinage de E₁ ET DÉPÔT DE CUIVRE au
+  # voisinage de E₂ » — l'article manque (« et UN dépôt de cuivre »). Ni
+  # signalé ni compté par la transcription ; retrouvé dans la couche de
+  # texte ET par OCR aveugle à la clôture. Cosmétique, reproduit tel quel.
+  #
+  # ⚠️ GARDE K-8 SUR LE CORRIGÉ ARABE, POUR CE BLOC. Le corrigé arabe
+  # (element/39378, forums svt-assilah, 2014) est un TÉMOIN DE VALEURS,
+  # JAMAIS UN ARBITRE. Il corrobore le résultat (1,18 g) mais SON ÉTAPE EST
+  # FAUSSE : relu au rendu 600 dpi, il imprime
+  #   m(Cu) = (0,5 × 3600 × 63,5) / (2 × 9,65.10⁴) = 1,18 g
+  # — quotient qui vaut 0,592 g, pas 1,18 g. Il a écrit une heure et
+  # calculé deux heures (erreur C1, trouvée par la clôture, que le § 8.2 de
+  # la transcription avait recopiée avec un « ✓ »). Il écrit aussi
+  # Br₂(aq) là où l'énoncé impose Br₂(ℓ). AUCUNE VALEUR DE CETTE ENTRÉE
+  # N'EN PROVIENT : les quatre re-dérivations ont été faites avant sa
+  # lecture, et refaites à la clôture.
+  - id: bk-2012-r-x1
+    title: "Électrolyse d'une solution de bromure de cuivre II : le dispositif et ses deux électrodes, les demi-équations, le bilan, et la masse de cuivre déposée"
+    source:
+      year: 2012
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Chimie — Première partie : Électrolyse de la solution de bromure de cuivre II"
+    bareme_total: 3.0
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2012 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code d'examen RS28 (coefficient 7, durée 3 h),
+        AlloSchool element/94455 (édition française, cours course-422 ;
+        exemplaires jumeaux 94454 / 94456, upload-70323) ; original arabe
+        element/39377 et son corrigé element/39378 (cours arabophone
+        course-311). Chimie, Première partie — électrolyse d'une solution
+        de bromure de cuivre II ; barème 3,00 pt (1 + 1 + 0,25 + 0,75),
+        4 questions, sur les 07,00 pt imprimés de l'exercice de Chimie
+        complet. RÉPARTITION SANS DOUBLE COMPTAGE : 3,00 (cette entrée) +
+        4,00 (bk-2012-r-x1b, content/pc/suivi-temporel-vitesse/bank.yaml,
+        étude cinétique de l'hydrolyse d'un ester) = 7,00, le sous-total
+        imprimé « Chimie : (07 points) » ; le sujet précise lui-même « Les
+        deux parties sont indépendantes ». Source vérifiée EN DEUX PASSES
+        (docs/sujets/_incoming/pc-2012-r.md, statut « ✅ VÉRIFIÉ », 6 blocs
+        sur 6) : passe adversariale du 2026-09-03 (V.1–V.14) puis CLÔTURE
+        INDÉPENDANTE du 2026-09-04, qui a re-téléchargé les fichiers et
+        rejoué elle-même tout ce dont dépend le statut d'un bloc plutôt que
+        de contresigner sa devancière. Acquis pour ce bloc : 4 contrôles
+        anti-CDN PASS (dont un quatrième téléchargement, troisième
+        signature de client, 11/11 MD5 identiques) et 3 instruments PASS
+        (trois exemplaires francophones byte-identiques, MD5 unique
+        231eb57c15a114b5ccdceea413282810 ; matrice de corrélation PDF/JPG à
+        diagonale dominante ; profils PDF au chiffre) ; barème 20,00 par
+        cinq chemins, dont deux refaits à la clôture sur les DEUX éditions
+        — colonne française extraite par coordonnées (spans finissant avant
+        x = 80 pt, numéro de page écarté par sa police Algerian) donnant
+        1 · 1 · 0,25 · 0,75 appariés à ±5 pt aux questions 1- (y = 355,0),
+        2- (389,5), 3- (423,9), 4- (458,3), et colonne arabe « سلم التنقيط »
+        (x ≥ 528 pt) donnant les mêmes quatre valeurs dans le même ordre ;
+        31/31 questions re-dérivées deux fois — ici Q = I·Δt = 3600 C,
+        n(e⁻) = 3,731×10⁻² mol, m = 1,1845 g. AUCUNE LECTURE DE FIGURE dans
+        ce bloc : l'énoncé ne fournit aucun schéma (la question 1 demande
+        précisément à l'élève de le dessiner), et l'original arabe non plus
+        — bloc entièrement hors du périmètre K-8 côté mesures. L'ÉDITION
+        FRANÇAISE EST MINISTÉRIELLE, établie par six preuves (code RS28 au
+        cartouche, mention d'époque « (الترجمة الفرنسية) » sans le cadre
+        anachronique « المسالك الدولية », filière et coefficient de 2012,
+        pieds de page VIDES sur 6/6 rendus à 300 dpi, colonne « Barème »
+        miroir valeur par valeur de la colonne arabe, gabarit de page 1
+        identique) : les écarts français/arabe sont donc des défauts du
+        DOCUMENT OFFICIEL francophone, jamais des artefacts de traduction
+        professorale — l'inverse exact de PC 2010 R, et cela change la
+        méthode. DÉFAUT DU SUJET OFFICIEL DÉCLARÉ ET RÉPARÉ (F4) : le
+        bandeau de la page 2 imprime « Électrolyse de la solution de
+        cuivre II » — « bromure de » manque, alors que le sommaire de la
+        page 1 est correct et que l'arabe écrit « برومور النحاس II » à ses
+        trois occurrences (p. 1 y = 513,5 ; p. 2 y = 163,6 et 373,1,
+        relocalisées à la clôture, F4 retrouvé par OCR aveugle). « La
+        solution de cuivre II » ne désigne rien, le contre-ion bromure
+        étant l'espèce oxydée à l'anode ; aucune question n'en devient
+        insoluble. L'entrée écrit « bromure de cuivre II » et déclare la
+        correction au point d'usage. DÉFAUT AJOUTÉ PAR LA VÉRIFICATION
+        (A2), REPRODUIT VERBATIM ET NON RÉPARÉ : « et dépôt de cuivre »,
+        sans article — présent dans la couche de texte et dans l'OCR
+        aveugle, absent du registre de la transcription. Coquilles de
+        langue reproduites verbatim, non réparées : « téchniques »,
+        « industrièls », « industrièls. elle » (minuscule après un point,
+        restituée par OCR de la ligne isolée, la ligne entière ayant été
+        sautée par l'OCR pleine page), « demie équation », « adoptées aux
+        laboratoires », et le DOUBLE ESPACE réel « ℱ  = 9,65.10⁴ »
+        (contrôlé au caractère : deux glyphes espace distincts de largeur
+        normale) ; registre complet en docs/sujets/_incoming/pc-2012-r.md
+        § 5 et V.12. ⚠️ LE CORRIGÉ ARABE N'EST QU'UN TÉMOIN DE VALEURS,
+        JAMAIS UN ARBITRE (K-8), et ce bloc en donne la démonstration la
+        plus nette du sujet : il corrobore le résultat (1,18 g) mais SON
+        ÉTAPE EST FAUSSE — relu au rendu 600 dpi, il imprime
+        m(Cu) = (0,5 × 3600 × 63,5)/(2 × 9,65.10⁴) = 1,18 g, quotient qui
+        vaut 0,592 g et non 1,18 g : il a écrit une heure (3600 s) et
+        calculé deux heures (7200 s). C'est l'erreur C1, trouvée par la
+        clôture — la transcription avait recopié ce 3600 avec un « ✓ ».
+        Il écrit également Br₂(aq) là où l'énoncé impose Br₂(ℓ). Aucune
+        valeur de cette entrée n'en provient : les quatre re-dérivations
+        ont été faites avant sa lecture, et refaites à la clôture.
+    # DÉFAUT DU SUJET OFFICIEL, DÉCLARÉ ET RÉPARÉ ICI (F4), 2026-09-04.
+    # Le bandeau de la page 2 du document officiel francophone imprime, mot
+    # pour mot : « Première partie (03 points) : Électrolyse de la solution
+    # de cuivre II. » — les mots « bromure de » MANQUENT. Le sommaire de la
+    # page 1 du même document est, lui, correct (« Électrolyse de la
+    # solution de bromure de cuivre II »), et l'original arabe RS28 écrit
+    # « برومور النحاس II » a ses TROIS occurrences (page 1 y = 513,5 ;
+    # page 2 y = 163,6 et y = 373,1). « La solution de cuivre II » ne
+    # designe rien : c'est le contre-ion bromure qui est oxyde a l'anode, et
+    # c'est lui qui produit le dibrome que l'énoncé annonce. Aucune question
+    # n'en devient insoluble — le paragraphe suivant donne la formule
+    # complete. La reparation ne touche qu'un groupe de mots, elle est faite
+    # ici et DECLAREE plutôt que faite en silence.
+    # IMPORTANT POUR LA CLASSIFICATION : l'edition française de ce sujet est
+    # MINISTERIELLE (code d'examen RS28 au cartouche ; mention d'époque
+    # « (الترجمة الفرنسية) » sans le cadre anachronique « المسالك الدولية » ;
+    # pieds de page VIDES sur les six pages, aucun credit de traducteur ;
+    # colonne « Barème » miroir valeur par valeur de la colonne arabe). Ce
+    # n'est donc PAS un artefact de traduction professorale — c'est un
+    # défaut de l'edition OFFICIELLE de langue française. Voir
+    # docs/sujets/_incoming/pc-2012-r.md, F4 / D4 / V.7 / V.15.
+    intro: |-
+      **Électrolyse d'une solution de bromure de cuivre II (examen national, session de rattrapage 2012 — Chimie, Première partie, 3,00 points sur les 07,00 de l'exercice de Chimie).**
+
+      *L'autre partie du même exercice de Chimie est indépendante et vit ailleurs : l'étude cinétique de l'hydrolyse d'un ester (4,00 pt) sous « Suivi temporel d'une transformation — vitesse de réaction » (entrée du sujet 2012). Le sujet l'écrit lui-même — « Les deux parties sont indépendantes ». 3,00 + 4,00 = 7,00, le barème imprimé.*
+
+      **Les deux parties sont indépendantes**
+
+      L'électrolyse est l'une des principales téchniques *(sic, pour « techniques »)* adoptées aux laboratoires ou dans les domaines industrièls *(sic, pour « industriels »)*. elle *(sic — minuscule après le point)* permet la synthèse de quelques métaux, et d'autres composés chimiques utilisés dans la vie quotidienne.
+
+      Le but de cette partie de l'exercice est la synthèse du dibrome $\text{Br}_2$ et du métal cuivre par électrolyse.
+
+      **Données :**
+      - La masse molaire du cuivre : $M(\text{Cu}) = 63{,}5\ \text{g.mol}^{-1}$ ;
+      - La constante de Faraday : $\mathcal{F} = 9{,}65\times10^{4}\ \text{C.mol}^{-1}$. *(Le sujet compose ce symbole en écriture calligraphique — notation d'époque, pas un glyphe cassé ; et il imprime un double espace réel après lui, « ℱ  = », contrôlé au caractère.)*
+
+      On réalise l'électrolyse d'une solution de bromure de cuivre II de formule $\left(\text{Cu}^{2+}_{(aq)} + 2\,\text{Br}^{-}_{(aq)}\right)$ en utilisant deux électrodes $E_1$ et $E_2$ en graphite, il se forme ainsi du dibrome $\text{Br}_{2(\ell)}$ au voisinage de $E_1$ et dépôt de cuivre *(sic — « et un dépôt de cuivre » attendu ; l'article manque dans le document officiel)* au voisinage de $E_2$.
+
+      *Le sujet ne fournit AUCUN schéma pour cette partie — ni l'édition française, ni l'original arabe. C'est voulu : la première question demande précisément de le dessiner.*
+    questions:
+      - id: q1
+        part: "Chimie, Première partie — Électrolyse d'une solution de bromure de cuivre II"
+        stem: |-
+          **1-** (1 pt) Représenter le dispositif expérimental de cette électrolyse, en précisant la cathode et l'anode.
+        reasoning: |-
+          Un point sur quatre pour un dessin : ce n'est pas une question d'illustration, c'est une question de **nommage**, et tout le barème est dans les deux étiquettes.
+
+          **Ce qu'il faut dessiner** (chapitre 2) : un électrolyseur — un bécher, ou mieux un tube en U — contenant la solution de bromure de cuivre II $\left(\text{Cu}^{2+}_{(aq)} + 2\,\text{Br}^{-}_{(aq)}\right)$ ; deux électrodes de **graphite** $E_1$ et $E_2$ plongées dedans ; et, à l'extérieur, un **générateur de courant continu** qui les relie, avec un ampèremètre en série (l'énoncé impose une intensité constante $I$, c'est lui qui la fixe et la mesure). Un électrolyseur n'est pas une pile : sans le générateur, il ne se passe rien.
+
+          **Ce qui donne les deux noms, et il ne faut rien deviner.** L'énoncé dit ce qu'on **observe** à chaque électrode, et c'est strictement suffisant :
+
+          - **en $E_1$ il se forme du dibrome $\text{Br}_{2(\ell)}$.** L'ion bromure de la solution a **perdu** un électron pour devenir $\text{Br}_2$ : c'est une **oxydation**. Or l'électrode où se produit l'oxydation s'appelle l'**anode** — définition invariable, la même dans une pile et dans un électrolyseur. Donc **$E_1$ est l'ANODE**, et dans un électrolyseur elle est reliée à la borne **+** du générateur (chapitre 3) ;
+          - **en $E_2$ il se dépose du cuivre métallique.** L'ion $\text{Cu}^{2+}$ a **gagné** des électrons pour redevenir métal : c'est une **réduction**, donc **$E_2$ est la CATHODE**, reliée à la borne **−**.
+
+          **Ce qui bascule entre pile et électrolyse, et ce qui ne bascule jamais.** Ce qui bascule, c'est la **polarité** : dans une pile, l'anode est la borne − ; dans un électrolyseur, elle est reliée à la borne +. Ce qui ne bascule **jamais**, c'est la définition : *anode = oxydation, cathode = réduction*. C'est le seul énoncé qu'il faut retenir, parce que c'est le seul qui ne change pas de camp.
+
+          **Le piège de cette question.** Chercher la polarité pour décider qui est l'anode — elle n'est pas donnée ici. Il ne faut pas d'elle : l'observation chimique suffit et elle est toujours la plus sûre. Un **dégagement de dihalogène à partir de son ion** est une oxydation ; un **dépôt de métal** est une réduction. On lit l'énoncé, on nomme, et la polarité se déduit ensuite — pas l'inverse.
+      - id: q2
+        stem: |-
+          **2-** (1 pt) Écrire la demie équation *(sic, pour « demi-équation »)* modélisant la réaction ayant lieu au voisinage de chaque électrode.
+        reasoning: |-
+          Chaque demi-équation s'écrit **dans le sens où la réaction a réellement lieu** à son électrode — c'est-à-dire dans le sens que la question 1 vient d'établir, et pas dans le sens conventionnel d'un couple recopié du cours.
+
+          **À l'anode $E_1$ — oxydation des ions bromure.** Deux ions $\text{Br}^{-}$ se rassemblent pour former une molécule de dibrome, en abandonnant chacun un électron. Le couple mis en jeu est $\left(\text{Br}_{2}/\text{Br}^{-}\right)$, et l'énoncé impose l'état **liquide** pour le dibrome ($\text{Br}_{2(\ell)}$ — le dibrome est liquide à température ambiante, c'est l'un des deux seuls corps simples dans ce cas).
+
+          **À la cathode $E_2$ — réduction des ions cuivre II.** Un ion $\text{Cu}^{2+}$ capte deux électrons et se dépose en cuivre métallique. Couple $\left(\text{Cu}^{2+}/\text{Cu}\right)$.
+
+          **Le contrôle qui ne coûte rien, et qu'il faut faire à chaque fois.** Une demi-équation doit s'équilibrer **en éléments ET en charge**. À l'anode : deux brome de chaque côté, et une charge totale de $-2$ à gauche comme à droite ($2\times(-1)$ à gauche, $0 + 2\times(-1)$ à droite). À la cathode : un cuivre de chaque côté, charge $+2 - 2 = 0$ à gauche, $0$ à droite. Une demi-équation qui ne ferme pas en charge est fausse avant même d'être lue.
+
+          **Le piège de cette question.** Écrire $\text{Br}^{-} \rightarrow \text{Br} + e^{-}$, avec un atome de brome isolé. Le brome n'existe pas à l'état atomique dans ces conditions : le produit est la **molécule** $\text{Br}_2$, et c'est elle qui impose le coefficient $2$ devant $\text{Br}^{-}$ — donc **deux** électrons échangés, exactement comme à la cathode. Cette coïncidence n'est pas un hasard heureux : c'est elle qui rend le bilan de la question 3 immédiat.
+        steps:
+          - math: '\text{Anode } E_1 : \quad 2\,\text{Br}^{-}_{(aq)} \rightarrow \text{Br}_{2(\ell)} + 2\,e^{-}'
+            note: "Oxydation : c'est en E1 que se forme le dibrome, donc E1 est l'anode. Couple (Br2 / Br-)."
+          - math: '\text{Cathode } E_2 : \quad \text{Cu}^{2+}_{(aq)} + 2\,e^{-} \rightarrow \text{Cu}_{(s)}'
+            note: "Réduction : c'est en E2 que se depose le cuivre, donc E2 est la cathode. Couple (Cu2+ / Cu)."
+      - id: q3
+        stem: |-
+          **3-** (0,25 pt) En déduire l'équation bilan modélisant la transformation ayant lieu au cours de l'électrolyse.
+        reasoning: |-
+          Le mot « en déduire » dit la méthode : on ne repart de rien, on **additionne membre à membre** les deux demi-équations de la question 2, après avoir **égalisé les électrons**.
+
+          Ici l'égalisation est immédiate — les deux demi-équations mettent en jeu **deux électrons chacune**. On les somme telles quelles, les $2\,e^{-}$ se simplifient, et il reste l'équation bilan. C'est le quart de point le moins cher du sujet, à condition d'avoir écrit les deux demi-équations dans le bon sens.
+
+          **Les deux contrôles gratuits.** *En éléments* : un cuivre et deux bromes de chaque côté. *En charge* : $+2 + 2\times(-1) = 0$ à gauche, et $0$ à droite (deux corps simples, tous deux électriquement neutres). Une équation bilan d'électrolyse qui ne s'équilibre pas en charge est fausse avant d'être lue.
+
+          **Ce que cette équation raconte, et pourquoi il faut la lire.** Elle va dans le sens **inverse** de la réaction spontanée : mis en présence, du cuivre métallique et du dibrome réagiraient d'eux-mêmes pour redonner $\text{Cu}^{2+}$ et $\text{Br}^{-}$. C'est tout l'objet d'une électrolyse (chapitre 2) — le générateur **force** la transformation dans le sens que la chimie refuse, et c'est pour cela qu'on écrit ici une flèche simple, orientée par le générateur, et non un équilibre.
+        steps:
+          - math: '2\,\text{Br}^{-}_{(aq)} \rightarrow \text{Br}_{2(\ell)} + 2\,e^{-} \quad \text{(anode)}'
+            note: "Demi-equation d'oxydation, telle qu'écrite a la question 2."
+          - math: '\text{Cu}^{2+}_{(aq)} + 2\,e^{-} \rightarrow \text{Cu}_{(s)} \quad \text{(cathode)}'
+            note: "Demi-equation de réduction, telle qu'écrite a la question 2."
+          - math: '\boxed{\text{Cu}^{2+}_{(aq)} + 2\,\text{Br}^{-}_{(aq)} \longrightarrow \text{Cu}_{(s)} + \text{Br}_{2(\ell)}}'
+            note: "Somme membre a membre : les deux demi-equations échangent deux électrons chacune, la somme les elimine sans coefficient supplémentaire."
+      - id: q4
+        stem: |-
+          **4-** (0,75 pt) Un générateur alimente le circuit électrique par un courant d'intensité constante $I = 0{,}5\ \text{A}$ pendant une durée $\Delta t = 2\ \text{h}$.
+
+          Déterminer la masse $m$ du cuivre produit au cours de la durée de fonctionnement de l'électrolyseur.
+        reasoning: |-
+          C'est la chaîne du chapitre 5, prise dans le sens direct : ici c'est le générateur qui impose la quantité d'électricité, et la chimie qui suit. Trois maillons, toujours les mêmes, toujours dans cet ordre.
+
+          1. **Le courant et la durée donnent la quantité d'électricité** : $Q = I\,\Delta t$.
+          2. **La constante de Faraday la convertit en quantité de matière d'électrons** : $n(e^-) = \dfrac{Q}{\mathcal{F}}$. C'est la définition même de $\mathcal{F}$ — la charge d'une mole d'électrons.
+          3. **La demi-équation de la cathode dit combien d'électrons il faut par atome déposé.** Elle en demande **deux** ici, pas un : $n(\text{Cu}) = \dfrac{n(e^-)}{2}$.
+
+          Ce facteur $2$ est le seul endroit où l'on peut se tromper sans que le calcul proteste : il ne vient **pas** de la loi de Faraday, il vient de la demi-équation qu'on a écrite à la question 2. C'est pour cela que l'énoncé fait écrire les demi-équations avant de demander la masse.
+
+          Il ne reste qu'à multiplier par la masse molaire, et l'on peut condenser toute la chaîne en une seule formule :
+
+          $$m = n(\text{Cu})\,M(\text{Cu}) = \frac{I\,\Delta t}{2\,\mathcal{F}}\,M(\text{Cu})$$
+
+          **⚠️ Le piège d'unité, et il est ici particulièrement vicieux.** $\Delta t$ est donné en **heures** et $\mathcal{F}$ est en coulombs par mole : il faut convertir avant tout, $\Delta t = 2\ \text{h} = 7\,200\ \text{s}$. Et regarde ce que devient le numérateur une fois converti — $Q = 0{,}5 \times 7\,200 = 3\,600\ \text{C}$. **Les deux nombres, $7\,200$ et $3\,600$, se ressemblent trop** : $3\,600$ est à la fois le nombre de secondes dans une heure ET la charge en coulombs de cette électrolyse-ci. Confondre les deux — écrire $7\,200$ dans $Q$ ou $3\,600$ dans la formule finale — donne un résultat faux d'un facteur $2$ exactement, et le calcul ne proteste pas.
+
+          Ce n'est pas un piège théorique : **le corrigé non officiel de ce sujet y est tombé**. Il imprime $m(\text{Cu}) = (0{,}5 \times 3\,600 \times 63{,}5)/(2 \times 9{,}65\cdot10^{4})$ et annonce $1{,}18\ \text{g}$ — mais ce quotient-là vaut $0{,}592\ \text{g}$. Il a écrit une heure et calculé deux heures. Sa **réponse** est juste, sa **ligne** est fausse : raison de plus pour poser la conversion en toute première ligne, séparément, et de ne jamais recopier une ligne de calcul sans vérifier qu'elle ferme.
+
+          **Contrôle de vraisemblance.** $1{,}18\ \text{g}$ de cuivre pour deux heures à un demi-ampère : environ $1{,}9\cdot10^{-2}$ mole, soit une masse de l'ordre du gramme. C'est l'ordre de grandeur normal d'un dépôt de galvanoplastie de laboratoire (chapitre 6) — un résultat en kilogrammes ou en microgrammes signalerait une erreur de conversion.
+        steps:
+          - math: '\Delta t = 2\ \text{h} = 7\,200\ \text{s}'
+            note: "Conversion préalable et séparée : la constante de Faraday est en coulombs par mole, donc le temps doit être en secondes."
+          - math: 'Q = I\,\Delta t = 0{,}5 \times 7\,200 = 3\,600\ \text{C}'
+            note: "Quantité d'electricite debitee (chapitre 5). Attention : 3600 est ici une CHARGE en coulombs, pas une durée en secondes."
+          - math: 'n(e^-) = \frac{Q}{\mathcal{F}} = \frac{3\,600}{9{,}65\times10^{4}} \approx 3{,}731\times10^{-2}\ \text{mol}'
+            note: "Quantité de matière d'électrons echanges, définition même de la constante de Faraday."
+          - math: 'n(\text{Cu}) = \frac{n(e^-)}{2} \approx 1{,}865\times10^{-2}\ \text{mol}'
+            note: "Deux électrons par atome depose, d'après la demi-equation de cathode écrite a la question 2."
+          - math: '\boxed{m = \frac{I\,\Delta t}{2\,\mathcal{F}}\,M(\text{Cu}) = \frac{0{,}5 \times 7\,200 \times 63{,}5}{2 \times 9{,}65\times10^{4}} \approx 1{,}18\ \text{g}}'
+            note: "Masse de cuivre deposee : 1,1845 g exactement. Le corrige non officiel publie ce même 1,18 g mais imprime 3600 au numérateur, ou son propre quotient vaudrait 0,592 g."

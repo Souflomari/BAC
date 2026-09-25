@@ -61,8 +61,22 @@ backend/supabase/.temp/
 .gemini-image-mcp.json
 /gemini-images/
 
-# docs/build/ is DOCUMENTATION (e.g. the content pipeline), not Flutter build
-# output — re-include it after the broad **/build/ rule above would otherwise
-# swallow it. (Directory must be negated before its contents.)
-!docs/build/
-!docs/build/**
+# Manim render artifacts (videos are build artifacts, never committed)
+# NB : le motif nu `media/` a été retiré (2026-08-14). Il attrapait TOUS
+# les dossiers `media/` du dépôt, y compris `content/<notion>/media/` où
+# vivent les figures de leçon. Les figures déjà suivies n'en souffraient
+# pas (gitignore n'affecte pas un fichier suivi), donc le piège était
+# invisible : toute figure NOUVELLE était silencieusement non commitée.
+# `animations/media*/` couvre déjà l'intention d'origine.
+animations/media*/
+temp_audit/
+animations/audit/
+
+# Captures d'audit (web/shots) — ce sont des ARTEFACTS de session, pas des
+# sources : régénérables par `node scripts/shots.mjs`, 8 Mo de PNG qui
+# n'apportent rien à un clone. Détrackées le 2026-08-15.
+web/shots/
+
+# Sorties de l'audit visuel des figures (web/scripts/figure-preview.mjs) :
+# des PNG régénérables en une commande, jamais du contenu.
+.figure-preview/

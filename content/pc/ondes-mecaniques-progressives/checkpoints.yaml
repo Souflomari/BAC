@@ -1,0 +1,384 @@
+notion: ondes-mecaniques-progressives
+skill_code: pc_ondes_mecaniques_progressives
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — ondes-mecaniques-
+# progressives)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong PHYSICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT
+# altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict          (in R0)     — COMMIT gate: turns the rhetorical
+#                                         "prends position" (le bouchon) into a
+#                                         real MCQ before the reveal.
+#   cp-r1-transport        (after R1)  — rupture gate: onde transporte ÉNERGIE,
+#                                         pas MATIÈRE (l'exemple de la « ola »).
+#   cp-r3-celerite-vs-point (after R3) — rupture gate: célérité de l'onde ≠
+#                                         vitesse de va-et-vient d'un point.
+#   cp-r3-retard           (after R3)  — rupture gate: τ = d/v (rapport, unités).
+#   cp-r3-periodicite      (after R3)  — BOUNDARY gate: λ = v·T ne s'applique
+#                                         PAS à une perturbation non périodique
+#                                         (renforce la note de cadre de R1 : la
+#                                         périodicité/longueur d'onde est l'objet
+#                                         du chapitre suivant). Le décalage se
+#                                         lit avec le retard τ = d/v.
+#
+# Clone note: cp-r1-transport clones OMP-10's stem (la ola), cp-r3-retard clones
+# OMP-13's stem (τ = d/v numérique). cp-r0-predict, cp-r3-celerite-vs-point and
+# cp-r3-periodicite are original commit/boundary items (not in the end bank).
+# Distractors are curated so EVERY distractor carries a named misconception tag.
+# No end-bank tally is adjusted — inline surfacing does not double-count.
+#
+# Boundary guard: onde mécanique progressive NON périodique. Pas de longueur
+# d'onde, pas de période spatiale, pas de fréquence à ce stade (chapitre
+# suivant : ondes progressives PÉRIODIQUES). Ce qui est en jeu ici : transport
+# d'énergie sans transport de matière ; type transversal/longitudinal par
+# comparaison de deux directions ; célérité (propriété du milieu) ≠ vitesse d'un
+# point ; retard τ = d/v et y_M(t) = y_S(t−τ).
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns "prends position avant de continuer" into a real MCQ
+  #        commit before the reveal (le bouchon). Probes:
+  #        onde-transporte-matiere (la vague « pousserait » le bouchon).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [checkpoint, formative, misconception_driven, pc_ondes_mecaniques_progressives, hook_commit]
+    primary_misconception: mc.physics.pc_omp.onde-transporte-matiere
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      La vague circulaire créée par le caillou s'élargit et atteint le bouchon
+      de liège qui flotte sur l'étang. **Que va-t-il lui arriver quand la vague
+      passe sur lui ?** Engage-toi — c'est ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Poussé par la vague, il glisse sur l'eau et dérive peu à peu jusqu'au
+          bord de l'étang.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-transporte-matiere
+        feedback: |
+          Modèle détecté : « la vague pousse la matière devant elle ». C'est la
+          prédiction la plus fréquente — et la réalité va dans l'autre sens.
+          Regarde ce qu'on observe juste en dessous : le bouchon ne dérive pas,
+          il oscille presque sur place. L'eau sous lui ne voyage pas vers le
+          bord ; c'est la perturbation qui traverse l'étang, pas l'eau.
+      - id: B
+        text: |
+          Il reste parfaitement immobile : une vague ne peut rien transmettre à
+          un objet qui flotte librement à sa surface.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-sans-energie
+        feedback: |
+          Modèle détecté : « l'onde ne transmet rien ». Faux dans l'autre sens :
+          le bouchon monte et redescend, et ce mouvement exige de l'énergie —
+          que la vague lui apporte bel et bien. Une onde transporte de
+          l'énergie, même sans transporter de matière.
+      - id: C
+        text: |
+          Il monte et redescend presque sur place, puis revient à peu près à sa
+          position de départ une fois la vague passée.
+        correct: true
+        feedback: |
+          Exact — ni entraîné vers le bord, ni immobile : le bon réflexe. La
+          vraie question commence maintenant : la vague lui a bien transmis
+          quelque chose (elle l'a fait bouger), mais sans lui faire traverser
+          l'étang. **Qu'est-ce qui voyage, alors, si ce n'est pas l'eau ?**
+      - id: D
+        text: |
+          Il suit le caillou sous l'eau et finit par couler au point où la vague
+          l'atteint.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-transporte-matiere
+        feedback: |
+          Modèle détecté : on confond le caillou (qui crée la perturbation en un
+          point, puis coule) avec la perturbation elle-même (qui se relaie de
+          proche en proche jusqu'au bouchon). Ni le caillou ni l'eau ne voyagent
+          jusqu'au bouchon — seule la perturbation le fait.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-transport | placed AFTER R1
+  #        Rupture gate: transport d'ÉNERGIE sans transport de MATIÈRE
+  #        (l'exemple de la « ola »). Clone of OMP-10's stem.
+  #        Probes onde-transporte-matiere / onde-sans-energie.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-transport
+    rung: "R1"
+    habilete: utilisation
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [checkpoint, formative, misconception_driven, pc_ondes_mecaniques_progressives]
+    primary_misconception: mc.physics.pc_omp.onde-transporte-matiere
+    item_source: clone_of_OMP-10
+    lesson_placement: after_R1
+
+    stem: |
+      Lors d'une « ola » dans un stade, chaque spectateur se lève puis se
+      rassoit à sa place, dans l'ordre. Une vague semble faire le tour des
+      gradins. Qu'est-ce qui fait réellement le tour du stade ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Les spectateurs eux-mêmes se déplacent physiquement de siège en siège,
+          faisant petit à petit le tour complet de l'enceinte du stade.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-transporte-matiere
+        feedback: |
+          Modèle détecté : la matière (les spectateurs) voyagerait. Alors chacun
+          finirait dans un autre fauteuil que le sien — or tout le monde reste à
+          sa place. C'est le **mouvement**, relayé de voisin en voisin, qui fait
+          le tour, pas les personnes.
+      - id: B
+        text: |
+          Le mouvement « se lever puis se rasseoir », relayé de proche en proche
+          d'un spectateur au suivant, alors que chacun reste à sa place.
+        correct: true
+        feedback: |
+          Exact. Personne ne change de siège ; chaque spectateur revient à sa
+          position de repos. Seul le mouvement se propage, de proche en proche —
+          et avec lui l'énergie qu'il demande. C'est le mécanisme d'une onde :
+          transport d'énergie sans transport de matière.
+      - id: C
+        text: |
+          Rien ne voyage vraiment : la ola n'est qu'une illusion d'optique,
+          aucune énergie n'est transmise d'un spectateur à l'autre.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-sans-energie
+        feedback: |
+          Modèle détecté : « aucune énergie transmise ». Se lever demande un
+          effort musculaire bien réel, enchaîné de proche en proche : c'est
+          justement ce qui fait de la ola une bonne image du transport
+          d'énergie. Ce n'est pas une illusion.
+      - id: D
+        text: |
+          Une fois levé, chaque spectateur reste debout : un mouvement transmis
+          ne s'arrête plus.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-transporte-matiere
+        feedback: |
+          Modèle détecté : le point perturbé ne reviendrait pas à sa place.
+          Pourtant chacun se rassoit peu après s'être levé — comme chaque point
+          d'un milieu revient à sa position de repos une fois la perturbation
+          passée. Rien n'oblige un point à rester déplacé.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r3-celerite-vs-point | placed AFTER R3
+  #        Rupture gate: la célérité est la vitesse de la PERTURBATION,
+  #        pas la vitesse de va-et-vient d'un POINT du milieu.
+  #        Probes celerite-est-vitesse-point.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-celerite-vs-point
+    rung: "R3"
+    habilete: utilisation
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [checkpoint, formative, misconception_driven, pc_ondes_mecaniques_progressives]
+    primary_misconception: mc.physics.pc_omp.celerite-est-vitesse-point
+    item_source: original
+    lesson_placement: in_R3
+
+    stem: |
+      Une perturbation se propage le long d'une corde à la célérité
+      $v = 3\ \text{m.s}^{-1}$. Quand elle passe, chaque point de la corde monte
+      puis redescend. Que désigne exactement cette célérité $v$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          La vitesse à laquelle un point de la corde monte puis redescend
+          pendant son mouvement de va-et-vient.
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-est-vitesse-point
+        feedback: |
+          Modèle détecté : on confond la célérité de l'onde avec la vitesse du
+          mouvement d'un point. Un point de la corde ne se propage pas — il
+          oscille sur place. La célérité, elle, est la vitesse à laquelle la
+          **déformation** avance le long de la corde. Ce sont deux vitesses
+          différentes.
+      - id: B
+        text: |
+          La vitesse à laquelle la perturbation (la déformation) avance le long
+          de la corde, d'un point vers le suivant.
+        correct: true
+        feedback: |
+          Exact. La célérité est la vitesse de propagation de la perturbation.
+          Les points de la corde, eux, ne voyagent pas : ils oscillent autour de
+          leur position de repos. À ne pas confondre avec la vitesse de va-et-
+          vient d'un point.
+      - id: C
+        text: |
+          La vitesse à laquelle un point de la corde voyage depuis la source $S$
+          jusqu'à l'autre extrémité de la corde.
+        correct: false
+        misconception: mc.physics.pc_omp.onde-transporte-matiere
+        feedback: |
+          Modèle détecté : la matière voyagerait le long de la corde. Aucun
+          point ne fait le trajet de $S$ vers l'extrémité : chacun oscille sur
+          place et revient à sa position de repos. C'est la perturbation qui
+          parcourt la corde, pas la matière.
+      - id: D
+        text: |
+          Elle dépend de l'amplitude du mouvement : plus un point monte haut,
+          plus la célérité $v$ est grande.
+        correct: false
+        misconception: mc.physics.pc_omp.celerite-depend-source
+        feedback: |
+          Modèle détecté : la célérité dépendrait de l'amplitude. Non : la
+          célérité ne dépend que du milieu (ici la corde, sa tension). Que le
+          point monte haut ou peu, la perturbation avance à la même vitesse.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r3-retard | placed AFTER R3
+  #        Rupture gate: τ = d/v (bon rapport, conversion d'unités,
+  #        célérité finie). Clone of OMP-13's stem.
+  #        Probes retard-relation-fausse.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-retard
+    rung: "R3"
+    habilete: utilisation
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [checkpoint, formative, misconception_driven, pc_ondes_mecaniques_progressives]
+    primary_misconception: mc.physics.pc_omp.retard-relation-fausse
+    item_source: clone_of_OMP-13
+    lesson_placement: after_R3
+
+    stem: |
+      Une onde progresse le long d'une corde à la célérité
+      $v = 2{,}5\ \text{m.s}^{-1}$. La source $S$ commence à vibrer à $t = 0$. Un
+      point $M$ est situé à $d = 75\ \text{cm}$ de $S$. À quel instant $M$
+      commence-t-il à son tour à bouger ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $t = 30\ \text{s}$, en gardant $d = 75$ dans $\tau = d/v$ sans
+          convertir les centimètres en mètres.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: |
+          Il faut convertir $d = 75\ \text{cm} = 0{,}75\ \text{m}$ avant de
+          diviser par $v$ (en m/s) : $\tau = 0{,}75/2{,}5 = 0{,}3\ \text{s}$, pas
+          $30\ \text{s}$.
+      - id: B
+        text: |
+          $t = 0{,}3\ \text{s}$ : $M$ reproduit le mouvement de $S$ avec le
+          retard $\tau = d/v$.
+        correct: true
+        feedback: |
+          Exact. $\tau = d/v = 0{,}75/2{,}5 = 0{,}3\ \text{s}$ : $M$ commence à
+          bouger $0{,}3\ \text{s}$ après $S$, ni avant, ni en même temps.
+      - id: C
+        text: |
+          $t \approx 3{,}3\ \text{s}$, obtenu avec $\tau = v/d = 2{,}5/0{,}75$.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: |
+          Le retard, c'est la distance **divisée par** la célérité, $\tau = d/v$,
+          pas l'inverse : $\tau = 0{,}75/2{,}5 = 0{,}3\ \text{s}$.
+      - id: D
+        text: |
+          $t = 0\ \text{s}$ : $M$ bouge en même temps que $S$, puisqu'ils sont
+          sur la même corde.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: |
+          Une célérité finie ($2{,}5\ \text{m.s}^{-1}$, pas infinie) impose un
+          délai non nul : la perturbation met $\tau = d/v = 0{,}3\ \text{s}$ pour
+          parcourir $d$. Être sur la même corde ne rend pas la transmission
+          instantanée.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r3-periodicite | placed AFTER R3
+  #        BOUNDARY gate: λ = v·T (longueur d'onde) ne s'applique PAS à
+  #        une perturbation unique non périodique — le décalage entre deux
+  #        points est le retard τ = d/v. Renforce la note de cadre de R1.
+  #        Probes periodicite-hors-cadre.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-periodicite
+    rung: "R3"
+    habilete: résolution
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [checkpoint, formative, misconception_driven, pc_ondes_mecaniques_progressives, boundary_guard]
+    primary_misconception: mc.physics.pc_omp.periodicite-hors-cadre
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |
+      Pour cette même corde, la source $S$ a produit **une seule** perturbation
+      brève, qui voyage vers $M$. Un camarade veut trouver le décalage entre $S$
+      et $M$ avec la « longueur d'onde » $\lambda = v\,T$. Que penser de cette
+      approche ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Correcte : toute onde possède une longueur d'onde $\lambda = v\,T$, il
+          suffit de connaître sa période $T$ pour l'utiliser ici.
+        correct: false
+        misconception: mc.physics.pc_omp.periodicite-hors-cadre
+        feedback: |
+          Modèle détecté : appliquer la périodicité à une perturbation qui n'est
+          pas périodique. Une perturbation **unique** n'a ni période $T$ ni
+          longueur d'onde $\lambda$ : $\lambda = v\,T$ ne concerne que les ondes
+          **périodiques** (chapitre suivant). Ici, c'est le retard $\tau = d/v$
+          qui donne le décalage.
+      - id: B
+        text: |
+          Inadaptée : cette perturbation n'est pas périodique, elle n'a pas de
+          longueur d'onde. Le décalage entre $S$ et $M$ est le retard
+          $\tau = d/v$.
+        correct: true
+        feedback: |
+          Exact. $\lambda = v\,T$ suppose une onde périodique, de période $T$ —
+          ce n'est pas le cas ici. Pour une perturbation unique qui se propage,
+          le bon outil est le retard $\tau = d/v$. La longueur d'onde sera
+          l'objet du chapitre sur les ondes **périodiques**.
+      - id: C
+        text: |
+          Correcte, et $\lambda$ remplace le retard : le décalage entre deux
+          points d'une onde vaut toujours $\lambda$, quelle que soit l'onde.
+        correct: false
+        misconception: mc.physics.pc_omp.periodicite-hors-cadre
+        feedback: |
+          Modèle détecté : confondre longueur d'onde et retard. $\lambda$ est une
+          distance (périodicité **spatiale** d'une onde périodique), pas un
+          décalage temporel. Ici la perturbation n'est même pas périodique : le
+          décalage est le retard $\tau = d/v$.
+      - id: D
+        text: |
+          $\lambda = v\,T$ sert à trouver la célérité, pas un décalage ; pour le
+          décalage il faut multiplier $v$ par la distance.
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: |
+          Deux erreurs : le décalage entre $S$ et $M$ n'est pas $v \times d$ (ce
+          n'est même pas homogène à un temps), c'est $\tau = d/v$. Et $\lambda$
+          n'est pas un intermédiaire de calcul ici : sans onde périodique, il n'y
+          a pas de longueur d'onde du tout.

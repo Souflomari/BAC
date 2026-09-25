@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 460" width="700" height="460"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img"
+     aria-label="Deux droites numériques horizontales : en haut, R tout entier, le domaine de exp ; en bas, l’intervalle ouvert de 0 à plus l’infini, l’image de exp et le domaine de ln, avec 0 marqué par un cercle ouvert car exclu. Une flèche exp envoie un réel x quelconque vers exp(x) positif ; une flèche retour ln ramène exp(x) exactement sur x, illustrant ln(exp(x)) = x. Deux repères concrets : 0 envoyé sur 1, et 1 envoyé sur e.">
+  <title>exp, réciproque de ln : une correspondance entre deux droites numériques</title>
+  <!--
+    exp-reciproque-de-ln.svg — STAGED (docs/design/LESSON-EXPERIENCE-SPEC.md §2).
+    R1 — PAS une courbe cartésienne (c'est le rôle de R5/courbe-exponentielle.svg) :
+    un diagramme de correspondance à deux droites numériques horizontales,
+    schématique (les abscisses le long de chaque droite ne sont PAS à
+    l'échelle d'une fonction réelle — seul l'ORDRE gauche→droite est
+    respecté pour rester lisible, exactement comme demandé par le callout
+    R1 : "two labelled horizontal number-lines").
+
+    Droite du haut  (y=150) : R tout entier, le domaine de exp — non bornée
+      des deux côtés, flèches aux deux extrémités.
+    Droite du bas   (y=340) : ]0,+∞[, l'image de exp / le domaine de ln —
+      bornée à gauche par 0 EXCLU (cercle ouvert, convention mathématique
+      standard), flèche à droite seulement.
+
+    Repère pixels (choisi pour la lisibilité, schématique — pas une échelle
+    numérique de exp) :
+      droite du haut  : ticks à x_px=200 (valeur 0), x_px=260 (valeur 1),
+                        x_px=460 (x quelconque, volontairement séparé des
+                        deux ancres concrètes pour ne pas les confondre)
+      droite du bas   : cercle ouvert à x_px=110 (borne 0, exclue),
+                        ticks à x_px=290 (valeur 1 = exp(0)),
+                        x_px=400 (valeur e = exp(1)),
+                        x_px=560 (exp(x), image du x quelconque)
+      (l'ordre gauche→droite est croissant des deux côtés, cohérent avec
+      la stricte croissance de exp — 0<1<x en haut correspond à 1<e<exp(x)
+      en bas, sans prétendre à une échelle métrique exacte.)
+
+    Mise en étapes (ordre du callout R1, 4 étapes) :
+      step-1 : les deux droites, leurs étendues établies (R en haut,
+               ]0,+∞[ en bas avec 0 exclu) — RIEN n'est encore mis en
+               correspondance.
+      step-2 : flèche avant "exp" — x quelconque (haut) -> exp(x) (bas).
+      step-3 : flèche retour "ln" — exp(x) (bas) -> x (haut), le même x :
+               le aller-retour EST la réciprocité, ln(exp(x))=x.
+      step-4 : les ancres concrètes 0↦1 et 1↦e, et l'annotation : rien
+               n'atteint 0 sur la droite du bas (ln(0) n'existe pas).
+
+    Rôle des couleurs :
+      les deux droites, leurs étiquettes, le cercle ouvert   : --figure-ink
+      (ou --figure-ink-soft pour le trait des droites elles-mêmes, cohérent
+       avec la convention "axes = chrome neutre" du reste du corpus)
+      x, exp(x), la paire de flèches exp/ln (LE sujet du rung)  : --figure-accent
+      0, 1, e, les flèches-ancres concrètes, l'annotation d'exclusion :
+      --figure-ink (secondaire par rapport à la démonstration générale
+      accent, mais toujours lisible — pas ink-soft, pour rester net)
+
+    Les captions sont portées par exp-reciproque-de-ln.stages.json — aucun
+    texte de légende baké ici (même convention que courbe-exponentielle.svg).
+  -->
+
+  <!-- Titre -->
+  <text x="350" y="24" text-anchor="middle" font-size="14" font-weight="600"
+        fill="var(--figure-ink)">
+    exp, réciproque de ln : une correspondance entre deux droites
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="25" y="40" width="650" height="390" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les deux droites établies, rien mis en correspondance
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Droite du haut : R (domaine de exp) — non bornée des deux côtés -->
+    <line x1="70" y1="150" x2="628" y2="150"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="58,150 70,145.5 70,154.5" fill="var(--figure-ink-soft)"/>
+    <polygon points="640,150 628,145.5 628,154.5" fill="var(--figure-ink-soft)"/>
+
+    <text x="95" y="117" font-size="10" fill="var(--figure-ink-soft)">(domaine de exp)</text>
+    <text x="95" y="133" font-size="15" font-style="italic" fill="var(--figure-ink)">&#8477;</text>
+
+    <!-- Droite du bas : ]0,+∞[ (image de exp / domaine de ln) — bornée à
+         gauche par 0 exclu, non bornée à droite -->
+    <circle cx="110" cy="340" r="5" fill="var(--figure-surface)"
+            stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="122" y1="340" x2="628" y2="340"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="640,340 628,335.5 628,344.5" fill="var(--figure-ink-soft)"/>
+
+    <text x="140" y="368" font-size="14" fill="var(--figure-ink)">]0, +&#8734;[</text>
+    <text x="140" y="383" font-size="10" fill="var(--figure-ink-soft)">(image de exp, domaine de ln)</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — flèche avant "exp" : x quelconque -> exp(x)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <circle cx="460" cy="150" r="3.5" fill="var(--figure-accent)"/>
+    <text x="460" y="136" text-anchor="middle" font-size="13" font-style="italic"
+          fill="var(--figure-accent)">x</text>
+
+    <circle cx="560" cy="340" r="3.5" fill="var(--figure-accent)"/>
+    <text x="572" y="320" font-size="12" fill="var(--figure-accent)">exp(<tspan
+          font-style="italic">x</tspan>)</text>
+
+    <!-- Flèche avant, courbée vers la gauche -->
+    <path d="M460,150 Q440,280 560,340" fill="none"
+          stroke="var(--figure-accent)" stroke-width="1.8" stroke-dasharray="6,4"
+          stroke-linecap="round"/>
+    <polygon points="560,340 549.04,339.55 553.07,331.50" fill="var(--figure-accent)"/>
+
+    <rect x="392" y="248" width="52" height="20" rx="4"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="418" y="262" text-anchor="middle" font-size="12" fill="var(--figure-accent)">exp</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — flèche retour "ln" : exp(x) -> x (même x, le round-trip)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Flèche retour, courbée vers la droite (distincte de la flèche
+         avant — les deux forment une lentille entre x et exp(x)) -->
+    <path d="M560,340 Q580,220 460,150" fill="none"
+          stroke="var(--figure-accent)" stroke-width="1.8" stroke-dasharray="6,4"
+          stroke-linecap="round"/>
+    <polygon points="460,150 470.91,151.15 466.37,158.93" fill="var(--figure-accent)"/>
+
+    <rect x="574" y="203" width="44" height="20" rx="4"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="596" y="217" text-anchor="middle" font-size="12" fill="var(--figure-accent)">ln</text>
+
+    <text x="470" y="200" font-size="10.5" fill="var(--figure-accent)">ln(exp(<tspan
+          font-style="italic">x</tspan>)) = <tspan font-style="italic">x</tspan></text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — ancres concrètes 0↦1, 1↦e ; rien n'atteint 0
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <!-- 0 (haut) -->
+    <circle cx="200" cy="150" r="3.2" fill="var(--figure-ink)"/>
+    <text x="200" y="136" text-anchor="middle" font-size="12" fill="var(--figure-ink)">0</text>
+
+    <!-- 1 (haut) -->
+    <circle cx="260" cy="150" r="3.2" fill="var(--figure-ink)"/>
+    <text x="260" y="136" text-anchor="middle" font-size="12" fill="var(--figure-ink)">1</text>
+
+    <!-- 1 = exp(0) (bas) -->
+    <circle cx="290" cy="340" r="3.2" fill="var(--figure-ink)"/>
+    <text x="290" y="326" text-anchor="middle" font-size="12" fill="var(--figure-ink)">1</text>
+
+    <!-- e = exp(1) (bas) -->
+    <circle cx="400" cy="340" r="3.2" fill="var(--figure-ink)"/>
+    <text x="400" y="326" text-anchor="middle" font-size="12" font-style="italic"
+          fill="var(--figure-ink)">e</text>
+
+    <!-- Flèche 0 ↦ 1 -->
+    <line x1="200" y1="150" x2="290" y2="340"
+          stroke="var(--figure-ink)" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <polygon points="290,340 281.65,332.89 289.79,329.03" fill="var(--figure-ink)"/>
+
+    <!-- Flèche 1 ↦ e -->
+    <line x1="260" y1="150" x2="400" y2="340"
+          stroke="var(--figure-ink)" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <polygon points="400,340 390.44,334.62 397.70,329.28" fill="var(--figure-ink)"/>
+
+    <!-- Annotation : rien n'atteint 0 -->
+    <line x1="110" y1="300" x2="110" y2="322"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="3,3"/>
+    <path d="M106,292 L114,300 M114,292 L106,300"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4" stroke-linecap="round"/>
+    <text x="125" y="272" font-size="11" fill="var(--figure-ink-soft)">Aucun <tspan
+          font-style="italic">x</tspan> ne donne exp(<tspan font-style="italic">x</tspan>) = 0</text>
+    <text x="125" y="286" font-size="9.5" fill="var(--figure-ink-soft)">(ln(0) n’existe pas — rien n’atteint 0)</text>
+  </g><!-- /step-4 -->
+
+</svg>

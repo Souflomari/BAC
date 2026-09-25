@@ -1,0 +1,1532 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   globals.css
+   Design token CSS custom properties — consumed by tailwind.config.ts via
+   var(--...). DESIGN-BIBLE v0.3 provisional palette.
+
+   Philosophy (§2): tinted neutrals, never pure black/white; single restrained
+   blue accent; dark mode first-class; semantic colors only for meaning.
+
+   ADR 0022 additions (2026):
+   - 5-step elevation scale (--elevation-0 … --elevation-4)
+   - Measure tokens (--measure-prose, --measure-wide)
+   - Canonical figure palette (--figure-*)
+   - Shared .focus-ring component class (@layer components)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* KaTeX stylesheet — math rendered as live text, never images (DESIGN-BIBLE §3).
+   Must come before @tailwind directives so PostCSS processes @import first. */
+@import "katex/dist/katex.min.css";
+
+/* Design tokens — the :root / .dark custom-property blocks, GENERATED from the
+   single source of truth src/lib/tokens.ts (scripts/generate-tokens.mjs). @import
+   before @tailwind so PostCSS inlines it ahead of the utilities layer. */
+@import "./tokens.generated.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base typography ────────────────────────────────────────────────────────── */
+/* DESIGN-BIBLE §3: IBM Plex Sans, body ≥ 16px, line-height 1.5 */
+/* --font-scale: driven by FontSizeStepper (A−/A/A+, §9 floor item).
+   Defaults to 1 (16px). The stepper sets values 0.9375 / 1 / 1.125 on <html>
+   via inline style. All rem/ch/em units cascade from this. */
+html {
+  font-size: calc(16px * var(--font-scale, 1));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--color-surface-base);
+  color: var(--color-text-primary);
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  /* Prevent layout shift from scrollbar appearing/disappearing */
+  overflow-y: scroll;
+}
+
+/* ── Focus ring — visible, clear (DESIGN-BIBLE §9) ─────────────────────────── */
+/* Global catch-all: applied to every focusable element that does not already
+   carry its own .focus-ring class or a bespoke override. Keep this rule. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  /* Radius tracks the host (ADR 0024): elements with a larger corner set
+     --focus-radius so the outline's rounding matches, instead of a fixed 6px. */
+  border-radius: var(--focus-radius, 6px);
+  /* Jewel halo — a soft accent ring just outside the crisp outline (ADR 0023
+     polish). Theme-aware via --focus-halo so it reads on ivory AND charcoal. */
+  box-shadow: 0 0 0 4px var(--focus-halo);
+}
+
+/* ── Text selection — the one visual every reader touches (audit U5) ────────── */
+/* Warm accent-subtle wash instead of browser-default blue on ivory; text keeps
+   its own color (both accent-subtle tones hold ≥4.5:1 against text-primary). */
+::selection {
+  background-color: var(--color-accent-subtle);
+  color: inherit;
+}
+
+/* ── Heading anchors (audit U5 — web-native texture) ────────────────────────── */
+/* The § link appears on heading hover/focus; invisible otherwise. Accent on
+   hover of the anchor itself; never steals the heading's resting calm. */
+.heading-anchor {
+  margin-left: 0.45em;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 0.7em;
+  font-weight: 500;
+  color: var(--color-text-tertiary);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity var(--duration-micro) var(--ease-between),
+              color var(--duration-micro) var(--ease-between);
+}
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+.heading-anchor:focus-visible {
+  opacity: 1;
+}
+.heading-anchor:hover {
+  color: var(--color-accent);
+}
+/* SUR UN APPAREIL SANS SURVOL, l'ancre n'existe pas — elle est retirée.
+   Mesuré le 2026-09-04 à 360 px : 1 832 ancres de titre, 7×17 px chacune,
+   `opacity: 0` en permanence faute de survol. Invisibles, mais toujours
+   cliquables et toujours dans l'arbre d'accessibilité : une cible tactile de
+   7 px collée à la fin de chaque titre, qui ne se montre jamais et qui change
+   l'URL quand le pouce dérape. Un contrôle invisible n'est pas un contrôle ;
+   sur ces appareils il n'a rien à faire là. (Au-dessus, avec un vrai
+   pointeur, rien ne change : le § reparaît au survol du titre.) */
+@media (hover: none) {
+  .heading-anchor {
+    display: none;
+  }
+}
+
+/* ── Print stylesheet (audit U5 — bac students print revision material) ─────── */
+@media print {
+  /* Chrome off: header, rail, font stepper, embeds' interactive shell, footer nav */
+  header[class],
+  .notion-rail,
+  footer[class] {
+    display: none !important;
+  }
+  /* Ink on paper — drop the warm washes and shadows */
+  :root {
+    --color-surface-base: #ffffff;
+    --color-surface-raised: #ffffff;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  * {
+    box-shadow: none !important;
+  }
+  /* Single column: the rail grid collapses; prose uses the page */
+  .notion-page-grid {
+    display: block;
+  }
+  .notion-prose,
+  .prose-lesson {
+    max-width: 100% !important;
+  }
+  /* Figures stay within the page; no clipped panels */
+  figure,
+  svg {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+  /* Anchors are meaningless on paper */
+  .heading-anchor {
+    display: none !important;
+  }
+  /* Chapter pagination (LESSON-EXPERIENCE-SPEC §1.5, §1.9 / ledger 11.9): the
+     lesson prints linearly, whole — every chapter view unhidden regardless of
+     its `hidden` attribute (chapter navigation is a screen-only affordance).
+     The position affordance and prev/next transport are screen-only chrome. */
+  .chapter-view {
+    display: block !important;
+  }
+  .chapter-position,
+  .chapter-transport {
+    display: none !important;
+  }
+}
+
+/* ── Les mots longs doivent pouvoir casser (2026-09-04, SC 1.4.4) ──────────
+   Le français a des mots longs et les titres sont gros. À 200 % de taille de
+   texte — ce que la norme exige de supporter sans perte de contenu — le h1
+   « Équations différentielles » mesure plus que la page et débordait de 139 px ;
+   huit leçons faisaient de même, et les titres des cartes d'exercice étaient
+   COUPÉS par le `overflow-hidden` qui arrondit leurs coins (jusqu'à 55 px de
+   texte perdu, sans rien pour le dire).
+
+   `overflow-wrap: break-word` n'agit QUE quand le mot ne peut pas tenir
+   autrement : à taille normale, rien ne change. On ne met pas `hyphens: auto`,
+   qui couperait des titres à l'affichage courant pour un gain nul.
+
+   La règle est posée sur `body`, pas sur les seuls titres : le premier essai
+   ne visait que h1–h6 et laissait déborder les libellés de chapitre, les
+   titres de cartes d'exercice et les puces — même cause, mêmes mots français
+   longs, à un endroit différent. Une règle qui ne s'applique QUE quand un mot
+   ne rentre pas n'a pas besoin d'être ciblée. */
+body {
+  overflow-wrap: break-word;
+}
+
+/* Une formule EN LIGNE est insécable. Dans les cartes d'items, le conteneur
+   défile déjà (McqItem/ChoiceButton) ; dans la PROSE, une formule encadrée un
+   peu longue poussait encore la page à 200 % de texte (calcul-integral, 335 px).
+   Le paragraphe défile donc, comme `.katex-display` juste dessous. Inerte à
+   taille normale : mesuré, la prose ne déborde à aucune largeur de téléphone. */
+.prose-lesson p {
+  overflow-x: auto;
+}
+
+/* ── La figure sur un téléphone (2026-09-04) ────────────────────────────────
+   Le SVG remplit la largeur disponible. Sur un téléphone, la bande de lecture
+   fait 328 px : une figure dessinée sur 900 unités est réduite au tiers, et ses
+   étiquettes — 9 unités à l'autorat — arrivent à 3 px. Mesuré à 360 px de
+   large : les 260 figures statiques du corpus rendaient du texte sous 9 px,
+   237 sous 6 px. La couche média entière était illisible sur l'appareil que
+   l'élève utilise.
+
+   RÈGLE : jamais sous la taille naturelle. Le dessin est autoré à une échelle
+   où son texte se lit ; en dessous, il ne se lit plus. Sous 600 px le cadre
+   défile et le SVG garde sa largeur de viewBox (`--figure-naturelle`, posée
+   par MediaDiagram/StagedFigure). L'élève fait glisser la figure comme une
+   carte, au lieu de deviner. Rien n'est coupé.
+
+   Le sélecteur double (.figure-cadre.figure-cadre) passe devant les
+   utilitaires Tailwind d'une seule classe — `overflow-hidden`, ici — sans
+   dépendre de l'ordre des couches.
+
+   `touch-action: pan-x pan-y` : sans lui, un doigt qui commence son geste sur
+   la figure ne peut plus faire défiler la PAGE verticalement une fois le
+   cadre saisi. */
+@media (max-width: 599.98px) {
+  .figure-cadre.figure-cadre {
+    overflow-x: auto;
+    overflow-y: hidden;
+    touch-action: pan-x pan-y;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* L'enfant direct, quel qu'il soit : le SVG pour MediaDiagram/StagedFigure,
+     le conteneur de scène (celui qui porte l'aspect-ratio) pour les figures
+     animées. Viser `> svg` seulement laissait la scène animée à 328 px de
+     large avec un SVG de 680 dedans : recadrée verticalement. */
+  .figure-cadre.figure-cadre > * {
+    min-width: var(--figure-naturelle, 0px);
+  }
+}
+
+/* Impression : le papier n'a pas de barre de défilement. La figure reprend la
+   largeur de la page, quitte à réduire — sur papier, on peut approcher l'œil. */
+@media print {
+  .figure-cadre.figure-cadre {
+    overflow: visible;
+  }
+  .figure-cadre.figure-cadre > * {
+    min-width: 0;
+  }
+}
+
+/* ── Reduced motion (DESIGN-BIBLE §5, §9) ──────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Component classes (ADR 0022) ───────────────────────────────────────────── */
+@layer components {
+  /*
+   * .focus-ring — shared focus utility (ADR 0022, DESIGN-BIBLE §9)
+   *
+   * Replace the ad-hoc Tailwind utility chain:
+   *   focus-visible:outline-2 focus-visible:outline-[#3E5C86] focus-visible:outline-offset-2
+   * with a single class: `focus-ring`
+   *
+   * MIGRATION: do NOT migrate existing ad-hoc usages in this phase (Phase 1).
+   * The ad-hoc pattern is listed in docs/design/COMPONENT-STATES.md §Migration.
+   * Migrate file-by-file in a later pass once design critics have validated
+   * this token set. The global :focus-visible catch-all above already provides
+   * parity for anything that doesn't carry the class explicitly.
+   *
+   * Files to migrate (grepped 2026-06-28):
+   *   src/app/not-found.tsx
+   *   src/app/notions/[subject]/[slug]/page.tsx
+   *   src/app/page.tsx
+   *   src/components/notion/EmbedPanel.tsx       (3 occurrences)
+   *   src/components/notion/CheckpointItem.tsx
+   *   src/components/ui/SiteHeader.tsx           (2 occurrences)
+   *   src/components/notion/McqItem.tsx          (2 occurrences)
+   *   src/components/ui/FontSizeStepper.tsx
+   *   src/components/notion/MarginRail.tsx
+   *   src/components/notion/MotionDiagram.tsx
+   */
+  .focus-ring:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: var(--focus-radius, 6px);
+    box-shadow: 0 0 0 4px var(--focus-halo);
+  }
+
+  /*
+   * .state-layer — ONE interaction-feedback language (ADR 0024).
+   *
+   * An M3-style neutral on-surface overlay (a ::after wash of --state-color)
+   * whose opacity steps on hover/pressed, applied uniformly to every
+   * interactive control so chrome and content respond identically in spirit.
+   * Neutral by default (text color), NOT accent — the accent still leads in
+   * exactly one place per surface. Focus is the ring+halo (not an overlay).
+   * Honors reduced-motion via the global transition-duration override.
+   */
+  .state-layer { position: relative; }
+  .state-layer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--state-color);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-micro) var(--ease-between);
+  }
+  .state-layer:hover::after { opacity: var(--state-hover); }
+  .state-layer:active::after { opacity: var(--state-pressed); }
+  /* The overlay sits over the surface at a low opacity (M3 state-layer): content
+     shows through the 6–10% wash, so no child z-index juggling is needed and the
+     layer applies uniformly to buttons (icon + text), cards, links, and the
+     filled primary action alike. */
+
+  /* .state-disabled — the single dimmed/inert treatment (one opacity, ADR 0024).
+     Replaces the ad-hoc opacity-40/50/80 scattered across components. */
+  .state-disabled {
+    opacity: var(--state-disabled);
+    pointer-events: none;
+  }
+
+  /*
+   * .btn-primary — the one confident primary action (ADR 0023).
+   *
+   * The accent's single filled moment. Used SPARINGLY — only for the genuine
+   * primary action on a surface (e.g. "open the interactive sandbox"); every
+   * other control stays quiet (ghost/secondary). This is restraint, not
+   * decoration: the calm core holds because the accent leads in exactly one
+   * place, not many. Teal is a calm signal, never an alarm.
+   *
+   * Contrast: text uses --color-text-on-accent (warm near-white) on the deep
+   * teal fill — ≥4.5:1 in both themes. 48px min target (§9). Focus via the
+   * global :focus-visible (accent outline reads against the fill via offset).
+   */
+  .btn-primary {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 48px;
+    padding: 0 1.5rem; /* 24px — on the 8 dp grid (was 20px) */
+    /* À 200 % de texte (SC 1.4.4), 48 px de padding de chaque côté et un
+       libellé de 28 px de corps font 288 px dans une colonne de 280 : le
+       bouton poussait l'accueil de 16 px. Il ne dépasse plus sa colonne ; le
+       libellé se replie, centré. Mesuré le 2026-09-05. */
+    max-width: 100%;
+    text-align: center;
+    border-radius: 12px; /* = radius lg (was an off-scale 10px) */
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-on-accent);
+    background-color: var(--color-accent);
+    box-shadow: var(--elevation-2);
+    transition: background-color var(--duration-micro) var(--ease-between),
+                box-shadow var(--duration-micro) var(--ease-between);
+  }
+  /* The same state-layer language as every other control — an on-accent overlay
+     so the primary action's hover/press shares the one feedback vocabulary. The
+     fill-color shift is the secondary cue. Calm-load (ADR 0024): the hover does
+     NOT also leap elevation — two cues (overlay + fill) on the one already-loud
+     filled-teal element, not three. Elevation only DROPS on press (tactile). */
+  .btn-primary::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--color-text-on-accent);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-micro) var(--ease-between);
+  }
+  .btn-primary:hover {
+    background-color: var(--color-accent-strong);
+  }
+  .btn-primary:hover::after { opacity: 0.08; }
+  .btn-primary:active {
+    box-shadow: var(--elevation-1);
+  }
+  .btn-primary:active::after { opacity: 0.12; }
+}
+
+/* Primary-button focus — UNLAYERED on purpose so it beats the unlayered global
+   :focus-visible (which is what makes a layered rule lose regardless of
+   specificity). Matches the focus outline to the button's own 12px (lg) radius
+   (was inheriting the global 6px → tighter corners) and keeps the elevation
+   lift composed with the jewel halo (the global would otherwise replace it). */
+.btn-primary:focus-visible {
+  border-radius: 12px;
+  box-shadow: var(--elevation-2), 0 0 0 4px var(--focus-halo);
+}
+
+/* ── M3 transition patterns — REMOVED (ADR 0024 calm-core pass) ─────────────────
+   fade-through and container-transform were adopted in the Hybrid pass, but the
+   only places they could attach were MOUNT/route events (page entry, embed open),
+   where they read as unsolicited AUTOPLAY motion — the calm-load adversary (the
+   blocking guardian of the protected identity) flagged both. The protected
+   "learner-paced, no autoplay/scroll-trigger" identity WINS over the adopted
+   mechanism: there is no genuinely learner-triggered transition to apply them to
+   today, so the keyframes/classes are removed rather than left as dead CSS. If a
+   real learner-initiated expand control ever lands, container-transform is the
+   sanctioned pattern (gated on the explicit user action, never on mount).
+   (shared-axis was likewise never built: no peer-axis navigation exists.) */
+
+/* ── Frosted-glass header (scrolled state, ADR 0023 polish) ────────────────── */
+/* Opaque fallback first (no bleed-through if backdrop-filter is unsupported);
+   where supported, a translucent surface + blur reads as "glass lifted." The
+   blur smears any content behind into an indistinct frost, so there is no
+   legible ghosting (the concern the older fully-opaque state guarded against). */
+.header-glass {
+  background-color: var(--color-surface-raised);
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .header-glass {
+    background-color: color-mix(in srgb, var(--color-surface-raised) 82%, transparent);
+    /* saturate kept near-neutral (1.05, was 1.4): a strong saturate pumps the
+       palette in the strip abutting the reading column on scroll — a calm-core
+       color leak the adversary flagged (ADR 0024). The blur carries the "glass"
+       read; the saturation does not need to. */
+    -webkit-backdrop-filter: blur(12px) saturate(1.05);
+    backdrop-filter: blur(12px) saturate(1.05);
+  }
+}
+
+/* ── Sticky header clearance — scroll-margin-top (#3 fix) ──────────────────── */
+/*
+ * The SiteHeader is sticky at top: 0, height ~56px (h-14 = 3.5rem = 56px).
+ * When anchor links or IntersectionObserver-driven jumps bring a heading or
+ * figure container to the top of the viewport, the sticky header occludes
+ * the first line. scroll-margin-top adds a clearance buffer so the browser
+ * always stops with the element below the header.
+ *
+ * Using 64px (4rem): 56px header + 8px breathing room.
+ * This is a CSS-only fix — no JS required; works with native anchor #links
+ * and with the MarginRail's href="#rung-id" click navigation.
+ *
+ * Applied to:
+ *   - .prose-lesson h2/h3 (rung headings with id= from rehype-slug)
+ *   - .notion-wide-band figure containers (MotionStage, MediaDiagram, EmbedPanel)
+ */
+.prose-lesson h2,
+.prose-lesson h3 {
+  scroll-margin-top: 4rem; /* 64px — header height (56px) + 8px buffer */
+}
+
+/*
+ * Wide-band figure/embed containers — the outer <figure> or <div> that carries
+ * the .notion-wide-band class. When these scroll near the top on anchor-link
+ * navigation (e.g., MarginRail clicks), the sticky header would occlude the
+ * figure's own title text. scroll-margin-top clears it.
+ */
+.notion-wide-band {
+  scroll-margin-top: 4rem;
+}
+
+/* ── Prose styles — bounded reading column ──────────────────────────────────── */
+/* Applied to .prose-lesson — the lesson markdown container.
+   DESIGN-BIBLE §3: 65ch max, 1.5 line-height, heading hierarchy by scale+weight only.
+   ADR 0022: max-width now consumes --measure-prose (canonical source). */
+/* Studio (ADR 0030 D2) : les TITRES de leçon passent à la grotesque —
+   le sérif est réservé au corps. Un titre est de l'interface (repère,
+   hiérarchie), pas de la lecture longue. */
+.prose-lesson h1,
+.prose-lesson h2,
+.prose-lesson h3,
+.prose-lesson h4 {
+  font-family: var(--font-ui), system-ui, sans-serif;
+  letter-spacing: -0.015em;
+}
+
+.prose-lesson {
+  color: var(--color-text-primary);
+  /* Editorial reading serif (ADR 0023) — warmth + scholarship for long study */
+  font-family: var(--font-reading-serif), Georgia, "Times New Roman", serif;
+  font-size: 1.0625rem; /* 17px — kinder for long sessions */
+  line-height: 1.65;    /* serif reads comfortably a touch tighter than sans */
+  max-width: var(--measure-prose);
+  hanging-punctuation: first last; /* progressive enhancement (Safari) — craft signal */
+  text-wrap: pretty;               /* avoid orphans/rivers where supported */
+}
+
+.prose-lesson h1,
+.prose-lesson h2,
+.prose-lesson h3,
+.prose-lesson h4 {
+  color: var(--color-text-primary);
+  font-weight: 600; /* serif headings inherit the reading serif from .prose-lesson */
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+  letter-spacing: -0.015em; /* optically tighter on the serif display sizes */
+}
+
+/* Tracking is reconciled with the chrome type-scale tokens (tailwind.config
+   fontSize) — same optical ramp, so the serif "reading" scale and the sans
+   "chrome" scale don't diverge for the same role (ADR 0024). The prose scale is
+   an intentional second scale (serif, reading-tuned sizes); only the tracking
+   is shared, role-for-role. */
+.prose-lesson h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.022em; }
+.prose-lesson h2 { font-size: 1.375rem; margin-top: 2.75em; letter-spacing: -0.018em; } /* more air above major breaks */
+.prose-lesson h3 { font-size: 1.125rem; letter-spacing: -0.012em; }
+.prose-lesson h4 { font-size: 1rem; letter-spacing: -0.01em; }
+
+/* (The old .rung-tag "R0" heading prefix was removed in the Day-3 de-jargon
+   batch — spec rung codes never render student-side; the code lives in a
+   data-rung attribute for the rail's matching. See LessonRenderer.tsx.) */
+
+/* Section numbers (Day-6 followability — the in-lesson position affordance).
+   The rail is desktop-only; on compact a tired student has NO position sense
+   in a 25-minute lesson. Rung headings carry a muted ordinal ("3 · Le
+   mécanisme") via a CSS counter — human numbering, not the R-codes (§11: no
+   internal vocabulary; numbers are reader-facing chapter sense). The counter
+   resets on .notion-content (the whole content column) because markers split
+   the prose into several .prose-lesson containers — resetting per container
+   would restart the count at every figure. MarginRail mirrors the same
+   numbers, so the rail and the page tell one map. */
+.notion-content {
+  counter-reset: rung;
+}
+.prose-lesson h2[data-rung] {
+  counter-increment: rung;
+}
+.prose-lesson h2[data-rung]::before {
+  content: counter(rung) " · ";
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.prose-lesson p {
+  margin-top: 0;
+  margin-bottom: 1.25em;
+}
+
+.prose-lesson ul,
+.prose-lesson ol {
+  padding-left: 1.5em;
+  margin-bottom: 1.25em;
+}
+
+.prose-lesson li {
+  margin-bottom: 0.375em;
+}
+
+.prose-lesson li > p {
+  margin-bottom: 0.5em;
+}
+
+.prose-lesson strong {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.prose-lesson em {
+  font-style: italic;
+}
+
+.prose-lesson code {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.875em;
+  background-color: var(--color-accent-subtle);
+  color: var(--color-text-primary);
+  border-radius: 4px;
+  padding: 0.125em 0.35em;
+}
+
+.prose-lesson pre {
+  /* Recessed code well — the lowest rung of the surface-container tonal ladder
+     (ADR 0024): a code block reads as inset BELOW the page, not lifted above it. */
+  background-color: var(--color-surface-container-lowest);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 8px;
+  padding: 1rem 1.5rem; /* 16/24px — on the 8 dp grid (was 20px horizontal) */
+  overflow-x: auto;
+  margin-bottom: 1.5em;
+}
+
+.prose-lesson pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.875rem;
+}
+
+.prose-lesson blockquote {
+  border-left: 2px solid var(--color-accent);
+  padding-left: 1.25rem;
+  margin-left: 0;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin-bottom: 1.25em;
+}
+
+/* ── L'ARABE, QUAND IL Y EN A ───────────────────────────────────────────
+   L'épreuve de philosophie du bac marocain est en arabe : la leçon de
+   méthode cite le libellé officiel et deux textes sources entiers dans
+   leur version arabe. `rehypeDirectionRtl` pose `dir="rtl" lang="ar"` sur
+   les blocs majoritairement arabes ; voici ce que la typographie leur doit.
+
+   1. PAS D'ITALIQUE. L'écriture arabe n'a pas d'italique — un navigateur à
+      qui on en demande une PENCHE la fonte mécaniquement, et le résultat
+      n'est pas une variante de style, c'est une déformation. La citation
+      arabe héritait de l'italique du blockquote français.
+   2. LE FILET CHANGE DE CÔTÉ. Une barre de citation à gauche d'un texte
+      qui commence à droite ne marque plus rien : elle borde la fin des
+      lignes. On la met à droite, avec sa marge.
+   3. UN PEU PLUS D'INTERLIGNE. L'arabe empile des signes au-dessus et
+      au-dessous de la ligne de base ; à 1,65, les diacritiques d'une ligne
+      touchent la suivante. 1,9 les sépare. */
+.prose-lesson [lang="ar"],
+.prose-lesson [lang="ar"] em,
+.prose-lesson [lang="ar"] i {
+  font-style: normal;
+  line-height: 1.9;
+}
+
+.prose-lesson blockquote:has([lang="ar"]),
+.prose-lesson blockquote[lang="ar"] {
+  border-left: none;
+  border-right: 2px solid var(--color-accent);
+  padding-left: 0;
+  padding-right: 1.25rem;
+}
+
+.prose-lesson table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+  font-size: 0.9375rem;
+}
+
+/* Masthead title containment (hunt 07-06 — the ONE culprit behind every
+   390px page overflow) : un seul mot français long (« Dysfonctionnements »,
+   « électromagnétiques ») à 3.5rem dépasse 390px en bloc insécable.
+   Deux couches : taille fluide sous 600px + césure française en filet
+   (lang="fr" est posé sur <html>, layout.tsx:96). */
+@media (max-width: 600px) {
+  [data-band="masthead"] h1 {
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+    line-height: 1.12;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
+/* Mobile containment (hunt 07-06 — bible §1 « adapts down gracefully ») :
+   le min-content d'un tableau peut dépasser 390px, et une formule INLINE
+   longue (équations chimiques…) ne peut pas se replier. Les deux défilent
+   dans leur propre boîte — la page, elle, ne défile jamais horizontalement.
+   (Le math display est déjà contenu par .katex-display plus bas.) */
+/* Le tableau défile à TOUTE largeur, plus seulement sous 600px. Un tableau
+   ne peut pas descendre sous son min-content : à 200 % de taille de texte
+   (SC 1.4.4), huit tableaux du corpus faisaient déborder la page jusqu'à
+   335 px sur un écran de 1280. La règle était déjà écrite ici — elle était
+   simplement enfermée dans une media query de largeur, alors que la
+   condition qu'elle traite n'est pas une largeur d'écran mais un rapport
+   entre un contenu et sa boîte. */
+.prose-lesson table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* `em > .katex`, `strong > .katex` (2026-09-05) : une formule inline dans une
+   parenthèse en italique — « *(Contrôle de tangence refait : $(T)$ passe
+   par…)* », corrigé SPC 2012 R — n'était couverte par aucun des trois
+   sélecteurs ci-dessous, et dépassait la carte d'épreuve de 62 px à 200 % de
+   texte sur 360 px ; `overflow-hidden` la coupait. */
+@media (max-width: 600px) {
+  .prose-lesson p > .katex,
+  .prose-lesson li > .katex,
+  .prose-lesson td > .katex,
+  .prose-lesson em > .katex,
+  .prose-lesson strong > .katex,
+  .prose-lesson :is(h2, h3, h4) > .katex {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.prose-lesson th {
+  text-align: left;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 2px solid var(--color-border-soft);
+  color: var(--color-text-primary);
+}
+
+.prose-lesson td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+  color: var(--color-text-secondary);
+}
+
+.prose-lesson tr:last-child td {
+  border-bottom: none;
+}
+
+/* Rung boundary (Day-6 followability, §11 section rhythm). Authored `---`
+   between rungs. The full-width hairline read as a Wikipedia table border and
+   was nearly invisible at reading speed; a SHORT centered rule with more air
+   is less ink but a clearer "chapter pause" — the boundary reads as rhythm,
+   not as furniture. (The lesson's leading h1+--- never reaches the renderer —
+   stripLeadingTitle in lib/content.ts — so this styles rung breaks only.) */
+.prose-lesson hr {
+  border: none;
+  border-top: 2px solid var(--color-border-soft);
+  width: 3rem;
+  margin: 4em auto;
+}
+
+/* ── LE PRESSE-PAPIER — chaque formule sortait EN DOUBLE ──────────────────
+   Mesuré le 2026-09-05 : 1 523 formules sur 1 540, sur les deux leçons
+   témoins. Un élève qui recopie « la tension u_C(t) aux bornes » dans ses
+   notes obtenait « la tension 𝑢 𝐶 ( 𝑡 ) u C ​ (t) aux bornes ».
+
+   POURQUOI. KaTeX rend chaque formule DEUX fois : un arbre MathML pour les
+   lecteurs d'écran (`.katex-mathml`) et un arbre HTML pour l'œil
+   (`.katex-html`). Le premier est masqué VISUELLEMENT — `clip-path:
+   inset(50%)`, 1×1 px — mais il reste dans le flux, donc dans la SÉLECTION,
+   donc dans le presse-papier. L'œil ne le voit jamais ; le copier-coller,
+   toujours.
+
+   `user-select: none` retire le MathML de la sélection SANS toucher à
+   l'arbre d'accessibilité : un lecteur d'écran continue de lire la formule
+   comme avant (c'est `aria-hidden` qui gouverne cela, et il n'est pas
+   touché). Ce que l'élève colle devient exactement ce qu'il voit.
+
+   CE QUE ÇA NE CORRIGE PAS, et il faut le savoir : `innerText` continue
+   d'inclure les deux arbres — les balayages qui lisent le texte rendu
+   voient donc encore la formule en double. C'est sans conséquence pour eux
+   (ils cherchent des motifs de rédaction, pas des formules), mais un
+   instrument futur qui compterait des caractères de prose s'y ferait
+   prendre. */
+.katex-mathml {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* KaTeX inline and display math */
+.prose-lesson .katex-display {
+  margin: 1.25em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* KaTeX harmonization with the reading serif (ADR 0024).
+   KaTeX keeps its own metrics-correct math fonts for symbols/variables (it must —
+   they carry the layout metrics), but two things are tuned so inline math sits
+   WITH the serif prose rather than colliding with it:
+   1. a small optical-size bump (KaTeX's Computer Modern runs visually small next
+      to Source Serif 4's larger x-height), and
+   2. text-mode atoms (\text{…}, words/units inside math) inherit the reading
+      serif so prose-language inside math matches the surrounding body. */
+.prose-lesson .katex {
+  font-size: 1.04em;
+}
+.prose-lesson .katex .mord.text,
+.prose-lesson .katex .textrm {
+  font-family: var(--font-reading-serif), Georgia, "Times New Roman", serif;
+}
+
+/* ── Dashboard grid — SUPPRIMÉ (R6, 2026-08-18). La grille à zones
+   nommées (primary/mastery/shelf/subjects) servait l'ancien accueil ;
+   ProgrammeMap l'a remplacée (578731e) et plus aucun composant ne
+   portait ces classes. L'historique de sa doctrine (et de la doctrine
+   « la marge grandit toute seule » qu'elle contenait) vit dans git. */
+
+/* ── Carte de maîtrise — le scroll imbriqué, retiré (audit Fable §3.5) ──────
+   L'ancienne règle enfermait 2 359 px de contenu dans 640 px avec sa propre
+   barre de défilement : piège à molette classique — la roulette agit sur le
+   bloc au lieu de la page, et rien ne dit combien de notions restent en
+   dessous. La liste coule maintenant dans la page ; sa longueur EST
+   l'information, pas un défaut à masquer.
+
+   Le bloc `@media (min-width: 1280px)` qui subsistait ici est supprimé
+   (2026-08-17). Il ne contenait plus qu'un `padding-right: 4px` — la marge
+   qu'on réservait à l'ascenseur disparu — et il le faisait à 1280 px, un
+   palier qui n'appartient plus à l'échelle. Son commentaire promettait
+   « le MÊME palier que la grille à deux colonnes » : celle-ci bascule
+   maintenant à 1200. Une règle vestigiale accrochée à un repère faux est
+   pire qu'absente : elle donne à croire que quelqu'un l'a voulue là.
+   `.mastery-map-scroll` reste comme crochet de classe côté MasteryMap. */
+
+/* ── Notion page layout — use the width (design brief #1) ──────────────────── */
+/*
+ * The notion page uses a two-column layout on desktop:
+ *   - Left margin rail (section label / progress) — 64px, fixed, subtle
+ *   - Right: prose + full-band figures in the content column
+ *
+ * Prose stays at ~65ch; figures/embeds/motion break out to the full band.
+ * On narrow screens the rail collapses and the page is single-column.
+ */
+
+/* The outer page grid: rail + content.
+ * ADR 0024 — adaptive window-size classes (M3 600 / 840):
+ *   compact  (<600)   single column, no rail
+ *   medium   (600–839) a NARROWER rail appears (the real tablet layout)
+ *   expanded (≥840)   the full rail + gap
+ * (Was a single bespoke 900px breakpoint that gave the whole 600–899 band the
+ *  bare compact layout — the audit's named medium/tablet gap.)
+ */
+.notion-page-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+/* medium (tablet) — narrow rail. Gutter on the 8 dp grid (24, not 20). */
+@media (min-width: 600px) {
+  .notion-page-grid {
+    grid-template-columns: 52px 24px 1fr;
+    align-items: start;
+  }
+}
+
+/* expanded (desktop) — full rail + gap. 208px (26 grid units) fits the longest
+   current section name ("L'entretien des oscillations", 28ch at 12px ≈ 175px +
+   dot/gap/padding) without truncation — Day-3 fallout fix: labels never
+   ellipsize; a rare longer future title wraps to a second line instead. */
+@media (min-width: 840px) {
+  .notion-page-grid {
+    grid-template-columns: 208px 32px 1fr;
+  }
+}
+
+/* extra-large (bp-xl, 1600px — LESSON-EXPERIENCE-SPEC §3.1) : une CINQUIÈME
+   colonne s'ouvre à droite pour la zone « à retenir ». La colonne de prose
+   ne bouge pas d'un pixel : .notion-prose garde son max-width de 65ch, et
+   c'est le vide autour d'elle qui se peuple, jamais elle qui s'élargit.
+   Sous ce palier, la colonne n'existe pas — pas de réserve, pas de
+   gouttière fantôme.
+
+   ÉCART ASSUMÉ AVEC LA SPEC : elle demandait 1536px, en citant « bp-wide
+   (1536px, existant — tailwind.config.ts) ». Ce palier N'EXISTE PAS : les
+   classes M3 du système sont bp-medium 600, bp-expanded 840, bp-large 1200,
+   bp-xl 1600 (src/lib/tokens.ts). Plutôt qu'inventer un sixième palier pour
+   une seule règle, la zone s'ouvre à bp-xl — la classe « extra-large » de
+   M3, celle que le système possède déjà. Elle laisse en outre la place
+   qu'il faut : la bande passe à 1484px, et 1484 + les gouttières tient à
+   l'aise dans 1600. */
+@media (min-width: 1600px) {
+  .notion-page-grid {
+    grid-template-columns: 208px 40px minmax(0, 1fr) 40px 264px;
+  }
+}
+
+/*
+ * The margin rail — quiet sticky rung list.
+ * Hidden on compact; shown from medium up as a sticky left fixture.
+ */
+.notion-rail {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .notion-rail {
+    display: block;
+    grid-column: 1;
+    /* Sticky — stays visible while the lesson scrolls */
+    position: sticky;
+    top: 5rem;
+    align-self: start;
+    /* Subtle vertical line on the right edge of the rail */
+    border-right: 1px solid var(--color-border-subtle);
+    padding-right: 12px;
+    /* Overflow visible so the dot indicator can spill slightly */
+    overflow: visible;
+    /* Optical alignment with the content column's first line (Day-3 fallout
+       fix): the first rung link centers its 12px label in a 48px touch target
+       (label center ≈ 24px from rail top) while the breadcrumb's 14px line
+       centers ≈ 10px from content top. -14px pulls the first label onto the
+       breadcrumb's optical line without shrinking the touch target. */
+    margin-top: -14px;
+  }
+}
+
+/* The content column — prose and wide-band elements live here */
+.notion-content {
+  min-width: 0; /* prevent grid blowout */
+}
+
+/*
+ * La zone « à retenir » — colonne de droite, palier wide seulement.
+ * Même politique collante que le rail de gauche (top: 5rem) : les deux
+ * fixtures encadrent la lecture à la même hauteur.
+ * Sous bp-xl elle n'est pas seulement invisible, elle ne participe PAS à
+ * la grille (display: none) : la grille n'a que trois colonnes à ce palier,
+ * et un cinquième enfant y créerait une ligne fantôme sous le contenu.
+ */
+.notion-retenir {
+  display: none;
+}
+
+@media (min-width: 1600px) {
+  .notion-retenir {
+    display: block;
+    grid-column: 5;
+    position: sticky;
+    top: 5rem;
+    align-self: start;
+    /* Optique : même correction que le rail, pour que la carte s'aligne sur
+       la première ligne de la colonne de contenu et non sur le bord du bloc. */
+    margin-top: -14px;
+  }
+}
+
+/* À l'impression, la colonne latérale disparaît : la formule qu'elle porte
+   est déjà dans le texte imprimé, à sa place. */
+@media print {
+  .notion-retenir {
+    display: none !important;
+  }
+}
+
+@media (min-width: 600px) {
+  .notion-content {
+    grid-column: 3;
+  }
+}
+
+/*
+ * Prose segment — bounded at ~65ch and CENTERED within the content column.
+ * This is the #4 fix: prose is no longer left-anchored under the rail.
+ * mx-auto centers the 65ch column in the remaining space of the content band,
+ * giving symmetric left/right margins in the reading area.
+ * ADR 0022: max-width now consumes --measure-prose (canonical source).
+ */
+.notion-prose {
+  max-width: var(--measure-prose);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*
+ * Wide-band element — figures, motion, embeds, checkpoints.
+ * These fill the content column (no centering constraint).
+ * Structural figures are capped in MediaDiagramFigure via inline maxWidth.
+ */
+.notion-wide-band {
+  width: 100%;
+}
+
+/* ── Chapter pagination (LESSON-EXPERIENCE-SPEC §1.3, ChapterShell.tsx) ──────
+   Entering-only movement: the incoming chapter slides+fades in over
+   --duration-view, direction-aware; the outgoing chapter simply disappears
+   (`hidden` — no exit animation, one movement on screen at a time, DESIGN-
+   BIBLE §5). Implemented as @keyframes rather than a plain `transition`: the
+   element goes from `hidden` to shown in the same tick a class is added, and
+   a transition needs a committed "from" state to animate away from (which
+   would require force-reflow trickery); an animation runs regardless of
+   prior state. ChapterShell adds the class only on user-triggered
+   navigation, never on the initial mount (§1.3: movement belongs to
+   navigating, not to loading). */
+.chapter-enter-forward,
+.chapter-enter-back {
+  animation: chapter-enter-forward var(--duration-view) cubic-bezier(0, 0, 0.2, 1);
+}
+.chapter-enter-back {
+  animation-name: chapter-enter-back;
+}
+@keyframes chapter-enter-forward {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes chapter-enter-back {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+/* Belt-and-braces alongside the global 0.01ms reduced-motion net above
+   (which already zeroes animation-duration for every element): explicitly
+   dropping the animation here means the entering chapter never even
+   receives a one-frame opacity dip before the global net's 0.01ms tick —
+   the swap is fully instant, not just imperceptibly fast. */
+@media (prefers-reduced-motion: reduce) {
+  .chapter-enter-forward,
+  .chapter-enter-back {
+    animation: none;
+  }
+}
+
+/* ── Stage-group reveal (StagedFigure.tsx, all staged figures) ───────────────
+   Replaces the old "re-inject the whole SVG string, new step group pops in
+   at full opacity instantly" contract. StagedFigure now patches the live
+   SVG subtree directly: a group falling below the current stage gets
+   `.stage-group-exit` before removal (`transitionend`-gated, `setTimeout`
+   fallback — same idiom as this file's print listener); groups behind the
+   current stage carry `.stage-group-dim` (opacity 0.55, animates in/out via
+   the plain `.stage-group` transition — covers both dimming on advance and
+   undimming on "Précédent"). Reuses --duration-standard/--duration-micro/
+   --ease-between only (no new tokens) — DESIGN-BIBLE calm-core discipline.
+   The newly-revealed group's OWN entrance is `.stage-child-enter`, below —
+   the group itself is never animated as one blob. */
+.stage-group {
+  transition: opacity var(--duration-standard) var(--ease-between);
+}
+.stage-group-dim {
+  opacity: 0.55;
+}
+.stage-group-exit {
+  opacity: 0;
+  transition: opacity var(--duration-micro) var(--ease-between);
+}
+
+/* ── Stage-child assemble (StagedFigure.tsx reconcile()) ──────────────────────
+   MOTION-CHOREOGRAPHY.md §1 "assemble": a staggered, thing-by-thing entrance
+   — "never fire all elements simultaneously (reads as 'pop', not
+   choreography)." A newly-revealed step group's DIRECT children (the
+   figure's actual "things" — a curve, an axis, a label) each get this class
+   with a JS-computed `animation-delay` (60–90ms apart, scaled by count per
+   §2.2), so the group visibly builds one piece at a time instead of the
+   whole step appearing at once — the "Imprint-style" deliberate reveal.
+   Duration/ease/travel match the spec exactly: 350ms, `power3.out`
+   (≈ tailwind's `ease-emphasized`, cubic-bezier(0.2, 0, 0, 1)), ~8px rise.
+   `animation-fill-mode: both` is load-bearing: without it, an element with a
+   nonzero delay renders at its NORMAL (fully opaque) style during the delay
+   window instead of holding at the keyframe's `from` state — every child
+   would flash visible immediately and only re-fade afterward, defeating the
+   stagger entirely. Longhand properties (not the `animation` shorthand) so
+   StagedFigure's inline `animation-delay` per child is never overwritten. */
+.stage-child-enter {
+  animation-name: stage-child-enter;
+  animation-duration: 350ms;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  animation-fill-mode: both;
+}
+@keyframes stage-child-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stage-child-enter {
+    animation: none;
+  }
+  .stage-group,
+  .stage-group-exit {
+    transition: none;
+  }
+}
+
+/* ── pulse-settle-once (interactive-figures, racines-unite pilot) ────────────
+   A ONE-SHOT, non-looping micro-affordance for a manipulable figure landing
+   back on its own worked example (docs/design/INTERACTIVE-FIGURE-SPEC.md) —
+   reaction to the student's OWN action, never ambient/looping, no score/
+   streak attaches (calm-core safe, DESIGN-BIBLE §0/§5). Toggled imperatively
+   by useInteractiveFigure.ts for ~450ms then removed. Belt-and-braces
+   alongside the global 0.01ms net: reduced-motion drops it outright rather
+   than relying on the net to compress it to imperceptible. */
+.pulse-settle-once {
+  animation: pulse-settle-once 0.45s var(--ease-between);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes pulse-settle-once {
+  0%   { transform: scale(1); }
+  45%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pulse-settle-once { animation: none; }
+}
+
+/* ── Shelf accordion (dashboard AvailableShelf.tsx) — calm height reveal,
+   no overshoot. Radix exposes --radix-accordion-content-height on the
+   Content element while its data-state is transitioning; @keyframes (not a
+   plain transition) so the "from" state doesn't need force-reflow trickery
+   — same rationale as the chapter-pagination animation above. */
+.shelf-accordion-content {
+  overflow: hidden;
+}
+.shelf-accordion-content[data-state="open"] {
+  animation: shelf-accordion-open var(--duration-standard) cubic-bezier(0, 0, 0.2, 1);
+}
+.shelf-accordion-content[data-state="closed"] {
+  animation: shelf-accordion-close var(--duration-standard) cubic-bezier(0.4, 0, 1, 1);
+}
+@keyframes shelf-accordion-open {
+  from { height: 0; }
+  to   { height: var(--radix-accordion-content-height); }
+}
+@keyframes shelf-accordion-close {
+  from { height: var(--radix-accordion-content-height); }
+  to   { height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shelf-accordion-content[data-state="open"],
+  .shelf-accordion-content[data-state="closed"] {
+    animation: none;
+  }
+}
+
+/* ── Scrollbar — refined floating thumb (warm, inset) ───────────────────────── */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* The 2px surface-colored border + padding-box clip makes the thumb float with
+   a small gap on each side — a quiet craft signal in long-form reading. */
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-soft);
+  border: 2px solid var(--color-surface-base);
+  background-clip: padding-box;
+  border-radius: 7px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-tertiary);
+  border: 2px solid var(--color-surface-base);
+  background-clip: padding-box;
+}
+
+/* ── Atelier « workspace » (refonte Studio R3) ───────────────────────────
+   Le canvas de travail : un fond de points discret — la texture qui dit
+   « plan de travail » sans peser (l'équivalent calme du quadrillage).
+   Jetons uniquement ; le pas de 22 px reste sous la grille de 8. */
+.fond-points {
+  background-image: radial-gradient(var(--figure-grid) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* ── Palette de commande (⌘K, refonte Studio R2) ────────────────────────
+   cmdk livre la mécanique (combobox ARIA, filtrage) sans style. Attention
+   à son anatomie : le `className` du Dialog atterrit sur la RACINE
+   [cmdk-root] elle-même — la première version le traitait comme un
+   conteneur plein écran et posait l'input et la liste côte à côte. On
+   style donc chaque nœud par son attribut : [cmdk-overlay] assombrit,
+   [cmdk-dialog] centre, .palette-commande (la racine) EST la carte. */
+[cmdk-overlay] {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay, 50);
+  /* 36 % et pas 22 : à 22 la page derrière ne s'assombrissait que de 4 %
+     et la carte ne décollait pas du fond (audit R6, P1-5). */
+  background: color-mix(in srgb, var(--color-text-primary) 36%, transparent);
+  backdrop-filter: blur(2px);
+}
+[cmdk-dialog] {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay, 50);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12vh var(--gutter) 0;
+  pointer-events: none; /* la carte les réactive — le clic hors carte ferme via l'overlay */
+}
+.palette-commande {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  width: min(640px, 100%);
+  overflow: hidden;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl, 16px);
+  background: var(--color-surface-overlay);
+  box-shadow: var(--elevation-4);
+}
+/* ── Mono INLINE dans du Geist (audit R6, P1-1) ─────────────────────────
+   Geist Mono a une chasse plus large et une graisse apparente plus faible :
+   à taille nominale dans une ligne Geist, « 14 chapitres » paraissait plus
+   gros ET plus clair que le texte voisin. 0.94em recale le gris optique.
+   Réservé au mono posé DANS une ligne de texte — un mono seul dans son
+   bloc (readout, colonne de minutes) garde sa taille nominale. */
+.mono-inline {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.94em;
+  letter-spacing: -0.005em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Le champ de saisie vit NU dans la carte (grammaire cmdk/Raycast) : pas
+   d'anneau propre — le :focus-visible global peignait outline + halo
+   accent sur toute la largeur (audit P1-5). La carte cadre déjà. */
+.palette-commande [cmdk-input]:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+.palette-groupe [cmdk-group-heading] {
+  padding: 10px 12px 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+.palette-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* ≥48 px : la palette est LA surface clavier/tactile — ses lignes à
+     ~40 px passaient sous le plancher §9 (audit ergonomie P1-2). */
+  min-height: var(--touch-target, 48px);
+  padding: 8px 12px;
+  border-radius: var(--radius-md, 8px);
+  font-size: 0.9375rem;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+/* La ligne active doit se lire D'UN COUP D'ŒIL — la palette se pilote aux
+   flèches. Un cran tonal (~1,03:1) était invisible (audits P1-1/P1-5) :
+   fond un cran plus haut + filet accent 2 px au bord gauche, jamais la
+   couleur seule. */
+.palette-item[data-selected="true"] {
+  background: var(--color-surface-container-lowest);
+  box-shadow: inset 2px 0 0 var(--color-accent);
+}
+.dark .palette-item[data-selected="true"] {
+  background: var(--color-surface-container-high);
+  box-shadow: inset 2px 0 0 var(--color-accent);
+}
+
+/* ── R4 · Continuité entre routes (View Transitions API) ────────────────
+   Un clic de l'élève déclenche la navigation ; l'ancienne vue fond dans la
+   nouvelle (crossfade sobre, durées des tokens motion, jamais d'overshoot —
+   bible §5). Firefox n'implémente pas l'API : bascule nette, comme avant —
+   dégradation propre, aucun polyfill. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--duration-standard);
+  animation-timing-function: var(--ease-between);
+}
+/* Le chrome ne participe pas au fondu : le header porte son propre nom de
+   transition, ses instantanés ne bougent pas d'un pixel entre deux routes
+   (il est identique partout par construction — gabarit global, §3.4). Le
+   contenu fond SOUS un chrome posé : c'est ça, la continuité. */
+.entete-site {
+  view-transition-name: entete-site;
+}
+/* Le filet global 0,01 ms ne voit pas les pseudo-éléments de l'API — le
+   débranchement doit être explicite. */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-image-pair(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* ── R4 · L'entrée des surfaces ouvertes PAR l'élève ────────────────────
+   Panneau Notions, menu compact, palette ⌘K : l'ouverture est un geste,
+   jamais un chargement — le stagger est donc permis ICI et seulement ici
+   (le mount de page reste sans animation, cœur calme §0).
+
+   Animation et non transition : Radix/cmdk montent le contenu déjà à
+   l'état ouvert — une transition n'a pas de changement d'état à jouer,
+   une animation se joue au mount. `both` est porteur : pendant le délai
+   des colonnes, l'élément tient son état `from` au lieu d'apparaître
+   plein puis de rejouer. */
+.panneau-entree[data-state="open"] {
+  animation: panneau-entree var(--duration-micro) var(--ease-enter) both;
+}
+/* Radix focalise le CONTENT à l'ouverture ; le catch-all :focus-visible
+   global dessinait alors l'anneau accent + halo autour du panneau entier.
+   Le conteneur n'est pas une cible — l'anneau appartient aux items. */
+.panneau-entree:focus-visible {
+  outline: none;
+  box-shadow: var(--elevation-3);
+}
+.panneau-entree[data-state="open"] .panneau-colonne {
+  animation: panneau-colonne var(--duration-standard) var(--ease-enter) both;
+}
+.panneau-entree[data-state="open"] .panneau-colonne:nth-child(2) { animation-delay: 30ms; }
+.panneau-entree[data-state="open"] .panneau-colonne:nth-child(3) { animation-delay: 60ms; }
+.panneau-entree[data-state="open"] .panneau-colonne:nth-child(4) { animation-delay: 90ms; }
+.panneau-entree[data-state="open"] .panneau-colonne:nth-child(5) { animation-delay: 120ms; }
+@keyframes panneau-entree {
+  from { opacity: 0; transform: translateY(-4px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes panneau-colonne {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+/* La palette : le voile fond (micro), la carte se pose (standard). */
+[cmdk-overlay] {
+  animation: palette-voile var(--duration-micro) var(--ease-enter) both;
+}
+.palette-commande {
+  animation: palette-carte var(--duration-standard) var(--ease-emphasized) both;
+}
+@keyframes palette-voile {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes palette-carte {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .panneau-entree[data-state="open"],
+  .panneau-entree[data-state="open"] .panneau-colonne,
+  [cmdk-overlay],
+  .palette-commande {
+    animation: none;
+  }
+}
+
+/* ── Mafs : rebranché sur les jetons du produit ─────────────────────────
+   Mafs arrive en thème sombre (fond noir). Un cadre noir au milieu d'une
+   page claire est exactement le contraire de la cible « fond blanc ». On
+   ne surcharge donc PAS des couleurs en dur : on mappe les variables de
+   Mafs sur les jetons `--figure-*` déjà définis dans les deux thèmes, si
+   bien que Mafs suit le thème du site sans code supplémentaire. */
+/* Spécificité doublée volontairement : `mafs/core.css` est importé au
+   niveau de la page, donc APRÈS ce fichier, et sa règle `.MafsView` a la
+   même spécificité — elle gagnerait par ordre de cascade. `.MafsView` deux
+   fois passe devant sans !important et sans dépendre de l'ordre d'import. */
+.MafsView.MafsView {
+  --mafs-fg: var(--figure-ink);
+  --mafs-line-color: var(--figure-grid);
+  --mafs-origin-color: var(--figure-ink-soft);
+  --mafs-blue: var(--figure-energy-C);
+  --mafs-green: var(--figure-energy-L);
+  --mafs-orange: var(--figure-accent);
+  --mafs-red: var(--figure-regime-pseudo);
+  --mafs-violet: var(--figure-regime-aperiodic);
+  --mafs-indigo: var(--figure-regime-periodic);
+  --mafs-pink: var(--figure-regime-aperiodic);
+  --mafs-yellow: var(--figure-regime-pseudo);
+  /* Fond transparent et pas de cadre : la scène de l'atelier fournit déjà
+     sa carte (surface la plus claire + bordure). Laisser Mafs peindre son
+     propre fond crème dessinait un rectangle plus foncé DANS la carte, avec
+     une deuxième bordure — deux cadres emboîtés pour une seule figure. */
+  --mafs-bg: transparent;
+  border-radius: var(--radius-lg);
+  border: 0;
+  /* Mafs pose `touch-action: none` sur toute la vue. Audit du 2026-08-15 :
+     à 390 px de large la figure occupe 55 % de la hauteur de l'écran, et un
+     balayage vertical démarré dessus — la zone la plus grande et la plus
+     attirante de la page — ne faisait RIEN. La page passait pour figée.
+     On rend donc le défilement vertical à la vue, et on garde le blocage
+     total sur le seul point déplaçable, qui en a réellement besoin. */
+  touch-action: pan-y;
+}
+.MafsView.MafsView [class^="mafs-movable-point"] {
+  touch-action: none;
+}
+
+/* ── Autofill : neutraliser le bleu de Chrome ───────────────────────────────
+   Audit Fable §3.11. Chrome peint les champs pré-remplis avec son propre
+   fond bleu pâle, non surchargeable par `background-color` : en thème
+   sombre, deux rectangles clairs crevaient l'écran au milieu d'une page
+   chocolat, et le texte saisi restait noir sur bleu.
+
+   Le seul levier est `box-shadow: inset` (le fond peint par l'agent
+   utilisateur passe DERRIÈRE) plus `-webkit-text-fill-color` (la couleur du
+   texte, que `color` ne gouverne pas en état d'autofill). Le délai de
+   transition d'un siècle est l'astuce consacrée : elle empêche l'agent
+   utilisateur de rejouer sa propre transition de fond par-dessus. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px var(--color-surface-raised) inset;
+  box-shadow: 0 0 0 1000px var(--color-surface-raised) inset;
+  -webkit-text-fill-color: var(--color-text-primary);
+  caret-color: var(--color-text-primary);
+  transition: background-color 100000s ease-in-out 0s;
+}
+
+/* ── Ligne de bouton radio d'une scène (.ligne-radio) ─────────────────────────
+   La cible est la LIGNE (48 px, toute la largeur) : c'est elle qui porte
+   l'anneau et le halo quand le rond reçoit le focus au clavier, comme toute
+   autre commande du panneau ; le rond natif n'en porte pas un second. */
+.ligne-radio:has(input:focus-visible) {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--focus-halo);
+}
+.ligne-radio input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+/* La pièce EN PLACE porte une surface ; le survol, un voile plus léger. Sans
+   elle, la ligne cochée n'était qu'un rond natif de 13 px et la seule ligne
+   remplie était celle sous le pointeur : le survol se lisait comme la sélection
+   (vague 2 du banc de diffraction — sept fentes, quatre lasers). Le voile du
+   survol (0,06) reste sous celui du coché (0,10) : la règle l'emporte sur
+   `.state-layer:hover` par sa spécificité. */
+.ligne-radio:has(input:checked)::after {
+  opacity: var(--state-pressed);
+}
+
+/* ── Curseur de réglage (.curseur) ──────────────────────────────────────────
+   Audit Fable §3.9 : les `input[type=range]` natifs mesuraient 16 px de haut
+   avec une poignée de 14 px, alors que le jeton `--touch-target: 48px` existe
+   depuis la phase A. Sur l'atelier, ce curseur EST le mécanisme pédagogique
+   central — c'est le geste par lequel l'élève découvre que la pente est un
+   rapport. Le laisser à 14 px, c'est rendre l'idée difficile à atteindre au
+   doigt.
+
+   Construction : la boîte fait 48 px (zone de préhension), la piste visible
+   6 px, la poignée 24 px. Le halo de focus reprend celui du reste du site.
+   Les deux moteurs ont des pseudo-éléments incompatibles — d'où la
+   duplication WebKit/Firefox, qui ne peut pas être factorisée (un sélecteur
+   inconnu invalide toute la règle qui le contient).
+
+   RESTÉE SANS EMPLOI jusqu'au 2026-09-24 : les scènes 3D ont réintroduit le
+   curseur natif de 14 px que cette règle corrigeait (revue ergonomie — « une
+   règle présente et sans effet », ADR 0038). La poignée lit
+   `--curseur-poignee` : l'accent par défaut, l'encre douce avec
+   `.curseur-neutre` — dans une scène, l'accent est réservé à l'objet étudié. */
+.curseur {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: var(--touch-target);
+  background: transparent;
+  cursor: pointer;
+}
+.curseur:focus-visible {
+  outline: none;
+}
+.curseur::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-border-subtle);
+}
+.curseur::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-border-subtle);
+}
+.curseur::-moz-range-progress {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--curseur-poignee, var(--color-accent));
+}
+.curseur::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--curseur-poignee, var(--color-accent));
+  border: 2px solid var(--color-surface-raised);
+  /* (48 − 6) / 2 − (24 − 6) / 2 = centrage de la poignée sur la piste */
+  margin-top: -9px;
+  transition: box-shadow var(--duration-micro) var(--ease-enter);
+}
+.curseur::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--curseur-poignee, var(--color-accent));
+  border: 2px solid var(--color-surface-raised);
+  transition: box-shadow var(--duration-micro) var(--ease-enter);
+}
+.curseur:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px var(--focus-halo);
+}
+.curseur:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 4px var(--focus-halo);
+}
+/* Le survol : la poignée qu'on tient dans quatre étapes sur cinq était la
+   dernière commande sans état de survol (revue ergonomie de la cuve, vague 2).
+   Un halo plus étroit que celui du focus : les deux se distinguent. */
+.curseur:hover:not(:disabled)::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px var(--focus-halo);
+}
+.curseur:hover:not(:disabled)::-moz-range-thumb {
+  box-shadow: 0 0 0 3px var(--focus-halo);
+}
+/* Un curseur que la scène pilote elle-même (le récepteur pendant son balayage). */
+.curseur:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.curseur-neutre {
+  --curseur-poignee: var(--figure-ink-soft);
+}
+
+/* ── « La page se prépare… » (HydrationNotice, HANDOFF §11.28) ────────────
+   Rendue par le serveur, invisible 1,5 s : sur un réseau normal, React a pris
+   la main avant et personne ne la voit ; sur 3G lente, elle dit ce qui se
+   passe pendant que les commandes sont encore désactivées. Le filet
+   `prefers-reduced-motion` réduit la durée du fondu, pas le délai. */
+/* Une commande désactivée AVANT l'hydratation (`aria-busy`, HANDOFF §11.28)
+   est désactivée tout de suite — un appui n'a jamais lieu dans le vide — mais
+   garde son apparence normale pendant 1 s : sur un réseau normal React a pris
+   la main avant, et rien ne clignote au chargement ; sur 3G lente, elle
+   s'estompe et le dit (curseur d'attente). */
+button[aria-busy="true"]:disabled {
+  opacity: 1;
+  cursor: progress;
+  animation: commande-en-attente 200ms 1000ms forwards;
+}
+@keyframes commande-en-attente {
+  to { opacity: var(--state-disabled); }
+}
+
+[data-hydration-notice] {
+  opacity: 0;
+  animation: hydration-notice-in 200ms 1500ms forwards;
+}
+
+/* ── Windows « contraste élevé » (forced-colors: active) — HANDOFF §11.36.
+   Les couleurs personnalisées et les ombres sautent ; un bouton sans bordure
+   (« Commencer l'épreuve », Notions, Aa, le rail des chapitres) y devenait du
+   texte nu, mesuré le 2026-09-11. Un contour SYSTÈME, en `outline` négatif
+   pour ne pas toucher à la mise en page ; `:where()` pour que l'anneau de
+   focus (2 px, :focus-visible) garde le dessus. Les liens et les cartes
+   tiennent déjà (soulignement, bordures). */
+@media (forced-colors: active) {
+  :where(button:not(:disabled), .btn-primary) {
+    outline: 1px solid ButtonText;
+    outline-offset: -1px;
+  }
+  :where(button:disabled) {
+    outline: 1px solid GrayText;
+    outline-offset: -1px;
+  }
+}
+@keyframes hydration-notice-in {
+  to { opacity: 1; }
+}
+/* Quand la veille d'hydratation parle (bandeau « Recharger »), la ligne
+   « se prépare… » se tait : deux messages au même endroit se contrediraient.
+   La classe est posée par le script en ligne (layout / PageShell), retirée
+   par SignalVivant. */
+html.hydratation-perdue [data-hydration-notice] {
+  display: none;
+}
+

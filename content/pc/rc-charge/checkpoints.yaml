@@ -1,0 +1,345 @@
+notion: rc-charge
+skill_code: pc_rc_charge
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — rc-charge pilot)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong PHYSICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT
+# altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict   (in R0)     — COMMIT gate: turns the rhetorical "prends
+#                                 position" into a real MCQ commit before the
+#                                 reveal. Probes uc-saute-instantanement.
+#   cp-r2-uc-continue (after R2) — rupture gate: u_C CONTINUITY at t=0.
+#   cp-r2-asymptote  (after R2)  — rupture gate: the EXPONENTIAL ASYMPTOTE
+#                                 (approach that decelerates, no overshoot).
+#   cp-r2-i-initial  (after R2)  — rupture gate: i at t=0 (i(0+) = E/R).
+#   cp-r3-tau        (after R3)  — rupture gate: τ = RC (expression AND meaning).
+#
+# Clone note: cp-r2-uc-continue clones RC-1's stem, cp-r2-asymptote clones
+# RC-5's, cp-r2-i-initial clones RC-2's, cp-r3-tau clones RC-4's. Distractors
+# are curated so EVERY distractor carries a named misconception tag. cp-r0-
+# predict is an original commit item (not in the end bank). No end-bank tally
+# is adjusted — inline surfacing does not double-count.
+#
+# Boundary guard: pure dipôle RC (charge sous échelon). No bobine, no
+# oscillations, no Laplace, no montage amplificateur opérationnel. u_C
+# continue / i discontinue at t=0; τ measured off the graph or computed from
+# RC; asymptote read as u_C(∞)=E.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns "prends position avant de continuer" into a real MCQ
+  #        commit before the oscilloscope reveal. Probes:
+  #        uc-saute-instantanement (the "charge instantanée" prediction).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_rc_charge
+    tags: [checkpoint, formative, misconception_driven, pc_rc_charge, hook_commit]
+    primary_misconception: mc.physics.pc_rc_charge.uc-saute-instantanement
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      On ferme l'interrupteur d'un dipôle RC série : générateur idéal de tension
+      constante $E$, résistance $R$, condensateur initialement déchargé.
+      **Que va faire la tension $u_C(t)$ aux bornes du condensateur ?**
+      Engage-toi — c'est ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Elle saute instantanément à $E$ : le condensateur se remplit d'un seul coup dès la fermeture de l'interrupteur."
+        correct: false
+        misconception: mc.physics.pc_rc_charge.uc-saute-instantanement
+        feedback: |
+          Modèle détecté : « le condensateur se charge d'un coup ». C'est la
+          prédiction la plus fréquente — et la réalité va dans l'autre sens.
+          Regarde la trace réelle juste en dessous : $u_C$ ne saute pas, elle
+          **grimpe progressivement**. Une tension de condensateur est continue
+          ($u_C = q/C$, et la charge ne peut pas se téléporter avec un courant
+          fini) : elle ne peut pas sauter.
+
+      - id: B
+        text: "Elle monte en ligne droite, à vitesse rigoureusement constante, jusqu'à $E$, puis s'arrête net une fois cette valeur atteinte."
+        correct: false
+        misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
+        feedback: |
+          Modèle détecté : « le verre qu'on remplit au robinet », à débit
+          constant. Il se contredit lui-même : à l'instant où $u_C = E$, la loi
+          des mailles donne $u_R = E - u_C = 0$ donc $i = 0$ — le courant serait
+          à la fois resté constant et tombé à zéro. La montée n'est pas une
+          droite : elle décélère.
+
+      - id: C
+        text: "Elle part de $0$ et grimpe progressivement vers $E$, vite au début puis de plus en plus lentement, sans jamais dépasser $E$."
+        correct: true
+        feedback: |
+          Exact — et c'est le bon réflexe : ni saut, ni droite. La vraie
+          question commence maintenant : **pourquoi** la montée décélère-t-elle,
+          et **qu'est-ce qui fixe la durée** de cette charge ? C'est toute la
+          leçon.
+
+      - id: D
+        text: "Elle dépasse $E$ pendant un bref instant, puis redescend et finit par se stabiliser exactement sur cette valeur."
+        correct: false
+        misconception: mc.physics.pc_rc_charge.uc-depasse-E
+        feedback: |
+          Modèle détecté : un dépassement, comme une oscillation. Il n'y en a
+          pas dans un dipôle RC : $u_C$ croît de façon monotone vers $E$ sans
+          jamais le franchir (dépasser $E$ demanderait $E - u_C < 0$, donc un
+          courant négatif, qui ne se produit pas pendant la charge). Le
+          dépassement est réservé aux circuits avec bobine (RLC).
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r2-uc-continue | placed AFTER R2
+  #        Rupture gate: u_C CONTINUITY at t=0. Clone of RC-1's stem.
+  #        Probes uc-saute-instantanement.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-uc-continue
+    rung: "R2"
+    habilete: utilisation
+    skill_code: pc_rc_charge
+    tags: [checkpoint, formative, misconception_driven, pc_rc_charge]
+    primary_misconception: mc.physics.pc_rc_charge.uc-saute-instantanement
+    item_source: clone_of_RC-1
+    lesson_placement: in_R2
+
+    stem: |
+      On vient de poser la solution $u_C(t) = E\left(1 - e^{-t/\tau}\right)$.
+      Juste après la fermeture, à $t = 0^+$ (condensateur initialement
+      déchargé), que vaut la tension $u_C(0^+)$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$u_C(0^+) = 0$ : la tension du condensateur est continue, elle part de sa valeur d'avant la fermeture."
+        correct: true
+        feedback: |
+          Exact. $u_C(0^-) = 0$ (condensateur déchargé), et la continuité impose
+          $u_C(0^+) = u_C(0^-) = 0$. La solution le confirme :
+          $u_C(0) = E(1 - e^{0}) = 0$. La tension part de zéro, puis grimpe.
+
+      - id: B
+        text: "$u_C(0^+) = E$ : le condensateur se charge instantanément dès la fermeture de l'interrupteur."
+        correct: false
+        misconception: mc.physics.pc_rc_charge.uc-saute-instantanement
+        feedback: |
+          Modèle détecté : « charge instantanée ». Impossible : $u_C = q/C$, et
+          faire sauter $q$ exigerait un courant infini. $u_C$ est continue —
+          elle vaut $0$ à $t = 0^+$, exactement comme juste avant.
+
+      - id: C
+        text: "$u_C(0^+) = E$, atteinte en montant en ligne droite dès l'instant de la fermeture du circuit."
+        correct: false
+        misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
+        feedback: |
+          Modèle détecté : montée en ligne droite à débit constant. La montée
+          n'est pas une droite (elle décélère), et surtout la valeur à
+          $t = 0^+$ est $0$, pas $E$ : la tension part de zéro.
+
+      - id: D
+        text: "$u_C(0^+)$ dépasse brièvement la valeur $E$ avant de se stabiliser sur celle-ci."
+        correct: false
+        misconception: mc.physics.pc_rc_charge.uc-depasse-E
+        feedback: |
+          Modèle détecté : un dépassement. La solution $E(1 - e^{-t/\tau})$ croît
+          de façon monotone de $0$ vers $E$, sans jamais le franchir. Pas de
+          dépassement dans un dipôle RC.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-asymptote | placed AFTER R2
+  #        Rupture gate: the EXPONENTIAL ASYMPTOTE — a decelerating
+  #        approach, no overshoot. Clone of RC-5's stem.
+  #        Probes uc-depasse-E.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-asymptote
+    rung: "R2"
+    habilete: utilisation
+    skill_code: pc_rc_charge
+    tags: [checkpoint, formative, misconception_driven, pc_rc_charge]
+    primary_misconception: mc.physics.pc_rc_charge.uc-depasse-E
+    item_source: clone_of_RC-5
+    lesson_placement: in_R2
+
+    stem: |
+      Comment la tension $u_C$ atteint-elle sa valeur finale $E$ lors de la
+      charge d'un condensateur sous un échelon de tension ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Progressivement, en se rapprochant de $E$ de plus en plus lentement : environ $63\\ \\%$ à $t = \\tau$, plus de $99\\ \\%$ à $t \\approx 5\\tau$."
+        correct: true
+        feedback: |
+          Exact. $u_C(t) = E\left(1 - e^{-t/\tau}\right)$ est une approche
+          exponentielle qui décélère : rapide au début (pente $E/\tau$), puis de
+          plus en plus lente. Elle franchit $63\ \%$ du chemin en une constante
+          de temps, puis s'approche de $E$ sans jamais le dépasser.
+
+      - id: B
+        text: "Instantanément : dès la fermeture de l'interrupteur, la tension $u_C$ saute directement à $E$."
+        correct: false
+        misconception: mc.physics.pc_rc_charge.uc-saute-instantanement
+        feedback: |
+          Modèle détecté : « charge instantanée ». Un saut de $u_C$ exigerait un
+          courant infini. La montée est continue, sur une durée fixée par
+          $\tau = RC$.
+
+      - id: C
+        text: "En ligne droite, à débit rigoureusement constant, jusqu'à la valeur $E$, où la charge s'arrête alors net."
+        correct: false
+        misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
+        feedback: |
+          Modèle détecté : « verre qu'on remplit au robinet ». Il se contredit :
+          un courant constant qui tombe brutalement à zéro quand $u_C = E$ est
+          impossible. La montée décélère, elle ne suit pas une droite.
+
+      - id: D
+        text: "Elle dépasse $E$ un court instant, puis redescend et se stabilise sur cette valeur."
+        correct: false
+        misconception: mc.physics.pc_rc_charge.uc-depasse-E
+        feedback: |
+          Modèle détecté : un dépassement suivi d'un retour, comme une
+          oscillation amortie. Aucun dépassement dans un dipôle RC :
+          $E(1 - e^{-t/\tau})$ croît de façon monotone vers $E$ (le franchir
+          demanderait un courant négatif pendant la charge). Le dépassement est
+          propre aux circuits avec bobine.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r2-i-initial | placed AFTER R2
+  #        Rupture gate: i at t=0 (i(0+) = E/R, the current is
+  #        discontinuous where u_C is continuous). Clone of RC-2's stem.
+  #        Probes courant-part-de-zero.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-i-initial
+    rung: "R2"
+    habilete: utilisation
+    skill_code: pc_rc_charge
+    tags: [checkpoint, formative, misconception_driven, pc_rc_charge]
+    primary_misconception: mc.physics.pc_rc_charge.courant-part-de-zero
+    item_source: clone_of_RC-2
+    lesson_placement: in_R2
+
+    stem: |
+      Dans ce dipôle RC (générateur $E$, résistance $R$, condensateur
+      initialement déchargé), que vaut l'intensité du courant $i$ juste après
+      la fermeture, à $t = 0^+$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$i(0^+) = E/R$, sa valeur maximale : $u_C = 0$ donc toute la tension $E$ tombe sur $R$."
+        correct: true
+        feedback: |
+          Exact. À $t = 0^+$, $u_C = 0$ (continuité), donc $u_R = E$ et
+          $i = E/R$ — le maximum. Le courant décroît ensuite vers $0$. Il est
+          **discontinu** à $t = 0$ (il passe de $0$ à $E/R$), là où $u_C$ reste
+          continue.
+
+      - id: B
+        text: "$i(0^+) = 0$ : le courant part de zéro et croît ensuite, comme $u_C$."
+        correct: false
+        misconception: mc.physics.pc_rc_charge.courant-part-de-zero
+        feedback: |
+          Modèle détecté : on confond $i$ avec $u_C$. C'est $u_C$ qui part de
+          zéro (elle est continue) ; le courant, lui, est discontinu et part au
+          contraire de son **maximum** $E/R$. À $t = 0^+$, $u_C = 0$ donc toute
+          la tension $E$ est sur $R$.
+
+      - id: C
+        text: "$i(0^+) = 0$ : le condensateur bloque le courant dès la fermeture, comme un interrupteur ouvert."
+        correct: false
+        misconception: mc.physics.pc_rc_charge.condensateur-conduit-en-permanent
+        feedback: |
+          Modèle détecté : le comportement du **régime permanent** appliqué à
+          $t = 0$. C'est en régime permanent ($t \gg \tau$) que le condensateur
+          chargé bloque le courant continu. À $t = 0^+$ c'est l'inverse : vide,
+          il n'oppose aucune tension, et le courant est maximal.
+
+      - id: D
+        text: "$i$ reste ensuite constant à $E/R$ pendant toute la charge."
+        correct: false
+        misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
+        feedback: |
+          Modèle détecté : « débit constant ». $i = (E - u_C)/R$ décroît à
+          mesure que $u_C$ monte : le courant part de $E/R$ mais diminue
+          continûment vers $0$, il ne reste pas constant.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r3-tau | placed AFTER R3
+  #        Rupture gate: τ = RC — its EXPRESSION/unit AND its MEANING
+  #        (a characteristic time, not the instant charge "stops").
+  #        Clone of RC-4's stem. Probes tau-mauvais-groupement.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-tau
+    rung: "R3"
+    habilete: application_experimentale
+    skill_code: pc_rc_charge
+    tags: [checkpoint, formative, misconception_driven, pc_rc_charge, document_experimental]
+    primary_misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+    item_source: clone_of_RC-4
+    lesson_placement: after_R3
+
+    stem: |
+      Quelle est l'expression de la constante de temps d'un dipôle RC, son
+      unité, et que représente-t-elle ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$\\tau = RC$, en secondes : c'est la durée caractéristique de la charge ($63\\ \\%$ de $E$ atteints à $t = \\tau$, régime permanent à $t \\approx 5\\tau$)."
+        correct: true
+        feedback: |
+          Exact. $\Omega \times F = s$ : $RC$ est bien un temps. Ce n'est pas un
+          instant où « ça s'arrête » (la charge ne s'arrête jamais tout à fait),
+          c'est l'échelle qui règle toute la montée — $63\ \%$ franchis en une
+          constante de temps.
+
+      - id: B
+        text: "$\\tau = R/C$, exprimée elle aussi en secondes dans le Système International."
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+        feedback: |
+          Mauvais groupement. L'analyse dimensionnelle tranche : c'est le
+          **produit** $RC$ qui donne une seconde ($\Omega \times F = s$), pas le
+          quotient $R/C$.
+
+      - id: C
+        text: "$\\tau = L/R$, exactement comme dans un circuit comportant une bobine."
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+        feedback: |
+          C'est la constante de temps du dipôle RL, où le paramètre est une
+          inductance $L$. Le dipôle RC n'a pas de bobine : sa constante de temps
+          est $\tau = RC$.
+
+      - id: D
+        text: "$\\tau = RC$, mais c'est l'instant précis auquel la charge s'arrête et où la tension $u_C$ atteint enfin la valeur $E$."
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-instant-d-arret
+        feedback: |
+          Le groupement est bon, le sens ne l'est pas. À $t = \tau$, $u_C$ n'a
+          atteint que $63\ \%$ de $E$ — pas $E$. La charge ne s'arrête pas à
+          $\tau$ ; elle continue, de plus en plus lentement, et n'est
+          « terminée » qu'aux alentours de $5\tau$. $\tau$ est une échelle de
+          temps, pas un instant d'arrêt.

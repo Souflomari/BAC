@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" width="640" height="330"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Le quotient de réaction Qr = [ester][eau] / [acide][alcool] est placé sur une jauge verticale, où la constante d’équilibre K est fixée comme cible. Au départ, Qr est égal à K : le système est à l’équilibre. Un excès de réactif augmente le dénominateur [acide][alcool] : Qr,i chute sous K, et le système évolue dans le sens direct — l’estérification — pour le rejoindre. Éliminer l’eau ou l’ester diminue le numérateur [ester][eau] : Qr chute de nouveau sous K, et ce geste, répétable, permet d’approcher une conversion quasi totale. K reste fixe sur la jauge tout au long.">
+  <title>Déplacer l&#8217;équilibre : forcer Qr,i sous K</title>
+  <!--
+    qr-k-deplacement.svg — schéma STRUCTURAL (jauge verticale qualitative,
+    pas un graphe à l'échelle), STAGED (LESSON-EXPERIENCE-SPEC §2.5, seuil
+    des schémas : ≥3 couches sémantiques ET un ordre de couches qui est un
+    geste d'enseignement — ici, exactement l'ordre des trois gestes du
+    rung R5 du texte : poser le critère Qr/K, puis l'excès de réactif, puis
+    l'élimination d'un produit). Modèle le plus proche dans le corpus :
+    critere-qr-k.svg (content/pc/evolution-spontanee/media/critere-qr-k.svg)
+    — même logique de pivot K posé d'abord, puis des cas comparés — mais en
+    jauge VERTICALE (demandée par le brief) plutôt qu'horizontale, et avec
+    la fraction Qr elle-même rendue en toutes lettres (numérateur/barre/
+    dénominateur, en SVG natif, pas une image de formule).
+
+    Ce que la figure montre :
+      - la fraction Qr = [ester][eau] / [acide][alcool], posée à gauche —
+        chrome permanent dès l'étape 1 (comme la jauge elle-même) ;
+      - une jauge verticale QUALITATIVE (un nombre-droite, pas un axe
+        chiffré : aucune valeur numérique de Qr ou de K n'est portée —
+        même convention déclarée que critere-qr-k.svg) — chrome permanent ;
+      - step-1 : K posé comme cible fixe sur la jauge, avec Qr,i confondu
+        avec K au départ (le système part à l'équilibre) ;
+      - step-2 : le premier geste (excès de réactif) — une flèche ↑ sur le
+        dénominateur [acide][alcool] de la fraction, et un nouveau marqueur
+        Qr,i qui apparaît EN DESSOUS de K sur la jauge, relancé vers K par
+        une flèche « sens direct (estérification) » ;
+      - step-3 : les deuxième et troisième gestes (éliminer l'eau ou
+        l'ester) — une flèche ↓ sur le numérateur [ester][eau], et un
+        nouveau marqueur Qr,i qui retombe ENCORE en dessous de K, avec une
+        icône de boucle et l'étiquette « répétable → conversion quasi
+        totale » (ce geste, contrairement au premier, peut se répéter en
+        continu — R5 du texte : « on peut répéter cette relance
+        indéfiniment »).
+      K NE BOUGE JAMAIS sur la jauge, dans aucune étape : c'est le point
+      central de la figure, qui prolonge visuellement effet-catalyseur.svg
+      (« même K, seulement plus vite ») avec son symétrique thermodynamique
+      (« même K, mais Qr,i déplacé, donc une nouvelle composition
+      d'équilibre »).
+
+    Géométrie (calculée, pas devinée) :
+      jauge verticale : x = 460, de y = 270 (origine « 0 », Qr ≥ 0 par
+        construction physique) à y = 80 (flèche ouverte, Qr non borné).
+      K (pivot, fixe) : y = 160 — position centrée sur la jauge uniquement
+        pour la mise en page (comme dans critere-qr-k.svg, K n'a pas de
+        valeur numérique réelle ici : elle dépend entièrement de la
+        réaction — K = 4 pour le couple du rung R3, mais tout autre couple
+        aurait un K différent).
+      marqueur Qr,i (étape 2) : y = 205 (en dessous de K), flèche vers
+        y = 168 (juste sous le tick K).
+      marqueur Qr,i (étape 3) : y = 240 (plus bas encore que l'étape 2 —
+        SCHÉMATIQUE : rien n'indique dans le texte que ce second écart soit
+        plus grand ou plus petit que le premier, seulement qu'il est
+        « répétable » ; l'écart croissant illustré ici sert uniquement à
+        distinguer visuellement les deux marqueurs sur la même jauge, pas
+        à affirmer une comparaison quantitative entre les deux gestes),
+        flèche vers le MÊME point y = 168 que l'étape 2 (les deux gestes
+        relancent le système vers le même K).
+
+    Rôle des couleurs (une seule couleur distinctive, --figure-accent) :
+      K (tige, disque, étiquette), les deux marqueurs Qr,i, leurs flèches
+        de relance, les flèches ↑/↓ sur la fraction, l'icône de boucle,
+        les étiquettes de lecture                                  : accent
+      la jauge elle-même (tige, flèche, « 0 », « Qr »), la fraction
+        Qr = […]/[…] (chrome, présente dès l'étape 1), la note
+        d'équilibre initiale                                       : ink / ink-soft
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Déplacer l&#8217;équilibre : forcer Q<tspan dy="3" font-size="8.5">r,i</tspan><tspan dy="-3"> sous K</tspan>
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="20" y="34" width="600" height="260" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ── Chrome permanent : la fraction Qr et la jauge verticale ──────── -->
+  <text x="45" y="97" font-size="16" font-style="italic" fill="var(--figure-ink)">Q<tspan
+        dy="4" font-size="11">r</tspan><tspan dy="-4"> =</tspan></text>
+  <text x="175" y="78" text-anchor="middle" font-size="13" fill="var(--figure-ink)">[ester][eau]</text>
+  <line x1="95" y1="90" x2="255" y2="90" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <text x="175" y="109" text-anchor="middle" font-size="13" fill="var(--figure-ink)">[acide][alcool]</text>
+
+  <line x1="460" y1="270" x2="460" y2="80"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="460,80 455.5,91 464.5,91" fill="var(--figure-ink-soft)"/>
+  <line x1="456" y1="270" x2="464" y2="270" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="445" y="274" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+  <text x="460" y="68" text-anchor="middle" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">Q<tspan dy="3" font-size="7.5">r</tspan></text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — K posé comme cible fixe ; Qr,i = K au départ
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <line x1="420" y1="160" x2="500" y2="160"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <circle cx="460" cy="160" r="4" fill="var(--figure-accent)"/>
+    <text x="508" y="166" font-size="15" font-style="italic" font-weight="600"
+          fill="var(--figure-accent)">K</text>
+    <text x="460" y="125" text-anchor="middle" font-size="10"
+          fill="var(--figure-ink-soft)">(Q<tspan dy="3" font-size="7">r,i</tspan><tspan
+          dy="-3"> = K : système à l&#8217;équilibre)</tspan></text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — premier geste : excès de réactif
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Flèche ↑ sur le dénominateur [acide][alcool] -->
+    <text x="262" y="112" font-size="16" font-weight="600" fill="var(--figure-accent)">&#8593;</text>
+
+    <!-- Qr,i chute sous K -->
+    <circle cx="460" cy="205" r="3.6" fill="var(--figure-accent)"/>
+    <text x="440" y="209" text-anchor="end" font-size="10" font-style="italic"
+          fill="var(--figure-accent)">Q<tspan dy="3" font-size="7">r,i</tspan></text>
+
+    <!-- Flèche de relance vers K -->
+    <line x1="460" y1="202" x2="460" y2="171"
+          stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="460,166 455.5,176 464.5,176" fill="var(--figure-accent)"/>
+
+    <text x="500" y="186" font-size="11" font-weight="600" fill="var(--figure-accent)">sens direct</text>
+    <text x="500" y="201" font-size="9.5" fill="var(--figure-accent)">(estérification)</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — deuxième et troisième gestes : éliminer eau/ester
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Flèche ↓ sur le numérateur [ester][eau] -->
+    <text x="262" y="83" font-size="16" font-weight="600" fill="var(--figure-accent)">&#8595;</text>
+
+    <!-- Qr,i retombe encore sous K -->
+    <circle cx="460" cy="240" r="3.6" fill="var(--figure-accent)"/>
+    <text x="440" y="244" text-anchor="end" font-size="10" font-style="italic"
+          fill="var(--figure-accent)">Q<tspan dy="3" font-size="7">r,i</tspan></text>
+
+    <!-- Flèche de relance vers le même K -->
+    <line x1="460" y1="237" x2="460" y2="171"
+          stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="460,166 455.5,176 464.5,176" fill="var(--figure-accent)"/>
+
+    <!-- Icône de boucle : geste répétable (glyphe, pas un tracé dédié) -->
+    <text x="500" y="222" font-size="13" font-weight="600" fill="var(--figure-accent)">&#8635; répétable</text>
+    <text x="498" y="237" font-size="9" fill="var(--figure-accent)">conversion quasi totale</text>
+  </g><!-- /step-3 -->
+
+</svg>

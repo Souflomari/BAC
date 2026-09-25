@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 350"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Les courbes de distribution %AH et %A− du couple CH3COOH/CH3COO− (pKA = 4,8), avec trois points lus : à pH = 3,8, environ 91 % AH et 9 % A− ; à pH = 4,8 (= pKA), 50 % chacune ; à pH = 5,8, environ 91 % A− et 9 % AH.">
+  <title>Lire trois points sur la courbe de distribution</title>
+  <!--
+    distribution-curseur-pH.svg — STAGED (4 étapes) + MANIPULABLE
+    (docs/design/INTERACTIVE-FIGURE-SPEC.md), rung R8, second média du
+    chapitre : ce n'est plus un substitut statique au curseur interactif
+    prescrit par la spec (spec-extension.md, [[embed:distribution-curseur-pH]])
+    — c'est maintenant CE curseur, déverrouillé après la dernière étape
+    (distribution-curseur-pH.interactive.json, unlockAfterStage = 4) : tirer
+    le curseur de pH recalcule en direct #curseur-ligne, #curseur-point-ah,
+    #curseur-point-a, #curseur-ph-label, #curseur-pct-ah, #curseur-pct-a
+    (web/src/lib/interactive-figures/distribution-curseur-pH.ts).
+    Visualise toujours l'exemple travaillé « lire trois points de la courbe » :
+    les trois lectures fixes ci-dessous (pH = 3,8 / 4,8 / 5,8) restent
+    affichées comme repères ; le curseur généralise ce geste à n'importe quel
+    pH de 1 à 9 (pKA ± 4 environ).
+
+    Couple, mêmes valeurs que diagramme-distribution-vs-predominance.svg :
+      CH3COOH/CH3COO−, pKA = 4,8.
+    Même échelle horizontale x(pH) = 70 + 38·pH.
+    Échelle verticale propre à cette figure (panneau unique, pas de panneau
+    de prédominance au-dessus) : 0 % → y=290, 100 % → y=90 (200 px/100 pts).
+    Courbes calculées depuis %A− = 100/(1+10^(pKA−pH)), %AH = 100 − %A−
+    (mêmes valeurs numériques que diagramme-distribution-vs-predominance.svg,
+    translatées de −100 en y).
+
+    Les trois points lus, repris tels quels du texte (R8, "Exemple travaillé :
+    lire trois points de la courbe") :
+      pH=3,8 (une unité sous pKA) : %A− ≈ 9 %, %AH ≈ 91 %
+      pH=4,8 (= pKA)              : 50 % / 50 % (croisement)
+      pH=5,8 (une unité au-dessus): %A− ≈ 91 %, %AH ≈ 9 %
+
+    Rôle des couleurs (une seule idée en accent : LES TROIS POINTS LUS,
+    le geste central de cette figure — le curseur manipulable, ajouté
+    ensuite, reprend exactement le même accent, jamais une couleur neuve) :
+      les trois points + repères                        : --figure-accent
+      curseur (ligne, 2 points, boîte de lecture)        : --figure-accent
+      courbe %AH (traits pleins) / courbe %A− (tirets)   : --figure-ink / --figure-ink-soft
+      axes, ticks                                         : --figure-ink-soft
+
+    Mise en étapes (reprend l'ordre du texte : les deux courbes déjà connues
+    du lecteur depuis la figure précédente du même chapitre, puis les trois
+    lectures dans l'ORDRE du texte — 3,8 puis 4,8 puis 5,8) :
+      step-1 : les deux courbes de distribution, déjà établies.
+      step-2 : lecture à pH = 3,8.
+      step-3 : lecture à pH = 4,8 (le croisement).
+      step-4 : lecture à pH = 5,8.
+
+    Curseur manipulable (ajout, ne modifie aucune géométrie existante) :
+      domaine pH ∈ [1 ; 9] (pKA ± 4 environ : au-delà, la forme minoritaire
+      passe sous le cent-millième), pas 0,2 — tombe exactement sur
+      pKA = 4,8 et sur les trois pH déjà lus (3,8 / 4,8 / 5,8) ; valeur
+      initiale = 3,8 (le premier des trois exemples travaillés) — voir
+      distribution-curseur-pH.interactive.json. Les pourcentages ne
+      s'affichent JAMAIS « 0 » ni « 100 » : la minoritaire à deux chiffres
+      significatifs sous 1 %, la majoritaire avec les mêmes décimales (la
+      leçon réfute « la forme dominante a déjà tout pris »).
+      #curseur-ligne (un <path>, pas un <line> : le binding "path" écrit
+      l'attribut d) va de l'axe (y=290) jusqu'au point le plus haut des
+      deux courbes au pH courant.
+      #curseur-point-ah / #curseur-point-a marquent %AH et %A− sur leur
+      courbe respective, au pH courant.
+      #curseur-ph-label / #curseur-pct-ah / #curseur-pct-a (les deux
+      derniers en tspans imbriqués — le texte environnant "%AH = " / "%A− = "
+      / " %" reste statique, seul le nombre est recalculé) portent la boîte
+      de lecture fixe, en bas à droite du panneau (x:500-622, y:150-228 —
+      zone libre de toute courbe et de toute étiquette existante à cette
+      hauteur, à n'importe quel pH du curseur).
+      Couleur : --figure-accent partout (même convention que « les trois
+      points + repères » ci-dessus — un seul accent, aucune couleur neuve).
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">Lire trois points sur la courbe de distribution — CH<tspan
+        dy="3" font-size="8.5">3</tspan><tspan
+        dy="-3">COOH / CH</tspan><tspan
+        dy="3" font-size="8.5">3</tspan><tspan
+        dy="-3">COO</tspan><tspan
+        dy="-5" font-size="8.5">−</tspan>
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="24" y="36" width="608" height="294" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- Axes (socle, toujours visibles) -->
+  <line x1="70" y1="290" x2="70" y2="82" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="70,82 65.5,93 74.5,93" fill="var(--figure-ink-soft)"/>
+  <!-- Légende d'axe tournée, comme sur diagramme-distribution-vs-predominance :
+       les deux figures se lisent l'une après l'autre dans la même leçon, et
+       l'unité posée en haut de l'axe s'y écrasait sur la graduation « 100 ». -->
+  <text x="35" y="190" text-anchor="middle" transform="rotate(-90 35 190)"
+        font-size="10" font-style="italic" fill="var(--figure-ink-soft)">distribution (%)</text>
+  <line x1="67" y1="290" x2="73" y2="290" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="62" y="293" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+  <line x1="67" y1="190" x2="73" y2="190" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="62" y="193" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">50</text>
+  <line x1="67" y1="90" x2="73" y2="90" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="62" y="93" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">100</text>
+
+  <line x1="60" y1="290" x2="612" y2="290" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="612,290 600,285.5 600,294.5" fill="var(--figure-ink-soft)"/>
+  <text x="618" y="294" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">pH</text>
+  <line x1="70" y1="287" x2="70" y2="293" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="70" y="304" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">0</text>
+  <line x1="336" y1="287" x2="336" y2="293" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="336" y="304" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">7</text>
+  <line x1="602" y1="287" x2="602" y2="293" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="602" y="304" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">14</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les deux courbes, déjà établies
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <path d="M70,90.0 L108,90.0 L146,90.3 L165,91.0 L184,93.1 L199.2,97.7 L214.4,108.2
+             L222,117.4 L229.6,130.2 L237.2,146.9 L244.8,167.4 L252.4,190.0 L260,212.6
+             L267.6,233.1 L275.2,249.8 L282.8,262.6 L290.4,271.8 L298,278.1 L305.6,282.3
+             L320.8,286.9 L336,288.7 L355,289.6 L374,289.9 L412,290.0 L450,290.0 L526,290.0 L602,290.0"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="90" y="82" font-size="11" font-weight="600" fill="var(--figure-ink)">%AH</text>
+
+    <path d="M70,290.0 L108,290.0 L146,289.7 L165,289.0 L184,286.9 L199.2,282.3 L214.4,271.8
+             L222,262.6 L229.6,249.8 L237.2,233.1 L244.8,212.6 L252.4,190.0 L260,167.4
+             L267.6,146.9 L275.2,130.2 L282.8,117.4 L290.4,108.2 L298,101.9 L305.6,97.7
+             L320.8,93.1 L336,91.3 L355,90.4 L374,90.1 L412,90.0 L450,90.0 L526,90.0 L602,90.0"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="2.2" stroke-dasharray="6,3"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="470" y="82" font-size="11" font-weight="600" fill="var(--figure-ink-soft)">%A<tspan dy="-5" font-size="8">−</tspan></text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — lecture à pH = 3,8 : 91 % AH, 9 % A−
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line x1="214.4" y1="290" x2="214.4" y2="108.2" stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,3"/>
+    <circle cx="214.4" cy="108.2" r="4.2" fill="var(--figure-accent)"/>
+    <!-- L'étiquette descend SOUS le palier, à l'intérieur du cadre, et tient
+         sur deux lignes. En une seule ligne partant vers la gauche, elle
+         mesurait 165 px : elle franchissait l'axe des ordonnées et
+         s'imprimait sur la graduation « 100 » et sur l'unité « % »
+         (recouvrement mesuré 64 %, « 100 » barré à l'œil). Ses deux sœurs,
+         à pH = 4,8 et pH = 5,8, partent vers la droite où la place existe ;
+         à gauche du premier point, elle n'existe pas. -->
+    <line x1="211" y1="112" x2="200" y2="136" stroke="var(--figure-accent)" stroke-width="0.9" stroke-dasharray="2,2"/>
+    <text x="196" y="141" text-anchor="end" font-size="10" font-weight="600"
+          fill="var(--figure-accent)">pH = 3,8</text>
+    <text x="196" y="154" text-anchor="end" font-size="10" font-weight="600"
+          fill="var(--figure-accent)">→ 91 % AH / 9 % A<tspan dy="-5" font-size="7.5">−</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture à pH = 4,8 : le croisement, 50 %/50 %
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <line x1="252.4" y1="290" x2="252.4" y2="190" stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,3"/>
+    <circle cx="252.4" cy="190" r="4.2" fill="var(--figure-accent)"/>
+    <text x="262" y="185" text-anchor="start" font-size="10.5" font-weight="600"
+          fill="var(--figure-accent)">pH = 4,8 (= pK<tspan dy="3" font-size="7.5">A</tspan><tspan dy="-3">) → 50 % / 50 %</tspan></text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — lecture à pH = 5,8 : 91 % A−, 9 % AH
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <line x1="290.4" y1="290" x2="290.4" y2="108.18" stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,3"/>
+    <circle cx="290.4" cy="108.18" r="4.2" fill="var(--figure-accent)"/>
+    <line x1="295" y1="103" x2="330" y2="103" stroke="var(--figure-accent)" stroke-width="0.9" stroke-dasharray="2,2"/>
+    <text x="335" y="106" text-anchor="start" font-size="10" font-weight="600"
+          fill="var(--figure-accent)">pH = 5,8 → 91 % A<tspan dy="-5" font-size="7.5">−</tspan><tspan dy="5"> / 9 % AH</tspan></text>
+    <text x="320" y="322" text-anchor="middle" font-size="10.5" font-style="italic" font-weight="600"
+          fill="var(--figure-ink)">prédominer, ce n&#8217;est pas être seul</text>
+
+    <!-- ── Curseur de pH manipulable — déverrouille ICI, à la dernière étape
+         (distribution-curseur-pH.interactive.json, unlockAfterStage = 4).
+         État authored ci-dessous = la valeur initiale du curseur, pH = 3,8
+         (le premier des trois pH déjà lus ci-dessus) : aucun saut visuel au
+         déverrouillage. Recalculé en direct par
+         web/src/lib/interactive-figures/distribution-curseur-pH.ts. ── -->
+    <path id="curseur-ligne" d="M214.4,290 L214.4,108.18"
+          stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,3"/>
+    <circle id="curseur-point-ah" cx="214.4" cy="108.18" r="4.2" fill="var(--figure-accent)"/>
+    <circle id="curseur-point-a" cx="214.4" cy="271.82" r="4.2" fill="var(--figure-accent)"/>
+
+    <rect x="500" y="150" width="122" height="78" rx="8"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text id="curseur-ph-label" x="561" y="172" text-anchor="middle"
+          font-size="12.5" font-weight="600" fill="var(--figure-accent)">pH = 3,8</text>
+    <text x="561" y="194" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-accent)">%AH = <tspan id="curseur-pct-ah">91</tspan> %</text>
+    <text x="561" y="214" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-accent)">%A<tspan dy="-5" font-size="7.5">−</tspan> = <tspan id="curseur-pct-a">9</tspan> %</text>
+  </g><!-- /step-4 -->
+
+</svg>

@@ -1,0 +1,295 @@
+# Attempt-first exercises (summit-conversion campaign — maths, structures algébriques).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md :
+# l'élève voit la question, s'engage sur une tentative, et n'ouvre le
+# raisonnement expert qu'ensuite. Une solution imprimée au sommet est un échec
+# du template v2 (docs/pipeline/NOTION-TEMPLATE-V2.md) — d'où la conversion.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu) : tant que status
+# != sourced, la notion n'est PAS terminée. r-bac est un sujet national VÉRIFIÉ
+# (2019 session normale, Sciences Mathématiques A et B, BIOF, code NS 24F,
+# AlloSchool element/68482 — statut « vérifié » dans
+# docs/sujets/maths/structures-algebriques.md, Ex. 1). C'est l'exercice
+# récurrent d'ouverture de l'épreuve SM : loi interne sur ℂ → groupe → sous-
+# groupe → isomorphisme vers un ensemble de matrices, l'enchaînement canonique
+# des outils R1 → R2 → R3 → R7 du chapitre. r-variation est un jumeau frais,
+# anti-mémorisation (même chaîne d'outils, autre loi sur ℝ², un isomorphisme
+# SANS carré ; status not-applicable).
+
+notion: structures-algebriques
+
+exercises:
+  # ── r-bac — le sujet national VÉRIFIÉ 2019 (Ex. 1, Sciences Mathématiques) ──
+  # Transcription fidèle de docs/sujets/maths/structures-algebriques.md
+  # → « 2019 — session normale — Exercice 1 ». Loi ∗ sur ℂ définie par
+  # (x+yi)∗(a+bi) = xa + (x²b + a²y)i ; commutativité, associativité, neutre
+  # e = 1, symétrique 1/x − (y/x⁴)i ; sous-ensemble E = {x+yi | x>0} groupe
+  # commutatif ; sous-groupe G = {1+yi} ; ensemble de matrices F = {M(x,y)}
+  # et isomorphisme φ(x+yi) = M(x²,y) de (E,∗) vers (F,×). Barème 3,5 pts.
+  - id: r-bac
+    title: "Exercice de type bac — loi interne sur les complexes, groupe et isomorphisme vers des matrices (2019)"
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national Sciences Mathématiques (A et B),
+        option française (BIOF), Mathématiques, code NS 24F, barème 3,5 points
+        (Exercice 1, « Structures algébriques »). Source AlloSchool
+        element/68482. Transcription vérifiée : docs/sujets/maths/structures-algebriques.md,
+        statut « vérifié » (agent-vérificateur-adversarial, 2026-07-12, diff
+        caractère-par-caractère conforme au scan, filière et code NS..F
+        confirmés sur l'en-tête).
+    intro: |-
+      **Structures algébriques (examen national, session normale 2019).**
+
+      On rappelle que $(\mathbb{C},+,\times)$ est un corps commutatif et que $(M_2(\mathbb{R}),+,\times)$ est un anneau unitaire, de zéro la matrice nulle $O$ et d'unité la matrice identité $I$.
+
+      On définit sur $\mathbb{C}$ la loi de composition interne $\ast$ par, pour tous $(x,y)\in\mathbb{R}^2$ et $(a,b)\in\mathbb{R}^2$ :
+
+      $$(x+yi)\ast(a+bi) = xa + \left(x^2 b + a^2 y\right)i$$
+
+      L'exercice enchaîne les outils du chapitre dans leur ordre naturel : on étudie d'abord la loi $\ast$ elle-même (chapitres 2 à 3), puis on montre qu'un sous-ensemble bien choisi en fait un groupe (chapitre 4), on y repère un sous-groupe, et l'on termine en identifiant ce groupe à un ensemble de matrices par un **isomorphisme** (chapitre 10). Rien de neuf à inventer — chaque question applique un geste déjà construit dans la leçon.
+    questions:
+      - id: q1a
+        part: "Partie A — La loi $*$ et ses propriétés"
+        stem: |-
+          **(0,25 pt)** Montrer que la loi $\ast$ est commutative sur $\mathbb{C}$.
+        reasoning: |-
+          La commutativité (chapitre 3) compare $z_1 \ast z_2$ et $z_2 \ast z_1$ : il faut montrer que les deux donnent le même complexe, **pour tous** $z_1,z_2$, pas sur un exemple. On calcule les deux membres avec la définition et on compare partie réelle et partie imaginaire séparément.
+
+          Le calcul repose entièrement sur la commutativité de $+$ et $\times$ dans $\mathbb{R}$ (déjà connue) : $xa=ax$ et $x^2 b + a^2 y = a^2 y + x^2 b$ ne sont que des réécritures de sommes et produits de réels.
+        steps:
+          - math: '(x+yi)\ast(a+bi) = xa + (x^2 b + a^2 y)\, i'
+            note: "Membre de gauche, par la définition de la loi."
+          - math: '(a+bi)\ast(x+yi) = ax + (a^2 y + x^2 b)\, i'
+            note: "Membre de droite : on échange les rôles des deux complexes."
+          - math: 'xa = ax \quad \text{et} \quad x^2 b + a^2 y = a^2 y + x^2 b'
+            note: "Égalité des parties réelles et imaginaires (commutativité de + et × dans ℝ)."
+          - math: '(x+yi)\ast(a+bi) = (a+bi)\ast(x+yi)'
+            note: "La loi ∗ est donc commutative sur ℂ."
+      - id: q1b
+        stem: |-
+          **(0,5 pt)** Montrer que la loi $\ast$ est associative sur $\mathbb{C}$.
+        reasoning: |-
+          L'associativité (chapitre 3) met en jeu **trois** éléments $z_1,z_2,z_3$ et compare les deux parenthésages $(z_1\ast z_2)\ast z_3$ et $z_1\ast(z_2\ast z_3)$. On développe chaque membre jusqu'au bout et on vérifie qu'ils coïncident terme à terme.
+
+          Posons $z_1=x+yi$, $z_2=a+bi$, $z_3=c+di$. Le point de vigilance est le calcul de la partie imaginaire : on applique la définition **deux fois**, en réutilisant à chaque étape la partie réelle et la partie imaginaire du résultat intermédiaire.
+        steps:
+          - math: '(z_1 \ast z_2)\ast z_3 = \big(xa + (x^2 b + a^2 y) i\big)\ast(c+di)'
+            note: "On combine d'abord z1 et z2, puis le résultat avec z3."
+          - math: '(z_1 \ast z_2)\ast z_3 = xac + \big(x^2 a^2 d + x^2 c^2 b + a^2 c^2 y\big) i'
+            note: "Partie réelle (xa)c ; partie imaginaire (xa)²d + c²(x²b+a²y)."
+          - math: 'z_1 \ast (z_2 \ast z_3) = (x+yi)\ast\big(ac + (a^2 d + c^2 b) i\big)'
+            note: "On combine d'abord z2 et z3, puis z1 avec le résultat."
+          - math: 'z_1 \ast (z_2 \ast z_3) = xac + \big(x^2 a^2 d + x^2 c^2 b + a^2 c^2 y\big) i'
+            note: "Partie réelle x(ac) ; partie imaginaire x²(a²d+c²b) + (ac)²y."
+          - math: '(z_1 \ast z_2)\ast z_3 = z_1 \ast (z_2 \ast z_3)'
+            note: "Les deux parenthésages coïncident : ∗ est associative."
+      - id: q1c
+        stem: |-
+          **(0,25 pt)** Montrer que la loi $\ast$ admet un élément neutre $e$ que l'on déterminera.
+        reasoning: |-
+          Un neutre (chapitre 3) est un complexe $e$ fixe tel que $z\ast e = z$ pour **tout** $z$. On pose $e=\alpha+\beta i$ et on impose l'égalité $z\ast e = z$ ; comme elle doit tenir pour tout $z=x+yi$, on identifie les coefficients pour trouver $\alpha$ et $\beta$.
+
+          La commutativité déjà établie dispense de vérifier séparément $e\ast z = z$ : les deux côtés sont automatiquement égaux.
+        steps:
+          - math: '(x+yi)\ast(\alpha+\beta i) = x\alpha + (x^2 \beta + \alpha^2 y)\, i = x + yi'
+            note: "On écrit z ∗ e = z avec e = α + βi."
+          - math: 'x\alpha = x \ \Rightarrow\ \alpha = 1, \qquad x^2\beta + \alpha^2 y = y \ \Rightarrow\ \beta = 0'
+            note: "Ces égalités doivent tenir pour tout (x,y) : d'où α = 1 et β = 0."
+          - math: 'e = 1'
+            note: "Vérification : z ∗ 1 = x + (x²·0 + 1·y)i = x + yi = z. Le neutre est e = 1."
+      - id: q1d
+        stem: |-
+          **(0,25 pt)** Soit $(x,y)\in\mathbb{R}^*\times\mathbb{R}$. Montrer que $x+yi$ admet $\dfrac{1}{x}-\dfrac{y}{x^4}i$ comme symétrique pour la loi $\ast$.
+        reasoning: |-
+          Un symétrique (chapitre 3) de $x+yi$ est un complexe $s$ tel que $(x+yi)\ast s = e = 1$. La condition $x\neq 0$ est là pour que $\dfrac{1}{x}$ et $\dfrac{y}{x^4}$ existent — c'est exactement pourquoi l'énoncé écarte $x=0$.
+
+          On n'a rien à « deviner » : le candidat est fourni, il suffit de **vérifier** que son produit $\ast$ avec $x+yi$ redonne le neutre $1$ — partie réelle égale à $1$, partie imaginaire nulle.
+        steps:
+          - math: 's = \dfrac{1}{x} - \dfrac{y}{x^4}\, i, \qquad x \neq 0'
+            note: "Le candidat symétrique proposé par l'énoncé."
+          - math: '(x+yi)\ast s = x\cdot\dfrac{1}{x} + \left(x^2\left(-\dfrac{y}{x^4}\right) + \left(\dfrac{1}{x}\right)^2 y\right) i'
+            note: "On applique la définition avec a = 1/x et b = −y/x⁴."
+          - math: '(x+yi)\ast s = 1 + \left(-\dfrac{y}{x^2} + \dfrac{y}{x^2}\right) i = 1 = e'
+            note: "Partie réelle 1, partie imaginaire nulle : s est bien le symétrique de x+yi."
+      - id: q2a
+        part: "Partie B — Le sous-ensemble $E$ et sa structure de groupe"
+        stem: |-
+          On pose $E = \left\{\, x+yi \ \mid\ x\in\mathbb{R}_+^*,\ y\in\mathbb{R} \,\right\}$. **(0,25 pt)** Montrer que $E$ est stable pour la loi $\ast$.
+        reasoning: |-
+          La stabilité (chapitre 2) demande que, pour tous $z_1,z_2\in E$, le résultat $z_1\ast z_2$ appartienne **encore** à $E$ — c'est la condition « loi interne », mais restreinte au sous-ensemble $E$. Ici appartenir à $E$ signifie une seule chose : avoir une partie réelle **strictement positive**.
+
+          Il suffit donc de regarder la partie réelle du produit $\ast$ et de vérifier qu'elle reste positive quand les deux facteurs le sont.
+        steps:
+          - math: 'z_1 = x+yi,\ z_2 = a+bi \in E \ \Rightarrow\ x > 0,\ a > 0'
+            note: "Deux éléments quelconques de E : parties réelles strictement positives."
+          - math: 'z_1 \ast z_2 = xa + (x^2 b + a^2 y)\, i, \qquad xa > 0'
+            note: "La partie réelle xa est un produit de deux réels > 0, donc > 0."
+          - math: 'z_1 \ast z_2 \in E'
+            note: "Le résultat a une partie réelle > 0 : E est stable pour ∗."
+      - id: q2b
+        stem: |-
+          **(0,5 pt)** Montrer que $(E,\ast)$ est un groupe commutatif.
+        reasoning: |-
+          On coche les quatre axiomes du groupe (chapitre 4), **pour l'ensemble $E$** cette fois, en réutilisant tout ce qui précède — c'est l'intérêt d'avoir travaillé la loi $\ast$ en général d'abord. Loi interne : c'est la stabilité (q2a). Associativité et commutativité : héritées de $\mathbb{C}$ (q1a, q1b), donc valables a fortiori sur $E$.
+
+          Restent le neutre et les symétriques, qu'il faut vérifier **dans $E$** : le neutre $e=1$ a une partie réelle $1>0$, donc $e\in E$ ; et le symétrique de $x+yi$ (avec $x>0$) a pour partie réelle $\dfrac{1}{x}>0$, donc il appartient lui aussi à $E$. C'est là que la condition $x>0$ paie.
+        steps:
+          - math: '\ast \ \text{interne sur } E \ (\text{q2a}); \quad \text{associative et commutative} \ (\text{q1a, q1b})'
+            note: "Deux axiomes hérités de ℂ, un obtenu à la question précédente."
+          - math: 'e = 1 \in E \quad (1 > 0)'
+            note: "Le neutre appartient bien à E."
+          - math: '\text{sym}(x+yi) = \dfrac{1}{x} - \dfrac{y}{x^4} i \in E \quad \left(\dfrac{1}{x} > 0\right)'
+            note: "Le symétrique reste dans E, car x > 0 donne 1/x > 0."
+          - math: '(E,\ast) \ \text{est un groupe commutatif}'
+            note: "Les quatre axiomes sont vérifiés dans E, et ∗ y est commutative."
+      - id: q3
+        part: "Partie C — Le sous-groupe $G$"
+        stem: |-
+          On pose $G = \left\{\, 1+yi \ \mid\ y\in\mathbb{R} \,\right\}$. **(0,5 pt)** Montrer que $G$ est un sous-groupe de $(E,\ast)$.
+        reasoning: |-
+          Pour un sous-groupe, on n'a pas à re-vérifier les quatre axiomes : il suffit du **critère du sous-groupe**. D'abord $G\subset E$ (tout élément de $G$ a pour partie réelle $1>0$) et $G$ contient le neutre. Ensuite, pour tous $z_1,z_2\in G$, on montre que $z_1 \ast \text{sym}(z_2)$ reste dans $G$ — c'est-à-dire garde une partie réelle égale à $1$.
+
+          Le symétrique de $1+bi$ se lit sur la formule de q1d avec $x=1$ : $\dfrac{1}{1}-\dfrac{b}{1}i = 1-bi$, qui est bien de la forme $1+(\ldots)i$, donc dans $G$.
+        steps:
+          - math: 'G \subset E \quad \text{et} \quad e = 1 = 1 + 0\, i \in G'
+            note: "Partie réelle 1 > 0 pour tout élément de G ; le neutre est dans G."
+          - math: '\text{sym}(1 + bi) = 1 - bi \in G'
+            note: "Symétrique de q1d avec x = 1 : 1/1 − (b/1)i = 1 − bi."
+          - math: '(1+yi)\ast(1 - bi) = 1 + (y - b)\, i \in G'
+            note: "Partie réelle 1·1 = 1, partie imaginaire 1·(−b)+1·y = y−b : reste dans G."
+          - math: 'G \ \text{est un sous-groupe de} \ (E,\ast)'
+            note: "Le critère du sous-groupe est vérifié."
+      - id: q4a
+        part: "Partie D — Isomorphisme vers un ensemble de matrices"
+        stem: |-
+          On pose $F = \left\{\, M(x,y) = \begin{pmatrix} x & y \\ 0 & x \end{pmatrix} \ \middle|\ x\in\mathbb{R}_+^*,\ y\in\mathbb{R} \,\right\}$. **(0,25 pt)** Montrer que $F$ est stable pour la loi $\times$ dans $M_2(\mathbb{R})$.
+        reasoning: |-
+          Comme pour $E$ (q2a), la stabilité de $F$ demande que le produit de deux matrices de $F$ reste dans $F$. On calcule le produit matriciel $M(x,y)\times M(a,b)$ : le résultat doit à nouveau avoir la forme $M(\cdot,\cdot)$, avec un coefficient diagonal **strictement positif**.
+
+          Le produit de deux matrices triangulaires supérieures à diagonale constante est encore de cette forme — c'est ce que le calcul confirme.
+        steps:
+          - math: 'M(x,y)\times M(a,b) = \begin{pmatrix} x & y \\ 0 & x \end{pmatrix}\begin{pmatrix} a & b \\ 0 & a \end{pmatrix} = \begin{pmatrix} xa & xb + ya \\ 0 & xa \end{pmatrix}'
+            note: "Produit matriciel usuel, ligne par colonne."
+          - math: 'M(x,y)\times M(a,b) = M(xa,\ xb + ya), \qquad xa > 0'
+            note: "Résultat de la forme M(·,·) ; coefficient diagonal xa > 0 (produit de réels > 0)."
+          - math: 'M(x,y)\times M(a,b) \in F'
+            note: "F est stable pour × dans M₂(ℝ)."
+      - id: q4b
+        stem: |-
+          Soit $\varphi$ l'application de $E$ vers $F$ qui, à tout $x+yi$ de $E$, associe $M(x^2,y)=\begin{pmatrix} x^2 & y \\ 0 & x^2 \end{pmatrix}$. **(0,5 pt)** Montrer que $\varphi$ est un isomorphisme de $(E,\ast)$ vers $(F,\times)$.
+        reasoning: |-
+          Un isomorphisme, c'est **bijectif ET morphisme** (le pont introduit juste avant l'exercice). Trois choses à établir, dans cet ordre : $\varphi$ transforme la loi $\ast$ en la loi $\times$ (morphisme), $\varphi$ ne colle pas deux éléments distincts sur la même image (injective), et $\varphi$ atteint toute matrice de $F$ (surjective).
+
+          Le cœur du calcul est le morphisme : on développe $\varphi(z_1\ast z_2)$ d'un côté, $\varphi(z_1)\times\varphi(z_2)$ de l'autre, et on vérifie l'égalité — c'est le carré $x^2$ dans la définition de $\varphi$ qui fait coïncider les deux. Pour la bijectivité, l'antécédent d'une matrice $M(u,v)$ de $F$ (avec $u>0$) est $\sqrt{u}+v\,i$, bien dans $E$.
+        steps:
+          - math: '\varphi(z_1 \ast z_2) = \varphi\big(xa + (x^2 b + a^2 y) i\big) = M\big((xa)^2,\ x^2 b + a^2 y\big)'
+            note: "Image par φ du produit z1 ∗ z2 (partie réelle xa élevée au carré)."
+          - math: '\varphi(z_1)\times\varphi(z_2) = M(x^2, y)\times M(a^2, b) = M\big(x^2 a^2,\ x^2 b + a^2 y\big)'
+            note: "Produit des images, via la règle de q4a : M(x²,y)×M(a²,b)."
+          - math: '\varphi(z_1 \ast z_2) = \varphi(z_1)\times\varphi(z_2)'
+            note: "Comme (xa)² = x²a², les deux membres coïncident : φ est un morphisme."
+          - math: 'x^2 = a^2 \ \text{et}\ x,a > 0 \ \Rightarrow\ x = a; \qquad M(u,v) = \varphi(\sqrt{u} + v\, i)'
+            note: "Injectivité (x,a > 0 donne x = a) et surjectivité (antécédent √u + vi)."
+          - math: '\varphi \ \text{est un isomorphisme de} \ (E,\ast) \ \text{vers} \ (F,\times)'
+            note: "Bijectif et morphisme : φ est un isomorphisme."
+      - id: q4c
+        stem: |-
+          **(0,25 pt)** En déduire que $(F,\times)$ est un groupe commutatif.
+        reasoning: |-
+          C'est le rendement de l'isomorphisme : puisque $(E,\ast)$ est un groupe commutatif (q2b) et que $\varphi$ est un isomorphisme de $(E,\ast)$ vers $(F,\times)$, la structure se **transporte** intégralement. On ne re-vérifie aucun axiome sur $F$ : commutativité, associativité, neutre et symétriques sont tous hérités par $\varphi$.
+
+          Comme repère concret, l'image du neutre $1$ de $E$ est $\varphi(1)=M(1,0)=I$, qui est bien le neutre de $(F,\times)$.
+        steps:
+          - math: '(E,\ast) \ \text{groupe commutatif} \ (\text{q2b}), \quad \varphi \ \text{isomorphisme} \ (\text{q4b})'
+            note: "Les deux ingrédients du transport de structure."
+          - math: '\varphi(1) = M(1^2, 0) = M(1,0) = I'
+            note: "L'image du neutre de E est l'unité I, neutre de (F,×)."
+          - math: '(F,\times) \ \text{est un groupe commutatif}'
+            note: "La structure de groupe commutatif est transportée de E à F par φ."
+
+  # ── r-variation — jumeau frais anti-mémorisation (PAS un vrai sujet) ────────
+  # Même chaîne profonde que r-bac (loi → groupe → sous-groupe → isomorphisme
+  # vers des matrices) avec une AUTRE loi, définie sur ℝ² :
+  # (a,b) ⋄ (c,d) = (ac, ad+bc). Neutre (1,0), symétrique (1/a, −b/a²).
+  # L'isomorphisme φ(a,b) = M(a,b) = [[a,b],[0,a]] n'a PAS de carré (contraste
+  # voulu avec r-bac). Nombres et structure choisis pour des vérifications
+  # exactes faites à la main. status not-applicable.
+  - id: r-variation
+    title: "Variation fraîche — une autre loi, d'autres matrices, un isomorphisme sans carré"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2019, sourcé). Loi,
+        ensemble et matrices choisis pour donner des résultats exacts vérifiés
+        à la main.
+    intro: |-
+      Même structure profonde que le sujet précédent, habillage différent. On travaille cette fois sur $\mathbb{R}^2$ muni de la loi $\diamond$ définie par :
+
+      $$(a,b)\diamond(c,d) = (ac,\ ad + bc)$$
+
+      Le but est que tu ne puisses pas recopier la solution du sujet 2019 : tu dois reconnaître que la **même chaîne d'outils** (loi interne → groupe → sous-groupe → isomorphisme vers des matrices) s'applique, quel que soit l'habillage. Un détail change exprès : ici l'isomorphisme n'aura **pas** de carré.
+    questions:
+      - id: q1
+        part: "Partie A — La loi $\\diamond$ : commutativité et associativité"
+        stem: |-
+          Montrer que la loi $\diamond$ est commutative et associative sur $\mathbb{R}^2$.
+        reasoning: |-
+          Exactement les gestes de q1a–q1b du sujet : pour la commutativité (chapitre 3), on compare $(a,b)\diamond(c,d)$ et $(c,d)\diamond(a,b)$ composante par composante ; pour l'associativité, on développe les deux parenthésages sur un triplet $(a,b),(c,d),(e,f)$ et on vérifie qu'ils coïncident.
+
+          Tout repose sur la commutativité et l'associativité de $+$ et $\times$ dans $\mathbb{R}$ : $ad+bc = cb+da$ pour la commutativité, et les deux parenthésages valent tous deux $(ace,\ acf+ade+bce)$ pour l'associativité.
+        steps:
+          - math: '(a,b)\diamond(c,d) = (ac,\ ad + bc) = (ca,\ cb + da) = (c,d)\diamond(a,b)'
+            note: "Commutativité : ac = ca et ad+bc = cb+da dans ℝ."
+          - math: '\big((a,b)\diamond(c,d)\big)\diamond(e,f) = (ace,\ acf + ade + bce)'
+            note: "(ac, ad+bc) ⋄ (e,f) = (ac·e, ac·f + (ad+bc)·e)."
+          - math: '(a,b)\diamond\big((c,d)\diamond(e,f)\big) = (ace,\ acf + ade + bce)'
+            note: "(a,b) ⋄ (ce, cf+de) = (a·ce, a(cf+de) + b·ce)."
+          - math: '\diamond \ \text{est commutative et associative sur} \ \mathbb{R}^2'
+            note: "Les deux parenthésages coïncident ; l'ordre des deux termes n'importe pas."
+      - id: q2
+        stem: |-
+          Montrer que $\diamond$ admet $(1,0)$ pour élément neutre, et que, pour $a\neq 0$, le couple $(a,b)$ admet $\left(\dfrac{1}{a},\ -\dfrac{b}{a^2}\right)$ pour symétrique.
+        reasoning: |-
+          Neutre et symétrique (chapitre 3), comme en q1c–q1d. Pour le neutre, on résout $(a,b)\diamond(e_1,e_2) = (a,b)$ ; l'égalité devant tenir pour tout $(a,b)$, on identifie $e_1=1$ et $e_2=0$. Pour le symétrique, on vérifie que le candidat donné ramène au neutre $(1,0)$.
+
+          La condition $a\neq 0$ est là pour que $\dfrac{1}{a}$ et $\dfrac{b}{a^2}$ existent — même rôle que $x\neq 0$ dans le sujet.
+        steps:
+          - math: '(a,b)\diamond(1,0) = (a\cdot 1,\ a\cdot 0 + 1\cdot b) = (a,b)'
+            note: "Le neutre est e = (1,0)."
+          - math: '(a,b)\diamond\left(\dfrac{1}{a},\ -\dfrac{b}{a^2}\right) = \left(a\cdot\dfrac{1}{a},\ a\left(-\dfrac{b}{a^2}\right) + \dfrac{1}{a}\,b\right)'
+            note: "On combine (a,b) avec le candidat symétrique."
+          - math: '= \left(1,\ -\dfrac{b}{a} + \dfrac{b}{a}\right) = (1,0)'
+            note: "Résultat égal au neutre : le symétrique est bien (1/a, −b/a²)."
+      - id: q3
+        part: "Partie B — Groupe et sous-groupe"
+        stem: |-
+          Soit $E = \left\{\, (a,b) \ \mid\ a\in\mathbb{R}_+^*,\ b\in\mathbb{R} \,\right\}$. Montrer que $(E,\diamond)$ est un groupe commutatif, puis que $G = \left\{\, (1,b) \ \mid\ b\in\mathbb{R} \,\right\}$ en est un sous-groupe.
+        reasoning: |-
+          Même travail qu'en q2a–q2b–q3 du sujet. Pour $(E,\diamond)$ : la stabilité vient de la première composante $ac>0$ ; associativité et commutativité sont héritées (q1) ; le neutre $(1,0)$ est dans $E$ (car $1>0$) et le symétrique $\left(\dfrac{1}{a},-\dfrac{b}{a^2}\right)$ aussi (car $\dfrac{1}{a}>0$). Les quatre axiomes tiennent dans $E$.
+
+          Pour $G$ : critère du sous-groupe. $G\subset E$, $G$ contient le neutre $(1,0)$, et pour $(1,b),(1,d)\in G$ le produit $(1,b)\diamond\left(1,-d\right)$ garde une première composante égale à $1$, donc reste dans $G$.
+        steps:
+          - math: '(a,b)\diamond(c,d) = (ac,\ ad+bc), \qquad ac > 0 \ \Rightarrow\ (E,\diamond) \ \text{stable}'
+            note: "Première composante ac > 0 quand a, c > 0 : E est stable."
+          - math: 'e = (1,0) \in E, \qquad \text{sym}(a,b) = \left(\dfrac{1}{a}, -\dfrac{b}{a^2}\right) \in E \quad (\tfrac{1}{a} > 0)'
+            note: "Neutre et symétriques restent dans E : (E,⋄) est un groupe commutatif."
+          - math: 'G \subset E, \quad (1,0)\in G, \quad (1,b)\diamond(1,-d) = (1,\ b - d) \in G'
+            note: "Critère du sous-groupe vérifié : G est un sous-groupe de (E,⋄)."
+      - id: q4
+        part: "Partie C — Isomorphisme vers des matrices"
+        stem: |-
+          Soit $F = \left\{\, M(a,b) = \begin{pmatrix} a & b \\ 0 & a \end{pmatrix} \ \middle|\ a\in\mathbb{R}_+^*,\ b\in\mathbb{R} \,\right\}$ et $\varphi : E \to F$ définie par $\varphi(a,b) = M(a,b)$. Montrer que $\varphi$ est un isomorphisme de $(E,\diamond)$ vers $(F,\times)$, et en déduire que $(F,\times)$ est un groupe commutatif.
+        reasoning: |-
+          C'est la question 4 du sujet, mais **sans carré** : ici $\varphi(a,b)=M(a,b)$ directement. On vérifie le morphisme en développant $\varphi\big((a,b)\diamond(c,d)\big)$ et $\varphi(a,b)\times\varphi(c,d)$ ; ils coïncident car le produit matriciel $M(a,b)\times M(c,d)$ donne précisément $M(ac,\ ad+bc)$.
+
+          La bijectivité est immédiate ($\varphi(a,b)=M(a,b)$ est visiblement injective et surjective sur $F$). Une fois l'isomorphisme établi, la structure de groupe commutatif de $(E,\diamond)$ (q3) se transporte à $(F,\times)$ — sans re-vérifier aucun axiome. Le neutre image est $\varphi(1,0)=M(1,0)=I$.
+        steps:
+          - math: 'M(a,b)\times M(c,d) = \begin{pmatrix} a & b \\ 0 & a \end{pmatrix}\begin{pmatrix} c & d \\ 0 & c \end{pmatrix} = \begin{pmatrix} ac & ad + bc \\ 0 & ac \end{pmatrix} = M(ac,\ ad+bc)'
+            note: "Produit matriciel : F est stable, et la loi × correspond à ⋄."
+          - math: '\varphi\big((a,b)\diamond(c,d)\big) = M(ac,\ ad+bc) = \varphi(a,b)\times\varphi(c,d)'
+            note: "φ transforme ⋄ en × : c'est un morphisme (sans carré cette fois)."
+          - math: '\varphi \ \text{bijective} \ \Rightarrow\ \varphi \ \text{isomorphisme}, \qquad \varphi(1,0) = M(1,0) = I'
+            note: "φ est un isomorphisme ; l'image du neutre (1,0) est l'unité I."
+          - math: '(F,\times) \ \text{est un groupe commutatif}'
+            note: "La structure de (E,⋄) est transportée à (F,×) par φ."

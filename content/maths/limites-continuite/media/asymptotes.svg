@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" role="img"
+     aria-label="Courbe de la fonction homographique f(x) = 2 + 1/(x-2) : asymptote verticale x = 2 et asymptote horizontale y = 2, avec un point que l’on peut faire glisser sur la branche de droite pour voir f(x) se rapprocher de 2 sans jamais l’atteindre.">
+  <title>Asymptotes d’une fonction homographique, étape par étape puis manipulable</title>
+  <!--
+    asymptotes.svg — STAGED + MANIPULABLE (docs/design/INTERACTIVE-FIGURE-SPEC.md).
+    Sign-off pédagogique (pedagogy-architect, 2026-07) : cette leçon
+    enseigne les limites et asymptotes PUREMENT de façon intuitive/
+    graphique — "on peut rendre f(x) aussi proche qu'on veut de L...
+    Pas de piège, pas de formalisme caché." Le point glissable est une
+    version EN DIRECT de la table de valeurs déjà utilisée à l'accroche
+    R0 (1,9 / 1,99 / 1,999 -> 2) — jamais un cadre epsilon/delta (voir
+    web/src/lib/interactive-figures/asymptotes.ts pour le détail des
+    garde-fous de vocabulaire).
+
+    step-1 : la fonction (boîte formule + les deux branches).
+    step-2 : + l'asymptote verticale x = 2.
+    step-3 : + l'asymptote horizontale y = 2, le point glissable et son
+             repère — déverrouille la manipulation ici
+             (asymptotes.interactive.json, unlockAfterStage = 3) : glisser
+             #point-x (domaine [2,2 ; 6,0], branche de droite seulement)
+             recalcule #guide-x, #label-x en direct, et le curseur affiche
+             f(x) et l'écart à y=2 (lecture externe, jamais dans la figure
+             — évite tout vocabulaire de seuil/tolérance dans le SVG lui-même).
+
+    f(x) = 2 + 1/(x-2) — repère écran (inchangé de l'original) :
+      px_x(x) = 90 + (x+2)·67,5 ,  px_y(y) = 340 - (y+4)·25
+
+    Le guide vertical de #point-x descend jusqu'à l'axe des abscisses en
+    TRAVERSANT la droite y=2 déjà tracée — la portion au-dessus de cette
+    droite EST l'écart, visuellement, sans élément de "segment d'écart"
+    séparé à maintenir.
+
+    Rôle des couleurs (inchangé de l'original) :
+      les deux branches de la courbe   : --figure-ink
+      les deux asymptotes (le sujet)   : --figure-accent, pointillées
+      le point glissable et son repère : --figure-accent
+      axes / graduations neutres        : --figure-ink-soft
+
+    Les captions sont portées par asymptotes.stages.json — aucun texte de
+    légende baké ici (même convention que tangente-derivee.svg).
+  -->
+
+  <!-- Titre -->
+  <text x="340" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Une fonction avec deux asymptotes
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="20" y="32" width="640" height="308" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ── Axes ──────────────────────────────────────────────── -->
+  <line x1="50" y1="240" x2="645" y2="240"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="645,240 633,235.5 633,244.5" fill="var(--figure-ink-soft)"/>
+  <line x1="225" y1="335" x2="225" y2="45"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="225,45 220.5,56 229.5,56" fill="var(--figure-ink-soft)"/>
+  <text x="650" y="244" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">x</text>
+  <text x="231" y="52" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">y</text>
+  <text x="210" y="254" text-anchor="end" font-size="10"
+        fill="var(--figure-ink-soft)">0</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — la fonction : boîte formule + les deux branches
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- La boîte formule tient ENTIÈREMENT à gauche de l'axe des ordonnées.
+         Large de 270 px, elle l'enjambait — et son fond n'est qu'à 8 %
+         d'opacité, donc l'axe se voyait au travers, en plein milieu de
+         « 1/(x − 2) ». Rétrécie à 160 px (et le texte à 11 px), elle
+         s'arrête avant x=225. -->
+    <rect x="55" y="45" width="160" height="30" rx="5"
+          fill="var(--figure-ink)" fill-opacity="0.08"/>
+    <text x="135" y="64" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink)"><tspan font-style="italic">f</tspan>(<tspan
+          font-style="italic">x</tspan>) = 2 + 1/(<tspan
+          font-style="italic">x</tspan> - 2)</text>
+
+    <!-- Branche droite (x > 2) -->
+    <path d="
+      M371.3,40 L373.5,65 L376.9,90 L380.3,106.7 L387,127.5
+      L393.8,140 L400.5,148.3 L414,158.8 L427.5,165 L461.3,173.3
+      L495,177.5 L528.8,180 L562.5,181.7 L596.3,182.9 L630,183.8
+    " fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Branche gauche (x < 2) -->
+    <path d="
+      M348.8,340 L346.5,315 L343.1,290 L339.8,273.3 L333,252.5
+      L326.3,240 L319.5,231.7 L306,221.3 L292.5,215 L258.8,206.7
+      L225,202.5 L191.3,200 L157.5,198.3 L123.8,197.1 L90,196.3
+    " fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — l'asymptote verticale x = 2
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line x1="360" y1="40" x2="360" y2="340"
+          stroke="var(--figure-accent)" stroke-width="1.8"
+          stroke-dasharray="6,4" stroke-linecap="round"/>
+    <line x1="360" y1="236" x2="360" y2="244"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <!-- « x = 2 » nomme l'asymptote verticale : centrée sur x=360, elle
+         était coupée en deux par cette droite. Elle passe à sa droite. -->
+    <text x="368" y="258" text-anchor="start" font-size="11"
+          fill="var(--figure-accent)"><tspan font-style="italic">x</tspan> = 2</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — l'asymptote horizontale y = 2, le point glissable —
+       déverrouille la manipulation (unlockAfterStage = 3)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <line x1="90" y1="190" x2="630" y2="190"
+          stroke="var(--figure-accent)" stroke-width="1.8"
+          stroke-dasharray="6,4" stroke-linecap="round"/>
+    <line x1="221" y1="190" x2="229" y2="190"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <!-- « y = 2 » nomme l'asymptote horizontale et était écrite DESSUS :
+         la droite y=190 court sur toute la largeur du cadre et la traversait
+         (mesuré 98 %). Elle passe au-dessus. -->
+    <text x="211" y="185" text-anchor="end" font-size="11"
+          fill="var(--figure-accent)"><tspan font-style="italic">y</tspan> = 2</text>
+
+    <!-- Guide vertical de #point-x — traverse y=2, la portion au-dessus
+         EST l'écart, visuellement -->
+    <path id="guide-x" d="M427.5,165 L427.5,240"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="4,3"/>
+
+    <!-- Halo de glissé (--state-dragged) -->
+    <circle id="point-x-halo" cx="427.5" cy="165" r="9" style="cursor:grab"
+            fill="var(--figure-accent)" opacity="0"/>
+
+    <!-- Point glissable, sur la branche de droite -->
+    <circle id="point-x" cx="427.5" cy="165" r="3.5" style="cursor:grab" fill="var(--figure-accent)"/>
+    <text id="label-x" x="427.5" y="254" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">x = 3</text>
+  </g><!-- /step-3 -->
+
+</svg>

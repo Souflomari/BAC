@@ -1,0 +1,55 @@
+import "mafs/core.css";
+
+import type { Metadata } from "next";
+import { SiteHeader } from "@/components/ui/SiteHeader";
+import { LienEvitement } from "@/components/ui/LienEvitement";
+import { Atelier } from "@/components/atelier/Atelier";
+import { manifesteEpreuves } from "@/lib/palette-epreuves";
+import { manifestePourHeader } from "@/lib/palette-notions";
+
+export const metadata: Metadata = {
+  title: "Atelier — les dérivées, de la pente au nombre dérivé",
+  // Prototype : hors du produit, il ne doit pas être indexé.
+  robots: { index: false, follow: false },
+};
+
+/**
+ * /atelier — prototype de la première chaîne selon NORTH-STAR-V2.
+ *
+ * Délibérément à côté du site existant, pas dedans : on compare deux
+ * modèles, on ne mélange pas. Les notions actuelles restent intactes le
+ * temps de l'arbitrage.
+ *
+ * La page est volontairement nue sous le header : c'est `Atelier` qui décide
+ * de sa largeur et de ses marges, parce qu'elles CHANGENT entre le plan (une
+ * colonne de lecture) et le parcours (deux panneaux larges). Un gabarit
+ * imposé ici briderait la scène, qui est justement ce qu'on veut voir en
+ * grand.
+ *
+ * Le header, lui, est revenu (audit 2026-08-15, P2-4) : la page ne portait
+ * AUCUN lien. Un élève arrivant par un lien partagé était enfermé — pas de
+ * retour à l'accueil, pas de thème, pas de taille de texte.
+ */
+export default function AtelierPage() {
+  return (
+    <>
+      <LienEvitement />
+      {/* PAS de container surchargé (audit R6, P1-10) : STUDIO-SPEC §2 —
+          le header garde la bande `page` sur TOUTES les routes, le
+          wordmark ne saute jamais. Seul le <main> de l'atelier prend la
+          bande large. */}
+      {/* Les DEUX manifestes, comme partout ailleurs : sans `epreuves`, la
+          palette ⌘K de cette page ne trouvait rien à « 2025 » ni à
+          « rattrapage » — le défaut que §11.34 avait corrigé sur le reste
+          du site survivait ici, parce que cette page monte SiteHeader
+          elle-même au lieu de passer par PageShell. */}
+      <SiteHeader
+        notions={manifestePourHeader()}
+        epreuves={manifesteEpreuves()}
+      />
+      <main id="main-content" tabIndex={-1}>
+        <Atelier />
+      </main>
+    </>
+  );
+}

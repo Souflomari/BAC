@@ -1,0 +1,615 @@
+notion: genetique-populations
+skill_code: svt_genetique_pop
+misconceptions:
+  # Inventaire écrit le 2026-09-05, tiré des feedbacks déjà présents.
+  - id: mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique
+    label: "« Fréquence d'un allèle et fréquence d'un génotype, c'est la même chose »"
+    description: >
+      L'élève lit une fréquence allélique dans une proportion d'individus :
+      il prend $f(a//a)$ ou $f(A//a)$ pour $q$, oublie les exemplaires de $a$
+      cachés chez les hétérozygotes, divise par le nombre d'individus au lieu du
+      nombre d'allèles, ou remplace $p$ et $q$ par des fréquences génotypiques.
+    contradicts_principle: >
+      Une population de $N$ individus diploïdes porte $2N$ exemplaires du gène.
+      Chaque homozygote compte pour deux exemplaires, chaque hétérozygote pour
+      un seul : $q = (2 n_{a//a} + n_{A//a}) / 2N$. Et sous Hardy-Weinberg,
+      $f(a//a) = q^2$ — la probabilité de recevoir $a$ des DEUX parents — jamais
+      $q$ lui-même, ni $1-q$, ni $q/2$.
+
+  - id: mc.svt.svt_genetique_pop.allele-recessif-condamne
+    label: "« Un allèle récessif rare, ou désavantagé, disparaît vite de la population »"
+    description: >
+      L'élève raisonne sur les seuls homozygotes visibles : peu nombreux, ils
+      transmettraient peu de copies, ou seraient éliminés par la sélection, ou
+      céderaient à un allèle dominant supposé « meilleur » — d'où une extinction
+      rapide, d'autant plus rapide que l'allèle est déjà rare.
+    contradicts_principle: >
+      La quasi-totalité des exemplaires de $a$ vit CACHÉE chez des hétérozygotes
+      $A//a$ phénotypiquement sains, qui se reproduisent normalement — et
+      d'autant plus que $q$ est petit, puisque $q^2$ s'écrase bien plus vite que
+      $q$. Sans sélection, la fréquence ne bouge pas ; avec sélection contre
+      $a//a$, elle baisse, mais très lentement. Et la dominance concerne
+      l'EXPRESSION du phénotype, jamais un avantage de survie.
+
+  - id: mc.svt.svt_genetique_pop.selection-sans-effet-sur-les-frequences
+    label: "« La sélection naturelle n'agit que sur les phénotypes, donc jamais sur les fréquences alléliques »"
+    description: >
+      Sur-correction du modèle précédent : ayant compris que les hétérozygotes
+      protègent l'allèle, l'élève en conclut que la sélection ne change rien au
+      pool génique.
+    contradicts_principle: >
+      Une sélection contre un génotype FAIT baisser, génération après
+      génération, la fréquence de l'allèle associé. L'effet n'est pas nul — il
+      est seulement très lent, parce que les hétérozygotes mettent la majorité
+      des exemplaires hors d'atteinte.
+
+  - id: mc.svt.svt_genetique_pop.conditions-hw-mal-maniees
+    label: "« La formule de Hardy-Weinberg s'applique toujours — ou l'écart observé vient d'autre chose »"
+    description: >
+      L'élève applique $p^2 + 2pq + q^2$ sans vérifier les conditions (grand
+      effectif, panmixie), ou refuse d'admettre qu'une population réelle puisse
+      s'en écarter, ou attribue l'écart à une mutation. Variante inverse : il
+      réclame des données déjà fournies par l'énoncé, ou nie l'existence même de
+      $p$ et $q$ hors panmixie.
+    contradicts_principle: >
+      L'échiquier qui donne $p^2 + 2pq + q^2$ suppose que n'importe quel gamète
+      peut s'unir à n'importe quel autre du pool génique, dans une population de
+      grand effectif. Autofécondation systématique : la panmixie tombe. Huit
+      couples : les fluctuations d'échantillonnage (dérive génétique) dominent.
+      Une mutation, elle, ne déplace $p$ et $q$ que d'une quantité minuscule par
+      génération. Et $p$ et $q$ existent dans toute population diploïde — c'est
+      la PRÉDICTION qui tombe, pas les fréquences.
+
+items:
+  - id: GP-1
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: svt_genetique_pop
+    tags: [frequence_allelique, frequence_genotypique, comptage]
+    stem: >
+      Dans une population de 200 individus, on a déterminé le génotype exact
+      de chacun pour un gène à deux allèles $A$ (dominant) et $a$ (récessif) :
+      100 individus $A//A$, 60 individus $A//a$, 40 individus $a//a$.
+      Quelle est la fréquence de l'allèle $a$, notée $q$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$q = 0{,}35$"
+        correct: true
+      - id: B
+        text: "$q = 0{,}20$"
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique
+        feedback: >
+          Ce choix retourne $f(a//a) = 40/200 = 0{,}20$ : c'est la fréquence
+          GÉNOTYPIQUE des individus homozygotes récessifs, pas la fréquence
+          ALLÉLIQUE. Elle oublie tous les exemplaires de $a$ cachés dans les
+          60 hétérozygotes. Une fréquence allélique compte des exemplaires de
+          gène (il y en a $2 \times 200 = 400$ au total dans la population),
+          pas des individus.
+      - id: C
+        text: "$q = 0{,}30$"
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique
+        feedback: >
+          Ce choix retourne $f(A//a) = 60/200 = 0{,}30$, la fréquence
+          génotypique des hétérozygotes, confondue avec la fréquence
+          allélique de $a$. Un hétérozygote ne porte qu'UN SEUL exemplaire de
+          $a$ (l'autre est $A$) : il doit compter pour une moitié dans le
+          calcul de $q$, pas pour un individu entier.
+      - id: D
+        text: "$q = 0{,}70$"
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique
+        feedback: >
+          Ce choix calcule $(2 \times 40 + 60)/200 = 140/200$ : le numérateur
+          (le compte des exemplaires de $a$) est correct, mais le
+          dénominateur est faux. Chaque individu est diploïde et porte DEUX
+          exemplaires du gène : le nombre total d'exemplaires en circulation
+          dans la population est $2N = 400$, pas $N = 200$.
+    correct_feedback: >
+      Compte des exemplaires de $a$ : $2 \times 40 + 60 = 140$. Nombre total
+      d'exemplaires du gène dans la population : $2 \times 200 = 400$. Donc
+      $q = 140/400 = 0{,}35$. Chaque hétérozygote compte pour un demi
+      exemplaire de $a$, jamais pour un individu entier.
+    solution: |
+      **Compte des exemplaires de l'allèle $a$ :**
+      $$\text{compte}(a) = 2 \times n_{a//a} + n_{A//a} = 2 \times 40 + 60 = 140$$
+
+      **Nombre total d'exemplaires du gène (chaque individu en porte deux) :**
+      $$2N = 2 \times 200 = 400$$
+
+      **Fréquence allélique :**
+      $$q = \frac{140}{400} = 0{,}35$$
+
+      **Vérification :** $p = (2 \times 100 + 60)/400 = 260/400 = 0{,}65$, et
+      $p + q = 0{,}65 + 0{,}35 = 1$. Cohérent.
+
+  - id: GP-2
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: svt_genetique_pop
+    tags: [frequence_allelique, frequence_genotypique, hardy_weinberg]
+    stem: >
+      Dans une population en équilibre de Hardy-Weinberg, la fréquence du
+      génotype $a//a$ est $f(a//a) = 0{,}09$. Un élève affirme que la
+      fréquence de l'allèle $a$ est donc, elle aussi, $0{,}09$. A-t-il raison ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, puisqu'un individu $a//a$ ne porte que l'allèle $a$, la fréquence du génotype est directement celle de l'allèle."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique
+        feedback: >
+          C'est confondre une fréquence génotypique et une fréquence
+          allélique. $f(a//a) = q^2$ (la probabilité qu'un individu reçoive
+          $a$ à la fois de sa mère et de son père, deux événements
+          indépendants) — ce n'est pas $q$ lui-même. Ici $q^2 = 0{,}09$
+          donne $q = \sqrt{0{,}09} = 0{,}3$, une valeur bien plus grande que
+          $0{,}09$.
+      - id: B
+        text: "Non : $f(a//a) = q^2$, donc $q = \\sqrt{0{,}09} = 0{,}3$."
+        correct: true
+      - id: C
+        text: "Non, la fréquence de l'allèle est $1 - 0{,}09 = 0{,}91$."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique
+        feedback: >
+          Ce calcul confond le complément de $f(a//a)$ avec $p$. Mais
+          $1 - f(a//a)$ regroupe les individus $A//A$ ET $A//a$ ensemble —
+          ce n'est ni $p$ ni $q$. La bonne relation est $f(a//a) = q^2$, pas
+          $f(a//a) = 1 - q$.
+      - id: D
+        text: "Non, la fréquence de l'allèle est $0{,}09/2 = 0{,}045$."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique
+        feedback: >
+          Diviser par 2 est le bon réflexe pour la contribution d'un
+          HÉTÉROZYGOTE à une fréquence allélique (il ne porte qu'un demi
+          exemplaire de chaque allèle) — mais $a//a$ est un HOMOZYGOTE, qui
+          porte deux exemplaires entiers de $a$. La relation correcte ici
+          passe par la racine carrée : $q = \sqrt{f(a//a)}$, pas par une
+          division par 2.
+    correct_feedback: >
+      Sous Hardy-Weinberg, $f(a//a) = q^2$ (deux tirages indépendants de
+      l'allèle $a$ dans le pool génique). Pour remonter à $q$, on prend la
+      racine carrée : $q = \sqrt{0{,}09} = 0{,}3$.
+    solution: |
+      **Relation de Hardy-Weinberg :** $f(a//a) = q^2$.
+
+      **Remontée vers $q$ :**
+      $$q = \sqrt{f(a//a)} = \sqrt{0{,}09} = 0{,}3$$
+
+      **Pourquoi ce n'est pas $0{,}09$ directement :** $f(a//a)$ est le carré
+      de $q$, pas $q$ lui-même — le génotype homozygote récessif exige de
+      recevoir l'allèle $a$ deux fois, une fois de chaque parent,
+      indépendamment.
+
+  - id: GP-3
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: svt_genetique_pop
+    tags: [equilibre, persistance_allele]
+    stem: >
+      Dans une population de grand effectif, en panmixie, sans migration ni
+      mutation ni sélection, la fréquence de l'allèle récessif $a$ est
+      $q = 0{,}1$ à une génération donnée. Les individus $a//a$ ne
+      représentent qu'une petite minorité ($1\,\%$ de la population). Que
+      peut-on prédire pour la fréquence de l'allèle $a$ dans les générations
+      suivantes, tant que ces conditions restent vérifiées ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle reste égale à $0{,}1$ : un allèle récessif rare à l'état homozygote ne disparaît pas de lui-même sous ces conditions."
+        correct: true
+      - id: B
+        text: "Elle diminue progressivement, car les individus $a//a$ sont peu nombreux et transmettent donc peu de copies de l'allèle."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.allele-recessif-condamne
+        feedback: >
+          C'est oublier où vit la quasi-totalité de l'allèle $a$ : sous
+          Hardy-Weinberg, la plupart de ses exemplaires sont cachés dans des
+          hétérozygotes $A//a$ parfaitement sains, pas dans les rares
+          homozygotes $a//a$. Ces porteurs se reproduisent normalement et
+          transmettent leur exemplaire de $a$ tout aussi efficacement que
+          n'importe quel autre allèle — la rareté du génotype homozygote ne
+          réduit en rien la transmission de l'allèle.
+      - id: C
+        text: "Elle finit par atteindre zéro après un nombre suffisant de générations, car l'allèle dominant est plus avantageux."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.allele-recessif-condamne
+        feedback: >
+          Rien, dans l'énoncé, ne donne un avantage de survie ou de
+          reproduction à l'allèle dominant — c'est justement l'absence de
+          sélection qui est supposée ici. La dominance concerne uniquement
+          l'EXPRESSION du phénotype, pas un avantage biologique : sans
+          sélection, aucun allèle n'est favorisé.
+      - id: D
+        text: "On ne peut rien dire sans connaître la taille exacte de la population."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.conditions-hw-mal-maniees
+        feedback: >
+          L'énoncé précise déjà que la population est de grand effectif et
+          que les trois autres conditions de Hardy-Weinberg sont vérifiées —
+          c'est exactement ce qui permet de conclure avec certitude que la
+          fréquence allélique reste constante, sans avoir besoin d'un
+          effectif précis au-delà de « suffisamment grand ».
+    correct_feedback: >
+      Sous les conditions de Hardy-Weinberg, on démontre que la fréquence
+      allélique de la génération suivante, $p'$ (ou $q'$), est égale à celle
+      de départ : $p' = p^2 + pq = p(p+q) = p$. La fréquence allélique ne
+      dérive donc pas, même si l'allèle est rare à l'état homozygote.
+    solution: |
+      **Ce que garantit l'équilibre de Hardy-Weinberg :** en partant des
+      proportions génotypiques $p^2$, $2pq$, $q^2$, la fréquence allélique de
+      la génération suivante se recalcule ainsi :
+      $$q' = q^2 + \frac{1}{2}(2pq) = q^2 + pq = q(q+p) = q$$
+
+      **Conclusion :** $q$ reste égal à $0{,}1$, indéfiniment, tant que les
+      quatre conditions restent vérifiées. La rareté du génotype homozygote
+      $a//a$ ne traduit aucune tendance à la disparition de l'allèle : la
+      quasi-totalité de ses exemplaires est simplement invisible, protégée
+      dans des hétérozygotes sains.
+
+  - id: GP-4
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: svt_genetique_pop
+    tags: [selection_naturelle, persistance_allele]
+    stem: >
+      Une maladie génétique récessive et mortelle avant l'âge de la
+      reproduction touche les individus $a//a$. La sélection naturelle
+      élimine donc systématiquement ce génotype à chaque génération. Un
+      élève en conclut que l'allèle $a$ va disparaître rapidement (en
+      quelques générations) de la population. A-t-il raison ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : la sélection n'élimine que les homozygotes $a//a$, jamais les hétérozygotes $A//a$, chez qui l'allèle reste protégé et se transmet normalement — son déclin est donc très lent."
+        correct: true
+      - id: B
+        text: "Oui, puisque la sélection élimine cet allèle directement et complètement dès qu'un individu $a//a$ apparaît, sans lui laisser la moindre occasion d'être transmis.
+        L'allèle récessif disparaîtrait donc d'une population en une seule génération."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.allele-recessif-condamne
+        feedback: >
+          La sélection naturelle agit sur des GÉNOTYPES (ou des phénotypes),
+          pas sur des allèles isolés. Elle n'atteint que les rares $a//a$ ;
+          l'immense majorité des exemplaires de $a$, cachée dans des
+          hétérozygotes phénotypiquement sains, échappe totalement à cette
+          sélection et continue à se transmettre génération après
+          génération.
+      - id: C
+        text: "Non, car la sélection naturelle ne peut jamais faire baisser la fréquence d'un allèle : elle n'agit que sur les phénotypes, sans aucun effet sur le pool génique."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.selection-sans-effet-sur-les-frequences
+        feedback: >
+          C'est une sur-correction fausse : la sélection contre un génotype
+          FAIT réellement baisser, génération après génération, la fréquence
+          de l'allèle associé — ce n'est pas nul, seulement très lent, parce
+          que les hétérozygotes protègent la majeure partie du stock de
+          l'allèle à chaque génération.
+      - id: D
+        text: "Oui, et cette disparition sera d'autant plus rapide que l'allèle est déjà rare au départ, chaque génération en éliminant une part croissante des copies."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.allele-recessif-condamne
+        feedback: >
+          C'est l'inverse : plus $q$ est petit, plus la quasi-totalité des
+          exemplaires de $a$ se trouve déjà cachée dans des hétérozygotes
+          protégés (puisque $q^2$ s'écrase plus vite que $q$) — la sélection
+          contre les rares $a//a$ mord donc sur une part de plus en plus
+          petite du stock total, et l'élimination ralentit à mesure que
+          l'allèle devient rare, elle ne s'accélère pas.
+    correct_feedback: >
+      La sélection ne « voit » que le phénotype des $a//a$ ; les
+      hétérozygotes restent invisibles et se reproduisent normalement,
+      transmettant leur exemplaire de $a$ sans obstacle. La fréquence $q$
+      diminue réellement au fil des générations sous une vraie sélection,
+      mais très lentement — et de plus en plus lentement à mesure qu'elle
+      devient petite.
+    solution: |
+      **Ce que la sélection atteint réellement :** seuls les individus
+      $a//a$ sont éliminés avant reproduction. Les hétérozygotes $A//a$,
+      bien que porteurs de l'allèle, sont phénotypiquement indiscernables
+      des $A//A$ et ne sont donc jamais éliminés par cette sélection.
+
+      **Conséquence sur le stock de l'allèle :** dès que $q$ devient petit,
+      la quasi-totalité des exemplaires de $a$ vit dans des hétérozygotes
+      ($2pq$, qui décroît beaucoup moins vite que $q^2$ quand $q$ diminue).
+      La sélection ne mord donc que sur une fraction de plus en plus réduite
+      du stock total — le déclin de $q$ ralentit progressivement, sans
+      jamais atteindre zéro en un temps court.
+
+  - id: GP-5
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: svt_genetique_pop
+    tags: [conditions_hw, derive_genetique, petit_effectif]
+    stem: >
+      Dans un petit élevage isolé de 8 couples reproducteurs, la fréquence de
+      l'allèle $a$ est $q = 0{,}4$. En appliquant $q^2$, un élève prédit que
+      $16\,\%$ des descendants seront $a//a$ à la génération suivante — mais
+      il observe en réalité $28\,\%$. Quelle est l'explication la plus
+      probable ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'effectif de la population est trop petit pour que le modèle de Hardy-Weinberg s'applique de façon fiable : les fluctuations d'échantillonnage (dérive génétique) expliquent l'écart."
+        correct: true
+      - id: B
+        text: "Le calcul de $q^2$ est incorrect : il fallait utiliser $2q$, puisque chaque individu porte deux allèles à ce locus."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.conditions-hw-mal-maniees
+        feedback: >
+          $q^2$ EST la formule correcte pour la fréquence génotypique des
+          homozygotes récessifs sous Hardy-Weinberg — le problème n'est pas
+          dans l'arithmétique, il est dans le fait que l'une des CONDITIONS
+          du modèle (ici, le grand effectif) n'est pas vérifiée dans ce petit
+          élevage.
+      - id: C
+        text: "C'est impossible : une fois calculée, une fréquence génotypique ne peut jamais différer de la prédiction théorique, qui vaut pour toute population, quelle que soit sa taille."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.conditions-hw-mal-maniees
+        feedback: >
+          C'est nier la réalité : les populations réelles, en particulier les
+          petites, s'écartent fréquemment de la prédiction de Hardy-Weinberg
+          — c'est justement cet écart, comparé à la prédiction théorique, qui
+          sert de diagnostic pour repérer qu'une condition est violée.
+      - id: D
+        text: "L'écart prouve qu'une mutation a eu lieu entre les deux générations, transformant certains allèles et modifiant les proportions attendues."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.conditions-hw-mal-maniees
+        feedback: >
+          Une mutation isolée ne déplace $p$ et $q$ que d'une quantité
+          minuscule à chaque génération — elle ne peut pas, à elle seule,
+          produire un écart de cette ampleur (de $16\,\%$ à $28\,\%$) en une
+          seule génération. Avec seulement 8 couples reproducteurs, la
+          dérive génétique (fluctuation d'échantillonnage) est une
+          explication bien plus probable.
+    correct_feedback: >
+      Avec seulement 8 couples reproducteurs, la condition de grand effectif
+      n'est pas vérifiée : les proportions réellement transmises peuvent
+      s'écarter de $p$ et $q$ par pur effet d'échantillonnage aléatoire.
+      C'est la signature de la dérive génétique, pas une erreur de calcul.
+    solution: |
+      **Le calcul $q^2 = 0{,}4^2 = 0{,}16$ est arithmétiquement correct** —
+      ce n'est pas là que se situe le problème.
+
+      **Ce que révèle l'écart :** la prédiction de Hardy-Weinberg suppose un
+      pool génique assez grand pour que les tirages de gamètes reproduisent
+      fidèlement les proportions $p$ et $q$. Avec seulement 8 couples (un
+      tout petit nombre de gamètes réellement unis), un écart marqué par
+      rapport à la prédiction théorique est attendu par simple fluctuation
+      d'échantillonnage — c'est exactement la dérive génétique, détaillée au
+      chapitre 6.
+
+  - id: GP-6
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: svt_genetique_pop
+    tags: [conditions_hw, panmixie]
+    stem: >
+      Dans une population de plantes, chaque individu s'autoféconde
+      systématiquement (son pollen ne féconde jamais que ses propres ovules,
+      et jamais ceux d'une autre plante). Un élève veut prédire les
+      fréquences génotypiques de la génération suivante à partir de $p$ et
+      $q$ avec la formule $p^2 + 2pq + q^2$. Est-ce valide ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : l'autofécondation systématique viole la condition de panmixie (union au hasard des gamètes dans tout le pool génique), sur laquelle repose la formule."
+        correct: true
+      - id: B
+        text: "Oui, la formule s'applique à toute population sexuée, quel que soit son mode de reproduction, dès lors que les effectifs sont grands.
+        Une population qui se reproduit par autofécondation suivrait donc les mêmes proportions."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.conditions-hw-mal-maniees
+        feedback: >
+          C'est appliquer Hardy-Weinberg sans vérifier ses conditions.
+          L'échiquier qui donne $p^2 + 2pq + q^2$ suppose qu'un gamète peut
+          s'unir avec N'IMPORTE QUEL AUTRE gamète du pool génique de la
+          population. L'autofécondation systématique impose exactement le
+          contraire : chaque gamète ne peut s'unir qu'avec un gamète du MÊME
+          individu — ce n'est plus un tirage au hasard dans le pool commun.
+      - id: C
+        text: "Oui, à condition de remplacer $p$ et $q$ par les fréquences génotypiques réellement observées dans la population étudiée."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique
+        feedback: >
+          Cette réponse confond de nouveau fréquence allélique et fréquence
+          génotypique : $p$ et $q$ sont déjà des fréquences d'ALLÈLES, pas de
+          génotypes, et les substituer par des fréquences génotypiques ne
+          résout pas le vrai problème ici, qui est l'absence de panmixie, pas
+          un mauvais choix de variable.
+      - id: D
+        text: "Non, car $p$ et $q$ n'ont aucun sens chez des plantes qui s'autofécondent : il n'y a plus de pool génique commun à décrire."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.conditions-hw-mal-maniees
+        feedback: >
+          Les fréquences alléliques $p$ et $q$ existent dans n'importe
+          quelle population diploïde, quel que soit son mode de
+          reproduction — ce n'est pas leur existence qui est en cause, c'est
+          la condition de panmixie (nécessaire pour que $p^2 + 2pq + q^2$
+          prédise correctement les génotypes) qui n'est pas respectée ici.
+    correct_feedback: >
+      La formule de Hardy-Weinberg repose sur l'union AU HASARD des gamètes
+      dans tout le pool génique de la population. L'autofécondation
+      systématique restreint chaque union à un seul individu : ce n'est plus
+      un tirage aléatoire dans le pool commun, donc la formule ne s'applique
+      pas telle quelle.
+    solution: |
+      **Ce que suppose l'échiquier du chapitre 3 :** n'importe quel gamète peut
+      s'unir avec n'importe quel autre gamète de la population entière,
+      sans préférence liée au génotype ou à l'identité du partenaire.
+
+      **Ce que fait l'autofécondation systématique :** elle restreint chaque
+      union de gamètes à un seul et même individu — l'union n'est plus un
+      tirage dans le pool génique commun.
+
+      **Conséquence :** la condition de panmixie est violée, et la
+      prédiction $p^2 + 2pq + q^2$ ne peut pas s'appliquer sans modification
+      à une population qui s'autoféconde systématiquement (en réalité,
+      l'autofécondation répétée augmente au contraire la proportion
+      d'homozygotes au fil des générations, au détriment des hétérozygotes).
+
+  # ── DEUX ITEMS AJOUTÉS LE 2026-09-05 ───────────────────────────────────────
+  # Motif : deux erreurs déclarées étaient sous le plancher de 3 items du banc.
+  # Périmètre : lesson.md, R2 à R5.
+  - id: GP-7
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: svt_genetique_pop
+    tags: [selection_naturelle, heterozygote, frequence_allelique]
+    stem: >
+      Dans une population où l'allèle récessif $a$ est létal à l'état
+      homozygote, on suit sa fréquence pendant vingt générations : elle passe
+      de $0{,}10$ à $0{,}033$. Un élève juge ce résultat contradictoire, « la
+      sélection éliminant pourtant tous les $a//a$ à chaque génération ».
+      Comment lever la contradiction ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il n'y a pas de contradiction : la sélection n'atteint que les rares homozygotes ($q^2 = 1\\,\\%$ au départ), alors que la quasi-totalité des exemplaires de $a$ est abritée chez des hétérozygotes sains, qui se reproduisent normalement."
+        correct: true
+      - id: B
+        text: "Il n'y a pas de contradiction, parce que la sélection naturelle n'agit jamais sur les fréquences alléliques : elle ne fait que trier des phénotypes, la baisse observée venant nécessairement d'une autre cause.
+        Une pression de sélection prolongée laisserait donc les fréquences alléliques inchangées."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.selection-sans-effet-sur-les-frequences
+        feedback: >
+          C'est une sur-correction. Une sélection contre un génotype FAIT
+          baisser la fréquence de l'allèle associé — c'est précisément ce
+          qu'on observe ici, de $0{,}10$ à $0{,}033$. L'effet n'est pas nul, il
+          est seulement lent.
+      - id: C
+        text: "La contradiction est réelle : avec une élimination systématique à chaque génération, $q$ aurait dû tomber à zéro bien avant la vingtième, et la mesure comporte donc nécessairement une erreur."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.allele-recessif-condamne
+        feedback: >
+          Un allèle récessif ne disparaît pas rapidement, même sous sélection
+          forte : plus $q$ diminue, plus la part cachée chez les hétérozygotes
+          domine (car $q^2$ s'écrase bien plus vite que $q$), et moins la
+          sélection a de prise.
+      - id: D
+        text: "La contradiction se lève parce que de nouveaux allèles $a$ apparaissent par mutation à chaque génération, en quantité suffisante pour compenser presque exactement ceux que la sélection élimine."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.conditions-hw-mal-maniees
+        feedback: >
+          Le taux de mutation est bien trop faible pour compenser une
+          sélection à cette échelle : une mutation ne déplace $p$ et $q$ que
+          d'une quantité minuscule par génération. L'explication est ailleurs,
+          dans le réservoir hétérozygote.
+    correct_feedback: >
+      Sous Hardy-Weinberg, avec $q = 0{,}10$, les homozygotes $a//a$ ne
+      représentent que $1\,\%$ de la population, tandis que les hétérozygotes
+      en représentent $18\,\%$ : l'immense majorité des exemplaires de $a$ est
+      hors d'atteinte de la sélection, qui ne mord donc que très lentement.
+    solution: |
+      **Compter où vit l'allèle.** Avec $q = 0{,}10$ : $q^2 = 0{,}01$ des
+      individus sont $a//a$, et $2pq = 0{,}18$ sont $A//a$. Sur cent
+      individus, les exemplaires de $a$ se répartissent entre 2 (chez les
+      homozygotes) et 18 (chez les hétérozygotes).
+
+      **Ce que la sélection atteint.** Les 2, pas les 18.
+
+      **Pourquoi la baisse ralentit.** Plus $q$ diminue, plus $q^2$ s'écrase
+      vite : la part exposée devient de plus en plus petite. La disparition
+      complète, elle, n'arrive jamais.
+
+  - id: GP-8
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: svt_genetique_pop
+    tags: [selection_naturelle, equilibre, interpretation]
+    stem: >
+      Dans une population d'insectes, un insecticide est utilisé pendant dix
+      ans : la fréquence de l'allèle de résistance passe de $0{,}02$ à
+      $0{,}45$. L'usage cesse ; dix ans plus tard, la fréquence est retombée à
+      $0{,}30$. Que montre cette séquence ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que la sélection modifie bel et bien les fréquences alléliques, dans un sens puis dans l'autre selon l'avantage ou le coût que l'allèle confère dans le milieu du moment."
+        correct: true
+      - id: B
+        text: "Que la sélection n'a joué aucun rôle : elle trie des phénotypes sans toucher au pool génique, et ces variations de fréquence ne peuvent donc s'expliquer que par des fluctuations d'échantillonnage."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.selection-sans-effet-sur-les-frequences
+        feedback: >
+          En triant des phénotypes, la sélection trie les génotypes qui les
+          produisent — donc les allèles qu'ils portent. Une variation de
+          $0{,}02$ à $0{,}45$ en dix ans est bien trop ample et trop orientée
+          pour relever du hasard d'échantillonnage.
+      - id: C
+        text: "Que l'allèle de résistance, une fois devenu majoritaire, ne pouvait plus que se fixer définitivement dans la population : la baisse observée après l'arrêt du traitement est donc anormale."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.allele-recessif-condamne
+        feedback: >
+          Aucun allèle n'est condamné à disparaître ni promis à se fixer : sa
+          fréquence suit l'avantage qu'il procure DANS LE MILIEU DU MOMENT.
+          Sans insecticide, la résistance peut avoir un coût, d'où le reflux.
+      - id: D
+        text: "Que la population n'était pas en équilibre de Hardy-Weinberg pendant les dix premières années, mais qu'elle l'est redevenue ensuite, ce qui explique à soi seul le retour partiel vers la valeur de départ."
+        correct: false
+        misconception: mc.svt.svt_genetique_pop.conditions-hw-mal-maniees
+        feedback: >
+          Hardy-Weinberg décrit la STABILITÉ des fréquences en l'absence de
+          sélection : y « revenir » ne ramène aucune fréquence vers sa valeur
+          passée. Le reflux observé demande une cause active — un coût de la
+          résistance —, pas un retour à l'équilibre.
+    correct_feedback: >
+      La sélection agit sur les phénotypes, et par eux sur les fréquences
+      alléliques : elle a fait monter la résistance tant que l'insecticide la
+      rendait avantageuse, puis reculer quand son coût est redevenu visible
+      dans un milieu sans traitement.
+    solution: |
+      **Première phase.** L'insecticide rend le phénotype résistant nettement
+      avantageux : les porteurs survivent et se reproduisent davantage, la
+      fréquence de l'allèle monte.
+
+      **Seconde phase.** Sans insecticide, l'avantage disparaît ; s'il subsiste
+      un coût (croissance plus lente, par exemple), le phénotype sensible
+      redevient favorisé et la fréquence redescend.
+
+      **Ce que la séquence établit.** Que l'une des quatre conditions de
+      Hardy-Weinberg — l'absence de sélection — n'était pas remplie. C'est
+      précisément l'ÉCART au modèle qui sert de diagnostic.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
+# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
+# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
+# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# web/scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
+# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
+# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul.
+  per_misconception:
+    mc.svt.svt_genetique_pop.frequence-allelique-vs-genotypique:      { count: 3, items: [GP-1, GP-2, GP-6] }
+    mc.svt.svt_genetique_pop.allele-recessif-condamne:                { count: 4, items: [GP-3, GP-4, GP-7, GP-8] }
+    mc.svt.svt_genetique_pop.selection-sans-effet-sur-les-frequences: { count: 3, items: [GP-4, GP-7, GP-8] }
+    mc.svt.svt_genetique_pop.conditions-hw-mal-maniees:               { count: 5, items: [GP-3, GP-5, GP-6, GP-7, GP-8] }
+  total_items: 8
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    # Mesuré le 2026-09-19 sur les 62 notions : 51 portent au moins un item
+    # au barreau R0 et 50 au DERNIER barreau. Un zéro ici n'est donc PAS une
+    # fatalité de structure, c'est un état de cette notion — il s'écrit.
+    R0: 0   # l'accroche ne porte aucun item de banc
+    R1: 1
+    R2: 1
+    R3: 2
+    R4: 1
+    R5: 3
+    R6: 0   # le chapitre « Pour t'entraîner » ne porte aucun item de banc
+  honest_state: >-
+    Les quatre misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Deux y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

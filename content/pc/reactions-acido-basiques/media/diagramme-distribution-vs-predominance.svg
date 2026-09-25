@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Diagramme de distribution superposé au diagramme de prédominance pour le couple CH3COOH/CH3COO−, pKA = 4,8 : en haut, l’axe de prédominance à une dimension avec sa frontière à pH = pKA ; en bas, les courbes de distribution %AH et %A− en fonction du pH, qui se croisent exactement à 50 % chacune au même pH = pKA — jamais à pH = 7.">
+  <title>Diagramme de distribution vs diagramme de prédominance — couple CH3COOH/CH3COO− (pKA = 4,8)</title>
+  <!--
+    diagramme-distribution-vs-predominance.svg — figure STAGED (4 étapes), rung R8.
+
+    Couple utilisé (repris de R4/R5/R8, même fil rouge que toute la leçon) :
+      CH3COOH/CH3COO−, pKA = 4,8.
+
+    Géométrie partagée par les deux panneaux (axe de pH commun en abscisse),
+    même échelle que diagramme-predominance.svg / zones-predominance-2.svg
+    (cohérence visuelle du corpus) :
+      x(pH) = 70 + 38·pH
+      x(pH=0)   = 70
+      x(pH=4,8) = 252,4   (pKA — même valeur numérique que zones-predominance-2,
+                             qui trace pKA1 du même couple au même endroit)
+      x(pH=7)   = 336
+      x(pH=14)  = 602
+
+    PANNEAU DU HAUT — diagramme de prédominance (rappel R5) : axe à 1 dimension,
+    frontière unique à pH = pKA.
+
+    PANNEAU DU BAS — diagramme de distribution : %AH et %A− en fonction du pH,
+    calculés depuis la vraie formule établie dans le texte (R8) :
+      %A− = 100 / (1 + 10^(pKA − pH))      %AH = 100 − %A−
+    Mise à l'échelle : 0 % → y=390, 100 % → y=190 (200 px pour 100 points),
+    croisement à 50 % → y=290, à x=252,4 (même pH que la frontière du haut).
+    Valeurs échantillonnées (pH, %A−) — calculées, pas devinées :
+      0→0,0016  1→0,016  2→0,158  2,5→0,499  3→1,56  3,4→3,83  3,8→9,09
+      4,0→13,68  4,2→20,08  4,4→28,47  4,6→38,69  4,8→50,00  5,0→61,31
+      5,2→71,53  5,4→79,92  5,6→86,32  5,8→90,91  6,0→94,06  6,2→96,17
+      6,6→98,44  7,0→99,37  7,5→99,80  8,0→99,94  9,0→99,994  10→~100  12→100  14→100
+    %AH = 100 − %A− à chaque point (courbe miroir exacte).
+
+    Rôle des couleurs (une seule idée en accent : la CORRESPONDANCE entre la
+    frontière du haut et le croisement du bas — même pKA, deux présentations) :
+      frontière (haut) + croisement + lien vertical pointillé (bas)  : --figure-accent
+      courbe %AH (traits pleins) / courbe %A− (tirets)               : --figure-ink / --figure-ink-soft
+      axes, bandes, ticks, espèces                                    : --figure-ink / --figure-ink-soft / --figure-grid
+
+    Mise en étapes (LESSON-EXPERIENCE-SPEC §2.5 — reprend le texte "Le cœur du
+    chapitre : deux diagrammes, deux natures différentes") :
+      step-1 : panneau du haut — la frontière pH = pKA (rappel R5), AH à
+               gauche, A− à droite.
+      step-2 : panneau du bas — la courbe %AH se dessine.
+      step-3 : la courbe %A− se dessine en miroir.
+      step-4 : le croisement à 50 %/50 % est marqué, relié par un pointillé
+               vertical à la frontière du haut — même pH = pKA, un nombre
+               exact au lieu d'un simple verdict.
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">Diagramme de distribution vs diagramme de prédominance — CH<tspan
+        dy="3" font-size="8.5">3</tspan><tspan
+        dy="-3">COOH / CH</tspan><tspan
+        dy="3" font-size="8.5">3</tspan><tspan
+        dy="-3">COO</tspan><tspan
+        dy="-5" font-size="8.5">−</tspan>
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       SOCLE — panneau du haut (fond, bande, axe, ticks)
+       ══════════════════════════════════════════════════════ -->
+  <rect x="24" y="38" width="608" height="128" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+  <rect x="70" y="64" width="532" height="34" rx="4"
+        fill="var(--figure-grid)" fill-opacity="0.55"
+        stroke="var(--figure-ink-soft)" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="60" y1="122" x2="612" y2="122" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="612,122 600,117.5 600,126.5" fill="var(--figure-ink-soft)"/>
+  <text x="618" y="126" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">pH</text>
+  <line x1="70" y1="119" x2="70" y2="125" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="70" y="138" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">0</text>
+  <line x1="336" y1="119" x2="336" y2="125" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="336" y="138" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">7</text>
+  <line x1="602" y1="119" x2="602" y2="125" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="602" y="138" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">14</text>
+  <text x="30" y="55" font-size="10" font-style="italic" fill="var(--figure-ink-soft)">prédominance</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       SOCLE — panneau du bas (fond, axes, ticks)
+       ══════════════════════════════════════════════════════ -->
+  <rect x="24" y="176" width="608" height="234" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <line x1="70" y1="390" x2="70" y2="186" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="70,186 65.5,197 74.5,197" fill="var(--figure-ink-soft)"/>
+  <!-- Le coin haut-gauche du panneau tenait TROIS textes sur quinze pixels de
+       haut : la légende « distribution », l'unité « % » et la graduation
+       « 100 ». Les trois s'imprimaient l'un sur l'autre — mesuré 91 %, 77 %
+       et 69 % de recouvrement, et illisible à l'œil (« dist100ution »).
+       L'axe n'a que dix pixels entre le haut du panneau et sa flèche : il
+       n'y a pas de place. La légende passe donc EN LÉGENDE D'AXE, tournée
+       le long de l'ordonnée, et absorbe l'unité — convention de graphe
+       ordinaire, et la seule qui libère la bande horizontale. -->
+  <text x="35" y="290" text-anchor="middle" transform="rotate(-90 35 290)"
+        font-size="10" font-style="italic" fill="var(--figure-ink-soft)">distribution (%)</text>
+  <line x1="67" y1="390" x2="73" y2="390" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="62" y="393" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+  <line x1="67" y1="290" x2="73" y2="290" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="62" y="293" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">50</text>
+  <line x1="67" y1="190" x2="73" y2="190" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="62" y="193" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">100</text>
+
+  <line x1="60" y1="390" x2="612" y2="390" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="612,390 600,385.5 600,394.5" fill="var(--figure-ink-soft)"/>
+  <text x="618" y="394" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">pH</text>
+  <line x1="70" y1="387" x2="70" y2="393" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="70" y="406" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">0</text>
+  <line x1="336" y1="387" x2="336" y2="393" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="336" y="406" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">7</text>
+  <line x1="602" y1="387" x2="602" y2="393" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="602" y="406" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">14</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — panneau du haut : frontière pH = pKA, AH / A−
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <line x1="252.4" y1="44" x2="252.4" y2="119" stroke="var(--figure-accent)" stroke-width="1.3" stroke-dasharray="5,3"/>
+    <line x1="252.4" y1="119" x2="252.4" y2="125" stroke="var(--figure-accent)" stroke-width="2"/>
+    <line x1="252.4" y1="125" x2="252.4" y2="148" stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="252.4" y="49" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-accent)">pK<tspan dy="3" font-size="8">A</tspan><tspan dy="-3"> = 4,8</tspan></text>
+    <text x="252.4" y="160" text-anchor="middle" font-size="10" fill="var(--figure-accent)">frontière = croisement (bas)</text>
+
+    <text x="161.2" y="88" text-anchor="middle" font-size="15"
+          fill="var(--figure-ink)">CH<tspan dy="3" font-size="9">3</tspan><tspan dy="-3">COOH</tspan></text>
+    <text x="427.2" y="88" text-anchor="middle" font-size="15"
+          fill="var(--figure-ink)">CH<tspan dy="3" font-size="9">3</tspan><tspan dy="-3">COO</tspan><tspan dy="-5" font-size="9">−</tspan></text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — courbe %AH (traits pleins, ink)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="M70,190.0 L108,190.0 L146,190.3 L165,191.0 L184,193.1 L199.2,197.7 L214.4,208.2
+             L222,217.4 L229.6,230.2 L237.2,246.9 L244.8,267.4 L252.4,290.0 L260,312.6
+             L267.6,333.1 L275.2,349.8 L282.8,362.6 L290.4,371.8 L298,378.1 L305.6,382.3
+             L320.8,386.9 L336,388.7 L355,389.6 L374,389.9 L412,390.0 L450,390.0 L526,390.0 L602,390.0"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="90" y="182" font-size="11" font-weight="600" fill="var(--figure-ink)">%AH</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — courbe %A− (tirets, ink-soft), miroir exact
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <path d="M70,390.0 L108,390.0 L146,389.7 L165,389.0 L184,386.9 L199.2,382.3 L214.4,371.8
+             L222,362.6 L229.6,349.8 L237.2,333.1 L244.8,312.6 L252.4,290.0 L260,267.4
+             L267.6,246.9 L275.2,230.2 L282.8,217.4 L290.4,208.2 L298,201.9 L305.6,197.7
+             L320.8,193.1 L336,191.3 L355,190.4 L374,190.1 L412,190.0 L450,190.0 L526,190.0 L602,190.0"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="2.2" stroke-dasharray="6,3"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="470" y="182" font-size="11" font-weight="600" fill="var(--figure-ink-soft)">%A<tspan dy="-5" font-size="8">−</tspan></text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — le croisement à 50 %/50 %, lié à la frontière du haut
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <line x1="252.4" y1="176" x2="252.4" y2="290" stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="3,3"/>
+    <circle cx="252.4" cy="290" r="4" fill="var(--figure-accent)"/>
+    <text x="264" y="285" text-anchor="start" font-size="11.5" font-weight="600"
+          fill="var(--figure-accent)">50 % / 50 %</text>
+    <text x="264" y="300" text-anchor="start" font-size="9.5" font-style="italic"
+          fill="var(--figure-ink-soft)">à pH = pK<tspan dy="3" font-size="7">A</tspan><tspan dy="-3"> — jamais à pH = 7</tspan></text>
+  </g><!-- /step-4 -->
+
+</svg>

@@ -1,0 +1,419 @@
+"use client";
+
+/**
+ * Le plateau : la scène COLLANTE et ses états.
+ *
+ * Collante à toutes les largeurs : quand les réglages s'allongent (un pari,
+ * son retour, le temps, le contrôle, les lectures), l'image qu'on change
+ * reste sous les yeux. Au téléphone, sous le header (56 px) et en 4:3 pour
+ * laisser ~400 px aux réglages qui défilent dessous ; en carré sur grand
+ * écran, où la caméra cadre une sphère.
+ *
+ * Le fond du conteneur EST la surface des figures (pas de saut de ton entre
+ * le chargement et la première image) ; élévation 1, comme les figures figées.
+ */
+import type React from "react";
+import { cn } from "@/lib/utils";
+import { Icon } from "@/components/ui/Icon";
+import { TRANSPORT_BTN_CLASS } from "../TransportButton";
+import type { EtatPanneau } from "./commun";
+
+export function Plateau({
+  hoteRef,
+  canvasRef,
+  panneau,
+  description,
+  glisser,
+  legende,
+  messageSansWebgl,
+  onRelancer,
+  vues,
+  format = "carre",
+  children,
+}: {
+  hoteRef: React.RefObject<HTMLDivElement>;
+  canvasRef: React.RefObject<HTMLCanvasElement>;
+  panneau: EtatPanneau;
+  /** ce que le lecteur d'écran entend : la scène décrite en mots */
+  description: string;
+  /** le glisser-pour-tourner d'une scène 3D ; absent pour une scène plane (la cuve) */
+  glisser?: {
+    onPointerDown: React.PointerEventHandler<HTMLCanvasElement>;
+    onPointerMove: React.PointerEventHandler<HTMLCanvasElement>;
+    onPointerUp: React.PointerEventHandler<HTMLCanvasElement>;
+    onPointerCancel: React.PointerEventHandler<HTMLCanvasElement>;
+  };
+  /** l'étiquette posée en haut à gauche de la scène (référentiel, mode…) */
+  legende?: React.ReactNode;
+  /** sans WebGL : ce qui reste, et où trouver la figure figée */
+  messageSansWebgl: string;
+  onRelancer: () => void;
+  /** les vues (grand écran), sous la scène */
+  vues?: React.ReactNode;
+  /**
+   * « carre » : 4:3 au téléphone, carré sur grand écran (une caméra qui cadre
+   * une sphère) ; « paysage » : 3:2 partout (la cuve à ondes, 24 × 16 cm, vue
+   * de dessus — un carré y perdrait un tiers de l'écran) ; « paysage-haut » :
+   * 3:2 sur grand écran, 4:3 au téléphone (la corde : la corde ET un film
+   * empilés — à 3:2 et 390 px, le film n'avait plus que 46 px) ;
+   * « carre-partout » : carré aussi au téléphone (le banc de diffraction ET son
+   * graphe empilés : en 4:3, le tracé n'avait que 61 px) — la colonne prend
+   * alors `MARGE_FOCUS_CARRE`.
+   */
+  format?: "carre" | "carre-partout" | "paysage" | "paysage-haut";
+  /** les étiquettes HTML posées sur la scène (N, P, H…) */
+  children?: React.ReactNode;
+}) {
+  return (
+    <div className="sticky top-14 z-10 bp-expanded:top-20 bp-expanded:self-start">
+      <div
+        ref={hoteRef}
+        className={cn(
+          "relative w-full overflow-hidden rounded-xl",
+          "bg-figure-surface shadow-elevation-1",
+          format === "paysage" ? "aspect-[3/2]" : format === "paysage-haut" ? "aspect-[4/3] bp-expanded:aspect-[3/2]" : format === "carre-partout" ? "aspect-square" : "aspect-[4/3] bp-expanded:aspect-square"
+        )}
+      >
+        <canvas
+          ref={canvasRef}
+          role="img"
+          aria-label={description}
+          className={cn("absolute inset-0 h-full w-full", glisser && "cursor-grab active:cursor-grabbing")}
+          style={{ touchAction: "pan-y" }}
+          {...(glisser ?? {})}
+        />
+        {children}
+        {/* une pastille de surface : sur la cuve, la légende tombe sur les rides */}
+        {legende && <p className="pointer-events-none absolute left-2 top-1.5 rounded-sm bg-figure-surface px-1 text-caption text-secondary" data-legende>{legende}</p>}
+
+        {panneau === "chargement" && (
+          <div className="absolute inset-0 flex items-center justify-center bg-figure-surface">
+            <p className="text-caption text-secondary">Chargement de la scène…</p>
+          </div>
+        )}
+        {(panneau === "sans-webgl" || panneau === "erreur") && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-figure-surface px-6 text-center">
+            <p className="text-body-sm text-secondary max-w-[44ch]">
+              {panneau === "sans-webgl" ? messageSansWebgl : "La scène 3D s’est interrompue."}
+            </p>
+            {panneau === "erreur" && (
+              <button type="button" className={TRANSPORT_BTN_CLASS} onClick={onRelancer}>
+                <Icon name="reset" size={13} />
+                Relancer la scène
+              </button>
+            )}
+          </div>
+        )}
+      </div>
+      {vues && <div className="mt-3">{vues}</div>}
+    </div>
+  );
+}
+
+/**
+ * Une étiquette HTML posée sur la scène, placée par le rendu à chaque image.
+ * `texte` pour une lettre (N, P, S…) ; `children` pour une notation qui passe
+ * par KaTeX (un vecteur, $\vec F$) — la même écriture que la leçon.
+ */
+export function Etiquette({
+  refEl,
+  texte,
+  nom,
+  fond,
+  discret,
+  children,
+}: {
+  refEl: React.RefObject<HTMLSpanElement>;
+  texte?: string;
+  /** un nom stable pour les portes, qui lisent l'étiquette sans deviner son rendu KaTeX */
+  nom?: string;
+  /** une pastille de surface sous le texte — quand la scène peint jusque sous l'étiquette (la cuve) */
+  fond?: boolean;
+  /**
+   * un APPUI (le centre du virage, la flèche de départ) et non un point de
+   * l'énoncé ni une réponse : graisse normale, encre secondaire — la hiérarchie
+   * des étiquettes suit celle des traits (vague 2 du tremplin)
+   */
+  discret?: boolean;
+  children?: React.ReactNode;
+}) {
+  return (
+    <span
+      ref={refEl}
+      data-etiquette={nom ?? texte}
+      aria-hidden="true"
+      className={cn(
+        "pointer-events-none absolute left-0 top-0 whitespace-nowrap text-caption font-semibold text-primary",
+        // une pastille : un peu d'air vertical, et une graisse moyenne — la pastille assure déjà le contraste
+        fond && "rounded-sm bg-figure-surface px-1.5 py-0.5 font-medium",
+        discret && "font-normal text-secondary"
+      )}
+      style={{ visibility: "hidden" }}
+    >
+      {children ?? texte}
+    </span>
+  );
+}
+
+/** Pose une étiquette sur sa projection (pixels CSS du canvas). */
+export function poser(el: HTMLSpanElement | null, p: { x: number; y: number; visible: boolean }, decalageY = "-50%", decalageX = "-50%") {
+  if (!el) return;
+  el.style.transform = `translate(${p.x}px, ${p.y}px) translate(${decalageX}, ${decalageY})`;
+  el.style.visibility = p.visible ? "visible" : "hidden";
+}
+
+type Point2 = { x: number; y: number };
+/**
+ * Une boîte occupée. `traversable` : un FILET peut la couper sans que ce soit un conflit — la
+ * bande de part et d'autre d'un axe (plan complexe) écarte les PASTILLES des graduations, mais
+ * un filet qui franchit l'axe le coupe comme n'importe quel trait (800, pas 5 000). Sans cette
+ * nuance, le placeur jugeait grave une disposition que la porte accepte, et en préférait une
+ * que la porte refuse (vague 2, S5 au téléphone).
+ */
+export type Boite = { x0: number; y0: number; x1: number; y1: number; traversable?: boolean };
+
+/** La boîte de la légende du plateau, en pixels de la scène (null : pas de légende). */
+export function boiteLegende(hote: HTMLElement | null): Boite | null {
+  const l = hote?.querySelector<HTMLElement>("[data-legende]");
+  if (!l) return null;
+  return { x0: l.offsetLeft, y0: l.offsetTop, x1: l.offsetLeft + l.offsetWidth, y1: l.offsetTop + l.offsetHeight };
+}
+
+/** Le segment [a, b] traverse-t-il la boîte ? (découpage de Liang–Barsky) */
+function traverse(a: Point2, b: Point2, r: Boite): boolean {
+  let t0 = 0;
+  let t1 = 1;
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+  const p = [-dx, dx, -dy, dy];
+  const q = [a.x - r.x0, r.x1 - a.x, a.y - r.y0, r.y1 - a.y];
+  for (let i = 0; i < 4; i++) {
+    if (p[i] === 0) {
+      if (q[i] < 0) return false;
+    } else {
+      const t = q[i] / p[i];
+      if (p[i] < 0) {
+        if (t > t1) return false;
+        if (t > t0) t0 = t;
+      } else {
+        if (t < t0) return false;
+        if (t < t1) t1 = t;
+      }
+    }
+  }
+  return true;
+}
+
+const chevauche = (a: Boite, b: Boite) => a.x0 < b.x1 && b.x0 < a.x1 && a.y0 < b.y1 && b.y0 < a.y1;
+
+/** Les directions essayées autour de l'ancre, dans cet ordre de préférence. */
+const DIRECTIONS: readonly (readonly [number, number])[] = [
+  [1, 0],
+  [-1, 0],
+  [0, 1],
+  [0, -1],
+  [1, -1],
+  [1, 1],
+  [-1, -1],
+  [-1, 1],
+  [0.5, -1],
+  [-0.5, -1],
+  [0.5, 1],
+  [-0.5, 1],
+];
+/** Les distances (px) entre l'ancre et le bord le plus proche de l'étiquette. */
+const DISTANCES = [0, 8, 18, 32, 50, 75, 105, 140];
+
+/** Deux segments se COUPENT-ils (hors extrémités communes) ? — le filet d'une étiquette contre un trait du dessin */
+function croise(a: Point2, b: Point2, c: Point2, d: Point2): boolean {
+  const o = (p: Point2, q: Point2, r: Point2) => (q.x - p.x) * (r.y - p.y) - (q.y - p.y) * (r.x - p.x);
+  const d1 = o(c, d, a), d2 = o(c, d, b), d3 = o(a, b, c), d4 = o(a, b, d);
+  return ((d1 > 0 && d2 < 0) || (d1 < 0 && d2 > 0)) && ((d3 > 0 && d4 < 0) || (d3 < 0 && d4 > 0));
+}
+
+/**
+ * Pose des étiquettes de TEXTE autour de leur ancre sans qu'elles se
+ * chevauchent, sans qu'un trait de la scène les barre, et dans le cadre.
+ *
+ * Né des captures du manège (2026-09-24) : vue du dessus — la vue même que le
+ * retour du pari demande —, « 245 N » et « dans le plan de rotation : 0 N »
+ * tombaient sur le même point ; vue de côté, « 245 N » était barré par sa
+ * propre flèche. `poser` centre une étiquette SUR son ancre ; une ancre posée
+ * sur un trait donne une étiquette barrée.
+ *
+ * Pour chaque étiquette, dans l'ordre donné (la première est prioritaire), on
+ * essaie son ancre si `surAncre` (une ancre déjà décalée de la géométrie),
+ * puis douze directions à huit distances, et l'on garde la place au COÛT le
+ * plus bas : hors du cadre ≫ sur une étiquette déjà posée ≫ barrée par un
+ * trait ≫ loin de l'ancre. Une première version gardait la première place
+ * parfaite, sinon la première qui ne chevauchait rien — la porte l'a prise en
+ * défaut deux fois sur quatre-vingt-dix mesures (une étiquette barrée par le
+ * rayon peint, une autre hors du cadre) : quand rien n'est parfait, c'est la
+ * moins mauvaise qu'il faut, pas la première.
+ *
+ * Les REPÈRES sans texte ne passent jamais par ici : la porte les lit à leur
+ * point exact. Toutes les tailles sont lues AVANT toute écriture (une seule
+ * mise en page par image).
+ */
+export function disposer(
+  etiquettes: {
+    el: HTMLSpanElement | null;
+    p: { x: number; y: number; visible: boolean };
+    surAncre?: boolean;
+    directions?: readonly (readonly [number, number])[];
+    /**
+     * La distance MAXIMALE (px, parmi `DISTANCES`) à laquelle l'étiquette peut
+     * s'écarter de son point. Sans elle, une étiquette gênée par un tracé
+     * voisin part là où il y a de la place — au prix de ce qu'elle nomme
+     * (noyaux, étape 5 : « 8,0 jours », la cote de l'iode, dérivait sous la
+     * courbe du SECOND isotope, qui a 4 jours de demi-vie). Mieux vaut
+     * recouvrir un bout de tracé que nommer autre chose.
+     */
+    portee?: number;
+    /**
+     * Une seconde étiquette EMPILÉE au-dessus de celle-ci, dans la même colonne :
+     * les deux sont placées comme un seul bloc, centrées l'une sur l'autre (banc
+     * d'électrolyse, vague 2 : le rôle « anode » placé seul, à côté de sa lame,
+     * n'avait nulle part où aller et coupait la paroi du bécher). Invisible, elle
+     * est cachée et le bloc se réduit à l'étiquette du dessous.
+     */
+    chapeau?: { el: HTMLSpanElement | null; visible: boolean };
+    /**
+     * Au-delà de cette distance (px, du point au bord de l'étiquette), un FILET relie
+     * l'étiquette à son point (plan complexe : au téléphone, une affixe longue ne tient
+     * pas près de son point). Le placeur le sait : une place dont le filet traverserait
+     * une étiquette déjà posée, ou qui couvrirait un filet déjà tiré, coûte cher. Le
+     * filet retenu est rendu avec la place, au client de le tracer.
+     */
+    filet?: number;
+  }[],
+  segments: readonly (readonly [Point2, Point2])[],
+  cadre: { largeur: number; hauteur: number },
+  /**
+   * Des boîtes déjà OCCUPÉES, que les étiquettes évitent comme elles s'évitent
+   * entre elles : la légende du plateau (une pastille opaque — à l'étape 4 de
+   * la corde, elle recouvrait « S » et « M »), un anneau dessiné…
+   */
+  obstacles: readonly Boite[] = []
+): ({ x: number; y: number; w: number; h: number; filet: [Point2, Point2] | null; cout: number; graves: number } | null)[] {
+  const ECART_CHAPEAU = 2;
+  const tailles = etiquettes.map(({ el, p, chapeau }) => {
+    if (!el || !p.visible) return null;
+    const c = chapeau?.el && chapeau.visible ? { w: chapeau.el.offsetWidth, h: chapeau.el.offsetHeight } : null;
+    const w = el.offsetWidth, h = el.offsetHeight;
+    return c ? { w: Math.max(w, c.w), h: h + ECART_CHAPEAU + c.h, bas: h, haut: c.h } : { w, h, bas: h, haut: 0 };
+  });
+  const posees: Boite[] = [...obstacles];
+  const filets: [Point2, Point2][] = [];
+  const filetsRetenus: ([Point2, Point2] | null)[] = etiquettes.map(() => null);
+  const couts: number[] = etiquettes.map(() => 0);
+  const graves: number[] = etiquettes.map(() => 0);
+  /** Le filet d'une place : du bord du point (7 px) au bord de la boîte (2 px) — null si la place est assez proche. */
+  const filetDe = (p: Point2, c: Point2, t: { w: number; h: number }, seuil: number | undefined): [Point2, Point2] | null => {
+    if (seuil === undefined) return null;
+    const qx = Math.max(c.x - t.w / 2, Math.min(p.x, c.x + t.w / 2)), qy = Math.max(c.y - t.h / 2, Math.min(p.y, c.y + t.h / 2));
+    const d = Math.hypot(qx - p.x, qy - p.y);
+    if (d <= seuil) return null;
+    const ux = (qx - p.x) / d, uy = (qy - p.y) / d;
+    return [{ x: p.x + ux * 7, y: p.y + uy * 7 }, { x: qx - ux * 2, y: qy - uy * 2 }];
+  };
+  const places: (Point2 | null)[] = etiquettes.map(({ p, surAncre, directions, portee, filet }, i) => {
+    const t = tailles[i];
+    if (!t) return null;
+    const boite = (c: Point2): Boite => ({ x0: c.x - t.w / 2 - 2, y0: c.y - t.h / 2 - 2, x1: c.x + t.w / 2 + 2, y1: c.y + t.h / 2 + 2 });
+    // le coût d'une place, et le nombre de ses conflits GRAVES — ceux qu'une porte refuse : hors
+    // du cadre, sur une étiquette ou un obstacle, un trait sous la pastille, un filet sous une
+    // étiquette. Un filet qui coupe un trait coûte (800) sans être grave : on le montre, on ne
+    // le refuse pas. Le compte sert à l'appelant qui compare deux ordres (plan complexe).
+    const evaluer = (c: Point2, rang: number, g: number): [number, number] => {
+      const b = boite(c);
+      const deborde = Math.max(0, -b.x0) + Math.max(0, -b.y0) + Math.max(0, b.x1 - cadre.largeur) + Math.max(0, b.y1 - cadre.hauteur);
+      let n = (deborde > 0 ? 100000 + deborde : 0) + g + rang * 0.01;
+      let graves = deborde > 0 ? 1 : 0;
+      for (const o of posees) if (chevauche(o, b)) { n += 10000; graves++; }
+      for (const [a, z] of segments) if (traverse(a, z, b)) { n += 1000; graves++; }
+      // une étiquette posée sur un filet déjà tiré le coupe ; un filet qui traverse une étiquette
+      // ou un obstacle disparaît dessous
+      for (const [a, z] of filets) if (traverse(a, z, b)) { n += 5000; graves++; }
+      const f = filetDe(p, c, t, filet);
+      // une boîte qui CONTIENT déjà le point (le chiffre d'une graduation sous le milieu d'un arc)
+      // ne peut pas être évitée par son filet : elle ne compte pas
+      const contient = (o: Boite) => p.x >= o.x0 && p.x <= o.x1 && p.y >= o.y0 && p.y <= o.y1;
+      if (f) for (const o of posees) if (!o.traversable && !contient(o) && traverse(f[0], f[1], o)) { n += 5000; graves++; }
+      // un filet qui COUPE un trait du dessin se lit comme un troisième trait (plan complexe,
+      // vague 2 : au téléphone, le filet de « π/6 » traversait OM et OM′) — moins grave qu'une
+      // étiquette coupée, plus qu'un peu d'éloignement
+      if (f) for (const [a, z] of segments) if (croise(f[0], f[1], a, z)) n += 800;
+      return [n, graves];
+    };
+    const cout = (c: Point2, rang: number, g: number) => evaluer(c, rang, g)[0];
+    let meilleur: Point2 = { x: p.x, y: p.y };
+    let meilleurCout = surAncre ? cout(meilleur, 0, 0) : Infinity;
+    const dirs = directions ?? DIRECTIONS;
+    const essayer = (g: number) =>
+      dirs.forEach(([dx, dy], rang) => {
+        const c = { x: p.x + dx * (t.w / 2 + 5 + g), y: p.y + dy * (t.h / 2 + 3 + g) };
+        const k = cout(c, rang, g);
+        if (k < meilleurCout) {
+          meilleurCout = k;
+          meilleur = c;
+        }
+      });
+    DISTANCES.filter((g) => portee === undefined || g <= portee).forEach(essayer);
+    // UNE ÉTIQUETTE RELIÉE PAR UN FILET cherche plus loin plutôt que d'en chevaucher une autre
+    // (plan complexe, vague 2 : au téléphone, à S4, « A(2) » se posait 2,5 px sous « M(1 + i ») —
+    // aucune place à moins de 50 px ne valait moins qu'un chevauchement). Un filet plus long est
+    // un moindre mal ; les étiquettes sans filet gardent leur portée, et les places qui ne
+    // chevauchaient rien ne bougent pas. Mais plus loin, on ne prend qu'une place PROPRE (sous
+    // 1 000 : ni chevauchement, ni trait sous la pastille, ni filet sous une autre étiquette) —
+    // le premier essai prenait un filet passé SOUS « M′(1 − i) », que la porte refusait
+    if (filet !== undefined && portee !== undefined && meilleurCout >= 10000) {
+      const avant = { cout: meilleurCout, place: meilleur };
+      DISTANCES.filter((g) => g > portee && g <= 2 * portee).forEach(essayer);
+      if (meilleurCout >= 1000) {
+        meilleurCout = avant.cout;
+        meilleur = avant.place;
+      }
+    }
+    // le rang et la distance ne changent pas le compte des conflits graves
+    graves[i] = evaluer(meilleur, 0, 0)[1];
+    posees.push(boite(meilleur));
+    couts[i] = meilleurCout;
+    const f = filetDe(p, meilleur, t, filet);
+    if (f) {
+      filets.push(f);
+      filetsRetenus[i] = f;
+    }
+    return meilleur;
+  });
+  etiquettes.forEach(({ el, p, chapeau }, i) => {
+    const c = places[i];
+    const t = tailles[i];
+    // un bloc empilé s'aligne sur le bord TOURNÉ VERS son ancre (centré au-dessus d'elle, il
+    // reste centré) : la colonne colle à ce qu'elle nomme, et l'étiquette la plus étroite
+    // ne s'en écarte pas de la demi-différence des largeurs
+    const bord = (w: number) => (!c || !t || Math.abs(c.x - p.x) < 1 ? 0 : c.x > p.x ? w / 2 - t.w / 2 : t.w / 2 - w / 2);
+    if (chapeau?.el) {
+      if (c && t && t.haut > 0) {
+        // le chapeau en haut du bloc, l'étiquette en bas
+        chapeau.el.style.transform = `translate(${c.x + bord(chapeau.el.offsetWidth)}px, ${c.y - t.h / 2 + t.haut / 2}px) translate(-50%, -50%)`;
+        chapeau.el.style.visibility = "visible";
+      } else chapeau.el.style.visibility = "hidden";
+    }
+    if (!el) return;
+    if (!c || !t) {
+      el.style.visibility = "hidden";
+      return;
+    }
+    const dx = t.haut > 0 ? bord(el.offsetWidth) : 0;
+    el.style.transform = `translate(${c.x + dx}px, ${c.y + t.h / 2 - t.bas / 2}px) translate(-50%, -50%)`;
+    el.style.visibility = "visible";
+  });
+  // la place retenue de chaque bloc (centre et taille), pour qui veut la RELIER à son point
+  // (le plan complexe tire un filet quand l'étiquette a dû s'éloigner) — ce qu'elle a COÛTÉ, et
+  // ses conflits GRAVES, pour qui veut comparer deux ordres de pose
+  return etiquettes.map((_, i) => {
+    const c = places[i], t = tailles[i];
+    return c && t ? { x: c.x, y: c.y, w: t.w, h: t.h, filet: filetsRetenus[i], cout: couts[i], graves: graves[i] } : null;
+  });
+}

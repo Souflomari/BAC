@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 560" width="640" height="560"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Pendule élastique horizontal montré à trois états — ressort comprimé à x = moins X m, au repos à x = 0, étiré à x = plus X m — et la courbe x(t) = X m cos(oméga zéro t) correspondante, avec l’amplitude X m et la période T zéro repérées.">
+  <title>Pendule élastique horizontal — trois états et la loi horaire x(t)</title>
+
+  <!--
+    pendule-elastique.svg — figure composée, DEUX panneaux empilés, STATIQUE
+    (aucun step-group : le rendu est toujours complet).
+
+    PANNEAU 1 (schématique, y=32..294) : le même solide (masse m) et le même
+    ressort (raideur k) montrés à 3 états, empilés verticalement :
+      Rangée A (yc=100)  : x = −X_m  (ressort comprimé)
+      Rangée B (yc=160)  : x = 0     (équilibre, ressort au repos)
+      Rangée C (yc=220)  : x = +X_m  (ressort étiré)
+    Un même mur fixe (x=46..70) sert de référence commune aux 3 rangées.
+    Une réglette horizontale au-dessus (y=46) porte les graduations
+    −X_m / 0 / +X_m ; des pointillés verticaux relient chaque centre de
+    masse à sa graduation. Vérification anti-collision (calcul à la main) :
+    les 3 pointillés (x=190, x=250, x=310) ne traversent jamais le
+    ressort/bloc-masse d'une AUTRE rangée, parce que chaque rangée s'arrête
+    strictement avant le x de la graduation qui ne lui appartient pas
+    (bloc A : 160–220 ; bloc B : 220–280 ; bloc C : 280–340 — bords
+    jointifs, jamais chevauchants). Les étiquettes d'état commencent à
+    x=350, après la graduation la plus à droite (310) : aucune étiquette
+    n'est traversée par un pointillé.
+
+    Couleurs — cohérentes avec l'analogie LC filée dans R1/R5 du texte :
+      ressort (raideur k, le "rappel")   → --figure-energy-C (bleu ardoise,
+                                            même rôle que 1/C dans l'analogie)
+      bloc masse (m, "l'inertie")        → --figure-energy-L (vert sarcelle,
+                                            même rôle que L dans l'analogie)
+      mur fixe, réglette, pointillés     → --figure-ink / --figure-ink-soft
+      courbe x(t) (panneau 2)            → --figure-accent (la grandeur suivie)
+
+    PANNEAU 2 (graphe, y=322..538) : x(t) = X_m·cos(ω0 t + φ), cas illustré
+    φ=0 (lâcher sans vitesse depuis +X_m — cf. R2, "premier lancer").
+    Courbe = polyligne de Béziers cubiques calculée par quart de période
+    (largeur de quart = 50px, amplitude = 70px), règle de construction :
+    au voisinage d'un extremum (tangente horizontale), le point de contrôle
+    adjacent a le même y que l'extremum, décalé de 0,36×largeur en x ; au
+    voisinage d'un passage par zéro, le point de contrôle est décalé de
+    0,24×largeur en x et de 0,3125×(Δy) — même règle que la sinusoïde de
+    regimes-uc.svg, reformulée ici pour amplitude=70/quart=50.
+    Repères ±X_m en pointillés ; bracket T0 entre les deux premiers pics
+    (x=90 et x=290 — exactement un pic à pic, donc exactement une période,
+    à la différence d'une courbe en cos², cf. note énergie-oscillateur.svg).
+  -->
+
+  <!-- Titre général -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Pendule élastique horizontal — trois états et la loi horaire x(t)
+  </text>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       PANNEAU 1 — le solide à trois états
+       ════════════════════════════════════════════════════════════════════ -->
+
+  <rect x="20" y="32" width="600" height="262" rx="8"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- Réglette horizontale (légende de position), au-dessus des 3 rangées -->
+  <line x1="170" y1="46" x2="410" y2="46" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+  <polygon points="410,46 398,42 398,50" fill="var(--figure-ink-soft)"/>
+  <text x="417" y="50" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">x</text>
+
+  <!-- Graduations -->
+  <line x1="190" y1="42" x2="190" y2="50" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="250" y1="42" x2="250" y2="50" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="310" y1="42" x2="310" y2="50" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="190" y="64" text-anchor="middle" font-size="10.5" font-style="italic"
+        fill="var(--figure-ink-soft)">−X<tspan dy="3" font-size="7.5">m</tspan></text>
+  <text x="250" y="64" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">0</text>
+  <text x="310" y="64" text-anchor="middle" font-size="10.5" font-style="italic"
+        fill="var(--figure-ink-soft)">+X<tspan dy="3" font-size="7.5">m</tspan></text>
+
+  <!-- Pointillés de repère : graduation → sommet de chaque bloc-masse -->
+  <line x1="190" y1="46" x2="190" y2="75" stroke="var(--figure-ink-soft)" stroke-width="1"
+        stroke-dasharray="3,3"/>
+  <line x1="250" y1="46" x2="250" y2="135" stroke="var(--figure-ink-soft)" stroke-width="1"
+        stroke-dasharray="3,3"/>
+  <line x1="310" y1="46" x2="310" y2="195" stroke="var(--figure-ink-soft)" stroke-width="1"
+        stroke-dasharray="3,3"/>
+  <circle cx="190" cy="75"  r="2.5" fill="var(--figure-ink-soft)"/>
+  <circle cx="250" cy="135" r="2.5" fill="var(--figure-ink-soft)"/>
+  <circle cx="310" cy="195" r="2.5" fill="var(--figure-ink-soft)"/>
+
+  <!-- Mur fixe — commun aux 3 rangées -->
+  <rect x="46" y="65" width="24" height="190" rx="2" fill="var(--figure-ink)"/>
+
+  <!-- ── Rangée A : x = −X_m (ressort comprimé), yc=100 ─────────────────── -->
+  <polyline points="70,100 85,90 100,110 115,90 130,110 145,90 160,100"
+            fill="none" stroke="var(--figure-energy-C)" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="160" y="75" width="60" height="50" rx="6"
+        fill="var(--figure-energy-L)" fill-opacity="0.16"
+        stroke="var(--figure-energy-L)" stroke-width="1.8"/>
+  <text x="190" y="105" text-anchor="middle" font-size="14" font-style="italic"
+        fill="var(--figure-ink)">m</text>
+  <text x="350" y="97" font-size="13" font-style="italic" fill="var(--figure-ink)">x = −X<tspan
+        dy="3" font-size="9">m</tspan></text>
+  <text x="350" y="113" font-size="10.5" fill="var(--figure-ink-soft)">ressort comprimé</text>
+
+  <!-- ── Rangée B : x = 0 (équilibre), yc=160 ────────────────────────────── -->
+  <polyline points="70,160 95,150 120,170 145,150 170,170 195,150 220,160"
+            fill="none" stroke="var(--figure-energy-C)" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="145" y="140" text-anchor="middle" font-size="13" font-style="italic"
+        fill="var(--figure-energy-C)">k</text>
+  <rect x="220" y="135" width="60" height="50" rx="6"
+        fill="var(--figure-energy-L)" fill-opacity="0.16"
+        stroke="var(--figure-energy-L)" stroke-width="1.8"/>
+  <text x="250" y="165" text-anchor="middle" font-size="14" font-style="italic"
+        fill="var(--figure-ink)">m</text>
+  <text x="350" y="157" font-size="13" font-style="italic" fill="var(--figure-ink)">x = 0</text>
+  <text x="350" y="173" font-size="10.5" fill="var(--figure-ink-soft)">équilibre — ressort au repos</text>
+
+  <!-- ── Rangée C : x = +X_m (ressort étiré), yc=220 ─────────────────────── -->
+  <polyline points="70,220 105,210 140,230 175,210 210,230 245,210 280,220"
+            fill="none" stroke="var(--figure-energy-C)" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="280" y="195" width="60" height="50" rx="6"
+        fill="var(--figure-energy-L)" fill-opacity="0.16"
+        stroke="var(--figure-energy-L)" stroke-width="1.8"/>
+  <text x="310" y="225" text-anchor="middle" font-size="14" font-style="italic"
+        fill="var(--figure-ink)">m</text>
+  <text x="350" y="217" font-size="13" font-style="italic" fill="var(--figure-ink)">x = +X<tspan
+        dy="3" font-size="9">m</tspan></text>
+  <text x="350" y="233" font-size="10.5" fill="var(--figure-ink-soft)">ressort étiré</text>
+
+  <!-- Légende de cohérence -->
+  <text x="320" y="286" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">
+    Même ressort (raideur <tspan font-style="italic">k</tspan>), même solide (masse <tspan
+    font-style="italic">m</tspan>) : seule la position <tspan font-style="italic">x</tspan> change.
+  </text>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       PANNEAU 2 — la loi horaire x(t)
+       ════════════════════════════════════════════════════════════════════ -->
+
+  <text x="320" y="300" text-anchor="middle" font-size="13" font-weight="600" font-style="italic"
+        fill="var(--figure-ink)">x(t) = X<tspan dy="3" font-size="9.5">m</tspan><tspan
+        dy="-3"> cos(ω</tspan><tspan dy="3" font-size="9.5">0</tspan><tspan
+        dy="-3"> t + φ)</tspan>
+  </text>
+  <text x="320" y="313" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">
+    Cas illustré : <tspan font-style="italic">φ</tspan> = 0 — solide lâché sans vitesse initiale
+    depuis <tspan font-style="italic">x</tspan> = +X<tspan dy="3" font-size="7.5"
+    font-style="italic">m</tspan>
+  </text>
+
+  <rect x="20" y="322" width="600" height="216" rx="8"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- Axes -->
+  <line x1="70" y1="420" x2="600" y2="420" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="600,420 588,415.5 588,424.5" fill="var(--figure-ink-soft)"/>
+  <line x1="90" y1="340" x2="90" y2="505" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="90,340 85.5,352 94.5,352" fill="var(--figure-ink-soft)"/>
+  <text x="607" y="424" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">t</text>
+  <text x="82" y="344" text-anchor="end" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">x</text>
+  <text x="82" y="424" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+
+  <!-- Repères ±X_m -->
+  <line x1="90" y1="350" x2="590" y2="350" stroke="var(--figure-ink-soft)" stroke-width="1.2"
+        stroke-dasharray="5,3"/>
+  <text x="66" y="354" text-anchor="end" font-size="10.5" font-style="italic"
+        fill="var(--figure-ink-soft)">+X<tspan dy="3" font-size="7.5">m</tspan></text>
+  <line x1="90" y1="490" x2="590" y2="490" stroke="var(--figure-ink-soft)" stroke-width="1.2"
+        stroke-dasharray="5,3"/>
+  <text x="66" y="494" text-anchor="end" font-size="10.5" font-style="italic"
+        fill="var(--figure-ink-soft)">−X<tspan dy="3" font-size="7.5">m</tspan></text>
+
+  <!-- Courbe x(t) — Béziers cubiques calculées (quart de période = 50px, amplitude = 70px) -->
+  <path d="
+    M90,350
+    C108,350 128,372 140,420
+    C152,468 172,490 190,490
+    C208,490 228,468 240,420
+    C252,372 272,350 290,350
+    C308,350 328,372 340,420
+    C352,468 372,490 390,490
+    C408,490 428,468 440,420
+    C452,372 472,350 490,350
+    C508,350 528,372 540,420
+    C552,468 572,490 590,490
+  " fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
+    stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Bracket T0 entre les deux premiers pics (x=90 et x=290 — un pic à pic exact) -->
+  <line x1="90" y1="497" x2="90" y2="507" stroke="var(--figure-accent)" stroke-width="1.6"/>
+  <line x1="290" y1="497" x2="290" y2="507" stroke="var(--figure-accent)" stroke-width="1.6"/>
+  <line x1="90" y1="502" x2="290" y2="502" stroke="var(--figure-accent)" stroke-width="1.6"/>
+  <text x="190" y="520" text-anchor="middle" font-size="11" font-style="italic"
+        fill="var(--figure-accent)">T<tspan dy="3" font-size="8">0</tspan></text>
+
+</svg>

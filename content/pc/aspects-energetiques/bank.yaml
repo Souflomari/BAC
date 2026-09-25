@@ -1,0 +1,393 @@
+# bank.yaml — la banque « S'entraîner » de aspects-energetiques (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation, exercises.yaml), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Conventions KaTeX (block scalars pour la prose, KaTeX brut
+# entre apostrophes simples dans steps[].math, décimales françaises `{,}` en
+# mode math, notes en ASCII sans accent ni backslash).
+#
+# NOTE ÉDITORIALE — CE FICHIER FONDE LA BANQUE (2026-08-28, ajout). Avant
+# cette entrée, content/pc/aspects-energetiques ne portait AUCUN bank.yaml —
+# c'était, avec atome-mecanique-newton, l'une des deux seules leçons de PC
+# dans ce cas, et ses neuf rungs ne portaient aucun exercice de bac. L'arrivée
+# de cette entrée n'est pas un hasard de conversion mais un ARBITRAGE DE FOND,
+# tranché lors de la vérification adversariale du sujet source (2017 N,
+# § 13.14) : le pendule de torsion de l'Exercice IV, Partie II, est une
+# entrée à deux lectures possibles — « aspects-energetiques » (le geste
+# réel : diagramme d'énergie, conservation) ou « systemes-oscillants »
+# (l'objet : un pendule de torsion, qui y porte déjà trois entrées). La
+# décision retient CETTE notion, pour trois raisons convergentes :
+#   1. Les trois questions du sujet sont PUREMENT énergétiques (expression de
+#      $E_m$, lecture de $C$ sur un diagramme d'énergie, déduction de
+#      $J_\Delta$) — aucune équation différentielle d'oscillateur, aucune
+#      période, aucun $\omega_0$ n'y figurent.
+#   2. Le rung R6 de cette leçon EST littéralement ce bloc : il s'intitule
+#      « Le fil qui se tord emmagasine de l'énergie : $\frac{1}{2}C\theta^2$,
+#      et l'énergie du pendule de torsion » et pose $E_m =
+#      \frac{1}{2}J\dot\theta^2 + \frac{1}{2}C\theta^2$ — la formule exacte
+#      de la question 1 du sujet.
+#   3. La notion « Systèmes oscillants » se dessaisit d'elle-même de ce
+#      terrain, dans son propre texte (lesson.md, section « Ce que ces
+#      exercices empruntent à d'autres chapitres ») : « Elle vit dans
+#      « Aspects énergétiques », avec les expressions $\frac{1}{2}kx^2$ pour
+#      le ressort et $\frac{1}{2}C\theta^2$ pour le fil de torsion. »
+# Le cross-list avec « Systèmes oscillants » (l'objet pendule de torsion, son
+# équation différentielle, sa période $T_0 = 2\pi\sqrt{J/C}$) est honoré dans
+# le raisonnement des questions ci-dessous, sans jamais dupliquer l'entrée.
+# CONTRÔLE D'OUTILLAGE FAIT AVANT DE FONDER CE FICHIER (2026-08-28) : la
+# garde dom-truth « rail == disque » ne cible que `pc/reactions-acido-basiques`
+# (témoin unique, non affecté) ; `web/src/lib/examens.ts` lit les banques
+# génériquement par notion, sans liste blanche des slugs porteurs ; et
+# `derivabilite-etude-fonctions` a été fondée la veille (2026-08-27) et rend
+# correctement — même geste, même risque contrôlé.
+
+notion: pc/aspects-energetiques
+
+entries:
+  # ── bk-2017-n-x4b — 2017 N, Exercice IV (Partie II) : étude énergétique d'un pendule de torsion ──
+  #
+  # NOTE ÉDITORIALE — LE CHOIX DE L'`id` (2026-08-28, ajout). Le sujet source
+  # (docs/sujets/_incoming/pc-2017-n.md, statut « VÉRIFIÉ — clearé pour
+  # conversion, réserves nommées », passe adversariale indépendante du
+  # 2026-08-28) NUMÉROTE ses exercices (I à IV, cartouche p. 1). Ce bloc est
+  # la Partie II de l'Exercice IV ; `x4` (Partie I, le skieur avec
+  # frottements) est déjà pris sous content/pc/lois-de-newton/bank.yaml,
+  # entrée bk-2017-n-x4 — cette entrée-ci porte donc le suffixe `b`, même
+  # convention que bk-2015-n-x1/x1b/x1c (docs/grounding/known-issues.md K-7 bis).
+  - id: bk-2017-n-x4b
+    title: "Étude énergétique d'un pendule de torsion : énergie mécanique, lecture de la constante de torsion et du moment d'inertie sur un diagramme d'énergie cinétique"
+    source:
+      year: 2017
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice IV — Partie II : étude énergétique d'un pendule de torsion"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2017 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28F, AlloSchool element/57711
+        (course-422/upload-45103), pages 7-8 sur 8 — Exercice IV ( 5,5 points
+        ), Partie II : étude énergétique d'un pendule de torsion, barème
+        2,00 pt (0,5+0,75+0,75), 3 questions, sur les 5,50 pt de l'exercice
+        complet dont la Partie I (skieur avec frottements, 3,50 pt) est
+        transcrite sous content/pc/lois-de-newton/bank.yaml, entrée
+        bk-2017-n-x4 — pas de double comptage : 3,50+2,00 = 5,50.
+        Transcription vérifiée par une passe adversariale indépendante
+        (2026-08-28, docs/sujets/_incoming/pc-2017-n.md, statut « VÉRIFIÉ —
+        clearé pour conversion »), 31 des 32 questions du sujet re-dérivées
+        indépendamment. FIGURE H (page 8, E_C en fonction de theta) mesurée
+        sur les objets vectoriels du PDF natif : calibration sur les lignes
+        de grille noires, une maille = 0,2 rad horizontalement et 2 mJ
+        verticalement. Courbe (156 points), parabole concave symétrique
+        autour de theta = 0 : sommet mesuré à 16,02-16,05 mJ (sur la ligne de
+        grille NON étiquetée, une maille au-dessus du 14 imprimé — la seule
+        lecture non triviale de la figure), zéros mesurés à theta = -0,80 et
+        +0,80 rad, cohérents avec theta_m = 0,8 rad de l'énoncé. Contre-calcul
+        refait ici, chiffre par chiffre : E_m = E_C(0) = 16 mJ (lu au sommet,
+        car E_p,torsion(0)=0) ; C = 2.E_m/theta_m^2 = 2x0,016/0,64 = 0,05
+        N.m/rad ; J_Delta = 2.E_m/theta_dot_max^2 = 2x0,016/2,31^2 ~
+        6,0.10^-3 kg.m^2. Ces valeurs coïncident avec le recompte indépendant
+        de la vérification adversariale (§ 13.11 et § 13.13 du fichier
+        source : C = 0,0498 ≈ 0,05 N.m.rad^-1, J_Delta = 6,01.10^-3 kg.m^2) et
+        avec le corrigé non officiel consulté par la source (« Graphiquement,
+        l'énergie mécanique est Em = 16 mJ »). DÉFAUT DU SUJET OFFICIEL PORTÉ,
+        PAS RÉPARÉ : l'introduction confond, dans la même partie, deux
+        notations différentes sous la même lettre « G » — la constante
+        d'attraction universelle de Cavendish (encadré historique) et le
+        centre d'inertie de la tige (énoncé du dispositif) ; signalé dans
+        l'intro ci-dessous, sans conséquence sur les questions posées, qui
+        n'utilisent que le second sens. Deux fautes de langue reconduites
+        verbatim dans les questions : « en fonction de C, $J_\Delta$, θ et la
+        vitesse angulaire » (question 1, sans « de » devant « la vitesse ») et
+        « $\dot\theta_{max} = 2{,}31\ \text{rad.s}^{-1}$, Trouver la valeur de
+        $J_\Delta$ » (question 3, majuscule au milieu de la phrase). ARBITRAGE
+        DE PLACEMENT DE CETTE ENTRÉE : voir la NOTE ÉDITORIALE en tête de ce
+        fichier (§ 13.14 du fichier source). Aucune valeur de `bk-2017-n-x3`
+        (Exercice III Partie II, $F_p$ en litige) n'est mobilisée ici.
+    intro: |-
+      **Étude énergétique d'un pendule de torsion (examen national, session normale 2017, Exercice IV — Partie II, 2,00 points sur les 5,50 de l'exercice).**
+
+      *Les deux parties de cet exercice sont indépendantes. La Partie I — le mouvement d'un skieur avec frottements — vit à part, sous la notion « Lois de Newton ». Rien de ce qui suit n'en dépend.*
+
+      Historiquement, Cavendish a utilisé le pendule de torsion pour déterminer la valeur de $G$, la constante d'attraction universelle. Ce type de pendule est utilisé parfois pour déterminer la constante de torsion des matériaux solides et déformables. *(Le sujet officiel réutilise ensuite la même lettre $G$ pour désigner, plus bas, le centre d'inertie de la tige — deux grandeurs sans rapport sous la même notation ; reconduit tel quel, aucune des questions posées ne mobilise le $G$ de Cavendish.)* On se propose de déterminer la valeur de la constante de torsion d'un fil en acier ainsi que le moment d'inertie d'une tige en exploitant les diagrammes d'énergie.
+
+      Un pendule de torsion est constitué d'un fil en acier vertical, de constante de torsion $C$, et d'une tige $AB$ homogène de moment d'inertie $J_\Delta$ par rapport à un axe vertical $(\Delta)$ confondu avec le fil et passant par le centre d'inertie $G$ de la tige.
+
+      On écarte la tige horizontalement, dans le sens positif, d'un angle $\theta_m = 0{,}8\ \text{rad}$ par rapport à sa position d'équilibre et on la lâche sans vitesse initiale à un instant $t=0$. On repère la position de la tige à chaque instant par l'abscisse angulaire $\theta$ par rapport à la position d'équilibre. On étudie le mouvement du pendule dans un référentiel terrestre considéré galiléen. On considère la position d'équilibre du pendule comme référence de l'énergie potentielle de torsion et le plan horizontal passant par $G$ comme référence de l'énergie potentielle de pesanteur. On néglige tout frottement.
+
+      **Figure G (schéma).** Un support hachuré figure le plafond, étiqueté $(\Delta)$. Un fil vertical en descend, étiqueté « Fil en acier ». Une tige rectiligne traverse le bas du fil, inclinée ; le point d'intersection fil/tige est noté $G$. Une ligne horizontale tiretée passe par $G$ (position d'équilibre) ; un arc entre cette ligne et la tige porte l'angle $\theta$, avec le sens positif indiqué par une flèche courbe.
+
+      **Figure H ($E_C$ en fonction de $\theta$, mesurée sur les objets vectoriels du PDF natif).** Axe des abscisses $\theta\,(\text{rad})$, gradué $-0{,}8$ · $-0{,}6$ · $-0{,}4$ · $-0{,}2$ · $0$ · $0{,}2$ · $0{,}4$ · $0{,}6$ · $0{,}8$ ; axe des ordonnées $E_C\,(\text{mJ})$, gradué $2$ · $4$ · $6$ · $8$ · $10$ · $12$ · $14$. La courbe est une **parabole concave**, symétrique autour de $\theta=0$, dont le **sommet touche une ligne de grille NON étiquetée, une maille au-dessus du $14$ imprimé** — c'est la lecture non triviale de cette figure, et c'est à toi de la faire — et dont les deux zéros tombent à $\theta = \pm0{,}80\ \text{rad}$, cohérents avec $\theta_m$.
+    questions:
+      - id: q1
+        stem: |-
+          **(0,5 pt)** Écrire l'expression de l'énergie mécanique du pendule en fonction de C, $J_\Delta$, θ et la vitesse angulaire $\dot\theta$.
+        reasoning: |-
+          Comme au chapitre 7, le pendule de torsion emmagasine son énergie dans deux réservoirs distincts, qui ne se mélangent jamais : l'énergie cinétique de rotation, portée par l'inertie $J_\Delta$ et la vitesse angulaire $\dot\theta$ (l'analogue rotationnel exact de $\frac{1}{2}mv^2$) ; et l'énergie potentielle de torsion, portée par la raideur $C$ du fil et l'angle $\theta$ — jamais par $J_\Delta$, qui n'est pas un rappel mais une inertie.
+
+          $$E_c = \frac{1}{2}J_\Delta\,\dot\theta^2 \qquad E_{p,torsion} = \frac{1}{2}C\,\theta^2$$
+
+          $$\boxed{E_m = E_c + E_{p,torsion} = \frac{1}{2}J_\Delta\,\dot\theta^2 + \frac{1}{2}C\,\theta^2}$$
+
+          Le piège nommé de cette question. Mettre $J_\Delta$ dans le terme de rappel, ou $C$ dans le terme cinétique — les deux réservoirs suivent une règle stricte (chapitre 7) : l'inertie ($J_\Delta$) ne vit jamais dans $E_p$, le rappel ($C$) ne vit jamais dans $E_c$. C'est exactement le même partage que pour le ressort ($m$ dans $E_c$, $k$ dans $E_{pe}$), habillé en rotation.
+        steps:
+          - math: 'E_c = \frac{1}{2}J_\Delta\,\dot\theta^2 \qquad E_{p,torsion} = \frac{1}{2}C\,\theta^2'
+            note: "Les deux réservoirs (chapitre 7) : inertie de rotation dans E_c, raideur du fil dans E_p."
+          - math: '\boxed{E_m = \frac{1}{2}J_\Delta\,\dot\theta^2 + \frac{1}{2}C\,\theta^2}'
+            note: "Énergie mécanique du pendule de torsion."
+      - id: q2
+        stem: |-
+          **(0,75 pt)** Déterminer la valeur de la constante de torsion $C$ du fil en acier.
+        reasoning: |-
+          La figure H ne trace que $E_C(\theta)$, pas $E_m$ directement : il faut d'abord en extraire $E_m$, puis $C$, en deux temps — exactement la méthode de lecture des diagrammes d'énergie établie au chapitre 6, transposée de la variable $x$ à la variable $\theta$.
+
+          **Premier temps : lire $E_m$ au sommet.** Sans frottement, $E_m$ est constante (chapitre 7) — elle vaut ce que $E_C$ vaut là où $E_{p,torsion}$ s'annule, c'est-à-dire à $\theta=0$ (référence de l'énergie potentielle de torsion, énoncé). C'est précisément le SOMMET de la parabole $E_C(\theta)$, qui touche la ligne de grille non étiquetée à $16\ \text{mJ}$.
+
+          $$E_m = E_C(\theta=0) = 16\ \text{mJ} = 1{,}6\times10^{-2}\ \text{J}$$
+
+          **Deuxième temps : passer par l'écart maximal.** Aux deux zéros de la courbe, $\theta = \pm\theta_m$, l'énergie cinétique s'annule ($E_C=0$, le pendule s'arrête un instant avant de repartir) : toute l'énergie mécanique y est alors de l'énergie potentielle de torsion (chapitre 7, même logique que le passage par les positions extrêmes du ressort au chapitre 6).
+
+          $$E_m = \frac{1}{2}C\,\theta_m^2 \implies C = \frac{2\,E_m}{\theta_m^2}$$
+
+          Le piège nommé de cette question. Lire $E_m$ directement sur l'axe des ordonnées comme si le point $14$ (le dernier trait CHIFFRÉ) était le sommet : le sommet touche en réalité la ligne de grille suivante, non étiquetée, à $16\ \text{mJ}$ — c'est le seul comptage de maille non trivial de la figure, et la source du sujet le signale explicitement comme le point fragile de cette lecture.
+        steps:
+          - math: 'E_m = E_C(\theta=0) = 16\ \text{mJ} = 1{,}6\times10^{-2}\ \text{J}'
+            note: "Sommet de la parabole, une maille au-dessus du 14 imprime (chapitre 6, lecture d'un diagramme d'énergie transposée a theta)."
+          - math: 'E_m = \frac{1}{2}C\,\theta_m^2 \implies C = \frac{2\,E_m}{\theta_m^2}'
+            note: "Aux zéros de E_C (theta = +/- theta_m), toute l'énergie est potentielle de torsion (chapitre 7)."
+          - math: 'C = \frac{2\times1{,}6\times10^{-2}}{0{,}8^2} = \frac{3{,}2\times10^{-2}}{0{,}64}'
+            note: "theta_m = 0,8 rad (énoncé)."
+          - math: '\boxed{C \approx 0{,}05\ \text{N.m.rad}^{-1}}'
+            note: "Constante de torsion du fil en acier."
+      - id: q3
+        stem: |-
+          **(0,75 pt)** Sachant que la vitesse angulaire maximale est $\dot\theta_{max} = 2{,}31\ \text{rad.s}^{-1}$, Trouver la valeur de $J_\Delta$.
+        reasoning: |-
+          La vitesse angulaire est maximale exactement à $\theta=0$ (le passage par l'équilibre, où le fil n'exerce plus aucun rappel) : c'est le point symétrique de celui exploité à la question 2, où cette fois toute l'énergie mécanique est cinétique, puisque $E_{p,torsion}(0)=0$.
+
+          $$E_m = \frac{1}{2}J_\Delta\,\dot\theta_{max}^2 \implies J_\Delta = \frac{2\,E_m}{\dot\theta_{max}^2}$$
+
+          avec $E_m = 1{,}6\times10^{-2}\ \text{J}$, la même valeur qu'à la question 2 — l'énergie mécanique ne se recalcule pas, elle est la même à tout instant (chapitre 7).
+
+          Le contrôle qui rassure. On peut aussi retrouver $J_\Delta$ par la période propre du pendule, $T_0 = 2\pi\sqrt{J_\Delta/C}$ (notion « Systèmes oscillants », chapitre 5) : les deux méthodes — énergétique ici, dynamique là-bas — décrivent le même pendule et doivent s'accorder, même si celle-ci se passe entièrement de $T_0$.
+
+          Le piège nommé de cette question. Réutiliser $\theta_m$ au lieu de $\dot\theta_{max}$ dans la formule de $E_c$, ou l'inverse à la question 2 : les deux questions sont symétriques (l'une exploite le sommet en $E_C$, l'autre les zéros), mais chacune n'utilise qu'UNE seule des deux grandeurs extrêmes — jamais les deux à la fois dans la même expression.
+        steps:
+          - math: 'E_m = \frac{1}{2}J_\Delta\,\dot\theta_{max}^2 \implies J_\Delta = \frac{2\,E_m}{\dot\theta_{max}^2}'
+            note: "A theta=0, E_p,torsion=0 : toute l'énergie mécanique est cinétique (chapitre 7), même E_m qu'a la question 2."
+          - math: 'J_\Delta = \frac{2\times1{,}6\times10^{-2}}{2{,}31^2} = \frac{3{,}2\times10^{-2}}{5{,}336}'
+            note: "theta_dot_max = 2,31 rad/s (énoncé)."
+          - math: '\boxed{J_\Delta \approx 6{,}0\times10^{-3}\ \text{kg.m}^2}'
+            note: "Moment d'inertie de la tige."
+
+  # ── bk-2015-r-x4b — 2015 R, Exercice 4 (Deuxième partie) : pendule de torsion par diagrammes d'énergie ──
+  #
+  # ⚠️ DEUX DÉFAUTS DU SUJET OFFICIEL DÉCLARÉS, portés par cette entrée
+  # (F2 et F3 du sas, docs/sujets/_incoming/pc-2015-r.md § 5, tous deux
+  # confirmés sur re-fetch indépendant par la passe adversariale, § V.4).
+  #
+  # — F2 (étiquette de partie) : la page 7 du sujet imprime « Première partie
+  #   (02,5 points) : Etude d'un système mécanique oscillant », alors que
+  #   c'est la DEUXIÈME partie de l'Exercice 4 — la « Première partie
+  #   (03 points) : Etude du mouvement d'un skieur » est page 5, et le
+  #   sommaire de la page 1 annonce bien « Partie 2 : Etude d'un système
+  #   mécanique oscillant » (3 + 2,5 = 5,5, le total imprimé de l'exercice).
+  #   L'`exercise_label` de cette entrée dit la position RÉELLE (Deuxième
+  #   partie) ; le défaut est déclaré ici et dans la note de sourcing plutôt
+  #   que reproduit dans une étiquette qui mentirait à l'élève. Confirmé par
+  #   la vérification sur la couche de texte des deux pages ET par crops des
+  #   deux titres sur les JPG (contrôle au pixel, hors PDF).
+  # — F3 (renvoi de figure) : l'énoncé imprime « Les courbes (a) et (b) de la
+  #   figure 2, représentent les variations, en fonction du temps, des
+  #   énergies : potentielle Ep et cinétique EC, de l'oscillateur » — or
+  #   l'axe des abscisses de la figure 2 porte θ(rad), gradué de −0,4 à 0,4
+  #   (étiquettes mesurées aux centroïdes par la vérification), et les
+  #   courbes sont des PARABOLES EN θ, pas des sinusoïdes du temps. L'intro
+  #   ci-dessous reformule le renvoi pour qu'il soit VRAI (« en fonction de
+  #   l'abscisse angulaire θ ») et déclare la correction, avec le verbatim
+  #   ci-dessus pour trace — la question 3 exige de lire E_C à θ₁ = 0,2 rad,
+  #   ce qui serait incompréhensible si l'élève cherchait un axe des temps.
+  #
+  # Valeur porteuse de la figure : E(0) = 1,6 mJ — la lecture LA PLUS FRAGILE
+  # du sujet, CONFIRMÉE par la chaîne indépendante du vérificateur (encre du
+  # sommet à 8 carreaux ; la lecture « 1,2 mJ » de la première passe visuelle
+  # du transcripteur est RÉFUTÉE par l'encre, § V.6) et verrouillée par deux
+  # recoupements (croisement (a)×(b) à E(0)/2 ; parabole ½Cθ² collée à (b)).
+  # Pas de corrigé officiel pour trancher (la série SPC n'en a qu'à partir de
+  # 2016) ; le corrigé non officiel svt-assilah (t1887) n'a pu être lu que
+  # sur sa page 1 (Exercice 1, le dosage) — il ne couvre pas ce bloc et
+  # n'est jamais une autorité.
+  #
+  # NOTE ÉDITORIALE — placement et cross-lists : précédent DIRECT
+  # bk-2017-n-x4b (ci-dessus, même dispositif, pendule de torsion par
+  # diagrammes d'énergie, arbitrage de fond en tête de ce fichier). Les
+  # cross-lists `systemes-oscillants` (l'objet pendule de torsion, sa
+  # période) et `rotation-axe-fixe` (J_Δ, la vitesse angulaire) sont honorés
+  # dans le reasoning, PAS dupliqués. La Première partie du même Exercice 4
+  # (le skieur, 3,00 pt) vit sous content/pc/lois-de-newton/bank.yaml,
+  # entrée bk-2015-r-x4 — même exercise_label « Exercice 4 », barème réparti
+  # 3,00 + 2,50 = 05,5 pt.
+  - id: bk-2015-r-x4b
+    title: "Pendule de torsion par diagrammes d'énergie : affecter les courbes, constante de torsion, vitesse angulaire et travail du couple de torsion"
+    source:
+      year: 2015
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 4 — Deuxième partie : étude d'un système mécanique oscillant"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2015 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28 (3 h, coef 7), AlloSchool
+        element/94476 (course-422, jumeaux byte-identiques 94475/94477),
+        page 7 sur 7 — Exercice 4 ( 05,5 points ), seconde partie :
+        étude d'un système mécanique oscillant, sous-total imprimé
+        « (02,5 points) » ; barème 2,50 pt (0,5+0,5+0,75+0,75), 4
+        questions ; la Première partie (le skieur, 3,00 pt) est transcrite
+        sous content/pc/lois-de-newton/bank.yaml, entrée bk-2015-r-x4 —
+        même exercise_label « Exercice 4 », pas de double comptage :
+        3,00+2,50 = 05,5 pt. DEUX DÉFAUTS DU SUJET OFFICIEL déclarés (voir
+        le bloc de commentaire au-dessus de cette entrée) : F2 — la page 7
+        étiquette cette partie « Première partie » alors que c'est la
+        seconde (l'exercise_label dit la position réelle) ; F3 — l'énoncé
+        écrit « en fonction du temps » alors que l'axe imprimé de la
+        figure 2 est θ(rad) (renvoi reformulé dans l'intro, verbatim
+        conservé dans le bloc de commentaire). Transcription vérifiée par
+        une passe adversariale indépendante (2026-08-29,
+        docs/sujets/_incoming/pc-2015-r.md, statut « ✅ VÉRIFIÉ — clearé
+        pour conversion ») : figure 2 re-mesurée au pixel sur le bitmap
+        natif (575×562, 200 dpi effectifs), grille re-caractérisée par
+        recensement RGB (majeures noires 46,5 px en x / 52 px en y),
+        ancres « −0,4 »/« 0 »/« 0,4 » et tick « 1 » (260 px/mJ) : sommet
+        de (a) E(0) = 1,598 → 1,6 mJ CONFIRMÉ (la lecture 1,2 mJ de la
+        première passe visuelle du transcripteur est réfutée par l'encre —
+        il n'y en a aucune à l'ordonnée qu'exigerait 1,2) ; croisement
+        (a)×(b) mesuré à E(0)/2 ; parabole ½Cθ² avec C = 0,02 collée à
+        (b) à 0,4 px médian (§ V.6). Aval concordant (transcripteur puis
+        vérificateur) : C = 0,02 N·m·rad⁻¹ ; E_C(0,2 rad) = 1,2 mJ ;
+        |θ̇| = 1,0 rad·s⁻¹ ; W_C = −4.10⁻⁴ J — les quatre valeurs tombent
+        rond. Aucun corrigé officiel n'existe (la série SPC n'en a qu'à
+        partir de 2016) ; le corrigé non officiel svt-assilah n'est
+        corroborant que sur sa page 1 (Exercice 1, dosage) — il ne couvre
+        pas ce bloc et n'est jamais une autorité : le plafond de preuve
+        est la double chaîne de mesure concordante. CROSS-LISTS
+        `systemes-oscillants` et `rotation-axe-fixe` honorés dans le
+        reasoning, pas dupliqués.
+    intro: |-
+      **Étude d'un système mécanique oscillant (examen national, session de rattrapage 2015 — Exercice 4, Deuxième partie, 2,50 points sur les 05,5 de l'exercice complet).** *(Le sujet officiel étiquette cette partie « Première partie (02,5 points) » — c'est la SECONDE, le sommaire de la page 1 et le barème le confirment ; défaut F2, déclaré — voir la note de sourcing.)*
+
+      *Les deux parties de cet exercice sont indépendantes. La Première partie — le mouvement d'un skieur — vit à part, sous la notion « Lois de Newton » (entrée du sujet 2015). Rien de ce qui suit n'en dépend.*
+
+      Le pendule de torsion permet de déterminer quelques grandeurs physiques caractéristiques de la matière, comme la constante de torsion des matériaux solides déformables, et les moments d'inertie des oscillateurs mécaniques. On étudira de façon simplifiée, la méthode de détermination de la constante de torsion d'un fil métallique, et quelques grandeurs dynamiques et cinématiques, en exploitant les diagrammes d'énergie du pendule de torsion. *(« On étudira » et la virgule qui suit tels qu'imprimés — défauts du sujet officiel, sans incidence)*
+
+      Le pendule de torsion se compose d'un fil de torsion vertical de constante de torsion $C$, et d'une barre $AB$ homogène, de moment d'inertie $J_\Delta = 2{,}4.10^{-3}\ \text{kg.m}^2$ par rapport à un axe vertical $(\Delta)$ colinéaire au fil et passant par le centre d'inertie $G$ de la barre.
+
+      On tourne la barre, horizontalement, dans le sens positif, autour de $(\Delta)$, d'un angle $\theta_m = 0{,}4\ \text{rad}$ par rapport à la position d'équilibre, et on la lâche sans vitesse initiale à un instant $t = 0$, considéré comme origine des temps.
+
+      On repère la position de la barre à chaque instant par son abscisse angulaire $\theta$ par rapport à sa position d'équilibre (Figure 1). On étudie le mouvement du pendule dans un repère lié à la terre et supposé galiléen. *(« lié à la terre », minuscule, tel qu'imprimé)*
+
+      La position d'équilibre est choisie comme état de référence de l'énergie potentielle de torsion, et le plan horizontal passant par $G$ comme état de référence de l'énergie potentielle de pesanteur. On néglige tous les frottements.
+
+      Les courbes (a) et (b) de la figure 2 représentent les variations, **en fonction de l'abscisse angulaire $\theta$**, des énergies : potentielle $E_p$ et cinétique $E_C$, de l'oscillateur. *(Le sujet officiel imprime « en fonction du temps » — contredit par l'axe $\theta$(rad) de sa propre figure 2, dont les courbes sont des paraboles en $\theta$ ; renvoi reformulé pour être vrai, défaut F3 déclaré — voir la note de sourcing.)*
+
+      **Figure 1 (le pendule).** En haut, un plafond hachuré ; un fil vertical fin en descend jusqu'à $G$ — étiquette « $(\Delta)$ » à gauche du fil, légende « Fil de torsion » à droite. La barre $AB$, trait épais passant par $G$, est inclinée ($A$ en bas à gauche, $B$ en haut à droite). Un trait horizontal en pointillés passant par $G$ marque la position d'équilibre ; l'angle $\theta$ est marqué par un petit arc entre les pointillés et la barre, côté $B$. En haut à droite, un signe « + » avec une flèche courbe indique le sens positif.
+
+      **Figure 2 (les diagrammes d'énergie).** Quadrillage ; axe VERTICAL au CENTRE du cadre, étiqueté « $E_P$ ; $E_C$ (mJ) », avec un tick étiqueté « 1 » à mi-hauteur (**1 carreau majeur = 0,2 mJ**) ; axe horizontal « $\theta$(rad) », gradué $-0{,}4$ / $0$ / $0{,}4$ (**1 carreau majeur = 0,1 rad**). Deux paraboles épaisses en croix : la courbe **(a)**, ouverte vers le BAS, culmine à $\theta = 0$ **huit carreaux au-dessus de l'axe horizontal** et s'annule à $\theta = \pm0{,}4\ \text{rad}$ ; la courbe **(b)**, ouverte vers le HAUT, s'annule à $\theta = 0$ et atteint $\approx 1{,}6\ \text{mJ}$ à $\theta = \pm0{,}4\ \text{rad}$. Les deux se croisent vers $\theta \approx \pm0{,}28\ \text{rad}$, à $E \approx 0{,}8\ \text{mJ}$ — la moitié du sommet.
+    questions:
+      - id: q1
+        part: "Deuxième partie — le pendule de torsion par ses énergies"
+        stem: |-
+          **1-** (0,5 pt) Affecter, à chaque courbe, l'énergie correspondante. Justifier.
+        reasoning: |-
+          On identifie chaque courbe par ses ZÉROS — le geste de lecture des diagrammes d'énergie du chapitre 6, transposé du ressort au fil de torsion (chapitre 7) :
+
+          - la courbe **(b)** s'annule à $\theta = 0$, la position d'équilibre — or c'est exactement là que l'énergie potentielle de torsion est nulle (référence choisie par l'énoncé), et elle croît comme $\frac{1}{2}C\theta^2$ quand on s'en écarte : **(b) est $E_p$**, l'énergie potentielle de torsion ;
+          - la courbe **(a)** s'annule à $\theta = \pm\theta_m = \pm0{,}4\ \text{rad}$, les élongations extrêmes — or c'est là que la barre s'immobilise un instant avant de repartir ($\dot\theta = 0$), donc que l'énergie cinétique s'annule ; et elle culmine à $\theta = 0$, au passage par l'équilibre, où la barre va le plus vite : **(a) est $E_C$**, l'énergie cinétique.
+
+          $$\boxed{(a) = E_C \qquad (b) = E_p\ \text{(torsion)}}$$
+
+          Et les deux lectures se recoupent : en l'absence de frottements, $E_C + E_p = E_m$ constante — les deux paraboles sont symétriques l'une de l'autre, et se croisent à mi-hauteur ($0{,}8\ \text{mJ} = E_m/2$), exactement ce que montre la figure.
+
+          Le piège nommé de cette question. Affecter les courbes par leur ALLURE (« la parabole ouverte vers le haut, c'est l'énergie cinétique, comme $\frac{1}{2}mv^2$ ») : l'axe des abscisses est $\theta$, pas une vitesse — en fonction de $\theta$, c'est $E_p = \frac{1}{2}C\theta^2$ qui est la parabole ouverte vers le haut. Les zéros, eux, ne trompent jamais.
+      - id: q2
+        stem: |-
+          **2-** (0,5 pt) Déterminer la valeur de la constante de torsion $C$ du fil métallique.
+        reasoning: |-
+          Sans frottement, l'énergie mécanique est constante (chapitre 7) : elle vaut ce que $E_C$ vaut à l'équilibre — le SOMMET de la courbe (a), sur la ligne majeure de $1{,}6\ \text{mJ}$ :
+
+          $$E_m = E_C(\theta = 0) = 1{,}6\ \text{mJ} = 1{,}6\times10^{-3}\ \text{J}$$
+
+          Aux élongations extrêmes $\theta = \pm\theta_m$, toute cette énergie est potentielle de torsion (la barre s'y arrête) — et le chapitre 7 donne son expression, $\frac{1}{2}C\theta^2$ :
+
+          $$E_m = \frac{1}{2}C\,\theta_m^2 \implies C = \frac{2\,E_m}{\theta_m^2} = \frac{2\times1{,}6\times10^{-3}}{(0{,}4)^2}$$
+
+          $$\boxed{C = 0{,}02\ \text{N.m.rad}^{-1}}$$
+
+          *(L'objet étudié — un pendule de torsion, sa période propre $T_0 = 2\pi\sqrt{J_\Delta/C}$ — appartient à la notion « Systèmes oscillants » ; ici tout se joue en énergie, sans jamais mobiliser $T_0$.)*
+
+          Le piège nommé de cette question. Lire le sommet à $1{,}2\ \text{mJ}$ (six carreaux) au lieu de $1{,}6$ (huit) : le comptage des carreaux est LA lecture porteuse de tout l'exercice — le sommet de (a) est posé sur la ligne majeure, huit carreaux de $0{,}2\ \text{mJ}$ au-dessus de l'axe, et deux recoupements le verrouillent : la courbe (b) atteint la même hauteur à $\pm\theta_m$, et le croisement des deux courbes est à mi-hauteur ($0{,}8\ \text{mJ}$). Une lecture à $1{,}2$ serait incompatible avec ce croisement.
+        steps:
+          - math: 'E_m = E_C(\theta=0) = 1{,}6\ \text{mJ}'
+            note: "Sommet de (a), huit carreaux de 0,2 mJ -- verrouille par le croisement des courbes a E_m/2 = 0,8 mJ."
+          - math: 'E_m = \frac{1}{2}C\,\theta_m^2 \implies C = \frac{2\,E_m}{\theta_m^2}'
+            note: "Aux elongations extrêmes, toute l'énergie est potentielle de torsion (chapitre 7)."
+          - math: 'C = \frac{2\times1{,}6\times10^{-3}}{0{,}16}'
+            note: "theta_m = 0,4 rad (énoncé)."
+          - math: '\boxed{C = 0{,}02\ \text{N.m.rad}^{-1}}'
+            note: "Constante de torsion du fil."
+      - id: q3
+        stem: |-
+          **3-** (0,75 pt) Trouver la valeur absolue de la vitesse angulaire à l'instant de passage de l'oscillateur par une position d'abscisse angulaire $\theta_1 = 0{,}2\ \text{rad}$.
+        reasoning: |-
+          Deux temps : lire $E_C$ à $\theta_1$, puis en extraire $\dot\theta$.
+
+          **Lire $E_C(\theta_1)$.** Par conservation (chapitre 7) — ou directement sur la courbe (a) à $\theta = 0{,}2\ \text{rad}$ :
+
+          $$E_C(\theta_1) = E_m - \frac{1}{2}C\,\theta_1^2 = 1{,}6\times10^{-3} - \frac{1}{2}\times0{,}02\times(0{,}2)^2 = 1{,}6\times10^{-3} - 4\times10^{-4} = 1{,}2\times10^{-3}\ \text{J}$$
+
+          **En extraire $|\dot\theta|$.** L'énergie cinétique d'un solide en ROTATION s'écrit $E_C = \frac{1}{2}J_\Delta\,\dot\theta^2$ — l'analogue rotationnel du $\frac{1}{2}mv^2$ du chapitre 2, construit dans la notion « Rotation autour d'un axe fixe » ($J_\Delta$ y joue le rôle de la masse, $\dot\theta$ celui de la vitesse) :
+
+          $$|\dot\theta| = \sqrt{\frac{2\,E_C(\theta_1)}{J_\Delta}} = \sqrt{\frac{2\times1{,}2\times10^{-3}}{2{,}4\times10^{-3}}} = \sqrt{1{,}0}$$
+
+          $$\boxed{|\dot\theta| = 1{,}0\ \text{rad.s}^{-1}}$$
+
+          Un résultat qui tombe exactement rond — le signe, une fois de plus, que la lecture $E_m = 1{,}6\ \text{mJ}$ est la bonne.
+
+          Le piège nommé de cette question. Mélanger les deux réservoirs : à $\theta_1 = 0{,}2\ \text{rad}$, le pendule N'EST NI à l'équilibre ni à l'élongation maximale — il faut soustraire l'énergie potentielle du moment ($4\times10^{-4}\ \text{J}$) avant d'inverser $\frac{1}{2}J_\Delta\dot\theta^2$. Utiliser $E_m$ entière donnerait $|\dot\theta| \approx 1{,}15\ \text{rad.s}^{-1}$, faux.
+        steps:
+          - math: 'E_C(\theta_1) = E_m - \frac{1}{2}C\,\theta_1^2 = 1{,}6\times10^{-3} - 4\times10^{-4} = 1{,}2\times10^{-3}\ \text{J}'
+            note: "Conservation de E_m (chapitre 7) ; lisible aussi directement sur la courbe (a) a theta = 0,2 rad."
+          - math: 'E_C = \frac{1}{2}J_\Delta\,\dot\theta^2 \implies |\dot\theta| = \sqrt{\frac{2\,E_C}{J_\Delta}}'
+            note: "Énergie cinétique de rotation (notion Rotation autour d'un axe fixe) : J_Delta joue le rôle de la masse."
+          - math: '|\dot\theta| = \sqrt{\frac{2\times1{,}2\times10^{-3}}{2{,}4\times10^{-3}}} = \sqrt{1{,}0}'
+            note: "J_Delta = 2,4e-3 kg.m2 (énoncé)."
+          - math: '\boxed{|\dot\theta| = 1{,}0\ \text{rad.s}^{-1}}'
+            note: "Valeur exactement ronde : la lecture E_m = 1,6 mJ se confirme encore."
+      - id: q4
+        stem: |-
+          **4-** (0,75 pt) Calculer le travail du couple de torsion $W_C$ lorsque l'oscillateur passe de la position d'équilibre repérée par l'abscisse angulaire $\theta = 0$, à la position repérée par l'abscisse angulaire $\theta_1$.
+        reasoning: |-
+          Le couple de torsion est la force de rappel du fil — celle-là même dont l'énergie potentielle de torsion $\frac{1}{2}C\theta^2$ garde la trace (chapitre 7). Son travail se calcule donc comme celui du poids au chapitre 4 : par la VARIATION d'énergie potentielle, changée de signe — jamais par « couple × angle », le couple n'étant pas constant :
+
+          $$W_C(0 \to \theta_1) = -\Delta E_{p,torsion} = -\left(\frac{1}{2}C\,\theta_1^2 - 0\right) = -\frac{1}{2}\times0{,}02\times(0{,}2)^2$$
+
+          $$\boxed{W_C = -4\times10^{-4}\ \text{J}}$$
+
+          Le signe dit la physique : de $\theta = 0$ à $\theta_1 = 0{,}2\ \text{rad}$, la barre S'ÉCARTE de l'équilibre, et le couple de rappel — qui tire toujours vers l'équilibre — travaille CONTRE le mouvement : travail résistant, négatif. C'est exactement l'énergie que la question 3 a vue disparaître du réservoir cinétique ($1{,}6 - 1{,}2 = 0{,}4\ \text{mJ}$) : le théorème de l'énergie cinétique (chapitre 3) referme la boucle, puisque le couple de torsion est ici la seule action qui travaille.
+
+          Le piège nommé de cette question. Écrire $W_C = +\frac{1}{2}C\theta_1^2$ (oublier le signe moins de $W = -\Delta E_p$), ou calculer $\frac{1}{2}C(\theta_m^2 - \theta_1^2)$ en partant de l'élongation maximale : l'énoncé fait partir le trajet de $\theta = 0$, pas de $\theta_m$ — lire les bornes du trajet AVANT de poser le calcul.
+        steps:
+          - math: 'W_C(0 \to \theta_1) = -\Delta E_{p,torsion} = -\left(\frac{1}{2}C\,\theta_1^2 - 0\right)'
+            note: "Travail d'une force conservative = moins la variation de son énergie potentielle (même geste que le poids, chapitre 4)."
+          - math: 'W_C = -\frac{1}{2}\times0{,}02\times(0{,}2)^2'
+            note: "C = 0,02 N.m/rad (question 2), theta_1 = 0,2 rad, départ a theta = 0 (E_p nulle)."
+          - math: '\boxed{W_C = -4\times10^{-4}\ \text{J}}'
+            note: "Travail résistant (la barre s'ecarte de l'équilibre) = l'énergie perdue par le réservoir cinétique entre les questions 2 et 3."

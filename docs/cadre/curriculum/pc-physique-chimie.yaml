@@ -1,0 +1,609 @@
+# ════════════════════════════════════════════════════════════════════════
+# Curriculum boundary — PC stream · Physique-Chimie
+# Source cadre: "Cadre de référence de l'examen national du baccalauréat,
+#   Filières internationales — option français, 2025.
+#   Discipline : Physique Chimie · Série : Sciences Expérimentales ·
+#   Filière : Sciences Physiques."  (CNEEO / MEN)
+#
+# STATUS: COMPLETE — Physics (4/4 sous-domaines) + Chemistry (4/4 sous-domaines).
+#
+# ── Provenance convention (per field, via inline comment) ──
+#   source: cadre p.N   → printed in the cadre. Fast-check against the PDF.
+#   source: derived     → NOT printed. Inferred from what the cadre OMITS +
+#                         domain expertise. THESE NEED HUMAN VALIDATION.
+#
+# ── Structure ──  domaines → sous_domaines → chapitres → {programme, savoir_faire, limites}
+#   (mirrors the cadre's own "domaine principal → sous-domaine" organization)
+#
+# ── Habiletés ──  exam-wide ratios are Utilisation 50% / Application expérimentale
+#   15% / Résolution 35% (cadre p.18-19). Per sous-domaine, each level's part_examen
+#   = ratio × sous-domaine weight. The application_experimentale per-sous-domaine
+#   figure is DERIVED (the spec table merges it into domain-wide cells).
+# ════════════════════════════════════════════════════════════════════════
+
+filiere: sciences_physiques          # the "PC" stream
+matiere: physique_chimie
+serie: sciences_experimentales
+cadre_annee: 2025
+
+domaines:
+
+  # ══════════════════════════════════════════════════════════════════════
+  - id: physique
+    nom: "Physique"
+    sous_domaines:
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: ondes
+        nom: "Ondes"
+        poids: { part_examen: 11, rang_physique: 3 }     # source: cadre p.18
+        habiletes:                                        # source: p.19 (exp = derived)
+          utilisation_ressources:    { part_examen: 5.5 }
+          application_experimentale: { part_examen: 1.65 }   # derived = 15% × 11%
+          resolution_probleme:       { part_examen: 3.85 }
+        competences_ciblees:                              # source: cadre p.29
+          - "Utiliser le modèle ondulatoire pour interpréter les phénomènes liés à la propagation des ondes mécaniques ou optiques et résoudre des situations problème sur la propagation des ondes."
+        chapitres:
+
+          - id: ondes_mecaniques_progressives
+            nom: "Ondes mécaniques progressives"
+            programme:                                    # source: cadre p.20
+              - "Définition d'une onde mécanique, célérité ; ondes longitudinales/transversales et caractéristiques ; onde progressive à une dimension — notion de retard temporel."
+            savoir_faire:                                 # source: cadre p.5
+              - "Définir une onde mécanique et sa célérité ; définir ondes transversale/longitudinale ; définir une onde progressive."
+              - "Connaître la relation d'élongation source/point du milieu : y_M(t) = y_S(t−τ)."
+              - "Exploiter la relation entre retard temporel, distance et célérité."
+              - "Exploiter des documents/données pour déterminer une distance, un retard temporel, une célérité."
+              - "Proposer un montage de mesure du retard temporel ou de la célérité."
+
+          - id: ondes_periodiques
+            nom: "Ondes mécaniques progressives périodiques"
+            programme:                                    # source: cadre p.20
+              - "Périodicité temporelle et spatiale ; onde progressive sinusoïdale (période, fréquence, longueur d'onde) ; mise en évidence expérimentale de la diffraction."
+            savoir_faire:                                 # source: cadre p.5-6
+              - "Reconnaître une onde progressive périodique et sa période ; définir onde sinusoïdale, période, fréquence, longueur d'onde."
+              - "Connaître et exploiter λ = v·T."
+              - "Connaître la condition de diffraction : dimension de l'ouverture ≤ longueur d'onde ; connaître les caractéristiques de l'onde diffractée."
+              - "Définir un milieu dispersif."
+              - "Exploiter des documents expérimentaux pour reconnaître la diffraction et ses caractéristiques."
+              - "Proposer un montage de diffraction (ondes sonores/ultrasonores)."
+
+          - id: onde_lumineuse
+            nom: "Propagation d'une onde lumineuse"
+            programme:                                    # source: cadre p.20
+              - "Mise en évidence expérimentale de la diffraction de la lumière ; modèle ondulatoire ; propagation dans les milieux transparents (indice, dispersion par un prisme)."
+            savoir_faire:                                 # source: cadre p.6
+              - "Savoir que la lumière a un aspect ondulatoire (diffraction) ; influence de la dimension de l'ouverture/obstacle ; exploiter un document/figure de diffraction."
+              - "Connaître et exploiter λ = c/ν ; définir lumière monochromatique/polychromatique ; limites du spectre visible et couleurs."
+              - "Savoir que la fréquence d'une radiation monochromatique ne change pas en changeant de milieu transparent ; milieux plus ou moins dispersifs."
+              - "Connaître et exploiter n = c/v ; déterminer l'indice d'un milieu pour une fréquence donnée."
+              - "Connaître et exploiter θ = λ/a (unité et signification de θ et λ) ; exploiter des mesures pour vérifier θ = λ/a."
+              - "Proposer un montage de mise en évidence de la diffraction de la lumière."
+            limites:                                      # source: derived
+              - "Diffraction traitée via θ = λ/a (demi-largeur angulaire de la tache centrale), de façon qualitative/expérimentale. Pas d'intégrale de diffraction, pas de réseaux."
+
+        travaux_pratiques:                                # source: cadre p.26
+          - "Célérité d'une onde mécanique (corde, surface de l'eau, onde sonore) ; montrer l'indépendance vis-à-vis de la forme de l'onde."
+          - "Diffraction d'une onde sonore/ultrasonore ; valeurs max/min de l'amplitude."
+          - "Diffraction des ondes lumineuses ; vérifier θ = λ/a."
+          - "Dispersion de la lumière blanche ; déterminer l'indice d'un milieu transparent."
+
+        exclusions:                                       # source: derived
+          - { topic: "Interférences lumineuses (Young, interfrange, cohérence)", raison: "Hors cadre : seule la DIFFRACTION est traitée, jamais les interférences." }
+          - { topic: "Effet Doppler", raison: "Hors cadre ; non listé." }
+          - { topic: "Réseaux de diffraction (formule des réseaux)", raison: "Hors cadre." }
+          - { topic: "Équation de propagation / résolution de l'équation d'onde (PDE)", raison: "Hors cadre ; traitement descriptif." }
+          - { topic: "Polarisation de la lumière", raison: "Hors cadre." }
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: transformations_nucleaires
+        nom: "Transformations nucléaires"
+        poids: { part_examen: 8, rang_physique: 4 }       # source: cadre p.18
+        habiletes:                                        # source: p.19 (exp = derived)
+          utilisation_ressources:    { part_examen: 4.0 }
+          application_experimentale: { part_examen: 1.2 }    # derived = 15% × 8%
+          resolution_probleme:       { part_examen: 2.8 }
+        competences_ciblees:                              # source: cadre p.29
+          - "Modéliser des transformations nucléaires et la datation par la loi de désintégration radioactive ; faire le bilan énergétique d'une transformation nucléaire et résoudre des situations problème."
+          - "Savoir l'intérêt des transformations nucléaires dans l'évolution technologique, leurs effets sur l'environnement et les mesures de précaution."
+        chapitres:
+
+          - id: decroissance_radioactive
+            nom: "Décroissance radioactive"
+            programme:                                    # source: cadre p.20
+              - "Stabilité/instabilité des noyaux (composition, isotopie, notation A/Z X, diagramme (N,Z)) ; radioactivité α, β⁺, β⁻, émission γ ; lois de conservation ; loi de décroissance (activité, demi-vie, datation)."
+            savoir_faire:                                 # source: cadre p.6-7
+              - "Connaître la signification du symbole A/Z X et la composition du noyau ; reconnaître les isotopes."
+              - "Reconnaître stabilité/instabilité sur le diagramme (N,Z) et l'exploiter ; définir un noyau radioactif."
+              - "Connaître et exploiter les deux lois de conservation ; définir α, β⁺, β⁻, émission γ."
+              - "Écrire l'équation d'une réaction nucléaire ; reconnaître le type de radioactivité à partir de l'équation."
+              - "Connaître et exploiter la loi de décroissance et sa courbe ; savoir que 1 Bq = 1 désintégration/s."
+              - "Définir τ et la demi-vie t½ ; exploiter les relations entre τ, λ, t½ ; déterminer les unités de λ et τ par les dimensions."
+              - "Déterminer le radioélément convenable pour dater un événement."
+
+          - id: masse_energie
+            nom: "Noyaux — masse et énergie"
+            programme:                                    # source: cadre p.20
+              - "Équivalence masse-énergie (défaut de masse, énergie de liaison, énergie de liaison par nucléon, courbe d'Aston) ; fission et fusion ; bilan de masse et d'énergie ; utilisations de l'énergie nucléaire."
+            savoir_faire:                                 # source: cadre p.6-7
+              - "Définir et calculer le défaut de masse et l'énergie de liaison ; énergie de liaison par nucléon et l'exploiter."
+              - "Utiliser les différentes unités de masse/énergie et leurs relations ; relation d'équivalence masse-énergie, calculer l'énergie de masse."
+              - "Exploiter/analyser la courbe d'Aston (noyaux stables ; intérêt énergétique de la fission/fusion)."
+              - "Définir fission et fusion ; écrire leurs équations (lois de conservation) ; reconnaître le type de réaction."
+              - "Faire le bilan énergétique ΔE (énergies de masse, énergies de liaison, diagramme d'énergie) ; calculer E_libérée = |ΔE|."
+              - "Reconnaître quelques applications et quelques dangers de la radioactivité."
+            limites:                                      # source: derived
+              - "Loi N(t) = N₀·e^(−λt) exploitée ; on ne résout pas l'équation différentielle dN/dt = −λN au-delà de la connaissance de sa solution."
+              - "Bilan énergétique au niveau du noyau ; pas de physique des particules (quarks, interactions fondamentales)."
+
+        # NB: no nuclear TP — Annexe 2 (p.26-27) lists TP only for Ondes, Électricité, Mécanique.
+        travaux_pratiques: []                             # source: cadre p.26-27 (none listed)
+
+        exclusions:                                       # source: derived
+          - { topic: "Filiations radioactives / équilibre séculaire (chaînes multi-étapes)", raison: "Hors cadre ; décroissance à une étape seulement." }
+          - { topic: "Sections efficaces, neutronique, physique des réacteurs", raison: "Hors cadre." }
+          - { topic: "Modèles nucléaires quantitatifs (goutte liquide, couches)", raison: "Hors cadre ; courbe d'Aston exploitée qualitativement." }
+          - { topic: "Physique des particules / interactions fondamentales", raison: "Hors cadre." }
+
+      # ──────────────────────────────────────────────────────────────────
+      # ÉLECTRICITÉ — validated as the format sample. Carried in verbatim.
+      # ──────────────────────────────────────────────────────────────────
+      - id: electricite
+        nom: "Électricité"
+        poids: { part_examen: 21, rang_physique: 2 }      # source: cadre p.18
+        habiletes:                                        # source: p.19 (exp = derived)
+          utilisation_ressources:    { part_examen: 10.5 }
+          application_experimentale: { part_examen: 3.15 }   # derived = 15% × 21%
+          resolution_probleme:       { part_examen: 7.35 }
+        competences_ciblees:                              # source: cadre p.29
+          - "Modéliser le comportement du condensateur et de la bobine et analyser leurs réponses à un échelon de tension ; étudier les oscillations libres dans un circuit RLC série."
+          - "Interpréter les constituants et le rôle des éléments d'une chaîne d'émission ; être conscient de son intérêt dans la communication."
+        chapitres:
+
+          - id: dipole_rc
+            nom: "Dipôle RC"
+            programme:                                    # source: cadre p.21
+              - "Le condensateur : description, symbole, charges des armatures, algébrisation en convention récepteur (i, u, q) ; i = dq/dt ; q = C·u ; capacité et son unité ; associations série/parallèle."
+              - "Réponse d'un dipôle RC à un échelon de tension (étude expérimentale et théorique) ; énergie emmagasinée dans un condensateur."
+            savoir_faire:                                 # source: cadre p.7
+              - "Représenter u_R et u_C en convention récepteur ; préciser les signes des charges."
+              - "Connaître et exploiter i = dq/dt et q = C·u."
+              - "Connaître la capacité, son unité (F) et ses sous-multiples (µF, nF, pF) ; la déterminer graphiquement et par calcul."
+              - "Connaître la capacité équivalente des associations série/parallèle et l'intérêt de chacune."
+              - "Établir l'équation différentielle et vérifier sa solution pour un RC soumis à un échelon."
+              - "Déterminer u_C(t) ; en déduire i(t) et q(t) ; reconnaître/représenter/exploiter les courbes."
+              - "Savoir que u_C est continue et i discontinue à t=0."
+              - "Connaître et exploiter la constante de temps τ ; utiliser les équations aux dimensions."
+              - "Exploiter des documents expérimentaux : tensions, influence de R et C, τ, durée de charge, régimes transitoire/permanent."
+              - "Proposer un montage d'étude ; brancher oscilloscope / acquisition ; déterminer l'influence de R, C et de l'amplitude de l'échelon."
+              - "Établir et exploiter l'expression de l'énergie emmagasinée dans un condensateur."
+            limites:                                      # source: derived
+              - "Réponse à un ÉCHELON de tension uniquement — pas de régime sinusoïdal forcé, pas d'entrée arbitraire."
+
+          - id: dipole_rl
+            nom: "Dipôle RL"
+            programme:                                    # source: cadre p.21
+              - "La bobine : description, symbole ; u = r·i + L·di/dt (convention récepteur) ; inductance et son unité."
+              - "Réponse d'un dipôle RL à un échelon de tension (étude expérimentale et théorique) ; énergie emmagasinée dans une bobine."
+            savoir_faire:                                 # source: cadre p.8
+              - "Représenter u_R et u_L en convention récepteur."
+              - "Connaître et exploiter u = r·i + L·di/dt ; signification et unités des grandeurs."
+              - "Déterminer les deux caractéristiques d'une bobine (L, r) à partir de résultats expérimentaux."
+              - "Établir l'équation différentielle et vérifier sa solution pour un RL soumis à un échelon."
+              - "Déterminer i(t) ; en déduire la tension aux bornes de la bobine et du conducteur ohmique ; reconnaître/représenter/exploiter les courbes."
+              - "Savoir que la bobine retarde l'établissement/disparition du courant ; i continue, u discontinue à t=0."
+              - "Connaître et exploiter la constante de temps τ ; utiliser les équations aux dimensions."
+              - "Exploiter des documents expérimentaux : tensions, influence de R et L, τ."
+              - "Proposer un montage d'étude ; brancher oscilloscope / acquisition ; déterminer l'influence de R, L et de l'amplitude de l'échelon."
+              - "Établir et exploiter l'expression de l'énergie magnétique emmagasinée dans une bobine."
+            limites:                                      # source: derived
+              - "Réponse à un ÉCHELON de tension uniquement — pas de régime sinusoïdal forcé."
+
+          - id: rlc_serie                                 # ◄═══ the "RLC" slice notion
+            nom: "Oscillations libres dans un circuit RLC série"
+            programme:                                    # source: cadre p.21
+              - "Décharge d'un condensateur dans une bobine ; influence de l'amortissement ; pseudo-période."
+              - "Interprétation énergétique : transfert d'énergie condensateur ↔ bobine ; effet Joule."
+              - "Étude analytique dans le cas d'un amortissement faible (résistance négligeable) ; période propre."
+              - "Entretien des oscillations (étude expérimentale et théorique)."
+            savoir_faire:                                 # source: cadre p.8-9
+              - "Définir et reconnaître les régimes périodique, pseudo-périodique et apériodique."
+              - "Reconnaître/représenter les courbes u_C(t) pour les trois régimes et les exploiter."
+              - "Établir l'équation différentielle (u_C ou charge q(t)) dans le cas d'un amortissement NÉGLIGEABLE et vérifier sa solution."
+              - "Connaître et exploiter l'expression de q(t) ; en déduire i(t) et l'exploiter."
+              - "Connaître et exploiter l'expression de la période propre T₀."
+              - "Expliquer énergétiquement les trois régimes ; connaître/exploiter les diagrammes d'énergie et l'énergie totale du circuit."
+              - "Établir l'équation différentielle (u_C ou charge) dans le cas d'un amortissement."
+              - "Connaître le rôle du dispositif d'entretien : compenser l'énergie dissipée par effet Joule."
+              - "Établir l'équation différentielle d'un RLC entretenu par un générateur délivrant u_G(t) = k·i(t)."
+              - "Exploiter des documents expérimentaux : tensions, régimes, influence de R/L/C, pseudo-période et période propre."
+              - "Proposer un montage d'étude des oscillations libres ; brancher oscilloscope / acquisition."
+            limites:                                      # source: derived — critical depth boundaries
+              - "Cas AMORTI : on ÉTABLIT l'équation différentielle SEULEMENT. On ne la résout PAS analytiquement — pas de pseudo-période en fonction de R,L,C, pas de coefficient d'amortissement, pas d'enveloppe exponentielle en forme close. Le régime amorti est traité qualitativement, énergétiquement et expérimentalement."
+              - "Solution analytique fermée UNIQUEMENT dans le cas non amorti (LC, résistance négligeable) : q(t) sinusoïdale, T₀ = 2π√(LC)."
+
+          - id: applications_modulation
+            nom: "Applications — ondes EM, modulation et démodulation d'amplitude"
+            programme:                                    # source: cadre p.21
+              - "Ondes électromagnétiques — transmission d'informations ; modulation d'une tension sinusoïdale ; modulation d'amplitude (principe de modulation et de démodulation) ; réalisation d'un récepteur radio AM."
+            savoir_faire:                                 # source: cadre p.9 (lightly condensed)
+              - "Connaître les opérations de transformation de l'information en messages ; vitesse de transmission."
+              - "Savoir que la lumière est une onde EM (domaine restreint de fréquences)."
+              - "Antenne émettrice/réceptrice : même fréquence onde EM ↔ signal électrique ; antenne = émetteur et récepteur."
+              - "Connaître l'expression d'une tension sinusoïdale ; transmission par onde EM = transport d'énergie sans transport de matière."
+              - "Modulation d'amplitude : amplitude du signal modulé = fonction affine de la tension modulante ; conditions anti-surmodulation."
+              - "Reconnaître les étapes de modulation/démodulation ; exploiter les courbes expérimentales ; reconnaître les étages à partir d'un schéma."
+              - "Connaître le rôle des filtres ; connaître et exploiter le spectre de fréquences."
+              - "Connaître le rôle sélectif du circuit bouchon LC ; reconnaître les constituants d'un récepteur radio AM et leurs rôles."
+            limites:                                      # source: derived
+              - "Traitement QUALITATIF et fonctionnel : rôle des filtres, étages, spectre. PAS de fonction de transfert, PAS de diagramme de Bode, PAS de conception quantitative de filtre."
+
+        travaux_pratiques:                                # source: cadre p.26
+          - "Charge d'un condensateur (générateur idéal de courant) / réponse RC à un échelon → capacité, influence de R et C, τ."
+          - "Tension aux bornes d'une bobine (tension triangulaire) / réponse RL à un échelon → inductance, influence de R et L, τ."
+          - "Oscillations libres dans un RLC série → évolution de i, les différents régimes, influence de la résistance."
+          - "Ondes électromagnétiques → modulation d'amplitude, démodulation, réaliser un récepteur AM simple."
+
+        exclusions:                                       # source: derived
+          - { topic: "Régime sinusoïdal forcé d'un RLC (résonance forcée, impédance, déphasage, phaseurs)", raison: "Le cadre traite les oscillations LIBRES et l'ENTRETIEN, jamais le régime forcé piloté. (NB : la résonance MÉCANIQUE existe en Mécanique — ne pas confondre.)" }
+          - { topic: "Notation complexe / phaseurs pour les circuits", raison: "Hors cadre ; non listé." }
+          - { topic: "Puissance en régime alternatif (active/réactive, facteur de puissance)", raison: "Hors cadre ; non listé." }
+          - { topic: "Composants actifs comme objets d'étude (transistor, amplificateur opérationnel)", raison: "Hors cadre ; seuls condensateur et bobine sont étudiés comme dipôles." }
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: mecanique
+        nom: "Mécanique"
+        poids: { part_examen: 27, rang_physique: 1 }      # source: cadre p.18 — heaviest physics sous-domaine
+        habiletes:                                        # source: p.19 (exp = derived)
+          utilisation_ressources:    { part_examen: 13.5 }
+          application_experimentale: { part_examen: 4.05 }   # derived = 15% × 27%
+          resolution_probleme:       { part_examen: 9.45 }
+        competences_ciblees:                              # source: cadre p.29
+          - "Analyser, suivre et prévoir l'évolution d'un système mécanique en adoptant un modèle simple."
+          - "Résoudre une situation problème liée à un système mécanique en mouvement par une étude dynamique ou énergétique."
+        chapitres:
+
+          - id: lois_de_newton
+            nom: "Lois de Newton"
+            programme:                                    # source: cadre p.21
+              - "Vecteur vitesse / vecteur accélération (repère de Freinet) ; 2e loi (rôle de la masse, référentiel galiléen) ; 3e loi (actions réciproques)."
+            savoir_faire:                                 # source: cadre p.10
+              - "Connaître/exploiter les expressions du vecteur vitesse instantanée et du vecteur accélération ; unité de l'accélération."
+              - "Connaître les coordonnées de l'accélération en repère cartésien et dans la base de Freinet."
+              - "Exploiter le produit a·v pour déterminer la nature du mouvement (accéléré/retardé)."
+              - "Connaître le référentiel galiléen ; connaître la 2e loi ΣF_ext = m·a_G et son domaine de validité ; rôle de la masse dans l'inertie."
+              - "Appliquer la 2e loi pour déterminer grandeurs cinématiques (v_G, a_G) et dynamiques ; connaître et utiliser la 3e loi ; utiliser les équations aux dimensions."
+
+          - id: applications_dynamique
+            nom: "Applications (chute, mouvements plans, satellites)"
+            programme:                                    # source: cadre p.22
+              - "Chute verticale d'un solide (avec frottement ; chute libre) ; mouvements plans (plan horizontal/incliné, projectile dans champ de pesanteur uniforme, particule chargée dans champ magnétique uniforme) ; satellites et planètes (référentiels héliocentriques/géocentriques, lois de Kepler, force centripète, modélisation par mouvement circulaire uniforme)."
+            savoir_faire:                                 # source: cadre p.10-11
+              - "Connaître/exploiter les deux modèles de frottement fluide : F = −k·v et F = −k·v²."
+              - "Exploiter v_G = f(t) pour déterminer vitesse limite v_l, temps caractéristique τ, régime initial/permanent."
+              - "Appliquer la 2e loi pour établir l'équation différentielle (chute verticale avec frottement) ; appliquer la méthode d'Euler (résolution approchée)."
+              - "Définir la chute libre verticale ; appliquer la 2e loi pour établir et résoudre son équation différentielle ; mouvement rectiligne uniformément varié et équations horaires."
+              - "Choisir le référentiel ; appliquer la 2e loi (plan horizontal/incliné) et déterminer grandeurs cinématiques/dynamiques."
+              - "Exploiter un document (projectile) : type de mouvement, vecteurs vitesse/accélération, conditions initiales ; appliquer la 2e loi (projectile) : équations différentielles, équations horaires, équation de la trajectoire, portée et flèche."
+              - "Connaître la force de Lorentz et la règle de son sens ; appliquer la 2e loi (particule chargée, B ⊥ v₀) : nature du mouvement, déflexion magnétique."
+              - "Connaître les référentiels héliocentrique/géocentrique ; les trois lois de Kepler ; les appliquer (trajectoire circulaire)."
+              - "Connaître la loi de gravitation universelle (forme vectorielle) ; établir la 3e loi de Kepler (cas circulaire) ; force gravitationnelle centripète ; appliquer la 2e loi (satellite/planète) pour déterminer la nature du mouvement ou un paramètre."
+            limites:                                      # source: derived
+              - "Méthode d'Euler : seule méthode numérique au programme."
+              - "Particule chargée : champ magnétique uniforme avec B ⊥ v₀ uniquement ; pas de configurations générales champ E+B (filtres de vitesse, spectromètres) au-delà de l'exploitation simple."
+
+          - id: rotation_axe_fixe
+            nom: "Rotation autour d'un axe fixe (ΣM_Δ et accélération angulaire)"
+            programme:                                    # source: cadre p.22
+              - "Abscisse angulaire, accélération angulaire ; relation fondamentale de la dynamique pour la rotation autour d'un axe fixe (rôle du moment d'inertie) ; mouvement d'un système (translation + rotation autour d'un axe fixe)."
+            savoir_faire:                                 # source: cadre p.11
+              - "Repérer un point du solide en rotation par son abscisse angulaire ; connaître l'expression de l'accélération angulaire et son unité."
+              - "Connaître/exploiter a_N et a_T en fonction des grandeurs angulaires."
+              - "Appliquer la RFD (rotation autour d'un axe fixe : ΣM_Δ = J·θ″) pour établir l'équation différentielle et la résoudre ; connaître l'unité du moment d'inertie."
+              - "Connaître/exploiter le mouvement de rotation uniformément varié et ses équations horaires."
+              - "Appliquer 2e loi + RFD à un système composé (un solide en translation, un en rotation autour d'un axe fixe) pour établir les équations différentielles."
+            limites:                                      # source: derived
+              - "Rotation autour d'un AXE FIXE via ΣM_Δ = J·θ″ ; le moment d'inertie J est donné (pas de calcul d'intégrale de J)."
+              - "Pas de théorème du moment cinétique en formulation vectorielle générale ; pas de dynamique du solide libre (gyroscopes)."
+
+          - id: systemes_oscillants
+            nom: "Systèmes oscillants"
+            programme:                                    # source: cadre p.22
+              - "Présentation (pendule pesant, pendule simple, pendule de torsion, solide-ressort en oscillations libres ; amortissement) ; solide-ressort (force de rappel, équation différentielle, période propre, amortissement) ; pendule de torsion (couple de rappel, équation différentielle, période propre) ; pendule pesant (équation différentielle, période propre) ; phénomène de résonance (présentation expérimentale : excitateur, résonateur, influence de l'amortissement)."
+            savoir_faire:                                 # source: cadre p.11-13 (parallel pendulum treatments grouped)
+              - "Connaître le mouvement oscillatoire ; reconnaître les oscillations libres ; reconnaître l'amortissement, ses types et régimes ; en régime pseudopériodique, pseudo-période ≈ période propre."
+              - "SOLIDE-RESSORT : caractéristiques de la force de rappel ; exploiter x_G(t), v_G(t), a_G(t) ; appliquer la 2e loi pour établir l'équation différentielle et vérifier sa solution (horizontal/incliné/vertical) ; écrire et exploiter x_G(t), v_G(t), a_G(t) ; déterminer les grandeurs de l'équation horaire à partir des conditions initiales ; établir et exploiter la période/fréquence propre ; déterminer les deux types d'amortissement à partir des diagrammes x_G(t)."
+              - "PENDULE DE TORSION (même structure) : couple de rappel ; RFD → équation différentielle (faibles frottements) ; θ(t) et son exploitation ; période/fréquence propre ; diagrammes θ(t) ; amortissement."
+              - "PENDULE PESANT (même structure, petites oscillations) : RFD → équation différentielle ; θ(t) ; période propre ; diagrammes ; amortissement ; définir le pendule simple synchrone et sa période propre."
+              - "RÉSONANCE : reconnaître excitateur, résonateur, résonance mécanique et conditions de production ; reconnaître l'influence de l'amortissement sur les régimes de résonance."
+              - "Appliquer 2e loi + RFD à un système oscillant composé (translation + rotation autour d'un axe fixe) pour établir les équations différentielles."
+            limites:                                      # source: derived — parallels the RLC boundary
+              - "Oscillateurs AMORTIS : on établit l'équation différentielle et on reconnaît les régimes ; la SOLUTION ANALYTIQUE fermée n'est exigée que dans le cas NON amorti / faibles frottements (solution sinusoïdale, période propre). Pas de solution close du régime amorti (pas de décrément logarithmique, pas de pseudo-période en fonction des paramètres)."
+              - "Pendule pesant : PETITES oscillations uniquement (linéarisation sinθ ≈ θ) ; pas de régime non linéaire / grandes amplitudes."
+              - "RÉSONANCE : traitement EXPÉRIMENTAL/qualitatif ; pas d'étude analytique du régime forcé (pas d'amplitude de résonance en forme close, pas de facteur de qualité quantitatif, pas de courbe de résonance théorique)."
+
+          - id: aspects_energetiques
+            nom: "Aspects énergétiques"
+            programme:                                    # source: cadre p.22
+              - "Travail d'une force de ressort, énergie potentielle élastique, énergie mécanique (solide-ressort) ; énergie potentielle de torsion et énergie mécanique (pendule de torsion) ; énergie mécanique d'un pendule pesant."
+            savoir_faire:                                 # source: cadre p.13
+              - "Déterminer le travail d'une force de ressort ; connaître/exploiter l'énergie potentielle élastique et la relation travail/variation d'énergie potentielle élastique."
+              - "Connaître/exploiter l'énergie mécanique (solide-ressort) ; exploiter sa conservation/non-conservation ; exploiter les diagrammes d'énergie."
+              - "TORSION : travail du couple ; énergie potentielle de torsion ; énergie mécanique ; conservation/non-conservation ; diagrammes."
+              - "PENDULE PESANT : énergie potentielle de pesanteur + énergie cinétique → énergie mécanique (faibles oscillations) ; conservation."
+
+          - id: atome_mecanique_newton
+            nom: "Atome et mécanique de Newton"
+            programme:                                    # source: cadre p.22
+              - "Limites de la mécanique de Newton ; quantification des échanges d'énergie et des niveaux d'énergie (atome, molécule, noyau) ; applications aux spectres ; constante de Planck ; ΔE = h·ν."
+            savoir_faire:                                 # source: cadre p.13
+              - "Connaître les expressions des forces d'interaction gravitationnelle et électrostatique."
+              - "Connaître que l'énergie de l'atome est quantifiée ; savoir que la mécanique de Newton ne permet pas d'expliquer cette quantification."
+              - "Connaître et exploiter ΔE = h·ν ; expliquer le spectre de raies."
+            limites:                                      # source: derived
+              - "ΔE = h·ν et spectre de raies au niveau DESCRIPTIF ; pas de modèle de Bohr quantitatif détaillé, pas de mécanique quantique."
+
+        travaux_pratiques:                                # source: cadre p.27
+          - "Lois de Newton → vérifier la 2e loi."
+          - "Chute verticale avec frottement → influence des frottements."
+          - "Mouvement d'un projectile → facteurs influençant la trajectoire."
+          - "ΣM et accélération angulaire → vérifier la RFD (rotation autour d'un axe fixe)."
+          - "Système oscillant (solide-ressort) → facteurs influençant la période propre ; amortissement, types et régimes."
+          - "Pendule de torsion → influence du moment d'inertie et de la constante de torsion sur la période propre."
+          - "Pendule pesant → loi d'isochronisme des petites oscillations ; influence du moment d'inertie."
+          - "Résonance mécanique → influence de la période de l'excitateur sur l'amplitude ; influence de l'amortissement."
+
+        exclusions:                                       # source: derived
+          - { topic: "Régime sinusoïdal forcé analytique des oscillateurs (amplitude de résonance, facteur de qualité, déphasage)", raison: "Hors cadre ; la résonance est traitée expérimentalement." }
+          - { topic: "Oscillations de grande amplitude / non linéaires", raison: "Hors cadre ; petites oscillations uniquement." }
+          - { topic: "Mécanique lagrangienne / hamiltonienne", raison: "Hors cadre." }
+          - { topic: "Dynamique relativiste (relativité restreinte)", raison: "Hors cadre." }
+          - { topic: "Modèle de Bohr quantitatif / mécanique quantique", raison: "Hors cadre ; quantification au niveau ΔE = hν descriptif." }
+          - { topic: "Théorème du moment cinétique vectoriel général", raison: "Hors cadre ; rotation autour d'un axe fixe via ΣM_Δ = J·θ″ uniquement." }
+
+  # ══════════════════════════════════════════════════════════════════════
+  - id: chimie
+    nom: "Chimie"
+    sous_domaines:
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: transformations_rapides_lentes
+        nom: "Transformations rapides et transformations lentes d'un système chimique"
+        poids: { part_examen: 6, rang_chimie: 4 }         # source: cadre p.18
+        habiletes:                                        # source: p.19 (exp = derived)
+          utilisation_ressources:    { part_examen: 3.0 }
+          application_experimentale: { part_examen: 0.9 }    # derived = 15% × 6%
+          resolution_probleme:       { part_examen: 2.1 }
+        competences_ciblees:                              # source: cadre p.29
+          - "Contrôler la vitesse de réaction en agissant sur les facteurs cinétiques pour accélérer une synthèse, éliminer les effets de produits, ou ralentir une réaction afin de conserver les produits alimentaires et protéger de la corrosion."
+        chapitres:
+
+          - id: transformations_lentes_rapides
+            nom: "Transformations lentes et transformations rapides"
+            programme:                                    # source: cadre p.23
+              - "Rappels sur les couples Ox/Red et écriture des demi-équations d'oxydo-réduction (symbole ⇌)."
+              - "Mise en évidence expérimentale des transformations lentes/rapides ; facteurs cinétiques : température et concentration des réactifs."
+            savoir_faire:                                 # source: cadre p.14
+              - "Écrire l'équation d'une transformation d'oxydo-réduction et identifier les deux couples intervenants."
+              - "Déterminer, à partir de résultats expérimentaux, l'influence des facteurs cinétiques sur la vitesse de réaction."
+
+          - id: suivi_temporel_vitesse
+            nom: "Suivi temporel d'une transformation — vitesse de réaction"
+            programme:                                    # source: cadre p.23
+              - "Tracé des courbes d'évolution (quantité de matière, concentration, avancement) au cours du temps (tableau d'avancement + exploitation d'expériences)."
+              - "Vitesse volumique de réaction v = (1/V)·dx/dt ; évolution au cours du temps."
+              - "Temps de demi-réaction t½ : définition, méthodes de détermination, choix d'une méthode de suivi selon t½."
+              - "Interprétation microscopique : chocs efficaces ; influence de la concentration et de la température sur leur nombre."
+            savoir_faire:                                 # source: cadre p.14
+              - "Justifier les opérations d'un suivi temporel et exploiter les résultats ; repérer et exploiter l'équivalence lors d'un titrage."
+              - "Exploiter les courbes d'évolution (quantité de matière, concentration, avancement, conductivité/conductance, pression, volume) ; dresser et exploiter le tableau d'avancement."
+              - "Connaître l'expression de la vitesse volumique de réaction ; connaître l'influence de la concentration et de la température sur celle-ci."
+              - "Interpréter qualitativement la variation de la vitesse à partir d'une courbe ; déterminer graphiquement la vitesse volumique."
+              - "Définir t½ ; le déterminer graphiquement ou à partir de résultats expérimentaux."
+              - "Interpréter l'influence de la concentration et/ou de la température sur le nombre de chocs efficaces par unité de temps."
+            limites:                                      # source: derived
+              - "Vitesse v = (1/V)·dx/dt définie et exploitée GRAPHIQUEMENT. Pas de loi de vitesse (ordre de réaction, constante de vitesse k, équation cinétique intégrée)."
+              - "t½ déterminé graphiquement ; pas de relation t½ = ln2/k (qui supposerait un ordre et une loi de vitesse)."
+              - "Chocs efficaces : interprétation QUALITATIVE ; pas d'énergie d'activation, pas de loi d'Arrhenius."
+              - "Facteurs cinétiques ici = température et concentration. Le CATALYSEUR comme facteur est traité au sous-domaine 'Méthode de contrôle', pas ici."
+
+        travaux_pratiques:                                # source: cadre p.28
+          - "Mise en évidence des facteurs cinétiques → influence des concentrations et de la température sur la vitesse d'évolution."
+          - "Suivi temporel par mesure de la conductance → conductance pendant/après la réaction ; déterminer t½."
+
+        exclusions:                                       # source: derived
+          - { topic: "Ordre de réaction, loi de vitesse, constante de vitesse k", raison: "Hors cadre ; cinétique traitée graphiquement/qualitativement." }
+          - { topic: "Loi d'Arrhenius, énergie d'activation", raison: "Hors cadre." }
+          - { topic: "Mécanismes réactionnels (actes élémentaires, molécularité, intermédiaires)", raison: "Hors cadre." }
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: transformations_non_totales
+        nom: "Transformations non totales d'un système chimique"
+        poids: { part_examen: 10, rang_chimie: 1 }        # source: cadre p.18 (tied 1st in chimie)
+        habiletes:                                        # source: p.19 (exp = derived)
+          utilisation_ressources:    { part_examen: 5.0 }
+          application_experimentale: { part_examen: 1.5 }    # derived = 15% × 10%
+          resolution_probleme:       { part_examen: 3.5 }
+        competences_ciblees:                              # source: cadre p.29
+          - "Utiliser le taux d'avancement final pour distinguer transformation totale et non totale, et déterminer la composition de l'état final en utilisant la constante d'équilibre dans différents cas."
+        chapitres:
+
+          - id: transformations_deux_sens
+            nom: "Transformations chimiques qui ont lieu dans les deux sens"
+            programme:                                    # source: cadre p.23
+              - "Notion de pH et sa mesure ; mise en évidence d'un avancement final < avancement maximal."
+              - "Modélisation d'une transformation limitée par deux réactions inverses simultanées (écriture ⇌) ; xf < xmax ; taux d'avancement final τ = xf/xmax (τ ≤ 1)."
+              - "Interprétation microscopique de l'état d'équilibre (chocs efficaces réactifs ↔ produits)."
+            savoir_faire:                                 # source: cadre p.14
+              - "Définir un acide et une base selon Brønsted ; écrire une équation acido-basique et identifier les deux couples."
+              - "Déterminer le pH d'une solution aqueuse ; calculer l'avancement final d'un acide avec l'eau (à partir de la concentration et du pH) et le comparer à l'avancement maximal."
+              - "Définir le taux d'avancement final et le déterminer expérimentalement ; interpréter l'état d'équilibre à l'échelle microscopique."
+
+          - id: etat_equilibre
+            nom: "État d'équilibre d'un système chimique"
+            programme:                                    # source: cadre p.24
+              - "Quotient de réaction Qr (expression littérale en fonction des concentrations) ; généralisation aux solutions homogènes/hétérogènes (présence de solides)."
+              - "Détermination de Qr,éq à l'équilibre ; constante d'équilibre K (à une température donnée) ; influence de l'état initial sur le taux d'avancement final."
+            savoir_faire:                                 # source: cadre p.14-15
+              - "Utiliser la relation conductance G ↔ concentrations molaires effectives [Xi] des ions."
+              - "Savoir qu'à l'équilibre les quantités de matière n'évoluent plus (équilibre dynamique)."
+              - "Donner et utiliser l'expression littérale de Qr ; savoir que Qr,éq = K (indépendante des concentrations)."
+              - "Savoir que le taux d'avancement final dépend de K et de l'état initial."
+
+          - id: reactions_acido_basiques
+            nom: "Transformations associées à des réactions acido-basiques en solution aqueuse"
+            programme:                                    # source: cadre p.24
+              - "Autoprotolyse de l'eau ; produit ionique Ke ; échelle de pH (acide/basique/neutre) ; constante d'acidité KA."
+              - "Comparaison des comportements d'acides/bases de même concentration ; constante d'équilibre d'une réaction acido-basique."
+              - "Diagrammes de prédominance et de distribution ; zone de virage d'un indicateur coloré ; titrage pH-métrique (volume à l'équivalence, choix de l'indicateur)."
+              - "Réaction totale : détermination du taux d'avancement final à partir d'un dosage acido-basique."
+            savoir_faire:                                 # source: cadre p.15
+              - "Savoir que Ke est la constante d'équilibre de l'autoprotolyse ; connaître pKe = −log Ke."
+              - "Déterminer la nature d'une solution (acide/basique/neutre) à partir du pH ; déterminer le pH à partir de [H₃O⁺] ou [HO⁻]."
+              - "Écrire et utiliser KA ; connaître pKA = −log KA ; déterminer la constante d'équilibre d'une réaction acido-basique à partir des KA des couples."
+              - "Indiquer l'espèce prédominante connaissant pH et pKA ; exploiter les diagrammes de prédominance et de distribution."
+              - "Écrire l'équation de dosage (une seule flèche) ; connaître le montage d'un dosage acido-basique ; exploiter la courbe/les résultats."
+              - "Repérer et exploiter le point d'équivalence ; justifier le choix de l'indicateur coloré."
+            limites:                                      # source: derived
+              - "Acides/bases selon BRØNSTED uniquement (donneur/accepteur de proton) ; pas de théorie de Lewis."
+              - "pH par exploitation expérimentale et bilans ; équivalence repérée graphiquement (tangentes / dérivée)."
+
+        travaux_pratiques:                                # source: cadre p.28
+          - "Avancement final d'une réaction acide-base → mesurer le pH d'acide chlorhydrique et d'acide éthanoïque ; déterminer l'avancement final."
+          - "Constante d'équilibre par mesure de la conductance → taux d'avancement final et K de la réaction d'un acide faible avec l'eau."
+          - "Dosage par mesure de pH → doser un produit de la vie courante (incl. dosage de l'aspirine dans un comprimé)."
+
+        exclusions:                                       # source: derived
+          - { topic: "Théorie acide-base de Lewis", raison: "Hors cadre ; Brønsted uniquement." }
+          - { topic: "Solutions tampons : traitement quantitatif (calcul de pH de tampon, Henderson-Hasselbalch)", raison: "Non listé au cadre." }
+          - { topic: "Polyacides / diagrammes multi-pKA au-delà de l'exploitation simple", raison: "Hors cadre." }
+          - { topic: "Dosages d'oxydo-réduction quantitatifs", raison: "Les dosages détaillés du cadre sont acido-basiques." }
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: sens_evolution
+        nom: "Sens d'évolution d'un système chimique"
+        poids: { part_examen: 10, rang_chimie: 1 }        # source: cadre p.18 (tied 1st in chimie)
+        habiletes:                                        # source: p.19 (exp = derived)
+          utilisation_ressources:    { part_examen: 5.0 }
+          application_experimentale: { part_examen: 1.5 }    # derived = 15% × 10%
+          resolution_probleme:       { part_examen: 3.5 }
+        competences_ciblees:                              # source: cadre p.29
+          - "Utiliser le critère d'évolution pour déterminer le sens spontané et récupérer de l'énergie électrique (oxydo-réduction) ; analyser une transformation forcée et appliquer l'électrolyse (charger des accumulateurs, purifier les métaux, protéger de la rouille)."
+        chapitres:
+
+          - id: evolution_spontanee
+            nom: "Évolution spontanée d'un système chimique"
+            programme:                                    # source: cadre p.24
+              - "Critère d'évolution spontanée : Qr tend vers K au cours du temps ; illustration sur réactions acido-basiques et d'oxydo-réduction."
+            savoir_faire:                                 # source: cadre p.15
+              - "Calculer Qr d'un système dans un état donné."
+              - "Déterminer le sens d'évolution spontanée d'un système chimique."
+
+          - id: piles
+            nom: "Transformations spontanées dans les piles et récupération de l'énergie"
+            programme:                                    # source: cadre p.24
+              - "Transfert spontané d'électrons entre deux couples Mⁿ⁺/M(s) (espèces mélangées ou séparées)."
+              - "Constitution et fonctionnement d'une pile : sens du courant, f.é.m E, mouvement des porteurs, rôle du pont salin, réactions aux électrodes."
+              - "La pile = système hors équilibre en fonctionnement (Qr → K) ; pile usée à l'équilibre : quantité d'électricité maximale débitée."
+            savoir_faire:                                 # source: cadre p.15-16
+              - "Schématiser une pile (schéma conventionnel) ; déterminer le sens de déplacement des porteurs via le critère d'évolution spontanée."
+              - "Interpréter le fonctionnement d'une pile à partir d'une information (sens du courant, f.é.m, réactions aux électrodes, polarité, mouvement des porteurs)."
+              - "Écrire les réactions aux électrodes (double flèche) et l'équation bilan (simple flèche)."
+              - "Établir la relation entre quantités de matière, intensité et durée ; l'utiliser pour déterminer d'autres grandeurs (quantité d'électricité, avancement, variation de masse)."
+
+          - id: transformations_forcees
+            nom: "Exemples de transformations forcées (électrolyse)"
+            programme:                                    # source: cadre p.24
+              - "Mise en évidence de l'inversion du sens d'évolution par un courant imposé (transformation forcée) ; réactions aux électrodes (anode/cathode) ; application à l'électrolyse (principe, applications courantes et industrielles)."
+            savoir_faire:                                 # source: cadre p.16
+              - "Savoir qu'une électrolyse est une transformation forcée ; reconnaître anode (oxydation) et cathode (réduction) connaissant le sens du courant imposé."
+              - "Schématiser le montage d'électrolyse ; écrire les réactions aux électrodes (double flèche) et l'équation bilan (simple flèche)."
+              - "Établir la relation entre quantités de matière, intensité et durée de l'électrolyse ; l'utiliser pour déterminer d'autres grandeurs (avancement, variation de masse, volume de gaz)."
+            limites:                                      # source: derived
+              - "Piles : couples ion métallique/métal Mⁿ⁺/M(s) ; f.é.m MESURÉE expérimentalement. Pas de potentiels standards E°, pas de relation de Nernst, pas de calcul de f.é.m à partir des potentiels."
+              - "Critère d'évolution via Qr vs K uniquement ; pas d'enthalpie libre ΔG ni d'approche thermodynamique."
+              - "Aspect quantitatif via Q = I·t et la constante de Faraday."
+
+        travaux_pratiques:                                # source: cadre p.28
+          - "Constituants et fonctionnement d'une pile → réaliser des piles (couples Mⁿ⁺/M) et déduire le sens spontané des transformations."
+          - "Électrolyse en solution aqueuse → réaliser des transformations forcées ; déterminer la constante de Faraday."
+
+        exclusions:                                       # source: derived
+          - { topic: "Potentiels standards d'électrode E°, électrode standard à hydrogène, échelle des potentiels", raison: "Hors cadre." }
+          - { topic: "Relation de Nernst", raison: "Hors cadre." }
+          - { topic: "Enthalpie libre ΔG, lien thermodynamique ΔG/K", raison: "Hors cadre ; critère via Qr/K uniquement." }
+          - { topic: "Aspects thermodynamiques (entropie, enthalpie)", raison: "Hors cadre." }
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: methode_de_controle
+        nom: "Méthode de contrôle de l'évolution des systèmes chimiques"
+        poids: { part_examen: 7, rang_chimie: 3 }         # source: cadre p.18
+        habiletes:                                        # source: p.19 (exp = derived)
+          utilisation_ressources:    { part_examen: 3.5 }
+          application_experimentale: { part_examen: 1.05 }   # derived = 15% × 7%
+          resolution_probleme:       { part_examen: 2.45 }
+        competences_ciblees:                              # source: cadre p.29
+          - "Exécuter un protocole expérimental pour fabriquer une espèce chimique déterminée et augmenter son rendement en utilisant un réactif plus efficace et un catalyseur convenable."
+        chapitres:
+
+          - id: esterification_hydrolyse
+            nom: "Les réactions d'estérification et d'hydrolyse"
+            programme:                                    # source: cadre p.25
+              - "Formation d'un ester (acide carboxylique + alcool) et hydrolyse d'un ester ; écriture des équations."
+              - "Mise en évidence d'un état d'équilibre (estérification/hydrolyse) ; définition du rendement ; définition d'un catalyseur."
+              - "Contrôle de la vitesse : température et catalyseur ; contrôle de l'état final : excès d'un réactif ou élimination d'un produit."
+            savoir_faire:                                 # source: cadre p.16-17
+              - "Reconnaître les groupes caractéristiques : −OH (hydroxyle), −CO₂H (carboxyle), −CO₂R (ester), −CO−O−CO− (anhydride)."
+              - "Écrire les équations d'estérification et d'hydrolyse ; retrouver l'acide et l'alcool à partir de la formule semi-développée de l'ester."
+              - "Nommer les esters comportant au maximum cinq atomes de carbone."
+              - "Connaître les caractéristiques des réactions d'estérification/hydrolyse (lentes et limitées)."
+              - "Savoir qu'un catalyseur augmente la vitesse sans modifier l'état d'équilibre ; savoir qu'un excès de réactif ou l'élimination d'un produit déplace l'équilibre dans le sens direct."
+              - "Déterminer la composition du mélange réactionnel à un instant donné."
+
+          - id: controle_reactif_catalyse
+            nom: "Contrôle par changement d'un réactif ou par catalyse"
+            programme:                                    # source: cadre p.25
+              - "Synthèse d'un ester à partir d'un anhydride d'acide et d'un alcool."
+              - "Hydrolyse basique des esters : saponification des corps gras (préparation du savon, propriétés, relations structure-propriétés)."
+            savoir_faire:                                 # source: cadre p.17
+              - "Écrire la réaction d'un anhydride d'acide avec un alcool et l'hydrolyse basique d'un ester."
+              - "Connaître les caractéristiques de la réaction anhydride + alcool (rapide et totale) ; calculer le rendement d'une transformation."
+              - "Reconnaître les parties hydrophile et hydrophobe d'un ion carboxylate à chaîne longue ; connaître les rôles accélérateur et sélectif du catalyseur."
+            limites:                                      # source: derived
+              - "Chimie organique limitée aux quatre groupes caractéristiques listés ; nomenclature des esters jusqu'à 5 carbones."
+              - "Déplacement d'équilibre via excès/élimination (Le Chatelier QUALITATIF) ; pas de mécanismes réactionnels organiques (intermédiaires, flèches courbes)."
+              - "Catalyse : rôle accélérateur/sélectif qualitatif ; pas de cinétique catalytique quantitative."
+
+        travaux_pratiques:                                # source: cadre p.28
+          - "Estérification et hydrolyse → évolution temporelle d'une estérification ; rendement d'une estérification et d'une hydrolyse à l'équilibre."
+          - "Préparation et propriétés des savons → préparer un savon (soude + huile) ; mettre en évidence quelques propriétés."
+
+        exclusions:                                       # source: derived
+          - { topic: "Mécanismes réactionnels organiques (flèches courbes, intermédiaires, nucléophile/électrophile)", raison: "Hors cadre." }
+          - { topic: "Groupes caractéristiques au-delà des quatre listés (amines, amides, cétones/aldéhydes comme objets d'étude)", raison: "Hors cadre." }
+          - { topic: "Nomenclature au-delà des esters à 5 carbones", raison: "Hors cadre." }
+          - { topic: "Stéréochimie (isomérie optique, R/S, énantiomères)", raison: "Hors cadre." }
+          - { topic: "Spectroscopie (IR, RMN)", raison: "Hors cadre." }
+
+# ════════════════════════════════════════════════════════════════════════
+# EXTRACTION FLAGS (full file — physics + chemistry)
+#   - Format change from the Électricité sample: single `sous_domaine:` →
+#     `domaines: [ {sous_domaines: [...]} ]`. Natural generalization to the
+#     full file; the per-sous-domaine schema is unchanged from what was validated.
+#   - Transformations nucléaires has NO TP (Annexe 2 lists none) → travaux_pratiques: [].
+#   - All `limites` and `exclusions` are DERIVED — validate first. Two consistency
+#     points worth noting:
+#       · The oscillator boundary (mecanique/systemes_oscillants) mirrors the RLC
+#         boundary: damped → establish-ODE-only; closed-form solution → undamped only.
+#       · Chemistry consistently stops at QUALITATIVE/GRAPHICAL treatment — no rate
+#         laws (kinetics), no Nernst/E° (electrochemistry), no reaction mechanisms
+#         (organic). These are the chemistry equivalents of the "Bayes" exclusion.
+#   - application_experimentale per-sous-domaine figures are DERIVED (ratio × weight);
+#     the spec table (p.19) merges this level into domain-wide cells (physics 10%,
+#     chemistry 5%).
+#   - Weights check: physics 11+8+21+27 = 67% · chemistry 6+10+10+7 = 33% · total 100%.
+#   - TP mapping note: the cadre's TP list (p.28) is a single global chemistry list;
+#     TPs are attached here to their best-fit sous-domaine by topic. The aspirin-dosage
+#     TP is placed under transformations_non_totales (it exercises the acido-basique
+#     titration method) though it concerns an organic acid.
+# ════════════════════════════════════════════════════════════════════════

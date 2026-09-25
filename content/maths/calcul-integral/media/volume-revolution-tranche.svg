@@ -1,0 +1,223 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img"
+     aria-label="La région sous la courbe de f, entre a et b, avant de tourner ; puis le solide qu’elle engendre par une rotation complète autour de l’axe des abscisses, en perspective légère, avec quelques coupes elliptiques qui en suggèrent la rondeur ; puis la tranche perpendiculaire à l’axe à l’abscisse x, isolée, avec son rayon f(x) tracé du centre à son bord et son aire égale à π fois f(x) au carré.">
+  <title>Le solide de révolution — la région, le solide, la tranche</title>
+  <!--
+    volume-revolution-tranche.svg — figure STAGED (3 étapes), rung R9
+    (C-VOL-1, spec-extension.md §6). C'est aussi le repli papier /
+    sans-WebGL de la scène 3D "solide-de-revolution" (ADR 0041 §5) :
+    cette figure doit se suffire à elle-même.
+
+    GÉNÉRIQUE, DÉLIBÉRÉMENT (callout C-VOL-1) : la figure porte le
+    MÉCANISME, pas l'exemple chiffré — a, b, x, f(x), jamais de nombre.
+    La forme de la courbe (concave, croissante, f(a)=0) est celle de
+    l'exemple travaillé du R9, f(x) = racine(x) sur [0,4] (lesson.md),
+    choisie pour que le solide engendré se lise comme le "bol"
+    (paraboloïde) que la leçon décrit — mais aucune valeur numérique
+    n'est empruntée ici : seuls a, b, x, f(x) sont écrits.
+
+    Géométrie (calculée, pas devinée) :
+      paramétrage u dans [0,1] : x_px(u) = 170 + 230.u
+                                  hauteur(u) = 140.racine(u)
+      méridienne haute (= f(x))   : y(u) = 207 - hauteur(u)
+      méridienne basse (réfléchie): y(u) = 207 + hauteur(u)
+      a = u=0 -> (170, 207)  [hauteur 0 - la pointe fermée du solide]
+      b = u=1 -> (400, 67 / 347)  [hauteur maximale - l'ouverture]
+      échantillonné à pas régulier de 0,05 en u (21 points), même
+      densité que aire-entre-courbes.svg / comparaison-aires-nichees.svg.
+
+      L'axe (Ox) est tracé à y=207, le CENTRE vertical du panneau — pas
+      la convention habituelle "axe en bas" de cette leçon. Choix
+      délibéré : c'est la seule façon de garder les deux moitiés du
+      solide (au-dessus et en-dessous de l'axe) dans le même panneau, à
+      la même échelle, à partir de l'étape 2, sans redessiner la courbe
+      ailleurs. Conséquence acceptée : à l'étape 1, le panneau garde de
+      l'espace libre sous l'axe (la région ne descend jamais sous lui) —
+      un repère dont l'axe n'est pas au ras du bord bas reste un repère
+      normal.
+
+      Coupes elliptiques (perspective cavalière, convention DIVULGUÉE
+      comme dans geometrie-espace/media/sphere-plan.svg) : la coupe
+      perpendiculaire à l'axe, à l'abscisse x_px(u), est un DISQUE de
+      rayon hauteur(u) — dessinée en ellipse couchée : rayon vertical =
+      hauteur(u) À LA VRAIE ÉCHELLE (directement comparable à la
+      méridienne, donc au rayon lu sur la tranche de l'étape 3), rayon
+      horizontal = 0,3 x hauteur(u) (coefficient CONSTANT : un même
+      disque vu sous un même angle, à toutes les abscisses). Quatre
+      coupes : deux structurelles, u=0,20 (rx=18,8 ry=62,6) et u=0,85
+      (rx=38,7 ry=129,1), ink-soft, non remplies — "quelques coupes"
+      (callout C-VOL-1) ; l'ouverture du solide en x=b, u=1 (rx=42
+      ry=140), ink, non remplie ; et la tranche isolée de l'étape 3,
+      u=0,50 (rx=29,7 ry=99), accent, remplie — LE disque qu'on mesure.
+      Les deux structurelles sont posées loin du centre (u=0,20 et
+      u=0,85) pour laisser la tranche isolée respirer, seule, autour de
+      x=285 : aucune des trois autres coupes ne chevauche son voisinage
+      immédiat.
+
+      Pourquoi aucune coupe n'est en pointillé (contrairement à
+      sphere-plan.svg, où l'arc caché DERRIÈRE le plan l'est) : ce
+      schéma est une coupe longitudinale "transparente" du solide (on
+      voit son intérieur), pas le rendu d'un solide opaque vu sous un
+      angle — chaque ellipse représente un anneau ENTIER, avant et
+      arrière confondus, comme dans tout schéma de solide de révolution
+      en fil de fer. Aucune information de visibilité n'est donc perdue
+      à laisser les traits pleins.
+
+    Rôle des couleurs :
+      méridienne (haut à l'étape 1, bas à l'étape 2), son étiquette
+        f(x), les bornes a/b                        : --figure-ink / --figure-ink-soft
+        (données)
+      aire de la région                             : --figure-accent, fill-opacity faible
+        (déjà le foyer dès l'étape 1 — même exception que
+        valeur-moyenne-rectangle.svg : le callout fixe explicitement
+        cette étape comme "la région", pas seulement "les données")
+      coupes structurelles (u=0,20 / u=0,85)         : --figure-ink-soft
+      ouverture du solide en b                       : --figure-ink
+        (suggèrent la rondeur — jamais le foyer)
+      tranche isolée, son rayon, sa graduation en x,
+        la boîte formule                             : --figure-accent (le foyer, étape 3)
+      l'étiquette x (posée DANS le disque teinté)    : --figure-ink (lisibilité, voir step-3)
+      axes                                            : --figure-ink-soft (chrome neutre)
+
+    Frontière B1 (spec-extension.md §1.4) — respectée par construction :
+    AUCUN signe somme, AUCUNE somme chiffrée, AUCUN passage à la limite.
+    L'épaisseur de la tranche n'est que SUGGÉRÉE (une seule ellipse,
+    isolée, à une seule abscisse) — jamais un empilement compté. Un
+    seul disque est mesuré ; son aire est la valeur EXACTE π f(x)²,
+    jamais une somme approchée.
+
+    Mise en étapes (LESSON-EXPERIENCE-SPEC §2.5 ; callout C-VOL-1) :
+      step-1 : la région plane sous f, entre a et b (données + une
+               première lecture, regroupées comme le veut le callout —
+               même geste que valeur-moyenne-rectangle.svg).
+      step-2 : la région a tourné — la méridienne se referme par sa
+               réflexion, les coupes structurelles et l'ouverture en b
+               apparaissent : le solide.
+      step-3 : la tranche à l'abscisse x, isolée (remplie, accent), son
+               rayon f(x) tracé du centre au bord, sa formule
+               aire tranche = π f(x)² dans une boîte reliée par une
+               amorce — exactement ce que demande le callout C-VOL-1.
+
+    Les captions sont portées par volume-revolution-tranche.stages.json
+    — aucun texte de légende baké ici (même convention que les figures
+    existantes de cette leçon).
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Le solide de révolution — la région, le solide, la tranche
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="32" width="590" height="350" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- Axes — ink-soft, chrome neutre, toujours visibles. (Ox) au CENTRE
+       vertical du panneau (y=207), pas au bord bas : voir le commentaire
+       de tête sur la raison géométrique de ce choix. -->
+  <line x1="100" y1="207" x2="540" y2="207"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="552,207 540,202.5 540,211.5" fill="var(--figure-ink-soft)"/>
+  <line x1="100" y1="207" x2="100" y2="61"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="100,50 95.5,61 104.5,61" fill="var(--figure-ink-soft)"/>
+  <text x="559" y="211" font-size="12" font-style="italic"
+        fill="var(--figure-ink-soft)">x</text>
+  <text x="92" y="54" text-anchor="end" font-size="12" font-style="italic"
+        fill="var(--figure-ink-soft)">y</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — la région plane sous f, entre a et b
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <path d="M170,207 L181.5,175.7 L193,162.7 L204.5,152.8 L216,144.4 L227.5,137
+             L239,130.3 L250.5,124.2 L262,118.5 L273.5,113.1 L285,108
+             L296.5,103.2 L308,98.6 L319.5,94.1 L331,89.9 L342.5,85.8
+             L354,81.8 L365.5,77.9 L377,74.2 L388.5,70.5 L400,67"
+          fill="none" stroke="var(--figure-ink)"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <path d="M170,207 L181.5,175.7 L193,162.7 L204.5,152.8 L216,144.4 L227.5,137
+             L239,130.3 L250.5,124.2 L262,118.5 L273.5,113.1 L285,108
+             L296.5,103.2 L308,98.6 L319.5,94.1 L331,89.9 L342.5,85.8
+             L354,81.8 L365.5,77.9 L377,74.2 L388.5,70.5 L400,67 L400,207 Z"
+          fill="var(--figure-accent)" fill-opacity="0.18"
+          stroke="var(--figure-accent)" stroke-width="2" stroke-linejoin="round"/>
+
+    <text x="345" y="58" text-anchor="end" font-size="13" font-style="italic"
+          fill="var(--figure-ink)">f(x)</text>
+
+    <line x1="170" y1="204" x2="170" y2="210" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="170" y="222" text-anchor="middle" font-size="12" font-style="italic"
+          fill="var(--figure-ink-soft)">a</text>
+
+    <line x1="400" y1="204" x2="400" y2="210" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="400" y="222" text-anchor="middle" font-size="12" font-style="italic"
+          fill="var(--figure-ink-soft)">b</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la région a tourné : le solide (méridienne réfléchie,
+       coupes structurelles, ouverture en b)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="M170,207 L181.5,238.3 L193,251.3 L204.5,261.2 L216,269.6 L227.5,277
+             L239,283.7 L250.5,289.8 L262,295.5 L273.5,300.9 L285,306
+             L296.5,310.8 L308,315.4 L319.5,319.9 L331,324.1 L342.5,328.2
+             L354,332.2 L365.5,336.1 L377,339.8 L388.5,343.5 L400,347"
+          fill="none" stroke="var(--figure-ink)"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <ellipse cx="216" cy="207" rx="18.8" ry="62.6" fill="none"
+             stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <ellipse cx="365.5" cy="207" rx="38.7" ry="129.1" fill="none"
+             stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+
+    <ellipse cx="400" cy="207" rx="42" ry="140" fill="none"
+             stroke="var(--figure-ink)" stroke-width="1.8"/>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la tranche à l'abscisse x, isolée : rayon et aire
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <ellipse cx="285" cy="207" rx="29.7" ry="99"
+             fill="var(--figure-accent)" fill-opacity="0.25"
+             stroke="var(--figure-accent)" stroke-width="2.2"/>
+
+    <line x1="285" y1="207" x2="285" y2="108" stroke="var(--figure-accent)" stroke-width="2.4"/>
+    <circle cx="285" cy="207" r="3" fill="var(--figure-accent)"/>
+    <!-- À GAUCHE du rayon et AU-DESSUS de la courbe : à droite, la méridienne
+         de l'étape 1 barrait 61 % de l'étiquette (sonde « barre » de la porte
+         figures). Ici la courbe passe 8 px sous le texte, et le fond est la
+         surface nue — pas la région teintée. -->
+    <text x="279" y="101" text-anchor="end" font-size="14" font-style="italic"
+          fill="var(--figure-accent)">f(x)</text>
+
+    <!-- L'étiquette x est À L'ENCRE, pas à l'accent : elle est posée DANS le
+         disque teinté, et l'accent y tombait à 3,90:1 (porte figures, run
+         749 de la CI — SC 1.4.3 demande 4,5:1). Le trait de graduation, lui,
+         reste à l'accent : c'est lui qui dit « la tranche est ici ». -->
+    <line x1="285" y1="204" x2="285" y2="210" stroke="var(--figure-accent)" stroke-width="1.2"/>
+    <text x="285" y="222" text-anchor="middle" font-size="12" font-style="italic"
+          fill="var(--figure-ink)">x</text>
+
+    <line x1="465" y1="124" x2="306" y2="137"
+          stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="306" cy="137" r="2.5" fill="var(--figure-accent)"/>
+
+    <rect x="465" y="88" width="160" height="70" rx="8"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="545" y="106" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-accent)">la tranche</text>
+    <text x="545" y="132" text-anchor="middle" font-size="13"
+          fill="var(--figure-accent)"><tspan>aire</tspan><tspan
+          dy="3" font-size="8">tranche</tspan><tspan
+          dy="-3"> = π</tspan><tspan font-style="italic"> f(x)²</tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

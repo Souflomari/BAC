@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Courbe d’avancement x(t) pour la réaction S2O8 2 moins + 2 I moins, croissante vers un plateau x_max = 5,0 mmol. La tangente à la courbe en t1 = 8 minutes est tracée : sa pente est le taux de variation dx/dt à cet instant, et la vitesse volumique de réaction v(t1) vaut (1/V) fois cette pente.">
+  <title>x(t) et la tangente en t1 — vitesse volumique de réaction</title>
+  <!--
+    avancement-tangente.svg — courbe STATIQUE de x(t) pour la réaction
+    S2O8²⁻ + 2I⁻ → 2SO4²⁻ + I2 (exemple travaillé de R2 de la leçon), avec
+    la tangente à la courbe en t1 = 8 min : sa pente est le taux de
+    variation dx/dt à cet instant, et v(t1) = (1/V)×pente est la vitesse
+    volumique de réaction à cet instant.
+
+    Modèle de courbe (calculé, pas deviné) :
+      x(t) = x_max·(1 − e^(−t/τ)),  x_max = 5,0 mmol,
+      τ = 8/ln2 ≈ 11,542 min — choisi pour que x(8 min) = x_max/2 = 2,5 mmol
+      exactement, cohérent avec t½ = 8 min établi en R4 de la leçon (le
+      même instant sert de tangente ici et de temps de demi-réaction dans
+      temps-demi-reaction.svg — la leçon signale explicitement que ce
+      n'est pas un hasard).
+
+      Ce modèle lisse à un seul paramètre (τ) APPROCHE les valeurs
+      mesurées du tableau de R2 sans les reproduire au pixel près (écart
+      max ≈ 0,25 mmol vers t = 12-20 min, soit ≈5 % de x_max ; il
+      coïncide exactement avec les données à t=0, t=8, t=40 et t=60 min) :
+      c'est un ajustement schématique, pas une réplique brute du tableau.
+
+    Géométrie (calculée) :
+      origine (t=0, x=0) : (x0,y0) = (80, 350)
+      échelle temporelle  : 6,625 px/min  (t=80 min → x=610 px, bord d'axe)
+      échelle verticale   : 50 px/mmol    (x_max=5,0 mmol → y=100 px)
+
+    Tangente en t1 = 8 min (x_px=133, y_px=225, exact par construction) :
+      pente réelle du modèle dx/dt(8) = (x_max/τ)·e^(−8/τ) = 2,5/τ
+        ≈ 0,2166 mmol/min — valeur ANALYTIQUE exacte de la courbe tracée
+        ici, légèrement différente de l'estimation par sécante
+        ≈0,25 mmol/min que le texte calcule à partir des points du
+        tableau à t=4 et t=12 min. C'est attendu : la sécante N'EST
+        QU'UNE approximation de la tangente (le texte le dit lui-même en
+        R2) — donc AUCUNE valeur numérique de pente n'est affichée sur la
+        figure, pour ne pas laisser croire à une contradiction.
+      La droite tracée a la pente EXACTE de ce modèle, convertie en
+        pixels à partir des deux échelles ci-dessus (slope_px ≈ -1,6345),
+        pas une pente devinée à l'oeil. Elle va de (80 ; 311,63) [bord
+        gauche du repère] à (240,1 ; 50) [bord haut du repère] — calculée
+        pour toucher exactement y=50, pas raccourcie arbitrairement.
+
+    Rôle des couleurs (consigne explicite de cette paire de figures) :
+      tangente, point de tangence, repère vertical + tick "t1", boîte
+        formule v=(1/V)(dx/dt) : --figure-accent (LE sujet de cette figure)
+      courbe x(t) : --figure-ink (structure, pas le sujet)
+      axes, tick x_max, unités, annotation secondaire "pente=dx/dt" :
+        --figure-ink-soft (chrome neutre / note secondaire)
+
+    Mise en étapes (LESSON-EXPERIENCE-SPEC §2.5) : graphe → toujours stagé,
+    ordre canonique axes → données → lecture.
+      step-1 : axes, repère x_max (chrome neutre)
+      step-2 : la courbe x(t) (les données)
+      step-3 : la tangente en t1, le repère t1, l'annotation "pente = dx/dt"
+               et la boîte formule v = (1/V)(dx/dt) (la lecture — la
+               construction interprétative, ajoutée en dernier)
+    L'ancien paragraphe de légende en bas de figure (dupliquant ce que la
+    caption d'étape dit maintenant) a été retiré ; les repères permanents
+    (x_max, t1, boîte formule) sont conservés.
+  -->
+
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Suivi temporel — la tangente à x(t) donne la vitesse volumique de réaction
+    </text>
+
+    <!-- Fond du panneau -->
+    <rect x="40" y="32" width="590" height="350" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- ── Axes — ink-soft, chrome neutre ───────────────────────── -->
+    <line x1="80" y1="350" x2="610" y2="350"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="610,350 598,345.5 598,354.5" fill="var(--figure-ink-soft)"/>
+    <line x1="80" y1="350" x2="80" y2="50"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+
+    <text x="72" y="54" text-anchor="end" font-size="11"
+          fill="var(--figure-ink-soft)"><tspan font-style="italic">x</tspan><tspan> (mmol)</tspan></text>
+    <text x="72" y="354" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+    <text x="605" y="368" text-anchor="end" font-size="10.5"
+          fill="var(--figure-ink-soft)"><tspan font-style="italic">t</tspan><tspan> (min)</tspan></text>
+
+    <!-- Repère x_max (plateau, ink-soft — chrome, comme N0 dans les figures de désintégration) -->
+    <line x1="76" y1="100" x2="84" y2="100"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="70" y="104" text-anchor="end" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink-soft)">x<tspan dy="3" font-size="7.5">max</tspan></text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!--
+      Courbe x(t) — polyligne calculée, pas=4 min, de t=0 à t=80 min.
+      x(t) = x_max·(1-e^(-t/τ)) ; voir calcul complet en tête de fichier.
+      Couleur ink : la courbe est la structure de fond, pas le sujet accent.
+    -->
+    <path d="
+      M80,350 L106.5,276.78 L133,225 L159.5,188.39 L186,162.5
+      L212.5,144.19 L239,131.25 L265.5,122.1 L292,115.63 L318.5,111.05
+      L345,107.81 L371.5,105.53 L398,103.91 L424.5,102.76 L451,101.95
+      L477.5,101.38 L504,100.98 L530.5,100.69 L557,100.49 L583.5,100.35
+      L610,100.24
+    " fill="none"
+      stroke="var(--figure-ink)"
+      stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- ══════════════════════════════════════════════════════
+         La tangente en t1 = 8 min — LE sujet de cette figure, tout en accent
+         ══════════════════════════════════════════════════════ -->
+
+    <!-- Droite tangente, pente exacte du modèle en t1 (voir calcul en tête) -->
+    <line x1="80" y1="311.63" x2="240.1" y2="50"
+          stroke="var(--figure-accent)" stroke-width="1.8"
+          stroke-dasharray="6,4" stroke-linecap="round"/>
+
+    <!-- Point de tangence (t1=8 min ; x1=2,5 mmol) -->
+    <circle cx="133" cy="225" r="3.2" fill="var(--figure-accent)"/>
+
+    <!-- Repère vertical de l'instant t1, jusqu'à l'axe des temps -->
+    <line x1="133" y1="225" x2="133" y2="350"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <line x1="133" y1="345" x2="133" y2="355"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="133" y="366" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-accent)">t<tspan dy="4" font-size="8">1</tspan></text>
+
+    <!-- Annotation secondaire (ink / ink-soft, comme la note "méthode des 37 %" du gold) -->
+    <line x1="241" y1="55" x2="248" y2="90"
+          stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <!-- REMONTÉES de 12 px (2026-09-04) : la seconde ligne, à y=108, était
+         traversée par la courbe x(t) elle-même sur 57 % de sa largeur — la
+         phrase qui explique la tangente rayée par la donnée. Au-dessus, la
+         bande entre la boîte formule (bas à y=80) et le palier de la courbe
+         (y≈122) est libre. -->
+    <text x="253" y="83" font-size="10" fill="var(--figure-ink)">pente = dx/dt (à t<tspan
+          dy="3" font-size="7">1</tspan><tspan dy="-3">)</tspan></text>
+    <text x="253" y="96" font-size="9" fill="var(--figure-ink-soft)">(la droite ne touche x(t) qu’en ce seul point)</text>
+
+    <!-- Boîte formule -->
+    <rect x="405" y="48" width="210" height="32" rx="5"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="510" y="69" text-anchor="middle" font-size="13" font-style="italic"
+          fill="var(--figure-accent)">v = (1/V)(dx/dt)</text>
+  </g><!-- /step-3 -->
+
+</svg>

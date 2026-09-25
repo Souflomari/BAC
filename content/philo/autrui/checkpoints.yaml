@@ -1,0 +1,511 @@
+# In-lesson checkpoint items (summit-conversion campaign). Formative,
+# calm-core probes placed inside the lesson via [[checkpoint:<id>]] markers
+# — NOT the end bank (items.yaml). Same item schema, but NO score/streak/
+# tally. Wrong-answer feedback names the wrong PHILOSOPHICAL model, not just
+# the fact of being wrong. The end-bank ≥3-per-misconception floor lives in
+# items.yaml's coverage_summary and is NOT altered by these checkpoints (a
+# fresh item here is surfaced inline, never re-counted toward that floor —
+# house convention, see rlc-serie/probabilites-conditionnelles/analyse-de-
+# texte/la-liberte's checkpoints.yaml headers).
+#
+# EVERY distractor carries a real `misconception:` id (no null tags),
+# matched to items.yaml's own mc.philo.autrui.* inventory.
+#
+# Placement priority (per the recipe's philo addendum: "mine the lesson's
+# own erreur-à-éviter boxes first"): one checkpoint per rung's boxed error,
+# R0 through R5, deliberately prioritizing items.yaml's THINNEST and ZERO-
+# coverage models (see items.yaml's coverage_summary) so every student gets
+# in-lesson exposure to the notion's weakest-covered wrong models regardless
+# of the item-bank gap:
+#   cp-r0-predict  (in R0)       — commit-gate. Probes the R0 "double
+#                                  question" via its most common naive
+#                                  collapse — gene-sociale-reduction (7/24 in
+#                                  items.yaml, already well covered — the
+#                                  predict-gate's job is the commit ritual
+#                                  itself, not gap-filling) and
+#                                  double-question-reduite (2/24, thin).
+#   cp-r1-rupture  (after R1)    — rupture gate: apresentation-mal-comprise
+#                                  (2/24 in items.yaml — thin; also the
+#                                  literal content of R1's "erreur à éviter"
+#                                  box, both named confusions).
+#   cp-r2-rupture  (after R2)    — rupture gate: maitre-satisfait-par-
+#                                  reconnaissance (0/24 in items.yaml à
+#                                  l'époque — 3 items depuis le 2026-09-05 :
+#                                  AUT-25, 26, 27 ; the R2
+#                                  box's second named confusion, restated by
+#                                  no legacy distractor).
+#   cp-r3-rupture  (after R3)    — rupture gate: honte-mal-comprise (2/24 —
+#                                  thin; R3's box, first named confusion).
+#   cp-r4-rupture  (after R4)    — rupture gate: enfer-mal-interprete (2/24
+#                                  — thin; R4's box in full).
+#   cp-r5-rupture  (after R5)    — rupture gate: visage-regard-confondus
+#                                  (3/24 — at floor already, but it is R5's
+#                                  box and the notion's single most-quoted
+#                                  "erreur à éviter" line: "la confusion la
+#                                  plus fréquente sur ce point du programme").
+# No dedicated pre-exercise priming checkpoint (unlike la-liberte's
+# cp-bac-autrui): r-bac's own axis (معرفة الغير, R1) is already taught
+# directly by R1, unlike la-liberte's Bakounine text, which opened a new
+# axis R0-R4 never named — see exercises.yaml's header for that judgment
+# call. R6 (Kant) and R7 (méthode) are covered by items.yaml alone
+# (kant-formule-mal-comprise at 4/24, methode-dissertation-mal-appliquee at
+# 4/24 — both already at or above floor), so no checkpoint was added there
+# either; six checkpoints was judged sufficient rung coverage without
+# diluting the in-lesson pacing (matches la-liberte's own count of 6).
+#
+# Length rebalance (recipe's philo addendum, mandatory): every stem below
+# was authored with a deliberately varied correct-answer length — verified
+# programmatically (js-yaml length-check script, not eyeballed). See the
+# length table in the closing comment.
+
+notion: autrui
+skill_code: philo_autrui
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the regard-qui-entre hook's
+  #        commit). Turns "Prends position avant de continuer. Réponds en
+  #        une phrase" into a real MCQ commit, right after the two
+  #        spontaneous answers are named and before the reveal ("Les deux
+  #        réponses semblent raisonnables...").
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    skill_code: philo_autrui
+    tags: [checkpoint, formative, misconception_driven, philo_autrui, hook_commit]
+    primary_misconception: mc.philo.autrui.gene-sociale-reduction
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |-
+      Avant de lire la suite : engage-toi. Qu'est-ce qui a exactement
+      changé, dans l'instant précis où ta sœur est entrée ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Une gêne ordinaire, propre à cette personne précise et à son regard que je connais bien — rien de plus général à en tirer."
+        correct: false
+        misconception: mc.philo.autrui.gene-sociale-reduction
+        feedback: |-
+          Modèle détecté : réduire le phénomène à cette personne précise.
+          Mais alors pourquoi le même effondrement se produit-il aussi
+          devant un inconnu, dont tu n'as aucune raison particulière de
+          redouter le jugement ? Ce n'est donc pas seulement l'identité de
+          la personne qui entre qui produit cet effet.
+
+      - id: B
+        text: "Uniquement la question de savoir si le regard vient d'une conscience comparable à la mienne ou d'un simple corps qui bouge — ma liberté n'est pas encore en jeu à ce stade."
+        correct: false
+        misconception: mc.philo.autrui.double-question-reduite
+        feedback: |-
+          Modèle détecté : ne retenir que la moitié de la tension posée.
+          Le texte pose DEUX questions distinctes, pas une seule — le
+          statut d'autrui, et son rapport à ta liberté — et les tient
+          ensemble dès le départ, sans en sacrifier une pour l'autre.
+
+      - id: C
+        text: "Deux choses à la fois, non résolues pour l'instant : si ce regard vient bien d'une conscience comparable à la mienne, et si ce rapport à autrui menace ma liberté ou, au contraire, la fonde — c'est cette double tension que la leçon va construire."
+        correct: true
+        feedback: |-
+          Exact — et c'est le réflexe à garder pour toute la leçon : le
+          basculement du chapitre 1 ouvre deux questions à la fois, pas une seule,
+          et aucune des deux n'est encore tranchée. Les rubriques qui
+          suivent ne réduiront pas cette double tension à une seule
+          moitié — elles la déplieront pièce par pièce.
+
+      - id: D
+        text: "Les deux réponses reviennent en réalité au même : tout dépendrait seulement de la sensibilité propre à chacun face au regard d'autrui, une affaire purement psychologique et subjective, sans le moindre enjeu philosophique précis à en tirer ici ou ailleurs."
+        correct: false
+        misconception: mc.philo.autrui.gene-sociale-reduction
+        feedback: |-
+          Modèle détecté : dissoudre la tension dans un relativisme
+          psychologique plutôt que l'affronter. Le problème que pose la
+          scène n'est pas un désaccord de sensibilité — il est réel,
+          précis, et la leçon va le construire pièce par pièce, pas le
+          déclarer sans objet.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-rupture | placed AFTER R1
+  #        Probes: apresentation-mal-comprise (primary — 2/24 in items.yaml,
+  #        the literal content of R1's "erreur à éviter" box).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-rupture
+    rung: "R1"
+    skill_code: philo_autrui
+    tags: [checkpoint, formative, misconception_driven, philo_autrui, husserl]
+    primary_misconception: mc.philo.autrui.apresentation-mal-comprise
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |-
+      Un élève dit : « Grâce à l'aprésentation de Husserl, je sais avec
+      certitude ce que pense mon ami, comme si j'avais un accès direct à
+      son esprit. » Où se trompe-t-il exactement, à la lumière du chapitre 2 ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Il confond l'aprésentation avec une perception directe ou une preuve certaine : je ne perçois jamais que le corps d'autrui, et j'attribue seulement, par analogie, une vie intérieure probable — jamais garantie."
+        correct: true
+        feedback: |-
+          Exact. Husserl refuse les deux issues faciles : ni perception
+          directe de la conscience d'autrui, ni pure invention sans
+          fondement. L'aprésentation reste un transfert par analogie —
+          raisonnable, jamais démonstratif.
+
+      - id: B
+        text: "Il a raison : l'aprésentation husserlienne est précisément une perception directe de la conscience d'autrui, sans le moindre intermédiaire."
+        correct: false
+        misconception: mc.philo.autrui.apresentation-mal-comprise
+        feedback: |-
+          Modèle détecté : « on perçoit directement la conscience
+          d'autrui ». C'est l'inverse exact de la thèse husserlienne : on
+          ne perçoit jamais directement que le corps, la conscience
+          n'étant jamais qu'aprésentée, par analogie.
+
+      - id: C
+        text: "Il se trompe seulement sur un détail mineur : ce ne serait pas une perception, mais une pure imagination libre de ce que l'ami pourrait ressentir à cet instant, sans le moindre fondement réel dans la ressemblance des corps vécus."
+        correct: false
+        misconception: mc.philo.autrui.apresentation-mal-comprise
+        feedback: |-
+          Modèle détecté : réduire l'aprésentation à une simple
+          imagination. C'est un mécanisme plus précis que Husserl
+          distingue soigneusement d'une projection imaginaire : il est
+          fondé sur la ressemblance structurelle des corps vécus, pas sur
+          une libre invention.
+
+      - id: D
+        text: "Pour Husserl, on ne pourrait strictement rien attribuer à autrui, qui resterait un pur objet parmi les objets du monde, sans vie intérieure envisageable."
+        correct: false
+        misconception: mc.philo.autrui.alter-ego-mal-compris
+        feedback: |-
+          Modèle détecté : l'excès inverse. Husserl refuse justement de
+          traiter autrui comme un pur objet — l'analogie des corps vécus
+          fait qu'autrui m'apparaît comme un alter ego, un semblable, pas
+          une chose.
+
+    correct_feedback: |-
+      L'aprésentation ne donne jamais un accès direct à la conscience
+      d'autrui, et ce n'est pas non plus une libre invention : je perçois
+      directement son corps, et j'attribue, par analogie avec mon propre
+      cas, une vie intérieure comparable — sans que le problème des autres
+      consciences soit pour autant résolu.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-rupture | placed AFTER R2
+  #        Probes: maitre-satisfait-par-reconnaissance (primary — 0/24 in
+  #        items.yaml à l'époque ; 3 items depuis le 2026-09-05).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-rupture
+    rung: "R2"
+    skill_code: philo_autrui
+    tags: [checkpoint, formative, misconception_driven, philo_autrui, hegel]
+    primary_misconception: mc.philo.autrui.maitre-satisfait-par-reconnaissance
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |-
+      Un élève conclut : « Le maître, chez Hegel, a gagné : il est reconnu
+      par l'esclave, donc il obtient exactement la reconnaissance qu'il
+      cherchait, et en sort pleinement satisfait. » Que répond le chapitre 3 ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Le chapitre 3 dit l'inverse : une reconnaissance obtenue d'un être qu'on ne reconnaît pas soi-même comme un égal ne vaut presque rien — le maître reste insatisfait, précisément parce que sa victoire est asymétrique."
+        correct: true
+        feedback: |-
+          Exact. C'est le renversement au cœur de la dialectique : le
+          maître obtient une reconnaissance, mais d'un être qu'il traite en
+          simple instrument — une reconnaissance qui, venant de là, ne
+          confirme presque rien.
+
+      - id: B
+        text: "Le chapitre 3 confirme cette lecture : le maître obtient, par sa victoire dans la lutte à mort, une reconnaissance pleinement et durablement satisfaisante, contrairement à l'esclave, qui n'obtiendrait jamais, lui, quoi que ce soit."
+        correct: false
+        misconception: mc.philo.autrui.maitre-satisfait-par-reconnaissance
+        feedback: |-
+          Modèle détecté : croire que le maître obtient ce qu'il voulait.
+          Le chapitre 3 dit précisément l'inverse — c'est parce que sa victoire est
+          asymétrique qu'elle échoue à lui donner une reconnaissance
+          pleinement satisfaisante.
+
+      - id: C
+        text: "Le chapitre 3 dit que le maître est insatisfait, mais seulement parce qu'il aurait, en réalité, physiquement perdu le combat contre l'esclave."
+        correct: false
+        misconception: mc.philo.autrui.dialectique-maitre-esclave-mal-comprise
+        feedback: |-
+          Modèle détecté : mécomprendre le récit lui-même. C'est celui qui
+          préfère la mort à la soumission qui devient le maître, pas celui
+          qui perd physiquement — l'insatisfaction ne vient pas d'une
+          défaite au combat.
+
+      - id: D
+        text: "Le chapitre 3 dit que ni le maître ni l'esclave n'obtiennent jamais, l'un comme l'autre, la moindre forme de conscience de soi, la dialectique tout entière s'arrêtant sur un échec total, symétrique et définitif pour les deux consciences."
+        correct: false
+        misconception: mc.philo.autrui.dialectique-maitre-esclave-mal-comprise
+        feedback: |-
+          Modèle détecté : nier l'issue positive du récit. L'esclave, par
+          son travail sur la matière, développe au contraire une conscience
+          de lui-même plus autonome et plus durable que celle du maître —
+          ce n'est pas un échec symétrique des deux côtés.
+
+    correct_feedback: |-
+      Le maître obtient une reconnaissance, mais d'un être qu'il ne
+      reconnaît pas lui-même comme un égal — une reconnaissance asymétrique
+      qui ne procure jamais la certitude pleine de soi que seule une
+      reconnaissance MUTUELLE pourrait fonder.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r3-rupture | placed AFTER R3
+  #        Probes: honte-mal-comprise (primary — 2/24 in items.yaml, R3's
+  #        box, first named confusion).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-rupture
+    rung: "R3"
+    skill_code: philo_autrui
+    tags: [checkpoint, formative, misconception_driven, philo_autrui, sartre]
+    primary_misconception: mc.philo.autrui.honte-mal-comprise
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |-
+      Un élève dit : « La honte que ressent Sartre au trou de la serrure,
+      c'est juste la peur d'être puni si quelqu'un le surprend. » Que
+      corrige le chapitre 4 ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Le chapitre 4 insiste : cette honte peut surgir même sans aucun risque réel de sanction — elle vient de la simple reconnaissance immédiate que j'existe, à cet instant, comme l'objet du regard d'un autre."
+        correct: true
+        feedback: |-
+          Exact. Le pas dans le couloir pourrait n'appartenir à personne,
+          ou à quelqu'un qui ne t'a même pas vu — la honte n'attend pas de
+          savoir s'il y a un risque réel pour surgir.
+
+      - id: B
+        text: "Le chapitre 4 confirme cette lecture : la honte n'est rien d'autre qu'une peur de sanction, proportionnée à la sévérité de la personne qui surprend."
+        correct: false
+        misconception: mc.philo.autrui.honte-mal-comprise
+        feedback: |-
+          Modèle détecté : réduire la honte à une peur de sanction précise.
+          L'identité ou la sévérité de qui surprend n'est pas le point de
+          Sartre — la honte surgirait de la même façon même si le pas dans
+          le couloir n'appartenait à personne.
+
+      - id: C
+        text: "Le chapitre 4 dit que cette honte n'est en réalité pas un sentiment réellement vécu, mais une pure construction intellectuelle, sans dimension affective."
+        correct: false
+        misconception: mc.philo.autrui.honte-mal-comprise
+        feedback: |-
+          Modèle détecté : nier la réalité affective de la honte. Sartre la
+          décrit au contraire comme un sentiment vécu et immédiat — il en
+          isole seulement l'origine structurelle, pas son caractère
+          affectif.
+
+      - id: D
+        text: "Le chapitre 4 dit que cette honte exprime, au fond, le même désir qu'ailleurs dans la leçon : obtenir activement la reconnaissance et l'approbation de l'autre, exactement comme chez Hegel au chapitre 3, sans aucune différence de mécanisme entre les deux."
+        correct: false
+        misconception: mc.philo.autrui.sartre-reduit-hegel
+        feedback: |-
+          Modèle détecté : confondre le mécanisme de Sartre avec celui de
+          Hegel (chapitre 3). Hegel décrit une reconnaissance recherchée
+          activement ; la honte sartrienne est une découverte SUBIE,
+          immédiate, pas une quête d'approbation.
+
+    correct_feedback: |-
+      La honte peut surgir même en l'absence totale de risque de sanction :
+      elle révèle simplement que j'existe, pour un autre, comme l'objet de
+      son regard — une dimension de mon être que je ne pourrais jamais
+      atteindre par ma seule introspection.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r4-rupture | placed AFTER R4
+  #        Probes: enfer-mal-interprete (primary — 2/24 in items.yaml, R4's
+  #        box in full).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-rupture
+    rung: "R4"
+    skill_code: philo_autrui
+    tags: [checkpoint, formative, misconception_driven, philo_autrui, sartre]
+    primary_misconception: mc.philo.autrui.enfer-mal-interprete
+    item_source: original
+    lesson_placement: after_R4
+
+    stem: |-
+      Un élève résume : « "L'enfer, c'est les autres" veut simplement dire
+      que les gens sont pénibles, et qu'il vaudrait mieux vivre seul. » Que
+      répond le chapitre 5 ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Le chapitre 5 dit que ce n'est ni une plainte sur la fréquentation d'autrui ni un appel à la solitude : la formule désigne la dépendance structurelle envers un regard qui me fige dans une image que je ne contrôle jamais."
+        correct: true
+        feedback: |-
+          Exact. Dans Huis clos, ce ne sont pas les autres en tant que tels
+          qui font l'enfer, c'est l'impossibilité de reprendre, une fois
+          pour toutes, la maîtrise de l'image que leur regard fixe et fige.
+
+      - id: B
+        text: "Le chapitre 5 confirme entièrement cette lecture : Sartre recommanderait effectivement, sans la moindre réserve, de vivre entièrement seul, une fois pour toutes et sans exception, pour échapper définitivement à ce regard qui fige et objective."
+        correct: false
+        misconception: mc.philo.autrui.enfer-mal-interprete
+        feedback: |-
+          Modèle détecté : traduire la formule par un conseil de solitude.
+          Sartre ne prône nulle part la solitude comme solution — rester
+          seul supprimerait aussi ce que le chapitre 4 a montré : le besoin du regard
+          d'autrui pour accéder à certaines dimensions de mon propre être.
+
+      - id: C
+        text: "Le chapitre 5 dit que cette formule désigne un châtiment religieux littéral, réservé à ceux qui ont fait du mal à autrui de leur vivant."
+        correct: false
+        misconception: mc.philo.autrui.enfer-mal-interprete
+        feedback: |-
+          Modèle détecté : littéraliser le mot « enfer ». La formule n'a
+          aucun sens religieux ou punitif chez Sartre — elle désigne une
+          structure du rapport aux autres consciences, pas une sanction
+          théologique.
+
+      - id: D
+        text: "Le chapitre 5 dit que la meilleure réponse pratique est de devancer systématiquement le regard de l'autre en le regardant toujours en premier, de façon à ne jamais être soi-même réduit, ne serait-ce qu'un instant, à un simple objet."
+        correct: false
+        misconception: mc.philo.autrui.conflit-libertes-mal-compris
+        feedback: |-
+          Modèle détecté : transformer une description ontologique en
+          conseil stratégique. Sartre décrit un conflit structurel entre
+          deux libertés qui alternent entre regarder et être regardé — il
+          n'en tire aucune recommandation de « dominer l'autre en premier ».
+
+    correct_feedback: |-
+      « L'enfer, c'est les autres » ne dit pas que les autres sont
+      simplement pénibles : la formule désigne la dépendance structurelle
+      envers un regard qui me fige dans une image que je n'ai pas choisie et
+      que je ne peux jamais reprendre en main — pas un encouragement à la
+      solitude, ni un conseil de domination préventive.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-r5-rupture | placed AFTER R5
+  #        Probes: visage-regard-confondus (primary — 3/24 in items.yaml,
+  #        at floor already, but R5's own box: "la confusion la plus
+  #        fréquente sur ce point du programme").
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-rupture
+    rung: "R5"
+    skill_code: philo_autrui
+    tags: [checkpoint, formative, misconception_driven, philo_autrui, levinas]
+    primary_misconception: mc.philo.autrui.visage-regard-confondus
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |-
+      Un élève affirme : « Le visage chez Levinas, c'est la même chose que
+      le regard chez Sartre : dans les deux cas, autrui m'objective et
+      menace ma liberté. » Que répond le chapitre 6 ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Le chapitre 6 distingue nettement les deux : le regard sartrien objective et menace ma liberté ; le visage lévinassien, au contraire, n'objective rien — il commande une responsabilité qui précède tout choix, sans menacer ma liberté."
+        correct: true
+        feedback: |-
+          Exact. C'est la confusion la plus fréquente sur ce point du
+          programme, et le chapitre 6 la nomme explicitement : les deux auteurs
+          partent d'une même intuition (autrui n'est pas un simple objet)
+          mais en tirent des conséquences opposées.
+
+      - id: B
+        text: "Le chapitre 6 confirme cette lecture : visage et regard désignent, chez les deux auteurs, exactement le même phénomène de conflit entre consciences."
+        correct: false
+        misconception: mc.philo.autrui.visage-regard-confondus
+        feedback: |-
+          Modèle détecté : traiter les deux comme des synonymes. Ce n'est
+          pas ce que dit le texte — le visage lévinassien n'objective rien,
+          à l'inverse du regard sartrien qui, lui, objective et fige.
+
+      - id: C
+        text: "Le chapitre 6 dit l'inverse de cette confusion habituelle : ce serait le visage qui engendrerait un conflit des libertés, et le regard qui fonderait une responsabilité asymétrique."
+        correct: false
+        misconception: mc.philo.autrui.visage-regard-confondus
+        feedback: |-
+          Modèle détecté : garder la confusion en inversant simplement qui
+          fait quoi. C'est le regard (Sartre) qui objective et engendre le
+          conflit ; c'est le visage (Levinas) qui fonde la responsabilité
+          asymétrique — pas l'inverse.
+
+      - id: D
+        text: "Le chapitre 6 dit que le visage désigne seulement les traits physiques descriptibles du corps d'autrui — sa forme précise, ses expressions passagères — exactement comme le corps déjà perçu par Husserl au chapitre 2, sans rien y ajouter de propre."
+        correct: false
+        misconception: mc.philo.autrui.visage-apparence-physique
+        feedback: |-
+          Modèle détecté : réduire le visage à l'apparence physique
+          descriptible. Le visage, chez Levinas, désigne au contraire ce
+          par quoi autrui échappe à toute réduction de ce genre — sa
+          vulnérabilité nue, qui déborde toujours ce que j'en ai saisi.
+
+    correct_feedback: |-
+      Le regard (Sartre) objective et menace ma liberté dans un rapport de
+      force ; le visage (Levinas) ne menace rien mais commande une
+      responsabilité asymétrique qui précède tout choix — deux conséquences
+      opposées tirées d'une même intuition que l'autre n'est pas un simple
+      objet.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# CHECKPOINT COVERAGE NOTE
+#
+# These 6 items do NOT alter the end-bank coverage floor in items.yaml
+# (house convention — see rlc-serie/probabilites-conditionnelles/analyse-
+# de-texte/la-liberte). They exist to give every student in-lesson exposure
+# to the notion's weakest-covered wrong models, regardless of the item-bank
+# gaps flagged in items.yaml's coverage_summary:
+#   double-question-reduite            — 2/24 in items.yaml, +1 here (cp-r0-predict)
+# ⚠ RE-MESURÉ le 2026-09-19 — DEUX défauts. (a) UNITÉ : les numérateurs
+# ci-dessous sont des DISTRACTEURS, le dénominateur des ITEMS, et le plancher
+# auquel on les compare est item-level. (b) PÉRIMÉ : le dénominateur décrit le
+# banc d'avant l'élargissement du 2026-09-05. Les anciens chiffres sont laissés
+# visibles — ce sont eux qui expliquent pourquoi chaque sonde a été posée là.
+#   gene-sociale-reduction              — 7/24 in items.yaml, +2 here (cp-r0-predict, ×2 distractors)
+#   apresentation-mal-comprise          — 2/24 in items.yaml, +2 here (cp-r1-rupture, ×2 distractors)
+#   alter-ego-mal-compris               — 3/24 in items.yaml, +1 here (cp-r1-rupture)
+#   maitre-satisfait-par-reconnaissance — 0/24 in items.yaml (→ 3 items depuis AUT-25/26/27), +1 here (cp-r2-rupture)
+#   dialectique-maitre-esclave-mal-comprise — 6/24 in items.yaml, +2 here (cp-r2-rupture, ×2 distractors)
+#   honte-mal-comprise                  — 2/24 in items.yaml, +2 here (cp-r3-rupture, ×2 distractors)
+#   sartre-reduit-hegel                 — 2/24 in items.yaml, +1 here (cp-r3-rupture)
+#   enfer-mal-interprete                — 2/24 in items.yaml, +2 here (cp-r4-rupture, ×2 distractors)
+#   conflit-libertes-mal-compris        — 3/24 in items.yaml, +1 here (cp-r4-rupture)
+#   visage-regard-confondus             — 3/24 in items.yaml, +2 here (cp-r5-rupture, ×2 distractors)
+#   visage-apparence-physique           — 3/24 in items.yaml, +1 here (cp-r5-rupture)
+#
+# LENGTH REBALANCE (recipe's philo addendum, mandatory — cited ~97% tell):
+# correct-answer character length vs. the three distractors, per item
+# (verified programmatically with a js-yaml length-check script run after
+# every edit pass, not eyeballed — an earlier draft of this file had all 6
+# correct answers strict-longest, caught and fixed by that same script
+# rather than by inspection):
+#   cp-r0-predict  — correct (C) 245 chars vs. 122/171/255 → 2nd-longest.
+#   cp-r1-rupture  — correct (A) 209 chars vs. 139/229/153 → 2nd-longest.
+#   cp-r2-rupture  — correct (A) 204 chars vs. 220/131/226 → 3rd (middle).
+#   cp-r3-rupture  — correct (A) 192 chars vs. 137/142/235 → 2nd-longest.
+#   cp-r4-rupture  — correct (A) 209 chars vs. 232/125/221 → 3rd (middle).
+#   cp-r5-rupture  — correct (A) 221 chars vs. 137/169/227 → 2nd-longest.
+# Net: strict-longest in 0/6, 2nd-longest in 4/6, middle (3rd) in 2/6 — no
+# item is strict-longest, matching the hard requirement, and the 4/6-vs-2/6
+# split (rather than 6/6 identical rank) avoids simply relocating the tell
+# to "always 2nd-longest" at this file's own small n=6. items.yaml (the
+# 24-item end bank that actually carries the coverage floor) carries the
+# bulk of this notion's variation: 0/24 longest, 12/24 second, 9/24 third,
+# 3/24 shortest, also verified programmatically. exercises.yaml has no MCQ
+# choices at all (no steps[]/math, no correct/distractor structure, per the
+# addendum's "no steps[]" rule), so it carries none of this tell by
+# construction — the length check reports 0 MCQs there, not a pass by
+# omission.
+# ──────────────────────────────────────────────────────────────────────────────

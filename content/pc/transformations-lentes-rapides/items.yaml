@@ -1,0 +1,1862 @@
+notion: transformations-lentes-rapides
+skill_code: pc_transformations_lentes_rapides
+# Misconception inventory (backfilled in the summit-conversion pass). This end
+# bank (TLR-1...TLR-18) was authored BEFORE the inventory existed
+# (`misconceptions: []`); this pass adds an item-level `primary_misconception`
+# to every item AND a per-distractor `misconception:` tag to every wrong choice
+# (ADDITIVE ONLY — no stem, choice text, feedback, or solution was altered). See
+# the coverage_summary at the end of this file for honest item-level counts, the
+# under-covered models flagged for a follow-up item pass, and the three
+# suivi-temporel models (conductimétrie, t demi, vitesse-pente) probed by
+# checkpoints.yaml + the r-bac exercise but carrying ZERO end-bank items yet.
+misconceptions:
+  - id: mc.physics.pc_transformations_lentes_rapides.famille-fixe-vitesse
+    label: "« La famille chimique (oxydoréduction, précipitation, acide-base) fixe à elle seule la vitesse d'une réaction. »"
+    description: "L'élève croit que la nature/famille d'une réaction détermine entièrement sa durée."
+    contradicts_principle: "Deux réactions d'une même famille peuvent différer radicalement en durée (la rouille et la combustion sont toutes deux des oxydoréductions) : la famille seule ne fixe pas la vitesse — les conditions et le mécanisme des rencontres comptent aussi."
+  - id: mc.physics.pc_transformations_lentes_rapides.rapide-lente-absolu
+    label: "« Rapide/lente est une propriété absolue et figée de la réaction, indépendante des moyens d'observation. »"
+    description: "L'élève traite la frontière rapide/lente comme une propriété intrinsèque, non comme un rapport à nos moyens de mesure."
+    contradicts_principle: "Le critère compare la durée réelle à nos moyens usuels d'observation : un instrument plus rapide peut requalifier une même réaction (« instantanée » à l'oeil, mais mesurable en millisecondes)."
+  - id: mc.physics.pc_transformations_lentes_rapides.critere-temps-inverse
+    label: "« Inversion du critère lente/rapide : une transformation mesurable serait 'rapide', une trop brève pour être suivie serait 'lente' — ou ralentir une réaction la rendrait 'rapide'. »"
+    description: "L'élève inverse le sens du critère du temps de réaction."
+    contradicts_principle: "Lente = évolution mesurable par les moyens usuels (donc suivable) ; rapide = trop brève pour être suivie (seul l'état final est visible). Ralentir une transformation l'éloigne encore de la rapidité."
+  - id: mc.physics.pc_transformations_lentes_rapides.suivi-consequence-inversee
+    label: "« Confusion sur la conséquence pratique : une transformation rapide serait plus facile à suivre, ou une lente ne pourrait pas être suivie. »"
+    description: "L'élève inverse quel type de transformation se laisse suivre pendant son déroulement."
+    contradicts_principle: "Une transformation lente peut être suivie (prélèvements, mesures successives) ; une rapide ne se laisse voir qu'après coup, une fois l'état final atteint."
+  - id: mc.physics.pc_transformations_lentes_rapides.changer-condition-change-nature
+    label: "« Changer une condition (concentration, température) change la nature chimique de la réaction. »"
+    description: "L'élève croit qu'agir sur les conditions transforme la réaction en une autre."
+    contradicts_principle: "Modifier une concentration ou une température ne change ni les réactifs ni les produits : c'est la même équation chimique, seulement plus ou moins rapide."
+  - id: mc.physics.pc_transformations_lentes_rapides.facteur-mauvais-sens
+    label: "« Facteur cinétique actionné dans le mauvais sens : augmenter la concentration ou la température ralentirait la transformation (ou les diminuer l'accélérerait). »"
+    description: "L'élève connaît les facteurs mais se trompe de sens d'action."
+    contradicts_principle: "Augmenter la concentration ou la température ACCÉLÈRE une transformation ; les diminuer la RALENTIT. Les deux facteurs agissent dans le même sens."
+  - id: mc.physics.pc_transformations_lentes_rapides.facteur-sans-effet
+    label: "« Un facteur cinétique (concentration ou température) n'a aucun effet sur la vitesse. »"
+    description: "L'élève nie l'effet d'un des deux leviers établis expérimentalement."
+    contradicts_principle: "Concentration et température sont deux facteurs cinétiques établis expérimentalement : chacun change bien la durée d'une transformation."
+  - id: mc.physics.pc_transformations_lentes_rapides.froid-detruit-especes
+    label: "« Le froid détruit chimiquement (ou supprime) les espèces réactives. »"
+    description: "L'élève explique l'effet du froid par une destruction des espèces plutôt que par un ralentissement."
+    contradicts_principle: "Le froid ne détruit rien : les espèces réactives restent présentes, en même quantité. C'est la vitesse à laquelle elles réagissent qui diminue, par baisse de l'agitation thermique."
+  - id: mc.physics.pc_transformations_lentes_rapides.froid-baisse-concentration
+    label: "« Le froid diminue la concentration des espèces réactives. » (confusion température / concentration)"
+    description: "L'élève confond les deux facteurs cinétiques : il attribue à la température un effet de concentration."
+    contradicts_principle: "Refroidir ne change pas les quantités de matière présentes (donc pas les concentrations), seulement l'agitation thermique. Température et concentration sont deux facteurs distincts."
+  - id: mc.physics.pc_transformations_lentes_rapides.tout-choc-suffit
+    label: "« N'importe quelle rencontre entre entités réactives suffit à déclencher la réaction (seule la fréquence des chocs, donc la concentration, compte). »"
+    description: "L'élève ignore les conditions d'orientation et d'énergie du choc efficace."
+    contradicts_principle: "Si tout choc suffisait, seule la concentration jouerait ; or la température accélère nettement en changeant peu la fréquence des chocs : une seconde condition (l'énergie du choc) doit compter."
+  - id: mc.physics.pc_transformations_lentes_rapides.choc-une-seule-condition
+    label: "« Un choc efficace ne requiert qu'une seule condition : l'énergie suffisante SEULE, ou l'orientation favorable SEULE. »"
+    description: "L'élève retient une seule des deux conditions du choc efficace."
+    contradicts_principle: "Un choc n'est efficace que s'il réunit les DEUX conditions ensemble : orientation favorable ET énergie suffisante. L'une sans l'autre ne fait pas avancer la réaction."
+  - id: mc.physics.pc_transformations_lentes_rapides.temperature-concentration-confusion
+    label: "« Mécanismes de la température et de la concentration confondus (mêmes effets, ou température n'agissant que sur l'énergie, ou concentration agissant sur l'énergie). »"
+    description: "L'élève mélange ce sur quoi agit chaque facteur au niveau des chocs."
+    contradicts_principle: "La concentration n'augmente que la fréquence des chocs ; la température augmente à la fois leur fréquence ET la proportion de chocs assez énergétiques — d'où son effet souvent plus marqué."
+  - id: mc.physics.pc_transformations_lentes_rapides.variable-non-isolee
+    label: "« On peut conclure sur l'effet d'un facteur sans l'isoler (sans comparer toutes conditions égales par ailleurs). »"
+    description: "L'élève tire une conclusion causale d'un protocole qui fait varier plusieurs choses à la fois, ou d'une mesure unique."
+    contradicts_principle: "Pour attribuer un écart à un facteur, il faut ne faire varier que lui, tout le reste identique — et comparer au moins deux situations, pas mesurer une seule durée."
+  - id: mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte
+    label: "« Demi-équation redox mal équilibrée : éléments ou charge non conservés. »"
+    description: "L'élève n'applique pas les deux conservations (d'abord les éléments, puis la charge par les électrons)."
+    contradicts_principle: "Une demi-équation conserve d'abord les éléments (nombres stoechiométriques), puis la charge, en ajoutant le nombre d'électrons qui équilibre les deux membres."
+  - id: mc.physics.pc_transformations_lentes_rapides.redox-combinaison-incorrecte
+    label: "« Combinaison des demi-équations incorrecte : électrons non égalisés ou non annulés, mauvaise demi-équation multipliée, ou rôles oxydant/réducteur inversés. »"
+    description: "L'élève rate l'étape de combinaison des deux couples en une équation globale."
+    contradicts_principle: "Il n'existe pas d'électron libre en solution : on égalise le nombre d'électrons échangés (en multipliant la bonne demi-équation), puis on additionne pour qu'ils s'annulent — sans électron apparent dans l'équation globale, et sans inverser oxydant et réducteur."
+  - id: mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions
+    label: "« La conductance/conductivité varie parce que le NOMBRE total d'ions change (ions qui disparaissent sans être remplacés, ou porteurs ajoutés). »"
+    description: "L'élève explique le sens de variation par un décompte d'ions, en ignorant leurs conductivités molaires."
+    contradicts_principle: "Le sens de variation de G/sigma dépend de QUELS ions apparaissent/disparaissent et de leurs conductivités molaires, pas de leur simple nombre. Échanger un bon conducteur (OH-) contre un mauvais (HCO2-), à effectif constant, fait baisser G."
+  - id: mc.physics.pc_transformations_lentes_rapides.t-demi-mauvaise-def
+    label: "« Temps de demi-réaction mal défini : moitié de la durée totale, instant d'arrêt de la réaction, ou dépendant du réactif suivi. »"
+    description: "L'élève ne définit pas t demi par l'avancement atteint."
+    contradicts_principle: "t demi est l'instant où l'avancement atteint la moitié de sa valeur finale (x = x_max/2) — une grandeur unique, pas la moitié de la durée, ni l'instant d'arrêt, ni une valeur dépendant du réactif choisi."
+  - id: mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise
+    label: "« Vitesse volumique mal reliée à x(t) : constante, croissante, ou lue comme l'ordonnée x(t) au lieu de la pente. »"
+    description: "L'élève confond la quantité formée avec la vitesse à laquelle elle se forme."
+    contradicts_principle: "La vitesse volumique se lit comme la PENTE de la tangente à x(t) (à un facteur de volume près) ; cette pente est maximale au début puis décroît à mesure que les réactifs s'épuisent."
+
+items:
+  - id: TLR-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.critere-temps-inverse
+    stem: >
+      Une transformation chimique se termine en quelques dixièmes de seconde,
+      indiscernable à l'oeil nu même avec un chronomètre usuel. Comment la
+      qualifie-t-on ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Rapide"
+        correct: true
+      - id: B
+        text: "Lente"
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.critere-temps-inverse
+        feedback: >
+          C'est l'inverse du critère : une transformation est dite lente
+          quand son évolution est justement mesurable par nos moyens usuels
+          (oeil, chronomètre), pas quand elle leur échappe.
+      - id: C
+        text: "Ni lente ni rapide : ce critère ne s'applique qu'à certaines réactions"
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.rapide-lente-absolu
+        feedback: >
+          Le critère du temps de réaction s'applique à toute transformation
+          chimique : il compare sa durée à ce que nos moyens d'observation
+          usuels peuvent distinguer, quelle que soit la nature de la réaction.
+      - id: D
+        text: >-
+          Cela dépend uniquement de la famille chimique de la réaction
+          (oxydoréduction, précipitation, acide-base...)
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.famille-fixe-vitesse
+        feedback: >
+          La famille chimique ne fixe pas la vitesse à elle seule : une même
+          famille (l'oxydoréduction, par exemple) contient aussi bien la
+          rouille, très lente, que la combustion, quasi instantanée.
+    correct_feedback: >
+      Une durée trop courte pour être suivie par nos moyens usuels
+      d'observation définit une transformation rapide, quelle que soit sa
+      famille chimique.
+    solution: |
+      Le critère « rapide / lente » compare la durée réelle de la
+      transformation à ce qu'un chronomètre ou un oeil humain peuvent
+      distinguer — pas à la nature chimique de la réaction. Une durée de
+      quelques dixièmes de seconde échappe à ces moyens usuels : la
+      transformation est rapide.
+
+  - id: TLR-2
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.redox-combinaison-incorrecte
+    stem: >
+      Les couples oxydant/réducteur $S_2O_8^{2-}/SO_4^{2-}$ et $I_2/I^-$
+      interviennent dans une réaction. Quelle est l'équation globale
+      correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$S_2O_8^{2-} + 2I^- \\rightarrow 2SO_4^{2-} + I_2$"
+        correct: true
+      - id: B
+        text: "$S_2O_8^{2-} + I_2 \\rightarrow 2SO_4^{2-} + 2I^-$"
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.redox-combinaison-incorrecte
+        feedback: >
+          Cette écriture inverse les rôles : elle fait du diiode $I_2$ un
+          réactif et de l'ion iodure $I^-$ un produit, alors que c'est
+          l'inverse. C'est l'ion iodure qui est oxydé en diiode, pas le
+          contraire.
+      - id: C
+        text: "$S_2O_8^{2-} + I^- \\rightarrow 2SO_4^{2-} + I_2$"
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.redox-combinaison-incorrecte
+        feedback: >
+          Le nombre d'électrons échangés n'est pas respecté : la demi-équation
+          de l'iodure, $2I^- \rightarrow I_2 + 2e^-$, exige deux ions iodure
+          pour un diiode, pas un seul. L'équation n'est pas équilibrée en
+          éléments.
+      - id: D
+        text: "$S_2O_8^{2-} + 2e^- + 2I^- \\rightarrow 2SO_4^{2-} + I_2 + 2e^-$"
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.redox-combinaison-incorrecte
+        feedback: >
+          Les électrons échangés doivent s'annuler lors de la combinaison des
+          deux demi-équations, puisqu'aucun électron ne reste libre en
+          solution: ils ne doivent apparaître ni à gauche ni à droite de
+          l'équation globale.
+    correct_feedback: >
+      L'ion iodure (réducteur) cède 2 électrons que l'ion peroxodisulfate
+      (oxydant) capte : en additionnant les deux demi-équations, les électrons
+      s'annulent exactement.
+    solution: |
+      Réduction : $S_2O_8^{2-} + 2e^- \rightarrow 2SO_4^{2-}$.
+      Oxydation : $2I^- \rightarrow I_2 + 2e^-$.
+      Les deux couples échangent chacun 2 électrons : en additionnant membre à
+      membre, les électrons s'annulent, ce qui donne
+      $S_2O_8^{2-} + 2I^- \rightarrow 2SO_4^{2-} + I_2$.
+
+  - id: TLR-3
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.facteur-mauvais-sens
+    stem: >
+      Toutes choses égales par ailleurs, qu'observe-t-on si on augmente la
+      concentration initiale des réactifs d'une transformation lente, à
+      température inchangée ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La transformation se termine plus rapidement."
+        correct: true
+      - id: B
+        text: "La durée de la transformation ne change pas."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.facteur-sans-effet
+        feedback: >
+          La concentration des réactifs est l'un des deux facteurs cinétiques
+          mis en évidence expérimentalement dans cette leçon : elle change
+          bien la durée de la transformation.
+      - id: C
+        text: "La transformation se termine plus lentement."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.facteur-mauvais-sens
+        feedback: >
+          C'est l'effet inverse de celui observé expérimentalement : augmenter
+          la concentration des réactifs accélère la transformation, elle ne la
+          ralentit pas.
+      - id: D
+        text: "La transformation change de nature chimique."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.changer-condition-change-nature
+        feedback: >
+          Changer une concentration ne change pas les réactifs ni les produits
+          de la réaction, seulement la durée qu'elle met à se terminer : c'est
+          toujours la même équation chimique.
+    correct_feedback: >
+      C'est un fait établi expérimentalement : plus les concentrations
+      initiales des réactifs sont élevées, plus la transformation se termine
+      rapidement.
+    solution: |
+      En comparant deux expériences identiques sauf pour la concentration
+      d'un réactif, on observe que la transformation la plus concentrée se
+      termine en premier. C'est l'un des deux facteurs cinétiques du
+      chapitre, avec la température.
+
+  - id: TLR-4
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.froid-detruit-especes
+    stem: >
+      Pourquoi conserve-t-on les aliments au réfrigérateur, c'est-à-dire au
+      froid ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce que la baisse de température ralentit les transformations
+          chimiques de dégradation.
+        correct: true
+      - id: B
+        text: "Parce que le froid détruit chimiquement les espèces réactives."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.froid-detruit-especes
+        feedback: >
+          Le froid ne détruit rien chimiquement : les espèces réactives
+          restent présentes. C'est la vitesse à laquelle elles réagissent qui
+          diminue, pas leur quantité.
+      - id: C
+        text: "Parce que le froid diminue la concentration des espèces réactives."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.froid-baisse-concentration
+        feedback: >
+          La température et la concentration sont deux facteurs cinétiques
+          distincts : refroidir un aliment ne change pas les quantités de
+          matière qu'il contient, seulement l'agitation thermique des
+          espèces.
+      - id: D
+        text: "Le froid n'a aucun effet ; c'est l'emballage qui protège les aliments.
+        Un aliment laissé à l'air libre au réfrigérateur s'altérerait donc aussi vite."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.facteur-sans-effet
+        feedback: >
+          La température est justement l'un des deux facteurs cinétiques
+          établis dans cette leçon : elle a un effet réel et mesurable sur la
+          vitesse des transformations, indépendamment de tout emballage.
+    correct_feedback: >
+      Le froid ralentit les transformations chimiques de dégradation, exactement
+      comme il ralentit la réaction entre peroxodisulfate et iodure étudiée
+      dans cette leçon.
+    solution: |
+      La température est un facteur cinétique : l'abaisser diminue l'agitation
+      thermique des espèces réactives, donc le nombre de chocs efficaces par
+      unité de temps, donc ralentit la transformation — ici, la dégradation
+      chimique de l'aliment.
+
+  - id: TLR-5
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.choc-une-seule-condition
+    stem: >
+      Qu'est-ce qui définit un choc efficace entre deux entités réactives, à
+      l'échelle microscopique ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Une orientation relative favorable ET une énergie suffisante lors du choc."
+        correct: true
+      - id: B
+        text: "N'importe quelle rencontre entre les deux entités réactives."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.tout-choc-suffit
+        feedback: >
+          Si tout choc suffisait, seule la fréquence des rencontres — donc
+          uniquement la concentration — contrôlerait la vitesse. Cela
+          n'explique pas l'effet marqué de la température observé
+          expérimentalement, qui change peu cette fréquence mais change
+          beaucoup la vitesse.
+      - id: C
+        text: "Une énergie suffisante lors du choc, l'orientation ne comptant pas."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.choc-une-seule-condition
+        feedback: >
+          L'orientation relative des entités au moment du choc compte aussi :
+          un choc très énergétique mais mal orienté ne permet pas le
+          réarrangement chimique nécessaire.
+      - id: D
+        text: "Une orientation favorable, l'énergie du choc ne comptant pas."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.choc-une-seule-condition
+        feedback: >
+          L'énergie du choc compte aussi : un choc bien orienté mais trop
+          « mou » ne fournit pas l'énergie nécessaire pour rompre et former
+          les liaisons du réarrangement chimique.
+    correct_feedback: >
+      Les deux conditions sont nécessaires ensemble : orientation favorable
+      et énergie suffisante. C'est ce qui distingue un choc efficace d'une
+      simple rencontre.
+    solution: |
+      Un choc efficace exige à la fois une orientation relative favorable des
+      entités et une énergie suffisante lors de la rencontre. Ni l'une ni
+      l'autre condition seule ne suffit à expliquer les faits expérimentaux
+      établis au chapitre 4, notamment l'effet marqué de la température.
+
+  - id: TLR-6
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.temperature-concentration-confusion
+    stem: >
+      En quoi le mécanisme par lequel la température accélère une
+      transformation diffère-t-il de celui de la concentration ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La température augmente à la fois la fréquence des chocs et la
+          proportion de chocs suffisamment énergétiques, alors que la
+          concentration n'augmente que leur fréquence.
+        correct: true
+      - id: B
+        text: >-
+          La concentration et la température agissent exactement de la même façon :
+          toutes deux se contentent d'augmenter la fréquence des chocs entre entités.
+          Chauffer et concentrer auraient donc exactement le même effet, à dose égale.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.temperature-concentration-confusion
+        feedback: >
+          Si les deux facteurs n'agissaient que sur la fréquence des chocs,
+          l'effet de la température ne serait pas plus marqué que celui de la
+          concentration à variation comparable — or on observe le contraire :
+          la température a un effet cumulé, sur la fréquence ET l'énergie des
+          chocs.
+      - id: C
+        text: >-
+          La température n'a aucun effet sur la fréquence des chocs entre les entités
+          réactives : elle n'agit que sur l'énergie de chacun d'eux.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.temperature-concentration-confusion
+        feedback: >
+          Augmenter la température augmente aussi la vitesse de déplacement
+          des entités, donc la fréquence de leurs rencontres — pas seulement
+          l'énergie de chaque choc.
+      - id: D
+        text: >-
+          La concentration augmente l'énergie de chaque choc, tandis que la température
+          se contente d'en augmenter la fréquence dans le mélange.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.temperature-concentration-confusion
+        feedback: >
+          C'est l'inverse : augmenter la concentration ne change pas
+          l'agitation ni l'énergie des entités individuelles, seulement leur
+          nombre par unité de volume, donc la fréquence des rencontres.
+    correct_feedback: >
+      La température cumule deux effets — plus de chocs par seconde et une
+      plus grande proportion d'entre eux suffisamment énergétiques — ce qui
+      explique pourquoi son effet sur la vitesse est souvent particulièrement
+      marqué.
+    solution: |
+      Augmenter la concentration augmente uniquement le nombre d'entités par
+      unité de volume, donc la fréquence des chocs. Augmenter la température
+      augmente à la fois cette fréquence (les entités se déplacent plus vite)
+      et la proportion de chocs assez énergétiques pour être efficaces. Les
+      deux effets de la température se cumulent, contrairement à celui de la
+      concentration.
+
+  - id: TLR-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.famille-fixe-vitesse
+    stem: >
+      Le clou en fer rouille en plusieurs mois ; l'allumette s'enflamme en
+      une fraction de seconde. Les deux sont pourtant des réactions de la
+      même famille chimique : un transfert d'électrons vers le dioxygène.
+      Qu'est-ce que cet écart de vitesse permet de conclure ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Autre chose que la famille chimique doit intervenir, puisque deux
+          réactions de même famille peuvent avoir des vitesses très
+          différentes.
+        correct: true
+      - id: B
+        text: >-
+          La famille chimique (ici, un transfert d'électrons vers le
+          dioxygène) fixe entièrement la vitesse : deux réactions de cette
+          famille devraient donc durer à peu près le même temps.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.famille-fixe-vitesse
+        feedback: >
+          C'est justement ce que l'écart observé contredit : le clou et
+          l'allumette, de même famille chimique, ont des durées radicalement
+          différentes. La famille seule ne peut donc pas fixer la vitesse.
+      - id: C
+        text: >-
+          L'écart n'est qu'une illusion : avec un chronomètre assez précis,
+          on constaterait que le clou et l'allumette réagissent en réalité à
+          la même vitesse.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.rapide-lente-absolu
+        feedback: >
+          Rien n'indique une illusion de mesure ici : plusieurs mois contre
+          une fraction de seconde est un écart bien trop massif pour être un
+          artefact de précision du chronomètre.
+      - id: D
+        text: >-
+          Le fer et le bois ne peuvent pas être comparés, car ce ne sont pas
+          les mêmes éléments chimiques : la question n'a pas de sens.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.famille-fixe-vitesse
+        feedback: >
+          Rien n'empêche de comparer deux vitesses de réaction, quels que
+          soient les éléments en jeu : c'est précisément ce type de
+          comparaison qui va permettre, dans la suite, d'identifier ce qui
+          contrôle vraiment la vitesse d'une transformation.
+    correct_feedback: >
+      Deux réactions de même famille chimique peuvent avoir des vitesses
+      très différentes : la famille seule ne fixe pas la vitesse. Le reste
+      de la leçon identifie ce qui, en plus, la contrôle.
+    solution: |
+      Le clou et l'allumette appartiennent à la même famille (transfert
+      d'électrons vers O2), pourtant leurs durées diffèrent radicalement.
+      Puisqu'un même facteur (la famille) donne des résultats opposés, c'est
+      qu'il ne suffit pas à expliquer la vitesse : quelque chose d'autre, en
+      dehors de la famille chimique, doit intervenir.
+
+  - id: TLR-8
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.variable-non-isolee
+    stem: >
+      Pour vraiment savoir si la famille chimique fixe, à elle seule, la
+      vitesse d'une réaction, quel type d'observation serait le plus
+      convaincant ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Observer une seule et même équation chimique, strictement
+          inchangée, dont la durée varie considérablement d'une expérience à
+          l'autre selon les conditions.
+        correct: true
+      - id: B
+        text: >-
+          Comparer une précipitation et une réaction d'oxydoréduction, puis constater
+          qu'elles ne se déroulent pas du tout à la même vitesse.
+          La nature du réactif serait donc un facteur cinétique comme un autre.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.variable-non-isolee
+        feedback: >
+          Cette comparaison change deux choses à la fois — la famille ET les
+          conditions — sans en isoler aucune : un écart de vitesse ne
+          prouverait rien, puisqu'il resterait compatible avec l'idée que
+          c'est la famille qui fixe la vitesse. Il faut au contraire garder
+          la même réaction et ne faire varier que les conditions.
+      - id: C
+        text: "Chronométrer très précisément la rouille d'un clou de fer, afin de vérifier qu'elle ne dépasse jamais une durée de six mois."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.variable-non-isolee
+        feedback: >
+          Mesurer une seule durée, aussi précisément soit-elle, ne dit rien
+          sur ce qui contrôle cette durée. Il faut comparer au moins deux
+          situations pour isoler un facteur.
+      - id: D
+        text: "Vérifier que le fer et le bois appartiennent bien tous les deux à la grande famille chimique des combustibles."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.famille-fixe-vitesse
+        feedback: >
+          Classer les réactifs par famille ne teste pas le lien entre
+          famille et vitesse : il faudrait comparer des vitesses, pas
+          vérifier une classification.
+    correct_feedback: >
+      Garder la même équation chimique et ne faire varier que les
+      conditions expérimentales isole exactement ce qu'on veut tester : si
+      la durée change malgré une famille — et une équation — inchangées,
+      alors la famille seule ne suffit pas à fixer la vitesse.
+    solution: |
+      Pour isoler l'effet d'un paramètre, il faut le faire varier seul, en
+      gardant tout le reste identique — ici, garder la même équation
+      chimique et ne changer que les conditions expérimentales. C'est
+      exactement ce que la leçon va montrer avec la réaction entre
+      $S_2O_8^{2-}$ et $I^-$, dont la durée change nettement selon les
+      conditions, sans jamais changer de nature.
+
+  - id: TLR-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.changer-condition-change-nature
+    stem: >
+      Une seule et même équation chimique, rigoureusement inchangée, se
+      termine en quelques dizaines de secondes dans une expérience, et en
+      plusieurs minutes dans une autre. Que peut-on en déduire, à ce stade,
+      sans encore connaître le détail du mécanisme ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La vitesse d'une réaction n'est pas figée par sa nature chimique
+          seule : quelque chose dans les conditions de l'expérience doit
+          aussi jouer un rôle.
+        correct: true
+      - id: B
+        text: "L'équation chimique elle-même a dû changer entre les deux expériences, puisque sa vitesse a changé."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.changer-condition-change-nature
+        feedback: >
+          C'est contraire à l'énoncé, qui précise que l'équation reste
+          rigoureusement inchangée. Une vitesse différente ne signifie pas
+          une réaction différente : les réactifs et les produits sont les
+          mêmes dans les deux cas.
+      - id: C
+        text: "C'est une erreur expérimentale : la même équation chimique devrait toujours durer exactement le même temps."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.rapide-lente-absolu
+        feedback: >
+          Rien n'impose qu'une équation chimique ait une durée fixe et
+          universelle : au contraire, c'est justement ce postulat que
+          l'écart observé remet en cause.
+      - id: D
+        text: >-
+          Cela ne concerne que les réactions lentes : les réactions rapides,
+          elles, ont toujours une durée fixe, quelles que soient les
+          conditions.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.rapide-lente-absolu
+        feedback: >
+          Rien ne restreint ce constat aux seules réactions lentes : le
+          mécanisme à l'échelle microscopique, qu'on étudiera plus loin, ne
+          distingue pas les réactions lentes des réactions rapides.
+    correct_feedback: >
+      Une même réaction, une même équation, peut durer des temps très
+      différents selon les conditions : c'est le signe qu'autre chose que la
+      nature chimique de la réaction contrôle sa vitesse. Identifier ce
+      « autre chose » est l'objet du reste de la leçon.
+    solution: |
+      Puisque l'équation chimique reste rigoureusement la même dans les deux
+      expériences, ce n'est pas elle qui explique l'écart de durée : il faut
+      chercher ailleurs, du côté des conditions expérimentales. C'est
+      exactement ce que la leçon va établir au chapitre 4, avec la concentration et
+      la température.
+
+  - id: TLR-10
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.rapide-lente-absolu
+    stem: >
+      Une réaction paraît instantanée à l'oeil nu, mais un dispositif de
+      mesure ultra-rapide révèle qu'elle s'étale en réalité sur quelques
+      millisecondes parfaitement mesurables par cet instrument. Que peut-on
+      en conclure sur le critère « rapide / lente » ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Ce critère n'est pas une propriété physique absolue de la
+          réaction : il dépend des moyens d'observation utilisés — avec un
+          instrument plus rapide, la même réaction peut être requalifiée.
+        correct: true
+      - id: B
+        text: >-
+          C'est impossible : une réaction est soit rapide, soit lente, une
+          fois pour toutes, indépendamment de l'instrument utilisé pour
+          l'observer.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.rapide-lente-absolu
+        feedback: >
+          C'est l'inverse de ce que rappelle la leçon : le critère
+          rapide/lente compare une durée à des moyens d'observation donnés,
+          il ne décrit pas une propriété figée de la réaction, indépendante
+          de tout instrument.
+      - id: C
+        text: >-
+          Cela signifie que la réaction a changé de nature chimique en
+          passant d'un banc de mesure à l'autre.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.changer-condition-change-nature
+        feedback: >
+          Utiliser un instrument différent ne change ni les réactifs ni les
+          produits de la réaction : seule la façon dont on peut suivre sa
+          durée change, pas sa nature chimique.
+      - id: D
+        text: >-
+          Cela veut dire que l'instrument de mesure est défaillant, puisqu'à
+          l'oeil nu, aucune réaction jugée instantanée ne peut réellement
+          durer plusieurs millisecondes.
+          Le caractère instantané serait donc une propriété de la réaction, non de l'œil.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.rapide-lente-absolu
+        feedback: >
+          L'oeil nu n'est pas la référence ultime : c'est justement l'un des
+          moyens usuels dont la précision est limitée. Un instrument plus
+          rapide n'est pas défaillant, il révèle une durée que l'oeil nu ne
+          pouvait tout simplement pas distinguer.
+    correct_feedback: >
+      Rapide et lente comparent une durée réelle à des moyens d'observation
+      donnés — pas une propriété figée de la réaction. Un instrument plus
+      précis peut révéler qu'une réaction jugée instantanée dure en fait
+      quelques millisecondes bien réelles.
+    solution: |
+      La frontière rapide/lente décrit le rapport entre la durée de la
+      transformation et nos moyens usuels d'observation, pas une propriété
+      physique absolue et figée de la réaction. Un instrument plus rapide
+      que l'oeil nu ou le chronomètre usuel peut révéler qu'une réaction
+      « instantanée » s'étale en fait sur quelques millisecondes parfaitement
+      mesurables — sans que la réaction elle-même ait changé.
+
+  - id: TLR-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.suivi-consequence-inversee
+    stem: >
+      Quelle est la conséquence pratique majeure, pour l'expérimentateur, de
+      la différence entre une transformation rapide et une transformation
+      lente ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Une transformation lente peut être suivie pendant son déroulement, par
+          prélèvements et mesures successives ; une transformation rapide ne se laisse
+          observer qu'après coup.
+        correct: true
+      - id: B
+        text: "Une transformation rapide est bien plus facile à étudier, car elle libère plus vite les produits que l'on souhaite analyser."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.suivi-consequence-inversee
+        feedback: >
+          C'est l'inverse : une transformation rapide est justement plus
+          difficile à étudier EN COURS, puisqu'elle est déjà terminée quand
+          on peut l'observer. Seul l'état final, pas son déroulement, est
+          accessible.
+      - id: C
+        text: "Une transformation lente ne peut jamais être suivie pendant son déroulement, car elle prend beaucoup trop de temps pour qu'on reste au laboratoire à l'observer."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.suivi-consequence-inversee
+        feedback: >
+          C'est au contraire tout l'intérêt d'une transformation lente :
+          elle laisse le temps de prélever et de mesurer son évolution
+          minute par minute, contrairement à une transformation rapide.
+      - id: D
+        text: "Il n'y a aucune différence pratique entre les deux : dans les deux cas, on ne peut jamais observer que l'état final du mélange."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.suivi-consequence-inversee
+        feedback: >
+          C'est justement la différence pratique majeure entre les deux :
+          une transformation lente peut être suivie pendant qu'elle se
+          déroule, une transformation rapide ne peut être observée qu'une
+          fois terminée.
+    correct_feedback: >
+      Rapide : on ne voit que l'état final, tout est déjà joué. Lente : on
+      peut prélever, mesurer, suivre son évolution minute par minute — c'est
+      cette possibilité qui rend le suivi temporel utile.
+    solution: |
+      Une transformation rapide est terminée avant qu'on ait pu la suivre :
+      seul l'état final est accessible à l'observation. Une transformation
+      lente, elle, s'étale sur une durée mesurable : on peut prélever, doser,
+      mesurer une grandeur physique à différents instants, et ainsi suivre
+      son évolution — c'est ce que le chapitre suivant développera.
+
+  - id: TLR-12
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte
+    stem: >
+      D'après la méthode de la leçon (conserver d'abord les éléments, puis
+      la charge), quelle est la demi-équation correcte du couple $I_2/I^-$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$I_2 + 2e^- \\rightleftharpoons 2I^-$"
+        correct: true
+      - id: B
+        text: "$I_2 + e^- \\rightleftharpoons 2I^-$"
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte
+        feedback: >
+          La conservation de la charge n'est pas respectée : à gauche,
+          $0 + (-1) = -1$ ; à droite, $2 \times (-1) = -2$. Il faut deux
+          électrons, pas un seul, pour équilibrer les deux membres.
+      - id: C
+        text: "$I^- + 2e^- \\rightleftharpoons 2I_2$"
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte
+        feedback: >
+          Les éléments ne sont pas conservés : il n'y a qu'un seul atome
+          d'iode à gauche pour quatre à droite. Il faut d'abord ajuster les
+          nombres stoechiométriques (ici, $2I^-$), avant de s'occuper de la
+          charge.
+      - id: D
+        text: "$I_2 \\rightleftharpoons 2I^-$"
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte
+        feedback: >
+          Aucun électron n'apparaît : la charge n'est pas conservée ($0$ à
+          gauche, $-2$ à droite). Toute demi-équation redox doit inclure le
+          nombre d'électrons nécessaire pour équilibrer les deux membres.
+    correct_feedback: >
+      On conserve d'abord les éléments ($I_2$ donne $2I^-$), puis la charge
+      en ajoutant $2e^-$ à gauche : $0 + (-2) = -2$, et à droite
+      $2 \times (-1) = -2$. Les deux membres sont équilibrés.
+    solution: |
+      Deux conservations, dans cet ordre : d'abord les éléments (un $I_2$
+      donne deux $I^-$, donc on écrit $2I^-$), puis la charge, en ajoutant le
+      nombre d'électrons qu'il faut pour équilibrer les deux membres. À
+      gauche, $I_2$ porte la charge $0$ ; pour atteindre $-2$ comme à droite,
+      il faut ajouter $2e^-$ : $I_2 + 2e^- \rightleftharpoons 2I^-$.
+
+  - id: TLR-13
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.redox-combinaison-incorrecte
+    stem: >
+      Pourquoi doit-on ajuster les deux demi-équations pour qu'elles
+      échangent le même nombre d'électrons avant de les additionner membre à
+      membre ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce qu'il n'existe pas d'électron libre en solution : tout électron cédé par
+          le réducteur doit être capté par l'oxydant, donc les électrons doivent
+          s'annuler exactement.
+        correct: true
+      - id: B
+        text: >-
+          Parce que le nombre total d'électrons échangés doit toujours être un nombre
+          pair, afin que la conservation de la charge électrique soit respectée.
+          Une demi-équation à trois électrons serait donc impossible à écrire.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.redox-combinaison-incorrecte
+        feedback: >
+          La parité n'est pas la règle : ce qui compte, c'est que le nombre
+          d'électrons cédés par le réducteur égale exactement celui captés
+          par l'oxydant, qu'il soit pair ou impair (5 électrons, par
+          exemple, pour le couple $MnO_4^-/Mn^{2+}$).
+      - id: C
+        text: >-
+          Parce que sinon la réaction globale se déroulerait beaucoup trop lentement
+          pour pouvoir être suivie au chronomètre.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.critere-temps-inverse
+        feedback: >
+          Ceci confond deux idées différentes : équilibrer les électrons
+          d'une équation (chapitre 3) est une question d'écriture chimique, sans
+          rapport avec le critère lent/rapide (chapitre 2), qui compare une durée
+          réelle à nos moyens d'observation.
+      - id: D
+        text: >-
+          Parce que l'équation globale doit obligatoirement comporter le symbole
+          $\rightleftharpoons$, réservé aux équations équilibrées en électrons.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.redox-combinaison-incorrecte
+        feedback: >
+          C'est l'inverse : l'équation globale d'une réaction entre deux
+          couples s'écrit avec une flèche simple $\rightarrow$, pas
+          $\rightleftharpoons$ (réservé aux demi-équations, qui
+          représentent un équilibre Ox/Red). Le symbole utilisé n'est pas ce
+          qui impose d'égaler les électrons.
+    correct_feedback: >
+      Aucun électron ne reste libre en solution : égaler le nombre
+      d'électrons échangés dans les deux demi-équations est ce qui permet de
+      les additionner en les faisant s'annuler exactement.
+    solution: |
+      Le principe est physique, pas seulement une convention d'écriture : un
+      électron cédé par un réducteur doit être immédiatement capté par un
+      oxydant, il n'existe pas d'électron libre en solution. Pour
+      additionner deux demi-équations et obtenir une équation globale sans
+      électron apparent, il faut donc que les deux demi-équations échangent
+      le même nombre d'électrons — quel que soit ce nombre.
+
+  - id: TLR-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.facteur-mauvais-sens
+    stem: >
+      On veut ralentir une transformation lente, sans en changer la nature,
+      pour avoir le temps de l'étudier plus facilement. D'après les deux
+      facteurs cinétiques établis expérimentalement, que doit-on faire ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Diminuer à la fois la température et la concentration initiale des réactifs."
+        correct: true
+      - id: B
+        text: "Augmenter la température et diminuer la concentration initiale des réactifs."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.facteur-mauvais-sens
+        feedback: >
+          Augmenter la température accélère la transformation, elle ne la
+          ralentit pas : ce levier est actionné dans le mauvais sens. Seule
+          la baisse de concentration va dans le sens recherché.
+      - id: C
+        text: "Diminuer la température et augmenter la concentration initiale des réactifs."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.facteur-mauvais-sens
+        feedback: >
+          Augmenter la concentration des réactifs accélère la
+          transformation, elle ne la ralentit pas : ce levier est actionné
+          dans le mauvais sens. Seule la baisse de température va dans le
+          sens recherché.
+      - id: D
+        text: "Augmenter à la fois la température et la concentration initiale des réactifs."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.facteur-mauvais-sens
+        feedback: >
+          Les deux leviers sont actionnés dans le mauvais sens : augmenter
+          la température ou la concentration accélère une transformation,
+          cela ne la ralentit jamais.
+    correct_feedback: >
+      Les deux facteurs cinétiques agissent dans le même sens : diminuer la
+      température et diminuer la concentration ralentissent tous deux la
+      transformation, sans changer sa nature chimique.
+    solution: |
+      D'après le chapitre 4, augmenter la concentration ou la température accélère une
+      transformation ; les diminuer la ralentit. Pour ralentir sans changer
+      la nature de la réaction, il faut donc actionner les deux facteurs
+      dans le sens qui freine : température plus basse ET concentration plus
+      faible.
+
+  - id: TLR-15
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.tout-choc-suffit
+    stem: >
+      Pourquoi l'hypothèse « n'importe quelle rencontre entre les entités
+      réactives suffit à déclencher la réaction » est-elle rejetée ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce que si c'était le cas, seule la fréquence des chocs, donc la
+          concentration, contrôlerait la vitesse — ce qui n'expliquerait en aucun cas
+          l'effet marqué de la température vu au chapitre 4.
+        correct: true
+      - id: B
+        text: >-
+          Parce qu'un choc entre deux entités identiques, deux ions iodure par exemple,
+          est tout simplement impossible sur le plan physique.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.tout-choc-suffit
+        feedback: >
+          Ce n'est pas la raison invoquée : deux entités identiques peuvent
+          tout à fait se croiser. Le problème de l'hypothèse « tout choc
+          suffit » est ailleurs — elle ne rend pas compte de l'effet marqué
+          de la température sur la vitesse.
+      - id: C
+        text: >-
+          Parce qu'à l'échelle microscopique il n'existe aucun choc entre les entités
+          réactives, mais seulement des réactions instantanées dès que deux d'entre
+          elles se rencontrent.
+          La température n'aurait donc aucune prise sur la vitesse.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.tout-choc-suffit
+        feedback: >
+          C'est l'inverse du modèle posé au chapitre 5 : la réaction se produit
+          précisément PAR des chocs entre entités en mouvement — c'est la
+          condition d'efficacité de ces chocs qui est en question, pas leur
+          existence.
+      - id: D
+        text: >-
+          Parce que la concentration des réactifs n'a en réalité aucun effet sur le
+          nombre de chocs entre les entités du mélange.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.facteur-sans-effet
+        feedback: >
+          C'est contraire au mécanisme établi : augmenter la concentration
+          augmente bien le nombre d'entités par unité de volume, donc la
+          fréquence de leurs chocs. Ce n'est pas ce point qui invalide
+          l'hypothèse « tout choc suffit ».
+    correct_feedback: >
+      Si tout choc suffisait, la vitesse ne dépendrait que de la fréquence
+      des rencontres — donc de la concentration. Or la température, qui
+      change peu cette fréquence, a un effet très marqué sur la vitesse :
+      autre chose que la simple rencontre doit donc compter, à savoir
+      l'énergie du choc.
+    solution: |
+      L'hypothèse « tout choc suffit » prédit que seule la fréquence des
+      rencontres — donc la concentration — devrait contrôler la vitesse. Or
+      le chapitre 4 a établi expérimentalement que la température accélère elle aussi
+      nettement la réaction, alors qu'elle change assez peu le nombre total
+      de rencontres par seconde. Un effet aussi marqué ne peut donc pas
+      s'expliquer par la seule fréquence : il faut une seconde condition,
+      l'énergie du choc, ce qui mène à la notion de choc efficace.
+
+  - id: TLR-16
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.redox-combinaison-incorrecte
+    stem: >
+      Les couples $MnO_4^-/Mn^{2+}$ et $Fe^{3+}/Fe^{2+}$ interviennent dans
+      une réaction en milieu acide, avec
+      $MnO_4^- + 8H^+ + 5e^- \rightleftharpoons Mn^{2+} + 4H_2O$ et
+      $Fe^{3+} + e^- \rightleftharpoons Fe^{2+}$. Quelle est l'équation
+      globale correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$MnO_4^- + 8H^+ + 5Fe^{2+} \\rightarrow Mn^{2+} + 4H_2O + 5Fe^{3+}$"
+        correct: true
+      - id: B
+        text: "$MnO_4^- + 8H^+ + Fe^{2+} \\rightarrow Mn^{2+} + 4H_2O + Fe^{3+}$"
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.redox-combinaison-incorrecte
+        feedback: >
+          Le nombre d'électrons échangés n'est pas égalé avant d'additionner
+          : le couple du manganèse échange 5 électrons, celui du fer un
+          seul. Il faut multiplier la demi-équation du fer par 5 avant de
+          combiner, pas l'utiliser telle quelle.
+      - id: C
+        text: "$MnO_4^- + 8H^+ + 5Fe^{2+} + 5e^- \\rightarrow Mn^{2+} + 4H_2O + 5Fe^{3+} + 5e^-$"
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.redox-combinaison-incorrecte
+        feedback: >
+          Les électrons ont bien été égalés (5 dans chaque demi-équation),
+          mais ils doivent s'annuler à l'addition, puisqu'aucun électron ne
+          reste libre en solution : ils ne doivent apparaître ni à gauche ni
+          à droite de l'équation globale.
+      - id: D
+        text: "$5MnO_4^- + 8H^+ + Fe^{2+} \\rightarrow Mn^{2+} + 4H_2O + Fe^{3+}$"
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.redox-combinaison-incorrecte
+        feedback: >
+          C'est la mauvaise demi-équation qui a été multipliée : c'est celle
+          du fer (qui échange 1 électron) qu'il faut multiplier par 5 pour
+          atteindre les 5 électrons du couple du manganèse, pas l'inverse.
+    correct_feedback: >
+      Le fer, réducteur, cède 1 électron ; il faut donc multiplier sa
+      demi-équation par 5 pour égaler les 5 électrons captés par $MnO_4^-$.
+      En additionnant, les $5e^-$ s'annulent exactement.
+    solution: |
+      Réduction : $MnO_4^- + 8H^+ + 5e^- \rightarrow Mn^{2+} + 4H_2O$.
+      Oxydation, multipliée par 5 pour égaler les électrons :
+      $5Fe^{2+} \rightarrow 5Fe^{3+} + 5e^-$.
+      En additionnant membre à membre, les $5e^-$ s'annulent :
+      $MnO_4^- + 8H^+ + 5Fe^{2+} \rightarrow Mn^{2+} + 4H_2O + 5Fe^{3+}$.
+
+  - id: TLR-17
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.froid-detruit-especes
+    stem: >
+      Le lait laissé à température ambiante ($20\,^\circ\text{C}$) tourne
+      (transformation chimique de dégradation) en $8$ heures ; le même lait,
+      au réfrigérateur ($4\,^\circ\text{C}$), met $4$ jours à tourner.
+      Quelle affirmation, fondée sur le modèle des chocs efficaces, explique
+      correctement cet écart ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          À $4\,^\circ\text{C}$, l'agitation thermique est plus faible : les chocs sont
+          moins fréquents, et une plus petite proportion d'entre eux atteint l'énergie
+          nécessaire — la dégradation est donc beaucoup plus lente.
+        correct: true
+      - id: B
+        text: "Le froid du réfrigérateur détruit chimiquement une partie des espèces réactives responsables du caillage du lait."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.froid-detruit-especes
+        feedback: >
+          Le froid ne détruit rien chimiquement : les espèces réactives
+          restent présentes, en même quantité. C'est la vitesse à laquelle
+          elles réagissent qui diminue, pas leur quantité.
+      - id: C
+        text: "Le réfrigérateur diminue la concentration des espèces réactives présentes dans le lait, ce qui en ralentit la dégradation."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.froid-baisse-concentration
+        feedback: >
+          La température et la concentration sont deux facteurs cinétiques
+          distincts : refroidir le lait ne change pas les quantités de
+          matière qu'il contient, seulement l'agitation thermique des
+          espèces.
+      - id: D
+        text: >-
+          Un écart aussi important (environ douze fois plus long) est trop
+          grand pour être expliqué par un simple changement de température ;
+          un autre facteur, non identifié, doit intervenir.
+          La température ne jouerait donc que sur des écarts modestes.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.temperature-concentration-confusion
+        feedback: >
+          Au contraire, le chapitre 5 établit que l'effet de la température est
+          souvent particulièrement marqué, car elle cumule deux effets
+          (fréquence ET énergie des chocs) : une élévation ou une baisse
+          même modeste de température peut donc accélérer ou ralentir
+          nettement une transformation, sans qu'aucun autre facteur ne soit
+          nécessaire.
+    correct_feedback: >
+      La baisse de température cumule deux effets freinateurs : moins de
+      chocs par seconde, et une proportion moindre d'entre eux assez
+      énergétique — exactement le mécanisme établi au chapitre 5 pour expliquer un
+      effet marqué de la température.
+    solution: |
+      Seule la température a changé entre les deux récipients. D'après le chapitre 5,
+      la baisser diminue à la fois la fréquence des chocs entre espèces
+      réactives (agitation thermique plus faible) et la proportion de chocs
+      assez énergétiques pour être efficaces. Ces deux effets se cumulent,
+      ce qui explique un ralentissement marqué de la dégradation — sans
+      qu'aucun autre facteur n'intervienne.
+
+  - id: TLR-18
+    rung: "R5"
+    difficulty_level: 5
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.changer-condition-change-nature
+    stem: >
+      Un chimiste étudie une transformation lente en laboratoire. Il
+      constate qu'en refroidissant le mélange à $0\,^\circ\text{C}$ et en
+      diluant fortement les réactifs, la teinte caractéristique, auparavant
+      visible en $5$ minutes, n'apparaît plus qu'après plusieurs heures.
+      Quelle affirmation est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Il a combiné les deux facteurs cinétiques dans le sens qui ralentit : moins de
+          chocs par seconde, et une moindre proportion d'entre eux assez énergétique,
+          d'où une transformation nettement plus lente.
+        correct: true
+      - id: B
+        text: "En diluant fortement les réactifs, il a en réalité changé la nature chimique de la réaction étudiée, ce qui explique à lui seul le net ralentissement observé."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.changer-condition-change-nature
+        feedback: >
+          Changer une concentration ne change ni les réactifs ni les
+          produits de la réaction, seulement la durée qu'elle met à se
+          terminer : c'est toujours la même équation chimique, seulement
+          plus lente.
+      - id: C
+        text: "Seule la baisse de température explique ce ralentissement ; diluer les réactifs n'a, en réalité, aucun effet sur la vitesse d'une transformation chimique, quelle qu'elle soit.
+        Une solution dix fois plus diluée réagirait donc tout aussi vite."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.facteur-sans-effet
+        feedback: >
+          La concentration des réactifs est l'un des deux facteurs
+          cinétiques établis expérimentalement au chapitre 4 : la diluer ralentit
+          bien la transformation, en plus de l'effet de la température.
+      - id: D
+        text: "La transformation, en ralentissant autant, est probablement devenue une transformation rapide dont on ne peut plus voir que l'état final."
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.critere-temps-inverse
+        feedback: >
+          « Ralentir » et « devenir rapide » sont contradictoires : rendre
+          une transformation plus lente l'éloigne encore plus du critère de
+          rapidité (chapitre 2). Elle reste une transformation lente, seulement
+          encore plus lente qu'avant, et toujours observable pendant son
+          déroulement.
+    correct_feedback: >
+      Refroidir ET diluer actionnent les deux facteurs cinétiques établis au
+      chapitre 4 dans le même sens freinateur, ce qui explique, via le modèle des
+      chocs efficaces (chapitre 5), un net ralentissement sans changement de nature
+      chimique.
+    solution: |
+      Deux facteurs cinétiques ont été actionnés à la fois, tous deux dans
+      le sens qui ralentit : température plus basse et concentration plus
+      faible. D'après le chapitre 5, cela diminue à la fois la fréquence des chocs et
+      la proportion de chocs assez énergétiques pour être efficaces. La
+      transformation reste lente — simplement beaucoup plus lente qu'avant —
+      et demeure, comme toute transformation lente, observable pendant son
+      déroulement.
+
+# ------------------------------------------------------------------------------
+# COVERAGE SUMMARY (backfilled in the summit-conversion pass)
+#
+# HONEST STATE (recipe section 6). This end bank was authored for RAMP coverage
+# (3 items on each of R0...R5) BEFORE any misconception inventory existed. This
+# pass tagged every item (item-level primary_misconception) and every wrong
+# choice (per-distractor misconception:) additively — NO counts were faked and
+# NO stem/feedback/solution was changed. Counts below are ITEM-LEVEL (each item
+# counted once, by its primary_misconception).
+#
+# The bank spreads 18 items across 15 distinct lesson-core models, so MOST models
+# sit BELOW the >=3 floor at the primary level (only redox-combinaison-incorrecte
+# reaches 3). This is the real picture, surfaced deliberately — a follow-up item
+# pass is owed to lift the under-covered models to the floor (see needs_item_pass).
+# Wider DISTRACTOR reach (in comments) shows several models are confronted across
+# 3-4 items even where only 1 item carries them as primary.
+#
+# Three SUIVI-TEMPOREL models (conductimétrie, t demi, vitesse-pente) are introduced
+# by the r-bac sujet + checkpoints.yaml; the legacy end bank predates them and
+# carries ZERO items for them — an honest 0, flagged for the same follow-up pass.
+# ------------------------------------------------------------------------------
+  # Ajoutés le 2026-09-05 : douze familles étaient sous le plancher de 3 items
+  # AVANT ces ajouts, dont TROIS qui n'en avaient alors aucun — conductance-nombre-d-ions,
+  # t-demi-mauvaise-def et vitesse-pente-mauvaise, sondées en leçon seulement. Huit items,
+  # vingt-deux places.
+  - id: TLR-19
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.t-demi-mauvaise-def
+    stem: >
+      Comment définit-on le temps de demi-réaction $t_{1/2}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La durée au bout de laquelle l'avancement atteint la moitié de son
+          avancement final
+        correct: true
+      - id: B
+        text: >-
+          La moitié de la durée totale de la transformation, mesurée jusqu'à son
+          arrêt
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.t-demi-mauvaise-def
+        feedback: >
+          $t_{1/2}$ se définit par l'AVANCEMENT atteint, pas par un partage de la
+          durée. Et la « durée totale » est rarement définissable : la courbe
+          s'approche de son palier sans jamais l'atteindre exactement, ce qui
+          rend la moitié de cette durée inexploitable.
+      - id: C
+        text: >-
+          L'instant précis où la réaction s'arrête complètement, la moitié des
+          réactifs ayant disparu
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.t-demi-mauvaise-def
+        feedback: >
+          Deux confusions. La réaction ne s'arrête pas à $t_{1/2}$ : elle y a
+          seulement parcouru la moitié de son chemin. Et « la moitié des
+          réactifs » n'équivaut à la moitié de l'avancement que si la
+          transformation est totale — ce qui n'est pas garanti.
+      - id: D
+        text: >-
+          La durée après laquelle la transformation devient trop rapide pour être
+          suivie, une transformation rapide étant plus facile à observer
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.suivi-consequence-inversee
+        feedback: >
+          La conséquence est inversée : c'est une transformation LENTE qui se
+          laisse suivre pendant son déroulement, parce qu'on a le temps de
+          prélever, doser, mesurer. Une transformation rapide est terminée avant
+          la première mesure — d'où l'intérêt des techniques de trempe.
+    correct_feedback: >
+      $t_{1/2}$ est la durée au bout de laquelle $x$ atteint $x_f/2$. La
+      définition passe par l'AVANCEMENT, jamais par un partage de la durée
+      totale — laquelle n'est d'ailleurs pas définissable, la courbe tendant
+      vers son palier sans l'atteindre.
+    solution: |
+      **La définition.**
+      $$x(t_{1/2}) = \frac{x_f}{2}$$
+      où $x_f$ est l'avancement final — celui du palier, total ou non.
+
+      **Comment on le lit.** Sur la courbe $x(t)$ : on repère $x_f$, on prend sa
+      moitié en ordonnée, on redescend sur l'axe des temps.
+
+      **Pourquoi il est utile.** C'est une durée caractéristique : elle permet de
+      comparer deux transformations sans dépendre du moment où l'on décide que
+      « c'est fini ».
+
+  - id: TLR-20
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise
+    stem: >
+      Sur la courbe $x(t)$ d'une transformation, comment lit-on la vitesse
+      volumique de réaction à un instant donné ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Par la PENTE de la tangente à cet instant, divisée par le volume : elle
+          décroît à mesure que la courbe s'aplatit
+        correct: true
+      - id: B
+        text: >-
+          Par l'ordonnée $x(t)$ elle-même : plus la quantité formée est grande,
+          plus la vitesse est grande
+          La vitesse serait donc maximale en fin de transformation.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise
+        feedback: >
+          $x(t)$ mesure ce qui a été formé, la vitesse mesure à quelle allure
+          cela se forme. Ce sont deux grandeurs distinctes : au palier, $x$ est
+          maximal et la vitesse est NULLE — la courbe est horizontale. Confondre
+          les deux, c'est confondre la distance parcourue et la vitesse.
+      - id: C
+        text: >-
+          Par une valeur constante : la vitesse d'une transformation ne varie pas
+          au cours du temps
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise
+        feedback: >
+          La courbe $x(t)$ n'est pas une droite : elle est raide au début, puis
+          s'infléchit. La vitesse décroît donc continûment, à mesure que les
+          réactifs se raréfient — c'est justement pour cela que la concentration
+          est un facteur cinétique.
+      - id: D
+        text: >-
+          Par $t_{1/2}$, qui vaut la moitié de la durée totale de la
+          transformation
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.t-demi-mauvaise-def
+        feedback: >
+          $t_{1/2}$ n'est pas une vitesse, et sa définition n'est pas celle-là :
+          c'est la durée au bout de laquelle l'AVANCEMENT atteint la moitié de sa
+          valeur finale. Il caractérise la transformation dans son ensemble, pas
+          un instant particulier.
+    correct_feedback: >
+      La vitesse se lit sur la PENTE de la tangente à $x(t)$, divisée par le
+      volume : $v = \frac{1}{V}\frac{\mathrm{d}x}{\mathrm{d}t}$. Elle est
+      maximale au départ, où la courbe est la plus raide, et nulle au palier, où
+      la courbe est horizontale.
+    solution: |
+      **La définition.**
+      $$v = \frac{1}{V}\,\frac{\mathrm{d}x}{\mathrm{d}t}$$
+      La dérivée, donc la pente de la tangente.
+
+      **Ce que la courbe montre.** Raide au début : vitesse maximale, réactifs
+      abondants. De plus en plus plate : vitesse décroissante. Horizontale au
+      palier : vitesse nulle, la transformation est achevée.
+
+      **La confusion à éviter.** $x(t)$ croît quand la vitesse décroît : la
+      quantité formée et l'allure à laquelle elle se forme varient en sens
+      inverse sur toute la seconde moitié de la courbe.
+
+  - id: TLR-21
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions
+    stem: >
+      On suit par conductimétrie une réaction où des ions $H_3O^{+}$ sont
+      remplacés, à nombre égal, par des ions $Na^{+}$. La conductivité diminue
+      nettement. Pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce que les ions n'ont pas la même conductivité molaire : celle de
+          $H_3O^{+}$ est bien plus grande que celle de $Na^{+}$
+        correct: true
+      - id: B
+        text: >-
+          Parce que le nombre total d'ions en solution diminue : des ions
+          disparaissent au cours de la réaction
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions
+        feedback: >
+          L'énoncé précise que le remplacement se fait à nombre égal : le
+          décompte d'ions ne change pas. Ce qui change, c'est leur NATURE — et
+          chaque ion contribue à la conductivité selon sa conductivité molaire
+          propre, très élevée pour $H_3O^{+}$ en raison de son mode de
+          déplacement particulier dans l'eau.
+      - id: C
+        text: >-
+          Parce que la vitesse de la réaction diminue, et que la conductivité est
+          la valeur de $x(t)$ à chaque instant
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise
+        feedback: >
+          La conductivité mesure l'ÉTAT du mélange à un instant, pas la vitesse à
+          laquelle il évolue — et $x(t)$ n'est pas davantage une vitesse. La
+          vitesse se lit sur la pente de la courbe, jamais sur son ordonnée.
+      - id: D
+        text: >-
+          Parce qu'il faudrait augmenter la température pour ralentir la
+          réaction, ce qui rétablirait la conductivité
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.facteur-mauvais-sens
+        feedback: >
+          Le sens est inversé : augmenter la température ACCÉLÈRE une réaction,
+          elle ne la ralentit pas. Et la question porte sur la conductivité, dont
+          la variation s'explique par la nature des ions présents, non par un
+          réglage de vitesse.
+    correct_feedback: >
+      À nombre d'ions constant, seule leur nature compte. La conductivité molaire
+      de $H_3O^{+}$ est plusieurs fois supérieure à celle de $Na^{+}$ : les
+      échanger fait chuter la conductivité sans qu'aucun ion ne disparaisse.
+    solution: |
+      **La relation.**
+      $$\sigma = \sum_i \lambda_i\,[X_i]$$
+      Chaque ion contribue selon sa CONDUCTIVITÉ MOLAIRE $\lambda_i$, qui dépend
+      de sa nature.
+
+      **Le cas de $H_3O^{+}$.** Sa conductivité molaire est exceptionnellement
+      grande : il ne se déplace pas comme les autres ions, mais par transfert de
+      proton de proche en proche entre molécules d'eau.
+
+      **La conséquence.** Une réaction qui consomme des $H_3O^{+}$ en libérant
+      d'autres cations fait chuter $\sigma$ — c'est ce qui rend la conductimétrie
+      utilisable pour suivre l'avancement.
+
+  - id: TLR-22
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions
+    stem: >
+      Au cours d'un suivi conductimétrique, la conductivité augmente alors que
+      le nombre total d'ions reste constant. Est-ce possible ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Oui : si les ions formés ont une conductivité molaire supérieure à
+          celle des ions consommés
+        correct: true
+      - id: B
+        text: >-
+          Non : la conductivité suit le nombre d'ions, donc elle ne peut pas
+          varier à nombre constant
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions
+        feedback: >
+          La conductivité est une SOMME PONDÉRÉE : $\sigma = \sum \lambda_i
+          [X_i]$. Le décompte ne suffit pas — remplacer un ion par un autre, à
+          nombre égal, change $\sigma$ dès que leurs conductivités molaires
+          diffèrent. C'est même ce qui rend la méthode intéressante.
+      - id: C
+        text: >-
+          Non : la conductivité est proportionnelle à $x(t)$, donc elle ne peut
+          qu'augmenter, jamais varier librement
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise
+        feedback: >
+          La conductivité n'est pas $x(t)$ : elle est une grandeur MESURÉE, dont
+          on déduit $x$ ensuite. Selon les ions en jeu, elle peut croître,
+          décroître, ou rester quasi constante — c'est le calcul qui relie les
+          deux, pas une proportionnalité automatique.
+      - id: D
+        text: >-
+          Oui, mais seulement si l'on refroidit le mélange, le froid diminuant la
+          concentration des espèces
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.froid-baisse-concentration
+        feedback: >
+          Le froid ne change pas les concentrations : il ralentit les chocs. Ce
+          sont deux facteurs cinétiques distincts — la température agit sur
+          l'énergie des rencontres, la concentration sur leur fréquence.
+          Confondre leurs mécanismes rend la trempe incompréhensible.
+    correct_feedback: >
+      Oui. $\sigma = \sum \lambda_i [X_i]$ : la conductivité pondère chaque ion
+      par sa conductivité molaire. À nombre d'ions constant, remplacer des ions
+      peu conducteurs par des ions très conducteurs la fait monter.
+    solution: |
+      **Le principe.** La conductivité n'est pas un décompte : chaque ion y
+      contribue selon $\lambda_i$, propre à sa nature.
+
+      **Les deux sens possibles.** $\sigma$ monte si les ions formés conduisent
+      mieux, descend s'ils conduisent moins bien — à nombre égal dans les deux
+      cas.
+
+      **Ce qu'il faut vérifier avant d'interpréter un suivi.** Quels ions
+      apparaissent, lesquels disparaissent, et avec quelles conductivités
+      molaires. Le sens de variation en découle, et jamais l'inverse.
+
+  - id: TLR-23
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.variable-non-isolee
+    stem: >
+      Deux béchers : le premier contient une solution concentrée à
+      $20\,^\circ\text{C}$, le second une solution diluée à
+      $50\,^\circ\text{C}$. Le premier réagit plus vite. Que peut-on conclure ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Rien sur l'effet d'un facteur isolé : deux conditions ont changé à la
+          fois, et leurs effets se mêlent
+        correct: true
+      - id: B
+        text: >-
+          Que la concentration accélère la réaction, puisque le bécher le plus
+          concentré est le plus rapide
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.variable-non-isolee
+        feedback: >
+          La conclusion est peut-être vraie, mais l'expérience ne l'établit pas :
+          la température a changé en même temps, et dans le sens contraire. Pour
+          conclure sur un facteur, il faut le faire varier SEUL, toutes autres
+          conditions égales.
+      - id: C
+        text: >-
+          Que le froid a détruit une partie des espèces réactives du second
+          bécher, ce qui explique sa lenteur
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.froid-detruit-especes
+        feedback: >
+          Le froid ne détruit rien : il ralentit. Les molécules sont toujours là,
+          en même nombre ; elles se rencontrent moins souvent et avec moins
+          d'énergie. C'est d'ailleurs ce qui rend la trempe réversible — réchauffé,
+          le mélange repart.
+      - id: D
+        text: >-
+          Que $t_{1/2}$ du premier bécher vaut la moitié de la durée totale de sa
+          transformation
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.t-demi-mauvaise-def
+        feedback: >
+          $t_{1/2}$ se définit par l'AVANCEMENT — la durée au bout de laquelle
+          $x$ atteint $x_f/2$ — et non par un partage de la durée totale, qui
+          n'est du reste pas définissable. Et cette grandeur ne répond pas à la
+          question posée.
+    correct_feedback: >
+      Rien. Deux variables ont changé simultanément, et dans des sens opposés :
+      la concentration favorise le premier bécher, la température le second.
+      Isoler un facteur exige de ne faire varier que lui.
+    solution: |
+      **Le protocole nécessaire.** Pour établir l'effet de la concentration :
+      deux béchers à la MÊME température, avec des concentrations différentes.
+      Pour la température : même concentration, deux températures.
+
+      **Ce que l'expérience décrite montre.** Que la combinaison
+      « concentré + froid » va plus vite que « dilué + chaud ». C'est un fait,
+      mais il ne se décompose pas.
+
+      **Pourquoi cela compte.** Toute la démarche expérimentale du chapitre 4
+      repose sur cette exigence : un facteur à la fois.
+
+  - id: TLR-24
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.choc-une-seule-condition
+    stem: >
+      À quelles conditions un choc entre deux entités réactives est-il
+      efficace ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          À deux conditions simultanées : une énergie suffisante ET une
+          orientation favorable des entités au moment du choc
+        correct: true
+      - id: B
+        text: >-
+          À une seule : que l'énergie du choc soit suffisante, l'orientation
+          n'ayant pas d'influence
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.choc-une-seule-condition
+        feedback: >
+          L'énergie ne suffit pas : deux molécules peuvent se heurter violemment
+          par le mauvais côté, et se séparer sans avoir réagi. Les liaisons à
+          rompre et à former sont situées : l'orientation décide de ce que le
+          choc peut atteindre.
+      - id: C
+        text: >-
+          À aucune condition particulière : toute rencontre entre entités
+          réactives déclenche la réaction
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.tout-choc-suffit
+        feedback: >
+          Si toute rencontre suffisait, les réactions seraient toutes
+          instantanées : dans un liquide, chaque molécule subit des milliards de
+          chocs par seconde. C'est justement la rareté des chocs EFFICACES qui
+          explique qu'une transformation prenne du temps.
+      - id: D
+        text: >-
+          À une seule : que la température soit élevée, la température agissant
+          exactement comme la concentration sur la fréquence des rencontres
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.temperature-concentration-confusion
+        feedback: >
+          Les deux facteurs n'agissent pas de la même façon. La CONCENTRATION
+          augmente la fréquence des rencontres ; la TEMPÉRATURE augmente leur
+          énergie — donc la proportion de chocs assez violents pour être
+          efficaces. Elle accroît aussi la fréquence, mais ce n'est pas son
+          effet principal.
+    correct_feedback: >
+      Deux conditions, toutes deux nécessaires : assez d'énergie pour rompre les
+      liaisons, et la bonne orientation pour que le contact se fasse au bon
+      endroit. C'est la rareté de cette conjonction qui explique la durée d'une
+      transformation.
+    solution: |
+      **Les deux conditions.**
+      - *Énergétique* : le choc doit être assez violent — apporter assez d'énergie pour rompre les liaisons existantes.
+      - *Géométrique* : les entités doivent se présenter dans une orientation
+        qui met en contact les atomes concernés.
+
+      **L'ordre de grandeur qui rend la chose parlante.** Une molécule en
+      solution subit des milliards de chocs par seconde ; une infime fraction
+      d'entre eux est efficace.
+
+      **Comment les facteurs agissent.** La concentration augmente le NOMBRE de
+      chocs ; la température augmente la proportion de chocs assez ÉNERGÉTIQUES.
+
+  - id: TLR-25
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte
+    stem: >
+      Équilibrer la demi-équation du couple $MnO_4^{-}/Mn^{2+}$ en milieu acide.
+      Quelle écriture est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $MnO_4^{-} + 8H^{+} + 5e^{-} \rightarrow Mn^{2+} + 4H_2O$ : éléments
+          puis charge, les deux conservations sont vérifiées
+        correct: true
+      - id: B
+        text: >-
+          $MnO_4^{-} + 8H^{+} \rightarrow Mn^{2+} + 4H_2O$, sans électrons : les
+          éléments sont conservés, cela suffit
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte
+        feedback: >
+          Les éléments sont bien conservés, mais pas la CHARGE : $-1 + 8 = +7$ à
+          gauche contre $+2$ à droite. L'écart de cinq charges positives est
+          exactement ce que comblent les cinq électrons. Les deux conservations
+          sont exigées, dans cet ordre : éléments d'abord, charge ensuite.
+      - id: C
+        text: >-
+          $MnO_4^{-} + 5e^{-} \rightarrow Mn^{2+} + 4H_2O$, les ions $H^{+}$
+          n'ayant pas à figurer
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte
+        feedback: >
+          L'oxygène n'est plus conservé : quatre atomes à gauche dans
+          $MnO_4^{-}$, et quatre molécules d'eau à droite qui en réclament autant
+          — mais l'hydrogène de ces molécules doit bien venir de quelque part.
+          En milieu acide, il vient des ions $H^{+}$, qu'on ajoute pour cela.
+      - id: D
+        text: >-
+          Peu importe l'équilibrage : ce qui compte est que toute rencontre entre
+          les entités déclenche la réaction
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.tout-choc-suffit
+        feedback: >
+          Deux questions différentes, et la seconde est fausse. L'équilibrage
+          relève du bilan de matière ; l'efficacité des chocs, de la cinétique.
+          Et toute rencontre ne déclenche rien : il y faut l'énergie et
+          l'orientation.
+    correct_feedback: >
+      $MnO_4^{-} + 8H^{+} + 5e^{-} \rightarrow Mn^{2+} + 4H_2O$. On conserve
+      d'abord les éléments — l'oxygène par l'eau, l'hydrogène par les $H^{+}$ —
+      puis la charge par les électrons : $+7$ à gauche moins $5$ donne $+2$,
+      comme à droite.
+    solution: |
+      **La méthode, dans l'ordre.**
+      1. Élément principal : $Mn$ des deux côtés. ✓
+      2. Oxygène, par des molécules d'eau : $4\,H_2O$ à droite.
+      3. Hydrogène, par des ions $H^{+}$ (milieu acide) : $8\,H^{+}$ à gauche.
+      4. Charge, par des électrons : à gauche $-1 + 8 = +7$, à droite $+2$ ;
+         il faut donc $5\,e^{-}$ à gauche.
+
+      **Le contrôle final.** Charges : $-1 + 8 - 5 = +2$ ✓. Éléments : $Mn$, $O$
+      et $H$ comptés des deux côtés ✓.
+
+  - id: TLR-26
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte
+    stem: >
+      Un élève écrit la demi-équation $I^{-} \rightarrow I_2 + e^{-}$. Que faut-il
+      corriger ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Les deux conservations : $2I^{-} \rightarrow I_2 + 2e^{-}$, l'iode et la
+          charge devant être équilibrés
+        correct: true
+      - id: B
+        text: >-
+          Rien : les éléments sont présents des deux côtés, ce qui suffit à
+          valider l'écriture
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte
+        feedback: >
+          Être présent ne suffit pas : il faut être en même NOMBRE. Un iode à
+          gauche contre deux à droite, et une charge $-1$ à gauche contre $-1$ à
+          droite alors que le nombre d'iodes diffère : les deux conservations
+          échouent.
+      - id: C
+        text: >-
+          Seulement la charge : $I^{-} \rightarrow I_2 + 2e^{-}$ suffit à
+          rétablir l'équilibre
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte
+        feedback: >
+          L'ordre des opérations est inversé. On équilibre d'abord les ÉLÉMENTS —
+          il faut deux $I^{-}$ pour former un $I_2$ — puis la charge par les
+          électrons. Corriger la charge sur une équation dont les éléments ne
+          sont pas conservés donne une écriture doublement fausse.
+      - id: D
+        text: >-
+          Rien dans l'écriture, mais il faudrait refroidir pour que la réaction
+          ait lieu, le froid augmentant l'énergie des chocs
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.temperature-concentration-confusion
+        feedback: >
+          Le froid DIMINUE l'énergie des chocs, il ne l'augmente pas — c'est pour
+          cela qu'il ralentit une transformation, et qu'on l'emploie pour la
+          bloquer lors d'une trempe. Et la question portait sur le bilan de
+          matière, non sur la cinétique.
+    correct_feedback: >
+      $2I^{-} \rightarrow I_2 + 2e^{-}$. Deux ions iodure sont nécessaires pour
+      former une molécule de diiode ; la charge suit : $-2$ à gauche, $0 - 2$ à
+      droite.
+    solution: |
+      **Étape 1 — les éléments.** $I_2$ contient deux atomes d'iode, il faut donc
+      $2\,I^{-}$ à gauche.
+
+      **Étape 2 — la charge.** À gauche $2\times(-1) = -2$ ; à droite $0$ pour
+      $I_2$. Il faut donc $2\,e^{-}$ à droite pour rétablir l'égalité.
+
+      $$2I^{-} \rightarrow I_2 + 2e^{-}$$
+
+      **La règle d'ordre.** Toujours les éléments d'abord, la charge ensuite —
+      l'inverse conduit à des écritures où les deux conservations échouent
+      simultanément.
+
+  - id: TLR-27
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.choc-une-seule-condition
+    stem: >
+      Un élève propose : « pour prouver que l'orientation compte dans un choc,
+      il suffit de comparer deux expériences, l'une à froid et diluée, l'autre à
+      chaud et concentrée ». Que penser de cette proposition ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le protocole ne prouve rien : deux facteurs varient à la fois, et ni
+          l'un ni l'autre ne mesure l'orientation des chocs
+        correct: true
+      - id: B
+        text: >-
+          Le protocole convient : il suffit qu'une des deux expériences aille
+          plus vite pour conclure, la condition d'énergie étant la seule qui
+          compte dans un choc
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.choc-une-seule-condition
+        feedback: >
+          Deux conditions gouvernent l'efficacité d'un choc : une énergie
+          suffisante ET une orientation favorable. Retenir la première seule fait
+          disparaître la question posée — et l'orientation ne se mesure pas en
+          comparant des vitesses globales.
+      - id: C
+        text: >-
+          Le protocole convient, à condition d'admettre qu'une seule mesure
+          suffit pour conclure sur l'effet d'un facteur
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.variable-non-isolee
+        feedback: >
+          Une mesure unique ne conclut sur rien : il faut comparer deux
+          expériences identiques SAUF sur le facteur étudié. Ici deux conditions
+          changent ensemble — leurs effets s'ajoutent ou se compensent sans qu'on
+          puisse les démêler.
+      - id: D
+        text: >-
+          Le protocole convient si l'on choisit une transformation rapide, plus
+          facile à suivre pendant son déroulement qu'une transformation lente
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.suivi-consequence-inversee
+        feedback: >
+          C'est l'inverse : une transformation LENTE se laisse suivre — on a le
+          temps de prélever, de doser, de mesurer. Une transformation rapide est
+          achevée avant la première mesure, et c'est pour cela qu'on recourt à la
+          trempe pour la figer.
+    correct_feedback: >
+      Le protocole échoue deux fois : il fait varier deux facteurs à la fois, et
+      aucun des deux ne teste l'orientation des chocs. Isoler une variable exige
+      deux expériences identiques sauf sur ce point.
+    solution: |
+      **Ce qu'exige une conclusion causale.** Deux expériences identiques en
+      tout, sauf sur le facteur étudié. Ici la température ET la concentration
+      changent ensemble.
+
+      **Ce que l'orientation demanderait.** Elle ne se lit pas dans une vitesse
+      globale : c'est une interprétation microscopique, appuyée sur le fait
+      qu'une fraction seulement des chocs assez énergétiques est efficace.
+
+      **Et le choix de la transformation.** Pour suivre un déroulement, on choisit
+      une transformation LENTE — c'est la condition pratique de toute mesure
+      cinétique.
+
+  - id: TLR-28
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_transformations_lentes_rapides
+    tags: []
+    primary_misconception: mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions
+    stem: >
+      Pourquoi la conductimétrie permet-elle de suivre l'avancement d'une
+      réaction en solution ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce que la conductivité dépend de la nature et de la concentration
+          des ions présents, qui changent avec l'avancement
+        correct: true
+      - id: B
+        text: >-
+          Parce qu'elle compte les ions : la conductivité est proportionnelle au
+          nombre total d'ions en solution
+          Tous les ions contribueraient donc également, quelle que soit leur nature.
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions
+        feedback: >
+          $\sigma = \sum \lambda_i [X_i]$ : chaque ion pèse selon sa conductivité
+          molaire, très différente d'une espèce à l'autre. Un simple décompte
+          prédirait une conductivité constante dans toute réaction qui remplace
+          un ion par un autre — alors que c'est justement là qu'elle varie le
+          plus.
+      - id: C
+        text: >-
+          Parce que le froid, appliqué au prélèvement, détruit les espèces
+          réactives et fige ainsi la mesure
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.froid-detruit-especes
+        feedback: >
+          La trempe ne détruit rien : elle RALENTIT la réaction au point de la
+          rendre négligeable pendant la mesure. Les espèces sont toutes
+          présentes — c'est d'ailleurs indispensable, puisqu'on veut les doser.
+          Et la conductimétrie a précisément l'avantage de se pratiquer en
+          continu, sans prélèvement.
+      - id: D
+        text: >-
+          Parce que la conductivité mesurée est la vitesse de la réaction à
+          chaque instant
+        correct: false
+        misconception: mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise
+        feedback: >
+          La conductivité décrit l'ÉTAT du mélange, comme $x(t)$ ; la vitesse est
+          la dérivée de cet état. On obtient donc la vitesse en dérivant la
+          courbe — c'est-à-dire en lisant sa pente — jamais en lisant l'ordonnée.
+    correct_feedback: >
+      La conductivité vaut $\sigma = \sum \lambda_i [X_i]$ : elle dépend à la fois
+      de la CONCENTRATION et de la NATURE des ions. Comme la réaction modifie les
+      deux, la mesure suit l'avancement — et sans prélèvement, en continu.
+    solution: |
+      **La relation.**
+      $$\sigma = \sum_i \lambda_i\,[X_i]$$
+
+      **Ce qui rend la méthode utile.** Elle est non destructive et continue :
+      la sonde reste dans le mélange, aucune trempe n'est nécessaire.
+
+      **Ce qu'il faut établir avant de l'utiliser.** La relation entre $\sigma$ et
+      l'avancement $x$, en écrivant les concentrations de chaque ion en fonction
+      de $x$. Le sens de variation en découle — il peut être croissant ou
+      décroissant selon les conductivités molaires en jeu.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après TLR-19 à TLR-28. Douze familles siégeaient sous
+# le plancher de 3 items du banc, dont TROIS sans aucun item de banc —
+# `conductance-nombre-d-ions`, `t-demi-mauvaise-def` et
+# `vitesse-pente-mauvaise`, sondées en leçon seulement, ce qui ne compte pas
+# dans le modèle apprenant. Tableau GÉNÉRÉ contre
+# web/scripts/lib/couverture-compte.mjs, gardé par
+# web/scripts/resume-couverture.mjs.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.physics.pc_transformations_lentes_rapides.famille-fixe-vitesse:                { count: 3, items: [TLR-1, TLR-7, TLR-8] }
+    mc.physics.pc_transformations_lentes_rapides.rapide-lente-absolu:                 { count: 4, items: [TLR-1, TLR-7, TLR-9, TLR-10] }
+    mc.physics.pc_transformations_lentes_rapides.critere-temps-inverse:               { count: 3, items: [TLR-1, TLR-13, TLR-18] }
+    mc.physics.pc_transformations_lentes_rapides.suivi-consequence-inversee:          { count: 3, items: [TLR-11, TLR-19, TLR-27] }
+    mc.physics.pc_transformations_lentes_rapides.changer-condition-change-nature:     { count: 4, items: [TLR-3, TLR-9, TLR-10, TLR-18] }
+    mc.physics.pc_transformations_lentes_rapides.facteur-mauvais-sens:                { count: 3, items: [TLR-3, TLR-14, TLR-21] }
+    mc.physics.pc_transformations_lentes_rapides.facteur-sans-effet:                  { count: 4, items: [TLR-3, TLR-4, TLR-15, TLR-18] }
+    mc.physics.pc_transformations_lentes_rapides.froid-detruit-especes:               { count: 4, items: [TLR-4, TLR-17, TLR-23, TLR-28] }
+    mc.physics.pc_transformations_lentes_rapides.froid-baisse-concentration:          { count: 3, items: [TLR-4, TLR-17, TLR-22] }
+    mc.physics.pc_transformations_lentes_rapides.tout-choc-suffit:                    { count: 4, items: [TLR-5, TLR-15, TLR-24, TLR-25] }
+    mc.physics.pc_transformations_lentes_rapides.choc-une-seule-condition:            { count: 3, items: [TLR-5, TLR-24, TLR-27] }
+    mc.physics.pc_transformations_lentes_rapides.temperature-concentration-confusion: { count: 4, items: [TLR-6, TLR-17, TLR-24, TLR-26] }
+    mc.physics.pc_transformations_lentes_rapides.variable-non-isolee:                 { count: 3, items: [TLR-8, TLR-23, TLR-27] }
+    mc.physics.pc_transformations_lentes_rapides.redox-conservation-incorrecte:       { count: 3, items: [TLR-12, TLR-25, TLR-26] }
+    mc.physics.pc_transformations_lentes_rapides.redox-combinaison-incorrecte:        { count: 3, items: [TLR-2, TLR-13, TLR-16] }
+    mc.physics.pc_transformations_lentes_rapides.conductance-nombre-d-ions:           { count: 3, items: [TLR-21, TLR-22, TLR-28] }
+    mc.physics.pc_transformations_lentes_rapides.t-demi-mauvaise-def:                 { count: 3, items: [TLR-19, TLR-20, TLR-23] }
+    mc.physics.pc_transformations_lentes_rapides.vitesse-pente-mauvaise:              { count: 4, items: [TLR-20, TLR-21, TLR-22, TLR-28] }
+  total_items: 28
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 6
+    R2: 4
+    R3: 6
+    R4: 6
+    R5: 3
+  honest_state: >-
+    Les dix-huit misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Onze y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

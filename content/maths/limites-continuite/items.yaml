@@ -1,0 +1,2213 @@
+notion: limites-continuite
+skill_code: maths_limites_continuite
+misconceptions:
+  # Ajout ciblé (pass "limites de fonctions trigonométriques", nouveau R6).
+  # Ces 5 entrées couvrent les items LIMCONT-22 à LIMCONT-26 ajoutés lors de
+  # cette passe, qui les référencent via primary_misconception /
+  # choices[].misconception. NE PAS MODIFIER LIMCONT-22 à LIMCONT-26 (déjà
+  # entièrement tagués) dans les passes suivantes.
+  #
+  # Passe summit-conversion (backfill R0-R5) : les 8 entrées suivant les 5
+  # ci-dessus étendent l'inventaire pour couvrir LIMCONT-1 à LIMCONT-21 — la
+  # banque pré-existante, rédigée avant que cet inventaire n'existe. Suivant
+  # le précédent `content/pc/rc-charge/items.yaml` (backfill du pilote PC) :
+  # chaque item LIMCONT-1..21 reçoit un `primary_misconception` (comptage
+  # item-level pour le floor, cf. `coverage_summary` en fin de fichier) et
+  # chaque distractor reçoit un `misconception:` — une valeur réelle, ou
+  # `null` quand l'erreur est une glissade arithmétique/technique sans
+  # modèle conceptuel stable (le champ reste présent : c'est le diagnostic
+  # « non conceptuel », pas une case vide).
+  - id: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
+    label: "La forme 0/0 d'une limite trigonométrique de référence se traite comme n'importe quelle autre forme indéterminée"
+    description: >-
+      Face à la forme $0/0$ obtenue en substituant $x=0$ dans $\sin(x)/x$,
+      $\tan(x)/x$ ou $\dfrac{1-\cos x}{x^2}$, l'élève ne reconnaît pas qu'il
+      s'agit d'une limite de référence admise, et retombe sur un réflexe
+      erroné : conclure que la limite vaut $0$ (lecture littérale de
+      « 0/0 »), conclure qu'elle n'existe pas (en essayant d'appliquer la
+      factorisation du chapitre 4 à une expression non polynomiale), ou confondre
+      « forme indéterminée » avec « nécessairement infinie ou inexistante ».
+    contradicts_principle: >-
+      $\lim_{x\to 0}\frac{\sin x}{x}=1$ est une limite de RÉFÉRENCE, établie
+      une fois pour toutes par un argument géométrique et admise au
+      programme — pas par factorisation algébrique (le R3 ne s'applique
+      qu'aux polynômes et racines). La forme $0/0$ qu'on obtient en
+      substituant ne signale donc pas un blocage à résoudre par les
+      techniques déjà vues : c'est le signal qu'il faut invoquer directement
+      le résultat de référence (éventuellement après une substitution).
+
+  - id: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
+    label: "Confusion sur la condition « l'argument doit tendre vers 0 »"
+    description: >-
+      L'élève applique une limite trigonométrique de référence sans vérifier
+      que l'expression À L'INTÉRIEUR de sin, tan ou cos tend effectivement
+      vers $0$ — soit en l'appliquant alors que ce n'est pas le cas (motif
+      visuel « sin / quelque chose » repéré sans vérification), soit, à
+      l'inverse, en croyant qu'une substitution valide (par exemple $u=x-a$
+      quand $x\to a$) laisse malgré tout le résultat dépendant du paramètre
+      de décalage utilisé pour la construire ; ou, une fois correctement
+      redirigé vers les tableaux du chapitre 3, en oubliant d'étudier le signe du
+      dénominateur des deux côtés.
+    contradicts_principle: >-
+      La condition d'application est unique et non négociable : SEUL compte
+      le fait que l'expression entre les parenthèses de sin/tan/cos
+      (l'« argument ») tende vers $0$. Si $u\to 0$, alors
+      $\frac{\sin u}{u}\to 1$ — quelle que soit la façon dont $u$ est
+      construite, et le résultat ne garde AUCUNE trace du paramètre utilisé
+      pour construire $u$. Si l'argument ne tend PAS vers $0$, le formulaire
+      ne s'applique pas du tout : il faut revenir aux outils généraux (R2),
+      en étudiant le signe des deux côtés comme pour toute limite infinie.
+
+  - id: mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste
+    label: "On ne réajuste pas le coefficient quand l'argument est k·x"
+    description: >-
+      Pour une limite du type $\lim_{x\to 0}\frac{\sin(kx)}{x}$ ($k\neq 1$),
+      l'élève repère le motif « sin(quelque chose)/quelque chose » et répond
+      directement $1$, sans réécrire l'expression pour faire apparaître
+      EXACTEMENT le même argument au numérateur et au dénominateur ($kx$, et
+      non $x$) ; ou, à l'inverse, sur-corrige et multiplie par $k^2$ au lieu
+      de $k$.
+    contradicts_principle: >-
+      La limite de référence exige que l'argument de $\sin$ (ou $\tan$) soit
+      RIGOUREUSEMENT identique à ce qui divise. Pour
+      $\lim_{x\to 0}\frac{\sin(kx)}{x}$, il faut multiplier et diviser par
+      $k$ pour faire apparaître $\frac{\sin(kx)}{kx}$ :
+      $\frac{\sin(kx)}{x} = k \times \frac{\sin(kx)}{kx} \to k \times 1 = k$.
+      Le facteur à sortir est $k$, une seule fois — ni $1$ (oublié), ni
+      $k^2$ (sur-corrigé).
+
+  - id: mc.math.maths_limites_continuite.trig-toutes-limites-valent-1
+    label: "Toutes les limites trigonométriques de référence valent 1"
+    description: >-
+      L'élève généralise à outrance et attribue la valeur $1$ à toute
+      limite trigonométrique de référence, y compris
+      $\lim_{x\to 0}\frac{1-\cos x}{x^2}$, qui vaut en réalité $\frac12$ —
+      en oubliant le rôle du carré au dénominateur et le facteur
+      $\frac{1}{1+\cos x}$ qui apparaît dans sa dérivation.
+    contradicts_principle: >-
+      Chaque limite de référence a sa propre valeur, liée à sa propre
+      structure : $\lim\frac{\sin x}{x}=1$, $\lim\frac{\tan x}{x}=1$, mais
+      $\lim\frac{1-\cos x}{x^2}=\frac12$. Ce dernier résultat se déduit du
+      premier par multiplication par le conjugué $1+\cos x$ (identité
+      $1-\cos^2 x=\sin^2 x$), ce qui fait apparaître un facteur
+      $\frac{1}{1+\cos x}\to\frac12$ — ce n'est pas une coquille, c'est une
+      conséquence directe du carré au dénominateur.
+
+  - id: mc.math.maths_limites_continuite.trig-1-moins-cos-signe-confondu
+    label: "Confusion de signe entre (1 − cos x) et (cos x − 1)"
+    description: >-
+      L'élève permute l'ordre de la soustraction dans
+      $\lim_{x\to 0}\frac{1-\cos x}{x^2}=\frac12$, ou n'est pas certain du
+      signe du résultat, et répond $-\frac12$ (le résultat correct pour
+      $\lim_{x\to 0}\frac{\cos x - 1}{x^2}$, l'expression aux signes
+      inversés).
+    contradicts_principle: >-
+      $1-\cos x \geq 0$ au voisinage de $0$ (car $\cos x \leq 1$), et
+      $x^2 \geq 0$ toujours : le quotient $\frac{1-\cos x}{x^2}$ est donc
+      TOUJOURS positif ou nul près de $0$, et sa limite ne peut pas être
+      négative. Inverser l'ordre de la soustraction inverse le signe du
+      résultat — il faut vérifier lequel des deux, $1-\cos x$ ou
+      $\cos x - 1$, est réellement au numérateur avant de citer la valeur
+      de référence.
+
+  # Backfill summit-conversion (R0-R5), 8 nouveaux modèles pour LIMCONT-1..21.
+
+  - id: mc.math.maths_limites_continuite.confond-point-et-voisinage
+    label: "Confond ce qui se passe AU point avec ce qui se passe PRÈS du point"
+    description: >-
+      L'élève traite une propriété de la valeur en un point $a$ (ce que
+      vaut $f(a)$, ou le fait que $f(a)$ n'existe pas) comme si elle
+      renseignait directement sur la limite de $f$ quand $x$ tend vers $a$
+      — ou inversement, recopie une observation sur le voisinage de $a$
+      (une tendance numérique, la valeur cible de $x$ lui-même) comme si
+      elle donnait la valeur de $f$ en $a$. Se manifeste aussi en lisant la
+      mauvaise colonne d'un tableau de valeurs, ou en substituant dans une
+      formule redéfinie en un point pour "obtenir" la limite.
+    contradicts_principle: >-
+      La limite de $f$ en $a$ décrit le comportement de $f(x)$ quand $x$
+      s'approche de $a$ SANS jamais valoir $a$ ; elle est totalement
+      indépendante de ce que vaut (ou ne vaut pas) $f(a)$ lui-même. Une
+      fonction peut avoir un trou en $a$ et une limite parfaitement définie
+      autour ($f(x)=\frac{x^2-1}{x-1}$ en $x=1$, R0) ; à l'inverse, $f(a)$
+      peut exister sans que la limite existe (R1, exemple par morceaux).
+      Les deux questions ne se répondent jamais l'une par l'autre.
+
+  - id: mc.math.maths_limites_continuite.limite-laterale-non-verifiee
+    label: "Conclut sur une limite bilatérale sans comparer les deux limites latérales"
+    description: >-
+      Face à une fonction définie par morceaux, l'élève ne calcule qu'une
+      des deux limites latérales et la prend pour LA limite (en oubliant
+      l'autre côté), ou invente une opération (typiquement une moyenne)
+      pour combiner deux limites latérales différentes plutôt que de
+      conclure que la limite bilatérale n'existe pas.
+    contradicts_principle: >-
+      $\lim_{x\to a} f(x)$ existe si et seulement si les limites à gauche
+      et à droite existent ET sont ÉGALES. Si elles diffèrent, il n'y a ni
+      moyenne ni compromis à calculer : la limite bilatérale n'existe
+      simplement pas — c'est un fait sur la fonction, pas une étape
+      incomplète du calcul.
+
+  - id: mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee
+    label: "Étiquette une combinaison DÉTERMINÉE comme une forme indéterminée"
+    description: >-
+      Dès qu'un $\infty$ apparaît dans un calcul de limite, l'élève
+      déclare la situation « indéterminée » et refuse de conclure — même
+      quand la combinaison n'est PAS l'une des quatre formes réellement
+      indéterminées (par exemple : fini $+\infty$, $0\times$fini-non-nul,
+      fini-non-nul$/0$, ou un produit/quotient où un seul facteur est
+      infini et l'autre fini non nul).
+    contradicts_principle: >-
+      Seules quatre combinaisons sont indéterminées :
+      $+\infty-\infty$, $0\times\infty$, $\frac{0}{0}$, $\frac{\infty}{\infty}$.
+      Toute autre combinaison impliquant l'infini se résout directement par
+      les tableaux d'opérations du R2 (par exemple, fini non nul divisé par
+      $0$ donne un résultat infini DÉTERMINÉ, pas une forme indéterminée).
+      Il faut vérifier que la combinaison correspond EXACTEMENT à l'une des
+      quatre avant de la déclarer indéterminée.
+
+  - id: mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale
+    label: "Traite une forme indéterminée comme si elle désignait déjà un nombre"
+    description: >-
+      L'élève lit une forme indéterminée ($\frac{0}{0}$, ou un produit/
+      quotient d'infinis non encore retravaillé) comme si elle encodait
+      directement une réponse numérique — le plus souvent « $0$ », parfois
+      une « convention » inventée (« $\frac{0}{0}=1$ »), ou conclut
+      directement sur une forme $\frac{\infty}{\infty}$ sans factoriser le
+      terme dominant.
+    contradicts_principle: >-
+      Une forme indéterminée n'est PAS une valeur : c'est un signal qui dit
+      « retravaille l'expression avant de conclure » (factorisation,
+      conjugué, terme dominant — R3). $\frac{0}{0}$ n'est ni $0$, ni $1$,
+      ni rien d'autre tant que l'expression n'a pas été retravaillée ; deux
+      expressions à la même forme symbolique peuvent avoir des limites
+      totalement différentes (R2 : $x^2-x$, $x-x^2$ et $(x+5)-x$, tous en
+      $\infty-\infty$, donnent $+\infty$, $-\infty$ et $5$).
+
+  - id: mc.math.maths_limites_continuite.definition-continuite-mal-appliquee
+    label: "Applique mal la définition en trois conditions de la continuité en un point"
+    description: >-
+      L'élève traite une SEULE des trois conditions de continuité
+      ($f(a)$ existe ; $\lim_{x\to a}f(x)$ existe ; les deux sont égales)
+      comme suffisante — par exemple en pensant qu'un changement de
+      formule dans une fonction par morceaux rend automatiquement la
+      fonction discontinue, qu'une limite infinie « compte » comme
+      continue, qu'une fonction rationnelle est continue partout sans
+      restriction de domaine, ou en vérifiant que $f(a)$ et la limite
+      existent séparément sans vérifier qu'ils sont ÉGAUX.
+    contradicts_principle: >-
+      $f$ est continue en $a$ si et seulement si les TROIS conditions sont
+      vraies EN MÊME TEMPS : $f(a)$ existe, $\lim_{x\to a}f(x)$ existe (et
+      est FINIE), et les deux sont égales. Chacune peut échouer
+      indépendamment des autres ; une seule qui échoue suffit à briser la
+      continuité. Un changement de formule en un point de jonction n'est ni
+      une garantie de continuité ni de discontinuité — il FAUT vérifier les
+      trois conditions à ce point précis, dans un sens comme dans l'autre.
+
+  - id: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+    label: "Mécomprend ce que le TVI exige ou ce qu'il garantit"
+    description: >-
+      L'élève surinterprète ou sous-interprète le théorème des valeurs
+      intermédiaires : conclut à l'unicité d'une solution sans avoir
+      vérifié la stricte monotonie, applique le théorème à une valeur $k$
+      qui n'est pas comprise entre $f(a)$ et $f(b)$, pense qu'il faut
+      connaître la valeur de $f$ en un point intérieur, ignore que la
+      continuité doit être vérifiée (pas seulement les signes aux bornes),
+      croit qu'une équation $f(x)=k$ n'a jamais plus d'une solution « par
+      définition de fonction », compte un point de jonction comme une
+      solution supplémentaire sans vérifier qu'il en est une, ou pense que
+      le TVI exige une expression algébrique explicite de $f$.
+    contradicts_principle: >-
+      Le TVI garantit l'EXISTENCE d'au moins une solution à $f(x)=k$ dans
+      $[a,b]$ dès que $f$ est CONTINUE sur $[a,b]$ et que $k$ est compris
+      entre $f(a)$ et $f(b)$ — rien de plus, et rien de moins : il ne
+      nécessite ni formule explicite ni valeur intérieure, mais il exige
+      la continuité, pas seulement des signes opposés. L'UNICITÉ n'est
+      acquise qu'en ajoutant la stricte monotonie de $f$ sur l'intervalle
+      considéré ; sans elle, plusieurs solutions distinctes restent
+      possibles, une par intervalle de monotonie où $k$ est atteint.
+
+  - id: mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee
+    label: "Identifie mal une asymptote verticale issue d'une limite infinie en un point"
+    description: >-
+      Face à $\lim_{x\to a} f(x) = \pm\infty$ (avec $a$ fini), l'élève
+      écrit l'équation de l'asymptote sous la forme $y=a$ (comme pour une
+      asymptote horizontale) au lieu de $x=a$, ou pense qu'il faut en plus
+      connaître le comportement de $f$ à $\pm\infty$ pour conclure à
+      l'existence de cette asymptote verticale.
+    contradicts_principle: >-
+      Une limite infinie EN UN POINT FINI $a$ suffit, à elle seule, à
+      garantir une asymptote VERTICALE d'équation $x=a$ — une droite
+      verticale, jamais horizontale. C'est un phénomène local, entièrement
+      indépendant du comportement de $f$ à l'infini (qui, lui, peut donner
+      une asymptote horizontale ou une branche infinie, mais c'est une
+      question séparée).
+
+  - id: mc.math.maths_limites_continuite.parite-signe-terme-dominant-mal-geree
+    label: "Mésgère la parité d'un exposant ou le signe d'un coefficient dominant à l'infini"
+    description: >-
+      En étudiant une limite de puissance ou de polynôme à l'infini,
+      l'élève traite $x^n$ comme toujours positif quelle que soit la
+      parité de $n$, confond $\lim x^n$ avec $\lim 1/x^n$, perd le signe
+      d'un coefficient dominant négatif en factorisant, ou conclut le
+      signe d'un produit de limites sans suivre le signe réel de chaque
+      facteur (par exemple en affirmant qu'un produit de limites est «
+      toujours positif »).
+    contradicts_principle: >-
+      Une puissance PAIRE de $x$ est toujours positive, mais une puissance
+      IMPAIRE garde le signe de $x$ : $\lim_{x\to-\infty}x^n=-\infty$ si
+      $n$ est impair. En factorisant un terme dominant à coefficient
+      négatif ($-x^3$ par exemple), ce signe négatif doit être conservé
+      dans le facteur constant qui subsiste. Le signe d'un produit de
+      limites se détermine en multipliant les signes des facteurs, jamais
+      par défaut.
+
+items:
+  - id: LIMCONT-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_limites_continuite
+    tags: ["limite-en-un-point", "limites-laterales"]
+    primary_misconception: mc.math.maths_limites_continuite.limite-laterale-non-verifiee
+    stem: >
+      Soit $f$ définie par $f(x) = 3x - 1$ si $x < 2$ et $f(x) = x^2$ si
+      $x \geq 2$. Que peut-on dire de $\lim_{x \to 2} f(x)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La limite n'existe pas, car les limites à gauche et à droite sont différentes ($5 \\neq 4$)."
+        correct: true
+      - id: B
+        text: "$\\lim_{x \\to 2} f(x) = 4$, car $f(2) = 4$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.confond-point-et-voisinage
+        feedback: >
+          Tu confonds la valeur $f(2)$ (l'image du point) avec la limite en ce
+          point. L'existence d'une limite se vérifie en étudiant le
+          comportement de $f$ quand $x$ s'approche de $2$ des deux côtés — pas
+          en relisant simplement la formule qui définit $f(2)$.
+      - id: C
+        text: "$\\lim_{x \\to 2} f(x) = 5$, car on approche par la gauche seulement."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.limite-laterale-non-verifiee
+        feedback: >
+          Tu n'as calculé que la limite à gauche ($3(2)-1=5$) et tu l'as prise
+          pour LA limite. Une limite bilatérale exige de vérifier aussi la
+          limite à droite — ici elle vaut $4$, donc différente, et la
+          conclusion change complètement.
+      - id: D
+        text: "$\\lim_{x \\to 2} f(x) = 4{,}5$, car on fait la moyenne des deux limites latérales."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.limite-laterale-non-verifiee
+        feedback: >
+          Il n'existe aucune règle qui autorise à "faire la moyenne" de deux
+          limites latérales différentes. Quand elles diffèrent, la conclusion
+          est simplement que la limite n'existe pas — il n'y a pas de valeur
+          de compromis à calculer.
+    correct_feedback: >
+      Exactement : la limite à gauche vaut $\lim_{x\to 2^-}(3x-1)=5$, la limite
+      à droite vaut $\lim_{x\to 2^+} x^2 = 4$. Comme $5 \neq 4$, la limite en
+      $2$ n'existe pas — même si $f(2)=4$ est parfaitement défini par
+      ailleurs.
+    solution: |
+      **Limite à gauche** (formule $x<2$) :
+      $$\lim_{x \to 2^{-}} (3x-1) = 3(2)-1 = 5$$
+      **Limite à droite** (formule $x \geq 2$) :
+      $$\lim_{x \to 2^{+}} x^2 = 2^2 = 4$$
+      Les deux limites latérales sont différentes ($5 \neq 4$), donc
+      $\lim_{x \to 2} f(x)$ n'existe pas.
+
+  - id: LIMCONT-2
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: ["operations-sur-les-limites", "forme-indeterminee"]
+    primary_misconception: mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee
+    stem: >
+      Parmi les quatre situations suivantes (avec $x \to +\infty$), laquelle
+      correspond à une **forme indéterminée** ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\lim f = 3$ et $\\lim g = +\\infty$ ; on calcule $\\lim (f+g)$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee
+        feedback: >
+          Ce n'est pas une forme indéterminée : "nombre fini plus l'infini"
+          donne toujours l'infini ($3+\infty=+\infty$). Le simple fait qu'un
+          $\infty$ apparaisse dans le calcul ne rend pas automatiquement la
+          situation indéterminée.
+      - id: B
+        text: "$\\lim f = +\\infty$ et $\\lim g = -\\infty$ ; on calcule $\\lim (f+g)$."
+        correct: true
+      - id: C
+        text: "$\\lim f = 0$ et $\\lim g = 5$ ; on calcule $\\lim (f \\times g)$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee
+        feedback: >
+          Ce n'est pas une forme indéterminée : $g$ tend vers un nombre fini
+          ($5$), pas vers l'infini. $0 \times 5 = 0$ directement. La forme
+          indéterminée $0 \times \infty$ exige que l'AUTRE facteur tende
+          vraiment vers l'infini, pas vers un nombre fini.
+      - id: D
+        text: "$\\lim f = 2$ et $\\lim g = 0^{+}$ ; on calcule $\\lim (f/g)$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee
+        feedback: >
+          Ce n'est pas la forme indéterminée $\frac{0}{0}$ : le numérateur
+          tend vers $2$, pas vers $0$. C'est le cas "nombre non nul divisé par
+          $0$", qui donne un résultat infini (ici $+\infty$, vu le signe donné)
+          — une limite infinie déterminée, pas une forme indéterminée.
+    correct_feedback: >
+      Oui : additionner $+\infty$ et $-\infty$ met en jeu deux infinis de
+      signes opposés, et c'est précisément le cas où la règle générale ne
+      suffit pas — il faut retravailler l'expression (voir le chapitre 4) avant de
+      conclure.
+    solution: |
+      Les quatre formes indéterminées du programme sont : $+\infty-\infty$,
+      $0 \times \infty$, $\frac{0}{0}$, $\frac{\infty}{\infty}$. Seule la
+      situation B ($+\infty$ additionné à $-\infty$) correspond à l'une
+      d'elles. Les trois autres se résolvent directement par les tableaux du
+      chapitre 3.
+
+  - id: LIMCONT-3
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: maths_limites_continuite
+    tags: ["forme-indeterminee", "factorisation"]
+    primary_misconception: mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale
+    stem: >
+      Calculer $\lim_{x \to 3} \dfrac{x^2 - 9}{x - 3}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$6$"
+        correct: true
+      - id: B
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale
+        feedback: >
+          Tu as sans doute lu la forme $\frac{0}{0}$ obtenue en remplaçant $x$
+          par $3$ directement, et conclu "$0$" par réflexe. Une forme
+          $\frac{0}{0}$ n'est pas égale à $0$ — c'est un signal qu'il faut
+          factoriser avant de conclure quoi que ce soit.
+      - id: C
+        text: "La limite n'existe pas, car on divise par $0$ en $x=3$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.confond-point-et-voisinage
+        feedback: >
+          Tu confonds "la fonction n'est pas définie en $3$" (vrai) avec "la
+          limite n'existe pas quand $x$ s'approche de $3$" (faux ici).
+          Justement, factoriser permet de voir ce qui se passe tout PRÈS de
+          $3$, sans jamais évaluer EN $3$.
+      - id: D
+        text: "$3$"
+        correct: false
+        misconception: null
+        feedback: >
+          Erreur de factorisation : $x^2-9 = (x-3)(x+3)$, pas $(x-3) \times x$.
+          En simplifiant par $(x-3)$, il reste $x+3$ — pas $x$ seul — et c'est
+          $x+3$ qu'il faut évaluer en $3$.
+    correct_feedback: >
+      Bien vu : $x^2-9=(x-3)(x+3)$, on simplifie par $(x-3)$ car $x \neq 3$
+      pendant le calcul de la limite, il reste $x+3$, et $\lim_{x\to 3}(x+3)=6$.
+    solution: |
+      $$\frac{x^2-9}{x-3} = \frac{(x-3)(x+3)}{x-3} = x+3 \quad (x \neq 3)$$
+      $$\lim_{x \to 3} (x+3) = 6$$
+
+  - id: LIMCONT-4
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: maths_limites_continuite
+    tags: ["forme-indeterminee", "quotient-conjugue"]
+    primary_misconception: mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale
+    stem: >
+      Calculer $\lim_{x \to 0} \dfrac{\sqrt{x+4}-2}{x}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{1}{4}$"
+        correct: true
+      - id: B
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale
+        feedback: >
+          Tu as substitué directement dans la forme $\frac{0}{0}$ et conclu
+          "$0$". Une forme $\frac{0}{0}$ signale qu'il faut retravailler
+          l'expression (ici, multiplier par le conjugué) avant de pouvoir
+          conclure — elle ne vaut jamais $0$ par défaut.
+      - id: C
+        text: "$1$"
+        correct: false
+        misconception: null
+        feedback: >
+          Tu as sans doute multiplié le numérateur par le conjugué
+          ($\sqrt{x+4}+2$) mais oublié de multiplier aussi le dénominateur par
+          la même quantité. Le conjugué doit multiplier haut ET bas, sinon
+          l'expression change de valeur.
+      - id: D
+        text: "$\\dfrac{1}{2}$"
+        correct: false
+        misconception: null
+        feedback: >
+          C'est le résultat d'un autre exemple de la leçon
+          ($\lim_{x\to 0}\frac{\sqrt{x+1}-1}{x}$), recopié sans refaire le
+          calcul avec les nouvelles valeurs. Ici la fonction est différente
+          ($\sqrt{x+4}-2$, pas $\sqrt{x+1}-1$) : il faut reprendre la
+          technique du conjugué depuis le début avec ces nombres précis.
+    correct_feedback: >
+      Exact : en multipliant par le conjugué $\sqrt{x+4}+2$ (haut et bas), le
+      numérateur devient $(x+4)-4=x$, qui se simplifie avec le $x$ du
+      dénominateur, et il reste $\frac{1}{\sqrt{x+4}+2}$, qui vaut
+      $\frac{1}{4}$ en $x=0$.
+    solution: |
+      $$\frac{\sqrt{x+4}-2}{x} = \frac{(\sqrt{x+4}-2)(\sqrt{x+4}+2)}{x(\sqrt{x+4}+2)}$$
+      $$= \frac{(x+4)-4}{x(\sqrt{x+4}+2)} = \frac{x}{x(\sqrt{x+4}+2)}$$
+      $$= \frac{1}{\sqrt{x+4}+2} \quad (x \neq 0)$$
+      $$\lim_{x \to 0} \frac{1}{\sqrt{x+4}+2} = \frac{1}{2+2} = \frac{1}{4}$$
+
+  - id: LIMCONT-5
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: maths_limites_continuite
+    tags: ["continuite"]
+    primary_misconception: mc.math.maths_limites_continuite.definition-continuite-mal-appliquee
+    stem: >
+      Soit $g$ définie par $g(x) = x^2+1$ si $x \leq 1$ et $g(x) = 3x-1$ si
+      $x>1$. La fonction $g$ est-elle continue en $x=1$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, car $g(1) = 2$ et les limites à gauche et à droite valent toutes les deux $2$."
+        correct: true
+      - id: B
+        text: "Non, car $g$ est définie par deux formules différentes de part et d'autre de $1$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.definition-continuite-mal-appliquee
+        feedback: >
+          Le simple fait qu'une fonction change de formule en un point ne la
+          rend pas automatiquement discontinue là. Ce qui compte, c'est si les
+          valeurs se raccordent (valeur, limite à gauche, limite à droite
+          toutes égales) — et ici, il se trouve qu'elles se raccordent.
+      - id: C
+        text: "On ne peut pas savoir sans calculer la dérivée de $g$ en $1$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.definition-continuite-mal-appliquee
+        feedback: >
+          La continuité se vérifie avec la définition
+          $\lim_{x\to a} f(x) = f(a)$ — elle ne nécessite aucun calcul de
+          dérivée. La dérivabilité est une notion différente, plus exigeante,
+          qui n'est pas requise ici.
+      - id: D
+        text: "Non, car $g(1)$ n'est défini que par une seule des deux formules, donc la limite n'existe pas."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.definition-continuite-mal-appliquee
+        feedback: >
+          Que $g(1)$ provienne d'une seule formule (celle valable pour
+          $x \leq 1$) n'empêche pas de calculer les deux limites latérales
+          séparément à partir de chaque branche. Ici, les deux limites
+          latérales existent et coïncident avec $g(1)$ — rien n'empêche la
+          continuité.
+    correct_feedback: >
+      Confirmé : $g(1)=1^2+1=2$, $\lim_{x\to 1^-}(x^2+1)=2$, et
+      $\lim_{x\to 1^+}(3x-1)=2$. Les trois quantités valent $2$ : les trois
+      conditions de la continuité sont réunies.
+    solution: |
+      $$g(1) = 1^2+1 = 2$$
+      $$\lim_{x \to 1^{-}} (x^2+1) = 1^2+1 = 2$$
+      $$\lim_{x \to 1^{+}} (3x-1) = 3(1)-1 = 2$$
+      Les trois valeurs coïncident ($2=2=2$), donc $g$ est continue en $1$.
+
+  - id: LIMCONT-6
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: ["tvi", "existence-de-solution"]
+    primary_misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+    stem: >
+      Une fonction $h$ est continue sur $[1,5]$, avec $h(1) = 2$ et
+      $h(5) = -3$. Que peut-on affirmer avec certitude grâce au théorème des
+      valeurs intermédiaires ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'équation $h(x) = 0$ admet au moins une solution dans $]1,5[$."
+        correct: true
+      - id: B
+        text: "L'équation $h(x) = 0$ admet exactement une solution dans $]1,5[$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+        feedback: >
+          Le TVI garantit l'existence, jamais l'unicité, sauf information
+          supplémentaire. Ici, aucune monotonie stricte de $h$ n'est donnée —
+          on ne peut donc affirmer que l'existence d'au moins une solution,
+          pas son unicité.
+      - id: C
+        text: "L'équation $h(x) = 4$ admet au moins une solution dans $]1,5[$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+        feedback: >
+          Le TVI ne s'applique qu'aux valeurs $k$ comprises ENTRE $h(1)$ et
+          $h(5)$. Ici $h(1)=2$ et $h(5)=-3$, donc $k$ doit être compris entre
+          $-3$ et $2$. La valeur $4$ n'est pas dans cet intervalle : le
+          théorème ne dit rien sur $h(x)=4$.
+      - id: D
+        text: "On ne peut rien affirmer, car on ne connaît pas $h(3)$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+        feedback: >
+          C'est justement l'intérêt du théorème : il ne nécessite de connaître
+          $f$ qu'aux deux bornes de l'intervalle (plus sa continuité) pour
+          garantir un résultat sur l'intérieur, sans jamais évaluer $h$ en un
+          point intermédiaire.
+    correct_feedback: >
+      Oui : $0$ est bien compris entre $h(5)=-3$ et $h(1)=2$, et $h$ est
+      continue sur $[1,5]$. Le corollaire du TVI garantit donc au moins une
+      solution à $h(x)=0$ dans $]1,5[$ — sans rien affirmer de plus sur son
+      unicité.
+    solution: |
+      $h$ est continue sur $[1,5]$, $h(1)=2>0$ et $h(5)=-3<0$ : les signes
+      sont opposés, donc $0$ est compris entre les deux valeurs. Par le
+      corollaire du théorème des valeurs intermédiaires, l'équation $h(x)=0$
+      admet au moins une solution dans $]1,5[$. Rien n'est dit sur l'unicité,
+      faute d'information sur la monotonie de $h$.
+
+  - id: LIMCONT-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_limites_continuite
+    tags: ["lecture-tableau", "limite-intuitive"]
+    primary_misconception: mc.math.maths_limites_continuite.confond-point-et-voisinage
+    stem: >
+      Reprends le tableau de valeurs de l'accroche (chapitre 1) pour
+      $f(x)=\dfrac{x^2-1}{x-1}$ : pour $x=0{,}9$, $0{,}99$, $0{,}999$, on a
+      $f(x)=1{,}9$, $1{,}99$, $1{,}999$ ; pour $x=1{,}001$, $1{,}01$,
+      $1{,}1$, on a $f(x)=2{,}001$, $2{,}01$, $2{,}1$. Que suggère ce
+      tableau pour $\lim_{x \to 1} f(x)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\lim_{x \\to 1} f(x) = 1$, car c'est la valeur vers laquelle $x$ se rapproche."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.confond-point-et-voisinage
+        feedback: >
+          Tu as lu la colonne des $x$ (qui se rapproche bien de $1$) au lieu
+          de la colonne des $f(x)$. La limite porte sur ce que fait $f(x)$,
+          pas sur la valeur de $x$ elle-même — et $f(x)$ se rapproche de
+          $2$, pas de $1$.
+      - id: B
+        text: "$\\lim_{x \\to 1} f(x) = 2$ : les deux colonnes de $f(x)$ se resserrent vers $2$, aussi bien par la gauche que par la droite."
+        correct: true
+      - id: C
+        text: "$\\lim_{x \\to 1} f(x)$ n'existe pas, car $f(1)$ n'est pas défini."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.confond-point-et-voisinage
+        feedback: >
+          Tu confonds deux choses différentes : que $f(1)$ n'existe pas
+          (vrai, on tombe sur $\frac{0}{0}$) ne dit rien sur ce qui se
+          passe tout PRÈS de $1$. Le tableau montre justement que $f(x)$ se
+          comporte parfaitement bien autour de $1$, en se resserrant vers
+          $2$, même si le point $x=1$ lui-même manque.
+      - id: D
+        text: "$\\lim_{x \\to 1} f(x) = 2{,}1$, car c'est la valeur la plus proche visible dans le tableau du côté droit."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.confond-point-et-voisinage
+        feedback: >
+          $2{,}1$ n'est qu'une des valeurs du tableau, obtenue pour
+          $x=1{,}1$ — pas la valeur limite. Il faut regarder la TENDANCE de
+          toute la colonne ($2{,}1$, puis $2{,}01$, puis $2{,}001$...), qui
+          se resserre vers $2$, pas s'arrêter à la première valeur lue.
+    correct_feedback: >
+      Exactement : les deux colonnes de $f(x)$ se resserrent vers le même
+      nombre, $2$, quand $x$ se rapproche de $1$ par la gauche et par la
+      droite. C'est ce resserrement, et non une valeur isolée du tableau,
+      qui définit la limite.
+    solution: |
+      La colonne de gauche ($1{,}9$, $1{,}99$, $1{,}999$) et la colonne de
+      droite ($2{,}1$, $2{,}01$, $2{,}001$) se resserrent toutes les deux
+      vers le même nombre, $2$, à mesure que $x$ se rapproche de $1$. Le
+      tableau suggère donc $\lim_{x \to 1} f(x) = 2$.
+
+  - id: LIMCONT-8
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: maths_limites_continuite
+    tags: ["limite-intuitive", "domaine-definition"]
+    primary_misconception: mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale
+    stem: >
+      Pour $f(x)=\dfrac{x^2-1}{x-1}$, que peut-on dire de $f(1)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$f(1)=2$, car en simplifiant d'abord $\\frac{x^2-1}{x-1}$ par $(x-1)$, il reste $x+1$, qui vaut $2$ en $x=1$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale
+        feedback: >
+          Cette simplification est exactement celle qui permettra de
+          calculer la LIMITE en $1$ (tu la reverras au chapitre 4), mais elle ne
+          change rien au fait que $f(1)$ lui-même reste indéfini : la
+          fonction de départ exige de diviser par $1-1=0$ en $x=1$, quelle
+          que soit la réécriture algébrique effectuée « avant » de
+          remplacer $x$ par $1$.
+      - id: B
+        text: "$f(1)=0$, car le numérateur $1^2-1$ vaut $0$."
+        correct: false
+        misconception: null
+        feedback: >
+          Tu n'as regardé que le numérateur. Le dénominateur $1-1$ vaut
+          aussi $0$ — c'est justement cette double annulation qui rend
+          l'expression $\frac{0}{0}$ dépourvue de sens, pas $0$.
+      - id: C
+        text: "$f(1)$ n'existe pas : le calcul direct donne $\\frac{1^2-1}{1-1}=\\frac{0}{0}$, qui n'a pas de valeur numérique."
+        correct: true
+      - id: D
+        text: "$f(1)=1$, car $\\frac{0}{0}=1$ par convention, comme n'importe quel nombre divisé par lui-même."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale
+        feedback: >
+          Il n'existe aucune convention qui donne une valeur à
+          $\frac{0}{0}$ — contrairement à $\frac{a}{a}=1$ pour $a \neq 0$,
+          diviser $0$ par $0$ n'est tout simplement pas défini en
+          mathématiques.
+    correct_feedback: >
+      Exact : $f(1)$ demanderait de calculer $\frac{1^2-1}{1-1}=\frac{0}{0}$,
+      une expression sans valeur numérique. $f$ n'est donc pas définie en
+      $1$ — même si, comme tu le verras bientôt, elle a bien une limite en
+      ce point.
+    solution: |
+      $$f(1) = \frac{1^2-1}{1-1} = \frac{0}{0}$$
+      Cette forme n'a pas de valeur numérique : $f(1)$ n'existe pas. Le
+      point $x=1$ est un trou dans le domaine de $f$.
+
+  - id: LIMCONT-9
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: maths_limites_continuite
+    tags: ["limite-intuitive", "lecture-tableau"]
+    primary_misconception: mc.math.maths_limites_continuite.confond-point-et-voisinage
+    stem: >
+      D'après le tableau de valeurs du chapitre 1, $f(x)$ se rapproche de $2$
+      quand $x$ se rapproche de $1$, par la gauche comme par la droite.
+      Quelle est l'interprétation correcte de cette observation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le tableau suggère fortement que $\\lim_{x \\to 1} f(x) = 2$, mais un tableau de valeurs n'est jamais une preuve — il faudra un calcul algébrique."
+        correct: true
+      - id: B
+        text: "Le tableau prouve que $f(1)=2$, puisque les valeurs s'en approchent des deux côtés à la fois."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.confond-point-et-voisinage
+        feedback: >
+          Le tableau ne contient AUCUNE valeur en $x=1$ — toutes les
+          valeurs testées en sont proches, sans jamais l'atteindre. Il ne
+          peut donc rien prouver sur $f(1)$, qui d'ailleurs n'existe même
+          pas (division par $0$).
+      - id: C
+        text: "Le tableau prouve rigoureusement que $\\lim_{x \\to 1} f(x)=2$, sans qu'aucun calcul supplémentaire ne soit nécessaire pour l'établir."
+        correct: false
+        misconception: null
+        feedback: >
+          Un tableau, même convaincant, ne teste qu'un nombre fini de
+          valeurs — il suggère une conjecture, il ne la prouve pas. C'est
+          justement pour ça que la leçon promet de revenir sur cet exemple
+          « sans tableau ni calculatrice » : la preuve, elle, viendra d'un
+          calcul algébrique (chapitre 4).
+      - id: D
+        text: "Le tableau ne permet rien d'affirmer, car on n'y a testé que six valeurs de $x$ parmi l'infinité des valeurs possibles."
+        correct: false
+        misconception: null
+        feedback: >
+          C'est l'excès inverse : un tableau bien choisi, qui se resserre
+          nettement des deux côtés vers le même nombre, donne une
+          conjecture solide et exploitable — simplement pas une preuve
+          formelle. Rejeter toute conclusion serait ignorer une
+          information réelle et utile.
+    correct_feedback: >
+      Oui : l'observation numérique est une bonne raison de CONJECTURER que
+      la limite vaut $2$, mais seule une manipulation algébrique (comme la
+      factorisation vue au chapitre 4) permettra de le démontrer avec certitude.
+    solution: |
+      Le tableau montre un resserrement net et cohérent vers $2$ des deux
+      côtés de $1$ : c'est une conjecture numérique solide, mais pas une
+      preuve. La leçon y reviendra au chapitre 4 pour la démontrer par le calcul.
+
+  - id: LIMCONT-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_limites_continuite
+    tags: ["limite-infinie-en-un-point", "asymptote-verticale"]
+    primary_misconception: mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee
+    stem: >
+      On sait que $\lim_{x \to 5} f(x) = +\infty$. Que peut-on en déduire
+      sur la courbe de $f$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La courbe de $f$ admet une asymptote horizontale d'équation $y=5$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee
+        feedback: >
+          Tu as pris le nombre $5$ (celui vers lequel $x$ tend) pour
+          l'équation d'une asymptote HORIZONTALE. C'est l'inverse : une
+          limite infinie en un point FINI ($x \to 5$) donne toujours une
+          asymptote VERTICALE d'équation $x=5$ — une asymptote horizontale
+          viendrait d'une limite finie quand $x \to \pm\infty$.
+      - id: B
+        text: "On ne peut rien dire sur une éventuelle asymptote sans connaître aussi $\\lim_{x \\to +\\infty} f(x)$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee
+        feedback: >
+          Une limite infinie EN UN POINT donne déjà, à elle seule, une
+          asymptote verticale en ce point — sans avoir besoin d'aucune
+          information sur le comportement de $f$ à l'infini. Ce sont deux
+          phénomènes indépendants.
+      - id: C
+        text: "La courbe de $f$ admet une asymptote verticale d'équation $y=5$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee
+        feedback: >
+          Le type d'asymptote (verticale) est correct, mais pas son
+          équation : une asymptote verticale s'écrit toujours sous la forme
+          $x=a$ (une droite verticale), jamais $y=a$ — c'est l'équation
+          $x=5$ qu'il fallait écrire, pas $y=5$.
+      - id: D
+        text: "La courbe de $f$ admet une asymptote verticale d'équation $x=5$."
+        correct: true
+    correct_feedback: >
+      Exact : dès qu'une limite en un point fini vaut $+\infty$ ou
+      $-\infty$, la courbe colle de plus en plus près de la droite
+      verticale $x=5$ sans jamais la toucher — c'est la définition même
+      d'une asymptote verticale.
+    solution: |
+      $\lim_{x \to 5} f(x) = +\infty$ signifie que $f(x)$ grossit
+      indéfiniment quand $x$ se rapproche de $5$. Graphiquement, la courbe
+      de $f$ admet donc une asymptote verticale d'équation $x=5$.
+
+  - id: LIMCONT-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_limites_continuite
+    tags: ["limite-a-l-infini", "limites-de-reference"]
+    primary_misconception: mc.math.maths_limites_continuite.parite-signe-terme-dominant-mal-geree
+    stem: >
+      Calculer $\lim_{x \to -\infty} x^5$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$+\\infty$, car une puissance d'un nombre est toujours positive."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.parite-signe-terme-dominant-mal-geree
+        feedback: >
+          C'est vrai pour une puissance PAIRE ($x^2$, $x^4$...), mais pas
+          pour une puissance impaire comme $x^5$ : une puissance impaire
+          garde le signe de $x$. Comme $x \to -\infty$ (négatif), $x^5$
+          reste négatif et part vers $-\infty$, pas $+\infty$.
+      - id: B
+        text: "$-\\infty$, l'exposant $5$ étant impair : le signe du résultat suit celui de $x$"
+        correct: true
+      - id: C
+        text: "$0$, car plus $x$ devient grand en valeur absolue, plus $\\frac{1}{x^5}$ se rapproche de $0$, donc $x^5$ aussi."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.parite-signe-terme-dominant-mal-geree
+        feedback: >
+          Tu as confondu deux limites de référence différentes :
+          $\lim \frac{1}{x^5}=0$ (le quotient) et $\lim x^5$ (la puissance
+          elle-même). Ce n'est pas parce que l'INVERSE de $x^5$ tend vers
+          $0$ que $x^5$ tend aussi vers $0$ — c'est même l'inverse : $x^5$
+          devient très grand en valeur absolue.
+      - id: D
+        text: "La limite n'existe pas, car on ne peut pas élever un nombre négatif à une puissance impaire à l'infini."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.parite-signe-terme-dominant-mal-geree
+        feedback: >
+          Élever un nombre négatif à une puissance impaire est
+          parfaitement légitime à tout moment (par exemple
+          $(-2)^5=-32$) : le résultat existe toujours et il est négatif.
+          La limite existe bel et bien, et elle vaut $-\infty$.
+    correct_feedback: >
+      Bien vu : $5$ est impair, donc $x^n$ garde le signe de $x$. Comme
+      $x \to -\infty$, on a $\lim_{x \to -\infty} x^5 = -\infty$.
+    solution: |
+      $5$ est impair. D'après les limites de référence,
+      $\lim_{x \to -\infty} x^n = -\infty$ quand $n$ est impair. Donc
+      $$\lim_{x \to -\infty} x^5 = -\infty$$
+
+  - id: LIMCONT-12
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: ["operations-sur-les-limites", "asymptote-verticale"]
+    primary_misconception: mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee
+    stem: >
+      On veut calculer $\lim_{x \to 4^{+}} \dfrac{3}{x-4}$. Que vaut cette
+      limite ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$+\\infty$ : le numérateur tend vers $3$ (non nul) et le dénominateur tend vers $0$ en restant positif (car $x>4$), donc le quotient tend vers $+\\infty$."
+        correct: true
+      - id: B
+        text: "C'est une forme indéterminée $\\frac{0}{0}$, donc on ne peut rien conclure sans factoriser."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee
+        feedback: >
+          Ce n'est pas $\frac{0}{0}$ : le numérateur tend vers $3$, un
+          nombre NON nul, pas vers $0$. Le cas « nombre non nul divisé par
+          $0$ » n'est jamais une forme indéterminée — il donne toujours un
+          résultat infini, dont il faut juste déterminer le signe.
+      - id: C
+        text: "$-\\infty$ : le dénominateur tend vers $0$ donc le quotient part vers l'infini, et comme on approche par la droite on prend le signe négatif."
+        correct: false
+        misconception: null
+        feedback: >
+          Erreur de signe : quand $x \to 4^{+}$ (par la DROITE), on a
+          $x>4$, donc $x-4$ est POSITIF (proche de $0$ mais positif). Un
+          nombre positif divisé par quelque chose de positif et minuscule
+          donne $+\infty$, pas $-\infty$.
+      - id: D
+        text: "$0$ : un nombre divisé par quelque chose qui devient très grand tend vers $0$."
+        correct: false
+        misconception: null
+        feedback: >
+          Tu as confondu deux situations opposées : ici c'est le
+          DÉNOMINATEUR qui devient minuscule (tend vers $0$), pas quelque
+          chose qui devient grand. Diviser un nombre non nul par une
+          quantité qui tend vers $0$ donne un résultat qui EXPLOSE vers
+          l'infini, pas $0$.
+    correct_feedback: >
+      Exact : le numérateur tend vers $3 \neq 0$ et le dénominateur tend
+      vers $0$ en restant strictement positif (puisque $x \to 4^{+}$
+      signifie $x>4$, donc $x-4>0$). Le quotient part donc vers $+\infty$.
+    solution: |
+      Quand $x \to 4^{+}$, on a $x>4$ donc $x-4 \to 0$ en restant positif.
+      Le numérateur tend vers $3 \neq 0$. D'après le tableau des quotients,
+      « nombre non nul divisé par $0^{+}$ » donne $+\infty$ :
+      $$\lim_{x \to 4^{+}} \frac{3}{x-4} = +\infty$$
+
+  - id: LIMCONT-13
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: ["operations-sur-les-limites", "forme-indeterminee"]
+    primary_misconception: mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee
+    stem: >
+      Sachant que $\lim_{x \to +\infty} f(x) = -4$ et
+      $\lim_{x \to +\infty} g(x) = +\infty$, que vaut
+      $\lim_{x \to +\infty} \big(f(x) \times g(x)\big)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est une forme indéterminée $0 \\times \\infty$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee
+        feedback: >
+          La forme indéterminée $0 \times \infty$ exige que le facteur FINI
+          tende précisément vers $0$. Ici, $f(x)$ tend vers $-4$, un nombre
+          fini mais NON nul — ce n'est donc pas cette forme indéterminée,
+          et le tableau des produits donne un résultat déterminé.
+      - id: B
+        text: "$+\\infty$, car dès qu'un $+\\infty$ apparaît dans un produit, le résultat est toujours $+\\infty$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.parite-signe-terme-dominant-mal-geree
+        feedback: >
+          Le signe du facteur fini compte : ici $f(x)$ tend vers $-4$, un
+          nombre NÉGATIF. Un facteur négatif multiplié par quelque chose
+          qui tend vers $+\infty$ inverse le signe du résultat, donnant
+          $-\infty$, pas $+\infty$.
+      - id: C
+        text: "$-\\infty$ : un nombre négatif fini multiplié par quelque chose qui tend vers $+\\infty$ donne $-\\infty$."
+        correct: true
+      - id: D
+        text: "On ne peut pas savoir sans connaître $f(x)$ et $g(x)$ précisément, une limite ne suffit pas."
+        correct: false
+        misconception: null
+        feedback: >
+          C'est justement l'intérêt des tableaux d'opérations sur les
+          limites (chapitre 3) : connaître seulement les DEUX limites (ici $-4$ et
+          $+\infty$) suffit à déterminer le résultat, sans avoir besoin des
+          expressions précises de $f$ et $g$ — sauf dans les quatre cas de
+          forme indéterminée, qui ne s'applique pas ici.
+    correct_feedback: >
+      Exact : d'après le tableau des produits, « $L<0$ multiplié par
+      $+\infty$ » donne $-\infty$. Ici $L=-4<0$, donc
+      $\lim_{x \to +\infty} (f \times g) = -\infty$.
+    solution: |
+      $\lim f(x) = -4 < 0$ et $\lim g(x) = +\infty$. D'après le tableau des
+      produits de limites (chapitre 3), $L<0$ et $+\infty$ donnent $-\infty$ :
+      $$\lim_{x \to +\infty} \big(f(x) \times g(x)\big) = -\infty$$
+
+  - id: LIMCONT-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: ["forme-indeterminee", "terme-dominant"]
+    primary_misconception: mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale
+    stem: >
+      Calculer $\lim_{x \to +\infty} \dfrac{4x^2-3x+2}{2x^2+5}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$+\\infty$, car le numérateur et le dénominateur tendent tous les deux vers $+\\infty$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale
+        feedback: >
+          C'est justement la forme $\frac{\infty}{\infty}$, indéterminée :
+          « les deux tendent vers l'infini » ne suffit PAS à conclure. Il
+          faut factoriser le terme dominant avant de pouvoir répondre — ce
+          que tu n'as pas fait ici.
+      - id: B
+        text: "$0$, car en factorisant, il ne reste que les termes en $\\frac{1}{x}$ et $\\frac{1}{x^2}$, qui tendent vers $0$."
+        correct: false
+        misconception: null
+        feedback: >
+          Tu as gardé les mauvais termes : après factorisation, il reste
+          $\frac{4-\frac{3}{x}+\frac{2}{x^2}}{2+\frac{5}{x^2}}$ — ce sont
+          les CONSTANTES ($4$ et $2$) qui survivent quand $x \to +\infty$,
+          pas les fractions en $\frac1x$ qui, elles, s'annulent. La limite
+          vient du rapport des constantes restantes, $\frac42$, pas de $0$.
+      - id: C
+        text: "$\\dfrac{4}{5}$, en prenant le rapport entre le coefficient de $x^2$ au numérateur ($4$) et la constante du dénominateur ($5$)."
+        correct: false
+        misconception: null
+        feedback: >
+          Le raccourci pour une limite à l'infini de fonction rationnelle
+          (degrés égaux) compare les COEFFICIENTS DOMINANTS des deux
+          polynômes — ici $4$ (coefficient de $x^2$ au numérateur) et $2$
+          (coefficient de $x^2$ au dénominateur), pas la constante $5$ du
+          dénominateur qui n'a rien à voir avec ce rapport.
+      - id: D
+        text: "$2$ : en factorisant le terme dominant $x^2$ en haut et en bas, il reste $\\dfrac{4-\\frac{3}{x}+\\frac{2}{x^2}}{2+\\frac{5}{x^2}}$, qui tend vers $\\dfrac{4}{2}=2$."
+        correct: true
+    correct_feedback: >
+      Exact : numérateur et dénominateur sont de même degré ($2$), donc la
+      limite est le rapport des coefficients dominants, $\frac{4}{2}=2$ —
+      confirmé par la factorisation du terme dominant $x^2$.
+    solution: |
+      $$\frac{4x^2-3x+2}{2x^2+5} = \frac{x^2\left(4-\frac{3}{x}+\frac{2}{x^2}\right)}{x^2\left(2+\frac{5}{x^2}\right)} = \frac{4-\frac{3}{x}+\frac{2}{x^2}}{2+\frac{5}{x^2}}$$
+      Quand $x \to +\infty$, les termes en $\frac1x$ et $\frac{1}{x^2}$
+      tendent vers $0$ :
+      $$\lim_{x \to +\infty} \frac{4x^2-3x+2}{2x^2+5} = \frac{4}{2} = 2$$
+
+  - id: LIMCONT-15
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: maths_limites_continuite
+    tags: ["continuite", "domaine-definition"]
+    primary_misconception: mc.math.maths_limites_continuite.definition-continuite-mal-appliquee
+    stem: >
+      La fonction $f(x) = \dfrac{2x+1}{x-3}$ est-elle continue en $x=3$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, car $f$ est une fonction rationnelle, et toute fonction rationnelle est continue partout."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.definition-continuite-mal-appliquee
+        feedback: >
+          Tu as oublié la restriction : une fonction rationnelle est
+          continue sur son DOMAINE DE DÉFINITION, c'est-à-dire partout où
+          le dénominateur ne s'annule pas — pas « partout » sans condition.
+          Ici $x=3$ annule le dénominateur, donc $3$ n'est justement pas
+          dans le domaine, et la question de continuité n'y a même pas de
+          sens.
+      - id: B
+        text: "Non : $f$ n'est même pas définie en $3$ (le dénominateur s'annule), donc la première condition de la continuité échoue déjà."
+        correct: true
+      - id: C
+        text: "On ne peut pas savoir sans calculer $\\lim_{x \\to 3} f(x)$ d'abord."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.definition-continuite-mal-appliquee
+        feedback: >
+          Il n'est pas nécessaire de calculer la limite pour conclure ici :
+          la toute première condition de continuité ($f(a)$ doit exister)
+          échoue déjà, puisque $f(3)$ n'est pas défini. Inutile d'aller
+          plus loin — la fonction ne peut pas être continue en $3$.
+      - id: D
+        text: "Oui, car $\\lim_{x \\to 3} f(x)$ existe et vaut $+\\infty$ ou $-\\infty$ selon le côté, et une limite infinie compte comme « continue à l'infini »."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.definition-continuite-mal-appliquee
+        feedback: >
+          Une limite infinie n'est pas un nombre réel : la définition de la
+          continuité exige une limite FINIE, égale à $f(a)$. Une limite
+          infinie signale au contraire une ASYMPTOTE verticale, l'exact
+          opposé d'un comportement continu en ce point.
+    correct_feedback: >
+      Exact : $f(3)$ demanderait de diviser par $3-3=0$, donc $f$ n'est
+      même pas définie en $3$. La toute première des trois conditions de
+      continuité échoue, ce qui suffit à conclure.
+    solution: |
+      $f(3)$ demanderait de calculer $\frac{2(3)+1}{3-3} = \frac{7}{0}$,
+      qui n'existe pas. $f$ n'est donc pas définie en $3$ : la condition
+      « $f(a)$ existe » échoue, donc $f$ n'est pas continue en $3$
+      (elle admet en fait une asymptote verticale $x=3$).
+
+  - id: LIMCONT-16
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: ["continuite"]
+    primary_misconception: mc.math.maths_limites_continuite.definition-continuite-mal-appliquee
+    stem: >
+      Soit $h$ définie par $h(x)=x^2$ si $x \neq 2$ et $h(2)=10$. La
+      fonction $h$ est-elle continue en $x=2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : $\\lim_{x \\to 2} h(x) = 4$ (calculée avec $x^2$), mais $h(2)=10$. La limite existe, mais elle est différente de $h(2)$ — la troisième condition échoue."
+        correct: true
+      - id: B
+        text: "Oui, car $h(2)$ est bien défini (il vaut $10$) et la limite $\\lim_{x \\to 2} h(x)$ existe aussi (elle vaut $4$) : les deux premières conditions suffisent."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.definition-continuite-mal-appliquee
+        feedback: >
+          Il ne suffit pas que $f(a)$ existe ET que la limite existe
+          séparément — la définition exige en plus qu'elles soient ÉGALES.
+          Ici $h(2)=10$ et $\lim_{x\to2}h(x)=4$ existent bien toutes les
+          deux, mais elles ne coïncident pas ($10 \neq 4$) : la troisième
+          condition échoue, donc $h$ n'est pas continue en $2$.
+      - id: C
+        text: "Non, car $h$ change de définition en $x=2$, donc $\\lim_{x \\to 2} h(x)$ n'existe pas."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.definition-continuite-mal-appliquee
+        feedback: >
+          La limite EXISTE bel et bien : quand $x$ se rapproche de $2$
+          SANS être égal à $2$, $h(x)=x^2$ tout du long, donc
+          $\lim_{x\to2}h(x)=2^2=4$ parfaitement défini. Le fait que $h(2)$
+          soit redéfini à une valeur différente ($10$) n'affecte pas le
+          calcul de la limite, qui ignore justement la valeur exacte au
+          point lui-même.
+      - id: D
+        text: "Oui, car $\\lim_{x \\to 2} h(x) = 10$, en substituant directement $x=2$ dans la définition de $h$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.confond-point-et-voisinage
+        feedback: >
+          Substituer $x=2$ donne $h(2)=10$ — c'est la VALEUR de $h$ en
+          $2$, pas sa limite. La limite se calcule en regardant ce qui se
+          passe tout PRÈS de $2$ (là où $h(x)=x^2$ s'applique), ce qui
+          donne $4$, pas $10$.
+    correct_feedback: >
+      Exact : $\lim_{x\to2}h(x)=4$ (en utilisant $h(x)=x^2$ pour $x$ proche
+      de $2$ mais différent de $2$), alors que $h(2)=10$ par définition. La
+      limite existe mais ne coïncide pas avec $h(2)$ : la troisième
+      condition de continuité échoue.
+    solution: |
+      Pour $x \neq 2$, $h(x)=x^2$, donc
+      $$\lim_{x \to 2} h(x) = \lim_{x \to 2} x^2 = 4$$
+      Or $h(2)=10$ par définition. Comme $4 \neq 10$, la limite existe mais
+      diffère de $h(2)$ : $h$ n'est pas continue en $2$.
+
+  - id: LIMCONT-17
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: ["tvi", "hypotheses-tvi"]
+    primary_misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+    stem: >
+      Soit $f$ définie sur $[0,4]$ par $f(x)=x-3$ si $x \leq 2$ et
+      $f(x)=x+1$ si $x>2$. On observe $f(0)=-3<0$ et $f(4)=5>0$. Peut-on
+      appliquer le théorème des valeurs intermédiaires pour affirmer que
+      l'équation $f(x)=0$ admet une solution dans $]0,4[$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui : $f(0)$ et $f(4)$ sont de signes contraires, donc le TVI garantit l'existence d'une solution, quelle que soit la fonction considérée."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+        feedback: >
+          Le TVI a DEUX hypothèses, pas une seule : la continuité ET des
+          signes contraires aux bornes. Ici les signes sont bien contraires,
+          mais $f$ n'est pas continue en $2$ (elle saute de $-1$ à $3$ sans
+          passer par les valeurs intermédiaires) : l'hypothèse de continuité
+          manque, donc le théorème ne s'applique pas — et sa conclusion est
+          d'ailleurs fausse ici, puisque $f$ ne s'annule jamais.
+      - id: B
+        text: "Oui, à la condition que $f$ soit définie sur tout l'intervalle $[0,4]$, ce qui est bien le cas ici, si bien que le TVI s'applique."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+        feedback: >
+          « Définie partout » n'est pas la même chose que « continue
+          partout ». $f$ est bien définie en chaque point de $[0,4]$ (y
+          compris en $2$, où $f(2)=-1$), mais elle saute brutalement de
+          $-1$ à des valeurs proches de $3$ en passant $x=2$ : ce saut est
+          précisément une discontinuité, même si aucun point n'est
+          « manquant » dans le domaine.
+      - id: C
+        text: "Non : $f$ n'est pas continue en $x=2$ (elle saute de $-1$ à $3$), donc l'hypothèse de continuité du TVI n'est pas vérifiée."
+        correct: true
+      - id: D
+        text: "Non, car on ne connaît pas la valeur prise par $f$ au point $x=2$ précisément."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+        feedback: >
+          $f(2)$ est parfaitement connu : $f(2)=2-3=-1$ (on utilise la
+          formule $x \leq 2$). Le problème n'est pas un manque
+          d'information, c'est que $f$ SAUTE en $x=2$ (de $-1$ à des
+          valeurs proches de $3$) sans passer par les valeurs
+          intermédiaires — une vraie discontinuité, pas une inconnue.
+    correct_feedback: >
+      Exact : $f$ n'est pas continue en $2$, donc le TVI ne s'applique pas,
+      malgré les signes opposés aux bornes. Et effectivement, sur $[0,2]$,
+      $f(x)=x-3 \in [-3,-1]$ (toujours négatif), et sur $]2,4]$,
+      $f(x)=x+1 \in \,]3,5]$ (toujours positif) : $f$ ne vaut jamais $0$.
+    solution: |
+      Sur $[0,2]$, $f(x)=x-3$ prend ses valeurs dans $[-3,-1]$ : toujours
+      strictement négatif. Sur $]2,4]$, $f(x)=x+1$ prend ses valeurs dans
+      $]3,5]$ : toujours strictement positif. $f$ saute donc de $-1$ à des
+      valeurs proches de $3$ sans jamais passer par $0$ : bien que
+      $f(0)<0<f(4)$, l'équation $f(x)=0$ n'a AUCUNE solution sur $[0,4]$,
+      précisément parce que $f$ n'est pas continue en $2$ (hypothèse du
+      TVI non vérifiée).
+
+  - id: LIMCONT-18
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: maths_limites_continuite
+    tags: ["tvi", "existence-de-solution", "unicite-solution"]
+    primary_misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+    stem: >
+      On veut montrer que l'équation $x^3+2x-5=0$ admet une unique
+      solution dans $[1,2]$, en posant $g(x)=x^3+2x-5$. Parmi les quatre
+      rédactions suivantes, laquelle est correcte et complète ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$g$ est continue sur $\\mathbb{R}$, $g(1)=-2<0$ et $g(2)=7>0$, donc $0$ est compris entre les deux : par le TVI, l'équation $g(x)=0$ admet une unique solution dans l'intervalle ouvert $]1,2[$, et il n'y a rien à ajouter."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+        feedback: >
+          Le TVI (continuité + signes contraires) garantit seulement
+          l'EXISTENCE d'au moins une solution — jamais l'unicité à lui
+          seul. Pour affirmer l'unicité, il manque ici l'ingrédient
+          supplémentaire : établir que $g$ est strictement monotone sur
+          $[1,2]$. Sans cette étape, écrire « unique » n'est pas justifié.
+      - id: B
+        text: "$g(0)=0+0-5=-5<0$ et $g(2)=7>0$, donc $0$ est compris entre les deux : il existe une unique solution dans $]0,2[$, pas $]1,2[$."
+        correct: false
+        misconception: null
+        feedback: >
+          Tu as utilisé $g(0)$ au lieu de $g(1)$ — sans doute en te
+          rappelant l'exemple de la leçon (l'intervalle $[0,1]$ pour
+          $x^3+x-1$) plutôt qu'en relisant l'intervalle demandé ICI,
+          $[1,2]$. Le calcul doit toujours utiliser les bornes de
+          l'intervalle réellement donné dans l'énoncé, pas celles d'un
+          exemple mémorisé.
+      - id: C
+        text: "$g(1)=-2<0$ et $g(2)=7>0$, donc $0$ est bien compris entre les deux, mais $g$ n'est pas continue en tout point, car $x^3$ n'est continue que sur $[0,+\\infty[$ : le TVI ne s'applique donc pas et l'on ne peut rien conclure du tout."
+        correct: false
+        misconception: null
+        feedback: >
+          $x \mapsto x^3$ est un polynôme, donc continu sur $\mathbb{R}$
+          TOUT ENTIER, y compris pour les valeurs négatives (par exemple
+          $(-2)^3=-8$ est parfaitement défini). Tu as confondu avec la
+          fonction racine carrée, qui elle est bien restreinte à
+          $[0,+\infty[$. $g$ est donc continue partout, et le TVI
+          s'applique normalement.
+      - id: D
+        text: "$g$ est continue sur $\\mathbb{R}$ (polynôme), $g(1)=-2<0$ et $g(2)=7>0$ : par le TVI, il existe au moins une solution dans $]1,2[$. De plus $g$ est strictement croissante sur $\\mathbb{R}$, donc cette solution est unique."
+        correct: true
+    correct_feedback: >
+      Exact : la rédaction complète vérifie les trois ingrédients dans
+      l'ordre — continuité sur $[1,2]$, signes opposés aux bornes
+      (existence), puis stricte monotonie (unicité) — exactement la
+      méthode du chapitre 6.
+    solution: |
+      $g(x)=x^3+2x-5$ est un polynôme, donc continu sur $\mathbb{R}$, en
+      particulier sur $[1,2]$.
+      $$g(1) = 1+2-5 = -2 < 0 \qquad g(2) = 8+4-5 = 7 > 0$$
+      Les signes sont opposés, donc par le TVI, $g(x)=0$ admet au moins une
+      solution dans $]1,2[$. De plus, $x \mapsto x^3$ et $x \mapsto 2x$
+      sont toutes deux strictement croissantes sur $\mathbb{R}$, donc leur
+      somme $g$ l'est aussi : la solution est donc unique.
+
+  - id: LIMCONT-19
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: maths_limites_continuite
+    tags: ["limites-a-l-infini", "terme-dominant"]
+    primary_misconception: mc.math.maths_limites_continuite.parite-signe-terme-dominant-mal-geree
+    stem: >
+      Soit $f(x) = -x^3+6x$. Que valent $\lim_{x \to +\infty} f(x)$ et
+      $\lim_{x \to -\infty} f(x)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\lim_{x \\to +\\infty} f(x) = +\\infty$ et $\\lim_{x \\to -\\infty} f(x) = -\\infty$, en ne gardant que le terme dominant $-x^3$ mais en oubliant le signe négatif devant."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.parite-signe-terme-dominant-mal-geree
+        feedback: >
+          En factorisant, $f(x)=x^3\left(-1+\frac{6}{x^2}\right)$ : le
+          facteur entre parenthèses tend vers $-1$ (négatif), pas $+1$. Tu
+          as gardé $x^3$ correctement mais perdu le signe $-$ du
+          coefficient dominant — c'est ce signe qui inverse le résultat
+          final par rapport à $\lim x^3$ seul.
+      - id: B
+        text: "$\\lim_{x \\to +\\infty} f(x) = -\\infty$ et $\\lim_{x \\to -\\infty} f(x) = +\\infty$, le terme dominant $-x^3$ imposant son signe aux deux limites."
+        correct: true
+      - id: C
+        text: "$\\lim_{x \\to +\\infty} f(x) = +\\infty$ et $\\lim_{x \\to -\\infty} f(x) = +\\infty$, car $6x$ devient négligeable et un cube donnerait toujours un résultat positif."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.parite-signe-terme-dominant-mal-geree
+        feedback: >
+          Une puissance IMPAIRE (comme le cube) garde le signe de sa base —
+          elle n'est pas automatiquement positive comme une puissance
+          paire. Ici, en plus, il y a un signe $-$ devant $x^3$ : le
+          facteur dominant $-x^3$ est positif quand $x<0$ et négatif quand
+          $x>0$, jamais « toujours positif ».
+      - id: D
+        text: "On ne peut pas conclure : $-x^3+6x$ est une forme $\\infty - \\infty$ indéterminée, et aucune méthode ne permet de la lever puisque ce n'est pas un quotient."
+        correct: false
+        misconception: null
+        feedback: >
+          La technique du terme dominant (chapitre 4) s'applique aussi bien aux
+          FORMES $\infty-\infty$ (différences de puissances, comme ici)
+          qu'aux formes $\frac{\infty}{\infty}$ (quotients) : dans les deux
+          cas, on factorise la puissance de plus haut degré. Ici,
+          factoriser $x^3$ lève parfaitement l'indétermination.
+    correct_feedback: >
+      Exact : $f(x)=x^3\left(-1+\frac{6}{x^2}\right)$, et le facteur entre
+      parenthèses tend vers $-1$. Comme $x^3 \to +\infty$ quand
+      $x\to+\infty$, le produit tend vers $-\infty$ ; comme $x^3\to-\infty$
+      quand $x\to-\infty$, le produit tend vers $+\infty$.
+    solution: |
+      $$f(x) = -x^3+6x = x^3\left(-1+\frac{6}{x^2}\right)$$
+      Quand $x \to +\infty$ : $\frac{6}{x^2} \to 0$, donc le facteur entre
+      parenthèses tend vers $-1$, et $x^3 \to +\infty$ :
+      $$\lim_{x \to +\infty} f(x) = +\infty \times (-1) = -\infty$$
+      Quand $x \to -\infty$ : le même facteur tend encore vers $-1$, mais
+      $x^3 \to -\infty$ :
+      $$\lim_{x \to -\infty} f(x) = -\infty \times (-1) = +\infty$$
+
+  - id: LIMCONT-20
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: maths_limites_continuite
+    tags: ["tvi", "monotonie"]
+    primary_misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+    stem: >
+      Soit $g$ continue sur $[-2,4]$, strictement décroissante sur
+      $[-2,0]$ (de $g(-2)=5$ à $g(0)=-1$) puis strictement croissante sur
+      $[0,4]$ (de $g(0)=-1$ à $g(4)=7$). Combien de solutions l'équation
+      $g(x)=3$ admet-elle dans $[-2,4]$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Exactement $2$ : sur $[-2,0]$, $g$ est continue et strictement décroissante de $5$ à $-1$, donc une unique solution dans $]-2,0[$ ; sur $[0,4]$, elle est continue et strictement croissante de $-1$ à $7$, donc une unique solution dans $]0,4[$."
+        correct: true
+      - id: B
+        text: "Exactement $1$ solution, car il ne peut jamais y avoir plus d'une solution à une équation du type $g(x)=k$ sur un intervalle donné, par définition même de la notion de fonction."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+        feedback: >
+          Rien n'interdit à une équation $g(x)=k$ d'avoir plusieurs
+          solutions sur un intervalle où $g$ n'est PAS monotone sur tout
+          l'intervalle : ici $g$ change de sens de variation en $0$, ce qui
+          découpe $[-2,4]$ en deux morceaux strictement monotones, chacun
+          pouvant apporter sa propre solution. « Fonction » n'implique pas
+          « au plus une solution à $g(x)=k$ » — seule la stricte monotonie
+          SUR TOUT l'intervalle considéré le garantirait.
+      - id: C
+        text: "Exactement $3$ : une solution sur $[-2,0]$, une autre sur $[0,4]$, et une troisième exactement en $x=0$, puisque c'est le point de jonction entre les deux intervalles considérés."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+        feedback: >
+          Il faut vérifier si le point de jonction est lui-même solution
+          avant de le compter : ici $g(0)=-1 \neq 3$, donc $x=0$ N'EST PAS
+          une solution de $g(x)=3$. Il ne faut jamais compter
+          automatiquement un point de jonction comme solution
+          supplémentaire sans le vérifier.
+      - id: D
+        text: "On ne peut rien affirmer sans connaître l'expression algébrique de $g$ : le théorème des valeurs intermédiaires ne s'applique qu'aux fonctions polynômes ou rationnelles données par une formule."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+        feedback: >
+          Le TVI ne nécessite que la continuité de $g$ et ses valeurs aux
+          bornes des intervalles considérés — jamais une formule explicite.
+          C'est exactement ce que l'énoncé fournit ici (continuité,
+          monotonie, valeurs aux bornes), ce qui suffit amplement à
+          appliquer le théorème sur chacun des deux morceaux.
+    correct_feedback: >
+      Exact : $g$ étant strictement monotone (mais de sens opposé) sur
+      chacun des deux sous-intervalles $[-2,0]$ et $[0,4]$, et $3$ étant
+      atteint sur chacun d'eux, l'équation $g(x)=3$ admet exactement deux
+      solutions distinctes sur $[-2,4]$.
+    solution: |
+      Sur $[-2,0]$ : $g$ continue, strictement décroissante, $g(-2)=5>3$
+      et $g(0)=-1<3$ : $3$ est compris entre les deux, donc une unique
+      solution $c_1 \in \,]-2,0[$.
+
+      Sur $[0,4]$ : $g$ continue, strictement croissante, $g(0)=-1<3$ et
+      $g(4)=7>3$ : $3$ est compris entre les deux, donc une unique solution
+      $c_2 \in \,]0,4[$.
+
+      Comme $g(0)=-1 \neq 3$, le point de jonction n'est pas lui-même une
+      solution, et $c_1 \neq c_2$ car ils appartiennent à des intervalles
+      disjoints. L'équation $g(x)=3$ admet donc exactement $2$ solutions
+      dans $[-2,4]$.
+
+  - id: LIMCONT-21
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: maths_limites_continuite
+    tags: ["factorisation", "continuite"]
+    primary_misconception: mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale
+    stem: >
+      Soit $f$ définie par $f(x) = \dfrac{x^2-4}{x-2}$ si $x \neq 2$ et
+      $f(2)=m$, où $m$ est un réel. Pour quelle valeur de $m$ la fonction
+      $f$ est-elle continue en $x=2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$m=0$, car il faut que $f(2)$ corresponde à la forme $\\frac{0}{0}$ obtenue en substituant directement $x=2$ dans l'expression de départ."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale
+        feedback: >
+          $\frac{0}{0}$ n'est pas une valeur numérique — ce n'est donc pas
+          « une forme à faire correspondre ». Il faut d'abord factoriser
+          l'expression pour lever l'indétermination et trouver la VRAIE
+          valeur de la limite ($4$ ici), et c'est CETTE valeur, pas $0$,
+          que $m$ doit égaler.
+      - id: B
+        text: "N'importe quelle valeur de $m$ convient, car $f$ est automatiquement continue en $2$ dès que $f(2)$ est défini par une valeur numérique quelconque."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.definition-continuite-mal-appliquee
+        feedback: >
+          Définir $f(2)$ par un nombre assure seulement la première
+          condition de continuité (« $f(2)$ existe »). Il faut EN PLUS que
+          cette valeur soit ÉGALE à $\lim_{x\to2}f(x)=4$ — ce n'est vrai
+          que pour $m=4$, pas pour n'importe quel réel.
+      - id: C
+        text: "$m=4$ : en factorisant, $\\frac{x^2-4}{x-2}=\\frac{(x-2)(x+2)}{x-2}=x+2$ pour $x\\neq 2$, donc $\\lim_{x\\to2} f(x) = 2+2=4$. Pour que $f$ soit continue en $2$, il faut $f(2)=m$ égal à cette limite, donc $m=4$."
+        correct: true
+      - id: D
+        text: "$m=2$, car $\\lim_{x\\to2}\\frac{x^2-4}{x-2}$ se calcule en simplifiant $x^2-4$ par $x-2$, ce qui donne $x$, puis en évaluant $x=2$."
+        correct: false
+        misconception: null
+        feedback: >
+          Erreur de factorisation : $x^2-4=(x-2)(x+2)$, pas
+          $(x-2) \times x$. En simplifiant correctement par $(x-2)$, il
+          reste $x+2$ — pas $x$ seul — et c'est $x+2$ qu'il faut évaluer en
+          $x=2$, ce qui donne $4$, pas $2$.
+    correct_feedback: >
+      Exact : la factorisation $x^2-4=(x-2)(x+2)$ donne
+      $\lim_{x\to2}f(x)=4$. La continuité exige $f(2)=m$ égal à cette
+      limite, donc $m=4$.
+    solution: |
+      Pour $x \neq 2$ :
+      $$f(x) = \frac{x^2-4}{x-2} = \frac{(x-2)(x+2)}{x-2} = x+2$$
+      $$\lim_{x \to 2} f(x) = 2+2 = 4$$
+      Pour que $f$ soit continue en $2$, il faut $f(2)=\lim_{x\to2}f(x)$,
+      donc $m=4$.
+
+  - id: LIMCONT-22
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: ["limites-trigonometriques", "limite-de-reference"]
+    primary_misconception: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
+    stem: >
+      On veut calculer $\lim_{x \to 0} \dfrac{\sin x}{x}$. La substitution
+      directe donne $\dfrac{\sin 0}{0} = \dfrac{0}{0}$. Que peut-on en
+      conclure avec certitude ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          C'est une limite de référence : $\lim_{x\to 0}\frac{\sin x}{x}=1$. La forme
+          $\frac{0}{0}$ obtenue par substitution indique seulement qu'il ne faut pas
+          conclure ainsi.
+        correct: true
+      - id: B
+        text: "$\\dfrac{0}{0}=0$, si bien que $\\lim_{x\\to 0}\\frac{\\sin x}{x}=0$ par simple substitution directe."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
+        feedback: >
+          $\frac{0}{0}$ n'est pas une valeur numérique — ce n'est pas $0$
+          (déjà vu au chapitre 1 pour $f(1)$ avec $\frac{x^2-1}{x-1}$). C'est
+          précisément parce que cette forme ne se lit pas littéralement
+          qu'il faut un outil séparé : ici, le résultat de référence
+          $\lim\frac{\sin x}{x}=1$, pas une lecture directe de « 0/0 ».
+      - id: C
+        text: >-
+          La limite n'existe pas : il faudrait factoriser $\sin x$ et $x$ par un facteur
+          commun, mais $\sin x$ n'étant pas un polynôme, cette factorisation est
+          impossible à mener.
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
+        feedback: >
+          L'impossibilité de factoriser algébriquement ne veut pas dire que
+          la limite n'existe pas — elle veut dire que la technique du chapitre 4
+          (réservée aux polynômes et aux racines) ne s'applique pas ICI.
+          $\frac{\sin x}{x}$ a bien une limite, $1$ : c'est un résultat de
+          référence à connaître, pas à redémontrer par factorisation à
+          chaque fois.
+      - id: D
+        text: >-
+          La forme $\frac{0}{0}$ étant indéterminée, elle ne peut par définition jamais
+          donner un résultat fini : la limite est nécessairement infinie, ou bien elle
+          n'existe pas.
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
+        feedback: >
+          « Indéterminée » ne veut pas dire « forcément infinie » — ça veut
+          dire que la forme symbolique seule ne suffit pas à connaître la
+          réponse (rappel du chapitre 3 : trois expressions en « $\infty-\infty$ »
+          donnaient trois réponses différentes). Ici, le calcul de référence
+          (géométrique, admis) donne une valeur finie et non nulle : $1$.
+    correct_feedback: >
+      Exact : $\lim_{x\to 0}\frac{\sin x}{x}=1$ est un résultat de référence
+      (établi géométriquement, admis pour ce chapitre) — la forme
+      $\frac{0}{0}$ obtenue par substitution directe ne le contredit pas,
+      elle indique seulement qu'il faut invoquer ce résultat plutôt que
+      substituer.
+    solution: |
+      La substitution directe donne $\frac{\sin 0}{0}=\frac{0}{0}$, une
+      forme indéterminée qu'aucune des techniques du chapitre 4 (factorisation,
+      conjugué, terme dominant) ne permet de lever, puisque $\sin x$ n'est
+      pas un polynôme. $\frac{\sin x}{x}$ est une limite de RÉFÉRENCE,
+      établie par un argument géométrique et admise :
+      $$\lim_{x \to 0} \frac{\sin x}{x} = 1$$
+
+  - id: LIMCONT-23
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: ["limites-trigonometriques", "substitution"]
+    primary_misconception: mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste
+    stem: >
+      Calculer $\lim_{x \to 0} \dfrac{\sin(4x)}{x}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$4$"
+        correct: true
+      - id: B
+        text: "$1$"
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste
+        feedback: >
+          Tu as repéré le motif « $\sin$(quelque chose) divisé par quelque
+          chose » et répondu directement $1$, sans vérifier que c'est le
+          MÊME « quelque chose » en haut et en bas. Ici le numérateur est
+          $\sin(4x)$ mais le dénominateur est $x$, pas $4x$ : il faut
+          d'abord écrire $\frac{\sin(4x)}{x}=4\times\frac{\sin(4x)}{4x}$
+          avant d'appliquer le formulaire.
+      - id: C
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
+        feedback: >
+          Tu as lu la forme $\frac{0}{0}$ obtenue par substitution directe
+          comme « $0$ ». Cette forme n'a pas de valeur littérale : il faut
+          passer par le formulaire de référence (après avoir ajusté
+          l'argument), pas par une lecture directe de « 0/0 ».
+      - id: D
+        text: "$16$"
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste
+        feedback: >
+          Le facteur à sortir devant $\frac{\sin(4x)}{4x}$ est $4$ (celui
+          qui manque au dénominateur pour retrouver EXACTEMENT l'argument
+          du sinus), pas $4^2$. On ne multiplie qu'une seule fois par ce
+          facteur : $\frac{\sin(4x)}{x}=4\times\frac{\sin(4x)}{4x}\to
+          4\times 1=4$.
+    correct_feedback: >
+      Exact : en écrivant $\frac{\sin(4x)}{x}=4\times\frac{\sin(4x)}{4x}$,
+      et comme $4x\to 0$ quand $x\to 0$, le formulaire donne
+      $\frac{\sin(4x)}{4x}\to 1$, d'où une limite égale à $4\times 1=4$.
+    solution: |
+      Le dénominateur ($x$) ne correspond pas encore à l'argument du sinus
+      ($4x$) : on multiplie et on divise par $4$.
+      $$\frac{\sin(4x)}{x} = 4 \times \frac{\sin(4x)}{4x}$$
+      $4x \to 0$ quand $x \to 0$, donc par le formulaire
+      $\frac{\sin(4x)}{4x} \to 1$ :
+      $$\lim_{x \to 0} \frac{\sin(4x)}{x} = 4 \times 1 = 4$$
+
+  - id: LIMCONT-24
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_limites_continuite
+    tags: ["limites-trigonometriques", "limite-de-reference"]
+    primary_misconception: mc.math.maths_limites_continuite.trig-toutes-limites-valent-1
+    stem: >
+      Calculer $\lim_{x \to 0} \dfrac{1-\cos x}{x^2}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{1}{2}$"
+        correct: true
+      - id: B
+        text: "$1$, comme les deux autres limites trigonométriques de référence."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-toutes-limites-valent-1
+        feedback: >
+          Ce n'est pas parce que $\lim\frac{\sin x}{x}=1$ et
+          $\lim\frac{\tan x}{x}=1$ que TOUTE limite trigonométrique de
+          référence vaut $1$. En multipliant par le conjugué $1+\cos x$, on
+          obtient $\left(\frac{\sin x}{x}\right)^2 \times
+          \frac{1}{1+\cos x} \to 1 \times \frac{1}{2}$ : le facteur
+          $\frac{1}{1+\cos x}$, dû au carré au dénominateur, fait baisser
+          le résultat à $\frac12$.
+      - id: C
+        text: "$-\\dfrac{1}{2}$"
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-1-moins-cos-signe-confondu
+        feedback: >
+          $-\frac12$ est le résultat de $\lim_{x\to 0}\frac{\cos x-1}{x^2}$
+          (l'ordre des termes inversé), pas de $\lim_{x\to
+          0}\frac{1-\cos x}{x^2}$. Comme $\cos x \leq 1$ près de $0$,
+          $1-\cos x \geq 0$ et $x^2\geq 0$ : le quotient est toujours
+          positif ou nul, sa limite ne peut donc pas être négative.
+      - id: D
+        text: "$0$, car $\\dfrac{1-\\cos 0}{0^2}=\\dfrac{0}{0}$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
+        feedback: >
+          $\frac{0}{0}$ n'est pas une valeur numérique. Cette forme indique
+          qu'il faut passer par la dérivation via le conjugué $1+\cos x$
+          (comme au chapitre 4), pas conclure « $0$ » directement.
+    correct_feedback: >
+      Exact : en multipliant par le conjugué $1+\cos x$, on fait apparaître
+      $1-\cos^2 x=\sin^2 x$, d'où
+      $\frac{1-\cos x}{x^2}=\left(\frac{\sin x}{x}\right)^2 \times
+      \frac{1}{1+\cos x} \to 1^2 \times \frac{1}{2} = \frac{1}{2}$.
+    solution: |
+      $$
+      \frac{1-\cos x}{x^2} = \frac{(1-\cos x)(1+\cos x)}{x^2(1+\cos x)}
+      = \frac{1-\cos^2 x}{x^2(1+\cos x)} = \frac{\sin^2 x}{x^2(1+\cos x)}
+      = \left(\frac{\sin x}{x}\right)^2 \times \frac{1}{1+\cos x}
+      $$
+      Quand $x \to 0$ : $\left(\frac{\sin x}{x}\right)^2 \to 1$ et
+      $\frac{1}{1+\cos x} \to \frac{1}{1+1}=\frac12$, donc
+      $$\lim_{x \to 0} \frac{1-\cos x}{x^2} = \frac{1}{2}$$
+
+  - id: LIMCONT-25
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_limites_continuite
+    tags: ["limites-trigonometriques", "substitution"]
+    primary_misconception: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
+    stem: >
+      Soit $a$ un réel fixé quelconque. Calculer
+      $\lim_{x \to a} \dfrac{\sin(x-a)}{x-a}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$1$, quelle que soit la valeur de $a$."
+        correct: true
+      - id: B
+        text: "$0$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
+        feedback: >
+          En substituant $x=a$ directement, on tombe sur
+          $\frac{\sin 0}{0}=\frac{0}{0}$, qui n'est pas une valeur
+          numérique. Il faut reconnaître la structure $\frac{\sin(u)}{u}$
+          avec $u=x-a\to 0$, et invoquer le formulaire de référence.
+      - id: C
+        text: "$a$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
+        feedback: >
+          Le résultat ne dépend PAS de $a$ : en posant $u=x-a$, on a
+          $u\to 0$ quand $x\to a$ — quelle que soit la valeur de $a$ — et
+          $\frac{\sin(x-a)}{x-a}=\frac{\sin u}{u}\to 1$. Le paramètre $a$
+          sert uniquement à construire $u$ ; il ne survit pas dans le
+          résultat final.
+      - id: D
+        text: "Cette limite ne se calcule que si $a=0$ ; pour $a\\neq 0$, elle n'existe pas."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
+        feedback: >
+          La condition du formulaire porte sur $u=x-a$, pas sur $a$
+          lui-même : ce qui compte, c'est que $u\to 0$ quand $x\to a$, ce
+          qui est vrai pour N'IMPORTE QUEL $a$ fixé. Il n'y a aucune raison
+          de restreindre ce résultat au seul cas $a=0$.
+    correct_feedback: >
+      Exact : en posant $u=x-a$, on a $u\to 0$ quand $x\to a$, donc
+      $\frac{\sin(x-a)}{x-a}=\frac{\sin u}{u}\to 1$ — et ce, pour n'importe
+      quel $a$ fixé, sans que $a$ n'apparaisse dans le résultat.
+    solution: |
+      Posons $u=x-a$. Quand $x\to a$, $u\to 0$, et
+      $$\frac{\sin(x-a)}{x-a} = \frac{\sin u}{u}$$
+      qui est exactement la forme du formulaire de référence avec
+      $u\to 0$ :
+      $$\lim_{x \to a} \frac{\sin(x-a)}{x-a} = \lim_{u \to 0} \frac{\sin u}{u} = 1$$
+      Le résultat ne dépend pas de $a$.
+
+  - id: LIMCONT-26
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_limites_continuite
+    tags: ["limites-trigonometriques", "operations-sur-les-limites"]
+    primary_misconception: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
+    stem: >
+      Calculer $\lim_{x \to 0} \dfrac{\sin(x+1)}{x}$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elle n'existe pas comme limite finie : l'argument $x+1$ tend vers $1$ et non
+          vers $0$. Le numérateur tend vers $\sin(1)\neq 0$ et le dénominateur vers $0$.
+        correct: true
+      - id: B
+        text: "$1$, car l'expression est de la forme $\\sin(\\text{quelque chose})$ divisé par ce même quelque chose."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
+        feedback: >
+          Le formulaire $\lim\frac{\sin u}{u}=1$ n'est valable QUE si
+          $u\to 0$. Ici $u=x+1\to 1$ quand $x\to 0$ — pas $0$ — donc la
+          condition d'application échoue : ce n'est pas ce cas de figure,
+          malgré l'apparence du motif.
+      - id: C
+        text: "$0$, car la substitution en $x=0$ conduit à une forme indéterminée $\\frac{0}{0}$."
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-forme-reference-mal-geree
+        feedback: >
+          Ce n'est même pas une forme $\frac{0}{0}$ : le numérateur tend
+          vers $\sin(1)\approx 0{,}84$, un nombre NON NUL — seul le
+          dénominateur tend vers $0$. Avant d'invoquer un réflexe sur les
+          formes trigonométriques, il faut vérifier ce vers quoi tend
+          chaque morceau ; ici c'est le cas « non nul divisé par $0$ » du
+          chapitre 3, pas une forme indéterminée.
+      - id: D
+        text: >-
+          $+\infty$ des deux côtés, car $\sin(1)\approx 0{,}84$ est un nombre positif,
+          et un nombre positif divisé par une quantité tendant vers $0$ donne toujours
+          $+\infty$.
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
+        feedback: >
+          Le signe de $\sin(1)$ est bien positif, mais le signe du
+          DÉNOMINATEUR change selon le côté (rappel du chapitre 3) : pour
+          $x\to 0^{+}$, $x>0$ donc $\frac{\sin(1)}{x}\to+\infty$ ; pour
+          $x\to 0^{-}$, $x<0$ donc $\frac{\sin(1)}{x}\to-\infty$. Les deux
+          limites latérales étant différentes, la limite globale n'existe
+          pas.
+    correct_feedback: >
+      Exact : l'argument $x+1$ ne tend pas vers $0$, donc le formulaire
+      trigonométrique ne s'applique pas ici. Comme $\sin(x+1)\to\sin(1)\neq
+      0$ et $x\to 0$, on retombe sur le cas « non nul divisé par $0$ » du
+      chapitre 3 : la limite est infinie, de signe opposé à gauche et à droite —
+      elle n'existe donc pas globalement.
+    solution: |
+      L'argument $x+1$ de $\sin$ tend vers $1$ quand $x\to 0$, pas vers
+      $0$ : ce n'est pas la forme $\frac{\sin(u)}{u}$ avec $u\to 0$, le
+      formulaire trigonométrique ne s'applique donc pas.
+
+      Le numérateur $\sin(x+1) \to \sin(1) \neq 0$, et le dénominateur
+      $x\to 0$ : c'est le cas « nombre non nul divisé par $0$ » du chapitre 3.
+      $$
+      \lim_{x \to 0^{+}} \frac{\sin(x+1)}{x} = +\infty \qquad\qquad
+      \lim_{x \to 0^{-}} \frac{\sin(x+1)}{x} = -\infty
+      $$
+      Les deux limites latérales diffèrent : la limite globale n'existe
+      pas.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# COVERAGE SUMMARY (backfilled in the summit-conversion pilot, maths notion 2)
+#
+# LIMCONT-1..21 were authored BEFORE the R0-R5 misconception inventory
+# existed (`misconceptions:` covered only trig at the top of this pass).
+# This pass backfills item-level `primary_misconception` tags and per-
+# distractor `misconception:` tags on LIMCONT-1..21, following the
+# `content/pc/rc-charge/items.yaml` precedent (item-level counting, one
+# item = one count toward the floor). LIMCONT-22..26 (trig) are counted
+# alongside for a whole-notion picture but were NOT modified this pass.
+# ──────────────────────────────────────────────────────────────────────────────
+  # Ajoutés le 2026-09-05 : six familles sous le plancher de 3 items du banc —
+  # cinq à UN item (les quatre limites trigonométriques de référence et
+  # l'asymptote verticale, plus la limite latérale) et une à deux. Quatre items,
+  # onze places : le formulaire trigonométrique en deux énoncés, puis la
+  # fonction définie par morceaux et l'asymptote.
+  - id: LIMCONT-27
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: [limites_trigonometriques, formulaire]
+    primary_misconception: mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to 0} \frac{\sin(3x)}{x}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $3$ : on écrit $\dfrac{\sin(3x)}{x} = 3 \times \dfrac{\sin(3x)}{3x}$,
+          et le second facteur tend vers $1$
+        correct: true
+      - id: B
+        text: >-
+          $1$ : la forme $\dfrac{\sin(\text{quelque chose})}{\text{quelque
+          chose}}$ est reconnue, et sa limite de référence vaut $1$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste
+        feedback: >
+          Le motif n'est pas là : le dénominateur est $x$, pas $3x$. Pour faire
+          apparaître la limite de référence, il faut réécrire l'expression —
+          $\dfrac{\sin(3x)}{x} = 3\,\dfrac{\sin(3x)}{3x}$ — et le facteur $3$ qui
+          sort ne disparaît pas. La limite vaut donc $3$.
+      - id: C
+        text: >-
+          $1$ également, comme $\displaystyle\lim_{x\to 0}\dfrac{1-\cos x}{x^2}$
+          : toutes les limites trigonométriques de référence valent $1$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-toutes-limites-valent-1
+        feedback: >
+          Le formulaire n'est pas uniforme :
+          $\displaystyle\lim_{x\to 0}\dfrac{\sin x}{x} = 1$ et
+          $\displaystyle\lim_{x\to 0}\dfrac{\tan x}{x} = 1$, mais
+          $\displaystyle\lim_{x\to 0}\dfrac{1-\cos x}{x^2} = \dfrac{1}{2}$. Le
+          $\frac12$ n'est pas une coquetterie : il vient du facteur
+          $\dfrac{1}{1+\cos x}\to\dfrac12$ qu'on obtient en multipliant par la
+          quantité conjuguée (chapitre 7), pas d'une approximation de $\cos$.
+      - id: D
+        text: >-
+          $-3$, car $\sin(3x)$ et $x$ sont de signes contraires au voisinage de
+          $0$, comme dans $\dfrac{\cos x - 1}{x^2}$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-1-moins-cos-signe-confondu
+        feedback: >
+          $\sin(3x)$ et $x$ ont le MÊME signe au voisinage de $0$ — le sinus y
+          est croissant et s'annule en $0$ comme son argument. Le signe négatif
+          appartient à une autre limite :
+          $\displaystyle\lim_{x\to 0}\dfrac{\cos x - 1}{x^2} = -\dfrac{1}{2}$,
+          l'opposée de celle avec $1 - \cos x$.
+    correct_feedback: >
+      $\displaystyle\lim_{x \to 0} \frac{\sin(3x)}{x} = 3$. On force l'apparition
+      de la forme de référence en écrivant
+      $\dfrac{\sin(3x)}{x} = 3 \times \dfrac{\sin(3x)}{3x}$ : le second facteur
+      tend vers $1$, et le $3$ sorti reste.
+    solution: |
+      **Le formulaire de référence.**
+      $$\lim_{u \to 0}\frac{\sin u}{u} = 1$$
+      Il exige que le MÊME $u$ figure au numérateur, dans le sinus, et au
+      dénominateur.
+
+      **L'ajustement.** Ici le sinus porte $3x$ et le dénominateur $x$ :
+      $$\frac{\sin(3x)}{x} = 3 \times \frac{\sin(3x)}{3x}$$
+      En posant $u = 3x$, qui tend vers $0$ quand $x$ tend vers $0$ :
+      $$
+      \lim_{x \to 0}\frac{\sin(3x)}{3x} = 1
+      \quad\Longrightarrow\quad \lim_{x \to 0}\frac{\sin(3x)}{x} = 3
+      $$
+
+      **La règle générale.**
+      $\displaystyle\lim_{x\to 0}\frac{\sin(kx)}{x} = k$ : le coefficient de
+      l'argument se retrouve dans la limite.
+
+  - id: LIMCONT-28
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: [limites_trigonometriques, conditions_dapplication]
+    primary_misconception: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to +\infty} \frac{\sin x}{x}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $0$, par encadrement : $-\dfrac{1}{x} \leqslant \dfrac{\sin x}{x}
+          \leqslant \dfrac{1}{x}$, et les deux bornes tendent vers $0$
+        correct: true
+      - id: B
+        text: >-
+          $1$ : c'est la limite de référence $\dfrac{\sin u}{u}$, valable partout
+          où le motif apparaît
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0
+        feedback: >
+          La limite de référence exige que l'argument du sinus tende vers $0$ —
+          c'est ce qui fait tendre le rapport $\dfrac{\sin u}{u}$ vers $1$. Ici $x$ tend vers
+          $+\infty$ : $\sin x$ ne cesse d'osciller entre $-1$ et $1$ sans se
+          rapprocher de $x$, et le motif ne vaut plus rien.
+      - id: C
+        text: >-
+          $1$ aussi, puisque toutes les limites trigonométriques de référence
+          valent $1$, quel que soit le point où on les prend
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-toutes-limites-valent-1
+        feedback: >
+          Deux généralisations abusives d'un coup. Le formulaire n'est pas
+          uniforme — $\displaystyle\lim_{x\to 0}\dfrac{1-\cos x}{x^2}$ vaut
+          $\dfrac12$ — et surtout, une limite de référence est attachée à UN
+          point : celles-ci sont toutes prises en $0$, et ne disent rien de ce
+          qui se passe en $+\infty$.
+      - id: D
+        text: >-
+          $3$ : il faudrait d'abord réécrire $\dfrac{\sin x}{x}$ sous la forme
+          $3\,\dfrac{\sin(3x)}{3x}$ pour ajuster le coefficient
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste
+        feedback: >
+          L'ajustement du coefficient sert quand l'argument du sinus et le
+          dénominateur diffèrent — $\dfrac{\sin(3x)}{x}$, par exemple. Ici ils
+          sont identiques, il n'y a rien à ajuster ; et le problème est ailleurs :
+          l'argument ne tend pas vers $0$.
+    correct_feedback: >
+      $\displaystyle\lim_{x \to +\infty} \frac{\sin x}{x} = 0$. La limite de
+      référence ne s'applique pas — l'argument doit tendre vers $0$ — mais
+      l'encadrement $-\frac1x \leqslant \frac{\sin x}{x} \leqslant \frac1x$
+      conclut immédiatement par le théorème des gendarmes.
+    solution: |
+      **Pourquoi le formulaire ne s'applique pas.**
+      $\displaystyle\lim_{u\to 0}\frac{\sin u}{u} = 1$ repose sur le fait que
+      $\sin u$ se confond avec $u$ au voisinage de $0$. En $+\infty$, $\sin x$
+      oscille indéfiniment entre $-1$ et $1$ : rien ne se confond avec rien.
+
+      **Ce qui marche.** Le sinus est borné, le dénominateur explose :
+      $$
+      -1 \leqslant \sin x \leqslant 1
+      \quad\Longrightarrow\quad
+      -\frac{1}{x} \leqslant \frac{\sin x}{x} \leqslant \frac{1}{x}
+      \quad (x > 0)
+      $$
+      Les deux bornes tendent vers $0$, donc par le théorème des gendarmes :
+      $$\lim_{x \to +\infty}\frac{\sin x}{x} = 0$$
+
+      **Le réflexe à garder.** Devant une expression trigonométrique, deux
+      questions : *où* la limite est-elle prise, et *l'argument tend-il vers
+      $0$* ? Si non, le formulaire est hors de propos et c'est l'encadrement qui
+      travaille.
+
+  - id: LIMCONT-29
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: [limite_laterale, fonction_par_morceaux, continuite]
+    primary_misconception: mc.math.maths_limites_continuite.limite-laterale-non-verifiee
+    stem: >
+      Soit $f$ définie par $f(x) = x + 1$ si $x < 2$ et $f(x) = x^2 - 1$ si
+      $x \geqslant 2$. La fonction $f$ admet-elle une limite en $2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : les deux morceaux ont des expressions différentes, donc leurs
+          limites en $2$ ne peuvent pas coïncider
+        correct: false
+        misconception: mc.math.maths_limites_continuite.limite-laterale-non-verifiee
+        feedback: >
+          Des expressions différentes peuvent parfaitement se rejoindre en un
+          point : c'est même exactement ce qu'on vérifie en étudiant la
+          continuité d'une fonction définie par morceaux. Ici $x + 1$ et
+          $x^2 - 1$ valent toutes deux $3$ en $2$. Il faut CALCULER les deux
+          limites, jamais les déclarer différentes sur la seule forme des
+          expressions.
+      - id: B
+        text: >-
+          Oui, elle vaut $3$ : les deux limites latérales valent $3$, et
+          $f(2) = 3$ également
+        correct: true
+      - id: C
+        text: >-
+          Oui, elle vaut $3$ : la limite à gauche vaut $3$, ce qui suffit puisque
+          $f$ est définie des deux côtés
+        correct: false
+        misconception: mc.math.maths_limites_continuite.limite-laterale-non-verifiee
+        feedback: >
+          La conclusion est juste par accident : une seule limite latérale ne
+          suffit jamais. Si la seconde branche avait été $x^2 + 1$, la limite à
+          droite aurait valu $5$ et la fonction n'aurait admis AUCUNE limite en
+          $2$ — sans que le calcul de gauche change d'un iota.
+      - id: D
+        text: >-
+          Oui, elle vaut $4$ : quand les deux morceaux donnent des valeurs
+          proches, la limite est leur moyenne
+        correct: false
+        misconception: mc.math.maths_limites_continuite.limite-laterale-non-verifiee
+        feedback: >
+          Il n'existe aucune règle de moyenne. Soit les deux limites latérales
+          coïncident, et leur valeur commune EST la limite ; soit elles
+          diffèrent, et la fonction n'a pas de limite en ce point. Rien
+          n'autorise à inventer une valeur intermédiaire.
+    correct_feedback: >
+      Oui, $\displaystyle\lim_{x\to 2} f(x) = 3$. À gauche, $x + 1 \to 3$ ; à
+      droite, $x^2 - 1 \to 3$. Les deux limites latérales coïncident, donc la
+      limite existe — et comme $f(2) = 3$, la fonction est de plus continue en
+      $2$.
+    solution: |
+      **La méthode, en trois temps.**
+
+      1. *Limite à gauche* ($x < 2$, donc $f(x) = x+1$) :
+      $$\lim_{x \to 2^-} f(x) = 2 + 1 = 3$$
+      2. *Limite à droite* ($x \geqslant 2$, donc $f(x) = x^2 - 1$) :
+      $$\lim_{x \to 2^+} f(x) = 2^2 - 1 = 3$$
+      3. *Comparaison.* Les deux valent $3$, donc
+      $\displaystyle\lim_{x \to 2} f(x) = 3$.
+
+      **Le bonus.** $f(2) = 3$ également : la limite égale la valeur, donc $f$
+      est continue en $2$. La continuité demande TROIS choses — la limite à
+      gauche, la limite à droite, et la valeur en ce point — et il faut les
+      voir toutes les trois.
+
+      **Le contre-exemple à garder en tête.** Avec $f(x) = x^2 + 1$ à droite, on
+      aurait $5 \neq 3$ : pas de limite du tout, et le calcul de gauche serait
+      resté identique.
+
+  - id: LIMCONT-30
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_limites_continuite
+    tags: [asymptote, limite_infinie, limite_laterale]
+    primary_misconception: mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee
+    stem: >
+      Soit $f(x) = \dfrac{1}{x - 4}$. On observe
+      $\displaystyle\lim_{x \to 4^+} f(x) = +\infty$. Qu'en déduire sur la
+      courbe de $f$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Que la droite d'équation $x = 4$ est asymptote verticale à la courbe
+        correct: true
+      - id: B
+        text: >-
+          Que la droite d'équation $y = 4$ est asymptote à la courbe, l'équation
+          d'une asymptote s'écrivant toujours en $y$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee
+        feedback: >
+          Une asymptote VERTICALE est une droite verticale : son équation est de
+          la forme $x = a$. Les équations en $y$ décrivent les droites
+          horizontales, qui apparaissent quand $x$ tend vers l'infini et que
+          $f(x)$ tend vers un réel — la situation exactement inverse de
+          celle-ci.
+      - id: C
+        text: >-
+          Qu'il faut d'abord calculer $\displaystyle\lim_{x \to 4^-} f(x)$ et
+          vérifier qu'elle vaut $+\infty$ elle aussi, sans quoi il n'y a pas
+          d'asymptote
+        correct: false
+        misconception: mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee
+        feedback: >
+          Une seule limite infinie suffit à créer l'asymptote : la courbe s'y
+          colle du côté où elle explose. Ici la limite à gauche vaut d'ailleurs
+          $-\infty$, et la droite $x = 4$ est bel et bien asymptote — la courbe
+          la longe par le haut d'un côté, par le bas de l'autre.
+      - id: D
+        text: >-
+          Que $f$ admet en $4$ une limite égale à la moyenne de ses deux limites
+          latérales
+        correct: false
+        misconception: mc.math.maths_limites_continuite.limite-laterale-non-verifiee
+        feedback: >
+          Aucune règle de moyenne n'existe, et elle serait ici sans objet : les
+          limites latérales valent $-\infty$ et $+\infty$. Quand les deux
+          limites latérales diffèrent, la fonction n'admet pas de limite en ce
+          point — un point, c'est tout.
+    correct_feedback: >
+      La droite d'équation $x = 4$ est asymptote verticale. Une limite infinie
+      EN UN POINT fini donne une asymptote verticale, dont l'équation s'écrit en
+      $x$ ; une limite finie À L'INFINI donnerait une asymptote horizontale,
+      dont l'équation s'écrit en $y$.
+    solution: |
+      **Les deux situations à ne pas confondre.**
+
+      | ce qu'on observe | l'asymptote | son équation |
+      |---|---|---|
+      | $\displaystyle\lim_{x \to a} f(x) = \pm\infty$ ($a$ fini) | verticale | $x = a$ |
+      | $\displaystyle\lim_{x \to \pm\infty} f(x) = \ell$ ($\ell$ fini) | horizontale | $y = \ell$ |
+
+      **Ici.** La limite est infinie en un point fini : asymptote VERTICALE
+      d'équation $x = 4$.
+
+      **Une seule limite latérale suffit.** L'autre côté peut valoir $-\infty$
+      (c'est le cas ici), $+\infty$, ou même ne pas exister si la fonction n'est
+      définie que d'un côté : la droite reste asymptote.
+
+  - id: LIMCONT-31
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: [limites_trigonometriques, formulaire, signe]
+    primary_misconception: mc.math.maths_limites_continuite.trig-1-moins-cos-signe-confondu
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to 0} \frac{\cos x - 1}{x^2}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $-\dfrac{1}{2}$ : c'est l'opposé de la limite de référence, qui porte
+          sur $1 - \cos x$
+        correct: true
+      - id: B
+        text: >-
+          $\dfrac{1}{2}$ : c'est exactement la limite de référence, l'ordre des
+          deux termes de la soustraction étant sans importance
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-1-moins-cos-signe-confondu
+        feedback: >
+          L'ordre change tout : $\cos x - 1 = -(1 - \cos x)$, donc les deux
+          limites sont opposées. Le contrôle de signe se fait sans calcul :
+          au voisinage de $0$, $\cos x < 1$, donc $\cos x - 1$ est NÉGATIF, et
+          $x^2$ positif. Le quotient ne peut pas tendre vers une valeur positive.
+      - id: C
+        text: >-
+          $1$, comme toutes les limites trigonométriques de référence prises
+          en $0$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-toutes-limites-valent-1
+        feedback: >
+          Le formulaire n'est pas uniforme.
+          $\displaystyle\lim_{x\to0}\frac{\sin x}{x} = 1$ et
+          $\displaystyle\lim_{x\to0}\frac{\tan x}{x} = 1$, mais
+          $\displaystyle\lim_{x\to0}\frac{1-\cos x}{x^2} = \frac12$ — le $\frac12$
+          vient du facteur $\frac{1}{1+\cos x}\to\frac12$, qu'on fait apparaître
+          en multipliant par la quantité conjuguée (chapitre 7).
+      - id: D
+        text: >-
+          $-2$ : le dénominateur portant $x^2$, il faut ajuster le coefficient
+          comme pour $\dfrac{\sin(2x)}{x}$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste
+        feedback: >
+          L'ajustement de coefficient concerne l'ARGUMENT de la fonction
+          trigonométrique — $\sin(kx)$ contre $x$ — pas la puissance du
+          dénominateur. Ici l'argument du cosinus est $x$, le même que celui de
+          la limite de référence : il n'y a rien à ajuster, seulement un signe à
+          respecter.
+    correct_feedback: >
+      $\displaystyle\lim_{x \to 0} \frac{\cos x - 1}{x^2} = -\frac{1}{2}$. La
+      limite de référence est $\displaystyle\lim_{x\to0}\frac{1-\cos x}{x^2}
+      = \frac12$ ; inverser l'ordre de la soustraction change le signe. Le
+      contrôle immédiat : $\cos x < 1$ près de $0$, donc le numérateur est
+      négatif.
+    solution: |
+      **La limite de référence.**
+      $$\lim_{x \to 0}\frac{1 - \cos x}{x^2} = \frac{1}{2}$$
+
+      **Le passage à l'expression demandée.**
+      $$
+      \frac{\cos x - 1}{x^2} = -\,\frac{1 - \cos x}{x^2}
+      \quad\Longrightarrow\quad
+      \lim_{x \to 0}\frac{\cos x - 1}{x^2} = -\frac{1}{2}
+      $$
+
+      **Le contrôle de signe, à faire avant tout calcul.** Sur un voisinage de
+      $0$ privé de $0$, $\cos x < 1$ : le numérateur est strictement négatif, le
+      dénominateur strictement positif. Une réponse positive est donc fausse
+      d'avance — et ce contrôle coûte deux secondes.
+
+      **D'où vient le $\frac12$.** On multiplie par la quantité conjuguée $1+\cos x$ :
+      $\dfrac{1-\cos x}{x^2}=\left(\dfrac{\sin x}{x}\right)^2\times\dfrac{1}{1+\cos x}\to 1\times\dfrac12$ (chapitre 7).
+      Le $\frac12$ vient du facteur $\dfrac{1}{1+\cos x}$, pas d'une approximation de $\cos$.
+
+  - id: LIMCONT-32
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: [asymptote, limite_infinie, lecture_graphique]
+    primary_misconception: mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee
+    stem: >
+      Une fonction $g$ vérifie $\displaystyle\lim_{x \to -\infty} g(x) = 2$ et
+      $\displaystyle\lim_{x \to 1^-} g(x) = -\infty$. Quelles sont les
+      asymptotes de sa courbe, et leurs équations ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Une asymptote horizontale d'équation $y = 2$, donnée par la limite à
+          l'infini, et une asymptote verticale d'équation $x = 1$
+        correct: true
+      - id: B
+        text: >-
+          Une asymptote horizontale $y = 2$ et une asymptote verticale $y = 1$,
+          les équations d'asymptotes s'écrivant toujours en $y$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee
+        feedback: >
+          Une droite verticale ne peut pas avoir une équation en $y$ : $y = 1$
+          désigne une droite HORIZONTALE. La règle tient en une phrase — une
+          limite infinie en un point fini $a$ donne l'asymptote verticale
+          $x = a$ ; une limite finie $\ell$ à l'infini donne l'asymptote
+          horizontale $y = \ell$.
+      - id: C
+        text: >-
+          Une asymptote horizontale $x = 2$ et une asymptote verticale $y = 1$ :
+          les deux équations sont échangées par rapport aux limites
+        correct: false
+        misconception: mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee
+        feedback: >
+          Les deux équations sont effectivement échangées, et c'est l'erreur.
+          Le repère qui l'évite : l'équation d'une asymptote nomme la
+          COORDONNÉE CONSTANTE le long de la droite. Une horizontale garde son
+          ordonnée, d'où $y = \ell$ ; une verticale garde son abscisse, d'où
+          $x = a$.
+      - id: D
+        text: >-
+          Aucune conclusion sans la limite en $1^{+}$ : tant que les deux
+          limites latérales ne sont pas connues, on ne peut rien affirmer
+        correct: false
+        misconception: mc.math.maths_limites_continuite.limite-laterale-non-verifiee
+        feedback: >
+          Pour une ASYMPTOTE, une seule limite infinie suffit : la courbe se
+          colle à la droite du côté où elle explose, et ce qui se passe de
+          l'autre côté n'y change rien. La comparaison des deux limites
+          latérales sert à une autre question — l'existence d'une limite en un
+          point, donc la continuité.
+    correct_feedback: >
+      Asymptote horizontale $y = 2$ (limite finie à l'infini) et asymptote
+      verticale $x = 1$ (limite infinie en un point fini). L'équation nomme
+      toujours la coordonnée qui reste constante le long de la droite.
+    solution: |
+      **Deux lectures, deux droites.**
+
+      | limite donnée | asymptote | équation |
+      |---|---|---|
+      | $\displaystyle\lim_{x \to -\infty} g(x) = 2$ | horizontale, en $-\infty$ | $y = 2$ |
+      | $\displaystyle\lim_{x \to 1^-} g(x) = -\infty$ | verticale | $x = 1$ |
+
+      **Le repère qui évite l'échange.** L'équation d'une droite nomme la
+      coordonnée qui ne varie pas le long d'elle. Sur une horizontale, l'ordonnée
+      est constante : $y = \ell$. Sur une verticale, l'abscisse est constante :
+      $x = a$.
+
+      **Une seule limite latérale suffit** pour l'asymptote verticale : la
+      courbe la longe par en bas du côté gauche, quel que soit son comportement
+      à droite.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après LIMCONT-27 à LIMCONT-32. Six familles sous le
+# plancher, dont les quatre pièges du formulaire trigonométrique — coefficient
+# de l'argument non ajusté, « toutes les limites de référence valent 1 », signe
+# de $1-\cos x$, et la condition « l'argument doit tendre vers 0 » — plus la
+# limite latérale et l'asymptote verticale. Tableau GÉNÉRÉ, gardé par
+# web/scripts/resume-couverture.mjs.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.math.maths_limites_continuite.trig-forme-reference-mal-geree:                    { count: 5, items: [LIMCONT-22, LIMCONT-23, LIMCONT-24, LIMCONT-25, LIMCONT-26] }
+    mc.math.maths_limites_continuite.trig-argument-doit-tendre-vers-0:                  { count: 3, items: [LIMCONT-25, LIMCONT-26, LIMCONT-28] }
+    mc.math.maths_limites_continuite.trig-coefficient-argument-non-ajuste:              { count: 4, items: [LIMCONT-23, LIMCONT-27, LIMCONT-28, LIMCONT-31] }
+    mc.math.maths_limites_continuite.trig-toutes-limites-valent-1:                      { count: 4, items: [LIMCONT-24, LIMCONT-27, LIMCONT-28, LIMCONT-31] }
+    mc.math.maths_limites_continuite.trig-1-moins-cos-signe-confondu:                   { count: 3, items: [LIMCONT-24, LIMCONT-27, LIMCONT-31] }
+    mc.math.maths_limites_continuite.confond-point-et-voisinage:                        { count: 5, items: [LIMCONT-1, LIMCONT-3, LIMCONT-7, LIMCONT-9, LIMCONT-16] }
+    mc.math.maths_limites_continuite.limite-laterale-non-verifiee:                      { count: 4, items: [LIMCONT-1, LIMCONT-29, LIMCONT-30, LIMCONT-32] }
+    mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee:                 { count: 3, items: [LIMCONT-2, LIMCONT-12, LIMCONT-13] }
+    mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale: { count: 5, items: [LIMCONT-3, LIMCONT-4, LIMCONT-8, LIMCONT-14, LIMCONT-21] }
+    mc.math.maths_limites_continuite.definition-continuite-mal-appliquee:               { count: 4, items: [LIMCONT-5, LIMCONT-15, LIMCONT-16, LIMCONT-21] }
+    mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees:          { count: 4, items: [LIMCONT-6, LIMCONT-17, LIMCONT-18, LIMCONT-20] }
+    mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee:                { count: 3, items: [LIMCONT-10, LIMCONT-30, LIMCONT-32] }
+    mc.math.maths_limites_continuite.parite-signe-terme-dominant-mal-geree:             { count: 3, items: [LIMCONT-11, LIMCONT-13, LIMCONT-19] }
+  total_items: 32
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 5
+    R2: 3
+    R3: 3
+    R4: 4
+    R5: 3
+    R6: 8
+    R7: 3
+  honest_state: >-
+    Les treize misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Cinq y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

@@ -1,0 +1,2104 @@
+notion: ondes-mecaniques-periodiques
+skill_code: pc_ondes_mecaniques_periodiques
+misconceptions:
+  - id: OND-DIF-1
+    description: >
+      Condition de diffraction inversée : croit qu'il faut une ouverture
+      grande devant $\lambda$ ($a \gg \lambda$) pour observer une
+      diffraction notable, alors que c'est l'inverse ($a \lesssim \lambda$).
+  - id: OND-DIF-2
+    description: >
+      Croit que l'onde diffractée change de fréquence, de longueur d'onde
+      ou de célérité par rapport à l'onde incidente, alors que la
+      diffraction ne change jamais $f$, $\lambda$ ni $c$ — seulement la
+      géométrie de propagation.
+  - id: OND-DIF-3
+    description: >
+      Intuition « jet d'eau » : croit qu'une ouverture plus petite
+      concentre l'onde en un faisceau plus fin, alors qu'au contraire une
+      ouverture de l'ordre de $\lambda$, ou plus petite, fait s'étaler
+      l'onde sur un domaine angulaire plus large.
+  - id: OND-DIF-4
+    description: >
+      Condition de diffraction amputée, et non inversée : décide de la
+      diffraction sur la seule valeur de $a$, sans jamais la comparer à
+      $\lambda$ — retient « petite ouverture ⇒ diffraction » comme une
+      règle qui se suffit à elle-même. Formes : croit qu'à ouverture
+      inchangée le motif ne peut pas changer (changer la fréquence de la
+      source ne changerait rien derrière la fente) ; croit que la fente
+      la plus étroite donne toujours le plus grand étalement, quelle que
+      soit l'onde ; parle d'une ouverture « large » ou « étroite » dans
+      l'absolu, en centimètres ou en millimètres, sans second terme. Ce
+      modèle répond CORRECTEMENT à toute question où $\lambda$ est fixée
+      et seule $a$ varie : il ne se révèle qu'en faisant varier $\lambda$
+      à $a$ constante.
+  - id: OND-DISP-1
+    description: >
+      Croit que la célérité d'une onde dans un milieu est toujours une
+      constante fixe du milieu, la même pour toutes les fréquences —
+      ignore l'existence des milieux dispersifs.
+  - id: OND-DISP-2
+    description: >
+      Confond « dispersif » avec « qui atténue / absorbe l'onde » : croit
+      que la dispersion est une perte d'énergie, alors qu'elle ne concerne
+      que la dépendance de $c$ en $f$ (dispersion et amortissement sont des
+      propriétés indépendantes).
+  - id: OND-DISP-3
+    description: >
+      Croit que, dans un milieu dispersif, c'est la fréquence de l'onde qui
+      change au cours de la propagation, alors que $f$ reste fixée par la
+      source — c'est la célérité qui diffère d'une fréquence à l'autre.
+  # ── Familles rétro-taguées (double périodicité, fréquence/milieu, phase,
+  #    nature, calcul) — couvrent les distracteurs de OMPP-1…18, qui
+  #    précédaient l'inventaire par-distracteur. OND-DP-1 est la misconception
+  #    GATED de la double périodicité (probe des checkpoints cp-r0-predict et
+  #    cp-r2-double-periodicite).
+  - id: OND-DP-1
+    description: >
+      Double périodicité niée : croit que la répétition temporelle ($T$) et la
+      répétition spatiale ($\lambda$) sont indépendantes (on peut faire varier
+      l'une sans l'autre), qu'elles ne coïncident que par hasard, ou que leur
+      lien n'existe que dans un cas particulier (source sinusoïdale, son) —
+      alors que $\lambda = cT$ les soude pour toute onde périodique.
+  - id: OND-DP-2
+    description: >
+      $T$ et $\lambda$ confondues : croit que ce sont la même grandeur exprimée
+      en deux unités, les lit sur le même (ou le mauvais) graphique, ou confond
+      la longueur d'onde avec le retard $\tau$ ou avec la distance totale déjà
+      parcourue par l'onde.
+  - id: OND-FR-1
+    description: >
+      Fréquence attribuée au milieu : croit que $f$ dépend de la célérité ou du
+      milieu traversé (elle « changerait » proportionnellement à $c$ en passant
+      d'un milieu à l'autre), qu'il faut connaître $\lambda$ pour connaître $f$,
+      ou se trompe sur la grandeur ($f$ ou $\lambda$) qui change réellement au
+      changement de milieu — alors que $f$ est fixée par la seule source.
+  - id: OND-NAT-1
+    description: >
+      Nature ou transport erronés : croit qu'une onde progressive transporte de
+      la matière, que le son est transversal, qu'une onde change de nature d'une
+      période à l'autre, qu'elle vibre dans le vide, ou qu'un changement de
+      milieu interrompt la propagation.
+  - id: OND-CALC-1
+    description: >
+      Erreur dans une relation fondamentale de l'onde : inverse ou mélange les
+      grandeurs — $\tau = c/d$ ou $d\times c$ au lieu de $d/c$ ; $\lambda = c/T$
+      ou $c+T$ au lieu de $cT$ ; déphasage sans le facteur $2\pi$ ou rapport
+      inversé ; $f = T$ au lieu de $1/T$ ; $d/T$ au lieu de $d/\lambda$.
+  - id: OND-PH-2
+    description: >
+      Mauvais classement concordance/opposition de phase : croit qu'un nombre
+      entier de périodes plus une demi-période donne la concordance, confond
+      multiple pair et impair de $\lambda/2$, prend $\lambda/4$ pour
+      l'opposition, ou croit qu'aucun cas particulier ne s'applique.
+  - id: OND-PH-3
+    description: >
+      Malentendu sur le retard $\tau = d/c$ : croit qu'un point plus éloigné
+      vibre avec une période différente (plus grande), que la propagation est
+      instantanée (aucun retard), ou raisonne sur la petitesse relative du
+      retard au lieu du rapport $\tau/T$.
+
+items:
+  - id: OMPP-1
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_temporelle, periodicite_spatiale]
+    stem: >
+      Sur une corde parcourue par une onde progressive périodique
+      sinusoïdale, on veut mesurer la période $T$ de la source. Sur quel
+      type de graphique doit-on la lire ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Sur un graphique donnant l'élongation d'UN SEUL point de la corde
+          en fonction du temps $t$ (un oscillogramme).
+        correct: true
+      - id: B
+        text: >-
+          Sur une photographie de la corde entière à un instant donné,
+          montrant l'élongation en fonction de la position $x$.
+        correct: false
+        misconception: OND-DP-2
+        feedback: >
+          Ce graphique donne la longueur d'onde $\lambda$ (la répétition
+          spatiale du motif), pas la période $T$. $T$ se lit sur l'évolution
+          d'un seul point au cours du temps, pas sur une photo de tout le
+          milieu figée à un instant donné.
+      - id: C
+        text: >-
+          Sur un graphique donnant la célérité $c$ en fonction du temps.
+        correct: false
+        misconception: OND-DP-2
+        feedback: >
+          La célérité ne se mesure pas ainsi : dans un milieu homogène, $c$
+          reste constante, elle ne se lit pas sur un graphique en fonction du
+          temps. La période, elle, se lit sur l'évolution temporelle de
+          l'élongation d'un point fixe.
+      - id: D
+        text: >-
+          Peu importe : $T$ et $\lambda$ se lisent sur le même graphique, ce
+          sont la même grandeur exprimée dans deux unités différentes.
+        correct: false
+        misconception: OND-DP-2
+        feedback: >
+          $T$ et $\lambda$ ne sont pas la même grandeur mesurée dans deux
+          unités : l'une est une durée (secondes), lue sur l'évolution
+          temporelle d'UN point ; l'autre est une distance (mètres), lue sur
+          une photographie de TOUT le milieu à un instant donné. Elles sont
+          liées par $\lambda = cT$, mais elles décrivent deux répétitions
+          différentes — temporelle pour $T$, spatiale pour $\lambda$ — et se
+          lisent sur deux graphiques différents.
+    correct_feedback: >
+      La période $T$ caractérise la répétition dans le TEMPS : elle se lit en
+      suivant un seul point du milieu au cours du temps, jamais sur une
+      photographie instantanée de tout le milieu (qui donne $\lambda$, la
+      répétition spatiale).
+    solution: |
+      La période temporelle $T$ décrit combien de temps il faut à UN point
+      fixe du milieu pour reproduire son propre mouvement : elle se lit sur
+      un graphique élongation-en-fonction-du-temps pour ce point (un
+      oscillogramme). La longueur d'onde $\lambda$, elle, décrit la
+      répétition spatiale du motif à un instant donné : elle se lit sur une
+      photographie de tout le milieu (élongation en fonction de la
+      position). Les deux graphiques, et les deux grandeurs, sont distincts ;
+      ils sont reliés par $\lambda = cT$.
+
+  - id: OMPP-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_temporelle, periodicite_spatiale]
+    stem: >
+      Une photographie instantanée d'une corde, parcourue par une onde
+      progressive périodique sinusoïdale, montre des bosses espacées
+      régulièrement de $40\ \text{cm}$. Que représente cette distance de
+      $40\ \text{cm}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La longueur d'onde $\lambda$, une distance qui caractérise la
+          répétition spatiale du motif.
+        correct: true
+      - id: B
+        text: "La période $T$, exprimée ici en centimètres au lieu de secondes."
+        correct: false
+        misconception: OND-DP-2
+        feedback: >
+          $T$ est une durée : elle ne peut pas s'exprimer en centimètres,
+          quelle que soit la convention choisie — une durée et une distance
+          n'ont pas la même dimension physique. La distance lue sur une
+          photographie instantanée, c'est la longueur d'onde $\lambda$, pas
+          la période changée d'unité.
+      - id: C
+        text: >-
+          Le retard $\tau$ entre la source et le point le plus éloigné
+          visible sur la photo.
+        correct: false
+        misconception: OND-DP-2
+        feedback: >
+          Le retard $\tau$ est aussi une durée (il se calcule par
+          $\tau = d/c$), pas une distance ; il ne se lit pas comme un
+          espacement entre deux bosses sur une photo. L'espacement régulier
+          entre bosses identiques, c'est la longueur d'onde $\lambda$.
+      - id: D
+        text: >-
+          La distance totale parcourue par l'onde depuis le début de
+          l'expérience.
+        correct: false
+        misconception: OND-DP-2
+        feedback: >
+          Cette distance totale grandit sans cesse à mesure que l'onde
+          avance ; elle n'a rien de fixe. Ce qui reste constant et se répète,
+          c'est l'espacement entre deux bosses identiques consécutives — la
+          longueur d'onde $\lambda$ — indépendamment de la distance totale
+          déjà parcourue par l'onde.
+    correct_feedback: >
+      L'espacement régulier entre deux bosses identiques, lu sur une
+      photographie instantanée de tout le milieu, est par définition la
+      longueur d'onde $\lambda$ : la période spatiale de l'onde.
+    solution: |
+      Une photographie instantanée fige le milieu à un instant donné : elle
+      révèle la répétition SPATIALE du motif, c'est-à-dire la distance après
+      laquelle la forme de la perturbation se reproduit identique à
+      elle-même. Cette distance est la longueur d'onde $\lambda = 40\ \text{cm}$.
+      La période $T$ (une durée) et le retard $\tau$ (une durée aussi) ne se
+      lisent jamais sur ce type de graphique.
+
+  - id: OMPP-3
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [frequence, milieu_de_propagation]
+    stem: >
+      Une onde progressive périodique sinusoïdale, produite par un vibreur de
+      fréquence $f = 25\ \text{Hz}$, se propage d'abord dans une corde fine
+      (célérité $c_1 = 10\ \text{m/s}$) puis continue son chemin dans une
+      corde plus épaisse attachée bout à bout (célérité
+      $c_2 = 6\ \text{m/s}$). Que peut-on affirmer sur la fréquence de l'onde
+      une fois dans la corde épaisse ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elle vaut encore $25\ \text{Hz}$ : c'est le vibreur, la source, qui
+          impose la fréquence, quelle que soit la corde traversée.
+        correct: true
+      - id: B
+        text: >-
+          Elle vaut $25 \times (6/10) = 15\ \text{Hz}$, car la fréquence change
+          proportionnellement à la célérité du milieu.
+        correct: false
+        misconception: OND-FR-1
+        feedback: >
+          Il n'existe pas de proportionnalité entre $f$ et $c$ : la
+          fréquence est fixée uniquement par la source (le vibreur), elle ne
+          se « recalcule » jamais en fonction de la célérité du milieu
+          traversé. Ce qui change proportionnellement à $c$ à fréquence fixée,
+          c'est la longueur d'onde $\lambda = c/f$ — pas $f$ elle-même.
+      - id: C
+        text: >-
+          Elle ne peut pas être déterminée sans connaître au préalable la longueur
+          d'onde dans chacune des deux cordes.
+        correct: false
+        misconception: OND-FR-1
+        feedback: >
+          Pas besoin de $\lambda$ pour connaître $f$ : la fréquence est
+          entièrement fixée à la source et se conserve dans tout milieu que
+          l'onde traverse ensuite — c'est le mécanisme même de la
+          propagation de proche en proche, où chaque point ne fait que
+          relayer, jamais reprogrammer, le rythme déjà imposé par le vibreur.
+      - id: D
+        text: >-
+          Elle devient nulle : le changement brusque de corde interrompt purement et
+          simplement la vibration périodique.
+        correct: false
+        misconception: OND-NAT-1
+        feedback: >
+          Un changement de milieu modifie la célérité (et donc la longueur
+          d'onde), mais n'interrompt jamais le relais de la vibration
+          périodique déjà lancée par la source : chaque point continue de
+          reproduire, à son tour, le même mouvement à la même fréquence.
+    correct_feedback: >
+      La fréquence est une signature de la source, pas du milieu : tout point
+      du milieu — quelle que soit la corde, fine ou épaisse — vibre à
+      exactement la fréquence imposée par le vibreur. Seule la célérité (et
+      donc la longueur d'onde) dépend du milieu traversé.
+    solution: |
+      Le mécanisme établi au chapitre 2 : $y_M(t+T) = y_M(t)$ pour tout point $M$
+      atteint par l'onde, où $T$ est la période DE LA SOURCE — ce résultat ne
+      fait intervenir nulle part les propriétés du milieu. Changer de corde
+      change $c$, donc change $\lambda = c/f$, mais ne touche pas à $f$, qui
+      reste $25\ \text{Hz}$ dans les deux cordes.
+
+  - id: OMPP-4
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [frequence, milieu_de_propagation, son, hauteur]
+    stem: >
+      Un diapason vibre à une fréquence $f = 440\ \text{Hz}$, imposée par la
+      vibration mécanique de ses branches métalliques. Le son qu'il émet se
+      propage d'abord dans l'air ($c \approx 340\ \text{m/s}$) puis pénètre
+      dans l'eau ($c \approx 1500\ \text{m/s}$). Que devient la fréquence du
+      son, et donc sa hauteur perçue, en passant de l'air à l'eau ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elles restent inchangées : $440\ \text{Hz}$, imposés par la
+          vibration de la source, jamais par le milieu de propagation.
+        correct: true
+      - id: B
+        text: "Le son devient plus aigu, car il se propage nettement plus vite dans l'eau que dans l'air."
+        correct: false
+        misconception: OND-FR-1
+        feedback: >
+          Ce choix confond la célérité $c$ (fixée par le milieu, et qui
+          augmente bien ici) avec la fréquence $f$ (fixée par la source, et
+          qui ne change pas). Le fait que le son avance plus vite dans l'eau
+          ne change en rien le nombre de vibrations par seconde que produit
+          le diapason — ce qui change, c'est sa longueur d'onde
+          ($\lambda = c/f$ augmente avec $c$, à $f$ fixée).
+      - id: C
+        text: >-
+          Le son devient plus grave, car un milieu plus dense ralentit les vibrations
+          qui le traversent.
+        correct: false
+        misconception: OND-FR-1
+        feedback: >
+          Un changement de milieu peut modifier la célérité (ici elle
+          augmente, l'eau ne « ralentit » pas ce son), mais il ne modifie pas
+          la vibration de la source elle-même : la fréquence — et donc la
+          hauteur perçue — reste fixée par le diapason, pas par le milieu de
+          propagation traversé.
+      - id: D
+        text: >-
+          On ne peut pas le savoir sans connaître la longueur d'onde de ce son dans
+          l'eau.
+        correct: false
+        misconception: OND-FR-1
+        feedback: >
+          La fréquence est déterminée entièrement par la vibration de la
+          source, indépendamment du milieu qu'elle traverse ensuite (chapitre 2) :
+          pas besoin de connaître $\lambda$ dans l'eau pour savoir que $f$
+          reste $440\ \text{Hz}$. C'est au contraire $\lambda$ qui se déduit
+          de $f$ (fixée) et de $c$ (propre au milieu), jamais l'inverse ici.
+    correct_feedback: >
+      La fréquence, et donc la hauteur perçue, sont une signature de la
+      source : elles ne dépendent jamais du milieu de propagation traversé.
+      Seule la longueur d'onde change, car $c$ change avec le milieu.
+    solution: |
+      $f = 440\ \text{Hz}$ dans l'air comme dans l'eau : la fréquence est
+      fixée par la vibration mécanique des branches du diapason, pas par le
+      milieu. Ce qui change, c'est $\lambda$ :
+      $$
+      \lambda_{air} = \frac{340}{440} \approx 0{,}77\ \text{m}, \qquad
+      \lambda_{eau} = \frac{1500}{440} \approx 3{,}41\ \text{m}
+      $$
+      La hauteur perçue (liée à $f$) reste identique ; seul le « pas » spatial
+      de l'onde (liée à $c$) change.
+
+  - id: OMPP-5
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [dephasage, retard, calcul]
+    stem: >
+      Une onde progressive périodique sinusoïdale de période
+      $T = 0{,}1\ \text{s}$ et de longueur d'onde $\lambda = 0{,}4\ \text{m}$
+      se propage le long d'une corde. Deux points $M_1$ et $M_2$ de la corde
+      sont distants de $d = 0{,}6\ \text{m}$. Quel est le déphasage
+      $\Delta\varphi$ entre $M_1$ et $M_2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\Delta\\varphi = 3\\pi\\ \\text{rad}$"
+        correct: true
+      - id: B
+        text: "$\\Delta\\varphi = \\dfrac{d}{\\lambda} = 1{,}5\\ \\text{rad}$"
+        correct: false
+        misconception: OND-CALC-1
+        feedback: >
+          Ce calcul oublie le facteur $2\pi$. Le rapport $d/\lambda = 1{,}5$
+          compte seulement combien de longueurs d'onde séparent les deux
+          points — un nombre pur, pas encore un angle. Il faut le multiplier
+          par $2\pi$ (un tour complet par longueur d'onde) pour obtenir le
+          déphasage : $\Delta\varphi = 2\pi \times 1{,}5 = 3\pi\ \text{rad}$.
+      - id: C
+        text: "$\\Delta\\varphi = \\dfrac{d}{T} = 6\\ \\text{rad}$"
+        correct: false
+        misconception: OND-CALC-1
+        feedback: >
+          Ce calcul mélange une distance $d$ (en mètres) et une période $T$
+          (en secondes) : le rapport $d/T$ n'a pas la dimension d'un angle,
+          c'est dimensionnellement incohérent. Le déphasage se calcule avec
+          la longueur d'onde $\lambda$ (une distance) au dénominateur, jamais
+          avec la période $T$ (une durée) : $\Delta\varphi = 2\pi d/\lambda$.
+      - id: D
+        text: "$\\Delta\\varphi = 2\\pi \\times \\dfrac{T}{d} \\approx 1{,}05\\ \\text{rad}$"
+        correct: false
+        misconception: OND-CALC-1
+        feedback: >
+          Ce calcul inverse le rapport (et utilise en plus $T$ à la place de
+          $\lambda$). Le déphasage se construit à partir de la fraction de
+          longueur d'onde parcourue, $d/\lambda$, et non l'inverse : plus $d$
+          est grand par rapport à $\lambda$, plus le déphasage est grand,
+          jamais l'inverse.
+    correct_feedback: >
+      $\Delta\varphi = 2\pi d/\lambda = 2\pi \times 0{,}6/0{,}4 = 2\pi \times
+      1{,}5 = 3\pi\ \text{rad}$. Le facteur $2\pi$ convertit le nombre de
+      longueurs d'onde ($d/\lambda$) en un angle.
+    solution: |
+      $$\Delta\varphi = \frac{2\pi d}{\lambda} = \frac{2\pi \times 0{,}6}{0{,}4} = 2\pi \times 1{,}5 = 3\pi\ \text{rad}$$
+      $3\pi = 2\pi + \pi$ : c'est un multiple entier de $2\pi$ plus $\pi$,
+      donc un multiple impair de $\pi$ — les deux points vibrent en
+      opposition de phase.
+
+  - id: OMPP-6
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [dephasage, retard, calcul, concordance_opposition]
+    stem: >
+      Une onde progressive périodique se propage le long d'une corde à la
+      célérité $c = 4\ \text{m/s}$, avec une période $T = 0{,}2\ \text{s}$
+      (donc $\lambda = cT = 0{,}8\ \text{m}$). Un point $M$ est situé à
+      $d = 2\ \text{m}$ de la source $S$. Quel est le retard $\tau$ entre $S$
+      et $M$, et que peut-on en conclure sur leur relation de phase ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\tau = 0{,}5\ \text{s}$, ce qui correspond à $2{,}5$ périodes : $M$
+          vibre en opposition de phase avec $S$.
+        correct: true
+      - id: B
+        text: >-
+          $\tau = c/d = 2\ \text{s}$, ce qui correspond à $10$ périodes : $M$
+          vibre en concordance de phase avec $S$.
+        correct: false
+        misconception: OND-CALC-1
+        feedback: >
+          Ce calcul inverse le rapport : le retard est une distance DIVISÉE
+          par une célérité, $\tau = d/c$, pas $c/d$. De plus, $c/d$ n'a même
+          pas la dimension d'un temps ici. Avec $\tau = d/c = 2/4 =
+          0{,}5\ \text{s}$, on obtient $2{,}5$ périodes, pas $10$.
+      - id: C
+        text: >-
+          $\tau = d \times c = 8\ \text{s}$, ce qui correspond à $40$
+          périodes : $M$ vibre en concordance de phase avec $S$.
+        correct: false
+        misconception: OND-CALC-1
+        feedback: >
+          Le retard se calcule en DIVISANT la distance par la célérité,
+          $\tau = d/c$ — pas en les multipliant. Un produit $d \times c$ a la
+          dimension de $\text{m}^2/\text{s}$, pas d'une durée : ce résultat
+          ne peut pas être un retard.
+      - id: D
+        text: >-
+          $\tau = 0{,}5\ \text{s}$, ce qui correspond à $2{,}5$ périodes : $M$
+          vibre en concordance de phase avec $S$, car $2{,}5$ est un nombre
+          entier de demi-périodes.
+        correct: false
+        misconception: OND-PH-2
+        feedback: >
+          Le retard $\tau = 0{,}5\ \text{s}$ et le compte de $2{,}5$ périodes
+          sont corrects, mais la conclusion sur la phase est inversée : $2{,}5$
+          périodes, c'est $2$ périodes entières (pendant lesquelles $S$
+          reproduit son mouvement à l'identique) PLUS une demi-période
+          supplémentaire — ce qui place $M$ à l'opposé exact du cycle de $S$,
+          pas au même point du cycle. Un nombre entier de périodes donne la
+          concordance ; un nombre entier de périodes plus une demi-période
+          donne l'opposition.
+    correct_feedback: >
+      $\tau = d/c = 2/4 = 0{,}5\ \text{s}$, soit $\tau/T = 0{,}5/0{,}2 =
+      2{,}5$ périodes : deux périodes entières plus une demi-période. $M$
+      vibre donc en opposition de phase avec $S$.
+    solution: |
+      **Retard :**
+      $$\tau = \frac{d}{c} = \frac{2}{4} = 0{,}5\ \text{s}$$
+
+      **Nombre de périodes :**
+      $$\frac{\tau}{T} = \frac{0{,}5}{0{,}2} = 2{,}5$$
+
+      **Vérification par le déphasage :**
+      $$\Delta\varphi = \frac{2\pi d}{\lambda} = \frac{2\pi \times 2}{0{,}8} = 5\pi\ \text{rad}$$
+
+      $5\pi = 4\pi + \pi$ : un multiple entier de $2\pi$ plus $\pi$, donc un
+      multiple impair de $\pi$ — opposition de phase confirmée.
+
+  - id: OMPP-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_temporelle, periodicite_spatiale, milieu_de_propagation]
+    stem: >
+      On resserre le rythme du vibreur (il monte et descend plus vite), sans
+      toucher à la tension de la corde. Que montre l'expérience sur la
+      photographie de la corde ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Les bosses se resserrent aussi : la répétition spatiale et la
+          répétition temporelle ne sont pas indépendantes, elles varient
+          ensemble.
+        correct: true
+      - id: B
+        text: >-
+          Rien ne change sur la photo : l'espacement des bosses ne dépend
+          que de la tension de la corde, jamais du rythme du vibreur.
+        correct: false
+        misconception: OND-DP-1
+        feedback: >
+          L'espacement des bosses (la longueur d'onde) dépend à la fois de
+          la célérité (fixée par la tension) ET de la période de la source
+          ($\lambda = cT$) : resserrer le rythme du vibreur change $T$, donc
+          change $\lambda$, même si la tension — et donc $c$ — reste la
+          même.
+      - id: C
+        text: >-
+          Les bosses s'écartent : resserrer le rythme dans le temps élargit
+          automatiquement l'espacement dans l'espace.
+        correct: false
+        misconception: OND-DP-1
+        feedback: >
+          C'est l'inverse : resserrer le rythme temporel (diminuer $T$)
+          resserre aussi l'espacement spatial (diminuer $\lambda$), puisque
+          $\lambda = cT$ — les deux diminuent ensemble, ils ne varient
+          jamais en sens opposé.
+      - id: D
+        text: >-
+          Impossible à prévoir : la répétition temporelle du vibreur et la
+          répétition spatiale sur la corde sont deux phénomènes
+          indépendants.
+        correct: false
+        misconception: OND-DP-1
+        feedback: >
+          C'est précisément ce que l'expérience contredit : les deux
+          répétitions bougent ensemble, sans qu'on touche à l'espacement à
+          la main. Ce n'est pas une coïncidence — ce sont deux faces d'un
+          même phénomène, pas deux phénomènes indépendants.
+    correct_feedback: >
+      Resserrer le rythme de la source resserre nécessairement l'espacement
+      des bosses : la répétition temporelle et la répétition spatiale sont
+      les deux faces d'un même phénomène, jamais indépendantes l'une de
+      l'autre.
+    solution: |
+      L'expérience de l'accroche est décisive : quand on resserre le rythme
+      du vibreur sans toucher à la corde, les bosses sur la photo se
+      rapprochent aussi, exactement au même rythme. Si les deux répétitions
+      étaient indépendantes, cela n'aurait aucune raison de se produire. La
+      relation qui formalise ce lien, dérivée au chapitre 3, est
+      $\lambda = cT$ : à célérité $c$ fixée par le milieu, resserrer $T$ (le
+      rythme de la source) resserre $\lambda$ dans les mêmes proportions.
+
+  - id: OMPP-8
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_temporelle, periodicite_spatiale]
+    stem: >
+      Léa filme un seul point d'une corde parcourue par une onde progressive
+      périodique : elle observe que ce point repasse par le même mouvement
+      toutes les $20\ \text{ms}$. Yanis prend une photo de toute la corde à
+      un instant donné : il observe que les bosses se répètent tous les
+      $15\ \text{cm}$. Ces deux observations sont-elles reliées, ou
+      indépendantes ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Reliées : ce sont les deux faces d'une même onde périodique — la répétition
+          temporelle vue par Léa ($T$) et la répétition spatiale vue par Yanis
+          ($\lambda$) sont liées par la célérité.
+        correct: true
+      - id: B
+        text: >-
+          Indépendantes : Léa et Yanis observent en réalité deux ondes différentes, qui
+          se superposent par hasard sur la même corde tendue.
+        correct: false
+        misconception: OND-DP-1
+        feedback: >
+          Il n'y a qu'UNE seule onde sur la corde. $T$ et $\lambda$ ne sont
+          pas deux ondes différentes : ce sont deux façons de décrire le
+          même phénomène périodique, l'une en suivant le temps sur un point
+          fixe, l'autre en regardant l'espace à un instant fixe.
+      - id: C
+        text: >-
+          Indépendantes : la mesure de Yanis, l'espacement des bosses, ne dépend que de
+          la longueur totale de la corde utilisée, et non du mouvement du vibreur.
+        correct: false
+        misconception: OND-DP-1
+        feedback: >
+          La longueur totale de la corde ne fait que limiter combien de
+          bosses sont visibles ; elle ne fixe pas leur espacement. Cet
+          espacement, la longueur d'onde, dépend du rythme du vibreur (via
+          $T$) et de la célérité — jamais de la longueur de corde
+          disponible.
+      - id: D
+        text: >-
+          On ne peut rien affirmer : il pourrait très bien s'agir d'une simple
+          coïncidence si les deux valeurs mesurées semblent correspondre.
+        correct: false
+        misconception: OND-DP-1
+        feedback: >
+          Ce n'est jamais une coïncidence : dès que la source et le milieu
+          sont fixés, la répétition temporelle et la répétition spatiale
+          sont forcées d'aller ensemble — c'est tout l'objet de la relation
+          $\lambda = cT$ qui les relie.
+    correct_feedback: >
+      Léa et Yanis décrivent la même onde périodique sous deux angles
+      différents — le temps pour un point fixe ($T$), l'espace à un instant
+      fixe ($\lambda$) — et ces deux répétitions sont nécessairement liées,
+      jamais indépendantes ni coïncidentes.
+    solution: |
+      Une seule onde progressive périodique se propage sur la corde. Le film
+      de Léa révèle sa répétition dans le temps ($T = 20\ \text{ms}$) ; la
+      photo de Yanis révèle sa répétition dans l'espace
+      ($\lambda = 15\ \text{cm}$). Ces deux grandeurs ne sont ni deux ondes
+      séparées, ni de simples coïncidences numériques : elles sont liées par
+      la célérité de la corde, $\lambda = cT$, une relation dérivée au chapitre 3.
+
+  - id: OMPP-9
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_temporelle, periodicite_spatiale, onde_sinusoidale]
+    stem: >
+      Quelle affirmation décrit correctement le lien entre la répétition
+      temporelle ($T$) et la répétition spatiale ($\lambda$) d'une onde
+      progressive périodique ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Ce sont deux aspects d'un même phénomène : changer le rythme de la source
+          change nécessairement l'espacement spatial, et cela vaut pour toute onde
+          périodique.
+        correct: true
+      - id: B
+        text: >-
+          Ce sont deux phénomènes indépendants : on peut resserrer le rythme de la
+          source sans que l'espacement spatial des bosses en soit modifié.
+        correct: false
+        misconception: OND-DP-1
+        feedback: >
+          C'est le contraire de ce que montre l'expérience : resserrer le
+          rythme de la source resserre toujours l'espacement spatial en
+          proportion. Les deux répétitions ne sont jamais indépendantes.
+      - id: C
+        text: >-
+          Ce lien n'existe que si la source vibre sinusoïdalement ; pour une source
+          périodique quelconque, non sinusoïdale, $T$ et $\lambda$ ne sont pas reliés.
+        correct: false
+        misconception: OND-DP-1
+        feedback: >
+          Le lien entre $T$ et $\lambda$ est établi sans jamais supposer que
+          la source vibre sinusoïdalement : il vient uniquement du fait que
+          chaque point du milieu rejoue le mouvement de la source avec
+          retard. Le cas sinusoïdal, vu plus loin, est un cas particulier
+          qui s'ajoute à ce lien général, il ne le conditionne pas.
+      - id: D
+        text: >-
+          Ce lien n'existe que pour les ondes sonores, et jamais pour une onde qui se
+          propage le long d'une corde tendue.
+        correct: false
+        misconception: OND-DP-1
+        feedback: >
+          C'est l'inverse chronologique : le lien entre $T$ et $\lambda$ est
+          établi d'abord pour une onde sur une corde, avant d'être appliqué
+          au son — qui n'est qu'un exemple parmi d'autres d'onde mécanique
+          progressive périodique, pas un cas à part.
+    correct_feedback: >
+      La double périodicité — temporelle et spatiale — est une propriété
+      générale de toute onde progressive périodique, quelle que soit la
+      nature précise du mouvement de la source (sinusoïdal ou non) et quel
+      que soit le milieu (corde, air, etc.).
+    solution: |
+      Le mécanisme établi au chapitre 2 (retard + périodicité de la
+      source) ne fait intervenir à aucun moment une forme particulière du
+      mouvement de $S$ : il vaut pour n'importe quelle source périodique. Le
+      lien entre $T$ et $\lambda$ est donc général — il ne dépend ni de la
+      nature sinusoïdale ou non du mouvement, ni du type d'onde (corde, son,
+      ou autre).
+
+  - id: OMPP-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_temporelle, transport_matiere, retard, longitudinale_transversale]
+    stem: >
+      Une onde progressive périodique est définie comme le cas particulier
+      d'une onde progressive où...
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          la perturbation imposée par la source se répète à l'identique, à
+          intervalles de temps réguliers $T$.
+        correct: true
+      - id: B
+        text: >-
+          la perturbation transporte de la matière en plus de l'énergie,
+          contrairement à une onde progressive simple.
+        correct: false
+        misconception: OND-NAT-1
+        feedback: >
+          Une onde progressive — périodique ou non — ne transporte jamais de
+          matière, seulement de l'énergie : c'est une propriété de TOUTE
+          onde progressive, héritée du chapitre précédent, pas quelque chose
+          que la périodicité changerait.
+      - id: C
+        text: >-
+          la perturbation se propage sans aucun retard entre la source et
+          les points du milieu.
+        correct: false
+        misconception: OND-PH-3
+        feedback: >
+          Le retard $\tau = d/c$ entre la source et un point $M$ existe
+          toujours, périodicité ou non : $M$ rejoue le mouvement de $S$ avec
+          ce retard, il ne le reproduit pas instantanément. La périodicité
+          ne supprime pas le retard, elle garantit seulement que $M$ vibre à
+          la même période que $S$ malgré ce retard.
+      - id: D
+        text: >-
+          la perturbation change de nature (une onde transversale devient
+          longitudinale) à chaque nouvelle période.
+        correct: false
+        misconception: OND-NAT-1
+        feedback: >
+          La nature d'une onde — transversale ou longitudinale — est fixée
+          par le mécanisme physique de la source et du milieu, elle ne
+          change jamais d'une période à l'autre. La périodicité concerne la
+          répétition du mouvement dans le temps, pas la nature géométrique
+          de la vibration.
+    correct_feedback: >
+      Ce qui définit une onde progressive périodique, c'est uniquement que
+      le mouvement de la source se répète à l'identique à intervalles
+      réguliers $T$ — tout le reste (absence de transport de matière, retard
+      $d/c$, nature transversale ou longitudinale) est hérité tel quel du
+      cas général d'onde progressive.
+    solution: |
+      Une onde progressive périodique est un CAS PARTICULIER d'onde
+      progressive : elle en garde toutes les propriétés générales
+      (propagation de proche en proche, sans transport de matière, avec un
+      retard $\tau = d/c$ entre source et point atteint, une nature fixée
+      par le mécanisme physique) et y ajoute une seule propriété
+      supplémentaire — la répétition à l'identique du mouvement de la
+      source, à intervalles de temps réguliers $T$.
+
+  - id: OMPP-11
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_temporelle, retard, milieu_de_propagation, dephasage]
+    stem: >
+      Le retard $\tau = d/c$ entre la source $S$ et un point $M$ dépend de
+      la distance $d$. Cela signifie-t-il que deux points du milieu, à des
+      distances différentes de $S$, vibrent avec des périodes différentes ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : quelle que soit la distance $d$, chaque point $M$ vibre avec exactement
+          la même période $T$ que la source ; seul l'instant du cycle change avec le
+          retard.
+        correct: true
+      - id: B
+        text: >-
+          Oui : plus le point $M$ est loin de $S$, plus le signal met de temps à
+          l'atteindre, et donc plus sa période est grande.
+        correct: false
+        misconception: OND-PH-3
+        feedback: >
+          Le retard $\tau$ (le temps que met le signal à atteindre $M$ pour
+          la première fois) et la période $T$ (le temps que met $M$, une
+          fois atteint, à répéter son propre mouvement) sont deux durées
+          différentes. Un retard plus grand décale seulement le début de la
+          vibration de $M$ dans le temps, il n'allonge jamais sa période une
+          fois que $M$ vibre.
+      - id: C
+        text: >-
+          Oui, mais seulement si le milieu est tel que la célérité $c$ varie avec la
+          distance parcourue par l'onde ; sinon la période reste inchangée.
+        correct: false
+        misconception: OND-PH-3
+        feedback: >
+          La démonstration ($y_M(t+T) = y_M(t)$) ne fait intervenir que la
+          périodicité de la source, jamais une propriété particulière du
+          milieu : elle vaut pour n'importe quel milieu, homogène ou non. La
+          période de chaque point est toujours celle de la source, sans
+          condition supplémentaire sur le milieu.
+      - id: D
+        text: >-
+          Non, la période ne change pas, mais le déphasage entre $S$ et $M$ est toujours
+          nul, quelle que soit la distance $d$ qui les sépare.
+        correct: false
+        misconception: OND-PH-2
+        feedback: >
+          Le déphasage $\Delta\varphi = 2\pi d/\lambda$ dépend de $d$ et
+          n'est nul que si $d$ est un multiple entier de $\lambda$ : il
+          n'est pas systématiquement nul. Ce qui est vrai pour TOUT point
+          $M$, c'est l'égalité des périodes, pas l'absence de déphasage.
+    correct_feedback: >
+      Le retard ne fait que décaler dans le temps le mouvement de $M$ ;
+      décaler une fonction périodique ne change jamais sa période. Tout
+      point atteint par l'onde vibre avec exactement la période $T$ de la
+      source, quelle que soit sa distance à celle-ci.
+    solution: |
+      On a établi $y_M(t+T) = y_M(t)$ pour tout point $M$, en utilisant
+      uniquement la périodicité de $S$ (et non une valeur particulière de
+      $\tau$ ou de $c$). Le retard $\tau = d/c$ décale seulement l'instant
+      où le cycle de $M$ commence à être observé — il ne modifie ni la durée
+      de ce cycle ($T$), ni la conclusion, quelle que soit la distance $d$
+      ou le milieu traversé.
+
+  - id: OMPP-12
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_temporelle, periodicite_spatiale, calcul]
+    stem: >
+      Une onde progressive périodique sinusoïdale se propage le long d'une
+      corde à la célérité $c = 12\ \text{m/s}$. La période de la source est
+      $T = 0{,}4\ \text{s}$. Quelle est la longueur d'onde $\lambda$ de cette
+      onde ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\lambda = cT = 12 \times 0{,}4 = 4{,}8\ \text{m}$
+        correct: true
+      - id: B
+        text: >-
+          $\lambda = c/T = 12/0{,}4 = 30\ \text{m}$
+        correct: false
+        misconception: OND-CALC-1
+        feedback: >
+          Ce calcul divise $c$ par $T$ au lieu de les multiplier : la
+          relation correcte, dérivée au chapitre 3, est $\lambda = cT$ (un produit),
+          pas un quotient. De plus, $c/T$ n'a pas la dimension d'une
+          longueur.
+      - id: C
+        text: >-
+          $\lambda = T/c = 0{,}4/12 \approx 0{,}033\ \text{m}$
+        correct: false
+        misconception: OND-CALC-1
+        feedback: >
+          Ce calcul inverse le rôle de $c$ et $T$ dans la relation
+          $\lambda = cT$ : c'est un produit des deux grandeurs, pas un
+          quotient de l'une par l'autre — et $T/c$ n'a d'ailleurs pas la
+          dimension d'une longueur.
+      - id: D
+        text: >-
+          $\lambda = c + T = 12{,}4\ \text{m}$
+        correct: false
+        misconception: OND-CALC-1
+        feedback: >
+          On ne peut jamais additionner une célérité (en m/s) et une durée
+          (en s) : ce ne sont pas des grandeurs de même nature. La longueur
+          d'onde se calcule par le PRODUIT $\lambda = cT$, jamais par une
+          somme.
+    correct_feedback: >
+      La longueur d'onde se dérive du fait que l'onde avance d'une distance
+      $\lambda$ pendant chaque période $T$, à la célérité $c$ :
+      $\lambda = cT = 12 \times 0{,}4 = 4{,}8\ \text{m}$.
+    solution: |
+      $$\lambda = cT = 12 \times 0{,}4 = 4{,}8\ \text{m}$$
+      On peut vérifier avec l'écriture équivalente : $f = 1/T =
+      2{,}5\ \text{Hz}$, donc $\lambda = c/f = 12/2{,}5 = 4{,}8\ \text{m}$ —
+      les deux calculs coïncident.
+
+  - id: OMPP-13
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [dephasage, concordance_opposition, periodicite_spatiale]
+    stem: >
+      Deux points $M_1$ et $M_2$ d'une corde sont séparés d'une distance
+      $d = 2\lambda$ (deux longueurs d'onde complètes). Quelle est leur
+      relation de phase ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Concordance de phase : $d$ est un multiple entier de $\lambda$
+          ($d = 2\lambda$), donc $\Delta\varphi = 4\pi\ \text{rad}$, un
+          multiple entier de $2\pi$.
+        correct: true
+      - id: B
+        text: >-
+          Opposition de phase : $d$ est un multiple de $\lambda/2$, puisque
+          $2\lambda = 4 \times (\lambda/2)$.
+        correct: false
+        misconception: OND-PH-2
+        feedback: >
+          L'opposition de phase exige un multiple IMPAIR de $\lambda/2$, pas
+          n'importe quel multiple. Ici $2\lambda = 4 \times (\lambda/2)$, où
+          $4$ est un multiple PAIR — ce qui équivaut exactement à
+          $2\lambda$, donc à la concordance, pas à l'opposition.
+      - id: C
+        text: >-
+          On ne peut pas savoir sans connaître les valeurs numériques de $d$
+          et $\lambda$ ; une relation générale n'existe pas.
+        correct: false
+        misconception: OND-CALC-1
+        feedback: >
+          Le rapport $d/\lambda = 2$ suffit entièrement : la relation
+          $\Delta\varphi = 2\pi d/\lambda$ ne dépend que de ce rapport, pas
+          des valeurs numériques séparées de $d$ et de $\lambda$. Ici
+          $d/\lambda$ est un entier, ce qui détermine la concordance sans
+          calcul supplémentaire.
+      - id: D
+        text: >-
+          Ni concordance ni opposition : $d = 2\lambda$ ne correspond à
+          aucun des deux cas particuliers reconnus.
+        correct: false
+        misconception: OND-PH-2
+        feedback: >
+          La concordance de phase correspond à TOUT multiple entier de
+          $\lambda$ ($d = k\lambda$, pour n'importe quel entier $k$), pas
+          seulement à $d = \lambda$. Avec $k = 2$, $d = 2\lambda$ est bien un
+          cas de concordance.
+    correct_feedback: >
+      $d = 2\lambda$ est un multiple entier de $\lambda$ ($k=2$), donc
+      $\Delta\varphi = 2\pi \times 2 = 4\pi\ \text{rad}$, un multiple entier
+      de $2\pi$ : $M_1$ et $M_2$ vibrent en concordance de phase.
+    solution: |
+      $$\Delta\varphi = \frac{2\pi d}{\lambda} = \frac{2\pi \times 2\lambda}{\lambda} = 4\pi\ \text{rad}$$
+      $4\pi = 2 \times 2\pi$ : un multiple entier de $2\pi$, donc concordance
+      de phase. Tout multiple entier de $\lambda$ ($\lambda$, $2\lambda$,
+      $3\lambda$, ...) donne la concordance ; seuls les multiples IMPAIRS de
+      $\lambda/2$ donnent l'opposition.
+
+  - id: OMPP-14
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [longitudinale_transversale, milieu_de_propagation, son]
+    stem: >
+      Le son est une onde mécanique progressive périodique. Comment les
+      particules d'air vibrent-elles par rapport à la direction de
+      propagation du son ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elles vibrent (compressions et dilatations) dans la MÊME direction
+          que la propagation : le son est une onde longitudinale.
+        correct: true
+      - id: B
+        text: >-
+          Elles vibrent perpendiculairement à la direction de propagation,
+          comme sur une corde : le son est une onde transversale.
+        correct: false
+        misconception: OND-NAT-1
+        feedback: >
+          C'est l'inverse : contrairement à l'onde sur une corde
+          (transversale), le son se propage par des compressions et des
+          dilatations de l'air DANS la même direction que la propagation —
+          c'est précisément ce qui définit une onde longitudinale.
+      - id: C
+        text: >-
+          Elles ne vibrent pas du tout : seule l'énergie se déplace, sans
+          que l'air soit localement perturbé.
+        correct: false
+        misconception: OND-NAT-1
+        feedback: >
+          Une onde mécanique se propage justement PARCE QUE le milieu est
+          perturbé localement, de proche en proche : pour le son, cette
+          perturbation, ce sont les compressions et dilatations de l'air.
+          Sans vibration locale des particules d'air, il n'y aurait aucune
+          perturbation à relayer.
+      - id: D
+        text: >-
+          Elles vibrent dans le vide, ce qui explique que le son puisse se
+          propager dans l'espace.
+        correct: false
+        misconception: OND-NAT-1
+        feedback: >
+          Le son est une onde MÉCANIQUE : il a besoin d'un milieu matériel
+          pour se propager (ici, l'air) et ne se propage jamais dans le
+          vide — contrairement à la lumière. Il n'y a donc rien à faire
+          vibrer dans le vide.
+    correct_feedback: >
+      Le son se propage par des compressions et dilatations successives de
+      l'air, dans la MÊME direction que la propagation : c'est la définition
+      même d'une onde longitudinale, à la différence d'une onde sur une
+      corde qui est transversale.
+    solution: |
+      Comme toute onde mécanique, le son a besoin d'un milieu matériel (il
+      ne se propage pas dans le vide) et perturbe ce milieu localement pour
+      se propager de proche en proche. Cette perturbation prend la forme de
+      compressions et de dilatations de l'air ALIGNÉES avec la direction de
+      propagation : le son est donc une onde longitudinale, contrairement à
+      l'onde sur une corde, transversale.
+
+  - id: OMPP-15
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [frequence, hauteur, milieu_de_propagation, longitudinale_transversale]
+    stem: >
+      Deux notes de musique, l'une aiguë et l'autre grave, sont jouées dans
+      la même salle (même air, même température). D'un point de vue
+      physique, qu'est-ce qui les distingue nécessairement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Leur fréquence $f$ : la note aiguë a une fréquence plus élevée que la note
+          grave ; la célérité du son, elle, reste la même dans les deux cas.
+        correct: true
+      - id: B
+        text: >-
+          Leur célérité $c$ : le son de la note aiguë se propage nettement plus vite
+          dans l'air ambiant que celui de la note grave.
+        correct: false
+        misconception: OND-FR-1
+        feedback: >
+          La célérité est fixée par le milieu de propagation (ici, l'air à
+          une température donnée), pas par la hauteur de la note émise :
+          dans la même salle, les deux sons se propagent exactement à la
+          même célérité $c$. Ce qui distingue les deux notes, c'est leur
+          fréquence, imposée par leur source respective.
+      - id: C
+        text: >-
+          Seulement leur longueur d'onde $\lambda$, la fréquence étant nécessairement la
+          même pour tout son émis dans un même milieu.
+        correct: false
+        misconception: OND-FR-1
+        feedback: >
+          C'est l'inverse : c'est la fréquence qui est imposée par la source
+          et qui DIFFÈRE nécessairement entre deux notes de hauteurs
+          différentes — c'est même ce qui définit la hauteur. La longueur
+          d'onde n'est qu'une conséquence, via $\lambda = c/f$, elle ne
+          varie que parce que $f$ varie (à $c$ fixée).
+      - id: D
+        text: >-
+          La nature de l'onde elle-même : la note grave est une onde longitudinale, la
+          note aiguë une onde transversale.
+        correct: false
+        misconception: OND-NAT-1
+        feedback: >
+          Le son est TOUJOURS une onde longitudinale, quelle que soit sa
+          fréquence ou la hauteur perçue : la nature d'une onde
+          (longitudinale ou transversale) ne dépend pas de sa fréquence,
+          mais du mécanisme physique de sa propagation.
+    correct_feedback: >
+      La hauteur d'un son est directement liée à sa fréquence, fixée par la
+      source qui vibre. Dans un même milieu, deux notes de hauteurs
+      différentes ont donc des fréquences différentes, mais partagent
+      exactement la même célérité.
+    solution: |
+      La hauteur perçue dépend uniquement de la fréquence $f$, fixée par la
+      source (chapitres 2 et 5) : une note aiguë a un $f$ plus élevé qu'une note
+      grave. Dans la même salle, l'air constitue un seul et même milieu de
+      propagation, donc la célérité $c$ est identique pour les deux notes ;
+      seule leur longueur d'onde diffère, en conséquence de $f$ (via
+      $\lambda = c/f$), pas l'inverse. Le son reste une onde longitudinale
+      dans les deux cas.
+
+  - id: OMPP-16
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [dephasage, concordance_opposition, retard, calcul]
+    stem: >
+      Un vibreur impose une fréquence $f = 20\ \text{Hz}$ à l'extrémité
+      d'une corde. La célérité de l'onde vaut $c = 6\ \text{m/s}$. Un point
+      $M$ de la corde est situé à $d = 1{,}35\ \text{m}$ de la source.
+      Quelle est la relation de phase entre $M$ et la source ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Opposition de phase : $T = 1/f = 0{,}05\ \text{s}$, $\tau = d/c =
+          0{,}225\ \text{s}$, donc $\tau/T = 4{,}5$, soit $4$ périodes
+          entières plus une demi-période.
+        correct: true
+      - id: B
+        text: >-
+          Concordance de phase : $\tau/T = 4{,}5$ est un multiple de $0{,}5$, ce qui
+          suffit à établir la concordance entre $S$ et $M$.
+        correct: false
+        misconception: OND-PH-2
+        feedback: >
+          $4{,}5$ périodes, c'est $4$ périodes entières (qui donnent la
+          concordance) PLUS une demi-période supplémentaire, qui déplace $M$
+          à l'opposé exact du cycle de $S$. Le fait que $4{,}5$ soit un
+          multiple de $0{,}5$ ne suffit pas : il faut un nombre ENTIER de
+          périodes pour la concordance, un nombre entier plus une
+          demi-période pour l'opposition.
+      - id: C
+        text: >-
+          On ne peut pas conclure sans connaître au préalable la longueur d'onde
+          $\lambda$ de l'onde sur la corde.
+        correct: false
+        misconception: OND-CALC-1
+        feedback: >
+          Le rapport $\tau/T$ (le retard divisé par la période) suffit à lui
+          seul pour conclure : c'est équivalent à $\Delta\varphi =
+          2\pi\tau/T$, une autre écriture du déphasage qui ne nécessite pas
+          $\lambda$ séparément — même si on peut aussi le retrouver via
+          $\lambda = cT$ et $\Delta\varphi = 2\pi d/\lambda$.
+      - id: D
+        text: >-
+          Concordance de phase, car $\tau = 0{,}225\ \text{s}$ est très petit devant la
+          durée totale de l'expérience menée.
+        correct: false
+        misconception: OND-PH-3
+        feedback: >
+          La relation de phase ne dépend jamais de la petitesse du retard
+          par rapport à une durée extérieure (comme la durée totale de
+          l'expérience) : elle dépend uniquement du rapport $\tau/T$,
+          comparé à un nombre entier de périodes. Ici ce rapport vaut
+          $4{,}5$, ce qui donne l'opposition, pas la concordance.
+    correct_feedback: >
+      $\tau/T = 4{,}5$ : quatre périodes entières, pendant lesquelles $S$
+      reproduit son mouvement à l'identique, plus une demi-période
+      supplémentaire, qui place $M$ à l'opposé exact du cycle de $S$ —
+      l'opposition de phase.
+    solution: |
+      $$
+      T = \frac{1}{f} = \frac{1}{20} = 0{,}05\ \text{s}, \qquad
+      \tau = \frac{d}{c} = \frac{1{,}35}{6} = 0{,}225\ \text{s}
+      $$
+      $$\frac{\tau}{T} = \frac{0{,}225}{0{,}05} = 4{,}5$$
+      $4$ périodes entières plus une demi-période : opposition de phase.
+      Vérification par le déphasage : $\lambda = cT = 6 \times 0{,}05 =
+      0{,}3\ \text{m}$, donc
+      $$\Delta\varphi = \frac{2\pi d}{\lambda} = \frac{2\pi \times 1{,}35}{0{,}3} = 9\pi\ \text{rad}$$
+      $9\pi = 8\pi + \pi$ : un multiple impair de $\pi$, l'opposition est
+      confirmée.
+
+  - id: OMPP-17
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_spatiale, milieu_de_propagation, concordance_opposition, calcul]
+    stem: >
+      Une onde sinusoïdale de fréquence $f = 50\ \text{Hz}$ se propage
+      d'abord dans un milieu 1 ($c_1 = 20\ \text{m/s}$), puis dans un milieu
+      2 ($c_2 = 8\ \text{m/s}$). Une fois dans le milieu 2, quelle est la
+      plus petite distance séparant deux points en opposition de phase ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $0{,}08\ \text{m}$, soit $\lambda_2/2$, avec $\lambda_2 = c_2/f =
+          8/50 = 0{,}16\ \text{m}$.
+        correct: true
+      - id: B
+        text: >-
+          $0{,}2\ \text{m}$, en utilisant la longueur d'onde du milieu 1,
+          $\lambda_1 = c_1/f = 0{,}4\ \text{m}$, divisée par deux.
+        correct: false
+        misconception: OND-FR-1
+        feedback: >
+          Une fois l'onde entrée dans le milieu 2, c'est la longueur d'onde
+          DANS LE MILIEU 2 qui compte, $\lambda_2 = c_2/f$, pas celle du
+          milieu 1 : la fréquence reste la même aux deux endroits, mais la
+          célérité change au passage d'un milieu à l'autre, donc $\lambda$
+          change aussi.
+      - id: C
+        text: >-
+          $0{,}16\ \text{m}$, soit $\lambda_2$ tout entier.
+        correct: false
+        misconception: OND-PH-2
+        feedback: >
+          C'est la distance minimale pour la CONCORDANCE de phase (un
+          multiple entier de $\lambda$), pas pour l'opposition. La distance
+          minimale pour l'opposition de phase est une DEMI-longueur d'onde,
+          $\lambda_2/2$, plus petite que $\lambda_2$.
+      - id: D
+        text: >-
+          $0{,}04\ \text{m}$, soit $\lambda_2/4$.
+        correct: false
+        misconception: OND-PH-2
+        feedback: >
+          Un quart de longueur d'onde correspond à un déphasage de $\pi/2$
+          (un quart de tour, la quadrature), pas à l'opposition de phase,
+          qui exige un déphasage de $\pi$ (un demi-tour) — donc une distance
+          de $\lambda_2/2$, pas $\lambda_2/4$.
+    correct_feedback: >
+      Dans le milieu 2, $\lambda_2 = c_2/f = 0{,}16\ \text{m}$. L'opposition
+      de phase correspond à un déphasage de $\pi$, soit une distance de
+      $\lambda_2/2 = 0{,}08\ \text{m}$ — la plus petite distance possible
+      pour ce cas.
+    solution: |
+      La fréquence $f = 50\ \text{Hz}$ est fixée par la source et reste la
+      même dans les deux milieux. Dans le milieu 2 :
+      $$\lambda_2 = \frac{c_2}{f} = \frac{8}{50} = 0{,}16\ \text{m}$$
+      L'opposition de phase correspond aux multiples IMPAIRS de
+      $\lambda_2/2$ ; le plus petit d'entre eux est $\lambda_2/2 =
+      0{,}08\ \text{m}$.
+
+  - id: OMPP-18
+    rung: "R7"
+    difficulty_level: 5
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [dephasage, calcul, frequence, periodicite_spatiale]
+    stem: >
+      Deux points d'une corde, distants de $d = 1{,}8\ \text{m}$, vibrent
+      avec un déphasage $\Delta\varphi = 6\pi\ \text{rad}$. Sachant que la
+      célérité de l'onde vaut $c = 3\ \text{m/s}$, quelle est la fréquence
+      $f$ de la source ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $f = 5\ \text{Hz}$, obtenue via $\lambda = 2\pi d/\Delta\varphi =
+          0{,}6\ \text{m}$, puis $T = \lambda/c = 0{,}2\ \text{s}$, puis
+          $f = 1/T$.
+        correct: true
+      - id: B
+        text: >-
+          $f \approx 1{,}8\ \text{Hz}$, obtenue en calculant $\lambda =
+          \Delta\varphi/(2\pi d) \approx 1{,}67\ \text{m}$.
+        correct: false
+        misconception: OND-CALC-1
+        feedback: >
+          Ce calcul inverse la relation $\Delta\varphi = 2\pi d/\lambda$ :
+          pour isoler $\lambda$, il faut écrire
+          $\lambda = 2\pi d/\Delta\varphi$, pas $\Delta\varphi/(2\pi d)$ —
+          c'est $d$ qui doit rester au numérateur, comme dans la relation de
+          départ.
+      - id: C
+        text: >-
+          $f \approx 31{,}4\ \text{Hz}$, obtenue en calculant $\lambda =
+          d/\Delta\varphi \approx 0{,}0955\ \text{m}$.
+        correct: false
+        misconception: OND-CALC-1
+        feedback: >
+          Ce calcul oublie le facteur $2\pi$ : le rapport $d/\lambda$ compte
+          un nombre de longueurs d'onde, ce n'est pas directement égal à
+          $\Delta\varphi$ (l'angle en radians) — il faut diviser
+          $\Delta\varphi$ par $2\pi$ pour obtenir ce nombre, avant de
+          retrouver $\lambda$.
+      - id: D
+        text: >-
+          $f = 0{,}2\ \text{Hz}$, en prenant directement $f = T$ après avoir
+          trouvé $\lambda = 0{,}6\ \text{m}$ et $T = 0{,}2\ \text{s}$.
+        correct: false
+        misconception: OND-CALC-1
+        feedback: >
+          $\lambda$ et $T$ sont ici correctement calculés, mais la dernière
+          étape est fausse : la fréquence est l'INVERSE de la période,
+          $f = 1/T$, pas $T$ elle-même. Avec $T = 0{,}2\ \text{s}$, on
+          obtient $f = 1/0{,}2 = 5\ \text{Hz}$, pas $0{,}2\ \text{Hz}$.
+    correct_feedback: >
+      $\lambda = 2\pi d/\Delta\varphi = 2\pi \times 1{,}8/6\pi =
+      0{,}6\ \text{m}$, puis $T = \lambda/c = 0{,}6/3 = 0{,}2\ \text{s}$,
+      donc $f = 1/T = 5\ \text{Hz}$.
+    solution: |
+      $$\lambda = \frac{2\pi d}{\Delta\varphi} = \frac{2\pi \times 1{,}8}{6\pi} = 0{,}6\ \text{m}$$
+      $$T = \frac{\lambda}{c} = \frac{0{,}6}{3} = 0{,}2\ \text{s}$$
+      $$f = \frac{1}{T} = \frac{1}{0{,}2} = 5\ \text{Hz}$$
+
+  - id: OMPP-19
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [diffraction, condition_diffraction]
+    stem: >
+      Une onde progressive périodique, de longueur d'onde $\lambda$, arrive
+      sur une ouverture (une fente) de largeur $a$. Dans quel cas la
+      diffraction sera-t-elle notable derrière l'ouverture ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Quand la fréquence de l'onde diminue au moment où elle franchit
+          l'ouverture.
+        correct: false
+        misconception: OND-DIF-2
+        feedback: >
+          Il n'existe aucune diminution de fréquence au passage d'une
+          ouverture : $f$ est fixée par la source, seulement par elle, et
+          une fente n'est pas une source. La condition de diffraction ne
+          porte jamais sur une variation de $f$ — qui n'a pas lieu — mais
+          sur la comparaison entre $a$ et $\lambda$.
+      - id: B
+        text: >-
+          Quand $a$ devient très petite : l'onde se concentre alors en un
+          faisceau de plus en plus étroit derrière l'ouverture.
+        correct: false
+        misconception: OND-DIF-3
+        feedback: >
+          C'est l'inverse de ce que montre l'expérience : quand $a$ diminue
+          vers $\lambda$, ou en dessous, l'onde ne se concentre pas — elle
+          s'étale sur un domaine angulaire de plus en plus large, comme si
+          l'ouverture devenait une nouvelle source.
+      - id: C
+        text: >-
+          Quand $a$ est de l'ordre de $\lambda$, ou inférieure à $\lambda$
+          ($a \lesssim \lambda$).
+        correct: true
+      - id: D
+        text: >-
+          Quand $a$ est très grande devant $\lambda$ ($a \gg \lambda$).
+        correct: false
+        misconception: OND-DIF-1
+        feedback: >
+          C'est l'inverse de la condition réelle : une ouverture très grande
+          devant $\lambda$ laisse l'onde passer presque en ligne droite,
+          sans diffraction notable. C'est au contraire une ouverture petite
+          — de l'ordre de $\lambda$, ou plus petite — qui fait diffracter
+          l'onde nettement.
+    correct_feedback: >
+      La diffraction devient notable dès que la dimension $a$ de
+      l'ouverture se rapproche de $\lambda$, ou devient plus petite qu'elle
+      : c'est une comparaison entre deux longueurs, jamais une valeur
+      absolue de $a$.
+    solution: |
+      La diffraction n'est pas déterminée par la valeur absolue de $a$,
+      mais par sa comparaison à $\lambda$ : $a \lesssim \lambda$. Une
+      ouverture grande devant $\lambda$ laisse l'onde presque inchangée en
+      direction (elle passe tout droit) ; une ouverture de l'ordre de
+      $\lambda$, ou plus petite, force l'onde à s'étaler derrière elle. Ni
+      la fréquence ni la géométrie du faisceau (concentration) n'entrent
+      dans cette condition.
+
+  - id: OMPP-20
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [diffraction, condition_diffraction, application_experimentale]
+    stem: >
+      Dans une expérience de diffraction, un émetteur d'ultrasons de
+      fréquence $f = 25\ \text{kHz}$ envoie une onde dans l'air ($c \approx
+      340\ \text{m/s}$, donc $\lambda \approx 1{,}4\ \text{cm}$) vers une
+      fente de largeur réglable. Un récepteur mobile, placé sur un arc de
+      cercle centré sur la fente, mesure l'amplitude reçue selon la
+      direction. On compare deux fentes : $a_1 = 20\ \text{cm}$ et
+      $a_2 = 1\ \text{cm}$. Avec laquelle des deux le récepteur détecte-t-il
+      un signal sur un large domaine angulaire, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Avec $a_2 = 1\ \text{cm}$, car $a_2$ est du même ordre de
+          grandeur que $\lambda \approx 1{,}4\ \text{cm}$ : l'onde s'étale
+          nettement derrière cette fente.
+        correct: true
+      - id: B
+        text: >-
+          Avec $a_2 = 1\ \text{cm}$, car franchir une ouverture aussi
+          étroite abaisse la fréquence de l'onde reçue, qui se propage
+          alors sur un plus grand domaine angulaire.
+        correct: false
+        misconception: OND-DIF-2
+        feedback: >
+          La fréquence reçue ne change pas : elle reste $25\ \text{kHz}$,
+          fixée par l'émetteur, quelle que soit la fente traversée. Ce
+          n'est pas une baisse de fréquence qui explique l'étalement, mais
+          la comparaison $a_2 \lesssim \lambda$.
+      - id: C
+        text: >-
+          Avec $a_1 = 20\ \text{cm}$, car il faut une ouverture large
+          devant $\lambda$ pour bien diffuser l'onde tout autour d'elle.
+        correct: false
+        misconception: OND-DIF-1
+        feedback: >
+          $a_1 = 20\ \text{cm}$ est très grande devant $\lambda \approx
+          1{,}4\ \text{cm}$ : l'onde la traverse presque en ligne droite,
+          sans étalement notable — l'inverse d'un large domaine angulaire.
+          C'est une ouverture petite, pas grande, qui produit la
+          diffraction.
+      - id: D
+        text: >-
+          Avec $a_2 = 1\ \text{cm}$, car une ouverture plus étroite
+          concentre l'onde reçue dans un faisceau plus fin, dans le
+          prolongement direct de la fente.
+        correct: false
+        misconception: OND-DIF-3
+        feedback: >
+          C'est l'inverse : avec $a_2$, le récepteur détecte un signal sur
+          un domaine angulaire plus LARGE, pas plus concentré — l'onde
+          s'étale derrière une ouverture étroite, elle ne s'y focalise pas.
+    correct_feedback: >
+      $a_2 = 1\ \text{cm}$ est de l'ordre de $\lambda \approx
+      1{,}4\ \text{cm}$ : la diffraction y est notable, et le récepteur
+      détecte un signal sur un large domaine angulaire. Avec $a_1 =
+      20\ \text{cm} \gg \lambda$, l'onde reste concentrée dans le
+      prolongement de la fente.
+    solution: |
+      $$\lambda = \frac{c}{f} = \frac{340}{25\,000} \approx 1{,}4\times10^{-2}\ \text{m} = 1{,}4\ \text{cm}$$
+      $a_1 = 20\ \text{cm} \gg \lambda$ : diffraction négligeable, signal
+      reçu concentré dans l'axe de la fente. $a_2 = 1\ \text{cm} \lesssim
+      \lambda$ : diffraction notable, signal reçu étalé sur un large
+      domaine angulaire. Dans les deux cas, $f$, $\lambda$ et $c$ de l'onde
+      reçue restent inchangés — seule la géométrie de propagation diffère.
+
+  - id: OMPP-21
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [diffraction, frequence, periodicite_spatiale, milieu_de_propagation]
+    stem: >
+      Une onde ultrasonore de fréquence $f = 30\ \text{kHz}$ se propage
+      dans l'air ($c \approx 340\ \text{m/s}$, donc $\lambda \approx
+      1{,}13\ \text{cm}$) et traverse une fente de largeur $a =
+      8\ \text{mm}$, avant de continuer sa propagation dans le même air.
+      Que peut-on dire de la fréquence, de la longueur d'onde et de la
+      célérité de l'onde une fois passée la fente, par rapport à l'onde
+      incidente ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          L'onde ressort concentrée dans l'axe de la fente, en un faisceau
+          plus étroit qu'avant, comme un jet d'eau resserré par un petit
+          trou.
+        correct: false
+        misconception: OND-DIF-3
+        feedback: >
+          C'est l'inverse de ce que montre l'expérience : derrière une
+          ouverture de l'ordre de $\lambda$, l'onde s'étale sur un large
+          domaine angulaire, elle ne se concentre pas en un faisceau fin.
+      - id: B
+        text: >-
+          Comme $a < \lambda$, il n'y a pas de diffraction dans ce cas : il
+          aurait fallu $a \gg \lambda$ pour que l'onde franchisse la
+          fente ; ici, l'onde est arrêtée par l'ouverture.
+        correct: false
+        misconception: OND-DIF-1
+        feedback: >
+          C'est l'inverse : $a = 8\ \text{mm} \lesssim \lambda \approx
+          1{,}13\ \text{cm}$ est précisément la condition d'une diffraction
+          notable, pas d'un blocage. Une ouverture grande devant $\lambda$
+          laisserait l'onde presque tout droit ; une ouverture de l'ordre
+          de $\lambda$ ou plus petite la fait diffracter — jamais
+          l'arrêter.
+      - id: C
+        text: >-
+          La fréquence diminue légèrement après la fente, car l'onde a été
+          perturbée par le passage dans une ouverture étroite.
+        correct: false
+        misconception: OND-DIF-2
+        feedback: >
+          La fréquence ne dépend que de la source, jamais du passage par
+          une ouverture : une fente n'est pas une source, elle ne peut pas
+          modifier le rythme déjà imposé. $f$ reste $30\ \text{kHz}$ après
+          comme avant la fente.
+      - id: D
+        text: >-
+          La fréquence, la longueur d'onde et la célérité restent toutes
+          les trois inchangées : seule la géométrie de propagation
+          (l'étalement) change.
+        correct: true
+    correct_feedback: >
+      La diffraction ne change jamais $f$ (fixée par la source), ni $c$
+      (fixée par le milieu, ici le même air des deux côtés), ni donc
+      $\lambda = c/f$ : elle ne change que la direction et l'étendue
+      angulaire de la propagation.
+    solution: |
+      $$\lambda = \frac{c}{f} = \frac{340}{30\,000} \approx 1{,}13\times10^{-2}\ \text{m}$$
+      $a = 8\ \text{mm} \lesssim \lambda \approx 1{,}13\ \text{cm}$ : la
+      diffraction est notable. Mais $f$ est fixée par l'émetteur (pas par
+      la fente) et $c$ par le milieu (le même air avant et après) : les
+      deux restent inchangées, donc $\lambda = c/f$ aussi. Seule la
+      géométrie de propagation — l'étalement de l'onde derrière la fente —
+      est modifiée.
+
+  - id: OMPP-22
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [milieu_dispersif]
+    stem: >
+      Qu'est-ce qui définit un milieu dispersif, pour une onde mécanique
+      périodique ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Un milieu où la célérité de l'onde est une constante fixe, la
+          même pour toutes les fréquences.
+        correct: false
+        misconception: OND-DISP-1
+        feedback: >
+          C'est la définition d'un milieu NON dispersif. Un milieu
+          dispersif, au contraire, est un milieu où la célérité varie
+          d'une fréquence à l'autre : la constance de $c$ pour toutes les
+          fréquences n'est vraie que dans le cas non dispersif.
+      - id: B
+        text: >-
+          Un milieu où la célérité $c$ de l'onde dépend de sa fréquence
+          $f$.
+        correct: true
+      - id: C
+        text: >-
+          Un milieu où la fréquence de l'onde change au cours de sa
+          propagation.
+        correct: false
+        misconception: OND-DISP-3
+        feedback: >
+          La fréquence reste, à chaque instant, celle que la source a
+          imposée — dans un milieu dispersif comme dans un milieu non
+          dispersif. Ce qui dépend de la fréquence, dans un milieu
+          dispersif, c'est la célérité, pas l'inverse.
+      - id: D
+        text: >-
+          Un milieu où l'onde perd de l'énergie en se propageant (elle
+          s'atténue au fur et à mesure).
+        correct: false
+        misconception: OND-DISP-2
+        feedback: >
+          La dispersion ne concerne pas une perte d'énergie : un milieu
+          peut disperser une onde sans l'atténuer, ou l'atténuer sans la
+          disperser. Ce sont deux propriétés indépendantes ; ne confonds
+          pas dispersion et amortissement.
+    correct_feedback: >
+      Un milieu dispersif est un milieu où la célérité $c$ dépend de la
+      fréquence $f$ de l'onde qui le traverse ; il est non dispersif si
+      toutes les fréquences y ont la même célérité.
+    solution: |
+      Le test opératoire : envoyer deux ondes de fréquences différentes
+      dans le milieu et comparer leurs célérités. Si elles sont égales, le
+      milieu est non dispersif ; si elles diffèrent, il est dispersif.
+      Rien, dans cette définition, ne porte sur une perte d'énergie
+      (amortissement) ou sur un changement de fréquence en cours de route :
+      $f$ reste fixée par la source, et $c$ (constante seulement dans le
+      cas non dispersif) est la seule grandeur qui dépend de $f$.
+
+  - id: OMPP-23
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [milieu_dispersif, frequence, milieu_de_propagation, calcul]
+    stem: >
+      Dans un premier milieu, on mesure la célérité de deux ondes de
+      fréquences différentes : $c_1 = 1500\ \text{m/s}$ à $f_1 =
+      2\ \text{kHz}$, et $c_2 = 1500\ \text{m/s}$ à $f_2 = 8\ \text{kHz}$.
+      Dans un second milieu, on mesure $c_1' = 2{,}0\ \text{m/s}$ à $f_1$,
+      et $c_2' = 1{,}4\ \text{m/s}$ à $f_2$. Que peut-on conclure sur la
+      nature dispersive de ces deux milieux ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Dans le second milieu, c'est la fréquence de l'onde qui a changé
+          entre les deux mesures, pas sa célérité : on a en réalité mesuré
+          la même onde à deux instants différents.
+        correct: false
+        misconception: OND-DISP-3
+        feedback: >
+          Les deux mesures portent sur deux ondes de fréquences
+          différentes, $f_1$ et $f_2$, imposées chacune par leur propre
+          source — la fréquence de chaque onde ne change pas en cours de
+          route. Ce sont leurs célérités qui diffèrent, pas leurs
+          fréquences.
+      - id: B
+        text: >-
+          Les deux milieux sont dispersifs : dans les deux cas, l'onde se
+          propage sur une grande distance et perd donc de l'énergie.
+        correct: false
+        misconception: OND-DISP-2
+        feedback: >
+          La perte d'énergie sur une grande distance (l'atténuation) n'a
+          rien à voir avec le critère de dispersion, qui ne porte que sur
+          la dépendance de $c$ en $f$. Dans le premier milieu, $c_1 = c_2$
+          : ce milieu est non dispersif, quelle que soit la distance
+          parcourue.
+      - id: C
+        text: >-
+          Le premier milieu est non dispersif ($c_1 = c_2$) ; le second est
+          dispersif ($c_1' \neq c_2'$), car sa célérité dépend de la
+          fréquence.
+        correct: true
+      - id: D
+        text: >-
+          On ne peut rien conclure : la célérité d'une onde dans un milieu
+          est toujours une grandeur fixe, indépendante de la fréquence —
+          les valeurs mesurées dans le second milieu doivent contenir une
+          erreur expérimentale.
+        correct: false
+        misconception: OND-DISP-1
+        feedback: >
+          Rien n'empêche $c$ de dépendre de $f$ : c'est exactement ce qui
+          définit un milieu dispersif, et rien dans l'énoncé ne suggère une
+          erreur de mesure. Le second milieu est un exemple parfaitement
+          valide de milieu dispersif.
+    correct_feedback: >
+      Le critère est la comparaison des célérités à fréquences différentes
+      : le premier milieu donne $c_1 = c_2$ (non dispersif), le second
+      donne $c_1' \neq c_2'$ (dispersif).
+    solution: |
+      Premier milieu : $c_1 = c_2 = 1500\ \text{m/s}$ malgré des fréquences
+      différentes → la célérité ne dépend pas de $f$ → milieu **non
+      dispersif**. Second milieu : $c_1' = 2{,}0\ \text{m/s} \neq c_2' =
+      1{,}4\ \text{m/s}$ → la célérité dépend de $f$ → milieu
+      **dispersif**. Dans les deux cas, $f_1$ et $f_2$ restent fixées par
+      leurs sources respectives ; seule la célérité varie, et seulement
+      dans le second milieu.
+
+  - id: OMPP-24
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [milieu_dispersif, frequence]
+    stem: >
+      Un signal sonore complexe, composé de plusieurs fréquences
+      superposées, se propage dans un milieu dispersif. Que va-t-il se
+      passer à ce signal au cours de sa propagation, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Il se déforme progressivement, car ses différentes composantes de
+          fréquence voyagent à des célérités différentes et se
+          désynchronisent en avançant.
+        correct: true
+      - id: B
+        text: >-
+          Sa fréquence globale diminue progressivement au cours de la
+          propagation, car le milieu dispersif ralentit les composantes une
+          à une.
+        correct: false
+        misconception: OND-DISP-3
+        feedback: >
+          Chaque composante garde, du début à la fin de son trajet, la
+          fréquence que sa source lui a donnée : la dispersion ne modifie
+          jamais une fréquence. Ce qui varie d'une composante à l'autre,
+          c'est leur célérité — pas leur fréquence.
+      - id: C
+        text: >-
+          Il reste identique à lui-même, car la célérité d'un milieu est
+          une propriété fixe, la même pour toutes les fréquences qui le
+          traversent.
+        correct: false
+        misconception: OND-DISP-1
+        feedback: >
+          C'est précisément ce qui ne se produit PAS dans un milieu
+          dispersif : par définition, la célérité y dépend de la fréquence,
+          elle n'est pas la même pour toutes les composantes du signal.
+      - id: D
+        text: >-
+          Il s'atténue progressivement, en gardant exactement sa forme, car
+          un milieu dispersif est un milieu qui absorbe l'énergie de
+          l'onde.
+        correct: false
+        misconception: OND-DISP-2
+        feedback: >
+          La dispersion n'est pas une absorption d'énergie, mais une
+          dépendance de la célérité en fréquence. Dans un milieu dispersif,
+          c'est la FORME du signal qui se déforme (par désynchronisation
+          des composantes), pas nécessairement son amplitude qui diminue.
+    correct_feedback: >
+      Dans un milieu dispersif, les composantes de fréquences différentes
+      d'un signal voyagent à des célérités différentes : elles se
+      désynchronisent en avançant, et le signal se déforme progressivement
+      au cours de sa propagation.
+    solution: |
+      Un signal complexe est une superposition de plusieurs fréquences.
+      Dans un milieu non dispersif, toutes voyagent à la même célérité et
+      restent synchronisées : la forme du signal est conservée. Dans un
+      milieu dispersif, chaque fréquence a sa propre célérité : les
+      composantes avancent à des vitesses différentes, se désynchronisent,
+      et le signal se déforme en se propageant — sans que sa fréquence
+      globale, ni celle d'aucune composante, ne change.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# COVERAGE SUMMARY (summit-conversion campaign — OMPP end-bank backfill).
+#
+# This pass (a) added the retro-tagged misconception families OND-DP-1/2,
+# OND-FR-1, OND-NAT-1, OND-CALC-1, OND-PH-2/3 to the inventory, and (b) tagged
+# EVERY distractor across OMPP-1…18 with a per-distractor `misconception:` id
+# (additive only — no stem, choice text, feedback, correct answer, solution, or
+# rung altered). OMPP-19…24 were already tagged (OND-DIF-1/2/3, OND-DISP-1/2/3).
+# No item was added or deleted; no floor was padded.
+#
+# Method: item-level, DISTRACTOR-PRESENCE (an item counts for a misconception if
+# at least one of its distractors carries that tag) — the convention the prior
+# OND-DIF/OND-DISP block already used here. Floor = 3 items/misconception.
+#
+# GATED = the three misconceptions probed by the required checkpoints
+# (checkpoints.yaml): OND-DP-1 (cp-r0-predict + cp-r2-double-periodicite),
+# OND-DIF-1 (cp-r5-diffraction), OND-DISP-1 (cp-r6-dispersif). All three meet
+# the >=3 floor → gated_floor_met: true.
+# ──────────────────────────────────────────────────────────────────────────────
+  # Ajouté le 2026-09-05 : OND-DP-2 (période et longueur d'onde confondues)
+  # siégeait à 2 items du banc, donc sous le plancher de 3 — inévaluable par le
+  # modèle apprenant. Surface volontairement différente de OMPP-2, qui fait
+  # LIRE une distance sur une photographie : ici on critique un raisonnement
+  # chiffré, où la confusion produit un nombre juste au mauvais endroit.
+  - id: OMPP-25
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_temporelle, periodicite_spatiale, relation_lambda_ct]
+    stem: >
+      Une onde progressive périodique se propage à
+      $c = 2{,}0\ \text{m}\cdot\text{s}^{-1}$ le long d'une corde ; sa
+      fréquence vaut $f = 5{,}0\ \text{Hz}$. Un élève écrit : « la période
+      vaut $T = 0{,}20\ \text{s}$, donc la longueur d'onde vaut
+      $\lambda = 0{,}20\ \text{m}$ ». Que penser de ce raisonnement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La période est juste, la conclusion non : il faut multiplier par la
+          célérité, $\lambda = cT = 2{,}0 \times 0{,}20 = 0{,}40\ \text{m}$
+        correct: true
+      - id: B
+        text: >-
+          Le raisonnement est correct : $T$ et $\lambda$ sont la même grandeur,
+          mesurée en secondes d'un côté et en mètres de l'autre
+        correct: false
+        misconception: OND-DP-2
+        feedback: >
+          Une durée et une distance n'ont pas la même dimension : aucune
+          convention d'unité ne transforme l'une en l'autre. $T$ est la période
+          TEMPORELLE (ce que voit un point fixe du milieu), $\lambda$ la période
+          SPATIALE (ce que montre une photographie instantanée) ; le pont entre
+          les deux est la célérité, $\lambda = cT$.
+      - id: C
+        text: >-
+          La période est juste, mais la longueur d'onde vaut
+          $\lambda = c/T = 2{,}0/0{,}20 = 10\ \text{m}$
+        correct: false
+        misconception: OND-CALC-1
+        feedback: >
+          La relation est $\lambda = cT$, pas $c/T$. Le contrôle qui la
+          retrouve sans l'apprendre : pendant une période, l'onde avance
+          d'exactement une longueur d'onde, donc distance = célérité × durée.
+          Divisez, et vous obtenez $10\ \text{m}$ pour une corde de laboratoire.
+      - id: D
+        text: >-
+          On ne peut pas conclure : la période et la longueur d'onde varient
+          indépendamment l'une de l'autre, il faudrait mesurer $\lambda$ sur une
+          photographie
+        correct: false
+        misconception: OND-DP-1
+        feedback: >
+          Les deux périodicités ne sont pas indépendantes : c'est justement ce
+          que dit $\lambda = cT$. Le milieu recopie fidèlement la source, et la
+          célérité du milieu fixe le pas spatial de cette copie. Connaître $c$
+          et $T$ suffit — la photographie servirait à vérifier, pas à conclure.
+    correct_feedback: >
+      $T = 1/f = 0{,}20\ \text{s}$ est bien la période. Mais la longueur d'onde
+      est la distance parcourue par l'onde PENDANT une période :
+      $\lambda = cT = 2{,}0 \times 0{,}20 = 0{,}40\ \text{m}$. Le nombre
+      $0{,}20$ est juste — c'est la grandeur qui est fausse.
+    solution: |
+      $$T = \frac{1}{f} = \frac{1}{5{,}0} = 0{,}20\ \text{s}$$
+      Pendant une période, l'onde avance d'exactement une longueur d'onde :
+      $$\lambda = c\,T = 2{,}0 \times 0{,}20 = 0{,}40\ \text{m}$$
+      Le contrôle d'homogénéité tranche à lui seul :
+      $\text{m}\cdot\text{s}^{-1} \times \text{s} = \text{m}$. Écrire
+      $\lambda = T$ reviendrait à égaler des secondes et des mètres ; écrire
+      $\lambda = c/T$ donnerait des $\text{m}\cdot\text{s}^{-2}$.
+
+  # Ajouté le 2026-09-24 : OND-DIF-4 (« condition amputée, pas inversée »)
+  # ouvert par spec-scene-cuve.md §8.2 — un modèle qui coche juste PARTOUT
+  # ailleurs dans le corpus (OMPP-19/20/21, cp-r5-diffraction), parce
+  # qu'aucun item existant ne fait varier $\lambda$ à $a$ fixée. Les trois
+  # items ci-dessous sont les seuls du banc à le faire ; les paris de la
+  # scène `cuve-a-ondes` (S2, S5) ne comptent pas pour ce plancher. OMPP-26
+  # prend d'autres nombres que la leçon et le pari S2 ($a = 2{,}0$ cm,
+  # 20 → 5,0 Hz, là où eux prennent 1,0 cm et 40 → 5,0 Hz) : un item qui
+  # recopie l'exemple qu'on vient de lire mesure la mémoire, pas le modèle.
+  # OMPP-26 D porte OND-DIF-2 à la place du « refus de conclure » réservé
+  # par la spec (§8.5 ; le cliquet indice-refus l'interdit ici).
+  - id: OMPP-26
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [diffraction, condition_diffraction, calcul]
+    stem: >
+      Dans une cuve à ondes, une paroi rigide est percée d'une seule
+      ouverture de largeur $a = 2{,}0\ \text{cm}$. Le vibreur bat d'abord
+      à $f = 20\ \text{Hz}$, et la célérité des rides dans l'eau vaut
+      $c = 0{,}20\ \text{m/s}$. Sans toucher à l'ouverture, on ramène le
+      vibreur à $f = 5{,}0\ \text{Hz}$. Que devient l'étalement de
+      l'onde derrière l'ouverture ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Il augmente nettement : à ouverture fixe, $\lambda$ passe de
+          $1{,}0$ à $4{,}0\ \text{cm}$, et le rapport $a/\lambda$ tombe de
+          $2$ à $0{,}50$.
+        correct: true
+      - id: B
+        text: >-
+          Il ne change pas : l'ouverture n'a pas bougé, et c'est sa
+          largeur seule qui fixe l'étalement de l'onde derrière elle.
+        correct: false
+        misconception: OND-DIF-4
+        feedback: >
+          La largeur de l'ouverture ne suffit jamais à elle seule :
+          c'est sa comparaison à $\lambda$ qui décide. À $20\ \text{Hz}$,
+          $\lambda = c/f = 0{,}20/20 = 1{,}0\ \text{cm}$, donc
+          $a = 2\lambda$ — l'ouverture est large devant l'onde. À
+          $5{,}0\ \text{Hz}$, $\lambda = 0{,}20/5{,}0 = 4{,}0\ \text{cm}$,
+          donc $a = \lambda/2$ : la même ouverture, sans avoir bougé
+          d'un dixième de millimètre, est devenue étroite devant cette
+          onde plus longue. C'est le rapport $a/\lambda$ qui commande
+          l'étalement, jamais $a$ seule.
+      - id: C
+        text: >-
+          Il diminue : une onde plus longue passe moins bien par une
+          ouverture aussi étroite, elle en ressort donc plus resserrée.
+        correct: false
+        misconception: OND-DIF-3
+        feedback: >
+          C'est l'inverse : plus $a$ est petit devant $\lambda$, plus
+          l'onde s'étale derrière l'ouverture, jamais elle ne se
+          resserre. Ici $a = \lambda/2$ à $5{,}0\ \text{Hz}$ —
+          l'ouverture est nettement plus petite que l'onde — c'est
+          exactement la situation où l'étalement est le plus marqué, pas
+          le plus resserré.
+      - id: D
+        text: >-
+          Il augmente, mais surtout parce que l'ouverture ralentit
+          l'onde qui la traverse : sa célérité diminue derrière la
+          paroi.
+        correct: false
+        misconception: OND-DIF-2
+        feedback: >
+          La célérité est fixée par le milieu — ici la même eau, la
+          même profondeur, des deux côtés de la paroi — jamais par
+          l'ouverture : elle reste $0{,}20\ \text{m/s}$ avant et après.
+          L'étalement augmente bien, mais pour une seule raison : la
+          longueur d'onde est devenue grande devant $a$
+          ($\lambda = 4{,}0\ \text{cm}$ pour $a = 2{,}0\ \text{cm}$),
+          pas parce que l'ouverture aurait modifié la vitesse de
+          propagation.
+    correct_feedback: >
+      À $20\ \text{Hz}$, $a = 2\lambda$ : l'ouverture est large devant
+      l'onde, l'étalement est faible. En ramenant le vibreur à
+      $5{,}0\ \text{Hz}$ sans toucher à l'ouverture, $\lambda$ passe à
+      $4{,}0\ \text{cm}$ et $a = \lambda/2$ : la même ouverture, devenue
+      étroite devant cette onde plus longue, produit un étalement
+      nettement plus marqué.
+    solution: |
+      $$\lambda_1 = \frac{c}{f_1} = \frac{0{,}20}{20} = 1{,}0\ \text{cm}, \qquad \frac{a}{\lambda_1} = \frac{2{,}0}{1{,}0} = 2$$
+      $$\lambda_2 = \frac{c}{f_2} = \frac{0{,}20}{5{,}0} = 4{,}0\ \text{cm}, \qquad \frac{a}{\lambda_2} = \frac{2{,}0}{4{,}0} = 0{,}50$$
+      L'ouverture, physiquement, n'a pas changé. Ce qui a changé, c'est
+      le rapport $a/\lambda$ : de $2$ (ouverture large devant l'onde,
+      peu de diffraction) à $0{,}50$ (ouverture étroite devant l'onde,
+      diffraction marquée). Ni $c$ ni la largeur $a$ n'interviennent
+      dans ce renversement — seule $\lambda$, fixée par la nouvelle
+      fréquence de la source, en est responsable.
+
+  - id: OMPP-27
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [diffraction, condition_diffraction, application_experimentale, calcul]
+    stem: |
+      Sur un banc à ultrasons (émetteur, fente réglable, récepteur
+      mobile sur un arc), on relève le domaine angulaire dans lequel le
+      récepteur détecte encore un signal, pour quatre réglages :
+
+      | réglage | $a$ (cm) | $f$ (kHz) | domaine détecté |
+      |---|---|---|---|
+      | 1 | 2,0 | 40 | étroit |
+      | 2 | 2,0 | 20 | moyen |
+      | 3 | 1,0 | 40 | moyen |
+      | 4 | 1,0 | 20 | large |
+
+      ($c \approx 340\ \text{m/s}$ dans l'air.) Quelle grandeur classe
+      ces quatre réglages, du plus étroit au plus large ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La largeur de la fente seule : $2{,}0\ \text{cm}$ donne un
+          domaine plus étroit que $1{,}0\ \text{cm}$, quelle que soit la
+          fréquence de l'émetteur.
+        correct: false
+        misconception: OND-DIF-4
+        feedback: >
+          Le tableau contredit cette lecture : les réglages 2
+          ($a = 2{,}0\ \text{cm}$, $f = 20\ \text{kHz}$) et 3
+          ($a = 1{,}0\ \text{cm}$, $f = 40\ \text{kHz}$) donnent le
+          MÊME domaine, « moyen », alors que leurs largeurs sont
+          différentes. La largeur seule ne classe donc rien : c'est son
+          rapport à $\lambda$, qui dépend aussi de $f$, qui compte.
+      - id: B
+        text: >-
+          La fréquence seule : plus elle est élevée, plus le domaine
+          détecté est étroit, quelle que soit la largeur de la fente
+          utilisée.
+        correct: false
+        misconception: OND-DIF-4
+        feedback: >
+          Le même tableau s'y oppose dans l'autre sens : les réglages 2
+          et 3 ont des fréquences différentes ($20$ et $40\ \text{kHz}$)
+          et donnent pourtant le même domaine, « moyen ». La fréquence
+          seule ne suffit pas non plus à classer les réglages — il faut
+          la comparer à $a$, par le rapport $a/\lambda$.
+      - id: C
+        text: >-
+          Le rapport $a/\lambda$, et uniquement lui : il vaut $2{,}4$ pour
+          le réglage 1, $1{,}2$ pour les réglages 2 et 3, et $0{,}59$ pour le
+          réglage 4.
+        correct: true
+      - id: D
+        text: >-
+          La fréquence reçue par le récepteur : elle diminue légèrement
+          en traversant une fente plus étroite, ce qui élargit le
+          domaine détecté derrière elle.
+        correct: false
+        misconception: OND-DIF-2
+        feedback: >
+          La fréquence reçue reste celle de l'émetteur, quelle que soit
+          la largeur de la fente traversée : rien, dans une ouverture
+          percée, ne modifie le rythme d'une onde qui la traverse. Ce
+          qui distingue les quatre réglages n'est pas une fréquence qui
+          aurait changé en route, mais le rapport $a/\lambda$, calculé
+          à partir de la fréquence ÉMISE — inchangée.
+    correct_feedback: >
+      $\lambda = c/f$ donne $0{,}85\ \text{cm}$ à $40\ \text{kHz}$ et
+      $1{,}7\ \text{cm}$ à $20\ \text{kHz}$. Le rapport $a/\lambda$ vaut
+      alors $2{,}4$ (réglage 1), $1{,}2$ (réglages 2 et 3 — même
+      rapport, même domaine « moyen », malgré des largeurs ET des
+      fréquences différentes), et $0{,}59$ (réglage 4) : c'est ce
+      rapport, et lui seul, qui classe les quatre lignes du tableau.
+    solution: |
+      $$\lambda_{40} = \frac{c}{f} = \frac{340}{40\,000} \approx 0{,}85\ \text{cm}, \qquad \lambda_{20} = \frac{340}{20\,000} \approx 1{,}7\ \text{cm}$$
+
+      | réglage | $a$ | $\lambda$ | $a/\lambda$ | domaine |
+      |---|---|---|---|---|
+      | 1 | 2,0 cm | 0,85 cm | 2,4 | étroit |
+      | 2 | 2,0 cm | 1,7 cm | 1,2 | moyen |
+      | 3 | 1,0 cm | 0,85 cm | 1,2 | moyen |
+      | 4 | 1,0 cm | 1,7 cm | 0,59 | large |
+
+      Les réglages 2 et 3, malgré des largeurs ET des fréquences
+      différentes, partagent le même rapport $a/\lambda \approx 1{,}2$
+      et le même domaine détecté : ni $a$ ni $f$ pris isolément ne
+      classent le tableau, seul leur rapport le fait.
+
+  - id: OMPP-28
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [diffraction, condition_diffraction, calcul, resolution_probleme]
+    stem: >
+      Une porte ouverte, de largeur $a = 0{,}80\ \text{m}$, laisse
+      passer, depuis la pièce voisine, une voix ($f \approx
+      300\ \text{Hz}$) et un sifflement aigu ($f \approx
+      8{,}0\ \text{kHz}$) ; $c \approx 340\ \text{m/s}$ dans l'air. On
+      se place dans le couloir, hors de l'alignement de la porte.
+      Qu'entend-on ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le sifflement mieux que la voix : plus la fréquence d'un son
+          est élevée, plus sa longueur d'onde est petite, et c'est une
+          longueur d'onde petite qui permet à un son de mieux
+          contourner un obstacle.
+        correct: false
+        misconception: OND-DIF-1
+        feedback: >
+          C'est l'inverse de la condition de diffraction : une longueur
+          d'onde petite devant l'ouverture ne fait pas mieux contourner
+          l'obstacle, elle fait au contraire filer l'onde presque tout
+          droit. Ici $\lambda_{sifflement} \approx 4{,}3\ \text{cm}$
+          est bien plus petite que $a = 0{,}80\ \text{m}$ : c'est la
+          voix, de fréquence plus basse et de longueur d'onde plus
+          grande ($\lambda \approx 1{,}1\ \text{m}$, proche de $a$),
+          qui diffracte le mieux.
+      - id: B
+        text: >-
+          La voix nettement, le sifflement très peu : $\lambda_{voix}
+          \approx 1{,}1\ \text{m}$ est proche de la largeur de la
+          porte, $\lambda_{sifflement} \approx 4{,}3\ \text{cm}$ en est
+          presque vingt fois plus petite.
+        correct: true
+      - id: C
+        text: >-
+          Les deux pareil : c'est exactement la même porte, de même
+          largeur, qui laisse passer la voix et le sifflement — c'est
+          donc elle seule qui décide de ce qu'on entend hors de son
+          alignement.
+        correct: false
+        misconception: OND-DIF-4
+        feedback: >
+          La porte est bien la même pour les deux sons, mais sa seule
+          largeur ne suffit pas à décider : il faut la comparer à la
+          longueur d'onde de chaque son. Pour la voix, $\lambda \approx
+          1{,}1\ \text{m}$ est proche de $a = 0{,}80\ \text{m}$ : la
+          diffraction est marquée. Pour le sifflement, $\lambda \approx
+          4{,}3\ \text{cm}$ est presque vingt fois plus petite que $a$
+          : la diffraction y est négligeable. Une même ouverture
+          diffracte donc très différemment selon l'onde qu'elle reçoit.
+      - id: D
+        text: >-
+          Ni l'un ni l'autre : hors de l'alignement de la porte, le
+          couloir reste silencieux, pour la voix comme pour le sifflement.
+        correct: false
+        misconception: OND-DIF-3
+        feedback: >
+          Une ouverture de l'ordre de la longueur d'onde ne bloque
+          jamais totalement le son qui la traverse — elle le fait
+          s'étaler, ce qui est l'inverse d'un silence total. C'est le
+          cas de la voix ici ($a \approx 0{,}7\,\lambda$) : on
+          l'entend nettement hors de l'alignement. Seul le sifflement,
+          dont la longueur d'onde est bien plus petite que la porte, y
+          devient très faible — mais « très faible » n'est pas
+          « aucun ».
+    correct_feedback: >
+      $\lambda_{voix} = c/f \approx 1{,}1\ \text{m}$, du même ordre que
+      la largeur de la porte : le rapport $a/\lambda \approx 0{,}7$
+      place la voix dans le régime de diffraction marquée.
+      $\lambda_{sifflement} = c/f \approx 4{,}3\ \text{cm}$, avec
+      $a/\lambda \approx 19$ : le sifflement file presque tout droit,
+      on ne l'entend presque pas hors de l'axe de la porte.
+    solution: |
+      $$\lambda_{voix} = \frac{c}{f_{voix}} = \frac{340}{300} \approx 1{,}1\ \text{m}, \qquad \frac{a}{\lambda_{voix}} = \frac{0{,}80}{1{,}13} \approx 0{,}71$$
+      $$\lambda_{sifflement} = \frac{c}{f_{sifflement}} = \frac{340}{8\,000} \approx 4{,}3\times10^{-2}\ \text{m} = 4{,}3\ \text{cm}, \qquad \frac{a}{\lambda_{sifflement}} = \frac{0{,}80}{0{,}0425} \approx 19$$
+      Pour la voix, $a$ et $\lambda$ sont du même ordre de grandeur :
+      la diffraction est notable, la voix contourne largement
+      l'embrasure de la porte. Pour le sifflement, $a \gg \lambda$ :
+      l'onde se propage presque en ligne droite, dans le prolongement
+      de la porte, et n'atteint presque pas le couloir hors de cet
+      axe. Une seule et même ouverture, deux comportements
+      diamétralement opposés — parce que la condition de diffraction
+      compare $a$ à $\lambda$, jamais $a$ à lui seul.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, et l'ancien avait bien travaillé : il déclarait
+# franchement `floor_met: false` et NOMMAIT la seule famille en dessous —
+# OND-DP-2 ($T$ et $\lambda$ confondues), à 2 items — en précisant que la
+# refermer demandait « un troisième énoncé réellement distinct, pas un clone
+# mémorisable de OMPP-1/2 ». C'est fait : OMPP-25 fait critiquer un
+# raisonnement chiffré au lieu de faire lire une distance sur une photographie.
+# Le tableau est désormais GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# web/scripts/resume-couverture.mjs.
+coverage_summary:
+  # RÉSERVE MESURÉE le 2026-09-19, les deux critiques de vague 1 la soulèvent
+  # séparément : OMPP-13 C et OMPP-16 C portent OND-CALC-1 (« inverse ou mélange
+  # les grandeurs »), alors que leurs retours ne diagnostiquent AUCUNE inversion
+  # — ils disent « le rapport d/lambda suffit entièrement » et « le rapport
+  # tau/T suffit à lui seul », c'est-à-dire un REFUS DE CONCLURE. Aucune famille
+  # du registre ne porte ce modèle : réétiqueter demanderait d'en écrire une, ce
+  # qui est une décision de propriétaire. Les comptes ci-dessous restent donc
+  # justes CONTRE LES ÉTIQUETTES, et la preuve réelle d'OND-CALC-1 est de CINQ
+  # items (OMPP-5, 6, 12, 18, 25), pas sept — le plancher de 3 tient dans les
+  # deux lectures. Déclaré plutôt que corrigé à la main.
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+  per_misconception:
+    OND-DIF-1:  { count: 4, items: [OMPP-19, OMPP-20, OMPP-21, OMPP-28] }
+    OND-DIF-2:  { count: 5, items: [OMPP-19, OMPP-20, OMPP-21, OMPP-26, OMPP-27] }
+    OND-DIF-3:  { count: 5, items: [OMPP-19, OMPP-20, OMPP-21, OMPP-26, OMPP-28] }
+    OND-DIF-4:  { count: 3, items: [OMPP-26, OMPP-27, OMPP-28] }
+    OND-DISP-1: { count: 3, items: [OMPP-22, OMPP-23, OMPP-24] }
+    OND-DISP-2: { count: 3, items: [OMPP-22, OMPP-23, OMPP-24] }
+    OND-DISP-3: { count: 3, items: [OMPP-22, OMPP-23, OMPP-24] }
+    OND-DP-1:   { count: 4, items: [OMPP-7, OMPP-8, OMPP-9, OMPP-25] }
+    OND-DP-2:   { count: 3, items: [OMPP-1, OMPP-2, OMPP-25] }
+    OND-FR-1:   { count: 4, items: [OMPP-3, OMPP-4, OMPP-15, OMPP-17] }
+    OND-NAT-1:  { count: 4, items: [OMPP-3, OMPP-10, OMPP-14, OMPP-15] }
+    OND-CALC-1: { count: 7, items: [OMPP-5, OMPP-6, OMPP-12, OMPP-13, OMPP-16, OMPP-18, OMPP-25] }
+    OND-PH-2:   { count: 5, items: [OMPP-6, OMPP-11, OMPP-13, OMPP-16, OMPP-17] }
+    OND-PH-3:   { count: 3, items: [OMPP-10, OMPP-11, OMPP-16] }
+  total_items: 28
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 3
+    R2: 4
+    R3: 3
+    R4: 3
+    R5: 6
+    R6: 3
+    R7: 3
+  gated_misconceptions:
+    # Les trois familles sondées par un checkpoint de la leçon — un ÉCHO
+    # formatif du banc, jamais un substitut : les checkpoints ne comptent pas
+    # dans le tableau ci-dessus.
+    - OND-DP-1
+    - OND-DIF-1
+    - OND-DISP-1
+  gated_floor: 3
+  gated_floor_met: true
+  scope_note: >-
+    Garde-fou de périmètre tenu : aucun item n'utilise $\theta = \lambda/a$ ni
+    ne teste la diffraction de la LUMIÈRE — les deux sont réservés à
+    propagation-onde-lumineuse (spec-extension.md §0).
+  honest_state: >-
+    Les quatorze misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Six y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse. La quatorzième, OND-DIF-4 (« la
+    fente seule décide », ouverte le 2026-09-24 par spec-scene-cuve.md
+    §8.2), est de celles-là : ses trois items (OMPP-26, 27, 28) sont les
+    seuls du banc qui fassent varier $\lambda$ à $a$ fixée — sans eux, un
+    élève qui porte ce modèle cochait juste partout.

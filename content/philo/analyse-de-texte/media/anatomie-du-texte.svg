@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 600" role="img"
+     aria-label="Le texte de Bakounine sur la liberté, révélé en quatre étapes : le texte brut ; la thèse surlignée (« je ne suis réellement libre que par la liberté des autres ») ; les connecteurs argumentatifs marqués (à l’inverse, autrement dit, car, ainsi) ; le mouvement du texte en flèches, de la thèse vers le renforcement, le contre-cas, puis l’élargissement.">
+  <title>Anatomie du texte — lecture structurée du texte de Bakounine</title>
+  <!--
+    anatomie-du-texte.svg — STAGED, 4 étapes (docs/design/LESSON-EXPERIENCE-SPEC.md
+    §2.5 : le geste d'enseignement EST l'ordre — texte brut -> thèse -> connecteurs
+    -> mouvement, exactement l'ordre dans lequel R1/R3 apprennent à lire ce texte).
+
+    Source du texte — VERBATIM, docs/sujets/philo/la-liberte.md, entrée 2024 R
+    (rattrapage, RS 05, نص), traduction de travail française. Aucune reformulation :
+    chaque ligne ci-dessous est un fragment exact de cette traduction, seulement
+    redécoupé en lignes pour l'affichage (la ponctuation d'origine est préservée,
+    y compris les points-virgules aux frontières de blocs).
+
+    DÉCISION DE LANGUE (documentée, déviation assumée par rapport à la lecture
+    littérale de PHILO-ANALYSE-DE-TEXTE-SPEC.md §6 stage 1 "Arabic + FR") :
+    cette figure porte le texte en FRANÇAIS SEUL. La leçon elle-même (lesson.md)
+    montre l'artefact bilingue complet (arabe RTL + français) au fil du texte —
+    cette figure n'est PAS ce bloc-texte-source, elle est l'outil de LECTURE/
+    MÉTHODE qui s'exerce sur la surface de travail française (§2b : « la
+    traduction française est la surface de travail sur laquelle l'expert
+    démontre la méthode »). Composer une figure SVG bilingue RTL+LTR à la main
+    ajouterait un risque de rendu (bidi, ligatures) sans bénéfice pédagogique
+    ici — le rappel de l'honnêteté-arabe reste porté par le sous-titre et par
+    la leçon elle-même, jamais supprimé, seulement pas dupliqué dans cette figure.
+
+    Repère de mise en page (calculé, pas deviné) :
+      TEXT_X = 160 (marge gauche du texte, après la gouttière d'étiquettes)
+      ligne de base -> ligne suivante : pas de 19px
+      saut de paragraphe : +34px depuis la dernière ligne du paragraphe précédent
+      gouttière d'étiquettes : x = 26..144 (pastilles), flèches verticales à x=85
+
+    Découpage en 4 blocs argumentatifs (le mouvement du texte, feed R3) :
+      Bloc 1 — THÈSE POSÉE      (lignes y=82..177)
+      Bloc 2 — RENFORCEMENT     (lignes y=211..249)
+      Bloc 3 — CONTRE-CAS       (lignes y=283..492)
+      Bloc 4 — ÉLARGISSEMENT    (lignes y=526..564)
+    Chaque bloc est un fragment CONTIGU et verbatim du texte source ; mis bout
+    à bout (avec les espaces de jonction), les 4 blocs reconstituent l'intégralité
+    du paragraphe traduit, sans coupure ni ajout.
+
+    La thèse (R1) est isolée sur sa propre ligne (y=177) par construction du
+    découpage — pas de re-wrap requis en étape 2, la ligne EST déjà exactement
+    la citation de la thèse donnée par le spec : « je ne suis réellement libre
+    que par la liberté des autres ».
+
+    Les connecteurs marqués en étape 3 sont choisis parce qu'ils sont RÉELLEMENT
+    présents dans ce texte et qu'ils ouvrent chacun leur ligne (donc alignés sur
+    TEXT_X, largeur de soulignement calculée par nombre de caractères) :
+      « À l'inverse »   (y=283) — opposition, introduit le contre-cas
+      « autrement dit » (y=321) — reformulation, à l'intérieur du contre-cas
+      « Car »           (y=378) — causale, justifie le contre-cas
+      « Ainsi »         (y=526) — conclusion, introduit l'élargissement
+
+    Couleurs (var(--figure-*), dark-mode gratuit) :
+      texte brut                         : --figure-ink
+      sous-titre / mentions neutres      : --figure-ink-soft
+      surbrillance thèse, connecteurs,
+      pastilles de mouvement, flèches    : --figure-accent (accent unique —
+        distingué par FORME, pas par une seconde couleur : boîte translucide
+        pour la thèse, trait souligné pour les connecteurs, pastille+flèche
+        pour le mouvement — jamais la couleur seule ne porte le sens)
+
+    Émphase des étapes antérieures (opacity 0.55) appliquée par StagedFigure.tsx
+    au moment du rendu — RIEN de cela n'est encodé ici, les groupes restent du
+    contenu pur, additif, jamais repositionné d'une étape à l'autre.
+
+    Les captions sont portées par anatomie-du-texte.stages.json — aucun texte
+    de légende baké ici (même convention que les figures déjà migrées).
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le texte brut, sans annotation
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <text x="380" y="24" text-anchor="middle" font-size="15.5" font-weight="600"
+          letter-spacing="0.01em" fill="var(--figure-ink)">Anatomie du texte — Bakounine, La Liberté</text>
+    <text x="380" y="42" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">2024 R — traduction de travail (l’original de l’épreuve est en arabe)</text>
+
+    <!-- Bloc 1 — thèse posée -->
+    <text x="160" y="82"  font-size="13.5" fill="var(--figure-ink)">Je ne suis vraiment un être libre que lorsque tous les êtres</text>
+    <text x="160" y="101" font-size="13.5" fill="var(--figure-ink)">humains qui m’entourent, hommes et femmes, sont eux aussi</text>
+    <text x="160" y="120" font-size="13.5" fill="var(--figure-ink)">libres. La liberté d’autrui, loin de borner ou d’annuler ma</text>
+    <text x="160" y="139" font-size="13.5" fill="var(--figure-ink)">liberté, en est au contraire la condition nécessaire et la</text>
+    <text x="160" y="158" font-size="13.5" fill="var(--figure-ink)">pleine confirmation :</text>
+    <text x="160" y="177" font-size="13.5" fill="var(--figure-ink)">je ne suis réellement libre que par la liberté des autres ;</text>
+
+    <!-- Bloc 2 — renforcement -->
+    <text x="160" y="211" font-size="13.5" fill="var(--figure-ink)">et plus le nombre d’hommes libres autour de moi</text>
+    <text x="160" y="230" font-size="13.5" fill="var(--figure-ink)">s’accroît, plus le cercle de leur liberté s’élargit,</text>
+    <text x="160" y="249" font-size="13.5" fill="var(--figure-ink)">plus ma propre liberté gagne en étendue et en profondeur.</text>
+
+    <!-- Bloc 3 — contre-cas -->
+    <text x="160" y="283" font-size="13.5" fill="var(--figure-ink)">À l’inverse, c’est la servitude des hommes qui se dresse</text>
+    <text x="160" y="302" font-size="13.5" fill="var(--figure-ink)">entre moi et la liberté ;</text>
+    <text x="160" y="321" font-size="13.5" fill="var(--figure-ink)">autrement dit, c’est le fait de restreindre la liberté des</text>
+    <text x="160" y="340" font-size="13.5" fill="var(--figure-ink)">hommes, ou de les abaisser au rang de l’animal, qui nie mon</text>
+    <text x="160" y="359" font-size="13.5" fill="var(--figure-ink)">humanité.</text>
+    <text x="160" y="378" font-size="13.5" fill="var(--figure-ink)">Car, comme je l’ai dit, je ne suis vraiment libre que</text>
+    <text x="160" y="397" font-size="13.5" fill="var(--figure-ink)">lorsque ma liberté et ma dignité en tant que personne sont</text>
+    <text x="160" y="416" font-size="13.5" fill="var(--figure-ink)">garanties, lorsque se confirme mon droit de ne me soumettre</text>
+    <text x="160" y="435" font-size="13.5" fill="var(--figure-ink)">à la volonté d’aucun autre homme, et que mes actes ne sont</text>
+    <text x="160" y="454" font-size="13.5" fill="var(--figure-ink)">déterminés que par mes convictions personnelles —</text>
+    <text x="160" y="473" font-size="13.5" fill="var(--figure-ink)">lesquelles sont en même temps le reflet de la conscience</text>
+    <text x="160" y="492" font-size="13.5" fill="var(--figure-ink)">libre d’autrui.</text>
+
+    <!-- Bloc 4 — élargissement -->
+    <text x="160" y="526" font-size="13.5" fill="var(--figure-ink)">Ainsi ma liberté, en tant que personne, se trouve</text>
+    <text x="160" y="545" font-size="13.5" fill="var(--figure-ink)">confirmée par la liberté des autres et</text>
+    <text x="160" y="564" font-size="13.5" fill="var(--figure-ink)">ouverte à l’infini, et son champ s’élargira sans fin.</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la thèse surlignée + son étiquette
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Surbrillance (boîte translucide, comme un surligneur) sur la ligne
+         y=177, qui EST exactement la citation de la thèse (R1) -->
+    <rect x="158" y="163" width="392" height="19" rx="4"
+          fill="var(--figure-accent)" fill-opacity="0.20"/>
+
+    <!-- Pastille « la thèse », alignée sur la ligne surlignée -->
+    <rect x="26" y="163" width="118" height="26" rx="13"
+          fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="85" y="180" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-accent)">la thèse</text>
+
+    <!-- Trait de rappel : la pastille touche directement ce qu'elle nomme -->
+    <line x1="144" y1="176" x2="158" y2="176"
+          stroke="var(--figure-accent)" stroke-width="1.6" stroke-linecap="round"/>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — les connecteurs / articulations marqués
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- « À l'inverse » — opposition, ouvre le contre-cas -->
+    <line x1="160" y1="287" x2="234" y2="287"
+          stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+    <!-- « autrement dit » — reformulation -->
+    <line x1="160" y1="325" x2="246" y2="325"
+          stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+    <!-- « Car » — causale, justifie le contre-cas -->
+    <line x1="160" y1="382" x2="184" y2="382"
+          stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+    <!-- « Ainsi » — conclusion, ouvre l'élargissement -->
+    <line x1="160" y1="530" x2="194" y2="530"
+          stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — le mouvement argumentatif en flèches :
+       thèse → renforcement → contre-cas → élargissement
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <!-- Pastille « renforcement », alignée sur le bloc 2 -->
+    <rect x="26" y="217" width="118" height="26" rx="13"
+          fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="85" y="234" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-accent)">renforcement</text>
+    <line x1="144" y1="230" x2="160" y2="230"
+          stroke="var(--figure-accent)" stroke-width="1.6" stroke-linecap="round"/>
+
+    <!-- Pastille « contre-cas », alignée sur le bloc 3 -->
+    <rect x="26" y="375" width="118" height="26" rx="13"
+          fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="85" y="392" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-accent)">contre-cas</text>
+    <line x1="144" y1="388" x2="160" y2="388"
+          stroke="var(--figure-accent)" stroke-width="1.6" stroke-linecap="round"/>
+
+    <!-- Pastille « élargissement », alignée sur le bloc 4 -->
+    <rect x="26" y="532" width="118" height="26" rx="13"
+          fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="85" y="549" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-accent)">élargissement</text>
+    <line x1="144" y1="545" x2="160" y2="545"
+          stroke="var(--figure-accent)" stroke-width="1.6" stroke-linecap="round"/>
+
+    <!-- Flèches de la gouttière (x=85), reliant les 4 pastilles dans l'ordre
+         de lecture — thèse → renforcement → contre-cas → élargissement -->
+    <line x1="85" y1="189" x2="85" y2="208" stroke="var(--figure-accent)" stroke-width="2"/>
+    <polygon points="85,217 80.5,208 89.5,208" fill="var(--figure-accent)"/>
+
+    <line x1="85" y1="243" x2="85" y2="366" stroke="var(--figure-accent)" stroke-width="2"/>
+    <polygon points="85,375 80.5,366 89.5,366" fill="var(--figure-accent)"/>
+
+    <line x1="85" y1="401" x2="85" y2="523" stroke="var(--figure-accent)" stroke-width="2"/>
+    <polygon points="85,532 80.5,523 89.5,523" fill="var(--figure-accent)"/>
+  </g><!-- /step-4 -->
+
+</svg>

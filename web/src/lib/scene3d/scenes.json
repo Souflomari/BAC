@@ -1,0 +1,807 @@
+{
+  "orbite-geostationnaire": {
+    "controles": [
+      "rayon",
+      "inclinaison",
+      "sens",
+      "referentiel"
+    ],
+    "etat": [
+      "rayon_km",
+      "inclinaison_deg",
+      "sens",
+      "referentiel",
+      "vue"
+    ],
+    "bornes": {
+      "rayon_km": [
+        7000,
+        60000
+      ],
+      "inclinaison_deg": [
+        0,
+        90
+      ]
+    },
+    "lectures": [
+      "altitude",
+      "periode",
+      "v-geo",
+      "v-sol",
+      "rapports"
+    ],
+    "temps": true,
+    "valeurs": {
+      "sens": [
+        "direct",
+        "retrograde"
+      ],
+      "referentiel": [
+        "geocentrique",
+        "terrestre"
+      ],
+      "vue": [
+        "biais",
+        "dessus",
+        "cote"
+      ]
+    }
+  },
+  "sphere-plan-droite": {
+    "temps": false,
+    "controles": [
+      "position",
+      "objet",
+      "rayon"
+    ],
+    "etat": [
+      "objet",
+      "k",
+      "R",
+      "vue"
+    ],
+    "bornes": {
+      "k": [
+        -2,
+        6
+      ],
+      "R": [
+        1,
+        4
+      ]
+    },
+    "valeurs": {
+      "objet": [
+        "plan",
+        "droite"
+      ],
+      "vue": [
+        "biais",
+        "face",
+        "dessus"
+      ]
+    },
+    "lectures": [
+      "d",
+      "r",
+      "hm",
+      "corde"
+    ]
+  },
+  "particule-champ-magnetique": {
+    "temps": false,
+    "course": true,
+    "controles": [
+      "particule",
+      "champ",
+      "sens",
+      "vitesse",
+      "region"
+    ],
+    "etat": [
+      "particule",
+      "B_mT",
+      "sens",
+      "v0",
+      "region",
+      "trace_B_mT",
+      "vue"
+    ],
+    "bornes": {
+      "B_mT": [
+        0.5,
+        3
+      ],
+      "v0": [
+        0.5,
+        2
+      ],
+      "trace_B_mT": [
+        0.5,
+        3
+      ]
+    },
+    "valeurs": {
+      "particule": [
+        "electron",
+        "positon"
+      ],
+      "sens": [
+        "entrant",
+        "sortant"
+      ],
+      "region": [
+        "couloir",
+        "partout"
+      ],
+      "vue": [
+        "manuel",
+        "biais"
+      ]
+    },
+    "lectures": [
+      "v",
+      "F",
+      "angle",
+      "R",
+      "theta"
+    ]
+  },
+  "produit-vectoriel": {
+    "temps": false,
+    "controles": [
+      "angle",
+      "longueur",
+      "inclinaison",
+      "ordre"
+    ],
+    "etat": [
+      "theta_deg",
+      "v_norme",
+      "phi_deg",
+      "ordre",
+      "vue"
+    ],
+    "bornes": {
+      "theta_deg": [
+        0,
+        180
+      ],
+      "v_norme": [
+        0.5,
+        3
+      ],
+      "phi_deg": [
+        0,
+        90
+      ]
+    },
+    "valeurs": {
+      "ordre": [
+        "uv",
+        "vu"
+      ],
+      "vue": [
+        "biais",
+        "dessus",
+        "cote"
+      ]
+    },
+    "lectures": [
+      "coordonnees",
+      "norme",
+      "aire",
+      "orthogonalite"
+    ]
+  },
+  "solide-revolution": {
+    "temps": false,
+    "controles": [
+      "balayage",
+      "tranche",
+      "tranches",
+      "fonction",
+      "unite"
+    ],
+    "etat": [
+      "fonction",
+      "balayage_deg",
+      "x_tranche",
+      "n_tranches",
+      "unite_cm",
+      "vue"
+    ],
+    "bornes": {
+      "balayage_deg": [
+        0,
+        360
+      ],
+      "x_tranche": [
+        0,
+        4
+      ],
+      "n_tranches": [
+        1,
+        16
+      ],
+      "unite_cm": [
+        1,
+        3
+      ]
+    },
+    "valeurs": {
+      "fonction": [
+        "racine",
+        "cone",
+        "log"
+      ],
+      "vue": [
+        "biais",
+        "face",
+        "cote"
+      ]
+    },
+    "lectures": [
+      "rayon",
+      "aire_tranche",
+      "volume",
+      "aire_region",
+      "volume_cm3",
+      "verification_cone"
+    ]
+  },
+  "manege-rotation": {
+    "temps": false,
+    "course": true,
+    "controles": [
+      "force",
+      "axe",
+      "distance",
+      "bras",
+      "instant"
+    ],
+    "etat": [
+      "force",
+      "axe",
+      "r_sieges",
+      "r_poussee",
+      "occupants",
+      "vue"
+    ],
+    "bornes": {
+      "r_sieges": [
+        0.1,
+        1.5
+      ],
+      "r_poussee": [
+        0.2,
+        1.5
+      ]
+    },
+    "valeurs": {
+      "force": [
+        "poids",
+        "radiale",
+        "tangentielle"
+      ],
+      "axe": [
+        "vertical",
+        "horizontal"
+      ],
+      "occupants": [
+        "deux",
+        "un"
+      ],
+      "vue": [
+        "dessus",
+        "biais",
+        "cote"
+      ]
+    },
+    "lectures": [
+      "moment",
+      "inertie",
+      "acceleration",
+      "omega",
+      "angle",
+      "points"
+    ]
+  },
+  "cuve-a-ondes": {
+    "temps": false,
+    "course": true,
+    "dimension": "2d",
+    "controles": [
+      "fente",
+      "frequence",
+      "sonde",
+      "recepteur"
+    ],
+    "etat": [
+      "a_cm",
+      "f_hz",
+      "chemin",
+      "sonde_cm",
+      "recepteur_deg",
+      "reference"
+    ],
+    "bornes": {
+      "a_cm": [
+        0.5,
+        4.0
+      ],
+      "sonde_cm": [
+        -6.0,
+        14.0
+      ],
+      "recepteur_deg": [
+        -60,
+        60
+      ]
+    },
+    "valeurs": {
+      "f_hz": [
+        "40",
+        "20",
+        "10",
+        "5"
+      ],
+      "chemin": [
+        "aucun",
+        "axe",
+        "arc"
+      ],
+      "reference": [
+        "aucune",
+        "40Hz"
+      ]
+    },
+    "lectures": [
+      "largeur",
+      "longueur-onde",
+      "comparaison",
+      "lambda-mesuree",
+      "periode-sonde",
+      "amplitude",
+      "angle",
+      "celerite"
+    ]
+  },
+  "corde-photo-film": {
+    "temps": false,
+    "course": true,
+    "dimension": "2d",
+    "controles": [
+      "point_m",
+      "instant",
+      "camera",
+      "geste",
+      "tension"
+    ],
+    "etat": [
+      "d_m",
+      "geste",
+      "v_ms",
+      "vue",
+      "instant_s",
+      "camera_n",
+      "reference"
+    ],
+    "bornes": {
+      "d_m": [
+        0.4,
+        3.2
+      ],
+      "instant_s": [
+        0,
+        1.0
+      ]
+    },
+    "valeurs": {
+      "geste": [
+        "bosse",
+        "rampe",
+        "rampe-haute",
+        "rampe-lente"
+      ],
+      "v_ms": [
+        "4",
+        "8"
+      ],
+      "vue": [
+        "film",
+        "photo",
+        "photos"
+      ],
+      "camera_n": [
+        "1",
+        "2",
+        "4",
+        "5"
+      ],
+      "reference": [
+        "aucune",
+        "rampe"
+      ]
+    },
+    "lectures": [
+      "distance",
+      "celerite",
+      "retard",
+      "instant",
+      "front",
+      "elongation-M",
+      "duree-geste",
+      "vitesse-M",
+      "mesure-v"
+    ]
+  },
+  "courbe-et-noyaux": {
+    "controles": [
+      "instant",
+      "depart",
+      "population",
+      "grandeur",
+      "isotope"
+    ],
+    "etat": [
+      "t_demi_j",
+      "instant_j",
+      "depart_j",
+      "population_n",
+      "grandeur",
+      "support",
+      "fenetre_j"
+    ],
+    "bornes": {
+      "instant_j": [
+        0,
+        10
+      ],
+      "depart_j": [
+        0,
+        24
+      ]
+    },
+    "lectures": [
+      "instant",
+      "noyaux",
+      "activite",
+      "depart",
+      "restants-depart",
+      "duree-de-moitie",
+      "demi-vie",
+      "lambda",
+      "tau",
+      "population",
+      "restants-comptes",
+      "tirages-precedents",
+      "ecart-a-la-loi"
+    ],
+    "temps": false,
+    "course": true,
+    "dimension": "2d",
+    "valeurs": {
+      "t_demi_j": [
+        "8",
+        "4"
+      ],
+      "population_n": [
+        "64",
+        "256",
+        "1024"
+      ],
+      "grandeur": [
+        "noyaux",
+        "activite"
+      ],
+      "support": [
+        "courbe",
+        "grille"
+      ],
+      "fenetre_j": [
+        "10",
+        "32"
+      ]
+    }
+  },
+  "banc-de-diffraction": {
+    "temps": false,
+    "dimension": "2d",
+    "controles": [
+      "fente",
+      "couleur",
+      "distance",
+      "objet"
+    ],
+    "etat": [
+      "a_mm",
+      "lambda_nm",
+      "D_m",
+      "objet",
+      "vue",
+      "reference"
+    ],
+    "bornes": {
+      "D_m": [
+        0.4,
+        2.0
+      ]
+    },
+    "valeurs": {
+      "a_mm": [
+        "0.060",
+        "0.080",
+        "0.100",
+        "0.150",
+        "0.200",
+        "0.300",
+        "1.000"
+      ],
+      "lambda_nm": [
+        "450",
+        "532",
+        "600",
+        "650"
+      ],
+      "objet": [
+        "fente",
+        "cheveu"
+      ],
+      "vue": [
+        "banc",
+        "banc-et-graphe"
+      ],
+      "reference": [
+        "aucune",
+        "depart"
+      ]
+    },
+    "lectures": [
+      "largeur-fente",
+      "longueur-onde",
+      "distance",
+      "largeur-tache",
+      "bords",
+      "ecart-angulaire",
+      "rapport",
+      "pente",
+      "lambda-deduite",
+      "diametre-deduit",
+      "theta-mesure"
+    ]
+  },
+  "tremplin-circulaire": {
+    "temps": false,
+    "course": true,
+    "dimension": "2d",
+    "controles": [
+      "position",
+      "vitesse",
+      "rayon",
+      "pilotage"
+    ],
+    "etat": [
+      "v_ms",
+      "R_m",
+      "regime",
+      "repere",
+      "reference"
+    ],
+    "valeurs": {
+      "v_ms": [
+        "9",
+        "12",
+        "18"
+      ],
+      "R_m": [
+        "10",
+        "15",
+        "20",
+        "30"
+      ],
+      "regime": [
+        "gaz",
+        "tenue",
+        "freinage"
+      ],
+      "repere": [
+        "approche",
+        "entree",
+        "milieu",
+        "sortie"
+      ],
+      "reference": [
+        "aucune",
+        "depart"
+      ]
+    },
+    "lectures": [
+      "vitesse",
+      "rayon",
+      "acceleration-normale",
+      "acceleration-tangentielle",
+      "acceleration",
+      "produit-a-v",
+      "nature",
+      "aN-fois-R"
+    ]
+  },
+  "banc-de-modulation": {
+    "temps": false,
+    "dimension": "2d",
+    "controles": [
+      "porteuse",
+      "modulante",
+      "continue",
+      "detecteur"
+    ],
+    "etat": [
+      "F_khz",
+      "Sm_v",
+      "U0_v",
+      "R0_kohm",
+      "sortie",
+      "reference"
+    ],
+    "valeurs": {
+      "F_khz": [
+        "1.2",
+        "2.4",
+        "4.0",
+        "8.0"
+      ],
+      "Sm_v": [
+        "1.0",
+        "2.0",
+        "3.0"
+      ],
+      "U0_v": [
+        "2.0",
+        "3.0",
+        "4.0"
+      ],
+      "R0_kohm": [
+        "0.5",
+        "2.0",
+        "5.0",
+        "10",
+        "25"
+      ],
+      "sortie": [
+        "modulee",
+        "modulee-et-detectee"
+      ],
+      "reference": [
+        "aucune",
+        "depart"
+      ]
+    },
+    "lectures": [
+      "calibration",
+      "comptage-porteuse",
+      "porteuse-lue",
+      "signal-lu",
+      "rapport-frequences",
+      "extrema",
+      "amplitude-a",
+      "taux-lu",
+      "entrees",
+      "taux-regle",
+      "constante-temps",
+      "fenetre"
+    ]
+  },
+  "banc-electrolyse": {
+    "temps": false,
+    "course": true,
+    "dimension": "2d",
+    "controles": [
+      "branchement",
+      "duree",
+      "courant",
+      "tension"
+    ],
+    "etat": [
+      "u_v",
+      "cablage",
+      "i_ma",
+      "duree_s"
+    ],
+    "valeurs": {
+      "u_v": [
+        "2.0",
+        "6.0",
+        "12.0"
+      ],
+      "cablage": [
+        "oppose",
+        "accord"
+      ],
+      "i_ma": [
+        "100",
+        "200",
+        "400"
+      ],
+      "duree_s": [
+        "1800",
+        "2700",
+        "5400"
+      ]
+    },
+    "lectures": [
+      "tension",
+      "fem",
+      "sens",
+      "intensite",
+      "duree",
+      "charge",
+      "masse-zinc",
+      "masse-cuivre",
+      "quantite-electrons",
+      "faraday-mesure"
+    ]
+  },
+  "plan-complexe-transformation": {
+    "temps": false,
+    "course": false,
+    "dimension": "2d",
+    "controles": [
+      "coefficient",
+      "point",
+      "centre",
+      "enonce",
+      "balayage"
+    ],
+    "etat": [
+      "c",
+      "z",
+      "centre",
+      "enonce",
+      "image"
+    ],
+    "valeurs": {
+      "c": [
+        "2",
+        "0.5",
+        "i",
+        "-2",
+        "1+i",
+        "2i",
+        "sqrt3+i"
+      ],
+      "z": [
+        "1+i",
+        "2i",
+        "2",
+        "4",
+        "1-i"
+      ],
+      "centre": [
+        "O",
+        "A"
+      ],
+      "enonce": [
+        "coefficient",
+        "rotation-A",
+        "homothetie-A",
+        "les-deux"
+      ],
+      "image": [
+        "cachee",
+        "donnee"
+      ]
+    },
+    "lectures": [
+      "module-c",
+      "distances",
+      "rapport",
+      "argument-c",
+      "angle",
+      "argument-image",
+      "point-fixe",
+      "ecriture",
+      "rapport-inverse"
+    ]
+  }
+}

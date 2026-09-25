@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" width="680" height="330"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Célérité c en fonction de la fréquence f : une droite horizontale pour un milieu non dispersif, la célérité est la même à toute fréquence ; une courbe décroissante pour un milieu dispersif, la célérité diminue quand la fréquence augmente. À deux fréquences repères f1 et f2, le milieu non dispersif donne la même célérité aux deux, le milieu dispersif donne deux célérités différentes c1 et c2.">
+  <title>Célérité c en fonction de la fréquence f</title>
+  <!--
+    celerite-vs-frequence.svg — R6. Deux courbes qualitatives sur les mêmes
+    axes : c(f) plate (milieu non dispersif) et c(f) décroissante (milieu
+    dispersif).
+
+    Choix de modélisation (à déclarer, comme facteurs-cinetiques.svg :
+    « le programme ne prescrit AUCUNE loi c(f) explicite pour un milieu
+    dispersif » — HORS-CADRE R6 : « aucune relation de dispersion c(f)
+    explicite à exploiter »). Les AXES sont donc volontairement SANS
+    graduation numérique : seule la FORME (plate vs décroissante) porte
+    l'idée enseignée, jamais une valeur lue sur l'axe. Le sens de la
+    variation de la courbe dispersive (décroissante) reprend fidèlement la
+    DIRECTION du second exemple chiffré du texte (c1=1,2 m/s à f1=200 Hz
+    puis c2=0,9 m/s à f2=2000 Hz — donc c diminue quand f augmente) ; les
+    deux médiums cités dans le texte (air ≈ 340 m/s, second milieu ≈ 1 m/s)
+    ont des échelles trop différentes pour cohabiter sur un même axe
+    gradué — d'où le choix, honnête, d'un axe qualitatif commun aux deux.
+
+    Courbe dispersive — CALCULÉE (pas devinée) : c(f) = 205 − 110·e^(−t/180),
+    t = x−80, en pixels (asymptote basse), points par pas de 20-30 px
+    (même technique que facteurs-cinetiques.svg).
+
+    Géométrie (reprend le gabarit facteurs-cinetiques.svg à l'identique) :
+      origine (f=0,c=axe) : (80,270) ; cadre x=40..630,y=28..286.
+      droite non dispersive : y=130 (constante) sur toute la largeur.
+      courbe dispersive : part de y=95 (f faible) et tend vers y≈205
+        (f élevée) — nettement AU-DESSUS de la droite à f faible, nettement
+        EN DESSOUS à f élevée : la divergence progressive EST le point.
+
+    Repères f1/f2 (le test opératoire du texte : « on envoie deux ondes de
+    fréquences différentes… on compare leurs célérités ») : guides
+    verticaux pointillés à x=180 (f1) et x=460 (f2, sur la courbe
+    dispersive, ces x tombent exactement sur des points déjà calculés du
+    tableau ci-dessus) ; pastilles c1/c2 sur la courbe dispersive
+    seulement (sur la droite, les deux hauteurs sont visiblement égales —
+    inutile de le réétiqueter, la lecture est déjà évidente).
+
+    Couleurs (convention facteurs-cinetiques.svg) : la droite non
+    dispersive (déjà connue depuis R1/R4 : « le milieu fixe c ») =
+    --figure-ink-soft (référence) ; la courbe dispersive (l'idée NEUVE de
+    ce rung) = --figure-accent (l'idée distinctive) ; guides f1/f2 et
+    pastilles = --figure-ink-soft / --figure-accent respectivement.
+
+    MISE EN ÉTAPES (graphe → TOUJOURS stagée, LESSON-EXPERIENCE-SPEC §2.5,
+    ordre canonique axes → données → lecture, identique à
+    facteurs-cinetiques.svg) :
+      step-1 : les axes.
+      step-2 : les deux courbes + leurs légendes.
+      step-3 : la lecture — guides f1/f2, pastilles c1/c2 sur la courbe
+               dispersive.
+    Les captions vivent dans celerite-vs-frequence.stages.json.
+  -->
+
+  <!-- Titre -->
+  <text x="340" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Célérité <tspan font-style="italic">c</tspan> selon la fréquence <tspan font-style="italic">f</tspan>
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="28" width="590" height="258" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les axes
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <line x1="80" y1="270" x2="610" y2="270"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="610,270 598,265.5 598,274.5" fill="var(--figure-ink-soft)"/>
+    <line x1="80" y1="270" x2="80" y2="42"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,42 75.5,53 84.5,53" fill="var(--figure-ink-soft)"/>
+    <text x="617" y="274" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">f</text>
+    <text x="72" y="46" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">c</text>
+    <text x="72" y="274" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — les données : les deux courbes, leurs légendes
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Droite : milieu NON dispersif — c constante, y=130 -->
+    <line x1="80" y1="130" x2="610" y2="130"
+          stroke="var(--figure-ink-soft)" stroke-width="2.4" stroke-linecap="round"/>
+
+    <!--
+      Courbe : milieu DISPERSIF — c(f) = 205 − 110·e^(−t/180), t = x−80.
+      Points calculés par pas de 20 px (30 px une fois la pente faible).
+    -->
+    <path d="
+      M80,95.00
+      L100,106.57 L120,116.92 L140,126.18 L160,134.47 L180,141.88
+      L200,148.53 L220,154.47 L240,159.78 L260,164.53 L280,168.79
+      L310,174.34 L340,179.05 L370,183.03 L400,186.41 L430,189.26
+      L460,191.68 L490,193.72 L520,195.45 L550,196.92 L580,198.15
+      L610,199.21
+    " fill="none"
+      stroke="var(--figure-accent)"
+      stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Légende « non dispersif » (ink-soft) -->
+    <line x1="470" y1="112" x2="484" y2="112"
+          stroke="var(--figure-ink-soft)" stroke-width="2.4"/>
+    <text x="488" y="115" font-size="11" fill="var(--figure-ink-soft)">non dispersif : <tspan
+          font-style="italic">c</tspan> constante</text>
+
+    <!-- Légende « dispersif » (accent) -->
+    <line x1="150" y1="112" x2="164" y2="112"
+          stroke="var(--figure-accent)" stroke-width="2.4"/>
+    <text x="168" y="115" font-size="11" fill="var(--figure-accent)">dispersif : <tspan
+          font-style="italic">c</tspan> dépend de <tspan font-style="italic">f</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la lecture : guides f1/f2, pastilles c1/c2
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Guides verticaux f1 (x=180) et f2 (x=460) -->
+    <line x1="180" y1="270" x2="180" y2="141.88"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="4,3"/>
+    <line x1="460" y1="270" x2="460" y2="130"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="180" y="284" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink-soft)">f<tspan dy="3" font-size="7.5">1</tspan></text>
+    <text x="460" y="284" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink-soft)">f<tspan dy="3" font-size="7.5">2</tspan></text>
+
+    <!-- Pastilles sur la droite non dispersive : mêmes hauteurs (lecture déjà évidente) -->
+    <circle cx="180" cy="130" r="3.2" fill="var(--figure-ink-soft)"/>
+    <circle cx="460" cy="130" r="3.2" fill="var(--figure-ink-soft)"/>
+
+    <!-- Pastilles + étiquettes sur la courbe dispersive : deux hauteurs différentes -->
+    <circle cx="180" cy="141.88" r="3.2" fill="var(--figure-accent)"/>
+    <circle cx="460" cy="191.68" r="3.2" fill="var(--figure-accent)"/>
+    <text x="192" y="139" font-size="10.5" font-style="italic" font-weight="600"
+          fill="var(--figure-accent)">c<tspan dy="3" font-size="7.5">1</tspan></text>
+    <text x="472" y="189" font-size="10.5" font-style="italic" font-weight="600"
+          fill="var(--figure-accent)">c<tspan dy="3" font-size="7.5">2</tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

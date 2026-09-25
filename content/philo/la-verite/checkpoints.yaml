@@ -1,0 +1,618 @@
+# In-lesson checkpoint items (summit-conversion campaign — PHILO, notion #2).
+# Formative, calm-core probes placed inside the lesson via [[checkpoint:<id>]]
+# markers — NOT the end bank (items.yaml). Same item schema, but NO
+# score/streak/tally. Wrong-answer feedback names the wrong PHILOSOPHICAL
+# model, not just the fact of being wrong. The end-bank ≥3-per-misconception
+# floor lives in items.yaml's coverage_summary and is NOT altered by these
+# checkpoints (a clone or a fresh item here is surfaced inline, never
+# re-counted toward that floor — house convention, see rlc-serie/
+# probabilites-conditionnelles/analyse-de-texte/la-liberte's checkpoints.yaml
+# headers).
+#
+# EVERY distractor carries a real `misconception:` id (no null tags).
+# Mined first from each rung's own "erreur à éviter" box (recipe's philo
+# addendum), then cross-checked against items.yaml's coverage_summary to
+# prioritize placement on the FIVE under-floor models so every student gets
+# in-lesson exposure regardless of the item-bank gap:
+# ⚠ RE-MESURÉ le 2026-09-19. Les chiffres ci-dessous décrivaient le banc
+# d'AVANT l'ajout de VERITE-31 à 35 : ils annonçaient cinq familles sous le
+# plancher sur un banc de 30 items. Le banc en compte 35 et AUCUNE de ces cinq
+# familles n'est sous le plancher. Le placement des sondes reste ce qu'il est ;
+# c'est sa JUSTIFICATION qui a vieilli, et elle est corrigée plutôt qu'effacée.
+#   critere-restreint-a-un-domaine-a-tort  — 4/35 in items.yaml (était 2/30), +1 here (cp-r2-rupture)
+#   non-refutee-jugee-douteuse             — 4/35 in items.yaml (était 2/30), +1 here (cp-r7-rupture)
+#   falsifiable-confondu-refutee           — 3/35 in items.yaml (était 1/30), +1 here (cp-r7-rupture, primary)
+#   propagande-mal-caracterisee            — 3/35 in items.yaml (était 2/30), +1 here (cp-r8-rupture)
+#   fallibilisme-confondu-relativisme      — 3/35 in items.yaml (était 2/30), +1 here (cp-r8-rupture, primary)
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict  (in R0)      — commit-gate. Probes the two named naive
+#                                 answers (accord-nombre-fait-verite,
+#                                 relativisme-chacun-sa-verite) + a third lure.
+#   cp-r1-rupture  (after R1)   — rupture gate: opinion-confondue-verite
+#                                 (primary), reel-confondu-verite (dual).
+#   cp-r2-rupture  (after R2)   — rupture gate. CORRIGÉ le 2026-09-19 : cette
+#                                 carte annonçait coherence-confondue-
+#                                 correspondance en primary ; le champ
+#                                 `primary_misconception` de la sonde dit
+#                                 acces-direct-au-reel-sans-interpretation,
+#                                 et aucun de ses distracteurs ne porte
+#                                 coherence-confondue-correspondance. Plus the two
+#                                 THINNEST-adjacent models each get their own
+#                                 distractor: acces-direct-au-reel-sans-
+#                                 interpretation, critere-restreint-a-un-
+#                                 domaine-a-tort (under-floor in items.yaml).
+#   cp-r4-rupture  (after R4)   — rupture gate: obstacle-epistemologique-
+#                                 mal-compris (primary, 3 distractors — the
+#                                 R4 "erreur à éviter" box's own confusion,
+#                                 tested from three different angles).
+#   cp-r5-rupture  (after R5)   — rupture gate: doute-methodique-confondu-
+#                                 scepticisme (primary), cogito-etendu-a-tort
+#                                 and doute-methodique-mal-compris (duals).
+#   cp-r6-rupture  (after R6)   — rupture gate: certitude-suffit-a-verite.
+#   cp-r7-rupture  (after R7)   — rupture gate: falsifiable-confondu-refutee
+#                                 (primary — the THINNEST model in
+#                                 items.yaml, 1/30), non-refutee-jugee-
+#                                 douteuse (dual, also under-floor).
+#   cp-r8-rupture  (after R8)   — rupture gate: fallibilisme-confondu-
+#                                 relativisme (primary, under-floor),
+#                                 propagande-mal-caracterisee (dual, also
+#                                 under-floor).
+#
+# Length rebalance (recipe's philo addendum, mandatory): every stem below
+# was authored with a deliberately varied correct-answer length. See the
+# length table in the closing comment (verified programmatically, not
+# eyeballed — see the campaign's length-check script).
+
+notion: la-verite
+skill_code: philo_la_verite
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the soirée de samedi hook)
+  #        Turns "prends position... réponds en une phrase" into a real
+  #        MCQ commit, right after the two spontaneous answers are named
+  #        and before the reveal ("les deux réponses semblent
+  #        raisonnables..."). Probes the two named naive models.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    skill_code: philo_la_verite
+    tags: [checkpoint, formative, misconception_driven, philo_la_verite, hook_commit]
+    primary_misconception: mc.philo.la_verite.relativisme-chacun-sa-verite
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |-
+      Avant de lire la suite : engage-toi. Laquelle de ces quatre façons de
+      juger qui dit vrai, entre Sarah et Karim, te semble la meilleure ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Il suffit de croire la version portée par le plus de témoins, ou par les témoins qui semblent les plus sûrs d'eux."
+        correct: false
+        misconception: mc.philo.la_verite.accord-nombre-fait-verite
+        feedback: |-
+          Modèle détecté : compter les têtes ou mesurer l'assurance. Mais
+          des groupes entiers de témoins parfaitement sincères se sont déjà
+          trompés ensemble, en reconstruisant sans le vouloir un souvenir
+          commun. Le nombre ne dit rien sur ce qui s'est réellement passé.
+
+      - id: B
+        text: "Sans preuve extérieure, on ne peut jamais vraiment savoir : chacun a, au fond, sa propre vérité, et personne n'a plus raison qu'un autre."
+        correct: false
+        misconception: mc.philo.la_verite.relativisme-chacun-sa-verite
+        feedback: |-
+          Modèle détecté : « chacun sa vérité ». Mais les deux versions ne
+          peuvent pas être vraies en même temps — soit Karim a dit cette
+          phrase, soit il ne l'a pas dite. Dire « chacun sa vérité » ne
+          résout pas la contradiction, cela refuse de la poser.
+
+      - id: C
+        text: "Aucune des deux, prise seule, ne suffit : il faut se demander ce qui ferait qu'un énoncé est vrai, indépendamment du nombre ou de la certitude de qui l'affirme — c'est cette question, non résolue pour l'instant, que la leçon va construire."
+        correct: true
+        feedback: |-
+          Exact — et c'est le réflexe à garder pour toute la leçon : ni
+          compter les têtes, ni dissoudre le problème dans le relativisme,
+          ne suffit. Les positions qui suivent vont construire, chapitre après
+          chapitre, ce qui fait qu'un énoncé est vrai.
+
+      - id: D
+        text: "La question ne mérite pas qu'on s'y attarde : ce n'est qu'une broutille entre deux camarades, sans rapport avec une vérité philosophique digne de ce nom, laquelle porterait plutôt sur des objets abstraits comme la science ou la morale, jamais sur une dispute aussi ordinaire qu'une soirée entre amis."
+        correct: false
+        misconception: mc.philo.la_verite.difficulte-justifie-renoncer-a-chercher
+        feedback: |-
+          Modèle détecté : trivialiser l'exemple pour éviter le problème
+          qu'il pose réellement. C'est exactement cette petite dispute,
+          construite pièce par pièce, qui va porter toute la leçon jusqu'à
+          sa dernière page (chapitre 9) — elle n'a rien d'anecdotique.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-rupture | placed AFTER R1
+  #        Probes: opinion-confondue-verite (primary),
+  #        reel-confondu-verite (dual, choice C)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-rupture
+    rung: "R1"
+    skill_code: philo_la_verite
+    tags: [checkpoint, formative, misconception_driven, philo_la_verite]
+    primary_misconception: mc.philo.la_verite.opinion-confondue-verite
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |-
+      Un ami te dit : « Je suis sûr à 100% que j'ai raison, donc c'est
+      forcément vrai. » Que répondre, à la lumière du chapitre 2 ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Sa certitude ne garantit rien : une opinion, même sincère et totale, peut être fausse — la vérité est une propriété de l'énoncé, pas de la conviction qu'on y met."
+        correct: true
+        feedback: |-
+          Exact. Le chapitre 2 le pose clairement : on peut croire, de la manière la
+          plus sincère qui soit, un énoncé entièrement faux. La fermeté
+          d'une conviction ne rend jamais, à elle seule, un énoncé vrai.
+
+      - id: B
+        text: "Il a raison : une conviction à 100% équivaut, par définition, à la vérité de ce qu'elle affirme."
+        correct: false
+        misconception: mc.philo.la_verite.opinion-confondue-verite
+        feedback: |-
+          Modèle détecté : prendre la sincérité pour une preuve. Le chapitre 2 est
+          explicite : la vérité est une propriété de l'énoncé, indépendante
+          du degré de conviction de celui qui l'affirme.
+
+      - id: C
+        text: "Il a tort, mais pour une autre raison : ce qu'il croit fait partie du réel qu'il a vécu, donc son opinion et le réel se confondent ici."
+        correct: false
+        misconception: mc.philo.la_verite.reel-confondu-verite
+        feedback: |-
+          Modèle détecté : confondre l'opinion (ce qu'un sujet croit) avec
+          le réel (ce qui est, indépendamment de ce qu'on en pense). Avoir
+          vécu une scène ne garantit pas un souvenir fidèle de ce qui s'y
+          est réellement passé.
+
+      - id: D
+        text: "Il a raison en partie : sa certitude ne prouve rien seule, mais devient une preuve valable dès lors que plusieurs autres personnes, indépendamment interrogées, partagent la même conviction avec la même force que lui."
+        correct: false
+        misconception: mc.philo.la_verite.accord-nombre-fait-verite
+        feedback: |-
+          Modèle détecté, sous une forme atténuée : remplacer une certitude
+          individuelle insuffisante par un nombre de certitudes tout aussi
+          insuffisant. Des témoins nombreux et sincères se sont déjà trompés
+          ensemble.
+
+    correct_feedback: |-
+      Une opinion, aussi sincère et ferme soit-elle, ne suffit jamais, à
+      elle seule, à la rendre vraie : la vérité est une propriété de
+      l'énoncé, pas de la conviction du sujet qui l'affirme.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-rupture | placed AFTER R2
+  #        Probes: acces-direct-au-reel-sans-interpretation (primary,
+  #        choice B+C — R2-native, no forward-reference to R3's
+  #        coherence/correspondence distinction),
+  #        critere-restreint-a-un-domaine-a-tort (choice D, under-floor)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-rupture
+    rung: "R2"
+    skill_code: philo_la_verite
+    tags: [checkpoint, formative, misconception_driven, philo_la_verite]
+    primary_misconception: mc.philo.la_verite.acces-direct-au-reel-sans-interpretation
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |-
+      Un élève affirme : « La théorie de la correspondance ne vaut que pour
+      les sciences exactes ; pour un fait ordinaire, comme savoir si Karim a
+      parlé, il suffit d'avoir une vidéo — elle parle d'elle-même. » Que
+      répondre ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux affirmations sont fausses : rien ne restreint la correspondance aux sciences exactes, et même une vidéo doit être interprétée par un esprit faillible — on ne sort jamais complètement de la pensée."
+        correct: true
+        feedback: |-
+          Exact. Le chapitre 3 applique justement la correspondance à un fait
+          ordinaire (la soirée du chapitre 1) ; et même la preuve la plus
+          « objective » en apparence doit être lue, entendue, interprétée.
+
+      - id: B
+        text: "Il a raison sur les deux points : hors des sciences exactes, seule la cohérence interne d'un récit compte pour juger de sa vérité, et une preuve matérielle bien conservée se passe entièrement de toute interprétation humaine, aussi faillible soit-elle par ailleurs."
+        correct: false
+        misconception: mc.philo.la_verite.acces-direct-au-reel-sans-interpretation
+        feedback: |-
+          Modèle détecté : croire qu'une preuve matérielle « parle
+          d'elle-même » — c'est l'erreur de C, ici combinée à une
+          restriction du domaine de la correspondance que rien dans le chapitre 3 ne
+          justifie non plus (voir D). Une vidéo doit toujours être
+          regardée, entendue, interprétée par un esprit faillible.
+
+      - id: C
+        text: "Il a tort seulement sur le premier point : une vidéo donne bien un accès direct au réel sans interprétation possible."
+        correct: false
+        misconception: mc.philo.la_verite.acces-direct-au-reel-sans-interpretation
+        feedback: |-
+          Modèle détecté : croire qu'une preuve matérielle « parle d'elle-
+          même ». Même une vidéo doit être regardée et interprétée — un son
+          confus, une image floue restent affaire de jugement.
+
+      - id: D
+        text: "Il a tort seulement sur le second point : une vidéo doit toujours être interprétée, mais la correspondance, elle, ne s'applique en effet qu'aux énoncés mesurables scientifiquement."
+        correct: false
+        misconception: mc.philo.la_verite.critere-restreint-a-un-domaine-a-tort
+        feedback: |-
+          Modèle détecté : restreindre sans justification la portée de la
+          correspondance. Rien dans la leçon ne la limite ainsi — le chapitre 3
+          l'applique explicitement à un fait ordinaire, pas seulement à un
+          énoncé scientifique.
+
+    correct_feedback: |-
+      La correspondance n'est réservée à aucun domaine particulier ; et
+      aucun fait, même filmé, n'échappe à la nécessité d'être interprété
+      par un esprit faillible.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r4-rupture | placed AFTER R4
+  #        Probes: obstacle-epistemologique-mal-compris, testé sous trois
+  #        angles différents (obstacle matériel, théorie rivale,
+  #        accumulation sans rupture).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-rupture
+    rung: "R4"
+    skill_code: philo_la_verite
+    tags: [checkpoint, formative, misconception_driven, philo_la_verite, bachelard]
+    primary_misconception: mc.philo.la_verite.obstacle-epistemologique-mal-compris
+    item_source: original
+    lesson_placement: after_R4
+
+    stem: |-
+      Un élève range, parmi les obstacles épistémologiques de Bachelard, le
+      simple fait de manquer d'un microscope assez puissant pour observer un
+      phénomène. Que lui répondre ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est une erreur : un manque d'instrument est un obstacle matériel, qui se résorbe en accumulant plus de moyens — l'obstacle épistémologique, lui, est interne à l'esprit, une évidence trop vite acceptée qu'il faut rompre."
+        correct: true
+        feedback: |-
+          Exact. Bachelard distingue précisément l'obstacle matériel
+          (manque de données, d'instruments — résorbé par plus de moyens)
+          de l'obstacle épistémologique (interne, une habitude de pensée
+          qu'il faut rompre activement).
+
+      - id: B
+        text: "Il a raison : tout ce qui freine la connaissance, matériel ou non, est par définition un obstacle épistémologique chez Bachelard."
+        correct: false
+        misconception: mc.philo.la_verite.obstacle-epistemologique-mal-compris
+        feedback: |-
+          Modèle détecté : élargir la notion à n'importe quel frein. La
+          leçon le signale explicitement comme l'erreur à éviter : un
+          obstacle matériel se résorbe par plus de moyens, pas par une
+          rupture de pensée.
+
+      - id: C
+        text: "Il a tort, mais pour une autre raison : le seul véritable obstacle épistémologique est une théorie scientifique rivale, qu'il faut réfuter par l'expérience avant de pouvoir légitimement avancer la sienne propre, faute de quoi aucune connaissance nouvelle ne peut jamais s'établir solidement."
+        correct: false
+        misconception: mc.philo.la_verite.obstacle-epistemologique-mal-compris
+        feedback: |-
+          Modèle détecté : confondre l'obstacle épistémologique avec une
+          théorie concurrente extérieure. Bachelard vise une résistance
+          interne à l'esprit du chercheur lui-même, pas un rival à réfuter.
+
+      - id: D
+        text: "Il a tort : pour Bachelard, la connaissance progresse toujours par accumulation continue de données de plus en plus précises, jamais par rupture."
+        correct: false
+        misconception: mc.philo.la_verite.confirmation-prouve-la-verite
+        feedback: |-
+          Modèle détecté : réduire Bachelard à une logique de pure
+          accumulation. C'est exactement l'inverse de sa thèse : connaître,
+          c'est rompre activement avec une évidence spontanée, pas
+          seulement accumuler dans le même sens.
+
+    correct_feedback: |-
+      Un obstacle épistémologique est interne, logé dans l'esprit du
+      chercheur — pas un manque de moyens matériels, ni une théorie
+      rivale — et il doit être interrogé et rompu, non simplement comblé.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r5-rupture | placed AFTER R5
+  #        Probes: doute-methodique-confondu-scepticisme (primary),
+  #        cogito-etendu-a-tort (choice C), doute-methodique-mal-compris
+  #        (choice D)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-rupture
+    rung: "R5"
+    skill_code: philo_la_verite
+    tags: [checkpoint, formative, misconception_driven, philo_la_verite, descartes]
+    primary_misconception: mc.philo.la_verite.doute-methodique-confondu-scepticisme
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |-
+      Une élève écrit : « Puisque Descartes doute de tout, y compris des
+      mathématiques, sa méthode se solde forcément par un échec total : plus
+      aucune certitude n'est possible. » Que répondre ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est un contresens : le doute cartésien est une méthode provisoire au service d'une certitude à trouver — et Descartes en trouve bel et bien une, que même le malin génie ne peut jamais ébranler : le cogito."
+        correct: true
+        feedback: |-
+          Exact. Le doute méthodique n'est pas un scepticisme qui
+          s'arrêterait au constat qu'on ne peut rien savoir : c'est l'outil
+          même qui conduit Descartes à une certitude qui résiste absolument.
+
+      - id: B
+        text: "Elle a raison : après avoir douté de tout, y compris via l'hypothèse du malin génie, plus aucune certitude n'est possible pour Descartes, pas même sur sa propre existence."
+        correct: false
+        misconception: mc.philo.la_verite.doute-methodique-confondu-scepticisme
+        feedback: |-
+          Modèle détecté : confondre le doute méthodique avec un scepticisme
+          généralisé. C'est l'inverse : le fait même de douter prouve, sans
+          faille possible, qu'il existe un sujet pensant qui doute.
+
+      - id: C
+        text: "Elle a tort, mais pour une autre raison : le cogito une fois établi comme premier fondement, Descartes peut désormais tenir pour vraie, sans plus aucun examen nécessaire, toute pensée qu'il forme avec la même assurance intérieure, mathématiques comprises."
+        correct: false
+        misconception: mc.philo.la_verite.cogito-etendu-a-tort
+        feedback: |-
+          Modèle détecté : étendre à tort la certitude du cogito à d'autres
+          contenus de pensée. Le cogito garantit seulement qu'il existe un
+          sujet pensant — pas la vérité du contenu de telle ou telle pensée
+          particulière, même mathématique.
+
+      - id: D
+        text: "Elle a tort : Descartes ne doute jamais réellement de rien, il fait seulement semblant pour la forme, avant de revenir directement à ses certitudes de départ."
+        correct: false
+        misconception: mc.philo.la_verite.doute-methodique-mal-compris
+        feedback: |-
+          Modèle détecté : mal décrire le mécanisme du doute. Descartes
+          pousse le doute jusqu'à l'hypothèse extrême du malin génie, y
+          compris contre les vérités les plus simples — ce n'est pas un
+          simulacre, c'est une escalade réelle et rigoureuse.
+
+    correct_feedback: |-
+      Le doute cartésien est un outil provisoire, pas une conclusion
+      négative définitive : c'est précisément ce qui conduit Descartes au
+      cogito, la première certitude absolument indubitable.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-r6-rupture | placed AFTER R6
+  #        Probes: certitude-suffit-a-verite
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-rupture
+    rung: "R6"
+    skill_code: philo_la_verite
+    tags: [checkpoint, formative, misconception_driven, philo_la_verite]
+    primary_misconception: mc.philo.la_verite.certitude-suffit-a-verite
+    item_source: original
+    lesson_placement: after_R6
+
+    stem: |-
+      Deux camarades sont également certains, avec la même assurance
+      totale, de deux réponses opposées à un QCM. Qu'est-ce que le chapitre 7 permet
+      d'en conclure ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Rien sur qui a raison : la certitude est un état subjectif qui peut être total des deux côtés, alors qu'un seul énoncé, au plus, peut être vrai — être certain ne garantit jamais d'être dans le vrai."
+        correct: true
+        feedback: |-
+          Exact. La certitude est un état psychologique, variable d'une
+          personne à l'autre ; la vérité, une propriété de l'énoncé,
+          indépendante de ce degré de conviction. Les deux plans restent
+          distincts, même quand la certitude est totale des deux côtés.
+
+      - id: B
+        text: "Que les deux ont raison, chacun selon sa propre vérité, puisque leur certitude est strictement égale des deux côtés."
+        correct: false
+        misconception: mc.philo.la_verite.relativisme-chacun-sa-verite
+        feedback: |-
+          Modèle détecté : dissoudre la contradiction plutôt que la poser.
+          Sur un QCM, une seule réponse, au plus, peut être correcte —
+          l'égalité de certitude ne change rien à ce fait.
+
+      - id: C
+        text: "Que celui qui a l'air le plus sûr de lui, dans son ton et son attitude, a statistiquement plus de chances d'avoir raison que l'autre."
+        correct: false
+        misconception: mc.philo.la_verite.certitude-suffit-a-verite
+        feedback: |-
+          Modèle détecté, sous une forme plus subtile : faire de l'assurance
+          apparente un indice de vérité. Le chapitre 7 le nomme la confusion la plus
+          fréquente et la plus tentante — une forte conviction n'est jamais
+          une garantie.
+
+      - id: D
+        text: "Que la question posée n'a, en réalité, aucune bonne réponse, puisqu'une certitude aussi partagée des deux côtés prouve que la question elle-même est mal formulée et devrait, par conséquent, être purement et simplement abandonnée."
+        correct: false
+        misconception: mc.philo.la_verite.difficulte-justifie-renoncer-a-chercher
+        feedback: |-
+          Modèle détecté : conclure de la difficulté à départager deux
+          certitudes égales que la question elle-même serait sans réponse.
+          Un QCM bien formé a une réponse correcte, quel que soit le degré
+          de conviction des deux camarades.
+
+    correct_feedback: |-
+      Une forte conviction accompagne souvent un énoncé vrai, mais cette
+      coïncidence n'est jamais une garantie : rien, dans le simple fait
+      d'être certain, ne produit la vérité de ce dont on est certain.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-6 | id: cp-r7-rupture | placed AFTER R7
+  #        Probes: falsifiable-confondu-refutee (primary — 3/35 depuis
+  #        VERITE-31..35 ; c'était le modèle le plus mince, 1/30, quand cette
+  #        sonde a été placée), non-refutee-jugee-douteuse (dual, 4/35)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7-rupture
+    rung: "R7"
+    skill_code: philo_la_verite
+    tags: [checkpoint, formative, misconception_driven, philo_la_verite, popper]
+    primary_misconception: mc.philo.la_verite.falsifiable-confondu-refutee
+    item_source: original
+    lesson_placement: after_R7
+
+    stem: |-
+      Une théorie scientifique a résisté, sans exception, à cinquante ans de
+      tests rigoureux, sans jamais être prise en défaut. Qu'est-ce que le chapitre 8
+      permet d'en dire, précisément ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Qu'elle est solidement corroborée — une solidité réelle — mais jamais prouvée définitivement vraie : elle reste, en principe, falsifiable, donc révisable si un fait futur venait la contredire."
+        correct: true
+        feedback: |-
+          Exact. Une théorie corroborée a résisté aux tests les plus
+          sévères — une solidité réelle, qui n'équivaut jamais à une preuve
+          absolue et définitive.
+
+      - id: B
+        text: "Qu'elle n'est plus vraiment scientifique, puisqu'une théorie authentiquement scientifique doit être régulièrement mise en défaut et réfutée par de nouvelles observations pour continuer à progresser vers une connaissance toujours plus fine."
+        correct: false
+        misconception: mc.philo.la_verite.falsifiable-confondu-refutee
+        feedback: |-
+          Modèle détecté : confondre « falsifiable en principe » avec
+          « souvent réfutée en fait ». Une théorie falsifiable et solidement
+          corroborée peut résister avec succès à de nombreux tests sérieux,
+          sans jamais avoir été réfutée.
+
+      - id: C
+        text: "Qu'elle reste, malgré cette solidité, une théorie douteuse et à moitié fausse, puisqu'elle n'a pas encore atteint le statut de vérité complète et définitive."
+        correct: false
+        misconception: mc.philo.la_verite.non-refutee-jugee-douteuse
+        feedback: |-
+          Modèle détecté : c'est exactement l'erreur que la leçon nomme
+          explicitement — « non-encore-réfutée » ne veut pas dire « à
+          moitié fausse » ou « douteuse ».
+
+      - id: D
+        text: "Qu'elle est désormais prouvée vraie une fois pour toutes, à l'abri de toute réfutation future, exactement comme un théorème mathématique démontré."
+        correct: false
+        misconception: mc.philo.la_verite.confirmation-prouve-la-verite
+        feedback: |-
+          Modèle détecté : aucun nombre, même immense, de tests réussis ne
+          peut prouver définitivement une théorie vraie — il suffirait d'un
+          seul contre-exemple futur pour la réfuter d'un coup.
+
+    correct_feedback: |-
+      Falsifiable en principe n'implique pas réfutée en fait ; et
+      « non-encore-réfutée » n'est ni « douteuse » ni « prouvée » — une
+      théorie corroborée occupe un statut intermédiaire, solide mais
+      toujours révisable.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-7 | id: cp-r8-rupture | placed AFTER R8, before R9
+  #        Probes: fallibilisme-confondu-relativisme (primary, 3/35 — plus
+  #        sous le plancher depuis VERITE-31..35),
+  #        propagande-mal-caracterisee (dual, 3/35 — idem)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r8-rupture
+    rung: "R8"
+    skill_code: philo_la_verite
+    tags: [checkpoint, formative, misconception_driven, philo_la_verite, propagande]
+    primary_misconception: mc.philo.la_verite.fallibilisme-confondu-relativisme
+    item_source: original
+    lesson_placement: after_R8
+
+    stem: |-
+      Un élève conclut : « Puisqu'aucune certitude absolue n'est possible
+      (sauf le cogito), toutes les opinions se valent finalement — la
+      propagande a donc, en un sens, raison de dire qu'il n'y a que des
+      récits, pas de vérité. » Que répondre ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est une erreur double : le fallibilisme n'implique pas le relativisme — une version peut correspondre aux faits, l'autre non, même difficile à établir avec certitude — et la propagande, loin d'être fallibiliste, se protège au contraire de toute réfutation."
+        correct: true
+        feedback: |-
+          Exact. Accepter qu'une certitude parfaite soit hors de portée
+          n'implique pas que toutes les versions se valent ; et la
+          propagande fabrique justement de la certitude et un consensus
+          apparent, à l'exact inverse de l'idéal popperien.
+
+      - id: B
+        text: "Il a raison sur le fond : accepter qu'aucune certitude absolue n'existe revient logiquement à accepter qu'aucune opinion n'est plus fondée qu'une autre."
+        correct: false
+        misconception: mc.philo.la_verite.fallibilisme-confondu-relativisme
+        feedback: |-
+          Modèle détecté : c'est exactement l'inférence fausse que la leçon
+          dénonce. Le fallibilisme et le relativisme sont deux positions
+          distinctes, la première n'entraînant jamais la seconde.
+
+      - id: C
+        text: "Il a tort seulement sur la propagande : elle s'appuie au contraire sur des théories rigoureusement falsifiables, qu'elle expose volontairement au risque de la réfutation, exactement comme le ferait une démarche scientifique authentique, pour mieux convaincre son public."
+        correct: false
+        misconception: mc.philo.la_verite.propagande-mal-caracterisee
+        feedback: |-
+          Modèle détecté : c'est l'inverse. La propagande se protège, par
+          construction, de toute réfutation possible, en s'ajustant sans
+          cesse pour absorber toute objection.
+
+      - id: D
+        text: "Il a raison sur les deux points, et c'est bien pour cela que chercher la vérité, en toute rigueur, ne sert plus à rien une fois cette leçon terminée."
+        correct: false
+        misconception: mc.philo.la_verite.difficulte-justifie-renoncer-a-chercher
+        feedback: |-
+          Modèle détecté : conclure de la difficulté qu'il faut renoncer à
+          chercher. C'est exactement l'inverse de ce que le chapitre 9 conclut :
+          c'est précisément parce que la vérité est difficile à atteindre
+          que l'effort pour la chercher garde toute sa valeur.
+
+    correct_feedback: |-
+      Le fallibilisme et le relativisme sont deux positions distinctes ; et
+      la propagande, loin d'être fallibiliste, fabrique de la certitude et
+      se protège de toute réfutation — l'exact inverse de l'idéal
+      popperien.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# CHECKPOINT COVERAGE NOTE
+#
+# These 8 items do NOT alter the end-bank coverage floor in items.yaml (house
+# convention — see rlc-serie/probabilites-conditionnelles/analyse-de-texte/
+# la-liberte). They exist to give every student in-lesson exposure to the
+# five under-floor models flagged in items.yaml's coverage_summary,
+# regardless of the item-bank gap — see the header comment above for the
+# exact mapping.
+#
+# LENGTH REBALANCE (recipe's philo addendum, mandatory — cited ~97% tell):
+# correct-answer character length vs. the three distractors, per item
+# (verified programmatically — js-yaml length-check script, not eyeballed).
+# First draft had the correct choice (always choice A, by drafting habit)
+# as the strict-longest option in 8/8 checkpoints — an exact instance of
+# the cited tell, caught immediately by the script rather than assumed
+# fixed by construction. Distractors were enriched with additional
+# philosophical substance (never by trimming the correct answer) until
+# every checkpoint cleared the check. Final result, all 8 at a MIDDLE rank
+# (rank 2 of 4) — correct, and deliberately not also pushed to
+# "systematically shortest," which would be its own tell in the other
+# direction:
+#   cp-r0-predict  — correct (C) 239 chars vs. 114/137/300 → middle.
+#   cp-r1-rupture  — correct (A) 162 chars vs. 96/135/216 → middle.
+#   cp-r2-rupture  — correct (A) 205 chars vs. 264/117/180 → middle.
+#   cp-r4-rupture  — correct (A) 221 chars vs. 129/291/145 → middle.
+#   cp-r5-rupture  — correct (A) 186 chars vs. 171/255/158 → middle.
+#   cp-r6-rupture  — correct (A) 198 chars vs. 116/133/229 → middle.
+#   cp-r7-rupture  — correct (A) 192 chars vs. 239/157/146 → middle.
+#   cp-r8-rupture  — correct (A) 258 chars vs. 152/270/149 → middle.
+# Net: 8/8 middle, 0/8 longest, 0/8 shortest. This lesson's items.yaml
+# (30 legacy items, retagged and length-rebalanced this same pass) supplies
+# the "occasionally longest / sometimes shortest" variety the addendum
+# asks for at the bank level — see its own coverage_summary notes.
+# ──────────────────────────────────────────────────────────────────────────────

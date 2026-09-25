@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 460"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="La cascade de la réaction inflammatoire aiguë : une griffure infectée et une entorse sans microbe convergent toutes deux vers la même lésion tissulaire, qui déclenche une alerte chimique locale, puis la vasodilatation (rougeur, chaleur), l’augmentation de perméabilité vasculaire (gonflement, douleur) et la diapédèse des phagocytes — la même chaîne, quelle que soit la cause.">
+  <title>La cascade de la réaction inflammatoire aiguë, indépendante de la cause de la lésion</title>
+
+  <!--
+    cascade-inflammatoire.svg — figure STATIQUE (pas de step-groups).
+    Cible précise : l'erreur classique nommée en R1 (« L'erreur classique à
+    éviter ici ») et reprise en R3 — croire que la réaction inflammatoire est
+    déjà une reconnaissance SPÉCIFIQUE de l'intrus. Le schéma montre DEUX
+    causes très différentes (une griffure infectée ET une entorse sans aucun
+    microbe) convergeant vers le MÊME nœud « Lésion tissulaire », qui déclenche
+    ensuite la même chaîne d'événements et produit les mêmes quatre signes.
+
+    Layout (haut → bas) :
+      Deux entrées (griffure / entorse) → convergence « Lésion tissulaire »
+      → alerte chimique locale → trois branches (vasodilatation, diapédèse,
+      perméabilité accrue) → quatre signes cardinaux + phagocytes recrutés.
+
+    Convention couleur : le nœud « Lésion tissulaire » porte le seul accent
+    (--figure-accent) de la figure — c'est LA seule idée que cette figure
+    porte : quelle que soit la cause, tout part de ce même point, donc rien
+    en aval n'est spécifique de l'agent infectieux. Le reste du diagramme
+    (causes, alerte, branches, signes) reste en --figure-ink / --figure-ink-soft,
+    sans hiérarchie de couleur supplémentaire (un seul accent, une seule idée).
+
+    Simplification pédagogique assumée : les deux flèches d'entrée et les
+    branches de sortie sont des lignes simples, sans tête de flèche, quand la
+    direction est déjà évidente par la disposition (haut → bas, convergence,
+    éventail) — seules les liaisons de la « colonne vertébrale » verticale
+    portent une pointe explicite, à l'image du parti pris du schéma pilote
+    (disjonction-alleles.svg).
+  -->
+
+  <!-- Titre -->
+  <text x="360" y="22" text-anchor="middle"
+        font-size="13" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    La réaction inflammatoire : une seule cascade, quelle que soit la cause
+  </text>
+
+  <!-- ── Deux causes d'entrée ───────────────────────────────────────────── -->
+  <rect x="85" y="40" width="170" height="46" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+  <text x="170" y="58" text-anchor="middle" font-size="12" fill="var(--figure-ink)">Griffure infectée</text>
+  <text x="170" y="74" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">(bactérie)</text>
+
+  <rect x="465" y="40" width="170" height="46" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+  <text x="550" y="58" text-anchor="middle" font-size="12" fill="var(--figure-ink)">Entorse</text>
+  <text x="550" y="74" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">(aucun microbe)</text>
+
+  <!-- Lignes convergentes vers le nœud « Lésion tissulaire » -->
+  <line x1="170" y1="86" x2="330" y2="124" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+  <line x1="550" y1="86" x2="390" y2="124" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+
+  <!-- ── Convergence : Lésion tissulaire (seul accent de la figure) ────────── -->
+  <rect x="275" y="124" width="170" height="46" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.4"/>
+  <text x="360" y="152" text-anchor="middle"
+        font-size="13" font-weight="700" fill="var(--figure-accent)">Lésion tissulaire</text>
+
+  <!-- Flèche verticale : convergence → alerte chimique -->
+  <line x1="360" y1="170" x2="360" y2="200" stroke="var(--figure-ink)" stroke-width="1.8"/>
+  <polygon points="354,200 366,200 360,206" fill="var(--figure-ink)"/>
+
+  <!-- ── Alerte chimique locale ─────────────────────────────────────────── -->
+  <rect x="255" y="206" width="210" height="46" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+  <text x="360" y="225" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-ink)">Alerte chimique locale</text>
+  <text x="360" y="241" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">(histamine…)</text>
+
+  <!-- Éventail vers les trois branches -->
+  <line x1="310" y1="252" x2="160" y2="286" stroke="var(--figure-ink)" stroke-width="1.6"/>
+  <line x1="360" y1="252" x2="360" y2="286" stroke="var(--figure-ink)" stroke-width="1.6"/>
+  <line x1="410" y1="252" x2="560" y2="286" stroke="var(--figure-ink)" stroke-width="1.6"/>
+
+  <!-- ── Trois branches ─────────────────────────────────────────────────── -->
+  <rect x="45" y="286" width="190" height="46" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+  <text x="140" y="305" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--figure-ink)">Vasodilatation</text>
+  <text x="140" y="321" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">des vaisseaux locaux</text>
+
+  <rect x="265" y="286" width="190" height="46" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+  <text x="360" y="305" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--figure-ink)">Diapédèse</text>
+  <text x="360" y="321" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">(chimiotactisme)</text>
+
+  <rect x="485" y="286" width="190" height="46" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+  <text x="580" y="305" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--figure-ink)">Perméabilité accrue</text>
+  <text x="580" y="321" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">des vaisseaux locaux</text>
+
+  <!-- ── Flèches vers les signes / phagocytes (avec pointe) ─────────────── -->
+  <line x1="100" y1="332" x2="100" y2="378" stroke="var(--figure-ink)" stroke-width="1.6"/>
+  <polygon points="94,378 106,378 100,384" fill="var(--figure-ink)"/>
+  <line x1="180" y1="332" x2="180" y2="378" stroke="var(--figure-ink)" stroke-width="1.6"/>
+  <polygon points="174,378 186,378 180,384" fill="var(--figure-ink)"/>
+
+  <line x1="360" y1="332" x2="360" y2="378" stroke="var(--figure-ink)" stroke-width="1.6"/>
+  <polygon points="354,378 366,378 360,384" fill="var(--figure-ink)"/>
+
+  <line x1="540" y1="332" x2="540" y2="378" stroke="var(--figure-ink)" stroke-width="1.6"/>
+  <polygon points="534,378 546,378 540,384" fill="var(--figure-ink)"/>
+  <line x1="620" y1="332" x2="620" y2="378" stroke="var(--figure-ink)" stroke-width="1.6"/>
+  <polygon points="614,378 626,378 620,384" fill="var(--figure-ink)"/>
+
+  <!-- ── Quatre signes cardinaux + phagocytes recrutés ──────────────────── -->
+  <rect x="63" y="384" width="74" height="32" rx="8"
+        fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <text x="100" y="405" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)">Rougeur</text>
+
+  <rect x="143" y="384" width="74" height="32" rx="8"
+        fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <text x="180" y="405" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)">Chaleur</text>
+
+  <rect x="265" y="384" width="190" height="40" rx="8"
+        fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <text x="360" y="400" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-ink)">Phagocytes recrutés</text>
+  <text x="360" y="414" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">dans le tissu lésé</text>
+
+  <rect x="498" y="384" width="84" height="32" rx="8"
+        fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <text x="540" y="405" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)">Gonflement</text>
+
+  <rect x="583" y="384" width="74" height="32" rx="8"
+        fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <text x="620" y="405" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)">Douleur</text>
+
+  <!-- Légende de clôture -->
+  <text x="360" y="443" text-anchor="middle" font-size="11.5" fill="var(--figure-ink-soft)">
+    Même cascade, mêmes quatre signes — qu’il y ait un microbe ou non.
+  </text>
+</svg>

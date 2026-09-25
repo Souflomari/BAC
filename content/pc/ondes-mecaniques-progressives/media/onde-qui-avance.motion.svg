@@ -1,0 +1,218 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 360"
+     font-family="'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif"
+     aria-label="La perturbation avance le long d’une corde tandis que le point M oscille sur place puis revient à sa position de repos : transport d’énergie, sans transport de matière.">
+  <title>Une perturbation qui avance sur une corde : M oscille sur place</title>
+
+  <!--
+    onde-qui-avance.motion.svg  (v1 — pilot, ADR 0022 / MotionStage engine)
+    ─────────────────────────────────────────────────────────────────────────
+    Engine: MotionStage.tsx (GSAP MorphSVGPlugin for the traveling pulse and
+    the bead's rise-then-fall; pulse-settle for the flick cue; fade for the
+    replace-slot state chip).
+
+    CONCEPT: a single transverse pulse travels left-to-right along a rope.
+    A marked point M, fixed on the rope ahead of the pulse, does NOT travel
+    with it: it stays put until the pulse reaches it, oscillates once
+    (up then back down), and returns to rest — while the pulse itself keeps
+    going. This is the "transport d'énergie sans transport de matière"
+    misconception-killer that R1's prose states but cannot show moving.
+
+    LAYOUT MODEL: replace (one small slot: state-slot; everything else is
+    reserved-regions content inside the single "stage" region — the rope
+    and bead are NOT slotted, they are one continuously-morphing element
+    each, always present, changing shape/position beat to beat).
+
+    Regions:
+      chrome:     title + subtitle                      (always visible)
+      stage:      the rope scene (post, rope, bead, chip)
+      state-slot: small state chip, nested top-right of stage
+      footer:     legend + boundary reinforcement        (always visible)
+
+    THE ROPE (#rope-path): ONE path, authored FLAT (beat-0, at rest). Each
+    beat morphs it to a new bump position further right (MorphSVGPlugin
+    handles the flat→bump point-count mismatch by auto-subdivision; all
+    bump-to-bump morphs share an IDENTICAL command structure — M,L,C,C,L —
+    so only the numbers shift, exactly like the two-band construction in
+    onde-propagation-retard.svg, but continuous here instead of stacked).
+    Hidden morph targets live in <defs> (never painted, always queryable):
+      #rope-ref-p1  — bump centered at x=230 (beat-1 end)
+      #rope-ref-p2a — bump centered at x=430 (beat-2 mid: pulse AT M)
+      #rope-ref-p2b — bump centered at x=540 (beat-2 end: pulse past M)
+      #rope-ref-p3  — bump centered at x=595 (beat-3 end: far right)
+
+    THE BEAD (#bead): a filled circle-as-path at M's fixed x=430, authored
+    at rest (cy=210). Morphs to #bead-peak (cy=155) then back to
+    #bead-rest-ref (cy=210, a separate hidden target — after the first
+    morph the live element's own "rest" shape is gone, replaced by the
+    peak shape, so a second hidden reference is needed to return to it).
+    Authored as a <path> (arc-drawn circle), not a native <circle>, so
+    every morph in this file is path-to-path — the most robustly supported
+    MorphSVGPlugin case.
+
+    THE FLICK CUE (#flick-flash): authored opacity="0" (pre-state for
+    pulse-settle — this verb's setPre always hides its target, by design,
+    per MotionStage.tsx; it is a reveal-and-highlight verb, not a
+    highlight-only verb). Appears once, at beat-1, brightens then fades
+    fully back out (settleTo:0) — representing the instantaneous flick,
+    not a lingering mark. The fixed post/support (#post) is separate,
+    always-visible chrome — it never animates.
+
+    THE STATE CHIP (slot "state-slot"): exactly one of #state-0 (visible
+    on load) / #state-1 / #state-2 / #state-3 at a time, swapped via the
+    top-level `replaces` directives (prior fades out, next fades in).
+
+    CURRICULUM BOUNDARY (this notion's R1, before R3 introduces v, tau,
+    y_S/y_M notation): no formula, no S/M algebraic labels, no numeric
+    celerity. Only "M" is labeled (per task), and the source is labeled
+    generically "source" — never "S" — so this clip does not pre-empt R3.
+
+    PALETTE: var(--figure-*) tokens only. Rope/pulse = --figure-accent
+    (the emphasis/active-curve role, matching this notion's other two
+    static figures). Bead = --figure-ink fill with a thin --figure-accent
+    ring. Neutral chrome (post, arrows, guide line) = --figure-ink-soft /
+    --figure-grid.
+
+    NO-FLASH CONTRACT: #state-1/2/3 authored opacity="0" (fade pre-state).
+    #flick-flash authored opacity="0" (pulse-settle pre-state). #rope-path
+    and #bead are visible from beat-0 — they don't newly appear, they only
+    change shape across beats, so no opacity pre-state applies to them.
+  -->
+
+  <!-- ── Background ────────────────────────────────────────────────────── -->
+  <rect width="680" height="360" rx="8" fill="var(--figure-surface)"/>
+
+  <!-- ── Chrome: title + subtitle (always visible) ──────────────────────── -->
+  <text x="340" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Une perturbation qui avance : la matière, elle, reste
+  </text>
+  <text x="340" y="36" text-anchor="middle"
+        font-size="10" fill="var(--figure-ink-soft)">
+    Corde tendue — la source donne une impulsion unique, vers le haut
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       STAGE — the rope scene
+       ══════════════════════════════════════════════════════════════════════ -->
+  <rect x="16" y="48" width="648" height="250" rx="8"
+        fill="var(--figure-grid)" opacity="0.20"/>
+
+  <!-- Sens de propagation (always visible, neutral reference arrow) -->
+  <line x1="140" y1="72" x2="300" y2="72"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="300,72 288,67.5 288,76.5" fill="var(--figure-ink-soft)"/>
+  <text x="220" y="64" text-anchor="middle" font-size="9.5"
+        fill="var(--figure-ink-soft)">sens de propagation</text>
+
+  <!-- Fixed support / wall clamp (always visible chrome — never animates) -->
+  <rect x="63" y="192" width="14" height="36" rx="2"
+        fill="var(--figure-ink-soft)" opacity="0.55"/>
+  <line x1="60" y1="228" x2="50" y2="238" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="66" y1="228" x2="56" y2="238" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="72" y1="228" x2="62" y2="238" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <line x1="77" y1="210" x2="95" y2="210" stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <text x="70" y="250" text-anchor="middle" font-size="9.5"
+        fill="var(--figure-ink-soft)">source</text>
+
+  <!-- Flick cue — hidden until beat-1, then brightens and fades fully out
+       (pulse-settle: peak 1 → settleTo 0). Represents the instant of the
+       flick, not a lingering mark. -->
+  <g id="flick-flash" opacity="0">
+    <line x1="112" y1="205" x2="112" y2="172"
+          stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="112,164 106,177 118,177" fill="var(--figure-accent)"/>
+  </g>
+
+  <!-- M's fixed-x guide (always visible — helps the eye track the SAME
+       x-column across every beat: only the rope's SHAPE sweeps past it,
+       M's x never changes) -->
+  <line x1="430" y1="145" x2="430" y2="250"
+        stroke="var(--figure-grid)" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="447" y="230" font-size="11" font-style="italic"
+        fill="var(--figure-ink)">M</text>
+
+  <!-- THE ROPE — one path, authored FLAT (beat-0 / at rest). -->
+  <path id="rope-path"
+        d="M95,210 L650,210"
+        fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- THE BEAD — authored at rest (cy=210), same x as the guide line above. -->
+  <path id="bead"
+        d="M423,210 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 Z"
+        fill="var(--figure-ink)" stroke="var(--figure-accent)" stroke-width="1.5"/>
+
+  <!-- Hidden morph targets — never painted, only queried by id. -->
+  <defs>
+    <path id="rope-ref-p1"
+          d="M95,210 L175,210 C193,210 203,155 230,155 C257,155 267,210 285,210 L650,210"/>
+    <path id="rope-ref-p2a"
+          d="M95,210 L375,210 C393,210 403,155 430,155 C457,155 467,210 485,210 L650,210"/>
+    <path id="rope-ref-p2b"
+          d="M95,210 L485,210 C503,210 513,155 540,155 C567,155 577,210 595,210 L650,210"/>
+    <path id="rope-ref-p3"
+          d="M95,210 L540,210 C558,210 568,155 595,155 C622,155 632,210 650,210 L650,210"/>
+    <path id="bead-peak"
+          d="M423,155 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 Z"/>
+    <path id="bead-rest-ref"
+          d="M423,210 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 Z"/>
+  </defs>
+
+  <!--
+    STATE CHIP — exactly one of state-0..state-3 visible at a time
+    (replace slot "state-slot"). state-0 visible on load; state-1/2/3
+    authored opacity="0" (fade pre-state), entered via the `replaces`
+    top-level directives (prior fades out as the next fades in).
+  -->
+  <rect x="452" y="60" width="200" height="36" rx="6"
+        fill="var(--figure-accent)" opacity="0.10"/>
+
+  <g id="state-0">
+    <text x="552" y="82" text-anchor="middle"
+          font-size="10.5" font-weight="600" fill="var(--figure-ink)">
+      avant l’impulsion
+    </text>
+  </g>
+
+  <g id="state-1" opacity="0">
+    <text x="552" y="82" text-anchor="middle"
+          font-size="10.5" font-weight="600" fill="var(--figure-ink)">
+      la perturbation avance
+    </text>
+  </g>
+
+  <g id="state-2" opacity="0">
+    <text x="552" y="82" text-anchor="middle"
+          font-size="10.5" font-weight="600" fill="var(--figure-ink)">
+      M reproduit le mouvement
+    </text>
+  </g>
+
+  <g id="state-3" opacity="0">
+    <text x="552" y="82" text-anchor="middle"
+          font-size="10.5" font-weight="600" fill="var(--figure-ink)">
+      le milieu est revenu au repos
+    </text>
+  </g>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       FOOTER — legend + boundary reinforcement (always visible)
+       ══════════════════════════════════════════════════════════════════════ -->
+  <line x1="40" y1="316" x2="70" y2="316" stroke="var(--figure-accent)" stroke-width="2.5"/>
+  <text x="76" y="320" font-size="10.5" fill="var(--figure-ink)">la perturbation (la forme qui avance)</text>
+
+  <path d="M300,316 a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0 Z"
+        fill="var(--figure-ink)" stroke="var(--figure-accent)" stroke-width="1.3"/>
+  <text x="317" y="320" font-size="10.5" fill="var(--figure-ink)">le point M (un élément de la corde)</text>
+
+  <text x="340" y="340" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">
+    Chaque point de la corde oscille sur place, puis revient à sa position de repos.
+  </text>
+  <text x="340" y="354" text-anchor="middle" font-size="9.5" font-style="italic"
+        fill="var(--figure-ink-soft)">
+    Transport d’énergie, sans transport de matière.
+  </text>
+
+</svg>

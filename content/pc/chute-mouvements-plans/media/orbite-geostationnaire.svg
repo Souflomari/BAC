@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 500" width="640" height="500"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Satellite géostationnaire vu depuis le pôle : la Terre et son orbite équatoriale, un point P fixe au sol et le satellite toujours à sa verticale, la Terre et le satellite tournant dans le même sens à la même vitesse angulaire, période de 24 heures pour les deux.">
+  <title>Le satellite géostationnaire — même sens, même ω, T = 24 h</title>
+  <!--
+    orbite-geostationnaire.svg — figure STAGED (3 étapes). Vue de dessus
+    (depuis le pôle Nord), plan équatorial. Cœur du R10 : les TROIS
+    conditions (T = T_Terre, plan équatorial, même sens) tiennent ensemble
+    parce que le satellite tourne à la MÊME vitesse angulaire que la Terre
+    — donc reste à la verticale d'un même point P au sol.
+
+    Géométrie (schématique, rapport Terre/orbite non à l'échelle réelle —
+    même convention que orbite-force-centripete.svg) :
+      Terre : centre C=(320,270), rayon 90.
+      Orbite (équatoriale) : cercle concentrique, rayon 190 (pointillé).
+      P (point fixe au sol, sur l'équateur) : sommet de la Terre,
+        (320,180).
+      Satellite S : à la verticale de P, sur l'orbite, (320,80) — aligné
+        avec C et P (même droite radiale), pour montrer "toujours au-dessus
+        du même point".
+      Flèches de rotation (même sens, courts arcs de −110° à −70°) :
+        Terre  : rayon 105, arc de (284.09,171.30) à (355.91,171.30).
+        Orbite : rayon 210, arc de (248.18,72.6) à (391.82,72.6).
+        Les deux arcs sont tracés dans le MÊME sens (angle croissant) —
+        c'est la condition "même sens que la rotation terrestre".
+
+    Rôle des couleurs :
+      orbite (chemin)                 : --figure-accent (pointillé)
+      Terre                           : --figure-ink-soft (fond léger)
+      P, ligne d'alignement, flèches
+      de rotation, r                  : --figure-ink / --figure-ink-soft
+      annotation de conclusion        : --figure-accent
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="22" text-anchor="middle" font-size="12" font-weight="600"
+        letter-spacing="0.01em" fill="var(--figure-ink)">
+    Le satellite géostationnaire — vu depuis le pôle
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="20" y="32" width="600" height="452" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — données : Terre, orbite équatoriale, point P, satellite S
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Orbite équatoriale -->
+    <circle cx="320" cy="270" r="190" fill="none" stroke="var(--figure-accent)"
+            stroke-width="2" stroke-dasharray="7,5"/>
+
+    <!-- Terre -->
+    <circle cx="320" cy="270" r="90" fill="var(--figure-ink-soft)" fill-opacity="0.20"
+            stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="320" y="266" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-ink)">Terre</text>
+    <text x="320" y="281" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">(plan équatorial)</text>
+
+    <!-- Ligne d'alignement radiale C-P-S -->
+    <line x1="320" y1="270" x2="320" y2="80" stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="4,3"/>
+    <!-- « r » passe à GAUCHE de la ligne radiale et remonte : à (332;145) il
+         tombait dans « Terre : T_Terre ≈ 24 h », centré sur x=320 et large
+         de ~110 px (recouvrement mesuré 62 %, le r se lisant dans le mot). -->
+    <text x="312" y="120" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">r</text>
+
+    <!-- Point fixe P au sol -->
+    <circle cx="320" cy="180" r="4.5" fill="var(--figure-ink)"/>
+    <text x="332" y="184" font-size="11" fill="var(--figure-ink)">P (point fixe au sol)</text>
+
+    <!-- Satellite -->
+    <circle cx="320" cy="80" r="6" fill="var(--figure-ink)"/>
+    <text x="332" y="76" font-size="11" fill="var(--figure-ink)">satellite</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — mécanisme : rotation de la Terre, T_Terre ≈ 24 h
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="M284.09,171.30 A105,105 0 0,1 355.91,171.30"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2"/>
+    <polygon points="363.4,174.0 354.2,176.0 357.6,166.6" fill="var(--figure-ink)"/>
+    <text x="320" y="150" text-anchor="middle" font-size="10.5" fill="var(--figure-ink)">Terre : T<tspan dy="3" font-size="7.5">Terre</tspan><tspan dy="-3"> ≈ 24 h</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : rotation du satellite, MÊME sens, T = 24 h
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <path d="M248.18,72.6 A210,210 0 0,1 391.82,72.6"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2.2"/>
+    <polygon points="399.3,75.3 390.1,77.3 393.5,67.9" fill="var(--figure-accent)"/>
+    <text x="320" y="46" text-anchor="middle" font-size="10.5" fill="var(--figure-accent)">satellite : même sens, T = 24 h</text>
+
+    <!-- DESCENDUE SOUS L'ORBITE (2026-09-04) : à y=460, la ligne passait
+         exactement au point le plus bas du cercle d'orbite (centre 320;270,
+         rayon 190 → bas à y=460), qui la rayait sur 32 % de sa largeur.
+         22 px plus bas, elle est entièrement hors du disque. -->
+    <text x="320" y="482" text-anchor="middle" font-size="11" fill="var(--figure-accent)">même vitesse angulaire ω → le satellite reste à la verticale de P</text>
+    <!-- DESCENDUE avec la ligne du dessus (2026-09-04) : celle-ci ayant dû
+         sortir du disque, les deux se recouvraient à 45 %. -->
+    <text x="320" y="498" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">(mais dans le référentiel géocentrique, il tourne bel et bien, à ~3 km/s)</text>
+  </g><!-- /step-3 -->
+
+</svg>

@@ -1,0 +1,222 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 770"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="De l’échiquier à l’arbre pondéré : le croisement A//a × A//a de I-1 et I-2 donne 1/4 A//A, 2/4 A//a, 1/4 a//a. Sachant II-2 sain, a//a est éliminé et les deux cas restants sont renormalisés sur 3/4 : P(A//A) = 1/3, P(A//a) = 2/3. L’arbre pondéré de l’enfant à naître III-1 : si II-2 est A//a (proba 2/3), le croisement avec II-3 (A//a confirmée) donne un enfant atteint avec proba 1/4 ; si II-2 est A//A (proba 1/3), aucun enfant ne peut être atteint, proba 0. En combinant : P(III-1 atteint) = 2/3 × 1/4 + 1/3 × 0 = 1/6, plus petit que 1/4.">
+  <title>De l’échiquier au calcul de probabilité — génotype incertain de II-2 et risque pour III-1</title>
+
+  <!--
+    proba-enfant-atteint.svg — figure STAGED, 5 étapes
+    (docs/design/LESSON-EXPERIENCE-SPEC.md §2).
+
+    Placement : R5, juste après l'équation finale
+    P(III-1 atteint) = (2/3 × 1/4) + (1/3 × 0) = 2/12 = 1/6,
+    juste avant "Vérification rapide". Cette figure REND en 5 étapes tout
+    le raisonnement du rung : l'échiquier des parents I-1 × I-2, la
+    renormalisation sachant II-2 sain, puis l'arbre pondéré de l'enfant à
+    naître III-1 — trois blocs du texte réunis en une seule figure parce
+    qu'ils forment une seule chaîne de déduction.
+
+    Idée UNIQUE portée par l'accent (var(--figure-accent)) : le fil de la
+    RENORMALISATION — le cas A//a (2/3), le seul qui transmette un risque
+    à III-1 — suivi de bout en bout : de la case a//a barrée (step-2),
+    au calcul renormalisé P(A//a)=2/3 (step-2), à la branche A//a de
+    l'arbre (step-3), jusqu'au résultat final 1/6 (step-5). Le cas A//A
+    (1/3, qui ne transmet aucun risque) reste en ink/ink-soft neutre tout
+    du long — un contraste délibéré, pas un oubli.
+
+    Notation : autosomale A//A / A//a / a//a partout (double trait `//`),
+    JAMAIS la notation en exposant sur l'X (contraste voulu avec
+    croisement-lie-x.svg, qui reste, lui, en Xᴬ/Xᵃ).
+
+    Mise en scène :
+      step-1 : échiquier A//a × A//a complet (I-1 × I-2) — les 4 cases +
+               la barre de proportions (1/4 A//A, 2/4 A//a, 1/4 a//a),
+               tout neutre.
+      step-2 (l'accent commence) : la case a//a de la barre est barrée et
+               grisée ; le crochet « 3/4 » et les deux résultats
+               renormalisés P(A//A)=1/3 (neutre) et P(A//a)=2/3 (accent).
+      step-3 : la branche A//a de l'arbre pondéré — croisement avec II-3
+               (A//a confirmée), feuille « enfant atteint, P = 1/4 »
+               (accent).
+      step-4 : la branche A//A de l'arbre — même croisement, feuille
+               « enfant atteint, P = 0 » (neutre, contraste).
+      step-5 : combinaison pondérée → boîte finale P(III-1 atteint)=1/6
+               (accent) + note de cohérence 1/6 < 1/4.
+
+    Layout (viewBox 650×770) :
+      Titre                                    y=24
+      Bloc échiquier (parents, cadre, cases)    y=48–352
+      Barre de proportions + renormalisation    y=368–500
+      Bloc arbre pondéré (II-2 × II-3 → III-1)  y=520–728
+      Note de cohérence                         y=744
+      Colonne neutre (A//A, 1/3)   : x210–390 (centre 300)
+      Colonne accent (A//a, 2/3)   : x410–590 (centre 500)
+  -->
+
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="325" y="24" text-anchor="middle"
+          font-size="13" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      De l’échiquier à l’arbre : la probabilité que III-1 soit atteint
+    </text>
+
+    <!-- Boîte I-1 (père/mère indifférent — autosomal) -->
+    <rect x="310" y="48" width="300" height="48" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
+    <text x="460" y="68" text-anchor="middle" font-size="12" fill="var(--figure-ink)">I-1</text>
+    <text x="460" y="87" text-anchor="middle" font-size="14" font-style="italic" font-weight="700"
+          fill="var(--figure-ink)">A//a</text>
+
+    <!-- Connecteurs I-1 → colonnes -->
+    <line x1="385" y1="96" x2="385" y2="143" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round"/>
+    <polygon points="385,152 380,143 390,143" fill="var(--figure-ink-soft)"/>
+    <line x1="535" y1="96" x2="535" y2="143" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round"/>
+    <polygon points="535,152 530,143 540,143" fill="var(--figure-ink-soft)"/>
+
+    <!-- Boîte I-2 -->
+    <rect x="30" y="196" width="120" height="156" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
+    <text x="90" y="266" text-anchor="middle" font-size="12" fill="var(--figure-ink)">I-2</text>
+    <text x="90" y="288" text-anchor="middle" font-size="14" font-style="italic" font-weight="700"
+          fill="var(--figure-ink)">A//a</text>
+
+    <!-- Connecteurs I-2 → lignes -->
+    <line x1="150" y1="235" x2="181" y2="235" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round"/>
+    <polygon points="190,235 181,230 181,240" fill="var(--figure-ink-soft)"/>
+    <line x1="150" y1="313" x2="181" y2="313" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round"/>
+    <polygon points="190,313 181,308 181,318" fill="var(--figure-ink-soft)"/>
+
+    <!-- Cadre extérieur -->
+    <rect x="190" y="152" width="420" height="200" rx="6" fill="none"
+          stroke="var(--figure-ink)" stroke-width="2.2"/>
+
+    <!-- Lignes internes du cadre -->
+    <line x1="310" y1="152" x2="310" y2="352" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="460" y1="152" x2="460" y2="352" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="190" y1="196" x2="610" y2="196" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="190" y1="274" x2="610" y2="274" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+
+    <!-- En-têtes de gamètes -->
+    <text x="385" y="172" text-anchor="middle" font-size="11" fill="var(--figure-ink)">Gamète <tspan font-style="italic" font-weight="700">A</tspan></text>
+    <text x="385" y="188" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(1/2, I-1)</text>
+    <text x="535" y="172" text-anchor="middle" font-size="11" fill="var(--figure-ink)">Gamète <tspan font-style="italic" font-weight="700">a</tspan></text>
+    <text x="535" y="188" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(1/2, I-1)</text>
+    <text x="250" y="228" text-anchor="middle" font-size="11" fill="var(--figure-ink)">Gamète <tspan font-style="italic" font-weight="700">A</tspan></text>
+    <text x="250" y="246" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(1/2, I-2)</text>
+    <text x="250" y="306" text-anchor="middle" font-size="11" fill="var(--figure-ink)">Gamète <tspan font-style="italic" font-weight="700">a</tspan></text>
+    <text x="250" y="324" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">(1/2, I-2)</text>
+
+    <!-- Les 4 cases, remplies d'un coup (contrairement à croisement-lie-x.svg) -->
+    <text x="385" y="228" text-anchor="middle" font-size="13" font-style="italic" font-weight="700" fill="var(--figure-ink)">A//A</text>
+    <text x="385" y="248" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">1/4</text>
+    <text x="535" y="228" text-anchor="middle" font-size="13" font-style="italic" font-weight="700" fill="var(--figure-ink)">A//a</text>
+    <text x="535" y="248" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">1/4</text>
+    <text x="385" y="306" text-anchor="middle" font-size="13" font-style="italic" font-weight="700" fill="var(--figure-ink)">A//a</text>
+    <text x="385" y="326" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">1/4</text>
+    <text x="535" y="306" text-anchor="middle" font-size="13" font-style="italic" font-weight="700" fill="var(--figure-ink)">a//a</text>
+    <text x="535" y="326" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">1/4</text>
+
+    <!-- Barre de proportions (les 3 issues, sur toute la largeur du cadre) -->
+    <rect x="190" y="368" width="105" height="36" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="242" y="390" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)"><tspan font-style="italic" font-weight="700" fill="var(--figure-ink)">A//A</tspan><tspan> — 1/4</tspan></text>
+
+    <rect x="295" y="368" width="210" height="36" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="400" y="390" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)"><tspan font-style="italic" font-weight="700" fill="var(--figure-ink)">A//a</tspan><tspan> — 2/4</tspan></text>
+
+    <rect x="505" y="368" width="105" height="36" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="557" y="390" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)"><tspan font-style="italic" font-weight="700" fill="var(--figure-ink)">a//a</tspan><tspan> — 1/4</tspan></text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!-- Élimination de a//a : lavage + croix, AJOUTÉS par-dessus la case du step-1 -->
+    <!-- data-rature : ces deux traits BARRENT « a//a — 1/4 » exprès — c'est
+         le cas éliminé par « sachant sain », et le rayer EST le propos de
+         l'étape. La sonde de figures les signalait comme deux tracés
+         traversant une étiquette à 53 % ; c'est exact, et c'est voulu.
+         L'exception est écrite ici, dans le fichier, pas dans une liste
+         ailleurs (convention : division-euclidienne-droite,
+         double-specificite). -->
+    <rect x="505" y="368" width="105" height="36" fill="var(--figure-ink-soft)" fill-opacity="0.25"/>
+    <line data-rature="1" x1="509" y1="372" x2="606" y2="400" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <line data-rature="1" x1="509" y1="400" x2="606" y2="372" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+
+    <!-- Crochet sous les 2 cas restants (3/4) -->
+    <line x1="190" y1="412" x2="505" y2="412" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="190" y1="407" x2="190" y2="417" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="505" y1="407" x2="505" y2="417" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="348" y="428" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">3/4</text>
+
+    <line x1="348" y1="434" x2="348" y2="449" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round"/>
+    <polygon points="348,458 343,449 353,449" fill="var(--figure-ink-soft)"/>
+
+    <!-- Résultat renormalisé : A//A (neutre) -->
+    <rect x="210" y="456" width="180" height="44" rx="8" fill="var(--figure-surface)"
+          stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <text x="300" y="474" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)"><tspan font-style="italic" font-weight="700" fill="var(--figure-ink)">A//A</tspan><tspan> sachant sain</tspan></text>
+    <text x="300" y="494" text-anchor="middle" font-size="14" font-weight="700" fill="var(--figure-ink)"><tspan font-style="italic">P</tspan><tspan> = 1/3</tspan></text>
+
+    <!-- Résultat renormalisé : A//a (accent — l'idée de la figure) -->
+    <rect x="410" y="456" width="180" height="44" rx="8" fill="var(--figure-accent)" fill-opacity="0.1"
+          stroke="var(--figure-accent)" stroke-width="2"/>
+    <text x="500" y="474" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)"><tspan font-style="italic" font-weight="700" fill="var(--figure-accent)">A//a</tspan><tspan> sachant sain</tspan></text>
+    <text x="500" y="494" text-anchor="middle" font-size="14" font-weight="700" fill="var(--figure-accent)"><tspan font-style="italic">P</tspan><tspan> = 2/3</tspan></text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- Connecteur du résultat A//a vers la branche de l'arbre -->
+    <line x1="500" y1="500" x2="500" y2="523" stroke="var(--figure-accent)" stroke-width="1.6" stroke-linecap="round"/>
+    <polygon points="500,532 495,523 505,523" fill="var(--figure-accent)"/>
+
+    <text x="400" y="520" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-ink)">Arbre pondéré : III-1</text>
+
+    <!-- Croisement avec II-3 (branche A//a) -->
+    <rect x="410" y="532" width="180" height="44" rx="8" fill="var(--figure-surface)"
+          stroke="var(--figure-accent)" stroke-width="2"/>
+    <text x="500" y="548" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">× II-3 (<tspan font-style="italic" font-weight="700" fill="var(--figure-ink)">A//a</tspan><tspan> confirmée)</tspan></text>
+    <text x="500" y="568" text-anchor="middle" font-size="12" font-style="italic" font-weight="700" fill="var(--figure-accent)">A//a × A//a</text>
+
+    <line x1="500" y1="576" x2="500" y2="591" stroke="var(--figure-accent)" stroke-width="1.6" stroke-linecap="round"/>
+    <polygon points="500,600 495,591 505,591" fill="var(--figure-accent)"/>
+
+    <!-- Feuille : enfant atteint, P = 1/4 -->
+    <rect x="410" y="600" width="180" height="44" rx="8" fill="var(--figure-accent)" fill-opacity="0.1"
+          stroke="var(--figure-accent)" stroke-width="2"/>
+    <text x="500" y="618" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">enfant atteint</text>
+    <text x="500" y="638" text-anchor="middle" font-size="14" font-weight="700" fill="var(--figure-accent)"><tspan font-style="italic">P</tspan><tspan> = 1/4</tspan></text>
+  </g><!-- /step-3 -->
+
+  <g id="step-4">
+    <!-- Connecteur du résultat A//A vers la branche de l'arbre (neutre, contraste) -->
+    <line x1="300" y1="500" x2="300" y2="523" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round"/>
+    <polygon points="300,532 295,523 305,523" fill="var(--figure-ink-soft)"/>
+
+    <!-- Croisement avec II-3 (branche A//A) -->
+    <rect x="210" y="532" width="180" height="44" rx="8" fill="var(--figure-surface)"
+          stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <text x="300" y="548" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">× II-3 (<tspan font-style="italic" font-weight="700" fill="var(--figure-ink)">A//a</tspan><tspan> confirmée)</tspan></text>
+    <text x="300" y="568" text-anchor="middle" font-size="12" font-style="italic" font-weight="700" fill="var(--figure-ink)">A//A × A//a</text>
+
+    <line x1="300" y1="576" x2="300" y2="591" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round"/>
+    <polygon points="300,600 295,591 305,591" fill="var(--figure-ink-soft)"/>
+
+    <!-- Feuille : enfant atteint, P = 0 -->
+    <rect x="210" y="600" width="180" height="44" rx="8" fill="var(--figure-surface)"
+          stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <text x="300" y="618" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">enfant atteint</text>
+    <text x="300" y="638" text-anchor="middle" font-size="14" font-weight="700" fill="var(--figure-ink)"><tspan font-style="italic">P</tspan><tspan> = 0</tspan></text>
+  </g><!-- /step-4 -->
+
+  <g id="step-5">
+    <text x="400" y="628" text-anchor="middle" font-size="18" fill="var(--figure-ink-soft)">+</text>
+
+    <line x1="300" y1="644" x2="400" y2="676" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <line x1="500" y1="644" x2="400" y2="676" stroke="var(--figure-accent)" stroke-width="1.8"/>
+
+    <rect x="280" y="676" width="240" height="52" rx="10" fill="var(--figure-accent)" fill-opacity="0.1"
+          stroke="var(--figure-accent)" stroke-width="2.5"/>
+    <text x="400" y="698" text-anchor="middle" font-size="11" fill="var(--figure-ink)"><tspan font-style="italic">P</tspan><tspan>(III-1 atteint)</tspan></text>
+    <text x="400" y="718" text-anchor="middle" font-size="18" font-weight="700" fill="var(--figure-accent)">= 1/6</text>
+
+    <text x="400" y="744" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">1/6 &lt; 1/4 : cohérent — II-2 pourrait ne transmettre aucun risque</text>
+  </g><!-- /step-5 -->
+</svg>
