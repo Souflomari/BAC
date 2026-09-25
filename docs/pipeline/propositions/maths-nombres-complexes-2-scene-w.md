@@ -3234,6 +3234,12 @@ Un rouge ne prouve rien sans le vert qui l'a précédé, **dans ce dossier, avec
 11 bis. **ne faire nommer qu'UNE ligne là où deux sont vérifiées** (écrire « équilatéral » sans
     « isocèle en $X$ ») → **N6, TROISIÈME sens** *(vague 1, fidélité M5 — le sens que le premier
     jet rendait non mesurable en écrivant « elle nomme UNE ligne exactement »)* ;
+11 ter. ⚠ **NEUF (seconde passe, pédagogie IM-1) — faire écrire à `nature` une CONCLUSION SANS
+    SON CRITÈRE** (« rectangle en $C$ » tout court), **ou lui faire écrire un DÉCOMPTE**
+    (« aucune des quatre ») **au lieu des critères vérifiés** → **N6, QUATRIÈME sens, seul.**
+    *C'est le sens qui garde le correctif IM-1 : sans lui, un produit peut « passer » N6 en
+    reprenant exactement la formulation que la seconde passe a retirée, puisque les conclusions,
+    elles, seraient justes.* **Les deux formes se sabotent séparément** (ADR 0036) ;
 12. arrondir une lecture à deux décimales ($1{,}73$ pour $\sqrt3$, $0{,}52$ pour
     $\frac{\pi}{6}$) → **N10 seule** ;
 13. afficher un angle en degrés → **N10 seule** ;
@@ -3243,6 +3249,11 @@ Un rouge ne prouve rien sans le vert qui l'a précédé, **dans ce dossier, avec
 16. dessiner un point à une position plafonnée au bord du cadre → `point-a-sa-place` **seule** ;
 17. **tracer la médiatrice comme un cercle** (ou l'inverse) en mode `lieu` →
     **`courbe-du-lieu` seule** ;
+17 bis. ⚠ **NEUF (seconde passe, pédagogie IM-2) — ne tracer qu'UNE seule courbe** (celle de la
+    bonne réponse) au lieu des trois → **`courbe-du-lieu`, volet « les trois », seule.** *Sans ce
+    sens, un produit qui suivrait le §6.1 du premier jet révisé (« **la** courbe du lieu »)
+    passerait la porte tout en rendant deux des quatre balayages indéfinis et deux retours
+    désignant un objet non dessiné.* ;
 18. **tracer la courbe AVANT la révélation de S4** → **`avant-pari` seule** ;
 19. **retirer l'arc avant le pari de S3** → **`avant-pari` dans l'autre sens** *(les trois
     exceptions du §7.5 sont mesurées, sinon elles ne sont qu'une intention)* ;
