@@ -981,11 +981,17 @@ try {
             pire.norm = Math.max(pire.norm, Math.abs(perp(f) - 90));
             if (Math.abs(perp(f) - 90) > 1 || !versC(f)) fNorm.push(`${ici} : a à ${virgule(perp(f), 1)}° de la piste${versC(f) ? "" : ", à l'OPPOSÉ du centre"}`);
           }
-          // le signe de a·v contre l'ANGLE dessiné entre a et la tangente (sens du mouvement : x croissant)
+          // le signe de a·v AFFICHÉ, et la nature AFFICHÉE, contre l'ANGLE dessiné entre a et
+          // la tangente (sens du mouvement : x croissant). Deux lectures du PRODUIT face à ses
+          // pixels — jamais le produit calculé ici : la campagne du 2026-09-25 (« a·v = ‖a‖·v »)
+          // a trouvé cette famille verte parce qu'elle comparait l'angle au calcul de la PORTE
+          // (ADR 0033 : une porte exacte sur une question plus étroite que son en-tête).
           if (tg && f) {
             const dot = f.ux * tg.ux + f.uy * tg.uy;
             const lu = Math.abs(dot) < Math.sin(1.5 * RAD) ? 0 : Math.sign(dot);
-            if (lu !== Math.sign(av)) fSigne.push(`${ici} : angle dessiné ${lu > 0 ? "aigu" : lu < 0 ? "obtus" : "droit"}, a·v affiché « ${lus.av} »`);
+            const affiche = /^\+/.test(lus.av) ? 1 : /^−/.test(lus.av) ? -1 : /^0(\s|$)/.test(lus.av) ? 0 : NaN;
+            const nature = lus.nat === "accéléré" ? 1 : lus.nat === "retardé" ? -1 : lus.nat === "uniforme" ? 0 : NaN;
+            if (lu !== affiche || lu !== nature) fSigne.push(`${ici} : angle dessiné ${lu > 0 ? "aigu" : lu < 0 ? "obtus" : "droit"}, a·v affiché « ${lus.av} », nature « ${lus.nat} »`);
           }
           // u_T et u_N : une longueur de convention, la même partout
           const uN = await unitaireLu("uN-bout"), uT = await unitaireLu("uT-bout");
@@ -1021,7 +1027,7 @@ try {
     juger("fleches-a-l-echelle", fPix.length === 0, `les 36 réglages : ‖a‖, et ses deux composantes quand a_T ≠ 0, mesurent leur valeur × (px par m·s⁻² LUS sur le témoin), à 3 px + 1 % (pire : ${virgule(pire.pix, 1)} px + 1 %)${fPix.length ? ` — FAUX : ${fPix.slice(0, 3).join(" ; ")}` : ""}`);
     juger("composition", fComp.length === 0, `les 24 réglages où a_T ≠ 0 : pointe de a_T + pointe de a_N = pointe de a (lues aux pixels), à 3,5 px (pire : ${virgule(pire.comp, 1)} px)${fComp.length ? ` — ${fComp.slice(0, 3).join(" ; ")}` : ""}`);
     juger("normale-vers-le-centre", fNorm.length === 0, `les 36 réglages à l'entrée : la composante normale à 90° de la piste LUE (à 1° ; pire : ${virgule(pire.norm, 2)}°), vers le centre du cercle lu ; la tangentielle sur la tangente (pire : ${virgule(pire.tan, 2)}°)${fNorm.length ? ` — ${fNorm.slice(0, 3).join(" ; ")}` : ""}`);
-    juger("signe-du-produit", fSigne.length === 0, `les 36 réglages : le signe de a·v affiché concorde avec l'angle DESSINÉ entre a et la tangente lue${fSigne.length ? ` — ${fSigne.slice(0, 3).join(" ; ")}` : ""}`);
+    juger("signe-du-produit", fSigne.length === 0, `les 36 réglages : le signe de a·v AFFICHÉ et la nature AFFICHÉE concordent avec l'angle DESSINÉ entre a et la tangente lue${fSigne.length ? ` — ${fSigne.slice(0, 3).join(" ; ")}` : ""}`);
     juger("droite-sans-normale", fDroite.length === 0, `les 36 réglages sur la droite : a_N « 0,00 », « pas de courbure », ni u_N ni composante normale ; à vitesse tenue, aucun accent ; sinon une flèche tangente de |a_T|${fDroite.length ? ` — ${fDroite.slice(0, 3).join(" ; ")}` : ""}`);
     const pxM = ech.map((e) => e?.pxM).filter(Number.isFinite), pxA = ech.map((e) => e?.pxA).filter(Number.isFinite);
     const etale = (t) => (Math.max(...t) - Math.min(...t)) / Math.min(...t);

@@ -16009,3 +16009,31 @@ poussé. **La campagne de sabotages du PRODUIT reste à faire** (arbre à part, 
 `REVIEW-2026-09-12`, que la scène rend plus visible ; « Freinet » dans la scène ; le
 rayon de 20 m, inventé et écrit comme tel ; et, communs, le bouton plein des scènes à
 course et la colonne de 330 px.
+
+**LA CAMPAGNE DE SABOTAGES DU PRODUIT (2026-09-25, arbre à part `BAC-tremplin`, au
+commit d6de1457) : 33 défauts posés un à un (puis deux reposés) dans le code du
+produit, un build et un passage de la porte chacun.** 31 ATTRAPÉS par la famille visée
+au premier passage, **33 sur 33** après la correction de la porte et la v2 d'un
+sabotage ; l'arbre, après coup, IDENTIQUE à son cliché d'avant ; la porte propre VERTE
+avant et après (118 mesures, 30 familles). Deux n'ont pas été attrapés, et aucun des
+deux n'était un défaut du produit resté invisible par hasard :
+- **`produit-sans-angle`, MANQUÉ réel** — le panneau affichait le signe de
+  $\vec a\cdot\vec v$ calculé sans l'angle (le produit des normes). `signe-du-produit` est
+  restée verte : elle comparait l'angle DESSINÉ au calcul de la PORTE, jamais au
+  signe AFFICHÉ — l'en-tête d'INSTRUMENTS disait « le signe affiché contre l'angle
+  dessiné », et la porte ne le faisait pas (ADR 0033 : exacte sur une question plus
+  étroite que son en-tête). Seule `nombres` a rougi. Corrigé : la famille lit le
+  signe et la nature AFFICHÉS (`+`, `−`, `0` ; « accéléré », « retardé »,
+  « uniforme ») et les compare à l'angle dessiné. REPOSÉ sur la porte corrigée : ATTRAPÉ par
+  `signe-du-produit` (et `nombres`), la porte propre VERTE avant et après (118
+  mesures, 30 familles).
+- **`course-traverse`, AMBIGU** (ADR 0038, quatrième verdict) — le sabotage
+  (`setLCourse(2)` dans `terminer()`) n'atteignait pas l'écran : en phase « finie »,
+  l'abscisse affichée est celle du repère « entrée ». Reposé en v2, là où il se
+  voit : la course va AU-DELÀ de B (le modèle ne borne plus `t`, le panneau allonge la
+  durée de 30 %) — ATTRAPÉ par `course` (14 manquements : la moto passe B de 2 à 6 m
+  avant d'y être reposée, et la course dure 36 % de trop à l'horloge).
+Deux lectures du journal à ne pas refaire : `import-three` est attrapé par
+`pas-de-3d`, que le décompte des rouges ne listait pas (le motif `[A-Za-z-]` du script
+ignorait le chiffre de « 3d ») ; `nature-par-norme` l'est par `nombres`, qui ÉTAIT sa
+famille visée.

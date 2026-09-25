@@ -1948,7 +1948,8 @@ droite (et en B), ou par une CORDE symétrique dans l'arc. Puis : `fleches-a-l-e
 (‖a‖ et ses composantes = valeur × échelle lue, à 3 px + 1 %), `composition` (pointe
 de $a_T$ + pointe de $a_N$ = pointe de $\vec a$), `normale-vers-le-centre` (90° de la
 piste lue à 1°, vers le centre du cercle lu), `tangente-vraie`, `signe-du-produit` (le
-signe affiché contre l'angle DESSINÉ), `droite-sans-normale` (aucun accent à vitesse
+signe ET la nature AFFICHÉS contre l'angle DESSINÉ — jusqu'au 2026-09-25, l'angle
+contre le calcul de la PORTE : voir plus bas), `droite-sans-normale` (aucun accent à vitesse
 tenue, aucun $\vec u_N$, « pas de courbure »), `echelle-constante`,
 `unitaires-constants` (longueur déclarée ET les deux ailes de la pointe vues au
 repère — sous une flèche d'accent, une longueur ne se lit pas), `palette`, `eclairs`
@@ -1977,6 +1978,16 @@ saut). Trois défauts de la PORTE trouvés en la lançant : le témoin lu jusque
 suivant, les tirets du rayon qui allongeaient les flèches (d'où l'accent FORT), et
 l'ajustement de Kåsa. Chaque mesure neuve de la vague 2 a été lancée D'ABORD sur le
 build d'avant, et y a rougi.
+
+**La campagne de sabotages du PRODUIT (2026-09-25, arbre à part) : 33 sur 33.** Au
+premier passage, 31 ; un MANQUÉ réel — `produit-sans-angle` (a·v écrit sans l'angle)
+laissait `signe-du-produit` verte, parce qu'elle comparait l'angle dessiné au calcul
+de la porte au lieu du signe AFFICHÉ, ce que son paragraphe ci-dessus disait pourtant
+faire (ADR 0033) ; et un AMBIGU — `course-traverse` n'atteignait pas l'écran (ADR
+0038), reposé en v2 (la course dépasse B). Les deux reposés sur la porte corrigée :
+attrapés par leur famille ; la porte propre VERTE avant et après (118 mesures, 30
+familles), l'arbre identique à son cliché. HANDOFF §11.206.
+
 ## `web/scripts/figures-manipulables.mjs` — chaque figure manipulable fait-elle, au rendu, ce que son module dit ?
 
 **PORTE, armée en CI (job `scene-champ`, vert puis rouge), §11.199.** Une figure
