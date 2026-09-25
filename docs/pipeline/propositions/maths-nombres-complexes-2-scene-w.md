@@ -2932,33 +2932,61 @@ commencer — §15.2)* :
 
 La scène est **faite** quand, et seulement quand :
 
-0. ⚠ **RÈGLE HÉRITÉE DE LA VAGUE 1 DE LA SCÈNE SŒUR, à vérifier AVANT tout le reste : la valeur
-   de CHAQUE choix de pari est recalculée depuis le modèle que son étiquette nomme.** Pour les
-   **seize** choix de la scène (4 étapes × 4) **et** les **seize** choix des quatre items neufs,
-   on refait le calcul que le texte du choix annonce, et on vérifie (a) qu'il donne bien le
-   nombre affiché, (b) qu'il **diffère de la bonne réponse**, et (c) qu'**aucune valeur n'est
-   atteignable par deux modèles différents** sans que le double étiquetage soit déclaré.
+0. ⚠ **RÈGLE HÉRITÉE DE LA VAGUE 1 DE LA SCÈNE SŒUR, ÉLARGIE PAR LA VAGUE 1 DE CELLE-CI, à
+   vérifier AVANT tout le reste : chaque choix de pari est recalculé depuis le modèle que son
+   étiquette nomme.** Pour les **seize** choix de la scène (4 étapes × 4) **et** les **seize**
+   choix des quatre items neufs, on refait ce que le texte du choix annonce, et on vérifie :
+   - **(a)** qu'il donne bien la valeur ou l'énoncé affiché ;
+   - **(b)** qu'il **diffère de la bonne réponse** ;
+   - **(c)** qu'**aucune valeur n'est atteignable par deux modèles différents** sans que le
+     double étiquetage soit déclaré ;
+   - **(d) — NEUVE (vague 1, pédagogie B3) — que le texte du choix ne contient PAS le nombre
+     qui le réfute.** *Le défaut mesuré : « $\frac{\sqrt3}{2}$ serait la longueur $AC$ (**soit
+     $2\sqrt3$**) » — l'option donnait entre parenthèses la valeur vraie qui la démolit. **Un
+     élève qui porte la misconception ne peut pas s'y engager**, donc le modèle est nommé sans
+     jamais être confrontable, **et la porte ne verra jamais rien** puisque le choix n'est
+     jamais coché. La règle : **la réfutation est le travail du RETOUR, jamais du choix.***
+   - **(e) — NEUVE (vague 1, fidélité I2) — que la PORTÉE DÉCLARÉE du modèle couvre le geste du
+     choix**, pas seulement ses nombres. *Le défaut mesuré : `angle-lu-depuis-l-axe` était
+     recruté à S2 alors que son texte déclaré est borné à une TRANSFORMATION
+     (`items.yaml:258-270`), dans un vocabulaire que le §9.2 de cette même scène interdit. **La
+     règle 0 du premier jet re-dérivait les NOMBRES et jamais la PORTÉE** — et c'est exactement
+     l'attribution que la vague 1 de la scène sœur avait déjà punie. **Pour chaque choix : ouvrir
+     le texte déclaré du modèle, et vérifier qu'il décrit ce geste-là. S'il ne le décrit pas :
+     élargir le modèle (avec l'édit écrit) ou changer de modèle. Jamais supposer.***
+
    *Le sous-cas (b) est le défaut de stem que le §5.2 B déclare et borne (le placement
    `origine`), et le §7.2 évite (le placement `tournee`).*
-1. **`w-sommet-ignore` est déclaré** dans `items.yaml` (§8.2) et les **quatre** items du §8.3
-   existent, chaque distracteur portant un `misconception:` nommé. **Et ni
-   `transformation-centre-oublie` ni `rotation-sens-inverse` n'apparaissent dans
-   `pedagogy_wiring` ou dans un choix de la scène** (§8.1).
-1 bis. Les **deux reprises de points d'arrêt** du §4.6 sont écrites.
+1. **`w-sommet-ignore` est déclaré** dans `items.yaml` avec ses deux faces (§8.2), **et
+   `angle-lu-depuis-l-axe` est ÉLARGI** selon l'édit du §8.2 bis, **et** les **quatre** items du
+   §8.3 existent, **chacun avec `habilete:` au vocabulaire maths**, chaque distracteur portant
+   un `misconception:` nommé, **et chaque distracteur `w-sommet-ignore` de face A respectant la
+   contrainte de retour du §8.3** (nommer $O$ ; ne jamais dire qu'un rapport d'affixes est vide
+   de sens). **Et ni `transformation-centre-oublie` ni `rotation-sens-inverse` n'apparaissent
+   dans `pedagogy_wiring` ou dans un choix de la scène** (§8.1).
+1 bis. Les **deux reprises de points d'arrêt** du §4.6 sont écrites, **et
+   `checkpoints.yaml:375-376` est aligné** (la phrase « réciproque de Thalès » remplacée, choix
+   inchangés).
+1 ter. **Aucun libellé de cran n'est un id**, et `libelles[c]` a la même longueur que
+   `valeurs[c]` pour les quatre contrôles (§12).
 2. Le test unitaire `test-plan-complexe-rapport.mjs` passe sur **les cinq tables du §5.3**, en
    formes exactes **et** en flottants, **et sur les 53 états**, pas seulement sur les lignes
    tabulées. **Il vérifie en particulier, point par point, que les 48 + 5 états tiennent dans
    $[-9;9]^2$** — le raisonnement du §5.3 D ne suffit pas au placement `retournee`.
 3. `validate-content` passe : scène enregistrée, contrôles connus, **tout contrôle ouvert par
-   au moins une étape**, aucun `revele_apres_h`, aucun `etat_revele` (déclaré), chaque pari
-   nommant un modèle déclaré, **et le contrôle conditionnel `balayage` accepté** (§12, §15.4).
+   au moins une étape** *(vérifié après le retrait des réouvertures : `position` → S1,
+   `forme` → S2, `sommet` → S3, `pointM` et `balayage` → S4 ✓)*, aucun `revele_apres_h`, aucun
+   `etat_revele` (déclaré), chaque pari nommant un modèle déclaré, **le contrôle conditionnel
+   `balayage` accepté**, **et la clé `libelles` acceptée** (§12, §15.4).
 4. La porte `scene-plan-complexe-rapport.mjs` sort **VERT** à $1\,280$ **et** à 390 px,
    **lancée trois fois** (une porte instable est pire qu'une porte absente).
-5. `--essai-rouge` : **les 31 sabotages du §11.4 font crier la famille annoncée, et elle
-   seule** — **plus l'essai NÉGATIF** (le mot « vecteur » seul ne doit rien faire rougir). Un
-   sabotage qui n'atteint pas la porte sort **AMBIGU**, jamais vert. **Le n° 1 se rejoue aux
-   quatre placements** : il doit rougir à trois et rester vert à `origine`, sans quoi il ne
-   reproduit pas le défaut qu'il garde.
+5. `--essai-rouge` : **les sabotages numérotés du §11.4 — 37 numéros, dont trois « bis » et six
+   ajoutés en vague 1 — font crier la famille annoncée, et elle seule** ; **plus les DEUX essais
+   NÉGATIFS** (le mot « vecteur » seul ne doit rien faire rougir ; « théorème de l'angle
+   inscrit » **dans la prose de `lesson.md`** ne doit rien faire rougir non plus, alors que le
+   même syntagme **dans le panneau** doit rougir). Un sabotage qui n'atteint pas la porte sort
+   **AMBIGU**, jamais vert. **Le n° 1 se rejoue aux quatre placements** : il doit rougir à trois
+   et rester vert à `origine`, sans quoi il ne reproduit pas le défaut qu'il garde.
 6. **La prose du §4 est écrite, et la sous-section neuve du §4.4 (les trois lieux) est en
    place** — sans elle, S4 déplace d'un rung l'anti-motif que `REVIEW:132-137` reproche déjà au
    corpus, et je ne la livrerai pas ainsi.
