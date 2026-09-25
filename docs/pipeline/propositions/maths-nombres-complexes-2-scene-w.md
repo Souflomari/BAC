@@ -1,10 +1,11 @@
 # spec — manipulable 2D `plan-complexe-rapport` (Maths · `nombres-complexes-2`, **R6**)
 
-**Statut : PROPOSITION révisée après la vague 1 — non construite.** Écrite le
+**Statut : PROPOSITION révisée deux fois (vague 1, deux passes) — non construite.** Écrite le
 2026-09-25 par pedagogy-architect, après la livraison de la scène sœur `plan-complexe-transformation`
 (R5), dont le §13.3 en esquissait déjà la charte. Révisée le 2026-09-25 après les deux
 rapports de vague 1 (bac-fidelity-critic, pedagogy-critic), verdict commun **BUILD AFTER
-FIXES**.
+FIXES** ; **révisée une seconde fois le 2026-09-25** après les deux rapports de **seconde
+passe**, verdict commun **BUILD AFTER FIXES** de nouveau.
 
 > ## Ce que la vague 1 a changé
 >
@@ -126,6 +127,127 @@ FIXES**.
 > sous `programme` ; la phrase du §1 (« la seule divergence de **programme** ») était donc
 > littéralement vraie, et trop étroite pour être honnête. La ligne est ajoutée, et la phrase
 > réécrite. §15.12.
+
+> ## Ce que la SECONDE PASSE de la vague 1 a changé
+>
+> **Les deux critiques ont relu la première révision et rendu le même verdict : BUILD AFTER
+> FIXES.** Ils ont recalculé toute l'arithmétique neuve — les trois $w$ de la nouvelle S3, les
+> quatre items refaits, le registre, le partage d'habileté, les cinq crans du mode `lieu` — et
+> **n'ont trouvé aucune erreur de nombre**. Ce qu'ils ont trouvé est ailleurs, et le plus grave
+> vient d'un correctif de la première passe.
+>
+> **UN BLOQUANT, et il est de mon fait. BQ-1 — le balayage de S4 effaçait l'invariant qu'il
+> existe pour montrer.** Le premier jet révisé écrivait « *pendant ce glissement **toutes** les
+> lectures chiffrées sont remplacées par « — »* ». **La règle LIVRÉE à côté dit le contraire, et
+> je l'avais citée sans la lire** : `scene-plan.md:33-44` (bloc « Ce que la construction a
+> changé », point 2) — « *Le BALAYAGE n'efface que ce qui dépend de la **POSITION** […] **Les
+> invariants restent écrits** […] les voir immobiles pendant que les deux directions tournent
+> **EST le fait de S3**.* » **Le motif du §5.4 (aucun décimal) ne vaut que pour la moitié
+> positionnelle** : sur la médiatrice $\vert u\vert = 1$ **exactement** à chaque point du
+> balayage ; sur le cercle $\arg(u) = -\frac{\pi}{2}$ **exactement**. Effacer les deux, c'était
+> retirer à S4 sa vérification et transformer sa `suite` en jugement à l'œil, dans la seule
+> scène qui déclare « exacte, ou rien ». → **§6.1, la `suite` de S4 (§7.4), la famille
+> `balayage-invariants` (§11.2) et les sabotages 20 à 22 sont refaits sur la règle livrée, LIEU
+> PAR LIEU**, avec les **bornes** qui rendent l'invariant vraiment invariant (le demi-cercle
+> supérieur ; la demi-droite au-delà de $B$) — sans elles, l'argument sauterait de
+> $-\frac{\pi}{2}$ à $+\frac{\pi}{2}$ et de $0$ à $\pi$ au milieu du geste. **Et les autres
+> leçons livrées du balayage sont carrées cette fois** (`scene-plan.md:19-21`,
+> `HANDOFF.md:16449-16451`) : début et relâchement **dits par la région vivante**, « Échap »
+> dans le **libellé visible**, **une valeur parlée qui varie**, et un **pas qui déplace
+> visiblement $M$** (5° sur le cercle, $\frac14$ d'unité sur les deux lieux droits).
+>
+> **Quatre IMPORTANTES de pédagogie.**
+> **IM-1 — S3 écrivait « aucune des quatre » à un élève qui n'a jamais vu les quatre.** La table
+> est à `lesson.md:381-386`, **après** le marqueur, et la scène n'allume jamais « isocèle »,
+> « équilatéral » ni « alignés ». → **Correctif choisi, un seul et délibérément : la lecture
+> `nature` n'énumère plus un ensemble invisible — elle écrit LES CRITÈRES QU'ELLE VIENT DE
+> VÉRIFIER, avec la valeur qui les déclenche ou qui les tue.** *Pourquoi celui-là et pas les
+> deux autres : « faire porter les quatre critères à la révélation » ajoute de l'encre et
+> imprime « équilatéral » comme un mot que rien n'allume ; « cesser de parler de la table »
+> coupe le lien avec la leçon. **Écrire ce qui a été vérifié fait les deux à la fois** — la
+> lecture devient auto-suffisante, elle varie avec l'état (donc elle diagnostique), et elle
+> montre le geste que la prose devra ensuite justifier. Le §7.5 C autorisait déjà « la table
+> entière » à S3 : aucune frontière ne bouge.* **Conséquence heureuse : au sommet $B$,
+> $\arg(w) = -\frac{\pi}{3}$ est EXACTEMENT la valeur de la ligne « équilatéral », et c'est
+> $\vert w\vert = \frac12$ qui l'interdit — la lecture l'écrit désormais, et la `suite` de S3
+> est reconstruite dessus.** §5.3 B, §5.6, §7.3, §11.1 N6.
+> **IM-2 — S4 : combien de courbes ?** Le document disait « **la** courbe » au §6.1 et « chaque
+> lieu » dans la `suite`, pendant que la porte en exigeait trois. → **Tranché : TROIS courbes,
+> tracées à la révélation, et le retour JUSTE les nomme toutes les trois.** *Motif, et il n'est
+> pas de goût : le balayage existe à **quatre** des cinq crans et glisse « le long de la courbe
+> du lieu qui passe par le cran courant » — sans les trois courbes, deux des quatre balayages
+> glissent le long de rien. La décision était déjà prise par la porte et par le balayage ; elle
+> n'était pas écrite.* §6.1, §7.4, §11.2.
+> **IM-3 — la clause (d) du §14.0 était trop étroite, et `rectangle-partout` ambigu.** (d) ne
+> défendait que contre **le nombre** qui réfute un choix ; ce qui réfutait `rectangle-partout`
+> était **un fait déjà à l'encre** (l'arc en $A$). → **(d) passe de « le nombre » à « le FAIT »**,
+> et **`rectangle-partout` est réécrit comme la croyance réellement tenue** : *le triangle est
+> rectangle — et le sommet n'y est pour rien*. Sa première moitié est vraie et ne peut pas se
+> réfuter au dessin ; c'est la seconde qui porte le modèle. §14.0, §7.3.
+> **IM-4 + fidélité NEW-3 — la règle (e) (« re-dériver la PORTÉE déclarée du modèle ») avait été
+> écrite en vague 1 et lancée UNE fois.** → **Elle est lancée sur les 32 choix, et le verdict
+> est une table** (§14.0 bis). *Ce qu'elle a trouvé, et c'est plus intéressant que « deux
+> attributions étirées » : **trois descriptions de modèle sont plus étroites que leurs PROPRES
+> items livrés**. `lecture-w-module-argument` ne nomme ni la bonne grandeur lue contre le mauvais
+> seuil — alors que NBCOMPLEX2-6 B fait exactement cela depuis toujours (`items.yaml:567-575`) ;
+> `ensemble-points-locus-confondu` énumère trois lieux et pas le cercle de centre $O$ ;
+> `produit-quotient-argument-operation` parle d'arguments et sert trois choix **avant** qu'aucun
+> argument existe.* **Les trois élargissements sont écrits mot pour mot au §8.2 ter**, tous
+> additifs, tous vérifiés sans perte d'attache.
+>
+> **Onze constatations de fidélité (NEW-1 à NEW-11), toutes appliquées.** La plus importante est
+> **NEW-1** : je qualifiais de `derived` les **trois** lignes du partage SExp, alors que
+> `maths-sexp.yaml:248` et `maths-sm.yaml:222` déclarent leur bloc `programme`
+> **`research-consensus`**. **La conclusion se renforce et le routage change de sens** : la ligne
+> la MIEUX sourcée (`:251`, research-consensus) est celle qui argumente **contre** S4 en SExp, et
+> la seule qui argumente **pour** est `derived`. §1, §13.2, §10.8. Ensuite : **NEW-2** (la moitié
+> R6 du modèle élargi part à zéro item — dette nommée, §8.4, §13.14) · **NEW-4** (la marque de
+> filière est portée aux **trois** endroits où le cercle est commandé, pas à un seul) ·
+> **NEW-5** (le cercle unité traînait encore dans l'énoncé gelé du §6.1 — un produit conforme
+> aurait fait rougir la porte `palette` de la scène elle-même) · **NEW-6** (N6 : **seize** états,
+> pas douze) · **NEW-7** (**cinq** checkpoints portent `habilete`, pas deux :
+> `checkpoints.yaml:88`, `:156`, `:227`, `:289`, `:352` — la dette déclarée était 2,5 fois trop
+> petite) · **NEW-9** (la seule attestation de « théorème de l'angle inscrit » dans la banque,
+> `bank.yaml:1064`, vit **dans l'entrée que la scène bannit** — `bk-2024-r-x3`, quatre points
+> cocycliques ; et le mécanisme du §4.4 est celui de la **médiane de l'hypoténuse**, un autre
+> théorème : la couture est dite en une clause, et la réciproque cesse d'être affirmée) ·
+> **NEW-10** (le correctif « un clic » s'étend à `items.yaml:1645`, `:1650`, `:1662`, mêmes trois
+> lignes, même lieu, un rung plus loin) · **NEW-11** (les ordinaux « Triangle 1..4 » sont une
+> convention de scène sans statut d'examen — `fit_caveat`).
+>
+> **Les dix MINEURS de pédagogie, appliqués — dont un qui retire une pièce du dépôt.**
+> **La clé de registre `libelles` est ABANDONNÉE** au profit de la route **déjà livrée** :
+> `PlanComplexePanel.tsx:431-444` fait passer chaque valeur de contrôle par une fonction
+> `texte(v)` adossée à une table `id → affichage` du modèle (`M.TEX_POINT`,
+> `M.TEX_COEFFICIENT`), et `enClair()` en tire l'`aria-label`. *Motif : la contrainte non
+> négociable est que l'élève ne LISE jamais `equilateral` — elle se mesure sur le panneau RENDU,
+> et la porte `libelles-de-cran` est indifférente à l'endroit où vit la table. Choisir la route
+> livrée retire **un** des deux inconnus de validateur qui bloquaient le chantier (§15.4) et
+> n'ajoute aucune pièce. Le prix est réel et déclaré : un libellé devient du CODE, donc
+> content-author ne peut plus le changer seul.* §12, §13.16.
+> Puis : la consigne de S4 passe de ~110 à ~70 mots et n'ouvre plus sur une objection que
+> personne n'a faite (M1) · le retour juste de S2 ne dit plus « bien avant $B$ » pour un report à
+> $0{,}87$ de $AB$ (M2) · le motif périmé du cran `equilateral` est refait (M3) · la note (b) du
+> §7.5 C décrit le texte qu'elle certifie, et non un texte rêvé (M4) · **les trois qualifications
+> immesurables survivantes sont supprimées** — `semblable` *(en position de transformation)*,
+> `(r,\theta)` *(en position de couple)*, `y =` *(en position d'équation de droite)* (M5) · les
+> deux `suite` à demi confirmées par un retour de leur propre étape sont **reconstruites ou
+> déclarées** (M6) · la `suite` de S1 ne represcrit plus le geste que son retour vient de
+> prescrire (M7) · les leçons de balayage livrées sont carrées (M9) · et **le fait qu'à S1 la
+> bonne réponse ne demande AUCUNE division complexe** — structurel, $\vec{AB}$ étant un monôme à
+> tous les placements — est porté au `fit_caveat` et à une question numérotée, avec le correctif
+> qui marcherait et son prix (M10).
+>
+> **Réfuté, avec la preuve — une constatation, et c'est la mienne que je corrige d'abord.** Ma
+> réfutation de pédagogie M6 citait `scene-plan.md:26-29` ; **la phrase citée est à `:45-49`**
+> (`:26` est le titre du bloc, `:28-32` le point 1, sur `argument-image`), **et les lignes que
+> j'ai sautées, `:33-44`, portaient précisément la règle du balayage que BQ-1 vient de me
+> reprocher**. Le corollaire que j'ajoutais — « la spec sœur devrait y renvoyer depuis son §6.1 »
+> — **est déjà satisfait** : `scene-plan.md:1255-1257` porte le crochet en ligne. *Les deux
+> citations sont corrigées au §15.12, et la leçon est écrite là où elle agit : **citer un bloc,
+> c'est le lire en entier** (ADR 0031 : une référence croisée est une instruction).* **Ce qui
+> reste réfuté sur le fond : la divergence `prefers-reduced-motion` n'existe pas ; les deux
+> critiques l'ont concédé.** §15.12.
 
 **Seconde scène de la notion, et seconde scène de maths sans 3D.** Mêmes pièces que la
 première (ADR 0041, `"tool": "scene2d"`), même arithmétique exacte, même cadre carré, même
@@ -273,15 +395,23 @@ plutôt que découvertes en vague 1 :
   ⇒ **0**) : le mélange SM 40/40/20 est **incalculable sur le corpus existant**. **NON-VERDICT
   déclaré** (ADR 0034), escaladé par `REVIEW:107` (S5), corpus-wide.
   ⚠ **Correction de vague 1 (fidélité I6) : le non-verdict ne s'étend PAS aux items neufs.**
-  Le champ existe déjà dans cette notion (`checkpoints.yaml:289`, `:352`, `habilete:
-  raisonnement`) ; **les quatre items du §8.3 le portent donc, au vocabulaire MATHS**
+  Le champ existe déjà dans cette notion — **sur CINQ points d'arrêt, pas deux**
+  (`grep -n habilete checkpoints.yaml` ⇒ `:88` `raisonnement`, `:156` `utilisation`, `:227`
+  `utilisation`, `:289` `raisonnement`, `:352` `raisonnement`) ; **les quatre items du §8.3 le
+  portent donc, au vocabulaire MATHS**
   (`application_directe` / `application_non_explicite` / `synthese_situations_inhabituelles`),
-  **pas au vocabulaire PC que les deux checkpoints emploient** (`REVIEW:109-111` : « *les
+  **pas au vocabulaire PC que les cinq checkpoints emploient** (`REVIEW:109-111` : « *les
   checkpoints maths utilisent `raisonnement`/`utilisation` — le vocabulaire PC — jamais
   « application directe »* »). *Le non-verdict devient ainsi un **plancher mesuré** : 1 directe /
   3 non explicites / 0 synthèse sur les quatre neufs (§8.4). L'incohérence de vocabulaire entre
-  ces quatre items et les deux checkpoints de la notion est **réelle, créée ici, et déclarée** :
-  elle appartient au correctif corpus-wide de S5, §13.14.*
+  ces quatre items et les **cinq** checkpoints de la notion est **réelle, créée ici, et
+  déclarée** : elle appartient au correctif corpus-wide de S5, §13.14.*
+  ⚠ **Corrigé en seconde passe (fidélité NEW-7) : le premier jet révisé écrivait « les deux
+  checkpoints existants » en citant `:289` et `:352`, qui étaient les deux EXEMPLES du critique,
+  pas un dénombrement.** Le `grep` en donne **cinq**. *La dette déclarée au §13.14 (a) était donc
+  **2,5 fois plus petite que la réalité** — et c'est la faute que ce document punit ailleurs :
+  une chose n'est prouvée absente (ou présente en tel nombre) que si l'on a énuméré ses formes
+  (ADR 0036). **La règle vaut aussi pour compter ce qui EST là.***
 - **Aucun scoping de filière** (`REVIEW:113-120`, S6). La scène ne l'ouvre pas ; elle se borne
   à **déclarer** que son étape 4 est de profondeur SM (§10.8) et à n'écrire nulle part le mot
   que le cadre réserve à SM (§9.3).
@@ -354,23 +484,36 @@ plutôt que découvertes en vague 1 :
 
   ⚠ **CORRECTION DE VAGUE 1 (fidélité I3) — le premier jet écrivait « c'est la SEULE divergence
   de programme qui morde sur cette scène » et s'arrêtait là. La phrase était littéralement vraie
-  (deux lignes `programme`) et trop étroite pour être honnête : une TROISIÈME ligne `derived` du
+  (deux lignes `programme`) et trop étroite pour être honnête : une TROISIÈME ligne du
   même fichier parle, et la REVIEW que ce document cite quatre fois la nomme.** Le partage SExp
-  se lit donc sur **trois** lignes, toutes `derived`, **et elles ne disent pas la même chose** :
+  se lit donc sur **trois** lignes, **et elles ne disent pas la même chose — ni ne sont sourcées
+  de la même façon** :
 
-  | ligne | ce qu'elle dit de cette scène | sens |
-  |---|---|---|
-  | `maths-sexp.yaml:251` (`programme`) | « Nature d'une configuration **(triangle, alignement)** » — pas de cercle | **contre** S4 |
-  | `maths-sexp.yaml:254` (`savoir_faire`) | « Interpréter $\vert z-z'\vert$ et $\arg\!\left(\frac{z-a}{z-b}\right)$ géométriquement » — **exactement** l'objet de S4 | **pour** S4 |
-  | `maths-sexp.yaml:328` (`coverage_notes`) | « *R4 (racines n-ièmes) et **configurations avancées** relèvent de SM ; **SExp n'utilise que formes trigo/exp, second degré réel, transformations $z'=az+b$**.* » | **contre** S4 — **et, lu à la lettre, contre S1–S3 aussi** |
+  | ligne | provenance déclarée, relue à l'en-tête de son bloc | ce qu'elle dit de cette scène | sens |
+  |---|---|---|---|
+  | `maths-sexp.yaml:251` (`programme`) | **`research-consensus (pdfmath)`** (`maths-sexp.yaml:248`) | « Nature d'une configuration **(triangle, alignement)** » — pas de cercle | **contre** S4 |
+  | `maths-sexp.yaml:254` (`savoir_faire`) | **`derived`** (`maths-sexp.yaml:252`) | « Interpréter $\vert z-z'\vert$ et $\arg\!\left(\frac{z-a}{z-b}\right)$ géométriquement » — **exactement** l'objet de S4 | **pour** S4 |
+  | `maths-sexp.yaml:328` (`coverage_notes`) | **`derived`** (`maths-sexp.yaml:311`) | « *R4 (racines n-ièmes) et **configurations avancées** relèvent de SM ; **SExp n'utilise que formes trigo/exp, second degré réel, transformations $z'=az+b$**.* » | **contre** S4 — **et, lu à la lettre, contre S1–S3 aussi** |
+
+  ⚠ **CORRECTION DE SECONDE PASSE (fidélité NEW-1) — le premier jet révisé écrivait « trois
+  lignes, toutes `derived` », et c'est faux trois fois** (ici, au §10.8 et au §13.2).
+  `maths-sexp.yaml:248` coiffe le bloc `programme` de `# source: research-consensus (pdfmath)` ;
+  `maths-sm.yaml:222` fait de même pour `:225`. **Seules `:254` et `:328` sont `derived`.**
+  *Pourquoi cela compte, et pourquoi la conclusion en sort PLUS forte, pas plus faible :
+  l'argument du §13.2 n'est plus « trois lignes également faibles se contredisent » mais **« la
+  ligne la mieux sourcée des trois est celle qui argumente CONTRE S4 en SExp, et la seule qui
+  argumente POUR est `derived` »**. Le défaut « S4 marquée SM par prudence » est donc soutenu par
+  la meilleure source disponible, et non par un partage 2-contre-1 entre pièces équivalentes.*
+  **Et c'est le genre d'erreur que ce document ne peut pas se permettre : toute sa méthode est de
+  citer la provenance.**
 
   *Le pointeur existait : `REVIEW-2026-09-11.md:114` (S6) cite « `maths-sexp.yaml:257,305,**328**` ».
-  Ce document citait S6 au §0.3, au §9.2, au §13.2 et au §10.8 **sans jamais suivre le
+  Le premier jet citait S6 au §0.3, au §9.2, au §13.2 et au §10.8 **sans jamais suivre le
   pointeur**.* **Conséquence : le défaut « S4 = SM par prudence » est RENFORCÉ, pas affaibli**
-  (deux lignes contre une), **et le routage à `research-lead` est plus précis : trois lignes
-  `derived` d'un même fichier non autoritatif se contredisent sur ce que SExp prend de cette
-  leçon.** **Je ne tranche pas : je signale, je marque S4 SM par prudence, et je route**
-  (§13.2).
+  (deux lignes contre une, dont la mieux sourcée), **et le routage à `research-lead` est plus
+  précis : dans un même fichier non autoritatif, une ligne `research-consensus` et une ligne
+  `derived` se contredisent sur ce que SExp prend de cette leçon.** **Je ne tranche pas : je
+  signale, je marque S4 SM par prudence, et je route** (§13.2).
 - **Les `savoir_faire` que chaque étape sert :**
   1. SM (`maths-sm.yaml:229`) « *Caractériser une similitude directe (rapport, angle, centre) ;
      **démontrer une propriété de configuration par les affixes***. » → **S1, S2, S3, S4**
@@ -728,7 +871,22 @@ Elle doit établir, dans cet ordre et **en montrant le mécanisme** :
    $M$, alors **la médiane issue de l'angle droit vaut la moitié de l'hypoténuse** (géométrie du
    collège) : $OM = \dfrac{AB}{2} = OA = OB$. Les trois points $A$, $B$, $M$ sont donc à la même
    distance de $O$ : **$M$ est sur le cercle de centre $O$ et de rayon $\frac{AB}{2}$,
-   c'est-à-dire le cercle de diamètre $[AB]$** — et la réciproque se lit dans le même sens.
+   c'est-à-dire le cercle de diamètre $[AB]$.**
+   ⚠ **LA RÉCIPROQUE S'ÉCRIT, ELLE NE SE « LIT PAS DANS LE MÊME SENS » (seconde passe, fidélité
+   NEW-9).** Le premier jet révisé finissait par « *et la réciproque se lit dans le même sens* »
+   — **une assertion, dans le paragraphe même qui existe pour cesser d'asserter.** Elle tient en
+   une ligne de plus, sur les mêmes trois égalités lues à l'envers : *si $M$ est sur ce cercle,
+   alors $OM = OA = OB$, donc la médiane $[OM]$ du triangle $AMB$ vaut la moitié du côté $[AB]$
+   — et un triangle dont une médiane vaut la moitié du côté qu'elle joint est rectangle au
+   sommet d'où elle part.* **Les deux sens, trois égalités chacun, aucune formule.**
+   ⚠ **ET LA COUTURE ENTRE LE MÉCANISME ET LE NOM DOIT ÊTRE DITE, EN UNE CLAUSE (seconde passe,
+   fidélité NEW-9).** Ce qui est démontré ici est la propriété de la **médiane de
+   l'hypoténuse** ; le nom donné au point 6 est celui d'une propriété **plus générale** (un angle
+   inscrit dans un demi-cercle est droit). **Les deux sont dans le cadre, et ce sont deux énoncés
+   différents** : content-author écrit donc, au point 6, que le nom désigne le cas général et que
+   ce qui vient d'être démontré en est le cas particulier — *pas que la démonstration s'appelle
+   ainsi.* **Sans cette clause, la prose fait exactement ce que `REVIEW:122-130` reproche au
+   corpus : coller un nom de théorème sur l'énoncé du voisin.**
    *Trois égalités, aucune formule, aucun nom : c'est le mécanisme, pas le mot.*
    ⚠ **MARQUE DE FILIÈRE, sur le précédent livré (vague 1, fidélité I4).** Ce point 4 est le
    **seul** élément contesté entre les deux filières (le mot « cercle » est dans
@@ -744,9 +902,19 @@ Elle doit établir, dans cet ordre et **en montrant le mécanisme** :
    que personne ne lit (§10.8) en quelque chose que l'élève lit vraiment.**
 5. **Une phrase d'exclusion :** $M = A$ et $M = B$ sont écartés (le rapport n'y est pas défini,
    ou vaut $0$).
-6. **UNE SEULE fois, et APRÈS le mécanisme du point 4 : le nom.** « *Cette propriété a un nom
-   dans tes cours de géométrie : le **théorème de l'angle inscrit**. Le nom ne change rien à la
-   démonstration que tu viens de lire.* »
+6. **UNE SEULE fois, et APRÈS le mécanisme du point 4 : le nom — avec sa couture.** « *Cette
+   propriété a un nom dans tes cours de géométrie : le **théorème de l'angle inscrit**, qui dit
+   qu'un angle inscrit dans un demi-cercle est droit. Ce que tu viens de démontrer en est le cas
+   particulier, obtenu avec la seule médiane. Le nom ne change rien à la démonstration.* »
+   ⚠ **Et la seule attestation de ce nom dans la banque est ailleurs que là où on croit**
+   *(seconde passe, fidélité NEW-9)*. `bank.yaml:1064` écrit bien « *C'est exactement le
+   **théorème de l'angle inscrit**, en angles orientés modulo $\pi$* » — **mais cette ligne vit
+   dans `bk-2024-r-x3`** (l'entrée court de `:831` à `:1101`), **c'est-à-dire l'exercice à
+   QUATRE points cocycliques que le §9.1 bannit.** *Le seul endroit où le corpus emploie le bon
+   nom est le seul exercice que la scène s'interdit. Ce n'est pas une raison de changer de nom —
+   `REVIEW:124-130` tranche la direction — mais c'est une attestation FAIBLE, et elle doit être
+   écrite à côté de la décision plutôt que suggérer un usage courant.* **Aucune autre entrée de
+   banque ne nomme l'angle inscrit ; douze lignes nomment Thalès.** §13.3.
 
 ⚠ **CONTRAINTE DE NOMMAGE — RETOURNÉE EN VAGUE 1 (fidélité I5), et voici le motif.** Le premier
 jet interdisait les trois noms (« Thalès », « réciproque de Thalès », « angle inscrit ») **au
@@ -764,8 +932,10 @@ muette envoyait donc l'élève apprendre le mauvais nom un clic plus loin.
 - elle **nomme « théorème de l'angle inscrit » UNE fois** (point 6), et **jamais avant le
   mécanisme** ;
 - **« Thalès » et « réciproque de Thalès » restent bannis** de toute prose commandée ici — la
-  banque elle-même emploie le bon nom (`bank.yaml:1064`, « *C'est exactement le **théorème de
-  l'angle inscrit**, en angles orientés modulo $\pi$* ») ;
+  banque emploie le bon nom **une fois** (`bank.yaml:1064`, « *C'est exactement le **théorème de
+  l'angle inscrit**, en angles orientés modulo $\pi$* »), *et cette fois-là est dans l'entrée
+  cocyclique que la scène bannit (`bk-2024-r-x3`, `:831-1101`) : l'attestation est réelle et
+  faible, elle est déclarée comme telle ci-dessus* ;
 - **le PANNEAU de la scène, lui, ne nomme aucun théorème** (§9.1) — il nomme le **lieu**.
   *Motif : la scène vient AVANT la prose ; nommer un théorème dans un pari, c'est donner la
   méthode dans la réponse.*
@@ -778,8 +948,19 @@ la direction. §13.3.*
 
 `lesson.md:416-419` liste les outils. Ajouter : (a) « $w$ se lit **depuis un sommet**, sur les
 deux **vecteurs** issus de ce sommet — jamais sur les affixes eux-mêmes » ; (b) « une condition
-sur $\left|\frac{z-z_A}{z-z_B}\right|$ donne une **médiatrice**, une condition sur son
-**argument** donne une **droite** ou un **cercle** ».
+sur $\left|\frac{z-z_A}{z-z_B}\right|$ donne une **médiatrice** ; une condition sur son
+**argument** donne une **droite**, ou — **en filière Sciences Mathématiques** — un **cercle** ».
+
+> ⚠ **La clause de filière du (b) est AJOUTÉE EN SECONDE PASSE (fidélité NEW-4).** Le premier
+> jet révisé déplaçait la marque de filière du champ de métadonnées vers la prose (§4.4 point 4)
+> — bonne décision — **puis commandait ici une phrase NEUVE qui re-pose le cercle sans la
+> marque**, et au §4.6 une phrase de cadrage qui parle des « trois lieux » sans elle non plus.
+> *Le mot « cercle » est le **seul** élément contesté entre les deux filières (`maths-sm.yaml:225`
+> l'a, `maths-sexp.yaml:251` ne l'a pas). **Une marque posée à un site sur trois a le tiers de
+> la portée** — et c'était exactement le motif du correctif d'origine : un champ que personne ne
+> lit ne marque rien.* **Les TROIS sites sont désormais marqués : §4.4 point 4, §4.5 (b), §4.6
+> (cadrage de `cp-ensemble-points`).** *Et c'est le compte exact : `grep` sur la prose commandée
+> par ce document ⇒ trois endroits où le cercle-lieu est nommé comme résultat.*
 
 ### 4.6 Deux reprises de points d'arrêt — et c'est un livrable
 
@@ -794,9 +975,14 @@ R4/R5/R6 sont des **marqueurs nus**, et la scène aggrave le manque à deux endr
   **Contrainte :** la reprise emploie les nombres de S3 et **ne redonne pas** la table.
 - **`cp-ensemble-points`** (`lesson.md:423`) **garde ses quatre choix inchangés** et **reste à
   R7**. Il gagne **une phrase de cadrage** (15 à 25 mots) qui renvoie explicitement au segment
-  neuf du §4.4 : *« Tu as trouvé les trois lieux au chapitre 7 ; celui-ci est le troisième, sur
-  d'autres points. »* **C'est cette phrase, et le §4.4, qui retirent l'anti-motif relevé par
+  neuf du §4.4 : *« Tu as vu les trois lieux au chapitre 7 — dont celui du cercle, au programme
+  de la filière Sciences Mathématiques ; celui-ci est le même, sur d'autres points. »*
+  **C'est cette phrase, et le §4.4, qui retirent l'anti-motif relevé par
   `REVIEW:132-137`** : la méthode cesse d'être introduite dans la réponse.
+  ⚠ **La clause de filière est AJOUTÉE ICI EN SECONDE PASSE (fidélité NEW-4)** — troisième et
+  dernier site où la prose commandée nomme le cercle comme résultat. *Sans elle, un élève SExp
+  arriverait sur `cp-ensemble-points` après une phrase qui lui promet « les trois lieux » comme
+  s'ils étaient tous les siens.*
   ⚠ **ET UN SECOND LIVRABLE, AJOUTÉ EN VAGUE 1 (fidélité I5) : aligner le retour correct de
   `cp-ensemble-points`.** `checkpoints.yaml:375-376` écrit aujourd'hui « *Par la **réciproque de
   Thalès**, $M$ décrit le cercle de diamètre $[AB]$, privé de $A$ et $B$.* » — le nom que
@@ -808,6 +994,21 @@ R4/R5/R6 sont des **marqueurs nus**, et la scène aggrave le manque à deux endr
   privé de $A$ et $B$ (théorème de l'angle inscrit, chapitre 7).* » **Les quatre choix et la
   bonne réponse ne changent pas ; seule la phrase de justification change.** *C'est le
   propriétaire que S7 nomme (`REVIEW:128-129`), et c'est une ligne.*
+  ⚠ **ET LE MÊME CORRECTIF S'ÉTEND À SON VOISIN IMMÉDIAT — AJOUTÉ EN SECONDE PASSE (fidélité
+  NEW-10).** L'argument « un clic plus loin, le mauvais nom » ne s'arrête pas au point d'arrêt :
+  **NBCOMPLEX2-24 (R7) porte le même nom trois fois, sur le MÊME lieu**, et c'est l'item que
+  `cp-ensemble-points` double — `items.yaml:1645` (« *par le théorème de Thalès), pas
+  l'inverse* »), `:1650` (« *théorème de Thalès, $M$ décrit le cercle de diamètre $[AB]$* »),
+  `:1662` (« ***Théorème de Thalès (réciproque) :** l'ensemble des points $M$…* »). *Relevées
+  moi-même par `grep`, à la ligne, ce 2026-09-25 : **les numéros que `REVIEW:125` cite
+  (`items:1624`, `checkpoints:344`) ont bougé** — un relevé de revue vieux de deux semaines n'est
+  pas une adresse.* → **content-author remplace ces trois occurrences dans la même passe**, par
+  le mécanisme du §4.4 point 4 et le nom retenu. **Les choix et les bonnes réponses ne changent
+  pas.** *Motif de l'extension : le §4.6 justifiait sa propre exception par « un clic » ; le
+  premier objet que l'élève rencontre APRÈS `cp-ensemble-points` est précisément -24. **Une
+  frontière tracée à un clic et pas au suivant est arbitraire.*** **Ce qui reste hors périmètre
+  et va au propriétaire : les douze lignes de `bank.yaml` et le reste du corpus** — c'est la
+  passe corpus-wide de S7, §13.3.
 - **Coût résiduel, déclaré :** ni l'un ni l'autre n'interroge la **formation** de $w$ à un
   sommet $\neq O$ — cela ne se mesure que sur NBCOMPLEX2-42, -43, -44 (§8.3), au banc de fin.
 
@@ -893,7 +1094,7 @@ un triangle **relatif au sommet $A$** : $\vec{AB}$ et $\vec{AC}$. La forme déci
 | id | libellé visible | $\vec{AB}$ | $\vec{AC}$ | pourquoi ce cran |
 |---|---|---|---|---|
 | `rect-isocele` | **Triangle 1** | $4$ | $4i$ | **l'état de S1.** Le seul où $\vert w\vert = 1$ **et** $\arg(w) = \frac{\pi}{2}$ : les deux lectures sont « pleines », et la figure de R6 est ce cas-là |
-| `equilateral` | **Triangle 2** | $4$ | $2+2\sqrt3\,i$ | **l'état d'AUCUN pari** *(changé en vague 1, correctif B4 : c'était l'état de S3, et le pari de S3 rejouait NBCOMPLEX2-6)*. Reste atteignable par le contrôle `forme` à S2 : c'est la seule forme où la table exige de **combiner** les deux lectures, et la `suite` de S2 y mène |
+| `equilateral` | **Triangle 2** | $4$ | $2+2\sqrt3\,i$ | **l'état d'AUCUN pari** *(changé en vague 1, correctif B4 : c'était l'état de S3, et le pari de S3 rejouait NBCOMPLEX2-6)*. **Il reste parce qu'il est le seul état où la table exige de COMBINER les deux lectures** ($\vert w\vert = 1$ **et** $\arg = \pm\frac{\pi}{3}$), et il est atteignable au contrôle `forme` de S2 |
 | `demi-equilateral` | **Triangle 3** | $4$ | $3+\sqrt3\,i$ | **l'état de S2 ET de S3**, à deux placements différents. $\vert w\vert \neq 1$ **et** $\arg(w) \notin \{0,\pm\frac{\pi}{2},\pi\}$ : **aucune ligne de la table ne s'allume au sommet $A$** — et une s'allume au sommet $C$ (§5.3 A). **C'est la forme la plus instructive de la scène, et c'est désormais celle que S3 parie** |
 | `aligne` | **Triangle 4** | $4$ | $-2$ | le cas dégénéré : $w$ **réel négatif**, les trois points alignés, $C$ du côté opposé à $B$ — la configuration de NBCOMPLEX2-20 |
 
@@ -909,6 +1110,12 @@ un triangle **relatif au sommet $A$** : $\vec{AB}$ et $\vec{AC}$. La forme déci
 > VU l'angle droit en $C$ quand arrive S3.** *Ce n'est pas la réponse du pari — le pari de S3
 > porte sur l'**indexation par le sommet** (deux de ses quatre choix disent « rectangle »), que
 > le dessin ne dit pas — mais c'est une aide, et elle est portée au `fit_caveat` (§10.13).*
+
+> ⚠ *Motif refait en seconde passe (pédagogie, MINEUR 3).* Le premier jet révisé justifiait ce
+> cran par « *et la `suite` de S2 **y mène*** » — **c'était vrai du premier jet et faux depuis** :
+> la `suite` de S2 envoie sur **Triangle 4** (§7.2, correctif de vague 1). *Un cran dont la
+> raison écrite ne tient plus est un cran qu'on garde par habitude ; la vraie raison est
+> ci-dessus, et elle n'a jamais eu besoin de la `suite`.*
 
 *Vérifications : $\vert 4i\vert = 4$ ✓ · $\vert 2+2\sqrt3 i\vert = \sqrt{4+12} = 4 = \vert\vec{AB}\vert$ ✓
 (équilatéral) · $\vert 3+\sqrt3 i\vert = \sqrt{9+3} = 2\sqrt3$, $\cos = \frac{3}{2\sqrt3} = \frac{\sqrt3}{2}$,
@@ -1031,20 +1238,56 @@ points ne sont plus mentionnés nulle part**. Ils restent hors des crans, et c'e
 > $\vert w\vert = 1$ et $\arg = \pm\frac{\pi}{3}$, donc équilatéral), et le cacher enseignerait
 > que les lignes s'excluent.* **Règle unique, mesurable, appliquée ci-dessous et au §11.1 N6.**
 
+> ## ⚠ IMPORTANT DE SECONDE PASSE (pédagogie IM-1) — **`nature` n'énumère plus un ensemble que
+> l'élève n'a jamais vu : elle écrit LES CRITÈRES QU'ELLE VIENT DE VÉRIFIER.**
+>
+> **Le défaut mesuré.** La lecture écrivait « *aucune des quatre* » — **et l'élève n'a jamais vu
+> les quatre.** La table est à `lesson.md:381-386`, c'est-à-dire **après** le marqueur (§3), et
+> depuis le correctif B4 + I5 la scène ne peut plus allumer qu'un seul mot : `nature` n'existe
+> qu'à S3 (§5.6), `forme` y est fermé (§5.5), donc **les seules valeurs atteignables de toute la
+> scène sont « rien au sommet $X$ » deux fois et « rectangle en $C$ » une fois.** « Isocèle »,
+> « équilatéral » et « alignés » ne s'allument **nulle part**, et quatre textes de S3 invoquaient
+> pourtant « la table » comme un objet connu. *Le §2.3 écrivait « **S3** ajoute la **table** » :
+> ce n'était plus vrai de l'objet construit.*
+>
+> **Le correctif retenu — UN seul, et voici pourquoi celui-là.** Trois routes existaient :
+> (i) faire porter les quatre critères à la révélation ; (ii) cesser de parler de « la table » ;
+> (iii) **faire nommer à la lecture ce qu'elle a VÉRIFIÉ, plutôt que compter un ensemble
+> invisible.** *La (i) ajoute de l'encre et imprime « équilatéral » comme un mot que rien
+> n'allume — le défaut déplacé, pas retiré. La (ii) coupe le lien avec la table de la leçon, qui
+> est précisément ce que S3 prépare. **La (iii) fait les deux : la lecture devient
+> auto-suffisante (aucun renvoi à un objet non lu), elle VARIE avec l'état (donc elle
+> diagnostique), et elle montre le geste — vérifier une valeur contre un seuil — que la prose
+> devra ensuite justifier.*** **Le §7.5 C autorisait déjà « la table entière » à S3 : aucune
+> frontière ne bouge, aucune chaîne interdite n'apparaît.**
+>
+> **La règle, écrite une fois et mesurable dans quatre sens (§11.1 N6) :**
+> - **quand un ou deux critères s'allument**, `nature` écrit **chacun, dans l'ordre de la table,
+>   avec la valeur qui le déclenche** — « $\vert w\vert = 1$ ⟹ isocèle en $A$ » ;
+> - **quand aucun ne s'allume**, elle écrit **les critères vérifiés et la valeur qui les tue** —
+>   jamais un décompte ;
+> - **jamais une conclusion sans le critère qui la produit**, et **jamais « aucune des quatre »**.
+>
+> *Bénéfice qui n'était pas cherché et qui est le meilleur de la seconde passe : au sommet $B$
+> de `demi-equilateral`, $\arg(w) = -\frac{\pi}{3}$ est **exactement** la valeur de la ligne
+> « équilatéral », et c'est $\vert w\vert = \frac12$ qui l'interdit. L'ancienne lecture répondait
+> « aucune des quatre » sans dire pourquoi, sur le quasi-succès le plus instructif de la scène.
+> **La nouvelle l'écrit — et la `suite` de S3 est reconstruite dessus** (§7.3).*
+
 | forme · sommet | $\vert w\vert$ | $\arg(w)$ | ce que la lecture `nature` écrit |
 |---|---|---|---|
-| `rect-isocele` · $A$ | $1$ | $\dfrac{\pi}{2}$ | **rectangle en $A$ ET isocèle en $A$** |
-| `rect-isocele` · $B$ | $\sqrt2$ | $-\dfrac{\pi}{4}$ | aucune des quatre |
-| `rect-isocele` · $C$ | $\sqrt2$ | $\dfrac{\pi}{4}$ | aucune des quatre |
-| `equilateral` · $A$ | $1$ | $\dfrac{\pi}{3}$ | **isocèle en $A$ ET équilatéral** |
-| `equilateral` · $B$ | $1$ | $-\dfrac{\pi}{3}$ | **isocèle en $B$ ET équilatéral** *(le signe change, la conclusion non)* |
-| `equilateral` · $C$ | $1$ | $\dfrac{\pi}{3}$ | **isocèle en $C$ ET équilatéral** |
-| `demi-equilateral` · $A$ | $\dfrac{\sqrt3}{2}$ | $\dfrac{\pi}{6}$ | **aucune des quatre** |
-| `demi-equilateral` · $B$ | $\dfrac12$ | $-\dfrac{\pi}{3}$ | **aucune des quatre** |
-| `demi-equilateral` · $C$ | $\dfrac{\sqrt3}{3}$ | $\dfrac{\pi}{2}$ | **rectangle en $C$** |
-| `aligne` · $A$ | $\dfrac12$ | $\pi$ | **alignés** |
-| `aligne` · $B$ | $\dfrac32$ | $0$ | **alignés** |
-| `aligne` · $C$ | $3$ | $0$ | **alignés** |
+| `rect-isocele` · $A$ | $1$ | $\dfrac{\pi}{2}$ | $\vert w\vert = 1$ ⟹ **isocèle en $A$** · $\arg(w) = \dfrac{\pi}{2}$ ⟹ **rectangle en $A$** |
+| `rect-isocele` · $B$ | $\sqrt2$ | $-\dfrac{\pi}{4}$ | $\vert w\vert = \sqrt2 \neq 1$ · $\arg(w) = -\dfrac{\pi}{4}$ : ni $0$, ni $\pi$, ni $\pm\dfrac{\pi}{2}$ — **rien ne s'allume au sommet $B$** |
+| `rect-isocele` · $C$ | $\sqrt2$ | $\dfrac{\pi}{4}$ | $\vert w\vert = \sqrt2 \neq 1$ · $\arg(w) = \dfrac{\pi}{4}$ : ni $0$, ni $\pi$, ni $\pm\dfrac{\pi}{2}$ — **rien ne s'allume au sommet $C$** |
+| `equilateral` · $A$ | $1$ | $\dfrac{\pi}{3}$ | $\vert w\vert = 1$ ⟹ **isocèle en $A$** · et $\arg(w) = \dfrac{\pi}{3}$ ⟹ **équilatéral** |
+| `equilateral` · $B$ | $1$ | $-\dfrac{\pi}{3}$ | $\vert w\vert = 1$ ⟹ **isocèle en $B$** · et $\arg(w) = -\dfrac{\pi}{3}$ ⟹ **équilatéral** *(le signe change, la conclusion non)* |
+| `equilateral` · $C$ | $1$ | $\dfrac{\pi}{3}$ | $\vert w\vert = 1$ ⟹ **isocèle en $C$** · et $\arg(w) = \dfrac{\pi}{3}$ ⟹ **équilatéral** |
+| `demi-equilateral` · $A$ | $\dfrac{\sqrt3}{2}$ | $\dfrac{\pi}{6}$ | $\vert w\vert = \dfrac{\sqrt3}{2} \neq 1$ · $\arg(w) = \dfrac{\pi}{6}$ : ni $0$, ni $\pi$, ni $\pm\dfrac{\pi}{2}$ — **rien ne s'allume au sommet $A$** |
+| `demi-equilateral` · $B$ | $\dfrac12$ | $-\dfrac{\pi}{3}$ | $\arg(w) = -\dfrac{\pi}{3}$ est bien l'angle de la ligne « équilatéral » — **mais $\vert w\vert = \dfrac12 \neq 1$**, et cette ligne demande les DEUX · ni $0$, ni $\pi$, ni $\pm\dfrac{\pi}{2}$ — **rien ne s'allume au sommet $B$** |
+| `demi-equilateral` · $C$ | $\dfrac{\sqrt3}{3}$ | $\dfrac{\pi}{2}$ | $\vert w\vert = \dfrac{\sqrt3}{3} \neq 1$ · $\arg(w) = \dfrac{\pi}{2}$ ⟹ **rectangle en $C$** |
+| `aligne` · $A$ | $\dfrac12$ | $\pi$ | $\vert w\vert = \dfrac12 \neq 1$ · $\arg(w) = \pi$ ⟹ **alignés** |
+| `aligne` · $B$ | $\dfrac32$ | $0$ | $\vert w\vert = \dfrac32 \neq 1$ · $\arg(w) = 0$ ⟹ **alignés** |
+| `aligne` · $C$ | $3$ | $0$ | $\vert w\vert = 3 \neq 1$ · $\arg(w) = 0$ ⟹ **alignés** |
 
 *Vérifications des modules non triviaux : $\vert 1-i\vert = \sqrt2$ ✓ ·
 $\left\vert\frac{1\pm\sqrt3 i}{2}\right\vert = \frac{\sqrt{1+3}}{2}=1$ ✓ ·
@@ -1200,11 +1443,36 @@ directe : l'état de pari de S3 (`demi-equilateral` × `retournee`) n'est atteig
 par aucun réglage, puisque `position` y est fermé.*
 
 **Le balayage est la pièce héritée de S3 de la scène sœur** (ADR 0041, décision de construction
-n° 2) : il **explore sans régler** — aucun cran, aucune clé d'`etat`, **aucune lecture chiffrée
-pendant qu'il agit**, et l'état retrouvé intact au relâchement. Au clavier il ne se relâche pas
-au `keyup` ; sous `prefers-reduced-motion` **rien ne change** (manipulation directe, pas
-animation). *Ici il glisse $M$ **le long du lieu révélé**, pas sur un cercle arbitraire — c'est
-la différence avec la scène sœur, et elle porte tout le sens de S4 (§7.4).*
+n° 2) : il **explore sans régler** — aucun cran, aucune clé d'`etat`, **aucune lecture
+POSITIONNELLE chiffrée pendant qu'il agit** (les lectures INVARIANTES, elles, restent écrites :
+§6.1, correctif de seconde passe), et l'état retrouvé intact au relâchement. Au clavier il ne se
+relâche pas au `keyup` ; sous `prefers-reduced-motion` **rien ne change** (manipulation directe,
+pas animation). *Ici il glisse $M$ **le long du lieu révélé**, pas sur un cercle arbitraire —
+c'est la différence avec la scène sœur, et elle porte tout le sens de S4 (§7.4).*
+
+> ⚠ **LES QUATRE AUTRES LEÇONS LIVRÉES DU BALAYAGE, CARRÉES EN SECONDE PASSE (pédagogie,
+> MINEUR 9).** Le premier jet révisé n'héritait que du principe et de la règle `keyup`. La
+> construction et la vague 2 de la scène sœur en ont livré quatre de plus
+> (`scene-plan.md:19-21`, `HANDOFF.md:16449-16451` : « *le balayage au cran de 5, son début et
+> son relâchement DITS, sa valeur parlée qui varie, « Échap » dans le libellé visible* »).
+> **Elles s'appliquent toutes, et l'une d'elles doit être transposée plutôt que copiée :**
+> 1. **Le début et le relâchement sont DITS par la région vivante.** *Sans quoi un élève au
+>    lecteur d'écran ne sait ni qu'il a pris le point, ni qu'il l'a lâché.*
+> 2. **« Échap » est dans le LIBELLÉ VISIBLE du contrôle**, pas seulement dans l'aide.
+> 3. **Le pas déplace visiblement $M$.** *La scène sœur a mesuré qu'au cran de $1°$ une flèche ne
+>    bougeait rien de visible.* **Ici les lieux ne sont pas tous des arcs : le pas est de $5°$ sur
+>    le CERCLE, et de $\frac14$ d'unité sur la MÉDIATRICE et sur la DROITE** — soit $\approx 8$ px
+>    à $1\,280$ et $\approx 5$ px à 390 (§5.1). **Mesuré, pas supposé : `balayage-invariants`
+>    exige qu'un appui de flèche déplace $M$ d'au moins 4 px aux deux largeurs.**
+> 4. **Une valeur parlée qui VARIE — et ici elle ne peut pas être un nombre.** *La scène sœur
+>    annonçait une valeur numérique ; §5.4 l'interdit ici, puisque la grandeur qui varie n'est
+>    exacte à presque aucun point du continuum.* **Transposition : la région vivante annonce
+>    l'invariant avec sa valeur exacte, et le SENS de variation des deux distances** — « *$MA$ et
+>    $MB$ augmentent ensemble ; le module vaut toujours $1$* » sur la médiatrice, « *$MA$
+>    augmente, $MB$ diminue ; l'angle en $M$ reste droit* » sur le cercle. *Le sens de variation
+>    change pendant le geste : l'annonce n'est donc jamais deux fois la même chaîne — ce qui est
+>    la propriété que la leçon livrée cherchait.* **Porte : la chaîne annoncée diffère entre deux
+>    positions échantillonnées du balayage, et contient la valeur exacte de l'invariant.**
 
 > ⚠ **CONSTATATION DE VAGUE 1 RÉFUTÉE, avec la citation (pédagogie M6).** Le rapport écrit :
 > « *§5.5/§6.1 disent sous `prefers-reduced-motion` « rien ne change » ; **la spec de la scène
@@ -1241,8 +1509,8 @@ sœur. En `mode: lieu`, les contrôles `position`, `forme` et `sommet` sont **ab
 | `module-w` | $\vert w\vert$ | entier ou radical **exact** | **S2** (révélation) · **S3** (énoncé) |
 | `argument-w` | $\arg(w)$ | fraction de $\pi$, dans $]-\pi;\pi]$ | **S2** (révélation) · **S3** (énoncé) |
 | `longueurs` | les deux distances au sommet ($AB$ et $AC$) | radicaux exacts | **S2 seule** (révélation — c'est la PREUVE que le module est un quotient) |
-| `nature` | **toutes** les lignes de la table que $w$ vérifie **à ce sommet**, dans l'ordre de la table, ou « *aucune des quatre : rien de particulier à ce sommet* » | en toutes lettres | **S3 seule** (révélation) |
-| `rapport-lieu` | en `mode: lieu` : $\left\vert\frac{z-z_A}{z-z_B}\right\vert$ **et** son argument, l'un sous l'autre | exacte | **S4 seule** (révélation) |
+| `nature` | **les CRITÈRES vérifiés à ce sommet, dans l'ordre de la table, chacun avec la valeur qui le déclenche ou qui le tue**, puis la ou les conclusions qui s'allument ; **jamais un décompte** *(réécrite en seconde passe, pédagogie IM-1 — texte exact aux douze états : §5.3 B)* | en toutes lettres, les valeurs en KaTeX | **S3 seule** (révélation) |
+| `rapport-lieu` | en `mode: lieu` : $\left\vert\frac{z-z_A}{z-z_B}\right\vert$ **et** son argument, l'un sous l'autre. **Pendant le balayage, la ligne INVARIANTE du lieu reste écrite et exacte ; l'autre affiche « — »** (§6.1) | exacte | **S4 seule** (révélation) |
 
 **Chaque lecture existe donc à au moins une étape, et chacune est employée là où elle existe.**
 *La seule dérogation à « ce que l'étape découvre ou emploie » est `w`, gardé à S2 et S3 comme
@@ -1260,7 +1528,7 @@ résultat **exactement quand $z_A = 0$**.*
 
 | ce qui vit SUR le plan (jamais dans la liste) | ce qui vit dans la LISTE (jamais sur le plan) |
 |---|---|
-| les trois points et leurs affixes · les **deux vecteurs** tracés depuis le sommet · l'**arc** de l'angle au sommet et son étiquette · **la longueur reportée** de S2 · **le petit carré d'angle droit** de S3 · **la fraction en toutes lettres** sur son badge · en `mode: lieu` : le cercle unité, $A$, $B$, $M$, les deux segments, et **la courbe du lieu** après la révélation | $z_C-z_A$ et $z_B-z_A$ · $w$ · $\vert w\vert$ · $\arg(w)$ · $AB$ et $AC$ · la **nature** · $\left\vert\frac{z-z_A}{z-z_B}\right\vert$ et son argument |
+| les trois points et leurs affixes · les **deux vecteurs** tracés depuis le sommet · l'**arc** de l'angle au sommet et son étiquette · **la longueur reportée** de S2 · **le petit carré d'angle droit** de S3 · **la fraction en toutes lettres** sur son badge · en `mode: lieu` : le cercle unité, $A$, $B$, $M$, les deux segments, et **les TROIS courbes de lieu** après la révélation *(tranché en seconde passe, pédagogie IM-2, §7.4)* | $z_C-z_A$ et $z_B-z_A$ · $w$ · $\vert w\vert$ · $\arg(w)$ · $AB$ et $AC$ · les **critères et la nature** · $\left\vert\frac{z-z_A}{z-z_B}\right\vert$ et son argument |
 
 > **Deux marques de plan sont NEUVES depuis la vague 1 (pédagogie I1), et chacune a un motif et
 > une porte.**
@@ -1312,35 +1580,86 @@ lectures). §15.3.
 **Comment le pari reste avant tout :**
 - tant que l'élève n'a pas choisi, **le contrôle de l'étape n'existe pas dans le DOM**, ni le
   verdict, ni aucune lecture-réponse ;
-- la scène montre l'**énoncé arrêté** : le repère, le cercle unité, les points que la consigne
-  nomme avec leurs affixes, et le badge portant **la fraction en toutes lettres** ;
+- la scène montre l'**énoncé arrêté** : le repère, les points que la consigne nomme avec leurs
+  affixes, le badge portant **la fraction en toutes lettres** — **et, en `mode: lieu`
+  UNIQUEMENT, le cercle unité** ;
+  > ⚠ *Corrigé en seconde passe (fidélité NEW-5).* Cette phrase listait encore « le cercle
+  > unité » **sans condition**, alors que le §5.1, le §6.2 et le §13.8 ont tranché en vague 1
+  > qu'il n'est tracé qu'en `mode: lieu`, **et que la porte `palette` exige désormais qu'un
+  > cercle unité tracé en `mode: triangle` ROUGISSE SEUL** (§11.2, essai rouge n° 34).
+  > **Un constructeur qui aurait suivi cette ligne aurait livré un produit que la porte de la
+  > scène elle-même refuse** — le même défaut de classe que B1 : une ligne survivante qui
+  > contredit la décision prise ailleurs dans le même document.
 - **aucun vecteur tracé, aucun arc, aucune courbe de lieu, aucun pixel d'accent, à aucun
   moment, avant l'engagement** (§7.5) ;
 - après l'engagement : les deux vecteurs se tracent, l'arc apparaît, les lectures de l'étape
-  s'écrivent, et — à S4 — la courbe du lieu se dessine.
+  s'écrivent, et — à S4 — **les trois courbes de lieu** se dessinent (§7.4, pédagogie IM-2).
 
 **Une exception, et une seule : le BALAYAGE de S4.** Après la révélation, un contrôle
 supplémentaire fait glisser $M$ **continûment sur la courbe du lieu qui passe par le cran
-courant**, et **pendant ce glissement toutes les lectures chiffrées sont remplacées par
-« — »** ; seuls les deux segments et l'arc bougent. Le balayage **ne pose aucun cran et ne
-modifie pas l'état** : au relâchement, la scène est exactement où elle était.
+courant**. Le balayage **ne pose aucun cran et ne modifie pas l'état** : au relâchement, la
+scène est exactement où elle était.
 
-> **Deux différences avec le balayage de la scène sœur, et elles sont pédagogiques.**
-> (a) **Il n'existe qu'aux crans qui SONT sur un lieu** (`mediatrice`, `cercle-1`, `cercle-2`,
-> `droite`) ; **au cran `libre`, le contrôle est absent du DOM.** *Motif : glisser « au
-> hasard » ne montre rien ; glisser SUR un lieu montre exactement ce que le lieu conserve.*
-> (b) **Ce qu'il fait voir change avec le lieu, et c'est le fait de S4** : sur la
-> **médiatrice**, les deux segments $MA$ et $MB$ restent de **même longueur** pendant que l'arc
-> s'ouvre et se ferme ; sur le **cercle**, l'**arc reste droit** pendant que les deux longueurs
-> changent. **Une seule manipulation, deux invariants opposés.** *Aucun cran ne peut le dire :
-> il faut le continuum.*
+> ## ⚠ BLOQUANT DE SECONDE PASSE (pédagogie BQ-1) — **le balayage n'efface que ce qui dépend de
+> la POSITION. L'invariant reste ÉCRIT.**
 >
-> **Trois conséquences dures :** (i) la famille de porte `balayage-invariants` — **aucun
-> chiffre pendant, tous les chiffres après, identiques au caractère près** ; (ii) le balayage
-> **n'existe pas avant la révélation de S4**, **à aucune autre étape**, et **pas au cran
-> `libre`** (`fuite-inter-etapes`) ; (iii) au clavier il ne se relâche pas au `keyup`, et sous
-> `prefers-reduced-motion` **rien ne change** — c'est une manipulation directe, pas une
-> animation (WCAG 2.3.3 vise le mouvement déclenché, pas celui qu'on tient).
+> **Ce que le premier jet révisé écrivait**, et qui est faux : « *pendant ce glissement **toutes**
+> les lectures chiffrées sont remplacées par « — »* », avec une porte qui exigeait « *les sept
+> lectures affichent « — » et **aucun chiffre*** » et une `suite` qui se vantait de le dire
+> « *sans un chiffre* ».
+>
+> **Ce qui a été LIVRÉ à côté**, et que j'ai cité sans le lire — `scene-plan.md:33-44`, bloc
+> « Ce que la construction a changé », point 2, **la famille de porte porte déjà ce nom** :
+> « ***Le BALAYAGE n'efface que ce qui dépend de la POSITION*** […] **Les invariants restent
+> écrits** […] *Ils sont EXACTS à chaque position — c'est la règle même qui le garantit — et les
+> voir immobiles pendant que les deux directions tournent **EST le fait de S3**. Le §6.1 effaçait
+> tout pour qu'aucun décimal ne paraisse ; l'intention tient, la règle est plus fine.* »
+>
+> **Pourquoi c'était bloquant et non cosmétique, en trois points mesurés :**
+> - **le motif du §5.4 ne couvre que la moitié positionnelle.** Sur la **médiatrice**,
+>   $\vert u\vert = 1$ **exactement** en tout point du balayage ; sur le **cercle de diamètre**,
+>   $\arg(u) = -\frac{\pi}{2}$ **exactement**. Seule l'autre moitié est inexacte. Et
+>   `rapport-lieu` empile déjà les deux lectures « l'une sous l'autre » (§5.6) : **le partage est
+>   structurellement disponible, et LAQUELLE des deux reste gelée EST le fait de S4** ;
+> - **le pari de S4 est « l'ensemble des $M$ tels que $\vert u\vert = 1$ ».** Le balayage EST sa
+>   vérification. Chiffres effacés, l'élève ne peut vérifier **qu'à un cran** et **jamais le long
+>   du lieu** — et la `suite` devenait un jugement à l'œil sur deux segments, dans la seule scène
+>   qui écrit « exacte, ou rien » ;
+> - **la porte punissait le comportement correct** : l'essai n° 20 (« faire afficher un chiffre
+>   pendant le balayage → rouge ») aurait rougi sur un produit construit selon la règle livrée
+>   (ADR 0038).
+>
+> ### La règle, LIEU PAR LIEU — avec sa BORNE, sans laquelle l'invariant n'en est pas un
+>
+> | lieu balayé | ce qui reste **ÉCRIT**, exact, identique au caractère près | ce qui affiche **« — »** | **borne du geste**, et pourquoi elle est obligatoire |
+> |---|---|---|---|
+> | **médiatrice de $[AB]$** *(l'axe imaginaire)* | $\vert u\vert = 1$ | $\arg(u)$ | toute la portion visible du cadre — *$\vert u\vert$ vaut $1$ en **tout** point de la médiatrice, $z = 0$ compris ; aucune borne n'est nécessaire* |
+> | **cercle de diamètre $[AB]$** | $\arg(u) = -\dfrac{\pi}{2}$ | $\vert u\vert$ | **le DEMI-cercle supérieur, $A$ et $B$ exclus.** *Sous l'axe réel, $\arg(u)$ vaut $+\frac{\pi}{2}$ : un balayage non borné ferait SAUTER l'« invariant » au milieu du geste, et enseignerait le contraire de ce qu'il montre. Les deux crans du cercle ($\sqrt3+i$, $-\sqrt3+i$) sont tous deux dans la moitié haute — vérifié §5.3 E.* |
+> | **droite $(AB)$** *(l'axe réel)* | $\arg(u) = 0$ | $\vert u\vert$ | **la demi-droite $x > 2$, $B$ exclu.** *L'axe réel a TROIS morceaux : $\arg(u) = 0$ pour $x > 2$, $\arg(u) = \pi$ entre $A$ et $B$, $\arg(u) = 0$ de nouveau pour $x < -2$. Le cran `droite` est $z = 4$, donc dans le premier ; franchir $B$ change la valeur écrite.* |
+>
+> **Et l'affixe de $M$ peint sur le plan est POSITIONNELLE : elle s'efface pendant le geste**,
+> comme les affixes de $M$ et $M'$ chez la sœur. *Les deux segments, l'arc et $M$ bougent ;
+> l'étiquette d'affixe, non — elle disparaît.*
+>
+> **Ce que l'élève voit alors, et c'est exactement le fait de l'étape :** sur la médiatrice, les
+> deux segments changent ensemble, l'arc s'ouvre et se ferme, **et la ligne du module ne bouge
+> pas d'un caractère** ; sur le cercle, les deux longueurs changent, **et c'est la ligne de
+> l'argument qui ne bouge pas**. **Une seule manipulation, deux invariants opposés, et dans les
+> deux cas un NOMBRE EXACT qui refuse de bouger.** *Aucun cran ne peut le dire : il faut le
+> continuum — et il faut que le nombre reste écrit, sans quoi le continuum ne dit rien.*
+>
+> **Deux autres différences avec le balayage de la scène sœur, inchangées :**
+> (a) **il n'existe qu'aux crans qui SONT sur un lieu** (`mediatrice`, `cercle-1`, `cercle-2`,
+> `droite`) ; **au cran `libre` ($2+4i$), le contrôle est absent du DOM** — *glisser « au
+> hasard » ne montre rien* ;
+> (b) au clavier il ne se relâche pas au `keyup`, et sous `prefers-reduced-motion` **rien ne
+> change** — c'est une manipulation directe, pas une animation (WCAG 2.3.3 vise le mouvement
+> déclenché, pas celui qu'on tient).
+>
+> **Conséquences de porte, toutes refaites (§11.2, §11.4) :** la famille `balayage-invariants` se
+> mesure **dans quatre sens et LIEU PAR LIEU** — l'invariant tenu, le positionnel effacé, le
+> mouvement réel, la borne respectée — **et le sabotage qui compte le plus est désormais
+> l'inverse de celui que le premier jet armait : effacer AUSSI l'invariant doit rougir.**
 
 **Éclairs et mouvement réduit.** Hors balayage, rien n'anime : la famille `eclairs` est
 **attendue structurellement vide**, et **mesurée quand même** (ADR 0036 : *une chose n'est
@@ -1442,9 +1761,15 @@ pas parié.
 > des longueurs s'inverse, le signe de l'angle change, la conclusion ne bouge pas — est dit à
 > S2, où le mot « angle » est autorisé.*
 
-- **`suite` (une question, un geste — 31 mots) :** « **Promène la figure sur les quatre
-  placements.** Une seule position rend juste le raccourci « je divise les affixes » : laquelle,
-  et qu'a-t-elle de particulier ? »
+- **`suite` (une question, un geste — 29 mots) :** « **Reprends les quatre placements, un par
+  un.** Une seule rend juste le raccourci « je divise les affixes » : laquelle, et qu'a-t-elle
+  de particulier ? »
+  > *Reformulée en seconde passe (pédagogie, MINEUR 7).* Elle ouvrait sur « **Promène la figure
+  > sur les quatre placements** » — **les mots exacts que le retour `affixes` venait de
+  > prescrire** (« *promène la figure sur les quatre placements* »). *L'intention était bonne —
+  > voir le nombre changer, puis chercher l'exception — mais lus à la suite, les deux phrases
+  > se lisent comme une répétition, et un élève qui vient de faire le geste croit avoir déjà
+  > répondu. **« Reprends » dit que c'est le MÊME geste avec une AUTRE question.***
   *Réponse vérifiée : **Placement 1**, et il y marche **parce que $z_A = 0$, donc $z_C - z_A$
   EST $z_C$**. **C'est exactement la position des quatre objets diagnostiques de R6** (fait
   **c** du §0.1), et la `suite` la fait TROUVER au lieu de la dénoncer.*
@@ -1507,7 +1832,7 @@ pas parié.
 
 | choix | texte | juste | misconception | retour |
 |---|---|---|---|---|
-| `quotient-et-ecart` | $\vert w\vert = \dfrac{\sqrt3}{2}$ et $\arg(w) = \dfrac{\pi}{6}$ | **oui** | — | « Oui — et regarde ce que la scène vient d'ajouter au dessin : $AC$ **reporté** sur la direction de $\vec{AB}$. Il s'arrête bien avant $B$, à $\dfrac{\sqrt3}{2}$ du chemin. **Le module n'est pas une longueur : c'est une longueur RAPPORTÉE à une autre**, $\dfrac{AC}{AB} = \dfrac{2\sqrt3}{4}$. Et l'arc, lui, part de $\vec{AB}$ et arrive à $\vec{AC}$ : **un écart de directions, pas une direction** — la règle du chapitre 4, $\arg\!\left(\frac{z}{z'}\right) = \arg z - \arg z'$. » |
+| `quotient-et-ecart` | $\vert w\vert = \dfrac{\sqrt3}{2}$ et $\arg(w) = \dfrac{\pi}{6}$ | **oui** | — | « Oui — et regarde ce que la scène vient d'ajouter au dessin : $AC$ **reporté** sur la direction de $\vec{AB}$. **Il n'atteint pas $B$** : il s'arrête à $\dfrac{\sqrt3}{2}$ du chemin. **Le module n'est pas une longueur : c'est une longueur RAPPORTÉE à une autre**, $\dfrac{AC}{AB} = \dfrac{2\sqrt3}{4}$ — **un nombre sans unité.** Et l'arc, lui, part de $\vec{AB}$ et arrive à $\vec{AC}$ : **un écart de directions, pas une direction** — la règle du chapitre 4, $\arg\!\left(\frac{z}{z'}\right) = \arg z - \arg z'$. » |
 | `valeurs-absolues` | $\vert w\vert = 2\sqrt3$ et $\arg(w) = \dfrac{2\pi}{3}$ | non | **`angle-lu-depuis-l-axe`** *(texte à ÉLARGIR avant validation : §8.2 bis)* | « Ces deux nombres existent, et la scène vient de les montrer — mais ce ne sont pas ceux de $w$ : $2\sqrt3$ est la longueur $AC$ toute seule, et $\dfrac{2\pi}{3}$ la direction de $\vec{AC}$ comptée depuis l'axe réel. **Aucun des deux ne regarde $\vec{AB}$.** Or $w$ est un rapport : son module compare $AC$ **à $AB$**, son argument compare la direction de $\vec{AC}$ **à celle de $\vec{AB}$**. C'est pour ça que déplacer ou tourner le triangle ne change pas $w$, alors que tes deux nombres, eux, tournent avec lui. » |
 | `roles-echanges` | $\vert w\vert = \dfrac{\pi}{6}$ et $\arg(w) = \dfrac{\sqrt3}{2}$ | non | **`lecture-w-module-argument`** | « Les deux bons nombres, échangés. Un ordre de grandeur suffit à le voir : un angle de $\dfrac{\sqrt3}{2}$ radian fait environ $50°$, et l'arc que la scène vient de tracer en fait $30$. Le **module** compare deux longueurs ; l'**argument** est un angle. Ils ne sont pas interchangeables. » |
 | `fraction-retournee` | $\vert w\vert = \dfrac{2\sqrt3}{3}$ et $\arg(w) = -\dfrac{\pi}{6}$ | non | **`produit-quotient-argument-operation`** | « Ce sont les deux nombres de $\dfrac1w$ — tu as lu la fraction à l'envers. **Et c'est instructif : retourner la fraction RETOURNE le rapport des longueurs** ($\dfrac{AB}{AC}$ au lieu de $\dfrac{AC}{AB}$) **et CHANGE LE SIGNE de l'angle** ($-\dfrac{\pi}{6}$ au lieu de $\dfrac{\pi}{6}$, l'angle $(\vec{AC},\vec{AB})$ au lieu de $(\vec{AB},\vec{AC})$). Le badge écrit laquelle des deux tu regardes ; l'arc part du dénominateur. » |
@@ -1518,6 +1843,18 @@ pas parié.
 > \arg(\vec{AC})$ se lisent sur le dessin sans jamais regarder $\vec{AB}$ ; l'échange est
 > l'échange ; $\frac{2\sqrt3}{3}$ et $-\frac{\pi}{6}$ sont exactement $\vert\frac1w\vert$ et
 > $\arg\frac1w$. **Les quatre couples sont deux à deux distincts** ✓.
+>
+> ⚠ **Deux mots changés dans le retour juste, en seconde passe (pédagogie, MINEURS 2 et 4).**
+> *(i)* Il disait « *Il s'arrête **bien avant** $B$* » — **or le report tombe à
+> $\frac{\sqrt3}{2} \approx 0{,}87$ de $AB$**, soit $2\sqrt3$ contre $4$ : à $1\,280$ px c'est
+> **$\approx 17$ px** avant $B$. *Le rapport proche de $1$ est exactement le cas que le §2.2
+> raison 2 dit indiscernable ; le retour survendait ce que le pixel montre.* **Il dit maintenant
+> « il n'atteint pas $B$ », qui est vrai et vérifiable ;** la `suite` fait ensuite voir le cas
+> franc (Triangle 4, rapport $\frac12$). *(ii)* La locution « **un nombre sans unité** » est
+> **ajoutée** : le §7.5 C note (b) certifiait déjà que le retour la contenait — **elle n'y était
+> pas.** *J'ai choisi de rendre la note VRAIE plutôt que de la corriger : la formule est bonne,
+> c'est le texte qui lui manquait.* **C'est le motif B2 en miniature — une table qui décrit les
+> textes au lieu d'être passée sur eux.**
 >
 > **Ce que le pari NE teste pas, et c'est assumé :** un élève qui calcule correctement
 > $\left\vert\frac{3+\sqrt3 i}{4}\right\vert$ gagne sans rencontrer aucun modèle. *C'est la
@@ -1585,10 +1922,10 @@ pas parié.
 
 | choix | texte | juste | misconception | retour |
 |---|---|---|---|---|
-| `rectangle-en-C` | **Oui — rectangle en $C$.** | **oui** | — | « Oui. Le petit carré que la scène vient de poser est **en $C$** — et regarde ce qu'elle a écrit **en $A$** : *aucune des quatre*. Change de sommet et lis : $w_C = \dfrac{\sqrt3}{3}\,i$, imaginaire pur, donc angle droit en $C$. **Le même triangle ne dit rien depuis $A$, rien depuis $B$, et « rectangle » depuis $C$.** Ce que la table classe, ce n'est pas un triangle : c'est un **couple (triangle, sommet)**. » |
-| `aucune-ligne` | **Non, il n'est rectangle nulle part** : lu depuis $A$, $w$ n'est ni réel ni imaginaire pur, et son module ne vaut pas $1$. | non | **`w-sommet-ignore`** *(face B — la lecture non indexée, §8.2)* | « Tout ce que tu as lu est juste — **et tu l'as lu à un seul endroit.** $w$ sans sommet n'existe pas : le badge écrit $\dfrac{z_C-z_A}{z_B-z_A}$, c'est-à-dire le rapport **au sommet $A$**. « Rien au sommet $A$ » ne veut pas dire « rien ». La preuve est déjà sur le dessin : le petit carré s'est posé **en $C$**. Change de sommet, et le nombre change avec lui. » |
-| `rectangle-partout` | **Oui — et donc rectangle aux trois sommets** : être rectangle est une propriété du triangle, pas du point d'où on le regarde. | non | **`w-sommet-ignore`** *(face B, dans l'autre sens)* | « La première moitié est juste : le petit carré est bien là, en $C$. La seconde ne l'est pas, et la scène te laisse le vérifier en deux clics : au sommet $A$, la lecture écrit *aucune des quatre* ; au sommet $B$ aussi. **Le triangle a UN angle droit, et la table ne l'allume qu'au sommet où il se trouve.** « Rectangle » n'est pas une étiquette collée au triangle : c'est une ligne qui s'allume **à un sommet**. » |
-| `rectangle-en-A` | **Oui — rectangle en $A$**, puisque l'argument de $w$ n'est pas nul. | non | **`lecture-w-module-argument`** | « « Rectangle » ne correspond pas à « argument non nul » : il correspond à **$\pm\dfrac{\pi}{2}$ exactement**, c'est-à-dire à un $w$ **imaginaire pur**. Ici l'argument vaut $\dfrac{\pi}{6}$, soit $30°$ — l'arc est sous tes yeux, en $A$, et il n'est pas droit. Le petit carré, lui, s'est posé ailleurs. Chaque ligne de la table demande une valeur **précise**, pas « différente de zéro ». » |
+| `rectangle-en-C` | **Oui — rectangle en $C$.** | **oui** | — | « Oui. Le petit carré que la scène vient de poser est **en $C$** — et regarde ce qu'elle a écrit **en $A$** : $\vert w\vert = \dfrac{\sqrt3}{2}$, qui n'est pas $1$, et $\arg(w) = \dfrac{\pi}{6}$, qui n'est ni $0$, ni $\pi$, ni un quart de tour. **Rien ne s'y allume.** Change de sommet et lis : $w_C = \dfrac{\sqrt3}{3}\,i$, imaginaire pur, donc **angle droit en $C$**. Ce que la table classe, ce n'est pas un triangle : c'est un **couple (triangle, sommet)**. » |
+| `aucune-ligne` | **Non, il n'est rectangle nulle part** : lu depuis $A$, $w$ n'est ni réel ni imaginaire pur, et son module ne vaut pas $1$. | non | **`w-sommet-ignore`** *(face B — la lecture non indexée, §8.2)* | « Tout ce que tu as lu est juste — **et tu l'as lu à un seul endroit.** $w$ sans sommet n'existe pas : le badge écrit $\dfrac{z_C-z_A}{z_B-z_A}$, c'est-à-dire le rapport **au sommet $A$**. « Rien au sommet $A$ » ne veut pas dire « rien ». La preuve est déjà sur le dessin : le petit carré s'est posé **en $C$**. Change de sommet, et le nombre change avec lui — les critères que la lecture vérifie aussi. » |
+| `rectangle-partout` | **Oui, il est rectangle** — et le sommet n'y est pour rien : une fois qu'un triangle est rectangle, il l'est, quel que soit le sommet depuis lequel on forme $w$. | non | **`w-sommet-ignore`** *(face B, dans l'autre sens)* | « La première moitié est juste : le triangle **est** rectangle, et le petit carré est là, en $C$. La seconde ne l'est pas, et elle coûte cher à l'examen. Le rapport que tu formes **dépend du sommet que tu choisis** : au sommet $A$ il vaut $\dfrac{3+\sqrt3\,i}{4}$, au sommet $C$ il vaut $\dfrac{\sqrt3}{3}\,i$ — deux nombres différents, deux lectures différentes. **Le triangle a UN angle droit ; le critère « imaginaire pur » ne se vérifie qu'au sommet où cet angle se trouve.** Change de sommet et regarde les critères s'allumer, ou pas. » |
+| `rectangle-en-A` | **Oui — rectangle en $A$**, puisque l'argument de $w$ n'est pas nul. | non | **`lecture-w-module-argument`** *(face « bonne grandeur, mauvais seuil » — texte à ÉLARGIR avant validation : §8.2 ter)* | « « Rectangle » ne correspond pas à « argument non nul » : il correspond à **$\pm\dfrac{\pi}{2}$ exactement**, c'est-à-dire à un $w$ **imaginaire pur**. Ici l'argument vaut $\dfrac{\pi}{6}$, soit $30°$ — l'arc est sous tes yeux, en $A$, et il n'est pas droit. Le petit carré, lui, s'est posé ailleurs. **Tu regardes la bonne grandeur ; c'est le seuil qui est faux.** Chaque ligne de la table demande une valeur **précise**, pas « différente de zéro ». » |
 
 > **Les quatre retours nomment le petit carré**, parce que c'est la marque neuve de l'étape et
 > qu'aucune marque ne reste inexpliquée — **y compris pour l'élève qui répond juste** (leçon de
@@ -1598,15 +1935,42 @@ pas parié.
 > $C$ (et l'a peut-être vu dès S2, §5.2 A) — donc il élimine `aucune-ligne` et `rectangle-en-A`
 > **par le dessin**. **Il ne peut pas départager `rectangle-en-C` de `rectangle-partout` par le
 > dessin** : c'est là que se joue le pari, et c'est exactement le fait neuf.
+>
+> ## ⚠ `rectangle-partout` EST RÉÉCRIT EN SECONDE PASSE (pédagogie IM-3)
+>
+> **Ce qu'il disait :** « *Oui — et donc **rectangle aux trois sommets** : être rectangle est une
+> propriété du triangle, pas du point d'où on le regarde.* » **Défaut mesuré : lue comme de la
+> géométrie, cette phrase affirme un angle droit EN $A$ — que l'arc déjà tracé en $A$ réfute
+> avant le pari** (l'arc est à l'ENCRE à S3, §7.5) **et que la consigne réfute aussi** (« ni $1$,
+> ni un quart de tour »). *Lue comme une phrase sur les LECTURES, c'est bien la misconception —
+> mais c'est alors une phrase qu'aucun élève ne compose.* **Et la défense du pari écrite juste
+> au-dessus — « il ne peut pas départager `rectangle-en-C` de `rectangle-partout` par le
+> dessin » — était fausse sous la première lecture.**
+>
+> **Ce qu'il dit désormais** ne fait qu'une affirmation vraie (« il est rectangle ») et une
+> fausse, **qui est exactement la croyance tenue** : *le verdict appartient au triangle, le
+> sommet n'est qu'un point de vue.* **Aucune encre d'avant-pari ne la réfute** — il faut changer
+> de sommet, c'est-à-dire faire le geste de l'étape. *Et la clause (d) du §14.0, élargie du
+> NOMBRE au FAIT (§14.0), est ce qui aurait attrapé l'ancienne version.*
 
-- **`suite` (une question, un geste — 19 mots) :** « **Change de sommet.** À combien des trois
-  une ligne de la table s'allume-t-elle ? »
-  *Réponse vérifiée : **un seul**, le sommet $C$ (§5.3 B).*
-  > **Changé en vague 1 (pédagogie I4/I5).** Le premier jet en comptait trois, dont l'une portait
-  > le fait central (désormais parié) et une autre l'affirmation « le signe dépend du sommet »,
-  > **que la fidélité I1 a montrée dépendante de la convention de badge** (§5.2 C). Les deux
-  > partent. *Le troisième temps (« et sur `aligne` ? ») partait avec la réouverture de `forme` :
-  > l'alignement reste atteignable au contrôle `forme` de S2.*
+- **`suite` (une question, un geste — 29 mots) :** « **Change de sommet, et lis les critères.**
+  Au sommet $B$, l'argument vaut $-\dfrac{\pi}{3}$ — l'angle même de la ligne « équilatéral ».
+  Qu'est-ce qui, à lui seul, interdit cette ligne ? »
+  *Réponse vérifiée : **le module**, $\vert w\vert = \dfrac12 \neq 1$ — la ligne « équilatéral »
+  demande les DEUX (§5.3 B, ligne `demi-equilateral` · $B$).*
+  > **Changé en vague 1 (pédagogie I4/I5), puis RECONSTRUIT en seconde passe (IM-1 + MINEUR 6).**
+  > *En vague 1* : le premier jet en comptait trois temps, dont l'un portait le fait désormais
+  > parié et un autre l'affirmation « le signe dépend du sommet », que la fidélité I1 a montrée
+  > dépendante de la convention de badge (§5.2 C).
+  > *En seconde passe* : la version de vague 1 (« **À combien des trois une ligne de la table
+  > s'allume-t-elle ?** ») avait **deux** défauts. **(a)** Elle demandait de compter dans un
+  > ensemble — « une ligne de la table » — que l'élève n'a jamais vu (IM-1). **(b)** Sa réponse
+  > était **déjà imprimée par un retour de sa propre étape** : `rectangle-partout` écrivait
+  > « *au sommet $A$ […] aucune des quatre ; au sommet $B$ aussi* » (MINEUR 6). **La nouvelle
+  > `suite` n'est écrite dans aucun retour**, elle porte sur le quasi-succès le plus instructif
+  > de la scène — *le même $-\frac{\pi}{3}$ que la ligne « équilatéral » demande* —, et **elle
+  > n'est répondable qu'en lisant les critères que la nouvelle `nature` écrit.** *Elle transforme
+  > une question de comptage en une question de critère : c'est le geste du bac.*
 - **⟂-avant-pari :** la lecture **`nature`** ; **le petit carré d'angle droit** ; le contrôle
   `sommet` ; le verdict ; tout pixel d'accent ajouté. *Sont à l'ENCRE : les trois points et
   leurs affixes, les deux flèches, **l'arc en $A$ et son étiquette**, le badge, et les lectures
@@ -1622,19 +1986,24 @@ pas parié.
 - **Les nombres :** $u = \dfrac{z-z_A}{z-z_B} = \dfrac{z+2}{z-2}$ ; au cran `libre`,
   $u = 1-i$, $\vert u\vert = \sqrt2$, $\arg(u) = -\dfrac{\pi}{4}$, $MA = 4\sqrt2$, $MB = 4$
   (§5.3 E, vérifié).
-- **Consigne (voix) :** « On renverse la question. Jusqu'ici les trois points étaient donnés et
-  on cherchait ce que le rapport disait. Maintenant **deux** points sont fixes — $A$ en $-2$,
-  $B$ en $2$ — et c'est **$M$ qui est l'inconnue**. On appelle $u$ le rapport lu **au sommet
-  $M$** : $u = \dfrac{z - z_A}{z - z_B}$. **Oui, les deux flèches arrivent en $M$ au lieu d'en
-  partir — retourne-les toutes les deux : cela ajoute $\pi$ aux deux directions, et l'écart, lui,
-  ne bouge pas.** Pour le $M$ qui est à l'écran, $u$ vaut $1-i$. On ne demande pas ce que ça dit
-  de ce $M$-là. On demande **où sont tous les autres**. »
+- **Consigne (voix — ~70 mots) :** « On renverse la question. Ici **deux** points sont fixes —
+  $A$ en $-2$, $B$ en $2$ — et c'est **$M$ qui est l'inconnue**. On appelle $u$ le rapport lu
+  **au sommet $M$** : $u = \dfrac{z - z_A}{z - z_B}$. *(Les deux flèches arrivent en $M$ au lieu
+  d'en partir : les retourner ajoute $\pi$ aux deux directions, et l'écart ne bouge pas.)* Pour
+  le $M$ à l'écran, $u$ vaut $1-i$. La question n'est pas ce que ça dit de **ce** $M$ : c'est
+  **où sont tous les autres**. »
+  > *Raccourcie en seconde passe (pédagogie, MINEUR 1) : ~110 → ~70 mots.* Elle était **la plus
+  > longue consigne de la scène à l'étape la plus dure** (S1 ~55, S2 ~45, S3 ~40) et **elle
+  > ouvrait son deuxième tiers sur « **Oui**, les deux flèches arrivent en $M$… » — une réponse à
+  > une objection que l'élève n'a pas encore faite.** *Le contenu de I8 reste, en incise et à sa
+  > place : après la définition, pas avant.* **La dérivation complète est au §4.4 point 1 ; la
+  > consigne n'en porte que la version courte, et le §14.6 tient le §4.4 comme bloquant.**
+  > *Vérifié : aucune phrase retirée ne portait un fait que la `suite` ou un retour suppose.*
   > *Ajouté en vague 1 (pédagogie I8).* S1 a enseigné « les deux flèches partent **toutes les
   > deux** du sommet ». $z - z_A$ et $z - z_B$ sont $\vec{AM}$ et $\vec{BM}$ : elles **arrivent**
   > en $M$. **La valeur est la même** — $\frac{z_A - z}{z_B - z} = \frac{z-z_A}{z-z_B}$, les deux
   > signes $-1$ se simplifient — **mais un élève qui a pris S1 au sérieux se casse exactement
-  > là**, et le premier jet ne le voyait nulle part. La dérivation complète est au §4.4 point 1 ;
-  > la consigne en porte la version courte.
+  > là**, et le premier jet ne le voyait nulle part.
   > *Changé en vague 1 (pédagogie M2) : la lettre $u$ est **présentée** ici. Le premier jet
   > l'employait dans les retours de S4 et dans le §4.4 sans jamais la donner à l'élève, alors
   > que le §5.6 pose la règle « deux objets, deux noms ».*
@@ -1643,7 +2012,7 @@ pas parié.
 
 | choix | texte | juste | misconception | retour |
 |---|---|---|---|---|
-| `mediatrice` | **la médiatrice de $[AB]$** | **oui** | — | « Oui, et le mécanisme tient en une ligne : $\vert u\vert = \dfrac{MA}{MB}$ — un quotient de deux distances. Un quotient vaut $1$ exactement quand les deux distances sont égales, donc quand $MA = MB$ : c'est la définition même de la médiatrice. La scène vient de la tracer ; pose $M$ dessus — **le cran $2\sqrt3\,i$** — et lis : $MA = MB = 4$, module $1$. » |
+| `mediatrice` | **la médiatrice de $[AB]$** | **oui** | — | « Oui, et le mécanisme tient en une ligne : $\vert u\vert = \dfrac{MA}{MB}$ — un quotient de deux distances. Il vaut $1$ exactement quand $MA = MB$ : c'est la définition même de la médiatrice. **La scène vient de tracer TROIS courbes, et une seule répond à cette question-ci.** Les deux autres sont les lieux de cette figure qui répondent à des conditions sur l'**argument** : le **cercle de diamètre $[AB]$** et la **droite $(AB)$** — tu vas les voir travailler dans les trois autres retours. Pose $M$ sur la médiatrice, **au cran $2\sqrt3\,i$**, puis **fais-le glisser sans lâcher** : une des deux lignes du panneau refuse de bouger. » |
 | `cercle-diametre` | le **cercle de diamètre $[AB]$** | non | **`ensemble-points-locus-confondu`** | « Teste-le toi-même : pose $M$ sur ce cercle, **au cran $\sqrt3+i$**. Le module y vaut $2+\sqrt3$, pas $1$. Ce cercle est bien un lieu de cette figure — mais c'est celui de l'**argument** (l'angle droit en $M$), pas celui du module. Les deux conditions ne sélectionnent pas les mêmes points, et c'est tout l'enjeu. » |
 | `cercle-unite` | le **cercle de centre $O$ et de rayon $1$** : « $\vert u\vert = 1$ » veut dire que $M$ est à distance $1$ de l'origine | non | **`ensemble-points-locus-confondu`** | « Tu as lu la **valeur** du rapport comme la **position** de $M$. Ce sont deux choses différentes : $\vert u\vert$ ne mesure pas où est $M$ par rapport à $O$ — $O$ n'intervient nulle part ici —, il compare $MA$ et $MB$. La preuve est à l'écran, et le cercle unité est tracé juste à côté : **le cran $2\sqrt3\,i$** place $M$ à $2\sqrt3 \approx 3{,}46$ de l'origine, très loin de ce cercle, et son module vaut pourtant exactement $1$. » |
 | `droite-ab` | la **droite $(AB)$** | non | **`ensemble-points-locus-confondu`** *(ré-attribué en vague 1 — pédagogie I12)* | « Tu as appliqué au module un critère qui est celui de l'argument : « $M$ sur la droite $(AB)$ » correspond à « $u$ **réel** », c'est-à-dire à un **argument** de $0$ ou $\pi$ — pas à un module de $1$. Pose $M$ sur la droite, **au cran $4$** : l'argument y vaut bien $0$, et le module vaut $3$. Deux critères, deux grandeurs, deux lieux. » |
@@ -1658,21 +2027,63 @@ pas parié.
 > quatre choix de S4 servent donc un seul modèle — et c'est cohérent : S4 est l'étape des
 > lieux.**
 
-- **`suite` (une question, un geste — 29 mots) :** « **Fais glisser $M$ le long de chaque lieu,
-  sans lâcher.** Sur lequel les deux segments restent-ils égaux, et sur lequel est-ce l'arc qui
-  reste droit ? »
-  *Réponses : les deux segments restent égaux sur la **médiatrice** ; l'arc reste droit sur le
-  **cercle**. C'est le seul moment de la scène où un continuum dit quelque chose qu'aucun cran
-  ne dit — et il le dit **sans un chiffre** (§6.1).*
-  > **Changé en vague 1 (pédagogie I4/I7).** Le premier jet posait **trois questions de comptage
-  > plus un geste**, et les trois réponses étaient déjà écrites sur les libellés de cran du
-  > premier jet (« médiatrice », « droite ») — double défaut, de longueur et de fuite. **Les
-  > deux autres lieux ne sont plus portés par une `suite` : ils sont portés par la PROSE du
-  > §4.4**, qui est de toute façon un livrable bloquant (§3, tension 2). *S4 redevient un pari
-  > et une idée.*
-- **⟂-avant-pari :** **la courbe du lieu** (aucune n'est tracée) ; la lecture `rapport-lieu` ;
-  l'arc en $M$ ; le contrôle `pointM` ; le contrôle `balayage` ; le verdict ; tout pixel
-  d'accent. *$A$, $B$, $M$, leurs affixes, **le cercle unité** (tracé en `mode: lieu`, §5.1) et
+> ## ⚠ COMBIEN DE COURBES ? — TRANCHÉ EN SECONDE PASSE (pédagogie IM-2) : **TROIS, tracées à la
+> révélation, et le retour JUSTE les nomme toutes les trois.**
+>
+> **Le document se contredisait.** Le §6.1 et la `suite` disaient « **la** courbe du lieu »
+> (singulier) ; la famille de porte `courbe-du-lieu` (§11.2) exigeait **médiatrice ET cercle de
+> diamètre ET droite** ; la `suite` disait « **chaque** lieu ». **Les deux lectures coûtaient :**
+> avec une seule courbe, les retours `cercle-diametre` et `droite-ab` (« *pose $M$ sur **ce**
+> cercle* », « *pose $M$ **sur la droite*** ») **désignent un objet qui n'est pas dessiné** ;
+> avec trois, deux courbes apparaissent sans explication **pour l'élève qui répond juste** —
+> contre la règle que ce document adopte onze lignes plus haut (§5.6 : *chaque marque est
+> expliquée UNE fois, **par les QUATRE retours***).
+>
+> **La décision était en fait déjà prise ailleurs, et par la pièce la plus contraignante : le
+> BALAYAGE.** Il existe à **quatre** des cinq crans (`mediatrice`, `cercle-1`, `cercle-2`,
+> `droite`) et glisse $M$ « *le long de la courbe du lieu qui passe par le cran courant* »
+> (§6.1). **Sans les trois courbes, deux de ces quatre balayages glissent le long de rien** — et
+> la `suite`, qui compare les invariants d'un lieu à l'autre, n'a plus d'objet. *Ce n'était donc
+> pas une question ouverte : c'était une décision non écrite.*
+>
+> **Ce qui la rend payante et non coûteuse :** les trois courbes, ensemble, **sont** le fait de
+> S4 — *le cercle est une affaire d'ARGUMENT, la médiatrice une affaire de MODULE* (§5.3 E) —, et
+> **les quatre retours se partagent l'explication exactement une fois chacun** : le juste nomme
+> les trois et dit laquelle répond ; `cercle-diametre` explique le cercle ; `droite-ab` explique
+> la droite ; `cercle-unite` explique pourquoi le cercle unité, lui, n'est le lieu de rien ici.
+> **Aucune marque n'est laissée inexpliquée à personne.**
+
+- **`suite` (une question en deux temps, un geste — 27 mots) :** « **Fais glisser $M$ le long de
+  chaque lieu, sans lâcher.** Sur chacun, **une des deux lignes du panneau reste écrite et ne
+  bouge pas** : laquelle, et que vaut-elle ? »
+  *Réponses vérifiées (§5.3 E, §6.1) : sur la **médiatrice**, c'est le **module**, et il vaut
+  $1$ ; sur le **cercle de diamètre**, c'est l'**argument**, et il vaut $-\dfrac{\pi}{2}$ ; sur
+  la **droite**, c'est l'**argument**, et il vaut $0$. **C'est le seul moment de la scène où un
+  continuum dit quelque chose qu'aucun cran ne dit — et il le dit AVEC un nombre exact qui refuse
+  de bouger.***
+  > **Changé en vague 1 (pédagogie I4/I7), puis REFAIT en seconde passe (BQ-1).**
+  > *En vague 1* : le premier jet posait trois questions de comptage plus un geste, et les trois
+  > réponses étaient écrites sur les libellés de cran d'alors (« médiatrice », « droite »).
+  > *En seconde passe* : la version de vague 1 (« *sur lequel les deux segments restent-ils
+  > égaux, et sur lequel est-ce l'arc qui reste droit ?* ») **demandait un jugement à l'œil**
+  > — deux segments « égaux » et un arc « droit », appréciés au pixel — **parce que le balayage
+  > effaçait tous les chiffres.** *Dans une scène qui écrit « exacte, ou rien » (§5.4), c'était
+  > le contraire de ce qu'elle promet.* **Le balayage tenant désormais l'invariant écrit et
+  > exact (§6.1), la `suite` demande de LIRE UN NOMBRE QUI NE BOUGE PAS** — ce que le dessin
+  > suggère et que seule la lecture prouve.
+  > ⚠ **Ce que je ne prétends pas (pédagogie, MINEUR 6) :** la `suite` n'est pas entièrement
+  > vierge. Le retour `cercle-diametre` doit dire de quoi le cercle est le lieu (« *celui de
+  > l'argument, l'angle droit en $M$* ») — c'est son travail — et il donne donc un tiers de la
+  > réponse au cran près. **Ce que la `suite` ajoute et qu'aucun retour ne donne : que l'invariant
+  > reste EXACT et IDENTIQUE AU CARACTÈRE le long d'un continuum.** *Un retour parle d'un point ;
+  > la `suite` parle d'une courbe. C'est un transfert, pas une confirmation — et c'est déclaré
+  > plutôt que nié (§10.17).*
+  > **Les deux autres lieux ne sont toujours pas portés par un PARI : ils sont portés par les
+  > courbes, les retours, et la PROSE du §4.4**, qui reste un livrable bloquant (§3, tension 2).
+  > *S4 garde un pari et une idée.*
+- **⟂-avant-pari :** **les TROIS courbes de lieu** (aucune n'est tracée) ; la lecture
+  `rapport-lieu` ; l'arc en $M$ ; le contrôle `pointM` ; le contrôle `balayage` ; le verdict ;
+  tout pixel d'accent. *$A$, $B$, $M$, leurs affixes, **le cercle unité** (tracé en `mode: lieu`, §5.1) et
   **la valeur $1-i$ énoncée par la consigne** sont à l'ENCRE. **La distinction que la porte doit
   tenir : « la valeur est ÉNONCÉE » n'est pas « la LECTURE existe »** — la ligne `rapport-lieu`,
   qui range le module et l'argument l'un sous l'autre, n'existe pas dans le DOM avant la
@@ -1810,6 +2221,21 @@ résumé.*
 > un seuil qui rend la porte inerte est pire qu'une porte absente).* **`réel` est simplement
 > interdit à S2, et les textes de S2 ont été réécrits pour s'en passer** : le retour juste dit
 > « un nombre sans unité », pas « un réel positif ». **Mesurable dans les deux sens.**
+> ⚠ *Seconde passe (pédagogie, MINEUR 4) : cette note (b) certifiait une phrase qui n'était pas
+> dans le texte qu'elle certifie — le retour juste de S2 ne contenait pas « un nombre sans
+> unité ». **J'ai rendu la note vraie plutôt que de l'affaiblir** : la formule est la bonne, elle
+> manquait au retour, elle y est (§7.2). C'est le motif B2 en miniature, et il a suffi d'une
+> relecture dans l'autre sens — du texte vers la table, pas de la table vers le texte.*
+> **(c) — SECONDE PASSE (pédagogie, MINEUR 5) — la classe entière des qualifications
+> immesurables est balayée, pas seulement l'occurrence nommée.** La vague 1 avait retiré
+> « `réel` *(en position de critère)* » **là où le critique l'avait pointé**, et laissé trois
+> sœurs vivantes au §9 : `semblable` *(en position de transformation)*, `(r,\theta)` *(en
+> position de couple)*, `y =` *(en position d'équation de droite)*. *Une porte qui cherche une
+> chaîne en début de mot dans du texte rendu **ne sait pas** ce qu'est une « position » ; chacune
+> de ces trois parenthèses rendait sa ligne inerte.* **Les trois sont supprimées au §9.3 et au
+> §9.10, et les trois chaînes sont interdites sans condition** — aucun texte de cette scène n'en
+> a besoin, vérifié au §7. *Corriger l'exemple et laisser la classe, c'est réparer le symptôme
+> nommé : la leçon d'ADR 0036 vaut aussi pour les correctifs.*
 
 **À toutes les étapes, sans exception : les chaînes du §9.** *La porte cherche ces formes dans
 le `textContent` **rendu**, en remplaçant chaque `.katex` par son **annotation TeX**, en début
@@ -1859,10 +2285,10 @@ laisse les vingt autres non revendiqués. §13.6 de la spec sœur, toujours ouve
 | modèle existant | compte actuel | où la scène le casse | **sur quelle conséquence il casse** |
 |---|---|---|---|
 | **`w-sommet-ignore`** *(modèle NEUF, §8.2 — deux faces)* | **0 → 3** | **S1** (`affixes`, `demi-soustraction`) = **face A** · **S3** (`aucune-ligne`, `rectangle-partout`) = **face B** | *face A* : le nombre obtenu **change à chaque placement** alors que la forme du triangle ne change pas — la `suite` de S1 fait trouver l'unique placement où il tombe juste, celui où $z_A = 0$ · *face B* : la lecture écrit « aucune des quatre » **au sommet $A$** pendant que le petit carré se pose **en $C$**, et le contrôle `sommet` le confirme en un clic |
-| `lecture-w-module-argument` | 3 | **S2** (`roles-echanges`), **S3** (`rectangle-en-A`) | un ordre de grandeur suffit : un angle de $0{,}87$ rad n'est pas l'arc de $30°$ tracé à l'écran ; et à S3, « rectangle » exige $\pm\frac{\pi}{2}$ **exactement**, pas « non nul » |
+| `lecture-w-module-argument` | 3 | **S2** (`roles-echanges`), **S3** (`rectangle-en-A`) | un ordre de grandeur suffit : un angle de $0{,}87$ rad n'est pas l'arc de $30°$ tracé à l'écran ; et à S3, « rectangle » exige $\pm\frac{\pi}{2}$ **exactement**, pas « non nul ». ⚠ **Son texte déclaré doit être ÉLARGI avant recrutement — §8.2 ter** (seconde passe, pédagogie IM-4 / fidélité NEW-3 : la face « bonne grandeur, mauvais seuil » n'est pas dans sa `description`, alors que son propre item NBCOMPLEX2-6 B la sert depuis toujours) |
 | `angle-lu-depuis-l-axe` | 4 | **S2**, choix `valeurs-absolues` | au placement `tournee`, $\arg(\vec{AC}) = \frac{2\pi}{3}$ et $\arg(w) = \frac{\pi}{6}$ : **les deux nombres sont à l'écran et ils diffèrent** ; et la longueur reportée montre que $2\sqrt3$ n'est pas le module. ⚠ **Son texte déclaré doit être ÉLARGI avant recrutement — §8.2 bis** (vague 1, fidélité I2) |
-| `produit-quotient-argument-operation` | 4 | **S1** (`ordre-inverse`, **forme pré-argument**), **S2** (`fraction-retournee`) | l'arc **tracé** part du dénominateur et arrive au numérateur ; et à S2, le retour dit exactement ce que l'inversion change — **le rapport des longueurs, et le signe de l'angle**, jamais la conclusion |
-| `ensemble-points-locus-confondu` | 3 | **S4**, **les trois distracteurs** (`cercle-diametre`, `cercle-unite`, **`droite-ab`** — ré-attribué en vague 1) | chaque lieu faux est **réfuté par un cran atteignable** : le cran $\sqrt3+i$ a un module de $2+\sqrt3$ ; le cran $2\sqrt3\,i$ est à $2\sqrt3$ de l'origine et son module vaut pourtant $1$ ; le cran $4$ a un argument de $0$ et un module de $3$ |
+| `produit-quotient-argument-operation` | 4 | **S1** (`ordre-inverse`, **forme pré-argument**), **S2** (`fraction-retournee`) | l'arc **tracé** part du dénominateur et arrive au numérateur ; et à S2, le retour dit exactement ce que l'inversion change — **le rapport des longueurs, et le signe de l'angle**, jamais la conclusion. ⚠ **Son texte déclaré doit être ÉLARGI — §8.2 ter** (seconde passe : **trois** de ses quatre attributions, ici et au banc, agissent AVANT qu'aucun argument existe) |
+| `ensemble-points-locus-confondu` | 3 | **S4**, **les trois distracteurs** (`cercle-diametre`, `cercle-unite`, **`droite-ab`** — ré-attribué en vague 1) | chaque lieu faux est **réfuté par un cran atteignable** : le cran $\sqrt3+i$ a un module de $2+\sqrt3$ ; le cran $2\sqrt3\,i$ est à $2\sqrt3$ de l'origine et son module vaut pourtant $1$ ; le cran $4$ a un argument de $0$ et un module de $3$. ⚠ **Son énumération de lieux doit gagner UN terme — §8.2 ter** (seconde passe : elle nomme « médiatrice, cercle centré en $A$, droite $(AB)$ », **pas le cercle de centre $O$**, qui est le distracteur `cercle-unite` et le choix C de NBCOMPLEX2-45) |
 
 **Cinq modèles servis — quatre de l'inventaire existant, un neuf — et aucun n'est servi deux
 fois pour la même raison.** *Les vingt autres modèles de l'inventaire appartiennent à R0–R5 et
@@ -1876,10 +2302,20 @@ R7. **La scène ne les touche pas, et c'est déclaré.***
 > avant qu'aucun argument n'existe dans la scène. **C'est la même erreur une étape plus tôt, et
 > c'est écrit ici pour que personne ne prenne le rattachement de S1 pour un étirement** : la
 > face « fraction retournée » de S2 est la forme pleine, celle de S1 en est l'antécédent
-> mécanique. *Si la vague 2 ou l'humain juge que le rattachement de S1 est trop lâche, le repli
-> est propre : retirer `produit-quotient-argument-operation` de S1 et laisser `ordre-inverse`
-> sans modèle nommé — ce que le contrat des paris n'autorise pas aujourd'hui. **Je ne le fais
-> pas ; je le déclare.***
+> mécanique.
+>
+> ⚠ **CE QUE LA SECONDE PASSE A CHANGÉ ICI, et pourquoi la déclaration ne suffisait plus.** La
+> règle (e) du §14.0, lancée cette fois sur les 32 choix (§14.0 bis), montre que **ce n'est pas
+> UN rattachement lâche, c'est TROIS** : S1 `ordre-inverse`, **NBCOMPLEX2-42 D** ($q-d = i(p-d)$,
+> une égalité algébrique, aucun argument calculé) et **NBCOMPLEX2-43 B** ($\frac1w = -2$ lu comme
+> $\frac{AC}{AB}$ — un rapport de LONGUEURS, pas d'arguments). **Trois attributions sur quatre
+> reposaient sur une forme que le texte du modèle ne contient pas** — et le repli que je nommais
+> (« retirer le modèle et laisser le choix sans modèle nommé ») **n'existe pas** : le contrat des
+> paris et `validate-content` exigent un modèle déclaré. *Un repli indisponible n'est pas un
+> repli ; c'est une phrase.* → **Le texte du modèle gagne une clause, écrite mot pour mot au
+> §8.2 ter.** *La note ci-dessus reste, parce qu'elle explique le geste ; ce qui change, c'est
+> que la couverture vit désormais dans le MODÈLE, où item-author et la porte la lisent, et plus
+> seulement dans cette spec.*
 
 > **Deux modèles que la scène NE sert PAS, et pourquoi — parce que la scène sœur a payé pour
 > cette leçon** (son correctif B1 : un distracteur rattaché à un modèle dont la définition
@@ -2048,6 +2484,140 @@ nomme un modèle **déclaré**. **Cet édit doit donc être appliqué AVANT la v
 scène**, au même titre que la déclaration de `w-sommet-ignore` — §12, ordre de construction,
 étape 1.
 
+### 8.2 ter TROIS modèles existants dont la DESCRIPTION est plus étroite que leurs propres items (seconde passe, pédagogie IM-4 / fidélité NEW-3)
+
+> **D'où cela vient.** La règle (e) du §14.0 — *ouvrir le texte déclaré du modèle et vérifier
+> qu'il décrit CE geste-là* — avait été écrite en vague 1 après une seule trouvaille, et **lancée
+> une seule fois**. Les deux critiques ont fait la même remarque : *une règle écrite après un
+> constat et jamais exécutée n'est pas un instrument.* **Elle est lancée sur les 32 choix, et le
+> verdict est une table** (§14.0 bis).
+>
+> **Ce qu'elle a trouvé est plus intéressant que « deux attributions étirées ».** Dans les trois
+> cas, **la `description` du modèle est plus étroite que les items que le corpus lui attache
+> DÉJÀ** — ce n'est donc pas une attribution inventée par cette scène, c'est une description qui
+> n'a jamais rattrapé ses propres items. *Le premier des trois le montre sans appel.*
+>
+> **Les trois édits sont ADDITIFS. Vérifié pour chacun : aucun item existant ne perd son
+> attache.** Tous trois sont **livrables d'item-author avant `validate-content`**, au même titre
+> que le §8.2 et le §8.2 bis — §12, ordre de construction, étape 1.
+
+**(a) `lecture-w-module-argument` — la face « bonne grandeur, MAUVAIS SEUIL ».**
+
+*Choix concernés : **S3 `rectangle-en-A`** et **NBCOMPLEX2-44 C** (« *rectangle en $P$, puisque
+l'argument de $\frac{r-p}{q-p}$ n'est pas nul* »).*
+**Le défaut :** la `description` (`items.yaml:214-216`) dit « *l'élève **échange les rôles** du
+module et de l'argument, **ou n'en lit qu'un des deux*** ». **Ces deux choix ne sont ni l'un ni
+l'autre** : l'élève lit la **bonne** grandeur (l'argument, qui est bien ce qui décide de
+« rectangle ») et la compare au **mauvais seuil** (« non nul » au lieu de $\pm\frac{\pi}{2}$).
+**La preuve que l'attribution est juste et que c'est la description qui est en retard :
+`items.yaml:567-575` — NBCOMPLEX2-6, choix B, dans le corpus livré — est *mot pour mot* ce geste
+(« *Le triangle $ABC$ est rectangle en $A$* », retour : « *pas pour n'importe quel argument non
+nul* »), **et il porte déjà `lecture-w-module-argument`**.** *Et le `contradicts_principle`
+(`:217-220`) le couvre explicitement : « *$\arg(w)$ donne l'angle en $A$ (rectangle si
+$\pm\pi/2$…)* ». **Seule la `description` ne le dit pas.***
+
+```yaml
+  - id: mc.math.maths_complexes_trigo.lecture-w-module-argument
+    label: >-
+      « Lecture partielle, intervertie, ou lue contre le mauvais seuil, de |w|
+      (isocèle) et arg(w) (rectangle/aligné) »
+    description: >-
+      Pour w = (z_C−z_A)/(z_B−z_A), l'élève échange les rôles du module et de
+      l'argument, ou n'en lit qu'un des deux, pour la nature du triangle.
+      TROISIÈME FACE, sans échange ni oubli : il lit la BONNE grandeur et la
+      compare au MAUVAIS SEUIL — « l'argument n'est pas nul, donc rectangle »
+      au lieu de « l'argument vaut ±π/2 », ou « le module n'est pas 1, donc
+      rien » là où l'argument décide seul. Chaque ligne de la table demande
+      une valeur PRÉCISE, pas une valeur différente d'une autre.
+    contradicts_principle: >-
+      |w| donne le rapport AC/AB (isocèle en A si |w| = 1) et arg(w) donne
+      l'angle en A (rectangle si ±π/2, aligné si réel) : deux critères SÉPARÉS,
+      chacun sur sa grandeur, et chacun avec son SEUIL exact. « Différent de
+      zéro » n'est le seuil d'aucune ligne.
+```
+
+*Ce que l'élargissement ne casse pas, vérifié : les trois items attachés (NBCOMPLEX2-6, -20, -21,
+`items.yaml:2779`) restent couverts par la première moitié, **inchangée** — et -6 B est même
+**mieux** couvert qu'avant.*
+⚠ **Conséquence sur la question §13.6 (« un modèle ou trois ? ») : elle devient mieux posée, pas
+tranchée.** Le §13.6 listait la troisième face hypothétique comme « *argument lu contre la
+mauvaise ligne* » ; **elle est désormais DÉCLARÉE**, ce qui la rend comptable si le propriétaire
+décide un jour de scinder. **Le défaut reste UN modèle** — le scindement coûte toujours six
+items.
+
+**(b) `ensemble-points-locus-confondu` — un terme de plus dans l'énumération des lieux.**
+
+*Choix concernés : **S4 `cercle-unite`** et **NBCOMPLEX2-45 C** (« le cercle de centre $O$ et de
+rayon $1$ »).*
+**Le défaut :** la `description` (`items.yaml:224-227`) nomme « *au mauvais lieu (**médiatrice,
+cercle centré en $A$, droite $(AB)$**)* » — **trois lieux, et aucun n'est un cercle centré sur un
+point qui ne joue AUCUN rôle dans la condition.** *La clause de tête (« identifie l'ensemble […]
+au mauvais lieu ») et le `contradicts_principle` (« *« module constant » donne un cercle ou une
+médiatrice **selon la forme*** ») couvrent bien le geste ; **c'est l'énumération qui est en
+retard**, et ce document se refuse ailleurs à recruter sur une clause de tête quand l'énumération
+dit autre chose (§8.1, les deux refus).*
+**Attestation la plus proche dans le corpus livré : `items.yaml:2140-2148` (NBCOMPLEX2-32 B) —
+« *Le CERCLE de centre $1$ et de rayon $\vert -2i\vert = 2$* », avec le retour « *Un cercle
+correspond à $\vert z-a\vert = R$ — une distance CONSTANTE à un point fixe* ».** *C'est la même
+mécanique — lire la VALEUR comme une DISTANCE À UN POINT — mais le centre y est encore l'un des
+deux points nommés. **Le cercle de centre $O$ est un cran plus loin, et il n'a aucun précédent :
+je le déclare plutôt que de le supposer couvert.***
+
+```yaml
+    description: >-
+      L'élève identifie l'ensemble défini par une condition sur le module ou
+      l'argument d'un rapport de complexes au mauvais lieu (médiatrice, cercle
+      centré en A, cercle de centre O, droite (AB)). Forme fréquente sur le
+      module : il lit la VALEUR du rapport comme une DISTANCE À UN POINT FIXE
+      — « |u| = 1, donc M est à distance 1 de l'origine » —, alors que le
+      rapport ne compare que MA et MB et que O n'intervient nulle part.
+```
+
+*(`label` et `contradicts_principle` inchangés. Les trois items attachés — -24, -32, -33 — sont
+couverts par la clause de tête, inchangée.)*
+
+**(c) `produit-quotient-argument-operation` — la forme AMONT, avant qu'aucun argument existe.**
+
+*Choix concernés : **S1 `ordre-inverse`**, **NBCOMPLEX2-42 D**, **NBCOMPLEX2-43 B** — trois des
+quatre attributions de ce modèle dans cette livraison.*
+**Le défaut :** la `description` (`items.yaml:75-78`) est écrite **entièrement sur les
+arguments** (« *soustrait les arguments […] inverse l'ordre de la soustraction* »). Or à S1 le
+mot `argument` est une **chaîne interdite** (§7.5 C), -42 D est une **égalité algébrique**, et
+-43 B est un **rapport de longueurs**. *La vague 1 avait déclaré ce décalage pour S1 seul, avec
+un repli qui n'existe pas (§8.1). **Un modèle dont trois quarts des nouvelles attributions vivent
+hors de son texte n'est pas « déclaré » : il est étiré.***
+
+```yaml
+    description: >-
+      L'élève soustrait les arguments pour un produit, les additionne pour un
+      quotient, inverse l'ordre de la soustraction, ou oublie un terme ou un
+      signe. FORME AMONT, avant tout calcul d'argument : devant un rapport
+      w = (z_C − z_A)/(z_B − z_A), il écrit la fraction dans l'ordre inverse —
+      même inversion, un cran plus tôt. Elle ne se voit pas sur la conclusion
+      (les critères de configuration sont invariants par w ↦ 1/w) mais sur le
+      QUOTIENT DES LONGUEURS, qui se retourne, et sur le SIGNE de l'angle, qui
+      change.
+    contradicts_principle: >-
+      arg(zz') = arg(z)+arg(z') (produit) et arg(z/z') = arg(z)−arg(z')
+      (quotient, dans cet ordre) : l'opération sur les arguments suit celle des
+      modules, sans terme ni signe oublié. Et une fraction écrite à l'envers
+      n'est pas la même : 1/w a pour module 1/|w| et pour argument −arg(w).
+```
+
+*Ce que l'élargissement ne casse pas, vérifié : les quatre items attachés (NBCOMPLEX2-2, -12,
+-14, -35, `items.yaml:2764`) portent tous sur des arguments et restent couverts par la première
+moitié, inchangée.*
+**Bénéfice de porte :** le retour de S1 `ordre-inverse` et celui de S2 `fraction-retournee`
+disaient déjà, chacun, exactement ce que la clause neuve écrit (« *inverser la fraction inverse
+le rapport des longueurs et change le SIGNE de l'angle* », §5.2 C, correctif de fidélité I1).
+**Le modèle rejoint ses retours ; il ne les précède pas.**
+
+> **Coût total des quatre interventions sur l'inventaire** *(un modèle neuf + trois
+> élargissements)* **: quatre blocs YAML, tous additifs, tous avant `validate-content`.** *C'est
+> une charge réelle pour item-author, et elle est délibérée : la règle (e) ne sert à rien si son
+> verdict n'a pas de suite. **Le §14.1 en fait un « fait quand », et le §14.0 bis en garde la
+> table.***
+
 ### 8.3 Les QUATRE items que la livraison exige (specs pour item-author)
 
 **Plancher : ≥ 3 items par modèle neuf.** Trois items portent `w-sommet-ignore` en
@@ -2059,11 +2629,13 @@ scène**, au même titre que la déclaration de `w-sommet-ignore` — §12, ordr
 >
 > **1 — `habilete:` OBLIGATOIRE, au vocabulaire MATHS** (fidélité I6). Valeurs :
 > `application_directe` · `application_non_explicite` · `synthese_situations_inhabituelles`.
-> **Pas** `raisonnement` ni `utilisation` : c'est le vocabulaire PC, et les deux checkpoints de
-> cette notion l'emploient à tort (`checkpoints.yaml:289`, `:352` ; `REVIEW:109-111`). *Le champ
-> existe donc déjà dans la notion ; ces quatre items sont les premiers à le porter au bon
-> vocabulaire. L'incohérence qui en résulte à l'intérieur de la notion est **déclarée** et
-> appartient au correctif corpus-wide de S5 : §13.14.*
+> **Pas** `raisonnement` ni `utilisation` : c'est le vocabulaire PC, et **les CINQ checkpoints de
+> cette notion l'emploient à tort** (`checkpoints.yaml:88`, `:156`, `:227`, `:289`, `:352` ;
+> `REVIEW:109-111`) — *cinq, relevés au `grep` en seconde passe ; le premier jet révisé écrivait
+> « les deux », en reprenant pour un dénombrement les deux lignes que le critique donnait en
+> exemple (fidélité NEW-7)*. *Le champ existe donc déjà dans la notion ; ces quatre items sont
+> les premiers à le porter au bon vocabulaire. L'incohérence qui en résulte à l'intérieur de la
+> notion est **déclarée** et appartient au correctif corpus-wide de S5 : §13.14.*
 >
 > **2 — CONTRAINTE DE RETOUR sur tout distracteur `w-sommet-ignore` de face A** (fidélité I9).
 > Chaque retour **doit** (a) **nommer le sommet depuis lequel le mauvais rapport lit
@@ -2095,7 +2667,7 @@ scène**, au même titre que la déclaration de `w-sommet-ignore` — §12, ordr
 | **A** | $p - d = i\,(q - d)$ | **juste** |
 | B | $p = i\,q$ | `w-sommet-ignore` *(face A : la soustraction jamais faite)* |
 | C | $p - d = i\,q$ | `w-sommet-ignore` *(face A : la soustraction faite d'un seul côté)* |
-| D | $q - d = i\,(p - d)$ | `produit-quotient-argument-operation` *(la fraction retournée)* |
+| D | $q - d = i\,(p - d)$ | `produit-quotient-argument-operation` *(la fraction retournée — **forme AMONT**, texte élargi au **§8.2 ter (c)**)* |
 
 *Vérifications : $p-d = 2i$, $q-d = 2$, donc $\frac{p-d}{q-d} = i$ ✓ et $i(q-d) = 2i = p-d$ ✓
 (A vraie). $iq = i(3+i) = -1+3i \neq 1+3i = p$ ✓ (B fausse). $iq = -1+3i \neq 2i = p-d$ ✓ (C
@@ -2122,7 +2694,7 @@ trois autres est **exactement** ce qu'écrit le modèle qu'elle porte ✓.*
 | | texte | misconception |
 |---|---|---|
 | **A** | Ils sont **alignés**, et $AC = \dfrac12\,AB$ | **juste** |
-| B | Ils sont alignés, et $AC = 2\,AB$ | `produit-quotient-argument-operation` *(la fraction retournée : $\frac{z_B-z_A}{z_C-z_A} = -2$, lu comme $\frac{AC}{AB}$)* |
+| B | Ils sont alignés, et $AC = 2\,AB$ | `produit-quotient-argument-operation` *(la fraction retournée : $\frac{z_B-z_A}{z_C-z_A} = -2$, lu comme $\frac{AC}{AB}$ — **forme AMONT**, sur le quotient des LONGUEURS : texte élargi au **§8.2 ter (c)**)* |
 | C | Ils ne sont **pas** alignés, car $\vert w\vert = \dfrac12 \neq 1$ | `lecture-w-module-argument` *(le critère du module appliqué à une question d'angle)* |
 | D | Ils ne sont **pas** alignés, car $\dfrac{z_C}{z_B}$ n'est ni réel ni imaginaire pur | `w-sommet-ignore` *(face A)* |
 
@@ -2153,7 +2725,7 @@ Distracteur D : $\frac{z_C}{z_B} = \frac{(-1+i)(5-4i)}{41} = \frac{-5+4i+5i+4}{4
 |---|---|---|
 | **A** | Oui — **rectangle en $Q$** | **juste** |
 | B | Non : $\dfrac{r-p}{q-p} = 1+\dfrac34 i$ n'est ni réel ni imaginaire pur, et son module ne vaut pas $1$ | `w-sommet-ignore` *(**face B** : le verdict lu au sommet $P$, appliqué au triangle)* |
-| C | Oui — **rectangle en $P$**, puisque l'argument de $\dfrac{r-p}{q-p}$ n'est pas nul | `lecture-w-module-argument` |
+| C | Oui — **rectangle en $P$**, puisque l'argument de $\dfrac{r-p}{q-p}$ n'est pas nul | `lecture-w-module-argument` *(face « bonne grandeur, mauvais seuil » — texte élargi au **§8.2 ter (a)**, seconde passe)* |
 | D | Non : $\dfrac{r}{q}$ n'est ni réel ni imaginaire pur | `w-sommet-ignore` *(face A)* |
 
 *Vérifications. Au sommet $P$ : $r-p = 4+3i$, $q-p = 4$, donc $\frac{r-p}{q-p} = 1+\frac34 i$ —
@@ -2184,7 +2756,7 @@ imaginaire pur ✓.*
 |---|---|---|
 | **A** | la **médiatrice** du segment $[AB]$ | **juste** |
 | B | le **cercle de diamètre $[AB]$**, privé de $A$ et $B$ | `ensemble-points-locus-confondu` |
-| C | le **cercle de centre $O$ et de rayon $1$** | `ensemble-points-locus-confondu` |
+| C | le **cercle de centre $O$ et de rayon $1$** | `ensemble-points-locus-confondu` *(énumération élargie au **§8.2 ter (b)**, seconde passe : elle ne nommait pas le cercle de centre $O$)* |
 | D | la **droite $(AB)$**, privée de $B$ | `ensemble-points-locus-confondu` *(ré-attribué en vague 1 — pédagogie I12)* |
 
 *Vérifications : $\left\vert\frac{z-z_A}{z-z_B}\right\vert = \frac{MA}{MB}$, qui vaut $1$
@@ -2230,7 +2802,7 @@ NBCOMPLEX2-24, sur d'autres points) ; la droite $(AB)$ répond à « rapport **r
 | `lecture-w-module-argument` | 3 | **5** | -43 (C), -44 (C) | 2 |
 | `ensemble-points-locus-confondu` | 3 | **4** | -45 *(primaire ; B, C **et D**)* | 1 |
 | `produit-quotient-argument-operation` | 4 | **6** | -42 (D), -43 (B) | 3 |
-| `angle-lu-depuis-l-axe` | 4 | **4** | *(aucun — servi par la SCÈNE, pas par le banc ; **son texte est élargi**, §8.2 bis)* | 1 |
+| `angle-lu-depuis-l-axe` | 4 | **4** | *(aucun — servi par la SCÈNE, pas par le banc ; **son texte est élargi**, §8.2 bis)* | 1 — ⚠ **mais voir la dette ci-dessous : sa moitié NEUVE est à ZÉRO** |
 | **`total_items`** | **41** | **45** | **+4** | — |
 | **`ramp_coverage.R6`** | **4** | **8** | -42, -43, -44, -45 | — |
 
@@ -2278,6 +2850,23 @@ et **en crée un** à marge nulle.*
   rapprochement, pas une fermeture, et je ne prétends pas le contraire.*
 - **`lecture-w-module-argument` gagne deux items mais reste servi UNIQUEMENT en R6/R7** : la
   scène ne change rien au fait que ce modèle n'est jamais mesuré ailleurs.
+- ⚠ **AJOUTÉ EN SECONDE PASSE (fidélité NEW-2) — `angle-lu-depuis-l-axe` part avec une MOITIÉ À
+  ZÉRO ITEM, et c'est la dette que le premier jet révisé ne déclarait pas.** Le §8.2 bis étend le
+  texte du modèle de la seule **transformation** à un **rapport de deux vecteurs**
+  ($w = \frac{z_C-z_A}{z_B-z_A}$) — c'est-à-dire qu'il lui ouvre une face **R6**. Or **les quatre
+  items attachés (NBCOMPLEX2-35, -36, -37, -40, `items.yaml:2782`) sont TOUS R5 et tous sur une
+  transformation**, et cette livraison ne lui en ajoute aucun : **la face R6 est mesurée par zéro
+  item, contre un plancher de trois.** *C'est exactement la forme de la face B de
+  `w-sommet-ignore`, que le §13.14 (b) déclare en entier — **ce document en déclarait une et pas
+  l'autre.*** **Elle est servie par la SCÈNE (S2, `valeurs-absolues`) et par rien d'autre.**
+  *Aucun item n'est exigé ici — la scène est le bon endroit pour cette face —, mais la dette doit
+  porter un nom, sans quoi elle est invisible* (ADR 0036). **§13.14 (c).**
+- ⚠ **AJOUTÉ EN SECONDE PASSE — les deux autres élargissements du §8.2 ter n'ajoutent ni ne
+  retirent aucun compte.** *Vérifié : un élargissement de `description` ne déplace pas une
+  attache. `lecture-w-module-argument` reste à **5**, `ensemble-points-locus-confondu` à **4**,
+  `produit-quotient-argument-operation` à **6**. **Ce qu'ils changent, c'est que le compte
+  MESURE ce qu'il prétend mesurer** — trois faces qui étaient servies sans être déclarées le sont
+  désormais.*
 
 ---
 
@@ -2322,8 +2911,11 @@ Chaînes **interdites dans le panneau ouvert**, mesurées par la porte (§11.3, 
 3. **Le mot « similitude » et ses dérivés — INTERDITS DANS LE PANNEAU.** `maths-sexp.yaml:258`
    le réserve à SM ; `maths-sm.yaml:232` en exclut la forme indirecte ; la prose de R5 l'emploie
    déjà **une fois, marquée de filière** (`lesson.md:327`, décision de la spec sœur §4.4), et
-   c'est assez. Interdits : `similitude`, `similitudes`, `similaire`, `semblable`
-   *(en position de transformation)*.
+   c'est assez. Interdits : `similitude`, `similitudes`, `similaire`, `semblable`.
+   *⚠ Seconde passe (pédagogie, MINEUR 5) : la qualification « *(en position de transformation)* »
+   est **retirée** — une porte qui cherche une chaîne en début de mot ne sait pas lire une
+   position, donc la ligne était inerte (ADR 0034). **`semblable` est interdit sans condition** ;
+   aucun texte du §7 ne l'emploie, vérifié.*
 4. **Aucune similitude indirecte, aucun antidéplacement, aucune géométrie projective.**
    `maths-sm.yaml:232`. Interdits : `indirecte`, `antidéplacement`, `z \mapsto \bar z`,
    `réflexion`, `symétrie glissée`, `symétrie axiale`, `retournement`, `projectif`,
@@ -2358,6 +2950,19 @@ Chaînes **interdites dans le panneau ouvert**, mesurées par la porte (§11.3, 
    | $3{,}46$ | S4, retour `cercle-unite` ($2\sqrt3 \approx 3{,}46$) | **décimale** |
    **UNE décimale et trois degrés, tous en position « ordre de grandeur », tous dans des
    retours, aucun dans une lecture ni dans une `suite`.**
+   > ⚠ **RE-RELEVÉ UNE TROISIÈME FOIS EN SECONDE PASSE, après la réécriture de S3 et de S4.**
+   > *Textes réécrits depuis le relevé précédent : la lecture `nature` aux douze états (§5.3 B),
+   > les quatre retours de S3 et sa `suite`, la consigne de S4, son retour juste et sa `suite`,
+   > le retour juste de S2, la `suite` de S1, et les quatre annonces de région vivante du
+   > balayage (§5.5).* **Résultat : l'inventaire ne bouge pas — aucune décimale et aucun degré
+   > neufs, et aucun des quatre existants n'a disparu.** *La lecture `nature` était le risque
+   > principal (elle écrit désormais des valeurs) : **elle n'écrit que des radicaux exacts et des
+   > fractions de $\pi$**, vérifié ligne à ligne au §5.3 B. Les annonces du balayage n'écrivent
+   > qu'un invariant exact et un sens de variation en toutes lettres.*
+   > *Deux occurrences de plus vivent dans la PROSE DE CETTE SPEC et non dans le panneau —
+   > $0{,}87$ et « $17$ px » au §7.2, dans le motif du correctif MINEUR 2. **La porte ne doit pas
+   > les relever** : elle lit le panneau rendu, pas ce document. C'est la même distinction que
+   > pour le $0{,}54$ du `fit_caveat` ci-dessous.*
    > *Le premier jet en inventoriait sept décimales et deux degrés ; **cinq de ces sept n'existent
    > plus** — $0{,}87$, $3{,}46$ et $0{,}52$ vivaient dans des textes de S2 qui ont été
    > réécrits, $3{,}73$ et $0{,}27$ dans la `suite` de S4, ramenée à une question et un geste —
@@ -2371,8 +2976,12 @@ Chaînes **interdites dans le panneau ouvert**, mesurées par la porte (§11.3, 
    (`bank.yaml:77-95`). Interdits : `discriminant`, `\Delta =`, `az^2`, `second degré`,
    `Viète`, `\delta^2`.
 10. **Aucune équation de courbe, aucune coordonnée polaire nommée.** Interdits :
-    `coordonnées polaires`, `repère polaire`, `\rho`, `(r,\theta)` *(en position de couple)*,
-    `x = -1`, `y =` *(en position d'équation de droite)*, `x^2+y^2`. *La scène **dessine** et
+    `coordonnées polaires`, `repère polaire`, `\rho`, `(r,\theta)`, `x = -1`, `y =`, `x^2+y^2`.
+    *⚠ Seconde passe (pédagogie, MINEUR 5) : les deux qualifications « *(en position de couple)* »
+    et « *(en position d'équation de droite)* » sont **retirées** pour la même raison qu'au §9.3
+    — **deux lignes inertes de plus, découvertes en balayant la CLASSE au lieu de l'occurrence
+    signalée.** Aucun texte de cette scène n'écrit `(r,\theta)` ni `y =` : l'interdiction sans
+    condition ne coûte rien et se mesure.* *La scène **dessine** et
     **nomme** les trois lieux ; elle ne les met pas en équation — ce n'est pas le rung des
     équations de lieux, et `REVIEW:132-137` demande un segment de prose, pas de l'analytique.*
 11. **Aucune 3D.** Canvas 2D, aucune caméra, aucune vue. **`window.__THREE__` doit rester
@@ -2432,8 +3041,12 @@ affiche des **valeurs exactes**, l'affichage qui ressemble le plus à une preuve
    **S1, S2 et S3 couvrent seules le périmètre SExp.**
    ⚠ **Et la divergence n'est pas nette :** le `savoir_faire` SExp `:254` écrit
    $\arg\!\left(\frac{z-a}{z-b}\right)$, c'est-à-dire exactement l'objet de S4. **Programme et
-   savoir_faire du même fichier se contredisent, et les deux sont `derived`.** *Je marque S4 SM
-   par prudence et je route (§13.2).* **Pour défaire, si le scoping de filière est un jour
+   savoir_faire du même fichier se contredisent — et ils ne pèsent PAS le même poids :** le
+   `programme` (`:251`) est **`research-consensus`** (en-tête `:248`), le `savoir_faire` (`:254`)
+   est **`derived`** (en-tête `:252`). *Corrigé en seconde passe, fidélité NEW-1 : le premier jet
+   révisé écrivait « **et les deux sont `derived`** ».* **La ligne la mieux sourcée est celle qui
+   argumente CONTRE S4 en SExp : la marque SM n'est donc pas un partage à pile ou face, c'est la
+   meilleure source disponible.** *Je marque S4 SM par prudence et je route (§13.2).* **Pour défaire, si le scoping de filière est un jour
    tranché : S4 devient une étape optionnelle marquée, c'est un champ du descripteur, rien de
    plus.**
 9. **La scène ne prépare PAS la reconstruction d'un centre de rotation depuis un couple
@@ -2474,9 +3087,42 @@ affiche des **valeurs exactes**, l'affichage qui ressemble le plus à une preuve
 15. **La marque de filière de S4 vit dans la PROSE, pas dans le panneau** *(ajouté en vague 1,
     fidélité I4)*. Voir le point 8 : le champ `filiere` du descripteur **n'est lu par personne**
     (`REVIEW:116` : ni `lesson.md` ni `items.yaml` ne déclarent `filiere:`). **Ce qui porte
-    réellement la marque, c'est une clause de la prose du §4.4 point 4**, sur le modèle livré de
-    `lesson.md:327`. *Le panneau, lui, est servi non marqué aux deux filières — motif de
-    l'asymétrie : `scene-plan.md:2052-2055`.*
+    réellement la marque, ce sont TROIS clauses de prose** — §4.4 point 4, §4.5 (b), et le
+    cadrage de `cp-ensemble-points` au §4.6 —, sur le modèle livré de `lesson.md:327`. *Le
+    panneau, lui, est servi non marqué aux deux filières — motif de l'asymétrie :
+    `scene-plan.md:2052-2055`.* ⚠ *Seconde passe, fidélité NEW-4 : le premier jet révisé n'en
+    marquait qu'un des trois. **Une marque posée à un site sur trois a le tiers de la portée**,
+    et c'était exactement le défaut qu'elle venait réparer.*
+16. **Les LIBELLÉS DE CRAN ordinaux sont une convention de scène, sans aucun statut d'examen**
+    *(ajouté en seconde passe, fidélité NEW-11)*. « Triangle 1 · 2 · 3 · 4 » et « Placement 1 ·
+    2 · 3 · 4 » sont la bonne réponse au problème de fuite B1 — **mais le bac n'indexe jamais une
+    configuration par un ordinal**, et aucun énoncé ne dira « le triangle 3 ». *L'élève doit
+    comprendre que ces numéros sont des poignées de la scène, pas un vocabulaire.* **C'est le
+    même genre de convention que l'ordre de lecture du badge (point 12), et elle se déclare au
+    même endroit.** *Pour défaire : des libellés descriptifs — impossible, c'est précisément ce
+    que B1 interdit ; ou des affixes, comme pour `pointM` — mais une FORME n'a pas d'affixe.
+    **Les ordinaux restent, et ils sont déclarés.***
+17. **Deux `suite` sur quatre sont partiellement mises en place par un retour de leur propre
+    étape** *(ajouté en seconde passe, pédagogie, MINEUR 6)*. À S4, le retour `cercle-diametre`
+    doit dire de quoi le cercle est le lieu — c'est son travail — et donne donc un tiers de la
+    réponse de la `suite` au cran près ; à S1, le retour `affixes` fait faire le geste que la
+    `suite` reprend. *C'est le **revers assumé** du correctif I4 de la vague 1 : en fermant les
+    recherches par le mécanisme, on rapproche les retours des `suite`.* **Ce que les `suite`
+    ajoutent et qu'aucun retour ne donne :** à S1, l'exception (le placement où le raccourci
+    tombe juste) ; à S4, **que l'invariant reste exact et identique au caractère le long d'un
+    CONTINUUM**, là où un retour ne parle que d'un point. *La `suite` de S3 a, elle, été
+    reconstruite pour n'être répondue par aucun retour (§7.3) ; celle de S2 ne l'a jamais été.*
+18. **À S1, la bonne réponse ne demande AUCUNE division complexe — et c'est structurel**
+    *(ajouté en seconde passe, pédagogie, MINEUR 10)*. Les quatre formes partagent
+    $\vec{AB} = 4$ (point 5) et les quatre placements appliquent $r \in \{1, i, -1\}$ (§5.2 B) :
+    **le dénominateur de $w$ est donc un MONÔME à tous les placements** ($4$, $4i$, $-4$).
+    Résultat à l'état de S1 : la bonne réponse se lit $\frac{4i}{4} = i$ et le distracteur
+    `ordre-inverse` $\frac{4}{4i} = -i$, **tandis que les deux distracteurs de face A
+    (`affixes`, `demi-soustraction`) exigent, eux, une vraie division complexe.** *Un élève qui
+    choisit « la plus simple à calculer » réduit le champ à deux sans rien comprendre.* **Le prix
+    est réel ; il est le revers de l'exactitude** (§5.4 : tout nombre affiché est exact, donc les
+    crans sont discrets et les rotations sont des quarts de tour). *Le correctif qui marcherait,
+    et son coût, sont écrits en question numérotée : §13.17.*
 
 ---
 
@@ -2505,12 +3151,21 @@ pas le bon nombre*.
 | N3 | la lecture `vecteurs` : les deux différences $z_C - z_A$ et $z_B - z_A$ aux 48 | calculées depuis les affixes rendues | égalité de chaîne ; **et ni l'une ni l'autre n'est égale à $z_C$ ou $z_B$** sauf au placement `origine` |
 | N4 | $\vert w\vert$ et $\arg(w)$ aux 48 | table §5.3 B, en **contrôle ponctuel** — la porte recalcule les 48 | chaînes ; **arguments en fractions de $\pi$, dans $]-\pi;\pi]$** ; *`aligne` au sommet $A$ doit écrire $\pi$, jamais $-\pi$* |
 | N5 | `longueurs` : $AB$ et $AC$ aux 48, **et leur quotient égale $\vert w\vert$** | table §5.3 C | égalité de chaîne, **et** $\frac{AC}{AB} = \vert w\vert$ à $10^{-9}$ |
-| **N6** | **`nature` aux 48, dans les DEUX sens** : elle nomme **TOUTES les lignes vérifiées, dans l'ordre de la table** — donc **deux** lignes aux douze états `rect-isocele`·$A$ et `equilateral`·$A$/$B$/$C$ *(× 4 placements)*, **une** aux `demi-equilateral`·$C$ et aux trois `aligne`, et **« aucune des quatre »** aux `rect-isocele`·$B$/$C$ et `demi-equilateral`·$A$/$B$ | §5.3 B, colonne de droite | **trois sens, pas deux** : une scène qui nommerait toujours une ligne doit rougir ; une qui n'en nommerait jamais aussi ; **et une qui n'en nommerait qu'UNE là où deux sont vérifiées aussi** *(le cas que le premier jet rendait impossible à mesurer, fidélité M5)* |
+| **N6** | **`nature` aux 48, dans QUATRE sens.** Elle écrit **les CRITÈRES vérifiés à ce sommet, dans l'ordre de la table, chacun avec sa valeur**, puis la ou les conclusions qui s'allument. Répartition des 48 états : **deux conclusions** aux **SEIZE** états `rect-isocele`·$A$ et `equilateral`·$A$/$B$/$C$ *(4 couples × 4 placements)* · **une** aux **SEIZE** états `demi-equilateral`·$C$ et `aligne`·$A$/$B$/$C$ · **aucune** aux **SEIZE** états `rect-isocele`·$B$/$C$ et `demi-equilateral`·$A$/$B$. **Somme : 48** ✓ | §5.3 B, colonne de droite, **texte par texte** | **quatre sens :** (1) une scène qui conclurait toujours doit rougir ; (2) une qui ne conclurait jamais aussi ; (3) **une qui ne nommerait qu'UNE conclusion là où deux sont vérifiées** aussi *(fidélité M5)* ; (4) **NEUF — une qui écrirait une conclusion SANS le critère qui la produit, ou qui écrirait un DÉCOMPTE (« aucune des quatre ») au lieu des critères vérifiés, doit rougir seule** *(seconde passe, pédagogie IM-1)* |
 | N7 | le mode `lieu` : $u$, $\vert u\vert$, $\arg(u)$, $MA$, $MB$ aux **5** crans | table §5.3 E | égalité de chaîne + $10^{-9}$ ; **et $\frac{MA}{MB} = \vert u\vert$** |
 | **N8** | **la CLASSIFICATION des 5 crans** : $\vert u\vert = 1$ **au seul** `mediatrice` ; $\arg(u) = \pm\frac{\pi}{2}$ **aux seuls** `cercle-1` et `cercle-2` ; $\arg(u) \in \{0,\pi\}$ **au seul** `droite` ; **aucune** des trois au cran `libre` | §5.3 E | **exact, dans les deux sens** — *c'est la ligne qui garde S4* |
 | N9 | les **crans** : `position` en a exactement 4, `forme` 4, `sommet` 3, `pointM` 5 ; **aucune valeur intermédiaire, aucune borne continue** | — | exact |
 | N10 | **aucun décimal, aucun degré** dans les sept lectures, aux 53 états | — | §9.8 ; *relevé sur les lectures seules, pas sur le panneau* |
 | N11 | **tous les points de tous les états sont dans $[-9;9]^2$**, aux 53, **avec une marge $\ge 1$ unité** | §5.3 D | exact ; *et le placement `retournee` est vérifié **point par point**, pas par la borne du disque* |
+
+> ⚠ **Le compte de N6 est corrigé en seconde passe (fidélité NEW-6).** Le premier jet révisé
+> écrivait « *donc **deux** lignes aux **douze** états `rect-isocele`·$A$ et
+> `equilateral`·$A$/$B$/$C$ (× 4 placements)* » : **quatre couples (forme, sommet) × quatre
+> placements font SEIZE, pas douze** — le « 12 » était le nombre de COUPLES de la table du §5.3
+> A, recopié dans une phrase qui parle d'ÉTATS. *Les deux autres seaux étaient justes (4 couples
+> chacun), et les trois somment bien à 12 couples et 48 états.* **La règle était juste et
+> mesurable ; c'est l'ATTENTE de la porte qui était fausse — et une attente fausse dans une table
+> de porte est un faux rouge (ou un faux vert) programmé.**
 
 ### 11.2 Les faits de PIXELS, mesurés dans les deux sens
 
@@ -2527,9 +3182,9 @@ le facteur px/unité est lu sur **les graduations entières des deux axes**. Lan
 | `point-a-sa-place` | les trois points (et $M$) sont dessinés **à la position que leur affixe demande**, à $\le 2$ px, aux 53 états ; **et deux points ne sont jamais à moins de 8 px l'un de l'autre** | un point dessiné depuis un autre nombre que celui affiché doit rougir ; une position **plafonnée** au bord du cadre aussi |
 | `longueurs-au-rapport` *(étendue en vague 1)* | (a) le rapport des **longueurs en pixels** des deux flèches égale la lecture `module-w`, à $\le 2\%$, aux 48 ; (b) **à S2 après révélation, la LONGUEUR REPORTÉE part de $A$, suit la direction de $\vec{AB}$ à $\le 1°$, et son extrémité tombe à $\vert w\vert \times AB$ du départ, à $\le 2$ px** | une flèche dessinée à une autre échelle que l'autre doit rougir **seule** ; **une longueur reportée posée sur la direction de $\vec{AC}$, ou de longueur $AB$ au lieu de $AC$, doit rougir seule** ; **et son ABSENCE après la révélation de S2 aussi** |
 | **`angle-droit-marque`** *(NEUVE — vague 1, pédagogie I1)* | à S3, **après** la révélation : un petit carré est dessiné **au sommet $C$**, entre les directions de $\vec{CA}$ et $\vec{CB}$, à $\le 2$ px du sommet ; **et il n'y en a aucun aux sommets $A$ et $B$** | un carré posé au sommet $A$ (celui qu'on lit) doit rougir **seule** ; **un carré absent après la révélation** aussi ; **un carré présent AVANT le pari** aussi (`avant-pari`) ; **et un carré posé sur un état où aucun angle droit n'existe** aussi |
-| **`libelles-de-cran`** *(NEUVE — vague 1, pédagogie B1)* | chaque contrôle affiche les **libellés** du §5.5, **et non ses ids** : `forme` ⟹ « Triangle 1..4 », `position` ⟹ « Placement 1..4 », `pointM` ⟹ les cinq affixes, `sommet` ⟹ $A$/$B$/$C$ | **un contrôle qui afficherait ses ids doit rougir seul** — et c'est le sabotage n° 32 : remettre « équilatéral » comme libellé de `forme` doit faire rougir `libelles-de-cran` **et** `formule-graduee` à S2 |
-| **`courbe-du-lieu`** | en `mode: lieu`, **après la révélation** : la courbe tracée passe à $\le 2$ px des crans qui lui appartiennent et à $\ge 8$ px de ceux qui ne lui appartiennent pas — médiatrice par `mediatrice`, cercle de diamètre par `cercle-1` **et** `cercle-2`, droite par `droite` ; **aucune courbe au cran `libre` avant la révélation** | une médiatrice tracée comme un cercle doit rougir ; une courbe **présente avant la révélation** aussi (`avant-pari`) ; **une courbe tracée au cran `libre` AVANT le pari** aussi |
-| **`balayage-invariants`** *(héritée, adaptée)* | **pendant** le balayage : les sept lectures affichent **« — »** et **aucun chiffre** n'apparaît dans le panneau qui n'y était pas ; les deux segments et l'arc **bougent** (mesuré aux pixels sur trois positions) ; **et $M$ reste sur la courbe à $\le 2$ px** | **après** le relâchement : les lectures redeviennent **exactement** celles d'avant, au caractère près. **Un balayage qui afficherait un décimal doit rougir ; un balayage inerte aux pixels aussi ; un balayage qui ferait sortir $M$ de la courbe aussi ; et un balayage OUVERT au cran `libre`** (`fuite-inter-etapes`) |
+| **`libelles-de-cran`** *(NEUVE — vague 1, pédagogie B1)* | chaque contrôle affiche les **libellés** du §5.5, **et non ses ids** : `forme` ⟹ « Triangle 1..4 », `position` ⟹ « Placement 1..4 », `pointM` ⟹ les cinq affixes, `sommet` ⟹ $A$/$B$/$C$ ; **et l'`aria-label` de chaque bouton radio porte le même libellé, en clair** | **un contrôle qui afficherait ses ids doit rougir seul** — et c'est le sabotage n° 32 : remettre « équilatéral » comme libellé de `forme` doit faire rougir `libelles-de-cran` **et** `formule-graduee` à S2. *⚠ **Cette porte lit le panneau RENDU : elle est indifférente à l'endroit où vit la table `id → affichage`.** C'est ce qui a permis, en seconde passe, d'abandonner la clé de registre `libelles` au profit de la route déjà livrée (§12) sans toucher à une seule ligne de mesure.* |
+| **`courbe-du-lieu`** *(précisée en seconde passe — pédagogie IM-2 : **TROIS** courbes)* | en `mode: lieu`, **après la révélation** : **les TROIS courbes sont tracées** — médiatrice, cercle de diamètre $[AB]$, droite $(AB)$ — et chacune passe à $\le 2$ px des crans qui lui appartiennent et à $\ge 8$ px de ceux qui ne lui appartiennent pas (médiatrice ⟵ `mediatrice` · cercle ⟵ `cercle-1` **et** `cercle-2` · droite ⟵ `droite`) ; **aucune courbe avant la révélation, à aucun cran** | une médiatrice tracée comme un cercle doit rougir ; **une SEULE courbe tracée au lieu des trois doit rougir seule** *(c'est l'ambiguïté que la seconde passe a levée : le §6.1 disait « la courbe », la porte en exigeait trois)* ; une courbe **présente avant la révélation** aussi (`avant-pari`) ; **une courbe tracée au cran `libre` AVANT le pari** aussi |
+| **`balayage-invariants`** *(héritée de la scène sœur — **REFAITE en seconde passe sur la règle LIVRÉE**, pédagogie BQ-1)* | **pendant** le balayage, **LIEU PAR LIEU** (§6.1) : **(1) l'INVARIANT reste écrit et vaut exactement la valeur de sa ligne, IDENTIQUE AU CARACTÈRE, à $\ge 3$ positions échantillonnées** — $\vert u\vert = 1$ sur la médiatrice · $\arg(u) = -\frac{\pi}{2}$ sur le cercle · $\arg(u) = 0$ sur la droite ; **(2) l'autre ligne affiche « — »** et aucun chiffre ; **(3) l'étiquette d'affixe de $M$ sur le plan disparaît** ; **(4) les deux segments et l'arc BOUGENT** (pixels, 3 positions) ; **(5) $M$ reste sur sa courbe à $\le 2$ px** ; **(6) le geste reste DANS SA BORNE** (demi-cercle supérieur ; demi-droite $x>2$) ; **(7) un appui de flèche déplace $M$ d'au moins 4 px aux deux largeurs** ; **(8) la chaîne de la région vivante diffère entre deux positions et contient la valeur exacte de l'invariant** | **après** le relâchement : les deux lectures redeviennent **exactement** celles d'avant, au caractère près. **Et huit sens qui doivent rougir SEULS :** *(a)* ⚠ **effacer AUSSI l'invariant** *(la faute que le premier jet révisé commandait)* ; *(b)* écrire un chiffre sur la ligne positionnelle ; *(c)* écrire un décimal ; *(d)* un balayage inerte aux pixels ; *(e)* $M$ qui sort de sa courbe ; *(f)* **franchir la borne** — le cercle sous l'axe réel (l'argument saute à $+\frac{\pi}{2}$), la droite au-delà de $B$ (l'argument saute à $\pi$) ; *(g)* un pas qui ne déplace rien de visible ; *(h)* une région vivante muette, ou qui répète deux fois la même chaîne. **Et un balayage OUVERT au cran $2+4i$** (`fuite-inter-etapes`) |
 | `avant-pari` | à chaque étape, avant l'engagement : **zéro** pixel d'accent (mesuré en **CHROMINANCE**) ; aucune flèche à S1 ; aucun arc **à S1 et S2** ; **aucune longueur reportée** ; **aucun petit carré** ; aucune courbe ; **aucun contrôle de l'étape** ; aucune lecture-réponse dans le DOM. **À S2, S3 et S4 : les trois exceptions du §7.5 SONT présentes, à l'ENCRE** | après l'engagement : les flèches, l'arc, la longueur reportée, le carré, la courbe et les lectures apparaissent, et l'accent avec. **À S2, des flèches ABSENTES avant le pari doivent rougir ; à S3, un arc en $A$ ABSENT avant le pari aussi** — les trois exceptions sont mesurées **dans les deux sens** |
 | `palette` · `quadrillage-opaque` · `etiquettes` | *(héritées de la scène sœur)* jetons `--figure-*` lus à l'exécution ; nœuds du quadrillage à la même valeur que ses lignes ($\le 2$ niveaux) ; **≤ 6 étiquettes simultanées**, aucun chevauchement, graduations tous les 2 sous 600 px. **Neuf : `etiquettes` est lancée SPÉCIFIQUEMENT sur l'état de S3 après révélation, aux deux largeurs** — c'est le voisinage le plus encombré de la scène, et le petit carré y compte comme obstacle de placement (§6.2). **Neuf : `palette` vérifie le cercle unité dans les deux sens — présent en `mode: lieu`, ABSENT en `mode: triangle`** (§5.1, pédagogie M3) | une couleur en dur, un quadrillage semi-transparent, une étiquette qui en chevauche une autre ou qui sort du cadre — **chacune seule** ; **un cercle unité tracé en `mode: triangle` doit rougir seul, et son absence en `mode: lieu` aussi** |
 | `formule-graduee` | **la table C du §7.5, étape par étape** : le panneau ne contient aucune chaîne interdite de l'étape courante — **consigne, `pari`, retours, `suite`, lectures, LIBELLÉS DE CRAN des contrôles ouverts et région vivante confondus** *(les libellés sont l'ajout de vague 1, correctif B1 : c'était la moitié non balayée)* — et contient bien celles que l'étape emploie | écrire « module » dans un retour de S1, « isocèle » dans un retour de S2, « médiatrice » dans un retour de S3, **ou remettre « équilatéral » comme libellé de cran de `forme`**, doit rougir **seule** |
@@ -2591,10 +3246,34 @@ Un rouge ne prouve rien sans le vert qui l'a précédé, **dans ce dossier, avec
 18. **tracer la courbe AVANT la révélation de S4** → **`avant-pari` seule** ;
 19. **retirer l'arc avant le pari de S3** → **`avant-pari` dans l'autre sens** *(les trois
     exceptions du §7.5 sont mesurées, sinon elles ne sont qu'une intention)* ;
-20. **faire afficher un chiffre pendant le balayage** → **`balayage-invariants` seule** ;
+20. ⚠ **REFAIT EN SECONDE PASSE (pédagogie BQ-1) — effacer AUSSI l'INVARIANT pendant le
+    balayage** (afficher « — » sur les deux lignes) → **`balayage-invariants`, volet
+    « invariant tenu », seule.** *C'est le sabotage qui reproduit la faute que le premier jet
+    révisé COMMANDAIT : l'ancien n° 20 armait le contraire (« faire afficher un chiffre pendant
+    le balayage → rouge »), et **un produit construit sur la règle livrée l'aurait fait rougir**
+    — une porte qui punit le comportement correct (ADR 0038).* **Il se rejoue sur les TROIS
+    lieux** : sur la médiatrice l'effacement porte sur le module, sur le cercle et sur la droite
+    sur l'argument. *Un sabotage qui ne rougirait que sur un lieu est le signe que la porte ne
+    mesure qu'un cas.*
+20 bis. **faire afficher un chiffre sur la ligne POSITIONNELLE pendant le balayage** (par exemple
+    $\arg(u) \approx -0{,}87$ sur la médiatrice) → **la même famille, volet « positionnel
+    effacé », seule** ;
 21. **rendre le balayage inerte** (le contrôle existe, rien ne bouge aux pixels) → **la même
-    famille, dans l'autre sens** ;
-22. **faire sortir $M$ de la courbe pendant le balayage** → **la même famille, troisième sens** ;
+    famille, volet « mouvement réel »** ;
+21 bis. **mettre le pas du balayage à $1°$ sur le cercle, ou à $\frac{1}{50}$ d'unité sur les
+    lieux droits** (un appui de flèche ne déplace rien de visible) → **la même famille, volet
+    « pas visible », seule** *(seconde passe : leçon livrée, `scene-plan.md:19-21` — la scène
+    sœur a mesuré ce défaut sur elle-même)* ;
+22. **faire sortir $M$ de la courbe pendant le balayage** → **la même famille, volet « sur la
+    courbe »** ;
+22 bis. ⚠ **NEUF (seconde passe, BQ-1) — retirer la BORNE du balayage** : laisser $M$ passer sous
+    l'axe réel sur le cercle, ou franchir $B$ sur la droite → **la même famille, volet
+    « borne »**, parce que **la valeur écrite de l'« invariant » CHANGE** ($-\frac{\pi}{2} \to
+    +\frac{\pi}{2}$ ; $0 \to \pi$). *C'est le sabotage le plus subtil de la campagne : le produit
+    a l'air correct — un nombre reste écrit — et il ment sur le fait même de l'étape.*
+22 ter. **rendre la région vivante muette pendant le balayage, ou lui faire répéter deux fois la
+    même chaîne** → **la même famille, volet « valeur parlée qui varie », seule** *(seconde
+    passe, leçon livrée `HANDOFF.md:16449-16451`)* ;
 23. **ouvrir le balayage au cran `libre`, ou avant la révélation de S4** →
     **`fuite-inter-etapes` seule** ;
 24. **rouvrir `position` à S2** → **`fuite-inter-etapes` seule** *(c'est le seul sabotage de la
