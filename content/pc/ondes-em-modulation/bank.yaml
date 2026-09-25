@@ -598,7 +598,7 @@ entries:
         stem: |-
           **(0,5 pt)** Représenter l'allure du spectre de fréquences du signal modulé $u(t)$ sans respect d'échelle très précise.
         reasoning: |-
-          Cette question mobilise une technique que la leçon ne couvre pas : chapitres 3 à 4 décrivent le signal modulé dans le domaine temporel (l'enveloppe), jamais dans le domaine fréquentiel — aucun chapitre à citer ici. On applique directement la relation trigonométrique de produit-somme, $\cos p \cos q = \frac{1}{2}[\cos(p-q)+\cos(p+q)]$, à la forme canonique donnée dans l'intro : le terme en $\cos(2\pi f_s t)\cos(2\pi f_p t)$ se scinde en deux oscillations pures, à $f_p-f_s$ et $f_p+f_s$. Le spectre attendu porte donc trois raies : une raie centrale à $f_p$, encadrée de deux raies latérales symétriques à $f_p \pm f_s$, chacune de hauteur moitié de la raie centrale (puisque $m=0{,}5$).
+          Cette question mobilise une technique que la leçon ne couvre pas : chapitres 3 à 4 décrivent le signal modulé dans le domaine temporel (l'enveloppe), jamais dans le domaine fréquentiel — aucun chapitre à citer ici. On applique directement la relation trigonométrique de produit-somme, $\cos p \cos q = \frac{1}{2}[\cos(p-q)+\cos(p+q)]$, à la forme canonique donnée dans l'intro : le terme en $\cos(2\pi f_s t)\cos(2\pi f_p t)$ se scinde en deux oscillations pures, à $f_p-f_s$ et $f_p+f_s$. Le spectre attendu porte donc trois raies : une raie centrale à $f_p$, de hauteur $A$, encadrée de deux raies latérales symétriques à $f_p \pm f_s$, chacune de hauteur $Am/2$ — le quart de la raie centrale, puisque $m=0{,}5$.
         steps:
           - math: 'u(t) = A\cos(2\pi f_p t) + A m \cos(2\pi f_s t)\cos(2\pi f_p t)'
             note: "On developpe la forme canonique donnée par l'énoncé."
@@ -609,7 +609,7 @@ entries:
           - math: 'f_p - f_s = 4000 - 200 = 3800\ \text{Hz} \qquad f_p + f_s = 4000 + 200 = 4200\ \text{Hz}'
             note: "Position numérique des deux raies latérales, avec fp et fs de la question 1."
           - math: '\boxed{\text{raies a } 3{,}8\ \text{kHz}\ (Am/2),\ 4{,}0\ \text{kHz}\ (A),\ 4{,}2\ \text{kHz}\ (Am/2)}'
-            note: "Trois raies symétriques autour de fp ; la raie centrale deux fois plus haute que chaque raie laterale (m=0,5)."
+            note: "Trois raies symétriques autour de fp ; la raie centrale quatre fois plus haute que chaque raie latérale (Am/2 = A/4 pour m = 0,5)."
 
 
   # ── bk-2023-r-x3c — 2023 R, Exercice 3 (section 3) : circuit bouchon LC, detection AM ──
