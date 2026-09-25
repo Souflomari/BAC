@@ -16303,7 +16303,21 @@ familles)**, essai rouge 31/31, `scene-modulation` VERTE sur le même build (140
 `disposer` est commun), `scene-ergonomie` VERTE sur les 13 scènes. Quatre sabotages
 neufs pour la campagne (33 en tout).
 
-**RESTENT** : la campagne de sabotages du PRODUIT (ADR 0038 ; 33 sabotages prêts, ancres
-vérifiées) ; au propriétaire, les seize questions de la spec §13 tranchées par défaut
+**LA CAMPAGNE DE SABOTAGES DU PRODUIT (ADR 0038), faite le même jour** dans un arbre à
+part (`6a02ab11`, trente-trois sabotages, chacun nommant la famille qui DOIT rougir — dont
+quatre neufs, visant les familles de la vague 2) : **32 sur 33 attrapés du premier coup**,
+la porte verte avant et après (170 mesures, 32 familles), l'arbre identique à son cliché.
+**Le manqué n'était pas un angle mort : le sabotage n'atteignait pas le défaut.**
+`moins-exile` rendait au « − » sa portée de 8 px et la légende longue — et le « − »
+restait à 6 px de sa borne, parce que la vague 2 avait AUSSI descendu le générateur de
+4 px au téléphone, et que cette seule retouche suffisait. Un défaut corrigé par plusieurs
+gestes ne se rejoue qu'en les défaisant TOUS : le sabotage réécrit rend aussi la hauteur
+d'avant, et la porte le voit (« − » à 29,1 px, la mesure même du build d'avant). **Soit
+33 sur 33.** Au passage, avant la campagne, quatre ancres de sabotages visaient des lignes
+que la vague 2 avait changées, et l'un d'eux aurait mis un `// SABOTAGE` au milieu d'une
+ligne de code — un sabotage qui ne compile pas n'est pas un essai : corrigés avant de
+lancer. L'arbre à part est retiré (son lien `node_modules` défait d'abord).
+
+**RESTENT** : au propriétaire, les seize questions de la spec §13 tranchées par défaut
 (DÉCISIONS §28), dont la redistribution du chapitre du seuil et la figure de repli sans
 JavaScript, et ce que la vague 2 a demandé sans l'obtenir (§28, points 22 à 29).

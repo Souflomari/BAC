@@ -1587,9 +1587,12 @@ l'ordre de l'étape ; la légende de la carte fermée ramenée à trois phrases.
     plus basse de son rapport) : non — l'élève qui s'est trompé doit pouvoir relire
     ce qu'il a écarté, et les retours y renvoient. **Au propriétaire.**
 27. **La légende de la carte fermée, centrée sur neuf à douze lignes** (dessin,
-    ergonomie) : la légende de CE banc passe à trois phrases ; l'alignement à gauche
-    du paragraphe est une classe de `SceneOptIn`, commune aux treize scènes. **Passe
-    commune.**
+    ergonomie) : la légende de CE banc passe à trois phrases ; et la passe commune est
+    FAITE (même jour, après la campagne) — dans `SceneOptIn`, le paragraphe est aligné
+    à gauche dans un bloc centré de 52 caractères : une légende d'une ligne reste
+    centrée (sa boîte épouse le texte), une longue retrouve un bord fixe (le tremplin,
+    huit lignes au téléphone). Vu aux captures (1 280 et 390 px, trois scènes),
+    `scene-ergonomie` VERTE sur les treize.
 28. **Des raccourcis clavier dans l'appareil des scènes** (ergonomie : espace pour
     lancer, flèches entre étapes) : hors d'un banc, pour les treize à la fois.
     **Feuille de route.**

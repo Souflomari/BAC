@@ -2156,6 +2156,13 @@ plus (intensité, tension, masses à S4-S5) se lisent sur les étiquettes de la 
 d'AVANT : ROUGE, 36 manquements, tous dans ces familles ; puis VERTE deux fois sur le
 produit retouché (170 mesures, 32 familles), essai rouge 31/31.
 
+**La campagne de sabotages du PRODUIT (2026-09-25) : 32 sur 33, puis 33 sur 33.** Le seul
+manqué était un sabotage INERTE (ADR 0038, le verdict AMBIGU) : il défaisait deux des trois
+gestes qui avaient corrigé le « − » exilé, et le troisième — le générateur descendu de
+4 px — suffisait à le tenir en place. Réécrit pour les défaire tous, il est vu par
+`etiquettes-pres` (29,1 px, la mesure du build d'avant). Un défaut à plusieurs causes se
+rejoue par toutes ses causes.
+
 **CI :** job `telephone` (vert puis rouge) — `scene-champ` et `scenes` tiennent déjà 43
 et 42 min sur leurs 50 et 60 (run 773), `telephone` 8 sur 40.
 
