@@ -79,10 +79,13 @@ FIXES**.
 > nomme le sommet depuis lequel le mauvais rapport lit ($O$), et **aucun ne dit qu'il ne veut
 > rien dire**.
 >
-> **Treize constatations IMPORTANTES de pédagogie, douze appliquées, une réfutée (M6).**
+> **Treize constatations IMPORTANTES de pédagogie (I1–I13), TOUTES appliquées.**
 > **I1** — le plan répond avant le texte à S2 (une **longueur reportée** sur la direction de
-> $\vec{AB}$) et à S3 (le **petit carré de l'angle droit**, posé en $C$) ; chaque marque
-> expliquée une fois. **I2** — S2 ne fait plus apparier des étiquettes : elle **parie un couple
+> $\vec{AB}$) et à S3 (le **petit carré de l'angle droit**, posé en $C$ pendant que la lecture,
+> en $A$, écrit « aucune des quatre ») ; chaque marque expliquée une fois, **par les quatre
+> retours**. *Le rapport proposait des « marques de côtés égaux » à S3 ; elles répondaient au
+> pari équilatéral du premier jet, que le correctif B4 a retiré. **Le carré est la marque du
+> pari qui reste**, et il fait mieux : il répond **ailleurs que là où on lit**.* **I2** — S2 ne fait plus apparier des étiquettes : elle **parie un couple
 > de valeurs**, quatre options structurellement parallèles, et la signification arrive à la
 > révélation. **I3** — la `suite` de S2 n'envoie plus lire l'état de S3. **I4/I5/I7** — les
 > règles de vague 2 de la scène sœur sont appliquées (`HANDOFF.md:16446-16449`) : *une lecture
@@ -588,6 +591,13 @@ deux lectures décide de quoi** — et c'est ce que S2 et S3 font choisir.* **§
    prose du §4.4**, le segment R6 sur les lieux que `REVIEW:132-137` (S8) et `REVIEW:164-167`
    (D3) réclament déjà. **Sans ce segment, S4 est l'anti-motif « méthode dans la réponse »
    déplacé d'un cran, et je ne le livrerai pas ainsi.**
+   ⚠ **Et cette clause s'est ALOURDIE en vague 1 (pédagogie I7).** S4 ne parie plus qu'**un**
+   lieu (celui du module) ; **les deux autres — imaginaire pur ⟹ cercle de diamètre, réel ⟹
+   droite — ne sont plus portés par une `suite` de comptage, ils sont portés uniquement par le
+   §4.4.** *Le premier jet donnait à S4 un pari et trois idées ; il en a désormais une. **Le
+   prix : sans le §4.4, ce ne sont plus « les trois lieux » qui manquent à l'élève, ce sont deux
+   d'entre eux entièrement.*** **C'est la raison la plus forte de ne pas livrer la scène sans sa
+   prose, et le §14.6 la tient.**
 
 **Ce que le placement NE fait pas.** `cp-r6-lecture-w` reste où il est (`lesson.md:410`) et
 **ses quatre choix ne changent pas** ; `cp-ensemble-points` reste à R7 (`:423`). Le §4.6 leur
@@ -1529,8 +1539,9 @@ pas parié.
   badge, et **la lecture `w`** — la consigne la donne.*
   > **Une simplification de vague 1 :** le premier jet faisait de $\vert w\vert$ et $\arg(w)$ des
   > valeurs d'ÉNONCÉ, donc une exception au contrat « rien de la réponse avant le pari ».
-  > **Elles sont maintenant la RÉPONSE** : l'exception S2 du §7.5 **disparaît**, et le contrat
-  > redevient le cas général. *Une exception de moins à mesurer dans les deux sens.*
+  > **Elles sont maintenant la RÉPONSE** : l'exception S2 du §7.5 **rétrécit aux deux flèches et
+  > à la lecture `w`**, qui sont l'énoncé. *La moitié dangereuse de l'exception disparaît, et
+  > c'est celle qui portait les deux nombres du pari.*
 
 ### 7.3 S3 — `depuis-quel-sommet` · « Rectangle — mais depuis où ? »
 
@@ -1685,7 +1696,7 @@ aujourd'hui d'introduire sa méthode **dans son propre retour** — « *méthode
 l'anti-motif* ». Après cette livraison, la méthode est enseignée deux rungs plus tôt, **et
 l'élève l'a trouvée lui-même.** *C'est le défaut écrit que cette scène referme.*
 
-#### S1, S2 et S3 confrontées aux objets existants de R6 — la table que le premier jet n'avait PAS faite
+#### §7.6 — S1, S2 et S3 confrontées aux objets existants de R6 : la table que le premier jet n'avait PAS faite
 
 > ⚠ **Vague 1, pédagogie B4.** Le premier jet faisait cette vérification **pour S4 seulement**,
 > en citant explicitement le prix payé par la scène sœur (« *elle a payé pour avoir affirmé
@@ -1708,13 +1719,13 @@ l'arc, la lecture `nature`, la courbe du lieu, et toute lecture que la consigne 
 énoncée — **n'existe pas dans le DOM avant l'engagement**, ni dans le rendu, ni dans la phrase
 lue au lecteur d'écran.
 
-**Deux exceptions, déclarées, chacune motivée** (corollaire du manège : *une donnée de
-l'énoncé ne se peint jamais dans la couleur de la réponse*). **Le premier jet en comptait
-trois ; la reconstruction de S2 en a supprimé une** (§7.2) :
+**Trois exceptions, déclarées, chacune motivée** (corollaire du manège : *une donnée de
+l'énoncé ne se peint jamais dans la couleur de la réponse*). **Elles sont toujours trois, mais
+celle de S2 a RÉTRÉCI** : la reconstruction du pari lui a retiré sa moitié dangereuse (§7.2) :
 
 | étape | ce qui est visible AVANT le pari, en plus | pourquoi | ce que ça coûte |
 |---|---|---|---|
-| ~~**S2**~~ | ~~les valeurs $\vert w\vert$ et $\arg(w)$~~ | **EXCEPTION SUPPRIMÉE en vague 1** : $\vert w\vert$ et $\arg(w)$ sont désormais **la réponse du pari de S2**, plus son énoncé. Seule la lecture `w` est à l'ENCRE, comme énoncé | — |
+| **S2** *(exception RÉDUITE en vague 1)* | **les deux flèches** et la lecture **`w`** — à l'ENCRE | le pari porte sur ce que $w$ CONTIENT ; sans $w$ écrit et sans les deux vecteurs tracés, la consigne n'a pas d'objet, et le distracteur `valeurs-absolues` (qui se lit sur le dessin) devient inatteignable | rien : l'**arc**, **la longueur reportée**, `module-w`, `argument-w`, `longueurs` et le verdict restent absents. ⚠ **Ce que l'exception ne couvre plus : $\vert w\vert$ et $\arg(w)$ étaient donnés par la consigne du premier jet ; ils sont désormais LA RÉPONSE.** *Une exception de moins, et la plus dangereuse des trois* |
 | **S3** | les deux flèches, **l'arc en $A$ et son étiquette**, et les lectures `w`, `module-w`, `argument-w` — à l'ENCRE | le pari porte sur **où** une ligne s'allume ; ces lectures donnent les nombres **à un seul sommet**, et ne nomment aucune ligne | rien : **`nature` et le petit carré attendent**, et ils sont la réponse |
 | **S4** | **la valeur $u = 1-i$**, énoncée par la consigne, le cercle unité et les deux segments $MA$, $MB$ à l'ENCRE | le pari porte sur un **ensemble**, pas sur une valeur | rien : la **courbe**, l'**arc en $M$**, la lecture `rapport-lieu`, le contrôle `pointM` et le **balayage** restent absents |
 
@@ -2339,19 +2350,20 @@ Chaînes **interdites dans le panneau ouvert**, mesurées par la porte (§11.3, 
    *Les **retours de pari** ont le droit d'écrire un ordre de grandeur, et **les occurrences
    sont inventoriées ici, RE-RELEVÉES après la réécriture des textes en vague 1**, pour que la
    porte les cherche au bon endroit :*
-   | occurrence | où |
-   |---|---|
-   | $0{,}87$ · $50°$ | S2, retour `roles-echanges` |
-   | $30°$ | S2, retour `roles-echanges` (« l'arc en fait $30$ ») |
-   | $30°$ | S3, retour `rectangle-en-A` (« $\dfrac{\pi}{6}$, soit $30°$ ») |
-   | $3{,}46$ | S4, retour `cercle-unite` ($2\sqrt3 \approx 3{,}46$) |
-   **Quatre décimales et trois degrés, tous en position « ordre de grandeur », tous dans des
+   | occurrence | où | forme |
+   |---|---|---|
+   | $50°$ | S2, retour `roles-echanges` (« un angle de $\frac{\sqrt3}{2}$ radian fait environ $50°$ ») | **degré** |
+   | $30$ | S2, retour `roles-echanges` (« l'arc […] en fait $30$ ») | **degré implicite, en toutes lettres** |
+   | $30°$ | S3, retour `rectangle-en-A` (« $\frac{\pi}{6}$, soit $30°$ ») | **degré** |
+   | $3{,}46$ | S4, retour `cercle-unite` ($2\sqrt3 \approx 3{,}46$) | **décimale** |
+   **UNE décimale et trois degrés, tous en position « ordre de grandeur », tous dans des
    retours, aucun dans une lecture ni dans une `suite`.**
-   > *Le premier jet en inventoriait sept et deux, dont plusieurs ont disparu avec les
-   > réécritures : $3{,}46$ et $0{,}52$ vivaient dans des textes de S2 qui n'existent plus, et
-   > $3{,}73$ / $0{,}27$ dans la `suite` de S4, ramenée à une question et un geste. **Un
-   > inventaire de porte se re-relève après chaque réécriture, sans quoi il garde des fantômes
-   > et laisse passer les neufs.***
+   > *Le premier jet en inventoriait sept décimales et deux degrés ; **cinq de ces sept n'existent
+   > plus** — $0{,}87$, $3{,}46$ et $0{,}52$ vivaient dans des textes de S2 qui ont été
+   > réécrits, $3{,}73$ et $0{,}27$ dans la `suite` de S4, ramenée à une question et un geste —
+   > **et un degré est NEUF** (S3, retour `rectangle-en-A`). **Un inventaire de porte se
+   > re-relève après chaque réécriture, sans quoi il garde des fantômes et laisse passer les
+   > neufs** (ADR 0035 : vérifier le BANC avant le produit).*
    *Une occurrence de plus vit dans le `fit_caveat` du descripteur ($0{,}54$, §10.2) : **elle
    n'est pas une lecture, et la porte ne doit pas la relever** — c'est précisément pourquoi la
    sonde est bornée aux sept lectures et non au panneau entier.*
@@ -2518,7 +2530,7 @@ le facteur px/unité est lu sur **les graduations entières des deux axes**. Lan
 | **`libelles-de-cran`** *(NEUVE — vague 1, pédagogie B1)* | chaque contrôle affiche les **libellés** du §5.5, **et non ses ids** : `forme` ⟹ « Triangle 1..4 », `position` ⟹ « Placement 1..4 », `pointM` ⟹ les cinq affixes, `sommet` ⟹ $A$/$B$/$C$ | **un contrôle qui afficherait ses ids doit rougir seul** — et c'est le sabotage n° 32 : remettre « équilatéral » comme libellé de `forme` doit faire rougir `libelles-de-cran` **et** `formule-graduee` à S2 |
 | **`courbe-du-lieu`** | en `mode: lieu`, **après la révélation** : la courbe tracée passe à $\le 2$ px des crans qui lui appartiennent et à $\ge 8$ px de ceux qui ne lui appartiennent pas — médiatrice par `mediatrice`, cercle de diamètre par `cercle-1` **et** `cercle-2`, droite par `droite` ; **aucune courbe au cran `libre` avant la révélation** | une médiatrice tracée comme un cercle doit rougir ; une courbe **présente avant la révélation** aussi (`avant-pari`) ; **une courbe tracée au cran `libre` AVANT le pari** aussi |
 | **`balayage-invariants`** *(héritée, adaptée)* | **pendant** le balayage : les sept lectures affichent **« — »** et **aucun chiffre** n'apparaît dans le panneau qui n'y était pas ; les deux segments et l'arc **bougent** (mesuré aux pixels sur trois positions) ; **et $M$ reste sur la courbe à $\le 2$ px** | **après** le relâchement : les lectures redeviennent **exactement** celles d'avant, au caractère près. **Un balayage qui afficherait un décimal doit rougir ; un balayage inerte aux pixels aussi ; un balayage qui ferait sortir $M$ de la courbe aussi ; et un balayage OUVERT au cran `libre`** (`fuite-inter-etapes`) |
-| `avant-pari` | à chaque étape, avant l'engagement : **zéro** pixel d'accent (mesuré en **CHROMINANCE**) ; aucune flèche à S1 ; aucun arc **à S1 et S2** ; **aucune longueur reportée** ; **aucun petit carré** ; aucune courbe ; **aucun contrôle de l'étape** ; aucune lecture-réponse dans le DOM. **À S3 et S4 : les deux exceptions du §7.5 SONT présentes, à l'ENCRE** | après l'engagement : les flèches, l'arc, la longueur reportée, le carré, la courbe et les lectures apparaissent, et l'accent avec. **À S3, un arc en $A$ ABSENT avant le pari doit rougir aussi** — les deux exceptions sont mesurées **dans les deux sens** |
+| `avant-pari` | à chaque étape, avant l'engagement : **zéro** pixel d'accent (mesuré en **CHROMINANCE**) ; aucune flèche à S1 ; aucun arc **à S1 et S2** ; **aucune longueur reportée** ; **aucun petit carré** ; aucune courbe ; **aucun contrôle de l'étape** ; aucune lecture-réponse dans le DOM. **À S2, S3 et S4 : les trois exceptions du §7.5 SONT présentes, à l'ENCRE** | après l'engagement : les flèches, l'arc, la longueur reportée, le carré, la courbe et les lectures apparaissent, et l'accent avec. **À S2, des flèches ABSENTES avant le pari doivent rougir ; à S3, un arc en $A$ ABSENT avant le pari aussi** — les trois exceptions sont mesurées **dans les deux sens** |
 | `palette` · `quadrillage-opaque` · `etiquettes` | *(héritées de la scène sœur)* jetons `--figure-*` lus à l'exécution ; nœuds du quadrillage à la même valeur que ses lignes ($\le 2$ niveaux) ; **≤ 6 étiquettes simultanées**, aucun chevauchement, graduations tous les 2 sous 600 px. **Neuf : `etiquettes` est lancée SPÉCIFIQUEMENT sur l'état de S3 après révélation, aux deux largeurs** — c'est le voisinage le plus encombré de la scène, et le petit carré y compte comme obstacle de placement (§6.2). **Neuf : `palette` vérifie le cercle unité dans les deux sens — présent en `mode: lieu`, ABSENT en `mode: triangle`** (§5.1, pédagogie M3) | une couleur en dur, un quadrillage semi-transparent, une étiquette qui en chevauche une autre ou qui sort du cadre — **chacune seule** ; **un cercle unité tracé en `mode: triangle` doit rougir seul, et son absence en `mode: lieu` aussi** |
 | `formule-graduee` | **la table C du §7.5, étape par étape** : le panneau ne contient aucune chaîne interdite de l'étape courante — **consigne, `pari`, retours, `suite`, lectures, LIBELLÉS DE CRAN des contrôles ouverts et région vivante confondus** *(les libellés sont l'ajout de vague 1, correctif B1 : c'était la moitié non balayée)* — et contient bien celles que l'étape emploie | écrire « module » dans un retour de S1, « isocèle » dans un retour de S2, « médiatrice » dans un retour de S3, **ou remettre « équilatéral » comme libellé de cran de `forme`**, doit rougir **seule** |
 | `fuite-inter-etapes` | la porte **réécrit elle-même** la table A du §7.5 : `position` **qu'à S1** ; `forme` **qu'à S2** ; `sommet` **qu'à S3** ; `pointM` **qu'à S4** ; `balayage` **qu'à S4, après la révélation, et jamais au cran $2+4i$**. **Et les lectures, par ENSEMBLE EXACT et non par seuil** (§5.6) : S1 = {`vecteurs`, `w`} · S2 = {`w`} puis {`w`, `module-w`, `argument-w`, `longueurs`} · S3 = {`w`, `module-w`, `argument-w`} puis + {`nature`} · S4 = {} puis {`rapport-lieu`} | ouvrir `sommet` dès S2, rouvrir `position` à S2 ou à S3, faire exister `nature` à S2, ouvrir `balayage` au cran $2+4i$ — **et aussi : laisser `vecteurs` exister à S2, ou `longueurs` à S3.** *Une porte qui ne vérifierait qu'« au moins les lectures attendues » resterait verte sur une scène cumulative : elle compare des ENSEMBLES, dans les deux sens* |
@@ -2980,8 +2992,9 @@ La scène est **faite** quand, et seulement quand :
    `balayage` accepté**, **et la clé `libelles` acceptée** (§12, §15.4).
 4. La porte `scene-plan-complexe-rapport.mjs` sort **VERT** à $1\,280$ **et** à 390 px,
    **lancée trois fois** (une porte instable est pire qu'une porte absente).
-5. `--essai-rouge` : **les sabotages numérotés du §11.4 — 37 numéros, dont trois « bis » et six
-   ajoutés en vague 1 — font crier la famille annoncée, et elle seule** ; **plus les DEUX essais
+5. `--essai-rouge` : **les sabotages numérotés du §11.4 — n° 1 à 37, plus les trois « bis »
+   (5 bis, 11 bis, 24 bis), soit QUARANTE entrées dont HUIT ajoutées en vague 1 — font crier la
+   famille annoncée, et elle seule** ; **plus les DEUX essais
    NÉGATIFS** (le mot « vecteur » seul ne doit rien faire rougir ; « théorème de l'angle
    inscrit » **dans la prose de `lesson.md`** ne doit rien faire rougir non plus, alors que le
    même syntagme **dans le panneau** doit rougir). Un sabotage qui n'atteint pas la porte sort
@@ -2989,12 +3002,26 @@ La scène est **faite** quand, et seulement quand :
    et rester vert à `origine`, sans quoi il ne reproduit pas le défaut qu'il garde.
 6. **La prose du §4 est écrite, et la sous-section neuve du §4.4 (les trois lieux) est en
    place** — sans elle, S4 déplace d'un rung l'anti-motif que `REVIEW:132-137` reproche déjà au
-   corpus, et je ne la livrerai pas ainsi.
-7. **Vague 1** (bac-fidelity-critic : chaque nombre recalculé, chaque citation de cadre vérifiée
-   à la ligne ; pedagogy-critic : la rampe, les paris, les retours relus les uns contre les
-   autres **et contre ceux de la scène sœur**) **et vague 2** (captures relues à deux largeurs,
-   ergonomie au clavier, étiquettes) sont passées, et ce que chacune change est écrit **ici**,
-   pas corrigé en douce.
+   corpus, et je ne la livrerai pas ainsi. ⚠ **Cette clause s'est alourdie en vague 1**
+   (pédagogie I7) : S4 ne parie plus qu'**un** des trois lieux, **les deux autres ne sont plus
+   portés que par le §4.4**. *Et la sous-section doit contenir ses cinq points plus le
+   sixième* — **la dérivation de la lecture au sommet $M$** (point 1, pédagogie I8), **le
+   mécanisme $OM = OA = OB = \frac{AB}{2}$** (point 4, pédagogie I9), **la clause de filière**
+   (point 4, fidélité I4) **et le nom « théorème de l'angle inscrit », une fois, après le
+   mécanisme** (point 6, fidélité I5). **Une sous-section qui les omettrait n'est pas la
+   sous-section commandée.**
+6 bis. **La phrase qui FERME la recherche de S1 est écrite** (§4.3 point 3) — le descripteur n'a
+   pas de champ de réponse, et une recherche non close est un piège pour l'élève en difficulté.
+7. **Vague 1 — PASSÉE le 2026-09-25**, et ce qu'elle a changé est écrit en tête de ce document
+   et à chaque endroit où le changement agit, pas corrigé en douce ; **les deux constatations
+   réfutées le sont par écrit, avec la citation** (§15.12).
+   **Vague 2 — À FAIRE** (captures relues à deux largeurs, ergonomie au clavier, étiquettes).
+   ⚠ **Trois points à lui remettre explicitement**, parce qu'ils sont neufs ou aggravés :
+   (a) **l'encombrement de S3 après révélation** — trois points dans une boîte de
+   $4 \times 1{,}73$ unités **plus** le petit carré en $C$, aux deux largeurs (§6.2) ;
+   (b) **la lisibilité de la longueur reportée de S2** — elle doit se distinguer de la flèche
+   du dénominateur qu'elle longe (§5.6) ; (c) **les cinq libellés d'affixe du contrôle
+   `pointM`**, rendus en KaTeX dans des boutons radio, à 390 px (§12).
 
 ---
 
@@ -3024,14 +3051,26 @@ La scène est **faite** quand, et seulement quand :
    occurrences et les entrées par `grep`. *L'affirmation « la banque lit presque toujours à un
    sommet $\neq O$ » repose donc sur **un échantillon nommé**, pas sur un recensement. **Les
    trois contre-exemples que j'ai trouvés sont cités** ($\frac{b}{a}$ à `:463`,
-   $\frac{z_1}{z_2}$ en 2023, $\frac{u^n}{u^0}$ en 2024) : ce sont des lectures **au sommet
-   $O$**, et elles existent.*
+   $\frac{z_1}{z_2}$ à `:812` — **2024 N, pas 2023 : année corrigée en vague 1** —, et
+   $\frac{u^n}{u^0}$, dont je n'ai **pas** re-vérifié la session).* ⚠ **La vague 1 a par
+   ailleurs re-vérifié les sessions de tout le relevé contre les bornes des dix entrées, et en a
+   corrigé deux** (fidélité M1) : `:1062-1090` est **2024 rattrapage** (et non 2017) et `:1631`
+   est **2023 rattrapage** (et non 2025). *Deux des entrées relevées sont des **rattrapages**,
+   ce que le premier jet ne disait pas — `bank.yaml` SCOPE NOTE 3.*
 6. **Je n'ai pas vérifié les 48 états un par un.** J'ai vérifié **les douze valeurs de $w$**
    (§5.3 A, à la main, les quatre formes aux trois sommets), **l'argument d'invariance par
    placement** (§5.2 B : $r$ se simplifie, $t$ disparaît), et **les bornes de cadre point par
    point au seul placement où la borne grossière ne conclut pas** (§5.3 D, `retournee`).
    *C'est exactement le raisonnement qui avait échoué à la spec sœur ; il est valide sur un
    cadre carré, mais **c'est le test unitaire du §14.2 qui doit le prouver, pas ce document**.*
+   ⚠ **La vague 1 de fidélité a re-dérivé indépendamment toute l'arithmétique du premier jet —
+   les douze $w$, les modules et arguments, les rapports de longueurs, les quatre positions de
+   `retournee` point par point, les cinq états du mode `lieu` et les 32 valeurs d'option — et
+   n'a trouvé AUCUNE erreur.** *Ce qui a changé depuis n'est donc pas une correction de calcul,
+   mais des états et des items neufs : **les nombres de la nouvelle S3** (les trois sommets de
+   `demi-equilateral` × `retournee`) **et ceux des quatre items refaits** (§8.3) **n'ont été
+   vérifiés que par moi, une fois.*** **Ils sont la première chose que la vague 1 suivante doit
+   recalculer**, et le test unitaire du §14.2 les couvre tous sauf les items.
 7. **Je n'ai pas mesuré la fréquence de `w-sommet-ignore` chez de vrais élèves.** Je l'ai
    déclaré sur **ce que le corpus fabrique** (quatre objets sur quatre avec $z_A = 0$ ou $w$
    donné) et **sur ce que l'examen demande** (neuf formes relevées à un sommet $\neq O$).
@@ -3054,6 +3093,30 @@ La scène est **faite** quand, et seulement quand :
     quadrillage opaque. *Elles sont vraies **au sens où la spec sœur les a vérifiées et où sa
     vague 1 les a relues** ; elles ne sont pas remesurées ici. **Une citation héritée reste une
     citation à vérifier**, et c'est la faute exacte que la vague 1 de la spec sœur a punie
-    (§15.9 de ce document-là).*
+    (§15.9 de ce document-là).* ⚠ **La vague 1 de fidélité de CE document ne les a pas rouvertes
+    non plus** et l'écrit : « *il reste une citation deux fois non vérifiée* ». **Réserve
+    maintenue, et elle appartient désormais à frontend-builder, qui touche le rendu.**
+12. ⚠ **CE QUE LA VAGUE 1 A DIT ET QUE JE RÉFUTE — deux constatations, avec la preuve.**
+    *(Une constatation qu'on n'applique pas se réfute par écrit, ou elle revient.)*
+    - **Pédagogie M6 — « divergence avec la scène sœur sous `prefers-reduced-motion` ».
+      RÉFUTÉE.** Le rapport oppose le §6.1 de cette spec (« rien ne change ») au §6.1 de la spec
+      sœur (« trois positions discrètes »). **Mais la spec sœur porte, AU-DESSUS de son §6.1, un
+      bloc « Ce que la construction a changé » qui la corrige** —
+      `docs/pipeline/propositions/maths-nombres-complexes-2-scene-plan.md:26-29` : « *Sous
+      `prefers-reduced-motion`, **rien ne change** […] ; les « trois positions discrètes » du
+      §6.1 **ne sont pas construites**.* » **Cette spec est alignée sur ce qui a été LIVRÉ.**
+      *Ce que la constatation enseigne quand même, et qui est vrai : **quand deux documents se
+      contredisent à l'intérieur du même fichier, c'est le bloc de construction qui gagne, et
+      la spec sœur devrait y renvoyer depuis son §6.1.** Signalé, non corrigé ici — je ne touche
+      pas la spec sœur.*
+    - **Fidélité I3 — « la seule divergence de programme » est fausse. PARTIELLEMENT RÉFUTÉE,
+      et appliquée quand même.** `maths-sexp.yaml:328` vit sous **`coverage_notes`**, déclaré à
+      `:311`, **pas sous `programme`** ; la phrase du §1 (« la seule divergence de
+      **programme** ») était donc **littéralement exacte**. *Ce que la constatation a raison de
+      dire : elle était **trop étroite pour être honnête** — une troisième ligne `derived` du
+      même fichier parle du même partage, la REVIEW citée quatre fois la nomme (`REVIEW:114`),
+      et ce document ne l'avait pas ouverte.* **La ligne est ajoutée au §1 et au §13.2, et la
+      phrase est réécrite en « la seule divergence entre les deux lignes `programme` », suivie
+      du tableau des trois lignes.**
 
 
