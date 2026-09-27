@@ -88,7 +88,14 @@ const PORTE = process.argv.includes("--porte");
 //  le banc d'électrolyse. Aucune dette écrite : le trou qu'il ferme est MESURÉ
 //  — aucun des 24 items ni des 9 sujets ne donne une tension à employer, et la
 //  constante de Faraday est donnée partout, déterminée nulle part (spec §0.1).
-const CLIQUET = 19;
+//  Relevé à 20 le 2026-09-27 — EN RETARD, et c'est la troisième fois : la
+//  scène « l'échelle des quotients » (pc/evolution-spontanee) a été poussée
+//  sans relever ce cliquet. Personne ne l'a vu au commit ; l'essai rouge §11.129
+//  l'a vu, au premier lancement de batterie-locale : 20 → 19 tenait encore le
+//  plancher de 19, et l'essai qui garde le cliquet était redevenu aveugle. La
+//  règle écrite plus haut ne suffit pas quand on ne relit pas le fichier : c'est
+//  l'essai rouge qui la fait tenir.
+const CLIQUET = 20;
 
 const RE_EMBED = /\[\[(?:embed|geogebra|desmos|falstad|phet)[:\]]/gi;
 const parMat = new Map();

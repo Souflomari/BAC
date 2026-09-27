@@ -105,6 +105,25 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_arithmetique.solution-generale-mal-parametree",
       "mc.math.maths_arithmetique.solution-mise-a-echelle"
     ],
+    "AR-33": [
+      "mc.math.maths_arithmetique.congruence-puissance-mal-reduite",
+      "mc.math.maths_arithmetique.fermat-condition-ou-exposant"
+    ],
+    "AR-34": [
+      "mc.math.maths_arithmetique.critere-divisibilite-mal-applique",
+      "mc.math.maths_arithmetique.fermat-condition-ou-exposant"
+    ],
+    "AR-35": [
+      "mc.math.maths_arithmetique.fermat-condition-ou-exposant",
+      "mc.math.maths_arithmetique.reste-non-normalise"
+    ],
+    "AR-36": [
+      "mc.math.maths_arithmetique.fermat-condition-ou-exposant"
+    ],
+    "AR-37": [
+      "mc.math.maths_arithmetique.congruence-puissance-mal-reduite",
+      "mc.math.maths_arithmetique.fermat-condition-ou-exposant"
+    ],
     "AR-4": [
       "mc.math.maths_arithmetique.premier-vs-premiers-entre-eux"
     ],
@@ -145,6 +164,9 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "cp-r6-fermat": [
       "mc.math.maths_arithmetique.fermat-condition-ou-exposant",
       "mc.math.maths_arithmetique.prime-divise-produit"
+    ],
+    "cp-r6b-fermat-predict": [
+      "mc.math.maths_arithmetique.fermat-condition-ou-exposant"
     ]
   },
   "maths/calcul-integral": {
@@ -310,6 +332,46 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_calcul_integral.volume-carre-mal-place",
       "mc.math.maths_calcul_integral.volume-integrale-sans-pi"
     ],
+    "CI-51": [
+      "mc.math.maths_calcul_integral.constante-et-bornes",
+      "mc.math.maths_calcul_integral.facteur-constant-non-ajuste",
+      "mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u"
+    ],
+    "CI-52": [
+      "mc.math.maths_calcul_integral.facteur-constant-non-ajuste",
+      "mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee",
+      "mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2"
+    ],
+    "CI-53": [
+      "mc.math.maths_calcul_integral.facteur-constant-non-ajuste",
+      "mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee",
+      "mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u"
+    ],
+    "CI-54": [
+      "mc.math.maths_calcul_integral.facteur-constant-non-ajuste",
+      "mc.math.maths_calcul_integral.primitive-vs-derivee",
+      "mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2"
+    ],
+    "CI-55": [
+      "mc.math.maths_calcul_integral.facteur-constant-non-ajuste",
+      "mc.math.maths_calcul_integral.primitive-vs-derivee",
+      "mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2"
+    ],
+    "CI-56": [
+      "mc.math.maths_calcul_integral.constante-et-bornes",
+      "mc.math.maths_calcul_integral.facteur-constant-non-ajuste",
+      "mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2"
+    ],
+    "CI-57": [
+      "mc.math.maths_calcul_integral.constante-et-bornes",
+      "mc.math.maths_calcul_integral.linearite-abusive",
+      "mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u"
+    ],
+    "CI-58": [
+      "mc.math.maths_calcul_integral.chasles-mal-appliquee",
+      "mc.math.maths_calcul_integral.fonction-cumulee-confondue-avec-f",
+      "mc.math.maths_calcul_integral.primitive-vs-derivee"
+    ],
     "CI-6": [
       "mc.math.maths_calcul_integral.integrale-signee-vs-aire"
     ],
@@ -337,6 +399,11 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "cp-r1-primitive": [
       "mc.math.maths_calcul_integral.primitive-vs-derivee"
+    ],
+    "cp-r1-u-annule": [
+      "mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee",
+      "mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u",
+      "mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2"
     ],
     "cp-volume-disque": [
       "mc.math.maths_calcul_integral.volume-circonference-vs-disque",
@@ -562,6 +629,44 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "DERIVFCT-3": [
       "mc.math.maths_derivabilite_etude_fonctions.regle-produit-mal-appliquee"
     ],
+    "DERIVFCT-30": [
+      "mc.math.maths_derivabilite_etude_fonctions.asymptote-oblique-conclue-sans-second-calcul",
+      "mc.math.maths_derivabilite_etude_fonctions.branche-immediate-oy-ox-mal-conclue"
+    ],
+    "DERIVFCT-31": [
+      "mc.math.maths_derivabilite_etude_fonctions.branche-immediate-oy-ox-mal-conclue",
+      "mc.math.maths_derivabilite_etude_fonctions.limite-f-sur-x-confondue-avec-limite-de-f"
+    ],
+    "DERIVFCT-32": [
+      "mc.math.maths_derivabilite_etude_fonctions.asymptote-oblique-conclue-sans-second-calcul",
+      "mc.math.maths_derivabilite_etude_fonctions.limite-f-sur-x-confondue-avec-limite-de-f"
+    ],
+    "DERIVFCT-33": [
+      "mc.math.maths_derivabilite_etude_fonctions.asymptote-oblique-conclue-sans-second-calcul",
+      "mc.math.maths_derivabilite_etude_fonctions.trinome-signe-mal-lu"
+    ],
+    "DERIVFCT-34": [
+      "mc.math.maths_derivabilite_etude_fonctions.confond-valeur-et-nombre-derive",
+      "mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul"
+    ],
+    "DERIVFCT-35": [
+      "mc.math.maths_derivabilite_etude_fonctions.confond-valeur-et-nombre-derive"
+    ],
+    "DERIVFCT-36": [
+      "mc.math.maths_derivabilite_etude_fonctions.confond-valeur-et-nombre-derive",
+      "mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul"
+    ],
+    "DERIVFCT-37": [
+      "mc.math.maths_derivabilite_etude_fonctions.confond-valeur-et-nombre-derive",
+      "mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul"
+    ],
+    "DERIVFCT-38": [
+      "mc.math.maths_derivabilite_etude_fonctions.continuite-implique-derivabilite"
+    ],
+    "DERIVFCT-39": [
+      "mc.math.maths_derivabilite_etude_fonctions.branche-immediate-oy-ox-mal-conclue",
+      "mc.math.maths_derivabilite_etude_fonctions.limite-f-sur-x-confondue-avec-limite-de-f"
+    ],
     "DERIVFCT-4": [
       "mc.math.maths_derivabilite_etude_fonctions.regle-composee-mal-appliquee"
     ],
@@ -594,6 +699,10 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "cp-r4-extremum": [
       "mc.math.maths_derivabilite_etude_fonctions.derivee-nulle-suffit-extremum"
+    ],
+    "cp-r5-branche-commit": [
+      "mc.math.maths_derivabilite_etude_fonctions.asymptote-oblique-conclue-sans-second-calcul",
+      "mc.math.maths_derivabilite_etude_fonctions.limite-f-sur-x-confondue-avec-limite-de-f"
     ],
     "cp-r5-inflexion": [
       "mc.math.maths_derivabilite_etude_fonctions.criteres-inflexion-extremum-confondus"
@@ -861,6 +970,39 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_fonction_exponentielle.croissances-comparees-inversees",
       "mc.math.maths_fonction_exponentielle.inegalite-reference-erreur"
     ],
+    "EXP-32": [
+      "mc.math.maths_fonction_exponentielle.facteur-multiplicatif-oublie",
+      "mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue"
+    ],
+    "EXP-33": [
+      "mc.math.maths_fonction_exponentielle.facteur-multiplicatif-oublie",
+      "mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue"
+    ],
+    "EXP-34": [
+      "mc.math.maths_fonction_exponentielle.facteur-multiplicatif-oublie",
+      "mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue"
+    ],
+    "EXP-35": [
+      "mc.math.maths_fonction_exponentielle.facteur-multiplicatif-oublie",
+      "mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue"
+    ],
+    "EXP-36": [
+      "mc.math.maths_fonction_exponentielle.facteur-multiplicatif-oublie",
+      "mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue"
+    ],
+    "EXP-37": [
+      "mc.math.maths_fonction_exponentielle.facteur-multiplicatif-oublie",
+      "mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue"
+    ],
+    "EXP-38": [
+      "mc.math.maths_fonction_exponentielle.allure-courbe-erreur",
+      "mc.math.maths_fonction_exponentielle.facteur-multiplicatif-oublie",
+      "mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue"
+    ],
+    "EXP-39": [
+      "mc.math.maths_fonction_exponentielle.facteur-multiplicatif-oublie",
+      "mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue"
+    ],
     "EXP-4": [
       "mc.math.maths_fonction_exponentielle.derivee-exp-composee"
     ],
@@ -897,6 +1039,14 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "cp-r4-croissances": [
       "mc.math.maths_fonction_exponentielle.croissances-comparees-inversees"
+    ],
+    "cp-r4-facteur-oublie": [
+      "mc.math.maths_fonction_exponentielle.facteur-multiplicatif-oublie",
+      "mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue"
+    ],
+    "cp-r4-taux-accroissement": [
+      "mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue",
+      "mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues"
     ],
     "cp-r5-lecture-courbe": [
       "mc.math.maths_fonction_exponentielle.allure-courbe-erreur",
@@ -960,9 +1110,42 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_fonction_logarithme.domaine-neglige",
       "mc.math.maths_fonction_logarithme.produit-somme-confondus"
     ],
+    "LOG-25": [
+      "mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie",
+      "mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue"
+    ],
+    "LOG-26": [
+      "mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie",
+      "mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue"
+    ],
+    "LOG-27": [
+      "mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie",
+      "mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue"
+    ],
+    "LOG-28": [
+      "mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie",
+      "mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue"
+    ],
+    "LOG-29": [
+      "mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie",
+      "mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue"
+    ],
     "LOG-3": [
       "mc.math.maths_fonction_logarithme.produit-somme-confondus",
       "mc.math.maths_fonction_logarithme.regles-quotient-puissance"
+    ],
+    "LOG-30": [
+      "mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie",
+      "mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue"
+    ],
+    "LOG-31": [
+      "mc.math.maths_fonction_logarithme.domaine-neglige",
+      "mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie",
+      "mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue"
+    ],
+    "LOG-32": [
+      "mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie",
+      "mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue"
     ],
     "LOG-4": [
       "mc.math.maths_fonction_logarithme.derivee-de-ln-u"
@@ -1002,6 +1185,14 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "cp-r0-predict": [
       "mc.math.maths_fonction_logarithme.produit-somme-confondus",
       "mc.math.maths_fonction_logarithme.regles-quotient-puissance"
+    ],
+    "cp-r4-facteur-oublie": [
+      "mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie",
+      "mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue"
+    ],
+    "cp-r4-taux-accroissement": [
+      "mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue",
+      "mc.math.maths_fonction_logarithme.limites-de-ln"
     ]
   },
   "maths/geometrie-espace": {
@@ -1246,10 +1437,50 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur",
       "mc.math.maths_geometrie_espace.oubli-racine"
     ],
+    "GE-58": [
+      "mc.math.maths_geometrie_espace.centre-cercle-confondu-omega",
+      "mc.math.maths_geometrie_espace.normal-vs-directeur",
+      "mc.math.maths_geometrie_espace.signe-arithmetique"
+    ],
+    "GE-59": [
+      "mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur",
+      "mc.math.maths_geometrie_espace.oubli-racine",
+      "mc.math.maths_geometrie_espace.rayon-cercle-confondu-R"
+    ],
     "GE-6": [
       "mc.math.maths_geometrie_espace.distance-denominateur-somme",
       "mc.math.maths_geometrie_espace.distance-oubli-division",
       "mc.math.maths_geometrie_espace.oubli-valeur-absolue"
+    ],
+    "GE-60": [
+      "mc.math.maths_geometrie_espace.centre-cercle-confondu-omega",
+      "mc.math.maths_geometrie_espace.distance-numerateur-mal-forme",
+      "mc.math.maths_geometrie_espace.signe-arithmetique"
+    ],
+    "GE-61": [
+      "mc.math.maths_geometrie_espace.centre-cercle-confondu-omega",
+      "mc.math.maths_geometrie_espace.signe-arithmetique"
+    ],
+    "GE-62": [
+      "mc.math.maths_geometrie_espace.centre-cercle-confondu-omega",
+      "mc.math.maths_geometrie_espace.distance-denominateur-somme",
+      "mc.math.maths_geometrie_espace.signe-arithmetique"
+    ],
+    "GE-63": [
+      "mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur",
+      "mc.math.maths_geometrie_espace.oubli-racine",
+      "mc.math.maths_geometrie_espace.rayon-cercle-confondu-R"
+    ],
+    "GE-64": [
+      "mc.math.maths_geometrie_espace.centre-cercle-confondu-omega",
+      "mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur",
+      "mc.math.maths_geometrie_espace.rayon-cercle-confondu-R",
+      "mc.math.maths_geometrie_espace.signe-arithmetique"
+    ],
+    "GE-65": [
+      "mc.math.maths_geometrie_espace.appartenance-t-non-simultane",
+      "mc.math.maths_geometrie_espace.directeur-vs-point",
+      "mc.math.maths_geometrie_espace.signe-arithmetique"
     ],
     "GE-7": [
       "mc.math.maths_geometrie_espace.perspective-fiable",
@@ -1282,6 +1513,11 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_geometrie_espace.distance-denominateur-somme",
       "mc.math.maths_geometrie_espace.distance-oubli-division",
       "mc.math.maths_geometrie_espace.oubli-valeur-absolue"
+    ],
+    "cp-r9-calculer-h": [
+      "mc.math.maths_geometrie_espace.centre-cercle-confondu-omega",
+      "mc.math.maths_geometrie_espace.raisonnement-spatial-naif",
+      "mc.math.maths_geometrie_espace.rayon-cercle-confondu-R"
     ],
     "cp-r9-intersection": [
       "mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur",
@@ -1543,9 +1779,79 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_complexes_algebrique.conjugue-mauvais-axe",
       "mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference"
     ],
+    "NBCOMPLEX-34": [
+      "mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution",
+      "mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle",
+      "mc.math.maths_complexes_algebrique.signe-parties-perdu"
+    ],
+    "NBCOMPLEX-35": [
+      "mc.math.maths_complexes_algebrique.confond-re-im",
+      "mc.math.maths_complexes_algebrique.conjugue-mauvais-axe",
+      "mc.math.maths_complexes_algebrique.signe-parties-perdu"
+    ],
+    "NBCOMPLEX-36": [
+      "mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution",
+      "mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle",
+      "mc.math.maths_complexes_algebrique.signe-parties-perdu"
+    ],
+    "NBCOMPLEX-37": [
+      "mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution",
+      "mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle",
+      "mc.math.maths_complexes_algebrique.signe-parties-perdu"
+    ],
+    "NBCOMPLEX-38": [
+      "mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose",
+      "mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels",
+      "mc.math.maths_complexes_algebrique.signe-parties-perdu"
+    ],
+    "NBCOMPLEX-39": [
+      "mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose",
+      "mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels",
+      "mc.math.maths_complexes_algebrique.signe-parties-perdu"
+    ],
     "NBCOMPLEX-4": [
       "mc.math.maths_complexes_algebrique.i2-egale-plus-un",
       "mc.math.maths_complexes_algebrique.quotient-conjugue-incomplet"
+    ],
+    "NBCOMPLEX-40": [
+      "mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose",
+      "mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels",
+      "mc.math.maths_complexes_algebrique.signe-parties-perdu"
+    ],
+    "NBCOMPLEX-41": [
+      "mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose",
+      "mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels",
+      "mc.math.maths_complexes_algebrique.signe-parties-perdu"
+    ],
+    "NBCOMPLEX-42": [
+      "mc.math.maths_complexes_algebrique.signe-parties-perdu",
+      "mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie",
+      "mc.math.maths_complexes_algebrique.viete-somme-produit-inverses"
+    ],
+    "NBCOMPLEX-43": [
+      "mc.math.maths_complexes_algebrique.signe-parties-perdu",
+      "mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie",
+      "mc.math.maths_complexes_algebrique.viete-somme-produit-inverses"
+    ],
+    "NBCOMPLEX-44": [
+      "mc.math.maths_complexes_algebrique.signe-parties-perdu",
+      "mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie",
+      "mc.math.maths_complexes_algebrique.viete-somme-produit-inverses"
+    ],
+    "NBCOMPLEX-45": [
+      "mc.math.maths_complexes_algebrique.signe-parties-perdu",
+      "mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie",
+      "mc.math.maths_complexes_algebrique.viete-somme-produit-inverses"
+    ],
+    "NBCOMPLEX-46": [
+      "mc.math.maths_complexes_algebrique.signe-parties-perdu",
+      "mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie",
+      "mc.math.maths_complexes_algebrique.viete-somme-produit-inverses"
+    ],
+    "NBCOMPLEX-47": [
+      "mc.math.maths_complexes_algebrique.signe-parties-perdu",
+      "mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie",
+      "mc.math.maths_complexes_algebrique.viete-somme-produit-inverses"
     ],
     "NBCOMPLEX-5": [
       "mc.math.maths_complexes_algebrique.module-lineaire",
@@ -1582,6 +1888,10 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_complexes_algebrique.module-argument-vs-parties",
       "mc.math.maths_complexes_algebrique.module-lineaire",
       "mc.math.maths_complexes_algebrique.module-oubli-racine"
+    ],
+    "cp-r4b-delta-negatif": [
+      "mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution",
+      "mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle"
     ],
     "cp-r5-difference": [
       "mc.math.maths_complexes_algebrique.distance-affixe-brute",
@@ -1823,6 +2133,63 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection",
       "mc.math.sma_prob_conditionnelle.transpose-conditionnel"
     ],
+    "PC-M11-1": [
+      "mc.math.sma_prob_conditionnelle.esperance-associations-inversees",
+      "mc.math.sma_prob_conditionnelle.esperance-sans-ponderation",
+      "mc.math.sma_prob_conditionnelle.esperance-terme-omis"
+    ],
+    "PC-M11-2": [
+      "mc.math.sma_prob_conditionnelle.esperance-associations-inversees",
+      "mc.math.sma_prob_conditionnelle.esperance-sans-ponderation",
+      "mc.math.sma_prob_conditionnelle.esperance-terme-omis"
+    ],
+    "PC-M11-3": [
+      "mc.math.sma_prob_conditionnelle.esperance-associations-inversees",
+      "mc.math.sma_prob_conditionnelle.esperance-sans-ponderation",
+      "mc.math.sma_prob_conditionnelle.esperance-terme-omis"
+    ],
+    "PC-M12-1": [
+      "mc.math.sma_prob_conditionnelle.binomiale-exposants-inverses",
+      "mc.math.sma_prob_conditionnelle.binomiale-oubli-coefficient",
+      "mc.math.sma_prob_conditionnelle.binomiale-oubli-echec"
+    ],
+    "PC-M12-2": [
+      "mc.math.sma_prob_conditionnelle.binomiale-exposants-inverses",
+      "mc.math.sma_prob_conditionnelle.binomiale-oubli-coefficient",
+      "mc.math.sma_prob_conditionnelle.binomiale-oubli-echec"
+    ],
+    "PC-M12-3": [
+      "mc.math.sma_prob_conditionnelle.binomiale-exposants-inverses",
+      "mc.math.sma_prob_conditionnelle.binomiale-oubli-coefficient",
+      "mc.math.sma_prob_conditionnelle.binomiale-oubli-echec"
+    ],
+    "PC-M13-1": [
+      "mc.math.sma_prob_conditionnelle.binomiale-condition-erronee",
+      "mc.math.sma_prob_conditionnelle.binomiale-hors-cadre"
+    ],
+    "PC-M13-2": [
+      "mc.math.sma_prob_conditionnelle.binomiale-condition-erronee",
+      "mc.math.sma_prob_conditionnelle.binomiale-hors-cadre"
+    ],
+    "PC-M13-3": [
+      "mc.math.sma_prob_conditionnelle.binomiale-condition-erronee",
+      "mc.math.sma_prob_conditionnelle.binomiale-hors-cadre"
+    ],
+    "PC-M14-1": [
+      "mc.math.sma_prob_conditionnelle.binomiale-au-moins-un-confondu-p",
+      "mc.math.sma_prob_conditionnelle.binomiale-au-moins-un-np-confondu",
+      "mc.math.sma_prob_conditionnelle.binomiale-complement-echec"
+    ],
+    "PC-M14-2": [
+      "mc.math.sma_prob_conditionnelle.binomiale-au-moins-un-confondu-p",
+      "mc.math.sma_prob_conditionnelle.binomiale-au-moins-un-np-confondu",
+      "mc.math.sma_prob_conditionnelle.binomiale-complement-echec"
+    ],
+    "PC-M14-3": [
+      "mc.math.sma_prob_conditionnelle.binomiale-au-moins-un-confondu-p",
+      "mc.math.sma_prob_conditionnelle.binomiale-au-moins-un-np-confondu",
+      "mc.math.sma_prob_conditionnelle.binomiale-complement-echec"
+    ],
     "PC-M2-1": [
       "mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection"
     ],
@@ -1896,6 +2263,21 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.sma_prob_conditionnelle.arbre-additionne-branche",
       "mc.math.sma_prob_conditionnelle.rebours-mauvais-denominateur",
       "mc.math.sma_prob_conditionnelle.transpose-conditionnel"
+    ],
+    "PC-M9-1": [
+      "mc.math.sma_prob_conditionnelle.va-chemins-non-rassembles",
+      "mc.math.sma_prob_conditionnelle.va-valeur-confondue",
+      "mc.math.sma_prob_conditionnelle.va-valeurs-equiprobables"
+    ],
+    "PC-M9-2": [
+      "mc.math.sma_prob_conditionnelle.va-chemins-non-rassembles",
+      "mc.math.sma_prob_conditionnelle.va-valeur-confondue",
+      "mc.math.sma_prob_conditionnelle.va-valeurs-equiprobables"
+    ],
+    "PC-M9-3": [
+      "mc.math.sma_prob_conditionnelle.va-chemins-non-rassembles",
+      "mc.math.sma_prob_conditionnelle.va-valeur-confondue",
+      "mc.math.sma_prob_conditionnelle.va-valeurs-equiprobables"
     ],
     "cp-bac-dependance": [
       "mc.math.sma_prob_conditionnelle.arbre-additionne-branche",
@@ -1992,9 +2374,47 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.structures_algebriques.loi-modulaire-mal-calculee",
       "mc.math.structures_algebriques.neutre-vs-symetrique"
     ],
+    "SA-27": [
+      "mc.math.structures_algebriques.axiome-oublie",
+      "mc.math.structures_algebriques.generalisation-hative"
+    ],
+    "SA-28": [
+      "mc.math.structures_algebriques.axiome-oublie",
+      "mc.math.structures_algebriques.generalisation-hative",
+      "mc.math.structures_algebriques.groupe-implique-commutatif"
+    ],
+    "SA-29": [
+      "mc.math.structures_algebriques.axiome-oublie",
+      "mc.math.structures_algebriques.generalisation-hative",
+      "mc.math.structures_algebriques.groupe-implique-commutatif"
+    ],
     "SA-3": [
       "mc.math.structures_algebriques.axiome-oublie",
       "mc.math.structures_algebriques.cloture-non-verifiee"
+    ],
+    "SA-30": [
+      "mc.math.structures_algebriques.neutre-non-transporte",
+      "mc.math.structures_algebriques.neutre-vs-symetrique"
+    ],
+    "SA-31": [
+      "mc.math.structures_algebriques.generalisation-hative",
+      "mc.math.structures_algebriques.neutre-non-transporte",
+      "mc.math.structures_algebriques.neutre-vs-symetrique"
+    ],
+    "SA-32": [
+      "mc.math.structures_algebriques.generalisation-hative",
+      "mc.math.structures_algebriques.neutre-non-transporte",
+      "mc.math.structures_algebriques.neutre-vs-symetrique"
+    ],
+    "SA-33": [
+      "mc.math.structures_algebriques.axiome-oublie",
+      "mc.math.structures_algebriques.groupe-anneau",
+      "mc.math.structures_algebriques.neutre-non-transporte"
+    ],
+    "SA-34": [
+      "mc.math.structures_algebriques.groupe-anneau",
+      "mc.math.structures_algebriques.neutre-non-transporte",
+      "mc.math.structures_algebriques.neutre-vs-symetrique"
     ],
     "SA-4": [
       "mc.math.structures_algebriques.axiome-oublie"
@@ -2037,6 +2457,11 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.structures_algebriques.groupe-anneau"
     ],
     "cp-r7-morphisme": [
+      "mc.math.structures_algebriques.axiome-oublie",
+      "mc.math.structures_algebriques.generalisation-hative",
+      "mc.math.structures_algebriques.groupe-implique-commutatif"
+    ],
+    "cp-r7-transport": [
       "mc.math.structures_algebriques.axiome-oublie",
       "mc.math.structures_algebriques.generalisation-hative",
       "mc.math.structures_algebriques.groupe-implique-commutatif"
@@ -2156,13 +2581,81 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.sma_suites_numeriques.majorant-atteint-ou-limite",
       "mc.math.sma_suites_numeriques.tendance-implique-limite"
     ],
+    "SUITES-39": [
+      "mc.math.sma_suites_numeriques.contraction-k-pas-strict",
+      "mc.math.sma_suites_numeriques.iaf-intervalle-instable",
+      "mc.math.sma_suites_numeriques.point-fixe-prouve-convergence"
+    ],
     "SUITES-4": [
       "mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique"
+    ],
+    "SUITES-40": [
+      "mc.math.sma_suites_numeriques.iaf-intervalle-instable",
+      "mc.math.sma_suites_numeriques.majorant-atteint-ou-limite"
+    ],
+    "SUITES-41": [
+      "mc.math.sma_suites_numeriques.contraction-k-pas-strict",
+      "mc.math.sma_suites_numeriques.iaf-intervalle-instable",
+      "mc.math.sma_suites_numeriques.limite-liee-terme-initial"
+    ],
+    "SUITES-42": [
+      "mc.math.sma_suites_numeriques.arith-geom-confondues",
+      "mc.math.sma_suites_numeriques.limite-liee-terme-initial",
+      "mc.math.sma_suites_numeriques.ordre-notation-recurrence"
+    ],
+    "SUITES-43": [
+      "mc.math.sma_suites_numeriques.contraction-k-pas-strict",
+      "mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique",
+      "mc.math.sma_suites_numeriques.majorant-atteint-ou-limite"
+    ],
+    "SUITES-44": [
+      "mc.math.sma_suites_numeriques.arith-geom-confondues",
+      "mc.math.sma_suites_numeriques.contraction-k-pas-strict",
+      "mc.math.sma_suites_numeriques.ordre-notation-recurrence"
+    ],
+    "SUITES-45": [
+      "mc.math.sma_suites_numeriques.contraction-k-pas-strict",
+      "mc.math.sma_suites_numeriques.majorant-atteint-ou-limite",
+      "mc.math.sma_suites_numeriques.tvi-sans-stricte-monotonie"
+    ],
+    "SUITES-46": [
+      "mc.math.sma_suites_numeriques.comparaison-xn-sans-evaluation",
+      "mc.math.sma_suites_numeriques.preuve-par-termes-calcules"
+    ],
+    "SUITES-47": [
+      "mc.math.sma_suites_numeriques.comparaison-xn-sans-evaluation",
+      "mc.math.sma_suites_numeriques.tvi-sans-stricte-monotonie"
+    ],
+    "SUITES-48": [
+      "mc.math.sma_suites_numeriques.monotone-hypothese-partielle",
+      "mc.math.sma_suites_numeriques.tendance-implique-limite",
+      "mc.math.sma_suites_numeriques.tvi-sans-stricte-monotonie"
+    ],
+    "SUITES-49": [
+      "mc.math.sma_suites_numeriques.comparaison-xn-sans-evaluation",
+      "mc.math.sma_suites_numeriques.tvi-sans-stricte-monotonie"
     ],
     "SUITES-5": [
       "mc.math.sma_suites_numeriques.limite-liee-terme-initial",
       "mc.math.sma_suites_numeriques.majorant-atteint-ou-limite",
       "mc.math.sma_suites_numeriques.point-fixe-prouve-convergence"
+    ],
+    "SUITES-50": [
+      "mc.math.sma_suites_numeriques.arith-geom-confondues",
+      "mc.math.sma_suites_numeriques.point-fixe-prouve-convergence"
+    ],
+    "SUITES-51": [
+      "mc.math.sma_suites_numeriques.arith-geom-confondues",
+      "mc.math.sma_suites_numeriques.limite-liee-terme-initial"
+    ],
+    "SUITES-52": [
+      "mc.math.sma_suites_numeriques.preuve-par-termes-calcules",
+      "mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine"
+    ],
+    "SUITES-53": [
+      "mc.math.sma_suites_numeriques.arith-geom-confondues",
+      "mc.math.sma_suites_numeriques.limite-liee-terme-initial",
+      "mc.math.sma_suites_numeriques.ordre-notation-recurrence"
     ],
     "SUITES-6": [
       "mc.math.sma_suites_numeriques.adjacentes-condition-incomplete"
@@ -2188,6 +2681,12 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.sma_suites_numeriques.arith-geom-confondues",
       "mc.math.sma_suites_numeriques.majorant-atteint-ou-limite",
       "mc.math.sma_suites_numeriques.tendance-implique-limite"
+    ],
+    "cp-r8b-k-non-strict": [
+      "mc.math.sma_suites_numeriques.contraction-k-pas-strict"
+    ],
+    "cp-r8c-ordre-decroissant": [
+      "mc.math.sma_suites_numeriques.comparaison-xn-sans-evaluation"
     ],
     "cp-recurrence-deux-etapes": [
       "mc.math.sma_suites_numeriques.preuve-par-termes-calcules",
@@ -3627,6 +4126,26 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "ES-3": [
       "mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur"
+    ],
+    "ES-30": [
+      "mc.chemistry.pc_evolution_spontanee.critere-inverse",
+      "mc.chemistry.pc_evolution_spontanee.seuil-un-au-lieu-de-k",
+      "mc.chemistry.pc_evolution_spontanee.solide-dans-qr"
+    ],
+    "ES-31": [
+      "mc.chemistry.pc_evolution_spontanee.critere-inverse",
+      "mc.chemistry.pc_evolution_spontanee.reactivite-metal-fixe",
+      "mc.chemistry.pc_evolution_spontanee.seuil-un-au-lieu-de-k"
+    ],
+    "ES-32": [
+      "mc.chemistry.pc_evolution_spontanee.confond-qr-et-k",
+      "mc.chemistry.pc_evolution_spontanee.pas-de-critere-predictif",
+      "mc.chemistry.pc_evolution_spontanee.seuil-un-au-lieu-de-k"
+    ],
+    "ES-33": [
+      "mc.chemistry.pc_evolution_spontanee.critere-inverse",
+      "mc.chemistry.pc_evolution_spontanee.reactivite-metal-fixe",
+      "mc.chemistry.pc_evolution_spontanee.seuil-un-au-lieu-de-k"
     ],
     "ES-4": [
       "mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur"
