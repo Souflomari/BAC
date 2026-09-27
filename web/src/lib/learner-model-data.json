@@ -390,9 +390,10 @@
     "mc.physics.pc_dipole_rl.courant-saute-instantane": 5,
     "mc.physics.pc_dipole_rl.energie-lineaire-en-i": 4,
     "mc.physics.pc_dipole_rl.imax-etablissement-mal-compris": 11,
+    "mc.physics.pc_dipole_rl.isolement-grandeur-non-controle": 3,
     "mc.physics.pc_dipole_rl.lecture-tau-erronee": 4,
     "mc.physics.pc_dipole_rl.oubli-resistance-interne": 6,
-    "mc.physics.pc_dipole_rl.tau-mauvais-groupement": 8
+    "mc.physics.pc_dipole_rl.tau-mauvais-groupement": 5
   },
   "pc/electrolyse": {
     "mc.physics.pc_electrolyse.bilan-matiere-electrodes": 3,
@@ -523,14 +524,15 @@
   },
   "pc/piles": {
     "mc.physics.pc_piles.anode-cathode-polarite": 8,
-    "mc.physics.pc_piles.calcul-quantite-electricite": 6,
+    "mc.physics.pc_piles.calcul-quantite-electricite": 7,
     "mc.physics.pc_piles.courant-sens-electrons": 5,
     "mc.physics.pc_piles.expression-quotient-reaction": 4,
     "mc.physics.pc_piles.fem-mal-comprise": 3,
     "mc.physics.pc_piles.pile-nature-mal-comprise": 3,
-    "mc.physics.pc_piles.pile-source-illimitee": 3,
+    "mc.physics.pc_piles.pile-source-illimitee": 4,
     "mc.physics.pc_piles.qr-evolution-equilibre": 3,
-    "mc.physics.pc_piles.role-constituants": 5
+    "mc.physics.pc_piles.reactif-limitant-mal-identifie": 3,
+    "mc.physics.pc_piles.role-constituants": 4
   },
   "pc/propagation-onde-lumineuse": {
     "mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille": 4,
@@ -544,11 +546,15 @@
   },
   "pc/rc-charge": {
     "mc.physics.pc_rc_charge.charge-a-debit-constant": 9,
+    "mc.physics.pc_rc_charge.charge-et-decharge-memes-lois": 3,
     "mc.physics.pc_rc_charge.condensateur-conduit-en-permanent": 9,
     "mc.physics.pc_rc_charge.courant-part-de-zero": 4,
-    "mc.physics.pc_rc_charge.energie-lineaire-en-u": 3,
+    "mc.physics.pc_rc_charge.ed-transformee-sans-verification": 3,
+    "mc.physics.pc_rc_charge.energie-lineaire-en-u": 4,
+    "mc.physics.pc_rc_charge.lecture-graphique-mal-exploitee": 4,
+    "mc.physics.pc_rc_charge.prefixe-unite-non-converti": 3,
     "mc.physics.pc_rc_charge.tau-instant-d-arret": 9,
-    "mc.physics.pc_rc_charge.tau-mauvais-groupement": 17,
+    "mc.physics.pc_rc_charge.tau-mauvais-groupement": 12,
     "mc.physics.pc_rc_charge.uc-depasse-E": 8,
     "mc.physics.pc_rc_charge.uc-saute-instantanement": 7
   },
@@ -576,15 +582,17 @@
     "AB-TIT-3": 4
   },
   "pc/rlc-serie": {
-    "mc.physics.rlc_serie.T0-depend-de-R": 10,
+    "mc.physics.rlc_serie.T0-depend-de-R": 11,
     "mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee": 7,
-    "mc.physics.rlc_serie.confond-oscillation-avec-decharge-rc": 3,
-    "mc.physics.rlc_serie.confusion-roles-C-L-stockage": 14,
-    "mc.physics.rlc_serie.energie-consommee-non-conservee": 10,
+    "mc.physics.rlc_serie.confond-oscillation-avec-decharge-rc": 4,
+    "mc.physics.rlc_serie.confusion-roles-C-L-stockage": 13,
+    "mc.physics.rlc_serie.energie-consommee-non-conservee": 9,
     "mc.physics.rlc_serie.entretien-est-regime-force": 6,
-    "mc.physics.rlc_serie.plus-de-R-oscille-plus-vite": 9,
+    "mc.physics.rlc_serie.phase-initiale-mal-determinee": 3,
+    "mc.physics.rlc_serie.plus-de-R-oscille-plus-vite": 8,
     "mc.physics.rlc_serie.pseudo-periode-egale-periode-propre": 6,
-    "mc.physics.rlc_serie.resistance-entretient-oscillations": 8
+    "mc.physics.rlc_serie.resistance-entretient-oscillations": 9,
+    "mc.physics.rlc_serie.sans-solution-rien-de-calculable": 3
   },
   "pc/rotation-axe-fixe": {
     "mc.physics.pc_rotation_axe_fixe.cinematique-angulaire-derivees-confondues": 3,

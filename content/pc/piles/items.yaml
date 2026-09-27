@@ -47,6 +47,11 @@ misconceptions:
     description: "L'élève croit que le pont salin transporte les électrons, qu'une demi-pile n'a pas besoin d'électrode solide, ou plonge l'électrode dans la mauvaise solution."
     contradicts_principle: "Le fil transporte les électrons ; le pont salin maintient l'électroneutralité (ions inertes), sans mélanger les réactifs. Chaque demi-pile associe une électrode solide (forme réduite) à sa propre solution ; l'électrode échange les électrons avec le circuit."
 
+  - id: mc.physics.pc_piles.reactif-limitant-mal-identifie
+    label: "« Le réactif limitant, c'est celui qu'on voit » (la lame, le plus gros, ou les deux additionnés)"
+    description: "L'élève calcule la durée de vie ou la quantité d'électricité à partir du réactif en EXCÈS (souvent l'électrode massive, la plus visible), ou additionne les deux réservoirs, au lieu de comparer les deux quantités d'électrons disponibles et de retenir la plus petite."
+    contradicts_principle: "Une pile s'arrête au PREMIER réactif épuisé. Le geste est une comparaison, toujours la même : pour chaque réactif, on calcule les moles d'électrons qu'il peut échanger — $n(e^-) = 2\\,n(Zn)$ à l'anode, $n(e^-) = 2\\,n(Cu^{2+})$ ou $n(e^-) = n(Ag^{+})$ à la cathode — et le PLUS PETIT des deux fixe $Q_{max} = n(e^-)_{max}F$. Les deux réservoirs ne s'additionnent jamais : ils ne se consomment pas l'un après l'autre, ils se consomment ensemble."
+
 items:
 
   # ── confondre anode/cathode et borne +/- (canonique) ────────────────────────
@@ -1649,7 +1654,7 @@ items:
       - id: C
         text: "$\\Delta t_{max} \\approx 67\\ \\text{h}$"
         correct: false
-        misconception: mc.physics.pc_piles.role-constituants
+        misconception: mc.physics.pc_piles.reactif-limitant-mal-identifie
         feedback: >
           Ce calcul fait durer la pile autant que sa lame de cuivre, en
           comptant un électron par atome. Mais la lame ne limite pas ici : les
@@ -1660,7 +1665,7 @@ items:
       - id: D
         text: "$\\Delta t_{max} \\approx 134\\ \\text{h}$"
         correct: false
-        misconception: mc.physics.pc_piles.role-constituants
+        misconception: mc.physics.pc_piles.reactif-limitant-mal-identifie
         feedback: >
           C'est la durée qu'autoriserait la lame de cuivre,
           $n(e^-) = 2\times5{,}0\times10^{-2}\ \text{mol}$. Mais une pile
@@ -1786,28 +1791,177 @@ items:
       Dans le circuit extérieur, le courant va de $X$ vers $Y$ ; les électrons
       circulent en sens inverse, de $Y$ vers $X$.
 
+  # ── réactif limitant mal identifié : vague C re-tag ──────────────────────
+  # docs/audits/dette-examen/vague-c-retag.md, 2026-09-27. PILES-26 C/D
+  # were moved off role-constituants onto reactif-limitant-mal-identifie
+  # (a real electrode/pont-salin/pile confusion is not what those two
+  # distractors test — the student compared the wrong reservoir, not the
+  # role of a constituent). This id had only one honest carrier (PILES-26)
+  # in the existing bank: PILES-29 and PILES-30 bring it to the floor.
+  # Own numbers throughout (checked against bank.yaml).
+
+  - id: PILES-29
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Une pile zinc–cuivre est constituée d'une lame de zinc de masse
+      $m = 0{,}65\ \text{g}$ ($M(Zn) = 65\ \text{g/mol}$), plongée dans une
+      solution de sulfate de zinc, et d'un compartiment cuivre contenant
+      $200\ \text{mL}$ d'une solution de sulfate de cuivre à
+      $[Cu^{2+}]_i = 0{,}50\ \text{mol/L}$. Elle débite un courant constant
+      $I = 100\ \text{mA}$. On donne $F \approx 9{,}65\times10^{4}\ \text{C/mol}$.
+      Quel réactif limite le fonctionnement de la pile, et quelle est sa
+      durée maximale de fonctionnement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les ions $Cu^{2+}$ limitent : $\\Delta t_{max} \\approx 54\\ \\text{h}$"
+        correct: false
+        misconception: mc.physics.pc_piles.reactif-limitant-mal-identifie
+        feedback: >
+          Le cuivre n'est pas le réservoir le plus petit ici : les ions
+          $Cu^{2+}$ peuvent encore céder $0{,}20\ \text{mol}$ d'électrons,
+          contre seulement $2{,}0\times10^{-2}\ \text{mol}$ pour le zinc.
+          C'est le zinc, en quantité bien plus faible malgré les
+          apparences, qui s'épuise en premier.
+      - id: B
+        text: "Le zinc limite : $\\Delta t_{max} \\approx 5{,}4\\ \\text{h}$"
+        correct: true
+      - id: C
+        text: "Le zinc limite : $\\Delta t_{max} \\approx 2{,}7\\ \\text{h}$"
+        correct: false
+        misconception: mc.physics.pc_piles.calcul-quantite-electricite
+        feedback: >
+          Le zinc est bien le réactif limitant, mais le facteur
+          stœchiométrique a été oublié : $Zn \to Zn^{2+}+2e^-$ libère DEUX
+          électrons par atome, pas un. $n(e^-)_{max} = 2\,n(Zn) =
+          2{,}0\times10^{-2}\ \text{mol}$, pas $1{,}0\times10^{-2}\
+          \text{mol}$.
+      - id: D
+        text: "Les deux réactifs ensemble : $\\Delta t_{max} \\approx 59\\ \\text{h}$"
+        correct: false
+        misconception: mc.physics.pc_piles.reactif-limitant-mal-identifie
+        feedback: >
+          Les deux réservoirs d'électrons ne s'additionnent jamais : ils se
+          consomment ENSEMBLE, au même rythme, et la pile s'arrête au
+          premier épuisé. Ici c'est le zinc, avec $2{,}0\times10^{-2}\
+          \text{mol}$ d'électrons disponibles contre $0{,}20\ \text{mol}$
+          côté cuivre.
+    correct_feedback: >
+      $n(Zn) = 0{,}65/65 = 1{,}0\times10^{-2}\ \text{mol}$, donc
+      $n(e^-)_{max}=2{,}0\times10^{-2}\ \text{mol}$ côté zinc ;
+      $n(Cu^{2+})=0{,}50\times0{,}200=0{,}10\ \text{mol}$, donc
+      $n(e^-)_{max}=0{,}20\ \text{mol}$ côté cuivre. Le zinc, réservoir
+      bien plus petit, limite : $Q_{max}=2{,}0\times10^{-2}\times9{,}65
+      \times10^{4}\approx1{,}93\times10^{3}\ \text{C}$,
+      $\Delta t_{max}=Q_{max}/I\approx1{,}93\times10^{4}\ \text{s}\approx
+      5{,}4\ \text{h}$.
+    solution: |
+      Réservoir d'électrons côté zinc (anode, $Zn \to Zn^{2+}+2e^-$) :
+      $n(Zn) = m/M = 0{,}65/65 = 1{,}0\times10^{-2}\ \text{mol}$, donc
+      $n(e^-)_{max,Zn} = 2\times1{,}0\times10^{-2} = 2{,}0\times10^{-2}\
+      \text{mol}$.
+
+      Réservoir d'électrons côté cuivre (cathode, $Cu^{2+}+2e^-\to Cu$) :
+      $n(Cu^{2+}) = 0{,}50\times0{,}200 = 0{,}10\ \text{mol}$, donc
+      $n(e^-)_{max,Cu} = 2\times0{,}10 = 0{,}20\ \text{mol}$.
+
+      Le plus petit des deux réservoirs limite : $2{,}0\times10^{-2}\
+      \text{mol} < 0{,}20\ \text{mol}$, c'est le ZINC qui s'épuise en
+      premier — malgré une lame qui, à l'œil, ne semble pas le réactif
+      « faible ».
+
+      $Q_{max} = n(e^-)_{max}\,F = 2{,}0\times10^{-2}\times9{,}65\times10^{4}
+      \approx 1{,}93\times10^{3}\ \text{C}$.
+      $\Delta t_{max} = Q_{max}/I = 1{,}93\times10^{3}/0{,}100 \approx
+      1{,}93\times10^{4}\ \text{s} \approx 5{,}4\ \text{h}$.
+
+  - id: PILES-30
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_piles
+    tags: []
+    stem: >
+      Un élève regarde une pile cuivre–argent et conclut : « la lame de
+      cuivre est massive, il en restera encore longtemps — donc la pile
+      durera longtemps ». Que répondre ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui : la durée d'une pile est fixée par la masse de sa lame de cuivre, qui s'use pendant le fonctionnement."
+        correct: false
+        misconception: mc.physics.pc_piles.reactif-limitant-mal-identifie
+        feedback: >
+          La lame de cuivre n'est qu'un des deux réservoirs. Côté argent, le
+          réactif consommé est l'ion $Ag^{+}$ de la solution : s'il est rare,
+          il s'épuise bien avant la lame, et la pile s'arrête avec une lame de
+          cuivre presque intacte.
+      - id: B
+        text: "Oui, si l'autre lame est grosse elle aussi : les deux lames fixent ensemble la durée de la pile."
+        correct: false
+        misconception: mc.physics.pc_piles.reactif-limitant-mal-identifie
+        feedback: >
+          Côté argent, ce n'est pas la lame qui s'use — elle grossit, l'argent
+          s'y dépose. Le réactif consommé est l'ion $Ag^{+}$ en solution. Et
+          les deux réservoirs ne s'additionnent pas : le plus petit fixe la
+          durée.
+      - id: C
+        text: "Oui : une pile branchée continue de débiter tant qu'on ne la débranche pas du circuit."
+        correct: false
+        misconception: mc.physics.pc_piles.pile-source-illimitee
+        feedback: >
+          Une pile s'use en fonctionnant : chaque électron débité consomme un
+          peu de ses réactifs. Elle s'arrête quand l'un d'eux est épuisé,
+          qu'elle soit encore branchée ou non.
+      - id: D
+        text: "Pas sans comparer : $2n(Cu)$ côté cuivre, $n(Ag^{+})$ côté solution ; le plus petit fixe la durée."
+        correct: true
+    correct_feedback: >
+      Comparer, ne pas peser à l'œil : on calcule $n(e^-)$ disponible de
+      chaque côté (ici $2n(Cu)$ contre $n(Ag^{+})$) et le plus petit
+      réservoir — souvent la solution, même diluée en apparence — fixe la
+      durée de la pile.
+    solution: |
+      L'intuition « plus c'est gros, plus ça dure » ne fonctionne pas ici :
+      ce qui compte n'est pas la MASSE de l'électrode, mais la quantité
+      d'ÉLECTRONS que chaque réactif peut échanger.
+      Côté cuivre (oxydé, $Cu \to Cu^{2+}+2e^-$) : $n(e^-)_{max} = 2\,n(Cu)$.
+      Côté argent (réduit, $Ag^{+}+e^- \to Ag$) : $n(e^-)_{max} = n(Ag^{+})$.
+      La pile s'arrête au PREMIER de ces deux réservoirs à s'épuiser — le
+      plus petit des deux, pas leur somme, et pas nécessairement celui qui
+      a l'air le plus « gros » à l'œil : une lame massive de métal en excès
+      n'empêche pas la solution, souvent bien plus diluée, de s'épuiser la
+      première.
+
 coverage_summary:
   per_misconception:
     mc.physics.pc_piles.anode-cathode-polarite: 8
     # PILES-1, PILES-2, PILES-16, PILES-17, PILES-18, PILES-22, PILES-27, PILES-28
     mc.physics.pc_piles.courant-sens-electrons: 5
     # PILES-3, PILES-4, PILES-17, PILES-22, PILES-28
-    mc.physics.pc_piles.pile-source-illimitee: 3
-    # PILES-5, PILES-6, PILES-24
+    mc.physics.pc_piles.pile-source-illimitee: 4
+    # PILES-5, PILES-6, PILES-24, +PILES-30 (choice C)
     mc.physics.pc_piles.qr-evolution-equilibre: 3
     # PILES-6, PILES-14, PILES-23
-    mc.physics.pc_piles.calcul-quantite-electricite: 6
-    # PILES-5, PILES-21, PILES-23, PILES-25, PILES-26, PILES-27
+    mc.physics.pc_piles.calcul-quantite-electricite: 7
+    # PILES-5, PILES-21, PILES-23, PILES-25, PILES-26, PILES-27, +PILES-29 (choice C)
     mc.physics.pc_piles.expression-quotient-reaction: 4
     # PILES-13, PILES-14, PILES-15, PILES-22
     mc.physics.pc_piles.fem-mal-comprise: 3
     # PILES-18, PILES-19, PILES-20
     mc.physics.pc_piles.pile-nature-mal-comprise: 3
     # PILES-7, PILES-8, PILES-9
-    mc.physics.pc_piles.role-constituants: 5
-    # PILES-7, PILES-10, PILES-11, PILES-12, PILES-26
-  total_items: 28
-  floor_met: true   # all 9 misconceptions >= 3 items (minimum reached is 3)
+    mc.physics.pc_piles.role-constituants: 4
+    # PILES-7, PILES-10, PILES-11, PILES-12
+    # (PILES-26 choices C/D moved to reactif-limitant-mal-identifie — see below)
+    mc.physics.pc_piles.reactif-limitant-mal-identifie: 3
+    # PILES-26 (choices C, D), +PILES-29 (choices A, D), +PILES-30 (choices A, B)
+  total_items: 30
+  floor_met: true   # all 10 misconceptions >= 3 items (minimum reached is 3,
+    # shared by qr-evolution-equilibre, fem-mal-comprise, pile-nature-mal-
+    # comprise, and the id new to this pass)
   ramp_coverage:
     # From each item's own `rung:` field.
     R0: 3   # PILES-7, PILES-8, PILES-9
@@ -1816,8 +1970,8 @@ coverage_summary:
     R3: 4   # PILES-1, PILES-2, PILES-16, PILES-28
     R4: 3   # PILES-3, PILES-4, PILES-17
     R5: 3   # PILES-18, PILES-19, PILES-20
-    R6: 6   # PILES-5, PILES-6, PILES-21, PILES-25, PILES-26, PILES-27
-    R7: 3   # PILES-22, PILES-23, PILES-24
+    R6: 7   # PILES-5, PILES-6, PILES-21, PILES-25, PILES-26, PILES-27, +PILES-29
+    R7: 4   # PILES-22, PILES-23, PILES-24, +PILES-30
   note: >
     Legacy end-bank (24 items, PILES-1..24) tagged per-distractor during the
     summit-conversion ride-along. The inventory was consolidated to 9
@@ -1827,3 +1981,27 @@ coverage_summary:
     universelle variants all map to fem-mal-comprise; the pont-salin/électrode/
     disposition variants to role-constituants). No counts are faked; each
     listed item genuinely carries the tag on at least one distractor.
+
+    2026-09-27 re-tag (vague 1 pédagogie, docs/audits/dette-examen/vague-c-retag.md):
+    PILES-26 choices C and D moved off role-constituants onto a new,
+    honest id, reactif-limitant-mal-identifie — the student in both cases
+    compares the wrong reservoir (or none at all), not the role of the pont
+    salin/électrode/fil that role-constituants actually names. PILES-29 and
+    PILES-30 (own numbers: 0,65 g Zn / 200 mL / 0,50 mol/L Cu2+ / 100 mA;
+    then a numbers-free conceptual item) bring the new id to the floor in
+    this same commit, per the house rule that a declared id and the items
+    bringing it to >=3 travel together. pile-source-illimitee and
+    calcul-quantite-electricite each incidentally gain one item (PILES-30
+    choice C, PILES-29 choice C) without needing it — both were already at
+    or above the floor. No existing id drops below 3; role-constituants,
+    the only one this pass reduces, goes 5 -> 4.
+
+    Also delegated here, per the ledger's finding (misconception-ledger.md
+    §7): PILES-28 tests reading an ammeter's COM-borne sign convention
+    (an affichage négatif means the current enters by COM) that `lesson.md`
+    never stages directly — only the at-rest voltmeter reading (R5) is
+    taught. The delegation is judged acceptable because PILES-28's stem
+    GIVES the instrumental convention in plain language; the item tests the
+    already-taught current-direction/polarity model (R5) applied to an
+    unfamiliar instrumental dressing, which is exactly what the ramp's top
+    rungs are for (VISION L76-82) — not an untaught prerequisite.

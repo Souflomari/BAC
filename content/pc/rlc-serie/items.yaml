@@ -47,6 +47,16 @@ misconceptions:
     description: "L'élève applique le modèle de décharge exponentielle du condensateur (chapitre RC) au circuit LC/RLC, sans tenir compte du rôle de la bobine qui renvoie l'énergie de l'autre côté et fait osciller $u_C$."
     contradicts_principle: "Connectée à une bobine, la tension $u_C$ ne décroît pas de façon monotone vers 0 : la bobine s'oppose à la chute du courant et restitue l'énergie, ce qui fait remonter $u_C$ dans l'autre sens. En régime périodique ou pseudo-périodique, $u_C(t)$ oscille ; elle ne tend vers 0 sans osciller qu'en régime apériodique (R très grande), pas par défaut."
 
+  - id: mc.physics.rlc_serie.phase-initiale-mal-determinee
+    label: "« $\\cos\\varphi$ donne $\\varphi$ » : on s'arrête à $\\pm\\varphi$, ou on choisit la branche au hasard"
+    description: "L'élève détermine la phase initiale à partir de la seule valeur initiale ($i(0)$ ou $u_C(0)$), sans utiliser la seconde condition — le SIGNE de la dérivée à $t=0$ : soit il laisse le résultat ambigu ($\\pm\\varphi$), soit il tranche du mauvais côté, soit il réclame $R$ pour conclure."
+    contradicts_principle: "Une sinusoïde a DEUX constantes à fixer, donc il faut DEUX conditions initiales. $\\cos\\varphi = i(0)/I_m$ laisse deux branches ; c'est le signe de $\\frac{di}{dt}(0) = -I_m\\omega_0\\sin\\varphi$ qui fixe le signe de $\\sin\\varphi$ et lève l'ambiguïté. Le geste est le même que pour l'oscillateur mécanique. $R$ n'entre ni dans l'une ni dans l'autre condition : en régime idéal, il est négligé par construction."
+
+  - id: mc.physics.rlc_serie.sans-solution-rien-de-calculable
+    label: "« On n'a pas résolu l'équation amortie, donc on ne peut rien calculer » (sauf aux maxima)"
+    description: "L'élève prend la LIMITE du programme (en régime amorti, on établit l'équation différentielle sans la résoudre) pour une interdiction de calculer : il refuse d'exploiter une lecture d'oscillogramme à un instant quelconque, ou ne s'autorise que les instants remarquables où $i = 0$."
+    contradicts_principle: "Ne pas connaître $q(t)$ n'enlève rien aux relations INSTANTANÉES, qui sont vraies à chaque instant sans aucune solution : $i = u_R/R$ (loi d'Ohm), $q = Cu_C$, $E_t = \\frac{1}{2}Cu_C^2 + \\frac{1}{2}Li^2$, et $\\frac{dE_t}{dt} = -Ri^2$. L'astuce « $i=0$ à un maximum de $u_C$ » est une commodité, pas une condition : à un instant quelconque, on lit $u_C$ et $u_R$ sur les deux voies, on en déduit $i$, et le bilan se ferme."
+
 items:
 
   # ══════════════════════════════════════════════════════════════
@@ -1992,7 +2002,7 @@ items:
       - id: C
         text: "Il faut attendre un maximum de $u_C$, où $i = 0$, pour calculer $E_t$"
         correct: false
-        misconception: mc.physics.rlc_serie.energie-consommee-non-conservee
+        misconception: mc.physics.rlc_serie.sans-solution-rien-de-calculable
         also_reveals: []
         feedback: |
           Le bilan énergétique instantané ne dépend pas d'une
@@ -2000,13 +2010,9 @@ items:
           directement à l'instant $t$, ce qui suffit pour calculer $i(t)$
           puis les deux énergies avec précision.
       - id: D
-        # M6 reuse : la même confusion de frontière (« établir sans
-        # résoudre ») étendue, à tort, jusqu'à interdire les relations
-        # instantanées d'une lecture expérimentale — id le plus proche de
-        # l'inventaire, pas une redite littérale de sa description.
         text: "Sans la solution $q(t)$ du régime amorti, $i(t)$ reste inconnu à cet instant"
         correct: false
-        misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
+        misconception: mc.physics.rlc_serie.sans-solution-rien-de-calculable
         also_reveals: []
         feedback: |
           La relation $i = u_R/R$ (loi d'Ohm) reste valable à tout instant,
@@ -2172,15 +2178,12 @@ items:
         text: "$\\varphi = +\\dfrac{\\pi}{3}$"
         correct: true
       - id: B
-        # M7 reuse : même famille que la confusion u_C/i en opposition de
-        # phase (§1 M7), appliquée ici à i et sa dérivée plutôt qu'à u_C
-        # et i — id le plus proche de l'inventaire pour cette
-        # manifestation.
         text: "$\\varphi = \\pm\\dfrac{\\pi}{3}$"
         correct: false
-        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        misconception: mc.physics.rlc_serie.phase-initiale-mal-determinee
         also_reveals: []
         feedback: |
+          Modèle détecté : une seule condition initiale suffirait.
           Le signe de $\dfrac{di}{dt}(0)$ porte une information distincte
           de $i(0)$ : il fixe le signe de $\sin\varphi$, donc lève
           l'ambiguïté entre les deux valeurs de $\varphi$ qui partagent le
@@ -2198,19 +2201,17 @@ items:
           entièrement à partir de $i(0)$ et du signe de $\dfrac{di}{dt}(0)$.
           $R$ reste étranger à ces deux conditions.
       - id: D
-        # M3 reuse : lit un trait ordinaire de l'oscillation idéale (i
-        # décroissant à un instant du cycle) comme la signature d'un
-        # amortissement dû à R, alors que R est négligeable ici par
-        # construction — même famille que « R agit sur le rythme ».
         text: "$\\varphi = -\\dfrac{\\pi}{3}$"
         correct: false
-        misconception: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
-        also_reveals: [mc.physics.rlc_serie.resistance-entretient-oscillations]
+        misconception: mc.physics.rlc_serie.phase-initiale-mal-determinee
+        also_reveals: []
         feedback: |
-          Le circuit est idéal ($R\approx0$) : un courant qui décroît à un
-          instant donné fait partie de l'oscillation normale, pas d'un
-          amortissement. Le signe de $\varphi$ vient de la condition
-          initiale, pas d'un effet de $R$.
+          Modèle détecté : la branche choisie sans la seconde condition.
+          $\cos\varphi = 0{,}50$ laisse bien deux valeurs, $+\pi/3$ et
+          $-\pi/3$ ; c'est le signe de $\dfrac{di}{dt}(0)$ qui tranche.
+          Avec $\varphi = -\pi/3$, $\sin\varphi < 0$, donc
+          $\dfrac{di}{dt}(0) = -I_m\omega_0\sin\varphi > 0$ : le courant
+          CROÎTRAIT à $t=0$, ce que l'énoncé exclut.
     correct_feedback: |
       $\cos\varphi=0{,}50 \Rightarrow \varphi=\pm\pi/3$. Le signe de
       $\dfrac{di}{dt}(0)<0$ exige $\sin\varphi>0$, donc $\varphi=+\pi/3$
@@ -2226,101 +2227,376 @@ items:
       Seul $\varphi=+\pi/3$ est compatible avec $i(0)=0{,}25\,\text{A}$
       et un courant décroissant à $t=0$.
 
+  # ══════════════════════════════════════════════════════════════
+  # WAVE-4 ADDITIONS — vague C re-tag (docs/audits/dette-examen/vague-c-retag.md,
+  # 2026-09-27). Two new misconception ids (phase-initiale-mal-determinee,
+  # sans-solution-rien-de-calculable) reach the ≥3-item floor with these
+  # four items — RLC-M7-6 and RLC-M7-5 alone were not enough (1 item each).
+  # Own numbers throughout, checked against bank.yaml and against the
+  # neighbouring items named in each stem.
+  # ══════════════════════════════════════════════════════════════
+
+  - id: RLC-M9-1
+    rung: "R2"
+    difficulty_level: 2
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Circuit LC idéal, $i(t) = I_m\cos\!\left(\dfrac{2\pi t}{T_0}
+      +\varphi\right)$. Un élève écrit : $\cos\varphi = i(0)/I_m =
+      0{,}80$, donc $\varphi = \pm0{,}64\,\text{rad}$ — « on ne peut pas
+      choisir entre les deux ». Que lui manque-t-il pour trancher ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La valeur de $T_0$ : elle permettrait, à elle seule, de trancher entre les deux phases possibles."
+        correct: false
+        misconception: mc.physics.rlc_serie.phase-initiale-mal-determinee
+        also_reveals: []
+        feedback: |
+          $T_0$ ne fixe que le rythme de l'oscillation ($\omega_0$), pas
+          sa phase à l'origine. Il faut une SECONDE condition initiale,
+          indépendante de $T_0$, pour trancher entre les deux branches.
+      - id: B
+        text: "Rien : les deux valeurs de $\\varphi$ resteraient valables, à parts égales, sans qu'on tranche."
+        correct: false
+        misconception: mc.physics.rlc_serie.phase-initiale-mal-determinee
+        also_reveals: []
+        feedback: |
+          Une sinusoïde a deux constantes à fixer ($I_m$, $\varphi$) donc
+          exige deux conditions initiales. $i(0)$ n'en donne qu'une ; la
+          seconde existe (le signe de $\dfrac{di}{dt}(0)$) et permet de
+          choisir une branche unique.
+      - id: C
+        text: "Le signe de $\\dfrac{di}{dt}(0)$ : il fixe celui de $\\sin\\varphi$, et tranche entre les deux phases possibles."
+        correct: true
+      - id: D
+        text: "La valeur de $R$ : elle permettrait, à elle seule, de trancher entre les deux phases possibles."
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        also_reveals: []
+        feedback: |
+          Le circuit est ici idéal ($R\approx0$) : ni $\cos\varphi=i(0)/I_m$
+          ni le signe de $\dfrac{di}{dt}(0)$ ne font intervenir $R$. Elle
+          reste étrangère aux deux conditions qui fixent $\varphi$.
+    correct_feedback: |
+      Une sinusoïde a deux constantes libres ($I_m$ donné, reste
+      $\varphi$) : il faut deux conditions initiales. $\cos\varphi=
+      i(0)/I_m$ n'en donne qu'une, à un signe près ; c'est
+      $\dfrac{di}{dt}(0)=-I_m\omega_0\sin\varphi$ qui fixe l'autre et
+      tranche entre $+0{,}64$ et $-0{,}64$ rad.
+    solution: |
+      $\cos\varphi = i(0)/I_m = 0{,}80$ donne $\varphi \approx
+      \pm0{,}64\,\text{rad}$ ($\pm37°$) : deux branches compatibles avec
+      la seule valeur de $i(0)$.
+      Une expression $i(t)=I_m\cos(\omega_0 t+\varphi)$, avec $\omega_0$
+      fixé par $L$ et $C$, a deux constantes à déterminer ($I_m$ et
+      $\varphi$) : il faut donc deux conditions initiales, pas une seule.
+      La seconde condition est le signe de
+      $\dfrac{di}{dt}(0)=-I_m\omega_0\sin\varphi$ : il fixe le signe de
+      $\sin\varphi$, donc tranche entre $+0{,}64$ et $-0{,}64\,\text{rad}$.
+      $R$ n'entre dans aucune des deux conditions : en régime idéal, il
+      est négligé par construction.
+
+  - id: RLC-M9-2
+    rung: "R2"
+    difficulty_level: 3
+    habilete: résolution
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      $u_C(t) = U_m\cos\!\left(\dfrac{2\pi t}{T_0}+\varphi\right)$, avec
+      $U_m = 8{,}0\,\text{V}$. À $t=0$, on mesure $u_C(0) =
+      -4{,}0\,\text{V}$, et $u_C$ est en train de CROÎTRE
+      ($\dfrac{du_C}{dt}(0) > 0$). Quelle est la valeur de $\varphi$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\varphi = -\\dfrac{2\\pi}{3}$, la branche pour laquelle le signe de $\\sin\\varphi$ rend $u_C$ croissante à $t=0$."
+        correct: true
+      - id: B
+        text: "$\\varphi = +\\dfrac{2\\pi}{3}$, l'autre branche, tout aussi compatible avec $\\cos\\varphi = -0{,}50$."
+        correct: false
+        misconception: mc.physics.rlc_serie.phase-initiale-mal-determinee
+        also_reveals: []
+        feedback: |
+          Le signe de $\dfrac{du_C}{dt}(0)$ est ce qui distingue les deux
+          branches : ici il impose $\sin\varphi<0$, donc $\varphi=-2\pi/3$,
+          pas $+2\pi/3$ (qui donnerait $u_C$ décroissante à $t=0$).
+      - id: C
+        text: "$\\varphi = \\pm\\dfrac{2\\pi}{3}$ : les deux branches restent compatibles avec $\\cos\\varphi = -0{,}50$, sans trancher."
+        correct: false
+        misconception: mc.physics.rlc_serie.phase-initiale-mal-determinee
+        also_reveals: []
+        feedback: |
+          $\cos\varphi=-0{,}50$ ne suffit pas à choisir seul : c'est le
+          signe de $\dfrac{du_C}{dt}(0)$, donné par l'énoncé ($u_C$
+          croît), qui tranche entre les deux branches.
+      - id: D
+        text: "Une tension en décharge reste positive : cette valeur négative de $u_C$ signale une mesure fautive, pas une oscillation."
+        correct: false
+        misconception: mc.physics.rlc_serie.confond-oscillation-avec-decharge-rc
+        also_reveals: []
+        feedback: |
+          Rien n'interdit à $u_C$ d'être négative dans une oscillation LC
+          : le condensateur se charge alternativement dans les deux sens.
+          Une décharge RC (chapitre précédent) ne change jamais de signe
+          — mais ce n'est pas le régime ici : la donnée est cohérente.
+    correct_feedback: |
+      $\cos\varphi=u_C(0)/U_m=-0{,}50 \Rightarrow \varphi=\pm2\pi/3$. Le
+      signe de $\dfrac{du_C}{dt}(0)=-U_m\omega_0\sin\varphi>0$ (donné :
+      $u_C$ croît) impose $\sin\varphi<0$, donc $\varphi=-2\pi/3$.
+    solution: |
+      $\cos\varphi = u_C(0)/U_m = -4{,}0/8{,}0 = -0{,}50 \Rightarrow
+      \varphi = \pm2\pi/3$ (soit $\pm120°$) : deux branches compatibles
+      avec la seule valeur de $u_C(0)$.
+      $\dfrac{du_C}{dt}(0) = -U_m\omega_0\sin\varphi$. L'énoncé précise
+      que $u_C$ croît à $t=0$, donc $\dfrac{du_C}{dt}(0) > 0$, donc
+      $\sin\varphi < 0$.
+      Pour $\varphi = -2\pi/3$ : $\sin(-120°) \approx -0{,}866 < 0$ ✓.
+      Pour $\varphi = +2\pi/3$ : $\sin(120°) \approx +0{,}866 > 0$ ✗.
+      Seul $\varphi = -2\pi/3$ est compatible avec les deux données de
+      l'énoncé.
+
+  - id: RLC-M10-1
+    rung: "R5"
+    difficulty_level: 3
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      En régime amorti on établit $L\ddot{q} + R\dot{q} + \dfrac{q}{C} =
+      0$ et on s'arrête là : on ne dispose pas de $q(t)$. Sur un
+      oscillogramme, à un instant $t$ qui n'est ni un maximum ni un
+      passage par zéro, de quoi dispose-t-on pour calculer l'énergie
+      totale $E_t(t)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Rien : sans la solution $q(t)$ du régime amorti, $i(t)$ et donc $E_t(t)$ restent inaccessibles à cet instant."
+        correct: false
+        misconception: mc.physics.rlc_serie.sans-solution-rien-de-calculable
+        also_reveals: []
+        feedback: |
+          Les relations INSTANTANÉES ($i=u_R/R$, $q=Cu_C$) ne dépendent
+          d'aucune solution de l'équation différentielle : elles sont
+          vraies à chaque instant, y compris en régime amorti. Ne pas
+          avoir résolu l'équation n'empêche pas de les utiliser.
+      - id: B
+        text: "Des relations instantanées, qui ne dépendent pas d'une solution : $i=u_R/R$, $q=Cu_C$, puis $E_t=\\frac12Cu_C^2+\\frac12Li^2$."
+        correct: true
+      - id: C
+        text: "Seulement des maxima de $u_C$, où $i=0$ : à tout autre instant du cycle, le bilan énergétique reste hors de portée."
+        correct: false
+        misconception: mc.physics.rlc_serie.sans-solution-rien-de-calculable
+        also_reveals: []
+        feedback: |
+          L'astuce « $i=0$ à un maximum » est une commodité, pas une
+          condition : à un instant quelconque, $i$ se lit tout aussi bien
+          via $u_R/R$. Le bilan se ferme à n'importe quel instant, pas
+          seulement aux maxima.
+      - id: D
+        text: "De la solution $q(t)=Q_{max}\\cos(2\\pi t/T_0+\\varphi)$, la seule forme utilisable malgré la présence de la résistance $R$."
+        correct: false
+        misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
+        also_reveals: []
+        feedback: |
+          Le cosinus idéal ne vérifie l'équation amortie que si $R=0$ :
+          substitué dans $L\ddot q+R\dot q+q/C=0$, il laisse un reste
+          $R\dot q\neq0$. En régime amorti on établit l'équation et on
+          s'arrête là — on ne dispose pas de cette forme close.
+    correct_feedback: |
+      Pas besoin de $q(t)$ : $i=u_R/R$ (loi d'Ohm) et $q=Cu_C$ sont
+      vraies à tout instant, amorti ou non. On en tire
+      $E_t=\frac12Cu_C^2+\frac12Li^2$ à l'instant choisi, sans avoir
+      résolu l'équation différentielle.
+    solution: |
+      Ce qu'interdit le régime amorti, c'est de RÉSOUDRE $L\ddot q +
+      R\dot q + q/C = 0$ pour obtenir $q(t)$ — pas d'utiliser les
+      relations instantanées, qui sont vraies indépendamment de toute
+      solution : $i(t) = u_R(t)/R$ (loi d'Ohm, lue sur la voie $u_R$ de
+      l'oscilloscope) et $q(t) = Cu_C(t)$ (définition de la capacité).
+      On en déduit $E_t(t) = \frac12Cu_C(t)^2 + \frac12Li(t)^2$, à
+      l'instant choisi, y compris un instant qui n'est ni un maximum ni
+      un passage par zéro.
+      L'astuce « $i=0$ à un maximum » est une commodité pour ces
+      instants particuliers, pas une condition nécessaire au calcul.
+
+  - id: RLC-M10-2
+    rung: "R6"
+    difficulty_level: 3
+    habilete: application_experimentale
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie, document_experimental]
+    stem: |
+      Sur l'oscillogramme d'un circuit RLC série ($R=25\,\Omega$,
+      $L=0{,}20\,\text{H}$, $C=4{,}0\,\mu\text{F}$), on relève, à un
+      instant $t$ du régime pseudo-périodique qui n'est ni un maximum ni
+      un passage par zéro, $u_R(t) = 1{,}5\,\text{V}$. Quelle est la
+      valeur de $\dfrac{dE_t}{dt}$ à cet instant ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{dE_t}{dt}$ reste indéterminée ici : sans la solution $q(t)$ du régime amorti, $i(t)$ n'est pas accessible."
+        correct: false
+        misconception: mc.physics.rlc_serie.sans-solution-rien-de-calculable
+        also_reveals: []
+        feedback: |
+          $i(t)=u_R(t)/R$ (loi d'Ohm) est une relation instantanée, vraie
+          sans avoir résolu l'équation amortie : $i=1{,}5/25=0{,}060\,
+          \text{A}$, calculable directement à cet instant.
+      - id: B
+        text: "$\\dfrac{dE_t}{dt} = 0$ ici : l'énergie totale ne varie qu'entre deux maxima consécutifs de $u_C$."
+        correct: false
+        misconception: mc.physics.rlc_serie.sans-solution-rien-de-calculable
+        also_reveals: []
+        feedback: |
+          La dissipation Joule est continue, pas ponctuelle :
+          $\dfrac{dE_t}{dt}=-Ri^2$ est non nulle à chaque instant où
+          $i\neq0$, pas seulement mesurable entre deux maxima repérés sur
+          l'oscillogramme.
+      - id: C
+        text: "$\\dfrac{dE_t}{dt} = +9{,}0\\times10^{-2}\\,\\text{W}$ : la résistance injecterait de l'énergie dans le circuit à cet instant."
+        correct: false
+        misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
+        also_reveals: []
+        feedback: |
+          Le signe est inversé : $R$ ne fournit pas d'énergie, elle en
+          prélève ($P_{Joule}=Ri^2\geq0$, toujours perdue en chaleur).
+          $\dfrac{dE_t}{dt}=-Ri^2$, pas $+Ri^2$.
+      - id: D
+        text: "$\\dfrac{dE_t}{dt} = -9{,}0\\times10^{-2}\\,\\text{W}$ : la résistance prélève de l'énergie au circuit à cet instant."
+        correct: true
+    correct_feedback: |
+      $i(t)=u_R(t)/R=1{,}5/25=0{,}060\,\text{A}$.
+      $\dfrac{dE_t}{dt}=-Ri^2=-25\times(0{,}060)^2=-25\times3{,}6\times
+      10^{-3}=-9{,}0\times10^{-2}\,\text{W}$ : l'énergie décroît, dissipée
+      dans $R$.
+    solution: |
+      $i(t) = u_R(t)/R = 1{,}5/25 = 0{,}060\,\text{A}$ (loi d'Ohm,
+      valable à tout instant, y compris en régime amorti).
+      $\dfrac{dE_t}{dt} = -Ri(t)^2 = -25\times(0{,}060)^2 =
+      -25\times3{,}6\times10^{-3} = -9{,}0\times10^{-2}\,\text{W}$.
+      Le signe négatif traduit la dissipation Joule : l'énergie totale
+      décroît à cet instant, comme à tout instant où $i\neq0$ — ni
+      seulement entre deux maxima (B), ni de façon incalculable sans
+      $q(t)$ (A), ni avec le signe inversé (C, qui ferait de $R$ une
+      source d'énergie).
+
 coverage_summary:
   per_misconception:
-    # Recomputed WAVE-3: item-level counts (an item counts once per
-    # misconception if ANY of its distractors carries that misconception
-    # as its PRIMARY tag; also_reveals/dual-tag co-attributions are not
-    # counted here — see dual_tagged_distractors below). WAVE-3 pays the
-    # exam debt of docs/audits/dette-examen/pc-2.md §7 (findings B1–B4):
-    # 5 new items (RLC-M2-4, RLC-M7-5, RLC-M2-5, RLC-M6-4, RLC-M7-6), each
-    # with 3 distractors, none introducing a new misconception id — every
-    # distractor maps to one of the 9 ids already in this inventory.
-    mc.physics.rlc_serie.resistance-entretient-oscillations: 8
-    # M1-1, M1-2, M1-3, M8-2, M1-4, RLC-R0-1, RLC-R0-3, +RLC-M6-4 (choice B)
-    mc.physics.rlc_serie.energie-consommee-non-conservee: 10
+    # Recomputed 2026-09-27 (vague 1 pédagogie re-tag,
+    # docs/audits/dette-examen/vague-c-retag.md). Counting convention
+    # UNCHANGED from WAVE-3 (this file never had item-level
+    # `primary_misconception`, so it was already counting the way the porte
+    # does): an item counts once per misconception if ANY of its
+    # distractors carries that misconception as its own `misconception:`
+    # field; `also_reveals` dual-tag co-attributions are not counted here
+    # — see dual_tagged_distractors below. Four distractors across two
+    # items (RLC-M7-5 C/D, RLC-M7-6 B/D) moved off three existing ids onto
+    # two new, honest ones (phase-initiale-mal-determinee,
+    # sans-solution-rien-de-calculable): RLC-M7-6 B/D were never really
+    # about C/L role confusion or R controlling the rate — the student had
+    # simply not used the second initial condition. RLC-M7-5 C/D were never
+    # really about energy being consumed or the ideal closed form — the
+    # student believed the "establish, don't solve" limit meant nothing
+    # could be computed. Four new items (RLC-M9-1, RLC-M9-2, RLC-M10-1,
+    # RLC-M10-2) bring both new ids to the floor in this same commit.
+    mc.physics.rlc_serie.resistance-entretient-oscillations: 9
+    # M1-1, M1-2, M1-3, M8-2, M1-4, RLC-R0-1, RLC-R0-3, RLC-M6-4 (choice B),
+    # +RLC-M10-2 (choice C)
+    mc.physics.rlc_serie.energie-consommee-non-conservee: 9
     # M2-1, M2-2, M2-3, M7-3, RLC-R0-1, RLC-R8-3, RLC-R9-2,
-    # +RLC-M2-4 (choice B), +RLC-M7-5 (choice C), +RLC-M2-5 (choice C)
-    mc.physics.rlc_serie.plus-de-R-oscille-plus-vite: 9
-    # M1-1, M1-3, M3-1, M3-2, M3-3, RLC-M8-4, RLC-R8-2, RLC-R9-1,
-    # +RLC-M7-6 (choice D)
-    mc.physics.rlc_serie.T0-depend-de-R: 10
+    # RLC-M2-4 (choice B), RLC-M2-5 (choice C)
+    # (RLC-M7-5 choice C moved to sans-solution-rien-de-calculable — see below)
+    mc.physics.rlc_serie.plus-de-R-oscille-plus-vite: 8
+    # M1-1, M1-3, M3-1, M3-2, M3-3, RLC-M8-4, RLC-R8-2, RLC-R9-1
+    # (RLC-M7-6 choice D moved to phase-initiale-mal-determinee — see below)
+    mc.physics.rlc_serie.T0-depend-de-R: 11
     # M3-1, M4-1, M4-2, M4-3, M5-3, M4-4, R8-1, RLC-R8-2, RLC-R9-1,
-    # +RLC-M7-6 (choice C). (RLC-M2-5 choice D was a prose refusal tagged
-    # here; wave 1 made it the value E_C — a confusion of roles.)
+    # RLC-M7-6 (choice C, unchanged — its principle, "R doesn't govern T0
+    # or the initial conditions," is exactly what this distractor violates),
+    # +RLC-M9-1 (choice D)
     mc.physics.rlc_serie.pseudo-periode-egale-periode-propre: 6
-    # M5-1, M5-2, M5-3, M6-3, RLC-R8-2, RLC-R9-2  (no WAVE-3 primary credit;
-    # RLC-M2-4 choice D dual-tags this id via also_reveals — see below,
-    # not counted as primary per the counting rule stated above)
+    # M5-1, M5-2, M5-3, M6-3, RLC-R8-2, RLC-R9-2  (unchanged; RLC-M2-4
+    # choice D dual-tags this id via also_reveals — see below, not counted
+    # as primary per the counting rule stated above)
     mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee: 7
     # M6-1, M6-2, M6-3, R8-1,
-    # +RLC-M2-4 (choice D), +RLC-M7-5 (choice D), +RLC-M6-4 (choice C)
-    mc.physics.rlc_serie.confusion-roles-C-L-stockage: 14
+    # +RLC-M2-4 (choice D), +RLC-M6-4 (choice C), +RLC-M10-1 (choice D)
+    # (RLC-M7-5 choice D moved to sans-solution-rien-de-calculable — see below)
+    mc.physics.rlc_serie.confusion-roles-C-L-stockage: 13
     # M1-2, M2-1, M7-1, M7-2, M7-3, M7-4, R8-1, RLC-R8-3, RLC-R9-2,
     # +RLC-M2-4 (choice C), +RLC-M7-5 (choice B), +RLC-M2-5 (choices B, D),
-    # +RLC-M6-4 (choice D), +RLC-M7-6 (choice B)
+    # +RLC-M6-4 (choice D)
+    # (RLC-M7-6 choice B moved to phase-initiale-mal-determinee — see below)
     mc.physics.rlc_serie.entretien-est-regime-force: 6
-    # M3-3, M8-1, M8-2, M8-3, RLC-M8-4, RLC-R8-3  (no WAVE-3 primary credit;
-    # RLC-M7-6 choice D dual-tags this id via also_reveals — see below)
-    mc.physics.rlc_serie.confond-oscillation-avec-decharge-rc: 3
-    # RLC-R0-1, RLC-R0-2, RLC-R0-3  (no WAVE-3 addition — the debt items
-    # (B1–B4) are all downstream of the energy/ODE machinery, not the
-    # R0 hook; honestly still at the floor, not padded further)
-  total_items: 41
-  floor_met: true   # all 9 misconceptions ≥ 3 items (minimum is 3, for confond-oscillation-avec-decharge-rc; every other id is now ≥ 6)
+    # M3-3, M8-1, M8-2, M8-3, RLC-M8-4, RLC-R8-3  (unchanged)
+    mc.physics.rlc_serie.confond-oscillation-avec-decharge-rc: 4
+    # RLC-R0-1, RLC-R0-2, RLC-R0-3, +RLC-M9-2 (choice D)
+    mc.physics.rlc_serie.phase-initiale-mal-determinee: 3
+    # RLC-M7-6 (choices B and D), +RLC-M9-1 (choices A and B),
+    # +RLC-M9-2 (choices B and C)
+    mc.physics.rlc_serie.sans-solution-rien-de-calculable: 3
+    # RLC-M7-5 (choices C and D), +RLC-M10-1 (choices A and C),
+    # +RLC-M10-2 (choices A and B)
+  total_items: 45
+  floor_met: true   # all 11 misconceptions >= 3 items (minimum is 3, shared
+    # by the two ids new to this pass; every other id is now >= 6)
   habilete_mix:
     # Authoritative counts: derived from each item's own `habilete:` field.
-    utilisation: 15
-    # unchanged by WAVE-3 (12 WAVE-1 total + RLC-R0-1, RLC-R0-2, RLC-R0-3)
-    résolution: 17
-    # 14 (WAVE-2 total) + RLC-M2-5, RLC-M6-4, RLC-M7-6
-    application_experimentale: 9
-    # 7 (WAVE-2 total) + RLC-M2-4, RLC-M7-5
+    utilisation: 17
+    # 15 (WAVE-3 total) + RLC-M9-1, RLC-M10-1
+    résolution: 18
+    # 17 (WAVE-3 total) + RLC-M9-2
+    application_experimentale: 10
+    # 9 (WAVE-3 total) + RLC-M10-2
     percentages:
-      utilisation: "36.6 %"        # 15/41
-      résolution: "41.5 %"         # 17/41
-      application_experimentale: "22.0 %"   # 9/41
+      utilisation: "37.8 %"        # 17/45
+      résolution: "40.0 %"         # 18/45
+      application_experimentale: "22.2 %"   # 10/45
     target:
       utilisation: "~50 %"
       résolution: "~35 %"
       application_experimentale: "~15 %"
     note: >
-      WAVE-3 pays the B1–B4 exam-debt gestures with 2 application_expérimentale
-      items (both R6, oscillogram readings for B1) and 3 résolution items
-      (R2×2 for B2/B4, R5 for B3 — all multi-step derivations/computations,
-      none of them régime-recognition or role-naming, hence none tagged
-      utilisation). This pulls the mix further from the 50/35/15 target
-      than WAVE-2 left it (41.7/38.9/19.4 → 36.6/41.5/22.0): the debt itself
-      is résolution- and application-expérimentale-heavy by nature (it is
-      precisely the "stated but never computed" and "stated but never read
-      off a trace" gap that was missing). Flagged for the editorial gate,
-      same structural note as WAVE-1/WAVE-2: closing this gap further
-      toward 50 % utilisation would mean padding with weaker
-      régime-recognition items rather than serving the actual debt.
+      This pass's 4 items are dosed 2 utilisation / 1 résolution / 1
+      application_expérimentale specifically to avoid worsening the
+      résolution-heavy skew left by WAVE-3 (36.6/41.5/22.0). Result:
+      37.8/40.0/22.2 — the gap to 50/35/15 narrows slightly on
+      utilisation but does not close (it is structural: the exam debt
+      this notion pays down is résolution-heavy by nature). Flagged for
+      the editorial gate, same structural note as WAVE-1/2/3: closing
+      this gap further would mean padding with weaker régime-recognition
+      items rather than serving the actual debt.
 
   ramp_coverage:
-    # Recomputed WAVE-3 from each item's own `rung:` field.
+    # Recomputed 2026-09-27 from each item's own `rung:` field.
     R0: 3   # RLC-R0-1, RLC-R0-2, RLC-R0-3
     R1: 5   # M2-1, M2-2, M7-1, M7-2, M7-4
-    R2: 6   # M4-1, M4-2, M4-3, M4-4, +RLC-M2-5, +RLC-M7-6   (was 4)
+    R2: 8   # M4-1, M4-2, M4-3, M4-4, RLC-M2-5, RLC-M7-6,
+            # +RLC-M9-1, +RLC-M9-2                             (was 6)
     R3: 4   # M1-1, M1-2, M1-3, M3-1
     R4: 4   # M2-3, M3-3, M5-1, M1-4
-    R5: 4   # M6-1, M6-2, M6-3, +RLC-M6-4                     (was 3)
-    R6: 6   # M3-2, M5-2, M5-3, M7-3, +RLC-M2-4, +RLC-M7-5    (was 4)
+    R5: 5   # M6-1, M6-2, M6-3, RLC-M6-4, +RLC-M10-1            (was 4)
+    R6: 7   # M3-2, M5-2, M5-3, M7-3, RLC-M2-4, RLC-M7-5,
+            # +RLC-M10-2                                        (was 6)
     R7: 3   # M8-1, M8-2, RLC-M8-4
     R8: 3   # RLC-R8-1, RLC-R8-2, RLC-R8-3
     R9: 3   # M8-3, RLC-R9-1, RLC-R9-2
     note: >
       All rung counts above are exact item tallies by each item's own
-      `rung:` field (36 pre-WAVE-3 + 5 WAVE-3 = 41, sum checks out:
-      3+5+6+4+4+4+6+3+3+3 = 41). WAVE-3 lands its 5 items on the rungs
-      where the audited gesture actually lives in the lesson: R2 (établir
-      l'équation idéale + T0 — where B2's generic-instant conservation and
-      B4's phase-from-initial-conditions both sit) and R6 (lire un
-      oscillogramme — where B1's two energy-gap items sit), plus one on
-      R5 (établir l'équation amortie — where B3's dE/dt=-Ri^2 derivation
-      sits, immediately after the boxed damped ODE). The ramp floor (R0,
-      R7, R8, R9 → 3 each) established in WAVE-2 is untouched and still met.
+      `rung:` field (41 pre-pass + 4 new = 45, sum checks out:
+      3+5+8+4+4+5+7+3+3+3 = 45). The 4 new items land where the audited
+      phase-determination and instantaneous-relations gestures actually
+      live in the lesson: R2 (établir l'équation idéale, chercher la
+      solution — where phase-from-initial-conditions sits, same rung as
+      the retagged RLC-M7-6) and R5/R6 (établir l'équation amortie /
+      lire un oscillogramme — where the "instantaneous relations survive
+      not solving the ODE" gesture sits, same rungs as the retagged
+      RLC-M7-5). The ramp floor (R0, R7, R8, R9 -> 3 each) is untouched
+      and still met.
 
   dual_tagged_distractors:
     - item: RLC-M3-1
@@ -2485,10 +2761,10 @@ coverage_summary:
         - mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
       note: "M6↔M5: denying that the measured amplitude actually decreased (treating it as reading error) is the same 'any deviation from the ideal prediction must be a measurement artefact' reflex M5 shows for T vs T₀, here applied to amplitude instead of period."
 
-    - item: RLC-M7-6
-      choice: D
-      text: "À t=0, le sens de variation du courant serait le signe que la résistance freine déjà le circuit : il faut prendre φ=-π/3 pour refléter cet amortissement précoce."
-      attributes_to:
-        - mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
-        - mc.physics.rlc_serie.resistance-entretient-oscillations
-      note: "M3↔M1: reading an ordinary feature of the undamped oscillation as evidence of R's damping combines the 'R changes the rate/shape you observe' belief (M3) with treating R as the active agent behind what's seen (M1), in a circuit where R is negligible by construction."
+    # RLC-M7-6 choice D previously listed here (plus-de-R-oscille-plus-vite /
+    # resistance-entretient-oscillations): removed 2026-09-27, vague 1
+    # pédagogie re-tag. That co-attribution no longer holds — the choice's
+    # `misconception:` is now phase-initiale-mal-determinee and its
+    # `also_reveals:` is `[]` (see docs/audits/dette-examen/vague-c-retag.md
+    # §4.1: the student never invoked damping, they picked the wrong
+    # branch of cos φ = ±value for want of the second initial condition).

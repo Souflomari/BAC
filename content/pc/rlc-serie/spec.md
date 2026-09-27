@@ -84,7 +84,20 @@ The pedagogy-architect agent file predicts for *RLC (PC)*: "energy sloshing betw
 
 ## 1. The misconception inventory — the diagnostic spine
 
-Eight misconceptions. Each is a **wrong physical model**, not a slip (ADR 0008 §3 criterion a). Each names the principle it contradicts (criterion b), is distinguishable from the others on at least one stem (criterion c — the `distinguishing_mcq_stem` is that stem), and is grounded in PC didactics + standard Moroccan bac error patterns + the boundary itself (criterion d). These are the *wrong physical models PC students actually hold* — the things that survive a clean presentation of the correct model and must be **surfaced and broken** (VISION: "Physique-Chimie — confront the wrong model").
+**Ten misconceptions are declared below (M1–M10).** ⚠ **Known divergence,
+flagged not silently fixed (2026-09-27, vague 1 pédagogie re-tag,
+`docs/audits/dette-examen/vague-c-retag.md`):** `items.yaml`'s
+`misconceptions:` block additionally carries an **eleventh** id,
+`mc.physics.rlc_serie.confond-oscillation-avec-decharge-rc` (added in an
+earlier wave, for the R0-hook items `RLC-R0-1/2/3`), which was never
+back-ported here. This spec and `items.yaml` therefore still declare two
+different inventories on that one id — a pre-existing gap this pass did not
+create and was not asked to close (see `misconception-ledger.md` §8 for the
+item-side accounting). M9 and M10 below are the two ids this pass **did**
+add to both files, per the house rule that a registry with two truths is
+worse than an admitted gap.
+
+Each misconception is a **wrong physical model**, not a slip (ADR 0008 §3 criterion a). Each names the principle it contradicts (criterion b), is distinguishable from the others on at least one stem (criterion c — the `distinguishing_mcq_stem` is that stem), and is grounded in PC didactics + standard Moroccan bac error patterns + the boundary itself (criterion d). These are the *wrong physical models PC students actually hold* — the things that survive a clean presentation of the correct model and must be **surfaced and broken** (VISION: "Physique-Chimie — confront the wrong model").
 
 **Downstream shape contract (mined from migrations 043/044/045 and ADR 0008/0009):** each misconception, when item-author / supabase-architect encode it, carries the canonical DB fields
 `{ id, label, description, contradicts_principle, label_ar:null }`
@@ -184,6 +197,30 @@ They trade places every quarter-period; `E_C+E_L` is the conserved total in the 
 **Confrontation strategy.** Establish the entretenu ODE: `u_C + u_L + u_R = u_G`, i.e. `q/C + L·q'' + R·q' = k·q'` → `L·q'' + (R−k)·q' + q/C = 0`. Ask the student what value of `k` removes the damping term. Reveal `k=R` → the équation is *identical to the ideal LC*, so the period is `T₀=2π√(LC)`, set by L and C — **the generator's `k` does not appear in the period.** "The generator chooses *how much energy to give back*, not *how fast to oscillate*." Contrast in one sentence with the mécanique forced résonance (différent sous-domaine, not studied here) to seal the boundary.
 **Distinguishing stem (FR):** « On entretient les oscillations d'un circuit RLC à l'aide d'un générateur délivrant une tension `u_G(t)=k·i(t)`. Quel est le rôle de ce dispositif et que vaut la période des oscillations entretenues ? Choix : A) Il compense l'énergie dissipée par effet Joule ; les oscillations se font à la période propre `T₀=2π√(LC)` ; B) Il impose sa propre fréquence au circuit (régime forcé) ; C) Il augmente la résistance du circuit ; D) Il rend la période dépendante de k. »
 → trigger **B** (entretien read as forced régime — the boundary crossing); correct **A**. (D is the "k sets the period" sub-error, co-attributable to M8's own family; C is noise.)
+
+---
+
+### M9 — `mc.physics.rlc_serie.phase-initiale-mal-determinee`
+**Label (FR):** « `cos φ` donne `φ` » : on s'arrête à `±φ`, ou on choisit la branche au hasard
+**Added:** 2026-09-27, vague 1 pédagogie re-tag (`docs/audits/dette-examen/vague-c-retag.md`). Surfaced by the exam-debt item `RLC-M7-6`, whose two wrong-branch distractors had been mistagged onto **M7** (`confusion-roles-C-L-stockage`) and **M3** (`plus-de-R-oscille-plus-vite`) — neither of which the student's actual error touches. The student had not confused what C and L store, and had not attributed anything to R; they had simply stopped after the first initial condition.
+**The wrong model.** The student determines the phase from a **single** initial value (`i(0)` or `u_C(0)`), computes `cos φ = valeur/amplitude`, and either (a) leaves the result ambiguous (`φ = ±valeur`, "on ne peut pas choisir"), (b) picks the wrong branch outright, or (c) reaches for an irrelevant grandeur (`R`) to try to break the tie.
+**How it manifests.** Given `i(0)` (or `u_C(0)`) and asked for `φ` in `i(t)=I_m·cos(2πt/T₀+φ)`, the student writes `φ = ±arccos(...)` and stops there, or asserts both signs are "equally correct," or asks for `R` to decide (R plays no role in an ideal, undamped circuit).
+**The correct model.** A cosine has **two** free constants (amplitude, phase) once `ω₀` is fixed by `L` and `C` — so it takes **two** initial conditions to pin them down. `cos φ = i(0)/I_m` is only the first; it is genuinely satisfied by two values of `φ`. The **second** condition is the **sign of the derivative at `t=0`**: `di/dt(0) = -I_m·ω₀·sin φ`. That sign fixes the sign of `sin φ`, which — combined with the known `cos φ` — selects the unique branch. `R` enters neither condition (idéal, `R≈0` by construction). This is the *same counting gesture* the student meets for the mechanical oscillator (`systemes-oscillants`) — count the constants, count the conditions.
+**Confrontation strategy.** Not staged in `lesson.md` as a predict-then-reveal beat (rupture delegated to items — see `misconception-ledger.md` §6 for the recommended, non-blocking prose addition to R2: "combien de constantes dans un cosinus ? combien de conditions t'a-t-on données ?"). R2 already states the fact ("on détermine `φ` à partir de `i(0)` et du signe de `di/dt` à cet instant") but does not dramatise the trap.
+**Distinguishing stem (FR):** « Circuit LC idéal, `i(t) = I_m·cos(2πt/T₀+φ)`. Un élève écrit : `cos φ = i(0)/I_m = 0,80`, donc `φ = ±0,64 rad` — « on ne peut pas choisir entre les deux ». Que lui manque-t-il pour trancher ? Choix : A) la valeur de `T₀` ; B) rien, les deux valeurs restent également valables ; C) le signe de `di/dt(0)` ; D) la valeur de `R`. »
+→ trigger **A** or **B** (both name the M9 gap — stopping at one condition, or reaching for the wrong second one); correct **C**. (D is the noise "R fixes everything" reflex, distinct enough not to need its own id.)
+
+---
+
+### M10 — `mc.physics.rlc_serie.sans-solution-rien-de-calculable`
+**Label (FR):** « On n'a pas résolu l'équation amortie, donc on ne peut rien calculer » (sauf aux maxima)
+**Added:** 2026-09-27, vague 1 pédagogie re-tag (`docs/audits/dette-examen/vague-c-retag.md`). Surfaced by the exam-debt item `RLC-M7-5`, whose two wrong-answer distractors had been mistagged onto **M2** (`energie-consommee-non-conservee`) and **M6** (`cas-amorti-solution-sinusoidale-fermee`) — the second of which asserts almost the *opposite* belief (that a closed form exists) of what this distractor actually argues (that *nothing* can be computed without one).
+**The wrong model.** The student takes the cadre's own boundary — "en régime amorti, on établit l'équation différentielle et on s'arrête là, sans la résoudre" (M6's correct model, R5) — and over-reads it as "so nothing can be calculated at all" at a generic instant. They will only accept computing something at the *special* instants where `i=0` (a maximum of `u_C`), and refuse (or declare impossible) any energy/current calculation at an ordinary instant.
+**How it manifests.** Given `u_C(t)` and `u_R(t)` read off an oscilloscope at some instant that is **not** a maximum of `u_C`, the student says the energy `E_t(t)` "can't be found without `q(t)`," or insists one must "wait for a maximum where `i=0`."
+**The correct model.** Not having `q(t)` costs nothing for the **instantaneous relations**, which hold at every instant independently of any solution: `i = u_R/R` (loi d'Ohm), `q = C·u_C`, `E_t = ½C·u_C² + ½L·i²`, and `dE_t/dt = -R·i²`. The `i=0`-at-a-maximum trick is a **convenience** for that special instant, never a **condition** for the calculation to be possible: at any instant, read `u_C` and `u_R` off the two oscilloscope traces, deduce `i`, and the energy bilan closes.
+**Confrontation strategy.** Not staged as a predict-then-reveal beat (rupture delegated to items — see `misconception-ledger.md` §6 for the recommended, non-blocking prose addition to R5, right after "on établit, on ne résout pas": *"s'arrêter là ne veut pas dire qu'on ne peut plus rien calculer — toutes les relations instantanées restent vraies."*). R6 already gives the fact (`i=u_R/R`) but only worked with the two-maxima case; the *generic-instant* application is left to the items.
+**Distinguishing stem (FR):** « En régime amorti on établit `L·q''+R·q'+q/C=0` et on s'arrête là : on ne dispose pas de `q(t)`. Sur un oscillogramme, à un instant `t` qui n'est ni un maximum ni un passage par zéro, de quoi dispose-t-on pour calculer l'énergie totale `E_t(t)` ? Choix : A) de rien, `i(t)` reste inconnu ; B) des relations instantanées `i=u_R/R`, `q=Cu_C`, `E_t=½Cu_C²+½Li²` ; C) uniquement des maxima de `u_C`, où `i=0` ; D) de la solution `q(t)=Q_max·cos(2πt/T₀+φ)`, utilisable malgré R. »
+→ trigger **A** or **C** (both name the M10 gap — refusing the generic instant); correct **B**. (D is M6's actual signature — a genuinely different belief, kept separate: it asserts a closed form *exists*, where M10 denies that anything short of one can be used.)
 
 ---
 
@@ -365,7 +402,7 @@ Only what the concept genuinely needs (DESIGN-BIBLE §6 cohérence principle; VI
 
 Bounce the authored lesson/items back if any of these drift:
 - **Boundary held (§0.4):** damped case → ODE established but **not solved**; **no** pseudo-période as `f(R,L,C)`, **no** damping coefficient/decrement/closed-form envelope; closed form **only** undamped (`q(t)`, `T₀=2π√(LC)`); **no** résonance/impédance/phaseurs/complex/AC-power anywhere; entretien framed as Joule-loss compensation restoring the FREE régime at `T₀`, never as a forced régime.
-- All 8 misconceptions present in the inventory the items target; **≥3 items each** (or the harness count stated); habileté mix ≈ 50/35/15; co-attributions **dual-tagged**, not hidden.
+- All 10 misconceptions declared in this spec (M1–M10) present in the inventory the items target; **≥3 items each** (or the harness count stated); habileté mix ≈ 50/35/15; co-attributions **dual-tagged**, not hidden. ⚠ `items.yaml` additionally carries an 11th id, `confond-oscillation-avec-decharge-rc`, not yet declared in this spec — see §1's flagged divergence.
 - **No correct-answer contamination** on any stem; M6's correct answer states the establish-only rule.
 - **C1/C3 are svg+katex** (no Gemini structural art); the schematic topology and traces are exact; C2 is a Falstad/GeoGebra **embed** (not rebuilt) with the boundary guard on.
 - **Hook→entretien arc closed** (R0 "perpetual swing / where does the energy go" resolved at R3–R4 and R7).

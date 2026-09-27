@@ -3609,13 +3609,13 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "RL-24": [
       "mc.physics.pc_dipole_rl.bobine-nature-erronee",
-      "mc.physics.pc_dipole_rl.oubli-resistance-interne",
-      "mc.physics.pc_dipole_rl.tau-mauvais-groupement"
+      "mc.physics.pc_dipole_rl.isolement-grandeur-non-controle",
+      "mc.physics.pc_dipole_rl.oubli-resistance-interne"
     ],
     "RL-25": [
       "mc.physics.pc_dipole_rl.bobine-nature-erronee",
-      "mc.physics.pc_dipole_rl.oubli-resistance-interne",
-      "mc.physics.pc_dipole_rl.tau-mauvais-groupement"
+      "mc.physics.pc_dipole_rl.isolement-grandeur-non-controle",
+      "mc.physics.pc_dipole_rl.oubli-resistance-interne"
     ],
     "RL-26": [
       "mc.physics.pc_dipole_rl.bobine-nature-erronee",
@@ -3623,7 +3623,7 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.pc_dipole_rl.imax-etablissement-mal-compris"
     ],
     "RL-27": [
-      "mc.physics.pc_dipole_rl.tau-mauvais-groupement"
+      "mc.physics.pc_dipole_rl.isolement-grandeur-non-controle"
     ],
     "RL-3": [
       "mc.physics.pc_dipole_rl.tau-mauvais-groupement"
@@ -4890,7 +4890,7 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "PILES-26": [
       "mc.physics.pc_piles.calcul-quantite-electricite",
-      "mc.physics.pc_piles.role-constituants"
+      "mc.physics.pc_piles.reactif-limitant-mal-identifie"
     ],
     "PILES-27": [
       "mc.physics.pc_piles.anode-cathode-polarite",
@@ -4900,8 +4900,16 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.pc_piles.anode-cathode-polarite",
       "mc.physics.pc_piles.courant-sens-electrons"
     ],
+    "PILES-29": [
+      "mc.physics.pc_piles.calcul-quantite-electricite",
+      "mc.physics.pc_piles.reactif-limitant-mal-identifie"
+    ],
     "PILES-3": [
       "mc.physics.pc_piles.courant-sens-electrons"
+    ],
+    "PILES-30": [
+      "mc.physics.pc_piles.pile-source-illimitee",
+      "mc.physics.pc_piles.reactif-limitant-mal-identifie"
     ],
     "PILES-4": [
       "mc.physics.pc_piles.courant-sens-electrons"
@@ -5063,16 +5071,18 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.pc_rc_charge.tau-mauvais-groupement"
     ],
     "RC-13": [
+      "mc.physics.pc_rc_charge.lecture-graphique-mal-exploitee",
       "mc.physics.pc_rc_charge.tau-mauvais-groupement"
     ],
     "RC-14": [
-      "mc.physics.pc_rc_charge.tau-instant-d-arret",
-      "mc.physics.pc_rc_charge.tau-mauvais-groupement"
+      "mc.physics.pc_rc_charge.lecture-graphique-mal-exploitee",
+      "mc.physics.pc_rc_charge.tau-instant-d-arret"
     ],
     "RC-15": [
       "mc.physics.pc_rc_charge.energie-lineaire-en-u"
     ],
     "RC-16": [
+      "mc.physics.pc_rc_charge.charge-et-decharge-memes-lois",
       "mc.physics.pc_rc_charge.tau-mauvais-groupement"
     ],
     "RC-17": [
@@ -5132,9 +5142,10 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "RC-28": [
       "mc.physics.pc_rc_charge.charge-a-debit-constant",
-      "mc.physics.pc_rc_charge.tau-mauvais-groupement"
+      "mc.physics.pc_rc_charge.ed-transformee-sans-verification"
     ],
     "RC-29": [
+      "mc.physics.pc_rc_charge.ed-transformee-sans-verification",
       "mc.physics.pc_rc_charge.tau-mauvais-groupement"
     ],
     "RC-3": [
@@ -5143,22 +5154,32 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "RC-30": [
       "mc.physics.pc_rc_charge.charge-a-debit-constant",
-      "mc.physics.pc_rc_charge.tau-mauvais-groupement"
+      "mc.physics.pc_rc_charge.ed-transformee-sans-verification"
     ],
     "RC-31": [
-      "mc.physics.pc_rc_charge.tau-mauvais-groupement"
+      "mc.physics.pc_rc_charge.lecture-graphique-mal-exploitee",
+      "mc.physics.pc_rc_charge.prefixe-unite-non-converti"
     ],
     "RC-32": [
-      "mc.physics.pc_rc_charge.tau-instant-d-arret",
-      "mc.physics.pc_rc_charge.tau-mauvais-groupement"
+      "mc.physics.pc_rc_charge.charge-et-decharge-memes-lois",
+      "mc.physics.pc_rc_charge.tau-instant-d-arret"
     ],
     "RC-33": [
+      "mc.physics.pc_rc_charge.lecture-graphique-mal-exploitee",
       "mc.physics.pc_rc_charge.tau-mauvais-groupement"
     ],
     "RC-34": [
       "mc.physics.pc_rc_charge.charge-a-debit-constant",
-      "mc.physics.pc_rc_charge.tau-instant-d-arret",
+      "mc.physics.pc_rc_charge.charge-et-decharge-memes-lois",
+      "mc.physics.pc_rc_charge.tau-instant-d-arret"
+    ],
+    "RC-35": [
+      "mc.physics.pc_rc_charge.prefixe-unite-non-converti",
       "mc.physics.pc_rc_charge.tau-mauvais-groupement"
+    ],
+    "RC-36": [
+      "mc.physics.pc_rc_charge.energie-lineaire-en-u",
+      "mc.physics.pc_rc_charge.prefixe-unite-non-converti"
     ],
     "RC-4": [
       "mc.physics.pc_rc_charge.tau-mauvais-groupement"
@@ -5436,6 +5457,14 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "RLC-M1-4": [
       "mc.physics.rlc_serie.resistance-entretient-oscillations"
     ],
+    "RLC-M10-1": [
+      "mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee",
+      "mc.physics.rlc_serie.sans-solution-rien-de-calculable"
+    ],
+    "RLC-M10-2": [
+      "mc.physics.rlc_serie.resistance-entretient-oscillations",
+      "mc.physics.rlc_serie.sans-solution-rien-de-calculable"
+    ],
     "RLC-M2-1": [
       "mc.physics.rlc_serie.confusion-roles-C-L-stockage",
       "mc.physics.rlc_serie.energie-consommee-non-conservee"
@@ -5517,14 +5546,12 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.rlc_serie.confusion-roles-C-L-stockage"
     ],
     "RLC-M7-5": [
-      "mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee",
       "mc.physics.rlc_serie.confusion-roles-C-L-stockage",
-      "mc.physics.rlc_serie.energie-consommee-non-conservee"
+      "mc.physics.rlc_serie.sans-solution-rien-de-calculable"
     ],
     "RLC-M7-6": [
       "mc.physics.rlc_serie.T0-depend-de-R",
-      "mc.physics.rlc_serie.confusion-roles-C-L-stockage",
-      "mc.physics.rlc_serie.plus-de-R-oscille-plus-vite"
+      "mc.physics.rlc_serie.phase-initiale-mal-determinee"
     ],
     "RLC-M8-1": [
       "mc.physics.rlc_serie.entretien-est-regime-force"
@@ -5539,6 +5566,14 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "RLC-M8-4": [
       "mc.physics.rlc_serie.entretien-est-regime-force",
       "mc.physics.rlc_serie.plus-de-R-oscille-plus-vite"
+    ],
+    "RLC-M9-1": [
+      "mc.physics.rlc_serie.T0-depend-de-R",
+      "mc.physics.rlc_serie.phase-initiale-mal-determinee"
+    ],
+    "RLC-M9-2": [
+      "mc.physics.rlc_serie.confond-oscillation-avec-decharge-rc",
+      "mc.physics.rlc_serie.phase-initiale-mal-determinee"
     ],
     "RLC-R0-1": [
       "mc.physics.rlc_serie.confond-oscillation-avec-decharge-rc",

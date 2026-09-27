@@ -37,6 +37,10 @@ misconceptions:
     label: "« Énergie de la bobine non quadratique en i (E_L = Li, ou confondue avec une puissance dissipée / une autre formule d'énergie) »"
     description: "L'élève confond l'énergie magnétique stockée avec une expression linéaire en i, avec la puissance Joule dissipée, ou avec l'énergie d'un condensateur."
     contradicts_principle: "E_L = ½Li² : la puissance reçue Li·di/dt est la dérivée de ½Li². Li n'est même pas homogène à une énergie ; ½ri² et ½Cu² sont d'autres grandeurs (puissance dissipée, énergie d'un condensateur)."
+  - id: mc.physics.pc_dipole_rl.isolement-grandeur-non-controle
+    label: "« La relation est écrite, il ne reste qu'à retourner les nombres » (rapport inversé, facteur oublié, signe faux)"
+    description: "Erreur de CONDUITE du calcul, pas modèle physique faux : l'élève écrit la bonne relation (le palier $R_0E/(R_0+r)$, $I_p = E/(R_0+r)$, l'ordonnée à l'origine $E/L$) puis l'isole de travers — il inverse le rapport, ajoute au lieu de retrancher, ou laisse tomber le facteur qui multiplie le coefficient lu."
+    contradicts_principle: "Isoler une grandeur se contrôle par deux réflexes indépendants du calcul : l'HOMOGÉNÉITÉ ($H/\\Omega = s$, $V/A = \\Omega$, $V/(A\\,s^{-1}) = H$) et l'ORDRE DE GRANDEUR PHYSIQUE (une tension aux bornes d'une partie de la maille ne dépasse pas $E$ ; la résistance interne d'une bobine ne dépasse pas la résistance totale de la maille ; une bobine de laboratoire ne fait pas $1300\\ \\text{H}$). Un résultat qui viole l'un des deux est faux avant toute relecture du calcul."
 
 items:
   - id: RL-1
@@ -1298,9 +1302,13 @@ items:
   # E=9V, R0=40 ohm, Ip=150mA). RL-26 closes R3 (numeric rupture: i(0+) by
   # continuity, u across the freewheel resistor R', own values Imax=250mA,
   # R'=150 ohm). RL-27 closes R4 (di/dt=f(i) line, intercept E/L, own values
-  # E=18V, intercept=72 A/s). All four distractors per item carry a
-  # misconception id from the existing inventory (no new id added — none of
-  # the four gestures needed one beyond the seven already floor-eligible).
+  # E=18V, intercept=72 A/s).
+  # (un id neuf a été ajouté le 2026-09-27,
+  # `isolement-grandeur-non-controle` : RL-27 ne demande jamais τ, et ses
+  # trois distracteurs — rapport inversé, produit au lieu du quotient,
+  # facteur E oublié — portaient `tau-mauvais-groupement` à tort. RL-24 D et
+  # RL-25 D (rapport inversé sur le palier) portaient la même erreur, à tort
+  # aussi. Détail : docs/audits/dette-examen/vague-c-retag.md.)
   # ──────────────────────────────────────────────────────────────────────
 
   - id: RL-24
@@ -1343,7 +1351,7 @@ items:
       - id: D
         text: "$A = \\dfrac{(R_0 + r) E}{R_0}$"
         correct: false
-        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+        misconception: mc.physics.pc_dipole_rl.isolement-grandeur-non-controle
         feedback: >
           Le rapport est à l'envers : $\dfrac{R_0+r}{R_0} > 1$, donc cette
           valeur dépasse $E$ — une tension aux bornes d'une partie seulement
@@ -1400,7 +1408,7 @@ items:
       - id: D
         text: "$r = 100\\ \\Omega$"
         correct: false
-        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+        misconception: mc.physics.pc_dipole_rl.isolement-grandeur-non-controle
         feedback: >
           $E/I_p = 60\ \Omega$ est la résistance TOTALE de la maille,
           $R_0 + r$. Pour isoler $r$, on retranche $R_0$ de ce total :
@@ -1490,7 +1498,7 @@ items:
     difficulty_level: 4
     skill_code: pc_dipole_rl
     tags: []
-    primary_misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+    primary_misconception: mc.physics.pc_dipole_rl.isolement-grandeur-non-controle
     stem: >
       Sur un graphe expérimental traçant $\dfrac{di}{dt}$ en fonction de $i$
       pour un dipôle RL soumis à un échelon $E = 18\ \text{V}$, la droite
@@ -1504,14 +1512,14 @@ items:
       - id: B
         text: "$L = 4\\ \\text{H}$"
         correct: false
-        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+        misconception: mc.physics.pc_dipole_rl.isolement-grandeur-non-controle
         feedback: >
           Ce résultat calcule $72/18$ au lieu de $18/72$ : l'ordonnée à
           l'origine vaut $E/L$, donc $L = E/(72)$, pas $72/E$.
       - id: C
         text: "$L = 1296\\ \\text{H}$"
         correct: false
-        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+        misconception: mc.physics.pc_dipole_rl.isolement-grandeur-non-controle
         feedback: >
           Ce résultat multiplie $E$ par la valeur lue ($18\times72$) au lieu
           de diviser : une inductance de cet ordre de grandeur est
@@ -1519,7 +1527,7 @@ items:
       - id: D
         text: "$L \\approx 0{,}014\\ \\text{H}$"
         correct: false
-        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+        misconception: mc.physics.pc_dipole_rl.isolement-grandeur-non-controle
         feedback: >
           Ce résultat prend $1/72$ : l'ordonnée à l'origine a été lue comme
           $1/L$, en oubliant la tension. Elle vaut $E/L$ — c'est la pente
@@ -1536,30 +1544,33 @@ items:
       $L = \dfrac{E}{72} = \dfrac{18}{72} = 0{,}25\ \text{H}$.
 
 # ──────────────────────────────────────────────────────────────────────────────
-# COVERAGE SUMMARY (floor-backfill pass, following the checkpoints.yaml /
-# exercises.yaml summit conversion)
+# COVERAGE SUMMARY — recomputed 2026-09-27 (vague 1 pédagogie, re-tag)
 #
-# RL-1…RL-18 were authored before the misconception inventory existed
-# (`misconceptions: []`). This pass adds the inventory (mirroring
-# checkpoints.yaml's six ids + one new energy id), a `primary_misconception`
-# per item, and a per-distractor `misconception:` tag on every choice
-# (mirroring the checkpoints.yaml gold standard — additive only, no existing
-# stem/feedback/solution text removed or weakened). RL-19…RL-23 are five new
-# items closing the under-covered models to the ≥3-item floor. Counts below
-# are ITEM-LEVEL (each item counted once, by its `primary_misconception`),
-# matching the method used in content/pc/rc-charge/items.yaml.
+# `method` changed with this pass: counts below are now PER-DISTRACTOR (the
+# convention `web/scripts/lib/couverture-compte.mjs` and the coverage gates
+# actually read — matches the recompute in content/pc/rc-charge/items.yaml),
+# not the item-level-by-primary-misconception convention this block used
+# before. An item counts once per id if AT LEAST ONE of its distractors
+# carries that id — an item can count toward more than one id, so
+# `per_misconception` values do not sum to `total_items` (expected overlap,
+# not an arithmetic error; `ramp_coverage`, one rung per item, stays a clean
+# partition).
 # ──────────────────────────────────────────────────────────────────────────────
 coverage_summary:
-  method: "item-level, by primary_misconception (one item = one count)"
+  method: >
+    per-distractor (matches web/scripts/lib/couverture-compte.mjs): an item
+    counts once per misconception id iff at least one of its distractors
+    carries that id; primary_misconception is not the count key.
   total_items: 27
   per_misconception:
-    mc.physics.pc_dipole_rl.courant-saute-instantane: 5        # RL-1, RL-6, RL-7, RL-8, RL-26
-    mc.physics.pc_dipole_rl.bobine-nature-erronee: 3            # RL-9, RL-10, RL-19
-    mc.physics.pc_dipole_rl.imax-etablissement-mal-compris: 3   # RL-12, RL-21, RL-22
-    mc.physics.pc_dipole_rl.oubli-resistance-interne: 5         # RL-2, RL-11, RL-16, RL-24, RL-25
-    mc.physics.pc_dipole_rl.tau-mauvais-groupement: 4           # RL-3, RL-18, RL-20, RL-27
-    mc.physics.pc_dipole_rl.lecture-tau-erronee: 3              # RL-5, RL-13, RL-23
+    mc.physics.pc_dipole_rl.courant-saute-instantane: 5         # RL-1, RL-7, RL-8, RL-19, RL-26
+    mc.physics.pc_dipole_rl.bobine-nature-erronee: 9            # RL-6, RL-7, RL-8, RL-9, RL-10, RL-19, RL-24, RL-25, RL-26
+    mc.physics.pc_dipole_rl.imax-etablissement-mal-compris: 11  # RL-2, RL-5, RL-7, RL-11, RL-12, RL-17, RL-18, RL-20, RL-21, RL-22, RL-26
+    mc.physics.pc_dipole_rl.oubli-resistance-interne: 6         # RL-2, RL-11, RL-12, RL-16, RL-24, RL-25
+    mc.physics.pc_dipole_rl.tau-mauvais-groupement: 5           # RL-3, RL-16, RL-18, RL-20, RL-22
+    mc.physics.pc_dipole_rl.lecture-tau-erronee: 4              # RL-5, RL-13, RL-16, RL-23
     mc.physics.pc_dipole_rl.energie-lineaire-en-i: 4            # RL-4, RL-14, RL-15, RL-17
+    mc.physics.pc_dipole_rl.isolement-grandeur-non-controle: 3  # RL-24, RL-25, RL-27
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -1569,35 +1580,31 @@ coverage_summary:
     R3: 7   # RL-3, RL-5, RL-13, RL-21, RL-23, RL-26, RL-27
     R4: 3   # RL-4, RL-14, RL-15
     R5: 3   # RL-16, RL-17, RL-18
+  # Arithmetic check: 3+4+7+7+3+3 = 27 = total_items. ✓ (ramp_coverage is a
+  # clean partition, one rung per item — unlike per_misconception above.)
   note: >
-    Exam debt, wave C (2026-09-27, docs/audits/dette-examen/pc-1.md, dipole-rl R1–R4):
-    RL-24 (the ED in u_R0, identify A), RL-25 (r from the plateau, inverse),
-    RL-26 (rupture: u across the freewheel resistor at 0+), RL-27 (di/dt = f(i),
-    L from the intercept). No new misconception id. Earlier pass:
-    Floor closed and per-distractor tagging promoted in this pass. RL-1…RL-18:
-    every distractor now carries a `misconception:` field (added without
-    deleting or weakening any existing stem, feedback, or solution — additive
-    only). RL-19…RL-23: 5 new stems closing the under-covered models
-    (bobine-nature-erronee 2→3, imax-etablissement-mal-compris 1→3,
-    tau-mauvais-groupement 2→3, lecture-tau-erronee 2→3 — oubli-resistance-
-    interne also crossed 2→3, as RL-16's primary_misconception was
-    reassigned to match its dominant distractor rather than added as a new
-    item), each a fresh stem/context (opening-switch spark, changing L,
-    comparing two bobines of différent L, changing E, reading τ off u_L(t)
-    instead of i(t)) — none a memorizable restatement of an existing item or
-    of the R5 past-bac exercise (r-bac in exercises.yaml) — spanning R1–R3 to
-    keep the ramp populated. Correct-choice position is varied across the new
-    items (B, A, D, C, D), unlike RL-1…RL-18 which are all correct=A (a
-    pre-existing pattern, left untouched per the append/edit-only, never-
-    weaken instruction). Per-distractor tags are diagnostic metadata layered
-    onto the existing item-level `primary_misconception` floor count; they do
-    not themselves change the coverage method or counts above. Several items
-    (RL-2, RL-5, RL-7, RL-11, RL-12, RL-16, RL-17, RL-18, RL-20, RL-22) carry
-    distractors whose `misconception:` tag differs from the item's own
-    `primary_misconception` — expected diagnostic diversity (a single stem
-    legitimately probing more than one wrong model), not cross-skill
-    contamination: every item in this bank is single-skill (pc_dipole_rl), so
-    no dual-tagging is required by the cross-skill contamination check.
-    Stem-hygiene check: no correct choice in RL-1…RL-23 is reachable by
-    misapplying a named misconception (no correct-answer contamination
-    found); no stem mixes in dipole-RC vocabulary or another skill's model.
+    2026-09-27 re-tag (vague 1 pédagogie, docs/audits/dette-examen/vague-c-retag.md):
+    5 distractors across 3 items (RL-24 D, RL-25 D, RL-27 B/C/D, plus RL-27's
+    primary_misconception) moved off tau-mauvais-groupement onto 1 new,
+    procedurally-honest id (isolement-grandeur-non-controle) — RL-27 never
+    asks for τ, and all three of its distractors (inverted ratio, product
+    instead of quotient, forgotten E factor) had been mistagged as a τ
+    grouping error. No feedback text needed rewriting: all five already
+    argued the correct control (overshoot past E, an absurd inductance
+    order of magnitude, E/I_p being the TOTAL resistance) — only the tag was
+    false. No new item was needed: the new id reaches the floor (3) with the
+    existing RL-24/RL-25/RL-27. tau-mauvais-groupement goes 8 → 5; no
+    existing id drops below 3.
+
+    Prior history (kept for context): RL-1…RL-18 were authored before the
+    misconception inventory existed, then backfilled with per-distractor
+    tags mirroring checkpoints.yaml; RL-19…RL-23 (5 items) closed
+    bobine-nature-erronee, imax-etablissement-mal-compris,
+    tau-mauvais-groupement and lecture-tau-erronee to the floor; RL-24…RL-27
+    (exam debt, docs/audits/dette-examen/pc-1.md) closed the ED-in-u_R0,
+    plateau-inversion, freewheel-rupture and di/dt=f(i)-intercept gestures.
+    Correct-choice position varies across the newer items rather than
+    always A. Stem-hygiene check (2026-09-27): no correct choice in
+    RL-1…RL-27 is reachable by misapplying a named misconception; every item
+    is single-skill (pc_dipole_rl), so no dual-tagging is required by the
+    cross-skill contamination check.
