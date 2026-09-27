@@ -85,6 +85,31 @@ misconceptions:
     description: "Avant toute preuve, l'élève prédit la limite à partir d'une intuition de tendance : « ça diminue donc ça tend vers 0 », « ça monte donc vers $+\\infty$ ». Sonde surtout par le commit-gate d'accroche (cp-r0-predict)."
     contradicts_principle: "Une tendance apparente (baisse/hausse) ne dit pas vers quelle valeur on tend, ni même s'il y a convergence. Une suite décroissante minorée converge vers une limite qui n'est ni 0 ni le premier terme, mais le point fixe — établi par les outils du chapitre."
 
+  # ── Ajoutées lors du remboursement de dette d'examen (2026-09-27) : la
+  # contraction/IAF, les suites implicites f_n(x_n)=0, déclarées par
+  # l'auteur d'items après lecture de la leçon et du banc (voir
+  # docs/audits/dette-examen/maths.md, § suites-numeriques, gap A #4 et #9).
+  # ──────────────────────────────────────────────────────────────────────
+  - id: mc.math.sma_suites_numeriques.iaf-intervalle-instable
+    label: "« La borne sur f' se prend sur un intervalle quelconque »"
+    description: "Pour appliquer l'inégalité des accroissements finis (IAF) à une suite $u_{n+1}=f(u_n)$, l'élève majore $|f'|$ sur un intervalle plus large que l'intervalle STABLE réellement occupé par les $u_n$ (voire sur $\\mathbb{R}$ tout entier « pour être large »), ou applique l'inégalité de contraction sans avoir vérifié que $u_n$ (et $\\alpha$) appartiennent bien à l'intervalle où la borne $k$ a été établie."
+    contradicts_principle: "L'IAF, $|f(b)-f(a)|\\le k|b-a|$, n'est valable qu'ENTRE DEUX POINTS de l'intervalle $I$ sur lequel $|f'|\\le k$ a été démontré. Élargir $I$ « pour être large » peut faire perdre la borne $k<1$ (une dérivée non bornée, ou bornée par un $k\\ge1$, ailleurs) ; et appliquer l'inégalité à des points dont on n'a pas prouvé qu'ils restent dans $I$ (l'étape « $u_n\\in I$ pour tout $n$ », par récurrence sur $f(I)\\subset I$ et $u_0\\in I$) rend toute la chaîne sans fondement."
+
+  - id: mc.math.sma_suites_numeriques.contraction-k-pas-strict
+    label: "« k ≥ 1 suffit pour une contraction »"
+    description: "L'élève accepte une borne $k$ obtenue supérieure ou égale à $1$ (ou ne vérifie jamais cette condition) et poursuit comme si l'inégalité $|u_{n+1}-\\alpha|\\le k|u_n-\\alpha|$ garantissait quand même la convergence vers $\\alpha$ — la même confusion vaut pour la variante $u_{n+1}\\le q\\,u_n$ avec $q\\ge1$."
+    contradicts_principle: "Si $k\\ge1$, $k^n$ ne tend PAS vers $0$ (il stagne à $1$ ou explose) : l'inégalité empilée $|u_n-\\alpha|\\le k^n|u_0-\\alpha|$ ne dit alors plus rien d'utile — elle prouve au mieux que la suite reste bornée, jamais qu'elle converge vers $\\alpha$. C'est la condition $k$ STRICTEMENT inférieur à $1$ qui fait tendre le majorant vers $0$, condition sans laquelle les gendarmes ne concluent rien."
+
+  - id: mc.math.sma_suites_numeriques.tvi-sans-stricte-monotonie
+    label: "« Le TVI seul donne l'unicité »"
+    description: "Pour une suite définie implicitement par $f_n(x_n)=0$, l'élève invoque le théorème des valeurs intermédiaires (changement de signe d'une fonction continue) pour conclure à la fois l'EXISTENCE et l'UNICITÉ d'une solution, sans mentionner ni utiliser la stricte monotonie de $f_n$."
+    contradicts_principle: "Le TVI (fonction continue changeant de signe) donne SEULEMENT l'existence d'au moins une solution. C'est la stricte monotonie de $f_n$ (croissante ou décroissante), ajoutée en plus, qui empêche une seconde solution d'exister ailleurs — c'est elle, et elle seule, qui autorise à parler de LA solution, au singulier, et à la noter $x_n$."
+
+  - id: mc.math.sma_suites_numeriques.comparaison-xn-sans-evaluation
+    label: "« x_n et x_{n+1} se comparent à vue »"
+    description: "Pour une suite définie implicitement par $f_n(x_n)=0$, l'élève devine l'ordre de $x_n$ et $x_{n+1}$ depuis la forme de la formule (« $n$ augmente donc ça doit monter »), sans jamais évaluer $f_{n+1}(x_n)$ — ou, l'ayant évalué, applique le sens de la monotonie de $f_{n+1}$ à l'envers pour transformer l'inégalité entre les SORTIES en une inégalité entre les entrées."
+    contradicts_principle: "$x_n$ et $x_{n+1}$ sont les zéros de DEUX fonctions différentes : rien ne permet de les comparer directement, ni de deviner leur ordre sur la forme de la définition. La seule voie est d'évaluer $f_{n+1}$ (ou $f_n$) aux deux points et de comparer les sorties obtenues à $0$ ; une fonction strictement CROISSANTE range alors les sorties dans le MÊME sens que les entrées, une fonction strictement DÉCROISSANTE les range dans le sens INVERSE — se tromper de sens inverse la conclusion sur $x_n$ et $x_{n+1}$."
+
 items:
 
   - id: SUITES-1
@@ -2548,14 +2573,1011 @@ items:
       la plus petite des bornes supérieures, qui n'est en général ni atteinte,
       ni égale au majorant qu'on avait sous la main.
 
+# ── Dette d'examen, vague B1 (2026-09-27) ───────────────────────────────────
+# La contraction/IAF (+ majoration géométrique), les suites implicites
+# f_n(x_n)=0, et les suites homographiques (auxiliaire géométrique) : trois
+# techniques travaillées dans lesson.md (contraction/implicite ajoutées par
+# le content-author ; homographique déjà présente) et jamais testées avant
+# ce lot — voir docs/audits/dette-examen/maths.md, § suites-numeriques, gaps
+# #4, #9 et le GAP-B homographique. Fonctions et nombres choisis pour ce lot
+# ne reprennent NI l'exemple travaillé de la leçon (f(x)=(x²+1)/4, k=1/2,
+# α=2−√3 ; f_n(x)=nx+x³−1 ; u_{n+1}=(3u_n+1)/(u_n+3)), NI les sujets du banc
+# (f_0(x)=−2eˣ/(1+eˣ), f_n=f_0+nx ; u_{n+1}=2u_n/(2u_n+5) et
+# u_{n+1}=u_n/(3−2u_n)).
+  - id: SUITES-39
+    rung: "R8b"
+    difficulty_level: 3
+    skill_code: sma_suites_numeriques
+    tags: [contraction, iaf]
+    primary_misconception: mc.math.sma_suites_numeriques.iaf-intervalle-instable
+    stem: >
+      Soit $f(x)=\dfrac{x^2+2}{6}$ définie sur $\mathbb{R}$, et $(u_n)$ la
+      suite définie par $u_0=1$ et $u_{n+1}=f(u_n)$. On a établi que
+      $I=[0\,;1]$ vérifie $f(I)\subset I$ (car $f(0)=\frac13$ et
+      $f(1)=\frac12$), et que $u_0\in I$, donc $u_n\in I$ pour tout $n$
+      (récurrence). Sachant que $f'(x)=\dfrac{x}{3}$, quelle affirmation
+      permet d'appliquer correctement l'IAF à cette suite ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$f'(x)=x/3$ n'étant pas bornée sur $\\mathbb{R}$, l'IAF ne s'applique pas à cette suite."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.iaf-intervalle-instable
+        feedback: >
+          L'IAF ne demande jamais de borner $f'$ sur tout $\mathbb{R}$, mais
+          sur l'intervalle STABLE où vivent réellement les $u_n$ — ici
+          $I=[0\,;1]$, établi juste avant. Sur cet intervalle, $f'$ est
+          parfaitement bornée : $f'(x)=x/3\in\left[0\,;\frac13\right]$.
+      - id: B
+        text: "Sur $I=[0\\,;1]$, $|f'(x)|\\le\\frac13$ pour tout $x\\in I$ : on peut prendre $k=\\frac13$."
+        correct: true
+      - id: C
+        text: "Sur $[0\\,;4]$, $f'(4)=\\frac43$, donc $k=\\frac43$ convient pour appliquer l'IAF."
+        correct: false
+        misconception: [mc.math.sma_suites_numeriques.iaf-intervalle-instable, mc.math.sma_suites_numeriques.contraction-k-pas-strict]
+        feedback: >
+          Double défaut détecté. D'abord $[0\,;4]$ n'est pas l'intervalle
+          stable établi ($I=[0\,;1]$) : rien ne garantit que les $u_n$ y
+          restent au-delà de ce qui a déjà été prouvé. Ensuite, même en
+          admettant cet intervalle, $k=\frac43\ge1$ ne permet plus de conclure
+          à une contraction : $\left(\frac43\right)^n$ explose, il ne tend
+          pas vers $0$.
+      - id: D
+        text: "$f$ admettant un point fixe $\\alpha$ dans $I$, $(u_n)$ converge vers $\\alpha$ sans autre condition."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.point-fixe-prouve-convergence
+        feedback: >
+          L'existence d'un point fixe ne prouve jamais, à elle seule, la
+          convergence (chapitre 9) : c'est précisément la borne $k<1$,
+          établie sur le bon intervalle, qui fournit ici l'argument de
+          convergence — pas le point fixe seul.
+    correct_feedback: >
+      L'IAF se prépare en deux temps : majorer $|f'|$ sur l'intervalle
+      STABLE réellement occupé par les $u_n$ (ici $I=[0\,;1]$, établi par
+      $f(I)\subset I$ et $u_0\in I$), et vérifier que la borne trouvée,
+      $k=\frac13$, est strictement inférieure à $1$. Élargir l'intervalle
+      « pour être large » peut faire perdre cette dernière condition.
+    solution: |
+      **L'intervalle qui compte.** L'énoncé a déjà établi que $u_n\in
+      I=[0\,;1]$ pour tout $n$ : c'est SUR CET INTERVALLE, et seulement
+      lui, que la borne sur $f'$ doit être cherchée — pas sur $\mathbb{R}$,
+      pas sur un intervalle plus large choisi « pour être sûr ».
+
+      **Le calcul.** $f'(x)=\dfrac{x}{3}$ est croissante ; sur $I=[0\,;1]$,
+      elle varie donc entre $f'(0)=0$ et $f'(1)=\frac13$\,:
+
+      $$|f'(x)|\le\frac13 \quad (\forall x\in I)$$
+
+      **La condition qui reste à vérifier.** $k=\frac13$ est bien
+      STRICTEMENT inférieur à $1$\,: la contraction pourra s'appliquer,
+      ce qui n'aurait pas été le cas avec un intervalle plus large donnant
+      $k\ge1$ (comme $[0\,;4]$, où $f'(4)=\frac43$).
+
+  - id: SUITES-40
+    rung: "R8b"
+    difficulty_level: 3
+    skill_code: sma_suites_numeriques
+    tags: [contraction, iaf, intervalle_stable]
+    primary_misconception: mc.math.sma_suites_numeriques.iaf-intervalle-instable
+    stem: >
+      Toujours avec $f(x)=\dfrac{x^2+2}{6}$, $I=[0\,;1]$ et $k=\dfrac13$
+      (établis précédemment), un élève applique directement
+      $|u_{n+1}-\alpha|\le\dfrac13|u_n-\alpha|$ pour tout $n$, sans jamais
+      mentionner que $u_n\in I$ pour tout $n$ (ni que $\alpha\in I$). Quel
+      est le problème ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'inégalité suppose $u_n\\in I$ et $\\alpha\\in I$ : tant que tous les $u_n$ ne sont pas prouvés dans $I$, elle n'est pas justifiée."
+        correct: true
+      - id: B
+        text: "Une fois $k$ trouvé sur un intervalle, l'IAF s'applique à n'importe quels réels $a,b$, sans restriction de domaine."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.iaf-intervalle-instable
+        feedback: >
+          C'est faux : la borne $|f'|\le k$ n'a été démontrée QUE sur $I$ ;
+          rien n'interdit à $|f'|$ de dépasser $k$ ailleurs. L'inégalité
+          $|f(b)-f(a)|\le k|b-a|$ n'est garantie que pour $a,b\in I$, jamais
+          « n'importe quels réels ».
+      - id: C
+        text: "$u_0=1\\in I$ suffit à garantir que tous les $u_n$ restent dans $I$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.iaf-intervalle-instable
+        feedback: >
+          $u_0\in I$ ne suffit pas à lui seul : c'est la STABILITÉ de $I$
+          ($f(I)\subset I$), combinée à $u_0\in I$, qui donne par récurrence
+          $u_n\in I$ pour TOUT $n$ (chapitre 2). Sans mentionner cette
+          récurrence, rien ne garantit que $u_1,u_2,\ldots$ restent dans $I$.
+      - id: D
+        text: "$I=[0\\,;1]$ n'étant pas le plus petit intervalle stable possible, il faut d'abord trouver l'intervalle stable minimal."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.majorant-atteint-ou-limite
+        feedback: >
+          Un intervalle stable, comme un majorant, n'a pas besoin d'être le
+          plus petit possible pour être utilisable : n'importe quel
+          intervalle stable contenant $u_0$ convient, du moment que $|f'|$
+          y reste bornée par un $k<1$. Chercher « le » plus petit n'est pas
+          une condition de la méthode.
+    correct_feedback: >
+      L'IAF ne relie que des points DE L'INTERVALLE où $|f'|\le k$ a été
+      démontré. La chaîne complète exige donc, avant d'écrire l'inégalité
+      de contraction : (1) $f(I)\subset I$ et $u_0\in I$ ⟹ $u_n\in I$
+      pour tout $n$ par récurrence, et (2) $\alpha\in I$ (le point fixe
+      trouvé appartient bien à $I$). Sans ces deux vérifications, appliquer
+      $|f(u_n)-f(\alpha)|\le k|u_n-\alpha|$ n'a aucune justification.
+    solution: |
+      L'IAF s'énonce pour des points DE L'INTERVALLE $I$ sur lequel
+      $|f'|\le k$ a été démontré — pas pour des réels quelconques. La
+      chaîne correcte est\,:
+
+      1. $f(I)\subset I$ et $u_0\in I$ ⟹ (récurrence, chapitre 2)
+         $u_n\in I$ pour tout $n$\,;
+      2. $\alpha\in I$ (vérifié en résolvant $L=f(L)$ dans $I$)\,;
+      3. alors, et seulement alors, l'IAF appliquée entre $a=\alpha$ et
+         $b=u_n$ (tous deux dans $I$) donne
+         $|u_{n+1}-\alpha|=|f(u_n)-f(\alpha)|\le\frac13|u_n-\alpha|$.
+
+      Sauter l'étape 1 ou 2 laisse l'inégalité sans fondement, même si
+      elle se trouve être vraie sur cet exemple précis.
+
+  - id: SUITES-41
+    rung: "R8b"
+    difficulty_level: 4
+    skill_code: sma_suites_numeriques
+    tags: [contraction, iaf]
+    primary_misconception: mc.math.sma_suites_numeriques.contraction-k-pas-strict
+    stem: >
+      Sur ce même exemple ($f(x)=\dfrac{x^2+2}{6}$, $u_0=1$), un élève
+      choisit de travailler sur $I'=[0\,;3]$ (qui vérifie aussi
+      $f(I')\subset I'$) plutôt que sur $I=[0\,;1]$. Il calcule
+      $f'(3)=\dfrac{3}{3}=1$, donc $|f'(x)|\le1$ sur $I'$, et conclut\,:
+      « $k=1$ convient, donc $|u_{n+1}-\alpha|\le1\times|u_n-\alpha|$, et en
+      empilant, $(u_n)$ converge vers $\alpha$. » Que penser de cette
+      conclusion ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La conclusion est juste : $k=1$ suffit pour appliquer la méthode de contraction."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.contraction-k-pas-strict
+        feedback: >
+          C'est faux : si $k\ge1$, $k^n$ ne tend pas vers $0$ (ici $1^n=1$
+          pour tout $n$), donc l'inégalité empilée ne fait plus tendre
+          $|u_n-\alpha|$ vers $0$. La condition $k<1$ STRICTEMENT est ce qui
+          rend la méthode concluante.
+      - id: B
+        text: "La conclusion est fausse : $k=1$ n'est pas strictement inférieur à $1$."
+        correct: true
+      - id: C
+        text: "Le problème n'est pas $k$, mais le choix de $I'=[0\\,;3]$ : un intervalle stable valide donne le même $k$ que sur $I=[0\\,;1]$."
+        correct: false
+        misconception: [mc.math.sma_suites_numeriques.iaf-intervalle-instable, mc.math.sma_suites_numeriques.contraction-k-pas-strict]
+        feedback: >
+          Double confusion. $I'=[0\,;3]$ EST un intervalle stable valide
+          (rien ne l'interdit) ; rien n'impose non plus que deux intervalles
+          stables différents donnent la MÊME borne $k$ — un intervalle plus
+          grand donne en général un $k$ moins bon. Le vrai problème reste
+          celui de $k$\,: sur $I'$, il vaut $1$, ce qui n'est pas strictement
+          inférieur à $1$.
+      - id: D
+        text: "La conclusion est juste, mais la suite converge vers $u_0=1$, pas vers $\\alpha$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.limite-liee-terme-initial
+        feedback: >
+          $|u_n-\alpha|\le|u_0-\alpha|$ dit seulement que $u_n$ reste à une
+          distance bornée de $\alpha$ — ni que $u_n=u_0$, ni que la suite
+          converge vers $u_0$. $u_0$ fixe le point de départ, pas la valeur
+          de la limite (quand elle existe).
+    correct_feedback: >
+      Peu importe l'intervalle choisi, la condition qui fait fonctionner la
+      méthode est $k$ STRICTEMENT inférieur à $1$\,: c'est elle qui garantit
+      $k^n\to0$. Avec $k=1$ (trouvé sur $I'=[0\,;3]$), l'inégalité empilée
+      $|u_n-\alpha|\le1^n|u_0-\alpha|=|u_0-\alpha|$ ne fait que borner
+      $(u_n)$ près de $\alpha$, sans jamais forcer la convergence.
+    solution: |
+      **Ce qui reste vrai.** $I'=[0\,;3]$ est bien stable, et $|f'|\le1$
+      dessus.
+
+      **Ce qui s'effondre.** L'empilement de $|u_{n+1}-\alpha|\le
+      k|u_n-\alpha|$ donne $|u_n-\alpha|\le k^n|u_0-\alpha|$. Avec $k=1$\,:
+
+      $$|u_n-\alpha|\le 1^n\times|u_0-\alpha| = |u_0-\alpha| \quad (\text{pour tout } n)$$
+
+      Le majorant NE TEND PAS vers $0$\,: le théorème des gendarmes ne
+      s'applique plus, et rien ne prouve la convergence par cette voie
+      (elle reste vraie sur $I=[0\,;1]$, où $k=\frac13<1$ redonne la
+      conclusion correcte du chapitre précédent).
+
+  - id: SUITES-42
+    rung: "R8b"
+    difficulty_level: 3
+    skill_code: sma_suites_numeriques
+    tags: [contraction, recurrence, arith_geom]
+    primary_misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
+    stem: >
+      Toujours sur cet exemple ($k=\dfrac13$, $|u_0-\alpha|=\sqrt7-2$), un
+      élève veut déduire une majoration de $|u_n-\alpha|$ pour tout $n$, à
+      partir de $|u_{n+1}-\alpha|\le\dfrac13|u_n-\alpha|$. Il écrit\,:
+      « En empilant l'inégalité $n$ fois, $|u_n-\alpha|\le
+      n\times\dfrac13\times(\sqrt7-2)$. » Que penser de ce résultat ?
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est faux : la bonne majoration est $|u_n-\\alpha|\\le\\left(\\dfrac13\\right)^{n+1}(\\sqrt7-2)$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.ordre-notation-recurrence
+        feedback: >
+          C'est un décalage d'un rang. Au rang $n=0$\,: le résultat correct
+          donne $\left(\frac13\right)^0(\sqrt7-2)=\sqrt7-2=|u_0-\alpha|$,
+          une égalité exacte au départ — cohérent. La proposition avec
+          l'exposant $n+1$ donnerait, au rang $0$, $\frac13(\sqrt7-2)$,
+          strictement plus petit que $|u_0-\alpha|$\,: c'est faux dès
+          l'initialisation.
+      - id: B
+        text: "C'est juste : $|u_n-\\alpha|\\le n\\times\\dfrac13\\times(\\sqrt7-2)$ pour tout $n$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
+        feedback: >
+          C'est confondre deux mécanismes. Une inégalité qui MULTIPLIE par
+          $k$ à chaque rang s'empile en une PUISSANCE $k^n$ (comme une
+          suite géométrique), jamais en une somme $n\times k$ (comme une
+          suite arithmétique). Vérifie sur $n=2$\,: le résultat proposé
+          donnerait $2\times\frac13\times(\sqrt7-2)$, alors que le calcul
+          direct donne $\frac13\times\left(\frac13|u_0-\alpha|\right)=
+          \left(\frac13\right)^2|u_0-\alpha|$.
+      - id: C
+        text: "C'est faux : la majoration correcte est $|u_n-\\alpha|\\le\\left(\\dfrac13\\right)^n(\\sqrt7-2)$, avec un exposant $n$."
+        correct: true
+      - id: D
+        text: "C'est faux : la bonne majoration est $|u_n-\\alpha|\\le\\left(\\dfrac13\\right)^n\\times u_0 = \\left(\\dfrac13\\right)^n$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.limite-liee-terme-initial
+        feedback: >
+          C'est le terme initial $u_0$ qui a été utilisé au lieu de
+          l'ÉCART initial $|u_0-\alpha|$. C'est cet écart — pas $u_0$
+          lui-même — qui se retrouve multiplié par $k^n$ à chaque étape de
+          l'empilement, puisque c'est sur $|u_n-\alpha|$ que porte
+          l'inégalité de départ, pas sur $u_n$ seul.
+    correct_feedback: >
+      L'empilement d'une inégalité qui multiplie par $k$ à chaque rang
+      produit une PUISSANCE, $k^n$, jamais une somme $n\times k$\,: c'est
+      exactement le mécanisme d'une suite géométrique (chapitres 3 et 6),
+      appliqué ici à l'écart $|u_n-\alpha|$ plutôt qu'à $u_n$ lui-même.
+      $|u_n-\alpha|\le\left(\frac13\right)^n(\sqrt7-2)$ pour tout $n$.
+    solution: |
+      **Récurrence.** Initialisation ($n=0$)\,: $|u_0-\alpha|=\sqrt7-2=
+      \left(\frac13\right)^0(\sqrt7-2)$, égalité.
+
+      Hérédité\,: si $|u_n-\alpha|\le\left(\frac13\right)^n(\sqrt7-2)$,
+      alors, en réinjectant $|u_{n+1}-\alpha|\le\frac13|u_n-\alpha|$\,:
+
+      $$|u_{n+1}-\alpha| \le \frac13\times\left(\frac13\right)^n(\sqrt7-2) = \left(\frac13\right)^{n+1}(\sqrt7-2)$$
+
+      C'est exactement l'inégalité au rang $n+1$\,: par récurrence, elle
+      est vraie pour tout $n$. Le facteur $k$ s'accumule en PUISSANCE, à
+      cause de la multiplication répétée — jamais en produit par $n$.
+
+  - id: SUITES-43
+    rung: "R8b"
+    difficulty_level: 5
+    skill_code: sma_suites_numeriques
+    tags: [contraction, gendarmes, synthese]
+    primary_misconception: mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique
+    stem: >
+      On dispose de $0\le|u_n-\alpha|\le\left(\dfrac13\right)^n(\sqrt7-2)$
+      pour tout $n$ (établi précédemment). Quelle rédaction conclut
+      correctement que $(u_n)$ converge vers $\alpha$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Avec $k=1$, le majorant $1^n(\\sqrt7-2)$ tend aussi vers $0$, donc le même raisonnement conclurait $u_n\\to\\alpha$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.contraction-k-pas-strict
+        feedback: >
+          Faux : avec $k=1$, le majorant serait $1^n(\sqrt7-2)=\sqrt7-2$,
+          une CONSTANTE qui ne tend pas vers $0$. Le théorème des gendarmes
+          ne conclurait alors rien du tout. C'est $k<1$ strictement qui
+          fait tendre le majorant vers $0$, condition sans laquelle toute
+          la chaîne s'arrête avant la conclusion.
+      - id: B
+        text: "$\\left(\\frac13\\right)^n(\\sqrt7-2)$ étant déjà très petit dès $n=1$ (environ $0{,}215$), $u_1=\\alpha$ exactement à partir de ce rang."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.majorant-atteint-ou-limite
+        feedback: >
+          Une majoration, même petite, n'est jamais une égalité\,: elle
+          dit seulement que $u_1$ est PROCHE de $\alpha$, pas qu'il lui est
+          égal. Seule la limite $n\to+\infty$ donne l'égalité $u_n\to
+          \alpha$, jamais un rang fini particulier.
+      - id: C
+        text: "Le majorant $\\left(\\frac13\\right)^n(\\sqrt7-2)$ tendant vers $0$ suffit, à lui seul, à conclure par les gendarmes que $u_n\\to\\alpha$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique
+        feedback: >
+          Le théorème des gendarmes exige un encadrement à DEUX bornes qui
+          tendent vers la même limite, pas une seule. Sans la minoration
+          $0\le|u_n-\alpha|$, rien n'empêcherait $|u_n-\alpha|$ de devenir
+          négatif dans le raisonnement (ce qui n'a pas de sens) ou de
+          suivre une autre borne inférieure qui ne tend pas vers $0$.
+      - id: D
+        text: "Comme $0<\\frac13<1$, le majorant $\\left(\\frac13\\right)^n(\\sqrt7-2)$ tend vers $0$ ; minoré par $0$, $|u_n-\\alpha|$ tend vers $0$ par les gendarmes."
+        correct: true
+    correct_feedback: >
+      Les deux bornes de l'encadrement $0\le|u_n-\alpha|\le
+      \left(\frac13\right)^n(\sqrt7-2)$ doivent tendre vers la MÊME
+      limite\,: c'est parce que $k=\frac13$ est strictement inférieur à
+      $1$ que le majorant tend vers $0$, ce qui permet aux gendarmes de
+      conclure $|u_n-\alpha|\to0$, soit $u_n\to\alpha$.
+    solution: |
+      $$0\le|u_n-\alpha|\le\left(\frac13\right)^n(\sqrt7-2), \qquad
+      \left(\frac13\right)^n(\sqrt7-2)\xrightarrow[n\to+\infty]{}0$$
+
+      (suite géométrique de raison $\frac13\in\,]{-1}\,;1[$, chapitre 6).
+      Par le théorème des gendarmes (chapitre 7), la borne inférieure $0$
+      et la borne supérieure convergeant toutes deux vers $0$\,:
+
+      $$\lim_{n\to+\infty}|u_n-\alpha|=0 \quad\Longleftrightarrow\quad \lim_{n\to+\infty}u_n=\alpha$$
+
+  - id: SUITES-44
+    rung: "R8b"
+    difficulty_level: 3
+    skill_code: sma_suites_numeriques
+    tags: [contraction, majoration_geometrique]
+    primary_misconception: mc.math.sma_suites_numeriques.contraction-k-pas-strict
+    stem: >
+      Variante sans dérivée\,: on établit que, pour une suite $(w_n)$
+      positive, $0\le w_{n+1}\le\dfrac34\,w_n$ pour tout $n$, avec $w_0=8$.
+      Quelle affirmation est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0\\le w_n\\le 8\\times\\left(\\dfrac34\\right)^n$, qui tend vers $0$ : $w_n\\to0$."
+        correct: true
+      - id: B
+        text: "N'importe quel $q$ positif conviendrait, même $q=1$ ou $q=2$, du moment que $w_0$ est connu."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.contraction-k-pas-strict
+        feedback: >
+          Si au contraire on avait obtenu $q=1$ ou $q=2$, la majoration
+          empilée $w_n\le w_0\,q^n$ ne tendrait plus vers $0$ ($q^n$ stagne
+          ou explose) : rien ne prouverait alors que $w_n\to0$. La
+          condition $q$ STRICTEMENT inférieur à $1$ est indispensable — ce
+          n'est pas un détail que $\frac34$ la vérifie ici.
+      - id: C
+        text: "$w_n\\le 8\\times n\\times\\dfrac34$ pour tout $n$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
+        feedback: >
+          Multiplier par $\frac34$ à chaque rang s'empile en PUISSANCE,
+          $\left(\frac34\right)^n$, jamais en produit par $n$. Vérifie sur
+          $n=2$\,: le calcul direct donne
+          $w_2\le\frac34\left(\frac34w_0\right)=\left(\frac34\right)^2w_0$,
+          pas $2\times\frac34\times w_0$.
+      - id: D
+        text: "$w_n\\le 8\\times\\left(\\dfrac34\\right)^{n-1}$ pour tout $n$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.ordre-notation-recurrence
+        feedback: >
+          Décalage d'un rang, dans l'autre sens que d'habitude\,: au rang
+          $n=0$, cette formule donnerait $8\times\left(\frac34\right)^{-1}=
+          \frac{32}{3}$, plus grand que $w_0=8$ lui-même — incohérent,
+          puisque l'inégalité de départ doit être une égalité au rang $0$
+          ($w_0\le w_0\times\left(\frac34\right)^0=w_0$).
+    correct_feedback: >
+      Le même moule que l'IAF s'applique, sans dérivée cette fois\,:
+      empiler $0\le w_{n+1}\le q\,w_n$ donne $0\le w_n\le w_0\,q^n$, et
+      $0\le q<1$ (ici $q=\frac34$) fait tendre ce majorant vers $0$
+      (gendarmes). La condition $q<1$ strictement reste, comme pour $k$,
+      ce qui fait fonctionner toute la méthode.
+    solution: |
+      **Récurrence.** $n=0$\,: $w_0\le8\times\left(\frac34\right)^0=8$,
+      égalité. Hérédité\,: $w_n\le8\left(\frac34\right)^n \Rightarrow
+      w_{n+1}\le\frac34w_n\le\frac34\times8\left(\frac34\right)^n=
+      8\left(\frac34\right)^{n+1}$.
+
+      **La limite.** $0\le\frac34<1\Rightarrow\left(\frac34\right)^n\to0$
+      (chapitre 6), donc $8\left(\frac34\right)^n\to0$. Par les gendarmes
+      (chapitre 7), appliqués à $0\le w_n\le8\left(\frac34\right)^n$\,:
+
+      $$\lim_{n\to+\infty} w_n = 0$$
+
+  - id: SUITES-45
+    rung: "R8c"
+    difficulty_level: 3
+    skill_code: sma_suites_numeriques
+    tags: [suite_implicite, tvi]
+    primary_misconception: mc.math.sma_suites_numeriques.tvi-sans-stricte-monotonie
+    stem: >
+      Pour tout entier $n\ge1$, on considère $g_n(x)=3-e^x-nx$ sur
+      $[0\,;1]$. Un élève calcule $g_n(0)=2>0$ et $g_n(1)=3-e-n<0$ (pour
+      $n\ge1$), puis écrit\,: « Par le théorème des valeurs intermédiaires,
+      $g_n$ s'annule en un réel $x_n\in\,]0\,;1[$ », et en conclut que
+      $x_n$ est l'UNIQUE tel réel. Que penser de cette conclusion ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le théorème des valeurs intermédiaires garantit à lui seul l'existence ET l'unicité d'une solution dès qu'il y a un changement de signe."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.tvi-sans-stricte-monotonie
+        feedback: >
+          C'est faux en général : une fonction continue qui change de
+          signe peut très bien s'annuler PLUSIEURS fois (elle peut osciller
+          entre les deux bornes). Ce qui interdit une seconde annulation
+          ici, c'est la stricte monotonie de $g_n$ — une information
+          séparée du TVI, qu'il faut établir en plus.
+      - id: B
+        text: "C'est incomplet : le TVI donne l'existence d'au moins une solution, pas l'unicité. Il faut en plus la stricte monotonie de $g_n$."
+        correct: true
+      - id: C
+        text: "Le théorème des valeurs intermédiaires ne s'applique ici que si l'on vérifie aussi $|g_n'|\\le k<1$ sur $[0\\,;1]$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.contraction-k-pas-strict
+        feedback: >
+          C'est confondre deux techniques différentes du même chapitre. La
+          borne $|f'|\le k<1$ est l'outil de la CONTRACTION (pour une
+          suite $u_{n+1}=f(u_n)$), pas celui de l'existence-unicité d'un
+          zéro par TVI. Ici, aucune borne sur $g_n'$ n'est nécessaire\,:
+          seul son SIGNE (négatif) compte, pour la stricte monotonie.
+      - id: D
+        text: "Il suffit que $[0\\,;1]$ soit le plus petit intervalle possible contenant un changement de signe de $g_n$ pour garantir l'unicité."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.majorant-atteint-ou-limite
+        feedback: >
+          La taille de l'intervalle où l'on observe le changement de signe
+          n'a rien à voir avec l'unicité de la solution\,: même sur
+          l'intervalle le plus étroit possible, une fonction non
+          strictement monotone pourrait s'y annuler plusieurs fois. C'est
+          la monotonie, pas la taille de l'intervalle, qui manque ici.
+    correct_feedback: >
+      Le TVI (fonction continue, changement de signe) prouve l'EXISTENCE
+      d'au moins une solution. L'UNICITÉ vient d'ailleurs\,: de la stricte
+      monotonie de $g_n$. Ici $g_n'(x)=-e^x-n<0$ pour tout $x$ ($n\ge1$)\,:
+      $g_n$ est strictement décroissante sur $\mathbb{R}$, donc injective,
+      donc son unique zéro sur $[0\,;1]$ est bien LE $x_n$ cherché.
+    solution: |
+      **Existence (TVI).** $g_n$ continue (dérivable), $g_n(0)=2>0$,
+      $g_n(1)=3-e-n<0$ (pour $n\ge1$, car $3-e\approx0{,}28<n$) : par le
+      TVI, $g_n$ s'annule au moins une fois sur $[0\,;1]$.
+
+      **Unicité (stricte monotonie).** $g_n'(x)=-e^x-n$. Pour tout
+      $x\in\mathbb{R}$ et tout $n\ge1$\,: $e^x>0$ et $n\ge1$, donc
+      $g_n'(x)<0$\,: $g_n$ est STRICTEMENT décroissante sur $\mathbb{R}$
+      tout entier, donc en particulier sur $[0\,;1]$.
+
+      **Conclusion.** Continue, changeant de signe, strictement
+      décroissante\,: par le corollaire du TVI pour une fonction
+      strictement monotone, il existe un UNIQUE $x_n\in\,]0\,;1[$ tel que
+      $g_n(x_n)=0$.
+
+  - id: SUITES-46
+    rung: "R8c"
+    difficulty_level: 5
+    skill_code: sma_suites_numeriques
+    tags: [suite_implicite, monotonie]
+    primary_misconception: mc.math.sma_suites_numeriques.comparaison-xn-sans-evaluation
+    stem: >
+      Avec $g_n(x)=3-e^x-nx$ (existence et unicité de $x_n\in\,]0\,;1[$
+      établies), un élève veut comparer $x_n$ et $x_{n+1}$. Sachant que
+      $g_{n+1}(x)=g_n(x)-x$ pour tout $x$ (le terme en $n$ change, le reste
+      non), quelle est la bonne façon de conclure, et que
+      trouve-t-on ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$g_{n+1}(x_n)=-x_n<0=g_{n+1}(x_{n+1})$, et $g_{n+1}$ est strictement croissante : donc $x_n>x_{n+1}$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.comparaison-xn-sans-evaluation
+        feedback: >
+          $g_{n+1}$ n'est pas croissante\,: $g_{n+1}'(x)=-e^x-(n+1)<0$,
+          elle est strictement DÉCROISSANTE, comme $g_n$. La conclusion
+          finale ($x_n>x_{n+1}$) est la bonne, mais atteinte ici pour la
+          mauvaise raison — en croyant $g_{n+1}$ croissante, ce qu'elle
+          n'est pas.
+      - id: B
+        text: "Le terme $-nx$ devenant $-(n+1)x$, « plus négatif », $(x_n)$ est croissante."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.comparaison-xn-sans-evaluation
+        feedback: >
+          Deviner le sens de variation sur la FORME de la formule ne
+          prouve rien\,: $x_n$ et $x_{n+1}$ sont zéros de deux fonctions
+          différentes, rien ne permet de les comparer sans évaluer l'une
+          d'elles aux deux points. Le calcul montre d'ailleurs le
+          contraire\,: $(x_n)$ est décroissante.
+      - id: C
+        text: "$g_{n+1}(x_n)=-x_n<0=g_{n+1}(x_{n+1})$, et $g_{n+1}$ est strictement décroissante : donc $x_n>x_{n+1}$, $(x_n)$ est strictement décroissante."
+        correct: true
+      - id: D
+        text: "$x_n$ et $x_{n+1}$ étant zéros de deux fonctions différentes, leur ordre se détermine en résolvant explicitement $g_n(x)=0$ pour chaque valeur de $n$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
+        feedback: >
+          Il n'est pas nécessaire de résoudre explicitement chaque
+          équation (ce qui, ici, n'a d'ailleurs pas de solution par
+          formule) : évaluer $g_{n+1}$ au point $x_n$ (déjà connu par sa
+          définition) suffit à trancher l'ordre, sans jamais calculer $x_n$
+          numériquement.
+    correct_feedback: >
+      $g_{n+1}$ est strictement DÉCROISSANTE ($g_{n+1}'(x)=-e^x-(n+1)<0$) :
+      une fonction décroissante inverse le sens en passant des sorties aux
+      entrées. Ici $g_{n+1}(x_n)=-x_n<0=g_{n+1}(x_{n+1})$, donc $x_n$
+      correspond à une sortie plus PETITE que celle de $x_{n+1}$ — pour une
+      fonction décroissante, cela signifie une entrée plus GRANDE\,:
+      $x_n>x_{n+1}$.
+    solution: |
+      **L'identité clé.** $g_{n+1}(x)-g_n(x)=\big[3-e^x-(n+1)x\big]-
+      \big[3-e^x-nx\big]=-x$, donc $g_{n+1}(x)=g_n(x)-x$ pour tout $x$.
+
+      **Évaluer en $x_n$.** $g_{n+1}(x_n)=g_n(x_n)-x_n=0-x_n=-x_n$
+      (car $g_n(x_n)=0$, définition de $x_n$). Or $x_n\in\,]0\,;1[$
+      (établi précédemment), donc $x_n>0$\,: $g_{n+1}(x_n)=-x_n<0$.
+
+      **Comparer.** $g_{n+1}(x_n)=-x_n<0=g_{n+1}(x_{n+1})$ (définition de
+      $x_{n+1}$). $g_{n+1}$ est strictement DÉCROISSANTE (établi ci-dessus
+      pour tout $n\ge1$)\,: une fonction strictement décroissante range les
+      sorties dans le sens INVERSE des entrées, donc
+      $g_{n+1}(x_n)<g_{n+1}(x_{n+1}) \Rightarrow x_n>x_{n+1}$.
+
+      C'est vrai pour tout $n\ge1$\,: $(x_n)$ est strictement décroissante.
+
+  - id: SUITES-47
+    rung: "R8c"
+    difficulty_level: 2
+    skill_code: sma_suites_numeriques
+    tags: [suite_implicite, monotonie]
+    primary_misconception: mc.math.sma_suites_numeriques.comparaison-xn-sans-evaluation
+    stem: >
+      Pour tout $n\ge1$, on pose $h_n(x)=(n+1)x-1$ sur $[0\,;1]$. On admet
+      que $h_n$ s'annule en un unique $x_n\in\,]0\,;1[$ pour chaque $n$. Un
+      élève veut comparer $x_n$ et $x_{n+1}$ et écrit\,: « Comme le
+      coefficient $n+1$ devant $x$ augmente avec $n$, la suite $(x_n)$ doit
+      être croissante. » Que penser de cette affirmation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Un coefficient plus grand rapproche $x_n$ de $1$ : $(x_n)$ croît à mesure que $n$ augmente."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.comparaison-xn-sans-evaluation
+        feedback: >
+          Deviner sur la forme du coefficient ne prouve rien\,: c'est
+          l'inverse qui se produit ici. $x_n=\frac{1}{n+1}$ : un
+          coefficient plus grand rend $x_n$ plus PETIT, pas plus grand.
+      - id: B
+        text: "$h_{n+1}(x_n)=x_n>0$, et $h_{n+1}$ étant croissante, une sortie positive donne $x_n<x_{n+1}$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.comparaison-xn-sans-evaluation
+        feedback: >
+          L'évaluation est correcte, mais le sens est inversé\,: pour une
+          fonction CROISSANTE, une sortie plus grande que $h_{n+1}(x_{n+1})=0$
+          correspond à une entrée plus grande, pas plus petite. $x_n>0=
+          h_{n+1}(x_{n+1})$ donne donc $x_n>x_{n+1}$, pas l'inverse.
+      - id: C
+        text: "L'existence et l'unicité de $x_{n+1}$ doivent être revérifiées à ce stade, en plus de la monotonie déjà établie, avant de comparer $x_n$ et $x_{n+1}$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.tvi-sans-stricte-monotonie
+        feedback: >
+          L'existence et l'unicité de chaque $x_n$ se règlent une fois pour
+          toutes, pour tout $n\ge1$ (ici, $h_n$ affine strictement
+          croissante, changeant de signe entre $0$ et $1$) : il n'y a pas
+          à la « revérifier » à chaque comparaison.
+      - id: D
+        text: "L'affirmation est fausse : $h_{n+1}(x_n)=x_n>0=h_{n+1}(x_{n+1})$, et $h_{n+1}$ étant croissante, $x_n>x_{n+1}$ : $(x_n)$ est en réalité décroissante."
+        correct: true
+    correct_feedback: >
+      Deviner sur la forme du coefficient est trompeur : c'est l'inverse
+      qui se produit. En évaluant $h_{n+1}$ (pas $h_n$) au point $x_n$, on
+      trouve une quantité strictement positive, égale à $h_{n+1}(x_{n+1})=0$
+      dépassée\,: comme $h_{n+1}$ est croissante, cela place $x_n$
+      AU-DESSUS de $x_{n+1}$. $(x_n)=\frac{1}{n+1}$ est décroissante.
+    solution: |
+      $h_{n+1}(x)-h_n(x)=(n+2)x-(n+1)x=x$, donc $h_{n+1}(x)=h_n(x)+x$.
+
+      En $x=x_n$\,: $h_{n+1}(x_n)=h_n(x_n)+x_n=0+x_n=x_n>0$
+      (car $x_n\in\,]0\,;1[$).
+
+      $h_{n+1}(x_n)=x_n>0=h_{n+1}(x_{n+1})$, et $h_{n+1}$ strictement
+      croissante (coefficient $n+2>0$)\,: une sortie plus grande
+      correspond à une entrée plus grande, donc $x_n>x_{n+1}$.
+
+      $(x_n)$ est strictement décroissante — ce que confirme la formule
+      exacte, ici accessible, $x_n=\dfrac{1}{n+1}$.
+
+  - id: SUITES-48
+    rung: "R8c"
+    difficulty_level: 4
+    skill_code: sma_suites_numeriques
+    tags: [suite_implicite, limite, synthese]
+    primary_misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
+    stem: >
+      Avec $g_n(x)=3-e^x-nx$, $(x_n)$ strictement décroissante et
+      $x_n\in\,]0\,;1[$ pour tout $n\ge1$ (établis précédemment), un élève
+      veut déterminer $\lim\limits_{n\to+\infty}x_n$. Quelle rédaction est
+      complète et correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Décroissante et minorée par $0$, $(x_n)$ converge ; $0<x_n<\\dfrac2n$ donne $L=0$ par les gendarmes."
+        correct: true
+      - id: B
+        text: "$(x_n)$ étant décroissante, elle converge, avec $L\\ge0$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.monotone-hypothese-partielle
+        feedback: >
+          Le théorème de la limite monotone exige les DEUX conditions
+          ensemble\,: décroissante ET minorée. Une suite décroissante non
+          minorée peut diverger vers $-\infty$ : la minoration n'est pas un
+          détail, elle est nécessaire à la conclusion de convergence.
+      - id: C
+        text: "$(x_n)$ étant strictement décroissante, sa limite est $0$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.tendance-implique-limite
+        feedback: >
+          Une suite décroissante minorée par $0$ pourrait tout aussi bien
+          converger vers une limite strictement positive (par exemple
+          $\frac12$) que vers $0$\,: la décroissance seule ne dit rien de
+          la VALEUR de la limite. Il faut l'argument séparé sur $nx_n$
+          (l'encadrement $0<x_n<\frac2n$) pour pouvoir conclure $L=0$
+          précisément.
+      - id: D
+        text: "$g_n$ tendant vers une fonction limite quand $n\\to+\\infty$, le TVI appliqué à cette fonction limite donne directement $L$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.tvi-sans-stricte-monotonie
+        feedback: >
+          Le TVI s'applique à UNE fonction, pour trouver UN zéro à $n$
+          fixé — il ne dit rien sur ce qui se passe quand $n\to+\infty$
+          dans une famille de fonctions. Ici, l'encadrement $0<x_n<
+          \frac2n$, obtenu directement à partir de la définition de $x_n$,
+          est l'argument qui donne la limite, pas un TVI « à la limite ».
+    correct_feedback: >
+      Deux étapes séparées, comme au chapitre 9\,: le théorème de la
+      limite monotone (décroissante ET minorée) donne l'EXISTENCE de
+      $L\ge0$ ; puis un argument indépendant — ici l'encadrement
+      $0<x_n<\frac2n$, tiré de la définition même de $x_n$ — donne sa
+      VALEUR exacte, $L=0$.
+    solution: |
+      **Existence.** $(x_n)$ strictement décroissante (établi) et minorée
+      par $0$ ($x_n>0$ pour tout $n$) : les deux hypothèses du théorème
+      de la limite monotone sont réunies. $(x_n)$ converge vers $L\ge0$.
+
+      **La valeur.** $g_n(x_n)=0 \iff 3-e^{x_n}-nx_n=0 \iff
+      nx_n=3-e^{x_n}$. Comme $x_n\in\,]0\,;1[$, $e^{x_n}\in\,]1\,;e[$
+      (fonction exponentielle strictement croissante), donc
+      $3-e^{x_n}\in\,]3-e\,;2[$, en particulier $0<nx_n<2$, soit\,:
+
+      $$0 < x_n < \frac2n \quad (\forall n\ge1)$$
+
+      $\dfrac2n\to0$ quand $n\to+\infty$\,: par les gendarmes,
+      $\lim\limits_{n\to+\infty}x_n=0$.
+
+  - id: SUITES-49
+    rung: "R8c"
+    difficulty_level: 3
+    skill_code: sma_suites_numeriques
+    tags: [suite_implicite, monotonie]
+    primary_misconception: mc.math.sma_suites_numeriques.comparaison-xn-sans-evaluation
+    stem: >
+      Pour montrer que $(x_n)$ est monotone (avec $g_n(x)=3-e^x-nx$),
+      quelle est la bonne quantité à évaluer, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le calcul est inutile : $x_n$ et $x_{n+1}$ sont ordonnés dans le même sens que $n$ et $n+1$, par construction de la suite."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.comparaison-xn-sans-evaluation
+        feedback: >
+          Rien, dans la simple définition « $x_n$ est le zéro de $g_n$ »,
+          n'impose un ordre entre $x_n$ et $x_{n+1}$\,: $g_n$ et
+          $g_{n+1}$ sont deux fonctions différentes, et seul un calcul
+          (évaluer l'une d'elles aux deux points) permet de trancher.
+      - id: B
+        text: "$g_n(x_{n+1})$ : peu importe laquelle des deux fonctions on évalue, la comparaison reste valable de la même façon."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.comparaison-xn-sans-evaluation
+        feedback: >
+          Le choix n'est pas indifférent\,: il faut évaluer la fonction
+          dont on connaît DÉJÀ la valeur en $0$ à l'un des deux points
+          (ici $g_{n+1}(x_{n+1})=0$, par définition), pour pouvoir comparer
+          à une sortie connue. Évaluer $g_n(x_{n+1})$ ne donne rien de
+          comparable sans un calcul supplémentaire.
+      - id: C
+        text: "$g_{n+1}(x_n)$ : elle relie $x_n$ et $x_{n+1}$ via une seule fonction, ce qui permet d'utiliser sa stricte monotonie."
+        correct: true
+      - id: D
+        text: "L'unicité de $x_n$ et de $x_{n+1}$ doit être revérifiée séparément avant de pouvoir les comparer."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.tvi-sans-stricte-monotonie
+        feedback: >
+          L'existence et l'unicité de chaque $x_n$ se règlent une fois
+          pour toutes pour tout $n$ (TVI + stricte monotonie de $g_n$) ;
+          il n'y a pas besoin de les « revérifier » à chaque comparaison,
+          seulement d'évaluer $g_{n+1}(x_n)$.
+    correct_feedback: >
+      $g_{n+1}(x_n)$ est la quantité qui compte\,: elle relie $x_n$ à la
+      fonction dont $x_{n+1}$ est déjà le zéro connu ($g_{n+1}(x_{n+1})=0$).
+      Comparer $g_{n+1}(x_n)$ à $0$, puis utiliser la stricte monotonie de
+      $g_{n+1}$, est la seule voie qui transforme une comparaison de
+      SORTIES en comparaison d'ENTRÉES.
+    solution: |
+      $x_n$ et $x_{n+1}$ sont zéros de deux fonctions différentes,
+      $g_n$ et $g_{n+1}$\,: aucune comparaison directe n'est possible sans
+      calcul. La quantité utile est $g_{n+1}(x_n)$, car elle met en jeu
+      DEUX informations exploitables à la fois\,:
+
+      - $g_{n+1}(x_{n+1})=0$ (définition de $x_{n+1}$)\,;
+      - $g_{n+1}(x_n)$, calculable à partir de $g_n(x_n)=0$ via l'identité
+        $g_{n+1}(x)=g_n(x)-x$.
+
+      Comparer ce résultat à $0=g_{n+1}(x_{n+1})$, puis appliquer la
+      stricte monotonie de $g_{n+1}$ (connue par ailleurs), donne l'ordre
+      de $x_n$ et $x_{n+1}$.
+
+  - id: SUITES-50
+    rung: "R8d"
+    difficulty_level: 2
+    skill_code: sma_suites_numeriques
+    tags: [suite_homographique, suite_auxiliaire, arith_geom]
+    primary_misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
+    stem: >
+      Soit $(u_n)$ définie par $u_0=0$ et
+      $u_{n+1}=\dfrac{5u_n+2}{u_n+4}$. On pose
+      $v_n=\dfrac{u_n-2}{u_n+1}$. Un élève calcule
+      $v_{n+1}=\dfrac{3(u_n-2)}{6(u_n+1)}$ et affirme\,: « $(v_n)$ est
+      géométrique de raison $\dfrac{3(u_n-2)}{6(u_n+1)}$. » Que penser de
+      cette affirmation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\alpha=2$ et $\\beta=-1$ étant points fixes de la relation, $(u_n)$ converge vers l'un des deux."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.point-fixe-prouve-convergence
+        feedback: >
+          L'existence de points fixes ne prouve jamais, à elle seule, la
+          convergence ni ne désigne laquelle des deux valeurs est la
+          limite\,: c'est justement l'étude de $(v_n)$ — via sa raison, et
+          le fait que $|{\frac12}|<1$ — qui fournit cet argument.
+      - id: B
+        text: "C'est juste : $(v_n)$ est géométrique, de raison $\\dfrac{3(u_n-2)}{6(u_n+1)}$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
+        feedback: >
+          Une raison géométrique est TOUJOURS un nombre fixe, le même à
+          tous les rangs — jamais une expression qui « se recalcule »
+          selon $u_n$. S'arrêter avant de factoriser laisse croire, à
+          tort, qu'une expression variable pourrait être une raison.
+      - id: C
+        text: "La raison est $\\dfrac12$, mais $(v_n)$ est en réalité arithmétique de raison $\\dfrac12$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
+        feedback: >
+          Diviser fait bien apparaître un facteur MULTIPLICATIF constant
+          devant $v_n$ ($v_{n+1}=\frac12v_n$) — c'est exactement le
+          mécanisme d'une suite GÉOMÉTRIQUE, pas arithmétique (qui
+          ajouterait une constante : $v_{n+1}=v_n+r$). La façon dont on
+          obtient la constante (ici, une division) ne détermine pas la
+          famille de la suite obtenue.
+      - id: D
+        text: "C'est faux : cette expression vaut $\\dfrac12v_n$ ; la raison est le nombre $\\dfrac12$."
+        correct: true
+    correct_feedback: >
+      Il ne suffit pas de s'arrêter à $\dfrac{3(u_n-2)}{6(u_n+1)}$\,: il
+      faut factoriser pour faire réapparaître $v_n=\dfrac{u_n-2}{u_n+1}$ à
+      l'intérieur. Une fois fait, la raison est le NOMBRE $\dfrac12$ — une
+      raison géométrique n'est jamais une expression qui dépend de $n$ ou
+      de $u_n$.
+    solution: |
+      $$v_{n+1}=\frac{3(u_n-2)}{6(u_n+1)} = \frac12\times\frac{u_n-2}{u_n+1} = \frac12\,v_n$$
+
+      $(v_n)$ est bien géométrique, de raison $\dfrac12$ — un NOMBRE fixe,
+      pas une expression en $u_n$. S'arrêter avant la factorisation laisse
+      croire, à tort, qu'une fraction dépendant de $u_n$ pourrait déjà
+      être « la » raison.
+
+  - id: SUITES-51
+    rung: "R8d"
+    difficulty_level: 3
+    skill_code: sma_suites_numeriques
+    tags: [suite_homographique, suite_auxiliaire, arith_geom]
+    primary_misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
+    stem: >
+      Toujours avec $(u_n)$ ci-dessus et $v_n=\dfrac{u_n-2}{u_n+1}$
+      (géométrique de raison $\dfrac12$, établi précédemment), un élève
+      doit étudier $w_n=\dfrac{2-u_n}{1+u_n}$. Il remarque que $w_n=-v_n$
+      pour tout $n$. Quelle est la raison de $(w_n)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-\\dfrac12$ : le signe de la raison change avec celui de la suite."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
+        feedback: >
+          La raison d'une suite géométrique multipliée par une constante
+          $\lambda\neq0$ reste inchangée\,: si $v_{n+1}=\frac12v_n$, alors
+          $w_{n+1}=-v_{n+1}=-\frac12v_n=\frac12\times(-v_n)=\frac12w_n$ —
+          la raison $\frac12$ ne change pas de signe, seul $w_0=-v_0$ en
+          change.
+      - id: B
+        text: "$\\dfrac12$ : multiplier une suite géométrique par une constante non nulle ne change pas sa raison."
+        correct: true
+      - id: C
+        text: "$(w_n)$ n'est pas géométrique : ses termes ne sont pas tous du même signe que ceux de $(v_n)$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
+        feedback: >
+          Rien n'impose à une suite géométrique d'avoir des termes tous
+          d'un signe fixe (une raison négative, par exemple, alternerait
+          les signes) : la nature géométrique dépend seulement de
+          l'existence d'un facteur constant entre deux termes consécutifs,
+          jamais du signe de ces termes.
+      - id: D
+        text: "La raison de $(w_n)$ dépend de la valeur de $w_0$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.limite-liee-terme-initial
+        feedback: >
+          La raison d'une suite géométrique ne dépend jamais de son
+          premier terme\,: $w_0$ et $v_0$ peuvent différer (ici,
+          $w_0=-v_0$) tout en donnant EXACTEMENT la même raison — le
+          premier terme fixe le point de départ, la raison gouverne
+          l'évolution, ce sont deux rôles indépendants.
+    correct_feedback: >
+      Multiplier une suite géométrique par une constante non nulle ne
+      change jamais sa raison\,: si $v_{n+1}=\frac12v_n$, alors, en posant
+      $w_n=-v_n$, $w_{n+1}=-v_{n+1}=-\frac12v_n=\frac12(-v_n)=\frac12w_n$.
+      $(w_n)$ est géométrique de raison $\frac12$, la même que $(v_n)$.
+    solution: |
+      $$w_{n+1} = -v_{n+1} = -\frac12v_n = \frac12\times(-v_n) = \frac12\,w_n$$
+
+      $(w_n)$ est géométrique de raison $\dfrac12$ — inchangée par rapport
+      à $(v_n)$, seul le terme initial $w_0=-v_0$ change de signe. C'est
+      le cas général\,: multiplier (ou changer le signe) une suite
+      géométrique par une constante non nulle laisse sa raison intacte.
+
+  - id: SUITES-52
+    rung: "R8d"
+    difficulty_level: 4
+    skill_code: sma_suites_numeriques
+    tags: [suite_homographique, domaine]
+    primary_misconception: mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine
+    stem: >
+      Pour définir $v_n=\dfrac{u_n-2}{u_n+1}$, il faut que $u_n\neq-1$
+      pour tout $n$. Un élève ne vérifie pas cette condition et affirme
+      directement que $(v_n)$ est bien définie et géométrique pour tout
+      $n$. Sachant que $u_0=0$ et que $u_{n+1}=\dfrac{5u_n+2}{u_n+4}$ (un
+      quotient de deux quantités positives dès que $u_n\ge0$), que penser
+      de la démarche de cet élève ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Conclusion vraie, démarche incomplète : il fallait d'abord établir par récurrence que $u_n+1\\neq0$ pour tout $n$."
+        correct: true
+      - id: B
+        text: "La suite auxiliaire $(v_n)$ est bien définie d'office, par sa construction même, sans condition sur $(u_n)$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine
+        feedback: >
+          Un quotient n'est défini que si son dénominateur ne s'annule
+          jamais\,: ici $u_n+1$. Rien ne garantit cela « toujours » sans
+          preuve — c'est précisément l'objet d'une récurrence à mener
+          avant de pouvoir parler de $(v_n)$.
+      - id: C
+        text: "Vérifier $u_0\\neq-1$ suffit à garantir que $(v_n)$ est bien définie pour tout $n$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine
+        feedback: >
+          Vérifier un seul rang ne dit rien sur l'infinité des rangs
+          suivants (c'est l'erreur classique de la récurrence, chapitre
+          2) : il faut l'hérédité, ici tirée de $u_n\ge0\Rightarrow
+          u_{n+1}=\frac{5u_n+2}{u_n+4}\ge0$ (quotient de deux quantités
+          positives), pour couvrir tous les $n$.
+      - id: D
+        text: "Les cinq premiers termes $u_0,\\ldots,u_4$ ne valant pas $-1$, $(v_n)$ est bien définie pour tout $n$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.preuve-par-termes-calcules
+        feedback: >
+          Cinq termes calculés ne couvrent pas l'infinité des rangs
+          restants\,: il faut un argument général, valable pour TOUT $n$
+          (ici, une récurrence sur le signe de $u_n$), pas un échantillon
+          fini, aussi rassurant soit-il.
+    correct_feedback: >
+      Écrire $v_n=\dfrac{u_n-2}{u_n+1}$ suppose $u_n\neq-1$ pour tout $n$
+      — une condition à ÉTABLIR, pas à supposer. Ici, $u_0=0\ge0$, et
+      $u_n\ge0\Rightarrow u_{n+1}=\dfrac{5u_n+2}{u_n+4}\ge0$ (numérateur et
+      dénominateur positifs) : par récurrence, $u_n\ge0>-1$ pour tout $n$,
+      ce qui justifie enfin d'écrire $v_n$.
+    solution: |
+      **Initialisation.** $u_0=0\ge0$.
+
+      **Hérédité.** Si $u_n\ge0$\,: $5u_n+2\ge2>0$ et $u_n+4\ge4>0$, donc
+      $u_{n+1}=\dfrac{5u_n+2}{u_n+4}\ge0$.
+
+      **Conclusion.** Par récurrence, $u_n\ge0$ pour tout $n$, donc
+      $u_n+1\ge1>0$\,: le dénominateur de $v_n$ ne s'annule jamais. C'est
+      SEULEMENT une fois cette étape faite que $v_n=\dfrac{u_n-2}{u_n+1}$
+      est légitimement définie, et que son étude (géométrique, raison
+      $\frac12$) a un sens.
+
+  - id: SUITES-53
+    rung: "R8d"
+    difficulty_level: 5
+    skill_code: sma_suites_numeriques
+    tags: [suite_homographique, suite_auxiliaire, synthese]
+    primary_misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
+    stem: >
+      On a établi $v_n=-2\times\left(\dfrac12\right)^n$ pour la suite
+      $(u_n)$ des items précédents. Pour retrouver $u_n$, il faut inverser
+      $v_n=\dfrac{u_n-2}{u_n+1}$. Un élève écrit\,: « $v_n(u_n+1)=u_n-2$,
+      donc $u_n=v_nu_n+v_n+2$ », et s'arrête là en disant que c'est la
+      formule cherchée. Quel est le problème ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$v_n=-2\\times\\left(\\dfrac12\\right)^{n+1}$, par le décalage habituel des suites homographiques."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
+        feedback: >
+          Un décalage d'exposant n'est pas systématique\,: il dépend de la
+          valeur de $v_0$ trouvée pour CET exemple précis, pas d'une règle
+          générale copiée d'un autre exemple. Ici, $v_0=\frac{u_0-2}
+          {u_0+1}=\frac{0-2}{0+1}=-2$, et $-2\times\left(\frac12\right)^0=
+          -2=v_0$\,: pas de décalage, la formule $v_n=-2\left(\frac12
+          \right)^n$ est déjà correcte au rang $0$.
+      - id: B
+        text: "$u_n=v_nu_n+v_n+2$ est la formule de $u_n$ en fonction de $n$."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.ordre-notation-recurrence
+        feedback: >
+          Une formule « en fonction de $n$ » ne doit plus contenir $u_n$
+          d'aucun côté après isolement\,: ici, $u_n$ apparaît encore À
+          DROITE (dans $v_nu_n$), donc l'expression ne dit toujours pas
+          combien vaut $u_n$ — il manque l'étape de regroupement et de
+          division.
+      - id: C
+        text: "$u_n=\\dfrac{v_n+2}{1-v_n}$, en regroupant les termes en $u_n$ puis en factorisant."
+        correct: true
+      - id: D
+        text: "$(u_n)$ et $(v_n)$ convergent vers la même limite."
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.limite-liee-terme-initial
+        feedback: >
+          $(v_n)$ et $(u_n)$ n'ont aucune raison d'avoir la même limite\,:
+          $v_n\to0$ (raison $\frac12\in\,]{-1}\,;1[$), tandis que
+          $u_n=\dfrac{v_n+2}{1-v_n}\to\dfrac{0+2}{1-0}=2$. Ce sont deux
+          quantités liées par une formule, pas interchangeables dans un
+          calcul de limite.
+    correct_feedback: >
+      L'inversion n'est pas terminée tant que $u_n$ figure encore des DEUX
+      côtés de l'égalité. Il faut regrouper\,: $u_n-v_nu_n=v_n+2
+      \Rightarrow u_n(1-v_n)=v_n+2 \Rightarrow u_n=\dfrac{v_n+2}{1-v_n}$
+      — et alors seulement remplacer $v_n$ par sa valeur.
+    solution: |
+      $$v_n(u_n+1)=u_n-2 \implies v_nu_n+v_n = u_n-2 \implies u_n-v_nu_n = v_n+2$$
+
+      $$\implies u_n(1-v_n) = v_n+2 \implies u_n = \frac{v_n+2}{1-v_n}$$
+
+      Avec $v_n=-2\left(\dfrac12\right)^n$\,:
+
+      $$u_n = \frac{2-2\left(\frac12\right)^n}{1+2\left(\frac12\right)^n}$$
+
+      **Vérification à un rang.** $n=1$\,: $v_1=-1$, donc
+      $u_1=\dfrac{-1+2}{1-(-1)}=\dfrac12$ — cohérent avec le calcul direct
+      $u_1=\dfrac{5\times0+2}{0+4}=\dfrac12$.
+
+      **La limite.** $v_n\to0$ (raison $\frac12\in\,]{-1}\,;1[$), donc, par
+      continuité du quotient (dénominateur non nul à la limite)\,:
+
+      $$\lim_{n\to+\infty}u_n = \frac{0+2}{1-0} = 2$$
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
-# RÉÉCRIT le 2026-09-05, après SUITES-34 à SUITES-38. Cinq familles siégeaient
-# à UN item du banc : bornée n'implique pas monotone, la méthode du quotient
-# exige la positivité, le signe de $f(x)-x$ se lit sur l'intervalle stable,
-# une forme indéterminée n'est pas une absence de limite, et le comportement
-# des premiers termes ne prédit rien. Tableau GÉNÉRÉ contre
-# web/scripts/lib/couverture-compte.mjs, gardé par
-# web/scripts/resume-couverture.mjs.
+# RÉÉCRIT le 2026-09-27, après SUITES-39 à SUITES-53 (dette d'examen, vague
+# B1 : contraction/IAF, suites implicites f_n(x_n)=0, suites homographiques —
+# docs/audits/dette-examen/maths.md, § suites-numeriques). Quatre nouvelles
+# misconceptions déclarées (iaf-intervalle-instable, contraction-k-pas-strict,
+# tvi-sans-stricte-monotonie, comparaison-xn-sans-evaluation), chacune au
+# plancher ou au-dessus. Onze items ajoutent aussi, en tag secondaire, à des
+# misconceptions déjà couvertes (bonus, pas requis pour le plancher). Un
+# typo d'id a été corrigé en cours de route : deux distracteurs (SUITES-46,
+# SUITES-52) visaient `preuve-par-termes-calculees` (inexistant) au lieu de
+# `preuve-par-termes-calcules` (déclaré) — corrigé avant ce résumé. Tableau
+# GÉNÉRÉ contre web/scripts/lib/couverture-compte.mjs, gardé par
+# web/scripts/resume-couverture.mjs — CE TABLEAU EST MIS À JOUR À LA MAIN ET
+# DOIT ÊTRE RE-VÉRIFIÉ PAR CE SCRIPT avant tout passage en base.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2565,21 +3587,25 @@ coverage_summary:
     web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.math.sma_suites_numeriques.recurrence-etape-manquante:         { count: 4, items: [SUITES-1, SUITES-10, SUITES-11, SUITES-31] }
-    mc.math.sma_suites_numeriques.preuve-par-termes-calcules:         { count: 3, items: [SUITES-1, SUITES-16, SUITES-17] }
+    mc.math.sma_suites_numeriques.preuve-par-termes-calcules:         { count: 5, items: [SUITES-1, SUITES-16, SUITES-17, SUITES-46, SUITES-52] }
     mc.math.sma_suites_numeriques.bornee-implique-monotone:           { count: 6, items: [SUITES-2, SUITES-34, SUITES-35, SUITES-36, SUITES-37, SUITES-38] }
-    mc.math.sma_suites_numeriques.majorant-atteint-ou-limite:         { count: 4, items: [SUITES-5, SUITES-15, SUITES-25, SUITES-38] }
+    mc.math.sma_suites_numeriques.majorant-atteint-ou-limite:         { count: 7, items: [SUITES-5, SUITES-15, SUITES-25, SUITES-38, SUITES-40, SUITES-43, SUITES-45] }
     mc.math.sma_suites_numeriques.quotient-monotonie-sans-positivite: { count: 3, items: [SUITES-18, SUITES-34, SUITES-35] }
-    mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine:           { count: 3, items: [SUITES-19, SUITES-34, SUITES-36] }
-    mc.math.sma_suites_numeriques.monotone-hypothese-partielle:       { count: 5, items: [SUITES-24, SUITES-25, SUITES-26, SUITES-31, SUITES-33] }
-    mc.math.sma_suites_numeriques.point-fixe-prouve-convergence:      { count: 3, items: [SUITES-5, SUITES-27, SUITES-31] }
+    mc.math.sma_suites_numeriques.signe-fx-mauvais-domaine:           { count: 4, items: [SUITES-19, SUITES-34, SUITES-36, SUITES-52] }
+    mc.math.sma_suites_numeriques.monotone-hypothese-partielle:       { count: 6, items: [SUITES-24, SUITES-25, SUITES-26, SUITES-31, SUITES-33, SUITES-48] }
+    mc.math.sma_suites_numeriques.point-fixe-prouve-convergence:      { count: 5, items: [SUITES-5, SUITES-27, SUITES-31, SUITES-39, SUITES-50] }
     mc.math.sma_suites_numeriques.forme-indeterminee-mal-geree:       { count: 3, items: [SUITES-20, SUITES-35, SUITES-36] }
-    mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique: { count: 3, items: [SUITES-4, SUITES-22, SUITES-23] }
+    mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique: { count: 4, items: [SUITES-4, SUITES-22, SUITES-23, SUITES-43] }
     mc.math.sma_suites_numeriques.adjacentes-condition-incomplete:    { count: 3, items: [SUITES-6, SUITES-29, SUITES-30] }
-    mc.math.sma_suites_numeriques.arith-geom-confondues:              { count: 8, items: [SUITES-3, SUITES-12, SUITES-13, SUITES-14, SUITES-21, SUITES-28, SUITES-32, SUITES-33] }
-    mc.math.sma_suites_numeriques.limite-liee-terme-initial:          { count: 3, items: [SUITES-3, SUITES-5, SUITES-21] }
-    mc.math.sma_suites_numeriques.ordre-notation-recurrence:          { count: 3, items: [SUITES-7, SUITES-8, SUITES-11] }
-    mc.math.sma_suites_numeriques.tendance-implique-limite:           { count: 3, items: [SUITES-9, SUITES-37, SUITES-38] }
-  total_items: 38
+    mc.math.sma_suites_numeriques.arith-geom-confondues:              { count: 13, items: [SUITES-3, SUITES-12, SUITES-13, SUITES-14, SUITES-21, SUITES-28, SUITES-32, SUITES-33, SUITES-42, SUITES-44, SUITES-50, SUITES-51, SUITES-53] }
+    mc.math.sma_suites_numeriques.limite-liee-terme-initial:          { count: 7, items: [SUITES-3, SUITES-5, SUITES-21, SUITES-41, SUITES-42, SUITES-51, SUITES-53] }
+    mc.math.sma_suites_numeriques.ordre-notation-recurrence:          { count: 6, items: [SUITES-7, SUITES-8, SUITES-11, SUITES-42, SUITES-44, SUITES-53] }
+    mc.math.sma_suites_numeriques.tendance-implique-limite:           { count: 4, items: [SUITES-9, SUITES-37, SUITES-38, SUITES-48] }
+    mc.math.sma_suites_numeriques.iaf-intervalle-instable:            { count: 3, items: [SUITES-39, SUITES-40, SUITES-41] }
+    mc.math.sma_suites_numeriques.contraction-k-pas-strict:           { count: 5, items: [SUITES-39, SUITES-41, SUITES-43, SUITES-44, SUITES-45] }
+    mc.math.sma_suites_numeriques.tvi-sans-stricte-monotonie:         { count: 4, items: [SUITES-45, SUITES-47, SUITES-48, SUITES-49] }
+    mc.math.sma_suites_numeriques.comparaison-xn-sans-evaluation:     { count: 3, items: [SUITES-46, SUITES-47, SUITES-49] }
+  total_items: 53
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2592,9 +3618,21 @@ coverage_summary:
     R6: 3
     R7: 3
     R8: 4
+    R8b: 6
+    R8c: 5
+    R8d: 4
     R9: 3
     R10: 3
   honest_state: >-
-    Les quinze misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Dix y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item la casse.
+    Dix-neuf misconceptions déclarées, toutes couvertes, aucune sous le
+    plancher. Deux y siègent EXACTEMENT (3 items, marge nulle) :
+    quotient-monotonie-sans-positivite et adjacentes-condition-incomplete —
+    ni l'une ni l'autre touchées par cette vague, non retesté. Parmi les
+    quatre ids ajoutés dans cette vague, deux siègent aussi exactement au
+    plancher : iaf-intervalle-instable (SUITES-39/40/41) et
+    comparaison-xn-sans-evaluation (SUITES-46/47/49) — tout retrait d'un de
+    ces cinq items casse le plancher correspondant. Rungs R8b/R8c/R8d : label
+    choisi par l'auteur d'items (pas de convention préexistante) pour trois
+    blocs de leçon insérés entre R8 (point fixe) et R9 (adjacentes) sans
+    numéro R propre dans lesson.md (« La contraction », « Suites définies
+    implicitement », « Suites homographiques »).
