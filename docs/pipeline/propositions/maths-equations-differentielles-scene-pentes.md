@@ -1,15 +1,110 @@
 # spec — manipulable 2D `champ-des-pentes` (Maths · `equations-differentielles`, **R2**)
 
-**Statut : PROPOSITION, non construite — pas encore revue (vague 1 à faire).**
-Écrite le 2026-09-25 par pedagogy-architect.
+**Statut : PROPOSITION révisée après la vague 1 — NON CONSTRUITE.**
+**La dette $\Delta=0$ qui la précédait est PAYÉE ; ce qui reste avant construction n'est plus un
+ORDRE, c'est une RELECTURE (vague 1bis sur cette révision).**
+Écrite le 2026-09-25 par pedagogy-architect · **révisée le 2026-09-27 après la vague 1**
+(bac-fidelity-critic + pedagogy-critic, tous deux **CONSTRUIRE PLUS TARD — après la dette, puis
+seulement avec les correctifs**).
+
+> ✅ **L'ORDRE EST TRANCHÉ, IL A ÉTÉ EXÉCUTÉ, ET LA PORTE EST LEVÉE.** La question 1 du §13
+> (« faut-il construire cette scène plutôt que de payer la dette mesurée de la notion ? ») avait
+> pour **défaut : la dette d'abord**. Les deux critiques de vague 1 ont confirmé ce défaut et
+> l'ont **durci en ORDRE**. **La dette est aujourd'hui PAYÉE** — commit **`b70f9a41`** :
+> l'exemple travaillé de $y''+6y'+9y=0$, le modèle `racine-double-sans-x`, les items `EQDIFF-31`
+> à `-33`, le point d'arrêt `cp-r4-racine-double`. *Vérifié ici par lecture : `items.yaml` porte
+> `total_items: 33`, **23** modèles, `ramp_coverage.R4: 7`, **14** modèles au plancher ;
+> `checkpoints.yaml` porte **6** points d'arrêt. Le trou de `REVIEW:94-100` (F4) est refermé.*
+>
+> **Ce qui reste donc, et c'est tout ce qui reste :** le « CONSTRUIRE PLUS TARD » des deux
+> critiques avait **deux** conditions — *(a)* la dette d'abord, **satisfaite** ; *(b)* « et alors
+> seulement avec BLOQ-1, BLOQ-2, BLOQ-3 corrigés / I1–I5 appliqués », **ce que cette révision
+> fait**. **Mais aucun critique n'a encore lu ces correctifs**, et cette révision a trouvé **trois
+> défauts que ni l'écriture ni la vague 1 n'avaient vus** (§15.12). **Donc : vague 1bis d'abord,
+> construction ensuite** — §12 (ordre de construction, étape 6) et §13.1.
+>
+> ⚠ **Et tous les comptes de couverture de ce document ont été REFAITS après la dette** (§8) :
+> 30 items → **33**, 22 modèles → **23**, 15 au plancher → **14**, 5 points d'arrêt → **6**.
+> *Ne pas hériter d'un chiffre de la première rédaction sans le relire ici.*
 
 > ⚠ **AVERTISSEMENT D'INSTRUMENT, en tête, parce que c'est la faute que la spec sœur a dû
-> confesser en vague 1 (§15.9 de `maths-nombres-complexes-2-scene-plan.md`).** Les faits du
-> §0.1 ont été relevés par **lecture directe des fichiers** : l'outil `Bash` était indisponible
-> dans la session qui a écrit ce document. **La commande donnée en regard de chaque fait est
-> celle qui le REPRODUIT ; elle n'a pas été lancée ici.** Aucun chiffre de ce document n'est
-> attribué à une commande dont je n'aurais pas lu la sortie — quand je n'ai pas pu compter, je
-> le dis (§15).
+> confesser en vague 1 (§15.9 de `maths-nombres-complexes-2-scene-plan.md`).** **`Bash` était
+> indisponible dans la session d'écriture ET dans la session de révision** : la révision a
+> disposé de `Read`, `Grep` (ripgrep) et `Glob`, **et de rien qui exécute**. Les faits de
+> fichier ci-dessous ont donc été **relus un par un avec `Grep`/`Read` pendant la révision** —
+> c'est une vérification réelle du CONTENU, ce n'est pas l'exécution d'une commande shell.
+> **La commande shell donnée en regard de chaque fait est celle qui le REPRODUIT ; elle n'a été
+> lancée ni à l'écriture, ni à la révision.** Aucun chiffre de ce document n'est attribué à une
+> sortie que je n'aurais pas lue. Ce que je n'ai pas pu vérifier est au §15 — et la vague 1
+> **n'a pas pu exécuter davantage** (les deux critiques le déclarent).
+
+---
+
+## Ce que la vague 1 a changé
+
+*Les deux rapports lus en entier ; **chaque ligne citée par eux a été rouverte et relue ici**.
+Ce tableau est le solde : ce qui est accepté, ce qui est réfuté, et ce que la révision a trouvé
+en plus. **Trois de leurs citations sont fausses en ligne mais justes en jugement, et une des
+miennes l'était aussi** — le détail est en bas de cette section.*
+
+**En une phrase : le verdict commun des deux critiques était « CONSTRUIRE PLUS TARD — la dette
+$\Delta=0$ d'abord, puis seulement avec les correctifs ». La dette est payée (`b70f9a41`) ; les
+correctifs sont ci-dessous ; il reste une relecture.**
+
+**Le volume, pour que personne ne suppose que « révisé » veut dire « retouché » :** une **étape
+de plus** (S6, six au lieu de cinq), **la fenêtre de données déplacée**, **le format du plateau
+changé**, **six `suite` refaites**, **sept retours réécrits**, **deux contrôles rouverts**, **deux
+familles de porte dont les seuils sont désormais DÉRIVÉS**, **sept entrées d'essai rouge ajoutées
+et une supprimée parce qu'elle n'était pas un défaut**, **cinq questions neuves au propriétaire**,
+et **tous les comptes de couverture refaits** après la dette.
+
+### Accepté et appliqué
+
+| # | le défaut | où c'est réparé |
+|---|---|---|
+| **BLOQ-1** (péd.) | la découverte du cran $a=-1$ était **imprimée dans une `suite`**, jamais pariée | **nouvelle étape S6** (§7.7) : le pari est « *pour quel $a$ la ligne plate tombe-t-elle sur $b$ à CHAQUE cran de $b$ ?* », $a=-1$ est la **réponse**, l'état posé est $a=-0{,}5$ — **le garde-fou de stem du §7.6 E est respecté au lieu d'être contredit** |
+| **BLOQ-2** (péd.) | « jamais » et « jamais confondues » **contredits par le dessin** ; la porte $\ge 3$ px ne pouvait pas passer au vert sur un produit juste | **fenêtre changée** ($x \in [-8;4]$), **format changé** (`carre-partout`), **quantité variable armée** (l'échelle de $b$ à S4), **tous les seuils de porte RECALCULÉS depuis cette arithmétique** (§5.1, §7.4, §11.2), **et une clause de `fit_caveat` qui dit qu'un dessin fini ne peut PAS montrer « jamais »** (§10.3) |
+| **BLOQ-3** (péd.) | la consigne de S4 **racontait le champ** et livrait le mécanisme avant le pari | phrase supprimée (§7.4) |
+| **I1–I2** (péd.) | moitiés porteuses dans les `suite` ; quatre `suite` sur cinq à deux questions | **chaque `suite` : une question, un geste** (§7.1–§7.7) ; la moitié porteuse de S2 devient une **lecture qui varie**, celle de S4 une **échelle de crans**, celle de S3-S4 le **pari de S6** |
+| **I3** (péd.) | trois retours de S3 citent une lecture inatteignable | **`point` rouvert APRÈS la révélation de S3** ; les trois retours réécrits sur des hauteurs **atteignables** ; `pente` gagne sa ligne à S3 (§7.3) |
+| **I4** (péd.) | aucune étape ne fait LIRE une pente sur le quadrillage | **la `suite` de S1** le demande (§7.1) |
+| **I5** (péd.) | `pentes-comparees` ne pouvait afficher que deux valeurs ÉGALES | **`point` rouvert après la révélation de S2** ; la lecture compare le point de référence $(0;3)$ et $P$ **mobile** (§5.6, §7.2) — N3 devient exerçable dans ses deux sens |
+| **I7** (péd.) | les crans de `point` nommés par des ids dont un (`sur`) imprime une réponse | **les cinq crans portent leurs COORDONNÉES** comme étiquette (§5.2 C) |
+| **I8** (péd.) | $b$ arrive sans motif, le marqueur étant posé au-dessus du paragraphe qui le motive | **marqueur déplacé après `lesson.md:124`** (§3), coût déclaré |
+| **I9** (péd.) | la révélation de S3 = 170 marques d'accent d'un coup | **champ révélé à l'ENCRE** ; l'accent réservé à **la rangée plate et sa ligne** (§6.2) |
+| **I1** (fid.) | « *13 emplacements d'items sur 30 … loin devant l'oscillateur* » : **unités mélangées, et faux** | **« 8 items sur 30 portent un modèle du palier (13 étiquettes) »**, comparaison à R4 **supprimée** (§0.1 d, §0.2, §13.2) |
+| **I2** (fid.) | le seul terme hors cadre à l'écran est **le titre de la carte** | **titre par la QUESTION** ; `champ-des-pentes` ne survit que comme slug, clé de registre et sélecteur de porte (§9.7, §12) |
+| **I3** (fid.) | S5 justifie un fait du cadre par un argument **hors cadre** | les deux retours **énoncent l'observation** et **renvoient au chapitre 4** (§7.5) |
+| **I4** (fid.) | la moitié « $T$ seule, palier $0$ » de `modele-sans-ecart` est **affichée comme vraie** à S1-S2 | **déclarée** au §8.1, et le retour `zero` de S3 **nommé** comme la réparation |
+| **I5** (fid.) | la règle du pas 2 repose sur **un écart faux** | **recalculé** — et la vraie géométrie est PIRE que celle du reproche (§5.1) : **pas de 1 aux deux largeurs**, écart $\approx 13{,}8$ px, essai rouge n° 16 supprimé, `suite` de S2 rendue indépendante de la largeur (§6.2, §7.2) |
+| **M1–M8** (fid.) et **M1–M8** (péd.) | citations, cellules, valeurs | toutes reprises ci-dessous et dans le corps |
+
+### Réfuté, en écrit
+
+| # | ce que la vague 1 dit | pourquoi c'est faux |
+|---|---|---|
+| **BLOQ-2, moitié « la lecture ne varie pas »** (péd.) | « *`ecart-au-palier` … a constant of the state ; `point` is CLOSED at S4 … therefore has exactly one value, at one step, unvaryable* » | **Faux.** À S4, `a` est le contrôle NEUF et `b` est ROUVERT (§7.4, première rédaction comme celle-ci). Les douze équations atteignables à $P=(0;5)$ donnent `ecart-au-palier` $\in \{1;3;4;5;7;9\}$ et `pente` $= a \times$ écart **aux douze**. La lecture variait déjà. *Ce qui était vrai — et c'est le fond du BLOQ — c'est que **rien ne demandait à l'élève de la faire varier** : elle était exerçable et non exercée. La réparation est donc une `suite` qui l'exerce, pas un contrôle de plus.* |
+| **BLOQ-2, remède « ouvrir `point` après la révélation de S4 »** (péd. ; **repris par la commande**) | « *opening `point` after S4's reveal leaks nothing by §7.6 A's own logic, since `famille` is closed and no second curve is drawable* » | **Faux, et c'est la fuite exacte que §5.5 ferme.** À S4, après la révélation, `famille` vaut `une` : rouvrir `point` ne dessine pas DEUX courbes, il dessine **une courbe après l'autre, toutes visant la même ligne** — c'est-à-dire **la première moitié de la réponse de S5** (« *s'approchent toutes les trois de la même hauteur* »). La fuite ne tient pas à la simultanéité, elle tient à ce que l'élève APPREND. *La quantité qui varie est obtenue autrement, sans fuite : **l'échelle de `b`** (écarts $1 \to 3 \to 5 \to 9$, pentes $-0{,}5 \to -1{,}5 \to -2{,}5 \to -4{,}5$), avec le contrôle que S4 ouvre déjà.* **`point` reste FERMÉ à S4** ; il est en revanche rouvert à **S2 et S3** (où il ne fuit rien), ce que la vague 1 demandait aussi. **Question au propriétaire, §13.16** — c'est le seul point où cette révision s'écarte d'une consigne reçue. |
+| **x ≈ 6,0 à 390 px** (péd., BLOQ-2) | « *the top pair falls under 3 px … from $x\approx 6{,}0$ at 390 px* » | **Faux d'une unité**, et pour deux raisons. (1) $3e^{-x/2}\cdot\text{px/u} = 3$ donne $x = 2\ln(\text{px/u})$, soit $x = 6{,}96$ à $32{,}5$ px/u — pas $6{,}0$. (2) **$32{,}5$ px/u était déjà faux** (§5.1 ci-dessous) : `format: "carre"` n'est PAS carré à 390 px. *La conclusion du BLOQ — la porte ne peut pas passer au vert — est **juste et même plus grave** que mesurée.* |
+| **« keep the step at 1 at both widths (clearance holds) »** (fid., I5) | le remède proposé | **Le diagnostic est juste, le remède l'était par accident.** L'écart de $32{,}5-16=16{,}5$ px que le critique calcule s'appuie sur le $32{,}5$ px/u de la spec, **qui est faux**. Avec la vraie géométrie (`carre` = 4:3 à 390 px) l'écart tombait à $\approx 6{,}4$ px, **au ras du critère de la porte** — le pas de 2 était donc presque justifié, pour une raison que personne n'avait écrite. *Le remède ne redevient juste qu'une fois `carre-partout` posé (§5.1).* |
+| **M4** (fid.) | « *the quoted R5 passage starts at `:523` … inside the HTML comment opened at `lesson.md:502`* » | **Les deux numéros sont faux** — et les miens aussi. Le commentaire `<!-- NOTE DE VALIDATION` s'ouvre à **`lesson.md:538`** et se ferme à **`:572`** ; le désaccord de filière est à **`:556-558`**, le passage R5 à **`:559-564`**. `lesson.md:502` est « *Dans un circuit LC idéal…* », `:519-522` est la prose de R6. *Le JUGEMENT du critique est juste et il est appliqué : les deux citations sont **de la note de validation**, invisible à l'élève — mes `:519-522` et `:526-528` étaient faux.* |
+| **M1** (fid.) | « *the only file in `docs/pipeline/propositions/` containing any form of the word is the spec itself* » | **Vrai à l'heure du rapport, faux à l'heure de la révision.** `Grep -i "diff.?rentiel"` sur le dossier rend **deux** fichiers : cette spec (40) et **`maths-equations-differentielles-delta-nul.md` (8)** — la spec de la dette, écrite le même jour. *Le fait initial (la notion n'avait jamais été pesée par une spec) reste vrai ; sa formulation est corrigée au §0.* |
+
+### Ce que la révision a trouvé en plus, et qu'aucune des deux vagues n'avait vu
+
+⚠ **`format: "carre"` n'est PAS carré au téléphone.** `Plateau.tsx:63` déclare
+`format?: "carre" | "carre-partout" | "paysage" | "paysage-haut"` et `:74` rend
+`format === "carre-partout" ? "aspect-square" : "aspect-[4/3] bp-expanded:aspect-square"`.
+**Donc `carre` = 4:3 sous le point de rupture `bp-expanded`, carré seulement au-dessus.** Une
+fenêtre de données carrée dans une boîte 4:3, à facteur px/unité ÉGAL sur les deux axes,
+**oblige la fenêtre à s'élargir en $x$ au téléphone** — exactement la chose que §5.1 interdit
+(« *elle ne change JAMAIS* »). Le $390/12 = 32{,}5$ px/unité de la première rédaction était donc
+faux deux fois : mauvais format, et mauvaise dimension limitante. **Corrigé : `carre-partout`**
+(précédent écrit dans `Plateau.tsx:59-61` : le banc de diffraction, « *en 4:3, le tracé n'avait
+que 61 px* »). *C'est le défaut le plus coûteux du document, et il rendait fausses toutes les
+arithmétiques de pixels à 390 px, y compris celles sur lesquelles la vague 1 a raisonné.*
+
+---
 
 Quinzième manipulable de première partie, **neuvième PLAN** (ADR 0041, `"tool": "scene2d"`,
 mêmes pièces que la cuve, la corde, les noyaux, le banc de diffraction, le tremplin, le banc
@@ -17,7 +112,7 @@ de modulation, le banc d'électrolyse et le plan complexe). **Deuxième scène d
 3D**, après `plan-complexe-transformation`.
 
 **Ce que ce document est.** Le cadrage pédagogique complet : le trou **mesuré** qui le
-justifie (ou ne le justifierait pas), la frontière officielle, le placement, cinq étapes à
+justifie (ou ne le justifierait pas), la frontière officielle, le placement, **six** étapes à
 pari, les contrôles, l'état, les lectures, la table de ce qui ne doit pas être à l'écran avant
 chaque pari, **le refus motivé de déclarer un modèle neuf**, et le contrat de porte.
 
@@ -28,17 +123,30 @@ le registre de frontend-builder ; les items d'item-author. **Aucun fichier de la
 ni le code.
 
 Marqueur : `[[embed:champ-des-pentes]]` · clé de registre : `champ-des-pentes` · sélecteur de
-porte : `[data-scene="champ-des-pentes"]`.
+porte : `[data-scene="champ-des-pentes"]` · **titre RENDU : « Ce que l'équation dit en chaque
+point »** *(⚠ la chaîne `champ-des-pentes` ne paraît dans AUCUN texte vu par l'élève — §9.7,
+correctif de vague 1)*.
 
-**Numérotation des chapitres, mesurée avant d'écrire.** La convention de la notion est
-`chapitre N = R(N−1)`, et elle est **prouvée par le texte** : `lesson.md:146` « *ramener le
-cas général au chapitre 2* » désigne R1 ✓ ; `lesson.md:236` « *la forme $y'=ay+b$ du
-chapitre 3* » désigne R2 ✓ ; `lesson.md:376` « *l'oscillateur du chapitre 5* » désigne R4 ✓ ;
-`lesson.md:39` « *on la referme au chapitre 4* » désigne R3 ✓. **Donc R2 = chapitre 3**, et
-toute prose commandée ici emploie cette numérotation-là, jamais « R2 ».
+**Et la révision n'a touché que ce fichier.** *Ni `lesson.md`, ni `items.yaml`, ni
+`checkpoints.yaml`, ni `bank.yaml`, ni `exercises.yaml`, ni le code, ni le registre.* **Le
+déplacement du marqueur (§3), la variation de stem (§4.6) et les deux clés de registre (§12) sont
+COMMANDÉS ici, pas exécutés ici.**
+
+**Numérotation des chapitres, mesurée avant d'écrire, et RELUE à la révision.** La convention de
+la notion est `chapitre N = R(N−1)`, et elle est **prouvée par le texte** : **`lesson.md:144`**
+« *ramener le cas général au chapitre 2* » désigne R1 ✓ *(⚠ **corrigé en vague 1, fidélité M3** :
+la première rédaction citait `:146`, qui porte « (chapitre 2) » et soutient la même
+conclusion — **le verbatim est à `:144`, c'est le titre de l'Étape 2**)* ; `lesson.md:236`
+« *la forme $y'=ay+b$ du chapitre 3* » désigne R2 ✓ ; `lesson.md:376` « *l'oscillateur du
+chapitre 5* » désigne R4 ✓ ; `lesson.md:39` « *on la referme au chapitre 4* » désigne R3 ✓.
+*Les quatre relus un par un à la révision.* **Donc R2 = chapitre 3**, et toute prose commandée
+ici emploie cette numérotation-là, jamais « R2 ».
 *Appui : `REVIEW-2026-09-12.md:19-21` — « **les 49 citations « chapitre N » des cinq fichiers
 sont justes**, vérifiées une à une par les deux critiques — personne ne doit en « corriger »
-une seule. » Cette spec n'en ajoute aucune vers un autre rung.*
+une seule. »* ⚠ **Et cette spec en AJOUTE deux, déclarées au §4** (fidélité M6) : la première
+rédaction prétendait n'en ajouter aucune **tout en en commandant deux**. *Les deux sont justes
+sous la convention ci-dessus ; elles portent le compte de 49 à 51, et aucune ne vise un rung que
+ce document ne sert pas.*
 
 ---
 
@@ -57,10 +165,15 @@ exempte un par un) :
 
 ## 0. Pourquoi cette notion maintenant — le trou, mesuré
 
-**Aucune spec antérieure n'a pesé `maths/equations-differentielles`.** Recherche sur
-`docs/pipeline/propositions/` : un seul fichier contient la chaîne « différentielle », et
-c'est `svt-chaines-de-montagnes-scene-foyers.md`, qui n'a rien à voir. *Commande qui le
-reproduit :* `grep -ril "différentielle" docs/pipeline/propositions/`.
+**Aucune spec antérieure n'avait pesé `maths/equations-differentielles` ; il y en a une
+depuis, et c'est celle de la dette.** *Corrigé deux fois : la première rédaction citait
+`svt-chaines-de-montagnes-scene-foyers.md`, **qui ne contient pas la chaîne** (fidélité M1) ; et
+le rapport de vague 1 concluait « le seul fichier est la spec elle-même », **ce qui n'est plus
+vrai**.* **Mesure de la révision**, motif accent-agnostique `diff.?rentiel` (-i) sur
+`docs/pipeline/propositions/` : **deux fichiers**, cette spec (**40** occurrences) et
+**`maths-equations-differentielles-delta-nul.md` (8)** — la spec de la dette $\Delta=0$, écrite
+le même jour, **et c'est elle qui se construit d'abord**. *Commande qui le reproduit :*
+`grep -ricE "diff.?rentiel" docs/pipeline/propositions/`.
 
 **`content/maths/equations-differentielles/` ne porte aucun `spec.md`** (contenu du dossier :
 `lesson.md`, `items.yaml`, `checkpoints.yaml`, `bank.yaml`, `exercises.yaml`,
@@ -76,11 +189,11 @@ instruments — §15.7.)*
 | **a** | **La notion porte QUATRE médias et AUCUN manipulable.** `refroidissement-modeles`, `famille-solutions`, `oscillateur-periode`, `rc-charge-decharge` : quatre SVG à étapes figées, quatre `.stages.json`. **Aucun `.interactive.json`, aucun descripteur de scène, aucun réglage.** | `ls content/maths/equations-differentielles/media/` ⇒ **4 `.svg` + 4 `.stages.json`, rien d'autre** |
 | **b** | **La leçon ne porte aucun marqueur de manipulable**, et le corpus maths n'en porte que quatre en tout (`geometrie-espace` ×2, `calcul-integral` ×1, `nombres-complexes-2` ×1) — **aucun en analyse hors calcul intégral**. | `grep -rn '\[\[embed:' content/maths/` ⇒ 4 occurrences en `lesson.md`, **aucune dans `equations-differentielles`** |
 | **c** | **La figure qui porte l'idée centrale est gelée sur UNE équation.** `famille-solutions` trace $T(t)=(T_0-20)e^{-0,1t}+20$ pour $T_0 \in \{90 ; 60 ; 40 ; 0\}$ : **un seul $a$ ($-0{,}1$), un seul $b$ ($2$), un seul palier ($20$)**. Ce qui varie, c'est la condition initiale — **jamais l'équation**. | `media/famille-solutions.svg:3` (`aria-label`) et `:5-30` (l'en-tête de commentaire, qui écrit « $a = -0,1$ et $b = 2$ ») |
-| **d** | **Le cluster de modèles le plus lourd de la notion est le PALIER, et il n'est servi que par des formules.** `palier-recopie-b` (5 items), `palier-signe` (4), `palier-oubli` (4) — **13 emplacements d'items sur 30**, plus le point d'arrêt `cp-r2-palier`. **Les treize demandent tous de choisir une ÉCRITURE** ($Ce^{ax}+b$ contre $Ce^{ax}-b/a$…). **Aucun ne demande où la chose se trouve dans le plan.** | `items.yaml:1973-1975` (`coverage_summary`) ; `checkpoints.yaml:130-175` (les quatre choix de `cp-r2-palier` sont quatre formules) |
+| **d** | **Le cluster du PALIER n'est servi que par des formules.** `palier-recopie-b` (5 étiquettes), `palier-signe` (4), `palier-oubli` (4) : **8 items sur 30 portent un modèle du palier (13 étiquettes)** — union $\{2;6;10;12;13;14;17;19\}$, **recomptée à la révision** — plus le point d'arrêt `cp-r2-palier`. **Les huit demandent tous de choisir une ÉCRITURE** ($Ce^{ax}+b$ contre $Ce^{ax}-b/a$…). **Aucun ne demande où la chose se trouve dans le plan.** ⚠ *La première rédaction écrivait « 13 emplacements sur 30 » — un compte d'ÉTIQUETTES divisé par un compte d'ITEMS, l'erreur d'unité que l'ADR 0039 nomme (fidélité I1). Le total d'étiquettes du fichier est **74**, pas 30.* | `items.yaml:1973-1975` (`coverage_summary`) ; `checkpoints.yaml:130-175` (les quatre choix de `cp-r2-palier` sont quatre formules) |
 | **e** | **La leçon ÉNONCE la famille et le palier ; elle ne les fait jamais TROUVER.** R1 pose la question « une fonction, ou une famille de fonctions ? » (`lesson.md:87-91`) et y répond en prose. R2 « Arrête-toi : le palier, ce n'est PAS $b$ » (`lesson.md:180-184`) réfute par le calcul, sur un exemple, **après** avoir donné la formule. La réfutation est excellente — `REVIEW:146-147` la cite comme modèle — **et elle est entièrement verbale.** | `lesson.md:87-91`, `:180-184` ; `REVIEW-2026-09-12.md:146-147` |
 | **f** | **Aucun objet de la notion ne montre l'équation AVANT sa solution.** Les quatre figures tracent des **solutions** (courbes $T(t)$, $u_C(t)$, $y=3\cos 4x+2\sin 4x$). **Rien ne dessine ce que l'équation dit d'elle-même** : une pente imposée en chaque point. Le modèle `ed-inconnue-nombre` écrit pourtant le principe mot pour mot — « *reliant $y'$ à $y$ en CHAQUE point* » — et ses 3 items sont des QCM d'écriture. | les quatre `*.stages.json` ; `items.yaml:212-215` |
-| **g** | **La notion déclare 22 modèles pour 30 items, plancher 3, et QUINZE modèles siègent exactement au plancher.** Le bloc de couverture a été recompté tag par tag par les deux critiques de vague 1 : « *les 22 lignes tombent juste* », « *le bloc de couverture le plus propre qu'elle ait audité* ». **La marge est nulle : tout retrait d'item casse un plancher.** | `items.yaml:1961-2005` ; `REVIEW-2026-09-12.md:13-17` |
-| **h** | **Le champ `habilete` existe sur les 5 points d'arrêt et sur AUCUN des 30 items.** Le mélange d'habiletés est donc **incalculable** sur la couche qui porte le volume. **NON-VERDICT déclaré** (ADR 0034), pas un vert. | `grep -c habilete content/maths/equations-differentielles/items.yaml` ⇒ **0** ; `checkpoints.yaml` ⇒ **5** (lignes `30`, `85`, `132`, `179`, `224`) |
+| **g** | ⚠ **RECOMPTÉ APRÈS LA DETTE : la notion déclare 23 modèles pour 33 items, plancher 3, et QUATORZE modèles siègent exactement au plancher.** *Avant la dette : 22 / 30 / 15, recomptés tag par tag par les deux critiques de vague 1 (« les 22 lignes tombent juste », « le bloc de couverture le plus propre qu'elle ait audité »).* **La marge reste quasi nulle : tout retrait d'item casse un plancher.** | `items.yaml:2219-2259` ; `REVIEW-2026-09-12.md:13-17` |
+| **h** | ⚠ **RECOMPTÉ : le champ `habilete` existe sur les 6 points d'arrêt et sur AUCUN des 33 items.** Le mélange d'habiletés est donc **incalculable** sur la couche qui porte le volume, **avant comme après la dette**. **NON-VERDICT déclaré** (ADR 0034), pas un vert. | `grep -c habilete content/maths/equations-differentielles/items.yaml` ⇒ **0** ; `checkpoints.yaml` ⇒ **6** *(relevé à la révision)* |
 
 **Le geste que rien n'exerce, et que la scène rend :** régler $a$, régler $b$, poser un point,
 **et regarder ce qui bouge et ce qui ne bouge pas** — la ligne plate qui se déplace avec $b$
@@ -93,12 +206,18 @@ condition initiale, dans un SVG figé.
 
 **Quatre mesures disent R2 (chapitre 3).**
 
-1. **La masse des modèles est en R2.** Les trois modèles du palier totalisent **13
-   emplacements d'items sur 30** (fait **d**) — le plus gros bloc de la notion, loin devant
-   l'oscillateur (R4, 5 modèles, 4 items de rung) et la condition initiale (R3, 3 modèles,
-   5 items de rung). `ramp_coverage` (`items.yaml:1994-2001`) : R0 4 · R1 6 · **R2 3** · R3 5 ·
-   R4 4 · R5 5 · R6 3. *La ligne R2 est la PLUS PAUVRE du banc alors que ses modèles sont les
-   plus chargés : les items du palier vivent dans les autres rungs.*
+1. **Les modèles du palier sont nombreux et le rung R2 est le plus pauvre du banc.**
+   **8 items sur 30 portent un modèle du palier (13 étiquettes)** (fait **d**), et
+   `ramp_coverage` (`items.yaml:1994-2001`) donne R0 4 · R1 6 · **R2 3** · R3 5 · R4 4 · R5 5 ·
+   R6 3. *La ligne R2 est la PLUS PAUVRE du banc alors que ses modèles sont parmi les plus
+   servis : **les items du palier vivent dans les autres rungs**.*
+   ⚠ **Ce point ne classe RIEN, et la comparaison à R4 est supprimée** (fidélité I1) : le
+   cluster de l'oscillateur pèse **18 étiquettes sur 9 items distincts**
+   $\{4;5;16;18;21;27;28;29;30\}$ — **recompté à la révision, et plus lourd que celui du palier
+   dans les DEUX unités.** *La première rédaction affirmait le contraire en comparant des
+   étiquettes à des items de rung. **Le placement à R2 ne repose donc PAS sur ce point** : il
+   repose sur les points 2, 3 et 4 ci-dessous, qui sont suffisants — et un nombre faux ne doit
+   pas porter une décision juste.*
 2. **R2 est le seul rung dont la réponse se VOIT.** « Le palier est $-b/a$ » est une
    **position dans le plan**. « La solution est $Ce^{ax}$ » (R1) est une écriture ; « $C$ vaut
    $y_0e^{-ax_0}$ » (R3) est un calcul ; « $r^2-3r+2=0$ » (R4) est un trinôme. **Un seul des
@@ -128,6 +247,21 @@ PAGE ; ici, c'est la PAGE aussi.*
   dans l'exercice d'examen lui-même**.* » **C'est de la prose et des items, à R4, et c'est
   routé à content-author + item-author, pas à une scène.** *Si le propriétaire doit choisir UNE
   chose à faire sur cette notion, c'est celle-là, pas celle-ci. §13.1.*
+  ✅ **ÉTAT AU 2026-09-27 : CETTE DETTE EST PAYÉE.** La spec existe
+  (`docs/pipeline/propositions/maths-equations-differentielles-delta-nul.md`, écrite le
+  2026-09-25 : « *un exemple travaillé, un modèle d'erreur, trois items, un point d'arrêt.
+  Rien d'autre.* ») **et elle est livrée** — commit **`b70f9a41`** : l'exemple travaillé de
+  $y''+6y'+9y=0$, le modèle `racine-double-sans-x`, `EQDIFF-31` à `-33`, `cp-r4-racine-double`.
+  *Mesuré à la révision : `total_items: 33`, `ramp_coverage.R4: 7`, 23 modèles, 6 points d'arrêt.*
+  **« L'élève rencontre le seul cas que l'examen lui a posé pour la première fois dans l'exercice
+  d'examen lui-même » n'est plus vrai.**
+  ⚠ **Ce que ce paragraphe garde de sa forme initiale, et pourquoi :** la phrase « *si le
+  propriétaire doit choisir UNE chose à faire sur cette notion, c'est celle-là, pas celle-ci* »
+  **était juste, elle a été suivie, et c'est la seule raison pour laquelle cette scène peut
+  aujourd'hui être discutée sur ses mérites.** *Elle reste écrite ici, au passé, parce qu'un
+  document qui efface l'arbitrage qu'il a perdu perd aussi la trace de pourquoi il a attendu.*
+  ⚠ **Réserve, §15.11 : je n'ai relu NI la prose NI les items de la dette — j'ai vérifié les
+  COMPTES. La porte est déclarée levée sur la foi de comptes, pas d'une relecture pédagogique.**
 - ⚠ **AUCUNE ANNALE VÉRIFIÉE DE CETTE NOTION NE DEMANDE $y'=ay+b$.** `bank.yaml` ne porte
   **qu'une** entrée — 2022 session normale, **SExp**, « *Résoudre $(E) : y''-2y'+y=0$* », 1,0
   point (`bank.yaml:91-102`, `:136`). L'en-tête du fichier l'écrit : « *Introuvable = absent :
@@ -148,9 +282,15 @@ PAGE ; ici, c'est la PAGE aussi.*
   passée, et le PDF officiel est un scan sans couche texte — **donc aucune citation `cadre
   p.N` n'existe pour maths**. §1 le porte en tête. §13.3.
 - **Le désaccord de filière de la notion n'est pas tranché, et la scène ne le tranche pas.**
-  `lesson.md:519-522` : « *Reste ouvert […] le désaccord de filière : cette note dit SM, alors
-  que `checkpoints.yaml`, `exercises.yaml` et `bank.yaml` déclarent SExp — et que le seul sujet
-  vérifié de la notion est un sujet SExp.* » **Reste dû.**
+  ⚠ **Citation corrigée à la révision, deux fois.** Le texte n'est pas à `lesson.md:519-522`
+  (c'est la prose de R6) : il est à **`lesson.md:556-558`**, **à l'intérieur du commentaire HTML
+  `<!-- NOTE DE VALIDATION (relecture humaine)` ouvert à `:538` et fermé à `:572`** — donc dans
+  une **note d'auteur que l'élève ne voit jamais**, pas dans la leçon. *(Le reproche M4 de la
+  fidélité est JUSTE sur ce point et FAUX sur ses numéros : il cite `:502` pour l'ouverture du
+  commentaire ; `:502` est « Dans un circuit LC idéal… ».)* Verbatim : « *Reste ouvert, en
+  revanche, le desaccord de filiere : cette note dit SM, alors que checkpoints.yaml,
+  exercises.yaml et bank.yaml declarent SExp — et que le seul sujet verifie de la notion est un
+  sujet SExp.* » **Reste dû.**
 - **Le cadre est PÉRIMÉ sur le second ordre, et c'est le cadre qui a tort.**
   `REVIEW-2026-09-12.md:71-90` (F2 → research-lead) : `maths-sexp.yaml:158` et `:307`
   interdisent l'équation générale du 2ᵉ ordre en SExp, **et le seul sujet vérifié, SExp, la
@@ -163,6 +303,8 @@ PAGE ; ici, c'est la PAGE aussi.*
   $T(t)=70e^{-0,1t}+20$ — la réponse d'une tasse de café, pas une méthode. **Hors scène.**
   Reste dû.
 - **17 des 22 modèles ne sont pas rompus en prose et aucune spec ne consigne la délégation**
+  *(compte de `REVIEW`, établi avant la dette $\Delta=0$ ; l'inventaire en porte **23** depuis —
+  et la dette a livré la spec d'un rung, donc **deux** des sept rungs en ont une : R2 ici, R4 là)*
   (`REVIEW:105-109`, F-1/F-3/F-8). **Cette spec n'est pas le `spec.md` de la notion** : elle
   revendique **onze** modèles pour un rung et laisse les onze autres non revendiqués. §13.4.
 
@@ -342,8 +484,16 @@ Le point que la scène existe pour installer, en une phrase :
    seulement.* » **Sur la grille de la scène, $a=-1$ est le seul cran où le palier vaut $b$
    à chaque $b$** (§5.3 A). Faire TROUVER cette ligne-là — « le seul réglage où la règle fausse
    ne se fait pas prendre » — est impossible sur une figure, et c'est le geste qui transforme
-   une règle apprise en une règle comprise. *C'est aussi un piège de stem, et il est désamorcé
-   par construction : **le cran $a=-1$ n'est l'état d'AUCUN pari** (§5.2 A, §7.6 E).*
+   une règle apprise en une règle comprise.
+   ⚠ **Réparé en vague 1 (BLOQ-1) : ce geste est désormais un PARI, et il a son étape, S6**
+   (§7.7). *La première rédaction l'IMPRIMAIT dans la `suite` de S4 (« *la ligne plate tombe sur
+   la valeur de $b$ à chaque cran. Cherche pourquoi* ») — c'est-à-dire qu'elle livrait par
+   assertion la seule chose que la scène existe pour faire trouver.* **Et la tension avec le
+   garde-fou de stem est résolue, pas contournée : le pari de S6 demande POUR QUEL $a$, l'état
+   posé est $a=-0{,}5$, et $a=-1$ est la RÉPONSE** — donc **le cran $a=-1$ n'est toujours l'état
+   d'AUCUN pari** (§5.2 A, §7.6 E), et aucun choix qui atteindrait la bonne réponse par
+   `palier-recopie-b` n'existe (le porteur de ce modèle à S6 répond « *à tous les crans* », qui
+   est faux).
 3. **« La pente ne dépend que de $y$ » est une NON-observation.** On ne peut pas la dessiner
    d'un trait : il faut **regarder deux points à la même hauteur et constater qu'ils portent le
    même segment**, puis deux points à la même abscisse et constater qu'ils n'en portent pas le
@@ -361,7 +511,7 @@ et son comportement ; R2 donne le palier par le calcul ; **rien, nulle part, ne 
 dans le même plan sous les yeux de l'élève avant `famille-solutions`, qui arrive à R3, après
 que tout a été démontré.**
 
-### 2.3 L'antidote obligatoire : une chaîne construite en CINQ temps
+### 2.3 L'antidote obligatoire : une chaîne construite en SIX temps
 
 $y'=ay+b$ contient quatre réponses (la pente locale, l'invariance en $x$, le palier, le
 comportement) ; un retour trop bavard les donne toutes d'un coup. Même discipline qu'au banc
@@ -379,11 +529,15 @@ lectures** — une consigne a le droit d'imprimer ce que son propre énoncé exi
   et le signe de $a$ décide si elle s'en approche ou s'en écarte. Il ne peut pas montrer
   plusieurs courbes.
 - **S5** ajoute la **famille** : plusieurs courbes, un seul palier, aucune intersection.
+- **S6** ajoute le **cran où la règle fausse se cache** : il existe un $a$, et un seul, pour
+  lequel « le palier, c'est $b$ » tombe juste à chaque $b$. *Il ne peut rien ajouter d'autre :
+  c'est le dernier temps, et il ne fait que **fermer** le modèle le plus servi de la notion.*
 
 **Contrainte non négociable et mesurable. La table du §7.6 C est la SEULE autorité ; ce qui
 précède en est un résumé et ne doit jamais la contredire** (correctif de vague 1 de la spec
 sœur, fidélité S10) : `b`, `palier`, `ligne plate`, `-\dfrac{b}{a}` pas avant **S3** ;
-toute COURBE tracée pas avant **S4** ; plus d'une courbe pas avant **S5** ; et **à toutes les
+toute COURBE tracée pas avant **S4** ; plus d'une courbe pas avant **S5** ; **le fait
+« il existe un $a$ où le palier vaut $b$ » pas avant la révélation de S6** ; et **à toutes les
 étapes**, les chaînes du §9. La porte le lit dans le `textContent` **rendu**, en remplaçant
 chaque `.katex` par son **annotation TeX** (leçon du banc d'électrolyse).
 
@@ -395,7 +549,7 @@ omission : la notion ne porte QU'UNE annale vérifiée, et elle ne traite pas $y
 
 | geste | où il est demandé | ce que le corpus en fait |
 |---|---|---|
-| **Résoudre $y'=ay+b$ (donc trouver le palier)** | `maths-sm.yaml:156` et `maths-sexp.yaml:154`, savoir-faire des DEUX cadres | 13 emplacements d'items, **tous en choix d'écriture** ; un point d'arrêt, **quatre formules** ; une figure, **un seul palier gelé** (§0.1 d, c) |
+| **Résoudre $y'=ay+b$ (donc trouver le palier)** | `maths-sm.yaml:156` et `maths-sexp.yaml:154`, savoir-faire des DEUX cadres | **8 items (13 étiquettes)**, **tous en choix d'écriture** ; un point d'arrêt, **quatre formules** ; une figure, **un seul palier gelé** (§0.1 d, c) |
 | **Reconnaître qu'une équation ne fixe qu'une famille** | `maths-sm.yaml:153` / `maths-sexp.yaml:151` (« ensemble des solutions ») | R1 l'énonce en prose (`lesson.md:87-91`) ; `famille-solutions` le montre sur une équation, à R3, **après la démonstration** |
 | **Résoudre $y''+ay'+by=0$ (cas $\Delta=0$)** | **la seule annale vérifiée** : `bank.yaml:136`, 0,5 pt sur les 1,0 de la notion | **trois lignes de prose, aucun exemple travaillé, aucun item** (`REVIEW:94-100`) — **et ce n'est pas le travail de cette scène** (§0.3, §13.1) |
 
@@ -450,8 +604,31 @@ omission : la notion ne porte QU'UNE annale vérifiée, et elle ne traite pas $y
 
 ## 3. Placement
 
-**En tête de `## R2 — $y' = ay+b$ : ajouter un palier`** (`lesson.md:116`), entre le titre et
-`### Pourquoi $y'=ay$ ne suffit pas toujours` (`lesson.md:118`).
+⚠ **DÉPLACÉ EN VAGUE 1 (pédagogie I8).** **Après `lesson.md:124`, avant
+`### Poser l'équation générale` (`lesson.md:126`)** — c'est-à-dire **après** le paragraphe qui
+motive l'existence d'un terme constant, **avant** toute prose qui l'explique.
+
+*Motif, relu ligne à ligne à la révision.* `lesson.md:120-124` est **exactement** le temps
+« pourquoi un terme constant existe » : $T'(t) = -kT(t) + 20k$, puis « *Ce n'est **pas** de la
+forme $y'=ay$ : il traîne un terme constant, $20k$ […] le café ne se refroidit pas vers
+$0\ °\text{C}$, mais vers la température de la pièce […] un **palier** non nul.* » **Posée
+au-dessus (l'ancien `lesson.md:116`), la scène ouvrait S3 sur « *Un terme constant est
+apparu* » — une mutation algébrique sans raison**, ce que VISION §« concret avant abstrait »
+refuse. Posée ici, $b$ arrive motivé, et **la démonstration de $-b/a$ (`lesson.md:132-142`) suit
+toujours la scène** : ADR 0041 §6 (« *la scène vient AVANT la prose qui explique* ») est intact.
+
+> ⚠ **LE COÛT, DÉCLARÉ.** `lesson.md:124` écrit le mot **« palier »** et le fait qu'il est
+> **« non nul »**. Le distracteur `zero` de S3 (« *à la hauteur $0$* », `palier-oubli`) en est
+> **affaibli** : l'élève vient de lire que le palier n'est pas $0$.
+> *Ce que cela ne change pas :* (a) **R0 l'écrivait déjà** — la tasse « *ne descend jamais sous
+> $20$* » est au-dessus du marqueur dans les deux placements, donc `zero` était **déjà**
+> affaibli ; (b) `zero` ne meurt pas, il mesure l'élève qui **transporte R1 sans $b$**, et c'est
+> un transport, pas une lecture ; (c) **rien dans `:120-124` ne donne la HAUTEUR**, qui est la
+> question de S3. *Arbitrage : un $b$ motivé vaut mieux qu'un distracteur au maximum de sa
+> force. Réversible en une ligne — §13.17 le met au propriétaire.*
+
+*Ancien placement, pour mémoire : en tête de `## R2` (`lesson.md:116`), entre le titre et
+`### Pourquoi $y'=ay$ ne suffit pas toujours` (`lesson.md:118`).*
 
 Ligne exacte à insérer (seule sur sa ligne, comme l'exige `MARKER_LINE`) :
 
@@ -465,17 +642,22 @@ précédée du paragraphe d'annonce neutre du §4.1.
 explique*).
 
 Vérification étape par étape contre **tout** ce qui est lu au marqueur — la prose
-`lesson.md:1-117` (R0 et R1, **titre de R2 compris**) **et** les retours des deux points
-d'arrêt situés au-dessus, `cp-r0-predict` (`checkpoints.yaml:28-81`) et `cp-r1-signe-a`
-(`:83-128`) :
+`lesson.md:1-124` (R0, R1, **titre de R2 et le paragraphe du terme constant compris**)
+**et** les retours des deux points d'arrêt situés au-dessus, `cp-r0-predict`
+(`checkpoints.yaml:28-81`) et `cp-r1-signe-a` (`:83-128`).
 
-| étape | ce qui répondrait | où | déjà lu au marqueur ? |
-|---|---|---|---|
-| **S1** — la pente en un point vaut $a\,y$ | **nulle part.** R1 dérive $Ce^{ax}$ et vérifie $y'=ay$ (`lesson.md:57`), mais **toujours sur la fonction, jamais en un point du plan**. Le principe est écrit dans un registre de misconception (`items.yaml:212-215`), que l'élève ne lit pas | — | ❌ **non** |
-| **S2** — la pente ne dépend que de la hauteur | **la règle est DÉRIVABLE** en une ligne de $y'=ay$ ; **mais la lecture « deux points à la même hauteur portent le même segment » n'est écrite nulle part**, et R0 pose explicitement la question inverse (« le rythme a changé du tout au tout », `lesson.md:25`) sans jamais dire de quoi il dépend en un point | — | ❌ **non** *(le mécanisme est à `lesson.md:31`, en mots, sur la tasse ; sa lecture dans un plan, jamais)* |
-| **S3** — le palier vaut $-\dfrac{b}{a}$ | `lesson.md:132-142` (Étape 1 de R2) | **R2, APRÈS** le marqueur | ❌ **non** |
-| **S4** — la courbe s'approche du palier sans l'atteindre ; le signe de $a$ décide | ⚠ R0 l'écrit **pour la tasse** : « *sans jamais l'atteindre tout à fait* » (`lesson.md:13`, modèle B, et `:29`) ; et R1 « Le sens du signe de $a$ » (`:93-100`) donne $a<0 \Rightarrow e^{ax}\to 0$ | **AVANT**, pour $b=0$ et pour une tasse | ⚠️ **partiellement lu — coût déclaré ci-dessous** |
-| **S5** — un seul palier pour toute la famille ; aucune intersection | ⚠ R1 « une fonction, ou une famille de fonctions ? » (`:87-91`) établit **l'infinité de solutions** et annonce qu'une information de plus est nécessaire. **Il n'écrit ni « exactement une par point », ni « elles ne se coupent jamais », ni « elles partagent le palier »** — ce dernier n'arrive qu'à `:256`, à R3 | **AVANT**, pour la moitié | ⚠️ **partiellement lu — coût déclaré** |
+⚠ **Une colonne DE PLUS qu'à la première rédaction** (pédagogie M8) : la table ne vérifiait
+que ce qui est **déjà lu au-dessus** du marqueur, jamais **ce qu'un rung ULTÉRIEUR doit encore
+posséder en propre**. *Une scène qui ne vole pas le passé peut très bien voler l'avenir.*
+
+| étape | ce qui répondrait | où | déjà lu au marqueur ? | **ce qu'un rung PLUS TARD doit garder** |
+|---|---|---|---|---|
+| **S1** — la pente en un point vaut $a\,y$ | **nulle part.** R1 dérive $Ce^{ax}$ et vérifie $y'=ay$ (`lesson.md:57`), mais **toujours sur la fonction, jamais en un point du plan**. Le principe est écrit dans un registre de misconception (`items.yaml:212-215`), que l'élève ne lit pas | — | ❌ **non** | rien |
+| **S2** — la pente ne dépend que de la hauteur | **la règle est DÉRIVABLE** en une ligne de $y'=ay$ ; **mais la lecture « deux points à la même hauteur portent le même segment » n'est écrite nulle part**, et R0 pose explicitement la question inverse (« le rythme a changé du tout au tout », `lesson.md:25`) sans jamais dire de quoi il dépend en un point | — | ❌ **non** *(le mécanisme est à `lesson.md:31`, en mots, sur la tasse ; sa lecture dans un plan, jamais)* | rien |
+| **S3** — le palier vaut $-\dfrac{b}{a}$ | `lesson.md:132-142` (Étape 1 de R2) | **R2, APRÈS** le marqueur | ❌ **non** | **la DÉMONSTRATION** ($0=ak+b$ pour tous $a$, tous $b$) reste à la prose : la scène en montre **une trace sur douze équations**, jamais la preuve (§4.1 d) |
+| **S4** — la courbe s'approche du palier sans l'atteindre ; le signe de $a$ décide | ⚠ R0 l'écrit **pour la tasse** : « *sans jamais l'atteindre tout à fait* » (`lesson.md:13`, modèle B, et `:29`) ; et R1 « Le sens du signe de $a$ » (`:93-100`) donne $a<0 \Rightarrow e^{ax}\to 0$ | **AVANT**, pour $b=0$ et pour une tasse | ⚠️ **partiellement lu — coût déclaré ci-dessous** | la **limite** comme objet ($\lim_{x\to+\infty}$) et la **vitesse** d'approche ($-1/a$, R5) : la scène ne les nomme jamais (§2.6, §9.3) |
+| **S5** — un seul palier pour toute la famille ; aucune intersection | ⚠ R1 « une fonction, ou une famille de fonctions ? » (`:87-91`) établit **l'infinité de solutions** et annonce qu'une information de plus est nécessaire. **Il n'écrit ni « exactement une par point », ni « elles ne se coupent jamais », ni « elles partagent le palier »** — ce dernier n'arrive qu'à `:256`, à R3 | **AVANT**, pour la moitié | ⚠️ **partiellement lu — coût déclaré** | ⚠ **R3 doit garder « une valeur en un point fixe la constante ».** La première rédaction le livrait mot pour mot dans le retour de `se-coupent` (« *un point donné ne détermine qu'une seule solution* ») — **supprimé** (fidélité I3, pédagogie M8) : S5 énonce l'**observation** et **renvoie** au chapitre 4 (§7.5) |
+| **S6** — il existe un $a$, et un seul, où le palier vaut $b$ | `lesson.md:184` l'écrit en une ligne : « *$b(a+1)=0$ — donc $b=0$ ou $a=-1$ seulement* » | **R2, APRÈS** le marqueur (dans « Arrête-toi : le palier, ce n'est PAS $b$ ») | ❌ **non** | l'**identification des deux membres** qui produit $b(a+1)=0$ reste à la prose : la scène fait **trouver le cran**, jamais l'algèbre qui le prouve (§4.4) |
 
 **Le coût résiduel, déclaré (deux fois).**
 
@@ -513,21 +695,37 @@ Le §7.5 vérifie choix par choix que la scène et `cp-r2-palier` ne se doublent
 ## 4. La prose à écrire — CAHIER DES CHARGES pour content-author
 
 *Le §4 décrit ; il ne rédige pas. Toute prose commandée ici emploie la numérotation
-« chapitre N » établie en tête de document (**R2 = chapitre 3**), la voix du reste de la
-notion, et **n'introduit aucune citation « chapitre N » nouvelle** — `REVIEW:19-21` a vérifié
-les 49 existantes une à une ; on n'en ajoute pas à vérifier.*
+« chapitre N » établie en tête de document (**R2 = chapitre 3**) et la voix du reste de la
+notion.*
+
+⚠ **Correction de vague 1 (fidélité M6) : ce document AJOUTE des citations « chapitre N », et
+il les déclare au lieu de les nier.** La première rédaction écrivait « *n'introduit aucune
+citation « chapitre N » nouvelle* » **tout en en commandant deux** (§4.1 a « ce que le
+chapitre 2 a laissé », §4.5 « la même chose que dans le plan du chapitre 3 »). **Les deux sont
+justes** sous la convention prouvée en tête (`lesson.md:39`, `:144`, `:236`, `:376`), **et
+elles portent le compte de `REVIEW:19-21` de 49 à 51.** *Ce qui reste vrai : aucune citation
+vers un rung que ce document ne sert pas ; et chaque ajout est nommé ici, donc vérifiable.*
 
 ### 4.1 Le paragraphe d'annonce — AVANT le marqueur
 
-**Emplacement :** juste après le titre `## R2` (`lesson.md:116`), avant le marqueur.
-**Longueur : 70 à 95 mots. Ton : neutre, il n'annonce aucune réponse.**
+**Emplacement :** juste après `lesson.md:124` (le paragraphe du terme constant), avant le
+marqueur — **déplacé avec lui** (§3).
+**Longueur : 80 à 110 mots. Ton : neutre, il n'annonce aucune réponse.**
 
 Il doit : **(a)** rappeler ce que le chapitre 2 a laissé — une famille de courbes, et rien qui
 dise vers quoi elles vont quand un terme constant s'ajoute ; **(b)** dire qu'on va **essayer
-avant de démontrer** ; **(c)** **ne nommer ni palier, ni $-b/a$, ni solution constante comme
-des résultats** ; **(d)** dire à l'élève, en une phrase, que **ce qu'il va essayer ne démontre
-rien** — le plan lui montrera la règle sur une poignée d'équations, et **la démonstration,
-c'est le paragraphe qui suit**.
+avant de démontrer** ; **(c)** **ne nommer ni $-b/a$, ni « solution constante », ni AUCUNE
+hauteur comme un résultat** — *le mot « palier » vient d'être employé à `lesson.md:124`, donc
+l'interdire ici serait absurde ; ce qui est interdit, c'est de dire **où il est*** ; **(d)**
+dire à l'élève, en une phrase, que **ce qu'il va essayer ne démontre rien** — le plan lui
+montrera la règle sur une poignée d'équations, et **la démonstration, c'est le paragraphe qui
+suit** ; **(e)** ⚠ **AJOUTÉ EN VAGUE 1 (pédagogie M7) — poser la QUESTION que la scène
+tranche, sans la répondre.** *La première rédaction n'avait aucune clause d'accroche, et
+l'accroche naturelle (le café qui se refroidit vers $20$, pas vers $0$) est **interdite dans la
+scène** par §9.3 — mais elle n'est pas interdite dans la PROSE, et elle est juste au-dessus du
+marqueur depuis le déplacement du §3.* **La clause (e) fait le raccord** : une équation qui
+impose une pente en chaque point du plan, ça se regarde — et la question qu'on va lui poser est
+*où* le plan devient plat, pas *comment* on l'écrit. **Sans nommer la hauteur.**
 
 *Formulation possible pour (d), à retravailler par content-author : « Attention à ce que ce
 plan est : un banc d'essai, pas une preuve. Douze équations bien choisies ne démontrent rien en
@@ -558,8 +756,11 @@ $b(a+1)=0$ — donc $b=0$ ou $a=-1$ seulement* ». 20 à 35 mots.**
 
 La leçon écrit déjà **la** phrase juste. Il lui manque de dire que ce cas **existe** et
 **qu'on peut le rencontrer** : quand $a=-1$, recopier $b$ tombe juste **par accident**, et
-c'est le pire des cas — une règle fausse qui ne se fait pas prendre. *C'est ce que la `suite`
-de S4 fait chercher ; la prose le nomme.*
+c'est le pire des cas — une règle fausse qui ne se fait pas prendre. ⚠ **Corrigé en vague 1 :
+c'est désormais le PARI de S6 (§7.7) qui le fait trouver, pas une `suite` qui l'imprime ; la
+prose le nomme APRÈS.** *L'ordre compte : la scène fait chercher le cran, `lesson.md:184`
+donne l'algèbre qui prouve qu'il est unique, et cette phrase-ci dit pourquoi ça vaut la peine de
+le savoir.*
 
 ### 4.5 Une puce dans la fermeture d'arc de R3 — et rien de plus
 
@@ -580,11 +781,26 @@ franchir* ». Ajouter que c'est **la même chose que dans le plan du chapitre 3*
 3. **Ce que la notion demande en items est ailleurs** : le cas $\Delta=0$, à R4, sans aucun
    item (`REVIEW:94-100`). **Routé, pas absorbé** (§13.1).
 
-⚠ **Une conséquence dure, et elle est déclarée : la scène enseigne cinq faits que le banc de
+⚠ **Une conséquence dure, et elle est déclarée : la scène enseigne six faits que le banc de
 fin ne mesure toujours PAS directement.** Les onze modèles qu'elle confronte restent mesurés
 par les mêmes 30 QCM d'écriture qu'avant. **La scène déplace la compréhension, pas le modèle
-apprenant.** *Si le propriétaire veut que le banc voie la différence, c'est une passe d'items
-à part, et §13.9 dit à quoi elle ressemblerait.*
+apprenant.**
+
+⚠ **DURCI EN VAGUE 1 (pédagogie I6) : la passe d'items n'est plus « à part », elle est
+COUPLÉE — et elle VARIE au lieu d'AJOUTER.** *Motif du critique, relu et accepté : la
+complémentarité revendiquée au §7.5 entre S3 et `cp-r2-palier` est **plus mince** que ce que ce
+document affirmait — **les deux exigent de calculer $-b/a$**, seul le format de sortie diffère
+(une hauteur / une écriture). **La compétence vraiment neuve — la ligne comme un LIEU qui se
+DÉPLACE avec $b$ — n'est mesurée nulle part**, et un livrable qui n'ajoute aucun item la laisse
+invisible pour toujours.*
+**La forme retenue résout la contradiction avec la marge nulle** (fidélité B1, qui l'écrit
+exactement) : **on ne crée aucun item ; on VARIE le stem d'un item existant du cluster du
+palier** pour qu'il se lise sur une figure plutôt que sur une écriture, **en gardant ses
+étiquettes de modèle intactes** — donc `coverage_summary` sort de la livraison **au caractère
+près**, et les quinze planchers ne bougent pas. *Candidat naturel : l'un des huit items du
+cluster (union $\{2;6;10;12;13;14;17;19\}$). **Le choix est d'item-author, pas d'ici**, et
+§13.9 garde la question ouverte — mais son DÉFAUT change : « aucun item » devient « **une
+variation de stem, couplée à la construction** ».*
 
 ---
 
@@ -592,9 +808,79 @@ apprenant.** *Si le propriétaire veut que le banc voie la différence, c'est un
 
 ### 5.1 Le repère — isotrope, fixe, gradué, et l'isotropie est ici une question de VÉRITÉ
 
-**Fenêtre de données : $x \in [-2 ; 10]$, $y \in [-6 ; 6]$ — un CARRÉ ($12 \times 12$). Elle ne
-change JAMAIS**, à aucune étape, à aucun réglage. `format: "carre"` (`Plateau.tsx:31`,
-`:53-60`).
+> ⚠ **CE PARAGRAPHE EST ENTIÈREMENT RÉÉCRIT EN VAGUE 1.** La fenêtre a changé, le format a
+> changé, et **les deux facteurs px/unité de la première rédaction étaient faux**. C'est la
+> réparation du **BLOQ-2** (pédagogie) et de **I5** (fidélité), et **tous les seuils de porte du
+> §11 en descendent** au lieu d'être choisis.
+
+**Fenêtre de données : $x \in [-8 ; 4]$, $y \in [-6 ; 6]$ — un CARRÉ ($12 \times 12$). Elle ne
+change JAMAIS**, à aucune étape, à aucun réglage, **à aucune largeur**.
+**`format: "carre-partout"`** (`Plateau.tsx:63`, et le motif à `:59-61`).
+
+#### 5.1.0 Pourquoi `carre-partout` et pas `carre` — le défaut que ni l'écriture ni la vague 1 n'avaient vu
+
+`Plateau.tsx:74` rend :
+`format === "carre-partout" ? "aspect-square" : "aspect-[4/3] bp-expanded:aspect-square"`.
+**Donc `carre` est 4:3 SOUS le point de rupture et carré seulement au-dessus.** Une fenêtre de
+données carrée dans une boîte 4:3, **à facteur px/unité égal sur les deux axes** (§5.1.1, qui
+n'est pas négociable), **force la fenêtre à s'élargir en $x$ au téléphone** — ce que la ligne
+précédente interdit en toutes lettres. *La première rédaction calculait $390/12 = 32{,}5$
+px/unité à 390 px : c'est la largeur divisée par la portée, alors que c'est la **hauteur** qui
+borne dans une boîte 4:3.* **`carre-partout` supprime le problème à la racine : la boîte est
+carrée partout, donc la fenêtre est la même partout, donc la scène ne ment à aucune largeur.**
+*Précédent déjà écrit dans le fichier (`Plateau.tsx:59-61`) : le banc de diffraction, « *en 4:3,
+le tracé n'avait que 61 px* ».*
+
+#### 5.1.1 Pourquoi cette fenêtre-LÀ — l'arithmétique de « jamais », faite avant le dessin
+
+**Le BLOQ-2 en une ligne : sur $x \in [-2;10]$, la courbe de S4 et sa ligne de palier sont
+séparées de MOINS D'UN PIXEL sur tout le tiers droit du cadre. Le dessin disait « elle
+arrive ».** *Refait ici : à $a=-\tfrac12$, palier $4$, $P=(0;5)$, l'écart vaut $e^{-x/2}$ ; il
+passe sous $1$ px dès $x = 2\ln(\text{px/u})$, soit $x \approx 7{,}7$ à $46{,}7$ px/u.*
+
+**Ce qui borne, et ce qui est libre.**
+- $y$ **est borné par le contenu** : les paliers de la grille couvrent $[-4;4]$ (table A) et le
+  point le plus haut est $(0;5)$ ⟹ **$y \in [-6;6]$ est le plus petit intervalle symétrique
+  avec une marge d'une unité. Il ne bouge pas.**
+- La fenêtre est **carrée** (§5.1.2) ⟹ **la portée en $x$ vaut 12, elle aussi. Elle ne bouge
+  pas non plus.**
+- **Ce qui est libre, c'est OÙ on met ces 12 unités.** Et c'est le seul levier.
+
+**Le calcul qui a choisi $x \in [-8;4]$.** Les courbes passent toutes par $x=0$ ; à gauche elles
+quittent le cadre très vite (table C : $x \approx -1{,}39$, $-3{,}22$, $-0{,}71$), **donc la
+partie gauche du cadre n'a jamais porté de courbe, dans aucun placement** — c'est le territoire
+du champ, qui est le même partout (et c'est précisément ce que S1-S3 enseignent). **La longueur
+utile est donc la course À DROITE de $x=0$, et c'est elle qu'il fallait raccourcir.**
+
+| course à droite | écart de S4 au bord droit, en unités | **en px à 1 280** ($46{,}67$ px/u) | **en px à 390** ($29{,}83$ px/u) |
+|---|---|---|---|
+| $10$ *(ancienne fenêtre)* | $e^{-5}=0{,}00674$ | **0,31 px** ✗ | **0,20 px** ✗ |
+| $6$ | $e^{-3}=0{,}0498$ | 2,32 px ✗ | 1,49 px ✗ |
+| $5$ | $e^{-2{,}5}=0{,}0821$ | 3,83 px ~ | 2,45 px ✗ |
+| **$4$ — RETENU** | $e^{-2}=0{,}1353$ | **6,32 px** ✓ | **4,04 px** ✓ |
+
+**Donc $x_{\max}=4$, et $x \in [-8;4]$.** *Le prix est écrit : l'origine n'est plus au milieu,
+et le tiers gauche du cadre ne porte que du champ. **Ce n'est pas une perte** — le champ y est
+exactement aussi informatif qu'ailleurs, et « l'équation parle en CHAQUE point » y est plus
+visible que sur un cadre rempli de courbes.*
+
+**Ce que cela change ailleurs, et qu'il faut porter :** le cran `decale` passe de $(4;3)$ à
+**$(2;3)$** (§5.2 C) — sinon il serait au bord. *La table B est inchangée : **la pente ne
+dépend que de $y$**, jamais de $x$. C'est le fait de S2, et il vient de rendre la fenêtre
+gratuite à déplacer.*
+
+> ⚠ **ET LA CLAUSE D'HONNÊTETÉ, QUI COMPTE PLUS QUE LA FENÊTRE.** Aucune fenêtre, à aucune
+> échelle, ne peut montrer « jamais » : la courbe est asymptote, donc **pour toute fenêtre il
+> existe un $x$ au-delà duquel les deux traits se confondent** — raccourcir le cadre ne fait que
+> déplacer l'endroit. **Une fenêtre ne rend pas « jamais » visible ; elle empêche seulement le
+> dessin de dire le CONTRAIRE.** Ce que « jamais » a de démontrable à ce niveau est
+> **arithmétique**, et c'est l'échelle de $b$ de S4 (§7.4) : *si l'écart était nul, la pente
+> serait nulle, donc la courbe serait la solution constante — une courbe qui n'est pas la
+> constante ne peut donc pas avoir un écart nul.* **C'est une preuve, elle est au niveau de
+> l'élève, et c'est elle qui porte le mot.** *Porté au `fit_caveat` (§10.3) et au retour de
+> `approche` (§7.4).*
+
+#### 5.1.2 L'isotropie
 
 > **L'isotropie n'est pas un confort ici, c'est la condition pour que la scène ne MENTE pas.**
 > Un segment de champ est dessiné à l'angle $\arctan(m)$. Si le facteur px/unité diffère entre
@@ -623,11 +909,20 @@ trait semi-transparent*). *Le quadrillage n'est pas décoratif : c'est lui qui r
 lisible sans rapporteur — une pente $-3$ descend de trois carreaux pour un carreau à droite,
 et c'est ainsi qu'un élève la vérifie.*
 
-**Échelle mesurée — CALCULÉE, pas relevée sur le rendu (§15.1).** Le plateau est carré : son
-côté vaut $\min(\text{largeur disponible},\ \text{plafond de hauteur})$. À $1\,280$ px, avec
-un plafond de **560 px**, le plateau fait $560 \times 560$ ⟹ $560/12 \approx \mathbf{46{,}7}$
-px/unité. **À 390 px : $390/12 = \mathbf{32{,}5}$ px/unité.** *Deux points distants d'une unité
-sont donc à 47 px au bureau, 33 px au téléphone.*
+**Échelle — CALCULÉE, pas relevée sur le rendu (§15.1), et RECALCULÉE en vague 1.** Avec
+`carre-partout` le plateau est carré à toute largeur : son côté vaut
+$\min(\text{largeur disponible},\ \text{plafond de hauteur})$.
+- **À $1\,280$ px**, plafond **560 px** ⟹ plateau $560 \times 560$ ⟹
+  $560/12 \approx \mathbf{46{,}67}$ px/unité.
+- **À 390 px**, la largeur borne : largeur disponible $\approx \mathbf{358}$ px (390 moins les
+  deux gouttières de page) ⟹ plateau $358 \times 358$ ⟹ $358/12 \approx \mathbf{29{,}83}$
+  px/unité.
+
+⚠ **Les deux nombres sont des HYPOTHÈSES à mesurer avant construction** (§15.1) : le plafond de
+560 px est **choisi**, la gouttière de 358 px est **estimée**. *Ce qui n'est PAS une hypothèse,
+c'est que le $32{,}5$ de la première rédaction était faux de deux façons : mauvais format
+(`carre` = 4:3 au téléphone) et mauvaise dimension limitante.* **Toute la campagne de porte du
+§11.2 relit ces deux facteurs sur les GRADUATIONS du rendu, jamais sur ces chiffres-ci.**
 
 ### 5.2 Les crans — et pourquoi ces valeurs-là
 
@@ -642,8 +937,11 @@ sont donc à 47 px au bureau, 33 px au téléphone.*
 > **Pourquoi trois et pas quatre ou sept.** Un quatrième cran ($a=-0{,}25$ ou $a=1$) a été
 > essayé et **retiré sur un calcul** : avec $a=-0{,}25$ et $b=2$, le palier vaut $8$, **hors
 > de la fenêtre** ; avec $a=1$, la courbe issue de $(0;5)$ quitte le cadre par le haut avant
-> $x=0{,}3$, ce qui ne montre plus rien. *Trois crans suffisent à tout ce que les cinq étapes
-> demandent : un dégénéré, un pédagogique, un de signe opposé.*
+> $x=0{,}3$, ce qui ne montre plus rien. *Trois crans suffisent à tout ce que les **six** étapes
+> demandent : un dégénéré, un pédagogique, un de signe opposé.* ⚠ **Et depuis la vague 1, le cran
+> dégénéré n'est plus seulement une CIBLE de `suite` : il est la RÉPONSE d'un pari (S6, §7.6).
+> Trois crans est donc le minimum strict — avec deux, « pour quel $a$ ? » n'aurait plus de
+> question.**
 
 **B — les quatre termes constants $b$** : `-2` · `0` · `1` · `2`.
 
@@ -653,13 +951,22 @@ donnent des paliers $2$ et $4$ à $a=-0{,}5$, tous deux bien distincts de $b$.*
 
 **C — les cinq points $P$** (`point`) :
 
-| cran | $(x_0 ; y_0)$ | pourquoi ce cran |
-|---|---|---|
-| `origine` | $(0 ; 3)$ | **l'état de S1** |
-| `decale` | $(4 ; 3)$ | **l'état de S2** — **même hauteur que `origine`, quatre unités plus loin.** C'est le seul couple de la grille qui partage une ordonnée, et il existe pour cela |
-| `haut` | $(0 ; 5)$ | **l'état de S4** : au-dessus de tous les paliers (le plus haut vaut $4$) |
-| `bas` | $(0 ; -3)$ | sous tous les paliers positifs — la remontée **vers** le palier (le cas « $T_0=0$ » de `famille-solutions`) ; **l'état de S5** |
-| `sur` | $(0 ; 2)$ | **exactement SUR le palier** quand $(a;b)=(-1;2)$ ou $(-0{,}5;1)$ ⟹ la solution **constante**, une droite horizontale. *C'est l'Étape 1 de R2, vue* |
+> ⚠ **CORRIGÉ EN VAGUE 1 (pédagogie I7) : les cinq crans s'affichent par leurs COORDONNÉES,
+> jamais par leur id.** *Motif du critique, accepté sans réserve : `sur` veut dire « exactement
+> SUR le palier », **qui est la réponse de S3**, et ce cran est offert dès **S1**, où `point`
+> est le contrôle ouvert. Une étiquette de contrôle qui imprime la réponse d'une étape
+> ultérieure est une fuite par le RÉGLAGE, et elle échappait à la table du §7.6 A parce que
+> celle-ci n'énumérait que des ÉTATS, jamais des MOTS.* **Les ids ci-dessous restent la clé du
+> descripteur, du registre et de la porte ; ils ne sont jamais rendus.** *`origine` était en
+> plus trompeur : il nomme $(0;3)$ alors que l'origine $O$ du repère est $(0;0)$.*
+
+| cran (id, non rendu) | **étiquette rendue** | $(x_0 ; y_0)$ | pourquoi ce cran |
+|---|---|---|---|
+| `origine` | **« $(0\,;3)$ »** | $(0 ; 3)$ | **l'état de S1** |
+| `decale` | **« $(2\,;3)$ »** | $(2 ; 3)$ | **l'état de S2** — **même hauteur que le précédent, deux unités plus loin.** C'est le seul couple de la grille qui partage une ordonnée, et il existe pour cela. ⚠ *Était $(4;3)$ : déplacé en vague 1 avec la fenêtre (§5.1.1) — à $x_{\max}=4$ il aurait été au bord. **La table B ne bouge pas : la pente ne dépend que de $y$.*** |
+| `haut` | **« $(0\,;5)$ »** | $(0 ; 5)$ | **l'état de S4** : au-dessus de tous les paliers (le plus haut vaut $4$) |
+| `bas` | **« $(0\,;-3)$ »** | $(0 ; -3)$ | sous tous les paliers positifs — la remontée **vers** le palier (le cas « $T_0=0$ » de `famille-solutions`) ; **l'état de S5** |
+| `sur` | **« $(0\,;2)$ »** | $(0 ; 2)$ | **exactement SUR le palier** quand $(a;b)=(-1;2)$ ou $(-0{,}5;1)$ ⟹ la solution **constante**, une droite horizontale. *C'est l'Étape 1 de R2, vue* — **et c'est pour cela que son id ne doit JAMAIS être rendu** |
 
 **Il n'y a pas de cran $x_0 < 0$, et c'est délibéré** : la leçon travaille des temps qui
 démarrent (`lesson.md:194`), et un $x_0$ négatif n'ajoute rien qu'une lecture de plus.
@@ -712,19 +1019,43 @@ $\tfrac12\times3+2=\tfrac72$ ✓.*
 > $\tfrac12\mathbb{Z}$). *Une pente affichée $-1{,}33$ est un bug avant d'être une faute de
 > goût.*
 
-**C — les trois courbes de S5** ($a=-\tfrac12$, $b=2$, palier $4$) :
+**C — les trois courbes de S5** ($a=-\tfrac12$, $b=2$, palier $4$) — ⚠ **TABLE ENTIÈREMENT
+RECALCULÉE en vague 1 sur la fenêtre $x \in [-8;4]$**, et **la cellule fausse de la première
+rédaction est réparée** (pédagogie M2, fidélité (d) : le bord gauche de la courbe du bas était
+écrit « $\approx -0{,}6$ » dans la table et « $\approx -0{,}71$ » dans sa propre vérification —
+**c'est $-0{,}71$**) :
 
-| point de passage | la courbe | à $x=0$ | à $x=10$ | où elle quitte le cadre |
+| point de passage | la courbe | à $x=0$ | **à $x=4$ (bord droit)** | où elle quitte le cadre par la gauche |
 |---|---|---|---|---|
-| `haut` $(0;5)$ | descend vers $4$ | $5$ | $\approx 4{,}007$ | par la GAUCHE, vers $x \approx -1{,}4$ *(elle dépasse $6$)* |
-| `sur` $(0;2)$ | monte vers $4$ | $2$ | $\approx 3{,}99$ | jamais : elle reste dans le cadre sur tout $[-2;10]$ |
-| `bas` $(0;-3)$ | monte vers $4$ | $-3$ | $\approx 3{,}95$ | par la GAUCHE, vers $x \approx -0{,}6$ *(elle passe sous $-6$)* |
+| `haut` $(0;5)$ | descend vers $4$ | $5$ | $4 + e^{-2} \approx \mathbf{4{,}135}$ | $x=-2\ln 2 \approx \mathbf{-1{,}386}$ *(elle dépasse $6$)* |
+| `sur` $(0;2)$ | monte vers $4$ | $2$ | $4 - 2e^{-2} \approx \mathbf{3{,}729}$ | $x=-2\ln 5 \approx \mathbf{-3{,}219}$ *(elle passe sous $-6$)* |
+| `bas` $(0;-3)$ | monte vers $4$ | $-3$ | $4 - 7e^{-2} \approx \mathbf{3{,}053}$ | $x=-2\ln\tfrac{10}{7} \approx \mathbf{-0{,}713}$ *(elle passe sous $-6$)* |
 
-*Vérifications : l'écart au palier est multiplié par $e^{ax}$ ; à $x=10$ et $a=-\tfrac12$,
-$e^{-5}\approx 0{,}0067$, donc $5 \to 4+0{,}0067 \approx 4{,}007$ ✓, $2 \to 4-2\times0{,}0067
-\approx 3{,}987$ ✓, $-3 \to 4-7\times0{,}0067 \approx 3{,}953$ ✓. À gauche : $4+e^{-x/2}=6$
-donne $x=-2\ln 2 \approx -1{,}39$ ✓ ; $4-7e^{-x/2}=-6$ donne $e^{-x/2}=\tfrac{10}{7}$, soit
-$x=-2\ln\tfrac{10}{7}\approx -0{,}71$ ✓.*
+*Vérifications : l'écart au palier est multiplié par $e^{ax}$ ; à $x=4$ et $a=-\tfrac12$,
+$e^{-2}\approx 0{,}13534$, donc $5 \to 4+0{,}135$ ✓, $2 \to 4-2\times0{,}135=3{,}729$ ✓,
+$-3 \to 4-7\times0{,}135=3{,}053$ ✓. À gauche : $4+e^{-x/2}=6 \Rightarrow e^{-x/2}=2
+\Rightarrow x=-2\ln2$ ✓ ; $4-2e^{-x/2}=-6 \Rightarrow e^{-x/2}=5 \Rightarrow x=-2\ln5$ ✓ ;
+$4-7e^{-x/2}=-6 \Rightarrow e^{-x/2}=\tfrac{10}{7} \Rightarrow x=-2\ln\tfrac{10}{7}$ ✓.*
+
+**C′ — les SÉPARATIONS, qui sont le vrai objet de la porte** (réparation du BLOQ-2). Les trois
+courbes sont **toutes les trois dans le cadre** sur $x \in [-0{,}713 ; 4]$ ; c'est **là, et
+seulement là**, que « aucune n'en traverse une autre » se mesure en pixels.
+
+| paire | écart en unités | **minimum sur le cadre** (atteint à $x=4$) | **en px à 1 280** | **en px à 390** |
+|---|---|---|---|---|
+| `haut` / `sur` — **la plus serrée** | $3e^{-x/2}$ | $3e^{-2}=0{,}4060$ | **18,9 px** | **12,1 px** |
+| `sur` / `bas` | $5e^{-x/2}$ | $5e^{-2}=0{,}6767$ | 31,6 px | 20,2 px |
+| `haut` / `bas` | $8e^{-x/2}$ | $8e^{-2}=1{,}0827$ | 50,5 px | 32,3 px |
+
+**Et l'écart de S4** (une seule courbe contre la ligne du palier) : $e^{-x/2}$, **minimum
+$e^{-2}=0{,}1353$ u ⟹ 6,32 px à $1\,280$ et 4,04 px à 390** (§5.1.1).
+
+> **Les deux seuils de porte en descendent, et ils ne sont plus choisis** (§11.2) :
+> `courbes-jamais-confondues` exige **$\ge 6$ px** (plancher mesuré : 12,1 px — marge $\times 2$)
+> et `courbe-jamais-sur-le-palier` exige **$\ge 3$ px** (plancher mesuré : 4,04 px).
+> *La première rédaction exigeait $\ge 3$ px « **en tout $x$ du cadre** » sur une fenêtre où la
+> séparation tombait à $0{,}2$ px : **la porte ne pouvait pas passer au vert sur un produit
+> juste**, ce que le BLOQ-2 démontre et ce que cette table répare.*
 
 > **Les courbes sont CLIPPÉES au cadre, jamais PLAFONNÉES.** Une courbe qui sort continue hors
 > champ ; elle ne s'aplatit pas sur le bord. *C'est une distinction que la porte doit tenir
@@ -770,13 +1101,18 @@ la spec sœur, §11.1 N3).*
 
 ### 5.5 Contrôles (5) — un neuf par étape
 
+> ⚠ **DEUX OUVERTURES AJOUTÉES EN VAGUE 1, ET UNE REFUSÉE.** `point` est **rouvert APRÈS la
+> révélation** à **S2** (pédagogie I5) et à **S3** (pédagogie I3) — deux étapes où il ne fuit
+> rien et où il répare une lecture morte. Il **reste FERMÉ à S4**, et c'est un **refus motivé**
+> d'une consigne de vague 1 : voir l'encadré de réfutation ci-dessous et §13.16.
+
 | id | ce qu'il règle | valeurs | ouvert par |
 |---|---|---|---|
-| `point` | $P$ | `origine` · `decale` · `haut` · `bas` · `sur` | **S1**, S5 *(rouvert)* |
-| `champ` | la densité du champ tracé | `aucun` · `un-point` · `ligne` · `plan` | **S2**, S5 *(rouvert)* |
-| `b` | le terme constant | `-2` · `0` · `1` · `2` | **S3**, S4 *(rouvert)*, S5 |
-| `a` | le coefficient | `-1` · `-0.5` · `0.5` | **S4**, S5 |
-| `famille` | combien de courbes sont tracées | `aucune` · `une` · `trois` | **S5** |
+| `point` | $P$ | 5 crans, **étiquetés par leurs coordonnées** (§5.2 C) | **S1** · S2 *(rouvert **après la révélation**)* · S3 *(rouvert **après la révélation**)* · S5 *(rouvert)* · S6 *(rouvert)* |
+| `champ` | la densité du champ tracé | `aucun` · `un-point` · `ligne` · `plan` | **S2**, S5 *(rouvert)*, S6 *(rouvert)* |
+| `b` | le terme constant | `-2` · `0` · `1` · `2` | **S3**, S4 *(rouvert)*, S5, **S6** |
+| `a` | le coefficient | `-1` · `-0.5` · `0.5` | **S4**, S5, **S6** *(et c'est à S6 qu'il porte le pari)* |
+| `famille` | combien de courbes sont tracées | `aucune` · `une` · `trois` | **S5**, S6 *(rouvert)* |
 
 **Aucun curseur continu. Aucune borne.** *Tout est en crans discrets, pour la raison du §5.4.*
 **Aucune clé de `bornes` dans le registre** — deuxième scène du dépôt dans ce cas, après
@@ -788,6 +1124,30 @@ une courbe après l'autre, **toutes visant le même palier — c'est-à-dire la 
 (§7.6 A). *C'est exactement l'anti-motif du manège (ADR 0041, addendum du 2026-09-24 soir :
 une étape révélée qui ouvre le réglage répondant au pari SUIVANT).*
 
+> ⚠ **RÉFUTATION ÉCRITE — la vague 1 demande d'ouvrir `point` à S4, et je ne le fais pas.**
+> Le rapport de pédagogie écrit : « *opening `point` after S4's reveal leaks nothing by §7.6 A's
+> own logic, since `famille` is closed and no second curve is drawable* ». **C'est faux, et
+> l'erreur est sur ce qu'est une fuite.** Rouvrir `point` à S4 ne dessine pas deux courbes à la
+> fois — il dessine **une courbe après l'autre, depuis cinq départs, toutes visant la même
+> ligne**. Ce que l'élève APPREND en trois clics est **la première moitié mot pour mot de la
+> bonne réponse de S5** (« *s'approchent toutes les trois de la même hauteur $4$* »). *La fuite
+> ne se mesure pas au nombre de traits simultanés ; elle se mesure à ce que l'élève sait avant
+> d'avoir parié.* **Et la porte l'arme déjà** (`fuite-inter-etapes`, essai rouge n° 22).
+>
+> **Ce que la vague 1 voulait vraiment est obtenu sans ouvrir `point` :** une quantité qui
+> VARIE, pour que « jamais » s'exerce au lieu de s'énoncer. **Le contrôle qui la donne est déjà
+> ouvert à S4 : c'est `b`.** À $P=(0;5)$ et $a=-\tfrac12$, promener $b$ sur ses quatre crans
+> donne
+> **écart $9 \to 5 \to 3 \to 1$** et **pente $-4{,}5 \to -2{,}5 \to -1{,}5 \to -0{,}5$**,
+> avec `pente` $= a \times$ `ecart-au-palier` **aux quatre**. *Et sur les douze équations
+> atteignables à S4, `ecart-au-palier` prend six valeurs distinctes $\{1;3;4;5;7;9\}$.*
+> **C'est la `suite` de S4 (§7.4), et c'est l'exercice du mécanisme.**
+>
+> ⚠ **Au passage, une moitié du BLOQ-2 est réfutée sur les faits** : le rapport affirme que
+> `ecart-au-palier` « *a exactement une valeur, à une étape, invariable* ». **`b` était rouvert
+> à S4 dans la première rédaction déjà** (§7.4). La lecture VARIAIT ; ce qui manquait, c'est
+> qu'on demande à l'élève de la faire varier. *La réparation est une `suite`, pas un contrôle.*
+
 ### 5.6 État (5 clés) et lectures (4)
 
 **État :** `a`, `b`, `point`, `champ`, `famille`. **Aucune clé posée sans contrôle.** La
@@ -797,24 +1157,49 @@ modèle** : aucun contrôle ne les atteint.
 | id | ce qui s'affiche | forme | à partir de |
 |---|---|---|---|
 | `pente` | la pente que l'équation impose au point $P$ : $a\,y_0+b$ | entier ou demi-entier **exact** | **S1** |
-| `pentes-comparees` | les pentes aux **deux** points que la consigne cite, **l'une sous l'autre** | deux valeurs exactes | **S2** |
+| `pentes-comparees` | la pente au **point de référence $R=(0;3)$** et la pente en **$P$**, l'une sous l'autre | deux valeurs exactes | **S2** |
 | `palier` | la hauteur où le champ est plat | entier **exact** ; « — » si l'étape ne l'a pas découvert | **S3** |
-| `ecart-au-palier` | $y_0 - \left(-\dfrac{b}{a}\right)$ | entier ou demi-entier exact | **S4** |
+| `ecart-au-palier` | $y_0 - \left(-\dfrac{b}{a}\right)$ | entier ou demi-entier exact | **S4**, S5 *(ajoutée en vague 1)* |
 
 **`pentes-comparees` est la lecture double du banc de modulation, transposée** (ADR 0041,
 addendum du 2026-09-25, point 2 : *« là où une méthode de lecture SATURE, la scène affiche les
 deux lectures, l'une sous l'autre »*). Ici la « méthode qui sature » est **lire la pente en
 supposant qu'elle dépend de l'avancement** : elle donne le bon résultat **exactement quand les
-deux points ont la même ordonnée** — c'est-à-dire tout le temps, à S2 — et s'écroule dès que
-les ordonnées diffèrent. **La porte exige les DEUX sens** (§11.1 N3) : identiques à ordonnée
-égale, différentes sinon. *Une scène où les deux lignes seraient toujours égales, ou jamais,
-doit rougir.*
+deux points ont la même ordonnée**, et s'écroule dès que les ordonnées diffèrent.
+
+> ⚠ **RÉÉCRITE EN VAGUE 1 (pédagogie I5), et c'est le défaut le plus fin des deux rapports.**
+> *La première rédaction disait « les pentes aux DEUX POINTS QUE LA CONSIGNE CITE » — et la
+> consigne de S2 cite $(0;3)$ et $Q$, avec `point` **verrouillé** sur $Q$. **La lecture ne
+> pouvait donc afficher que deux valeurs ÉGALES, à toutes les étapes, sur tous les états.** Le
+> contraste qui donne son sens à l'invariance — *hauteur différente $\Rightarrow$ pente
+> différente* — n'était affiché par AUCUNE lecture, et surtout pas par celle bâtie pour lui.*
+> **Conséquence de porte, et c'est de l'ADR 0033 tout cru :** N3 revendiquait une mesure dans
+> les deux sens (« *DIFFÉRENTES sinon* ») **que le produit ne pouvait pas exercer**, et l'essai
+> rouge n° 4 (« toujours égales ») était **indétectable** — une porte exacte sur une question
+> plus étroite que son en-tête.
+>
+> **La réparation :** la lecture compare **un point de référence FIXE, $R=(0;3)$** (celui de
+> S1), **et $P$, qui devient mobile après la révélation de S2**. À la révélation, $P=Q=(2;3)$ ⟹
+> les deux valeurs sont **égales** ($-3$ et $-3$) ; l'élève pose ensuite $P$ à une autre hauteur
+> et elles **diffèrent** ($-5$ en $(0;5)$, $+3$ en $(0;-3)$, $-2$ en $(0;2)$ — table B). **Les
+> deux sens existent dans le produit, donc N3 et les essais rouges n° 4 et n° 5 mesurent enfin
+> quelque chose.**
 
 **`ecart-au-palier` est la lecture du MÉCANISME, et elle est autorisée parce que R0 l'a déjà
 écrite.** `lesson.md:33` pose $T'(t)=-k\big(T(t)-20\big)$ : la vitesse est proportionnelle à
 l'écart. La lecture affiche **le nombre** $y_0 - y_p$, à côté de `pente` — et l'élève voit,
 sans qu'une ligne de prose le lui dise, que `pente` $= a \times$ `ecart-au-palier`. *Elle
 n'apparaît qu'à **S4**, après que le palier a été trouvé : avant, elle n'a pas de sens.*
+
+> **Ce qu'elle parcourt à S4, contre le reproche de vague 1.** À $P=(0;5)$, avec `a` (neuf) et
+> `b` (rouvert) ouverts, les **douze** équations atteignables donnent
+> `ecart-au-palier` $\in \{1;3;4;5;7;9\}$ et `pente` $= a \times$ écart **aux douze** :
+> à $a=-1$, écarts $\{7;5;4;3\}$ / pentes $\{-7;-5;-4;-3\}$ ; à $a=-\tfrac12$, écarts
+> $\{9;5;3;1\}$ / pentes $\{-4{,}5;-2{,}5;-1{,}5;-0{,}5\}$ ; à $a=\tfrac12$, écarts
+> $\{1;5;7;9\}$ / pentes $\{0{,}5;2{,}5;3{,}5;4{,}5\}$. **La lecture variait déjà ; ce qui
+> manquait, c'est une `suite` qui la fasse varier — elle existe maintenant (§7.4).**
+> ⚠ **Et elle est AJOUTÉE aux lectures de S5** (elle n'y était pas) : à S5 la famille rend le
+> même mécanisme lisible sur trois départs, et le retour de `meme-ligne` s'y appuie.
 
 **Aucune lecture ne répète ce que le DESSIN montre déjà** (leçon de la vague 2 du banc
 d'électrolyse). Le partage est strict et mesuré :
@@ -860,13 +1245,15 @@ aucun ici**.
 - après l'engagement : le champ s'étend, la ligne du palier se pose, la courbe se trace, les
   lectures de l'étape s'écrivent. **C'est le plan qui répond, avant le texte.**
 
-**TROIS étapes portent un `etat_revele`, et c'est une différence avec la scène sœur (qui n'en
-avait aucun).** S2 (`champ: "ligne"`), S3 (`champ: "plan"`), S4 (`famille: "une"`), S5
-(`famille: "trois"`) — **quatre, en fait, et il faut le compter juste** : la révélation ne
-change aucun **réglage d'équation**, elle **ouvre le dessin**. *C'est le geste du banc de
-modulation (« une révélation peut faire APPARAÎTRE un étage du schéma ») transposé : ici,
-l'étage est une densité de champ ou un nombre de courbes.* **La porte mesure les deux temps**
-(§11.3, `etapes`).
+**CINQ étapes sur six portent un `etat_revele`, et c'est une différence avec la scène sœur (qui
+n'en avait aucun) :** S2 (`champ: "ligne"`), S3 (`champ: "plan"`), S4 (`famille: "une"`), S5
+(`famille: "trois"`), **S6 (`a: "-1"`)**. *S1 n'en porte pas.* ⚠ **Et S6 est le seul dont la
+révélation change un RÉGLAGE D'ÉQUATION** (elle pose $a=-1$) — les quatre autres ne font
+qu'**ouvrir le dessin**. *C'est justifié et c'est mesuré : le pari de S6 porte précisément sur
+« quel $a$ ? », donc la scène répond en **posant le $a$** et en laissant l'élève promener $b$
+pour le vérifier. `avant-pari` mesure que $a$ vaut $-0{,}5$ **avant** l'engagement et $-1$
+**après**, et `stem-non-contamine` que l'état POSÉ de S6 n'est pas $-1$ (§11.3).* **La porte
+mesure les deux temps** (§11.3, `etapes`).
 
 **Éclairs et mouvement réduit.** Rien n'anime : la famille `eclairs` est **attendue
 structurellement vide**, et **mesurée quand même** (§11.3) — *une chose n'est prouvée absente
@@ -882,8 +1269,19 @@ chaque étape repart de son état déclaré. **Aucune VUE** : la scène est plan
   a déjà ouverts**.
   *Corollaire du manège, appliqué à la lettre : une donnée de l'énoncé ne se peint jamais dans
   la couleur de la réponse.*
-- **À l'ACCENT — et seulement après la révélation** : les **segments neufs** que la révélation
-  ajoute, la **ligne du palier** (tirets), les **courbes**, et les lectures de l'étape.
+- **À l'ACCENT — et seulement après la révélation** : la **ligne du palier** (tirets), **la
+  rangée de segments qui est plate** (ceux posés à la hauteur du palier), les **courbes**, et
+  les lectures de l'étape.
+  > ⚠ **CORRIGÉ EN VAGUE 1 (pédagogie I9).** La première rédaction mettait **« les segments
+  > neufs que la révélation ajoute »** à l'accent — c'est-à-dire, à S3, **169 marques d'accent
+  > plus une ligne, d'un seul coup**. *La réponse au pari devenait une marque parmi cent
+  > soixante-dix*, contre DESIGN-BIBLE « une chose à la fois, la richesse apparaît DANS le
+  > calme ». **Règle nouvelle, non négociable : le champ révélé se pose à l'ENCRE ; l'ACCENT
+  > est réservé à la RÉPONSE** — la rangée plate et sa ligne à S3, la courbe à S4, les trois
+  > courbes à S5, la ligne et la lecture `palier` à S6. *Mesuré par `avant-pari` dans son
+  > second sens (le champ DOIT exister après la révélation) et par une sonde de chrominance qui
+  > compte les pixels d'accent : **à S3, après la révélation, l'accent ne couvre que la ligne et
+  > la rangée de $13$ segments plats**, jamais les $169$.*
 - **La ligne du palier n'a AUCUNE existence d'énoncé avant S3.** Règle 2 du tremplin (ADR 0041,
   addendum du 2026-09-25) : *l'objet-réponse peut n'avoir aucune existence d'énoncé.* Elle
   n'est **ni dessinée, ni nommée, ni décrite, ni atteignable par un réglage** avant la
@@ -892,12 +1290,41 @@ chaque étape repart de son état déclaré. **Aucune VUE** : la scène est plan
 - **Les segments du champ ont une LONGUEUR FIXE à l'écran** (22 px au bureau, 16 px au
   téléphone), indépendante de la pente. *Sinon un segment de pente $-5$ serait cinq fois plus
   long qu'un segment de pente $-1$, et le champ raconterait une intensité qui n'existe pas.
-  C'est une exagération, elle est constante, et le `fit_caveat` la dit (§10.4).*
-- **Le pas du champ est de 1 unité au-dessus de 600 px, de 2 unités en dessous.** À $46{,}7$
-  px/unité et 22 px de segment, les traits laissent 25 px entre eux ✓ ; à $32{,}5$ px/unité ils
-  se toucheraient — d'où le pas de 2. *Soit $13 \times 13 = 169$ segments au bureau,
-  $7 \times 7 = 49$ au téléphone. **Mesuré par `etiquettes` et `champ-lisible` aux deux
-  largeurs** (§11.2).*
+  C'est une exagération, elle est constante, et le `fit_caveat` la dit (§10.5 — *renuméroté en
+  vague 1 : une clause a été insérée en 3ᵉ position, celle qui dit qu'un dessin fini ne peut pas
+  montrer « jamais »*).*
+- **Le pas du champ est de 1 unité À TOUTES LES LARGEURS — $13 \times 13 = 169$ segments,
+  partout.** ⚠ **RÈGLE REFAITE EN VAGUE 1 (fidélité I5, pédagogie M1), et le nombre qui la
+  portait était faux.**
+  *Ce que la première rédaction écrivait : « à $32{,}5$ px/unité ils se toucheraient — d'où le
+  pas de 2 ». **Faux deux fois.*** **(1)** À $32{,}5$ px/unité et 16 px de segment, l'écart pire
+  cas vaut $32{,}5-16 = 16{,}5$ px : ils ne se touchent pas, et **la porte aurait fait ROUGIR un
+  pas de 1 sur une configuration qui passe son propre critère de lisibilité** ($\ge 6$ px) —
+  c'est le reproche du critique, et il est exact. **(2)** Mais $32{,}5$ px/unité était lui-même
+  faux (§5.1.0) : avec `carre` la vraie valeur à 390 px était $\approx 22$ px/unité, donc un
+  écart de $\approx 6{,}4$ px, **au ras du critère** — le pas de 2 était presque juste, pour une
+  raison que personne n'avait écrite.
+  **L'arithmétique refaite sur `carre-partout`, qui est la configuration retenue :**
+
+  | largeur | px/unité | longueur de segment | écart pire cas *(deux segments voisins, pente $0$ ou pente maximale $8$)* | verdict |
+  |---|---|---|---|---|
+  | $1\,280$ px | $46{,}67$ | 22 px | $46{,}67 - 22 = \mathbf{24{,}7}$ px | ✓ |
+  | 390 px | $29{,}83$ | 16 px | $29{,}83 - 16 = \mathbf{13{,}8}$ px | ✓ |
+
+  *Le pire cas est démontré, pas supposé : deux voisins HORIZONTAUX portent la MÊME pente (elle
+  ne dépend que de $y$), donc ils sont colinéaires quand la pente vaut $0$ — c'est là que leurs
+  extrémités sont le plus proches, à $\text{px/u} - L$. Deux voisins VERTICAUX sont au pire
+  quasi verticaux (pente maximale de la grille : $|-1 \times (-6) + (-2)| = 8$), et leur écart
+  vaut $\text{px/u} - L\sin(\arctan 8) = 29{,}83 - 15{,}87 = 13{,}96$ px à 390. Les voisins
+  diagonaux sont à $\text{px/u}\sqrt2$, toujours plus loin.*
+  **Conséquences : `champ-lisible` exige $\ge 6$ px et un pas de 1 AUX DEUX LARGEURS ; l'essai
+  rouge n° 16 (« passer le pas à 1 à 390 px ») est SUPPRIMÉ et remplacé (§11.4) ; et la `suite`
+  de S2 n'a plus de réponse dépendante de la largeur** (§7.2 — c'était M1 côté pédagogie).
+  ⚠ **Ce qui reste à MESURER en vague 2, et qui n'est pas de l'arithmétique : le CALME.** 169
+  marques dans un carré de 358 px sont lisibles ; sont-elles calmes ? *Si la relecture de calme
+  à 390 px juge que non, **le repli est un pas de 2 (49 segments) sous 600 px**, et il ne casse
+  plus rien — la `suite` de S2 est désormais indépendante de la largeur par construction.
+  **Écrit ici pour que le repli soit une décision, pas une improvisation.***
 - **Aucune teinte hors jetons** : toutes les couleurs sont lues sur les jetons `--figure-*` à
   l'exécution (`lib/jetons-figure.ts`, **pas** `scene3d/palette.ts`, qui importerait three), et
   relues au changement de thème.
@@ -907,28 +1334,37 @@ chaque étape repart de son état déclaré. **Aucune VUE** : la scène est plan
 - **Les étiquettes se posent avec `disposer`, jamais `poser`** (`Plateau.tsx:258`),
   **obligatoire ici** : le badge de l'équation, le nom de $P$, ses coordonnées et l'étiquette
   du palier peuvent tomber dans le même voisinage (à $b=2$, $a=-0{,}5$, `point: "haut"`, le
-  palier est à $4$ et $P$ à $5$ — **une unité d'écart, soit 47 px au bureau et 33 px au
-  téléphone**). *Famille `etiquettes` à $1\,280$ **et** à 390 px.*
+  palier est à $4$ et $P$ à $5$ — **une unité d'écart, soit 46,7 px au bureau et 29,8 px au
+  téléphone**, chiffres refaits en vague 1). *Famille `etiquettes` à $1\,280$ **et** à 390 px.*
 - **Budget d'étiquettes, mesuré.** Au plus **quatre** étiquettes HTML simultanées : le badge de
   l'équation, $P$, ses coordonnées, l'étiquette du palier. **Sous 600 px, les nombres des axes
-  passent de tous les $1$ à tous les $2$** ; les quatre étiquettes restent.
+  passent de tous les $1$ à tous les $2$** ; les quatre étiquettes restent. *(Le pas des
+  NOMBRES d'axe et le pas du CHAMP sont deux choses distinctes : le champ reste à 1 partout,
+  les nombres passent à 2 sous 600 px. **Deux sondes séparées**, §11.2/§11.3.)*
 - **La valeur qu'on règle et la valeur qu'on lit vont ENSEMBLE sur la scène collante** (leçon
   du banc de diffraction) : $a$ et $b$ sur le badge de l'équation, $P$ sur le plan. La liste
   des lectures défile ; le plan, non.
 
 ---
 
-## 7. Les cinq étapes
+## 7. Les SIX étapes
 
 **La pente en un point → elle ne regarde que la hauteur → la ligne plate → la courbe →
-la famille.** Notation : `⟂-avant-pari` = ce qui doit être **absent du DOM et du rendu** tant
-que l'élève n'a pas parié (ADR 0041 §6 + addendum du 2026-09-23 soir : *tout ce qui dépend de
-l'ISSUE attend la révélation*).
+la famille → le cran où la règle fausse se cache.** Notation : `⟂-avant-pari` = ce qui doit
+être **absent du DOM et du rendu** tant que l'élève n'a pas parié (ADR 0041 §6 + addendum du
+2026-09-23 soir : *tout ce qui dépend de l'ISSUE attend la révélation*).
 
 > **RÈGLE ARMÉE AVANT LES TABLES (leçon B2 de la spec sœur) : la valeur de CHAQUE choix est
 > recalculée depuis le modèle que son étiquette nomme, et elle DIFFÈRE de la bonne réponse.**
-> Les vingt choix qui suivent ont été refaits un par un sur cette règle ; le §14.0 la remet en
-> tête de la liste de livraison.
+> Les **vingt-quatre** choix qui suivent ont été refaits un par un sur cette règle ; le §14.0 la
+> remet en tête de la liste de livraison.
+
+> ⚠ **RÈGLE AJOUTÉE EN VAGUE 1 (pédagogie I2) : UNE `suite` = UNE QUESTION + UN GESTE.**
+> *Quatre des cinq `suite` de la première rédaction en portaient deux (S2, S3, S4, S5), et c'est
+> exactement la règle que la vague 2 de la scène sœur avait dû imposer (DÉCISIONS §29, HANDOFF
+> §11.210).* **Les six `suite` ci-dessous sont refaites sur cette règle**, et ce qui en sort
+> n'est pas jeté : la moitié porteuse qui y vivait devient **un pari** (S6), **une lecture qui
+> varie** (S2, S4) ou **un retour** — jamais une phrase de plus.
 
 ### 7.1 S1 — `la-pente-en-un-point` · « Que dit l'équation, ici ? »
 
@@ -951,47 +1387,90 @@ l'ISSUE attend la révélation*).
 | `signe-recopie` | $+3$ — $y'=-y$ se récrit $y'+y=0$ : le coefficient est $1$, donc la pente vaut $1 \times 3$ | non | **`signe-exposant`** | « Le geste est juste, la lecture est faite trop tôt. $y'+y=0$ est la **même** équation, mais le coefficient ne se lit **qu'une fois l'équation mise sous la forme $y'=ay$** : ici $y'=-y$, donc $a=-1$, pas $+1$. Le plan le confirme : le segment **descend**. Un $+3$ ferait monter une solution que le chapitre 2 fait tendre vers $0$. » |
 | `pente-nulle` | $0$ — résoudre une équation, c'est chercher où quelque chose s'annule : la pente cherchée est $0$ | non | **`ed-inconnue-nombre`** | « Regarde le segment : il n'est pas plat. Ce que ton modèle cherche — **un point** où quelque chose s'annule — n'est pas ce qu'une équation différentielle demande : son inconnue n'est ni un nombre ni un point, c'est une **fonction entière**, et l'équation relie $y'$ à $y$ **en chaque point**, pas seulement là où c'est nul. *Il y aura bien une hauteur où la pente est nulle ; elle n'a rien à voir avec « résoudre », et ce n'est pas encore la question.* » |
 
-- **`suite` (34 mots) :** « Promène $P$ sur les cinq positions, l'équation inchangée. **Sur
-  combien d'entre elles la pente est-elle la même ?** Lis-la à chaque fois avant de répondre. »
-  *Réponse : **deux** — `origine` $(0;3)$ et `decale` $(4;3)$, les deux seules qui partagent une
-  ordonnée (table B du §5.3 : pente $-3$ aux deux ✓). **C'est la charnière vers S2** : l'élève
-  TROUVE l'invariance avant qu'on la lui demande, et la `suite` ne la nomme pas.*
+- **`suite` (31 mots) — ⚠ REMPLACÉE EN VAGUE 1 (pédagogie I4) :** « Ne lis pas le nombre :
+  **compte sur le quadrillage.** En avançant d'**un** carreau vers la droite le long du
+  segment, de combien de carreaux descend-il ? »
+  *Réponse : **trois**, et la lecture `pente` affiche $-3$ ✓ — les deux doivent tomber
+  ensemble.* **Une question, un geste** ✓.
+  > **Pourquoi ce remplacement.** §5.1 défend le quadrillage comme porteur — « *une pente $-3$
+  > descend de trois carreaux pour un carreau à droite, **et c'est ainsi qu'un élève la
+  > vérifie*** » — et **aucune étape ne demandait jamais cette vérification : toutes les pentes
+  > de la scène étaient IMPRIMÉES.** *Le profil maths de VISION exige que courbe ↔ équation ↔
+  > valeur numérique bougent ensemble ; ici équation↔nombre était câblé et dessin↔nombre ne
+  > l'était jamais.* **Et ça reste dans le cadre** : lire un coefficient directeur sur un
+  > quadrillage n'est pas du vocabulaire de champ de pentes, c'est de la lecture graphique de
+  > seconde.
+  >
+  > **Ce que cette `suite` remplace, et où c'est parti.** L'ancienne (« promène $P$ : sur
+  > combien de positions la pente est-elle la même ? » → **deux**) était la charnière vers S2.
+  > *Elle n'est pas perdue : le retour de `produit` la porte déjà mot pour mot (« **Pose $P$
+  > ailleurs et relis** : la pente change, alors que l'équation n'a pas bougé d'une lettre »), et
+  > un retour a le droit de commander un geste.* **La charnière tient, et la `suite` n'a plus
+  > qu'une question.**
 - **⟂-avant-pari :** le segment en $P$ ; la lecture `pente` ; **tout autre segment de champ** ;
   toute ligne de palier ; toute courbe ; le verdict ; **tout pixel d'accent** (mesuré en
   **chrominance**, leçon du solide de révolution) ; et la description lue au lecteur d'écran ne
   doit contenir ni « $-3$ », ni « descend », ni « pente ».
 
-### 7.2 S2 — `la-hauteur-seule-decide` · « Et quatre unités plus loin ? »
+### 7.2 S2 — `la-hauteur-seule-decide` · « Et deux unités plus loin ? »
 
-- **État :** `a: "-1"`, `b: "0"`, `point: "decale"` $(4;3)$, `champ: "un-point"`,
+- **État :** `a: "-1"`, `b: "0"`, `point: "decale"` $(2;3)$, `champ: "un-point"`,
   `famille: "aucune"`.
-- **`etat_revele` :** **`champ: "ligne"`** — la révélation **étend le champ à toute la
-  horizontale $y=3$**, treize segments parallèles. *C'est la scène qui répond, avant le texte.*
-- **Contrôle ouvert :** `champ` (**neuf**). *`point` est **absent du DOM** : $P$ est verrouillé
-  sur `decale`.* **Lectures :** `pentes-comparees`.
-- **Consigne (voix) :** « Même équation, $y'=-y$. À l'étape précédente, en $(0\,;\,3)$, elle
-  imposait la pente $-3$. Voici maintenant $Q$, en $(4\,;\,3)$ : **même hauteur, quatre unités
-  plus loin.** »
+- **`etat_revele` :** **`champ: "ligne"`** — la révélation **étend le champ à toute
+  l'horizontale $y=3$**, treize segments parallèles. *C'est la scène qui répond, avant le
+  texte.*
+- **Contrôles :** `champ` (**neuf**) ; **`point` est ROUVERT APRÈS la révélation** (⚠ vague 1,
+  pédagogie I5 — voir la `suite`). *Avant la révélation, `point` est **absent du DOM** : $Q$ est
+  verrouillé.* **Lectures :** `pentes-comparees`.
+- **Consigne (voix) — ⚠ RÉÉCRITE (pédagogie M3, M4) :** « Même équation, $y'=-y$. À l'étape
+  précédente, en $(0\,;\,3)$, elle imposait la pente $-3$. **Voici maintenant $Q$.** »
+  *Le plan porte $Q$ et ses coordonnées $(2\,;\,3)$ à l'ENCRE : c'est l'énoncé, et c'est au
+  DESSIN de le dire.*
+  > **Deux corrections, et elles vont ensemble.** *(M3)* La première rédaction écrivait
+  > « ***même hauteur**, quatre unités plus loin* » **en gras**, pour un pari dont la question
+  > est précisément « est-ce que la hauteur seule décide ? » — **le pouce sur la balance**. Les
+  > coordonnées portent le fait sans le souffler. *(M4)* Et en énonçant « $Q$ est à la hauteur
+  > $3$ » **dans le texte**, la consigne **réfutait elle-même** le choix `arretee` (« la
+  > solution est arrivée en bas et s'est arrêtée ») : une option morte. *En la laissant au
+  > dessin, la réfutation reste disponible — mais c'est l'élève qui doit la voir, et c'est
+  > exactement ce qu'on veut lui apprendre à faire.* **Jugement déclaré : l'option n'est pas
+  > « vivante » au sens plein ; elle est **réfutable par une observation que l'élève doit
+  > faire**. §13.18 la met au propriétaire.*
 - **Pari :** « Quelle pente l'équation impose-t-elle en $Q$ ? »
 - **Les quatre valeurs, recalculées chacune depuis SON modèle, et distinctes :** $-3$ ·
-  $-0{,}75$ ($-3$ divisé par $4$) · $0$ (arrivé au palier, arrêté) · $-1$ (le coefficient). ✓
+  $-1{,}5$ (la pente amortie de moitié) · $0$ (arrivé en bas, arrêté) · $-1$ (le coefficient). ✓
+  *⚠ **$-0{,}75 \to -1{,}5$ en vague 1** (fidélité M7) : $-0{,}75$ était **hors de
+  $\tfrac12\mathbb{Z}$**, l'invariant que §5.3 B déclare pour TOUTE pente de la scène et que la
+  porte arme en N5. La porte ne lisant que les LECTURES, elle n'aurait pas rougi — **mais on
+  offrait à l'élève une pente que la scène déclare impossible.** $-1{,}5$ est dans
+  $\tfrac12\mathbb{Z}$, distinct des trois autres, et porte le même modèle.*
 
 | choix | texte | juste | misconception | retour |
 |---|---|---|---|---|
-| `identique` | $-3$ — la **même** qu'en $(0;3)$ : l'équation ne regarde que la hauteur | **oui** | — | « Oui, et c'est **la** chose à retenir de cette étape : dans $y'=ay+b$, l'abscisse n'apparaît **nulle part**. L'équation ne sait pas où tu en es ; elle ne sait que **à quelle hauteur** tu es. Le champ vient de se déplier sur toute la ligne : treize segments, tous parallèles. » |
-| `amortie` | $-0{,}75$ — quatre unités plus tard, la pente s'est amortie : elle a été divisée par $4$ | non | **`modele-sans-ecart`** | « Le plan affiche $-3$, comme au départ. Ton modèle fait dépendre la pente **du temps écoulé** — et c'est exactement ce que le chapitre 1 a démenti sur la tasse : le rythme ralentit, oui, mais **pas parce que le temps passe**. Il ralentit parce que la **température** se rapproche de celle de la pièce. Ici, la hauteur n'a pas bougé, donc la pente non plus. » |
-| `arretee` | $0$ — au bout de quatre unités, la solution est arrivée en bas et s'est arrêtée : sa pente est nulle | non | **`modele-taux-constant`** | « Prends ton modèle au sérieux une seconde : s'il descendait de $3$ par unité et s'arrêtait en arrivant, il serait arrivé avant $x=1$ — et $Q$, lui, est encore à la hauteur $3$. Le plan te le montre. **Une solution ne « s'arrête » jamais net** : elle ralentit à mesure qu'elle approche, et c'est pour cela qu'elle n'arrive pas. » |
+| `identique` | $-3$ — la **même** qu'en $(0;3)$ | **oui** | — | « Oui, et c'est **la** chose à retenir de cette étape : dans $y'=ay+b$, l'abscisse n'apparaît **nulle part**. L'équation ne sait pas où tu en es ; elle ne sait que **à quelle hauteur** tu es. Le champ vient de se déplier sur toute la ligne : treize segments, tous parallèles. **Maintenant déplace $P$ : mets-le à une autre hauteur et regarde les deux lectures.** » |
+| `amortie` | $-1{,}5$ — plus loin, la pente s'est amortie : elle vaut la moitié | non | **`modele-sans-ecart`** | « Le plan affiche $-3$, comme au départ. Ton modèle fait dépendre la pente **du chemin parcouru** — et c'est exactement ce que le chapitre 1 a démenti : le rythme ralentit, oui, mais **pas parce qu'on a avancé**. Il ralentit parce que la **hauteur** a changé. Ici, elle n'a pas bougé, donc la pente non plus. **Déplace $P$ vers le haut : là, elles diffèrent.** » |
+| `arretee` | $0$ — une solution qui descend de $3$ par unité serait déjà arrivée en bas bien avant : là où elle s'arrête, sa pente est nulle | non | **`modele-taux-constant`** | « Regarde où $Q$ est posé : à la hauteur $3$, et le plan lui donne $-3$. Ton modèle prédisait qu'il ne pouvait plus y être. **Une solution ne « s'arrête » jamais net** : elle ralentit à mesure qu'elle approche, et c'est pour cela qu'elle n'arrive pas. » |
 | `coefficient-seul` | $-1$ — la pente vaut le coefficient, partout et toujours | non | **`ed-comme-primitive`** | « Le plan affiche $-3$. Si la pente valait $-1$ partout, **tous** les segments du champ seraient parallèles, y compris à des hauteurs différentes — étends le champ à tout le plan et regarde : ils ne le sont pas. Ce que tu viens de voir de vrai, c'est qu'ils sont parallèles **sur une même ligne horizontale**, et seulement là. » |
 
-- **`suite` (40 mots) :** « Ouvre le champ sur tout le plan. Parcours une **horizontale** :
-  **combien de directions différentes rencontres-tu ?** Parcours une **verticale** : même
-  question. »
-  *Réponses : **une** sur l'horizontale (la pente ne dépend que de $y$) ; **treize** sur la
-  verticale, une par graduation entière — au pas de 1 sur $y \in [-6;6]$ (§6.2). **C'est le
-  même geste qu'en S1** : l'élève compte, il ne relit pas.*
+- **`suite` (28 mots) — ⚠ REFAITE EN VAGUE 1 (pédagogie I2, I5, M1) :** « Pose $P$ à une
+  **autre hauteur**. Les deux lectures restent-elles égales ? »
+  *Réponses, toutes exactes et toutes dans la table B : $P=(0;3)$ ⟹ $-3$ et $-3$, **égales** ;
+  $P=(0;5)$ ⟹ $-3$ et $-5$ ; $P=(0;-3)$ ⟹ $-3$ et $+3$ ; $P=(0;2)$ ⟹ $-3$ et $-2$ — **la
+  hauteur, et elle seule, les fait diverger**.* **Une question, un geste** ✓, **et la réponse ne
+  dépend d'aucune largeur d'écran** ✓.
+  > **Ce que cette `suite` remplace.** L'ancienne en portait **deux** (« parcours une
+  > horizontale… parcours une verticale… ») et **la seconde avait une réponse dépendante de la
+  > largeur** (« treize » au pas de 1, **sept** au pas de 2 — M1 et I5) : l'élève au téléphone
+  > comptait sept et concluait qu'il s'était trompé. *Le pas est maintenant de 1 partout (§6.2),
+  > donc le défaut n'existe plus — **mais la `suite` ne le rejoue pas quand même**, parce que ce
+  > n'est pas le geste qui manquait.* **Le geste qui manquait, c'est celui-ci** : la moitié
+  > porteuse de S2 — *la pente VARIE avec $y$, donc il existe une hauteur qui la tue* — était
+  > dans une `suite` non pariée et **n'était affichée par aucune lecture** (I1, I5). Elle est
+  > maintenant **dans la lecture même**, et le champ dépliable la confirme.
 - **⟂-avant-pari :** le segment en $Q$ ; **tout segment ailleurs qu'en $Q$** ; la lecture
-  `pentes-comparees` ; toute ligne de palier ; toute courbe ; le verdict ; tout pixel
-  d'accent ; et la phrase lue ne contient ni « $-3$ », ni « même », ni « parallèle ».
+  `pentes-comparees` ; **le contrôle `point`** ; toute ligne de palier ; toute courbe ; le
+  verdict ; tout pixel d'accent ; et la phrase lue ne contient ni « $-3$ » comme valeur en $Q$,
+  ni « même », ni « parallèle ».
   *La pente en $(0;3)$ est **ÉNONCÉE dans la consigne**, à l'encre — le pari ne porte pas sur
   elle, mais sur ce qu'elle devient ailleurs. **C'est la première des deux exceptions du
   §7.6**, et « la valeur est ÉNONCÉE » n'est pas « la LECTURE existe » : `pentes-comparees`
@@ -1001,11 +1480,24 @@ l'ISSUE attend la révélation*).
 
 - **État :** `a: "-0.5"`, `b: "2"`, `point: "haut"` $(0;5)$, **`champ: "aucun"`**,
   `famille: "aucune"`.
-- **`etat_revele` :** **`champ: "plan"`** — la révélation **déplie le champ entier ET pose la
-  ligne du palier** à $y=4$, en tirets d'accent. *C'est le moment le plus « la scène répond
-  avant le texte » de toute la scène.*
-- **Contrôle ouvert :** `b` (**neuf**). *`champ` est **absent du DOM** — l'ouvrir répondrait au
-  pari (§7.6 A) ; `point` et `a` aussi.* **Lectures :** `pente`, **`palier`**.
+- **`etat_revele` :** **`champ: "plan"`** — la révélation **déplie le champ entier À L'ENCRE**
+  et **pose en ACCENT la ligne du palier à $y=4$ (tirets) avec la rangée de segments qui y est
+  plate**. *C'est le moment le plus « la scène répond avant le texte » de toute la scène.*
+  ⚠ *La première rédaction peignait **les 169 segments neufs en accent** en même temps que la
+  ligne : la réponse devenait une marque sur cent soixante-dix (pédagogie I9). **Le champ est de
+  l'encre ; l'accent est la réponse.** §6.2.*
+- **Contrôles :** `b` (**neuf**) ; **`point` est ROUVERT APRÈS la révélation** (⚠ vague 1,
+  pédagogie I3). *Avant la révélation, `champ`, `point` et `a` sont **absents du DOM** — ouvrir
+  `champ` répondrait au pari (§7.6 A).* **Lectures :** `pente`, **`palier`**.
+  > **Pourquoi `point` s'ouvre ici, et pourquoi ça ne fuit rien.** *Trois des quatre retours de
+  > S3 citent une valeur de `pente` que l'élève était invité à lire et **ne pouvait pas
+  > atteindre** : avec `point` verrouillé sur $(0;5)$, la lecture n'affichait que $-0{,}5$ —
+  > **un nombre qu'aucun texte de S3 n'emploie**. Le modèle le plus servi de la notion
+  > (`palier-recopie-b`) cassait donc sur un chiffre inaccessible.* **`point` ouvert, la lecture
+  > `pente` parcourt $\{0{,}5 ; -0{,}5 ; 3{,}5 ; 1\}$ aux quatre hauteurs de la grille
+  > (table B), et `pente` gagne enfin sa ligne à S3** — une lecture ne mérite sa ligne que là où
+  > elle est découverte ou utilisée. **Et la fuite est nulle** : `famille` est fermé, donc
+  > **aucune courbe n'est traçable**, et `ecart-au-palier` n'est pas dans le DOM avant S4.
 - **Consigne (voix) :** « L'équation change : $y' = -0{,}5\,y + 2$. Un terme constant est
   apparu. **Et on efface le champ** : c'est à toi de dire, avant de le revoir, ce qu'il fait.
   Quelque part dans ce plan, il y a une hauteur où les segments sont **horizontaux** — une
@@ -1019,20 +1511,36 @@ l'ISSUE attend la révélation*).
 | choix | texte | juste | misconception | retour |
 |---|---|---|---|---|
 | `moins-b-sur-a` | à la hauteur $4$ | **oui** | — | « Oui. Et voici **pourquoi**, en une ligne : une solution plate est une fonction **constante**, $y=k$ ; sa dérivée est nulle partout ; l'équation devient donc $0 = a\,k + b$, et il n'y a qu'un $k$ possible : $k = -\dfrac{b}{a} = -\dfrac{2}{-0{,}5} = 4$. **On ne devine pas cette hauteur : on la résout.** Le paragraphe qui suit cette scène la démontre pour tous les $a$ et tous les $b$. » |
-| `recopie-b` | à la hauteur $2$ — c'est la valeur de $b$ | non | **`palier-recopie-b`** | « Le plan vient de tracer la ligne plate à $4$, pas à $2$. Vérifie-le toi-même sans le plan : si $y=2$ était plat, on aurait $0 = -0{,}5\times 2 + 2 = 1$ — et $1 \neq 0$. À la hauteur $2$, le champ **monte** (la lecture affiche $+1$). Le terme $b$ ne se recopie pas : il se **divise**, et il change de signe. » |
-| `signe` | à la hauteur $-4$ | non | **`palier-signe`** | « La route est la bonne, le signe non — et c'est l'erreur la plus coûteuse du chapitre, parce qu'elle donne un nombre qui **ressemble** à la réponse. $-\dfrac{b}{a} = -\dfrac{2}{-0{,}5}$ : **deux** signes moins, donc un résultat **positif**, $+4$. Le contrôle qui ne trompe jamais : réinjecte. À $y=-4$, la pente vaut $-0{,}5\times(-4)+2 = +4$ — la ligne monte à pic, elle n'est pas plate. » |
-| `zero` | à la hauteur $0$ — comme au chapitre 2 | non | **`palier-oubli`** | « C'était vrai **tant que $b$ valait $0$** — et c'est exactement ce qui vient de changer. À $y=0$, la pente vaut maintenant $-0{,}5\times 0 + 2 = 2$ : le champ y **monte**. Le terme constant est précisément ce qui décolle la ligne plate de l'axe. Remets $b$ à $0$ et tu retrouveras ta réponse. » |
+| `recopie-b` | à la hauteur $2$ — c'est la valeur de $b$ | non | **`palier-recopie-b`** | « Le plan vient de tracer la ligne plate à $4$, pas à $2$. Vérifie-le toi-même sans le plan : si $y=2$ était plat, on aurait $0 = -0{,}5\times 2 + 2 = 1$ — et $1 \neq 0$. **Pose $P$ sur $(0\,;2)$ : la lecture affiche $+1$**, le champ y **monte**. Le terme $b$ ne se recopie pas : il se **divise**, et il change de signe. » |
+| `signe` | à la hauteur $-4$ | non | **`palier-signe`** | « La route est la bonne, le signe non — et c'est l'erreur la plus coûteuse du chapitre, parce qu'elle donne un nombre qui **ressemble** à la réponse. $-\dfrac{b}{a} = -\dfrac{2}{-0{,}5}$ : **deux** signes moins, donc un résultat **positif**, $+4$. Le contrôle qui ne trompe jamais : réinjecte. À $y=-4$, la pente vaudrait $-0{,}5\times(-4)+2 = +4$ — **et tu peux le voir : regarde les segments tout en bas du plan, ils montent à pic. Pose $P$ sur $(0\,;-3)$ : la lecture affiche $+3{,}5$.** En bas, rien n'est plat. » |
+| `zero` | à la hauteur $0$ — comme au chapitre 2 | non | **`palier-oubli`** | « C'était vrai **tant que $b$ valait $0$** — et c'est exactement ce qui vient de changer. **Remets $b$ à $0$ : la ligne plate revient sur l'axe, et ta réponse redevient juste.** Remets-le à $2$ : elle remonte. À la hauteur $0$ le champ **monte** maintenant, tu le vois sur les segments — le terme constant est précisément ce qui décolle la ligne plate de l'axe. » |
 
-- **`suite` (42 mots) :** « Promène $b$ sur ses quatre crans, l'équation gardant le même
-  $a$. La ligne plate se déplace à chaque fois. **Sur combien de crans tombe-t-elle exactement
-  sur la valeur de $b$ ?** Et où va-t-elle quand $b$ est négatif ? »
-  *Réponses : **un seul**, et c'est $b=0$ — à $a=-0{,}5$ les paliers valent $-4$, $0$, $2$, $4$
-  pour $b=-2$, $0$, $1$, $2$ (table A du §5.3 ✓), donc la seule coïncidence est la triviale.
-  Et à $b=-2$ la ligne passe **sous** l'axe, à $-4$ ✓. **L'élève cherche, il ne relit pas.***
+> ⚠ **LES TROIS RETOURS SONT RÉÉCRITS EN VAGUE 1 (pédagogie I3), et le défaut valait le
+> reproche.** *Les trois citaient une valeur de `pente` juste — $+1$ à $y=2$, $+4$ à $y=-4$,
+> $+2$ à $y=0$ — **et aucune des trois n'était atteignable** : `point` était verrouillé sur
+> $(0;5)$, où la lecture affiche $-0{,}5$.* **Réparé en deux temps :** `point` s'ouvre après la
+> révélation, **et** chaque retour ne cite plus qu'un contrôle **réellement disponible** —
+> $(0;2)$ ⟹ $+1$ ✓, $(0;-3)$ ⟹ $+3{,}5$ ✓, et le cran $b=0$ ⟹ la ligne revient sur l'axe ✓.
+> *Les hauteurs $-4$ et $0$ n'ont pas de cran de point : les retours les font **VOIR sur le
+> champ** (qui est à l'écran depuis la révélation) au lieu de les faire **lire**. **Une
+> observation disponible vaut mieux qu'un nombre inaccessible.***
+
+- **`suite` (26 mots) — ⚠ RÉDUITE À UNE QUESTION (pédagogie I2) :** « Promène $b$, $a$
+  inchangé. **Sur combien de crans la ligne plate tombe-t-elle exactement sur la valeur de
+  $b$ ?** »
+  *Réponse : **un seul**, et c'est $b=0$ — à $a=-0{,}5$ les paliers valent $-4$, $0$, $2$, $4$
+  pour $b=-2$, $0$, $1$, $2$ (table A du §5.3 ✓), donc la seule coïncidence est la triviale.*
+  **Une question, un geste** ✓. *La seconde question de l'ancienne `suite` (« où va-t-elle quand
+  $b$ est négatif ? ») est supprimée : la réponse est **déjà visible** en promenant $b$, et le
+  cran $b=-2$ est dans le geste.*
+  > **Et c'est ici que le pari de S6 prend racine.** *La `suite` établit que **à $a=-0{,}5$, ça
+  > n'arrive qu'à $b=0$**. Elle ne dit PAS, et ne doit pas dire, qu'il existe un autre $a$ où ça
+  > arrive à chaque $b$ — **c'est la question de S6**, et §7.6 C l'interdit à S3.*
 - **⟂-avant-pari :** **le champ tout entier** (aucun segment, nulle part — l'état est
   `champ: "aucun"`) ; **la ligne du palier**, sous toutes ses formes : ni trait, ni étiquette,
   ni nombre, ni mention dans la description lue (**absence TOTALE**, règle du tremplin) ; la
-  lecture `palier` ; la lecture `pente` ; le verdict ; tout pixel d'accent.
+  lecture `palier` ; la lecture `pente` ; **le contrôle `point`** ; le verdict ; tout pixel
+  d'accent.
   *$P$, ses coordonnées et le badge de l'équation **sont l'ÉNONCÉ** : ils restent à l'encre.*
 
 ### 7.4 S4 — `elle-n-y-arrive-jamais` · « On part au-dessus : que fait la courbe ? »
@@ -1043,27 +1551,60 @@ l'ISSUE attend la révélation*).
   $P$**, et ouvre `ecart-au-palier`.
 - **Contrôle ouvert :** `a` (**neuf**). *`b` est **rouvert** (la `suite` en a besoin) ;
   `point`, `champ` et `famille` sont **absents** (§5.5 : rouvrir `point` ici donnerait la
-  réponse de S5).* **Lectures :** `pente`, `palier`, **`ecart-au-palier`**.
-- **Consigne (voix) :** « Même équation. Tu viens de trouver la ligne plate : elle est à $4$.
-  Le point $P$ est en $(0\,;\,5)$ — **juste au-dessus**, d'une unité. Les segments autour de
-  lui descendent doucement ; plus bas, près de la ligne, ils sont presque plats. »
+  réponse de S5 — **et c'est le seul endroit où cette révision refuse une consigne de vague 1**,
+  §5.5 et §13.16).* **Lectures :** `pente`, `palier`, **`ecart-au-palier`**.
+- **Consigne (voix) — ⚠ AMPUTÉE EN VAGUE 1 (BLOQ-3) :** « Même équation. Tu viens de trouver la
+  ligne plate : elle est à $4$. Le point $P$ est en $(0\,;\,5)$ — **juste au-dessus**, d'une
+  unité. »
+  > **Ce qui a été coupé, et pourquoi c'est bloquant.** *La phrase supprimée était : « *Les
+  > segments autour de lui descendent doucement ; plus bas, près de la ligne, ils sont presque
+  > plats.* » **C'est le mécanisme qui décide le pari, livré juste avant le pari.** Le texte
+  > répondait avant le dessin — l'inversion exacte de la règle de la maison, et **une répétition
+  > d'un défaut déjà corrigé sur la scène précédente** (DÉCISIONS §29 / HANDOFF §11.210 :
+  > « *la phrase de S3 qui racontait le dessin* », coupée en vague 2).* **Et elle faisait
+  > plonger la rampe** : la consigne de S3 ne donne rien de plus que son état, celle de S4
+  > donnait la valeur du palier **et** son interprétation — l'étayage AUGMENTAIT là où la
+  > demande de raisonnement devait monter. **La consigne pose l'état et s'arrête. Le champ est à
+  > l'écran : qu'il parle.**
 - **Pari :** « La solution qui passe par $P$… »
 
 | choix | texte | juste | misconception | retour |
 |---|---|---|---|---|
-| `approche` | descend vers $4$ et s'en approche **sans jamais l'atteindre** | **oui** | — | « Oui — et regarde les deux lectures l'une sous l'autre, c'est là qu'est le mécanisme : l'écart au palier vaut $1$, la pente vaut $-0{,}5$. **La pente est l'écart multiplié par $a$.** Plus la courbe s'approche, plus l'écart est petit, donc plus elle est plate, donc plus elle s'approche lentement : elle ne peut pas arriver. C'est mot pour mot le modèle B de la tasse du chapitre 1 — *le refroidissement ralentit à mesure que le café se rapproche de la température de la pièce*. » |
+| `approche` | descend vers $4$ et s'en approche **sans jamais l'atteindre** | **oui** | — | « Oui — et regarde les deux lectures l'une sous l'autre, c'est là qu'est le mécanisme : l'écart au palier vaut $1$, la pente vaut $-0{,}5$. **La pente est l'écart multiplié par $a$.** Promène $b$ et vérifie-le : écart $3$, pente $-1{,}5$ ; écart $5$, pente $-2{,}5$ ; écart $9$, pente $-4{,}5$. **Et voilà pourquoi « jamais » :** si l'écart tombait à zéro, la pente tomberait à zéro — la courbe serait alors la ligne plate elle-même, celle qui ne bouge jamais. Une courbe qui n'est pas cette ligne-là ne peut donc pas avoir un écart nul. ⚠ **Ce n'est pas le dessin qui te le dit** : à droite du cadre, les deux traits sont à quelques pixels l'un de l'autre, et plus loin encore ils se confondraient. **« Jamais » ne se voit pas ; il se calcule.** » |
 | `droite-puis-stop` | descend **en ligne droite** jusqu'à $4$, puis s'arrête net | non | **`modele-taux-constant`** | « C'est le modèle A du chapitre 1, et le champ le dément sous tes yeux : une droite garderait la même pente, or les segments **changent d'inclinaison à chaque hauteur** — raides en haut, presque plats près de $4$. Une courbe qui suit ce champ ne peut pas être droite, et rien dans le plan ne lui dit de « s'arrêter ». » |
 | `vers-zero` | descend vers $0$, comme au chapitre 2 | non | **`palier-oubli`** | « C'était la réponse **avant** que $b$ n'existe. Regarde le champ à la hauteur $0$ : les segments y **montent** (pente $+2$). Une courbe qui arriverait là serait repoussée vers le haut. Ce qui l'attend n'est pas l'axe, c'est la ligne que tu viens de trouver. » |
-| `vers-moins-infini` | descend **sans limite** : $a$ est négatif, donc la solution décroît indéfiniment | non | **`signe-a-comportement`** | « $a<0$ ne veut pas dire « ça descend toujours » : ça veut dire « ça **se rapproche** ». Le test est à un cran : mets $P$ sous la ligne plate — avec $a<0$, la courbe **monte**. Ce que le signe de $a$ décide, c'est si la courbe **vise** le palier ou le **fuit**, pas le sens dans lequel elle va. » |
+| `vers-moins-infini` | descend **sans limite** : $a$ est négatif, donc la solution décroît indéfiniment | non | **`signe-a-comportement`** | « $a<0$ ne veut pas dire « ça descend toujours » : ça veut dire « ça **se rapproche** ». **Regarde les segments AU-DESSOUS de la ligne plate : ils montent.** Une courbe qui se trouverait là remonterait vers la ligne au lieu de s'en éloigner. Ce que le signe de $a$ décide, c'est si la courbe **vise** le palier ou le **fuit**, pas le sens dans lequel elle va. » |
 
-- **`suite` (56 mots) :** « Bascule $a$ sur $+0{,}5$, $b$ inchangé : la ligne plate saute de
-  $4$ à $-4$, et la courbe **s'enfuit** au lieu de s'approcher. Puis mets $a$ sur $-1$ et
-  promène $b$ : **la ligne plate tombe sur la valeur de $b$ à chaque cran.** Cherche pourquoi —
-  et vérifie que c'est le seul $a$ de la scène où « le palier, c'est $b$ » tombe juste. »
-  *Vérifié sur la table A du §5.3 : à $a=0{,}5$, $b=2$, palier $=-4$ ✓ ; à $a=-1$, palier
-  $=b$ aux quatre crans ✓ ; et **à $a=-0{,}5$ comme à $a=0{,}5$, la coïncidence n'a lieu qu'à
-  $b=0$** ✓. **C'est $b(a+1)=0$ de `lesson.md:184`, trouvé au lieu d'être lu** — et c'est la
-  seule chose de cette scène qu'une figure ne pourrait pas remplacer même en dix étapes.*
+> ⚠ **Le retour de `vers-moins-infini` est réécrit en vague 1, et il répare deux choses à la
+> fois.** *Il disait « *mets $P$ sous la ligne plate* » — **un geste que `point`, fermé à S4,
+> rend impossible** : la scène commandait une action indisponible. Et §13.11 déclarait qu'il
+> annonçait une moitié du fait de S5.* **Il argumente maintenant depuis le CHAMP, qui est à
+> l'écran et qui est de l'énoncé** : pas de geste impossible, pas d'annonce de S5, et la
+> cassure de `signe-a-comportement` est intacte. *§13.11 se referme ; §13.16 reste.*
+
+- **`suite` (29 mots) — ⚠ REFAITE EN VAGUE 1 (BLOQ-1, BLOQ-2, I1, I2) :** « Garde $P$ où il
+  est et **promène $b$**. Regarde les deux lectures bouger ensemble : **que vaut la pente quand
+  l'écart double ?** »
+  *Réponses, exactes et toutes dans les tables A et B : à $a=-0{,}5$ et $P=(0;5)$, les quatre
+  crans de $b$ donnent **écart $9 \to 5 \to 3 \to 1$** et **pente $-4{,}5 \to -2{,}5 \to -1{,}5
+  \to -0{,}5$** ; **la pente est l'écart multiplié par $-0{,}5$, aux quatre.** Quand l'écart
+  double, la pente double.* **Une question, un geste** ✓.
+  > **C'est la réparation de fond du BLOQ-2.** *Le mécanisme qui rend « jamais » nécessaire —
+  > l'écart rétrécit, donc la pente rétrécit, donc l'arrivée est impossible — n'était énoncé que
+  > dans un retour, **et rien ne demandait de l'exercer**. Il est maintenant **la `suite`**, sur
+  > une échelle de quatre valeurs exactes, avec un contrôle déjà ouvert et **sans aucune
+  > fuite**.* ⚠ **Et la moitié de BLOQ-2 qui prétendait que la lecture ne pouvait pas varier est
+  > réfutée** (§5.5) : elle variait déjà sur douze états ; ce qui manquait était la consigne.
+  >
+  > **Ce que cette `suite` ne fait PLUS, et où c'est parti.** *L'ancienne portait **trois**
+  > gestes et **imprimait la découverte de la scène** : « *mets $a$ sur $-1$ et promène $b$ :
+  > **la ligne plate tombe sur la valeur de $b$ à chaque cran.** Cherche pourquoi* ». **C'est le
+  > BLOQ-1** : la seule chose qu'une figure ne pourrait pas remplacer était livrée par assertion,
+  > dans une `suite` facultative, sans pari, sans verdict, sans lecture et sans item. **Elle est
+  > devenue l'étape S6 (§7.7), et son énoncé est un PARI dont $a=-1$ est la RÉPONSE.***
+  > **Et `a` (le contrôle neuf de S4) garde son emploi** : le basculement sur $+0{,}5$, qui
+  > montre la courbe **s'enfuir**, est porté par le retour de `vers-moins-infini` et par le pari
+  > lui-même ; il n'a pas besoin d'une question de plus.
 - **⟂-avant-pari :** **toute courbe** ; la lecture `ecart-au-palier` ; le verdict ; tout pixel
   d'accent ajouté par rapport à l'état d'énoncé. *Le champ, la ligne du palier, $P$ et le badge
   **sont l'ÉNONCÉ** ici — la consigne les donne, et le pari porte sur ce qu'une COURBE fait
@@ -1076,7 +1617,9 @@ l'ISSUE attend la révélation*).
 - **`etat_revele` :** **`famille: "trois"`** — la révélation trace les **trois** courbes
   passant par $(0;5)$, $(0;2)$ et $(0;-3)$.
 - **Contrôle ouvert :** `famille` (**neuf**). *`point`, `a`, `b` et `champ` sont **rouverts**.*
-  **Lectures :** `pente`, `palier`.
+  **Lectures :** `pente`, `palier`, **`ecart-au-palier`** *(⚠ ajoutée en vague 1 : le mécanisme
+  de S4 doit rester lisible quand trois départs sont à l'écran — c'était une des prises du
+  BLOQ-2, et elle est juste)*.
 - **Consigne (voix) :** « Dernière question. Même équation, même ligne plate à $4$. On marque
   **trois** départs : $(0\,;\,5)$ au-dessus, $(0\,;\,2)$ en dessous, $(0\,;\,-3)$ bien en
   dessous. Une solution part de chacun. »
@@ -1084,19 +1627,50 @@ l'ISSUE attend la révélation*).
 
 | choix | texte | juste | misconception | retour |
 |---|---|---|---|---|
-| `meme-ligne` | s'approchent **toutes les trois** de la même hauteur $4$, et **ne se coupent jamais** | **oui** | — | « Oui, et c'est ce que l'équation a d'étrange et de puissant : **la ligne plate ne dépend que de $a$ et de $b$**, jamais du point de départ. Les trois courbes viennent de trois endroits, elles visent le même $4$, et aucune ne traverse une autre — traverser voudrait dire deux pentes différentes au même point, ce que le champ ne permet pas. Promène $P$ : tu ne trouveras pas de départ qui change la ligne. » |
-| `se-coupent` | se croisent quelque part, puisqu'elles vont toutes au même endroit | non | **`nombre-solutions-condition`** | « Regarde le point où elles se couperaient : le champ n'y donne **qu'une** direction. Deux courbes qui se croisent auraient, en ce point, deux pentes différentes — l'équation ne le permet pas. C'est pour cela qu'**un point donné ne détermine qu'une seule solution**, et pas deux ni une infinité : la pente y est imposée, et de proche en proche tout le reste avec. » |
-| `une-seule-vraie` | une seule des trois est **la** solution de l'équation ; les deux autres n'en sont pas | non | **`solution-fonction-unique`** | « Les trois suivent le champ partout, donc les trois sont des solutions — le chapitre 2 le disait déjà : une équation différentielle ne détermine pas **une** fonction mais une **famille**. Ce qui choisit un membre de la famille, c'est le **point de départ**, pas l'équation. Change `famille` et regarde-les apparaître : rien ne distingue l'une des autres. » |
-| `celle-du-bas-descend` | celle qui part de $-3$ **descend** : $a$ est négatif, donc toute solution décroît | non | **`signe-a-comportement`** | « Regarde-la : elle **monte**. Sous la ligne plate, le champ pointe vers le haut — à la hauteur $-3$ la pente vaut $-0{,}5\times(-3)+2 = 3{,}5$, et la lecture l'affiche. $a<0$ ne dit pas « décroît » : il dit « **revient vers la ligne** », par en haut ou par en bas. C'est exactement la tasse du chapitre 1, et son jumeau : un objet à $0\ °$C posé dans une pièce à $20\ °$C **se réchauffe**, avec la même équation. » |
+| `meme-ligne` | s'approchent **toutes les trois** de la même hauteur $4$, et **aucune n'en traverse une autre** | **oui** | — | « Oui, et c'est ce que l'équation a d'étrange et de puissant : **la ligne plate ne dépend que de $a$ et de $b$**, jamais du point de départ. Les trois courbes viennent de trois endroits et visent le même $4$ — et **aucune n'en traverse une autre** : traverser voudrait dire deux pentes différentes au même point, ce que le champ ne permet pas. Regarde les trois écarts au palier : chacun rétrécit de son côté, aucun ne change de signe. Promène $P$ : tu ne trouveras pas de départ qui change la ligne. » |
+| `se-coupent` | se croisent quelque part, puisqu'elles vont toutes au même endroit | non | **`nombre-solutions-condition`** | « Regarde le point où elles se couperaient : le champ n'y donne **qu'une** direction. Deux courbes qui se croisent auraient, en ce point, deux pentes différentes — l'équation ne le permet pas. **Ce que tu observes, c'est qu'aucune n'en traverse une autre.** *Le chapitre 4 le démontrera : il suffit d'une valeur en un point pour n'en garder qu'une.* » |
+| `une-seule-vraie` | une seule des trois est **la** solution de l'équation ; les deux autres n'en sont pas | non | **`solution-fonction-unique`** | « Les trois suivent le champ partout, donc les trois sont des solutions — le chapitre 2 le disait déjà : une équation différentielle ne détermine pas **une** fonction mais une **famille**. Ce qui choisit un membre de la famille, c'est le **point de départ**, pas l'équation. Change le nombre de courbes et regarde-les apparaître : rien ne distingue l'une des autres. » |
+| `celle-du-bas-descend` | celle qui part de $-3$ **descend** : $a$ est négatif, donc toute solution décroît | non | **`signe-a-comportement`** | « Regarde-la : elle **monte**. Sous la ligne plate, le champ pointe vers le haut — à la hauteur $-3$ la pente vaut $-0{,}5\times(-3)+2 = 3{,}5$, et la lecture l'affiche. Son écart au palier vaut $-7$ : il est **négatif**, et c'est lui qui donne à la pente son signe $+$. $a<0$ ne dit pas « décroît » : il dit « **revient vers la ligne** », par en haut ou par en bas. » |
 
-- **`suite` (48 mots) :** « Garde les trois courbes et promène $b$, puis $a$. **Combien de
-  lignes plates différentes trouves-tu pour un même jeu de trois départs ?** Puis mets $P$ sur
-  $(0\,;\,2)$ avec $a = -1$ et $b = 2$ : **une des trois courbes devient une droite.** Trouve
-  laquelle, et dis pourquoi. »
-  *Réponses : **une seule** ligne plate par équation, quelle que soit la famille (table A ✓) ;
-  et à $(a;b)=(-1;2)$ le palier vaut $2$, donc la courbe passant par $(0;2)$ est la solution
-  **constante** — sa pente y vaut $-1\times 2+2 = 0$ (table B ✓), et elle reste plate partout.
-  **C'est l'Étape 1 de R2, trouvée.***
+> ⚠ **DEUX RETOURS RÉÉCRITS EN VAGUE 1, POUR DEUX MOTIFS DIFFÉRENTS.**
+> **(1) Fidélité I3 — un fait DU cadre justifié par un argument HORS cadre.** *Le fait (une
+> seule solution par point) est au cadre des deux filières (« *solution vérifiant une condition
+> initiale* », `maths-sexp.yaml:151`, `maths-sm.yaml:153`). L'ARGUMENT que la première rédaction
+> en donnait ne l'est pas : « *C'est pour cela qu'un point donné ne détermine qu'une seule
+> solution* », posé à la suite d'un raisonnement de non-croisement, **c'est le théorème que §9.7
+> interdit par son nom** (`Cauchy-Lipschitz`, `unicité`), et **un élève ne peut pas l'écrire à
+> l'examen.*** **Réparé :** les retours **énoncent l'observation** (« aucune n'en traverse une
+> autre ») et **renvoient la preuve au chapitre 4**, dont la route est celle du cadre —
+> `items.yaml:119-121` : « *Une condition initiale $y(x_0)=y_0$ fixe $C$ à une valeur unique* ».
+> *La formule de renvoi est choisie pour ne déclencher aucune forme interdite du §9.2 : « il
+> suffit d'une valeur en un point pour n'en garder qu'une » ne contient ni « condition
+> initiale », ni « $x_0$ », ni « fixer la constante ».*
+> **(2) Une VIOLATION DE LA FRONTIÈRE §9.3, que ni l'une ni l'autre des deux vagues n'a vue, et
+> qui était dans le document depuis la première rédaction.** *Le retour de
+> `celle-du-bas-descend` se terminait par « *C'est exactement la tasse du chapitre 1 […] un
+> objet à $0\ °$C posé dans une pièce à $20\ °$C se réchauffe* » — **cinq chaînes interdites par
+> le §9.3 dans une seule phrase** (`tasse`, `°C`, `°`, et le registre thermique entier), dans un
+> texte destiné au PANNEAU. Le §9 affirmait pourtant : « *Relu : le §7 n'écrit aucune forme
+> interdite.* » **C'était faux, et la porte `frontiere` aurait fait rougir la scène au premier
+> lancement.*** *Deux autres occurrences du même défaut ont été supprimées au passage : la fin
+> du retour de `approche` à S4 (« la tasse… le café… la température de la pièce ») et celle de
+> `amortie` à S2. **Leçon, et elle est de l'ADR 0036 : une frontière qui se déclare relue se
+> disculpe. C'est la porte qui doit le dire — et ici elle l'aurait dit.***
+> *Et un troisième détail du même ordre : `une-seule-vraie` disait « Change `famille` » — **le
+> nom d'une clé de descripteur**, que l'élève ne connaît pas. Réécrit en français.*
+
+- **`suite` (24 mots) — ⚠ RÉDUITE À UNE QUESTION (pédagogie I2) :** « Garde les trois courbes
+  et promène $b$, puis $a$. **Combien de lignes plates différentes trouves-tu pour un même jeu
+  de trois départs ?** »
+  *Réponse : **une seule** ligne plate par équation, quelle que soit la famille (table A ✓).*
+  **Une question, un geste** ✓.
+  > **Ce que cette `suite` ne fait plus, et pourquoi.** *La seconde moitié (« mets $P$ sur
+  > $(0;2)$ avec $a=-1$ et $b=2$ : **une des trois courbes devient une droite** ») cumulait trois
+  > défauts : un second geste ; **la réponse imprimée** ; et surtout **elle POSAIT $a=-1$**, le
+  > cran dégénéré, un pas avant que S6 n'en fasse son pari.* **La solution constante reste
+  > trouvable sans passer par le cran dégénéré** : c'est l'état `sur` $(0;2)$ à
+  > $(a;b)=(-0{,}5;1)$ — palier $2$, pente $-0{,}5\times2+1 = 0$ ✓ — et le retour de
+  > `moins-b-sur-a` à S3 la nomme déjà (« *une solution plate est une fonction constante* »).
 - **⟂-avant-pari :** **toute courbe** (l'état est `famille: "aucune"`) ; le verdict ; tout pixel
   d'accent. *Les trois **points** de départ, le champ, la ligne du palier et le badge sont
   l'ÉNONCÉ — la consigne donne les trois. **Ce qui attend la révélation, ce sont les
@@ -1121,18 +1695,100 @@ faite ici.*
 
 | modèle | le choix de S3 | le choix de `cp-r2-palier` (`checkpoints.yaml:141-175`) | doublon ? |
 |---|---|---|---|
-| `palier-recopie-b` | `recopie-b` : **une HAUTEUR**, $2$ — « où la ligne plate se trouve » | B : **une ÉCRITURE**, $y=Ce^{4x}-8$ — « quelle formule » | **non** : l'un se lit sur le plan, l'autre sur la page. *Ils nomment le même défaut, et l'élève qui échoue aux deux échoue deux fois au même endroit — ce qui est **voulu** : c'est le modèle le plus lourd de la notion (5 items)* |
+| `palier-recopie-b` | `recopie-b` : **une HAUTEUR**, $2$ — « où la ligne plate se trouve » | B : **une ÉCRITURE**, $y=Ce^{4x}-8$ — « quelle formule » | **non** : l'un se lit sur le plan, l'autre sur la page. *Ils nomment le même défaut, et l'élève qui échoue aux deux échoue deux fois au même endroit — ce qui est **voulu** : c'est le modèle le plus servi de la notion (5 étiquettes)* |
 | `palier-signe` | `signe` : $-4$, **un lieu du plan** où l'on voit le champ monter à pic | C : $Ce^{4x}-2$, **une formule** | **non** |
 | `palier-oubli` | `zero` : $0$, **l'axe**, et le champ y monte | D : $Ce^{4x}$, **une formule sans terme** | **non** |
-| les nombres | $a=-0{,}5$, $b=2$, palier $4$ | $a=4$, $b=-8$, palier $2$ | **non — et c'est délibéré** : aucun nombre commun, donc le point d'arrêt ne peut pas être réussi de mémoire *(leçon I3 de la spec sœur : un item qui rejoue l'état d'une étape mesure la mémoire de l'écran)* |
+| les nombres | $a=-0{,}5$, $b=2$, palier $4$ | $a=4$, $b=-8$, palier $2$ | ⚠ **CORRIGÉ EN VAGUE 1 (fidélité M5).** *La première rédaction écrivait « **aucun nombre commun** » : **c'est littéralement faux** — $2$ et $4$ figurent des deux côtés.* **Ce qui est vrai est plus fort : les RÔLES sont inversés.** $2$ est la **bonne** réponse du point d'arrêt et la **mauvaise** de la scène ; $4$ est le **coefficient $a$** du point d'arrêt et la **bonne réponse** de la scène. *Un élève qui mémorise « $2$ » échoue à la scène ; un élève qui mémorise « $4$ » échoue au point d'arrêt. **Rien de mémorisé ne transfère**, et c'est mieux que « aucun nombre commun ».* |
 
-**Le coût résiduel, mesuré :** `cp-r2-palier` reste **après** R2 et garde ses quatre choix ;
-**rien, dans le rung, ne mesure la lecture du palier comme un LIEU**. La scène l'enseigne, le
-banc ne la voit pas (§4.6).
+**Le coût résiduel, mesuré — ⚠ et REVU À LA HAUSSE en vague 1 (pédagogie I6).**
+`cp-r2-palier` reste **après** R2 et garde ses quatre choix ; **rien, dans le rung, ne mesure la
+lecture du palier comme un LIEU**. *Et la complémentarité revendiquée est **plus mince** que ce
+document l'écrivait : **les deux exigent de calculer $-b/a$**, seul le format de sortie diffère.
+La compétence vraiment neuve — **la ligne comme un LIEU qui se DÉPLACE quand $b$ change** — est
+dans une `suite`, non pariée, et n'est mesurée nulle part.* **C'est ce qui a fait passer §13.9
+de « aucun item » à « une variation de stem, COUPLÉE à la construction » (§4.6).**
 
-### 7.6 Le contrat « avant le pari », et les cinq formes de la fuite
+### 7.6 S6 — `le-cran-ou-la-regle-fausse-se-cache` · « Pour quel $a$ « le palier, c'est $b$ » tombe-t-il juste ? »
 
-**Règle générale, valable aux cinq étapes.** Ce qui dépend de l'ISSUE — un segment de champ
+> ⚠ **ÉTAPE NOUVELLE, ET C'EST LA RÉPARATION DU BLOQ-1.** *Ce que la première rédaction appelait
+> « **la seule chose de cette scène qu'une figure ne pourrait pas remplacer même en dix
+> étapes** » était livré par **une phrase affirmative dans une `suite` facultative de S4** :
+> « *mets $a$ sur $-1$ et promène $b$ : **la ligne plate tombe sur la valeur de $b$ à chaque
+> cran**. Cherche pourquoi.* » **La découverte était ÉNONCÉE, jamais trouvée** — pas de pari,
+> pas de verdict, pas de lecture, pas d'item. **Une scène qui existe pour remplacer l'assertion
+> livrait sa contribution unique par assertion.** *C'est l'inverse exact de TEMPLATE V2 §A
+> (« prédire-s'engager-confronter … s'engage PAR une interaction réelle, jamais seulement
+> rhétoriquement ») et de VISION (« chaque morceau vérifié avant de passer au suivant »).*
+>
+> **Et la tension avec le garde-fou de stem est RÉSOLUE, pas contournée.** §7.6 E interdit
+> qu'une étape dont un choix porte `palier-recopie-b` **POSE** $a=-1$ — parce que le distracteur
+> atteindrait alors la bonne réponse (*contamination de la réponse juste*, un défaut de stem).
+> **La forme retenue est celle que la vague 1 suggère et que l'arithmétique confirme : le pari
+> demande POUR QUEL $a$, l'état posé est $a=-0{,}5$, et $a=-1$ est la RÉPONSE.** *Le porteur de
+> `palier-recopie-b` répond « à tous les crans » — **faux à $a=-0{,}5$ comme à $a=0{,}5$**, donc
+> aucune contamination. Vérifié sur la table A, cellule par cellule.*
+
+- **État :** `a: "-0.5"`, `b: "1"` (palier $2$), `point: "sur"` $(0;2)$, `champ: "plan"`,
+  `famille: "aucune"`.
+  *⚠ **L'état posé n'est PAS le cran dégénéré**, et la porte le mesure (`stem-non-contamine`).
+  Et il est choisi pour que le contraste soit maximal sans être le piège : à $a=-0{,}5$, $b=1$,
+  le palier vaut $2$ — **le double de $b$**, et $P$ y est posé **dessus**, donc la solution est
+  la constante.*
+- **`etat_revele` :** **`a: "-1"`** — la révélation **pose le coefficient sur $-1$** et
+  repeint la ligne du palier à sa nouvelle hauteur, $1$. *C'est le seul `etat_revele` de la
+  scène qui change un réglage d'ÉQUATION, et c'est exigé par la forme du pari : la question est
+  « quel $a$ ? », donc la scène répond en posant le $a$ (§6.1). **L'élève promène ensuite $b$
+  lui-même pour le vérifier** — c'est la `suite`.*
+- **Contrôles :** `a` et `b` **rouverts** *(et `point`, `champ`, `famille` aussi — S6 est la
+  dernière étape, tout est ouvert)*. **Lectures :** `pente`, `palier`.
+- **Consigne (voix) :** « Une dernière chose, et c'est un piège que l'examen connaît. Le
+  chapitre 2 laissait croire qu'on pouvait lire le palier directement dans l'équation :
+  « le palier, c'est $b$ ». Tu as vu que non — ici $b$ vaut $1$ et la ligne plate est à $2$.
+  **Mais il y a un réglage où cette règle fausse tombe juste à tous les coups.** »
+- **Pari :** « Pour quel coefficient $a$ la ligne plate tombe-t-elle exactement sur la valeur de
+  $b$, **et cela pour CHACUN des quatre crans de $b$** ? »
+- **Les quatre choix, chacun recalculé depuis SON modèle, tous distincts, aucun n'égalant la
+  bonne réponse :**
+
+| choix | texte | juste | misconception | retour (casse sur SA conséquence) |
+|---|---|---|---|---|
+| `a-moins-un` | pour $a = -1$, et pour lui seul | **oui** | — | « Oui. Et voici **pourquoi il est unique** : dire « le palier vaut $b$ », c'est écrire $-\dfrac{b}{a} = b$, donc $-b = ab$, donc $b(a+1)=0$. **Ou bien $b=0$ — le cas trivial, il n'y a rien à recopier — ou bien $a=-1$.** Il n'y a pas de troisième porte. Promène $b$ : à $-2$ la ligne est à $-2$, à $1$ elle est à $1$, à $2$ elle est à $2$. **C'est le pire cas possible pour un élève : une règle fausse qui ne se fait pas prendre.** Le paragraphe « Arrête-toi » qui suit cette scène l'écrit en toutes lettres. » |
+| `tous` | pour **tous** : le palier, c'est $b$, toujours | non | **`palier-recopie-b`** | « Remets $a$ sur $-0{,}5$ : $b$ vaut $1$ et la ligne est à $2$. Mets $b$ sur $2$ : elle est à $4$. **À ce réglage-là, la ligne vaut le DOUBLE de $b$, jamais $b$.** Ta règle n'est pas « presque toujours vraie avec quelques exceptions » : **elle est fausse partout sauf à un endroit**, et tout l'intérêt de cette étape est de savoir lequel. » |
+| `a-plus-un` | pour $a = +1$ | non | **`palier-signe`** | « La route est la bonne — tu as bien résolu « palier $=b$ » — mais un signe s'est perdu en chemin. $-\dfrac{b}{a}=b$ donne $-b = a\,b$, donc $a = -1$, **pas $+1$**. Le contrôle qui ne trompe jamais : essaie. À $a=-1$ et $b=2$, la ligne est à $2$ ✓ ; le plan te le montre. **C'est exactement le même signe perdu qu'à l'étape de la ligne plate** — et il coûte deux fois. » |
+| `b-zero-seulement` | pour **aucun** $a$ : ça ne tombe juste qu'à $b=0$ | non | **`palier-oubli`** | « Tu as testé deux réglages sur trois, et sur ces deux-là tu as raison : à $a=-0{,}5$ comme à $a=0{,}5$, la seule coïncidence est $b=0$. **Mais « $b=0$ et rien d'autre » est ce que tu croirais si le palier était toujours l'axe.** Mets $a$ sur $-1$ et promène $b$ : la ligne suit $b$ à chaque cran. **Il existe, et il est unique.** » |
+
+*Vérification, table A du §5.3, cellule par cellule :* à $a=-1$, palier $= b$ **aux quatre
+crans** ($-2 \to -2$, $0 \to 0$, $1 \to 1$, $2 \to 2$) ✓ ; à $a=-0{,}5$, paliers $-4;0;2;4$ —
+coïncidence **au seul $b=0$** ✓ ; à $a=0{,}5$, paliers $4;0;-2;-4$ — **idem** ✓. *Les quatre
+textes de choix sont des ÉNONCÉS, pas des hauteurs : ils sont distincts deux à deux par
+construction, et **aucun n'est l'énoncé juste**.* ✓
+
+- **`suite` (22 mots) :** « $a$ reste sur $-1$. **Promène $b$ et lis la hauteur à chaque
+  cran : sur combien de crans la ligne rate-t-elle la valeur de $b$ ?** »
+  *Réponse : **aucun** — à $a=-1$ le palier vaut $b$ aux quatre crans (table A ✓).*
+  **Une question, un geste** ✓. *C'est le geste qui transforme le verdict en certitude : l'élève
+  ne croit pas la scène sur parole, il l'épuise.*
+- **⟂-avant-pari :** **le cran $a=-1$ comme ÉTAT** (l'état posé est $-0{,}5$, et `avant-pari` le
+  mesure) ; le verdict ; tout pixel d'accent ajouté ; **et aucune mention, dans la consigne ou
+  dans la description lue, d'une valeur de $a$** — ni « $-1$ », ni « moins un », ni
+  « $b(a+1)=0$ », ni « unique ». *Le champ, la ligne plate à $2$, $P$ et le badge **sont
+  l'ÉNONCÉ** : la consigne les donne. **C'est la troisième exception du §7.6, et elle est
+  mesurée comme les deux autres.***
+  ⚠ **Et une contrainte de non-fuite propre à S6 : `a` est OUVERT avant le pari** (il l'est
+  depuis S4). *Un élève peut donc « tricher » en essayant les trois crans avant de répondre.*
+  **C'est voulu, et ce n'est pas une fuite : essayer les trois crans EST la réponse, et c'est
+  le geste que la scène veut.** *Ce qui reste caché, c'est **l'unicité** — qu'aucun autre $a$,
+  au-delà des trois de la grille, ne marche — et c'est le retour, puis `lesson.md:184`, qui la
+  donnent. **La scène fait trouver le cran ; la prose prouve qu'il est seul.***
+
+### 7.7 Le contrat « avant le pari », et les cinq formes de la fuite
+
+*⚠ **Le §7.6 est désormais l'étape S6** ; ce contrat, qui portait ce numéro, devient le §7.7.
+**Tous les renvois « §7.6 A/B/C/D/E » du document désignent les sous-sections A à E
+ci-dessous** — ils sont conservés tels quels pour ne pas casser les citations de la vague 1, et
+la lettre suffit à lever l'ambiguïté.*
+
+**Règle générale, valable aux SIX étapes.** Ce qui dépend de l'ISSUE — un segment de champ
 au-delà de ce que l'étape déclare, la ligne du palier, toute courbe, et toute lecture que la
 consigne n'a pas énoncée — **n'existe pas dans le DOM avant l'engagement**, ni dans le rendu,
 ni dans la phrase lue au lecteur d'écran.
@@ -1141,8 +1797,9 @@ ni dans la phrase lue au lecteur d'écran.
 
 | étape | ce qui est visible AVANT le pari, en plus | pourquoi | ce que ça coûte |
 |---|---|---|---|
-| **S2** | **la valeur $-3$, la pente en $(0;3)$, écrite dans la CONSIGNE** | la consigne **donne** le point de comparaison ; le pari ne porte pas sur elle, mais sur ce qu'elle devient quatre unités plus loin | rien : le segment en $Q$, la lecture `pentes-comparees` et tout le reste du champ restent absents. *« La valeur est ÉNONCÉE » n'est pas « la LECTURE existe » — la porte mesure la seconde* |
-| **S4** | **le champ entier et la ligne du palier, à l'ENCRE** | la consigne les **donne** (« tu viens de trouver la ligne plate : elle est à $4$ ») ; le pari porte sur ce qu'une COURBE y fait | rien : toute courbe, `ecart-au-palier` et l'accent restent absents. ⚠ **Et le pari reste gagnable par le raisonnement depuis le champ — c'est le but** (§7.6 D) |
+| **S2** | **la valeur $-3$, la pente en $(0;3)$, écrite dans la CONSIGNE** | la consigne **donne** le point de comparaison ; le pari ne porte pas sur elle, mais sur ce qu'elle devient deux unités plus loin | rien : le segment en $Q$, la lecture `pentes-comparees`, le contrôle `point` et tout le reste du champ restent absents. *« La valeur est ÉNONCÉE » n'est pas « la LECTURE existe » — la porte mesure la seconde* |
+| **S4** | **le champ entier et la ligne du palier, à l'ENCRE** | la consigne les **donne** (« tu viens de trouver la ligne plate : elle est à $4$ ») ; le pari porte sur ce qu'une COURBE y fait | rien : toute courbe, `ecart-au-palier` et l'accent restent absents. ⚠ **Et le pari reste gagnable par le raisonnement depuis le champ — c'est le but** (§7.6 D / §7.7 D) |
+| **S6** *(nouvelle)* | **le contrôle `a` lui-même, ouvert, avec ses trois crans** | il est ouvert depuis S4 et le refermer serait un retour en arrière ; **et essayer les trois crans EST le geste que l'étape veut** | rien de l'ISSUE : ce qui reste caché est **l'UNICITÉ** (qu'aucun $a$ hors grille ne marche) et **le motif** ($b(a+1)=0$), tous deux dans le retour et dans `lesson.md:184`. *Le cran $a=-1$ n'est pas l'ÉTAT POSÉ, et `avant-pari` le mesure* |
 
 #### A — la fuite par les RÉGLAGES
 
@@ -1151,18 +1808,37 @@ ni dans la phrase lue au lecteur d'écran.
 posé, sa révélation, puis chaque contrôle ouvert sur tous ses crans) et vérifie qu'aucun ne
 produit la réponse d'un pari ultérieur.*
 
+*⚠ **Table refaite en vague 1** : `point` est rouvert à S2 et S3 (après la révélation), S6
+s'ajoute, et **la colonne de droite doit montrer que les deux ouvertures neuves ne fuient
+rien**. La porte relit cette table contre le descripteur ; **une ouverture qui n'y est pas
+écrite fait rougir `fuite-inter-etapes`.***
+
 | étape | contrôle(s) ouvert(s) | ce qu'ils atteignent | un pari suivant est-il mis en danger ? |
 |---|---|---|---|
-| **S1** | `point` seul (5) | les 5 points, **à la seule équation $y'=-y$**, `champ` verrouillé sur `un-point` | **non** pour S2 : `champ` est fermé — **le champ ne peut pas s'étendre**, donc l'invariance ne se VOIT pas ; elle se DÉDUIT en promenant $P$, et c'est ce que la `suite` demande. **non** pour S3/S4/S5 : `b`, `a`, `famille` fermés — **$b$ vaut $0$, donc il n'y a pas de palier à trouver** |
-| **S2** | `champ` seul (4) | les quatre densités, **au seul point `decale` et à la seule équation $y'=-y$** | **non** pour S3 : `b` est fermé, donc le palier est l'axe et la lecture `palier` **n'existe pas dans le DOM**. **non** pour S4/S5 : `famille` fermé, **aucune courbe n'est traçable** |
-| **S3** | `b` seul (4) | les quatre $b$, **au seul $a=-0{,}5$**, `champ` fermé (donc `aucun` avant la révélation, `plan` après) | **non** pour S4 : `famille` fermé, aucune courbe. **non** pour S5 : idem, et `point` fermé |
-| **S4** | `a` (neuf) + `b` (rouvert) | 3 × 4 = 12 équations, **au seul point `haut`**, `famille` figée à `une` après révélation | **non** pour S5 : **`point` est FERMÉ** — on ne peut pas faire naître une seconde courbe ailleurs, donc « elles visent toutes le même palier » n'est pas atteignable. *C'est la raison d'être de la fermeture (§5.5)* |
-| **S5** | les cinq contrôles | tout | — |
+| **S1** | `point` seul (5) | les 5 points, **à la seule équation $y'=-y$**, `champ` verrouillé sur `un-point` | **non** pour S2 : `champ` est fermé — **le champ ne peut pas s'étendre**, donc l'invariance ne se VOIT pas ; elle se DÉDUIT en promenant $P$, et le retour de `produit` le demande. **non** pour S3/S4/S5/S6 : `b`, `a`, `famille` fermés — **$b$ vaut $0$, donc il n'y a pas de palier à trouver** |
+| **S2** | `champ` (neuf, 4) **+ `point` (rouvert APRÈS la révélation, 5)** | les quatre densités **et** les cinq points, **à la seule équation $y'=-y$** | **non** pour S3 : `b` est fermé, donc **le palier est l'axe** et la lecture `palier` **n'existe pas dans le DOM** — promener $P$ ne fait varier que `pentes-comparees`, et c'est exactement ce que S2 enseigne (§7.2). **non** pour S4/S5 : `famille` fermé, **aucune courbe n'est traçable**. **non** pour S6 : `a` fermé, **un seul $a$ atteignable** |
+| **S3** | `b` (neuf, 4) **+ `point` (rouvert APRÈS la révélation, 5)** | les quatre $b$ × les cinq points, **au seul $a=-0{,}5$** ; `champ` fermé (`aucun` avant la révélation, `plan` après) | **non** pour S4 : `famille` fermé, **aucune courbe** — `ecart-au-palier` n'est pas dans le DOM. **non** pour S5 : idem. **non** pour S6 : **`a` est FERMÉ**, donc le cran $a=-1$ est inatteignable et la question « pour quel $a$ ? » n'a pas d'expérience disponible. *C'est la raison pour laquelle `point` peut s'ouvrir ici sans coût (pédagogie I3)* |
+| **S4** | `a` (neuf, 3) + `b` (rouvert, 4) | $3 \times 4 = 12$ équations, **au seul point `haut`**, `famille` figée à `une` après révélation | **non** pour S5 : **`point` est FERMÉ** — on ne peut pas faire naître une courbe ailleurs, donc « elles visent toutes le même palier » n'est pas atteignable. *C'est la raison d'être de la fermeture (§5.5), et c'est **le point où cette révision refuse une consigne de vague 1** (§13.16).* ⚠ **pour S6 : DANGER PARTIEL, et il est borné.** `a` étant ouvert, l'élève **peut** poser $a=-1$ dès S4 et voir `palier` $=b$. *Ce qu'il ne peut pas faire, c'est le REMARQUER sans qu'on le lui demande : `b` et `a` doivent être promenés **ensemble**, la lecture `palier` n'est pas comparée à $b$ à l'écran, et **aucun texte de S4 ne mentionne plus la coïncidence** (§7.4 : la `suite` qui l'imprimait est supprimée, et §7.7 C l'interdit à S4).* **La porte le mesure sur le TEXTE, pas sur l'état** (`formule-graduee`, ligne S4) |
+| **S5** | les cinq contrôles | tout sauf l'énoncé de S6 | ⚠ **même danger partiel qu'à S4, même borne** : `a` est ouvert, la coïncidence est atteignable, **et aucun texte de S5 ne la nomme** — la moitié de `suite` qui posait $a=-1$ **est supprimée** (§7.5) |
+| **S6** | les cinq contrôles | tout | — |
 
-**L'héritage est DÉCLARÉ** : `b` est rouvert à S4 et S5 ; `point`, `a` et `champ` à S5.
-*Sans lui, aucune `suite` ne pourrait faire constater un invariant — et l'invariant est ce que
-la scène enseigne.* **La non-fuite est tenue par les CONTRÔLES FERMÉS et par les LECTURES**, et
-la table ci-dessus dit lesquels à chaque ligne.
+**L'héritage est DÉCLARÉ** : `b` est rouvert à S4, S5 et S6 ; `point` à S2, S3, S5 et S6 ;
+`a` et `champ` à S5 et S6. *Sans lui, aucune `suite` ne pourrait faire constater un invariant —
+et l'invariant est ce que la scène enseigne.* **La non-fuite est tenue par les CONTRÔLES FERMÉS,
+par les LECTURES et — pour S6 — par le TEXTE**, et la table ci-dessus dit lequel à chaque ligne.
+
+> ⚠ **UN AVEU QUI N'ÉTAIT PAS DANS LA PREMIÈRE RÉDACTION, ET QUE S6 OBLIGE À ÉCRIRE.** Les
+> quatre premières lignes de cette table tiennent la non-fuite par des **contrôles fermés** —
+> c'est-à-dire par le PRODUIT. **La ligne de S6 ne peut pas : son cran est atteignable depuis
+> S4.** *La non-fuite y est tenue par le fait qu'aucun texte n'attire l'attention dessus, ce qui
+> est une garantie **plus faible** — un élève curieux peut tomber sur la coïncidence avant qu'on
+> la lui demande.* **Deux réponses, et aucune n'est un maquillage.** **(1)** *Tomber dessus par
+> curiosité n'est pas la même chose que se le faire dire : l'élève qui l'a remarqué seul a fait
+> exactement le travail que S6 demande, et il gagnera son pari — c'est un succès, pas une
+> fuite.* **(2)** *Ce que la scène ne donne à aucun moment, c'est **l'unicité** et le **motif** :
+> trois crans essayés ne prouvent pas qu'il n'y a pas de quatrième $a$, et c'est `lesson.md:184`
+> qui le prouve.* **Écrit ici plutôt que réparé par une fermeture de `a` à S4-S5, qui coûterait
+> la `suite` de S4 (le mécanisme) et celle de S5 (l'invariant). §13.19 le met au propriétaire.**
 
 #### B — la fuite par les RETOURS (chaque `retour` relu contre le pari SUIVANT)
 
@@ -1174,9 +1850,10 @@ autres.*
 |---|---|
 | **S1** | ⚠ **une quasi-fuite, tranchée.** Le retour de `pente-nulle` écrit « *il y aura bien une hauteur où la pente est nulle ; elle n'a rien à voir avec « résoudre », et ce n'est pas encore la question* ». Il **annonce l'existence** du palier — deux étapes en avance. **Phrase CONSERVÉE**, parce qu'elle est nécessaire pour ne pas laisser croire que $y'=0$ n'arrive jamais, **et bornée par une règle** : *aucun retour de S1 ne nomme $b$, ne chiffre une hauteur, ni n'emploie les mots « palier » ou « plat ».* Le retour de `produit` écrit « *la pente change, alors que l'équation n'a pas bougé* » — c'est la conséquence directe du pari de S1, pas l'invariance de S2 : **vérifié mot à mot, aucun retour de S1 ne contient « même hauteur », « horizontale », « parallèle » ni « abscisse »** |
 | **S2** | ⚠ **une fuite trouvée et bornée.** Le retour de `coefficient-seul` écrit « *étends le champ à tout le plan et regarde : ils ne le sont pas* » — il invite à l'action que la `suite` demande, ce qui est légitime, **mais il ne doit pas dire ce qu'on y verra de plus**. **Règle : aucun retour de S2 ne nomme $b$, un palier, une hauteur plate, ni une courbe.** *Le mot « hauteur » subsiste (c'est l'objet même de S2) ; « plate » est interdit* |
-| **S3** | **non** : aucun ne trace ni ne décrit de courbe, et aucun ne dit ce qu'une solution FAIT du palier. *Vérifié mot à mot : les quatre retours ne contiennent ni « courbe », ni « atteint », ni « s'approche », ni « famille ». Le retour juste écrit « le paragraphe qui suit cette scène la démontre » — c'est un renvoi à la PROSE, autorisé et même commandé (§4.1 d)* |
-| **S4** | **non** : aucun ne montre ni ne nomme une seconde courbe. *Le retour de `vers-moins-infini` écrit « mets $P$ sous la ligne plate » — mais `point` est FERMÉ à S4 (§5.5), donc c'est une invitation à faire à S5, pas un état atteignable.* ⚠ **Coût déclaré : ce retour annonce une moitié du fait de S5** (« sous la ligne, ça monte »). **Phrase conservée** — sans elle, `signe-a-comportement` casse sur rien — **et le pari de S5 ne porte PAS sur le sens de la courbe du bas, mais sur le palier partagé et l'absence d'intersection.** *Le choix `celle-du-bas-descend` en est affaibli ; déclaré, et §13.11 le met au propriétaire* |
-| **S5** | tout | — |
+| **S3** | **non** : aucun ne trace ni ne décrit de courbe, et aucun ne dit ce qu'une solution FAIT du palier. *Vérifié mot à mot : les quatre retours ne contiennent ni « courbe », ni « atteint », ni « s'approche », ni « famille ». Le retour juste écrit « le paragraphe qui suit cette scène la démontre » — c'est un renvoi à la PROSE, autorisé et même commandé (§4.1 d)*. ⚠ **Et une contrainte NEUVE, née de S6** : les retours de S3 nomment le cran $b=0$ (le retour de `zero` demande de l'essayer) **mais aucun ne nomme un cran de $a$, ni la coïncidence palier $=b$** — *vérifié mot à mot après réécriture* |
+| **S4** | **non** — ⚠ **et DEUX fuites ont été refermées en vague 1, pas seulement bornées.** *(1)* Le retour de `vers-moins-infini` disait « *mets $P$ sous la ligne plate* » : **un geste impossible** (`point` fermé) **et** une annonce de la moitié du fait de S5. **Réécrit** : il argumente depuis le CHAMP, qui est de l'énoncé (§7.4). *§13.11 se referme : il n'y a plus de coût à déclarer, et `celle-du-bas-descend` retrouve sa force à S5.* *(2)* **La `suite` qui imprimait la coïncidence $a=-1$ est supprimée** (BLOQ-1) : c'était **la fuite la plus grave du document**, puisqu'elle livrait le pari de S6 trois paragraphes avant lui. *Vérifié mot à mot : aucun retour et aucune `suite` de S4 ne contient « $-1$ », « palier $=b$ », ni « recopier »* |
+| **S5** | **non** pour S6 : ⚠ *la moitié de `suite` qui posait $a=-1$ et annonçait « une des trois courbes devient une droite » **est supprimée** (§7.5).* *Vérifié mot à mot : aucun texte de S5 ne nomme un cran de $a$* |
+| **S6** | tout | — |
 
 #### C — la fuite par le TEXTE : `formule-graduee`, ÉTAPE par ÉTAPE
 
@@ -1187,9 +1864,19 @@ droit d'imprimer ce que son propre énoncé exige.*
 |---|---|---|
 | **S1** | `pente`, `coefficient`, `hauteur`, `y' = ay`, `y' = -y`, `y' + y = 0`, `point`, `segment`, `fonction`, `primitive` *(dans le seul retour de `ed-comme-primitive`, pour nommer le modèle qu'il casse)* | `b`, `+ b`, `palier`, `plat`, `horizontal`, `parallèle`, `abscisse`, `courbe`, `famille`, `-\dfrac{b}{a}`, toute valeur de hauteur autre que celles de $P$ |
 | **S2** | + `abscisse`, `même hauteur`, `horizontale`, `parallèle`, `ne dépend que de`, `champ` | `b`, `+ b`, `palier`, `plat`, `courbe`, `famille`, `solution qui passe par`, `-\dfrac{b}{a}` |
-| **S3** | + `b`, `terme constant`, `palier`, `plat`, `horizontal`, `solution constante`, `0 = ak+b`, `-\dfrac{b}{a}` | `courbe`, `trajectoire`, `s'approche`, `atteint`, `tend vers`, `famille`, `plusieurs solutions`, `écart au palier` |
-| **S4** | + `courbe`, `s'approche`, `n'atteint jamais`, `écart au palier`, `signe de a`, `fuit` | `famille`, `plusieurs`, `toutes les solutions`, `se coupent`, `d'où qu'elles partent` |
-| **S5** | tout | — |
+| **S3** | + `b`, `terme constant`, `palier`, `plat`, `horizontal`, `solution constante`, `0 = ak+b`, `-\dfrac{b}{a}` | `courbe`, `trajectoire`, `s'approche`, `atteint`, `tend vers`, `famille`, `plusieurs solutions`, `écart au palier`, **`b(a+1)`**, **`a = -1`**, **toute phrase où « palier » et « $b$ » sont dits ÉGAUX** |
+| **S4** | + `courbe`, `s'approche`, `n'atteint jamais`, `écart au palier`, `signe de a`, `fuit` | `famille`, `plusieurs`, `toutes les solutions`, `se coupent`, `d'où qu'elles partent`, **`b(a+1)`**, **`a = -1`**, **`le palier vaut b`**, **`recopier`** |
+| **S5** | + `famille`, `plusieurs solutions`, `d'où qu'elles partent`, `traverse`, `se coupent` | **`b(a+1)`**, **`a = -1`**, **`le palier vaut b`**, **`recopier`**, **`unique`**, **`un seul réglage`** |
+| **S6** | tout | — |
+
+⚠ **Les quatre dernières colonnes « interdit » sont ÉLARGIES en vague 1, et c'est la
+conséquence directe de BLOQ-1.** *Dès lors que « il existe un $a$ où le palier vaut $b$ »
+devient **un pari** (S6), c'est une RÉPONSE, donc elle tombe sous `formule-graduee` comme
+n'importe quelle autre : **aucune des cinq étapes précédentes ne peut la nommer**. La première
+rédaction, elle, l'écrivait en clair dans la `suite` de S4 — ce qui était cohérent avec sa
+propre conception, et c'est précisément ce que la vague 1 a refusé.* **La porte mesure une
+étape à la fois** (§11.2, `formule-graduee`), **et l'essai rouge n° 23 gagne une forme**
+(écrire « $a=-1$ » dans un texte de S3, S4 ou S5 doit rougir).
 
 **À toutes les étapes, sans exception : les chaînes du §9.** *La porte cherche ces formes-là
 dans le `textContent` **rendu**, en remplaçant chaque `.katex` par son **annotation TeX** —
@@ -1199,56 +1886,120 @@ les accents).*
 #### D — la fuite par la DONNÉE, et la fuite par la RELATION
 
 - **Par la DONNÉE** (règle de la corde) : **une seule, et elle est déclarée.** Les cinq points
-  contiennent `origine` $(0;3)$ et `decale` $(4;3)$, qui partagent une ordonnée — **c'est la
+  contiennent `origine` $(0;3)$ et `decale` $(2;3)$, qui partagent une ordonnée — **c'est la
   réponse de S2, posée dans la grille de S1**. *Elle n'est pas atteignable comme un ÉTAT (à S1
   la lecture `pente` s'affiche pour un point à la fois, jamais deux), mais un élève attentif
-  qui promène $P$ à S1 verra deux fois $-3$. **C'est voulu : la `suite` de S1 le lui demande
-  explicitement.** Ce n'est pas une fuite, c'est la rampe.*
+  qui promène $P$ à S1 verra deux fois $-3$. **C'est voulu : le retour de `produit` le lui
+  demande explicitement.** Ce n'est pas une fuite, c'est la rampe.*
 - **Par la RELATION** (règle du banc de diffraction) : c'est la table C ci-dessus.
-  $y'=ay+b$ a **quatre** facteurs de sens — la pente locale, l'invariance en $x$, le palier, le
-  comportement — et **chaque étape n'écrit que ceux qu'elle a fait varier**.
+  $y'=ay+b$ a **cinq** facteurs de sens — la pente locale, l'invariance en $x$, le palier, le
+  comportement, **et le cran dégénéré** — et **chaque étape n'écrit que ceux qu'elle a fait
+  varier**.
 
 #### E — la fuite par le STEM : le cran $a=-1$
 
-**Le cran $a=-1$ n'est l'état de PARI d'aucune étape** (S1 et S2 l'emploient avec $b=0$, où
-aucun palier n'est en jeu ; S3, S4 et S5 sont à $a=-0{,}5$ ou le laissent au réglage). *Motif,
-et il est arithmétique (§5.3 A) : à $a=-1$, $-\dfrac{b}{a}=b$, donc le distracteur
+**Le cran $a=-1$ n'est l'état POSÉ d'aucun pari** (S1 et S2 l'emploient avec $b=0$, où aucun
+palier n'est en jeu ; S3, S4, S5 et **S6** sont à $a=-0{,}5$ ou le laissent au réglage).
+*Motif, et il est arithmétique (§5.3 A) : à $a=-1$, $-\dfrac{b}{a}=b$, donc le distracteur
 `palier-recopie-b` atteindrait la **bonne réponse** — une **contamination de la réponse
 juste**, qui est un défaut de **stem**, à corriger et non à co-étiqueter.* **La porte le
 vérifie sur le descripteur : aucune étape dont un choix porte `palier-recopie-b` ne pose
 `a: "-1"`** (§11.3, `stem-non-contamine`).
 
+> ⚠ **LA RÉCONCILIATION AVEC BLOQ-1, ÉCRITE ICI PARCE QUE C'EST ICI QUE LA TENSION VIT.**
+> La vague 1 demande que le cran $a=-1$ soit **parié** ; ce garde-fou interdit qu'il soit
+> **posé**. *Les deux tiennent ensemble, et il n'y a qu'une forme qui le permette :*
+>
+> | | **S6, tel qu'écrit** | **ce que le garde-fou interdirait** |
+> |---|---|---|
+> | l'état posé | $a=-0{,}5$, $b=1$, palier $2$ | $a=-1$ |
+> | la question | « **pour quel $a$** la ligne tombe-t-elle sur $b$ à chaque cran ? » | « à quelle **hauteur** est la ligne plate ? » |
+> | ce que répond le porteur de `palier-recopie-b` | « **à tous les crans** » — **faux** ✓ | « à la hauteur $b$ » — **JUSTE**, donc contaminé ✗ |
+> | ce que la porte mesure | l'état posé de S6 n'est pas $-1$ ✓ ; les quatre choix sont distincts ✓ | — |
+>
+> **Le distracteur du modèle le plus servi de la notion reste faux, et il l'est pour la raison
+> qui compte : il généralise une coïncidence en règle.** *C'est un meilleur emploi de
+> `palier-recopie-b` que celui de S3, où il donne simplement un mauvais nombre.*
+>
+> ⚠ **Et le cas $b=0$ est la seconde moitié du piège, déclarée.** $b(a+1)=0$ a **deux**
+> racines ; S3 fait trouver que **à $a=-0{,}5$, ça ne tombe juste qu'à $b=0$** (sa `suite`), et
+> S6 fait trouver **l'autre racine**. *Aucune des deux étapes ne donne les deux, et c'est
+> `lesson.md:184` qui les réunit — ce qui est exactement le partage voulu : la scène fait
+> trouver les cas, la prose prouve qu'il n'y en a pas d'autres.*
+
 ---
 
 ## 8. Misconceptions
 
-Les **22** modèles déclarés de la notion vivent dans `items.yaml:11-215` sous le préfixe
+> ⚠ **TOUS LES COMPTES DE CE §8 SONT REFAITS APRÈS LE PAIEMENT DE LA DETTE $\Delta=0$**
+> (commit `b70f9a41`, 2026-09-25 : l'exemple travaillé de $y''+6y'+9y=0$, le modèle
+> `racine-double-sans-x`, `EQDIFF-31` à `-33`, `cp-r4-racine-double`). **Relus ici un par un
+> avec `Grep`/`Read`, pas hérités.**
+
+Les **23** modèles déclarés de la notion vivent dans `items.yaml` sous le préfixe
 `mc.math.maths_equations_differentielles.`. Les comptes sont **au niveau ITEM**, méthode
-`coverage_summary` déclarée en fin de fichier (`items.yaml:1961-1967`) : **30 items, plancher
-3, `floor_met: true`, quinze modèles EXACTEMENT au plancher** (`:2002-2005`).
-*`REVIEW:13-17` : les deux critiques de vague 1 ont recompté les 22 lignes tag par tag sur les
-90 distracteurs — **elles tombent juste**, et l'une le qualifie du « bloc de couverture le plus
-propre qu'elle ait audité ». **On ne touche pas à ce fichier.***
+`coverage_summary` déclarée en fin de fichier (`items.yaml:2212-2218`) : **33 items, plancher
+3, `floor_met: true`, QUATORZE modèles EXACTEMENT au plancher** (`items.yaml:2243-2259`).
+
+| | avant la dette | **après la dette (état mesuré)** |
+|---|---|---|
+| modèles déclarés | 22 | **23** *(+ `racine-double-sans-x`)* |
+| items | 30 | **33** *(+ `EQDIFF-31`, `-32`, `-33`)* |
+| étiquettes de modèle | 74 | **81** |
+| modèles à marge nulle | 15 | **14** |
+| points d'arrêt | 5 | **6** *(+ `cp-r4-racine-double`)* |
+| `ramp_coverage.R4` | 4 | **7** |
+| `habilete` sur les items | **0** | **0** *(inchangé — le NON-VERDICT tient, §1)* |
+
+*Trois comptes de modèles ont bougé avec les trois items neufs, et ils sont relus :
+`solution-fonction-unique` $3 \to \mathbf{5}$, `signe-second-membre-second-ordre` $4 \to
+\mathbf{5}$, `nombre-solutions-condition` $3 \to \mathbf{4}$.* **Deux de ces trois sont des
+modèles que cette scène revendique** (§8.1), **et la marge de la notion s'est donc
+ÉLARGIE, pas rétrécie.**
+
+*`REVIEW:13-17` : les deux critiques de vague 1 avaient recompté les 22 lignes tag par tag sur
+les 90 distracteurs — **elles tombaient juste**, et l'une le qualifiait du « bloc de couverture
+le plus propre qu'elle ait audité ». **Cette spec ne touche toujours pas à ce fichier**, et le
+§14.1 le vérifie au caractère près.*
 
 ### 8.1 Ce que la scène vise — ONZE modèles, tous DÉJÀ déclarés
 
-| modèle existant | compte actuel | où la scène le casse | **sur quelle conséquence il casse** |
+| modèle existant | compte **mesuré après la dette** | où la scène le casse | **sur quelle conséquence il casse** |
 |---|---|---|---|
 | `ed-comme-primitive` | 3 | **S1** (`coefficient-seul`), **S2** (`coefficient-seul`) | promène $P$ : si la pente valait $a$, elle ne bougerait jamais — et le champ entier serait un seul faisceau de parallèles. **Il ne l'est pas** |
 | `signe-exposant` | 3 | **S1**, choix `signe-recopie` | le segment **descend** : $y'+y=0$ est la même équation, mais le coefficient ne se lit qu'après l'avoir écrite $y'=-y$ |
 | `ed-inconnue-nombre` | 3 | **S1**, choix `pente-nulle` | le segment n'est pas plat ; l'équation parle en **chaque** point, pas seulement là où quelque chose s'annule |
-| `modele-sans-ecart` | 3 | **S2**, choix `amortie` | la hauteur n'a pas bougé, donc la pente non plus — c'est l'**écart**, jamais le temps écoulé, qui pilote |
+| `modele-sans-ecart` | 3 | **S2**, choix `amortie` ($-1{,}5$) | la hauteur n'a pas bougé, donc la pente non plus — c'est la **hauteur**, jamais le chemin parcouru, qui pilote. ⚠ **Et la MOITIÉ de ce modèle est affichée comme VRAIE à S1 et S2 : voir l'encadré ci-dessous (fidélité I4)** |
 | `modele-taux-constant` | 3 | **S2** (`arretee`), **S4** (`droite-puis-stop`) | le champ **change d'inclinaison à chaque hauteur** : une courbe qui le suit ne peut pas être une droite, et rien ne lui dit de s'arrêter |
-| `palier-recopie-b` | **5** | **S3**, choix `recopie-b` | la ligne plate est à $4$, pas à $2$ — et à la hauteur $2$ la lecture `pente` affiche $+1$ : le champ y **monte** |
-| `palier-signe` | 4 | **S3**, choix `signe` | à $y=-4$, la pente vaut $+4$ : la ligne monte à pic. Réinjecter tranche en une ligne |
-| `palier-oubli` | 4 | **S3** (`zero`), **S4** (`vers-zero`) | à $y=0$, le champ **monte** (pente $+2$) : une courbe qui y arriverait serait repoussée |
-| `signe-a-comportement` | 3 | **S4** (`vers-moins-infini`), **S5** (`celle-du-bas-descend`) | sous la ligne plate, avec le même $a<0$, la courbe **monte**. $a<0$ ne dit pas « décroît », il dit « revient vers la ligne » |
-| `nombre-solutions-condition` | 3 | **S5**, choix `se-coupent` | au point d'intersection supposé, le champ ne donne **qu'une** direction — deux courbes n'y tiennent pas |
-| `solution-fonction-unique` | 3 | **S5**, choix `une-seule-vraie` | les trois suivent le champ partout : les trois sont des solutions |
+| `palier-recopie-b` | **5** | **S3** (`recopie-b`), **S6** (`tous`) | à S3 : la ligne plate est à $4$, pas à $2$ — pose $P$ sur $(0;2)$, la lecture affiche $+1$, le champ y **monte**. **À S6 : la règle n'est pas « presque toujours vraie », elle est fausse partout sauf à UN cran** — et le trouver, c'est cesser de la croire |
+| `palier-signe` | 4 | **S3** (`signe`), **S6** (`a-plus-un`) | à S3 : à $y=-4$ la pente vaut $+4$, la ligne monte à pic. **À S6 : le même signe perdu, un étage plus haut** — $-\dfrac{b}{a}=b$ donne $a=-1$, pas $+1$ |
+| `palier-oubli` | 4 | **S3** (`zero`), **S4** (`vers-zero`), **S6** (`b-zero-seulement`) | à $y=0$, le champ **monte** (pente $+2$) : une courbe qui y arriverait serait repoussée. **À S6 : « ça ne tombe juste qu'à $b=0$ » est ce qu'on croit quand on tient le palier pour l'axe** |
+| `signe-a-comportement` | 3 | **S4** (`vers-moins-infini`), **S5** (`celle-du-bas-descend`) | sous la ligne plate, avec le même $a<0$, le champ **monte**. $a<0$ ne dit pas « décroît », il dit « revient vers la ligne » |
+| `nombre-solutions-condition` | **4** *(était 3 ; `EQDIFF-33` l'a rejoint avec la dette)* | **S5**, choix `se-coupent` | au point d'intersection supposé, le champ ne donne **qu'une** direction — deux courbes n'y tiennent pas |
+| `solution-fonction-unique` | **5** *(était 3 ; `EQDIFF-31` et `-33` l'ont rejoint avec la dette)* | **S5**, choix `une-seule-vraie` | les trois suivent le champ partout : les trois sont des solutions |
 
-**Onze modèles servis, ZÉRO neuf.** *Les onze autres de l'inventaire ne sont **pas** visés, et
-c'est déclaré : `coefficient-a-mal-identifie` porte sur la **forme écrite** de la solution, que
-la scène n'écrit jamais (§9.1) ; `condition-initiale-sans-decalage`,
+> ⚠ **DÉCLARATION EXIGÉE PAR LA VAGUE 1 (fidélité I4) : `modele-sans-ecart` est affiché À MOITIÉ
+> VRAI pendant DEUX étapes, et ce document ne le disait pas.**
+> *Sa `description` (`items.yaml:199-200`, relue verbatim à la révision) a **deux** moitiés :
+> « *L'élève fait dépendre la vitesse de refroidissement de $T$ **seule (palier $0$)** ou **du
+> temps $t$*** ». **S1 et S2 tournent à $b=0$** — donc la pente y dépend de la hauteur seule et
+> **le palier EST l'axe** : **la première moitié du modèle faux y est exactement CORRECTE, et la
+> scène l'affiche comme telle, deux étapes de suite.** La scène ne casse que la seconde moitié
+> (`amortie`, « ça dépend du chemin parcouru »).*
+> **Ce n'est pas un défaut à réparer, c'est une rampe à déclarer** — et la réparation existe déjà
+> dans la scène : **le retour de `zero` à S3 est le point de rupture désigné**, et il est écrit
+> pour ça : « *C'était vrai **tant que $b$ valait $0$** — et c'est exactement ce qui vient de
+> changer.* » **Aucun changement d'état n'est nécessaire : l'échelle $b=0 \to b\neq0$ est ce qui
+> fait fonctionner S3.** *Ce qui change ici est le registre : la ligne du §8.1 le dit, et
+> content-author doit garder cette phrase du retour de `zero` **intacte** — c'est elle qui solde
+> les deux étapes précédentes.*
+
+**Onze modèles servis, ZÉRO neuf** *(et S6 n'en ajoute aucun : il **réemploie** les trois du
+palier, ce qui est le meilleur argument pour son existence).* *Les DOUZE autres de l'inventaire
+ne sont **pas** visés, et c'est déclaré : `coefficient-a-mal-identifie` porte sur la **forme
+écrite** de la solution, que la scène n'écrit jamais (§9.1) ; **`racine-double-sans-x` est le
+modèle neuf de la dette $\Delta=0$, et il est du second ordre — hors scène (§9.2)** ;
+`condition-initiale-sans-decalage`,
 `condition-initiale-exposant-sans-a` et `resolution-exponentielle-lineaire` sont R3 ;
 `omega-vs-omega2`, `signe-second-membre-second-ordre`, `oscillateur-B-sans-omega`,
 `oscillateur-A-B-roles` et `periode-omega` sont R4 ; `charge-decharge-confondues` et
@@ -1262,27 +2013,50 @@ paresse.***
 **Trois mesures, dans cet ordre.**
 
 1. **L'inventaire de cette notion est déjà, et de loin, le plus complet du corpus maths que
-   j'aie lu : 22 modèles pour 7 rungs, tous au-dessus du plancher, recomptés et validés par
-   deux critiques** (`REVIEW:13-17`). *Comparaison : `nombres-complexes-2` déclare 23 modèles
-   pour un corpus deux fois plus gros, et sa spec de scène a dû en ajouter deux.*
-2. **Les vingt choix des cinq étapes ont été construits d'abord, puis confrontés un par un à
-   l'inventaire** — pas l'inverse. **Les vingt trouvent un modèle déclaré dont la
-   `description` couvre le distracteur ET dont la valeur se recalcule** (§8.1). *Deux exemples
-   où la couverture était douteuse et a été retenue APRÈS lecture de la `description` :*
+   j'aie lu : 23 modèles pour 7 rungs, tous au-dessus du plancher** (`REVIEW:13-17` pour les 22
+   premiers, **recomptés à la révision pour le 23ᵉ**). *Comparaison : `nombres-complexes-2`
+   déclare 23 modèles pour un corpus deux fois plus gros, et sa spec de scène a dû en ajouter
+   deux.*
+2. **Les vingt-quatre choix des six étapes ont été construits d'abord, puis confrontés un par un
+   à l'inventaire** — pas l'inverse. **Les vingt-quatre trouvent un modèle déclaré dont la
+   `description` couvre le distracteur ET dont la valeur se recalcule** (§8.1). *Trois cas où la
+   couverture était douteuse et a été retenue APRÈS lecture de la `description`, chacun avec sa
+   réserve :*
    - `signe-exposant` (S1) : sa description écrit « *ou **recopie $y'+ay=0$ tel quel sans
-     l'écrire $y'=-ay$ avant de lire $a$*** » (`items.yaml:25-26`) — **le distracteur
-     `signe-recopie` est littéralement ce texte.**
+     l'écrire $y'=-ay$ avant de lire $a$*** » (`items.yaml:25-26`, **relu verbatim à la
+     révision**) — le distracteur `signe-recopie` **couvre ce GESTE**.
+     ⚠ **Réserve corrigée en vague 1 (pédagogie M6, fidélité M8).** *La première rédaction
+     écrivait « **le distracteur `signe-recopie` est littéralement ce texte** » : c'est
+     **surinterprété**. La `description` couvre le cas où l'équation est **PRÉSENTÉE** sous la
+     forme $y'+ay=0$ ; à S1 elle est présentée $y'=-y$, et le distracteur demande à l'élève de
+     la **réécrire lui-même** en $y'+y=0$ avant de mal lire le coefficient — **une étape de plus,
+     que peu d'élèves franchissent spontanément.** Et la fidélité ajoute que le `label` du modèle
+     parle de **l'exposant d'une formule de solution que la scène est interdite d'écrire**
+     (§9.1) : **le rattachement ne tient que par la seconde clause de la `description`**, qui est
+     bien, elle, sans représentation. **Rattachement CONSERVÉ, et sa minceur est écrite ici.***
    - `modele-sans-ecart` (S2) : sa description écrit « *fait dépendre la vitesse […] de $T$
      seule (palier $0$) **ou du temps $t$*** » (`items.yaml:199-200`) — **le distracteur
-     `amortie` est « la pente dépend du temps écoulé ».** *Réserve déclarée : la `description`
-     est rédigée dans les variables de la tasse ($T$, $t$, $20$), et la scène est abstraite
-     ($x$, $y$). **Je juge que le mécanisme est le même et que l'habillage est un habillage ;
-     si la vague 1 juge le contraire, c'est LÀ qu'un modèle neuf serait nécessaire**, et §13.12
-     en écrit la déclaration prête à l'emploi.*
-3. **Un modèle neuf coûte trois items, et cette notion est la dernière où il faut en ajouter.**
-   Quinze modèles y siègent à marge nulle (`items.yaml:2002-2005`) et deux items sont déjà
-   quasi jumeaux (`REVIEW:124-126`). **Ajouter du volume QCM ici, c'est ajouter du bruit à un
-   banc qui est propre.**
+     `amortie` est « la pente dépend du chemin parcouru ».** *Réserve déclarée : la
+     `description` est rédigée dans les variables de la tasse ($T$, $t$, $20$), et la scène est
+     abstraite ($x$, $y$). **Je juge que le mécanisme est le même et que l'habillage est un
+     habillage.*** ⚠ **La vague 1 ne l'a PAS contredit** *(la pédagogie le classe « jugement, pas
+     mesure », M5, et la fidélité l'accepte)* **— donc aucun modèle neuf, et §13.12 garde sa
+     déclaration de repli prête.** *Et §8.1 porte désormais la moitié du modèle que la scène
+     affiche comme VRAIE (fidélité I4), qui est la vraie faiblesse de ce rattachement.*
+   - `palier-oubli` (S6, `b-zero-seulement`) : ⚠ **le rattachement le plus mince des
+     vingt-quatre, et il est neuf.** *« Ça ne tombe juste qu'à $b=0$ » est **exactement ce qu'on
+     conclut si l'on tient le palier pour l'axe** — ce que la `description` dit
+     (`items.yaml:70-72` : « *ne garde que la partie homogène […] comme si le terme constant $b$
+     était nul* »). **Mais c'est aussi ce que conclut un élève qui a bien compris et n'a
+     simplement essayé que deux crans sur trois** — une recherche incomplète, pas une
+     misconception. **Rattachement proposé, jugement déclaré, et §13.20 le met au propriétaire :
+     si la vague 1bis le refuse, le choix reste (il est pédagogiquement juste) et perd son
+     étiquette.***
+3. **Un modèle neuf coûte trois items, et cette notion vient d'en absorber trois.**
+   Quatorze modèles y siègent à marge nulle (`items.yaml:2243-2259`) et deux items sont déjà
+   quasi jumeaux (`REVIEW:124-126`). **La dette $\Delta=0$ a consommé le budget d'ajout
+   disponible** (`EQDIFF-31` à `-33` pour `racine-double-sans-x`) : **ajouter du volume QCM ici,
+   c'est ajouter du bruit à un banc qui vient d'être étendu là où l'examen le demandait.**
 
 ### 8.3 Les DEUX modèles CANDIDATS — consignés, pas déclarés
 
@@ -1294,11 +2068,12 @@ solution partie plus haut tend vers un palier plus haut, ou qu'une solution part
 palier ne peut pas y monter. *Ce qui le rend plausible :* `famille-solutions.svg` existe
 **uniquement** pour montrer que quatre $T_0$ différents visent un seul palier — l'auteur de la
 figure a donc jugé la confusion réelle. *Ce qui manque pour le déclarer :* **aucune donnée de
-fréquence**. Aucun des 30 items ne l'attrape, aucune annale ne l'éclaire (il n'y en a qu'une,
-et elle est du second ordre), et je n'ai pas l'expérience d'enseignement qui trancherait.
-**La scène le confronte quand même, par le fait** (S5, choix `meme-ligne` et sa `suite`) —
-**sans distracteur étiqueté**, ce qui est précisément la limite de ce refus. *§13.12 donne au
-propriétaire la déclaration YAML prête et ses trois items ; par défaut, elle n'est pas écrite.*
+fréquence**. Aucun des **33** items ne l'attrape, aucune annale ne l'éclaire (il n'y en a
+qu'une, et elle est du second ordre), et je n'ai pas l'expérience d'enseignement qui
+trancherait. **La scène le confronte quand même, par le fait** (S5, choix `meme-ligne` et sa
+`suite`) — **sans distracteur étiqueté**, ce qui est précisément la limite de ce refus. *§13.12
+donne au propriétaire la déclaration YAML prête et ses trois items ; par défaut, elle n'est pas
+écrite.*
 
 **Candidat B — « la pente lue comme l'ordonnée seule » ($a$ oublié).** Répondre $3$ à S1 au
 lieu de $-3$. *Ce qui manque :* aucune donnée, et le modèle est peut-être un simple lapsus
@@ -1307,26 +2082,31 @@ table finale du §7.1, où les quatre choix sont tous couverts. *Consigné pour 
 
 ### 8.4 Le solde de couverture, honnête
 
-| | avant | après |
+| | **état mesuré avant cette livraison** *(après la dette $\Delta=0$)* | après cette livraison |
 |---|---|---|
-| modèles déclarés | **22** | **22** *(inchangé)* |
-| items | **30** | **30** *(inchangé)* |
-| modèles à marge nulle | **15** | **15** *(inchangé)* |
+| modèles déclarés | **23** | **23** *(inchangé)* |
+| items | **33** | **33** *(inchangé — ou **33** avec **un stem varié**, §4.6)* |
+| modèles à marge nulle | **14** | **14** *(inchangé)* |
+| points d'arrêt | **6** | **6** *(inchangé)* |
 | modèles **revendiqués par une spec, rung par rung** | 0 *(la notion n'a pas de `spec.md` — `REVIEW:105-109`)* | **11**, pour le seul R2 |
 
 **Ce que ce paquet NE referme pas :**
-- **Le banc de fin ne verra aucune différence.** Onze modèles sont confrontés par la scène et
-  mesurés, comme avant, par des QCM d'écriture (§4.6). **Déclaré.**
-- **Onze modèles restent non revendiqués** (`coefficient-a-mal-identifie` et les dix de R3,
-  R4, R5). **Cette spec n'est pas le `spec.md` de la notion.** §13.4.
+- **Le banc de fin ne verra presque aucune différence.** Onze modèles sont confrontés par la
+  scène et mesurés, comme avant, par des QCM d'écriture (§4.6). ⚠ **Nuance de vague 1
+  (pédagogie I6) : la variation de stem couplée (§4.6) est ce qui empêche ce « presque » de
+  devenir « aucune ».** **Déclaré.**
+- **DOUZE modèles restent non revendiqués** (`coefficient-a-mal-identifie`, **`racine-double-sans-x`**
+  et les dix de R3, R4, R5). **Cette spec n'est pas le `spec.md` de la notion.** §13.4.
 - ⚠ **`REVIEW:110-114` (F-6) signale que plusieurs distracteurs n'ENCODENT pas le modèle dont
   ils portent l'étiquette, et qu'« *au recompte honnête une famille tomberait sous le
-  plancher* ».** **Cette spec n'a pas re-audité les 90 distracteurs existants** ; elle s'appuie
+  plancher* ».** **Cette spec n'a pas re-audité les distracteurs existants** ; elle s'appuie
   sur les `description` telles qu'écrites. *Si ce recompte a lieu un jour et déplace une
   famille, les rattachements du §8.1 sont à relire.* **Déclaré, §15.5.**
-- **Zéro item de niveau 3 ajouté, contre une cible de 15 % (SExp) ou 20 % (SM)** — puisque zéro
-  item est ajouté. *Et le rapport reste **incalculable**, `habilete` n'existant sur aucun item
-  (§1). **NON-VERDICT**, pas un vert.*
+- **Zéro item de niveau 3 ajouté, contre une cible de 15 % (SExp) ou 20 % (SM).** *Et le rapport
+  reste **incalculable**, `habilete` n'existant sur aucun des 33 items — **revérifié à la
+  révision : `Grep -c habilete` rend 6 occurrences, toutes dans `checkpoints.yaml`, zéro dans
+  `items.yaml`.*** **NON-VERDICT**, pas un vert. *La dette $\Delta=0$ n'a pas déplacé ce
+  compte-là non plus.*
 
 ---
 
@@ -1340,9 +2120,23 @@ Chaînes **interdites dans le panneau ouvert**, mesurées par la porte (§11.3, 
 > chaque `.katex` par son **annotation TeX** — **en début de mot et en Unicode**.
 >
 > **Et la frontière s'applique AUX TEXTES DE CETTE SPEC**, qui ne sont qu'une proposition de
-> plus (leçon du banc de modulation, point 4). *Relu : le §7 n'écrit aucune forme interdite.
-> Les §0, §1, §2 et §13 en écrivent plusieurs — ils parlent du cadre, pas à l'élève, et la
-> porte ne lit que le PANNEAU.*
+> plus (leçon du banc de modulation, point 4). *Les §0, §1, §2 et §13 en écrivent plusieurs — ils
+> parlent du cadre, pas à l'élève, et la porte ne lit que le PANNEAU.*
+>
+> ⚠ **CORRECTION DE LA RÉVISION, ET C'EST LA PLUS GÊNANTE DU DOCUMENT.** *La première rédaction
+> écrivait ici, en toutes lettres : « **Relu : le §7 n'écrit aucune forme interdite.** »*
+> **C'ÉTAIT FAUX.** Trois retours du §7 destinés au PANNEAU contenaient des chaînes interdites
+> par le point 3 ci-dessous : `celle-du-bas-descend` à S5 (« *un objet à $0\ °$C posé dans une
+> pièce à $20\ °$C se réchauffe* » — `°C`, `°`, et le registre thermique), `approche` à S4 (« *la
+> tasse… le café… la température de la pièce* ») et `amortie` à S2 (« *la température se rapproche
+> de celle de la pièce* »). **Les trois sont supprimés ou réécrits** (§7.2, §7.4, §7.5).
+> **Ni l'écriture ni les DEUX critiques de vague 1 ne l'ont vu** — la porte `frontiere`, elle,
+> aurait fait rougir la scène au premier lancement.
+> **La leçon, et elle est de l'ADR 0036 : une porte qui se cite elle-même se disculpe.** *Une
+> phrase « relu, rien à signaler » écrite par l'auteur de ce qu'il relit n'est pas une mesure,
+> c'est une intention. **Cette section n'affirme donc plus que le §7 est propre : elle dit que
+> c'est à la porte de le dire**, et l'essai rouge n° 23 ter remet les trois phrases pour vérifier
+> qu'elle le dit.*
 
 1. **FRONTIÈRE DE RANG — aucune formule de solution, aucune constante.** *Ne vient d'aucune
    `limite` du cadre : vient de ce que la scène précède l'Étape 2 de R2 (§0.2).*
@@ -1400,9 +2194,24 @@ Chaînes **interdites dans le panneau ouvert**, mesurées par la porte (§11.3, 
    `point d'équilibre`, `équilibre stable`, `stabilité`, `attracteur`, `autonome`,
    `flot`, `Cauchy-Lipschitz`, `théorème de Cauchy`, `unicité` *(le FAIT est l'objet de S5 ; le
    MOT est hors cadre — la scène dit « une seule »)*.
-   *Le nom « champ des pentes » lui-même n'est employé QUE dans le titre et la légende de la
-   carte ; **le panneau ne le présente jamais comme un terme à retenir**, et aucune consigne ne
-   demande de « lire un champ de pentes ». §13.2.*
+   ⚠ **RÈGLE DURCIE EN VAGUE 1 (fidélité I2), et c'était le dernier mot hors cadre à l'écran.**
+   *La première rédaction écrivait : « le nom « champ des pentes » n'est employé QUE dans le
+   titre et la légende de la carte ». **Le titre d'une carte est la ligne la plus lue de la
+   carte** — c'était donc le seul endroit où un terme que **ni** `maths-sm.yaml` **ni**
+   `maths-sexp.yaml` ne nomment était affiché **comme un nom**. (Le critique a regrepé les deux
+   fichiers : `champ`, `isocline`, `direction` — aucune occurrence pertinente.)*
+   **Nouvelle règle, à coût nul :**
+   - **`champ-des-pentes` ne survit que comme SLUG, clé de registre et sélecteur de porte**
+     (`[data-scene="champ-des-pentes"]`) — **jamais dans un texte rendu.**
+   - **Le `title_fr` porte la QUESTION, pas l'objet : « Ce que l'équation dit en chaque
+     point »** (§12). *La légende suit la même règle.*
+   - **Interdits ajoutés aux formes cherchées par la porte** : `champ des pentes`,
+     `champ de pentes`, `champ de directions` *(ce dernier l'était déjà)*.
+   - *Le mot **« champ »** seul reste autorisé comme **nom commun descriptif** (« ouvre le champ
+     sur tout le plan », « le champ monte ici ») — il est indispensable et il n'est présenté
+     nulle part comme un terme à retenir. **C'est une frontière de SYNTAGME, pas de mot**, et
+     c'est ainsi que la porte la cherche.*
+   **Et aucune consigne ne demande de « lire un champ de pentes ». §13.2.**
 8. **Aucune algèbre linéaire, aucun système.** Interdits : `matrice`, `\begin{pmatrix}`,
    `système différentiel`, `dérivée partielle`, `\partial`, `vecteur propre`.
 9. **Aucun cas $a=0$.** `lesson.md:142` l'écarte (« *hors du cadre de ce chapitre* ») et
@@ -1419,10 +2228,19 @@ Chaînes **interdites dans le panneau ouvert**, mesurées par la porte (§11.3, 
 
 ### 9.3 La frontière avec la PHYSIQUE — la question posée, et la réponse
 
-**La même équation vit dans trois notions PC, et la leçon de maths le dit elle-même**
-(`lesson.md:526-528`) : « *R5 […] suppose que les équations différentielles physiques
-($RC\,u_C'+u_C=E$, $L\,i'+Ri=E$, $L\,q''+q/C=0$) sont déjà établies côté physique […] cette
-leçon ne les re-dérive pas, elle les RECONNAÎT.* »
+**La même équation vit dans trois notions PC**, et ⚠ **CITATION CORRIGÉE EN VAGUE 1 (fidélité
+M4) : ce n'est PAS « la leçon de maths qui le dit elle-même ».** *Le passage est à
+**`lesson.md:559-564`**, **à l'intérieur du commentaire HTML `<!-- NOTE DE VALIDATION` ouvert à
+`:538` et fermé à `:572`** — donc dans une **note d'auteur invisible à l'élève**. Mes
+`:526-528` étaient faux ; les `:523` / `:502` du critique aussi (§« Ce que la vague 1 a
+changé »). **Attribué correctement : c'est la note de validation de `lesson.md` qui le dit, et
+c'est une note de relecture humaine, pas la leçon.*** Verbatim : « *R5 (applications
+RC/RL/oscillateur) suppose que les équations différentielles physiques (RC u_C'+u_C=E,
+L i'+Ri=E, L q''+q/C=0) sont déjà établies côté physique […] cette leçon ne les re-dérive pas
+depuis la loi des mailles, elle les RECONNAÎT.* »
+*Précédent de la notion pour ce genre d'erreur : `REVIEW` F1 relève déjà un renvoi vers un texte
+qu'aucun élève ne peut voir. **La conclusion ne change pas — la frontière est la même — mais une
+spec ne doit pas faire dire à une leçon ce qui est écrit dans sa marge.***
 
 **Mesuré, côté PC :**
 
@@ -1481,30 +2299,55 @@ affiche des **valeurs exactes** — l'affichage qui ressemble le plus à une pre
    d'entraînement** — et ce qu'il enseigne (le palier, la famille, le signe de $a$) est, lui,
    au cadre des deux. *C'est la réserve la plus lourde de ce document après le §1, et §13.2 la
    met au propriétaire.*
-3. **Les nombres sont exacts ; le DESSIN est arrondi au pixel.** Une pente $\tfrac72$ est
+3. ⚠ **CLAUSE NOUVELLE, ET C'EST LA PLUS IMPORTANTE DU §10 (réparation du BLOQ-2) : AUCUN
+   DESSIN FINI NE PEUT MONTRER « JAMAIS ».** La courbe est asymptote au palier : **pour toute
+   fenêtre, à toute échelle, il existe un $x$ au-delà duquel les deux traits se confondent au
+   pixel.** *La fenêtre retenue (§5.1.1) garantit seulement que **le dessin ne dit pas le
+   CONTRAIRE** — au bord droit l'écart vaut encore 6,3 px au bureau et 4,0 px au téléphone. Elle
+   ne rend pas « jamais » visible, parce que rien ne peut le rendre visible.*
+   **Ce qui porte le mot est ARITHMÉTIQUE, et c'est au niveau de l'élève :** si l'écart tombait
+   à zéro, la pente tomberait à zéro (`pente` $= a \times$ `ecart-au-palier`, exhibé sur quatre
+   crans à S4), donc la courbe serait **la solution constante** — celle qui ne bouge jamais. Une
+   courbe qui n'est pas cette droite-là **ne peut donc pas avoir un écart nul.**
+   ⚠ **Cette clause ne vit PAS seulement ici : elle est REMONTÉE dans le retour de `approche` à
+   S4, adressée à l'élève** (« *ce n'est pas le dessin qui te le dit […] « jamais » ne se voit
+   pas ; il se calcule* »). *Même discipline que la clause 1 : une réserve qui n'existe que dans
+   un champ `fit_caveat` n'est lue par personne.*
+   *Et c'est aussi la raison pour laquelle la porte `courbe-jamais-sur-le-palier` mesure un
+   SEUIL DÉRIVÉ (3 px, plancher mesuré 4,04) et non « les deux traits ne se touchent jamais » —
+   une porte qui exigerait cela serait une porte qui ne peut pas passer au vert, ce qui était
+   exactement le défaut du BLOQ-2 (§11.2).*
+4. **Les nombres sont exacts ; le DESSIN est arrondi au pixel.** Une pente $\tfrac72$ est
    affichée exactement et **tracée** à $\pm\,0{,}5$ px. Les lectures affirment des valeurs
    exactes ; le dessin n'affirme qu'une direction.
-4. **Les segments du champ ont une longueur FIXE**, indépendante de la pente (§6.2). Un
+5. **Les segments du champ ont une longueur FIXE**, indépendante de la pente (§6.2). Un
    segment de pente $-5$ et un segment de pente $-\tfrac12$ ont la même longueur à l'écran.
    **C'est une exagération, elle est constante, et elle est déclarée.** *Sans elle, le champ
    raconterait une « intensité » que l'équation ne dit pas.*
-5. **Le champ est ÉCHANTILLONNÉ** : un segment par point entier (par deux unités au
-   téléphone). **L'équation, elle, impose une pente en chaque point du plan, y compris entre
-   les segments.** *Le `fit_caveat` doit le dire à l'élève en une phrase, sans quoi la scène
-   enseigne, en creux, qu'une équation différentielle parle sur une grille.*
-6. **Le point $P$ ne se déplace pas librement.** Cinq positions, choisies pour que toute
+6. **Le champ est ÉCHANTILLONNÉ** : **un segment par point entier, aux deux largeurs** (§6.2,
+   règle refaite en vague 1). **L'équation, elle, impose une pente en chaque point du plan, y
+   compris entre les segments.** *Le `fit_caveat` doit le dire à l'élève en une phrase, sans quoi
+   la scène enseigne, en creux, qu'une équation différentielle parle sur une grille.*
+7. **Le point $P$ ne se déplace pas librement.** Cinq positions, choisies pour que toute
    lecture soit exacte (§2.6). Un élève qui voudrait « voir ce qui se passe entre deux
    positions » ne le peut pas — c'est le prix de l'exactitude, payé sciemment.
-7. **La scène ne montre qu'une équation à la fois, et toujours à coefficients constants.**
+8. **La scène ne montre qu'une équation à la fois, et toujours à coefficients constants.**
    Aucun second membre variable, aucun système, aucun second ordre (§9.4, §9.8, §9.3).
-8. **La scène ne dit rien de la VITESSE d'approche.** Elle montre QUE la courbe s'approche du
+9. **La scène ne dit rien de la VITESSE d'approche.** Elle montre QUE la courbe s'approche du
    palier, jamais en combien de temps : l'échelle $-1/a$ est hors scène et hors cadre maths
    (§2.6). *Un élève qui sortirait d'ici en croyant que toutes les décroissances se valent
    n'aurait pas été détrompé par la scène ; c'est R5 et la physique qui le font.*
-9. **Les courbes à $a>0$ quittent le cadre, et c'est la vérité, pas un défaut de dessin.**
-   Elles sont **clippées**, jamais aplaties sur le bord (§5.3 C). *Une courbe plafonnée
-   dessinerait un palier qui n'existe pas — le seul mensonge que cette scène ne peut pas se
-   permettre, et la porte le garde dans les deux sens.*
+10. **Les courbes à $a>0$ quittent le cadre, et c'est la vérité, pas un défaut de dessin.**
+    Elles sont **clippées**, jamais aplaties sur le bord (§5.3 C). *Une courbe plafonnée
+    dessinerait un palier qui n'existe pas — le seul mensonge que cette scène ne peut pas se
+    permettre, et la porte le garde dans les deux sens.*
+11. ⚠ **CLAUSE NOUVELLE — l'origine du repère n'est PAS au centre du cadre**
+    ($x \in [-8;4]$, §5.1.1). *La partie gauche du cadre ne porte jamais de courbe : les trois
+    solutions de S5 quittent le cadre avant $x \approx -3{,}2$ (table C).* **Ce n'est pas un
+    défaut de cadrage, c'est le prix payé pour que « n'atteint jamais » ne soit pas démenti par le
+    dessin** — et ce que cette partie du cadre montre, le champ, y est exactement aussi vrai
+    qu'ailleurs, ce qui est précisément le fait de S2. *Un futur contributeur qui « recentrerait »
+    le repère casserait les deux portes de séparation ; l'essai rouge n° 12 bis existe pour ça.*
 
 ---
 
@@ -1528,14 +2371,14 @@ importe le module du produit se donne raison*), depuis les seules constantes de 
 |---|---|---|---|
 | N1 | la **pente** $a\,y_0+b$ aux **60 états**, **recalculée pour chacun** — la table B du §5.3 n'est qu'un **contrôle ponctuel, jamais la source** | table **B** en contrôle | **égalité de chaîne** avec la lecture `pente`, **plus** égalité numérique à $10^{-9}$ |
 | N2 | le **palier** $-\dfrac{b}{a}$ aux **12 équations**, recalculé **deux fois** : par $-b/a$ **et** en résolvant $0=ak+b$ | table **A** du §5.3 | égalité de chaîne avec `palier` ; *les deux routes doivent donner le même caractère* |
-| **N3** | **LA LIGNE DE L'INVARIANCE** : `pentes-comparees` affiche **deux valeurs IDENTIQUES au caractère près quand les deux points ont la même ordonnée**, et **DIFFÉRENTES sinon** | table **B** | **égalité de chaîne dans les DEUX sens** ; *une scène où les deux lignes seraient toujours égales, ou jamais, doit rougir* |
+| **N3** | **LA LIGNE DE L'INVARIANCE** : `pentes-comparees` affiche **deux valeurs IDENTIQUES au caractère près quand $P$ est à la même ordonnée que le point de référence $R=(0;3)$**, et **DIFFÉRENTES sinon** | table **B** | **égalité de chaîne dans les DEUX sens** ; *une scène où les deux lignes seraient toujours égales, ou jamais, doit rougir*. ⚠ **EXERÇABLE SEULEMENT DEPUIS LA VAGUE 1** (pédagogie I5) : avec `point` verrouillé à S2, les deux valeurs étaient **toujours égales** et ce second sens **ne mesurait rien** — une porte exacte sur une question plus étroite que son en-tête (ADR 0033). *`point` rouvert après la révélation, les cinq crans donnent $-3/-3$, $-3/-5$, $-3/+3$, $-3/-2$* |
 | N4 | l'**écart au palier** $y_0 - \left(-\dfrac{b}{a}\right)$ aux 60 états, **ET la relation** `pente` $= a \times$ `ecart-au-palier` | tables **A** et **B** | égalité de chaîne, **et** égalité numérique de la relation à $10^{-9}$ |
 | **N5** | **aucune lecture `pente` hors de $\tfrac12\mathbb{Z}$, aucune lecture `palier` hors de $\mathbb{Z}$**, aux 60 états | §5.3 B et A | exact ; *c'est une propriété de la GRILLE, pas d'un arrondi — une valeur à trois décimales est un bug de modèle* |
 | N6 | **aucun arrondi, aucun « ≈ », aucun zéro de queue** dans les quatre lectures, aux 60 états | §5.4 | `-0{,}50`, `≈ 4`, `3{,}500` font rougir |
 | N7 | la **courbe** : aux 3 points de S5 et aux 12 équations, la valeur de la courbe en 200 abscisses, recalculée depuis $a$, $b$ et le point de passage | table **C** en contrôle | égalité numérique à $10^{-9}$ contre la position des pixels tracés, converties par l'échelle lue sur les graduations |
 | N8 | le **point fixe** : quand $y_0 = -\dfrac{b}{a}$ (cran `sur` à $(a;b)=(-1;2)$ et $(-0{,}5;1)$), `pente` vaut **$0$** et la courbe est **horizontale au pixel près** sur toute la largeur | §5.3 B | égalité de chaîne (`0`), **et** écart vertical $\le 1$ px entre les deux bords |
 | N9 | les **crans** : `a` en a exactement 3, `b` 4, `point` 5, `champ` 4, `famille` 3 ; **aucune valeur intermédiaire, aucune borne continue** | §5.2, §5.5 | exact |
-| N10 | **la ligne du cran dégénéré** : à $a=-1$, `palier` **égale** $b$ aux quatre crans ; **aux deux autres $a$, elle ne l'égale qu'à $b=0$** | table **A** | **égalité de chaîne dans les DEUX sens** ; *c'est l'arithmétique qui porte la `suite` de S4, et une scène qui la raterait enseignerait le contraire de `lesson.md:184`* |
+| **N10** | **la ligne du cran dégénéré** : à $a=-1$, `palier` **égale** $b$ aux quatre crans ; **aux deux autres $a$, elle ne l'égale qu'à $b=0$** | table **A** | **égalité de chaîne dans les DEUX sens** ; *une scène qui la raterait enseignerait le contraire de `lesson.md:184`*. ⚠ **PROMU EN VAGUE 1 : c'est désormais l'arithmétique qui porte LE PARI DE S6** (et non plus une `suite` de S4). *Un N10 qui échoue ne rend pas une `suite` fausse : il rend **une bonne réponse fausse**. À traiter comme N2 et N8, pas comme une vérification de confort* |
 
 ### 11.2 Les faits de PIXELS, mesurés dans les deux sens
 
@@ -1545,28 +2388,48 @@ le facteur px/unité est lu sur **les graduations entières des deux axes**. Lan
 
 | famille | le sens qui doit passer | le sens qui doit rougir |
 |---|---|---|
-| **`isotropie`** | le facteur px/unité mesuré sur l'axe des $x$ et sur celui des $y$ est **identique à $\le 0{,}5\%$**, aux deux largeurs ; **et le cadre est CARRÉ** — demi-largeur $=$ demi-hauteur de la fenêtre de données | un repère où `x_length/x_span ≠ y_length/y_span` doit rougir **seul** — *c'est le défaut RÉEL du 2026-08-14 (`SCENE-CONTRACT.md:186-203`, 36,9 % d'écart)* |
+| **`isotropie`** | le facteur px/unité mesuré sur l'axe des $x$ et sur celui des $y$ est **identique à $\le 0{,}5\%$**, aux deux largeurs ; **et la fenêtre de données couvre exactement 12 unités sur CHAQUE axe, aux deux largeurs** | un repère où `x_length/x_span ≠ y_length/y_span` doit rougir **seul** — *c'est le défaut RÉEL du 2026-08-14 (`SCENE-CONTRACT.md:186-203`, 36,9 % d'écart)*. ⚠ **ET, vague 1, le sens qui manquait : un plateau NON CARRÉ à 390 px doit rougir** — *`format: "carre"` rend `aspect-[4/3]` sous `bp-expanded` (`Plateau.tsx:74`), donc la fenêtre s'y élargirait en $x$ ; c'est le défaut que §5.1.0 a trouvé, et il n'était mesuré par rien* |
 | **`segment-a-la-bonne-pente`** | **la sonde propre à cette scène** : pour chaque segment du champ, l'**angle mesuré aux pixels** (par les deux extrémités du trait) égale $\arctan(a\,y+b)$ **à $\le 1°$**, aux 12 équations, aux deux largeurs | un champ dessiné à un facteur d'échelle vertical différent doit rougir **seul** ; **un champ dont tous les segments sont parallèles aussi** *(c'est `ed-comme-primitive` posé dans le code)* ; **et un champ dont les segments varient le long d'une HORIZONTALE aussi** *(c'est `modele-sans-ecart` posé dans le code, et c'est le sabotage le plus important de la campagne)* |
 | `segment-longueur-fixe` | tous les segments d'un même rendu ont la **même longueur en pixels**, à $\le 1$ px, quelle que soit leur pente | une longueur proportionnelle à la pente doit rougir **seule** |
-| `champ-lisible` | le pas du champ est de **1 unité au-dessus de 600 px et de 2 en dessous** ; **aucun segment n'en touche un autre** (écart $\ge 6$ px entre extrémités voisines) | un pas de 1 à 390 px doit rougir **seul** |
+| `champ-lisible` | ⚠ **REFAITE EN VAGUE 1** : le pas du champ est de **1 unité AUX DEUX LARGEURS** ($13 \times 13 = 169$ segments) ; **aucun segment n'en touche un autre** — **écart $\ge 6$ px**, seuil **DÉRIVÉ** du pire cas mesuré au §6.2 (24,7 px à $1\,280$, **13,8 px à 390**) | un pas de **2** doit rougir **seul** ; **et un écart réel $< 6$ px aussi** — *les deux sens, parce que le pas est une convention et l'écart est un fait* |
 | **`ligne-du-palier`** | la ligne de tirets est tracée **exactement à l'ordonnée $-\dfrac{b}{a}$**, à $\le 2$ px, aux 12 équations ; **et les segments du champ qui la touchent sont HORIZONTAUX** (angle $\le 1°$) | une ligne tracée à $b$ doit rougir **seule** *(c'est `palier-recopie-b` posé dans le code)* ; une ligne à $+\dfrac{b}{a}$ aussi ; **une ligne juste au-dessus d'un champ non plat aussi** — les deux faits sont mesurés SÉPARÉMENT |
 | **`courbe-clippee-pas-plafonnee`** | une courbe qui sort du cadre **est coupée au bord et ne reparaît pas** ; **elle ne longe jamais le bord** (aucun segment horizontal de plus de 3 px au ras du cadre) | une courbe **plafonnée** au bord doit rougir **seule** — *elle dessinerait un palier qui n'existe pas* ; **et à $a=\tfrac12$, une courbe qui NE SORT PAS doit rougir aussi** (les deux sens) |
-| `courbes-jamais-confondues` | à S5 révélée, les trois courbes sont **séparées de $\ge 3$ px** en tout $x$ du cadre, **et aucune n'en croise une autre** ; **et aucune ne franchit la ligne du palier** | deux courbes qui se croisent doivent rougir ; une courbe qui passe de l'autre côté du palier aussi — *les deux sens, comme le géostationnaire* |
-| `avant-pari` | à chaque étape, avant l'engagement : **zéro** pixel d'accent (mesuré en **CHROMINANCE**) ; **aucune courbe** ; **aucun segment au-delà de ce que l'`etat` déclare** ; aucune lecture-réponse dans le DOM. **À S3 : aucune ligne de palier — ni trait, ni étiquette, ni nombre, ni mention dans la description lue** (absence TOTALE, règle du tremplin). **À S3 : ZÉRO segment de champ** | après l'engagement : le champ s'étend, la ligne se pose, les courbes apparaissent, l'accent avec. **À S2 et S4, le champ (ou la ligne) EST présent avant le pari, à l'ENCRE — un champ ABSENT y doit rougir aussi** : les deux exceptions du §7.6 sont mesurées dans les deux sens |
+| **`courbes-jamais-confondues`** | ⚠ **SEUIL REFAIT ET DÉRIVÉ EN VAGUE 1 (BLOQ-2).** À S5 révélée, sur l'intervalle où **les trois courbes sont dans le cadre** ($x \in [-0{,}713 ; 4]$, table C), elles sont **séparées de $\ge 6$ px** — plancher **mesuré** : $3e^{-2} = 0{,}406$ u, soit **18,9 px à $1\,280$ et 12,1 px à 390** (table C′), donc **marge $\times 2$**. **Et aucune n'en croise une autre** : l'ORDRE vertical des trois est constant sur $\ge 200$ abscisses. **Et aucune ne franchit la ligne du palier** | deux courbes qui se croisent doivent rougir ; une courbe qui passe de l'autre côté du palier aussi — *les deux sens, comme le géostationnaire*. ⚠ **Et le seuil ne doit PAS être remis à « en tout $x$ du cadre » : hors de l'intervalle des trois, une courbe est CLIPPÉE, et comparer un trait absent à un trait présent est une mesure sans objet** |
+| **`courbe-jamais-sur-le-palier`** *(famille NOUVELLE, vague 1)* | à S4 révélée, la courbe et la ligne du palier sont **séparées de $\ge 3$ px en tout $x$ du cadre** — plancher **mesuré** : $e^{-2}=0{,}1353$ u, soit **6,32 px à $1\,280$ et 4,04 px à 390** (§5.1.1) | une courbe qui **touche** la ligne (écart $< 3$ px) doit rougir **seule** ; **et une courbe qui s'en écarterait de plus de l'écart initial aussi** (elle ne s'approche plus) — *les deux sens* |
+
+| `avant-pari` | à chaque étape, avant l'engagement : **zéro** pixel d'accent (mesuré en **CHROMINANCE**) ; **aucune courbe** ; **aucun segment au-delà de ce que l'`etat` déclare** ; aucune lecture-réponse dans le DOM. **À S3 : aucune ligne de palier — ni trait, ni étiquette, ni nombre, ni mention dans la description lue** (absence TOTALE, règle du tremplin) **et ZÉRO segment de champ**. ⚠ **À S2 et S3 : le contrôle `point` est ABSENT du DOM avant la révélation, PRÉSENT après** (vague 1). ⚠ **À S6 : `a` vaut $-0{,}5$ avant l'engagement et $-1$ après** | après l'engagement : le champ s'étend, la ligne se pose, les courbes apparaissent, l'accent avec. **À S2 et S4, le champ (ou la ligne) EST présent avant le pari, à l'ENCRE — un champ ABSENT y doit rougir aussi** : les **trois** exceptions du §7.7 sont mesurées dans les deux sens. ⚠ **Et le SENS NEUF de l'accent (pédagogie I9) : après la révélation de S3, l'accent couvre la ligne du palier ET la rangée de 13 segments plats, et RIEN D'AUTRE — un champ révélé entièrement en accent (170 marques) doit rougir** |
 | `palette` | tout pixel teinté du canvas a la **teinte** d'un jeton `--figure-*` lu à l'exécution ; relecture au changement de thème | une couleur posée en dur doit rougir **seule** |
 | `quadrillage-opaque` | les **nœuds** du quadrillage ont la même valeur que ses **lignes**, à $\le 2$ niveaux | un quadrillage peint en transparence trait par trait doit rougir *(règle du banc de modulation)* |
-| `formule-graduee` | **la table C du §7.6, étape par étape** : le panneau ne contient aucune des chaînes interdites de l'étape courante (consigne, retours, lectures et région vivante confondues) | écrire « palier » dans un retour de S1, ou « famille » dans un retour de S4, doit rougir **seule** |
-| `fuite-inter-etapes` | la porte **réécrit elle-même** la table A du §7.6 contre le descripteur : `point` ouvert à **S1 et S5 seulement** ; `champ` à **S2 et S5** ; `b` à **S3, S4, S5** ; `a` à **S4 et S5** ; `famille` **qu'à S5** ; et `palier` **absent du DOM avant S3**, `ecart-au-palier` **avant S4** | ouvrir `point` à S4, ou faire exister `famille` à S4, doit rougir |
+| `formule-graduee` | **la table C du §7.7, étape par étape** *(SIX lignes désormais)* : le panneau ne contient aucune des chaînes interdites de l'étape courante (consigne, retours, `suite`, lectures et région vivante confondues) | écrire « palier » dans un retour de S1, « famille » dans un retour de S4, **ou « $a=-1$ » dans un texte de S3, S4 ou S5**, doit rougir **seule** |
+| `fuite-inter-etapes` | ⚠ **TABLE REFAITE EN VAGUE 1.** La porte **réécrit elle-même** la table A du §7.7 contre le descripteur : `point` ouvert à **S1, S2 *(après révélation)*, S3 *(après révélation)*, S5, S6** ; `champ` à **S2, S5, S6** ; `b` à **S3, S4, S5, S6** ; `a` à **S4, S5, S6** ; `famille` à **S5 et S6** ; et `palier` **absent du DOM avant S3**, `ecart-au-palier` **avant S4** | **ouvrir `point` à S4 doit rougir** *(c'est la fermeture qui protège S5, §5.5)* ; faire exister `famille` à S4 aussi ; **ouvrir `point` AVANT la révélation à S2 ou S3 aussi** — *les deux sens : une ouverture trop tôt fuit, une ouverture jamais faite casse la `suite`* |
 | `pas-de-3d` | `window.__THREE__` **indéfini panneau OUVERT** ; aucun contexte `webgl` créé ; le canvas est en `2d` | un `import("three")` dans le module de la scène doit rougir |
+
+> ⚠ **POURQUOI `courbes-jamais-confondues` ET `courbe-jamais-sur-le-palier` SONT LA RÉPARATION
+> DU BLOQ-2, ET CE QU'ELLES NE PRÉTENDENT PAS.**
+> *La première rédaction exigeait « $\ge 3$ px **en tout $x$ du cadre** » sur une fenêtre où la
+> séparation tombait à **0,2 px** : **la porte ne pouvait pas passer au vert sur un produit
+> juste.** C'est le cas le plus pur de « porte qui ne peut pas être verte » — pire qu'une porte
+> aveugle, parce qu'elle aurait enseigné à ignorer le rouge de toutes les autres (ADR 0036).*
+> **Les deux seuils sont maintenant DÉRIVÉS de l'arithmétique du §5.1.1 et de la table C′, jamais
+> choisis** — et si la fenêtre change, **ils changent avec elle** : la porte recalcule
+> $\Delta_0\,e^{a\,x_{\max}} \times \text{px/u}$ depuis les constantes de la spec, puis **compare
+> son propre seuil au plancher qu'elle vient de calculer**. *Une porte dont le seuil est au-dessus
+> de son propre plancher sort **MUET, en échec** (ADR 0034), jamais verte — et l'essai rouge
+> n° 12 ter l'outille.*
+> **Ce qu'elles ne prétendent pas :** elles ne mesurent **pas** « jamais ». « Jamais » n'est pas
+> un fait de pixels (§10.3) — elles mesurent que **le dessin ne dit pas le contraire**.
 
 ### 11.3 Les autres familles
 
 `rien-avant-le-clic` · `etapes` (chaque étape pose son état, n'ouvre que **ses** contrôles, les
-autres **absents du DOM** ; **S2, S3, S4 et S5 portent un `etat_revele` et S1 non**, et c'est
-déclaré, §6.1) · `paris` (4 choix, exactement un juste, un `retour` par choix, rien dans la
-région live avant l'engagement) · **`stem-non-contamine`** (*famille propre à cette scène* :
-aucune étape dont un choix porte `palier-recopie-b` ne pose `a: "-1"` ; et plus généralement,
-pour chaque étape, **les quatre valeurs de choix sont distinctes deux à deux** — §7, §14.0) ·
+autres **absents du DOM** ; **S2, S3, S4, S5 et S6 portent un `etat_revele` et S1 non**, et
+c'est déclaré, §6.1 ; **six étapes**) · `paris` (4 choix, exactement un juste, un `retour` par
+choix, rien dans la région live avant l'engagement) · **`stem-non-contamine`** (*famille propre
+à cette scène* : aucune étape dont un choix porte `palier-recopie-b` ne pose `a: "-1"` — ⚠ **et
+S6 est le test réel de cette famille, puisqu'il porte `palier-recopie-b` ET que sa RÉPONSE est
+$a=-1$ : la porte vérifie que son `etat` pose `-0.5` et que son `etat_revele` seul pose `-1`** ;
+et plus généralement, pour chaque étape, **les quatre valeurs de choix sont distinctes deux à
+deux** — §7, §14.0) ·
 **`frontiere`** (aucune des chaînes du §9 dans le panneau ouvert, **une sonde par forme**) ·
 `eclairs` (**attendu structurellement vide**, mesuré quand même, §6.1) · `sans-mouvement` ·
 `katex` (aucun LaTeX brut visible ; $y'$, $-\dfrac{b}{a}$, $\tfrac72$ rendus) · `etiquettes`
@@ -1610,6 +2473,18 @@ Un rouge ne prouve rien sans le vert qui l'a précédé, **dans ce dossier, avec
 12. **faire franchir le palier à une courbe** (en calculant la courbe depuis $a$ et le point
     sans le palier, c'est-à-dire $y=y_0e^{ax}$) → **`courbes-jamais-confondues` seule**, et
     **N7** *(c'est `palier-oubli` posé dans le code)* ;
+12 bis. ⚠ **AJOUTÉ EN VAGUE 1 — rendre la fenêtre trop large** (remettre $x \in [-2;10]$, la
+    fenêtre de la première rédaction) → **`courbe-jamais-sur-le-palier` seule** *(l'écart au bord
+    droit tombe à 0,31 px au bureau et 0,20 px au téléphone, §5.1.1)* **et
+    `courbes-jamais-confondues`** *(la séparation la plus serrée tombe à 0,9 px)*. **C'est
+    l'essai rouge du BLOQ-2, et il doit rougir AUX DEUX LARGEURS.** *Sans lui, rien ne garantit
+    que la fenêtre retenue n'est pas remise « au propre » par un futur contributeur qui la
+    trouvera décentrée ;*
+12 ter. ⚠ **AJOUTÉ EN VAGUE 1 — poser un seuil de porte au-dessus de son propre plancher**
+    (exiger $\ge 20$ px à `courbes-jamais-confondues`, alors que le plancher mesuré est 12,1 px
+    à 390) → **la porte doit sortir MUET, EN ÉCHEC**, jamais verte et jamais rouge. *C'est le
+    quatrième verdict (ADR 0034/0038) appliqué à la porte elle-même : **une porte qui ne peut pas
+    être verte doit le DIRE**, et c'est le défaut exact que le BLOQ-2 a trouvé ;*
 13. **faire bouger le point fixe** : à $(a;b)=(-1;2)$ et $P=(0;2)$, incliner la courbe d'un
     pixel → **N8 seule** ;
 14. **rendre le repère anisotrope** (allonger `y_length` de 20 %) → **`isotropie` seule**,
@@ -1617,7 +2492,15 @@ Un rouge ne prouve rien sans le vert qui l'a précédé, **dans ce dossier, avec
     fausse pente. **Le sabotage doit faire rougir les deux et rien d'autre*** ;
 15. **donner aux segments une longueur proportionnelle à la pente** →
     `segment-longueur-fixe` **seule** ;
-16. **passer le pas du champ à 1 unité à 390 px** → `champ-lisible` **seule** ;
+16. ⚠ **REMPLACÉ EN VAGUE 1 (fidélité I5).** *L'ancien sabotage — « passer le pas du champ à 1
+    unité à 390 px » — **n'était pas un défaut** : à 390 px l'écart au pas de 1 vaut 13,8 px,
+    très au-dessus du critère de 6 px de la porte. **Une porte armée pour rougir sur une
+    configuration qui passe son propre test de lisibilité est une porte fausse**, et c'est
+    exactement ce que ce n° 16 aurait outillé.*
+    **Le sabotage qui le remplace : passer le pas du champ à 2 unités** (49 segments au lieu de
+    169) → `champ-lisible` **seule**. *Et son jumeau dans l'autre sens : **allonger les segments à
+    28 px à 390 px** (écart $29{,}83-28 = 1{,}8$ px) → `champ-lisible` **seule**, sur son second
+    volet.* **Deux sens, parce que le pas est une convention et l'écart est un fait ;**
 17. arrondir une lecture à deux décimales ($3{,}50$ pour $\tfrac72$) → **N6 seule** ;
 18. faire afficher à `pente` une valeur à trois décimales → **N5 seule** ;
 19. afficher la courbe, ou la ligne du palier, ou une lecture-réponse, **avant** le pari →
@@ -1628,11 +2511,32 @@ Un rouge ne prouve rien sans le vert qui l'a précédé, **dans ce dossier, avec
 21. **faire exister un segment de champ à S3 avant la révélation**, même en encre douce →
     `avant-pari` **seule** ;
 22. ouvrir `point` à S4, ou faire exister `famille` à S4 → `fuite-inter-etapes` **seule** ;
+22 bis. ⚠ **AJOUTÉ EN VAGUE 1 — ouvrir `point` AVANT la révélation à S2 ou à S3** →
+    `fuite-inter-etapes` **seule** *(les deux ouvertures neuves sont conditionnées à la
+    révélation ; une ouverture inconditionnelle laisserait promener $P$ avant le pari, ce qui à
+    S2 donne la réponse et à S3 ne la donne pas mais casse le contrat)* ; **et son jumeau dans
+    l'autre sens : ne PAS ouvrir `point` après la révélation** → `fuite-inter-etapes` **seule**
+    *(sinon la réparation de I3 et I5 n'est qu'une intention — trois retours de S3 et la lecture
+    `pentes-comparees` redeviennent morts, et c'est invisible)* ;
 23. écrire « palier » dans un retour de S1, « famille » dans un retour de S4, ou « courbe »
     dans un retour de S3 → `formule-graduee` **seule**, **une mesure par étape** ;
+23 bis. ⚠ **AJOUTÉ EN VAGUE 1 — écrire « $a = -1$ », « $b(a+1)$ », « le palier vaut $b$ » ou
+    « recopier » dans un texte de S3, S4 ou S5** → `formule-graduee` **seule**, **une mesure par
+    étape**. *C'est la réponse de S6, et c'est la fuite exacte que la première rédaction
+    commettait dans la `suite` de S4 (BLOQ-1) — **elle doit être attrapée par une porte, pas par
+    une relecture**, parce qu'elle a survécu à une écriture et à deux critiques ;*
+23 ter. ⚠ **AJOUTÉ EN VAGUE 1 — remettre l'une des trois phrases thermiques supprimées**
+    (« la tasse », « le café », « une pièce à $20\ °$C ») dans un retour de S2, S4 ou S5 →
+    **`frontiere` seule**, sur les formes `tasse`, `café`, `°C`, `température` du §9.3.
+    *Ces trois phrases étaient **dans le document** et le §9 affirmait le contraire : **la porte
+    aurait rougi au premier lancement.** L'essai rouge existe pour que ce ne soit plus jamais une
+    relecture qui le trouve ;*
 24. **poser `a: "-1"` comme état d'une étape dont un choix porte `palier-recopie-b`** →
-    **`stem-non-contamine` seule** *(c'est le défaut de stem du §7.6 E, et il doit être
-    attrapé par une porte et non par une relecture)* ;
+    **`stem-non-contamine` seule** *(c'est le défaut de stem du §7.7 E, et il doit être
+    attrapé par une porte et non par une relecture)*. ⚠ **Et la variante que S6 rend
+    nécessaire : poser `a: "-1"` comme `etat` de S6 (au lieu de son `etat_revele`)** →
+    **`stem-non-contamine` seule** *(le porteur de `palier-recopie-b` y atteindrait la bonne
+    réponse — c'est la réconciliation du §7.7 E, et elle doit être gardée par une porte)* ;
 25. **donner à deux choix d'une même étape la même valeur** → **la même famille, second
     volet** ;
 26. ajouter un cran $a = 0$ → **N9 seule**, *et `frontiere` sur la forme `y' = b`* ;
@@ -1654,6 +2558,15 @@ Un rouge ne prouve rien sans le vert qui l'a précédé, **dans ce dossier, avec
 verdict, **AMBIGU** (ADR 0038). Et chaque défaut ne doit faire rougir que **la** porte qui le
 garde.
 
+> ⚠ **LE COMPTE DE LA CAMPAGNE A CHANGÉ EN VAGUE 1, ET IL FAUT LE DIRE JUSTE.** La première
+> rédaction annonçait « **les 28 sabotages** » au §14.5. **La campagne révisée porte 33 entrées
+> numérotées** (28 d'origine, moins le n° 16 qui **n'était pas un défaut** et a été remplacé,
+> plus **12 bis**, **12 ter**, **16 bis** *(le jumeau de la longueur de segment)*, **22 bis**,
+> **23 bis**, **23 ter**, et la variante S6 du n° 24). *Plusieurs entrées portent DEUX sens, donc
+> le nombre de MESURES est plus grand que le nombre d'entrées ; **c'est à frontend-builder de
+> fixer le compte exact dans l'en-tête de la porte, et au §14.5 de le citer depuis là plutôt que
+> depuis ici** — un total opt-in est un plancher, pas une somme (ADR 0036).*
+
 ---
 
 ## 12. Entrée de registre, descripteur, ordre de construction
@@ -1665,6 +2578,8 @@ héritée, §13.13) :
 "champ-des-pentes": {
   "temps": false,
   "dimension": "2d",
+  "format": "carre-partout",
+  "fenetre": { "x": [-8, 4], "y": [-6, 6] },
   "controles": ["point", "champ", "b", "a", "famille"],
   "etat": ["a", "b", "point", "champ", "famille"],
   "valeurs": {
@@ -1678,6 +2593,18 @@ héritée, §13.13) :
 }
 ```
 
+> ⚠ **DEUX CLÉS AJOUTÉES EN VAGUE 1, et je ne sais pas si le registre les accepte.**
+> **`format: "carre-partout"`** est la réparation du §5.1.0 (avec `carre`, le plateau est 4:3 au
+> téléphone et la fenêtre carrée ne peut pas y tenir à px/unité égal). **`fenetre`** rend la
+> fenêtre de données **lisible par la porte**, qui en a besoin pour **dériver ses propres seuils**
+> (§11.2) au lieu de les recevoir en dur. *⚠ **Ni l'une ni l'autre n'existe dans les entrées de
+> registre que j'ai lues** : `format` est pour l'instant un `prop` de `Plateau.tsx`, pas une clé
+> de `scenes.json`, et `fenetre` n'a aucun précédent. **À trancher par frontend-builder avant
+> construction** (§15.3) : soit le registre les accueille, soit elles vivent dans le descripteur
+> et la porte les lit là. **Ce qui n'est pas négociable, c'est que la porte puisse LIRE la fenêtre
+> quelque part** — sinon ses seuils redeviennent des nombres choisis, et le BLOQ-2 revient par la
+> fenêtre.*
+
 > **Pas de clé `bornes`, comme au plan complexe** : tout est en crans, il n'y a aucun
 > continuum. *Deuxième scène du dépôt dans ce cas ; la première a livré, donc le validateur
 > l'accepte — **mais je ne l'ai pas relu** (§15.3).*
@@ -1685,16 +2612,29 @@ héritée, §13.13) :
 **Descripteur** (`content/maths/equations-differentielles/media/champ-des-pentes.json`), mêmes
 clés qu'au plan complexe : `slug`, `tool: "scene2d"`, `type: "manipulable"`, `scene`,
 `title_fr`, `caption_fr`, `etapes[]` (`id`, `titre`, `consigne`, `pari{question, choix[]}`,
-`suite`, `controles[]`, `lectures[]`, `etat{}`, **`etat_revele{}` à S2, S3, S4 et S5**),
+`suite`, `controles[]`, `lectures[]`, `etat{}`, **`etat_revele{}` à S2, S3, S4, S5 et S6**),
 `boundary`, `boundary_guard_details`, `fit_caveat`, `param_manipulation_guide`,
 `fallback_note`, `pedagogy_wiring{why_manipulable, predict_then_reveal, misconceptions[]}`,
 `spec_ref`, `adr_ref`.
+
+> ⚠ **`title_fr` ET `caption_fr` : LA QUESTION, JAMAIS L'OBJET** (fidélité I2, §9.7).
+> **`title_fr` : « Ce que l'équation dit en chaque point ».** *La chaîne `champ-des-pentes` ne
+> vit que dans `slug`, dans la clé de registre et dans le sélecteur de porte — **elle n'apparaît
+> dans aucun texte rendu**, et `frontiere` cherche les syntagmes « champ des pentes » / « champ
+> de pentes » dans le panneau ouvert.* **Coût : zéro. Gain : le dernier terme hors cadre
+> disparaît de l'écran de l'élève.**
+
+> ⚠ **SIX `etapes[]`, et la sixième est neuve** (§7.6, réparation du BLOQ-1). *La différence
+> structurelle avec la première rédaction : **S6 est la seule étape dont l'`etat_revele` change
+> un réglage d'équation** (`{"a": "-1"}`) — les quatre autres n'ouvrent que le dessin. À vérifier
+> auprès de `validate-content` avant construction (§15.3), au même titre que les `etat_revele`
+> eux-mêmes.*
 
 **Callouts médias de cette spec (ADR 0017 + ADR 0041), avec leurs deux champs obligatoires :**
 
 | ce qui est prescrit | `type` | `tool` | statut |
 |---|---|---|---|
-| `champ-des-pentes` — le champ de pentes réglable | **`manipulable`** | **`scene2d`** *(première partie, ADR 0041 ; l'amendement d'ADR 0017 du 2026-07-07 a fermé les nouveaux embeds tiers)* | **PROPOSÉ, non construit** |
+| `champ-des-pentes` *(slug ; **titre rendu : « Ce que l'équation dit en chaque point »**, §9.7)* — une équation du premier ordre réglable, et ce qu'elle impose en chaque point du plan | **`manipulable`** | **`scene2d`** *(première partie, ADR 0041 ; l'amendement d'ADR 0017 du 2026-07-07 a fermé les nouveaux embeds tiers)* | **PROPOSÉ, RÉVISÉ après la vague 1, non construit** |
 | `famille-solutions` — la famille de la tasse, à R3 | `structural-diagram` | `svg+katex` | **EXISTE** (`media/famille-solutions.svg`), inchangé par cette spec |
 | `refroidissement-modeles`, `oscillateur-periode`, `rc-charge-decharge` | `structural-diagram` | `svg+katex` | **EXISTENT**, inchangés |
 
@@ -1725,11 +2665,14 @@ mc.math.maths_equations_differentielles.solution-fonction-unique
 **`fallback_note` à écrire :** sans JavaScript et à l'impression, le panneau disparaît. **La
 figure `famille-solutions`, trois rungs plus bas (R3), couvre une partie de l'idée** — une
 famille, un palier partagé — **sur UNE équation figée, et APRÈS la démonstration.** *L'élève
-sans JavaScript perd donc les trois faits que cette scène installe : l'équation comme loi
-locale, l'invariance en $x$, et le palier qui se DÉPLACE quand $b$ change. **Le coût est réel
-et il est écrit** ; §13.14 dit ce qu'il faudrait commander pour le payer.*
+sans JavaScript perd donc les **quatre** faits que cette scène installe : l'équation comme loi
+locale, l'invariance en $x$, le palier qui se DÉPLACE quand $b$ change, **et le cran où « le
+palier, c'est $b$ » tombe juste** (S6, ajouté en vague 1 — et celui-là, `lesson.md:184` l'écrit
+en prose, donc c'est le seul des quatre que l'élève sans JavaScript ne perd pas entièrement).
+**Le coût est réel et il est écrit** ; §13.14 dit ce qu'il faudrait commander pour le payer.*
 
-**Ordre de construction** *(noter ce qui n'y est pas : aucune étape item-author)* :
+**Ordre de construction** ⚠ *(modifié en vague 1 : il y a désormais une étape item-author, et
+elle est COUPLÉE — pédagogie I6, §4.6)* :
 1. **frontend-builder** écrit `champ-pentes-modele.ts` (la pente, le palier par **deux
    routes**, la courbe par un point — en rationnels exacts pour les lectures, en flottants pour
    le tracé) et son test unitaire `test-champ-pentes.mjs` contre **les 60 états**, pas
@@ -1740,25 +2683,44 @@ et il est écrit** ; §13.14 dit ce qu'il faudrait commander pour le payer.*
    registre.
 3. **content-author** écrit le descripteur (§7) et la prose (§4.1, §4.3, §4.4, §4.5).
 4. **frontend-builder** écrit la porte `scene-champ-pentes.mjs` et sa campagne `--essai-rouge`
-   (§11.4) — **vert d'abord, puis rouge, dans ce dossier, avec cette commande**.
-5. **vague 1** : bac-fidelity-critic + pedagogy-critic. **vague 2** : dessin, calme, ergonomie,
+   (§11.4) — **vert d'abord, puis rouge, dans ce dossier, avec cette commande**. ⚠ **Et la porte
+   commence par recalculer ses propres planchers de séparation (§11.2) : si un seuil est
+   au-dessus de son plancher, elle sort MUET.**
+5. ⚠ **item-author** varie le stem d'UN item existant du cluster du palier, **sans en créer ni
+   en retirer**, et sans toucher aux étiquettes (§4.6). *Couplé, pas différé.*
+6. **vague 1bis** : bac-fidelity-critic + pedagogy-critic, **sur cette révision** — *les deux ont
+   des points à revérifier nommément : le refus d'ouvrir `point` à S4 (§13.16), le rattachement
+   `palier-oubli` de S6 (§13.20), et le fait que **la porte ne peut PAS mesurer « jamais »**
+   (§10.3).* **vague 2** : dessin, calme *(dont les 169 marques à 390 px, §6.2)*, ergonomie,
    captures relues.
 
 ---
 
 ## 13. Questions au propriétaire — chacune avec sa réponse par défaut, et comment la défaire
 
-1. ⚠ **FAUT-IL CONSTRUIRE CETTE SCÈNE PLUTÔT QUE DE PAYER LA DETTE MESURÉE DE LA NOTION ?**
-   (§0.3.) C'est la première question, et elle passe avant toutes les autres.
-   `REVIEW-2026-09-12.md:94-100` mesure un défaut **plus lourd** que celui que cette scène
-   comble : **le seul cas attesté par un sujet d'examen ($\Delta=0$, 0,5 des 1,0 point de la
-   notion) n'a ni exemple travaillé, ni item** — « *l'élève rencontre le seul cas que l'examen
-   lui a posé pour la première fois dans l'exercice d'examen lui-même* ».
-   **Défaut : la dette d'abord, la scène ensuite.** *Motif : une scène améliore la
-   compréhension d'un rung que l'examen, dans le seul relevé dont on dispose, ne demande pas ;
-   la dette porte sur le seul rung qu'il demande.* *Pour défaire :* construire d'abord — **coût
-   : un élève de cette notion continue de rencontrer $\Delta=0$ pour la première fois en
-   examen.** *Les deux ne s'excluent pas ; c'est un ORDRE, pas un choix.*
+1. ✅ **RÉSOLUE, ET EXÉCUTÉE — LA DETTE $\Delta=0$ EST PAYÉE.** *Question telle qu'elle était
+   posée : « faut-il construire cette scène plutôt que de payer la dette mesurée de la notion ? »
+   **Défaut : la dette d'abord, la scène ensuite.** Les deux critiques de vague 1 ont confirmé le
+   défaut et l'ont durci en **ORDRE** (« *the debt first, the scene second* » ; « *je
+   l'endurcirais d'une préférence à un ordonnancement* »).*
+   **État au 2026-09-27 : la dette est PAYÉE** — commit **`b70f9a41`** : l'exemple travaillé de
+   $y''+6y'+9y=0$, le modèle **`racine-double-sans-x`**, les items **`EQDIFF-31` à `-33`**, le
+   point d'arrêt **`cp-r4-racine-double`**. *Vérifié ici par lecture : `items.yaml` porte
+   `total_items: 33`, 23 modèles, `ramp_coverage.R4: 7`, et `checkpoints.yaml` un sixième point
+   d'arrêt. **Le trou que `REVIEW:94-100` (F4) mesurait — « l'élève rencontre le seul cas que
+   l'examen lui a posé pour la première fois dans l'exercice d'examen lui-même » — est
+   refermé.***
+   ⚠ **CONSÉQUENCE DIRECTE SUR LE STATUT DE CETTE SCÈNE : la porte d'ordonnancement ne bloque
+   plus.** *Le « CONSTRUIRE PLUS TARD » des deux critiques avait **deux** conditions : (a) la
+   dette d'abord — **satisfaite** ; (b) « *et alors seulement avec BLOQ-1, BLOQ-2 et BLOQ-3
+   corrigés* » / « *avec I1–I5 appliqués* » — **c'est ce que cette révision fait.** **Ce qui reste
+   avant de construire n'est donc plus un ORDRE, c'est une RELECTURE** : une vague 1bis sur cette
+   révision (§12, ordre de construction, étape 6), parce qu'aucune des corrections ci-dessus n'a
+   encore été lue par un critique. *Et parce que cette révision a trouvé **trois défauts que ni
+   l'écriture ni la vague 1 n'avaient vus** — le format `carre` non carré au téléphone, trois
+   phrases thermiques interdites dans les retours, et une porte qui ne pouvait pas être verte :
+   **un document qui se corrige de trois défauts neufs n'est pas un document qu'on construit sans
+   relecture.***
 2. ⚠ **UNE SCÈNE PEUT-ELLE ENSEIGNER PAR UNE REPRÉSENTATION QUI N'EST PAS AU CADRE ?**
    (§0.3, §9.7, §10.2.) Le champ de pentes n'est nommé par **aucun** des deux fichiers de
    cadre. La scène l'emploie comme **moyen** (le palier, la famille, le signe de $a$ sont, eux,
@@ -1767,9 +2729,11 @@ et il est écrit** ; §13.14 dit ce qu'il faudrait commander pour le payer.*
    de pentes (§4.6) ; (b) le panneau ne présente jamais l'expression comme un terme à retenir
    (§9.7) ; (c) le `fit_caveat` et le paragraphe d'annonce le disent (§10.2, §4.1).
    *Pour défaire :* renoncer — **coût : on renonce au seul objet capable de faire VOIR le
-   palier, et le cluster le plus lourd de la notion (13 emplacements d'items) reste servi par
-   des choix de formules.** **C'est une décision de doctrine, pas de scène, et elle vaudra pour
-   toutes les scènes de maths à venir.**
+   palier, et le cluster du palier (8 items, 13 étiquettes) reste servi par des choix de
+   formules.** **C'est une décision de doctrine, pas de scène, et elle vaudra pour toutes les
+   scènes de maths à venir.** ⚠ *Et la vague 1 a resserré le verrou (b) : **le titre de la carte
+   porte désormais la question, pas l'objet** (§9.7, §12) — c'était le dernier endroit où un
+   terme hors cadre s'affichait comme un nom.*
 3. **LE CADRE MATHS N'EST PAS AUTORITATIF, et toute cette spec en dépend.** (§0.3, §1.)
    `maths-sm.yaml:12-17`, `maths-sexp.yaml:10-16` : « PROPOSITION — NON AUTORITATIVE », les
    trois portes de RULES §5 non passées, le PDF officiel scanné sans couche texte.
@@ -1780,19 +2744,23 @@ et il est écrit** ; §13.14 dit ce qu'il faudrait commander pour le payer.*
    **avant** de construire. **Coût du défaut : si une borne dérivée est fausse, le §9 interdit
    des formes que le programme autorise, ou l'inverse.**
 4. **Faut-il écrire le `spec.md` manquant de la notion ?** (§8.4, `REVIEW:105-109`.)
-   **Défaut : ce document NE l'est PAS.** Il revendique **onze** modèles pour un rung ; **onze
-   restent non revendiqués**, et `REVIEW` relève que « *17 des 22 lignes du registre ne sont
-   pas rompues en prose et aucune spec ne consigne la délégation* ». *Pour défaire :* une passe
-   pedagogy-architect sur la notion entière — **un travail distinct, plus gros que cette
-   scène.** **Reste dû.**
-5. **L'échelle de temps $-\dfrac{1}{a}$ doit-elle entrer ?** (§2.6, §10.8 — **et c'était dans
+   **Défaut : ce document NE l'est PAS.** Il revendique **onze** modèles pour un rung ; **DOUZE
+   restent non revendiqués** *(compte refait après la dette : 23 modèles, dont le neuf
+   `racine-double-sans-x`)*, et `REVIEW` relève que « *17 des 22 lignes du registre ne sont pas
+   rompues en prose et aucune spec ne consigne la délégation* ». ⚠ *La dette $\Delta=0$ a
+   **réduit** ce trou : elle a livré la spec du seul rung qui manquait vraiment
+   (`docs/pipeline/propositions/maths-equations-differentielles-delta-nul.md`), donc **deux** des
+   sept rungs ont désormais une spec — R2 par ce document, R4 par celui-là.* *Pour défaire :* une
+   passe pedagogy-architect sur la notion entière — **un travail distinct, plus gros que cette
+   scène.** **Reste dû, et il a rétréci.**
+5. **L'échelle de temps $-\dfrac{1}{a}$ doit-elle entrer ?** (§2.6, §10.9 — **et c'était dans
    le titre de travail de la commande**.) **Défaut : NON.** *Trois motifs mesurés au §2.6 :
    aucun cadre maths ne nomme une constante de temps ; dans cette leçon $\tau$ est un objet de
    **R5**, trois rungs plus bas ; et le modèle `tau-inverse` est un modèle de R5.*
    *Pour défaire, deux chemins :* **(a)** une **sixième étape**, posée en tête de **R5** et non
    de R2, qui ferait lire $-1/a$ sur le champ **une fois les habits physiques mis** — c'est une
    autre scène, ou une extension datée ; **(b)** une **scène PC** (§13.6). **Coût du défaut,
-   écrit : la scène montre QUE la courbe s'approche, jamais à quelle vitesse** (§10.8).
+   écrit : la scène montre QUE la courbe s'approche, jamais à quelle vitesse** (§10.9).
 6. **Faut-il partager la scène avec la physique ?** (§9.3.) **Défaut : NON pour la SCÈNE, OUI
    pour le MOTEUR — et la frontière côté maths est « aucune unité physique, jamais ».**
    *Mesuré : `pc/rc-charge` a un manipulable qui se déclare POC PhET et vise un interactif
@@ -1803,7 +2771,7 @@ et il est écrit** ; §13.14 dit ce qu'il faudrait commander pour le payer.*
    `champ-pentes-modele.ts` et ajouterait une couche d'unités. **Coût du défaut : rien n'est
    perdu côté maths ; côté PC, `dipole-rl` reste sans manipulable et `rc-charge` reste sur un
    hébergeur tiers.** *Routé à une autre proposition, pas absorbé ici.*
-7. **Le point $P$ doit-il être librement déplaçable ?** (§2.6, §5.2 C, §10.6.)
+7. **Le point $P$ doit-il être librement déplaçable ?** (§2.6, §5.2 C, §10.7.)
    **Défaut : NON — cinq crans.** *Motif : la valeur de la scène tient à ce que tout nombre
    affiché est exact (§5.4) ; un $(x_0;y_0)$ libre donnerait des pentes arbitraires.*
    ⚠ **Et contrairement à la scène sœur, aucun balayage muet n'est proposé** : ce qu'un
@@ -1818,35 +2786,60 @@ et il est écrit** ; §13.14 dit ce qu'il faudrait commander pour le payer.*
    filières**. *Pour défaire :* il faudrait d'abord que le cadre maths le porte. **Coût du
    défaut : on perd le geste le plus spectaculaire que cette scène pourrait faire — et c'est
    précisément pour ça qu'il fallait l'écrire comme un interdit et non comme un oubli.**
-9. **Faut-il des items qui mesurent ce que la scène enseigne ?** (§4.6, §8.4.)
-   **Défaut : NON, aucun item dans cette livraison.** *Motifs : aucun modèle neuf (§8.2) ;
-   quinze modèles à marge nulle et deux items déjà quasi jumeaux (`REVIEW:124-126`) ; et ce que
-   la notion demande en items est ailleurs (§13.1).*
-   ⚠ **Coût déclaré et mesurable : le banc de fin ne verra aucune différence.** *Pour défaire :*
-   une passe d'items « lieu » plutôt qu'« écriture » — par exemple « *Sur le graphe ci-contre,
-   à quelle hauteur la courbe se stabilise-t-elle ?* » —, **qui exigerait des figures et non des
-   QCM de formules, et qui est un travail d'item-author avec content-author.** **Coût : trois à
-   six items ; gain : le modèle apprenant voit enfin la compétence que la scène construit.**
+9. ⚠ **DÉFAUT CHANGÉ EN VAGUE 1 (pédagogie I6) — « Faut-il des items qui mesurent ce que la
+   scène enseigne ? »** (§4.6, §8.4, §7.5.)
+   **NOUVEAU défaut : OUI — UNE VARIATION DE STEM, COUPLÉE À LA CONSTRUCTION. Aucun item créé,
+   aucun retiré, aucune étiquette touchée.**
+   *Ce qui a fait changer le défaut : la complémentarité revendiquée entre S3 et `cp-r2-palier`
+   est **plus mince** que ce document l'affirmait — **les deux exigent de calculer $-b/a$**, seul
+   le format de sortie diffère. **La compétence vraiment neuve — la ligne comme un LIEU qui se
+   DÉPLACE avec $b$ — n'est mesurée nulle part**, et un livrable à zéro item la laisse invisible
+   pour toujours. Le critique le dit : « *la passe d'items devrait être COUPLÉE à la
+   construction, pas différée* ».*
+   **Et la contradiction avec la marge nulle est résolue, pas ignorée** (fidélité B1 en donne la
+   forme exacte) : **on VARIE le stem d'un item existant** du cluster du palier (union
+   $\{2;6;10;12;13;14;17;19\}$) pour qu'il se lise sur une figure plutôt que sur une écriture,
+   **en gardant ses étiquettes** — donc `coverage_summary` sort de la livraison **au caractère
+   près**, et les quatorze planchers ne bougent pas. *Le choix de l'item et la rédaction sont
+   d'item-author.*
+   *Pour défaire :* revenir à zéro item — **coût : le banc de fin ne verra aucune différence,
+   et la scène enseigne six faits que rien ne mesure.** *Ou aller plus loin : trois à six items
+   « lieu » neufs — **coût : trois items dans une notion qui vient d'en absorber trois.***
 10. **Fractions ou décimaux ?** (§5.4.) La leçon écrit les deux ($-0{,}5$ à `lesson.md:104`,
     $-\dfrac{b}{a}$ partout). **Défaut : la FRACTION pour les demi-entiers d'une lecture
     ($-\tfrac12$, $\tfrac72$), le DÉCIMAL pour $a$ sur son badge ($-0{,}5$)** — parce que c'est
     ainsi que la leçon écrit chacun des deux. *Pour défaire :* tout en décimal, ou tout en
     fraction. **Coût : une ligne de rendu et une ligne de porte. Réversible.** *La règle qui ne
     bouge pas, quoi qu'il arrive : **exact, jamais arrondi, jamais « ≈ »**.*
-11. **Le retour de S4 annonce-t-il trop de S5 ?** (§7.6 B.) Le retour de `vers-moins-infini`
-    écrit « mets $P$ sous la ligne plate : avec $a<0$, la courbe monte » — c'est une moitié du
-    distracteur `celle-du-bas-descend` de S5. **Défaut : on garde la phrase et on déclare le
-    coût.** *Motif : sans elle, `signe-a-comportement` casse sur rien à S4 ; et le pari de S5
-    ne porte pas sur le SENS de la courbe du bas mais sur le palier partagé et l'absence
-    d'intersection.* *Pour défaire :* retirer la seconde moitié de la phrase — **coût : le
-    retour de S4 n'a plus de contre-exemple, et le modèle le plus transverse de la scène (servi
-    deux fois) perd sa cassure la plus nette.**
+11. ✅ **REFERMÉE EN VAGUE 1 — « Le retour de S4 annonce-t-il trop de S5 ? »** (§7.7 B.)
+    *La question portait sur « mets $P$ sous la ligne plate : avec $a<0$, la courbe monte », qui
+    annonçait une moitié du distracteur `celle-du-bas-descend` de S5. Le défaut était « on garde
+    et on déclare le coût ».*
+    ⚠ **La vague 1 a trouvé pire, et la réparation solde les deux d'un coup : `point` est FERMÉ à
+    S4, donc cette phrase commandait un geste IMPOSSIBLE.** *Une scène qui dit « mets $P$
+    ailleurs » à une étape où le contrôle n'est pas dans le DOM n'a pas un problème de fuite, elle
+    a un problème de véracité.*
+    **Le retour argumente maintenant depuis le CHAMP** (« regarde les segments AU-DESSOUS de la
+    ligne plate : ils montent »), **qui est à l'écran et qui est de l'énoncé** : plus de geste
+    impossible, plus d'annonce de S5, et la cassure de `signe-a-comportement` est intacte.
+    **`celle-du-bas-descend` retrouve sa force pleine à S5. Rien ne reste à déclarer. Question
+    close.**
 12. **`modele-sans-ecart` couvre-t-il un distracteur écrit en $x$ et $y$ ?** (§8.2, §8.3.)
     Sa `description` nomme « *le temps $t$* » dans les variables de la tasse
-    (`items.yaml:199-200`) ; le distracteur `amortie` de S2 dit « la pente dépend du temps
-    écoulé » dans un plan abstrait. **Défaut : OUI, le mécanisme est le même et l'habillage est
+    (`items.yaml:199-200`) ; le distracteur `amortie` de S2 dit « la pente dépend du chemin
+    parcouru » dans un plan abstrait. **Défaut : OUI, le mécanisme est le même et l'habillage est
     un habillage — AUCUN modèle neuf.**
-    *Pour défaire, si la vague 1 juge le contraire, voici la déclaration prête (à n'écrire que
+    ✅ ⚠ **LA VAGUE 1 NE L'A PAS CONTREDIT, et le défaut tient.** *La pédagogie le classe
+    « jugement, pas mesure » (M5) et note que la valeur $-0{,}75$ n'était pas recalculable depuis
+    le modèle nommé — **corrigé par un autre chemin** : la valeur est passée à $-1{,}5$ (fidélité
+    M7, invariant $\tfrac12\mathbb{Z}$) et le texte du choix dit désormais « **amortie de
+    moitié** », qui est une décroissance ad hoc **selon le chemin parcouru**, c'est-à-dire la
+    seconde clause de la `description`, mot pour mot.* **La déclaration de repli reste prête
+    ci-dessous ; elle n'est toujours pas écrite.** ⚠ *Ce que la vague 1 a trouvé DE PLUS sur ce
+    modèle est ailleurs et il est plus grave : **sa PREMIÈRE clause est affichée comme VRAIE à S1
+    et S2** (fidélité I4, §8.1). Ce n'est pas un problème de couverture, c'est une rampe à
+    déclarer — et elle l'est.*
+    *Pour défaire, si la vague 1bis juge le contraire, voici la déclaration prête (à n'écrire que
     sur décision) :*
     ```yaml
       - id: mc.math.maths_equations_differentielles.pente-selon-x
@@ -1879,7 +2872,8 @@ et il est écrit** ; §13.14 dit ce qu'il faudrait commander pour le payer.*
     équation, (2) le même champ avec $b$ changé et la ligne plate déplacée, (3) trois courbes
     visant la même ligne. **Coût : un SVG + son `.stages.json` dans une notion qui en porte
     déjà quatre ; gain : l'élève sans JavaScript garde les trois faits.**
-15. **La scène est-elle servie aux DEUX filières ?** (§1, `lesson.md:519-522`.)
+15. **La scène est-elle servie aux DEUX filières ?** (§1 ; **citation corrigée :
+    `lesson.md:556-558`, dans la note de validation ouverte à `:538`** — pas `:519-522`.)
     **Défaut : OUI, et sans marque de filière** — les deux cadres écrivent $y'=ay+b$ à
     l'identique (§1), et c'est le seul objet de la notion dans ce cas. ⚠ **Mais le désaccord de
     filière de la notion n'est pas tranché** (la note de validation dit SM, les trois fichiers
@@ -1888,77 +2882,198 @@ et il est écrit** ; §13.14 dit ce qu'il faudrait commander pour le payer.*
 
 ---
 
+**CINQ QUESTIONS NOUVELLES, NÉES DE LA VAGUE 1.** *Les quatre premières sont des endroits où
+cette révision a tranché **contre** une consigne reçue, ou sur un jugement que personne n'a
+mesuré ; la cinquième est le défaut que la révision a trouvé seule. **Chacune est écrite là où
+elle agit, avec son défaut et son coût** (ADR 0035).*
+
+16. ⚠ **FAUT-IL OUVRIR `point` APRÈS LA RÉVÉLATION DE S4 ?** (§5.5, §7.4, §7.7 A.)
+    **C'est le SEUL point où cette révision refuse une consigne reçue, et elle le déclare.**
+    *La vague 1 (BLOQ-2) et la commande qui a lancé cette révision demandent tous deux d'ouvrir
+    `point` après la révélation de S4, au motif que « *ça ne fuit rien, puisque `famille` est
+    fermé et qu'aucune seconde courbe n'est traçable* ».*
+    **Défaut : NON, `point` reste FERMÉ à S4.** *Motif, et il est structurel : rouvrir `point` ne
+    dessine pas deux courbes à la fois — il dessine **une courbe après l'autre, depuis cinq
+    départs, toutes visant la même ligne**, c'est-à-dire **la première moitié mot pour mot de la
+    bonne réponse de S5**. La fuite ne se mesure pas au nombre de traits simultanés ; elle se
+    mesure à ce que l'élève sait avant d'avoir parié.*
+    **Et ce que la consigne voulait est obtenu autrement, sans fuite :** la quantité qui varie est
+    l'**échelle de `b`** (écarts $1 \to 3 \to 5 \to 9$, pentes $-0{,}5 \to -1{,}5 \to -2{,}5 \to
+    -4{,}5$), avec un contrôle **déjà ouvert** à S4 (§7.4). *Et `point` EST rouvert là où il ne
+    fuit rien — **S2 et S3** — ce que la vague 1 demandait aussi, et qui répare I3 et I5.*
+    *Pour défaire :* ouvrir `point` à S4 — **coût : il faut réécrire le pari de S5 pour qu'il ne
+    porte plus que sur « se coupent-elles ? », remplacer le distracteur `celle-du-bas-descend`
+    (qui devient atteignable à S4), refaire la table A du §7.7, et retirer l'essai rouge n° 22.
+    Ce n'est pas un réglage, c'est une refonte de S5.** *Je ne le recommande pas — **et si le
+    propriétaire ou la vague 1bis tranche autrement, c'est cette liste-là qu'il faut exécuter, pas
+    seulement le contrôle qu'il faut ouvrir.***
+17. **LE MARQUEUR DÉPLACÉ AFFAIBLIT-IL TROP LE DISTRACTEUR `zero` DE S3 ?** (§3, pédagogie I8.)
+    *Le marqueur passe de `lesson.md:116` à après `:124`, pour que $b$ arrive motivé. Mais
+    `:124` écrit le mot « palier » et le fait qu'il est « non nul » — donc l'élève arrive en
+    sachant que la réponse de S3 n'est pas $0$, ce qui est exactement le distracteur `zero`.*
+    **Défaut : OUI, on déplace, et le coût est déclaré.** *Motif : **R0 l'écrivait déjà** (la
+    tasse ne descend jamais sous $20$), donc `zero` était **déjà** affaibli dans les deux
+    placements ; `zero` mesure un **transport de R1 sans $b$**, pas une lecture ; et rien dans
+    `:120-124` ne donne la HAUTEUR, qui est la question de S3.*
+    *Pour défaire :* remettre le marqueur à `:116` — **coût : S3 ouvre sur « un terme constant est
+    apparu », une mutation algébrique sans raison, et la scène perd son ancrage concret.**
+    **Réversible en une ligne, dans les deux sens.**
+18. **L'OPTION `arretee` DE S2 EST-ELLE ASSEZ VIVANTE ?** (§7.2, pédagogie M4.)
+    *La vague 1 la déclare **morte** : la consigne énonçait « $Q$ est à la hauteur $3$ », ce qui
+    réfute l'option dans son propre énoncé.*
+    **Défaut : on la garde, en déplaçant la réfutation du TEXTE vers le DESSIN.** La consigne dit
+    « Voici maintenant $Q$ » et **le plan porte $(2;3)$ à l'encre** ; l'option prédit que $Q$ ne
+    peut pas y être. *Jugement déclaré : ce n'est pas une option « vivante » au sens plein — elle
+    est **réfutable par une observation que l'élève doit faire**, et apprendre à la faire est
+    précisément ce que S2 enseigne.*
+    *Pour défaire :* remplacer `arretee` — **coût : `modele-taux-constant` perd sa cassure à S2 et
+    ne vit plus qu'à S4 (`droite-puis-stop`), et il faut trouver un quatrième choix recalculable
+    depuis un modèle déclaré non déjà servi à S2. Je n'en ai pas trouvé** (§8.2). **Question
+    ouverte, honnêtement.**
+19. **FAUT-IL FERMER `a` À S4 ET S5 POUR PROTÉGER LE PARI DE S6 ?** (§7.7 A, l'aveu.)
+    *S6 est la seule étape dont la non-fuite ne tient PAS par un contrôle fermé : `a` est ouvert
+    depuis S4, donc un élève curieux peut trouver la coïncidence $a=-1$ avant qu'on la lui
+    demande. La non-fuite y est tenue par le fait qu'aucun TEXTE ne l'y attire — une garantie plus
+    faible.*
+    **Défaut : NON, on ne ferme pas, et l'aveu est écrit au §7.7 A.** *Deux motifs.* **(a)**
+    *Tomber dessus par curiosité n'est pas se le faire dire : l'élève qui l'a vu seul a fait le
+    travail de S6 et gagnera son pari — c'est un succès.* **(b)** *Ce que la scène ne donne à
+    aucun moment, c'est l'**unicité** et le **motif** $b(a+1)=0$, et c'est `lesson.md:184` qui les
+    prouve.*
+    *Pour défaire :* fermer `a` à S4 et S5 — **coût : la `suite` de S4 (l'échelle du mécanisme, la
+    réparation du BLOQ-2) et celle de S5 (l'invariant) exigent toutes deux `a` ou `b` ouverts.
+    Fermer `a` coûte donc la moitié de ce que la vague 1 a demandé d'ajouter.**
+20. **LE RATTACHEMENT `palier-oubli` DU CHOIX `b-zero-seulement` DE S6 TIENT-IL ?** (§7.6, §8.2.)
+    *« Ça ne tombe juste qu'à $b=0$ » est **exactement** ce qu'on conclut si l'on tient le palier
+    pour l'axe (ce que dit la `description`, `items.yaml:70-72`). **Mais c'est aussi ce que conclut
+    un élève qui a bien compris et n'a essayé que deux crans sur trois** — une recherche
+    incomplète, pas une misconception.*
+    **Défaut : rattachement PROPOSÉ, jugement DÉCLARÉ.** *C'est le plus mince des vingt-quatre, et
+    c'est un rattachement NEUF (il n'a pas été vu par la vague 1, qui n'avait pas S6).*
+    *Pour défaire :* garder le choix **sans étiquette** — **coût : S6 n'a plus que deux
+    distracteurs étiquetés sur trois, et `pedagogy_wiring` doit le déclarer.** *Le choix, lui,
+    reste pédagogiquement juste dans les deux cas : c'est la réponse la plus fréquente d'un élève
+    qui cherche bien et s'arrête tôt.*
+
+---
+
 ## 14. Fait quand
 
 La scène est **faite** quand, et seulement quand :
 
 0. ⚠ **RÈGLE EN TÊTE (leçon B2 de la spec sœur) : la valeur de CHAQUE choix de pari est
-   recalculée depuis le modèle que son étiquette nomme.** Pour les **vingt** choix (5 étapes ×
-   4), on refait le calcul que le texte du choix annonce, et on vérifie **(a)** qu'il donne
-   bien le nombre ou le comportement affiché, **(b)** qu'il **diffère de la bonne réponse**, et
-   **(c)** que la `description` du modèle nommé **couvre** le distracteur. *Le sous-cas (b) est
-   le défaut de stem du §7.6 E, armé par la famille `stem-non-contamine`.*
-1. **Aucun modèle neuf n'est écrit et aucun item n'est ajouté** (§8.2, §4.6) : `items.yaml`,
-   `checkpoints.yaml`, `bank.yaml` et `exercises.yaml` sortent de cette livraison **au
-   caractère près** comme ils y sont entrés. *Si l'un d'eux a bougé, la livraison a dépassé sa
-   commande.*
+   recalculée depuis le modèle que son étiquette nomme.** Pour les **vingt-quatre** choix (6
+   étapes × 4), on refait le calcul que le texte du choix annonce, et on vérifie **(a)** qu'il
+   donne bien le nombre ou le comportement affiché, **(b)** qu'il **diffère de la bonne
+   réponse**, et **(c)** que la `description` du modèle nommé **couvre** le distracteur. *Le
+   sous-cas (b) est le défaut de stem du §7.7 E, armé par la famille `stem-non-contamine`, et
+   **S6 en est le test réel** : son état posé est $a=-0{,}5$ et sa réponse est $a=-1$.*
+1. **Aucun modèle neuf n'est écrit et aucun item n'est AJOUTÉ** (§8.2, §4.6) : `items.yaml`
+   sort de cette livraison **avec le même nombre d'items (33), les mêmes 23 modèles et le même
+   `coverage_summary` au caractère près** ; `checkpoints.yaml`, `bank.yaml` et `exercises.yaml`
+   **inchangés au caractère près**. ⚠ **La SEULE exception autorisée, et elle est nommée : le
+   stem d'UN item du cluster du palier peut être VARIÉ** (§4.6, §13.9) — *sans créer, sans
+   retirer, sans toucher aux étiquettes ni aux `misconception`*. **Si `coverage_summary` a bougé
+   d'un caractère, la livraison a dépassé sa commande.**
 2. Le test unitaire `test-champ-pentes.mjs` passe sur **les 60 états**, pas seulement sur les
    tables du §5.3, en **valeurs exactes** ET en flottants — **et il vérifie les DEUX routes du
    palier** ($-b/a$ et la résolution de $0=ak+b$), qui doivent donner le même caractère.
+   ⚠ **Et, ajouté en vague 1 : il refait les PLANCHERS DE SÉPARATION** — $\Delta_0 e^{a x_{\max}}
+   \times \text{px/u}$ aux deux largeurs — **et vérifie que chaque seuil de porte du §11.2 est
+   STRICTEMENT EN DESSOUS de son plancher.** *Un seuil au-dessus de son plancher est une porte
+   qui ne peut pas être verte : c'était le défaut du BLOQ-2, et il doit être attrapé par le test
+   unitaire AVANT la porte.*
 3. `validate-content` passe : scène enregistrée, contrôles connus, **tout contrôle ouvert par
-   au moins une étape**, aucun `revele_apres_h`, les quatre `etat_revele` acceptés, chaque pari
-   nommant un modèle **déjà déclaré**.
+   au moins une étape**, aucun `revele_apres_h`, **les CINQ `etat_revele` acceptés — dont celui
+   de S6, qui change un réglage d'équation (`{"a": "-1"}`) et non une densité de dessin**, chaque
+   pari nommant un modèle **déjà déclaré**. ⚠ **Et les deux clés neuves du registre
+   (`format`, `fenetre`) sont acceptées, ou relogées dans le descripteur** (§12, §15.3).
 4. La porte `scene-champ-pentes.mjs` sort **VERT** à $1\,280$ **et** à 390 px, **lancée trois
    fois** (une porte instable est pire qu'une porte absente).
-5. `--essai-rouge` : **les 28 sabotages du §11.4 font crier la famille annoncée, et elle
-   seule.** Un sabotage qui n'atteint pas la porte sort **AMBIGU**, jamais vert. **Le n° 3 —
-   la pente qui dépend de $x$ — est le sabotage de référence de cette campagne** : s'il ne
-   rougit pas, la scène ne mesure pas le fait de S2, qui est sa moitié.
-6. La prose du §4 est écrite, **et le paragraphe d'annonce porte sa clause (d)** — sans elle,
-   une scène de maths qui « vérifie » une règle sur soixante états enseigne que vérifier suffit.
-7. **Vague 1** (bac-fidelity-critic : chaque nombre recalculé, chaque citation de cadre
+5. `--essai-rouge` : **les sabotages du §11.4 font crier la famille annoncée, et elle seule** —
+   **33 entrées numérotées après la vague 1, et le compte exact des MESURES est celui que la
+   porte imprime dans son en-tête, pas celui qu'on lit ici** (§11.4). Un sabotage qui n'atteint
+   pas la porte sort **AMBIGU**, jamais vert. **Trois sabotages de référence :** le **n° 3** (la
+   pente qui dépend de $x$ — le fait de S2) ; le **n° 12 bis** (remettre la fenêtre large — le
+   BLOQ-2) ; le **n° 23 bis** (écrire « $a=-1$ » à S3, S4 ou S5 — le BLOQ-1). *S'il en manque un,
+   la scène ne mesure pas l'un des trois défauts que la vague 1 a trouvés.*
+6. La prose du §4 est écrite, **et le paragraphe d'annonce porte ses clauses (d) ET (e)** —
+   sans (d), une scène de maths qui « vérifie » une règle sur soixante états enseigne que
+   vérifier suffit ; sans (e), elle n'a pas d'accroche (§4.1).
+7. **Vague 1bis** (bac-fidelity-critic : chaque nombre recalculé, chaque citation de cadre
    vérifiée à la ligne, **et les rattachements de modèles du §8.1 relus un par un contre les
-   `description` d'`items.yaml`** ; pedagogy-critic : la rampe, les paris, les retours relus les
-   uns contre les autres) **et vague 2** (captures relues à deux largeurs, ergonomie au
-   clavier, étiquettes, **et la lisibilité du champ à 390 px**) sont passées, et ce que chacune
-   change est écrit **ici**, pas corrigé en douce.
+   `description` d'`items.yaml`, S6 compris** ; pedagogy-critic : la rampe, les six paris, les
+   retours relus les uns contre les autres) **et vague 2** (captures relues à deux largeurs,
+   ergonomie au clavier, étiquettes, **la lisibilité ET LE CALME du champ à 390 px — 169
+   marques**, §6.2) sont passées, et ce que chacune change est écrit **ici**, pas corrigé en
+   douce. ⚠ **Et les cinq questions neuves du §13 (16 à 20) ont une réponse du propriétaire ou
+   d'un critique** — *la n° 16 en particulier, où cette révision a tranché contre une consigne
+   reçue.*
 
 ---
 
 ## 15. Ce que je n'ai pas pu vérifier
 
-1. **Je n'ai exécuté ni le produit, ni aucune commande.** L'outil `Bash` était indisponible
-   dans la session qui a écrit ce document ; **tous les faits du §0.1 viennent de lectures de
-   fichiers, et les commandes citées en regard n'ont pas été lancées** (avertissement en tête).
-   Les positions de pixels, les budgets d'étiquettes et les facteurs px/unité du §5.1 ($46{,}7$
-   px/unité à $1\,280$ px, $32{,}5$ à 390 px) sont **calculés**, pas mesurés, et supposent un
-   **plafond de hauteur de plateau de 560 px que j'ai CHOISI**, pas relevé sur le rendu.
+1. **Je n'ai exécuté ni le produit, ni aucune commande — ni à l'écriture, ni à la révision.**
+   `Bash` était indisponible dans les deux sessions ; **la révision a disposé de `Read`, `Grep`
+   (ripgrep) et `Glob`, et de rien qui exécute.** *Ce que cela permet : relire le CONTENU d'un
+   fichier, compter des occurrences, vérifier un numéro de ligne — et c'est ce qui a été fait,
+   fichier par fichier, pour tous les faits cités en vague 1 (les deux critiques n'ont pas pu
+   exécuter davantage, et le déclarent).* **Ce que cela ne permet pas : lancer le produit, une
+   porte, un validateur, ou une commande shell.** Les commandes citées en regard des faits sont
+   celles qui les REPRODUISENT ; **aucune n'a été lancée.**
+   ⚠ **Et les facteurs px/unité sont toujours CALCULÉS, mais ils ont changé, et le précédent
+   était FAUX** (§5.1.0) : **$46{,}67$ px/unité à $1\,280$ px** (plafond de plateau de **560 px
+   que j'ai CHOISI**, pas relevé) et **$29{,}83$ px/unité à 390 px** (largeur disponible
+   **estimée à 358 px**, pas relevée). *Le $32{,}5$ de la première rédaction supposait à la fois
+   un mauvais format (`carre` est 4:3 au téléphone) et une mauvaise dimension limitante.*
+   **TOUS les seuils de porte du §11.2 descendent de ces deux nombres : si la mesure réelle les
+   démentait, les seuils changeraient avec eux — c'est pourquoi la porte les RECALCULE sur les
+   graduations du rendu (§11.2) au lieu de les lire ici.**
 2. **Je n'ai pas lu le code des panneaux existants en entier.** J'ai lu les **signatures**
    exportées de `web/src/components/notion/scene/` (`Plateau`, `Etiquette`, `poser`,
-   `disposer`, `boiteLegende`, `PariBloc`, `ConsigneEtape`, `TransportEtapes`, `SceneOptIn`,
-   `usePari`, `useSceneRendu`, `commun.ts` avec `MARGE_FOCUS_CARRE` et `GRILLE_SCENE`) et
-   l'en-tête de `Plateau.tsx` (qui documente `format: "carre" | "paysage" | "paysage-haut" |
-   "carre-partout"`). **Je n'ai vérifié ni qu'un champ de 169 segments s'y rende sans
-   retouche, ni le coût de rendu de ces segments à chaque changement d'état.** À vérifier par
-   frontend-builder avant de commencer.
-3. **Quatre `etat_revele` et aucune clé `bornes` : est-ce accepté ?** Je n'ai **pas relu
-   `validate-content`**. La scène sœur a livré sans `bornes`, donc le validateur l'accepte ;
-   pour les `etat_revele`, d'autres scènes en portent. *Si l'un des deux est refusé, c'est à
-   vérifier avant la construction, pas pendant.*
+   `disposer` — **vérifié à la révision : `Plateau.tsx:258`, `export function disposer(`** —,
+   `boiteLegende`, `PariBloc`, `ConsigneEtape`, `TransportEtapes`, `SceneOptIn`, `usePari`,
+   `useSceneRendu`, `commun.ts` avec `MARGE_FOCUS_CARRE` et `GRILLE_SCENE`). ⚠ **Et à la révision
+   j'ai lu le CORPS du composant, pas seulement son en-tête — c'est ce qui a trouvé le défaut de
+   `format`** (`Plateau.tsx:63` pour le type, **`:74` pour le rendu réel** : `carre` ⟹
+   `aspect-[4/3] bp-expanded:aspect-square`, §5.1.0). *Leçon : l'en-tête d'un composant énumère
+   ses options, il ne dit pas ce qu'elles FONT — la première rédaction citait `:31` et `:53-60`,
+   c'est-à-dire la valeur par défaut et le commentaire, jamais la ligne qui rend.*
+   **Je n'ai vérifié ni qu'un champ de 169 segments s'y rende sans retouche, ni le coût de rendu
+   de ces segments à chaque changement d'état, ni la largeur réelle du plateau à 390 px.** À
+   vérifier par frontend-builder avant de commencer.
+3. **CINQ `etat_revele`, aucune clé `bornes`, et DEUX clés de registre neuves : est-ce
+   accepté ?** Je n'ai **pas relu `validate-content`**. *La scène sœur a livré sans `bornes`, donc
+   le validateur l'accepte ; pour les `etat_revele`, d'autres scènes en portent.* ⚠ **Mais trois
+   points sont neufs et sans précédent connu** : **(a)** l'`etat_revele` de S6 change **un réglage
+   d'équation** (`{"a": "-1"}`) et non une densité de dessin — *tous les autres `etat_revele` du
+   dépôt que je connais ouvrent le dessin* ; **(b)** `format: "carre-partout"` **n'est pas une clé
+   de `scenes.json` que j'aie vue** (c'est un `prop` de `Plateau.tsx`) ; **(c)** `fenetre` n'a
+   **aucun précédent**. *Si l'un des trois est refusé, c'est à trancher **avant** la construction,
+   pas pendant — et pour (c) le repli est clair : la fenêtre vit dans le descripteur et la porte
+   la lit là. **Ce qui n'est pas négociable, c'est que la porte puisse LIRE la fenêtre quelque
+   part**, sinon ses seuils redeviennent des nombres choisis (§11.2).*
 4. **Je n'ai pas vérifié les 60 états un par un.** J'ai recalculé **les douze paliers** (table
    A), **seize pentes** (table B) et **les trois courbes de S5** avec leurs points de sortie
    (table C). Les 60 pentes, les 60 écarts et les 60 tracés **sont l'affaire du test unitaire
    du §14.2, pas de ce document** — et c'est exactement le raisonnement qui avait échoué à la
    spec sœur quand elle avait audité 35 états sur 70.
-5. ⚠ **Je n'ai pas re-audité les 90 distracteurs existants d'`items.yaml`.** `REVIEW:110-114`
-   (F-6) signale que plusieurs n'encodent pas le modèle dont ils portent l'étiquette et
-   qu'« *au recompte honnête une famille tomberait sous le plancher* ». **Les rattachements du
-   §8.1 s'appuient sur les `description` telles qu'écrites, pas sur les items.** *Si ce
-   recompte a lieu, ils sont à relire.*
-6. **Je n'ai pas vérifié que les scènes Manim de cette notion — s'il en existe — ne montrent
-   pas déjà un champ de pentes.** Je n'ai pas cherché dans `animations/scenes/maths/`. *Si l'une
-   d'elles le fait, cela ne retire rien au trou — elles sont dans la voie « explication après
-   coup », pas dans la leçon — mais cela mérite d'être su.*
+5. ⚠ **Je n'ai pas re-audité les distracteurs existants d'`items.yaml`** (90 avant la dette, plus
+   ceux des trois items neufs). `REVIEW:110-114` (F-6) signale que plusieurs n'encodent pas le
+   modèle dont ils portent l'étiquette et qu'« *au recompte honnête une famille tomberait sous le
+   plancher* ». **Les rattachements du §8.1 s'appuient sur les `description` telles qu'écrites,
+   pas sur les items.** *Si ce recompte a lieu, ils sont à relire — **et la marge est désormais de
+   14 modèles au plancher, pas 15**, donc le risque a très légèrement baissé.* ⚠ **Et les deux
+   critiques de vague 1 ont fait le même choix que moi** (« *j'ai jugé les onze rattachements
+   contre les textes des `description`, pas contre les items qui portent les étiquettes* ») :
+   **cette limite est partagée par les trois lectures, ce qui ne la rend pas moins vraie.**
+6. ✅ **REFERMÉ EN VAGUE 1 (fidélité M2), et la réponse est propre.** *La question était : « une
+   scène Manim de cette notion montre-t-elle déjà un champ de pentes ? »* **Mesuré à la
+   révision** (`Glob animations/scenes/maths/equations-differentielles/*`) : **un seul fichier,
+   `bk-2022-n-x4.py`** — l'exercice de banque 2022. **Il ne dessine aucun champ de pentes** ; le
+   seul objet voisin est une **tangente** (`:214` « *Tangente en (0,1) : pente h'(0) = 2* » ;
+   `:239` `axes.plot(lambda x: 2 * x + 1, …)`). **Aucun recouvrement. Le trou du §0 tient.**
 7. **Je n'ai pas mesuré l'effet de cette scène sur `media-manipulable` ni sur
    `dette-manipulable`.** J'affirme au §0 que la première monte d'une notion et que la seconde
    ne bouge pas, **sur la base de lectures de fichiers et non d'une exécution des deux
@@ -1969,11 +3084,36 @@ La scène est **faite** quand, et seulement quand :
    ne l'ai pas estimé et je ne l'estime pas** : ce serait exactement l'affirmation de fréquence
    que `REVIEW:23-29` félicite la notion de n'avoir jamais faite.
 9. **La couverture de `modele-sans-ecart` sur un distracteur abstrait est un JUGEMENT, pas une
-   mesure** (§8.2, §13.12). C'est le point le plus attaquable du §8, et il est écrit là où il
-   agit, avec sa déclaration de repli prête.
+   mesure** (§8.2, §13.12). *Il était annoncé comme « le point le plus attaquable du §8 » ; **la
+   vague 1 ne l'a pas contredit** (la pédagogie le classe « jugement, pas mesure », la fidélité
+   l'accepte), et la déclaration de repli reste prête.* ⚠ **DEUX jugements de plus, non mesurés,
+   et ils sont NEUFS** : le rattachement **`palier-oubli`** du choix `b-zero-seulement` de S6
+   (§13.20 — le plus mince des vingt-quatre) et le maintien de **`arretee`** à S2 comme option
+   réfutable-par-observation plutôt que morte (§13.18). **Aucun des deux n'a été lu par un
+   critique** : ils sont nés de cette révision.
 10. **Le cadre est une proposition non validée, et on sait déjà qu'il se trompe une fois**
     (§1, §13.3). C'est écrit trois fois dans ce document parce que c'est la chose qu'il ne faut
-    pas oublier.
+    pas oublier. ⚠ *Et la vague 1 a ajouté une nuance qu'il faut garder : le verdict de portée du
+    critique de fidélité est **exactement aussi solide que ces deux fichiers, et pas davantage**
+    — il l'écrit lui-même.*
+11. ⚠ **AJOUTÉ À LA RÉVISION — je n'ai relu NI la prose NI les items de la dette $\Delta=0$.**
+    J'ai vérifié **les comptes** (`items.yaml` : `total_items: 33`, 23 modèles,
+    `ramp_coverage.R4: 7`, 14 au plancher ; `checkpoints.yaml` : un sixième point d'arrêt ;
+    `racine-double-sans-x` et `EQDIFF-31..33` présents) **et je me suis arrêté là.** *Je n'ai lu ni
+    l'exemple travaillé de $y''+6y'+9y=0$, ni les trois stems, ni le nouveau point d'arrêt.*
+    **Ce que cela veut dire pour ce document : la porte d'ordonnancement du §13.1 est déclarée
+    LEVÉE sur la foi de comptes, pas d'une relecture pédagogique de ce qui a été livré.** *Si la
+    prose de la dette devait être reprise, l'ordre pourrait redevenir un sujet — et c'est à la
+    vague 1bis de le dire, pas à moi.*
+12. ⚠ **AJOUTÉ À LA RÉVISION — trois défauts ont été trouvés par cette relecture, que ni
+    l'écriture ni les DEUX critiques n'avaient vus.** *(a)* `format: "carre"` n'est pas carré au
+    téléphone (§5.1.0) — **et la vague 1 a raisonné SUR le chiffre faux qui en découlait**.
+    *(b)* Trois retours du §7 contenaient des chaînes que le §9.3 interdit (`tasse`, `café`,
+    `°C`, `température`), alors que le §9 affirmait « *relu : le §7 n'écrit aucune forme
+    interdite* ». *(c)* Une porte (`courbes-jamais-confondues`) dont le seuil rendait le vert
+    **impossible** sur un produit juste. **Aucun des trois n'est un défaut de jugement : les trois
+    sont des défauts de MESURE, et les trois auraient été attrapés par une exécution.**
+    *C'est l'argument le plus fort de ce document pour que la vague 1bis, elle, puisse exécuter.*
 
 
 
