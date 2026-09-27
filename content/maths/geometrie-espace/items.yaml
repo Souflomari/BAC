@@ -314,6 +314,39 @@ misconceptions:
       vient du triangle rectangle ΩHM (hypoténuse R) : r=√(R²−d²), un moins,
       jamais un plus.
 
+  # ── Dette d'examen, vague B2 — GAP-A "Computing H, the orthogonal projection
+  # of Ω (centre of the section circle / point of tangency / foot of
+  # perpendicular)", docs/audits/dette-examen/maths.md § geometrie-espace.
+  # R9 gagne une nouvelle sous-section ("Calculer H quand il n'y a pas de
+  # raccourci", lesson.md:513-541) ; la prose était déjà livrée (note (6),
+  # lesson.md:622-677) et proposait deux misconceptions neuves, une polarité
+  # chacune, non couvertes par `intersection-sphere-plan-erreur` (qui teste le
+  # critère d/R inversé et le Pythagore mal signé — un modèle différent :
+  # celui-ci saute carrément le calcul de H). Déclarées telles que proposées,
+  # sans fusion ni scission.
+  - id: mc.math.maths_geometrie_espace.centre-cercle-confondu-omega
+    label: "Prendre Ω pour le centre du cercle d'intersection, sans passer par H"
+    description: >-
+      L'élève rend Ω (le centre de la sphère) comme centre du cercle
+      d'intersection — ou comme point de tangence — sans calculer le projeté
+      orthogonal H, comme si le plan passait forcément par Ω.
+    contradicts_principle: >-
+      Le centre du cercle d'intersection (et le point de tangence si d=R) est
+      H, le projeté orthogonal de Ω sur le plan — pas Ω lui-même, sauf le cas
+      particulier où le plan passe réellement par Ω (d=0). H se calcule : la
+      droite Ω+t·n reportée dans l'équation du plan, résolue en t.
+  - id: mc.math.maths_geometrie_espace.rayon-cercle-confondu-R
+    label: "Rendre R comme rayon du cercle d'intersection, en sautant r=√(R²−d²)"
+    description: >-
+      L'élève rend R (le rayon de la sphère) comme rayon du cercle
+      d'intersection, sans passer par d=ΩH ni par la relation de Pythagore,
+      comme si le plan coupait toujours la sphère en son grand cercle.
+    contradicts_principle: >-
+      Le rayon du cercle d'intersection est r=√(R²−d²), avec d=ΩH>0 en
+      général — jamais R directement, sauf le cas particulier d=0 (plan
+      passant par Ω). Le triangle ΩHM (rectangle en H) l'impose : R est
+      l'hypoténuse, pas un côté.
+
 items:
 
   # ── R2 · produit scalaire dans l'espace ─────────────────────────────────────
@@ -3250,9 +3283,406 @@ items:
       **Conclusion.** L'intersection est réduite à un seul point, le point de
       contact — projeté orthogonal du centre sur le plan.
 
+  # ── R9 · Calculer H — dette d'examen vague B2, GAP-A ────────────────────────
+  # (docs/audits/dette-examen/maths.md § geometrie-espace ; lesson.md:513-541,
+  # nouvelle sous-section "Calculer H quand il n'y a pas de raccourci").
+  # GE-58…GE-64 : sept items neufs, aucun nombre repris de bank.yaml ni de
+  # l'exemple travaillé de la leçon (Ω(1,2,3), R=√7, x+y+z-3=0, H(0,1,2)).
+  # Les deux misconceptions neuves couvrent des dressings différents : point
+  # + normale (GE-58, GE-64), équation cartésienne seule (GE-59, GE-61, GE-62,
+  # GE-63), cas de tangence d=R (GE-60), H demandé seul avant tout calcul de d
+  # (GE-58, GE-62), H et r demandés ensemble une fois H déjà connu (GE-63,
+  # GE-64). GE-64 porte un distracteur à double étiquette (les deux
+  # misconceptions neuves ensemble, Ω ET R rendus tels quels) — dual-tag au
+  # sens du standard (une seule et même erreur combinée, pas une
+  # co-attribution inter-compétence).
+  - id: GE-58
+    rung: "R9"
+    habilete: application_directe
+    difficulty_level: 4
+    skill_code: maths_geometrie_espace
+    tags: [sphere, plan, projection_orthogonale, calcul_H]
+    primary_misconception: mc.math.maths_geometrie_espace.centre-cercle-confondu-omega
+    stem: >
+      $(S)$ est la sphère de centre $\Omega(4,3,5)$ et de rayon $R=\sqrt{13}$.
+      Le plan $\mathcal P$ passe par le point $A(1,2,4)$ et admet pour vecteur
+      normal $\vec n(2,1,2)$. Quelles sont les coordonnées du projeté
+      orthogonal $H$ de $\Omega$ sur $\mathcal P$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$H(2,2,3)$"
+        correct: true
+      - id: B
+        text: "$H(4,3,5)$, c'est-à-dire $\\Omega$ lui-même."
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.centre-cercle-confondu-omega
+        feedback: >
+          Modèle détecté : $\Omega$ rendu directement, sans calculer de
+          projeté. Rien n'indique ici que le plan passe par $\Omega$ — il faut
+          construire la droite $\Omega+t\vec n$, la reporter dans l'équation
+          du plan et résoudre en $t$.
+      - id: C
+        text: "$H(6,4,7)$"
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
+        feedback: >
+          En reportant $\Omega+t\vec n$ dans le plan on obtient $9+9t=0$,
+          donc $t=-1$. Ce résultat vient de $t=+1$ : le signe a été perdu en
+          isolant $t$.
+      - id: D
+        text: "$H(1,2,4)$, c'est-à-dire $A$."
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.normal-vs-directeur
+        feedback: >
+          C'est le vecteur $\overrightarrow{\Omega A}$ qui a servi de
+          direction à la droite, pas la normale $\vec n(2,1,2)$ donnée par
+          l'énoncé — $A$ est un point du plan parmi d'autres, pas la direction
+          perpendiculaire à suivre depuis $\Omega$.
+    correct_feedback: >
+      $\mathcal P: 2x+y+2z-12=0$ (normale $\vec n(2,1,2)$, $A$ vérifie
+      $2+2+8-12=0$). La droite $\Omega+t\vec n=(4+2t,3+t,5+2t)$ reportée dans
+      $\mathcal P$ donne $9+9t=0$, $t=-1$, $H(2,2,3)$.
+    solution: |
+      **Équation du plan.** $\vec n(2,1,2)$ et $A(1,2,4)$ donnent
+      $2(x-1)+(y-2)+2(z-4)=0 \iff 2x+y+2z-12=0$.
+
+      **La droite orthogonale au plan, passant par $\Omega$.**
+      $$(\Delta):\ \Omega+t\vec n=(4+2t,\ 3+t,\ 5+2t)$$
+
+      **On reporte dans $\mathcal P$.**
+      $$2(4+2t)+(3+t)+2(5+2t)-12=0 \iff 9+9t=0 \iff t=-1$$
+
+      **On reporte $t=-1$ dans $(\Delta)$.**
+      $$H=(4-2,\ 3-1,\ 5-2)=(2,\,2,\,3)$$
+
+      Ce calcul ne consulte $R$ à aucun moment : $H$ ne dépend que de
+      $\Omega$, $\vec n$ et l'équation du plan.
+
+  - id: GE-59
+    rung: "R9"
+    habilete: application_directe
+    difficulty_level: 4
+    skill_code: maths_geometrie_espace
+    tags: [sphere, plan, intersection, cercle]
+    primary_misconception: mc.math.maths_geometrie_espace.rayon-cercle-confondu-R
+    stem: >
+      La sphère $(S)$ a pour centre $\Omega(1,-1,2)$ et rayon $R=5$. Le plan
+      $\mathcal P$ a pour équation $x+2y+2z+9=0$. Quelle est la nature de
+      l'intersection de $(S)$ et $\mathcal P$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Un cercle de rayon $3$."
+        correct: true
+      - id: B
+        text: "Un cercle de rayon $5$."
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.rayon-cercle-confondu-R
+        feedback: >
+          Modèle détecté : le rayon $R$ de la sphère rendu tel quel comme
+          rayon du cercle. Le plan ne passe pas par $\Omega$ ($d=4\neq0$) :
+          le rayon du cercle est $r=\sqrt{R^2-d^2}=\sqrt{25-16}=3$, pas $R$.
+      - id: C
+        text: "Un cercle de rayon $9$."
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.oubli-racine
+        feedback: >
+          $9=R^2-d^2=25-16$ est le CARRÉ du rayon du cercle : la racine
+          carrée finale a été oubliée. Le rayon est $\sqrt9=3$, pas $9$.
+      - id: D
+        text: "Un cercle de rayon $\\sqrt{41}$."
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur
+        feedback: >
+          Erreur de signe dans Pythagore : $\sqrt{R^2+d^2}=\sqrt{25+16}=
+          \sqrt{41}$ additionne là où il faut soustraire. Le triangle
+          $\Omega HM$ est rectangle en $H$ avec $R$ pour hypoténuse, donc
+          $r=\sqrt{R^2-d^2}$.
+    correct_feedback: >
+      $d(\Omega,\mathcal P)=\dfrac{|1-2+4+9|}{\sqrt{1+4+4}}=\dfrac{12}{3}=4<
+      R=5$ : intersection en un cercle de rayon $\sqrt{25-16}=3$.
+    solution: |
+      $$d(\Omega,\mathcal P)=\frac{|1\times1+2\times(-1)+2\times2+9|}{\sqrt{1^2+2^2+2^2}}=\frac{12}{3}=4$$
+
+      $d=4<R=5$ : cercle, de rayon $r=\sqrt{R^2-d^2}=\sqrt{25-16}=\sqrt9=3$.
+
+  - id: GE-60
+    rung: "R9"
+    habilete: application_non_explicite
+    difficulty_level: 5
+    skill_code: maths_geometrie_espace
+    tags: [sphere, plan, tangence, calcul_H]
+    primary_misconception: mc.math.maths_geometrie_espace.centre-cercle-confondu-omega
+    stem: >
+      La sphère $(S)$ a pour centre $\Omega(5,4,7)$ et rayon $R=3$. Le plan
+      $\mathcal P$ a pour équation $2x+y+2z-19=0$. On admet que $\mathcal P$
+      est tangent à $(S)$. Quel est le point de contact ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$(3,3,5)$"
+        correct: true
+      - id: B
+        text: "$(5,4,7)$, c'est-à-dire $\\Omega$."
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.centre-cercle-confondu-omega
+        feedback: >
+          Modèle détecté : « tangent » lu comme « le contact se fait au
+          centre ». Le point de contact est $H$, le projeté orthogonal de
+          $\Omega$ sur $\mathcal P$ — un point DU PLAN, jamais $\Omega$ lui-même
+          (qui n'appartient au plan que si $d=0$, un cas encore plus
+          particulier que la tangence).
+      - id: C
+        text: "$(7,5,9)$"
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
+        feedback: >
+          En reportant $\Omega+t\vec n$ dans $\mathcal P$ on obtient
+          $9+9t=0$, donc $t=-1$. Ce résultat vient de $t=+1$ : le signe a été
+          perdu en isolant $t$.
+      - id: D
+        text: >-
+          Il n'y a pas de point de contact : $d(\Omega,\mathcal
+          P)=\dfrac{28}{3}\neq R$, le plan n'est pas tangent.
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.distance-numerateur-mal-forme
+        feedback: >
+          Le numérateur a été formé sans la constante de l'équation,
+          $|2\times5+4+2\times7|=28$, au lieu de $|2\times5+4+2\times7-19|=9$.
+          Avec la constante, $d=9/3=3=R$ : le plan est bien tangent.
+    correct_feedback: >
+      $d(\Omega,\mathcal P)=\dfrac{|10+4+14-19|}{3}=\dfrac{9}{3}=3=R$ :
+      tangence confirmée. Le point de contact est $H$, obtenu en reportant
+      $\Omega+t\vec n=(5+2t,4+t,7+2t)$ dans $\mathcal P$ : $9+9t=0$, $t=-1$,
+      $H(3,3,5)$.
+    solution: |
+      **La distance, d'abord.**
+      $$d(\Omega,\mathcal P)=\frac{|2\times5+1\times4+2\times7-19|}{\sqrt{2^2+1^2+2^2}}=\frac93=3=R$$
+
+      Tangence confirmée : $d=R$.
+
+      **Le point de contact, c'est $H$.**
+      $$(\Delta):\ \Omega+t\vec n=(5+2t,\ 4+t,\ 7+2t)$$
+      $$2(5+2t)+(4+t)+2(7+2t)-19=0 \iff 9+9t=0 \iff t=-1$$
+      $$H=(5-2,\ 4-1,\ 7-2)=(3,\,3,\,5)$$
+
+  - id: GE-61
+    rung: "R9"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_geometrie_espace
+    tags: [sphere, plan, cercle, calcul_H]
+    primary_misconception: mc.math.maths_geometrie_espace.centre-cercle-confondu-omega
+    stem: >
+      La sphère $(S)$ a pour centre $\Omega(3,-2,4)$ et rayon $R=10$. Le plan
+      $\mathcal P$ a pour équation $2x-y+2z+2=0$. Quel est le centre du
+      cercle d'intersection $(\Gamma)$ de $(S)$ et $\mathcal P$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$(-1,0,0)$"
+        correct: true
+      - id: B
+        text: "$(3,-2,4)$, c'est-à-dire $\\Omega$."
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.centre-cercle-confondu-omega
+        feedback: >
+          Modèle détecté : $\Omega$ rendu directement comme centre du cercle.
+          Rien n'indique que $\mathcal P$ passe par $\Omega$ — le centre du
+          cercle est $H$, le projeté orthogonal de $\Omega$ sur $\mathcal P$,
+          qu'il faut calculer.
+      - id: C
+        text: "$(7,-4,8)$"
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
+        feedback: >
+          En reportant $\Omega+t\vec n$ dans $\mathcal P$ on obtient
+          $18+9t=0$, donc $t=-2$. Ce résultat vient de $t=+2$ : le signe a
+          été perdu en isolant $t$.
+      - id: D
+        text: "$(-1,0,8)$"
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
+        feedback: >
+          Les coordonnées $x$ et $y$ sont correctes ($t=-2$ bien trouvé),
+          mais la coordonnée $z$ additionne au lieu de soustraire :
+          $4+(-2)\times2=0$, pas $4+4=8$. Un signe perdu sur une seule
+          coordonnée suffit à fausser le résultat.
+    correct_feedback: >
+      $\mathcal P$ a pour normale $\vec n(2,-1,2)$. La droite
+      $\Omega+t\vec n=(3+2t,-2-t,4+2t)$ reportée dans $\mathcal P$ donne
+      $18+9t=0$, $t=-2$, centre $H(-1,0,0)$.
+    solution: |
+      $$(\Delta):\ \Omega+t\vec n=(3+2t,\ -2-t,\ 4+2t)$$
+      $$2(3+2t)-(-2-t)+2(4+2t)+2=0 \iff 18+9t=0 \iff t=-2$$
+      $$H=(3-4,\ -2+2,\ 4-4)=(-1,\,0,\,0)$$
+
+      $H$ appartient à $\mathcal P$ ($2(-1)-0+0+2=0$) et
+      $\overrightarrow{\Omega H}=(-4,2,-4)$ est colinéaire à $\vec n$ : $H$
+      est bien le centre du cercle $(\Gamma)$.
+
+  - id: GE-62
+    rung: "R9"
+    habilete: application_directe
+    difficulty_level: 4
+    skill_code: maths_geometrie_espace
+    tags: [sphere, plan, projection_orthogonale, calcul_H]
+    primary_misconception: mc.math.maths_geometrie_espace.centre-cercle-confondu-omega
+    stem: >
+      La sphère $(S)$ a pour centre $\Omega(2,5,-3)$ et rayon $R=9$ (ce
+      rayon n'est pas utile pour cette question). Le plan $\mathcal P$ a pour
+      équation $x-2y+2z+5=0$. Quel est le projeté orthogonal $H$ de $\Omega$
+      sur $\mathcal P$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$H(3,3,-1)$"
+        correct: true
+      - id: B
+        text: "$H(2,5,-3)$, c'est-à-dire $\\Omega$."
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.centre-cercle-confondu-omega
+        feedback: >
+          Modèle détecté : $\Omega$ rendu directement, sans construire la
+          droite $\Omega+t\vec n$ ni la reporter dans l'équation du plan.
+          Le rayon $R$ donné dans l'énoncé n'a d'ailleurs aucun rôle ici — un
+          signal que ce calcul ne peut pas se limiter à relire $\Omega$.
+      - id: C
+        text: "$H(1,7,-5)$"
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
+        feedback: >
+          En reportant $\Omega+t\vec n$ dans $\mathcal P$ on obtient
+          $-9+9t=0$, donc $t=1$. Ce résultat vient de $t=-1$ : le signe a été
+          perdu en isolant $t$.
+      - id: D
+        text: "$H(11,-13,15)$"
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.distance-denominateur-somme
+        feedback: >
+          Le $t$ a été calculé en divisant par la SOMME des coefficients
+          ($1-2+2=1$) au lieu de $\|\vec n\|^2=9$. La substitution de la
+          droite dans le plan fait apparaître $\|\vec n\|^2$, jamais la somme
+          des coefficients — le même piège qu'au dénominateur d'une distance.
+    correct_feedback: >
+      $\vec n(1,-2,2)$. La droite $\Omega+t\vec n=(2+t,5-2t,-3+2t)$ reportée
+      dans $\mathcal P$ donne $-9+9t=0$, $t=1$, $H(3,3,-1)$.
+    solution: |
+      $$(\Delta):\ \Omega+t\vec n=(2+t,\ 5-2t,\ -3+2t)$$
+      $$(2+t)-2(5-2t)+2(-3+2t)+5=0 \iff -9+9t=0 \iff t=1$$
+      $$H=(2+1,\ 5-2,\ -3+2)=(3,\,3,\,-1)$$
+
+  - id: GE-63
+    rung: "R9"
+    habilete: synthese
+    difficulty_level: 5
+    skill_code: maths_geometrie_espace
+    tags: [sphere, plan, cercle, plancher]
+    primary_misconception: mc.math.maths_geometrie_espace.rayon-cercle-confondu-R
+    stem: >
+      La sphère $(S)$ a pour centre $\Omega(2,5,1)$ et rayon $R=10$. Le plan
+      $\mathcal P$ a pour équation $2x+y+2z+7=0$. On a déjà déterminé le
+      projeté orthogonal $H(-2,3,-3)$ de $\Omega$ sur $\mathcal P$. Quel est
+      le rayon du cercle d'intersection $(\Gamma)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$8$"
+        correct: true
+      - id: B
+        text: "$10$"
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.rayon-cercle-confondu-R
+        feedback: >
+          Modèle détecté : $R$ rendu tel quel comme rayon du cercle. Même
+          avec $H$ déjà connu, il reste une étape : $d=\Omega H=6$, puis
+          $r=\sqrt{R^2-d^2}=\sqrt{100-36}=8$, jamais $R$ directement.
+      - id: C
+        text: "$\\sqrt{136}$"
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur
+        feedback: >
+          Erreur de signe dans Pythagore : $\sqrt{R^2+d^2}=\sqrt{100+36}=
+          \sqrt{136}$. Le triangle $\Omega HM$ est rectangle en $H$ avec $R$
+          pour hypoténuse : $r=\sqrt{R^2-d^2}$, un moins.
+      - id: D
+        text: "$64$"
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.oubli-racine
+        feedback: >
+          $64=R^2-d^2=100-36$ est le CARRÉ du rayon du cercle : la racine
+          carrée finale a été oubliée. Le rayon est $\sqrt{64}=8$, pas $64$.
+    correct_feedback: >
+      $d=\Omega H=\sqrt{(-4)^2+(-2)^2+(-4)^2}=\sqrt{36}=6$, puis
+      $r=\sqrt{R^2-d^2}=\sqrt{100-36}=8$.
+    solution: |
+      $$\overrightarrow{\Omega H}=H-\Omega=(-4,-2,-4),\qquad d=\|\overrightarrow{\Omega H}\|=\sqrt{16+4+16}=\sqrt{36}=6$$
+      $$r=\sqrt{R^2-d^2}=\sqrt{10^2-6^2}=\sqrt{64}=8$$
+
+  - id: GE-64
+    rung: "R9"
+    habilete: synthese
+    difficulty_level: 5
+    skill_code: maths_geometrie_espace
+    tags: [sphere, plan, cercle, calcul_H, plancher]
+    primary_misconception: mc.math.maths_geometrie_espace.centre-cercle-confondu-omega
+    stem: >
+      La sphère $(S)$ a pour centre $\Omega(-3,2,6)$ et rayon $R=5$. Le plan
+      $\mathcal P$ passe par le point $B(0,0,2)$ et admet pour vecteur normal
+      $\vec n(1,2,2)$. Quels sont le centre $H$ et le rayon $r$ du cercle
+      d'intersection de $(S)$ et $\mathcal P$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$H(-4,0,4)$ et $r=4$"
+        correct: true
+      - id: B
+        text: "$H(-3,2,6)$ et $r=5$ — c'est-à-dire $\\Omega$ et $R$ tels quels."
+        correct: false
+        misconception:
+          - mc.math.maths_geometrie_espace.centre-cercle-confondu-omega
+          - mc.math.maths_geometrie_espace.rayon-cercle-confondu-R
+        feedback: >
+          Double modèle détecté : ni $H$ ni $r$ n'ont été calculés — $\Omega$
+          et $R$ sont rendus directement, comme si le plan passait par $\Omega$.
+          Il faut construire $H$ (projeté orthogonal de $\Omega$ sur
+          $\mathcal P$), puis $d=\Omega H$, puis $r=\sqrt{R^2-d^2}$.
+      - id: C
+        text: "$H(-2,4,8)$ et $r=4$"
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
+        feedback: >
+          Le rayon est correct, mais $H$ vient d'un signe perdu en résolvant
+          $t$ : $9+9t=0$ donne $t=-1$, pas $t=+1$. Avec $t=-1$,
+          $H=(-4,0,4)$.
+      - id: D
+        text: "$H(-4,0,4)$ et $r=\\sqrt{34}$"
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur
+        feedback: >
+          $H$ est correct, mais le rayon vient d'un Pythagore mal signé :
+          $\sqrt{R^2+d^2}=\sqrt{25+9}=\sqrt{34}$ additionne là où il faut
+          soustraire. Avec $d=3$, $r=\sqrt{R^2-d^2}=\sqrt{25-9}=4$.
+    correct_feedback: >
+      $\mathcal P: x+2y+2z-4=0$. La droite $\Omega+t\vec n=(-3+t,2+2t,6+2t)$
+      reportée dans $\mathcal P$ donne $9+9t=0$, $t=-1$, $H(-4,0,4)$. Puis
+      $d=\Omega H=3$ et $r=\sqrt{R^2-d^2}=\sqrt{25-9}=4$.
+    solution: |
+      **Équation du plan.** $\vec n(1,2,2)$, $B(0,0,2)$ :
+      $(x-0)+2(y-0)+2(z-2)=0 \iff x+2y+2z-4=0$.
+
+      **Le centre du cercle, $H$.**
+      $$(\Delta):\ \Omega+t\vec n=(-3+t,\ 2+2t,\ 6+2t)$$
+      $$(-3+t)+2(2+2t)+2(6+2t)-4=0 \iff 9+9t=0 \iff t=-1$$
+      $$H=(-3-1,\ 2-2,\ 6-2)=(-4,\,0,\,4)$$
+
+      **Le rayon, $r$.**
+      $$d=\Omega H=\sqrt{(-1)^2+(-2)^2+(-2)^2}=\sqrt9=3,\qquad
+      r=\sqrt{R^2-d^2}=\sqrt{25-9}=4$$
 
 coverage_summary:
-  total_items: 57
+  total_items: 64
   # NOTE (§6 honnête) — banque « legacy » rétro-taguée, puis COMPLÉTÉE.
   # Les 33 items d'origine avaient été écrits AVANT la discipline du tag par
   # distracteur : conçus pour la VARIÉTÉ des pièges de calcul par item, pas
@@ -3263,21 +3693,29 @@ coverage_summary:
   #   • any_distractor = nb d'items où le modèle apparaît sur ≥1 distracteur
   #     (occasions de le révéler) ;
   #   • primary        = nb d'items CONSTRUITS pour cibler ce modèle.
+  # MISE À JOUR (dette d'examen vague B2, GAP-A "Computing H", 2026-09-27) :
+  # GE-58…GE-64 ajoutés (voir le commentaire au-dessus de GE-58). Deux
+  # misconceptions neuves déclarées, `centre-cercle-confondu-omega` et
+  # `rayon-cercle-confondu-R` — chacune au-dessus du plancher dès cette
+  # passe (5 et 3 en any_distractor). GE-64/B porte les deux à la fois
+  # (dual-tag, une seule erreur combinée) ; ce distracteur compte pour
+  # chaque id dans any_distractor, une seule fois chacun.
   counting_convention: any_distractor   # métrique retenue pour le plancher ≥3
   floor_met: true
-  per_rung: { R0: 3, R1: 5, R2: 4, R3: 6, R4: 5, R5: 6, R6: 6, R7: 8, R8: 4, R9: 7, R10: 3 }
+  per_rung: { R0: 3, R1: 5, R2: 4, R3: 6, R4: 5, R5: 6, R6: 6, R7: 8, R8: 4, R9: 14, R10: 3 }
 
   per_misconception_any_distractor:
-    mc.math.maths_geometrie_espace.signe-arithmetique: 22
-    mc.math.maths_geometrie_espace.oubli-racine: 12
+    mc.math.maths_geometrie_espace.signe-arithmetique: 27
+    mc.math.maths_geometrie_espace.oubli-racine: 14
     mc.math.maths_geometrie_espace.scalaire-vectoriel-confondus: 7
     mc.math.maths_geometrie_espace.colinearite-mal-testee: 6
     mc.math.maths_geometrie_espace.operation-vectorielle-comme-somme: 6
     mc.math.maths_geometrie_espace.directeur-vs-point: 5
-    mc.math.maths_geometrie_espace.normal-vs-directeur: 5
+    mc.math.maths_geometrie_espace.normal-vs-directeur: 6
     mc.math.maths_geometrie_espace.position-critere-inverse: 5
     mc.math.maths_geometrie_espace.raisonnement-spatial-naif: 5
-    mc.math.maths_geometrie_espace.distance-numerateur-mal-forme: 4
+    mc.math.maths_geometrie_espace.centre-cercle-confondu-omega: 5
+    mc.math.maths_geometrie_espace.distance-numerateur-mal-forme: 5
     mc.math.maths_geometrie_espace.distance-oubli-division: 4
     mc.math.maths_geometrie_espace.distance-plane-en-espace: 4
     mc.math.maths_geometrie_espace.oubli-valeur-absolue: 4
@@ -3285,27 +3723,30 @@ coverage_summary:
     mc.math.maths_geometrie_espace.scalaire-produit-incomplet: 4
     mc.math.maths_geometrie_espace.secantes-comme-dans-le-plan: 4
     mc.math.maths_geometrie_espace.sphere-centre-rayon-mal-lu: 4
+    mc.math.maths_geometrie_espace.distance-denominateur-somme: 4
+    mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur: 6
     mc.math.maths_geometrie_espace.aire-oubli-demi: 3
     mc.math.maths_geometrie_espace.appartenance-t-non-simultane: 3
-    mc.math.maths_geometrie_espace.distance-denominateur-somme: 3
-    mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur: 3
     mc.math.maths_geometrie_espace.normal-inclut-constante: 3
     mc.math.maths_geometrie_espace.orthogonal-vs-perpendiculaire: 3
     mc.math.maths_geometrie_espace.paralleles-vs-confondus: 3
     mc.math.maths_geometrie_espace.perspective-fiable: 3
     mc.math.maths_geometrie_espace.produit-mixte-conclusion-erronee: 3
     mc.math.maths_geometrie_espace.produit-vectoriel-ordre-composantes: 3
+    mc.math.maths_geometrie_espace.rayon-cercle-confondu-R: 3
     mc.math.maths_geometrie_espace.sphere-rayon-constante-oubliee: 3
     mc.math.maths_geometrie_espace.vecteur-depart-moins-arrivee: 3
     mc.math.maths_geometrie_espace.volume-facteur-oubli: 3
 
   per_misconception_primary:
+    mc.math.maths_geometrie_espace.centre-cercle-confondu-omega: 5
     mc.math.maths_geometrie_espace.signe-arithmetique: 4
     mc.math.maths_geometrie_espace.appartenance-t-non-simultane: 3
     mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur: 3
     mc.math.maths_geometrie_espace.orthogonal-vs-perpendiculaire: 3
     mc.math.maths_geometrie_espace.paralleles-vs-confondus: 3
     mc.math.maths_geometrie_espace.produit-mixte-conclusion-erronee: 3
+    mc.math.maths_geometrie_espace.rayon-cercle-confondu-R: 2
     mc.math.maths_geometrie_espace.sphere-centre-rayon-mal-lu: 3
     mc.math.maths_geometrie_espace.vecteur-depart-moins-arrivee: 3
     mc.math.maths_geometrie_espace.volume-facteur-oubli: 3
@@ -3328,17 +3769,20 @@ coverage_summary:
     mc.math.maths_geometrie_espace.sphere-rayon-constante-oubliee: 1
     # jamais en primary (seulement distracteur secondaire) : oubli-racine, oubli-valeur-absolue, colinearite-mal-testee, raisonnement-spatial-naif.
 
-  meets_floor_any_distractor:   # ≥3 items exposent ces 30 modèles — soit TOUS
-    - mc.math.maths_geometrie_espace.signe-arithmetique         # 22
-    - mc.math.maths_geometrie_espace.oubli-racine               # 12
+  meets_floor_any_distractor:   # ≥3 items exposent ces 32 modèles — soit TOUS
+    - mc.math.maths_geometrie_espace.signe-arithmetique         # 27
+    - mc.math.maths_geometrie_espace.oubli-racine               # 14
     - mc.math.maths_geometrie_espace.scalaire-vectoriel-confondus # 7
     - mc.math.maths_geometrie_espace.colinearite-mal-testee     # 6
+    - mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur # 6
+    - mc.math.maths_geometrie_espace.normal-vs-directeur        # 6
     - mc.math.maths_geometrie_espace.operation-vectorielle-comme-somme # 6
+    - mc.math.maths_geometrie_espace.centre-cercle-confondu-omega # 5
     - mc.math.maths_geometrie_espace.directeur-vs-point         # 5
-    - mc.math.maths_geometrie_espace.normal-vs-directeur        # 5
+    - mc.math.maths_geometrie_espace.distance-numerateur-mal-forme # 5
     - mc.math.maths_geometrie_espace.position-critere-inverse   # 5
     - mc.math.maths_geometrie_espace.raisonnement-spatial-naif  # 5
-    - mc.math.maths_geometrie_espace.distance-numerateur-mal-forme # 4
+    - mc.math.maths_geometrie_espace.distance-denominateur-somme # 4
     - mc.math.maths_geometrie_espace.distance-oubli-division    # 4
     - mc.math.maths_geometrie_espace.distance-plane-en-espace   # 4
     - mc.math.maths_geometrie_espace.oubli-valeur-absolue       # 4
@@ -3348,14 +3792,13 @@ coverage_summary:
     - mc.math.maths_geometrie_espace.sphere-centre-rayon-mal-lu # 4
     - mc.math.maths_geometrie_espace.aire-oubli-demi            # 3
     - mc.math.maths_geometrie_espace.appartenance-t-non-simultane # 3
-    - mc.math.maths_geometrie_espace.distance-denominateur-somme # 3
-    - mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur # 3
     - mc.math.maths_geometrie_espace.normal-inclut-constante    # 3
     - mc.math.maths_geometrie_espace.orthogonal-vs-perpendiculaire # 3
     - mc.math.maths_geometrie_espace.paralleles-vs-confondus    # 3
     - mc.math.maths_geometrie_espace.perspective-fiable         # 3
     - mc.math.maths_geometrie_espace.produit-mixte-conclusion-erronee # 3
     - mc.math.maths_geometrie_espace.produit-vectoriel-ordre-composantes # 3
+    - mc.math.maths_geometrie_espace.rayon-cercle-confondu-R    # 3
     - mc.math.maths_geometrie_espace.sphere-rayon-constante-oubliee # 3
     - mc.math.maths_geometrie_espace.vecteur-depart-moins-arrivee # 3
     - mc.math.maths_geometrie_espace.volume-facteur-oubli       # 3
@@ -3369,9 +3812,17 @@ coverage_summary:
       créneaux (11 modèles à un item du plancher, 12 à deux) ; 24 items neufs,
       trois distracteurs chacun, l'ont couvert avec la marge nécessaire pour
       que chaque occurrence tombe dans un item DIFFÉRENT.
+    closed_2026_09_27: >-
+      Dette d'examen vague B2 (GAP-A "Computing H", docs/audits/dette-examen/
+      maths.md § geometrie-espace) refermée par GE-58…GE-64. Deux
+      misconceptions neuves — `centre-cercle-confondu-omega` (5),
+      `rayon-cercle-confondu-R` (3) — déclarées et portées au-dessus du
+      plancher dès cette passe ; 32 modèles au total atteignent désormais
+      ≥3 en any_distractor, aucun sous le plancher.
     checkpoints_note: >-
       Les points d'arrêt in-leçon (checkpoints.yaml) surfacent EN PLUS, en
       ligne, perspective-fiable, scalaire-vectoriel-confondus,
-      plan-constante-mal-determinee, distance-denominateur-somme et
-      intersection-sphere-plan-erreur — mais ne sont PAS recomptés dans ce
-      plancher (clones formatifs, non ajoutés à la banque).
+      plan-constante-mal-determinee, distance-denominateur-somme,
+      intersection-sphere-plan-erreur, centre-cercle-confondu-omega,
+      rayon-cercle-confondu-R et raisonnement-spatial-naif — mais ne sont PAS
+      recomptés dans ce plancher (clones formatifs, non ajoutés à la banque).

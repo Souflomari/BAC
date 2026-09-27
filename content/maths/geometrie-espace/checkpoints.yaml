@@ -29,6 +29,14 @@ skill_code: maths_geometrie_espace
 #                                              jamais a+b+c ; valeur absolue au
 #                                              numérateur. Probes
 #                                              distance-denominateur-somme.
+#   cp-r9-calculer-h         (in R9, avant   — PREDICT-COMMIT gate (dette d'examen
+#                             le raccourci    vague B2, GAP-A "Computing H") :
+#                             levé)           avant même de voir la méthode, le
+#                                              centre du cercle et son rayon ne se
+#                                              lisent PAS directement sur Ω et R —
+#                                              il faut calculer H. Probes
+#                                              centre-cercle-confondu-omega et
+#                                              rayon-cercle-confondu-R.
 #   cp-r9-intersection       (before r-bac)  — rupture gate: intersection
 #                                              plan/sphère — on calcule d, on la
 #                                              compare à R, PUIS on conclut
@@ -316,7 +324,90 @@ checkpoints:
           pourquoi la formule impose une **valeur absolue** au numérateur.
 
   # ════════════════════════════════════════════════════════════════
-  # CP-4 | id: cp-r9-intersection | placed BEFORE [[exercise:r-bac]]
+  # CP-4 | id: cp-r9-calculer-h | placed IN R9, juste après l'intro de la
+  #        sous-section "Calculer H quand il n'y a pas de raccourci"
+  #        (lesson.md, avant le premier exemple travaillé de cette
+  #        sous-section) — dette d'examen vague B2, GAP-A "Computing H,
+  #        the orthogonal projection of Ω", docs/audits/dette-examen/
+  #        maths.md § geometrie-espace.
+  #        PREDICT-COMMIT gate : avant même de voir la méthode (la droite
+  #        Ω+t·n reportée dans le plan), l'élève s'engage sur ce qu'il
+  #        peut déjà affirmer sur le centre et le rayon du cercle
+  #        d'intersection, sans calculer H. Probes
+  #        centre-cercle-confondu-omega ET rayon-cercle-confondu-R (deux
+  #        distracteurs séparés, une polarité chacun).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r9-calculer-h
+    rung: "R9"
+    habilete: raisonnement
+    skill_code: maths_geometrie_espace
+    tags: [checkpoint, formative, misconception_driven, maths_geometrie_espace, sphere, plan, predict_commit]
+    primary_misconception: mc.math.maths_geometrie_espace.centre-cercle-confondu-omega
+    item_source: original
+    lesson_placement: in_R9_before_calculer_h_reveal
+
+    stem: |
+      Une sphère de centre $\Omega$ et de rayon $R$ est coupée par un plan
+      $\mathcal P$ quelconque — pas de configuration particulière cette fois,
+      aucun trirectangle qui donnerait le centre du cercle « à l'oeil ».
+      **Avant de lire la suite, engage-toi :** sans rien calculer, que peux-tu
+      déjà affirmer sur le centre et sur le rayon du cercle d'intersection ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Rien encore : il faut d'abord calculer $H$, le projeté orthogonal
+          de $\Omega$ sur $\mathcal P$, puis la distance $d=\Omega H$.
+        correct: true
+        feedback: |
+          Exact — et c'est tout l'esprit de ce qui suit. $H$ se calcule : la
+          droite $\Omega+t\vec n$ (normale du plan, chapitre 7) reportée dans
+          l'équation de $\mathcal P$, résolue en $t$. Une fois $H$ connu, il
+          devient le centre du cercle (ou le point de tangence si $d=R$) ; le
+          rayon du cercle est $r=\sqrt{R^2-d^2}$, avec $d=\Omega H$ — jamais
+          $\Omega$ et $R$ tels quels.
+
+      - id: B
+        text: |
+          Le centre du cercle est $\Omega$ : le plan coupe la sphère en son
+          milieu, là où se trouve son centre.
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.centre-cercle-confondu-omega
+        feedback: |
+          Modèle détecté : « le plan passe par $\Omega$ ». Rien ne
+          l'impose — c'est le cas particulier $d=0$, pas la règle. En
+          général le centre du cercle est $H$, le projeté orthogonal de
+          $\Omega$ sur $\mathcal P$, distinct de $\Omega$.
+
+      - id: C
+        text: |
+          Le rayon du cercle est $R$ : la section garde le rayon de la
+          sphère qu'elle traverse, où que passe le plan.
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.rayon-cercle-confondu-R
+        feedback: |
+          Modèle détecté : $R$ rendu tel quel comme rayon du cercle. Le
+          rayon du cercle est $r=\sqrt{R^2-d^2}$, avec $d=\Omega H>0$ en
+          général — $r=R$ seulement dans le cas particulier $d=0$.
+
+      - id: D
+        text: |
+          Le plan touche la sphère en un seul point : la section d'une
+          sphère par un plan se réduit à un point de contact.
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.raisonnement-spatial-naif
+        feedback: |
+          Modèle détecté : un « fait » spatial inventé. Un plan peut couper
+          une sphère selon un cercle entier (dès que $d<R$) — la tangence en
+          un seul point ($d=R$) est au contraire le cas limite, pas la
+          règle. On ne conclut pas par un slogan géométrique : on compare
+          $d$ et $R$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-r9-intersection | placed BEFORE [[exercise:r-bac]]
   #        Rupture gate: intersection plan/sphère — on calcule d, on la
   #        compare à R, PUIS on conclut (cercle si d<R, tangent si d=R) ;
   #        rayon du cercle par Pythagore r=√(R²−d²). Mirrors r-bac's

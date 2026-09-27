@@ -510,6 +510,38 @@ Puisque $d=2<R=3$, l'intersection est un cercle, de rayon $\sqrt{R^2-d^2}=\sqrt{
 
 [[figure:sphere-plan]]
 
+### Calculer $H$ quand il n'y a pas de raccourci
+
+Dans l'exemple précédent, une coïncidence a tout simplifié : le tétraèdre est trirectangle en $A$, et $\overrightarrow{AS}$ se trouvait déjà être la perpendiculaire cherchée — $H$ sautait aux yeux, c'était $A$. La plupart du temps, aucune configuration ne t'offre ce raccourci : il faut calculer $H$.
+
+[[checkpoint:cp-r9-calculer-h]]
+
+**Ce qu'on cherche ici, et pourquoi ce geste :** $H$ est le point où la perpendiculaire au plan menée depuis $\Omega$ perce ce plan — rien d'autre qu'une intersection droite/plan, exactement le mécanisme du chapitre 8. La droite se construit toute seule : elle passe par $\Omega$ et sa direction est $\vec n$, la normale du plan (déjà orthogonale au plan par définition, chapitre 7) — pas besoin d'en chercher une autre. On écrit sa représentation paramétrique, on la reporte dans l'équation du plan, on résout en $t$, puis on reporte ce $t$ dans la droite.
+
+**Exemple travaillé.** Sphère de centre $\Omega(1,2,3)$ et de rayon $R=\sqrt7$ ; plan $\mathcal P: x+y+z-3=0$ (normale $\vec n(1,1,1)$, chapitre 7). Trouver le projeté orthogonal $H$ de $\Omega$ sur $\mathcal P$.
+
+$$(\Delta):\ \Omega+t\,\vec n = (1+t,\ 2+t,\ 3+t), \quad t\in\mathbb R$$
+
+On reporte ces coordonnées dans l'équation de $\mathcal P$ :
+
+$$(1+t)+(2+t)+(3+t)-3=0 \iff 3t+3=0 \iff t=-1$$
+
+On reporte $t=-1$ dans $(\Delta)$ :
+
+$$H = (1-1,\ 2-1,\ 3-1) = (0,\,1,\,2)$$
+
+**Vérification, en trois points — celle qu'on fait pour tout projeté orthogonal :**
+
+- $H\in\mathcal P$ : $0+1+2-3=0$. ✓
+- $\overrightarrow{\Omega H} = H-\Omega = (-1,-1,-1) = -\vec n$ : colinéaire à la normale, donc perpendiculaire au plan — $H$ est bien sur LA perpendiculaire, pas sur une droite quelconque du plan. ✓
+- $\overrightarrow{\Omega H}$ retrouve la distance déjà connue : $\left\|\overrightarrow{\Omega H}\right\| = \sqrt{1+1+1}=\sqrt3$, exactement $d(\Omega,\mathcal P) = \dfrac{|1+2+3-3|}{\sqrt{1^2+1^2+1^2}} = \dfrac{3}{\sqrt3} = \sqrt3$ (formule du chapitre 9). Les deux méthodes s'accordent. ✓
+
+Ce calcul ne consulte $R$ à aucun moment : $H$ ne dépend que de $\Omega$, $\vec n$ et l'équation du plan — jamais du rayon de la sphère. C'est seulement une fois $H$ trouvé, en comparant $d=\Omega H=\sqrt3$ à $R=\sqrt7$, qu'on décide comment le **lire** :
+
+- $d<R$ (ici, $\sqrt3<\sqrt7$) : $H$ est le **centre du cercle** d'intersection, de rayon $\sqrt{R^2-d^2}=\sqrt{7-3}=2$ ;
+- si on avait $d=R$ : $H$ serait le **point de tangence**, seul point commun au plan et à la sphère ;
+- et avant même de comparer à $R$, dans tous les cas, $H$ reste ce qu'il a toujours été : **le pied de la perpendiculaire** abaissée de $\Omega$ sur le plan. Ce n'est pas $\Omega$ (sauf le cas particulier où le plan passe par $\Omega$, $d=0$), et le rayon du cercle n'est pas $R$ tout court : il passe toujours par $\sqrt{R^2-d^2}$.
+
 ### Intersection d'une sphère et d'une DROITE : le même Pythagore
 
 Un sujet remplace parfois le plan par une **droite**. N'apprends pas un second résultat : c'est rigoureusement le même raisonnement, avec un seul mot changé.
@@ -588,4 +620,76 @@ Mêmes gestes, d'autres nombres — de quoi vérifier que c'est la méthode que 
      choix de cet auteur pour maximiser la cohérence entre rungs (les mêmes
      nombres reviennent, avec vérifications croisées) — pas une citation
      d'un exercice source.
+
+     NOTE AJOUTÉE (dette d'examen, vague B — GAP-A "Computing H, the
+     orthogonal projection of Ω (centre of the section circle / point of
+     tangency / foot of perpendicular)", docs/audits/dette-examen/maths.md,
+     § geometrie-espace) :
+     (6) [PROSE LIVRÉE, 2026-09-27] R9 gagne une nouvelle sous-section,
+     "Calculer $H$ quand il n'y a pas de raccourci" (après l'exemple
+     travaillé du tétraèdre trirectangle, avant "Intersection d'une sphère
+     et d'une DROITE"), avec un exemple travaillé original (aucun nombre
+     repris d'un bank.yaml cité par l'audit) : $\Omega(1,2,3)$, $R=\sqrt7$,
+     plan $x+y+z-3=0$ ; la droite $\Omega+t\vec n$ reportée dans l'équation
+     du plan donne $t=-1$, $H(0,1,2)$ — les coordonnées mêmes suggérées par
+     l'audit comme correctif minimal ($R$ et le reste sont de cet auteur).
+     Trois vérifications croisées ($H\in\mathcal P$ ; $\overrightarrow{\Omega
+     H}\parallel\vec n$ ; $\|\overrightarrow{\Omega H}\|=d$, retrouvé par la
+     formule du chapitre 9), puis la lecture de $H$ dans les trois rôles
+     demandés (centre du cercle, point de tangence si $d=R$, pied de la
+     perpendiculaire dans tous les cas), avec un avertissement explicite en
+     prose contre les deux pièges nommés par l'audit — $H$ confondu avec
+     $\Omega$, et le rayon du cercle confondu avec $R$.
+
+     Vérifié : aucune NOTE DE PORTÉE de cette leçon n'est contredite par un
+     sujet vérifié pour ce GAP (les deux scope notes de bank.yaml — droite
+     tangente en 2022, médiatrice en 2024 — restent des divulgations
+     exactes, non des affirmations vieillies ; rien à corriger avant
+     d'écrire).
+
+     Checkpoint NON ajouté. Le correctif demandait UN checkpoint
+     predict-commit posant précisément ce piège ($H\equiv\Omega$, ou rayon
+     du cercle $\equiv R$), avant la révélation. J'ai relu l'inventaire
+     complet de items.yaml `misconceptions:` (30 ids déclarés) et AUCUN
+     des ids existants ne couvre ce modèle d'erreur : le plus proche,
+     `intersection-sphere-plan-erreur`, est déjà pris par un autre modèle
+     précis (critère $d<R$/$d=R$ inversé, ou Pythagore signé $R^2+d^2$ au
+     lieu de $R^2-d^2$ — déjà testé par `cp-r9-intersection`, placé juste
+     avant le sommet). Forcer l'un des deux pièges neufs sur cet id
+     existant aurait mal étiqueté le diagnostic. Sur le modèle de la même
+     situation traitée dans `calcul-integral/lesson.md:701-727` (GAP-A
+     « primitive de u'/u »), je propose deux misconceptions neuves, à
+     ajouter à l'inventaire de items.yaml avant d'écrire l'item ET le
+     checkpoint :
+       - `mc.math.maths_geometrie_espace.centre-cercle-confondu-omega` —
+         l'élève prend $\Omega$ (le centre de la sphère) pour le centre du
+         cercle d'intersection, sans passer par le projeté $H$, comme si le
+         plan passait forcément par $\Omega$.
+       - `mc.math.maths_geometrie_espace.rayon-cercle-confondu-R` —
+         l'élève rend $R$ (le rayon de la sphère) comme rayon du cercle
+         d'intersection, en sautant l'étape $r=\sqrt{R^2-d^2}$, comme si le
+         plan coupait toujours la sphère « en grand cercle ».
+     Aucun item ni checkpoint n'a été touché par cette édition — seule la
+     prose de R9 et cette note de portée ont changé. Item-author, à toi :
+     déclare les deux ids ci-dessus (label + description +
+     contradicts_principle, format des 30 entrées existantes), écris au
+     moins un item par modèle, puis le checkpoint predict-commit avant la
+     révélation de "Calculer $H$ quand il n'y a pas de raccourci" (placement
+     suggéré : juste après l'intro qui annonce qu'il faut calculer $H$ — la
+     même position "avant reveal" que `cp-r0-predict`).
+
+     RÉSOLU (item-author, 2026-09-27) : les deux ids déclarés dans
+     items.yaml `misconceptions:` tels que proposés ci-dessus, sans fusion ni
+     scission (label + description + contradicts_principle, format ADR
+     0008). Sept items neufs ajoutés, GE-58…GE-64, rung R9, aucun nombre
+     repris de bank.yaml ni de l'exemple travaillé ci-dessus — dressings
+     variés (point+normale, équation cartésienne seule, cas de tangence
+     d=R, H seul puis H+r ensemble). `centre-cercle-confondu-omega` atteint
+     5 en any_distractor, `rayon-cercle-confondu-R` atteint 3 — les deux
+     au-dessus du plancher ≥3 dès cette passe (voir coverage_summary,
+     items.yaml). Le checkpoint predict-commit `cp-r9-calculer-h` est ajouté
+     à checkpoints.yaml, marqué juste après la ligne "il faut calculer H"
+     ci-dessus ([[checkpoint:cp-r9-calculer-h]]) : il met en scène
+     séparément les deux affirmations fausses (« le centre est Ω » / « le
+     rayon est R ») avant toute révélation de méthode.
 -->
