@@ -25,6 +25,12 @@ skill_code: maths_equations_differentielles
 #
 # Boundary guard : 2ème Bac SExp — y'=ay, y'=ay+b, conditions initiales, second ordre
 # à coefficients constants (équation caractéristique), y''+ω²y=0, applications RC/RL/LC.
+# ⚠ CONTRADICTION NOMMÉE (2026-09-25) : docs/cadre/curriculum/maths-sexp.yaml:158 et
+# :307 EXCLUENT « y''+ay'+by=0 générale » du périmètre SExp. Ces deux lignes sont
+# `source: derived — À VALIDER` (fichier NON AUTORITATIF, `_flag_derive_fort` en :159),
+# et elles sont DÉMENTIES par une annale SExp vérifiée de cette notion même :
+# bank.yaml:136 (2022 N, « Résoudre y''-2y'+y=0 », Δ = 0). Le contenu est conservé
+# (maths-sm.yaml:157 le porte mot pour mot) ; l'arbitrage va à research-lead (F2).
 
 checkpoints:
 
@@ -241,7 +247,7 @@ checkpoints:
         correct: true
         feedback: |
           Exact. $r^2-6r+9=(r-3)^2$ : $\Delta=36-36=0$, racine double
-          $r_0=\dfrac{6}{2}=3$. Le cas $\Delta=0$ demande DEUX constantes —
+          $r_0=-\dfrac{b}{2a}=-\dfrac{-6}{2}=3$. Le cas $\Delta=0$ demande DEUX constantes —
           la seconde vient du facteur $x$, qui n'existe QUE dans ce cas.
       - id: B
         text: |

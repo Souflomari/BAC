@@ -133,7 +133,8 @@ misconceptions:
     label: "Confondre y''+ω²y=0 avec y''-ω²y=0 (solutions exponentielles)"
     description: >-
       L'élève traite l'équation de l'oscillateur comme si elle admettait des
-      solutions exponentielles $Ae^{\omega x}+Be^{-\omega x}$.
+      solutions exponentielles réelles — $Ae^{\omega x}+Be^{-\omega x}$, ou
+      $(Ax+B)e^{\omega x}$ quand il lit $\omega$ comme une racine double.
     contradicts_principle: >-
       Le signe $+$ devant $\omega^2y$ impose des solutions oscillantes
       ($\cos,\sin$) ; seul $y''-\omega^2y=0$ donnerait des exponentielles réelles.
@@ -2014,15 +2015,15 @@ items:
           solution, ce n'est pas l'ensemble des solutions : il manque la
           constante devant $e^{5x}$ et celle devant $xe^{5x}$.
     correct_feedback: >
-      $\Delta = 10^2-4\times25 = 100-100=0$ donne une racine double
-      $r_0=\dfrac{10}{2}=5$. La solution générale du cas $\Delta=0$ est
+      $\Delta = (-10)^2-4\times1\times25 = 100-100=0$ donne une racine double
+      $r_0=-\dfrac{b}{2a}=-\dfrac{-10}{2}=5$. La solution générale du cas $\Delta=0$ est
       $(Ax+B)e^{r_0x}$, avec DEUX constantes — la seconde vient du facteur
       $x$, qui n'existe QUE dans ce cas.
     solution: |
       **Le trinôme.** $r^2-10r+25=0$.
 
       **Le discriminant.** $\Delta = (-10)^2-4\times1\times25 = 100-100=0$ :
-      racine double $r_0=\dfrac{10}{2}=5$, et $r^2-10r+25=(r-5)^2$.
+      racine double $r_0=-\dfrac{b}{2a}=-\dfrac{-10}{2}=5$, et $r^2-10r+25=(r-5)^2$.
 
       **La forme du cas $\Delta=0$.** Deux constantes libres, dont la seconde
       vient du facteur $x$ — jamais d'une deuxième lettre collée à la même
@@ -2084,8 +2085,9 @@ items:
     correct_feedback: >
       $r^2-4r+4=(r-2)^2$ : $\Delta=16-16=0$, racine double $r_0=2$. C'est la
       seule des quatre équations dont $2$ est une racine DOUBLE — dans les
-      deux autres équations du second ordre, $2$ n'est qu'une racine simple,
-      et la substitution le prouve.
+      deux autres équations à racines réelles (B et C), $2$ n'est qu'une
+      racine simple, et la substitution le prouve ; la quatrième (D) n'a
+      aucune racine réelle.
     solution: |
       **Le sens inverse.** On part de la solution pour retrouver l'équation :
       $(Ax+B)e^{2x}$ est la forme du cas $\Delta=0$ avec $r_0=2$, donc
@@ -2093,7 +2095,7 @@ items:
       $r^2-4r+4=0$.
 
       **Vérification.** $a=1$, $b=-4$, $c=4$ : $\Delta=16-4\times4=0$ ✓,
-      $r_0=\dfrac{4}{2}=2$ ✓.
+      $r_0=-\dfrac{b}{2a}=-\dfrac{-4}{2}=2$ ✓.
 
       **Ce que la racine $2$ ne suffit pas à garantir.** $2$ est AUSSI
       racine de $y''-5y'+6y=0$ (avec $3$) et de $y''-4y=0$ (avec $-2$) —
@@ -2159,7 +2161,7 @@ items:
         correct: false
         misconception: mc.math.maths_equations_differentielles.solution-fonction-unique
         feedback: >
-          $e^{-4x}$ (le cas $C=1$) vérifie bien l'équation homogène, mais
+          $e^{-4x}$ (le cas $C=1$) vérifie bien l'équation, mais
           pas les DEUX conditions : sa dérivée donne $y'(0)=-4\neq0$. Une
           équation différentielle ne détermine jamais une fonction unique —
           ici encore moins, puisque la contradiction sur $y'(0)$ montre que
@@ -2194,7 +2196,8 @@ items:
 # solutions, la place du coefficient $a$, la condition initiale décalée, la
 # période de l'oscillateur, la constante de temps, et les deux modèles de
 # l'accroche. Tableau GÉNÉRÉ contre web/scripts/lib/couverture-compte.mjs,
-# gardé par web/scripts/resume-couverture.mjs.
+# gardé par web/scripts/resume-couverture.mjs. (« GÉNÉRÉ » voulait dire : compté
+# selon la convention de ce module ; le tableau lui-même est écrit à la main.)
 # COMPLÉTÉ À LA MAIN le 2026-09-25 — EQDIFF-31 à -33 ajoutent le modèle
 # mc...racine-double-sans-x (cas Δ=0, facteur x oublié ou transporté à tort),
 # cf. docs/pipeline/propositions/maths-equations-differentielles-delta-nul.md
@@ -2202,15 +2205,17 @@ items:
 # solution-fonction-unique 3→5 ; signe-second-membre-second-ordre 4→5 ;
 # nombre-solutions-condition 3→4. Ce bloc n'est PAS généré par une commande —
 # il est écrit à la main (voir l'en-tête de resume-couverture.mjs) et VÉRIFIÉ
-# par `node web/scripts/couverture-diagnostique.mjs --porte` et
-# `node web/scripts/resume-couverture.mjs --porte` : à relancer.
+# par `node web/scripts/couverture-diagnostique.mjs --porte` (« cliquet tenu,
+# 62 notions ») et `node web/scripts/resume-couverture.mjs --porte` (« portes
+# tenues, 0 affirmation contredite ») — relancés le 2026-09-25 après l'ajout.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
-    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+    apprenant est bâti sur le banc de fin seul. Tableau écrit à la main selon
+    la convention de web/scripts/lib/couverture-compte.mjs, gardé par
+    web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.math.maths_equations_differentielles.solution-fonction-unique:           { count: 5, items: [EQDIFF-1, EQDIFF-22, EQDIFF-23, EQDIFF-31, EQDIFF-33] }
     mc.math.maths_equations_differentielles.signe-exposant:                     { count: 3, items: [EQDIFF-1, EQDIFF-10, EQDIFF-13] }
