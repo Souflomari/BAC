@@ -31,6 +31,7 @@ import jitiFactory from "jiti";
 import yaml from "js-yaml";
 import { scanTokenGate } from "./token-gate.mjs";
 import { scanContrast } from "./contrast-gate.mjs";
+import { erreursKatex } from "./lib/katex-erreurs.mjs";
 
 const WEB = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const CONTENT_ROOT = path.join(path.dirname(WEB), "content");
@@ -3219,10 +3220,10 @@ try {
   // at author time; this sweep is the rendered-truth backstop.
   {
     console.log(`\n[${NOTION}] SWEEP: zero .katex-error`);
-    const kerr = await page.evaluate(() => ({
-      n: document.querySelectorAll(".katex-error").length,
-      sample: document.querySelector(".katex-error")?.textContent?.slice(0, 60) ?? "",
-    }));
+    // both FORMS (lib/katex-erreurs.mjs): `.katex-error`, and an unknown macro KaTeX writes in
+    // red inside a normal `.katex` — the second was not counted before 2026-09-27
+    const ek = await page.evaluate(erreursKatex);
+    const kerr = { n: ek.length, sample: ek[0] ? `${ek[0].forme}: ${ek[0].texte.slice(0, 60)}` : "" };
     checks++;
     if (kerr.n > 0) failures += fail(`${kerr.n} .katex-error rendered — « ${kerr.sample} »`);
     else console.log(`  ✓ no .katex-error on the page`);

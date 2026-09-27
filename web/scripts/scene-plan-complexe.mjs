@@ -41,6 +41,7 @@
  *                                                        chaque forme injectée, vue)
  */
 import { chromium } from "playwright-core";
+import { erreursKatex } from "./lib/katex-erreurs.mjs";
 import { readFileSync } from "node:fs";
 import { ergonomie } from "./lib/scene-ergonomie.mjs";
 
@@ -459,13 +460,16 @@ async function frontiere(ou, q = panneau) {
 async function katex(ou, q = panneau) {
   const r = await q.evaluate((el) => {
     const brut = el.innerText.match(/\\(dfrac|tfrac|frac|sqrt|pi|arg|Omega|omega)\b|\$[^$]{1,40}\$/g) ?? [];
-    const erreurs = el.querySelectorAll(".katex-error").length;
     const c = el.cloneNode(true);
     c.querySelectorAll(".katex").forEach((k) => k.remove());
     const grecs = (c.textContent ?? "").match(/[ωΩ]/g) ?? [];
-    return { brut, erreurs, grecs: grecs.length };
+    return { brut, grecs: grecs.length };
   });
-  juger("katex", !r.brut.length && !r.erreurs && !r.grecs, `${ou} : ${r.brut.length ? `LaTeX BRUT : ${r.brut.slice(0, 3).join(", ")} ; ` : ""}${r.erreurs} erreur(s) KaTeX ; ${r.grecs} ω/Ω hors KaTeX (Geist dessine ω comme Ω, ADR 0030)`);
+  // les DEUX formes d'une formule cassée : `.katex-error`, ET la macro inconnue écrite en rouge
+  // dans un `.katex` normal — la seconde échappait à cette famille (campagne du 2026-09-27,
+  // sabotage « omega-colle » : « \OmegaM » à l'étape 5, famille VERTE) ; lib/katex-erreurs.mjs
+  const err = await q.evaluate(erreursKatex);
+  juger("katex", !r.brut.length && !err.length && !r.grecs, `${ou} : ${r.brut.length ? `LaTeX BRUT : ${r.brut.slice(0, 3).join(", ")} ; ` : ""}${err.length} erreur(s) KaTeX${err.length ? ` (${err.slice(0, 2).map((x) => `${x.forme} « ${x.texte} »`).join(", ")})` : ""} ; ${r.grecs} ω/Ω hors KaTeX (Geist dessine ω comme Ω, ADR 0030)`);
 }
 
 /**
@@ -814,9 +818,14 @@ async function mesurerEtat(c, zc, centre, enonce, ou) {
     juger("longueurs-au-rapport", Math.abs(lmp - rap * lm) <= Math.max(0.02 * lmp, 2), `${ou} : ΩM′/ΩM mesuré ${(lmp / lm).toFixed(3)} en pixels, lu ${rap.toFixed(3)}`);
   }
   // l'arc, entre les bonnes directions
-  const k12 = Math.round((Math.atan2(...[...div(t.a, [1, 0])].reverse()) * 12) / Math.PI);
+  // l'angle ATTENDU vient de la seconde implémentation — arg(a), recalculé ici —, JAMAIS de la
+  // lecture affichée : lu sur l'écran, un angle faux et un arc faux dans le même sens se
+  // disculpaient l'un l'autre (sabotage « angle-horaire », campagne du 2026-09-25 : 89 rouges en
+  // [nombres], l'arc VERT ; ADR 0036 — une porte qui se cite elle-même se disculpe)
+  let k12 = Math.round((Math.atan2(t.a[1], t.a[0]) * 12) / Math.PI);
+  if (k12 === -12) k12 = 12;
   if (!fixe && L.angle !== undefined && L.angle !== "0" && dM && (dMp || mpEncre)) {
-    const phi = evalArg(L.angle) ?? (k12 * Math.PI) / 12;
+    const phi = (k12 * Math.PI) / 12;
     const a = await arcLu(wA, mA, mpA, phi);
     const ok = a && Math.abs(a.min - Math.min(0, phi)) < 0.14 && Math.abs(a.max - Math.max(0, phi)) < 0.2 && a.pointe !== null && Math.abs(a.pointe - phi) < 0.35;
     juger("arc-entre-les-bonnes-directions", ok, `${ou} : ${a ? `arc de rayon ${a.Rm} px, de ${(a.min * 180 / Math.PI).toFixed(0)}° à ${(a.max * 180 / Math.PI).toFixed(0)}° depuis ΩM (attendu 0° → ${(phi * 180 / Math.PI).toFixed(0)}°), pointe à ${a.pointe === null ? "?" : (a.pointe * 180 / Math.PI).toFixed(0)}°` : "AUCUN arc lu"}`);

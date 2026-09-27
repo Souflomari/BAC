@@ -20,6 +20,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { chromium } from "playwright-core";
+import { erreursKatex } from "./lib/katex-erreurs.mjs";
 
 const BASE = process.env.BASE_URL || "http://localhost:4123";
 const QUICK = process.argv.includes("--quick");
@@ -89,9 +90,12 @@ async function passA(theme) {
       }
       const m = await page.evaluate(() => ({
         overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
-        katexErrors: document.querySelectorAll(".katex-error").length,
-        katexErrorSample: document.querySelector(".katex-error")?.textContent?.slice(0, 80) ?? "",
       }));
+      // les DEUX formes d'une formule cassée (lib/katex-erreurs.mjs) — la macro inconnue en rouge
+      // dans un `.katex` normal n'était pas comptée avant le 2026-09-27
+      const ek = await page.evaluate(erreursKatex);
+      m.katexErrors = ek.length;
+      m.katexErrorSample = ek[0] ? `${ek[0].forme}: ${ek[0].texte}` : "";
       if (m.overflowX > 1) finding("rendering", "P1", `${route} [1280/${theme}]`, `overflow-x ${m.overflowX}px`);
       if (m.katexErrors > 0) finding("content", "P1", route, `${m.katexErrors} .katex-error — « ${m.katexErrorSample} »`);
       for (const e of consoleErrs) finding("console", "P2", `${route} [${theme}]`, e);

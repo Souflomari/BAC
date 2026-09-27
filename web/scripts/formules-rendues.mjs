@@ -56,6 +56,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import yaml from "js-yaml";
 import katex from "katex";
+import { erreursKatex } from "./lib/katex-erreurs.mjs";
 
 const WEB = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const PORT = Number(process.env.PORT_FORMULES ?? 3200 + (process.pid % 500));
@@ -173,14 +174,12 @@ for (const route of routes) {
     if (await terminer.count()) { await terminer.first().click(); await page.waitForSelector("[data-corrige-complet]", { timeout: 60000 }); }
   }
   mesurees++;
-  const r = await page.evaluate(() => {
+  await page.evaluate(() => {
     for (const g of document.querySelectorAll("[hidden]")) g.removeAttribute("hidden");
-    const e = [...document.querySelectorAll(".katex-error")];
-    return e.map((x) => ({
-      msg: (x.getAttribute("title") || "").slice(0, 120),
-      src: (x.textContent || "").replace(/\s+/g, " ").slice(0, 80),
-    }));
   });
+  // les DEUX formes (lib/katex-erreurs.mjs) : `.katex-error`, et la macro inconnue écrite en
+  // rouge dans un `.katex` normal — celle-ci n'était pas comptée avant le 2026-09-27
+  const r = (await page.evaluate(erreursKatex)).map((x) => ({ msg: `${x.forme} — ${x.titre}`, src: x.texte }));
   if (r.length) {
     total += r.length;
     console.log(`  ✗ ${route} — ${r.length} formule(s) en LaTeX brut`);

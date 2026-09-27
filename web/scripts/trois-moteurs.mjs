@@ -106,7 +106,11 @@ const vecteur = () => {
     hydratee: window.__bacVivant === true,
     debordement: Math.max(0, d.documentElement.scrollWidth - d.documentElement.clientWidth),
     katex: d.querySelectorAll(".katex").length,
-    katexErreurs: d.querySelectorAll(".katex-error").length,
+    //  les DEUX formes d'une formule cassée (lib/katex-erreurs.mjs, recopiée ici
+    //  parce que cette fonction est sérialisée d'un bloc vers trois moteurs) :
+    //  `.katex-error`, et la macro inconnue que KaTeX écrit en rouge DANS un
+    //  `.katex` normal — celle-ci n'était pas comptée avant le 2026-09-27
+    katexErreurs: d.querySelectorAll(".katex-error").length + [...d.querySelectorAll(".katex")].filter((k) => k.querySelector('.katex-html [style*="cc0000"]')).length,
     //  COMPTER LES FORMULES NE SUFFIT PAS, et c'était un trou de cet instrument
     //  même : une formule rendue dans une police de SECOURS — parce que le
     //  woff2 de KaTeX n'a pas chargé dans ce moteur — compte quand même pour
