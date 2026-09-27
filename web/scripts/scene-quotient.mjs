@@ -279,17 +279,34 @@ const regles = (qq = panneau) => qq.evaluate(() => {
     const haut = runs(au), bas = runs(ad);
     const fins = (r) => r.filter(([a, b]) => b - a + 1 <= Math.ceil(3 * dpr));
     const larges = (r) => r.filter(([a, b]) => b - a + 1 >= Math.round(5 * dpr));
+    // UN CHEVRON prolonge la ligne d'un triangle plein (sur la ligne même, il est d'un seul tenant
+    // avec elle) : juste au-dessus de la ligne, c'est une plage large collée à un BOUT. On la retire
+    // de l'étendue de la règle, et on la rend à part (premier lancement : la bande « couvrait 8,18
+    // décades », et son chevron était lu comme une pastille plafonnée)
+    const dessus = runs(Math.round(g.Y0 - 1)).filter(([a, b]) => b - a + 1 >= Math.round(4 * dpr));
+    let x0 = g.x0, x1 = g.x1;
+    const chevron = { gauche: false, droite: false };
+    for (const [a, b] of dessus) {
+      if (a <= g.x0 + 2) { chevron.gauche = true; x0 = b; }
+      if (b >= g.x1 - 2) { chevron.droite = true; x1 = a; }
+    }
+    const dedans = ([a, b]) => a > x0 + 1 && b < x1 - 1;
     const traits = fins(bas).filter(([a, b]) => fins(haut).some(([c, d]) => c <= b + 1 && a <= d + 1)).map(([a, b]) => (a + b + 1) / 2 / dpr);
-    const pastilles = larges(bas).filter(([a, b]) => larges(haut).some(([c, d]) => c <= b && a <= d)).map(([a, b]) => (a + b + 1) / 2 / dpr);
-    if (traits.length >= 4) out.push({ y: (yc + 0.5) / dpr, x0: g.x0 / dpr, x1: (g.x1 + 1) / dpr, traits, pastilles });
+    const pastilles = larges(bas).filter(dedans).filter(([a, b]) => larges(haut).some(([c, d]) => c <= b && a <= d)).map(([a, b]) => (a + b + 1) / 2 / dpr);
+    if (traits.length >= 4) out.push({ y: (yc + 0.5) / dpr, x0: x0 / dpr, x1: (x1 + 1) / dpr, traits, pastilles, chevron });
   }
   return out;
 });
 /** Le réseau des graduations : le pas médian, chaque trait à son rang, la régression — et le plus grand écart au réseau. */
 function reseau(traits) {
   if (traits.length < 4) return null;
-  const ecarts = traits.slice(1).map((c, i) => c - traits[i]).sort((a, b) => a - b);
-  const sp = ecarts[Math.floor(ecarts.length / 2)];
+  // le pas : la MOYENNE des écarts d'un seul rang, pas leur médiane. Les traits sont posés au
+  // pixel (9 ou 10 px pour un pas de 9,63) : la médiane rendait 10, et sur 46 décades le rang du
+  // dernier trait tombait à 44 — tout l'axe glissait de deux décades (premier lancement)
+  const ecarts = traits.slice(1).map((c, i) => c - traits[i]);
+  const med = [...ecarts].sort((a, b) => a - b)[Math.floor(ecarts.length / 2)];
+  const simples = ecarts.filter((e) => e > 0.6 * med && e < 1.4 * med);
+  const sp = simples.reduce((a, e) => a + e, 0) / simples.length;
   const pts = traits.map((c) => [Math.round((c - traits[0]) / sp), c]);
   const n = pts.length, sx = pts.reduce((s, p) => s + p[0], 0), sy = pts.reduce((s, p) => s + p[1], 0);
   const sxx = pts.reduce((s, p) => s + p[0] * p[0], 0), sxy = pts.reduce((s, p) => s + p[0] * p[1], 0);
@@ -323,15 +340,12 @@ const flecheSous = (y, qq = panneau) => qq.evaluate((_el, y) => {
   for (let X = 0; X < w; X++) for (let dy = -2; dy <= 2; dy++) if (cls[(Y + dy) * w + X] === 1) { if (a === null) a = X; b = X; }
   if (a === null) return null;
   const haut = (X) => { let n = 0; for (let dy = -6; dy <= 6; dy++) if (cls[(Y + dy) * w + X] === 1) n++; return n; };
-  const g = Math.max(haut(a + 1), haut(a + 2), haut(a + 3)), d = Math.max(haut(b - 1), haut(b - 2), haut(b - 3));
+  // la tête est un triangle : FINE contre la pointe, LARGE à sa base (~6 px du bout) — la mesure se
+  // prend de 3 à 7 px de chaque bout (premier lancement : prise à 1–3 px, elle rendait « ? » partout)
+  const zone = (x0, sens) => Math.max(...[3, 4, 5, 6, 7].map((k) => haut(x0 + sens * Math.round(k * dpr))));
+  const g = zone(a, 1), d = zone(b, -1);
   return { x0: a / dpr, x1: (b + 1) / dpr, pointe: g > d + 1 ? "gauche" : d > g + 1 ? "droite" : "?" };
 }, y);
-/** un chevron : un triangle plein d'encre juste AU-DELÀ d'un bout de la règle (jamais dedans) */
-const chevronSur = (r, qq = panneau) => qq.evaluate((_el, r) => {
-  const { cls, w, h, dpr } = window.__cls;
-  const n = (xa, xb) => { let c = 0; for (let Y = Math.round((r.y - 5) * dpr); Y <= Math.round((r.y + 5) * dpr); Y++) for (let X = Math.round(xa * dpr); X <= Math.round(xb * dpr); X++) if (X >= 0 && X < w && Y >= 0 && Y < h && cls[Y * w + X] === 2) c++; return c; };
-  return { gauche: n(r.x0 - 10, r.x0 - 2) > 12, droite: n(r.x1 + 2, r.x1 + 10) > 12 };
-}, r);
 
 // ── LE MESUREUR : ce que le dessin dit de l'état, en DÉCADES, depuis ses propres graduations ──
 async function mesurer(qq = panneau) {
@@ -344,7 +358,7 @@ async function mesurer(qq = panneau) {
   const kx = axe ? await pivotSur(axe.y, axe.x0, axe.x1, qq) : null;
   const kbx = bande ? await pivotSur(bande.y, bande.x0, bande.x1, qq) : null;
   const fA = axe ? await flecheSous(axe.y, qq) : null, fB = bande ? await flecheSous(bande.y, qq) : null;
-  const ch = bande ? await chevronSur(bande, qq) : null;
+  const ch = bande ? bande.chevron : null;
   return { c, axe, bande, ra, rb, decAxe, px, kx, kbx, fA, fB, ch };
 }
 
@@ -519,7 +533,7 @@ async function frontiere(ou, qq = panneau) {
 const GRADUEE = [
   [1, "25 mélanges / ordres de grandeur", /25 m[ée]langes|sur 25|ordres? de grandeur/iu],
   [2, "étain / Sn", /[ée]tain|(^|[^\p{L}])Sn(?![\p{L}])/u], [2, "plomb / Pb", /plomb|(^|[^\p{L}])Pb(?![\p{L}])/u], [2, "dépôt", /d[ée]p[ôo]t/iu], [2, "essai précédent", /essai pr[ée]c[ée]dent/iu],
-  [2, "K = 2,5", /2\{,\}5|2,5/u], [2, "se retourne", /se retourne/iu], [2, "oxydé", /oxyd[ée]/iu], [2, "réduit", /r[ée]dui(t|re)/iu],
+  [2, "K = 2,5", /2(?:\{,\}|,)5(?!\s*(?:\\times|×))/u], [2, "se retourne", /se retourne/iu], [2, "oxydé", /oxyd[ée]/iu], [2, "réduit", /r[ée]dui(t|re)/iu],
   [3, "argent / Ag", /argent|(^|[^\p{L}])Ag(?![\p{L}])/u], [3, "exposant", /exposant/iu], [3, "puissance", /(?<!10 )puissance/iu], [3, "au carré / ^2", /au carr[ée]|\]\^\{?2\}?(?![+\d])/u],
   [3, "coefficient stœchiométrique", /coefficient st[œo]e?chiom/iu], [3, "2017", /2017/u], [3, "aluminium", /aluminium/iu],
   [4, "équilibre", /[ée]quilibre/iu], [4, "n'évolue pas", /n['’][ée]volue pas/iu], [4, "microscopique", /microscopique/iu], [4, "se compensent", /se compensent/iu], [4, "aucune, à l'échelle", /aucune, [àa] l['’][ée]chelle/iu],

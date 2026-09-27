@@ -243,8 +243,8 @@ export function QuotientPanel({ scene, className }: { scene: Scene3DDescriptor; 
       [
         { el: refs.qri.current, p: en(ancreQri, logQ !== null), directions: [[0, -1], [1, -1], [-1, -1], [0, 1], [1, 1], [-1, 1]], portee: 40 },
         { el: refs.k.current, p: en(ancreK), directions: [[0, -1], [-1, -1], [1, -1], [0, 1], [-1, 1], [1, 1]], portee: 40 },
-        { el: refs.especeProduit.current, p: en("espece-produit"), directions: [[0, 1], [-1, 1], [1, 1], [0, -1]], portee: 26 },
-        { el: refs.especeOxydant.current, p: en("espece-oxydant"), directions: [[0, 1], [1, 1], [-1, 1], [0, -1]], portee: 26 },
+        { el: refs.especeProduit.current, p: en("espece-produit"), directions: [[1, 0], [1, 1], [1, -1], [0, 1]], portee: 10 },
+        { el: refs.especeOxydant.current, p: en("espece-oxydant"), directions: [[1, 0], [1, -1], [1, 1], [0, 1]], portee: 10 },
         { el: refs.roleOxyde.current, p: en("role-oxyde", rolesVisibles), directions: [[0, -1], [-1, -1], [1, -1]], portee: 22 },
         { el: refs.roleReduit.current, p: en("role-reduit", rolesVisibles), directions: [[0, -1], [1, -1], [-1, -1]], portee: 22 },
       ],
@@ -268,6 +268,10 @@ export function QuotientPanel({ scene, className }: { scene: Scene3DDescriptor; 
       setIndexEtape(i);
       pari.changerEtape(etapes[indexEtape].id, e.id, i === 0 && indexEtape === etapes.length - 1);
       reveleApplique.current = false;
+      // la région vivante se TAIT en changeant d'étape : elle gardait la dernière phrase de l'étape
+      // d'avant — « Q_{r,i} = 10. sens inverse (2). » restait dite avant le pari de S4, dont
+      // Q_{r,i} est précisément la réponse (première mesure de la porte)
+      setAnnonce("");
       setEtat((c) => appliquer(e.etat, c));
     },
     [etapes, pari, indexEtape]

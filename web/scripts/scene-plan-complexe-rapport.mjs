@@ -756,7 +756,8 @@ async function etatPose(k) {
 // (vague 2, calme : |w| et arg(w) ne sont plus des lectures de S3 — la consigne les donne, `nature` les redit)
 const ENONCEES = { [ID[0]]: "", [ID[1]]: "w", [ID[2]]: "w", [ID[3]]: "" };
 const APRES = { [ID[0]]: "vecteurs,w", [ID[1]]: "argument-w,longueurs,module-w,w", [ID[2]]: "nature,w", [ID[3]]: "rapport-lieu" };
-const CTRL = { [ID[0]]: "position", [ID[1]]: "forme", [ID[2]]: "sommet", [ID[3]]: "pointM" };
+// (vague 2, ergonomie : le curseur de balayage tient sa place dès la révélation de S4, inerte hors d'un lieu)
+const CTRL = { [ID[0]]: "position", [ID[1]]: "forme", [ID[2]]: "sommet", [ID[3]]: "balayage,pointM" };
 async function avantPari(k) {
   const id = ID[k];
   const { accentN } = await classer();
@@ -934,6 +935,10 @@ if (pret) {
     await etatPose(3);
     await classer();
     const E4 = await echelleLue();
+    // L'ÉCHELLE DU MODE LIEU EST SA PROPRE ÉCHELLE (vague 2, dessin : ±7 au mode triangle, ±9 au mode
+    // lieu) — tout ce que S4 place (M, les courbes, l'arc, le balayage) se lit sur elle. La première
+    // mesure après la vague 2 plaçait M à 15 px de sa place : elle lisait encore l'échelle de S1.
+    if (E4.ok) E0 = E4;
     if (E4.ok) {
       const att = (Math.sqrt(3) / 2) * E4.sX;
       const okC = E4.bas !== null && E4.gauche !== null && Math.abs(E4.bas - att) <= 1.2 && Math.abs(E4.gauche - att) <= 1.2;

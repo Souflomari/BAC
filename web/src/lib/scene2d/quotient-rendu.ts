@@ -396,8 +396,12 @@ export function creerRenduQuotient(canvas: HTMLCanvasElement, hote: HTMLElement)
     }
 
     // les deux noms d'espèce (les ions en solution) — toujours, c'est l'énoncé
-    rep["espece-produit"] = P(cx - bw * 0.32, yLiq + 12);
-    rep["espece-oxydant"] = P(cx + bw * 0.32, yLiq + 12);
+    // DANS la solution, à droite de la lame, l'une sous l'autre : la première pose (de part et
+    // d'autre de la lame, sous la surface) mettait « [Zn²⁺] » sur la paroi et « [Sn²⁺] » sur la lame
+    // (première mesure de la porte : 46 px de trait sous chaque nom)
+    const xNoms = cx + bw * 0.14;
+    rep["espece-produit"] = P(xNoms, yLiq + 0.24 * (yB1 - yLiq));
+    rep["espece-oxydant"] = P(xNoms, yLiq + 0.52 * (yB1 - yLiq));
 
     // les rôles — SEULEMENT révélés, JAMAIS à l'équilibre (§5.5 C, §9)
     const visible = e.accent && e.rolesAutorises && !!e.verdict && e.verdict !== "equilibre";
