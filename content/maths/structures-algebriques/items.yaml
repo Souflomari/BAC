@@ -1540,14 +1540,36 @@ items:
   #           qu'en SA-27, cette fois avec les deux conditions acquises).
   #   SA-30 / SA-31 : lire le neutre, puis un symétrique, comme des images
   #           par φ — pas comme les nombres du groupe de départ laissés tels
-  #           quels (φ(x)=e^x, source (ℝ,+), arrivée (ℝ_+^*,×) : jamais
-  #           utilisé dans ce fichier ni dans les sites de banc relus).
+  #           quels. Redressés le 2026-09-27 (wave-1, critique pédagogie
+  #           I-7) : l'habillage $\varphi(x)=e^x$, $(\mathbb{R},+)\to
+  #           (\mathbb{R}_+^*,\times)$ rendait le neutre ($1$) et le
+  #           symétrique ($e^{-3}$) devinables sans transport, par pur
+  #           réflexe (« le neutre de $\times$, c'est $1$ » ; « l'inverse de
+  #           $e^x$ est $e^{-x}$ », un fait archi-connu hors leçon). SA-30
+  #           reprend désormais les matrices de cisaillement $M(t)$ de
+  #           SA-27/SA-29 (neutre $M(0)$, jamais un réflexe pour un élève qui
+  #           ne pattern-matche pas « $\times$ demande un $1$ » sur un
+  #           ensemble de matrices) ; SA-31 reprend $(\mathbb{R},\star)$,
+  #           $x\star y=x+y-7$ de SA-28 (symétrique de $\varphi(8)$, un
+  #           antécédent distinct de celui de SA-32 pour ne pas cloner).
   #   SA-32 : variation fraîche sur le même geste (neutre + symétrique),
   #           habillage différent (retour à x⋆y=x+y−7 de SA-28), pour ne pas
   #           laisser un seul exemple porter tout le plancher.
   #   SA-33 : le cas à deux lois, en bref — un isomorphisme qui respecte à la
   #           fois ⊕ et ⊗ transporte d'un coup la structure de corps
   #           commutatif de $(\mathbb{R},+,\times)$.
+  #   SA-34 : ajouté le 2026-09-27 (wave-1, critique fidélité I4 — rampe
+  #           plate, cinq items sur sept en « choisis la justification »).
+  #           Habillage MATRICE frais (jamais réutilisé dans ce fichier ni
+  #           dans bank.yaml:451/:1601) : le corps $\mathbb{Q}(\sqrt5)$
+  #           représenté par $N(x,y)=\begin{pmatrix}x&5y\\y&x\end{pmatrix}$ —
+  #           forme apparentée aux sites du banc cités (un corps de matrices
+  #           2×2 image d'un corps quadratique), mais ensemble, radicande et
+  #           coefficients propres à cet item, jamais recopiés. Demande de
+  #           PRODUIRE $e_F$ et un symétrique (réponse numérique/matricielle,
+  #           pas une justification à choisir), puis la conclusion à deux
+  #           lois (corps commutatif) — niveau 4, seul item de ce niveau dans
+  #           la famille transport.
   #
   # Trois familles jamais réutilisées d'un site de bank.yaml relu pour cette
   # tâche (matrices diagonales M(x,y) ou M(x) triangulaires, ℂ vu comme
@@ -1783,15 +1805,16 @@ items:
     skill_code: maths_structures_alg
     tags: [misconception_driven, maths_structures_alg, isomorphisme, transport, neutre]
     stem: |
-      On admet que $(\mathbb{R}_+^*,\times)$ est un groupe commutatif et que
-      $\varphi:\mathbb{R}\to\mathbb{R}_+^*$, $\varphi(x)=e^x$, est un
-      isomorphisme de $(\mathbb{R},+)$ vers $(\mathbb{R}_+^*,\times)$. Quel
-      est l'élément neutre de $(\mathbb{R}_+^*,\times)$, obtenu par
+      On reprend $F=\left\{M(t)=\begin{pmatrix}1&0\\t&1\end{pmatrix}
+      \mid t\in\mathbb{R}\right\}$ (chapitre 10) : on admet que $(F,\times)$
+      est un groupe commutatif et que $\varphi:\mathbb{R}\to F$,
+      $\varphi(t)=M(t)$, est un isomorphisme de $(\mathbb{R},+)$ vers
+      $(F,\times)$. Quel est l'élément neutre de $(F,\times)$, obtenu par
       transport ?
     type: mcq
     choices:
       - id: A
-        text: "$1$, car $1=\\varphi(0)=e^0$, image par $\\varphi$ du neutre $0$ de $(\\mathbb{R},+)$."
+        text: "$M(0)$, image par $\\varphi$ du neutre $0$ de $(\\mathbb{R},+)$."
         correct: true
       - id: B
         text: "$0$, le même neutre que celui de $(\\mathbb{R},+)$."
@@ -1799,39 +1822,41 @@ items:
         misconception: mc.math.structures_algebriques.neutre-non-transporte
         feedback: |
           Modèle détecté : le neutre gardé tel quel d'une structure à
-          l'autre. $E=\mathbb{R}$ et $F=\mathbb{R}_+^*$ sont deux ensembles
-          différents, avec deux neutres différents, reliés par $\varphi$ :
-          le neutre de $F$ n'est pas $0$ (qui n'appartient même pas à
-          $\mathbb{R}_+^*$), c'est $\varphi(0)=1$. Vérifie-le directement :
-          $x\times1=x$ pour tout $x>0$, alors que $0$ n'a pas de sens comme
-          élément de $\mathbb{R}_+^*$.
+          l'autre. $0$ n'est même pas un élément de $F$ (ce n'est pas une
+          matrice) : le neutre de $F$ n'est pas $0$, c'est $\varphi(0)=M(0)$.
+          Vérifie-le directement : $M(t)\times M(0) = M(t)$ pour tout $t$,
+          alors que $0$ n'a pas de sens comme élément de $F$.
       - id: C
-        text: "Il n'existe pas d'élément neutre pour $\\times$ sur $\\mathbb{R}_+^*$."
+        text: "Il n'existe pas d'élément neutre pour $\\times$ sur $F$."
         correct: false
         misconception: mc.math.structures_algebriques.neutre-vs-symetrique
         feedback: |
-          Il existe bien un neutre : $1$, puisque $x\times1=x$ pour tout
-          $x\in\mathbb{R}_+^*$. Ne pas le trouver directement ne signifie pas
-          qu'il n'existe pas — ici, le transport par $\varphi$ le donne sans
-          qu'il y ait à le chercher à tâtons.
+          Il existe bien un neutre :
+          $M(0)=\begin{pmatrix}1&0\\0&1\end{pmatrix}$, puisque
+          $M(t)\times M(0) = M(t)$ pour tout $t$. Ne pas le trouver
+          directement ne signifie pas qu'il n'existe pas — ici, le transport
+          par $\varphi$ le donne sans qu'il y ait à le chercher à tâtons.
       - id: D
-        text: "$\\dfrac{1}{e}$, l'inverse de $e$."
+        text: "$M(-1)$, l'inverse de $M(1)$."
         correct: false
         misconception: mc.math.structures_algebriques.neutre-vs-symetrique
         feedback: |
-          $\dfrac1e$ ressemble à un symétrique, pas à un neutre : deux rôles
+          $M(-1)$ ressemble à un symétrique, pas à un neutre : deux rôles
           distincts (chapitre 3). Le neutre est unique et ne dépend d'aucun
-          élément particulier ; ici, c'est $\varphi(0)=1$.
+          élément particulier ; ici, c'est $\varphi(0)=M(0)$.
     correct_feedback: |
-      Le neutre de $(\mathbb{R}_+^*,\times)$ est l'image par $\varphi$ du
-      neutre $0$ de $(\mathbb{R},+)$ : $\varphi(0)=e^0=1$. Pas $0$ lui-même,
-      qui reste un nombre de $\mathbb{R}$, jamais de $\mathbb{R}_+^*$.
+      Le neutre de $(F,\times)$ est l'image par $\varphi$ du neutre $0$ de
+      $(\mathbb{R},+)$ : $\varphi(0)=M(0)$. Pas $0$ lui-même, qui reste un
+      réel, jamais un élément de $F$.
     solution: |
       Par transport (chapitre 10), le neutre de la structure d'arrivée est
       l'**image par $\varphi$** du neutre de la structure de départ, jamais
-      le même nombre laissé tel quel :
-      $$e_F = \varphi(e_E) = \varphi(0) = e^0 = 1$$
-      Vérification directe : $x\times1=x$ pour tout $x\in\mathbb{R}_+^*$.
+      le même objet laissé tel quel :
+      $$e_F = \varphi(e_E) = \varphi(0) = M(0) = \begin{pmatrix}1&0\\0&1\end{pmatrix}$$
+      Vérification directe :
+      $$M(t)\times M(0) = \begin{pmatrix}1&0\\t&1\end{pmatrix}
+      \begin{pmatrix}1&0\\0&1\end{pmatrix} = \begin{pmatrix}1&0\\t&1\end{pmatrix} = M(t)$$
+      pour tout $t$.
 
   - id: SA-31
     rung: "R7"
@@ -1840,53 +1865,55 @@ items:
     skill_code: maths_structures_alg
     tags: [misconception_driven, maths_structures_alg, isomorphisme, transport, symetrique]
     stem: |
-      Avec le même isomorphisme $\varphi(x)=e^x$ de $(\mathbb{R},+)$ vers
-      $(\mathbb{R}_+^*,\times)$, quel est le symétrique de $e^{3}$ pour
-      $\times$, obtenu par transport ?
+      Toujours avec $(\mathbb{R},\star)$ où $x\star y=x+y-7$, isomorphe à
+      $(\mathbb{R},+)$ via $\varphi(t)=t+7$ (chapitre 10) : quel est le
+      symétrique de $\varphi(8)$ pour $\star$, obtenu par transport ?
     type: mcq
     choices:
       - id: A
-        text: "$e^{-3}$, image par $\\varphi$ du symétrique de $3$ dans $(\\mathbb{R},+)$, qui est $-3$."
+        text: "$\\varphi(-8)$, image par $\\varphi$ du symétrique de l'antécédent $8$ dans $(\\mathbb{R},+)$, qui est $-8$."
         correct: true
       - id: B
-        text: "$-3$, le symétrique de $3$ dans $(\\mathbb{R},+)$."
+        text: "$-8$, le symétrique de l'antécédent $8$ dans $(\\mathbb{R},+)$."
         correct: false
         misconception: mc.math.structures_algebriques.neutre-non-transporte
         feedback: |
-          Modèle détecté : le symétrique laissé dans la mauvaise structure.
-          $-3$ est bien le symétrique de $3$ dans $(\mathbb{R},+)$, mais
-          $-3\notin\mathbb{R}_+^*$ : ce n'est pas un élément de la structure
-          d'arrivée. Il faut encore appliquer $\varphi$ à ce $-3$ : le
-          symétrique de $e^3$ dans $\mathbb{R}_+^*$ est $\varphi(-3)=e^{-3}$.
+          Modèle détecté : le symétrique laissé dans la structure de départ.
+          $-8$ est bien le symétrique de $8$ dans $(\mathbb{R},+)$, mais
+          c'est un résultat intermédiaire, pas la réponse : il reste à lui
+          appliquer $\varphi$. Le symétrique de $\varphi(8)$ dans
+          $(\mathbb{R},\star)$ est $\varphi(-8)$, pas $-8$.
       - id: C
-        text: "$1$, l'élément neutre de $(\\mathbb{R}_+^*,\\times)$."
+        text: "$7$, l'élément neutre de $(\\mathbb{R},\\star)$."
         correct: false
         misconception: mc.math.structures_algebriques.neutre-vs-symetrique
         feedback: |
-          $1$ est le neutre de $(\mathbb{R}_+^*,\times)$ — pas le symétrique
-          de $e^3$. Un symétrique dépend de l'élément qu'il accompagne ; le
-          neutre, lui, est unique et fixe pour tout le groupe : $e^3\times1=
-          e^3\neq1$ en général.
+          $7$ est le neutre de $(\mathbb{R},\star)$ — pas le symétrique de
+          $\varphi(8)$. Un symétrique dépend de l'élément qu'il accompagne ;
+          le neutre, lui, est unique et fixe pour tout le groupe : vérifie
+          $\varphi(8)\star7 = 15\star7 = 15+7-7=15\neq7$.
       - id: D
-        text: "$e^{3}$ lui-même : dans $(\\mathbb{R}_+^*,\\times)$, tout élément positif est son propre symétrique."
+        text: "$\\varphi(8)$ lui-même : dans $(\\mathbb{R},\\star)$, tout élément est son propre symétrique."
         correct: false
         misconception: mc.math.structures_algebriques.generalisation-hative
         feedback: |
-          Faux en général : $e^3\times e^3=e^6\neq1$. Seul $1$ est son propre
-          symétrique dans $(\mathbb{R}_+^*,\times)$ ; ce n'est pas vrai pour
-          les autres éléments, et ça ne se suppose pas, ça se vérifie
-          élément par élément — ou, ici, ça se lit par transport.
+          Faux en général : vérifie sur $\varphi(8)=15$ :
+          $15\star15=15+15-7=23\neq7$. Seul le neutre $7$ est son propre
+          symétrique dans $(\mathbb{R},\star)$ ; ce n'est pas vrai pour les
+          autres éléments, et ça ne se suppose pas, ça se vérifie élément par
+          élément — ou, ici, ça se lit par transport.
     correct_feedback: |
-      Le symétrique de $e^3$ est l'image par $\varphi$ du symétrique, dans
-      $(\mathbb{R},+)$, de l'antécédent $3$ — c'est-à-dire de $-3$ :
-      $\varphi(-3)=e^{-3}$. Vérification : $e^3\times e^{-3}=e^0=1$.
+      Le symétrique de $\varphi(8)$ est l'image par $\varphi$ du symétrique,
+      dans $(\mathbb{R},+)$, de l'antécédent $8$ — c'est-à-dire de $-8$ :
+      $\varphi(-8)=-8+7=-1$. Vérification : $\varphi(8)\star\varphi(-8) =
+      15\star(-1) = 15-1-7=7$, le neutre.
     solution: |
       Par transport, le symétrique de $\varphi(x)$ est $\varphi(x'_E)$, où
       $x'_E$ est le symétrique de $x$ dans la structure de départ — jamais
       $x'_E$ laissé tel quel dans $\mathbb{R}$ :
-      $$\big(e^{3}\big)' = \varphi(-3) = e^{-3}$$
-      Vérification : $e^{3}\times e^{-3}=e^{0}=1$, le neutre de
-      $(\mathbb{R}_+^*,\times)$.
+      $$\big(\varphi(8)\big)' = \varphi(-8) = -8+7 = -1$$
+      Vérification : $\varphi(8)\star\varphi(-8) = 15\star(-1) = 15-1-7=7 =
+      \varphi(0)$, le neutre de $(\mathbb{R},\star)$.
 
   - id: SA-32
     rung: "R7"
@@ -1903,7 +1930,7 @@ items:
       - id: A
         text: |
           $4$ : image par $\varphi$ du symétrique de l'antécédent $3$ (à
-          savoir $-3$) dans $(\mathbb{R},\star)$.
+          savoir $-3$) dans $(\mathbb{R},+)$.
         correct: true
       - id: B
         text: |
@@ -2033,6 +2060,99 @@ items:
       $\varphi(1)=1+7=8$ — vérification : $x\otimes8=8x-7x-56+56=x$, pour
       tout $x\in\mathbb{R}$.
 
+  - id: SA-34
+    rung: "R7"
+    habilete: synthese
+    difficulty_level: 4
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, isomorphisme, transport, anneau, corps, matrices]
+    stem: |
+      On pose $E=\mathbb{Q}(\sqrt5)=\{x+y\sqrt5 \mid (x,y)\in\mathbb{Q}^2\}$,
+      muni de $+$ et $\times$ usuels, et
+      $F=\left\{N(x,y)=\begin{pmatrix}x&5y\\y&x\end{pmatrix} \middle|
+      (x,y)\in\mathbb{Q}^2\right\}$, muni de $+$ et $\times$ usuels des
+      matrices. On admet que $(E,+,\times)$ est un corps commutatif, et que
+      $\psi:E\to F$, $\psi(x+y\sqrt5)=N(x,y)$, vérifie
+      $\psi(z+z')=\psi(z)+\psi(z')$ et $\psi(z\times z')=\psi(z)\times\psi(z')$
+      pour tous $z,z'\in E$, et que $\psi$ est bijective. Quels sont, dans
+      $(F,+,\times)$, l'élément neutre pour $\times$ et le symétrique de
+      $N(2,1)$ pour $\times$ — et que peut-on en conclure sur $(F,+,\times)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $N(1,0)$ pour le neutre, $N(-2,1)$ pour le symétrique de
+          $N(2,1)$ : $\psi$ transporte d'un coup, depuis le corps commutatif
+          $(E,+,\times)$, toute la structure de $(F,+,\times)$, qui est donc
+          lui aussi un corps commutatif.
+        correct: true
+      - id: B
+        text: |
+          $1$ pour le neutre, laissé tel quel comme celui de $E$ sans lui
+          appliquer $\psi$ ; $N(-2,1)$ pour le symétrique de $N(2,1)$ ;
+          $(F,+,\times)$ est un corps commutatif.
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-non-transporte
+        feedback: |
+          Modèle détecté : le neutre gardé tel quel d'une structure à
+          l'autre. $1$ n'est même pas un élément de $F$ (ce n'est pas une
+          matrice) : le neutre de $F$ est l'image par $\psi$ du neutre $1$
+          de $E$, soit $\psi(1)=N(1,0)$.
+      - id: C
+        text: |
+          $N(1,0)$ pour le neutre, $N(-2,1)$ pour le symétrique de
+          $N(2,1)$ ; mais cela ne suffit qu'à un anneau, faute d'avoir
+          vérifié que chaque $N(x,y)$ non nul de $F$ soit inversible pour
+          $\times$.
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
+        feedback: |
+          Modèle détecté : la structure de corps mise en doute alors qu'elle
+          se transporte. $(E,+,\times)$ est un corps : chaque élément non
+          nul y est inversible pour $\times$. L'isomorphisme $\psi$
+          transporte cette propriété d'un coup à $(F,+,\times)$, exactement
+          comme il transporte le neutre ou le symétrique — rien de plus à
+          vérifier au cas par cas.
+      - id: D
+        text: |
+          $N(1,0)$ pour le neutre, et ce même $N(1,0)$ pour le symétrique de
+          $N(2,1)$, ce rôle lui revenant déjà ; $(F,+,\times)$ est un corps
+          commutatif.
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: |
+          Modèle détecté : le symétrique confondu avec le neutre. Le neutre
+          $N(1,0)$ est unique et ne change rien à personne
+          ($N(2,1)\times N(1,0) = N(2,1)$) ; le symétrique de $N(2,1)$, lui,
+          dépend de $N(2,1)$ et doit redonner ce neutre par produit — c'est
+          $N(-2,1)$, pas $N(1,0)$.
+    correct_feedback: |
+      $\psi$ respecte les deux lois et est bijective : c'est un isomorphisme
+      qui transporte d'un coup la structure de corps commutatif de $E$ vers
+      $F$. Neutre : $\psi(1)=N(1,0)$. Symétrique de $N(2,1)$ : l'antécédent
+      est $2+\sqrt5$, dont l'inverse dans $E$ est $-2+\sqrt5$ (rationalisé :
+      $\frac{1}{2+\sqrt5}=\frac{2-\sqrt5}{4-5}=-2+\sqrt5$), d'image
+      $N(-2,1)$.
+    solution: |
+      Neutre de $\times$ dans $E$ : $1=1+0\sqrt5$. Son image :
+      $$e_F=\psi(1)=N(1,0)=\begin{pmatrix}1&0\\0&1\end{pmatrix}$$
+      Symétrique de $N(2,1)$ : on cherche d'abord l'inverse, dans $E$, de
+      l'antécédent $z=2+\sqrt5$ :
+      $$\frac{1}{2+\sqrt5} = \frac{2-\sqrt5}{(2+\sqrt5)(2-\sqrt5)} =
+      \frac{2-\sqrt5}{4-5} = -2+\sqrt5$$
+      Son image par $\psi$ :
+      $$\psi(-2+\sqrt5) = N(-2,1) = \begin{pmatrix}-2&5\\1&-2\end{pmatrix}$$
+      Vérification directe (produit matriciel) :
+      $$N(2,1)\times N(-2,1) = \begin{pmatrix}2&5\\1&2\end{pmatrix}
+      \begin{pmatrix}-2&5\\1&-2\end{pmatrix} =
+      \begin{pmatrix}-4+5&10-10\\-2+2&5-4\end{pmatrix} =
+      \begin{pmatrix}1&0\\0&1\end{pmatrix} = N(1,0)$$
+      $\psi$ respecte $+$ et $\times$, et est bijective : c'est un
+      isomorphisme à deux lois. $(E,+,\times)$ étant un corps commutatif,
+      $(F,+,\times)$ l'est aussi — neutre, symétriques et inversibilité de
+      tout élément non nul compris, sans qu'il y ait eu à re-développer ces
+      propriétés directement sur les matrices.
+
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2042,15 +2162,15 @@ coverage_summary:
     web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.math.structures_algebriques.loi-modulaire-mal-calculee: { count: 3, items: [SA-7, SA-25, SA-26] }
-    mc.math.structures_algebriques.neutre-vs-symetrique:       { count: 12, items: [SA-1, SA-2, SA-8, SA-12, SA-14, SA-20, SA-23, SA-24, SA-26, SA-30, SA-31, SA-32] }
+    mc.math.structures_algebriques.neutre-vs-symetrique:       { count: 13, items: [SA-1, SA-2, SA-8, SA-12, SA-14, SA-20, SA-23, SA-24, SA-26, SA-30, SA-31, SA-32, SA-34] }
     mc.math.structures_algebriques.axiome-oublie:              { count: 7, items: [SA-3, SA-4, SA-22, SA-27, SA-28, SA-29, SA-33] }
-    mc.math.structures_algebriques.groupe-anneau:              { count: 7, items: [SA-5, SA-6, SA-18, SA-19, SA-20, SA-21, SA-33] }
+    mc.math.structures_algebriques.groupe-anneau:              { count: 8, items: [SA-5, SA-6, SA-18, SA-19, SA-20, SA-21, SA-33, SA-34] }
     mc.math.structures_algebriques.cloture-non-verifiee:       { count: 8, items: [SA-3, SA-6, SA-7, SA-8, SA-10, SA-11, SA-12, SA-18] }
     mc.math.structures_algebriques.assoc-commut-confusion:     { count: 6, items: [SA-9, SA-11, SA-13, SA-15, SA-16, SA-17] }
     mc.math.structures_algebriques.generalisation-hative:      { count: 12, items: [SA-13, SA-14, SA-15, SA-16, SA-17, SA-18, SA-20, SA-27, SA-28, SA-29, SA-31, SA-32] }
     mc.math.structures_algebriques.groupe-implique-commutatif: { count: 5, items: [SA-15, SA-17, SA-22, SA-28, SA-29] }
-    mc.math.structures_algebriques.neutre-non-transporte:      { count: 4, items: [SA-30, SA-31, SA-32, SA-33] }
-  total_items: 33
+    mc.math.structures_algebriques.neutre-non-transporte:      { count: 5, items: [SA-30, SA-31, SA-32, SA-33, SA-34] }
+  total_items: 34
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2061,14 +2181,39 @@ coverage_summary:
     R4: 3
     R5: 3
     R6: 3
-    R7: 10
+    R7: 11
+  habilete_ramp_transport_family: >-
+    Sur les huit items de la famille transport (SA-27..SA-34, les seuls à
+    porter l'étiquette `habilete`) : application_directe ×2 (SA-30, SA-31),
+    application_non_explicite ×3 (SA-27, SA-28, SA-32), synthese ×3 (SA-29,
+    SA-33, SA-34) — soit 25 % / 37,5 % / 37,5 %. Cible du chantier ≈
+    40/40/20 ; l'écart est assumé plutôt que maquillé : SA-34 conclut à la
+    fois le neutre, le symétrique ET la structure de corps à deux lois —
+    exactement le geste qui fait de SA-29 et SA-33 des `synthese`, donc
+    honnêtement la même étiquette, pas `application_directe` pour forcer le
+    ratio. Niveaux de difficulté de la famille désormais 3,3,3,2,2,3,3,4 —
+    la rampe n'est plus plate (un item de niveau 4, cinq des huit qui ne sont
+    plus « choisis la justification » : SA-30/31/32/34 demandent une valeur
+    produite, matricielle ou non).
   honest_state: >-
     Neuf misconceptions déclarées, toutes au-dessus du plancher de 3 —
     aucune à zéro marge désormais. `neutre-non-transporte` (dette d'examen
     vague B2, GAP-B transport de structure, docs/audits/dette-examen/maths.md
-    ~l.374) est neuve dans cette révision : entrée directe à 4, sur quatre
-    habillages distincts (exponentielle, droite réelle décalée, cas à deux
-    lois). `axiome-oublie` (3→7) et `groupe-implique-commutatif` (3→5)
-    gagnent de la marge via les nouveaux items R7 sur l'isomorphisme et le
-    transport ; `assoc-commut-confusion` et `cloture-non-verifiee` restent
-    inchangés, hors du périmètre de cette tâche.
+    ~l.374) est neuve depuis la révision précédente : 4→5 avec SA-34. Wave-1
+    (2026-09-27, critique double pédagogie + fidélité) : SA-30 et SA-31,
+    jusque-là habillés en $\varphi(x)=e^x$ vers $(\mathbb{R}_+^*,\times)$,
+    devinables sans transport (neutre $1$ et symétrique $e^{-3}$ tous deux
+    des réflexes archi-connus hors leçon), sont redressés — SA-30 sur les
+    matrices de cisaillement de SA-27/29 (neutre $M(0)$), SA-31 sur la droite
+    décalée de SA-28 (symétrique de $\varphi(8)$, antécédent distinct de
+    celui de SA-32) ; aucun changement de misconception ciblée, seulement de
+    l'habillage. SA-34 est neuf : premier item de niveau 4 de la famille,
+    habillage matriciel frais ($\mathbb{Q}(\sqrt5)$ vu comme
+    $N(x,y)=\begin{pmatrix}x&5y\\y&x\end{pmatrix}$, jamais réutilisé de
+    bank.yaml ni des habillages déjà présents ici), qui fait PRODUIRE $e_F$
+    et un symétrique au lieu de choisir une justification, et conclut le cas
+    à deux lois (corps). `axiome-oublie` (3→7) et
+    `groupe-implique-commutatif` (3→5) restent à leur marge acquise lors de
+    la révision précédente ; `assoc-commut-confusion` et
+    `cloture-non-verifiee` restent inchangés, hors du périmètre de cette
+    tâche.

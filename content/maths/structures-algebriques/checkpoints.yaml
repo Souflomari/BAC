@@ -481,16 +481,16 @@ checkpoints:
 
       - id: C
         text: |
-          Oui : on a vu que $\varphi(1)=2$ correspond bien au neutre attendu
-          de $(F,\star)$, ça confirme que $\varphi$ est bijective.
+          Oui : il suffit de vérifier que $\varphi$ envoie le neutre sur le
+          neutre, ça confirme que $\varphi$ est bijective.
         correct: false
         misconception: mc.math.structures_algebriques.generalisation-hative
         feedback: |
-          Modèle détecté : un cas particulier généralisé. Que $\varphi(1)=2$
-          tombe juste sur le neutre attendu est cohérent, mais ça ne dit rien
-          de **tous** les autres éléments de $F$ : la bijectivité se prouve
-          pour l'application entière, elle ne se confirme pas sur un seul
-          point remarquable.
+          Modèle détecté : un cas particulier généralisé. Que $\varphi$
+          envoie effectivement le neutre sur le neutre est cohérent, mais ça
+          ne dit rien de **tous** les autres éléments de $F$ : la
+          bijectivité se prouve pour l'application entière, elle ne se
+          confirme pas sur un seul point remarquable.
 
       - id: D
         text: |
