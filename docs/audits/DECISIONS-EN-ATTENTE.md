@@ -2019,3 +2019,16 @@ un arbre bâti sur la branche par défaut, vieille de plusieurs semaines (l'appl
 — c'était la bonne réponse. Et deux auteurs d'items ont été coupés par une limite de débit en
 pleine écriture : RL-27 est resté avec un énoncé à 90 A/s et une clé calculée à 72. Relu et
 corrigé avant tout commit — un fichier écrit par un auteur interrompu se relit comme un brouillon.
+
+**Addendum (même soir) — ce que le rendu de l'auteur ne pouvait pas voir.** Les quatre graphes
+neufs de la vague C ont été rendus par leur auteur, qui les a jugés propres. La CI (run sur
+`256cc56f`) a rougi à `marge-etiquettes` : trois étiquettes ancrées à droite de l'axe, dont une
+(« I_max = 100 mA ») commençait 7,7 unités HORS du cadre — coupée même dans la police de
+référence ; l'image de l'auteur ne le montrait pas parce que le rendu bord à bord d'un aperçu
+n'est pas le cadre du produit. Et `figure-preview`, lancée à la main sur les quatre fichiers (la
+CI ne l'avait pas atteinte), a MESURÉ un défaut qu'elle n'arme pas : l'étiquette « pente =
+0,50 V/s » posée SUR la droite qu'elle nomme, barrée sur toute sa largeur. Les trois
+déplacées à droite de l'axe, la quatrième levée de 12 unités ; cliquet revenu à 30, porte
+figures verte en clair et en sombre, aucune mesure. *Une figure neuve passe par
+`marge-etiquettes` et `figure-preview` (les deux thèmes) avant d'être poussée : aucune des deux
+n'est dans `batterie-locale`, parce que les deux demandent un navigateur.*
