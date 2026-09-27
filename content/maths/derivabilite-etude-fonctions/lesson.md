@@ -105,6 +105,12 @@ $1 \neq -1$ : les deux nombres dérivés latéraux sont différents, donc **$f$ 
 
 **Le résultat à retenir, dans les deux sens :** dérivable en $a$ entraîne toujours continue en $a$ (avoir une tangente bien définie empêche tout saut). Mais la réciproque est fausse — l'exemple de $|x-2|$ le prouve : continue en $2$, mais pas dérivable en $2$. La continuité ne suffit jamais, à elle seule, à garantir une tangente.
 
+**Un autre cas de non-dérivabilité : la demi-tangente verticale.** Le taux d'accroissement peut aussi échouer à avoir une limite finie sans qu'il y ait deux pentes différentes qui s'affrontent comme pour $|x-2|$ — il peut simplement partir à l'infini d'un côté. Prends $f(x) = \sqrt{x}$, définie sur $[0,+\infty[$ (donc étudiable seulement à droite en $0$) :
+
+$$\tau(h) = \frac{\sqrt{0+h}-\sqrt{0}}{h} = \frac{\sqrt{h}}{h} = \frac{1}{\sqrt{h}} \quad (h>0)$$
+
+Quand $h \to 0^{+}$, $\sqrt{h} \to 0^{+}$ donc $\dfrac{1}{\sqrt{h}} \to +\infty$ : le taux d'accroissement explose au lieu de se stabiliser. $f$ n'est donc pas dérivable en $0$ — mais pour une raison différente de celle de $|x-2|$ : il n'y a pas ici deux pentes finies qui divergent, une seule pente qui part à l'infini. Géométriquement, la courbe de $f$ admet en $0$ une **demi-tangente verticale** (la droite d'équation $x=0$), et non un point anguleux.
+
 ---
 
 ## R2 — Dérivées des fonctions usuelles et opérations
@@ -334,13 +340,45 @@ $f''(x) < 0$ pour $x<0$ (concave) et $f''(x)>0$ pour $x>0$ (convexe) : $f''$ cha
 Voici, rassemblé, tout ce qu'une étude complète de fonction demande — dans l'ordre où on le mène en pratique :
 
 1. **Domaine de définition** de $f$ (valeurs interdites : dénominateur nul, racine d'un nombre négatif...).
-2. **Limites** aux bornes du domaine (aux infinis, et aux valeurs interdites) — ce qui révèle les **asymptotes** éventuelles (verticale, horizontale, oblique).
+2. **Limites** aux bornes du domaine (aux infinis, et aux valeurs interdites) — ce qui révèle les **asymptotes** éventuelles (verticale, horizontale, oblique), ou, si la limite est infinie sans donner d'asymptote, une **branche infinie** (parabolique ou non — voir juste après cette liste).
 3. **Dérivée** $f'$, calculée avec les règles des chapitres 3 et 4.
 4. **Signe de $f'$**, généralement en factorisant, pour en déduire le **tableau de variations**.
 5. **Extremums locaux** : valeurs de $f$ aux points où $f'$ change de signe.
 6. **Concavité et point(s) d'inflexion** (si demandés), via $f''$.
 7. **Tangentes remarquables** (tangentes horizontales aux extremums, tangente en un point donné par l'énoncé).
 8. **Tracé** : rassembler toutes ces informations pour décrire (ou dessiner) l'allure de la courbe.
+
+### Quand la limite est infinie : les branches infinies (paraboliques ou non)
+
+Reviens à l'étape 2 de la méthode. Une limite aux bornes n'est pas toujours finie : quand $f(x) \to \pm\infty$ à l'infini, il n'y a pas d'asymptote horizontale — mais ce n'est pas la fin de l'histoire. La courbe part à l'infini, oui, mais elle peut le faire de plusieurs façons bien distinctes, et un sujet d'examen demande presque toujours de préciser laquelle. L'outil qui tranche, dans les trois cas, est le même : la limite de $\dfrac{f(x)}{x}$.
+
+**La chaîne de décision, à dérouler dans l'ordre :**
+
+1. **$\displaystyle\lim \dfrac{f(x)}{x} = \pm\infty$** (le rapport lui-même explose) : $f$ grimpe (ou descend) plus vite qu'aucune droite ne pourrait le faire — la courbe s'écrase contre la direction verticale. Conclusion : $(C_f)$ admet une **branche parabolique de direction $(Oy)$** au voisinage de l'infini considéré.
+2. **$\displaystyle\lim \dfrac{f(x)}{x} = 0$** : $f$ grandit beaucoup plus lentement que $x$ — la courbe s'aplatit contre l'horizontale, sans jamais s'en approcher au sens d'une véritable asymptote. Conclusion : $(C_f)$ admet une **branche parabolique de direction $(Ox)$**.
+3. **$\displaystyle\lim \dfrac{f(x)}{x} = a$, avec $a \neq 0$ fini** : le rapport se stabilise, la courbe suit en moyenne la pente de la droite $y=ax$ — mais ce $a$ seul ne suffit pas encore à conclure. Il faut un second calcul, $\displaystyle\lim\bigl(f(x)-ax\bigr)$ :
+   - si cette limite vaut un nombre **fini** $b$ : c'est l'asymptote oblique déjà vue plus haut, $(D): y=ax+b$ ;
+   - si cette limite est **infinie** : la courbe garde la pente moyenne de $y=ax$ mais s'en écarte indéfiniment, elle ne la rejoint jamais. Conclusion : $(C_f)$ admet une **branche parabolique de direction la droite $y=ax$**.
+
+**Exemple travaillé.** Étudier la branche infinie de $f(x) = x+\sqrt{x}$ (définie sur $[0,+\infty[$) au voisinage de $+\infty$.
+
+**Ce qu'on cherche et pourquoi ce geste :** $f(x) \to +\infty$ quand $x \to +\infty$ (les deux termes partent vers $+\infty$), donc pas d'asymptote horizontale — il faut trancher entre les trois directions possibles. Le réflexe : calculer $\lim f(x)/x$ EN PREMIER, jamais sauter directement à $f(x)-ax$ sans savoir si $a$ existe et ce qu'il vaut.
+
+$$\frac{f(x)}{x} = \frac{x+\sqrt{x}}{x} = 1+\frac{\sqrt{x}}{x} = 1+\frac{1}{\sqrt{x}}$$
+
+Quand $x \to +\infty$, $\sqrt{x} \to +\infty$ donc $\dfrac{1}{\sqrt{x}} \to 0$ :
+
+$$\lim_{x \to +\infty} \frac{f(x)}{x} = 1$$
+
+Le rapport tend vers une valeur finie et non nulle ($a=1$) : ni le cas $(Oy)$, ni le cas $(Ox)$. On passe donc au second calcul, avec ce $a=1$ :
+
+$$f(x)-x = \sqrt{x} \qquad\qquad \lim_{x \to +\infty}\bigl(f(x)-x\bigr) = \lim_{x \to +\infty} \sqrt{x} = +\infty$$
+
+L'écart avec la droite $y=x$ ne se stabilise pas : il grandit sans borne, la courbe ne rejoint jamais cette droite.
+
+$$(C_f) \text{ admet une branche parabolique de direction la droite } y=x \text{ au voisinage de } +\infty$$
+
+**Le piège, et il est systématique :** trouver un $a \neq 0$ à la première limite ne suffit JAMAIS, à lui seul, à conclure à une asymptote oblique — c'est exactement l'erreur que cet exemple démasque. Ce $a$ existe dans les DEUX cas (asymptote oblique et branche parabolique de direction $y=ax$) : ce qui les distingue, c'est uniquement la SECONDE limite, $\lim\bigl(f(x)-ax\bigr)$ — finie pour une asymptote, infinie pour une branche parabolique. Compare avec l'exemple qui suit, $f(x)=x+\dfrac{1}{x-1}$ : mêmes deux étapes, même $a=1$, mais une conclusion opposée, parce que $\dfrac{1}{x-1}\to0$ au lieu de $\to+\infty$.
 
 **Exemple travaillé — étude complète.** Soit $f$ la fonction définie par $f(x) = \dfrac{x^2-x+1}{x-1}$.
 

@@ -74,6 +74,44 @@ $$\int_1^x \frac{1}{t}\,\mathrm{d}t = \ln(x)$$
 
 Ce n'est pas une coïncidence ni un nouveau calcul à apprendre : c'est exactement ce que dit la définition de ce chapitre, appliquée à une primitive que tu connais déjà depuis un autre chapitre. L'intégrale et la primitive, ce sont deux regards sur le même objet.
 
+### Généraliser : reconnaître u'/u et u'/u² dans une primitive
+
+Le cas $\frac1t$ ci-dessus n'est qu'un cas particulier d'une famille de primitives que les sujets de bac utilisent sans arrêt, toujours sous la même silhouette : une fraction où le haut est, à un facteur près, la dérivée du bas. Deux modèles à reconnaître, sur un intervalle $I$ où la fonction dérivable $u$ ne s'annule pas.
+
+**Modèle 1 — $\dfrac{u'}{u} \to \ln|u|$.** Si $u$ est dérivable et ne s'annule pas sur $I$, une primitive de $\dfrac{u'}{u}$ sur $I$ est $\ln|u|$. Vérifie-le en dérivant : $\big(\ln|u|\big)' = \dfrac{u'}{u}$ (chapitre "Fonction logarithme") — c'est la même règle qu'au chapitre 1, lue à l'envers.
+
+La valeur absolue n'est pas un détail cosmétique : $\ln$ n'est défini que sur $\left]0,+\infty\right[$, donc $\ln|u|$ garde un sens même quand $u$ est négatif sur $I$, alors que $\ln(u)$ tout court n'en aurait aucun. Et l'intervalle $I$ n'est pas un détail non plus : c'est lui qui garantit que $u$ ne s'annule jamais entre les deux bornes de l'intégrale, faute de quoi $\dfrac{u'}{u}$ n'est même pas définie partout.
+
+**Modèle 2 — $\dfrac{u'}{u^2} \to -\dfrac1u$.** Même famille, un exposant de plus au dénominateur. Vérifie de la même façon : $\left(-\dfrac1u\right)' = \dfrac{u'}{u^2}$ (dérivée de $u^{-1}$). Ici, pas de valeur absolue à écrire — ce n'est pas un logarithme — mais l'intervalle où $u$ ne s'annule pas reste indispensable, pour la même raison : $\dfrac1u$ n'existe pas là où $u=0$.
+
+**Le piège.** Trois erreurs reviennent sans arrêt sur ces deux modèles : oublier la valeur absolue, ou l'intervalle où $u$ ne s'annule pas, dans le modèle 1 ; écrire $\ln(u')$ ou $\dfrac{1}{u'}$ à la place de $\ln|u|$ — en primitivant $u'$ au lieu de reconnaître $u$ au dénominateur ; et confondre les deux modèles, en appliquant $\ln|u|$ à un $u'/u^2$, ou $-\dfrac1u$ à un $u'/u$. Le réflexe qui protège : regarder l'exposant du dénominateur avant de choisir la formule — $1$, c'est un logarithme ; $2$, c'est un inverse.
+
+### Exemple travaillé — reconnaître u'/u, avec un facteur à ajuster
+
+Calcule $\displaystyle\int_2^3 \frac{6}{3-2x}\,\mathrm{d}x$.
+
+**Ce qu'on cherche et pourquoi ce geste :** repérer $u$ au dénominateur. Ici $u(x)=3-2x$, donc $u'(x)=-2$. Le numérateur $6$ n'est pas $u'$ lui-même, mais un multiple : $6 = -3\times(-2)$, donc $\dfrac{6}{3-2x} = -3\times\dfrac{u'(x)}{u(x)}$. Une primitive est donc $-3\ln|u|=-3\ln|3-2x|$ — vérifie-le en dérivant : $\big(-3\ln|3-2x|\big)' = -3\times\dfrac{-2}{3-2x} = \dfrac{6}{3-2x}$.
+
+Avant de calculer, l'intervalle : sur $[2,3]$, $3-2x$ vaut $-1$ en $x=2$ et $-3$ en $x=3$ — négatif tout du long, et jamais nul (la seule annulation est en $x=\frac32$, en dehors de $[2,3]$). La valeur absolue est donc réellement utilisée ici, pas une précaution creuse : $|3-2x|=2x-3$ sur cet intervalle.
+
+$$\int_2^3 \frac{6}{3-2x}\,\mathrm{d}x = \Big[-3\ln|3-2x|\Big]_2^3 = -3\ln|3-6|-\big(-3\ln|3-4|\big) = -3\ln3+3\ln1$$
+
+$$\int_2^3 \frac{6}{3-2x}\,\mathrm{d}x = -3\ln3$$
+
+**Vérification de cohérence :** sur $[2,3]$, $3-2x<0$, donc $f(x)=\dfrac{6}{3-2x}$ est négative tout du long — l'intégrale d'une fonction négative doit être négative (chapitre 4, positivité). $-3\ln3\approx-3{,}30$ est bien négatif : cohérent.
+
+### Exemple travaillé — reconnaître u'/u², sans valeur absolue
+
+Calcule $\displaystyle\int_0^2 \frac{-3}{(2x+1)^2}\,\mathrm{d}x$.
+
+**Ce qu'on cherche et pourquoi ce geste :** au dénominateur, $u(x)=2x+1$ au carré — c'est le modèle 2. $u'(x)=2$. Le numérateur $-3$ n'est pas $u'$, on ajuste : $-3 = -\dfrac32\times2$, donc $\dfrac{-3}{(2x+1)^2} = -\dfrac32\times\dfrac{u'(x)}{u(x)^2}$. Une primitive est $-\dfrac32\times\left(-\dfrac1u\right) = \dfrac{3}{2(2x+1)}$ — vérifie-le en dérivant : $\left(\dfrac{3}{2(2x+1)}\right)' = \dfrac32\times\dfrac{-2}{(2x+1)^2} = \dfrac{-3}{(2x+1)^2}$.
+
+L'intervalle : sur $[0,2]$, $2x+1$ va de $1$ à $5$ — jamais nul (la seule annulation est en $x=-\frac12$, en dehors de $[0,2]$). Et ici, contrairement au modèle 1, aucune valeur absolue à écrire : $-\dfrac1u$ n'est pas un logarithme, l'intervalle suffit à garantir que $u\neq0$.
+
+$$\int_0^2 \frac{-3}{(2x+1)^2}\,\mathrm{d}x = \left[\frac{3}{2(2x+1)}\right]_0^2 = \frac{3}{2\times5}-\frac{3}{2\times1} = \frac{3}{10}-\frac{15}{10}$$
+
+$$\int_0^2 \frac{-3}{(2x+1)^2}\,\mathrm{d}x = -\frac{6}{5}$$
+
 ### L'erreur à repérer ici
 
 Une confusion fréquente à ce stade : penser qu'il faut « la bonne » primitive, celle qui vérifie une condition particulière (par exemple $F(0)=0$), et que choisir une autre primitive changerait le résultat. Ce n'est pas vrai — on vient de le démontrer : la constante s'annule toujours. Prends n'importe quelle primitive, la moins compliquée à écrire, et applique $F(b)-F(a)$.
@@ -604,16 +642,34 @@ Une troisième question, toujours dans le registre du bac, sur l'intervalle $[1,
      `maths_fonction_logarithme` déjà présente dans le corpus. À confirmer
      contre une éventuelle convention de préfixe par filière (le corpus
      contient aussi des skill_code préfixés `sma_`) avant intégration en base.
-     (2) Cette leçon suppose que le chapitre "Fonctions primitives" précède
-     "Calcul intégral" dans la progression (ordre standard marocain :
-     logarithme -> exponentielle -> primitives -> calcul intégral), et que
-     l'élève maîtrise déjà les primitives usuelles (polynômes, 1/x -> ln,
-     e^x, sin/cos). Le dossier `content/maths/primitives/` n'existe pas
-     encore dans ce corpus — la continuité de voix/notation a été vérifiée
-     contre `fonction-logarithme` (qui admet lui-même l'existence des
-     primitives) plutôt que contre un chapitre "Primitives" propre. À
-     confirmer que cet ordre correspond bien à la progression réelle du
-     produit.
+     (2) [CORRIGÉ, dette d'examen vague B — docs/audits/dette-examen/maths.md,
+     § calcul-integral] Cette note affirmait qu'un chapitre "Fonctions
+     primitives" précède "Calcul intégral" dans la progression, et que le
+     dossier `content/maths/primitives/` "n'existe pas encore dans ce
+     corpus" — comme si lire u'/u et u'/u² à l'envers (primitive, pas
+     dérivée) relevait d'un chapitre à venir, hors du périmètre de cette
+     leçon. C'est faux, et un sujet vérifié le contredit directement :
+     `fonction-exponentielle/bank.yaml:518-524` route explicitement cette
+     technique ICI ("le calcul de primitive et d'aire lui-même est un outil
+     de la notion `calcul-integral`, R1/R2"). Vérification faite contre
+     `web/src/lib/curriculum.ts` : la progression réelle est
+     limites-continuite -> derivabilite-etude-fonctions -> suites-numeriques
+     -> fonction-logarithme -> fonction-exponentielle -> calcul-integral ->
+     equations-differentielles — aucune notion "primitives" n'existe, ni
+     avant ni après, nulle part dans le programme. Le dossier
+     `content/maths/primitives/` n'existe donc pas parce qu'il n'y a rien à
+     y mettre : cette notion-ci est la seule propriétaire de la technique.
+     R1 assume maintenant cette responsabilité ("Généraliser : reconnaître
+     u'/u et u'/u² dans une primitive", avec ses deux exemples travaillés
+     ci-dessus). Le reste de la note d'origine — l'élève maîtrise déjà les
+     primitives usuelles (polynômes, 1/x -> ln, e^x, sin/cos), la continuité
+     de voix/notation vérifiée contre `fonction-logarithme` — reste vrai et
+     n'est pas remis en cause.
+     Reste hors de cette correction, et toujours sans chapitre propriétaire
+     désigné : F(x) = ∫ₐˣ f comme fonction (sans primitive explicite) et le
+     changement de variable fourni par l'énoncé — deux autres GAP-A du même
+     audit, non traités par cette édition (vague B ne couvre que u'/u et
+     u'/u² ; les deux autres restent une dette écrite).
      (3) Terminologie "inégalité de la moyenne" (R5) : à confirmer qu'elle
      correspond au nom utilisé dans les manuels marocains SM (certains
      manuels français distinguent "inégalité de la moyenne" de la version
@@ -641,4 +697,32 @@ Une troisième question, toujours dans le registre du bac, sur l'intervalle $[1,
      produits en parallèle sur la base du même spec-extension.md, puis revus
      (spec-extension.md §9 bis) ; les marqueurs de R9 résolvent tous
      (validate-content : 0 échec). Rien n'attend plus ici.
+
+     NOTE AJOUTÉE (dette d'examen, vague B — GAP-A "Primitive of u'/u ->
+     ln|u| (and u'/u² -> -1/u)", docs/audits/dette-examen/maths.md,
+     § calcul-integral) :
+     (7) [PROSE LIVRÉE, 2026-09-27] R1 gagne "Généraliser : reconnaître u'/u
+     et u'/u² dans une primitive", avec deux exemples travaillés originaux
+     (aucun ne reprend une fonction ou des nombres d'un bank.yaml cité par
+     l'audit) : $\int_2^3 \frac{6}{3-2x}\,dx = -3\ln3$ pour $u'/u\to\ln|u|$
+     (intervalle où $u=3-2x<0$ tout du long — la valeur absolue y est
+     réellement utilisée, pas une précaution creuse) ; $\int_0^2
+     \frac{-3}{(2x+1)^2}\,dx = -\frac65$ pour $u'/u^2\to-\frac1u$ (même
+     vigilance sur l'intervalle, sans valeur absolue). La note (2) ci-dessus,
+     qui assumait un chapitre "primitives" à venir jamais responsable de
+     cette technique, est corrigée en conséquence — vérifié contre
+     `web/src/lib/curriculum.ts` (aucune notion "primitives" dans le
+     programme) et contre `fonction-exponentielle/bank.yaml:518-524` (qui
+     route la technique ici). Item-author, à toi : au moins un item par
+     modèle. Deux misconceptions neuves proposées, à ajouter à l'inventaire
+     de items.yaml avant d'écrire les items :
+       - `mc.math.maths_calcul_integral.primitive-u-sur-u-signal-mal-lu` —
+         primitive de u'/u : valeur absolue ou intervalle oubliés, ou u'
+         primitivé à la place de u (ln(u') ou 1/u' écrit à la place de
+         ln|u|).
+       - `mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2` — confusion
+         entre les deux modèles : ln|u| appliqué à un u'/u², ou -1/u
+         appliqué à un u'/u.
+     Aucun item ni checkpoint n'a été touché par cette édition — seule la
+     prose de R1 et cette note de portée ont changé.
 -->
