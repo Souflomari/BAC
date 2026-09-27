@@ -2148,6 +2148,213 @@ items:
       $a^p\equiv a$, qui s'appliquerait si l'exposant demandé était $37$ (elle
       donnerait alors, sans surprise, $111^{37}\equiv111\equiv0\pmod{37}$).
 
+  # ── Wave-1 fix (pédagogie I-6), ajoutés le 2026-09-27 ───────────────────────
+  # AR-28/33/34/35 s'arrêtaient à réduire une puissance ou choisir la bonne
+  # forme du théorème — aucun n'utilisait Fermat comme UNE ÉTAPE À L'INTÉRIEUR
+  # D'UNE CONTRADICTION ou D'UNE EXTRACTION, alors que 9 des 10 sujets du banc
+  # le font (bank.yaml:299, la confrontation à deux valeurs de $x^{12}$ ;
+  # bank.yaml:678, l'extraction d'un inverse depuis $x^{42}\equiv1$ combiné à
+  # $x^{41}\equiv4$ ; bank.yaml:515, la version à deux modules). Deux items
+  # neufs referment cet écart, avec des nombres jamais vus ailleurs dans cette
+  # notion pour Fermat (ni $13$, $43$, $47$, $2969$ du banc, ni $11$, $17$,
+  # $19$, $29$, $37$ des items AR-28..35) : AR-36 prend $p=23$, AR-37 prend
+  # $p=41$.
+  #
+  # AR-36 (`habilete: synthese`, conformément à la consigne : une preuve par
+  # l'absurde à deux valeurs indépendantes du même $x^{22}$ combine la
+  # structure logique de la contradiction ET le théorème, ce qui dépasse
+  # l'application, directe ou non, du théorème seul) couvre les trois modèles
+  # d'erreur demandés — exposant $p$ au lieu de $p-1$ (choix A), condition
+  # $p\nmid a$ rejouée à tort comme manquante alors qu'elle est déjà donnée
+  # (choix B), et confusion sur ce qu'une SEULE congruence de Fermat prouve à
+  # elle seule (choix D — la lecture retenue de « conclure "pas de solution"
+  # depuis une seule congruence, sans la contradiction »). Les trois sont
+  # honnêtement rattachés à `fermat-condition-ou-exposant`, la seule famille
+  # de l'inventaire qui couvre les usages fautifs du théorème dans ce type de
+  # preuve ; aucune des 16 familles déclarées ne nomme spécifiquement l'erreur
+  # de structure logique « une seule valeur suffit » — à signaler à l'architecte
+  # pédagogique si ce distracteur se répète ailleurs.
+  #
+  # AR-37 (`habilete: application_non_explicite` : le geste — écrire
+  # $x^{p-1}=x^{k}\times x^{p-1-k}$ pour faire apparaître Fermat, PUIS inverser
+  # modulo $p$ — n'est démontré nulle part dans R6b, contrairement à la
+  # réduction d'exposant d'AR-33 ; classer en `application_directe` aurait
+  # sous-compté l'écart avec l'exemple travaillé de la leçon) ajoute un
+  # quatrième distracteur `congruence-puissance-mal-reduite` (élever les deux
+  # membres à une puissance au lieu de multiplier).
+  #
+  # Mix `habilete` sur les 5 items R6b tagués (AR-33..37) : 1 `application_
+  # directe` / 3 `application_non_explicite` / 1 `synthese`, soit 20/60/20 —
+  # ne colle pas à la cible SM 40/40/20 (`calcul-integral/spec-extension.md`
+  # §1.3) ; échantillon de 5 items trop petit pour forcer ce ratio sans
+  # fausser un tag. Noté honnêtement plutôt que corrigé en douce.
+  - id: AR-36
+    rung: "R6b"
+    habilete: synthese
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [fermat, congruences, contradiction]
+    primary_misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+    stem: >
+      On suppose qu'un couple $(x,y) \in \mathbb{Z}^2$ vérifie une équation
+      $(D)$, où $23$ est premier et où l'on a par ailleurs établi que
+      $23 \nmid x$. Le petit théorème de Fermat donne alors
+      $x^{22} \equiv 1 \pmod{23}$. En réduisant $(D)$ modulo $23$, on obtient
+      de son côté directement $x^{22} \equiv 6 \pmod{23}$. Que peut-on en
+      conclure ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Impossible à comparer : Fermat donne $x^{23} \equiv 1 \pmod{23}$
+          (exposant $p$), pas $x^{22}$, donc les deux résultats ne portent pas
+          sur le même nombre
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          L'exposant du petit théorème de Fermat est $p-1$, pas $p$ : ici
+          $p-1=22$, exactement l'exposant qui apparaît des deux côtés. Les
+          deux congruences portent bien sur le même nombre $x^{22}$, et
+          peuvent donc être confrontées.
+      - id: B
+        text: >-
+          On ne peut rien conclure : il faudrait d'abord vérifier que
+          $23 \nmid x$, ce qui n'a pas été fait ici
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          Cette vérification est déjà donnée dans l'énoncé ($23 \nmid x$) :
+          ce n'est pas ce qui manque. La condition est satisfaite ; le
+          blocage vient d'ailleurs, de la confrontation des deux valeurs
+          trouvées pour $x^{22}$.
+      - id: C
+        text: >-
+          Ces deux congruences visent le même nombre $x^{22}$ : on aurait
+          $1 \equiv 6 \pmod{23}$, soit $23 \mid 5$, ce qui est faux — donc
+          $(D)$ n'a aucune solution dans $\mathbb{Z}^2$
+        correct: true
+      - id: D
+        text: >-
+          Oui, l'absence de solution découle déjà de $x^{22} \equiv 1
+          \pmod{23}$ seul (Fermat), sans qu'il soit besoin de la confronter à
+          $(D)$
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          $x^{22} \equiv 1 \pmod{23}$, prise seule, n'a rien d'impossible :
+          c'est une congruence tout à fait ordinaire. La contradiction
+          n'apparaît qu'en la confrontant à la SECONDE valeur, $6$, tirée
+          indépendamment de $(D)$ : c'est leur désaccord qui est impossible,
+          pas l'une des deux congruences isolément.
+    correct_feedback: >
+      Exact. Fermat et $(D)$ donnent chacun une valeur pour le même nombre
+      $x^{22}$ modulo $23$ : $1$ et $6$. Si un couple $(x,y)$ solution
+      existait, on aurait $1 \equiv 6 \pmod{23}$, donc $23 \mid 5$ —
+      impossible. L'hypothèse de départ (l'existence d'une solution) est
+      donc fausse.
+    solution: |
+      **La structure d'une preuve par l'absurde.** On suppose qu'un couple
+      $(x,y)$ solution de $(D)$ existe, et on en tire DEUX valeurs
+      indépendantes pour le même nombre $x^{22}$ modulo $23$ :
+
+      - Fermat ($23$ premier, $23\nmid x$) : $x^{22} \equiv 1 \pmod{23}$.
+      - $(D)$ elle-même, réduite modulo $23$ : $x^{22} \equiv 6 \pmod{23}$.
+
+      **Confronter les deux.** Ces deux congruences portent sur LE MÊME
+      nombre : elles doivent donc être compatibles.
+      $$1 \equiv 6 \pmod{23} \quad\Longrightarrow\quad 23 \mid (6-1) = 5$$
+
+      **La contradiction.** $23 > 5$ ne peut pas diviser $5$ : c'est
+      impossible. L'hypothèse de départ — l'existence d'un couple $(x,y)$
+      solution de $(D)$ — est donc fausse. $(D)$ n'admet aucune solution dans
+      $\mathbb{Z}^2$.
+
+      **Ce qui fait tenir la preuve.** Une seule des deux congruences, prise
+      isolément, ne prouve rien : $x^{22}\equiv1$ et $x^{22}\equiv6$ sont
+      chacune, séparément, des congruences banales. C'est leur confrontation
+      — deux valeurs distinctes pour le même nombre — qui produit
+      l'impossibilité.
+
+  - id: AR-37
+    rung: "R6b"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [fermat, congruences, inverse]
+    primary_misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+    stem: >
+      On sait que $41$ est premier, que $41 \nmid x$, et que
+      $x^{39} \equiv 7 \pmod{41}$. En combinant cette congruence avec le
+      petit théorème de Fermat, que peut-on en déduire pour $x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          On ne peut isoler $x$ : Fermat donne $x^{41}\equiv1\pmod{41}$
+          (exposant $p$), ce qui, combiné à $x^{39}\equiv7$, isole $x^{2}$,
+          pas $x$ seul
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          L'exposant de Fermat est $p-1=40$, pas $p=41$. Avec le bon
+          exposant, $x^{40}=x^{39}\times x$ isole directement $x$, pas $x^2$ :
+          c'est précisément pour cette raison que le petit théorème de Fermat
+          s'écrit avec l'exposant $p-1$.
+      - id: B
+        text: >-
+          $x \equiv 6 \pmod{41}$ : $x^{40}=x\times x^{39}\equiv 7x \pmod{41}$,
+          et Fermat donne $x^{40}\equiv1\pmod{41}$, d'où $7x\equiv1$ ; comme
+          $7\times6=42\equiv1\pmod{41}$, $x\equiv6\pmod{41}$
+        correct: true
+      - id: C
+        text: >-
+          $x^{40}\equiv1\pmod{41}$ reste vraie que $41$ divise $x$ ou non ;
+          il n'était donc pas utile de s'assurer que $41\nmid x$
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          Si $41 \mid x$, on aurait $x^{40}\equiv0$, pas $1$ : la condition
+          $41\nmid x$ est indispensable à cette forme du théorème. Elle est
+          de toute façon vérifiée ici : $x^{39}\equiv7\not\equiv0$ montre
+          déjà que $41\nmid x$.
+      - id: D
+        text: >-
+          $x \equiv 7^{39} \pmod{41}$, obtenue en élevant les deux membres de
+          $x^{39}\equiv7$ à la puissance $39$ pour isoler $x$
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-puissance-mal-reduite
+        feedback: >
+          Élever les deux membres à la puissance $39$ donne
+          $x^{39\times39} \equiv 7^{39} \pmod{41}$, pas $x$ : cette opération
+          n'isole rien. C'est en multipliant par $x$ (pour atteindre
+          l'exposant $40$ de Fermat) qu'on isole $x$, pas en élevant à une
+          puissance supplémentaire.
+    correct_feedback: >
+      Exact. $x^{40} = x \times x^{39} \equiv 7x \pmod{41}$, et Fermat donne
+      $x^{40}\equiv1\pmod{41}$ (car $41$ premier, $41\nmid x$), donc
+      $7x\equiv1\pmod{41}$. Comme $7\times6=42\equiv1\pmod{41}$, $6$ est
+      l'inverse de $7$ modulo $41$, d'où $x\equiv6\pmod{41}$.
+    solution: |
+      **Le pont vers Fermat.** On connaît $x^{39} \equiv 7 \pmod{41}$, et
+      Fermat porte sur l'exposant $p-1=40$. Comme $40 = 39+1$ :
+      $$x^{40} = x^{39} \times x \equiv 7x \pmod{41}$$
+
+      **Fermat.** $41$ est premier et $41\nmid x$ (déjà garanti : si
+      $41\mid x$, on aurait $x^{39}\equiv0$, pas $7$), donc :
+      $$x^{40} \equiv 1 \pmod{41}$$
+
+      **Combiner.** Les deux expressions de $x^{40}$ donnent :
+      $$7x \equiv 1 \pmod{41}$$
+
+      **Isoler $x$ : trouver l'inverse de $7$ modulo $41$.** On cherche $k$
+      avec $7k\equiv1\pmod{41}$ :
+      $$7\times 6 = 42 = 41+1 \equiv 1 \pmod{41}$$
+      donc $6$ est cet inverse.
+
+      **Conclure.** En multipliant $7x\equiv1$ par $6$ :
+      $$6\times7x \equiv 6 \pmod{41} \quad\Longrightarrow\quad x \equiv 6
+      \pmod{41}$$
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après AR-28 à AR-32. Huit familles sous le plancher,
 # dont `fermat-condition-ou-exposant` sans AUCUN item de banc — elle n'était
@@ -2160,6 +2367,12 @@ items:
 # condition-ou-exposant` quitte le plancher exact (3→6) ; `congruence-
 # puissance-mal-reduite` (AR-33) et `critere-divisibilite-mal-applique`
 # (AR-34) montent chacun à 4 ; `reste-non-normalise` (AR-35) monte à 5.
+# RÉÉCRIT une troisième fois le 2026-09-27 (wave-1 fix, pédagogie I-6) :
+# AR-36/AR-37 ajoutés à R6b — Fermat comme étape À L'INTÉRIEUR d'une
+# contradiction (AR-36) ou d'une extraction d'inverse (AR-37), pas seulement
+# réduction d'exposant ou choix de forme. `fermat-condition-ou-exposant`
+# monte à 8 (6→8) ; `congruence-puissance-mal-reduite` monte à 5 (4→5, via
+# AR-37 choix D). Aucune famille ne change de statut plancher/exact-3.
 # Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
@@ -2174,18 +2387,18 @@ coverage_summary:
     mc.math.maths_arithmetique.pgcd-plus-grand-oublie:            { count: 4, items: [AR-3, AR-14, AR-15, AR-21] }
     mc.math.maths_arithmetique.gauss-condition-ignoree:           { count: 3, items: [AR-5, AR-18, AR-19] }
     mc.math.maths_arithmetique.reste-non-normalise:               { count: 5, items: [AR-1, AR-2, AR-10, AR-13, AR-35] }
-    mc.math.maths_arithmetique.congruence-puissance-mal-reduite:  { count: 4, items: [AR-2, AR-12, AR-28, AR-33] }
+    mc.math.maths_arithmetique.congruence-puissance-mal-reduite:  { count: 5, items: [AR-2, AR-12, AR-28, AR-33, AR-37] }
     mc.math.maths_arithmetique.critere-divisibilite-mal-applique: { count: 4, items: [AR-1, AR-13, AR-31, AR-34] }
     mc.math.maths_arithmetique.diophantienne-critere-existence:   { count: 7, items: [AR-6, AR-7, AR-8, AR-9, AR-17, AR-23, AR-25] }
     mc.math.maths_arithmetique.bezout-portee:                     { count: 3, items: [AR-5, AR-16, AR-17] }
     mc.math.maths_arithmetique.solution-unique-vs-infinie:        { count: 3, items: [AR-24, AR-25, AR-29] }
     mc.math.maths_arithmetique.solution-generale-mal-parametree:  { count: 3, items: [AR-24, AR-29, AR-32] }
     mc.math.maths_arithmetique.primalite-test-incomplet:          { count: 3, items: [AR-20, AR-27, AR-31] }
-    mc.math.maths_arithmetique.fermat-condition-ou-exposant:      { count: 6, items: [AR-28, AR-30, AR-32, AR-33, AR-34, AR-35] }
+    mc.math.maths_arithmetique.fermat-condition-ou-exposant:      { count: 8, items: [AR-28, AR-30, AR-32, AR-33, AR-34, AR-35, AR-36, AR-37] }
     mc.math.maths_arithmetique.solution-mise-a-echelle:           { count: 3, items: [AR-26, AR-30, AR-32] }
     mc.math.maths_arithmetique.diviser-relation-inversee:         { count: 3, items: [AR-11, AR-22, AR-31] }
     mc.math.maths_arithmetique.prime-divise-produit:              { count: 3, items: [AR-2, AR-12, AR-22] }
-  total_items: 35
+  total_items: 37
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2196,7 +2409,7 @@ coverage_summary:
     R4: 4
     R5: 3
     R6: 4
-    R6b: 4
+    R6b: 6
     R7: 4
     R8: 4
   honest_state: >-
@@ -2210,4 +2423,11 @@ coverage_summary:
     B2) : `fermat-condition-ou-exposant` quitte ce lot exact (3→6), avec
     `congruence-puissance-mal-reduite` et `critere-divisibilite-mal-applique`
     (3→4 chacune) et `reste-non-normalise` (4→5) — neuf familles à la marge
-    nulle, contre douze avant cette édition.
+    nulle, contre douze avant cette édition. Recompté une seconde fois le
+    2026-09-27 (wave-1 fix, pédagogie I-6, AR-36/AR-37) : `fermat-condition-
+    ou-exposant` monte à 8 (6→8) et `congruence-puissance-mal-reduite` à 5
+    (4→5) ; les neuf familles à marge nulle sont inchangées. R6b passe de 4 à
+    6 items sur le ramp — la rung couvre désormais explicitement la
+    contradiction à deux valeurs (AR-36) et l'extraction d'un inverse
+    combinée à une congruence donnée (AR-37), pas seulement la réduction
+    d'exposant ou le choix de forme (AR-28/33/34/35).
