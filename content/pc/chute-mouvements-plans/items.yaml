@@ -2184,7 +2184,7 @@ items:
         text: "$a_0 \\approx 5{,}9\\ \\text{m/s}^2$ : strictement inférieur à $g$, la poussée d'Archimède retranchant déjà une part du poids dès $t=0$"
         correct: true
       - id: B
-        text: "$a_0 = 9{,}8\\ \\text{m/s}^2$ : à $t=0$ la vitesse est nulle, donc aucune force autre que le poids n'agit encore, exactement comme sans Archimède"
+        text: "$a_0 = 9{,}8\\ \\text{m/s}^2$ : à $t=0$ la vitesse est nulle, donc seul le poids agit encore, exactement comme sans Archimède"
         correct: false
         misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
         also_reveals: []
@@ -2397,7 +2397,7 @@ items:
           précisément cette égalité qui permet d'en tirer
           $\alpha=mg/v_\ell^2$.
       - id: C
-        text: "La bille n'atteint en réalité jamais de vraie vitesse limite : la valeur $v_\\ell=3{,}5\\ \\text{m/s}$ lue n'est qu'approximative, et aucun $\\alpha$ précis ne peut s'en déduire"
+        text: "La bille n'atteint en réalité pas de vraie vitesse limite : la valeur $v_\\ell=3{,}5\\ \\text{m/s}$ lue n'est qu'approximative, et $\\alpha$ ne peut pas s'en déduire précisément"
         correct: false
         misconception: mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement
         also_reveals: []
@@ -2552,7 +2552,7 @@ items:
         text: "Trois forces (poids, frottement, Archimède) ; $a_0<g$ dès $t=0$, car Archimède ne dépend pas de $v$ (contrairement au frottement, nul à $v=0$) et agit déjà pleinement"
         correct: true
       - id: B
-        text: "Trois forces bien présentes, mais à $t=0$ la vitesse est nulle : aucune d'elles, hormis le poids, n'agit encore, donc $a_0=g$, exactement comme dans l'air"
+        text: "Trois forces bien présentes, mais à $t=0$ la vitesse est nulle : seul le poids agit encore, donc $a_0=g$, exactement comme dans l'air"
         correct: false
         misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
         also_reveals: []
@@ -2574,7 +2574,7 @@ items:
           revenir, sans le dire, au bilan à deux forces du régime sans
           Archimède.
       - id: D
-        text: "Trois forces bien présentes et $a_0<g$ dès le début ; mais si $\\rho_{huile}$ se rapprochait de la masse volumique de la bille, $a_0$ resterait proche de $g$ : Archimède n'affecte que la vitesse limite, jamais le régime initial"
+        text: "Trois forces bien présentes et $a_0<g$ dès le début ; mais si $\\rho_{huile}$ se rapprochait de la masse volumique de la bille, $a_0$ resterait proche de $g$ : Archimède n'affecte que la vitesse limite, pas le régime initial"
         correct: false
         misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
         also_reveals: []

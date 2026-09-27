@@ -221,6 +221,10 @@ const HORS_CHAMP = new Set([
   // graduations, l'arc lu entre les bonnes directions ; deux passages en CI
   // (job `telephone`) ; `node scripts/scene-plan-complexe.mjs --essai-rouge`.
   "scene-plan-complexe.mjs",
+  // scene-plan-complexe-rapport, même raison : la scène sœur de R6 (même page, même
+  // build), ~6 min locales à 212 mesures ; armée en CI (job `telephone`) ;
+  // `node scripts/scene-plan-complexe-rapport.mjs --essai-rouge`.
+  "scene-plan-complexe-rapport.mjs",
   // scene-ergonomie lance SEULE, sur les neuf scènes, la famille « ergonomie »
   // que chaque porte de scène lance déjà à sa fin (ADR 0035 : une porte prise
   // dans un agrégat doit pouvoir être lancée seule) : build ET navigateur. Pas
