@@ -78,6 +78,10 @@ Retiens la règle : avant d'additionner deux demi-équations, multiplie chacune 
 
 ## R2 — Prédire le sens, par le calcul : $Q_{r,i}$ face à $K$
 
+Avant de retrouver l'outil en détail, mets-le à l'épreuve avec les mains. Tu as déjà rencontré ce critère dans le chapitre sur l'état d'équilibre ; il s'agit maintenant de le faire tourner sur plusieurs mélanges, puis sur un autre couple, pour voir ce qui bouge et ce qui ne bouge jamais.
+
+[[embed:echelle-des-quotients]]
+
 Tu as construit, dans le chapitre sur l'état d'équilibre, l'outil qui prédit le sens d'évolution de n'importe quel système chimique, avant même de l'observer : on calcule le quotient de réaction à l'instant considéré, $Q_{r,i}$, à partir des concentrations telles qu'elles sont à cet instant, et on le compare à la constante d'équilibre $K$ de la réaction, à la température de travail.
 
 - Si $Q_{r,i} < K$ : le système évolue dans le sens direct.
@@ -87,6 +91,22 @@ Tu as construit, dans le chapitre sur l'état d'équilibre, l'outil qui prédit 
 [[figure:critere-qr-k]]
 
 Rien, dans ce critère, ne mentionne le type de réaction, ni la façon dont les réactifs sont mis en présence. Une réaction d'oxydoréduction par contact direct - comme celle de l'accroche - obéit exactement au même critère qu'une réaction acido-basique, ou qu'un système déjà à l'équilibre qu'on vient de perturber. Rien à mémoriser espèce par espèce : c'est une conséquence du calcul.
+
+### Un second couple, pour voir ce qui compte vraiment
+
+Le couple $Zn/Cu^{2+}$ ne suffit pas à montrer tout ce que le critère implique : le verdict dépend de deux nombres bien distincts - $Q_{r,i}$, qui se prépare en versant, et $K$, qui ne se change qu'en changeant de réaction. Et quand $K$ est modeste, le même couple peut aller dans les deux sens.
+
+Prends le couple $Sn + Pb^{2+} \rightleftharpoons Sn^{2+} + Pb$, pour lequel on donne $K = 2{,}5$. Avec $[Sn^{2+}]_i = 1{,}0\times10^{-2}\ \text{mol/L}$ et $[Pb^{2+}]_i = 1{,}0\times10^{-1}\ \text{mol/L}$ :
+
+$$Q_{r,i} = \frac{1{,}0\times10^{-2}}{1{,}0\times10^{-1}} = 0{,}10$$
+
+$Q_{r,i} = 0{,}10 < K = 2{,}5$ : le sens direct l'emporte, l'étain cède ses électrons.
+
+Change seulement les quantités préparées - même couple, mêmes deux métaux - avec $[Sn^{2+}]_i = 1{,}0\times10^{-1}\ \text{mol/L}$ et $[Pb^{2+}]_i = 1{,}0\times10^{-2}\ \text{mol/L}$, dans un bécher où une lame d'étain côtoie un dépôt de plomb laissé par un essai précédent :
+
+$$Q_{r,i} = \frac{1{,}0\times10^{-1}}{1{,}0\times10^{-2}} = 10$$
+
+$Q_{r,i} = 10 > K = 2{,}5$ : le sens s'inverse. C'est maintenant le plomb du dépôt qui cède ses électrons, et les ions $Sn^{2+}$ qui les captent. Rien, dans les deux métaux eux-mêmes, n'a changé entre les deux mélanges ; ce n'est donc pas que l'étain serait « plus réactif » - c'est la position de $Q_{r,i}$ par rapport à $K$ qui a basculé.
 
 ### L'expression de $Q_r$ pour notre réaction
 
@@ -116,11 +136,7 @@ Reviens au mécanisme (chapitre état d'équilibre) : un $Q_{r,i}$ petit signifi
 
 [[checkpoint:cp-r2-critere]]
 
-Et si, au contraire, on avait préparé un mélange où $Q_{r,i} > K$ ? Imagine une solution où $[Zn^{2+}]_i = 1{,}0\times10^{-1}\ \text{mol/L}$ mais où $[Cu^{2+}]_i$ serait aussi infime que $1{,}0\times10^{-40}\ \text{mol/L}$ (une concentration inaccessible en pratique - bien moins d'un ion pour des litres de solution) :
-
-$$Q_{r,i} = \frac{1{,}0\times10^{-1}}{1{,}0\times10^{-40}} = 1{,}0\times10^{39}$$
-
-Ici $Q_{r,i} \approx 1{,}0\times10^{39} > K \approx 1{,}8\times10^{37}$ : le critère imposerait alors le sens inverse - ce serait le cuivre métallique qui céderait ses électrons aux ions $Zn^{2+}$. Ce n'est pas « le zinc qui a une propriété fixe de céder ses électrons » : c'est la comparaison $Q_{r,i}$ face à $K$, à cet instant précis, qui décide - et avec un $K$ aussi écrasant pour ce couple, il faudrait des concentrations extrêmes, presque jamais rencontrées en pratique, pour renverser le verdict.
+Et si, au contraire, $Q_{r,i}$ dépassait $K$ ? Sur ce couple précis, il faudrait un mélange extrême : $[Cu^{2+}]_i$ aussi infime que $1{,}0\times10^{-40}\ \text{mol/L}$ (une concentration inaccessible en pratique - bien moins d'un ion pour des litres de solution) donnerait $Q_{r,i} \approx 1{,}0\times10^{39} > K$, et le sens s'inverserait - ce serait alors le cuivre métallique qui céderait ses électrons aux ions $Zn^{2+}$. Mais sur un couple dont le $K$ est modeste, comme $Sn/Pb^{2+}$ vu plus haut, il n'y a rien d'extrême à préparer : le sens s'inverse pour de vraies concentrations, tout simplement parce que $K$ y est petit. Dans les deux cas, la leçon est la même : ce n'est pas « le zinc qui a une propriété fixe de céder ses électrons » - c'est la comparaison $Q_{r,i}$ face à $K$, à cet instant précis, qui décide.
 
 [[checkpoint:cp-r2-equilibre]]
 
@@ -217,6 +233,8 @@ Trois familles de réactions - oxydoréduction, acido-basique, précipitation - 
 ### Récapitulatif express
 
 - Toute réaction chimique, oxydoréduction incluse, obéit au même critère (chapitre état d'équilibre) : on compare $Q_{r,i}$, calculé à partir des concentrations de l'instant, à $K$. $Q_{r,i}<K$ : sens direct. $Q_{r,i}>K$ : sens inverse. $Q_{r,i}=K$ : équilibre déjà atteint.
+- $Q_{r,i}$ et $K$ ne sont pas deux grandeurs du même genre : $Q_{r,i}$ se prépare, en versant tel ou tel mélange ; $K$ se subit, il ne dépend que de la réaction et de la température. Changer les quantités déplace $Q_{r,i}$ et ne touche jamais $K$.
+- Dans l'expression de $Q_r$, un coefficient stœchiométrique devient un exposant, jamais un facteur multiplicatif - et c'est l'écriture de l'équation qui l'impose, pas la nature des espèces en jeu.
 - Une réaction d'oxydoréduction est un transfert d'électrons entre un réducteur et un oxydant. On l'écrit à l'aide de deux demi-équations électroniques, combinées en équilibrant le nombre d'électrons échangés (au besoin, en multipliant chacune par un facteur différent).
 - Par contact direct, ce transfert se fait localement, et l'énergie libérée s'y dissipe en chaleur. Mais la spontanéité elle-même ne dépend que de $Q_{r,i}$ face à $K$ - jamais de la chaleur perçue, qui dépend de la quantité de matière qui réagit et du chemin emprunté par l'énergie.
 - Transfert direct (réactifs dans le même récipient, pas de courant mesurable) et pile (réactifs séparés, détour forcé par un circuit, courant mesurable) mettent en jeu la même réaction et le même critère - seul le montage diffère.

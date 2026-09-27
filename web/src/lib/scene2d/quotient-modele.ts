@@ -281,6 +281,19 @@ export function atteignables(pose: Etat, o: Ouverture): Etat[] {
   return out;
 }
 
+/**
+ * AJOUTÉ PAR frontend-builder (absent de la rédaction initiale du modèle) : les bains dont au
+ * moins un des 25 mélanges donne un verdict INVERSE (§5.5 C). Ceux-là seuls portent les DEUX
+ * solides dans le bécher, dès l'énoncé — sinon une évolution inverse s'afficherait sur un
+ * réactif absent du bécher (vague 1, B1). Sur les trois bains de cette scène, seul B qualifie ;
+ * la fonction reste générale plutôt que de figer « B » en dur, au cas où un bain futur changerait
+ * la donne.
+ */
+export function bainADeuxSolides(b: Bain): boolean {
+  const etats = atteignables({ bain: b, produit: CRANS[0], oxydant: CRANS[0] }, { oxydant: true, produit: true, bain: null });
+  return etats.some((s) => verdict(s) === "inverse");
+}
+
 // ── Les quatre valeurs du pari de S4, chacune depuis le modèle qui la nomme (§5.3 D) ──
 export function pariS4(s: Etat): { juste: Quotient; omis: Quotient; facteur: Quotient; inverse: Quotient } {
   const a = VALEUR_CRAN[s.produit], b = VALEUR_CRAN[s.oxydant];
