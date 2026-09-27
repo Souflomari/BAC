@@ -13,6 +13,13 @@
 #        réconciliation des poids) ;
 #     2. research-challenger (attaque de la couche `derived` : limites/exclusions) ;
 #     3. validation humaine (profondeur).
+#   Révision 2026-09-27 (wave B1) : correction de la frontière FONCTION RÉCIPROQUE
+#   (la dérivée de f⁻¹ était exclue à tort), puis RESSERRÉE le même jour par la passe
+#   research-challenger (deux sur-portées retirées de ma couche `derived` — dont une
+#   falsifiée par 2 des 4 copies que je citais en preuve). Détail, preuves et diff :
+#   voir `coverage_notes.corrections`, DEUX entrées. Porte 2 passée ; restent la
+#   relecture longue Gemini et la validation humaine. Toujours PROPOSITION.
+#   Miroir obligatoire : docs/cadre/curriculum/maths-sm.yaml (même date).
 # ════════════════════════════════════════════════════════════════════════
 #
 # ── Convention de provenance (spécifique maths ; PAS de `cadre p.N` ici) ──
@@ -98,7 +105,13 @@ domaines:
               - "Étudier la continuité d'une fonction ; appliquer le TVI pour justifier l'existence d'une solution de f(x)=k."
               - "Encadrer/localiser une solution par dichotomie."
             limites:                  # source: derived
-              - "Théorème de la fonction réciproque : traité de façon opératoire (existence et sens de variation de f⁻¹) et non comme théorème central — le cadre SExp n'en fait pas un objet aussi approfondi qu'en SM."
+              # ⚠ CORRECTION PROPOSÉE 2026-09-27 (wave B1) — voir coverage_notes.corrections.
+              #   La rédaction précédente bornait la réciproque à « existence et sens de
+              #   variation de f⁻¹ » et affirmait que « le cadre SExp n'en fait pas un objet
+              #   aussi approfondi qu'en SM ». C'était FAUX : la capacité 1.2.11 du cadre SExp
+              #   demande explicitement la DÉRIVÉE de la réciproque, et quatre problèmes
+              #   nationaux SExp vérifiés la posent. Ligne remplacée ci-dessous.
+              - "Répartition entre nos chapitres : CE chapitre porte l'EXISTENCE de f⁻¹ (continuité + stricte monotonie ⇒ bijection sur l'intervalle image, corollaire du TVI) et la détermination de l'intervalle image J. La DÉRIVÉE et la COURBE de f⁻¹ relèvent du chapitre derivabilite_etude_fonctions — et sont AU PROGRAMME SExp (capacité 1.2.11). Ce n'est PAS une exclusion."   # source: derived (découpage entre nos deux chapitres) ; ordre des capacités 1.2.1→1.2.11 (bloc dérivation) : research-consensus (pdfmath)
               - "Limites de fonctions trigonométriques (lim (sin x)/x) : présentes au programme mais peu mobilisées à l'examen SExp — à confirmer (voir coverage_notes)."
 
           - id: derivabilite_etude_fonctions
@@ -108,13 +121,40 @@ domaines:
               - "Nombre dérivé, tangente ; dérivées des fonctions usuelles ; dérivée d'une somme, produit, quotient, composée."
               - "Signe de la dérivée et variations ; extremums ; concavité, dérivée seconde, points d'inflexion."
               - "Branches infinies (asymptotes, directions asymptotiques) ; étude complète et tracé de courbe."
-            savoir_faire:             # source: derived
+              # AJOUT PROPOSÉ 2026-09-27 (wave B1) — capacité qui manquait entièrement à ce
+              # chapitre. Libellé du cadre, reproduit verbatim par la synthèse pdfmath
+              # (capacité 1.2.11, sous-domaine 1.2) : « Déterminer la dérivée et la monotonie
+              # de la fonction réciproque d'une fonction continue et strictement monotone, et
+              # la représenter graphiquement. » Corroboré par la composition des examens
+              # nationaux SExp (4 problèmes vérifiés — voir coverage_notes.corrections).
+              - "Fonction réciproque d'une fonction continue et strictement monotone : dérivée de f⁻¹ en un point, monotonie de f⁻¹, et représentation graphique de f⁻¹."   # source: research-consensus (capacité 1.2.11, pdfmath + composition des examens nationaux SExp 2020/2021/2022/2024)
+            savoir_faire:             # source: derived — sauf les trois derniers, dont les VERBES viennent de la capacité 1.2.11 (research-consensus) ; seule la formulation fine est derived
               - "Calculer une fonction dérivée ; déterminer une équation de tangente."
               - "Dresser un tableau de variations ; déterminer extremums et points d'inflexion."
               - "Étudier les branches infinies et tracer la courbe représentative."
+              - "Montrer qu'une fonction continue et strictement monotone sur un intervalle I admet une fonction réciproque f⁻¹, et déterminer l'intervalle J = f(I) sur lequel elle est définie."
+              - "Calculer (f⁻¹)'(b) = 1/f'(a) où a = f⁻¹(b) — après avoir identifié l'antécédent a et vérifié f'(a) ≠ 0 ; en déduire le sens de variation de f⁻¹ (le même que celui de f)."
+              - "Construire la courbe de f⁻¹ dans le même repère, par symétrie par rapport à la droite (Δ) : y = x."
             limites:                  # source: derived — frontière de profondeur SExp vs SM
               - "PAS de théorème de Rolle ni de théorème/inégalité des accroissements finis (spécifiques SM) — voir coverage_notes."
               - "Dérivabilité traitée via les règles de calcul ; pas de démonstration à partir de la définition au-delà des cas usuels."
+              # ⚠ RÉVISION 2026-09-27 (passe research-challenger) — DEUX sur-portées retirées
+              #   de la limite ci-dessous. Voir coverage_notes.corrections, entrée « challenger ».
+              #   (a) « la réciproque porte toujours sur une RESTRICTION d'une fonction déjà
+              #       étudiée » était FAUX, et falsifié par 2 des 4 copies que cette frontière
+              #       cite elle-même : bk-2022-n-x3 q7a et bk-2020-n-x4 q8a inversent f
+              #       ELLE-MÊME, bijective de ℝ sur ℝ, sans aucune restriction
+              #       (content/maths/fonction-exponentielle/bank.yaml:1127 et :1430). Seuls
+              #       2021 et 2024 passent par une restriction g. Clause reformulée.
+              #   (b) « la dérivée est demandée EN UN POINT, pas comme fonction sur J » ne
+              #       repose sur AUCUN libellé du cadre — seulement sur n=3 (les 3 copies
+              #       des 4 qui demandent la dérivée). Sortie des
+              #       `limites` (où elle pouvait faire exclure un item légitime) et redescendue
+              #       en `_observation_examens` ci-dessous, sans valeur de frontière.
+              - "Fonction réciproque en SExp — profondeur exacte : le théorème (bijection ⇒ réciproque ; (f⁻¹)' = 1/(f'∘f⁻¹)) est ADMIS et APPLIQUÉ, jamais démontré ; l'EXPRESSION de f⁻¹(x) n'est pas demandée (un énoncé le dit mot pour mot : « Il n'est pas demandé de déterminer g⁻¹(x) », 2024 N II-5a) ; et la réciproque porte toujours sur une fonction (GLOBALE ou RESTREINTE) déjà étudiée dans le problème, jamais introduite ex nihilo."   # source: derived (profondeur reconstruite à partir des 4 problèmes nationaux SExp vérifiés ; resserrée par la passe research-challenger du 2026-09-27)
+              - "Ce qui reste SM et n'entre PAS avec la réciproque en SExp : fonction racine n-ième x ↦ ⁿ√x et fonctions puissances x^r comme réciproques nommées ; réciproques des fonctions trigonométriques (arctan, arcsin)."   # source: derived — À VALIDER (décision owner ; maintenue telle quelle par la passe challenger)
+            _observation_examens:       # NI programme NI limite — motif OBSERVÉ, sans valeur de frontière. Ne jamais s'en servir pour exclure un item.
+              - "À ce jour, les 3 copies SExp vérifiées qui demandent la dérivée de la réciproque la demandent EN UN POINT — (f⁻¹)'(2−ln3) en 2020, (f⁻¹)'(ln 4) en 2022, (g⁻¹)'(1) en 2024 — et aucune ne demande f⁻¹' comme FONCTION sur J. C'est un motif observé sur n=3, adossé à AUCUN libellé du cadre : la capacité 1.2.11 dit « Déterminer la dérivée … », sans restreindre à un point. NON EXTRAPOLABLE en exclusion — un item qui dériverait f⁻¹ sur J n'est pas hors-programme sur cette base."   # source: derived (observation de corpus) — retiré des `limites` par la passe research-challenger du 2026-09-27
 
           - id: fonction_logarithme
             nom: "Fonction logarithme"
@@ -345,10 +385,94 @@ coverage_notes:
     - "SExp complexes = plus léger que SM (pas de racines n-ièmes générales)."
     - "SExp A la géométrie de l'espace (15 %) — contrairement à SM où elle n'est pas testée au national."
     - "Lacune loi binomiale : au cadre SExp mais sans leçon dédiée."
+    - "La FONCTION RÉCIPROQUE n'est PAS une spécificité SM : elle est une capacité explicite du cadre SExp (1.2.11), dérivée comprise. Le cadre SM la nomme de son côté en trois capacités (1.2.6, 1.2.7, 1.3.7) : la capacité est COMMUNE, l'écart est de profondeur. ✔ docs/cadre/curriculum/maths-sm.yaml a été corrigé en conséquence le 2026-09-27 (sa ligne de divergences disait « SM analyse ajoute … fonction réciproque »), même wave, même statut PROPOSITION — voir son `coverage_notes.corrections`. Ce qui reste SM-seul : racine n-ième, puissances réelles (1.3.15), réciproques trigonométriques (arctan)."
+
+  corrections:                        # défauts trouvés APRÈS la rédaction initiale, et ce qui a été changé
+    - date: 2026-09-27
+      origine: "wave B1 — critique de fidélité bac (contradiction cadre ↔ banque d'annales vérifiées)"
+      defaut: >-
+        Le chapitre limites_continuite bornait la fonction réciproque à « existence et
+        sens de variation de f⁻¹ », en ajoutant que « le cadre SExp n'en fait pas un objet
+        aussi approfondi qu'en SM » — ce qui EXCLUAIT de fait la DÉRIVÉE de f⁻¹. Et le
+        chapitre derivabilite_etude_fonctions ne mentionnait la réciproque NULLE PART
+        (ni programme, ni savoir_faire). La frontière était donc à la fois trop étroite
+        et mal placée, et aurait mis hors-programme des questions réellement posées.
+      preuve_cadre: >-
+        Capacité 1.2.11 du cadre SExp (sous-domaine 1.2 « Continuité, dérivation et étude
+        de fonctions »), reproduite verbatim par la synthèse pdfmath.com/cours/bac-2026-pc-svt/
+        (= source 4 de docs/cadre/sources/README-maths.md, déjà admise comme jambe
+        research-consensus pour ce fichier) : « Déterminer la dérivée et la monotonie de la
+        fonction réciproque d'une fonction continue et strictement monotone, et la représenter
+        graphiquement. » La page se déclare reproduire le « Cadre de référence de l'examen
+        national du baccalauréat — option français — Mathématiques, Sciences Expérimentales,
+        CNEEO 2025, applicable session BAC 2026 ». Le PDF officiel reste une image scannée
+        sans couche texte (re-vérifié ce jour) → aucune provenance `cadre p.N` possible.
+      preuve_examens: >-
+        Composition des examens nationaux SExp (jambe de triangulation C du README) — les
+        QUATRE problèmes SExp vérifiés du corpus portent une partie « fonction réciproque »,
+        et TROIS demandent explicitement la dérivée :
+        2020 N q8a/8b/8c — existence, courbe symétrique, (f⁻¹)'(2−ln3) [0,5 pt] :
+        content/maths/fonction-exponentielle/bank.yaml:1428-1461 (bk-2020-n-x4) ;
+        2022 N q7a/7b — existence, (f⁻¹)'(ln 4) [0,25 pt] :
+        content/maths/fonction-exponentielle/bank.yaml:1125-1143 (bk-2022-n-x3) ;
+        2024 N Partie II q5a/5b — existence + J, « Vérifier que g⁻¹ est dérivable en 1 et
+        calculer (g⁻¹)'(1) » [0,75 pt] :
+        content/maths/fonction-logarithme/bank.yaml:1308-1334 (bk-2024-n-x4) ;
+        2021 N q7 — existence + J [0,5 pt] et construction de la courbe de g⁻¹ [0,75 pt] :
+        content/maths/fonction-logarithme/bank.yaml:1025-1044 (bk-2021-n-x4).
+        Les trois verbes de la capacité 1.2.11 (dériver, monotonie, représenter) sont donc
+        chacun attestés sur copie.
+      correctif: >-
+        (1) limites_continuite.limites : ligne fautive remplacée par une ligne de RÉPARTITION
+        (existence + J ici ; dérivée + courbe au chapitre dérivabilité) disant explicitement
+        que ce n'est pas une exclusion. (2) derivabilite_etude_fonctions : ajout d'une ligne
+        `programme` (capacité 1.2.11), de trois `savoir_faire`, et de deux `limites` de
+        profondeur. (3) Aucune `exclusions_transversales` touchée — la réciproque n'y figurait
+        pas, et ne doit pas y figurer.
+      miroir: "docs/cadre/curriculum/maths-sm.yaml — coverage_notes.corrections, entrée du 2026-09-27 (correction jumelle : la réciproque y était donnée pour une spécificité SM). Toute révision future de la frontière « fonction réciproque » doit modifier les DEUX fichiers dans le même geste, sinon ils redivergent."
+      statut: "PROPOSITION — porte 2 (research-challenger) PASSÉE le 2026-09-27, avec deux sur-portées retirées (voir l'entrée suivante). Restent la relecture longue Gemini (couverture : la capacité 1.2.11 est-elle bien à cette place ? aucune autre capacité 1.2.x ne manque-t-elle ?) et la validation humaine (profondeur)."
+
+    - date: 2026-09-27
+      origine: "passe research-challenger sur la couche `derived` de la correction ci-dessus (porte 2 des trois portes, RULES §5). Deux sur-portées trouvées dans mes propres `limites` — les deux du même type : une généralisation faite sur n=4 et présentée comme une frontière."
+      defaut_1_surportee_restriction: >-
+        La limite écrite le matin affirmait que « la réciproque porte toujours sur une
+        RESTRICTION d'une fonction déjà étudiée dans le problème ». C'est FAUX, et falsifié par
+        DEUX des quatre copies que la correction cite elle-même comme preuve : bk-2022-n-x3
+        q7a et bk-2020-n-x4 q8a demandent tous deux « Montrer que la fonction f admet une
+        fonction réciproque f⁻¹ définie sur ℝ » — f ELLE-MÊME, bijective de ℝ sur ℝ, sans
+        aucune restriction (content/maths/fonction-exponentielle/bank.yaml:1127 et :1430).
+        Seuls 2021 (g = restriction de f à [1,+∞[) et 2024 (g = restriction à ]-∞,1]) passent
+        par une restriction. Leçon à retenir pour les prochaines frontières : j'avais lu la
+        moitié du corpus qui confirmait la clause et cité l'autre moitié comme preuve sans la
+        relire CONTRE la clause.
+      correctif_1: >-
+        Clause reformulée en « toujours une fonction (GLOBALE ou RESTREINTE) déjà étudiée dans
+        le problème, jamais introduite ex nihilo » — ce qui reste vrai des 4 copies, et qui dit
+        la seule chose utile à un auteur d'items : on n'invente pas une fonction pour la
+        partie réciproque, on réutilise celle du problème.
+      defaut_2_surportee_en_un_point: >-
+        La même limite affirmait que « la dérivée est demandée EN UN POINT, pas comme fonction
+        f⁻¹' sur J ». Le motif est réel (3/3 des copies qui demandent la dérivée la demandent
+        en un point) mais il ne repose sur AUCUN libellé du cadre : la capacité 1.2.11 dit
+        « Déterminer la dérivée … » sans restreindre à un point. Laissée dans `limites`, elle
+        aurait pu faire déclarer hors-programme un item légitime — c'est-à-dire produire
+        exactement le défaut que cette frontière venait de corriger, dans l'autre sens.
+      correctif_2: >-
+        Sortie des `limites` et redescendue dans une nouvelle clé de chapitre
+        `_observation_examens` (même convention que `_flag_derive_fort` du chapitre
+        equations_differentielles), qui porte en toutes lettres « motif observé sur n=3,
+        NON EXTRAPOLABLE en exclusion ». Une observation de corpus n'est pas une frontière.
+      non_modifie: >-
+        La limite « racine n-ième / puissances x^r / réciproques trigonométriques restent SM »
+        est MAINTENUE telle quelle, toujours marquée « À VALIDER » : c'est une décision owner,
+        pas un constat que la passe challenger pouvait trancher. (Côté SM, 1.3.15 « Maîtriser
+        le calcul sur les puissances réelles » et arctan attestée sur copie SM la soutiennent —
+        voir maths-sm.yaml, chapitre derivabilite_rolle_taf.)
+      statut: "PROPOSITION. Porte 2 passée. Restent la relecture longue Gemini et la validation humaine."
 
   claims_derives_les_plus_faibles:    # à attaquer en priorité (research-challenger)
     - "Statut du PRODUIT VECTORIEL en SExp (objet testé ? outil ? absent ?) — chapitre produit_vectoriel_sexp."
     - "Périmètre exact du 2e ordre en équations différentielles SExp (y''+ω²y=0 ?)."
     - "Sous-répartition Complexes 15 % / Probabilités 15 % (le bloc 30 % est sourcé, le partage interne est dérivé)."
     - "Exclusion du produit mixte de SExp (prudence, non confirmée)."
-</content>
+    - "AJOUT 2026-09-27, resserré le même jour par la passe research-challenger : de la couche `derived` de la fonction réciproque, il ne reste comme `limites` que (a) le théorème admis-et-appliqué + l'expression de f⁻¹(x) non demandée + la fonction déjà étudiée dans le problème, et (b) « racine n-ième / puissances x^r / arctan restent SM » — cette dernière toujours « À VALIDER » (décision owner). Les deux clauses retirées (« toujours une restriction » — falsifiée par 2 des 4 copies citées ; « dérivée en un point et non sur J » — n=3 sans libellé de cadre) ne sont plus des frontières : la première est reformulée, la seconde vit en `_observation_examens`. La capacité 1.2.11 elle-même reste sourcée (verbatim + 4 examens) et n'a pas bougé."
