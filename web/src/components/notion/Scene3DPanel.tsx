@@ -26,6 +26,7 @@ import { SpherePlanDroitePanel } from "./scene/SpherePlanDroitePanel";
 import { RevolutionPanel } from "./scene/RevolutionPanel";
 import { VectorielPanel } from "./scene/VectorielPanel";
 import { PlanComplexePanel } from "./scene/PlanComplexePanel";
+import { PlanComplexeRapportPanel } from "./scene/PlanComplexeRapportPanel";
 
 const PANNEAUX: Record<string, React.ComponentType<{ scene: Scene3DDescriptor; className?: string }>> = {
   "orbite-geostationnaire": OrbiteGeostationnairePanel,
@@ -59,6 +60,7 @@ const PANNEAUX: Record<string, React.ComponentType<{ scene: Scene3DDescriptor; c
   // centre — le rapport, l'angle comme ÉCART, le centre comme point fixe (spec
   // docs/pipeline/propositions/maths-nombres-complexes-2-scene-plan.md). Tout y est EXACT.
   "plan-complexe-transformation": PlanComplexePanel,
+  "plan-complexe-rapport": PlanComplexeRapportPanel,
 };
 
 export function Scene3DPanel({ scene, className }: { scene: Scene3DDescriptor; className?: string }) {

@@ -5,7 +5,23 @@
 (R5), dont le §13.3 en esquissait déjà la charte. Révisée le 2026-09-25 après les deux
 rapports de vague 1 (bac-fidelity-critic, pedagogy-critic), verdict commun **BUILD AFTER
 FIXES** ; **révisée une seconde fois le 2026-09-25** après les deux rapports de **seconde
-passe**, verdict commun **BUILD AFTER FIXES** de nouveau.
+passe**, verdict commun **BUILD AFTER FIXES** de nouveau ; **troisième passe de fidélité
+(ciblée, 2026-09-27), BUILD AFTER FIXES, appliquée** — voir le bloc ci-dessous. **EN
+CONSTRUCTION** : le modèle exact et son test unitaire existent
+(`web/src/lib/scene2d/plan-complexe-rapport-modele.ts`, `web/scripts/test-plan-complexe-rapport.mjs`,
+12/12 — les cinq tables du §5.3 recalculées par une seconde voie : toutes justes).
+
+> ## Ce que la troisième passe a changé (fidélité, ciblée ; 2026-09-27)
+>
+> **B-1** — le pas du balayage sur le cercle : $5° \to 7{,}5°$ (§5.5 point 3). *Le code l'avait
+> déjà refusé ; la spec avait tort.* **I-1** — le choix C de NBCOMPLEX2-43 imprimait
+> $\vert w\vert = \frac12$, qui départageait A et B sans calcul : la valeur est retirée (§8.3).
+> **I-2** — la cellule `demi-equilateral`·$B$ du §5.3 B disait encore « la ligne » : « le critère »,
+> comme le modèle. **I-3** — l'étiquette de l'arc pendant le balayage suit la ligne qu'elle double
+> (§6.1). **M-1** — « dans l'ordre de la table » était faux des douze textes : « le module d'abord,
+> puis l'argument ». **M-2**, **M-3**, **M-4** — trois retouches d'écriture et de citation (§8.2
+> ter, §8.3). *Deux de ces sept (B-1, I-2) sont des endroits où le CODE était juste et la spec
+> fausse : la spec se réconcilie au modèle construit, pas l'inverse.*
 
 > ## Ce que la vague 1 a changé
 >
@@ -157,7 +173,7 @@ passe**, verdict commun **BUILD AFTER FIXES** de nouveau.
 > leçons livrées du balayage sont carrées cette fois** (`scene-plan.md:19-21`,
 > `HANDOFF.md:16449-16451`) : début et relâchement **dits par la région vivante**, « Échap »
 > dans le **libellé visible**, **une valeur parlée qui varie**, et un **pas qui déplace
-> visiblement $M$** (5° sur le cercle, $\frac14$ d'unité sur les deux lieux droits).
+> visiblement $M$** (7,5° sur le cercle — *pas 5° : troisième passe, B-1* —, $\frac14$ d'unité sur les deux lieux droits).
 >
 > **Quatre IMPORTANTES de pédagogie.**
 > **IM-1 — S3 écrivait « aucune des quatre » à un élève qui n'a jamais vu les quatre.** La table
@@ -1248,7 +1264,7 @@ points ne sont plus mentionnés nulle part**. Ils restent hors des crans, et c'e
 **B — les modules, les arguments et la NATURE, aux douze.**
 
 > ⚠ **CORRECTIF DE VAGUE 1 (fidélité M5) : la lecture `nature` nomme TOUTES les lignes de la
-> table que $w$ vérifie à ce sommet, dans l'ordre de la table — pas « la » ligne, pas « la plus
+> table que $w$ vérifie à ce sommet, le module d'abord, puis l'argument — pas « la » ligne, pas « la plus
 > forte ».** Le premier jet écrivait « *la **ligne** que $w$ vérifie* » (§5.6) et « *elle nomme
 > **une** ligne exactement* » (§11.1 N6) tout en écrivant « rectangle **ET** isocèle en $A$ »
 > pour `rect-isocele` et le seul mot « équilatéral » pour `equilateral` — **deux conventions
@@ -1281,7 +1297,7 @@ points ne sont plus mentionnés nulle part**. Ils restent hors des crans, et c'e
 > frontière ne bouge, aucune chaîne interdite n'apparaît.**
 >
 > **La règle, écrite une fois et mesurable dans quatre sens (§11.1 N6) :**
-> - **quand un ou deux critères s'allument**, `nature` écrit **chacun, dans l'ordre de la table,
+> - **quand un ou deux critères s'allument**, `nature` écrit **chacun, le module d'abord puis l'argument,
 >   avec la valeur qui le déclenche** — « $\vert w\vert = 1$ ⟹ isocèle en $A$ » ;
 > - **quand aucun ne s'allume**, elle écrit **les critères vérifiés et la valeur qui les tue** —
 >   jamais un décompte ;
@@ -1302,7 +1318,7 @@ points ne sont plus mentionnés nulle part**. Ils restent hors des crans, et c'e
 | `equilateral` · $B$ | $1$ | $-\dfrac{\pi}{3}$ | $\vert w\vert = 1$ ⟹ **isocèle en $B$** · et $\arg(w) = -\dfrac{\pi}{3}$ ⟹ **équilatéral** *(le signe change, la conclusion non)* |
 | `equilateral` · $C$ | $1$ | $\dfrac{\pi}{3}$ | $\vert w\vert = 1$ ⟹ **isocèle en $C$** · et $\arg(w) = \dfrac{\pi}{3}$ ⟹ **équilatéral** |
 | `demi-equilateral` · $A$ | $\dfrac{\sqrt3}{2}$ | $\dfrac{\pi}{6}$ | $\vert w\vert = \dfrac{\sqrt3}{2} \neq 1$ · $\arg(w) = \dfrac{\pi}{6}$ : ni $0$, ni $\pi$, ni $\pm\dfrac{\pi}{2}$ — **rien ne s'allume au sommet $A$** |
-| `demi-equilateral` · $B$ | $\dfrac12$ | $-\dfrac{\pi}{3}$ | $\arg(w) = -\dfrac{\pi}{3}$ est bien l'angle de la ligne « équilatéral » — **mais $\vert w\vert = \dfrac12 \neq 1$**, et cette ligne demande les DEUX · ni $0$, ni $\pi$, ni $\pm\dfrac{\pi}{2}$ — **rien ne s'allume au sommet $B$** |
+| `demi-equilateral` · $B$ | $\dfrac12$ | $-\dfrac{\pi}{3}$ | $\arg(w) = -\dfrac{\pi}{3}$ est bien l'angle du critère « équilatéral » — **mais $\vert w\vert = \dfrac12 \neq 1$**, et ce critère demande les deux · ni $0$, ni $\pi$, ni $\pm\dfrac{\pi}{2}$ — **rien ne s'allume au sommet $B$** |
 | `demi-equilateral` · $C$ | $\dfrac{\sqrt3}{3}$ | $\dfrac{\pi}{2}$ | $\vert w\vert = \dfrac{\sqrt3}{3} \neq 1$ · $\arg(w) = \dfrac{\pi}{2}$ ⟹ **rectangle en $C$** |
 | `aligne` · $A$ | $\dfrac12$ | $\pi$ | $\vert w\vert = \dfrac12 \neq 1$ · $\arg(w) = \pi$ ⟹ **alignés** |
 | `aligne` · $B$ | $\dfrac32$ | $0$ | $\vert w\vert = \dfrac32 \neq 1$ · $\arg(w) = 0$ ⟹ **alignés** |
@@ -1489,9 +1505,14 @@ c'est la différence avec la scène sœur, et elle porte tout le sens de S4 (§7
 >    lecteur d'écran ne sait ni qu'il a pris le point, ni qu'il l'a lâché.*
 > 2. **« Échap » est dans le LIBELLÉ VISIBLE du contrôle**, pas seulement dans l'aide.
 > 3. **Le pas déplace visiblement $M$.** *La scène sœur a mesuré qu'au cran de $1°$ une flèche ne
->    bougeait rien de visible.* **Ici les lieux ne sont pas tous des arcs : le pas est de $5°$ sur
->    le CERCLE, et de $\frac14$ d'unité sur la MÉDIATRICE et sur la DROITE** — soit $\approx 8$ px
->    à $1\,280$ et $\approx 5$ px à 390 (§5.1). **Mesuré, pas supposé : `balayage-invariants`
+>    bougeait rien de visible.* **Ici les lieux ne sont pas tous des arcs : le pas est de $7{,}5°$
+>    ($=\frac{\pi}{24}$) sur le CERCLE, et de $\frac14$ d'unité sur la MÉDIATRICE et sur la DROITE**
+>    — sur le cercle de rayon $2$ : $0{,}26$ unité, soit $\approx 5{,}7$ px à 390 et $\approx 8$ px à
+>    $1\,280$ ; sur les droites : $\approx 5{,}4$ px et $\approx 7{,}8$ px (§5.1). *⚠ Troisième passe
+>    (fidélité B-1) : le premier chiffre était $5°$, soit $3{,}8$ px à 390 — sous le plancher de
+>    4 px que la ligne suivante exige ; le modèle construit l'avait déjà refusé
+>    (`plan-complexe-rapport-modele.ts`, test unitaire). Les crans $30°$ et $150°$ restent sur la
+>    grille.* **Mesuré, pas supposé : `balayage-invariants`
 >    exige qu'un appui de flèche déplace $M$ d'au moins 4 px aux deux largeurs.**
 > 4. **Une valeur parlée qui VARIE — et ici elle ne peut pas être un nombre.** *La scène sœur
 >    annonçait une valeur numérique ; §5.4 l'interdit ici, puisque la grandeur qui varie n'est
@@ -1548,7 +1569,7 @@ sœur. En `mode: lieu`, les contrôles `position`, `forme` et `sommet` sont **ab
 | `module-w` | $\vert w\vert$ | entier ou radical **exact** | **S2** (révélation) · **S3** (énoncé) |
 | `argument-w` | $\arg(w)$ | fraction de $\pi$, dans $]-\pi;\pi]$ | **S2** (révélation) · **S3** (énoncé) |
 | `longueurs` | les deux distances au sommet ($AB$ et $AC$) | radicaux exacts | **S2 seule** (révélation — c'est la PREUVE que le module est un quotient) |
-| `nature` | **les CRITÈRES vérifiés à ce sommet, dans l'ordre de la table, chacun avec la valeur qui le déclenche ou qui le tue**, puis la ou les conclusions qui s'allument ; **jamais un décompte** *(réécrite en seconde passe, pédagogie IM-1 — texte exact aux douze états : §5.3 B)* | en toutes lettres, les valeurs en KaTeX | **S3 seule** (révélation) |
+| `nature` | **les CRITÈRES vérifiés à ce sommet, le module d'abord puis l'argument, chacun avec la valeur qui le déclenche ou qui le tue**, puis la ou les conclusions qui s'allument ; **jamais un décompte** *(réécrite en seconde passe, pédagogie IM-1 — texte exact aux douze états : §5.3 B)* | en toutes lettres, les valeurs en KaTeX | **S3 seule** (révélation) |
 | `rapport-lieu` | en `mode: lieu` : $\left\vert\frac{z-z_A}{z-z_B}\right\vert$ **et** son argument, l'un sous l'autre. **Pendant le balayage, la ligne INVARIANTE du lieu reste écrite et exacte ; l'autre affiche « — »** (§6.1) | exacte | **S4 seule** (révélation) |
 
 **Chaque lecture existe donc à au moins une étape, et chacune est employée là où elle existe.**
@@ -1682,6 +1703,12 @@ scène est exactement où elle était.
 > **Et l'affixe de $M$ peint sur le plan est POSITIONNELLE : elle s'efface pendant le geste**,
 > comme les affixes de $M$ et $M'$ chez la sœur. *Les deux segments, l'arc et $M$ bougent ;
 > l'étiquette d'affixe, non — elle disparaît.*
+> **L'ÉTIQUETTE DE L'ARC suit la même règle que la ligne qu'elle double** *(troisième passe,
+> fidélité I-3 : sans cette phrase, un arc étiqueté sur la médiatrice imprimait un angle variable,
+> non exact, dans aucune zone mesurée)* : sur la **médiatrice**, l'argument est positionnel — **l'arc
+> se trace, son étiquette s'efface** ; sur le **cercle**, l'argument est l'invariant — **l'étiquette
+> reste, $-\frac{\pi}{2}$** ; sur la **droite**, l'argument vaut $0$ — **aucun arc**. La porte
+> `balayage-invariants` lit l'étiquette de l'arc avec les lectures, et §9.12 l'ajoute à ses zones.
 >
 > **Ce que l'élève voit alors, et c'est exactement le fait de l'étape :** sur la médiatrice, les
 > deux segments changent ensemble, l'arc s'ouvre et se ferme, **et la ligne du module ne bouge
@@ -1999,7 +2026,7 @@ pas parié.
 > NOMBRE au FAIT (§14.0), est ce qui aurait attrapé l'ancienne version.*
 
 - **`suite` (une question, un geste — 29 mots) :** « **Change de sommet, et lis les critères.**
-  Au sommet $B$, l'argument vaut $-\dfrac{\pi}{3}$ — l'angle même de la ligne « équilatéral ».
+  Au sommet $B$, l'argument vaut $-\dfrac{\pi}{3}$ — l'angle même du critère « équilatéral ».
   Qu'est-ce qui, à lui seul, interdit cette ligne ? »
   *Réponse vérifiée : **le module**, $\vert w\vert = \dfrac12 \neq 1$ — la ligne « équilatéral »
   demande les DEUX (§5.3 B, ligne `demi-equilateral` · $B$).*
@@ -2577,8 +2604,7 @@ $\pm\pi/2$…)* ». **Seule la `description` ne le dit pas.***
       l'argument, ou n'en lit qu'un des deux, pour la nature du triangle.
       TROISIÈME FACE, sans échange ni oubli : il lit la BONNE grandeur et la
       compare au MAUVAIS SEUIL — « l'argument n'est pas nul, donc rectangle »
-      au lieu de « l'argument vaut ±π/2 », ou « le module n'est pas 1, donc
-      rien » là où l'argument décide seul. Chaque ligne de la table demande
+      au lieu de « l'argument vaut ±π/2 ». Chaque ligne de la table demande
       une valeur PRÉCISE, pas une valeur différente d'une autre.
     contradicts_principle: >-
       |w| donne le rapport AC/AB (isocèle en A si |w| = 1) et arg(w) donne
@@ -2746,8 +2772,8 @@ trois autres est **exactement** ce qu'écrit le modèle qu'elle porte ✓.*
 |---|---|---|
 | **A** | Ils sont **alignés**, et $AC = \dfrac12\,AB$ | **juste** |
 | B | Ils sont alignés, et $AC = 2\,AB$ | `produit-quotient-argument-operation` *(la fraction retournée : $\frac{z_B-z_A}{z_C-z_A} = -2$, lu comme $\frac{AC}{AB}$ — **forme AMONT**, sur le quotient des LONGUEURS : texte élargi au **§8.2 ter (c)**)* |
-| C | Ils ne sont **pas** alignés, car $\vert w\vert = \dfrac12 \neq 1$ | `lecture-w-module-argument` *(le critère du module appliqué à une question d'angle)* |
-| D | Ils ne sont **pas** alignés, car $\dfrac{z_C}{z_B}$ n'est ni réel ni imaginaire pur | `w-sommet-ignore` *(face A)* |
+| C | Ils ne sont **pas** alignés, car le module de $w$ ne vaut pas $1$ | `lecture-w-module-argument` *(le critère du module appliqué à une question d'angle — **sans la valeur** : « $\frac12$ » donnait $AC = \frac12 AB$, c'est-à-dire A contre B sans calcul ; troisième passe, fidélité I-1)* |
+| D | Ils ne sont **pas** alignés, car $\dfrac{z_C}{z_B}$ n'est pas réel | `w-sommet-ignore` *(face A)* |
 
 *Vérifications : $z_B - z_A = 4+2i$ ; $z_C - z_A = -2-i = -\frac12(4+2i)$, donc
 $w = \frac{z_C-z_A}{z_B-z_A} = -\frac12$ ✓ — **réel négatif ⟹ alignés**, avec $C$ du côté opposé
@@ -2797,7 +2823,7 @@ $\neq \pm\frac{\pi}{2}$** ✓.*
 > alignés » / « pas rectangle ») — mais deux items voisins qui récitent la même formule
 > apprennent une formule, pas un critère.* **-44 D lit désormais le critère comme un ARGUMENT**,
 > ce qui est la grandeur que sa question interroge ; **-43 D garde la forme générale**, parce que
-> sa question porte sur l'alignement, où « réel » est le mot juste. *Rien d'autre ne change : le
+> sa question porte sur l'alignement, où « réel » est le mot juste — **et elle ne dit plus que cela** (« n'est pas réel ») : « ni imaginaire pur » ne portait sur rien dans une question d'alignement (troisième passe, M-3). *Rien d'autre ne change : le
 > nombre, le modèle et le retour sont les mêmes.*
 
 > **C'est le seul objet du corpus — items, checkpoints, figures, exemples travaillés — qui lit
@@ -2847,7 +2873,7 @@ NBCOMPLEX2-24, sur d'autres points) ; la droite $(AB)$ répond à « rapport **r
 > `items.yaml` et `checkpoints.yaml`). La route attestée vers une médiatrice est
 > $\vert z-a\vert = \vert z-b\vert$ (NBCOMPLEX2-32, `items.yaml:2131-2133`), **pas**
 > $\left\vert\frac{z-a}{z-b}\right\vert = 1$. *La forme est **dans le cadre** — c'est une
-> réécriture triviale, couverte par `maths-sexp.yaml:254` et `maths-sm.yaml:225` — et c'est la
+> réécriture triviale, couverte par COMPOSITION : `maths-sexp.yaml:241` (les règles produit/quotient pour module et argument) avec `:254`–`:255` — *la case « module d'un rapport » n'est nommée par aucune ligne, c'est la case manquante de la grille (ADR 0040) ; troisième passe, M-4* — et c'est la
 > bonne face diagnostique pour ce modèle (le critère de module sur un RAPPORT, que rien ne
 > mesure). **Mais le pari central de S4 et cet item reposent tous deux sur une forme que les dix
 > annales n'écrivent pas**, et un document qui mesure doit le dire.* **Porté au `fit_caveat`,
@@ -3213,7 +3239,7 @@ pas le bon nombre*.
 | N3 | la lecture `vecteurs` : les deux différences $z_C - z_A$ et $z_B - z_A$ aux 48 | calculées depuis les affixes rendues | égalité de chaîne ; **et ni l'une ni l'autre n'est égale à $z_C$ ou $z_B$** sauf au placement `origine` |
 | N4 | $\vert w\vert$ et $\arg(w)$ aux 48 | table §5.3 B, en **contrôle ponctuel** — la porte recalcule les 48 | chaînes ; **arguments en fractions de $\pi$, dans $]-\pi;\pi]$** ; *`aligne` au sommet $A$ doit écrire $\pi$, jamais $-\pi$* |
 | N5 | `longueurs` : $AB$ et $AC$ aux 48, **et leur quotient égale $\vert w\vert$** | table §5.3 C | égalité de chaîne, **et** $\frac{AC}{AB} = \vert w\vert$ à $10^{-9}$ |
-| **N6** | **`nature` aux 48, dans QUATRE sens.** Elle écrit **les CRITÈRES vérifiés à ce sommet, dans l'ordre de la table, chacun avec sa valeur**, puis la ou les conclusions qui s'allument. Répartition des 48 états : **deux conclusions** aux **SEIZE** états `rect-isocele`·$A$ et `equilateral`·$A$/$B$/$C$ *(4 couples × 4 placements)* · **une** aux **SEIZE** états `demi-equilateral`·$C$ et `aligne`·$A$/$B$/$C$ · **aucune** aux **SEIZE** états `rect-isocele`·$B$/$C$ et `demi-equilateral`·$A$/$B$. **Somme : 48** ✓ | §5.3 B, colonne de droite, **texte par texte** | **quatre sens :** (1) une scène qui conclurait toujours doit rougir ; (2) une qui ne conclurait jamais aussi ; (3) **une qui ne nommerait qu'UNE conclusion là où deux sont vérifiées** aussi *(fidélité M5)* ; (4) **NEUF — une qui écrirait une conclusion SANS le critère qui la produit, ou qui écrirait un DÉCOMPTE (« aucune des quatre ») au lieu des critères vérifiés, doit rougir seule** *(seconde passe, pédagogie IM-1)* |
+| **N6** | **`nature` aux 48, dans QUATRE sens.** Elle écrit **les CRITÈRES vérifiés à ce sommet, le module d'abord puis l'argument, chacun avec sa valeur**, puis la ou les conclusions qui s'allument. Répartition des 48 états : **deux conclusions** aux **SEIZE** états `rect-isocele`·$A$ et `equilateral`·$A$/$B$/$C$ *(4 couples × 4 placements)* · **une** aux **SEIZE** états `demi-equilateral`·$C$ et `aligne`·$A$/$B$/$C$ · **aucune** aux **SEIZE** états `rect-isocele`·$B$/$C$ et `demi-equilateral`·$A$/$B$. **Somme : 48** ✓ | §5.3 B, colonne de droite, **texte par texte** | **quatre sens :** (1) une scène qui conclurait toujours doit rougir ; (2) une qui ne conclurait jamais aussi ; (3) **une qui ne nommerait qu'UNE conclusion là où deux sont vérifiées** aussi *(fidélité M5)* ; (4) **NEUF — une qui écrirait une conclusion SANS le critère qui la produit, ou qui écrirait un DÉCOMPTE (« aucune des quatre ») au lieu des critères vérifiés, doit rougir seule** *(seconde passe, pédagogie IM-1)* |
 | N7 | le mode `lieu` : $u$, $\vert u\vert$, $\arg(u)$, $MA$, $MB$ aux **5** crans | table §5.3 E | égalité de chaîne + $10^{-9}$ ; **et $\frac{MA}{MB} = \vert u\vert$** |
 | **N8** | **la CLASSIFICATION des 5 crans** : $\vert u\vert = 1$ **au seul** `mediatrice` ; $\arg(u) = \pm\frac{\pi}{2}$ **aux seuls** `cercle-1` et `cercle-2` ; $\arg(u) \in \{0,\pi\}$ **au seul** `droite` ; **aucune** des trois au cran `libre` | §5.3 E | **exact, dans les deux sens** — *c'est la ligne qui garde S4* |
 | **N8 bis** *(NEUVE — seconde passe, BQ-1)* | **les INVARIANTS de balayage, recalculés analytiquement le long de chaque lieu, à $\ge 20$ points de chaque parcours** : sur la médiatrice $\vert u\vert = 1$ **partout** ; sur le demi-cercle supérieur ($0 < \theta < \pi$) $\arg(u) = -\frac{\pi}{2}$ **partout** ; sur la demi-droite $x > 2$ $\arg(u) = 0$ **partout** | dérivation : $u(iy) = \frac{2+iy}{-2+iy}$ a pour module $1$ ; $u(2e^{i\theta}) = -i\cot\frac\theta2$, **de partie imaginaire négative pour $0<\theta<\pi$ et POSITIVE pour $\pi<\theta<2\pi$** ; $u(x) = \frac{x+2}{x-2}$, **positif pour $x>2$ et pour $x<-2$, NÉGATIF entre $-2$ et $2$** | **exact, et dans les deux sens** : *une porte qui ne vérifierait l'invariant qu'AU CRAN ne verrait jamais la faute de borne, qui est précisément une faute de PARCOURS.* **C'est la ligne qui garde la borne du §6.1** |

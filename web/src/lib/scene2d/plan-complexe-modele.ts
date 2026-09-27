@@ -19,6 +19,8 @@
  */
 
 // ── ℚ ────────────────────────────────────────────────────────────────────────
+// (les briques de ℚ et de ℚ(√3) sont EXPORTÉES : la scène sœur `plan-complexe-rapport`
+// — R6, le rapport lu depuis un sommet — calcule dans le même corps, sans recopier)
 export interface Q {
   n: number;
   d: number;
@@ -31,39 +33,39 @@ export function q(n: number, d = 1): Q {
   const nn = (s * n) / g;
   return { n: nn === 0 ? 0 : nn, d: Math.abs(d) / g };
 }
-const qAdd = (a: Q, b: Q) => q(a.n * b.d + b.n * a.d, a.d * b.d);
-const qSub = (a: Q, b: Q) => q(a.n * b.d - b.n * a.d, a.d * b.d);
-const qMul = (a: Q, b: Q) => q(a.n * b.n, a.d * b.d);
-const qDiv = (a: Q, b: Q) => q(a.n * b.d, a.d * b.n);
-const qNul = (a: Q) => a.n === 0;
-const qF = (a: Q) => a.n / a.d;
+export const qAdd = (a: Q, b: Q) => q(a.n * b.d + b.n * a.d, a.d * b.d);
+export const qSub = (a: Q, b: Q) => q(a.n * b.d - b.n * a.d, a.d * b.d);
+export const qMul = (a: Q, b: Q) => q(a.n * b.n, a.d * b.d);
+export const qDiv = (a: Q, b: Q) => q(a.n * b.d, a.d * b.n);
+export const qNul = (a: Q) => a.n === 0;
+export const qF = (a: Q) => a.n / a.d;
 
 // ── ℚ(√3) : r + s√3 ──────────────────────────────────────────────────────────
 export interface R3 {
   r: Q;
   s: Q;
 }
-const r3 = (r: Q, s: Q = q(0)): R3 => ({ r, s });
-const rAdd = (a: R3, b: R3) => r3(qAdd(a.r, b.r), qAdd(a.s, b.s));
-const rSub = (a: R3, b: R3) => r3(qSub(a.r, b.r), qSub(a.s, b.s));
+export const r3 = (r: Q, s: Q = q(0)): R3 => ({ r, s });
+export const rAdd = (a: R3, b: R3) => r3(qAdd(a.r, b.r), qAdd(a.s, b.s));
+export const rSub = (a: R3, b: R3) => r3(qSub(a.r, b.r), qSub(a.s, b.s));
 // (a + b√3)(c + d√3) = (ac + 3bd) + (ad + bc)√3
-const rMul = (a: R3, b: R3) => r3(qAdd(qMul(a.r, b.r), qMul(q(3), qMul(a.s, b.s))), qAdd(qMul(a.r, b.s), qMul(a.s, b.r)));
-const rNeg = (a: R3) => r3(qSub(q(0), a.r), qSub(q(0), a.s));
-const rNul = (a: R3) => qNul(a.r) && qNul(a.s);
+export const rMul = (a: R3, b: R3) => r3(qAdd(qMul(a.r, b.r), qMul(q(3), qMul(a.s, b.s))), qAdd(qMul(a.r, b.s), qMul(a.s, b.r)));
+export const rNeg = (a: R3) => r3(qSub(q(0), a.r), qSub(q(0), a.s));
+export const rNul = (a: R3) => qNul(a.r) && qNul(a.s);
 /** 1 / (a + b√3) = (a − b√3) / (a² − 3b²) */
 function rInv(a: R3): R3 {
   const den = qSub(qMul(a.r, a.r), qMul(q(3), qMul(a.s, a.s)));
   if (qNul(den)) throw new Error("division par zéro dans ℚ(√3)");
   return r3(qDiv(a.r, den), qDiv(qSub(q(0), a.s), den));
 }
-const rF = (a: R3) => qF(a.r) + qF(a.s) * Math.sqrt(3);
+export const rF = (a: R3) => qF(a.r) + qF(a.s) * Math.sqrt(3);
 
 // ── ℚ(√3)[i] ─────────────────────────────────────────────────────────────────
 export interface C {
   re: R3;
   im: R3;
 }
-const cx = (re: R3, im: R3 = r3(q(0))): C => ({ re, im });
+export const cx = (re: R3, im: R3 = r3(q(0))): C => ({ re, im });
 /** un complexe à parties RATIONNELLES : (a/ad) + (b/bd) i */
 export const cq = (a: number, b = 0, ad = 1, bd = 1): C => cx(r3(q(a, ad)), r3(q(b, bd)));
 export const add = (u: C, v: C) => cx(rAdd(u.re, v.re), rAdd(u.im, v.im));
@@ -220,13 +222,13 @@ export function ecart(t: Transformation, z: C): number | null {
 
 // ── Les nombres, écrits (TeX, pour KaTeX) ────────────────────────────────────
 const MOINS = "-";
-function texQ(x: Q): string {
+export function texQ(x: Q): string {
   const a = Math.abs(x.n);
   const corps = x.d === 1 ? `${a}` : `\\tfrac{${a}}{${x.d}}`;
   return x.n < 0 ? `${MOINS}${corps}` : corps;
 }
 /** un coefficient devant un symbole (√3, i) : 1 s'efface, −1 devient − */
-function texCoef(x: Q, symbole: string, espace = false): string {
+export function texCoef(x: Q, symbole: string, espace = false): string {
   if (x.n === 1 && x.d === 1) return symbole;
   if (x.n === -1 && x.d === 1) return `${MOINS}${symbole}`;
   return `${texQ(x)}${espace ? "\\," : ""}${symbole}`;

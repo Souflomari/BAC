@@ -362,6 +362,10 @@ Et si on te donnait la même transformation écrite $z' = iz + 2 - 2i$ ? C'est l
 
 ## R6 — Configurations : la nature d'un triangle, l'alignement
 
+Un seul nombre peut-il décider de la forme d'un triangle ? Au chapitre 6, tu connaissais le centre et le coefficient, et tu cherchais où arrivait un point. Ici, c'est l'inverse : tu connais trois points, et tu cherches ce que dit le rapport qu'ils forment. Avant d'expliquer pourquoi, on va d'abord l'essayer sur quelques triangles bien choisis. Attention à ce que cet essai est : un banc d'essai, pas une preuve — quelques cas ne démontrent rien, la démonstration vient juste après.
+
+[[embed:plan-complexe-rapport]]
+
 ### Le rapport qui encode toute la forme d'un triangle
 
 Le rapport qui suit n'est pas un outil neuf : c'est le coefficient du chapitre 6, lu à l'envers. Là-bas, le centre et $c$ donnaient l'image d'un point ; ici, le centre $A$, un point $B$ et son image $C$ redonnent $c$.
@@ -374,7 +378,9 @@ $$w = \frac{z_C - z_A}{z_B - z_A}$$
 
 $$|w| = \frac{|z_C-z_A|}{|z_B-z_A|} = \frac{AC}{AB} \qquad \qquad \arg(w) = \arg(z_C-z_A) - \arg(z_B-z_A)\ [2\pi]$$
 
-Cette différence d'arguments est précisément l'angle qu'il faut pour amener la direction de $\vec{AB}$ sur celle de $\vec{AC}$ — c'est-à-dire l'angle géométrique $(\vec{AB}, \vec{AC})$, l'angle du triangle **au sommet $A$**. Un seul nombre complexe, $w$, porte donc à la fois le rapport des longueurs $AC/AB$ et l'angle en $A$.
+$\arg(z_C-z_A)$ et $\arg(z_B-z_A)$ sont deux directions ; leur différence est un écart entre deux directions, et un écart de directions **est** l'angle orienté $(\vec{AB}, \vec{AC})$, l'angle du triangle **au sommet $A$** — c'est exactement ce que le chapitre 6 a établi pour l'angle d'une transformation, relu ici entre deux côtés d'un triangle. Un seul nombre complexe, $w$, porte donc à la fois le rapport des longueurs $AC/AB$ et l'angle en $A$.
+
+Et une mise en garde utile ici : l'erreur est invisible quand $z_A = 0$ — cas où $z_C - z_A$ vaut exactement $z_C$ — et c'est précisément le cas de tous les exemples habituels.
 
 Ce qui donne la table de lecture suivante :
 
@@ -384,6 +390,8 @@ Ce qui donne la table de lecture suivante :
 | $w$ imaginaire pur non nul | triangle rectangle en $A$ (angle en $A$ égal à $\pm\pi/2$) |
 | $|w|=1$ | triangle isocèle en $A$ ($AB=AC$) |
 | $|w|=1$ et $\arg(w)=\pm\pi/3\ [2\pi]$ | triangle équilatéral |
+
+Un triangle isocèle en $A$ dont l'angle en $A$ vaut $\dfrac{\pi}{3}$ a ses deux autres angles égaux, de somme $\pi - \dfrac{\pi}{3} = \dfrac{2\pi}{3}$ : chacun vaut donc aussi $\dfrac{\pi}{3}$. Les trois angles valent $\dfrac{\pi}{3}$ : le triangle est équilatéral.
 
 **Un repère minimal pour la première ligne.** Avec $z_A=0$, $z_B=1+i$, $z_C=2+2i=2(1+i)$ : $w = \dfrac{2(1+i)}{1+i} = 2$, un réel strictement positif. En effet, $C$ est bien sur la droite $(AB)$ — c'est le point qui double le vecteur $\vec{AB}$.
 
@@ -405,9 +413,23 @@ $w$ est imaginaire pur non nul, donc le triangle est **rectangle en $A$**. Et $|
 
 **Vérification directe sur les coordonnées :** $A(1,0)$, $B(1,1)$, $C(2,0)$. Le vecteur $\vec{AB}=(0,1)$ et $\vec{AC}=(1,0)$ sont bien orthogonaux (produit scalaire nul), et de même norme ($1$ chacun). La conclusion tirée du calcul complexe est directement confirmée par la géométrie élémentaire.
 
+### Des points qui vérifient une condition : trois lieux à ne pas confondre
+
+On change de question : $A$ et $B$ sont fixes, et $M$ devient l'inconnue. Le rapport s'écrit $u = \dfrac{z-z_A}{z-z_B}$, lu **au sommet $M$** : $|u| = \dfrac{MA}{MB}$, $\arg(u)$ est l'angle **en $M$**. *Cela se dérive : $z-z_A$ et $z-z_B$ sont les affixes de $\vec{AM}$ et $\vec{BM}$, qui arrivent en $M$. Les retourner pour repartir de $M$ multiplie les deux affixes par $-1$ : l'écart entre les deux directions ne bouge pas, ni les deux longueurs — c'est le même nombre $u$.*
+
+$|u|=1$ équivaut à $MA=MB$ (un quotient vaut $1$ exactement quand les deux longueurs sont égales), donc à $M$ sur la **médiatrice** de $[AB]$. $u$ réel équivaut à un angle de $0$ ou $\pi$ en $M$, donc à $M$ sur la **droite $(AB)$**, privée de $A$ et $B$. $u$ imaginaire pur équivaut à un angle de $\pm\dfrac{\pi}{2}$ en $M$, donc $M$ voit $[AB]$ sous un angle droit.
+
+Pourquoi cela place $M$ sur un cercle : soit $O$ le milieu de $[AB]$. Si le triangle $AMB$ est rectangle en $M$, sa médiane $[OM]$ vaut la moitié de l'hypoténuse : $OM = OA = OB = \dfrac{AB}{2}$, donc $M$ est sur le cercle de centre $O$ et de rayon $\dfrac{AB}{2}$. Réciproquement, si $M$ est sur ce cercle, $OM=OA=OB$, donc la médiane $[OM]$ vaut la moitié du côté $[AB]$ : le triangle est rectangle au sommet d'où elle part. *(Cette troisième lecture — celle du cercle — est au programme de la filière Sciences Mathématiques.)* $M=A$ et $M=B$ sont exclus : en $A$ le rapport vaut $0$, en $B$ il n'est pas défini.
+
+Cette propriété a un nom dans tes cours de géométrie : le **théorème de l'angle inscrit**, qui dit qu'un angle inscrit dans un demi-cercle est droit. Ce que tu viens de démontrer en est le cas particulier, obtenu avec la seule médiane. Le nom ne change rien à la démonstration.
+
 [[figure:nature-triangle-w]]
 
+La scène t'a fait trouver ce que $w$ vaut ; ici, tu vérifies ce qu'il dit.
+
 [[checkpoint:cp-r6-lecture-w]]
+
+Lis ce même triangle depuis $C$ : $w = \dfrac{\sqrt3}{3}\,i$, imaginaire pur, donc rectangle en $C$ — alors qu'en $A$, avec $|w| = \dfrac{\sqrt3}{2}$ et $\arg(w) = \dfrac{\pi}{6}$, rien ne s'allumait. Le module change, l'argument change : la nature, elle, change de sommet, pas de triangle.
 
 ---
 
@@ -417,8 +439,10 @@ Tu as maintenant tous les outils du chapitre : l'argument et les formes trigonom
 
 - $|c|$ multiplie une longueur, $\arg(c)$ **ajoute** un angle — et cet angle est un **écart**, jamais la direction d'un point.
 - une transformation écrite $z' = az+b$ se caractérise par $|a|$, $\arg(a)$ et $\omega = \dfrac{b}{1-a}$.
+- $w$ se lit **depuis un sommet**, sur les deux **vecteurs** issus de ce sommet — jamais sur les affixes eux-mêmes.
+- une condition sur $\left\vert\dfrac{z-z_A}{z-z_B}\right\vert$ donne une **médiatrice** ; une condition sur son **argument** donne une **droite**, ou — **en filière Sciences Mathématiques** — un **cercle**.
 
-Avant de te lancer, un dernier réflexe sur les ensembles de points :
+Avant de te lancer, un dernier réflexe sur les ensembles de points : tu as vu les trois lieux au chapitre 7 — dont celui du cercle, au programme de la filière Sciences Mathématiques ; celui-ci est le même, sur d'autres points.
 
 [[checkpoint:cp-ensemble-points]]
 

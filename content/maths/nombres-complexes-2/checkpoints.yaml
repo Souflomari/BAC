@@ -54,6 +54,21 @@ skill_code: maths_complexes_trigo
 #                                      si ±π/2) — deux critères SÉPARÉS, non
 #                                      interchangeables. Probes lecture-w-module-
 #                                      argument.
+#                                      GAGNE SA REPRISE (spec docs/pipeline/
+#                                      propositions/maths-nombres-complexes-2-
+#                                      scene-w.md §4.6, scene plan-complexe-
+#                                      rapport) — PROSE in lesson.md, not a new
+#                                      checkpoint entry here: a ~15-word framing
+#                                      line right before the
+#                                      [[checkpoint:cp-r6-lecture-w]] marker
+#                                      ("la scène t'a fait trouver ce que w
+#                                      vaut ; ici on vérifie ce qu'il dit") and
+#                                      a ~40-word follow-up right after it,
+#                                      re-reading the SAME scene triangle from
+#                                      sommet C: module and argument both
+#                                      change, but the nature moves with the
+#                                      sommet, not with the triangle. Four
+#                                      choices and the correct answer UNCHANGED.
 #   cp-ensemble-points (before bac)  — rupture gate: un ensemble de points défini
 #                                      par une condition sur un rapport de
 #                                      complexes (imaginaire pur → angle droit →
@@ -61,6 +76,22 @@ skill_code: maths_complexes_trigo
 #                                      médiatrice, ni un cercle centré en A, ni la
 #                                      droite (AB). Probes ensemble-points-locus-
 #                                      confondu.
+#                                      GAGNE UNE PHRASE DE CADRAGE (même spec,
+#                                      §4.6) — PROSE in lesson.md right before
+#                                      the [[checkpoint:cp-ensemble-points]]
+#                                      marker, naming the three loci taught at
+#                                      chapitre 7 (module → médiatrice ;
+#                                      argument → droite, or — filière Sciences
+#                                      Mathématiques only — cercle). Four
+#                                      choices and the correct answer
+#                                      UNCHANGED. Its correct-choice (A)
+#                                      feedback below is separately ALIGNED
+#                                      (spec §4.6, fidélité I5; REVIEW-2026-09-
+#                                      11.md:124-126, "réciproque de Thalès"
+#                                      qualified "univoquement le mauvais"):
+#                                      the médiane-de-l'hypoténuse mechanism
+#                                      replaces the Thalès citation, and names
+#                                      "théorème de l'angle inscrit" once.
 #
 # EVERY distractor carries a named misconception id from this notion's inventory
 # (items.yaml `misconceptions:`). Option lengths are balanced so the correct
@@ -282,6 +313,17 @@ checkpoints:
   #        Rupture gate: lire |w| (rapport → isocèle) et arg(w) (angle →
   #        rectangle) comme DEUX critères séparés. Clone of NBCOMPLEX2-21.
   #        Probes lecture-w-module-argument.
+  #
+  #        Entry below is UNCHANGED by the plan-complexe-rapport scene
+  #        (docs/pipeline/propositions/maths-nombres-complexes-2-scene-w.md
+  #        §4.6: "Aucun nouveau point d'arrêt"). Its reprise — a framing
+  #        line right before the [[checkpoint:cp-r6-lecture-w]] marker
+  #        ("la scène t'a fait trouver ce que w vaut ; ici, tu vérifies ce
+  #        qu'il dit") and a follow-up right after it (re-reading the same
+  #        scene triangle from sommet C: module and argument both change,
+  #        the nature moves with the sommet, not with the triangle) —
+  #        lives as PROSE in lesson.md around this marker, not as new
+  #        fields or a sibling entry here. See the file header above.
   # ════════════════════════════════════════════════════════════════
 
   - id: cp-r6-lecture-w
@@ -345,6 +387,18 @@ checkpoints:
   #        Rupture gate: un lieu défini par « (z−z_A)/(z−z_B) imaginaire
   #        pur » est le cercle de diamètre [AB]. Clone of NBCOMPLEX2-24.
   #        Probes ensemble-points-locus-confondu.
+  #
+  #        Choices and correct answer UNCHANGED by the plan-complexe-rapport
+  #        scene (same spec, §4.6). It gains a framing phrase right before
+  #        the [[checkpoint:cp-ensemble-points]] marker, naming the three
+  #        loci taught at chapitre 7 (module → médiatrice ; argument →
+  #        droite, or — filière Sciences Mathématiques only — cercle) —
+  #        PROSE in lesson.md, not a new field here. SEPARATELY, choice A's
+  #        feedback below is ALIGNED (spec §4.6, fidélité I5;
+  #        REVIEW-2026-09-11.md:124-126 qualifies "réciproque de Thalès"
+  #        "univoquement le mauvais"): the citation is replaced by the
+  #        médiane-de-l'hypoténuse mechanism, naming "théorème de l'angle
+  #        inscrit" once. Choices and correct answer UNCHANGED.
   # ════════════════════════════════════════════════════════════════
 
   - id: cp-ensemble-points
@@ -372,8 +426,10 @@ checkpoints:
         feedback: |-
           Exact. Le rapport imaginaire pur signifie que l'angle
           $(\overrightarrow{MB}, \overrightarrow{MA})$ vaut $\pm\dfrac{\pi}{2}$ :
-          $MAB$ est rectangle en $M$. Par la réciproque de Thalès, $M$ décrit le
-          cercle de diamètre $[AB]$, privé de $A$ et $B$.
+          $MAB$ est rectangle en $M$. Soit $O$ le milieu de $[AB]$ : la médiane
+          $[MO]$ d'un triangle rectangle en $M$ vaut la moitié de l'hypoténuse,
+          donc $OM = OA = OB = \dfrac{AB}{2}$ — $M$ décrit le cercle de diamètre
+          $[AB]$, privé de $A$ et $B$ (théorème de l'angle inscrit, chapitre 7).
 
       - id: B
         text: |-

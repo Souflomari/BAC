@@ -207,7 +207,14 @@ jobs:
       # flottant affiché) et en valeurs recalculées par une seconde voie, la
       # borne −π réécrite +π à c = −2, z' depuis a ET b (jamais depuis a et ω),
       # ω recoupé par la définition, les 85 états dans le cadre [−9 ; 9]².
-      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange · noyaux · diffraction · tremplin · modulation · électrolyse · plan complexe)
+      #
+      # test-plan-complexe-rapport garde le modèle du « rapport lu depuis un
+      # sommet » (R6) : les tables A à E de la spec en formes exactes, w
+      # invariant par placement et CHANGEANT par sommet, la nature écrite
+      # critère par critère (jamais un décompte), le balayage borné qui garde
+      # l'invariant exact et avance d'au moins 4 px, et les libellés de crans
+      # qui n'impriment aucune réponse.
+      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange · noyaux · diffraction · tremplin · modulation · électrolyse · plan complexe · rapport)
         run: |
           npm run test-learner-model
           npm run test-attempt-events
@@ -221,6 +228,7 @@ jobs:
           npm run test-modulation
           npm run test-electrolyse
           npm run test-plan-complexe
+          npm run test-plan-complexe-rapport
 
       # PORTE LIENS (2026-09-05). Ce projet se pilote par ses documents :
       # `.claude/CLAUDE.md` envoie vers la vision, la vision vers les règles,
@@ -1373,6 +1381,22 @@ jobs:
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           npm run scene-plan-complexe
           node scripts/scene-plan-complexe.mjs --essai-rouge
+
+      # PORTE « LE RAPPORT LU DEPUIS UN SOMMET » (2026-09-27, HANDOFF §11.212).
+      # La scène sœur, sur la même page (R6) : le rapport w formé depuis un
+      # SOMMET, ses deux lectures (module = quotient de deux longueurs, argument
+      # = écart de deux directions), la nature comme propriété du couple
+      # (triangle, sommet), et le rapport lu en M quand M est l'inconnue. Les
+      # angles attendus viennent de la PORTE (arg recalculé), jamais de l'écran ;
+      # l'arc est lu aux pixels en écartant ce que la porte sait placer (la cote
+      # reportée, les trois courbes de lieu), et un bout d'arc CACHÉ sous un
+      # tracé n'est pas un arc court. Dans `telephone` : 14 min sur 40 au
+      # dernier passage.
+      - name: "Le rapport lu depuis un sommet (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-plan-complexe-rapport
+          node scripts/scene-plan-complexe-rapport.mjs --essai-rouge
 
   # LE VERDICT DES QCM SUR LE CORPUS ENTIER (DÉCISIONS §17, levée par son
   # prémisse, comme §16). `verdict-qcm` répond à la question la plus grave du

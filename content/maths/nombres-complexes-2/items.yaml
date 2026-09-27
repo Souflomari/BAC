@@ -75,11 +75,17 @@ misconceptions:
     description: >-
       L'élève soustrait les arguments pour un produit, les additionne pour un
       quotient, inverse l'ordre de la soustraction, ou oublie un terme ou un
-      signe.
+      signe. FORME AMONT, avant tout calcul d'argument : devant un rapport
+      w = (z_C − z_A)/(z_B − z_A), il écrit la fraction dans l'ordre inverse —
+      même inversion, un cran plus tôt. Elle ne se voit pas sur la conclusion
+      (les critères de configuration sont invariants par w ↦ 1/w) mais sur le
+      QUOTIENT DES LONGUEURS, qui se retourne, et sur le SIGNE de l'angle, qui
+      change.
     contradicts_principle: >-
       arg(zz') = arg(z)+arg(z') (produit) et arg(z/z') = arg(z)−arg(z')
       (quotient, dans cet ordre) : l'opération sur les arguments suit celle des
-      modules, sans terme ni signe oublié.
+      modules, sans terme ni signe oublié. Et une fraction écrite à l'envers
+      n'est pas la même : 1/w a pour module 1/|w| et pour argument −arg(w).
   - id: mc.math.maths_complexes_trigo.moivre-module-multiplie
     label: >-
       « Module multiplié par n au lieu d'être élevé à la puissance n (Moivre) »
@@ -208,23 +214,66 @@ misconceptions:
     contradicts_principle: >-
       En développant z' − z_A = c(z − z_A), on obtient z' = cz − c·z_A + z_A :
       le + z_A terminal est indispensable (sinon A n'est plus fixe).
+  # Modèle neuf (scène `plan-complexe-rapport`, R6 / chapitre 7 — docs/pipeline/
+  # propositions/maths-nombres-complexes-2-scene-w.md §8.2, vague 1 + seconde
+  # passe, 2026-09-25/27). Deux faces. Servi par NBCOMPLEX2-42 à -44 (§8.3).
+  - id: mc.math.maths_complexes_trigo.w-sommet-ignore
+    label: >-
+      « Le SOMMET ne joue aucun rôle : rapport lu sur les affixes au lieu des
+      vecteurs, ou verdict lu à un sommet et appliqué au triangle entier »
+    description: >-
+      Deux faces du même oubli. FACE A — devant w = (z_C − z_A)/(z_B − z_A),
+      l'élève divise z_C par z_B, ou ne fait la soustraction que d'un seul
+      côté : il lit un rapport pris depuis l'ORIGINE, pas depuis le sommet A.
+      FACE B — le rapport est bien formé à un sommet, mais l'élève traite sa
+      conclusion comme une propriété du triangle : « w n'est ni réel ni
+      imaginaire pur au sommet A, donc ce triangle n'a rien de particulier »,
+      ou « il est rectangle, donc rectangle vu de n'importe quel sommet ».
+      Symptôme mécanique commun : le sommet n'apparaît pas dans le
+      raisonnement. L'erreur de la face A est invisible quand z_A = 0 — cas
+      où z_C − z_A vaut exactement z_C — et c'est précisément le cas de tous
+      les exemples habituels.
+    contradicts_principle: >-
+      w se lit sur les deux VECTEURS issus d'un sommet NOMMÉ : z_C − z_A est
+      l'affixe de AC, z_B − z_A celle de AB. Son module est le quotient AC/AB
+      et son argument l'angle en A. (a) z_C/z_B est le rapport pris au sommet
+      O — un rapport parfaitement licite, et l'examen l'emploie quand le
+      sommet EST l'origine (bank.yaml:463, :812) —, mais il ne dit rien du
+      triangle ABC dès que A n'est pas l'origine : w ne change pas quand on
+      déplace la figure, alors que z_C/z_B change à chaque déplacement.
+      (b) La table des configurations classe un COUPLE (triangle, sommet),
+      pas un triangle : le même triangle peut n'allumer aucune ligne au
+      sommet A et « rectangle » au sommet C. « Rien ici » ne veut pas dire
+      « rien », et « rectangle ici » ne veut pas dire « rectangle partout ».
+    voisins:
+      - angle-lu-depuis-l-axe   # AVANT que le rapport existe (ici) vs APRÈS (là-bas)
+      - transformation-centre-oublie  # même oubli du point de départ, côté transformation
   - id: mc.math.maths_complexes_trigo.lecture-w-module-argument
     label: >-
-      « Lecture partielle ou intervertie de |w| (isocèle) et arg(w) (rectangle/aligné) »
+      « Lecture partielle, intervertie, ou lue contre le mauvais seuil, de |w|
+      (isocèle) et arg(w) (rectangle/aligné) »
     description: >-
       Pour w = (z_C−z_A)/(z_B−z_A), l'élève échange les rôles du module et de
       l'argument, ou n'en lit qu'un des deux, pour la nature du triangle.
+      TROISIÈME FACE, sans échange ni oubli : il lit la BONNE grandeur et la
+      compare au MAUVAIS SEUIL — « l'argument n'est pas nul, donc rectangle »
+      au lieu de « l'argument vaut ±π/2 ». Chaque ligne de la table demande
+      une valeur PRÉCISE, pas une valeur différente d'une autre.
     contradicts_principle: >-
       |w| donne le rapport AC/AB (isocèle en A si |w| = 1) et arg(w) donne
       l'angle en A (rectangle si ±π/2, aligné si réel) : deux critères SÉPARÉS,
-      chacun sur sa grandeur.
+      chacun sur sa grandeur, et chacun avec son SEUIL exact. « Différent de
+      zéro » n'est le seuil d'aucune ligne.
   - id: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
     label: >-
       « Lieux confondus (médiatrice / cercle centré / droite) pour une condition sur un rapport »
     description: >-
       L'élève identifie l'ensemble défini par une condition sur le module ou
       l'argument d'un rapport de complexes au mauvais lieu (médiatrice, cercle
-      centré en A, droite (AB)).
+      centré en A, cercle de centre O, droite (AB)). Forme fréquente sur le
+      module : il lit la VALEUR du rapport comme une DISTANCE À UN POINT FIXE
+      — « |u| = 1, donc M est à distance 1 de l'origine » —, alors que le
+      rapport ne compare que MA et MB et que O n'intervient nulle part.
     contradicts_principle: >-
       « Rapport réel » donne un alignement (droite) ; « module constant » donne
       un cercle ou une médiatrice selon la forme ; « rapport imaginaire pur »
@@ -253,21 +302,31 @@ misconceptions:
       multiplication.
   - id: mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe
     label: >-
-      « Angle d'une transformation lu comme une DIRECTION (depuis l'axe réel)
-      au lieu de l'ÉCART entre deux directions »
+      « Angle lu comme une DIRECTION (depuis l'axe réel) au lieu de l'ÉCART
+      entre deux directions ; longueur lue au lieu du QUOTIENT de deux
+      longueurs »
     description: >-
       Devant M et son image M′, l'élève donne arg(z′) — la direction de
       l'image mesurée depuis l'axe réel — comme angle de la rotation ; ou
       donne arg(z′ − z), la direction du déplacement. Forme jumelle sur les
       longueurs : il donne OM′ pour le rapport de l'homothétie, au lieu du
-      quotient OM′/OM. Dans les deux cas la grandeur et l'opération sont les
-      bonnes ; c'est le point de départ de la mesure qui est faux.
+      quotient OM′/OM. MÊME ERREUR SANS AUCUNE TRANSFORMATION : devant un
+      rapport de deux vecteurs w = (z_C − z_A)/(z_B − z_A), il donne
+      arg(z_C − z_A) — la direction d'un seul côté depuis l'axe réel — pour
+      arg(w), et la longueur AC pour |w|. Dans tous les cas la grandeur et
+      l'opération sont les bonnes ; c'est le point de départ de la mesure qui
+      est faux, et le second terme de la comparaison qui est oublié.
     contradicts_principle: >-
-      L'angle d'une rotation (ou d'une rotation-homothétie) de centre Ω est
-      l'ÉCART arg(z′ − z_Ω) − arg(z − z_Ω) = arg((z′ − z_Ω)/(z − z_Ω)) =
-      arg(c), et son rapport est le QUOTIENT ΩM′/ΩM = |c|. arg(z′) ne donne
-      l'angle que si arg(z − z_Ω) = 0, et OM′ ne donne le rapport que si
-      ΩM = 1 : deux cas particuliers, pas la règle.
+      Un ÉCART de deux directions n'est pas une direction, et un QUOTIENT de
+      deux longueurs n'est pas une longueur. L'angle d'une rotation (ou d'une
+      rotation-homothétie) de centre Ω est l'ÉCART arg(z′ − z_Ω) −
+      arg(z − z_Ω) = arg((z′ − z_Ω)/(z − z_Ω)) = arg(c), et son rapport est le
+      QUOTIENT ΩM′/ΩM = |c| ; de même, l'argument de (z_C − z_A)/(z_B − z_A)
+      est l'écart des directions de AC et de AB — l'angle en A — et son module
+      le quotient AC/AB. arg(z′) ne donne l'angle que si arg(z − z_Ω) = 0, et
+      OM′ ne donne le rapport que si ΩM = 1 : deux cas particuliers, pas la
+      règle. Un rapport a toujours DEUX termes.
+    label_change: true   # le libellé cesse de dire « d'une transformation »
 items:
   - id: NBCOMPLEX2-1
     rung: "R1"
@@ -1641,15 +1700,18 @@ items:
         feedback: >
           Tu as inversé les deux lignes de la table de lecture du chapitre 7 :
           c'est « $w$ RÉEL » qui donne un alignement (une droite), et
-          « $w$ IMAGINAIRE PUR » qui donne un angle droit (un cercle,
-          par le théorème de Thalès), pas l'inverse.
+          « $w$ IMAGINAIRE PUR » qui donne un angle droit — $M$ voit
+          $[AB]$ sous un angle droit, donc un cercle (théorème de
+          l'angle inscrit) —, pas l'inverse.
     correct_feedback: >
       $\dfrac{z-z_A}{z-z_B}$ imaginaire pur non nul signifie que
       l'angle $(\overrightarrow{MB},\overrightarrow{MA})$ vaut
-      $\pm\pi/2$ : le triangle $MAB$ est rectangle en $M$. Par le
-      théorème de Thalès, $M$ décrit le cercle de diamètre $[AB]$
-      (centre le milieu de $[AB]$, affixe $1$, rayon $AB/2=2$), privé
-      de $A$ et $B$.
+      $\pm\pi/2$ : le triangle $MAB$ est rectangle en $M$. Notons $O$
+      le milieu de $[AB]$ (affixe $1$) : la médiane $OM$ vaut alors la
+      moitié de l'hypoténuse, $OM = OA = OB = AB/2 = 2$, donc $M$
+      décrit le cercle de centre $O$ et de rayon $2$, c'est-à-dire le
+      cercle de diamètre $[AB]$ (théorème de l'angle inscrit, chapitre
+      7), privé de $A$ et $B$.
     solution: |
       **Interprétation du rapport :** pour $M$ d'affixe $z\neq z_A,z_B$,
       $\dfrac{z-z_A}{z-z_B}$ a pour argument l'angle
@@ -1659,10 +1721,15 @@ items:
       **Condition « imaginaire pur non nul » :** cet argument vaut
       $\pm\pi/2\ [2\pi]$, donc le triangle $MAB$ est rectangle en $M$.
 
-      **Théorème de Thalès (réciproque) :** l'ensemble des points $M$
-      tels que le triangle $MAB$ soit rectangle en $M$ est le cercle
-      de diamètre $[AB]$, privé de $A$ et de $B$ (où l'angle n'est pas
-      défini).
+      **Théorème de l'angle inscrit (médiane de l'hypoténuse) :**
+      notons $O$ le milieu de $[AB]$. Si le triangle $MAB$ est
+      rectangle en $M$, la médiane issue de l'angle droit vaut la
+      moitié de l'hypoténuse : $OM = OA = OB = AB/2$. Réciproquement,
+      si $OM=OA=OB$ alors $M$ est sur le cercle de diamètre $[AB]$ et
+      le triangle $MAB$ y est rectangle en $M$. L'ensemble des points
+      $M$ tels que le triangle $MAB$ soit rectangle en $M$ est donc le
+      cercle de diamètre $[AB]$, privé de $A$ et de $B$ (où l'angle
+      n'est pas défini).
 
       **Centre et rayon :** centre $=\dfrac{z_A+z_B}{2}=\dfrac{-1+3}{2}=1$,
       rayon $=\dfrac{AB}{2}=\dfrac{|z_B-z_A|}{2}=\dfrac{4}{2}=2$.
@@ -2734,6 +2801,299 @@ items:
       ($\pi/2$, la signature de $i$ seul), ni l'angle de référence non
       corrigé ($-\pi/4$).
 
+  # Quatre items neufs (scène `plan-complexe-rapport`, R6 / chapitre 7 —
+  # docs/pipeline/propositions/maths-nombres-complexes-2-scene-w.md §8.3,
+  # vague 1 + seconde + troisième passe, 2026-09-25/27). Trois soldent le
+  # modèle neuf `w-sommet-ignore` (-42, -43, -44) ; -45 soldent
+  # `ensemble-points-locus-confondu` par le critère de module.
+  - id: NBCOMPLEX2-42
+    rung: "R6"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: ["triangle", "sommet", "rapport-complexe"]
+    primary_misconception: mc.math.maths_complexes_trigo.w-sommet-ignore
+    stem: >
+      $D$, $P$, $Q$ ont pour affixes $d = 1+i$, $p = 1+3i$, $q = 3+i$.
+      Montrer que $\dfrac{p-d}{q-d} = i$ revient à vérifier une seule
+      égalité. Laquelle ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $p - d = i\,(q - d)$
+        correct: true
+      - id: B
+        text: >-
+          $p = i\,q$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.w-sommet-ignore
+        feedback: >
+          Cette égalité compare $p$ et $q$ directement, comme si le
+          rapport se lisait depuis l'origine $O$ — $p/q$ est un vrai
+          rapport du chapitre 7, mais lu au sommet $O$, sur les points
+          $O$, $P$, $Q$. Ici le sommet est $D$ : il faut d'abord
+          soustraire $d$ des deux affixes ($p-d$ et $q-d$) avant de
+          former le rapport.
+      - id: C
+        text: >-
+          $p - d = i\,q$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.w-sommet-ignore
+        feedback: >
+          La soustraction n'est faite que d'un côté : $p-d$ est bien
+          l'affixe de $\overrightarrow{DP}$, mais $q$ seul n'est
+          l'affixe d'aucun vecteur issu de $D$ — il manque $-d$. Un
+          rapport lu au sommet $D$ exige que les DEUX affixes soient
+          des différences avec $d$.
+      - id: D
+        text: >-
+          $q - d = i\,(p - d)$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.produit-quotient-argument-operation
+        feedback: >
+          C'est la fraction retournée : cette égalité revient à
+          $\dfrac{q-d}{p-d} = i$, c'est-à-dire $\dfrac{p-d}{q-d} =
+          \dfrac1i = -i$, pas $i$. Inverser une fraction ne laisse pas
+          l'égalité inchangée.
+    correct_feedback: >
+      $p-d = 2i$ et $q-d = 2$ : l'égalité $\dfrac{p-d}{q-d}=i$ se
+      vérifie en montrant $p-d = i\,(q-d)$, soit $2i = i\times 2 = 2i$.
+      C'est la seule des quatre égalités qui soit vraie.
+    solution: |
+      **Les deux différences, depuis le sommet $D$ :**
+      $$p - d = (1+3i)-(1+i) = 2i \qquad q - d = (3+i)-(1+i) = 2$$
+
+      **Vérification de l'égalité proposée :**
+      $$i\,(q-d) = i \times 2 = 2i = p - d \ \checkmark$$
+
+      donc $\dfrac{p-d}{q-d} = i$.
+
+      **Pourquoi les trois autres égalités sont fausses.** $p = i\,q$
+      donnerait $i(3+i) = -1+3i \neq 1+3i = p$. $p-d = i\,q$ donnerait
+      $i(3+i) = -1+3i \neq 2i = p-d$. $q-d = i\,(p-d)$ donnerait
+      $i\times 2i = -2 \neq 2 = q-d$. Une seule des quatre tient, et
+      c'est celle qui soustrait $d$ des DEUX affixes avant de comparer.
+
+  - id: NBCOMPLEX2-43
+    rung: "R6"
+    habilete: application_directe
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: ["triangle", "sommet", "alignement"]
+    primary_misconception: mc.math.maths_complexes_trigo.w-sommet-ignore
+    stem: >
+      $A$, $B$, $C$ ont pour affixes $z_A = 1+2i$, $z_B = 5+4i$,
+      $z_C = -1+i$. Que peut-on dire de ces trois points ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Ils sont alignés, et $AC = \dfrac12\,AB$
+        correct: true
+      - id: B
+        text: >-
+          Ils sont alignés, et $AC = 2\,AB$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.produit-quotient-argument-operation
+        feedback: >
+          C'est la fraction retournée : $\dfrac1w = -2$, de module $2$
+          — mais $\dfrac1w$ compare $AB$ à $AC$, pas $AC$ à $AB$.
+          Inverser le rapport inverse le quotient des longueurs :
+          $\dfrac{AC}{AB} = |w| = \dfrac12$, pas $2$.
+      - id: C
+        text: >-
+          Ils ne sont pas alignés, car le module de $w$ ne vaut pas $1$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.lecture-w-module-argument
+        feedback: >
+          Le module décide de l'égalité des longueurs ($AB=AC$ quand
+          $|w|=1$), pas de l'alignement. L'alignement se lit sur
+          l'ARGUMENT de $w$ (réel $\Rightarrow$ aligné), jamais sur son
+          module : ce critère est simplement le mauvais.
+      - id: D
+        text: >-
+          Ils ne sont pas alignés, car $\dfrac{z_C}{z_B}$ n'est pas réel
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.w-sommet-ignore
+        feedback: >
+          $\dfrac{z_C}{z_B}$ est un vrai rapport du chapitre 7 — mais
+          lu au sommet $O$. Il répond à une question sur $O$, $B$ et
+          $C$, et l'examen s'en sert exactement ainsi quand le sommet
+          EST l'origine. Ici le sommet est $A$ : il faut lire
+          $\dfrac{z_C-z_A}{z_B-z_A}$.
+    correct_feedback: >
+      $w = \dfrac{z_C-z_A}{z_B-z_A} = -\dfrac12$ : réel négatif, donc
+      $A$, $B$, $C$ sont alignés, avec $C$ du côté opposé à $B$. Et
+      $|w| = \dfrac12 = \dfrac{AC}{AB}$.
+    solution: |
+      **Les deux vecteurs, depuis le sommet $A$ :**
+      $$z_B - z_A = 4+2i \qquad z_C - z_A = -2-i = -\frac12(4+2i)$$
+
+      **Le rapport :**
+      $$w = \frac{z_C-z_A}{z_B-z_A} = -\frac12$$
+
+      **Réel négatif $\Rightarrow$ alignés**, avec $C$ à l'opposé de
+      $B$ par rapport à $A$.
+
+      **Les longueurs :** $AB = |4+2i| = \sqrt{20} = 2\sqrt5$,
+      $AC = |{-2-i}| = \sqrt5$, donc $\dfrac{AC}{AB} = \dfrac12 = |w|$.
+
+      **Pourquoi les distracteurs échouent.** $\dfrac1w = -2$ (module
+      $2$) inverse le quotient des longueurs, pas la conclusion.
+      $\dfrac{z_C}{z_B} = \dfrac{-1+9i}{41}$ n'est ni réel ni
+      imaginaire pur — mais c'est le rapport lu au sommet $O$, pas au
+      sommet $A$ : il ne dit rien du triangle $ABC$ ici.
+
+  - id: NBCOMPLEX2-44
+    rung: "R6"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: ["triangle", "sommet", "rectangle"]
+    primary_misconception: mc.math.maths_complexes_trigo.w-sommet-ignore
+    stem: >
+      $P$, $Q$, $R$ ont pour affixes $p = 1+i$, $q = 5+i$, $r = 5+4i$.
+      Le triangle $PQR$ est-il rectangle ? Si oui, en quel sommet ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Oui — rectangle en $Q$
+        correct: true
+      - id: B
+        text: >-
+          Non : $\dfrac{r-p}{q-p} = 1+\dfrac34 i$ n'est ni réel ni
+          imaginaire pur, et son module ne vaut pas $1$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.w-sommet-ignore
+        feedback: >
+          Ce calcul est juste — au sommet $P$. Mais il ne prouve pas
+          que le triangle n'a « rien de particulier » : il prouve
+          seulement qu'il n'est pas rectangle EN $P$. Le rapport lu à
+          un sommet ne juge que CE sommet ; il faut recommencer le
+          calcul aux deux autres sommets avant de conclure sur le
+          triangle entier.
+      - id: C
+        text: >-
+          Oui — rectangle en $P$, puisque l'argument de
+          $\dfrac{r-p}{q-p}$ n'est pas nul
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.lecture-w-module-argument
+        feedback: >
+          L'argument est bien la bonne grandeur pour juger d'un angle
+          droit — mais le seuil est faux. « Rectangle » exige un
+          argument valant EXACTEMENT $\pm\dfrac{\pi}{2}$, pas
+          simplement différent de $0$. Ici $\arg\!\left(1+\dfrac34
+          i\right)$ n'est ni nul ni égal à $\pm\dfrac{\pi}{2}$.
+      - id: D
+        text: >-
+          Non : l'argument de $\dfrac{r}{q}$ ne vaut ni $0$, ni
+          $\pm\dfrac{\pi}{2}$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.w-sommet-ignore
+        feedback: >
+          $\dfrac{r}{q}$ est un vrai rapport du chapitre 7 — mais lu au
+          sommet $O$. Il répond à une question sur $O$, $Q$ et $R$, et
+          l'examen s'en sert exactement ainsi quand le sommet EST
+          l'origine. Ici aucun des trois sommets $P$, $Q$, $R$ n'est
+          $O$ : il faut soustraire l'affixe du sommet testé aux deux
+          autres.
+    correct_feedback: >
+      Au sommet $Q$ : $\dfrac{r-q}{p-q} = -\dfrac34 i$, imaginaire pur
+      $\Rightarrow$ rectangle en $Q$. Le même triangle, lu au sommet
+      $P$, ne montre rien — le verdict dépend du sommet depuis lequel
+      on lit, pas seulement du triangle.
+    solution: |
+      **Au sommet $P$ :** $r-p = 4+3i$, $q-p=4$, donc
+      $\dfrac{r-p}{q-p} = 1+\dfrac34 i$ — ni réel, ni imaginaire pur.
+      Rien ne se conclut à ce sommet.
+
+      **Au sommet $Q$ :** $r-q = 3i$, $p-q=-4$, donc
+      $$\frac{r-q}{p-q} = \frac{3i}{-4} = -\frac34 i$$
+      imaginaire pur $\Rightarrow$ **rectangle en $Q$**, et module
+      $\frac34 \neq 1$ donc pas isocèle.
+
+      **Au sommet $R$ :** $p-r=-4-3i$, $q-r=-3i$, donc
+      $\dfrac{p-r}{q-r} = 1-\dfrac43 i$ — rien non plus.
+
+      **Contrôle géométrique :** $PQ=4$, $QR=3$, $PR=5$, et
+      $16+9=25=PR^2$ : Pythagore confirme l'angle droit en $Q$, le
+      sommet opposé au plus grand côté $[PR]$.
+
+      **Ce que l'item mesure :** le MÊME triangle, lu depuis trois
+      sommets différents, ne donne un verdict qu'à UN SEUL d'entre
+      eux. Le sommet n'est pas un détail de notation : c'est une
+      donnée du calcul.
+
+  - id: NBCOMPLEX2-45
+    rung: "R6"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_complexes_trigo
+    tags: ["ensemble-de-points", "cercle", "module"]
+    primary_misconception: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
+    stem: >
+      $A$ et $B$ ont pour affixes $z_A = -3$ et $z_B = 1$. Quel est
+      l'ensemble des points $M$ d'affixe $z \neq z_B$ tels que
+      $\left\vert\dfrac{z-z_A}{z-z_B}\right\vert = 1$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          la médiatrice du segment $[AB]$
+        correct: true
+      - id: B
+        text: >-
+          le cercle de diamètre $[AB]$, privé de $A$ et $B$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
+        feedback: >
+          Le cercle de diamètre $[AB]$ répond à la condition « rapport
+          IMAGINAIRE PUR » (un angle droit en $M$), pas « module $=1$ ».
+          Ici la condition porte sur une DISTANCE ($MA=MB$), pas sur un
+          angle.
+      - id: C
+        text: >-
+          le cercle de centre $O$ et de rayon $1$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
+        feedback: >
+          $\left\vert\dfrac{z-z_A}{z-z_B}\right\vert$ compare les
+          distances $MA$ et $MB$ — l'origine $O$ n'intervient nulle
+          part dans cette condition. Lire « module $=1$ » comme
+          « distance $1$ à l'origine » confond la VALEUR du rapport
+          avec une distance à un point fixe.
+      - id: D
+        text: >-
+          la droite $(AB)$, privée de $B$
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.ensemble-points-locus-confondu
+        feedback: >
+          La droite $(AB)$ répond à la condition « rapport RÉEL »
+          (alignement), pas « module $=1$ ». Ici la condition ne dit
+          rien sur l'argument du rapport, seulement sur sa valeur
+          absolue.
+    correct_feedback: >
+      $\left\vert\dfrac{z-z_A}{z-z_B}\right\vert = \dfrac{MA}{MB}$, qui
+      vaut $1$ exactement quand $MA=MB$ : $M$ décrit la médiatrice de
+      $[AB]$ (ici la droite d'équation $x=-1$).
+    solution: |
+      **Interprétation du rapport :** pour $M$ d'affixe $z \neq z_B$,
+      $\left\vert\dfrac{z-z_A}{z-z_B}\right\vert = \dfrac{MA}{MB}$.
+
+      **Condition « module $=1$ » :** $\dfrac{MA}{MB}=1 \iff MA=MB$ :
+      $M$ est équidistant de $A$ et de $B$, donc $M$ décrit la
+      médiatrice de $[AB]$ — ici la droite d'équation $x=-1$ (le
+      milieu de $[A;B]$ est le point d'affixe $-1$).
+
+      **Pourquoi les trois autres lieux ne conviennent pas.** Le
+      cercle de diamètre $[AB]$ répond à « rapport imaginaire pur »
+      (un angle droit en $M$) ; la droite $(AB)$ répond à « rapport
+      réel » (un alignement) ; le cercle de centre $O$ confond la
+      VALEUR du rapport avec une distance à l'origine, qui
+      n'intervient dans aucune des deux affixes du rapport.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après NBCOMPLEX2-25 à NBCOMPLEX2-34. Seize familles
 # sous le plancher : le module et son argument, la définition de $e^{i\theta}$,
@@ -2747,6 +3107,15 @@ items:
 # `angle-lu-depuis-l-axe`) ; six modèles existants sortis de la marge nulle ;
 # `mult-par-i-non-rotation` inchangé (la scène ne le sert plus — §8.1 de la
 # spec). Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
+# RÉÉCRIT une troisième fois le 2026-09-27, après NBCOMPLEX2-42 à NBCOMPLEX2-45
+# (scène `plan-complexe-rapport`, R6 / chapitre 7 — voir
+# docs/pipeline/propositions/maths-nombres-complexes-2-scene-w.md §8). Un
+# modèle neuf déclaré (`w-sommet-ignore`, deux faces) ; trois modèles existants
+# ÉLARGIS avant recrutement (`lecture-w-module-argument`,
+# `ensemble-points-locus-confondu`, `produit-quotient-argument-operation` —
+# §8.2 ter) ; `angle-lu-depuis-l-axe` élargi (§8.2 bis) mais servi par la SCÈNE,
+# pas par le banc — son compte ne bouge pas. Tableau GÉNÉRÉ, gardé par
+# web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2761,7 +3130,7 @@ coverage_summary:
     mc.math.maths_complexes_trigo.arg-conjugue-oppose-compose:         { count: 3, items: [NBCOMPLEX2-11, NBCOMPLEX2-25, NBCOMPLEX2-27] }
     mc.math.maths_complexes_trigo.definition-exponentielle-erronee:    { count: 3, items: [NBCOMPLEX2-13, NBCOMPLEX2-26, NBCOMPLEX2-27] }
     mc.math.maths_complexes_trigo.produit-modules-additionnes:         { count: 4, items: [NBCOMPLEX2-2, NBCOMPLEX2-12, NBCOMPLEX2-14, NBCOMPLEX2-36] }
-    mc.math.maths_complexes_trigo.produit-quotient-argument-operation: { count: 4, items: [NBCOMPLEX2-2, NBCOMPLEX2-12, NBCOMPLEX2-14, NBCOMPLEX2-35] }
+    mc.math.maths_complexes_trigo.produit-quotient-argument-operation: { count: 6, items: [NBCOMPLEX2-2, NBCOMPLEX2-12, NBCOMPLEX2-14, NBCOMPLEX2-35, NBCOMPLEX2-42, NBCOMPLEX2-43] }
     mc.math.maths_complexes_trigo.moivre-module-multiplie:             { count: 3, items: [NBCOMPLEX2-3, NBCOMPLEX2-15, NBCOMPLEX2-26] }
     mc.math.maths_complexes_trigo.moivre-argument-mal-transforme:      { count: 4, items: [NBCOMPLEX2-3, NBCOMPLEX2-15, NBCOMPLEX2-26, NBCOMPLEX2-27] }
     mc.math.maths_complexes_trigo.argument-non-2pi-periodique:         { count: 3, items: [NBCOMPLEX2-15, NBCOMPLEX2-25, NBCOMPLEX2-28] }
@@ -2776,11 +3145,12 @@ coverage_summary:
     mc.math.maths_complexes_trigo.rotation-sens-inverse:               { count: 6, items: [NBCOMPLEX2-19, NBCOMPLEX2-22, NBCOMPLEX2-32, NBCOMPLEX2-37, NBCOMPLEX2-38, NBCOMPLEX2-40] }
     mc.math.maths_complexes_trigo.rotation-angle-comme-coefficient:    { count: 4, items: [NBCOMPLEX2-19, NBCOMPLEX2-29, NBCOMPLEX2-30, NBCOMPLEX2-31] }
     mc.math.maths_complexes_trigo.ecriture-complexe-oubli-constante:   { count: 3, items: [NBCOMPLEX2-22, NBCOMPLEX2-31, NBCOMPLEX2-32] }
-    mc.math.maths_complexes_trigo.lecture-w-module-argument:           { count: 3, items: [NBCOMPLEX2-6, NBCOMPLEX2-20, NBCOMPLEX2-21] }
-    mc.math.maths_complexes_trigo.ensemble-points-locus-confondu:      { count: 3, items: [NBCOMPLEX2-24, NBCOMPLEX2-32, NBCOMPLEX2-33] }
+    mc.math.maths_complexes_trigo.lecture-w-module-argument:           { count: 5, items: [NBCOMPLEX2-6, NBCOMPLEX2-20, NBCOMPLEX2-21, NBCOMPLEX2-43, NBCOMPLEX2-44] }
+    mc.math.maths_complexes_trigo.ensemble-points-locus-confondu:      { count: 4, items: [NBCOMPLEX2-24, NBCOMPLEX2-32, NBCOMPLEX2-33, NBCOMPLEX2-45] }
     mc.math.maths_complexes_trigo.multiplication-rotation-par-defaut:  { count: 3, items: [NBCOMPLEX2-39, NBCOMPLEX2-40, NBCOMPLEX2-41] }
     mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe:               { count: 4, items: [NBCOMPLEX2-35, NBCOMPLEX2-36, NBCOMPLEX2-37, NBCOMPLEX2-40] }
-  total_items: 41
+    mc.math.maths_complexes_trigo.w-sommet-ignore:                     { count: 3, items: [NBCOMPLEX2-42, NBCOMPLEX2-43, NBCOMPLEX2-44] }
+  total_items: 45
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2790,7 +3160,7 @@ coverage_summary:
     R3: 4
     R4: 4
     R5: 14
-    R6: 4
+    R6: 8
     R7: 3
   honest_state: >-
     Les vingt-cinq misconceptions déclarées sont couvertes, aucune sous le
@@ -2808,3 +3178,24 @@ coverage_summary:
     et +2). `mult-par-i-non-rotation` reste à 3, tous en R0 : la scène ne le
     sert pas (§8.1 de la spec — la première version de la spec le visait par
     erreur, corrigée en vague 1).
+
+    Passe du 2026-09-27 (scène `plan-complexe-rapport`, R6 / chapitre 7,
+    NBCOMPLEX2-42 à -45) : vingt-SIX misconceptions désormais déclarées.
+    `w-sommet-ignore` (modèle neuf, deux faces) part à **3** items, marge
+    NULLE — face A portée par les trois (-42 B/C, -43 D, -44 D), face B par
+    UN SEUL (-44 B) : la marge la plus fragile du fichier après les treize
+    qui siègent déjà à l'exact plancher. Trois modèles existants sont
+    ÉLARGIS avant recrutement (leur `description` ne couvrait pas encore le
+    geste que leurs propres items lui attachaient déjà, ou attachaient
+    désormais) : `produit-quotient-argument-operation` 4→6 (+ -42 D, -43 B,
+    la forme AMONT avant tout argument), `lecture-w-module-argument` 3→5
+    (+ -43 C, -44 C, la face « bonne grandeur, mauvais seuil »),
+    `ensemble-points-locus-confondu` 3→4 (+ -45, primaire, qui teste pour la
+    première fois le critère de MODULE sur un rapport, et dont le distracteur
+    C — « cercle de centre $O$ » — est la première attache pour le terme que
+    l'énumération vient de gagner). `angle-lu-depuis-l-axe` est élargi lui aussi
+    (§8.2 bis de la spec) mais reste à **4** : sa face neuve (le rapport de
+    deux vecteurs, sans transformation) est servie par la SCÈNE
+    `plan-complexe-rapport` (pari S2), pas par un item du banc — sa moitié
+    R6 part donc à ZÉRO item, dette nommée et non refermée par cette passe
+    (§8.4/§13.14 de la spec). `total_items` 41→45 ; `ramp_coverage.R6` 4→8.

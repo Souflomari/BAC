@@ -34,14 +34,10 @@
  */
 import { FENETRE } from "./plan-complexe-modele";
 import { lireJetons, melange, type RGB } from "../jetons-figure";
+import { COTE_GRADUATIONS_FINES, geometrie, peindreRepere, pointe as pointeSur, type Projection, type Pt } from "./plan-repere";
 
-export interface Projection {
-  x: number;
-  y: number;
-  visible: boolean;
-}
-
-type Pt = [number, number];
+export type { Projection };
+export { COTE_GRADUATIONS_FINES };
 
 export interface EtatRenduPlan {
   /** M, en unités du plan */
@@ -85,8 +81,6 @@ export interface RenduPlan {
  * (captures de construction). ≈ 1,8 unité.
  */
 export const rayonArc = (cote: number) => Math.round(Math.min(56, Math.max(34, 0.1 * cote)));
-/** Sous ce côté (px), les nombres des axes ne sont écrits que tous les deux (§6.2). */
-export const COTE_GRADUATIONS_FINES = 540;
 
 export function creerRenduPlan(canvas: HTMLCanvasElement, hote: HTMLElement): RenduPlan {
   const ctx = canvas.getContext("2d");
@@ -108,7 +102,6 @@ export function creerRenduPlan(canvas: HTMLCanvasElement, hote: HTMLElement): Re
   /** une teinte OPAQUE, mélangée à la surface (jamais d'alpha : §6.2) */
   const voile = (c: RGB, a: number) => css(melange(jetons.surface, c, a));
   const P = (x: number, y: number, visible = true): Projection => ({ x, y, visible });
-  const net = (v: number) => Math.round(v - 0.5) + 0.5;
 
   function rendre() {
     const c = ctx!;
@@ -120,170 +113,20 @@ export function creerRenduPlan(canvas: HTMLCanvasElement, hote: HTMLElement): Re
     zonesNombres = [];
     if (!etat) return;
     const e = etat;
-    const cote = Math.min(largeur, hauteur);
-    // ISOTROPE : une seule échelle, lue sur le plus petit côté ; l'autre s'étend
-    s = cote / (2 * FENETRE);
-    // l'origine sur un DEMI-pixel : les axes (traits de 1 px, posés nets) passent EXACTEMENT par
-    // elle, et les points se placent depuis le même zéro — posée sur un pixel entier, elle
-    // décalait les axes d'un demi-pixel des points, et la porte le lisait dans les rapports de
-    // longueurs (2 % à 3 % sur les segments de l'axe)
-    const ox = Math.floor(largeur / 2) + 0.5, oy = Math.floor(hauteur / 2) + 0.5;
-    const X = (x: number) => ox + x * s;
-    const Y = (y: number) => oy - y * s;
-    const demiX = largeur / 2 / s, demiY = hauteur / 2 / s;
+    // ISOTROPE : une seule échelle, lue sur le plus petit côté ; l'autre s'étend ; l'origine
+    // sur un DEMI-pixel (plan-repere.ts, extrait de ce fichier le 2026-09-25 pour la scène R6)
+    const g = geometrie(largeur, hauteur, FENETRE);
+    const { cote, X, Y } = g;
+    s = g.s;
     const encre = css(jetons.encre), accent = css(jetons.accent);
-
-    // ── le quadrillage, OPAQUE, sous tout le reste ──
-    c.lineWidth = 1;
-    c.strokeStyle = voile(jetons.encreDouce, 0.16);
-    c.beginPath();
-    for (let k = -Math.floor(demiX); k <= Math.floor(demiX); k++) {
-      if (k === 0) continue;
-      c.moveTo(net(X(k)), 0);
-      c.lineTo(net(X(k)), hauteur);
-    }
-    for (let k = -Math.floor(demiY); k <= Math.floor(demiY); k++) {
-      if (k === 0) continue;
-      c.moveTo(0, net(Y(k)));
-      c.lineTo(largeur, net(Y(k)));
-    }
-    c.stroke();
-
-    // ── les axes, à l'encre, avec leur pointe ──
-    const x0 = net(X(0)), y0 = net(Y(0));
-    c.strokeStyle = encre;
-    c.fillStyle = encre;
-    c.lineWidth = 1;
-    c.beginPath();
-    c.moveTo(0, y0);
-    c.lineTo(largeur - 1, y0);
-    c.moveTo(x0, hauteur);
-    c.lineTo(x0, 1);
-    c.stroke();
-    const pointe = (x: number, y: number, dx: number, dy: number, t = 7) => {
-      const nx = -dy, ny = dx;
-      c.beginPath();
-      c.moveTo(x, y);
-      c.lineTo(x - dx * t + nx * t * 0.42, y - dy * t + ny * t * 0.42);
-      c.lineTo(x - dx * t - nx * t * 0.42, y - dy * t - ny * t * 0.42);
-      c.closePath();
-      c.fill();
-    };
-    pointe(largeur - 1, y0, 1, 0);
-    pointe(x0, 1, 0, -1);
-    segs.push([P(0, y0), P(largeur, y0)], [P(x0, 0), P(x0, hauteur)]);
-    // les traits des graduations dépassent de 4 px de part et d'autre de l'axe : une bande
-    // qu'aucune pastille ne recouvre (captures : « M(4) » mordait sur un trait)
-    // traversables par un FILET (qui coupe alors l'axe, un trait comme un autre) : la bande
-    // n'écarte que les PASTILLES des graduations
-    zonesNombres.push({ x0: 0, y0: y0 - 5, x1: largeur, y1: y0 + 5, traversable: true }, { x0: x0 - 5, y0: 0, x1: x0 + 5, y1: hauteur, traversable: true });
-    rep["axe-x-droite"] = P(largeur - 1, y0);
-    rep["axe-y-haut"] = P(x0, 1);
-
-    // ── les graduations entières, et leurs nombres (tous les 1, ou tous les 2 au téléphone) ──
-    const pas = cote < COTE_GRADUATIONS_FINES ? 2 : 1;
+    const pointe = (x: number, y: number, dx: number, dy: number, t = 7) => pointeSur(c, x, y, dx, dy, t);
+    // le repère — quadrillage opaque, axes, graduations et nombres (aucun sous un point), O,
+    // u⃗ et v⃗, le cercle unité : l'étalon
+    const r0 = peindreRepere(c, g, jetons, police, FENETRE, [e.m, e.mp, e.centre].filter((p): p is Pt => p !== null), true);
+    rep = r0.rep;
+    segs = r0.segs;
+    zonesNombres = r0.zones;
     c.font = `12px ${police}`;
-    c.fillStyle = encre;
-    const nombre = (k: number) => (k < 0 ? `−${-k}` : `${k}`);
-    c.beginPath();
-    for (let k = -Math.floor(demiX) + 1; k < demiX; k++) {
-      if (k === 0) continue;
-      c.moveTo(net(X(k)), y0 - 3);
-      c.lineTo(net(X(k)), y0 + 4);
-    }
-    for (let k = -Math.floor(demiY) + 1; k < demiY; k++) {
-      if (k === 0) continue;
-      c.moveTo(x0 - 4, net(Y(k)));
-      c.lineTo(x0 + 3, net(Y(k)));
-    }
-    c.stroke();
-    // les nombres de l'axe réel, SOUS l'axe ; ceux de l'axe imaginaire, à GAUCHE — sauf celui
-    // qu'un POINT recouvrirait : M en 2i posait son disque sur le « 2 » de l'axe imaginaire, et
-    // l'étiquette du point dit déjà ce nombre (vague 2, dessin)
-    const marques = [e.m, e.mp, e.centre].filter((p): p is Pt => p !== null).map((p) => [X(p[0]), Y(p[1])] as const);
-    const sousUnPoint = (b: { x0: number; y0: number; x1: number; y1: number }) => marques.some(([x, y]) => x > b.x0 - 7 && x < b.x1 + 7 && y > b.y0 - 7 && y < b.y1 + 7);
-    c.textAlign = "center";
-    c.textBaseline = "top";
-    for (let k = -FENETRE + 1; k < FENETRE; k++) {
-      if (k === 0 || k % pas !== 0) continue;
-      const t = nombre(k), w = c.measureText(t).width;
-      rep[`grad-x${k}`] = P(X(k), y0);
-      const b = { x0: X(k) - w / 2 - 1, y0: y0 + 5, x1: X(k) + w / 2 + 1, y1: y0 + 20 };
-      if (sousUnPoint(b)) continue;
-      c.fillText(t, X(k), y0 + 6);
-      zonesNombres.push(b);
-    }
-    c.textAlign = "right";
-    c.textBaseline = "middle";
-    for (let k = -FENETRE + 1; k < FENETRE; k++) {
-      if (k === 0 || k % pas !== 0) continue;
-      const t = nombre(k), w = c.measureText(t).width;
-      rep[`grad-y${k}`] = P(x0, Y(k));
-      const b = { x0: x0 - 8 - w, y0: Y(k) - 8, x1: x0 - 6, y1: Y(k) + 8 };
-      if (sousUnPoint(b)) continue;
-      c.fillText(t, x0 - 7, Y(k));
-      zonesNombres.push(b);
-    }
-    // O, en bas à gauche de l'origine
-    c.textAlign = "right";
-    c.textBaseline = "top";
-    c.fillText("O", x0 - 5, y0 + 5);
-    zonesNombres.push({ x0: x0 - 16, y0: y0 + 4, x1: x0 - 4, y1: y0 + 20 });
-    rep["origine"] = P(X(0), Y(0));
-
-    // les deux vecteurs du repère, u⃗ et v⃗, nommés quand il y a la place
-    if (pas === 1) {
-      c.lineWidth = 2;
-      c.beginPath();
-      c.moveTo(X(0), y0);
-      c.lineTo(X(1) - 5, y0);
-      c.moveTo(x0, Y(0));
-      c.lineTo(x0, Y(1) + 5);
-      c.stroke();
-      pointe(X(1), y0, 1, 0, 6);
-      pointe(x0, Y(1), 0, -1, 6);
-      c.lineWidth = 1;
-      const nomVecteur = (lettre: string, x: number, y: number) => {
-        c.font = `italic 13px ${police}`;
-        c.textAlign = "center";
-        c.textBaseline = "alphabetic";
-        c.fillText(lettre, x, y);
-        const w = c.measureText(lettre).width;
-        // la flèche au-dessus de la lettre
-        c.beginPath();
-        c.moveTo(x - w / 2 - 1, y - 11.5);
-        c.lineTo(x + w / 2 + 2, y - 11.5);
-        c.stroke();
-        c.beginPath();
-        c.moveTo(x + w / 2 + 3, y - 11.5);
-        c.lineTo(x + w / 2 - 0.5, y - 13.5);
-        c.lineTo(x + w / 2 - 0.5, y - 9.5);
-        c.closePath();
-        c.fill();
-        zonesNombres.push({ x0: x - w / 2 - 2, y0: y - 16, x1: x + w / 2 + 4, y1: y + 3 });
-      };
-      nomVecteur("u", X(0.5), y0 - 5);
-      nomVecteur("v", x0 + 9, Y(0.5) + 5);
-      c.font = `12px ${police}`;
-    }
-
-    // ── le cercle unité : l'étalon ──
-    c.strokeStyle = voile(jetons.encreDouce, 0.85);
-    c.lineWidth = 1;
-    c.beginPath();
-    c.arc(X(0), Y(0), s, 0, 2 * Math.PI);
-    c.stroke();
-    // le cercle unité est un TRACÉ : les étiquettes l'évitent comme un trait
-    for (let j = 0; j < 24; j++) {
-      const a = (j * Math.PI) / 12, b = ((j + 1) * Math.PI) / 12;
-      segs.push([P(X(Math.cos(a)), Y(Math.sin(a))), P(X(Math.cos(b)), Y(Math.sin(b)))]);
-    }
-    rep["cercle-e"] = P(X(1), Y(0));
-    rep["cercle-n"] = P(X(0), Y(1));
-    rep["cercle-o"] = P(X(-1), Y(0));
-    rep["cercle-s"] = P(X(0), Y(-1));
-    rep["coin-hg"] = P(X(-FENETRE), Y(FENETRE));
-    rep["coin-bd"] = P(X(FENETRE), Y(-FENETRE));
 
     const ctr: Pt = e.centre ?? [0, 0];
     const cx = X(ctr[0]), cy = Y(ctr[1]);
