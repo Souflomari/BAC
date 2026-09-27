@@ -87,7 +87,10 @@ charge à courant constant (GAP-A) · les deux autres sens de la chaîne de Fara
 | — | aspects-énergétiques (erreur de signe) | corrigé, `8dab3097` |
 | — | équations-différentielles ($\Delta=0$) | payé, `b70f9a41` + `b6f95676` |
 | **A** | chute-mouvements-plans (C1, C2, C3, C4) · décroissance-radioactive (D1, D2, D3) · réactions-acido-basiques (chaîne pK_A, titrage, base faible) | **payé** — prose et items par deux auteurs distincts, vague 1 (pédagogie + fidélité) appliquée par six auteurs ; HANDOFF §11.214, trois questions de cadre au propriétaire (`DECISIONS-EN-ATTENTE.md` §31) |
-| B et suivantes | le reste des trois rapports | **dette écrite** |
+| **B1** | nombres-complexes-1 (second degré, Viète) · dérivabilité (branches paraboliques, réciproque, demi-tangente) · suites (contraction, suites implicites, homographiques) · calcul intégral ($u'/u$, $u'/u^2$, $F(x)=\int_a^x f$) | **payé** — vague 1 (pédagogie + fidélité) appliquée, `6144d9de` → `fa925179` ; DECISIONS-EN-ATTENTE §32 |
+| **B2** | exponentielle + logarithme (limites de référence en taux) · géométrie (projeté $H$) · arithmétique (Fermat, R6b) · structures (transport — prose `d3663bda`) | **payé** (`62111cb4`, `76868e70`, `14f986bd`) ; items du transport et loi binomiale : **en reprise** (cliquets) ; vague 1 non encore commandée |
+| — | arithmétique : **systèmes de numération** (capacités SM 2.1.4–2.1.6) | **lacune hors audit** — aucun chapitre, aucun item, aucune annale ; §32 |
+| C et suivantes | le reste des trois rapports | **dette écrite** |
 
 *La règle de reprise* : un trou GAP-B « travaillé mais jamais testé » se paie par un item, sans
 prose ; un GAP-A demande un exemple travaillé ET un item ; une note de portée contredite par un

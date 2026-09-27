@@ -1846,3 +1846,71 @@ paragraphes devenaient défileurs à sa place. `etroit-sweep` les compte par sor
 **La condition qui mériterait une porte** : un correctif qui supprime le dépassement de la boîte
 KaTeX elle-même (pas celui de son parent) — alors le compte des formules en ligne tomberait à zéro,
 et il pourrait s'armer à zéro.
+
+## 32. Les vagues B1 et B2 de la dette d'examen (maths) : deux décisions de CADRE au propriétaire, une lacune que personne n'enseigne — et des cliquets lancés sans l'argument que la CI leur passe
+
+**LE FAIT.** Neuf notions de maths ont reçu, le 2026-09-27, ce que leurs sujets vérifiés demandent
+et qu'elles ne montraient pas : second degré dans ℂ et Viète (nombres-complexes-1, R4b/R4c),
+branches paraboliques et réciproque (dérivabilité, R5/R5b), contraction et suites implicites
+(suites, R8b/R8c/R8d), $u'/u$ et $F(x)=\int_a^x f$ (calcul intégral), les deux limites de
+référence lues comme des taux d'accroissement (exponentielle, logarithme), le projeté $H$
+(géométrie dans l'espace), le petit théorème de Fermat (arithmétique, R6b, démontré), le
+transport de structure (structures algébriques, R7), la loi binomiale (probabilités, R5b/R5c).
+Deux critiques de vague 1 ont relu B1 ; tout ce qu'ils ont trouvé est appliqué (commits
+`6144d9de` → `76868e70`), dont une solution d'item qui affichait une non-racine (NBCOMPLEX-39)
+et deux phrases de leçon qui disaient hors programme un outil du programme SM (l'inégalité des
+accroissements finis).
+
+**AU PROPRIÉTAIRE — décisions que la source ne tranche pas :**
+
+1. **La démonstration de Fermat est-elle EXIGIBLE ?** Le cadre SM le NOMME (capacité 2.1.8,
+   « Utiliser … les théorèmes de Gauss, de Bézout et de Fermat ») ; six exercices nationaux
+   l'appliquent, aucun ne demande la preuve. « Utiliser » ouvre six des neuf capacités du
+   sous-domaine : ce verbe est le registre de la liste, pas un statut de démonstration. La leçon
+   démontre le théorème (Gauss + lemme d'Euclide, déjà établis dans la leçon) — c'est légitime ;
+   ce qui reste à trancher est seulement s'il peut être ÉVALUÉ.
+2. **« Racine n-ième, puissances $x^r$, arctan restent SM »** (`maths-sexp.yaml`, `limites`
+   de la dérivabilité) : sourcé pour $x^r$ (capacité 1.3.15, absente du cadre SExp) et pour
+   arctan (attesté sur copie SM), dérivé pour la racine n-ième. Marqué « À VALIDER ».
+
+**UNE LACUNE, NOMMÉE ICI POUR QU'ELLE EXISTE :** les **systèmes de numération** (capacités SM
+2.1.4 à 2.1.6 — un tiers du sous-domaine arithmétique) n'ont ni chapitre, ni item, ni annale dans
+le dépôt. L'audit de dette était bâti sur les banques : il ne pouvait pas voir ce qui manque
+entièrement (ADR 0036). Aucune vague ne l'a payée.
+
+**CE QUI A ÉTÉ CORRIGÉ DANS LE CADRE (PROPOSITION, porte 2 passée pour la réciproque SExp) :**
+la dérivée de la réciproque est AU programme SExp (capacité 1.2.11 ; 3 des 4 problèmes SExp
+vérifiés la demandent) ; la réciproque n'est PAS une spécificité SM ; deux limites dérivées
+retirées par le contradicteur (« toujours une restriction » — démentie par deux des quatre
+copies citées à son appui ; « dérivée en un point » — rétrogradée en observation qui ne peut
+exclure aucun item) ; l'exclusion « pas de résidus quadratiques » démentie par un sujet SM 2023,
+resserrée à la théorie. Toutes les capacités verbatim reposent sur UN site secondaire (pdfmath) :
+la porte 1 (relecture des cadres scannés) reste ouverte.
+
+**CE QUE LA JOURNÉE A APPRIS SUR LES INSTRUMENTS :**
+
+1. **Les cliquets ont été lancés sans `--porte`, que la CI leur passe.** `indice-longueur` sans
+   l'argument IMPRIME « ✗ … le cliquet ne descend que » et SORT EN 0. Deux commits ont été
+   vérifiés ainsi. Relancés avec les commandes exactes de `gates.yml`, sur l'INDEX (ce qui part,
+   pas l'arbre de travail où d'autres auteurs écrivaient), ils ont trouvé : trois indices de
+   longueur (des nombres nus contre une clé en phrase), quatre distracteurs à absolu, un écho de
+   l'énoncé qu'`eleve-ruse` exploite, et 24 distracteurs sans tag. Le banc est maintenant un
+   script (`verif-index.sh` de la session) : même commande, même argument, même arbre que la CI.
+2. **Un tag que le validateur ne sait pas lire est une dette rendue invisible.** Deux fois dans
+   la journée, un auteur a nommé des barreaux par des codes hors grammaire (R8b avant
+   l'élargissement ; « variable-aleatoire » après) : la déclaration était honnête, et les items
+   sortaient de TOUTE vérification. D'où la grammaire unique `R<n><lettre>`, lue par le
+   validateur ET par le rendu (un titre « R8b — » aurait montré son code à l'élève).
+3. **Deux fichiers de cadre ne se parsaient plus depuis avant aujourd'hui** (une ligne
+   `</content>` en fin de fichier). Rien ne les lit dans la construction ; aucune porte ne l'a vu.
+   Corrigé ; *pas armé* — une porte « les fichiers de cadre se parsent » serait étroite et bon
+   marché, et c'est la condition qui la mériterait.
+4. **Cinq poussées successives ont annulé cinq exécutions de CI** (791 → 795) : aucun des
+   commits du jour n'a eu de verdict avant la 796. La règle existait (« ne pas pousser pendant
+   qu'une exécution vérifie ») ; elle n'a pas été tenue.
+
+**RÉFÉRENCES CROISÉES PÉRIMÉES (dette déclarée, non payée) :** une soixantaine de renvois
+`maths-sm.yaml:<ligne>` / `maths-sexp.yaml:<ligne>` dans les leçons, items et revues ont glissé
+avec les révisions du jour. Une réécriture mécanique a été tentée puis ANNULÉE : elle touchait
+des revues datées (justes à leur date) et produisait des chemins qui ne localisaient rien. À
+refaire en visant la CLÉ de chapitre (`lesson_slug`), pas le numéro de ligne.
