@@ -5,9 +5,12 @@ misconceptions:
   # rédigée AVANT le tag par distracteur (misconceptions: [] à l'origine) ;
   # chaque distracteur a été relu et rattaché au modèle d'erreur qu'il teste.
   # Namespace : mc.math.maths_arithmetique.<slug>. Comptages honnêtes en bas de
-  # fichier (coverage_summary, §6). Le modèle fermat-condition-ou-exposant est
-  # déclaré à 0 item : le petit théorème de Fermat n'a pas de rung dans la leçon
-  # (il est surfacé inline par cp-r6-fermat) — gap honnête, non gonflé.
+  # fichier (coverage_summary, §6). Le modèle fermat-condition-ou-exposant
+  # était déclaré « à 0 item » et « sans rung dans la leçon » — c'était vrai
+  # jusqu'au 2026-09-05 pour le premier point (avant l'ajout d'AR-28/30/32) et
+  # jusqu'au 2026-09-27 pour le second (avant la rung R6b, lesson.md). Les deux
+  # sont désormais faux : 6 items le couvrent (AR-28, AR-30, AR-32, AR-33,
+  # AR-34, AR-35) et la rung R6b existe (dette d'examen, vague B2).
 
   - id: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
     label: "Confondre « être premier » (un nombre) et « être premiers entre eux » (une paire)"
@@ -1585,10 +1588,10 @@ items:
   # Quatre items, douze places : trois sur le petit théorème de Fermat et les
   # équations diophantiennes, un sur divisibilité et primalité.
   - id: AR-28
-    rung: "R7"
+    rung: "R6b"
     difficulty_level: 4
     skill_code: maths_arithmetique
-    tags: [fermat, diophantienne, solution_generale]
+    tags: [fermat, congruences, puissance]
     primary_misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
     stem: >
       Soit $p = 7$, premier. Que peut-on affirmer de $a^{6} \bmod 7$ pour un
@@ -1942,6 +1945,209 @@ items:
       **Vérification finale**, pour $t = 1$ :
       $11\times 1 + 4\times(-2) = 11 - 8 = 3$. ✓
 
+  # ── Ajoutés le 2026-09-27 (dette d'examen, vague B2 — R6b prend chair) ─────
+  # AR-28 est RETAGUÉ (R7 → R6b) : il teste directement le théorème que R6b
+  # enseigne (a^(p-1) mod p, condition p∤a), pas les équations diophantiennes
+  # — ses anciens tags [fermat, diophantienne, solution_generale] étaient un
+  # reliquat de lot, corrigés en [fermat, congruences, puissance]. AR-30 et
+  # AR-32, eux, RESTENT où ils étaient (R4, R8, inchangé) : Fermat n'y sert que
+  # de distracteur hors-sujet pour un item de Bézout/paramétrage — ils ne
+  # testent PAS le théorème lui-même, seulement la reconnaissance de son
+  # inapplicabilité à un problème différent (mise à l'échelle / paramétrage
+  # diophantien). Trois items neufs complètent le ramp de R6b, avec des
+  # nombres jamais vus ailleurs dans cette notion pour Fermat (ni ceux de la
+  # leçon — 7/143/11, p=17, p=11/a=22 — ni ceux du banc historique — 2969, 43,
+  # 47, 13) : AR-33 (p=19, réduction directe de l'exposant modulo p-1),
+  # AR-34 (p=29, choix de la bonne justification entre les deux formes du
+  # théorème et un critère hors-sujet), AR-35 (p=37, cas p∣a où la forme
+  # conditionnée échoue). `habilete` suit le triplet MATHS
+  # (application_directe / _non_explicite / synthese) tel qu'utilisé dans
+  # calcul-integral/items.yaml — absent des items AR-1..AR-32 (jamais
+  # rétrofité), introduit ici seulement pour les items neufs.
+  - id: AR-33
+    rung: "R6b"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [fermat, congruences, puissance]
+    primary_misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+    stem: >
+      Quel est le reste de la division de $3^{200}$ par $19$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$9$"
+        correct: true
+      - id: B
+        text: "$16$, en réduisant l'exposant $200$ modulo $19$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          Le petit théorème de Fermat donne un cycle de longueur $p-1=18$, pas
+          $p=19$. En réduisant $200$ modulo $19$ (reste $10$), tu calcules
+          $3^{10} \equiv 16 \pmod{19}$ — un nombre qui n'a pas de raison de
+          coïncider avec $3^{200}$, puisque ce n'est pas la bonne période.
+      - id: C
+        text: "$1$, car $3^{18} \\equiv 1 \\pmod{19}$ et $200$ est un multiple de $18$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-puissance-mal-reduite
+        feedback: >
+          $200$ n'est PAS un multiple de $18$ : $200 = 18 \times 11 + 2$,
+          reste $2$, pas $0$. Le facteur résiduel $3^2$ ne disparaît pas : il
+          reste $3^{200} \equiv 3^2 \pmod{19}$, pas $3^0=1$.
+      - id: D
+        text: "$18$ (c'est-à-dire $-1$)"
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          $18 \equiv -1 \pmod{19}$ n'est la conclusion d'aucune étape correcte
+          ici : ce n'est ni la valeur que donne Fermat ($1$, pas $-1$), ni un
+          reste intermédiaire de ce calcul.
+    correct_feedback: >
+      Exact. $19$ est premier et $19 \nmid 3$, donc $3^{18} \equiv 1 \pmod{19}$
+      (Fermat). Comme $200 = 18\times 11+2$, $3^{200} \equiv (3^{18})^{11}
+      \times 3^2 \equiv 1 \times 9 \equiv 9 \pmod{19}$.
+    solution: |
+      **L'outil.** $19$ est premier et $19 \nmid 3$ : le petit théorème de
+      Fermat donne $3^{18} \equiv 1 \pmod{19}$.
+
+      **Réduire l'exposant modulo $p-1=18$**, pas modulo $p=19$ :
+      $$200 = 18 \times 11 + 2$$
+
+      **Conclure.**
+      $$3^{200} = \left(3^{18}\right)^{11} \times 3^2 \equiv 1^{11}\times 3^2
+      \equiv 9 \pmod{19}$$
+      Le reste est $9$.
+
+  - id: AR-34
+    rung: "R6b"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [fermat, congruences, divisibilite]
+    primary_misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+    stem: >
+      On veut justifier que, pour tout entier $n$ — y compris ceux que $29$
+      divise —, $29$ divise $n^{29} - n$. Quelle affirmation le justifie
+      correctement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La forme sans condition du petit théorème de Fermat,
+          $a^{p} \equiv a \pmod p$ pour tout entier $a$, appliquée avec
+          $p=29$ et $a=n$, donne directement $n^{29} \equiv n \pmod{29}$
+        correct: true
+      - id: B
+        text: >-
+          La forme $a^{p-1} \equiv 1 \pmod p$, avec $p=29$, s'applique à
+          tout entier $n$ y compris ceux que $29$ divise, et donne
+          $n^{28} \equiv 1 \pmod{29}$, donc $n^{29} \equiv n$
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          Cette forme exige $p \nmid a$ : ce n'est pas un détail. Pour les $n$
+          que $29$ divise (exactement le cas que l'énoncé veut couvrir),
+          $n^{28} \equiv 0 \pmod{29}$, pas $1$. C'est précisément pour ce cas
+          que la forme sans condition existe.
+      - id: C
+        text: >-
+          Le petit théorème de Fermat s'écrit ici
+          $n^{p-1} \equiv n \pmod p$ avec $p=29$, soit $n^{28} \equiv n
+          \pmod{29}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          Les deux formes sont mélangées : c'est la forme SANS condition qui
+          conclut « $\equiv a$ », et elle porte l'exposant $p$, pas $p-1$.
+          L'écriture correcte est $n^{p} \equiv n \pmod p$, donc
+          $n^{29} \equiv n \pmod{29}$ — pas $n^{28} \equiv n$.
+      - id: D
+        text: >-
+          Il suffit de vérifier que la somme des chiffres de $n^{29}-n$ est un
+          multiple de $29$, comme le critère de divisibilité par $9$ le
+          ferait pour $9$
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: >
+          Le critère par somme des chiffres teste UNIQUEMENT la divisibilité
+          par $3$ ou par $9$ (conséquence de $10 \equiv 1 \pmod 9$) : il ne
+          dit rien de la divisibilité par $29$.
+    correct_feedback: >
+      Exact. $29$ est premier, et la forme sans condition du petit théorème
+      de Fermat, $a^p \equiv a \pmod p$ pour TOUT entier $a$ (y compris les
+      multiples de $p$), donne directement $n^{29} \equiv n \pmod{29}$, donc
+      $29 \mid (n^{29}-n)$, sans distinguer de cas.
+    solution: |
+      **Pourquoi la forme conditionnée ne suffit pas.** L'énoncé porte sur
+      TOUT entier $n$, y compris ceux que $29$ divise — exactement les $n$
+      que la forme $a^{p-1}\equiv1$ (qui exige $p\nmid a$) exclut par
+      hypothèse.
+
+      **La forme sans condition, seule adaptée ici.** Pour $p=29$ premier :
+      $$n^{29} \equiv n \pmod{29} \qquad \text{pour TOUT entier } n$$
+
+      **Conclusion.** $n^{29} \equiv n \pmod{29}$ signifie
+      $29 \mid (n^{29}-n)$, pour tout entier $n$, sans exception.
+
+  - id: AR-35
+    rung: "R6b"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [fermat, congruences, condition]
+    primary_misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+    stem: >
+      Quel est le reste de la division de $111^{36}$ par $37$, sachant que
+      $111 = 3 \times 37$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0$"
+        correct: true
+      - id: B
+        text: "$1$, par application directe du petit théorème de Fermat, $a^{p-1} \\equiv 1 \\pmod p$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          La forme $a^{p-1}\equiv1 \pmod p$ exige $p \nmid a$. Ici
+          $37 \mid 111$ : la condition échoue, et cette forme du théorème ne
+          s'applique tout simplement pas. Toute puissance de $111$ est
+          congrue à $0$ modulo $37$, jamais à $1$.
+      - id: C
+        text: "$36$ (c'est-à-dire $-1$)"
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          $-1$ est la valeur qu'on rencontre dans certains sujets juste AVANT
+          d'invoquer Fermat (une contradiction à exhiber), pas une conclusion
+          du théorème — et sans rapport ici, où $37 \mid 111$ rend la forme
+          $a^{p-1}\equiv1$ inapplicable de toute façon.
+      - id: D
+        text: "$37$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.reste-non-normalise
+        feedback: >
+          Un reste modulo $37$ appartient toujours à $\{0,1,\dots,36\}$ : il
+          ne peut jamais valoir $37$ lui-même.
+    correct_feedback: >
+      Exact. $111 = 3\times37$ est un multiple de $37$, donc
+      $111 \equiv 0 \pmod{37}$, et $111^{36} \equiv 0^{36} \equiv 0
+      \pmod{37}$. La condition $p\nmid a$ du petit théorème de Fermat échoue
+      ici : on n'a ni besoin, ni le droit, d'invoquer $a^{p-1}\equiv1$.
+    solution: |
+      **Le piège.** $37$ est bien premier, mais la condition $p \nmid a$ du
+      petit théorème de Fermat échoue : $111 = 3\times37$ est un multiple de
+      $37$.
+
+      **Le calcul direct, sans Fermat.** $111 \equiv 0 \pmod{37}$, donc
+      $$111^{36} \equiv 0^{36} \equiv 0 \pmod{37}$$
+
+      **La leçon.** La forme $a^{p-1}\equiv1\pmod p$ ne s'applique QUE quand
+      $p\nmid a$ ; ici $p\mid a$, et c'est la forme sans condition,
+      $a^p\equiv a$, qui s'appliquerait si l'exposant demandé était $37$ (elle
+      donnerait alors, sans surprise, $111^{37}\equiv111\equiv0\pmod{37}$).
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après AR-28 à AR-32. Huit familles sous le plancher,
 # dont `fermat-condition-ou-exposant` sans AUCUN item de banc — elle n'était
@@ -1949,6 +2155,11 @@ items:
 # Les quatre autres pièges des équations diophantiennes (mise à l'échelle du
 # couple de Bézout, croisement des coefficients, unicité supposée, réduction
 # d'une puissance) et les trois de la divisibilité sont refermés du même geste.
+# RÉÉCRIT à nouveau le 2026-09-27 (dette d'examen, vague B2) : AR-28 retagué
+# R7→R6b (rung désormais réelle) ; AR-33/34/35 ajoutés à R6b. `fermat-
+# condition-ou-exposant` quitte le plancher exact (3→6) ; `congruence-
+# puissance-mal-reduite` (AR-33) et `critere-divisibilite-mal-applique`
+# (AR-34) montent chacun à 4 ; `reste-non-normalise` (AR-35) monte à 5.
 # Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
@@ -1962,19 +2173,19 @@ coverage_summary:
     mc.math.maths_arithmetique.pgcd-vs-ppcm:                      { count: 3, items: [AR-3, AR-14, AR-21] }
     mc.math.maths_arithmetique.pgcd-plus-grand-oublie:            { count: 4, items: [AR-3, AR-14, AR-15, AR-21] }
     mc.math.maths_arithmetique.gauss-condition-ignoree:           { count: 3, items: [AR-5, AR-18, AR-19] }
-    mc.math.maths_arithmetique.reste-non-normalise:               { count: 4, items: [AR-1, AR-2, AR-10, AR-13] }
-    mc.math.maths_arithmetique.congruence-puissance-mal-reduite:  { count: 3, items: [AR-2, AR-12, AR-28] }
-    mc.math.maths_arithmetique.critere-divisibilite-mal-applique: { count: 3, items: [AR-1, AR-13, AR-31] }
+    mc.math.maths_arithmetique.reste-non-normalise:               { count: 5, items: [AR-1, AR-2, AR-10, AR-13, AR-35] }
+    mc.math.maths_arithmetique.congruence-puissance-mal-reduite:  { count: 4, items: [AR-2, AR-12, AR-28, AR-33] }
+    mc.math.maths_arithmetique.critere-divisibilite-mal-applique: { count: 4, items: [AR-1, AR-13, AR-31, AR-34] }
     mc.math.maths_arithmetique.diophantienne-critere-existence:   { count: 7, items: [AR-6, AR-7, AR-8, AR-9, AR-17, AR-23, AR-25] }
     mc.math.maths_arithmetique.bezout-portee:                     { count: 3, items: [AR-5, AR-16, AR-17] }
     mc.math.maths_arithmetique.solution-unique-vs-infinie:        { count: 3, items: [AR-24, AR-25, AR-29] }
     mc.math.maths_arithmetique.solution-generale-mal-parametree:  { count: 3, items: [AR-24, AR-29, AR-32] }
     mc.math.maths_arithmetique.primalite-test-incomplet:          { count: 3, items: [AR-20, AR-27, AR-31] }
-    mc.math.maths_arithmetique.fermat-condition-ou-exposant:      { count: 3, items: [AR-28, AR-30, AR-32] }
+    mc.math.maths_arithmetique.fermat-condition-ou-exposant:      { count: 6, items: [AR-28, AR-30, AR-32, AR-33, AR-34, AR-35] }
     mc.math.maths_arithmetique.solution-mise-a-echelle:           { count: 3, items: [AR-26, AR-30, AR-32] }
     mc.math.maths_arithmetique.diviser-relation-inversee:         { count: 3, items: [AR-11, AR-22, AR-31] }
     mc.math.maths_arithmetique.prime-divise-produit:              { count: 3, items: [AR-2, AR-12, AR-22] }
-  total_items: 32
+  total_items: 35
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -1985,9 +2196,18 @@ coverage_summary:
     R4: 4
     R5: 3
     R6: 4
-    R7: 5
+    R6b: 4
+    R7: 4
     R8: 4
   honest_state: >-
     Les seize misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Douze y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item la casse.
+    plancher. Neuf y siègent EXACTEMENT (3 items) — pgcd-vs-ppcm,
+    gauss-condition-ignoree, bezout-portee, solution-unique-vs-infinie,
+    solution-generale-mal-parametree, primalite-test-incomplet,
+    solution-mise-a-echelle, diviser-relation-inversee,
+    prime-divise-produit : la marge y est nulle et tout retrait d'item la
+    casse. Recompté le 2026-09-27 après AR-33/34/35 (dette d'examen, vague
+    B2) : `fermat-condition-ou-exposant` quitte ce lot exact (3→6), avec
+    `congruence-puissance-mal-reduite` et `critere-divisibilite-mal-applique`
+    (3→4 chacune) et `reste-non-normalise` (4→5) — neuf familles à la marge
+    nulle, contre douze avant cette édition.

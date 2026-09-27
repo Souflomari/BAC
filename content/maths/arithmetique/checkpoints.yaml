@@ -27,10 +27,22 @@ skill_code: maths_arithmetique
 #   cp-r5-gauss       (fin R5)           — rupture gate : Gauss / a|bc sans la
 #                                          condition PGCD=1. Sonde
 #                                          gauss-condition-ignoree.
+#   cp-r6b-fermat-predict (dans R6b,     — COMMIT gate : transforme une règle
+#                          avant l'énoncé) naïve « a^(p-1)≡1 pour tout a et
+#                                          tout p premier » (sans condition),
+#                                          testée sur p=11, a=22 (11|22), en
+#                                          un vrai engagement AVANT que la
+#                                          rung ne révèle l'énoncé exact.
+#                                          Sonde fermat-condition-ou-exposant
+#                                          (dette d'examen, vague B).
 #   cp-r6-fermat      (avant r-bac)      — rupture gate : petit théorème de
 #                                          Fermat (p premier, p∤a ⟹ a^(p−1)≡1),
-#                                          l'outil de la question 1.d du sujet,
-#                                          hors-rung. Sonde
+#                                          l'outil de la question 1.d du sujet.
+#                                          `rung: "R6b"` (corrigé le
+#                                          2026-09-27 : portait « R6 », était
+#                                          hors-rung jusqu'à l'ajout de R6b ;
+#                                          placement before_bac inchangé).
+#                                          Sonde
 #                                          fermat-condition-ou-exposant.
 #
 # CHAQUE distracteur porte un id de modèle nommé de l'inventaire de la notion
@@ -296,15 +308,101 @@ checkpoints:
           fait d'être premier.
 
   # ════════════════════════════════════════════════════════════════
+  # CP-3b | id: cp-r6b-fermat-predict | placé DANS R6b, AVANT l'énoncé exact
+  #         COMMIT gate : une règle naïve — « a^(p-1)≡1 pour tout entier a et
+  #         tout premier p » (sans la condition p∤a) — testée sur p=11,
+  #         a=22 (11|22), avant que la rung ne révèle l'énoncé et sa
+  #         condition. Sonde fermat-condition-ou-exposant. item_source
+  #         original. Dette d'examen, vague B (GAP-B inverse, Fermat sans
+  #         rung — docs/audits/dette-examen/maths.md, § arithmetique).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6b-fermat-predict
+    rung: "R6b"
+    habilete: raisonnement
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, fermat, hook_commit]
+    primary_misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+    item_source: original
+    lesson_placement: in_R6b
+
+    stem: |
+      Un camarade te propose la règle suivante : "pour n'importe quel entier
+      $a$ et n'importe quel nombre premier $p$, on a toujours
+      $a^{p-1} \equiv 1 \pmod p$." **Prends position avant de lire la suite** :
+      teste-la toi-même avec $p = 11$ et $a = 22$. Que vaut réellement
+      $22^{10}$ modulo $11$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $1$, en application directe de la règle telle qu'énoncée par ton
+          camarade.
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: |
+          Modèle détecté : la règle appliquée sans vérifier sa condition. Ici
+          $p = 11$ et $a = 22$ : or $11 \mid 22$ (donc $p \mid a$), exactement
+          le cas que la condition $p \nmid a$ exclut. La règle de ton
+          camarade, énoncée sans condition, est fausse — ce contre-exemple le
+          montre.
+      - id: B
+        text: |
+          $0$, car $22 \equiv 0 \pmod{11}$ (puisque $11 \mid 22$), donc
+          $22^{10} \equiv 0^{10} \equiv 0 \pmod{11}$.
+        correct: true
+        feedback: |
+          Exact. $22 = 2 \times 11$ est un multiple de $11$, donc
+          $22 \equiv 0 \pmod{11}$, et $22^{10} \equiv 0^{10} \equiv 0
+          \pmod{11}$ — pas $1$. La règle de ton camarade oubliait la
+          condition $p \nmid a$ : c'est précisément parce que $11 \mid 22$
+          qu'elle échoue ici.
+      - id: C
+        text: |
+          $22$, en confondant avec l'autre forme du théorème
+          ($a^{p} \equiv a$, qui donnerait $22^{11}\equiv 22$, pas
+          $22^{10}$).
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: |
+          Modèle détecté : exposant confondu. La forme $a^{p} \equiv a
+          \pmod p$ (valable pour tout $a$, sans condition) donnerait
+          $22^{11} \equiv 22 \pmod{11}$ — pas $22^{10}$. Les deux formes du
+          petit théorème de Fermat n'ont ni le même exposant, ni la même
+          condition ; il ne faut pas passer de l'une à l'autre sans y
+          penser.
+      - id: D
+        text: |
+          $-1$, c'est-à-dire $10 \pmod{11}$.
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: |
+          Modèle détecté : cette valeur $-1$ est celle qu'on rencontre
+          souvent juste AVANT d'appliquer Fermat dans un sujet de bac (une
+          contradiction du type $-1 \equiv 1$ à exhiber), pas la conclusion
+          de Fermat lui-même — et de toute façon pas le résultat ici, où
+          $p \mid a$ rend même l'énoncé du théorème inapplicable.
+
+  # ════════════════════════════════════════════════════════════════
   # CP-4 | id: cp-r6-fermat | placé AVANT [[exercise:r-bac]]
   #        Rupture gate : petit théorème de Fermat (p premier, p∤a ⟹
-  #        a^(p−1) ≡ 1 [p]) — l'outil de la question 1.d du sujet, hors-rung.
+  #        a^(p−1) ≡ 1 [p]) — l'outil de la question 1.d du sujet. Était
+  #        « hors-rung » jusqu'au 2026-09-27 ; une rung R6b (lesson.md,
+  #        entre R6 et R7) l'introduit et le démontre désormais. Le champ
+  #        `rung` ci-dessous portait « R6 » alors même que ce checkpoint est
+  #        physiquement placé sous le titre R8 (`lesson_placement:
+  #        before_bac`, INCHANGÉ, choix pédagogique délibéré : un rappel
+  #        juste avant le sujet) — corrigé en « R6b », la rung dont il sonde
+  #        effectivement le théorème, pas celle où il est surfacé dans la
+  #        leçon.
   #        Reproduit le couple (p = 2969, exposant 2968) de r-bac.
   #        Sonde fermat-condition-ou-exposant. item_source original.
   # ════════════════════════════════════════════════════════════════
 
   - id: cp-r6-fermat
-    rung: "R6"
+    rung: "R6b"
     habilete: raisonnement
     skill_code: maths_arithmetique
     tags: [checkpoint, formative, misconception_driven, maths_arithmetique, fermat, bac_style]

@@ -378,6 +378,96 @@ $$\mathrm{PGCD}(360, 252) = 2^{\min(3,2)} \times 3^{\min(2,2)} = 2^2 \times 3^2 
 
 ---
 
+## R6b — Le petit théorème de Fermat
+
+### Retour à un calcul déjà fait, pour repérer un motif
+
+Plus haut dans ce chapitre, tu as cherché à la main la période des puissances de $2$ modulo $7$, et tu as trouvé $2^3 \equiv 1 \pmod 7$ : une période de $3$. Remarque quelque chose : $3$ divise $6 = 7 - 1$. Ce n'est pas un hasard — et ce fait a un nom, le petit théorème de Fermat. Mais avant de te donner l'énoncé exact, teste une version un peu vite retenue, qu'on entend souvent en soutien scolaire.
+
+### Prédis, avant de lire la suite
+
+Un camarade te propose la règle suivante : "pour n'importe quel entier $a$ et n'importe quel nombre premier $p$, on a toujours $a^{p-1} \equiv 1 \pmod p$." Prends position avant de continuer, et teste-la toi-même : avec $p = 11$ et $a = 22$, que vaut réellement $22^{10}$ modulo $11$ ?
+
+[[checkpoint:cp-r6b-fermat-predict]]
+
+### L'énoncé exact — et pourquoi la condition n'est pas décorative
+
+Ce que le calcul avec $22$ vient de révéler : la règle de ton camarade est fausse, et elle est fausse précisément parce qu'elle oublie une condition. Voici la bonne version.
+
+**Théorème (petit théorème de Fermat).** Soit $p$ un nombre premier et $a$ un entier tel que $p \nmid a$. Alors :
+
+$$a^{p-1} \equiv 1 \pmod{p}$$
+
+La condition $p \nmid a$ n'est pas un détail administratif : sans elle, l'énoncé est faux, comme tu viens de le voir avec $22 = 2 \times 11$ (un multiple de $11$), pour qui $22^{10} \equiv 0 \pmod{11}$, pas $1$.
+
+**Une seconde forme, valable sans exception.** En multipliant les deux membres de $a^{p-1}\equiv 1$ par $a$ quand $p \nmid a$, et en constatant que l'égalité est trivialement vraie quand $p \mid a$ (les deux membres valent alors $0$), on obtient une version qui ne demande plus aucune condition :
+
+$$a^p \equiv a \pmod p \qquad \text{pour tout entier } a$$
+
+Les deux formes disent presque la même chose, mais pas tout à fait : la première a un exposant $p-1$ et une condition ($p\nmid a$) ; la seconde a un exposant $p$ et aucune condition. Les confondre — appliquer l'exposant $p$ à la première forme, ou l'exposant $p-1$ à un $a$ multiple de $p$ — est l'erreur la plus fréquente.
+
+### Pourquoi c'est vrai — on le construit, avec des outils déjà en main
+
+Ce résultat ne tombe pas du ciel : il se démontre avec exactement deux théorèmes déjà construits dans ce chapitre — le théorème de Gauss, et le lemme d'Euclide sur les nombres premiers. Fixe $p$ premier et $a$ tel que $p \nmid a$.
+
+**Ce qu'on cherche et pourquoi ce geste :** on regarde les $p-1$ multiples $a, 2a, 3a, \ldots, (p-1)a$. L'idée est de montrer qu'ils forment, modulo $p$, exactement une redistribution des $p-1$ restes non nuls $1, 2, \ldots, p-1$ — dans un autre ordre. Une fois ceci acquis, multiplier tous ces nombres entre eux donnera l'égalité cherchée.
+
+**Étape 1 — aucun de ces multiples n'est congru à $0$.** Si $ka \equiv 0 \pmod p$ pour un $k$ avec $1 \leq k \leq p-1$, alors $p \mid ka$. Comme $p$ est premier, le lemme d'Euclide donne $p \mid k$ ou $p \mid a$. On a supposé $p \nmid a$ ; et $p$ ne peut pas diviser $k$ non plus, puisque $1 \leq k \leq p-1 < p$. Contradiction : donc $ka \not\equiv 0 \pmod p$, pour chaque $k$ de $1$ à $p-1$.
+
+**Étape 2 — ces multiples sont deux à deux distincts modulo $p$.** Suppose $ia \equiv ja \pmod p$ pour deux indices $1 \leq i < j \leq p-1$. Alors $p \mid (j-i)a$. Comme $\mathrm{PGCD}(p,a) = 1$ ($p$ premier, $p \nmid a$), le théorème de Gauss donne $p \mid (j-i)$. Mais $0 < j - i < p-1 < p$ : aucun multiple de $p$ ne peut être strictement compris entre $0$ et $p$. Contradiction — donc $ia \not\equiv ja \pmod p$ dès que $i \neq j$.
+
+Les $p-1$ nombres $a, 2a, \ldots, (p-1)a$ sont donc, modulo $p$, deux à deux distincts (étape 2) et jamais nuls (étape 1). Ce sont $p-1$ restes distincts, tous pris parmi les $p-1$ restes non nuls possibles $\{1, 2, \ldots, p-1\}$ : ils épuisent donc cet ensemble exactement, chacun une seule fois — dans un ordre différent, mais le même ensemble.
+
+**Étape 3 — multiplier les deux ensembles.** Puisque $\{a, 2a, \ldots, (p-1)a\}$ et $\{1, 2, \ldots, p-1\}$ coïncident modulo $p$ (à l'ordre près), leurs produits sont congrus :
+
+$$a \times 2a \times \cdots \times (p-1)a \equiv 1 \times 2 \times \cdots \times (p-1) \pmod p$$
+
+En regroupant, à gauche, les $p-1$ occurrences de $a$ d'un côté et le produit $1\times2\times\cdots\times(p-1)$ de l'autre :
+
+$$a^{p-1} \times (p-1)! \equiv (p-1)! \pmod p$$
+
+**Étape 4 — simplifier par $(p-1)!$, légitimement.** On veut diviser les deux membres par $(p-1)!$ — mais ce n'est permis que si $(p-1)!$ est premier avec $p$. Chacun des facteurs $1, 2, \ldots, p-1$ est strictement inférieur à $p$, donc non divisible par $p$ ; par le lemme d'Euclide, appliqué facteur par facteur, $p$ ne divise pas leur produit $(p-1)!$. Donc $\mathrm{PGCD}(p, (p-1)!) = 1$. L'égalité de l'étape 3 se réécrit $p \mid \big((p-1)! \times (a^{p-1} - 1)\big)$ ; le théorème de Gauss, appliqué avec $\mathrm{PGCD}(p,(p-1)!)=1$, donne :
+
+$$p \mid (a^{p-1} - 1) \qquad \text{c'est-à-dire} \qquad a^{p-1} \equiv 1 \pmod p$$
+
+C'est exactement le petit théorème de Fermat — construit, pas décrété, à partir de deux théorèmes que tu as déjà démontrés toi-même.
+
+### Exemple travaillé 1 — réduire une puissance grâce à Fermat, sans chasser de cycle à la main
+
+Quel est le reste de la division de $7^{143}$ par $11$ ?
+
+**Ce qu'on cherche et pourquoi ce geste :** $11$ est premier et $11 \nmid 7$, donc le petit théorème de Fermat s'applique directement : $7^{10} \equiv 1 \pmod{11}$. Contrairement à l'application des congruences vue plus haut (où il fallait chercher la période à la main, calcul après calcul), Fermat donne l'exposant de retour à $1$ immédiatement : c'est $p - 1$, pas besoin de le deviner.
+
+On réduit l'exposant $143$ modulo $10$ — et non modulo $11$, c'est précisément le piège à éviter :
+
+$$143 = 10 \times 14 + 3$$
+
+Donc $7^{143} = \left(7^{10}\right)^{14} \times 7^3$. En appliquant $7^{10} \equiv 1 \pmod{11}$ :
+
+$$7^{143} \equiv 1^{14} \times 7^3 \equiv 7^3 \pmod{11}$$
+
+Reste à calculer $7^3 = 343$. Comme $343 = 11 \times 31 + 2$ :
+
+$$7^{143} \equiv 2 \pmod{11}$$
+
+Le reste est **2** — obtenu en réduisant l'exposant modulo $p - 1 = 10$, jamais modulo $p = 11$.
+
+### Exemple travaillé 2 — une divisibilité vraie pour tout $n$, grâce à la forme sans condition
+
+Montre que, pour tout entier $n$, $17 \mid (n^{17} - n)$.
+
+**Ce qu'on cherche et pourquoi ce geste :** l'énoncé porte sur TOUT entier $n$, y compris ceux que $17$ divise — c'est exactement la forme sans condition, $a^p \equiv a \pmod p$, qu'il faut invoquer ici, et non la forme $a^{p-1}\equiv 1$ (qui exclurait par hypothèse les multiples de $17$).
+
+$17$ est premier. La seconde forme du petit théorème de Fermat, valable pour tout entier $a$, donne directement, en prenant $a = n$ :
+
+$$n^{17} \equiv n \pmod{17}$$
+
+C'est-à-dire $17 \mid (n^{17} - n)$, pour tout entier $n$ — sans distinguer de cas, sans supposer $17 \nmid n$.
+
+**Vérifie que le cas $17 \mid n$ ne pose pas de problème :** si $n = 17$, alors $n^{17} - n = 17^{17} - 17 = 17\left(17^{16} - 1\right)$, un multiple de $17$ de façon évidente. La forme $a^p \equiv a$ couvre ce cas automatiquement — c'est pour ça qu'on la choisit ici plutôt que la forme avec condition.
+
+---
+
 ## R7 — Équations diophantiennes : résoudre $ax + by = c$
 
 ### Le problème
@@ -454,7 +544,7 @@ Les termes en $t$ s'annulent exactement — ce n'est pas un hasard : $252 \times
 
 ## R8 — Pour t'entraîner
 
-Le sujet ci-dessous est un **vrai sujet d'examen national** : Sciences Mathématiques, session normale 2019 (code NS 24F, Exercice 3). Il enchaîne, en une seule chaîne serrée, les outils du chapitre — le théorème de Bézout (chapitre 5), les congruences et leurs puissances (chapitre 3), le lemme d'Euclide « un premier qui divise une puissance divise la base » (chapitre 7) — plus un outil supplémentaire du programme, le **petit théorème de Fermat**, que l'encadré ci-dessous rappelle avant que tu ne t'y attaques. Ne lis pas la correction d'un trait : engage-toi question par question.
+Le sujet ci-dessous est un **vrai sujet d'examen national** : Sciences Mathématiques, session normale 2019 (code NS 24F, Exercice 3). Il enchaîne, en une seule chaîne serrée, les outils du chapitre — le théorème de Bézout (chapitre 5), les congruences et leurs puissances (chapitre 3), le lemme d'Euclide « un premier qui divise une puissance divise la base » (chapitre 7) — et le **petit théorème de Fermat**, que tu viens de construire toi-même : l'encadré ci-dessous en vérifie la mémoire avant que tu ne t'y attaques. Ne lis pas la correction d'un trait : engage-toi question par question.
 
 [[checkpoint:cp-r6-fermat]]
 
@@ -469,3 +559,76 @@ Rien de tout cela n'appartient à ce chapitre : ces outils sont établis dans «
 Une fois le sujet 2019 compris, voici une **variation fraîche** — un autre nombre premier, un autre exposant — pour vérifier que tu as saisi la chaîne d'outils, et pas seulement mémorisé une suite de calculs.
 
 [[exercise:r-variation]]
+
+<!-- NOTE AJOUTÉE (dette d'examen, vague B — GAP-B inverse « Petit théorème de
+     Fermat has no rung », docs/audits/dette-examen/maths.md, § arithmetique,
+     et docs/audits/DETTE-EXAMEN.md) :
+
+     (1) [PROSE LIVRÉE, 2026-09-27] Nouvelle rung R6b — Le petit théorème de
+     Fermat, insérée entre R6 (nombres premiers, décomposition) et R7
+     (équations diophantiennes) — suffixe lettré, aucune rung existante
+     renumérotée. Contenu : prédiction-commit AVANT l'énoncé (règle naïve
+     $a^{p-1}\equiv1$ sans condition, testée sur $p=11,\ a=22$ avec $11\mid
+     22$ — le piège « appliquer Fermat quand $p\mid a$ »), énoncé exact des
+     deux formes ($a^{p-1}\equiv1$ sous condition $p\nmid a$ ; $a^p\equiv a$
+     sans condition), PREUVE complète (pas « admis ») construite avec deux
+     outils déjà démontrés dans ce même chapitre — le théorème de Gauss (R5)
+     et le lemme d'Euclide (R6) — via le classique argument des $p-1$
+     multiples $a,2a,\ldots,(p-1)a$ redistribuant les restes non nuls modulo
+     $p$. Deux exemples travaillés originaux, aucun nombre repris d'un
+     bank.yaml ni d'un item/checkpoint existant : (a) réduction de puissance,
+     $7^{143} \bmod 11 = 2$, exposant réduit modulo $p-1=10$ (jamais modulo
+     $p$) ; (b) divisibilité pour tout $n$, $17\mid(n^{17}-n)$, via la forme
+     sans condition. R8 (intro au sujet 2019) corrigée en conséquence :
+     l'ancienne formule « un outil supplémentaire du programme … que
+     l'encadré ci-dessous rappelle » décrivait Fermat comme hors-chapitre ;
+     elle disait vrai avant cette édition (c'était littéralement le trou
+     GAP-B constaté par l'audit) et est maintenant fausse — corrigée pour
+     dire que l'outil est construit plus haut, et que le checkpoint
+     `cp-r6-fermat` (inchangé, toujours juste avant `[[exercise:r-bac]]`)
+     en vérifie la mémoire, non l'apprentissage.
+
+     (2) [DÉCISION DE PORTÉE — cadre silencieux, à confirmer] Le petit
+     théorème de Fermat N'APPARAÎT PAS dans la ligne de programme du cadre :
+     `docs/cadre/curriculum/maths-sm.yaml:277-281` (programme d'arithmétique
+     SM) ne le nomme pas, et sa ligne `limites` (`:287`) exclut
+     explicitement « la fonction indicatrice d'Euler comme théorème central »,
+     « RSA/cryptographie formelle » et « résidus quadratiques » — mais reste
+     muette sur Fermat lui-même, ni inclus ni exclu. Cette édition tranche en
+     faveur d'une PREUVE complète (plutôt qu'un énoncé admis) parce que (i)
+     elle ne coûte aucun prérequis nouveau — Gauss et le lemme d'Euclide sont
+     déjà construits dans ce chapitre — et (ii) elle suit la voix déjà
+     établie par la notion elle-même, qui répète « on le construit, on ne
+     l'admet pas » (R1, R4, R7). Mais le cadre ne confirme ni n'infirme que
+     cette preuve soit attendue au bac SM : `checkpoints.yaml` (garde-fou en
+     tête de fichier) affirme de son côté « Le petit théorème de Fermat est
+     au programme SM et légitime pour un sujet type-bac » sans citer de
+     source cadre non plus. Pédagogie-architecte / propriétaire du cadre : la
+     ligne de programme mériterait d'être complétée explicitement (comme
+     elle l'est pour les trois exclusions voisines), plutôt que de laisser
+     ce silence trancher par défaut à chaque notion qui en a besoin.
+
+     (3) Aucune misconception nouvelle proposée : le checkpoint ajouté
+     (cp-r6b-fermat-predict, ci-dessous dans checkpoints.yaml) réutilise
+     `mc.math.maths_arithmetique.fermat-condition-ou-exposant`, déjà déclarée
+     dans `items.yaml` (et déjà couverte au plancher — AR-28, AR-30, AR-32,
+     `coverage_summary`). Elle nomme exactement les deux pièges demandés :
+     condition $p\nmid a$ oubliée, exposant $p$ confondu avec $p-1$. Aucun
+     item n'a été touché par cette édition.
+
+     (4) Trois notes de portée deviennent stales ailleurs, hors du périmètre
+     de cette édition (prose seule, lesson.md + checkpoints.yaml) — signalées
+     ici pour le mainteneur qui possède ces fichiers :
+       - `items.yaml:8-10` (en-tête du fichier) affirme encore que
+         « fermat-condition-ou-exposant … est déclaré à 0 item » et « n'a pas
+         de rung dans la leçon » — les deux sont maintenant faux (3 items
+         déjà présents avant cette édition ; une rung existe désormais).
+       - `exercises.yaml:16-21` (cité par l'audit) qualifie encore Fermat
+         d'« OUTIL HORS-RUNG » — également faux depuis R6b.
+       - `checkpoints.yaml`, l'entrée `cp-r6-fermat` porte `rung: "R6"` alors
+         qu'elle est physiquement placée sous le titre R8 (`lesson_placement:
+         before_bac`) — incohérence pré-existante à cette édition, non
+         créée par elle, non corrigée ici (hors périmètre : je n'ai touché
+         que l'ajout du nouveau checkpoint).
+-->
+
