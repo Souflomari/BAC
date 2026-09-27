@@ -396,7 +396,10 @@ async function verifierEtat(b, p, o, ou, { revele, bande, qri = true, qq = panne
     if (d && m.kx !== null) {
       const cote = d.x < m.kx - 0.5 ? "direct" : d.x > m.kx + 0.5 ? "inverse" : "equilibre";
       if (!bande && cote !== v && v !== "equilibre") fV.push(`sur l'axe, la pastille est ${cote === "direct" ? "à GAUCHE" : "à DROITE"} du pivot et le verdict est « ${v} »`);
-      if (revele) {
+      // UNE flèche : sur l'axe d'ensemble, sauf quand la bande porte le repère — c'est elle qui la montre
+      const dansBandeAtt = bande && lQ >= lK - 4 && lQ <= lK + 4;
+      if (revele && dansBandeAtt) { if (m.fA) fF.push("une flèche sur l'axe d'ensemble EN PLUS de celle de la bande"); }
+      else if (revele) {
         if (v === "equilibre") { if (m.fA) fF.push(`une flèche d'accent à l'équilibre (${m.fA.x0.toFixed(0)}→${m.fA.x1.toFixed(0)} px)`); }
         else if (!m.fA) fF.push("AUCUNE flèche du verdict");
         else {
@@ -436,7 +439,14 @@ async function verifierEtat(b, p, o, ou, { revele, bande, qri = true, qq = panne
             if (cote !== v) fV.push(`dans la bande, repère à ${sep.toFixed(1)} px du pivot (${cote}) — le verdict est « ${v} »`);
             imprimes.push(`${ou} : séparation dans la bande ${sep.toFixed(1)} px (${(lQ - lK).toFixed(3)} décade)`);
           }
-          if (revele && v !== "equilibre" && !m.fB) fF.push("aucune flèche dans la bande");
+          if (revele && v !== "equilibre") {
+            if (!m.fB) fF.push("aucune flèche dans la bande");
+            else if (bd.length === 1 && m.kbx !== null) {
+              const vers = m.kbx > bd[0] ? "droite" : "gauche";
+              if (m.fB.pointe !== vers) fF.push(`dans la bande, la pointe est à ${m.fB.pointe} (le pivot est à ${vers})`);
+              if (Math.abs(m.fB.x0 - Math.min(bd[0], m.kbx)) > 3 || Math.abs(m.fB.x1 - Math.max(bd[0], m.kbx)) > 3) fF.push(`la flèche de la bande va de ${m.fB.x0.toFixed(0)} à ${m.fB.x1.toFixed(0)} px (repère ${bd[0].toFixed(0)}, pivot ${m.kbx.toFixed(0)})`);
+            }
+          } else if (m.fB) fF.push(revele ? "une flèche dans la bande à l'équilibre" : "une flèche dans la bande AVANT le pari");
         } else {
           // hors bande : AUCUNE pastille, un chevron du bon côté, et l'écart dit juste (§5.5 B)
           if (bd.length) fb.push(`une pastille DANS la bande (à ${bd.map((x) => decB(x).toFixed(2)).join(", ")}) alors que Q_{r,i} est à ${lQ.toFixed(2)} — plafonnée`);

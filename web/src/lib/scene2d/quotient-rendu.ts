@@ -62,6 +62,8 @@ export interface EtatRenduQuotient {
    * `accent` seul (sans quoi le bain A, toujours direct, les afficherait dès S1 — une fuite).
    */
   rolesAutorises: boolean;
+  /** les symboles des métaux, PEINTS : la lame (toujours) et le dépôt (bain à deux solides) */
+  metaux: { lame: string; depot: string | null };
 }
 
 export interface RenduQuotient {
@@ -233,8 +235,12 @@ export function creerRenduQuotient(canvas: HTMLCanvasElement, hote: HTMLElement)
       rep["qri-marque"] = P(xQ, yAxe + 9);
       zonesTexte.push({ x0: xQ - 6, y0: yAxe - 6, x1: xQ + 6, y1: yAxe + 6 });
 
-      // la flèche du verdict : ACCENT, seulement révélée, jamais à l'équilibre (§5.5 A)
-      if (e.accent && e.verdict && e.verdict !== "equilibre") fleche(xQ, yAxe + 17, xK, yAxe + 17, accent, 2);
+      // la flèche du verdict : ACCENT, seulement révélée, jamais à l'équilibre (§5.5 A) — et UNE seule :
+      // quand la bande porte le repère, c'est elle qui la montre. Au bain B, Q_{r,i} = 10 et K = 2,5
+      // sont à 6 px sur l'axe d'ensemble : la flèche y était un moignon sans tête, en double de la
+      // flèche lisible de la bande (captures et porte, 2026-09-27)
+      const dansBande = e.bande && e.logQ >= e.logK - DEMI_BANDE && e.logQ <= e.logK + DEMI_BANDE;
+      if (e.accent && e.verdict && e.verdict !== "equilibre" && !dansBande) fleche(xQ, yAxe + 17, xK, yAxe + 17, accent, 2);
     } else {
       rep["qri-marque"] = P(0, 0, false);
     }
@@ -332,40 +338,50 @@ export function creerRenduQuotient(canvas: HTMLCanvasElement, hote: HTMLElement)
   }
 
   // ── LE BÉCHER (C) ──
+  // Refait après la première mesure de la porte et les captures (2026-09-27) : les deux MÉTAUX
+  // n'étaient nommés nulle part (« le dépôt de plomb se dissout » — lequel est le plomb ?), les
+  // deux noms d'ions se chevauchaient au téléphone, et « oxydé » tombait sur la lame. Chaque chose
+  // a maintenant sa PLACE, réservée : la lame à gauche, le dépôt au fond au milieu, les deux ions
+  // en colonne à droite, et les deux rôles dans les deux vides qui restent (au-dessus du métal
+  // oxydé ; à gauche de l'ion réduit). Les symboles des métaux sont PEINTS (Zn, Sn, Pb… ne sont
+  // pas des formules) ; les ions restent des étiquettes KaTeX.
   function rendreBecher(e: EtatRenduQuotient, x0: number, y0: number, x1: number, y1: number) {
     const c = ctx!;
     const encre = css(jetons.encre), accent = css(jetons.accent);
+    const h = tailleTexte(12);
     const cx = Math.round((x0 + x1) / 2);
-    const bw = Math.max(64, Math.min(0.68 * (x1 - x0), 0.72 * (y1 - y0)));
-    const yB0 = Math.round(y0 + 0.16 * (y1 - y0)), yB1 = Math.round(y1 - 0.12 * (y1 - y0));
-    const yLiq = Math.round(yB0 + 0.13 * (yB1 - yB0));
+    const bw = Math.round(Math.max(120, Math.min(0.9 * (x1 - x0), 1.4 * (y1 - y0))));
+    const L = cx - bw / 2, R = cx + bw / 2;
+    const yB0 = Math.round(y0 + 0.16 * (y1 - y0)), yB1 = Math.round(y1 - 0.08 * (y1 - y0));
+    const yLiq = Math.round(yB0 + 0.12 * (yB1 - yB0));
+    const hLiq = yB1 - yLiq;
 
     // le bécher, en encre : deux parois et le fond (ouvert en haut)
     c.strokeStyle = encre;
     c.lineWidth = 2;
     c.beginPath();
-    c.moveTo(cx - bw / 2, yB0);
-    c.lineTo(cx - bw / 2, yB1);
-    c.lineTo(cx + bw / 2, yB1);
-    c.lineTo(cx + bw / 2, yB0);
+    c.moveTo(L, yB0);
+    c.lineTo(L, yB1);
+    c.lineTo(R, yB1);
+    c.lineTo(R, yB0);
     c.stroke();
-    seg(cx - bw / 2, yB0, cx - bw / 2, yB1);
-    seg(cx - bw / 2, yB1, cx + bw / 2, yB1);
-    seg(cx + bw / 2, yB1, cx + bw / 2, yB0);
+    seg(L, yB0, L, yB1);
+    seg(L, yB1, R, yB1);
+    seg(R, yB1, R, yB0);
 
     // la solution
     c.fillStyle = voile(jetons.encreDouce, 0.12);
-    c.fillRect(cx - bw / 2 + 1, yLiq, bw - 2, yB1 - yLiq - 1);
+    c.fillRect(L + 1, yLiq, bw - 2, yB1 - yLiq - 1);
     c.strokeStyle = voile(jetons.encreDouce, 0.55);
     c.lineWidth = 1;
     c.beginPath();
-    c.moveTo(cx - bw / 2 + 1, yLiq);
-    c.lineTo(cx + bw / 2 - 1, yLiq);
+    c.moveTo(L + 1, yLiq);
+    c.lineTo(R - 1, yLiq);
     c.stroke();
 
-    // la lame : TOUJOURS présente — le métal du sens direct (§5.5 C)
-    const lw = Math.max(11, 0.1 * bw), xLame = cx - bw * 0.2;
-    const yLameHaut = yB0 + 0.06 * (yB1 - yB0), yLameBas = yLiq + 0.68 * (yB1 - yLiq);
+    // la lame : TOUJOURS présente — le métal du sens direct (§5.5 C) ; son symbole PEINT au-dessus
+    const lw = Math.max(10, Math.round(0.06 * bw)), xLame = L + 0.17 * bw;
+    const yLameHaut = yB0 - 6, yLameBas = yLiq + 0.72 * hLiq;
     c.fillStyle = voile(jetons.encreDouce, 0.3);
     c.strokeStyle = encre;
     c.lineWidth = 1.5;
@@ -375,13 +391,15 @@ export function creerRenduQuotient(canvas: HTMLCanvasElement, hote: HTMLElement)
     c.stroke();
     seg(xLame - lw / 2 - 4, yLameHaut, xLame - lw / 2 - 4, yLameBas);
     seg(xLame + lw / 2 + 4, yLameHaut, xLame + lw / 2 + 4, yLameBas);
+    texte(e.metaux.lame, xLame, yLameHaut - 3, "center", "bottom");
+    zonesTexte.push({ x0: xLame - 14, y0: yLameHaut - 3 - h, x1: xLame + 14, y1: yLameHaut });
     rep["lame-tete"] = P(xLame, yLameHaut);
     rep["lame"] = P(xLame, (yLiq + yLameBas) / 2);
     zonesTexte.push({ x0: xLame - lw / 2 - 2, y0: yLameHaut - 2, x1: xLame + lw / 2 + 2, y1: yLameBas + 2 });
 
-    // le dépôt : SEULEMENT si le bain le demande (§5.5 C, becher-et-roles a) — des grains, au fond
-    const xDepot = cx + bw * 0.24, yDepot = yB1 - Math.max(8, 0.1 * (yB1 - yLiq));
-    if (e.deuxSolides) {
+    // le dépôt : SEULEMENT si le bain le demande (§5.5 C) — des grains au fond, son symbole à droite
+    const xDepot = L + 0.42 * bw, yDepot = yB1 - 9;
+    if (e.deuxSolides && e.metaux.depot) {
       c.fillStyle = voile(jetons.encreDouce, 0.55);
       const grains: readonly (readonly [number, number])[] = [[-7, -3], [0, -6], [7, -3], [-4, 2], [4, 3], [-9, 4], [9, 2], [0, 5]];
       for (const [dx, dy] of grains) {
@@ -389,36 +407,36 @@ export function creerRenduQuotient(canvas: HTMLCanvasElement, hote: HTMLElement)
         c.arc(xDepot + dx, yDepot + dy, 2.3, 0, 2 * Math.PI);
         c.fill();
       }
+      texte(e.metaux.depot, xDepot + 14, yDepot, "left", "middle");
+      zonesTexte.push({ x0: xDepot - 12, y0: yDepot - 12, x1: xDepot + 36, y1: yDepot + 8 });
       rep["depot"] = P(xDepot, yDepot - 9);
-      zonesTexte.push({ x0: xDepot - 12, y0: yDepot - 12, x1: xDepot + 12, y1: yDepot + 8 });
     } else {
       rep["depot"] = P(0, 0, false);
     }
 
-    // les deux noms d'espèce (les ions en solution) — toujours, c'est l'énoncé
-    // DANS la solution, à droite de la lame, l'une sous l'autre : la première pose (de part et
-    // d'autre de la lame, sous la surface) mettait « [Zn²⁺] » sur la paroi et « [Sn²⁺] » sur la lame
-    // (première mesure de la porte : 46 px de trait sous chaque nom)
-    const xNoms = cx + bw * 0.14;
-    rep["espece-produit"] = P(xNoms, yLiq + 0.24 * (yB1 - yLiq));
-    rep["espece-oxydant"] = P(xNoms, yLiq + 0.52 * (yB1 - yLiq));
+    // les deux ions, en COLONNE à droite (le panneau pose leurs étiquettes à droite de ces ancres)
+    const xIons = L + 0.6 * bw;
+    rep["espece-produit"] = P(xIons, yLiq + 0.26 * hLiq);
+    rep["espece-oxydant"] = P(xIons, yLiq + 0.62 * hLiq);
 
     // les rôles — SEULEMENT révélés, JAMAIS à l'équilibre (§5.5 C, §9)
     const visible = e.accent && e.rolesAutorises && !!e.verdict && e.verdict !== "equilibre";
     if (visible) {
       const direct = e.verdict === "direct";
-      // oxydé : la lame en sens direct, le dépôt en sens inverse (seul le bain B atteint l'inverse)
-      const posOxyde = direct ? { x: xLame, y: yLameHaut } : { x: xDepot, y: yDepot };
-      // réduit : TOUJOURS un ION — l'oxydant du sens qui l'emporte (Cu²⁺, Pb²⁺, Ag⁺ en sens direct ;
-      // Sn²⁺ en sens inverse). Un métal n'est jamais « réduit » : la première version posait le
-      // mot sur le dépôt de plomb (sens direct) et sur la lame d'étain (sens inverse) — c'est-à-dire
-      // sur le PRODUIT de la réduction, là où `especes` écrit l'ion (relu par l'orchestrateur).
+      // oxydé : un MÉTAL — la lame en sens direct, le dépôt en sens inverse ; la flèche monte (le métal part en ions)
+      if (direct) {
+        fleche(xLame + lw / 2 + 7, yLiq + 0.42 * hLiq, xLame + lw / 2 + 7, yLiq + 0.16 * hLiq, accent, 2, 5);
+        rep["role-oxyde"] = P(xLame + lw / 2 + 12, yLiq + 0.1 * hLiq);
+      } else {
+        fleche(xDepot - 14, yDepot + 2, xDepot - 14, yDepot - 16, accent, 2, 5);
+        rep["role-oxyde"] = P(xDepot - 18, yDepot - 24);
+      }
+      // réduit : un ION — l'oxydant du sens qui l'emporte (Cu²⁺, Pb²⁺, Ag⁺ en sens direct ; Sn²⁺ en
+      // sens inverse). Un métal n'est jamais « réduit » (relu par l'orchestrateur). La flèche entre
+      // dans l'ion par la gauche ; le mot se pose à sa gauche.
       const ion = rep[direct ? "espece-oxydant" : "espece-produit"];
-      const posReduit = { x: ion.x, y: ion.y };
-      fleche(posOxyde.x, posOxyde.y - 13, posOxyde.x, posOxyde.y - 25, accent, 2, 5);
-      fleche(posReduit.x, posReduit.y - 25, posReduit.x, posReduit.y - 13, accent, 2, 5);
-      rep["role-oxyde"] = P(posOxyde.x, posOxyde.y - 29);
-      rep["role-reduit"] = P(posReduit.x, posReduit.y - 29);
+      fleche(ion.x - 22, ion.y, ion.x - 6, ion.y, accent, 2, 5);
+      rep["role-reduit"] = P(ion.x - 26, ion.y);
     } else {
       rep["role-oxyde"] = P(0, 0, false);
       rep["role-reduit"] = P(0, 0, false);

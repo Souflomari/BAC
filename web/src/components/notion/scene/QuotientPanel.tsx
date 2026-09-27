@@ -229,6 +229,7 @@ export function QuotientPanel({ scene, className }: { scene: Scene3DDescriptor; 
       accent: revele,
       deuxSolides,
       rolesAutorises,
+      metaux: { lame: couple.metalDirect, depot: deuxSolides ? couple.metalInverse : null },
     });
     s.rendre();
     const p = s.reperes();
@@ -243,10 +244,10 @@ export function QuotientPanel({ scene, className }: { scene: Scene3DDescriptor; 
       [
         { el: refs.qri.current, p: en(ancreQri, logQ !== null), directions: [[0, -1], [1, -1], [-1, -1], [0, 1], [1, 1], [-1, 1]], portee: 40 },
         { el: refs.k.current, p: en(ancreK), directions: [[0, -1], [-1, -1], [1, -1], [0, 1], [-1, 1], [1, 1]], portee: 40 },
-        { el: refs.especeProduit.current, p: en("espece-produit"), directions: [[1, 0], [1, 1], [1, -1], [0, 1]], portee: 10 },
-        { el: refs.especeOxydant.current, p: en("espece-oxydant"), directions: [[1, 0], [1, -1], [1, 1], [0, 1]], portee: 10 },
-        { el: refs.roleOxyde.current, p: en("role-oxyde", rolesVisibles), directions: [[0, -1], [-1, -1], [1, -1]], portee: 22 },
-        { el: refs.roleReduit.current, p: en("role-reduit", rolesVisibles), directions: [[0, -1], [1, -1], [-1, -1]], portee: 22 },
+        { el: refs.especeProduit.current, p: en("espece-produit"), directions: [[1, 0]], portee: 4 },
+        { el: refs.especeOxydant.current, p: en("espece-oxydant"), directions: [[1, 0]], portee: 4 },
+        { el: refs.roleOxyde.current, p: en("role-oxyde", rolesVisibles), directions: [[1, 0], [-1, 0], [0, -1]], portee: 4 },
+        { el: refs.roleReduit.current, p: en("role-reduit", rolesVisibles), directions: [[-1, 0], [0, -1], [0, 1]], portee: 4 },
       ],
       s.segments(),
       s.cadre(),
@@ -379,7 +380,7 @@ export function QuotientPanel({ scene, className }: { scene: Scene3DDescriptor; 
     "." +
     (bandeActive ? " En dessous, une bande de travail agrandit huit décades autour de K." : "") +
     (texteChevron ? ` ${texteChevron}.` : "") +
-    ` À côté, un bécher avec une lame${deuxSolides ? " et un dépôt au fond" : ""}.` +
+    ` À côté, un bécher avec une lame de ${couple.metalDirect}${deuxSolides ? ` et un dépôt de ${couple.metalInverse} au fond` : ""}.` +
     (revele && verdictCourant !== "equilibre" ? " Une flèche part du repère vers le pivot." : "");
 
   const legende = `Bain ${etat.bain}`;

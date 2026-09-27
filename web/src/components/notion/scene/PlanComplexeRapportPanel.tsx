@@ -145,6 +145,21 @@ function valeurBalayage(lieu: M.Lieu, p: number, depart: number): string {
   return p > depart ? "plus loin de B : MA et MB ont augmenté ensemble" : "plus près de B : MA et MB ont diminué ensemble";
 }
 
+/**
+ * Les directions d'un NOM DE SOMMET : d'abord VERS L'EXTÉRIEUR du triangle (du centre de gravité vers
+ * le sommet), puis ses voisines, puis les fines. Au téléphone, après l'agrandissement de la vague 2,
+ * « C / 1+(4−√3)i » se posait à droite de C, sur la flèche qui part de A (58 px de trait) — alors que
+ * tout le bas-gauche était libre ; le placeur prend les directions dans l'ordre donné.
+ */
+function exterieur(p: Record<string, { x: number; y: number; visible: boolean }>, sommet: string, autres: readonly string[]): readonly (readonly [number, number])[] {
+  const s = p[`point-${sommet}`], pts = autres.map((n) => p[`point-${n}`]).filter((q) => q?.visible);
+  if (!s?.visible || pts.length < 2) return DIRECTIONS_FINES;
+  const gx = (s.x + pts.reduce((a, q) => a + q.x, 0)) / (pts.length + 1), gy = (s.y + pts.reduce((a, q) => a + q.y, 0)) / (pts.length + 1);
+  const th = Math.atan2(s.y - gy, s.x - gx);
+  const dir = (a: number): [number, number] => { const x = Math.cos(a), y = Math.sin(a), k = Math.max(Math.abs(x), Math.abs(y)); return [x / k, y / k]; };
+  return [dir(th), dir(th + 0.4), dir(th - 0.4), dir(th + 0.8), dir(th - 0.8), ...DIRECTIONS_FINES];
+}
+
 const NOM_LIEU: Record<M.Lieu, string> = { mediatrice: "la médiatrice de [AB]", cercle: "le cercle de diamètre [AB]", droite: "la droite (AB)" };
 
 export function PlanComplexeRapportPanel({ scene, className }: { scene: Scene3DDescriptor; className?: string }) {
@@ -242,9 +257,9 @@ export function PlanComplexeRapportPanel({ scene, className }: { scene: Scene3DD
     const en = (n: string, visible = true) => (p[n] && visible ? p[n] : cache);
     const entrees = [
       { el: refs.angle.current, p: en("arc-milieu", arc !== null && !(balaie && lieuCran !== "cercle")), portee: 50, filet: 14, directions: bissectrice(p, lieu ? "M" : etat.sommet) },
-      { el: refs.A.current, p: en("point-A"), portee: 50, filet: 14, directions: DIRECTIONS_FINES },
-      { el: refs.B.current, p: en("point-B"), portee: 50, filet: 14, directions: DIRECTIONS_FINES },
-      { el: refs.C.current, p: en("point-C", !lieu), portee: 50, filet: 14, directions: DIRECTIONS_FINES },
+      { el: refs.A.current, p: en("point-A"), portee: 50, filet: 14, directions: lieu ? DIRECTIONS_FINES : exterieur(p, "A", ["B", "C"]) },
+      { el: refs.B.current, p: en("point-B"), portee: 50, filet: 14, directions: lieu ? DIRECTIONS_FINES : exterieur(p, "B", ["A", "C"]) },
+      { el: refs.C.current, p: en("point-C", !lieu), portee: 50, filet: 14, directions: exterieur(p, "C", ["A", "B"]) },
       { el: refs.M.current, p: en("point-M", lieu), portee: 50, filet: 14, directions: DIRECTIONS_FINES },
       { el: refs.mediatrice.current, p: en("lieu-mediatrice", !!courbes?.mediatrice), portee: 40, directions: DIRECTIONS_FINES },
       { el: refs.droite.current, p: en("lieu-droite", !!courbes?.droite), portee: 40, directions: DIRECTIONS_FINES },
