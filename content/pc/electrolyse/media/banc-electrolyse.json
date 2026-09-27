@@ -32,12 +32,6 @@
         "revele_apres_course": 1,
         "choix": [
           {
-            "id": "se-dissout-anode",
-            "texte": "se **dissout** : c'est maintenant la borne **plus** qui l'alimente, donc l'oxydation s'y produit — elle est devenue l'**anode**",
-            "juste": true,
-            "retour": "Oui, et **retiens le mécanisme, pas le résultat** : la borne **plus** **tire** les électrons hors du métal qu'elle alimente ; une espèce à son contact doit donc en céder — $Zn \\rightleftharpoons Zn^{2+} + 2\\,e^-$, une **oxydation**, donc une **anode**. Le rôle n'est attaché ni au métal, ni au côté du dessin : **il est attaché à la borne**. Et remarque ce qui vient de se passer en plus : dans ce branchement, la cellule évolue dans son **sens spontané** — le générateur ne force plus rien, il accompagne."
-          },
-          {
             "id": "grossit-toujours",
             "texte": "continue de **grossir** : le zinc est la cathode de cette cellule, c'est une propriété du couple, pas du câblage",
             "juste": false,
@@ -50,6 +44,12 @@
             "juste": false,
             "retour": "Le sens est juste, le nom ne l'est pas — et c'est le seul mot de tout le chapitre qui ne change **jamais** de camp : **anode = oxydation, cathode = réduction**, dans une pile comme dans un électrolyseur. Une lame qui se dissout cède des électrons : c'est une oxydation, donc une **anode**. Ce qui s'inverse entre pile et électrolyse, c'est la **polarité** associée à ce nom, jamais le nom lui-même.",
             "misconception": "mc.physics.pc_electrolyse.polarite-comme-pile"
+          },
+          {
+            "id": "se-dissout-anode",
+            "texte": "se **dissout** : c'est maintenant la borne **plus** qui l'alimente, donc l'oxydation s'y produit — elle est devenue l'**anode**",
+            "juste": true,
+            "retour": "Oui, et **retiens le mécanisme, pas le résultat** : la borne **plus** **tire** les électrons hors du métal qu'elle alimente ; une espèce à son contact doit donc en céder — $Zn \\rightleftharpoons Zn^{2+} + 2\\,e^-$, une **oxydation**, donc une **anode**. Le rôle n'est attaché ni au métal, ni au côté du dessin : **il est attaché à la borne**. Et remarque ce qui vient de se passer en plus : dans ce branchement, la cellule évolue dans son **sens spontané** — le générateur ne force plus rien, il accompagne."
           },
           {
             "id": "rien-sous-le-seuil",
@@ -145,12 +145,6 @@
         "revele_apres_course": 1,
         "choix": [
           {
-            "id": "moitie",
-            "texte": "**$0{,}183$ g** — deux fois moins",
-            "juste": true,
-            "retour": "Oui — et la relation est maintenant complète, puisqu'on a fait varier les deux grandeurs. Ce qui décide de la masse, c'est la **quantité d'électricité** qui a traversé la cellule : $$Q = I\\,\\Delta t$$ **le courant multiplié par la durée**, en **coulombs**. Vérifie-le autrement, sans division : $0{,}100 \\times 5\\,400 = 540$ et $0{,}200 \\times 2\\,700 = 540$ — deux réglages, la même charge, et la balance affiche $0{,}183$ gramme dans les deux cas. Les deux contrôles sont ouverts : essaie."
-          },
-          {
             "id": "inchangee",
             "texte": "**$0{,}366$ g** — la même : c'est la tension ($6{,}0$ V) qui décide, et elle n'a pas bougé",
             "juste": false,
@@ -170,6 +164,12 @@
             "juste": false,
             "retour": "Il y a bien un seuil dans cette leçon, et il n'est pas là. **Le seuil du chapitre 4 est sur la TENSION, et il décide du SENS.** Le courant, lui, n'est pas une condition à franchir : c'est un **facteur** de la charge, et il ne décide que de la **cadence**. À $0{,}100$ ampère le dépôt se forme, deux fois plus lentement, et la balance affiche $0{,}183$ gramme. Refais la manipulation et regarde-la monter — plus doucement, mais elle monte.",
             "misconception": "mc.physics.pc_electrolyse.tension-decide-la-quantite"
+          },
+          {
+            "id": "moitie",
+            "texte": "**$0{,}183$ g** — deux fois moins",
+            "juste": true,
+            "retour": "Oui — et la relation est maintenant complète, puisqu'on a fait varier les deux grandeurs. Ce qui décide de la masse, c'est la **quantité d'électricité** qui a traversé la cellule : $$Q = I\\,\\Delta t$$ **le courant multiplié par la durée**, en **coulombs**. Vérifie-le autrement, sans division : $0{,}100 \\times 5\\,400 = 540$ et $0{,}200 \\times 2\\,700 = 540$ — deux réglages, la même charge, et la balance affiche $0{,}183$ gramme dans les deux cas. Les deux contrôles sont ouverts : essaie."
           }
         ]
       },
@@ -204,17 +204,17 @@
         "revele_apres_course": 1,
         "choix": [
           {
-            "id": "deux-par-atome",
-            "texte": "$2{,}239\\times10^{-2}$ mol",
-            "juste": true,
-            "retour": "Oui. La balance donne d'abord les atomes : $n(Zn) = \\dfrac{0{,}732}{65{,}4} = 1{,}119\\times10^{-2}$ mole. Puis la demi-équation donne les électrons : **chaque atome déposé en a consommé DEUX**, donc $n(e^-) = 2\\,n(Zn) = 2{,}239\\times10^{-2}$ mole. Retiens le sens de la flèche : on est parti d'une **pesée**, on a traversé une **demi-équation**, on est arrivé à un **nombre d'électrons** — sans jamais avoir eu besoin de savoir quelle charge ils portent. C'est précisément ce qui rend l'étape suivante possible."
-          },
-          {
             "id": "un-par-atome",
             "texte": "$1{,}119\\times10^{-2}$ mol — autant d'électrons que d'atomes de zinc déposés",
             "juste": false,
             "retour": "C'est le nombre d'**atomes** de zinc, pas celui des électrons : $\\dfrac{0{,}732}{65{,}4} = 1{,}119\\times10^{-2}$ mole. La demi-équation $Zn^{2+} + 2\\,e^- \\rightleftharpoons Zn$ dit qu'il en a fallu **deux** pour chacun d'eux. Il est passé **deux fois plus** d'électrons que d'atomes déposés : $2{,}239\\times10^{-2}$ mole.",
             "misconception": "mc.physics.pc_electrolyse.faraday-stoechiometrie-electronique"
+          },
+          {
+            "id": "deux-par-atome",
+            "texte": "$2{,}239\\times10^{-2}$ mol",
+            "juste": true,
+            "retour": "Oui. La balance donne d'abord les atomes : $n(Zn) = \\dfrac{0{,}732}{65{,}4} = 1{,}119\\times10^{-2}$ mole. Puis la demi-équation donne les électrons : **chaque atome déposé en a consommé DEUX**, donc $n(e^-) = 2\\,n(Zn) = 2{,}239\\times10^{-2}$ mole. Retiens le sens de la flèche : on est parti d'une **pesée**, on a traversé une **demi-équation**, on est arrivé à un **nombre d'électrons** — sans jamais avoir eu besoin de savoir quelle charge ils portent. C'est précisément ce qui rend l'étape suivante possible."
           },
           {
             "id": "moitie",
@@ -260,12 +260,6 @@
         "revele_apres_course": 1,
         "choix": [
           {
-            "id": "rien-ne-bouge",
-            "texte": "**aucun des trois ne bouge d'un chiffre**",
-            "juste": true,
-            "retour": "Oui — et c'est la phrase à emporter de tout ce chapitre. **La tension décide SI la transformation forcée a lieu, et dans quel sens ; à courant maintenu constant, c'est la charge $Q = I\\,\\Delta t$ qui décide de COMBIEN.** Regarde les trois nombres : $2\\,160$ C, $0{,}732$ g sur la balance, et, dans les lectures, le quotient $Q/n(e^-) \\approx 9{,}65\\times10^{4}$ C·mol⁻¹. Ce nombre porte un nom : c'est la **constante de Faraday**, la charge que porte **une mole d'électrons**. Tu viens de la **mesurer** — avec une balance, un chronomètre, un ampèremètre et une demi-équation, et rien d'autre. Elle ne dépend de rien : ni du métal, ni du bain, ni du réglage, ni de la tension. C'est pour cela qu'on peut la tabuler une fois pour toutes, et c'est pour cela qu'elle vaut la même chose dans ton énoncé d'examen et dans ce bécher."
-          },
-          {
             "id": "tout-double",
             "texte": "la charge et la masse **doublent** toutes les deux (deux fois plus de volts, deux fois plus de tout) ; le quotient, lui, ne bouge pas",
             "juste": false,
@@ -278,6 +272,12 @@
             "juste": false,
             "retour": "Suis ta propre phrase jusqu'au bout : si la même charge déposait deux fois plus de zinc, il faudrait que les mêmes électrons aient déposé deux fois plus d'atomes. Il n'y a **rien d'autre** que les électrons pour déposer les atomes, et la demi-équation en demande deux par atome — toujours deux. La balance affiche $0{,}732$ g aux deux tensions, et le quotient ne bouge pas.",
             "misconception": "mc.physics.pc_electrolyse.tension-decide-la-quantite"
+          },
+          {
+            "id": "rien-ne-bouge",
+            "texte": "**aucun des trois ne bouge d'un chiffre**",
+            "juste": true,
+            "retour": "Oui — et c'est la phrase à emporter de tout ce chapitre. **La tension décide SI la transformation forcée a lieu, et dans quel sens ; à courant maintenu constant, c'est la charge $Q = I\\,\\Delta t$ qui décide de COMBIEN.** Regarde les trois nombres : $2\\,160$ C, $0{,}732$ g sur la balance, et, dans les lectures, le quotient $Q/n(e^-) \\approx 9{,}65\\times10^{4}$ C·mol⁻¹. Ce nombre porte un nom : c'est la **constante de Faraday**, la charge que porte **une mole d'électrons**. Tu viens de la **mesurer** — avec une balance, un chronomètre, un ampèremètre et une demi-équation, et rien d'autre. Elle ne dépend de rien : ni du métal, ni du bain, ni du réglage, ni de la tension. C'est pour cela qu'on peut la tabuler une fois pour toutes, et c'est pour cela qu'elle vaut la même chose dans ton énoncé d'examen et dans ce bécher."
           },
           {
             "id": "quotient-varie",

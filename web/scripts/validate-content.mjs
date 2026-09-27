@@ -163,6 +163,15 @@ function fautesScene3d(desc) {
   if (!Array.isArray(desc.etapes) || desc.etapes.length === 0) return ["aucune étape"];
   const vus = new Set();
   const ouverts = new Set();
+  // LE RANG DE LA CLÉ (2026-09-27). Le pari affiche ses choix dans l'ordre du descripteur. Trois
+  // scènes posaient la bonne réponse en PREMIER à toutes leurs étapes (les deux plans complexes, le
+  // banc d'électrolyse) : dès la deuxième étape, l'élève qui clique le premier choix gagne sans rien
+  // savoir — et le verdict d'un pari est ce que la scène retient de lui. `eleve-ruse` garde le banc
+  // d'items ; rien ne gardait les paris des scènes. À partir de trois paris, la clé ne peut pas être
+  // au même rang partout.
+  const rangs = desc.etapes.filter((e) => Array.isArray(e?.pari?.choix)).map((e) => e.pari.choix.findIndex((c) => c?.juste === true));
+  if (rangs.length >= 3 && rangs.every((r) => r === rangs[0]))
+    fautes.push(`la bonne réponse est au MÊME rang (${rangs[0] + 1}) aux ${rangs.length} paris — cliquer toujours le même choix gagne ; varier le rang de la clé`);
   desc.etapes.forEach((e, i) => {
     const ou = `étape ${i + 1}${e?.id ? ` (${e.id})` : ""}`;
     for (const champ of ["id", "titre", "consigne"])
