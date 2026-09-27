@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 290" width="680" height="290"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Charge à courant constant : u_C(t) est une droite passant par l’origine, de pente 0,50 V par seconde, avec le point (8,0 s ; 4,0 V) marqué sur la droite.">
+  <title>Charge à courant constant — u_C(t) est une droite</title>
+  <!--
+    charge-courant-constant.svg — graphe de u_C(t) = (I0/C)·t pour un
+    générateur de COURANT constant chargeant un condensateur C (pas le même
+    circuit que uc-charge.svg : ici pas de résistance R, pas d'exponentielle
+    — la charge est une DROITE passant par l'origine, cf lesson.md "Un
+    circuit différent : la charge à courant constant"). STAGED
+    (LESSON-EXPERIENCE-SPEC §2.5 — un graphe est TOUJOURS staged, axes →
+    données → lecture) :
+      step-1 : le repère — axes t (s) / u_C (V)
+      step-2 : les données — la droite u_C(t) et sa formule
+      step-3 : la lecture — le point relevé (8,0 s ; 4,0 V) et la pente
+
+    Données numériques (texte, "Exemple numérique") : I0 = 2,0 µA,
+      pente = 0,50 V/s, lue entre t=0 et t=8,0 s où u_C atteint 4,0 V
+      (d'où C = I0/pente = 4,0 µF, calculé dans le texte — pas répété ici :
+      cette figure sert la LECTURE de la droite, pas le calcul de C).
+
+    Repère écran (calculé, pas deviné) :
+      origine (t=0, u_C=0) : (80, 208)
+      échelle temporelle    : 50 px/s   → t=10 s en x=580
+      échelle de tension    : 28 px/V   → u_C=5 V en y=68
+
+    Droite tracée de (80,208) à (580,68). Vérification qu'elle passe par le
+    point relevé (8,0 s ; 4,0 V) : x = 80+8×50 = 480 ;
+    y = 208 + (480−80)×(68−208)/(580−80) = 208 + 400×(−140)/500
+      = 208 − 112 = 96 — soit u_C = (208−96)/28 = 4,00 V. Exact, pas
+    positionné à l'œil.
+
+    Rôle des couleurs (cohérent avec uc-charge.svg de cette même leçon) :
+      droite u_C(t) (donnée, "propriété du condensateur")   : --figure-energy-C
+      point relevé, pente, guides (lecture)                  : --figure-accent
+      axes / "0"                                             : --figure-ink-soft
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le repère : axes t (s) / u_C (V)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="330" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Charge à courant constant — u<tspan dy="3" font-size="8.5">C</tspan><tspan dy="-3">(t) est une droite</tspan>
+    </text>
+
+    <!-- Fond du panneau -->
+    <rect x="40" y="32" width="590" height="200" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Axes -->
+    <line x1="80" y1="208" x2="604" y2="208"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="616,208 604,203.5 604,212.5" fill="var(--figure-ink-soft)"/>
+    <line x1="80" y1="208" x2="80" y2="50"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+    <text x="624" y="212" font-size="11" fill="var(--figure-ink-soft)">
+      <tspan font-style="italic">t</tspan><tspan font-size="9"> (s)</tspan>
+    </text>
+    <text x="72" y="54" text-anchor="end" font-size="11" fill="var(--figure-ink-soft)">
+      u<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3" font-size="9"> (V)</tspan>
+    </text>
+    <text x="72" y="212" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — les données : la droite u_C(t) et sa formule
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Boîte formule -->
+    <rect x="260" y="40" width="230" height="32" rx="5"
+          fill="var(--figure-energy-C)" fill-opacity="0.12"/>
+    <text x="375" y="61" text-anchor="middle" font-size="13" font-style="italic"
+          fill="var(--figure-energy-C)">u<tspan
+          dy="4" font-size="9">C</tspan><tspan
+          dy="-4">(t) = (I</tspan><tspan
+          dy="4" font-size="9">0</tspan><tspan
+          dy="-4">/C)·t</tspan>
+    </text>
+
+    <!-- Droite u_C(t), exacte de (80,208) à (580,68) -->
+    <line x1="80" y1="208" x2="580" y2="68"
+          stroke="var(--figure-energy-C)" stroke-width="2.4" stroke-linecap="round"/>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la lecture : le point relevé et la pente
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Guides pointillés vers le point relevé (8,0 s ; 4,0 V) -->
+    <line x1="480" y1="96" x2="480" y2="208"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="80" y1="96" x2="480" y2="96"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+
+    <!-- Repère sur l'axe t, à 8,0 s -->
+    <line x1="480" y1="203" x2="480" y2="213"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="480" y="226" text-anchor="middle" font-size="10.5"
+          fill="var(--figure-accent)">8,0 s</text>
+
+    <!-- Repère sur l'axe u_C, à 4,0 V -->
+    <line x1="75" y1="96" x2="85" y2="96"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="68" y="100" text-anchor="end" font-size="10.5"
+          fill="var(--figure-accent)">4,0 V</text>
+
+    <!-- Point relevé -->
+    <circle cx="480" cy="96" r="3.5" fill="var(--figure-accent)"/>
+
+    <!-- Pente, le long de la droite -->
+    <text x="230" y="166" font-size="11" font-style="italic"
+          fill="var(--figure-accent)" transform="rotate(-15.6 230 166)">
+      pente = 0,50 V/s
+    </text>
+  </g><!-- /step-3 -->
+
+</svg>

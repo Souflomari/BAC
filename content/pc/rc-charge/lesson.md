@@ -52,6 +52,8 @@ En intégrant $i(t) = \dfrac{dq}{dt} = I_0$ à partir d'un condensateur initiale
 
 $$\boxed{u_C(t) = \frac{q(t)}{C} = \frac{I_0}{C}\,t \qquad (\text{générateur de courant : } i \text{ imposé, pas } u)}$$
 
+[[figure:charge-courant-constant]]
+
 *Exemple numérique.* Avec $I_0 = 2{,}0\ \mu\text{A}$, la courbe $u_C(t)$ enregistrée est une droite passant par l'origine, de pente $0{,}50\ \text{V.s}^{-1}$ (lue par exemple entre $t=0$ et $t=8{,}0\ \text{s}$, où $u_C$ atteint $4{,}0\ \text{V}$). On en tire $C$ :
 
 $$C = \frac{I_0}{\text{pente}} = \frac{2{,}0\times10^{-6}}{0{,}50} = 4{,}0\times10^{-6}\ \text{F} = 4{,}0\ \mu\text{F}$$
@@ -311,6 +313,8 @@ Lis cette écriture pour ce qu'elle est : une **fonction affine** de $u_C$. Si l
 De n'importe lequel des trois on remonte à $\tau$, puis à $C$ par $\tau = RC$. La pente est la lecture la plus sûre, parce qu'elle s'appuie sur toute la longueur de la droite au lieu d'un seul point.
 
 *Le piège nommé de cette lecture :* prendre la pente pour $\tau$ au lieu de $-\dfrac{1}{\tau}$, ou en oublier le signe. Le contrôle qui tranche : une pente **positive** décrirait un condensateur qui se charge de plus en plus vite à mesure qu'il se remplit — l'inverse exact du mécanisme établi au chapitre 2.
+
+[[figure:droite-duc-f-uc]]
 
 *Exemple numérique — un circuit différent de celui des chapitres précédents, avec ses propres valeurs.* Une droite $\dfrac{du_C}{dt} = f(u_C)$ relevée sur un graphe donne une ordonnée à l'origine $\dfrac{E}{RC} = 4{,}0\times10^{3}\ \text{V.s}^{-1}$ et une racine — l'intersection avec l'axe des abscisses — $E = 8{,}0\ \text{V}$. Le rapport de ces deux lectures donne $\tau$ directement, sans même passer par la pente :
 

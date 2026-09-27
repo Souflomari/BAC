@@ -262,6 +262,8 @@ Deux lectures suffisent donc à identifier complètement le circuit. Et note ce 
 
 *Le piège nommé de cette lecture :* prendre la pente pour $\tau$ au lieu de $-\dfrac{1}{\tau}$, ou en perdre le signe. Le contrôle qui tranche : une pente **positive** décrirait un courant qui s'établit de plus en plus vite à mesure qu'il monte — l'inverse exact du mécanisme d'inertie électrique du chapitre 2.
 
+[[figure:droite-didt-f-i]]
+
 **Exemple numérique de cette lecture.** Toujours avec $E = 6\ \text{V}$, $R = 60\ \Omega$ et $L = 0{,}3\ \text{H}$ (les chapitres 3 et 4) : sur un graphe $\dfrac{di}{dt} = f(i)$ tracé pour ce même circuit, l'ordonnée à l'origine vaut
 
 $$\left.\frac{di}{dt}\right|_{i=0} = \frac{E}{L} = \frac{6}{0{,}3} = 20\ \text{A/s}$$
@@ -313,6 +315,8 @@ $$\tau' = \frac{L}{R'} = \frac{0{,}3}{210} \approx 1{,}43\times10^{-3}\ \text{s}
 Sur la courbe décroissante $i(t) = I_{max}\,e^{-t/\tau'}$, la tangente à l'origine coupe encore l'axe des temps en $t = \tau'$ — la même propriété géométrique qu'au chapitre 4, appliquée à une courbe qui descend au lieu de monter. Mais la lecture en ordonnée change de valeur : à $t = \tau'$,
 
 $$i(\tau') = I_{max}\,e^{-1} \approx 0{,}37\,I_{max} = 37\ \text{mA}$$
+
+[[figure:rupture-i-decroissante]]
 
 *Le piège à ne pas répéter :* $37\ \%$, pas $63\ \%$. Sur la montée, $\tau$ marque l'instant où l'on a déjà parcouru $63\ \%$ du chemin vers $I_{max}$ ; sur la descente, $\tau'$ marque l'instant où il ne reste que $37\ \%$ du courant initial — le complément, parce que la courbe descend au lieu de monter.
 
