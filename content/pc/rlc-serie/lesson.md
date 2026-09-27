@@ -167,7 +167,7 @@ On pose donc l'hypothèse — c'est une supposition, pas une certitude encore �
 
 $$q(t) = Q_{max} \cos\!\left(\frac{2\pi t}{T_0} + \varphi\right)$$
 
-où $Q_{max}$ est la charge maximale et $\varphi$ est la phase initiale (fixée par les conditions initiales). Maintenant on vérifie que ce cosinus vérifie réellement l'équation, et on en déduit ce que vaut $T_0$.
+où $Q_{max}$ est la charge maximale et $\varphi$ est la phase initiale (fixée par les conditions initiales). Concrètement, comme pour l'oscillateur mécanique du chapitre sur les systèmes oscillants, on détermine $\varphi$ à partir de $i(0)$ et du signe de $\frac{di}{dt}$ à cet instant, qui lève l'ambiguïté entre les deux valeurs de $\varphi$ compatibles avec la même valeur de $\cos$. Maintenant on vérifie que ce cosinus vérifie réellement l'équation, et on en déduit ce que vaut $T_0$.
 
 **Vérification — pas à pas.** Avance chaque transformation toi-même ; à chaque étape, la note te dit pourquoi c'est le bon geste.
 
@@ -341,6 +341,22 @@ $$\boxed{L\frac{d^2q}{dt^2} + R\frac{dq}{dt} + \frac{q}{C} = 0}$$
 
 C'est l'**équation différentielle du circuit RLC amorti**.
 
+### Ce que cette équation dit de l'énergie : retrouver $P = Ri^2$
+
+On a affirmé plus haut, sans le démontrer, que « $R$ dissipe l'énergie » et que « l'énergie totale $E_C + E_L$ diminue à chaque oscillation ». L'équation qu'on vient d'établir suffit à le prouver, en trois étapes.
+
+**Premier temps — multiplier l'équation par $i$.** Avec $i = \frac{dq}{dt}$, l'équation s'écrit $L\frac{di}{dt} + Ri + \frac{q}{C} = 0$. On multiplie chaque terme par $i$ :
+
+$$Li\frac{di}{dt} + Ri^2 + \frac{q\,i}{C} = 0$$
+
+**Deuxième temps — reconnaître deux dérivées.** Le premier terme est la dérivée de $\frac{1}{2}Li^2$, c'est-à-dire de $E_L$ : $Li\frac{di}{dt} = \frac{d}{dt}\!\left(\frac{1}{2}Li^2\right)$. Le troisième terme, avec $q i = q\frac{dq}{dt}$ et $u_C = \frac{q}{C}$, est la dérivée de $\frac{1}{2}Cu_C^2$, c'est-à-dire de $E_C$ : $\frac{qi}{C} = \frac{d}{dt}\!\left(\frac{q^2}{2C}\right) = \frac{d}{dt}\!\left(\frac{1}{2}Cu_C^2\right)$.
+
+**Troisième temps — regrouper.** L'équation devient $\frac{d}{dt}\!\left(\frac{1}{2}Li^2 + \frac{1}{2}Cu_C^2\right) = -Ri^2$, c'est-à-dire :
+
+$$\boxed{\frac{dE_t}{dt} = -R i^2}$$
+
+Puisque $R > 0$ et $i^2 \geq 0$, le membre de droite est négatif ou nul : $E_t$ ne peut que décroître, jamais croître. C'est exactement la puissance $P = Ri^2$ dissipée par effet Joule qu'on avait annoncée — elle n'était pas posée par convention, elle sort directement de l'équation du circuit.
+
 ### Tester la prédiction : le cosinus idéal vérifie-t-il l'équation amortie ?
 
 Voici le calcul qui répond à la question qu'on a posée au début. On prend $q(t) = Q_{max}\cos\!\left(\frac{2\pi t}{T_0} + \varphi\right)$ et on le substitue dans l'équation amortie qu'on vient d'établir. Si la prédiction est juste, tout doit s'annuler.
@@ -424,6 +440,28 @@ Sur la courbe expérimentale, on mesure deux maxima successifs à $t_1 = 3\ \tex
 $$T = 9{,}4 - 3 = 6{,}4\ \text{ms}$$
 
 L'écart avec $T_0 \approx 6{,}28\ \text{ms}$ est d'environ 2 %. L'amortissement est bien faible, l'approximation $T \approx T_0$ est valide.
+
+### Énergie dissipée entre deux instants
+
+On peut lire davantage sur un oscillogramme qu'une simple pseudo-période : on peut chiffrer combien d'énergie R a mangée entre deux instants. Le cas le plus simple, c'est de choisir deux maxima successifs de $u_C$ — parce qu'à un maximum de $u_C$, le courant est nul ($i = 0$), donc toute l'énergie du circuit est électrique à cet instant précis : $E_t = \frac{1}{2}Cu_C^2$, sans terme en $E_L$ à soustraire.
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* entre deux maxima consécutifs, l'amplitude de $u_C$ a diminué — c'est visible sur la courbe. Cette perte d'amplitude correspond à une perte d'énergie, dissipée par effet Joule pendant ce cycle. On la calcule par différence, sans jamais avoir besoin de connaître $R$.
+
+Sur un oscillogramme, on lit deux maxima successifs de $u_C$ : $U_1 = 6{,}0\ \text{V}$, puis $U_2 = 4{,}0\ \text{V}$ au pic suivant, avec $C = 2\ \mu\text{F} = 2\times10^{-6}\ \text{F}$.
+
+Aux deux instants, $i = 0$, donc :
+
+$$E_t(t_1) = \frac{1}{2}CU_1^2 \qquad E_t(t_2) = \frac{1}{2}CU_2^2$$
+
+$$\Delta E = E_t(t_1) - E_t(t_2) = \frac{1}{2}C\left(U_1^2 - U_2^2\right)$$
+
+$$\Delta E = \frac{1}{2}\times 2\times10^{-6}\times\left(6{,}0^2 - 4{,}0^2\right) = 10^{-6}\times(36 - 16) = 10^{-6}\times 20$$
+
+$$\boxed{\Delta E = 2{,}0\times10^{-5}\ \text{J} = 20\ \mu\text{J}}$$
+
+Cette énergie n'a pas disparu du calcul par hasard : c'est exactement ce que R a dissipé par effet Joule pendant ce cycle, la quantité même que la relation $\frac{dE_t}{dt} = -Ri^2$, établie plus haut à partir de l'équation amortie, dit être toujours perdue, jamais gagnée.
+
+Si les deux instants choisis ne sont **pas** des maxima de $u_C$, l'astuce « $i = 0$ » ne s'applique plus : il faut revenir à l'expression complète, $E_t = \frac{1}{2}Cu_C^2 + \frac{1}{2}Li^2$, avec $i$ obtenu en pratique à partir de la tension aux bornes de $R$ lue sur l'oscillogramme, $i = \frac{u_R}{R}$.
 
 [[figure:regimes-uc]]
 

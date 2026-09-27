@@ -118,7 +118,7 @@ Reprends la pile Daniell du chapitre 3. On a établi que $Q_{r,i} < K$, donc le 
 - Le zinc est le siège de l'oxydation : c'est l'**anode**, la **borne** $-$.
 - Le cuivre est le siège de la réduction : c'est la **cathode**, la **borne** $+$.
 
-Un voltmètre branché entre les deux lames, avec sa borne rouge sur le cuivre et sa borne noire sur le zinc, doit donc afficher une valeur positive - c'est bien ce qu'on observe expérimentalement sur une pile Daniell en fonctionnement.
+Un voltmètre branché entre les deux lames, avec sa borne rouge sur le cuivre et sa borne noire sur le zinc, doit donc afficher une valeur positive - c'est bien ce qu'on observe expérimentalement sur une pile Daniell en fonctionnement. On peut aussi retrouver la polarité avec un ampèremètre inséré dans le circuit : la borne $\text{COM}$ posée sur le zinc et l'autre borne sur le cuivre, un affichage positif confirme que le courant conventionnel entre bien par le cuivre - un affichage négatif signalerait des bornes inversées par rapport au sens réel du courant, pas une pile qui fonctionnerait à l'envers.
 
 ### Le schéma conventionnel : écrire une pile en une ligne
 
@@ -241,6 +241,46 @@ $$n(Zn) = \frac{n(e^-)}{2} \approx 5{,}6\times10^{-3}\ \text{mol}$$
 $$m(Zn) = n(Zn) \times M(Zn) \approx 5{,}6\times10^{-3} \times 65{,}4 \approx 0{,}37\ \text{g}$$
 
 En deux heures de fonctionnement à $150\ \text{mA}$, environ $0{,}37\ \text{g}$ de zinc a réellement disparu de la lame - transformé en ions $Zn^{2+}$ dans la solution.
+
+### Combien de temps avant l'épuisement ? Parcourir la chaîne en sens inverse
+
+Jusqu'ici, on est parti du courant pour trouver l'usure. On peut parcourir la même chaîne dans l'autre sens : à partir de la quantité de réactif disponible, trouver la durée MAXIMALE pendant laquelle la pile peut débiter un courant donné, avant que ce réactif ne s'épuise complètement.
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* dans une pile Daniell, ce n'est pas forcément la lame métallique qui s'épuise la première - si elle est surdimensionnée par rapport au volume de solution, c'est l'espèce dissoute qui vient à manquer avant le métal. On suppose ici la lame de zinc surdimensionnée : c'est la quantité d'ions $\text{Cu}^{2+}$ **en solution**, à la cathode, qui limite la durée de vie de la pile - pas la lame elle-même.
+
+Une pile Daniell débite un courant constant $I = 0{,}250\ \text{A}$. Le compartiment cathodique contient $V = 250\ \text{mL} = 0{,}250\ \text{L}$ d'une solution à $[\text{Cu}^{2+}]_i = 0{,}40\ \text{mol/L}$. On cherche la durée maximale $\Delta t_{max}$ avant que tout le $\text{Cu}^{2+}$ ne soit consommé.
+
+**Premier temps - la quantité de réactif limitant disponible.**
+
+$$n(\text{Cu}^{2+})_i = [\text{Cu}^{2+}]_i \times V = 0{,}40 \times 0{,}250 = 0{,}10\ \text{mol}$$
+
+**Deuxième temps - la charge totale que cette quantité peut échanger.** La demi-équation de réduction, $\text{Cu}^{2+} + 2\,e^- \rightleftharpoons \text{Cu}$, montre qu'il faut $z = 2$ électrons pour consommer un seul ion $\text{Cu}^{2+}$ - c'est ce nombre $z$, propre au couple, qu'il ne faut jamais oublier :
+
+$$n(e^-)_{max} = z\,n(\text{Cu}^{2+})_i = 2 \times 0{,}10 = 0{,}20\ \text{mol}$$
+
+$$Q_{max} = n(e^-)_{max}\times F = 0{,}20 \times 9{,}65\times10^{4} \approx 1{,}93\times10^{4}\ \text{C}$$
+
+**Troisième temps - la durée, à courant constant.**
+
+$$\Delta t_{max} = \frac{Q_{max}}{I} = \frac{z\,n(\text{Cu}^{2+})_i\,F}{I} = \frac{1{,}93\times10^{4}}{0{,}250} \approx 7{,}7\times10^{4}\ \text{s} \approx 21\ \text{h}$$
+
+Passé ce délai, il n'y a plus de $\text{Cu}^{2+}$ à réduire à la cathode : la pile s'arrête, quelle que soit la quantité de zinc métallique restante - c'est le réactif en solution, ici, qui commande la limite, pas l'électrode.
+
+**Le piège : oublier $z$.** Si on oublie que chaque ion $\text{Cu}^{2+}$ demande deux électrons - en écrivant $n(e^-)_{max} = n(\text{Cu}^{2+})_i$ au lieu de $2\,n(\text{Cu}^{2+})_i$ - on trouve une durée deux fois trop courte : $\Delta t_{max} \approx 10{,}7\ \text{h}$ au lieu de $21\ \text{h}$. Le nombre $z$ n'est pas un détail qu'on simplifie : c'est lui qui relie une mole de réactif à la charge électrique réelle qu'elle peut échanger.
+
+### De la charge à la concentration : ce qui reste, ce qui s'ajoute
+
+Reprends l'exemple précédent : $Q = 1080\ \text{C}$ a traversé le circuit en deux heures, avec, dans chaque bécher, $V = 500\ \text{mL} = 0{,}500\ \text{L}$ de solution, $[\text{Cu}^{2+}]_i = 0{,}50\ \text{mol/L}$ et $[\text{Zn}^{2+}]_i = 0{,}10\ \text{mol/L}$. La quantité d'ions consommée d'un côté, produite de l'autre, vaut dans les deux cas $\dfrac{Q}{2F}$ - le même calcul que $n(\text{Zn})$ plus haut, puisqu'un zinc oxydé consomme exactement un $\text{Cu}^{2+}$ :
+
+$$\frac{Q}{2F} = \frac{1080}{2\times9{,}65\times10^{4}} \approx 5{,}6\times10^{-3}\ \text{mol}$$
+
+**Le piège :** cette quantité ne remplace pas ce qui était déjà en solution, elle s'y **ajoute** ou s'en **retranche**. Pour l'ion consommé, $\text{Cu}^{2+}$, on retranche :
+
+$$[\text{Cu}^{2+}]_f = \frac{[\text{Cu}^{2+}]_i\cdot V - \dfrac{Q}{2F}}{V} = \frac{0{,}50\times0{,}500 - 5{,}6\times10^{-3}}{0{,}500} \approx 0{,}49\ \text{mol/L}$$
+
+Pour l'ion produit, $\text{Zn}^{2+}$, on ajoute à la quantité initiale, on ne part pas de zéro :
+
+$$[\text{Zn}^{2+}]_f = \frac{[\text{Zn}^{2+}]_i\cdot V + \dfrac{Q}{2F}}{V} = \frac{0{,}10\times0{,}500 + 5{,}6\times10^{-3}}{0{,}500} \approx 0{,}11\ \text{mol/L}$$
 
 ### Teste l'idée avant de la croire : « une pile ne s'use pas tant qu'elle est branchée »
 

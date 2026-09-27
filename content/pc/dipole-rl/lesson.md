@@ -95,6 +95,16 @@ $$\boxed{L\frac{di}{dt} + Ri = E}$$
 
 C'est l'**équation différentielle du dipôle RL** soumis à un échelon de tension $E$.
 
+### Cette même équation, mais en $u_{R_0}$
+
+Un sujet demande parfois cette équation non pas en $i$, mais en $u_{R_0}$, la tension aux bornes du résistor $R_0$ — c'est elle, en pratique, qu'un oscilloscope ou un système d'acquisition enregistre directement, jamais $i$ lui-même. Le passage de l'une à l'autre est un simple changement de variable, par la loi d'Ohm : $i = \dfrac{u_{R_0}}{R_0}$, donc $\dfrac{di}{dt} = \dfrac{1}{R_0}\dfrac{du_{R_0}}{dt}$. En reportant ces deux expressions dans $E = R_0 i + u_{bobine}$ (avec $u_{bobine} = ri + L\dfrac{di}{dt}$ du chapitre 2), puis en multipliant toute l'équation par $R_0$, on obtient l'équation différentielle en $u_{R_0}$ :
+
+$$\frac{du_{R_0}}{dt} + \frac{R}{L}\,u_{R_0} = \frac{R_0 E}{L}$$
+
+(avec $R = R_0 + r$, le regroupement fait plus haut). Son plateau, quand $\dfrac{du_{R_0}}{dt} = 0$, vaut $u_{R_0,\infty} = \dfrac{R_0 E}{R} = \dfrac{R_0 E}{R_0+r}$.
+
+Un sujet écrit souvent cette même équation sous une forme condensée, $\tau\,\dfrac{du_{R_0}}{dt} + u_{R_0} = A$ (avec, comme toujours, $\tau = L/R$) : ne cherche pas à deviner $A$ à l'oreille, identifie-le en comparant terme à terme avec l'équation ci-dessus — ici, $A = u_{R_0,\infty} = \dfrac{R_0 E}{R_0+r}$.
+
 ### Deviner la solution, puis vérifier
 
 Réorganisons l'équation pour voir ce qu'elle dit vraiment :
@@ -165,6 +175,12 @@ Vérifie d'abord que tu distingues bien l'instant de la fermeture du régime per
 
 [[checkpoint:cp-r2-etablissement-permanent]]
 
+**Le sens inverse : retrouver $r$ à partir du palier.** Si $R_0$ et $E$ sont connus mais que $r$ est justement l'inconnue à mesurer, on lit le palier $I_p$ sur l'oscillogramme et on inverse $I_p = \dfrac{E}{R_0+r}$ :
+
+$$r = \frac{E}{I_p} - R_0 = \frac{6}{0{,}1} - 50 = 60 - 50 = 10\ \Omega$$
+
+*Le piège nommé :* écrire $r = E/I_p$ tout court (soit $60\ \Omega$) en oubliant de retrancher $R_0$ — cette valeur brute est la résistance TOTALE $R_0+r$, pas $r$ seule.
+
 Puis assure-toi du rôle de la résistance interne $r$ de la bobine.
 
 [[checkpoint:cp-r2-role-r]]
@@ -234,6 +250,16 @@ Deux lectures suffisent donc à identifier complètement le circuit. Et note ce 
 
 *Le piège nommé de cette lecture :* prendre la pente pour $\tau$ au lieu de $-\dfrac{1}{\tau}$, ou en perdre le signe. Le contrôle qui tranche : une pente **positive** décrirait un courant qui s'établit de plus en plus vite à mesure qu'il monte — l'inverse exact du mécanisme d'inertie électrique du chapitre 2.
 
+**Exemple numérique de cette lecture.** Toujours avec $E = 6\ \text{V}$, $R = 60\ \Omega$ et $L = 0{,}3\ \text{H}$ (les chapitres 3 et 4) : sur un graphe $\dfrac{di}{dt} = f(i)$ tracé pour ce même circuit, l'ordonnée à l'origine vaut
+
+$$\left.\frac{di}{dt}\right|_{i=0} = \frac{E}{L} = \frac{6}{0{,}3} = 20\ \text{A/s}$$
+
+— c'est de là qu'on tirerait $L$ si $E$ était connue et $L$ l'inconnue. La pente de la droite vaut
+
+$$-\frac{R}{L} = -\frac{60}{0{,}3} = -200\ \text{s}^{-1} = -\frac{1}{\tau}$$
+
+conforme à $\tau = 5\ \text{ms}$ déjà trouvé au chapitre 3 ($1/\tau = 1/(5\times10^{-3}) = 200\ \text{s}^{-1}$).
+
 ### La rupture du courant : ce qui se passe quand on OUVRE l'interrupteur
 
 Tout ce qui précède décrit l'**établissement** : on ferme l'interrupteur, le courant monte. Un sujet demande aussi, très souvent, ce qui se passe à la **rupture** — quand on rouvre. C'est le même mécanisme, pris par l'autre bout, et il produit un phénomène spectaculaire qu'il faut savoir expliquer.
@@ -255,6 +281,28 @@ $$i(t) = I_{max}\,e^{-t/\tau'} \qquad\text{avec}\qquad \tau' = \frac{L}{R'}$$
 partant de $I_{max}$ — car **le courant dans la bobine est continu** : sa valeur juste après l'ouverture est exactement celle qu'il avait juste avant. C'est le point qui décide de tout, et c'est encore le chapitre 2.
 
 *Le piège nommé :* écrire $i(0^+) = 0$ « puisqu'on a ouvert l'interrupteur ». Non — c'est le courant dans la **branche du générateur** qui s'annule ; celui de la bobine, lui, ne peut pas sauter, et il vaut encore $I_{max}$ à cet instant. Second piège : réutiliser $\tau = L/(R_0 + r)$ de l'établissement. La maille de rupture n'a pas la même résistance totale que celle de l'établissement, donc pas la même constante de temps.
+
+### Exemple numérique de la rupture
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* on reprend le circuit des chapitres 3 et 4 ($R = 60\ \Omega$, $r = 10\ \Omega$, $L = 0{,}3\ \text{H}$, $I_{max} = 100\ \text{mA}$), et on ouvre l'interrupteur une fois le régime permanent atteint, en le remplaçant par une résistance de secours $R' = 200\ \Omega$.
+
+Par continuité du courant dans la bobine (chapitre 2), $i(0^+) = I_{max} = 100\ \text{mA}$ — encore la valeur d'avant l'ouverture, pas zéro.
+
+La tension aux bornes de $R'$, juste après l'ouverture :
+
+$$u_{R'}(0^+) = R'\,i(0^+) = 200 \times 0{,}100 = 20\ \text{V}$$
+
+Vingt volts, alors que le générateur ne fournissait que $E = 6\ \text{V}$ : sans générateur dans cette maille pour la limiter, la tension née de la décharge de la bobine dépasse largement celle du régime précédent — c'est exactement cette surtension qui produit l'étincelle à l'interrupteur.
+
+La constante de temps de cette maille de secours porte sur sa propre résistance totale, $R' + r$ — pas sur la résistance $R = R_0 + r$ de l'établissement :
+
+$$\tau' = \frac{L}{R'+r} = \frac{0{,}3}{200+10} = \frac{0{,}3}{210} \approx 1{,}43\times10^{-3}\ \text{s} \approx 1{,}43\ \text{ms}$$
+
+Sur la courbe décroissante $i(t) = I_{max}\,e^{-t/\tau'}$, la tangente à l'origine coupe encore l'axe des temps en $t = \tau'$ — la même propriété géométrique qu'au chapitre 4, appliquée à une courbe qui descend au lieu de monter. Mais la lecture en ordonnée change de valeur : à $t = \tau'$,
+
+$$i(\tau') = I_{max}\,e^{-1} \approx 0{,}37\,I_{max} = 37\ \text{mA}$$
+
+*Le piège à ne pas répéter :* $37\ \%$, pas $63\ \%$. Sur la montée, $\tau$ marque l'instant où l'on a déjà parcouru $63\ \%$ du chemin vers $I_{max}$ ; sur la descente, $\tau'$ marque l'instant où il ne reste que $37\ \%$ du courant initial — le complément, parce que la courbe descend au lieu de monter.
 
 [[checkpoint:cp-r3-tau]]
 

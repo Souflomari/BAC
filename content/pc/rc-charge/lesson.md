@@ -72,6 +72,20 @@ $$\boxed{RC\frac{du_C}{dt} + u_C = E}$$
 
 C'est l'équation différentielle du dipôle RC soumis à un échelon de tension $E$. Elle ne dit rien de plus que le mécanisme construit plus haut — elle le dit juste précisément, à chaque instant : divise toute l'équation par $RC$, et tu retrouves exactement $\dfrac{du_C}{dt} = \dfrac{E-u_C}{RC}$, la même idée qu'avant, avec $u_C$ à la place de $i$ — la vitesse à laquelle $u_C$ monte est proportionnelle à ce qu'il reste de tension disponible.
 
+### La même équation, vue par $i(t)$ et par $u_R(t)$
+
+Un énoncé demande parfois l'équation différentielle pour $i(t)$ ou pour $u_R(t)$ plutôt que pour $u_C(t)$ — c'est le geste qu'introduit un « Montrer que… ». Le principe : la loi des mailles est vraie à chaque instant, donc on a le droit de la dériver par rapport au temps ; $E$ étant constant, sa dérivée s'efface.
+
+À partir de $E = Ri + u_C$ et de $\dfrac{du_C}{dt} = \dfrac{i}{C}$, dériver la maille donne $0 = R\dfrac{di}{dt} + \dfrac{i}{C}$, soit
+
+$$\boxed{i + RC\frac{di}{dt} = 0}$$
+
+Et comme $u_R = Ri$, donc $i = \dfrac{u_R}{R}$, le même geste donne, pour la tension du conducteur ohmique :
+
+$$\boxed{\frac{du_R}{dt} + \frac{u_R}{RC} = 0}$$
+
+Ni l'une ni l'autre n'a de second membre : dériver $E$ l'efface. C'est cohérent avec le mécanisme — $i$ et $u_R$ tendent vers zéro en régime permanent, alors que $u_C$ tend vers $E$.
+
 ### L'intuition de $\tau = RC$ — un temps caractéristique, pas encore une formule résolue
 
 Le groupement $RC$ qui multiplie $\dfrac{du_C}{dt}$ n'est pas arbitraire — il porte un nom, la constante de temps, notée $\tau = RC$. Avant de résoudre quoi que ce soit, on peut déjà sentir ce qu'elle représente.
@@ -210,6 +224,28 @@ $$i(\tau) = \frac{E}{R}\,e^{-1} \approx 10 \times 0{,}37 = 3{,}7\ \text{mA}$$
 
 La charge est pratiquement terminée à $t \approx 5\tau = 5{,}0\ \text{ms}$ : à cet instant $u_C \approx 10\ \text{V}$ et $i \approx 0$. On garde ces valeurs — $\tau = 1{,}0\ \text{ms}$, $i(0^+) = 10\ \text{mA}$ — elles reviennent dans les chapitres suivants.
 
+### Un circuit différent : la charge à courant constant
+
+Attention à ne pas mélanger ce cas avec tout ce qui précède : un générateur idéal de **courant** impose un courant $I_0$ constant dans toute la boucle, quelle que soit $u_C$. Le courant ne ralentit jamais comme dans le mécanisme du chapitre 2 — donc $u_C(t)$ n'est **pas** une exponentielle, c'est une **droite**, et $E$ n'intervient même pas.
+
+En intégrant $i(t) = \dfrac{dq}{dt} = I_0$ à partir d'un condensateur initialement déchargé, $q(t) = I_0 t$, donc
+
+$$\boxed{u_C(t) = \frac{q(t)}{C} = \frac{I_0}{C}\,t}$$
+
+*Exemple numérique.* Avec $I_0 = 2{,}0\ \mu\text{A}$, la courbe $u_C(t)$ enregistrée est une droite passant par l'origine, de pente $0{,}50\ \text{V.s}^{-1}$ (lue par exemple entre $t=0$ et $t=8{,}0\ \text{s}$, où $u_C$ atteint $4{,}0\ \text{V}$). On en tire $C$ :
+
+$$C = \frac{I_0}{\text{pente}} = \frac{2{,}0\times10^{-6}}{0{,}50} = 4{,}0\times10^{-6}\ \text{F} = 4{,}0\ \mu\text{F}$$
+
+### Le temps pour atteindre un seuil
+
+Un sujet pose parfois une contrainte différente : non pas suivre $u_C(t)$ indéfiniment, mais trouver la date $t_S$ où elle atteint un seuil $U_S$ imposé — celle où un composant électronique bascule, par exemple une minuterie d'escalier qui s'éteint dès que $u_C$ dépasse $U_S$. On repart de la solution établie plus haut et on isole $t_S$ ; c'est le même geste qu'en décroissance radioactive, où l'on inverse $N(t)$ avec un $\ln$ pour dater un instant.
+
+$$E\left(1-e^{-t_S/\tau}\right) = U_S \implies e^{-t_S/\tau} = \frac{E-U_S}{E} \implies \boxed{t_S = \tau\,\ln\!\left(\frac{E}{E-U_S}\right)}$$
+
+*Exemple.* Une minuterie de cage d'escalier utilise $E = 12\ \text{V}$, $\tau = 20\ \text{s}$, et s'éteint dès que $u_C$ dépasse $U_S = 9{,}0\ \text{V}$ :
+
+$$t_S = 20\times\ln\!\left(\frac{12}{12-9{,}0}\right) = 20\times\ln(4{,}0) \approx 20\times1{,}386 = 27{,}7\ \text{s}$$
+
 ---
 
 ## R3 — Lire et mesurer $\tau$ sur un oscillogramme
@@ -264,6 +300,16 @@ De n'importe lequel des trois on remonte à $\tau$, puis à $C$ par $\tau = RC$.
 
 *Le piège nommé de cette lecture :* prendre la pente pour $\tau$ au lieu de $-\dfrac{1}{\tau}$, ou en oublier le signe. Le contrôle qui tranche : une pente **positive** décrirait un condensateur qui se charge de plus en plus vite à mesure qu'il se remplit — l'inverse exact du mécanisme établi au chapitre 2.
 
+*Exemple numérique.* Une droite $\dfrac{du_C}{dt} = f(u_C)$ relevée sur un graphe donne une ordonnée à l'origine $\dfrac{E}{RC} = 4{,}0\times10^{3}\ \text{V.s}^{-1}$ et une racine — l'intersection avec l'axe des abscisses — $E = 8{,}0\ \text{V}$. Le rapport de ces deux lectures donne $\tau$ directement, sans même passer par la pente :
+
+$$\tau = \frac{\text{racine}}{\text{ordonnée à l'origine}} = \frac{8{,}0}{4{,}0\times10^{3}} = 2{,}0\times10^{-3}\ \text{s} = 2{,}0\ \text{ms}$$
+
+Avec $R = 4{,}0\ \text{k}\Omega$ donné dans l'énoncé, on isole $C$ dans $\tau = RC$ :
+
+$$C = \frac{\tau}{R} = \frac{2{,}0\times10^{-3}}{4{,}0\times10^{3}} = 0{,}50\times10^{-6}\ \text{F} = 0{,}50\ \mu\text{F}$$
+
+Recoupement : la pente $-1/\tau$ vaut $-500\ \text{s}^{-1}$, et c'est aussi $-(\text{ordonnée à l'origine})/(\text{racine}) = -4{,}0\times10^{3}/8{,}0 = -500\ \text{s}^{-1}$ — les deux lectures concordent.
+
 ### Deux condensateurs en parallèle : une seule capacité équivalente
 
 Un montage d'examen remplace parfois le condensateur unique par **deux condensateurs en parallèle**, de capacités $C_1$ et $C_2$. Rien de ce qui précède ne change, à une substitution près : deux condensateurs en parallèle sont soumis à la **même tension**, et leurs charges s'ajoutent, donc leurs capacités aussi —
@@ -317,6 +363,8 @@ Le courant s'en déduit, $i = C\dfrac{du_C}{dt}$ :
 $$i(t) = -\frac{E}{R}\,e^{-t/\tau}$$
 
 Il est **négatif** : le courant circule maintenant dans le sens inverse de la charge — le condensateur se vide au lieu de se remplir. Sa constante de temps est la même, $\tau = RC$ : la décharge est pratiquement complète au bout de $\approx 5\tau$, et l'énergie $\frac{1}{2}CE^2$ qui était stockée finit entièrement dissipée par effet Joule dans $R$. Charge et décharge sont les deux faces du même temps caractéristique.
+
+Sur une courbe qui décroît, la lecture graphique de $\tau$ du chapitre 4 se retourne : la tangente en $t=0$ ne rencontre plus une asymptote horizontale au-dessus, elle coupe l'**axe des temps** exactement en $t=\tau$ — même démonstration, une pente qui part de $E/\tau$ en valeur absolue mais qui descend au lieu de monter. Le repère change de valeur aussi : à $t=\tau$ il ne reste que $37\,\%$ de la tension de départ, $u_C(\tau) = E\,e^{-1}\approx 0{,}37\,E$ — pas $63\,\%$, qui serait la part déjà perdue. Avec le circuit du chapitre 3 ($E=10\ \text{V}$, $\tau=1{,}0\ \text{ms}$) : $u_C(1{,}0\ \text{ms}) \approx 0{,}37\times10 = 3{,}7\ \text{V}$. La même lecture s'applique à $i(t)$ ou $u_R(t)$ à la décharge, tous deux proportionnels à $e^{-t/\tau}$.
 
 Vérifie tout ça par toi-même, en manipulation directe : construis le montage, charge le condensateur, double $R$ (ou $C$) et regarde $\tau$ doubler à son tour sans que la hauteur finale $E$ ne bouge — puis retire le générateur pour observer la décharge.
 

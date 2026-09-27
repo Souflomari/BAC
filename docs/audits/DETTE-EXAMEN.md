@@ -90,7 +90,7 @@ charge à courant constant (GAP-A) · les deux autres sens de la chaîne de Fara
 | **B1** | nombres-complexes-1 (second degré, Viète) · dérivabilité (branches paraboliques, réciproque, demi-tangente) · suites (contraction, suites implicites, homographiques) · calcul intégral ($u'/u$, $u'/u^2$, $F(x)=\int_a^x f$) | **payé** — vague 1 (pédagogie + fidélité) appliquée, `6144d9de` → `fa925179` ; DECISIONS-EN-ATTENTE §32 |
 | **B2** | exponentielle + logarithme (limites de référence en taux) · géométrie (projeté $H$) · arithmétique (Fermat, R6b) · structures (transport — prose `d3663bda`) | **payé** (`62111cb4`, `76868e70`, `14f986bd`, items `7c1b4177`) ; vague 1 (pédagogie + fidélité) appliquée : `7b344280`, `9cb727ce`, `fe8f9696`, `0343a9ca`, `219ca862`, `9ad23386` ; DECISIONS-EN-ATTENTE §32 |
 | — | arithmétique : **systèmes de numération** (capacités SM 2.1.4–2.1.6) | **lacune hors audit** — aucun chapitre, aucun item, aucune annale ; §32 |
-| **C** | dipôle RL (R1–R4) · charge RC (A1, A2, B1–B4) · RLC série (B1–B4) · piles (B1–B3) | **en cours** — prose et items par des auteurs distincts |
+| **C** | dipôle RL (R1–R4) · charge RC (A1, A2, B1–B4) · RLC série (B1–B4) · piles (B1–B3) | **payé** — prose et items par des auteurs distincts (RL-24…27, RC-28…34, RLC-M2-4/5, RLC-M6-4, RLC-M7-5/6, PILES-25…28) ; vague 1 (pédagogie + fidélité) non encore commandée |
 | D et suivantes | le reste des trois rapports | **dette écrite** |
 
 *La règle de reprise* : un trou GAP-B « travaillé mais jamais testé » se paie par un item, sans

@@ -1668,6 +1668,441 @@ items:
       deux régimes.
 
 # ──────────────────────────────────────────────────────────────────────────────
+# EXAM-DEBT PASS (docs/audits/dette-examen/pc-2.md §5 rc-charge, findings
+# B1/A1/A2/B2/B3/B4). RC-28..RC-34 close the 6 lesson-technique gaps the audit
+# found untested. Own numbers throughout (none reused from the cited bank
+# entries — checked against bank.yaml L461-568 / L1140-1183 / L1385-1413 /
+# L1695-1923 before writing). Each `rung` names the lesson section that
+# demonstrates (or, per the audit, will demonstrate) the gesture:
+#   RC-28, RC-30, RC-31 -> R1 (mesh-law ED and its q/i variants; the
+#     constant-current contrast case sits right after R1's "débit constant"
+#     refutation, as the genuine circuit where that behaviour IS true)
+#   RC-29, RC-34        -> R2 (posing/injecting the solution; inverting it
+#     for a threshold time is the direct algebraic extension of that method)
+#   RC-33               -> R3 (the du_C/dt = f(u_C) line is already taught
+#     there, at "Une troisième lecture", just never tested until now)
+#   RC-32               -> R4 (the audit's own minimal fix: one sentence and
+#     one numerical reading added to "Et si on décharge ?")
+#
+# Misconception-reuse note (house rule: a new id only if it can reach >= 3
+# items on its own). None of these 7 gestures has 3 items of its own, so no
+# new ids were added. Every distractor below reuses whichever of the 8
+# existing ids is the closest physical or algebraic match:
+#   - charge-a-debit-constant: reused whenever the wrong path implies a
+#     LINEAR/constant-rate relationship where the true one is exponential or
+#     RC-coupled (dropping the q/C or u_C term from an ED; assuming di/dt=0;
+#     assuming t_S is proportional to U_S instead of logarithmic). This is a
+#     precise fit, not a stretch — it is the same "verre au robinet" model,
+#     just met in a new gesture.
+#   - tau-mauvais-groupement: reused for pure algebra/grouping slips around
+#     R, C, RC, 1/RC, signs, or units inside a new formula (wrong sign in an
+#     ED; alpha = RC instead of 1/RC; slope mistaken for tau itself; a
+#     forgotten mu-prefix; the wrong ratio inside a ln). Its own description
+#     ("mauvaise expression/unité... groupement") already covers this family
+#     beyond the original tau=RC context.
+#   - tau-instant-d-arret: reused for "wrong belief about what state the
+#     system is in at t = tau" on the DISCHARGE branch (mistaking the
+#     tangent-axis crossing for the real curve reaching 0; importing the
+#     50% demi-vie convention) and for treating tau as the universal answer
+#     to "when is U_S reached" regardless of U_S.
+# ──────────────────────────────────────────────────────────────────────────────
+
+  - id: RC-28
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_rc_charge
+    tags: []
+    primary_misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
+    stem: >
+      On a établi que $u_C(t)$ vérifie l'équation différentielle
+      $RC\,\dfrac{du_C}{dt} + u_C = E$ pendant la charge d'un dipôle RC.
+      Sachant que $q = Cu_C$, quelle équation différentielle vérifie la
+      charge $q(t)$ pendant cette même charge ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$R\\,\\dfrac{dq}{dt} + \\dfrac{q}{C} = E$"
+        correct: true
+      - id: B
+        text: "$R\\,\\dfrac{dq}{dt} - \\dfrac{q}{C} = E$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+        feedback: >
+          Un signe inversé romprait la vérification : en substituant la
+          solution connue $q(t)=CE(1-e^{-t/RC})$ dans ce membre de gauche, le
+          terme exponentiel ne s'annulerait plus. C'est le même mauvais
+          groupement des constantes $R$ et $C$ que confondre $RC$ et $R/C$
+          pour $\tau$.
+      - id: C
+        text: "$\\dfrac{1}{RC}\\,\\dfrac{dq}{dt} + \\dfrac{q}{C} = E$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+        feedback: >
+          Le coefficient devant $dq/dt$ doit être $R$, pas $1/(RC)$ : en
+          substituant $u_C=q/C$ dans $RC\,du_C/dt+u_C=E$, le facteur $C$ se
+          simplifie pour donner $R$, pas son inverse — un mauvais groupement
+          de $R$ et $C$, comme celui qui confond $RC$ et $R/C$ pour $\tau$.
+      - id: D
+        text: "$R\\,\\dfrac{dq}{dt} = E$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
+        feedback: >
+          Sans le terme $q/C$, cette équation donne $dq/dt = E/R$ constant :
+          une charge qui se dépose à débit rigoureusement constant, le modèle
+          du verre qu'on remplit au robinet, réfuté au chapitre 2 — il se
+          contredit à l'instant où $u_C=E$.
+    correct_feedback: >
+      En substituant $u_C=q/C$ dans $RC\,du_C/dt+u_C=E$, le facteur $C$ se
+      simplifie et il reste $R\,dq/dt+q/C=E$ : la même équation, réécrite en
+      $q$.
+    solution: |
+      On repart de RC du_C/dt + u_C = E (chapitre 2), et on remplace u_C par
+      q/C : RC * d(q/C)/dt + q/C = E, soit RC*(1/C)*dq/dt + q/C = E. Le
+      facteur C se simplifie dans RC*(1/C) = R, ce qui donne :
+      R dq/dt + q/C = E.
+      Vérification par les dimensions : [R dq/dt] = Ω × A = V, et [q/C] = V
+      (definition de C) : les deux termes s'ajoutent bien en volts, comme E.
+
+  - id: RC-29
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_rc_charge
+    tags: []
+    primary_misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+    stem: >
+      On pose comme solution candidate de l'équation
+      $RC\,\dfrac{du_C}{dt}+u_C=E$ la fonction
+      $u_C(t) = A\left(1-e^{-\alpha t}\right)$, avec $A$ et $\alpha$ des
+      constantes à déterminer. En injectant cette expression dans l'équation,
+      et en imposant qu'elle soit vérifiée à chaque instant, quelles valeurs
+      faut-il donner à $A$ et à $\alpha$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$A=E,\\ \\alpha=\\dfrac{1}{RC}$"
+        correct: true
+      - id: B
+        text: "$A=E,\\ \\alpha=RC$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+        feedback: >
+          En injectant, le terme exponentiel ne s'annule que si
+          $RC\,\alpha=1$, donc $\alpha=1/(RC)$ — pas $RC$. C'est confondre
+          $\tau=RC$ avec son inverse, le même mauvais groupement qui mène à
+          écrire $\tau=R/C$.
+      - id: C
+        text: "$A=RC\\,E,\\ \\alpha=\\dfrac{1}{RC}$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+        feedback: >
+          La condition sur le terme constant donne directement $A=E$, sans
+          facteur $RC$ : le multiplier ici est un mauvais groupement, qui
+          déplace un facteur du terme en $\alpha$ vers le terme en $A$.
+      - id: D
+        text: "$A=E,\\ \\alpha=\\dfrac{1}{2RC}$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+        feedback: >
+          L'annulation du terme exponentiel impose $RC\,\alpha=1$ exactement,
+          donc $\alpha=1/(RC)$ — sans facteur $2$. Ce facteur ne vient
+          d'aucune étape du calcul.
+    correct_feedback: >
+      L'injection donne $A + (RC\,A\,\alpha - A)e^{-\alpha t} = E$ pour tout
+      $t$ : le terme constant impose $A=E$, et l'annulation du terme
+      exponentiel impose $RC\,\alpha=1$, soit $\alpha=1/(RC)$.
+    solution: |
+      u_C(t) = A(1 - e^-(alpha t)), donc du_C/dt = A alpha e^-(alpha t).
+      Substitution dans RC du_C/dt + u_C = E :
+      RC A alpha e^-(alpha t) + A(1 - e^-(alpha t)) = E
+      A + (RC A alpha - A) e^-(alpha t) = E.
+      Pour que ceci soit vrai a CHAQUE instant t, il faut deux conditions
+      independantes du temps :
+      - le terme constant : A = E
+      - le coefficient de l'exponentielle nul : RC A alpha - A = 0, soit (A
+        non nul) RC alpha = 1, donc alpha = 1/(RC).
+      On retrouve A = E et alpha = 1/tau, avec tau = RC.
+
+  - id: RC-30
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_rc_charge
+    tags: []
+    primary_misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
+    stem: >
+      La loi des mailles s'écrit $E=Ri+u_C$, avec $E$ constant. En dérivant
+      cette relation par rapport au temps, puis en remplaçant $du_C/dt$ par
+      $i/C$ (car $i=C\,du_C/dt$), quelle équation différentielle obtient-on
+      pour $i(t)$ pendant la charge ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$RC\\,\\dfrac{di}{dt} + i = 0$"
+        correct: true
+      - id: B
+        text: "$RC\\,\\dfrac{di}{dt} - i = 0$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+        feedback: >
+          Ce signe inversé donnerait, une fois résolue, un courant qui croît
+          sans limite au lieu de décroître vers $0$ : un mauvais groupement
+          de signe, comme celui qui romprait la vérification de l'équation en
+          $q$.
+      - id: C
+        text: "$\\dfrac{di}{dt} = 0$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
+        feedback: >
+          Cette équation affirme que $i$ ne change à aucun instant de la
+          charge — le modèle du débit constant, déjà réfuté au chapitre 2 :
+          à l'instant où $u_C=E$, la loi des mailles impose $i=0$,
+          incompatible avec un courant resté constant.
+      - id: D
+        text: "$RC\\,\\dfrac{di}{dt} + \\dfrac{i}{RC} = 0$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+        feedback: >
+          Le terme en $i$ ne se divise pas une seconde fois par $RC$ : la
+          dérivation directe donne $R\,di/dt + i/C = 0$, et en multipliant
+          par $C$, $RC\,di/dt + i = 0$ — pas de facteur $1/(RC)$
+          supplémentaire sur $i$.
+    correct_feedback: >
+      En dérivant $E=Ri+u_C$ ($E$ constant) : $0 = R\,di/dt + du_C/dt$. Avec
+      $du_C/dt=i/C$ : $0 = R\,di/dt + i/C$, soit, en multipliant par $C$ :
+      $RC\,di/dt + i = 0$.
+    solution: |
+      E = Ri + u_C, E constant. On dérive membre a membre par rapport a t (la
+      maille est vraie a chaque instant, donc les deux membres ont des
+      dérivées égales) :
+      dE/dt = R di/dt + du_C/dt
+      0 = R di/dt + du_C/dt (E constant, dérivée nulle).
+      On remplace du_C/dt par i/C (de i = dq/dt et q = Cu_C, chapitre 2) :
+      0 = R di/dt + i/C.
+      On multiplie par C : RC di/dt + i = 0.
+
+  - id: RC-31
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_rc_charge
+    tags: []
+    primary_misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+    stem: >
+      Un générateur de courant idéal, délivrant un courant constant
+      $I_0 = 2{,}0\ \mu\text{A}$, charge un condensateur de capacité $C$
+      initialement déchargé, sans résistance pour limiter ce courant — à la
+      différence du dipôle RC habituel. On enregistre $u_C(t)$ : c'est une
+      droite de pente $500\ \text{V/s}$. Que vaut $C$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$C = I_0/\\text{pente} = 2{,}0\\times10^{-6}/500 = 4{,}0\\times10^{-9}\\ \\text{F}$"
+        correct: true
+      - id: B
+        text: "$C = \\text{pente}\\times I_0 = 500\\times2{,}0\\times10^{-6} = 1{,}0\\times10^{-3}\\ \\text{F}$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+        feedback: >
+          C'est l'inverse de la bonne opération : la pente vaut $I_0/C$,
+          donc $C$ s'obtient en divisant $I_0$ par la pente, pas en les
+          multipliant — le même type de rapport inversé que confondre $RC$
+          et $R/C$.
+      - id: C
+        text: "$C = I_0/\\text{pente} = 2{,}0/500 = 4{,}0\\times10^{-3}\\ \\text{F}$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+        feedback: >
+          $I_0=2{,}0\ \mu\text{A}=2{,}0\times10^{-6}\ \text{A}$ : reprendre
+          directement $2{,}0$ sans ce préfixe fausse le résultat d'un facteur
+          $10^6$ — une erreur d'unité de la même famille que confondre
+          secondes et millisecondes pour $\tau$.
+      - id: D
+        text: "$C = 1/\\text{pente} = 1/500 = 2{,}0\\times10^{-3}\\ \\text{F}$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+        feedback: >
+          La pente d'une droite $u_C=(I_0/C)\,t$ vaut $I_0/C$, pas $1/C$ :
+          oublier $I_0$ dans ce rapport revient au même type de groupement
+          manquant que $\tau=RC$ (et non $\tau=C$ seul).
+    correct_feedback: >
+      $u_C(t)=I_0t/C$ est une droite passant par l'origine, de pente
+      $I_0/C$ : on isole $C=I_0/\text{pente}$.
+    solution: |
+      Le générateur idéal de courant impose i(t) = I0 constant dans toute la
+      boucle (pas de résistance pour le limiter). En intégrant, avec
+      q(0)=0 : q(t) = I0 t. Donc u_C(t) = q(t)/C = (I0/C) t : une droite
+      passant par l'origine, de pente I0/C.
+      On isole C = I0/pente = 2,0e-6 / 500 = 4,0e-9 F = 4,0 nF.
+
+  - id: RC-32
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_rc_charge
+    tags: []
+    primary_misconception: mc.physics.pc_rc_charge.tau-instant-d-arret
+    stem: >
+      On décharge un condensateur initialement chargé sous
+      $U_0 = 8{,}0\ \text{V}$ dans une résistance $R$ (générateur retiré,
+      tension $u_C(t)$ décroissante). La tangente à cette courbe tracée à
+      $t=0$ coupe l'axe des temps (asymptote $u_C=0$) à l'instant
+      $t=12\ \text{ms}$. Que valent $\tau$ et la valeur réelle de $u_C$ à cet
+      instant ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\tau = 12\\ \\text{ms}$, $u_C(\\tau) \\approx 3{,}0\\ \\text{V}$"
+        correct: true
+      - id: B
+        text: "$\\tau = 12\\ \\text{ms}$, $u_C(\\tau) = 0\\ \\text{V}$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-instant-d-arret
+        feedback: >
+          La tangente touche l'axe des temps en $t=\tau$, mais la courbe
+          réelle, elle, n'a pas encore rejoint cet axe à cet instant : c'est
+          l'instant où la décharge se termine (pratiquement, vers
+          $t\approx5\tau$) qu'on confond ici avec $\tau$, comme si $\tau$
+          marquait la fin du phénomène.
+      - id: C
+        text: "$\\tau = 12\\ \\text{ms}$, $u_C(\\tau) \\approx 5{,}0\\ \\text{V}$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+        feedback: >
+          Le seuil des $63\ \%$ est celui de la montée (charge),
+          $u_C(\tau)=E(1-e^{-1})$. Sur une courbe qui décroît, c'est l'autre
+          seuil qui s'applique, $u_C(\tau)=U_0e^{-1}\approx0{,}37\,U_0$, pas
+          $0{,}63\,U_0$.
+      - id: D
+        text: "$\\tau = 12\\ \\text{ms}$, $u_C(\\tau) \\approx 4{,}0\\ \\text{V}$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-instant-d-arret
+        feedback: >
+          Cette moitié correspond à une convention de demi-vie (utilisée en
+          décroissance radioactive), pas à la constante de temps d'un dipôle
+          RC : à $t=\tau$, il reste $37\ \%$ de $U_0$, pas $50\ \%$.
+    correct_feedback: >
+      La tangente à l'origine coupe l'axe des temps en $t=\tau$ par
+      construction (même propriété qu'à la charge, adaptée à l'asymptote
+      $u_C=0$) : $\tau=12\ \text{ms}$. Mais la courbe réelle, à cet instant,
+      vaut encore $U_0e^{-1}\approx0{,}37\times8{,}0=3{,}0\ \text{V}$ — la
+      tangente touche l'axe, la courbe pas encore.
+    solution: |
+      Décharge : u_C(t) = U0 e^-(t/tau). La pente à l'origine vaut -U0/tau ;
+      une droite partant de U0 avec cette pente atteint 0 après une durée
+      U0/(U0/tau) = tau. La tangente à l'origine coupe donc l'axe des temps
+      en t = tau, ici 12 ms.
+      Mais la courbe réelle vaut, à ce même instant :
+      u_C(tau) = U0 e^-1 = 8,0 × 0,3679 = 2,94 V ≈ 3,0 V (avec l'arrondi
+      usuel e^-1 ≈ 0,37).
+      La tangente (une construction géométrique) atteint 0 en t = tau ; la
+      courbe (le phénomène réel) n'y est pas encore — il lui reste encore
+      37 % du chemin.
+
+  - id: RC-33
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_rc_charge
+    tags: []
+    primary_misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+    stem: >
+      Pendant la charge d'un dipôle RC, on porte $\dfrac{du_C}{dt}$ en
+      fonction de $u_C$ sur un graphe expérimental : la droite obtenue coupe
+      l'axe des ordonnées (en $u_C=0$) à $2000\ \text{V/s}$, et l'axe des
+      abscisses (là où $\dfrac{du_C}{dt}=0$) à $u_C = 10\ \text{V}$. Sachant
+      $R = 2{,}0\ \text{k}\Omega$, que vaut $C$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\tau=5{,}0\\times10^{-3}\\ \\text{s}\\Rightarrow C=2{,}5\\times10^{-6}\\ \\text{F}$"
+        correct: true
+      - id: B
+        text: "$\\tau=5{,}0\\times10^{-3}\\ \\text{s}\\Rightarrow C=5{,}0\\times10^{-3}\\ \\text{F}$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+        feedback: >
+          $C=\tau$ confond une durée avec une capacité : il manque la
+          division par $R$ dans $\tau=RC$, le même groupement manquant que
+          si l'on écrivait $\tau=C$ seul.
+      - id: C
+        text: "$\\tau=2{,}0\\times10^{2}\\ \\text{s}\\Rightarrow C=1{,}0\\times10^{-1}\\ \\text{F}$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+        feedback: >
+          La pente de la droite vaut $-1/\tau$, pas $\tau$ directement :
+          reprendre sa valeur numérique comme si c'était $\tau$ (sans
+          l'inverser) donne ici une valeur bien supérieure à celle que
+          donnent, ensemble, l'ordonnée à l'origine et la racine.
+      - id: D
+        text: "$\\tau=5{,}0\\times10^{-4}\\ \\text{s}\\Rightarrow C=2{,}5\\times10^{-7}\\ \\text{F}$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+        feedback: >
+          L'ordonnée à l'origine vaut $E/(RC)$, pas $1/(RC)$ seul : il manque
+          le facteur $E$ (ici $10\ \text{V}$, lu à la racine) dans ce
+          rapport.
+    correct_feedback: >
+      La racine donne $E=10\ \text{V}$ ; l'ordonnée à l'origine donne
+      $E/(RC)=2000\ \text{V/s}$. On combine : $RC=E/2000=5{,}0\times10^{-3}\
+      \text{s}$, puis $C=RC/R=2{,}5\times10^{-6}\ \text{F}$.
+    solution: |
+      La droite est du_C/dt = E/(RC) - (1/(RC)) u_C (chapitre 4).
+      Racine (du_C/dt = 0) : u_C = E, donc E = 10 V.
+      Ordonnée à l'origine (u_C = 0) : E/(RC) = 2000 V/s.
+      On en déduit RC = E / 2000 = 10 / 2000 = 5,0e-3 s.
+      Puis C = RC / R = 5,0e-3 / 2000 = 2,5e-6 F = 2,5 µF.
+
+  - id: RC-34
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: pc_rc_charge
+    tags: []
+    primary_misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
+    stem: >
+      Un montage électronique à seuil charge un condensateur sous
+      $E = 9{,}0\ \text{V}$ à travers une résistance, avec une constante de
+      temps $\tau = 2{,}0\ \text{ms}$. Un relais se déclenche dès que $u_C$
+      atteint $U_S = 6{,}0\ \text{V}$. À quel instant $t_S$ ce seuil est-il
+      atteint ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$t_S=\\tau\\ln\\!\\big(E/(E-U_S)\\big)\\approx2{,}2\\ \\text{ms}$"
+        correct: true
+      - id: B
+        text: "$t_S=\\tau\\ln\\!\\big(U_S/E\\big)\\approx0{,}81\\ \\text{ms}$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
+        feedback: >
+          L'inversion de $E(1-e^{-t/\tau})=U_S$ donne
+          $e^{-t/\tau}=(E-U_S)/E$, pas $U_S/E$ : c'est ce rapport-là qu'il
+          faut passer au logarithme, pas son inverse mal groupé.
+      - id: C
+        text: "$t_S=\\tau\\,(U_S/E)\\approx1{,}3\\ \\text{ms}$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.charge-a-debit-constant
+        feedback: >
+          Cette expression traite $t_S$ comme proportionnel à $U_S$ — une
+          montée en ligne droite. L'approche est exponentielle, pas
+          linéaire : le lien entre $t_S$ et $U_S$ passe par un logarithme,
+          pas par une simple proportion.
+      - id: D
+        text: "$t_S=\\tau\\approx2{,}0\\ \\text{ms}$"
+        correct: false
+        misconception: mc.physics.pc_rc_charge.tau-instant-d-arret
+        feedback: >
+          $\tau$ ne dépend pas du seuil $U_S$ choisi : c'est une échelle de
+          temps fixée par le circuit, pas la réponse directe à la question
+          « quand $u_C$ atteint $U_S$ », pour un seuil autre que
+          $0{,}63\,E$.
+    correct_feedback: >
+      $E(1-e^{-t_S/\tau})=U_S \Rightarrow e^{-t_S/\tau}=(E-U_S)/E
+      \Rightarrow t_S=\tau\ln\!\big(E/(E-U_S)\big)$.
+    solution: |
+      E(1 - e^-(t_S/tau)) = U_S
+      e^-(t_S/tau) = (E - U_S)/E = (9,0-6,0)/9,0 = 3,0/9,0 = 1/3
+      -t_S/tau = ln(1/3) = -ln(3,0)
+      t_S = tau × ln(3,0) = 2,0 × 1,0986 = 2,1972 ms ≈ 2,2 ms.
+      Contrôle : ln(3,0) ≈ 1,10, cohérent avec le fait qu'il faut un peu plus
+      d'une constante de temps pour parcourir 2/3 du chemin vers E.
+
+# ──────────────────────────────────────────────────────────────────────────────
 # COVERAGE SUMMARY (backfilled in the summit-conversion pilot)
 #
 # This end bank was originally authored (RC-1…RC-19) BEFORE the misconception
@@ -1680,34 +2115,44 @@ items:
 # ──────────────────────────────────────────────────────────────────────────────
 coverage_summary:
   method: "item-level, by primary_misconception (one item = one count)"
-  total_items: 27
+  total_items: 34
   per_misconception:
     mc.physics.pc_rc_charge.uc-saute-instantanement: 4       # RC-1, RC-7, RC-8, RC-9
-    mc.physics.pc_rc_charge.charge-a-debit-constant: 3        # RC-5, RC-10, RC-11
+    mc.physics.pc_rc_charge.charge-a-debit-constant: 6        # RC-5, RC-10, RC-11, RC-28, RC-30, RC-34
     mc.physics.pc_rc_charge.courant-part-de-zero: 3           # RC-2, RC-18, RC-23
-    mc.physics.pc_rc_charge.tau-mauvais-groupement: 5         # RC-4, RC-12, RC-13, RC-16, RC-17
-    mc.physics.pc_rc_charge.tau-instant-d-arret: 3            # RC-14, RC-24, RC-25
+    mc.physics.pc_rc_charge.tau-mauvais-groupement: 8         # RC-4, RC-12, RC-13, RC-16, RC-17, RC-29, RC-31, RC-33
+    mc.physics.pc_rc_charge.tau-instant-d-arret: 4            # RC-14, RC-24, RC-25, RC-32
     mc.physics.pc_rc_charge.condensateur-conduit-en-permanent: 3  # RC-3, RC-26, RC-27
     mc.physics.pc_rc_charge.energie-lineaire-en-u: 3          # RC-6, RC-15, RC-19
     mc.physics.pc_rc_charge.uc-depasse-E: 3                   # RC-20, RC-21, RC-22
+  # Arithmetic check: 4+6+3+8+4+3+3+3 = 34 = total_items. ✓
   floor: 3
   floor_met: true
   ramp_coverage:
     R0: 3   # RC-7, RC-8, RC-9
-    R1: 4   # RC-10, RC-11, RC-12, RC-27
-    R2: 6   # RC-1, RC-2, RC-3, RC-5, RC-20, RC-24
-    R3: 6   # RC-4, RC-13, RC-14, RC-21, RC-23, RC-25
-    R4: 4   # RC-6, RC-15, RC-16, RC-26
+    R1: 7   # RC-10, RC-11, RC-12, RC-27, RC-28, RC-30, RC-31
+    R2: 8   # RC-1, RC-2, RC-3, RC-5, RC-20, RC-24, RC-29, RC-34
+    R3: 7   # RC-4, RC-13, RC-14, RC-21, RC-23, RC-25, RC-33
+    R4: 5   # RC-6, RC-15, RC-16, RC-26, RC-32
     R5: 4   # RC-17, RC-18, RC-19, RC-22
+  # Arithmetic check: 3+7+8+7+5+4 = 34 = total_items. ✓
   note: >
-    Floor closed and per-distractor tagging promoted in this pass. RC-1…RC-19:
-    every distractor now carries a `misconception:` field (added without
-    deleting or weakening any existing stem, feedback, or solution — additive
-    only). RC-20…RC-27: 8 new stems closing the four under-covered models
-    (uc-depasse-E 0→3, courant-part-de-zero 2→3, tau-instant-d-arret 1→3,
-    condensateur-conduit-en-permanent 1→3), each a fresh stem (not a
-    memorizable restatement of an existing item or of the R5 past-bac
-    exercise), spanning R1–R5 to keep the ramp populated. Per-distractor tags
-    are diagnostic metadata layered onto the existing item-level
-    `primary_misconception` floor count; they do not themselves change the
-    coverage method or counts above.
+    Floor closed and per-distractor tagging promoted in the previous pass
+    (RC-1…RC-27). This pass (RC-28…RC-34, 7 new items) pays down the exam
+    debt in docs/audits/dette-examen/pc-2.md §5 rc-charge: the ED in q(t)
+    and its identification-by-injection (finding A and alpha), the mesh-law
+    ED for i(t), constant-current charging (C from a slope), tau read on a
+    DECREASING curve with the "63 % of the initial value" distractor named
+    in the debt ticket, the du_C/dt = f(u_C) line (already taught at R3, but
+    untested until RC-33), and the ln-inversion threshold time t_S. No new
+    misconception id was introduced: none of these 7 gestures has 3 items of
+    its own, so every distractor reuses whichever of the 8 existing ids is
+    the closest match (documented in the comment above RC-28), mostly
+    charge-a-debit-constant (linear/constant-rate wrong paths) and
+    tau-mauvais-groupement (RC/1/RC/sign/unit grouping slips in a new
+    formula), plus tau-instant-d-arret for the discharge-side timing
+    confusions. All 7 new items use own numbers, checked against the cited
+    bank.yaml entries to rule out reuse or pre-solving. Every RC-33 number
+    (2000 V/s, 10 V, 2,0 kΩ → 2,5 µF) deliberately differs from the audit's
+    illustrative (1000 V/s, 12 V, 1 kΩ → 12 µF), which is bank
+    bk-2021-n-x4 q2's own worked numbers.

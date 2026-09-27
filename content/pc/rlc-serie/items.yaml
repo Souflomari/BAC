@@ -1857,83 +1857,484 @@ items:
       dissipée par effet Joule dans $R$ entre $t_1$ et $t_2$, pas
       détruite.
 
+  # ══════════════════════════════════════════════════════════════
+  # WAVE-3 ADDITIONS — exam-debt gestures B1–B4
+  # (docs/audits/dette-examen/pc-2.md §7 rlc-serie, findings B1–B4)
+  #
+  # B1: énergie dissipée entre deux instants — extrema (M2-4) et
+  #     instants non extrémaux via i=u_R/R (M7-5). Les deux ancrées à
+  #     R6 (lecture d'oscillogramme), là où content-author place en
+  #     parallèle l'exemple travaillé pour ce geste.
+  # B2: partage de l'énergie à un instant générique t=0,3·T0 dans le
+  #     circuit idéal (M2-5), ancrée à R2 (établir l'équation + T0 +
+  #     conservation), qui généralise l'exemple du cours (t=0, T0/4).
+  # B3: dérivation de dE_t/dt = -R i^2 à partir de l'équation amortie
+  #     (M6-4), ancrée à R5 (établir l'équation amortie, s'arrêter là)
+  #     — on manipule l'équation déjà établie sans la résoudre, donc on
+  #     reste dans LIMITE 1 (§0.4 spec.md).
+  # B4: phase φ de i(t) à partir de i(0) et du signe de di/dt (M7-6),
+  #     ancrée à R2 (chercher la solution — φ « fixée par les
+  #     conditions initiales », énoncé mais non exploité avant ceci).
+  #
+  # Aucun nouvel id de misconception introduit : chaque distracteur
+  # ci-dessous porte l'un des 9 ids déjà présents dans l'inventaire de
+  # ce fichier. Quand le rattachement n'est pas une redite littérale de
+  # la description canonique de cet id mais une manifestation fraîche
+  # du même modèle faux, un commentaire le dit à côté du choix
+  # concerné (règle de la maison pour l'item-author).
+  # ══════════════════════════════════════════════════════════════
+
+  - id: RLC-M2-4
+    rung: "R6"
+    difficulty_level: 3
+    habilete: application_experimentale
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie, document_experimental]
+    stem: |
+      Sur l'oscillogramme d'un circuit RLC série ($C = 5{,}0\,\mu\text{F}$), on
+      repère deux maxima successifs de $u_C$ : $u_{C,1} = 8{,}0\,\text{V}$
+      à $t_1$, puis $u_{C,2} = 6{,}0\,\text{V}$ à $t_2$ (le courant est
+      quasiment nul à ces deux instants).
+      Quelle est l'énergie dissipée par effet Joule entre $t_1$ et $t_2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $\Delta E = \tfrac12 C(u_{C,1}^2-u_{C,2}^2) = 0{,}5\times5{,}0\times10^{-6}
+          \times(64-36) = 7{,}0\times10^{-5}\,\text{J}$, convertie en chaleur
+          dans $R$ entre les deux instants.
+        correct: true
+      - id: B
+        text: |
+          $\Delta E = E_{C,1} = \tfrac12 C u_{C,1}^2 = 1{,}6\times10^{-4}\,\text{J}$ :
+          l'énergie présente au premier maximum a été consommée en entier
+          d'un pic à l'autre.
+        correct: false
+        misconception: mc.physics.rlc_serie.energie-consommee-non-conservee
+        also_reveals: []
+        feedback: |
+          Modèle détecté : « l'énergie présente est intégralement
+          consommée ». Seule la différence $E_{C,1}-E_{C,2}$ est perdue
+          par effet Joule ; le reste ($E_{C,2}$) est encore présent dans
+          le circuit au second maximum, pas disparu.
+      - id: C
+        text: |
+          Aux deux maxima, $i\approx0$ : l'énergie s'y trouve encore dans
+          la bobine, pas dans le condensateur ; ce calcul devrait utiliser
+          $L$ et $i$, pas $C$ et $u_C$.
+        correct: false
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        also_reveals: []
+        feedback: |
+          C'est l'inverse : quand $i\approx0$ à un maximum de $u_C$, c'est
+          le condensateur qui détient l'énergie ($E_L=\tfrac12Li^2\approx0$),
+          pas la bobine. La bonne formule ici utilise $C$ et $u_C$.
+      - id: D
+        text: |
+          Le cosinus idéal reste solution même avec $R\neq0$ : les deux
+          maxima devraient être identiques, et l'écart mesuré (8,0 V puis
+          6,0 V) est une erreur de mesure, pas un signe réel de perte
+          d'énergie.
+        correct: false
+        misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
+        also_reveals: [mc.physics.rlc_serie.pseudo-periode-egale-periode-propre]
+        feedback: |
+          Le cosinus idéal ne vérifie l'équation amortie que si $R=0$ ;
+          dès que $R\neq0$, l'amplitude décroît réellement d'un maximum au
+          suivant. L'écart mesuré n'est pas une erreur de mesure, c'est la
+          signature de la dissipation.
+    correct_feedback: |
+      $u_{C,1}^2=64$, $u_{C,2}^2=36$, différence $=28$ ; $\Delta E=0{,}5
+      \times5{,}0\times10^{-6}\times28=7{,}0\times10^{-5}\,\text{J}$. Aux
+      maxima $i\approx0$ donc $E_{C,i}$ est bien l'énergie totale à ces
+      instants ; leur différence est ce que $R$ a dissipé entre les deux.
+    solution: |
+      $u_{C,1}^2 = 64\,\text{V}^2$, $u_{C,2}^2 = 36\,\text{V}^2$,
+      différence $=28\,\text{V}^2$.
+      $\Delta E = \tfrac12 C(u_{C,1}^2-u_{C,2}^2) = 0{,}5\times5{,}0\times10^{-6}
+      \times28 = 7{,}0\times10^{-5}\,\text{J}$.
+      Comme $i\approx0$ aux deux maxima, $E_{C,i}$ est bien l'énergie
+      totale du circuit à ces instants ; leur différence est l'énergie
+      dissipée par $R$ (effet Joule) entre $t_1$ et $t_2$ — elle n'est ni
+      consommée en bloc (B), ni logée dans la bobine (C), ni un artefact
+      de mesure (D).
+
+  - id: RLC-M7-5
+    rung: "R6"
+    difficulty_level: 3
+    habilete: application_experimentale
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie, document_experimental]
+    stem: |
+      Sur le même type d'oscillogramme, on relève cette fois un instant
+      $t$ différent d'un maximum de $u_C$. Les deux voies de l'oscilloscope
+      donnent, au même instant : $u_C(t) = 2{,}0\,\text{V}$ et
+      $u_R(t) = 4{,}0\,\text{V}$, pour un circuit RLC série
+      ($L = 0{,}1\,\text{H}$, $C = 10\,\mu\text{F}$, $R = 40\,\Omega$).
+      Quelle est l'énergie totale $E_t(t) = \tfrac12 C\,u_C(t)^2 +
+      \tfrac12 L\,i(t)^2$ à cet instant ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$i = 0{,}10\\,\\text{A}$, $E_C = 2{,}0\\times10^{-5}\\,\\text{J}$ et $E_L = 5{,}0\\times10^{-4}\\,\\text{J}$ : $E_t = 5{,}2\\times10^{-4}\\,\\text{J}$"
+        correct: true
+      - id: B
+        # M7 clean fit : inversion directe des rôles condensateur/bobine.
+        text: "$E_C = 5{,}0\\times10^{-8}\\,\\text{J}$ et $E_L = 0{,}20\\,\\text{J}$ : $E_t \\approx 0{,}20\\,\\text{J}$"
+        correct: false
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        also_reveals: []
+        feedback: |
+          Modèle détecté : les rôles de $C$ et $L$ sont échangés. C'est le
+          condensateur qui stocke $\tfrac12 C u_C^2$ (lié à la tension) et
+          la bobine qui stocke $\tfrac12 L i^2$ (lié au courant), pas
+          l'inverse.
+      - id: C
+        text: "Il faut attendre un maximum de $u_C$, où $i = 0$, pour calculer $E_t$"
+        correct: false
+        misconception: mc.physics.rlc_serie.energie-consommee-non-conservee
+        also_reveals: []
+        feedback: |
+          Le bilan énergétique instantané ne dépend pas d'une
+          interpolation entre pics : $u_C(t)$ et $u_R(t)$ sont mesurés
+          directement à l'instant $t$, ce qui suffit pour calculer $i(t)$
+          puis les deux énergies avec précision.
+      - id: D
+        # M6 reuse : la même confusion de frontière (« établir sans
+        # résoudre ») étendue, à tort, jusqu'à interdire les relations
+        # instantanées d'une lecture expérimentale — id le plus proche de
+        # l'inventaire, pas une redite littérale de sa description.
+        text: "Sans la solution $q(t)$ du régime amorti, $i(t)$ reste inconnu à cet instant"
+        correct: false
+        misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
+        also_reveals: []
+        feedback: |
+          La relation $i = u_R/R$ (loi d'Ohm) reste valable à tout instant,
+          y compris en régime amorti : on établit seulement l'équation
+          différentielle sans la résoudre, mais les relations instantanées
+          entre grandeurs restent utilisables pour lire une trace.
+    correct_feedback: |
+      $i(t) = u_R(t)/R = 4{,}0/40 = 0{,}10\,\text{A}$. $E_C(t) = 0{,}5
+      \times1{,}0\times10^{-5}\times(2{,}0)^2 = 2{,}0\times10^{-5}\,\text{J}$.
+      $E_L(t) = 0{,}5\times0{,}1\times(0{,}10)^2 = 5{,}0\times10^{-4}\,\text{J}$.
+      Somme : $E_t(t) = 5{,}2\times10^{-4}\,\text{J}$.
+    solution: |
+      $i(t) = u_R(t)/R = 4{,}0/40 = 0{,}10\,\text{A}$.
+      $E_C(t) = \tfrac12 C\,u_C(t)^2 = 0{,}5\times1{,}0\times10^{-5}\times4{,}0
+      = 2{,}0\times10^{-5}\,\text{J}$.
+      $E_L(t) = \tfrac12 L\,i(t)^2 = 0{,}5\times0{,}1\times0{,}010
+      = 5{,}0\times10^{-4}\,\text{J}$.
+      $E_t(t) = E_C(t)+E_L(t) = 5{,}2\times10^{-4}\,\text{J}$.
+      La loi d'Ohm $u_R=Ri$ relie une tension et un courant lisibles à tout
+      instant sur l'oscillogramme ; elle ne dépend pas de la résolution de
+      l'équation différentielle amortie.
+
+  - id: RLC-M2-5
+    rung: "R2"
+    difficulty_level: 3
+    habilete: résolution
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Dans le circuit LC idéal du cours ($L = 0{,}1\,\text{H}$,
+      $C = 10\,\mu\text{F}$, $U_0 = 6\,\text{V}$, $T_0 \approx 6{,}28\,\text{ms}$,
+      $E = \tfrac12 C U_0^2 = 1{,}8\times10^{-4}\,\text{J}$), on prend
+      $u_C(t) = U_0\cos\!\left(\frac{2\pi t}{T_0}\right)$.
+      Quelle est l'énergie $E_L$ stockée dans la bobine à l'instant
+      $t = 0{,}3\,T_0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          À $t=0{,}3T_0$ (soit $108°$), $u_C(t)=6{,}0\cos(108°)\approx
+          -1{,}85\,\text{V}$, donc $E_C(t)\approx1{,}72\times10^{-5}\,\text{J}$.
+          Par conservation, $E_L(t)=E-E_C(t)\approx1{,}63\times10^{-4}\,\text{J}$.
+        correct: true
+      - id: B
+        text: |
+          En intervertissant les formules, on utiliserait la tension du
+          condensateur dans celle de la bobine : $E_L(t) \approx \tfrac12
+          L\,u_C(t)^2 \approx 0{,}172\,\text{J}$.
+        correct: false
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        also_reveals: []
+        feedback: |
+          $\tfrac12 L u_C(t)^2$ mélange la tension du condensateur avec
+          l'inductance de la bobine. L'énergie de la bobine se calcule avec
+          $i$, pas avec $u_C$ : $E_L(t)=E-E_C(t)$ par conservation.
+      - id: C
+        text: |
+          Le condensateur change de signe entre $t=0$ et $t=0{,}3T_0$ :
+          cette inversion de charge coûterait un peu d'énergie à la
+          bobine, donnant plutôt $E_L(t) \approx 1{,}50\times10^{-4}\,\text{J}$.
+        correct: false
+        misconception: mc.physics.rlc_serie.energie-consommee-non-conservee
+        also_reveals: []
+        feedback: |
+          Dans le cas idéal ($R\approx0$), rien ne coûte de l'énergie :
+          l'inversion de signe de $u_C$ fait partie de l'oscillation
+          normale. $E$ reste rigoureusement constante, à tout instant.
+      - id: D
+        # M4 reuse : même schéma « R s'invite dans une formule qui n'en a
+        # pas besoin » que le T0-depend-de-R canonique, appliqué ici au
+        # partage d'énergie plutôt qu'à la période — id le plus proche de
+        # l'inventaire pour cette manifestation.
+        text: |
+          Le partage de l'énergie entre le condensateur et la bobine
+          dépendrait aussi de $R$ : sans connaître sa valeur,
+          $E_L(0{,}3T_0)$ ne se déduirait pas de $u_C(t)$ et de $E$ seuls.
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        also_reveals: []
+        feedback: |
+          Le circuit est ici idéal ($R\approx0$) : la conservation
+          $E=E_C+E_L$ suffit à elle seule à trouver $E_L(t)$ dès que
+          $u_C(t)$ est connu. $R$ reste hors de ce calcul, à chaque étape.
+    correct_feedback: |
+      Angle $=2\pi\times0{,}3=108°$, $\cos(108°)\approx-0{,}309$, donc
+      $u_C(t)\approx-1{,}85\,\text{V}$ et $E_C(t)\approx1{,}72\times10^{-5}
+      \,\text{J}$. Par conservation ($R\approx0$) : $E_L(t)=E-E_C(t)
+      \approx1{,}63\times10^{-4}\,\text{J}$.
+    solution: |
+      Angle $=2\pi\times0{,}3=1{,}885\,\text{rad}=108°$.
+      $\cos(108°)=-\cos(72°)\approx-0{,}309$.
+      $u_C(t)=6{,}0\times(-0{,}309)\approx-1{,}854\,\text{V}$, donc
+      $u_C(t)^2\approx3{,}438\,\text{V}^2$.
+      $E_C(t)=\tfrac12\times1{,}0\times10^{-5}\times3{,}438\approx1{,}72
+      \times10^{-5}\,\text{J}$.
+      $E=\tfrac12\times1{,}0\times10^{-5}\times36=1{,}8\times10^{-4}\,\text{J}$
+      (conservée, cas idéal, $R\approx0$).
+      $E_L(t)=E-E_C(t)\approx1{,}8\times10^{-4}-0{,}172\times10^{-4}
+      =1{,}628\times10^{-4}\approx1{,}63\times10^{-4}\,\text{J}$.
+
+  - id: RLC-M6-4
+    rung: "R5"
+    difficulty_level: 4
+    habilete: résolution
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Pour le circuit RLC amorti, on part de l'équation établie
+      $L\ddot q + R\dot q + \dfrac{q}{C} = 0$ (avec $i=\dot q$) et de
+      l'énergie $E = \dfrac{q^2}{2C} + \dfrac12 Li^2$.
+      En dérivant $E$ par rapport au temps et en utilisant cette relation,
+      quelle expression obtient-on pour $\dfrac{dE}{dt}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{dE}{dt} = -Ri^2$"
+        correct: true
+      - id: B
+        text: "$\\dfrac{dE}{dt} = +Ri^2$"
+        correct: false
+        misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
+        also_reveals: []
+        feedback: |
+          Modèle détecté : « R fournit de l'énergie ». Le signe correct
+          est négatif : $R$ prélève de l'énergie à chaque instant
+          ($P_{Joule}=Ri^2\geq0$), elle ne la restitue pas.
+      - id: C
+        text: "$\\dfrac{dE}{dt} = 0$"
+        correct: false
+        misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
+        also_reveals: []
+        feedback: |
+          Modèle détecté : le cosinus idéal ne vérifie pas l'équation
+          amortie (en le substituant, le terme $R\dot q$ laisse un reste
+          non nul). $E$ décroît réellement dès que $R\neq0$.
+      - id: D
+        text: "$\\dfrac{dE}{dt} = -L\\left(\\dfrac{di}{dt}\\right)^2$"
+        correct: false
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        also_reveals: []
+        feedback: |
+          Le terme inductif $L\ddot q$ ne produit pas de dissipation à lui
+          seul : c'est précisément le terme résistif $R\dot q$, multiplié
+          par $i$, qui donne $-Ri^2$. La bobine échange de l'énergie, elle
+          ne la dissipe pas.
+    correct_feedback: |
+      $\dfrac{dE}{dt} = \dfrac{q}{C}\dot q + Li\dot i = i\left(\dfrac{q}{C}
+      +L\dot i\right)$. La relation établie donne $\dfrac{q}{C}+L\dot i
+      = -Ri$ ; donc $\dfrac{dE}{dt}=i\times(-Ri)=-Ri^2\leq0$ : l'énergie ne
+      peut que décroître.
+    solution: |
+      $E=\dfrac{q^2}{2C}+\dfrac12 Li^2$.
+      $\dfrac{dE}{dt}=\dfrac{q}{C}\dfrac{dq}{dt}+Li\dfrac{di}{dt}
+      =\dfrac{q}{C}\,i+Li\,\dfrac{di}{dt}=i\left(\dfrac{q}{C}+L\dfrac{di}{dt}
+      \right)$ (en utilisant $i=dq/dt$).
+      La relation $L\dfrac{di}{dt}+Ri+\dfrac{q}{C}=0$ (identique à
+      $L\ddot q+R\dot q+q/C=0$ avec $i=\dot q$) donne $\dfrac{q}{C}
+      +L\dfrac{di}{dt}=-Ri$.
+      En substituant : $\dfrac{dE}{dt}=i\times(-Ri)=-Ri^2$.
+      Ce résultat reste négatif ou nul ($-Ri^2\leq0$) : $R$ prélève de
+      l'énergie à chaque instant, il n'en fournit pas.
+
+  - id: RLC-M7-6
+    rung: "R2"
+    difficulty_level: 3
+    habilete: résolution
+    skill_code: rlc_serie
+    tags: [misconception_driven, rlc_serie]
+    stem: |
+      Dans le circuit LC idéal, $i(t) = I_m\cos\!\left(\frac{2\pi t}{T_0}
+      +\varphi\right)$ avec $I_m = 0{,}50\,\text{A}$. À $t=0$, on mesure
+      $i(0) = 0{,}25\,\text{A}$, et on observe que le courant est en train
+      de décroître ($\dfrac{di}{dt}(0) < 0$).
+      Quelle est la valeur de $\varphi$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\varphi = +\\dfrac{\\pi}{3}$"
+        correct: true
+      - id: B
+        # M7 reuse : même famille que la confusion u_C/i en opposition de
+        # phase (§1 M7), appliquée ici à i et sa dérivée plutôt qu'à u_C
+        # et i — id le plus proche de l'inventaire pour cette
+        # manifestation.
+        text: "$\\varphi = \\pm\\dfrac{\\pi}{3}$"
+        correct: false
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
+        also_reveals: []
+        feedback: |
+          Le signe de $\dfrac{di}{dt}(0)$ porte une information distincte
+          de $i(0)$ : il fixe le signe de $\sin\varphi$, donc lève
+          l'ambiguïté entre les deux valeurs de $\varphi$ qui partagent le
+          même $\cos\varphi$.
+      - id: C
+        # M4 reuse : même schéma « R s'invite dans une formule qui n'en a
+        # pas besoin » que le T0-depend-de-R canonique, appliqué ici à la
+        # phase plutôt qu'à la période.
+        text: "Indéterminée sans la valeur de $R$"
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        also_reveals: []
+        feedback: |
+          Le circuit est ici idéal ($R\approx0$) : $\varphi$ se détermine
+          entièrement à partir de $i(0)$ et du signe de $\dfrac{di}{dt}(0)$.
+          $R$ reste étranger à ces deux conditions.
+      - id: D
+        # M3 reuse : lit un trait ordinaire de l'oscillation idéale (i
+        # décroissant à un instant du cycle) comme la signature d'un
+        # amortissement dû à R, alors que R est négligeable ici par
+        # construction — même famille que « R agit sur le rythme ».
+        text: "$\\varphi = -\\dfrac{\\pi}{3}$"
+        correct: false
+        misconception: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+        also_reveals: [mc.physics.rlc_serie.resistance-entretient-oscillations]
+        feedback: |
+          Le circuit est idéal ($R\approx0$) : un courant qui décroît à un
+          instant donné fait partie de l'oscillation normale, pas d'un
+          amortissement. Le signe de $\varphi$ vient de la condition
+          initiale, pas d'un effet de $R$.
+    correct_feedback: |
+      $\cos\varphi=0{,}50 \Rightarrow \varphi=\pm\pi/3$. Le signe de
+      $\dfrac{di}{dt}(0)<0$ exige $\sin\varphi>0$, donc $\varphi=+\pi/3$
+      (60°) est la seule valeur cohérente avec les deux données.
+    solution: |
+      $\cos\varphi = i(0)/I_m = 0{,}25/0{,}50 = 0{,}50 \Rightarrow
+      \varphi = \pm\pi/3$ (soit $\pm60°$).
+      $\dfrac{di}{dt}(0) = -I_m\omega_0\sin\varphi$.
+      Pour $\varphi=+\pi/3$ : $\sin(60°)\approx0{,}866>0$, donc
+      $\dfrac{di}{dt}(0)<0$ ✓ (cohérent avec l'énoncé).
+      Pour $\varphi=-\pi/3$ : $\sin(-60°)\approx-0{,}866<0$, donc
+      $\dfrac{di}{dt}(0)>0$ ✗ (contredit l'énoncé : le courant croîtrait).
+      Seul $\varphi=+\pi/3$ est compatible avec $i(0)=0{,}25\,\text{A}$
+      et un courant décroissant à $t=0$.
+
 coverage_summary:
   per_misconception:
-    # Recomputed WAVE-2: item-level counts (an item counts once per
+    # Recomputed WAVE-3: item-level counts (an item counts once per
     # misconception if ANY of its distractors carries that misconception
     # as its PRIMARY tag; also_reveals/dual-tag co-attributions are not
-    # counted here — see dual_tagged_distractors below). This recount
-    # corrects a WAVE-1 undercount that ignored cross-family primary tags
-    # (e.g. RLC-M8-2's distractor D is primary-tagged to
-    # resistance-entretient-oscillations but was not previously counted
-    # toward it; same for RLC-M1-1/M1-3's plus-de-R-oscille-plus-vite tags).
-    mc.physics.rlc_serie.resistance-entretient-oscillations: 7
-    # M1-1, M1-2, M1-3, M8-2, M1-4, +RLC-R0-1, +RLC-R0-3
-    mc.physics.rlc_serie.energie-consommee-non-conservee: 7
-    # M2-1, M2-2, M2-3, M7-3, +RLC-R0-1, +RLC-R8-3, +RLC-R9-2
-    mc.physics.rlc_serie.plus-de-R-oscille-plus-vite: 8
-    # M1-1, M1-3, M3-1, M3-2, M3-3, +RLC-M8-4, +RLC-R8-2, +RLC-R9-1
-    mc.physics.rlc_serie.T0-depend-de-R: 9
-    # M3-1, M4-1, M4-2, M4-3, M5-3, M4-4, R8-1, +RLC-R8-2, +RLC-R9-1
+    # counted here — see dual_tagged_distractors below). WAVE-3 pays the
+    # exam debt of docs/audits/dette-examen/pc-2.md §7 (findings B1–B4):
+    # 5 new items (RLC-M2-4, RLC-M7-5, RLC-M2-5, RLC-M6-4, RLC-M7-6), each
+    # with 3 distractors, none introducing a new misconception id — every
+    # distractor maps to one of the 9 ids already in this inventory.
+    mc.physics.rlc_serie.resistance-entretient-oscillations: 8
+    # M1-1, M1-2, M1-3, M8-2, M1-4, RLC-R0-1, RLC-R0-3, +RLC-M6-4 (choice B)
+    mc.physics.rlc_serie.energie-consommee-non-conservee: 10
+    # M2-1, M2-2, M2-3, M7-3, RLC-R0-1, RLC-R8-3, RLC-R9-2,
+    # +RLC-M2-4 (choice B), +RLC-M7-5 (choice C), +RLC-M2-5 (choice C)
+    mc.physics.rlc_serie.plus-de-R-oscille-plus-vite: 9
+    # M1-1, M1-3, M3-1, M3-2, M3-3, RLC-M8-4, RLC-R8-2, RLC-R9-1,
+    # +RLC-M7-6 (choice D)
+    mc.physics.rlc_serie.T0-depend-de-R: 11
+    # M3-1, M4-1, M4-2, M4-3, M5-3, M4-4, R8-1, RLC-R8-2, RLC-R9-1,
+    # +RLC-M2-5 (choice D), +RLC-M7-6 (choice C)
     mc.physics.rlc_serie.pseudo-periode-egale-periode-propre: 6
-    # M5-1, M5-2, M5-3, M6-3, +RLC-R8-2, +RLC-R9-2
-    mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee: 4
-    # M6-1, M6-2, M6-3, R8-1  (no WAVE-2 addition)
-    mc.physics.rlc_serie.confusion-roles-C-L-stockage: 9
-    # M1-2, M2-1, M7-1, M7-2, M7-3, M7-4, R8-1, +RLC-R8-3, +RLC-R9-2
+    # M5-1, M5-2, M5-3, M6-3, RLC-R8-2, RLC-R9-2  (no WAVE-3 primary credit;
+    # RLC-M2-4 choice D dual-tags this id via also_reveals — see below,
+    # not counted as primary per the counting rule stated above)
+    mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee: 7
+    # M6-1, M6-2, M6-3, R8-1,
+    # +RLC-M2-4 (choice D), +RLC-M7-5 (choice D), +RLC-M6-4 (choice C)
+    mc.physics.rlc_serie.confusion-roles-C-L-stockage: 14
+    # M1-2, M2-1, M7-1, M7-2, M7-3, M7-4, R8-1, RLC-R8-3, RLC-R9-2,
+    # +RLC-M2-4 (choice C), +RLC-M7-5 (choice B), +RLC-M2-5 (choice B),
+    # +RLC-M6-4 (choice D), +RLC-M7-6 (choice B)
     mc.physics.rlc_serie.entretien-est-regime-force: 6
-    # M3-3, M8-1, M8-2, M8-3, +RLC-M8-4, +RLC-R8-3
+    # M3-3, M8-1, M8-2, M8-3, RLC-M8-4, RLC-R8-3  (no WAVE-3 primary credit;
+    # RLC-M7-6 choice D dual-tags this id via also_reveals — see below)
     mc.physics.rlc_serie.confond-oscillation-avec-decharge-rc: 3
-    # NEW (WAVE-2): +RLC-R0-1, +RLC-R0-2, +RLC-R0-3 — covers the R0 accroche's
-    # naive "it discharges like RC" prediction, not previously in inventory.
-  total_items: 36
-  floor_met: true   # all 9 misconceptions ≥ 3 items (minimum is 3, for cas-amorti-... and the new confond-oscillation-avec-decharge-rc)
+    # RLC-R0-1, RLC-R0-2, RLC-R0-3  (no WAVE-3 addition — the debt items
+    # (B1–B4) are all downstream of the energy/ODE machinery, not the
+    # R0 hook; honestly still at the floor, not padded further)
+  total_items: 41
+  floor_met: true   # all 9 misconceptions ≥ 3 items (minimum is 3, for confond-oscillation-avec-decharge-rc; every other id is now ≥ 6)
   habilete_mix:
     # Authoritative counts: derived from each item's own `habilete:` field.
     utilisation: 15
-    # 12 (WAVE-1 total) + RLC-R0-1, RLC-R0-2, RLC-R0-3
-    résolution: 14
-    # 11 (WAVE-1 total) + RLC-R8-2, RLC-R8-3, RLC-R9-1
-    application_experimentale: 7
-    # 5 (WAVE-1 total) + RLC-M8-4, RLC-R9-2
+    # unchanged by WAVE-3 (12 WAVE-1 total + RLC-R0-1, RLC-R0-2, RLC-R0-3)
+    résolution: 17
+    # 14 (WAVE-2 total) + RLC-M2-5, RLC-M6-4, RLC-M7-6
+    application_experimentale: 9
+    # 7 (WAVE-2 total) + RLC-M2-4, RLC-M7-5
     percentages:
-      utilisation: "41.7 %"        # 15/36
-      résolution: "38.9 %"         # 14/36
-      application_experimentale: "19.4 %"   # 7/36
+      utilisation: "36.6 %"        # 15/41
+      résolution: "41.5 %"         # 17/41
+      application_experimentale: "22.0 %"   # 9/41
     target:
       utilisation: "~50 %"
       résolution: "~35 %"
       application_experimentale: "~15 %"
     note: >
-      WAVE-2 added 3 R0 items (utilisation, lighter-check per spec), 1 R7
-      item (application_experimentale, TP framing), 2 R8 items (résolution,
-      bac-style), 2 R9 items (résolution + application_experimentale,
-      fresh variations). The mix barely moved (42.9/39.3/17.9 → 41.7/38.9/19.4)
-      because the ramp gap being closed (R0, R7, R8, R9) happened to need a
-      mix close to the existing one. The same structural note from WAVE-1
-      still applies: further movement toward 50/35/15 would require padding
-      or weakening M6/M8-flavoured coverage. Flagged for the editorial gate.
+      WAVE-3 pays the B1–B4 exam-debt gestures with 2 application_expérimentale
+      items (both R6, oscillogram readings for B1) and 3 résolution items
+      (R2×2 for B2/B4, R5 for B3 — all multi-step derivations/computations,
+      none of them régime-recognition or role-naming, hence none tagged
+      utilisation). This pulls the mix further from the 50/35/15 target
+      than WAVE-2 left it (41.7/38.9/19.4 → 36.6/41.5/22.0): the debt itself
+      is résolution- and application-expérimentale-heavy by nature (it is
+      precisely the "stated but never computed" and "stated but never read
+      off a trace" gap that was missing). Flagged for the editorial gate,
+      same structural note as WAVE-1/WAVE-2: closing this gap further
+      toward 50 % utilisation would mean padding with weaker
+      régime-recognition items rather than serving the actual debt.
 
   ramp_coverage:
-    # Recomputed WAVE-2 from each item's own `rung:` field (corrects two
-    # WAVE-1 miscounts: RLC-R8-1 is rung R8 not R2; RLC-M6-3 is rung R5 not
-    # R4; RLC-M4-3 is rung R2 not R6 — both were double-counted or
-    # misfiled in the prior summary's parenthetical notes).
-    R0: 3   # RLC-R0-1, RLC-R0-2, RLC-R0-3   (NEW — was 0)
+    # Recomputed WAVE-3 from each item's own `rung:` field.
+    R0: 3   # RLC-R0-1, RLC-R0-2, RLC-R0-3
     R1: 5   # M2-1, M2-2, M7-1, M7-2, M7-4
-    R2: 4   # M4-1, M4-2, M4-3, M4-4
+    R2: 6   # M4-1, M4-2, M4-3, M4-4, +RLC-M2-5, +RLC-M7-6   (was 4)
     R3: 4   # M1-1, M1-2, M1-3, M3-1
     R4: 4   # M2-3, M3-3, M5-1, M1-4
-    R5: 3   # M6-1, M6-2, M6-3
-    R6: 4   # M3-2, M5-2, M5-3, M7-3
-    R7: 3   # M8-1, M8-2, RLC-M8-4          (was 2)
-    R8: 3   # RLC-R8-1, RLC-R8-2, RLC-R8-3  (was 1)
-    R9: 3   # M8-3, RLC-R9-1, RLC-R9-2      (was 1)
+    R5: 4   # M6-1, M6-2, M6-3, +RLC-M6-4                     (was 3)
+    R6: 6   # M3-2, M5-2, M5-3, M7-3, +RLC-M2-4, +RLC-M7-5    (was 4)
+    R7: 3   # M8-1, M8-2, RLC-M8-4
+    R8: 3   # RLC-R8-1, RLC-R8-2, RLC-R8-3
+    R9: 3   # M8-3, RLC-R9-1, RLC-R9-2
     note: >
       All rung counts above are exact item tallies by each item's own
-      `rung:` field (28 original + 8 WAVE-2 = 36, sum checks out:
-      3+5+4+4+4+3+4+3+3+3 = 36). The ramp floor (R0, R7, R8, R9 → 3 each)
-      is now met across the whole ramp.
+      `rung:` field (36 pre-WAVE-3 + 5 WAVE-3 = 41, sum checks out:
+      3+5+6+4+4+4+6+3+3+3 = 41). WAVE-3 lands its 5 items on the rungs
+      where the audited gesture actually lives in the lesson: R2 (établir
+      l'équation idéale + T0 — where B2's generic-instant conservation and
+      B4's phase-from-initial-conditions both sit) and R6 (lire un
+      oscillogramme — where B1's two energy-gap items sit), plus one on
+      R5 (établir l'équation amortie — where B3's dE/dt=-Ri^2 derivation
+      sits, immediately after the boxed damped ODE). The ramp floor (R0,
+      R7, R8, R9 → 3 each) established in WAVE-2 is untouched and still met.
 
   dual_tagged_distractors:
     - item: RLC-M3-1
@@ -2087,3 +2488,21 @@ coverage_summary:
         - mc.physics.rlc_serie.entretien-est-regime-force
         - mc.physics.rlc_serie.resistance-entretient-oscillations
       note: "M8↔M1: believing an active external élément is required to create oscillation (rather than merely compensate a loss) is the generator-flavoured cousin of the R-creates-oscillation belief (M1)."
+
+    # ── WAVE-3 additions (exam-debt items B1–B4) ──
+
+    - item: RLC-M2-4
+      choice: D
+      text: "Le cosinus idéal reste solution même avec R≠0 : l'écart mesuré entre les deux maxima est une erreur de mesure, pas un signe réel de perte d'énergie."
+      attributes_to:
+        - mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
+        - mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+      note: "M6↔M5: denying that the measured amplitude actually decreased (treating it as reading error) is the same 'any deviation from the ideal prediction must be a measurement artefact' reflex M5 shows for T vs T₀, here applied to amplitude instead of period."
+
+    - item: RLC-M7-6
+      choice: D
+      text: "À t=0, le sens de variation du courant serait le signe que la résistance freine déjà le circuit : il faut prendre φ=-π/3 pour refléter cet amortissement précoce."
+      attributes_to:
+        - mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+        - mc.physics.rlc_serie.resistance-entretient-oscillations
+      note: "M3↔M1: reading an ordinary feature of the undamped oscillation as evidence of R's damping combines the 'R changes the rate/shape you observe' belief (M3) with treating R as the active agent behind what's seen (M1), in a circuit where R is negligible by construction."

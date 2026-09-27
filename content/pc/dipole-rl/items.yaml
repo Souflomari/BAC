@@ -1285,6 +1285,257 @@ items:
       parcouru $63\%$ du chemin, pas $100\%$. Le palier n'est que
       pratiquement atteint vers $5\tau$, quelle que soit la courbe lue.
 
+  # ──────────────────────────────────────────────────────────────────────
+  # RL-24…RL-27 — exam-debt pass (docs/audits/dette-examen/pc-1.md, section
+  # "dipole-rl", findings R1-R4). Own numbers throughout, none copied from
+  # bank.yaml or from the lesson's own new worked examples (u_R0 ODE with
+  # A/tau; r = E/Ip - R0 with E=6V/R0=50 ohm/Ip=100mA; di/dt=f(i) with
+  # R=60 ohm/L=0.3H; rupture with R'=200 ohm/tau'~1.43ms — all avoided here).
+  # RL-24 closes the R1 finding (ED in u_R0, exam form tau du_R0/dt+u_R0=A,
+  # identify A) with the pedagogy-architect's corrected notation: R0 is the
+  # added resistor, R = R0+r is the total, u_R0 is the voltage read across
+  # R0 (not a bare u_R). RL-25 closes R2 (inverse: r = E/Ip - R0, own values
+  # E=9V, R0=40 ohm, Ip=150mA). RL-26 closes R3 (numeric rupture: i(0+) by
+  # continuity, u across the freewheel resistor R', own values Imax=250mA,
+  # R'=150 ohm). RL-27 closes R4 (di/dt=f(i) line, intercept E/L, own values
+  # E=18V, intercept=72 A/s). All four distractors per item carry a
+  # misconception id from the existing inventory (no new id added — none of
+  # the four gestures needed one beyond the seven already floor-eligible).
+  # ──────────────────────────────────────────────────────────────────────
+
+  - id: RL-24
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: pc_dipole_rl
+    tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.oubli-resistance-interne
+    stem: >
+      Un circuit RL série comporte un générateur idéal de f.é.m. $E$, un
+      résistor $R_0$, et une bobine d'inductance $L$ et de résistance interne
+      $r$. Un système d'acquisition enregistre la tension $u_{R_0}(t)$ aux
+      bornes du résistor $R_0$ : on montre qu'elle vérifie une équation de la
+      forme $\tau\,\dfrac{du_{R_0}}{dt} + u_{R_0} = A$. Quelle est l'expression
+      correcte de la constante $A$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$A = \\dfrac{R_0 E}{R_0 + r}$"
+        correct: true
+      - id: B
+        text: "$A = E$"
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.oubli-resistance-interne
+        feedback: >
+          Ce résultat revient à négliger la résistance interne $r$ de la
+          bobine dans le dénominateur : $A = R_0 E/R_0 = E$. Or $r$ intervient
+          bien dans le palier de $u_{R_0}$, exactement comme dans celui de
+          $i$ : la résistance totale de la maille est $R_0 + r$, pas $R_0$
+          seul.
+      - id: C
+        text: "$A = \\dfrac{L}{R_0 + r}$"
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+        feedback: >
+          Cette expression est celle de $\tau$, pas celle de $A$ : elle a
+          d'ailleurs la dimension d'un temps, pas d'une tension. $A$ est le
+          palier de $u_{R_0}$, une tension ; $\tau = L/(R_0+r)$ règle la
+          durée pour l'atteindre — ce sont deux rôles distincts dans
+          l'équation.
+      - id: D
+        text: "$A = \\dfrac{R_0 E L}{R_0 + r}$"
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
+        feedback: >
+          $L$ ne figure pas dans la valeur du palier : en régime permanent,
+          $du_{R_0}/dt = 0$, donc le terme en $L$ de l'équation
+          différentielle disparaît. $L$ ne fixe que la durée $\tau$ pour
+          atteindre ce palier, pas sa valeur.
+    correct_feedback: >
+      En régime permanent, $du_{R_0}/dt = 0$ : l'équation se réduit à
+      $u_{R_0} = A$, avec $A = R_0 E/(R_0+r)$ — c'est le palier de $u_{R_0}$,
+      qui dépend des deux résistances de la maille, jamais de $L$.
+    solution: |
+      Loi des mailles : $E = R_0 i + (r\,i + L\,di/dt)$, avec $i = u_{R_0}/R_0$.
+      En reportant, en multipliant par $R_0$, puis en divisant par le
+      coefficient de $u_{R_0}$, on obtient
+      $\tau\,\dfrac{du_{R_0}}{dt} + u_{R_0} = A$ avec
+      $\tau = \dfrac{L}{R_0+r}$ et $A = \dfrac{R_0 E}{R_0+r}$.
+      $A$ est le palier atteint par $u_{R_0}$ en régime permanent : il ne
+      dépend que de $E$, $R_0$ et $r$, jamais de $L$.
+
+  - id: RL-25
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_dipole_rl
+    tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.oubli-resistance-interne
+    stem: >
+      Un circuit RL série comporte un générateur idéal de f.é.m.
+      $E = 9\ \text{V}$, un résistor $R_0 = 40\ \Omega$, et une bobine dont on
+      cherche la résistance interne $r$. Une fois le régime permanent
+      atteint, un ampèremètre indique un courant $I_p = 150\ \text{mA}$. Que
+      vaut $r$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$r = 20\\ \\Omega$"
+        correct: true
+      - id: B
+        text: "$r = 60\\ \\Omega$"
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.oubli-resistance-interne
+        feedback: >
+          Cette valeur correspond à la résistance totale de la maille,
+          $E/I_p$, en oubliant que $R_0$ en fait déjà partie : la résistance
+          propre de la bobine est ce qui reste une fois $R_0$ retiré,
+          $r = E/I_p - R_0$, pas $E/I_p$ seul.
+      - id: C
+        text: "$r = 0\\ \\Omega$"
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
+        feedback: >
+          Une bobine réelle a une résistance interne non nulle, exactement
+          comme un fil de cuivre enroulé ordinaire : ce n'est pas un fil
+          parfait. C'est justement cette résistance $r$ que l'énoncé demande
+          de déterminer, pas de supposer nulle.
+      - id: D
+        text: "$r = 100\\ \\Omega$"
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+        feedback: >
+          $E/I_p = 60\ \Omega$ est la résistance TOTALE de la maille,
+          $R_0 + r$. Pour isoler $r$, on retranche $R_0$ de ce total :
+          l'ajouter donne une résistance de bobine plus grande que la maille
+          entière, ce qui ne peut pas être.
+    correct_feedback: >
+      En régime permanent, $I_p = E/(R_0+r)$ : on isole $r$ directement,
+      $r = E/I_p - R_0 = 9/0{,}150 - 40 = 60 - 40 = 20\ \Omega$.
+    solution: |
+      En régime permanent, $di/dt=0$ : la loi des mailles donne
+      $I_p = E/(R_0+r)$.
+      On isole $r$ : $r = E/I_p - R_0$.
+      Application numérique : $E/I_p = 9/0{,}150 = 60\ \Omega$, puis
+      $r = 60 - 40 = 20\ \Omega$.
+
+  - id: RL-26
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_dipole_rl
+    tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.courant-saute-instantane
+    stem: >
+      Un circuit RL, en régime permanent, présente une intensité stabilisée
+      $I_{max} = 250\ \text{mA}$. On choisit une nouvelle origine des temps à
+      l'instant où le générateur est débranché du circuit : l'intensité
+      continue de circuler dans une maille de secours, à travers une
+      résistance $R' = 150\ \Omega$ (résistance totale de cette maille). Que
+      vaut la tension $u_{R'}$ à ses bornes, juste après cette coupure, à
+      $t = 0^+$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $u_{R'}(0^+) = 37{,}5\ \text{V}$, puisque $i(0^+) = I_{max}$ par
+          continuité, et $u_{R'}(0^+) = R'\,I_{max}$.
+        correct: true
+      - id: B
+        text: >-
+          $u_{R'}(0^+) = 0\ \text{V}$ : l'intensité chute à zéro dès la
+          coupure de l'alimentation.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.courant-saute-instantane
+        feedback: >
+          C'est le modèle du saut instantané, transposé cette fois à
+          l'ouverture : le courant dans une bobine reste continu, y compris
+          à la coupure. À $t=0^+$, il vaut encore $I_{max}$, la valeur qu'il
+          avait juste avant.
+      - id: C
+        text: >-
+          $u_{R'}(0^+)$ ne se calcule pas sans connaître $L$ : l'intensité
+          initiale en dépendrait aussi.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
+        feedback: >
+          On n'a pas besoin de $L$ ici : à $t=0^+$, seules comptent la
+          valeur du courant (fixée par continuité à $I_{max}$) et la
+          résistance $R'$. $L$ ne pèse que sur la vitesse à laquelle
+          $u_{R'}$ décroît ensuite, pas sur sa valeur de départ.
+      - id: D
+        text: >-
+          $u_{R'}(0^+)$ devient extrêmement grande : l'intensité stockée se
+          libère d'un coup à la coupure.
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
+        feedback: >
+          Le rôle de $R'$ est justement d'empêcher cette envolée : c'est une
+          maille de secours calculable, pas une étincelle incontrôlée. La
+          tension à ses bornes reste finie, $u_{R'}(0^+)=R'I_{max}$ —
+          l'énergie stockée se dissipe ensuite progressivement, avec la
+          constante de temps $\tau'=L/R'$, pas d'un coup.
+    correct_feedback: >
+      Le courant dans la bobine est continu : $i(0^+)=i(0^-)=I_{max}$, même
+      après la coupure de l'alimentation. La tension aux bornes de la
+      résistance de secours vaut donc
+      $u_{R'}(0^+)=R'\,I_{max}=150\times0{,}250=37{,}5\ \text{V}$.
+    solution: |
+      Le courant traversant la bobine ne peut pas sauter :
+      $i(0^+) = i(0^-) = I_{max}$, la valeur qu'il avait juste avant la
+      coupure de l'alimentation.
+      La maille de secours ne comporte que la résistance $R' = 150\ \Omega$
+      (aucun générateur) : la loi des mailles y donne directement
+      $u_{R'}(0^+) = R'\,i(0^+) = R'\,I_{max}$.
+      Application numérique : $u_{R'}(0^+) = 150\times0{,}250 = 37{,}5\ \text{V}$.
+
+  - id: RL-27
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_dipole_rl
+    tags: []
+    primary_misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+    stem: >
+      Sur un graphe expérimental traçant $\dfrac{di}{dt}$ en fonction de $i$
+      pour un dipôle RL soumis à un échelon $E = 18\ \text{V}$, la droite
+      obtenue coupe l'axe des ordonnées (en $i = 0$) à la valeur
+      $72\ \text{A/s}$. Quelle est la valeur de l'inductance $L$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$L = 0{,}25\\ \\text{H}$"
+        correct: true
+      - id: B
+        text: "$L = 4\\ \\text{H}$"
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+        feedback: >
+          Ce résultat calcule $72/18$ au lieu de $18/72$ : l'ordonnée à
+          l'origine vaut $E/L$, donc $L = E/(72)$, pas $72/E$.
+      - id: C
+        text: "$L = 1296\\ \\text{H}$"
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+        feedback: >
+          Ce résultat multiplie $E$ par la valeur lue ($18\times72$) au lieu
+          de diviser : une inductance de cet ordre de grandeur est
+          d'ailleurs physiquement absurde pour une bobine de laboratoire.
+      - id: D
+        text: "$L \\approx 0{,}014\\ \\text{H}$"
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
+        feedback: >
+          Ce résultat prend $1/72$ : l'ordonnée à l'origine a été lue comme
+          $1/L$, en oubliant la tension. Elle vaut $E/L$ — c'est la pente
+          initiale $di/dt$ quand $i = 0$, c'est-à-dire quand toute la tension
+          $E$ est aux bornes de l'inductance.
+    correct_feedback: >
+      L'équation différentielle du dipôle RL donne, en $i=0$,
+      $\left.di/dt\right|_{i=0} = E/L$ : c'est l'ordonnée à l'origine de
+      cette droite. On isole $L = E/72 = 18/72 = 0{,}25\ \text{H}$.
+    solution: |
+      L'équation $\dfrac{di}{dt} = \dfrac{E}{L} - \dfrac{R}{L}\,i$ est une
+      droite en $i$, d'ordonnée à l'origine $\dfrac{E}{L}$.
+      Ici l'ordonnée à l'origine vaut $72\ \text{A/s}$ :
+      $L = \dfrac{E}{72} = \dfrac{18}{72} = 0{,}25\ \text{H}$.
+
 # ──────────────────────────────────────────────────────────────────────────────
 # COVERAGE SUMMARY (floor-backfill pass, following the checkpoints.yaml /
 # exercises.yaml summit conversion)
@@ -1301,13 +1552,13 @@ items:
 # ──────────────────────────────────────────────────────────────────────────────
 coverage_summary:
   method: "item-level, by primary_misconception (one item = one count)"
-  total_items: 23
+  total_items: 27
   per_misconception:
-    mc.physics.pc_dipole_rl.courant-saute-instantane: 4        # RL-1, RL-6, RL-7, RL-8
+    mc.physics.pc_dipole_rl.courant-saute-instantane: 5        # RL-1, RL-6, RL-7, RL-8, RL-26
     mc.physics.pc_dipole_rl.bobine-nature-erronee: 3            # RL-9, RL-10, RL-19
     mc.physics.pc_dipole_rl.imax-etablissement-mal-compris: 3   # RL-12, RL-21, RL-22
-    mc.physics.pc_dipole_rl.oubli-resistance-interne: 3         # RL-2, RL-11, RL-16
-    mc.physics.pc_dipole_rl.tau-mauvais-groupement: 3           # RL-3, RL-18, RL-20
+    mc.physics.pc_dipole_rl.oubli-resistance-interne: 5         # RL-2, RL-11, RL-16, RL-24, RL-25
+    mc.physics.pc_dipole_rl.tau-mauvais-groupement: 4           # RL-3, RL-18, RL-20, RL-27
     mc.physics.pc_dipole_rl.lecture-tau-erronee: 3              # RL-5, RL-13, RL-23
     mc.physics.pc_dipole_rl.energie-lineaire-en-i: 4            # RL-4, RL-14, RL-15, RL-17
   floor: 3
@@ -1315,11 +1566,15 @@ coverage_summary:
   ramp_coverage:
     R0: 3   # RL-7, RL-8, RL-9
     R1: 4   # RL-2, RL-6, RL-10, RL-19
-    R2: 5   # RL-1, RL-11, RL-12, RL-20, RL-22
-    R3: 5   # RL-3, RL-5, RL-13, RL-21, RL-23
+    R2: 7   # RL-1, RL-11, RL-12, RL-20, RL-22, RL-24, RL-25
+    R3: 7   # RL-3, RL-5, RL-13, RL-21, RL-23, RL-26, RL-27
     R4: 3   # RL-4, RL-14, RL-15
     R5: 3   # RL-16, RL-17, RL-18
   note: >
+    Exam debt, wave C (2026-09-27, docs/audits/dette-examen/pc-1.md, dipole-rl R1–R4):
+    RL-24 (the ED in u_R0, identify A), RL-25 (r from the plateau, inverse),
+    RL-26 (rupture: u across the freewheel resistor at 0+), RL-27 (di/dt = f(i),
+    L from the intercept). No new misconception id. Earlier pass:
     Floor closed and per-distractor tagging promoted in this pass. RL-1…RL-18:
     every distractor now carries a `misconception:` field (added without
     deleting or weakening any existing stem, feedback, or solution — additive
