@@ -677,6 +677,13 @@ body {
     overflow-y: hidden;
     display: inline-block;
     vertical-align: middle;
+    /* DETTE CONNUE (2026-09-27, DECISIONS-EN-ATTENTE §31) : la boîte KaTeX
+       déborde de 1 à 6 px à droite (l'approche du dernier glyphe) — à cette
+       largeur, 1 759 formules en ligne du corpus sont des défileurs de 2 px,
+       donc des arrêts de Tab fantômes. Le correctif « rembourrage + marge
+       négative » a été ESSAYÉ et retiré : la boîte rembourrée dépassait alors
+       du paragraphe (`p { overflow-x: auto }`), et 163 paragraphes devenaient
+       à leur tour des défileurs fantômes. `etroit-sweep` les compte à part. */
   }
 }
 

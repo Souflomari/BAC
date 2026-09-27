@@ -275,8 +275,19 @@ export function ChoiceButton({
             insécable ($CH_3COOH/CH_3COO^-$ mesure 222 px). Sur un écran de
             320 px elle débordait du bouton et emportait la page ; elle défile
             désormais dans sa propre ligne. Le témoin « correct/incorrect »
-            reste DANS ce conteneur, donc toujours à la suite du texte. */}
-        <span className="flex-1 min-w-0 overflow-x-auto">
+            reste DANS ce conteneur, donc toujours à la suite du texte.
+            `pb-2 -mb-2` (2026-09-27) : `overflow-x: auto` force aussi
+            `overflow-y: auto`, et la boîte d'une fraction KaTeX sur la
+            dernière ligne dépasse de 1 à 6 px sous la ligne. Le texte du
+            choix devenait un défileur VERTICAL — et Chromium rend un défileur
+            sans enfant focalisable atteignable au Tab : un arrêt fantôme par
+            choix, invisible, posé sous la scène collante au téléphone (porte
+            d'ergonomie du plan complexe, R6). Mesuré sur les 62 leçons à
+            390 px, tous chapitres dépliés : 573 choix sur 7 669, pire 7 px
+            en bas, 8 px à droite. 8 px de rembourrage (en bas ET à droite)
+            absorbent le dépassement, la marge négative rend la place : rien
+            ne bouge à l'écran, rien n'est coupé. */}
+        <span className="flex-1 min-w-0 overflow-x-auto pb-2 -mb-2 pr-2 -mr-2">
           <MathText>{choice.text}</MathText>
 
           {/* Animated correctness indicator — color + icon + text (never color alone §9) */}

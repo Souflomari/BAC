@@ -126,6 +126,9 @@ export function McqItem({ item, index }: McqItemProps) {
         <div
           className={cn(
             "flex-1 min-w-0",
+            // `pb-2 -mb-2` : le dépassement vertical d'une fraction KaTeX (1 à 8 px mesurés) reste
+            // dans la boîte — sinon l'énoncé devient un défileur, et un arrêt de Tab fantôme
+            "pb-2 -mb-2 pr-2 -mr-2",
             "text-body-lg text-primary",
             "leading-[1.6]",
             "[&_.katex-display]:my-3",

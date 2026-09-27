@@ -16,6 +16,27 @@
  * formule dans un `overflow-x:auto` DOIT dépasser : c'est ainsi qu'elle
  * reste lisible sans écraser la page).
  *
+ * LES DÉFILEURS FANTÔMES (2026-09-27, porte d'ergonomie du plan complexe R6).
+ * Un conteneur `overflow: auto` dont le contenu dépasse est un défileur :
+ * Chromium le rend atteignable au Tab dès qu'il n'a aucun enfant focalisable.
+ * Quand le dépassement ne cache RIEN, c'est un arrêt invisible et un glissement
+ * parasite sous le doigt. Mesuré sur les 62 leçons à 390 px : 2 808 défileurs
+ * de 1 à 8 px (1 759 formules en ligne, 570 choix de QCM, 136 énoncés).
+ *
+ * CE QUI EST ARMÉ : le défileur VERTICAL d'une boîte faite pour défiler EN
+ * LARGEUR (`overflow-x: auto` force `overflow-y: auto`), qui dépasse en hauteur
+ * de 1 à 8 px. Il n'a jamais rien à montrer : c'est la profondeur d'une fraction
+ * KaTeX sous la dernière ligne, pas une ligne de texte (la plus petite fait
+ * 16 px). La borne DÉFINIT la catégorie, elle ne filtre pas du bruit (ADR 0034).
+ *
+ * CE QUI N'EST PAS ARMÉ, écrit à côté (ADR 0035) : le petit dépassement en
+ * LARGEUR (1 à 8 px). Il peut être l'approche du dernier glyphe d'une formule
+ * (rien à montrer) OU la fin réelle d'une formule trop longue (à montrer) — la
+ * page ne sait pas les distinguer. Il est COMPTÉ et imprimé, par sorte, sans
+ * rougir ; DECISIONS-EN-ATTENTE §31 dit la condition qui mériterait une porte
+ * (et pourquoi le correctif « rembourrage + marge négative » sur la formule en
+ * ligne a été retiré : 163 paragraphes devenaient défileurs à sa place).
+ *
  * TOUS LES CHAPITRES SONT DÉPLIÉS avant la mesure. Un chapitre masqué qui
  * déborde débordera le jour où l'élève y arrivera ; ne mesurer que le
  * premier reviendrait à ne regarder qu'un dixième du produit.
@@ -77,20 +98,49 @@ page.on("response", (rep) => {
   }
 });
 
-const mesure = () =>
-  page.evaluate((essai) => {
+// Les polices d'abord : un dépassement de 2 px se mesure avec les métriques de
+// KaTeX, pas avec celles de la police de repli (un instrument au pixel près ne
+// peut pas lire une page à moitié chargée — ADR 0040).
+const mesure = async () => {
+  await page.evaluate(() => document.fonts.ready.then(() => 0));
+  return page.evaluate((essai) => {
     if (essai) {
       const bloc = document.createElement("div");
       bloc.setAttribute("data-essai-rouge", "");
       bloc.style.cssText = "width:2000px;height:1px";
       document.body.appendChild(bloc);
+      // et un défileur FANTÔME : une boîte faite pour défiler en largeur, qui dépasse de 4 px en
+      // HAUTEUR (la forme exacte d'une fraction KaTeX sous la dernière ligne), sans enfant focalisable
+      const f = document.createElement("div");
+      f.setAttribute("data-essai-rouge", "");
+      f.style.cssText = "overflow-x:auto;width:100px;height:20px;line-height:20px";
+      f.innerHTML = '<span style="display:inline-block;height:24px;vertical-align:top">x</span>';
+      document.body.appendChild(f);
     }
     // Déplier tout : le shell ne pose `hidden` que lors de ses effets, et on
     // ne le re-déclenche pas ici — la mesure reste stable.
     document.querySelectorAll("[data-chapter-section]").forEach((s) => (s.hidden = false));
     const W = window.innerWidth;
     const debord = document.documentElement.scrollWidth - W;
-    if (debord <= 1) return { debord, coupables: [] };
+    const fantomes = [];
+    const enLargeur = {};
+    for (const el of document.querySelectorAll("body *")) {
+      const cs = getComputedStyle(el);
+      const dx = /(auto|scroll)/.test(cs.overflowX), dy = /(auto|scroll)/.test(cs.overflowY);
+      if (!dx && !dy) continue;
+      // un élément EN LIGNE n'est pas un conteneur de défilement, quel que soit son overflow
+      if (cs.display === "inline" || cs.display === "contents") continue;
+      if (!el.clientWidth && !el.clientHeight) continue;
+      const ox = dx ? el.scrollWidth - el.clientWidth : 0, oy = dy ? el.scrollHeight - el.clientHeight : 0;
+      if (el.querySelector("a[href],button,input,select,textarea,summary,[tabindex]")) continue;
+      // le petit dépassement en LARGEUR seul : compté, par sorte (non armé)
+      if (!(dx && dy && oy > 0 && oy <= 8)) {
+        if (ox > 0 && ox <= 8 && oy <= 0) { const k = el.classList.contains("katex") ? "formule en ligne" : el.tagName === "TABLE" ? "tableau" : el.classList.contains("katex-display") ? "formule détachée" : "autre"; enLargeur[k] = (enLargeur[k] ?? 0) + 1; }
+        continue;
+      }
+      fantomes.push(`${el.tagName.toLowerCase()}${el.className && typeof el.className === "string" ? "." + el.className.trim().split(/\s+/).slice(0, 3).join(".") : ""} (${ox > 0 ? `${ox} px à droite` : ""}${ox > 0 && oy > 0 ? ", " : ""}${oy > 0 ? `${oy} px en bas` : ""}) · « ${(el.textContent ?? "").trim().slice(0, 40)} »`);
+    }
+    if (debord <= 1) return { debord, coupables: [], fantomes, enLargeur };
 
     // Un ancêtre qui DÉFILE (auto/scroll) contient légitimement un enfant
     // trop large. Un ancêtre `overflow-x: hidden`, lui, COUPE : il n'explique
@@ -118,10 +168,13 @@ const mesure = () =>
       });
       if (trouves.length >= 4) break;
     }
-    return { debord, coupables: trouves.map((t) => t.info) };
+    return { debord, coupables: trouves.map((t) => t.info), fantomes, enLargeur };
   }, ESSAI);
+};
 
 let fautes = 0;
+let fantomesPages = 0, fantomesTotal = 0;
+const enLargeurTotal = {};
 const rapport = [];
 for (const largeur of LARGEURS) {
   await page.setViewportSize({ width: largeur, height: 780 });
@@ -130,11 +183,17 @@ for (const largeur of LARGEURS) {
     await page.goto(`${BASE}/notions/${l}`, { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(60);
     const m = await mesure();
+    for (const [k, n] of Object.entries(m.enLargeur)) enLargeurTotal[k] = (enLargeurTotal[k] ?? 0) + n;
     if (m.debord > 1) {
       ko++; fautes++;
       rapport.push({ largeur, lecon: l, debord: m.debord, coupables: m.coupables });
       console.log(`✗ ${largeur}px [${l}] débord de ${m.debord}px`);
       for (const c of m.coupables) console.log(`      ${c}`);
+    }
+    if (m.fantomes.length) {
+      fantomesPages++; fantomesTotal += m.fantomes.length;
+      console.log(`✗ ${largeur}px [${l}] ${m.fantomes.length} défileur(s) fantôme(s)`);
+      for (const c of m.fantomes.slice(0, 3)) console.log(`      ${c}`);
     }
   }
   console.log(`— ${largeur}px : ${lecons.length - ko}/${lecons.length} leçons sans débord`);
@@ -158,18 +217,24 @@ for (const largeur of LARGEURS) {
       console.log(`✗ ${largeur}px [${r}] débord de ${m.debord}px`);
       for (const c of m.coupables) console.log(`      ${c}`);
     }
+    if (m.fantomes.length) {
+      fantomesPages++; fantomesTotal += m.fantomes.length;
+      console.log(`✗ ${largeur}px [${r}] ${m.fantomes.length} défileur(s) fantôme(s)`);
+      for (const c of m.fantomes.slice(0, 3)) console.log(`      ${c}`);
+    }
   }
   console.log(`— ${largeur}px : ${AUTRES.length - ka}/${AUTRES.length} pages hors leçon sans débord`);
 }
 await navigateur.close();
-console.log(`\n${lecons.length + AUTRES.length} pages × ${LARGEURS.length} largeurs — ${fautes} débord(s)`);
+console.log(`\n${lecons.length + AUTRES.length} pages × ${LARGEURS.length} largeurs — ${fautes} débord(s), ${fantomesTotal} défileur(s) fantôme(s) sur ${fantomesPages} page(s)`);
+console.log(`  ○ non armé (DECISIONS §31) — défileurs de 1 à 8 px EN LARGEUR, sur les leçons, somme des largeurs : ${Object.entries(enLargeurTotal).map(([k, n]) => `${n} ${k}`).join(", ") || "aucun"}`);
 if (ESSAI) {
   const attendu = (lecons.length + AUTRES.length) * LARGEURS.length;
-  if (fautes === attendu) {
-    console.log(`ESSAI ROUGE — ✔ le bloc posé fait déborder les ${attendu} pages, et la porte le dit.`);
+  if (fautes === attendu && fantomesPages === attendu) {
+    console.log(`ESSAI ROUGE — ✔ le bloc posé fait déborder les ${attendu} pages, le défileur posé est vu sur les ${attendu}, et la porte le dit.`);
     process.exit(0);
   }
-  console.error(`ESSAI ROUGE — ✘ ${attendu - fautes} page(s) sur ${attendu} ont gardé leur débord pour elles : la porte ne sait pas rougir.`);
+  console.error(`ESSAI ROUGE — ✘ débord vu sur ${fautes}/${attendu} page(s), défileur fantôme vu sur ${fantomesPages}/${attendu} : la porte ne sait pas rougir.`);
   process.exit(1);
 }
-process.exit(fautes ? 1 : 0);
+process.exit(fautes || fantomesTotal ? 1 : 0);

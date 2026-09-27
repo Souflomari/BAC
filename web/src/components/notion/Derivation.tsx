@@ -124,7 +124,7 @@ export function Derivation({
                 isCurrent || reduced ? "opacity-100" : "opacity-60"
               )}
             >
-              <div className="[&_.katex-display]:my-2 overflow-x-auto">
+              <div className="[&_.katex-display]:my-2 overflow-x-auto pb-2 -mb-2 pr-2 -mr-2">
                 <StepMath math={step.math} />
               </div>
               {step.note && (

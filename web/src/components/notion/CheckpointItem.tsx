@@ -114,7 +114,10 @@ export function CheckpointItem({ item }: CheckpointItemProps) {
       {/* Stem */}
       <div
         className={cn(
-          "mb-5",
+          // `mb-3 pb-2` = l'ancien `mb-5` : le rembourrage absorbe les 1 à 8 px dont une fraction
+          // KaTeX dépasse sous la dernière ligne — sans lui, `overflow-x-auto` faisait de l'énoncé
+          // un défileur vertical, donc un arrêt de Tab fantôme (voir ChoiceButton, 2026-09-27)
+          "mb-3 pb-2 pr-2 -mr-2",
           "text-body-lg text-primary",
           "leading-[1.6]",
           "[&_.katex-display]:my-3",

@@ -105,7 +105,12 @@ export const MdBlock = memo(function MdBlock({
     //  calculé) et sans effet : une porte qui aurait regardé « la règle est-elle
     //  là ? » l'aurait déclarée verte.
     return (
-      <span className={cn("[&_.katex]:normal-case [&_.katex]:inline-block [&_.katex]:max-w-full [&_.katex]:overflow-x-auto [&_.katex]:align-bottom", className)}>
+      // `overflow-y-hidden` (2026-09-27) : `overflow-x: auto` seul force `overflow-y: auto`, et la
+      // boîte KaTeX dépasse de 2 à 4 px sous la ligne — chaque formule d'un libellé d'épreuve
+      // devenait un défileur VERTICAL, donc l'arrêt de tabulation fantôme que ce commentaire
+      // voulait éviter (140 formules sur 36 pages à 320-390 px, `etroit-sweep`). Comme la règle
+      // de la prose (globals.css), l'axe vertical est coupé : il n'y a rien à y faire défiler.
+      <span className={cn("[&_.katex]:normal-case [&_.katex]:inline-block [&_.katex]:max-w-full [&_.katex]:overflow-x-auto [&_.katex]:overflow-y-hidden [&_.katex]:align-bottom", className)}>
         {contenu}
       </span>
     );
