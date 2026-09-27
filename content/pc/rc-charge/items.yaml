@@ -1880,7 +1880,7 @@ items:
       On multiplie par C : RC di/dt + i = 0.
 
   - id: RC-31
-    rung: "R1"
+    rung: "R2"
     difficulty_level: 3
     skill_code: pc_rc_charge
     tags: []
@@ -1888,8 +1888,9 @@ items:
     stem: >
       Un générateur de courant idéal, délivrant un courant constant
       $I_0 = 2{,}0\ \mu\text{A}$, charge un condensateur de capacité $C$
-      initialement déchargé, sans résistance pour limiter ce courant — à la
-      différence du dipôle RC habituel. On enregistre $u_C(t)$ : c'est une
+      initialement déchargé : le courant ne diminue donc pas quand $u_C$
+      monte, à la différence du dipôle RC habituel (qu'une résistance soit
+      présente ou non dans la boucle). On enregistre $u_C(t)$ : c'est une
       droite de pente $500\ \text{V/s}$. Que vaut $C$ ?
     type: mcq
     choices:
@@ -2066,13 +2067,14 @@ items:
         text: "$t_S=\\tau\\ln\\!\\big(E/(E-U_S)\\big)\\approx2{,}2\\ \\text{ms}$"
         correct: true
       - id: B
-        text: "$t_S=\\tau\\ln\\!\\big(U_S/E\\big)\\approx0{,}81\\ \\text{ms}$"
+        text: "$t_S=\\tau\\ln\\!\\big(E/U_S\\big)\\approx0{,}81\\ \\text{ms}$"
         correct: false
         misconception: mc.physics.pc_rc_charge.tau-mauvais-groupement
         feedback: >
-          L'inversion de $E(1-e^{-t/\tau})=U_S$ donne
-          $e^{-t/\tau}=(E-U_S)/E$, pas $U_S/E$ : c'est ce rapport-là qu'il
-          faut passer au logarithme, pas son inverse mal groupé.
+          Ce résultat vient de $e^{-t/\tau}=U_S/E$ : le « $1-$ » de la charge
+          a été oublié. L'inversion de $E(1-e^{-t/\tau})=U_S$ donne
+          $e^{-t/\tau}=(E-U_S)/E$ : c'est ce rapport-là qu'il faut passer au
+          logarithme.
       - id: C
         text: "$t_S=\\tau\\,(U_S/E)\\approx1{,}3\\ \\text{ms}$"
         correct: false
@@ -2130,8 +2132,8 @@ coverage_summary:
   floor_met: true
   ramp_coverage:
     R0: 3   # RC-7, RC-8, RC-9
-    R1: 7   # RC-10, RC-11, RC-12, RC-27, RC-28, RC-30, RC-31
-    R2: 8   # RC-1, RC-2, RC-3, RC-5, RC-20, RC-24, RC-29, RC-34
+    R1: 6   # RC-10, RC-11, RC-12, RC-27, RC-28, RC-30
+    R2: 9   # RC-1, RC-2, RC-3, RC-5, RC-20, RC-24, RC-29, RC-31, RC-34
     R3: 7   # RC-4, RC-13, RC-14, RC-21, RC-23, RC-25, RC-33
     R4: 5   # RC-6, RC-15, RC-16, RC-26, RC-32
     R5: 4   # RC-17, RC-18, RC-19, RC-22

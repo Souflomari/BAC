@@ -84,13 +84,13 @@ C'est exactement un pendule mécanique : l'énergie potentielle (hauteur) et l'�
 
 ### L'énergie totale est conservée dans le cas idéal
 
-Dans ce circuit LC idéal ($R = 0$), l'énergie totale $E$ est la somme des deux :
+Dans ce circuit LC idéal ($R = 0$), l'énergie totale $E_t$ — c'est le symbole des sujets — est la somme des deux :
 
-$$E = E_C + E_L = \frac{1}{2}C u_C^2 + \frac{1}{2}L i^2 = \text{constante}$$
+$$E_t = E_C + E_L = \frac{1}{2}C u_C^2 + \frac{1}{2}L i^2 = \text{constante}$$
 
 On peut aussi écrire en termes de la charge $q = C u_C$ (on connaît $q = C u_C$ depuis le chapitre condensateur) :
 
-$$E = \frac{q^2}{2C} + \frac{1}{2}L i^2 = \text{constante}$$
+$$E_t = \frac{q^2}{2C} + \frac{1}{2}L i^2 = \text{constante}$$
 
 L'énergie ne disparaît pas — elle oscille entre les deux éléments. Quand $E_C$ est maximale, $E_L = 0$. Quand $E_L$ est maximale, $E_C = 0$. Elles sont en opposition de phase : l'une est à son maximum exactement quand l'autre est à zéro.
 
@@ -199,7 +199,7 @@ La pulsation propre vaut $\omega_0 = \frac{2\pi}{T_0} = \frac{1}{\sqrt{LC}} = \f
 
 Si le condensateur est chargé initialement à $U_0 = 6\ \text{V}$, l'énergie totale conservée dans le cas idéal est :
 
-$$E = \frac{1}{2}C U_0^2 = \frac{1}{2} \times 10^{-5} \times 36 = 1{,}8 \times 10^{-4}\ \text{J}$$
+$$E_t = \frac{1}{2}C U_0^2 = \frac{1}{2} \times 10^{-5} \times 36 = 1{,}8 \times 10^{-4}\ \text{J}$$
 
 Un quart de période plus tard, toute cette énergie est dans la bobine : $E_L = 1{,}8 \times 10^{-4}\ \text{J}$, $E_C = 0$.
 
@@ -341,22 +341,6 @@ $$\boxed{L\frac{d^2q}{dt^2} + R\frac{dq}{dt} + \frac{q}{C} = 0}$$
 
 C'est l'**équation différentielle du circuit RLC amorti**.
 
-### Ce que cette équation dit de l'énergie : retrouver $P = Ri^2$
-
-On a affirmé plus haut, sans le démontrer, que « $R$ dissipe l'énergie » et que « l'énergie totale $E_C + E_L$ diminue à chaque oscillation ». L'équation qu'on vient d'établir suffit à le prouver, en trois étapes.
-
-**Premier temps — multiplier l'équation par $i$.** Avec $i = \frac{dq}{dt}$, l'équation s'écrit $L\frac{di}{dt} + Ri + \frac{q}{C} = 0$. On multiplie chaque terme par $i$ :
-
-$$Li\frac{di}{dt} + Ri^2 + \frac{q\,i}{C} = 0$$
-
-**Deuxième temps — reconnaître deux dérivées.** Le premier terme est la dérivée de $\frac{1}{2}Li^2$, c'est-à-dire de $E_L$ : $Li\frac{di}{dt} = \frac{d}{dt}\!\left(\frac{1}{2}Li^2\right)$. Le troisième terme, avec $q i = q\frac{dq}{dt}$ et $u_C = \frac{q}{C}$, est la dérivée de $\frac{1}{2}Cu_C^2$, c'est-à-dire de $E_C$ : $\frac{qi}{C} = \frac{d}{dt}\!\left(\frac{q^2}{2C}\right) = \frac{d}{dt}\!\left(\frac{1}{2}Cu_C^2\right)$.
-
-**Troisième temps — regrouper.** L'équation devient $\frac{d}{dt}\!\left(\frac{1}{2}Li^2 + \frac{1}{2}Cu_C^2\right) = -Ri^2$, c'est-à-dire :
-
-$$\boxed{\frac{dE_t}{dt} = -R i^2}$$
-
-Puisque $R > 0$ et $i^2 \geq 0$, le membre de droite est négatif ou nul : $E_t$ ne peut que décroître, jamais croître. C'est exactement la puissance $P = Ri^2$ dissipée par effet Joule qu'on avait annoncée — elle n'était pas posée par convention, elle sort directement de l'équation du circuit.
-
 ### Tester la prédiction : le cosinus idéal vérifie-t-il l'équation amortie ?
 
 Voici le calcul qui répond à la question qu'on a posée au début. On prend $q(t) = Q_{max}\cos\!\left(\frac{2\pi t}{T_0} + \varphi\right)$ et on le substitue dans l'équation amortie qu'on vient d'établir. Si la prédiction est juste, tout doit s'annuler.
@@ -386,6 +370,22 @@ Voilà pourquoi le programme trace une ligne :
 - **Cas amorti ($R$ non négligeable) :** on établit l'équation $Lq'' + Rq' + \frac{q}{C} = 0$, et **on s'arrête là**. On ne cherche pas de solution analytique fermée. Le régime amorti se décrit qualitativement (les trois régimes), énergétiquement (l'enveloppe décroît par effet Joule), et expérimentalement (on lit la pseudo-période sur un oscillogramme, on n'essaie pas de la calculer).
 
 La raison n'est pas arbitraire : résoudre l'équation amortie demande des outils mathématiques qui ne font pas partie du programme. On ne peut pas honnêtement faire semblant que c'est aussi simple que le cas idéal — ce n'est pas le cas.
+
+### Ce que cette équation dit de l'énergie : retrouver $P = Ri^2$
+
+On a affirmé plus haut, sans le démontrer, que « $R$ dissipe l'énergie » et que « l'énergie totale $E_C + E_L$ diminue à chaque oscillation ». L'équation amortie établie au début de ce chapitre suffit à le prouver, en trois étapes.
+
+**Premier temps — multiplier l'équation par $i$.** Avec $i = \frac{dq}{dt}$, l'équation s'écrit $L\frac{di}{dt} + Ri + \frac{q}{C} = 0$. On multiplie chaque terme par $i$ :
+
+$$Li\frac{di}{dt} + Ri^2 + \frac{q\,i}{C} = 0$$
+
+**Deuxième temps — reconnaître deux dérivées.** Le premier terme est la dérivée de $\frac{1}{2}Li^2$, c'est-à-dire de $E_L$ : $Li\frac{di}{dt} = \frac{d}{dt}\!\left(\frac{1}{2}Li^2\right)$. Le troisième terme, avec $q i = q\frac{dq}{dt}$ et $u_C = \frac{q}{C}$, est la dérivée de $\frac{1}{2}Cu_C^2$, c'est-à-dire de $E_C$ : $\frac{qi}{C} = \frac{d}{dt}\!\left(\frac{q^2}{2C}\right) = \frac{d}{dt}\!\left(\frac{1}{2}Cu_C^2\right)$.
+
+**Troisième temps — regrouper.** L'équation devient $\frac{d}{dt}\!\left(\frac{1}{2}Li^2 + \frac{1}{2}Cu_C^2\right) = -Ri^2$, c'est-à-dire :
+
+$$\boxed{\frac{dE_t}{dt} = -R i^2}$$
+
+Puisque $R > 0$ et $i^2 \geq 0$, le membre de droite est négatif ou nul : $E_t$ ne peut que décroître, jamais croître. C'est exactement la puissance $P = Ri^2$ dissipée par effet Joule qu'on avait annoncée — elle n'était pas posée par convention, elle sort directement de l'équation du circuit.
 
 ---
 
@@ -453,11 +453,13 @@ Aux deux instants, $i = 0$, donc :
 
 $$E_t(t_1) = \frac{1}{2}CU_1^2 \qquad E_t(t_2) = \frac{1}{2}CU_2^2$$
 
-$$\Delta E = E_t(t_1) - E_t(t_2) = \frac{1}{2}C\left(U_1^2 - U_2^2\right)$$
+$$E_j = |\Delta E_t| = E_t(t_1) - E_t(t_2) = \frac{1}{2}C\left(U_1^2 - U_2^2\right)$$
 
-$$\Delta E = \frac{1}{2}\times 2\times10^{-6}\times\left(6{,}0^2 - 4{,}0^2\right) = 10^{-6}\times(36 - 16) = 10^{-6}\times 20$$
+Les sujets appellent $E_j$ cette énergie dissipée par effet Joule et demandent sa valeur absolue : la variation $\Delta E_t = E_t(t_2) - E_t(t_1)$, calculée dans le sens habituel (fin moins début), est négative, puisque l'énergie totale a diminué.
 
-$$\boxed{\Delta E = 2{,}0\times10^{-5}\ \text{J} = 20\ \mu\text{J}}$$
+$$E_j = \frac{1}{2}\times 2\times10^{-6}\times\left(6{,}0^2 - 4{,}0^2\right) = 10^{-6}\times(36 - 16) = 10^{-6}\times 20$$
+
+$$\boxed{E_j = 2{,}0\times10^{-5}\ \text{J} = 20\ \mu\text{J}}$$
 
 Cette énergie n'a pas disparu du calcul par hasard : c'est exactement ce que R a dissipé par effet Joule pendant ce cycle, la quantité même que la relation $\frac{dE_t}{dt} = -Ri^2$, établie plus haut à partir de l'équation amortie, dit être toujours perdue, jamais gagnée.
 

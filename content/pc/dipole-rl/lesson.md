@@ -97,13 +97,25 @@ C'est l'**équation différentielle du dipôle RL** soumis à un échelon de ten
 
 ### Cette même équation, mais en $u_{R_0}$
 
-Un sujet demande parfois cette équation non pas en $i$, mais en $u_{R_0}$, la tension aux bornes du résistor $R_0$ — c'est elle, en pratique, qu'un oscilloscope ou un système d'acquisition enregistre directement, jamais $i$ lui-même. Le passage de l'une à l'autre est un simple changement de variable, par la loi d'Ohm : $i = \dfrac{u_{R_0}}{R_0}$, donc $\dfrac{di}{dt} = \dfrac{1}{R_0}\dfrac{du_{R_0}}{dt}$. En reportant ces deux expressions dans $E = R_0 i + u_{bobine}$ (avec $u_{bobine} = ri + L\dfrac{di}{dt}$ du chapitre 2), puis en multipliant toute l'équation par $R_0$, on obtient l'équation différentielle en $u_{R_0}$ :
+Un sujet demande parfois cette équation non pas en $i$, mais en $u_{R_0}$, la tension aux bornes du résistor $R_0$ — c'est elle, en pratique, qu'un oscilloscope ou un système d'acquisition enregistre directement, jamais $i$ lui-même. Le passage de l'une à l'autre est un changement de variable, en trois gestes.
+
+*Premier geste — la loi d'Ohm, et sa dérivée :* on exprime $i$ et sa dérivée avec la grandeur mesurée.
+
+$$i = \frac{u_{R_0}}{R_0} \qquad\text{donc}\qquad \frac{di}{dt} = \frac{1}{R_0}\,\frac{du_{R_0}}{dt}$$
+
+*Deuxième geste — reporter dans la loi des mailles* $E = R_0\,i + r\,i + L\dfrac{di}{dt} = R\,i + L\dfrac{di}{dt}$ (chapitre 2) :
+
+$$E = \frac{R}{R_0}\,u_{R_0} + \frac{L}{R_0}\,\frac{du_{R_0}}{dt}$$
+
+*Troisième geste — normaliser :* on multiplie par $R_0$, puis on divise par $L$, pour que la dérivée ait le coefficient $1$. C'est le dernier geste, et c'est celui qu'on oublie :
 
 $$\frac{du_{R_0}}{dt} + \frac{R}{L}\,u_{R_0} = \frac{R_0 E}{L}$$
 
 (avec $R = R_0 + r$, le regroupement fait plus haut). Son plateau, quand $\dfrac{du_{R_0}}{dt} = 0$, vaut $u_{R_0,\infty} = \dfrac{R_0 E}{R} = \dfrac{R_0 E}{R_0+r}$.
 
 Un sujet écrit souvent cette même équation sous une forme condensée, $\tau\,\dfrac{du_{R_0}}{dt} + u_{R_0} = A$ (avec, comme toujours, $\tau = L/R$) : ne cherche pas à deviner $A$ à l'oreille, identifie-le en comparant terme à terme avec l'équation ci-dessus — ici, $A = u_{R_0,\infty} = \dfrac{R_0 E}{R_0+r}$.
+
+*Attention aux noms des sujets :* ils appellent souvent « $R$ » le résistor lui-même — le $R_0$ de ce chapitre — et écrivent la résistance totale en somme explicite, résistor plus $r$, là où ce chapitre l'a regroupée en un seul symbole. C'est la même équation, seuls les noms changent : avant d'identifier $A$ ou $\tau$, repère quel symbole de l'énoncé désigne le résistor seul.
 
 ### Deviner la solution, puis vérifier
 
@@ -226,7 +238,7 @@ Par la méthode des 63 % : à $t = 5\ \text{ms}$, on doit lire $i \approx 0{,}63
 
 Le régime permanent est pratiquement atteint à $t \approx 5\tau = 25\ \text{ms}$.
 
-Vérifie ta compréhension de la constante de temps — le point d'arrêt t'attend à la fin de ce chapitre, après les deux sections qui suivent.
+[[checkpoint:cp-r3-tau]]
 
 ### Une troisième lecture : la droite $\dfrac{di}{dt} = f(i)$
 
@@ -284,27 +296,25 @@ partant de $I_{max}$ — car **le courant dans la bobine est continu** : sa vale
 
 ### Exemple numérique de la rupture
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on reprend le circuit des chapitres 3 et 4 ($R = 60\ \Omega$, $r = 10\ \Omega$, $L = 0{,}3\ \text{H}$, $I_{max} = 100\ \text{mA}$), et on ouvre l'interrupteur une fois le régime permanent atteint, en le remplaçant par une résistance de secours $R' = 200\ \Omega$.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on reprend le circuit des chapitres 3 et 4 ($R = 60\ \Omega$, $r = 10\ \Omega$, $L = 0{,}3\ \text{H}$, $I_{max} = 100\ \text{mA}$), et on ouvre l'interrupteur une fois le régime permanent atteint. Une résistance de secours $R_d = 200\ \Omega$, montée **en parallèle sur la bobine**, referme le chemin du courant : la résistance totale de la maille de secours est $R' = R_d + r = 210\ \Omega$.
 
 Par continuité du courant dans la bobine (chapitre 2), $i(0^+) = I_{max} = 100\ \text{mA}$ — encore la valeur d'avant l'ouverture, pas zéro.
 
-La tension aux bornes de $R'$, juste après l'ouverture :
+La tension aux bornes de $R_d$, juste après l'ouverture :
 
-$$u_{R'}(0^+) = R'\,i(0^+) = 200 \times 0{,}100 = 20\ \text{V}$$
+$$u_{R_d}(0^+) = R_d\,i(0^+) = 200 \times 0{,}100 = 20\ \text{V}$$
 
-Vingt volts, alors que le générateur ne fournissait que $E = 6\ \text{V}$ : sans générateur dans cette maille pour la limiter, la tension née de la décharge de la bobine dépasse largement celle du régime précédent — c'est exactement cette surtension qui produit l'étincelle à l'interrupteur.
+Vingt volts, alors que le générateur ne fournissait que $E = 6\ \text{V}$ : la voie de secours ne supprime pas la surtension, elle la **borne**. Plus $R_d$ est grande, plus $u_{R_d}(0^+) = R_d\,I_{max}$ l'est ; sans aucune voie de secours ($R_d \to \infty$), elle deviendrait énorme — c'est alors l'étincelle à l'interrupteur.
 
-La constante de temps de cette maille de secours porte sur sa propre résistance totale, $R' + r$ — pas sur la résistance $R = R_0 + r$ de l'établissement :
+La constante de temps de cette maille de secours porte sur sa propre résistance totale, $R' = R_d + r$ — pas sur la résistance $R = R_0 + r$ de l'établissement :
 
-$$\tau' = \frac{L}{R'+r} = \frac{0{,}3}{200+10} = \frac{0{,}3}{210} \approx 1{,}43\times10^{-3}\ \text{s} \approx 1{,}43\ \text{ms}$$
+$$\tau' = \frac{L}{R'} = \frac{0{,}3}{210} \approx 1{,}43\times10^{-3}\ \text{s} \approx 1{,}43\ \text{ms}$$
 
 Sur la courbe décroissante $i(t) = I_{max}\,e^{-t/\tau'}$, la tangente à l'origine coupe encore l'axe des temps en $t = \tau'$ — la même propriété géométrique qu'au chapitre 4, appliquée à une courbe qui descend au lieu de monter. Mais la lecture en ordonnée change de valeur : à $t = \tau'$,
 
 $$i(\tau') = I_{max}\,e^{-1} \approx 0{,}37\,I_{max} = 37\ \text{mA}$$
 
 *Le piège à ne pas répéter :* $37\ \%$, pas $63\ \%$. Sur la montée, $\tau$ marque l'instant où l'on a déjà parcouru $63\ \%$ du chemin vers $I_{max}$ ; sur la descente, $\tau'$ marque l'instant où il ne reste que $37\ \%$ du courant initial — le complément, parce que la courbe descend au lieu de monter.
-
-[[checkpoint:cp-r3-tau]]
 
 ---
 

@@ -1332,24 +1332,23 @@ items:
           $i$ : la résistance totale de la maille est $R_0 + r$, pas $R_0$
           seul.
       - id: C
-        text: "$A = \\dfrac{L}{R_0 + r}$"
+        text: "$A = \\dfrac{r E}{R_0 + r}$"
+        correct: false
+        misconception: mc.physics.pc_dipole_rl.bobine-nature-erronee
+        feedback: >
+          $\dfrac{rE}{R_0+r}$ est la part de $E$ qui revient à la résistance
+          interne de la BOBINE en régime permanent. Or la tension enregistrée
+          est celle du résistor $R_0$ : son palier est la part qui revient à
+          $R_0$, $\dfrac{R_0 E}{R_0+r}$.
+      - id: D
+        text: "$A = \\dfrac{(R_0 + r) E}{R_0}$"
         correct: false
         misconception: mc.physics.pc_dipole_rl.tau-mauvais-groupement
         feedback: >
-          Cette expression est celle de $\tau$, pas celle de $A$ : elle a
-          d'ailleurs la dimension d'un temps, pas d'une tension. $A$ est le
-          palier de $u_{R_0}$, une tension ; $\tau = L/(R_0+r)$ règle la
-          durée pour l'atteindre — ce sont deux rôles distincts dans
-          l'équation.
-      - id: D
-        text: "$A = \\dfrac{R_0 E L}{R_0 + r}$"
-        correct: false
-        misconception: mc.physics.pc_dipole_rl.imax-etablissement-mal-compris
-        feedback: >
-          $L$ ne figure pas dans la valeur du palier : en régime permanent,
-          $du_{R_0}/dt = 0$, donc le terme en $L$ de l'équation
-          différentielle disparaît. $L$ ne fixe que la durée $\tau$ pour
-          atteindre ce palier, pas sa valeur.
+          Le rapport est à l'envers : $\dfrac{R_0+r}{R_0} > 1$, donc cette
+          valeur dépasse $E$ — une tension aux bornes d'une partie seulement
+          de la maille ne peut pas dépasser la f.é.m. qui l'alimente. Le
+          résistor prend la fraction $\dfrac{R_0}{R_0+r}$ de $E$.
     correct_feedback: >
       En régime permanent, $du_{R_0}/dt = 0$ : l'équation se réduit à
       $u_{R_0} = A$, avec $A = R_0 E/(R_0+r)$ — c'est le palier de $u_{R_0}$,

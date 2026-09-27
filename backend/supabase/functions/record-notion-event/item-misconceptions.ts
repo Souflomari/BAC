@@ -3608,7 +3608,7 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.pc_dipole_rl.lecture-tau-erronee"
     ],
     "RL-24": [
-      "mc.physics.pc_dipole_rl.imax-etablissement-mal-compris",
+      "mc.physics.pc_dipole_rl.bobine-nature-erronee",
       "mc.physics.pc_dipole_rl.oubli-resistance-interne",
       "mc.physics.pc_dipole_rl.tau-mauvais-groupement"
     ],
@@ -5452,7 +5452,6 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.rlc_serie.energie-consommee-non-conservee"
     ],
     "RLC-M2-5": [
-      "mc.physics.rlc_serie.T0-depend-de-R",
       "mc.physics.rlc_serie.confusion-roles-C-L-stockage",
       "mc.physics.rlc_serie.energie-consommee-non-conservee"
     ],

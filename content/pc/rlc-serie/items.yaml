@@ -2038,23 +2038,17 @@ items:
     stem: |
       Dans le circuit LC idéal du cours ($L = 0{,}1\,\text{H}$,
       $C = 10\,\mu\text{F}$, $U_0 = 6\,\text{V}$, $T_0 \approx 6{,}28\,\text{ms}$,
-      $E = \tfrac12 C U_0^2 = 1{,}8\times10^{-4}\,\text{J}$), on prend
+      $E_t = \tfrac12 C U_0^2 = 1{,}8\times10^{-4}\,\text{J}$), on prend
       $u_C(t) = U_0\cos\!\left(\frac{2\pi t}{T_0}\right)$.
       Quelle est l'énergie $E_L$ stockée dans la bobine à l'instant
       $t = 0{,}3\,T_0$ ?
     type: mcq
     choices:
       - id: A
-        text: |
-          À $t=0{,}3T_0$ (soit $108°$), $u_C(t)=6{,}0\cos(108°)\approx
-          -1{,}85\,\text{V}$, donc $E_C(t)\approx1{,}72\times10^{-5}\,\text{J}$.
-          Par conservation, $E_L(t)=E-E_C(t)\approx1{,}63\times10^{-4}\,\text{J}$.
+        text: "$E_L \\approx 1{,}63\\times10^{-4}\\,\\text{J}$"
         correct: true
       - id: B
-        text: |
-          En intervertissant les formules, on utiliserait la tension du
-          condensateur dans celle de la bobine : $E_L(t) \approx \tfrac12
-          L\,u_C(t)^2 \approx 0{,}172\,\text{J}$.
+        text: "$E_L \\approx 0{,}172\\,\\text{J}$"
         correct: false
         misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
         also_reveals: []
@@ -2063,10 +2057,7 @@ items:
           l'inductance de la bobine. L'énergie de la bobine se calcule avec
           $i$, pas avec $u_C$ : $E_L(t)=E-E_C(t)$ par conservation.
       - id: C
-        text: |
-          Le condensateur change de signe entre $t=0$ et $t=0{,}3T_0$ :
-          cette inversion de charge coûterait un peu d'énergie à la
-          bobine, donnant plutôt $E_L(t) \approx 1{,}50\times10^{-4}\,\text{J}$.
+        text: "$E_L \\approx 1{,}50\\times10^{-4}\\,\\text{J}$"
         correct: false
         misconception: mc.physics.rlc_serie.energie-consommee-non-conservee
         also_reveals: []
@@ -2075,21 +2066,15 @@ items:
           l'inversion de signe de $u_C$ fait partie de l'oscillation
           normale. $E$ reste rigoureusement constante, à tout instant.
       - id: D
-        # M4 reuse : même schéma « R s'invite dans une formule qui n'en a
-        # pas besoin » que le T0-depend-de-R canonique, appliqué ici au
-        # partage d'énergie plutôt qu'à la période — id le plus proche de
-        # l'inventaire pour cette manifestation.
-        text: |
-          Le partage de l'énergie entre le condensateur et la bobine
-          dépendrait aussi de $R$ : sans connaître sa valeur,
-          $E_L(0{,}3T_0)$ ne se déduirait pas de $u_C(t)$ et de $E$ seuls.
+        text: "$E_L \\approx 1{,}72\\times10^{-5}\\,\\text{J}$"
         correct: false
-        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
         also_reveals: []
         feedback: |
-          Le circuit est ici idéal ($R\approx0$) : la conservation
-          $E=E_C+E_L$ suffit à elle seule à trouver $E_L(t)$ dès que
-          $u_C(t)$ est connu. $R$ reste hors de ce calcul, à chaque étape.
+          $1{,}72\times10^{-5}\,\text{J}$, c'est $E_C(t) = \tfrac12 C\,u_C(t)^2$ :
+          l'énergie du CONDENSATEUR à cet instant. La question porte sur la
+          bobine, qui détient le reste de l'énergie totale :
+          $E_L(t) = E_t - E_C(t) \approx 1{,}63\times10^{-4}\,\text{J}$.
     correct_feedback: |
       Angle $=2\pi\times0{,}3=108°$, $\cos(108°)\approx-0{,}309$, donc
       $u_C(t)\approx-1{,}85\,\text{V}$ et $E_C(t)\approx1{,}72\times10^{-5}
@@ -2116,16 +2101,16 @@ items:
     stem: |
       Pour le circuit RLC amorti, on part de l'équation établie
       $L\ddot q + R\dot q + \dfrac{q}{C} = 0$ (avec $i=\dot q$) et de
-      l'énergie $E = \dfrac{q^2}{2C} + \dfrac12 Li^2$.
-      En dérivant $E$ par rapport au temps et en utilisant cette relation,
-      quelle expression obtient-on pour $\dfrac{dE}{dt}$ ?
+      l'énergie totale $E_t = \dfrac{q^2}{2C} + \dfrac12 Li^2$.
+      En dérivant $E_t$ par rapport au temps et en utilisant cette relation,
+      quelle expression obtient-on pour $\dfrac{dE_t}{dt}$ ?
     type: mcq
     choices:
       - id: A
-        text: "$\\dfrac{dE}{dt} = -Ri^2$"
+        text: "$\\dfrac{dE_t}{dt} = -Ri^2$"
         correct: true
       - id: B
-        text: "$\\dfrac{dE}{dt} = +Ri^2$"
+        text: "$\\dfrac{dE_t}{dt} = +Ri^2$"
         correct: false
         misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
         also_reveals: []
@@ -2134,7 +2119,7 @@ items:
           est négatif : $R$ prélève de l'énergie à chaque instant
           ($P_{Joule}=Ri^2\geq0$), elle ne la restitue pas.
       - id: C
-        text: "$\\dfrac{dE}{dt} = 0$"
+        text: "$\\dfrac{dE_t}{dt} = 0$"
         correct: false
         misconception: mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee
         also_reveals: []
@@ -2143,7 +2128,7 @@ items:
           amortie (en le substituant, le terme $R\dot q$ laisse un reste
           non nul). $E$ décroît réellement dès que $R\neq0$.
       - id: D
-        text: "$\\dfrac{dE}{dt} = -L\\left(\\dfrac{di}{dt}\\right)^2$"
+        text: "$\\dfrac{dE_t}{dt} = -L\\left(\\dfrac{di}{dt}\\right)^2$"
         correct: false
         misconception: mc.physics.rlc_serie.confusion-roles-C-L-stockage
         also_reveals: []
@@ -2259,9 +2244,10 @@ coverage_summary:
     mc.physics.rlc_serie.plus-de-R-oscille-plus-vite: 9
     # M1-1, M1-3, M3-1, M3-2, M3-3, RLC-M8-4, RLC-R8-2, RLC-R9-1,
     # +RLC-M7-6 (choice D)
-    mc.physics.rlc_serie.T0-depend-de-R: 11
+    mc.physics.rlc_serie.T0-depend-de-R: 10
     # M3-1, M4-1, M4-2, M4-3, M5-3, M4-4, R8-1, RLC-R8-2, RLC-R9-1,
-    # +RLC-M2-5 (choice D), +RLC-M7-6 (choice C)
+    # +RLC-M7-6 (choice C). (RLC-M2-5 choice D was a prose refusal tagged
+    # here; wave 1 made it the value E_C — a confusion of roles.)
     mc.physics.rlc_serie.pseudo-periode-egale-periode-propre: 6
     # M5-1, M5-2, M5-3, M6-3, RLC-R8-2, RLC-R9-2  (no WAVE-3 primary credit;
     # RLC-M2-4 choice D dual-tags this id via also_reveals — see below,
@@ -2271,7 +2257,7 @@ coverage_summary:
     # +RLC-M2-4 (choice D), +RLC-M7-5 (choice D), +RLC-M6-4 (choice C)
     mc.physics.rlc_serie.confusion-roles-C-L-stockage: 14
     # M1-2, M2-1, M7-1, M7-2, M7-3, M7-4, R8-1, RLC-R8-3, RLC-R9-2,
-    # +RLC-M2-4 (choice C), +RLC-M7-5 (choice B), +RLC-M2-5 (choice B),
+    # +RLC-M2-4 (choice C), +RLC-M7-5 (choice B), +RLC-M2-5 (choices B, D),
     # +RLC-M6-4 (choice D), +RLC-M7-6 (choice B)
     mc.physics.rlc_serie.entretien-est-regime-force: 6
     # M3-3, M8-1, M8-2, M8-3, RLC-M8-4, RLC-R8-3  (no WAVE-3 primary credit;

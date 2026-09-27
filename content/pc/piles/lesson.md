@@ -270,7 +270,7 @@ Passé ce délai, il n'y a plus de $\text{Cu}^{2+}$ à réduire à la cathode : 
 
 ### De la charge à la concentration : ce qui reste, ce qui s'ajoute
 
-Reprends l'exemple précédent : $Q = 1080\ \text{C}$ a traversé le circuit en deux heures, avec, dans chaque bécher, $V = 500\ \text{mL} = 0{,}500\ \text{L}$ de solution, $[\text{Cu}^{2+}]_i = 0{,}50\ \text{mol/L}$ et $[\text{Zn}^{2+}]_i = 0{,}10\ \text{mol/L}$. La quantité d'ions consommée d'un côté, produite de l'autre, vaut dans les deux cas $\dfrac{Q}{2F}$ - le même calcul que $n(\text{Zn})$ plus haut, puisqu'un zinc oxydé consomme exactement un $\text{Cu}^{2+}$ :
+Reprends l'exemple travaillé du début de ce chapitre ($Q = 1080\ \text{C}$ en deux heures) et donne-toi en plus ce qu'il ne précisait pas : dans chaque bécher, $V = 500\ \text{mL} = 0{,}500\ \text{L}$ de solution, $[\text{Cu}^{2+}]_i = 0{,}50\ \text{mol/L}$ et $[\text{Zn}^{2+}]_i = 0{,}10\ \text{mol/L}$. La quantité d'ions consommée d'un côté, produite de l'autre, vaut dans les deux cas $\dfrac{Q}{2F}$ - le même calcul que $n(\text{Zn})$ plus haut, puisqu'un zinc oxydé consomme exactement un $\text{Cu}^{2+}$ :
 
 $$\frac{Q}{2F} = \frac{1080}{2\times9{,}65\times10^{4}} \approx 5{,}6\times10^{-3}\ \text{mol}$$
 
