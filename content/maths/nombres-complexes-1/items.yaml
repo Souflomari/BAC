@@ -190,6 +190,59 @@ misconceptions:
       e^{iθ} = cos θ + i sin θ (sinus IMPAIR : sin(-θ) = -sin θ). La conversion
       passe par module et argument, pas par une lecture directe des coefficients.
       (Exercé par la couche summit / checkpoints, pas encore par l'end-bank.)
+  # ── Ajoutées pour la dette d'examen GAP-B (docs/audits/dette-examen/maths.md,
+  # « nombres-complexes-1 ») : équation du second degré dans ℂ (Δ réel négatif,
+  # Δ complexe carré parfait) et Viète, travaillées au corps de la leçon
+  # (lesson.md:333-470) mais jamais testées avant NBCOMPLEX-34.
+  - id: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+    label: >-
+      « Δ réel négatif ⇒ « aucune solution », comme dans ℝ »
+    description: >-
+      Pour une équation du second degré à coefficients réels, l'élève garde le
+      verdict de ℝ (Δ<0 ⇒ pas de solution) même en travaillant dans ℂ, au lieu
+      de construire δ tel que δ² = Δ.
+    contradicts_principle: >-
+      Dans ℂ, un Δ réel négatif donne δ = i√|Δ| (car δ² = -|Δ| = Δ) et
+      l'équation a toujours deux solutions complexes conjuguées : le mur « Δ<0
+      ⇒ aucune solution » de ℝ est tombé, c'est tout l'objet du chapitre.
+  - id: mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels
+    label: >-
+      « Les deux racines seraient toujours conjuguées, même à coefficients complexes »
+    description: >-
+      L'élève applique la propriété « les racines sont conjuguées » à une
+      équation dont un coefficient n'est pas réel.
+    contradicts_principle: >-
+      La propriété repose entièrement sur ā=a, b̄=b, c̄=c (coefficients
+      réels) ; dès qu'un coefficient est complexe non réel, elle cesse de
+      s'appliquer et les deux racines n'ont plus aucune raison d'être conjuguées.
+  - id: mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose
+    label: >-
+      « Mauvais signe dans le carré parfait retenu pour δ »
+    description: >-
+      Pour reconnaître δ tel que δ² = Δ, l'élève choisit le carré de signe
+      opposé dans la table ((1+i)² = 2i contre (1-i)² = -2i), sans vérifier
+      que son carré redonne bien Δ.
+    contradicts_principle: >-
+      (1+i)² = 2i et (1-i)² = -2i ne sont pas interchangeables : le δ retenu
+      doit être VÉRIFIÉ en le redéveloppant, pas deviné sur la table.
+  - id: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+    label: >-
+      « Somme et produit des racines échangés »
+    description: >-
+      L'élève attribue à la somme des racines la valeur du produit (c/a), et
+      au produit la valeur de la somme (-b/a).
+    contradicts_principle: >-
+      Pour az²+bz+c=0, z1+z2 = -b/a (lié au coefficient de z) et z1z2 = c/a
+      (lié au terme constant) : les deux rôles ne s'échangent pas.
+  - id: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+    label: >-
+      « Relations de Viète appliquées sans diviser par a »
+    description: >-
+      Quand a ≠ 1, l'élève lit z1+z2 = -b et z1z2 = c directement sur les
+      coefficients, en oubliant de diviser par le coefficient dominant a.
+    contradicts_principle: >-
+      Les relations sont z1+z2 = -b/a et z1z2 = c/a : si a ≠ 1, il faut
+      diviser par a, pas seulement lire les coefficients bruts.
 items:
   - id: NBCOMPLEX-1
     rung: "R1"
@@ -1979,14 +2032,551 @@ items:
       \qquad z - \bar z = 2i\,\mathrm{Im}(z) \in i\mathbb{R}
       $$
 
+  # ══════════════════════════════════════════════════════════════════════
+  # DETTE D'EXAMEN (docs/audits/dette-examen/maths.md, « nombres-complexes-1 »,
+  # GAP-B × 2) — équation du second degré dans ℂ (Δ réel négatif ; Δ complexe
+  # carré parfait) et Viète, toutes deux TRAVAILLÉES à lesson.md:333-470
+  # (« Exemple travaillé 1 », « Exemple travaillé 2 », « Usage 1 », « Usage 2 »)
+  # mais jamais testées avant cette vague. Items seuls, sans prose nouvelle,
+  # conformément à la règle de reprise d'un GAP-B (DETTE-EXAMEN.md, fin).
+  # ══════════════════════════════════════════════════════════════════════
+
+  # ── Δ réel négatif, coefficients réels : la paire conjuguée (NBCOMPLEX-34 à 37) ──
+
+  - id: NBCOMPLEX-34
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: [equation-second-degre, discriminant-negatif, conjuguee]
+    primary_misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+    stem: >
+      Résoudre dans $\mathbb{C}$ l'équation $z^2 - 4z + 5 = 0$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$S = \\varnothing$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+        feedback: >
+          C'est le verdict de $\mathbb{R}$, pas celui de $\mathbb{C}$ : un $\Delta$ négatif
+          n'empêche plus rien. On cherche $\delta$ tel que $\delta^2=\Delta$ — ici $\delta=2i$,
+          car $(2i)^2=-4$ — et l'équation a deux solutions complexes conjuguées.
+      - id: B
+        text: "$S = \\left\\{\\, 2-i\\ ;\\ 2+i \\,\\right\\}$"
+        correct: true
+      - id: C
+        text: "$S = \\left\\{\\, 1\\ ;\\ 3 \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+        feedback: >
+          La racine carrée n'est définie que sur les réels positifs ou nuls : on ne peut pas
+          l'appliquer telle quelle à $-4$. Il faut $\delta$ tel que $\delta^2=-4$, et c'est
+          $\delta=2i$ (avec le $i$), pas $\delta=2$.
+      - id: D
+        text: "$S = \\left\\{\\, -2-i\\ ;\\ -2+i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Le signe de $b$ s'est perdu : la formule est $z=\dfrac{-b\pm\delta}{2a}$, et ici
+          $b=-4$, donc $-b=+4$. Avec $4$ au numérateur, $z=\dfrac{4\pm2i}{2}=2\pm i$ — les deux
+          solutions ont une partie réelle positive, pas négative.
+    correct_feedback: >
+      $\Delta = 16-20=-4$ est réel négatif : $\delta=2i$ convient (car $(2i)^2=-4$), et
+      $z=\dfrac{4\pm2i}{2}=2\pm i$. Deux solutions complexes conjuguées.
+    solution: |
+      $$\Delta = (-4)^2-4\times1\times5 = 16-20=-4$$
+      $\Delta$ est un réel négatif : $\delta=i\sqrt4=2i$ convient, car $(2i)^2=4i^2=-4=\Delta$.
+      $$z=\frac{4\pm2i}{2}=2\pm i \qquad S=\left\{\,2-i\ ;\ 2+i\,\right\}$$
+
+  - id: NBCOMPLEX-35
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [equation-second-degre, discriminant-negatif, conjuguee]
+    primary_misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+    stem: >
+      Résoudre dans $\mathbb{C}$ l'équation $z^2 - 8z + 20 = 0$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$S = \\left\\{\\, 4-2i\\ ;\\ 4+2i \\,\\right\\}$"
+        correct: true
+      - id: B
+        text: "$S = \\varnothing$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+        feedback: >
+          Dans $\mathbb{C}$, $\Delta<0$ ne ferme plus rien : $\delta=4i$ vérifie
+          $\delta^2=-16=\Delta$, et l'équation a deux solutions complexes conjuguées.
+      - id: C
+        text: "$S = \\left\\{\\, 2\\ ;\\ 6 \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+        feedback: >
+          On a appliqué $\sqrt{\ }$ à un nombre négatif par les règles usuelles. Il faut
+          $\delta$ tel que $\delta^2=-16$ : c'est $\delta=4i$, pas $\delta=4$.
+      - id: D
+        text: "$S = \\left\\{\\, -4-2i\\ ;\\ -4+2i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Le signe de $b$ s'est perdu : la formule est $z=\dfrac{-b\pm\delta}{2a}$, et ici
+          $b=-8$, donc $-b=+8$. Avec $8$ au numérateur, $z=\dfrac{8\pm4i}{2}=4\pm 2i$ — les deux
+          solutions ont une partie réelle positive, pas négative.
+    correct_feedback: >
+      $\Delta=64-80=-16$ ; $\delta=4i$ convient, et $z=\dfrac{8\pm4i}{2}=4\pm2i$.
+    solution: |
+      $$\Delta = (-8)^2-4\times1\times20 = 64-80=-16$$
+      $\delta=i\sqrt{16}=4i$, car $(4i)^2=-16=\Delta$.
+      $$z=\frac{8\pm4i}{2}=4\pm2i \qquad S=\left\{\,4-2i\ ;\ 4+2i\,\right\}$$
+
+  - id: NBCOMPLEX-36
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [equation-second-degre, discriminant-negatif, conjuguee]
+    primary_misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+    stem: >
+      Résoudre dans $\mathbb{C}$ l'équation $z^2 - 12z + 45 = 0$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$S = \\varnothing$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+        feedback: >
+          Dans $\mathbb{C}$, ce mur est tombé : $\delta=6i$ vérifie $\delta^2=-36=\Delta$, et
+          l'équation a deux solutions complexes conjuguées.
+      - id: B
+        text: "$S = \\left\\{\\, 3\\ ;\\ 9 \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+        feedback: >
+          Il faut $\delta$ tel que $\delta^2=-36$ : c'est $\delta=6i$ (le $i$ est indispensable),
+          pas $\delta=6$ traité comme une racine carrée ordinaire.
+      - id: C
+        text: "$S = \\left\\{\\, -6-3i\\ ;\\ -6+3i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Le signe de $b$ s'est perdu : la formule est $z=\dfrac{-b\pm\delta}{2a}$, et ici
+          $b=-12$, donc $-b=+12$. Avec $12$ au numérateur, $z=\dfrac{12\pm6i}{2}=6\pm 3i$ — les deux
+          solutions ont une partie réelle positive, pas négative.
+      - id: D
+        text: "$S = \\left\\{\\, 6-3i\\ ;\\ 6+3i \\,\\right\\}$"
+        correct: true
+    correct_feedback: >
+      $\Delta=144-180=-36$ ; $\delta=6i$ convient, et $z=\dfrac{12\pm6i}{2}=6\pm3i$.
+    solution: |
+      $$\Delta = (-12)^2-4\times1\times45 = 144-180=-36$$
+      $\delta=i\sqrt{36}=6i$, car $(6i)^2=-36=\Delta$.
+      $$z=\frac{12\pm6i}{2}=6\pm3i \qquad S=\left\{\,6-3i\ ;\ 6+3i\,\right\}$$
+
+  - id: NBCOMPLEX-37
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: maths_complexes_algebrique
+    tags: [equation-second-degre, discriminant-negatif, conjuguee, coefficient-dominant]
+    primary_misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+    stem: >
+      Résoudre dans $\mathbb{C}$ l'équation $3z^2 - 6z + 30 = 0$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$S = \\varnothing$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+        feedback: >
+          Dans $\mathbb{C}$, $\Delta<0$ n'interdit plus rien : $\delta=18i$ vérifie
+          $\delta^2=-324=\Delta$, et l'équation a deux solutions complexes conjuguées.
+      - id: B
+        text: "$S = \\left\\{\\, 1-3i\\ ;\\ 1+3i \\,\\right\\}$"
+        correct: true
+      - id: C
+        text: "$S = \\left\\{\\, -2\\ ;\\ 4 \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+        feedback: >
+          Il faut $\delta$ tel que $\delta^2=-324$ : c'est $\delta=18i$, pas $\delta=18$ obtenu
+          en appliquant $\sqrt{\ }$ à un nombre négatif par les règles usuelles.
+      - id: D
+        text: "$S = \\left\\{\\, 1-\\sqrt{11}\\ ;\\ 1+\\sqrt{11} \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          $\Delta=b^2-4ac=36-360=-324$, pas $36+360=396$ : le signe moins devant $4ac$
+          s'est perdu, ce qui change la nature même des solutions (réelles au lieu de
+          complexes).
+    correct_feedback: >
+      $\Delta=36-360=-324=(18i)^2$ ; $z=\dfrac{6\pm18i}{2\times3}=1\pm3i$ (on divise par
+      $2a=6$, pas par $2$).
+    solution: |
+      $$\Delta = (-6)^2-4\times3\times30 = 36-360=-324$$
+      $\delta=i\sqrt{324}=18i$, car $(18i)^2=-324=\Delta$.
+      $$z=\frac{6\pm18i}{2\times3}=\frac{6\pm18i}{6}=1\pm3i \qquad S=\left\{\,1-3i\ ;\ 1+3i\,\right\}$$
+
+  # ── Coefficients complexes, Δ carré parfait à reconnaître (NBCOMPLEX-38 à 41) ──
+
+  - id: NBCOMPLEX-38
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [equation-second-degre, coefficients-complexes, carre-parfait]
+    primary_misconception: mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels
+    stem: >
+      Résoudre dans $\mathbb{C}$ l'équation $z^2 - (5+i)z + (6+2i) = 0$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$S = \\left\\{\\, 2\\ ;\\ 3-i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels
+        feedback: >
+          Les coefficients $-(5+i)$ et $6+2i$ ne sont pas réels : rien n'oblige la seconde
+          racine à être la conjuguée de la première (cette propriété repose entièrement sur
+          $\bar a=a$, $\bar b=b$, $\bar c=c$). Il faut $\delta$ tel que $\delta^2=\Delta$.
+      - id: B
+        text: "$S = \\left\\{\\, 3\\ ;\\ 2+i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose
+        feedback: >
+          $(1-i)^2=-2i$, pas $2i$ : ce n'est pas la racine carrée de $\Delta$ ici. Il fallait
+          vérifier $(1+i)^2=2i=\Delta$ avant de l'utiliser, pas deviner sur la table.
+      - id: C
+        text: "$S = \\left\\{\\, 2\\ ;\\ 3+i \\,\\right\\}$"
+        correct: true
+      - id: D
+        text: "$S = \\left\\{\\, -2\\ ;\\ -3-i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          La formule est $z=\dfrac{-b\pm\delta}{2a}$ : ici $-b=5+i$ (le signe du coefficient
+          $b=-(5+i)$ a été oublié), pas $b=-(5+i)$ lui-même.
+    correct_feedback: >
+      $\Delta=(5+i)^2-4(6+2i)=(24+10i)-(24+8i)=2i=(1+i)^2$, donc $\delta=1+i$ convient, et
+      $z=\dfrac{(5+i)\pm(1+i)}{2}$ donne $S=\{2\,;\,3+i\}$ — non conjuguées.
+    solution: |
+      $$\Delta = (5+i)^2-4(6+2i) = (25+10i-1)-(24+8i) = (24+10i)-(24+8i) = 2i$$
+      $2i=(1+i)^2$ (table du chapitre), donc $\delta=1+i$ convient :
+      vérification $(1+i)^2=1+2i+i^2=2i$. ✓
+      $$z=\frac{(5+i)\pm(1+i)}{2} \implies z_1=\frac{6+2i}{2}=3+i,\quad z_2=\frac{4}{2}=2$$
+      $$S=\left\{\,2\ ;\ 3+i\,\right\}$$
+      Les deux racines ne sont pas conjuguées : les coefficients ne sont pas réels.
+
+  - id: NBCOMPLEX-39
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [equation-second-degre, coefficients-complexes, carre-parfait]
+    primary_misconception: mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels
+    stem: >
+      Résoudre dans $\mathbb{C}$ l'équation $z^2 - (3-i)z + (2-i) = 0$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$S = \\left\\{\\, 1\\ ;\\ 2-i \\,\\right\\}$"
+        correct: true
+      - id: B
+        text: "$S = \\left\\{\\, 2-i\\ ;\\ 2+i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels
+        feedback: >
+          Les coefficients ne sont pas réels : la propriété « racines conjuguées » ne
+          s'applique pas ici. Elle suppose $\bar a=a$, $\bar b=b$, $\bar c=c$, ce qui n'est
+          pas le cas.
+      - id: C
+        text: "$S = \\left\\{\\, 2\\ ;\\ 1-i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose
+        feedback: >
+          $(1+i)^2=2i$, pas $-2i$ : ce n'était pas la racine carrée cherchée ici. On vérifie
+          $(1-i)^2=-2i=\Delta$ avant de l'utiliser, sans deviner.
+      - id: D
+        text: "$S = \\left\\{\\, -1\\ ;\\ -2+i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          La formule utilise $-b=3-i$, pas $b=-(3-i)$ : le signe du coefficient s'est perdu
+          avant la division par $2a$.
+    correct_feedback: >
+      $\Delta=(3-i)^2-4(2-i)=(8-6i)-(8-4i)=-2i=(1-i)^2$, donc $\delta=1-i$, et $S=\{1\,;\,2-i\}$.
+    solution: |
+      $$\Delta = (3-i)^2-4(2-i) = (9-6i-1)-(8-4i) = (8-6i)-(8-4i) = -2i$$
+      $-2i=(1-i)^2$, donc $\delta=1-i$ : vérification $(1-i)^2=1-2i+i^2=-2i$. ✓
+      $$z=\frac{(3-i)\pm(1-i)}{2} \implies z_1=\frac{4}{2}=1,\quad z_2=\frac{2-2i}{2}=1-i$$
+      $$S=\left\{\,1\ ;\ 2-i\,\right\}$$
+
+  - id: NBCOMPLEX-40
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: maths_complexes_algebrique
+    tags: [equation-second-degre, coefficients-complexes, carre-parfait]
+    primary_misconception: mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose
+    stem: >
+      Résoudre dans $\mathbb{C}$ l'équation $z^2 - (7-i)z + (12-4i) = 0$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$S = \\left\\{\\, 4\\ ;\\ 3+i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels
+        feedback: >
+          Les coefficients ne sont pas réels : rien n'impose de conjuguer une racine trouvée
+          pour deviner l'autre. Chaque racine se calcule séparément avec $\delta$.
+      - id: B
+        text: "$S = \\left\\{\\, 4-i\\ ;\\ 3 \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose
+        feedback: >
+          $(1-i)^2=-2i$, pas $2i=\Delta$ : ce $\delta$-là ne convient pas ici. On vérifie
+          $(1+i)^2=2i$ avant de l'utiliser.
+      - id: C
+        text: "$S = \\left\\{\\, -4\\ ;\\ -3+i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          La formule utilise $-b=7-i$, pas $b=-(7-i)$ : le signe du coefficient s'est perdu
+          avant la division par $2a$.
+      - id: D
+        text: "$S = \\left\\{\\, 4\\ ;\\ 3-i \\,\\right\\}$"
+        correct: true
+    correct_feedback: >
+      $\Delta=(7-i)^2-4(12-4i)=(48-14i)-(48-16i)=2i=(1+i)^2$, donc $\delta=1+i$, et
+      $S=\{4\,;\,3-i\}$.
+    solution: |
+      $$\Delta = (7-i)^2-4(12-4i) = (49-14i-1)-(48-16i) = (48-14i)-(48-16i) = 2i$$
+      $2i=(1+i)^2$, donc $\delta=1+i$ : vérification $(1+i)^2=2i$. ✓
+      $$z=\frac{(7-i)\pm(1+i)}{2} \implies z_1=\frac{8}{2}=4,\quad z_2=\frac{6-2i}{2}=3-i$$
+      $$S=\left\{\,4\ ;\ 3-i\,\right\}$$
+
+  - id: NBCOMPLEX-41
+    rung: "R4"
+    difficulty_level: 5
+    skill_code: maths_complexes_algebrique
+    tags: [equation-second-degre, coefficients-complexes, carre-parfait, produit-de-carres]
+    primary_misconception: mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose
+    stem: >
+      Résoudre dans $\mathbb{C}$ l'équation $z^2 - (4-2i)z + (3-2i) = 0$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$S = \\left\\{\\, 1\\ ;\\ 3+2i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels
+        feedback: >
+          Les coefficients ne sont pas réels : conjuguer une racine trouvée pour deviner
+          l'autre n'a aucune raison de marcher ici. Il faut le $\delta$ correct.
+      - id: B
+        text: "$S = \\left\\{\\, 1\\ ;\\ 3-2i \\,\\right\\}$"
+        correct: true
+      - id: C
+        text: "$S = \\left\\{\\, 3\\ ;\\ 1-2i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose
+        feedback: >
+          $\left[2(1+i)\right]^2=4\times2i=8i$, pas $-8i=\Delta$ : c'est le facteur $(1-i)$,
+          pas $(1+i)$, qu'il fallait combiner au $2$.
+      - id: D
+        text: "$S = \\left\\{\\, -1\\ ;\\ -3+2i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          La formule utilise $-b=4-2i$, pas $b=-(4-2i)$ : le signe du coefficient s'est perdu
+          avant la division par $2a$.
+    correct_feedback: >
+      $\Delta=(4-2i)^2-4(3-2i)=(12-16i)-(12-8i)=-8i=2^2(1-i)^2=\left[2(1-i)\right]^2$, donc
+      $\delta=2-2i$, et $S=\{1\,;\,3-2i\}$.
+    solution: |
+      $$\Delta = (4-2i)^2-4(3-2i) = (16-16i-4)-(12-8i) = (12-16i)-(12-8i) = -8i$$
+      $-8i = 4\times(-2i) = 2^2\times(1-i)^2 = \left[2(1-i)\right]^2$ (un produit de carrés est
+      un carré), donc $\delta=2-2i$ : vérification $(2-2i)^2=4-8i+4i^2=4-8i-4=-8i$. ✓
+      $$z=\frac{(4-2i)\pm(2-2i)}{2} \implies z_1=\frac{6-4i}{2}=3-2i,\quad z_2=\frac{2}{2}=1$$
+      $$S=\left\{\,1\ ;\ 3-2i\,\right\}$$
+
+  # ── Somme et produit des racines (Viète), lire sans résoudre (NBCOMPLEX-42 à 45) ──
+
+  - id: NBCOMPLEX-42
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [viete, somme-produit-racines]
+    primary_misconception: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+    stem: >
+      Soient $z_1$ et $z_2$ les deux solutions de l'équation
+      $2z^2 - (10+4i)z + (16+8i) = 0$. Sans résoudre l'équation, calculer $z_1+z_2$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$5+2i$"
+        correct: true
+      - id: B
+        text: "$8+4i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+        feedback: >
+          $\dfrac{c}{a}$ est le PRODUIT $z_1z_2$, pas la somme. La somme se lit sur le
+          coefficient de $z$ : $z_1+z_2=-\dfrac{b}{a}$, jamais sur le terme constant.
+      - id: C
+        text: "$-5-2i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          La relation est $z_1+z_2=-\dfrac{b}{a}$ : c'est $-\dfrac{b}{a}$, jamais
+          $\dfrac{b}{a}$. Le signe moins n'est pas facultatif.
+      - id: D
+        text: "$10+4i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+        feedback: >
+          Ici $a=2\neq1$ : il faut diviser par $a$. $z_1+z_2=-\dfrac{b}{a}=\dfrac{10+4i}{2}=5+2i$,
+          pas $-b=10+4i$ tout court.
+    correct_feedback: >
+      $z_1+z_2=-\dfrac{b}{a}=\dfrac{10+4i}{2}=5+2i$ — aucun discriminant n'est nécessaire.
+    solution: |
+      $$z_1+z_2 = -\frac{b}{a} = -\frac{-(10+4i)}{2} = \frac{10+4i}{2} = 5+2i$$
+
+  - id: NBCOMPLEX-43
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [viete, somme-produit-racines]
+    primary_misconception: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+    stem: >
+      Soient $z_1$ et $z_2$ les deux solutions de l'équation
+      $3z^2 - (9-6i)z + (15+3i) = 0$. Sans résoudre l'équation, calculer $z_1z_2$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$3-2i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+        feedback: >
+          $-\dfrac{b}{a}$ est la SOMME $z_1+z_2$, pas le produit. Le produit se lit sur le
+          terme constant : $z_1z_2=\dfrac{c}{a}$.
+      - id: B
+        text: "$-5-i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          La relation du produit est $z_1z_2=\dfrac{c}{a}$, sans signe moins : c'est la SOMME
+          qui en porte un. Ici $\dfrac{15+3i}{3}=5+i$, pas $-(5+i)$.
+      - id: C
+        text: "$5+i$"
+        correct: true
+      - id: D
+        text: "$15+3i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+        feedback: >
+          Ici $a=3\neq1$ : il faut diviser par $a$. $z_1z_2=\dfrac{c}{a}=\dfrac{15+3i}{3}=5+i$,
+          pas $c=15+3i$ tout court.
+    correct_feedback: >
+      $z_1z_2=\dfrac{c}{a}=\dfrac{15+3i}{3}=5+i$ — aucun discriminant n'est nécessaire.
+    solution: |
+      $$z_1z_2 = \frac{c}{a} = \frac{15+3i}{3} = 5+i$$
+
+  - id: NBCOMPLEX-44
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: maths_complexes_algebrique
+    tags: [viete, somme-produit-racines, construction-inverse]
+    primary_misconception: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+    stem: >
+      Deux nombres complexes $p$ et $q$ vérifient $p+q = 4-2i$ et $pq = 5-i$.
+      Quelle équation de la forme $2z^2+bz+c=0$ admet $p$ et $q$ pour solutions ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2z^2 - (10-2i)z + (8-4i) = 0$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+        feedback: >
+          La somme et le produit ont échangé leurs rôles : c'est $-2(p+q)$ qui doit
+          multiplier $z$, et $2\,pq$ qui doit être le terme constant, pas l'inverse.
+      - id: B
+        text: "$2z^2 + (8-4i)z + (10-2i) = 0$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Le coefficient de $z$ est $-2(p+q)$, avec un signe MOINS : ici
+          $-2(4-2i)=-(8-4i)$, pas $+(8-4i)$.
+      - id: C
+        text: "$2z^2 - (4-2i)z + (5-i) = 0$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+        feedback: >
+          Pour un coefficient dominant $a=2$, l'équation est $2z^2-2(p+q)z+2\,pq=0$ : il faut
+          multiplier $p+q$ et $pq$ par $a$, pas les recopier tels quels.
+      - id: D
+        text: "$2z^2 - (8-4i)z + (10-2i) = 0$"
+        correct: true
+    correct_feedback: >
+      $(z-p)(z-q)=z^2-(p+q)z+pq$, donc $2(z-p)(z-q)=2z^2-2(p+q)z+2\,pq
+      =2z^2-(8-4i)z+(10-2i)$.
+    solution: |
+      $$(z-p)(z-q) = z^2-(p+q)z+pq = z^2-(4-2i)z+(5-i)$$
+      $$2(z-p)(z-q) = 2z^2-2(4-2i)z+2(5-i) = 2z^2-(8-4i)z+(10-2i)$$
+
+  - id: NBCOMPLEX-45
+    rung: "R4"
+    difficulty_level: 5
+    skill_code: maths_complexes_algebrique
+    tags: [viete, somme-produit-racines, expression-symetrique]
+    primary_misconception: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+    stem: >
+      Soit $n$ un nombre complexe non nul, et soient $z_1$, $z_2$ les deux solutions de
+      l'équation $2z^2 - 8nz + 6n^2 = 0$. Sans résoudre, calculer $(z_1-z_2)^2$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$28n^2$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          L'identité est $(z_1-z_2)^2=(z_1+z_2)^2-4\,z_1z_2$, avec un signe MOINS devant le
+          produit — c'est l'identité remarquable du chapitre, pas une somme de carrés.
+      - id: B
+        text: "$4n^2$"
+        correct: true
+      - id: C
+        text: "$9n^4-16n$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+        feedback: >
+          $z_1+z_2=-\dfrac{b}{a}=4n$ et $z_1z_2=\dfrac{c}{a}=3n^2$ : la somme et le produit ont
+          été échangés avant d'appliquer l'identité, ce qui casse jusqu'à l'homogénéité du
+          résultat.
+      - id: D
+        text: "$16n^2$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+        feedback: >
+          $(z_1-z_2)^2=\dfrac{\Delta}{a^2}$, pas $\Delta$ tout court : ici $a=2\neq1$, donc il
+          faut diviser par $a^2=4$. $\dfrac{16n^2}{4}=4n^2$.
+    correct_feedback: >
+      $z_1+z_2=4n$ et $z_1z_2=3n^2$ (lus sur les coefficients), donc
+      $(z_1-z_2)^2=(4n)^2-4(3n^2)=16n^2-12n^2=4n^2$.
+    solution: |
+      $$z_1+z_2 = -\frac{b}{a} = \frac{8n}{2} = 4n \qquad z_1z_2 = \frac{c}{a} = \frac{6n^2}{2} = 3n^2$$
+      $$(z_1-z_2)^2 = (z_1+z_2)^2-4\,z_1z_2 = 16n^2-12n^2 = 4n^2$$
+      Contrôle par $\Delta$ : $\Delta=b^2-4ac=64n^2-48n^2=16n^2$, et
+      $(z_1-z_2)^2=\dfrac{\Delta}{a^2}=\dfrac{16n^2}{4}=4n^2$. ✓
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
-# RÉÉCRIT le 2026-09-05, après NBCOMPLEX-22 à NBCOMPLEX-33. Seize familles
-# siégeaient sous le plancher de 3 items du banc, dont DEUX sans aucun item —
-# `module-argument-vs-parties` et `algebrique-exponentielle-conversion`, que
-# seul le checkpoint cp-bac-exponentielle sondait. Les items qui les referment
-# siègent au barreau R6 : la leçon y annonce elle-même que le sujet national
-# emprunte la forme exponentielle au chapitre suivant, et son point de bascule
-# est justement là. Tableau GÉNÉRÉ contre
+# RÉÉCRIT le 2026-09-27, après NBCOMPLEX-34 à NBCOMPLEX-45 — remboursement de la
+# dette d'examen GAP-B (docs/audits/dette-examen/maths.md, « nombres-complexes-1 »,
+# vague B1) : équation du second degré dans ℂ (Δ réel négatif ; Δ complexe carré
+# parfait) et Viète (somme/produit des racines), toutes deux TRAVAILLÉES à
+# lesson.md:333-470 mais jamais testées avant cette vague. Cinq misconceptions
+# nouvelles (l'inventaire n'en avait aucune qui nomme correctement ces modèles),
+# chacune portée par au moins 3 items neufs — voir per_misconception ci-dessous.
+# Avant cette vague (RÉÉCRIT le 2026-09-05, après NBCOMPLEX-22 à NBCOMPLEX-33) :
+# seize familles siégeaient sous le plancher de 3 items du banc, dont DEUX sans
+# aucun item — `module-argument-vs-parties` et `algebrique-exponentielle-
+# conversion`, que seul le checkpoint cp-bac-exponentielle sondait. Les items
+# qui les referment siègent au barreau R6 : la leçon y annonce elle-même que le
+# sujet national emprunte la forme exponentielle au chapitre suivant, et son
+# point de bascule est justement là. Tableau GÉNÉRÉ contre
 # web/scripts/lib/couverture-compte.mjs, gardé par
 # web/scripts/resume-couverture.mjs.
 coverage_summary:
@@ -2011,13 +2601,18 @@ coverage_summary:
     mc.math.maths_complexes_algebrique.conjugue-mauvais-axe:                { count: 3, items: [NBCOMPLEX-18, NBCOMPLEX-30, NBCOMPLEX-33] }
     mc.math.maths_complexes_algebrique.imaginaire-pur-mauvaise-partie:      { count: 3, items: [NBCOMPLEX-11, NBCOMPLEX-23, NBCOMPLEX-32] }
     mc.math.maths_complexes_algebrique.puissance-i-cycle-errone:            { count: 3, items: [NBCOMPLEX-13, NBCOMPLEX-26, NBCOMPLEX-28] }
-    mc.math.maths_complexes_algebrique.signe-parties-perdu:                 { count: 6, items: [NBCOMPLEX-1, NBCOMPLEX-2, NBCOMPLEX-10, NBCOMPLEX-11, NBCOMPLEX-12, NBCOMPLEX-17] }
+    mc.math.maths_complexes_algebrique.signe-parties-perdu:                 { count: 18, items: [NBCOMPLEX-1, NBCOMPLEX-2, NBCOMPLEX-10, NBCOMPLEX-11, NBCOMPLEX-12, NBCOMPLEX-17, NBCOMPLEX-34, NBCOMPLEX-35, NBCOMPLEX-36, NBCOMPLEX-37, NBCOMPLEX-38, NBCOMPLEX-39, NBCOMPLEX-40, NBCOMPLEX-41, NBCOMPLEX-42, NBCOMPLEX-43, NBCOMPLEX-44, NBCOMPLEX-45] }
     mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif:        { count: 5, items: [NBCOMPLEX-7, NBCOMPLEX-9, NBCOMPLEX-26, NBCOMPLEX-27, NBCOMPLEX-28] }
-    mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle:         { count: 3, items: [NBCOMPLEX-9, NBCOMPLEX-27, NBCOMPLEX-32] }
+    mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle:         { count: 7, items: [NBCOMPLEX-9, NBCOMPLEX-27, NBCOMPLEX-32, NBCOMPLEX-34, NBCOMPLEX-35, NBCOMPLEX-36, NBCOMPLEX-37] }
     mc.math.maths_complexes_algebrique.extension-equation-mal-appariee:     { count: 3, items: [NBCOMPLEX-8, NBCOMPLEX-27, NBCOMPLEX-28] }
     mc.math.maths_complexes_algebrique.module-argument-vs-parties:          { count: 4, items: [NBCOMPLEX-22, NBCOMPLEX-23, NBCOMPLEX-24, NBCOMPLEX-31] }
     mc.math.maths_complexes_algebrique.algebrique-exponentielle-conversion: { count: 3, items: [NBCOMPLEX-24, NBCOMPLEX-31, NBCOMPLEX-33] }
-  total_items: 33
+    mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution:       { count: 4, items: [NBCOMPLEX-34, NBCOMPLEX-35, NBCOMPLEX-36, NBCOMPLEX-37] }
+    mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels:       { count: 4, items: [NBCOMPLEX-38, NBCOMPLEX-39, NBCOMPLEX-40, NBCOMPLEX-41] }
+    mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose:          { count: 4, items: [NBCOMPLEX-38, NBCOMPLEX-39, NBCOMPLEX-40, NBCOMPLEX-41] }
+    mc.math.maths_complexes_algebrique.viete-somme-produit-inverses:        { count: 4, items: [NBCOMPLEX-42, NBCOMPLEX-43, NBCOMPLEX-44, NBCOMPLEX-45] }
+    mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie:          { count: 4, items: [NBCOMPLEX-42, NBCOMPLEX-43, NBCOMPLEX-44, NBCOMPLEX-45] }
+  total_items: 45
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2025,10 +2620,15 @@ coverage_summary:
     R1: 6
     R2: 5
     R3: 3
-    R4: 4
+    R4: 16
     R5: 5
     R6: 5
   honest_state: >-
-    Les vingt misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Douze y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item la casse.
+    Les vingt-cinq misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Onze y siègent EXACTEMENT (3 items) : la marge est nulle et tout
+    retrait d'item la casse. Les cinq nouvelles (delta-negatif-aucune-solution,
+    racines-conjuguees-hors-reels, carre-parfait-signe-oppose,
+    viete-somme-produit-inverses, viete-coefficient-a-oublie) siègent chacune à
+    4 items — remboursement de la dette d'examen GAP-B (équation du second
+    degré dans ℂ, Viète) — et n'ont donc pas non plus de marge au-delà d'un
+    item.
