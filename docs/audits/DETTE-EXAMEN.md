@@ -50,7 +50,8 @@ comme NON montrée pour l'audit de maths — c'est la convention que le cas $\De
 2. **Chute dans un fluide — « la pente à l'origine vaut $g$ ».** Vrai dans l'air ; faux dans les
    cinq sujets (≈ 6 points) qui font tomber une bille dans un liquide avec la poussée
    d'Archimède, où $a_0 = g\,(1-\rho_f/\rho_s)$ — et c'est précisément $a_0$, lu sur la tangente,
-   que ces sujets exploitent pour trouver $\rho_f$. **En cours de correction** (vague A).
+   que ces sujets exploitent pour trouver $\rho_f$. **Corrigé** (vague A) — et la vague 1 a trouvé
+   que le premier correctif avait oublié l'exemple travaillé, la figure et le tableau d'Euler.
 3. Des NOTES DE PORTÉE devenues fausses : `reactions-acido-basiques/lesson.md` exclut le tableau
    d'avancement d'un titrage à $V \neq V_E$ que huit sujets vérifiés exigent ; des en-têtes de
    `bank.yaml` renvoient à des rungs qui n'enseignent pas ce qu'ils disent (maths.md, « stale
@@ -85,7 +86,7 @@ charge à courant constant (GAP-A) · les deux autres sens de la chaîne de Fara
 |---|---|---|
 | — | aspects-énergétiques (erreur de signe) | corrigé, `8dab3097` |
 | — | équations-différentielles ($\Delta=0$) | payé, `b70f9a41` + `b6f95676` |
-| **A** | chute-mouvements-plans (C1, C2, C3, C4) · décroissance-radioactive (D1, D2, D3) · réactions-acido-basiques (chaîne pK_A, titrage, base faible) | en cours — prose et items par deux auteurs distincts, puis critiques de vague 1 |
+| **A** | chute-mouvements-plans (C1, C2, C3, C4) · décroissance-radioactive (D1, D2, D3) · réactions-acido-basiques (chaîne pK_A, titrage, base faible) | **payé** — prose et items par deux auteurs distincts, vague 1 (pédagogie + fidélité) appliquée par six auteurs ; HANDOFF §11.214, trois questions de cadre au propriétaire (`DECISIONS-EN-ATTENTE.md` §31) |
 | B et suivantes | le reste des trois rapports | **dette écrite** |
 
 *La règle de reprise* : un trou GAP-B « travaillé mais jamais testé » se paie par un item, sans

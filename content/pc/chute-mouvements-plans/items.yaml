@@ -102,6 +102,41 @@ misconceptions:
     description: "L'élève transpose la règle du chapitre 2 ($a=g$ indépendant de $m$) au cas avec frottement, sans remarquer que $v_\\ell=mg/k$ contient $m$."
     contradicts_principle: "Cette règle ne vaut que sans frottement. Des qu'un frottement fluide entre en jeu, $v_\\ell=mg/k$ dépend de $m$ : deux objets de même forme mais de masses différentes n'ont pas la même vitesse limite."
 
+  # ── Ajoutée le 2026-09-27 pour l'extension Archimède du rung 7 (audit
+  #    audit-banque-pc1.md, entrées C1/C2 : rho_fluide GAP-A la plus lourde de
+  #    l'audit, tau -> k GAP-B). Aucune des 21 misconceptions déclarées jusque
+  #    -là ne nommait l'erreur : la poussée d'Archimède, contrairement au
+  #    frottement $kv$, ne dépend pas de $v$ — elle est déjà pleinement
+  #    présente à $t=0$ et ne modifie QUE le terme constant de l'équation
+  #    ($a_0$, $v_\ell$), jamais son coefficient en $v$ ($1/\tau$, donc $k$).
+  #    Trois manifestations d'une seule erreur de localisation : l'oublier là
+  #    où elle agit, mal construire le « $1-\rho_f/\rho_s$ », ou l'invoquer là
+  #    où elle n'agit pas. Portée par CMP-39/40/41 (plancher de 3 tenu, sans
+  #    marge) — puis, passe critique wave-1 du même jour (C-4, I7 :
+  #    vagueA-pedagogie.md / vagueA-fidelite.md), étendue à CMP-44 (entrée
+  #    qualitative, en amont de CMP-39) et CMP-45 (établissement de l'ODE
+  #    elle-même, forme la plus attestée du banc) : 5 items, marge de 2.
+  - id: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
+    label: "« La poussée d'Archimède est mal placée dans le modèle : oubliée là où elle agit, ou invoquée là où elle n'agit pas »"
+    description: >
+      L'élève ne localise pas correctement où la poussée d'Archimède intervient
+      dans $m\,dv/dt = mg - F_A - kv$. Tantôt il l'oublie dans le régime
+      initial ou dans $v_\ell$ (il écrit $a_0=g$ comme sans Archimède, alors
+      qu'elle est déjà pleinement présente dès $t=0$, contrairement au
+      frottement $kv$ qui est nul à $v=0$) ; tantôt il retrouve la bonne
+      structure mais oublie le « $1-$ » (il calcule $g\,\rho_f/\rho_s$ au lieu
+      de $g(1-\rho_f/\rho_s)$, ou inverse $\rho_f$ et $\rho_s$) ; tantôt, à
+      l'inverse, il croit qu'elle modifie aussi $\tau$ ou $k$, qui n'en
+      dépendent pourtant jamais.
+    contradicts_principle: >
+      Dans $m\,dv/dt = mg - F_A - kv$, le terme d'Archimède $F_A=\rho_f V g$ ne
+      dépend pas de $v$ : il est pleinement présent dès $t=0$ et ne modifie que
+      le terme CONSTANT de l'équation. Régime initial :
+      $a_0=(mg-F_A)/m=g(1-\rho_f/\rho_s)$, jamais $g$ seul dès que $\rho_f>0$.
+      Régime permanent : $v_\ell=(mg-F_A)/k$. Mais le coefficient de $v$,
+      $1/\tau=k/m$, ne contient pas $F_A$ : $\tau=m/k$ et $k=m/\tau$ restent
+      EXACTEMENT les mêmes qu'en l'absence d'Archimède.
+
   - id: mc.physics.pc_chute_plans.euler-donne-valeur-exacte
     label: "« La méthode d'Euler donne la valeur exacte de $v(t)$ »"
     description: "L'élève croit que la récurrence d'Euler résout exactement l'équation différentielle, quel que soit le pas $\\Delta t$."
@@ -2110,6 +2145,523 @@ items:
       Ici $t_s = 0{,}80\ \text{s}$, donc la descente dure elle aussi
       $0{,}80\ \text{s}$ et le vol entier $1{,}6\ \text{s}$.
 
+  # ══════════════════════════════════════════════════════════════
+  # Ajout du 2026-09-27 — extension Archimède du rung 7 (audit
+  # audit-banque-pc1.md, chute-mouvements-plans C1/C2/C3, et la
+  # recomposition de vitesse C4). Le rung 7 établissait déjà
+  # m dv/dt = mg - F_A - kv et v_ell = (mg-F_A)/k (lesson.md L496-518),
+  # mais aucun item ne le testait : la lecture « pente à l'origine = g »
+  # du régime sans Archimède (CMP-25/26/27) devient FAUSSE dès que
+  # F_A > 0, et rien ne le signalait. CMP-39/40 comblent C1 (a_0 puis
+  # rho_fluide) ; CMP-41 comble C2 (tau -> k, INCHANGÉ par Archimède) ;
+  # CMP-42 comble C3 (frottement quadratique, v_ell = sqrt(mg/alpha)) ;
+  # CMP-43 comble C4 (recomposer V à un instant donné à partir de
+  # v_x, v_y), rung 11, famille projectile déjà déclarée. Aucun nombre
+  # repris tel quel d'un sujet bancarisé (bk-2018-n-x4, bk-2022-n-x4,
+  # bk-2024-n-x5, bk-2012-n-x5, bk-2021-n-x5, bk-2010-n-x4c,
+  # bk-2019-n-x4, bk-2021-r-x5) : g pris à 9,8 m/s² (convention déjà en
+  # usage dans ce fichier pour R7-R8, à la place du g=10 de la banque),
+  # masses, masses volumiques, tau, v_ell et angles tous redéfinis.
+  # ══════════════════════════════════════════════════════════════
+
+  - id: CMP-39
+    rung: "R7"
+    difficulty_level: 4
+    habilete: utilisation
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, frottement_fluide, resolution]
+    stem: >
+      Une bille homogène, de masse volumique
+      $\rho_{bille} = 3{,}0\times10^3\ \text{kg/m}^3$, est lâchée sans vitesse
+      initiale dans un liquide de masse volumique
+      $\rho_{liquide} = 1{,}2\times10^3\ \text{kg/m}^3$ (frottement linéaire,
+      poussée d'Archimède non négligeable), avec $g\approx9{,}8\ \text{m/s}^2$.
+      Quelle est l'accélération initiale $a_0$ de la bille, c'est-à-dire la
+      pente de la tangente à l'origine sur la courbe $v=f(t)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$a_0 \\approx 5{,}9\\ \\text{m/s}^2$ : strictement inférieur à $g$, la poussée d'Archimède retranchant déjà une part du poids dès $t=0$"
+        correct: true
+      - id: B
+        text: "$a_0 = 9{,}8\\ \\text{m/s}^2$ : à $t=0$ la vitesse est nulle, donc aucune force autre que le poids n'agit encore, exactement comme sans Archimède"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
+        also_reveals: []
+        feedback: >
+          C'est vrai que le frottement $kv$ est nul à $v=0$ — mais la poussée
+          d'Archimède, elle, ne dépend pas de $v$ : elle est déjà pleinement
+          présente dès le premier instant. L'accélération initiale n'est donc
+          PAS $g$ dès que $\rho_{liquide}>0$, elle vaut
+          $g(1-\rho_{liquide}/\rho_{bille})$.
+      - id: C
+        text: "$a_0 = 9{,}8\\times\\dfrac{\\rho_{liquide}}{\\rho_{bille}} \\approx 3{,}9\\ \\text{m/s}^2$ : la part que retranche la poussée d'Archimède au poids"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
+        also_reveals: []
+        feedback: >
+          Ce calcul retrouve le bon rapport $\rho_{liquide}/\rho_{bille}=0{,}40$
+          mais oublie le « $1-$ » : $a_0$ est l'accélération qui RESTE une fois
+          la part d'Archimède retranchée du poids, pas cette part elle-même.
+          Poussé à sa conséquence, ce modèle ferait CROÎTRE $a_0$ avec la
+          densité du liquide au lieu de le réduire ; et pour un liquide aussi
+          dense que la bille ($\rho_{liquide}=\rho_{bille}$), il donnerait
+          encore $a_0=g$ — alors qu'une bille aussi dense que le liquide qui
+          l'entoure ne coule même pas, elle flotte en équilibre ($a_0=0$).
+      - id: D
+        text: "$a_0 = 9{,}8\\times\\left(1-\\dfrac{\\rho_{bille}}{\\rho_{liquide}}\\right) \\approx -14{,}7\\ \\text{m/s}^2$ : la bille remonterait dès le départ"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
+        also_reveals: []
+        feedback: >
+          Les deux masses volumiques sont interverties : c'est
+          $\rho_{liquide}$ (celle du fluide déplacé) qui doit apparaître au
+          numérateur du rapport retranché à $1$, jamais $\rho_{bille}$. Avec
+          $\rho_{bille}>\rho_{liquide}$ ici, la bille coule bel et bien
+          ($a_0>0$), elle ne remonte pas.
+    correct_feedback: >
+      Exact : contrairement au frottement $kv$ (nul à $v=0$), la poussée
+      d'Archimède ne dépend pas de la vitesse et agit déjà pleinement à
+      $t=0$. Le bilan donne
+      $a_0=(mg-F_A)/m=g(1-\rho_{liquide}/\rho_{bille})=9{,}8\times(1-0{,}40)
+      \approx5{,}9\ \text{m/s}^2$, strictement inférieur à $g$.
+    solution: |
+      Bilan à $t=0$ ($v=0$, donc frottement $kv$ nul, mais Archimède déjà
+      présente) :
+      $$m\frac{dv}{dt}\bigg|_{t=0} = mg - F_A = mg - \rho_{liquide}Vg$$
+      Avec $m=\rho_{bille}V$ :
+      $$a_0 = g - \frac{\rho_{liquide}Vg}{\rho_{bille}V} =
+      g\left(1-\frac{\rho_{liquide}}{\rho_{bille}}\right)$$
+      $$a_0 = 9{,}8\times\left(1-\frac{1{,}2\times10^3}{3{,}0\times10^3}\right)
+      = 9{,}8\times(1-0{,}40) = 9{,}8\times0{,}60 \approx 5{,}9\ \text{m/s}^2$$
+
+  - id: CMP-40
+    rung: "R7"
+    difficulty_level: 4
+    habilete: résolution
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, frottement_fluide, resolution]
+    stem: >
+      Une bille homogène de masse volumique
+      $\rho_{bille}=2{,}5\times10^3\ \text{kg/m}^3$ tombe dans un liquide
+      (frottement linéaire, poussée d'Archimède non négligeable),
+      $g\approx9{,}8\ \text{m/s}^2$. Sur la courbe $v=f(t)$ obtenue, la
+      vitesse limite vaut $v_\ell=0{,}45\ \text{m/s}$ et la tangente à
+      l'origine coupe l'asymptote au point d'abscisse $t=\tau=0{,}15\ \text{s}$.
+      Quelle est la masse volumique $\rho_{liquide}$ du liquide ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\rho_{liquide} \\approx 1{,}73\\times10^3\\ \\text{kg/m}^3$, obtenue via $a_0=v_\\ell/\\tau$ puis $\\rho_{liquide}=\\rho_{bille}(1-a_0/g)$"
+        correct: true
+      - id: B
+        text: "$\\rho_{liquide} \\approx 2{,}39\\times10^3\\ \\text{kg/m}^3$, en prenant directement $a_0=v_\\ell=0{,}45\\ \\text{m/s}$ sans diviser par $\\tau$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
+        also_reveals: []
+        feedback: >
+          $v_\ell$ est une VITESSE limite, pas une accélération : il faut
+          d'abord obtenir $a_0=v_\ell/\tau=0{,}45/0{,}15=3{,}0\ \text{m/s}^2$
+          (le régime initial), et c'est CETTE valeur, pas $v_\ell$
+          directement, qui entre dans $\rho_{liquide}=\rho_{bille}(1-a_0/g)$.
+      - id: C
+        text: "$\\rho_{liquide} \\approx 7{,}65\\times10^2\\ \\text{kg/m}^3$, en calculant $\\rho_{bille}\\times(a_0/g)$ plutôt que $\\rho_{bille}\\times(1-a_0/g)$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
+        also_reveals: []
+        feedback: >
+          Ce calcul retrouve le bon rapport $a_0/g$ mais oublie le
+          « $1-$ » : $\rho_{liquide}/\rho_{bille}$ est ce qui MANQUE au
+          rapport $a_0/g$ pour atteindre $1$, pas ce rapport lui-même.
+          Poussé à sa conséquence, ce modèle ferait CROÎTRE $a_0$ avec la
+          densité du liquide au lieu de le réduire ; et pour un liquide
+          aussi dense que la bille ($\rho_{liquide}=\rho_{bille}$), il
+          donnerait encore $a_0=g$ — alors qu'une bille aussi dense que le
+          liquide qui l'entoure ne coule même pas, elle flotte en équilibre
+          ($a_0=0$).
+      - id: D
+        text: "$\\rho_{liquide} \\approx 3{,}60\\times10^3\\ \\text{kg/m}^3$, en isolant $\\rho_{liquide}$ dans $a_0=g\\!\\left(1-\\rho_{bille}/\\rho_{liquide}\\right)$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
+        also_reveals: []
+        feedback: >
+          Les deux masses volumiques sont interverties dans la formule de
+          départ : c'est $\rho_{liquide}$ qui doit apparaître au numérateur
+          du rapport retranché à $1$ dans
+          $a_0=g(1-\rho_{liquide}/\rho_{bille})$, jamais $\rho_{bille}$.
+    correct_feedback: >
+      Exact : $a_0=v_\ell/\tau=0{,}45/0{,}15=3{,}0\ \text{m/s}^2$ (le régime
+      initial, lu comme au chapitre 7), puis
+      $\rho_{liquide}=\rho_{bille}(1-a_0/g)=2{,}5\times10^3\times(1-3{,}0/9{,}8)
+      \approx1{,}73\times10^3\ \text{kg/m}^3$.
+    solution: |
+      Régime initial obtenu depuis les deux lectures graphiques :
+      $$a_0 = \frac{v_\ell}{\tau} = \frac{0{,}45}{0{,}15} = 3{,}0\ \text{m/s}^2$$
+      Or $a_0 = g\left(1-\dfrac{\rho_{liquide}}{\rho_{bille}}\right)$, donc :
+      $$\rho_{liquide} = \rho_{bille}\left(1-\frac{a_0}{g}\right) =
+      2{,}5\times10^3\times\left(1-\frac{3{,}0}{9{,}8}\right) \approx
+      1{,}73\times10^3\ \text{kg/m}^3$$
+
+  - id: CMP-41
+    rung: "R7"
+    difficulty_level: 4
+    habilete: application_experimentale
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, frottement_fluide, application_experimentale]
+    stem: >
+      Une bille de masse $m=0{,}15\ \text{kg}$ tombe dans un liquide
+      (frottement linéaire, poussée d'Archimède non négligeable),
+      $g\approx9{,}8\ \text{m/s}^2$. Sur la courbe $v=f(t)$ obtenue, la
+      tangente à l'origine coupe l'asymptote horizontale au point d'abscisse
+      $t=0{,}25\ \text{s}$, et la vitesse limite lue vaut
+      $v_\ell=1{,}5\ \text{m/s}$. Que vaut le coefficient de frottement $k$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$k = m/\\tau = 0{,}15/0{,}25 = 0{,}60\\ \\text{kg/s}$ : $1/\\tau$ ne contient jamais la poussée d'Archimède, qui n'affecte que le terme constant"
+        correct: true
+      - id: B
+        text: "$k = mg/v_\\ell = 0{,}15\\times9{,}8/1{,}5 \\approx 0{,}98\\ \\text{kg/s}$ : en régime permanent, le frottement égale tout le poids"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
+        also_reveals: []
+        feedback: >
+          En régime permanent avec Archimède, c'est $mg-F_A=k v_\ell$, pas
+          $mg=k v_\ell$ : cette formule oublie $F_A$. Mais surtout, $\tau$ et
+          $k$ sont liés par $\tau=m/k$ SANS jamais faire intervenir Archimède :
+          pas besoin de passer par $v_\ell$ ici, la seule lecture de $\tau$
+          suffit.
+      - id: C
+        text: "Une fois la vitesse limite atteinte, le frottement a disparu : $k$ n'a alors plus de sens et vaut $0\\ \\text{kg/s}$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.frottement-disparait-a-vlim
+        also_reveals: []
+        feedback: >
+          Au contraire : à $v_\ell$, le frottement est maximal, exactement
+          égal au poids restant ($kv_\ell=mg-F_A$) — ce n'est pas lui qui
+          disparaît, c'est la somme des forces. Le coefficient $k$ est une
+          constante du dispositif : il ne dépend ni du temps ni du régime
+          atteint.
+      - id: D
+        text: "La bille n'atteint en réalité jamais de vrai palier : la valeur lue $\\tau=0{,}25\\ \\text{s}$ ne correspond à rien de physique, et $k$ ne peut pas s'en déduire"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement
+        also_reveals: []
+        feedback: >
+          La courbe présente au contraire une vraie asymptote : l'accélération
+          décroît continûment vers $0$ à mesure que le frottement rejoint le
+          poids restant, jusqu'à un palier réel. La tangente à l'origine,
+          coupant cette asymptote à $t=\tau$, donne directement $k=m/\tau$.
+    correct_feedback: >
+      Exact : $\tau=m/k$ vient du coefficient de $v$ dans l'équation
+      différentielle, $dv/dt=A-v/\tau$ — un coefficient qui ne contient
+      jamais la poussée d'Archimède (elle ne dépend pas de $v$, elle ne
+      modifie que la constante $A$). Donc
+      $k=m/\tau=0{,}15/0{,}25=0{,}60\ \text{kg/s}$, qu'il y ait Archimède ou
+      non.
+    solution: |
+      L'équation différentielle, avec ou sans Archimède, garde la forme
+      $$\frac{dv}{dt} = A - \frac{1}{\tau}v \qquad \text{avec} \qquad
+      \tau = \frac{m}{k}$$
+      seule la constante $A$ change avec Archimède ($A=g(1-\rho_f/\rho_s)$),
+      jamais le coefficient $1/\tau$. La lecture graphique donne
+      $\tau=0{,}25\ \text{s}$, donc :
+      $$k = \frac{m}{\tau} = \frac{0{,}15}{0{,}25} = 0{,}60\ \text{kg/s}$$
+
+  - id: CMP-42
+    rung: "R7"
+    difficulty_level: 4
+    habilete: utilisation
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, frottement_fluide, utilisation]
+    stem: >
+      Une bille de masse $m=0{,}50\ \text{kg}$ tombe dans l'air, en subissant
+      un frottement quadratique $f=\alpha v^2$ (poussée d'Archimède
+      négligée, comme il se doit dans l'air), $g\approx9{,}8\ \text{m/s}^2$.
+      Sur la courbe $v=f(t)$ obtenue expérimentalement, on lit une vitesse
+      limite $v_\ell=3{,}5\ \text{m/s}$. Quelle est la valeur du coefficient
+      de frottement $\alpha$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\alpha = mg/v_\\ell^2 = 0{,}50\\times9{,}8/3{,}5^2 \\approx 0{,}40\\ \\text{kg/m}$ : en régime permanent, le frottement égale exactement le poids"
+        correct: true
+      - id: B
+        text: "À la vitesse limite, le frottement a disparu : $\\alpha$ n'a alors plus de sens physique et ne peut pas se déduire de $v_\\ell$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.frottement-disparait-a-vlim
+        also_reveals: []
+        feedback: >
+          Modèle détecté : à $v_\ell$, le frottement est au contraire
+          MAXIMAL, exactement égal au poids ($\alpha v_\ell^2=mg$) — c'est
+          précisément cette égalité qui permet d'en tirer
+          $\alpha=mg/v_\ell^2$.
+      - id: C
+        text: "La bille n'atteint en réalité jamais de vraie vitesse limite : la valeur $v_\\ell=3{,}5\\ \\text{m/s}$ lue n'est qu'approximative, et aucun $\\alpha$ précis ne peut s'en déduire"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement
+        also_reveals: []
+        feedback: >
+          La courbe présente au contraire un vrai palier : l'accélération
+          décroît continûment vers $0$ à mesure que le frottement
+          $\alpha v^2$ se rapproche du poids, jusqu'à un régime permanent
+          réel — d'où $\alpha=mg/v_\ell^2$ directement.
+      - id: D
+        text: "$\\alpha = g/v_\\ell^2 \\approx 9{,}8/12{,}25 \\approx 0{,}80\\ \\text{kg/m}$, la masse n'intervenant pas dans le régime permanent (comme en chute libre)"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.masse-jamais-determinante-en-chute
+        also_reveals: []
+        feedback: >
+          La formule $\alpha=mg/v_\ell^2$ contient explicitement $m$ :
+          l'omettre revient à traiter cette chute comme une chute libre,
+          alors que dès qu'un frottement fluide entre en jeu, la masse ne
+          disparaît plus. Avec $m=0{,}50\ \text{kg}$,
+          $\alpha\approx0{,}40\ \text{kg/m}$, pas $0{,}80$.
+    correct_feedback: >
+      Exact : en régime permanent le frottement égale le poids,
+      $\alpha v_\ell^2=mg$, d'où $\alpha=mg/v_\ell^2$. Numériquement,
+      $\alpha=0{,}50\times9{,}8/3{,}5^2=4{,}9/12{,}25\approx0{,}40\
+      \text{kg/m}$.
+    solution: |
+      $$\frac{dv}{dt} = g - \frac{\alpha}{m}v^2$$
+      En régime permanent ($dv/dt=0$) :
+      $$mg = \alpha v_\ell^2 \implies \alpha = \frac{mg}{v_\ell^2} =
+      \frac{0{,}50\times9{,}8}{3{,}5^2} = \frac{4{,}9}{12{,}25} =
+      0{,}40\ \text{kg/m}$$
+      C'est l'inversion de la même relation que celle qui donne $v_\ell$ à
+      partir de $\alpha$ : $v_\ell$ mesurée graphiquement, $m$ et $g$
+      connus, il ne reste qu'à isoler $\alpha$.
+
+  - id: CMP-43
+    rung: "R11"
+    difficulty_level: 4
+    habilete: résolution
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, projectile, resolution]
+    stem: >
+      Un projectile est lancé avec $v_0=50\ \text{m/s}$, $\sin\alpha=0{,}28$
+      et $\cos\alpha=0{,}96$ (frottements négligés), $g\approx9{,}8\
+      \text{m/s}^2$. Quelle est la norme $V$ de sa vitesse à l'instant
+      $t=1{,}0\ \text{s}$ après le lancer ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$V \\approx 48{,}2\\ \\text{m/s}$, en recomposant $v_x=48{,}0\\ \\text{m/s}$ (constante) et $v_y=4{,}2\\ \\text{m/s}$ par Pythagore"
+        correct: true
+      - id: B
+        text: "$V \\approx 38{,}4\\ \\text{m/s}$, en prenant $v_x=v_{0x}-gt=38{,}2\\ \\text{m/s}$ : la composante horizontale ralentirait comme la verticale"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.vx-varie-pendant-le-vol
+        also_reveals: []
+        feedback: >
+          Le poids est purement vertical : $a_x=0$ à chaque instant, donc
+          $v_x(t)=v_{0x}=48{,}0\ \text{m/s}$ reste rigoureusement constante
+          tout le vol. Rien ne justifie de lui retrancher $gt$ : ce terme
+          n'appartient qu'à $v_y(t)$.
+      - id: C
+        text: "$V \\approx 40{,}7\\ \\text{m/s}$, en prenant $v_{0y}=v_0\\cos\\alpha=48{,}0$ et $v_{0x}=v_0\\sin\\alpha=14{,}0\\ \\text{m/s}$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
+        also_reveals: []
+        feedback: >
+          Sinus et cosinus sont échangés : c'est $v_{0y}=v_0\sin\alpha=14{,}0\
+          \text{m/s}$ qui projette $\vec v_0$ sur l'axe VERTICAL, et
+          $v_{0x}=v_0\cos\alpha=48{,}0\ \text{m/s}$ sur l'axe horizontal — pas
+          l'inverse.
+      - id: D
+        text: "$V \\approx 58{,}0\\ \\text{m/s}$, en prenant $v_x=v_{0x}+gt=57{,}8\\ \\text{m/s}$ : le poids, cause de la chute, accélérerait aussi le mouvement horizontal"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale
+        also_reveals: []
+        feedback: >
+          Le poids est purement vertical : sa projection sur l'axe horizontal
+          est nulle à chaque instant, donc $a_x=0$. Rien, dans le bilan des
+          forces, n'ajoute $gt$ à $v_x$ : cette composante ne dépend que de
+          $v_{0x}$, jamais du temps écoulé.
+    correct_feedback: >
+      Exact : $v_x(t)=v_0\cos\alpha=50\times0{,}96=48{,}0\ \text{m/s}$ reste
+      constante tout le vol (axe horizontal libre de toute force), tandis que
+      $v_y(t)=v_0\sin\alpha-gt=50\times0{,}28-9{,}8\times1{,}0=4{,}2\
+      \text{m/s}$. La norme se recompose par Pythagore :
+      $V=\sqrt{48{,}0^2+4{,}2^2}=\sqrt{2321{,}64}\approx48{,}2\ \text{m/s}$.
+    solution: |
+      $$v_{0x} = v_0\cos\alpha = 50\times0{,}96 = 48{,}0\ \text{m/s}
+      \qquad v_{0y} = v_0\sin\alpha = 50\times0{,}28 = 14{,}0\ \text{m/s}$$
+      Le mouvement horizontal est uniforme ($a_x=0$) : $v_x(t)=v_{0x}$ à tout
+      instant. Le mouvement vertical subit $g$ :
+      $$v_y(t) = v_{0y} - gt = 14{,}0 - 9{,}8\times1{,}0 = 4{,}2\ \text{m/s}$$
+      La vitesse à l'instant $t=1{,}0\ \text{s}$ se recompose par Pythagore,
+      jamais par simple somme des composantes :
+      $$V = \sqrt{v_x^2+v_y^2} = \sqrt{48{,}0^2+4{,}2^2} = \sqrt{2321{,}64}
+      \approx 48{,}2\ \text{m/s}$$
+
+  # ══════════════════════════════════════════════════════════════
+  # Ajout du 2026-09-27 (même jour, passe critique wave-1 —
+  # vagueA-pedagogie.md C-4/C-5/C-6/C-8/A-5, vagueA-fidelite.md I4/I7/I11/M4) :
+  # deux items de plus pour le cluster Archimède.
+  #   • CMP-44 (C-4) — item qualitatif d'entrée (difficulté 2), placé EN
+  #     AMONT de CMP-39 dans le ramp (même si CMP-39 le précède dans ce
+  #     fichier, comme CMP-37/38 précèdent déjà R1 sans être en tête de
+  #     fichier) : combien de forces, a_0 = g dans l'huile ?, que devient
+  #     a_0 quand rho_f -> rho_s ? Comble le GAP identifié en C-4 : « la
+  #     nouvelle technique entre dans le ramp à plat, tout en haut ».
+  #   • CMP-45 (I7) — établir l'équation différentielle elle-même (quelle
+  #     est la constante A, quelle ODE est correcte) : c'est la question la
+  #     plus attestée du cluster (les cinq entrées du banc — bk-2018-n-x4,
+  #     bk-2022-n-x4, bk-2024-n-x5 — OUVRENT par cette demande), et
+  #     CMP-39/40/41/42 ne testaient jusqu'ici que des inversions numériques
+  #     en aval. Chiffres : aucun, item purement symbolique.
+  # Les deux portent aussi archimede-mal-situee-dans-le-modele (la
+  # description déclarée couvre bien ces manifestations : l'oublier dans le
+  # bilan, oublier le « 1- », croire qu'elle disparaît en régime initial
+  # quand rho_f -> rho_s, ou la loger dans le coefficient de v plutôt que
+  # dans la constante) : le plancher passe de 3 (sans marge) à 5.
+  #
+  # REFUS DOCUMENTÉ (C-5, la valeur somme-des-composantes) : la critique
+  # pédagogique demande de mettre 25,2 m/s (= v_x+v_y, l'erreur nommée par
+  # lesson.md et par pc-1.md:106) parmi les options de CMP-43, « mappée à la
+  # bonne misconception ». Aucune des 22 misconceptions déclarées dans ce
+  # fichier ne nomme correctement cette erreur : « lie les deux axes »
+  # (vx-varie-pendant-le-vol) diagnostique un TOUT AUTRE modèle (vx qui
+  # décélérerait comme vy) — le distracteur diagnostiquerait faux. En créer
+  # une nouvelle pour un seul distracteur d'un seul item violerait aussitôt
+  # le plancher de 3 que ce même résumé assure ci-dessous ; ajouter deux
+  # items de plus rien que pour la faire tenir déborderait du mandat de
+  # cette passe (re-dresser CMP-43, pas en ouvrir une neuve). CMP-43 est
+  # donc re-dressé (v0, angle : plus les mêmes qu'en lesson.md R4/R5) SANS
+  # ce distracteur ; recommandation : pedagogy-architect tranche le nom et
+  # la portée d'une misconception « norme recomposée par somme des
+  # composantes plutôt que par Pythagore », avec un plan à 3 items avant de
+  # l'ajouter.
+
+  - id: CMP-44
+    rung: "R7"
+    difficulty_level: 2
+    habilete: utilisation
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, frottement_fluide, archimede]
+    stem: >
+      Une bille homogène est lâchée sans vitesse initiale dans un bain
+      d'huile (masse volumique de l'huile non nulle, frottement linéaire,
+      poussée d'Archimède non négligeable). Combien de forces agissent sur
+      la bille dès l'instant du lâcher, et son accélération initiale $a_0$
+      vaut-elle encore $g$, comme dans l'air sans huile ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Trois forces (poids, frottement, Archimède) ; $a_0<g$ dès $t=0$, car Archimède ne dépend pas de $v$ (contrairement au frottement, nul à $v=0$) et agit déjà pleinement"
+        correct: true
+      - id: B
+        text: "Trois forces bien présentes, mais à $t=0$ la vitesse est nulle : aucune d'elles, hormis le poids, n'agit encore, donc $a_0=g$, exactement comme dans l'air"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
+        also_reveals: []
+        feedback: >
+          Le frottement, lui, dépend bien de $v$ et s'annule à $t=0$ — mais
+          la poussée d'Archimède ne dépend jamais de $v$ : elle vaut déjà
+          $\rho_{huile}Vg$ à l'instant même du lâcher. Elle retranche donc
+          sa part au poids dès $t=0$, et $a_0$ n'est jamais $g$ dès que
+          $\rho_{huile}>0$.
+      - id: C
+        text: "Seules deux forces agissent, le poids et le frottement : la poussée d'Archimède ne s'exerce que dans des liquides bien plus denses qu'une huile"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
+        also_reveals: []
+        feedback: >
+          Tout corps immergé, quel que soit le fluide, subit une poussée
+          d'Archimède : elle existe dès qu'un volume de fluide est déplacé,
+          pas seulement au-delà d'un seuil de densité. L'oublier revient à
+          revenir, sans le dire, au bilan à deux forces du régime sans
+          Archimède.
+      - id: D
+        text: "Trois forces bien présentes et $a_0<g$ dès le début ; mais si $\\rho_{huile}$ se rapprochait de la masse volumique de la bille, $a_0$ resterait proche de $g$ : Archimède n'affecte que la vitesse limite, jamais le régime initial"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
+        also_reveals: []
+        feedback: >
+          C'est l'inverse : $a_0=g(1-\rho_{huile}/\rho_{bille})$ tend vers
+          $0$, PAS vers $g$, quand $\rho_{huile}$ se rapproche de
+          $\rho_{bille}$ — une bille aussi dense que le liquide qui
+          l'entoure ne coule même pas, elle flotte en équilibre. Archimède
+          agit sur le régime initial tout autant que sur $v_\ell$.
+    correct_feedback: >
+      Exact : trois forces (poids, frottement, poussée d'Archimède), mais
+      seul le frottement dépend de $v$ et s'annule à $t=0$ — Archimède, elle,
+      est déjà pleinement présente. D'où $a_0=g(1-\rho_{huile}/\rho_{bille})$,
+      toujours strictement inférieur à $g$ dès que $\rho_{huile}>0$, et qui
+      tend vers $0$ (pas vers $g$) si le liquide se rapproche de la densité
+      de la bille.
+    solution: |
+      Bilan à $t=0$ ($v=0$) : le poids $mg$, le frottement $kv=0$ (nul, car
+      $v=0$), et la poussée d'Archimède $F_A=\rho_{huile}Vg$ (non nulle, car
+      indépendante de $v$).
+      $$a_0 = \frac{mg-F_A}{m} = g\left(1-\frac{\rho_{huile}}{\rho_{bille}}\right)$$
+      Cette expression est strictement inférieure à $g$ dès que
+      $\rho_{huile}>0$, et tend vers $0$ (pas vers $g$) quand
+      $\rho_{huile}\to\rho_{bille}$ : une bille de densité égale à celle du
+      liquide ne coule pas, elle flotte.
+
+  - id: CMP-45
+    rung: "R7"
+    difficulty_level: 3
+    habilete: résolution
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, frottement_fluide, archimede, resolution]
+    stem: >
+      Une bille homogène de masse $m$, de masse volumique $\rho_s$, est
+      lâchée sans vitesse initiale dans un liquide de masse volumique
+      $\rho_f$ (frottement linéaire $f=kv$, poussée d'Archimède non
+      négligeable). En appliquant la 2e loi de Newton et en posant
+      $\tau=m/k$, quelle équation différentielle vérifie $v(t)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{dv}{dt} + \\dfrac{1}{\\tau}v = g\\left(1-\\dfrac{\\rho_f}{\\rho_s}\\right)$"
+        correct: true
+      - id: B
+        text: "$\\dfrac{dv}{dt} + \\dfrac{1}{\\tau}v = g$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
+        also_reveals: []
+        feedback: >
+          Cette forme est celle du bilan à DEUX forces (poids, frottement),
+          sans Archimède. Dès que $\rho_f>0$, une troisième force s'ajoute
+          au bilan et modifie le terme constant : ce n'est plus $g$ seul.
+      - id: C
+        text: "$\\dfrac{dv}{dt} + \\dfrac{1}{\\tau}v = g\\,\\dfrac{\\rho_f}{\\rho_s}$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
+        also_reveals: []
+        feedback: >
+          Ce terme oublie le « $1-$ » : le bilan (poids moins Archimède,
+          divisé par $m$) donne $g(1-\rho_f/\rho_s)$, pas $g\,\rho_f/\rho_s$
+          — ce qui manque, et non ce qui est retranché.
+      - id: D
+        text: "$\\dfrac{dv}{dt} + \\dfrac{1}{\\tau}\\left(1-\\dfrac{\\rho_f}{\\rho_s}\\right)v = g$"
+        correct: false
+        misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
+        also_reveals: []
+        feedback: >
+          La poussée d'Archimède ne dépend pas de $v$ : elle ne peut donc
+          jamais modifier le COEFFICIENT de $v$ (ici $1/\tau=k/m$, qui ne
+          contient que le frottement). Elle modifie uniquement le terme
+          constant, à droite.
+    correct_feedback: >
+      Exact : le bilan à trois forces (poids, frottement, Archimède),
+      projeté et divisé par $m$ (avec $V=m/\rho_s$ substitué dans le terme
+      d'Archimède), donne $\dfrac{dv}{dt}+\dfrac{1}{\tau}v=g(1-\rho_f/\rho_s)$
+      — le coefficient de $v$ est inchangé par Archimède ; seul le terme
+      constant en porte la trace.
+    solution: |
+      Bilan à trois forces, axe vers le bas :
+      $$m\frac{dv}{dt} = mg - F_A - kv \qquad \text{avec} \qquad F_A=\rho_f Vg$$
+      Avec $V=m/\rho_s$ (bille homogène) :
+      $$m\frac{dv}{dt} = mg\left(1-\frac{\rho_f}{\rho_s}\right) - kv$$
+      On divise par $m$ et on pose $\tau=m/k$ :
+      $$\frac{dv}{dt} + \frac{1}{\tau}v = g\left(1-\frac{\rho_f}{\rho_s}\right)$$
+      Le coefficient de $v$, $1/\tau=k/m$, ne dépend que du frottement — pas
+      d'Archimède, qui ne modifie que le terme constant à droite.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, et il faut dire pourquoi : la version précédente
 # annonçait `floor_met: true` en ne comptant QUE les douze misconceptions
@@ -2148,6 +2700,70 @@ items:
 #     ~50/35/15) : la résolution y est légèrement sur-pondérée, entraînée par
 #     l'équation différentielle et la méthode d'Euler. Dans la tolérance, et
 #     signalé plutôt que corrigé par rembourrage.
+#
+# MISE À JOUR 2026-09-27 : cinq items ajoutés (CMP-39 à CMP-43) pour combler
+# quatre gaps nommés par audit-banque-pc1.md (chute-mouvements-plans, C1-C4) :
+#   • C1 — l'accélération initiale $a_0=g(1-\rho_f/\rho_s)$ et l'extraction de
+#     $\rho_{fluide}$ quand la poussée d'Archimède est présente (GAP-A : la
+#     lecture « pente à l'origine = $g$ » de CMP-25/26/27 y est FAUSSE, et
+#     rien ne le signalait) — CMP-39, CMP-40.
+#   • C2 — $\tau$ lu à la tangente à l'origine puis $k=m/\tau$, INCHANGÉ par
+#     Archimède (GAP-B, jamais testé malgré lesson.md L492) — CMP-41.
+#   • C3 — frottement quadratique $v_\ell=\sqrt{mg/\alpha}$ (GAP-B) — CMP-42.
+#   • C4 — recomposer la norme de la vitesse par Pythagore à un instant
+#     donné, jamais par somme des composantes (GAP-B) — CMP-43.
+# Aucune des 21 misconceptions déclarées ne nommait l'erreur de localisation
+# d'Archimède dans le modèle (oubliée là où elle agit, invoquée là où elle
+# n'agit pas) : une nouvelle, `archimede-mal-situee-dans-le-modele`, a été
+# déclarée et porte exactement le plancher de 3 (CMP-39/40/41), sans marge.
+# CMP-42 et CMP-43 réutilisent des misconceptions déjà déclarées ; trois
+# d'entre elles siégeaient au plancher SANS marge depuis 2026-09-05
+# (`frottement-disparait-a-vlim`, `acceleration-indefinie-avec-frottement`,
+# `poids-agit-sur-lhorizontale`) et portent désormais 4 à 5 items — la
+# couverture mince signalée ci-dessus en 2026-09-05 est en partie résorbée,
+# pas entièrement (les 9 autres misconceptions R7-R10 restent au plancher nu).
+# R7 passe de 3 à 7 items, R11 de 3 à 4 : les deux dépassent le plancher de
+# barreau, conséquence directe du contenu requis, pas un déséquilibre visé.
+#
+# MISE À JOUR 2026-09-27 (même jour, passe critique wave-1 — orchestrateur,
+# citant vagueA-pedagogie.md et vagueA-fidelite.md) : deux items de plus
+# (CMP-44, CMP-45), et CMP-40/CMP-42/CMP-43 modifiés en place (numéros
+# seuls, aucun changement d'id, aucun retrait) :
+#   • C-4 — CMP-44, item qualitatif d'entrée (difficulté 2) en amont du
+#     cluster Archimède : le ramp entrait « à plat, tout en haut » (quatre
+#     items à difficulté 4, aucun entre R6 et eux).
+#   • I-7 — CMP-45, établir l'équation différentielle elle-même (la
+#     question la plus attestée du cluster : les cinq entrées bancarisées
+#     l'ouvrent toutes par elle) — jusqu'ici jamais testée, seules ses
+#     inversions numériques en aval l'étaient (CMP-39/40/41/42).
+#   • C-8 — CMP-40 : $v_\ell$ et $\tau$ changés ($a_0$ n'est plus 6,0
+#     m/s², qui donnait le même facteur 0,388 que l'exemple travaillé de
+#     lesson.md).
+#   • C-6 / I-4 — CMP-42 : question retournée (donné $v_\ell$, demandé
+#     $\alpha$ — l'inversion que demande le banc, bk-2021-n-x5 q2d) ; « fluide
+#     dense » retiré du stem, scénario déplacé dans l'air (poussée
+#     d'Archimède légitimement négligée, cohérent avec lesson.md).
+#   • C-5 / M-4 — CMP-43 : re-dressé avec $v_0=50$, $\sin\alpha=0{,}28$,
+#     $\cos\alpha=0{,}96$ (ni les $v_0=25$/$\sin=0{,}60$/$\cos=0{,}80$ de
+#     l'exemple travaillé R4, ni un même angle à un instant différent).
+#     Le distracteur « somme des composantes » demandé par C-5 n'a PAS été
+#     ajouté : aucune des 22 misconceptions déclarées ne le nomme
+#     honnêtement (voir le refus documenté juste avant CMP-44 ci-dessus) ;
+#     l'ajouter en créant un 23e id aurait rouvert le plancher de 3 pour un
+#     id porté par un seul distracteur d'un seul item.
+#   • A-5 — feedback de CMP-39-C et CMP-40-C : la conséquence du modèle
+#     fautif est maintenant tirée jusqu'au bout (il ferait CROÎTRE $a_0$
+#     avec la densité du fluide ; il donnerait $a_0=g$ pour une bille aussi
+#     dense que le liquide, qui pourtant flotte).
+#   • I-11 — `habilete:` ajouté à CMP-39..45 (vocabulaire de
+#     content/pc/rlc-serie/items.yaml) : utilisation pour CMP-39/42/44 (une
+#     application directe d'une formule déjà isolée), résolution pour
+#     CMP-40/43/45 (inversion à plusieurs étapes / établissement de l'ODE),
+#     application_experimentale pour CMP-41 (double lecture graphique).
+# `archimede-mal-situee-dans-le-modele` passe de 3 (sans marge) à 5
+# (CMP-39/40/41/44/45) : la couverture la plus mince signalée en 2026-09-05
+# et 2026-09-27 gagne enfin de la marge sur ce point précis. R7 passe de 7 à
+# 9 items ; R11 reste à 4 (CMP-43 modifié en place, pas ajouté).
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2159,16 +2775,17 @@ coverage_summary:
   per_misconception:
     mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises:    { count: 4, items: [CMP-4, CMP-5, CMP-18, CMP-19] }
     mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie:     { count: 4, items: [CMP-14, CMP-16, CMP-17, CMP-22] }
-    mc.physics.pc_chute_plans.signe-et-projection-mal-poses:           { count: 4, items: [CMP-10, CMP-12, CMP-13, CMP-37] }
+    mc.physics.pc_chute_plans.signe-et-projection-mal-poses:           { count: 5, items: [CMP-10, CMP-12, CMP-13, CMP-37, CMP-43] }
     mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise:           { count: 3, items: [CMP-6, CMP-20, CMP-21] }
-    mc.physics.pc_chute_plans.vx-varie-pendant-le-vol:                 { count: 5, items: [CMP-1, CMP-7, CMP-23, CMP-24, CMP-38] }
+    mc.physics.pc_chute_plans.vx-varie-pendant-le-vol:                 { count: 6, items: [CMP-1, CMP-7, CMP-23, CMP-24, CMP-38, CMP-43] }
     mc.physics.pc_chute_plans.vitesse-nulle-au-sommet:                 { count: 4, items: [CMP-1, CMP-2, CMP-7, CMP-13] }
-    mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale:             { count: 3, items: [CMP-1, CMP-7, CMP-9] }
+    mc.physics.pc_chute_plans.poids-agit-sur-lhorizontale:             { count: 4, items: [CMP-1, CMP-7, CMP-9, CMP-43] }
     mc.physics.pc_chute_plans.masse-influe-en-chute-libre:             { count: 6, items: [CMP-3, CMP-8, CMP-13, CMP-15, CMP-37, CMP-38] }
     mc.physics.pc_chute_plans.descente-plus-courte-que-montee:         { count: 3, items: [CMP-11, CMP-37, CMP-38] }
-    mc.physics.pc_chute_plans.frottement-disparait-a-vlim:             { count: 3, items: [CMP-25, CMP-26, CMP-27] }
-    mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement:  { count: 3, items: [CMP-25, CMP-26, CMP-27] }
-    mc.physics.pc_chute_plans.masse-jamais-determinante-en-chute:      { count: 3, items: [CMP-25, CMP-26, CMP-27] }
+    mc.physics.pc_chute_plans.frottement-disparait-a-vlim:             { count: 5, items: [CMP-25, CMP-26, CMP-27, CMP-41, CMP-42] }
+    mc.physics.pc_chute_plans.acceleration-indefinie-avec-frottement:  { count: 5, items: [CMP-25, CMP-26, CMP-27, CMP-41, CMP-42] }
+    mc.physics.pc_chute_plans.masse-jamais-determinante-en-chute:      { count: 4, items: [CMP-25, CMP-26, CMP-27, CMP-42] }
+    mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele:     { count: 5, items: [CMP-39, CMP-40, CMP-41, CMP-44, CMP-45] }
     mc.physics.pc_chute_plans.euler-donne-valeur-exacte:               { count: 3, items: [CMP-28, CMP-29, CMP-30] }
     mc.physics.pc_chute_plans.euler-oubli-dt:                          { count: 3, items: [CMP-28, CMP-29, CMP-30] }
     mc.physics.pc_chute_plans.euler-pente-non-recalculee:              { count: 3, items: [CMP-28, CMP-29, CMP-30] }
@@ -2178,7 +2795,7 @@ coverage_summary:
     mc.physics.pc_chute_plans.kepler3-exposants-inverses:              { count: 3, items: [CMP-34, CMP-35, CMP-36] }
     mc.physics.pc_chute_plans.geostationnaire-immobile-absolu:         { count: 3, items: [CMP-34, CMP-35, CMP-36] }
     mc.physics.pc_chute_plans.geostationnaire-toute-altitude:          { count: 3, items: [CMP-34, CMP-35, CMP-36] }
-  total_items: 38
+  total_items: 45
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2189,15 +2806,35 @@ coverage_summary:
     R4: 3
     R5: 3
     R6: 3
-    R7: 3
+    R7: 9
     R8: 3
     R9: 3
     R10: 3
-    R11: 3
+    R11: 4
     note: >-
       Le plancher de barreau (>= 3 items par barreau) est tenu partout. R1 en
-      porte 5 depuis l'ajout de CMP-37 et CMP-38.
+      porte 5 depuis l'ajout de CMP-37 et CMP-38 ; R7 en porte 9 (CMP-39 à
+      CMP-42 puis CMP-44/CMP-45, extension Archimède, frottement quadratique
+      — audit audit-banque-pc1.md, C1-C4, puis passe critique wave-1 du
+      2026-09-27, C-4/I-7) et R11 en porte 4 (CMP-22/23/24, et CMP-43
+      re-dressé en place par la même passe wave-1, C-5).
   honest_state: >-
-    Les 21 misconceptions déclarées sont couvertes, aucune sous le plancher.
-    Quinze d'entre elles y siègent EXACTEMENT (3 items) : la marge est nulle et
-    tout retrait d'item la casse.
+    Les 22 misconceptions déclarées sont couvertes, aucune sous le plancher.
+    Onze d'entre elles y siègent EXACTEMENT (3 items) : la marge est nulle et
+    tout retrait d'item la casse. `archimede-mal-situee-dans-le-modele`,
+    ajoutée le 2026-09-27 au plancher nu (CMP-39/40/41), a gagné deux items
+    supplémentaires le même jour, passe critique wave-1 (CMP-44, entrée
+    qualitative en amont du cluster ; CMP-45, établissement de l'ODE elle-
+    même) : elle porte désormais 5 items, avec une marge de 2 — la
+    couverture la plus mince de tout le fichier a cessé de l'être. Trois
+    misconceptions qui étaient au plancher nu depuis 2026-09-05
+    (`frottement-disparait-a-vlim`, `acceleration-indefinie-avec-
+    frottement`, `poids-agit-sur-lhorizontale`) ont gagné une marge (4-5
+    items) à la passe du 2026-09-27, sans que ce soit leur but premier. Le
+    distracteur « somme des composantes » (25,2 m/s au lieu de la
+    recomposition par Pythagore) que la critique pédagogique demandait pour
+    CMP-43 n'a volontairement PAS été ajouté : aucune des 22 misconceptions
+    déclarées ne le nomme sans mal-diagnostiquer l'élève, et en créer une
+    23e pour un seul distracteur d'un seul item aurait, par construction,
+    ouvert un nouveau trou sous le plancher de 3 — voir le refus documenté
+    au fil des items, juste avant CMP-44.

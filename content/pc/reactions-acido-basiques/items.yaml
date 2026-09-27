@@ -175,6 +175,37 @@ misconceptions:
       — alors qu'il n'en donne qu'une bonne approximation, et seulement si
       la zone de virage encadre $\text{pH}_E$ ; l'indicateur repère
       l'équivalence, il ne la définit pas.
+  # ── AB-CHAIN-1, ajouté le 2026-09-27 (audit-banque-pc2.md, notion
+  #    reactions-acido-basiques, finding #1), RE-DÉCRIT le 2026-09-27
+  #    (wave-1 pedagogy-critic, finding A-4) : la description initiale
+  #    pooled deux erreurs de nature différente sous un même id — « prend
+  #    $[H_3O^+]$ pour $\tau$ sans diviser par $C$ » (un pas de calcul
+  #    sauté) et « oublie $(1-\tau)$ » (une croyance sur ce qu'il reste de
+  #    l'acide) — ce qui nommait une PROCÉDURE, pas un modèle (ADR 0008
+  #    §3(a)), et empêchait de distinguer les deux quand le même id se
+  #    déclenchait à la fois sur RAB-43-B et RAB-44-B. Recentré sur la
+  #    seule croyance qui tient debout : un acide (ou une base) faible est
+  #    supposé si peu réactif que sa concentration à l'équilibre reste
+  #    celle qu'on a versée. Que cette croyance s'exprime en décrétant
+  #    $\tau \approx 0$ sans calcul (RAB-43-B, RAB-47-B) ou en remplaçant
+  #    $(1-\tau)$ par $1$ dans $Q_{r,\text{éq}}$ (RAB-44-B), ce sont deux
+  #    manifestations de la MÊME croyance, désormais nommée comme telle —
+  #    toujours portée par exactement 3 items : RAB-43, RAB-44, RAB-47, ni
+  #    plus ni moins.
+  - id: AB-CHAIN-1
+    chapter: R6
+    label: "Un acide (ou une base) faible supposé ne presque pas réagir"
+    description: >-
+      Croit qu'un acide faible (ou une base faible) réagit si peu avec
+      l'eau que sa concentration à l'équilibre reste pratiquement égale à
+      la concentration apportée $C$ — d'où un $\tau$ décrété proche de $0$
+      sans passer par le calcul, ou le terme $(1-\tau)$ remplacé par $1$
+      dans $Q_{r,\text{éq}} = C\tau^2/(1-\tau)$ (ou son miroir avec $[HO^-]$
+      pour une base) — alors que même un acide qualifié de « faible » voit
+      une fraction $\tau$ mesurable de ses molécules réellement
+      transformées, que la mesure (pH, conductivité…) donne à chaque fois
+      les moyens de calculer, et qu'aucune étiquette qualitative n'en
+      dispense.
 
 items:
 
@@ -2457,6 +2488,451 @@ items:
       que leur combinaison garde la même valeur.
       À retenir : la dilution modifie $\tau$, jamais $K$.
 
+  # ── Ajout du 2026-09-27 (audit-banque-pc2.md, top 10 #1/#2/#7) : la chaîne
+  #    C et pH → τ → Q_r,éq → K_A/pKA (RAB-43, RAB-44), le tableau
+  #    d'avancement du titrage à V ≠ V_E (RAB-45, RAB-46), et la base faible
+  #    dans l'eau (RAB-47). Vérifié avant écriture : ni ce fichier ni
+  #    content/pc/etat-equilibre/items.yaml ne testait la chaîne τ → K_A à
+  #    partir d'une mesure de pH (grep de $K_A$/$pK_A$ dans les deux fichiers :
+  #    aucune occurrence côté etat-equilibre) ; le titrage à V ≠ V_E n'était
+  #    testé qu'à l'équivalence elle-même (RAB-31→RAB-39) ; aucune base
+  #    faible n'apparaissait dans un item ou un checkpoint (RAB-25→27 ne
+  #    portent que sur Ke/neutralité d'une solution quelconque, jamais sur le
+  #    τ d'une base précise).
+  #
+  #    CORRIGÉ le 2026-09-27 (wave-1 bac-fidelity, finding I2) : la première
+  #    version de RAB-43/RAB-44 (C=1,0.10⁻², pH=2,7) reproduisait,
+  #    caractère pour caractère, le triplet (C, τ, Q_r,éq) de
+  #    bk-2022-r-x1b q1-4 (méthylamine, C_b=1,0.10⁻², pH=11,3 : τ≈0,20 et
+  #    Q_r,éq≈5,0.10⁻⁴ tombaient aux MÊMES valeurs que l'acide inventé ici,
+  #    espèce et pH mis à part) — et le commentaire ci-dessus ne l'avait
+  #    vérifié que sur le couple (C, pH), jamais sur le triplet (C, τ,
+  #    Q_r,éq) réellement écrit dans la solution. Nouveaux chiffres :
+  #    C=2,0.10⁻², pH=2,52 → τ≈0,15, Q_r,éq=K_A≈5,3.10⁻⁴, pK_A≈3,28 (RAB-44
+  #    reprend ce τ, cf. sa propre note). Vérifiés, cette fois, contre la
+  #    PAIRE (C, pH) donnée ET, quand le sujet l'écrit lui-même, le τ (ou
+  #    K_A/pK_A) qui en découle, de CHAQUE sujet de ce bank.yaml portant sur
+  #    un acide ou une base faible en solution seule (pas seulement le
+  #    couple C/pH comme le prétendait, à tort, le commentaire remplacé
+  #    ci-dessus) : bk-2011-r-x1 (acide méthanoïque, C_a=1,0.10⁻², pH=2,9 →
+  #    le sujet donne lui-même K_A≈1,81.10⁻⁴, pK_A≈3,74),
+  #    bk-2021-r-x1 (acide méthanoïque, C_a=0,10, pH=2,38 → pK_A≈3,74 ;
+  #    et, séparément dans le même sujet, deux lectures graphiques
+  #    τ≈0,10 à pH=2,8 et τ≈0,40 à pH=3,6, avec C déduites 1,6.10⁻² et
+  #    6,3.10⁻⁴ — aucune n'est un acide C=2,0.10⁻²),
+  #    bk-2018-n-x1 (acide lactique ; C_A=2,0.10⁻² mol/L est déduit d'un
+  #    titrage, PAS d'une mesure directe de pH sur cette solution seule —
+  #    aucun τ n'y est calculé à partir d'un pH direct pour ce C),
+  #    bk-2022-n-x1 (acide propanoïque, C_a=5.10⁻², pH=3,1),
+  #    bk-2022-r-x1b (méthylamine, C_b=1,0.10⁻², pH=11,3 → le sujet donne
+  #    lui-même τ≈0,20, Q_r,éq≈5,0.10⁻⁴ — c'est CE triplet que la version
+  #    remplacée reproduisait),
+  #    bk-2020-n-x1 (ammoniac, C_b=1,0.10⁻², pH=10,6 → le sujet donne
+  #    lui-même τ≈4,0.10⁻²),
+  #    bk-2024-r-x1b (amine, C_B=9,0.10⁻², pH=11,88),
+  #    bk-2017-n-x1b (acide butanoïque, C=1,0.10⁻², pH=3,41),
+  #    bk-2025-r-x1 (acide éthanoïque, C_A=4,2.10⁻³, pH=3,6),
+  #    bk-2013-r-x1b (acide méthanoïque, C_a=1,0.10⁻², pH=2,9 — τ tiré
+  #    d'une mesure de CONDUCTIVITÉ dans ce sujet, pas du pH direct).
+  #    Aucun sujet ne porte C=2,0.10⁻² avec pH=2,52 ; aucun ne recoupe le
+  #    triplet (τ≈0,15, Q_r,éq≈5,3.10⁻⁴, pK_A≈3,28) que RAB-43/RAB-44
+  #    écrivent. RAB-47 (base, C_b=2,0.10⁻², pH=11,0, τ≈0,050) n'était pas
+  #    en cause dans ce finding et reste inchangé — déjà distinct de tous
+  #    les sujets ci-dessus. Le fil rouge R9-R11 (acide éthanoïque,
+  #    C_A=7,5.10⁻², VE=15,0 mL) n'a aucune grandeur en commun avec cette
+  #    chaîne τ→K_A.
+  #
+  #    RE-DÉCRIT également le 2026-09-27 (wave-1 pedagogy-critic, finding
+  #    A-4) : voir la note au-dessus de la déclaration d'AB-CHAIN-1 — le
+  #    distracteur B de RAB-43 et RAB-47 ne prend plus $[H_3O^+]_{eq}$ (ou
+  #    $[HO^-]_{eq}$) directement pour $\tau$ (une procédure, pas un modèle,
+  #    ADR 0008 §3(a)) ; il décrète $\tau \approx 0$ par principe — la
+  #    croyance que redéfinit AB-CHAIN-1, la même que celle testée par le
+  #    distracteur B de RAB-44 (omission de $(1-\tau)$).
+  - id: RAB-43
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_reactions_acido_basiques
+    habilete: utilisation
+    tags: ["chain-tau-KA"]
+    stem: >
+      Une solution aqueuse d'un acide faible $AH$ (couple $AH/A^-$), de
+      concentration apportée $C = 2{,}0 \times 10^{-2}\ \text{mol/L}$, a un pH
+      mesuré de $2{,}52$ à $25\,^\circ\text{C}$. Calcule le taux d'avancement
+      final $\tau$ de la réaction de cet acide avec l'eau.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\tau = [H_3O^+]_{eq}/C = 10^{-2{,}52}/(2{,}0\times10^{-2}) \approx
+          0{,}15$
+        correct: true
+      - id: B
+        text: >-
+          $\tau \approx 0$ (négligeable) : un acide qualifié de faible réagit
+          trop peu avec l'eau pour que $\tau$ s'écarte vraiment de $0$
+        correct: false
+        misconception: AB-CHAIN-1
+        feedback: >
+          Modèle détecté : croit qu'un acide **faible** réagit si peu avec
+          l'eau que sa concentration à l'équilibre reste pratiquement celle
+          qu'on a versée, quelle que soit la mesure. Mais la mesure est
+          donnée précisément pour être exploitée : $\tau =
+          [H_3O^+]_{eq}/C \approx 0{,}15$, soit $15\,\%$ — une fraction bien
+          loin d'être négligeable. « Faible » ne veut pas dire « ne réagit
+          jamais » : $\tau$ se calcule à partir du pH mesuré, il ne se
+          décrète pas d'après l'étiquette de l'acide.
+      - id: C
+        text: >-
+          $\tau = \text{pH}/C = 2{,}52/(2{,}0\times10^{-2}) = 126$
+        correct: false
+        misconception: AB-BASE-2
+        feedback: >
+          Modèle détecté : le pH pris pour la concentration elle-même.
+          $\text{pH}=2{,}52$ n'est pas $[H_3O^+]_{eq}$ : il faut d'abord
+          inverser $\text{pH} = -\log[H_3O^+]$, soit $[H_3O^+]_{eq} =
+          10^{-\text{pH}}$, avant de diviser par $C$.
+      - id: D
+        text: >-
+          $\tau \approx 1$ : un pH aussi bas ($2{,}52$) signale à lui seul une
+          réaction déjà très avancée
+        correct: false
+        misconception: AB-BASE-3
+        feedback: >
+          Modèle détecté : le degré d'avancement déduit du seul pH, sans
+          référence à $C$. Un pH bas peut venir d'une concentration apportée
+          élevée ET d'un $\tau$ modeste, ou d'une concentration faible et d'un
+          $\tau$ proche de $1$ : le pH seul ne dit pas lequel des deux domine
+          — il faut calculer le rapport $[H_3O^+]_{eq}/C$.
+    correct_feedback: >
+      $[H_3O^+]_{eq} = 10^{-2{,}52} \approx 3{,}0\times10^{-3}\ \text{mol/L}$ ;
+      $\tau = [H_3O^+]_{eq}/C = 3{,}0\times10^{-3}/2{,}0\times10^{-2} =
+      0{,}15$.
+    solution: |
+      $$[H_3O^+]_{eq} = 10^{-\text{pH}} = 10^{-2{,}52} \approx 3{,}0\times10^{-3}\ \text{mol/L}$$
+
+      $$\tau = \frac{[H_3O^+]_{eq}}{C} = \frac{3{,}0\times10^{-3}}{2{,}0\times10^{-2}} = 0{,}15$$
+
+      Quinze pour cent de l'acide introduit a réagi avec l'eau ; les
+      $85\,\%$ restants sont toujours sous la forme $AH$ non dissociée.
+
+  - id: RAB-44
+    rung: "R6"
+    difficulty_level: 5
+    skill_code: pc_reactions_acido_basiques
+    habilete: résolution
+    tags: ["chain-tau-KA", "dual-tag:R4-KA-pKA"]
+    stem: >
+      Une solution aqueuse d'un acide faible $AH$ (couple $AH/A^-$), de
+      concentration apportée $C = 2{,}0\times10^{-2}\ \text{mol/L}$, a un pH
+      mesuré de $2{,}52$ à $25\,^\circ\text{C}$ ; son taux d'avancement final
+      vaut $\tau = 0{,}15$. En utilisant $Q_{r,\text{éq}} =
+      \dfrac{C\tau^2}{1-\tau}$, détermine la constante d'acidité $K_A$ du
+      couple $AH/A^-$, puis son $pK_A$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $Q_{r,\text{éq}} = C\tau^2/(1-\tau) = 5{,}3\times10^{-4} = K_A$ ;
+          $pK_A \approx 3{,}28$
+        correct: true
+      - id: B
+        text: >-
+          $Q_{r,\text{éq}} = C\tau^2 = 4{,}5\times10^{-4}$ (le facteur
+          $1-\tau$ est omis) ; $pK_A \approx 3{,}35$
+        correct: false
+        misconception: AB-CHAIN-1
+        feedback: >
+          Modèle détecté : croit qu'un acide faible reste pratiquement
+          intact à l'équilibre — comme si $[AH]_{eq}$ restait égale à $C$.
+          Mais regarde ton propre résultat : tu as toi-même calculé
+          $\tau = 0{,}15$, c'est-à-dire que $15\,\%$ de l'acide introduit a
+          déjà réagi. Omettre $(1-\tau)$ revient à écrire $[AH]_{eq} = C$ —
+          comme si $0\,\%$ avait réagi, en contradiction directe avec le
+          $\tau = 0{,}15$ déjà établi. Le facteur $(1-\tau)$ vient de
+          l'acide non dissocié — il ne disparaît jamais tant que $\tau \neq
+          1$. L'omettre revient à confondre le produit $C\tau^2$ avec le
+          quotient complet $Q_{r,\text{éq}}$.
+      - id: C
+        text: >-
+          $K_A = 5{,}3\times10^{-4}$, donc $pK_A = 5{,}3\times10^{-4}$ aussi :
+          une autre écriture du même nombre
+        correct: false
+        misconception: AB-BASE-4
+        feedback: >
+          Modèle détecté : $K_A$ et $pK_A$ traités comme un seul et même
+          nombre. $pK_A = -\log K_A$ impose un CALCUL, pas une simple
+          relecture : $-\log(5{,}3\times10^{-4}) \approx 3{,}28$, une valeur
+          bien différente de $5{,}3\times10^{-4}$.
+      - id: D
+        text: >-
+          $pK_A = -\log(5{,}3\times10^{-4}) = -3{,}28$, en gardant le signe
+          négatif du logarithme
+        correct: false
+        misconception: AB-BASE-2
+        feedback: >
+          Modèle détecté : le signe moins de la définition mal appliqué.
+          $\log(5{,}3\times10^{-4}) \approx -3{,}28$ est déjà négatif ; le
+          signe moins DEVANT le log, dans $pK_A = -\log K_A$, l'annule :
+          $pK_A \approx 3{,}28$, une valeur positive, comme pour tout acide
+          faible usuel.
+    correct_feedback: >
+      $Q_{r,\text{éq}} = C\tau^2/(1-\tau) = 2{,}0\times10^{-2}\times0{,}15^2 /
+      0{,}85 = 5{,}3\times10^{-4} = K_A$ ; $pK_A = -\log(5{,}3\times10^{-4})
+      \approx 3{,}28$.
+    solution: |
+      $$Q_{r,\text{éq}} = \frac{C\tau^2}{1-\tau} = \frac{2{,}0\times10^{-2}\times(0{,}15)^2}{1-0{,}15} = \frac{4{,}5\times10^{-4}}{0{,}85} \approx 5{,}3\times10^{-4}$$
+
+      À l'équilibre, ce quotient est la constante d'acidité du couple :
+      $K_A = Q_{r,\text{éq}} \approx 5{,}3\times10^{-4}$.
+
+      $$pK_A = -\log(5{,}3\times10^{-4}) \approx 3{,}28$$
+
+      Contrôle par l'autre écriture, directement depuis les concentrations :
+      $$K_A = \frac{[H_3O^+]_{eq}^2}{C - [H_3O^+]_{eq}} = \frac{(3{,}0\times10^{-3})^2}{2{,}0\times10^{-2} - 3{,}0\times10^{-3}} = \frac{9{,}0\times10^{-6}}{1{,}7\times10^{-2}} \approx 5{,}3\times10^{-4}$$
+      Les deux méthodes se recoupent.
+
+  - id: RAB-45
+    rung: "R9"
+    difficulty_level: 4
+    skill_code: pc_reactions_acido_basiques
+    habilete: application_experimentale
+    tags: ["tableau-avancement-titrage"]
+    stem: >
+      On reprend le dosage de l'acide éthanoïque ($pK_A = 4{,}8$) : $V_A =
+      20{,}0$ mL d'acide de concentration $C_A = 7{,}5\times10^{-2}$ mol/L
+      (déterminée au chapitre 9), dosé par une solution de soude $C_B =
+      0{,}10$ mol/L, avec $V_E = 15{,}0$ mL. On s'arrête à $V_B = 10{,}0$ mL,
+      avant l'équivalence. Quel pourcentage de l'acide $CH_3COOH$
+      initialement présent reste-t-il, à ce volume, sous sa forme acide non
+      dissociée ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\approx 33\,\%$ ($1/3$) : $n(HO^-)$ versé ($1{,}0\times10^{-3}$
+          mol, limitant) est retranché de $n(AH)_0$
+        correct: true
+      - id: B
+        text: >-
+          $\approx 50\,\%$ : rapport $V_B/V_A = 10{,}0/20{,}0 = 0{,}50$ pris
+          comme fraction déjà transformée
+        correct: false
+        misconception: AB-TIT-2
+        feedback: >
+          Modèle détecté : $V_A$ substitué à $V_E$ dans un rapport qui n'a de
+          sens qu'avec le volume équivalent. La fraction d'acide transformée
+          est $V_B/V_E$ (ici $10{,}0/15{,}0 \approx 0{,}67$, soit $67\,\%$
+          transformés, donc $33\,\%$ restants), jamais $V_B/V_A$ : ce dernier
+          rapport ignore la concentration réelle de l'acide.
+      - id: C
+        text: >-
+          $0\,\%$ : $V_B = 10{,}0$ mL dépasse la demi-équivalence ($V_E/2 =
+          7{,}5$ mL), l'acide a donc disparu
+        correct: false
+        misconception: AB-EQU-3
+        feedback: >
+          Modèle détecté : la demi-équivalence prise pour un signal de fin de
+          réaction. Dépasser $V_E/2$ ne signifie pas que l'acide a disparu :
+          à $V_E/2$ pile, il en reste encore la MOITIÉ ($50\,\%$) ; à $V_B =
+          10{,}0$ mL (entre $V_E/2$ et $V_E$), il en reste encore $33\,\%$,
+          pas $0$. Seul $V_B = V_E = 15{,}0$ mL épuise l'acide.
+      - id: D
+        text: >-
+          Impossible à calculer avant l'équivalence : la réaction de dosage
+          n'est pas encore terminée à $V_B = 10{,}0$ mL
+        correct: false
+        misconception: AB-TIT-3
+        feedback: >
+          Modèle détecté : la totalité de la réaction crue réservée au seul
+          point d'équivalence. $K \gg 1$ rend la réaction totale à CHAQUE
+          volume versé, avant comme après $V_E$ : à $V_B = 10{,}0$ mL, tout le
+          $HO^-$ versé (le réactif limitant à ce stade) a déjà intégralement
+          réagi — c'est justement ce qui permet ce calcul.
+    correct_feedback: >
+      $n(AH)_0 = C_A V_A = 1{,}5\times10^{-3}$ mol ; $n(HO^-)$ versé $= C_B
+      V_B = 1{,}0\times10^{-3}$ mol, entièrement consommé (limitant avant
+      $V_E$) ; $n(AH)$ restant $= 5{,}0\times10^{-4}$ mol, soit $33\,\%$ de
+      $n(AH)_0$.
+    solution: |
+      $$n(AH)_0 = C_A \times V_A = 7{,}5\times10^{-2}\times20{,}0\times10^{-3} = 1{,}5\times10^{-3}\ \text{mol}$$
+
+      $$n(HO^-)_{\text{versé}} = C_B \times V_B = 0{,}10\times10{,}0\times10^{-3} = 1{,}0\times10^{-3}\ \text{mol}$$
+
+      Avant l'équivalence ($V_B < V_E$), le réactif TITRANT ($HO^-$) est en
+      défaut : la réaction, totale, le consomme intégralement, et une
+      quantité égale d'acide disparaît :
+
+      $$n(AH)_{\text{restant}} = n(AH)_0 - n(HO^-)_{\text{versé}} = 1{,}5\times10^{-3} - 1{,}0\times10^{-3} = 5{,}0\times10^{-4}\ \text{mol}$$
+
+      $$\%\,AH_{\text{restant}} = \frac{5{,}0\times10^{-4}}{1{,}5\times10^{-3}}\times100 \approx 33\,\%$$
+
+      Vérification équivalente par les volumes seuls : $V_B/V_E =
+      10{,}0/15{,}0 \approx 0{,}67$ (fraction transformée), donc
+      $1 - 0{,}67 = 0{,}33$ restante — même résultat.
+
+  # ── RAB-46 RE-HABILLÉ le 2026-09-27 (wave-1 pedagogy-critic, finding A-8) :
+  #    la version précédente reprenait, comme RAB-45, le fil rouge R9-R11
+  #    verbatim (acide éthanoïque/soude, C_A=7,5.10⁻², V_A=20,0, C_B=0,10,
+  #    V_E=15,0 — seul V_B changeait). Pour que le sommet du barreau teste
+  #    la RECONNAISSANCE du bilan de titrage sous un habillage neuf plutôt
+  #    que sa mémorisation, cet item passe à une base faible dosée par un
+  #    acide fort (le miroir du fil rouge), avec des nombres recalculés de
+  #    zéro : C_b=8,0.10⁻² mol/L, V_B=25,0 mL, C_A=0,25 mol/L (titrant),
+  #    V_BE=8,0 mL (vérifié : C_b.V_B = 8,0.10⁻²×25,0 = 2,0 mmol =
+  #    0,25×8,0 = C_A.V_BE), V_A=12,0 mL après l'équivalence. Aucune valeur
+  #    en commun avec le fil rouge ni avec un sujet de ce bank.yaml (grep :
+  #    ni C_A=0,25, ni V_BE=8,0 avec C_b=8,0.10⁻², ni V_A=12,0 mL en ce
+  #    couple ne s'y trouvent). RAB-45 garde le fil rouge inchangé — un seul
+  #    des deux items était à re-habiller.
+  - id: RAB-46
+    rung: "R9"
+    difficulty_level: 4
+    skill_code: pc_reactions_acido_basiques
+    habilete: application_experimentale
+    tags: ["tableau-avancement-titrage", "base-titree-par-acide"]
+    stem: >
+      Un volume $V_B = 25{,}0$ mL d'une solution aqueuse d'une base faible
+      $B$ (couple $BH^+/B$), de concentration $C_b = 8{,}0\times10^{-2}$
+      mol/L, est dosé par une solution d'acide chlorhydrique de
+      concentration $C_A = 0{,}25$ mol/L ; l'équivalence est repérée à
+      $V_{BE} = 8{,}0$ mL. On dépasse l'équivalence et l'on s'arrête à $V_A
+      = 12{,}0$ mL. Quelle est la quantité de matière d'ions $H_3O^+$ en
+      excès (non consommés par la réaction de dosage) dans le mélange ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $n(H_3O^+)_{\text{excès}} = C_A(V_A-V_{BE}) = 0{,}25\times4{,}0\times
+          10^{-3} = 1{,}0\times10^{-3}$ mol
+        correct: true
+      - id: B
+        text: >-
+          $n(H_3O^+)_{\text{excès}} = C_A V_A = 3{,}0\times10^{-3}$ mol : tout
+          l'acide versé compte comme excès
+        correct: false
+        misconception: AB-TIT-2
+        feedback: >
+          Modèle détecté : le volume versé confondu avec le volume en excès.
+          Une partie de l'acide versé, $C_A V_{BE} = 2{,}0\times10^{-3}$ mol, a
+          déjà réagi avec toute la base avant $V_{BE}$ ; l'excès ne porte que
+          sur ce qui est versé APRÈS l'équivalence, $C_A(V_A-V_{BE})$.
+      - id: C
+        text: >-
+          Il n'y a pas d'excès à chercher : au-delà de l'équivalence, le pH
+          se stabilise à $7$, la solution redevient neutre
+        correct: false
+        misconception: AB-TIT-1
+        feedback: >
+          Modèle détecté : l'équivalence assimilée à $\text{pH} = 7$,
+          prolongée au-delà. Au contraire, après $V_{BE}$, chaque mL
+          supplémentaire d'acide fort apporte un $H_3O^+$ qui n'a plus de
+          base à protoner : il s'accumule en excès, et le pH continue de
+          baisser, loin de $7$.
+      - id: D
+        text: >-
+          Cet excès dépend de la force ($pK_A$ du couple $BH^+/B$) de la
+          base dosée : un $pK_A$ plus grand changerait sa valeur, à volumes
+          égaux
+        correct: false
+        misconception: AB-BASE-3
+        feedback: >
+          Modèle détecté : la force du couple (son $pK_A$) mêlée à un bilan
+          de quantités de matière. Une fois l'équivalence dépassée, toute
+          la base est déjà consommée, quel que soit son $pK_A$ : l'excès de
+          $H_3O^+$ ne dépend que des volumes et concentrations versés,
+          $C_A(V_A-V_{BE})$ — jamais de la force de la base.
+    correct_feedback: >
+      $n(H_3O^+)_{\text{excès}} = C_A(V_A-V_{BE}) = 0{,}25\times(12{,}0-8{,}0)
+      \times10^{-3} = 1{,}0\times10^{-3}$ mol.
+    solution: |
+      $$n(H_3O^+)_{\text{total versé}} = C_A \times V_A = 0{,}25\times12{,}0\times10^{-3} = 3{,}0\times10^{-3}\ \text{mol}$$
+
+      $$n(H_3O^+)_{\text{consommé jusqu'à } V_{BE}} = C_A \times V_{BE} = 0{,}25\times8{,}0\times10^{-3} = 2{,}0\times10^{-3}\ \text{mol}$$
+
+      Au-delà de $V_{BE}$, la base est totalement consommée : tout $H_3O^+$
+      versé en plus s'accumule sans réagir.
+
+      $$n(H_3O^+)_{\text{excès}} = n(H_3O^+)_{\text{total versé}} - n(H_3O^+)_{\text{consommé jusqu'à } V_{BE}} = 3{,}0\times10^{-3} - 2{,}0\times10^{-3} = 1{,}0\times10^{-3}\ \text{mol}$$
+
+  - id: RAB-47
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_reactions_acido_basiques
+    habilete: utilisation
+    tags: ["chain-tau-KA", "base-faible"]
+    stem: >
+      Une base faible $B$ (couple $BH^+/B$) est dissoute dans l'eau à la
+      concentration apportée $C_b = 2{,}0\times10^{-2}$ mol/L. Le pH mesuré
+      de la solution est $11{,}0$ à $25\,^\circ\text{C}$ ($K_e =
+      1{,}0\times10^{-14}$). Calcule le taux d'avancement final $\tau$ de la
+      réaction de $B$ avec l'eau.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\tau = [HO^-]_{eq}/C_b = 1{,}0\times10^{-3}/2{,}0\times10^{-2} =
+          0{,}050$
+        correct: true
+      - id: B
+        text: >-
+          $\tau \approx 0$ (négligeable) : une base qualifiée de faible
+          réagit trop peu avec l'eau pour que $\tau$ s'écarte vraiment de
+          $0$
+        correct: false
+        misconception: AB-CHAIN-1
+        feedback: >
+          Modèle détecté : croit qu'une base **faible** réagit si peu avec
+          l'eau que sa concentration à l'équilibre reste pratiquement celle
+          qu'on a versée, quelle que soit la mesure. Mais la mesure est
+          donnée précisément pour être exploitée : $\tau =
+          [HO^-]_{eq}/C_b \approx 0{,}050$, soit $5{,}0\,\%$ — non nul, et
+          qu'aucune étiquette qualitative ne permettait de deviner sans
+          calcul. « Faible » ne veut pas dire « ne réagit jamais » : $\tau$
+          se calcule à partir du pH mesuré, exactement comme pour un acide
+          (chapitre 6) — il ne se décrète pas d'après le nom de la base.
+      - id: C
+        text: >-
+          $\tau = [H_3O^+]_{eq}/C_b = 1{,}0\times10^{-11}/2{,}0\times10^{-2} =
+          5{,}0\times10^{-10}$
+        correct: false
+        misconception: AB-BASE-6
+        feedback: >
+          Modèle détecté : $H_3O^+$ et $HO^-$ interchangés. Pour une BASE,
+          c'est $HO^-$ qui trace l'avancement de sa réaction avec l'eau —
+          l'espèce qu'elle PRODUIT ; $H_3O^+$ n'est ici qu'une conséquence
+          minuscule du produit ionique $K_e = [H_3O^+][HO^-]$, pas la
+          grandeur à diviser par $C_b$.
+      - id: D
+        text: >-
+          $\tau \approx 1$ : un pH aussi élevé ($11{,}0$) signale à lui seul
+          une base qui a fortement réagi
+        correct: false
+        misconception: AB-BASE-8
+        feedback: >
+          Modèle détecté : $\tau$ prédit à partir du seul niveau du pH, sans
+          passer par le calcul. Un pH élevé ne dit rien, à lui seul, du
+          rapport entre $[HO^-]_{eq}$ et $C_b$ : il faut calculer les deux
+          pour situer $\tau$, exactement comme pour un acide (chapitre 6) —
+          ici $\tau = 0{,}050$, loin de $1$.
+    correct_feedback: >
+      $[H_3O^+]_{eq} = 10^{-11{,}0} = 1{,}0\times10^{-11}\ \text{mol/L}$ ;
+      $[HO^-]_{eq} = K_e/[H_3O^+]_{eq} = 1{,}0\times10^{-3}\ \text{mol/L}$ ;
+      $\tau = [HO^-]_{eq}/C_b = 0{,}050$.
+    solution: |
+      $$[H_3O^+]_{eq} = 10^{-\text{pH}} = 10^{-11{,}0} = 1{,}0\times10^{-11}\ \text{mol/L}$$
+
+      $$[HO^-]_{eq} = \frac{K_e}{[H_3O^+]_{eq}} = \frac{1{,}0\times10^{-14}}{1{,}0\times10^{-11}} = 1{,}0\times10^{-3}\ \text{mol/L}$$
+
+      Chaque molécule $B$ transformée produit un ion $HO^-$ ; une
+      transformation totale donnerait $[HO^-]_{max} = C_b$. D'où :
+
+      $$\tau = \frac{[HO^-]_{eq}}{C_b} = \frac{1{,}0\times10^{-3}}{2{,}0\times10^{-2}} = 0{,}050$$
+
+      Seulement $5{,}0\,\%$ de la base introduite a réagi avec l'eau : $B$
+      est une base faible, tout comme un acide faible réagit peu avec l'eau
+      (chapitre 6).
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05. La version précédente ouvrait sur « l'inventaire de
 # misconceptions ne contient que les 12 ids AB-* » et concluait « plancher
@@ -2477,6 +2953,43 @@ items:
 # `total_items` — parce que les tableaux par misconception du corpus suivent
 # six conventions différentes, toutes légitimes. Celui ci-dessous est GÉNÉRÉ
 # contre la convention de la chaîne (web/scripts/lib/couverture-compte.mjs).
+#
+# MIS À JOUR le 2026-09-27 (audit-banque-pc2.md, top 10 #1/#2/#7). Cinq items
+# ajoutés : RAB-43/RAB-44 (chaîne C, pH -> tau -> Q_r,éq -> K_A/pKA, jamais
+# testée), RAB-45/RAB-46 (tableau d'avancement du titrage à V != V_E, avant
+# et après l'équivalence), RAB-47 (base faible dans l'eau, tau depuis [HO-]).
+# Un modèle neuf, AB-CHAIN-1 (rupture de la chaîne C-pH-tau-K_A), déclaré en
+# tête de fichier et porté par exactement 3 items (RAB-43, RAB-44, RAB-47) —
+# le plancher tenu dès l'ajout, aucune dette de couverture laissée derrière.
+# R6 passe de 3 à 6 items, R9 de 3 à 5.
+#
+# CORRIGÉ le 2026-09-27 (wave-1 bac-fidelity + pedagogy-critic, findings I2,
+# A-4, A-5, A-6, A-8, I11). Aucun item ajouté ni retranché — les tables
+# ci-dessous restent valables telles quelles (mêmes ids portent les mêmes
+# misconceptions) :
+#   - I2 : RAB-43/RAB-44 reproduisaient le triplet (C, τ, Q_r,éq) d'un sujet
+#     vérifié (bk-2022-r-x1b q1-4) ; chiffres changés (C=2,0.10⁻², pH=2,52 →
+#     τ≈0,15, Q_r,éq≈5,3.10⁻⁴, pK_A≈3,28), vérifiés contre les 17 sujets du
+#     bank.yaml, et le commentaire de provenance dit maintenant ce qui a été
+#     vérifié plutôt que ce qui ne l'a été qu'en partie.
+#   - A-4 : AB-CHAIN-1 re-décrit comme UNE croyance (« l'acide/la base
+#     faible réagit à peine ») plutôt que deux procédures poolées ; ses
+#     distracteurs (RAB-43-B, RAB-47-B) décrètent désormais τ≈0 au lieu de
+#     prendre une concentration pour τ — même id, même 3 items, description
+#     alignée sur ADR 0008 §3(a).
+#   - A-5 : le feedback de RAB-44-B casse le modèle sur le propre nombre de
+#     l'élève (τ=0,15 déjà établi contredit [AH]_eq=C).
+#   - A-6 : RAB-44 restate toutes ses données (C, pH, τ) au lieu de renvoyer
+#     à « l'item précédent » ; RAB-43 ne renvoie plus à « l'item suivant ».
+#   - A-8 : RAB-46 re-habillé (base faible dosée par un acide fort, chiffres
+#     entièrement recalculés) — RAB-45 garde le fil rouge, un seul des deux
+#     items devait changer d'habillage.
+#   - I11 : RAB-43..47 portent désormais un champ `habilete:` propre
+#     (vocabulaire de content/pc/rlc-serie/items.yaml, underscores) ; les
+#     chaînes libres « application-experimentale » (RAB-45/46) sont retirées
+#     de `tags:` puisqu'elles vivent maintenant dans `habilete:` ; le tag
+#     libre `dual-tag:R4-KA-pKA` de RAB-44 est conservé tel quel (information
+#     non supprimée — c'est un renvoi de chapitre, pas une valeur d'habileté).
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2485,26 +2998,27 @@ coverage_summary:
     checkpoints du sommet R12 sont des clones formatifs surfacés en ligne.
   per_misconception:
     AB-BASE-1: { count: 5, items: [RAB-1, RAB-2, RAB-15, RAB-18, RAB-20] }
-    AB-BASE-2: { count: 3, items: [RAB-13, RAB-14, RAB-40] }
-    AB-BASE-3: { count: 10, items: [RAB-1, RAB-2, RAB-5, RAB-6, RAB-7, RAB-8, RAB-9, RAB-18, RAB-20, RAB-42] }
-    AB-BASE-4: { count: 3, items: [RAB-3, RAB-4, RAB-17] }
+    AB-BASE-2: { count: 5, items: [RAB-13, RAB-14, RAB-40, RAB-43, RAB-44] }
+    AB-BASE-3: { count: 12, items: [RAB-1, RAB-2, RAB-5, RAB-6, RAB-7, RAB-8, RAB-9, RAB-18, RAB-20, RAB-42, RAB-43, RAB-46] }
+    AB-BASE-4: { count: 4, items: [RAB-3, RAB-4, RAB-17, RAB-44] }
     AB-BASE-5: { count: 4, items: [RAB-10, RAB-11, RAB-12, RAB-23] }
-    AB-BASE-6: { count: 5, items: [RAB-16, RAB-25, RAB-26, RAB-27, RAB-40] }
+    AB-BASE-6: { count: 6, items: [RAB-16, RAB-25, RAB-26, RAB-27, RAB-40, RAB-47] }
     AB-BASE-7: { count: 3, items: [RAB-22, RAB-41, RAB-42] }
-    AB-BASE-8: { count: 3, items: [RAB-21, RAB-24, RAB-41] }
+    AB-BASE-8: { count: 4, items: [RAB-21, RAB-24, RAB-41, RAB-47] }
     AB-DIST-1: { count: 4, items: [RAB-19, RAB-28, RAB-29, RAB-30] }
     AB-DIST-2: { count: 6, items: [RAB-18, RAB-19, RAB-20, RAB-28, RAB-29, RAB-30] }
     AB-DIST-3: { count: 3, items: [RAB-28, RAB-29, RAB-30] }
-    AB-TIT-1:  { count: 3, items: [RAB-31, RAB-32, RAB-33] }
-    AB-TIT-2:  { count: 3, items: [RAB-31, RAB-32, RAB-33] }
-    AB-TIT-3:  { count: 3, items: [RAB-31, RAB-32, RAB-33] }
+    AB-TIT-1:  { count: 4, items: [RAB-31, RAB-32, RAB-33, RAB-46] }
+    AB-TIT-2:  { count: 5, items: [RAB-31, RAB-32, RAB-33, RAB-45, RAB-46] }
+    AB-TIT-3:  { count: 4, items: [RAB-31, RAB-32, RAB-33, RAB-45] }
     AB-EQU-1:  { count: 3, items: [RAB-34, RAB-35, RAB-36] }
     AB-EQU-2:  { count: 3, items: [RAB-34, RAB-35, RAB-36] }
-    AB-EQU-3:  { count: 3, items: [RAB-34, RAB-35, RAB-36] }
+    AB-EQU-3:  { count: 4, items: [RAB-34, RAB-35, RAB-36, RAB-45] }
     AB-IND-1:  { count: 3, items: [RAB-37, RAB-38, RAB-39] }
     AB-IND-2:  { count: 3, items: [RAB-37, RAB-38, RAB-39] }
     AB-IND-3:  { count: 3, items: [RAB-37, RAB-38, RAB-39] }
-  total_items: 42
+    AB-CHAIN-1: { count: 3, items: [RAB-43, RAB-44, RAB-47] }
+  total_items: 47
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2514,16 +3028,17 @@ coverage_summary:
     R3: 3
     R4: 3
     R5: 3
-    R6: 3
+    R6: 6
     R7: 5
     R8: 3
-    R9: 3
+    R9: 5
     R10: 3
     R11: 3
     R12: 3
     note: >-
-      Le plancher de barreau (>= 3 items) est tenu partout. R2 en porte 4 et
-      R7 en porte 5 depuis l'ajout de RAB-40, RAB-41 et RAB-42.
+      Le plancher de barreau (>= 3 items) est tenu partout. R2 en porte 4,
+      R7 en porte 5 (RAB-40, RAB-41, RAB-42), R6 en porte 6 et R9 en porte 5
+      depuis l'ajout du 2026-09-27 (RAB-43 -> RAB-47).
   gated_misconceptions:
     # Les douze ids du cluster titrage, chacun sondé par un checkpoint du
     # sommet R12 — un ÉCHO formatif du banc, jamais un substitut : ces
@@ -2552,5 +3067,7 @@ coverage_summary:
   gated_floor: 1
   gated_floor_met: true
   honest_state: >-
-    Les 20 misconceptions déclarées sont couvertes, aucune sous le plancher.
-    Aucune divulgation SUMMIT-CONVERSION-RECIPE §6 n'est requise.
+    Les 21 misconceptions déclarées sont couvertes, aucune sous le plancher.
+    AB-CHAIN-1 (ajout du 2026-09-27) tient le plancher dès sa création : 3
+    items, ni plus ni moins. Aucune divulgation SUMMIT-CONVERSION-RECIPE §6
+    n'est requise.

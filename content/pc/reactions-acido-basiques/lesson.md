@@ -322,6 +322,57 @@ $$\tau = \frac{x_f}{x_{max}} = \frac{[H_3O^+]_{eq} \times V}{c \times V} = \frac
 
 Seulement $4\,\%$ de l'acide éthanoïque introduit a effectivement réagi avec l'eau — le reste, $96\,\%$, est resté sous forme $CH_3COOH$ intacte. Pour un acide fort, ce même calcul donnerait $\tau \approx 1$ (réaction quasi totale, par définition).
 
+### Réécrire les concentrations d'équilibre avec $\tau$, et retrouver $K_A$ par cette route
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* on veut exprimer les trois concentrations à l'équilibre uniquement en fonction de $c$ et $\tau$, pour en tirer directement $Q_{r,\text{éq}}$. Puisque $\tau = [H_3O^+]_{eq}/c$, on a $[H_3O^+]_{eq} = \tau c$ ; le tableau d'avancement de $CH_3COOH + H_2O \rightleftharpoons CH_3COO^- + H_3O^+$, exprimé directement en concentrations :
+
+| | $CH_3COOH$ | $CH_3COO^-$ | $H_3O^+$ |
+|---|---|---|---|
+| État initial | $c$ | $0$ | $0$ |
+| État final | $c(1-\tau)$ | $\tau c$ | $\tau c$ |
+
+La case « état final » de $CH_3COOH$ dit exactement la même chose que $[CH_3COOH]_{eq} \approx c - [H_3O^+]_{eq}$, établie au chapitre 5 : $c - [H_3O^+]_{eq} = c - \tau c = c(1-\tau)$, la même quantité restante, écrite cette fois avec $\tau$ plutôt qu'avec la concentration mesurée.
+
+En reportant ces trois concentrations dans la définition de $K_A$ (chapitre 5), le quotient de réaction à l'équilibre s'exprime uniquement en $c$ et $\tau$ :
+
+$$Q_{r,\text{éq}} = \frac{[CH_3COO^-]_{eq}\,[H_3O^+]_{eq}}{[CH_3COOH]_{eq}} = \frac{(\tau c)(\tau c)}{c(1-\tau)}$$
+
+$$Q_{r,\text{éq}} = \frac{c\,\tau^2}{1-\tau}$$
+
+Applique-le aux valeurs de cet exemple, $c = 1{,}0\times10^{-2}\ \text{mol/L}$ et $\tau = 0{,}040$ :
+
+$$Q_{r,\text{éq}} = \frac{c\,\tau^2}{1-\tau} = \frac{1{,}0\times10^{-2}\times(0{,}040)^2}{1-0{,}040} \approx 1{,}7\times10^{-5}$$
+
+À l'équilibre, ce quotient de réaction est la constante d'acidité du couple :
+
+$$K_A = Q_{r,\text{éq}} \approx 1{,}7\times10^{-5} \qquad pK_A = -\log(1{,}7\times10^{-5}) \approx 4{,}8$$
+
+On retrouve exactement le $pK_A \approx 4{,}8$ du chapitre 5, obtenu là par l'autre route (à partir des concentrations calculées directement depuis le pH mesuré). Deux chemins pour la même chaîne, un même résultat : c'est ce contrôle qui garantit qu'aucune étape n'a été sautée.
+
+Remarque sur l'ordre des gestes : un sujet de bac te donnera $C$ et le pH mesuré, puis te demandera de retrouver $\tau$, d'écrire $Q_{r,\text{éq}}$ avec les concentrations d'équilibre réécrites en fonction de $\tau$, et enfin $K_A$ et $pK_A$ — c'est exactement la suite que tu viens de parcourir, dans l'ordre où elle tombe le jour de l'épreuve.
+
+### Une base faible obéit au même mécanisme
+
+Rien de tout cela n'est propre aux acides. Une **base faible** réagit elle aussi seulement **partiellement** avec l'eau, et tout le raisonnement se transpose — en partant cette fois de $[HO^-]$, pas de $[H_3O^+]$.
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* une solution d'ammoniac $NH_3$, de concentration apportée $C_b = 1{,}0\times10^{-1}\ \text{mol/L}$, a un pH mesuré de $11{,}1$. La réaction, limitée puisque $NH_3$ est une base faible, est $NH_{3} + H_2O \rightleftharpoons NH_4^+ + HO^-$. On veut $\tau$, puis le $pK_A$ du couple $NH_4^+/NH_3$ — mais c'est $[HO^-]_{eq}$ qu'il faut reconstituer en premier, par le produit ionique de l'eau, puisque c'est le pH (donc $[H_3O^+]$) que la sonde mesure :
+
+$$[HO^-]_{eq} = \frac{K_e}{[H_3O^+]_{eq}} = 10^{\,\text{pH}-14} = 10^{-2{,}9} \approx 1{,}26\times10^{-3}\ \text{mol/L}$$
+
+Chaque $NH_3$ transformé produit un $HO^-$ et un $NH_4^+$ en quantités égales ; une conversion totale donnerait $[HO^-]_{max} = C_b$, donc :
+
+$$\tau = \frac{[HO^-]_{eq}}{C_b} = \frac{1{,}26\times10^{-3}}{1{,}0\times10^{-1}} = 1{,}26\times10^{-2} \approx 1{,}3\,\%$$
+
+Une base faible, tout comme l'acide éthanoïque : très peu convertie. On réécrit les concentrations d'équilibre avec $\tau$ ($[NH_4^+]_{eq}=[HO^-]_{eq}=\tau C_b$, $[NH_3]_{eq}=C_b(1-\tau)$) pour obtenir le quotient à l'équilibre de **cette** réaction précise — celle de la base avec l'eau, pas encore celle qui définit $K_A$ :
+
+$$Q_{r,\text{éq}} = \frac{[NH_4^+]_{eq}\,[HO^-]_{eq}}{[NH_3]_{eq}} = \frac{C_b\,\tau^2}{1-\tau} = \frac{1{,}0\times10^{-1}\times(1{,}26\times10^{-2})^2}{1-1{,}26\times10^{-2}} \approx 1{,}6\times10^{-5}$$
+
+Ce $Q_{r,\text{éq}}$ n'est **pas** $K_A$ : c'est la constante de la réaction où l'eau joue l'**acide** face à $NH_3$ — le couple $NH_4^+/NH_3$ vu par son autre bout. Additionne cette réaction à celle qui définit $K_A$ ($NH_4^+ + H_2O \rightleftharpoons NH_3 + H_3O^+$) : les deux $NH_3$ s'annulent d'un côté à l'autre, il reste l'autoprotolyse de l'eau, vue plus haut — donc $Q_{r,\text{éq}} \times K_A = K_e$, d'où :
+
+$$K_A = \frac{K_e}{Q_{r,\text{éq}}} = \frac{10^{-14}}{1{,}6\times10^{-5}} \approx 6{,}2\times10^{-10} \qquad pK_A = -\log K_A \approx 9{,}2$$
+
+Retrouve le $pK_A \approx 9{,}2$ du couple $NH_4^+/NH_3$ déjà croisé plus haut — même valeur, obtenue cette fois depuis le côté base, sans jamais mesurer directement $[H_3O^+]$.
+
 ### Teste l'idée avant de la croire : « cet acide est fort parce qu'il est concentré »
 
 Voici la confusion qui se cache derrière l'accroche, et il faut la nommer clairement : la **force** d'un acide (son $K_A$, son $pK_A$, son $\tau$ face à l'eau) est une propriété de sa **nature chimique** — elle ne dépend, à une température donnée, que du couple auquel il appartient. La **concentration** $c$ décrit une tout autre chose : la quantité de matière qu'on a choisi de dissoudre dans un volume donné. Ce sont deux grandeurs indépendantes.
@@ -485,7 +536,7 @@ En ne déplaçant le pH que de $\pm 1$ unité autour de $pK_A$, le rapport passe
 
 ### Ce que ce chapitre ne couvre pas
 
-Le programme limite l'exploitation du diagramme de distribution à un couple $AH/A^-$ simple : pas de diagramme multi-$pK_A$ pour un polyacide au-delà d'une lecture directe. On **lit** une distribution donnée ; on ne l'utilise pas pour calculer par avance la composition d'un mélange tampon (relation de Henderson-Hasselbalch) — cette exploitation quantitative des mélanges sort du cadre de cette leçon.
+Le programme limite l'exploitation du diagramme de distribution à un couple $AH/A^-$ simple : pas de diagramme multi-$pK_A$ pour un polyacide au-delà d'une lecture directe. On **lit** une distribution donnée ; ce qui reste hors cadre, c'est de s'en servir pour **concevoir à l'avance** un mélange tampon visant un pH cible (la relation de Henderson-Hasselbalch utilisée en sens inverse). Retrouver la composition d'un mélange déjà formé — un dosage arrêté à un volume donné, par exemple — n'est qu'un bilan de matière sur une réaction totale, comme tu le verras au chapitre du titrage.
 
 ---
 
@@ -565,9 +616,49 @@ $$C_A = \frac{C_B V_E}{V_A} = \frac{0{,}10 \times 15{,}0}{20{,}0} = 7{,}5\times1
 
 Retiens le fil : $V_A \neq V_E$ ($20{,}0 \neq 15{,}0$), ce qui est cohérent avec $C_A \neq C_B$ — exactement ce que dit la relation, et le contraire de la confusion testée plus haut. Et le $\text{pH}_E$ qu'on trouvera au chapitre suivant sera supérieur à $7$, sans que ce soit un problème : l'équivalence se lit au saut de la courbe, pas à une valeur de pH fixée d'avance.
 
+### Exemple travaillé : la composition du mélange à un volume quelconque, avant et après l'équivalence
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* la relation $C_AV_A=C_BV_E$ ne parle que du volume équivalent. À tout **autre** volume versé, le même bilan de matière sur la réaction totale ci-dessus donne directement la composition du mélange — sans jamais calculer le pH par une formule, seulement en le comparant, une fois obtenu, à une valeur mesurée ou lue.
+
+**Avant l'équivalence.** Reprends le dosage en cours ($V_A=20{,}0\ \text{mL}$, $C_A=7{,}5\times10^{-2}\ \text{mol/L}$, $C_B=0{,}10\ \text{mol/L}$, $V_E=15{,}0\ \text{mL}$), à $V_B=5{,}0\ \text{mL}$. Le titrant est le réactif limitant : chaque mole de $HO^-$ versée convertit une mole de $CH_3COOH$ en $CH_3COO^-$.
+
+$$n(CH_3COO^-) = C_B V_B = 5{,}0\times10^{-4}\ \text{mol} \qquad n(CH_3COOH) = C_A V_A - C_B V_B = 1{,}5\times10^{-3} - 5{,}0\times10^{-4} = 1{,}0\times10^{-3}\ \text{mol}$$
+
+Même volume total pour les deux espèces, donc le rapport des concentrations est le rapport des quantités de matière :
+
+$$\frac{[CH_3COOH]}{[CH_3COO^-]} = \frac{1{,}0\times10^{-3}}{5{,}0\times10^{-4}} = 2{,}0 \qquad \%\,CH_3COOH = \frac{1{,}0\times10^{-3}}{1{,}5\times10^{-3}}\times100 \approx 67\,\%$$
+
+Ce calcul se généralise à n'importe quel volume avant l'équivalence : la même réaction totale, avec la relation d'équivalence $C_AV_A = C_BV_E$ substituée dans $n(CH_3COOH)$, donne
+
+$$n(CH_3COO^-) = C_B V_B \qquad n(CH_3COOH) = C_A V_A - C_B V_B = C_B(V_E - V_B)$$
+
+$$\frac{[CH_3COOH]}{[CH_3COO^-]} = \frac{n(CH_3COOH)}{n(CH_3COO^-)} = \frac{V_E}{V_B} - 1$$
+
+Vérifie-le sur les valeurs de cet exemple :
+
+$$\frac{V_E}{V_B} - 1 = \frac{15{,}0}{5{,}0} - 1 = 2{,}0$$
+
+— exactement le rapport $2{,}0$ trouvé plus haut par le calcul direct des quantités de matière : la forme littérale et le calcul numérique se recoupent.
+
+Ce rapport, obtenu sans pH, se **compare** à une valeur de pH — jamais calculée par une formule, seulement mesurée ou lue sur la courbe. Ici, la courbe donne $\text{pH} = 4{,}5$ à $V_B = 5{,}0\ \text{mL}$. Contrôle de cohérence, dans le sens que demande un sujet de bac — retrouver le $pK_A$ à partir d'un pH donné et de la composition :
+
+$$pK_A = \text{pH} + \log\left(\frac{[CH_3COOH]}{[CH_3COO^-]}\right) = 4{,}5 + \log(2{,}0) \approx 4{,}8$$
+
+On retrouve le $pK_A \approx 4{,}8$ du couple $CH_3COOH/CH_3COO^-$ (chapitre 5) : le pH lu sur la courbe et la composition obtenue par bilan de matière racontent la même histoire, par deux voies indépendantes.
+
+Vérification croisée dans l'autre sens, cette fois en partant du pH comme le ferait un énoncé, avec l'avancement $x_f$ de la réaction de dosage à ce volume : $x_{max}=C_BV_B=5{,}0\times10^{-4}\ \text{mol}$ (le titrant, limitant), et ce qu'il en reste s'obtient par le pH, $n(HO^-)_{\text{restant}} = 10^{\,\text{pH}-14}(V_A+V_B) \approx 8\times10^{-12}\ \text{mol}$ — totalement négligeable face à $x_{max}$. Donc $x_f = x_{max} - n(HO^-)_{\text{restant}} \approx x_{max}$, soit $\tau = x_f/x_{max}\approx1$ : c'est cette quasi-totalité, déjà justifiée plus haut par $K\gg1$, qui autorise le bilan de matière simple ci-dessus.
+
+**Après l'équivalence.** Prends maintenant $V_B=20{,}0\ \text{mL}$, au-delà de $V_E=15{,}0\ \text{mL}$. Tout l'acide initial est déjà consommé ; le $HO^-$ versé depuis ne trouve plus personne à qui céder son proton et s'accumule, dilué dans le volume total du mélange :
+
+$$n(HO^-)_{\text{excès}} = C_B V_B - C_A V_A = 2{,}0\times10^{-3} - 1{,}5\times10^{-3} = 5{,}0\times10^{-4}\ \text{mol}$$
+
+$$[HO^-] = \frac{n(HO^-)_{\text{excès}}}{V_A+V_B} = \frac{5{,}0\times10^{-4}}{40{,}0\times10^{-3}} = 1{,}25\times10^{-2}\ \text{mol/L} \qquad \text{pH} = 14 + \log[HO^-] \approx 12{,}1$$
+
+Au-delà de l'équivalence, chaque goutte supplémentaire ne fait plus que diluer un excès de soude déjà en place — c'est pour cela que le saut s'aplatit des deux côtés, loin de $V_E$.
+
 ### Ce que ce chapitre ne couvre pas
 
-Aucun calcul analytique du pH aux points remarquables de la courbe (ni à l'équivalence, ni à la demi-équivalence) par une formule fermée : le programme exige que le pH s'obtienne par **exploitation expérimentale**, pas par calcul — c'est l'objet du chapitre suivant. Le suivi par **conductimétrie** est une autre méthode de suivi d'une réaction, traitée ailleurs dans le programme ; on ne l'introduit pas ici. Et un dosage d'oxydoréduction est une tout autre famille de réaction, hors de ce chapitre.
+Le programme est explicite sur la façon dont le pH s'obtient dans un titrage : « pH par **exploitation expérimentale et bilans** » — jamais par une formule fermée appliquée directement à un point remarquable de la courbe. Aucun calcul analytique du pH à l'équivalence ni à la demi-équivalence par une telle formule, donc : ces deux pH-là se **lisent** sur la courbe, ce que tu feras au chapitre suivant. Ce que tu as fait dans l'exemple précédent reste légitime des deux côtés de cette limite, parce que ce sont des **bilans**, jamais des formules fermées à un point remarquable : avant l'équivalence, retrouver la composition du mélange à partir d'un pH donné — mesuré ou lu — est un bilan de matière sur la réaction totale ; après l'équivalence, retrouver le pH à partir de la concentration de l'excès de $HO^-$ dilué en est un autre. Le suivi par **conductimétrie** est une autre méthode de suivi d'une réaction, traitée ailleurs dans le programme ; on ne l'introduit pas ici. Et un dosage d'oxydoréduction est une tout autre famille de réaction, hors de ce chapitre.
 
 ---
 

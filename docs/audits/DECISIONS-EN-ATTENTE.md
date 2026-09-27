@@ -1769,3 +1769,80 @@ pas un échappement : KaTeX y lirait un saut de ligne puis « times ». Aucun co
 aujourd'hui `contradicts_principle` — le défaut est LATENT. Le même défaut, dans quatre
 notions non gelées, est corrigé (`19fb8d97`, 28 lignes) ; celle-ci ne l'est pas parce que
 **SVT est gelée**. Au dégel : `\\times` → `\times`, une ligne.
+
+## 31. La vague A de la dette d'examen : trois questions de CADRE qu'une passe de contenu n'a pas le droit de trancher — et un défaut d'ergonomie qu'on a mesuré sans l'armer
+
+**LE FAIT.** La vague A (`DETTE-EXAMEN.md`) a payé onze trous de trois notions de PC — la chute
+dans un liquide avec la poussée d'Archimède, la droite $\ln N = f(t)$ et les noyaux désintégrés,
+le titrage à $V \neq V_E$ et la chaîne $C$, pH $\to \tau \to Q_{r,\text{éq}} \to \mathrm{p}K_A$.
+Deux critiques de vague 1 ont relu la prose et les items. **Aucune erreur d'arithmétique** (≈ 45
+valeurs recalculées) ; ce qui a été trouvé, c'est de la STRUCTURE d'enseignement — et trois fois,
+le fichier de cadre lui-même.
+
+**CE QUE LA VAGUE 1 A FAIT CORRIGER (appliqué, pas en attente) :**
+
+1. **Le pH d'un tampon CALCULÉ** — `reactions-acido-basiques/lesson.md` : l'exemple de titrage
+   écrivait $\text{pH} = \mathrm{p}K_A - \log(\dots)$, l'`exclusion` nommée du cadre
+   (`pc-physique-chimie.yaml:478`, Henderson-Hasselbalch), dans l'orientation que
+   `REVIEW-2026-09-12.md` F10a avait déjà retirée, et douze lignes après avoir promis de ne jamais
+   calculer un pH par une formule. Réécrit dans le sens ATTESTÉ : le pH est LU sur la courbe
+   (comme `bank.yaml:1741`), et c'est $\mathrm{p}K_A$ qu'on en tire. *Le critique de fidélité avait
+   rendu REWORK pour cette notion ; c'est la seule.*
+2. **« La pente à l'origine vaut $g$ » encore ENSEIGNÉ** — `chute-mouvements-plans` : le correctif
+   avait durci deux phrases et oublié les trois endroits dont l'élève se souvient (l'exemple
+   travaillé, la figure, le tableau d'Euler). L'hypothèse (« poussée négligée, l'énoncé ne donne
+   ni ρ ni V ») est maintenant écrite aux trois, et la légende de la figure le dit.
+3. **Un item résolu par la leçon** — DECRO-40 refaisait la chaîne Th-232 → Pb-208 que la leçon
+   travaille ligne à ligne ; DECRO-39 refaisait le rapport 3 qui sert de vérification à la leçon.
+   Les deux sont refaits (U-235 → Pb-207 ; un rapport non dyadique, en MASSES, la forme attestée).
+4. Le reste (la forme canonique de l'équation avec Archimède assemblée, le tableau d'avancement en
+   τ, les ruptures en prose des deux nouveaux modèles, les étiquettes `habilete`, les retours qui
+   mènent le modèle faux à sa conséquence) : appliqué par deux auteurs, relu, recalculé.
+
+**LES TROIS QUESTIONS DE CADRE — au propriétaire, via research-lead :**
+
+1. **`pc-physique-chimie.yaml:143`** exclut « Filiations radioactives (chaînes multi-étapes) ».
+   L'exclusion est `derived` ; la banque la DÉMENT : bk-2012-n-x3 q1-1 et bk-2010-n-x2 q3
+   demandent $x$ et $y$ sur un bilan global de chaîne, et le corrigé de la banque dit la bonne
+   lecture étroite (« jamais le détail des étapes intermédiaires »). *Proposition* : restreindre
+   l'exclusion à la filiation CINÉTIQUE (équations couplées, équilibre séculaire) et écrire que le
+   bilan global de Soddy reste au programme. Tant que ce n'est pas fait, la prochaine porte de
+   fidélité signalera la leçon comme hors programme, et personne ne saura distinguer l'attesté de
+   la dérive.
+2. **`pc-physique-chimie.yaml:478`** (Henderson-Hasselbalch, « non listé ») : la question réservée
+   au propriétaire par `REVIEW-2026-09-12.md:60-72` reste OUVERTE. La leçon est maintenant
+   cohérente avec l'exclusion telle qu'elle est écrite, et n'emploie que l'orientation attestée
+   ($\mathrm{p}K_A = \text{pH} + \log\frac{[AH]}{[A^-]}$ avec un pH lu).
+3. **La poussée d'Archimède n'apparaît NULLE PART dans le fichier de cadre** — ni savoir-faire,
+   ni limite, ni exclusion —, alors que cinq sujets vérifiés l'exigent (≈ 6 points). Le silence
+   n'est pas une exclusion ; mais une technique de six points invisible au fichier de bornes est
+   un trou du côté du cadre. *Proposition* : l'ajouter aux savoir-faire de `applications_dynamique`,
+   avec les citations de banque.
+
+**DEUX CONSTATS SYSTÉMIQUES, écrits pour ne pas être redécouverts :** (a) les items de PC sont
+tous des QCM alors que l'épreuve de PC est en réponse ouverte (`bac-reference.md:121-124`) — un
+QCM ne peut pas faire répéter un « montrer que » ; la place de ces démonstrations est
+`exercises.yaml` ; (b) le champ `habilete` manque sur la plupart des items de PC, ce qui rend le
+mélange 50/15/35 immesurable à la machine — les quinze items de la vague A le portent désormais.
+
+**UN DÉFAUT D'ERGONOMIE MESURÉ, À MOITIÉ ARMÉ.** La porte d'ergonomie de la nouvelle scène (R6) a
+trouvé, au téléphone, une commande « cachée sous la scène collante » qui n'était pas une commande :
+le TEXTE d'un choix de QCM. `overflow-x: auto` force `overflow-y: auto` ; la boîte d'une fraction
+KaTeX dépasse de 1 à 8 px sous la dernière ligne ; le texte du choix devient un défileur vertical —
+et Chromium rend un défileur sans enfant focalisable atteignable au Tab. **Mesuré sur les 62
+leçons à 390 px, tous chapitres dépliés : 2 808 défileurs de 1 à 8 px** (1 759 formules en ligne
+de la prose, 573 textes de choix, 136 énoncés d'items, plus les étapes de dérivation et les
+libellés d'épreuve). Corrigé dans les composants (un rembourrage de 8 px qui absorbe le
+dépassement, une marge négative qui rend la place : rien ne bouge à l'écran) ; `etroit-sweep`
+arme désormais le défileur VERTICAL d'une boîte faite pour défiler en largeur, qui n'a jamais rien
+à montrer.
+
+*Ce qui n'est pas armé, et pourquoi* : le petit dépassement en LARGEUR (1 à 8 px), surtout celui
+des formules en ligne de la prose sous 600 px. Il peut être l'approche du dernier glyphe (rien à
+montrer) OU la fin réelle d'une formule trop longue (à montrer) — la page ne sait pas les
+distinguer. Le correctif « rembourrage + marge négative » sur la formule en ligne a été ESSAYÉ et
+retiré : la boîte rembourrée dépassait alors du paragraphe (`p { overflow-x: auto }`), et 163
+paragraphes devenaient défileurs à sa place. `etroit-sweep` les compte par sorte, sans rougir.
+**La condition qui mériterait une porte** : un correctif qui supprime le dépassement de la boîte
+KaTeX elle-même (pas celui de son parent) — alors le compte des formules en ligne tomberait à zéro,
+et il pourrait s'armer à zéro.

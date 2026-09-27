@@ -261,6 +261,12 @@ $$D = v_{0x}\cdot t_{portee} = 20 \times 3{,}06 \approx 61{,}2\ \text{m}$$
 
 La flèche ($\approx 11{,}5\ \text{m}$) et la portée ($\approx 61{,}2\ \text{m}$) sont deux nombres très différents, mesurant deux choses différentes : l'un une hauteur atteinte une seule fois, au sommet ; l'autre une distance au sol, atteinte à l'arrivée. Ne dis jamais « la flèche vaut 61,2 m » ni « la portée vaut 11,5 m » — ce sont deux réponses à deux questions distinctes.
 
+Ces mêmes équations horaires permettent aussi de recomposer la vitesse à **tout instant du vol**, pas seulement au départ. Prenons l'instant où le projectile passe par $x=40\ \text{m}$ : $x(t)=20t$ donne $t=40/20=2{,}0\ \text{s}$. À cet instant, $v_x=20\ \text{m/s}$ (toujours) et $v_y(2{,}0)=15-9{,}8\times 2{,}0=-4{,}6\ \text{m/s}$ — négatif, parce qu'on a déjà dépassé le sommet ($t_{sommet}\approx 1{,}53\ \text{s}$, calculé plus haut). On recompose alors la vitesse par Pythagore, exactement l'inverse de la décomposition faite au départ du tir :
+
+$$v=\sqrt{v_x^2+v_y^2}=\sqrt{20^2+4{,}6^2}=\sqrt{400+21{,}16}\approx 20{,}5\ \text{m/s} \qquad \tan\theta=\frac{v_y}{v_x}=\frac{-4{,}6}{20}\approx -0{,}23 \implies \theta\approx -13^\circ$$
+
+Le signe négatif de $\theta$ dit que la vitesse pointe désormais **sous** l'horizontale, comme il se doit après le sommet. Ne fais jamais $v=v_x+v_y$ — une norme ne s'obtient jamais par une somme.
+
 ---
 
 ## R5 — L'influence des conditions initiales : angle et vitesse de lancement
@@ -415,7 +421,7 @@ Au chapitre 2, on avait négligé l'air ; ici, on ne le néglige plus. Un solide
 Le programme retient deux modèles pour cette force, selon la vitesse :
 
 - **frottement linéaire** : $\vec f = -k\,\vec v$ (basses vitesses) ;
-- **frottement quadratique** : $\vec f$ de sens opposé à $\vec v$, de norme $f = k\,v^2$ (vitesses plus grandes).
+- **frottement quadratique** : $\vec f$ de sens opposé à $\vec v$, de norme $f = \alpha\,v^2$ (vitesses plus grandes) — on note ce coefficient $\alpha$ (en $\text{kg/m}$), pour ne jamais le confondre avec le $k$ (en $\text{kg/s}$) du frottement linéaire.
 
 Dans les deux cas, retiens l'essentiel : **la force de frottement croît avec la vitesse.** C'est tout le ressort de ce qui va suivre — un objet lent est presque freiné par rien ; un objet rapide l'est beaucoup.
 
@@ -441,7 +447,7 @@ $$\tau\,\frac{dv}{dt} = v_\ell - v \qquad \text{avec} \qquad \tau = \frac{m}{k} 
 
 $$\frac{dv}{dt}\bigg|_{t=0} = g - \frac{k}{m}\times 0 = g$$
 
-Au tout début, l'objet accélère donc **exactement comme en chute libre** (chapitre 2) : le frottement ne « mord » que lorsque la vitesse s'est installée.
+Au tout début, l'objet accélère donc **exactement comme en chute libre** (chapitre 2) — **dans l'air, sans poussée d'Archimède** ; ce résultat change dès qu'une troisième force s'ajoute au bilan, plus bas dans ce chapitre. Le frottement ne « mord » que lorsque la vitesse s'est installée.
 
 ### Prends position avant de voir la courbe
 
@@ -453,9 +459,15 @@ Ce qui se stabilise, c'est l'accélération elle-même. À mesure que $v$ croît
 
 $$\frac{dv}{dt} = 0 \quad\Longrightarrow\quad g - \frac{k}{m}v_\ell = 0 \quad\Longrightarrow\quad v_\ell = \frac{mg}{k}$$
 
-Note la méthode : $v_\ell$ s'obtient en **annulant l'accélération dans l'équation différentielle** — un calcul d'une ligne — jamais en résolvant l'équation en entier. (Pour le modèle quadratique, le même raisonnement donne $mg = kv_\ell^2$, donc $v_\ell = \sqrt{mg/k}$ : une racine carrée apparaît parce que le frottement dépend de $v^2$. Les deux formules ne se retiennent pas par cœur — elles se **retrouvent**, en repartant de « frottement = poids » à chaque fois.)
+Note la méthode : $v_\ell$ s'obtient en **annulant l'accélération dans l'équation différentielle** — un calcul d'une ligne — jamais en résolvant l'équation en entier. (Pour le modèle quadratique, le même raisonnement donne $mg = \alpha v_\ell^2$, donc $v_\ell = \sqrt{mg/\alpha}$ : une racine carrée apparaît parce que le frottement dépend de $v^2$. Les deux formules ne se retiennent pas par cœur — elles se **retrouvent**, en repartant de « frottement = poids » à chaque fois.)
 
-Entre le régime initial et ce **régime permanent**, $\tau$ mesure le temps caractéristique de la transition : sur une courbe $v=f(t)$ tracée expérimentalement, il se lit à la tangente à l'origine (pente $g$), qui coupe l'asymptote $v=v_\ell$ à $t=\tau$ — ou, de façon équivalente, à l'instant où $v$ atteint environ $63\,\%$ de $v_\ell$.
+**Le cas quadratique, chiffré :** avec $f=\alpha v^2$, le même bilan (poids et frottement seuls) donne $m\,\dfrac{dv}{dt} = mg - \alpha v^2$, donc $\dfrac{dv}{dt} = g - \dfrac{\alpha}{m}v^2$ — la même équation qu'au-dessus, avec $v^2$ à la place de $v$. Annuler l'accélération donne $v_\ell=\sqrt{mg/\alpha}$ (ci-dessus) ; à l'inverse, à partir d'une vitesse limite **mesurée**, on isole $\alpha$ : $\alpha = mg/v_\ell^2$. Exemple : une bille de $m=1{,}0\ \text{kg}$ atteint $v_\ell=20\ \text{m/s}$ dans l'air ($g\approx 9{,}8\ \text{m/s}^2$) :
+
+$$\alpha = \frac{mg}{v_\ell^2} = \frac{1{,}0\times 9{,}8}{20^2}$$
+
+$$\alpha \approx 2{,}5\times 10^{-2}\ \text{kg/m}$$
+
+Entre le régime initial et ce **régime permanent**, $\tau$ mesure le temps caractéristique de la transition : sur une courbe $v=f(t)$ tracée expérimentalement, il se lit à la tangente à l'origine — de pente $g$ dans l'air, sans poussée d'Archimède —, qui coupe l'asymptote $v=v_\ell$ à $t=\tau$ — ou, de façon équivalente, à l'instant où $v$ atteint environ $63\,\%$ de $v_\ell$.
 
 [[figure:vitesse-vs-temps-frottement]]
 
@@ -477,13 +489,13 @@ Regarde de nouveau $v_\ell = mg/k$ : elle contient $m$. Contraste frontal avec l
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* établir l'équation différentielle, puis en extraire $v_\ell$ et lire $\tau$ sur une courbe — sans jamais chercher $v(t)$ complètement, exactement la démarche qu'impose le programme sur ce point.
 
-Une bille de masse $m = 0{,}20\ \text{kg}$ est lâchée sans vitesse initiale dans un liquide visqueux, avec un frottement linéaire de coefficient $k = 2{,}0\ \text{kg/s}$. On prend $g \approx 9{,}8\ \text{m/s}^2$.
+Une bille de masse $m = 0{,}20\ \text{kg}$ est lâchée sans vitesse initiale dans un liquide visqueux, avec un frottement linéaire de coefficient $k = 2{,}0\ \text{kg/s}$. On prend $g \approx 9{,}8\ \text{m/s}^2$. **Hypothèse de l'énoncé :** ni masse volumique ni volume ne sont donnés ici — on néglige donc la poussée d'Archimède devant les autres forces ; la section suivante montre ce qui change dès que l'énoncé fournit ces deux données.
 
 **Bilan et équation différentielle :**
 
 $$\frac{dv}{dt} = g - \frac{k}{m}v = 9{,}8 - 10{,}0\,v \qquad (v \text{ en } \text{m/s},\ t \text{ en } \text{s})$$
 
-**Régime initial :** à $t=0$, $v=0$, donc $a = 9{,}8\ \text{m/s}^2$ — la bille démarre comme en chute libre.
+**Régime initial :** à $t=0$, $v=0$, donc $a = 9{,}8\ \text{m/s}^2$ — la bille démarre comme en chute libre, **parce que la poussée d'Archimède est négligée ici** (hypothèse posée dans les données).
 
 **Vitesse limite** (accélération nulle) :
 
@@ -516,6 +528,64 @@ La poussée d'Archimède **abaisse** la vitesse limite — le solide tombe moins
 *Le contrôle de cohérence, gratuit :* si $F_A > mg$, la formule donnerait une vitesse limite négative. Ce n'est pas absurde, c'est physique — cela veut dire que le solide **remonte** au lieu de descendre, ce qui est exactement le cas d'un bouchon lâché au fond d'un seau. Le signe du numérateur te dit dans quel sens le mouvement s'établit.
 
 *Le piège nommé :* garder $v_\ell = \dfrac{mg}{k}$ par réflexe alors que l'énoncé a donné une masse volumique de fluide et un volume. Deux données qui n'apparaissent nulle part dans ta résolution sont un signal : l'énoncé ne fournit jamais de valeur pour rien.
+
+Arrête-toi avant de tourner la page, et engage-toi vraiment : reprends l'exemple de la bille lâchée dans le liquide visqueux, plus haut — tu y as trouvé **$a_0 = g = 9{,}8\ \text{m/s}^2$ à $t=0$**. Imagine maintenant que ce liquide soit exactement **aussi dense que la bille elle-même**. D'après toi, $a_0$ vaudrait-il encore $9{,}8\ \text{m/s}^2$ dans ce cas, un peu moins, ou zéro ? Décide avant de lire la suite.
+
+Teste ta réponse avec ce que tu sais déjà de la poussée d'Archimède, sans même écrire de formule nouvelle : si le liquide a exactement la même masse volumique que la bille, le poids $mg=\rho_s V g$ et la poussée $F_A=\rho_f V g$ deviennent **rigoureusement égaux** — c'est précisément la condition pour qu'un objet flotte, immobile, ni ne coule ni ne remonte. Somme des forces nulle, donc accélération nulle : $a_0=0$, pas $9{,}8\ \text{m/s}^2$.
+
+Le modèle « $a_0=g$, quel que soit le fluide » se contredit donc lui-même dès qu'on pousse la densité du liquide jusqu'à celle du solide. Ce que tu avais calculé dans l'exemple de la bille n'était vrai que parce que cette bille-là tombait dans un fluide dont l'énoncé ne donnait ni $\rho$ ni $V$ — la poussée y était réellement négligeable, pas négligée par réflexe. Le bilan à trois forces qui suit formalise exactement cette idée.
+
+### L'accélération initiale change aussi
+
+Le calcul du régime initial fait dans l'exemple de la bille en chute dans un liquide visqueux, plus haut dans ce chapitre, donnait $a_0=g$ à $t=0$ — mais ce calcul partait d'un bilan à **deux** forces, légitime seulement parce que l'énoncé ne donnait ni $\rho$ ni $V$. Refais tout le bilan avec les **trois** forces de cette section, cette fois sans figer $v$ à une valeur particulière :
+
+$$m\,\frac{dv}{dt} = mg - F_A - k\,v$$
+
+Remplace $F_A=\rho_f\,V\,g$ :
+
+$$m\,\frac{dv}{dt} = mg - \rho_f\,V\,g - k\,v$$
+
+Puis, pour un solide homogène, $V=m/\rho_s$ (définition de la masse volumique) :
+
+$$m\,\frac{dv}{dt} = mg - \rho_f\,\frac{m}{\rho_s}\,g - k\,v$$
+
+Divise les deux membres par $m$ :
+
+$$\frac{dv}{dt} = g - \frac{\rho_f}{\rho_s}\,g - \frac{k}{m}\,v$$
+
+Regroupe les deux termes en $g$, et note $1/\tau = k/m$ comme au bilan à deux forces :
+
+$$\frac{dv}{dt} + \frac{1}{\tau}\,v = g\left(1-\frac{\rho_f}{\rho_s}\right)$$
+
+C'est la **forme canonique** qu'un sujet de bac te demande souvent d'établir telle quelle. Regarde ce qui a bougé et ce qui n'a pas bougé par rapport au bilan à deux forces : le terme constant, à droite, a changé — il vaut maintenant $g(1-\rho_f/\rho_s)$ au lieu de $g$ seul. Le coefficient devant $v$, $1/\tau=k/m$, lui, **n'a pas changé** : $F_A$ ne dépend jamais de $v$ — seulement de $\rho_f$, $V$ et $g$, tous constants pendant la chute — donc son entrée dans le bilan ne peut déplacer que le terme constant de l'équation, jamais le coefficient de $v$.
+
+(Notation : les sujets n'écrivent pas toujours $\rho_f$ et $\rho_s$ — tu croiseras aussi $\rho_L/\rho_B$ [liquide/bille], $\rho_r/\rho_a$, ou simplement $\rho$ et $\rho_s$. Les lettres changent d'un énoncé à l'autre ; le rapport qu'elles désignent, lui, ne change pas.)
+
+**L'accélération initiale, retrouvée comme cas particulier.** À $t=0$, $v=0$ : le terme en $v$ disparaît de la forme canonique, et il reste directement
+
+$$a_0 = g\left(1-\frac{\rho_f}{\rho_s}\right)$$
+
+— exactement la valeur que l'arrêt précédent t'a fait tester sur le cas limite $\rho_f=\rho_s$ (la bille flotte, $a_0=0$).
+
+**Retiens-le comme un réflexe d'énoncé :** « la tangente à l'origine a pour pente $g$ » n'est vraie que dans le modèle à deux forces (air, sans Archimède). Dès que $\rho$ et $V$ (ou la masse volumique du solide) apparaissent dans l'énoncé, la tangente à l'origine a pour pente $a_0 \neq g$ — et c'est cette pente-là qu'un sujet de bac te fait lire. Un dernier réflexe, indépendant de celui-ci : les exemples de cette leçon prennent $g \approx 9{,}8\ \text{m/s}^2$, mais un sujet de bac te donnera presque toujours $g = 10\ \text{m/s}^2$ — prends toujours la valeur fournie par l'énoncé, jamais celle d'un exemple appris par cœur.
+
+**Exemple travaillé : lire $a_0$ et $v_\ell$ sur la courbe, en déduire $\rho_f$, puis $\tau$ et $k$**
+
+Une bille homogène, de masse $m=6{,}0\ \text{g}$ et de masse volumique $\rho_s=2{,}70\times 10^3\ \text{kg/m}^3$, est lâchée sans vitesse initiale dans un liquide inconnu ($g\approx 9{,}8\ \text{m/s}^2$). Sur la courbe $v=f(t)$ enregistrée, la tangente à l'origine a pour pente $a_0=6{,}0\ \text{m/s}^2$, et le palier se situe à $v_\ell=3{,}0\ \text{m/s}$.
+
+$$\rho_f = \rho_s\left(1-\frac{a_0}{g}\right) = 2{,}70\times 10^3\times\left(1-\frac{6{,}0}{9{,}8}\right)$$
+
+$$\rho_f \approx 1{,}05\times 10^3\ \text{kg/m}^3$$
+
+Une valeur proche de celle de l'eau ($1{,}00\times 10^3\ \text{kg/m}^3$) — plausible. Sans nouvelle lecture graphique, $\tau$ et $k$ s'obtiennent de $v_\ell=\tau\,a_0$ — pas une formule à part, mais la forme canonique établie plus haut, $\dfrac{dv}{dt}+\dfrac{1}{\tau}v=a_0$ en régime permanent ($dv/dt=0$), qui donne directement $v_\ell/\tau=a_0$ :
+
+$$\tau = \frac{v_\ell}{a_0} = \frac{3{,}0}{6{,}0}$$
+
+$$\tau = 0{,}50\ \text{s}$$
+
+$$k = \frac{m}{\tau} = \frac{6{,}0\times 10^{-3}}{0{,}50}$$
+
+$$k \approx 1{,}2\times 10^{-2}\ \text{kg/s}$$
 
 ### La limite du cadre
 
@@ -553,7 +623,7 @@ C'est une valeur **approchée**. Pendant tout le pas $\Delta t$, on a supposé l
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* appliquer la récurrence d'Euler, pas après pas, à la bille du chapitre 8, et vérifier que la suite de valeurs obtenue se dirige bien vers la vitesse limite calculée là-bas — une cohérence croisée entre les deux méthodes, pas un hasard.
 
-Même bille qu'au chapitre 8 : $m = 0{,}20\ \text{kg}$, $k = 2{,}0\ \text{kg/s}$, $g \approx 9{,}8\ \text{m/s}^2$, $v_0 = 0$. On choisit un pas $\Delta t = 0{,}020\ \text{s}$, et on applique $a_i = 9{,}8 - 10{,}0\,v_i$ puis $v_{i+1}=v_i+a_i\Delta t$ à chaque ligne :
+Même bille qu'au chapitre 8 — et même hypothèse : poussée d'Archimède négligée, l'énoncé ne donnant ni $\rho$ ni $V$ — $m = 0{,}20\ \text{kg}$, $k = 2{,}0\ \text{kg/s}$, $g \approx 9{,}8\ \text{m/s}^2$, $v_0 = 0$. On choisit un pas $\Delta t = 0{,}020\ \text{s}$, et on applique $a_i = 9{,}8 - 10{,}0\,v_i$ puis $v_{i+1}=v_i+a_i\Delta t$ à chaque ligne :
 
 | $t_i\ (\text{s})$ | $v_i\ (\text{m/s})$ | $a_i = 9{,}8 - 10{,}0\,v_i\ (\text{m/s}^2)$ | $v_{i+1}=v_i+a_i\Delta t\ (\text{m/s})$ |
 |---|---|---|---|
@@ -752,6 +822,8 @@ Avant l'exercice de type bac, teste cinq réflexes-clés du chapitre — un par 
 [[checkpoint:cp-symetrie]]
 
 [[checkpoint:cp-frottement-vlim]]
+
+[[checkpoint:cp-r7-archimede]]
 
 [[checkpoint:cp-euler]]
 

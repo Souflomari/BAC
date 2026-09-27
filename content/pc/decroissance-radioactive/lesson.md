@@ -125,6 +125,30 @@ $$^{22}_{11}\text{Na} \longrightarrow \ ^{22}_{10}\text{Ne} + \ ^{0}_{+1}\text{e
 
 Le noyau fils est le néon 22. Remarque le sens inverse de $\beta^-$ : ici $Z$ baisse, alors que pour $\beta^-$, $Z$ montait. C'est le piège le plus courant sur cette partie du programme — les deux équations se ressemblent, mais le sens du décalage de $Z$ est opposé, parce que le déséquilibre qu'elles corrigent est opposé.
 
+### Une chaîne de plusieurs émissions : retrouver le nombre de chacune
+
+Un noyau très lourd n'atteint pas toujours la stabilité en une seule désintégration : il lui faut parfois plusieurs étapes successives, un mélange d'émissions $\alpha$ et $\beta^-$, avant d'aboutir à un noyau fils stable. Les deux lois de Soddy s'appliquent alors au bilan **global** de la chaîne — le père et le fils final — sans qu'il soit besoin de connaître l'ordre des étapes intermédiaires.
+
+**Exemple — du thorium 232 au plomb 208.** Le thorium $^{232}_{90}\text{Th}$ aboutit, après une chaîne d'émissions $\alpha$ et $\beta^-$, au plomb $^{208}_{82}\text{Pb}$, stable. Combien de chaque particule la chaîne a-t-elle émis ?
+
+*Ce qu'on cherche ici, et pourquoi ce geste : deux inconnues, $x$ désintégrations $\alpha$ et $y$ désintégrations $\beta^-$, pour deux équations — une par grandeur conservée. On pose le bilan total, comme s'il n'y avait qu'une seule étape géante.*
+
+$$^{232}_{90}\text{Th} \longrightarrow\ ^{208}_{82}\text{Pb} + x\ ^{4}_{2}\text{He} + y\ ^{0}_{-1}\text{e}$$
+
+Conservation du nombre de nucléons — seules les particules $\alpha$ en emportent, 4 chacune :
+
+$$232 = 208 + 4x \implies x = 6$$
+
+Conservation de la charge — chaque $\alpha$ emporte $+2$, chaque $\beta^-$ emporte $-1$ :
+
+$$90 = 82 + 2x - y \implies 90 = 82 + 12 - y \implies y = 4$$
+
+$$\boxed{x = 6\ \text{désintégrations}\ \alpha \qquad y = 4\ \text{désintégrations}\ \beta^-}$$
+
+La première équation, sur $A$, ne dépend que des $\alpha$ : elle donne $x$ directement. La seconde, sur $Z$, dépend des deux — mais $x$ est déjà connu, donc elle se résout aussitôt pour $y$.
+
+Une précision utile avant de généraliser : le choix des lettres est arbitraire — ici $x$ compte les $\alpha$ et $y$ compte les $\beta^-$, mais un énoncé peut très bien poser l'inverse, $x$ pour les $\beta^-$ et $y$ pour les $\alpha$. Ce n'est jamais une habitude à reproduire d'un exercice à l'autre : c'est l'énoncé qui fixe ce que chaque lettre désigne, et c'est lui qu'il faut lire en premier, avant de poser la moindre équation.
+
 ### La désintégration γ — pas une désintégration à part entière
 
 Après une désintégration $\alpha$ ou $\beta$, le noyau fils est très souvent formé dans un **état excité** : il a la bonne composition (le bon $Z$, le bon $A$), mais il porte un surplus d'énergie interne, un peu comme un atome dont un électron serait sur une couche trop haute. Ce noyau excité, noté $\text{Y}^{*}$, se débarrasse de ce surplus en émettant un photon très énergétique — un **rayonnement $\gamma$** :
@@ -199,6 +223,8 @@ $$\boxed{N(t) = N_0 \, e^{-\lambda t}}$$
 
 C'est la **loi de décroissance radioactive**. $N_0$ est le nombre de noyaux radioactifs présents à l'instant pris comme origine, $N(t)$ le nombre restant à l'instant $t$ — c'est-à-dire les noyaux qui n'ont pas encore désintégré (pas le nombre de noyaux fils produits, qui vaut $N_0 - N(t)$).
 
+Cette distinction — noyaux **restants** ($N(t)$) contre noyaux **désintégrés**, ou noyaux fils **formés** ($N_0 - N(t)$) — est celle qui piège le plus souvent dans les énoncés. Si un énoncé dit « 90 % des noyaux se sont désintégrés », il ne dit PAS $N(t) = 0{,}90\,N_0$ : il dit que 90 % ont disparu, donc qu'il n'en reste que 10 % : $N(t) = 0{,}10\,N_0$. Le réflexe à garder : « désintégrés » ou « fils formés » se lisent sur $N_0 - N(t)$ (la fraction $1 - N(t)/N_0$) ; « restants » se lit directement sur $N(t)/N_0$.
+
 Si tu as déjà étudié la décharge d'un condensateur, tu reconnais la forme : une exponentielle décroissante, qui part de $N_0$, chute vite au début, puis de plus en plus lentement, sans jamais toucher exactement zéro. Mais ne confonds pas les deux phénomènes : ici, ce n'est pas un courant électrique qui s'écoule à travers une résistance — c'est un résultat purement statistique, la somme d'un nombre gigantesque d'événements aléatoires, chacun indépendant des autres. Deux mécanismes complètement différents peuvent donner la même famille de fonctions.
 
 ### Exemple numérique — le carbone 14
@@ -263,6 +289,24 @@ $$\boxed{t_{1/2} = \frac{\ln 2}{\lambda}}$$
 
 **Une propriété qu'il faut retenir précisément : après $n$ demi-vies, quel que soit l'instant de départ choisi, il reste $N_0/2^n$.** Et ce n'est pas propre à l'instant $t=0$ — c'est une conséquence directe du caractère sans mémoire établi au chapitre précédent : le noyau ne « sait » pas depuis quand il existe, donc la même loi s'applique à partir de *n'importe quel* instant pris comme nouvelle origine. Deux demi-vies après le début, il reste $N_0/4$ — pas $N_0/2$ retiré deux fois de façon linéaire (ce qui donnerait zéro), mais bien une division par 2 répétée : $N_0 \to N_0/2 \to N_0/4$.
 
+**Arrête-toi avant de lire la suite : un sujet t'annonce qu'après une durée $t$, 90 % des noyaux d'un échantillon de technétium 99m ($t_{1/2} = 6{,}0$ h) se sont désintégrés. Quelle fraction écris-tu dans la loi, $N(t)/N_0$ — $0{,}90$ ou $0{,}10$ ? Engage-toi, calcul complet à l'appui, avant de continuer.**
+
+Si tu as écrit $N(t)/N_0 = 0{,}90$ — le réflexe de recopier tel quel le pourcentage de l'énoncé —, regarde où ça mène. En reprenant le geste qu'on vient d'utiliser pour isoler $t_{1/2}$ (passage au logarithme népérien, puis isolement de $t$), avec $1/\lambda = t_{1/2}/\ln 2$ :
+
+$$t = \frac{6{,}0}{0{,}693}\times\ln\!\left(\frac{1}{0{,}90}\right) \approx 8{,}66\times0{,}105$$
+
+$$t \approx 0{,}91\ \text{h}$$
+
+Moins d'une heure — moins, même, qu'**une seule demi-vie** de $6{,}0$ h. C'est impossible : après une seule demi-vie, il ne s'est désintégré, au maximum, que 50 % des noyaux ; pour en désintégrer 90 %, il faut nécessairement *plus* d'une demi-vie, jamais moins d'un sixième d'une. Le calcul se contredit lui-même dès qu'on le regarde.
+
+La bonne fraction restante est celle qui vient d'être posée plus haut : « 90 % désintégrés » laisse 10 % restants, donc $N(t)/N_0 = 1 - 0{,}90 = 0{,}10$ :
+
+$$t = \frac{6{,}0}{0{,}693}\times\ln\!\left(\frac{1}{0{,}10}\right) \approx 8{,}66\times2{,}303$$
+
+$$t \approx 19{,}9\ \text{h}$$
+
+soit un peu plus de trois demi-vies ($3\times6{,}0=18$ h) — cohérent, puisqu'après trois demi-vies il ne reste que $N_0/8 = 0{,}125\,N_0$, déjà un peu moins que les $0{,}10\,N_0$ visés, donc un temps un peu supérieur à $18$ h. Retiens le réflexe, pas les chiffres : « désintégrés » se lit sur $1-N(t)/N_0$, jamais directement sur $N(t)/N_0$.
+
 Et voici le geste qui le rend visible, celui que tu viens de faire. Prends un crochet dont la pointe gauche se pose sur la courbe et dont la pointe droite se pose là où il ne reste que la moitié de ce que la gauche indiquait. Pose-le à $t = 0$ : il mesure $8{,}0$ jours. Pose-le à $t = 16$ jours, où il ne reste plus qu'un quart de l'échantillon : il mesure encore $8{,}0$ jours. Sa **hauteur** s'effondre à chaque fois qu'on le déplace vers la droite ; sa **largeur** ne bouge jamais. C'est cela, « sans mémoire », traduit en une durée : l'horloge de la demi-vie repart à zéro à chaque instant où tu décides de la regarder, parce qu'aucun noyau ne sait depuis combien de temps il existe.
 
 [[figure:decroissance-courbe]]
@@ -280,6 +324,24 @@ La construction, en trois gestes, parce qu'un sujet peut la demander : on trace 
 [[figure:tangente-tau]]
 
 [[checkpoint:cp-r4-demi-vie-lambda]]
+
+### Lire une droite $\ln N = f(t)$
+
+Il existe une autre façon de lire $\lambda$ sur un graphe, plus précise que la tangente : au lieu de tracer $N(t)$ (une exponentielle, difficile à lire finement à l'œil), on trace $\ln N$ en fonction de $t$. Prends le logarithme népérien des deux membres de $N(t) = N_0\,e^{-\lambda t}$ :
+
+$$\ln N = \ln\!\left(N_0\,e^{-\lambda t}\right) = \ln N_0 + \ln\!\left(e^{-\lambda t}\right) = \ln N_0 - \lambda t$$
+
+Voilà ce que fait le logarithme : il transforme une exponentielle en **fonction affine** de $t$, d'ordonnée à l'origine $\ln N_0$ et de coefficient directeur $-\lambda$. Une droite, contrairement à une exponentielle, se lit exactement avec deux points seulement — c'est tout l'intérêt de ce tracé.
+
+À la différence des deux lectures précédentes — la demi-vie, lue sur une courbe tracée, et $\tau$, lu au bout d'une tangente tracée sur cette même courbe —, celle-ci ne réclame aucune figure : une droite est entièrement déterminée par deux points, et un sujet te les donne directement en coordonnées, comme ci-dessous. Rien à tracer ni à mesurer sur un graphe, seulement deux couples de nombres à lire dans l'énoncé.
+
+*Ce qu'on cherche ici : sur une droite $\ln N = f(t)$ tracée pour un échantillon, on lit deux points $(0\,;\,30{,}0)$ et $(50\,;\,25{,}0)$, $t$ en jours. On en tire $\lambda$, puis $t_{1/2}$.*
+
+$$-\lambda = \frac{25{,}0 - 30{,}0}{50 - 0} = \frac{-5{,}0}{50} = -0{,}10 \implies \lambda = 0{,}10\ \text{jour}^{-1}$$
+
+$$t_{1/2} = \frac{\ln 2}{\lambda} = \frac{0{,}693}{0{,}10} \approx 6{,}9\ \text{jours}$$
+
+C'est le même $t_{1/2} = \ln 2/\lambda$ vu plus haut — seule la source de $\lambda$ change : une pente entre deux points francs, plutôt qu'une tangente à l'origine.
 
 ### Exemple — l'iode 131
 
@@ -322,6 +384,24 @@ $$\boxed{t = -\frac{1}{\lambda}\ln\!\left(\frac{N(t)}{N_0}\right) = \frac{1}{\la
 Cette formule est la clé de toute datation radioactive : mesure la proportion restante $N(t)/N_0$ (ou l'activité restante $A(t)/A_0$, qui suit exactement la même loi), connais $\lambda$, et tu obtiens l'âge $t$.
 
 **Vérification de cohérence** — avant de l'utiliser sur un cas réel, vérifie que cette formule redonne bien ce qu'on sait déjà : si la fraction restante est $N(t)/N_0 = 1/2$, la formule doit redonner $t_{1/2}$. $\ln(N_0/N(t)) = \ln 2$, donc $t = \dfrac{\ln 2}{\lambda} = t_{1/2}$ — exactement la définition du chapitre précédent. La formule est cohérente avec tout ce qu'on a construit jusqu'ici.
+
+### Dater par le rapport noyaux fils / noyaux pères
+
+Il existe une autre écriture de la même datation, utile quand on ne connaît ni $N_0$ ni $N(t)$ séparément, mais seulement leur rapport — typique d'une roche où l'on mesure aujourd'hui le nombre de noyaux père restants $N_{\text{père}} = N(t)$ et le nombre de noyaux fils accumulés $N_{\text{fils}} = N_0 - N(t)$. On divise l'un par l'autre :
+
+$$\frac{N_{\text{fils}}}{N_{\text{père}}} = \frac{N_0 - N(t)}{N(t)} = \frac{N_0}{N(t)} - 1 = e^{\lambda t} - 1$$
+
+(on a utilisé $N_0/N(t) = e^{\lambda t}$, l'inverse de la loi de décroissance). On isole $t$ par le logarithme, exactement comme au paragraphe précédent :
+
+$$\boxed{t = \frac{1}{\lambda}\ln\!\left(1 + \frac{N_{\text{fils}}}{N_{\text{père}}}\right)}$$
+
+En pratique, dans une roche ou un minéral, on ne compte jamais directement des noyaux : on mesure des masses. Le pont entre les deux est un rapport de moles, $N = \dfrac{m}{M}\,\mathcal{N}_A$ ($\mathcal{N}_A$ le nombre d'Avogadro, qui se simplifie exactement dans le rapport, qu'il apparaisse ou non dans l'énoncé) :
+
+$$\frac{N_{\text{fils}}}{N_{\text{père}}} = \frac{m_{\text{fils}}/M_{\text{fils}}}{m_{\text{père}}/M_{\text{père}}} = \frac{m_{\text{fils}}\,M_{\text{père}}}{m_{\text{père}}\,M_{\text{fils}}}$$
+
+C'est sous cette forme, en masses, qu'un sujet demande le plus souvent cette datation : on mesure $m_{\text{fils}}$ et $m_{\text{père}}$ dans l'échantillon, jamais les nombres de noyaux eux-mêmes.
+
+*Ce qu'on cherche ici : vérifier ce résultat sur un cas qu'on connaît déjà.* Si on mesure $N_{\text{fils}}/N_{\text{père}} = 3{,}0$ (trois fois plus de noyaux fils que de noyaux pères restants), alors $e^{\lambda t} = 1 + 3{,}0 = 4{,}0 = 2^2$, donc $\lambda t = 2\ln 2$, soit $t = 2\times\dfrac{\ln 2}{\lambda} = 2\,t_{1/2}$ — deux demi-vies. C'est cohérent avec la propriété des demi-vies vue plus haut : après deux demi-vies il reste $N_0/4$, donc bien trois fois plus de noyaux fils ($3N_0/4$) que de noyaux pères ($N_0/4$).
 
 ### Le cas du carbone 14 : dater la matière organique
 

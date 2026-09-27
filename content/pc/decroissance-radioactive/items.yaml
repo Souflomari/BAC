@@ -110,6 +110,18 @@ misconceptions:
     description: "L'élève ne distingue pas ce que la loi promet à une POPULATION de ce qu'elle promettrait à un INDIVIDU. Deux formes opposées, un seul modèle. Forme A (déterministe) : à chaque demi-vie il partirait EXACTEMENT la moitié des noyaux, au noyau près, et un échantillon de 64 noyaux en laisserait exactement 32 — l'élève traite N(t) = N0·e^(−λt) comme une horloge. Forme B (nihiliste) : puisque chaque noyau tire au sort, aucun résultat n'est prévisible et n'importe quel nombre est possible — l'élève conclut du hasard individuel à l'absence de loi collective. Ce modèle répond CORRECTEMENT à toute question de divisions successives (N0/2, N0/4, N0/8) : il ne se révèle qu'en faisant varier le NOMBRE de noyaux, ou en demandant ce qu'on peut affirmer d'un noyau unique."
     contradicts_principle: "La désintégration d'un noyau donné est imprévisible ; la loi N(t) = N0·e^(−λt) ne décrit que le comportement d'une POPULATION, et elle le décrit d'autant mieux que la population est grande. Sur un petit échantillon, le nombre restant après une demi-vie est VOISIN de la moitié sans lui être égal, et il change d'une expérience à l'autre ; sur un échantillon réel (10^14 noyaux et plus), l'écart devient invisible et la loi est utilisable comme une égalité. Le hasard individuel ne détruit donc pas la loi : c'est le grand nombre qui la rend exploitable."
 
+  # Ajouté le 2026-09-27, sur l'audit audit-banque-pc1.md § decroissance-
+  # radioactive D2 : sept sujets vérifiés du banc demandent le nombre de
+  # noyaux désintégrés ou formés (N0 − N(t)), dont un par datation père/fils.
+  # La leçon le dit une fois en prose et l'exercice guidé le calcule une
+  # fois, mais aucun item de fin ne sépare "désintégré" de "restant" — et
+  # aucun des vingt modèles ci-dessus ne recouvre cette confusion précise
+  # entre un nombre et son complément.
+  - id: mc.physics.decroissance_radioactive.confond-restant-desintegre
+    label: "« Le nombre de noyaux désintégrés (ou formés) est le nombre de noyaux restants, pas son complément »"
+    description: "L'élève ne construit pas l'identité N0 = N(t) + N_désintégrés(t). Soit il lit un pourcentage de noyaux désintégrés et l'utilise directement comme fraction restante (« 90 % désintégrés » traité comme N(t) = 0,90 N0 au lieu de 0,10 N0) ; soit, en datation par couple père/fils, il traite le nombre de noyaux fils formés comme le nombre initial de noyaux père, au lieu de l'ajouter au nombre de noyaux père restants pour reconstituer N0."
+    contradicts_principle: "Le bilan de matière impose N0 = N(t) + N_désintégrés(t), où N_désintégrés(t) est aussi le nombre de noyaux fils formés si l'échantillon n'en contenait aucun à t=0. Une fraction f désintégrée laisse une fraction (1−f) restante, jamais f elle-même ; et en datation, N0 = N_père(t) + N_fils(t), jamais N_fils(t) seul."
+
 items:
 
   # ══════════════════════════════════════════════════════════════
@@ -2088,19 +2100,441 @@ items:
       grand nombre qui, sur un échantillon réel, rend la loi utilisable
       comme une égalité.
 
+  # ══════════════════════════════════════════════════════════════
+  # Ajoutés le 2026-09-27, sur l'audit audit-banque-pc1.md § decroissance-
+  # radioactive (D1, D2, D3) : trois techniques vérifiées dans le banc,
+  # jamais testées par un item de fin.
+  #   D1 — la droite ln(N) = f(t) et sa pente −λ (2 sujets, 2,25 pt) :
+  #        DECRO-36.
+  #   D2 — noyaux désintégrés ou formés = N0 − N(t), y compris la datation
+  #        père/fils (7 sujets) : le vingt-et-unième modèle déclaré
+  #        ci-dessus, confond-restant-desintegre, amené au plancher par
+  #        DECRO-37, 38, 39.
+  #   D3 — compter x alpha et y bêta-moins dans une chaîne à deux étapes
+  #        (2 sujets) : DECRO-40, qui réutilise le trio déjà au plancher
+  #        conservation-Z-oubliee / alpha-se-comporte-comme-beta /
+  #        sens-conservation-inverse (DECRO-3, 11, 22) sans nouveau modèle.
+  # ══════════════════════════════════════════════════════════════
+
+  - id: DECRO-36
+    rung: "R4"
+    difficulty_level: 4
+    habilete: application_experimentale
+    skill_code: decroissance_radioactive
+    tags: [demi_vie, calcul, misconception_driven]
+    stem: |
+      Le fluor 18, utilisé en imagerie médicale, est un isotope radioactif.
+      On trace $\ln(N)$ en fonction du temps $t$ (en minutes), où $N$ est
+      le nombre de noyaux de fluor 18 restants dans un échantillon à
+      l'instant $t$ : c'est une droite. On y lit deux points
+      $A(50\,;\,29{,}7)$ et $B(250\,;\,28{,}5)$.
+
+      Déterminer la constante radioactive $\lambda$ du fluor 18.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          On ne peut pas donner une valeur unique de $\lambda$ à partir de
+          cette droite : plus les noyaux de l'échantillon sont âgés, plus
+          ils ont de chances de se désintégrer, donc $\lambda$ augmente
+          avec le temps qui passe.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.noyau-vieillit
+        feedback: >
+          C'est au contraire parce que $\lambda$ ne dépend pas de l'âge des
+          noyaux que $\ln(N)$ en fonction de $t$ est une DROITE, de pente
+          constante $-\lambda$ du début à la fin du tracé. Une dépendance à
+          l'âge casserait cette linéarité.
+      - id: B
+        text: >-
+          $\lambda \approx \dfrac{1}{6{,}0\times10^{-3}} \approx 1{,}7\times10^{2}\ \text{min}^{-1}$,
+          en prenant le coefficient directeur lu sur le graphe pour une
+          demi-vie, puis en l'inversant.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda
+        feedback: >
+          Le graphe donne directement $-\lambda$ par sa pente, pas
+          $t_{1/2}$ : il n'y a rien à inverser. Confondre la pente avec une
+          demi-vie, puis appliquer $\lambda = 1/t_{1/2}$ à la place de
+          $t_{1/2} = \ln2/\lambda$, cumule deux erreurs sur la même
+          grandeur.
+      - id: C
+        text: >-
+          $\lambda = -\dfrac{28{,}5-29{,}7}{250-50} = 6{,}0\times10^{-3}\ \text{min}^{-1}$,
+          l'opposé du coefficient directeur de la droite.
+        correct: true
+      - id: D
+        text: >-
+          $\lambda = -6{,}0\times10^{-3}\ \text{min}^{-1}$, en gardant
+          directement le signe du coefficient directeur lu sur la droite.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda
+        feedback: >
+          Le coefficient directeur d'une droite $\ln N = \ln N_0 - \lambda
+          t$ vaut $-\lambda$, pas $\lambda$ : il faut en prendre l'opposé
+          pour obtenir la constante radioactive, qui est toujours positive.
+          Prendre directement une grandeur lue sur le graphe pour $\lambda$,
+          sans lui appliquer la transformation qu'exige la loi, est la même
+          famille d'erreur que l'option au-dessus, qui saute le facteur
+          $\ln 2$ entre $t_{1/2}$ et $\lambda$ : on s'arrête un pas avant
+          la grandeur demandée.
+    correct_feedback: >
+      La forme $\ln(N) = \ln(N_0) - \lambda t$ est une droite de pente
+      $-\lambda$ : on lit la pente entre les deux points donnés, puis on
+      change son signe pour obtenir $\lambda$, toujours positif.
+    solution: |
+      La loi de décroissance $N(t) = N_0 e^{-\lambda t}$ devient, par
+      passage au logarithme népérien :
+
+      $$\ln(N) = \ln(N_0) - \lambda t$$
+
+      une fonction affine de $t$, de coefficient directeur $-\lambda$
+      (négatif, puisque $\lambda > 0$) et d'ordonnée à l'origine
+      $\ln(N_0)$.
+
+      Coefficient directeur entre les deux points lisibles
+      $A(50\,;\,29{,}7)$ et $B(250\,;\,28{,}5)$ :
+
+      $$-\lambda = \frac{28{,}5 - 29{,}7}{250 - 50} = \frac{-1{,}2}{200} = -6{,}0\times10^{-3}\ \text{min}^{-1}$$
+
+      $$\lambda = 6{,}0\times10^{-3}\ \text{min}^{-1}$$
+
+      Vérification : $t_{1/2} = \ln2/\lambda \approx 116$ min, du bon ordre
+      de grandeur pour la demi-vie réelle du fluor 18 (environ 110 min).
+
+  - id: DECRO-37
+    rung: "R5"
+    difficulty_level: 4
+    habilete: résolution
+    skill_code: decroissance_radioactive
+    tags: []
+    primary_misconception: mc.physics.decroissance_radioactive.confond-restant-desintegre
+    stem: |
+      Le sodium 24, radioactif, a une demi-vie $t_{1/2} = 15{,}0$ h. Au
+      bout de combien de temps 90 % des noyaux initiaux d'un échantillon de
+      sodium 24 se sont-ils désintégrés ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $t = t_{1/2}\ln\!\left(\dfrac{1}{0{,}10}\right) \approx 34{,}5$ h,
+          en utilisant $t_{1/2}$ à la place de $1/\lambda$ dans la formule
+          d'inversion.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda
+        feedback: >
+          La formule d'inversion est $t = \dfrac{1}{\lambda}\ln(N_0/N(t))$,
+          avec $1/\lambda = t_{1/2}/\ln2$ — pas $t_{1/2}$ directement.
+          Utiliser $t_{1/2}$ à la place de $1/\lambda$ revient à poser
+          $t_{1/2} = 1/\lambda$, ce qui oublie le facteur $\ln2$.
+      - id: B
+        text: >-
+          $t = \dfrac{t_{1/2}}{\ln2}\ln\!\left(\dfrac{1}{0{,}10}\right) \approx 49{,}8$ h,
+          car $N(t) = 0{,}10\,N_0$ : 90 % désintégrés laisse 10 % restants.
+        correct: true
+      - id: C
+        text: >-
+          $t = \dfrac{t_{1/2}}{\ln2}\ln\!\left(\dfrac{1}{0{,}90}\right) \approx 2{,}3$ h,
+          en posant directement $N(t) = 0{,}90\,N_0$ pour « 90 %
+          désintégrés ».
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-restant-desintegre
+        feedback: >
+          « 90 % désintégrés » et « 90 % restants » ne sont pas la même
+          donnée : si 90 % ont disparu, il reste 10 %, donc
+          $N(t) = 0{,}10\,N_0$, pas $0{,}90\,N_0$. Utiliser
+          $N_0 = N(t) + N_{\text{désintégrés}}(t)$ pour ne pas confondre
+          les deux. Et le résultat lui-même le trahit : $2{,}3$ h ne
+          représente qu'un sixième de la demi-vie ($15{,}0$ h) — bien trop
+          court pour que 90 % de l'échantillon ait eu le temps de
+          disparaître.
+      - id: D
+        text: >-
+          Impossible de répondre sans connaître la température et la
+          pression auxquelles l'échantillon a été soumis pendant toute la
+          durée écoulée.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.lambda-depend-conditions-externes
+        feedback: >
+          $\lambda$, donc la durée pour atteindre une fraction donnée, ne
+          dépend que de l'isotope (ici via $t_{1/2}$) — jamais de la
+          température ou de la pression de conservation.
+    correct_feedback: >
+      90 % désintégrés laisse 10 % restants : $N(t)/N_0 = 0{,}10$. On
+      inverse $N(t) = N_0 e^{-\lambda t}$ avec $\lambda = \ln2/t_{1/2}$
+      pour obtenir $t \approx 49{,}8$ h.
+    solution: |
+      « 90 % désintégrés » signifie qu'il reste 10 % des noyaux initiaux :
+
+      $$\frac{N(t)}{N_0} = 1 - 0{,}90 = 0{,}10$$
+
+      On inverse la loi de décroissance :
+
+      $$t = \frac{1}{\lambda}\ln\!\left(\frac{N_0}{N(t)}\right) = \frac{t_{1/2}}{\ln2}\ln\!\left(\frac{1}{0{,}10}\right) = \frac{15{,}0}{0{,}693}\times2{,}303 \approx 49{,}8\ \text{h}$$
+
+  - id: DECRO-38
+    rung: "R4"
+    difficulty_level: 3
+    habilete: utilisation
+    skill_code: decroissance_radioactive
+    tags: []
+    primary_misconception: mc.physics.decroissance_radioactive.confond-restant-desintegre
+    stem: |
+      Un compte-rendu indique que, dans un échantillon radioactif, 84 %
+      des noyaux initiaux se sont désintégrés à l'instant $t$. Quelle
+      expression donne alors correctement le nombre de noyaux restants
+      $N(t)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $N(t) = 0$ : un pourcentage désintégré aussi élevé signifie que
+          l'échantillon est déjà totalement épuisé.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.demi-vie-egale-duree-de-vie-totale
+        feedback: >
+          $N(t) = N_0 e^{-\lambda t}$ ne s'annule jamais exactement, quel
+          que soit le pourcentage déjà désintégré : il reste toujours une
+          quantité non nulle, ici $0{,}16\,N_0$.
+      - id: B
+        text: >-
+          $N(t) = N_0\,e^{-0{,}84} \approx 0{,}43\,N_0$, en utilisant
+          directement le pourcentage désintégré comme exposant de
+          l'exponentielle.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.oubli-lambda-dans-exponentielle
+        feedback: >
+          L'exposant d'une exponentielle de décroissance est $-\lambda t$,
+          une grandeur sans dimension construite à partir de $\lambda$ et
+          de la date $t$ — jamais un pourcentage recopié tel quel dans
+          l'exposant.
+      - id: C
+        text: >-
+          $N(t) = 0{,}84\,N_0$, le pourcentage donné étant directement
+          celui des noyaux restants.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-restant-desintegre
+        feedback: >
+          84 % est le pourcentage de noyaux DÉSINTÉGRÉS, pas celui des
+          noyaux restants : $N(t) = N_0 - N_{\text{désintégrés}}(t) = (1 - 0{,}84)\,N_0 = 0{,}16\,N_0$,
+          jamais $0{,}84\,N_0$.
+      - id: D
+        text: >-
+          $N(t) = 0{,}16\,N_0$, car $100\,\% - 84\,\% = 16\,\%$ des noyaux
+          initiaux n'ont pas encore désintégré.
+        correct: true
+    correct_feedback: >
+      Le pourcentage donné compte les noyaux DÉSINTÉGRÉS : le complément,
+      $100\,\%-84\,\%=16\,\%$, est ce qui reste, donc $N(t)=0{,}16\,N_0$.
+    solution: |
+      Le bilan de matière impose $N_0 = N(t) + N_{\text{désintégrés}}(t)$.
+      Si $N_{\text{désintégrés}}(t) = 0{,}84\,N_0$, alors :
+
+      $$N(t) = N_0 - 0{,}84\,N_0 = 0{,}16\,N_0$$
+
+      Le pourcentage « désintégré » et le pourcentage « restant » sont
+      complémentaires, jamais égaux.
+
+  - id: DECRO-39
+    rung: "R5"
+    difficulty_level: 4
+    habilete: résolution
+    skill_code: decroissance_radioactive
+    tags: []
+    primary_misconception: mc.physics.decroissance_radioactive.confond-restant-desintegre
+    stem: |
+      Une roche contient de l'uranium 235 ($^{235}_{92}\text{U}$,
+      $t_{1/2} = 7{,}04\times10^{8}$ ans), qui aboutit, après une longue
+      chaîne de désintégrations $\alpha$ et $\beta^-$, à du plomb 207
+      ($^{207}_{82}\text{Pb}$) stable. On admet que tout le plomb 207
+      présent dans la roche provient de la désintégration de l'uranium
+      235. À l'instant présent, l'échantillon contient une masse
+      $m_U = 2{,}35$ g d'uranium 235 restant et une masse
+      $m_{Pb} = 5{,}175$ g de plomb 207 formé. On donne les masses molaires
+      $M(^{235}U) = 235\ \text{g.mol}^{-1}$ et
+      $M(^{207}Pb) = 207\ \text{g.mol}^{-1}$.
+
+      Quel est l'âge de cette roche ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $t = t_{1/2}\ln\!\left(1+\dfrac{m_{Pb}\,M(^{235}U)}{m_U\,M(^{207}Pb)}\right) \approx 8{,}82\times10^{8}$ ans,
+          en utilisant $t_{1/2}$ à la place de $1/\lambda$ dans la formule
+          de datation.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda
+        feedback: >
+          La formule de datation utilise $1/\lambda = t_{1/2}/\ln2$, pas
+          $t_{1/2}$ directement : poser $t_{1/2} = 1/\lambda$ oublie le
+          facteur $\ln2$ qui relie ces deux grandeurs distinctes.
+      - id: B
+        text: >-
+          Impossible de dater cette roche sans connaître la température et
+          la pression qu'elle a subies au cours de son histoire
+          géologique.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.lambda-depend-conditions-externes
+        feedback: >
+          $\lambda$ de l'uranium 235 est indépendant de la température et
+          de la pression, y compris sur des échelles de temps géologiques :
+          c'est cette propriété qui rend la datation fiable.
+      - id: C
+        text: >-
+          $t = \dfrac{t_{1/2}}{\ln2}\ln\!\left(1+\dfrac{m_{Pb}\,M(^{235}U)}{m_U\,M(^{207}Pb)}\right) \approx 1{,}27\times10^{9}$ ans,
+          en reconstituant $N_0=N_U+N_{Pb}$ via les masses molaires.
+        correct: true
+      - id: D
+        text: >-
+          $t = \dfrac{t_{1/2}}{\ln2}\ln\!\left(\dfrac{m_{Pb}\,M(^{235}U)}{m_U\,M(^{207}Pb)}\right) \approx 9{,}31\times10^{8}$ ans,
+          en prenant le rapport $n_{Pb}/n_U$ pour $N_0/N_U$.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-restant-desintegre
+        feedback: >
+          Le rapport $n_{Pb}/n_U$ (moles de plomb formé sur moles
+          d'uranium restant) n'est pas $N_0/N_U$ : il manque le « +1 »,
+          puisque $N_0 = N_U + N_{Pb}$. Sans lui, le logarithme porte sur
+          $2{,}50$ au lieu de $3{,}50$, et l'âge obtenu est faux.
+    correct_feedback: >
+      Le nombre initial de moles d'uranium est $n_U+n_{Pb}$, obtenu à
+      partir des masses via $n=m/M$. Le rapport
+      $n_{Pb}/n_U = (m_{Pb}\,M(^{235}U))/(m_U\,M(^{207}Pb)) = 2{,}50$,
+      donc $N_0/N_U = 1+2{,}50 = 3{,}50$ et
+      $t=(t_{1/2}/\ln2)\ln(3{,}50)\approx1{,}27\times10^{9}$ ans.
+    solution: |
+      Tout le plomb 207 vient de l'uranium désintégré, donc, en nombre de
+      noyaux (proportionnel au nombre de moles) :
+
+      $$N_0 = N_U(t) + N_{Pb}(t)$$
+
+      On ne mesure pas directement des noyaux dans une roche, mais des
+      masses : le pont $n = m/M$ (chimie générale) donne, pour chaque
+      espèce, $N \propto n = m/M$ — le nombre d'Avogadro se simplifie
+      exactement dans un rapport :
+
+      $$\frac{N_{Pb}(t)}{N_U(t)} = \frac{m_{Pb}/M(^{207}Pb)}{m_U/M(^{235}U)} = \frac{m_{Pb}\,M(^{235}U)}{m_U\,M(^{207}Pb)} = \frac{5{,}175\times235}{2{,}35\times207} = 2{,}50$$
+
+      La loi de décroissance donne $N_U(t) = N_0\,e^{-\lambda t}$, donc :
+
+      $$\frac{N_0}{N_U} = 1+\frac{N_{Pb}}{N_U} = 1+2{,}50 = 3{,}50 = e^{\lambda t} \implies \lambda t = \ln(3{,}50)$$
+
+      $$t = \frac{\ln(3{,}50)}{\lambda} = \frac{t_{1/2}}{\ln2}\ln(3{,}50) = \frac{7{,}04\times10^{8}}{0{,}693}\times1{,}253 \approx 1{,}27\times10^{9}\ \text{ans}$$
+
+  - id: DECRO-40
+    rung: "R2"
+    difficulty_level: 4
+    habilete: résolution
+    skill_code: decroissance_radioactive
+    tags: [alpha, beta, soddy, chaine, misconception_driven]
+    stem: |
+      L'uranium 235 ($^{235}_{92}\text{U}$) subit une longue chaîne de
+      désintégrations $\alpha$ et $\beta^-$ jusqu'à devenir un noyau stable
+      de plomb 207 ($^{207}_{82}\text{Pb}$), selon le bilan global :
+
+      $$^{235}_{92}\text{U} \longrightarrow\ ^{207}_{82}\text{Pb} + x\ ^{4}_{2}\text{He} + y\ ^{0}_{-1}\text{e}$$
+
+      En appliquant les deux lois de Soddy à ce bilan, déterminer $x$
+      (nombre de particules $\alpha$) et $y$ (nombre de particules
+      $\beta^-$).
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $x=7$ et $y=4$ : les deux lois de conservation appliquées
+          ensemble au bilan global.
+        correct: true
+      - id: B
+        text: >-
+          $x=4$ et $y=7$ : en attribuant la perte de nucléons aux
+          $\beta^-$ et le changement de charge aux $\alpha$ seuls.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.alpha-se-comporte-comme-beta
+        feedback: >
+          Ce résultat inverse les rôles : c'est la particule $\alpha$
+          ($^{4}_{2}\text{He}$) qui emporte 4 nucléons à chaque émission,
+          la $\beta^-$ n'en emportant aucun. La conservation de $A$ donne
+          $235=207+4x \Rightarrow x=7$, pas $4$.
+      - id: C
+        text: >-
+          $x=7$ et $y=0$ : la conservation du nombre de nucléons suffit à
+          compter les émissions, la charge se réajuste d'elle-même.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.conservation-Z-oubliee
+        feedback: >
+          $x=7$ est correct, mais $y$ ne peut pas être nul : sans
+          $\beta^-$, les 7 $\alpha$ feraient tomber $Z$ à $92-14=78$, pas à
+          $82$. Il faut 4 $\beta^-$ pour remonter la charge de 78 à 82 —
+          la conservation de la charge donne une seconde équation
+          indépendante, pas automatique.
+      - id: D
+        text: >-
+          $x=7$ et $y=24$ : en écrivant le bilan de charge dans le sens
+          produit-vers-père plutôt que père-vers-produit.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.sens-conservation-inverse
+        feedback: >
+          Écrire l'équation à l'envers, comme si le père s'obtenait en
+          ajoutant les particules au produit, inverse le signe du bilan de
+          charge et fait exploser $y$. Le père se transforme EN produit
+          plus les particules émises : $Z_{\text{père}} = Z_{\text{produit}} + 2x - y$,
+          jamais l'inverse.
+    correct_feedback: >
+      Conservation de $A$ : $235=207+4x \Rightarrow x=7$. Conservation de
+      $Z$ : $92=82+2x-y \Rightarrow 92=82+14-y=96-y \Rightarrow y=4$.
+    solution: |
+      On pose
+      $^{235}_{92}\text{U} \to\ ^{207}_{82}\text{Pb} + x\,^{4}_{2}\text{He} + y\,^{0}_{-1}\text{e}$.
+
+      Conservation du nombre de nucléons : $235 = 207 + 4x \Rightarrow x = 7$.
+
+      Conservation de la charge : $92 = 82 + 2x - y$, avec $x=7$ :
+      $92 = 82+14-y = 96-y \Rightarrow y = 4$.
+
+      La chaîne complète de l'uranium 235 compte donc 7 désintégrations
+      $\alpha$ et 4 désintégrations $\beta^-$, conformément à la chaîne
+      naturelle de l'uranium 235 (famille de l'actinium). Le thorium 232,
+      travaillé dans la leçon, en compte 6 et 4 : même méthode, autres
+      nombres.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
-# RÉÉCRIT le 2026-09-24, après DECRO-32 à DECRO-35 (spec
-# pc-decroissance-radioactive-scene-noyaux §8.2–§8.4) : un vingtième modèle,
-# loi-population-vs-noyau (la loi promet à une POPULATION, pas à un noyau
-# isolé — débusqué par la scène S3), amené au plancher par trois items ; et
-# un premier item de LECTURE DE TABLEAU (DECRO-34), qui referme le trou
-# « application expérimentale 0 % » pour cette notion. NB : le décompte
-# ci-dessous recompte chaque distracteur des quatre items un par un plutôt
-# que de recopier la ligne « Après application » de la spec — celle-ci omet
-# le distracteur D de DECRO-33 (lambda-depend-conditions-externes), présent
-# dans le corps de la spec (§8.3) mais absent de son propre total récapitulatif ;
-# lambda-depend-conditions-externes est donc à 15 ici, pas 14. Tableau GÉNÉRÉ,
-# gardé par web/scripts/resume-couverture.mjs.
+# RÉÉCRIT le 2026-09-27, après DECRO-36 à DECRO-40 (audit
+# audit-banque-pc1.md § decroissance-radioactive, D1/D2/D3) : un
+# vingt-et-unième modèle, confond-restant-desintegre (le nombre désintégré
+# ou formé n'est pas le nombre restant), déclaré et amené au plancher par
+# trois items (DECRO-37, 38, 39) ; plus DECRO-36 (la droite ln N = f(t),
+# λ = −pente) et DECRO-40 (compter x α et y β⁻ dans une chaîne à deux
+# équations), qui rejoignent des modèles déjà au plancher sans en créer de
+# nouveaux. NB : le décompte ci-dessous recompte chaque distracteur des cinq
+# items un par un, comme le veut la méthode. Tableau GÉNÉRÉ, gardé par
+# web/scripts/resume-couverture.mjs.
+#
+# CORRIGÉ le 2026-09-27, sur les critiques wave-1 (vagueA-pedagogie.md D-1,
+# D-2, D-4, D-6, A-5 ; vagueA-fidelite.md I9, I10, I11, M3) : DECRO-36 ne
+# promet plus de figure absente (stem reformulé, « on lit deux points »,
+# comme la leçon) et perd son ordonnée à l'origine irréaliste (deux points
+# hors de $t=0$, même pente $-6{,}0\times10^{-3}$) ; son option D, reprise
+# 18 fois ailleurs (lambda-depend-conditions-externes), est remplacée par
+# une erreur propre à la lecture de pente (garder le signe du coefficient
+# directeur), rattachée à confond-demi-vie-constante-lambda plutôt que
+# déclarée à part — d'où lambda-depend-conditions-externes : 18 → 17.
+# DECRO-39 n'est plus pré-résolu par le rapport 3 de la leçon (qui reste sa
+# seule vérification) : il pose désormais une datation en MASSES et masses
+# molaires (forme attestée, bank.yaml:1765-1766), avec un rapport 2,50 →
+# 3,50 qui exige un vrai logarithme. DECRO-37 est re-tagué R5 (l'inversion
+# logarithmique qu'il demande n'est enseignée qu'à ce rang ; R4: 13→12,
+# R5: 4→5 ci-dessous) et son option C confronte maintenant sa propre
+# conséquence (2,3 h, un sixième de la demi-vie). DECRO-36 à 40 portent
+# désormais `habilete` (vocabulaire de rlc-serie/items.yaml).
+#
+# CORRIGÉ à nouveau le 2026-09-27 : la première version de DECRO-39 posait
+# ce rapport de masses sur le thorium 232 ($t_{1/2}=1{,}4\times10^{10}$
+# ans), avec une réponse correcte à $2{,}53\times10^{10}$ ans — près du
+# double de l'âge de l'univers, une roche qui ne peut pas exister. Reposé
+# sur la chaîne uranium 235 → plomb 207 ($t_{1/2}=7{,}04\times10^{8}$ ans,
+# la chaîne de DECRO-40, une autre technique dessus) : mêmes masses
+# molaires en proportion (n_Pb/n_U = 2,50, même rapport 1+r = 3,50), âge
+# correct $\approx1{,}27\times10^{9}$ ans — plausible (Terre : 4,5×10⁹
+# ans). Mêmes mappings de misconceptions, même habileté.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2114,33 +2548,37 @@ coverage_summary:
     mc.physics.decroissance_radioactive.element-defini-par-masse:           { count: 4, items: [DECRO-1, DECRO-10, DECRO-27, DECRO-28] }
     mc.physics.decroissance_radioactive.instabilite-necessite-grand-noyau:  { count: 3, items: [DECRO-2, DECRO-28, DECRO-29] }
     mc.physics.decroissance_radioactive.stabilite-ne-depend-que-de-Z:       { count: 4, items: [DECRO-2, DECRO-10, DECRO-28, DECRO-29] }
-    mc.physics.decroissance_radioactive.conservation-Z-oubliee:             { count: 3, items: [DECRO-3, DECRO-11, DECRO-22] }
-    mc.physics.decroissance_radioactive.alpha-se-comporte-comme-beta:       { count: 3, items: [DECRO-3, DECRO-11, DECRO-22] }
-    mc.physics.decroissance_radioactive.sens-conservation-inverse:          { count: 3, items: [DECRO-3, DECRO-11, DECRO-22] }
+    mc.physics.decroissance_radioactive.conservation-Z-oubliee:             { count: 4, items: [DECRO-3, DECRO-11, DECRO-22, DECRO-40] }
+    mc.physics.decroissance_radioactive.alpha-se-comporte-comme-beta:       { count: 4, items: [DECRO-3, DECRO-11, DECRO-22, DECRO-40] }
+    mc.physics.decroissance_radioactive.sens-conservation-inverse:          { count: 4, items: [DECRO-3, DECRO-11, DECRO-22, DECRO-40] }
     mc.physics.decroissance_radioactive.gamma-change-Z-comme-beta:          { count: 3, items: [DECRO-4, DECRO-30, DECRO-31] }
     mc.physics.decroissance_radioactive.gamma-change-A-comme-alpha:         { count: 3, items: [DECRO-4, DECRO-30, DECRO-31] }
     mc.physics.decroissance_radioactive.gamma-change-isotope:               { count: 3, items: [DECRO-4, DECRO-30, DECRO-31] }
-    mc.physics.decroissance_radioactive.noyau-vieillit:                     { count: 8, items: [DECRO-7, DECRO-8, DECRO-9, DECRO-5, DECRO-12, DECRO-17, DECRO-18, DECRO-21] }
+    mc.physics.decroissance_radioactive.noyau-vieillit:                     { count: 9, items: [DECRO-7, DECRO-8, DECRO-9, DECRO-5, DECRO-12, DECRO-17, DECRO-18, DECRO-21, DECRO-36] }
     mc.physics.decroissance_radioactive.noyau-fraicheur-instable:           { count: 7, items: [DECRO-7, DECRO-8, DECRO-9, DECRO-5, DECRO-17, DECRO-19, DECRO-20] }
-    mc.physics.decroissance_radioactive.lambda-depend-conditions-externes:  { count: 15, items: [DECRO-7, DECRO-8, DECRO-9, DECRO-5, DECRO-12, DECRO-13, DECRO-23, DECRO-24, DECRO-26, DECRO-17, DECRO-18, DECRO-21, DECRO-32, DECRO-33, DECRO-35] }
+    mc.physics.decroissance_radioactive.lambda-depend-conditions-externes:  { count: 17, items: [DECRO-7, DECRO-8, DECRO-9, DECRO-5, DECRO-12, DECRO-13, DECRO-23, DECRO-24, DECRO-26, DECRO-17, DECRO-18, DECRO-21, DECRO-32, DECRO-33, DECRO-35, DECRO-37, DECRO-39] }
     mc.physics.decroissance_radioactive.division-lineaire-demi-vies:        { count: 8, items: [DECRO-13, DECRO-6, DECRO-14, DECRO-15, DECRO-16, DECRO-19, DECRO-21, DECRO-34] }
-    mc.physics.decroissance_radioactive.demi-vie-egale-duree-de-vie-totale: { count: 7, items: [DECRO-6, DECRO-14, DECRO-15, DECRO-16, DECRO-19, DECRO-20, DECRO-34] }
-    mc.physics.decroissance_radioactive.oubli-lambda-dans-exponentielle:    { count: 8, items: [DECRO-12, DECRO-13, DECRO-6, DECRO-14, DECRO-15, DECRO-16, DECRO-18, DECRO-20] }
-    mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda:  { count: 5, items: [DECRO-23, DECRO-24, DECRO-25, DECRO-26, DECRO-34] }
+    mc.physics.decroissance_radioactive.demi-vie-egale-duree-de-vie-totale: { count: 8, items: [DECRO-6, DECRO-14, DECRO-15, DECRO-16, DECRO-19, DECRO-20, DECRO-34, DECRO-38] }
+    mc.physics.decroissance_radioactive.oubli-lambda-dans-exponentielle:    { count: 9, items: [DECRO-12, DECRO-13, DECRO-6, DECRO-14, DECRO-15, DECRO-16, DECRO-18, DECRO-20, DECRO-38] }
+    mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda:  { count: 8, items: [DECRO-23, DECRO-24, DECRO-25, DECRO-26, DECRO-34, DECRO-36, DECRO-37, DECRO-39] }
     mc.physics.decroissance_radioactive.confond-activite-nombre-noyaux:     { count: 4, items: [DECRO-23, DECRO-25, DECRO-26, DECRO-35] }
     mc.physics.decroissance_radioactive.loi-population-vs-noyau:            { count: 3, items: [DECRO-32, DECRO-33, DECRO-35] }
-  total_items: 35
+    mc.physics.decroissance_radioactive.confond-restant-desintegre:         { count: 3, items: [DECRO-37, DECRO-38, DECRO-39] }
+  total_items: 40
   floor: 3
   floor_met: true
   ramp_coverage:
     R0: 3
     R1: 6
-    R2: 6
+    R2: 7
     R3: 4
-    R4: 10
-    R5: 3
+    R4: 12
+    R5: 5
     R6: 3
   honest_state: >-
-    Les vingt misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Dix y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item la casse.
+    Les vingt-et-une misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Huit y siègent EXACTEMENT (3 items) : la marge est nulle et
+    tout retrait d'item la casse. Le vingt-et-unième modèle,
+    confond-restant-desintegre (audit-banque-pc1.md, D2 — sept sujets
+    vérifiés demandent le nombre de noyaux désintégrés ou formés, jamais
+    testé jusqu'ici), y siège lui aussi exactement à trois.

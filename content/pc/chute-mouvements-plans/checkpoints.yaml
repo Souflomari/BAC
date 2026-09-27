@@ -21,6 +21,13 @@ skill_code: pc_chute_plans
 #   cp-frottement-vlim   — rupture gate: la chute AVEC frottement, vitesse limite
 #                          (à v_l l'accélération est nulle, PAS le frottement).
 #                          Probes frottement-disparait-a-vlim.
+#   cp-r7-archimede      — rupture gate (added 2026-09-27, wave-1 critique
+#                          vagueA-pedagogie.md C-3): la poussée d'Archimède, à
+#                          la différence du frottement, agit déjà pleinement à
+#                          t=0 — hand-back du a_0 = 9,8 calculé plus haut dans
+#                          R7, commit avant de découvrir que a_0 ne vaut plus g
+#                          dès qu'un liquide est présent. Probes
+#                          archimede-mal-situee-dans-le-modele.
 #   cp-euler             — rupture gate: la méthode d'Euler (valeur approchée,
 #                          facteur Δt, pente recalculée). Probes
 #                          euler-donne-valeur-exacte.
@@ -30,16 +37,22 @@ skill_code: pc_chute_plans
 #
 # Clone note: cp-symetrie clones CMP-8's stem, cp-frottement-vlim clones CMP-25's,
 # cp-euler clones CMP-28's, cp-gravitation-kepler clones CMP-31/CMP-33's. cp-r0-
-# predict is an original commit item (not in the end bank). Distractors are
-# curated so EVERY distractor carries a named misconception tag, and the correct
+# predict is an original commit item (not in the end bank); cp-r7-archimede is
+# original too — a liquid "nearly as dense as the ball" (ρ_liquide=0,90 ρ_bille)
+# is a deliberately different scenario from CMP-39..41/44 (none of which uses
+# that near-neutral-buoyancy ratio), and from the CMP-39-B distractor (which
+# only ever gets read, never committed to first). Distractors are curated so
+# EVERY distractor carries a named misconception tag, and the correct
 # choice is never the longest. No end-bank tally is adjusted — inline surfacing
 # does not double-count.
 #
 # Boundary guard: 2ème Bac PC. Chute libre / projectile (frottements négligés) ;
-# chute AVEC frottement fluide linéaire (v_l = mg/k, régimes) ; méthode d'Euler
-# (seule méthode numérique au programme) ; gravitation → mouvement circulaire
-# uniforme → v = √(GM/r) ; 3e loi de Kepler CAS CIRCULAIRE. Pas d'intégration
-# analytique de l'ODE, pas d'orbite elliptique quantitative.
+# chute AVEC frottement fluide linéaire (v_l = mg/k, régimes) ; poussée
+# d'Archimède quand le fluide est un liquide (a_0, v_l, jamais le coefficient
+# 1/τ) ; méthode d'Euler (seule méthode numérique au programme) ; gravitation →
+# mouvement circulaire uniforme → v = √(GM/r) ; 3e loi de Kepler CAS
+# CIRCULAIRE. Pas d'intégration analytique de l'ODE, pas d'orbite elliptique
+# quantitative.
 # ──────────────────────────────────────────────────────────────────────────────
 
 checkpoints:
@@ -227,6 +240,85 @@ checkpoints:
           Modèle détecté : on prolonge la règle de la chute libre. $v_\ell = mg/k$
           contient $m$ : avec frottement, deux objets de masses différentes n'ont
           pas la même vitesse limite. La masse « revient ».
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2b | id: cp-r7-archimede | rupture gate (R7), placed in R11
+  #        Added 2026-09-27, wave-1 critique (vagueA-pedagogie.md C-3): the
+  #        misconception was named in items.yaml, ruptured nowhere, and had
+  #        no checkpoint. The rupture is free and sitting there — the
+  #        student has just read a_0 = 9,8 m/s² for a ball in a liquid
+  #        (lesson.md R7's first worked example, explicitly "sans poussée
+  #        d'Archimède"). Hand that number back, then ask what a_0 becomes
+  #        for a ball in a liquid nearly as dense as itself. Probes
+  #        archimede-mal-situee-dans-le-modele. Original — not a clone of an
+  #        end-bank item (deliberately not CMP-39/40/41/44's numbers or
+  #        density ratio).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7-archimede
+    rung: "R7"
+    habilete: utilisation
+    skill_code: pc_chute_plans
+    tags: [checkpoint, formative, misconception_driven, pc_chute_plans, frottement_fluide]
+    primary_misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
+    item_source: original
+    lesson_placement: in_R11
+
+    stem: |
+      Une bille homogène est lâchée sans vitesse initiale dans un liquide
+      presque aussi dense qu'elle : $\rho_{liquide} = 0{,}90\,\rho_{bille}$
+      (elle coule très lentement, proche de la flottaison). **Engage-toi
+      avant de calculer** : que vaut, à l'instant même où on la lâche,
+      l'accélération initiale $a_0$ de la bille ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$a_0 \\approx 0{,}98\\ \\text{m/s}^2$ : Archimède retranche déjà 90 % du poids dès $t=0$."
+        correct: true
+        feedback: |
+          Exact — et c'est la rupture à retenir. $a_0=g(1-\rho_{liquide}/\rho_{bille})=9{,}8\times(1-0{,}90)\approx0{,}98\ \text{m/s}^2$ :
+          l'accélération initiale s'effondre presque à $0$, alors que le
+          frottement, lui, est encore totalement nul à $v=0$. Pousse
+          l'idée jusqu'au bout : si le liquide était EXACTEMENT aussi dense
+          que la bille, $a_0$ vaudrait $0$ pile — la bille resterait en
+          place, ni ne coule ni ne remonte.
+
+      - id: B
+        text: "$a_0 = 9{,}8\\ \\text{m/s}^2$ : à $t=0$ la vitesse est nulle, donc aucune force autre que le poids n'agit encore."
+        correct: false
+        misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
+        feedback: |
+          Modèle détecté : croire qu'Archimède, comme le frottement, attend
+          que la bille bouge. Faux — la poussée d'Archimède ne dépend
+          jamais de $v$ : elle vaut déjà $\rho_{liquide}Vg$ au premier
+          instant. Avec un liquide presque aussi dense que la bille, elle
+          retranche déjà l'essentiel du poids : $a_0$ est proche de $0$,
+          pas de $g$.
+
+      - id: C
+        text: "$a_0 = g\\times\\dfrac{\\rho_{liquide}}{\\rho_{bille}} \\approx 8{,}8\\ \\text{m/s}^2$ : la part que le liquide retranche au poids."
+        correct: false
+        misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
+        feedback: |
+          Ce calcul oublie le « $1-$ » : $a_0$ est ce qui RESTE une fois la
+          part d'Archimède retranchée du poids
+          ($g(1-\rho_{liquide}/\rho_{bille})\approx0{,}98\ \text{m/s}^2$),
+          pas cette part elle-même. Poussé à sa conséquence, ce modèle
+          ferait CROÎTRE $a_0$ avec la densité du liquide au lieu de le
+          réduire — l'inverse de l'effet réel d'Archimède.
+
+      - id: D
+        text: "$a_0 = g\\left(1-\\dfrac{\\rho_{bille}}{\\rho_{liquide}}\\right) \\approx -1{,}1\\ \\text{m/s}^2$ : la bille remonterait légèrement dès le départ."
+        correct: false
+        misconception: mc.physics.pc_chute_plans.archimede-mal-situee-dans-le-modele
+        feedback: |
+          Les deux masses volumiques sont interverties : c'est
+          $\rho_{liquide}$ (celle du fluide déplacé) qui doit apparaître au
+          numérateur du rapport retranché à $1$, jamais $\rho_{bille}$. Ici
+          $\rho_{bille}>\rho_{liquide}$ : la bille coule bel et bien
+          ($a_0>0$), même si très lentement — elle ne remonte pas.
 
   # ════════════════════════════════════════════════════════════════
   # CP-3 | id: cp-euler | rupture gate (R8), placed in R11
