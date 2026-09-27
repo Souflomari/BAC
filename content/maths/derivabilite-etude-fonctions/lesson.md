@@ -275,7 +275,7 @@ Voici le résultat qui rend le calcul de $f'$ aussi utile : le signe de $f'$ com
 - Si $f'(x) < 0$ pour tout $x$ de $I$ (sauf éventuellement en un nombre fini de points), alors $f$ est **strictement décroissante** sur $I$.
 - Si $f'(x) = 0$ pour tout $x$ de $I$, alors $f$ est **constante** sur $I$.
 
-**Pourquoi c'est crédible, avec l'image de la tangente :** $f'(x)$ est la pente de la tangente au point d'abscisse $x$. Si cette pente est positive **en chaque point** de $I$, la courbe "monte" localement partout sur $I$ — elle ne peut pas redescendre nulle part, sinon il existerait un point où la tangente pointerait vers le bas, donc où $f'$ serait négative, ce qui contredit l'hypothèse. Recoller ces montées locales en une seule conclusion globale demande un argument plus fin (le théorème des accroissements finis, hors programme ici) — mais l'image de la pente qui ne s'annule jamais dans le mauvais sens explique pourquoi le résultat est vrai.
+**Pourquoi c'est crédible, avec l'image de la tangente :** $f'(x)$ est la pente de la tangente au point d'abscisse $x$. Si cette pente est positive **en chaque point** de $I$, la courbe "monte" localement partout sur $I$ — elle ne peut pas redescendre nulle part, sinon il existerait un point où la tangente pointerait vers le bas, donc où $f'$ serait négative, ce qui contredit l'hypothèse. Recoller ces montées locales en une seule conclusion globale demande un argument plus fin (le théorème des accroissements finis — au programme Sciences Mathématiques, admis ici sans démonstration : c'est la démonstration qui est hors programme à ce niveau) — mais l'image de la pente qui ne s'annule jamais dans le mauvais sens explique pourquoi le résultat est vrai.
 
 ### Les extremums locaux — et un piège à éviter
 
@@ -352,13 +352,36 @@ Voici, rassemblé, tout ce qu'une étude complète de fonction demande — dans 
 
 Reviens à l'étape 2 de la méthode. Une limite aux bornes n'est pas toujours finie : quand $f(x) \to \pm\infty$ à l'infini, il n'y a pas d'asymptote horizontale — mais ce n'est pas la fin de l'histoire. La courbe part à l'infini, oui, mais elle peut le faire de plusieurs façons bien distinctes, et un sujet d'examen demande presque toujours de préciser laquelle. L'outil qui tranche, dans les trois cas, est le même : la limite de $\dfrac{f(x)}{x}$.
 
+**La formulation exacte qu'un sujet national attend**, à recopier telle quelle (seule la fin change selon le cas) : « $(C)$ admet au voisinage de $+\infty$ [ou $-\infty$] une branche parabolique de direction asymptotique … ». Le mot « asymptotique » n'est pas décoratif : il fait partie de la phrase, dans les trois cas ci-dessous, pas seulement pour la droite $y=ax$.
+
 **La chaîne de décision, à dérouler dans l'ordre :**
 
-1. **$\displaystyle\lim \dfrac{f(x)}{x} = \pm\infty$** (le rapport lui-même explose) : $f$ grimpe (ou descend) plus vite qu'aucune droite ne pourrait le faire — la courbe s'écrase contre la direction verticale. Conclusion : $(C_f)$ admet une **branche parabolique de direction $(Oy)$** au voisinage de l'infini considéré.
-2. **$\displaystyle\lim \dfrac{f(x)}{x} = 0$** : $f$ grandit beaucoup plus lentement que $x$ — la courbe s'aplatit contre l'horizontale, sans jamais s'en approcher au sens d'une véritable asymptote. Conclusion : $(C_f)$ admet une **branche parabolique de direction $(Ox)$**.
-3. **$\displaystyle\lim \dfrac{f(x)}{x} = a$, avec $a \neq 0$ fini** : le rapport se stabilise, la courbe suit en moyenne la pente de la droite $y=ax$ — mais ce $a$ seul ne suffit pas encore à conclure. Il faut un second calcul, $\displaystyle\lim\bigl(f(x)-ax\bigr)$ :
-   - si cette limite vaut un nombre **fini** $b$ : c'est l'asymptote oblique déjà vue plus haut, $(D): y=ax+b$ ;
-   - si cette limite est **infinie** : la courbe garde la pente moyenne de $y=ax$ mais s'en écarte indéfiniment, elle ne la rejoint jamais. Conclusion : $(C_f)$ admet une **branche parabolique de direction la droite $y=ax$**.
+1. **$\displaystyle\lim \dfrac{f(x)}{x} = \pm\infty$** (le rapport lui-même explose) : $f$ grimpe (ou descend) plus vite qu'aucune droite ne pourrait le faire — la courbe s'écrase contre la direction verticale. Conclusion : $(C_f)$ admet une **branche parabolique de direction asymptotique l'axe des ordonnées $(Oy)$** au voisinage de l'infini considéré.
+2. **$\displaystyle\lim \dfrac{f(x)}{x} = 0$** : $f$ grandit beaucoup plus lentement que $x$ — la courbe s'aplatit contre l'horizontale, sans jamais s'en approcher au sens d'une véritable asymptote. Conclusion : $(C_f)$ admet une **branche parabolique de direction asymptotique l'axe des abscisses $(Ox)$**.
+3. **$\displaystyle\lim \dfrac{f(x)}{x} = a$, avec $a \neq 0$ fini** : le rapport se stabilise, la courbe suit en moyenne la pente de la droite $y=ax$.
+
+   Avant de lire la suite, engage-toi : d'après toi, ce seul résultat ($a\neq0$ fini) suffit-il à conclure que $(D):y=ax+b$ est asymptote oblique à $(C_f)$ ?
+
+   [[checkpoint:cp-r5-branche-commit]]
+
+   Non — ce $a$ seul ne suffit pas encore à conclure. Il faut un second calcul, $\displaystyle\lim\bigl(f(x)-ax\bigr)$ :
+   - si cette limite vaut un nombre **fini** $b$ : c'est bien une asymptote oblique — que tu vas voir travaillée dans l'exemple complet juste après —, $(D): y=ax+b$ ;
+   - si cette limite est **infinie** : la courbe garde la pente moyenne de $y=ax$ mais s'en écarte indéfiniment, elle ne la rejoint jamais. Conclusion : $(C_f)$ admet une **branche parabolique de direction asymptotique la droite $y=ax$**.
+
+<!-- ENHANCEMENT SLOT (figure, non bloquant) — brief pour la file diagram/interactive :
+     type: structural-diagram · tool: svg+katex (taxonomie ADR 0017).
+     Sujet : la taxonomie à trois branches ci-dessus, sur un seul repère —
+     trois courbes-témoins (une qui s'écrase vers la verticale, une qui
+     s'aplatit vers l'horizontale, une qui suit une droite oblique en s'en
+     écartant) à côté de l'axe ou de la droite dont chacune se rapproche
+     SANS jamais la rejoindre — pour distinguer visuellement une branche
+     parabolique d'une véritable asymptote.
+     stages:
+       - "Panneau 1 : la courbe s'écrase contre (Oy) — direction asymptotique verticale"
+       - "Panneau 2 : la courbe s'aplatit contre (Ox) — direction asymptotique horizontale"
+       - "Panneau 3 : la courbe suit y=ax sans jamais la rejoindre — lecture finale : l'écart qui ne se stabilise pas (contraste direct avec une vraie asymptote oblique, où l'écart tend vers un b fini)"
+     Non produit par cet auteur (content-author, hors lane) ; signalé pour
+     la file diagram/interactive. -->
 
 **Exemple travaillé.** Étudier la branche infinie de $f(x) = x+\sqrt{x}$ (définie sur $[0,+\infty[$) au voisinage de $+\infty$.
 
@@ -376,7 +399,7 @@ $$f(x)-x = \sqrt{x} \qquad\qquad \lim_{x \to +\infty}\bigl(f(x)-x\bigr) = \lim_{
 
 L'écart avec la droite $y=x$ ne se stabilise pas : il grandit sans borne, la courbe ne rejoint jamais cette droite.
 
-$$(C_f) \text{ admet une branche parabolique de direction la droite } y=x \text{ au voisinage de } +\infty$$
+$$(C_f) \text{ admet une branche parabolique de direction asymptotique la droite } y=x \text{ au voisinage de } +\infty$$
 
 **Le piège, et il est systématique :** trouver un $a \neq 0$ à la première limite ne suffit JAMAIS, à lui seul, à conclure à une asymptote oblique — c'est exactement l'erreur que cet exemple démasque. Ce $a$ existe dans les DEUX cas (asymptote oblique et branche parabolique de direction $y=ax$) : ce qui les distingue, c'est uniquement la SECONDE limite, $\lim\bigl(f(x)-ax\bigr)$ — finie pour une asymptote, infinie pour une branche parabolique. Compare avec l'exemple qui suit, $f(x)=x+\dfrac{1}{x-1}$ : mêmes deux étapes, même $a=1$, mais une conclusion opposée, parce que $\dfrac{1}{x-1}\to0$ au lieu de $\to+\infty$.
 
@@ -424,7 +447,7 @@ $$f'(x) = \frac{x(x-2)}{(x-1)^2}$$
 
 ---
 
-## Fonction réciproque : la même courbe, lue dans l'autre sens
+## R5b — Fonction réciproque : la même courbe, lue dans l'autre sens
 
 Tu viens de mener une étude complète : domaine, limites, dérivée, signe, variations. Tout ce travail répond toujours à la même question, dans le même sens — on te donne $x$, tu produis $f(x)$.
 
@@ -575,12 +598,21 @@ Même enchaînement — dérivabilité, Rolle, accroissements finis, point d'inf
      leçon les traite comme une seule notion en 7 rungs (R0 + R1-R5 +
      R6 entraînement) ; à confirmer que ce découpage correspond à
      l'intention du produit et à la progression réelle du programme SM/PC/SVT.
-     (3) Le théorème "signe de f' ⇒ sens de variation" (R4) est présenté
-     comme admis, avec une justification intuitive (image de la pente) mais
-     sans démonstration par les accroissements finis / le théorème de Rolle
-     — choix délibéré pour rester au niveau bac. À confirmer que le
-     programme n'attend pas une mention explicite du théorème des
-     accroissements finis à ce niveau.
+     (3) [CORRIGÉ, fidélité BLOQUANTE, 2026-09-27] Le théorème "signe de f'
+     ⇒ sens de variation" (R4) reste présenté comme admis, avec une
+     justification intuitive (image de la pente) et sans démonstration —
+     choix délibéré, valable pour toutes les filières. Ce qui était faux
+     dans cette note d'origine : elle traitait "le théorème des
+     accroissements finis" comme une mention à éviter, potentiellement hors
+     programme. Vérifié contre maths-sm.yaml:110-119 et
+     bac-reference.md:108-115 : Rolle et le théorème (et l'inégalité) des
+     accroissements finis SONT au programme Sciences Mathématiques (absents
+     en Sciences Expérimentales — maths-sexp.yaml:303, "la dérivabilité SExp
+     reste calculatoire"), appliqués comme des outils, jamais démontrés à ce
+     niveau — c'est la démonstration qui est hors programme, pas le
+     théorème lui-même. R4 (:278) et R5 (branches infinies) le nomment
+     maintenant explicitement en ce sens, et R5b/R6 les exercent déjà
+     (Rolle appliqué à $f'$, TAF) sans que rien ne change à leur périmètre.
      (4) La formule $(u^n)'$ n'est établie ici que pour $n$ entier (via la
      règle de la composée) ; les puissances non entières ne sont pas
      abordées, conformément au périmètre demandé qui n'inclut ni les
@@ -594,4 +626,31 @@ Même enchaînement — dérivabilité, Rolle, accroissements finis, point d'inf
      "Limites et continuité" est bien enseigné AVANT cette notion dans la
      séquence produit (l'inverse casserait ce callback, sans casser la
      leçon elle-même qui reste autonome).
--->
+
+     NOTE AJOUTÉE (wave-1 fixes, exam-debt wave B1, 2026-09-27) :
+     (6) [CORRIGÉ, pédagogie M1] R5 affirmait qu'une asymptote oblique
+     nommée plus loin (exemple complet, ligne ~430 à l'époque) était "déjà
+     vue plus haut" — faux, elle est travaillée juste APRÈS dans le même
+     rung. Corrigé en "que tu vas voir travaillée dans l'exemple complet
+     juste après".
+     (7) [CORRIGÉ, fidélité M2] La chaîne de décision des branches infinies
+     nommait les deux cas d'axe "branche parabolique de direction (Oy)/(Ox)"
+     sans le mot "asymptotique" que porte la phrase officielle du bac
+     (vérifiée mot pour mot contre fonction-logarithme/bank.yaml:461-463 pour
+     le cas droite oblique, et limites-continuite/exercises.yaml:81/185 pour
+     le cas axe (Oy)). Les trois cas de la chaîne de décision, et la
+     conclusion de l'exemple travaillé $f(x)=x+\sqrt{x}$, portent maintenant
+     "de direction asymptotique" dans les trois cas.
+     (8) [LIVRÉ, pédagogie I4, template box A] Un nouveau checkpoint
+     predict-commit, `cp-r5-branche-commit`, engage l'élève sur la question
+     "$\lim f(x)/x=a\neq0$ fini suffit-il à conclure une asymptote oblique ?"
+     AVANT que le texte ne révèle qu'il faut un second calcul — jamais après.
+     Probait à l'écriture la misconception `limite-finie-de-f-sur-x-suffit-asymptote`,
+     que l'auteur d'items a scindée le même jour (elle réunissait deux erreurs
+     opposées) : le point de contrôle vise désormais
+     `asymptote-oblique-conclue-sans-second-calcul` et, pour un distracteur,
+     `limite-f-sur-x-confondue-avec-limite-de-f` (orchestrateur, 2026-09-27).
+     (9) [SIGNALÉ, pédagogie I9] Un brief de figure (enhancement slot, non
+     bloquant) est ajouté dans la chaîne de décision : trois panneaux
+     structurels illustrant les trois branches infinies. Non produit ici
+     (hors du lane content-author) — signalé pour la file diagram/interactive. -->

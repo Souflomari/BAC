@@ -248,6 +248,49 @@ misconceptions:
       deux formules ne sont pas interchangeables — le contrôle immédiat :
       dériver la primitive candidate et vérifier qu'elle redonne $f$.
 
+  # ── Wave-1 fixes, dette d'examen vague B1 (2026-09-27) ──────────────────
+  # Deux misconceptions neuves. La première isole un modèle que la passe du
+  # 2026-09-05 avait laissé fondu dans `linearite-abusive` : le facteur
+  # constant du ratio numérateur/u' mal ajusté devant $\ln|u|$ ou $-1/u$, une
+  # fois la BONNE forme (u'/u ou u'/u²) déjà reconnue — distinct de la
+  # linéarité étendue au produit ou du coefficient d'un terme de somme ignoré
+  # (CI-57 C reste sous `linearite-abusive` : cette erreur-là omet tout un
+  # terme d'une décomposition en somme, pas un facteur devant $\ln|u|$ déjà
+  # identifié). La seconde couvre le GAP-A resté explicitement non traité par
+  # la vague B (lesson.md:668-671) : F(x) = ∫ₐˣ f(t) dt sans primitive
+  # explicite, ici pour la première fois dans ce banc — un seul item la
+  # porte (CI-58 repurposé), sous le plancher de 3 ; voir coverage_summary
+  # pour l'état honnête.
+  - id: mc.math.maths_calcul_integral.facteur-constant-non-ajuste
+    label: "Primitive de u'/u (ou u'/u²) : facteur constant non ajusté devant ln|u| (ou −1/u)"
+    description: >-
+      L'élève reconnaît la bonne forme ($u'/u$ ou $u'/u^2$) et la bonne
+      primitive de référence ($\ln|u|$ ou $-\dfrac1u$), mais prend le
+      numérateur comme s'il était exactement $u'$ : $\int k\cdot u'/u$ est
+      primitivé comme $\ln|u|$ seul (facteur $k$ oublié), ou le facteur
+      $\frac1a$ propre à $u=ax+b$ est mal reporté devant la primitive.
+    contradicts_principle: >-
+      Si le numérateur s'écrit $k\cdot u'$ (avec $k\neq1$), la primitive est
+      $k\ln|u|$ (ou $k\times\left(-\dfrac1u\right)$), jamais $\ln|u|$ (ou
+      $-\dfrac1u$) seule : le facteur constant qui relie le numérateur donné
+      à $u'$ doit multiplier toute la primitive de référence, il ne
+      disparaît pas en cours de route.
+  - id: mc.math.maths_calcul_integral.fonction-cumulee-confondue-avec-f
+    label: "F(x)=∫ₐˣf : la fonction accumulée confondue avec f elle-même"
+    description: >-
+      Face à une fonction $F$ définie par $F(x)=\int_a^x f(t)\,\mathrm{d}t$
+      (sans primitive explicite de $f$ donnée), l'élève prête à $F$ les
+      mêmes valeurs ou le même signe que $f$ elle-même — par exemple en
+      affirmant que $F$ est négative là où $f$ l'est — au lieu de
+      reconnaître que $F$ ACCUMULE l'aire signée depuis $a$, ce qui dépend
+      de toute l'histoire de $f$ sur $[a,x]$, pas seulement de sa valeur
+      locale en $x$.
+    contradicts_principle: >-
+      $F(x)=\int_a^x f(t)\,\mathrm{d}t$ est une SOMME accumulée : seule sa
+      DÉRIVÉE, $F'=f$, partage le signe de $f$ point par point. Le signe (ou
+      la valeur) de $F$ elle-même dépend de tout ce qui s'est passé sur
+      $[a,x]$, et ne se lit pas directement sur le signe local de $f$ en $x$.
+
 items:
 
   - id: CI-1
@@ -2998,19 +3041,25 @@ items:
 
   # ── Dette d'examen, vague B — GAP-A "u'/u -> ln|u| et u'/u² -> -1/u"
   # (docs/audits/dette-examen/maths.md § calcul-integral, 6 sites de banque).
-  # CI-51 -> CI-58, rung R1 (là où lesson.md porte désormais la prose).
+  # CI-51 -> CI-57, rung R1 (là où lesson.md porte désormais la prose).
   # Fonctions et nombres tous originaux : aucun ne reprend une fonction ou
   # des bornes des sites cités (fonction-exponentielle/bank.yaml:518-524,
   # 2478, 2810 ; fonction-logarithme/bank.yaml:792, 2740-2799, 4570-4591), ni
   # les deux exemples travaillés de lesson.md ($\frac{6}{3-2x}$ sur $[2,3]$,
   # $\frac{-3}{(2x+1)^2}$ sur $[0,2]$).
+  # CI-58 : RE-PURPOSÉ wave-1 (2026-09-27, dette-examen vague B1) — l'item
+  # d'origine dupliquait structurellement CI-53 (même correction "Indéfini"
+  # sur intervalle contenant un zéro de u ; deux critiques de relecture
+  # bac-fidélité/pédagogie l'ont signalé). Il porte maintenant l'autre GAP-A
+  # laissé explicitement non traité par la vague B (lesson.md:668-671) :
+  # F(x) = ∫ₐˣ f(t) dt SANS primitive explicite de f.
   - id: CI-51
     rung: "R1"
     habilete: application_directe
     difficulty_level: 2
     skill_code: maths_calcul_integral
     tags: [primitive_u_sur_u, facteur_constant]
-    primary_misconception: mc.math.maths_calcul_integral.linearite-abusive
+    primary_misconception: mc.math.maths_calcul_integral.facteur-constant-non-ajuste
     stem: >
       Sur $[0,2]$, $u(x)=4x+1$ est strictement positive (elle ne s'annule
       qu'en $x=-\frac14$, hors de l'intervalle). Calcule
@@ -3020,7 +3069,7 @@ items:
       - id: A
         text: "$2\\ln 3$"
         correct: false
-        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        misconception: mc.math.maths_calcul_integral.facteur-constant-non-ajuste
         feedback: >
           Ce choix reconnaît bien $u=4x+1$ et $\ln|u|$ comme forme de la
           primitive, mais oublie le facteur : $12=3\times4$, donc le
@@ -3067,7 +3116,7 @@ items:
 
   - id: CI-52
     rung: "R1"
-    habilete: application_non_explicite
+    habilete: application_directe
     difficulty_level: 3
     skill_code: maths_calcul_integral
     tags: [primitive_u_sur_u, valeur_absolue]
@@ -3092,7 +3141,7 @@ items:
       - id: B
         text: "$F(x) = \\ln|5-6x|$"
         correct: false
-        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        misconception: mc.math.maths_calcul_integral.facteur-constant-non-ajuste
         feedback: >
           La structure $\ln|u|$ est correcte, mais le facteur est oublié :
           $18=-3\times(-6)$, donc $\dfrac{18}{5-6x}=-3\times\dfrac{u'}{u}$. La
@@ -3101,14 +3150,14 @@ items:
         text: "$F(x) = -3\\ln|5-6x|$"
         correct: true
       - id: D
-        text: "$F(x) = -3\\ln 6$"
+        text: "$F(x) = \\dfrac{3}{5-6x}$"
         correct: false
-        misconception: mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u
+        misconception: mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2
         feedback: >
-          $u'(x)=-6$ est une CONSTANTE : primitiver $u'$ au lieu de
-          reconnaître $u=5-6x$ au dénominateur donne $\ln|u'|=\ln6$, qui ne
-          dépend pas de $x$ — ça ne peut pas être la primitive d'une fonction
-          qui, elle, varie avec $x$.
+          Ce choix applique le modèle $-\dfrac1u$ — réservé aux fractions de
+          la forme $u'/u^2$ (dénominateur au carré) — à une fraction de la
+          forme $u'/u$ (dénominateur à la puissance $1$) : ici $5-6x$ n'est
+          pas élevé au carré, c'est $\ln|u|$ qui s'applique, pas $-\dfrac1u$.
     correct_feedback: >
       $u(x)=5-6x$, $u'(x)=-6$, et $18=-3\times(-6)$ : la fraction s'écrit
       $-3\times\dfrac{u'}{u}$, donc une primitive est $-3\ln|u|=-3\ln|5-6x|$.
@@ -3139,7 +3188,7 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "$5\\ln\\frac45$"
+        text: "L'intégrale vaut $5\\ln\\frac45$ : valeur de la primitive $5\\ln|3x-8|$ prise entre $1$ et $4$."
         correct: false
         misconception: mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee
         feedback: >
@@ -3150,15 +3199,15 @@ items:
           définie en ce point, donc l'intégrale n'existe pas — ce nombre ne
           mesure rien de réel.
       - id: B
-        text: "$\\ln\\frac45$"
+        text: "L'intégrale vaut $\\ln\\frac45$ : valeur de la primitive $\\ln|3x-8|$ prise entre $1$ et $4$."
         correct: false
-        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        misconception: mc.math.maths_calcul_integral.facteur-constant-non-ajuste
         feedback: >
           $15=5\times3=5\,u'$ : le facteur $5$ manque devant $\ln|u|$. Mais
           même corrigé (voir l'autre distracteur), ce calcul resterait
           invalide — $u$ s'annule à l'intérieur de $[1,4]$.
       - id: C
-        text: "$0$"
+        text: "L'intégrale vaut $0$ : la primitive $5\\ln 3$ est constante, donc égale aux deux bornes."
         correct: false
         misconception: mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u
         feedback: >
@@ -3167,28 +3216,33 @@ items:
           pas la bonne approche — c'est $u=3x-8$, pas $u'$, qui doit passer
           dans le logarithme.
       - id: D
-        text: "Indéfini."
+        text: "L'intégrale n'est pas définie : $f$ n'est pas continue sur $[1\\,;4]$ (non définie en $\\frac83$)."
         correct: true
     correct_feedback: >
       $u(x)=3x-8$ s'annule en $x=\frac83$, et $\frac83\in[1,4]$ (puisque
-      $1<\frac83<4$). La fonction $f(x)=\frac{15}{3x-8}$ n'est donc pas
-      définie en ce point : l'intégrale $\int_1^4 f$ n'a pas de sens, quel
-      que soit le nombre qu'un calcul mené sans vérifier cette hypothèse
-      pourrait afficher.
+      $1<\frac83<4$). $f(x)=\frac{15}{3x-8}$ n'est donc pas continue sur
+      $[1\,;4]$ — elle n'est même pas définie en $x=\frac83$. Or la
+      définition de l'intégrale (chapitre 2) exige une fonction CONTINUE sur
+      tout l'intervalle : cette hypothèse échoue ici, donc $\int_1^4 f$ n'a
+      pas de sens, quel que soit le nombre qu'un calcul mené sans vérifier
+      cette continuité pourrait afficher.
     solution: |
-      **La condition à vérifier avant tout calcul :** le modèle $u'/u\to\ln|u|$
-      exige que $u$ ne s'annule PAS sur l'intervalle d'intégration.
+      **La condition à vérifier avant tout calcul :** l'intégrale $\int_a^b f$
+      (chapitre 2) exige que $f$ soit CONTINUE sur tout $[a,b]$ — et le
+      modèle $u'/u\to\ln|u|$, en particulier, exige que $u$ ne s'annule PAS
+      sur l'intervalle d'intégration.
 
       $$u(x)=3x-8=0 \iff x=\frac83$$
 
       Or $\frac83\approx2{,}67$, et $1<\frac83<4$ : ce point est bien à
       l'intérieur de $[1,4]$.
 
-      **Conclusion :** $f(x)=\frac{15}{3x-8}$ n'est pas définie en
-      $x=\frac83$, donc $\int_1^4 f(x)\,\mathrm{d}x$ n'existe pas. Le nombre
-      $5\ln\frac45$ obtenu en ignorant cette vérification n'est pas une
-      valeur d'intégrale — c'est le piège exact que l'intervalle est censé
-      prévenir.
+      **Conclusion :** $f(x)=\frac{15}{3x-8}$ n'est pas continue sur
+      $[1\,;4]$ (elle n'est pas définie en $x=\frac83$), donc
+      $\int_1^4 f(x)\,\mathrm{d}x$ n'existe pas. Le nombre $5\ln\frac45$
+      obtenu en ignorant cette vérification n'est pas une valeur
+      d'intégrale — c'est le piège exact que la continuité sur tout
+      l'intervalle est censée prévenir.
 
   - id: CI-54
     rung: "R1"
@@ -3215,7 +3269,7 @@ items:
       - id: B
         text: "$\\frac{2}{45}$"
         correct: false
-        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        misconception: mc.math.maths_calcul_integral.facteur-constant-non-ajuste
         feedback: >
           Le modèle $-\dfrac1u$ est le bon, mais le facteur est oublié :
           $10=5\times2$, donc $\dfrac{10}{(2x+9)^2}=5\times\dfrac{u'}{u^2}$.
@@ -3248,7 +3302,7 @@ items:
 
   - id: CI-55
     rung: "R1"
-    habilete: application_non_explicite
+    habilete: application_directe
     difficulty_level: 3
     skill_code: maths_calcul_integral
     tags: [primitive_u_sur_u2, modele_u_sur_u_vs_u_sur_u2]
@@ -3273,7 +3327,7 @@ items:
       - id: C
         text: "$-\\frac{7}{4x-1}$"
         correct: false
-        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        misconception: mc.math.maths_calcul_integral.facteur-constant-non-ajuste
         feedback: >
           Le modèle $-\dfrac1u$ est le bon, mais le facteur est mal ajusté :
           $7=\dfrac74\times4$, donc $g(x)=\dfrac74\times\dfrac{u'}{u^2}$. La
@@ -3300,8 +3354,8 @@ items:
 
   - id: CI-56
     rung: "R1"
-    habilete: application_non_explicite
-    difficulty_level: 4
+    habilete: application_directe
+    difficulty_level: 3
     skill_code: maths_calcul_integral
     tags: [primitive_u_sur_u, modele_u_sur_u_vs_u_sur_u2]
     primary_misconception: mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2
@@ -3323,7 +3377,7 @@ items:
       - id: B
         text: "$\\ln\\frac37$"
         correct: false
-        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        misconception: mc.math.maths_calcul_integral.facteur-constant-non-ajuste
         feedback: >
           La structure $\ln|u|$ est la bonne, mais le facteur est oublié :
           $20=-5\times(-4)$, donc $\dfrac{20}{7-4x}=-5\times\dfrac{u'}{u}$. La
@@ -3423,63 +3477,78 @@ items:
 
   - id: CI-58
     rung: "R1"
-    habilete: application_non_explicite
-    difficulty_level: 4
+    habilete: synthese
+    difficulty_level: 5
     skill_code: maths_calcul_integral
-    tags: [primitive_u_sur_u, intervalle_validite]
-    primary_misconception: mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee
+    tags: [fonction_definie_par_integrale, signe_et_variations, borne_inferieure]
+    primary_misconception: mc.math.maths_calcul_integral.fonction-cumulee-confondue-avec-f
     stem: >
-      Sur $[0,4]$, $u(x)=2x-3$. Quelle est la valeur de
-      $\displaystyle\int_0^4 \frac{12}{2x-3}\,\mathrm{d}x$ ?
+      Soit $f$ une fonction continue sur $[-2,4]$, dont on donne le tableau
+      de signes : $f(x)<0$ sur $]-2\,;1[$, $f(1)=0$, $f(x)>0$ sur $]1\,;4]$
+      (aucune expression de $f$ n'est donnée). On pose, pour tout
+      $x\in[-2,4]$, $\displaystyle F(x) = \int_{-2}^{x} f(t)\,\mathrm{d}t$.
+      Quelle affirmation sur $F$ est correcte ?
     type: mcq
     choices:
       - id: A
-        text: "$0$"
-        correct: false
-        misconception: mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u
-        feedback: >
-          $u'=2$ est une constante : $\ln|u'|=\ln2$ ne dépend pas de $x$, et
-          s'évalue à $\ln2-\ln2=0$ entre deux bornes. Ce n'est de toute façon
-          pas la bonne approche — c'est $u=2x-3$, pas $u'$, qui doit passer
-          dans le logarithme.
-      - id: B
-        text: "Indéfini."
+        text: "$F$ est dérivable sur $[-2,4]$ avec $F'=f$ : $F$ est donc décroissante sur $[-2,1]$ puis croissante sur $[1,4]$, et $F(-2)=0$."
         correct: true
+      - id: B
+        text: "Le signe de $f$ ne suffit pas pour connaître les variations de $F$ : il faudrait connaître le signe de $f'$, qui n'est pas donné ici."
+        correct: false
+        misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
+        feedback: >
+          Non : $F$ est une primitive de $f$ signifie exactement $F'=f$ (pas
+          $F'=f'$). Le signe de $F'$ est donc directement celui de $f$, déjà
+          donné par le tableau de signes de l'énoncé — nul besoin de dériver
+          $f$ une nouvelle fois pour connaître les variations de $F$.
       - id: C
-        text: "$6\\ln\\frac53$"
+        text: "$F(x)<0$ sur $]-2,1[$ et $F(x)>0$ sur $]1,4]$, exactement comme $f$."
         correct: false
-        misconception: mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee
+        misconception: mc.math.maths_calcul_integral.fonction-cumulee-confondue-avec-f
         feedback: >
-          C'est ce que donne $6\ln|2x-3|$ évaluée aux deux bornes
-          ($6\ln|5|-6\ln|-3|=6\ln5-6\ln3=6\ln\frac53$), sans vérifier que
-          $u(x)=2x-3$ garde un signe constant sur TOUT $[0,4]$. Or
-          $u\left(\frac32\right)=0$ et $\frac32\in[0,4]$ : $f$ n'est pas
-          définie en ce point, donc l'intégrale n'existe pas — ce nombre ne
-          mesure rien de réel.
+          Ce choix prête à $F$ le signe de $f$ point par point. Mais $F(x)$
+          ACCUMULE tout ce qui s'est passé depuis $-2$ : même quand $f$
+          redevient positive après $x=1$, $F$ doit d'abord compenser l'aire
+          négative accumulée sur $]-2,1[$ avant de pouvoir redevenir
+          positive elle-même — rien dans le tableau de signes ne garantit
+          que $F(4)>0$. Seule la dérivée $F'=f$ partage le signe de $f$, pas
+          $F$ elle-même.
       - id: D
-        text: "$\\ln\\frac53$"
+        text: "$F(-2)$ ne peut pas être déterminé sans connaître une expression explicite de $f$."
         correct: false
-        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        misconception: mc.math.maths_calcul_integral.chasles-mal-appliquee
         feedback: >
-          $12=6\times2=6\,u'$ : le facteur $6$ manque devant $\ln|u|$. Mais
-          même corrigé (voir l'autre distracteur), ce calcul resterait
-          invalide — $u$ s'annule à l'intérieur de $[0,4]$.
+          Non : $F(-2)=\displaystyle\int_{-2}^{-2} f(t)\,\mathrm{d}t = 0$,
+          par la convention $\int_a^a=0$ (chapitre 4) — valable quelle que
+          soit $f$, sans avoir besoin d'une expression explicite.
     correct_feedback: >
-      $u(x)=2x-3=0 \iff x=\frac32$, et $\frac32\in[0,4]$. La formule
-      $u'/u\to\ln|u|$ exige que $u$ ne s'annule sur aucun point de
-      l'intervalle — ici elle s'annule à l'intérieur, donc $f$ n'est pas
-      définie partout sur $[0,4]$ et l'intégrale n'a pas de sens, même si le
-      calcul formel affiche un nombre.
+      $F(x)=\int_{-2}^x f(t)\,\mathrm{d}t$ est une primitive de $f$ (donc
+      dérivable, avec $F'=f$) : le signe de $F'$ est celui de $f$, donc $F$
+      décroît sur $[-2,1]$ (où $f\leq0$) puis croît sur $[1,4]$ (où
+      $f\geq0$). Et $F(-2)=\int_{-2}^{-2} f = 0$ par la convention des bornes
+      égales, sans qu'aucune expression de $f$ ne soit nécessaire.
     solution: |
-      **Vérifier l'hypothèse d'abord :** $u(x)=2x-3$ s'annule en
-      $x=\frac32$. Comme $0<\frac32<4$, ce point est à l'intérieur de $[0,4]$.
+      **$F$ est une primitive de $f$ :** par définition,
+      $F(x)=\int_{-2}^x f(t)\,\mathrm{d}t$ est dérivable sur $[-2,4]$ (car
+      $f$ y est continue) et $F'=f$ — sans qu'aucune expression explicite de
+      $f$ soit nécessaire pour l'affirmer.
 
-      **Conclusion :** $f(x)=\frac{12}{2x-3}$ n'est pas définie en
-      $x=\frac32$, donc $\int_0^4 f(x)\,\mathrm{d}x$ n'existe pas. Le calcul
-      formel affiché — arithmétiquement correct à chaque étape — repose sur
-      une hypothèse (l'intervalle où $u$ ne s'annule pas) qui n'a jamais été
-      vérifiée. C'est précisément l'erreur que le réflexe « vérifier
-      l'intervalle avant de calculer » prévient.
+      **Les variations de $F$ se lisent sur le signe de $f$, pas sur celui
+      de $f'$ :** $F'=f\leq0$ sur $[-2,1]$, donc $F$ y est décroissante ;
+      $F'=f\geq0$ sur $[1,4]$, donc $F$ y est croissante. $F$ admet donc un
+      minimum en $x=1$.
+
+      **La valeur en la borne inférieure :** $F(-2)=\int_{-2}^{-2}
+      f(t)\,\mathrm{d}t = 0$, par la convention $\int_a^a=0$ — cette valeur
+      ne dépend d'aucune expression de $f$.
+
+      **Ce qu'on ne peut PAS affirmer :** le signe de $F(x)$ pour $x>1$
+      n'est pas déterminé par ce tableau de signes seul — $F$ part de $0$,
+      décroît (donc devient négative) sur $[-2,1]$, puis croît sur $[1,4]$
+      sans qu'on sache si elle repasse au-dessus de $0$ avant $x=4$. C'est
+      la différence entre la fonction $F$ elle-même (qui accumule) et sa
+      dérivée $F'=f$ (qui, elle, partage vraiment le signe de $f$).
 
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05 (CI-31→CI-34), le 2026-09-23 pour le rung « volume
@@ -3520,6 +3589,51 @@ items:
 # chacune au plancher exact (3 items) sauf `u-sur-u-derivee-au-lieu-de-u`
 # (5 items, marge réelle). Huit items ajoutés, tous rung R1, tous avec un tag
 # par distracteur dès l'écriture (pas de dette de marquage sur ce lot).
+# RÉVISÉ le 2026-09-27, wave-1 fixes (dette-examen vague B1), quatre points :
+#   1. CI-53 D : « Indéfini. » remplacé par la phrase notée par une copie de
+#      bac (« $f$ n'est pas continue sur $[1;4]$ », avec l'intervalle et le
+#      point réels de l'item) ; `correct_feedback`/`solution` alignés sur
+#      « continue », conforme aux deux cadres (maths-sm.yaml:183,
+#      maths-sexp.yaml:173 : l'intégrale se définit pour une fonction
+#      CONTINUE). Le design et la phrase « ce nombre ne mesure rien de réel »
+#      (choix A) sont inchangés.
+#   2. CI-58 RE-PURPOSÉ (doublon structurel de CI-53, deux critiques) : porte
+#      maintenant F(x)=∫ₐˣf(t)dt SANS primitive explicite (lesson.md:668-671,
+#      GAP-A non traité par la vague B) — signe/variations de F depuis le
+#      signe de f, F'=f, F(a)=0. Chiffres propres (sign de f sur [-2,4],
+#      bascule en x=1). `habilete: synthese`. Une misconception neuve
+#      déclarée, `fonction-cumulee-confondue-avec-f` (le signe de F confondu
+#      avec celui de f) — un seul item la porte, SOUS le plancher de 3 (voir
+#      `honest_state` : signalé plutôt que comblé par un item de complaisance).
+#      Conséquence collatérale : CI-58 ne porte plus
+#      `u-sur-u-absolue-ou-intervalle-oubliee` ni `u-sur-u-derivee-au-lieu-de-u`
+#      ni `linearite-abusive` (ses anciens tags) — `u-sur-u-absolue-ou-
+#      intervalle-oubliee` tombe à 2 items, SOUS le plancher lui aussi (l'
+#      honest_state de la version précédente l'avait explicitement annoncé :
+#      « à surveiller en priorité si un futur audit retire un item du rung
+#      R1 » — c'est exactement ce qui vient d'arriver).
+#   3. `facteur-constant-non-ajuste` déclarée (le facteur constant du ratio
+#      numérateur/u' mal ajusté devant $\ln|u|$ ou $-1/u$, une fois la bonne
+#      forme déjà reconnue — distinct de `linearite-abusive`). Retaggés :
+#      CI-51 A, CI-52 B, CI-53 B, CI-54 B, CI-55 C, CI-56 B (6 items,
+#      au-dessus du plancher). CI-57 C vérifié et LAISSÉ sous
+#      `linearite-abusive` : son erreur omet tout un terme d'une décomposition
+#      en somme (la constante $3$ jamais primitivée), pas un facteur devant
+#      $\ln|u|$ déjà identifié — ce n'est pas la même erreur.
+#      `linearite-abusive` perd donc 7 items (CI-51,52,53,54,55,56,58) et en
+#      garde 9, toujours confortablement au-dessus du plancher.
+#   4. `u-sur-u-derivee-au-lieu-de-u` démotée d'UN slot self-évidemment absurde
+#      (CI-52 D : une primitive candidate CONSTANTE, $-3\ln6$ — la plus
+#      flagrante des quatre occurrences « 0 ou constante » du lot) vers
+#      `u-sur-u-vs-u-sur-u2` (nouvelle valeur plausible,
+#      $\frac{3}{5-6x}$ : le modèle $-1/u$, réservé à $u'/u^2$, appliqué à ce
+#      $u'/u$ — l'autre polarité déjà décrite par cette misconception), ce qui
+#      lui donne une marge (3→4). Les trois autres occurrences « 0 » (CI-51 C,
+#      CI-53 C, CI-57 B) sont LAISSÉES telles quelles : les démoter aussi
+#      ferait tomber `u-sur-u-derivee-au-lieu-de-u` sous le plancher (elle
+#      finit exactement à 3, CI-51/CI-53/CI-57 — aucune marge, à traiter en
+#      priorité si un futur audit y touche encore). Habileté : CI-52, CI-55,
+#      CI-56 → `application_directe` ; CI-56 difficulté 4→3.
 # Tableau GÉNÉRÉ contre la convention de la chaîne, gardé par
 # web/scripts/resume-couverture.mjs.
 coverage_summary:
@@ -3530,10 +3644,10 @@ coverage_summary:
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
     web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
-    mc.math.maths_calcul_integral.primitive-vs-derivee:            { count: 5, items: [CI-11, CI-31, CI-32, CI-54, CI-55] }
+    mc.math.maths_calcul_integral.primitive-vs-derivee:            { count: 6, items: [CI-11, CI-31, CI-32, CI-54, CI-55, CI-58] }
     mc.math.maths_calcul_integral.constante-et-bornes:             { count: 8, items: [CI-1, CI-10, CI-13, CI-15, CI-17, CI-51, CI-56, CI-57] }
-    mc.math.maths_calcul_integral.linearite-abusive:               { count: 16, items: [CI-2, CI-12, CI-32, CI-36, CI-37, CI-43, CI-44, CI-50, CI-51, CI-52, CI-53, CI-54, CI-55, CI-56, CI-57, CI-58] }
-    mc.math.maths_calcul_integral.chasles-mal-appliquee:           { count: 3, items: [CI-14, CI-16, CI-32] }
+    mc.math.maths_calcul_integral.linearite-abusive:               { count: 9, items: [CI-2, CI-12, CI-32, CI-36, CI-37, CI-43, CI-44, CI-50, CI-57] }
+    mc.math.maths_calcul_integral.chasles-mal-appliquee:           { count: 4, items: [CI-14, CI-16, CI-32, CI-58] }
     mc.math.maths_calcul_integral.integrale-signee-vs-aire:        { count: 5, items: [CI-6, CI-11, CI-17, CI-26, CI-28] }
     mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe:      { count: 3, items: [CI-5, CI-24, CI-25] }
     mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee:   { count: 4, items: [CI-4, CI-22, CI-23, CI-30] }
@@ -3546,12 +3660,14 @@ coverage_summary:
     mc.math.maths_calcul_integral.volume-integrale-sans-pi:        { count: 10, items: [CI-36, CI-37, CI-38, CI-39, CI-41, CI-42, CI-43, CI-44, CI-49, CI-50] }
     mc.math.maths_calcul_integral.volume-carre-mal-place:          { count: 5, items: [CI-36, CI-37, CI-43, CI-44, CI-50] }
     mc.math.maths_calcul_integral.conversion-unites-volume:        { count: 4, items: [CI-46, CI-47, CI-48, CI-49] }
-    mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee: { count: 3, items: [CI-52, CI-53, CI-58] }
-    mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u:        { count: 5, items: [CI-51, CI-52, CI-53, CI-57, CI-58] }
-    mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2:                { count: 3, items: [CI-54, CI-55, CI-56] }
+    mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee: { count: 2, items: [CI-52, CI-53] }
+    mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u:        { count: 3, items: [CI-51, CI-53, CI-57] }
+    mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2:                { count: 4, items: [CI-52, CI-54, CI-55, CI-56] }
+    mc.math.maths_calcul_integral.facteur-constant-non-ajuste:        { count: 6, items: [CI-51, CI-52, CI-53, CI-54, CI-55, CI-56] }
+    mc.math.maths_calcul_integral.fonction-cumulee-confondue-avec-f:  { count: 1, items: [CI-58] }
   total_items: 55
   floor: 3
-  floor_met: true
+  floor_met: false
   ramp_coverage:
     R0: 3
     R1: 12
@@ -3574,28 +3690,49 @@ coverage_summary:
     ne se ramènent pas toutes à un modèle unique — reste une passe à faire. Les
     items ajoutés depuis (CI-31 à CI-34, puis CI-36 à CI-50 pour le rung
     volume — CI-35/CI-40/CI-45 retirés le 2026-09-24 —, puis CI-51 à CI-58
-    pour la dette d'examen vague B du 2026-09-27) portent, eux, un tag sur
-    chaque distracteur.
+    pour la dette d'examen vague B du 2026-09-27, révisés wave-1 le même jour)
+    portent, eux, un tag sur chaque distracteur.
   honest_state: >-
-    Dix-neuf misconceptions déclarées (onze historiques + cinq du rung volume
-    + trois de la dette d'examen vague B, u'/u et u'/u²), toutes couvertes,
-    aucune sous le plancher. Six y siègent EXACTEMENT (3 items) —
-    `chasles-mal-appliquee`, `ipp-mauvais-choix-ou-signe`,
-    `aire-naive-geometrique`, `conversion-unites-aire`,
-    `u-sur-u-absolue-ou-intervalle-oubliee`, `u-sur-u-vs-u-sur-u2` — la marge
-    y est nulle et tout retrait d'item la casse (`primitive-vs-derivee` en
-    sort désormais avec 5 items, CI-54 et CI-55 ajoutés). Les cinq
-    misconceptions du rung volume gardent une marge réelle après la coupe du
-    2026-09-24 (de 4 à 10 items chacune) ; les deux plus tendues sont
-    désormais `conversion-unites-volume` et `volume-circonference-vs-disque`,
-    à 4 items chacune — une seule marge d'item au-dessus du plancher, à
-    surveiller si une future passe retire encore un item du rung.
-    `linearite-abusive` gagne une marge large avec ce lot (16 items, dual-tag
-    ADR 0009 sur `π(∫f)²` toujours vrai pour CI-36, CI-37, CI-43, CI-44,
-    CI-50 ; les huit occurrences neuves, CI-51 à CI-58, y voient toutes le
-    même modèle — le facteur constant du ratio numérateur/u' mal ajusté ou
-    oublié devant $\ln|u|$ ou $-\frac1u$). `u-sur-u-derivee-au-lieu-de-u`
-    garde une marge réelle (5 items) ; les deux autres misconceptions de ce
-    lot (`u-sur-u-absolue-ou-intervalle-oubliee`,
-    `u-sur-u-vs-u-sur-u2`) siègent au plancher exact et n'ont aucune marge —
-    à surveiller en priorité si un futur audit retire un item du rung R1.
+    FLOOR NON TENU après la révision wave-1 du 2026-09-27 (voir le
+    commentaire ci-dessus, points 2 et 4) — signalé ici plutôt que masqué par
+    un item de complaisance : `u-sur-u-absolue-ou-intervalle-oubliee` tombe à
+    2 items (CI-52, CI-53) et `fonction-cumulee-confondue-avec-f` (neuve,
+    point 2) n'a qu'1 item (CI-58) — les deux SOUS le plancher de 3. Le
+    premier cas était explicitement anticipé par la version précédente de
+    cette note (« à surveiller en priorité si un futur audit retire un item
+    du rung R1 ») : le repurposing de CI-58, mandaté par la spec, en est la
+    cause directe et n'a pas de solution honnête à l'intérieur du seul
+    périmètre de ce lot (un item neuf, hors scope, est nécessaire pour
+    chacun — voir la recommandation de suivi). Le second est le coût d'
+    ouverture d'un GAP-A resté sans porteur jusqu'ici (lesson.md:668-671) :
+    un seul item ne peut pas honnêtement satisfaire le plancher tout seul, et
+    aucun distracteur existant ailleurs dans le banc ne porte authentiquement
+    ce modèle (aucun autre item ne construit de fonction définie par une
+    intégrale à borne variable).
+    Vingt-et-une misconceptions déclarées au total (dix-neuf précédentes +
+    `facteur-constant-non-ajuste` et `fonction-cumulee-confondue-avec-f`).
+    Quatre siègent EXACTEMENT au plancher (3 items) — `ipp-mauvais-choix-ou-
+    signe`, `aire-naive-geometrique`, `conversion-unites-aire`,
+    `u-sur-u-derivee-au-lieu-de-u` (retombée à 3 après la démotion de CI-52 D
+    et la perte de CI-58 ; CI-51/CI-53/CI-57 seules porteuses, aucune marge).
+    `chasles-mal-appliquee` gagne CI-58 et passe à 4 (marge d'un item). Les
+    cinq misconceptions du rung volume gardent une marge réelle (de 4 à 10
+    items chacune) ; les deux plus tendues restent `conversion-unites-volume`
+    et `volume-circonference-vs-disque`, à 4 items chacune.
+    `linearite-abusive` perd 7 items ce lot (CI-51,52,53,54,55,56,58,
+    reclassés sous `facteur-constant-non-ajuste` ou, pour CI-58,
+    entièrement repurposé) et retombe à 9 — encore une marge large, dual-tag
+    ADR 0009 sur `π(∫f)²` (CI-36, CI-37, CI-43, CI-44, CI-50) et CI-57
+    (omission d'un terme entier d'une somme, vérifié comme une erreur
+    distincte du facteur-constant : LAISSÉ sous ce modèle après vérification
+    explicite, pas par défaut). `facteur-constant-non-ajuste` (neuve) démarre
+    à 6 items (CI-51 à CI-56), confortablement au-dessus du plancher.
+    `u-sur-u-vs-u-sur-u2` gagne CI-52 (démotion depuis `u-sur-u-derivee-au-
+    lieu-de-u`, l'autre polarité déjà décrite par ce modèle) et passe de 3 à
+    4 — sort du plancher exact où la version précédente l'avait signalée.
+    Recommandation de suivi (hors scope de ce wave) : un item neuf pour
+    `u-sur-u-absolue-ou-intervalle-oubliee` (ex. un u'/u avec u<0 sur une
+    partie de l'intervalle, distinct de CI-52/CI-53) et un pour
+    `fonction-cumulee-confondue-avec-f` (une seconde fonction définie par une
+    intégrale à borne variable, chiffres propres) restaureraient le plancher
+    sans retoucher le contenu déjà écrit ici.

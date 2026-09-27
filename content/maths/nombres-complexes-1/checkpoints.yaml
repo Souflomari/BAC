@@ -393,7 +393,7 @@ checkpoints:
     choices:
       - id: A
         text: |-
-          $\Delta<0$ ne signifie plus « aucune solution » : il existe $\delta=4i$ tel que $\delta^2=-16=\Delta$, et l'équation a deux solutions complexes conjuguées, $z=1\pm2i$.
+          Deux solutions complexes conjuguées : $\delta=4i$ vérifie $\delta^2=-16=\Delta$, d'où $z=1\pm2i$.
         correct: true
         feedback: |-
           Exact. Dans $\mathbb{C}$, le mur « $\Delta<0 \Rightarrow$ aucune
@@ -403,7 +403,7 @@ checkpoints:
           l'autre puisque les coefficients sont réels.
 
       - id: B
-        text: "Aucune solution : $\\Delta<0$, exactement comme dans $\\mathbb{R}$."
+        text: "Pas de solution dans $\\mathbb{C}$ : $\\Delta<0$ conduit à la même conclusion que dans $\\mathbb{R}$."
         correct: false
         misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
         feedback: |-
@@ -414,7 +414,7 @@ checkpoints:
           solutions.
 
       - id: C
-        text: "$z = \\dfrac{2 \\pm \\sqrt{-16}}{2}$, en calculant $\\sqrt{-16}$ avec les règles usuelles de la racine carrée."
+        text: "$z = \\dfrac{2 \\pm \\sqrt{-16}}{2}$, avec $\\sqrt{-16}$ calculée par les règles de la racine carrée."
         correct: false
         misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
         feedback: |-
@@ -424,7 +424,7 @@ checkpoints:
           jamais appliquer $\sqrt{\ }$ directement à un nombre négatif.
 
       - id: D
-        text: "Une solution double, $z=1$, en confondant $\\Delta<0$ avec $\\Delta=0$."
+        text: "Une solution double, $z=1=\\dfrac{-b}{2a}$, comme dans le cas $\\Delta=0$."
         correct: false
         misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
         feedback: |-

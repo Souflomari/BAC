@@ -82,10 +82,32 @@ misconceptions:
   # la branche parabolique (GAP-A, prose ajoutée par le content-author,
   # lesson.md:351-381), l'asymptote oblique + position relative (GAP-B,
   # lesson.md:389-395) et la fonction réciproque (GAP-B, lesson.md:427-541).
-  - id: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
-    label: "« lim f(x)/x = a fini non nul suffirait à conclure à une asymptote oblique »"
-    description: "L'élève s'arrête à la première limite, $\\lim f(x)/x = a$ (fini, non nul), et conclut directement à une asymptote oblique $y=ax+b$ sans calculer $\\lim\\bigl(f(x)-ax\\bigr)$ — ou, à l'inverse, lit $\\lim f(x)/x = \\pm\\infty$ ou $=0$ comme « rien à en dire », au lieu d'y reconnaître directement une direction de branche parabolique déjà nommée, $(Oy)$ ou $(Ox)$."
-    contradicts_principle: "La chaîne de décision de la branche infinie ne s'arrête JAMAIS à la seule valeur de $\\lim f(x)/x$ quand ce nombre $a$ est fini et non nul : c'est la SECONDE limite, $\\lim\\bigl(f(x)-ax\\bigr)$, qui tranche entre asymptote oblique (limite finie $b$) et branche parabolique de direction $y=ax$ (limite infinie). Et quand $\\lim f(x)/x$ vaut $\\pm\\infty$ ou $0$, la conclusion est au contraire immédiate et déjà nommée — direction $(Oy)$ ou $(Ox)$ — ce n'est jamais une impasse qui exigerait un calcul supplémentaire."
+  #
+  # SCINDÉES le même jour (revue pédagogique I6) : la misconception unique
+  # d'origine, `limite-finie-de-f-sur-x-suffit-asymptote`, bundlait deux
+  # erreurs opposées sous un seul id — une sur-conclusion (s'arrête trop tôt
+  # côté « a fini non nul ») et une sur-prudence (bloque à tort côté « a
+  # infini ou nul », alors que ces deux cas concluent immédiatement). Un
+  # troisième modèle, distinct des deux premiers, est apparu à l'usage :
+  # confondre la limite du RAPPORT $f(x)/x$ avec celle de $f(x)$ elle-même
+  # (aucune des treize misconceptions déjà déclarées ne le couvre). Item
+  # neuf, DERIVFCT-39, ajouté pour porter chacun des trois ids nouveaux au
+  # plancher de 3 sans les regrouper artificiellement dans les items 30-33
+  # déjà écrits.
+  - id: mc.math.maths_derivabilite_etude_fonctions.asymptote-oblique-conclue-sans-second-calcul
+    label: "« lim f(x)/x = a (fini non nul, ou même infini) suffirait, à elle seule, à conclure à une asymptote oblique »"
+    description: "L'élève s'arrête à la première limite — que $\\lim f(x)/x$ soit un nombre $a$ fini non nul, ou qu'elle soit infinie — et conclut néanmoins directement à une asymptote oblique $y=ax+b$, sans jamais calculer la seconde limite, $\\lim\\bigl(f(x)-ax\\bigr)$, seule à trancher entre asymptote oblique et branche parabolique de direction $y=ax$, et sans même vérifier que le rapport est bien fini et non nul, condition nécessaire à l'existence d'une telle asymptote."
+    contradicts_principle: "La chaîne de décision de la branche infinie ne s'arrête JAMAIS à la seule valeur de $\\lim f(x)/x$ : une asymptote oblique exige à la fois que ce rapport soit fini et NON NUL, ET que la seconde limite, $\\lim\\bigl(f(x)-ax\\bigr)$, soit elle-même finie. Le rapport seul, quelle que soit sa valeur, ne donne jamais qu'un candidat — jamais la conclusion complète."
+
+  - id: mc.math.maths_derivabilite_etude_fonctions.branche-immediate-oy-ox-mal-conclue
+    label: "« Les cas immédiats de la branche infinie (lim f(x)/x = ±∞ ou 0) ne sont pas reconnus comme tranchés d'avance »"
+    description: "Quand $\\lim f(x)/x$ vaut $\\pm\\infty$ ou $0$ — les deux cas où la chaîne de décision conclut IMMÉDIATEMENT, sans second calcul —, l'élève traite pourtant la situation comme une impasse (« rien à en dire », il faudrait un calcul supplémentaire), ou intervertit les deux directions déjà nommées, $(Oy)$ et $(Ox)$, l'une pour l'autre."
+    contradicts_principle: "Quand $\\lim f(x)/x$ vaut $\\pm\\infty$, la conclusion est immédiate et déjà nommée : branche parabolique de direction asymptotique $(Oy)$. Quand elle vaut $0$, c'est tout aussi immédiat : direction asymptotique $(Ox)$. Aucun de ces deux cas n'est une impasse, et ils ne se substituent jamais l'un à l'autre : $(Oy)$ signale un rapport qui explose, $(Ox)$ un rapport qui s'annule — deux comportements opposés du même rapport $f(x)/x$."
+
+  - id: mc.math.maths_derivabilite_etude_fonctions.limite-f-sur-x-confondue-avec-limite-de-f
+    label: "« lim f(x)/x se lirait comme lim f(x) elle-même (ou l'inverse) »"
+    description: "L'élève substitue la limite de la FONCTION elle-même, $\\lim f(x)$, à celle du RAPPORT, $\\lim f(x)/x$ — par exemple en lisant $\\lim f(x)/x=0$ comme si $f(x)$ elle-même tendait vers $0$ (concluant à tort à une asymptote horizontale $y=0$), ou en se servant de $\\lim f(x)=\\pm\\infty$ seule pour choisir une direction, sans avoir consulté le rapport, qui peut pourtant se comporter tout autrement."
+    contradicts_principle: "La chaîne de décision de la branche infinie porte entièrement sur $\\lim f(x)/x$, le RAPPORT — jamais sur $\\lim f(x)$, la fonction seule, qui a déjà servi à écarter l'asymptote horizontale à l'étape précédente de la méthode. Les deux limites répondent à deux questions différentes, et rien ne garantit qu'elles se comportent de la même façon : ici, par exemple, $f(x)\\to+\\infty$ pendant que $f(x)/x\\to0$."
 
   # Dédiée par cet auteur (item-writer) : le piège « J = I » nommé par le
   # pédagogue n'est couvert par AUCUNE des treize misconceptions ci-dessus —
@@ -1783,23 +1805,32 @@ items:
 
   # Ajoutés le 2026-09-27 (dette d'examen, vague B1) : neuf items qui payent
   # trois trous de docs/audits/dette-examen/maths.md, section
-  # « derivabilite-etude-fonctions ». DERIVFCT-30 à 33 : la branche
-  # parabolique (GAP-A, prose ajoutée par le content-author,
+  # « derivabilite-etude-fonctions » — plus un dixième (DERIVFCT-39, voir son
+  # propre commentaire plus bas), ajouté le même jour par la revue
+  # pédagogique I6 pour porter au plancher les trois ids nées du
+  # fractionnement de l'ancienne misconception bundlée. DERIVFCT-30 à 33 :
+  # la branche parabolique (GAP-A, prose ajoutée par le content-author,
   # lesson.md:351-381), y compris DERIVFCT-32, le cas qui la sépare de
   # l'asymptote oblique (lim f(x)/x fini non nul MAIS lim(f(x)-ax) infinie),
   # et DERIVFCT-33, l'asymptote oblique + position relative (GAP-B,
-  # lesson.md:389-395). DERIVFCT-34 à 37 : la fonction réciproque — J depuis
-  # les variations, puis (f^{-1})'(b)=1/f'(a) (GAP-B, lesson.md:427-541).
-  # DERIVFCT-38 : la demi-tangente verticale (GAP-A mineur, lesson.md:108-112).
-  # AUCUNE fonction ci-dessous ne reprend un exemple travaillé de la leçon
-  # (x+\sqrt{x}, x+1/(x-1), x^3-3x, (x^2-x+1)/(x-1)) ni le sujet vérifié de
-  # bank.yaml ((x^2-x)e^{-x}+x) — mêmes techniques, nombres différents.
+  # lesson.md:389-395) — ces quatre items vivent tous dans R5, le rung réel
+  # de cette prose (`## R5`, lesson.md:320-427), et non dans R6, qui n'a
+  # AUCUN titre dans lesson.md (voir honest_state en fin de fichier).
+  # DERIVFCT-34 à 37 : la fonction réciproque — J depuis les variations,
+  # puis (f^{-1})'(b)=1/f'(a) (GAP-B, lesson.md:427-541) — ces quatre items
+  # vivent dans R5b, le rung réel de cette prose (`## R5b`,
+  # lesson.md:427). DERIVFCT-38 : la demi-tangente verticale (GAP-A mineur,
+  # lesson.md:108-112), rung R1. AUCUNE fonction ci-dessous ne reprend un
+  # exemple travaillé de la leçon (x+\sqrt{x}, x+1/(x-1), x^3-3x,
+  # (x^2-x+1)/(x-1)) ni le sujet vérifié de bank.yaml
+  # ((x^2-x)e^{-x}+x) — mêmes techniques, nombres différents.
   - id: DERIVFCT-30
-    rung: "R6"
+    rung: "R5"
     difficulty_level: 3
+    habilete: application_directe
     skill_code: maths_derivabilite_etude_fonctions
     tags: [branche-parabolique, limite-f-sur-x]
-    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.branche-immediate-oy-ox-mal-conclue
     stem: >
       Soit $f$ une fonction telle que $\lim_{x\to+\infty} f(x) = +\infty$ et
       $\lim_{x\to+\infty}\dfrac{f(x)}{x} = +\infty$. Que peut-on en conclure
@@ -1808,22 +1839,26 @@ items:
     choices:
       - id: A
         text: >-
-          Rien : il faut d'abord calculer $\lim_{x\to+\infty}\bigl(f(x)-x\bigr)$.
+          Rien : il faut d'abord calculer $\lim_{x\to+\infty}\bigl(f(x)-x\bigr)$,
+          avant de pouvoir conclure quoi que ce soit sur la branche infinie au
+          voisinage de $+\infty$.
         correct: false
-        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        misconception: mc.math.maths_derivabilite_etude_fonctions.branche-immediate-oy-ox-mal-conclue
         feedback: >
           Ce second calcul n'a de sens que si $\lim f(x)/x$ est un nombre FINI
           et non nul. Ici, le rapport lui-même part à l'infini : cela donne
           DÉJÀ la conclusion, sans aucun calcul supplémentaire.
       - id: B
         text: >-
-          $(C_f)$ admet une branche parabolique de direction $(Oy)$.
+          $(C_f)$ admet, au voisinage de $+\infty$, une branche parabolique de
+          direction asymptotique $(Oy)$.
         correct: true
       - id: C
         text: >-
-          $(C_f)$ admet une branche parabolique de direction $(Ox)$.
+          $(C_f)$ admet, au voisinage de $+\infty$, une branche parabolique de
+          direction asymptotique $(Ox)$.
         correct: false
-        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        misconception: mc.math.maths_derivabilite_etude_fonctions.branche-immediate-oy-ox-mal-conclue
         feedback: >
           $(Ox)$ correspond au cas $\lim f(x)/x = 0$ (la courbe s'aplatit
           contre l'horizontale) — pas au cas où ce rapport part lui-même à
@@ -1831,9 +1866,10 @@ items:
           $(Oy)$ qui s'impose.
       - id: D
         text: >-
-          $(C_f)$ admet une asymptote oblique d'équation $y=x$.
+          $(C_f)$ admet, au voisinage de $+\infty$, une asymptote oblique
+          d'équation $y=x$.
         correct: false
-        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        misconception: mc.math.maths_derivabilite_etude_fonctions.asymptote-oblique-conclue-sans-second-calcul
         feedback: >
           Une asymptote oblique exige que $\lim f(x)/x$ soit un nombre FINI et
           non nul. Ce n'est pas le cas ici : ce rapport part lui-même à
@@ -1842,25 +1878,27 @@ items:
     correct_feedback: >
       Exact : $\lim f(x)/x=+\infty$ donne directement la conclusion, sans
       second calcul — le rapport lui-même explose, la courbe s'écrase contre
-      la direction verticale : c'est la branche parabolique de direction
-      $(Oy)$.
+      la direction verticale : $(C_f)$ admet une branche parabolique de
+      direction asymptotique $(Oy)$, au voisinage de $+\infty$.
     solution: |
       La chaîne de décision du cours se lit sur $\lim f(x)/x$ :
-      - $\pm\infty$ : direction $(Oy)$ ;
-      - $0$ : direction $(Ox)$ ;
+      - $\pm\infty$ : direction asymptotique $(Oy)$ ;
+      - $0$ : direction asymptotique $(Ox)$ ;
       - $a$ fini non nul : il faut ENCORE $\lim(f(x)-ax)$ pour trancher entre
         asymptote et branche de direction $y=ax$.
 
       Ici $\lim f(x)/x=+\infty$ : c'est le premier cas, la conclusion est
-      immédiate — branche parabolique de direction $(Oy)$ — et aucun second
-      calcul n'est requis (il ne le serait que pour un $a$ fini non nul).
+      immédiate — branche parabolique de direction asymptotique $(Oy)$ — et
+      aucun second calcul n'est requis (il ne le serait que pour un $a$ fini
+      non nul).
 
   - id: DERIVFCT-31
-    rung: "R6"
+    rung: "R5"
     difficulty_level: 3
+    habilete: application_directe
     skill_code: maths_derivabilite_etude_fonctions
     tags: [branche-parabolique, limite-f-sur-x]
-    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.branche-immediate-oy-ox-mal-conclue
     stem: >
       Soit $f$ une fonction telle que $\lim_{x\to-\infty} f(x) = -\infty$ et
       $\lim_{x\to-\infty}\dfrac{f(x)}{x} = 0$. Quelle est la branche infinie de
@@ -1869,9 +1907,10 @@ items:
     choices:
       - id: A
         text: >-
-          $(C_f)$ admet une branche parabolique de direction $(Oy)$.
+          $(C_f)$ admet, au voisinage de $-\infty$, une branche parabolique de
+          direction asymptotique $(Oy)$.
         correct: false
-        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        misconception: mc.math.maths_derivabilite_etude_fonctions.branche-immediate-oy-ox-mal-conclue
         feedback: >
           $(Oy)$ correspond au cas $\lim f(x)/x=\pm\infty$ (le rapport
           lui-même explose) — pas au cas où il tend vers $0$. Ici c'est
@@ -1879,9 +1918,10 @@ items:
           $(Ox)$, pas $(Oy)$.
       - id: B
         text: >-
-          $(C_f)$ admet une asymptote horizontale d'équation $y=0$.
+          $(C_f)$ admet, au voisinage de $-\infty$, une asymptote horizontale
+          d'équation $y=0$.
         correct: false
-        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-f-sur-x-confondue-avec-limite-de-f
         feedback: >
           $\lim f(x)/x=0$ ne dit rien sur la limite de $f(x)$ elle-même — ici
           $f(x)\to-\infty$, donc $f$ n'a certainement pas d'asymptote
@@ -1889,37 +1929,42 @@ items:
           donne une direction de branche parabolique, pas une asymptote.
       - id: C
         text: >-
-          Rien de particulier : $f$ reste simplement proche de $0$.
+          Rien de particulier, au voisinage de $-\infty$ : $f$ reste
+          simplement proche de la droite $y=0$, sans que cela mérite un nom
+          plus précis.
         correct: false
-        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        misconception: mc.math.maths_derivabilite_etude_fonctions.branche-immediate-oy-ox-mal-conclue
         feedback: >
           Un rapport $f(x)/x\to0$ n'est jamais « rien à en dire » : c'est au
           contraire une conclusion immédiate et déjà nommée — la courbe
           s'aplatit contre l'horizontale, sans jamais la rejoindre au sens
           d'une vraie asymptote. C'est la branche parabolique de direction
-          $(Ox)$.
+          asymptotique $(Ox)$.
       - id: D
         text: >-
-          $(C_f)$ admet une branche parabolique de direction $(Ox)$.
+          $(C_f)$ admet, au voisinage de $-\infty$, une branche parabolique de
+          direction asymptotique $(Ox)$.
         correct: true
     correct_feedback: >
       Exact : $\lim f(x)/x=0$ signale que $f$ grandit beaucoup plus lentement
       que $x$ — la courbe s'aplatit contre l'horizontale sans jamais la
-      rejoindre au sens d'une asymptote : c'est la branche parabolique de
-      direction $(Ox)$.
+      rejoindre au sens d'une asymptote : $(C_f)$ admet une branche
+      parabolique de direction asymptotique $(Ox)$, au voisinage de
+      $-\infty$.
     solution: |
       $\lim f(x)/x=0$ est le deuxième cas de la chaîne de décision : direction
-      $(Ox)$, une conclusion immédiate, sans second calcul. Ne pas confondre
-      avec $\lim f(x)$ elle-même (ici $-\infty$, ce qui exclut toute
-      asymptote horizontale) ni avec le cas $\lim f(x)/x=\pm\infty$ (qui donne
-      $(Oy)$, l'autre extrême de la chaîne).
+      asymptotique $(Ox)$, une conclusion immédiate, sans second calcul. Ne
+      pas confondre avec $\lim f(x)$ elle-même (ici $-\infty$, ce qui exclut
+      toute asymptote horizontale) ni avec le cas $\lim f(x)/x=\pm\infty$
+      (qui donne $(Oy)$, l'autre extrême de la chaîne).
 
   - id: DERIVFCT-32
-    rung: "R6"
+    rung: "R5"
     difficulty_level: 4
+    habilete: application_non_explicite
     skill_code: maths_derivabilite_etude_fonctions
     tags: [branche-parabolique, asymptote-oblique, limite-f-sur-x]
-    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.asymptote-oblique-conclue-sans-second-calcul
     stem: >
       Soit $f(x) = 3x - \sqrt{x}$, définie sur $[0,+\infty[$. Étudier la
       branche infinie de $(C_f)$ au voisinage de $+\infty$.
@@ -1927,13 +1972,16 @@ items:
     choices:
       - id: A
         text: >-
-          Branche parabolique de direction la droite $y=3x$.
+          $(C_f)$ admet, au voisinage de $+\infty$, une branche parabolique
+          de direction asymptotique la droite d'équation $y=3x$.
         correct: true
       - id: B
         text: >-
-          Asymptote oblique d'équation $y=3x$.
+          $(C_f)$ admet, au voisinage de $+\infty$, une asymptote oblique
+          d'équation $y=3x$, la droite $(\Delta)$ associée à ce coefficient
+          directeur.
         correct: false
-        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        misconception: mc.math.maths_derivabilite_etude_fonctions.asymptote-oblique-conclue-sans-second-calcul
         feedback: >
           Trouver un $a$ fini non nul à la première limite ne suffit JAMAIS,
           à lui seul, à conclure à une asymptote oblique. Ici
@@ -1943,9 +1991,10 @@ items:
           asymptote.
       - id: C
         text: >-
-          Branche parabolique de direction $(Oy)$.
+          $(C_f)$ admet, au voisinage de $+\infty$, une branche parabolique
+          de direction asymptotique $(Oy)$.
         correct: false
-        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-f-sur-x-confondue-avec-limite-de-f
         feedback: >
           $(Oy)$ correspond au cas où $\lim f(x)/x$ est elle-même infinie —
           ce n'est pas le cas ici, où ce rapport tend vers $3$, un nombre fini
@@ -1953,9 +2002,10 @@ items:
           examiner $f(x)/x$, pas $f(x)$ seul.
       - id: D
         text: >-
-          Branche parabolique de direction $(Ox)$.
+          $(C_f)$ admet, au voisinage de $+\infty$, une branche parabolique
+          de direction asymptotique $(Ox)$.
         correct: false
-        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        misconception: mc.math.maths_derivabilite_etude_fonctions.asymptote-oblique-conclue-sans-second-calcul
         feedback: >
           $(Ox)$ exigerait que $\lim f(x)/x$ tende vers $0$ — ce n'est pas le
           cas, ce rapport tend vers $3$, un $a$ fini NON NUL. C'est
@@ -1964,22 +2014,25 @@ items:
     correct_feedback: >
       Exact : $\dfrac{f(x)}{x} = 3-\dfrac{1}{\sqrt{x}} \to 3$ (fini, non nul),
       ce qui impose le second calcul : $f(x)-3x=-\sqrt{x}\to-\infty$. L'écart
-      avec $y=3x$ grandit sans borne : branche parabolique de direction
-      $y=3x$, pas une asymptote.
+      avec $y=3x$ grandit sans borne : $(C_f)$ admet une branche parabolique
+      de direction asymptotique la droite d'équation $y=3x$, pas une
+      asymptote.
     solution: |
       $$\frac{f(x)}{x} = \frac{3x-\sqrt{x}}{x} = 3-\frac{1}{\sqrt{x}} \xrightarrow[x\to+\infty]{} 3$$
       Le rapport tend vers un $a=3$ fini et non nul : ni $(Oy)$ ni $(Ox)$. Le
       second calcul tranche :
       $$f(x)-3x = -\sqrt{x} \xrightarrow[x\to+\infty]{} -\infty$$
       La limite est infinie, pas finie : $(C_f)$ admet une branche
-      parabolique de direction la droite $y=3x$ — et non une asymptote.
-      Comparer avec le cours : $f(x)=x+\sqrt{x}$ donne, de la même façon,
-      $f(x)-x\to+\infty$ (branche), tandis que $f(x)=x+\frac{1}{x-1}$ donne
-      $f(x)-x\to0$ (asymptote) : seule la SECONDE limite distingue les deux.
+      parabolique de direction asymptotique la droite d'équation $y=3x$ — et
+      non une asymptote. Comparer avec le cours : $f(x)=x+\sqrt{x}$ donne, de
+      la même façon, $f(x)-x\to+\infty$ (branche), tandis que
+      $f(x)=x+\frac{1}{x-1}$ donne $f(x)-x\to0$ (asymptote) : seule la
+      SECONDE limite distingue les deux.
 
   - id: DERIVFCT-33
-    rung: "R6"
+    rung: "R5"
     difficulty_level: 4
+    habilete: application_non_explicite
     skill_code: maths_derivabilite_etude_fonctions
     tags: [asymptote-oblique, position-relative]
     primary_misconception: mc.math.maths_derivabilite_etude_fonctions.trinome-signe-mal-lu
@@ -2017,7 +2070,7 @@ items:
         text: >-
           $(C_f)$ admet en réalité l'asymptote $y=x$ (pas $y=x+3$).
         correct: false
-        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        misconception: mc.math.maths_derivabilite_etude_fonctions.asymptote-oblique-conclue-sans-second-calcul
         feedback: >
           Trouver $\lim f(x)/x=1$ ne suffit jamais, à lui seul, à écrire
           l'équation complète de l'asymptote : ce rapport ne donne que le
@@ -2043,8 +2096,9 @@ items:
       $f(x)-(x+3)$) sont deux étapes distinctes de la méthode.
 
   - id: DERIVFCT-34
-    rung: "R6"
+    rung: "R5b"
     difficulty_level: 4
+    habilete: application_directe
     skill_code: maths_derivabilite_etude_fonctions
     tags: [fonction-reciproque, intervalle-image, bijection]
     primary_misconception: mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul
@@ -2104,8 +2158,9 @@ items:
       VALEURS $g(0)$ et $g(2)$ comptent ici.
 
   - id: DERIVFCT-35
-    rung: "R6"
+    rung: "R5b"
     difficulty_level: 3
+    habilete: application_directe
     skill_code: maths_derivabilite_etude_fonctions
     tags: [fonction-reciproque, derivee-reciproque]
     primary_misconception: mc.math.maths_derivabilite_etude_fonctions.confond-valeur-et-nombre-derive
@@ -2159,8 +2214,9 @@ items:
       oublier l'inversion.
 
   - id: DERIVFCT-36
-    rung: "R6"
+    rung: "R5b"
     difficulty_level: 5
+    habilete: application_non_explicite
     skill_code: maths_derivabilite_etude_fonctions
     tags: [fonction-reciproque, intervalle-image, derivee-reciproque]
     primary_misconception: mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul
@@ -2229,8 +2285,9 @@ items:
       l'inversion) au lieu de l'antécédent $a=3$.
 
   - id: DERIVFCT-37
-    rung: "R6"
+    rung: "R5b"
     difficulty_level: 4
+    habilete: application_non_explicite
     skill_code: maths_derivabilite_etude_fonctions
     tags: [fonction-reciproque, intervalle-image]
     primary_misconception: mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul
@@ -2289,6 +2346,7 @@ items:
   - id: DERIVFCT-38
     rung: "R1"
     difficulty_level: 3
+    habilete: application_directe
     skill_code: maths_derivabilite_etude_fonctions
     tags: [derivabilite-laterale, demi-tangente-verticale]
     primary_misconception: mc.math.maths_derivabilite_etude_fonctions.continuite-implique-derivabilite
@@ -2346,17 +2404,97 @@ items:
       une seule pente qui part à l'infini, pas deux pentes finies qui
       divergent. $(C_q)$ admet en $-1$ une demi-tangente verticale.
 
+  # Ajouté le 2026-09-27, dans la même vague : le dixième item était requis
+  # pour porter les trois ids issus du fractionnement de
+  # `limite-finie-de-f-sur-x-suffit-asymptote` (voir le commentaire au-dessus
+  # de la déclaration des trois nouveaux ids) au plancher de 3 items chacun,
+  # sans jamais regrouper artificiellement deux sous-erreurs dans un même
+  # distracteur des items 30-33 déjà écrits. Fonction fraîche (racine seule,
+  # pas $x+\sqrt{x}$ du cours ni $3x-\sqrt{x}$ de DERIVFCT-32) : pas une
+  # restatement mémorisable des trois précédents.
+  - id: DERIVFCT-39
+    rung: "R5"
+    difficulty_level: 3
+    habilete: application_non_explicite
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [branche-parabolique, limite-f-sur-x]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.branche-immediate-oy-ox-mal-conclue
+    stem: >
+      Soit $f(x) = 4\sqrt{x}$, définie sur $[0,+\infty[$. Étudier la branche
+      infinie de $(C_f)$ au voisinage de $+\infty$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $(C_f)$ admet, au voisinage de $+\infty$, une branche parabolique
+          de direction asymptotique $(Ox)$.
+        correct: true
+      - id: B
+        text: >-
+          Rien : il faut d'abord calculer $\lim_{x\to+\infty}\bigl(f(x)-x\bigr)$,
+          car $f(x)\to+\infty$ ne suffit pas à conclure sur la branche
+          infinie de $(C_f)$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.branche-immediate-oy-ox-mal-conclue
+        feedback: >
+          $\lim f(x)/x$ vaut ici $0$ — l'un des deux cas où la chaîne de
+          décision conclut IMMÉDIATEMENT, sans aucun second calcul. Ce n'est
+          jamais une impasse : direction asymptotique $(Ox)$, une conclusion
+          déjà nommée.
+      - id: C
+        text: >-
+          $(C_f)$ admet, au voisinage de $+\infty$, une branche parabolique
+          de direction asymptotique $(Oy)$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.branche-immediate-oy-ox-mal-conclue
+        feedback: >
+          $(Oy)$ correspond au cas $\lim f(x)/x=\pm\infty$ — le rapport
+          lui-même explose. Ici c'est l'inverse :
+          $\dfrac{4\sqrt{x}}{x}=\dfrac{4}{\sqrt{x}}\to0$, donc c'est $(Ox)$,
+          pas $(Oy)$.
+      - id: D
+        text: >-
+          $(C_f)$ admet, au voisinage de $+\infty$, une asymptote horizontale
+          d'équation $y=0$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-f-sur-x-confondue-avec-limite-de-f
+        feedback: >
+          C'est $\lim f(x)/x$ qui vaut $0$ ici, pas $\lim f(x)$ elle-même
+          (qui vaut $+\infty$) : cette limite du RAPPORT donne une direction
+          de branche parabolique, $(Ox)$, jamais une asymptote horizontale —
+          qui exigerait que $f(x)$ elle-même tende vers une valeur finie.
+    correct_feedback: >
+      Exact : $\dfrac{f(x)}{x}=\dfrac{4\sqrt{x}}{x}=\dfrac{4}{\sqrt{x}}
+      \xrightarrow[x\to+\infty]{}0$ — le rapport s'annule, donc $(C_f)$
+      admet une branche parabolique de direction asymptotique $(Ox)$, sans
+      aucun second calcul nécessaire.
+    solution: |
+      $$\frac{f(x)}{x} = \frac{4\sqrt{x}}{x} = \frac{4}{\sqrt{x}} \xrightarrow[x\to+\infty]{} 0$$
+      Le rapport tend vers $0$ : c'est le deuxième cas de la chaîne de
+      décision, une conclusion immédiate — $(C_f)$ admet une branche
+      parabolique de direction asymptotique $(Ox)$. Ne pas confondre avec
+      $\lim f(x)=+\infty$ (qui écarte déjà toute asymptote horizontale, mais
+      ne dit rien à lui seul sur la direction de la branche) ni avec le cas
+      $\lim f(x)/x=\pm\infty$ (qui donnerait $(Oy)$, l'autre extrême de la
+      chaîne).
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
-# RÉÉCRIT le 2026-09-27, après DERIVFCT-30 à DERIVFCT-38 (dette d'examen,
-# vague B1 — docs/audits/dette-examen/maths.md). Deux misconceptions
-# nouvelles depuis la version précédente :
-# `limite-finie-de-f-sur-x-suffit-asymptote` (proposée par le
-# content-author, reformulée par cet auteur) et
-# `intervalle-image-recopie-sans-calcul` (dédiée par cet auteur, aucune des
-# treize précédentes ne couvrant le piège « J = I » nommé par la leçon). Le
-# second piège nommé par la leçon pour la réciproque, « 1/f'(b) au lieu de
-# 1/f'(a) », RÉUTILISE `confond-valeur-et-nombre-derive` (même thème : la
-# bonne grandeur, évaluée au mauvais point) — pas une misconception séparée.
+# RÉÉCRIT le 2026-09-27, après DERIVFCT-30 à DERIVFCT-39 (dette d'examen,
+# vague B1 — docs/audits/dette-examen/maths.md, puis correctifs de la revue
+# pédagogique I6 sur cette même vague). Quatre misconceptions nouvelles
+# depuis la version précédente : `intervalle-image-recopie-sans-calcul`
+# (dédiée par cet auteur, aucune des treize premières ne couvrant le piège
+# « J = I » nommé par la leçon) et les TROIS ids issues du fractionnement de
+# l'ancienne `limite-finie-de-f-sur-x-suffit-asymptote` (qui bundlait deux
+# erreurs opposées — voir le commentaire au-dessus de sa déclaration) :
+# `asymptote-oblique-conclue-sans-second-calcul` (sur-conclusion),
+# `branche-immediate-oy-ox-mal-conclue` (sur-prudence / directions
+# interverties), et `limite-f-sur-x-confondue-avec-limite-de-f` (troisième
+# modèle, distinct des deux premiers : confond la limite du rapport avec
+# celle de la fonction elle-même). Le second piège nommé par la leçon pour
+# la réciproque, « 1/f'(b) au lieu de 1/f'(a) », RÉUTILISE
+# `confond-valeur-et-nombre-derive` (même thème : la bonne grandeur, évaluée
+# au mauvais point) — pas une misconception séparée.
 # Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
@@ -2379,9 +2517,11 @@ coverage_summary:
     mc.math.maths_derivabilite_etude_fonctions.domaine-fraction-mal-identifie:                  { count: 4, items: [DERIVFCT-21, DERIVFCT-25, DERIVFCT-26, DERIVFCT-27] }
     mc.math.maths_derivabilite_etude_fonctions.continuite-implique-derivabilite:                { count: 5, items: [DERIVFCT-2, DERIVFCT-25, DERIVFCT-26, DERIVFCT-27, DERIVFCT-38] }
     mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees:            { count: 3, items: [DERIVFCT-23, DERIVFCT-24, DERIVFCT-29] }
-    mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote:        { count: 4, items: [DERIVFCT-30, DERIVFCT-31, DERIVFCT-32, DERIVFCT-33] }
+    mc.math.maths_derivabilite_etude_fonctions.asymptote-oblique-conclue-sans-second-calcul:    { count: 3, items: [DERIVFCT-30, DERIVFCT-32, DERIVFCT-33] }
+    mc.math.maths_derivabilite_etude_fonctions.branche-immediate-oy-ox-mal-conclue:             { count: 3, items: [DERIVFCT-30, DERIVFCT-31, DERIVFCT-39] }
+    mc.math.maths_derivabilite_etude_fonctions.limite-f-sur-x-confondue-avec-limite-de-f:       { count: 3, items: [DERIVFCT-31, DERIVFCT-32, DERIVFCT-39] }
     mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul:            { count: 3, items: [DERIVFCT-34, DERIVFCT-36, DERIVFCT-37] }
-  total_items: 38
+  total_items: 39
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2390,16 +2530,38 @@ coverage_summary:
     R2: 5
     R3: 3
     R4: 4
-    R5: 5
-    R6: 13
+    R5: 10
+    R5b: 4
+    R6: 5
   honest_state: >-
-    Les quinze misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Sept y siègent EXACTEMENT (3 items) — dont
-    `intervalle-image-recopie-sans-calcul`, ajoutée cette vague : la marge y
-    est nulle, et tout retrait d'item la casse. `trinome-signe-mal-lu` sort du
-    plancher cette vague (3 → 4, DERIVFCT-33 en plus). R6 concentre désormais
-    13 des 38 items (branches
-    infinies, asymptote + position, réciproque, Rolle/TAF) — c'est le barreau
-    de synthèse où ce vocabulaire d'examen (2018, 2019) se rejoint ; aucun
-    autre barreau n'a reçu d'ajout cette vague hormis R1 (+1, demi-tangente
-    verticale).
+    Dix-sept misconceptions déclarées, toutes couvertes, aucune sous le
+    plancher. Dix y siègent EXACTEMENT (3 items) — dont les trois nées
+    cette vague du fractionnement de `limite-finie-de-f-sur-x-suffit-asymptote`
+    (`asymptote-oblique-conclue-sans-second-calcul`,
+    `branche-immediate-oy-ox-mal-conclue`,
+    `limite-f-sur-x-confondue-avec-limite-de-f`) et
+    `intervalle-image-recopie-sans-calcul` : la marge y est nulle, et tout
+    retrait d'item les casse. `trinome-signe-mal-lu` reste au-dessus du
+    plancher (4, DERIVFCT-33 y contribue toujours par ses distracteurs A/B,
+    inchangés par cette révision).
+
+    R6 n'est PLUS le barreau de synthèse : `lesson.md` ne porte AUCUN
+    `## R6` — seul un commentaire de validation y évoque un « R6
+    entraînement » resté sans titre (lesson.md:576). C'est une dette
+    déclarée, pas une vertu : les treize items qui s'y entassaient avant
+    cette vague pointaient vers un barreau fantôme. Cette révision règle le
+    sort des neuf qui appartenaient réellement à un contenu daté (branches
+    infinies R5, lesson.md:351-381 ; réciproque R5b, lesson.md:427-541) en
+    les rattachant à leur rung réel ; les CINQ pré-existants qui restent
+    (DERIVFCT-19, 20, 21, 23, 29 — étude complète, tangente sur extremum,
+    domaine + asymptote verticale, Rolle, inflexion + domaine) demeurent
+    listés sous `R6`, laissés tels quels par la présente vague (hors
+    périmètre) : leur rattachement à un rung réel — ou la création d'un
+    `## R6` dans `lesson.md` qui les justifie — reste un travail non fait,
+    à faire nommément, pas à présenter comme déjà résolu.
+
+    DERIVFCT-39 est le seul item neuf de cette révision (au-delà des
+    retags) : requis pour porter chacun des trois ids issus du
+    fractionnement au plancher de 3 sans jamais regrouper deux sous-erreurs
+    dans un même distracteur des items 30-33 déjà écrits — fonction fraîche
+    ($4\sqrt{x}$), pas une restatement mémorisable de DERIVFCT-30/31/32.

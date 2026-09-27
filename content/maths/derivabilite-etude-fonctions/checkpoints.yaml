@@ -28,6 +28,14 @@ skill_code: maths_derivabilite_etude_fonctions
 #                                               conclusion actually gives
 #                                               (existence + sign, not an
 #                                               exact value of c). Probes J.
+#   cp-r5-branche-commit (in R5, staged        — COMMIT gate, staged BEFORE the
+#      before the second-limit reveal)          reveal that lim f(x)/x=a≠0 fini
+#                                               alone never concludes an
+#                                               asymptote oblique (a second
+#                                               limit, lim(f(x)-ax), is always
+#                                               required). Probes
+#                                               limite-finie-de-f-sur-x-suffit-
+#                                               asymptote.
 #
 # EVERY distractor carries a named misconception id from this notion's
 # inventory (items.yaml). Option lengths are balanced so the correct choice is
@@ -362,3 +370,69 @@ checkpoints:
           continue sur l'intervalle fermé et dérivable à l'intérieur — ce
           sont ces conditions qui GARANTISSENT l'existence de $c$, sans
           qu'on ait besoin de le connaître au préalable.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-r5-branche-commit | placed IN R5, staged BEFORE the
+  #        reveal that lim f(x)/x = a≠0 fini never concludes an
+  #        asymptote oblique alone (a second limit is always required).
+  #        Probes asymptote-oblique-conclue-sans-second-calcul (B, C) and limite-f-sur-x-confondue-avec-limite-de-f (D) — the two halves of the former bundled id limite-finie-de-f-sur-x-suffit-asymptote, split 2026-09-27.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-branche-commit
+    rung: "R5"
+    habilete: raisonnement
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [checkpoint, formative, misconception_driven, maths_derivabilite_etude_fonctions, branche_infinie, predict_commit]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.asymptote-oblique-conclue-sans-second-calcul
+    item_source: original
+    lesson_placement: in_R5
+
+    stem: |
+      Pour une fonction $f$, $\displaystyle\lim_{x\to+\infty} \frac{f(x)}{x} = 3$
+      (un réel fini, non nul). Un élève écrit directement : « donc $(C_f)$
+      admet une asymptote oblique $y=3x+b$ en $+\infty$. » **Avant de lire la
+      suite, engage-toi :** cette conclusion est-elle déjà acquise ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Non : il reste à calculer $\lim\bigl(f(x)-3x\bigr)$ ; finie, elle confirme l'asymptote oblique, infinie, elle donne une branche parabolique.
+        correct: true
+        feedback: |
+          Exact. $\lim f(x)/x = a$ fini non nul ne donne que la direction MOYENNE
+          de la courbe ; seule la seconde limite, $\lim\bigl(f(x)-ax\bigr)$,
+          tranche entre asymptote oblique (limite finie) et branche
+          parabolique de direction asymptotique $y=ax$ (limite infinie).
+      - id: B
+        text: |
+          Oui : $\lim f(x)/x = 3$ est un réel non nul, et c'est la condition d'une asymptote oblique de coefficient directeur $3$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.asymptote-oblique-conclue-sans-second-calcul
+        feedback: |
+          C'est justement le piège systématique de ce chapitre : $a\neq0$
+          fini existe dans les DEUX cas (asymptote oblique et branche
+          parabolique de direction $y=ax$) — seule la seconde limite,
+          $\lim\bigl(f(x)-ax\bigr)$, les distingue.
+      - id: C
+        text: |
+          Oui : la branche parabolique correspond aux cas où $\lim f(x)/x$ vaut $0$ ou l'infini, et ici elle vaut $3$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.asymptote-oblique-conclue-sans-second-calcul
+        feedback: |
+          Faux : une branche parabolique de direction $y=ax$ (troisième cas
+          de la chaîne de décision) a EXACTEMENT le même $a$ fini non nul
+          qu'une asymptote oblique. Ce qui les distingue n'est pas la
+          valeur de $a$, mais le caractère fini ou infini de
+          $\lim\bigl(f(x)-ax\bigr)$.
+      - id: D
+        text: |
+          Non : $\lim f(x)/x = 3$ indique que $(C_f)$ admet la droite horizontale $y=3$ pour asymptote en $+\infty$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-f-sur-x-confondue-avec-limite-de-f
+        feedback: |
+          Tu as lu $\lim f(x)/x$ comme si c'était $\lim f(x)$. Une asymptote
+          horizontale $y=3$ demanderait $\lim f(x)=3$ ; ici, $f(x)/x\to3$
+          veut dire que $f(x)$ se comporte comme $3x$, donc $f(x)\to+\infty$.
+          La bonne suite est un DEUXIÈME calcul : $\lim\bigl(f(x)-3x\bigr)$.

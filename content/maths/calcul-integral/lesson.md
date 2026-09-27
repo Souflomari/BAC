@@ -86,6 +86,12 @@ La valeur absolue n'est pas un détail cosmétique : $\ln$ n'est défini que sur
 
 **Le piège.** Trois erreurs reviennent sans arrêt sur ces deux modèles : oublier la valeur absolue, ou l'intervalle où $u$ ne s'annule pas, dans le modèle 1 ; écrire $\ln(u')$ ou $\dfrac{1}{u'}$ à la place de $\ln|u|$ — en primitivant $u'$ au lieu de reconnaître $u$ au dénominateur ; et confondre les deux modèles, en appliquant $\ln|u|$ à un $u'/u^2$, ou $-\dfrac1u$ à un $u'/u$. Le réflexe qui protège : regarder l'exposant du dénominateur avant de choisir la formule — $1$, c'est un logarithme ; $2$, c'est un inverse.
 
+Avant de voir les deux exemples travaillés qui suivent, mets ce réflexe à l'épreuve. On te demande $\displaystyle\int_0^4 \frac{4}{2x-5}\,\mathrm{d}x$ : $u(x)=2x-5$, $u'(x)=2$, donc $\dfrac{4}{2x-5} = 2\times\dfrac{u'(x)}{u(x)}$ — la silhouette du modèle 1. **Engage-toi avant de lire la suite :** quelle est la valeur de cette intégrale ?
+
+[[checkpoint:cp-r1-u-annule]]
+
+En fait, cette intégrale **n'existe pas** : $u(x)=2x-5$ s'annule en $x=2{,}5$, qui appartient à $[0,4]$ — la fraction $\dfrac{4}{2x-5}$ n'est même pas définie en ce point, l'intégrale n'a donc aucune valeur à calculer, même pas en appliquant la formule à l'aveugle. C'est exactement pour ça que l'intervalle $I$ n'est pas un détail dans le modèle 1 : il garantit que $u$ ne s'annule **jamais** entre les deux bornes. Les deux exemples qui suivent vérifient cette condition avant tout calcul — prends l'habitude de faire pareil.
+
 ### Exemple travaillé — reconnaître u'/u, avec un facteur à ajuster
 
 Calcule $\displaystyle\int_2^3 \frac{6}{3-2x}\,\mathrm{d}x$.
@@ -111,6 +117,8 @@ L'intervalle : sur $[0,2]$, $2x+1$ va de $1$ à $5$ — jamais nul (la seule ann
 $$\int_0^2 \frac{-3}{(2x+1)^2}\,\mathrm{d}x = \left[\frac{3}{2(2x+1)}\right]_0^2 = \frac{3}{2\times5}-\frac{3}{2\times1} = \frac{3}{10}-\frac{15}{10}$$
 
 $$\int_0^2 \frac{-3}{(2x+1)^2}\,\mathrm{d}x = -\frac{6}{5}$$
+
+**Vérification de cohérence :** sur $[0,2]$, $2x+1>0$ (il va de $1$ à $5$), donc $f(x)=\dfrac{-3}{(2x+1)^2}$ est négative tout du long (numérateur négatif, dénominateur toujours positif) — l'intégrale d'une fonction négative doit être négative (chapitre 4, positivité). $-\dfrac{6}{5} < 0$ : cohérent.
 
 ### L'erreur à repérer ici
 
@@ -725,4 +733,18 @@ Une troisième question, toujours dans le registre du bac, sur l'intervalle $[1,
          appliqué à un u'/u.
      Aucun item ni checkpoint n'a été touché par cette édition — seule la
      prose de R1 et cette note de portée ont changé.
+
+     NOTE AJOUTÉE (wave-1 fixes, exam-debt wave B1, 2026-09-27) :
+     (8) [CORRIGÉ, pédagogie M5] L'exemple travaillé $u'/u^2$ n'avait pas la
+     vérification de cohérence de signe que son jumeau $u'/u$ portait déjà
+     (négatif sur l'intervalle ⇒ intégrale négative). Ajoutée, sur le même
+     modèle : $[0,2]$, $2x+1>0$ donc $f<0$ tout du long, et $-\frac65<0$ ✓.
+     (9) [LIVRÉ, pédagogie I4, template box A] Un nouveau checkpoint
+     predict-commit, `cp-r1-u-annule`, engage l'élève sur la valeur de
+     $\int_0^4 \frac{4}{2x-5}\,dx$ (où $u=2x-5$ s'annule EN $x=2{,}5$, à
+     l'intérieur de l'intervalle) avant que le texte ne révèle que
+     l'intégrale n'existe pas — jamais après. Nombres distincts de CI-53
+     (u=3x-8 sur [1,4]) et des deux exemples travaillés de ce rung. Probe la
+     misconception déjà déclarée `u-sur-u-absolue-ou-intervalle-oubliee` ;
+     aucun id neuf, rien à transmettre à l'auteur d'items.
 -->

@@ -54,6 +54,16 @@ skill_code: maths_calcul_integral
 #                                      verbatim from CI-47. Probes
 #                                      conversion-unites-volume (clone of
 #                                      CI-47 — item-author, same wave).
+#   cp-r1-u-annule    (in R1, staged  — COMMIT gate, staged BEFORE the reveal
+#      before the reveal)              that u vanishing INSIDE the interval of
+#                                      integration means the integral does not
+#                                      exist at all — the u'/u formula cannot
+#                                      be applied "blindly" regardless of the
+#                                      numeric result it would produce. Numbers
+#                                      (u(x)=2x-5 on [0,4]) chosen distinct
+#                                      from CI-53 (u(x)=3x-8 on [1,4]) and from
+#                                      this rung's two worked examples. Probes
+#                                      u-sur-u-absolue-ou-intervalle-oubliee.
 #
 # EVERY distractor carries a named misconception id from this notion's inventory
 # (items.yaml). Option lengths are balanced so the correct choice is never the
@@ -536,3 +546,73 @@ checkpoints:
           conversion appliquée. Ce raccourci n'est vrai que lorsque l'unité
           du repère vaut $1$ cm ; ici elle vaut $3$ cm, donc le nombre change
           bel et bien : il faut multiplier par $27$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-7 | id: cp-r1-u-annule | placed IN R1, staged BEFORE the reveal
+  #        that u vanishing INSIDE the interval means the integral does
+  #        not exist. Numbers (u(x)=2x-5 on [0,4]) distinct from CI-53
+  #        (u(x)=3x-8 on [1,4]) and from this rung's two worked examples
+  #        (6/(3-2x) on [2,3] ; -3/(2x+1)² on [0,2]).
+  #        Probes u-sur-u-absolue-ou-intervalle-oubliee.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-u-annule
+    rung: "R1"
+    habilete: raisonnement
+    skill_code: maths_calcul_integral
+    tags: [checkpoint, formative, misconception_driven, maths_calcul_integral, primitive_u_sur_u, predict_commit]
+    primary_misconception: mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee
+    item_source: original
+    lesson_placement: in_R1
+
+    stem: |
+      On te demande $\displaystyle\int_0^4 \frac{4}{2x-5}\,\mathrm{d}x$.
+      $u(x)=2x-5$, $u'(x)=2$, donc $\dfrac{4}{2x-5} = 2\times\dfrac{u'(x)}{u(x)}$ —
+      la silhouette du modèle $u'/u$. **Avant de lire la suite, engage-toi :**
+      quelle est la valeur de cette intégrale ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          L'intégrale n'est pas définie : la fonction n'est pas continue sur $[0\,;4]$ (non définie en $x=2{,}5$).
+        correct: true
+        feedback: |
+          Exact. Avant même d'écrire une primitive, il faut vérifier que $u$
+          garde un signe constant sur TOUT l'intervalle $[0,4]$. Ici
+          $u(2{,}5)=0$ : la fraction $\frac{4}{2x-5}$ n'est même pas définie en
+          $x=2{,}5$ : elle n'est pas continue sur $[0\,;4]$, et l'intégrale n'y
+          est pas définie. C'est la phrase qui rapporte le point au bac ; la
+          formule $\ln|u|$ ne s'applique qu'une fois ce zéro écarté.
+      - id: B
+        text: |
+          L'intégrale vaut $2\ln\dfrac{3}{5}$ : valeur de la primitive $2\ln|2x-5|$ prise entre $0$ et $4$.
+        correct: false
+        misconception: mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee
+        feedback: |
+          C'est le résultat qu'on obtient en appliquant la formule sans
+          vérifier que $u$ ne s'annule jamais sur $[0,4]$. Mais $u(2{,}5)=0$ :
+          la fonction à intégrer n'est même pas définie en ce point de
+          l'intervalle, donc ce nombre n'est la valeur de rien.
+      - id: C
+        text: |
+          L'intégrale vaut $0$ : la primitive $2\ln 2$ est constante, donc égale aux deux bornes.
+        correct: false
+        misconception: mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u
+        feedback: |
+          C'est $u$ — la fonction au dénominateur — qui passe dans le
+          logarithme, jamais $u'$ seul. Et de toute façon, ici, la question
+          n'est même pas « quelle primitive » mais « cette intégrale
+          existe-t-elle » : $u$ s'annule à l'intérieur de $[0,4]$.
+      - id: D
+        text: |
+          L'intégrale vaut $-\dfrac{16}{15}$ : valeur de la primitive $-\dfrac{2}{2x-5}$ prise entre $0$ et $4$.
+        correct: false
+        misconception: mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2
+        feedback: |
+          Le dénominateur est ici à la puissance $1$ ($u$, pas $u^2$) : c'est
+          le modèle $\ln|u|$ qui s'appliquerait, pas $-\frac1u$. Mais la vraie
+          question n'est même pas le choix du modèle : $u$ s'annule en
+          $x=2{,}5\in[0,4]$, donc aucun des deux modèles ne s'applique — cette
+          intégrale n'existe pas.
