@@ -499,47 +499,12 @@ Aucun de ces trois n'est un manque de ce chapitre : ce sont des outils transvers
      (R3) par cohérence avec le traitement de (ln u)' dans le chapitre
      précédent — à confirmer contre la progression réelle des manuels.
 
-     NOTE AJOUTÉE (dette d'examen, vague B2 — GAP-A « Reference limits
-     (eʰ−1)/h → 1 and ln(1+x)/x → 1, read as a taux d'accroissement »,
-     docs/audits/dette-examen/maths.md, § fonction-exponentielle,
-     lignes ~224-238, sources citées : fonction-logarithme/bank.yaml:3451,
-     3631, 4647, 3425, 2948, toutes filière SM) :
-     (5) [PROSE LIVRÉE, 2026-09-27] R4 gagne une sous-section « Une autre
-     limite de référence : (eʰ−1)/h, lue comme un taux d'accroissement »,
-     insérée entre la limite en -∞ et les croissances comparées $e^x/x$.
-     Elle fait voir la limite comme le nombre dérivé $\exp'(0)$ (établi au
-     chapitre 3 de ce même chapitre), avec un engagement écrit avant la
-     révélation (« essaie de calculer… note ta réponse, et surtout la
-     raison »), puis un exemple travaillé original sur une limite habillée :
-     $\lim_{x\to0}(e^{3x}-1)/x = 3$ — ni les nombres ni la forme exacte du
-     bank.yaml cité par l'audit, qui suggère un item en $e^{2x}$ (choix
-     délibéré, pour ne pas pré-résoudre l'item que l'auteur d'items écrira).
-     Vérification de la note de portée : aucune note de portée de ce
-     chapitre ne contredisait un sujet vérifié sur ce point (recherche
-     « portée » sur lesson.md : aucun résultat) — rien à corriger avant
-     d'écrire.
-     Checkpoint gradé : PAS ajouté. Le piège visé par la consigne (« $0/0$
-     donc forme indéterminée, donc rien à conclure », ou substituer $h=0$
-     directement dans l'expression) ne correspond à AUCUN identifiant de
-     `mc.math.maths_fonction_exponentielle` déjà déclaré dans items.yaml —
-     le plus proche, `croissances-comparees-inversees`, est câblé
-     spécifiquement sur le rapport $e^x/x$ en $+\infty$ ($\infty/\infty$),
-     pas sur un $0/0$ en un point fini lu comme taux d'accroissement.
-     Forcer ce tag aurait rendu le diagnostic malhonnête ; je ne l'ai donc
-     pas fait, conformément à la consigne (« si aucun ne convient, le dire
-     plutôt qu'en inventer un »). L'engagement prédictif est porté à la
-     place par un geste écrit explicite dans la prose, qui satisfait le
-     predict-commit-confront du gabarit via sa variante « explicit
-     written-attempt gate » (NOTION-TEMPLATE-V2.md, lignes ~25-28) sans
-     mécanisme gradé. Item-author, à toi : au moins un item pour cette
-     limite de référence, et une misconception neuve à déclarer dans
-     l'inventaire de items.yaml avant d'écrire l'item et le checkpoint
-     gradé qui l'accompagnerait :
-       - `mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue`
-         — devant $(e^h-1)/h$ (ou une variante habillée), l'élève conclut
-         « forme indéterminée donc rien à dire » au lieu de reconnaître un
-         taux d'accroissement connu, ou substitue $h=0$ directement dans
-         l'expression telle quelle au lieu de la retravailler.
-     Aucun item ni checkpoint n'a été touché par cette édition — seule la
-     prose de R4 et cette note de portée ont changé.
+     NOTE (dette d'examen, vague B2, 2026-09-27 — docs/audits/DETTE-EXAMEN.md) :
+     R4 gagne « Une autre limite de référence : (eʰ−1)/h, lue comme un taux
+     d'accroissement » — la limite montrée comme exp'(0), un engagement écrit
+     avant la révélation (cp-r4-taux-accroissement), l'exemple habillé
+     (e^{3x}−1)/x → 3 et son point de vigilance (cp-r4-facteur-oublie).
+     Misconception déclarée dans items.yaml : forme-0-sur-0-non-reconnue ;
+     items EXP-32 à EXP-39. La leçon sœur (logarithme) traite ln(1+x)/x avec
+     sa propre prose : la porte prose-jumelle mesure les deux.
 -->
