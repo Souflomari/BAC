@@ -1,13 +1,13 @@
 # spec — manipulable 2D `echelle-des-quotients` (PC · `evolution-spontanee`, **R2**)
 
-**Statut : PROPOSITION révisée après la vague 1 — non construite.**
-Écrite le 2026-09-25 par pedagogy-architect ; révisée le 2026-09-25 après les deux
-critiques de vague 1 (pédagogie, fidélité bac), qui ont toutes deux rendu **CONSTRUIRE
-APRÈS CORRECTIONS**.
+**Statut : PROPOSITION révisée DEUX FOIS après la vague 1 — non construite.**
+Écrite le 2026-09-25 par pedagogy-architect ; révisée le 2026-09-25 après la **première
+passe** de vague 1, puis le 2026-09-27 après la **seconde passe** (pédagogie, fidélité bac) —
+les quatre rapports ont rendu **CONSTRUIRE APRÈS CORRECTIONS**.
 
 ---
 
-## Ce que la vague 1 a changé
+## Ce que la PREMIÈRE passe de vague 1 a changé
 
 *Les deux critiques ont validé le trou mesuré, l'arbitrage de notion hôte, la lecture du
 cadre, l'arithmétique des 75 états et les trois refus (pas d'animation $Q_r \to K$, pas de
@@ -20,13 +20,36 @@ la liste des changements de fond, chacun avec l'endroit où il vit désormais.*
 | **2** | **Fidélité B2 — `seuil-un-au-lieu-de-k` déclaré dans une polarité, employé dans l'autre.** La polarité déclarée ($Q_{r,i}>1 \Rightarrow$ direct) ne se distingue pas de `critere-inverse` sur les items ; la polarité employée ($Q_{r,i}>1 \Rightarrow$ inverse) est le vrai modèle de substitution de seuil. | **Une seule polarité, l'employée.** Label et `description` YAML réécrits (§8.2) ; **ES-31 et ES-32 rebâtis** pour que le modèle prédise autre chose que `critere-inverse` ; **chaque item est posé sur une configuration où $1$ et $K$ ne disent pas la même chose** (§8.3). |
 | **3** | **Pédagogie B2 + fidélité I4 — l'axe fixe ne peut pas montrer S3.** $0{,}6$ décade sur 41 fait ~5 px à 390 px, et la tolérance « confondu » est à 2 px : S3 et S5 sont la même image. | **Une bande de travail centrée sur $K$** (§5.5), alignée sur l'axe d'ensemble, à px/décade déclaré et constant ; **ses propres mesures à 1 280 et 390 px** et une porte à deux sens : à 390 px, la paire de S3 **nettement séparée**, celle de S5 **nettement confondue** (§11.2 `bande-de-travail`). |
 | **4** | **Pédagogie B3 — cinq lignes du registre que rien ne casse à l'écran.** | **Chaque ligne re-méritée ou rayée, une par une** (§8.1) : `solide-dans-qr` **rayée** ; `reactivite-metal-fixe` **retirée de S2** (la bonne réponse l'y récompense) et laissée à S3 ; `qr-produits-reactifs-inverses` re-méritée sans l'appel au seuil $1$, avec la conséquence de verdict nommée sur le bain B (4,2) ; `equilibre-egale-arret-total` re-méritée par une **lecture `melange` neuve** ; `spontane-egale-instantane` **rayée**, sa limite déclarée. |
-| **5** | **Fidélité I2 — $K = 2{,}5$ est porteur.** Les tables donnent $\approx 2{,}2$–$2{,}4$ ; la partition 9/1/15 et l'unique équilibre de S5 n'existent qu'à $2{,}5$ exactement. | **$K$ est présenté comme une DONNÉE**, écrit « $K = 2{,}5$ » comme les sujets l'écrivent (§5.4) ; **N3 est formulée sur la constante déclarée**, pas sur l'étain et le plomb (§11.1) ; **§13.3 devient un drapeau ROUGE au propriétaire**, avec la plage recalculée. |
+| **5** | **Fidélité I2 — $K = 2{,}5$ est porteur.** Les tables donnent $2{,}2$–$2{,}45$ *(chiffre unifié en seconde passe, I-4)* ; la partition 9/1/15 et l'unique équilibre de S5 n'existent qu'à $2{,}5$ exactement. | **$K$ est présenté comme une DONNÉE**, écrit « $K = 2{,}5$ » comme les sujets l'écrivent (§5.4) ; **N3 est formulée sur la constante déclarée**, pas sur l'étain et le plomb (§11.1) ; **§13.3 devient un drapeau ROUGE au propriétaire**, avec la plage recalculée — **durci en seconde passe : aucun sujet transcrit du dépôt ne mentionne l'étain** (`rg 'Sn|étain'` sur tous les `bank.yaml` ⇒ 0). |
 | **6** | **Fidélité I1 — un sujet national ne « nomme » aucun piège.** La phrase citée est la voix éditoriale de la maison, dans un bloc `reasoning:`. | **Retiré du §0.1 fait i, du §2.4 et du retour de S4** (§7.4), remplacé par ce qui est vérifiable : *un sujet national a posé ce calcul sur une équation à exposants 2 et 3* (`piles/bank.yaml:750`, `:756`). |
 | **7** | **Pédagogie I1–I8, fidélité I3/I5 et les MINEURs.** | S4 **parie sur l'EXPRESSION** (§7.4) ; la suite de S3 devient **le geste unique** — même mélange, autre couple (§7.3) ; S1 n'est plus gagnable en recopiant le dessin (§7.1) ; S5 **ouvre sur un cran voisin** et n'annonce plus sa découverte (§7.5) ; le contrôle `bain` est réglé **en atteignabilité**, pas en présence (§5.6, §7.6 A) ; **ES-33**, un item d'`application_experimentale` réellement mérité, sur la ligne TP du cadre (§8.3) ; les **formes de flèche** sont énumérées pour la porte, et les repères **(1)/(2)** sont portés (§9.11). |
 | **8** | **Un défaut neuf, trouvé en révisant, que la vague 1 n'a pas vu.** §8.1 comptait « **neuf** modèles déclarés » puis « **dix** modèles servis » sur une table de **dix** lignes, et §8.4/§12/§14 commandaient **dix** ids à `pedagogy_wiring`. | **Le compte juste est dix modèles existants + le modèle neuf = ONZE.** Corrigé au §8.1, §8.4, §12 et §14. *Aucune des deux critiques ne l'a relevé ; il vient de la relecture ligne à ligne du registre.* |
 
-**Ce qui a été REFUSÉ à la vague 1, avec la mesure** (§16, en fin de document) : trois
-attributions de preuve inexactes et une lecture de portée trop courte.
+**Ce qui a été REFUSÉ à la première passe, avec la mesure** (§16, en fin de document) : trois
+attributions de preuve inexactes et une lecture de portée trop courte. *Les deux critiques de
+la seconde passe ont **accepté 16.1, 16.2 et 16.4 telles quelles**, et **16.3 avec un
+résidu** — résidu juste, appliqué au §16.3 et au §5.1.*
+
+---
+
+## Ce que la SECONDE passe a changé
+
+*Les deux critiques ont vérifié ligne à ligne que les correctifs de la première passe sont
+bien dans le CORPS du document, et non seulement dans le tableau du haut. Ce qui suit est la
+seconde couche.*
+
+| # | ce que la seconde passe a trouvé | ce qui a changé, et où |
+|---|---|---|
+| **1** | **BLOQUANT B-1 (les deux critiques) — « deux décades » est FAUX, trois fois.** À l'état que S4 posait ($[Cu^{2+}] = 1{,}0\times10^{-3}$, $[Ag^+] = 1{,}0\times10^{-1}$), l'oubli de l'exposant donne $1{,}0\times10^{-2}$ contre $0{,}10$ : **UNE décade, et vers la GAUCHE**. Et un rang du contrôle `oxydant` y déplace la marque de $1{,}20$ ou $1{,}40$ décade — jamais deux. **La cause est nommable : les crans de S4 avaient été déplacés pour rendre les quatre valeurs distinctes (§5.3 D) et la prose n'a pas été recalculée.** | **Route (b) : S4 est RE-POSÉ** sur (bain C, `produit` $= 1{,}0\times10^{-1}$, `oxydant` $= 1{,}0\times10^{-2}$), où « deux décades » est **littéral** (§5.3 C/D, §7.4). Tout ce que cela touche est recalculé : les quatre valeurs, l'`ecart` de S4 (**12**, plus 16), N6, N8, le verrou de S5. **Et une porte neuve : tout nombre de décades AFFIRMÉ dans un retour est RECALCULÉ par la porte depuis les deux valeurs** (§11.1 N13, §11.4 ligne 32). |
+| **2** | **F2 — la ligne ré-gagnée de `qr-produits-reactifs-inverses` commandait un état que les contrôles interdisaient.** Elle disait « reviens au bain B avec le mélange de tout à l'heure » alors que `produit` était gelé à $1{,}0\times10^{-3}$ après S4. **Même classe de défaut que B3.4 de la première passe : une réfutation qui pointe un écran inatteignable.** | **Réparé gratuitement par la route (b)** : `produit` est désormais gelé à $1{,}0\times10^{-1}$, donc bain B + `oxydant` $= 1{,}0\times10^{-2}$ **est atteignable** après la révélation de S4, et c'est exactement l'état où l'inversion retourne le verdict (§7.4, §8.1, §7.6 A). |
+| **3** | **F3 — S5 ouvrait un contrôle et commandait un geste AVANT le pari**, contre ADR 0041 §6 (« ni le temps ni le contrôle avant l'engagement »). | **S5 ne réclame plus de geste avant le pari.** L'état d'équilibre est **posé par `etat`**, aucun contrôle n'est ouvert pendant le pari, et **c'est le DESSIN qui montre la coïncidence, jamais le texte qui la nomme** (§7.5). *La correction de I7 est conservée par un autre moyen : ce qui gâchait la découverte était la PHRASE, pas l'image.* Le cran $Q_{r,i} = 1{,}0$ — le faux seuil — passe dans la `suite`, après la révélation. |
+| **4** | **F4 — `avant-pari` ne regardait que les nœuds `[data-lecture]`.** À S4, la marque $Q_{r,i}$, son étiquette et le chevron hors bande (« à 12 décades ») livraient la valeur avant le pari **sans faire rougir personne**. | **La famille est étendue au DESSIN** : à S4, avant l'engagement, ni marque, ni étiquette, ni chevron (§11.2), + sabotage 33. |
+| **5** | **F5, F6 — deux contradictions internes.** La consigne de S2 décrivait deux contrôles ouverts alors qu'un seul l'est ; et §1 affirmait que la consigne de S1 réénonce le critère, ce qu'elle ne fait pas (et ne doit pas faire). | Consigne de S2 réécrite (§7.2) ; **§1 tranché : le critère est rappelé dans la PROSE au-dessus du marqueur (§4.1), jamais dans la consigne** — sinon S1 devient une lecture. |
+| **6** | **F7 — S3 récompense en silence `seuil-un-au-lieu-de-k`**, un pas après que S2 l'a cassé ($Q_{r,i} = 10$ est au-dessus de $1$ **et** de $K$). Irréductible sur la grille. **Et la meilleure réfutation du modèle de toute la scène n'était pas revendiquée.** | **Déclaré comme à S2, et la réfutation est revendiquée** : le retour juste de S3 écrit la comparaison **$10 > 2{,}5 = K$**, jamais « au-dessus de $1$ » ; et la `suite` de S3 — **même $Q_{r,i} = 10$, deux bains, deux verdicts** — prouve qu'aucun seuil absolu ne peut marcher. Porté au §8.1 et au §8.2 (§7.3). |
+| **7** | **Fidélité I-1 — j'appelais `derived` deux lignes IMPRIMÉES au cadre**, et je les disais « contredites par les sujets » alors que les équations citées sont dans les **données** des énoncés, pas des bilans produits par le candidat. | **Réécrit (§9.11) : la règle « bilan ⇒ flèche simple » est imprimée au cadre et SCOPÉE aux chapitres `piles` et `transformations_forcees` ; elle ne porte pas sur ce chapitre-ci.** Conséquence : **§13.11 n'est plus un arbitrage au propriétaire — il est RÉSOLU**, et une question de moins lui revient. |
+| **8** | **Fidélité I-2 — la bande de travail du bain A débordait l'axe.** $\log K(A) = 37{,}255$, donc la bande monte à $41{,}255$ — **3,26 décades au-delà de $10^{38}$** : la clause (c) de `bande-de-travail` et N11 étaient **insatisfaisables par un produit juste**. | **L'axe monte à $10^{42}$** (46 décades, §5.5 A) : les trois bandes y tiennent entières. *Une porte qu'aucun produit correct ne peut satisfaire est pire qu'une porte absente.* |
+| **9** | **Fidélité I-3, I-4, I-5 et les mineurs** — un « 15 décades » faux (c'est **9,9** au bain C), une plage de $K$ écrite de deux façons (**2,2–2,45**, honnêtement), une étiquette d'habileté adossée à une ligne de TP dont le sujet est une pile, et trois citations inexactes dont **une qui cite un COMMENTAIRE éditorial comme si c'était l'énoncé** (`bank.yaml:22` → `:71`). | Corrigés à leur place : §5.5 B, §5.1 + §13.3 + §10.6, §8.3 (ES-33), §5.2, §8.2, §5.1. |
+| **10** | **Un résidu sur ma propre réfutation 16.3** : j'écrivais que « le corpus met déjà les deux métaux dans le bécher ». Faux — le corpus les **nomme comme espèces de l'équation** ; il ne pose aucun dépôt. | **Corrigé au §5.1 et au §16.3 : la scène est la PREMIÈRE à poser le dépôt ; seul le PROCÉDÉ d'énoncé vient d'ES-19.** *Je reproduisais, en plus petit, l'erreur que je reprochais à la critique.* |
 
 Il serait le **quinzième manipulable de première partie** et le **neuvième PLAN** si rien
 n'est livré entre-temps — compte repris de la spec sœur du plan complexe (« Quatorzième
@@ -361,8 +384,16 @@ couples et soixante-quinze mélanges* — est, lui, entièrement neuf.
      pari, c'est ce que ce critère DONNE quand on change le mélange, puis le couple — et
      ce n'est écrit nulle part avant `lesson.md:89`, c'est-à-dire après le marqueur.*
      ⚠ *Et cet acquis repose sur un rung contesté (§0.2 point 1). La scène ne l'aggrave
-     pas : elle ne cite jamais `etat-equilibre`, et sa consigne de S1 réénonce le critère
-     en une ligne, comme `lesson.md:83-85` le fait déjà.*
+     pas : elle ne cite jamais `etat-equilibre`.*
+     **Où le critère est-il rappelé ? UN SEUL endroit, et c'est tranché ici** *(seconde
+     passe, F6)* **: dans le PARAGRAPHE D'ANNONCE de la prose, au-dessus du marqueur (§4.1) —
+     JAMAIS dans la consigne de S1.** *Cette ligne affirmait le contraire (« sa consigne de S1
+     réénonce le critère en une ligne »), et la consigne réelle (§7.1) ne le fait pas : trois
+     endroits du document se contredisaient. **La bonne réponse est « pas dans la consigne » :
+     un critère écrit dans la consigne de S1 ferait du pari une LECTURE** — il suffirait de
+     recopier la règle qu'on vient de lire, et S1 retomberait dans le défaut I4 de la première
+     passe par une autre porte. Le rappel vit au-dessus du marqueur, comme un acquis rappelé
+     en une ligne, et la scène demande de l'**appliquer**, pas de le relire.*
 
 ---
 
@@ -645,7 +676,21 @@ notion.**
 | bain | équation | $Q_r$ | $K$ | source dans le corpus |
 |---|---|---|---|---|
 | **A** | $Zn + Cu^{2+} \rightleftharpoons Zn^{2+} + Cu$ | $\dfrac{[Zn^{2+}]}{[Cu^{2+}]}$ | $1{,}8\times10^{37}$ | `lesson.md:103` (l'exemple travaillé de R2) |
-| **B** | $Sn + Pb^{2+} \rightleftharpoons Sn^{2+} + Pb$ | $\dfrac{[Sn^{2+}]}{[Pb^{2+}]}$ | $2{,}5$ **(donnée, §13.3 ROUGE)** | `items.yaml:1089-1090` (ES-19) ; le couple est aussi celui de `cp-r2-qr-calcul` (`checkpoints.yaml:130-134`), dont le retour dit déjà « *L'étain et **le plomb métalliques, tous deux solides**, n'entrent pas dans $Q_r$* » (`:145-146`) — **le corpus met donc déjà les deux métaux dans le bécher ; la première version de cette scène ne le faisait pas** (vague 1 B1) |
+| **B** | $Sn + Pb^{2+} \rightleftharpoons Sn^{2+} + Pb$ | $\dfrac{[Sn^{2+}]}{[Pb^{2+}]}$ | $2{,}5$ **(donnée, §13.3 ROUGE)** | `items.yaml:1089-1090` (ES-19) ; le couple est aussi celui de `cp-r2-qr-calcul` (`checkpoints.yaml:130-134`), dont le retour **nomme les deux métaux comme espèces de l'équation** : « *L'étain et le plomb métalliques, tous deux solides, n'entrent pas dans $Q_r$* » (`:145-146`) |
+
+> **⚠ Rectification de ma propre réfutation 16.3 (seconde passe, fidélité M-2).** Cette case
+> disait : « **le corpus met donc déjà les deux métaux dans le bécher** ; la première version de
+> cette scène ne le faisait pas ». **C'est trop dire.** `cp-r2-qr-calcul` **nomme** les deux
+> métaux parce qu'ils figurent dans l'équation-bilan et qu'il faut les exclure de $Q_r$ — il ne
+> pose **aucun dépôt de plomb dans aucun bécher**, et son état n'en a pas besoin (son verdict
+> est direct). **Aucun item, aucun point d'arrêt, aucune figure du corpus ne place les deux
+> solides dans un même récipient : la scène est la PREMIÈRE.** Seul le **procédé d'énoncé** —
+> justifier une espèce présente à l'instant initial par « *un essai précédent* » — vient
+> d'ES-19 (`items.yaml:1087-1088`).
+> *Je reproduisais en plus petit, et dans la phrase même qui corrigeait la critique, l'erreur
+> que je lui reprochais : lire dans une ligne du corpus plus qu'elle ne dit. **Le blocage B1
+> reste entièrement fondé** — il l'est même davantage, puisque rien dans le corpus ne couvre le
+> geste.*
 | **C** | $Cu + 2\,Ag^+ \rightleftharpoons Cu^{2+} + 2\,Ag$ | $\dfrac{[Cu^{2+}]}{[Ag^+]^2}$ | $4{,}0\times10^{15}$ | `items.yaml:1191-1192` (ES-21), et son `solution` écrit l'expression avec l'exposant (`:1229-1231`) |
 
 **Vérification d'auteur, faite et déclarée — jamais affichée.** *(Refaite après la vague 1 :
@@ -658,20 +703,32 @@ $\log K = n\,\Delta E^\circ/0{,}059$ donne :
 |---|---|---|---|---|---|---|
 | **A** | $0{,}34-(-0{,}76) = 1{,}10$ V | 2 | $37{,}29$ | $1{,}9\times10^{37}$ | $1{,}8\times10^{37}$ | **✓ à 6 %** |
 | **C** | $0{,}80-0{,}34 = 0{,}46$ V | 2 | $15{,}59$ | $3{,}9\times10^{15}$ | $4{,}0\times10^{15}$ | **✓ à 3 %** |
-| **B** | $-0{,}126-(-0{,}1375) = 0{,}0115$ V | 2 | $0{,}390$ | $\approx 2{,}45$ | $2{,}5$ | **✓, mais voir ci-dessous** |
-| **B**, valeurs scolaires à 2 décimales | $-0{,}13-(-0{,}14) = 0{,}010$ V | 2 | $0{,}339$ | $\approx 2{,}2$ | $2{,}5$ | **plage $2{,}2$–$2{,}5$** |
+| **B**, tables à 3 décimales | $-0{,}126-(-0{,}1375) = 0{,}0115$ V | 2 | $0{,}390$ | $\mathbf{\approx 2{,}45}$ | $2{,}5$ | **✓ — et $2{,}45$ s'arrondit à $2{,}5$ à deux c.s.** |
+| **B**, valeurs scolaires à 2 décimales | $-0{,}13-(-0{,}14) = 0{,}010$ V | 2 | $0{,}339$ | $\mathbf{\approx 2{,}2}$ | $2{,}5$ | écart de 12 % |
 
 *Avec $0{,}06$, A donnait $36{,}7$ (facteur $3{,}6$ d'écart avec le corpus) et C $15{,}3$
-(facteur $2$) : les deux ✓ étaient faux, et c'est la mesure de la vague 1 qui les a repris.
-Avec $0{,}059$, les deux tombent sur le nez.*
+(facteur $2$) : les deux ✓ étaient faux, et c'est la mesure de la première passe qui les a
+repris. Avec $0{,}059$, les deux tombent sur le nez.*
+*Provenance de $0{,}059$, dite exactement (seconde passe, fidélité M-3) : la revue de la notion
+**ne l'imprime pas**. Je l'**infère** de ses résultats — `REVIEW-2026-09-19.md:21` donne
+$\log K = 15{,}6$ pour Cu/Ag à $\Delta E^\circ = 0{,}46$ V, ce qui ne sort que de $0{,}059$
+($2\times0{,}46/0{,}059 = 15{,}59$ ; avec $0{,}06$ on obtiendrait $15{,}33$). **L'inférence est
+solide ; ce n'est pas une citation, et la première rédaction l'écrivait comme si ç'en était
+une.***
 
-**$K = 2{,}5$ est une donnée défendable — et elle est PORTEUSE.** La plage plausible des
-tables est **$2{,}2$–$2{,}5$**, et **la partition 9 / 1 / 15 du §5.3 B n'existe qu'à $2{,}5$
-exactement** : à $2{,}2$ ou $2{,}4$ elle devient **10 / 0 / 15** — *l'état d'équilibre
-unique, qui est tout le contenu de S5, disparaît.* **Je ne corrige pas le corpus ; je porte
-sa valeur, je la présente comme une DONNÉE (§5.4), et je promeus la question en drapeau
-ROUGE au propriétaire (§13.3), avec la plage recalculée.** *Ce geste de vérification est
-autorisé à l'AUTEUR et interdit au PANNEAU (§1, §9.1) ; précédent exact :
+**LA PLAGE, ÉCRITE UNE SEULE FOIS ET DE LA MÊME FAÇON PARTOUT : $\mathbf{2{,}2}$–$\mathbf{2{,}45}$.**
+*(Corrigé en seconde passe, fidélité I-4 : le document l'écrivait « $2{,}2$–$2{,}5$ » ici et
+« $2{,}2$–$2{,}4$ » à trois autres endroits. **Deux versions d'un même chiffre dans un même
+document, c'est un défaut de mesure, pas une nuance.** $2{,}45$ est la valeur des tables à trois
+décimales, et **elle s'arrondit à $2{,}5$ à deux chiffres significatifs** — ce qui rend la
+donnée du corpus meilleure que « $2{,}2$–$2{,}4$ » ne le laissait croire.)*
+
+**$K = 2{,}5$ est donc une donnée DÉFENDABLE — et elle reste PORTEUSE.** **La partition
+9 / 1 / 15 du §5.3 B n'existe qu'à $2{,}5$ exactement** : à $2{,}2$ comme à $2{,}45$ elle
+devient **10 / 0 / 15** — *l'état d'équilibre unique, qui est tout le contenu de S5,
+disparaît.* **Je ne corrige pas le corpus ; je porte sa valeur, je la présente comme une
+DONNÉE (§5.4), et la question reste un drapeau ROUGE au propriétaire (§13.3).** *Ce geste de
+vérification est autorisé à l'AUTEUR et interdit au PANNEAU (§1, §9.1) ; précédent exact :
 `REVIEW-2026-09-19.md:20-23`.*
 
 **Pourquoi trois bains et pas deux.** A porte le couple de la leçon et l'accroche ; B est le
@@ -689,9 +746,17 @@ $$1{,}0\times10^{-3} \quad\cdot\quad 1{,}0\times10^{-2} \quad\cdot\quad 2{,}5\ti
 Cinq motifs, chacun mesurable :
 
 1. **Le domaine est celui des énoncés.** 2017 N : $6{,}5\times10^{-1}$ mol/L
-   (`piles/bank.yaml:739`) ; 2012 N : $1{,}0\times10^{-2}$ (`bank.yaml:22`) ; la leçon :
-   $1{,}0\times10^{-1}$ (`:103`) ; ES-21 : $4{,}0\times10^{-2}$ (`items.yaml:1189`). **Les
-   cinq crans couvrent cet intervalle, bornes comprises.**
+   (`piles/bank.yaml:739`) ; 2012 N : $1{,}0\times10^{-2}$ (**`bank.yaml:71`**) ; la leçon :
+   $1{,}0\times10^{-1}$ (`lesson.md:103`) ; ES-21 : $4{,}0\times10^{-2}$
+   (`items.yaml:1189`). **Les cinq crans couvrent cet intervalle, bornes comprises.**
+   *(Citation corrigée en seconde passe, fidélité M-3 : la première rédaction citait
+   `bank.yaml:22`, **qui est une ligne de COMMENTAIRE éditorial** — le bloc « NOTE ÉDITORIALE
+   (pour la revue) » de l'en-tête du fichier. **La donnée de l'énoncé transcrit est à `:71`.**
+   C'est la troisième fois dans ce document qu'un texte de la maison a été cité comme s'il
+   venait d'un examen : `piles/bank.yaml:766` (fidélité I1), `bank.yaml:91` (ma propre
+   réfutation 16.2), et celle-ci. **Le motif est assez régulier pour être une règle : dans les
+   `bank.yaml`, seul le champ `stem` de l'entrée et son préambule de données sont l'examen ; les
+   `#`, les `reasoning:`, les `steps[].note` sont nous.**)*
 2. **Le cran $2{,}5\times10^{-2}$ existe pour UNE raison : il est le seul qui place un
    mélange EXACTEMENT sur $K$.** Sur le bain B, $2{,}5\times10^{-2}/1{,}0\times10^{-2} =
    2{,}5 = K$, au caractère près. **Un seul couple de crans sur les vingt-cinq y tombe**
@@ -750,22 +815,104 @@ avant le pari.)*
 $4{,}0\times10^{-3}$ ($p=1$, $o=5$ : $1{,}0\times10^{-3}/2{,}5\times10^{-1}$) à
 $5{,}0\times10^{5}$ ($p=5$, $o=1$ : $5{,}0\times10^{-1}/1{,}0\times10^{-6}$).
 **Verdict : 25 états sur 25 en sens DIRECT.**
-État nommé : **S4** pose $p=1$ ($[Cu^{2+}]_i = 1{,}0\times10^{-3}$), $o=4$
-($[Ag^+]_i = 1{,}0\times10^{-1}$).
+
+**État nommé : S4 pose $p=4$ ($[Cu^{2+}]_i = 1{,}0\times10^{-1}$), $o=2$
+($[Ag^+]_i = 1{,}0\times10^{-2}$)** ⇒ $Q_{r,i} = 1{,}0\times10^{-1}/(1{,}0\times10^{-2})^2 =
+1{,}0\times10^{-1}/1{,}0\times10^{-4} = \mathbf{1{,}0\times10^{3}}$, soit **12 ordres de
+grandeur** sous $K$ ($15{,}602 - 3 = 12{,}602$, entier par défaut : **12**).
+
+> **⚠ CET ÉTAT A CHANGÉ EN SECONDE PASSE, et c'est le BLOQUANT B-1 des deux critiques.**
+> S4 posait $p=1$ ($1{,}0\times10^{-3}$), $o=4$ ($1{,}0\times10^{-1}$) ⇒ $Q_{r,i} = 0{,}10$.
+> **À cet état-là, la prose de S4 était fausse trois fois** : l'oubli de l'exposant donne
+> $1{,}0\times10^{-2}$ contre $0{,}10$, c'est-à-dire **UNE décade, et vers la GAUCHE** — là où
+> le retour, la `suite` et la ligne du registre annonçaient tous trois « **deux décades plus à
+> droite** ». Et un rang du contrôle `oxydant` depuis $1{,}0\times10^{-1}$ déplaçait la marque
+> de $1{,}204$ décade (vers $2{,}5\times10^{-2}$) ou de $1{,}398$ (vers $5{,}0\times10^{-1}$)
+> — **jamais deux**, parce que l'échelle des crans n'est pas une échelle de décades à cet
+> endroit-là ($\times 4$ puis $\times 5$).
+>
+> **La cause est nommable, et elle vaut plus que le correctif :** les crans de S4 avaient été
+> déplacés **exprès**, au §5.3 D, pour que les quatre valeurs du pari soient deux à deux
+> distinctes (à $[Ag^+] = 1{,}0\times10^{-2}$, « exposant omis » et « inversé » donnaient tous
+> deux $0{,}10$) — **et la prose, écrite avant ce déplacement, n'a pas été recalculée.** À
+> l'ancien état, « deux décades » était juste. *C'est la forme la plus discrète du défaut de
+> mesure : un nombre vrai qui reste écrit après que la chose qu'il mesurait a bougé.*
+>
+> **Deux routes existaient ; j'ai pris la (b), et voici pourquoi.** La route (a) — réécrire la
+> phrase en **rapport** (« la marque parcourt deux fois plus de décades que la concentration »)
+> et dire « une décade à gauche » à la révélation — est correcte et coûte trois lignes. Je l'ai
+> **refusée** pour deux motifs mesurés :
+> 1. **Elle laisse le fait le plus fort du pas hors de portée de la main de l'élève.** « Deux
+>    fois plus de décades » est un énoncé de proportionnalité ; « la marque a sauté de deux
+>    décades quand j'ai divisé par dix » est une **observation**. Le §0 tout entier justifie
+>    cette scène par ce que l'élève **fait** ; troquer une observation contre un rapport
+>    verbal, à l'étape dont c'est tout le contenu, revient à écrire ce que la scène était
+>    censée faire voir.
+> 2. **La route (b) répare F2 sans rien coûter** (voir ci-dessous), et **conserve le verrou de
+>    S5** — ce qui n'était pas garanti et a dû être vérifié état par état.
+
+**Ce que la route (b) donne, vérifié cran par cran.**
+- **« Deux décades » devient LITTÉRAL** : juste $1{,}0\times10^{3}$ ($\log = 3$), exposant
+  omis $10$ ($\log = 1$) ⇒ **exactement deux décades, vers la GAUCHE** *(l'oubli de l'exposant
+  agrandit le dénominateur quand $[Ag^+] < 1$, donc il RAPETISSE le quotient — la direction
+  est écrite au §7.4, elle ne se devine pas)*.
+- **Le geste de la `suite` devient littéral aussi, à une condition de DIRECTION** : `oxydant`
+  est au cran 2 ($1{,}0\times10^{-2}$) ; **un rang vers le BAS** donne $1{,}0\times10^{-3}$,
+  soit un facteur $10$ exact ⇒ $Q_{r,i} = 1{,}0\times10^{-1}/(1{,}0\times10^{-3})^2 =
+  1{,}0\times10^{5}$, **deux décades vers la droite** ✓. **Un rang vers le HAUT donne
+  $2{,}5\times10^{-2}$, un facteur $2{,}5$, donc $160$ et seulement $0{,}796$ décade** — la
+  `suite` doit donc **nommer le sens**, et elle le fait (§7.4). *C'est la même chausse-trappe
+  qui a produit B-1 : sur cette liste de crans, « un rang » ne vaut pas « un facteur dix ».*
+- **F2 est réparé** : après la révélation de S4, `produit` reste figé — désormais à
+  $1{,}0\times10^{-1}$ — et `oxydant` rouvre. Donc **bain B + `oxydant` $= 1{,}0\times10^{-2}$
+  est ATTEIGNABLE**, et c'est précisément le mélange $(1{,}0\times10^{-1}\,;\,1{,}0\times10^{-2})$
+  où l'inversion du quotient retourne le verdict (§8.1). *La ligne du registre ne commande plus
+  un état que les contrôles interdisent.*
+- **Le verrou de S5 tient** : avec `produit` figé à $1{,}0\times10^{-1}$, les cinq quotients
+  atteignables du bain B valent $100$ · $10$ · $4{,}0$ · $1{,}0$ · $0{,}20$ — **aucun ne vaut
+  $2{,}5$** ✓. L'état d'équilibre reste hors d'atteinte avant S5.
+- **Rien ne sort de l'axe** : $1{,}0\times10^{3}$ et $1{,}0\times10^{5}$ sont dans
+  $[10^{-4} ; 10^{42}]$ ✓. Et la bande du bain C étant $[4{,}0\times10^{11} ;
+  4{,}0\times10^{19}]$, la marque est **hors bande**, donc portée par le chevron — « à 12
+  décades à gauche » (§5.5 B).
 
 **D — les quatre valeurs du pari de S4, chacune recalculée depuis le modèle qui la nomme**
 (règle armée par la vague 1 du plan complexe, §14.0 de sa spec) :
 
-| ce que l'élève fait | le calcul | la valeur |
-|---|---|---|
-| **juste** : $[Cu^{2+}]/[Ag^+]^2$ | $1{,}0\times10^{-3}/(1{,}0\times10^{-1})^2 = 1{,}0\times10^{-3}/1{,}0\times10^{-2}$ | $\mathbf{0{,}10}$ |
-| **exposant omis** : $[Cu^{2+}]/[Ag^+]$ | $1{,}0\times10^{-3}/1{,}0\times10^{-1}$ | $\mathbf{1{,}0\times10^{-2}}$ |
-| **coefficient en FACTEUR** : $[Cu^{2+}]/(2\,[Ag^+])$ | $1{,}0\times10^{-3}/(2\times1{,}0\times10^{-1})$ | $\mathbf{5{,}0\times10^{-3}}$ |
-| **produits et réactifs inversés**, exposant gardé : $[Ag^+]^2/[Cu^{2+}]$ | $1{,}0\times10^{-2}/1{,}0\times10^{-3}$ | $\mathbf{10}$ |
+*Recalculé en seconde passe sur l'état re-posé : $[Cu^{2+}]_i = 1{,}0\times10^{-1}$,
+$[Ag^+]_i = 1{,}0\times10^{-2}$ mol/L.*
 
-**Les quatre valeurs sont deux à deux distinctes** — condition vérifiée avant d'écrire, et
-c'est elle qui a fixé les crans de S4 : avec $[Ag^+]_i = 1{,}0\times10^{-2}$, « exposant
-omis » et « inversé » donnaient **tous deux $0{,}10$**, et le pari n'aurait rien mesuré.
+| ce que l'élève fait | le calcul | la valeur | position vs la juste |
+|---|---|---|---|
+| **juste** : $[Cu^{2+}]/[Ag^+]^2$ | $1{,}0\times10^{-1}/(1{,}0\times10^{-2})^2 = 1{,}0\times10^{-1}/1{,}0\times10^{-4}$ | $\mathbf{1{,}0\times10^{3}}$ | — |
+| **exposant omis** : $[Cu^{2+}]/[Ag^+]$ | $1{,}0\times10^{-1}/1{,}0\times10^{-2}$ | $\mathbf{10}$ | **2,00 décades à GAUCHE** |
+| **coefficient en FACTEUR** : $[Cu^{2+}]/(2\,[Ag^+])$ | $1{,}0\times10^{-1}/(2\times1{,}0\times10^{-2})$ | $\mathbf{5{,}0}$ | 2,30 décades à gauche |
+| **produits et réactifs inversés**, exposant gardé : $[Ag^+]^2/[Cu^{2+}]$ | $1{,}0\times10^{-4}/1{,}0\times10^{-1}$ | $\mathbf{1{,}0\times10^{-3}}$ | 6,00 décades à gauche |
+
+**Les quatre valeurs sont deux à deux distinctes** ✓ — et **la distance juste ↔ exposant omis
+vaut exactement DEUX décades**, ce qui est tout l'objet du changement d'état (B-1).
+**L'historique des trois états de S4, écrit en entier — parce que c'est lui qui explique le
+défaut :**
+
+| version | $[Cu^{2+}]_i$ | $[Ag^+]_i$ | juste | omis | facteur | inversé | verdict |
+|---|---|---|---|---|---|---|---|
+| **projet initial** | $1{,}0\times10^{-3}$ | $1{,}0\times10^{-2}$ | $10$ | $0{,}10$ | $0{,}050$ | $0{,}10$ | ❌ **collision** : omis = inversé |
+| **1ʳᵉ rédaction** *(l'argent monte d'un cran)* | $1{,}0\times10^{-3}$ | $1{,}0\times10^{-1}$ | $0{,}10$ | $1{,}0\times10^{-2}$ | $5{,}0\times10^{-3}$ | $10$ | ✓ distinctes, **mais UNE décade, à gauche** — la prose disait deux, à droite |
+| **2ᵈᵉ passe (retenue)** *(l'argent redescend, le cuivre monte de deux crans)* | $\mathbf{1{,}0\times10^{-1}}$ | $\mathbf{1{,}0\times10^{-2}}$ | $1{,}0\times10^{3}$ | $10$ | $5{,}0$ | $1{,}0\times10^{-3}$ | ✓ **distinctes ET deux décades exactement** |
+
+*Lu ainsi, le défaut se raconte en une ligne : **la condition « quatre valeurs distinctes » a
+été satisfaite en déplaçant l'argent, et la phrase « deux décades » a été laissée derrière.**
+Les deux contraintes — distinction des quatre valeurs, et écart de deux décades entre la juste
+et l'omise — n'avaient jamais été posées ENSEMBLE. Elles le sont maintenant, et **la porte N13
+les tient ensemble** : elle recalcule le compte affirmé depuis les deux valeurs, donc un
+déplacement futur de cran ne pourra plus laisser la prose derrière.*
+
+⚠ **Leçon à outiller, pas seulement à corriger.** Ce défaut est né d'un nombre resté juste
+dans la prose après que son objet a bougé dans la table. **Aucune porte ne pouvait le voir**,
+parce qu'aucune porte ne lisait les nombres AFFIRMÉS dans les retours. **C'est désormais N13
+(§11.1) et le sabotage 32 (§11.4)** : tout compte de décades écrit dans un texte de la scène
+est **recalculé par la porte depuis les deux valeurs qu'il compare** (ADR 0033 : *une porte
+peut être verte sur une question plus étroite que son en-tête*).
 
 **E — le comptage du pari de S2, recalculé pour chaque modèle** (bain A, 25 états) :
 
@@ -828,18 +975,30 @@ propre seuil.*
 
 #### A — l'axe d'ensemble
 
-- **Un seul axe, fixe, de $10^{-4}$ à $10^{38}$** — **42 décades**. Il ne change **jamais** de
+- **Un seul axe, fixe, de $10^{-4}$ à $10^{42}$** — **46 décades**. Il ne change **jamais** de
   bornes : c'est ce qui rend comparables les trois pivots $K$, et c'est ce qui fait voir,
   comme une **longueur**, les « 34 ordres de grandeur » que le corpus n'écrit qu'en mots
   (`piles/qr-vs-k-echelle.stages.json:5` : « *un écart d'environ 38 ordres de grandeur* »).
-  *(La borne basse descend de $10^{-3}$ à $10^{-4}$ après la vague 1, pédagogie M6 : le plus
-  petit quotient atteignable, $2{,}0\times10^{-3}$, était à $0{,}30$ décade du bord — ~2,5 px
-  à 390 px, où l'étiquette n'a nulle part où aller et où le sabotage « repère plafonné au
-  bord » devient dégénéré. **Aucun état n'est ajouté** : le minimum reste
-  $2{,}0\times10^{-3}$ aux bains A et B, $4{,}0\times10^{-3}$ au bain C.)*
+  **Les deux bornes ont bougé, chacune pour une mesure :**
+  - **la borne BASSE, de $10^{-3}$ à $10^{-4}$** *(première passe, pédagogie M6)* : le plus
+    petit quotient atteignable, $2{,}0\times10^{-3}$, était à $0{,}30$ décade du bord — ~2,5 px
+    à 390 px, où l'étiquette n'a nulle part où aller et où le sabotage « repère plafonné au
+    bord » devient dégénéré ;
+  - **la borne HAUTE, de $10^{38}$ à $10^{42}$** *(seconde passe, fidélité I-2)* : **la bande de
+    travail du bain A débordait l'axe.** $\log K(A) = 37{,}255$, donc la bande monte à
+    $41{,}255$ — **$3{,}26$ décades au-delà de $10^{38}$**. La clause (c) de
+    `bande-de-travail` (« *le crochet couvre exactement les huit décades de la bande* ») et la
+    porte N11 étaient donc **insatisfaisables par un produit correct**. *Et c'est la pire
+    espèce de porte : elle rougit sur le juste, ce qui apprend à ignorer son rouge
+    (ADR 0036).* À $10^{42}$, **les trois bandes tiennent entières** : A $[33{,}26 ; 41{,}26]$,
+    B $[-3{,}60 ; 4{,}40]$, C $[11{,}60 ; 19{,}60]$ ✓.
+  **Aucun état n'est ajouté par ces deux élargissements** : le minimum reste
+  $2{,}0\times10^{-3}$ aux bains A et B, $4{,}0\times10^{-3}$ au bain C ; le maximum reste
+  $5{,}0\times10^{5}$. *Le coût est quatre décades vides à droite — assumé : c'est le prix d'une
+  porte satisfaisable, et la précision vit de toute façon dans la bande.*
 - **Les décades sont graduées** ; une sur cinq porte son étiquette ($10^{-4}$, $10^{1}$,
-  $10^{6}$, …, $10^{36}$), les autres un trait fin. **À largeur réduite (< 540 px), une
-  décade sur dix seulement.**
+  $10^{6}$, …, $10^{41}$ — dix étiquettes), les autres un trait fin. **À largeur réduite
+  (< 540 px), une décade sur dix seulement.**
 - **L'échelle est STRICTEMENT constante** : la même distance en pixels sépare deux décades
   consécutives partout sur l'axe. *C'est une famille de porte à part entière (§11.2,
   `axe-decades`), et c'est la seule garantie que la longueur affichée VEUT dire quelque
@@ -868,11 +1027,18 @@ propre seuil.*
   ($0$ décade) est à 0 px — nettement confondue.** *C'est le critère d'acceptation, et il
   est écrit comme un nombre : **à 390 px, S3 $\ge$ 16 px et S5 $\le$ 2 px**, les deux mesurés
   et imprimés.*
-- **Quand le repère est HORS de la bande** — c'est le cas aux bains A et C, dont aucun
-  mélange n'approche $K$ à moins de 15 décades — **aucune pastille n'est dessinée dans la
-  bande.** À sa place, un **chevron de bord**, graphiquement distinct de la pastille, qui
-  porte « *à 34 décades à gauche* ». **Ce n'est PAS un repère plafonné** (le sabotage 12), et
-  la porte doit savoir les distinguer : une pastille au bord rougit, un chevron non.
+- **Quand le repère est HORS de la bande** — c'est le cas à **tous** les états des bains A et
+  C — **aucune pastille n'est dessinée dans la bande.** À sa place, un **chevron de bord**,
+  graphiquement distinct de la pastille, qui porte l'écart en décades (« *à 34 décades à
+  gauche* »). **Ce n'est PAS un repère plafonné** (le sabotage 12), et la porte doit savoir les
+  distinguer : une pastille au bord rougit, un chevron non.
+  *Chiffres exacts, corrigés en seconde passe (fidélité I-3) : le mélange le plus proche de $K$
+  est à **$34{,}56$ décades** au bain A et à **$9{,}90$ décades** au bain C
+  ($15{,}602 - \log(5{,}0\times10^{5}) = 15{,}602 - 5{,}699$). **La première rédaction écrivait
+  « aucun mélange n'approche $K$ à moins de 15 décades » : faux pour le bain C.** Le dessin ne
+  change pas — $9{,}90 > 4$, donc le chevron s'applique toujours — mais **un nombre faux dans
+  une justification est un nombre faux**, et c'est le troisième de cette famille que la seconde
+  passe a trouvé.*
   *Et la bande vide aux bains A et C **dit quelque chose** : sur ce couple-là, rien de ce
   qu'on peut préparer n'arrive à huit décades de $K$. C'est le motif du §2.2, dessiné.*
 - **La bande paraît à S3** (avec le bain B) et ne disparaît plus. Avant S3, elle est
@@ -970,7 +1136,7 @@ calme, DÉCISIONS §29 / HANDOFF §11.210) :
 | `expression` | la formule littérale de $Q_r$ pour ce bain | S1 · S2 · S3 ; **S4 après la révélation** ; **absente à S5** | **oui, sauf à S4** (c'est le pari) |
 | `qri` | la valeur de $Q_{r,i}$, 2 c.s. | S1 · S2 · S3 · S5 ; **S4 après la révélation** | **oui, sauf à S4** |
 | `k` | la valeur de $K$, avec « $=$ » (§5.4) | S1 · S2 · S3 · S4 · S5 | **oui** — c'est l'énoncé |
-| `ecart` | l'écart en ordres de grandeur **pour l'état affiché**, entier | S2 ; **S4 après la révélation** | oui à S2 |
+| `ecart` | l'écart en ordres de grandeur **pour l'état affiché**, entier *(39 à S1, 34 au mélange extrême de S2, **12** à S4 — §11.1 N8)* | S2 ; **S4 après la révélation** | oui à S2 |
 | **`melange`** *(NEUVE, vague 1)* | les deux concentrations de l'instant $i$, avec leur unité | **S5** | **oui** — c'est l'énoncé |
 | `sens` | le verdict : « sens direct (1) » / « sens inverse (2) » / « déjà à l'équilibre » | S1 · S2 · S3 · S4 · S5 | **NON, jamais** — c'est la réponse |
 | `especes` | qui est oxydé, qui est réduit *(ou « aucune, à l'échelle macroscopique » sur l'état d'équilibre)* | S3 · S5 ; **absente à S4** | **NON, jamais** |
@@ -1118,8 +1284,18 @@ suite). `produit` et `bain` absents du DOM.
 
 ### 7.2 S2 — `vingt-cinq-melanges` · « Vingt-cinq mélanges, un seul verdict »
 
-**Consigne.** Les deux solutions sont maintenant réglables, cinq crans chacune : vingt-cinq
-mélanges du **même** couple. On les a tous essayés.
+**Consigne.** *(Réécrite en seconde passe : F5.)*
+
+> **Avec cinq crans par solution, on peut préparer vingt-cinq mélanges de ce **même** couple.
+> On les a tous essayés.**
+
+> **F5 — la consigne décrivait un écran qui n'existe pas.** Elle disait « *Les deux solutions
+> sont **maintenant réglables**, cinq crans chacune* » — **or pendant le pari de S2, seul
+> `oxydant` est ouvert ; `produit` ne paraît qu'à la révélation** (§7.6 A). La phrase promettait
+> deux réglages dans la main de l'élève et n'en donnait qu'un. *La correction est d'un mot :
+> les vingt-cinq mélanges sont un objet de PENSÉE (« on peut préparer »), pas un inventaire de
+> contrôles — et c'est bien ainsi que le pari fonctionne, puisqu'il demande de **prédire** un
+> comptage, pas de le relever.*
 
 **Pari — « Combien de ces 25 mélanges évoluent dans le sens INVERSE ? »**
 
@@ -1234,14 +1410,39 @@ par rapport au bain A. *C'est la seule étape de toute la chaîne du quotient o�
 « réactivité du métal » rencontre une observation qui le contredit — et elle n'est possible
 que parce que les deux métaux sont dans le bécher.*
 
-**Retour du choix juste — et il porte désormais la partition, qui n'est plus une tâche.**
-*« Sur ce couple-ci, les vingt-cinq mélanges ne vont pas tous du même côté : **9 en sens
-inverse, 1 sans évolution, 15 en sens direct**. Ce n'est pas une symétrie — c'est une
-partition, et c'est le mélange qui décide de quel côté on tombe. »* (§5.3 B.)
-*C'est aussi ce qui casse `sens-symetrique` : 9 contre 15 n'est pas « aussi spontané dans les
-deux sens ».*
+**Retour du choix juste — trois phrases, et chacune fait un travail précis.**
+1. **La comparaison, écrite avec le SEUL seuil qui compte** *(seconde passe, F7)* :
+   *« $Q_{r,i} = 10$, et $K = 2{,}5$ : **$10 > 2{,}5$**, donc sens inverse. »*
+   ⚠ **Jamais « $Q_{r,i}$ est au-dessus de $1$ », jamais « $Q_{r,i}$ est grand » — la
+   comparaison nomme $K$ et sa valeur, à chaque fois.**
+2. **La partition, qui n'est plus une tâche** : *« Sur ce couple-ci, les vingt-cinq mélanges ne
+   vont pas tous du même côté : **9 en sens inverse, 1 sans évolution, 15 en sens direct**. »*
+3. **Ce qui casse `sens-symetrique`, reformulé** *(seconde passe, F8)* : *« Ce n'est pas que
+   les deux sens se valent : c'est que **le même couple, avec un autre mélange, va dans
+   l'autre sens**. Change les quantités et tu le verras. »*
+   *La première rédaction opposait « 9 contre 15 n'est pas une symétrie » — un argument de
+   COMPTAGE, là où le modèle déclaré porte sur la **propriété fixe attachée au couple** :
+   « suppose une symétrie automatique […] **sans recalculer $Q_{r,i}$ pour le nouveau
+   mélange** » (`items.yaml:27`), et son `contradicts_principle` dit « *rien n'interdit, pour
+   un mélange différent, un $Q_{r,i}$ qui impose un sens différent* » (`:28`). **La réfutation
+   juste est donc « même couple, autre mélange, autre sens », pas « 9 ≠ 15 ».** Un comptage
+   agrégé peut se lire comme une symétrie imparfaite ; un mélange qui bascule ne peut pas.*
 
-**`suite` — UN geste, et c'est le meilleur de la scène** *(vague 1, pédagogie I3)* :
+> **F7 — S3 RÉCOMPENSE `seuil-un-au-lieu-de-k`, et c'est déclaré comme à S2.**
+> À l'état de S3, $Q_{r,i} = 10$ est au-dessus de **$1$** *et* au-dessus de **$K = 2{,}5$** :
+> **le faux seuil donne la bonne réponse**, un pas seulement après que S2 l'a cassé. *C'est la
+> même contamination de la BONNE réponse que S2 subit avec `reactivite-metal-fixe` (§7.2), et
+> elle est **irréductible sur cette grille** : pour que les deux seuils divergent, il faudrait
+> un quotient dans $]1\,;\,2{,}5[$, et **aucun rapport de deux crans n'y tombe** (§13.3).*
+> **Donc on ne la cache pas, on la travaille, en trois endroits :**
+> **(a)** le retour juste écrit **$10 > 2{,}5 = K$**, jamais « au-dessus de $1$ » — *une
+> comparaison au bon seuil, même quand le mauvais donnerait la même réponse* ;
+> **(b) la `suite` la casse, et c'est la meilleure réfutation du modèle dans toute la scène** —
+> voir ci-dessous ;
+> **(c)** le §8.2 la revendique, et le §8.1 déclare la récompense accidentelle.
+
+**`suite` — UN geste, et c'est le meilleur de la scène** *(première passe, pédagogie I3 ;
+revendiqué contre `seuil-un-au-lieu-de-k` en seconde passe, F7)* :
 > *« Sans rien changer au mélange, passe au bain A. Regarde ce qui bouge, et ce qui ne bouge
 > pas. »*
 
@@ -1250,6 +1451,17 @@ comme sur le bain B** *(vérifié : $[Zn^{2+}]/[Cu^{2+}] = 10$ et $[Sn^{2+}]/[Pb
 **Le repère ne bouge pas d'un pixel ; le pivot saute de trente-sept décades ; le verdict
 change.** *Le motif du §2.2 en un clic — « $Q_{r,i}$ est une propriété du mélange, $K$ une
 propriété de la réaction » — et ES-31 (§8.3) rendu physique.*
+
+> **Et ce geste est la RÉFUTATION FRONTALE du modèle neuf, ce que la première rédaction n'avait
+> pas revendiqué** *(seconde passe, F7)*. **Le même nombre, $Q_{r,i} = 10$, donne deux verdicts
+> opposés selon le bain.** Aucun seuil **absolu** — ni $1$, ni aucun autre — ne peut rendre
+> compte de cela : **si le verdict se lisait sur la taille de $Q_{r,i}$, il ne pourrait pas
+> changer alors que $Q_{r,i}$ ne change pas.** C'est un argument d'impossibilité, pas un
+> comptage, et il est disponible **en un clic**. *Phrase à tenir dans le retour de la suite :
+> « le seuil ne peut pas être un nombre fixe, puisque le même quotient vient de donner deux
+> réponses ».* **Aucun item du corpus ne peut faire cela** — il faudrait tenir deux systèmes à
+> la fois et prouver qu'un seul nombre ne les départage pas (ES-31 s'en approche sur papier,
+> §8.3).
 *La première rédaction demandait ici « **parcours les 25 mélanges de ce couple-ci et compte
 les verdicts** » : vingt-cinq manipulations à deux réglages plus un décompte mental sans
 compteur à l'écran. Ce n'est pas un geste, c'est un recensement — et c'est là, pas au pari de
@@ -1271,47 +1483,71 @@ complexe, §5.2 B de sa spec).
 
 **Consigne.** Troisième bain : de la limaille de cuivre dans une solution de nitrate
 d'argent. L'équation, **$Cu + 2\,Ag^+ \rightleftharpoons Cu^{2+} + 2\,Ag$**, est à l'encre ;
-les deux concentrations aussi ($[Ag^+]_i = 1{,}0\times10^{-1}$,
-$[Cu^{2+}]_i = 1{,}0\times10^{-3}$ mol/L) ; $K$ aussi ($4{,}0\times10^{15}$).
-**`expression` et `qri` sont ABSENTS du DOM** : c'est le pari.
+les deux concentrations aussi — **$[Cu^{2+}]_i = 1{,}0\times10^{-1}$ et
+$[Ag^+]_i = 1{,}0\times10^{-2}$ mol/L** *(état re-posé en seconde passe, B-1 : §5.3 C)* ;
+$K$ aussi ($4{,}0\times10^{15}$).
+**`expression` et `qri` sont ABSENTS du DOM — et, depuis la seconde passe, la MARQUE
+$Q_{r,i}$, son étiquette et le chevron de bande le sont aussi** : c'est le pari, et il ne
+doit fuir ni par une lecture, ni par un dessin (§11.2 `avant-pari`, F4).
 
 **Pari — « Quelle est l'expression de $Q_{r,i}$ pour cette réaction ? »**
 
 | | choix | modèle | la valeur que le modèle produit (§5.3 D) |
 |---|---|---|---|
-| ✓ | $\dfrac{[Cu^{2+}]}{[Ag^+]^2}$ | — | $\mathbf{0{,}10}$ |
-| ✗ | $\dfrac{[Cu^{2+}]}{[Ag^+]}$ | `exposants-oublies` | $1{,}0\times10^{-2}$ |
-| ✗ | $\dfrac{[Cu^{2+}]}{2\,[Ag^+]}$ | `exposants-oublies` *(seconde forme : le coefficient en facteur — la description déclarée la couvre explicitement, `items.yaml:63`)* | $5{,}0\times10^{-3}$ |
-| ✗ | $\dfrac{[Ag^+]^2}{[Cu^{2+}]}$ | `qr-produits-reactifs-inverses` | $10$ |
+| ✓ | $\dfrac{[Cu^{2+}]}{[Ag^+]^2}$ | — | $\mathbf{1{,}0\times10^{3}}$ |
+| ✗ | $\dfrac{[Cu^{2+}]}{[Ag^+]}$ | `exposants-oublies` | $10$ — **deux décades à gauche** |
+| ✗ | $\dfrac{[Cu^{2+}]}{2\,[Ag^+]}$ | `exposants-oublies` *(seconde forme : le coefficient en facteur — la description déclarée la couvre explicitement, `items.yaml:63`)* | $5{,}0$ |
+| ✗ | $\dfrac{[Ag^+]^2}{[Cu^{2+}]}$ | `qr-produits-reactifs-inverses` | $1{,}0\times10^{-3}$ |
 
-> **Le pari porte sur l'EXPRESSION, plus sur la valeur** *(vague 1, pédagogie I1 et I2)*.
-> Il demandait « *Que vaut $Q_{r,i}$ ?* » avec quatre nombres — **c'est la question d'ES-20
-> (`items.yaml:1136-1145`) en costume**, et l'argument central du §0 (« *un item donne
-> toujours le mélange* ») ne la couvrait pas, puisque ici la scène donne le mélange elle
-> aussi. **Le seul aperçu que cette scène-là peut produire et qu'aucun item ne peut produire
-> — l'exposant qui se VOIT comme une double longueur sur l'axe — était relégué dans la
-> `suite`, sans engagement.** La priorité était inversée.
+> **Le pari porte sur l'EXPRESSION, plus sur la valeur** *(première passe, pédagogie I1 et
+> I2)*. Il demandait « *Que vaut $Q_{r,i}$ ?* » avec quatre nombres, et **le seul aperçu que
+> cette scène peut produire et qu'aucun item ne peut produire — l'exposant qui se VOIT comme
+> une double longueur sur l'axe — était relégué dans la `suite`, sans engagement.** La
+> priorité était inversée.
+> **Rectification de la seconde passe (fidélité M-1) : l'ancien pari n'était PAS « ES-20 en
+> costume », et c'est le NOUVEAU qui est ES-20 transposé.** ES-20 (`items.yaml:1136-1141`) ne
+> demande aucune valeur : il **soumet une expression écrite sans exposant et demande qu'on la
+> critique**. Mon texte disait l'inverse, et il attribuait à l'ancien pari une parenté qu'il
+> n'avait pas. **Le dire droit :** la *question* de S4 est désormais celle d'ES-20, et **ce
+> n'est pas un défaut — c'est ce qui suit qui justifie la scène.** Ce qu'aucun item ne peut
+> faire, c'est la **révélation** : écrire la valeur, **poser la marque, et la faire sauter de
+> deux décades** entre l'expression fausse et la juste. *Un item peut poser la question ; il ne
+> peut pas montrer la longueur.*
 > **Les quatre choix restent les quatre modèles du §5.3 D, et les quatre valeurs restent
 > deux à deux distinctes** : elles ne disparaissent pas, elles passent du libellé à la
-> **révélation**. *Et c'est ce qui donne enfin l'enchaînement que le bac demande
-> (§0.1 fait i, §2.4) : **expression → valeur → verdict, dans cet ordre, en une étape.**
-> Nulle part ailleurs dans la scène il n'était couru : à S1 les deux sont de l'encre, et à S4
-> l'expression était la réponse cachée.*
+> **révélation**.
+> **Sur l'enchaînement du bac, une revendication resserrée (seconde passe, F11).** La première
+> rédaction écrivait que S4 « donne enfin l'enchaînement que le bac demande : expression →
+> valeur → verdict, en une étape ». **C'est trop dire :** l'élève **produit** le premier
+> maillon (il choisit l'expression) et **voit** les deux autres s'enchaîner. Le bac, lui,
+> demande de produire les trois. **Ce que S4 fait honnêtement : il fait courir la chaîne sous
+> les yeux de l'élève, dans le bon ordre, en le rendant responsable du maillon où le piège
+> vit.** La production des trois maillons reste le travail des items et du sommet — et elle
+> reste due (§8.3).
 > **Le libellé d'aucun choix ne porte le nombre qui le réfute** (règle de la vague 2) : les
 > quatre sont des formules nues, sans valeur ni justification.
-> ⚠ **Note de porte, à ne pas manquer :** `avant-pari` exige qu'à S4 « aucune lecture `qri`
-> ni `expression` » ne soit au DOM. **Les quatre choix ne sont pas des lectures.** La sonde
-> lit les nœuds `[data-lecture]`, **jamais la liste des choix** — sans quoi la porte rougit
-> sur sa propre conception.
+> ⚠ **Note de porte, à ne pas manquer :** `avant-pari` exige qu'à S4 aucune lecture `qri` ni
+> `expression` ne soit au DOM, **et depuis la seconde passe aucune marque, étiquette ni
+> chevron non plus** (F4). **Mais les quatre choix ne sont ni des lectures ni des marques.**
+> La sonde lit les nœuds `[data-lecture]` et les **pixels du dessin**, **jamais la liste des
+> choix** — sans quoi la porte rougit sur sa propre conception (contre-essai 16, §11.4).
 
-**Retour du choix juste** — **l'expression paraît, puis la valeur ($0{,}10$), puis le repère
-se pose sur l'axe, puis le verdict.** La phrase à tenir : **un coefficient de l'équation
-devient une PUISSANCE, jamais un facteur** ; et c'est l'écriture de l'équation, pas la nature
-des espèces, qui le décide.
+**Retour du choix juste** — **l'expression paraît, puis la valeur ($1{,}0\times10^{3}$), puis
+le repère se pose sur l'axe, puis le verdict.** La phrase à tenir : **un coefficient de
+l'équation devient une PUISSANCE, jamais un facteur** ; et c'est l'écriture de l'équation, pas
+la nature des espèces, qui le décide.
 **Et le confront est là, pas dans la suite :** *« Regarde où serait tombée la marque sans
-l'exposant : **deux décades plus à droite**, pas une. Un facteur $10$ sur $[Ag^+]$ déplace
-$Q_{r,i}$ de deux décades, parce que la concentration y est **au carré**. »* La révélation
-**déplace la marque** entre les deux positions, une fois.
+l'exposant : à $10$, **deux décades plus à GAUCHE**. Élever au carré une concentration plus
+petite que $1$ rend le dénominateur plus petit encore — donc le quotient plus grand. »* La
+révélation **déplace la marque** entre les deux positions, une fois.
+
+> **Les deux nombres de cette phrase ont été FAUX, et c'est le bloquant B-1 de la seconde
+> passe.** Elle disait « **deux décades plus à droite**, pas une ». À l'état que S4 posait
+> alors, c'était **une** décade, et **à gauche** : les deux moitiés étaient fausses. *La
+> direction n'est pas une coquette : elle est contre-intuitive, et c'est justement pourquoi il
+> faut l'écrire — l'oubli de l'exposant RAPETISSE le quotient ici, parce que $[Ag^+] < 1$.*
+> **L'état est re-posé (§5.3 C) pour que « deux décades » soit littéral**, et le nombre est
+> désormais **recalculé par une porte** (§11.1 N13) au lieu d'être cru sur parole.
 
 **Retour du choix « $\dfrac{[Cu^{2+}]}{[Ag^+]}$ »** — *(réécrit, vague 1 fidélité I1)* :
 **« un sujet national a déjà posé ce calcul sur une équation à exposants $2$ et $3$ — la pile
@@ -1320,57 +1556,97 @@ rédaction disait que « le sujet **nomme le piège** ». C'est faux : la mise e
 vit dans le bloc `reasoning:` de la maison (`:766`), pas dans l'énoncé. **On n'attribue pas
 à un examen national une phrase qu'il n'a pas écrite**, surtout dans un panneau rendu.*
 
-**Retour du choix $\dfrac{[Ag^+]^2}{[Cu^{2+}]}$** — *(réécrit, vague 1 pédagogie B3.3 :
-l'appel au seuil $1$ est SUPPRIMÉ)* : *« Inverser le quotient met un **réactif** au
-numérateur. La marque tombe deux décades de l'autre côté, et les deux rôles du bécher
-s'échangent. Sur ce bain-ci le verdict ne change pas — $0{,}10$ et $10$ sont tous deux
-écrasés par $K$. **Mais reviens au bain B avec le mélange de tout à l'heure
-($1{,}0\times10^{-1}$ ; $1{,}0\times10^{-2}$) : le quotient juste vaut $10$ et le critère dit
-« inverse » ; le quotient inversé vaut $0{,}10$ et il dirait « direct ». Là, inverser coûte
-le VERDICT. »*** *§8.1 : c'est sur cet état-là que la ligne du registre est ancrée.*
+**Retour du choix $\dfrac{[Ag^+]^2}{[Cu^{2+}]}$** — *(réécrit une première fois pour supprimer
+l'appel au seuil $1$ — pédagogie B3.3 ; réécrit une seconde fois parce qu'il commandait un état
+inatteignable — F2)* : *« Inverser le quotient met un **réactif** au numérateur. La marque
+tombe six décades plus à gauche, et les deux rôles du bécher s'échangent. Sur ce bain-ci le
+verdict ne change pas : $1{,}0\times10^{3}$ et $1{,}0\times10^{-3}$ sont tous deux écrasés par
+$K$. **Mais passe au bain B, sans toucher au cuivre, et mets l'argent… pardon, le second ion,
+à $1{,}0\times10^{-2}$ : le quotient juste vaut $10$ et le critère dit « inverse » ; le
+quotient inversé vaudrait $0{,}10$ et il dirait « direct ». Là, inverser coûte le VERDICT. »***
 
-**`suite`** — *« Change le cran de la solution d'argent d'un rang et vérifie : combien de
-décades la marque a-t-elle parcourues ? »* **Deux, pas une.**
+> **F2 — cette phrase commandait un écran que les contrôles interdisaient, et la route (b) de
+> B-1 la répare gratuitement.** Elle disait « reviens au bain B avec le mélange de tout à
+> l'heure ($1{,}0\times10^{-1}$ ; $1{,}0\times10^{-2}$) » — **or `produit` était gelé à
+> $1{,}0\times10^{-3}$ après la révélation de S4**, et aucun état atteignable ne montrait le
+> verdict basculer. *C'est exactement la classe de défaut de B3.4 de la première passe : une
+> réfutation qui pointe un écran qui n'existe pas. Deux fois le même piège, à deux passes
+> d'écart — d'où la règle que je m'écris : **une phrase de retour qui dit « va voir » doit être
+> vérifiée contre la table d'atteignabilité, pas contre l'intention**.*
+> **Depuis le déplacement de S4, `produit` est gelé à $1{,}0\times10^{-1}$** : bain B +
+> `oxydant` $= 1{,}0\times10^{-2}$ donne $Q_{r,i} = 10$, et l'état **est atteignable** ✓
+> (§7.6 A). *Et c'est le mélange que l'élève connaît déjà : celui du geste de S3.*
+> *Note de vocabulaire : au bain B le « second ion » est $Pb^{2+}$, pas $Ag^+$ — le libellé du
+> retour doit nommer l'ion du bain COURANT, ou rester générique. La chaîne `argent` est
+> autorisée à partir de S4 (§7.6 C), mais l'écrire pour un bécher d'étain serait faux.*
+
+**`suite`** — *« **Divise la concentration d'argent par dix** (un rang vers le bas) et
+vérifie : combien de décades la marque a-t-elle parcourues ? »* **Deux** — de
+$1{,}0\times10^{3}$ à $1{,}0\times10^{5}$.
+> **La direction est dans la consigne, et ce n'est pas du zèle.** Sur cette liste de crans,
+> « un rang » ne vaut **pas** « un facteur dix » : vers le bas, $1{,}0\times10^{-2} \to
+> 1{,}0\times10^{-3}$ est bien $\times\frac{1}{10}$ (⇒ deux décades) ; **vers le haut,
+> $1{,}0\times10^{-2} \to 2{,}5\times10^{-2}$ n'est qu'un facteur $2{,}5$ (⇒ $0{,}796$
+> décade)**. *La première rédaction disait « change le cran d'un rang… Deux, pas une » sans
+> nommer le sens — et à l'ancien état, aucun des deux sens ne donnait deux. C'est la moitié du
+> bloquant B-1.*
+
 **`etat_revele`** : aucun réglage à poser (le pari portait sur une expression) — **et c'est
 déclaré**, comme S4 du banc d'électrolyse.
 
 **Contrôles** : **aucun ouvert pendant le pari** (`bain` est au DOM et affiche C, posé par
 `etat` ; il n'offre pas encore le cran C — §5.6). **À la révélation** : `bain` gagne le
-cran C (trois crans, A/B/C) et `oxydant` rouvre (c'est la suite) ; **`produit` reste fermé**.
+cran C (trois crans, A/B/C) et `oxydant` rouvre (c'est la suite) ; **`produit` reste fermé,
+figé à $1{,}0\times10^{-1}$**.
 **Lectures** : `equation`, `k` à l'encre ; puis, à la révélation, `expression`, `qri`,
-`ecart` (16 ordres de grandeur) et `sens` — **six. `especes` tombe à S4** (vague 1,
-pédagogie M4 : sept lignes à l'étape où l'élève choisit une expression, c'était la ligne de
-trop, et les rôles sont acquis depuis S3). *§13.7 est donc tranché, et n'est plus une
+`ecart` (**12** ordres de grandeur — *recalculé : $15{,}602 - 3 = 12{,}602$, entier par
+défaut ; c'était 16 à l'ancien état*) et `sens` — **six. `especes` tombe à S4** (première
+passe, pédagogie M4 : sept lignes à l'étape où l'élève choisit une expression, c'était la
+ligne de trop, et les rôles sont acquis depuis S3). *§13.7 est donc tranché, et n'est plus une
 question au propriétaire.*
 
 ### 7.5 S5 — `pile-sur-le-pivot` · « Et si le repère tombait sur le pivot ? »
 
-**Consigne.** *(Réécrite après la vague 1 : S5 n'annonce plus sa propre découverte —
-pédagogie I7.)*
+**Consigne.** *(Réécrite DEUX FOIS : la première passe lui a retiré l'annonce de sa propre
+découverte (pédagogie I7), la seconde lui a retiré le geste avant le pari (F3). Ce qui reste
+est la seule forme qui satisfait les deux.)*
 
-> **Retour au bécher étain / plomb — la lame et le dépôt, tous deux présents. On repart d'un
-> mélange voisin : $[Sn^{2+}]_i = 1{,}0\times10^{-2}$ et $[Pb^{2+}]_i = 1{,}0\times10^{-2}$
-> mol/L. Un seul réglage est ouvert, celui de la solution de $Sn^{2+}$.
-> **Amène la marque exactement sur le pivot.** Puis parie.**
+> **Retour au bécher étain / plomb — la lame et le dépôt, tous deux présents. On a préparé un
+> mélange particulier : $[Sn^{2+}]_i = 2{,}5\times10^{-2}$ et $[Pb^{2+}]_i = 1{,}0\times10^{-2}$
+> mol/L. **Regarde l'axe et la bande, puis parie.****
 
-**L'état d'ouverture donne $Q_{r,i} = 1{,}0$ — et ce n'est pas un hasard de cran.** C'est
-**le seuil du modèle `seuil-un-au-lieu-de-k`** : celui qui le tient croit être déjà sur le
-pivot, alors que la bande de travail (§5.5 B) montre la marque **$0{,}40$ décade à gauche**
-de $K = 2{,}5$. **Le geste — monter `produit` d'un cran, jusqu'à $2{,}5\times10^{-2}$ — fait
-glisser la marque sur le pivot** ; cinq positions seulement sont atteignables ($0{,}10$,
-$1{,}0$, $2{,}5$, $10$, $50$), donc la recherche est **bornée et se fait en un geste**.
+**Aucun contrôle n'est ouvert pendant ce pari, et la consigne ne dit PAS que $Q_{r,i}$ vaut
+$K$.** Les deux lectures `qri` et `k` portent chacune « $2{,}5$ » ; dans la bande de travail,
+les deux marques **se recouvrent**. **C'est le dessin qui le dit, et c'est à l'élève de le
+voir.**
 
-*La première rédaction posait d'emblée l'état d'équilibre et écrivait en consigne :
-« $Q_{r,i} = 2{,}5$ — **exactement** $K$. Sur l'axe, les deux marques **se recouvrent** ».
-**Le temps de la tentative était dépensé avant le pari** : rien n'était trouvé, la
-coïncidence était annoncée, et la recherche était reléguée dans la `suite`.*
+> **F3 — pourquoi la version de la première passe était fautive, et pourquoi la correction ne
+> revient PAS au point de départ.**
+> La première passe avait raison (I7) : la consigne d'origine **interprétait l'image à la place
+> de l'élève** — « *$Q_{r,i} = 2{,}5$ — **exactement** $K$. Sur l'axe, les deux marques se
+> recouvrent* ». Ma correction a ouvert `produit` et demandé « *Amène la marque exactement sur
+> le pivot. Puis parie.* » **Et cela contredit ADR 0041 §6 de front : « chaque étape commence
+> par un PARI — ni temps ni contrôle avant l'engagement ».** Un geste commandé avant le choix,
+> c'est le temps de la découverte dépensé autrement, pas rendu. *Et la seconde critique ajoute
+> un défaut que je n'avais pas vu : **le chemin de l'élève qui parie sans avoir atteint le
+> pivot n'était écrit nulle part** — la scène aurait eu un état non spécifié.*
+> **La sortie n'est pas de revenir à la consigne d'origine : c'est de séparer ce que le DESSIN
+> montre de ce que le TEXTE nomme.** Ce qui gâchait la découverte était la **phrase**, jamais
+> l'image. L'état d'équilibre est donc posé par `etat`, les deux marques se superposent à
+> l'écran — et **le texte se taît**. *« Le dessin répond avant le texte » est la règle même
+> d'ADR 0041 §6 ; ici elle résout la tension au lieu de l'arbitrer.* **Zéro contrôle ouvert :
+> l'ensemble atteignable pendant le pari de S5 contient exactement un état** (§7.6 A), le plus
+> serré de la scène.
+> **Et le cran $Q_{r,i} = 1{,}0$ n'est pas perdu — il passe dans la `suite`**, où il fait un
+> travail que rien d'autre ne fait : confronter une seconde fois `seuil-un-au-lieu-de-k`, sur
+> son propre seuil, après que le verdict a été rendu.
 
 **Pari — « Que va-t-il se passer dans ce bécher ? »**
 
 | | choix | modèle | la conséquence que la scène montre |
 |---|---|---|---|
 | ✓ | « rien ne change, à l'échelle où l'on regarde : ni le dépôt de plomb, ni la lame d'étain, ni les concentrations » | — | aucune flèche nette ; `melange` inchangée ; les deux métaux restent |
-| ✗ | « la réaction s'est déjà produite en entier : il ne reste plus d'ions $Pb^{2+}$ » | `equilibre-egale-arret-total` | **la lecture `melange` affiche $[Pb^{2+}]_i = 1{,}0\times10^{-2}$ mol/L, à l'écran** |
+| ✗ | « la réaction s'est déjà produite en entier : il ne reste plus d'ions $Pb^{2+}$ » | `equilibre-egale-arret-total` | **à la révélation, `melange` NE BOUGE PAS** : $[Pb^{2+}]$ vaut encore $1{,}0\times10^{-2}$ mol/L, et c'est un ÉTAT FINAL autant qu'initial (F10) |
 | ✗ | « c'est impossible : on vient de préparer le mélange, $Q_{r,i}$ ne peut valoir $K$ qu'à la FIN d'une évolution » | `confond-qr-et-k` | le mélange est là, préparé, et il y est |
 | ✗ | « il va quand même évoluer, mais si lentement qu'on ne le verra pas » | `spontane-egale-instantane` | *(voir l'encadré : la scène ne peut PAS le réfuter, et c'est déclaré)* |
 
@@ -1393,10 +1669,21 @@ coïncidence était annoncée, et la recherche était reléguée dans la `suite`
 
 **Retour du choix juste.** C'est le **troisième** cas du critère : $Q_{r,i} = K$, le système
 est **déjà** à l'équilibre. Et il n'y est pas parce qu'un réactif a disparu — **les deux
-concentrations sont sous tes yeux, et les deux métaux sont dans le bécher.** *(C'est ici,
-et seulement ici, que la phrase microscopique arrive : à l'échelle des ions, les deux
-réactions continuent — elles se compensent exactement, et c'est pour cela que rien ne bouge à
-l'échelle où l'on regarde.)*
+concentrations sont sous tes yeux, elles n'ont pas bougé, et les deux métaux sont dans le
+bécher.** *(C'est ici, et seulement ici, que la phrase microscopique arrive : à l'échelle des
+ions, les deux réactions continuent — elles se compensent exactement, et c'est pour cela que
+rien ne bouge à l'échelle où l'on regarde.)*
+
+> **F10 — la réfutation d'`equilibre-egale-arret-total` est déplacée d'AVANT le pari vers
+> APRÈS.** La première rédaction la faisait porter par la lecture `melange`, **qui est de
+> l'encre** : le distracteur « il ne reste plus d'ions $Pb^{2+}$ » était donc éliminable **en
+> regardant l'écran, avant de s'engager** — le modèle n'avait pas l'occasion de tourner.
+> **La conséquence revendiquée est désormais celle de la révélation :** le verdict tombe, et
+> **`melange` ne change pas d'un caractère**. C'est cela qui réfute l'épuisement — *dans une
+> scène sans temps, « l'état initial EST l'état final » n'est démontrable que par une
+> révélation qui ne déplace rien*, et c'est exactement ce que S5 montre. *La consigne, elle,
+> donne les concentrations **initiales** (c'est l'énoncé) ; le distracteur parle de l'état
+> **final**. Les deux ne se contredisent qu'après la révélation.*
 
 **Et la phrase qui empêche une misconception NEUVE de naître** *(vague 1, pédagogie I8)* :
 > *« Un mélange préparé **exactement** sur le pivot est rare — il faut le fabriquer exprès,
@@ -1407,25 +1694,32 @@ l'échelle où l'on regarde.)*
 en contradiction directe avec l'image centrale du chapitre — « $Q_r$ grimpe vers $K$ »
 (`lesson.md:115`) — et avec la flèche que la scène dessine à chaque état.*
 
-**`suite` — bornée, un geste** *(vague 1, pédagogie I3)* :
-> *« Change **un seul** cran, dans un sens ou dans l'autre, et regarde ce que devient le
+**`suite` — bornée, un geste, et elle porte maintenant le faux seuil** *(première passe,
+pédagogie I3 ; enrichie en seconde passe par le report de F3)* :
+> *« **Descends la solution de $Sn^{2+}$ d'un seul cran** et regarde ce que devient le
 > verdict. »*
 
-De part et d'autre du pivot, le verdict bascule au premier cran : **la coïncidence se sent
-comme un fil**, au lieu de se chasser.
-*La première rédaction demandait « **Sur les 75 mélanges, cherches-en un autre où rien ne
-bouge** » — une recherche non bornée dont la réponse est un **négatif** (« il n'y en a
+Le quotient passe de $2{,}5$ à **$1{,}0$** — *pile sur le seuil que beaucoup prennent pour le
+bon* — et le verdict, lui, dit **« sens direct »**. **La coïncidence se sent comme un fil, et
+le faux seuil se casse une seconde fois, après le pari et non avant.**
+*C'est le cran que la version précédente de S5 plaçait AVANT le pari (F3) ; il fait ici un
+meilleur travail, parce que l'élève a déjà rendu son verdict et peut comparer.*
+*Et la première rédaction, elle, demandait « **Sur les 75 mélanges, cherches-en un autre où
+rien ne bouge** » — une recherche non bornée dont la réponse est un **négatif** (« il n'y en a
 qu'un »), qu'aucun échantillonnage ne peut établir. Le fait d'unicité est un fait sur la
 grille ; il appartient au retour, et il y est.*
 
-**`etat_revele`** : aucun réglage n'est posé par la révélation — **c'est l'élève qui a amené
-l'état** (`bain` = B, `c_produit` = $2{,}5\times10^{-2}$, `c_oxydant` = $1{,}0\times10^{-2}$).
-**Déclaré : S5 n'a pas d'`etat_revele`.** *Conséquence de porte : la révélation de S5 ne
-doit être atteignable que si `qri` et `k` portent la même chaîne — sinon le pari porte sur
-un autre état que celui dont il parle.*
+**`etat_revele`** : aucun réglage n'est posé par la révélation — **l'état est celui que `etat`
+a posé** (`bain` = B, `c_produit` = $2{,}5\times10^{-2}$, `c_oxydant` = $1{,}0\times10^{-2}$).
+**Déclaré : S5 n'a pas d'`etat_revele`.** *(Simplifié en seconde passe : ce n'est plus
+« l'élève qui a amené l'état », donc la clause de porte conditionnelle qu'il fallait écrire —
+« la révélation n'est atteignable que si `qri` et `k` portent la même chaîne » — **disparaît**.
+Une étape dont l'état est posé n'a pas besoin de garde-fou sur le chemin qui y mène.)*
 
-**Contrôles** : **`produit` seul pendant le pari** (le geste) ; `oxydant` et `bain` fermés,
-le bain B posé par `etat`. **À la révélation : les trois ouverts, tous crans — les 75 états.**
+**Contrôles** : **aucun ouvert pendant le pari** (`produit`, `oxydant` et `bain` tous fermés ;
+le bain B et les deux crans posés par `etat`) — **l'ensemble atteignable pendant ce pari
+contient exactement UN état, le plus serré de la scène** (F3).
+**À la révélation : les trois ouverts, tous crans — les 75 états.**
 **Lectures** : `equation`, `melange`, `qri`, `k` à l'encre ; puis `sens` et `especes` —
 **six. `expression` disparaît** (identique à celle de S3 ; l'objet de S5 est la coïncidence de
 deux nombres). *`especes` écrit ici « aucune, à l'échelle macroscopique » — ce n'est pas une
@@ -1444,19 +1738,25 @@ première dit ce qui est ouvert **pendant le pari**, la seconde ce qui l'est **a
 | **S1** | `oxydant` **fermé** ; `produit` et `bain` **absents du DOM** | `oxydant` ouvert (5) | **5** — bain A, `produit` figé à $1{,}0\times10^{-3}$ |
 | **S2** | `oxydant` ouvert (5) ; `produit` et `bain` absents | + `produit` **paraît**, ouvert (5) | **25** — le bain A entier |
 | **S3** | **rien d'ouvert** : `oxydant` et `produit` **fermés**, `bain` **absent** (le bain B est posé par `etat`) | `bain` **paraît**, 2 crans (A, B), **seul ouvert** | **2** — le même mélange sur A et sur B : *le geste de S3* |
-| **S4** | **rien d'ouvert** ; `bain` est au DOM et **affiche** C (posé par `etat`) **sans l'offrir** | `bain` gagne le cran **C** (3) ; `oxydant` rouvre (5) ; `produit` **reste fermé** | **15** — 5 crans d'oxydant × 3 bains, `produit` figé à $1{,}0\times10^{-3}$ |
-| **S5** | **`produit` seul ouvert** (5) ; `oxydant` fermé, `bain` fermé sur B | les trois ouverts, tous crans | **75** |
+| **S4** | **rien d'ouvert** ; `bain` est au DOM et **affiche** C (posé par `etat`) **sans l'offrir** | `bain` gagne le cran **C** (3) ; `oxydant` rouvre (5) ; `produit` **reste fermé** | **15** — 5 crans d'oxydant × 3 bains, `produit` figé à **$1{,}0\times10^{-1}$** *(l'état re-posé de S4, B-1)* |
+| **S5** | **rien d'ouvert** : les trois contrôles fermés, l'état entier posé par `etat` | les trois ouverts, tous crans | **75** |
 
 **Ce que la porte doit établir, et c'est formulé en ATTEIGNABILITÉ, pas en présence :**
 
 1. **le cran C n'est ATTEIGNABLE qu'après la révélation de S4** — il peut être *affiché*
    pendant S4, puisque c'est l'état posé ;
 2. **le bain B n'est atteignable qu'après la révélation de S3** ;
-3. **`produit` = $2{,}5\times10^{-2}$ n'est atteignable qu'à S5** — donc **l'état
-   d'équilibre du bain B est hors d'atteinte avant S5**, et `sens` ne peut jamais écrire
-   « déjà à l'équilibre » trop tôt (§5.6 point 3) ;
-4. **pendant les paris de S3 et de S4, aucun contrôle n'est ouvert** — un contrôle qui se
-   ferme est aussi une garantie, et elle se mesure ;
+3. **`produit` = $2{,}5\times10^{-2}$ n'est atteignable qu'après la RÉVÉLATION de S5** — donc
+   **l'état d'équilibre du bain B est hors d'atteinte avant S5**, et `sens` ne peut jamais
+   écrire « déjà à l'équilibre » trop tôt. *Revérifié après le déplacement de S4 :
+   `produit` est figé à $1{,}0\times10^{-1}$, et les cinq quotients alors atteignables du
+   bain B valent $100$ · $10$ · $4{,}0$ · $1{,}0$ · $0{,}20$ — **aucun ne vaut $2{,}5$** ✓
+   (§5.6 point 3). **Le verrou survit à la route (b), et cela a été vérifié état par état
+   avant de la choisir**, pas après.*
+4. **pendant les paris de S3, de S4 ET DE S5, aucun contrôle n'est ouvert** — un contrôle qui
+   se ferme est aussi une garantie, et elle se mesure. *S5 est entré dans cette liste en
+   seconde passe (F3) : il ouvrait `produit` et commandait un geste avant l'engagement, contre
+   ADR 0041 §6* ;
 5. **la bande de travail est absente du DOM avant S3** (§5.5 B) — elle entre avec le bain B,
    et pas avant.
 
@@ -1472,8 +1772,12 @@ table elle-même contre le descripteur, ligne à ligne, dans les deux colonnes.*
 - Le retour juste de **S2** a le droit de dire « ce n'est pas le métal, c'est $K$ » — c'est
   l'annonce de S3, pas sa réponse : il ne nomme **ni l'étain, ni le plomb, ni la valeur
   $2{,}5$**.
-- Le retour juste de **S3** ne nomme ni l'argent, ni un exposant, ni l'équilibre.
-- Le retour juste de **S4** n'emploie pas « équilibre ».
+- Le retour juste de **S3** ne nomme ni l'argent, ni un exposant, ni l'équilibre. **Et il
+  n'écrit jamais « au-dessus de $1$ » ni « $Q_{r,i}$ est grand » : la comparaison nomme $K$ et
+  sa valeur** *(seconde passe, F7 — sans quoi le retour enseignerait le faux seuil à l'étape
+  même où celui-ci donne accidentellement la bonne réponse)*.
+- Le retour juste de **S4** n'emploie pas « équilibre ». **Et le retour du choix inversé nomme
+  l'ion du bain COURANT** — pas « argent » pour un bécher d'étain (§7.4).
 - Aucun retour n'emploie « pile », « anode », « cathode », « courant » (§9.6) — **à aucune
   étape**.
 
@@ -1527,7 +1831,9 @@ troisième cas, **qu'à partir de S5** ; **et la ligne neuve qui explique la ban
 
 ### 8.1 Ce que la scène vise, sur l'inventaire déjà déclaré
 
-> **Ce §8.1 est refait ligne à ligne après la vague 1 (pédagogie B3).** La règle de la maison
+> **Ce §8.1 est refait ligne à ligne après la PREMIÈRE passe (pédagogie B3), puis retouché
+> à la SECONDE sur quatre lignes (F7, F8, F9, F10 — plus F2 qui rend un état atteignable).**
+> La règle de la maison
 > est qu'**une ligne de registre non honorée est un constat au niveau de gravité maximal** :
 > une ligne dit qu'un modèle **casse à l'écran**, et une absence n'est pas une cassure. Cinq
 > des dix lignes ne tenaient pas. **Chacune est re-méritée ou RAYÉE, une par une, avec la
@@ -1551,11 +1857,11 @@ c'est écrit.**
 | `confond-qr-et-k` | 6 | **S1, S5** | un mélange préparé où $Q_{r,i} \ne K$ ; puis un que l'élève AMÈNE lui-même à $Q_{r,i} = K$ dès la préparation |
 | ~~`solide-dans-qr`~~ | 3 *(marge nulle)* | **— (rayée)** | **RAYÉE.** « *la lame est dessinée, sa masse n'est jamais demandée* » est une **absence**, pas une confrontation : celui qui croit que la masse entre dans $Q_r$ ne voit rien qui le contredise — **on ne le lui demande simplement pas**. Le distracteur reste à S1 (c'est une vraie erreur à cet instant) ; **la scène ne revendique plus de le casser**. *La confrontation existe ailleurs et elle est bonne : `cp-r2-qr-calcul` (`checkpoints.yaml:120-134`, `primary_misconception` = ce modèle) et `lesson.md:97`. Une piste pour la re-mériter est chiffrée au §13.13 — et refusée par défaut.* |
 | `reactivite-metal-fixe` | 4 | **S3 seul** *(S2 retiré)* | **S3 :** le plomb oxydé dans un mélange, déposé dans un autre — **même couple, deux métaux présents**. **S2 est retiré de cette ligne :** la bonne réponse y est « aucun », c'est-à-dire **exactement ce que prédit le modèle** ; S2 le récompense au lieu de le casser (§7.2). Le rôle de S2 est désormais **d'amorcer** — il demande à l'élève de tenir sa propre raison, et S3 l'encaisse. |
-| `sens-symetrique` | 4 | **S3** | sur le bain B, **9 mélanges vont dans un sens et 15 dans l'autre** : ce n'est pas une symétrie, c'est une partition — et le retour de S3 le chiffre désormais |
-| `pas-de-critere-predictif` | 3 *(marge nulle)* | **S2** | le comptage se fait sans rien observer, et il est juste |
-| `exposants-oublies` | 3 *(marge nulle)* | **S4** | **le pari porte sur l'expression** : choisir celle sans exposant fait tomber la marque **deux décades** plus loin, et la révélation déplace la marque entre les deux positions |
-| `qr-produits-reactifs-inverses` | 3 *(marge nulle)* | **S4**, ancré sur le bain B (4,2) | **RE-MÉRITÉE, et l'appel au seuil $1$ est supprimé.** L'expression inversée met un **réactif** au numérateur : la marque tombe deux décades de l'autre côté et les deux rôles du bécher s'échangent. **Et la conséquence de VERDICT est nommée sur l'état où elle existe** : bain B, $(1{,}0\times10^{-1}\,;\,1{,}0\times10^{-2})$ — le quotient juste vaut $10 > K$ (inverse), l'inversé vaut $0{,}10 < K$ (**direct**). *La première rédaction réfutait l'inversion **par le seuil $1$** — c'est-à-dire par la misconception que la scène introduit au §8.2 — et sur le bain C, où les deux valeurs sont écrasées par $K$ et donnent le même verdict : l'inversion y était invisible dans le critère.* |
-| `equilibre-egale-arret-total` | 3 *(marge nulle)* | **S5** | **RE-MÉRITÉE par une lecture neuve.** `melange` affiche $[Pb^{2+}]_i = 1{,}0\times10^{-2}$ mol/L **à l'écran**, sur l'état d'équilibre. *La première rédaction citait cette lecture — **et aucune des sept lectures déclarées n'affichait de concentration**. La réfutation pointait un écran qui n'existait pas (§5.7).* |
+| `sens-symetrique` | 4 | **S3** | **REFORMULÉE (seconde passe, F8) : « même couple, AUTRE MÉLANGE, autre sens ».** Le modèle déclaré suppose une symétrie attachée au couple « *sans recalculer $Q_{r,i}$ pour le nouveau mélange* » (`items.yaml:27-28`) ; ce qui le casse est donc **un mélange qui bascule**, et la `suite` de S3 le donne. *La première rédaction opposait « 9 contre 15 n'est pas une symétrie » — un argument de COMPTAGE, que l'on peut toujours lire comme une symétrie imparfaite. Un mélange qui bascule ne se lit pas ainsi.* |
+| `pas-de-critere-predictif` | 3 *(marge nulle)* | **S2 et S3** | **S2 :** le comptage se fait sans rien observer, et il est juste. **S3 AJOUTÉ en seconde passe (F9) :** la prédiction est rendue **avant** la révélation, et la révélation **montre le dépôt de plomb se dissoudre** — *une prédiction vérifiée par une observation, ce qui est le seul argument que ce modèle-là ne peut pas refuser*. *À S2 seul, la confrontation reposait sur l'**autorité de la scène** (le comptage est juste parce que la scène le dit), et c'est précisément ce qu'un élève qui « veut voir » conteste.* |
+| `exposants-oublies` | 3 *(marge nulle)* | **S4** | **le pari porte sur l'expression** : choisir celle sans exposant fait tomber la marque **deux décades plus à GAUCHE** — $10$ au lieu de $1{,}0\times10^{3}$ — et la révélation déplace la marque entre les deux positions. *Les deux nombres de cette ligne étaient faux en première rédaction (une décade, et « plus loin » sans direction) : c'est le bloquant B-1 de la seconde passe, et l'état de S4 a été re-posé pour que « deux » soit littéral (§5.3 C).* |
+| `qr-produits-reactifs-inverses` | 3 *(marge nulle)* | **S4**, ancré sur le bain B $(1{,}0\times10^{-1}\,;\,1{,}0\times10^{-2})$ | **RE-MÉRITÉE, sans l'appel au seuil $1$.** L'expression inversée met un **réactif** au numérateur : la marque tombe **six décades** à gauche et les deux rôles du bécher s'échangent. **Et la conséquence de VERDICT est nommée sur l'état où elle existe, qui est désormais ATTEIGNABLE** : bain B, ce mélange-là — juste $10 > K$ (inverse), inversé $0{,}10 < K$ (**direct**). *Deux corrections superposées : la première passe a retiré l'appel au seuil $1$ (B3.3) ; la seconde a rendu l'état **joignable**, car `produit` était gelé à $1{,}0\times10^{-3}$ et la phrase commandait un écran inatteignable (F2). **Deux fois de suite, une réfutation pointait un écran qui n'existe pas** — d'où la règle du §7.4 : une phrase qui dit « va voir » se vérifie contre la table d'atteignabilité.* |
+| `equilibre-egale-arret-total` | 3 *(marge nulle)* | **S5** | **RE-MÉRITÉE par une lecture neuve, et par sa NON-VARIATION.** À la révélation, `melange` **ne bouge pas** : $[Pb^{2+}]$ vaut encore $1{,}0\times10^{-2}$ mol/L après le verdict comme avant. *Deux corrections superposées : la première passe a créé la lecture, qui n'existait pas (B3.4) ; la seconde a déplacé la réfutation d'AVANT le pari vers APRÈS (F10), car une lecture d'encre rendait le distracteur éliminable sans s'engager. **Dans une scène sans temps, « l'initial EST le final » ne se démontre que par une révélation qui ne déplace rien.*** |
 | ~~`spontane-egale-instantane`~~ | 3 *(marge nulle)* | **— (rayée)** | **RAYÉE.** Dans une scène à `temps: false`, « *il évolue, mais si lentement qu'on ne le verra pas* » est **infalsifiable par la scène** : « le critère ne parle pas de vitesse » est un argument, pas une observation. Le distracteur reste à S5 ; **la limite est déclarée au §10.8**. *Aucune couverture n'est perdue : le modèle est déjà sondé par `cp-r6-vitesse` et par ES-9 / ES-24 / ES-29.* |
 
 **Le solde honnête : huit modèles existants CONFRONTÉS, deux PRÉSENTS-mais-non-confrontés,
@@ -1583,9 +1889,11 @@ rang de la scène**, et c'est écrit plutôt que comblé.*
    $Q_{r,i}$ au lieu de le comparer à $K$**, ou croit qu'il faut $\tau$ pour prédire le
    sens* ». **Le modèle est reconnu à un chapitre de distance, sur le même objet, et
    `evolution-spontanee` ne le porte pas.** C'est une asymétrie mesurée, pas une intuition.
-3. **La leçon le FABRIQUE.** `lesson.md:130` de la notion sœur construit $Q_r$ comme « *le
-   rapport entre les concentrations des produits et celles des réactifs* », et ajoute « *un
-   $Q_r$ **petit** signifie qu'il y a encore beaucoup de réactifs et peu de produits* ».
+3. **La leçon le FABRIQUE.** `etat-equilibre/lesson.md:126` de la notion sœur construit $Q_r$
+   comme « *le rapport entre les concentrations des produits […] et celles des réactifs* », et
+   `:130` ajoute « *un $Q_r$ **petit** signifie qu'il y a encore beaucoup de réactifs et peu de
+   produits* ». *(Deux lignes, pas une : la première rédaction citait `:130` pour les deux
+   citations, et la première n'y est pas — fidélité M-3.)*
    **« Petit » par rapport à quoi ?** Le seul repère qu'un rapport propose spontanément est
    $1$. Rien, dans la prose, n'interdit de le prendre — et la figure de R2, qui aurait pu
    trancher, n'affiche **aucun nombre** (fait **b**).
@@ -1593,6 +1901,22 @@ rang de la scène**, et c'est écrit plutôt que comblé.*
    distinct, $10$ sur $25$, et il place **cinq mélanges pile sur son propre seuil**
    ($Q_{r,i} = 1$ exactement, la diagonale des crans). Aucun item du corpus ne peut faire
    cela : un item donne un mélange, pas vingt-cinq.
+5. **ET LA SCÈNE LE RÉFUTE PAR IMPOSSIBILITÉ, ce qu'aucun comptage ne fait** *(revendiqué en
+   seconde passe, F7 — il était disponible depuis la première et n'était pas réclamé)*.
+   **La `suite` de S3 : le MÊME $Q_{r,i} = 10$, deux bains, deux verdicts opposés** (§7.3).
+   *Si le verdict se lisait sur la taille du quotient, il ne pourrait pas changer alors que le
+   quotient ne change pas.* **Aucun seuil absolu — ni $1$, ni un autre — ne survit à cette
+   observation**, et elle coûte un clic. C'est un argument plus fort que les cinq mélanges
+   posés sur le faux seuil, parce qu'il ne dépend d'aucune valeur particulière.
+6. **Ce que la scène NE fait pas, et il faut le déclarer : S3 RÉCOMPENSE ce modèle** *(seconde
+   passe, F7)*. À l'état de S3, $Q_{r,i} = 10$ est au-dessus de $1$ **et** de $K = 2{,}5$ : le
+   faux seuil y donne la bonne réponse, **un pas après que S2 l'a cassé**. **Irréductible sur
+   cette grille** — il faudrait un quotient dans $]1\,;\,2{,}5[$ et aucun rapport de deux crans
+   n'y tombe (§13.3). **Donc c'est déclaré, comme la contamination symétrique de S2** : le
+   retour de S3 compare au seul $K$ (jamais « au-dessus de $1$ »), et la `suite` fait le
+   travail que le pari ne peut pas faire. *Deux étapes de suite où la bonne réponse est
+   atteignable par un faux modèle : ce n'est pas un défaut réparable, c'est une propriété de la
+   grille, et une propriété qu'on écrit.*
 
 **Déclaration YAML à ajouter à `content/pc/evolution-spontanee/items.yaml`** (bloc
 `misconceptions:`, après `critere-inverse` dont il est le voisin) — *c'est une commande pour
@@ -1655,7 +1979,7 @@ mélange* » (c'est `k-depend-etat-initial` de la notion sœur, et **rien dans `
 ne fait varier l'état initial d'un même couple** — jusqu'à cette scène ; **candidat pour la
 vague 1**, §13.10).
 
-### 8.3 Les QUATRE items à écrire (specs pour item-author) — refaites en vague 1
+### 8.3 Les QUATRE items à écrire (specs pour item-author) — refaites aux deux passes
 
 *Plancher : ≥ 3 items par modèle, comptés au **distracteur** (`items.yaml:1821-1826`). Les
 quatre ci-dessous sont des **specs**, pas des items finis : le stem, les valeurs et le modèle
@@ -1733,14 +2057,25 @@ expérimental*, et c'était la seule `application_experimentale` revendiquée pa
 déjà le quotient d'ES-1 (`items.yaml:94`) **et** de `cp-r2-critere` (`checkpoints.yaml:199`).
 **item-author vérifie la collision sur l'ensemble des 29 items avant d'écrire** (§15.5).
 
-**ES-33 — `application_experimentale` MÉRITÉE, rung R2, difficulté 4. NEUF (vague 1,
+**ES-33 — `application_experimentale`, rung R2, difficulté 4. NEUF (première passe,
 fidélité I3).** *Prévoir une observation, et dire quelle donnée était indispensable.*
-**Sa ligne de cadre, citée :** `travaux_pratiques` du sous-domaine,
-`pc-physique-chimie.yaml:528` — « *Constituants et fonctionnement d'une pile → réaliser des
-piles (couples $M^{n+}/M$) et **déduire le sens spontané des transformations*** ». **C'est la
-seconde moitié de cette ligne qui est exercée ici — « déduire le sens spontané » — sur un
-contact direct, sans aucun vocabulaire de pile** (§9.6 vaut pour le panneau ; l'item reste à
-l'écart du chapitre `piles` par construction).
+
+> **L'étiquette d'habileté est un JUGEMENT DE LA MAISON, et non une ligne de cadre — corrigé en
+> seconde passe (fidélité I-5).** La première rédaction adossait ES-33 à la ligne
+> `travaux_pratiques` `pc-physique-chimie.yaml:528` (« *Constituants et fonctionnement d'une
+> pile → réaliser des piles (couples $M^{n+}/M$) et déduire le sens spontané des
+> transformations* ») en n'en retenant que la seconde moitié. **C'est une demi-citation : le
+> SUJET de cette ligne est une pile**, et **le sous-domaine `sens_evolution` n'a aucune ligne de
+> TP en contact direct** (les deux seules, `:528` et `:529`, portent sur les piles et sur
+> l'électrolyse). *Retenir la moitié d'une phrase qui convient et taire celle qui dérange est
+> exactement le geste que je reprochais ailleurs.*
+> **La justification honnête, et elle suffit :** l'étiquette repose sur le **`savoir_faire` 2 du
+> chapitre** (`:500`, « *Déterminer le sens d'évolution spontanée* ») **plus le ratio
+> exam-wide de 15 % d'`application_experimentale`** (`bac-reference.md:97-100`,
+> cadre-confirmed), appliqué à un item qui porte un **protocole**, une **observable** et une
+> **donnée manquante**. **C'est un jugement de la maison sur ce qui compte comme geste
+> expérimental dans ce chapitre — pas une prescription du cadre.** *Et l'item reste hors du
+> chapitre `piles` par construction : aucun vocabulaire de pile, aucun montage.*
 Stem : un binôme prépare **deux béchers du même couple** $Sn/Pb^{2+}$, chacun avec **une lame
 d'étain et un dépôt de plomb** laissé par un essai précédent. **Bécher 1** :
 $[Sn^{2+}]_i = 2{,}0\times10^{-2}$, $[Pb^{2+}]_i = 1{,}0\times10^{-2}$ mol/L
@@ -1882,14 +2217,29 @@ Chaînes **interdites dans le panneau ouvert**, mesurées par la porte (§11.3, 
     cette notion-ci, l'équation bilan s'écrit $\rightleftharpoons$**, et c'est le choix
     constant de la leçon : `lesson.md:51`, `:73`, `:93`, `:189`, `:201` — cinq bilans, cinq
     doubles flèches.
-    **ET LES SUJETS TRANSCRITS TRANCHENT DANS LE MÊME SENS — mesuré en vague 1
-    (fidélité I5) :** `evolution-spontanee/bank.yaml:73` (2012 N) écrit
-    `\underset{2}{\overset{1}{\rightleftarrows}}` ; `piles/bank.yaml:750` (2017 N) écrit
-    `\underset{(2)}{\overset{(1)}{\rightleftarrows}}` ; `piles/bank.yaml:906` (2011 R) écrit
-    `\rightleftharpoons`. **Trois bilans officiels, trois doubles flèches** — et la ligne
-    `derived` du cadre « *l'équation bilan (simple flèche)* » (`pc-physique-chimie.yaml:511`,
-    `:520`) est donc **contredite par les sujets qu'elle prétend décrire**. *À consigner : ces
-    lignes-là portent « THESE NEED HUMAN VALIDATION » (§13.1).*
+    **ET LA RÈGLE DU CADRE NE PORTE PAS SUR CE CHAPITRE — c'est ce qui tranche, et j'avais
+    écrit l'inverse** *(seconde passe, fidélité I-1)* **:**
+    - `pc-physique-chimie.yaml:511` et `:520` sont des **`savoir_faire`**, sous
+      `# source: cadre p.15-16` et `# source: cadre p.16` : **IMPRIMÉS au cadre, pas
+      `derived`**, et **sans** la mention « THESE NEED HUMAN VALIDATION ». *J'avais écrit
+      « la ligne `derived` du cadre » : faux. Seuls les `limites` (`:522`) et les `exclusions`
+      (`:531`) de ce sous-domaine sont `derived`.*
+    - Ces deux `savoir_faire` vivent **sous les chapitres `piles` (`:502`) et
+      `transformations_forcees` (`:514`)**. **Le chapitre `evolution_spontanee` n'en a que deux
+      (`:499-500`), et aucun ne parle de flèche.** **La règle « bilan ⇒ flèche simple » est donc
+      SCOPÉE à deux chapitres qui ne sont pas celui-ci.**
+    - Et je la disais « contredite par les sujets » : **faux aussi.** Les équations que je
+      citais (`bank.yaml:73`, `piles/bank.yaml:750`, `:906`) sont dans les **DONNÉES de
+      l'énoncé** — ce que le sujet *fournit* — et non des bilans **produits par le candidat**,
+      qui sont l'objet du `savoir_faire`. *Une donnée d'énoncé ne contredit pas une consigne de
+      production ; elle ne parle pas de la même chose.*
+
+    **Conclusion, et elle est plus propre que la précédente : il n'y a pas de conflit.** Le banc
+    d'électrolyse suit une règle **imprimée pour SON chapitre** ; cette scène-ci suit **sa
+    leçon** (cinq bilans, cinq doubles flèches) dans un chapitre que la règle ne touche pas.
+    *Ce que les sujets apportent est un **appui**, pas un contre-exemple : leurs blocs de
+    données écrivent le bilan de cette notion avec une double flèche, ce qui est la notation que
+    l'élève lit.* **§13.11 n'est plus un arbitrage — il est RÉSOLU.**
     **La règle de la scène est donc : toute équation affichée porte une double flèche, aucune
     ne porte `\rightarrow` ni `\to` seuls**, et la porte le mesure dans les deux sens.
     ⚠ **LA PORTE ÉNUMÈRE LES FORMES, sinon elle est aveugle** (ADR 0036 : *une chose n'est
@@ -1950,8 +2300,9 @@ Chaînes **interdites dans le panneau ouvert**, mesurées par la porte (§11.3, 
 6. *(non rendu)* **$K = 2{,}5$ pour $Sn/Pb$ est la valeur du corpus (ES-19), et elle est
    PORTEUSE — c'est le drapeau rouge du §13.3.** Les deux couples sont séparés d'environ
    $0{,}011$ V ; les tables usuelles donnent $K \approx 2{,}2$ (valeurs à deux décimales) à
-   $\approx 2{,}4$ (valeurs à trois décimales). **La partition du §5.3 B ne survit pas au
-   changement :** $K = 2{,}2$ ou $2{,}4$ ⇒ **10 / 0 / 15** ; $K = 2{,}5$ ⇒ **9 / 1 / 15** ;
+   $\approx 2{,}45$ (valeurs à trois décimales) — **plage $2{,}2$–$2{,}45$, écrite ainsi
+   partout depuis la seconde passe (fidélité I-4)**. **La partition du §5.3 B ne survit pas au
+   changement :** $K = 2{,}2$ ou $2{,}45$ ⇒ **10 / 0 / 15** ; $K = 2{,}5$ ⇒ **9 / 1 / 15** ;
    $K = 3{,}0$ ⇒ **9 / 0 / 16**. *(Vérifié : aucun des 25 rapports de crans ne tombe dans
    $(1\,;\,2{,}5)$ ni dans $(2{,}5\,;\,4)$.)* **L'état d'équilibre unique — tout le contenu de
    S5, sa `suite`, la porte N3, la porte N10 et le cas obligatoire d'`etiquettes` — n'existe
@@ -2003,11 +2354,22 @@ seules constantes de cette spec.
 | N5 | **l'exposant du bain C est STRUCTUREL** : $Q_r(\text{C})$ à $[Ag^+]$ divisé par 10 est multiplié par **100**, aux 5 crans de $[Cu^{2+}]$ | facteur $100$ exact | égalité de chaîne sur les deux valeurs |
 | N6 | les **quatre EXPRESSIONS du pari de S4** et la valeur que chacune produit, recalculées depuis les quatre modèles nommés | $\frac{[Cu^{2+}]}{[Ag^+]^2} \to 0{,}10$ · $\frac{[Cu^{2+}]}{[Ag^+]} \to 1{,}0\times10^{-2}$ · $\frac{[Cu^{2+}]}{2[Ag^+]} \to 5{,}0\times10^{-3}$ · $\frac{[Ag^+]^2}{[Cu^{2+}]} \to 10$ | les quatre **formules** deux à deux distinctes **et** les quatre **valeurs** deux à deux distinctes ; égalité de chaîne avec les libellés *(le pari porte désormais sur l'expression, §7.4 — la porte vérifie les deux colonnes)* |
 | N7 | les **trois comptages du pari de S2** | vérité $0$ · `critere-inverse` $25$ · `seuil-un-au-lieu-de-k` $10$ | exact, recomptés sur la grille 5×5, **avec la polarité déclarée au §8.2** — *si le label YAML et le comptage divergent, la porte sort ROUGE : c'est le défaut de vague 1 outillé* |
-| N8 | **`ecart` est une lecture PAR ÉTAT** : entier, jamais décimal, aux 75 états ; et **la phrase du retour de S2** est mesurée à part | lecture : **39** à l'état de S1, **34** au mélange extrême de S2, **16** à l'état de S4 · retour de S2 : « au moins 34 ordres de grandeur » | chaîne exacte des deux côtés. *Réécrite en vague 1 (pédagogie M3) : l'ancienne N8 épinglait « au moins 34 » comme si c'était la LECTURE, ce qui aurait figé une borne globale dans une ligne qui décrit l'état affiché* |
+| N8 | **`ecart` est une lecture PAR ÉTAT** : entier, jamais décimal, aux 75 états ; et **la phrase du retour de S2** est mesurée à part | lecture : **39** à l'état de S1, **34** au mélange extrême de S2, **12** à l'état de S4 *(recalculé en seconde passe après le déplacement de S4 : $15{,}602 - 3 = 12{,}602$ ; c'était 16 à l'ancien état, §5.3 C)* · retour de S2 : « au moins 34 ordres de grandeur » | chaîne exacte des deux côtés. *Réécrite en première passe (pédagogie M3) : l'ancienne N8 épinglait « au moins 34 » comme si c'était la LECTURE, ce qui aurait figé une borne globale dans une ligne qui décrit l'état affiché* |
 | N9 | **la table d'ATTEIGNABILITÉ du §7.6 A, dans ses deux colonnes** : ce qui est ouvert pendant chaque pari, ce qui l'est après chaque révélation, et l'ensemble des états joignables à chaque instant | 1 · 5 · 25 · 2 · 15 · 75 | exact. **Trois interdits mesurés séparément :** le cran C inatteignable depuis S3 ; le bain B inatteignable depuis S2 ; **`produit` $= 2{,}5\times10^{-2}$ inatteignable avant S5**, donc l'état d'équilibre hors d'atteinte |
 | N10 | **la diagonale** : aux 5 états où les deux crans sont égaux, `qri` vaut exactement « 1,0 » aux bains A et B | — | égalité de chaîne — *c'est ce qui rend `seuil-un-au-lieu-de-k` visible* |
 | **N11** | **la bande de travail** : pour chacun des 3 bains, ses bornes sont $[\log K - 4\,;\,\log K + 4]$ ; et les 25 quotients du bain B y tiennent tous | bain B : de $2{,}5\times10^{-4}$ à $2{,}5\times10^{4}$ ; **25/25 dedans** | exact, **recalculé depuis la constante déclarée**, pas codé en dur |
 | **N12** | **la lecture `melange`** : aux 75 états, elle porte exactement les deux crans de l'état, avec leur unité — et **elle n'existe qu'à S5** | — | égalité de chaîne avec les libellés des contrôles |
+| **N13** | 🆕 **TOUT COMPTE DE DÉCADES AFFIRMÉ DANS UN TEXTE DE LA SCÈNE est RECALCULÉ par la porte depuis les deux valeurs qu'il compare** — consignes, retours, `suite`, notes et région vivante confondues. La porte relève chaque motif « *$n$ décade(s)* » / « *$n$ ordres de grandeur* », identifie les deux quantités nommées autour, et vérifie $\lvert \log_{10} a - \log_{10} b \rvert$ **et le SENS** (« à gauche » / « à droite ») | S4 révélation : **2 décades à gauche** · S4 `suite` : **2 décades à droite** · S4 `ecart` : **12** · S1 `ecart` : **39** · S2 retour : **au moins 34** · S3 `suite` : **37 décades** (le saut du pivot) | **le nombre ET la direction** ; un écart de plus de $0{,}05$ décade entre l'affirmé et le recalculé ⇒ **ROUGE** |
+
+> **Pourquoi N13 existe, et c'est la leçon la plus coûteuse des deux passes.** Le bloquant B-1
+> de la seconde passe était **trois affirmations fausses de décades**, dans trois textes
+> différents, sur un état qui avait bougé. **Aucune des douze portes précédentes ne pouvait le
+> voir** : elles mesuraient les positions dessinées, les valeurs affichées, les chaînes
+> interdites — **jamais les nombres que la scène AFFIRME dans sa propre prose.** *C'est le
+> troisième cas de l'ADR 0033 : des portes exactes, vertes, sur une question plus étroite que
+> ce que leur en-tête laissait croire. Et la direction compte autant que le nombre — la
+> première rédaction disait « plus à droite » là où c'était à gauche, ce qui est une erreur de
+> physique, pas de typographie.*
 
 ### 11.2 Les faits de PIXELS, mesurés dans les deux sens
 
@@ -2024,7 +2386,7 @@ champ magnétique). Lancée à **1 280 et 390 px** au minimum.*
 | `cote-et-verdict` | le repère est **à gauche** du pivot **si et seulement si** `sens` dit « direct » ; à droite ssi « inverse » ; **confondu à $\le 2$ px** ssi « déjà à l'équilibre » — aux 75 états, **et sur la BANDE quand elle est présente**, jamais sur le seul axe d'ensemble | un verdict qui contredit la position doit rougir **seule**. ⚠ *Sans la bande, cette famille était **verte sur une distinction que personne ne peut voir** : à 390 px les $0{,}602$ décade de S3 font ~5 px sur l'axe d'ensemble, contre une tolérance « confondu » de 2 px — la porte aurait certifié « équilibre » tout ce qui est à un facteur $\approx 1{,}8$ de $K$, c'est-à-dire **la PLAGE d'équilibres que le §5.2 point 2 interdit et pour laquelle le curseur continu a été refusé**. La tolérance se lit désormais sur la bande, où elle vaut $\le 2$ px pour $0$ décade et non pour $0{,}05$ décade.* |
 | `fleche-du-verdict` | la flèche d'accent part du repère et pointe **vers** le pivot, aux 75 états | une flèche retournée doit rougir **seule** ; une flèche qui dépasse le pivot aussi |
 | `becher-et-roles` | **(a) RÈGLE NEUVE, vague 1 B1 — la présence des solides : tout bain dont les 25 états contiennent un verdict INVERSE porte les DEUX espèces solides dans le DOM du bécher AVANT le pari.** La porte calcule elle-même quels bains sont concernés (ici : **B seul**) et vérifie la présence ; **(b)** après la révélation, l'étiquette `oxydé` est posée sur l'espèce que `especes` nomme, aux 3 bains et **aux 2 verdicts du bain B** | **un bain B dessiné avec le seul étain doit rougir** — *c'était le défaut de la première rédaction, et il rendait la porte (b) littéralement insatisfaisable de bonne foi* ; les deux rôles échangés doivent rougir **seules** ; un rôle attaché au **métal** plutôt qu'au verdict aussi — *c'est `reactivite-metal-fixe` posée dans le code, et avec deux métaux présents le sabotage devient enfin détectable* |
-| `avant-pari` | à chaque étape, avant l'engagement : **zéro** pixel d'accent (mesuré en **CHROMINANCE**) ; aucune flèche sur l'axe ni dans la bande ; aucune flèche dans le bécher ; aucune étiquette de rôle ; aucune lecture `sens` ni `especes` dans le DOM ; **et à S4, aucune lecture `qri` ni `expression`** — ⚠ **la sonde lit les nœuds `[data-lecture]`, JAMAIS la liste des choix** : à S4 les quatre choix *sont* des expressions, et une sonde qui les compterait rougirait sur la conception même (§7.4) | après l'engagement : la flèche, les rôles et les lectures paraissent, et l'accent avec |
+| `avant-pari` | à chaque étape, avant l'engagement : **zéro** pixel d'accent (mesuré en **CHROMINANCE**) ; aucune flèche sur l'axe ni dans la bande ; aucune flèche dans le bécher ; aucune étiquette de rôle ; aucune lecture `sens` ni `especes` dans le DOM ; **et à S4, aucune lecture `qri` ni `expression`** — ⚠ **la sonde lit les nœuds `[data-lecture]`, JAMAIS la liste des choix** : à S4 les quatre choix *sont* des expressions, et une sonde qui les compterait rougirait sur la conception même (§7.4).<br>🆕 **ET, À S4, LE DESSIN EST MUET AUSSI** *(seconde passe, F4)* : **aucune marque $Q_{r,i}$ sur l'axe, aucune pastille dans la bande, aucun CHEVRON de bord, aucune étiquette de $Q_{r,i}$** — mesuré **sur les pixels**, pas sur le DOM textuel. *La famille ne regardait que les nœuds `[data-lecture]` : la marque, son étiquette et surtout le chevron (« **à 12 décades à gauche** », d'où $Q_{r,i}$ se déduit en une soustraction puisque $K$ est affiché) **livraient la réponse du pari sans faire rougir personne**. Une porte qui garde une valeur doit garder **toutes ses formes**, y compris celles qui ne sont pas du texte (ADR 0036).* | après l'engagement : la flèche, les rôles, les lectures **et la marque** paraissent, et l'accent avec |
 | `etiquettes` | aucune étiquette n'en chevauche une autre, n'est barrée par un trait, ne recouvre le DESSIN sous une étiquette sans fond, ni ne sort du cadre — à 1 280 **et** 390 px ; **le cas obligatoire est S5**, où $Q_{r,i}$ et $K$ sont au même point **sur l'axe comme dans la bande** | deux étiquettes superposées doivent rougir ; `disposer` (pièce commune) **obligatoire ici** |
 | `fuite-inter-etapes` | la porte **réécrit elle-même la table A du §7.6, dans ses DEUX colonnes** (pendant le pari / après la révélation) : `bain` absent du DOM jusqu'à la révélation de S3 ; **cran C offert seulement après la révélation de S4** (mais **affiché** pendant S4 : c'est l'état posé) ; **`oxydant` et `produit` FERMÉS pendant les paris de S3 et de S4** ; **`produit` = $2{,}5\times10^{-2}$ inatteignable avant S5** ; la **bande** absente du DOM avant S3 ; `especes` absente à S1, S2 et S4 ; `ecart` absente à S1, S3 et S5 | ouvrir `bain` dès S3, **offrir** le cran C dès S3, **laisser `produit` ouvert pendant S3** (ce qui rend l'état d'équilibre atteignable deux étapes trop tôt), ou afficher la bande dès S1 — **chacun doit rougir SEUL**. ⚠ *La règle est l'**atteignabilité**, pas la présence : « le cran C absent pendant S4 » était l'ancienne formulation, et elle était **inimplémentable** puisque l'état de S4 EST le bain C (§5.6)* |
 | `formule-graduee` | **la table C du §7.6, étape par étape** : le panneau ne contient aucune chaîne interdite de l'étape courante (consigne, retours, lectures, notes et région vivante confondues), et contient bien celles que l'étape emploie | écrire « étain » dans un retour de S2, ou « exposant » dans un retour de S3, doit rougir **seule** |
@@ -2139,11 +2501,37 @@ commande** (ADR 0034). Sabotages à outiller :
     fausse, pas le produit* (ADR 0036, ADR 0034 : *un essai rouge ambigu est la moitié du
     temps la faute du test*).
 
-**Trente et un sabotages, et chacun doit faire rougir SA famille et elle seule.**
+**Quatre sabotages NEUFS, nés de la SECONDE passe :**
+
+32. 🆕 **écrire un faux compte de décades dans un retour** — remplacer « *deux décades à
+    gauche* » par « *une décade à droite* », ou par « *trois décades* » → **N13 seule.**
+    *C'est le bloquant B-1 mis dans le code. **Ce sabotage aurait été VERT sur les trente et un
+    autres**, et c'est la seule raison pour laquelle N13 existe : trois phrases fausses ont
+    survécu à une passe entière de revue parce qu'aucune porte ne lisait les nombres que la
+    scène affirme.* Deux variantes à outiller séparément : **le nombre faux** et **la direction
+    fausse** — la seconde est une erreur de physique et doit rougir aussi ;
+33. 🆕 **dessiner la marque $Q_{r,i}$, son étiquette ou le chevron de bande à S4 avant
+    l'engagement** → **`avant-pari` seule**, mesuré **sur les pixels** *(F4 : le chevron porte
+    l'écart en décades, et $K$ est affiché — la valeur du pari se déduit par soustraction)* ;
+34. 🆕 **ouvrir un contrôle pendant le pari de S5** (par exemple `produit`, comme le faisait la
+    version de la première passe) → **`fuite-inter-etapes` seule** *(F3 : ADR 0041 §6 —
+    ni temps ni contrôle avant l'engagement)* ;
+35. 🆕 **poser S4 sur l'ancien état** ($[Cu^{2+}] = 1{,}0\times10^{-3}$,
+    $[Ag^+] = 1{,}0\times10^{-1}$) **en gardant les textes** → **N13 ET N6** : le compte de
+    décades passerait à $1{,}00$ et les quatre valeurs du pari changeraient. *Ce sabotage est le
+    défaut historique lui-même ; le garder dans la campagne est une façon de ne pas le refaire.*
+
+**Trente-cinq sabotages, et chacun doit faire rougir SA famille et elle seule.**
 **Un sabotage qui n'atteint pas la porte n'est pas un essai rouge** : il sort en quatrième
 verdict, **AMBIGU** (ADR 0038). *Et trois des lignes ci-dessus (16, 29, 31) sont des
 **contre-essais** : ce qui doit rester VERT. Une campagne qui n'a que des rouges ne prouve
 pas que la porte distingue — elle prouve qu'elle crie.*
+
+> ⚠ **Et un contre-essai de plus, obligatoire, sur N13** *(seconde passe)* : **la porte doit
+> rester VERTE sur les six comptes justes de la colonne « attendu » de N13.** Une porte qui
+> rougit sur le produit correct parce que son motif attrape « 12 » dans « $10^{12}$ » est une
+> sonde fausse. *La leçon de l'ADR 0036 tient dans les deux sens : énumérer les formes pour ne
+> rien manquer, et les délimiter pour ne rien inventer.*
 
 ---
 
@@ -2233,17 +2621,28 @@ trop doux, et laissait la note **non rendue**.)*
 
 **Les chiffres, recalculés :** les deux couples sont séparés de $\approx 0{,}011$ V ; avec
 $\log K = n\,\Delta E^\circ/0{,}059$, les tables usuelles donnent **$K \approx 2{,}2$**
-(valeurs scolaires à deux décimales, $-0{,}13$ / $-0{,}14$) à **$K \approx 2{,}4$** (valeurs
-à trois décimales, $-0{,}126$ / $-0{,}1375$). Le corpus dit **$2{,}5$** (ES-19,
-`items.yaml:1090`).
+(valeurs scolaires à deux décimales, $-0{,}13$ / $-0{,}14$) à **$K \approx 2{,}45$** (valeurs
+à trois décimales, $-0{,}126$ / $-0{,}1375$). **Plage : $2{,}2$–$2{,}45$**, écrite ainsi
+partout dans ce document depuis la seconde passe (fidélité I-4). Le corpus dit **$2{,}5$**
+(ES-19, `items.yaml:1090`) — *et $2{,}45$ s'arrondit à $2{,}5$ à deux chiffres significatifs,
+ce qui rend la donnée du corpus plus solide qu'il n'y paraissait.*
+
+**⚠ ET UN FAIT NEUF, MESURÉ EN SECONDE PASSE, QUI DURCIT LE DRAPEAU :** `rg 'Sn|étain'` sur
+**tous** les `bank.yaml` de `content/pc/` ⇒ **zéro occurrence**. **Aucun sujet transcrit du
+dépôt ne mentionne l'étain.** La valeur $2{,}5$ n'existe donc **que** dans ES-19, un item
+écrit par la maison — *pas dans une annale, pas dans une donnée d'examen, pas dans le cadre*.
+**Le couple sur lequel repose l'unique étape d'équilibre de la scène n'a aucun antécédent
+d'examen dans le corpus.** C'est ce qui fait passer la question de « vérifier une valeur » à
+« vérifier une valeur **dont rien d'autre ne répond** ».
 
 **Ce qui bascule avec la valeur** — *vérifié : aucun des 25 rapports de crans ne tombe dans
 $(1\,;\,2{,}5)$ ni dans $(2{,}5\,;\,4)$, donc la partition est une fonction en escalier* :
 
 | $K$ | inverse / équilibre / direct | S5 existe-t-il ? |
 |---|---|---|
-| $2{,}2$ ou $2{,}4$ | **10 / 0 / 15** | **NON** |
-| **$2{,}5$ (corpus)** | **9 / 1 / 15** | **oui, et un seul état** |
+| $2{,}2$ (tables à 2 décimales) | **10 / 0 / 15** | **NON** |
+| $2{,}45$ (tables à 3 décimales) | **10 / 0 / 15** | **NON** |
+| **$2{,}5$ (corpus, ES-19)** | **9 / 1 / 15** | **oui, et un seul état** |
 | $3{,}0$ | **9 / 0 / 16** | **NON** |
 
 **Ce qui tombe si S5 tombe :** l'étape S5 entière, sa `suite`, la porte **N3**, la porte
@@ -2312,13 +2711,22 @@ seul modèle neuf par scène, et celui-ci n'a pas encore de manifestation mesur�
 `evolution-spontanee`. *Pour défaire :* le déclarer en vague 1, avec trois items, et lui
 donner le quatrième choix de S2.
 
-**13.11 — Deux scènes de chimie, deux règles de flèche opposées.** Le banc d'électrolyse
-impose « bilan ⇒ flèche simple » ; cette scène impose « toute équation ⇒ double flèche »
-(§9.11). Les deux suivent leur leçon et leur chapitre du cadre. **Défaut : les garder
-divergentes, et l'écrire dans les deux specs.** *Pour défaire :* une note de convention
-corpus-wide, qui dirait quand le bilan d'une transformation **non totale** s'écrit ⇌ et quand
-celui d'une transformation **forcée** s'écrit → — ce qui est un travail de content-lead, pas
-de scène.
+**13.11 — ~~Deux scènes de chimie, deux règles de flèche opposées.~~ RÉSOLU EN SECONDE PASSE
+(fidélité I-1) — ce n'était pas une divergence, et il n'y a rien à arbitrer.** Le banc
+d'électrolyse suit « bilan ⇒ flèche simple » parce que **c'est un `savoir_faire` IMPRIMÉ au
+cadre pour SON chapitre** (`pc-physique-chimie.yaml:520`, `# source: cadre p.16`,
+`transformations_forcees`). Cette scène-ci vit dans `evolution_spontanee`, **dont les deux
+`savoir_faire` (`:499-500`) ne disent rien d'une flèche** ; elle suit donc sa leçon (cinq
+bilans, cinq $\rightleftharpoons$). **Deux chapitres, deux prescriptions différentes, aucune
+contradiction.**
+*Ce que j'avais écrit et qui était faux, trois fois dans la même phrase : que ces lignes
+étaient `derived` (elles sont imprimées), qu'elles portaient « NEED HUMAN VALIDATION » (non),
+et qu'elles étaient « contredites par les sujets » (les équations citées sont dans les
+**données** des énoncés, pas des bilans produits par le candidat — elles ne parlent pas de la
+même chose).* **Rien à défaire : la question sort de la liste.** *Il reste une observation
+utile, et elle n'est pas une objection : les blocs de données des trois sujets transcrits
+écrivent le bilan de cette notion avec une double flèche — un **appui** à la règle de cette
+scène, pas un contre-exemple à celle du cadre.*
 
 **13.12 — Le nom `echelle-des-quotients` est proche de la figure `qr-vs-k-echelle` de
 `piles`.** Deux objets voisins, deux espaces de noms différents (registre de scènes vs slugs
@@ -2359,9 +2767,14 @@ porte, pas une reconception.
    du banc d'électrolyse : la façon la plus sûre de tenir « ceci ne compte pas » est
    structurelle).
 3. `scene-quotient.mjs` est **VERTE trois fois de suite**, à 1 280 et à 390 px.
-4. `--essai-rouge` : **chacune des 31 lignes du §11.4 fait crier sa famille, et elle seule** —
-   **sauf les trois contre-essais (16, 29, 31), qui doivent rester VERTS**. Une ligne qui ne
-   fait rien rougir est une sonde manquante ; un contre-essai qui rougit est une sonde fausse.
+4. `--essai-rouge` : **chacune des 35 lignes du §11.4 fait crier sa famille, et elle seule** —
+   **sauf les contre-essais (16, 29, 31, et les six comptes justes de N13), qui doivent rester
+   VERTS**. Une ligne qui ne fait rien rougir est une sonde manquante ; un contre-essai qui
+   rougit est une sonde fausse.
+4ter. 🆕 **N13 est verte** : les six comptes de décades affirmés par la scène sont recalculés
+   depuis les valeurs et **tombent juste, nombre ET direction** (§11.1). *Condition ajoutée en
+   seconde passe : c'est la porte qui n'existait pas quand trois phrases fausses ont traversé
+   une revue entière.*
 4bis. **Les deux mesures de la bande de travail sont IMPRIMÉES à 390 px** : la séparation de
    S3 ($\ge$ 16 px attendus) et celle de S5 ($\le$ 2 px attendus). *Un chiffre imprimé, pas un
    badge vert : une porte qui ne publie pas ce qu'elle a mesuré ne prouve rien.*
@@ -2375,14 +2788,19 @@ porte, pas une reconception.
    au texte de cette spec, une fois recopiée sous `content/pc/evolution-spontanee/`.
 9. **ES-30, ES-31, ES-32 et ES-33 existent**, et `resume-couverture.mjs` recompte
    `seuil-un-au-lieu-de-k` à **4** *(et non 3 : ES-33 lui donne sa marge, §8.3)*.
-10. ✅ **La vague 1 est passée** — **FAIT le 2026-09-25** : deux critiques (pédagogie,
-    fidélité bac), toutes deux **CONSTRUIRE APRÈS CORRECTIONS** ; leurs constats triés en
-    « appliqué / réfuté avec la mesure / au propriétaire » — le tri est en tête de document
-    (« Ce que la vague 1 a changé ») et au §16 (les réfutations).
+10. ✅ **La vague 1 est passée — DEUX FOIS.** **Première passe le 2026-09-25**, **seconde
+    passe le 2026-09-27** : quatre rapports (deux pédagogie, deux fidélité bac), tous
+    **CONSTRUIRE APRÈS CORRECTIONS** ; leurs constats triés en « appliqué / réfuté avec la
+    mesure / au propriétaire » — le tri est en tête de document (deux tableaux) et au §16 (les
+    réfutations des deux passes). *La seconde passe a vérifié ligne à ligne que les correctifs
+    de la première étaient dans le CORPS, pas seulement dans le tableau du haut — **et c'est
+    ce contrôle-là qui a trouvé le bloquant B-1**, un nombre resté juste dans la prose après que
+    son objet avait bougé dans la table.*
 11. **La vague 2 est passée** : dessin, calme, ergonomie, **sur des captures lues**, à
     1 280 px, 390 px et 390 px au grand texte. *Points à regarder en priorité, désignés par
-    la vague 1 : **S4** (six lectures plus quatre libellés de formule), et **la bande de
-    travail à 390 px**, qui est la pièce neuve non mesurée.*
+    les deux passes : **S4** (six lectures plus quatre libellés de formule), **la bande de
+    travail à 390 px**, qui est la pièce neuve non mesurée, et **les quatre décades vides à
+    droite de l'axe** (le prix de la satisfaisabilité de la porte, §5.5 A).*
 12. **Les quatre chiffres d'honnêteté sont écrits dans le rapport de livraison, pas
     seulement dans cette spec** : le mélange d'habiletés **78 / 22 / 0** (§0.3), la
     **résolution de problème à 0 %** contre 35 %, le **NON-VERDICT** sur les 29 items sans
@@ -2458,20 +2876,39 @@ ce qui donnera **4 items sur 33** avec le champ. **Ce n'est pas un début de mes
 progrès. *Le seul chiffre honnêtement calculable reste celui des points d'arrêt, et il passe
 de 80 / 20 / 0 à **78 / 22 / 0** contre la cible 50 / 15 / 35 (§0.3, §1).*
 
-**15.10 — Rien de la vague 1 n'a été LANCÉ non plus.** Les deux critiques déclarent
+**15.10 — Rien n'a été LANCÉ, à aucune des deux passes.** Les quatre critiques déclarent
 explicitement n'avoir exécuté ni `validate-content`, ni une porte, ni un build, ni un rendu.
 **Aucune assertion de pixel de ce document n'a été mesurée par qui que ce soit** — y compris
-les deux nombres neufs de la bande de travail (16 px et 2 px à 390 px), qui sont des
-**conséquences géométriques calculées** des dimensions du §5.5, jamais des lectures d'écran.
+les deux nombres de la bande de travail (16 px et 2 px à 390 px), qui sont des **conséquences
+géométriques calculées** des dimensions du §5.5, jamais des lectures d'écran.
 **Ils sont des prescriptions, et la vague 2 les mesurera.**
+
+**15.11 — Ce que deux passes de revue de PROSE n'ont pas su voir, et la seule parade écrite.**
+*Le bloquant de la seconde passe (B-1) était **trois affirmations numériques fausses**, dans
+trois textes différents de la même étape, sur un état qui avait bougé une passe plus tôt. Elles
+ont traversé **la première passe entière** — deux critiques, quatre-vingts constats — parce que
+la revue lit la **cohérence** du texte, et que ces trois phrases étaient parfaitement
+cohérentes entre elles. **Elles étaient simplement fausses ensemble.***
+**La parade n'est pas une revue de plus : c'est N13** (§11.1), la porte qui recalcule chaque
+compte de décades depuis les deux valeurs qu'il compare. *Mais N13 n'existera qu'au moment de
+la construction.* **D'ici là, tout nombre de ce document qui décrit une DISTANCE ou une
+DIRECTION sur l'axe reste vérifié à la main, et cette spec en contient six** (§11.1 N13,
+colonne « attendu »). **C'est la dette de mesure la plus concrète que la spec laisse derrière
+elle, et elle est nommée ici plutôt que découverte à la troisième passe.**
 
 ---
 
-## 16. Ce que je RÉFUTE de la vague 1, avec la mesure
+## 16. Ce que je RÉFUTE, avec la mesure
 
 *Règle de la maison : un constat qu'on décline se réfute **par écrit et avec sa preuve**,
-jamais par le silence. Quatre réfutations, dont trois d'attribution de preuve. **Aucune ne
-renverse un BLOQUANT** : les cinq blocages restent appliqués intégralement.*
+jamais par le silence.*
+
+> **Verdict de la seconde passe sur les quatre réfutations de la première : 16.1, 16.2 et 16.4
+> ACCEPTÉES telles quelles ; 16.3 acceptée AVEC UN RÉSIDU — et le résidu est juste.** Il est
+> appliqué au §5.1 et noté dans 16.3 ci-dessous. *Une réfutation acceptée aux trois quarts
+> reste une réfutation à corriger d'un quart.*
+
+### 16.A — Les quatre réfutations de la PREMIÈRE passe
 
 **16.1 — Fidélité B3, première moitié : « le défaut neuf n'existe pas ».** ❌ **Réfuté sur le
 fond, accepté sur l'état du fichier.** Le constat dit que `checkpoints.yaml:197`/`:210`
@@ -2510,10 +2947,22 @@ verdict est DIRECT** ($Q_{r,i} = 0{,}50 < 2{,}5$) — **ES-19 n'a donc jamais eu
 $Pb_{(s)}$**, et il n'en met pas. *La phrase « le corpus avait été soigneux ici » est donc
 trop généreuse envers le corpus.* ✅ **Mais le fond est juste et le blocage est intégralement
 appliqué** : c'est le **procédé d'énoncé** d'ES-19 que la scène reprend, pour justifier cette
-fois un dépôt de plomb (§5.5 C, §7.3). *Et le meilleur appui n'était pas ES-19 mais
-`cp-r2-qr-calcul`, dont le retour raisonne déjà sur « **l'étain et le plomb métalliques, tous
-deux solides** » (`checkpoints.yaml:145-146`) — même page, même couple, les deux solides
-présents. Il est désormais cité à sa place.*
+fois un dépôt de plomb (§5.5 C, §7.3).
+
+> **⚠ LE RÉSIDU, relevé par la seconde passe (fidélité M-2) — et il est juste.** J'ajoutais :
+> « *le meilleur appui n'était pas ES-19 mais `cp-r2-qr-calcul`, dont le retour raisonne déjà
+> sur « l'étain et le plomb métalliques, tous deux solides » (`checkpoints.yaml:145-146`) —
+> même page, même couple, **les deux solides présents*** ». **Faux, et faux de la même façon
+> que ce que je reprochais.** `cp-r2-qr-calcul` **nomme** les deux métaux **parce qu'ils sont
+> les espèces solides de l'équation-bilan et qu'il faut les exclure de $Q_r$** — il ne pose
+> aucun dépôt dans aucun bécher, et son état n'en a pas besoin (verdict direct). **Aucun item,
+> aucun point d'arrêt, aucune figure du corpus ne met les deux solides dans un même
+> récipient : la scène est la PREMIÈRE.**
+> **Conséquence : le blocage B1 est encore mieux fondé qu'écrit** — rien dans le corpus ne
+> couvre le geste, donc rien ne le validait par précédent. **Corrigé au §5.1.** *Et la leçon
+> vaut d'être gardée : **j'ai commis, dans la phrase même qui corrigeait la critique, l'erreur
+> que je lui reprochais** — lire dans une ligne du corpus plus qu'elle ne dit. Une réfutation
+> est un acte de mesure comme un autre ; elle se vérifie avec la même discipline.*
 
 **16.4 — Pédagogie B3.3 : « attacher la ligne `qr-produits-reactifs-inverses` à ES-19
 choix C, qui fait la même chose ».** ⚠ **Réfuté sur l'exemple, accepté sur la correction.**
@@ -2527,8 +2976,8 @@ demandées sont appliquées** : la ligne est ancrée sur cet état-là, et **l'a
 est supprimé** (§8.1, §7.4) — c'était le défaut réel, et il était grave : la scène réfutait
 une misconception **au moyen de celle qu'elle introduit**.
 
-**16.5 — Ce que la vague 1 a MANQUÉ, et que la révision a trouvé.** *Écrit ici parce qu'une
-revue qui ne se mesure pas elle-même est une rumeur.*
+**16.5 — Ce que la PREMIÈRE passe a manqué, et que sa révision a trouvé.** *Écrit ici parce
+qu'une revue qui ne se mesure pas elle-même est une rumeur.*
 1. **Le compte des misconceptions était faux** : « neuf déclarés », « dix servis », dix ids
    à `pedagogy_wiring`, au-dessus d'une table de dix lignes. **Le compte juste est onze**
    (§8.1, §8.4, §12, §14).
@@ -2539,3 +2988,55 @@ revue qui ne se mesure pas elle-même est une rumeur.*
    l'a vu** ; c'est la table d'atteignabilité refaite pour la pédagogie I6 qui l'a fait
    apparaître (§5.6 point 3, §7.6 D). *Une correction demandée pour une raison en a révélé
    une autre — c'est la raison d'être d'une révision, pas un bonus.*
+
+---
+
+### 16.B — Ce que je réfute de la SECONDE passe
+
+*Deux réfutations seulement, et aucune ne touche un BLOQUANT ni un IMPORTANT : **B-1, F2 à F11,
+I-1 à I-5 et les mineurs sont tous appliqués intégralement**. Ce qui suit corrige deux
+qualifications, pas deux constats.*
+
+**16.6 — Pédagogie F3 : « garder la découverte APRÈS le pari, **ou** déclarer une exception
+nommée ».** ⚠ **Le constat est accepté entièrement ; c'est l'alternative que je refuse.**
+Le défaut est réel et grave : S5 ouvrait un contrôle et commandait un geste avant
+l'engagement, contre ADR 0041 §6. **Mais aucune des deux branches proposées n'est la bonne
+sortie.** La première (« garder la découverte après le pari ») ramène le défaut I7 de la
+première passe — une consigne qui annonce sa propre réponse. La seconde (« déclarer une
+exception nommée avec sa clause de porte ») **achèterait la pédagogie contre une entorse à une
+règle d'ADR, et une exception se paie ensuite à chaque scène qui la cite en précédent.**
+✅ **La troisième voie, appliquée : séparer ce que le DESSIN montre de ce que le TEXTE nomme**
+(§7.5). L'état d'équilibre est posé, **aucun contrôle n'est ouvert**, les deux marques se
+recouvrent à l'écran — **et la consigne ne dit pas qu'elles se recouvrent.** *Ce qui gâchait la
+découverte, dans la version d'origine, était la **phrase** — pas l'image. « Le dessin répond
+avant le texte » est la règle même d'ADR 0041 §6 : **bien lue, elle résout la tension au lieu
+de demander une exception.*** Et le cran $Q_{r,i} = 1{,}0$ n'est pas perdu : il passe dans la
+`suite`, après le pari, où il confronte `seuil-un-au-lieu-de-k` une seconde fois — un meilleur
+emploi qu'avant, puisque l'élève a déjà rendu son verdict.
+*Bénéfice mesurable de ce choix : l'ensemble atteignable pendant le pari de S5 tombe à **un
+seul état**, le plus serré de la scène ; et la clause de porte conditionnelle que l'exception
+aurait exigée (« la révélation n'est atteignable que si `qri` et `k` portent la même chaîne »)
+**disparaît**. Une étape dont l'état est posé n'a pas besoin de garde-fou sur le chemin qui y
+mène.*
+
+**16.7 — Fidélité I-2 : « monter l'axe à $10^{42}$, **ou** déclarer le crochet rogné et
+réécrire la clause (c) ».** ⚠ **Constat accepté, seconde branche refusée.** Le débordement est
+exact ($3{,}26$ décades au-delà de $10^{38}$) et la porte était bien insatisfaisable.
+❌ **Mais « déclarer le crochet rogné » transforme une clause exacte en clause
+conditionnelle**, et une porte conditionnelle est précisément le mécanisme par lequel un vert
+finit par ne plus rien garantir (ADR 0033 : *elle répond exactement à une question plus étroite
+que son en-tête*). ✅ **L'axe monte donc à $10^{42}$** (§5.5 A) : la clause (c) reste
+**inconditionnelle**, les trois bandes tiennent entières, et **le coût est quatre décades vides
+à droite** — un coût de dessin, payé une fois, contre une dette de mesure payée à chaque
+lancement. *La vague 2 jugera le vide ; elle jugera un défaut visible, pas un défaut caché.*
+
+**16.8 — Ce que la seconde passe a manqué, et que cette révision a trouvé en l'appliquant.**
+1. **La `suite` de S4 avait besoin d'une DIRECTION, pas seulement d'un état.** Même après le
+   déplacement de S4, « change le cran d'un rang » reste ambigu : **vers le bas c'est un
+   facteur $10$ (deux décades), vers le haut un facteur $2{,}5$ ($0{,}796$ décade)**. La
+   critique donnait l'état et le facteur, pas le fait que la liste de crans est **irrégulière
+   dans les deux sens**. La consigne nomme désormais le sens (§7.4). *C'est la même
+   chausse-trappe qui a produit B-1, rencontrée une seconde fois en le réparant.*
+2. **Le retour du choix inversé nommait « l'argent » pour un bécher d'étain.** En renvoyant
+   l'élève au bain B, la phrase gardait le vocabulaire du bain C. **Un retour qui traverse deux
+   bains doit nommer l'ion du bain COURANT, ou rester générique** (§7.4, §7.6 B).
