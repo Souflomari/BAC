@@ -23,7 +23,10 @@
 #         SYSTÈMES DE NUMÉRATION (2.1.4/2.1.5/2.1.6, un tiers du sous-domaine)
 #         entièrement absents. Le statut de la PREUVE de Fermat reste une question
 #         ouverte pour l'owner : la source ne la tranche pas.
-#         ⚠ Le bloc arithmétique n'a PAS encore passé la porte research-challenger.
+#         PORTE 2 (research-challenger) PASSÉE pour le bloc arithmétique le 2026-09-27
+#         (4 claims soutenus ; 2 corrections intégrées : compte Fermat 7 → 9/10, et
+#         extension du principe de tri aux RESTES CHINOIS). Restent la porte 1
+#         (Gemini) et la porte 3 (humain + décision owner sur la preuve de Fermat).
 #   (a) Correction de la frontière FONCTION RÉCIPROQUE
 #   (elle était présentée à tort comme une spécificité SM, et taguée `derived`).
 #   Détail, preuves et diff : voir `coverage_notes.corrections`. À LIRE AVEC son
@@ -350,15 +353,26 @@ domaines:
               #       d'Euler sort donc de l'exclusion à son tour.
               #   TROISIÈME occurrence du même mode de défaut en une journée, sur deux
               #   fichiers (les deux autres : « toujours une restriction » et « dérivée en un
-              #   point » dans maths-sexp.yaml). Le principe généralisable est écrit en clair
-              #   dans la ligne `limites` ci-dessous, pour ne pas le redécouvrir une 4e fois.
+              #   point » dans maths-sexp.yaml). D'où la réécriture en PRINCIPE DE TRI dans la
+              #   ligne `limites` ci-dessous — un principe absorbe les cas nouveaux là où une
+              #   liste se falsifie sujet par sujet. Il a d'ailleurs fallu l'ÉTENDRE dès la
+              #   porte 2 (restes chinois) : le principe a tenu, sa liste d'attestations non.
               - "Arithmétique élémentaire dans ℤ. Pas de fonction indicatrice d'Euler comme théorème central, pas de RSA/cryptographie formelle."   # source: derived
-              - "Résidus quadratiques — PRINCIPE DE TRI (et non liste de sujets interdits) : ce qui est hors cadre, c'est d'INVOQUER un résultat comme théorème NOMMÉ ET ADMIS ; ce qui est au contraire attesté, c'est de le faire CONSTRUIRE par l'énoncé à partir des outils du chapitre. Restent donc exclus, comme théorie nommée : le SYMBOLE DE LEGENDRE et la LOI DE RÉCIPROCITÉ QUADRATIQUE. Sont en revanche ATTESTÉS à l'examen national SM : la résolubilité concrète de x² ≡ a [p] (2023 N Ex.4) et le CRITÈRE D'EULER a^{(p-1)/2} ≡ ±1 [p] lorsque l'énoncé le construit pas à pas depuis Fermat et le lemme d'Euclide (2025 N Ex.3, q1→q3). Ne JAMAIS s'appuyer sur cette limite pour écarter un item de cette forme."   # source: derived (le principe de tri) ; les deux attestations sont research-consensus (copies vérifiées, barème à l'appui)
+              - "PRINCIPE DE TRI (et non liste de sujets interdits) — vaut pour TOUT résultat d'arithmétique qui déborde les capacités 2.1.x : ce qui est hors cadre, c'est d'INVOQUER le résultat comme théorème NOMMÉ ET ADMIS ; ce qui est attesté, c'est de le faire CONSTRUIRE par l'énoncé, question par question, à partir des outils du chapitre. Restent donc exclus comme théorie nommée : le SYMBOLE DE LEGENDRE et la LOI DE RÉCIPROCITÉ QUADRATIQUE. Sont en revanche ATTESTÉS à l'examen national SM, et ne doivent JAMAIS être écartés sur la base de cette limite : (a) la résolubilité concrète de x² ≡ a [p] — 2023 N Ex.4 ; (b) le CRITÈRE D'EULER a^{(p-1)/2} ≡ ±1 [p] lorsque l'énoncé le construit depuis Fermat et le lemme d'Euclide — 2025 N Ex.3, q1→q3 ; (c) le THÉORÈME DES RESTES CHINOIS, même statut : une résolution de système de congruences à modules premiers entre eux par combinaison directe via une relation de Bézout établie plus haut dans le sujet est ATTESTÉE — 2021 N Ex.3, q6-q7, « apparentée au théorème des restes chinois, NON NOMMÉE dans l'énoncé » (content/maths/arithmetique/bank.yaml:596-603 ; voir aussi le flag de jumelage :1431-1442, où 2024 R Ex.5 résout le même type de système par une autre voie imposée). Le théorème des restes chinois INVOQUÉ par son nom comme résultat admis reste, lui, hors cadre."   # source: derived (le principe de tri) ; les trois attestations sont research-consensus (copies vérifiées, barème à l'appui). Porte 2 (research-challenger, 2026-09-27) : principe SOUTENU PAR LE CORPUS EN MAIN (les 10 entrées de la banque arithmétique), PAS DÉMONTRÉ — n=10 n'est pas une preuve ; extension aux restes chinois ajoutée par cette même porte
             _question_ouverte_owner:   # ce que la source NE tranche PAS — à décider par l'humain, pas par le silence
               - "PREUVE DU PETIT THÉORÈME DE FERMAT : attendue, ou théorème admis ? **La source ne le tranche pas, et je ne le tranche pas.** La capacité 2.1.8 commence par « Utiliser » — mais ce verbe ne dit RIEN de spécifique à Fermat : 6 des 9 capacités de ce sous-domaine commencent par « Utiliser » (2.1.1, 2.1.2, 2.1.3, 2.1.6, 2.1.7, 2.1.8), les trois autres par « Écrire », « Additionner… », « Résoudre ». C'est le registre de la liste entière, pas une indication sur le statut démonstratif d'un théorème. En outre un cadre de référence d'EXAMEN décrit ce qui est ÉVALUABLE, et reste par nature muet sur ce que le cours démontre. Ce qui EST tranché : le théorème est NOMMÉ au cadre, donc l'enseigner — et le démontrer — n'est en aucun cas hors-programme. La décision de porter la preuve (content/maths/arithmetique/lesson.md R6b, construite sur Gauss + lemme d'Euclide) est donc LÉGITIME et n'a pas besoin de cette frontière pour se justifier ; reste à l'owner de dire si la preuve est elle-même ÉVALUABLE. Voir lesson.md:591-609, qui posait exactement cette question au propriétaire du cadre."
             _observation_examens:      # NI programme NI limite — motif OBSERVÉ, sans valeur de frontière
-              - "Sur les 7 exercices nationaux SM vérifiés qui mobilisent Fermat (2019 p=2969 · 2020 N p=13 · 2021 N p=43 et 47 · 2022 N p premier générique · 2023 N p premier impair · 2024 N deux premiers p et q · 2025 N Ex.3 p premier impair, q1 et q2), le théorème est TOUJOURS appliqué comme outil et JAMAIS demandé en démonstration ; deux sujets en mobilisent la forme générale a^p ≡ a [p]. Motif observé sur n=7, adossé à aucun libellé de cadre : il ÉCLAIRE la question ouverte ci-dessus, il ne la tranche pas, et il ne doit pas servir à exclure un item qui demanderait la preuve."   # source: derived (observation de corpus ; compte porté de 6 à 7 le 2026-09-27 — bk-2025-n-x3 trouvé lors du signalement « critère d'Euler »)
-              - "Ce que 2025 N Ex.3 montre en creux sur la question ouverte ci-dessus : un sujet national SM peut faire CONSTRUIRE par l'élève un résultat qui n'est pas au cadre (le critère d'Euler), en le décomposant en questions appuyées sur des outils qui, eux, y sont (Fermat, lemme d'Euclide). Le cadre borne donc les OUTILS mobilisables, pas les résultats atteignables — observation, pas frontière."   # source: derived (observation de corpus)
+              # ⚠ COMPTE CORRIGÉ TROIS FOIS le 2026-09-27 : 6 → 7 → **9 sur 10**. Le chiffre
+              #   juste est celui que l'en-tête de la banque imprimait déjà
+              #   (content/maths/arithmetique/bank.yaml:1421 : « Neuf entrées sur dix
+              #   mobilisent le petit théorème de Fermat »). Les deux entrées que mes comptes
+              #   successifs avaient manquées : bk-2017-n-x3 (bank.yaml:1308-1410, Fermat aux
+              #   q3 et q4, :1370-1379) et bk-2023-r-x4 (bank.yaml:931-1010, q2, :1002-1010).
+              #   La seule entrée sur dix qui ne mobilise PAS Fermat est bk-2024-r-x5 (elle
+              #   construit un critère de divisibilité par 23). Quatrième fois dans la journée
+              #   qu'un compte est donné sans avoir grepé l'ensemble — voir corrections.
+              - "Sur les 10 exercices nationaux SM vérifiés de la banque arithmétique, NEUF mobilisent Fermat (2017 N Ex.3 q3-q4 · 2019 p=2969 · 2020 N p=13 · 2021 N p=43 et 47 · 2022 N p premier générique · 2023 N p premier impair · 2023 R Ex.4 q2 · 2024 N deux premiers p et q · 2025 N Ex.3 q1-q2) ; seul bk-2024-r-x5 ne l'utilise pas. Dans les NEUF, le théorème est TOUJOURS appliqué comme outil et JAMAIS demandé en démonstration ; deux sujets en mobilisent la forme générale a^p ≡ a [p]. Motif observé sur n=9/10, adossé à aucun libellé de cadre : il ÉCLAIRE la question ouverte ci-dessus, il ne la tranche pas, et il ne doit pas servir à exclure un item qui demanderait la preuve."   # source: derived (observation de corpus) ; compte aligné sur bank.yaml:1421 après la porte research-challenger du 2026-09-27
+              - "Le cadre borne les OUTILS mobilisables, pas les RÉSULTATS atteignables : un sujet national SM peut faire CONSTRUIRE par l'élève un résultat absent du cadre, en le décomposant en questions appuyées sur des outils qui y sont. ⚠ Cette observation ne repose que sur n=1 — bk-2025-n-x3 (critère d'Euler construit depuis Fermat + lemme d'Euclide). Elle est cohérente avec le cas apparenté des restes chinois (bk-2021-n-x3 q6-q7), mais un seul exemple franc : à traiter comme une piste, pas comme un principe établi."   # source: derived (observation de corpus, n=1) — portée explicitement bornée par la porte research-challenger du 2026-09-27
 
       # ──────────────────────────────────────────────────────────────────
       - id: denombrement_probabilites
@@ -651,7 +665,52 @@ coverage_notes:
         consultable, et il a tranché trois fois contre moi aujourd'hui. Et préférer, quand
         c'est possible, un PRINCIPE DE TRI (admis vs construit) à une liste de sujets, parce
         qu'une liste se falsifie sujet par sujet là où un principe absorbe les cas nouveaux.
-      statut: "PROPOSITION — même statut que l'entrée précédente. Portes 1 (Gemini) et 3 (humain) toujours ouvertes ; la porte 2 (research-challenger) n'a PAS encore été passée sur le bloc arithmétique — les trois défauts ci-dessus ont été trouvés par le critique de fidélité bac, pas par elle."
+      statut: "PROPOSITION. ⚠ Repris par la PORTE 2 le même jour — voir l'entrée suivante, qui la clôt."
+
+    - date: 2026-09-27
+      origine: "PORTE 2 — research-challenger sur le bloc arithmétique (RULES §5). C'est la passe qui CLÔT la porte 2 pour ce bloc."
+      verdicts_soutenus: >-
+        Quatre claims ATTAQUÉS et SOUTENUS : (1) Fermat au cadre via la capacité 2.1.8 ;
+        (2) les systèmes de numération 2.1.4-2.1.6 et la lacune de couverture associée — zéro
+        appariement dans la banque, la lacune est réelle ; (3) le PRINCIPE DE TRI
+        « admis vs construit » — soutenu par les 10 entrées de la banque arithmétique, ce qui
+        s'énonce « SOUTENU PAR LE CORPUS EN MAIN, PAS DÉMONTRÉ » (n=10 n'est pas une preuve, et
+        le corpus a déjà contredit quatre de mes affirmations aujourd'hui) ; (4) les exclusions
+        « indicatrice d'Euler comme théorème central » et « RSA/cryptographie formelle » — zéro
+        appariement, maintenues.
+      defaut_1_compte_faux_encore: >-
+        `_observation_examens` annonçait 7 exercices mobilisant Fermat. Le chiffre est 9 sur 10.
+        Manquaient bk-2017-n-x3 (content/maths/arithmetique/bank.yaml:1308-1410, Fermat aux q3
+        et q4, :1370-1379) et bk-2023-r-x4 (:931-1010, q2, :1002-1010) — deux applications
+        pures, aucune démonstration, donc le MOTIF ne change pas, seul le compte était faux.
+        Aggravant : l'en-tête de la banque imprimait déjà le bon chiffre (:1421, « Neuf entrées
+        sur dix mobilisent le petit théorème de Fermat »), et la seule entrée qui ne l'utilise
+        pas y est même nommée (bk-2024-r-x5). QUATRIÈME fois dans la journée qu'un compte est
+        avancé sans avoir grepé l'ensemble — et le compte avait déjà été corrigé deux fois
+        (6 → 7 → 9). Corollaire de travail : un compte de corpus se LIT dans l'instrument ou se
+        CALCULE sur le corpus entier ; il ne s'incrémente pas au fil des lectures.
+      defaut_2_omission_restes_chinois: >-
+        Le principe de tri ne nommait que les résidus quadratiques, alors qu'un second cas de
+        la même forme existe dans la banque : bk-2021-n-x3, q6-q7, résout un système de
+        congruences à modules premiers entre eux par combinaison directe via la relation de
+        Bézout de la Partie I — « apparentée au théorème des restes chinois, NON NOMMÉE dans
+        l'énoncé et sans rung dédié » (bank.yaml:596-603), et le flag de jumelage :1431-1442
+        montre 2024 R Ex.5 résolvant le même type de système par une voie imposée différente.
+        Sans mention explicite, un auteur futur pouvait écarter un tel item comme
+        « hors-programme : restes chinois ». Le principe de tri a donc été généralisé (il vaut
+        pour TOUT résultat débordant les capacités 2.1.x) et les restes chinois y sont nommés
+        comme troisième attestation.
+      defaut_3_portee_de_l_observation: >-
+        L'observation « le cadre borne les OUTILS, pas les RÉSULTATS » était écrite comme un
+        constat général alors qu'elle ne reposait que sur n=1 (bk-2025-n-x3). Portée bornée
+        explicitement dans la ligne elle-même : « à traiter comme une piste, pas comme un
+        principe établi ».
+      correctif: >-
+        Chapitre arithmetique_z : ligne `limites` du principe de tri généralisée et étendue aux
+        restes chinois (troisième attestation citée) ; `_observation_examens` recompté à 9/10
+        avec les deux entrées manquantes citées et un commentaire d'audit sur les trois comptes
+        successifs ; seconde observation bornée à n=1.
+      statut: "PROPOSITION — **PORTE 2 (research-challenger) PASSÉE pour le bloc arithmétique**, avec les deux corrections ci-dessus intégrées. Restent la PORTE 1 (relecture longue Gemini : vérifier les 9 capacités 2.1.1→2.1.9 contre le cadre SM scanné) et la PORTE 3 (validation humaine + la décision owner sur le caractère évaluable de la preuve de Fermat). Le bloc n'est PAS autoritatif tant que les trois portes ne sont pas passées."
 
   claims_derives_les_plus_faibles:    # à attaquer en priorité (research-challenger)
     - "« Géométrie de l'espace NON testée au national SM » (part_examen: 0). Sourcé (pdfmath explicite + composition 2008-2025) mais CONTRE-INTUITIF et à confirmer par un ancien candidat SM."
