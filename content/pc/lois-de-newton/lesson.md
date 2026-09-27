@@ -364,6 +364,42 @@ $$v_G(t_{sol}) = g \times t_{sol} = 9{,}8 \times 2{,}0 = 19{,}6\ \text{m/s} \app
 
 Remarque : ni $t_{sol}$ ni $v_G(t_{sol})$ ne dépendent de la masse de l'objet lâché — exactement la conséquence directe de $\vec{a}_G = \vec{g}$ établie plus haut. Un objet deux fois plus lourd, lâché de la même hauteur, arriverait au sol exactement au même instant, à la même vitesse.
 
+### Lire l'accélération sur un relevé graphique $v(t)$
+
+Sur une courbe $v(t)$ enregistrée en TP, l'accélération $a$ se lit directement comme la **pente** de la droite, sans facteur caché — $v(t)=v_0+at$ est déjà affine en $t$. Pris sur deux points de la droite, éloignés l'un de l'autre pour que l'erreur de lecture pèse peu, par exemple $(t=1{,}0\ \text{s}\,;\,v=4{,}0\ \text{m/s})$ et $(t=5{,}0\ \text{s}\,;\,v=12{,}0\ \text{m/s})$ :
+
+$$a=\frac{\Delta v}{\Delta t}=\frac{12{,}0-4{,}0}{5{,}0-1{,}0}=\frac{8{,}0}{4{,}0}=2{,}0\ \text{m/s}^2$$
+
+Le signe de la pente se lit avec celui de $v$, exactement le critère établi au chapitre 4 ($\vec a\cdot\vec v$) : ici $v$ reste positive et la pente aussi, le mouvement est accéléré ; une pente de signe contraire à $v$ — une droite qui se rapproche de l'axe $v = 0$ — signale un mouvement retardé.
+
+### Lire l'accélération sur une droite $x=f(t^2)$
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* dans un relevé de TP, $a$ (ou $g$) est justement l'inconnue qu'on veut mesurer — pas une donnée de départ. Reprends la loi horaire qu'on vient d'établir, $x(t)=\frac12 a\,t^2$ (un mobile parti du repos, à l'origine) : elle n'est pas affine en $t$, mais elle l'est en $t^2$. Pose $T=t^2$ : la relation devient $x=\left(\dfrac{a}{2}\right)T$, une droite qui passe par l'origine, de pente $a/2$ — c'est pourquoi un relevé trace parfois $x$ en fonction de $t^2$ plutôt qu'en fonction de $t$ : une parabole devient une droite, plus facile à exploiter à la règle.
+
+[[figure:droite-x-t2]]
+
+Sur un tel relevé, la droite $x=f(t^2)$ passe par les points $(t^2=2{,}0\ \text{s}^2\,;\,x=3{,}0\ \text{m})$ et $(t^2=8{,}0\ \text{s}^2\,;\,x=12{,}0\ \text{m})$ — deux points choisis loin l'un de l'autre pour que l'erreur de lecture pèse peu.
+
+$$\text{pente} = \frac{\Delta x}{\Delta(t^2)} = \frac{12{,}0-3{,}0}{8{,}0-2{,}0} = \frac{9{,}0}{6{,}0} = 1{,}5\ \text{m/s}^2$$
+
+**Le piège, et c'est le plus cher de ce type de question :** cette pente n'est PAS l'accélération — elle vaut $a/2$, pas $a$. Les deux grandeurs partagent la même unité ($\text{m/s}^2$), ce qui ne prévient de rien ; seule la relation $x=\frac12 a t^2$ le rappelle. Il faut **doubler** la pente lue, jamais la lire telle quelle :
+
+$$a = 2\times\text{pente} = 2\times1{,}5 = \boxed{3{,}0\ \text{m/s}^2}$$
+
+(Contrôle gratuit : à $t^2=0$, la droite doit passer par $x=0$ — c'est le cas ici, cohérent avec un départ du repos à l'origine.)
+
+### Une troisième relation utile, quand le temps n'est pas donné
+
+Les deux lois horaires $v(t)=v_0+at$ et $x(t)=x_0+v_0t+\frac12at^2$ permettent d'en tirer une troisième, qui relie directement vitesse et position **sans le temps** — utile chaque fois qu'un énoncé donne une distance plutôt qu'une durée. On élimine $t$ entre les deux : de la première, $t=\dfrac{v-v_0}{a}$ ; on le substitue dans la seconde, puis on multiplie par $2a$ :
+
+$$2a\,(x-x_0) = 2v_0\,(v-v_0) + (v-v_0)^2 = (v-v_0)(v+v_0) = v^2 - v_0^2$$
+
+d'où
+
+$$\boxed{v^2 = v_0^2 + 2a\,(x-x_0)}$$
+
+C'est la relation que les sujets de bac notent souvent $v_B^2=v_A^2+2a\,AB$.
+
 ---
 
 ## R7 — Application : solide sur un plan incliné, avec frottement
@@ -409,6 +445,12 @@ $$a_{G,x} = g\sin\alpha - \frac{f}{m}$$
 $$a_{G,x} = 9{,}8 \times \sin 30^\circ - \frac{2{,}0}{1{,}0} = 9{,}8 \times 0{,}5 - 2{,}0 = 4{,}9 - 2{,}0 = 2{,}9\ \text{m}\cdot\text{s}^{-2}$$
 
 Le solide accélère bien dans le sens de la descente ($a_{G,x} > 0$), parce que la composante motrice du poids ($4{,}9\ \text{N}$, en divisant par $m=1{,}0$ kg cela donne $4{,}9\ \text{m}\cdot\text{s}^{-2}$) l'emporte sur le frottement résistant. Si le frottement avait été plus grand que $mg\sin\alpha$, on aurait trouvé $a_{G,x} < 0$ : le solide, s'il était déjà en mouvement, aurait décéléré ; s'il partait du repos, il ne se serait tout simplement pas mis en mouvement — le frottement statique aurait suffi à le retenir, un cas qui sort du cadre de ce chapitre mais qu'il est utile de savoir reconnaître.
+
+**L'action totale du plan.** $\vec N$ et $\vec f$ ne sont pas deux forces indépendantes : ce sont les deux composantes d'une seule et même action de contact, celle qu'exerce le plan incliné sur le solide — $\vec N$ perpendiculaire au plan, $\vec f$ le long du plan. Cette action totale, notée $\vec R$, a pour intensité, par Pythagore (les deux composantes sont perpendiculaires) :
+
+$$R=\sqrt{N^2+f^2}=\sqrt{8{,}5^2+2{,}0^2}=\sqrt{72{,}25+4{,}00}=\sqrt{76{,}25}\approx8{,}7\ \text{N}$$
+
+Le piège nommé : répondre $R=N\approx8{,}5\ \text{N}$ en oubliant le frottement — vrai seulement sur un plan parfaitement lisse (pas de $f$ dans le bilan), faux dès qu'un frottement, même modeste, s'ajoute au contact.
 
 [[checkpoint:cp-r7-projection]]
 

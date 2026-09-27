@@ -2662,6 +2662,253 @@ items:
       Le coefficient de $v$, $1/\tau=k/m$, ne dépend que du frottement — pas
       d'Archimède, qui ne modifie que le terme constant à droite.
 
+  # ══════════════════════════════════════════════════════════════
+  # Ajout du 2026-09-27 (item-author) — trois gaps de
+  # docs/audits/dette-examen/pc-1.md, chute-mouvements-plans C5/C6/C7.
+  # Chiffres propres à ces trois items, jamais repris d'un sujet
+  # bancarisé (bk-2025-r-x4 pour C5 : α=20°, sujet horizontal, xE≈65,5,
+  # OE≈69,7 ; bk-2011-n-x4b pour C6 : θ=45°, P(15;-5), vD≈10,6 ; bk-2025-n-x4
+  # pour C7 : T=6720 s, R_T+h=7716 km, m_T≈6,0e24 — aucune de ces valeurs
+  # n'apparaît ci-dessous).
+  #
+  # C5 (CMP-46) — aucune des 22 misconceptions déclarées ne nomme
+  # spécifiquement « confond l'abscisse x_E avec la distance OE le long
+  # d'un plan incliné » : c'est structurellement la MÊME projection que
+  # v_{0x}=v_0\cos\alpha (x_E est l'adjacent d'un triangle dont OE est
+  # l'hypoténuse), donc rattaché à signe-et-projection-mal-poses plutôt
+  # qu'à une 23e id qui n'atteindrait pas le plancher de 3. Le distracteur
+  # « portée sur sol plat » (oublie que l'arrivée n'est pas à y=0) reprend
+  # le geste nommé par equation-de-trajectoire-mal-etablie : « applique la
+  # formule de la flèche à la portée (et réciproquement) », étendu ici à
+  # « applique la portée d'un sol horizontal à un sol incliné ».
+  #
+  # C6 (CMP-47) — reformulé sur la formule de la PORTÉE (D=v_0^2 sin2α/g)
+  # plutôt que sur un point de passage isolé (la variante bancarisée, qui
+  # ajoute un piège de signe sur y_P étranger à ce gap) : plus proche du
+  # rung 5, où D est déjà établie. « Oublie la racine carrée » revient à
+  # confondre v_0 et v_0^2 — exactement la confusion que nomme
+  # portee-fleche-et-angle-mal-maitrises (« fait varier flèche et portée
+  # comme v_0 plutôt que comme v_0^2 »), lue ici à l'envers en isolant
+  # v_0. Les deux autres distracteurs reprennent verbatim les deux
+  # manifestations nommées par equation-de-trajectoire-mal-etablie :
+  # « oublie le facteur 2 » et « applique la formule de la flèche à la
+  # portée ».
+  #
+  # C7 (CMP-48) — aucune des 22 misconceptions déclarées ne nomme une
+  # conversion d'unité oubliée (T en jours) ni un rayon confondu avec une
+  # altitude (r au lieu de R+h) : ni l'un ni l'autre n'est un exposant mal
+  # mémorisé, et leur attribuer kepler3-exposants-inverses aurait
+  # diagnostiqué le mauvais modèle. Les trois distracteurs ci-dessous
+  # reprennent à la place, un par un, les trois formes fautives que cette
+  # id déclare déjà littéralement dans son propre libellé — « T/r, T³/r²
+  # ou T²/r² = constante » — inversées pour isoler M. Signalé au
+  # pedagogy-architect : les deux pièges audités (conversion d'unité,
+  # rayon vs altitude) restent un vrai trou de l'inventaire, qui
+  # mériterait sa propre id SI un plan à 3 items l'accompagne (le
+  # plancher ne se satisfait pas d'un seul item).
+  # ══════════════════════════════════════════════════════════════
+
+  - id: CMP-46
+    rung: "R4"
+    difficulty_level: 4
+    habilete: résolution
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, projectile, resolution]
+    stem: >
+      Un projectile est lancé depuis l'origine $O$ ; son équation de
+      trajectoire est $y(x) = 0{,}53\,x - 0{,}02\,x^2$ ($x$ et $y$ en
+      mètres). Il retombe sur un plan incliné qui descend depuis $O$, en
+      faisant un angle $\alpha = 25^\circ$ avec l'horizontale
+      ($\tan\alpha \approx 0{,}47$, $\cos\alpha \approx 0{,}91$), au point
+      de chute $E$. Quelle est la distance $OE$, mesurée le long du plan ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $OE = 50\ \text{m}$
+        correct: false
+        misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
+        feedback: >
+          Cette valeur est $x_E$, l'abscisse HORIZONTALE du point $E$ — pas
+          $OE$. $E$ est sur le plan incliné : la distance parcourue le long
+          de la pente est plus grande que sa seule projection horizontale,
+          exactement comme $v_{0x} = v_0\cos\alpha$ est plus petite que
+          $v_0$. Recopier $x_E$ tel quel revient à ignorer cette
+          projection.
+      - id: B
+        text: >-
+          $OE = 26{,}5\ \text{m}$
+        correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
+        feedback: >
+          Cette valeur annule $y(x)$ seule : c'est la portée qu'aurait ce
+          tir sur un sol HORIZONTAL ($y=0$), pas le point de chute sur le
+          plan incliné donné. Ici le sol d'arrivée obéit à
+          $y = -x\tan\alpha$, pas à $y=0$ : il faut résoudre l'intersection
+          des deux courbes, pas la portée d'un sol plat qui n'existe pas
+          dans cet énoncé.
+      - id: C
+        text: >-
+          $OE \approx 54{,}9\ \text{m}$
+        correct: true
+      - id: D
+        text: >-
+          $OE \approx 45{,}5\ \text{m}$
+        correct: false
+        misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
+        feedback: >
+          Le passage de $x_E$ à $OE$ se fait en DIVISANT par $\cos\alpha$
+          ($x_E$ est le côté adjacent d'un triangle rectangle dont $OE$ est
+          l'hypoténuse), pas en multipliant : multiplier raccourcit encore
+          la distance, alors que suivre une pente l'allonge par rapport à
+          sa seule projection horizontale.
+    correct_feedback: >
+      Il faut d'abord résoudre l'intersection trajectoire/plan pour
+      trouver $x_E = 50\ \text{m}$, puis convertir cette abscisse en
+      distance le long du plan : $OE = x_E/\cos\alpha \approx
+      54{,}9\ \text{m}$.
+    solution: |
+      La droite du plan incliné, qui descend depuis $O$, s'écrit
+      $y_{plan}(x) = -x\tan\alpha$. Le point $E$ vérifie à la fois la
+      trajectoire et cette droite :
+      $$0{,}53\,x - 0{,}02\,x^2 = -0{,}47\,x$$
+      $$x\left(1{,}00 - 0{,}02\,x\right) = 0$$
+      Deux solutions : $x=0$ (le point $O$ lui-même) et
+      $$x_E = \frac{1{,}00}{0{,}02} = 50\ \text{m}$$
+      $E$ est sur le plan incliné, pas sur un axe horizontal : la distance
+      $OE$ se relie à $x_E$ par le cosinus de l'angle du plan (le triangle
+      rectangle formé par $O$, le pied de $E$ sur l'axe $x$, et $E$) :
+      $$OE = \frac{x_E}{\cos\alpha} = \frac{50}{0{,}91} \approx
+      54{,}9\ \text{m}$$
+
+  - id: CMP-47
+    rung: "R5"
+    difficulty_level: 4
+    habilete: résolution
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, projectile, resolution]
+    stem: >
+      On veut qu'un projectile, lancé depuis le sol avec un angle
+      $\alpha$ au-dessus de l'horizontale ($\sin\alpha=0{,}60$,
+      $\cos\alpha=0{,}80$), atteigne une portée $D = 76{,}8\ \text{m}$ sur
+      sol horizontal. On prend $g\approx9{,}8\ \text{m/s}^2$. Quelle
+      vitesse initiale $v_0$ faut-il lui donner ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $v_0 = 28\ \text{m/s}$
+        correct: true
+      - id: B
+        text: >-
+          $v_0 \approx 39{,}6\ \text{m/s}$
+        correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
+        feedback: >
+          Ce calcul oublie le facteur $2$ de $\sin(2\alpha) =
+          2\sin\alpha\cos\alpha$ : diviser par $\sin\alpha\cos\alpha$ seul
+          revient à utiliser une portée deux fois trop petite pour le
+          même $v_0$, donc à surestimer la vitesse nécessaire.
+      - id: C
+        text: >-
+          $v_0 \approx 64{,}7\ \text{m/s}$
+        correct: false
+        misconception: mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie
+        feedback: >
+          Cette expression est celle de la FLÈCHE ($f =
+          v_0^2\sin^2\alpha/(2g)$), isolée en $v_0$ — pas celle de la
+          portée. La question demande la vitesse qui donne une PORTÉE $D$
+          au sol, pas une flèche $D$ en hauteur : deux formules
+          distinctes, deux résultats distincts.
+      - id: D
+        text: >-
+          $v_0 \approx 784\ \text{m/s}$
+        correct: false
+        misconception: mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises
+        feedback: >
+          Cette valeur est $v_0^2$ (en m²/s²), présentée directement comme
+          si c'était $v_0$ : la portée dépend de $v_0^2$, pas de $v_0$, et
+          il manque la racine carrée qui ramène de l'un à l'autre.
+    correct_feedback: >
+      $D = v_0^2\sin(2\alpha)/g$, avec $\sin(2\alpha) =
+      2\times0{,}60\times0{,}80 = 0{,}96$. En isolant $v_0$ :
+      $v_0 = \sqrt{gD/\sin(2\alpha)} = \sqrt{9{,}8\times76{,}8/0{,}96} =
+      \sqrt{784} = 28\ \text{m/s}$.
+    solution: |
+      $$D = \frac{v_0^2\sin(2\alpha)}{g} \implies v_0 =
+      \sqrt{\frac{gD}{\sin(2\alpha)}}$$
+      $$\sin(2\alpha) = 2\sin\alpha\cos\alpha = 2\times0{,}60\times0{,}80 =
+      0{,}96$$
+      $$v_0 = \sqrt{\frac{9{,}8\times76{,}8}{0{,}96}} = \sqrt{\frac{752{,}64}
+      {0{,}96}} = \sqrt{784} = 28\ \text{m/s}$$
+
+  - id: CMP-48
+    rung: "R10"
+    difficulty_level: 4
+    habilete: résolution
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, kepler_geostationnaire, resolution]
+    stem: >
+      Une planète possède un satellite naturel en orbite circulaire, à une
+      distance $r = 8{,}0\times10^6\ \text{m}$ de son centre, avec une
+      période $T = 1{,}25$ jours. On donne
+      $G \approx 6{,}67\times10^{-11}\ \text{N.m}^2.\text{kg}^{-2}$.
+      Quelle est la masse $M$ de la planète ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $M \approx 4{,}4\times10^{13}\ \text{kg}$
+        correct: false
+        misconception: mc.physics.pc_chute_plans.kepler3-exposants-inverses
+        feedback: >
+          Cette expression vient d'une 3e loi retenue comme $T/r$ =
+          constante. L'établissement (égaler $v=\sqrt{GM/r}$ et
+          $v=2\pi r/T$) donne $T^2/r^3 = 4\pi^2/GM$ : ni $T$ ni $r$ n'y
+          figurent au premier degré.
+      - id: B
+        text: >-
+          $M \approx 3{,}0\times10^{10}\ \text{kg}$
+        correct: false
+        misconception: mc.physics.pc_chute_plans.kepler3-exposants-inverses
+        feedback: >
+          Cette expression vient d'une 3e loi retenue comme $T^3/r^2$ =
+          constante — les exposants inversés par rapport à
+          $T^2/r^3 = 4\pi^2/GM$, où le carré porte sur la période et le
+          cube sur le rayon, jamais l'inverse.
+      - id: C
+        text: >-
+          $M \approx 3{,}2\times10^{15}\ \text{kg}$
+        correct: false
+        misconception: mc.physics.pc_chute_plans.kepler3-exposants-inverses
+        feedback: >
+          Cette expression vient d'une 3e loi retenue comme $T^2/r^2$ =
+          constante, avec le rayon au carré au lieu du cube. L'établissement
+          donne $T^2/r^3$ : c'est bien le CUBE de $r$ qui doit figurer au
+          dénominateur une fois $M$ isolée.
+      - id: D
+        text: >-
+          $M \approx 2{,}6\times10^{22}\ \text{kg}$
+        correct: true
+    correct_feedback: >
+      $T^2/r^3 = 4\pi^2/(GM)$, donc $M = 4\pi^2 r^3/(GT^2)$. Avec
+      $T = 1{,}25\times86400 = 1{,}08\times10^5\ \text{s}$ (conversion en
+      secondes faite en premier) : $M \approx
+      2{,}6\times10^{22}\ \text{kg}$.
+    solution: |
+      $$\frac{T^2}{r^3} = \frac{4\pi^2}{GM} \implies M =
+      \frac{4\pi^2 r^3}{GT^2}$$
+      Conversion de la période en secondes, avant tout calcul :
+      $$T = 1{,}25 \times 86400 = 1{,}08\times10^5\ \text{s}$$
+      $$
+      M = \frac{4\pi^2\times(8{,}0\times10^6)^3}
+      {6{,}67\times10^{-11}\times(1{,}08\times10^5)^2}
+      = \frac{39{,}48\times5{,}12\times10^{20}}
+      {6{,}67\times10^{-11}\times1{,}1664\times10^{10}}
+      $$
+      $$M = \frac{2{,}02\times10^{22}}{0{,}778} \approx
+      2{,}6\times10^{22}\ \text{kg}$$
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, et il faut dire pourquoi : la version précédente
 # annonçait `floor_met: true` en ne comptant QUE les douze misconceptions
@@ -2773,9 +3020,9 @@ coverage_summary:
     C'est la convention de web/scripts/lib/couverture-compte.mjs, celle de la
     chaîne, et le tableau ci-dessous est GÉNÉRÉ contre elle.
   per_misconception:
-    mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises:    { count: 4, items: [CMP-4, CMP-5, CMP-18, CMP-19] }
-    mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie:     { count: 4, items: [CMP-14, CMP-16, CMP-17, CMP-22] }
-    mc.physics.pc_chute_plans.signe-et-projection-mal-poses:           { count: 5, items: [CMP-10, CMP-12, CMP-13, CMP-37, CMP-43] }
+    mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises:    { count: 5, items: [CMP-4, CMP-5, CMP-18, CMP-19, CMP-47] }
+    mc.physics.pc_chute_plans.equation-de-trajectoire-mal-etablie:     { count: 6, items: [CMP-14, CMP-16, CMP-17, CMP-22, CMP-46, CMP-47] }
+    mc.physics.pc_chute_plans.signe-et-projection-mal-poses:           { count: 6, items: [CMP-10, CMP-12, CMP-13, CMP-37, CMP-43, CMP-46] }
     mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise:           { count: 3, items: [CMP-6, CMP-20, CMP-21] }
     mc.physics.pc_chute_plans.vx-varie-pendant-le-vol:                 { count: 6, items: [CMP-1, CMP-7, CMP-23, CMP-24, CMP-38, CMP-43] }
     mc.physics.pc_chute_plans.vitesse-nulle-au-sommet:                 { count: 4, items: [CMP-1, CMP-2, CMP-7, CMP-13] }
@@ -2792,10 +3039,10 @@ coverage_summary:
     mc.physics.pc_chute_plans.orbite-sans-gravite:                     { count: 3, items: [CMP-31, CMP-32, CMP-33] }
     mc.physics.pc_chute_plans.orbite-necessite-force-tangentielle:     { count: 3, items: [CMP-31, CMP-32, CMP-33] }
     mc.physics.pc_chute_plans.vitesse-orbitale-depend-masse-satellite: { count: 3, items: [CMP-31, CMP-32, CMP-33] }
-    mc.physics.pc_chute_plans.kepler3-exposants-inverses:              { count: 3, items: [CMP-34, CMP-35, CMP-36] }
+    mc.physics.pc_chute_plans.kepler3-exposants-inverses:              { count: 4, items: [CMP-34, CMP-35, CMP-36, CMP-48] }
     mc.physics.pc_chute_plans.geostationnaire-immobile-absolu:         { count: 3, items: [CMP-34, CMP-35, CMP-36] }
     mc.physics.pc_chute_plans.geostationnaire-toute-altitude:          { count: 3, items: [CMP-34, CMP-35, CMP-36] }
-  total_items: 45
+  total_items: 48
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2803,13 +3050,13 @@ coverage_summary:
     R1: 5
     R2: 3
     R3: 3
-    R4: 3
-    R5: 3
+    R4: 4
+    R5: 4
     R6: 3
     R7: 9
     R8: 3
     R9: 3
-    R10: 3
+    R10: 4
     R11: 4
     note: >-
       Le plancher de barreau (>= 3 items par barreau) est tenu partout. R1 en
@@ -2817,10 +3064,12 @@ coverage_summary:
       CMP-42 puis CMP-44/CMP-45, extension Archimède, frottement quadratique
       — audit audit-banque-pc1.md, C1-C4, puis passe critique wave-1 du
       2026-09-27, C-4/I-7) et R11 en porte 4 (CMP-22/23/24, et CMP-43
-      re-dressé en place par la même passe wave-1, C-5).
+      re-dressé en place par la même passe wave-1, C-5). R4, R5 et R10 en
+      portent désormais 4 chacun depuis l'ajout de CMP-46/47/48 (item-author,
+      2026-09-27, audit-banque C5/C6/C7).
   honest_state: >-
     Les 22 misconceptions déclarées sont couvertes, aucune sous le plancher.
-    Onze d'entre elles y siègent EXACTEMENT (3 items) : la marge est nulle et
+    Dix d'entre elles y siègent EXACTEMENT (3 items) : la marge est nulle et
     tout retrait d'item la casse. `archimede-mal-situee-dans-le-modele`,
     ajoutée le 2026-09-27 au plancher nu (CMP-39/40/41), a gagné deux items
     supplémentaires le même jour, passe critique wave-1 (CMP-44, entrée
@@ -2838,3 +3087,22 @@ coverage_summary:
     23e pour un seul distracteur d'un seul item aurait, par construction,
     ouvert un nouveau trou sous le plancher de 3 — voir le refus documenté
     au fil des items, juste avant CMP-44.
+
+    MISE À JOUR 2026-09-27 (item-author, gaps C5/C6/C7 de
+    docs/audits/dette-examen/pc-1.md) : trois items ajoutés (CMP-46, CMP-47,
+    CMP-48), réutilisant exclusivement des id déjà déclarées —
+    `equation-de-trajectoire-mal-etablie` (6, +2), `signe-et-projection-
+    mal-poses` (6, +1), `portee-fleche-et-angle-mal-maitrises` (5, +1) et
+    `kepler3-exposants-inverses` (4, +1). Aucune 23e id créée : ni « x_E
+    confondu avec OE le long d'un plan » (C5), ni « T non converti en
+    secondes » ou « r confondu avec une altitude » (C7) n'ont d'id honnête
+    dans les 22 déclarées, et un plan à 3 items pour chacune sortait du
+    mandat de cette passe (un item par gap). Pour C5, la projection
+    $OE=x_E/\cos\alpha$ est structurellement la même que $v_{0x}=v_0\cos
+    \alpha$ : rattachée à `signe-et-projection-mal-poses` plutôt qu'à une
+    id neuve. Pour C7, les trois distracteurs reprennent les trois formes
+    fautives que `kepler3-exposants-inverses` déclare déjà dans son propre
+    libellé (T/r, T³/r², T²/r²), inversées pour isoler $M$ — mais les deux
+    pièges que l'audit nommait (conversion d'unité, rayon vs altitude)
+    restent un vrai trou de couverture, signalé au pedagogy-architect pour
+    une déclaration future accompagnée d'un plan à 3 items.

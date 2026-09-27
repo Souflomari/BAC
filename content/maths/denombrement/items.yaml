@@ -1535,8 +1535,97 @@ items:
       **Probabilité :**
       $$P(E) = \frac{4}{28} = \frac{1}{7}$$
 
+  # ── Dette d'examen, § denombrement (2026-09-27) — GAP-B « case split with
+  # combinations ("même couleur" = Σ C(nᵢ,k)) » (docs/audits/dette-examen/
+  # maths.md ~l.120-130). Le geste (cas disjoints, chacun un C(nᵢ,k), sommés
+  # puis divisés par C(N,k)) n'est travaillé que dans le sommet
+  # (exercises.yaml), jamais dans une rung ni testé par un item — R7 ne montre
+  # que le cas MULTIPLICATIF (2 rouges ET 1 verte, lesson.md:337-359). Nombres
+  # propres (4 jaunes / 5 vertes / 7 violettes, tirage de 3), différents du
+  # triplet 3R/4V/5B cité par l'audit et des couleurs déjà utilisées dans ce
+  # fichier (rouges/bleues, rouges/vertes, scientifiques/littéraires). Aucun
+  # modèle neuf : le distracteur A (produit des trois combinaisons au lieu de
+  # leur somme) et le distracteur B (une seule des trois couleurs comptée,
+  # les deux autres cas disjoints oubliés de la somme) relèvent tous deux
+  # d'`additif-vs-multiplicatif` — les deux manières de mal construire l'« ou »
+  # entre les trois cas disjoints (le sur-combiner par un produit, ou ne pas
+  # le compléter) ; le distracteur D (numérateur en arrangements $A_n^3$,
+  # dénominateur resté en combinaison $\binom{N}{3}$ : les deux modèles de
+  # comptage sont mélangés dans un même calcul) relève
+  # d'`ordre-arrangement-vs-combinaison`. Aucun distracteur n'est laissé
+  # `null` ici : le fichier en porte ailleurs (legacy, DENOMB-1.C/D et
+  # consorts), mais un id neuf doit rester DÉCLARÉ pour cette passe.
+  - id: DENOMB-28
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: maths_denombrement
+    tags: ["probabilite", "equiprobabilite", "combinaison", "cas-disjoints"]
+    primary_misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
+    stem: >
+      Une urne contient 4 boules jaunes, 5 boules vertes et 7 boules
+      violettes, indiscernables au toucher. On tire simultanément 3 boules.
+      Quelle est la probabilité d'obtenir 3 boules de la même couleur ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{532}{4\\,096}$"
+        correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
+        feedback: >
+          Tu as calculé comme pour trois tirages successifs AVEC remise :
+          $\left(\frac{4}{16}\right)^3 + \left(\frac{5}{16}\right)^3 +
+          \left(\frac{7}{16}\right)^3 = \frac{64 + 125 + 343}{4\,096}$. Or
+          les trois boules sont tirées SIMULTANÉMENT : aucune n'est remise,
+          une même boule ne peut pas sortir deux fois. Un tirage est une
+          partie à $3$ éléments de l'urne, l'univers compte
+          $\binom{16}{3} = 560$ issues, et « même couleur » compte
+          $\binom{4}{3} + \binom{5}{3} + \binom{7}{3} = 49$ de ces parties.
+      - id: B
+        text: "$\\dfrac{4}{560}$"
+        correct: false
+        misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
+        feedback: >
+          Tu n'as compté que les tirages tout jaunes ($\binom{4}{3}=4$), en
+          oubliant complètement les tirages tout verts et tout violets.
+          "Même couleur" est un "ou" entre TROIS cas disjoints (tout jaune,
+          OU tout vert, OU tout violet) : il faut les réunir tous les trois
+          dans la somme, pas n'en garder qu'un seul.
+      - id: C
+        text: "$\\dfrac{49}{560}$"
+        correct: true
+      - id: D
+        text: "$\\dfrac{294}{560}$"
+        correct: false
+        misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
+        feedback: >
+          Tu as compté les cas favorables avec des arrangements
+          ($A_4^3+A_5^3+A_7^3=24+60+210=294$), qui distinguent l'ordre des 3
+          boules, tout en gardant $\binom{16}{3}=560$ (une combinaison) au
+          dénominateur. Numérateur et dénominateur doivent compter le MÊME
+          type de tirage : ici, un tirage simultané, donc des combinaisons
+          des deux côtés.
+    correct_feedback: >
+      Univers : $\binom{16}{3}=560$. Favorable : trois cas disjoints (tout
+      jaune, tout vert, tout violet) qui s'additionnent,
+      $\binom{4}{3}+\binom{5}{3}+\binom{7}{3}=4+10+35=49$. $P =
+      \dfrac{49}{560} = \dfrac{7}{80}$.
+    solution: |
+      **Univers :** choisir 3 boules parmi les 16 de l'urne (tirage
+      simultané).
+      $$\text{card}(\Omega) = \binom{16}{3} = \frac{16 \times 15 \times
+      14}{3 \times 2 \times 1} = 560$$
+
+      **Événement favorable :** "même couleur" se décompose en TROIS cas
+      qui s'excluent mutuellement — tout jaune, OU tout vert, OU tout
+      violet — donc une SOMME de trois combinaisons :
+      $$\text{card}(E) = \binom{4}{3} + \binom{5}{3} + \binom{7}{3} = 4 +
+      10 + 35 = 49$$
+
+      **Probabilité :**
+      $$P(E) = \frac{49}{560} = \frac{7}{80}$$
+
 coverage_summary:
-  total_items: 27
+  total_items: 28
   per_rung:
     R0: 3
     R1: 3
@@ -1545,12 +1634,12 @@ coverage_summary:
     R4: 3
     R5: 3
     R6: 3
-    R7: 3
+    R7: 4
     R8: 3
   per_misconception:
-    mc.math.maths_denombrement.additif-vs-multiplicatif: 3          # DENOMB-1, DENOMB-10, DENOMB-11
+    mc.math.maths_denombrement.additif-vs-multiplicatif: 4          # DENOMB-1, DENOMB-10, DENOMB-11, DENOMB-28
     mc.math.maths_denombrement.base-exposant-inverse: 5             # DENOMB-7, DENOMB-8, DENOMB-9, DENOMB-12, DENOMB-25
-    mc.math.maths_denombrement.ordre-arrangement-vs-combinaison: 7  # DENOMB-3, DENOMB-5, DENOMB-14, DENOMB-15, DENOMB-18, DENOMB-19, DENOMB-24
+    mc.math.maths_denombrement.ordre-arrangement-vs-combinaison: 8  # DENOMB-3, DENOMB-5, DENOMB-14, DENOMB-15, DENOMB-18, DENOMB-19, DENOMB-24, DENOMB-28
     mc.math.maths_denombrement.remise-avec-vs-sans: 6               # DENOMB-2, DENOMB-4, DENOMB-13, DENOMB-16, DENOMB-17, DENOMB-27
     mc.math.maths_denombrement.proba-quotient-denombrement: 3       # DENOMB-6, DENOMB-23, DENOMB-26
   floor_met: true   # les 5 modèles de l'inventaire ont chacun >= 3 items dont un distracteur porte le tag primaire
@@ -1569,3 +1658,16 @@ coverage_summary:
     DENOMB-27 gatent en priorité les ruptures ordre / remise (choix du bon
     univers), pas proba-quotient-denombrement : ce dernier est gate par
     DENOMB-6, DENOMB-23 et DENOMB-26 (exactement au plancher de 3).
+    AJOUT 2026-09-27 (dette d'examen, § denombrement, GAP-B « case split with
+    combinations, même couleur = Σ C(nᵢ,k) ») : DENOMB-28 (R7), aucun modèle
+    neuf. Primary additif-vs-multiplicatif (désormais 4), porté par DEUX
+    distracteurs de cet item (produit des trois combinaisons au lieu de leur
+    somme ; une seule couleur comptée, les deux autres cas disjoints oubliés)
+    — compté une seule fois par item, comme le reste du fichier ; secondaire
+    ordre-arrangement-vs-combinaison (désormais 8) pour le distracteur
+    numérateur-en-arrangement/dénominateur-en-combinaison. Aucun `null` :
+    contrairement aux items legacy de ce fichier, un id neuf reste déclaré.
+    `habilete` : ce notion n'en porte sur AUCUN item (vérifié sur les 27
+    existants) ; DENOMB-28 suit donc le même format, sans ce champ — à
+    signaler si une passe future harmonise les quatre notions maths sur ce
+    point.

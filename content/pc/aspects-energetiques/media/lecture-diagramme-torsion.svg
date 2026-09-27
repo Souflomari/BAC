@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 290" width="680" height="290"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Diagramme d’énergie de torsion : la parabole E_p,torsion(θ) = ½Cθ², nulle en θ=0, et la droite horizontale E_m. La parabole touche E_m exactement à θ = ±0,20 rad. Sur l’axe des énergies, la dernière valeur imprimée est 2 mJ, mais E_m se situe une maille de grille au-dessus, à 2,5 mJ — d’où C = 2E_m/θ_m² = 0,125 N·m/rad.">
+  <title>Lire C sur un diagramme d’énergie de torsion</title>
+  <!--
+    lecture-diagramme-torsion.svg — figure STAGED (LESSON-EXPERIENCE-SPEC
+    §2.5 : un graphe est TOUJOURS stagé, ordre canonique axes → données →
+    lecture), 3 étapes. content/pc/aspects-energetiques/lesson.md, R6,
+    "Exemple travaillé : lire C sur un diagramme d'énergie de torsion".
+
+    Exemple numérique repris EXACTEMENT du texte : θ_m = 0,20 rad (graduation
+    imprimée), E_m = 2,5×10⁻³ J = 2,5 mJ (UNE maille au-dessus de la dernière
+    valeur imprimée, 2 mJ — le piège que le texte nomme explicitement). D'où
+    C = 2E_m/θ_m² = 2×2,5×10⁻³ / 0,20² = 5,0×10⁻³ / 0,040 = 0,125 N·m/rad
+    (le texte arrondit "≈ 0,13 N·m/rad" ; 0,125 est la valeur exacte).
+
+    Repère écran (calculé, pas deviné) :
+      origine (θ=0, E=0)     : (330, 224)
+      échelle θ               : 1000 px/rad → θ = ±0,05 rad tous les 50 px
+        θ=-0,25..+0,25 rad → x = 80,130,180,230,280,330,380,430,480,530,580
+      échelle E                : 60 px/mJ  → E = 0,5 mJ tous les 30 px
+        E=0..3,0 mJ → y = 224,194,164,134,104,74,44
+
+    Quadrillage : lignes IMPRIMÉES (nombres) seulement à θ=-0,20/-0,10/0/
+    0,10/0,20 et à E=1/2 mJ (+ le "0" partagé à l'origine) — EXACTEMENT ce
+    que dit le texte : "la dernière valeur imprimée sur l'axe est 2 mJ" (pas
+    2,5), et le lecteur doit compter la maille au-dessus. La droite E_m (à
+    y=74, soit E=2,5 mJ = une maille au-dessus de "2" à y=104) NE PORTE
+    DÉLIBÉRÉMENT AUCUN NOMBRE : seule une étiquette symbolique "E_m" (step-2)
+    et un petit repère "1 maille" comptant le pas de grille (step-3, sans
+    jamais écrire "2,5 mJ") — le lecteur compte la grille, comme le texte le
+    demande.
+
+    Parabole E_p,torsion(θ) = ½Cθ² = 62,5·θ² (mJ, θ en rad, C=0,125 N·m/rad).
+    Points calculés (échantillonnage Δθ=0,025 rad près du sommet), symétriques :
+      θ=0,000 → E=0,000    → (330,0 ; 224,0)
+      θ=0,025 → E=0,039    → (355,0 ; 221,7)
+      θ=0,050 → E=0,156    → (380,0 ; 214,6)
+      θ=0,075 → E=0,352    → (405,0 ; 202,9)
+      θ=0,100 → E=0,625    → (430,0 ; 186,5)   [vérif texte : "0,625 mJ" ✓]
+      θ=0,125 → E=0,977    → (455,0 ; 165,4)
+      θ=0,150 → E=1,406    → (480,0 ; 139,6)
+      θ=0,175 → E=1,914    → (505,0 ; 109,2)
+      θ=0,200 → E=2,500    → (530,0 ; 74,0)    [vérif texte : "2,5 mJ" ✓, sur
+                                                  la droite E_m ✓]
+      θ=0,2191→ E=3,000    → (549,1 ; 44,0)    (sommet de fenêtre visible :
+                                                  au-delà, E dépasse 3,0 mJ,
+                                                  hors cadre — la parabole
+                                                  s'arrête donc avant θ=0,25)
+    Côté négatif : symétrique exact (x' = 660 − x, mêmes y).
+    Vérification indépendante des deux points-clés demandés par le brief :
+      ½×0,125×0,10² = 0,000625 J = 0,625 mJ ✓  (θ=0,10)
+      ½×0,125×0,20² = 0,0025   J = 2,5   mJ ✓  (θ=0,20, = E_m)
+
+    Rôle des couleurs (cohérent avec diagrammes-energie-elastique.svg, MÊME
+    dossier — Epe/E_p,torsion joue le même rôle "réservoir de rappel") :
+      parabole E_p,torsion(θ)         : --figure-energy-C
+      droite E_m, repères de lecture  : --figure-accent
+      axes / quadrillage / graduations : --figure-ink-soft / --figure-grid
+
+    Choix déclaré (decline-with-reason) : la parabole inversée optionnelle
+    E_c(θ) = E_m − E_p n'est PAS tracée. L'exercice ne demande de lire que
+    θ_m et E_m pour en tirer C ; une deuxième courbe n'ajouterait aucune
+    information utile à ce geste précis (principe de cohérence, DESIGN-
+    BIBLE §6 — pas de marque au-delà de l'essentiel).
+  -->
+
+  <!-- Titre (chrome) -->
+  <text x="340" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Lire C sur un diagramme d’énergie de torsion
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le repère : quadrillage θ (rad) / E (mJ)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+
+    <!-- Fond du panneau -->
+    <rect x="30" y="32" width="600" height="224" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Quadrillage horizontal (E tous les 0,5 mJ, de 0,5 à 3,0) -->
+    <line x1="80" y1="194" x2="580" y2="194" stroke="var(--figure-grid)" stroke-width="0.75"/>
+    <line x1="80" y1="164" x2="580" y2="164" stroke="var(--figure-grid)" stroke-width="0.75"/>
+    <line x1="80" y1="134" x2="580" y2="134" stroke="var(--figure-grid)" stroke-width="0.75"/>
+    <line x1="80" y1="104" x2="580" y2="104" stroke="var(--figure-grid)" stroke-width="0.75"/>
+    <line x1="80" y1="74"  x2="580" y2="74"  stroke="var(--figure-grid)" stroke-width="0.75"/>
+    <line x1="80" y1="44"  x2="580" y2="44"  stroke="var(--figure-grid)" stroke-width="0.75"/>
+
+    <!-- Quadrillage vertical (θ tous les 0,05 rad, de -0,25 à +0,25) -->
+    <line x1="80"  y1="44" x2="80"  y2="224" stroke="var(--figure-grid)" stroke-width="0.75"/>
+    <line x1="130" y1="44" x2="130" y2="224" stroke="var(--figure-grid)" stroke-width="0.75"/>
+    <line x1="180" y1="44" x2="180" y2="224" stroke="var(--figure-grid)" stroke-width="0.75"/>
+    <line x1="230" y1="44" x2="230" y2="224" stroke="var(--figure-grid)" stroke-width="0.75"/>
+    <line x1="280" y1="44" x2="280" y2="224" stroke="var(--figure-grid)" stroke-width="0.75"/>
+    <line x1="380" y1="44" x2="380" y2="224" stroke="var(--figure-grid)" stroke-width="0.75"/>
+    <line x1="430" y1="44" x2="430" y2="224" stroke="var(--figure-grid)" stroke-width="0.75"/>
+    <line x1="480" y1="44" x2="480" y2="224" stroke="var(--figure-grid)" stroke-width="0.75"/>
+    <line x1="530" y1="44" x2="530" y2="224" stroke="var(--figure-grid)" stroke-width="0.75"/>
+    <line x1="580" y1="44" x2="580" y2="224" stroke="var(--figure-grid)" stroke-width="0.75"/>
+
+    <!-- Axes -->
+    <line x1="76" y1="224" x2="584" y2="224" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="596,224 584,219.5 584,228.5" fill="var(--figure-ink-soft)"/>
+    <polygon points="64,224 76,219.5 76,228.5" fill="var(--figure-ink-soft)"/>
+    <line x1="330" y1="224" x2="330" y2="50" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="330,39 325.5,50 334.5,50" fill="var(--figure-ink-soft)"/>
+
+    <!-- Étiquettes d'axes -->
+    <text x="318" y="44" text-anchor="end" font-size="11" fill="var(--figure-ink-soft)">
+      <tspan font-style="italic">E</tspan><tspan font-size="9"> (mJ)</tspan>
+    </text>
+    <text x="604" y="228" font-size="11" fill="var(--figure-ink-soft)">
+      <tspan font-style="italic">θ</tspan><tspan font-size="9"> (rad)</tspan>
+    </text>
+    <text x="318" y="238" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Graduations θ imprimées : −0,20 ; −0,10 ; 0,10 ; 0,20 -->
+    <text x="130" y="242" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">−0,20</text>
+    <text x="230" y="242" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">−0,10</text>
+    <text x="430" y="242" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">0,10</text>
+    <text x="530" y="242" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">0,20</text>
+
+    <!-- Graduations E imprimées : seulement 1 et 2 mJ (PAS 2,5 — le texte
+         insiste : "la dernière valeur imprimée sur l'axe est 2 mJ") -->
+    <text x="318" y="168" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">1</text>
+    <text x="318" y="108" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">2</text>
+
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — les données : la parabole E_p,torsion(θ) et E_m
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+
+    <!-- Boîte formule -->
+    <rect x="135" y="40" width="170" height="26" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-accent)"
+          stroke-width="0.8" stroke-opacity="0.35"/>
+    <text x="220" y="57" text-anchor="middle" font-size="11" fill="var(--figure-energy-C)"
+      >E<tspan dy="3" font-size="7">p,torsion</tspan><tspan
+      dy="-3"> = ½</tspan><tspan font-style="italic">Cθ</tspan><tspan
+      dy="-5" font-size="7">2</tspan></text>
+
+    <!-- Droite E_m — AUCUN nombre porté (le lecteur compte la grille) -->
+    <line x1="76" y1="74" x2="584" y2="74"
+          stroke="var(--figure-accent)" stroke-width="1.6" stroke-dasharray="7,4"/>
+    <text x="590" y="70" font-size="11" fill="var(--figure-accent)"
+      ><tspan font-style="italic">E</tspan><tspan dy="3" font-size="7.5">m</tspan></text>
+
+    <!--
+      Parabole E_p,torsion(θ) = 62,5·θ² (mJ) ; y = 224 − 60·E.
+      Points calculés Δθ=0,025 rad, de θ=−0,2191 (E=3,0 mJ, haut de fenêtre)
+      à θ=+0,2191, en passant par le sommet (0 ; 0).
+    -->
+    <path d="
+      M110.9,44 L130,74 L155,109.2 L180,139.6 L205,165.4 L230,186.5
+      L255,202.9 L280,214.6 L305,221.7 L330,224
+      L355,221.7 L380,214.6 L405,202.9 L430,186.5 L455,165.4 L480,139.6
+      L505,109.2 L530,74 L549.1,44
+    " fill="none" stroke="var(--figure-energy-C)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la lecture : θ_m = ±0,20 rad, et compter la maille
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+
+    <!-- Guides verticaux à θ = ±θ_m, du sommet de la droite E_m à l'axe -->
+    <line x1="130" y1="74" x2="130" y2="224" stroke="var(--figure-accent)" stroke-width="1.4" stroke-dasharray="5,3"/>
+    <line x1="530" y1="74" x2="530" y2="224" stroke="var(--figure-accent)" stroke-width="1.4" stroke-dasharray="5,3"/>
+    <line x1="130" y1="220" x2="130" y2="228" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <line x1="530" y1="220" x2="530" y2="228" stroke="var(--figure-accent)" stroke-width="1.6"/>
+
+    <!-- Points : la parabole touche E_m exactement à θ = ±0,20 rad -->
+    <circle cx="130" cy="74" r="3.2" fill="var(--figure-accent)"/>
+    <circle cx="530" cy="74" r="3.2" fill="var(--figure-accent)"/>
+
+    <!-- Le repère "1 maille" : compter le pas de grille au-dessus de "2" -->
+    <rect x="378" y="57" width="48" height="14" rx="3" fill="var(--figure-surface)"/>
+    <text x="402" y="67" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">1 maille</text>
+    <line x1="400" y1="74" x2="400" y2="104" stroke="var(--figure-accent)" stroke-width="1.3"/>
+    <line x1="396" y1="74" x2="404" y2="74" stroke="var(--figure-accent)" stroke-width="1.3"/>
+    <line x1="396" y1="104" x2="404" y2="104" stroke="var(--figure-accent)" stroke-width="1.3"/>
+
+  </g><!-- /step-3 -->
+
+</svg>

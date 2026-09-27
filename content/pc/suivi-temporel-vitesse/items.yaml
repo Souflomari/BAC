@@ -1034,9 +1034,79 @@ items:
       que diminuer elle aussi. v(t) décroît continûment vers zéro, sans
       rebond possible.
 
+  - id: STV-19
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_suivi_temporel_vitesse
+    tags: []
+    primary_misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
+    stem: >
+      Une réaction lente dégage un gaz ; elle est suivie par manométrie
+      dans une enceinte fermée de volume constant, en mesurant
+      l'augmentation de pression $\Delta P(t)$ par rapport à la pression
+      initiale. Le suivi donne : $\Delta P(4\ \text{min}) = 3{,}0\
+      \text{kPa}$, $\Delta P(8\ \text{min}) = 6{,}0\ \text{kPa}$,
+      $\Delta P(12\ \text{min}) = 8{,}0\ \text{kPa}$, $\Delta P(16\
+      \text{min}) = 10{,}0\ \text{kPa}$, $\Delta P(20\ \text{min}) =
+      11{,}5\ \text{kPa}$, $\Delta P(24\ \text{min}) = 12{,}0\ \text{kPa}$
+      et $\Delta P(28\ \text{min}) = 12{,}0\ \text{kPa}$ (palier atteint).
+      Sachant que l'avancement suit $x(t) = x_{max}\cdot\Delta
+      P(t)/\Delta P_{max}$, quel est le temps de demi-réaction $t_{1/2}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $t_{1/2} = 8\ \text{min}$
+        correct: true
+      - id: B
+        text: >-
+          $t_{1/2} = 24\ \text{min}$
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
+        feedback: >-
+          Atteindre $\Delta P_{max}$ signale la FIN de la réaction, pas sa
+          moitié : à $t_{1/2}$, seule la moitié de l'avancement maximal est
+          atteinte ($\Delta P = \Delta P_{max}/2$), pas $\Delta P_{max}$
+          tout entier.
+      - id: C
+        text: >-
+          $t_{1/2} = 14\ \text{min}$
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
+        feedback: >-
+          $t_{1/2}$ se lit sur la valeur de $\Delta P$ (donc de
+          l'avancement $x$), pas sur la durée écoulée : comme la réaction
+          ralentit sans cesse, $x$ atteint sa moitié bien avant que la
+          moitié de la durée totale du suivi ne se soit écoulée.
+      - id: D
+        text: >-
+          $t_{1/2} = 20\ \text{min}$
+        correct: false
+        misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
+        feedback: >-
+          $t_{1/2}$ se définit à partir de $\Delta P(t)$ (donc de $x(t)$),
+          pas à partir de la vitesse (la pente de $\Delta P(t)$) : ces
+          deux courbes n'atteignent pas « la moitié » de leur échelle au
+          même instant.
+    correct_feedback: >
+      $\Delta P_{max} = 12{,}0\ \text{kPa}$ (le palier) ; $\Delta
+      P_{max}/2 = 6{,}0\ \text{kPa}$, atteint exactement à $t=8\
+      \text{min}$. Comme $x(t) = x_{max}\cdot\Delta P(t)/\Delta P_{max}$,
+      $x = x_{max}/2$ exactement quand $\Delta P = \Delta P_{max}/2$.
+    solution: |
+      $$x(t) = x_{max}\cdot\frac{\Delta P(t)}{\Delta P_{max}}$$
+
+      Donc $x(t_{1/2}) = x_{max}/2 \iff \Delta P(t_{1/2}) = \Delta
+      P_{max}/2$. Le palier montre $\Delta P_{max} = 12{,}0\ \text{kPa}$
+      (atteint dès $t=24\ \text{min}$, confirmé par la valeur inchangée à
+      $28\ \text{min}$), donc $\Delta P_{max}/2 = 6{,}0\ \text{kPa}$. Le
+      tableau donne $\Delta P(8\ \text{min}) = 6{,}0\ \text{kPa}$
+      exactement : $t_{1/2} = 8\ \text{min}$.
+    habilete: application_experimentale
+
 # ── Coverage summary (item-author) ──────────────────────────────────────
 # Rung distribution: R0=3 (STV-7..9), R1=3 (STV-1,2,10), R2=3 (STV-3,4,11),
-#   R3=3 (STV-5,12,13), R4=3 (STV-6,14,15), R5=3 (STV-16,17,18). 18 items.
+#   R3=3 (STV-5,12,13), R4=4 (STV-6,14,15,19), R5=3 (STV-16,17,18). 19 items.
 #
 # Per-MISCONCEPTION coverage (summit-conversion ride-along; floor: ≥3 items
 # carrying ≥1 distractor tagged with the misconception):
@@ -1044,7 +1114,7 @@ items:
 #   vitesse-mal-reliee-a-la-pente    : STV-3, STV-4, STV-11             → 3
 #   allure-vitesse-fausse            : STV-5, STV-7, STV-8, STV-9,
 #                                      STV-18(B)                        → 5
-#   demi-reaction-mal-definie        : STV-6, STV-14, STV-15(B)         → 3
+#   demi-reaction-mal-definie        : STV-6, STV-14, STV-15(B), STV-19 → 4
 #   facteurs-cinetiques-mal-appliques: STV-13, STV-15(C,D), STV-16      → 3
 #   vitesse-baisse-mauvaise-cause    : STV-12, STV-17, STV-18(C,D)      → 3
 # floor_met: true  (all six families ≥3, no family padded with a weak item —
@@ -1052,6 +1122,18 @@ items:
 #   "wrong" option). STV-15 and STV-18 contribute to two families each through
 #   distinct distractors (dual coverage), which is legitimate per-distractor
 #   tagging, not double-counting of a single distractor.
+#
+# UPDATE (audit-banque-pc2.md, notion suivi-temporel-vitesse, finding B1 —
+# the A part, 2026-09-27): the manometric substitute-curve case (x =
+# x_max.DeltaP/DeltaP_max, t_1/2 where DeltaP = DeltaP_max/2) was demonstrated
+# nowhere in the corpus and tested by no item or checkpoint. STV-19 (R4, fresh
+# numbers) closes it, extending demi-reaction-mal-definie (already at the
+# floor via STV-6/STV-14/STV-15) to a fourth item and to a substitute-curve
+# context the family had not yet covered: all three distractors are honest
+# transplants of manifestations STV-6/STV-14 already established (confused
+# with the end of the reaction; confused with half the total elapsed time;
+# read on the rate curve instead of the amount curve) into the pressure
+# reading, not new procedures pooled under the id.
 #
 # In-lesson checkpoints (checkpoints.yaml) surface clones of STV-3 / STV-5 /
 # STV-6 / STV-15 plus one original commit item (cp-r0-predict); those inline
@@ -1076,10 +1158,10 @@ coverage_summary:
     mc.physics.pc_suivi_temporel_vitesse.methode-suivi-inadaptee:           { count: 3, items: [STV-1, STV-2, STV-10] }
     mc.physics.pc_suivi_temporel_vitesse.vitesse-mal-reliee-a-la-pente:     { count: 3, items: [STV-3, STV-4, STV-11] }
     mc.physics.pc_suivi_temporel_vitesse.allure-vitesse-fausse:             { count: 5, items: [STV-5, STV-7, STV-8, STV-9, STV-18] }
-    mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie:         { count: 3, items: [STV-6, STV-14, STV-15] }
+    mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie:         { count: 4, items: [STV-6, STV-14, STV-15, STV-19] }
     mc.physics.pc_suivi_temporel_vitesse.facteurs-cinetiques-mal-appliques: { count: 3, items: [STV-13, STV-15, STV-16] }
     mc.physics.pc_suivi_temporel_vitesse.vitesse-baisse-mauvaise-cause:     { count: 3, items: [STV-12, STV-17, STV-18] }
-  total_items: 18
+  total_items: 19
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -1087,9 +1169,13 @@ coverage_summary:
     R1: 3
     R2: 3
     R3: 3
-    R4: 3
+    R4: 4
     R5: 3
   honest_state: >-
     Les six misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Cinq y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item la casse.
+    plancher. Quatre y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse. `demi-reaction-mal-definie` est
+    sortie de ce lot le 2026-09-27 (STV-19 l'amène à 4, en fermant le
+    gap B1/A du manomètre — audit-banque-pc2.md) ; les quatre restantes
+    sont `methode-suivi-inadaptee`, `vitesse-mal-reliee-a-la-pente`,
+    `facteurs-cinetiques-mal-appliques` et `vitesse-baisse-mauvaise-cause`.

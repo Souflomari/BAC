@@ -456,6 +456,26 @@ $$\frac{1}{2}J\dot\theta_{max}^2 = E_m \quad \Longrightarrow \quad \dot\theta_{m
 
 Vérifie avec l'autre chemin, celui de l'équation horaire (chapitre Systèmes oscillants, chapitre 5) : $\omega_0 = \sqrt{C/J} = \sqrt{0{,}16/4{,}0\times10^{-3}} = \sqrt{40} \approx 6{,}32\ \text{rad/s}$, et $\dot\theta_{max} = \omega_0\,\theta_0 \approx 6{,}32 \times 0{,}20 \approx 1{,}26\ \text{rad/s}$. Les deux méthodes s'accordent — l'énergie et l'équation horaire décrivent le même mouvement, vu sous deux angles différents.
 
+### Exemple travaillé : lire $C$ sur un diagramme d'énergie de torsion
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* jusqu'ici, ces diagrammes n'ont été décrits qu'en mots. Le bac donne souvent un graphe gradué et demande d'en extraire une valeur — ici, la constante de torsion $C$ du pendule qu'on vient d'étudier, à partir de son diagramme $E_{p,torsion}(\theta)$ et de la droite $E_m$.
+
+[[figure:lecture-diagramme-torsion]]
+
+Le graphe montre la parabole $E_{p,torsion}(\theta) = \frac12 C\theta^2$ (nulle en $\theta=0$, remontant des deux côtés) et la droite horizontale $E_m$ — le plafond que la parabole touche exactement aux deux écarts extrêmes $\theta=\pm\theta_m$ (là où $E_c=0$, toute l'énergie est potentielle). Deux lectures, une seule information : $E_m$ se lit soit directement sur la hauteur de la droite, soit comme le sommet atteint par la parabole en $\theta=\pm\theta_m$.
+
+Sur l'axe des $\theta$, l'écart où la parabole rejoint la droite tombe sur une graduation imprimée : $\theta_m = 0{,}20\ \text{rad}$.
+
+Sur l'axe des énergies, en revanche, attention : la dernière valeur **imprimée** sur l'axe est $2\ \text{mJ}$, mais la droite $E_m$ ne passe pas par cette graduation-là — elle passe une maille **au-dessus**. Compte le pas de la grille : deux mailles entre deux graduations imprimées, qui sont à $1\ \text{mJ}$ l'une de l'autre, donc une maille vaut $0{,}5\ \text{mJ}$ ; une maille au-dessus de $2\ \text{mJ}$, c'est $2{,}5\ \text{mJ}$.
+
+$$E_m = 2{,}5\ \text{mJ} = 2{,}5\times10^{-3}\ \text{J}$$
+
+D'où $C$ :
+
+$$E_m = \frac12 C\theta_m^2 \quad\Longrightarrow\quad C = \frac{2E_m}{\theta_m^2} = \frac{2\times2{,}5\times10^{-3}}{(0{,}20)^2} = \frac{5{,}0\times10^{-3}}{0{,}040} \approx 0{,}13\ \text{N·m/rad}$$
+
+**Le piège :** répondre $E_m=2\ \text{mJ}$ — la dernière valeur imprimée sur l'axe — sans compter la maille qui reste au-dessus. Cette lecture donnerait $C = 2\times2{,}0\times10^{-3}/0{,}040 = 0{,}10\ \text{N·m/rad}$ au lieu de $0{,}125$ : une valeur fausse de $20\,\%$, pour avoir simplement oublié de compter un pas de grille.
+
 ---
 
 ## R7 — L'énergie du pendule pesant : quand le « ressort » est la pesanteur

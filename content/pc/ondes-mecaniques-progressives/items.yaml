@@ -59,6 +59,20 @@ misconceptions:
     label: "« Confondre la PHOTO de la corde (élongation en fonction de la distance x, à un instant figé) et le FILM d'un point (élongation en fonction du temps t, à une abscisse figée) »"
     description: "L'élève lit ou dessine un graphe sans identifier son axe des abscisses. Formes : recopier le geste de la source y_S(t) tel quel comme aspect de la corde, au lieu de son MIROIR (le point le plus éloigné de S rejoue ce que S a fait en PREMIER) ; lire une durée sur une photo (ou une distance sur un film) sans passer par la célérité ; conclure d'un graphe qu'un point « monte puis descend » alors que le graphe montre une corde, ou l'inverse. Ce modèle répond CORRECTEMENT à toute question purement numérique sur τ = d/v : il ne se révèle qu'en demandant de LIRE ou de DESSINER une corde."
     contradicts_principle: "Une photo et un film sont deux coupes différentes du même phénomène : la photo fige le temps et parcourt l'espace, le film fige l'espace et parcourt le temps. Sur une photo, une largeur est une DISTANCE (on passe à une durée en divisant par v) et la forme est le geste de la source RETOURNÉ, parce qu'on remonte le temps du geste en s'éloignant de S. Sur un film, l'abscisse est une DURÉE et la courbe de M est celle de S décalée de +τ vers la droite."
+  # Ajoutés le 2026-09-27 (docs/audits/dette-examen/pc-2.md §2, gaps A1/A2/B1) —
+  # aucun id existant ne nomme honnêtement ces deux modèles : les onze
+  # ci-dessus portent sur la nature de l'onde, la célérité, ou la relation
+  # à UN seul trajet ; ceux-ci portent sur la façon de COMBINER deux
+  # trajets, ou sur le choix des points lus sur un oscillogramme à deux
+  # voies — deux gestes distincts, absents de tout ce qui précède.
+  - id: mc.physics.pc_omp.deux-trajets-un-seul
+    label: "« Deux trajets traités comme un seul : aller-retour d'un écho, deux distances vers un point intermédiaire, ou deux durées de parcours dans deux milieux, réduits à un seul trajet »"
+    description: "L'élève calcule une distance ou une durée comme si un seul trajet suffisait à l'expliquer, alors que la grandeur mesurée résulte de DEUX trajets : il oublie le retour d'un écho (facteur 2 manquant, ou appliqué dans le mauvais sens), oublie l'un des deux trajets qui convergent vers un point intermédiaire (ou se trompe sur le facteur 2, ou sur son signe), ou ignore l'un des deux milieux traversés — ou additionne leurs deux durées de parcours au lieu de les soustraire."
+    contradicts_principle: "Dès qu'une distance ou une durée résulte de DEUX trajets — l'aller ET le retour d'un écho, deux distances convergeant vers un même point, ou deux durées de parcours à des célérités différentes sur une même distance — c'est l'opération exacte sur CES DEUX trajets (un facteur 2 dans le bon sens, ou une différence avec le bon signe) qui donne la grandeur physique cherchée, jamais un calcul à un seul trajet, ni une simple addition des deux."
+  - id: mc.physics.pc_omp.oscillogramme-mauvais-reperes
+    label: "« Mauvais repères sur un oscillogramme : largeur d'une salve, ou début d'une salve jusqu'à la fin de l'autre, pris pour le décalage »"
+    description: "L'élève compte des divisions entre deux points qui ne sont PAS homologues sur les deux courbes d'un oscillogramme — la largeur d'une seule salve (la durée du signal, pas un retard), ou le début d'une salve jusqu'à la fin de l'autre (qui ajoute la largeur d'une salve au vrai décalage) — au lieu de comparer deux débuts, ou deux points qui se correspondent."
+    contradicts_principle: "Le décalage entre deux salves se lit entre deux points HOMOLOGUES des deux courbes (deux débuts, ou deux points qui se correspondent), jamais entre le début et la fin d'une même salve, ni entre le début d'une salve et la fin de l'autre : ces choix mélangent une durée de signal avec un retard de propagation."
 
 items:
   - id: OMP-1
@@ -1889,6 +1903,491 @@ items:
       change l'amplitude du coup, ni si l'on change la paire de photos
       choisie, tant que le milieu reste le même.
 
+  # Ajouté le 2026-09-27 (docs/audits/dette-examen/pc-2.md §2, A1) : l'écho —
+  # 2L = vΔt — n'était démontré nulle part avant la réécriture du rung R4
+  # (§ « Une onde qui fait l'aller-retour : l'écho ») et jamais testé.
+  # Nombres et contexte propres (échographie médicale), distincts du sondeur
+  # marin de la leçon (v=1500 m/s, Δt=80 ms, L=60 m) et de la nappe de
+  # pétrole de bk-2011-r-x2 (v=1300 m/s, t2-t1=1,2 s, L=780 m). Ouvre l'id
+  # mc.physics.pc_omp.deux-trajets-un-seul (voir le résumé de couverture) :
+  # porté aussi par OMP-28 et OMP-30.
+  - id: OMP-27
+    rung: "R4"
+    difficulty_level: 3
+    habilete: résolution
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [celerite_retard, aller_retour, application_experimentale]
+    primary_misconception: mc.physics.pc_omp.deux-trajets-un-seul
+    stem: >
+      Une échographie médicale envoie, à la verticale, une brève salve
+      d'ultrasons vers une structure interne : l'écho revient au bout de
+      $\Delta t = 20\ \mu\text{s}$. Sachant que la célérité des ultrasons
+      dans les tissus mous vaut $v = 1540\ \text{m/s}$, quelle est la
+      profondeur $L$ de cette structure ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $L = 1{,}54\times10^{-2}\ \text{m}$
+        correct: true
+      - id: B
+        text: >-
+          $L = 3{,}08\times10^{-2}\ \text{m}$
+        correct: false
+        misconception: mc.physics.pc_omp.deux-trajets-un-seul
+        feedback: >
+          Ce calcul traite $\Delta t$ comme la durée d'un seul trajet. Mais
+          l'écho fait l'aller ET le retour : la salve parcourt deux fois la
+          profondeur $L$ pendant $\Delta t$, pas une seule. Il faut diviser
+          par $2$ pour isoler $L$ : $v\,\Delta t = 2L$, donc
+          $L = v\,\Delta t/2$, pas $v\,\Delta t$.
+      - id: C
+        text: >-
+          $L = 6{,}16\times10^{-2}\ \text{m}$
+        correct: false
+        misconception: mc.physics.pc_omp.deux-trajets-un-seul
+        feedback: >
+          L'aller-retour introduit bien un facteur $2$, mais dans l'autre
+          sens que celui utilisé ici : $v\,\Delta t$ vaut déjà $2L$ (deux
+          fois la profondeur), donc il faut DIVISER par $2$ pour isoler
+          $L$, pas multiplier une seconde fois. Multiplier par $2$
+          reviendrait à faire parcourir à la salve quatre fois la
+          profondeur, pas deux.
+      - id: D
+        text: >-
+          $L \approx 6{,}49\times10^{-9}\ \text{m}$
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Ce calcul inverse le rapport entre la distance et la célérité :
+          une distance s'obtient en MULTIPLIANT une célérité par une durée,
+          pas en divisant l'une par l'autre. Le résultat obtenu ici, de
+          l'ordre du nanomètre, est d'ailleurs sans rapport avec la taille
+          d'une structure interne visible en échographie — un contrôle
+          d'ordre de grandeur qui, à lui seul, écarte cette réponse.
+    correct_feedback: >
+      L'écho fait l'aller ET le retour : pendant $\Delta t$, la salve
+      parcourt deux fois la profondeur $L$, donc $v\,\Delta t = 2L$, d'où
+      $L = v\,\Delta t/2 = 1{,}54\times10^{-2}\ \text{m}$.
+    solution: |
+      La salve part de la sonde, atteint la structure à la profondeur $L$,
+      s'y réfléchit, puis revient : la distance totale parcourue pendant
+      $\Delta t$ est donc $2L$, pas $L$.
+      $$v\,\Delta t = 2L \implies L = \frac{v\,\Delta t}{2}$$
+      $$L = \frac{1540\times20\times10^{-6}}{2} = 1{,}54\times10^{-2}\ \text{m} = 1{,}54\ \text{cm}$$
+      Oublier ce facteur $2$ (ou l'appliquer dans le mauvais sens) double —
+      ou quadruple — la profondeur trouvée par rapport à sa vraie valeur.
+
+  # Ajouté le 2026-09-27 (docs/audits/dette-examen/pc-2.md §2, A2) :
+  # l'émetteur placé ENTRE les deux récepteurs — τ = (d − 2ℓ)/v — n'existait
+  # dans aucun item (R4 ne couvrait que la source EXTÉRIEURE à la paire de
+  # microphones). Nombres propres (d = 1,34 m, τ = 1,0 ms), distincts de
+  # bk-2024-r-x2 (d = 2,85 m, τ = 2,0 ms, ℓ ≈ 1,09 m). Porte
+  # mc.physics.pc_omp.deux-trajets-un-seul sur ses trois distracteurs — le
+  # sourcing de bk-2024-r-x2 (bank.yaml, question q4) nomme déjà ℓ = vτ et
+  # ℓ = d − vτ comme « variante du même oubli » du facteur 2.
+  - id: OMP-28
+    rung: "R4"
+    difficulty_level: 4
+    habilete: résolution
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [celerite_retard, aller_retour, deux_trajets]
+    primary_misconception: mc.physics.pc_omp.deux-trajets-un-seul
+    stem: >
+      Un émetteur $S$ est placé entre deux récepteurs $R_1$ et $R_2$,
+      alignés et distants de $d = 1{,}34\ \text{m}$, à la distance $\ell$
+      de $R_1$. $S$ émet une brève salve sonore ; le signal atteint $R_2$
+      avec un retard $\tau = 1{,}0\ \text{ms}$ par rapport à $R_1$. Sachant
+      que la célérité du son dans l'air vaut $v = 340\ \text{m/s}$, quelle
+      est la distance $\ell$ entre $S$ et $R_1$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\ell = 0{,}50\ \text{m}$
+        correct: true
+      - id: B
+        text: >-
+          $\ell = 0{,}34\ \text{m}$
+        correct: false
+        misconception: mc.physics.pc_omp.deux-trajets-un-seul
+        feedback: >
+          Ce calcul traite $\tau$ comme le temps de vol du son de $S$
+          jusqu'à $R_1$ pris isolément. Mais $S$ est ENTRE les deux
+          récepteurs : $R_1$ ET $R_2$ attendent chacun leur propre trajet,
+          et $\tau$ est la DIFFÉRENCE de ces deux trajets,
+          $\tau = (d-2\ell)/v$ — pas le trajet vers $R_1$ seul.
+      - id: C
+        text: >-
+          $\ell = 1{,}00\ \text{m}$
+        correct: false
+        misconception: mc.physics.pc_omp.deux-trajets-un-seul
+        feedback: >
+          Ce calcul isole correctement $2\ell = d - v\,\tau$, mais oublie
+          la toute dernière étape : diviser par $2$. Déplacer $S$ de
+          $1\ \text{cm}$ vers $R_1$ raccourcit ce trajet de $1\ \text{cm}$
+          ET allonge l'autre de $1\ \text{cm}$ à la fois : c'est ce facteur
+          $2$ qui rend $\ell$ deux fois plus petit que $d - v\,\tau$, pas
+          égal à cette quantité.
+      - id: D
+        text: >-
+          $\ell = 0{,}84\ \text{m}$
+        correct: false
+        misconception: mc.physics.pc_omp.deux-trajets-un-seul
+        feedback: >
+          Le facteur $2$ est ici correctement traité, mais le signe est
+          inversé : cette valeur, $0{,}84\ \text{m}$, est en réalité la
+          distance de $S$ à $R_2$, pas à $R_1$. Puisque $R_1$ reçoit le
+          signal en premier, $S$ lui est plus proche : $\ell$ doit être
+          inférieur à $d/2 = 0{,}67\ \text{m}$, ce que seule la
+          soustraction $d - v\,\tau$ (pas l'addition) donne au numérateur.
+    correct_feedback: >
+      $S$ est à la distance $\ell$ de $R_1$ et $d-\ell$ de $R_2$ : le
+      retard est la DIFFÉRENCE de ces deux temps de trajet,
+      $\tau = (d-2\ell)/v$. En isolant $\ell$ :
+      $\ell = (d - v\,\tau)/2 = 0{,}50\ \text{m}$.
+    solution: |
+      **La géométrie.** $S$ est à $\ell$ de $R_1$ et à $d-\ell$ de $R_2$.
+
+      **Les deux durées.**
+      $$t_1 = \frac{\ell}{v} \qquad t_2 = \frac{d-\ell}{v}$$
+
+      **Le retard, différence des deux.**
+      $$\tau = t_2 - t_1 = \frac{d-\ell}{v} - \frac{\ell}{v} = \frac{d-2\ell}{v}$$
+
+      **On isole $\ell$.**
+      $$v\,\tau = d - 2\ell \implies \ell = \frac{d - v\,\tau}{2}$$
+
+      $$\ell = \frac{1{,}34 - 340\times10^{-3}}{2} = \frac{1{,}34-0{,}34}{2} = \frac{1{,}00}{2} = 0{,}50\ \text{m}$$
+
+      Contrôle : $S$ est plus proche de $R_1$ (qui reçoit en premier), donc
+      $\ell$ doit être inférieur à $d/2 = 0{,}67\ \text{m}$ —
+      $0{,}50\ \text{m}$ convient ; $d - \ell = 0{,}84\ \text{m}$ est bien
+      la distance, plus grande, jusqu'à $R_2$.
+
+  # Ajouté le 2026-09-27 (docs/audits/dette-examen/pc-2.md §2, B1) : la
+  # lecture « décalage en divisions × sensibilité », désormais travaillée
+  # dans l'exemple du rung R4, n'était testée par aucun item (les deux
+  # pièges de la leçon — largeur de salve, début-à-fin — n'avaient jamais
+  # d'item pour les distinguer). Nombres propres (d = 0,90 m,
+  # s = 0,20 ms/div, décalage 5 div, largeur 1 div), distincts de la leçon
+  # (d = 1,02 m, 6 div, 0,5 ms/div), d'OMP-16 (d = 1,36 m, Δt = 4,0 ms), de
+  # bk-2024-r-x2 (d = 2,85 m, 4 div, 0,5 ms/div) et de bk-2011-r-x2
+  # (15 mailles, 0,1 ms/maille). Ouvre l'id
+  # mc.physics.pc_omp.oscillogramme-mauvais-reperes (voir le résumé de
+  # couverture) : porté aussi par OMP-31 et OMP-32.
+  - id: OMP-29
+    rung: "R4"
+    difficulty_level: 3
+    habilete: application_experimentale
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [oscillogramme, celerite_retard, application_experimentale]
+    primary_misconception: mc.physics.pc_omp.oscillogramme-mauvais-reperes
+    stem: >
+      Deux microphones $M_1$ et $M_2$, distants de $d = 0{,}90\ \text{m}$,
+      sont reliés aux deux voies d'un oscilloscope dont la sensibilité
+      horizontale est réglée à $s = 0{,}20\ \text{ms/div}$. Sur l'écran,
+      chaque salve occupe une largeur d'environ $1$ division ; le décalage
+      entre le DÉBUT de la salve de $M_1$ et le DÉBUT de la salve de
+      $M_2$ — deux points homologues — vaut $5$ divisions. Quelle est la
+      valeur du retard temporel $\tau$ entre les deux réceptions ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\tau = 1{,}0\ \text{ms}$
+        correct: true
+      - id: B
+        text: >-
+          $\tau = 5\ \text{ms}$
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Le nombre de divisions n'est pas déjà une durée : c'est un
+          compte de graduations sur l'écran, sans unité physique tant
+          qu'il n'est pas multiplié par la sensibilité horizontale.
+          $5$ divisions à $0{,}20\ \text{ms/div}$ font $1{,}0\ \text{ms}$,
+          pas $5\ \text{ms}$ — cette dernière valeur confond le nombre de
+          divisions avec une durée en millisecondes.
+      - id: C
+        text: >-
+          $\tau = 0{,}20\ \text{ms}$
+        correct: false
+        misconception: mc.physics.pc_omp.oscillogramme-mauvais-reperes
+        feedback: >
+          $1$ division, c'est la LARGEUR d'une seule salve — la durée du
+          signal émis, pas le décalage entre deux réceptions. Le retard se
+          lit entre deux points HOMOLOGUES des deux courbes (ici, les deux
+          débuts), pas sur la largeur d'une salve isolée.
+      - id: D
+        text: >-
+          $\tau = 1{,}2\ \text{ms}$
+        correct: false
+        misconception: mc.physics.pc_omp.oscillogramme-mauvais-reperes
+        feedback: >
+          Ce compte va du DÉBUT de la salve de $M_1$ jusqu'à la FIN de
+          celle de $M_2$ : il ajoute la largeur d'une salve ($1$ division)
+          au vrai décalage ($5$ divisions), d'où $6$ au lieu de $5$. Il
+          faut comparer deux points homologues — deux débuts, ou deux
+          fins — jamais un début et une fin.
+    correct_feedback: >
+      Le décalage entre deux points homologues des deux courbes — ici, les
+      deux débuts de salve — vaut $5$ divisions, converties par la
+      sensibilité horizontale : $\tau = 5\times0{,}20 = 1{,}0\ \text{ms}$.
+    solution: |
+      Le retard se lit en comparant deux points HOMOLOGUES des deux
+      courbes — ici, le début de chaque salve — jamais la largeur d'une
+      salve isolée, ni un début et une fin mélangés.
+      $$\tau = 5\ \text{div} \times 0{,}20\ \text{ms/div} = 1{,}0\ \text{ms} = 1{,}0\times10^{-3}\ \text{s}$$
+      Deux pièges guettaient cette lecture : compter la largeur d'une
+      seule salve ($1$ division, la durée du signal, pas un retard), ou
+      compter du début d'une salve à la fin de l'autre ($6$ divisions, qui
+      ajoute la largeur d'une salve au décalage réel).
+
+  # Ajouté le 2026-09-27 (docs/audits/dette-examen/pc-2.md §2, B2) :
+  # τ = L(1/V₁ − 1/V₂) n'était démontré que dans l'exercice embarqué r-bac
+  # (le sujet même de bk-2018-n-x2), jamais testé par un item. Nombres et
+  # contexte propres (rail d'acier / air, L = 340 m), distincts du
+  # pétrole/air de bk-2018-n-x2 (L = 1,84 m, V_air = 340, décalage
+  # 2 div × 2 ms/div, V_p ≈ 1,3e3 m/s).
+  - id: OMP-30
+    rung: "R5"
+    difficulty_level: 4
+    habilete: résolution
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [celerite_retard, deux_milieux]
+    primary_misconception: mc.physics.pc_omp.deux-trajets-un-seul
+    stem: >
+      On frappe une extrémité d'un long rail d'acier de longueur
+      $L = 340\ \text{m}$. Le son de l'impact se propage à la fois le long
+      du rail (dans l'acier, $V_{acier} \approx 5000\ \text{m/s}$) et par
+      l'air ambiant, le long du rail ($V_{air} = 340\ \text{m/s}$), jusqu'à
+      un observateur placé à l'autre extrémité. Quel est l'écart de temps
+      $\tau$ entre les deux arrivées du son — celle par l'acier, puis
+      celle par l'air ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\tau \approx 0{,}93\ \text{s}$
+        correct: true
+      - id: B
+        text: >-
+          $\tau \approx 1{,}07\ \text{s}$
+        correct: false
+        misconception: mc.physics.pc_omp.deux-trajets-un-seul
+        feedback: >
+          Les deux ondes parcourent la MÊME distance $L$, chacune à sa
+          propre célérité : le son de l'acier arrive avant celui de l'air,
+          et $\tau$ est la DIFFÉRENCE de leurs deux durées de trajet, pas
+          leur somme. Additionner les deux durées reviendrait à compter un
+          trajet supplémentaire qui n'existe pas.
+      - id: C
+        text: >-
+          $\tau \approx 0{,}073\ \text{s}$
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Cette expression emprunte, à tort, la formule d'un rattrapage
+          entre deux mobiles animés de vitesses différentes. Ici, il n'y a
+          ni rattrapage ni vitesse relative : chaque onde parcourt $L$ à sa
+          propre célérité, en un temps $L/V$, et $\tau$ est la différence
+          de ces deux temps de trajet, $L/V_{air} - L/V_{acier}$, jamais
+          $L$ divisée par une différence de célérités.
+      - id: D
+        text: >-
+          $\tau = 1{,}0\ \text{s}$
+        correct: false
+        misconception: mc.physics.pc_omp.deux-trajets-un-seul
+        feedback: >
+          Ce calcul ignore complètement le trajet par l'acier, comme si le
+          son ne se propageait que par l'air. Or les deux trajets existent
+          et arrivent à des instants différents : $\tau$ est l'écart entre
+          les deux arrivées, pas la durée d'un seul des deux trajets pris
+          isolément.
+    correct_feedback: >
+      Chaque onde parcourt la même distance $L$, mais à sa propre
+      célérité : le son de l'acier arrive le premier, celui de l'air en
+      second, et $\tau$ est la différence de leurs deux durées de trajet,
+      $\tau = L(1/V_{air}-1/V_{acier}) \approx 0{,}93\ \text{s}$.
+    solution: |
+      **Les deux durées de trajet, sur la même distance $L$.**
+      $$t_{acier} = \frac{L}{V_{acier}} = \frac{340}{5000} = 0{,}068\ \text{s}
+      \qquad t_{air} = \frac{L}{V_{air}} = \frac{340}{340} = 1{,}000\ \text{s}$$
+
+      **Le son par l'acier arrive en premier** (célérité plus grande) :
+      l'écart entre les deux arrivées est la différence de ces deux
+      durées.
+      $$\tau = t_{air} - t_{acier} = L\left(\frac{1}{V_{air}}-\frac{1}{V_{acier}}\right) = 1{,}000 - 0{,}068 = 0{,}93\ \text{s}$$
+
+      Oublier le second trajet, ou additionner les deux durées au lieu de
+      les soustraire, sont les deux erreurs les plus fréquentes sur ce
+      calcul.
+
+  # Ajouté le 2026-09-27 : deuxième item pour
+  # mc.physics.pc_omp.oscillogramme-mauvais-reperes (plancher de 3, voir le
+  # résumé de couverture) — même geste de lecture qu'OMP-29, contexte et
+  # nombres différents (un ébranlement sur corde, capté par deux capteurs
+  # de position, pas deux microphones), enchaîné jusqu'à $v$ plutôt
+  # qu'arrêté à $\tau$.
+  - id: OMP-31
+    rung: "R4"
+    difficulty_level: 4
+    habilete: application_experimentale
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [oscillogramme, celerite_retard, application_experimentale]
+    primary_misconception: mc.physics.pc_omp.oscillogramme-mauvais-reperes
+    stem: >
+      Un ébranlement unique se propage le long d'une corde tendue. Deux
+      capteurs de position $C_1$ et $C_2$, distants de $d = 1{,}50\ \text{m}$,
+      sont reliés à un système d'acquisition dont la sensibilité
+      horizontale est réglée à $s = 20\ \text{ms/div}$. Sur
+      l'enregistrement, le signal de chaque capteur occupe une largeur
+      d'environ $1$ division ; le décalage entre le DÉBUT du signal de
+      $C_1$ et le DÉBUT de celui de $C_2$ — deux points homologues — vaut
+      $5$ divisions. Quelle est la célérité $v$ de l'ébranlement le long de
+      la corde ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $v = 15\ \text{m/s}$
+        correct: true
+      - id: B
+        text: >-
+          $v = 300\ \text{m/s}$
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Le nombre de divisions n'est pas déjà une durée en
+          millisecondes : il faut le multiplier par la sensibilité
+          horizontale, $20\ \text{ms/div}$, pour obtenir
+          $\tau = 100\ \text{ms}$, pas $5\ \text{ms}$. La vitesse obtenue
+          ici, $300\ \text{m/s}$, est d'ailleurs bien trop grande pour un
+          ébranlement sur une corde tendue — un contrôle d'ordre de
+          grandeur qui alerte à lui seul.
+      - id: C
+        text: >-
+          $v = 75\ \text{m/s}$
+        correct: false
+        misconception: mc.physics.pc_omp.oscillogramme-mauvais-reperes
+        feedback: >
+          $1$ division, c'est la largeur du signal d'un seul capteur, pas
+          le décalage entre les deux réceptions. Le retard se lit entre
+          deux points homologues des deux courbes (les deux débuts), pas
+          sur la largeur d'un seul signal isolé.
+      - id: D
+        text: >-
+          $v = 12{,}5\ \text{m/s}$
+        correct: false
+        misconception: mc.physics.pc_omp.oscillogramme-mauvais-reperes
+        feedback: >
+          Ce compte va du début du signal de $C_1$ jusqu'à la fin de celui
+          de $C_2$ : il ajoute la largeur d'un signal ($1$ division) au
+          vrai décalage ($5$ divisions). Il faut comparer deux points
+          homologues — deux débuts, ou deux fins — jamais un début et une
+          fin.
+    correct_feedback: >
+      Le décalage entre les deux débuts — deux points homologues — vaut
+      $5$ divisions, soit $\tau = 5\times20 = 100\ \text{ms}$ ; la
+      célérité s'en déduit par $v = d/\tau = 1{,}50/0{,}100 = 15\ \text{m/s}$.
+    solution: |
+      **La lecture.** Le décalage entre les deux débuts de signal — deux
+      points homologues — vaut $5$ divisions :
+      $$\tau = 5\ \text{div}\times20\ \text{ms/div} = 100\ \text{ms} = 0{,}100\ \text{s}$$
+
+      **La célérité.**
+      $$v = \frac{d}{\tau} = \frac{1{,}50}{0{,}100} = 15\ \text{m/s}$$
+
+      Une valeur plausible pour un ébranlement le long d'une corde tendue —
+      contrairement aux $300\ \text{m/s}$ obtenus en oubliant de convertir
+      les divisions en millisecondes.
+
+  # Ajouté le 2026-09-27 : troisième item pour
+  # mc.physics.pc_omp.oscillogramme-mauvais-reperes (plancher de 3 atteint,
+  # voir le résumé de couverture) — geste de critique, comme OMP-21/OMP-25,
+  # plutôt que de calcul direct comme OMP-29/OMP-31.
+  - id: OMP-32
+    rung: "R4"
+    difficulty_level: 5
+    habilete: application_experimentale
+    skill_code: pc_ondes_mecaniques_progressives
+    tags: [oscillogramme, critique_de_raisonnement]
+    primary_misconception: mc.physics.pc_omp.oscillogramme-mauvais-reperes
+    stem: >
+      En TP, un binôme mesure le retard entre deux microphones $M_1$ et
+      $M_2$ avec une sensibilité $s = 0{,}5\ \text{ms/div}$. Sur l'écran,
+      chaque salve occupe environ $2$ divisions de large ; le binôme
+      mesure un décalage de $3$ divisions entre le DÉBUT de la salve de
+      $M_1$ et la FIN de celle de $M_2$, et écrit :
+      « $\tau = 3\times0{,}5 = 1{,}5\ \text{ms}$ ». Que penser de cette
+      mesure ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le binôme a mesuré début-à-fin, qui vaut décalage + largeur
+          d'une salve : le vrai décalage est $3-2=1$ division, soit
+          $\tau = 1\times0{,}5 = 0{,}5\ \text{ms}$
+        correct: true
+      - id: B
+        text: >-
+          $\tau = 1{,}5\ \text{ms}$ est la bonne valeur : le nombre de
+          divisions compté entre les deux points choisis, $3$, est
+          converti correctement par la sensibilité
+        correct: false
+        misconception: mc.physics.pc_omp.oscillogramme-mauvais-reperes
+        feedback: >
+          La conversion ($3\times0{,}5$) est correcte, mais les deux
+          points choisis ne sont pas homologues : un début et une fin de
+          salves différentes ne mesurent pas un retard, ils mesurent un
+          retard PLUS une largeur de salve. Le résultat, bien que calculé
+          à partir d'un compte exact de divisions, reste faux.
+      - id: C
+        text: >-
+          Faux, mais pour une autre raison : il fallait mesurer la largeur
+          d'une seule salve, $2$ divisions, soit
+          $\tau = 2\times0{,}5 = 1{,}0\ \text{ms}$
+        correct: false
+        misconception: mc.physics.pc_omp.oscillogramme-mauvais-reperes
+        feedback: >
+          La largeur d'une salve mesure la durée du signal émis, pas le
+          décalage entre les deux réceptions : ce n'est pas non plus le
+          bon repère. Le retard se lit entre deux points HOMOLOGUES des
+          deux courbes — ici, les deux débuts — jamais sur la largeur
+          d'une seule salve.
+      - id: D
+        text: >-
+          Faux, mais pour une autre raison : le décalage de $3$ divisions
+          est le bon repère, seulement il ne fallait pas le convertir,
+          $\tau = 3\ \text{ms}$ directement
+        correct: false
+        misconception: mc.physics.pc_omp.retard-relation-fausse
+        feedback: >
+          Un nombre de divisions n'est jamais déjà une durée en
+          millisecondes : la conversion par la sensibilité horizontale est
+          une étape obligatoire, pas facultative. Le problème de cette
+          mesure n'est pas la conversion, c'est le choix des deux points
+          comptés — un début et une fin, pas deux points homologues.
+    correct_feedback: >
+      Compter du début d'une salve à la fin de l'autre ajoute la largeur
+      d'une salve au vrai décalage : $3$ divisions comptées, moins $2$
+      divisions de largeur, donnent le vrai décalage de $1$ division, soit
+      $\tau = 0{,}5\ \text{ms}$ — le tiers de la valeur du binôme.
+    solution: |
+      **Ce que le binôme a réellement compté.** Du début de la salve de
+      $M_1$ à la fin de celle de $M_2$ : cette distance vaut le vrai
+      décalage (début-à-début) PLUS la largeur d'une salve.
+      $$3\ \text{div} = \tau_{\text{div}} + 2\ \text{div} \implies \tau_{\text{div}} = 1\ \text{div}$$
+
+      **La conversion, sur le bon repère.**
+      $$\tau = 1\ \text{div}\times0{,}5\ \text{ms/div} = 0{,}5\ \text{ms}$$
+
+      Le binôme n'a pas fait d'erreur de conversion (l'arithmétique
+      $3\times0{,}5$ est juste) : l'erreur est en amont, dans le choix des
+      deux points comptés. Comparer systématiquement deux débuts, ou deux
+      fins, jamais un début et une fin, évite cette erreur.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après OMP-19, OMP-20 et OMP-21. L'ancien déclarait
 # franchement `floor_met: false` et nommait la dette — mais il comptait au
@@ -1900,6 +2399,17 @@ items:
 # `periodicite-hors-cadre` (1). Tableau GÉNÉRÉ contre
 # web/scripts/lib/couverture-compte.mjs, gardé par
 # web/scripts/resume-couverture.mjs.
+#
+# MIS À JOUR le 2026-09-27 (docs/audits/dette-examen/pc-2.md §2 — gaps A1,
+# A2, B1, B2) : OMP-27…OMP-30 comblent les quatre gaps du debt-examen
+# (écho ; émetteur entre récepteurs ; oscillogramme à deux voies ; deux
+# milieux). Ni id existant n'était honnête pour « deux trajets combinés »
+# ou « mauvais repère sur un oscillogramme » (les onze ids précédents
+# portent sur la nature de l'onde, la célérité, ou une relation à UN seul
+# trajet) : deux ids nouveaux sont déclarés, et chacun est amené au
+# plancher de 3 par un item SUPPLÉMENTAIRE (OMP-31, OMP-32 — gestes et
+# contextes distincts, pas des clones), conformément à la règle du
+# plancher pour un id neuf.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -1915,12 +2425,14 @@ coverage_summary:
     mc.physics.pc_omp.confusion-transversale-longitudinale: { count: 4, items: [OMP-3, OMP-11, OMP-12, OMP-17] }
     mc.physics.pc_omp.celerite-depend-source:               { count: 6, items: [OMP-4, OMP-16, OMP-18, OMP-19, OMP-24, OMP-26] }
     mc.physics.pc_omp.celerite-est-vitesse-point:           { count: 5, items: [OMP-19, OMP-20, OMP-21, OMP-25, OMP-26] }
-    mc.physics.pc_omp.retard-relation-fausse:               { count: 8, items: [OMP-5, OMP-13, OMP-16, OMP-17, OMP-22, OMP-23, OMP-25, OMP-26] }
+    mc.physics.pc_omp.retard-relation-fausse:               { count: 13, items: [OMP-5, OMP-13, OMP-16, OMP-17, OMP-22, OMP-23, OMP-25, OMP-26, OMP-27, OMP-29, OMP-30, OMP-31, OMP-32] }
     mc.physics.pc_omp.front-onde-dimension:                 { count: 3, items: [OMP-6, OMP-14, OMP-15] }
     mc.physics.pc_omp.son-nature:                           { count: 3, items: [OMP-6, OMP-20, OMP-21] }
     mc.physics.pc_omp.periodicite-hors-cadre:               { count: 4, items: [OMP-18, OMP-19, OMP-21, OMP-23] }
     mc.physics.pc_omp.photo-film-confondus:                 { count: 3, items: [OMP-22, OMP-23, OMP-24] }
-  total_items: 26
+    mc.physics.pc_omp.deux-trajets-un-seul:                 { count: 3, items: [OMP-27, OMP-28, OMP-30] }
+    mc.physics.pc_omp.oscillogramme-mauvais-reperes:        { count: 3, items: [OMP-29, OMP-31, OMP-32] }
+  total_items: 32
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -1928,16 +2440,26 @@ coverage_summary:
     R1: 4
     R2: 3
     R3: 9
-    R4: 4
-    R5: 3
+    R4: 9
+    R5: 4
   honest_state: >-
-    Les onze misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Quatre y siègent EXACTEMENT (3 items) : onde-sans-milieu,
-    front-onde-dimension, son-nature, et la onzième, photo-film-confondus
-    (ouverte le 2026-09-24 avec la scène corde-photo-film, spec §8) — la
-    marge y est nulle et tout retrait d'item la casse. OMP-25 et OMP-26
-    remontent celerite-est-vitesse-point à 5, ce qui laisse enfin de la marge
-    si l'étiquette contestée d'OMP-20 D (REVIEW-2026-09-19) venait à tomber.
+    Les treize misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Six y siègent EXACTEMENT (3 items) : onde-sans-milieu,
+    front-onde-dimension, son-nature, photo-film-confondus (ouverte le
+    2026-09-24 avec la scène corde-photo-film, spec §8), et les deux
+    douzième et treizième, deux-trajets-un-seul et
+    oscillogramme-mauvais-reperes (ouvertes le 2026-09-27 en comblant les
+    gaps A1/A2/B1/B2 du debt-examen, docs/audits/dette-examen/pc-2.md §2) —
+    la marge y est nulle et tout retrait d'item la casse. deux-trajets-un-seul
+    couvre volontairement trois FORMES différentes du même modèle (l'aller-
+    retour d'un écho sur OMP-27, deux distances vers un point intermédiaire
+    sur OMP-28, deux durées dans deux milieux sur OMP-30) : un élève qui
+    porte ce modèle le montre dans chacun des trois gestes, jamais un seul.
+    oscillogramme-mauvais-reperes fait de même sur trois appareils
+    différents (deux microphones sur OMP-29, deux capteurs de position sur
+    OMP-31, une critique de mesure sur OMP-32). OMP-25 et OMP-26 remontent
+    celerite-est-vitesse-point à 5, ce qui laisse enfin de la marge si
+    l'étiquette contestée d'OMP-20 D (REVIEW-2026-09-19) venait à tomber.
     OMP-26 est le premier item du banc sur le savoir-faire « proposer un
     montage de mesure » (0 % jusqu'ici) — un QCM de protocole, pas encore
     une production.

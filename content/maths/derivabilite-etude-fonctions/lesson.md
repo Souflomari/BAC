@@ -317,6 +317,54 @@ Ce sont exactement les valeurs $f(-1)=2$ et $f(1)=-2$ que le chapitre précéden
 
 ---
 
+## R4b — Rolle et les accroissements finis
+
+Le chapitre 5 vient d'invoquer, sans l'énoncer précisément, l'outil qui permet de recoller des montées locales en une conclusion globale : le théorème des accroissements finis. En voici l'énoncé exact, avec son cas particulier le plus simple, le théorème de Rolle — les deux sont au programme Sciences Mathématiques, admis ici sans démonstration : c'est la démonstration qui est hors programme à ce niveau, pas le résultat lui-même.
+
+### Le théorème de Rolle
+
+**Théorème de Rolle (admis).** Soit $f$ une fonction continue sur $[a,b]$ et dérivable sur $]a,b[$, telle que $f(a)=f(b)$. Alors il existe (au moins) un réel $c \in\,]a,b[$ tel que $f'(c)=0$.
+
+**L'image qui rend ça crédible :** la courbe part de $(a,f(a))$ et revient exactement à la même hauteur en $(b,f(b))$. Si elle a bougé entre les deux, elle a forcément, à un moment, cessé de monter pour redescendre (ou l'inverse) — et à cet instant précis, la tangente est horizontale.
+
+**Pourquoi chaque hypothèse compte : un contre-exemple.** Retire la dérivabilité sur l'intervalle OUVERT en un seul point intérieur, et la conclusion peut s'effondrer. Prends $f(x)=|x|$ sur $[-1,1]$ : $f$ est continue sur $[-1,1]$ et $f(-1)=f(1)=1$ — les deux hauteurs sont bien égales. Mais $f$ n'est pas dérivable en $x=0$, qui appartient à l'intervalle ouvert $]-1,1[$ — exactement l'hypothèse qui manque. Et de fait, $f'(x)=-1$ pour $x<0$ et $f'(x)=1$ pour $x>0$ : $f'$ ne s'annule jamais, nulle part. Sans la dérivabilité partout à l'intérieur, le théorème n'a plus rien à garantir.
+
+### Le théorème des accroissements finis (TAF)
+
+**Théorème des accroissements finis, TAF (admis).** Soit $f$ une fonction continue sur $[a,b]$ et dérivable sur $]a,b[$. Alors il existe (au moins) un réel $c \in\,]a,b[$ tel que
+
+$$f(b)-f(a) = f'(c)\,(b-a)$$
+
+**Le lien avec Rolle :** si, de plus, $f(a)=f(b)$, le membre de gauche est nul, donc $f'(c)(b-a)=0$, et comme $b \neq a$, $f'(c)=0$ — on retrouve exactement Rolle. Rolle est donc le cas particulier du TAF où les deux hauteurs coïncident.
+
+**L'image qui rend ça crédible :** le membre de gauche, divisé par $b-a$, est la pente de la **corde** qui relie $(a,f(a))$ à $(b,f(b))$. Le TAF affirme qu'il existe, entre $a$ et $b$, un point de la courbe où la tangente a exactement cette pente — une tangente **parallèle à la corde**.
+
+### L'inégalité des accroissements finis (IAF)
+
+**Théorème (admis).** Soit $f$ dérivable sur un intervalle $I$, et $m,M$ deux réels tels que $m \le f'(x) \le M$ pour tout $x$ de $I$. Alors, pour tous $a,b$ de $I$ avec $a \le b$ :
+
+$$m(b-a) \le f(b)-f(a) \le M(b-a)$$
+
+**Pourquoi, à partir du TAF :** le TAF donne $f(b)-f(a)=f'(c)(b-a)$ pour un certain $c$ entre $a$ et $b$, donc $c \in I$. Comme $m \le f'(c) \le M$ et $b-a \ge 0$, multiplier cet encadrement par $b-a$ conserve le sens des inégalités — d'où le résultat.
+
+**Le cas le plus utilisé :** si $|f'(x)| \le k$ pour tout $x$ de $I$ (avec $k \ge 0$), en prenant $m=-k$ et $M=k$ ci-dessus :
+
+$$-k(b-a) \le f(b)-f(a) \le k(b-a), \qquad \text{c’est-à-dire} \qquad |f(b)-f(a)| \le k\,|b-a|$$
+
+(le résultat tient quel que soit l'ordre de $a$ et $b$ : échanger leurs rôles ne change ni $|f(b)-f(a)|$ ni $|b-a|$.)
+
+**Exemple travaillé.** Montrer que, pour tous réels $a,b$ : $|\sin b - \sin a| \le |b-a|$.
+
+**Ce qu'on cherche et pourquoi ce geste :** l'inégalité précédente s'applique dès qu'on connaît une borne sur $|f'|$ valable sur tout un intervalle — ici $\mathbb{R}$ tout entier. Le réflexe : dériver $\sin$, puis borner cette dérivée.
+
+$\sin'(x)=\cos x$, et $|\cos x| \le 1$ pour tout réel $x$ : $k=1$ convient sur $I=\mathbb{R}$. L'inégalité précédente donne directement :
+
+$$|\sin b - \sin a| \le 1 \times |b-a| = |b-a|$$
+
+Cette même inégalité — sous le nom d'IAF — reparaît au chapitre sur les suites numériques, pour majorer l'écart $|u_{n+1}-\alpha|$ d'une suite $u_{n+1}=f(u_n)$ par $k\,|u_n-\alpha|$.
+
+---
+
 ## R5 — Concavité, dérivée seconde, point d'inflexion — et l'étude complète d'une fonction
 
 ### La dérivée seconde et ce qu'elle mesure
@@ -653,4 +701,20 @@ Même enchaînement — dérivabilité, Rolle, accroissements finis, point d'inf
      (9) [SIGNALÉ, pédagogie I9] Un brief de figure (enhancement slot, non
      bloquant) est ajouté dans la chaîne de décision : trois panneaux
      structurels illustrant les trois branches infinies. Non produit ici
-     (hors du lane content-author) — signalé pour la file diagram/interactive. -->
+     (hors du lane content-author) — signalé pour la file diagram/interactive.
+
+     NOTE AJOUTÉE (dette d'examen, vague B1, 2026-09-27) :
+     (10) [PROSE LIVRÉE] GAP-B (inverse) « Rolle / TAF tested but not taught »
+     (docs/audits/dette-examen/maths.md, § derivabilite-etude-fonctions) :
+     nouveau sous-rung R4b, entre R4 (signe de f') et R5 (concavité),
+     énonçant Rolle, le TAF et l'inégalité des accroissements finis (IAF) —
+     les trois admis, comme déjà annoncé par R4 (:278) et par la note (3)
+     ci-dessus. Rolle : contre-exemple $f(x)=|x|$ sur $[-1,1]$ (hauteurs
+     égales, non dérivable en $0$, aucun $c$ avec $f'(c)=0$). IAF :
+     application $|\sin b-\sin a|\le|b-a|$ via $|\sin'|\le1$, puis une phrase
+     de renvoi vers l'IAF déjà présente dans suites-numeriques (lesson.md,
+     R8b, « L'outil : l'inégalité des accroissements finis (IAF) »), sans
+     dupliquer son exemple travaillé ($f(x)=(x^2+1)/4$). Aucune valeur ni
+     énoncé de banc cité ou pré-résolu. `cp-bac-rolle` et `cp-bac-taf`,
+     déjà présents avant cette édition (checkpoints.yaml), restent à leur
+     place, désormais appuyés par un énoncé explicite au lieu de rien. -->

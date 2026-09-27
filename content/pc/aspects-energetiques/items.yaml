@@ -107,6 +107,22 @@ misconceptions:
     description: "L'élève annonce la valeur de $v^2$ comme si c'était la vitesse, en oubliant de prendre la racine carrée à la fin du calcul."
     contradicts_principle: "$v^2=2gh$ donne le CARRÉ de la vitesse ; il reste à extraire $v=\\sqrt{2gh}$ — livrer $v^2$ pour $v$ confond une vitesse au carré avec une vitesse."
 
+  # ── Trois misconceptions neuves (2026-09-27), ouvertes par la dette d'examen
+  # G1/G2 (docs/audits/dette-examen/pc-1.md). Chacune est portée par au moins
+  # trois items (AE-37…AE-44) : la déclaration seule ne suffit pas.
+  - id: mc.physics.pc_energie.rappel-travail-signe-operateur
+    label: "« Le travail de la force (ou du couple) de rappel a le même signe que le travail qu'il faut fournir contre elle »"
+    description: "L'élève confond le travail de la force de rappel (ressort) ou du couple de rappel (torsion) avec le travail que l'OPÉRATEUR doit fournir pour étirer, comprimer ou tordre le système contre ce rappel : il écrit $W_{rappel}=+\\frac12 kx^2$ (ou $+\\frac12 C\\theta^2$) au lieu de $-\\frac12 kx^2$ (ou $-\\frac12 C\\theta^2$), oubliant que le rappel s'oppose toujours au sens dans lequel l'écart augmente."
+    contradicts_principle: "$W(\\text{rappel})_{A\\to B}=-\\Delta E_p$ : sur un trajet où l'écart (x ou $\\theta$) augmente en valeur absolue, la force ou le couple de rappel résiste au mouvement, donc son travail est négatif — l'opposé exact du travail qu'il faut fournir contre lui. Ce signe ne dépend ni du système (ressort ou torsion), ni du sens (étirement, compression ou torsion)."
+  - id: mc.physics.pc_energie.torsion-lecture-angle-non-converti
+    label: "« Sur un diagramme ou un énoncé, un angle donné en degrés est utilisé tel quel dans une formule qui exige des radians »"
+    description: "L'élève utilise directement la valeur numérique d'un angle exprimé en degrés ($\\theta_m$, $\\theta$, $\\theta_0$…) dans une formule de la torsion ($C=2E_m/\\theta_m^2$, $E_{p,torsion}=\\frac12 C\\theta^2$, $M=C\\theta$…) sans le convertir en radians au préalable — ces formules exigent un angle en radians pour rester homogènes."
+    contradicts_principle: "Le radian est l'unité d'angle cohérente avec les formules de la torsion ($C$ en $\\text{N}\\cdot\\text{m}/\\text{rad}$, $\\theta$ en rad) : un angle donné en degrés doit être multiplié par $\\pi/180$ avant d'être utilisé dans $C=2E_m/\\theta_m^2$, $E_{p,torsion}=\\frac12 C\\theta^2$ ou $M=C\\theta$, sous peine d'un résultat faux de plusieurs ordres de grandeur."
+  - id: mc.physics.pc_energie.diagramme-largeur-totale-confondue-amplitude
+    label: "« Sur un diagramme d'énergie, la largeur totale entre les deux zéros est confondue avec l'écart maximal (θ_m ou X_m) »"
+    description: "L'élève lit, sur un diagramme d'énergie potentielle ($E_{p,torsion}(\\theta)$ ou $E_{pe}(x)$), la distance ENTRE les deux zéros de la parabole (de $-\\theta_m$ à $+\\theta_m$, ou de $-X_m$ à $+X_m$) et l'utilise directement dans la formule ($C=2E_m/\\theta_m^2$ ou $k=2E_m/X_m^2$), au lieu de la moitié de cette distance — l'écart maximal, mesuré depuis l'origine."
+    contradicts_principle: "$\\theta_m$ (ou $X_m$) est l'écart maximal, mesuré depuis l'origine ($\\theta=0$ ou $x=0$) jusqu'à un zéro de la parabole, jamais la distance entre les deux zéros : cette distance totale vaut $2\\theta_m$ (ou $2X_m$), le double de la grandeur qui entre dans la formule."
+
 items:
   - id: AE-1
     rung: "R3"
@@ -2143,6 +2159,497 @@ items:
       Attention aux unités d'entrée : $x$ en mètres ($0{,}080$, pas $8{,}0$)
       et $m$ en kilogrammes ($0{,}100$, pas $100$).
 
+  # ── AE-37…AE-44 (2026-09-27) — dette d'examen G1/G2 (docs/audits/dette-examen/pc-1.md).
+  # G1 : le travail du couple de torsion, signé, de 0 à θ1 (AE-37 ; complété par
+  # AE-38, AE-39 pour la misconception neuve du signe). G2 : lire un diagramme
+  # d'énergie de torsion pour en tirer C (AE-40 ; complété par AE-41, AE-42 pour
+  # la conversion degrés→radians, et par AE-43, AE-44 pour la largeur totale
+  # confondue avec l'écart maximal). Trois misconceptions neuves, chacune
+  # portée par exactement 3 items — voir coverage_summary.
+  - id: AE-37
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [misconception_driven, energie_torsion, resolution]
+    stem: >
+      Un fil de torsion de constante $C = 8{,}0\times10^{-2}\ \text{N·m/rad}$,
+      portant un disque de moment d'inertie $J = 4{,}0\times10^{-3}\
+      \text{kg·m}^2$, est tordu depuis sa position d'équilibre ($\theta = 0$)
+      jusqu'à un angle $\theta_1 = 0{,}50\ \text{rad}$. Quel est le travail du
+      couple de torsion (couple de rappel) $W_C$ sur ce trajet ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-2{,}0\\times10^{-2}\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-moment-traite-constant
+        feedback: >
+          Cette valeur vient de $-C\theta_1^2$, en traitant le moment de
+          rappel $C\theta_1$ comme s'il valait déjà cette intensité dès le
+          début de la torsion. Le moment croît en réalité de $0$ à
+          $C\theta_1$ : le travail est l'aire du triangle sous
+          $M(\theta)=C\theta$, soit $-\frac12 C\theta_1^2$ — la moitié de
+          cette valeur.
+      - id: B
+        text: "$+1{,}0\\times10^{-2}\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.rappel-travail-signe-operateur
+        feedback: >
+          C'est le travail que l'OPÉRATEUR doit fournir pour tordre le fil,
+          pas le travail du couple de rappel lui-même. Le couple de rappel
+          s'oppose à la torsion : sur un trajet où $\theta$ augmente, son
+          travail est résistant, donc négatif — l'opposé exact de celui
+          fourni contre lui.
+      - id: C
+        text: "$-5{,}0\\times10^{-4}\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-ep-depend-inertie-j
+        feedback: >
+          Cette valeur vient de $-\frac12 J\theta_1^2$ : le moment d'inertie
+          $J$ a été mis à la place de $C$. Le travail du couple de rappel
+          vaut $-\frac12 C\theta_1^2$, qui ne dépend que de $C$ et de
+          $\theta$ ; $J$ n'intervient que dans l'énergie cinétique de
+          rotation, un réservoir séparé.
+      - id: D
+        text: "$-1{,}0\\times10^{-2}\\ \\text{J}$"
+        correct: true
+    correct_feedback: >
+      $W_C = -\frac12 C\theta_1^2 = -\frac12\times8{,}0\times10^{-2}\times
+      (0{,}50)^2 = -1{,}0\times10^{-2}\ \text{J}$ : négatif, car le couple de
+      rappel résiste à la torsion croissante. $J$ (donné) ne sert nulle part
+      dans ce calcul.
+    solution: |
+      Le couple de rappel est une force conservative (chapitre 7) :
+      $$W_C(0\to\theta_1) = -\Delta E_{p,torsion} = -\left(\frac12 C\theta_1^2 - 0\right)$$
+      $$W_C = -\frac12\times8{,}0\times10^{-2}\times(0{,}50)^2 = -1{,}0\times10^{-2}\ \text{J}$$
+      Le signe dit la physique : de $\theta=0$ à $\theta_1$, le fil s'écarte
+      de l'équilibre, et le couple de rappel — qui tire toujours vers
+      l'équilibre — travaille contre ce mouvement : travail résistant,
+      négatif. Ni $+\frac12 C\theta_1^2$ (le travail de l'opérateur, de signe
+      opposé), ni $-C\theta_1^2$ (le facteur $\frac12$ oublié), ni
+      $-\frac12 J\theta_1^2$ ($J$ mis à la place de $C$) ne donnent la bonne
+      réponse : $J$ n'entre jamais dans ce bilan.
+
+  - id: AE-38
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [misconception_driven, energie_potentielle_elastique, resolution]
+    stem: >
+      Un ressort horizontal de raideur $k = 60\ \text{N/m}$, portant un
+      solide de masse $m = 0{,}50\ \text{kg}$, est étiré depuis sa position
+      d'équilibre ($x = 0$) jusqu'à un allongement $x_1 = 4{,}0\ \text{cm}$.
+      Quel est le travail de la force de rappel $W(\vec{F}_{rappel})$ sur ce
+      trajet ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-4{,}0\\times10^{-4}\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.epe-depend-masse-ou-vitesse
+        feedback: >
+          Cette valeur vient de $-\frac12 m x_1^2$ : la masse $m$ a été mise
+          à la place de $k$. Le travail de la force de rappel vaut
+          $-\frac12 k x_1^2$, qui ne dépend que de $k$ et de $x$ ; la masse du
+          solide accroché vit dans $E_c$, un réservoir séparé.
+      - id: B
+        text: "$-4{,}8\\times10^{-2}\\ \\text{J}$"
+        correct: true
+      - id: C
+        text: "$+4{,}8\\times10^{-2}\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.rappel-travail-signe-operateur
+        feedback: >
+          C'est le travail que l'OPÉRATEUR doit fournir pour étirer le
+          ressort, pas le travail de la force de rappel elle-même. La force
+          de rappel s'oppose à l'étirement : sur ce trajet, son travail est
+          résistant, donc négatif — l'opposé exact de celui fourni contre
+          elle.
+      - id: D
+        text: "$-9{,}6\\times10^{-2}\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.epe-force-rappel-traitee-constante
+        feedback: >
+          Cette valeur vient de $-kx_1^2$, en traitant la force de rappel
+          $kx_1$ comme si elle valait déjà cette intensité dès le début de
+          l'étirement. Elle croît en réalité de $0$ à $kx_1$ : le travail est
+          l'aire du triangle sous $F(x)=kx$, soit $-\frac12 kx_1^2$ — la
+          moitié de cette valeur.
+    correct_feedback: >
+      $W(\vec{F}_{rappel}) = -\frac12 k x_1^2 = -\frac12\times60\times
+      (0{,}040)^2 = -4{,}8\times10^{-2}\ \text{J}$ : négatif, car la force de
+      rappel résiste à l'étirement croissant. La masse $m$ (donnée) ne sert
+      nulle part dans ce calcul.
+    solution: |
+      $$W(\vec{F}_{rappel})_{0\to x_1} = -\Delta E_{pe} = -\left(\frac12 k x_1^2 - 0\right)$$
+      $$W(\vec{F}_{rappel}) = -\frac12\times60\times(0{,}040)^2 = -4{,}8\times10^{-2}\ \text{J}$$
+      La force de rappel travaille toujours contre le sens dans lequel
+      l'écart augmente : ici l'allongement croît, la force de rappel
+      résiste, son travail est négatif — l'opposé exact du travail que
+      l'opérateur doit fournir. $m$ n'entre jamais dans ce bilan : mettre
+      $m$ à la place de $k$ donne $-4{,}0\times10^{-4}\
+      \text{J}$, une valeur bien différente.
+
+  - id: AE-39
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_energie
+    tags: [misconception_driven, energie_potentielle_elastique, resolution]
+    stem: >
+      Un ressort horizontal de raideur $k = 25\ \text{N/m}$ est comprimé
+      depuis l'équilibre ($x = 0$) jusqu'à $x_1 = -6{,}0\ \text{cm}$, où le
+      solide accroché a pour vitesse $v = 2{,}0\ \text{m/s}$. Quel est le
+      travail de la force de rappel sur ce trajet ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-4{,}5\\times10^{-2}\\ \\text{J}$"
+        correct: true
+      - id: B
+        text: "$+4{,}5\\times10^{-2}\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.rappel-travail-signe-operateur
+        feedback: >
+          C'est le travail que l'OPÉRATEUR doit fournir pour comprimer le
+          ressort, pas le travail de la force de rappel elle-même. La force
+          de rappel s'oppose à la compression croissante : son travail sur
+          ce trajet est résistant, donc négatif — l'opposé exact de celui
+          fourni contre elle.
+      - id: C
+        text: >-
+          Non calculable ainsi : il faudrait connaître la masse du solide et
+          l'intensité de la pesanteur, comme pour un travail du poids.
+        correct: false
+        misconception: mc.physics.pc_energie.epe-confondue-avec-epp
+        feedback: >
+          Le ressort est horizontal : l'altitude du solide ne change pas
+          pendant la compression, et ce travail n'a donc rien de
+          gravitationnel. C'est le travail de la force de rappel élastique,
+          $-\Delta E_{pe}$, qui ne dépend que de $k$ et de $x$.
+      - id: D
+        text: "$-3{,}6\\times10^{-3}\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.epe-depend-masse-ou-vitesse
+        feedback: >
+          Cette valeur vient de $-\frac12 v x_1^2$ : la vitesse $v$ a été
+          mise à la place de $k$. Le travail de la force de rappel vaut
+          $-\frac12 k x_1^2$, qui ne dépend que de $k$ et de $x$ ; la vitesse
+          (comme la masse) vit dans $E_c$, un réservoir séparé.
+    correct_feedback: >
+      $W(\vec{F}_{rappel}) = -\frac12 k x_1^2 = -\frac12\times25\times
+      (0{,}060)^2 = -4{,}5\times10^{-2}\ \text{J}$ : négatif, car la force de
+      rappel résiste à la compression croissante, que $x_1$ soit positif
+      (étirement) ou négatif (compression) — seul $x_1^2$ compte. La vitesse
+      $v$ (donnée) ne sert nulle part dans ce calcul.
+    solution: |
+      $$W(\vec{F}_{rappel})_{0\to x_1} = -\Delta E_{pe} = -\left(\frac12 k x_1^2 - 0\right)$$
+      $$W(\vec{F}_{rappel}) = -\frac12\times25\times(-0{,}060)^2 = -\frac12\times25\times3{,}6\times10^{-3} = -4{,}5\times10^{-2}\ \text{J}$$
+      Le signe de $x_1$ (compression, négatif) ne change rien : $x_1^2$
+      efface ce signe, et la force de rappel résiste toujours au sens dans
+      lequel l'écart augmente, quel que soit ce sens. $v$ n'entre jamais
+      dans ce bilan : mettre $v$ à la place de $k$ donne
+      $-3{,}6\times10^{-3}\ \text{J}$, une valeur bien différente.
+
+  - id: AE-40
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_energie
+    tags: [misconception_driven, energie_torsion, application_experimentale]
+    stem: >
+      Un pendule de torsion oscille sans frottement. Sur le diagramme
+      d'énergie, la parabole $E_{p,torsion}(\theta)$ et la droite horizontale
+      $E_m$ se coupent en $\theta = \pm\theta_m$, avec $\theta_m = 30°$. Au
+      sommet de la parabole $E_C(\theta)$ (en $\theta = 0$), on lit
+      $E_m = 5{,}0\ \text{mJ}$. Quelle est la constante de torsion $C$ du
+      fil ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 1{,}8\\times10^{-2}\\ \\text{N·m/rad}$"
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-moment-traite-constant
+        feedback: >
+          Cette valeur vient de $C=E_m/\theta_m^2$ (avec $\theta_m$ bien
+          converti en radians), en oubliant le facteur $\frac12$ de
+          $E_m=\frac12 C\theta_m^2$. Ce facteur vient de l'aire du triangle
+          sous $M(\theta)=C\theta$ : l'oublier revient à traiter le moment
+          comme constant sur tout le trajet.
+      - id: B
+        text: "$\\approx 3{,}6\\times10^{-2}\\ \\text{N·m/rad}$"
+        correct: true
+      - id: C
+        text: "$\\approx 9{,}1\\times10^{-3}\\ \\text{N·m/rad}$"
+        correct: false
+        misconception: mc.physics.pc_energie.diagramme-largeur-totale-confondue-amplitude
+        feedback: >
+          Cette valeur utilise $2\theta_m$ (l'écart ENTRE les deux zéros de
+          la parabole, $-\theta_m$ à $+\theta_m$) à la place de $\theta_m$
+          lui-même. $\theta_m$ est l'écart maximal mesuré depuis l'origine
+          $\theta=0$ jusqu'à UN SEUL zéro, la moitié de cette largeur totale.
+      - id: D
+        text: "$\\approx 1{,}1\\times10^{-5}\\ \\text{N·m/rad}$"
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-lecture-angle-non-converti
+        feedback: >
+          Cette valeur utilise $\theta_m = 30$ directement dans la formule,
+          sans convertir les degrés en radians. $C$ est en
+          $\text{N·m/rad}$ : un angle en degrés doit d'abord être multiplié
+          par $\pi/180$, ici $30°\approx0{,}524\ \text{rad}$, avant d'entrer
+          dans $C=2E_m/\theta_m^2$.
+    correct_feedback: >
+      $\theta_m = 30° \approx 0{,}524\ \text{rad}$ ; aux zéros de $E_C$, toute
+      l'énergie est potentielle : $E_m = \frac12 C\theta_m^2 \implies
+      C = 2E_m/\theta_m^2 \approx 3{,}6\times10^{-2}\ \text{N·m/rad}$.
+    solution: |
+      **Convertir l'angle.** $\theta_m = 30° = 30\times\pi/180 \approx
+      0{,}524\ \text{rad}$ — les formules de la torsion exigent des radians.
+
+      **Lire $E_m$.** Sans frottement, $E_m$ est constante : elle vaut ce que
+      $E_C$ vaut à $\theta=0$ (son sommet), soit $5{,}0\ \text{mJ} =
+      5{,}0\times10^{-3}\ \text{J}$.
+
+      **Passer par l'écart maximal.** Aux zéros de $E_C$ ($\theta=\pm\theta_m$),
+      $E_C=0$ et toute l'énergie mécanique est potentielle de torsion :
+      $$E_m = \frac12 C\theta_m^2 \implies C = \frac{2E_m}{\theta_m^2} = \frac{2\times5{,}0\times10^{-3}}{(0{,}524)^2} \approx 3{,}6\times10^{-2}\ \text{N·m/rad}$$
+
+      Trois pièges à distinguer : oublier le $\frac12$ (donne
+      $1{,}8\times10^{-2}$), ne pas convertir les degrés (donne
+      $1{,}1\times10^{-5}$), et confondre la largeur totale $2\theta_m$ avec
+      $\theta_m$ (donne $9{,}1\times10^{-3}$).
+
+  - id: AE-41
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: pc_energie
+    tags: [misconception_driven, energie_torsion, utilisation]
+    stem: >
+      Un fil de torsion, de constante $C = 0{,}15\ \text{N·m/rad}$, porte un
+      disque de moment d'inertie $J = 5{,}0\times10^{-3}\ \text{kg·m}^2$ et
+      est tordu d'un angle $\theta = 20°$ par rapport à sa position
+      d'équilibre. Quelle est l'énergie potentielle de torsion
+      $E_{p,torsion}$ emmagasinée dans le fil ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$30\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-lecture-angle-non-converti
+        feedback: >
+          Cette valeur utilise $\theta = 20$ directement dans
+          $E_{p,torsion}=\frac12 C\theta^2$, sans convertir les degrés en
+          radians. Un angle en degrés doit d'abord être multiplié par
+          $\pi/180$, ici $20°\approx0{,}349\ \text{rad}$.
+      - id: B
+        text: "$\\approx 1{,}8\\times10^{-2}\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-moment-traite-constant
+        feedback: >
+          Cette valeur vient de $C\theta^2$ (avec $\theta$ bien converti en
+          radians), en oubliant le facteur $\frac12$ qui vient de l'aire du
+          triangle sous $M(\theta)=C\theta$.
+      - id: C
+        text: "$\\approx 3{,}0\\times10^{-4}\\ \\text{J}$"
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-ep-depend-inertie-j
+        feedback: >
+          Cette valeur vient de $\frac12 J\theta^2$ : le moment d'inertie
+          $J$ a été mis à la place de $C$. $E_{p,torsion}=\frac12 C\theta^2$
+          ne dépend que de $C$ et de $\theta$ ; $J$ vit dans l'énergie
+          cinétique de rotation, un réservoir séparé.
+      - id: D
+        text: "$\\approx 9{,}1\\times10^{-3}\\ \\text{J}$"
+        correct: true
+    correct_feedback: >
+      $\theta = 20° \approx 0{,}349\ \text{rad}$, donc
+      $E_{p,torsion} = \frac12 C\theta^2 \approx \frac12\times0{,}15\times
+      (0{,}349)^2 \approx 9{,}1\times10^{-3}\ \text{J}$. $J$ (donné) ne sert
+      nulle part dans ce calcul.
+    solution: |
+      $$\theta = 20\times\frac{\pi}{180} \approx 0{,}349\ \text{rad}$$
+      $$E_{p,torsion} = \frac12 C\theta^2 = \frac12\times0{,}15\times(0{,}349)^2 \approx 9{,}1\times10^{-3}\ \text{J}$$
+      Sans la conversion, $\theta=20$ donnerait $30\ \text{J}$ — un résultat
+      des dizaines de milliers de fois trop grand, le signe qu'un angle en
+      degrés s'est glissé dans une formule qui exige des radians. Et mettre
+      $J$ à la place de $C$ donne
+      $\frac12\times5{,}0\times10^{-3}\times(0{,}349)^2\approx3{,}0\times10^{-4}\
+      \text{J}$ : $J$ n'entre jamais dans ce bilan.
+
+  - id: AE-42
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_energie
+    tags: [misconception_driven, energie_torsion, resolution]
+    stem: >
+      Un pendule de torsion (disque de moment d'inertie
+      $J = 4{,}0\times10^{-3}\ \text{kg·m}^2$, fil de constante
+      $C = 0{,}18\ \text{N·m/rad}$) est lâché sans vitesse angulaire depuis
+      $\theta_0 = 20°$. Quelle est sa vitesse angulaire maximale
+      $\dot\theta_{max}$, atteinte au passage par $\theta = 0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 134\\ \\text{rad/s}$"
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-lecture-angle-non-converti
+        feedback: >
+          Cette valeur utilise $\theta_0 = 20$ directement dans
+          $E_m=\frac12 C\theta_0^2$, sans convertir les degrés en radians. Un
+          angle en degrés doit d'abord être multiplié par $\pi/180$, ici
+          $20°\approx0{,}349\ \text{rad}$.
+      - id: B
+        text: "$\\approx 2{,}3\\ \\text{rad/s}$"
+        correct: true
+      - id: C
+        text: >-
+          Il faut aussi connaître la masse du disque : l'énergie cinétique de
+          rotation se calcule par $\frac12 mv^2$.
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-ec-formule-translation
+        feedback: >
+          Un disque en rotation n'a pas une vitesse linéaire unique $v$,
+          mais une vitesse angulaire $\dot\theta$ commune à tous ses points.
+          Son énergie cinétique de rotation est $\frac12 J\dot\theta^2$,
+          l'analogue exact de $\frac12 mv^2$ pour la translation — $J$, déjà
+          donné, suffit.
+      - id: D
+        text: "$\\approx 5{,}5\\ \\text{rad/s}$"
+        correct: false
+        misconception: mc.physics.pc_energie.confusion-v-et-v-carre
+        feedback: >
+          $5{,}5$ est la valeur de $\dot\theta_{max}^2$ (en
+          $\text{rad}^2/\text{s}^2$), pas celle de $\dot\theta_{max}$ : le
+          calcul est juste jusqu'à la dernière étape, et la racine carrée
+          manque.
+    correct_feedback: >
+      $\theta_0 \approx 0{,}349\ \text{rad}$, donc $E_m = \frac12 C\theta_0^2
+      \approx 1{,}10\times10^{-2}\ \text{J}$ ; au passage par $\theta=0$,
+      $E_m = \frac12 J\dot\theta_{max}^2 \implies \dot\theta_{max} =
+      \sqrt{2E_m/J} \approx 2{,}3\ \text{rad/s}$.
+    solution: |
+      **Convertir et calculer $E_m$.** $\theta_0 \approx 0{,}349\ \text{rad}$,
+      lâché sans vitesse angulaire : toute l'énergie est potentielle.
+      $$E_m = \frac12 C\theta_0^2 = \frac12\times0{,}18\times(0{,}349)^2 \approx 1{,}10\times10^{-2}\ \text{J}$$
+
+      **Passer au sommet cinétique.** Au passage par $\theta=0$, toute
+      l'énergie devient cinétique de rotation :
+      $$E_m = \frac12 J\dot\theta_{max}^2 \implies \dot\theta_{max} = \sqrt{\frac{2E_m}{J}} = \sqrt{\frac{2\times1{,}10\times10^{-2}}{4{,}0\times10^{-3}}} \approx 2{,}3\ \text{rad/s}$$
+
+      $J$ (déjà donné) suffit : aucune masse séparée n'est nécessaire pour
+      un solide en rotation.
+
+  - id: AE-43
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_energie
+    tags: [misconception_driven, energie_torsion, application_experimentale]
+    stem: >
+      Pour un pendule de torsion, on trace cette fois l'énergie cinétique
+      $E_C$ en fonction de la vitesse angulaire $\dot\theta$ : une parabole
+      qui s'annule en $\dot\theta = 0$ et coupe la droite $E_m$ en
+      $\dot\theta = \pm\dot\theta_{max}$, avec $\dot\theta_{max} =
+      3{,}0\ \text{rad/s}$. Sachant que $E_m = 6{,}0\ \text{mJ}$, quel est le
+      moment d'inertie $J$ du disque ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 1{,}3\\times10^{-3}\\ \\text{kg·m}^2$"
+        correct: true
+      - id: B
+        text: "$\\approx 6{,}7\\times10^{-4}\\ \\text{kg·m}^2$"
+        correct: false
+        misconception: mc.physics.pc_energie.energie-oublie-facteur-demi
+        feedback: >
+          Cette valeur vient de $J=E_m/\dot\theta_{max}^2$, en oubliant le
+          facteur $\frac12$ de $E_m=\frac12 J\dot\theta_{max}^2$ — le même
+          facteur qui vient de l'énergie cinétique, ici de rotation plutôt
+          que de translation.
+      - id: C
+        text: "$\\approx 3{,}3\\times10^{-4}\\ \\text{kg·m}^2$"
+        correct: false
+        misconception: mc.physics.pc_energie.diagramme-largeur-totale-confondue-amplitude
+        feedback: >
+          Cette valeur utilise $2\dot\theta_{max}$ (l'écart ENTRE les deux
+          zéros de la parabole $E_C(\dot\theta)$) à la place de
+          $\dot\theta_{max}$ lui-même. $\dot\theta_{max}$ est mesuré depuis
+          l'origine $\dot\theta=0$ jusqu'à UN SEUL zéro, la moitié de cette
+          largeur totale.
+      - id: D
+        text: >-
+          Il faut aussi connaître la masse du disque : l'énergie cinétique de
+          rotation se calcule par $\frac12 mv^2$.
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-ec-formule-translation
+        feedback: >
+          Un disque en rotation n'a pas une vitesse linéaire unique $v$,
+          mais une vitesse angulaire $\dot\theta$ commune à tous ses points.
+          Son énergie cinétique de rotation est $\frac12 J\dot\theta^2$ :
+          $E_m$ et $\dot\theta_{max}$ suffisent pour en tirer $J$.
+    correct_feedback: >
+      Aux zéros de $E_C(\dot\theta)$, $E_C=E_m$ ; $E_m = \frac12
+      J\dot\theta_{max}^2 \implies J = 2E_m/\dot\theta_{max}^2 \approx
+      1{,}3\times10^{-3}\ \text{kg·m}^2$.
+    solution: |
+      Au sommet de la parabole $E_C(\dot\theta)$ (là où elle coupe $E_m$),
+      toute l'énergie mécanique est cinétique de rotation :
+      $$E_m = \frac12 J\dot\theta_{max}^2 \implies J = \frac{2E_m}{\dot\theta_{max}^2} = \frac{2\times6{,}0\times10^{-3}}{3{,}0^2} \approx 1{,}3\times10^{-3}\ \text{kg·m}^2$$
+      $\dot\theta_{max}$ est l'écart entre l'origine et UN SEUL zéro de la
+      parabole, pas la largeur totale ($2\dot\theta_{max}=6{,}0\ \text{rad/s}$)
+      entre les deux zéros.
+
+  - id: AE-44
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_energie
+    tags: [misconception_driven, energie_potentielle_elastique, application_experimentale]
+    stem: >
+      Pour un oscillateur élastique horizontal, formé d'un solide de masse
+      $m = 0{,}10\ \text{kg}$ accroché à un ressort, le diagramme d'énergie
+      donne $E_m = 8{,}0\times10^{-2}\ \text{J}$, et la parabole $E_{pe}(x)$
+      coupe la droite $E_m$ en $x = \pm X_m$, avec $X_m = 0{,}20\ \text{m}$.
+      Quelle est la raideur $k$ du ressort ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2{,}0\\ \\text{N/m}$"
+        correct: false
+        misconception: mc.physics.pc_energie.epe-force-rappel-traitee-constante
+        feedback: >
+          Cette valeur vient de $k=E_m/X_m^2$, en oubliant le facteur
+          $\frac12$ de $E_m=\frac12 kX_m^2$ — le facteur qui vient de l'aire
+          du triangle sous $F(x)=kx$.
+      - id: B
+        text: "$1{,}0\\ \\text{N/m}$"
+        correct: false
+        misconception: mc.physics.pc_energie.diagramme-largeur-totale-confondue-amplitude
+        feedback: >
+          Cette valeur utilise $2X_m$ (l'écart ENTRE les deux zéros de la
+          parabole, $-X_m$ à $+X_m$) à la place de $X_m$ lui-même. $X_m$ est
+          l'amplitude, mesurée depuis l'origine $x=0$ jusqu'à UN SEUL zéro,
+          la moitié de cette largeur totale.
+      - id: C
+        text: "$4{,}0\\ \\text{N/m}$"
+        correct: true
+      - id: D
+        text: "$5{,}0\\ \\text{N/m}$"
+        correct: false
+        misconception: mc.physics.pc_energie.epe-depend-masse-ou-vitesse
+        feedback: >
+          Cette valeur vient de $k=2m/X_m^2$ : la masse $m$ a été mise à la
+          place de $E_m$. $E_{pe}=\frac12 kx^2$ ne dépend que de $k$ et de
+          $x$ ; la masse du solide accroché vit dans $E_c$, un réservoir
+          séparé.
+    correct_feedback: >
+      Aux zéros de $E_c(x)$, $E_{pe}=E_m$ ; $E_m=\frac12 kX_m^2 \implies
+      k=2E_m/X_m^2 = 2\times8{,}0\times10^{-2}/(0{,}20)^2 = 4{,}0\ \text{N/m}$.
+      La masse $m$ (donnée) ne sert nulle part dans ce calcul.
+    solution: |
+      $$E_m = \frac12 kX_m^2 \implies k = \frac{2E_m}{X_m^2} = \frac{2\times8{,}0\times10^{-2}}{(0{,}20)^2} = 4{,}0\ \text{N/m}$$
+      $X_m$ est l'amplitude, mesurée depuis l'origine jusqu'à UN SEUL zéro de
+      la parabole — pas la largeur totale ($2X_m=0{,}40\ \text{m}$) entre les
+      deux zéros, qui donnerait $1{,}0\ \text{N/m}$. Et mettre $m$ à la place
+      de $E_m$ donne $2\times0{,}10/(0{,}20)^2=5{,}0\
+      \text{N/m}$ : $m$ n'entre jamais dans ce bilan.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, et c'était la plus grosse des quatre dérives relevées
 # par web/scripts/resume-couverture.mjs : SEPT familles siégeaient sous le plancher
@@ -2181,18 +2688,18 @@ coverage_summary:
     distracteurs la porte, une seule fois par item. Les checkpoints ne comptent
     pas — le modèle apprenant est bâti sur le banc de fin seul.
   per_misconception:
-    mc.physics.pc_energie.epe-force-rappel-traitee-constante:    { count: 4, items: [AE-22, AE-23, AE-24, AE-36] }
-    mc.physics.pc_energie.epe-depend-masse-ou-vitesse:           { count: 3, items: [AE-22, AE-23, AE-24] }
-    mc.physics.pc_energie.epe-confondue-avec-epp:                { count: 3, items: [AE-22, AE-23, AE-24] }
-    mc.physics.pc_energie.torsion-moment-traite-constant:        { count: 3, items: [AE-25, AE-26, AE-27] }
-    mc.physics.pc_energie.torsion-ep-depend-inertie-j:           { count: 3, items: [AE-25, AE-26, AE-27] }
-    mc.physics.pc_energie.torsion-ec-formule-translation:        { count: 3, items: [AE-25, AE-26, AE-27] }
+    mc.physics.pc_energie.epe-force-rappel-traitee-constante:    { count: 6, items: [AE-22, AE-23, AE-24, AE-36, AE-38, AE-44] }   # plafond (6) atteint depuis le 2026-09-27
+    mc.physics.pc_energie.epe-depend-masse-ou-vitesse:           { count: 6, items: [AE-22, AE-23, AE-24, AE-38, AE-39, AE-44] }   # plafond (6) atteint depuis le 2026-09-27
+    mc.physics.pc_energie.epe-confondue-avec-epp:                { count: 4, items: [AE-22, AE-23, AE-24, AE-39] }
+    mc.physics.pc_energie.torsion-moment-traite-constant:        { count: 6, items: [AE-25, AE-26, AE-27, AE-37, AE-40, AE-41] }   # plafond (6) atteint depuis le 2026-09-27
+    mc.physics.pc_energie.torsion-ep-depend-inertie-j:           { count: 5, items: [AE-25, AE-26, AE-27, AE-37, AE-41] }
+    mc.physics.pc_energie.torsion-ec-formule-translation:        { count: 5, items: [AE-25, AE-26, AE-27, AE-42, AE-43] }
     mc.physics.pc_energie.pendule-ralentir-egale-perdre-energie: { count: 3, items: [AE-28, AE-29, AE-30] }
     mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil:    { count: 4, items: [AE-28, AE-29, AE-30, AE-35] }
     mc.physics.pc_energie.pendule-em-maximale-en-bas:            { count: 4, items: [AE-3, AE-28, AE-29, AE-30] }
     mc.physics.pc_energie.travail-poids-depend-du-chemin:        { count: 5, items: [AE-1, AE-2, AE-7, AE-8, AE-19] }
     mc.physics.pc_energie.frottement-restitue-energie:           { count: 3, items: [AE-9, AE-20, AE-34] }
-    mc.physics.pc_energie.energie-oublie-facteur-demi:           { count: 5, items: [AE-10, AE-15, AE-21, AE-35, AE-36] }
+    mc.physics.pc_energie.energie-oublie-facteur-demi:           { count: 6, items: [AE-10, AE-15, AE-21, AE-35, AE-36, AE-43] }   # plafond (6) atteint depuis le 2026-09-27
     mc.physics.pc_energie.ec-mauvaise-dependance-en-v:           { count: 3, items: [AE-10, AE-11, AE-31] }
     mc.physics.pc_energie.energie-oublie-masse:                  { count: 5, items: [AE-1, AE-3, AE-4, AE-10, AE-15] }
     mc.physics.pc_energie.ec-grandeur-vectorielle:               { count: 3, items: [AE-12, AE-31, AE-32] }
@@ -2202,8 +2709,11 @@ coverage_summary:
     mc.physics.pc_energie.confond-ec-et-em:                      { count: 4, items: [AE-3, AE-4, AE-6, AE-31] }
     mc.physics.pc_energie.em-conservee-malgre-frottement:        { count: 4, items: [AE-6, AE-9, AE-19, AE-20] }
     mc.physics.pc_energie.signe-travail-poids:                   { count: 4, items: [AE-6, AE-16, AE-21, AE-34] }
-    mc.physics.pc_energie.confusion-v-et-v-carre:                { count: 3, items: [AE-15, AE-35, AE-36] }   # au plancher depuis le 2026-09-23 — voir la note
-  total_items: 33
+    mc.physics.pc_energie.confusion-v-et-v-carre:                { count: 4, items: [AE-15, AE-35, AE-36, AE-42] }
+    mc.physics.pc_energie.rappel-travail-signe-operateur:        { count: 3, items: [AE-37, AE-38, AE-39] }   # neuve 2026-09-27 — dette G1 (docs/audits/dette-examen/pc-1.md)
+    mc.physics.pc_energie.torsion-lecture-angle-non-converti:    { count: 3, items: [AE-40, AE-41, AE-42] }   # neuve 2026-09-27 — dette G2
+    mc.physics.pc_energie.diagramme-largeur-totale-confondue-amplitude: { count: 3, items: [AE-40, AE-43, AE-44] }   # neuve 2026-09-27 — dette G2
+  total_items: 41
   floor: 3
   floor_met: true
   honest_state_2026_09_19: >-
@@ -2237,14 +2747,18 @@ coverage_summary:
     R2: 5
     R3: 3
     R4: 4
-    R5: 4
-    R6: 3
+    R5: 7
+    R6: 8
     R7: 4
     R8: 3
     note: >-
       Le plancher de barreau (>= 3 items) est tenu partout. R1, R2 et R4 en
       portent 4 depuis l'ajout de AE-31 à AE-34 ; R5 et R7 depuis celui de
-      AE-36 et AE-35 (2026-09-23).
+      AE-36 et AE-35 (2026-09-23). R5 (7) et R6 (8) depuis AE-37…AE-44
+      (2026-09-27, dette G1/G2) : R6 concentre le travail signé du couple de
+      torsion et la lecture de diagramme (AE-37, AE-40…AE-43) ; R5 porte les
+      variantes ressort des mêmes deux misconceptions neuves (AE-38, AE-39,
+      AE-44).
   historique:
     removed_items: >-
       AE-5, AE-17 et AE-18 (ancien R5, « TEC contre 2e loi de Newton sur un
@@ -2271,3 +2785,30 @@ coverage_summary:
     voir honest_state_2026_09_19). Douze y siègent EXACTEMENT (3 items) : la
     marge est nulle et tout retrait d'item la casse. Le plafond de spec-extension.md §7 (6 items par
     misconception) n'est atteint nulle part.
+  resolution_2026_09_27: >-
+    Dette d'examen G1/G2 comblée (docs/audits/dette-examen/pc-1.md) : huit
+    items neufs, AE-37…AE-44. G1 (le travail signé du couple de rappel, de
+    signe opposé à celui de l'opérateur) ouvre une misconception neuve,
+    `rappel-travail-signe-operateur`, portée par AE-37 (torsion, depuis
+    l'équilibre), AE-38 (ressort, depuis l'équilibre) et AE-39 (ressort,
+    compression) — trois contextes distincts, jamais trois copies. G2 (lire
+    $E_m$ et $\theta_m$ sur un diagramme de torsion pour en tirer $C$) en
+    ouvre deux autres : `torsion-lecture-angle-non-converti` (un angle en
+    degrés glissé tel quel dans une formule qui exige des radians — AE-40,
+    AE-41, AE-42) et `diagramme-largeur-totale-confondue-amplitude` (la
+    largeur totale $2\theta_m$ ou $2X_m$ confondue avec l'écart maximal
+    $\theta_m$ ou $X_m$ — AE-40, AE-43, AE-44, transposée au diagramme $E_C(\dot\theta)\to J$
+    et au diagramme $E_{pe}(x)\to k$ pour ne pas répéter le même geste).
+    Aucune des trois n'est une commodité : chacune a été cherchée dans
+    l'inventaire existant avant d'être déclarée (voir le rapport de l'auteur
+    d'items pour le détail par distracteur), et aucune ne dépasse le plafond
+    de 6. Quatre misconceptions PRÉEXISTANTES atteignent maintenant ce
+    plafond exactement : `epe-force-rappel-traitee-constante`,
+    `epe-depend-masse-ou-vitesse`, `torsion-moment-traite-constant`,
+    `energie-oublie-facteur-demi` — un nouvel item les ciblant devra
+    d'abord en retirer un, ou choisir une autre misconception. Les phrases
+    « 22 misconceptions », « Douze y siègent EXACTEMENT » et « le plafond
+    n'est atteint nulle part » ci-dessus datent d'avant cette passe et ne
+    sont plus vraies (25 misconceptions ; neuf à exactement 3 ; quatre au
+    plafond) — conservées non corrigées pour l'historique, voir ce bloc pour
+    l'état courant.

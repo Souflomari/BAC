@@ -222,7 +222,11 @@ $$\frac{1}{F} \ll R_0C_0 \ll \frac{1}{f} \qquad\text{c’est-à-dire}\qquad T_p 
 
 Sur le banc du chapitre 4, à $F = 8{,}0\ \text{kHz}$ et au réglage qui marche ($R_0 = 5{,}0\ \text{k}\Omega$) : $1/F = 0{,}125\ \text{ms}$, $R_0C_0 = 0{,}500\ \text{ms}$, $1/f = 2{,}50\ \text{ms}$ — quatre fois l'une, cinq fois moins que l'autre. Cette fenêtre est étroite parce que la porteuse du banc n'est que vingt fois plus rapide que le signal ; dans les sujets, les écarts sont souvent d'un ou deux ordres de grandeur. Et une conséquence que la scène fait découvrir : **cette fenêtre n'existe que si $F \gg f$**. Si la porteuse n'est que trois fois plus rapide que le signal, **aucune** valeur de $R_0C_0$ ne convient. La première condition de bonne modulation n'est donc pas seulement un confort de lisibilité : c'est aussi elle qui **ouvre** la fenêtre du détecteur.
 
-Il ne reste plus qu'à retirer la composante continue $U_0$ (un simple filtrage qu'on ne détaille pas ici) pour obtenir $s_m(t)$, le signal informatif, prêt à être amplifié et envoyé dans un haut-parleur.
+Il reste à retirer la composante continue $U_0$. Cet étage est un montage simple : un condensateur en série sur la ligne, suivi d'une résistance vers la masse — un filtre passe-haut, où la partie constante $U_0$ ne peut pas traverser le condensateur, alors que les variations lentes de $s_m(t)$, elles, le traversent. Résultat : en sortie du détecteur de crête on avait $U_0+s_m(t)$ (l'enveloppe décalée vers le haut) ; en sortie de cet étage, il ne reste que $s_m(t)$ seul, centré sur zéro — c'est exactement ce que les sujets appellent « le rôle de l'étage … » quand ils demandent de faire correspondre un oscillogramme avant ce filtrage (centré sur $U_0$) à un oscillogramme après (centré sur zéro).
+
+[[figure:etage-composante-continue]]
+
+Le signal $s_m(t)$ ainsi isolé est prêt à être amplifié et envoyé dans un haut-parleur.
 
 ### Pourquoi la condition $m<1$ compte ici aussi
 

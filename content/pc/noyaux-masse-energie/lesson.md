@@ -187,6 +187,18 @@ $$|E| = |\Delta m_{\text{réaction}}|\,c^2$$
 
 Si, à l'inverse, $\Delta m_{\text{réaction}} > 0$, la réaction ne peut pas se produire spontanément : il faudrait au contraire lui **fournir** cette énergie pour qu'elle ait lieu.
 
+### Corollaire : la même énergie, lue sur les énergies de liaison
+
+Puisqu'une réaction nucléaire conserve le nombre total de nucléons (Soddy, chapitre précédent — le même nombre de protons et de neutrons, seulement réarrangés autrement), les masses des nucléons libres qui composent chaque noyau s'annulent identiquement des deux côtés dans $\Delta m_{\text{réaction}}$ : il ne reste que la différence des énergies de liaison. D'où une deuxième route vers la même énergie libérée, sans repasser par les masses :
+
+$$E_{\text{lib}} = \sum E_l(\text{produits}) - \sum E_l(\text{réactifs})$$
+
+(énergie libérée comptée positivement, cohérent avec $|E| = |\Delta m_{\text{réaction}}|\,c^2$.) Vérification sur la fusion deutérium-tritium étudiée plus bas, avec $E_l(^{2}_{1}\text{H}) \approx 2{,}2\ \text{MeV}$, $E_l(^{3}_{1}\text{H}) \approx 8{,}5\ \text{MeV}$, $E_l(^{4}_{2}\text{He}) \approx 28{,}3\ \text{MeV}$ (chapitre 3) :
+
+$$E_{\text{lib}} = 28{,}3 - (2{,}2+8{,}5) = 17{,}6\ \text{MeV}$$
+
+exactement la valeur retrouvée plus bas par les masses. **Le piège :** inverser la différence (réactifs moins produits) donnerait $-17{,}6\ \text{MeV}$, une énergie « libérée » négative, ce qui n'a pas de sens pour une réaction qui en libère réellement. Si un énoncé donne $E_l/A$ plutôt que $E_l$, remultiplie d'abord par $A$ ($E_l = A\times(E_l/A)$) avant de sommer : ce sont les $E_l$ totales qui s'additionnent, pas les $E_l/A$.
+
 ### Exemple — la fission de l'uranium 235
 
 Un neutron lent percute un noyau d'uranium 235, qui se casse en deux fragments plus légers et éjecte des neutrons supplémentaires :

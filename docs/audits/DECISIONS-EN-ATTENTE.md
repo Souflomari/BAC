@@ -2032,3 +2032,62 @@ déplacées à droite de l'axe, la quatrième levée de 12 unités ; cliquet rev
 figures verte en clair et en sombre, aucune mesure. *Une figure neuve passe par
 `marge-etiquettes` et `figure-preview` (les deux thèmes) avant d'être poussée : aucune des deux
 n'est dans `batterie-locale`, parce que les deux demandent un navigateur.*
+
+---
+
+## 35. Les vagues D, E et F de la dette d'examen : le reste des trois rapports — et ce qu'on a corrigé dans le travail des auteurs avant qu'il n'entre
+
+**Ce qui est payé.** Le reste des trois audits (`dette-examen/pc-1.md`, `pc-2.md`, `maths.md`) :
+six auteurs de prose, sept auteurs d'items, trois auteurs de figures, en parallèle et sur des
+fichiers disjoints ; **49 items**, **dix identifiants d'erreur neufs** (chacun porté par au moins
+trois items à son arrivée), **six graphes**, et une sous-rung neuve — **R4b, Rolle et les
+accroissements finis**, au programme SM, cités par l'extrait d'examen de la leçon et par la leçon
+de suites, et jamais énoncés nulle part. Le détail par notion est dans `DETTE-EXAMEN.md`.
+
+**Ce que la relecture a trouvé dans le travail des auteurs — tout corrigé avant le commit.**
+1. *Un exemple placé avant ce qu'il suppose.* La lecture de $C$ sur un diagramme de TORSION avait
+   été posée dans la rung du RESSORT (R5), avant que la torsion ne soit enseignée (R6). Déplacée à
+   la fin de R6 ; sa phrase sur le pas de grille disait aussi l'inverse de la figure (« deux
+   graduations imprimées à 0,5 mJ » — elles sont à 1 mJ, c'est la MAILLE qui vaut 0,5).
+2. *Un tableau de mesures qui ne suivait pas son propre modèle.* La conductivité $\sigma(t)$ de la
+   saponification : deux valeurs sur huit (4 min, 45 min) décalaient de 0,01 de la loi dont
+   l'auteur les disait tirées. Recalculées.
+3. *Une règle de signe fausse en général.* « $a$ positif, le mouvement est accéléré » — vrai
+   seulement si $v > 0$. Réécrit sur le critère $\vec a\cdot\vec v$ du chapitre 4.
+4. *Des propositions qui avouent leur calcul.* Dans 17 items neufs, chaque proposition écrivait
+   la formule, la substitution et le résultat : l'élève n'avait qu'à reconnaître la bonne formule.
+   Réduites à des valeurs nues ; le raisonnement vit dans le retour.
+5. *Des propositions barrables à vue sans aucune physique* : un indice de réfraction en
+   millimètres, une probabilité de 1 400/560, une longueur d'onde en cm⁻¹, deux modules négatifs
+   sur trois distracteurs d'un même item, cinq refus « Impossible à calculer sans… » (que
+   `indice-refus` a comptés : 10 → 15). Chacun remplacé par une erreur que l'élève fait
+   vraiment (le modèle avec remise, la racine du rapport, un croisement de crêtes compté de
+   travers, la donnée-piège mise à la place de la bonne).
+6. *Un item résolu par la leçon.* NBCOMPLEX2-46 reprenait l'angle même de l'exemple travaillé
+   ($4\pi/3$) ; passé à $-4\pi/3$.
+7. *Des renvois que le rendu rend faux* : « comme au choix C » (les propositions sont mélangées
+   à l'écran), « (RAB-48) » dans une solution (un identifiant de fichier). `validate-content` les
+   a vus tous les deux.
+
+**POUR LE PROPRIÉTAIRE — quatre questions.**
+1. **Le piège de C7 n'est pas testé.** L'audit demandait la conversion jours → secondes et le
+   rayon confondu avec l'altitude ; l'inventaire de chute n'a aucun identifiant honnête pour ces
+   deux erreurs, et un identifiant neuf demande trois items. L'item écrit (CMP-48) teste les
+   exposants de Kepler à la place. À trancher : déclarer l'identifiant et écrire ses trois items,
+   ou accepter la substitution.
+2. **Une face ajoutée à un identifiant neuf.** `demi-angle-coefficient-negatif-mal-corrige`
+   (complexes 2) porte désormais aussi « l'angle entier gardé au lieu de l'angle moitié » — une
+   erreur qui ne dépend pas du signe. L'auteur l'a signalé comme une extension, pas comme une
+   évidence.
+3. **Deux identifiants manquants en lois de Newton**, signalés par leur auteur : la pente d'un
+   graphe mal lue comme geste propre, et deux forces perpendiculaires additionnées au lieu d'être
+   composées (le pendant « force » de la forme E déjà déclarée pour les accélérations).
+4. **Le changement de variable n'est pas payé**, par décision de cadre (`maths-sm.yaml` l'exclut
+   comme technique ; les sujets le fournissent pas à pas). Cinq sujets vérifiés l'emploient.
+
+**Une dette neuve, nommée ici pour qu'elle ne soit pas invisible.** Les insertions de prose ont
+décalé les numéros de ligne que citent des en-têtes d'items et des fichiers `REVIEW-*.md`
+(dérivabilité : +48 après R4 ; complexes 2 : +25 puis +27 ; structures : +38 ; suites : +10).
+Aucune porte ne vérifie qu'une citation `lesson.md:NNN` pointe encore sur ce qu'elle nomme ; les
+auteurs ont relevé chaque décalage dans leur rapport. *Un renvoi par numéro de ligne est une
+affirmation sur un fichier qui bouge* — la même famille que les notes de portée (§31).

@@ -327,6 +327,74 @@ misconceptions:
       OM′ ne donne le rapport que si ΩM = 1 : deux cas particuliers, pas la
       règle. Un rapport a toujours DEUX termes.
     label_change: true   # le libellé cesse de dire « d'une transformation »
+  # Modèle neuf (dette d'examen, vague B1, 2026-09-27 —
+  # docs/audits/dette-examen/maths.md, § nombres-complexes-2, GAP-A « Euler
+  # formulas / factorisation par l'angle moitié », $1+e^{i\theta} =
+  # 2\cos(\theta/2)e^{i\theta/2}$, avec la condition de signe sur
+  # $\cos(\theta/2)$). Aucun des vingt-cinq ids ci-dessus ne couvre
+  # honnêtement l'erreur : les ids sur l'argument (`argument-un-seul-signe`,
+  # `argument-non-2pi-periodique`) portent sur la lecture d'un quadrant
+  # $(a,b)$ ou sur la période, pas sur le signe d'un coefficient réel
+  # factorisé ; aucun id de similitude ne porte sur un module qui serait
+  # négatif. Servi par NBCOMPLEX2-46 à -48 (trois items, un par valeur de
+  # $\theta$ distincte, jamais trois clones du même calcul) : le plancher de
+  # 3 est atteint par cette seule vague, pas complété plus tard.
+  #
+  # RÉVISÉ le 2026-09-27 (relecture de la coordination), deux corrections :
+  # (1) NBCOMPLEX2-46 utilisait $\theta=4\pi/3$, exactement l'exemple
+  # travaillé de la leçon (lesson.md:168) — l'item était donc pré-résolu sur
+  # la page. Remplacé par $\theta=-4\pi/3$ (toujours dans
+  # $]-2\pi,-\pi[$ — clé module $1$, argument $\pi/3$, vérifié directement :
+  # $1+e^{-i4\pi/3}=\frac12+i\frac{\sqrt3}{2}$), une valeur qui ne recopie
+  # aucun exemple de la leçon ni du banc. (2) Chacun des trois items
+  # affichait DEUX distracteurs à module négatif (FACE A et FACE C) : un
+  # élève qui sait seulement « un module n'est jamais négatif » en écartait
+  # deux d'un coup et n'avait plus qu'un tirage à deux entre la clé et le
+  # distracteur restant — l'item ne diagnostiquait plus rien. FACE C (module
+  # négatif, argument corrigé) est retirée de CHAQUE item et remplacée par
+  # une FACE D à module POSITIF portant une erreur d'argument différente et
+  # réelle : l'angle ENTIER $\theta$ recopié tel quel au lieu de l'angle
+  # moitié $\theta/2$ — l'oubli le plus basique de ce geste, puisqu'il court-
+  # circuite la factorisation elle-même, pas seulement sa condition de
+  # signe. Aucun des vingt-cinq ids antérieurs ne couvre non plus cette
+  # FACE D (le grep de vingt-cinq id ci-dessus reste vrai pour elle) ; la
+  # description ci-dessous est donc élargie d'une quatrième face plutôt que
+  # de laisser voyager un distracteur sans tag honnête — chaque item ne
+  # porte plus, désormais, qu'UN SEUL distracteur à module négatif (FACE A).
+  - id: mc.math.maths_complexes_trigo.demi-angle-coefficient-negatif-mal-corrige
+    label: >-
+      « Le coefficient réel $2\cos(\theta/2)$, s'il est négatif, n'est pas
+      corrigé — ou seulement à moitié — pour donner le module et l'argument
+      de $1+e^{i\theta}$ »
+    description: >-
+      Dans la factorisation $1+e^{i\theta} = 2\cos(\theta/2)\,e^{i\theta/2}$,
+      le facteur $2\cos(\theta/2)$ est un réel qui peut être négatif —
+      auquel cas il n'est PAS lui-même le module (un module n'est jamais
+      négatif) et $\theta/2$ n'est pas lui-même un argument. Quatre façons
+      de mal lire le module et l'argument sur cette factorisation, selon ce
+      qui est oublié : FACE A — aucune des deux corrections de signe n'est
+      faite (le coefficient négatif est recopié tel quel comme « le
+      module », et l'argument reste $\theta/2$) ; FACE B — seul le module
+      est corrigé (valeur absolue prise), l'argument reste $\theta/2$ au
+      lieu de $\theta/2+\pi$ ; FACE C — seul l'argument est décalé de $\pi$,
+      le module reste le coefficient négatif tel quel ; FACE D — le module
+      est bien corrigé (valeur absolue prise), mais l'angle moitié
+      $\theta/2$ lui-même est abandonné en route : l'argument redevient
+      $\theta$, l'angle ENTIER de départ, comme si factoriser par
+      $e^{i\theta/2}$ n'avait rien changé à l'angle porté par l'écriture
+      finale.
+    contradicts_principle: >-
+      $1+e^{i\theta} = 2\cos(\theta/2)\,e^{i\theta/2}$. Si $\cos(\theta/2)>0$,
+      ce coefficient EST directement le module et $\theta/2$ EST directement
+      un argument. Si $\cos(\theta/2)<0$, multiplier par ce réel négatif
+      équivaut à multiplier par sa valeur absolue ET à ajouter $\pi$ à
+      l'argument — les DEUX corrections vont ensemble, jamais l'une sans
+      l'autre : le module devient $-2\cos(\theta/2)$ (positif), et
+      l'argument $\theta/2+\pi$ (modulo $2\pi$). Et dans tous les cas,
+      $\cos(\theta/2)$ positif ou négatif, l'argument final porte sur
+      $\theta/2$ — jamais sur $\theta$ lui-même : factoriser par l'angle
+      MOITIÉ est le prix du passage d'une somme à un produit, pas une étape
+      qu'on peut défaire à la fin.
 items:
   - id: NBCOMPLEX2-1
     rung: "R1"
@@ -3095,6 +3163,219 @@ items:
       VALEUR du rapport avec une distance à l'origine, qui
       n'intervient dans aucune des deux affixes du rapport.
 
+  # Trois items neufs (dette d'examen, vague B1, 2026-09-27 —
+  # docs/audits/dette-examen/maths.md, § nombres-complexes-2, GAP-A « Euler
+  # formulas / factorisation par l'angle moitié »). Rung R2 : c'est là que
+  # le content-author a ajouté l'exemple travaillé qui manquait (fin de R2,
+  # $1+e^{i\theta}=2\cos(\theta/2)e^{i\theta/2}$, condition de signe
+  # incluse). Trois valeurs de $\theta$ distinctes, une par item, jamais
+  # trois clones du même calcul, et — depuis la relecture de coordination du
+  # même jour — aucune ne recopie l'exemple travaillé de la leçon
+  # ($\theta=4\pi/3$, lesson.md:168) : NBCOMPLEX2-46 utilise
+  # $\theta=-4\pi/3\in\,]-2\pi,-\pi[$, avec un rappel du piège dans l'énoncé
+  # (le plus scaffoldé) ; NBCOMPLEX2-47 couvre $\theta=-5\pi/3$, la même
+  # convention, sans rappel ; NBCOMPLEX2-48 couvre $\theta=3\pi/2\in\,]\pi,2\pi[$
+  # avec un module différent ($\sqrt2$), sans rappel non plus. Chaque item
+  # porte quatre choix : la clé, puis trois FACES distinctes du modèle
+  # `demi-angle-coefficient-negatif-mal-corrige` — FACE A (module négatif
+  # ET argument non décalé, seul distracteur à module négatif de tout
+  # l'item), FACE B (module positif corrigé, argument non décalé) et
+  # FACE D (module positif corrigé, mais l'angle MOITIÉ abandonné :
+  # l'argument redevient $\theta$ tout entier). FACE C (module négatif,
+  # argument corrigé) a été retirée : deux distracteurs à module négatif
+  # dans le même item laissaient un élève qui sait juste « un module n'est
+  # jamais négatif » écarter les deux d'un coup, réduisant l'item à un
+  # tirage à deux — l'item ne diagnostiquait plus rien.
+  - id: NBCOMPLEX2-46
+    rung: "R2"
+    difficulty_level: 3
+    habilete: application_directe
+    skill_code: maths_complexes_trigo
+    tags: ["euler", "demi-angle", "module-argument"]
+    primary_misconception: mc.math.maths_complexes_trigo.demi-angle-coefficient-negatif-mal-corrige
+    stem: >
+      On admet que, pour tout réel $\theta$,
+      $1+e^{i\theta} = 2\cos\left(\dfrac{\theta}{2}\right)e^{i\theta/2}$ —
+      un résultat qui exige de vérifier le signe de $\cos(\theta/2)$ avant
+      de conclure. Pour $\theta = -\dfrac{4\pi}{3}$, quels sont le module
+      et un argument de $z = 1+e^{i\theta}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Module $1$, argument $\\dfrac{\\pi}{3}$"
+        correct: true
+      - id: B
+        text: "Module $-1$, argument $-\\dfrac{2\\pi}{3}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.demi-angle-coefficient-negatif-mal-corrige
+        feedback: >
+          Aucune des deux corrections n'est faite : $2\cos(-2\pi/3)=-1$
+          est négatif — un module n'est jamais négatif — et l'argument
+          reste $\theta/2=-\frac{2\pi}{3}$ sans le décalage de $\pi$
+          qu'impose ce coefficient négatif. Les deux corrections vont
+          toujours ensemble.
+      - id: C
+        text: "Module $1$, argument $-\\dfrac{2\\pi}{3}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.demi-angle-coefficient-negatif-mal-corrige
+        feedback: >
+          Le module est bien corrigé (valeur absolue : $|-1|=1$), mais
+          l'argument, lui, reste $-\frac{2\pi}{3}$ : il manque le
+          décalage de $\pi$ qu'impose un coefficient $2\cos(\theta/2)$
+          négatif. Les deux corrections vont toujours ensemble, jamais
+          l'une sans l'autre.
+      - id: D
+        text: "Module $1$, argument $\\dfrac{2\\pi}{3}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.demi-angle-coefficient-negatif-mal-corrige
+        feedback: >
+          Le module est bien corrigé ($1$), mais l'angle moitié
+          $\theta/2=-\frac{2\pi}{3}$ est abandonné en route : cette
+          réponse recopie $\theta$ lui-même (réduit ici à
+          $\frac{2\pi}{3}\ [2\pi]$), comme si factoriser par $e^{i\theta/2}$
+          n'avait rien changé à l'angle. L'argument porte toujours sur
+          l'angle MOITIÉ, jamais sur $\theta$ tout entier.
+    correct_feedback: >
+      Exact : $2\cos(-2\pi/3)=-1$, négatif — les deux corrections
+      s'imposent ensemble. Module $|-1|=1$, argument
+      $-\frac{2\pi}{3}+\pi=\frac{\pi}{3}$.
+    solution: |
+      $$2\cos\!\left(-\frac{2\pi}{3}\right) = 2\times\left(-\frac12\right) = -1$$
+      Coefficient négatif : module $|-1|=1$, argument
+      $-\dfrac{2\pi}{3}+\pi=\dfrac{\pi}{3}$.
+
+      **Vérification directe (forme algébrique).**
+      $-\dfrac{4\pi}{3}\equiv\dfrac{2\pi}{3}\ [2\pi]$, donc
+      $e^{-i4\pi/3}=e^{i2\pi/3}=-\dfrac12+i\dfrac{\sqrt3}{2}$, et
+      $z=1+e^{-i4\pi/3}=\dfrac12+i\dfrac{\sqrt3}{2}$.
+      $$|z| = \sqrt{\left(\frac12\right)^2+\left(\frac{\sqrt3}{2}\right)^2} = \sqrt{\frac14+\frac34} = 1$$
+      $\cos\theta'=\frac12$, $\sin\theta'=\frac{\sqrt3}{2}$ :
+      $\theta'=\dfrac{\pi}{3}$ — cohérent avec la factorisation.
+
+  - id: NBCOMPLEX2-47
+    rung: "R2"
+    difficulty_level: 4
+    habilete: application_non_explicite
+    skill_code: maths_complexes_trigo
+    tags: ["euler", "demi-angle", "module-argument"]
+    primary_misconception: mc.math.maths_complexes_trigo.demi-angle-coefficient-negatif-mal-corrige
+    stem: >
+      On admet que, pour tout réel $\theta$,
+      $1+e^{i\theta} = 2\cos\left(\dfrac{\theta}{2}\right)e^{i\theta/2}$.
+      Pour $\theta = -\dfrac{5\pi}{3}$, quels sont le module et un argument
+      de $z = 1+e^{i\theta}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Module $-\\sqrt3$, argument $-\\dfrac{5\\pi}{6}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.demi-angle-coefficient-negatif-mal-corrige
+        feedback: >
+          Aucune des deux corrections n'est faite :
+          $2\cos\!\left(-\frac{5\pi}{6}\right)=-\sqrt3$ est négatif, et
+          l'argument reste $\theta/2=-\frac{5\pi}{6}$ sans le décalage de
+          $\pi$. Les deux corrections vont toujours ensemble.
+      - id: B
+        text: "Module $\\sqrt3$, argument $-\\dfrac{5\\pi}{6}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.demi-angle-coefficient-negatif-mal-corrige
+        feedback: >
+          Le module est bien corrigé (valeur absolue $\sqrt3$), mais
+          l'argument reste $-\frac{5\pi}{6}$ : il manque le décalage de
+          $\pi$. Les deux corrections vont toujours ensemble, jamais l'une
+          sans l'autre.
+      - id: C
+        text: "Module $\\sqrt3$, argument $\\dfrac{\\pi}{6}$"
+        correct: true
+      - id: D
+        text: "Module $\\sqrt3$, argument $\\dfrac{\\pi}{3}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.demi-angle-coefficient-negatif-mal-corrige
+        feedback: >
+          Le module est bien corrigé ($\sqrt3$), mais l'angle moitié
+          $\theta/2=-\frac{5\pi}{6}$ est abandonné en route : cette
+          réponse recopie $\theta$ lui-même (ici $-\frac{5\pi}{3}\equiv
+          \frac{\pi}{3}\ [2\pi]$), comme si la factorisation n'avait rien
+          changé à l'angle. L'argument porte toujours sur l'angle
+          MOITIÉ, jamais sur $\theta$ tout entier.
+    correct_feedback: >
+      Exact : $2\cos\!\left(-\frac{5\pi}{6}\right)=-\sqrt3$, négatif — les
+      deux corrections s'imposent ensemble. Module $\sqrt3$, argument
+      $-\frac{5\pi}{6}+\pi=\frac{\pi}{6}$.
+    solution: |
+      $$2\cos\!\left(-\frac{5\pi}{6}\right) = 2\times\left(-\frac{\sqrt3}{2}\right) = -\sqrt3$$
+      Coefficient négatif : module $\sqrt3$, argument
+      $-\dfrac{5\pi}{6}+\pi=\dfrac{\pi}{6}$.
+
+      **Vérification directe.**
+      $-\dfrac{5\pi}{3}\equiv\dfrac{\pi}{3}\ [2\pi]$, donc
+      $e^{-i5\pi/3}=e^{i\pi/3}=\dfrac12+i\dfrac{\sqrt3}{2}$, et
+      $z=1+e^{-i5\pi/3}=\dfrac32+i\dfrac{\sqrt3}{2}$.
+      $$|z| = \sqrt{\left(\frac32\right)^2+\left(\frac{\sqrt3}{2}\right)^2} = \sqrt{\frac94+\frac34} = \sqrt3$$
+      $\cos\theta'=\dfrac{3/2}{\sqrt3}=\dfrac{\sqrt3}{2}$,
+      $\sin\theta'=\dfrac{\sqrt3/2}{\sqrt3}=\dfrac12$ :
+      $\theta'=\dfrac{\pi}{6}$ — cohérent.
+
+  - id: NBCOMPLEX2-48
+    rung: "R2"
+    difficulty_level: 5
+    habilete: application_non_explicite
+    skill_code: maths_complexes_trigo
+    tags: ["euler", "demi-angle", "module-argument"]
+    primary_misconception: mc.math.maths_complexes_trigo.demi-angle-coefficient-negatif-mal-corrige
+    stem: >
+      On admet que, pour tout réel $\theta$,
+      $1+e^{i\theta} = 2\cos\left(\dfrac{\theta}{2}\right)e^{i\theta/2}$.
+      Pour $\theta = \dfrac{3\pi}{2}$, quels sont le module et un argument
+      de $z = 1+e^{i\theta}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Module $\\sqrt2$, argument $\\dfrac{3\\pi}{4}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.demi-angle-coefficient-negatif-mal-corrige
+        feedback: >
+          Le module est bien corrigé ($\sqrt2$), mais l'argument reste
+          $\frac{3\pi}{4}$ : il manque le décalage de $\pi$ qu'impose ce
+          coefficient négatif. Les deux corrections vont toujours ensemble.
+      - id: B
+        text: "Module $\\sqrt2$, argument $\\dfrac{7\\pi}{4}$"
+        correct: true
+      - id: C
+        text: "Module $-\\sqrt2$, argument $\\dfrac{3\\pi}{4}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.demi-angle-coefficient-negatif-mal-corrige
+        feedback: >
+          Aucune des deux corrections n'est faite :
+          $2\cos\!\left(\frac{3\pi}{4}\right)=-\sqrt2$ est négatif, et
+          l'argument reste $\theta/2=\frac{3\pi}{4}$ sans décalage. Les
+          deux corrections vont toujours ensemble.
+      - id: D
+        text: "Module $\\sqrt2$, argument $\\dfrac{3\\pi}{2}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.demi-angle-coefficient-negatif-mal-corrige
+        feedback: >
+          Le module est bien corrigé ($\sqrt2$), mais l'angle moitié
+          $\theta/2=\frac{3\pi}{4}$ est abandonné en route : cette
+          réponse recopie $\theta=\frac{3\pi}{2}$ tel quel, comme si la
+          factorisation n'avait rien changé à l'angle. L'argument porte
+          toujours sur l'angle MOITIÉ, jamais sur $\theta$ tout entier.
+    correct_feedback: >
+      Exact : $2\cos\!\left(\frac{3\pi}{4}\right)=-\sqrt2$, négatif — les
+      deux corrections ensemble donnent module $\sqrt2$, argument
+      $\frac{3\pi}{4}+\pi=\frac{7\pi}{4}$.
+    solution: |
+      $$2\cos\!\left(\frac{3\pi}{4}\right) = 2\times\left(-\frac{\sqrt2}{2}\right) = -\sqrt2$$
+      Coefficient négatif : module $\sqrt2$, argument
+      $\dfrac{3\pi}{4}+\pi=\dfrac{7\pi}{4}$.
+
+      **Vérification directe.**
+      $e^{i3\pi/2}=\cos\dfrac{3\pi}{2}+i\sin\dfrac{3\pi}{2}=-i$, donc
+      $z=1+e^{i3\pi/2}=1-i$.
+      $$|z| = \sqrt{1^2+(-1)^2} = \sqrt2$$
+      $\cos\theta'=\dfrac{1}{\sqrt2}$, $\sin\theta'=-\dfrac{1}{\sqrt2}$ :
+      $\theta'=-\dfrac{\pi}{4}\equiv\dfrac{7\pi}{4}\ [2\pi]$ — cohérent.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après NBCOMPLEX2-25 à NBCOMPLEX2-34. Seize familles
 # sous le plancher : le module et son argument, la définition de $e^{i\theta}$,
@@ -3151,13 +3432,14 @@ coverage_summary:
     mc.math.maths_complexes_trigo.multiplication-rotation-par-defaut:  { count: 3, items: [NBCOMPLEX2-39, NBCOMPLEX2-40, NBCOMPLEX2-41] }
     mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe:               { count: 4, items: [NBCOMPLEX2-35, NBCOMPLEX2-36, NBCOMPLEX2-37, NBCOMPLEX2-40] }
     mc.math.maths_complexes_trigo.w-sommet-ignore:                     { count: 3, items: [NBCOMPLEX2-42, NBCOMPLEX2-43, NBCOMPLEX2-44] }
-  total_items: 45
+    mc.math.maths_complexes_trigo.demi-angle-coefficient-negatif-mal-corrige: { count: 3, items: [NBCOMPLEX2-46, NBCOMPLEX2-47, NBCOMPLEX2-48] }
+  total_items: 48
   floor: 3
   floor_met: true
   ramp_coverage:
     R0: 3
     R1: 4
-    R2: 5
+    R2: 8
     R3: 4
     R4: 4
     R5: 14
@@ -3200,3 +3482,34 @@ coverage_summary:
     `plan-complexe-rapport` (pari S2), pas par un item du banc — sa moitié
     R6 part donc à ZÉRO item, dette nommée et non refermée par cette passe
     (§8.4/§13.14 de la spec). `total_items` 41→45 ; `ramp_coverage.R6` 4→8.
+
+    Vague B1 (dette d'examen, 2026-09-27) : GAP-A « Euler formulas /
+    factorisation par l'angle moitié » (docs/audits/dette-examen/maths.md,
+    § nombres-complexes-2) — $1+e^{i\theta}=2\cos(\theta/2)e^{i\theta/2}$,
+    jamais travaillé ni testé avant cette passe. Un modèle neuf déclaré,
+    `demi-angle-coefficient-negatif-mal-corrige` (aucun des vingt-cinq ids
+    précédents ne couvrait honnêtement le signe d'un coefficient réel
+    factorisé) : trois faces documentées (aucune correction, module seul
+    corrigé, argument seul corrigé), servies par NBCOMPLEX2-46/47/48 —
+    trois valeurs de $\theta$ distinctes, jamais trois clones du même
+    calcul. Il part directement à **3**, marge NULLE, comme
+    `multiplication-rotation-par-defaut` avant lui. `total_items` 45→48 ;
+    `ramp_coverage.R2` 5→8 (R2 est le rung réel de l'exemple travaillé
+    ajouté par le content-author, fin de R2 dans `lesson.md` — pas un rung
+    de synthèse).
+
+    RELECTURE DE COORDINATION, même jour : deux corrections, `total_items`
+    et le nombre de faces inchangés (toujours 48 et trois faces déclarées,
+    désormais A/B/D). (1) NBCOMPLEX2-46 recopiait $\theta=4\pi/3$, la
+    valeur EXACTE de l'exemple travaillé de `lesson.md:168` — remplacé par
+    $\theta=-4\pi/3$ (module $1$, argument $\pi/3$). (2) Chaque item
+    portait DEUX distracteurs à module négatif (FACE A et FACE C) : un
+    élève sachant seulement « module $\ge0$ » en écartait deux d'un coup et
+    n'avait plus qu'un tirage à deux. FACE C (module négatif, argument
+    corrigé) est retirée des trois items et remplacée par une FACE D
+    (module positif, mais l'angle ENTIER $\theta$ gardé au lieu de l'angle
+    MOITIÉ $\theta/2$) — un oubli différent, plus basique, indépendant du
+    signe : la description de l'id est élargie d'une quatrième face pour la
+    couvrir honnêtement (aucun des vingt-cinq ids antérieurs ne la couvrait
+    non plus). Chaque item ne porte plus qu'UN SEUL distracteur à module
+    négatif.

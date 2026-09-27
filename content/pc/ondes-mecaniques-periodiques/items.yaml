@@ -2027,6 +2027,79 @@ items:
       diamétralement opposés — parce que la condition de diffraction
       compare $a$ à $\lambda$, jamais $a$ à lui seul.
 
+  # Ajouté le 2026-09-27 (docs/audits/dette-examen/pc-2.md §1, B1) : lecture
+  # d'une cote qui couvre PLUSIEURS intervalles crête-à-crête (λ = ℓ/n),
+  # jamais testée — OMPP-1/2 ne font lire qu'un espacement DÉJÀ égal à λ, et
+  # exercises.yaml r-variation q2 (« 3λ = 24 cm ») n'est qu'une démonstration
+  # embarquée, jamais un item. Nombres propres, distincts de bk-2020-n-x2
+  # (cote « 1 cm » sur DEUX intervalles, λ = 0,5 cm).
+  - id: OMPP-29
+    rung: "R2"
+    difficulty_level: 3
+    habilete: application_experimentale
+    skill_code: pc_ondes_mecaniques_periodiques
+    tags: [periodicite_spatiale, calcul]
+    stem: >
+      Sur une photographie instantanée d'une corde parcourue par une onde
+      progressive périodique sinusoïdale, une double flèche de
+      $1{,}2\ \text{cm}$ s'étend sur trois intervalles entre crêtes
+      successives. Quelle est la longueur d'onde $\lambda$ de cette onde ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\lambda = 0{,}4\ \text{cm}$
+        correct: true
+      - id: B
+        text: >-
+          $\lambda = 1{,}2\ \text{cm}$
+        correct: false
+        misconception: OND-CALC-1
+        feedback: >
+          Cette valeur est la longueur ENTIÈRE de la double flèche, avant
+          toute division par le nombre d'intervalles qu'elle couvre. Trois
+          intervalles séparent les crêtes aux deux extrémités de la
+          flèche : il faut diviser par ce nombre pour isoler la distance
+          d'un seul intervalle, $\lambda = 1{,}2/3 = 0{,}4\ \text{cm}$ —
+          pas garder la cote telle quelle.
+      - id: C
+        text: >-
+          $\lambda = 0{,}6\ \text{cm}$
+        correct: false
+        misconception: OND-CALC-1
+        feedback: >
+          Ce calcul divise par deux : il compte les crêtes situées
+          strictement entre les deux extrémités de la flèche (deux), au
+          lieu des intervalles qu'elle couvre (trois). La cote porte sur
+          des intervalles entre crêtes successives : $\lambda = 1{,}2/3 =
+          0{,}4\ \text{cm}$.
+      - id: D
+        text: >-
+          $\lambda = 0{,}3\ \text{cm}$
+        correct: false
+        misconception: OND-CALC-1
+        feedback: >
+          Ce calcul divise par quatre : il compte TOUTES les crêtes sous
+          la flèche, extrémités comprises (quatre), au lieu des intervalles
+          qui les séparent (trois). Quatre crêtes délimitent trois
+          intervalles, et $\lambda$ est la longueur d'UN intervalle :
+          $\lambda = 1{,}2/3 = 0{,}4\ \text{cm}$.
+    correct_feedback: >
+      La double flèche couvre trois intervalles crête-à-crête d'un seul
+      coup, pas un seul : $\lambda = 1{,}2/3 = 0{,}4\ \text{cm}$. Mesurer
+      plusieurs longueurs d'onde à la fois, puis diviser par leur nombre,
+      est plus précis que de lire un seul intervalle isolé.
+    solution: |
+      La distance entre deux crêtes consécutives est, par définition, une
+      longueur d'onde. Ici, la flèche ne couvre pas un seul de ces
+      intervalles, mais trois d'affilée :
+      $$3\lambda = 1{,}2\ \text{cm} \implies \lambda = \frac{1{,}2}{3} = 0{,}4\ \text{cm}$$
+      Deux pièges guettent cette lecture : garder la cote telle quelle
+      sans diviser (elle mesurerait alors $3\lambda$, pas $\lambda$), ou
+      diviser par le nombre de crêtes visibles plutôt que par le nombre
+      d'intervalles qui les séparent — trois intervalles séparent toujours
+      quatre crêtes, jamais trois.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, et l'ancien avait bien travaillé : il déclarait
 # franchement `floor_met: false` et NOMMAIT la seule famille en dessous —
@@ -2045,9 +2118,14 @@ coverage_summary:
   # tau/T suffit à lui seul », c'est-à-dire un REFUS DE CONCLURE. Aucune famille
   # du registre ne porte ce modèle : réétiqueter demanderait d'en écrire une, ce
   # qui est une décision de propriétaire. Les comptes ci-dessous restent donc
-  # justes CONTRE LES ÉTIQUETTES, et la preuve réelle d'OND-CALC-1 est de CINQ
-  # items (OMPP-5, 6, 12, 18, 25), pas sept — le plancher de 3 tient dans les
-  # deux lectures. Déclaré plutôt que corrigé à la main.
+  # justes CONTRE LES ÉTIQUETTES, et la preuve réelle d'OND-CALC-1 est de SIX
+  # items (OMPP-5, 6, 12, 18, 25, 29), pas huit — le plancher de 3 tient dans
+  # les deux lectures. Déclaré plutôt que corrigé à la main.
+  # AJOUT le 2026-09-27 (docs/audits/dette-examen/pc-2.md §1, B1) : OMPP-29
+  # comble le seul gap de cette notion (λ = ℓ/n sur une cote à n intervalles),
+  # tagué OND-CALC-1 (ses trois distracteurs sont des erreurs de calcul
+  # honnêtes, pas des refus de conclure — la réserve ci-dessus ne s'applique
+  # pas à cet item).
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
@@ -2066,16 +2144,16 @@ coverage_summary:
     OND-DP-2:   { count: 3, items: [OMPP-1, OMPP-2, OMPP-25] }
     OND-FR-1:   { count: 4, items: [OMPP-3, OMPP-4, OMPP-15, OMPP-17] }
     OND-NAT-1:  { count: 4, items: [OMPP-3, OMPP-10, OMPP-14, OMPP-15] }
-    OND-CALC-1: { count: 7, items: [OMPP-5, OMPP-6, OMPP-12, OMPP-13, OMPP-16, OMPP-18, OMPP-25] }
+    OND-CALC-1: { count: 8, items: [OMPP-5, OMPP-6, OMPP-12, OMPP-13, OMPP-16, OMPP-18, OMPP-25, OMPP-29] }
     OND-PH-2:   { count: 5, items: [OMPP-6, OMPP-11, OMPP-13, OMPP-16, OMPP-17] }
     OND-PH-3:   { count: 3, items: [OMPP-10, OMPP-11, OMPP-16] }
-  total_items: 28
+  total_items: 29
   floor: 3
   floor_met: true
   ramp_coverage:
     R0: 3
     R1: 3
-    R2: 4
+    R2: 5
     R3: 3
     R4: 3
     R5: 6

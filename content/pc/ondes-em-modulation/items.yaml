@@ -44,6 +44,18 @@ misconceptions:
     description: "L'élève lit une durée ou une tension directement en carreaux sans la multiplier par la sensibilité ; prend une flèche ou une ligne chiffrée de l'écran pour un repère de la courbe ; compte une « période » entre deux extrema de types DIFFÉRENTS (donc une demi-période) ; ou inverse « N oscillations par division » en « N divisions par oscillation »."
     contradicts_principle: "Un oscillogramme ne porte aucune unité : il porte des divisions et deux sensibilités (V/div, ms/div). Toute durée se lit (nombre de divisions) × (ms/div) et toute tension (nombre de divisions) × (V/div). Une période va d'un extremum à l'extremum de MÊME type. Et un rapport de deux tensions (comme m) se calcule directement en divisions, sans conversion."
 
+  # ── Deux misconceptions neuves (2026-09-27), ouvertes par la dette d'examen
+  # W1/W2 (docs/audits/dette-examen/pc-1.md). Chacune est portée par au moins
+  # trois items (OEM-29…OEM-34) — voir coverage_summary.
+  - id: mc.physics.pc_ondes_em_modulation.etage-reception-role-confondu
+    label: "« Le rôle d'un étage de la chaîne de réception est attribué à un autre étage »"
+    description: "L'élève attribue à un étage de la chaîne de réception (circuit accordé, détecteur de crête, étage d'élimination de la composante continue, amplificateur) le rôle qui appartient en réalité à un AUTRE étage — par exemple croire que le condensateur en série après le détecteur de crête sélectionne la station, élimine la porteuse, ou amplifie le signal."
+    contradicts_principle: "Chaque étage de la chaîne de réception a un rôle et un seul, dans un ordre précis : le circuit accordé (bobine + condensateur variable) SÉLECTIONNE une porteuse par accord de fréquence propre ; le détecteur de crête (diode + condensateur en parallèle + résistance) DÉMODULE, retraçant l'enveloppe $U_0+s_m(t)$ ; l'étage suivant (condensateur en série + résistance vers la masse) ÉLIMINE la composante continue $U_0$, ne laissant passer que $s_m(t)$ ; l'amplificateur, enfin, amplifie ce signal avant le haut-parleur. Aucun de ces rôles ne se substitue à un autre."
+  - id: mc.physics.pc_ondes_em_modulation.spectre-raies-position
+    label: "« Mauvaise position ou mauvais nombre des raies du spectre d'un signal modulé »"
+    description: "L'élève place mal les raies du spectre d'un signal modulé en amplitude par un signal sinusoïdal pur : il pose une raie latérale à $f_s$ directement (au lieu de $f_p\\pm f_s$), utilise $2f_s$ au lieu de $f_s$ comme écart à la porteuse, ou n'en trace que deux (voire une seule), en oubliant la raie centrale ou l'une des raies latérales."
+    contradicts_principle: "Le spectre d'un signal modulé en amplitude par un signal sinusoïdal pur porte exactement TROIS raies : une raie centrale à $f_p$ (hauteur $U_0$ ou $A$), et deux raies latérales symétriques à $f_p-f_s$ et $f_p+f_s$ (hauteur $S_m/2$ ou $Am/2$) — jamais à $f_s$ seul, jamais espacées de $2f_s$, et jamais seulement une ou deux raies."
+
 items:
   - id: OEM-1
     rung: "R1"
@@ -1790,6 +1802,373 @@ items:
       crêtes) et rapide devant celle du signal (il suit les descentes de
       l'enveloppe). La démodulation est de bonne qualité.
 
+  # ── OEM-29…OEM-34 (2026-09-27) — dette d'examen W1/W2 (docs/audits/dette-examen/pc-1.md).
+  # W1 : le rôle de l'étage qui élimine U0 après le détecteur de crête (OEM-29 ;
+  # complété par OEM-30, OEM-31 pour la misconception neuve de confusion des
+  # étages). W2 : les trois raies du spectre (OEM-32 ; complété par OEM-33,
+  # OEM-34 pour la misconception neuve de mauvaise position/nombre des raies).
+  - id: OEM-29
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_ondes_em_modulation
+    habilete: utilisation
+    tags: []
+    primary_misconception: mc.physics.pc_ondes_em_modulation.etage-reception-role-confondu
+    stem: >
+      Dans un récepteur AM, juste après le détecteur de crête (diode suivie
+      d'un condensateur en parallèle avec une résistance), un étage
+      supplémentaire est formé d'un condensateur monté EN SÉRIE sur le fil de
+      signal, suivi d'un conducteur ohmique en dérivation vers la masse.
+      Quel est le rôle de cet étage ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Il élimine la composante continue $U_0$, laissée par le détecteur
+          de crête.
+        correct: true
+      - id: B
+        text: "Il élimine la porteuse, l'oscillation rapide restée après l'antenne."
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.etage-reception-role-confondu
+        feedback: >
+          C'est le rôle du détecteur de crête, en amont : la diode et le
+          condensateur en parallèle retracent l'enveloppe $U_0+s_m(t)$,
+          effaçant déjà l'oscillation rapide. À ce stade de la chaîne, la
+          porteuse a disparu ; ce qui reste à retirer, c'est $U_0$.
+      - id: C
+        text: "Il amplifie le signal avant de l'envoyer au haut-parleur."
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.etage-reception-role-confondu
+        feedback: >
+          Un condensateur en série et une résistance vers la masse ne sont
+          pas des composants actifs : ils ne fournissent aucune énergie
+          supplémentaire au signal. L'amplification est un étage distinct,
+          placé après celui-ci.
+      - id: D
+        text: >-
+          Il sélectionne la station voulue parmi toutes celles reçues par
+          l'antenne.
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.etage-reception-role-confondu
+        feedback: >
+          C'est le rôle du circuit accordé (bobine + condensateur variable),
+          bien en amont, juste après l'antenne. À ce stade, une seule
+          porteuse a déjà été sélectionnée et démodulée : il ne reste plus
+          qu'à retirer sa composante continue.
+    correct_feedback: >
+      Un condensateur en régime permanent ne laisse passer aucun courant
+      continu : monté en série, il bloque $U_0$ — la composante que le
+      détecteur de crête laisse en plus du signal informatif $s_m(t)$ — et ne
+      transmet que ce qui VARIE dans le temps, c'est-à-dire $s_m(t)$ seul.
+    solution: |
+      Après le détecteur de crête, le signal vaut $U_0+s_m(t)$ : l'enveloppe
+      complète, composante continue comprise. Un condensateur monté en série
+      bloque tout courant continu (c'est sa propriété en régime permanent) et
+      ne transmet que la partie qui varie dans le temps. Associé à une
+      résistance vers la masse, il forme un filtre passe-haut simple qui
+      élimine $U_0$ et ne laisse passer que $s_m(t)$, prêt pour
+      l'amplification puis le haut-parleur.
+
+      Trois rôles à ne pas confondre, dans l'ordre de la chaîne : le circuit
+      accordé sélectionne une porteuse ; le détecteur de crête en extrait
+      l'enveloppe $U_0+s_m(t)$ ; cet étage-ci retire $U_0$ pour ne garder que
+      $s_m(t)$.
+
+  - id: OEM-30
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_ondes_em_modulation
+    habilete: utilisation
+    tags: []
+    primary_misconception: mc.physics.pc_ondes_em_modulation.etage-reception-role-confondu
+    stem: >
+      Un récepteur AM comprend quatre étages, présentés ici dans le désordre
+      : (1) un condensateur en série suivi d'un conducteur ohmique vers la
+      masse ; (2) une bobine en parallèle avec un condensateur variable ; (3)
+      une diode suivie d'un condensateur en parallèle avec un conducteur
+      ohmique ; (4) un amplificateur, avant le haut-parleur. Dans quel ordre
+      le signal capté par l'antenne traverse-t-il ces quatre étages ?
+    type: mcq
+    choices:
+      - id: A
+        text: "(3), (2), (1), (4)"
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.etage-reception-role-confondu
+        feedback: >
+          Le détecteur de crête (3) ne peut pas précéder le circuit accordé
+          (2) : il n'y a rien à démoduler tant qu'une porteuse précise n'a
+          pas d'abord été sélectionnée parmi toutes celles reçues par
+          l'antenne.
+      - id: B
+        text: "(2), (1), (3), (4)"
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.etage-reception-role-confondu
+        feedback: >
+          L'étage (1) élimine la composante continue $U_0$ laissée par le
+          détecteur de crête (3) : il ne peut agir qu'APRÈS lui, jamais
+          avant, puisque $U_0$ n'existe pas encore à la sortie du circuit
+          accordé (2).
+      - id: C
+        text: "(2), (3), (4), (1)"
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.etage-reception-role-confondu
+        feedback: >
+          L'amplificateur (4) amplifierait ici un signal qui porte encore
+          $U_0$ : ce n'est pas une erreur électrique en soi, mais ce n'est
+          pas non plus l'ordre du montage étudié, où l'élimination de $U_0$
+          (1) précède l'amplification.
+      - id: D
+        text: "(2), (3), (1), (4)"
+        correct: true
+    correct_feedback: >
+      Sélection par accord (2), puis démodulation en enveloppe $U_0+s_m(t)$
+      (3), puis élimination de $U_0$ pour ne garder que $s_m(t)$ (1), puis
+      amplification (4) : chaque étage prépare exactement ce dont le suivant
+      a besoin.
+    solution: |
+      L'antenne capte toutes les porteuses superposées : rien n'est
+      exploitable avant que le circuit accordé (2) n'en sélectionne une
+      seule, par accord de fréquence propre. Le détecteur de crête (3)
+      retrace alors l'enveloppe de CETTE porteuse, $U_0+s_m(t)$ — il lui faut
+      donc un signal déjà sélectionné. L'étage (1) retire la composante
+      continue $U_0$ que le détecteur laisse en plus du signal utile — il
+      lui faut donc un signal déjà démodulé. L'amplificateur (4), enfin,
+      amplifie $s_m(t)$ seul, débarrassé de $U_0$, avant le haut-parleur.
+      L'ordre est : $(2) \to (3) \to (1) \to (4)$.
+
+  - id: OEM-31
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_ondes_em_modulation
+    habilete: utilisation
+    tags: []
+    primary_misconception: mc.physics.pc_ondes_em_modulation.etage-reception-role-confondu
+    stem: >
+      Un camarade affirme, à propos de l'étage placé juste après le
+      détecteur de crête (un condensateur en série suivi d'un conducteur
+      ohmique vers la masse) : « cet étage sélectionne la station voulue
+      parmi toutes celles reçues par l'antenne. » Que peut-on lui répondre ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : cet étage élimine la composante continue $U_0$ laissée par
+          le détecteur de crête.
+        correct: true
+      - id: B
+        text: >-
+          Oui : un condensateur en série bloque les fréquences des autres
+          stations, y compris celles déjà captées par l'antenne.
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.etage-reception-role-confondu
+        feedback: >
+          À ce stade de la chaîne, une seule porteuse a déjà été
+          sélectionnée par le circuit accordé et démodulée : il n'y a plus
+          d'autres stations à bloquer ici. Le condensateur en série bloque
+          seulement la composante continue $U_0$, pas des fréquences
+          porteuses concurrentes.
+      - id: C
+        text: >-
+          Non : cet étage amplifie plutôt le signal avant qu'il n'atteigne le
+          haut-parleur.
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.etage-reception-role-confondu
+        feedback: >
+          Un condensateur en série et une résistance vers la masse ne sont
+          pas des composants actifs : ils ne fournissent aucune énergie
+          supplémentaire au signal. L'amplification est un étage distinct,
+          placé après celui-ci.
+      - id: D
+        text: >-
+          Non : cet étage élimine plutôt la porteuse, et non la composante
+          continue.
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.etage-reception-role-confondu
+        feedback: >
+          La porteuse a déjà disparu à ce stade : c'est le détecteur de
+          crête, en amont, qui l'a effacée en retraçant l'enveloppe
+          $U_0+s_m(t)$. Ce qui reste à retirer ici, c'est $U_0$, pas une
+          oscillation rapide qui n'existe plus dans le signal.
+    correct_feedback: >
+      La sélection de la station est déjà faite, en amont, par le circuit
+      accordé. Cet étage-ci, placé après la démodulation, ne fait
+      qu'éliminer $U_0$ pour ne garder que $s_m(t)$.
+    solution: |
+      La chaîne de réception attribue un rôle et un seul à chaque étage :
+      circuit accordé → sélection ; détecteur de crête → démodulation
+      (enveloppe $U_0+s_m(t)$) ; condensateur en série + résistance vers la
+      masse → élimination de $U_0$ ; amplificateur → amplification. L'étage
+      décrit ici, placé après le détecteur de crête, ne peut donc pas
+      sélectionner une station : cette étape est déjà terminée, en amont,
+      avant même la démodulation.
+
+  - id: OEM-32
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_ondes_em_modulation
+    habilete: utilisation
+    tags: []
+    primary_misconception: mc.physics.pc_ondes_em_modulation.spectre-raies-position
+    stem: >
+      Une porteuse de fréquence $f_p=600\ \text{kHz}$ est modulée en
+      amplitude par un signal informatif sinusoïdal pur de fréquence
+      $f_s=5\ \text{kHz}$. Où se situent les trois raies du spectre de la
+      tension modulée ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$f_s=5\\ \\text{kHz}$, $f_p=600\\ \\text{kHz}$, $f_p+f_s=605\\ \\text{kHz}$"
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.spectre-raies-position
+        feedback: >
+          La raie latérale basse n'est jamais à $f_s$ seul, mais à
+          $f_p-f_s$. La relation trigonométrique produit-somme place les
+          deux raies latérales SYMÉTRIQUEMENT autour de $f_p$, jamais l'une
+          d'elles à la fréquence du signal informatif lui-même.
+      - id: B
+        text: "$f_p-2f_s=590\\ \\text{kHz}$, $f_p=600\\ \\text{kHz}$, $f_p+2f_s=610\\ \\text{kHz}$"
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.spectre-raies-position
+        feedback: >
+          L'écart entre la porteuse et chaque raie latérale vaut $f_s$, pas
+          $2f_s$ : le produit-somme $\cos p\cos q$ donne des termes en
+          $p-q$ et $p+q$, pas en $p-2q$ et $p+2q$.
+      - id: C
+        text: "$f_p-f_s=595\\ \\text{kHz}$, $f_p=600\\ \\text{kHz}$, $f_p+f_s=605\\ \\text{kHz}$"
+        correct: true
+      - id: D
+        text: "$f_p=600\\ \\text{kHz}$ et $f_s=5\\ \\text{kHz}$ (deux raies seulement)"
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.spectre-raies-position
+        feedback: >
+          Le spectre porte TROIS raies, pas deux : une raie centrale à
+          $f_p$, et deux raies latérales à $f_p\pm f_s$. La fréquence $f_s$
+          du signal n'apparaît jamais elle-même comme position d'une raie.
+    correct_feedback: >
+      Le développement en produit-somme donne trois raies : une centrale à
+      $f_p=600\ \text{kHz}$, et deux latérales symétriques à
+      $f_p-f_s=595\ \text{kHz}$ et $f_p+f_s=605\ \text{kHz}$.
+    solution: |
+      $$s(t) = U_0\cos(2\pi f_p t) + \frac{S_m}{2}\cos\big(2\pi(f_p-f_s)t\big) + \frac{S_m}{2}\cos\big(2\pi(f_p+f_s)t\big)$$
+
+      $$f_p - f_s = 600-5 = 595\ \text{kHz} \qquad f_p = 600\ \text{kHz} \qquad f_p+f_s = 600+5 = 605\ \text{kHz}$$
+
+      Les deux raies latérales encadrent symétriquement la raie centrale, à
+      un écart de $f_s$ de part et d'autre — jamais à $f_s$ lui-même, jamais
+      à $2f_s$ d'écart.
+
+  - id: OEM-33
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: pc_ondes_em_modulation
+    habilete: résolution
+    tags: []
+    primary_misconception: mc.physics.pc_ondes_em_modulation.spectre-raies-position
+    stem: >
+      Le spectre d'une tension modulée en amplitude par un signal sinusoïdal
+      pur porte trois raies, à $1\,193\ \text{kHz}$, $1\,200\ \text{kHz}$ et
+      $1\,207\ \text{kHz}$. Quelles sont les fréquences de la porteuse
+      $f_p$ et du signal modulant $f_s$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$f_p=1\\,193\\ \\text{kHz}$, $f_s=7\\ \\text{kHz}$"
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.spectre-raies-position
+        feedback: >
+          La porteuse est la raie CENTRALE, la plus grande des trois
+          hauteurs (celle de hauteur $U_0$ ou $A$) : c'est
+          $1\,200\ \text{kHz}$, pas l'une des deux raies latérales.
+      - id: B
+        text: "$f_p=1\\,200\\ \\text{kHz}$, $f_s=7\\ \\text{kHz}$"
+        correct: true
+      - id: C
+        text: "$f_p=1\\,200\\ \\text{kHz}$, $f_s=14\\ \\text{kHz}$"
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.spectre-raies-position
+        feedback: >
+          $14\ \text{kHz}$ est l'écart ENTRE les deux raies latérales
+          ($1\,207-1\,193$), pas l'écart entre la porteuse et une raie
+          latérale. $f_s$ est la moitié de cette largeur totale, soit
+          $7\ \text{kHz}$.
+      - id: D
+        text: "$f_p=7\\ \\text{kHz}$, $f_s=1\\,200\\ \\text{kHz}$"
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.porteuse-vs-signal-modulant
+        feedback: >
+          Les rôles sont inversés : $f_p$ est la fréquence haute et fixe (la
+          raie centrale, $1\,200\ \text{kHz}$), $f_s$ la fréquence basse du
+          signal informatif (l'écart aux raies latérales, $7\ \text{kHz}$)
+          — jamais l'inverse.
+    correct_feedback: >
+      La raie centrale, $1\,200\ \text{kHz}$, est $f_p$. L'écart à chaque
+      raie latérale, $1\,200-1\,193=1\,207-1\,200=7\ \text{kHz}$, est $f_s$.
+    solution: |
+      La raie centrale (celle qui ne dépend pas du signal informatif) est la
+      porteuse : $f_p=1\,200\ \text{kHz}$.
+
+      L'écart entre la porteuse et CHAQUE raie latérale est $f_s$ :
+      $$f_s = 1\,200 - 1\,193 = 7\ \text{kHz} \qquad f_s = 1\,207 - 1\,200 = 7\ \text{kHz}$$
+
+      Les deux calculs s'accordent : $f_s=7\ \text{kHz}$, pas $14\ \text{kHz}$
+      (l'écart entre les deux raies latérales elles-mêmes, le double de
+      $f_s$).
+
+  - id: OEM-34
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_ondes_em_modulation
+    habilete: utilisation
+    tags: []
+    primary_misconception: mc.physics.pc_ondes_em_modulation.spectre-raies-position
+    stem: >
+      En toute généralité, combien de raies porte le spectre d'une tension
+      modulée en amplitude par un signal informatif sinusoïdal pur, et
+      lesquelles ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Une seule raie, à $f_p$."
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.spectre-raies-position
+        feedback: >
+          Le développement en produit-somme fait apparaître deux raies
+          latérales en plus de la raie centrale : le signal informatif
+          laisse toujours une trace dans le spectre, à $f_p\pm f_s$.
+      - id: B
+        text: "Deux raies, à $f_p-f_s$ et $f_p+f_s$ (sans raie centrale)."
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.spectre-raies-position
+        feedback: >
+          Le terme $U_0\cos(2\pi f_p t)$ subsiste tel quel dans $s(t)$ : il
+          donne toujours une raie centrale à $f_p$, en plus des deux raies
+          latérales.
+      - id: C
+        text: "Deux raies, à $f_s$ et $f_p$."
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.spectre-raies-position
+        feedback: >
+          La fréquence $f_s$ du signal informatif n'apparaît jamais
+          elle-même comme position d'une raie : elle apparaît comme l'ÉCART
+          entre la porteuse et chacune des deux raies latérales,
+          $f_p\pm f_s$.
+      - id: D
+        text: "Trois raies : $f_p-f_s$, $f_p$ et $f_p+f_s$."
+        correct: true
+    correct_feedback: >
+      Trois raies, toujours : la centrale à $f_p$ (hauteur $U_0$), et les
+      deux latérales symétriques à $f_p-f_s$ et $f_p+f_s$ (hauteur
+      $S_m/2$ chacune).
+    solution: |
+      $$s(t) = U_0\cos(2\pi f_p t) + \frac{S_m}{2}\cos\big(2\pi(f_p-f_s)t\big) + \frac{S_m}{2}\cos\big(2\pi(f_p+f_s)t\big)$$
+
+      Trois termes, trois raies : quelle que soit la valeur de $f_p$ ou de
+      $f_s$, le spectre d'un signal modulé en amplitude par un signal
+      sinusoïdal pur porte toujours exactement ces trois raies — jamais une
+      seule, jamais deux, jamais à des positions autres que $f_p$ et
+      $f_p\pm f_s$.
+
 # ──────────────────────────────────────────────────────────────────────────────
 # COVERAGE SUMMARY (backfilled in the summit-conversion pass)
 #
@@ -1804,7 +2183,7 @@ items:
 # ──────────────────────────────────────────────────────────────────────────────
 coverage_summary:
   method: "item-level, by primary_misconception (one item = one count)"
-  total_items: 28
+  total_items: 34
   per_misconception:
     mc.physics.pc_ondes_em_modulation.antenne-taille-vs-longueur-onde: 4    # OEM-1, OEM-7, OEM-8, OEM-9
     mc.physics.pc_ondes_em_modulation.lambda-relation-cf: 3                 # OEM-10, OEM-11, OEM-22
@@ -1814,16 +2193,18 @@ coverage_summary:
     mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete: 4      # OEM-14, OEM-15, OEM-24, OEM-28
     mc.physics.pc_ondes_em_modulation.circuit-accorde-selection: 4         # OEM-6, OEM-17, OEM-18, OEM-21
     mc.physics.pc_ondes_em_modulation.lecture-oscillogramme: 3             # OEM-25, OEM-26, OEM-27
+    mc.physics.pc_ondes_em_modulation.etage-reception-role-confondu: 3     # OEM-29, OEM-30, OEM-31 — neuf 2026-09-27, dette W1
+    mc.physics.pc_ondes_em_modulation.spectre-raies-position: 3            # OEM-32, OEM-33, OEM-34 — neuf 2026-09-27, dette W2
   floor: 3
   floor_met: true
   ramp_coverage:
     R0: 3   # OEM-7, OEM-8, OEM-9
     R1: 4   # OEM-1, OEM-10, OEM-11, OEM-22
-    R2: 3   # OEM-2, OEM-12, OEM-13
-    R3: 7   # OEM-3, OEM-4, OEM-5, OEM-23, OEM-25, OEM-26, OEM-27
-    R4: 5   # OEM-14, OEM-15, OEM-16, OEM-24, OEM-28
+    R2: 5   # OEM-2, OEM-12, OEM-13, OEM-32, OEM-34
+    R3: 8   # OEM-3, OEM-4, OEM-5, OEM-23, OEM-25, OEM-26, OEM-27, OEM-33
+    R4: 7   # OEM-14, OEM-15, OEM-16, OEM-24, OEM-28, OEM-29, OEM-31
     R5: 3   # OEM-6, OEM-17, OEM-18
-    R6: 3   # OEM-19, OEM-20, OEM-21
+    R6: 4   # OEM-19, OEM-20, OEM-21, OEM-30
   note: >
     Floor closed and per-distractor tagging promoted in the summit-conversion
     pass. OEM-1…OEM-21: every distractor carries a `misconception:` field
@@ -1841,3 +2222,18 @@ coverage_summary:
     uncomputable while the 24 others carry none. Per-distractor tags are
     diagnostic metadata layered onto the item-level floor count; they do not
     change the method or counts above.
+  resolution_2026_09_27: >-
+    Exam-debt gaps W1/W2 closed (docs/audits/dette-examen/pc-1.md): six items,
+    OEM-29…OEM-34, and two new models. W1 (the role of the series-capacitor
+    stage that removes U0 after the envelope detector) opens
+    `etage-reception-role-confondu` — attributing one reception-chain stage's
+    job to another — carried by OEM-29 (name the role directly), OEM-30
+    (order all four stages), OEM-31 (rebut a classmate's wrong claim): three
+    distinct gestures, not three copies. W2 (the three spectral lines) opens
+    `spectre-raies-position` — wrong position or wrong count of the sideband
+    lines — carried by OEM-32 (place the lines, own numbers 600 kHz/5 kHz),
+    OEM-33 (inverse: given three lines, recover f_p and f_s), OEM-34
+    (qualitative: how many lines, in general). Neither model was reachable
+    honestly from the existing 8; both were searched for a fit first (see the
+    item-author's report for the per-distractor justification). No existing
+    id's count changes.

@@ -1177,6 +1177,97 @@ items:
       $3\,^{4}_{2}\text{He}$ (une fusion aneutronique, sans neutron émis,
       étudiée pour de futurs réacteurs à fusion).
 
+  # ── M1 (dette d'examen pc-1) : E_lib lu sur une table d'énergies de liaison ──
+  # Ajouté le 2026-09-27 : GAP-A de docs/audits/dette-examen/pc-1.md —
+  # bk-2023-n-x1 q2 et decroissance-radioactive bk-2019-n-x2 q3 demandent
+  # toutes deux E_lib = ΣE_l(produits) − ΣE_l(réactifs) ; R4 (chapitre 5) vient
+  # de recevoir ce corollaire, mais tous les items existants passent par les
+  # masses (Δm_réaction), jamais par une table d'énergies de liaison. Réaction
+  # et valeurs propres à cet item : le triple alpha (3 He-4 → C-12, une
+  # fusion stellaire distincte de la fusion D-T de la leçon et des noyaux
+  # Rn/Po de decroissance-radioactive), avec l'hélium 4 donné en E_l/A —
+  # exactement le geste « multiplier par A » que le chapitre 5 nomme.
+  - id: NME-19
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_noyaux_masse_energie
+    tags: []
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.signe-delta-m-bilan
+    stem: >
+      Dans le cœur des étoiles, trois noyaux d'hélium 4 peuvent s'assembler
+      pour former un noyau de carbone 12 (processus dit « triple alpha ») :
+      $3\,^{4}_{2}\text{He} \longrightarrow \ ^{12}_{6}\text{C}$. On donne
+      l'énergie de liaison par nucléon de l'hélium 4,
+      $E_l/A(^{4}_{2}\text{He}) = 7{,}08\ \text{MeV/nucléon}$ (chapitre 4), et
+      l'énergie de liaison totale du carbone 12,
+      $E_l(^{12}_{6}\text{C}) = 92{,}16\ \text{MeV}$. Quelle est l'énergie
+      libérée par cette réaction ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Cette réaction libère environ $70{,}9\\ \\text{MeV}$."
+        correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
+        feedback: >
+          Modèle détecté : $7{,}08\ \text{MeV}$ est une énergie PAR NUCLÉON,
+          pas l'énergie de liaison totale d'un noyau d'hélium 4. Il faut
+          d'abord multiplier par $A=4$ : $E_l(^{4}_{2}\text{He}) =
+          4\times7{,}08=28{,}32\ \text{MeV}$ par noyau, avant de sommer les
+          trois réactifs (chapitre 5) - jamais additionner directement des
+          $E_l/A$ entre eux.
+      - id: B
+        text: "Cette réaction absorbe environ $7{,}20\\ \\text{MeV}$ (elle ne peut pas se produire spontanément)."
+        correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.signe-delta-m-bilan
+        feedback: >
+          Modèle détecté : la différence a été inversée (réactifs moins
+          produits, au lieu de produits moins réactifs). Le chapitre 5 nomme
+          précisément ce piège : $E_{lib}=\sum E_l(\text{produits})-\sum
+          E_l(\text{réactifs})$, jamais l'inverse - une énergie « libérée »
+          négative n'a pas de sens pour une réaction qui en libère réellement,
+          comme celle-ci.
+      - id: C
+        text: "Cette réaction libère environ $177{,}12\\ \\text{MeV}$."
+        correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.signe-delta-m-bilan
+        feedback: >
+          Modèle détecté : les énergies de liaison des réactifs et des
+          produits ont été additionnées, comme si l'énergie libérée était un
+          total plutôt qu'un écart. Ce n'est pas l'énergie de liaison cumulée
+          qui compte, mais la différence entre ce que gagnent les produits et
+          ce que perdaient les réactifs (chapitre 5) :
+          $E_{lib}=\sum E_l(\text{produits})-\sum E_l(\text{réactifs})$.
+      - id: D
+        text: "Cette réaction libère environ $7{,}20\\ \\text{MeV}$."
+        correct: true
+    correct_feedback: >
+      $E_l(^{4}_{2}\text{He})=4\times7{,}08=28{,}32\ \text{MeV}$ par noyau,
+      soit $3\times28{,}32=84{,}96\ \text{MeV}$ pour les trois réactifs.
+      $E_{lib}=92{,}16-84{,}96=7{,}20\ \text{MeV}$.
+    solution: |
+      On convertit d'abord l'énergie de liaison par nucléon de l'hélium 4 en
+      énergie de liaison totale, en multipliant par $A=4$ (chapitre 5) :
+
+      $$E_l(^{4}_{2}\text{He}) = 4\times7{,}08 = 28{,}32\ \text{MeV}$$
+
+      Les trois noyaux d'hélium réactifs totalisent :
+
+      $$\sum E_l(\text{réactifs}) = 3\times28{,}32 = 84{,}96\ \text{MeV}$$
+
+      Le carbone 12 (seul produit) a une énergie de liaison déjà donnée en
+      valeur totale :
+
+      $$\sum E_l(\text{produits}) = E_l(^{12}_{6}\text{C}) = 92{,}16\ \text{MeV}$$
+
+      D'où, par le corollaire du chapitre 5 (les nucléons étant conservés -
+      $3\times4=12$ - seule la différence des énergies de liaison survit) :
+
+      $$E_{lib} = \sum E_l(\text{produits}) - \sum E_l(\text{réactifs}) = 92{,}16-84{,}96 = 7{,}20\ \text{MeV}$$
+
+      (cohérent avec la valeur réelle de ce processus, généralement citée
+      autour de $7{,}3\ \text{MeV}$).
+    habilete: utilisation
+
 # ══════════════════════════════════════════════════════════════════════════════
 # COVERAGE SUMMARY (summit-conversion campaign — ride-along)
 #
@@ -1195,13 +1286,13 @@ items:
 # ══════════════════════════════════════════════════════════════════════════════
 coverage_summary:
   method: "item-level, by primary_misconception (one item = one count)"
-  total_items: 18
+  total_items: 19
   per_misconception:
     mc.physics.pc_noyaux_masse_energie.defaut-masse-et-equivalence: 3           # NME-1, NME-8, NME-10
     mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston: 5  # NME-2, NME-3, NME-4, NME-13, NME-15
     mc.physics.pc_noyaux_masse_energie.conservation-A-Z: 3                      # NME-12, NME-14, NME-18
     mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur: 4          # NME-5, NME-7, NME-9, NME-11
-    mc.physics.pc_noyaux_masse_energie.signe-delta-m-bilan: 3                   # NME-6, NME-16, NME-17
+    mc.physics.pc_noyaux_masse_energie.signe-delta-m-bilan: 4                   # NME-6, NME-16, NME-17, NME-19
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -1209,14 +1300,24 @@ coverage_summary:
     R1: 3   # NME-5, NME-10, NME-11
     R2: 3   # NME-1, NME-2, NME-12
     R3: 3   # NME-3, NME-4, NME-13
-    R4: 3   # NME-6, NME-14, NME-15
+    R4: 4   # NME-6, NME-14, NME-15, NME-19
     R5: 3   # NME-16, NME-17, NME-18
   note: >
     Every distractor now carries a structured `misconception:` field (additive
     only — no existing stem, feedback, solution, or correct_feedback was deleted
     or weakened), and every item carries a `primary_misconception`. The five
-    misconceptions each clear the ≥3-item floor (3/5/3/4/3), so floor_met is
+    misconceptions each clear the ≥3-item floor (3/5/3/4/4), so floor_met is
     true. Per-distractor tags may cross-reference a misconception other than the
     item's primary (e.g. a fission/fusion lure inside a bilan item), which is
     diagnostic metadata layered onto the item-level primary count; they do not
     change the coverage method or the counts above.
+  # Ajout du 2026-09-27 (dette d'examen pc-1, M1) : NME-19 (E_lib lu sur une
+  # table d'énergies de liaison, avec un E_l/A à convertir, GAP-A).
+  # signe-delta-m-bilan passe de 3 à 4 (primary_misconception) ; rung R4 passe
+  # de 3 à 4 items. Aucune misconception nouvelle déclarée. Ce compte suit,
+  # comme les 18 items précédents de ce fichier, la convention "primary
+  # seulement" documentée ci-dessus — une convention plus stricte (par
+  # présence de tag sur n'importe quel distracteur, cf.
+  # web/scripts/lib/couverture-compte.mjs, utilisée par
+  # esterification-hydrolyse et etat-equilibre) donnerait des comptes égaux ou
+  # supérieurs, jamais inférieurs, donc ne casse pas le plancher.

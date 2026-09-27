@@ -214,6 +214,16 @@ $$\frac{u_{n+1}}{u_n} \geq 1 \iff u_{n+1} \geq u_n \quad \text{(croissante, si t
 
 Cette méthode du quotient est surtout pratique pour les suites géométriques à termes positifs, où $u_{n+1}/u_n = q$ est immédiat à calculer.
 
+**Exemple travaillé.** Soit $u_n = \dfrac{2^n}{n!}$ pour $n \geq 0$. Étudier sa monotonie.
+
+**Ce qu'on cherche ici, et pourquoi ce geste :** $u_n$ est un quotient de deux quantités strictement positives ($2^n>0$ et $n!>0$), donc $u_n>0$ pour tout $n$ — exactement la condition qui autorise la variante du quotient plutôt que la différence.
+
+$$\frac{u_{n+1}}{u_n} = \frac{2^{n+1}/(n+1)!}{2^n/n!} = 2 \times \frac{n!}{(n+1)!} = \frac{2}{n+1}$$
+
+Pour $n \geq 1$, $n+1 \geq 2$, donc $\dfrac{2}{n+1} \leq 1$ : **$(u_n)$ décroît à partir du rang $1$.**
+
+**Pourquoi il faut $u_n>0$ pour utiliser cette variante :** comparer $u_{n+1}/u_n$ à $1$ n'équivaut à comparer $u_{n+1}$ à $u_n$ que si multiplier l'inégalité $u_{n+1}/u_n \leq 1$ par $u_n$ conserve son sens — ce qui exige $u_n>0$. Si $u_n$ était négatif, cette multiplication inverserait l'inégalité, et $u_{n+1}/u_n \leq 1$ correspondrait alors à $u_{n+1} \geq u_n$ (croissante) : exactement l'inverse de ce qu'on veut lire.
+
 ### Exemple travaillé : la monotonie du réservoir
 
 Reprenons $u_{n+1} = 0{,}5\,u_n + 10$. Calculons la différence :
@@ -874,4 +884,15 @@ Même machinerie profonde, autre habillage : une suite récurrente $u_{n+1}=f(u_
      non bloquant) est ajouté avant l'exemple travaillé de R8c : superposer
      les courbes de $f_n$ et $f_{n+1}$ pour rendre visible, sans calcul, que
      leurs zéros sont ceux de DEUX fonctions différentes. Non produit ici
-     (hors du lane content-author) — signalé pour la file diagram/interactive. -->
+     (hors du lane content-author) — signalé pour la file diagram/interactive.
+
+     NOTE AJOUTÉE (dette d'examen, vague B1, 2026-09-27) :
+     (8) [PROSE LIVRÉE] GAP-B minor « Monotonicity by the quotient
+     u_{n+1}/u_n — stated, never worked » (docs/audits/dette-examen/maths.md,
+     § suites-numeriques, ligne ~451 ; testé par SUITES-18 et SUITES-35 sans
+     jamais être montré). Un exemple travaillé ajouté juste après la
+     variante du quotient (R4) : $u_n=2^n/n!$, $u_{n+1}/u_n=2/(n+1)\le1$
+     pour $n\ge1$, décroissance à partir du rang $1$ — avec la condition de
+     positivité justifiée en une phrase (multiplier une inégalité par un
+     $u_n$ négatif en inverserait le sens). Aucun checkpoint ajouté. -->
+

@@ -2898,6 +2898,240 @@ items:
       **Le calcul.**
       $$\|\vec a\| = \sqrt{a_T^2+a_N^2} = \sqrt{(-4{,}50)^2+7{,}20^2} = \sqrt{20{,}25+51{,}84} = \sqrt{72{,}09} = 8{,}49\ \text{m/s}^2$$
 
+  # Ajoutés le 2026-09-27 (item-author) — trois gaps de
+  # docs/audits/dette-examen/pc-1.md, lois-de-newton N1/N2/N3. Chiffres
+  # propres à ces trois items, jamais repris d'un sujet bancarisé
+  # (bk-2022-r-x4 pour N1 : m=2 kg, alpha=17,5°, F≈12 N ; bk-2019-n-x4 pour
+  # N2 : m=190 kg, beta=10°, F≈525 N ; bk-2017-n-x4 pour N3 : le contexte
+  # skieur/ski, N≈586 N — aucune de ces valeurs n'apparaît ci-dessous).
+  # Les trois placés au rung 7 (méthode bilan/projection sur plan incliné) :
+  # c'est le rung où la leçon établit N=mg.cos(alpha) (L395-401) et où les
+  # trois sujets bancarisés posent le même bilan à trois forces.
+  #
+  # N1 (LDN-39) et N2 (LDN-40) réutilisent `erreur-cinematique-uniforme` :
+  # « oublier le facteur 1/2 (ou 2) », « traiter un mouvement accéléré
+  # comme à vitesse constante » couvre honnêtement la pente d'une droite
+  # x=f(t^2) (oubli du facteur 2, facteur appliqué deux fois, abscisse
+  # relue comme t au lieu de t^2) et celle d'une droite v=f(t) qui ne part
+  # pas de l'origine (v_2/t_2 en ignorant v_0, ordre inversé au numérateur
+  # sans l'être au dénominateur, division par t_2 seul). Aucune des 20
+  # misconceptions déclarées ne nomme spécifiquement une lecture de pente
+  # sur un graphe ; deux nouvelles id auraient chacune exigé un plan à 3
+  # items hors du mandat de cette passe (un item par gap) — signalé au
+  # pedagogy-architect ci-dessous plutôt que forcé.
+  #
+  # N3 (LDN-41) réutilise deux id déjà déclarées plutôt que d'en créer une
+  # 21e pour « R = N+f au lieu de Pythagore » : `role-normale-mal-compris`
+  # (« ce qu'elle équilibre » — ici confondre N, la seule composante
+  # normale, avec R, la résultante totale du plan) porte les deux
+  # distracteurs qui ne distinguent pas N de R (R=N, R=N+f) ; le
+  # distracteur qui oublie l'inclinaison elle-même (R=mg, comme sur un sol
+  # horizontal) reprend `projection-plan-incline`, son exemple déclaré
+  # verbatim (« prend N=mg comme à l'horizontale »).
+  #
+  # SIGNALÉ pour une passe future : aucune des 20 misconceptions de ce
+  # fichier ne nomme une pente lue sur un graphe (droite x=f(t^2) ou
+  # v=f(t)) ni une combinaison de deux forces perpendiculaires par une
+  # somme algébrique plutôt que par Pythagore (l'analogue en FORCES de ce
+  # que `acceleration-traitee-comme-un-nombre` nomme déjà pour les
+  # composantes de l'ACCÉLÉRATION, Forme E) — deux trous de couverture
+  # réels, chacun candidat à sa propre id s'il s'accompagne d'un plan à 3
+  # items.
+
+  - id: LDN-39
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+    stem: >
+      Un solide, immobile à l'instant initial ($t=0$), est animé d'un
+      mouvement rectiligne d'accélération constante $a$. On trace sa
+      position $x$ en fonction du carré du temps, $t^2$ : la droite
+      obtenue passe par l'origine et par le point de coordonnées
+      $(t^2 = 9\ \text{s}^2\,;\,x = 27\ \text{m})$. Quelle est la valeur de
+      $a$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $a = 3{,}0\ \text{m/s}^2$
+        correct: false
+        misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+        feedback: >
+          Ce calcul lit directement la pente de la droite $x=f(t^2)$ comme
+          si elle valait $a$. Or $x=\frac12 a t^2$ s'écrit, en posant
+          $T=t^2$, $x=(a/2)\,T$ : la pente de cette droite vaut $a/2$, pas
+          $a$ — il faut la DOUBLER pour retrouver l'accélération.
+      - id: B
+        text: >-
+          $a = 6{,}0\ \text{m/s}^2$
+        correct: true
+      - id: C
+        text: >-
+          $a = 1{,}5\ \text{m/s}^2$
+        correct: false
+        misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+        feedback: >
+          Ce calcul divise une seconde fois par deux une pente qui contient
+          déjà le facteur $1/2$ de $x=\frac12 a t^2$. La pente de la droite
+          $x=f(t^2)$ vaut $a/2$ : pour remonter à $a$, il faut la
+          MULTIPLIER par deux, pas la diviser encore.
+      - id: D
+        text: >-
+          $a \approx 0{,}67\ \text{m/s}^2$
+        correct: false
+        misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+        feedback: >
+          Ce calcul traite l'abscisse $9$ comme un temps $t=9\ \text{s}$,
+          alors que l'axe horizontal porte $t^2$, pas $t$ : le point donné
+          correspond à $t^2=9\ \text{s}^2$, donc $t=3{,}0\ \text{s}$, pas
+          $t=9\ \text{s}$.
+    correct_feedback: >
+      La droite passe par l'origine : $x=\frac12 a t^2$ s'écrit, avec
+      $T=t^2$, $x=(a/2)\,T$. La pente lue, $27/9=3{,}0\ \text{m/s}^2$, vaut
+      donc $a/2$ : il faut la doubler, $a = 2\times3{,}0 = 6{,}0\
+      \text{m/s}^2$.
+    solution: |
+      Le solide part du repos, à accélération constante :
+      $$x(t) = \frac{1}{2}a\,t^2$$
+      En posant $T=t^2$, cette relation devient $x = (a/2)\,T$ : une droite
+      passant par l'origine, de pente $a/2$. La droite donnée passe par
+      $(T=9\ \text{s}^2\,;\,x=27\ \text{m})$, donc :
+      $$\text{pente} = \frac{27}{9} = 3{,}0\ \text{m/s}^2 = \frac{a}{2}$$
+      $$a = 2\times3{,}0 = 6{,}0\ \text{m/s}^2$$
+
+  - id: LDN-40
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+    stem: >
+      Sur un graphe donnant la vitesse $v$ du centre d'inertie $G$ d'un
+      solide en fonction du temps, la courbe obtenue est une droite. Elle
+      passe par les points $(t_1=2{,}0\ \text{s}\,;\,v_1=10\ \text{m/s})$ et
+      $(t_2=6{,}0\ \text{s}\,;\,v_2=22\ \text{m/s})$. Quelle est la valeur
+      de l'accélération $a$ de ce solide ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $a \approx 3{,}7\ \text{m/s}^2$
+        correct: false
+        misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+        feedback: >
+          Ce calcul prend $v_2/t_2$ comme si la droite passait par
+          l'origine, comme dans $v=at$. Mais $v_1=10\ \text{m/s}\neq0$ à
+          $t_1=2{,}0\ \text{s}$ : la relation est $v=at+v_0$, une droite
+          AFFINE, pas une proportionnalité — sa pente se lit avec DEUX
+          points, jamais avec un seul rapporté à une origine qui n'est pas
+          la bonne.
+      - id: B
+        text: >-
+          $a = -3{,}0\ \text{m/s}^2$
+        correct: false
+        misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+        feedback: >
+          Ce calcul inverse l'ordre de la soustraction au numérateur
+          ($v_1-v_2$) sans l'inverser au dénominateur : la pente
+          $a=(v_2-v_1)/(t_2-t_1)$ doit garder le MÊME ordre aux deux
+          étages de la fraction. Ici $v$ augmente avec $t$ ($22>10$) : $a$
+          est positive, le mouvement accélère, il ne ralentit pas.
+      - id: C
+        text: >-
+          $a = 3{,}0\ \text{m/s}^2$
+        correct: true
+      - id: D
+        text: >-
+          $a = 2{,}0\ \text{m/s}^2$
+        correct: false
+        misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+        feedback: >
+          Ce calcul divise la variation de vitesse $v_2-v_1$ par $t_2$
+          seul, sans soustraire $t_1$. La pente d'une droite se lit sur un
+          INTERVALLE de temps, $\Delta t=t_2-t_1$ — pas sur une durée
+          comptée depuis l'origine du graphe, qui n'est pas l'instant
+          $t_1$ ici.
+    correct_feedback: >
+      La droite ne passe pas par l'origine ($v_1\neq0$) : il faut deux
+      points pour sa pente. $a = \Delta v/\Delta t = (v_2-v_1)/(t_2-t_1) =
+      (22-10)/(6-2) = 3{,}0\ \text{m/s}^2$, positive car $v$ croît avec
+      $t$.
+    solution: |
+      Le mouvement est uniformément accéléré : $v(t)=at+v_0$, une droite
+      affine. Sa pente se lit entre deux points quelconques de la droite :
+      $$a = \frac{\Delta v}{\Delta t} = \frac{v_2-v_1}{t_2-t_1} =
+      \frac{22-10}{6-2} = \frac{12}{4} = 3{,}0\ \text{m/s}^2$$
+      Le signe positif est cohérent avec une vitesse qui croît de
+      $10\ \text{m/s}$ à $22\ \text{m/s}$ : le mouvement est accéléré.
+
+  - id: LDN-41
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.role-normale-mal-compris
+    stem: >
+      Un solide de masse $m = 1{,}0\ \text{kg}$ glisse sur un plan incliné
+      faisant un angle $\alpha$ avec l'horizontale ($\cos\alpha \approx
+      0{,}82$), avec un frottement de norme $f = 6{,}0\ \text{N}$. On prend
+      $g \approx 9{,}8\ \text{m/s}^2$. Quelle est l'intensité $R$ de la
+      force totale exercée par le plan incliné sur le solide ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $R = 10\ \text{N}$
+        correct: true
+      - id: B
+        text: >-
+          $R = 8{,}0\ \text{N}$
+        correct: false
+        misconception: mc.physics.pc_lois_newton.role-normale-mal-compris
+        feedback: >
+          Cette valeur est $N$ seule, la réaction normale — pas $R$, la
+          force totale exercée par le plan. Le plan exerce DEUX actions
+          perpendiculaires, $\vec{N}$ et $\vec{f}$ : $R$ en est la
+          résultante, pas sa seule composante normale.
+      - id: C
+        text: >-
+          $R = 9{,}8\ \text{N}$
+        correct: false
+        misconception: mc.physics.pc_lois_newton.projection-plan-incline
+        feedback: >
+          Cette valeur est le poids $mg$ tout entier, comme sur un sol
+          horizontal. Sur un plan incliné, la réaction normale n'équilibre
+          que la composante du poids PERPENDICULAIRE au plan,
+          $N=mg\cos\alpha$ — strictement inférieure à $mg$ dès que
+          $\alpha\neq0$.
+      - id: D
+        text: >-
+          $R = 14\ \text{N}$
+        correct: false
+        misconception: mc.physics.pc_lois_newton.role-normale-mal-compris
+        feedback: >
+          $\vec{N}$ (perpendiculaire au plan) et $\vec{f}$ (le long du
+          plan) sont deux vecteurs PERPENDICULAIRES : leur résultante
+          s'obtient par le théorème de Pythagore, $R=\sqrt{N^2+f^2}$, pas
+          par une addition directe de leurs normes.
+    correct_feedback: >
+      $N = mg\cos\alpha = 1{,}0\times9{,}8\times0{,}82 \approx 8{,}0\
+      \text{N}$. $\vec{N}$ et $\vec{f}$ étant perpendiculaires, leur
+      résultante $R = \sqrt{N^2+f^2} = \sqrt{8{,}0^2+6{,}0^2} =
+      \sqrt{100} = 10{,}0\ \text{N}$.
+    solution: |
+      Projection perpendiculaire au plan (le solide y reste, $a_{G,\perp}
+      =0$) :
+      $$N = mg\cos\alpha = 1{,}0\times9{,}8\times0{,}82 \approx 8{,}0\
+      \text{N}$$
+      Le plan exerce sur le solide deux actions perpendiculaires : la
+      réaction normale $\vec{N}$ et le frottement $\vec{f}$. Leur
+      résultante, la force TOTALE $R$ exercée par le plan, se calcule par
+      Pythagore, jamais par une somme algébrique :
+      $$R = \sqrt{N^2+f^2} = \sqrt{8{,}0^2+6{,}0^2} = \sqrt{64+36} =
+      \sqrt{100} = 10{,}0\ \text{N}$$
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après LDN-28 à LDN-33. Dix familles siégeaient sous le
 # plancher de 3 items du banc : la relativité du mouvement, le référentiel
@@ -2923,19 +3157,19 @@ coverage_summary:
     mc.physics.pc_lois_newton.resultante-mal-composee:                   { count: 3, items: [LDN-15, LDN-20, LDN-31] }
     mc.physics.pc_lois_newton.masse-poids-confondus:                     { count: 3, items: [LDN-5, LDN-21, LDN-27] }
     mc.physics.pc_lois_newton.chute-depend-masse:                        { count: 3, items: [LDN-5, LDN-21, LDN-22] }
-    mc.physics.pc_lois_newton.erreur-cinematique-uniforme:               { count: 3, items: [LDN-22, LDN-26, LDN-32] }
+    mc.physics.pc_lois_newton.erreur-cinematique-uniforme:               { count: 5, items: [LDN-22, LDN-26, LDN-32, LDN-39, LDN-40] }
     mc.physics.pc_lois_newton.action-reaction-meme-corps:                { count: 3, items: [LDN-4, LDN-17, LDN-32] }
     mc.physics.pc_lois_newton.action-reaction-inegale-ou-conditionnelle: { count: 3, items: [LDN-4, LDN-16, LDN-17] }
     mc.physics.pc_lois_newton.mouvement-absolu:                          { count: 3, items: [LDN-10, LDN-28, LDN-33] }
     mc.physics.pc_lois_newton.referentiel-toujours-galileen:             { count: 5, items: [LDN-11, LDN-28, LDN-29, LDN-30, LDN-33] }
     mc.physics.pc_lois_newton.vitesse-scalaire:                          { count: 4, items: [LDN-12, LDN-28, LDN-31, LDN-33] }
     mc.physics.pc_lois_newton.bilan-forces-incorrect:                    { count: 3, items: [LDN-18, LDN-29, LDN-30] }
-    mc.physics.pc_lois_newton.role-normale-mal-compris:                  { count: 3, items: [LDN-19, LDN-23, LDN-32] }
-    mc.physics.pc_lois_newton.projection-plan-incline:                   { count: 3, items: [LDN-6, LDN-23, LDN-24] }
+    mc.physics.pc_lois_newton.role-normale-mal-compris:                  { count: 4, items: [LDN-19, LDN-23, LDN-32, LDN-41] }
+    mc.physics.pc_lois_newton.projection-plan-incline:                   { count: 4, items: [LDN-6, LDN-23, LDN-24, LDN-41] }
     mc.physics.pc_lois_newton.frottement-mal-traite:                     { count: 5, items: [LDN-6, LDN-13, LDN-20, LDN-25, LDN-26] }
     mc.physics.pc_lois_newton.frottement-absent-accelere:                { count: 3, items: [LDN-7, LDN-29, LDN-31] }
     mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre:      { count: 5, items: [LDN-34, LDN-35, LDN-36, LDN-37, LDN-38] }
-  total_items: 38
+  total_items: 41
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2946,7 +3180,7 @@ coverage_summary:
     R4: 3
     R5: 4
     R6: 4
-    R7: 3
+    R7: 6
     R8: 6
   honest_state: >-
     Les vingt misconceptions déclarées sont couvertes, aucune sous le
@@ -2965,3 +3199,19 @@ coverage_summary:
     composantes d'accélération PERPENDICULAIRES — un mécanisme différent,
     même si le geste fautif (additionner au lieu de composer) se
     ressemble. Signalé pour revue plutôt que tranché en silence.
+
+    MISE À JOUR 2026-09-27 (item-author, gaps N1/N2/N3 de
+    docs/audits/dette-examen/pc-1.md) : trois items ajoutés (LDN-39, LDN-40,
+    LDN-41), réutilisant exclusivement des id déjà déclarées —
+    `erreur-cinematique-uniforme` passe de 3 à 5 (+LDN-39, +LDN-40),
+    `role-normale-mal-compris` et `projection-plan-incline` passent chacune
+    de 3 à 4 (+LDN-41). Onze id restent désormais au plancher exact (3
+    items), contre quatorze avant cette passe. Aucune 21e id créée : ni
+    « pente d'une droite $x=f(t^2)$ ou $v=f(t)$ mal lue » (N1,
+    N2), ni « $R=N+f$ au lieu de Pythagore » (N3, l'analogue en FORCES de ce
+    que `acceleration-traitee-comme-un-nombre` nomme déjà pour les
+    composantes PERPENDICULAIRES de l'accélération, Forme E) n'ont d'id
+    honnête dans les vingt déclarées, et un plan à 3 items pour chacune
+    sortait du mandat de cette passe (un item par gap). Signalé au
+    pedagogy-architect pour une déclaration future, chacune accompagnée
+    d'un plan à 3 items avant d'être ajoutée.

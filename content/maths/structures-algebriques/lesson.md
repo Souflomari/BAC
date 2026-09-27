@@ -161,6 +161,44 @@ Et $e$ est neutre, donc $e \star x'' = x''$. En suivant la chaîne de ces égali
 
 [[checkpoint:cp-r2-neutre-symetrique]]
 
+### Un exemple donné par une formule, pas par une table
+
+Tout ce qui précède se lisait sur une table finie. Beaucoup de sujets nationaux donnent la loi par une **formule**, sur un ensemble infini — il n'y a plus de table à consulter, seulement les mêmes quatre définitions du chapitre, appliquées à un calcul littéral.
+
+Pose $E = \mathbb{R}\setminus\{-1\}$ et, pour tous $x,y \in E$ :
+
+$$x \ast y = x+y+xy$$
+
+**Stabilité.** Il faut d'abord vérifier que $x \ast y$ ne s'échappe jamais de $E$, c'est-à-dire que $x \ast y \neq -1$. Ajoute $1$ des deux côtés de la définition :
+
+$$x \ast y + 1 = x+y+xy+1 = (x+1)(y+1)$$
+
+Comme $x \neq -1$ et $y \neq -1$, les deux facteurs $x+1$ et $y+1$ sont non nuls, donc leur produit l'est aussi : $x \ast y + 1 \neq 0$, c'est-à-dire $x \ast y \neq -1$. $\ast$ est bien une LCI sur $E$.
+
+**Commutativité.** $x \ast y = x+y+xy = y+x+yx = y \ast x$ : héritée directement de la commutativité de $+$ et de $\times$ sur $\mathbb{R}$.
+
+**Associativité, par expansion directe.** On développe les deux membres, pour des $x,y,z$ quelconques de $E$ :
+
+$$(x\ast y)\ast z = (x+y+xy)+z+(x+y+xy)z = x+y+z+xy+xz+yz+xyz$$
+
+$$x\ast(y\ast z) = x+(y+z+yz)+x(y+z+yz) = x+y+z+yz+xy+xz+xyz$$
+
+Les deux membres sont exactement la même somme de sept termes : $\ast$ est associative sur $E$.
+
+**Le raccourci de l'expert, une fois l'expansion vue.** La stabilité a révélé une identité qu'on peut réutiliser : $x\ast y+1=(x+1)(y+1)$. Pose $\varphi(x)=x+1$ ; cette identité dit que $\varphi(x\ast y)=\varphi(x)\times\varphi(y)$ — combiner par $\ast$, c'est multiplier les images par $\varphi$. L'associativité de $\ast$ se relit alors sans développer un seul terme : $\varphi\big((x\ast y)\ast z\big) = \varphi(x\ast y)\times\varphi(z) = \varphi(x)\varphi(y)\varphi(z)$, et le même calcul à partir de $\varphi\big(x\ast(y\ast z)\big)$ donne le même produit $\varphi(x)\varphi(y)\varphi(z)$ — symétrique en $x,y,z$ par l'associativité (et la commutativité) de $\times$ sur $\mathbb{R}$, donc acquis d'un coup, dans les deux ordres de parenthésage à la fois.
+
+**L'élément neutre, et le piège à éviter.** On cherche $e$ tel que $x\ast e=x$ **pour tout** $x$ de $E$ :
+
+$$x+e+xe = x \iff e+xe=0 \iff e(1+x)=0$$
+
+**Le piège : s'arrêter après avoir résolu pour une seule valeur de $x$.** Choisir un $x$ précis — par exemple $x=1$, ce qui donne $e(2)=0$ donc $e=0$ — ne prouve la relation que pour ce $x$-là, pas pour tous les autres ; un seul cas ne prouve jamais une propriété universelle, exactement comme un seul triplet ne prouvait rien pour l'associativité un peu plus haut. La bonne méthode garde $x$ générique : $e(1+x)=0$ doit tenir pour **tout** $x$ de $E$, or $1+x$ n'est jamais nul sur $E$ (puisque $x\neq-1$) — la seule valeur de $e$ qui annule le produit quel que soit $x$ est donc $e=0$. Vérifie : $x\ast0 = x+0+0=x$. ✓ Le neutre de $(E,\ast)$ est $0$.
+
+**Le symétrique, par résolution.** Pour $x$ fixé, on cherche $x'$ tel que $x\ast x' = 0$ :
+
+$$x+x'+xx' = 0 \iff x'(1+x) = -x \iff x' = \frac{-x}{1+x}$$
+
+(la division est légitime car $1+x\neq0$ sur $E$). Il reste à vérifier que $x'$ ne s'échappe pas de $E$ : $x'=-1 \iff -x=-(1+x) \iff 0=-1$, impossible — donc $x'\neq-1$ pour tout $x$ de $E$, et le symétrique existe bien dans $E$.
+
 ---
 
 ## R3 — La structure de groupe : les quatre axiomes
@@ -705,5 +743,32 @@ Même chaîne d'outils, un habillage différent : une autre loi, d'autres matric
      seule la prose de R7 et cette note ont changé. `cp-r7-morphisme`,
      déjà présent avant cette édition, est inchangé et garde sa place, juste
      avant ce nouvel exemple.
+
+     NOTE AJOUTÉE (dette d'examen, vague B1, 2026-09-27) :
+     [PROSE LIVRÉE] GAP-B « A law defined by a formula (symbolic
+     associativity, neutral by identification, symmetric by solving) »
+     (docs/audits/dette-examen/maths.md, § structures-algebriques, ligne
+     ~389 ; 10 entrées de bank.yaml). Nouvelle sous-section en fin de R2,
+     "Un exemple donné par une formule, pas par une table" : $x\ast y =
+     x+y+xy$ sur $E=\mathbb{R}\setminus\{-1\}$ (ensemble et loi ORIGINAUX,
+     choisis pour cet auteur — pas ceux d'un bank.yaml cité par l'audit, et
+     distincts de la loi $x\star y=x+y-xy$ de SA-23/SA-24 et de la loi
+     $x\star y=x+y+1$ de SA-13). Stabilité par factorisation
+     ($x\ast y+1=(x+1)(y+1)$), commutativité héritée, associativité
+     d'abord par expansion directe des deux membres (sept termes
+     identiques), puis le raccourci de l'expert qui réutilise la même
+     factorisation pour l'obtenir sans développer. Neutre $e=0$ trouvé en
+     résolvant $x\ast e=x$ pour $x$ générique, avec le piège nommé
+     explicitement : s'arrêter après une seule valeur de $x$ ne prouve rien
+     pour les autres (même risque que l'associativité testée sur un seul
+     triplet, chapitre 3). Symétrique $x'=-x/(1+x)$ par résolution directe,
+     avec vérification qu'il reste dans $E$. Toutes les expansions ont été
+     recopiées terme à terme et vérifiées à la main (les deux membres de
+     l'associativité coïncident bien terme à terme : $x+y+z+xy+xz+yz+xyz$
+     des deux côtés).
+
+     Placée APRÈS le checkpoint `cp-r2-neutre-symetrique` (inchangé, garde sa
+     place) et avant le séparateur qui ouvre R3 : aucun checkpoint existant
+     déplacé, aucun nouveau checkpoint ajouté par cet auteur.
 -->
 

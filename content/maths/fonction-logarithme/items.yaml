@@ -1803,6 +1803,90 @@ items:
       rien à multiplier ou diviser en plus. La limite vaut $1$, exactement
       le cas non habillé.
 
+  # ── Dette d'examen, § fonction-logarithme (2026-09-27) — GAP-B « Generalised
+  # croissances comparées ((ln x)^n/x) via t=√x » (docs/audits/dette-examen/
+  # maths.md ~l.251-259). La prose a déjà l'exemple travaillé (lesson.md, R4,
+  # « Généraliser : (ln x)²/x », l.283-303) mais aucun item ne le testait :
+  # `EXP-31`/`LOG-...` citée par l'audit (`EXP-31` teste $e^x/x^2$ comme un
+  # FAIT, pas la réduction). Formulé comme demandé par le spec « quelle
+  # réécriture rend la limite lisible » plutôt que comme une valeur de limite
+  # nue, pour tester le GESTE (le choix du changement de variable) et non le
+  # simple rappel « croissances comparées = 0 ». Aucun modèle neuf : le
+  # distracteur A (rester sur une forme $0\times\infty$ non résolue, en la
+  # lisant comme si elle concluait) relève de `limites-de-ln`, déjà câblé sur
+  # « $0\times\infty$ comme un résultat direct » ; les distracteurs C et D
+  # (confondre $(\ln x)^2$ et $\ln(x^2)$, puis oublier le facteur $4$ que ce
+  # carré introduit) relèvent tous deux de `regles-quotient-puissance`, déjà
+  # câblé sur « puissance avec le mauvais facteur ».
+  - id: LOG-33
+    rung: "R4"
+    difficulty_level: 4
+    habilete: synthese
+    skill_code: maths_fonction_logarithme
+    tags: ["limites", "croissances-comparees", "changement-variable"]
+    primary_misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
+    stem: >
+      Pour calculer $\displaystyle\lim_{x \to +\infty} \dfrac{(\ln x)^2}{x}$,
+      quelle réécriture de $(\ln x)^2/x$ rend cette limite lisible ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{\\ln x}{x}\\times\\ln x$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.limites-de-ln
+        feedback: >
+          Cette égalité est vraie, mais elle ne rend rien lisible :
+          $\ln x/x\to0$ et $\ln x\to+\infty$, donc c'est encore une forme
+          $0\times\infty$ — pas une conclusion du genre « $0$ fois
+          l'infini, l'infini l'emporte, la limite est $+\infty$ ». Une
+          forme indéterminée qui reste indéterminée n'a rien réglé.
+      - id: B
+        text: "$4\\left(\\dfrac{\\ln\\sqrt{x}}{\\sqrt{x}}\\right)^2$"
+        correct: true
+      - id: C
+        text: "$\\dfrac{2\\ln x}{x}$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
+        feedback: >
+          Ceci reviendrait à confondre $(\ln x)^2$ (le carré du nombre
+          $\ln x$) avec $\ln(x^2)$ (le logarithme du nombre $x^2$, qui vaut
+          $2\ln x$) : ce sont deux expressions différentes, et rien ne
+          permet de remplacer l'une par l'autre ici.
+      - id: D
+        text: "$\\left(\\dfrac{\\ln\\sqrt{x}}{\\sqrt{x}}\\right)^2$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
+        feedback: >
+          Le changement de variable est le bon réflexe, mais il manque le
+          facteur $4$ : $\ln\sqrt x=\frac12\ln x$ fait apparaître un carré
+          de $\frac12$, donc $\left(\ln\sqrt x/\sqrt x\right)^2=(\ln
+          x)^2/(4x)$ — il faut multiplier par $4$ pour retrouver $(\ln
+          x)^2/x$, sinon l'égalité ne tient pas.
+    correct_feedback: >
+      Exactement : $\ln\sqrt x=\frac12\ln x$ donne $\left(\ln\sqrt
+      x/\sqrt x\right)^2=(\ln x)^2/(4x)$, donc $(\ln x)^2/x=4\left(\ln\sqrt
+      x/\sqrt x\right)^2$. En posant $t=\sqrt x\to+\infty$, cette écriture
+      redevient $4(\ln t/t)^2\to4\times0^2=0$ par croissances comparées.
+    solution: |
+      **Pourquoi $(\ln x)^2/x$ n'est pas $\ln x/x$.** C'est une NOUVELLE
+      forme indéterminée $\infty/\infty$ (le carré au numérateur change
+      tout), qu'il faut retraiter depuis le début.
+
+      **Faire apparaître $\sqrt x$.** Puisque $\ln\sqrt x=\frac12\ln x$
+      (propriété racine carrée) :
+      $$\left(\frac{\ln\sqrt x}{\sqrt x}\right)^2 = \frac{\left(\frac12\ln
+      x\right)^2}{x} = \frac{(\ln x)^2}{4x}$$
+
+      **Compenser par $4$.**
+      $$\frac{(\ln x)^2}{x} = 4\left(\frac{\ln\sqrt x}{\sqrt x}\right)^2$$
+
+      **Poser $t=\sqrt x$.** Quand $x\to+\infty$, $t\to+\infty$ aussi, et
+      $$\frac{\ln\sqrt x}{\sqrt x} = \frac{\ln t}{t} \xrightarrow[t\to+\infty]{} 0$$
+      (croissances comparées, déjà établies).
+
+      **Conclure.**
+      $$\lim_{x\to+\infty}\frac{(\ln x)^2}{x} = 4\times0^2 = 0$$
+
 # ── Coverage summary (summit-conversion floor backfill — HONEST) ───────────
 # This was a LEGACY end-bank (`misconceptions: []`, item-level tags only). The
 # backfill above added the 7-model inventory, a `primary_misconception` per
@@ -1829,20 +1913,20 @@ items:
 # extension honnête à relire par un humain si un modèle dédié à la tangente
 # s'avère préférable.
 coverage_summary:
-  total_items: 32
+  total_items: 33
   per_rung:
     R0: 3   # LOG-7, LOG-8, LOG-9  (accroche : la fonction L, produit→somme)
     R1: 3   # LOG-1, LOG-10, LOG-11
     R2: 3   # LOG-2, LOG-3, LOG-12
     R3: 3   # LOG-4, LOG-13, LOG-14
-    R4: 10  # LOG-5, LOG-15, LOG-16, LOG-25, LOG-26, LOG-27, LOG-28, LOG-29, LOG-30, LOG-32
+    R4: 11  # LOG-5, LOG-15, LOG-16, LOG-25, LOG-26, LOG-27, LOG-28, LOG-29, LOG-30, LOG-32, LOG-33
     R5: 3   # LOG-17, LOG-18, LOG-19
     R6: 3   # LOG-6, LOG-20, LOG-21
     R7: 4   # LOG-22, LOG-23, LOG-24, LOG-31
   per_misconception:
     mc.math.maths_fonction_logarithme.domaine-neglige: 4            # LOG-1, LOG-6, LOG-20, LOG-24
     mc.math.maths_fonction_logarithme.produit-somme-confondus: 3    # LOG-3, LOG-7, LOG-9
-    mc.math.maths_fonction_logarithme.regles-quotient-puissance: 4  # LOG-2, LOG-8, LOG-12, LOG-21
+    mc.math.maths_fonction_logarithme.regles-quotient-puissance: 5  # LOG-2, LOG-8, LOG-12, LOG-21, LOG-33 (PRIMARY)
     mc.math.maths_fonction_logarithme.derivee-de-ln-u: 3            # LOG-4, LOG-13, LOG-14
     mc.math.maths_fonction_logarithme.limites-de-ln: 3              # LOG-5, LOG-15, LOG-16
     mc.math.maths_fonction_logarithme.lecture-variations-signe: 4   # LOG-10, LOG-11, LOG-19, LOG-23
@@ -1872,6 +1956,7 @@ coverage_summary:
     - { item: LOG-31, choice: C, misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie, note: "coefficient 4 oublié, lu comme 1 (item primaire : forme-0-sur-0-non-reconnue)." }
     - { item: LOG-31, choice: D, misconception: mc.math.maths_fonction_logarithme.domaine-neglige,              note: "domaine restreint à droite sans raison — erreur miroir de domaine-neglige (item primaire : forme-0-sur-0-non-reconnue)." }
     - { item: LOG-32, choice: B, misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie, note: "coefficient 7 déjà accordé au dénominateur, réappliqué à tort (item primaire : forme-0-sur-0-non-reconnue)." }
+    - { item: LOG-33, choice: A, misconception: mc.math.maths_fonction_logarithme.limites-de-ln,                note: "0×∞ non résolu, lu comme s'il concluait (item primaire : regles-quotient-puissance)." }
 
   notes: >-
     Backfill only : aucun nouvel item écrit, aucun compte gonflé. Les 24 items
@@ -1894,3 +1979,9 @@ coverage_summary:
     attribution secondaire à domaine-neglige, réutilisé pour l'erreur MIROIR
     (restreindre à droite un domaine qui ne l'exige pas) plutôt que de créer un
     modèle « tangente » qui resterait, avec un seul item, sous le plancher.
+    AJOUT 2026-09-27 (dette d'examen, § fonction-logarithme, GAP-B « (ln x)^n/x
+    via t=√x ») : LOG-33 (R4, PRIMARY regles-quotient-puissance, désormais 5)
+    teste le geste de réécriture lui-même (« quelle expression rend la limite
+    lisible ? ») plutôt qu'une valeur de limite nue — aucun modèle neuf ; son
+    distracteur A ajoute une attribution secondaire à limites-de-ln (0×∞ non
+    résolu, lu comme une conclusion).

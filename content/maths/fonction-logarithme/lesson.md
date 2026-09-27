@@ -280,6 +280,28 @@ Quand $X \to +\infty$, $\dfrac{\ln(X)}{X} \to 0$ (croissances comparées, juste 
 
 $$\lim_{x \to 0^{+}} x\ln(x) = 0$$
 
+### Généraliser : $(\ln x)^2/x$, une autre forme indéterminée
+
+Avant de lire la suite, essaie de calculer $\displaystyle\lim_{x\to+\infty}\dfrac{(\ln x)^2}{x}$. Un réflexe trompeur : répondre tout de suite « c'est $\ln x/x$, déjà connu, donc $0$ » — mais le carré change tout. $(\ln x)^2/x$ n'est pas $\ln x/x$ : c'est une **nouvelle** forme indéterminée $\dfrac{\infty}{\infty}$, à retraiter depuis le début, pas à lire par-dessus la précédente.
+
+**Ce qu'on cherche et pourquoi ce geste :** on veut ramener ce rapport à la croissance comparée déjà établie, $\ln t/t \to 0$. Le geste : faire apparaître $\sqrt x$ à l'intérieur, puisque $\ln(\sqrt x) = \frac12\ln x$ (propriété racine carrée, chapitre 3) fait naturellement apparaître le carré de $\ln x$ une fois cette quantité elle-même mise au carré.
+
+$$\left(\frac{\ln\sqrt{x}}{\sqrt{x}}\right)^2 = \frac{\left(\frac12\ln x\right)^2}{x} = \frac{(\ln x)^2}{4x}$$
+
+En multipliant les deux membres par $4$ :
+
+$$\frac{(\ln x)^2}{x} = 4\left(\frac{\ln\sqrt{x}}{\sqrt{x}}\right)^2$$
+
+Pose $t=\sqrt x$ : quand $x\to+\infty$, $t\to+\infty$ aussi, et le rapport entre parenthèses redevient exactement la croissance comparée déjà connue :
+
+$$\frac{\ln\sqrt x}{\sqrt x} = \frac{\ln t}{t} \xrightarrow[t\to+\infty]{} 0$$
+
+Son carré tend donc aussi vers $0$, et :
+
+$$\lim_{x\to+\infty}\frac{(\ln x)^2}{x} = 4\times 0^2 = 0$$
+
+**Le geste général :** face à une forme comme $(\ln x)^n/x$ ou $x^n e^{-x}$, on choisit une nouvelle variable $t$, puissance de $x$, qui fait réapparaître exactement le rapport connu $\ln t/t$ (ou $t\,e^{-t}$) — par exemple, $(\ln x)^3/x$ se traite avec $t=x^{1/3}$.
+
 ### Une autre limite de référence : $\dfrac{\ln(1+x)}{x}$, lue comme un taux d'accroissement
 
 Arrête-toi une minute avant la réponse. Sans formule apprise par cœur, que peut bien valoir $\displaystyle\lim_{x \to 0} \dfrac{\ln(1+x)}{x}$ ? Écris un nombre, puis la phrase qui te fait y croire. « C'est $\frac00$, je bloque » est une phrase acceptable — c'est même la plus fréquente.

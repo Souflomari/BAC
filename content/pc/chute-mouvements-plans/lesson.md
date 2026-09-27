@@ -291,6 +291,38 @@ La portée, elle, se comporte différemment, à cause du terme $\sin(2\alpha)$. 
 
 **La portée est donc maximale pour un angle de lancement de $45^\circ$ — à vitesse initiale fixée, et à condition que l'arrivée se fasse au même niveau que le départ.** Cette seconde condition compte autant que la première : dès qu'on lance d'une hauteur, ou qu'on retombe sur un plan incliné, l'angle optimal n'est plus $45^\circ$. Ni le tir le plus plat, ni le tir le plus vertical, ne donnent la plus grande distance — c'est un compromis entre les deux qui l'emporte.
 
+### Exemple travaillé : le point de chute sur une pente qui descend
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* la formule de la portée $D$, établie plus haut, suppose que le sol d'arrivée est à la **même hauteur** que le point de lancement ($y=0$). Dès que ce n'est plus vrai — ici, une pente qui descend sous le point de lancement —, il faut revenir à la méthode du chapitre 4 : trouver où la trajectoire croise la droite du sol réel, pas deviner un raccourci.
+
+On lance une bille **horizontalement** — sans composante verticale de vitesse —, à $v_0 = 14\ \text{m/s}$, depuis le sommet $O$ d'une pente qui descend sous l'horizontale, à un angle $\beta$ tel que $\sin\beta = 0{,}60$ et $\cos\beta = 0{,}80$ (donc $\tan\beta = 0{,}75$). On prend $g \approx 9{,}8\ \text{m/s}^2$, origine en $O$.
+
+[[figure:impact-plan-incline]]
+
+**L'équation de la trajectoire.** C'est le cas limite $\alpha=0$ déjà vérifié au chapitre 3 ($v_{0x}=v_0$, $v_{0y}=0$) : dans l'équation établie au chapitre 4, $y(x)=\tan\alpha\cdot x-\dfrac{g}{2v_0^2\cos^2\alpha}x^2$, le premier terme disparaît puisque $\tan 0^\circ=0$, et il reste
+
+$$y(x) = -\frac{g}{2v_0^2}x^2 = -\frac{9{,}8}{2\times 14^2}x^2 = -\frac{9{,}8}{392}x^2 = -0{,}025\,x^2$$
+
+**L'équation de la pente.** Un point de la pente, d'abscisse $x$, se trouve à une profondeur $x\tan\beta$ sous $O$ :
+
+$$y_{plan}(x) = -x\tan\beta = -0{,}75\,x$$
+
+**Poser le système, pas deviner.** Le point de chute $E$ est là où les deux courbes se croisent : $y(x_E) = y_{plan}(x_E)$.
+
+$$-0{,}025\,x_E^2 = -0{,}75\,x_E \implies x_E\,(0{,}025\,x_E - 0{,}75) = 0$$
+
+$$x_E = 0 \quad \text{ou} \quad x_E = \frac{0{,}75}{0{,}025} = 30\ \text{m}$$
+
+**Pourquoi on écarte $x_E=0$.** Ce n'est pas une racine parasite : c'est le point $O$ lui-même, qui appartient à la fois à la trajectoire (son point de départ) et à la droite de la pente (elle part aussi de $O$). Ce n'est pas un point de chute — la bille n'y retombe pas, elle en part. Seule l'autre racine décrit un impact réel, plus loin le long du vol.
+
+$$y_E = -0{,}025\times 30^2 = -22{,}5\ \text{m} \qquad (\text{contrôle\,: } -0{,}75\times 30 = -22{,}5\ \text{m})$$
+
+**La distance demandée n'est pas $x_E$.** $x_E = 30\ \text{m}$ n'est que la projection horizontale du point de chute — pas la distance parcourue le long de la pente, celle que demande en général un énoncé qui parle de « la distance $OE$ ». Dans le triangle rectangle formé par $x_E$, $|y_E|$ et $OE$, $x_E$ est le côté adjacent à l'angle $\beta$ :
+
+$$OE = \frac{x_E}{\cos\beta} = \frac{30}{0{,}80} = 37{,}5\ \text{m}$$
+
+**Le piège nommé :** répondre « $30\ \text{m}$ », qui n'est que $x_E$, quand la question demande $OE$. Diviser par $\cos\beta<1$ agrandit toujours le résultat : $OE$ est nécessairement plus grand que $x_E$ dès que la pente n'est pas horizontale.
+
 ### La symétrie surprenante : deux angles complémentaires, la même portée
 
 Il y a une conséquence de $\sin(2\alpha)$ qui surprend souvent : deux angles **complémentaires** (qui s'additionnent à $90^\circ$) donnent exactement la **même portée**. En effet, $\sin(2(90^\circ - \alpha)) = \sin(180^\circ - 2\alpha) = \sin(2\alpha)$ — la même valeur.

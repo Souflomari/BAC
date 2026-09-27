@@ -1672,6 +1672,77 @@ items:
       6{,}0\times10^{-5}}{2} = 6{,}0\times10^{-7}$ m $= 600$ nm. Contrôle :
       $600$ nm est bien une longueur d'onde du visible.
 
+  - id: POL-27
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_propagation_onde_lumineuse
+    tags: []
+    primary_misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
+    stem: >
+      Un faisceau laser traverse une fente fine de largeur $a$, avec un
+      écran placé à une distance $D$ ; ni $a$ ni $D$ ne changent entre les
+      deux mesures. Dans l'air, la tache centrale de diffraction a une
+      largeur $L_{air} = 14{,}7\ \text{mm}$. Le même montage, entièrement
+      immergé dans un liquide transparent, donne une tache centrale de
+      largeur $L_{liquide} = 10{,}0\ \text{mm}$. La fréquence de la lumière
+      ne change pas d'un milieu à l'autre. Déterminer l'indice de
+      réfraction $n$ de ce liquide.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $n \approx 0{,}68$
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee
+        feedback: >
+          Cette valeur inverse le rapport : c'est $L_{air}/L_{liquide}$,
+          pas $L_{liquide}/L_{air}$, qui donne $n$. Un résultat $n<1$
+          signale d'ailleurs une erreur à lui seul : un liquide, milieu
+          plus dense optiquement que l'air, a un indice $n\geq1$, jamais
+          inférieur à $1$.
+      - id: B
+        text: >-
+          $n = 1{,}47$
+        correct: true
+      - id: C
+        text: >-
+          $n \approx 2{,}16$
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
+        feedback: >
+          La largeur de la tache centrale est liée LINÉAIREMENT à la
+          longueur d'onde ($L=2D\lambda/a$), pas quadratiquement : le
+          rapport des deux largeurs mesurées donne directement $n$, sans
+          l'élever au carré.
+      - id: D
+        text: >-
+          $n \approx 1{,}21$
+        correct: false
+        misconception: mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta
+        feedback: >
+          Ce résultat prend la racine carrée du rapport,
+          $\sqrt{14{,}7/10{,}0} \approx 1{,}21$, comme si la largeur de la
+          tache variait comme $\sqrt{\lambda}$. Or $L = 2\lambda D/a$ est
+          PROPORTIONNELLE à $\lambda$ : le rapport des largeurs est
+          directement le rapport des longueurs d'onde,
+          $L_{air}/L_{liquide} = \lambda_0/(\lambda_0/n) = n$, sans racine.
+    correct_feedback: >
+      $n = L_{air}/L_{liquide} = 14{,}7/10{,}0 = 1{,}47$ : puisque $a$ et
+      $D$ sont inchangés, le rapport des deux largeurs mesurées élimine
+      tout sauf le rapport des longueurs d'onde, donc l'indice du liquide.
+    solution: |
+      Ni $a$ ni $D$ ne changent entre les deux mesures : la largeur de la
+      tache centrale vérifie $L = 2D\lambda/a$ (chapitre 3), donc $L$ est
+      proportionnelle à $\lambda$ à $a$ et $D$ fixés. Dans l'air,
+      $\lambda_{air}\approx\lambda_0$ (l'indice de l'air vaut environ $1$) ;
+      dans le liquide, $\lambda_{liquide} = \lambda_0/n$ (chapitre 4). Le
+      rapport des deux largeurs mesurées élimine $a$, $D$ et $\lambda_0$ :
+      $$\frac{L_{liquide}}{L_{air}} = \frac{\lambda_{liquide}}{\lambda_{air}} = \frac{1}{n}$$
+      D'où :
+      $$n = \frac{L_{air}}{L_{liquide}} = \frac{14{,}7}{10{,}0} = 1{,}47$$
+      Une valeur tout à fait plausible pour un liquide transparent usuel.
+    habilete: résolution
+
 # ──────────────────────────────────────────────────────────────────────────────
 # COVERAGE SUMMARY (backfilled in the summit-conversion campaign)
 #
@@ -1697,13 +1768,13 @@ items:
 # ──────────────────────────────────────────────────────────────────────────────
 coverage_summary:
   method: "item-level, by primary_misconception (one item = one count)"
-  total_items: 26
+  total_items: 27
   per_misconception:
     mc.physics.pc_propagation_onde_lumineuse.lumiere-onde-em-niee: 3         # POL-8, POL-9, POL-11
     mc.physics.pc_propagation_onde_lumineuse.son-lumiere-memes-proprietes: 3 # POL-1, POL-7, POL-10
     mc.physics.pc_propagation_onde_lumineuse.indice-vitesse-erronee: 3       # POL-2, POL-12, POL-13
     mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille: 3 # POL-3, POL-21, POL-22
-    mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta: 4    # POL-4, POL-14, POL-19, POL-26
+    mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta: 5    # POL-4, POL-14, POL-19, POL-26, POL-27
     mc.physics.pc_propagation_onde_lumineuse.lambda-nu-changement-milieu: 3  # POL-5, POL-15, POL-16
     mc.physics.pc_propagation_onde_lumineuse.dispersion-prisme: 4            # POL-6, POL-17, POL-18, POL-20
     mc.physics.pc_propagation_onde_lumineuse.figure-ombre-geometrique: 3     # POL-23, POL-24, POL-25 (zero margin)
@@ -1716,7 +1787,7 @@ coverage_summary:
     R3: 6   # POL-3, POL-4, POL-14, POL-22, POL-23, POL-24
     R4: 3   # POL-5, POL-15, POL-16
     R5: 3   # POL-6, POL-17, POL-18
-    R6: 5   # POL-19, POL-20, POL-21, POL-25, POL-26
+    R6: 6   # POL-19, POL-20, POL-21, POL-25, POL-26, POL-27
   note: >
     Floor met for all eight models without padding. The seven pre-existing
     models were already at or above the floor (see the POL-1…POL-22 history
@@ -1735,6 +1806,17 @@ coverage_summary:
     interference cue (the R2/R4/R5 misconceptions), matching the frontière of
     §9 of the proposition; none use "Babinet", "écrans complémentaires",
     "frange", "interférence", degrees for θ, or "indice" (refractive index).
+    COVERAGE SUMMARY UPDATE (audit-banque-pc2.md, notion propagation-onde-lumineuse,
+    finding A1, 2026-09-27): the notion's own GAP-A, « ratio of two diffraction
+    experiments, and diffraction inside a liquid », was never worked in the
+    lesson nor tested by any item (bk-2023-r-x2 q3, bk-2025-r-x2 q3a/q3b). One
+    item, POL-27 (R6, fresh numbers L_air=14,7 mm / L_liquide=10,0 mm, n=1,47 —
+    neither the lesson's nor either bank subject's numbers), closes it: same
+    slit and screen, so L is proportional to lambda alone, and lambda=lambda_0/n
+    in the liquid gives n=L_air/L_liquide directly. diffraction-formule-theta
+    rises from 4 to 5 items (POL-27 dual-tags one distractor to
+    indice-vitesse-erronee, an honest same-skill co-attribution, not a new
+    model); total_items 26 -> 27; R6 rises from 5 to 6.
     Historical note (POL-1…POL-22 pass): six of the original seven models
     already had ≥3 primaries across POL-1…POL-21; only diffraction-condition-
     taille needed one fresh item (POL-22, R3) to reach 3. Per-distractor

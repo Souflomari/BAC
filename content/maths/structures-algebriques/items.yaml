@@ -2153,6 +2153,105 @@ items:
       tout élément non nul compris, sans qu'il y ait eu à re-développer ces
       propriétés directement sur les matrices.
 
+  # ── loi définie par une formule, second passage (dette d'examen, vague
+  # B1, 2026-09-27 — docs/audits/dette-examen/maths.md, § structures-
+  # algebriques, GAP-B « A law defined by a formula : symbolic
+  # associativity, neutral by identification, symmetric by solving ») ──
+  # Le geste est déjà servi par SA-13 (associativité, x⋆y=x+y+1), SA-23/-24
+  # (neutre puis symétrique, x⋆y=x+y-xy) ; la prose de R2 (lesson.md:164-201)
+  # travaille une TROISIÈME loi, x∗y=x+y+xy sur R\{-1}. SA-35 utilise une
+  # QUATRIÈME loi, jamais réutilisée : x∗y=x+y-2xy sur R\{1/2}, choisie sur
+  # l'une des deux propositions de la tâche (l'autre, xy-x-y+2 sur ]1,+∞[,
+  # sert déjà l'exemple travaillé du transport en R7, lesson.md:581-583 —
+  # écartée pour ne pas recycler le matériel d'un autre geste). Stabilité
+  # vérifiée à la main par le même procédé que la leçon (poser
+  # $\varphi(x)=1-2x$ : $\varphi(x\ast y)=\varphi(x)\varphi(y)$, donc
+  # $\varphi(x\ast y)\neq0$ dès que $\varphi(x)\neq0$ et $\varphi(y)\neq0$).
+  # Aucune misconception neuve : le piège « une seule valeur de x » nommé
+  # par la leçon (lesson.md:194) n'était encore porté par AUCUN item — ici
+  # distracteur B, `generalisation-hative`. Le second distracteur demandé
+  # par la tâche (neutre habituel 0/1 supposé sans vérifier) est une
+  # variante zéro-exemple de la même famille (distracteur C, même id) ; le
+  # troisième (symétrique confondu avec le neutre) reprend
+  # `neutre-vs-symetrique` tel quel, cette fois pour une question sur le
+  # NEUTRE plutôt que sur le symétrique (distracteur D).
+  - id: SA-35
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, neutre, formule]
+    stem: >
+      On munit $E=\mathbb{R}\setminus\left\{\dfrac12\right\}$ de la loi
+      $\ast$ définie, pour tous $x,y\in E$, par $x\ast y = x+y-2xy$ (loi
+      distincte de celle du chapitre 2). Quel raisonnement établit
+      correctement l'élément neutre de $(E,\ast)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          On résout $x\ast e=x$ pour $x$ quelconque : $e(1-2x)=0$ donne
+          $e=0$, le facteur $1-2x$ étant non nul sur $E$ — valable pour
+          tout $x$, pas pour un cas isolé.
+        correct: true
+      - id: B
+        text: |
+          On teste seulement $x=2$ : $2\ast e=2$ donne $e=0$ ; comme
+          l'égalité tient pour ce $x$-là, on en déduit directement que $0$
+          est le neutre de la loi entière.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Modèle détecté : un cas particulier généralisé. Que l'équation se
+          résolve pour $x=2$ ne prouve rien pour les autres éléments de
+          $E$ — il faut reprendre la résolution avec $x$ quelconque, sans
+          lui donner de valeur, exactement comme pour l'associativité
+          testée sur un seul triplet (chapitre 2).
+      - id: C
+        text: |
+          Comme la formule de $\ast$ fait intervenir un produit
+          ($-2xy$), on suppose, par ressemblance avec la multiplication
+          usuelle, que le neutre est $1$, sans vérifier sur un seul cas.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Modèle détecté : une propriété supposée par ressemblance, sans
+          aucun cas vérifié — un degré de moins que se tromper sur un seul
+          exemple. $1$ échoue dès le premier essai : $2\ast1=2+1-4=-1\neq2$.
+          Une propriété universelle ne se suppose jamais par analogie avec
+          une loi usuelle, elle se démontre pour $x$ quelconque ou se
+          vérifie exhaustivement.
+      - id: D
+        text: |
+          On cherche le symétrique de $2$, l'élément $x'$ tel que
+          $2\ast x'=0$ ; on trouve $x'=\frac23$, et on conclut que ce
+          nombre $\frac23$ est le neutre de la loi $(E,\ast)$.
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: |
+          Modèle détecté : le symétrique confondu avec le neutre.
+          $\frac23$ est le SYMÉTRIQUE de $2$ (il dépend de $2$), pas le
+          neutre, qui est unique et ne dépend d'aucun élément particulier :
+          $\frac23$ ne redonne pas $x$ dans $x\ast\frac23$ pour un autre
+          $x$ quelconque, contrairement au vrai neutre $0$.
+    correct_feedback: |
+      Exact : l'équation $x\ast e=x$ se résout pour $x$ générique —
+      $e(1-2x)=0$ pour tout $x$ de $E$ impose $e=0$, puisque $1-2x$ est
+      non nul sur $E=\mathbb{R}\setminus\{\frac12\}$. Vérification :
+      $x\ast0=x+0-0=x$.
+    solution: |
+      On résout, pour tout $x\in E$ :
+      $$x\ast e=x \iff x+e-2xe=x \iff e(1-2x)=0$$
+      Comme cette égalité doit tenir pour tout $x$ de $E$ (et $1-2x$ est
+      non nul, puisque $x\neq\frac12$), il faut $e=0$. Vérification :
+      $x\ast0=x+0-2x\times0=x$, pour tout $x$. L'élément neutre est $0$.
+
+      **Pourquoi les distracteurs échouent.** Tester un seul $x$ (ici
+      $x=2$) redonne $e=0$ par coïncidence, mais ne prouve rien pour les
+      autres éléments — c'est la méthode, pas le nombre, qui est en cause.
+      Supposer $e=1$ par analogie avec la multiplication usuelle échoue dès
+      le premier test : $2\ast1=-1\neq2$. Et $\frac23$, trouvé en résolvant
+      $2\ast x'=0$, est le symétrique de $2$, pas le neutre de la loi.
+
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2162,21 +2261,21 @@ coverage_summary:
     web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.math.structures_algebriques.loi-modulaire-mal-calculee: { count: 3, items: [SA-7, SA-25, SA-26] }
-    mc.math.structures_algebriques.neutre-vs-symetrique:       { count: 13, items: [SA-1, SA-2, SA-8, SA-12, SA-14, SA-20, SA-23, SA-24, SA-26, SA-30, SA-31, SA-32, SA-34] }
+    mc.math.structures_algebriques.neutre-vs-symetrique:       { count: 14, items: [SA-1, SA-2, SA-8, SA-12, SA-14, SA-20, SA-23, SA-24, SA-26, SA-30, SA-31, SA-32, SA-34, SA-35] }
     mc.math.structures_algebriques.axiome-oublie:              { count: 7, items: [SA-3, SA-4, SA-22, SA-27, SA-28, SA-29, SA-33] }
     mc.math.structures_algebriques.groupe-anneau:              { count: 8, items: [SA-5, SA-6, SA-18, SA-19, SA-20, SA-21, SA-33, SA-34] }
     mc.math.structures_algebriques.cloture-non-verifiee:       { count: 8, items: [SA-3, SA-6, SA-7, SA-8, SA-10, SA-11, SA-12, SA-18] }
     mc.math.structures_algebriques.assoc-commut-confusion:     { count: 6, items: [SA-9, SA-11, SA-13, SA-15, SA-16, SA-17] }
-    mc.math.structures_algebriques.generalisation-hative:      { count: 12, items: [SA-13, SA-14, SA-15, SA-16, SA-17, SA-18, SA-20, SA-27, SA-28, SA-29, SA-31, SA-32] }
+    mc.math.structures_algebriques.generalisation-hative:      { count: 13, items: [SA-13, SA-14, SA-15, SA-16, SA-17, SA-18, SA-20, SA-27, SA-28, SA-29, SA-31, SA-32, SA-35] }
     mc.math.structures_algebriques.groupe-implique-commutatif: { count: 5, items: [SA-15, SA-17, SA-22, SA-28, SA-29] }
     mc.math.structures_algebriques.neutre-non-transporte:      { count: 5, items: [SA-30, SA-31, SA-32, SA-33, SA-34] }
-  total_items: 34
+  total_items: 35
   floor: 3
   floor_met: true
   ramp_coverage:
     R0: 3
     R1: 4
-    R2: 4
+    R2: 5
     R3: 3
     R4: 3
     R5: 3
@@ -2217,3 +2316,24 @@ coverage_summary:
     la révision précédente ; `assoc-commut-confusion` et
     `cloture-non-verifiee` restent inchangés, hors du périmètre de cette
     tâche.
+
+    Second passage, même jour (2026-09-27, vague B1) : SA-35 paye le GAP-B
+    « loi définie par une formule » (docs/audits/dette-examen/maths.md,
+    § structures-algebriques, ~l.389) sur sa dernière face non couverte —
+    le neutre trouvé PAR IDENTIFICATION, avec le piège nommé par la leçon
+    (lesson.md:194, « s'arrêter après une seule valeur de $x$ ») qu'aucun
+    item ne portait encore. Quatrième loi du fichier
+    ($x\ast y=x+y-2xy$ sur $\mathbb{R}\setminus\{\frac12\}$), distincte de
+    celles de SA-13, SA-23/-24 et de l'exemple travaillé du cours
+    ($x\ast y=x+y+xy$) ; la seconde proposition de la tâche
+    ($xy-x-y+2$ sur $]1,+\infty[$) a été écartée parce qu'elle sert déjà
+    l'exemple travaillé du transport en R7 (lesson.md:581-583) — la
+    réutiliser aurait recyclé le matériel d'un autre geste. Aucune
+    misconception neuve : `generalisation-hative` (12→13, gagne le
+    « test sur un seul $x$ » ET sa variante zéro-exemple, le neutre
+    usuel 0/1 supposé par ressemblance) et `neutre-vs-symetrique` (13→14,
+    cette fois sur une question posée sur le NEUTRE, pas sur le
+    symétrique) sont toutes deux déjà loin au-dessus du plancher — cette
+    livraison ne comble aucune marge nulle, elle ferme un TROU DE GESTE
+    (le piège « une seule valeur » restait cité par la prose sans qu'aucun
+    item ne l'exerce). `total_items` 34→35 ; `ramp_coverage.R2` 4→5.

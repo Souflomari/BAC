@@ -2387,6 +2387,85 @@ items:
       multiplier ou diviser en plus. La limite vaut $1$, exactement le cas
       non habillé.
 
+  # ── Dette d'examen, § fonction-exponentielle (2026-09-27) — GAP-A « Equation
+  # / inequation quadratic in eˣ via t = eˣ » (docs/audits/dette-examen/maths.md
+  # ~l.213-222). La prose a désormais un exemple travaillé (lesson.md, R7,
+  # « Exemple travaillé 4 », $e^{2x}-e^x-6=0$, racines $-2$ et $3$) mais aucun
+  # item ne testait le geste : nombres propres à cet item ($p=-1$, $q=-20$,
+  # racines $5$ et $-4$), différents de ceux de la leçon et du bank.yaml cité
+  # par l'audit ($e^{2x}-4e^x+3=0$). Les trois distracteurs réutilisent
+  # l'inventaire existant (aucun modèle neuf) : garder la racine négative
+  # déguisée en $\ln|t|$ relève très exactement d'`exp-valeur-negative-
+  # impossible` (déjà câblé sur « ln(-4) écrit comme s'il existait ») ; donner
+  # les racines de $t$ comme solutions en $x$ relève de `resolution-exp-erreur`
+  # (« efface le e sans passer par ln », déjà câblé sur $e^{x+1}=3\Rightarrow
+  # x+1=3$ — ici $t$ joue le rôle du second membre) ; traiter $e^{2x}$ comme
+  # $2e^x$ relève de `somme-produit-confondus` ($2e^x=e^x+e^x$ est la même
+  # erreur que $e^{a+b}=e^a+e^b$, avec $a=b=x$).
+  - id: EXP-40
+    rung: "R7"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_fonction_exponentielle
+    tags: ["equations", "changement-variable", "quadratique-en-ex"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible
+    stem: >
+      Résous dans $\mathbb{R}$ l'équation $e^{2x} - e^{x} - 20 = 0$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\mathcal{S} = \\{-4,5\\}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.resolution-exp-erreur
+        feedback: >
+          $-4$ et $5$ sont les racines de l'équation en $t$, pas les
+          solutions en $x$ : il reste à revenir de $t=e^x$ à $x$, ce qui
+          demande $\ln$ pour chaque racine — une simple recopie des
+          valeurs de $t$ n'est pas cette dernière étape.
+      - id: B
+        text: "$\\mathcal{S} = \\{\\ln4,\\ln5\\}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible
+        feedback: >
+          La racine $t=-4$ est négative, et $e^x$ ne prend jamais de
+          valeur négative (chapitre 2) : $\ln(-4)$ n'existe pas, et écrire
+          $\ln4$ à la place ne rend pas ce candidat valide. Seule la
+          racine positive $t=5$ correspond à un réel $x$.
+      - id: C
+        text: "$\\mathcal{S} = \\{\\ln5\\}$"
+        correct: true
+      - id: D
+        text: "$\\mathcal{S} = \\{\\ln20\\}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.somme-produit-confondus
+        feedback: >
+          $e^{2x}$ est $(e^x)^2$, un carré — pas $2e^x$, un double. En
+          remplaçant $e^{2x}$ par $2e^x$, l'équation en $t$ devient
+          linéaire au lieu de quadratique, et l'une des deux racines
+          réelles disparaît en route.
+    correct_feedback: >
+      Exactement : en posant $t=e^x$ ($t>0$), l'équation devient
+      $t^2-t-20=0$, de racines $5$ et $-4$. Seule $t=5$ est positive :
+      $x=\ln5$ est l'unique solution réelle.
+    solution: |
+      **Le changement de variable.** Pose $t=e^x$, toujours strictement
+      positif :
+      $$e^{2x}-e^{x}-20=0 \quad\Longleftrightarrow\quad t^2-t-20=0$$
+
+      **Résoudre en $t$.** $\Delta=(-1)^2-4\times1\times(-20)=1+80=81$,
+      $\sqrt\Delta=9$ :
+      $$t=\frac{1-9}{2}=-4 \qquad\text{ou}\qquad t=\frac{1+9}{2}=5$$
+
+      **Le tri : $t=e^x$ est toujours strictement positif.** La racine
+      $t=-4$ ne correspond à aucun réel $x$ : $e^x=-4$ est impossible
+      ($e^x>0$ pour tout $x$), et $\ln(-4)$ n'existe pas. Elle est
+      écartée, pas « réparée » en $\ln4$.
+
+      **Revenir à $x$ avec la seule racine valide.**
+      $$e^x=5 \iff x=\ln5$$
+
+      $$\mathcal{S} = \{\ln 5\}$$
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après EXP-28 à EXP-31. Sept familles siégeaient sous
 # le plancher de 3 items du banc — deux à un item, cinq à deux. Neuf places à
@@ -2410,6 +2489,11 @@ items:
 # B est le premier exemple, dans ce fichier, de la surface MIROIR de
 # `facteur-multiplicatif-oublie` (réappliquer un facteur déjà accordé), d'où
 # la description élargie du modèle en tête de fichier.
+# MIS À JOUR le 2026-09-27 (dette d'examen, § fonction-exponentielle, GAP-A
+# « quadratic in eˣ via t = eˣ ») : un item de plus (EXP-40, R7), aucun modèle
+# neuf — ses trois distracteurs réutilisent `exp-valeur-negative-impossible`,
+# `resolution-exp-erreur` et `somme-produit-confondus`, tous trois déjà
+# au-dessus du plancher.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2429,11 +2513,11 @@ coverage_summary:
     mc.math.maths_fonction_exponentielle.inegalite-reference-erreur:        { count: 3, items: [EXP-16, EXP-28, EXP-31] }
     mc.math.maths_fonction_exponentielle.allure-courbe-erreur:              { count: 4, items: [EXP-17, EXP-18, EXP-19, EXP-38] }
     mc.math.maths_fonction_exponentielle.primitive-exp-erreur:              { count: 3, items: [EXP-20, EXP-21, EXP-22] }
-    mc.math.maths_fonction_exponentielle.resolution-exp-erreur:             { count: 4, items: [EXP-6, EXP-23, EXP-25, EXP-27] }
-    mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible:    { count: 3, items: [EXP-24, EXP-27, EXP-30] }
+    mc.math.maths_fonction_exponentielle.resolution-exp-erreur:             { count: 5, items: [EXP-6, EXP-23, EXP-25, EXP-27, EXP-40] }
+    mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible:    { count: 4, items: [EXP-24, EXP-27, EXP-30, EXP-40] }
     mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue:        { count: 8, items: [EXP-32, EXP-33, EXP-34, EXP-35, EXP-36, EXP-37, EXP-38, EXP-39] }
     mc.math.maths_fonction_exponentielle.facteur-multiplicatif-oublie:      { count: 8, items: [EXP-32, EXP-33, EXP-34, EXP-35, EXP-36, EXP-37, EXP-38, EXP-39] }
-  total_items: 39
+  total_items: 40
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2444,7 +2528,7 @@ coverage_summary:
     R4: 12
     R5: 3
     R6: 3
-    R7: 5
+    R7: 6
     R8: 3
   honest_state: >-
     Les quinze misconceptions déclarées sont couvertes, aucune sous le
@@ -2459,4 +2543,8 @@ coverage_summary:
     élargi, et allure-courbe-erreur) précisément pour ne pas fragmenter la
     couverture sous le plancher avec un modèle porté par un seul item — un
     jugement à relire par un humain si un modèle dédié s'avère préférable à
-    l'usage.
+    l'usage. Recompté le 2026-09-27 (dette d'examen, GAP-A quadratique en
+    $e^x$, EXP-40) : `resolution-exp-erreur` passe de 4 à 5 et
+    `exp-valeur-negative-impossible` de 3 à 4 — cette dernière quitte donc,
+    elle aussi, le lot à marge nulle. Aucun modèle neuf ; R7 passe de 5 à 6
+    items sur le ramp.

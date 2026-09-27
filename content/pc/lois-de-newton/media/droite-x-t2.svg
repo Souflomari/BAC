@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" width="720" height="430"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Relevé x en fonction de t² pour un mobile parti du repos : la droite x = 1,5 t², passant par (t² = 2,0 s² ; x = 3,0 m) et (t² = 8,0 s² ; x = 12,0 m). Le triangle de pente donne Δ(t²) = 6,0 s² et Δx = 9,0 m, donc une pente de 1,5 m/s² — qui vaut a/2, pas a ; l’accélération réelle est a = 2 × pente = 3,0 m/s².">
+  <title>Lire l’accélération sur une droite x = f(t²) — lois de Newton</title>
+  <!--
+    droite-x-t2.svg — content/pc/lois-de-newton/lesson.md, R6,
+    "Lire l'accélération sur une droite x=f(t²)". STAGED (LESSON-EXPERIENCE-
+    SPEC.md §2.5 — graphe, toujours stagé, ordre axes → données → lecture) :
+      step-1 : le repère — t² (s²) en abscisse, x (m) en ordonnée, grille.
+      step-2 : la droite x = 1,5 t² (conséquence de x = ½at², a/2 = pente) ;
+               une note « pente = a/2 » posée près de la droite, AVANT la
+               lecture chiffrée — le piège se pose avant le nombre.
+      step-3 : la lecture — les deux points donnés par le texte, leurs
+               guides, le triangle de pente, la pente chiffrée, et le
+               correctif a = 2×pente.
+
+    Donnée du texte : un mobile parti du repos, x(t) = ½at² ⇒ en posant
+    T=t², x = (a/2)·T, une droite par l'origine de pente a/2.
+    Points du relevé (donnés) : (T=2,0 s² ; x=3,0 m) et (T=8,0 s² ; x=12,0 m).
+    Pente lue : Δx/Δ(t²) = (12,0−3,0)/(8,0−2,0) = 9,0/6,0 = 1,5 m/s².
+    Piège nommé par le texte : cette pente N'EST PAS a — c'est a/2. Donc
+    a = 2×1,5 = 3,0 m/s².
+    Contrôle gratuit (texte) : à T=0, x=0 — la droite ci-dessous passe bien
+    par l'origine (mobile parti du repos, à l'origine).
+
+    Repère écran (calculé, pas deviné) :
+      scale_T = 48 px/s²  (T = t², en abscisse)
+      scale_x = 16 px/m   (x, en ordonnée)
+      origine (T=0, x=0)  : (90, 350)
+      X(T) = 90 + 48·T
+      Y(x) = 350 − 16·x
+
+    Droite x = 1,5·T, tracée de (90,350) [T=0,x=0] à (570,110) [T=10,x=15] —
+    le domaine plein du relevé (T:0→10 s², x:0→15 m), choisi pour que
+    1,5×10 = 15 tombe exactement sur le coin haut-droit du cadre.
+
+    Contrôle des deux points donnés par le texte, convertis par X(T),Y(x) :
+      T=2,0  x=1,5×2,0=3,0   → X=90+96=186,  Y=350−48=302   ← P1
+      T=8,0  x=1,5×8,0=12,0  → X=90+384=474, Y=350−192=158  ← P2
+    (les deux tombent bien SUR la droite tracée entre (90,350) et (570,110) :
+    à X=186, Y attendu = 350 + (186−90)×(110−350)/(570−90) = 350−48 = 302 ✓ ;
+    à X=474, Y attendu = 350 + (474−90)×(−240)/480 = 350−192 = 158 ✓.)
+
+    Triangle de pente, sommet C = (X(P2), Y(P1)) = (474, 302) :
+      jambe horizontale P1→C : 474−186 = 288 px = 6,0 s² × 48 px/s² ✓
+      jambe verticale   C→P2 : 302−158 = 144 px = 9,0 m  × 16 px/m  ✓
+    La jambe verticale recouvre, en trait plein, la portion haute (158→302)
+    du guide pointillé de P2 vers l'axe des t² (qui continue, pointillé,
+    jusqu'à 158→350) — un seul axe géométrique, deux styles.
+
+    La grille (--figure-grid) est espacée tous les 1 s² (verticales) et tous
+    les 3 m (horizontales) — un repère de lecture, pas une valeur physique ;
+    des rectangles de fond --figure-surface sont posés sous les étiquettes
+    qui, sinon, seraient traversées par une ligne de grille (le triangle et
+    la droite, eux, sont évités par un simple DÉCALAGE, pas un cache).
+
+    Rôle des couleurs :
+      droite x=1,5t² (donnée), points P1/P2 (lecture) : --figure-accent
+      triangle, guides, coches, axes, grille           : --figure-ink-soft /
+                                                          --figure-grid
+      formule « pente = a/2 » (piège, avant lecture)   : --figure-ink-soft
+      formules encadrées « pente = …» et « a = 2×… »   : --figure-accent
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le repère : t² (s²) en abscisse, x (m) en ordonnée
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <rect x="25" y="35" width="650" height="345" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <text x="360" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Relevé x = f(t²) : lire la pente, puis l’accélération
+    </text>
+
+    <!-- Grille : verticales tous les 1 s², horizontales tous les 3 m -->
+    <g stroke="var(--figure-grid)" stroke-width="1">
+      <line x1="138" y1="95" x2="138" y2="350"/>
+      <line x1="186" y1="95" x2="186" y2="350"/>
+      <line x1="234" y1="95" x2="234" y2="350"/>
+      <line x1="282" y1="95" x2="282" y2="350"/>
+      <line x1="330" y1="95" x2="330" y2="350"/>
+      <line x1="378" y1="95" x2="378" y2="350"/>
+      <line x1="426" y1="95" x2="426" y2="350"/>
+      <line x1="474" y1="95" x2="474" y2="350"/>
+      <line x1="522" y1="95" x2="522" y2="350"/>
+      <line x1="90" y1="302" x2="580" y2="302"/>
+      <line x1="90" y1="254" x2="580" y2="254"/>
+      <line x1="90" y1="206" x2="580" y2="206"/>
+      <line x1="90" y1="158" x2="580" y2="158"/>
+    </g>
+
+    <!-- Axe des x (vertical, vers le haut) -->
+    <line x1="90" y1="350" x2="90" y2="95"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="90,83 85.5,95 94.5,95" fill="var(--figure-ink-soft)"/>
+
+    <!-- Axe des t² (horizontal, vers la droite) -->
+    <line x1="90" y1="350" x2="580" y2="350"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="592,350 580,345.5 580,354.5" fill="var(--figure-ink-soft)"/>
+
+    <text x="78" y="90" text-anchor="end" font-size="11"
+          fill="var(--figure-ink-soft)"><tspan font-style="italic">x</tspan><tspan
+          font-size="9"> (m)</tspan></text>
+    <text x="600" y="354" text-anchor="start" font-size="11"
+          fill="var(--figure-ink-soft)"><tspan font-style="italic">t</tspan>²<tspan
+          font-size="9"> (s²)</tspan></text>
+    <text x="78" y="364" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la droite x = 1,5 t² (donnée)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line x1="90" y1="350" x2="570" y2="110"
+          stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+
+    <!-- Note posée AVANT toute lecture : la pente n'est pas a -->
+    <rect x="475" y="111" width="80" height="18" rx="2" fill="var(--figure-surface)"/>
+    <text x="515" y="124" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink-soft)">pente = a/2</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la lecture : P1, P2, le triangle, la pente, a
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Guides pointillés de P1 -->
+    <line x1="186" y1="302" x2="186" y2="350"
+          stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="4,3"/>
+    <line x1="186" y1="302" x2="90" y2="302"
+          stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="4,3"/>
+
+    <!-- Guides pointillés de P2 (portion basse, sous le triangle) -->
+    <line x1="474" y1="158" x2="474" y2="350"
+          stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="4,3"/>
+    <line x1="474" y1="158" x2="90" y2="158"
+          stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="4,3"/>
+
+    <!-- Triangle de pente : jambe horizontale (Δ(t²)) et verticale (Δx) -->
+    <line x1="186" y1="302" x2="474" y2="302"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="474" y1="302" x2="474" y2="158"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+
+    <!-- Coches sur les axes -->
+    <line x1="186" y1="345" x2="186" y2="355" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="474" y1="345" x2="474" y2="355" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="85" y1="302" x2="95" y2="302" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="85" y1="158" x2="95" y2="158" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+
+    <!-- Étiquettes des coches -->
+    <text x="186" y="366" text-anchor="middle" font-size="10.5"
+          fill="var(--figure-ink-soft)">2,0</text>
+    <text x="474" y="366" text-anchor="middle" font-size="10.5"
+          fill="var(--figure-ink-soft)">8,0</text>
+    <text x="78" y="306" text-anchor="end" font-size="10.5"
+          fill="var(--figure-ink-soft)">3,0</text>
+    <text x="74" y="162" text-anchor="end" font-size="10.5"
+          fill="var(--figure-ink-soft)">12,0</text>
+
+    <!-- Étiquettes des jambes du triangle -->
+    <rect x="280" y="308" width="100" height="17" rx="2" fill="var(--figure-surface)"/>
+    <text x="330" y="320" text-anchor="middle" font-size="10.5"
+          fill="var(--figure-ink-soft)">Δ(t²) = 6,0 s²</text>
+    <text x="486" y="234" text-anchor="start" font-size="10.5"
+          fill="var(--figure-ink-soft)">Δx = 9,0 m</text>
+
+    <!-- Points de lecture P1, P2 -->
+    <circle cx="186" cy="302" r="3.2" fill="var(--figure-accent)"/>
+    <circle cx="474" cy="158" r="3.2" fill="var(--figure-accent)"/>
+
+    <!-- Formules encadrées : la pente lue, puis l'accélération corrigée -->
+    <rect x="145" y="45" width="230" height="30" rx="5"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="260" y="65" text-anchor="middle" font-size="12.5" font-style="italic"
+          fill="var(--figure-accent)">pente = 9,0/6,0 = 1,5 m/s²</text>
+
+    <rect x="390" y="45" width="205" height="30" rx="5"
+          fill="var(--figure-accent)" fill-opacity="0.18"/>
+    <text x="492" y="65" text-anchor="middle" font-size="12.5" font-style="italic"
+          font-weight="600" fill="var(--figure-accent)">a = 2×pente = 3,0 m/s²</text>
+  </g><!-- /step-3 -->
+
+</svg>

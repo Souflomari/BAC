@@ -2352,6 +2352,97 @@ items:
       moments radicalement différents, $0$ puis $9{,}8\ \text{N}\cdot
       \text{m}$ : c'est la direction de l'axe, seule, qui a tout changé.
 
+  - id: ROT-29
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_rotation_axe_fixe
+    tags: [relation_fondamentale, poulie_masse_suspendue]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
+    stem: >
+      Une poulie homogène, de moment d'inertie $J = 0{,}090\
+      \text{kg}\cdot\text{m}^2$ et de rayon $r = 0{,}30\ \text{m}$, tourne
+      sans frottement autour de son axe horizontal fixe. Un fil
+      inextensible, de masse négligeable, est enroulé sur sa gorge sans
+      glisser ; à son autre extrémité pend un solide de masse $m = 2{,}0\
+      \text{kg}$, lâché sans vitesse initiale. Aucun moteur n'entraîne la
+      poulie : seul le poids du solide met le système en mouvement. Avec
+      $g = 9{,}8\ \text{m}\cdot\text{s}^{-2}$, quelle est l'accélération
+      $a$ de la chute du solide ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $a \approx 9{,}8\ \text{m/s}^2$
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
+        feedback: >
+          Ce résultat revient à poser $J=0$, comme si la poulie ne
+          résistait pas du tout à sa mise en rotation. Ici $J=0{,}090\
+          \text{kg}\cdot\text{m}^2$ n'est pas nul : la poulie retient la
+          chute du solide, la formule $a=mg/(m+J/r^2)$ ne redonnant $a=g$
+          que dans le cas particulier où $J=0$.
+      - id: B
+        text: >-
+          $a = 0\ \text{m/s}^2$
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: >
+          Poser $T=mg$ suppose, sans le justifier, que la tension équilibre
+          exactement le poids — une hypothèse d'équilibre statique que rien
+          dans l'énoncé ne permet d'introduire, puisque le solide est
+          lâché et accélère. C'est en résolvant ENSEMBLE la loi de Newton
+          sur la masse et la relation fondamentale sur la poulie que la
+          vraie tension (inférieure à $mg$) se détermine, sans la supposer
+          d'avance.
+      - id: C
+        text: >-
+          $a \approx 6{,}5\ \text{m/s}^2$
+        correct: true
+      - id: D
+        text: >-
+          $a \approx 19{,}6\ \text{m/s}^2$
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
+        feedback: >
+          Cette expression s'obtient en remplaçant directement la tension
+          $T$ par le poids $mg$ dans la relation de la poulie
+          ($J\ddot\theta=Tr$), sans jamais écrire la loi de Newton sur la
+          masse : $m$ disparaît alors complètement du dénominateur, comme
+          si la masse suspendue n'avait aucune inertie propre. Un résultat
+          de $19{,}6\ \text{m/s}^2$, supérieur à $g$, est d'ailleurs
+          impossible : rien de retenu par un fil ne peut chuter plus vite
+          qu'en chute libre.
+    correct_feedback: >
+      La loi de Newton sur la masse ($ma=mg-T$) et la relation fondamentale
+      de la dynamique de rotation sur la poulie ($J\ddot\theta=Tr$),
+      combinées via la condition de non-glissement $a=r\ddot\theta$,
+      éliminent $T$ et $\ddot\theta$ :
+      $a=mg/(m+J/r^2)=(2{,}0\times9{,}8)/(2{,}0+0{,}090/0{,}30^2)
+      \approx6{,}5\ \text{m/s}^2$.
+    solution: |
+      **Newton sur la masse** (tension $T$ vers le haut, poids $mg$ vers le
+      bas, chute avec accélération $a$) :
+      $$m\,a = mg - T$$
+
+      **Relation fondamentale de la dynamique de rotation sur la poulie**
+      (seule la tension a un moment non nul par rapport à l'axe, à la
+      distance $r$ ; le poids de la poulie et la réaction de l'axe ont un
+      bras de levier nul) :
+      $$J\,\ddot\theta = T\,r$$
+
+      **Condition de non-glissement du fil sur la poulie** :
+      $$a = r\,\ddot\theta$$
+
+      **Élimination de $T$ et $\ddot\theta$** : de la relation sur la
+      poulie, $\ddot\theta = a/r$, donc $T = J\,\ddot\theta/r = J\,a/r^2$.
+      En substituant dans la loi de Newton :
+      $$m\,a = mg - \frac{J\,a}{r^2} \implies a\left(m+\frac{J}{r^2}\right) = mg \implies a = \frac{mg}{m+J/r^2}$$
+
+      **Application numérique** : $J/r^2 = 0{,}090/0{,}30^2 = 1{,}0\
+      \text{kg}$, donc :
+      $$a = \frac{2{,}0\times9{,}8}{2{,}0+1{,}0} = \frac{19{,}6}{3{,}0} \approx 6{,}5\ \text{m/s}^2$$
+    habilete: résolution
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05. L'ancien déclarait franchement `floor_met: false` et
 # nommait ce qui manquait — mais il comptait au `primary_misconception` (une
@@ -2380,12 +2471,12 @@ coverage_summary:
     mc.physics.pc_rotation_axe_fixe.moment-force-direction-vs-axe:                    { count: 3, items: [ROT-26, ROT-27, ROT-28] }
     mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable:                     { count: 3, items: [ROT-5, ROT-6, ROT-11] }
     mc.physics.pc_rotation_axe_fixe.cinematique-angulaire-derivees-confondues:        { count: 3, items: [ROT-10, ROT-22, ROT-25] }
-    mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee:              { count: 3, items: [ROT-14, ROT-15, ROT-24] }
+    mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee:              { count: 4, items: [ROT-14, ROT-15, ROT-24, ROT-29] }
     mc.physics.pc_rotation_axe_fixe.energie-cinetique-rotation-formule-fausse:        { count: 3, items: [ROT-16, ROT-17, ROT-18] }
     mc.physics.pc_rotation_axe_fixe.moment-inertie-additivite-erronee:                { count: 3, items: [ROT-13, ROT-18, ROT-25] }
     mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones: { count: 4, items: [ROT-19, ROT-20, ROT-21, ROT-28] }
-    mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort: { count: 14, items: [ROT-1, ROT-2, ROT-3, ROT-5, ROT-6, ROT-7, ROT-8, ROT-9, ROT-11, ROT-14, ROT-15, ROT-16, ROT-23, ROT-26] }
-  total_items: 28
+    mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort: { count: 15, items: [ROT-1, ROT-2, ROT-3, ROT-5, ROT-6, ROT-7, ROT-8, ROT-9, ROT-11, ROT-14, ROT-15, ROT-16, ROT-23, ROT-26, ROT-29] }
+  total_items: 29
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2393,10 +2484,10 @@ coverage_summary:
     R1: 4   # ROT-6 rapatrié de R4 le 2026-09-19 : son énoncé est un pur v = R.omega
     R2: 5   # ROT-26, ROT-27 (2026-09-24) : le cas PARALLÈLE du moment nul, que la leçon n'écrivait pas
     R3: 4
-    R4: 2   # conséquence ASSUMÉE : le barreau de la relation fondamentale, coeur du chapitre, ne porte plus que deux items (ROT-14, ROT-15)
+    R4: 2   # conséquence ASSUMÉE : le barreau de la relation fondamentale, coeur du chapitre, ne porte plus que deux items directement au rung R4 (ROT-14, ROT-15) — le geste couplé poulie+masse suspendue de ROT-29 relève du même modèle mais vit au rung R7 (voir note ci-dessous)
     R5: 3
     R6: 4   # ROT-28 : la même barre, deux axes — co-étiquetée avec la famille du pendule pesant
-    R7: 3
+    R7: 4   # ROT-29 (2026-09-27, audit-banque-pc2.md finding #8) : poulie + charge suspendue, lâchée sans moteur — le geste bac (Newton sur la charge + RFD sur la poulie + non-glissement) que seul exercises.yaml (r-bac / r-variation) démontrait jusqu'ici, désormais testé par un item
   note_banc_herite: >-
     Le banc ROT-1…ROT-24 a été écrit AVANT que l'inventaire de misconceptions
     existe : il portait des `tags:` mais aucun `primary_misconception` ni aucun
@@ -2409,6 +2500,11 @@ coverage_summary:
     d'affiche.
   honest_state: >-
     Les dix misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Six y siègent EXACTEMENT (3 items), dont la neuve
-    (`moment-force-direction-vs-axe`) : la marge est nulle et tout retrait
-    d'item la casse.
+    plancher. Cinq y siègent EXACTEMENT (3 items) : la marge est nulle et
+    tout retrait d'item la casse. `relation-fondamentale-mal-appliquee`
+    est sortie de ce lot le 2026-09-27 (ROT-29 l'amène à 4) ; les cinq
+    restantes sont `moment-force-direction-vs-axe`,
+    `omega-uniforme-vs-v-variable`,
+    `cinematique-angulaire-derivees-confondues`,
+    `energie-cinetique-rotation-formule-fausse` et
+    `moment-inertie-additivite-erronee`.

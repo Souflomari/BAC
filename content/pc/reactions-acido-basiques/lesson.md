@@ -456,6 +456,22 @@ $$\tau = \frac{x_f}{x_{max}} = \frac{0{,}240\,n_0}{n_0} = 0{,}240$$
 
 Seulement $24\,\%$ d'avancement : bien moins que l'exemple 1, et c'est cohérent avec les deux $pK_A$ en présence — $4{,}8$ et $3{,}8$ ne diffèrent que d'une unité, deux acides de force assez proche, donc une réaction qui reste franchement partielle entre eux, sans favoriser massivement un camp.
 
+*Ce qu'on cherche ici, et pourquoi ce geste :* les deux réactifs ayant été apportés en quantités égales $n_0$, et rien d'autre n'ayant été ajouté au mélange, le tableau d'avancement ci-dessus donne directement deux égalités croisées entre les couples : $[CH_3COOH]_{eq} = [HCOO^-]_{eq} = (n_0-x)/V$ et $[CH_3COO^-]_{eq} = [HCOOH]_{eq} = x/V$. Écris la relation entre pH et $pK_A$ (chapitre 6) pour chacun des deux couples séparément :
+
+$$\text{pH} = pK_{A1} + \log\frac{[CH_3COO^-]_{eq}}{[CH_3COOH]_{eq}} = pK_{A1} + \log\frac{x}{n_0-x} \qquad \text{pH} = pK_{A2} + \log\frac{[HCOO^-]_{eq}}{[HCOOH]_{eq}} = pK_{A2} + \log\frac{n_0-x}{x}$$
+
+Additionne les deux lignes membre à membre : les deux logarithmes portent sur deux rapports inverses l'un de l'autre, $x/(n_0-x)$ et $(n_0-x)/x$, dont la somme des logarithmes est nulle.
+
+$$2\,\text{pH} = pK_{A1}+pK_{A2} \implies \text{pH} = \frac{pK_{A1}+pK_{A2}}{2} = \frac{4{,}8+3{,}8}{2} = 4{,}3$$
+
+Contrôle croisé, par l'autre chemin : cet exemple a déjà donné $x/(n_0-x) = \sqrt{K} \approx 0{,}316$ ; reporte cette valeur dans la première ligne ci-dessus :
+
+$$\text{pH} = pK_{A1} + \log(0{,}316) \approx 4{,}8 - 0{,}5 = 4{,}3$$
+
+Même résultat par les deux routes — la moyenne des deux $pK_A$, et le rapport numérique propre à cet exemple — ce qui confirme qu'aucune étape n'a été sautée.
+
+Retiens bien la condition, car ce résultat ne se généralise pas à n'importe quel mélange : il ne vaut que parce que les quantités initiales des deux réactifs, $A_1H$ et $A_2^-$, sont égales, et que rien d'autre n'a été ajouté à la solution. Change l'une de ces deux conditions et les deux égalités croisées de départ tombent — la moyenne des deux $pK_A$ ne s'applique plus.
+
 ---
 
 ## R8 — Le diagramme de distribution : lire les proportions, pas seulement qui l'emporte

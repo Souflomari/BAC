@@ -326,6 +326,52 @@ $$11 \mid 3n \quad \text{et} \quad \mathrm{PGCD}(11,3)=1 \quad \Longrightarrow \
 
 [[checkpoint:cp-r5-gauss]]
 
+### Exemple travaillé : un inverse par Bézout, puis un système de deux congruences
+
+**Ce qu'on cherche et pourquoi ce geste :** une identité de Bézout qui vaut $1$, lue modulo $n$, donne directement un inverse de $a$ modulo $n$ — l'outil qui permet de résoudre $ax \equiv b \pmod{n}$ sans jamais « diviser » par $a$, une opération qui n'a pas de sens en général dans les congruences.
+
+Par l'algorithme d'Euclide remonté (comme au chapitre 5), on dispose de l'identité :
+
+$$5 \times 7 + 17 \times (-2) = 1$$
+
+Lue modulo $17$, le terme $17\times(-2)$ disparaît (il est congru à $0$), et il reste :
+
+$$5 \times 7 \equiv 1 \pmod{17}$$
+
+Autrement dit, $7$ est un **inverse de $5$ modulo $17$**.
+
+**Résoudre $5x \equiv 8 \pmod{17}$.** Multiplie les deux membres par cet inverse, $7$ :
+
+$$7 \times (5x) \equiv 7 \times 8 \pmod{17}$$
+
+À gauche, $7\times5 \equiv 1 \pmod{17}$ (l'identité qu'on vient d'établir), donc $7\times(5x) \equiv x \pmod{17}$. C'est une **équivalence**, pas seulement une implication : on peut revenir en arrière en multipliant de nouveau par $5$, ce qui redonne exactement $5x \equiv 8 \pmod{17}$ — les deux opérations se défont l'une l'autre.
+
+$$x \equiv 7\times 8 \equiv 56 \equiv 5 \pmod{17}$$
+
+**Le piège à éviter :** « diviser » une congruence par $5$ n'est pas une opération licite en général. Ce qu'on fait réellement ici, c'est multiplier par un inverse de $5$ modulo $17$ — possible seulement parce que $\mathrm{PGCD}(5,17)=1$, exactement ce que l'identité de Bézout vient de garantir. Sans cette coprimalité, aucun inverse n'existerait, et il n'y aurait rien par quoi multiplier pour isoler $x$.
+
+**Combiner avec une seconde congruence.** Cherche maintenant tous les entiers $x$ qui vérifient à la fois $x \equiv 5 \pmod{17}$ et $x \equiv 1 \pmod{6}$ ($6$ et $17$ étant premiers entre eux — il suffit qu'ils le soient l'un envers l'autre, pas que chacun soit un nombre premier, chapitre 5). Écris la première congruence sous forme générale, $x = 5+17k$ pour un entier $k$, et reporte dans la seconde :
+
+$$5+17k \equiv 1 \pmod{6}$$
+
+Comme $17 \equiv 5 \pmod{6}$ :
+
+$$5+5k \equiv 1 \pmod{6} \quad\Longleftrightarrow\quad 5k\equiv -4 \equiv 2 \pmod{6}$$
+
+Exactement la même situation qu'à l'instant, pour un autre couple : $5$ est premier avec $6$, donc inversible modulo $6$, et $5\times5=25\equiv1\pmod{6}$ donne cet inverse. Multiplie les deux membres par $5$ :
+
+$$k \equiv 5\times 2 \equiv 10 \equiv 4 \pmod{6}$$
+
+Donc $k=4+6j$ pour un entier $j$, et :
+
+$$x = 5+17(4+6j) = 73+102j$$
+
+Une seule classe modulo $17\times6=102$ :
+
+$$x \equiv 73 \pmod{102}$$
+
+**Vérification dans les deux congruences de départ :** $73 = 17\times4+5$, donc $x\equiv5\pmod{17}$. ✓ Et $73=6\times12+1$, donc $x\equiv1\pmod{6}$. ✓
+
 ---
 
 ## R6 — Nombres premiers et décomposition en facteurs premiers

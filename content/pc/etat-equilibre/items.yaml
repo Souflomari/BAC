@@ -1700,6 +1700,83 @@ items:
 
       À retenir : $Q_r$ ne pousse rien. C'est un indicateur, pas un moteur.
 
+  # ── Q1 (dette d'examen pc-1) : Qr,éq d'un acide faible, en fonction de C et τ ──
+  # Ajouté le 2026-09-27 : GAP-B de docs/audits/dette-examen/pc-1.md —
+  # bk-2015-n-x1 q2 demande cette expression littérale ; ni la leçon ni aucun
+  # item ne la construisait jusqu'ici (seul le r-bac, le même sujet, la
+  # travaillait, et le r-bac de reactions-acido-basiques). Rung R3 :
+  # construction de Qr (exposants, exclusion du solvant) + tableau paramétré
+  # par τ, exactement les deux gestes du chapitre 4 (le second déjà vu au
+  # chapitre 3).
+  - id: EE-28
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_etat_equilibre
+    tags: []
+    primary_misconception: mc.physics.pc_etat_equilibre.qr-construction-erronee
+    stem: >
+      On étudie un acide faible $AH$ dans l'eau, de concentration apportée
+      $C$, selon la réaction $AH + H_2O \rightleftharpoons A^- + H_3O^+$. Le
+      taux d'avancement final de cette réaction vaut $\tau$. Quelle est
+      l'expression littérale du quotient de réaction à l'équilibre
+      $Q_{r,éq}$, en fonction de $C$ et de $\tau$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{\\tau^2}{1-\\tau}$"
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.tau-mal-interprete
+        feedback: >
+          Modèle détecté : $\tau$ est traité comme s'il s'agissait déjà d'une
+          concentration. $\tau$ est un nombre sans dimension, une proportion :
+          la concentration de $A^-$ (ou de $H_3O^+$) à l'équilibre vaut
+          $C\tau$, pas $\tau$ seul (chapitre 3). Sans le facteur $C$, cette
+          expression n'a même pas la bonne dimension pour un quotient
+          construit à partir de concentrations.
+      - id: B
+        text: "$C\\tau^2$"
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.qr-construction-erronee
+        feedback: >
+          Modèle détecté : le réactif $AH$ a disparu du dénominateur, comme
+          s'il fallait l'exclure de $Q_r$ à la manière du solvant (chapitre
+          4). Mais seule l'eau, en large excès, a ce statut particulier ici :
+          $AH$ est un soluté dont la concentration varie réellement avec
+          l'avancement ($[AH]_{eq}=C(1-\tau)$), il doit donc apparaître au
+          dénominateur, comme n'importe quel réactif.
+      - id: C
+        text: "$\\dfrac{C\\tau^2}{1-\\tau}$"
+        correct: true
+      - id: D
+        text: "$\\dfrac{C\\tau}{1-\\tau}$"
+        correct: false
+        misconception: mc.physics.pc_etat_equilibre.qr-construction-erronee
+        feedback: >
+          Modèle détecté : le numérateur porte
+          $[A^-]_{eq}\times[H_3O^+]_{eq}$, deux concentrations à multiplier,
+          chacune égale à $C\tau$ - ce qui donne $(C\tau)\times(C\tau)$, pas
+          $C\tau$ seul. Oublier ce deuxième facteur revient à oublier l'un des
+          deux produits de la réaction dans le quotient (chapitre 4).
+    correct_feedback: >
+      $[A^-]_{eq}=[H_3O^+]_{eq}=C\tau$ et $[AH]_{eq}=C(1-\tau)$ (l'eau,
+      solvant, est exclue de $Q_r$) :
+      $Q_{r,éq}=\dfrac{(C\tau)(C\tau)}{C(1-\tau)}=\dfrac{C\tau^2}{1-\tau}$.
+    solution: |
+      Tableau d'avancement, avec $x_f=\tau\,x_{max}=\tau C$ (chapitre 3,
+      puisque $x_{max}=C$ pour un acide de concentration apportée $C$) :
+
+      | | $AH$ | $A^-$ | $H_3O^+$ |
+      |---|---|---|---|
+      | équilibre | $C(1-\tau)$ | $C\tau$ | $C\tau$ |
+
+      $Q_r$ se construit produits sur réactifs, l'eau (solvant) étant exclue
+      (chapitre 4) :
+
+      $$Q_{r,éq}=\frac{[A^-]_{eq}[H_3O^+]_{eq}}{[AH]_{eq}}=\frac{(C\tau)(C\tau)}{C(1-\tau)}=\frac{C^2\tau^2}{C(1-\tau)}=\frac{C\tau^2}{1-\tau}$$
+
+      (un facteur $C$ se simplifie entre le numérateur et le dénominateur).
+    habilete: résolution
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05. L'ancien déclarait franchement `floor_met: false` et
 # listait six familles non gatées sous le plancher — mais il comptait au
@@ -1719,22 +1796,22 @@ coverage_summary:
     mc.physics.pc_etat_equilibre.equilibre-est-un-arret:               { count: 5, items: [EE-1, EE-2, EE-7, EE-8, EE-9] }
     mc.physics.pc_etat_equilibre.reactif-epuise-transformation-totale: { count: 4, items: [EE-7, EE-8, EE-9, EE-10] }
     mc.physics.pc_etat_equilibre.une-reaction-domine:                  { count: 4, items: [EE-1, EE-8, EE-9, EE-10] }
-    mc.physics.pc_etat_equilibre.tau-mal-interprete:                   { count: 8, items: [EE-11, EE-12, EE-13, EE-18, EE-19, EE-20, EE-23, EE-24] }
-    mc.physics.pc_etat_equilibre.qr-construction-erronee:              { count: 5, items: [EE-14, EE-15, EE-18, EE-22, EE-24] }
+    mc.physics.pc_etat_equilibre.tau-mal-interprete:                   { count: 9, items: [EE-11, EE-12, EE-13, EE-18, EE-19, EE-20, EE-23, EE-24, EE-28] }
+    mc.physics.pc_etat_equilibre.qr-construction-erronee:              { count: 6, items: [EE-14, EE-15, EE-18, EE-22, EE-24, EE-28] }
     mc.physics.pc_etat_equilibre.confond-qr-et-k:                      { count: 4, items: [EE-3, EE-4, EE-13, EE-16] }
     mc.physics.pc_etat_equilibre.k-depend-etat-initial:                { count: 6, items: [EE-5, EE-6, EE-17, EE-21, EE-25, EE-26] }
     mc.physics.pc_etat_equilibre.k-independant-temperature:            { count: 3, items: [EE-17, EE-26, EE-27] }
     mc.physics.pc_etat_equilibre.qr-croit-par-nature:                  { count: 3, items: [EE-16, EE-26, EE-27] }
     mc.physics.pc_etat_equilibre.dilution-effet-universel:             { count: 4, items: [EE-6, EE-10, EE-20, EE-21] }
     mc.physics.pc_etat_equilibre.critere-evolution-errone:             { count: 4, items: [EE-18, EE-19, EE-24, EE-27] }
-  total_items: 27
+  total_items: 28
   floor: 3
   floor_met: true
   ramp_coverage:
     R0: 3
     R1: 3
     R2: 3
-    R3: 4
+    R3: 5
     R4: 5
     R5: 3
     R6: 3
@@ -1755,3 +1832,7 @@ coverage_summary:
     Les onze misconceptions déclarées sont couvertes, aucune sous le
     plancher. Deux y siègent EXACTEMENT (3 items) : la marge est nulle
     et tout retrait d'item la casse.
+  # Ajout du 2026-09-27 (dette d'examen pc-1, Q1) : EE-28 (Qr,éq d'un acide
+  # faible en fonction de C et τ, GAP-B). tau-mal-interprete passe de 8 à 9,
+  # qr-construction-erronee de 5 à 6 (deux distracteurs). Aucune misconception
+  # nouvelle déclarée.

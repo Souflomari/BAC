@@ -191,6 +191,26 @@ Numériquement, $440\ \text{nm}$ correspond, dans le tableau ci-dessus, à une l
 
 [[checkpoint:cp-r4-lambda-nu]]
 
+### Retrouver l'indice d'un liquide en comparant deux largeurs de tache
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* on vient d'établir que la longueur d'onde d'une même lumière change de valeur selon le milieu traversé, $\lambda = \lambda_0/n$. Or la largeur de la tache de diffraction (chapitre 4) dépend justement de $\lambda$, par $L = 2\lambda D/a$ : plonger le montage dans un liquide doit donc changer cette largeur. On s'en sert ici pour mesurer $n$, sans rien connaître ni de $a$, ni de $D$, ni même de $\lambda_0$.
+
+Un même faisceau laser traverse une même fente de largeur $a$, avec un même écran placé à la même distance $D$ — d'abord dans l'air, puis avec toute l'expérience (fente et écran) immergée dans un liquide transparent d'indice $n$ inconnu. Dans l'air, la tache centrale mesure $L_{air} = 2{,}10\ \text{cm}$. Dans le liquide, sans avoir touché ni à la fente ni à l'écran, elle mesure $L_{liquide} = 1{,}40\ \text{cm}$. Quel est l'indice $n$ du liquide ?
+
+Dans l'air, la longueur d'onde vaut $\lambda_0$ (l'air se comporte comme le vide, $n_{air}\approx 1$) ; dans le liquide, elle vaut $\lambda_0/n$. La formule $L = 2\lambda D/a$ s'écrit donc, dans les deux cas, avec la même fente $a$ et le même écran $D$ :
+
+$$L_{air} = \frac{2\lambda_0 D}{a} \qquad L_{liquide} = \frac{2(\lambda_0/n) D}{a}$$
+
+En divisant la seconde relation par la première, $a$ et $D$ disparaissent — ils n'ont pas changé, et l'énoncé ne les donne d'ailleurs pas :
+
+$$\frac{L_{liquide}}{L_{air}} = \frac{1}{n} \quad\Longrightarrow\quad n = \frac{L_{air}}{L_{liquide}}$$
+
+$$n = \frac{2{,}10}{1{,}40} = 1{,}50$$
+
+C'est tout l'intérêt du rapport : une fois $a$ et $D$ simplifiés, il ne reste que deux largeurs à mesurer — pas la peine de connaître la longueur d'onde du laser, ni la largeur de la fente, ni la distance à l'écran.
+
+Le même geste — un rapport de deux mesures qui élimine tout ce qui n'a pas changé — sert aussi pour comparer deux longueurs d'onde avec une seule fente, sans changer de milieu : $\lambda_1/\lambda_2 = L_1/L_2$.
+
 ---
 
 ## R5 — La dispersion de la lumière par un prisme

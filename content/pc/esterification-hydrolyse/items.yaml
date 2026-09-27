@@ -1623,6 +1623,177 @@ items:
       (un excès d'un réactif) ou retirer l'un des produits au fur et à mesure.
       Pas la simple mise à l'échelle.
 
+  # ── E1 (dette d'examen pc-1) : intérêt du chauffage à reflux ────────────────
+  # Ajouté le 2026-09-27 : GAP-A de docs/audits/dette-examen/pc-1.md —
+  # bk-2017-n-x1c q1 et bk-2015-r-x1b q2-3a demandent toutes deux « quel est
+  # l'intérêt du chauffage à reflux ? », jamais testé. Rung R4 : c'est
+  # exactement le paragraphe « Le chauffage » du chapitre 5, où la prose vient
+  # de gagner deux phrases sur le rôle du réfrigérant (accélérer, sans perte
+  # de matière).
+  - id: EH-29
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement
+    stem: >
+      Pour préparer un ester en travaux pratiques, on porte le mélange à
+      ébullition pendant une heure ou plus, à l'aide d'un montage particulier :
+      un chauffage à reflux. Quel est l'intérêt de ce chauffage à reflux ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Accélérer la transformation, sans perte de matière : les vapeurs sont condensées et retombent."
+        correct: true
+      - id: B
+        text: "Déplacer l'équilibre vers l'ester, ce qui augmente le rendement obtenu."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement
+        feedback: >
+          Modèle détecté : chauffer déplacerait l'équilibre vers l'ester.
+          L'estérification est quasi athermique (chapitre 5) : sa constante
+          $K$ varie à peine avec la température. Chauffer accélère
+          l'estérification ET l'hydrolyse dans les mêmes proportions, sans
+          changer leur rapport - donc sans changer $\tau$. Les flacons A (sans
+          chauffage) et B (chauffé à reflux) du chapitre 5 atteignent
+          exactement le même $\tau \approx 2/3$, à des vitesses différentes.
+      - id: C
+        text: "Faire s'évaporer l'eau formée, afin de l'éliminer peu à peu du milieu réactionnel."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.cinetique-thermodynamique-confondues
+        feedback: >
+          Ce n'est pas le rôle de ce montage : ici, rien ne s'échappe du
+          ballon - c'est justement ce qui le distingue d'une distillation.
+          Éliminer l'eau au fur et à mesure de sa formation (chapitre 6)
+          déplace réellement l'équilibre, mais exige un montage différent, qui
+          laisse l'eau s'échapper au lieu de la retenir. Confondre les deux,
+          c'est confondre un geste cinétique (chauffer, chapitre 5) avec un
+          geste qui déplace vraiment l'équilibre (chapitre 6).
+      - id: D
+        text: "Refroidir suffisamment pour interrompre la transformation une fois l'équilibre supposé atteint."
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.cinetique-thermodynamique-confondues
+        feedback: >
+          Rien, dans ce montage, n'arrête la réaction : le tube vertical
+          condense la vapeur qui s'élève et la renvoie dans le ballon, pendant
+          que le chauffage se poursuit. La réaction, elle, continue de suivre
+          son cours jusqu'à son propre équilibre (chapitre 3) ; ni le
+          chauffage ni cette condensation locale ne peuvent l'interrompre de
+          l'extérieur.
+    correct_feedback: >
+      Ce montage accélère l'estérification (et l'hydrolyse) sans en changer
+      l'issue (chapitre 5) : le tube vertical condense les vapeurs qui
+      s'élèvent et les renvoie dans le ballon, si bien qu'aucune matière n'est
+      perdue par évaporation.
+    solution: |
+      Le montage décrit est un chauffage à reflux : un tube vertical (le
+      réfrigérant) surmonte le ballon en ébullition. Son rôle est double, et
+      bien précis :
+
+      - Il condense les vapeurs qui s'élèvent du mélange bouillant, et les
+        fait retomber dans le ballon : aucune matière ne s'échappe,
+        contrairement à un ballon chauffé à l'air libre.
+      - Il permet de chauffer fort et longtemps, ce qui accélère
+        l'estérification ET l'hydrolyse dans les mêmes proportions (chapitre
+        5) - sans jamais déplacer l'équilibre, puisque la réaction est quasi
+        athermique.
+
+      Chauffer à reflux ne fait donc ni évaporer l'eau formée (qui resterait
+      dans un montage de distillation, chapitre 6, pas ici), ni interrompre la
+      réaction par refroidissement (le tube condense, il ne stoppe rien) : il
+      fait uniquement gagner du temps, sans toucher au rendement.
+    habilete: application_experimentale
+
+  # ── E2 (dette d'examen pc-1) : mélange non équimolaire, K=4 ─────────────────
+  # Ajouté le 2026-09-27 : GAP-B de docs/audits/dette-examen/pc-1.md — l'excès
+  # de réactif est déjà résolu au chapitre 6 (1,0/2,0 mol), mais aucun item ne
+  # fait résoudre l'équation du second degré par l'élève. Chiffres neufs
+  # (0,50 / 1,50 mol), distincts de bk-2013-r-x1c (150/100 mmol) et de
+  # bk-2023-n-x1 (qui ajoute de l'acide À l'équilibre, pas un mélange non
+  # équimolaire au départ).
+  - id: EH-30
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_esterification_hydrolyse
+    tags: []
+    primary_misconception: mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal
+    stem: >
+      On reprend une estérification simple ($K=4$, même température qu'aux
+      chapitres précédents), mais cette fois avec un mélange non équimolaire :
+      $n_0(acide) = 0{,}50$ mol d'un acide carboxylique et
+      $n_0(alcool) = 1{,}50$ mol d'un alcool, tous deux à chaîne linéaire.
+      Quel est l'avancement à l'équilibre $x_{éq}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$x_{éq} \\approx 0{,}33$ mol"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau
+        feedback: >
+          Modèle détecté : $\tau = 2/3$ appliqué directement, comme si ce
+          mélange était encore équimolaire. Ce raccourci
+          ($\tau^2/(1-\tau)^2 = K$) ne vaut que pour l'estérification simple à
+          quantités ÉGALES (chapitre 4). Ici $n_0(alcool) \neq n_0(acide)$ :
+          il faut reprendre le tableau d'avancement complet et résoudre
+          l'équation du second degré en $x$.
+      - id: B
+        text: "$x_{éq} \\approx 0{,}45$ mol"
+        correct: true
+      - id: C
+        text: "$x_{éq} \\approx 0{,}77$ mol"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau
+        feedback: >
+          Modèle détecté : en développant $(0{,}50-x)(1{,}50-x)$, les deux
+          termes croisés ont été oubliés, comme si ce produit valait
+          $0{,}75-x^2$. Le développement complet donne $0{,}75-2x+x^2$ : les
+          deux termes en $x$ ne s'annulent pas, ils s'additionnent.
+      - id: D
+        text: "$x_{éq} \\approx 2{,}22$ mol"
+        correct: false
+        misconception: mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal
+        feedback: >
+          Modèle détecté : cette valeur est bien une racine de l'équation du
+          second degré, mais elle dépasse $n_0(acide)=0{,}50$ mol - la
+          quantité initiale du réactif limitant. Un avancement ne peut pas
+          dépasser ce que le réactif limitant peut fournir : cette racine n'a
+          pas de sens physique et doit être rejetée.
+    correct_feedback: >
+      Le tableau d'avancement donne $K = x^2/[(0{,}50-x)(1{,}50-x)] = 4$, soit
+      $3x^2-8x+3=0$ : les deux racines valent $\approx 0{,}45$ mol et
+      $\approx 2{,}22$ mol. Seule la première est physiquement possible
+      ($x < n_0(acide)=0{,}50$ mol) : $x_{éq}\approx 0{,}45$ mol.
+    solution: |
+      Tableau d'avancement (l'acide, en défaut, est le réactif limitant :
+      $x_{max}=0{,}50$ mol) :
+
+      | | acide | alcool | ester | eau |
+      |---|---|---|---|---|
+      | équilibre (mol) | $0{,}50-x$ | $1{,}50-x$ | $x$ | $x$ |
+
+      $$K = \frac{x^2}{(0{,}50-x)(1{,}50-x)} = 4$$
+
+      En développant $(0{,}50-x)(1{,}50-x) = 0{,}75-2x+x^2$ :
+
+      $$x^2 = 4(0{,}75-2x+x^2) = 3-8x+4x^2$$
+
+      $$3x^2-8x+3=0$$
+
+      Discriminant : $\Delta = 8^2-4\times3\times3 = 64-36=28$,
+      $\sqrt{28}\approx5{,}29$.
+
+      $$x = \frac{8\pm5{,}29}{6}$$
+
+      Les deux racines : $x_1 \approx 0{,}45$ mol et $x_2 \approx 2{,}22$ mol.
+
+      $x_2$ dépasse $n_0(acide)=0{,}50$ mol (la quantité initiale du réactif
+      limitant) : impossible physiquement, cette racine est rejetée. Il reste
+      $x_{éq}=x_1\approx0{,}45$ mol (valeur précise : $0{,}4514$ mol), ce qui
+      redonne bien $K\approx4$ :
+
+      $$\frac{0{,}4514^2}{(0{,}0486)(1{,}0486)}\approx\frac{0{,}2038}{0{,}0510}\approx4{,}00$$
+    habilete: résolution
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05. L'ancien déclarait franchement `floor_met: false` et
 # nommait quatre familles non gatées sous le plancher — au décompte par
@@ -1639,18 +1810,18 @@ coverage_summary:
     web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement:        { count: 7, items: [EH-1, EH-4, EH-7, EH-9, EH-13, EH-17, EH-23] }
-    mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement:         { count: 4, items: [EH-2, EH-4, EH-9, EH-22] }
+    mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement:         { count: 5, items: [EH-2, EH-4, EH-9, EH-22, EH-29] }
     mc.physics.pc_esterification_hydrolyse.esterification-totale:                { count: 4, items: [EH-4, EH-7, EH-13, EH-23] }
-    mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal:       { count: 3, items: [EH-24, EH-25, EH-26] }
+    mc.physics.pc_esterification_hydrolyse.avancement-final-egale-maximal:       { count: 4, items: [EH-24, EH-25, EH-26, EH-30] }
     mc.physics.pc_esterification_hydrolyse.mauvaise-identification-ester:        { count: 3, items: [EH-3, EH-8, EH-11] }
     mc.physics.pc_esterification_hydrolyse.nomenclature-radicaux-inverses:       { count: 3, items: [EH-6, EH-10, EH-19] }
     mc.physics.pc_esterification_hydrolyse.confond-k-et-qr:                      { count: 4, items: [EH-5, EH-9, EH-18, EH-21] }
     mc.physics.pc_esterification_hydrolyse.equilibre-percu-comme-arret:          { count: 3, items: [EH-12, EH-27, EH-28] }
-    mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau:                 { count: 5, items: [EH-14, EH-16, EH-20, EH-24, EH-26] }
+    mc.physics.pc_esterification_hydrolyse.erreur-algebre-k-tau:                 { count: 6, items: [EH-14, EH-16, EH-20, EH-24, EH-26, EH-30] }
     mc.physics.pc_esterification_hydrolyse.tau-depend-de-n0:                     { count: 3, items: [EH-14, EH-15, EH-28] }
-    mc.physics.pc_esterification_hydrolyse.cinetique-thermodynamique-confondues: { count: 6, items: [EH-1, EH-2, EH-5, EH-18, EH-21, EH-22] }
+    mc.physics.pc_esterification_hydrolyse.cinetique-thermodynamique-confondues: { count: 7, items: [EH-1, EH-2, EH-5, EH-18, EH-21, EH-22, EH-29] }
     mc.physics.pc_esterification_hydrolyse.obstacle-physique-invente:            { count: 3, items: [EH-13, EH-27, EH-28] }
-  total_items: 28
+  total_items: 30
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -1658,8 +1829,8 @@ coverage_summary:
     R1: 3
     R2: 5
     R3: 5
-    R4: 4
-    R5: 3
+    R4: 5
+    R5: 4
     R6: 5
   gated_misconceptions:
     # Les familles nommées par les portes de conversion du sommet
@@ -1673,5 +1844,12 @@ coverage_summary:
   gated_floor_met: true
   honest_state: >-
     Les douze misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Six y siègent EXACTEMENT (3 items) : la marge est nulle
+    plancher. Cinq y siègent EXACTEMENT (3 items) : la marge est nulle
     et tout retrait d'item la casse.
+  # Ajout du 2026-09-27 (dette d'examen pc-1, E1 + E2) : EH-29 (intérêt du
+  # chauffage à reflux, GAP-A) et EH-30 (mélange non équimolaire résolu par
+  # l'élève, GAP-B) — voir les commentaires au fil des items pour le détail.
+  # chauffage-augmente-rendement passe de 4 à 5 (EH-29) ;
+  # avancement-final-egale-maximal de 3 à 4 et erreur-algebre-k-tau de 5 à 6
+  # (EH-30, deux distracteurs) ; cinetique-thermodynamique-confondues de 6 à 7
+  # (EH-29, deux distracteurs). Aucune misconception nouvelle déclarée.

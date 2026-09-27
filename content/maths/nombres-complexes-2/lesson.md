@@ -150,6 +150,31 @@ $$|zz'| = \sqrt{(1-\sqrt3)^2+(1+\sqrt3)^2} = \sqrt{(4-2\sqrt3)+(4+2\sqrt3)} = \s
 
 Le module coïncide bien avec la prédiction de la règle. Pour l'argument, en revanche, il aurait fallu remonter par un arctangente peu commode — c'est précisément le gain qu'apporte la règle du produit : on lit $\arg(zz')$ directement, sans repasser par une factorisation astucieuse.
 
+### Une factorisation utile : $1+e^{i\theta}$ et $1-e^{i\theta}$
+
+Un sujet donne parfois un complexe sous la forme $1+e^{i\theta}$ (une somme, pas un produit) et demande son module et son argument. La règle du produit ne s'applique pas telle quelle à une somme — le geste est de **factoriser** par l'angle moitié, $e^{i\theta/2}$ :
+
+$$1+e^{i\theta} = e^{i\theta/2}\left(e^{-i\theta/2}+e^{i\theta/2}\right) = 2\cos\frac{\theta}{2}\,e^{i\theta/2}$$
+
+**Ce que fait ce geste :** on met en facteur $e^{i\theta/2}$, qui vérifie $e^{i\theta/2}\times e^{-i\theta/2}=1$ et $e^{i\theta/2}\times e^{i\theta/2}=e^{i\theta}$ — exactement les deux termes de $1+e^{i\theta}$. Ce qui reste entre parenthèses, $e^{-i\theta/2}+e^{i\theta/2}$, est une somme d'exponentielles opposées : c'est $2\cos(\theta/2)$, par la définition même de $e^{i\theta}$ posée plus haut dans ce chapitre. Le même geste, avec un signe $-$ au lieu de $+$, donne le jumeau :
+
+$$1-e^{i\theta} = e^{i\theta/2}\left(e^{-i\theta/2}-e^{i\theta/2}\right) = -2i\sin\frac{\theta}{2}\,e^{i\theta/2}$$
+
+**Le piège : $2\cos(\theta/2)$ n'est pas toujours positif.** L'écriture $1+e^{i\theta} = 2\cos(\theta/2)\,e^{i\theta/2}$ n'est sous la forme $r\,e^{i\varphi}$ voulue — avec $r \ge 0$ — que si $2\cos(\theta/2) \ge 0$. Lire "module $2\cos(\theta/2)$, argument $\theta/2$" sans vérifier ce signe est l'erreur systématique que ce calcul appelle :
+
+- si $\cos(\theta/2) > 0$ : module $2\cos(\theta/2)$, argument $\dfrac{\theta}{2}\ [2\pi]$ — l'écriture est déjà sous la bonne forme ;
+- si $\cos(\theta/2) < 0$ : il faut sortir le signe, $2\cos(\theta/2)\,e^{i\theta/2} = -2\cos(\theta/2) \times \left(-e^{i\theta/2}\right) = -2\cos(\theta/2)\,e^{i(\theta/2+\pi)}$ (puisque $-e^{i\alpha}=e^{i(\alpha+\pi)}$) : module $-2\cos(\theta/2)$ (qui est bien positif dans ce cas), argument $\dfrac{\theta}{2}+\pi\ [2\pi]$.
+
+**Exemple travaillé.** Donner le module et un argument de $1+e^{i\frac{4\pi}{3}}$.
+
+**Ce qu'on cherche et pourquoi ce geste :** avant de recopier "module $2\cos(\theta/2)$", il faut d'abord évaluer le signe de $\cos(\theta/2)$ — c'est ce signe qui choisit entre les deux lignes de la table ci-dessus.
+
+Ici $\theta=\dfrac{4\pi}{3}$, donc $\dfrac{\theta}{2}=\dfrac{2\pi}{3}$, et $\cos\dfrac{2\pi}{3} = -\dfrac12 < 0$ : c'est le second cas.
+
+$$\text{module} = -2\cos\frac{2\pi}{3} = -2\times\left(-\frac12\right) = 1 \qquad\qquad \text{argument} = \frac{2\pi}{3}+\pi = \frac{5\pi}{3}\ [2\pi]$$
+
+**Vérification directe, par la forme algébrique :** $1+e^{i\frac{4\pi}{3}} = 1+\cos\dfrac{4\pi}{3}+i\sin\dfrac{4\pi}{3} = 1-\dfrac12-i\dfrac{\sqrt3}{2} = \dfrac12-i\dfrac{\sqrt3}{2}$. Son module est $\sqrt{\left(\frac12\right)^2+\left(\frac{\sqrt3}{2}\right)^2}=\sqrt{\frac14+\frac34}=1$, conforme à la prédiction. Et le point $\left(\frac12,-\frac{\sqrt3}{2}\right)$ est bien celui d'angle $\dfrac{5\pi}{3}$ (ou, de façon équivalente, $-\dfrac{\pi}{3}$).
+
 ---
 
 ## R3 — Quotient et puissance : la formule de Moivre
@@ -423,6 +448,8 @@ Pourquoi cela place $M$ sur un cercle : soit $O$ le milieu de $[AB]$. Si le tria
 
 Cette propriété a un nom dans tes cours de géométrie : le **théorème de l'angle inscrit**, qui dit qu'un angle inscrit dans un demi-cercle est droit. Ce que tu viens de démontrer en est le cas particulier, obtenu avec la seule médiane. Le nom ne change rien à la démonstration.
 
+**En une ligne, la cocyclicité.** Lu en deux points $C$ et $D$ plutôt qu'en un seul, le rapport $u$ ci-dessus donne $u_C=\dfrac{z_C-z_A}{z_C-z_B}$ et $u_D=\dfrac{z_D-z_A}{z_D-z_B}$ : leur quotient $\dfrac{u_C}{u_D}$ est réel exactement quand $C$ et $D$ voient $[AB]$ sous des angles égaux ou supplémentaires — par l'angle inscrit et sa réciproque, $A,B,C,D$ sont alors cocycliques (ou alignés).
+
 [[figure:nature-triangle-w]]
 
 La scène t'a fait trouver ce que $w$ vaut ; ici, tu vérifies ce qu'il dit.
@@ -486,4 +513,21 @@ Avant de te lancer, un dernier réflexe sur les ensembles de points : tu as vu l
      jumelle) et checkpoints.yaml (5 checkpoints formatifs placés R0/R4/R5/R6/
      avant-bac). L'ancien figure media/rotation-complexe.svg n'est plus
      référencé par la leçon.
+
+     NOTE AJOUTÉE (dette d'examen, vague B1, 2026-09-27) :
+     (6) [PROSE LIVRÉE] GAP-A « Euler formulas / factorisation by the half
+     angle » (docs/audits/dette-examen/maths.md, § nombres-complexes-2) :
+     nouvelle sous-section en fin de R2, "Une factorisation utile :
+     $1+e^{i\theta}$ et $1-e^{i\theta}$" — les deux factorisations, la
+     condition de signe sur $\cos(\theta/2)$ (le piège nommé explicitement),
+     et un exemple travaillé à $\theta=4\pi/3$ (valeur propre à cet auteur,
+     choisie pour tomber dans le cas $\cos(\theta/2)<0$ ; vérifié deux fois,
+     par la factorisation et par la forme algébrique directe). Aucune valeur
+     de banc citée ($m=1+e^{i\pi/3}$, bank.yaml:442, n'apparaît pas ici).
+     (7) [PROSE LIVRÉE, minimale] GAP-A minor « cocyclicité » : une seule
+     phrase ajoutée en fin de R6, réutilisant le $u$ déjà défini au paragraphe
+     précédent (lu en $C$ puis en $D$) plutôt qu'une notation neuve — pas
+     d'exemple numérique séparé, pour tenir dans le format "une ligne" demandé
+     par la tâche.
 -->
+

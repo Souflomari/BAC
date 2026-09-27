@@ -2478,6 +2478,159 @@ items:
       $\lim f(x)/x=\pm\infty$ (qui donnerait $(Oy)$, l'autre extrême de la
       chaîne).
 
+  # Ajoutés le 2026-09-27 (dette d'examen, vague B1, second passage) : deux
+  # items qui payent les deux derniers trous nommés dans
+  # docs/audits/dette-examen/maths.md, section « derivabilite-etude-fonctions » :
+  # DERIVFCT-40 paye le GAP-B « Asymptote oblique + relative position, worked
+  # never tested » (fonction propre, $f(x)=2x-1+3/(x+2)$, distincte de
+  # $x+1/(x-1)$ du cours, de $3x-\sqrt x$ de DERIVFCT-32 et de
+  # $x+3+5/(x-2)$ de DERIVFCT-33) — mais teste une face différente de
+  # DERIVFCT-33 : DERIVFCT-33 admet l'asymptote et ne demande que la
+  # position ; DERIVFCT-40 demande QUELLE AFFIRMATION prouve À LA FOIS
+  # l'existence de l'asymptote ET sa position, avec pour distracteurs les
+  # deux sur-conclusions déjà nommées par l'inventaire
+  # (asymptote-oblique-conclue-sans-second-calcul,
+  # limite-f-sur-x-confondue-avec-limite-de-f) plus un signe de position
+  # inversé (trinome-signe-mal-lu, déjà porté par DERIVFCT-33 pour ce même
+  # type d'erreur). DERIVFCT-41 paye le GAP-B (inverse) « Rolle / TAF tested
+  # but deliberately not taught », maintenant que R4b existe (lesson.md:320-364,
+  # livré par le content-author le même jour) : il teste l'inégalité des
+  # accroissements finis elle-même (« $|f'|\le k$ sur $I$ donne quelle
+  # inégalité ? »), une face distincte de DERIVFCT-23 (Rolle appliqué à $f'$
+  # pour obtenir $f''(c)=0$) et de DERIVFCT-29 (conditions supplémentaires
+  # pour l'inflexion, avec Rolle en distracteur) — aucun des deux n'a jamais
+  # testé la FORME de l'IAF elle-même.
+  - id: DERIVFCT-40
+    rung: "R5"
+    difficulty_level: 4
+    habilete: application_non_explicite
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [asymptote-oblique, position-relative, critere-complet]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.asymptote-oblique-conclue-sans-second-calcul
+    stem: >
+      Soit $f(x) = 2x-1+\dfrac{3}{x+2}$, définie sur
+      $\mathbb{R}\setminus\{-2\}$. Laquelle de ces affirmations prouve à la
+      fois que $(D): y=2x-1$ est asymptote oblique à $(C_f)$ au voisinage de
+      $+\infty$, et donne la position de $(C_f)$ par rapport à $(D)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\lim_{x\to+\infty}\dfrac{f(x)}{x}=2$ suffit, à elle seule, à
+          établir que $(D):y=2x-1$ est asymptote oblique à $(C_f)$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.asymptote-oblique-conclue-sans-second-calcul
+        feedback: >
+          Ce rapport, seul, ne suffit pas à conclure : il donne un candidat
+          $a$ fini non nul, jamais la conclusion complète. Il faut encore
+          calculer $\lim\bigl(f(x)-(2x-1)\bigr)$ — ici $\dfrac{3}{x+2}\to0$
+          — pour confirmer l'asymptote, et son signe pour la position.
+      - id: B
+        text: >-
+          $\lim_{x\to+\infty}\bigl(f(x)-(2x-1)\bigr)=0$, et
+          $f(x)-(2x-1)=\dfrac{3}{x+2}>0$ au voisinage de $+\infty$ : $(D)$
+          est asymptote oblique, $(C_f)$ au-dessus de $(D)$.
+        correct: true
+      - id: C
+        text: >-
+          $\lim_{x\to+\infty} f(x)=+\infty$ suffit, à elle seule, à établir
+          que $(D):y=2x-1$ est asymptote oblique à $(C_f)$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-f-sur-x-confondue-avec-limite-de-f
+        feedback: >
+          $\lim f(x)$ (ici $+\infty$) écarte seulement l'asymptote
+          horizontale ; elle ne dit rien sur une éventuelle asymptote
+          oblique, qui se lit sur $\lim f(x)/x$ puis $\lim(f(x)-ax)$ — deux
+          limites différentes de $\lim f(x)$ elle-même, qui peuvent se
+          comporter tout autrement.
+      - id: D
+        text: >-
+          $\lim_{x\to+\infty}\bigl(f(x)-(2x-1)\bigr)=0$, et
+          $f(x)-(2x-1)<0$ au voisinage de $+\infty$ : $(D)$ est asymptote
+          oblique, $(C_f)$ en dessous de $(D)$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.trinome-signe-mal-lu
+        feedback: >
+          Le signe est inversé : $f(x)-(2x-1)=\dfrac{3}{x+2}$, du signe de
+          $x+2$ (numérateur $3$ positif) — positif dès que $x>-2$, donc au
+          voisinage de $+\infty$. La courbe est au-dessus de $(D)$, pas en
+          dessous.
+    correct_feedback: >
+      Exact : le second calcul,
+      $\lim\bigl(f(x)-(2x-1)\bigr)=\lim\frac{3}{x+2}=0$, confirme
+      l'asymptote oblique ; et $\frac{3}{x+2}>0$ pour $x$ voisin de
+      $+\infty$ donne la position — $(C_f)$ au-dessus de $(D)$.
+    solution: |
+      $$f(x)-(2x-1) = \frac{3}{x+2}$$
+      Comme $\dfrac{3}{x+2}\to0$ quand $x\to+\infty$, $(D):y=2x-1$ est bien
+      asymptote oblique à $(C_f)$ en $+\infty$. Le signe de
+      $\dfrac{3}{x+2}$ (numérateur $3>0$) est celui de $x+2$, positif dès
+      que $x>-2$ — donc au voisinage de $+\infty$ : $(C_f)$ est au-dessus
+      de $(D)$.
+
+      Le rapport $\lim f(x)/x=2$ seul, ou $\lim f(x)=+\infty$ seul, ne
+      suffisent jamais : c'est la seconde limite,
+      $\lim\bigl(f(x)-(2x-1)\bigr)$, qui tranche entre asymptote et branche
+      parabolique, et son signe qui donne la position — deux informations
+      qu'aucun des distracteurs A et C ne fournit.
+
+  - id: DERIVFCT-41
+    rung: "R4b"
+    difficulty_level: 3
+    habilete: application_directe
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [rolle, taf, inegalite-accroissements-finis]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+    stem: >
+      Soit $f$ une fonction dérivable sur un intervalle $I$, telle que
+      $|f'(x)| \leq k$ pour tout $x$ de $I$ (avec $k \geq 0$). Que peut-on
+      en déduire, par l'inégalité des accroissements finis, pour tous
+      $a,b$ de $I$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$|f(b)-f(a)| \\leq k$"
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: >
+          Il manque le facteur $|b-a|$ : la borne doit tenir compte de
+          l'écart entre $a$ et $b$, pas rester une constante fixe. Prends
+          $a=b$ : le membre de gauche vaut alors $0$, ce qu'une borne
+          constante $k>0$ ne reflète pas.
+      - id: B
+        text: "$f(b)-f(a) = k(b-a)$"
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: >
+          L'inégalité des accroissements finis ne donne pas une égalité
+          avec la constante $k$ elle-même : le TAF donne une égalité, mais
+          avec $f'(c)$ pour un certain $c$ dont la valeur reste inconnue,
+          pas avec $k$, qui n'est qu'une borne sur $|f'|$.
+      - id: C
+        text: "$|f(b)-f(a)| \\leq k\\,|b-a|$"
+        correct: true
+      - id: D
+        text: "$|f(b)-f(a)| \\geq k\\,|b-a|$"
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: >
+          Le sens de l'inégalité est inversé : une borne sur la vitesse de
+          variation ($|f'|\leq k$) majore la variation totale, elle ne la
+          minore pas — c'est $\leq$, pas $\geq$.
+    correct_feedback: >
+      Exact : par le TAF, $f(b)-f(a)=f'(c)(b-a)$ pour un certain $c$ entre
+      $a$ et $b$ ; comme $|f'(c)|\leq k$, on obtient
+      $|f(b)-f(a)|=|f'(c)|\,|b-a|\leq k\,|b-a|$.
+    solution: |
+      D'après le théorème des accroissements finis, il existe $c$ entre
+      $a$ et $b$ tel que $f(b)-f(a)=f'(c)(b-a)$. En passant aux valeurs
+      absolues :
+      $$|f(b)-f(a)| = |f'(c)|\,|b-a|$$
+      Comme $|f'(c)|\leq k$ (l'hypothèse vaut pour tout $x$ de $I$, donc en
+      particulier pour ce $c$) et $|b-a|\geq0$, multiplier l'inégalité par
+      $|b-a|$ ne change pas son sens :
+      $$|f(b)-f(a)| \leq k\,|b-a|$$
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-27, après DERIVFCT-30 à DERIVFCT-39 (dette d'examen,
 # vague B1 — docs/audits/dette-examen/maths.md, puis correctifs de la revue
@@ -2511,17 +2664,17 @@ coverage_summary:
     mc.math.maths_derivabilite_etude_fonctions.regle-composee-mal-appliquee:                    { count: 3, items: [DERIVFCT-4, DERIVFCT-13, DERIVFCT-14] }
     mc.math.maths_derivabilite_etude_fonctions.regle-puissance-terme-omis:                      { count: 4, items: [DERIVFCT-1, DERIVFCT-12, DERIVFCT-22, DERIVFCT-28] }
     mc.math.maths_derivabilite_etude_fonctions.derivee-nulle-suffit-extremum:                   { count: 3, items: [DERIVFCT-5, DERIVFCT-24, DERIVFCT-27] }
-    mc.math.maths_derivabilite_etude_fonctions.trinome-signe-mal-lu:                            { count: 4, items: [DERIVFCT-15, DERIVFCT-19, DERIVFCT-24, DERIVFCT-33] }
+    mc.math.maths_derivabilite_etude_fonctions.trinome-signe-mal-lu:                            { count: 5, items: [DERIVFCT-15, DERIVFCT-19, DERIVFCT-24, DERIVFCT-33, DERIVFCT-40] }
     mc.math.maths_derivabilite_etude_fonctions.criteres-inflexion-extremum-confondus:           { count: 4, items: [DERIVFCT-6, DERIVFCT-17, DERIVFCT-18, DERIVFCT-29] }
     mc.math.maths_derivabilite_etude_fonctions.inflexion-ignore-domaine:                        { count: 3, items: [DERIVFCT-18, DERIVFCT-25, DERIVFCT-29] }
     mc.math.maths_derivabilite_etude_fonctions.domaine-fraction-mal-identifie:                  { count: 4, items: [DERIVFCT-21, DERIVFCT-25, DERIVFCT-26, DERIVFCT-27] }
     mc.math.maths_derivabilite_etude_fonctions.continuite-implique-derivabilite:                { count: 5, items: [DERIVFCT-2, DERIVFCT-25, DERIVFCT-26, DERIVFCT-27, DERIVFCT-38] }
-    mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees:            { count: 3, items: [DERIVFCT-23, DERIVFCT-24, DERIVFCT-29] }
-    mc.math.maths_derivabilite_etude_fonctions.asymptote-oblique-conclue-sans-second-calcul:    { count: 3, items: [DERIVFCT-30, DERIVFCT-32, DERIVFCT-33] }
+    mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees:            { count: 4, items: [DERIVFCT-23, DERIVFCT-24, DERIVFCT-29, DERIVFCT-41] }
+    mc.math.maths_derivabilite_etude_fonctions.asymptote-oblique-conclue-sans-second-calcul:    { count: 4, items: [DERIVFCT-30, DERIVFCT-32, DERIVFCT-33, DERIVFCT-40] }
     mc.math.maths_derivabilite_etude_fonctions.branche-immediate-oy-ox-mal-conclue:             { count: 3, items: [DERIVFCT-30, DERIVFCT-31, DERIVFCT-39] }
-    mc.math.maths_derivabilite_etude_fonctions.limite-f-sur-x-confondue-avec-limite-de-f:       { count: 3, items: [DERIVFCT-31, DERIVFCT-32, DERIVFCT-39] }
+    mc.math.maths_derivabilite_etude_fonctions.limite-f-sur-x-confondue-avec-limite-de-f:       { count: 4, items: [DERIVFCT-31, DERIVFCT-32, DERIVFCT-39, DERIVFCT-40] }
     mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul:            { count: 3, items: [DERIVFCT-34, DERIVFCT-36, DERIVFCT-37] }
-  total_items: 39
+  total_items: 41
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2530,20 +2683,19 @@ coverage_summary:
     R2: 5
     R3: 3
     R4: 4
-    R5: 10
+    R4b: 1
+    R5: 11
     R5b: 4
     R6: 5
   honest_state: >-
     Dix-sept misconceptions déclarées, toutes couvertes, aucune sous le
-    plancher. Dix y siègent EXACTEMENT (3 items) — dont les trois nées
-    cette vague du fractionnement de `limite-finie-de-f-sur-x-suffit-asymptote`
-    (`asymptote-oblique-conclue-sans-second-calcul`,
-    `branche-immediate-oy-ox-mal-conclue`,
-    `limite-f-sur-x-confondue-avec-limite-de-f`) et
+    plancher. Huit y siègent EXACTEMENT (3 items) — dont
+    `branche-immediate-oy-ox-mal-conclue` et
     `intervalle-image-recopie-sans-calcul` : la marge y est nulle, et tout
-    retrait d'item les casse. `trinome-signe-mal-lu` reste au-dessus du
-    plancher (4, DERIVFCT-33 y contribue toujours par ses distracteurs A/B,
-    inchangés par cette révision).
+    retrait d'item les casse. `asymptote-oblique-conclue-sans-second-calcul`
+    et `limite-f-sur-x-confondue-avec-limite-de-f` gagnent une marge de un
+    avec DERIVFCT-40 (4 chacun). `trinome-signe-mal-lu` monte à 5,
+    `rolle-taf-hypotheses-mal-identifiees` à 4 (DERIVFCT-41).
 
     R6 n'est PLUS le barreau de synthèse : `lesson.md` ne porte AUCUN
     `## R6` — seul un commentaire de validation y évoque un « R6
@@ -2560,8 +2712,28 @@ coverage_summary:
     `## R6` dans `lesson.md` qui les justifie — reste un travail non fait,
     à faire nommément, pas à présenter comme déjà résolu.
 
-    DERIVFCT-39 est le seul item neuf de cette révision (au-delà des
-    retags) : requis pour porter chacun des trois ids issus du
-    fractionnement au plancher de 3 sans jamais regrouper deux sous-erreurs
-    dans un même distracteur des items 30-33 déjà écrits — fonction fraîche
-    ($4\sqrt{x}$), pas une restatement mémorisable de DERIVFCT-30/31/32.
+    DERIVFCT-39 était le seul item neuf de la précédente révision.
+
+    Second passage, même jour (2026-09-27, vague B1) : DERIVFCT-40 et
+    DERIVFCT-41 payent les deux derniers trous de
+    docs/audits/dette-examen/maths.md (§ derivabilite-etude-fonctions).
+    DERIVFCT-40 paye le GAP-B « asymptote oblique + position relative,
+    worked never tested » : fonction propre
+    ($f(x)=2x-1+3/(x+2)$, distincte de $x+1/(x-1)$ du cours, de
+    $3x-\sqrt x$ de DERIVFCT-32 et de $x+3+5/(x-2)$ de DERIVFCT-33), rung
+    R5 — la prose réelle. Il teste une face DIFFÉRENTE de DERIVFCT-33 :
+    celui-ci admet l'asymptote et ne demande que la position ; DERIVFCT-40
+    demande quelle AFFIRMATION prouve à la fois l'existence de l'asymptote
+    et sa position, avec pour distracteurs les deux sur-conclusions déjà
+    nommées par l'inventaire et un signe de position inversé
+    (`trinome-signe-mal-lu`, déjà porté par DERIVFCT-33 pour ce même type
+    d'erreur). DERIVFCT-41 paye le GAP-B (inverse) « Rolle/TAF testé mais
+    pas enseigné » : `lesson.md` porte désormais un sous-rung R4b (livré
+    par le content-author le même jour, lesson.md:320-364), et DERIVFCT-41
+    teste l'IAF elle-même (la FORME de l'inégalité $|f(b)-f(a)|\le
+    k|b-a|$), une face distincte de DERIVFCT-23 (Rolle appliqué à $f'$ pour
+    obtenir $f''(c)=0$) et de DERIVFCT-29 (Rolle en distracteur pour
+    l'inflexion) — aucun des deux n'avait jamais testé la forme de l'IAF.
+    `ramp_coverage.R4b` : 0→1, un sous-rung tout neuf ; la misconception
+    qu'il sert (`rolle-taf-hypotheses-mal-identifiees`) reste, elle,
+    au-dessus du plancher (4, répartie sur R4b et R6).

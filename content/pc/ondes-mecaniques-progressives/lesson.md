@@ -250,11 +250,35 @@ Dans l'air, dans les conditions ordinaires, la célérité du son vaut environ $
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* on applique la méthode du chapitre 4 (mesurer un retard entre deux points séparés d'une distance connue, en déduire $v = d/\tau$), transposée ici du fil d'une corde à l'air ambiant.
 
-On place deux microphones $M_1$ et $M_2$, alignés avec une source sonore, séparés d'une distance $d = 1{,}02\ \text{m}$. Chaque microphone est relié à une voie d'un oscilloscope à deux voies. La source émet un bref signal (un clic). Sur l'écran, les deux signaux apparaissent décalés d'une durée $\Delta t = 3{,}0\ \text{ms}$ : c'est le retard entre les deux microphones, exactement comme le retard $\tau$ entre $S$ et $M$ au chapitre 4.
+On place deux microphones $M_1$ et $M_2$, alignés avec une source sonore, séparés d'une distance $d = 1{,}02\ \text{m}$. Chaque microphone est relié à une voie d'un oscilloscope à deux voies, réglé sur une sensibilité horizontale (le « balayage ») de $0{,}5\ \text{ms/div}$. La source émet un bref signal (un clic). Sur l'écran apparaissent deux salves — deux courtes bouffées de signal, une par voie —, et celle de $M_2$ est décalée vers la droite par rapport à celle de $M_1$ : $M_2$, plus loin de la source, reçoit le clic plus tard.
+
+On compte ce décalage entre deux points **homologues** des deux salves — par exemple le début de chacune, ou deux crêtes qui se correspondent — jamais entre deux points quelconques. Ici, ce décalage vaut $6$ divisions.
+
+[[figure:oscillogramme-deux-micros]]
+
+$$\Delta t = 6\ \text{div} \times 0{,}5\ \text{ms/div} = 3{,}0\ \text{ms}$$
 
 $$v = \frac{d}{\Delta t} = \frac{1{,}02}{3{,}0\times10^{-3}} = 340\ \text{m/s}$$
 
 Cette valeur, obtenue par la mesure, est cohérente avec la célérité usuelle du son dans l'air.
+
+Deux pièges guettent cette lecture. Le premier : compter la **largeur d'une salve** — la durée du clic lui-même — au lieu de l'écart **entre** les deux salves ; ce sont deux longueurs différentes sur l'écran, et seule la seconde est un retard. Le second : compter du **début** d'une salve jusqu'à la **fin** de l'autre, ce qui ajoute la largeur d'une salve au décalage réel et surestime $\Delta t$. La parade est la même dans les deux cas : on compare toujours deux points homologues, deux débuts ou deux crêtes qui se correspondent, jamais un début et une fin.
+
+Cette même lecture — décalage en divisions, multiplié par la sensibilité — sert pour n'importe quel retard ou n'importe quelle période lus sur un oscilloscope ; la sensibilité verticale, en $\text{V/div}$, fonctionne de la même façon pour lire une amplitude.
+
+### Une onde qui fait l'aller-retour : l'écho
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* jusqu'ici, l'onde partait d'une source et arrivait telle quelle jusqu'à un récepteur distinct. Un sondeur (ou une échographie) fonctionne autrement : il émet une salve, puis récupère l'écho de sa propre salve — l'onde a donc parcouru l'aller ET le retour avant qu'on la détecte à nouveau.
+
+Un bateau de pêche utilise un sondeur à ultrasons pour connaître la profondeur de l'eau sous sa coque. À l'instant $t=0$, le sondeur émet, à la verticale, une brève salve d'ultrasons ; elle descend jusqu'au fond marin, s'y réfléchit, et revient vers le sondeur, qui la détecte à l'instant $\Delta t = 80\ \text{ms}$. La célérité des ultrasons dans l'eau de mer vaut $v = 1500\ \text{m/s}$. Quelle est la profondeur $L$ ?
+
+Le piège immédiat serait d'écrire $L = v\,\Delta t$, comme pour un trajet simple au chapitre 4. Mais ici $\Delta t$ n'est pas la durée d'**un** trajet : c'est la durée d'un aller-retour, et la salve a parcouru deux fois la distance $L$ — une fois à la descente, une fois à la remontée.
+
+$$v\,\Delta t = 2L \quad\Longrightarrow\quad L = \frac{v\,\Delta t}{2}$$
+
+$$L = \frac{1500 \times 80\times10^{-3}}{2} = \frac{120}{2} = 60\ \text{m}$$
+
+Le fond est à $60\ \text{m}$ sous la coque. Oublier le facteur $2$ — écrire $L = v\,\Delta t$ — aurait donné $120\ \text{m}$, le double de la vraie profondeur.
 
 ---
 

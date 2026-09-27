@@ -206,6 +206,41 @@ misconceptions:
       transformées, que la mesure (pH, conductivité…) donne à chaque fois
       les moyens de calculer, et qu'aucune étiquette qualitative n'en
       dispense.
+  # ── AB-BASE-9, ajouté le 2026-09-27 (audit-banque-pc2.md, notion
+  #    reactions-acido-basiques, finding A2 : « pH d'un mélange équimolaire
+  #    de deux couples = (pK_A1+pK_A2)/2 »). Aucun id existant ne nomme
+  #    honnêtement cette erreur : AB-BASE-7 (constante K mal construite) et
+  #    AB-BASE-8 (tau mal prédit) portent tous deux sur le chapitre 7 mais
+  #    visent une AUTRE grandeur (K, tau) que celle en jeu ici (le pH
+  #    lui-même) ; leur appliquer cet id aurait été une étiquette
+  #    malhonnête au sens de la règle « le label doit nommer l'erreur ».
+  #    Porté par exactement 3 items (RAB-48, RAB-49, RAB-50), sur trois
+  #    gestes distincts (calcul direct, inversion pour l'autre pKA, et
+  #    condition de validité de la formule) — le plancher tenu dès l'ajout.
+  - id: AB-BASE-9
+    chapter: R7
+    label: "pH d'un mélange équimolaire de deux couples mal dérivé"
+    description: >-
+      Face à un mélange en quantités initiales égales de $A_1H$ et de
+      $A_2^-$ (deux couples différents), ne combine pas les deux $pK_A$
+      correctement pour en tirer le pH à l'équilibre : ne retient qu'un
+      seul des deux $pK_A$, confond leur SOMME (qui donne le pH) avec leur
+      DIFFÉRENCE (qui donne $\log K$), oublie de diviser par $2$, ou étend
+      la formule $\text{pH}=(pK_{A1}+pK_{A2})/2$ à un mélange qui ne
+      vérifie pas la condition des quantités initiales égales — alors que
+      cette formule vient de la MULTIPLICATION des deux expressions de
+      $[H_3O^+]_{eq}$ tirées de $K_{A1}$ et $K_{A2}$ (une MOYENNE des deux
+      $pK_A$), valable seulement quand les deux quantités apportées sont
+      égales.
+    contradicts_principle: >-
+      Quand des quantités initiales égales de $A_1H$ et de $A_2^-$ sont
+      mélangées, l'avancement $x$ est le même pour les deux couples (même
+      stœchiométrie 1:1), donc $[A_1H]_{eq}\,[A_2H]_{eq} =
+      [A_1^-]_{eq}\,[A_2^-]_{eq}$ ; en écrivant $[H_3O^+]_{eq}$ une fois
+      via $K_{A1}$ et une fois via $K_{A2}$ puis en multipliant les deux
+      égalités, $[H_3O^+]_{eq}^2 = K_{A1}K_{A2}$, d'où $\text{pH} =
+      (pK_{A1}+pK_{A2})/2$ — une moyenne des deux $pK_A$, qui exige
+      l'égalité des deux quantités initiales pour être valable.
 
 items:
 
@@ -2933,6 +2968,237 @@ items:
       est une base faible, tout comme un acide faible réagit peu avec l'eau
       (chapitre 6).
 
+  # ── RAB-48/49/50, ajoutés le 2026-09-27 (audit-banque-pc2.md, finding A2 :
+  #    « pH d'un mélange équimolaire de deux couples = (pK_A1+pK_A2)/2 »,
+  #    exemple travaillé 2 du chapitre 7, jamais poussé jusqu'au pH ; bank
+  #    bk-2023-n-x1 q3, couples 4,79/3,75, non repris ici). Trois gestes
+  #    distincts sur le même modèle AB-BASE-9 : calcul direct (RAB-48),
+  #    inversion pour retrouver l'autre pKA (RAB-49), condition de validité
+  #    de la formule — quantités initiales inégales (RAB-50). Couples
+  #    propres à chaque item, distincts du chapitre 7 (4,8/3,8) et de la
+  #    banque (4,79/3,75).
+  - id: RAB-48
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_reactions_acido_basiques
+    habilete: utilisation
+    tags: ["pH-melange-deux-couples"]
+    stem: >
+      On mélange, dans un même volume, des quantités initiales ÉGALES
+      $n_0$ d'un acide $A_1H$ (couple $A_1H/A_1^-$, $pK_{A1} = 5{,}0$) et
+      d'une base $A_2^-$ (couple $A_2H/A_2^-$, $pK_{A2} = 9{,}0$), sans
+      aucune trace initiale de $A_1^-$ ni de $A_2H$. Quel est le pH du
+      mélange à l'équilibre ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\text{pH} = 5{,}0$
+        correct: false
+        misconception: AB-BASE-9
+        feedback: >
+          Modèle détecté : ne retient que le couple 1, comme si $A_2^-$
+          n'intervenait pas dans le mélange. Les deux couples fixent
+          pourtant CONJOINTEMENT $[H_3O^+]_{eq}$ : chacun donne une
+          expression de $[H_3O^+]_{eq}$ (via $K_{A1}$ et $K_{A2}$), et
+          c'est en MULTIPLIANT ces deux expressions — pas en n'en gardant
+          qu'une — que $[H_3O^+]_{eq}^2 = K_{A1}K_{A2}$ apparaît.
+      - id: B
+        text: >-
+          $\text{pH} = 4{,}0$
+        correct: false
+        misconception: AB-BASE-9
+        feedback: >
+          Modèle détecté : cette différence, $pK_{A2}-pK_{A1}$, est la
+          grandeur qui donne $\log K$ (la constante de la réaction entre
+          les deux couples, chapitre 7) — pas le pH du mélange. Les deux
+          quantités se construisent à partir des mêmes $pK_A$ mais
+          répondent à deux questions différentes : $K$ compare la force
+          des deux couples, le pH décrit l'acidité du mélange.
+      - id: C
+        text: >-
+          $\text{pH} = 14{,}0$
+        correct: false
+        misconception: AB-BASE-9
+        feedback: >
+          Modèle détecté : la somme des deux $pK_A$ est la bonne opération
+          de départ, mais il manque la division par $2$. $\text{pH} =
+          (pK_{A1}+pK_{A2})/2$ est une MOYENNE des deux $pK_A$, pas leur
+          somme brute — exactement comme $[H_3O^+]_{eq}^2 =
+          K_{A1}K_{A2}$ exige une racine CARRÉE, donc de diviser par $2$
+          après le passage au log, pas de s'arrêter à la somme des $pK_A$.
+      - id: D
+        text: >-
+          $\text{pH} = 7{,}0$
+        correct: true
+    correct_feedback: >
+      En posant $[H_3O^+]_{eq}=K_{A1}[A_1H]_{eq}/[A_1^-]_{eq}$ et
+      $[H_3O^+]_{eq}=K_{A2}[A_2H]_{eq}/[A_2^-]_{eq}$, puis en multipliant
+      (les quantités initiales égales font que
+      $[A_1H]_{eq}[A_2H]_{eq} = [A_1^-]_{eq}[A_2^-]_{eq}$),
+      $[H_3O^+]_{eq}^2=K_{A1}K_{A2}$, d'où
+      $\text{pH}=(pK_{A1}+pK_{A2})/2=7{,}0$.
+    solution: |
+      Quantités initiales égales $n_0$ de $A_1H$ et de $A_2^-$, même
+      volume, même avancement $x$ à l'équilibre pour les deux couples
+      (stœchiométrie 1:1) : $[A_1H]_{eq}=[A_2^-]_{eq}=(n_0-x)/V$ et
+      $[A_1^-]_{eq}=[A_2H]_{eq}=x/V$.
+
+      Chaque $K_A$ isole une expression de $[H_3O^+]_{eq}$, une par
+      couple :
+
+      $$[H_3O^+]_{eq} = K_{A1}\frac{[A_1H]_{eq}}{[A_1^-]_{eq}} \qquad [H_3O^+]_{eq} = K_{A2}\frac{[A_2H]_{eq}}{[A_2^-]_{eq}}$$
+
+      En multipliant ces deux égalités, le produit croisé des
+      concentrations se simplifie exactement à $1$ (quantités initiales
+      égales) :
+
+      $$[H_3O^+]_{eq}^2 = K_{A1}K_{A2}\times\frac{[A_1H]_{eq}\,[A_2H]_{eq}}{[A_1^-]_{eq}\,[A_2^-]_{eq}} = K_{A1}K_{A2}$$
+
+      $$\text{pH} = \frac{pK_{A1}+pK_{A2}}{2} = \frac{5{,}0+9{,}0}{2} = 7{,}0$$
+
+  - id: RAB-49
+    rung: "R7"
+    difficulty_level: 5
+    skill_code: pc_reactions_acido_basiques
+    habilete: résolution
+    tags: ["pH-melange-deux-couples", "relation-inversee"]
+    stem: >
+      Un mélange en quantités initiales égales d'un acide $A_3H$ (couple
+      $A_3H/A_3^-$, $pK_{A3} = 3{,}2$) et de la base d'un second couple
+      $A_4^-$ a un pH à l'équilibre de $6{,}0$. Quel est le $pK_{A4}$ du
+      second couple ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $pK_{A4} = 2{,}8$
+        correct: false
+        misconception: AB-BASE-9
+        feedback: >
+          Modèle détecté : isole $pK_{A4}$ à partir de
+          $\text{pH}=pK_{A3}+pK_{A4}$ (la somme sans le facteur $2$), pas
+          de $\text{pH}=(pK_{A3}+pK_{A4})/2$. Il faut d'abord DOUBLER le
+          pH avant de soustraire $pK_{A3}$, exactement comme il fallait
+          diviser la somme par $2$ dans le sens direct.
+      - id: B
+        text: >-
+          $pK_{A4} = 8{,}8$
+        correct: true
+      - id: C
+        text: >-
+          $pK_{A4} = 9{,}2$
+        correct: false
+        misconception: AB-BASE-9
+        feedback: >
+          Modèle détecté : repart de $\text{pH}=pK_{A4}-pK_{A3}$ (la
+          différence des deux $pK_A$, qui donne $\log K$, pas le pH) au
+          lieu de $\text{pH}=(pK_{A3}+pK_{A4})/2$. Cette différence répond
+          à une autre question (la force relative des deux couples), pas
+          à celle posée ici.
+      - id: D
+        text: >-
+          $pK_{A4} = 15{,}2$
+        correct: false
+        misconception: AB-BASE-9
+        feedback: >
+          Modèle détecté : ajoute $2\,\text{pH}$ et $pK_{A3}$ au lieu de
+          les SOUSTRAIRE lors de l'isolement de $pK_{A4}$ dans
+          $\text{pH}=(pK_{A3}+pK_{A4})/2$ — un signe inversé au moment de
+          réarranger l'équation.
+    correct_feedback: >
+      $\text{pH}=(pK_{A3}+pK_{A4})/2 \implies pK_{A4}=2\,\text{pH}-pK_{A3}
+      = 2\times6{,}0-3{,}2 = 8{,}8$.
+    solution: |
+      $$\text{pH} = \frac{pK_{A3}+pK_{A4}}{2} \implies pK_{A3}+pK_{A4} = 2\,\text{pH} \implies pK_{A4} = 2\,\text{pH} - pK_{A3}$$
+
+      $$pK_{A4} = 2\times6{,}0 - 3{,}2 = 12{,}0-3{,}2 = 8{,}8$$
+
+  - id: RAB-50
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_reactions_acido_basiques
+    habilete: résolution
+    tags: ["pH-melange-deux-couples", "condition-quantites-egales"]
+    stem: >
+      La relation $\text{pH}=(pK_{A1}+pK_{A2})/2$ a été établie pour un
+      mélange en quantités initiales ÉGALES de $A_1H$ et de $A_2^-$. Un
+      binôme mélange maintenant $n(A_1H) = 2{,}0\times10^{-3}$ mol
+      ($pK_{A1}=4{,}5$) avec $n(A_2^-) = 3{,}0\times10^{-3}$ mol
+      ($pK_{A2}=8{,}5$), dans un même volume. Peut-on encore affirmer
+      $\text{pH}=(pK_{A1}+pK_{A2})/2=6{,}5$ pour ce nouveau mélange ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Oui, $\text{pH}=6{,}5$ : la formule ne dépend que des deux
+          $pK_A$, pas des quantités mises en jeu.
+        correct: false
+        misconception: AB-BASE-9
+        feedback: >
+          Modèle détecté : étend la formule $\text{pH}=(pK_{A1}+pK_{A2})/2$
+          au-delà de sa condition de validité. Sa dérivation utilise
+          explicitement l'égalité des deux quantités initiales pour
+          simplifier le produit croisé des concentrations à $1$ ; avec
+          $2{,}0\times10^{-3}$ mol contre $3{,}0\times10^{-3}$ mol, ce
+          produit ne se simplifie plus ainsi, et la formule ne s'applique
+          plus directement.
+      - id: B
+        text: >-
+          Oui, mais avec un pH différent : il suffit de remplacer
+          $pK_{A1}$ et $pK_{A2}$ par les concentrations initiales dans la
+          même formule.
+        correct: false
+        misconception: AB-BASE-9
+        feedback: >
+          Modèle détecté : la formule $\text{pH}=(pK_{A1}+pK_{A2})/2$ ne
+          contient aucune concentration à remplacer — les $pK_A$ y sont
+          des propriétés des couples, indépendantes des quantités mises en
+          jeu. Ce sont les quantités initiales, pas les $pK_A$, qui
+          déterminent si la formule s'applique, via le tableau
+          d'avancement.
+      - id: C
+        text: >-
+          Non : les quantités initiales ne sont plus égales, il faut reprendre le tableau d'avancement.
+        correct: true
+      - id: D
+        text: >-
+          Non, mais le pH s'obtiendrait par une moyenne des deux $pK_A$
+          pondérée par les quantités initiales, soit
+          $\text{pH}\approx6{,}9$.
+        correct: false
+        misconception: AB-BASE-9
+        feedback: >
+          Modèle détecté : invente une moyenne pondérée sans justification
+          tirée des relations du chapitre. $\text{pH}=(pK_{A1}+pK_{A2})/2$
+          vient d'une MULTIPLICATION de deux égalités qui ne se simplifie
+          plus aussi simplement dès que les quantités initiales diffèrent ;
+          il n'existe pas de raccourci équivalent par pondération
+          linéaire, seul un nouveau tableau d'avancement donne le pH
+          exact.
+    correct_feedback: >
+      Les quantités initiales ($2{,}0\times10^{-3}$ mol contre
+      $3{,}0\times10^{-3}$ mol) ne sont pas égales : la simplification qui
+      donne $\text{pH}=(pK_{A1}+pK_{A2})/2$ (produit croisé des
+      concentrations valant $1$) ne tient plus. Il faut repartir d'un
+      tableau d'avancement avec des quantités initiales distinctes et
+      résoudre pour $[H_3O^+]_{eq}$.
+    solution: |
+      La dérivation de $\text{pH}=(pK_{A1}+pK_{A2})/2$ (le chapitre 8) repose
+      entièrement sur l'égalité des deux quantités initiales : c'est elle
+      qui rend $[A_1H]_{eq}\,[A_2H]_{eq} = [A_1^-]_{eq}\,[A_2^-]_{eq}$,
+      donc qui simplifie le produit des deux expressions de
+      $[H_3O^+]_{eq}$ à $K_{A1}K_{A2}$ exactement.
+
+      Ici, $n(A_1H)=2{,}0\times10^{-3}\ \text{mol} \neq n(A_2^-) =
+      3{,}0\times10^{-3}\ \text{mol}$ : à l'équilibre, les concentrations
+      ne se simplifient plus de la même façon, et
+      $\text{pH}=(pK_{A1}+pK_{A2})/2$ ne donne plus le pH exact. Retrouver
+      le pH exige de reposer un tableau d'avancement avec ces deux
+      quantités initiales distinctes, d'exprimer $K = K_{A1}/K_{A2}$ et de
+      résoudre l'équation du second degré en $x$ qui en résulte — pas de
+      recombiner directement les deux $pK_A$.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05. La version précédente ouvrait sur « l'inventaire de
 # misconceptions ne contient que les 12 ids AB-* » et concluait « plancher
@@ -2990,6 +3256,14 @@ items:
 #     de `tags:` puisqu'elles vivent maintenant dans `habilete:` ; le tag
 #     libre `dual-tag:R4-KA-pKA` de RAB-44 est conservé tel quel (information
 #     non supprimée — c'est un renvoi de chapitre, pas une valeur d'habileté).
+#
+# MIS À JOUR le 2026-09-27 (audit-banque-pc2.md, top 10 « juste sous la
+# coupe » #7 : « pH d'un mélange équimolaire de deux couples »). Trois items
+# ajoutés (RAB-48, RAB-49, RAB-50), un modèle neuf déclaré (AB-BASE-9 : voir
+# le commentaire d'inventaire ci-dessus pour pourquoi AB-BASE-7/8, seuls ids
+# du chapitre 7, ne nommaient pas honnêtement cette erreur-là — leur cible
+# est K ou tau, pas le pH). Plancher tenu dès l'ajout : 3 items, ni plus ni
+# moins. R7 passe de 5 à 8 items.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -3018,7 +3292,8 @@ coverage_summary:
     AB-IND-2:  { count: 3, items: [RAB-37, RAB-38, RAB-39] }
     AB-IND-3:  { count: 3, items: [RAB-37, RAB-38, RAB-39] }
     AB-CHAIN-1: { count: 3, items: [RAB-43, RAB-44, RAB-47] }
-  total_items: 47
+    AB-BASE-9: { count: 3, items: [RAB-48, RAB-49, RAB-50] }
+  total_items: 50
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -3029,7 +3304,7 @@ coverage_summary:
     R4: 3
     R5: 3
     R6: 6
-    R7: 5
+    R7: 8
     R8: 3
     R9: 5
     R10: 3
@@ -3037,8 +3312,9 @@ coverage_summary:
     R12: 3
     note: >-
       Le plancher de barreau (>= 3 items) est tenu partout. R2 en porte 4,
-      R7 en porte 5 (RAB-40, RAB-41, RAB-42), R6 en porte 6 et R9 en porte 5
-      depuis l'ajout du 2026-09-27 (RAB-43 -> RAB-47).
+      R6 en porte 6, R9 en porte 5 depuis l'ajout du 2026-09-27
+      (RAB-43 -> RAB-47), et R7 en porte 8 depuis l'ajout du même jour de
+      RAB-48/49/50 (RAB-40, RAB-41, RAB-42 y siégeaient déjà).
   gated_misconceptions:
     # Les douze ids du cluster titrage, chacun sondé par un checkpoint du
     # sommet R12 — un ÉCHO formatif du banc, jamais un substitut : ces
@@ -3067,7 +3343,7 @@ coverage_summary:
   gated_floor: 1
   gated_floor_met: true
   honest_state: >-
-    Les 21 misconceptions déclarées sont couvertes, aucune sous le plancher.
-    AB-CHAIN-1 (ajout du 2026-09-27) tient le plancher dès sa création : 3
-    items, ni plus ni moins. Aucune divulgation SUMMIT-CONVERSION-RECIPE §6
-    n'est requise.
+    Les 22 misconceptions déclarées sont couvertes, aucune sous le plancher.
+    AB-CHAIN-1 et AB-BASE-9 (les deux ajouts du 2026-09-27) tiennent chacun
+    le plancher dès leur création : 3 items, ni plus ni moins. Aucune
+    divulgation SUMMIT-CONVERSION-RECIPE §6 n'est requise.

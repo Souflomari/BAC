@@ -190,6 +190,33 @@ misconceptions:
       $p \mid b$ (au moins l'un, pas les deux, pas « égal »). Donc si $p \nmid a$,
       alors $p \nmid a^k$ pour tout k.
 
+  # Ajouté le 2026-09-27 (dette d'examen, § arithmetique, GAP-A « Inverse modulo
+  # n, solving a·x ≡ b [n], systems of congruences » — docs/audits/dette-examen/maths.md:33-49).
+  # Aucune des seize familles ci-dessus ne couvre honnêtement les erreurs
+  # propres à CE geste (l'audit le confirme : « No rung reads a Bézout identity
+  # as "u is the inverse of a mod n" ») — famille neuve, portée par les trois
+  # items AR-38/39/40 (plancher atteint exactement, comme demandé pour un id
+  # neuf : trois contextes distincts, pas trois copies — solve direct, solve
+  # avec une variation fraîche, puis combinaison de deux congruences).
+  - id: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+    label: "Mal résoudre une congruence linéaire a·x ≡ b [n] ou un système de congruences"
+    description: >-
+      Pour résoudre $ax\equiv b\pmod n$ à partir d'une relation de Bézout
+      $au+nv=1$, l'élève ne multiplie pas par le bon inverse : il traite
+      l'équation comme dans $\mathbb{Z}$ (produit ou quotient direct de $b$ par
+      $a$), ou prend $v$ (l'inverse de $n$ modulo $a$) pour l'inverse de $a$
+      modulo $n$. Face à un système de deux congruences à modules premiers
+      entre eux, il garde les deux classes séparées au lieu de les fondre en
+      une seule, ou attache une valeur par ailleurs correcte à un modulus
+      erroné (souvent $a$, ou $n+m$ au lieu de $n\times m$).
+    contradicts_principle: >-
+      Lire $au+nv=1$ modulo $n$ donne $au\equiv1\pmod n$ : $u$, et lui seul, est
+      l'inverse de $a$ modulo $n$ ; résoudre $ax\equiv b\pmod n$ donne
+      $x\equiv ub\pmod n$. Deux congruences $x\equiv r\pmod n$ et $x\equiv s\pmod m$,
+      à modules premiers entre eux, se combinent par Gauss en UNE SEULE classe
+      modulo $n\times m$ — jamais modulo $n+m$, jamais comme deux classes
+      distinctes.
+
 items:
   - id: AR-1
     rung: "R1"
@@ -2355,6 +2382,217 @@ items:
       $$6\times7x \equiv 6 \pmod{41} \quad\Longrightarrow\quad x \equiv 6
       \pmod{41}$$
 
+  # ── Dette d'examen, § arithmetique (2026-09-27) — GAP-A « Inverse modulo n,
+  # solving a·x ≡ b [n], systems of congruences » (docs/audits/dette-examen/
+  # maths.md:33-49). Aucun item n'existait pour ce geste ; aucune des seize
+  # familles déclarées ne nomme honnêtement ses erreurs propres (l'audit le dit
+  # lui-même : aucune rung ne lit une identité de Bézout comme « u est
+  # l'inverse de a modulo n »), d'où la famille neuve
+  # `congruence-lineaire-mal-resolue` déclarée plus haut dans l'inventaire.
+  # Trois items, nombres propres à ce lot (ni 2969, 43, 47, 13 du banc, ni
+  # 7/26 de l'exemple de l'audit, ni aucun nombre déjà utilisé ailleurs dans ce
+  # fichier pour Bézout/Gauss) : AR-38 (a=5, n=18, application directe),
+  # AR-39 (a=7, n=30, variation fraîche — mêmes gestes, autre couple), AR-40
+  # (combinaison de deux congruences à modules premiers entre eux, 18 et 7,
+  # via Gauss — le second sous-geste du même GAP-A, « systems of
+  # congruences »). Plancher de 3 items atteint exactement, sur trois contextes
+  # distincts plutôt que trois copies, comme demandé pour tout id neuf.
+  - id: AR-38
+    rung: "R5"
+    habilete: application_directe
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [bezout, congruences, inverse]
+    primary_misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+    stem: >
+      On sait que $5 \times 11 - 18 \times 3 = 1$. Quelle est la classe
+      solution de $5x \equiv 7 \pmod{18}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$x \\equiv 15 \\pmod{18}$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+        feedback: >
+          $15$ vient de multiplier $7$ par $-3$, le coefficient de $18$
+          dans la relation ($-3\times7=-21\equiv15\pmod{18}$) — mais $-3$
+          est l'inverse de $18$ modulo $5$, pas celui de $5$ modulo $18$.
+          C'est le coefficient de $5$, soit $11$, qu'il fallait utiliser.
+      - id: B
+        text: "$x \\equiv 5 \\pmod{18}$"
+        correct: true
+      - id: C
+        text: "$x \\equiv 17 \\pmod{18}$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+        feedback: >
+          $17$ vient de $7\times5=35\equiv17\pmod{18}$ : multiplier $b$
+          par $a$ lui-même, comme dans $\mathbb{Z}$. Résoudre une
+          congruence ne se fait pas en multipliant par le coefficient de
+          $x$ — il faut multiplier par SON INVERSE modulo $18$, qui est
+          $11$, pas $5$.
+      - id: D
+        text: "$x \\equiv 5 \\pmod{90}$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+        feedback: >
+          La valeur $5$ est la bonne, mais le modulus ne l'est pas :
+          $90=18\times5$ n'a aucune raison d'apparaître ici. La classe
+          solution d'une congruence modulo $18$ reste une classe modulo
+          $18$, pas modulo $18$ multiplié par autre chose.
+    correct_feedback: >
+      Exact. En lisant $5\times11-18\times3=1$ modulo $18$, il reste
+      $5\times11\equiv1\pmod{18}$ : $11$ est l'inverse de $5$ modulo $18$.
+      En multipliant $5x\equiv7\pmod{18}$ par $11$ : $x\equiv11\times7=77
+      \equiv5\pmod{18}$.
+    solution: |
+      **Lire la relation modulo $18$.** $5\times11-18\times3=1$, et
+      $18\times3\equiv0\pmod{18}$, donc $5\times11\equiv1\pmod{18}$ : $11$
+      est l'inverse de $5$ modulo $18$ (pas $-3$, qui est l'inverse de $18$
+      modulo $5$).
+
+      **Multiplier les deux membres de $5x\equiv7\pmod{18}$ par cet
+      inverse.**
+      $$11\times5x \equiv 11\times7 \pmod{18}$$
+      $$x \equiv 77 \pmod{18}$$
+
+      **Réduire $77$ modulo $18$.** $77 = 18\times4+5$, donc
+      $$x \equiv 5 \pmod{18}$$
+
+      **Vérification directe :** $5\times5=25=18+7\equiv7\pmod{18}$. ✓
+
+  - id: AR-39
+    rung: "R5"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [bezout, congruences, inverse]
+    primary_misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+    stem: >
+      On sait que $7 \times 13 - 30 \times 3 = 1$. Quelle est la classe
+      solution de $7x \equiv 11 \pmod{30}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$x \\equiv 17 \\pmod{30}$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+        feedback: >
+          $17$ vient de $11\times7=77\equiv17\pmod{30}$ : multiplier $b$
+          par $a$, comme une opération de $\mathbb{Z}$. Ce n'est pas ainsi
+          qu'on isole $x$ modulo $30$ : il faut multiplier par l'inverse de
+          $7$ modulo $30$, qui est $13$, pas par $7$ lui-même.
+      - id: B
+        text: "$x \\equiv 27 \\pmod{30}$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+        feedback: >
+          $27$ vient de $-3\times11=-33\equiv27\pmod{30}$ : $-3$ est le
+          coefficient de $30$ dans la relation, l'inverse de $30$ modulo
+          $7$ — pas l'inverse de $7$ modulo $30$, qui est $13$.
+      - id: C
+        text: "$x \\equiv 23 \\pmod{7}$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+        feedback: >
+          La valeur $23$ est la bonne, mais pas son modulus : la
+          congruence de départ est modulo $30$, pas modulo $7$ (le
+          coefficient de $x$). La classe solution garde toujours le
+          modulus de la congruence résolue.
+      - id: D
+        text: "$x \\equiv 23 \\pmod{30}$"
+        correct: true
+    correct_feedback: >
+      Exact. Modulo $30$, $7\times13-30\times3=1$ donne $7\times13\equiv1$ :
+      $13$ est l'inverse de $7$ modulo $30$. En multipliant
+      $7x\equiv11\pmod{30}$ par $13$ : $x\equiv13\times11=143\equiv23
+      \pmod{30}$.
+    solution: |
+      **L'inverse.** $7\times13-30\times3=1$, donc modulo $30$ :
+      $7\times13\equiv1\pmod{30}$. C'est $13$ qui est l'inverse de $7$
+      modulo $30$ — pas $-3$, coefficient de l'autre terme.
+
+      **Multiplier.**
+      $$13\times7x \equiv 13\times11 \pmod{30} \qquad\Longrightarrow\qquad
+      x \equiv 143 \pmod{30}$$
+
+      **Réduire.** $143 = 30\times4+23$, donc
+      $$x \equiv 23 \pmod{30}$$
+
+      **Vérification :** $7\times23=161=30\times5+11\equiv11\pmod{30}$. ✓
+
+  - id: AR-40
+    rung: "R5"
+    habilete: synthese
+    difficulty_level: 5
+    skill_code: maths_arithmetique
+    tags: [bezout, congruences, gauss, systemes_congruences]
+    primary_misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+    stem: >
+      On sait que $x \equiv 5 \pmod{18}$ et $x \equiv 2 \pmod{7}$. Comme $18$
+      et $7$ sont premiers entre eux, quelle est la classe de $x$ modulo
+      $126$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$x \\equiv 59 \\pmod{126}$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+        feedback: >
+          Le modulus $126$ est le bon, mais pas la valeur : $59$ vient
+          d'une inversion manquée pendant la combinaison (le mauvais
+          coefficient de Bézout de $4$ et $7$ utilisé pour isoler le
+          paramètre). Vérifie : $59\equiv5\pmod{18}$ convient, mais
+          $59=56+3\equiv3\pmod7$, pas $2$.
+      - id: B
+        text: "$x \\equiv 5 \\pmod{18}$ et $x \\equiv 2 \\pmod{7}$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+        feedback: >
+          Une classe unique existe : puisque $18$ et $7$ sont premiers
+          entre eux, le théorème de Gauss garantit qu'une seule classe
+          modulo $18\times7=126$ vérifie les deux congruences à la fois —
+          ce n'est pas deux réponses séparées qu'il faut donner, mais une
+          seule, plus fine.
+      - id: C
+        text: "$x \\equiv 23 \\pmod{126}$"
+        correct: true
+      - id: D
+        text: "$x \\equiv 23 \\pmod{25}$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+        feedback: >
+          La valeur $23$ est la bonne, mais $25=18+7$ n'est pas le modulus
+          qui convient : deux congruences à modules premiers entre eux se
+          combinent en une classe modulo leur PRODUIT $18\times7=126$,
+          jamais modulo leur somme.
+    correct_feedback: >
+      Exact. En écrivant $x=5+18k$ et en reportant dans $x\equiv2\pmod7$,
+      on trouve $k\equiv1\pmod7$, d'où $x=5+18=23$ : la classe
+      $x\equiv23\pmod{126}$ vérifie bien les deux congruences de départ.
+    solution: |
+      **Poser le paramètre.** $x\equiv5\pmod{18}$ s'écrit $x=5+18k$, pour
+      un entier $k$.
+
+      **Reporter dans la seconde congruence.** $5+18k\equiv2\pmod7$. Comme
+      $18\equiv4\pmod7$ :
+      $$4k \equiv -3 \equiv 4 \pmod 7$$
+      L'inverse de $4$ modulo $7$ est $2$ (car $4\times2=8\equiv1\pmod7$).
+      En multipliant par $2$ :
+      $$k \equiv 8 \equiv 1 \pmod 7$$
+
+      **Reconstituer $x$.** Avec $k=1$ (le plus petit représentant) :
+      $$x = 5 + 18\times1 = 23$$
+
+      **Pourquoi la classe est modulo $126$, pas modulo $18$ ni modulo $7$
+      séparément.** $18$ et $7$ étant premiers entre eux, le théorème de
+      Gauss assure que la classe combinée est déterminée de façon unique
+      modulo leur produit $18\times7=126$ — jamais modulo leur somme $25$,
+      et jamais comme deux classes distinctes.
+
+      **Vérification :** $23=18+5\equiv5\pmod{18}$, et $23=21+2\equiv2
+      \pmod7$. ✓
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après AR-28 à AR-32. Huit familles sous le plancher,
 # dont `fermat-condition-ou-exposant` sans AUCUN item de banc — elle n'était
@@ -2373,6 +2611,13 @@ items:
 # réduction d'exposant ou choix de forme. `fermat-condition-ou-exposant`
 # monte à 8 (6→8) ; `congruence-puissance-mal-reduite` monte à 5 (4→5, via
 # AR-37 choix D). Aucune famille ne change de statut plancher/exact-3.
+# RÉÉCRIT une quatrième fois le 2026-09-27 (dette d'examen, § arithmetique,
+# GAP-A « Inverse modulo n, solving a·x ≡ b [n], systems of congruences » —
+# docs/audits/dette-examen/maths.md:33-49) : AR-38/39/40 ajoutés à R5, famille
+# neuve `congruence-lineaire-mal-resolue` déclarée à l'inventaire et portée
+# EXACTEMENT au plancher (3 items, trois contextes distincts — solve direct,
+# variation fraîche, combinaison de deux congruences). Dix-sept familles
+# désormais déclarées ; R5 passe de 3 à 6 items sur le ramp.
 # Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
@@ -2398,7 +2643,8 @@ coverage_summary:
     mc.math.maths_arithmetique.solution-mise-a-echelle:           { count: 3, items: [AR-26, AR-30, AR-32] }
     mc.math.maths_arithmetique.diviser-relation-inversee:         { count: 3, items: [AR-11, AR-22, AR-31] }
     mc.math.maths_arithmetique.prime-divise-produit:              { count: 3, items: [AR-2, AR-12, AR-22] }
-  total_items: 37
+    mc.math.maths_arithmetique.congruence-lineaire-mal-resolue:   { count: 3, items: [AR-38, AR-39, AR-40] }
+  total_items: 40
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2407,13 +2653,13 @@ coverage_summary:
     R2: 3
     R3: 3
     R4: 4
-    R5: 3
+    R5: 6
     R6: 4
     R6b: 6
     R7: 4
     R8: 4
   honest_state: >-
-    Les seize misconceptions déclarées sont couvertes, aucune sous le
+    Les dix-sept misconceptions déclarées sont couvertes, aucune sous le
     plancher. Neuf y siègent EXACTEMENT (3 items) — pgcd-vs-ppcm,
     gauss-condition-ignoree, bezout-portee, solution-unique-vs-infinie,
     solution-generale-mal-parametree, primalite-test-incomplet,
@@ -2431,3 +2677,8 @@ coverage_summary:
     contradiction à deux valeurs (AR-36) et l'extraction d'un inverse
     combinée à une congruence donnée (AR-37), pas seulement la réduction
     d'exposant ou le choix de forme (AR-28/33/34/35).
+    Recompté une troisième fois le 2026-09-27 (dette d'examen, § arithmetique,
+    GAP-A) : `congruence-lineaire-mal-resolue` entre à l'inventaire et rejoint
+    d'emblée le lot à marge nulle (count: 3, AR-38/39/40) — dixième famille à
+    ce statut. Aucune autre famille n'est touchée par cette édition ; R5 passe
+    de 3 à 6 items sur le ramp.

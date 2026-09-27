@@ -444,6 +444,38 @@ $$\mathcal{S} = \,]-\infty, 2[$$
 
 Il n'y a ici aucune intersection avec un domaine à effectuer — contrairement à $\ln$ (chapitre précédent, chapitre 7), $\exp$ ne restreint jamais l'ensemble des solutions par une condition de signe : la réponse ci-dessus est finale, telle quelle.
 
+### Exemple travaillé 4 (équation quadratique en $e^x$, par un changement de variable)
+
+Résous dans $\mathbb{R}$ : $e^{2x} - e^{x} - 6 = 0$.
+
+**Ce qu'on cherche et pourquoi ce geste :** l'équation mélange $e^{2x}=(e^x)^2$ et $e^x$ — un trinôme du second degré déguisé sous l'exponentielle. Le geste : poser $t=e^x$, toujours strictement positif (chapitre 2), pour retrouver une équation ordinaire en $t$.
+
+$$t = e^x \quad (t>0), \qquad e^{2x} = t^2$$
+
+$$t^2 - t - 6 = 0$$
+
+Discriminant : $\Delta = (-1)^2 - 4\times1\times(-6) = 1+24=25$, donc $\sqrt{\Delta}=5$. Les racines :
+
+$$t = \frac{1-5}{2} = -2 \qquad \text{ou} \qquad t = \frac{1+5}{2} = 3$$
+
+**Le piège à éviter :** garder les deux racines et écrire $x=\ln(-2)$ à côté de $x=\ln(3)$. La racine $t=-2$ ne correspond à **aucun** $x$ réel : $e^x>0$ pour tout réel $x$ (chapitre 2), donc $e^x$ ne peut jamais valoir $-2$, et $\ln(-2)$ n'existe même pas. Seule la racine positive $t=3$ donne une solution.
+
+$$e^x = 3 \iff x = \ln 3$$
+
+$$\mathcal{S} = \{\ln 3\}$$
+
+**Et l'inéquation associée.** Résous maintenant $e^{2x} - e^{x} - 6 \leq 0$.
+
+**Ce qu'on cherche et pourquoi ce geste :** même changement de variable, mais il faut cette fois lire le signe du trinôme $t^2-t-6$ — négatif ou nul entre ses racines $-2$ et $3$ — et le restreindre à $t>0$, puisque $t=e^x$ ne prend jamais d'autre valeur.
+
+$$t^2-t-6 \leq 0 \iff -2 \leq t \leq 3$$
+
+Combiné à $t>0$ (toujours vrai pour $t=e^x$) :
+
+$$0 < t \leq 3 \iff 0 < e^x \leq 3 \iff x \leq \ln 3$$
+
+$$\mathcal{S} = \,]-\infty, \ln 3]$$
+
 ---
 
 ## R8 — Pour t'entraîner
