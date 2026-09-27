@@ -147,9 +147,11 @@ function valeurBalayage(lieu: M.Lieu, p: number, depart: number): string {
 
 /**
  * Les directions d'un NOM DE SOMMET : d'abord VERS L'EXTÉRIEUR du triangle (du centre de gravité vers
- * le sommet), puis ses voisines, puis les fines. Au téléphone, après l'agrandissement de la vague 2,
- * « C / 1+(4−√3)i » se posait à droite de C, sur la flèche qui part de A (58 px de trait) — alors que
- * tout le bas-gauche était libre ; le placeur prend les directions dans l'ordre donné.
+ * le sommet), puis ses voisines, puis les fines. Le placeur garde la place au plus BAS COÛT : l'ordre
+ * ne départage que deux places de même coût. (Ce n'était pas la cause du défaut qu'on croyait
+ * corriger ici — « C / 1+(4−√3)i » sur la flèche AC au téléphone : le bas-gauche n'était PAS libre,
+ * le filet y passait sous le « 2 » des ordonnées ; la cause était la grille des distances, trop
+ * lâche près du point — voir `DISTANCES_FINES`.)
  */
 function exterieur(p: Record<string, { x: number; y: number; visible: boolean }>, sommet: string, autres: readonly string[]): readonly (readonly [number, number])[] {
   const s = p[`point-${sommet}`], pts = autres.map((n) => p[`point-${n}`]).filter((q) => q?.visible);
@@ -159,6 +161,9 @@ function exterieur(p: Record<string, { x: number; y: number; visible: boolean }>
   const dir = (a: number): [number, number] => { const x = Math.cos(a), y = Math.sin(a), k = Math.max(Math.abs(x), Math.abs(y)); return [x / k, y / k]; };
   return [dir(th), dir(th + 0.4), dir(th - 0.4), dir(th + 0.8), dir(th - 0.8), ...DIRECTIONS_FINES];
 }
+
+/** Les distances des NOMS DE SOMMET : la grille commune, resserrée près du point (voir `disposer`). */
+const DISTANCES_FINES = [0, 2, 4, 6, 8, 12, 18, 25, 32, 50, 75, 105] as const;
 
 const NOM_LIEU: Record<M.Lieu, string> = { mediatrice: "la médiatrice de [AB]", cercle: "le cercle de diamètre [AB]", droite: "la droite (AB)" };
 
@@ -257,9 +262,9 @@ export function PlanComplexeRapportPanel({ scene, className }: { scene: Scene3DD
     const en = (n: string, visible = true) => (p[n] && visible ? p[n] : cache);
     const entrees = [
       { el: refs.angle.current, p: en("arc-milieu", arc !== null && !(balaie && lieuCran !== "cercle")), portee: 50, filet: 14, directions: bissectrice(p, lieu ? "M" : etat.sommet) },
-      { el: refs.A.current, p: en("point-A"), portee: 50, filet: 14, directions: lieu ? DIRECTIONS_FINES : exterieur(p, "A", ["B", "C"]) },
-      { el: refs.B.current, p: en("point-B"), portee: 50, filet: 14, directions: lieu ? DIRECTIONS_FINES : exterieur(p, "B", ["A", "C"]) },
-      { el: refs.C.current, p: en("point-C", !lieu), portee: 50, filet: 14, directions: exterieur(p, "C", ["A", "B"]) },
+      { el: refs.A.current, p: en("point-A"), portee: 50, filet: 14, distances: DISTANCES_FINES, directions: lieu ? DIRECTIONS_FINES : exterieur(p, "A", ["B", "C"]) },
+      { el: refs.B.current, p: en("point-B"), portee: 50, filet: 14, distances: DISTANCES_FINES, directions: lieu ? DIRECTIONS_FINES : exterieur(p, "B", ["A", "C"]) },
+      { el: refs.C.current, p: en("point-C", !lieu), portee: 50, filet: 14, distances: DISTANCES_FINES, directions: exterieur(p, "C", ["A", "B"]) },
       { el: refs.M.current, p: en("point-M", lieu), portee: 50, filet: 14, directions: DIRECTIONS_FINES },
       { el: refs.mediatrice.current, p: en("lieu-mediatrice", !!courbes?.mediatrice), portee: 40, directions: DIRECTIONS_FINES },
       { el: refs.droite.current, p: en("lieu-droite", !!courbes?.droite), portee: 40, directions: DIRECTIONS_FINES },

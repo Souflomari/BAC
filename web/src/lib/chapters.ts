@@ -55,7 +55,7 @@
 import { frenchTypography } from "@/lib/frenchTypography";
 
 const HEADING_LINE_RE = /^##\s+(.+?)\s*$/;
-const RUNG_PREFIX_RE = /^(R\d+)\s*[-—]\s*(.+)$/;
+const RUNG_PREFIX_RE = /^(R\d+[a-z]?)\s*[-—]\s*(.+)$/;
 
 export interface ChapterHeadingInfo {
   /** Full heading title as authored, minus any `R<n> — ` prefix. */

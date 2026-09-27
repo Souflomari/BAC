@@ -76,7 +76,7 @@ function stripRungPrefix(
   const arr = Children.toArray(children);
   const first = arr[0];
   if (typeof first !== "string") return null;
-  const m = first.match(/^(R\d+)\s*[—–-]\s*([\s\S]*)$/);
+  const m = first.match(/^(R\d+[a-z]?)\s*[—–-]\s*([\s\S]*)$/);
   if (!m) return null;
   return { rung: m[1], rest: [m[2], ...arr.slice(1)] };
 }

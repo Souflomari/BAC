@@ -461,7 +461,7 @@ Résoudre $L=f(L)$ **sans avoir d'abord établi que la suite converge**. L'équa
 
 ---
 
-## La contraction : majorer |u_n − α| directement, sans passer par la monotonie
+## R8b — La contraction : majorer |u_n − α| directement, sans passer par la monotonie
 
 ### Le problème que cette méthode résout
 
@@ -520,7 +520,7 @@ Deux erreurs coûtent cher ici, et toutes deux portent sur l'intervalle $I$, pas
 
 ---
 
-## Suites définies implicitement : $f_n(x_n) = 0$
+## R8c — Suites définies implicitement : $f_n(x_n) = 0$
 
 ### Le problème que cette méthode résout
 
@@ -594,7 +594,7 @@ Trois pièges reviennent sans cesse sur ce type de suite :
 
 ---
 
-## Suites homographiques : quand l’auxiliaire est un rapport
+## R8d — Suites homographiques : quand l’auxiliaire est un rapport
 
 ### La deuxième famille, celle qui tombe le plus souvent
 

@@ -153,7 +153,7 @@ for (const m of fs.readdirSync(CONTENU).filter((n) => !n.startsWith(".")).sort()
     const f = path.join(dir, "lesson.md");
     if (!fs.existsSync(f)) continue;
     const md = fs.readFileSync(f, "utf-8");
-    const titres = new Set([...md.matchAll(/^#{1,6}[ \t]*(R(?:\d+|-[a-z]+))\b/gm)].map((x) => x[1]));
+    const titres = new Set([...md.matchAll(/^#{1,6}[ \t]*(R(?:\d+[a-z]?|-[a-z]+))\b/gm)].map((x) => x[1]));
     if (!titres.size) continue;
     const vises = new Set();
     for (const fn of ["items.yaml", "checkpoints.yaml"]) {
@@ -164,13 +164,13 @@ for (const m of fs.readdirSync(CONTENU).filter((n) => !n.startsWith(".")).sort()
       for (const it of y?.items ?? y?.checkpoints ?? []) {
         const r = String(it?.rung ?? "").trim();
         if (r) vises.add(r);
-        if (r && /^R(\d+|-[a-z]+)$/.test(r) && !titres.has(r)) {
+        if (r && /^R(\d+[a-z]?|-[a-z]+)$/.test(r) && !titres.has(r)) {
           barreauxOrphelins.push({ notion: `${m}/${s}`, id: it?.id, rung: r });
         }
       }
     }
     //  Le sens 3, sur le même relevé.
-    for (const t of [...titres].filter((x) => /^R\d+$/.test(x)).sort((a, b) => +a.slice(1) - +b.slice(1))) {
+    for (const t of [...titres].filter((x) => /^R\d+[a-z]?$/.test(x)).sort((a, b) => parseInt(a.slice(1)) - parseInt(b.slice(1)) || a.localeCompare(b))) {
       if (!vises.has(t)) chapitresSansItem.push({ notion: `${m}/${s}`, rung: t });
     }
   }

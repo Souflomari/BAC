@@ -325,7 +325,7 @@ const BATTERY = [
     name: `no authoring lexicon in rendered text (${p})`,
     page: p,
     sel: "body",
-    notText: /TODO|FIXME|SLOT D|AMÉLIORATION|[Àà] [Ss]ourcer|À FAIRE|asset-pending|jamais bloquant|voir note spec|<!--|\[\[|§\d|[Nn]ote de validation|\bR\d+ —/,
+    notText: /TODO|FIXME|SLOT D|AMÉLIORATION|[Àà] [Ss]ourcer|À FAIRE|asset-pending|jamais bloquant|voir note spec|<!--|\[\[|§\d|[Nn]ote de validation|\bR\d+[a-z]? —/,
   })),
   // ── July-2026 F5 — the head pack renders (metadata API output) ──
   { name: "head: favicon link", page: "/", sel: "link[rel='icon']", present: true },
@@ -3897,7 +3897,7 @@ try {
       // code de rédaction.
       const barreaux = [
         ...new Set([
-          ...(texte.match(/\bR\d+\b/g) ?? []),
+          ...(texte.match(/\bR\d+[a-z]?\b/g) ?? []),
           ...(texte.match(/\brungs?\b/gi) ?? []),
         ]),
       ];

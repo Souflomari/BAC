@@ -463,7 +463,7 @@ function chapterizeSegments(segments: Segment[]): Chapter[] {
         // Label the just-opened chapter with its rung, when the heading is
         // rung-shaped (`## R3 — …`). Non-rung headings leave rung undefined —
         // their inline items (if any) fall through to the orphan safety-net.
-        const rungMatch = line.match(/^##\s+(R\d+)\b/);
+        const rungMatch = line.match(/^##\s+(R\d+[a-z]?)\b/);
         if (rungMatch) {
           chapters[chapters.length - 1].rung = rungMatch[1];
         }

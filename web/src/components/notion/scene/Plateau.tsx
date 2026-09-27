@@ -262,6 +262,13 @@ export function disposer(
     surAncre?: boolean;
     directions?: readonly (readonly [number, number])[];
     /**
+     * Les distances essayées (px), si la grille commune est trop lâche. R6, au téléphone, étape 3 :
+     * la seule place propre de « C / 1+(4−√3)i » était en bas à droite à 3 px — à 0, le coin de la
+     * pastille mordait le point C ; à 8, la bande de l'axe des abscisses. La grille commune (0, 8,
+     * 18…) sautait par-dessus, et le placeur gardait la flèche AC sous l'étiquette (58 px de trait).
+     */
+    distances?: readonly number[];
+    /**
      * La distance MAXIMALE (px, parmi `DISTANCES`) à laquelle l'étiquette peut
      * s'écarter de son point. Sans elle, une étiquette gênée par un tracé
      * voisin part là où il y a de la place — au prix de ce qu'elle nomme
@@ -317,7 +324,7 @@ export function disposer(
     const ux = (qx - p.x) / d, uy = (qy - p.y) / d;
     return [{ x: p.x + ux * 7, y: p.y + uy * 7 }, { x: qx - ux * 2, y: qy - uy * 2 }];
   };
-  const places: (Point2 | null)[] = etiquettes.map(({ p, surAncre, directions, portee, filet }, i) => {
+  const places: (Point2 | null)[] = etiquettes.map(({ p, surAncre, directions, distances, portee, filet }, i) => {
     const t = tailles[i];
     if (!t) return null;
     const boite = (c: Point2): Boite => ({ x0: c.x - t.w / 2 - 2, y0: c.y - t.h / 2 - 2, x1: c.x + t.w / 2 + 2, y1: c.y + t.h / 2 + 2 });
@@ -359,7 +366,8 @@ export function disposer(
           meilleur = c;
         }
       });
-    DISTANCES.filter((g) => portee === undefined || g <= portee).forEach(essayer);
+    const pas = distances ?? DISTANCES;
+    pas.filter((g) => portee === undefined || g <= portee).forEach(essayer);
     // UNE ÉTIQUETTE RELIÉE PAR UN FILET cherche plus loin plutôt que d'en chevaucher une autre
     // (plan complexe, vague 2 : au téléphone, à S4, « A(2) » se posait 2,5 px sous « M(1 + i ») —
     // aucune place à moins de 50 px ne valait moins qu'un chevauchement). Un filet plus long est
@@ -369,7 +377,7 @@ export function disposer(
     // le premier essai prenait un filet passé SOUS « M′(1 − i) », que la porte refusait
     if (filet !== undefined && portee !== undefined && meilleurCout >= 10000) {
       const avant = { cout: meilleurCout, place: meilleur };
-      DISTANCES.filter((g) => g > portee && g <= 2 * portee).forEach(essayer);
+      pas.filter((g) => g > portee && g <= 2 * portee).forEach(essayer);
       if (meilleurCout >= 1000) {
         meilleurCout = avant.cout;
         meilleur = avant.place;

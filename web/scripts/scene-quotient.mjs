@@ -344,7 +344,17 @@ const flecheSous = (y, qq = panneau) => qq.evaluate((_el, y) => {
   // prend de 3 à 7 px de chaque bout (premier lancement : prise à 1–3 px, elle rendait « ? » partout)
   const zone = (x0, sens) => Math.max(...[3, 4, 5, 6, 7].map((k) => haut(x0 + sens * Math.round(k * dpr))));
   const g = zone(a, 1), d = zone(b, -1);
-  return { x0: a / dpr, x1: (b + 1) / dpr, pointe: g > d + 1 ? "gauche" : d > g + 1 ? "droite" : "?" };
+  let pointe = g > d + 1 ? "gauche" : d > g + 1 ? "droite" : "?";
+  // UNE FLÈCHE COURTE (moins de 20 px) : les deux fenêtres de 3 à 7 px se recouvrent et voient toutes
+  // deux la base de la tête. On lit alors OÙ est cette base — la colonne la plus haute —, plus près
+  // de la pointe que de la queue (bain B à 0,2 décade de K : 11,5 px, « ? » au premier lancement)
+  if (pointe === "?" && b - a < 20 * dpr) {
+    let hm = 0, s = 0, n = 0;
+    for (let X = a; X <= b; X++) { const v = haut(X); if (v > hm) { hm = v; s = X; n = 1; } else if (v === hm) { s += X; n++; } }
+    const xm = s / n;
+    pointe = xm - a > b - xm + dpr ? "droite" : b - xm > xm - a + dpr ? "gauche" : "?";
+  }
+  return { x0: a / dpr, x1: (b + 1) / dpr, pointe };
 }, y);
 
 // ── LE MESUREUR : ce que le dessin dit de l'état, en DÉCADES, depuis ses propres graduations ──

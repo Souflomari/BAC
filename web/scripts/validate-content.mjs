@@ -394,7 +394,7 @@ for (const dir of dirs) {
       .split("\n")
       .filter((l) => !/^#{2,6}\s/.test(l))
       .join("\n");
-    const codes = [...new Set(visible.match(/\bR\d+\b/g) ?? [])];
+    const codes = [...new Set(visible.match(/\bR\d+[a-z]?\b/g) ?? [])];
     const rungs = visible.match(/\brungs?\b/gi) ?? [];
     if (codes.length || rungs.length) {
       const quoi = [
@@ -1036,13 +1036,13 @@ for (const dir of dirs) {
     //    plus, puisque le motif ne savait pas la lire. Une porte qui ne sait pas
     //    lire une valeur ne dit pas « conforme », elle ne dit RIEN (§11.69).
     const headingRungs = new Set(
-      (md.match(/^#{1,6}[ \t]*(R(?:\d+|-[a-z]+))\b/gm) || []).map((h) => h.match(/(R(?:\d+|-[a-z]+))/)[1]),
+      (md.match(/^#{1,6}[ \t]*(R(?:\d+[a-z]?|-[a-z]+))\b/gm) || []).map((h) => h.match(/(R(?:\d+[a-z]?|-[a-z]+))/)[1]),
     );
     for (const [fname, key] of [["items.yaml", "items"], ["checkpoints.yaml", "checkpoints"]]) {
       const arr = Array.isArray(yamlDocs[fname]?.[key]) ? yamlDocs[fname][key] : [];
       const warned = new Set();
       for (const it of arr) {
-        const mr = typeof it?.rung === "string" ? it.rung.match(/^(R(?:\d+|-[a-z]+))$/) : null;
+        const mr = typeof it?.rung === "string" ? it.rung.match(/^(R(?:\d+[a-z]?|-[a-z]+))$/) : null;
         if (mr && !headingRungs.has(mr[1]) && !warned.has(mr[1])) {
           warned.add(mr[1]);
           console.error(
@@ -1106,7 +1106,7 @@ for (const dir of dirs) {
       } else if (tbl && typeof tbl === "object") {
         // Cinq notions PC logent une `note:` en prose DANS la table ; ce n'est
         // pas un barreau. Seules les clés en forme de code de barreau sont lues.
-        const EST_BARREAU = /^R(?:\d+|-[a-z]+)$/;
+        const EST_BARREAU = /^R(?:\d+[a-z]?|-[a-z]+)$/;
         const cles = new Set(Object.keys(tbl).map(String).filter((k) => EST_BARREAU.test(k)));
         for (const r of headingRungs) {
           if (!cles.has(r)) {
@@ -1308,7 +1308,7 @@ for (const dir of dirs) {
     // Pas de sentinelle arrière : une première version excluait « R4 » suivi
     // d'une virgule et masquait ainsi une vraie fuite (« dit R1, est qu'il
     // change », philo/l-etat). L'exemption de circuit suffit à la précision.
-    const TOK = /(?<![A-Za-z_\\$])R(\d+)\b/g;
+    const TOK = /(?<![A-Za-z_\\$])R(\d+)[a-z]?\b/g;
     const CIRC = /r[ée]sist|bobine|condensateur|maille|n[oœ]ud|noeud|diode|filtre|borne|Ohm|\b[CL]_?\d\b|dip[oô]le/i;
     const codes = [];
     const balaye = (n, fichier) => {
@@ -1398,13 +1398,13 @@ for (const dir of dirs) {
     const cps = Array.isArray(yamlDocs["checkpoints.yaml"]?.checkpoints)
       ? yamlDocs["checkpoints.yaml"].checkpoints : [];
     if (cps.length) {
-      const hs = [...md.matchAll(/^## (R\d+|R-[a-z]+)\b/gm)].map((m) => [m.index, m[1]]);
+      const hs = [...md.matchAll(/^## (R\d+[a-z]?|R-[a-z]+)\b/gm)].map((m) => [m.index, m[1]]);
       const bornes = {};
       hs.forEach(([pos, code], i) => { bornes[code] = [pos, i + 1 < hs.length ? hs[i + 1][0] : md.length]; });
       for (const cp of cps) {
         const lp = cp?.lesson_placement, cid = cp?.id;
         if (typeof lp !== "string" || typeof cid !== "string") continue;
-        const m = lp.match(/^(after|in)_(R\d+|R-[a-z]+)$/);
+        const m = lp.match(/^(after|in)_(R\d+[a-z]?|R-[a-z]+)$/);
         if (!m || !bornes[m[2]]) continue;
         const mk = md.indexOf(`[[checkpoint:${cid}]]`);
         if (mk < 0) continue;
@@ -1988,7 +1988,7 @@ for (const dir of dirs) {
     lignes.forEach((l, i) => { if (/^## /.test(l)) tetes.push([i, l.slice(3).trim()]); });
     for (let k = 0; k < tetes.length; k++) {
       const [i, titre] = tetes[k];
-      if (/^R\d+\b/.test(titre) || STRUCTUREL.test(titre)) continue;
+      if (/^R\d+[a-z]?\b/.test(titre) || STRUCTUREL.test(titre)) continue;
       const fin = k + 1 < tetes.length ? tetes[k + 1][0] : lignes.length;
       const n = fin - i;
       if (n < 25) continue; // un intertitre court n'est pas un chapitre d'enseignement
@@ -2101,7 +2101,7 @@ for (const dir of dirs) {
           for (const l of fs.readFileSync(lp, "utf8").split("\n")) {
             if (!l.startsWith("## ")) continue;
             ch.add(l.slice(3).trim());
-            ch.add(l.slice(3).replace(/^R\d+\s*[-—]\s*/, "").trim());
+            ch.add(l.slice(3).replace(/^R\d+[a-z]?\s*[-—]\s*/, "").trim());
           }
         }
       }
@@ -2360,7 +2360,7 @@ for (const dir of dirs) {
     // sont des noms de COMPOSANTS (rl-schema.svg étiquette son résistor R0).
     // Une figure dans ce cas déclare `CODES R LÉGITIMES:` suivi de la raison,
     // comme les blocs COULEURS SÉMANTIQUES ci-dessus.
-    const CODE_BARREAU = /\bR\d+\b/g;
+    const CODE_BARREAU = /\bR\d+[a-z]?\b/g;
     for (const file of svgFiles) {
       const src = fs.readFileSync(path.join(mediaDir, file), "utf8");
       if (/CODES\s+R\s+LÉGITIMES\s*:/i.test(src)) continue;

@@ -78,7 +78,7 @@ for (const r of routes) {
     for (const k of document.querySelectorAll("svg text")) k.textContent = " ";
     const t = document.body.innerText;
     const rungs = t.match(/\brungs?\b/gi) ?? [];
-    const codes = t.match(/\bR\d+\b/g) ?? [];
+    const codes = t.match(/\bR\d+[a-z]?\b/g) ?? [];
     const ctx = [];
     for (const re of [/\brungs?\b/gi]) {
       let x; const rr = new RegExp(re.source, "gi");

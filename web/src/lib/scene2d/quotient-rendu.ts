@@ -135,7 +135,9 @@ export function creerRenduQuotient(canvas: HTMLCanvasElement, hote: HTMLElement)
     const L = Math.hypot(x1 - x0, y1 - y0);
     if (L < 0.5) return;
     const ux = (x1 - x0) / L, uy = (y1 - y0) / L;
-    const p = Math.min(pointe, L * 0.6);
+    // la tête ne dépasse pas 40 % de la flèche : à 60 %, une flèche de 11,5 px (bain B à 0,2 décade
+    // de K, dans la bande) avait une tête plus longue que sa hampe et se lisait dans les deux sens
+    const p = Math.min(pointe, L * 0.4);
     c.strokeStyle = couleur;
     c.fillStyle = couleur;
     c.lineWidth = epaisseur;
