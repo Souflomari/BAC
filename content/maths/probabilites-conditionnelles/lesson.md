@@ -391,7 +391,7 @@ L'erreur intuitive de 95 % était de confondre $P(T^+|M)$ avec $P(M|T^+)$ — la
 
 ---
 
-## Variable aléatoire : mettre un nombre sur chaque issue
+## R5b — Variable aléatoire : mettre un nombre sur chaque issue
 
 Tout ce qu'on a mesuré jusqu'ici était un **événement** — quelque chose qui se réalise, ou pas. Beaucoup de questions d'examen demandent autre chose : un **nombre** attaché au résultat de l'expérience. Le produit des deux nombres tirés, le nombre de boules rouges obtenues, le gain d'un joueur, le nombre de fois où un événement s'est produit. Ce chapitre nomme cet objet et donne la procédure pour en tirer un tableau — puis une moyenne. Il n'ajoute aucune formule nouvelle : c'est le même arbre, lu autrement.
 
@@ -480,7 +480,7 @@ En revanche, elle doit toujours tomber **entre la plus petite et la plus grande 
 
 ---
 
-## La loi binomiale : compter les succès d'une expérience répétée
+## R5c — La loi binomiale : compter les succès d'une expérience répétée
 
 Il existe une situation où la loi de $X$ ne se calcule pas feuille par feuille : elle se lit sur une formule. Elle est fréquente à l'examen, et l'énoncé la signale toujours par les mêmes mots — **on répète la même expérience $n$ fois**, avec remise. Ce chapitre montre d'abord d'où sort la formule sur un cas complet, puis la nomme.
 
