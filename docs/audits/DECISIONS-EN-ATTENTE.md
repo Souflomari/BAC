@@ -1976,3 +1976,46 @@ que le placeur le fait partir de l'ancre au bord (ADR 0034 : un rouge neuf est a
 verte deux fois (1 022 mesures, 27 familles) ; puis le produit saboté (filets non tracés) :
 ROUGE sur `rattachement` seule, deux manquements, les 26 autres familles vertes. Reste dû : la
 campagne de sabotages du produit (spec §11.4, 35 sabotages).
+
+## 34. Le banc qui ne lançait pas la batterie : quatre rouges que la CI n'atteignait pas, et deux cliquets qu'on n'avait pas resserrés
+
+**LE FAIT.** Le 2026-09-27, trois exécutions de CI de suite se sont arrêtées sur un premier rouge
+(797 : dom-truth ; 798 : prose-jumelle), et chaque arrêt cachait les étapes suivantes du job
+`gates`. Pendant ce temps, la vérification locale avant poussée était un script de session qui
+lançait **sept** cliquets sur l'index — alors que `web/scripts/batterie-locale.mjs` existe, est
+catalogué, se compare lui-même à `gates.yml` (47 portes + 43 hors champ assumés) et lance TOUTES
+les étapes sans navigateur. Lancée enfin, la batterie a trouvé, en deux passes :
+
+1. **prose-jumelle** — la prose B2 de `ln(1+x)/x` reprenait mot pour mot celle de `(eʰ−1)/h`
+   (137 mots, 13,2 % de recouvrement contre un cliquet de 8 %) : l'élève qui lit les deux notions
+   lisait deux fois le même paragraphe. Réécrite ; les notes d'auteur des deux leçons, elles aussi
+   jumelles, étaient de plus FAUSSES (« aucun checkpoint ajouté ») — remplacées. `89b6c515`.
+2. **modele-a-jour** — la carte item → misconception et le plancher du modèle apprenant ignoraient
+   les items du jour. Régénérés (`npm run build-learner-inputs`) ; le fichier régénéré sous
+   `backend/supabase/functions/` n'est pas déployé par ce commit — le déploiement reste gardé.
+3. **validate-content** — la vague C écrivait « $R + r$ » dans une leçon où $R$ vaut déjà
+   $R_0 + r$ : la porte des symboles l'a vu (sous cette déclaration, $R_0 + 2r$).
+4. **essais-rouges**, deux fois : le cliquet `media-manipulable` était resté à 19 alors que la
+   scène Qr/K faisait 20 notions (troisième fois qu'un cliquet est laissé derrière une scène), et
+   la base d'`eleve-ruse` datait de 1 999 items (2 194 aujourd'hui) — chaque vague avait fait
+   BAISSER le taux de chaque notion, et le jeu ainsi ouvert avalait la régression que l'essai
+   plante. Dans les deux cas, c'est l'essai rouge qui a vu le cliquet mou ; aucun des deux n'était
+   visible autrement. Relevé à 20 ; rescellé après avoir vérifié qu'aucune notion n'était MONTÉE.
+
+**CE QUI CHANGE DANS LA FAÇON DE TRAVAILLER.** La vérification avant poussée est désormais
+`batterie-locale` sur un COMMIT (dans un arbre propre), jamais un sous-ensemble choisi à la main.
+Le sous-ensemble était vert ; la batterie avait quatre rouges. *Un banc qu'on écrit soi-même à côté
+de l'instrument catalogué est un instrument qu'aucun catalogue ne nomme* (ADR 0035), et il est
+plus étroit que lui par construction.
+
+**À RESSERRER EN MÊME TEMPS QUE LA MESURE BOUGE** : `media-manipulable` (à chaque scène qui ajoute
+une notion) et `eleve-ruse` (à chaque vague d'items). Les deux se relâchent sans bruit dans le bon
+sens, et c'est ce bon sens qui les rend dangereux : rien ne rougit quand on gagne, donc personne ne
+resserre, donc l'essai rouge devient aveugle.
+
+**DEUX FAITS D'ENVIRONNEMENT, NOTÉS POUR LA SUITE.** Un agent lancé en `isolation: worktree` reçoit
+un arbre bâti sur la branche par défaut, vieille de plusieurs semaines (l'application Flutter, sans
+`content/pc`) : les trois premiers auteurs de la vague C ont refusé d'écrire plutôt que d'inventer
+— c'était la bonne réponse. Et deux auteurs d'items ont été coupés par une limite de débit en
+pleine écriture : RL-27 est resté avec un énoncé à 90 A/s et une clé calculée à 72. Relu et
+corrigé avant tout commit — un fichier écrit par un auteur interrompu se relit comme un brouillon.
