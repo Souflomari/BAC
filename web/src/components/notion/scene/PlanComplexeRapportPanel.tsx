@@ -81,7 +81,9 @@ const ETAT_DE_BASE: EtatRapport = { forme: "rect-isocele", position: "posee", so
  */
 const ENONCEES: Record<string, readonly string[]> = {
   forme: ["w"],
-  sommet: ["w", "module-w", "argument-w"],
+  // (vague 2, calme : |w| et arg(w) ne sont plus des lectures de S3 — la consigne les donne, et la
+  // lecture `nature` les redit avec leur verdict ; cinq écritures du même nombre dans un écran)
+  sommet: ["w"],
 };
 
 const REPERES = [
@@ -89,7 +91,7 @@ const REPERES = [
   "point-A", "point-B", "point-C", "point-M",
   "fleche-num-1", "fleche-num-2", "fleche-den-1", "fleche-den-2",
   "arc-debut", "arc-fin", "arc-milieu",
-  "report-debut", "report-fin", "report-reference", "report-milieu",
+  "report-debut", "report-fin", "report-milieu",
   "angle-droit",
   "courbe-mediatrice", "courbe-cercle", "courbe-droite",
   "cercle-e", "cercle-n", "cercle-o", "cercle-s",
@@ -130,13 +132,17 @@ function bissectrice(p: Record<string, { x: number; y: number }>, sommet: string
   return [dir(th), dir(th + 0.35), dir(th - 0.35), dir(th + 0.7), dir(th - 0.7), ...DIRECTIONS_FINES];
 }
 
-/** Ce que la région vivante dit PENDANT le balayage : l'invariant, exact, et le sens des deux distances (§5.5 point 4). */
+/**
+ * La valeur PARLÉE du curseur de balayage : ce qui CHANGE, et rien d'autre. L'invariant et « Échap
+ * le remet à sa place » sont dits UNE fois, par la région vivante, au début du geste (`balayer`) —
+ * les répéter ici les faisait relire à chaque appui de flèche, 67 fois sur la médiatrice (vague 2,
+ * ergonomie : un flot où la seule chose qui change ne s'entend plus).
+ */
 function valeurBalayage(lieu: M.Lieu, p: number, depart: number): string {
   if (Math.abs(p - depart) < 1e-9) return "M à sa place";
-  const inv = lieu === "mediatrice" ? "le module vaut toujours 1" : lieu === "cercle" ? "l’argument vaut toujours −π/2 : l’angle en M reste droit" : "l’argument vaut toujours 0";
-  if (lieu === "mediatrice") return `M ${Math.abs(p) > Math.abs(depart) ? "plus loin de [AB] : MA et MB ont augmenté ensemble" : "plus près de [AB] : MA et MB ont diminué ensemble"} ; ${inv} ; Échap le remet à sa place`;
-  if (lieu === "cercle") return `M ${p > depart ? "plus près de A : MA a diminué, MB a augmenté" : "plus près de B : MA a augmenté, MB a diminué"} ; ${inv} ; Échap le remet à sa place`;
-  return `M ${p > depart ? "plus loin de B : MA et MB ont augmenté ensemble" : "plus près de B : MA et MB ont diminué ensemble"} ; ${inv} ; Échap le remet à sa place`;
+  if (lieu === "mediatrice") return Math.abs(p) > Math.abs(depart) ? "plus loin de [AB] : MA et MB ont augmenté ensemble" : "plus près de [AB] : MA et MB ont diminué ensemble";
+  if (lieu === "cercle") return p > depart ? "plus près de A : MA a diminué, MB a augmenté" : "plus près de B : MA a augmenté, MB a diminué";
+  return p > depart ? "plus loin de B : MA et MB ont augmenté ensemble" : "plus près de B : MA et MB ont diminué ensemble";
 }
 
 const NOM_LIEU: Record<M.Lieu, string> = { mediatrice: "la médiatrice de [AB]", cercle: "le cercle de diamètre [AB]", droite: "la droite (AB)" };
@@ -185,7 +191,11 @@ export function PlanComplexeRapportPanel({ scene, className }: { scene: Scene3DD
   const lieuCran = M.LIEU_DU_CRAN[etat.pointM];
   const parc = M.parcours(etat.pointM);
   const balaie = lieu && balayage !== 0 && ouvre("balayage") && parc !== null;
-  const pBal = parc ? parc.depart + balayage * parc.pas : 0;
+  // Le SENS du curseur : vers la droite, le côté LONG du parcours (vague 2, ergonomie : au cran
+  // −√3 + i, tirer à droite — le geste naturel — donnait trois pas de 7,5° puis butait ; on concluait
+  // que le contrôle était cassé). Le pas reste exact, et 0 reste M à son cran.
+  const sensBal = parc && parc.max - parc.depart < parc.depart - parc.min ? -1 : 1;
+  const pBal = parc ? parc.depart + sensBal * balayage * parc.pas : 0;
   const mF: [number, number] = balaie && parc ? parc.point(pBal) : M.enFlottants(zM);
   const uF = M.rapportLieuF(mF);
 
@@ -201,7 +211,9 @@ export function PlanComplexeRapportPanel({ scene, className }: { scene: Scene3DD
   const arcAccent = lieu || etape.controles.includes("forme");
   const report = !lieu && etape.controles.includes("forme") && revele;
   const angleDroit = !lieu && etape.controles.includes("sommet") && revele ? "C" : null;
-  const courbes = lieu && revele;
+  // la médiatrice (la réponse) dès la révélation ; le cercle et la droite seulement quand M est posé
+  // sur un de leurs crans — chacun paraît quand il sert (vague 2, calme ; voir le rendu)
+  const courbes = lieu && revele ? { mediatrice: true, cercle: lieuCran === "cercle", droite: lieuCran === "droite" } : null;
 
   // ── Rendu ──
   const renduRef = useRef<RenduRapport | null>(null);
@@ -234,9 +246,9 @@ export function PlanComplexeRapportPanel({ scene, className }: { scene: Scene3DD
       { el: refs.B.current, p: en("point-B"), portee: 50, filet: 14, directions: DIRECTIONS_FINES },
       { el: refs.C.current, p: en("point-C", !lieu), portee: 50, filet: 14, directions: DIRECTIONS_FINES },
       { el: refs.M.current, p: en("point-M", lieu), portee: 50, filet: 14, directions: DIRECTIONS_FINES },
-      { el: refs.mediatrice.current, p: en("lieu-mediatrice", courbes), portee: 40, directions: DIRECTIONS_FINES },
-      { el: refs.droite.current, p: en("lieu-droite", courbes), portee: 40, directions: DIRECTIONS_FINES },
-      { el: refs.cercle.current, p: en("lieu-cercle", courbes), portee: 50, filet: 14, directions: DIRECTIONS_FINES },
+      { el: refs.mediatrice.current, p: en("lieu-mediatrice", !!courbes?.mediatrice), portee: 40, directions: DIRECTIONS_FINES },
+      { el: refs.droite.current, p: en("lieu-droite", !!courbes?.droite), portee: 40, directions: DIRECTIONS_FINES },
+      { el: refs.cercle.current, p: en("lieu-cercle", !!courbes?.cercle), portee: 50, filet: 14, directions: DIRECTIONS_FINES },
     ];
     const obstacles = [boiteLegende(rendu.hoteRef.current), ...s.zones()].filter((b): b is NonNullable<typeof b> => b !== null);
     // Plusieurs ORDRES de pose, le meilleur retenu (la scène sœur en essaie deux) : le placeur pose
@@ -447,39 +459,50 @@ export function PlanComplexeRapportPanel({ scene, className }: { scene: Scene3DD
     tient.current = false;
     relacher();
   };
-  const bornes = parc ? { min: Math.ceil((parc.min - parc.depart) / parc.pas - 1e-9), max: Math.floor((parc.max - parc.depart) / parc.pas + 1e-9) } : { min: 0, max: 0 };
+  const pasBas = parc ? Math.ceil((parc.min - parc.depart) / parc.pas - 1e-9) : 0, pasHaut = parc ? Math.floor((parc.max - parc.depart) / parc.pas + 1e-9) : 0;
+  const bornes = sensBal === 1 ? { min: pasBas, max: pasHaut } : { min: -pasHaut, max: -pasBas };
   const groupes: Record<string, () => React.ReactNode> = {
     position: () => groupe("position", "Le placement de la figure", M.POSITIONS, etat.position, (v) => M.LIBELLE_POSITION[v as M.Position], (v) => regler({ position: v as M.Position })),
     forme: () => groupe("forme", "Le triangle", M.FORMES, etat.forme, (v) => M.LIBELLE_FORME[v as M.Forme], (v) => regler({ forme: v as M.Forme })),
     sommet: () => groupe("sommet", "Le sommet d’où l’on lit", M.SOMMETS, etat.sommet, (v) => M.LIBELLE_SOMMET[v as M.Sommet], (v) => regler({ sommet: v as M.Sommet })),
     pointM: () => groupe("pointM", "Le point $M$", M.POINTS_M, etat.pointM, (v) => `$${M.TEX_POINT_M[v as M.PointM]}$`, (v) => regler({ pointM: v as M.PointM })),
-    // absent au cran 2 + 4i : glisser « au hasard » ne montre rien (§6.1 a)
-    balayage: () =>
-      parc &&
-      lieuCran && (
-        <label key="balayage" className="flex flex-col gap-1" data-controle="balayage">
-          <span className="text-body-sm text-secondary">
-            <MathText>{`Fais glisser $M$ sur ${NOM_LIEU[lieuCran].replace("[AB]", "$[AB]$").replace("(AB)", "$(AB)$")} — sans lâcher ; au clavier, les flèches, puis Échap`}</MathText>
-          </span>
-          <input
-            type="range"
-            min={bornes.min}
-            max={bornes.max}
-            step={1}
-            value={balayage}
-            onPointerDown={() => {
-              tient.current = true;
-            }}
-            onChange={(e) => balayer(parseInt(e.target.value, 10) || 0)}
-            onKeyDown={(e) => {
-              if (e.key === "Escape") lacher();
-            }}
-            onBlur={lacher}
-            aria-valuetext={valeurBalayage(lieuCran, pBal, parc.depart)}
-            className={CURSEUR}
-          />
-        </label>
-      ),
+    // INERTE au cran 2 + 4i, jamais absent : glisser « au hasard » ne montre rien (§6.1 a) — mais un
+    // curseur qui paraît et disparaît avec le cran faisait sauter tout le panneau de ~115 px à chaque
+    // flèche du groupe de crans, et la consigne « fais glisser M » ne montrait rien à glisser (vague 2,
+    // ergonomie). La place est tenue, le curseur désactivé, et son libellé dit quoi faire d'abord.
+    balayage: () => (
+      <label key="balayage" className="flex flex-col gap-1" data-controle="balayage">
+        <span className="text-body-sm text-secondary">
+          <MathText>
+            {parc && lieuCran
+              ? `Fais glisser $M$ sur ${NOM_LIEU[lieuCran].replace("[AB]", "$[AB]$").replace("(AB)", "$(AB)$")} — sans lâcher ; au clavier, les flèches, puis Échap`
+              : "Pose d’abord $M$ sur un lieu (un des crans ci-dessus) pour le faire glisser."}
+          </MathText>
+        </span>
+        <input
+          type="range"
+          min={bornes.min}
+          max={bornes.max}
+          step={1}
+          value={balayage}
+          disabled={!(parc && lieuCran)}
+          onPointerDown={() => {
+            tient.current = true;
+          }}
+          onChange={(e) => balayer(parseInt(e.target.value, 10) || 0)}
+          onKeyDown={(e) => {
+            // Échap est aussi la touche qui ferme les surcouches : on la garde pour ce geste
+            if (e.key === "Escape") {
+              e.stopPropagation();
+              lacher();
+            }
+          }}
+          onBlur={lacher}
+          aria-valuetext={parc && lieuCran ? valeurBalayage(lieuCran, pBal, parc.depart) : "inactif : M n’est sur aucun lieu"}
+          className={CURSEUR}
+        />
+      </label>
+    ),
   };
 
   // ── Ce que le lecteur d'écran entend ──
@@ -487,9 +510,11 @@ export function PlanComplexeRapportPanel({ scene, className }: { scene: Scene3DD
   const description = lieu
     ? "Plan complexe, repère orthonormé gradué de −9 à 9, avec le cercle de rayon 1 centré en O. " +
       `A en −2, B en 2 ; le point M ${balaie ? `glisse sur ${lieuCran ? NOM_LIEU[lieuCran] : "son lieu"}` : `en ${enClair(M.TEX_POINT_M[etat.pointM])}`}, relié à A et à B. ` +
-      (courbes ? "Trois courbes sont tracées : la médiatrice de [AB] (l’axe imaginaire), le cercle de diamètre [AB] (centre O, rayon 2) et la droite (AB) (l’axe réel). " : "") +
+      (courbes
+        ? `En tirets : la médiatrice de [AB] (l’axe imaginaire)${courbes.cercle ? ", et le cercle de diamètre [AB] (centre O, rayon 2)" : ""}${courbes.droite ? ", et la droite (AB) (l’axe réel)" : ""}. `
+        : "") +
       (arc !== null && revele ? "Un arc marque, en M, l’écart de la direction de B à celle de A. " : "")
-    : `Plan complexe, repère orthonormé gradué de −9 à 9. Trois points : A en ${enClair(texA)}, B en ${enClair(texB)}, C en ${enClair(texC)}. ` +
+    : `Plan complexe, repère orthonormé gradué de −7 à 7. Trois points : A en ${enClair(texA)}, B en ${enClair(texB)}, C en ${enClair(texC)}. ` +
       (fleches ? `Deux flèches partent de ${S} : la plus épaisse vers ${L.versDen}, la plus fine vers ${L.versNum}. ` : "") +
       (arc !== null ? `Un arc, en ${S}, va de la flèche vers ${L.versDen} à la flèche vers ${L.versNum}. ` : "") +
       (report ? `La longueur ${S}${L.versNum} est reportée le long de la flèche vers ${L.versDen} : elle s’arrête avant ${L.versDen}. ` : "") +
@@ -553,10 +578,10 @@ export function PlanComplexeRapportPanel({ scene, className }: { scene: Scene3DD
             {courbes && <span className="text-figure-accent"><MathText>{"médiatrice de $[AB]$"}</MathText></span>}
           </Etiquette>
           <Etiquette refEl={refs.cercle} nom="nom-cercle" fond discret>
-            {courbes && <span className="text-figure-accent"><MathText>{"cercle de diamètre $[AB]$"}</MathText></span>}
+            {courbes?.cercle && <span className="text-figure-accent"><MathText>{"cercle de diamètre $[AB]$"}</MathText></span>}
           </Etiquette>
           <Etiquette refEl={refs.droite} nom="nom-droite" fond discret>
-            {courbes && <span className="text-figure-accent"><MathText>{"droite $(AB)$"}</MathText></span>}
+            {courbes?.droite && <span className="text-figure-accent"><MathText>{"droite $(AB)$"}</MathText></span>}
           </Etiquette>
           {REPERES.map((r) => (
             <Etiquette key={r} refEl={repRefs.current[r]} nom={r} texte="" />

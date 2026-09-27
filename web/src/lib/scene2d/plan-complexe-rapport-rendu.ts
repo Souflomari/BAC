@@ -51,8 +51,13 @@ export interface EtatRenduRapport {
   /** le petit carré d'angle droit (S3), au point nommé */
   angleDroit: string | null;
   cercleUnite: boolean;
-  /** les trois courbes de lieu (S4, après la révélation) */
-  courbes: boolean;
+  /**
+   * les courbes de lieu (S4, après la révélation), chacune À PART : la médiatrice (la réponse)
+   * dès la révélation, le cercle et la droite seulement quand M est posé sur un de leurs crans
+   * (vague 2, calme : trois lieux d'un coup pour UNE question, c'était dépenser d'avance la
+   * découverte que la `suite` envoie faire — et le retour juste l'avouait)
+   */
+  courbes: null | { mediatrice: boolean; cercle: boolean; droite: boolean };
 }
 
 export interface RenduRapport {
@@ -105,11 +110,16 @@ export function creerRenduRapport(canvas: HTMLCanvasElement, hote: HTMLElement):
     zones = [];
     if (!etat) return;
     const e = etat;
-    const g = geometrie(largeur, hauteur, FENETRE);
+    // La fenêtre : ±9 au mode lieu (le balayage va jusqu'à 8,5) ; ±7 au mode triangle, où le cran
+    // le plus éloigné est à 6 — le triangle y gagne 29 % à toute largeur, et la fenêtre reste LA
+    // MÊME pour les quatre triangles et les quatre placements, donc la comparaison tient (vague 2,
+    // dessin : AB faisait 80 px sur 358 au téléphone, et l'arc y devenait l'objet le plus grand)
+    const F = e.mode === "lieu" ? FENETRE : 7;
+    const g = geometrie(largeur, hauteur, F);
     const { cote, X, Y } = g;
     s = g.s;
     const encre = css(jetons.encre), accent = css(jetons.accent);
-    const r0 = peindreRepere(c, g, jetons, police, FENETRE, Object.values(e.points), e.cercleUnite);
+    const r0 = peindreRepere(c, g, jetons, police, F, Object.values(e.points), e.cercleUnite);
     rep = r0.rep;
     segs = r0.segs;
     zones = r0.zones;
@@ -117,34 +127,53 @@ export function creerRenduRapport(canvas: HTMLCanvasElement, hote: HTMLElement):
     const S = e.points[e.sommet];
     const [sx, sy] = px(S);
 
-    // ── les trois courbes de lieu (S4) : sous tout le reste, à l'accent ──
+    // ── les courbes de lieu (S4) : sous tout le reste, à l'accent, en TIRETS ──
+    // Tiretées (vague 2, dessin) : au cran de la droite, A, B et M sont alignés, et un lieu plein
+    // avalait les deux flèches qui arrivent en M — même couleur, même trait, même ligne. En tirets,
+    // un lieu se lit comme un ENSEMBLE de points, et les flèches pleines restent lisibles dessus.
+    // Les deux droites s'arrêtent à ±8,5 : les pointes des axes restent à l'encre.
     if (e.courbes) {
+      const k = e.courbes;
       c.strokeStyle = accent;
       c.lineWidth = 2;
-      // la médiatrice de [AB] — l'axe imaginaire ; la droite (AB) — l'axe réel : l'accent PAR-DESSUS l'encre
+      c.setLineDash([6, 5]);
       c.beginPath();
-      c.moveTo(X(0), Y(FENETRE));
-      c.lineTo(X(0), Y(-FENETRE));
-      c.moveTo(X(-FENETRE), Y(0));
-      c.lineTo(X(FENETRE), Y(0));
+      // la médiatrice de [AB] — l'axe imaginaire ; la droite (AB) — l'axe réel : l'accent PAR-DESSUS l'encre
+      if (k.mediatrice) {
+        c.moveTo(X(0), Y(8.5));
+        c.lineTo(X(0), Y(-8.5));
+      }
+      if (k.droite) {
+        c.moveTo(X(-8.5), Y(0));
+        c.lineTo(X(8.5), Y(0));
+      }
       c.stroke();
       // le cercle de diamètre [AB] : centre O, rayon 2
-      c.beginPath();
-      c.arc(X(0), Y(0), 2 * s, 0, 2 * Math.PI);
-      c.stroke();
-      for (let j = 0; j < 36; j++) {
-        const a = (j * Math.PI) / 18, b = ((j + 1) * Math.PI) / 18;
-        segs.push([P(X(2 * Math.cos(a)), Y(2 * Math.sin(a))), P(X(2 * Math.cos(b)), Y(2 * Math.sin(b)))]);
+      if (k.cercle) {
+        c.beginPath();
+        c.arc(X(0), Y(0), 2 * s, 0, 2 * Math.PI);
+        c.stroke();
+        for (let j = 0; j < 36; j++) {
+          const a = (j * Math.PI) / 18, b = ((j + 1) * Math.PI) / 18;
+          segs.push([P(X(2 * Math.cos(a)), Y(2 * Math.sin(a))), P(X(2 * Math.cos(b)), Y(2 * Math.sin(b)))]);
+        }
       }
-      // les ancres des trois noms (le panneau y pose les étiquettes)
-      rep["lieu-mediatrice"] = P(X(0), Y(7.2));
-      // à GAUCHE de A : aucun cran de M n'y va (le balayage de la droite part vers la droite, au-delà de B)
-      rep["lieu-droite"] = P(X(-6.5), Y(0));
-      rep["lieu-cercle"] = P(X(2 * Math.cos(-Math.PI / 4)), Y(2 * Math.sin(-Math.PI / 4)));
-      // des repères SUR chaque courbe, loin de tout point (la porte y lit l'accent)
-      rep["courbe-mediatrice"] = P(X(0), Y(-6));
-      rep["courbe-droite"] = P(X(-6), Y(0));
-      rep["courbe-cercle"] = P(X(2 * Math.cos((-2 * Math.PI) / 3)), Y(2 * Math.sin((-2 * Math.PI) / 3)));
+      c.setLineDash([]);
+      // les ancres des noms (le panneau y pose les étiquettes) et des repères SUR chaque courbe, loin
+      // de tout point (la porte y lit l'accent) — seulement pour les courbes tracées
+      if (k.mediatrice) {
+        rep["lieu-mediatrice"] = P(X(0), Y(7.2));
+        rep["courbe-mediatrice"] = P(X(0), Y(-6));
+      }
+      if (k.droite) {
+        // à GAUCHE de A : aucun cran de M n'y va (le balayage de la droite part vers la droite, au-delà de B)
+        rep["lieu-droite"] = P(X(-6.5), Y(0));
+        rep["courbe-droite"] = P(X(-6), Y(0));
+      }
+      if (k.cercle) {
+        rep["lieu-cercle"] = P(X(2 * Math.cos(-Math.PI / 4)), Y(2 * Math.sin(-Math.PI / 4)));
+        rep["courbe-cercle"] = P(X(2 * Math.cos((-2 * Math.PI) / 3)), Y(2 * Math.sin((-2 * Math.PI) / 3)));
+      }
     }
 
     // ── mode lieu, avant la révélation : les segments MA et MB, à l'encre ──
@@ -202,7 +231,6 @@ export function creerRenduRapport(canvas: HTMLCanvasElement, hote: HTMLElement):
       const [dx, dy] = dir(f.den);
       const num = e.points[f.num];
       const lNum = Math.hypot(num[0] - S[0], num[1] - S[1]);
-      const lDen = Math.hypot(e.points[f.den][0] - S[0], e.points[f.den][1] - S[1]);
       // du côté OPPOSÉ au numérateur : la cote ne croise pas l'autre flèche. Alignés (triangle 4,
       // arg w = π), le numérateur n'a pas de côté : l'arc tourne alors dans le sens direct, et la
       // cote passe du côté HORAIRE — sinon elle coupait l'arc (premier lancement)
@@ -213,7 +241,6 @@ export function creerRenduRapport(canvas: HTMLCanvasElement, hote: HTMLElement):
       const o = DECALAGE_REPORT / s;
       const a: Pt = [S[0] + nx * o, S[1] + ny * o];
       const b: Pt = [a[0] + dx * lNum, a[1] + dy * lNum];
-      const bFin: Pt = [a[0] + dx * lDen, a[1] + dy * lDen];
       c.strokeStyle = accent;
       c.lineWidth = 2;
       c.beginPath();
@@ -225,20 +252,14 @@ export function creerRenduRapport(canvas: HTMLCanvasElement, hote: HTMLElement):
         c.lineTo(X(p[0] + nx * (4 / s)), Y(p[1] + ny * (4 / s)));
       }
       c.stroke();
-      // le bout de la référence, en encre douce : où l'on aurait dû arriver pour un rapport 1
-      c.strokeStyle = voile(jetons.encreDouce, 0.85);
-      c.lineWidth = 1;
-      c.beginPath();
-      c.moveTo(X(bFin[0] - nx * (4 / s)), Y(bFin[1] - ny * (4 / s)));
-      c.lineTo(X(bFin[0] + nx * (4 / s)), Y(bFin[1] + ny * (4 / s)));
-      c.stroke();
+      // (le trait de « référence » en encre douce, au bout d'une cote de rapport 1, est retiré —
+      // vague 2, dessin : sans nom, à 9 px de B déjà dessiné, il se lisait comme une poussière)
       segs.push([P(X(a[0]), Y(a[1])), P(X(b[0]), Y(b[1]))]);
-      // les trois traits de cote sont des TRAITS : les étiquettes les évitent (premier lancement :
+      // les deux traits de cote sont des TRAITS : les étiquettes les évitent (premier lancement :
       // « A » posée sur deux pixels de la cote de départ)
-      for (const p of [a, b, bFin]) segs.push([P(X(p[0] - nx * (4 / s)), Y(p[1] - ny * (4 / s))), P(X(p[0] + nx * (4 / s)), Y(p[1] + ny * (4 / s)))]);
+      for (const p of [a, b]) segs.push([P(X(p[0] - nx * (4 / s)), Y(p[1] - ny * (4 / s))), P(X(p[0] + nx * (4 / s)), Y(p[1] + ny * (4 / s)))]);
       rep["report-debut"] = P(X(a[0]), Y(a[1]));
       rep["report-fin"] = P(X(b[0]), Y(b[1]));
-      rep["report-reference"] = P(X(bFin[0]), Y(bFin[1]));
       rep["report-milieu"] = P(X((a[0] + b[0]) / 2), Y((a[1] + b[1]) / 2));
     }
 

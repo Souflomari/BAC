@@ -363,6 +363,27 @@ const couverture = (a, b, genre, tol = 1.5, q = panneau) => q.evaluate((_el, { a
 }, { a, b, genre, tol });
 
 /**
+ * Les courbes de lieu, SONDÉES sur l'accent : pour chaque point de sonde, un bout de 14 px LE LONG de
+ * la courbe (et non 2 px en travers) — les lieux sont tiretés depuis la vague 2 (6 px de trait, 5 de
+ * vide), et une sonde de 2 px tombait une fois sur deux dans un vide ; 14 px couvrent toujours un
+ * trait. Après `classer`.
+ */
+const COURBES_SONDES = [
+  ["mediatrice", [[0, -7], [0, -5], [0, -3.5], [0, 6.5]].map((p) => [p, [0, 1]])],
+  ["droite", [[-7, 0], [-5.5, 0], [6, 0], [7.5, 0]].map((p) => [p, [1, 0]])],
+  ["cercle", [200, 240, 300, 330].map((a) => { const t = (a * Math.PI) / 180; return [[2 * Math.cos(t), 2 * Math.sin(t)], [-Math.sin(t), Math.cos(t)]]; })],
+];
+async function surAccent(sondes) {
+  let n = 0;
+  for (const [p, [tx, ty]] of sondes) {
+    const c = px(p);
+    // la tangente, en px (y écran vers le bas)
+    if ((await couverture({ x: c.x - 7 * tx, y: c.y + 7 * ty }, { x: c.x + 7 * tx, y: c.y - 7 * ty }, 1, 1.5)) > 0) n++;
+  }
+  return n;
+}
+
+/**
  * L'ÉPAISSEUR d'un trait (px CSS) en un point, par la COUVERTURE et non par le compte des pixels
  * classés. Deuxième lancement : en comptant les pixels, un trait de 1,75 px en biais et un de 3,5 px
  * à l'horizontale lisaient tous deux « 3,0 px » — l'antialiasing étale le trait fin sur trois pixels
@@ -732,8 +753,9 @@ async function etatPose(k) {
   const ok = Object.entries(e).every(([c, v]) => lu[c === "pointM" ? "pointM" : c] === v) && lu.ph === "attente";
   juger("etapes", ok, `étape ${k + 1} (${ID[k]}) : ${Object.entries(lu).map(([c, v]) => `${c} ${v}`).join(", ")}`);
 }
-const ENONCEES = { [ID[0]]: "", [ID[1]]: "w", [ID[2]]: "argument-w,module-w,w", [ID[3]]: "" };
-const APRES = { [ID[0]]: "vecteurs,w", [ID[1]]: "argument-w,longueurs,module-w,w", [ID[2]]: "argument-w,module-w,nature,w", [ID[3]]: "rapport-lieu" };
+// (vague 2, calme : |w| et arg(w) ne sont plus des lectures de S3 — la consigne les donne, `nature` les redit)
+const ENONCEES = { [ID[0]]: "", [ID[1]]: "w", [ID[2]]: "w", [ID[3]]: "" };
+const APRES = { [ID[0]]: "vecteurs,w", [ID[1]]: "argument-w,longueurs,module-w,w", [ID[2]]: "nature,w", [ID[3]]: "rapport-lieu" };
 const CTRL = { [ID[0]]: "position", [ID[1]]: "forme", [ID[2]]: "sommet", [ID[3]]: "pointM" };
 async function avantPari(k) {
   const id = ID[k];
@@ -925,7 +947,10 @@ if (pret) {
     await parier(juste(3));
     await ouvertApres(3);
     await libelles("pointM");
-    const balayable = async () => (await panneau.locator('[data-controle="balayage"] input[type="range"]').count()) > 0;
+    // le curseur de balayage tient TOUJOURS sa place (vague 2, ergonomie : il paraissait et disparaissait
+    // avec le cran, et le panneau sautait de ~115 px) — il est INERTE hors d'un lieu, jamais absent
+    const curseurBal = panneau.locator('[data-controle="balayage"] input[type="range"]');
+    const balayable = async () => (await curseurBal.count()) > 0 && !(await curseurBal.isDisabled());
     for (const m of ["libre", "cercle-1", "cercle-2", "mediatrice", "droite"]) {
       await cocher("pointM", m);
       await classer();
@@ -942,7 +967,19 @@ if (pret) {
       if (vm === null || Math.abs(vm - abs(u)) > 1e-9) fn.push(`|u| ne vaut pas MA/MB = ${abs(u).toFixed(4)}`);
       if (va === null || Math.abs(va - argF(u)) > 1e-9) fn.push(`arg(u) ne vaut pas ${argF(u).toFixed(4)}`);
       juger("nombres", fn.length === 0, `étape 4, ${m} : ${fn.length ? fn.join(" ; ") : `|u| et arg(u) exacts et justes`}`);
-      juger("fuite-inter-etapes", (await balayable()) === (m !== "libre"), `étape 4, ${m} : le balayage est ${(await balayable()) ? "OUVERT" : "absent"} (attendu ${m !== "libre" ? "ouvert : M est sur un lieu" : "absent : 2 + 4i n'est sur aucun lieu"})`);
+      juger("fuite-inter-etapes", (await curseurBal.count()) === 1 && (await balayable()) === (m !== "libre"), `étape 4, ${m} : le curseur de balayage est ${(await curseurBal.count()) === 0 ? "ABSENT (sa place n'est plus tenue)" : (await balayable()) ? "ACTIF" : "inerte"} (attendu ${m !== "libre" ? "actif : M est sur un lieu" : "inerte : 2 + 4i n'est sur aucun lieu"})`);
+      // les courbes : la médiatrice (la réponse) toujours ; le cercle et la droite seulement au cran qui est sur eux
+      {
+        const f = [];
+        const lieuDuCran = { libre: null, "cercle-1": "cercle", "cercle-2": "cercle", mediatrice: "mediatrice", droite: "droite" }[m];
+        for (const [nom, pts] of COURBES_SONDES) {
+          const n = await surAccent(pts);
+          const attendue = nom === "mediatrice" || nom === lieuDuCran;
+          if (attendue && n < pts.length) f.push(`${nom} : ${n}/${pts.length} sondes sur l'accent`);
+          if (!attendue && n > 0) f.push(`${nom} TRACÉE (${n}/${pts.length} sondes) alors que M n'y est pas`);
+        }
+        juger("courbe-du-lieu", f.length === 0, `étape 4, ${m} : ${f.length ? f.join(" ; ") : `la médiatrice${lieuDuCran && lieuDuCran !== "mediatrice" ? ` et ${lieuDuCran === "cercle" ? "le cercle de diamètre [AB]" : "la droite (AB)"}` : ""} à l'accent, et rien d'autre`}`);
+      }
       if (Math.abs(argF(u)) > 1e-9) {
         // les trois courbes de lieu sont à l'accent, comme l'arc : la porte les écarte, elle sait où elles sont
         const courbesLieu = [[px([0, -9]), px([0, 9])], [px([-9, 0]), px([9, 0])], { c: px([0, 0]), r: 2 * E0.sX }];
@@ -951,19 +988,7 @@ if (pret) {
         juger("arc-au-sommet", arcJuste(a, phi), `étape 4, ${m} : ${a ? `arc en M ${lireArc(a)} depuis MB (attendu → ${degres(phi)})` : "AUCUN arc lu"}`);
       }
     }
-    // les TROIS courbes, lues sur l'accent, loin des points
-    {
-      const f = [];
-      // un POINT : un segment de 2 px centré sur lui (le premier lancement passait un segment de 10⁻⁶
-      // unité, que `couverture` rend à 0 sous 1 px de long — la famille ne pouvait pas être verte)
-      const sur = async (nom, pts) => { let n = 0; for (const p of pts) { const c = px(p); if ((await couverture({ x: c.x - 1, y: c.y }, { x: c.x + 1, y: c.y }, 1, 1.5)) > 0) n++; } if (n < pts.length) f.push(`${nom} : ${n}/${pts.length} points sur l'accent`); };
-      await cocher("pointM", "libre");
-      await classer();
-      await sur("médiatrice", [[0, -7], [0, -5], [0, -3.5], [0, 6.5]]);
-      await sur("droite (AB)", [[-7, 0], [-5.5, 0], [6, 0], [7.5, 0]]);
-      await sur("cercle de diamètre [AB]", [200, 240, 300, 330].map((a) => [2 * Math.cos((a * Math.PI) / 180), 2 * Math.sin((a * Math.PI) / 180)]));
-      juger("courbe-du-lieu", f.length === 0, `étape 4 révélée : ${f.length ? f.join(" ; ") : "les trois courbes tracées à l'accent (médiatrice, droite (AB), cercle de diamètre [AB])"}`);
-    }
+    await cocher("pointM", "libre");
     await etiquettesLisibles("étape 4 révélée, 2 + 4i", 8);
     // ── le BALAYAGE, lieu par lieu (§6.1) ──
     for (const [m, inv, val, autre] of [["mediatrice", "module", "\\vertu\\vert=1", "argument"], ["cercle-1", "argument", "\\arg(u)=-\\dfrac{\\pi}{2}", "module"], ["droite", "argument", "\\arg(u)=0", "module"]]) {
@@ -999,8 +1024,13 @@ if (pret) {
       }
       const pas = m0 && pos[0] ? dist(m0, pos[0]) : 0;
       if (pas < 4) fautes.push(`un appui de flèche déplace M de ${pas.toFixed(1)} px (au moins 4)`);
-      if (new Set(ann).size < 2 && !ann.every((a) => /toujours/.test(a ?? ""))) fautes.push("la valeur parlée ne varie pas");
-      if (!ann.every((a) => (m === "mediatrice" ? /toujours 1/ : m === "droite" ? /toujours 0/ : /−π\/2/).test(a ?? ""))) fautes.push(`la valeur parlée ne contient pas l'invariant (« ${ann[0]} »)`);
+      // la valeur PARLÉE dit ce qui change, et seulement cela ; l'invariant et « Échap » sont dits UNE fois,
+      // par la région vivante, au début du geste (vague 2, ergonomie : 67 relectures sur la médiatrice)
+      if (ann.some((a) => !a || a === "M à sa place")) fautes.push(`la valeur parlée ne dit pas le déplacement (« ${ann[0]} »)`);
+      if (ann.some((a) => /toujours|Échap/.test(a ?? ""))) fautes.push(`la valeur parlée répète l'invariant ou la consigne à chaque appui (« ${ann[0]} »)`);
+      const dit = await annonce();
+      const invDit = inv === "module" ? /module du rapport reste écrit/ : /argument du rapport reste écrit/;
+      if (!invDit.test(dit) || !/glisse sur/.test(dit)) fautes.push(`la région vivante ne dit pas l'invariant au début du geste (« ${dit} »)`);
       // la BORNE : cinquante appuis, et l'invariant tient toujours
       for (let k = 0; k < 50; k++) await page.keyboard.press(m === "mediatrice" ? "ArrowRight" : "ArrowLeft");
       await deuxImages();
@@ -1013,7 +1043,7 @@ if (pret) {
       await deuxImages();
       const apres = sansBlanc(await part(`[data-rapport="${inv}"]`)), apresAutre = sansBlanc(await part(`[data-rapport="${autre}"]`));
       if ((await attr("data-balayage")) !== "non" || apres !== val || apresAutre === "—") fautes.push("Échap ne remet pas M à sa place, ou les lectures ne reviennent pas");
-      juger("balayage-invariants", fautes.length === 0, `étape 4, balayage sur ${m} : ${fautes.length ? fautes.join(" ; ") : `« ${val} » tenu à trois positions et à la borne, l'autre ligne en « — » à hauteur constante, M sur sa courbe, pas de ${pas.toFixed(1)} px, la valeur parlée varie et dit l'invariant`}`);
+      juger("balayage-invariants", fautes.length === 0, `étape 4, balayage sur ${m} : ${fautes.length ? fautes.join(" ; ") : `« ${val} » tenu à trois positions et à la borne, l'autre ligne en « — » à hauteur constante, M sur sa courbe, pas de ${pas.toFixed(1)} px, la valeur parlée dit le déplacement, la région vivante l'invariant`}`);
     }
     await katex("étape 4 révélée");
     await lecturesEntieres("étape 4 révélée");

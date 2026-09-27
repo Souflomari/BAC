@@ -91,7 +91,7 @@
             "id": "quotient-et-ecart",
             "texte": "$\\vert w\\vert = \\dfrac{\\sqrt3}{2}$ et $\\arg(w) = \\dfrac{\\pi}{6}$",
             "juste": true,
-            "retour": "Oui — et regarde ce que la scène vient d'ajouter au dessin : $AC$ **reporté** sur la direction de $\\vec{AB}$. **Il n'atteint pas $B$** : il s'arrête à $\\dfrac{\\sqrt3}{2}$ du chemin. **Le module n'est pas une longueur : c'est une longueur RAPPORTÉE à une autre**, $\\dfrac{AC}{AB} = \\dfrac{2\\sqrt3}{4}$ — **un nombre sans unité.** Et l'arc, lui, part de $\\vec{AB}$ et arrive à $\\vec{AC}$ : **un écart de directions, pas une direction** — la règle du chapitre 4, $\\arg\\!\\left(\\frac{z}{z'}\\right) = \\arg z - \\arg z'$."
+            "retour": "Oui — et regarde ce que la scène vient d'ajouter au dessin : $AC$ reporté sur la direction de $\\vec{AB}$. Il n'atteint pas $B$ : il s'arrête à $\\dfrac{\\sqrt3}{2}$ du chemin. **Le module n'est pas une longueur : c'est une longueur rapportée à une autre**, $\\dfrac{AC}{AB} = \\dfrac{2\\sqrt3}{4}$ — un nombre sans unité. Et l'arc, lui, part de $\\vec{AB}$ et arrive à $\\vec{AC}$ : **un écart de directions, pas une direction** — la règle du chapitre 4, $\\arg\\!\\left(\\frac{z}{z'}\\right) = \\arg z - \\arg z'$."
           },
           {
             "id": "roles-echanges",
@@ -104,7 +104,7 @@
             "id": "fraction-retournee",
             "texte": "$\\vert w\\vert = \\dfrac{2\\sqrt3}{3}$ et $\\arg(w) = -\\dfrac{\\pi}{6}$",
             "juste": false,
-            "retour": "Ce sont les deux nombres de $\\dfrac1w$ — tu as lu la fraction à l'envers. **Et c'est instructif : retourner la fraction RETOURNE le rapport des longueurs** ($\\dfrac{AB}{AC}$ au lieu de $\\dfrac{AC}{AB}$) **et CHANGE LE SIGNE de l'angle** ($-\\dfrac{\\pi}{6}$ au lieu de $\\dfrac{\\pi}{6}$, l'angle $(\\vec{AC},\\vec{AB})$ au lieu de $(\\vec{AB},\\vec{AC})$). Le badge écrit laquelle des deux tu regardes ; l'arc part du dénominateur.",
+            "retour": "Ce sont les deux nombres de $\\dfrac1w$ — tu as lu la fraction à l'envers. Et c'est instructif : **retourner la fraction retourne le rapport des longueurs** ($\\dfrac{AB}{AC}$ au lieu de $\\dfrac{AC}{AB}$) **et change le signe de l'angle** ($-\\dfrac{\\pi}{6}$ au lieu de $\\dfrac{\\pi}{6}$, l'angle $(\\vec{AC},\\vec{AB})$ au lieu de $(\\vec{AB},\\vec{AC})$). Le badge écrit laquelle des deux tu regardes ; l'arc part du dénominateur.",
             "misconception": "mc.math.maths_complexes_trigo.produit-quotient-argument-operation"
           }
         ]
@@ -144,21 +144,21 @@
             "id": "rectangle-partout",
             "texte": "**Oui, il est rectangle** — et le sommet n'y est pour rien : une fois qu'un triangle est rectangle, il l'est, quel que soit le sommet depuis lequel on forme $w$.",
             "juste": false,
-            "retour": "La première moitié est juste : le triangle **est** rectangle, et le petit carré est là, en $C$. La seconde ne l'est pas, et elle coûte cher à l'examen. Le rapport que tu formes **dépend du sommet que tu choisis** : au sommet $A$ il vaut $\\dfrac{3+\\sqrt3\\,i}{4}$, au sommet $C$ il vaut $\\dfrac{\\sqrt3}{3}\\,i$ — deux nombres différents, deux lectures différentes. **Le triangle a UN angle droit ; le critère « imaginaire pur » ne se vérifie qu'au sommet où cet angle se trouve.** Change de sommet et regarde les critères s'allumer, ou pas.",
+            "retour": "La première moitié est juste : le triangle **est** rectangle, et le petit carré est là, en $C$. La seconde ne l'est pas, et elle coûte cher à l'examen. Le rapport que tu formes **dépend du sommet que tu choisis** : au sommet $A$ il vaut $\\dfrac{3+\\sqrt3\\,i}{4}$, au sommet $C$ il vaut $\\dfrac{\\sqrt3}{3}\\,i$ — deux nombres différents, deux lectures différentes. **Le triangle a un seul angle droit ; le critère « imaginaire pur » ne se vérifie qu'au sommet où cet angle se trouve.** Change de sommet et regarde les critères s'allumer, ou pas.",
             "misconception": "mc.math.maths_complexes_trigo.w-sommet-ignore"
           },
           {
             "id": "rectangle-en-A",
             "texte": "**Oui — rectangle en $A$**, puisque l'argument de $w$ n'est pas nul.",
             "juste": false,
-            "retour": "« Rectangle » ne correspond pas à « argument non nul » : il correspond à **$\\pm\\dfrac{\\pi}{2}$ exactement**, c'est-à-dire à un $w$ **imaginaire pur**. Ici l'argument vaut $\\dfrac{\\pi}{6}$, soit $30°$ — l'arc est sous tes yeux, en $A$, et il n'est pas droit. Le petit carré, lui, s'est posé ailleurs. **Tu regardes la bonne grandeur ; c'est le seuil qui est faux.** Chaque ligne de la table demande une valeur **précise**, pas « différente de zéro ».",
+            "retour": "« Rectangle » ne correspond pas à « argument non nul » : il correspond à **$\\pm\\dfrac{\\pi}{2}$ exactement**, c'est-à-dire à un $w$ imaginaire pur. Ici l'argument vaut $\\dfrac{\\pi}{6}$, soit $30°$ — l'arc est sous tes yeux, en $A$, et il n'est pas droit. Le petit carré, lui, s'est posé ailleurs. **Tu regardes la bonne grandeur ; c'est le seuil qui est faux.** Chaque ligne de la table demande une valeur précise, pas « différente de zéro ».",
             "misconception": "mc.math.maths_complexes_trigo.lecture-w-module-argument"
           },
           {
             "id": "rectangle-en-C",
             "texte": "**Oui — rectangle en $C$.**",
             "juste": true,
-            "retour": "Oui. Le petit carré que la scène vient de poser est **en $C$** — et regarde ce qu'elle a écrit **en $A$** : $\\vert w\\vert = \\dfrac{\\sqrt3}{2}$, qui n'est pas $1$, et $\\arg(w) = \\dfrac{\\pi}{6}$, qui n'est ni $0$, ni $\\pi$, ni un quart de tour. **Rien ne s'y allume.** Change de sommet et lis : $w_C = \\dfrac{\\sqrt3}{3}\\,i$, imaginaire pur, donc **angle droit en $C$**. Ce que la table classe, ce n'est pas un triangle : c'est un **couple (triangle, sommet)**."
+            "retour": "Oui. Le petit carré que la scène vient de poser est en $C$ — et regarde ce qu'elle a écrit en $A$ : $\\vert w\\vert = \\dfrac{\\sqrt3}{2}$, qui n'est pas $1$, et $\\arg(w) = \\dfrac{\\pi}{6}$, qui n'est ni $0$, ni $\\pi$, ni un quart de tour. Rien ne s'y allume. Change de sommet et lis : $w_C = \\dfrac{\\sqrt3}{3}\\,i$, imaginaire pur, donc **angle droit en $C$**. Ce que la table classe, ce n'est pas un triangle : c'est un **couple (triangle, sommet)**."
           }
         ]
       },
@@ -168,8 +168,6 @@
       ],
       "lectures": [
         "w",
-        "module-w",
-        "argument-w",
         "nature"
       ],
       "etat": {
@@ -190,7 +188,7 @@
             "id": "mediatrice",
             "texte": "**la médiatrice de $[AB]$**",
             "juste": true,
-            "retour": "Oui, et le mécanisme tient en une ligne : $\\vert u\\vert = \\dfrac{MA}{MB}$ — un quotient de deux distances. Il vaut $1$ exactement quand $MA = MB$ : c'est la définition même de la médiatrice. **La scène vient de tracer TROIS courbes, et une seule répond à cette question-ci.** Les deux autres sont les lieux de cette figure qui répondent à des conditions sur l'**argument** : le **cercle de diamètre $[AB]$** et la **droite $(AB)$** — tu vas les voir travailler dans les trois autres retours. Pose $M$ sur la médiatrice, **au cran $2\\sqrt3\\,i$**, puis **fais-le glisser sans lâcher** : une des deux lignes du panneau refuse de bouger."
+            "retour": "Oui, et le mécanisme tient en une ligne : $\\vert u\\vert = \\dfrac{MA}{MB}$ — un quotient de deux distances. Il vaut $1$ exactement quand $MA = MB$ : **c'est la définition même de la médiatrice**, et c'est la seule courbe que la scène vient de tracer. Cette figure a deux autres lieux, qui répondent à des conditions sur l'argument : le cercle de diamètre $[AB]$ et la droite $(AB)$ — chacun paraît quand tu y poses $M$, et les trois autres retours t'y envoient. Pose $M$ sur la médiatrice, au cran $2\\sqrt3\\,i$, puis **fais-le glisser sans lâcher** : une des deux lignes du panneau refuse de bouger."
           },
           {
             "id": "cercle-diametre",
