@@ -246,7 +246,7 @@ export function QuotientPanel({ scene, className }: { scene: Scene3DDescriptor; 
         { el: refs.k.current, p: en(ancreK), directions: [[0, -1], [-1, -1], [1, -1], [0, 1], [-1, 1], [1, 1]], portee: 40 },
         { el: refs.especeProduit.current, p: en("espece-produit"), directions: [[1, 0]], portee: 4 },
         { el: refs.especeOxydant.current, p: en("espece-oxydant"), directions: [[1, 0]], portee: 4 },
-        { el: refs.roleOxyde.current, p: en("role-oxyde", rolesVisibles), directions: [[1, 0], [-1, 0], [0, -1]], portee: 4 },
+        { el: refs.roleOxyde.current, p: en("role-oxyde", rolesVisibles), surAncre: verdictCourant === "inverse", directions: [[1, 0], [-1, 0], [0, -1]], portee: 4 },
         { el: refs.roleReduit.current, p: en("role-reduit", rolesVisibles), directions: [[-1, 0], [0, -1], [0, 1]], portee: 4 },
       ],
       s.segments(),

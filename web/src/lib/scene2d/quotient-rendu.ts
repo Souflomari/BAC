@@ -428,16 +428,23 @@ export function creerRenduQuotient(canvas: HTMLCanvasElement, hote: HTMLElement)
       // oxydé : un MÉTAL — la lame en sens direct, le dépôt en sens inverse ; la flèche monte (le métal part en ions)
       if (direct) {
         fleche(xLame + lw / 2 + 7, yLiq + 0.42 * hLiq, xLame + lw / 2 + 7, yLiq + 0.16 * hLiq, accent, 2, 5);
+        seg(xLame + lw / 2 + 7, yLiq + 0.42 * hLiq, xLame + lw / 2 + 7, yLiq + 0.16 * hLiq);
         rep["role-oxyde"] = P(xLame + lw / 2 + 12, yLiq + 0.1 * hLiq);
       } else {
         fleche(xDepot - 14, yDepot + 2, xDepot - 14, yDepot - 16, accent, 2, 5);
-        rep["role-oxyde"] = P(xDepot - 18, yDepot - 24);
+        // les flèches des rôles sont des TRAITS : le placeur les évite (premier lancement, 390 px,
+        // étape 3 : « oxydé » posé sur la pointe de celle-ci, qu'il ne connaissait pas)
+        seg(xDepot - 14, yDepot + 2, xDepot - 14, yDepot - 16);
+        // le mot se pose AU-DESSUS de la pointe (2 px d'air), recentré vers les grains : à
+        // (−18, −24), il débordait sur la pointe, puis — la flèche devenue un trait — sur la lame
+        rep["role-oxyde"] = P(xDepot - 6, yDepot - 31);
       }
       // réduit : un ION — l'oxydant du sens qui l'emporte (Cu²⁺, Pb²⁺, Ag⁺ en sens direct ; Sn²⁺ en
       // sens inverse). Un métal n'est jamais « réduit » (relu par l'orchestrateur). La flèche entre
       // dans l'ion par la gauche ; le mot se pose à sa gauche.
       const ion = rep[direct ? "espece-oxydant" : "espece-produit"];
       fleche(ion.x - 22, ion.y, ion.x - 6, ion.y, accent, 2, 5);
+      seg(ion.x - 22, ion.y, ion.x - 6, ion.y);
       rep["role-reduit"] = P(ion.x - 26, ion.y);
     } else {
       rep["role-oxyde"] = P(0, 0, false);
