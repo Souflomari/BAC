@@ -16505,3 +16505,140 @@ questions PARTAGÉES de DÉCISIONS §29 (le plateau collant au téléphone, `Par
 « Bonne réponse » une quatrième fois et garde les mauvais choix en pleine taille, le
 transport en bas du panneau, les nombres des canvas sourds à la taille du texte,
 `--figure-surface` en blanc pur).
+
+## §11.211 — La campagne du plan complexe : 32 sur 35, puis 35 — une porte qui lisait sa réponse sur l'écran, et une forme d'erreur KaTeX que cinq instruments ne voyaient pas
+
+**LE FAIT.** La campagne de sabotages du produit (35 sabotages, dans un arbre à part, sur le
+code de la vague 2, `cf6388c8`) a rendu 32 ATTRAPÉS, 3 MANQUÉS, l'arbre identique à son
+cliché et la porte propre verte avant et après (807 mesures, 29 familles). Les trois manqués
+étaient trois choses différentes, et aucune n'était « la porte est aveugle, point ».
+
+1. **`angle-horaire` — une porte qui se citait elle-même (ADR 0036).** Le sabotage retourne le
+   signe de l'angle de la transformation. 89 rouges en `[nombres]`, et la famille visée,
+   `arc-entre-les-bonnes-directions`, VERTE : son angle ATTENDU était lu sur la lecture
+   AFFICHÉE (`evalArg(L.angle) ?? …`). Un arc faux et un angle affiché faux dans le même sens
+   se disculpaient l'un l'autre. L'attendu vient désormais de la seconde implémentation,
+   $\arg(a)$ recalculé, réduit dans $]-\pi\,;\pi]$ comme le produit.
+2. **`omega-colle` — la seconde FORME d'une formule cassée.** Le sabotage colle `\Omega` à
+   `M` dans une lecture de l'étape 5 : l'élève aurait lu « \OmegaM » en rouge. KaTeX, avec
+   `throwOnError: false`, ne produit PAS de `.katex-error` pour une macro inconnue : il en écrit
+   le nom en rouge À L'INTÉRIEUR d'un `.katex` normal. La famille `katex` ne comptait que
+   `.katex-error` — comme `dom-truth`, `formules-rendues`, `hunt` et `trois-moteurs`. Les deux
+   formes sont désormais énumérées dans `web/scripts/lib/katex-erreurs.mjs`, et les cinq
+   instruments les comptent. *Les SOURCES de contenu étaient déjà gardées en amont
+   (`validate-content` et `formules-rendues` rendent avec `throwOnError: true`, qui lève sur
+   une macro inconnue) ; ce qui ne l'était pas, c'est le TeX que le CODE construit à
+   l'exécution — les lectures des scènes.*
+3. **`import-three` — un sabotage INERTE, pas une porte aveugle.** `import "three"` nu était
+   élagué par le bundler (three déclare ses modules sans effet de bord) : le sabotage n'a
+   jamais atteint le produit. Réécrit (`import { REVISION } …` et un usage), il atteint le
+   bundle — la campagne le vérifie en cherchant sa marque dans `.next/static` — et la
+   famille `pas-de-3d` rougit.
+
+**PROUVÉ, dans cet ordre, dans l'arbre de la campagne, avec la commande de la campagne**
+(ADR 0034 : un rouge ne prouve rien sans le vert qui le précède, dans ce dossier, avec cette
+commande) : la porte CORRIGÉE verte sur le produit propre (807/29) ; rouge sur les trois
+sabotages, chacun dans sa famille visée (`[arc-entre-les-bonnes-directions]` 89 rouges,
+`[katex]`, `[pas-de-3d]`) ; l'arbre produit identique ; verte de nouveau. **35 sur 35.** Arbre
+de campagne retiré (`unlink` du lien `node_modules`, puis `git worktree remove --force`).
+
+**CE QUI RESTE À PROUVER, écrit à côté (ADR 0040) :** `dom-truth`, `formules-rendues`, `hunt` et
+`trois-moteurs` ont reçu la seconde forme ; ils ont été relus et parsés, pas encore LANCÉS sur
+une page qui la porterait — aucune page du produit ne la porte aujourd'hui. Le premier passage
+de chacun après ce commit est leur vert ; il n'y a pas encore eu de rouge.
+
+## §11.212 — Le rapport lu depuis un sommet (R6) : construit, et vingt-quatre rouges au premier passage — dont vingt-trois étaient la porte
+
+**LE FAIT.** La quinzième scène (`plan-complexe-rapport`, maths/nombres-complexes-2, en tête de
+R6 ; spec `docs/pipeline/propositions/maths-nombres-complexes-2-scene-w.md`, deux fois révisée
+après la vague 1) est construite : modèle exact (`web/src/lib/scene2d/plan-complexe-rapport-modele.ts`,
+test unitaire 12/12), repère partagé avec la scène sœur (`plan-repere.ts` — la sœur reste verte,
+807/29, après l'extraction), rendu Canvas 2D, panneau, descripteur à quatre étapes, items
+NBCOMPLEX2-42 à 45, prose. La porte (`scene-plan-complexe-rapport.mjs`, 28 familles) a été écrite
+AVANT le premier lancement, depuis la spec.
+
+**Premier passage : ROUGE, 24 manquements sur 212 mesures.** Lus un par un, sur captures :
+
+- **la porte se trompait vingt-trois fois**, et chaque erreur est une leçon d'instrument :
+  un produit VECTORIEL écrit pour un produit scalaire (la cote reportée cherchée du mauvais côté
+  de AB) ; un zéro SIGNÉ du flottant (`atan2(−0, −x) = −π` contre $\pi$ exact) ; un arc lu dans un
+  anneau que traversaient d'autres encres (la cote reportée à −13°, le filet de l'étiquette
+  « π/6 », les trois courbes de lieu à l'accent) ; une sonde de POINT passée comme un segment de
+  10⁻⁶ unité, que `couverture` rend à 0 — la famille `courbe-du-lieu` ne pouvait pas être verte ;
+  une épaisseur COMPTÉE en pixels, qui lit « 3 px » pour un trait de 1,75 px en biais comme pour
+  un trait de 3,5 px à l'horizontale (remplacée par la couverture antialiasée, colonne par
+  colonne) ; une échelle régressée sur des graduations dont une était le segment MA ;
+  « l'axe réel » pris pour le critère « w réel » ;
+- **le produit se trompait une fois pour de vrai, et une seconde fois en douce** : en M $=2\sqrt3\,i$,
+  l'arc de rayon fixe passait à moins de 5 px du cercle de diamètre $[AB]$ sur toute sa longueur,
+  à la même encre — deux tracés qui se lisaient comme un seul. Le rayon reste fixe SAUF quand
+  l'arc LONGERAIT une courbe (à moins de 6 px sur plus de 24° et d'un tiers de son ouverture) ;
+  une courbe qui le COUPE se lit, et reste. Et au téléphone, la porte d'ergonomie a trouvé une
+  « commande cachée sous la scène collante » qui n'en était pas une — §11.213.
+
+**Ce que l'arc a appris à la porte, et qu'elle écrit** : un bout d'arc qui disparaît sous une
+flèche ou sous un tracé exclu n'est pas un arc COURT, c'est un arc qu'on ne voit pas finir. La
+porte rend désormais, pour chaque bout, jusqu'où l'on ne voit rien (`minCache`, `maxCache`), et
+juge le bout attendu dans cette étendue — un arc trop court dans une zone VISIBLE rougit toujours.
+
+**Vert au quatrième passage : 212 mesures, 28 familles.** Troisième et quatrième verts, essai
+rouge, sœur, électrolyse, ergonomie des quinze scènes : §11.214. Dans `telephone` en CI.
+
+## §11.213 — Le défileur fantôme : 2 808 arrêts de tabulation que personne ne voyait
+
+**LE FAIT.** La porte d'ergonomie de R6, au téléphone, a signalé six commandes « cachées sous la
+scène collante » — dont un `span` : le TEXTE d'un choix de pari. `overflow-x: auto` force
+`overflow-y: auto` ; la boîte d'une fraction KaTeX dépasse de 1 à 8 px sous la dernière ligne ; le
+texte devient un défileur VERTICAL — et Chromium rend un défileur sans enfant focalisable
+atteignable au Tab. Mesuré sur les 62 leçons à 390 px, tous chapitres dépliés : **2 808
+défileurs de 1 à 8 px** (1 759 formules en ligne de la prose, 573 textes de choix de QCM, 136
+énoncés, des étapes de dérivation, 140 formules de libellés d'épreuve). Pour un élève au
+clavier : jusqu'à des dizaines d'arrêts invisibles par leçon.
+
+**Corrigé à la source** : `ChoiceButton`, `McqItem`, `CheckpointItem`, `Derivation` reçoivent
+8 px de rembourrage qui absorbent le dépassement et une marge négative qui rend la place (rien
+ne bouge à l'écran) ; les formules des libellés d'épreuve (`AttemptFirstExercise`) reçoivent
+`overflow-y: hidden`, comme celles de la prose. **Armé** dans `etroit-sweep` : le défileur
+VERTICAL d'une boîte faite pour défiler en largeur (jamais rien à montrer) — essai rouge :
+une boîte de ce type posée dans chaque page, vue sur les quatre. **Non armé, écrit à côté** :
+le petit dépassement en LARGEUR, qui peut cacher la vraie fin d'une formule ; compté par sorte.
+Le correctif essayé sur la formule en ligne (rembourrage + marge négative) a été RETIRÉ : il
+faisait déborder le paragraphe à sa place (163 paragraphes). Détail et condition d'armement :
+`DECISIONS-EN-ATTENTE.md` §31.
+
+## §11.214 — La vague A de la dette d'examen : onze trous payés, et ce que la vague 1 a trouvé derrière le premier correctif
+
+**LE FAIT.** Onze trous de trois notions de PC (`DETTE-EXAMEN.md`, vague A) payés en deux
+passes. Première passe : prose par un auteur, items par un autre (CMP-39 à 43, DECRO-36 à 40,
+RAB-43 à 47 et AB-CHAIN-1 ; deux modèles d'erreur neufs, `archimede-mal-situee-dans-le-modele`
+et `confond-restant-desintegre`). Vague 1 (pédagogie, fidélité) : **aucune erreur
+d'arithmétique** sur ≈ 45 valeurs recalculées — et quatre défauts que les portes ne voient pas :
+
+1. **Un pH calculé que le cadre exclut.** L'exemple de titrage écrivait
+   $\text{pH} = \mathrm{p}K_A - \log(\dots)$ (Henderson-Hasselbalch, `pc-physique-chimie.yaml:478`),
+   dans l'orientation qu'une revue avait déjà retirée, douze lignes après avoir promis de ne pas
+   le faire. Réécrit dans le sens attesté : pH LU, $\mathrm{p}K_A$ déduit.
+2. **Le correctif avait oublié ce dont l'élève se souvient.** « La pente à l'origine vaut $g$ »
+   avait été durci dans deux phrases, et laissé dans l'exemple travaillé, la figure et le tableau
+   d'Euler — la leçon se contredisait. L'hypothèse (« poussée négligée ») est écrite aux trois
+   endroits, la légende de la figure comprise ; la forme canonique de l'équation avec Archimède
+   est assemblée pas à pas, et un « Arrête-toi » fait parier l'élève sur $a_0$ dans un liquide
+   aussi dense que la bille (+ `cp-r7-archimede`).
+3. **Trois items que la leçon résolvait d'avance** (la chaîne Th-232 travaillée dans la leçon ;
+   le rapport 3 qui lui sert de vérification ; la balle de l'exemple de R4) — refaits. Le premier
+   remplaçant de DECRO-39 donnait à une roche 25 milliards d'années ; refait sur U-235/Pb-207
+   (1,27 milliard).
+4. **Des modèles nommés dans les items et jamais rompus en prose** — deux ruptures écrites.
+
+Le reste : `habilete` sur les quinze items neufs, les retours qui mènent le modèle faux à sa
+conséquence, une notation (`k` pour deux grandeurs → `α` pour la quadratique), $g = 10$ tel que
+les sujets le donnent. Trois questions de CADRE vont au propriétaire (`DECISIONS-EN-ATTENTE.md`
+§31) : une exclusion `derived` que la banque dément (les filiations), une question déjà réservée
+(Henderson-Hasselbalch), et la poussée d'Archimède, absente du fichier de cadre alors que cinq
+sujets l'exigent. **Refusé par l'auteur, avec raison** : le distracteur « somme des composantes »
+de CMP-43, faute d'un modèle déclaré qui le nomme honnêtement — au prochain passage de
+l'architecte.
+
+**Vérifié** : `validate-content` (62 dossiers, 0 échec), `resume-couverture`,
+`couverture-diagnostique`, `eleve-ruse` (cliquet tenu), les artefacts du modèle apprenant
+régénérés, `verdict-qcm` sur les six leçons touchées.
