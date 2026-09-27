@@ -348,6 +348,8 @@ Retiens la portée exacte de ce résultat : il repose entièrement sur des coeff
 
 ### Exemple travaillé 2 — coefficients complexes : reconnaître un carré parfait
 
+*(Une équation à coefficients complexes non réels, comme celle-ci, relève de la filière Sciences Mathématiques — en Sciences Expérimentales, le second degré reste toujours à coefficients réels.)*
+
 Résoudre dans $\mathbb{C}$ l'équation $z^2 - (3+i)z + 2 + 2i = 0$.
 
 **Ce qu'on cherche et pourquoi ce geste :** rien ne change dans la méthode — on identifie $a=1$, $b=-(3+i)$, $c=2+2i$, et on calcule $\Delta = b^2-4ac$ en développant avec les règles du chapitre 3. Ce qui change, c'est l'**arrivée** : $\Delta$ ne sera pas un réel, donc le raccourci « $\delta = i\sqrt{|\Delta|}$ » ne s'appliquera pas. Il faudra reconnaître $\Delta$ comme un carré.
@@ -423,6 +425,8 @@ Ce sont les **relations entre les coefficients et les racines** (on les appelle 
 
 **Exemple travaillé.** Soit $m$ un nombre complexe non nul, et soient $z_1$ et $z_2$ les deux solutions de l'équation $z^2-2mz+4m^2=0$. Calculer $\dfrac{1}{z_1}+\dfrac{1}{z_2}$.
 
+*($m$ complexe non nécessairement réel : les coefficients $-2m$ et $4m^2$ peuvent donc être complexes non réels — comme au chapitre 4b, cet exemple relève de la filière Sciences Mathématiques.)*
+
 **Ce qu'on cherche et pourquoi ce geste :** avant de se lancer dans un discriminant, regarde la quantité demandée. Échanger $z_1$ et $z_2$ ne la change pas : elle est **symétrique**. C'est le signal — une expression symétrique des deux racines peut toujours s'exprimer à partir de leur seule somme et de leur seul produit. Autrement dit, on n'a pas besoin des racines pour répondre.
 
 On lit d'abord la somme et le produit sur les coefficients ($a=1$, $b=-2m$, $c=4m^2$) :
@@ -452,6 +456,8 @@ Le sens inverse est encore plus rentable, et c'est un geste que les sujets explo
 **Exemple travaillé.** Soient $u$ et $v$ deux nombres complexes tels que $u+v \neq 2i$. Résoudre dans $\mathbb{C}$ l'équation
 
 $$(E)\ :\ z^2 - (u+v+2i)\,z + 2i\,(u+v) = 0$$
+
+*(Les coefficients de $(E)$ sont construits à partir de $u+v$ et $2i$, donc potentiellement complexes non réels — cet exemple relève, comme le précédent, de la filière Sciences Mathématiques.)*
 
 **Ce qu'on cherche et pourquoi ce geste :** regarde la forme des deux coefficients avant de calculer quoi que ce soit. Le coefficient de $z$ est la somme de deux blocs, $(u+v)$ et $2i$ ; le terme constant est le **produit des deux mêmes blocs**. C'est la signature de la forme somme/produit — et calculer un discriminant ici serait un long détour vers une réponse qu'on peut lire.
 
@@ -554,6 +560,10 @@ Ce chapitre-ci enseigne le socle **algébrique** : forme algébrique, conjugué,
 
 Ce n'est pas un désordre du programme : les complexes forment un seul édifice, découpé en deux chapitres pour l'apprentissage, et un sujet de bac ne connaît pas ce découpage.
 
+Un dernier réflexe à vérifier avant de te lancer, sur la toute première question du sujet — une équation du second degré à coefficients **réels** cette fois, comme celles que tu résolvais avant même de connaître $\mathbb{C}$ :
+
+[[checkpoint:cp-r4b-delta-negatif]]
+
 Voici le sujet — session normale 2019, filière Sciences Expérimentales (SVT et Sciences Physiques).
 
 [[exercise:r-bac]]
@@ -569,9 +579,9 @@ Puis, pour vérifier que tu as retenu les **gestes** et non les nombres, une var
      imprimée + « À toi de jouer ») a été remplacé par la couche « essaie
      d'abord » — exercises.yaml (r-bac = sujet national vérifié 2019 SExp Ex.2 ;
      r-variation = jumeau anti-mémorisation, not-applicable) et checkpoints.yaml
-     (cp-r0-predict + 4 gates de rupture : conjugué, module vs parties, distance
-     |z_B − z_A|, forme algébrique ↔ exponentielle), câblés par des marqueurs
-     [[exercise:]] / [[checkpoint:]].
+     (cp-r0-predict + 5 gates de rupture : conjugué, module vs parties, distance
+     |z_B − z_A|, forme algébrique ↔ exponentielle, Δ<0 à coefficients réels),
+     câblés par des marqueurs [[exercise:]] / [[checkpoint:]].
      (3) TENSION DE PÉRIMÈTRE, à arbitrer par la relecture pédagogique : le corps
      de la leçon (R1–R5) enseigne le socle ALGÉBRIQUE (forme algébrique,
      conjugué, module, géométrie du plan complexe). Le sujet national vérifié
@@ -585,4 +595,19 @@ Puis, pour vérifier que tu as retenu les **gestes** et non les nombres, une var
      l'end-bank algébrique.
      (4) L'accroche R0 (progression ℕ → ℤ → ℚ → ℝ → ℂ) est un dispositif
      d'accroche, pas une citation du cadre officiel — à valider comme tel.
--->
+
+     NOTE AJOUTÉE (wave-1 fixes, exam-debt wave B1, 2026-09-27) :
+     (5) [CORRIGÉ, fidélité B2a] « Exemple travaillé 2 — coefficients
+     complexes » (R4b) et les deux exemples à coefficients complexes du
+     chapitre Viète (R4c, usages 1 et 2) sont maintenant explicitement
+     étiquetés filière Sciences Mathématiques, sur le précédent
+     `nombres-complexes-2/lesson.md:327` (« En filière Sciences
+     Mathématiques… ») — vérifié contre maths-sexp.yaml:305 (« SExp : second
+     degré à coefficients réels seulement »).
+     (6) [LIVRÉ, pédagogie I4, template box A] Un nouveau checkpoint
+     predict-commit, `cp-r4b-delta-negatif`, placé juste avant le sujet
+     national (R6) : pour une équation à COEFFICIENTS RÉELS, Δ<0 ne signifie
+     plus « aucune solution » comme dans ℝ. Probe la misconception déjà
+     déclarée `delta-negatif-aucune-solution` ; aucun id neuf, rien à
+     transmettre à l'auteur d'items. -->
+

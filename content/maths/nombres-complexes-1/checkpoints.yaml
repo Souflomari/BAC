@@ -33,6 +33,14 @@ skill_code: maths_complexes_algebrique
 #                                           imaginaire. Amorce la rotation du
 #                                           sujet. Probes algebrique-exponentielle-
 #                                           conversion.
+#   cp-r4b-delta-negatif (before r-bac)   — rupture gate: pour une équation à
+#                                           COEFFICIENTS RÉELS, Δ<0 ne signifie
+#                                           plus « aucune solution » comme dans
+#                                           ℝ — il existe δ tel que δ²=Δ et deux
+#                                           solutions complexes conjuguées.
+#                                           Placé juste avant le sujet national
+#                                           (fidélité M6). Probes
+#                                           delta-negatif-aucune-solution.
 #
 # EVERY distractor carries a named misconception id from this notion's inventory
 # (items.yaml `misconceptions:`). Option lengths are balanced so the correct
@@ -357,3 +365,70 @@ checkpoints:
           $\sin\!\left(-\dfrac{\pi}{3}\right) = -\sin\!\left(\dfrac{\pi}{3}\right) = -\dfrac{\sqrt{3}}{2}$.
           Donc $e^{-i\pi/3} = \dfrac{1}{2} - \dfrac{\sqrt{3}}{2}i$, avec un signe
           **moins** — c'est bien $\dfrac{1}{2}a$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-r4b-delta-negatif | placed BEFORE [[exercise:r-bac]]
+  #        Rupture gate: for a REAL-coefficient quadratic, Δ<0 no
+  #        longer means "no solution" as in ℝ — δ such that δ²=Δ gives
+  #        two conjugate complex solutions. Placed right before the
+  #        national exercise (fidelity M6). Probes
+  #        delta-negatif-aucune-solution.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4b-delta-negatif
+    rung: "R6"
+    habilete: raisonnement
+    skill_code: maths_complexes_algebrique
+    tags: [checkpoint, formative, misconception_driven, maths_complexes_algebrique, second_degre, bac_style]
+    primary_misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+    item_source: original
+    lesson_placement: before_bac
+
+    stem: |
+      Pour l'équation à **coefficients réels** $z^2-2z+5=0$, le discriminant
+      vaut $\Delta = 4-20 = -16$. Dans $\mathbb{C}$, que peut-on en conclure ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          $\Delta<0$ ne signifie plus « aucune solution » : il existe $\delta=4i$ tel que $\delta^2=-16=\Delta$, et l'équation a deux solutions complexes conjuguées, $z=1\pm2i$.
+        correct: true
+        feedback: |-
+          Exact. Dans $\mathbb{C}$, le mur « $\Delta<0 \Rightarrow$ aucune
+          solution » de $\mathbb{R}$ est tombé : on cherche $\delta$ tel que
+          $\delta^2=\Delta$ (ici $\delta=4i$, car $(4i)^2=-16$), et
+          $z=\dfrac{2\pm4i}{2}=1\pm2i$ — deux solutions, conjuguées l'une de
+          l'autre puisque les coefficients sont réels.
+
+      - id: B
+        text: "Aucune solution : $\\Delta<0$, exactement comme dans $\\mathbb{R}$."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+        feedback: |-
+          C'est justement le réflexe que $\mathbb{C}$ rend obsolète : le
+          verdict « $\Delta<0 \Rightarrow$ aucune solution » n'est vrai que
+          dans $\mathbb{R}$. Dans $\mathbb{C}$, on construit $\delta$ tel que
+          $\delta^2=\Delta$ (ici $\delta=4i$) et l'équation a toujours deux
+          solutions.
+
+      - id: C
+        text: "$z = \\dfrac{2 \\pm \\sqrt{-16}}{2}$, en calculant $\\sqrt{-16}$ avec les règles usuelles de la racine carrée."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+        feedback: |-
+          La racine carrée n'est définie que sur les réels positifs ou nuls :
+          $\sqrt{-16}$ n'a pas de sens écrit ainsi. Il faut poser $\delta$ tel
+          que $\delta^2=-16$ (ici $\delta=4i$, vérifié en le redéveloppant),
+          jamais appliquer $\sqrt{\ }$ directement à un nombre négatif.
+
+      - id: D
+        text: "Une solution double, $z=1$, en confondant $\\Delta<0$ avec $\\Delta=0$."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+        feedback: |-
+          $\Delta=0$ donnerait effectivement une solution double — mais ici
+          $\Delta=-16 \neq 0$. Un $\Delta$ réel strictement négatif donne
+          toujours DEUX solutions distinctes et conjuguées, jamais une
+          solution double : c'est $\Delta=0$, et lui seul, qui donne ce cas.

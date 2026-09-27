@@ -475,7 +475,7 @@ $$|f(b)-f(a)| \le k\,|b-a|$$
 
 **L'image qui rend ça crédible :** $|f'|$ mesure à quel point $f$ « étire » les écarts, localement, en chaque point. Si cette dilatation locale ne dépasse jamais $k$ nulle part sur $I$, alors un écart entre deux points quelconques de $I$ ne peut pas, lui non plus, être dilaté de plus d'un facteur $k$ en passant par $f$ — même un chemin qui zigzague entre $a$ et $b$ ne peut pas s'éloigner plus vite, en moyenne, que sa pente maximale ne l'y autorise à chaque instant.
 
-Ce résultat est un corollaire du théorème des accroissements finis — que la leçon « Dérivabilité et étude des fonctions » signale explicitement comme hors du programme officiel à ce niveau. Plusieurs sujets nationaux l'utilisent quand même pour ce type de suite : on l'énonce donc ici, directement, pour savoir s'en servir correctement le jour où un sujet le demande. Retiens surtout la condition qui fait tout fonctionner : $k$ doit être **strictement inférieur à 1**, et l'inégalité $|f'|\le k$ doit être valable **sur tout un intervalle stable qui contient tous les $u_n$** — pas seulement vérifiée au point $\alpha$.
+Ce résultat est un corollaire du théorème des accroissements finis — un outil au programme Sciences Mathématiques, admis ici sans démonstration (c'est la démonstration qui est hors programme à ce niveau) ; il est hors programme en Sciences Expérimentales, où l'étude des suites reste calculatoire. Plusieurs sujets nationaux (filière SM) l'utilisent pour ce type de suite : on l'énonce donc ici, directement, pour savoir s'en servir correctement le jour où un sujet le demande. Retiens surtout la condition qui fait tout fonctionner : $k$ doit être **strictement inférieur à 1**, et l'inégalité $|f'|\le k$ doit être valable **sur tout un intervalle stable qui contient tous les $u_n$** — pas seulement vérifiée au point $\alpha$.
 
 ### Exemple travaillé
 
@@ -511,11 +511,15 @@ $$0 \le u_{n+1} \le q\,u_n \ \Longrightarrow\ 0 \le u_n \le u_0\,q^n \quad (\tex
 
 $$0\le q<1 \ \Longrightarrow\ u_0\,q^n\to0 \ \Longrightarrow\ u_n\to0 \quad (\text{gendarmes, chapitre 7})$$
 
+Reprends l'exemple travaillé plus haut, mais imagine qu'à l'étape 1 tu avais trouvé, sur un intervalle stable plus large, une borne $k=1$ au lieu de $k=\frac12$ (une borne moins serrée, mais que tu croies tout de même « valable », puisque $|f'|\le1$ y reste vrai). Engage-toi avant de lire la suite : la chaîne du raisonnement — empiler l'inégalité par récurrence, puis conclure par les gendarmes — fonctionne-t-elle encore pour obtenir $u_n\to\alpha$ ?
+
+[[checkpoint:cp-r8b-k-non-strict]]
+
 ### L'erreur à repérer
 
 Deux erreurs coûtent cher ici, et toutes deux portent sur l'intervalle $I$, pas sur le calcul de $f'$ lui-même :
 
-- **Majorer $|f'|$ sur un intervalle trop large** (ou sur $\mathbb{R}$ tout entier « pour être sûr »), au lieu de l'intervalle *stable* réellement occupé par les $u_n$. Ici, $f'(x)=\frac{x}{2}$ n'est majorée par $\frac12$ que sur $I=[0\,;1]$ — sur $[0\,;3]$ par exemple, $f'(3)=\frac32>1$, et l'inégalité de contraction s'effondre : rien ne garantit plus $k<1$.
+- **Majorer $|f'|$ sur un intervalle où la borne $k<1$ ne tient plus.** Le problème n'est pas la taille de l'intervalle en elle-même — $\mathbb{R}$ tout entier convient parfaitement si $|f'|\le k<1$ y est vérifiée partout, sans qu'il soit besoin de se restreindre. Le vrai risque est d'élargir l'intervalle *sans revérifier* que $k$ reste strictement inférieur à $1$ dessus, ou de perdre en route le fait que $u_n\in I$ pour tout $n$. Ici, $f'(x)=\frac{x}{2}$ n'est majorée par $\frac12$ que sur $I=[0\,;1]$ — sur $[0\,;3]$ par exemple, $f'(3)=\frac32>1$ : la borne $k<1$ ne tient plus sur ce plus grand intervalle, et l'inégalité de contraction s'effondre.
 - **Oublier de vérifier, avant d'appliquer l'IAF, que $u_n$ reste bien dans $I$ pour tout $n$.** L'inégalité $|f(b)-f(a)|\le k|b-a|$ n'est valable que pour $a,b\in I$ — ici $a=\alpha$ et $b=u_n$. Sans l'étape 0 (souvent déjà acquise d'une question précédente de l'énoncé), appliquer l'IAF n'a aucune justification.
 
 ---
@@ -525,6 +529,21 @@ Deux erreurs coûtent cher ici, et toutes deux portent sur l'intervalle $I$, pas
 ### Le problème que cette méthode résout
 
 Jusqu'ici, un terme $u_{n+1}$ se calculait à partir de $u_n$ via une formule $u_{n+1}=f(u_n)$. Il existe une famille différente de sujets, où le rang $n$ n'indexe pas les *termes* d'une même suite, mais une *famille de fonctions* $f_n$ : à chaque $n$, on ne donne pas de formule pour calculer $x_n$ directement — on donne une équation, $f_n(x)=0$, dont $x_n$ est LA solution, à charge pour toi de montrer d'abord qu'il y en a une, et une seule. Impossible de « calculer » $x_n$ ; il faut raisonner sur l'équation qui le définit.
+
+<!-- ENHANCEMENT SLOT (figure, non bloquant) — brief pour la file diagram/interactive :
+     type: structural-diagram · tool: svg+katex (taxonomie ADR 0017).
+     Sujet : superposer, sur un même repère, les courbes de deux ou trois
+     f_n consécutives (par ex. n, n+1, n+2 sur l'exemple f_n(x)=nx+x^3-1),
+     chacune marquant son unique zéro x_n sur l'axe des abscisses — pour
+     rendre visible que x_n et x_{n+1} sont les zéros de DEUX COURBES
+     DIFFÉRENTES (le point que "comparer à vue" rate), et que la suite des
+     zéros se resserre en descendant vers 0.
+     stages:
+       - "Tracer f_n seule sur [0,1], marquer son zéro x_n"
+       - "Superposer f_{n+1} : la courbe se translate vers le haut sur ]0,1[ (car f_{n+1}(x)=f_n(x)+x > f_n(x) pour x>0)"
+       - "Lecture finale : le zéro de f_{n+1} est donc à GAUCHE de x_n — x_{n+1} < x_n — visible sans aucun calcul, juste par la position relative des deux courbes"
+     Non produit par cet auteur (content-author, hors lane) ; signalé pour
+     la file diagram/interactive. -->
 
 ### Exemple travaillé
 
@@ -564,6 +583,8 @@ $$f_{n+1}(x_n) > 0 = f_{n+1}(x_{n+1})$$
 
 $f_{n+1}$ est strictement croissante (étape 1, valable pour tout indice $\ge1$) : une fonction strictement croissante range les sorties dans le même ordre que les entrées, donc $f_{n+1}(x_n) > f_{n+1}(x_{n+1}) \Rightarrow x_n > x_{n+1}$.
 
+**Ce qui aurait changé si $f_{n+1}$ avait été décroissante :** ce sens ne va pas de soi — une fonction strictement décroissante range au contraire les sorties dans l'ordre INVERSE des entrées. Avec une famille décroissante, la même inégalité sur les sorties, $f_{n+1}(x_n) > f_{n+1}(x_{n+1})$, aurait donné $x_n < x_{n+1}$ — l'inégalité se retourne. Il faut donc toujours relire le sens de variation de $f_{n+1}$ avant de faire passer une inégalité des sorties aux entrées, jamais le supposer.
+
 C'est vrai pour tout $n\ge1$ : $(x_n)$ est strictement décroissante.
 
 **Étape 3 — convergence.** $(x_n)$ est strictement décroissante (étape 2) et minorée par $0$ (étape 1, $x_n>0$ pour tout $n$) : les deux hypothèses du théorème de la limite monotone (chapitre 8) sont réunies. $(x_n)$ converge vers une limite $L$, avec $L\ge0$.
@@ -584,11 +605,15 @@ $$\lim_{n\to+\infty} x_n = 0$$
 
 **Ce que ce résultat confirme :** contrairement au point fixe du chapitre 9, il n'y avait ici rien à résoudre — la limite se lit sur une majoration que la définition même de $x_n$ fournissait déjà, exploitée par l'absurde.
 
+Change maintenant de terrain, avant de lire la suite. Imagine une famille $(g_n)$ où, cette fois, chaque $g_n$ est **strictement décroissante** sur $\mathbb{R}$ (au lieu de croissante comme $f_n$ ci-dessus), avec $g_n(y_n)=0$ pour chaque $n$. Un élève, ayant retenu de l'exemple ci-dessus que « la suite des zéros est décroissante », écrit directement, sans rien évaluer : « comme dans l'exemple, $(y_n)$ est décroissante. » Engage-toi avant de lire la suite : cette transposition telle quelle est-elle valable ?
+
+[[checkpoint:cp-r8c-ordre-decroissant]]
+
 ### L'erreur à repérer
 
 Trois pièges reviennent sans cesse sur ce type de suite :
 
-- **Comparer $x_n$ et $x_{n+1}$ « à vue »**, en devinant que la suite doit monter ou descendre parce que $n$ augmente dans la formule, sans jamais évaluer $f_{n+1}(x_n)$. $x_n$ et $x_{n+1}$ sont zéros de deux fonctions différentes : la seule façon de les comparer est de faire parler $f_{n+1}$ (ou $f_n$) aux DEUX points, jamais de comparer directement les définitions.
+- **Comparer $x_n$ et $x_{n+1}$ « à vue »**, en devinant que la suite doit monter ou descendre parce que $n$ augmente dans la formule, sans jamais évaluer $f_{n+1}(x_n)$. $x_n$ et $x_{n+1}$ sont zéros de deux fonctions différentes : la seule façon de les comparer est de faire parler $f_{n+1}$ (ou $f_n$) aux DEUX points, jamais de comparer directement les définitions — et une fois l'inégalité obtenue entre les deux SORTIES, il faut relire le sens de variation de $f_{n+1}$ avant de la retourner en inégalité sur les entrées : une famille croissante conserve l'ordre, une famille décroissante l'inverse.
 - **Invoquer le TVI pour l'existence sans jamais mentionner la stricte monotonie.** Le TVI seul donne AU MOINS une solution ; sans la stricte monotonie de $f_n$, rien n'empêche une deuxième solution ailleurs, et l'écriture « $x_n$ », au singulier, n'aurait alors aucun sens.
 - **Confondre l'encadrement où vit la suite avec sa limite** : $0<x_n<1$ ne dit rien, à lui seul, sur la valeur de $L$ — ce n'est ni $0$ ni $1$ par défaut. Il a fallu ici un argument séparé (l'absurde sur $n\,x_n$) pour l'obtenir.
 
@@ -813,4 +838,40 @@ Même machinerie profonde, autre habillage : une suite récurrente $u_{n+1}=f(u_
      périmètre demandé, y compris suites adjacentes et le théorème des
      gendarmes, sont typiquement SM ; PC/SVT couvrent une version allégée).
      Si cette leçon doit aussi servir PC/SVT, une passe de calibrage de
-     profondeur sera nécessaire. -->
+     profondeur sera nécessaire.
+
+     NOTE AJOUTÉE (wave-1 fixes, exam-debt wave B1, 2026-09-27) :
+     (3) [CORRIGÉ, fidélité BLOQUANTE] La phrase de R8b qualifiant l'inégalité
+     des accroissements finis (IAF) de « hors du programme officiel à ce
+     niveau » était fausse : vérifié contre maths-sm.yaml:115/119 et
+     bac-reference.md:110-112, l'IAF EST au programme Sciences Mathématiques
+     (outil admis, sans démonstration — c'est la démonstration qui est hors
+     programme) ; elle est hors programme en Sciences Expérimentales
+     (maths-sexp.yaml:303). R8b reformule en conséquence, et le boundary guard
+     de checkpoints.yaml (:41-46) nomme maintenant explicitement la
+     contraction par IAF et les suites implicites $f_n(x_n)=0$, pour ne plus
+     contredire les rungs R8b/R8c.
+     (4) [CORRIGÉ, pédagogie M1] Le piège de fin de R8b play désignait
+     « majorer $|f'|$ sur $\mathbb{R}$ tout entier » comme une erreur en soi —
+     alors que c'est une méthode de bac parfaitement correcte tant que
+     $k<1$ y tient. Reformulé : l'erreur est d'élargir l'intervalle SANS
+     revérifier que $k$ reste strictement $<1$ dessus (ou de perdre
+     $u_n\in I$), pas la taille de l'intervalle en tant que telle.
+     (5) [CORRIGÉ, pédagogie I5] R8c ne donnait le sens de lecture d'une
+     fonction monotone que pour le cas croissant ($f_{n+1}(x_n)>f_{n+1}(x_{n+1})
+     \Rightarrow x_n>x_{n+1}$). Ajouté : le cas décroissant (l'inégalité se
+     retourne), rappelé une seconde fois dans le piège de fin de rung.
+     (6) [LIVRÉ, pédagogie I4] Quatre nouveaux checkpoints predict-commit,
+     chacun placé AVANT le paragraphe qui révèle le piège qu'il sonde (jamais
+     après) : `cp-r8b-k-non-strict` (R8b, k=1 au lieu de k<1 — la chaîne
+     empiler+gendarmes s'effondre) et `cp-r8c-ordre-decroissant` (R8c,
+     transposer « la suite des zéros décroît » à une famille DÉCROISSANTE
+     sans réévaluer $f_{n+1}$). Aucun nombre de banque réutilisé ; les deux
+     probent des misconceptions déjà déclarées dans items.yaml
+     (`contraction-k-pas-strict`, `comparaison-xn-sans-evaluation`) — rien à
+     transmettre à l'auteur d'items, aucun id neuf.
+     (7) [SIGNALÉ, pédagogie I9] Un brief de figure (enhancement slot,
+     non bloquant) est ajouté avant l'exemple travaillé de R8c : superposer
+     les courbes de $f_n$ et $f_{n+1}$ pour rendre visible, sans calcul, que
+     leurs zéros sont ceux de DEUX fonctions différentes. Non produit ici
+     (hors du lane content-author) — signalé pour la file diagram/interactive. -->
