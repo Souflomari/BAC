@@ -169,9 +169,11 @@ la dette d'examen étant par nature résolution-lourde) mais ne s'aggrave pas.
 
 ## 8. Dette ouverte (pour le propriétaire)
 
-1. **Reporter les deux ids neufs dans `spec.md` §1** (et leurs lignes dans le
-   tableau de rampe §3). Tant que ce n'est pas fait, le spec et `items.yaml`
-   déclarent deux inventaires différents.
+1. ~~Reporter les deux ids neufs dans `spec.md` §1~~ — **fait** (2026-09-27) :
+   M9 et M10 dans `spec.md` §1, et le onzième id plus ancien
+   (`confond-oscillation-avec-decharge-rc`, les items d'accroche R0) reporté en
+   M11 ; le tableau de rampe (§2 du spec) nomme M9 en R2, M10 en R5–R6, M11 en
+   R0. Le spec et `items.yaml` déclarent désormais le même inventaire.
 2. **Question de fond, pour le jugement du propriétaire :**
    `phase-initiale-mal-determinee` est-elle une misconception de RLC, ou de
    `systemes-oscillants` (où le même geste se fait pour la première fois) ? Les

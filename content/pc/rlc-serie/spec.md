@@ -84,18 +84,15 @@ The pedagogy-architect agent file predicts for *RLC (PC)*: "energy sloshing betw
 
 ## 1. The misconception inventory — the diagnostic spine
 
-**Ten misconceptions are declared below (M1–M10).** ⚠ **Known divergence,
-flagged not silently fixed (2026-09-27, vague 1 pédagogie re-tag,
-`docs/audits/dette-examen/vague-c-retag.md`):** `items.yaml`'s
-`misconceptions:` block additionally carries an **eleventh** id,
-`mc.physics.rlc_serie.confond-oscillation-avec-decharge-rc` (added in an
-earlier wave, for the R0-hook items `RLC-R0-1/2/3`), which was never
-back-ported here. This spec and `items.yaml` therefore still declare two
-different inventories on that one id — a pre-existing gap this pass did not
-create and was not asked to close (see `misconception-ledger.md` §8 for the
-item-side accounting). M9 and M10 below are the two ids this pass **did**
-add to both files, per the house rule that a registry with two truths is
-worse than an admitted gap.
+**Eleven misconceptions are declared below (M1–M11).** The inventory that
+counts is the `misconceptions:` block of `content/pc/rlc-serie/items.yaml`; this
+section mirrors it id for id. **M11** (`confond-oscillation-avec-decharge-rc`)
+was added to `items.yaml` in an earlier wave for the R0 hook items
+`RLC-R0-1/2/3` and never back-ported here; the 2026-09-27 re-tag pass
+(`docs/audits/dette-examen/vague-c-retag.md`) flagged the gap instead of
+silently closing it, and it is now closed (below, after M10). M9 and M10 were
+added to both files by that re-tag pass, per the house rule that a registry
+with two truths is worse than an admitted gap.
 
 Each misconception is a **wrong physical model**, not a slip (ADR 0008 §3 criterion a). Each names the principle it contradicts (criterion b), is distinguishable from the others on at least one stem (criterion c — the `distinguishing_mcq_stem` is that stem), and is grounded in PC didactics + standard Moroccan bac error patterns + the boundary itself (criterion d). These are the *wrong physical models PC students actually hold* — the things that survive a clean presentation of the correct model and must be **surfaced and broken** (VISION: "Physique-Chimie — confront the wrong model").
 
@@ -224,6 +221,18 @@ They trade places every quarter-period; `E_C+E_L` is the conserved total in the 
 
 ---
 
+### M11 — `mc.physics.rlc_serie.confond-oscillation-avec-decharge-rc`
+**Label (FR):** « Le circuit LC/RLC en oscillations libres se décharge comme un circuit RC : `u_C` décroît vers 0 et n'y revient pas »
+**Added:** in `items.yaml` with the R0 hook items (`RLC-R0-1/2/3`), before the 2026-09-27 re-tag; back-ported to this spec on 2026-09-27 (the divergence flagged in `misconception-ledger.md` §8).
+**The wrong model.** The student carries the previous chapter's exponential discharge (`dipole-rc`, `u_C = U₀·e^{−t/τ}`) over to the capacitor-plus-coil circuit: the capacitor "empties" through the coil the way it emptied through a resistor, monotonically, and stays at zero.
+**How it manifests.** Asked what `u_C(t)` does once a charged capacitor is connected to a coil, the student draws or picks a decaying exponential; asked why `u_C` changes sign, they have no mechanism for it.
+**The correct model.** The coil opposes the fall of the current and hands its energy back: `u_C` passes through zero and goes on to the other side. With `R ≈ 0` the oscillation is periodic; with a small `R` it is pseudo-periodic; `u_C` only tends to 0 without oscillating in the aperiodic régime (large `R`), which is not the default.
+**Confrontation strategy.** The R0 hook (predict-then-reveal): predict the trace of `u_C` when a charged capacitor is connected to a coil alone, then see it cross zero. The RC trace is shown next to it as the prediction that fails.
+**Distinguishing stem (FR):** « On charge complètement un condensateur, puis on le connecte directement à une bobine (sans résistance, sans générateur). Que va faire la tension `u_C(t)` ? » (`RLC-R0-1`)
+→ trigger **B** (monotone decay to 0, as in RC); correct **A** (it oscillates). (C carries M1, D carries M2.)
+
+---
+
 ### Co-attribution / dual-tag note (carry verbatim to item-author)
 
 Several misconceptions here are *cousins* (the R-role family M1/M3; the period family M3/M4/M5; the regime-boundary family M6 with M5; the entretien M8 with M3/M4). This produces **legitimate cross-reachable distractors**, which per the agent standard are **NOT stem defects**:
@@ -245,13 +254,13 @@ Reasoning-demand rises and scaffolding fades across the rungs (VISION: "early ru
 
 | Rung | Type | Mode | Scaffolding | Confronts | What the student does |
 |---|---|---|---|---|---|
-| **R0 — Hook** | predict-then-reveal | conceptual | full (narrative) | M1, M2 (sets them up) | The "perpetual swing" surprise: a charged condensateur connected to a bobine — predict what `u_C(t)` does. Most expect "it discharges and stops" (RC intuition). Reveal the *oscillation*. Plant: "where does the energy go, and what makes it eventually die?" Left open. (C4 optional hook image.) |
+| **R0 — Hook** | predict-then-reveal | conceptual | full (narrative) | M11, M1, M2 (sets them up) | The "perpetual swing" surprise: a charged condensateur connected to a bobine — predict what `u_C(t)` does. Most expect "it discharges and stops" (RC intuition). Reveal the *oscillation*. Plant: "where does the energy go, and what makes it eventually die?" Left open. (C4 optional hook image.) |
 | **R1 — Décharge C dans L : le mécanisme** | worked, conceptual | conceptual + procedural | full — every step + expert voice | M2, M7 | Walk one cycle of the **ideal LC**: condensateur chargé → discharges through L → current builds → condensateur empty but `i` max (energy now all in L) → L drives current on, recharges C the other way → … The energy *pendulum*. Establish `E=E_C+E_L=½q²/C+½Li²=const`. Confront M2 (not consumed) and M7 (which store, when). |
-| **R2 — Établir l'équation (cas idéal) + `T₀`** | worked example | procedural | high — loop law pre-set, student substitutes | M4 | From `u_C+u_L=0` with `i=dq/dt`, `q=Cu_C`: derive `L·q''+q/C=0` → `T₀=2π√(LC)`, `q(t)=Q_max·cos(2πt/T₀+φ)`, `i(t)=q'`. Expert voice: "R ne figure pas dans l'équation idéale — donc la période n'en dépend pas." Confront M4 (R not in `T₀`). |
+| **R2 — Établir l'équation (cas idéal) + `T₀`** | worked example | procedural | high — loop law pre-set, student substitutes | M4, M9 | From `u_C+u_L=0` with `i=dq/dt`, `q=Cu_C`: derive `L·q''+q/C=0` → `T₀=2π√(LC)`, `q(t)=Q_max·cos(2πt/T₀+φ)`, `i(t)=q'`. Expert voice: "R ne figure pas dans l'équation idéale — donc la période n'en dépend pas." Confront M4 (R not in `T₀`). |
 | **R3 — Le rôle de R : amortissement, pas moteur** | confront-the-contradiction | conceptual + expérimental | medium — contradiction staged via the sandbox | M1, M3 | Manipulable: drag R→0 (predict "stops" → reveal "perfect undamped"); drag R up (faster *decay*, not faster *oscillation*; eventually apériodique). Confront M1 (R drives) and M3 (R→rate). The single most important beat. |
 | **R4 — Les trois régimes (qualitatif + énergétique)** | worked → guided | conceptual + expérimental | fading | M3, M5 | Recognise périodique / pseudo-périodique / apériodique from `u_C(t)` shapes (C1 traces). Energy view: total envelope shrinks (Joule). Introduce the **pseudo-période** as the regular peak spacing of a *decaying* trace; state `T ≈ T₀` for weak damping (LIMITE 1 — measured, not derived). Confront M5. |
-| **R5 — Cas amorti : établir l'équation, et S'ARRÊTER LÀ** | worked example, high reasoning | procedural | low | M6 | Establish `L·q''+R·q'+q/C=0`. **Verify** that the ideal cosine does **NOT** solve it (the `R·q'` leftover). State the rule out loud: undamped → solve; damped → establish only, describe qualitatively/experimentally. Confront M6 (the boundary-violation misconception). **This rung IS the boundary, taught as pedagogy.** |
-| **R6 — Lecture d'oscillogramme (TP)** | expérimental, guided→solo | expérimental | low | M5, M3, M7 | Read a real TP/oscilloscope trace: identify the régime, **measure the pseudo-période**, compare to `T₀=2π√(LC)`, deduce the effect of having changed R. The Application-expérimentale habileté (15% target). Confront M5 (measure it), M3 (more R = faster decay, not faster), M7 (read energy off the trace). |
+| **R5 — Cas amorti : établir l'équation, et S'ARRÊTER LÀ** | worked example, high reasoning | procedural | low | M6, M10 | Establish `L·q''+R·q'+q/C=0`. **Verify** that the ideal cosine does **NOT** solve it (the `R·q'` leftover). State the rule out loud: undamped → solve; damped → establish only, describe qualitatively/experimentally. Confront M6 (the boundary-violation misconception). **This rung IS the boundary, taught as pedagogy.** |
+| **R6 — Lecture d'oscillogramme (TP)** | expérimental, guided→solo | expérimental | low | M5, M3, M7, M10 | Read a real TP/oscilloscope trace: identify the régime, **measure the pseudo-période**, compare to `T₀=2π√(LC)`, deduce the effect of having changed R. The Application-expérimentale habileté (15% target). Confront M5 (measure it), M3 (more R = faster decay, not faster), M7 (read energy off the trace). |
 | **R7 — Entretien des oscillations** | worked → guided | conceptual + procedural | low | M8, M1 (revisited) | Establish the entretenu ODE with `u_G=k·i` → `L·q''+(R−k)·q'+q/C=0` → find `k=R` cancels damping → free undamped oscillation at `T₀`. The generator *compensates Joule loss*, does NOT impose a frequency. Confront M8 (entretien ≠ forced) and re-confront M1 (now the *real* "driver" appears, and it isn't R). |
 | **R8 — Past-bac** | exam item, unscaffolded | all, mixed | none | all | **Real PC bac questions** on RLC libres / entretien. ⚠ The recovered old bank (`034_exam_papers_pc.sql`) gives *types* but **provenance is unverified** (mining report §3) — may be reconstructions. **Flag for the human / curriculum-extraction:** insert genuine past PC national-exam RLC questions with year+session citations, **screened against the boundary** (reject any forced-regime/impédance question). Until sourced, R8 uses bac-style reconstructions clearly labelled as such. |
 | **R9 — Fresh variation** | novel transfer | all | none | recognition under unfamiliar dress | Same deep structure as R8, re-skinned so nothing is memorisable: e.g. the entretien question re-dressed with différent `u_G` proportionality, or a trace-reading with unfamiliar component values / a différent oscilloscope calibration. Tests "can you see which procédure applies when the problem is dressed unfamiliarly" (VISION). |
@@ -402,7 +411,7 @@ Only what the concept genuinely needs (DESIGN-BIBLE §6 cohérence principle; VI
 
 Bounce the authored lesson/items back if any of these drift:
 - **Boundary held (§0.4):** damped case → ODE established but **not solved**; **no** pseudo-période as `f(R,L,C)`, **no** damping coefficient/decrement/closed-form envelope; closed form **only** undamped (`q(t)`, `T₀=2π√(LC)`); **no** résonance/impédance/phaseurs/complex/AC-power anywhere; entretien framed as Joule-loss compensation restoring the FREE régime at `T₀`, never as a forced régime.
-- All 10 misconceptions declared in this spec (M1–M10) present in the inventory the items target; **≥3 items each** (or the harness count stated); habileté mix ≈ 50/35/15; co-attributions **dual-tagged**, not hidden. ⚠ `items.yaml` additionally carries an 11th id, `confond-oscillation-avec-decharge-rc`, not yet declared in this spec — see §1's flagged divergence.
+- All 11 misconceptions declared in this spec (M1–M11) present in the inventory the items target; **≥3 items each** (or the harness count stated); habileté mix ≈ 50/35/15; co-attributions **dual-tagged**, not hidden.
 - **No correct-answer contamination** on any stem; M6's correct answer states the establish-only rule.
 - **C1/C3 are svg+katex** (no Gemini structural art); the schematic topology and traces are exact; C2 is a Falstad/GeoGebra **embed** (not rebuilt) with the boundary guard on.
 - **Hook→entretien arc closed** (R0 "perpetual swing / where does the energy go" resolved at R3–R4 and R7).
