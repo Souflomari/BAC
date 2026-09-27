@@ -2044,7 +2044,8 @@ items:
   # ── Δ réel négatif, coefficients réels : la paire conjuguée (NBCOMPLEX-34 à 37) ──
 
   - id: NBCOMPLEX-34
-    rung: "R4"
+    rung: "R4b"
+    habilete: application_directe
     difficulty_level: 2
     skill_code: maths_complexes_algebrique
     tags: [equation-second-degre, discriminant-negatif, conjuguee]
@@ -2089,92 +2090,111 @@ items:
       $$z=\frac{4\pm2i}{2}=2\pm i \qquad S=\left\{\,2-i\ ;\ 2+i\,\right\}$$
 
   - id: NBCOMPLEX-35
-    rung: "R4"
+    rung: "R4b"
+    habilete: application_non_explicite
     difficulty_level: 3
     skill_code: maths_complexes_algebrique
-    tags: [equation-second-degre, discriminant-negatif, conjuguee]
-    primary_misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+    tags: [equation-second-degre, racine-donnee, conjuguee]
+    primary_misconception: mc.math.maths_complexes_algebrique.conjugue-mauvais-axe
     stem: >
-      Résoudre dans $\mathbb{C}$ l'équation $z^2 - 8z + 20 = 0$.
+      L'équation $z^2 - 6z + 13 = 0$, à coefficients RÉELS, admet pour solution
+      $z_1 = 3+2i$. Sans calculer de discriminant, donner l'autre solution $z_2$.
     type: mcq
     choices:
       - id: A
-        text: "$S = \\left\\{\\, 4-2i\\ ;\\ 4+2i \\,\\right\\}$"
+        text: "$z_2 = 3-2i$"
         correct: true
       - id: B
-        text: "$S = \\varnothing$"
+        text: "$z_2 = -3+2i$"
         correct: false
-        misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+        misconception: mc.math.maths_complexes_algebrique.conjugue-mauvais-axe
         feedback: >
-          Dans $\mathbb{C}$, $\Delta<0$ ne ferme plus rien : $\delta=4i$ vérifie
-          $\delta^2=-16=\Delta$, et l'équation a deux solutions complexes conjuguées.
+          Le signe changé est celui de la mauvaise partie : coefficients réels
+          $\Rightarrow$ $z_2=\overline{z_1}$, qui change le signe de la partie
+          IMAGINAIRE seule ($a-bi$), pas celui de la partie réelle.
       - id: C
-        text: "$S = \\left\\{\\, 2\\ ;\\ 6 \\,\\right\\}$"
+        text: "$z_2 = 2-3i$"
         correct: false
-        misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+        misconception: mc.math.maths_complexes_algebrique.confond-re-im
         feedback: >
-          On a appliqué $\sqrt{\ }$ à un nombre négatif par les règles usuelles. Il faut
-          $\delta$ tel que $\delta^2=-16$ : c'est $\delta=4i$, pas $\delta=4$.
+          Les deux coefficients de $z_1=3+2i$ sont échangés en écrivant $z_2$ :
+          $\overline{z_1}$ conserve la partie réelle ($3$) et change seulement le
+          signe du coefficient de $i$ ($2$ devient $-2$) — il ne s'agit pas de
+          permuter les deux valeurs.
       - id: D
-        text: "$S = \\left\\{\\, -4-2i\\ ;\\ -4+2i \\,\\right\\}$"
+        text: "$z_2 = -9-2i$"
         correct: false
         misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
         feedback: >
-          Le signe de $b$ s'est perdu : la formule est $z=\dfrac{-b\pm\delta}{2a}$, et ici
-          $b=-8$, donc $-b=+8$. Avec $8$ au numérateur, $z=\dfrac{8\pm4i}{2}=4\pm 2i$ — les deux
-          solutions ont une partie réelle positive, pas négative.
+          Le signe de la somme s'est perdu : $z_1+z_2=-\dfrac{b}{a}=6$ (et non
+          $b=-6$). En repartant de la bonne somme, $z_2=6-z_1=6-(3+2i)=3-2i$, pas
+          $-9-2i$.
     correct_feedback: >
-      $\Delta=64-80=-16$ ; $\delta=4i$ convient, et $z=\dfrac{8\pm4i}{2}=4\pm2i$.
+      Les coefficients sont réels, donc $z_2=\overline{z_1}=\overline{3+2i}=3-2i$ ;
+      contrôle par Viète : $z_1+z_2=6=-\dfrac{b}{a}$ et $z_1z_2=13=\dfrac{c}{a}$. ✓
     solution: |
-      $$\Delta = (-8)^2-4\times1\times20 = 64-80=-16$$
-      $\delta=i\sqrt{16}=4i$, car $(4i)^2=-16=\Delta$.
-      $$z=\frac{8\pm4i}{2}=4\pm2i \qquad S=\left\{\,4-2i\ ;\ 4+2i\,\right\}$$
+      Les coefficients de $z^2-6z+13=0$ sont réels : d'après la propriété du
+      chapitre (démontrée en conjuguant l'équation), les deux solutions sont
+      conjuguées l'une de l'autre.
+      $$z_2 = \overline{z_1} = \overline{3+2i} = 3-2i$$
+      Contrôle par les relations coefficients-racines : $z_1+z_2=(3+2i)+(3-2i)=6=-\dfrac{-6}{1}$
+      et $z_1z_2=(3+2i)(3-2i)=9+4=13=\dfrac{13}{1}$. Les deux contrôles tombent juste.
 
   - id: NBCOMPLEX-36
-    rung: "R4"
+    rung: "R4b"
+    habilete: application_non_explicite
     difficulty_level: 3
     skill_code: maths_complexes_algebrique
-    tags: [equation-second-degre, discriminant-negatif, conjuguee]
+    tags: [equation-second-degre, discriminant-negatif, parametre, carre-parfait-donne]
     primary_misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
     stem: >
-      Résoudre dans $\mathbb{C}$ l'équation $z^2 - 12z + 45 = 0$.
+      Soit $m$ un réel. On considère l'équation $(E)\ :\ z^2 - 2z + (m^2-2m+2) = 0$, dont on
+      admet que le discriminant vérifie $\Delta = \big(2i(m-1)\big)^2$. Résoudre $(E)$ dans
+      $\mathbb{C}$, en fonction de $m$.
     type: mcq
     choices:
       - id: A
+        text: "$S = \\left\\{\\, 1-i(m-1)\\ ;\\ 1+i(m-1) \\,\\right\\}$"
+        correct: true
+      - id: B
         text: "$S = \\varnothing$"
         correct: false
         misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
         feedback: >
-          Dans $\mathbb{C}$, ce mur est tombé : $\delta=6i$ vérifie $\delta^2=-36=\Delta$, et
-          l'équation a deux solutions complexes conjuguées.
-      - id: B
-        text: "$S = \\left\\{\\, 3\\ ;\\ 9 \\,\\right\\}$"
+          $\Delta=\big(2i(m-1)\big)^2=-4(m-1)^2$ est bien un réel négatif dès que $m\neq1$, mais
+          dans $\mathbb{C}$ ce signe n'empêche plus rien : $\delta=2i(m-1)$ vérifie
+          $\delta^2=\Delta$, et $(E)$ a deux solutions complexes conjuguées.
+      - id: C
+        text: "$S = \\left\\{\\, m\\ ;\\ 2-m \\,\\right\\}$"
         correct: false
         misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
         feedback: >
-          Il faut $\delta$ tel que $\delta^2=-36$ : c'est $\delta=6i$ (le $i$ est indispensable),
-          pas $\delta=6$ traité comme une racine carrée ordinaire.
-      - id: C
-        text: "$S = \\left\\{\\, -6-3i\\ ;\\ -6+3i \\,\\right\\}$"
+          Le $i$ de $\delta=2i(m-1)$ a disparu : en le traitant comme $\delta=2(m-1)$ (une
+          racine carrée usuelle, sans le $i$), on obtient des solutions réelles. Il faut
+          $\delta$ tel que $\delta^2=\Delta$ avec le $i$ inclus, jamais une racine carrée
+          ordinaire d'un nombre négatif.
+      - id: D
+        text: "$S = \\left\\{\\, -1-i(m-1)\\ ;\\ -1+i(m-1) \\,\\right\\}$"
         correct: false
         misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
         feedback: >
           Le signe de $b$ s'est perdu : la formule est $z=\dfrac{-b\pm\delta}{2a}$, et ici
-          $b=-12$, donc $-b=+12$. Avec $12$ au numérateur, $z=\dfrac{12\pm6i}{2}=6\pm 3i$ — les deux
-          solutions ont une partie réelle positive, pas négative.
-      - id: D
-        text: "$S = \\left\\{\\, 6-3i\\ ;\\ 6+3i \\,\\right\\}$"
-        correct: true
+          $b=-2$, donc $-b=+2$. Avec $b=-2$ utilisé tel quel au numérateur, on obtient
+          $z=\dfrac{-2\pm2i(m-1)}{2}=-1\pm i(m-1)$, pas la bonne partie réelle.
     correct_feedback: >
-      $\Delta=144-180=-36$ ; $\delta=6i$ convient, et $z=\dfrac{12\pm6i}{2}=6\pm3i$.
+      $\delta=2i(m-1)$ convient (donné), donc $z=\dfrac{2\pm2i(m-1)}{2}=1\pm i(m-1)$.
     solution: |
-      $$\Delta = (-12)^2-4\times1\times45 = 144-180=-36$$
-      $\delta=i\sqrt{36}=6i$, car $(6i)^2=-36=\Delta$.
-      $$z=\frac{12\pm6i}{2}=6\pm3i \qquad S=\left\{\,6-3i\ ;\ 6+3i\,\right\}$$
+      On admet $\Delta = \big(2i(m-1)\big)^2$ : $\delta = 2i(m-1)$ convient (l'autre choix,
+      $-2i(m-1)$, échangerait simplement $z_1$ et $z_2$).
+      $$z = \frac{2 \pm 2i(m-1)}{2} = 1 \pm i(m-1)$$
+      $$S = \left\{\, 1-i(m-1)\ ;\ 1+i(m-1) \,\right\}$$
+      Contrôle sur un cas particulier : pour $m=2$, $(E)$ devient $z^2-2z+2=0$ et
+      $S=\{1-i\,;\,1+i\}$, conforme à la formule.
 
   - id: NBCOMPLEX-37
-    rung: "R4"
-    difficulty_level: 4
+    rung: "R4b"
+    habilete: application_directe
+    difficulty_level: 3
     skill_code: maths_complexes_algebrique
     tags: [equation-second-degre, discriminant-negatif, conjuguee, coefficient-dominant]
     primary_misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
@@ -2217,8 +2237,27 @@ items:
 
   # ── Coefficients complexes, Δ carré parfait à reconnaître (NBCOMPLEX-38 à 41) ──
 
+  # ══════════════════════════════════════════════════════════════════════
+  # FIDÉLITÉ FILIÈRE (wave-1 fixes, 2026-09-27, B2) — NBCOMPLEX-38 à
+  # NBCOMPLEX-45 ci-dessous (et NBCOMPLEX-47 plus bas) relèvent d'une
+  # profondeur « filière Sciences Mathématiques » : coefficients COMPLEXES
+  # (non réels) pour l'équation du second degré, et paramètre m/q complexe
+  # non nul pour les relations de Viète. Le garde-fou déclaré pour ce banc
+  # (checkpoints.yaml:41) est 2ème Bac SExp, et le cadre SExp cité par la
+  # revue (maths-sexp.yaml:249/253) ne prévoit que des coefficients RÉELS
+  # pour ce chapitre — le cadre SM (maths-sm.yaml:224/228) couvre seul cette
+  # profondeur. Aucun champ per-item `filiere`/`stream` n'existe dans ce
+  # corpus (grep vérifié sur tous les `items.yaml` du dépôt à cette date) :
+  # pas de champ inventé ici — ce commentaire, plus la ligne dédiée de
+  # `coverage_summary.honest_state`, portent la distinction jusqu'à ce
+  # qu'un schéma per-item soit décidé par le propriétaire. NBCOMPLEX-34 à
+  # 37 (coefficients réels) et NBCOMPLEX-46 (Viète à coefficients réels,
+  # ajouté ci-dessous) restent SExp-légaux.
+  # ══════════════════════════════════════════════════════════════════════
+
   - id: NBCOMPLEX-38
-    rung: "R4"
+    rung: "R4b"
+    habilete: application_non_explicite
     difficulty_level: 3
     skill_code: maths_complexes_algebrique
     tags: [equation-second-degre, coefficients-complexes, carre-parfait]
@@ -2251,7 +2290,8 @@ items:
         misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
         feedback: >
           La formule est $z=\dfrac{-b\pm\delta}{2a}$ : ici $-b=5+i$ (le signe du coefficient
-          $b=-(5+i)$ a été oublié), pas $b=-(5+i)$ lui-même.
+          $b=-(5+i)$ a été oublié), pas $b=-(5+i)$ lui-même. Conséquence : on obtient
+          l'OPPOSÉ de chaque solution, $-2$ et $-3-i$, au lieu de $2$ et $3+i$.
     correct_feedback: >
       $\Delta=(5+i)^2-4(6+2i)=(24+10i)-(24+8i)=2i=(1+i)^2$, donc $\delta=1+i$ convient, et
       $z=\dfrac{(5+i)\pm(1+i)}{2}$ donne $S=\{2\,;\,3+i\}$ — non conjuguées.
@@ -2264,7 +2304,8 @@ items:
       Les deux racines ne sont pas conjuguées : les coefficients ne sont pas réels.
 
   - id: NBCOMPLEX-39
-    rung: "R4"
+    rung: "R4b"
+    habilete: application_non_explicite
     difficulty_level: 3
     skill_code: maths_complexes_algebrique
     tags: [equation-second-degre, coefficients-complexes, carre-parfait]
@@ -2297,17 +2338,19 @@ items:
         misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
         feedback: >
           La formule utilise $-b=3-i$, pas $b=-(3-i)$ : le signe du coefficient s'est perdu
-          avant la division par $2a$.
+          avant la division par $2a$. Conséquence : on obtient l'OPPOSÉ de chaque solution,
+          $-1$ et $-2+i$, au lieu de $1$ et $2-i$.
     correct_feedback: >
       $\Delta=(3-i)^2-4(2-i)=(8-6i)-(8-4i)=-2i=(1-i)^2$, donc $\delta=1-i$, et $S=\{1\,;\,2-i\}$.
     solution: |
       $$\Delta = (3-i)^2-4(2-i) = (9-6i-1)-(8-4i) = (8-6i)-(8-4i) = -2i$$
       $-2i=(1-i)^2$, donc $\delta=1-i$ : vérification $(1-i)^2=1-2i+i^2=-2i$. ✓
-      $$z=\frac{(3-i)\pm(1-i)}{2} \implies z_1=\frac{4}{2}=1,\quad z_2=\frac{2-2i}{2}=1-i$$
+      $$z=\frac{(3-i)\pm(1-i)}{2} \implies z_1=\frac{(3-i)+(1-i)}{2}=\frac{4-2i}{2}=2-i,\quad z_2=\frac{(3-i)-(1-i)}{2}=\frac{2}{2}=1$$
       $$S=\left\{\,1\ ;\ 2-i\,\right\}$$
 
   - id: NBCOMPLEX-40
-    rung: "R4"
+    rung: "R4b"
+    habilete: application_non_explicite
     difficulty_level: 4
     skill_code: maths_complexes_algebrique
     tags: [equation-second-degre, coefficients-complexes, carre-parfait]
@@ -2336,7 +2379,8 @@ items:
         misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
         feedback: >
           La formule utilise $-b=7-i$, pas $b=-(7-i)$ : le signe du coefficient s'est perdu
-          avant la division par $2a$.
+          avant la division par $2a$. Conséquence : on obtient l'OPPOSÉ de chaque solution,
+          $-4$ et $-3+i$, au lieu de $4$ et $3-i$.
       - id: D
         text: "$S = \\left\\{\\, 4\\ ;\\ 3-i \\,\\right\\}$"
         correct: true
@@ -2350,7 +2394,8 @@ items:
       $$S=\left\{\,4\ ;\ 3-i\,\right\}$$
 
   - id: NBCOMPLEX-41
-    rung: "R4"
+    rung: "R4b"
+    habilete: synthese
     difficulty_level: 5
     skill_code: maths_complexes_algebrique
     tags: [equation-second-degre, coefficients-complexes, carre-parfait, produit-de-carres]
@@ -2382,7 +2427,8 @@ items:
         misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
         feedback: >
           La formule utilise $-b=4-2i$, pas $b=-(4-2i)$ : le signe du coefficient s'est perdu
-          avant la division par $2a$.
+          avant la division par $2a$. Conséquence : on obtient l'OPPOSÉ de chaque solution,
+          $-1$ et $-3+2i$, au lieu de $1$ et $3-2i$.
     correct_feedback: >
       $\Delta=(4-2i)^2-4(3-2i)=(12-16i)-(12-8i)=-8i=2^2(1-i)^2=\left[2(1-i)\right]^2$, donc
       $\delta=2-2i$, et $S=\{1\,;\,3-2i\}$.
@@ -2396,7 +2442,8 @@ items:
   # ── Somme et produit des racines (Viète), lire sans résoudre (NBCOMPLEX-42 à 45) ──
 
   - id: NBCOMPLEX-42
-    rung: "R4"
+    rung: "R4c"
+    habilete: application_directe
     difficulty_level: 3
     skill_code: maths_complexes_algebrique
     tags: [viete, somme-produit-racines]
@@ -2436,7 +2483,8 @@ items:
       $$z_1+z_2 = -\frac{b}{a} = -\frac{-(10+4i)}{2} = \frac{10+4i}{2} = 5+2i$$
 
   - id: NBCOMPLEX-43
-    rung: "R4"
+    rung: "R4c"
+    habilete: application_directe
     difficulty_level: 3
     skill_code: maths_complexes_algebrique
     tags: [viete, somme-produit-racines]
@@ -2476,7 +2524,8 @@ items:
       $$z_1z_2 = \frac{c}{a} = \frac{15+3i}{3} = 5+i$$
 
   - id: NBCOMPLEX-44
-    rung: "R4"
+    rung: "R4c"
+    habilete: application_non_explicite
     difficulty_level: 4
     skill_code: maths_complexes_algebrique
     tags: [viete, somme-produit-racines, construction-inverse]
@@ -2518,7 +2567,8 @@ items:
       $$2(z-p)(z-q) = 2z^2-2(4-2i)z+2(5-i) = 2z^2-(8-4i)z+(10-2i)$$
 
   - id: NBCOMPLEX-45
-    rung: "R4"
+    rung: "R4c"
+    habilete: synthese
     difficulty_level: 5
     skill_code: maths_complexes_algebrique
     tags: [viete, somme-produit-racines, expression-symetrique]
@@ -2562,23 +2612,160 @@ items:
       Contrôle par $\Delta$ : $\Delta=b^2-4ac=64n^2-48n^2=16n^2$, et
       $(z_1-z_2)^2=\dfrac{\Delta}{a^2}=\dfrac{16n^2}{4}=4n^2$. ✓
 
+  # ── Viète, coefficients RÉELS — SExp-légal (NBCOMPLEX-46) ──
+  # Ajouté wave-1 (2026-09-27, B2b) : contrairement à NBCOMPLEX-42 à 45
+  # (coefficients complexes, profondeur SM), cet item lit la somme et le
+  # produit sur une équation à coefficients RÉELS — recevable au garde-fou
+  # SExp de ce banc (checkpoints.yaml:41).
+
+  - id: NBCOMPLEX-46
+    rung: "R4c"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [viete, somme-produit-racines, coefficients-reels]
+    primary_misconception: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+    stem: >
+      Soit l'équation $2z^2 - 12z + 40 = 0$, à coefficients RÉELS et de discriminant
+      $\Delta < 0$. Sans résoudre, donner la somme $z_1+z_2$ et le produit $z_1z_2$ de ses
+      deux solutions complexes.
+    type: mcq
+    choices:
+      - id: A
+        text: "$z_1+z_2 = 6$ et $z_1z_2 = 20$"
+        correct: true
+      - id: B
+        text: "$z_1+z_2 = 20$ et $z_1z_2 = 6$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+        feedback: >
+          La somme et le produit ont échangé leurs rôles : $-\dfrac{b}{a}$ est la SOMME,
+          $\dfrac{c}{a}$ est le PRODUIT — ces deux valeurs ne se lisent pas à la même place.
+      - id: C
+        text: "$z_1+z_2 = 12$ et $z_1z_2 = 40$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+        feedback: >
+          Ici $a=2\neq1$ : il faut diviser par $a$. $z_1+z_2=-\dfrac{b}{a}=\dfrac{12}{2}=6$ et
+          $z_1z_2=\dfrac{c}{a}=\dfrac{40}{2}=20$, pas $-b=12$ et $c=40$ tout court.
+      - id: D
+        text: "$z_1+z_2 = -6$ et $z_1z_2 = 20$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          La relation est $z_1+z_2=-\dfrac{b}{a}$ : ici $b=-12$, donc $-\dfrac{b}{a}=+6$, pas
+          $-6$. Le signe moins de la formule n'est pas facultatif.
+    correct_feedback: >
+      $z_1+z_2=-\dfrac{b}{a}=\dfrac{12}{2}=6$ et $z_1z_2=\dfrac{c}{a}=\dfrac{40}{2}=20$ — les
+      relations valent aussi bien à coefficients réels que complexes, aucun discriminant
+      n'est nécessaire.
+    solution: |
+      $$z_1+z_2 = -\frac{b}{a} = -\frac{-12}{2} = 6 \qquad z_1z_2 = \frac{c}{a} = \frac{40}{2} = 20$$
+      (Contrôle : $\Delta=(-12)^2-4\times2\times40=144-320=-176<0$ ; les deux solutions sont
+      complexes conjuguées, de somme $6$ et de produit $20$, sans qu'il soit besoin de les
+      calculer séparément.)
+
+  # ── Viète, forme du banc « 1/z1+1/z2 » — profondeur SM (NBCOMPLEX-47) ──
+  # Fidélité I1 : reprend la forme la plus citée du banc de sujets
+  # (nombres-complexes-2/bank.yaml:431, « Vérifier que 1/z1+1/z2 = 1/m »),
+  # avec une équation et un paramètre propres à cet item (aucun nombre du
+  # sujet source). Filière Sciences Mathématiques — voir le bloc de
+  # commentaire au-dessus de NBCOMPLEX-38.
+
+  - id: NBCOMPLEX-47
+    rung: "R4c"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_complexes_algebrique
+    tags: [viete, somme-produit-racines, expression-symetrique, coefficient-dominant]
+    primary_misconception: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+    stem: >
+      Soit $q$ un nombre complexe non nul, et soient $z_1$, $z_2$ les deux solutions de
+      l'équation $2z^2 - 6qz + 5q^2 = 0$. Sans résoudre l'équation, calculer
+      $\dfrac{1}{z_1}+\dfrac{1}{z_2}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{6}{5q}$"
+        correct: true
+      - id: B
+        text: "$\\dfrac{3}{5q}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+        feedback: >
+          Ici $a=2\neq1$ : le produit doit se lire $z_1z_2=\dfrac{c}{a}=\dfrac{5q^2}{2}$, pas
+          $c=5q^2$ tout court. En oubliant de diviser le produit par $a$, le rapport
+          $\dfrac{z_1+z_2}{z_1z_2}$ perd son bon dénominateur.
+      - id: C
+        text: "$\\dfrac{5q}{6}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+        feedback: >
+          La somme et le produit ont échangé leurs rôles avant d'appliquer
+          $\dfrac{1}{z_1}+\dfrac{1}{z_2}=\dfrac{z_1+z_2}{z_1z_2}$ : c'est $-\dfrac{b}{a}$ qui
+          est la somme, $\dfrac{c}{a}$ qui est le produit, pas l'inverse.
+      - id: D
+        text: "$-\\dfrac{6}{5q}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Le signe de la somme s'est perdu : $z_1+z_2=-\dfrac{b}{a}=\dfrac{6q}{2}=3q$ (positif),
+          pas $\dfrac{b}{a}=-3q$. Le signe moins de la formule de la somme n'est pas facultatif.
+    correct_feedback: >
+      $z_1+z_2=-\dfrac{b}{a}=\dfrac{6q}{2}=3q$ et $z_1z_2=\dfrac{c}{a}=\dfrac{5q^2}{2}$, donc
+      $\dfrac{1}{z_1}+\dfrac{1}{z_2}=\dfrac{z_1+z_2}{z_1z_2}=\dfrac{3q}{5q^2/2}=\dfrac{6}{5q}$ —
+      aucune racine, ni discriminant, n'est nécessaire : l'expression est symétrique en
+      $z_1,z_2$.
+    solution: |
+      $$z_1+z_2 = -\frac{b}{a} = \frac{6q}{2} = 3q \qquad z_1z_2 = \frac{c}{a} = \frac{5q^2}{2}$$
+      $\dfrac1{z_1}+\dfrac1{z_2}$ est symétrique en $z_1,z_2$ : elle se ramène à la somme et au
+      produit sans calculer les racines.
+      $$\frac{1}{z_1}+\frac{1}{z_2} = \frac{z_1+z_2}{z_1z_2} = \frac{3q}{\;5q^2/2\;} = \frac{6q}{5q^2} = \frac{6}{5q}$$
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
-# RÉÉCRIT le 2026-09-27, après NBCOMPLEX-34 à NBCOMPLEX-45 — remboursement de la
-# dette d'examen GAP-B (docs/audits/dette-examen/maths.md, « nombres-complexes-1 »,
-# vague B1) : équation du second degré dans ℂ (Δ réel négatif ; Δ complexe carré
-# parfait) et Viète (somme/produit des racines), toutes deux TRAVAILLÉES à
-# lesson.md:333-470 mais jamais testées avant cette vague. Cinq misconceptions
-# nouvelles (l'inventaire n'en avait aucune qui nomme correctement ces modèles),
-# chacune portée par au moins 3 items neufs — voir per_misconception ci-dessous.
-# Avant cette vague (RÉÉCRIT le 2026-09-05, après NBCOMPLEX-22 à NBCOMPLEX-33) :
-# seize familles siégeaient sous le plancher de 3 items du banc, dont DEUX sans
-# aucun item — `module-argument-vs-parties` et `algebrique-exponentielle-
-# conversion`, que seul le checkpoint cp-bac-exponentielle sondait. Les items
-# qui les referment siègent au barreau R6 : la leçon y annonce elle-même que le
-# sujet national emprunte la forme exponentielle au chapitre suivant, et son
-# point de bascule est justement là. Tableau GÉNÉRÉ contre
-# web/scripts/lib/couverture-compte.mjs, gardé par
-# web/scripts/resume-couverture.mjs.
+# RÉÉCRIT le 2026-09-27 (wave-1 fixes, dette d'examen B1) — critique par deux
+# critiques de vague 1 sur NBCOMPLEX-34..45, corrigée ainsi :
+#   (1) RUNGS — la leçon porte désormais deux barreaux propres, R4b
+#       (« Résoudre une équation du second degré dans ℂ », lesson.md:270) et
+#       R4c (« Somme et produit des racines », lesson.md:400). NBCOMPLEX-34 à
+#       41 sont passés de R4 à R4b ; NBCOMPLEX-42 à 47 (dont les deux items
+#       neufs ci-dessous) de R4 à R4c. R4 reprend sa valeur d'AVANT la vague
+#       B1 (4 items : NBCOMPLEX-5, 15, 16, 24) — voir ramp_coverage.
+#   (2) FIDÉLITÉ FILIÈRE (B2) — NBCOMPLEX-38 à 45 et NBCOMPLEX-47 relèvent de
+#       la profondeur Sciences Mathématiques (coefficients/paramètre
+#       complexes) à l'intérieur d'un banc dont le garde-fou déclaré est SExp
+#       (checkpoints.yaml:41) ; signalé par le bloc de commentaire avant
+#       NBCOMPLEX-38 et par cette ligne, faute d'un champ per-item
+#       `filiere`/`stream` dans le corpus (aucun schéma inventé).
+#   (3) NBCOMPLEX-46 ajouté (B2b) : Viète à coefficients RÉELS, Δ<0,
+#       SExp-légal — pour que R4c ne soit pas SM-only dans son ensemble.
+#   (4) NBCOMPLEX-47 ajouté (I1) : reprend la forme la plus citée du banc de
+#       sujets (nombres-complexes-2/bank.yaml:431, 1/z1+1/z2 = (z1+z2)/(z1z2)),
+#       avec une équation et un paramètre propres à l'item.
+#   (5) NBCOMPLEX-35 et NBCOMPLEX-36 RE-DRESSÉS (I7, clones numériques de 34) :
+#       35 devient « racine z1 donnée, déduire z2 par la conjugaison à
+#       coefficients réels » (lesson.md:345) ; 36 devient paramétrique, forme
+#       « Δ=(2i(m−1))² » (lesson.md:379). Conséquence sur la couverture : 35
+#       ne porte plus delta-negatif-aucune-solution ni
+#       i-derive-par-racine-usuelle (36 les porte toujours, sous les mêmes
+#       distracteurs B/C/D qu'avant) ; 35 porte désormais conjugue-mauvais-axe,
+#       confond-re-im et signe-parties-perdu.
+#   (6) NBCOMPLEX-38 D / 39 D / 40 C / 41 D (M4) : le feedback verbatim partagé
+#       « La formule utilise −b=…, pas b=… » complété d'une CONSÉQUENCE propre
+#       à chaque item (la paire obtenue est l'opposée de la vraie paire,
+#       chiffrée pour cet item).
+#   (7) NBCOMPLEX-37 (M4) : difficulty_level 4 → 3 (l'étape /2a en plus de 34
+#       ne justifiait pas un niveau supérieur).
+#   (8) `habilete` (I6) ajouté à NBCOMPLEX-34..47, vocabulaire MATHS
+#       (application_directe / application_non_explicite / synthese), jugé
+#       item par item.
+# Avant cette vague : cinq misconceptions neuves (GAP-B, vague B1, avant
+# corrections ci-dessus) et — RÉÉCRIT le 2026-09-05, après NBCOMPLEX-22 à
+# NBCOMPLEX-33 — seize familles siégeaient sous le plancher de 3, dont deux
+# qui n'avaient alors aucun item (état d'AVANT le 2026-09-05 : module-argument-vs-parties,
+# algebrique-exponentielle-conversion), refermées au barreau R6. Tableau
+# GÉNÉRÉ contre web/scripts/lib/couverture-compte.mjs, gardé par
+# web/scripts/resume-couverture.mjs — à régénérer après cette passe.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2588,7 +2775,7 @@ coverage_summary:
     web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
     mc.math.maths_complexes_algebrique.im-inclut-i:                         { count: 5, items: [NBCOMPLEX-1, NBCOMPLEX-22, NBCOMPLEX-25, NBCOMPLEX-30, NBCOMPLEX-31] }
-    mc.math.maths_complexes_algebrique.confond-re-im:                       { count: 3, items: [NBCOMPLEX-1, NBCOMPLEX-10, NBCOMPLEX-22] }
+    mc.math.maths_complexes_algebrique.confond-re-im:                       { count: 4, items: [NBCOMPLEX-1, NBCOMPLEX-10, NBCOMPLEX-22, NBCOMPLEX-35] }
     mc.math.maths_complexes_algebrique.i2-egale-plus-un:                    { count: 4, items: [NBCOMPLEX-2, NBCOMPLEX-4, NBCOMPLEX-16, NBCOMPLEX-20] }
     mc.math.maths_complexes_algebrique.produit-non-developpe:               { count: 3, items: [NBCOMPLEX-2, NBCOMPLEX-25, NBCOMPLEX-26] }
     mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference:        { count: 4, items: [NBCOMPLEX-3, NBCOMPLEX-14, NBCOMPLEX-23, NBCOMPLEX-33] }
@@ -2598,21 +2785,21 @@ coverage_summary:
     mc.math.maths_complexes_algebrique.module-produit-additif:              { count: 3, items: [NBCOMPLEX-15, NBCOMPLEX-16, NBCOMPLEX-19] }
     mc.math.maths_complexes_algebrique.distance-affixe-brute:               { count: 3, items: [NBCOMPLEX-6, NBCOMPLEX-21, NBCOMPLEX-29] }
     mc.math.maths_complexes_algebrique.milieu-sans-moyenne:                 { count: 3, items: [NBCOMPLEX-17, NBCOMPLEX-29, NBCOMPLEX-32] }
-    mc.math.maths_complexes_algebrique.conjugue-mauvais-axe:                { count: 3, items: [NBCOMPLEX-18, NBCOMPLEX-30, NBCOMPLEX-33] }
+    mc.math.maths_complexes_algebrique.conjugue-mauvais-axe:                { count: 4, items: [NBCOMPLEX-18, NBCOMPLEX-30, NBCOMPLEX-33, NBCOMPLEX-35] }
     mc.math.maths_complexes_algebrique.imaginaire-pur-mauvaise-partie:      { count: 3, items: [NBCOMPLEX-11, NBCOMPLEX-23, NBCOMPLEX-32] }
     mc.math.maths_complexes_algebrique.puissance-i-cycle-errone:            { count: 3, items: [NBCOMPLEX-13, NBCOMPLEX-26, NBCOMPLEX-28] }
-    mc.math.maths_complexes_algebrique.signe-parties-perdu:                 { count: 18, items: [NBCOMPLEX-1, NBCOMPLEX-2, NBCOMPLEX-10, NBCOMPLEX-11, NBCOMPLEX-12, NBCOMPLEX-17, NBCOMPLEX-34, NBCOMPLEX-35, NBCOMPLEX-36, NBCOMPLEX-37, NBCOMPLEX-38, NBCOMPLEX-39, NBCOMPLEX-40, NBCOMPLEX-41, NBCOMPLEX-42, NBCOMPLEX-43, NBCOMPLEX-44, NBCOMPLEX-45] }
+    mc.math.maths_complexes_algebrique.signe-parties-perdu:                 { count: 20, items: [NBCOMPLEX-1, NBCOMPLEX-2, NBCOMPLEX-10, NBCOMPLEX-11, NBCOMPLEX-12, NBCOMPLEX-17, NBCOMPLEX-34, NBCOMPLEX-35, NBCOMPLEX-36, NBCOMPLEX-37, NBCOMPLEX-38, NBCOMPLEX-39, NBCOMPLEX-40, NBCOMPLEX-41, NBCOMPLEX-42, NBCOMPLEX-43, NBCOMPLEX-44, NBCOMPLEX-45, NBCOMPLEX-46, NBCOMPLEX-47] }
     mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif:        { count: 5, items: [NBCOMPLEX-7, NBCOMPLEX-9, NBCOMPLEX-26, NBCOMPLEX-27, NBCOMPLEX-28] }
-    mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle:         { count: 7, items: [NBCOMPLEX-9, NBCOMPLEX-27, NBCOMPLEX-32, NBCOMPLEX-34, NBCOMPLEX-35, NBCOMPLEX-36, NBCOMPLEX-37] }
+    mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle:         { count: 6, items: [NBCOMPLEX-9, NBCOMPLEX-27, NBCOMPLEX-32, NBCOMPLEX-34, NBCOMPLEX-36, NBCOMPLEX-37] }
     mc.math.maths_complexes_algebrique.extension-equation-mal-appariee:     { count: 3, items: [NBCOMPLEX-8, NBCOMPLEX-27, NBCOMPLEX-28] }
     mc.math.maths_complexes_algebrique.module-argument-vs-parties:          { count: 4, items: [NBCOMPLEX-22, NBCOMPLEX-23, NBCOMPLEX-24, NBCOMPLEX-31] }
     mc.math.maths_complexes_algebrique.algebrique-exponentielle-conversion: { count: 3, items: [NBCOMPLEX-24, NBCOMPLEX-31, NBCOMPLEX-33] }
-    mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution:       { count: 4, items: [NBCOMPLEX-34, NBCOMPLEX-35, NBCOMPLEX-36, NBCOMPLEX-37] }
+    mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution:       { count: 3, items: [NBCOMPLEX-34, NBCOMPLEX-36, NBCOMPLEX-37] }
     mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels:       { count: 4, items: [NBCOMPLEX-38, NBCOMPLEX-39, NBCOMPLEX-40, NBCOMPLEX-41] }
     mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose:          { count: 4, items: [NBCOMPLEX-38, NBCOMPLEX-39, NBCOMPLEX-40, NBCOMPLEX-41] }
-    mc.math.maths_complexes_algebrique.viete-somme-produit-inverses:        { count: 4, items: [NBCOMPLEX-42, NBCOMPLEX-43, NBCOMPLEX-44, NBCOMPLEX-45] }
-    mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie:          { count: 4, items: [NBCOMPLEX-42, NBCOMPLEX-43, NBCOMPLEX-44, NBCOMPLEX-45] }
-  total_items: 45
+    mc.math.maths_complexes_algebrique.viete-somme-produit-inverses:        { count: 6, items: [NBCOMPLEX-42, NBCOMPLEX-43, NBCOMPLEX-44, NBCOMPLEX-45, NBCOMPLEX-46, NBCOMPLEX-47] }
+    mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie:          { count: 6, items: [NBCOMPLEX-42, NBCOMPLEX-43, NBCOMPLEX-44, NBCOMPLEX-45, NBCOMPLEX-46, NBCOMPLEX-47] }
+  total_items: 47
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2620,15 +2807,34 @@ coverage_summary:
     R1: 6
     R2: 5
     R3: 3
-    R4: 16
+    R4: 4
+    R4b: 8
+    R4c: 6
     R5: 5
     R6: 5
   honest_state: >-
     Les vingt-cinq misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Onze y siègent EXACTEMENT (3 items) : la marge est nulle et tout
-    retrait d'item la casse. Les cinq nouvelles (delta-negatif-aucune-solution,
-    racines-conjuguees-hors-reels, carre-parfait-signe-oppose,
-    viete-somme-produit-inverses, viete-coefficient-a-oublie) siègent chacune à
-    4 items — remboursement de la dette d'examen GAP-B (équation du second
-    degré dans ℂ, Viète) — et n'ont donc pas non plus de marge au-delà d'un
-    item.
+    plancher — recompté après le re-dressage de NBCOMPLEX-35/36 et l'ajout de
+    NBCOMPLEX-46/47. Dix y siègent EXACTEMENT (3 items), marge nulle :
+    produit-non-developpe, quotient-conjugue-incomplet, module-produit-additif,
+    distance-affixe-brute, milieu-sans-moyenne, imaginaire-pur-mauvaise-partie,
+    puissance-i-cycle-errone, extension-equation-mal-appariee,
+    algebrique-exponentielle-conversion, et — depuis le re-dressage de
+    NBCOMPLEX-35 — delta-negatif-aucune-solution (4→3 : NBCOMPLEX-35 ne porte
+    plus ce modèle depuis qu'il ne demande plus de discriminant). confond-re-im
+    et conjugue-mauvais-axe gagnent un 4e item (NBCOMPLEX-35 en porte
+    désormais un distracteur chacun) ; i-derive-par-racine-usuelle redescend de
+    7 à 6 (retrait de NBCOMPLEX-35, toujours 3 items de marge). Les rungs R4b
+    (équation du second degré dans ℂ) et R4c (Viète) remplacent l'ancien R4:16
+    fourre-tout de la vague B1 : R4 reprend sa valeur d'avant-vague (4),
+    R4b compte 8 items (NBCOMPLEX-34 à 41), R4c en compte 6
+    (NBCOMPLEX-42 à 47). Fidélité filière (B2) : NBCOMPLEX-38 à 45 et
+    NBCOMPLEX-47 sont de profondeur Sciences Mathématiques (coefficients ou
+    paramètre complexes) à l'intérieur d'un banc au garde-fou SExp déclaré
+    (checkpoints.yaml:41) — signalé par le commentaire précédant NBCOMPLEX-38,
+    faute d'un champ per-item `filiere`/`stream` dans ce corpus (aucun schéma
+    inventé pour ce fix ; NBCOMPLEX-34 à 37 et NBCOMPLEX-46 restent
+    SExp-légaux, coefficients réels). viete-somme-produit-inverses et
+    viete-coefficient-a-oublie passent de 4 à 6 items (NBCOMPLEX-46/47
+    ajoutés) — ce sont eux qui portent la plus grande marge parmi les
+    misconceptions de la dette GAP-B.

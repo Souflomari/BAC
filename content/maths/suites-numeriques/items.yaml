@@ -91,7 +91,7 @@ misconceptions:
   # docs/audits/dette-examen/maths.md, § suites-numeriques, gap A #4 et #9).
   # ──────────────────────────────────────────────────────────────────────
   - id: mc.math.sma_suites_numeriques.iaf-intervalle-instable
-    label: "« La borne sur f' se prend sur un intervalle quelconque »"
+    label: "« La borne sur f' se prend sur un intervalle quelconque, ou u_n ∈ I n'est jamais vérifié »"
     description: "Pour appliquer l'inégalité des accroissements finis (IAF) à une suite $u_{n+1}=f(u_n)$, l'élève majore $|f'|$ sur un intervalle plus large que l'intervalle STABLE réellement occupé par les $u_n$ (voire sur $\\mathbb{R}$ tout entier « pour être large »), ou applique l'inégalité de contraction sans avoir vérifié que $u_n$ (et $\\alpha$) appartiennent bien à l'intervalle où la borne $k$ a été établie."
     contradicts_principle: "L'IAF, $|f(b)-f(a)|\\le k|b-a|$, n'est valable qu'ENTRE DEUX POINTS de l'intervalle $I$ sur lequel $|f'|\\le k$ a été démontré. Élargir $I$ « pour être large » peut faire perdre la borne $k<1$ (une dérivée non bornée, ou bornée par un $k\\ge1$, ailleurs) ; et appliquer l'inégalité à des points dont on n'a pas prouvé qu'ils restent dans $I$ (l'étape « $u_n\\in I$ pour tout $n$ », par récurrence sur $f(I)\\subset I$ et $u_0\\in I$) rend toute la chaîne sans fondement."
 
@@ -105,8 +105,13 @@ misconceptions:
     description: "Pour une suite définie implicitement par $f_n(x_n)=0$, l'élève invoque le théorème des valeurs intermédiaires (changement de signe d'une fonction continue) pour conclure à la fois l'EXISTENCE et l'UNICITÉ d'une solution, sans mentionner ni utiliser la stricte monotonie de $f_n$."
     contradicts_principle: "Le TVI (fonction continue changeant de signe) donne SEULEMENT l'existence d'au moins une solution. C'est la stricte monotonie de $f_n$ (croissante ou décroissante), ajoutée en plus, qui empêche une seconde solution d'exister ailleurs — c'est elle, et elle seule, qui autorise à parler de LA solution, au singulier, et à la noter $x_n$."
 
+  # NON scindé en deux ids (wave B1, 2026-09-27) malgré la tentation : le
+  # sous-type « sens inversé » ne compte que 2 porteurs (SUITES-46 A,
+  # SUITES-47 B), sous le plancher de 3 ; SUITES-49 ne s'y range dans aucun
+  # des deux sous-types proprement. Label étendu à la place — voir
+  # honest_state.
   - id: mc.math.sma_suites_numeriques.comparaison-xn-sans-evaluation
-    label: "« x_n et x_{n+1} se comparent à vue »"
+    label: "« x_n et x_{n+1} se comparent à vue, ou le sens de la monotonie s'applique à l'envers »"
     description: "Pour une suite définie implicitement par $f_n(x_n)=0$, l'élève devine l'ordre de $x_n$ et $x_{n+1}$ depuis la forme de la formule (« $n$ augmente donc ça doit monter »), sans jamais évaluer $f_{n+1}(x_n)$ — ou, l'ayant évalué, applique le sens de la monotonie de $f_{n+1}$ à l'envers pour transformer l'inégalité entre les SORTIES en une inégalité entre les entrées."
     contradicts_principle: "$x_n$ et $x_{n+1}$ sont les zéros de DEUX fonctions différentes : rien ne permet de les comparer directement, ni de deviner leur ordre sur la forme de la définition. La seule voie est d'évaluer $f_{n+1}$ (ou $f_n$) aux deux points et de comparer les sorties obtenues à $0$ ; une fonction strictement CROISSANTE range alors les sorties dans le MÊME sens que les entrées, une fonction strictement DÉCROISSANTE les range dans le sens INVERSE — se tromper de sens inverse la conclusion sur $x_n$ et $x_{n+1}$."
 
@@ -2586,6 +2591,7 @@ items:
 # u_{n+1}=u_n/(3−2u_n)).
   - id: SUITES-39
     rung: "R8b"
+    habilete: application_directe
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [contraction, iaf]
@@ -2655,6 +2661,7 @@ items:
 
   - id: SUITES-40
     rung: "R8b"
+    habilete: application_non_explicite
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [contraction, iaf, intervalle_stable]
@@ -2722,6 +2729,7 @@ items:
 
   - id: SUITES-41
     rung: "R8b"
+    habilete: application_non_explicite
     difficulty_level: 4
     skill_code: sma_suites_numeriques
     tags: [contraction, iaf]
@@ -2753,12 +2761,14 @@ items:
         correct: false
         misconception: [mc.math.sma_suites_numeriques.iaf-intervalle-instable, mc.math.sma_suites_numeriques.contraction-k-pas-strict]
         feedback: >
-          Double confusion. $I'=[0\,;3]$ EST un intervalle stable valide
-          (rien ne l'interdit) ; rien n'impose non plus que deux intervalles
-          stables différents donnent la MÊME borne $k$ — un intervalle plus
-          grand donne en général un $k$ moins bon. Le vrai problème reste
-          celui de $k$\,: sur $I'$, il vaut $1$, ce qui n'est pas strictement
-          inférieur à $1$.
+          Double confusion, dans cet ordre. D'abord, sur l'intervalle :
+          $I'=[0\,;3]$ EST un intervalle stable valide (rien ne l'interdit),
+          et rien n'impose non plus que deux intervalles stables différents
+          donnent la MÊME borne $k$ — un intervalle plus grand donne en
+          général un $k$ moins bon. Ensuite, et c'est la faille que cette
+          réponse montre en premier en niant que $k$ soit en cause : le vrai
+          problème reste celui de $k$ lui-même\,: sur $I'$, il vaut $1$, ce
+          qui n'est pas strictement inférieur à $1$.
       - id: D
         text: "La conclusion est juste, mais la suite converge vers $u_0=1$, pas vers $\\alpha$."
         correct: false
@@ -2790,6 +2800,7 @@ items:
 
   - id: SUITES-42
     rung: "R8b"
+    habilete: application_directe
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [contraction, recurrence, arith_geom]
@@ -2859,6 +2870,7 @@ items:
 
   - id: SUITES-43
     rung: "R8b"
+    habilete: synthese
     difficulty_level: 5
     skill_code: sma_suites_numeriques
     tags: [contraction, gendarmes, synthese]
@@ -2919,6 +2931,7 @@ items:
 
   - id: SUITES-44
     rung: "R8b"
+    habilete: application_directe
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [contraction, majoration_geometrique]
@@ -2982,6 +2995,7 @@ items:
 
   - id: SUITES-45
     rung: "R8c"
+    habilete: application_non_explicite
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [suite_implicite, tvi]
@@ -3050,6 +3064,7 @@ items:
 
   - id: SUITES-46
     rung: "R8c"
+    habilete: synthese
     difficulty_level: 5
     skill_code: sma_suites_numeriques
     tags: [suite_implicite, monotonie]
@@ -3068,10 +3083,11 @@ items:
         misconception: mc.math.sma_suites_numeriques.comparaison-xn-sans-evaluation
         feedback: >
           $g_{n+1}$ n'est pas croissante\,: $g_{n+1}'(x)=-e^x-(n+1)<0$,
-          elle est strictement DÉCROISSANTE, comme $g_n$. La conclusion
-          finale ($x_n>x_{n+1}$) est la bonne, mais atteinte ici pour la
-          mauvaise raison — en croyant $g_{n+1}$ croissante, ce qu'elle
-          n'est pas.
+          elle est strictement DÉCROISSANTE, comme $g_n$ — et une fonction
+          strictement décroissante range les sorties dans l'ordre inverse
+          des entrées, pas dans le même ordre. La conclusion finale
+          ($x_n>x_{n+1}$) est la bonne, mais atteinte ici pour la mauvaise
+          raison — en croyant $g_{n+1}$ croissante, ce qu'elle n'est pas.
       - id: B
         text: "Le terme $-nx$ devenant $-(n+1)x$, « plus négatif », $(x_n)$ est croissante."
         correct: false
@@ -3097,10 +3113,10 @@ items:
           numériquement.
     correct_feedback: >
       $g_{n+1}$ est strictement DÉCROISSANTE ($g_{n+1}'(x)=-e^x-(n+1)<0$) :
-      une fonction décroissante inverse le sens en passant des sorties aux
-      entrées. Ici $g_{n+1}(x_n)=-x_n<0=g_{n+1}(x_{n+1})$, donc $x_n$
-      correspond à une sortie plus PETITE que celle de $x_{n+1}$ — pour une
-      fonction décroissante, cela signifie une entrée plus GRANDE\,:
+      une fonction strictement décroissante range les sorties dans l'ordre
+      inverse des entrées. Ici $g_{n+1}(x_n)=-x_n<0=g_{n+1}(x_{n+1})$, donc
+      $x_n$ correspond à une sortie plus PETITE que celle de $x_{n+1}$ — pour
+      une fonction décroissante, cela signifie une entrée plus GRANDE\,:
       $x_n>x_{n+1}$.
     solution: |
       **L'identité clé.** $g_{n+1}(x)-g_n(x)=\big[3-e^x-(n+1)x\big]-
@@ -3113,13 +3129,14 @@ items:
       **Comparer.** $g_{n+1}(x_n)=-x_n<0=g_{n+1}(x_{n+1})$ (définition de
       $x_{n+1}$). $g_{n+1}$ est strictement DÉCROISSANTE (établi ci-dessus
       pour tout $n\ge1$)\,: une fonction strictement décroissante range les
-      sorties dans le sens INVERSE des entrées, donc
+      sorties dans l'ordre inverse des entrées, donc
       $g_{n+1}(x_n)<g_{n+1}(x_{n+1}) \Rightarrow x_n>x_{n+1}$.
 
       C'est vrai pour tout $n\ge1$\,: $(x_n)$ est strictement décroissante.
 
   - id: SUITES-47
     rung: "R8c"
+    habilete: application_directe
     difficulty_level: 2
     skill_code: sma_suites_numeriques
     tags: [suite_implicite, monotonie]
@@ -3182,6 +3199,7 @@ items:
 
   - id: SUITES-48
     rung: "R8c"
+    habilete: synthese
     difficulty_level: 4
     skill_code: sma_suites_numeriques
     tags: [suite_implicite, limite, synthese]
@@ -3249,6 +3267,7 @@ items:
 
   - id: SUITES-49
     rung: "R8c"
+    habilete: application_non_explicite
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [suite_implicite, monotonie]
@@ -3311,6 +3330,7 @@ items:
 
   - id: SUITES-50
     rung: "R8d"
+    habilete: application_directe
     difficulty_level: 2
     skill_code: sma_suites_numeriques
     tags: [suite_homographique, suite_auxiliaire, arith_geom]
@@ -3372,6 +3392,7 @@ items:
 
   - id: SUITES-51
     rung: "R8d"
+    habilete: application_non_explicite
     difficulty_level: 3
     skill_code: sma_suites_numeriques
     tags: [suite_homographique, suite_auxiliaire, arith_geom]
@@ -3431,6 +3452,7 @@ items:
 
   - id: SUITES-52
     rung: "R8d"
+    habilete: application_non_explicite
     difficulty_level: 4
     skill_code: sma_suites_numeriques
     tags: [suite_homographique, domaine]
@@ -3495,6 +3517,7 @@ items:
 
   - id: SUITES-53
     rung: "R8d"
+    habilete: synthese
     difficulty_level: 5
     skill_code: sma_suites_numeriques
     tags: [suite_homographique, suite_auxiliaire, synthese]
@@ -3631,8 +3654,19 @@ coverage_summary:
     quatre ids ajoutés dans cette vague, deux siègent aussi exactement au
     plancher : iaf-intervalle-instable (SUITES-39/40/41) et
     comparaison-xn-sans-evaluation (SUITES-46/47/49) — tout retrait d'un de
-    ces cinq items casse le plancher correspondant. Rungs R8b/R8c/R8d : label
-    choisi par l'auteur d'items (pas de convention préexistante) pour trois
-    blocs de leçon insérés entre R8 (point fixe) et R9 (adjacentes) sans
-    numéro R propre dans lesson.md (« La contraction », « Suites définies
-    implicitement », « Suites homographiques »).
+    ces cinq items casse le plancher correspondant. comparaison-xn-sans-
+    evaluation n'a PAS été scindé en deux ids (« devine à vue » / « applique
+    le sens à l'envers ») malgré la tentation : le seul sous-type « sens
+    inversé » ne compte que deux porteurs (le distracteur de SUITES-46 qui
+    lit g_n comme croissante, celui de SUITES-47 qui applique la croissance
+    à l'envers) — sous le plancher — et SUITES-49 ne s'y range proprement dans aucun
+    des deux sous-types (l'un de ses distracteurs porte sur le choix de la fonction
+    à évaluer, ni une devinette ni une inversion de sens). Le label a donc
+    été étendu pour nommer les deux échecs plutôt que scindé, en attendant un
+    porteur supplémentaire honnête. Rungs R8b/R8c/R8d : ne sont plus une
+    invention d'auteur sans ancrage — lesson.md porte désormais les en-têtes
+    correspondants (`## R8b — La contraction…`, lesson.md:464 ; `## R8c —
+    Suites définies implicitement…`, lesson.md:523 ; `## R8d — Suites
+    homographiques…`, lesson.md:597), et le validateur a été élargi pour lire
+    les codes de rung suffixés : les trois rungs nomment donc désormais de
+    vraies sections de la leçon.

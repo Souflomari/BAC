@@ -267,7 +267,7 @@ Les deux membres valent $\sqrt{10}$ : la propriété est vérifiée sur cet exem
 
 ---
 
-## Résoudre une équation du second degré dans $\mathbb{C}$
+## R4b — Résoudre une équation du second degré dans $\mathbb{C}$
 
 ### Le dividende de tout ce qu'on vient de construire
 
@@ -397,7 +397,7 @@ Garde cette méthode comme filet de sécurité : en examen elle est plus longue 
 
 ---
 
-## Somme et produit des racines : lire l'équation sans la résoudre
+## R4c — Somme et produit des racines : lire l'équation sans la résoudre
 
 ### D'où ça sort
 
