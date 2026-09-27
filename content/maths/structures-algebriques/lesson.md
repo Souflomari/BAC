@@ -536,6 +536,80 @@ Une telle application s'appelle un **isomorphisme**. Son intérêt est considér
 
 [[checkpoint:cp-r7-morphisme]]
 
+### Exemple travaillé : transporter une structure par un isomorphisme
+
+**Ce qu'on cherche et pourquoi ce geste.** Prends un ensemble $F$ muni d'une loi $\star$ donnée par une formule, et demande-toi si $(F,\star)$ est un groupe. Le premier réflexe — cocher les quatre axiomes directement sur $F$ — marche, mais l'associativité coûte cher : il faudrait développer $(x\star y)\star z$ et $x\star(y\star z)$ pour trois lettres quelconques, parenthèse par parenthèse. Le théorème qui précède ouvre un raccourci : si tu trouves une bijection $\varphi$ vers un groupe **déjà connu**, qui respecte la loi, tu n'as plus jamais besoin de toucher à l'associativité à la main. Voyons le geste sur un exemple choisi pour ça.
+
+Pose $F = \,]1,+\infty[\,$, muni de la loi
+
+$$x \star y = xy - x - y + 2$$
+
+Est-ce que $(F,\star)$ est un groupe commutatif ?
+
+**Étape 1 — $\star$ est-elle seulement interne sur $F$ ?** Avant tout transport, il faut que $\star$ ne s'échappe pas de $F$ (chapitre 2). Prends $x,y \in F$, donc $x>1$ et $y>1$, donc $x-1>0$ et $y-1>0$. Développe leur produit :
+
+$$(x-1)(y-1) = xy - x - y + 1$$
+
+Ajoute $1$ des deux côtés de cette identité :
+
+$$xy - x - y + 2 = (x-1)(y-1) + 1$$
+
+Le membre de droite est un produit de deux réels strictement positifs, plus $1$ : il est strictement supérieur à $1$. Donc $x \star y > 1$, c'est-à-dire $x \star y \in F$. ✓ $\star$ est bien une LCI sur $F$.
+
+**Étape 2 — une bijection vers un groupe déjà connu.** $(\mathbb{R}^*_+, \times)$ est un groupe commutatif classique : le produit de deux réels strictement positifs est strictement positif (interne), $\times$ y est associative et commutative (héritée de $\mathbb{R}$), $1$ en est le neutre, et le symétrique de $t$ est $\frac1t$, lui aussi strictement positif. Considère
+
+$$\varphi : \mathbb{R}^*_+ \to F, \qquad \varphi(t) = t+1$$
+
+Vérifie d'abord que $\varphi$ arrive bien dans $F$ : $t>0 \Rightarrow t+1>1$. ✓ (Remarque de notation : ici c'est $\times$, la loi la plus familière, qui joue le rôle de la loi déjà connue, et $\star$ celui de la loi mystère — l'inverse des lettres du paragraphe précédent, qui n'étaient que des étiquettes illustratives. Ce qui compte n'est jamais la lettre choisie, mais laquelle des deux structures est déjà établie.)
+
+**Étape 3 — $\varphi$ est un morphisme.** On veut $\varphi(t_1 \times t_2) = \varphi(t_1) \star \varphi(t_2)$, pour $t_1,t_2$ **quelconques** dans $\mathbb{R}^*_+$ — pas pour un couple choisi, sans quoi rien n'est prouvé pour les autres (chapitre 3). Membre de gauche, en appliquant directement la définition de $\varphi$ :
+
+$$\varphi(t_1 t_2) = t_1 t_2 + 1$$
+
+Membre de droite, en partant de la définition de $\star$ :
+
+$$\varphi(t_1) \star \varphi(t_2) = (t_1+1)(t_2+1) - (t_1+1) - (t_2+1) + 2$$
+
+Développe le produit qui ouvre ce membre :
+
+$$(t_1+1)(t_2+1) = t_1t_2 + t_1 + t_2 + 1$$
+
+Remplace-le dans l'expression précédente :
+
+$$\varphi(t_1) \star \varphi(t_2) = (t_1t_2 + t_1 + t_2 + 1) - (t_1+1) - (t_2+1) + 2$$
+
+Les termes en $t_1$ et en $t_2$ s'annulent deux à deux ; il ne reste que les constantes :
+
+$$\varphi(t_1) \star \varphi(t_2) = t_1t_2 + 1$$
+
+Les deux membres coïncident, pour $t_1,t_2$ quelconques : $\varphi(t_1 t_2) = \varphi(t_1) \star \varphi(t_2)$. $\varphi$ **est un morphisme**.
+
+[[checkpoint:cp-r7-transport]]
+
+**Étape 4 — $\varphi$ est bijective.** Résous $\varphi(t) = x$ d'inconnue $t$, pour $x \in F$ fixé : $t+1=x$, donc $t=x-1$. Vérifie que cette solution retombe bien dans l'ensemble de départ : $x>1 \Rightarrow x-1>0$, donc $t \in \mathbb{R}^*_+$. Chaque $x \in F$ a donc **exactement un** antécédent dans $\mathbb{R}^*_+$ : $\varphi$ est bijective, de bijection réciproque $\varphi^{-1}(x) = x-1$.
+
+**La conclusion, par transport.** $\varphi$ est bijective (étape 4) et morphisme (étape 3) : c'est un isomorphisme de $(\mathbb{R}^*_+,\times)$ vers $(F,\star)$. Comme $(\mathbb{R}^*_+,\times)$ est un groupe commutatif déjà connu (étape 2), toute sa structure se transporte : $(F,\star)$ **est un groupe commutatif**. Remarque ce qui n'a **pas** été écrit : aucune ligne développant $(x\star y)\star z$ contre $x\star(y\star z)$, aucune ligne testant $x\star y = y\star x$ directement sur des lettres de $F$. C'est exactement le gain annoncé à l'étape 1 : associativité et commutativité se transportent, elles ne se redémontrent jamais à la main une fois l'isomorphisme établi.
+
+**Le neutre et le symétrique, lus comme des images par $\varphi$.** Le transport ne donne pas qu'une conclusion générale : il donne les objets eux-mêmes, sans qu'il y ait à les chercher sur $F$.
+
+Le neutre de $(F,\star)$ est l'image par $\varphi$ du neutre de $(\mathbb{R}^*_+,\times)$, qui est $1$ :
+
+$$e_F = \varphi(1) = 1+1 = 2$$
+
+**Attention ici, c'est le piège le plus tentant de cette méthode :** le neutre de $F$ n'est pas $1$, alors que celui de $\mathbb{R}^*_+$ l'est — deux ensembles différents, deux neutres différents, reliés par $\varphi$, jamais confondus. Vérifie-le directement pour t'en convaincre : $x \star 2 = 2x - x - 2 + 2 = x$, ça tient pour tout $x$, alors que $x \star 1 = x - x - 1 + 2 = 1 \neq x$ en général — $1$ n'est pas neutre dans $F$, même si c'est le neutre de $\mathbb{R}^*_+$ dont $F$ hérite pourtant toute sa structure.
+
+Le symétrique de $x \in F$ est l'image par $\varphi$ du symétrique, dans $\mathbb{R}^*_+$, de son antécédent $t=x-1$ — c'est-à-dire de $\frac{1}{t} = \frac{1}{x-1}$ :
+
+$$x' = \varphi\left(\frac{1}{x-1}\right) = \frac{1}{x-1} + 1$$
+
+Réduis au même dénominateur :
+
+$$x' = \frac{1 + (x-1)}{x-1} = \frac{x}{x-1}$$
+
+Encore une fois, remarque le geste : pas besoin de résoudre $x \star x' = 2$ à la main sur $F$ — le symétrique se **lit** comme l'image par $\varphi$ du symétrique déjà connu dans $\mathbb{R}^*_+$.
+
+**Et si deux lois sont en jeu ?** Le même raisonnement s'étend mot pour mot dès que $\varphi$ respecte **deux** lois à la fois — $\varphi(x+y) = \varphi(x) \oplus \varphi(y)$ pour la première, $\varphi(x\times y) = \varphi(x) \otimes \varphi(y)$ pour la seconde. Si $(E,+,\times)$ est déjà connu comme anneau (voire corps), alors $(F,\oplus,\otimes)$ hérite d'un coup de toute la structure : pas seulement le groupe additif, mais aussi la distributivité, et — pour un corps — l'inversibilité de chaque élément non nul pour la seconde loi. Rien de tout ça ne se revérifie axiome par axiome sur $F$ : c'est exactement la stratégie de l'exercice de type bac qui suit, où un unique $\varphi$, vérifié compatible avec les deux lois à la fois, transporte en un seul geste une structure de corps.
+
 ### Exercice de type bac
 
 L'exercice ci-dessous est un sujet d'examen national (Sciences Mathématiques, session normale 2019). Cherche-le toi-même, question par question, avant de dérouler le raisonnement expert : c'est en butant, puis en te corrigeant, que le geste s'installe pour de bon.
@@ -547,3 +621,77 @@ L'exercice ci-dessous est un sujet d'examen national (Sciences Mathématiques, s
 Même chaîne d'outils, un habillage différent : une autre loi, d'autres matrices, et un isomorphisme sans carré. Si tu as compris la méthode plutôt que retenu les nombres du sujet 2019, celle-ci ne te résistera pas.
 
 [[exercise:r-variation]]
+
+<!-- NOTE AJOUTÉE (dette d'examen, vague B — GAP-B "Transport de structure by
+     an isomorphism (group, then ring/field with two laws) — stated, never
+     worked", docs/audits/dette-examen/maths.md, § structures-algebriques,
+     ligne ~374 ; 8 entrées de bank.yaml sur 9 dépendent de ce geste) :
+     [PROSE LIVRÉE, 2026-09-27] R7 gagne un exemple travaillé complet entre le
+     théorème abstrait (529-535) et l'exercice bac (désormais après ligne
+     613) : "Exemple travaillé : transporter une structure par un
+     isomorphisme". Ensemble et loi ORIGINAUX, pas ceux d'un bank.yaml cité
+     par l'audit : $F=\,]1,+\infty[\,$, $x\star y = xy-x-y+2$, isomorphisme
+     depuis $(\mathbb{R}^*_+,\times)$ via $\varphi(t)=t+1$. Toutes les valeurs
+     ont été vérifiées à la main deux fois (stabilité via $(x-1)(y-1)+1$,
+     morphisme via développement direct, bijectivité par résolution de
+     $\varphi(t)=x$, neutre $\varphi(1)=2$, symétrique
+     $\varphi(1/(x-1))=x/(x-1)$ — chaque résultat confirmé indépendamment en
+     résolvant directement sur $F$).
+
+     Décision de notation : le paragraphe théorique qui précède (529-535)
+     nomme $(E,\star)$ la structure déjà connue et $(F,\times)$ la structure
+     mystère — des étiquettes illustratives, pas une convention figée.
+     L'exemple travaillé inverse volontairement les symboles ($\times$ pour
+     la structure connue $\mathbb{R}^*_+$, $\star$ pour la structure mystère
+     $F$) parce que c'est l'usage dominant du reste de cette leçon depuis R1
+     (⋆ = la loi à l'étude, encore inconnue). Signalé en une phrase dans le
+     texte (fin de l'étape 2) pour qu'un lecteur qui vient de lire 531-535 ne
+     s'étonne pas de l'inversion.
+
+     Un seul checkpoint predict-commit ajouté, `cp-r7-transport`
+     (checkpoints.yaml), placé APRÈS la preuve du morphisme (étape 3) et
+     AVANT celle de la bijectivité (étape 4) — donc avant la conclusion par
+     transport, comme demandé. Il met en scène le premier piège cité par
+     l'audit : conclure au groupe transporté dès le morphisme établi, sans
+     avoir prouvé la bijectivité. Trois distracteurs, trois ids DÉJÀ déclarés
+     dans items.yaml (aucun id inventé pour ce checkpoint) :
+     `axiome-oublie` (le morphisme suffirait, la bijectivité ne serait qu'un
+     détail — c'est très exactement l'erreur nommée par l'audit),
+     `generalisation-hative` (un point remarquable, $\varphi(1)=2$, généralisé
+     en bijectivité de toute l'application) et `groupe-implique-commutatif`
+     (repris tel quel du distracteur D de `cp-r7-morphisme`, adapté aux
+     nombres de cet exemple).
+
+     Le second piège cité par la tâche — prendre le neutre de $F$ pour le
+     même nombre que le neutre de la structure connue (ici : croire que le
+     neutre de $F$ est $1$ parce que $1$ est le neutre de $\mathbb{R}^*_+$) —
+     est traité DANS LA PROSE (un "Attention" juste après le calcul de
+     $e_F=\varphi(1)=2$, avec la vérification directe $x\star1=1\neq x$ qui
+     réfute le nombre erroné), PAS dans un item ou un checkpoint : aucun id de
+     l'inventaire actuel ne nomme cette confusion précise (les candidats les
+     plus proches, `neutre-vs-symetrique` et `generalisation-hative`, portent
+     sur un mécanisme différent — confondre deux RÔLES à l'intérieur d'un
+     même ensemble, ou généraliser depuis un exemple, pas confondre le neutre
+     d'un ensemble avec celui d'un autre ensemble relié par $\varphi$). Au
+     lieu de forcer un id qui ne correspond pas, proposition pour
+     item-author, à ajouter à l'inventaire de items.yaml avant d'écrire un
+     item dessus :
+       - `mc.math.structures_algebriques.neutre-non-transporte` — « le
+         neutre (ou le symétrique) de la structure transportée est le même
+         nombre que dans la structure de départ, sans passer par $\varphi$ ».
+         Description : face à un isomorphisme $\varphi : E \to F$, l'élève
+         répond que le neutre de $F$ est le neutre de $E$ tel quel (ou que le
+         symétrique de $\varphi(x)$ dans $F$ est $\varphi$ appliqué au MÊME
+         nombre que le symétrique de $x$ dans $E$, sans recalculer l'image),
+         au lieu de calculer explicitement $\varphi(e_E)$ (ou $\varphi(x'_E)$)
+         comme le prescrit le transport. contradicts_principle : le transport
+         relie deux structures par les IMAGES de $\varphi$, pas par identité
+         numérique — $e_F = \varphi(e_E)$, qui coïncide avec $e_E$
+         uniquement par coïncidence numérique, jamais par principe (ici
+         $\varphi(1)=2\neq1$).
+     Aucun item ni checkpoint existant n'a été modifié par cette proposition ;
+     seule la prose de R7 et cette note ont changé. `cp-r7-morphisme`,
+     déjà présent avant cette édition, est inchangé et garde sa place, juste
+     avant ce nouvel exemple.
+-->
+

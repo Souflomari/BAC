@@ -32,6 +32,16 @@ skill_code: maths_structures_alg
 #                                             bijectif ET morphisme, il transporte
 #                                             la structure sans re-vérifier les
 #                                             axiomes. Sonde axiome-oublie.
+#   cp-r7-transport         (dans l'exemple — rupture-gate : ajouté dette d'examen
+#                            travaillé de R7,   vague B (GAP-B "transport de
+#                            après la preuve    structure", docs/audits/
+#                            du morphisme,      dette-examen/maths.md). Place le
+#                            avant celle de     pari juste après la preuve du
+#                            la bijectivité)    morphisme sur φ(t)=t+1, avant celle
+#                                               de la bijectivité : conclure au
+#                                               groupe transporté sans bijectivité
+#                                               est le piège cité par l'audit.
+#                                               Sonde axiome-oublie.
 #
 # CHAQUE distracteur porte un id de misconception nommé de l'inventaire de cette
 # notion (items.yaml, namespace mc.math.structures_algebriques.*). Les longueurs
@@ -414,3 +424,83 @@ checkpoints:
           commutativité est une propriété en plus (chapitre 6), et il existe des groupes
           non commutatifs. Ici, elle ne peut venir sur $(F,\times)$ que
           transportée depuis $(E,\ast)$ par un vrai isomorphisme.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-r7-transport | placé DANS l'exemple travaillé de R7, entre la
+  #        preuve du morphisme et celle de la bijectivité
+  #        Rupture-gate : conclure au groupe transporté dès le morphisme
+  #        établi, sans avoir encore prouvé la bijectivité — le piège cité
+  #        par l'audit de dette d'examen (vague B, GAP-B transport de
+  #        structure). Sonde axiome-oublie.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7-transport
+    rung: "R7"
+    habilete: raisonnement
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, morphisme, isomorphisme, transport]
+    primary_misconception: mc.math.structures_algebriques.axiome-oublie
+    item_source: original
+    lesson_placement: in_R7_exemple_transport
+
+    stem: |
+      Dans l'exemple travaillé, on vient d'établir que $\varphi(t)=t+1$
+      vérifie $\varphi(t_1 t_2) = \varphi(t_1) \star \varphi(t_2)$ pour tous
+      $t_1,t_2 \in \mathbb{R}^*_+$ — $\varphi$ est un morphisme de
+      $(\mathbb{R}^*_+,\times)$ vers $(F,\star)$. **Avant de continuer :
+      peut-on déjà conclure que $(F,\star)$ est un groupe commutatif ?**
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Pas encore : il manque la bijectivité de $\varphi$. Sans elle, rien
+          ne garantit qu'on transporte bien toute la structure de
+          $(\mathbb{R}^*_+,\times)$ vers $(F,\star)$, élément par élément.
+        correct: true
+        feedback: |
+          Exact. Un isomorphisme est bijectif **et** morphisme — les deux
+          ensemble, jamais l'un sans l'autre. On vient d'établir le second ; il
+          reste à établir le premier avant de pouvoir transporter quoi que ce
+          soit.
+
+      - id: B
+        text: |
+          Oui : un morphisme entre deux structures suffit à transporter le
+          groupe, la bijectivité n'est qu'un détail technique en plus.
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        feedback: |
+          Modèle détecté : une condition oubliée. Sans bijectivité, $\varphi$
+          pourrait écraser deux éléments distincts de $\mathbb{R}^*_+$ sur la
+          même image de $F$, ou ne jamais atteindre certains éléments de $F$
+          — la structure ne se transporterait qu'à moitié, ou pas du tout.
+          Bijectif et morphisme sont deux conditions non négociables, jamais
+          l'une sans l'autre.
+
+      - id: C
+        text: |
+          Oui : on a vu que $\varphi(1)=2$ correspond bien au neutre attendu
+          de $(F,\star)$, ça confirme que $\varphi$ est bijective.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Modèle détecté : un cas particulier généralisé. Que $\varphi(1)=2$
+          tombe juste sur le neutre attendu est cohérent, mais ça ne dit rien
+          de **tous** les autres éléments de $F$ : la bijectivité se prouve
+          pour l'application entière, elle ne se confirme pas sur un seul
+          point remarquable.
+
+      - id: D
+        text: |
+          Oui, on peut conclure : dès qu'un morphisme relie deux structures,
+          le groupe qui en résulte est automatiquement commutatif, que
+          $\varphi$ soit bijective ou non.
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-implique-commutatif
+        feedback: |
+          Modèle détecté : « tout groupe est commutatif ». Faux, et de toute
+          façon hors sujet ici : sans bijectivité, on n'a même pas encore de
+          groupe transporté du tout — la question de sa commutativité ne se
+          pose pas avant que le transport lui-même soit valide.
