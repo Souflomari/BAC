@@ -610,6 +610,36 @@ Encore une fois, remarque le geste : pas besoin de résoudre $x \star x' = 2$ à
 
 **Et si deux lois sont en jeu ?** Le même raisonnement s'étend mot pour mot dès que $\varphi$ respecte **deux** lois à la fois — $\varphi(x+y) = \varphi(x) \oplus \varphi(y)$ pour la première, $\varphi(x\times y) = \varphi(x) \otimes \varphi(y)$ pour la seconde. Si $(E,+,\times)$ est déjà connu comme anneau (voire corps), alors $(F,\oplus,\otimes)$ hérite d'un coup de toute la structure : pas seulement le groupe additif, mais aussi la distributivité, et — pour un corps — l'inversibilité de chaque élément non nul pour la seconde loi. Rien de tout ça ne se revérifie axiome par axiome sur $F$ : c'est exactement la stratégie de l'exercice de type bac qui suit, où un unique $\varphi$, vérifié compatible avec les deux lois à la fois, transporte en un seul geste une structure de corps.
 
+### Même geste, habillage matriciel
+
+**Ce qu'on cherche et pourquoi ce geste.** L'exemple précédent transportait vers un ensemble de réels. À l'examen, c'est presque toujours l'ensemble d'arrivée qui est habillé en matrices — mais le geste ne change pas d'un iota : toujours un morphisme, toujours une bijection, toujours un transport. Regarde-le une fois, sur un exemple à toi, choisi pour aller vite (pas celui du sujet qui suit).
+
+Prends $(\mathbb{C},+,\times)$, corps commutatif déjà connu (chapitre 9), et l'ensemble de matrices
+
+$$F = \left\{ M(x,y) = \begin{pmatrix} x & -y \\ y & x \end{pmatrix} \;:\; x,y \in \mathbb{R} \right\} \subset M_2(\mathbb{R})$$
+
+muni de l'addition et de la multiplication usuelles des matrices. Considère
+
+$$\varphi : \mathbb{C} \to F, \qquad \varphi(x+iy) = M(x,y)$$
+
+Remarque tout de suite ce que cette définition économise : $F$ est ici l'image de $\varphi$, donc sa stabilité pour $+$ et $\times$ dans $M_2(\mathbb{R})$ n'a pas besoin d'être prouvée à part — elle découlera du morphisme. (Dans le sujet qui suit, $F$ est donné indépendamment : sa stabilité s'y prouve en premier, comme au chapitre 2.)
+
+**Le morphisme pour $\times$, en un seul produit.** Pose $z=x+iy$ et $z'=x'+iy'$ quelconques. D'un côté, en développant le produit dans $\mathbb{C}$ :
+
+$$\varphi(zz') = \varphi\big((xx'-yy') + i(xy'+x'y)\big) = M(xx'-yy',\ xy'+x'y)$$
+
+De l'autre, un unique produit matriciel, calculé une seule fois :
+
+$$\varphi(z)\varphi(z') = \begin{pmatrix} x & -y \\ y & x \end{pmatrix}\begin{pmatrix} x' & -y' \\ y' & x' \end{pmatrix} = \begin{pmatrix} xx'-yy' & -(xy'+x'y) \\ xy'+x'y & xx'-yy' \end{pmatrix} = M(xx'-yy',\ xy'+x'y)$$
+
+Les deux membres coïncident : $\varphi(zz')=\varphi(z)\varphi(z')$. Contraste avec l'exemple précédent, où le morphisme demandait plusieurs lignes de développement puis de simplification : ici, tout tient sur une seule ligne de calcul matriciel — l'habillage matriciel condense le morphisme en un produit, il ne le complique pas.
+
+Le morphisme pour $+$ se lit tout aussi directement, coefficient par coefficient : $\varphi(z+z') = M(x+x',\,y+y') = M(x,y)+M(x',y') = \varphi(z)+\varphi(z')$.
+
+**La bijection, lue sur les coefficients, sans isoler d'inconnue.** Pas d'équation à résoudre comme à l'étape 4 de l'exemple précédent : $\varphi(x+iy)=\varphi(x'+iy')$ s'écrit $M(x,y)=M(x',y')$, c'est-à-dire — en comparant les deux matrices coefficient par coefficient — $x=x'$ et $y=y'$, donc $z=z'$ : $\varphi$ est injective. Et toute matrice $M(x,y)$ de $F$ est, par construction, l'image de $x+iy$ : $\varphi$ est surjective. Bijective, donc, en lisant seulement les deux coefficients qui identifient chaque matrice.
+
+**La conclusion, sur les deux lois à la fois.** $\varphi$ respecte $+$ et $\times$, et elle est bijective : c'est un isomorphisme de $(\mathbb{C},+,\times)$ vers $(F,+,\times)$. Comme $(\mathbb{C},+,\times)$ est un corps commutatif déjà connu, toute cette structure se transporte d'un coup : $(F,+,\times)$ **est, lui aussi, un corps commutatif** — un anneau, et de plus tout élément non nul de $F$ (toute matrice $M(x,y)$ avec $(x,y)\neq(0,0)$) admet un symétrique pour $\times$, transporté depuis l'inverse de $z=x+iy$ dans $\mathbb{C}^*$. C'est très exactement la forme du sujet qui suit : un ensemble de matrices, une structure de groupe ou de corps obtenue par isomorphisme depuis une structure déjà connue — sans qu'aucun axiome ne soit re-vérifié à la main sur les matrices elles-mêmes.
+
 ### Exercice de type bac
 
 L'exercice ci-dessous est un sujet d'examen national (Sciences Mathématiques, session normale 2019). Cherche-le toi-même, question par question, avant de dérouler le raisonnement expert : c'est en butant, puis en te corrigeant, que le geste s'installe pour de bon.
@@ -663,32 +693,14 @@ Même chaîne d'outils, un habillage différent : une autre loi, d'autres matric
      nombres de cet exemple).
 
      Le second piège cité par la tâche — prendre le neutre de $F$ pour le
-     même nombre que le neutre de la structure connue (ici : croire que le
-     neutre de $F$ est $1$ parce que $1$ est le neutre de $\mathbb{R}^*_+$) —
-     est traité DANS LA PROSE (un "Attention" juste après le calcul de
-     $e_F=\varphi(1)=2$, avec la vérification directe $x\star1=1\neq x$ qui
-     réfute le nombre erroné), PAS dans un item ou un checkpoint : aucun id de
-     l'inventaire actuel ne nomme cette confusion précise (les candidats les
-     plus proches, `neutre-vs-symetrique` et `generalisation-hative`, portent
-     sur un mécanisme différent — confondre deux RÔLES à l'intérieur d'un
-     même ensemble, ou généraliser depuis un exemple, pas confondre le neutre
-     d'un ensemble avec celui d'un autre ensemble relié par $\varphi$). Au
-     lieu de forcer un id qui ne correspond pas, proposition pour
-     item-author, à ajouter à l'inventaire de items.yaml avant d'écrire un
-     item dessus :
-       - `mc.math.structures_algebriques.neutre-non-transporte` — « le
-         neutre (ou le symétrique) de la structure transportée est le même
-         nombre que dans la structure de départ, sans passer par $\varphi$ ».
-         Description : face à un isomorphisme $\varphi : E \to F$, l'élève
-         répond que le neutre de $F$ est le neutre de $E$ tel quel (ou que le
-         symétrique de $\varphi(x)$ dans $F$ est $\varphi$ appliqué au MÊME
-         nombre que le symétrique de $x$ dans $E$, sans recalculer l'image),
-         au lieu de calculer explicitement $\varphi(e_E)$ (ou $\varphi(x'_E)$)
-         comme le prescrit le transport. contradicts_principle : le transport
-         relie deux structures par les IMAGES de $\varphi$, pas par identité
-         numérique — $e_F = \varphi(e_E)$, qui coïncide avec $e_E$
-         uniquement par coïncidence numérique, jamais par principe (ici
-         $\varphi(1)=2\neq1$).
+     même nombre que le neutre de la structure connue — est traité DANS LA
+     PROSE (l'"Attention" juste après $e_F=\varphi(1)=2$).
+
+     [MISE À JOUR, 2026-09-27] La misconception proposée ci-dessus pour
+     porter ce piège a été acceptée et déclarée par l'auteur d'items :
+     `mc.math.structures_algebriques.neutre-non-transporte` (items.yaml:58–61),
+     désormais portée par les items SA-30 à SA-33 (items.yaml).
+
      Aucun item ni checkpoint existant n'a été modifié par cette proposition ;
      seule la prose de R7 et cette note ont changé. `cp-r7-morphisme`,
      déjà présent avant cette édition, est inchangé et garde sa place, juste
