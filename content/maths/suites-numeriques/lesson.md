@@ -461,6 +461,139 @@ Résoudre $L=f(L)$ **sans avoir d'abord établi que la suite converge**. L'équa
 
 ---
 
+## La contraction : majorer |u_n − α| directement, sans passer par la monotonie
+
+### Le problème que cette méthode résout
+
+Au chapitre 9, trouver la limite d'une suite $u_{n+1}=f(u_n)$ demandait de recoller trois étages : un intervalle stable, le signe de $f(x)-x$ pour la monotonie, puis le théorème de la limite monotone pour l'existence de la limite. Certains sujets demandent plus que cette existence : une inégalité explicite, du type $|u_n-\alpha|\le k^n\times c$, qui donne à la fois la convergence et une mesure de sa rapidité. Le signe de $f(x)-x$ ne donne jamais ça — il faut un autre outil, qui agit directement sur l'écart $|u_n-\alpha|$.
+
+### L'outil : l'inégalité des accroissements finis (IAF)
+
+**Énoncé (admis ici).** Si $f$ est dérivable sur un intervalle $I$ et s'il existe un réel $k\ge0$ tel que $|f'(x)|\le k$ pour tout $x$ de $I$, alors, pour tous $a,b$ de $I$ :
+
+$$|f(b)-f(a)| \le k\,|b-a|$$
+
+**L'image qui rend ça crédible :** $|f'|$ mesure à quel point $f$ « étire » les écarts, localement, en chaque point. Si cette dilatation locale ne dépasse jamais $k$ nulle part sur $I$, alors un écart entre deux points quelconques de $I$ ne peut pas, lui non plus, être dilaté de plus d'un facteur $k$ en passant par $f$ — même un chemin qui zigzague entre $a$ et $b$ ne peut pas s'éloigner plus vite, en moyenne, que sa pente maximale ne l'y autorise à chaque instant.
+
+Ce résultat est un corollaire du théorème des accroissements finis — que la leçon « Dérivabilité et étude des fonctions » signale explicitement comme hors du programme officiel à ce niveau. Plusieurs sujets nationaux l'utilisent quand même pour ce type de suite : on l'énonce donc ici, directement, pour savoir s'en servir correctement le jour où un sujet le demande. Retiens surtout la condition qui fait tout fonctionner : $k$ doit être **strictement inférieur à 1**, et l'inégalité $|f'|\le k$ doit être valable **sur tout un intervalle stable qui contient tous les $u_n$** — pas seulement vérifiée au point $\alpha$.
+
+### Exemple travaillé
+
+Soit $f$ définie sur $\mathbb{R}$ par $f(x) = \dfrac{x^2+1}{4}$, et $(u_n)$ définie par $u_0=0$ et $u_{n+1}=f(u_n)$.
+
+**Étape 0 — un intervalle stable, et le point fixe.** Sur $I=[0\,;1]$, $f'(x)=\dfrac{x}{2}\ge0$ : $f$ est croissante sur $I$, donc $f(I) = [f(0)\,;f(1)] = \left[\dfrac14\,;\dfrac12\right] \subset I$. Comme $u_0=0\in I$, la récurrence du chapitre 2 donne $u_n\in I$ pour tout $n$.
+
+Cherchons le point fixe : $L=f(L) \iff 4L=L^2+1 \iff L^2-4L+1=0$. Ce trinôme a pour racines $2-\sqrt3\approx0{,}268$ et $2+\sqrt3\approx3{,}73$. Seule la première appartient à $I$ : $\alpha = 2-\sqrt3$.
+
+**Étape 1 — la borne sur $f'$.** Pour tout $x\in I=[0\,;1]$, $f'(x)=\dfrac{x}{2}\in\left[0\,;\dfrac12\right]$, donc $|f'(x)|\le\dfrac12$ sur $I$ tout entier : $k=\dfrac12$.
+
+**Étape 2 — l'inégalité de contraction, via l'IAF.**
+
+**Ce qu'on cherche ici, et pourquoi ce geste :** on veut relier $|u_{n+1}-\alpha|$ à $|u_n-\alpha|$. Comme $u_{n+1}=f(u_n)$ et $\alpha=f(\alpha)$, c'est exactement la forme $|f(b)-f(a)|$ de l'IAF, avec $b=u_n$ et $a=\alpha$ — tous deux dans $I$ (étape 0).
+
+$$|f(u_n)-f(\alpha)| \le \frac12|u_n-\alpha| \quad\Longrightarrow\quad |u_{n+1}-\alpha| \le \frac12|u_n-\alpha|$$
+
+**Étape 3 — empiler l'inégalité par récurrence.** Le pas précédent divise l'écart par $2$ à chaque rang ; empile-le $n$ fois (récurrence, chapitre 2), à partir de $|u_0-\alpha| = |0-(2-\sqrt3)| = 2-\sqrt3$ :
+
+$$|u_n-\alpha| \le \left(\frac12\right)^n (2-\sqrt3)$$
+
+**Étape 4 — la limite, par les gendarmes.** Comme $0\le\frac12<1$, $\left(\frac12\right)^n\to0$ (chapitre 6), donc $\left(\frac12\right)^n(2-\sqrt3)\to0$. L'encadrement $0\le|u_n-\alpha|\le\left(\frac12\right)^n(2-\sqrt3)$ et le théorème des gendarmes (chapitre 7) donnent $|u_n-\alpha|\to0$, c'est-à-dire :
+
+$$\lim_{n\to+\infty} u_n = 2-\sqrt3$$
+
+**Ce que ce résultat apporte, au-delà du chapitre 9 :** on n'a jamais eu besoin d'étudier le signe de $f(x)-x$ ni d'invoquer le théorème de la limite monotone — la borne sur $f'$ a livré la convergence ET une mesure explicite de sa vitesse (l'écart est divisé par $2$ à chaque étape) en une seule chaîne d'implications.
+
+### Variante : quand la majoration est directement géométrique
+
+Certains sujets épargnent l'étape de l'IAF : on te donne directement, pour tout $n$, $0\le u_{n+1}\le q\,u_n$ avec $0\le q<1$ (obtenue par un calcul de signe ou une inégalité élémentaire, sans dérivée). Le même moule s'applique, en deux lignes — c'est le cas particulier $\alpha=0$ de la chaîne précédente :
+
+$$0 \le u_{n+1} \le q\,u_n \ \Longrightarrow\ 0 \le u_n \le u_0\,q^n \quad (\text{récurrence, chapitre 2})$$
+
+$$0\le q<1 \ \Longrightarrow\ u_0\,q^n\to0 \ \Longrightarrow\ u_n\to0 \quad (\text{gendarmes, chapitre 7})$$
+
+### L'erreur à repérer
+
+Deux erreurs coûtent cher ici, et toutes deux portent sur l'intervalle $I$, pas sur le calcul de $f'$ lui-même :
+
+- **Majorer $|f'|$ sur un intervalle trop large** (ou sur $\mathbb{R}$ tout entier « pour être sûr »), au lieu de l'intervalle *stable* réellement occupé par les $u_n$. Ici, $f'(x)=\frac{x}{2}$ n'est majorée par $\frac12$ que sur $I=[0\,;1]$ — sur $[0\,;3]$ par exemple, $f'(3)=\frac32>1$, et l'inégalité de contraction s'effondre : rien ne garantit plus $k<1$.
+- **Oublier de vérifier, avant d'appliquer l'IAF, que $u_n$ reste bien dans $I$ pour tout $n$.** L'inégalité $|f(b)-f(a)|\le k|b-a|$ n'est valable que pour $a,b\in I$ — ici $a=\alpha$ et $b=u_n$. Sans l'étape 0 (souvent déjà acquise d'une question précédente de l'énoncé), appliquer l'IAF n'a aucune justification.
+
+---
+
+## Suites définies implicitement : $f_n(x_n) = 0$
+
+### Le problème que cette méthode résout
+
+Jusqu'ici, un terme $u_{n+1}$ se calculait à partir de $u_n$ via une formule $u_{n+1}=f(u_n)$. Il existe une famille différente de sujets, où le rang $n$ n'indexe pas les *termes* d'une même suite, mais une *famille de fonctions* $f_n$ : à chaque $n$, on ne donne pas de formule pour calculer $x_n$ directement — on donne une équation, $f_n(x)=0$, dont $x_n$ est LA solution, à charge pour toi de montrer d'abord qu'il y en a une, et une seule. Impossible de « calculer » $x_n$ ; il faut raisonner sur l'équation qui le définit.
+
+### Exemple travaillé
+
+Pour tout entier $n\ge1$, on considère la fonction $f_n$ définie sur $\mathbb{R}$ par :
+
+$$f_n(x) = n\,x + x^3 - 1$$
+
+**Étape 1 — existence et unicité de $x_n$, par le corollaire du TVI.**
+
+**Ce qu'on cherche ici, et pourquoi ce geste :** l'équation $f_n(x)=0$ n'a une solution UNIQUE que si $f_n$ change de signe ET ne peut pas changer de signe une seconde fois — c'est exactement ce qu'apporte la stricte monotonie, en plus du changement de signe lui-même (chapitre « Limites et continuité »).
+
+$f_n$ est dérivable sur $\mathbb{R}$ (polynôme), et $f_n'(x) = n+3x^2$. Comme $n\ge1>0$ et $3x^2\ge0$, $f_n'(x)\ge n>0$ pour tout $x$ : $f_n$ est strictement croissante sur $\mathbb{R}$ tout entier.
+
+Évaluons $f_n$ aux deux bornes de $[0\,;1]$ :
+
+$$f_n(0) = -1 < 0 \qquad\qquad f_n(1) = n+1-1 = n > 0$$
+
+$f_n$ est continue (dérivable), strictement croissante, et change de signe entre $0$ et $1$ : par le corollaire du théorème des valeurs intermédiaires, l'équation $f_n(x)=0$ admet une unique solution $x_n$, avec $x_n\in\,]0\,;1[$.
+
+**Étape 2 — la monotonie de $(x_n)$, par le signe de $f_{n+1}(x_n)$.**
+
+**Ce qu'on cherche ici, et pourquoi ce geste :** $x_n$ et $x_{n+1}$ sont les zéros de deux fonctions DIFFÉRENTES, $f_n$ et $f_{n+1}$ — rien ne permet de les comparer directement, comme on comparait $u_{n+1}$ et $u_n$ au chapitre 5. Le geste qui marche : évaluer $f_{n+1}$ (pas $f_n$) au point $x_n$, et comparer ce résultat à $0=f_{n+1}(x_{n+1})$.
+
+Remarque d'abord que, pour tout $x$ :
+
+$$f_{n+1}(x) - f_n(x) = \big[(n+1)x+x^3-1\big] - \big[nx+x^3-1\big] = x$$
+
+le terme en $x^3$ s'efface, seul le terme en $n$ change. Donc $f_{n+1}(x) = f_n(x)+x$ pour tout $x$. Évalue cette identité en $x=x_n$ :
+
+$$f_{n+1}(x_n) = f_n(x_n) + x_n = 0 + x_n = x_n$$
+
+(puisque $f_n(x_n)=0$, par définition de $x_n$). Or $x_n\in\,]0\,;1[$ (étape 1), donc $x_n>0$ : $f_{n+1}(x_n) = x_n > 0$.
+
+Compare maintenant à $f_{n+1}(x_{n+1})=0$ (définition de $x_{n+1}$) :
+
+$$f_{n+1}(x_n) > 0 = f_{n+1}(x_{n+1})$$
+
+$f_{n+1}$ est strictement croissante (étape 1, valable pour tout indice $\ge1$) : une fonction strictement croissante range les sorties dans le même ordre que les entrées, donc $f_{n+1}(x_n) > f_{n+1}(x_{n+1}) \Rightarrow x_n > x_{n+1}$.
+
+C'est vrai pour tout $n\ge1$ : $(x_n)$ est strictement décroissante.
+
+**Étape 3 — convergence.** $(x_n)$ est strictement décroissante (étape 2) et minorée par $0$ (étape 1, $x_n>0$ pour tout $n$) : les deux hypothèses du théorème de la limite monotone (chapitre 8) sont réunies. $(x_n)$ converge vers une limite $L$, avec $L\ge0$.
+
+**Étape 4 — la valeur de $L$.**
+
+**Ce qu'on cherche ici, et pourquoi ce geste :** le théorème de la limite monotone donne l'existence de $L$, jamais sa valeur — l'erreur classique du chapitre 9. Ici, il n'y a même pas de point fixe à résoudre, puisque $x_n$ n'est pas défini par une relation $x_{n+1}=f(x_n)$. Il faut un argument séparé, tiré de l'égalité exacte que la définition de $x_n$ fournit déjà.
+
+$f_n(x_n)=0$ s'écrit $n\,x_n+x_n^3=1$, donc :
+
+$$n\,x_n = 1-x_n^3$$
+
+Comme $x_n\in\,]0\,;1[$, $x_n^3\in\,]0\,;1[$ aussi, donc $0 < n\,x_n < 1$ pour tout $n$.
+
+Raisonne par l'absurde pour éliminer toute limite $L>0$ : si $L>0$, alors, $(x_n)$ étant décroissante vers $L$, on aurait $x_n\ge L$ pour tout $n$ (une suite décroissante reste toujours au-dessus de sa limite), donc $n\,x_n\ge n\,L\to+\infty$ quand $n\to+\infty$. Mais on vient de montrer $n\,x_n<1$ pour tout $n$ : contradiction. Donc $L=0$.
+
+$$\lim_{n\to+\infty} x_n = 0$$
+
+**Ce que ce résultat confirme :** contrairement au point fixe du chapitre 9, il n'y avait ici rien à résoudre — la limite se lit sur une majoration que la définition même de $x_n$ fournissait déjà, exploitée par l'absurde.
+
+### L'erreur à repérer
+
+Trois pièges reviennent sans cesse sur ce type de suite :
+
+- **Comparer $x_n$ et $x_{n+1}$ « à vue »**, en devinant que la suite doit monter ou descendre parce que $n$ augmente dans la formule, sans jamais évaluer $f_{n+1}(x_n)$. $x_n$ et $x_{n+1}$ sont zéros de deux fonctions différentes : la seule façon de les comparer est de faire parler $f_{n+1}$ (ou $f_n$) aux DEUX points, jamais de comparer directement les définitions.
+- **Invoquer le TVI pour l'existence sans jamais mentionner la stricte monotonie.** Le TVI seul donne AU MOINS une solution ; sans la stricte monotonie de $f_n$, rien n'empêche une deuxième solution ailleurs, et l'écriture « $x_n$ », au singulier, n'aurait alors aucun sens.
+- **Confondre l'encadrement où vit la suite avec sa limite** : $0<x_n<1$ ne dit rien, à lui seul, sur la valeur de $L$ — ce n'est ni $0$ ni $1$ par défaut. Il a fallu ici un argument séparé (l'absurde sur $n\,x_n$) pour l'obtenir.
+
+---
+
 ## Suites homographiques : quand l’auxiliaire est un rapport
 
 ### La deuxième famille, celle qui tombe le plus souvent

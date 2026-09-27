@@ -14,6 +14,25 @@ misconceptions:
     label: "« Qr,i petit annonce un recul (ou Qr,i grand annonce une avancée) : le sens de la comparaison Qr,i face à K est inversé »"
     description: "L'élève inverse le sens du critère : il croit qu'un Qr,i petit signifie que le système va reculer (sens inverse), ou qu'un Qr,i grand signifie qu'il avance (sens direct)."
     contradicts_principle: "Qr,i < K signifie qu'il y a, proportionnellement, peu de produits par rapport à l'équilibre : c'est la réaction DIRECTE qui l'emporte alors, et Qr grimpe vers K. Qr,i > K impose au contraire le sens INVERSE. « Petit » n'annonce jamais un recul, « grand » n'annonce jamais une avancée dans le sens direct."
+  - id: mc.chemistry.pc_evolution_spontanee.seuil-un-au-lieu-de-k
+    label: "« Le seuil du critère est 1 : Qr,i > 1 annonce le sens inverse (trop de produits, ça recule), Qr,i < 1 le sens direct, et Qr,i = 1 l'équilibre »"
+    description: >-
+      L'élève garde le bon sens de comparaison mais remplace K par 1 : il lit
+      Qr comme un rapport « produits sur réactifs » dont le point d'équilibre
+      naturel serait 1, et conclut à partir de cette seule lecture — au-dessus
+      de 1, il y aurait « trop de produits », donc le système reculerait ; en
+      dessous, il avancerait ; à 1 exactement, il serait à l'équilibre. Se
+      manifeste aussi par un verdict rendu alors que K n'est pas fourni, ou par
+      « Qr,i est grand » / « Qr,i est petit » employés sans jamais citer K.
+      À distinguer de critere-inverse, qui garde K comme seuil et retourne le
+      sens de la conclusion : ici le sens est bon, c'est le SEUIL qui est faux.
+    contradicts_principle: >-
+      Le seuil du critère est K, et K seul : il dépend de la réaction et de la
+      température, et vaut 2,5 pour un couple et 1,8×10^37 pour un autre. Un
+      Qr,i de 1 est très loin SOUS K dans un cas et très loin AU-DESSUS dans un
+      autre — le même quotient y donne donc deux verdicts opposés. La valeur
+      absolue de Qr,i ne dit rien tant qu'on ne l'a pas placée par rapport à K,
+      et 1 n'est un repère que pour l'arithmétique, jamais pour la chimie.
   - id: mc.chemistry.pc_evolution_spontanee.confond-qr-et-k
     label: "« Qr et K sont la même chose, ou Qr,i ≠ K est une anomalie / une preuve d'erreur »"
     description: "L'élève traite Qr et K comme interchangeables : croit que Qr n'est calculable qu'à l'équilibre, que Qr,i≠K signifie qu'une donnée est fausse, ou que K seul (sans comparaison à Qr) renseigne sur l'état du système."
@@ -1810,13 +1829,246 @@ items:
       son électrode est l'anode. Les ions cuivre les CAPTENT : ils se réduisent,
       à la cathode.
 
+  # ── modèle neuf : seuil-un-au-lieu-de-k (ES-30 à ES-33) ─────────────────────
+  # Ajoutés pour la scène manipulable « échelle des quotients »
+  # (docs/pipeline/propositions/pc-evolution-spontanee-scene-quotient.md, §8.2
+  # et §8.3). Chaque item pose une configuration où 1 et K ne disent PAS la
+  # même chose, pour que seuil-un-au-lieu-de-k et critere-inverse produisent
+  # des prédictions différentes (spec §8.3, règles de construction 1 et 2).
+  - id: ES-30
+    rung: "R2"
+    difficulty_level: 2
+    habilete: utilisation
+    skill_code: pc_evolution_spontanee
+    tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.seuil-un-au-lieu-de-k
+    stem: >
+      Pour la réaction $Sn + Pb^{2+} \rightleftharpoons Sn^{2+} + Pb$, à la
+      température de l'expérience, $K = 2{,}5$. Dans un bécher contenant une
+      lame d'étain, $[Sn^{2+}]_i = 5{,}0\times10^{-2}\ \text{mol/L}$ et
+      $[Pb^{2+}]_i = 5{,}0\times10^{-2}\ \text{mol/L}$, donc $Q_{r,i} = 1{,}0$.
+      Quel est le sens d'évolution du système ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$Q_{r,i} = 1{,}0 < K = 2{,}5$ : le système évolue dans le sens direct - l'étain est oxydé, les ions $Pb^{2+}$ sont réduits."
+        correct: true
+      - id: B
+        text: "$Q_{r,i} = 1{,}0$ : autant de produits que de réactifs, le système est à l'équilibre, il n'évolue plus : $K$ n'a pas à intervenir."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.seuil-un-au-lieu-de-k
+        feedback: >
+          Le seuil qui compte est $K$, pas $1$ : ici $K = 2{,}5 \ne 1$, donc
+          $Q_{r,i} = 1{,}0$ n'est pas l'équilibre - c'est encore le sens
+          direct qui est prédit.
+      - id: C
+        text: "$Q_{r,i} = 1{,}0 < K$, donc le système évolue dans le sens inverse - c'est le plomb métallique qui serait alors oxydé, l'étain réduit."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.critere-inverse
+        feedback: >
+          C'est l'inverse : $Q_{r,i} < K$ impose le sens direct, jamais le
+          sens inverse.
+      - id: D
+        text: "Le calcul est incomplet : il faudrait inclure la masse de la lame d'étain dans $Q_{r,i}$, comme pour tout solide présent dans le bécher."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.solide-dans-qr
+        feedback: >
+          L'étain métallique est un solide pur : il n'entre jamais dans
+          $Q_{r,i}$, quelle que soit sa masse. Les deux concentrations
+          données suffisent à conclure.
+    correct_feedback: >
+      $Q_{r,i} = 1{,}0 < K = 2{,}5$ : sens direct. L'étain est oxydé, les
+      ions $Pb^{2+}$ sont réduits.
+    solution: |
+      $Q_{r,i} = \dfrac{[Sn^{2+}]_i}{[Pb^{2+}]_i} = \dfrac{5{,}0\times10^{-2}}{5{,}0\times10^{-2}} = 1{,}0$.
+      Le seul seuil qui compte est $K$, jamais $1$ : ici $K = 2{,}5$, donc
+      $Q_{r,i} = 1{,}0 < K$ impose le sens direct, même si $Q_{r,i}$ vaut
+      exactement $1$. Un $Q_{r,i}$ de $1$ ne signifierait l'équilibre que si
+      $K$ valait aussi $1$ - ce n'est pas le cas ici.
+
+  - id: ES-31
+    rung: "R2"
+    difficulty_level: 3
+    habilete: utilisation
+    skill_code: pc_evolution_spontanee
+    tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.seuil-un-au-lieu-de-k
+    stem: >
+      On compare deux béchers, tous deux à $Q_{r,i} = 10$. **Bécher 1** :
+      couple $Zn/Cu^{2+}$, $K = 1{,}8\times10^{37}$. **Bécher 2** : couple
+      $Sn/Pb^{2+}$, $K = 2{,}5$, avec une lame d'étain ET un dépôt de plomb
+      laissé par un essai précédent. Les deux systèmes évoluent-ils dans le
+      même sens ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : sens direct au bécher 1 ($Q_{r,i} \\ll K = 1{,}8\\times10^{37}$), sens inverse au bécher 2 ($Q_{r,i} > K = 2{,}5$) - le même $Q_{r,i}$ donne deux verdicts opposés."
+        correct: true
+      - id: B
+        text: "Oui, les deux évoluent dans le sens inverse : $Q_{r,i} = 10$ dépasse $1$ dans les deux béchers, donc trop de produits partout - le sens ne dépend que de ce seuil."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.seuil-un-au-lieu-de-k
+        feedback: >
+          $10$ n'est au-dessus d'un seuil que comparé à $K$, jamais à $1$ :
+          au bécher 1, $10 \ll K = 1{,}8\times10^{37}$ impose le sens
+          direct ; ce même $Q_{r,i} = 10$ ne donne le sens inverse qu'au
+          bécher 2, où $K = 2{,}5$.
+      - id: C
+        text: "Non, mais l'inverse : sens inverse au bécher 1 ($Q_{r,i} \\ll K$), sens direct au bécher 2 ($Q_{r,i} > K$) - la comparaison à $K$ est retournée."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.critere-inverse
+        feedback: >
+          Le sens de la comparaison est inversé : $Q_{r,i} < K$ impose le
+          sens direct, $Q_{r,i} > K$ le sens inverse - jamais le contraire.
+      - id: D
+        text: "Oui, les deux évoluent dans le même sens : le zinc et l'étain cèdent toujours leurs électrons en premier, quel que soit le mélange préparé."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.reactivite-metal-fixe
+        feedback: >
+          Aucune propriété fixe ne décide : c'est $Q_{r,i}$ face à $K$,
+          propre à chaque bécher, qui tranche. Ici les deux $K$ sont
+          différents, et le verdict change.
+    correct_feedback: >
+      Bécher 1 : $Q_{r,i} = 10 \ll K = 1{,}8\times10^{37}$, sens direct.
+      Bécher 2 : $Q_{r,i} = 10 > K = 2{,}5$, sens inverse. Le même quotient
+      donne deux verdicts opposés.
+    solution: |
+      Le seul juge est la comparaison $Q_{r,i}$ face à $K$, jamais la
+      valeur absolue de $Q_{r,i}$ ni le métal en jeu. Bécher 1 : $10$ reste
+      à trente-six ordres de grandeur sous $K = 1{,}8\times10^{37}$ - sens
+      direct. Bécher 2 : $10 > K = 2{,}5$ - sens inverse, ce qui consomme
+      le dépôt de plomb solide déjà présent dans le bécher. Aucun seuil
+      absolu, ni $1$ ni un autre, ne peut rendre compte des deux verdicts à
+      la fois avec le même $Q_{r,i}$.
+
+  - id: ES-32
+    rung: "R2"
+    difficulty_level: 4
+    habilete: utilisation
+    skill_code: pc_evolution_spontanee
+    tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.seuil-un-au-lieu-de-k
+    stem: >
+      Un compte rendu de TP donne les concentrations d'un mélange et son
+      quotient de réaction, $Q_{r,i} = 4{,}0\times10^{2}$, mais la fiche de
+      données est déchirée : la valeur de $K$ pour cette réaction a disparu.
+      Un élève conclut tout de même à un sens d'évolution. Que penser de sa
+      démarche, et que faudrait-il pour conclure réellement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Sa démarche est incomplète : sans la valeur de $K$ pour cette réaction, à cette température, la comparaison qui décide du sens est impossible à mener."
+        correct: true
+      - id: B
+        text: "Sa démarche est valable : on peut conclure sans la fiche, puisque $Q_{r,i}$ est au-dessus de $1$ - il y a trop de produits, le système évolue dans le sens inverse."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.seuil-un-au-lieu-de-k
+        feedback: >
+          $Q_{r,i}$ seul ne dit rien : le seuil qui compte est $K$, propre
+          à cette réaction, pas $1$. Sans $K$, aucun verdict n'est
+          possible.
+      - id: C
+        text: "La fiche est inutile ici : $K$ est la valeur que prend $Q_r$, donc $K = 4{,}0\\times10^{2}$ et le système est déjà à l'équilibre."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.confond-qr-et-k
+        feedback: >
+          $Q_r$ se calcule à tout instant à partir des concentrations
+          présentes ; $K$ est une valeur particulière, propre à la
+          réaction, que $Q_r$ ne prend qu'à l'équilibre. Rien n'indique ici
+          que l'équilibre soit atteint.
+      - id: D
+        text: "La méthode la plus fiable est d'aller regarder le bécher : aucun calcul ne peut prédire un sens d'évolution avant de l'observer directement."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.pas-de-critere-predictif
+        feedback: >
+          C'est l'inverse : le critère $Q_{r,i}$ face à $K$ prédit le sens
+          par le calcul, avant toute observation - à condition de disposer
+          des deux valeurs.
+    correct_feedback: >
+      Sans $K$, aucune conclusion n'est possible : $Q_{r,i}$ seul ne
+      renseigne jamais sur le sens d'évolution. Il faut la constante
+      d'équilibre de cette réaction, à cette température.
+    solution: |
+      Le critère d'évolution compare toujours $Q_{r,i}$ à $K$ - jamais
+      $Q_{r,i}$ à un seuil fixe comme $1$, et jamais $K$ à lui-même. Une
+      fiche qui ne donne que $Q_{r,i} = 4{,}0\times10^{2}$ est une fiche
+      incomplète : sans $K$, propre à cette réaction et à cette
+      température, aucun verdict n'est possible, aussi grand ou petit que
+      paraisse $Q_{r,i}$.
+
+  - id: ES-33
+    rung: "R2"
+    difficulty_level: 4
+    habilete: application_experimentale
+    skill_code: pc_evolution_spontanee
+    tags: []
+    primary_misconception: mc.chemistry.pc_evolution_spontanee.seuil-un-au-lieu-de-k
+    stem: >
+      Un binôme prépare deux béchers du même couple $Sn/Pb^{2+}$, chacun
+      avec une lame d'étain et un dépôt de plomb laissé par un essai
+      précédent. **Bécher 1** : $[Sn^{2+}]_i = 2{,}0\times10^{-2}$,
+      $[Pb^{2+}]_i = 1{,}0\times10^{-2}\ \text{mol/L}$. **Bécher 2** :
+      $[Sn^{2+}]_i = 1{,}0\times10^{-1}$, $[Pb^{2+}]_i =
+      1{,}0\times10^{-2}\ \text{mol/L}$. Fiche : $K = 2{,}5$. Avant de
+      regarder, prévoir pour chaque bécher si le dépôt de plomb va grossir
+      ou diminuer, et dire quelle donnée de la fiche était indispensable à
+      cette prévision.
+    type: mcq
+    choices:
+      - id: A
+        text: "Bécher 1 : le dépôt grossit ($Q_{r,i} = 2{,}0 < K$, sens direct). Bécher 2 : il diminue ($Q_{r,i} = 10 > K$, sens inverse). La donnée indispensable était $K = 2{,}5$."
+        correct: true
+      - id: B
+        text: "Les deux dépôts diminuent : $Q_{r,i}$ est au-dessus de $1$ dans les deux béchers, donc trop de produits. La donnée $K$ n'était pas nécessaire, $1$ suffisait comme repère."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.seuil-un-au-lieu-de-k
+        feedback: >
+          $1$ n'est pas un repère chimique : au bécher 1, $Q_{r,i} = 2{,}0$
+          est bien au-dessus de $1$ mais reste EN DESSOUS de $K = 2{,}5$,
+          donc le dépôt grossit - c'est le sens direct.
+      - id: C
+        text: "Bécher 1 : le dépôt diminue ($Q_{r,i} \\ll K$). Bécher 2 : il grossit ($Q_{r,i} > K$). La donnée indispensable était $K = 2{,}5$, comme au bécher 1 mais avec un verdict inversé."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.critere-inverse
+        feedback: >
+          Le sens de la comparaison est inversé : $Q_{r,i} < K$ fait
+          grossir le dépôt (sens direct), $Q_{r,i} > K$ le fait diminuer
+          (sens inverse) - jamais le contraire.
+      - id: D
+        text: "Les deux dépôts grossissent : l'étain cède toujours ses électrons en premier, quel que soit le mélange. La fiche ne servait à rien pour cette conclusion."
+        correct: false
+        misconception: mc.chemistry.pc_evolution_spontanee.reactivite-metal-fixe
+        feedback: >
+          Aucune propriété fixe ne décide : c'est $Q_{r,i}$ face à $K$,
+          propre à chaque bécher, qui tranche - et $K$ est justement la
+          donnée qu'il fallait.
+    correct_feedback: >
+      Bécher 1 : $Q_{r,i} = 2{,}0 < K = 2{,}5$, sens direct, le dépôt de
+      plomb grossit. Bécher 2 : $Q_{r,i} = 10 > K$, sens inverse, il
+      diminue. La donnée indispensable était $K$, propre à cette réaction
+      et à cette température.
+    solution: |
+      $Q_{r,i}$ se calcule pareil dans les deux béchers :
+      $[Sn^{2+}]_i/[Pb^{2+}]_i$. Bécher 1 :
+      $2{,}0\times10^{-2}/1{,}0\times10^{-2} = 2{,}0$. Bécher 2 :
+      $1{,}0\times10^{-1}/1{,}0\times10^{-2} = 10$. Sans comparer ces deux
+      valeurs à $K = 2{,}5$, aucune prévision n'est possible : $2{,}0 <
+      2{,}5$ donne le sens direct (le dépôt de plomb grossit, l'étain
+      s'oxyde), $10 > 2{,}5$ donne le sens inverse (le dépôt diminue, il se
+      dissout). La donnée $K$, propre au couple $Sn/Pb^{2+}$ à cette
+      température, est ce qui manque à tout seuil fixe.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
-# RÉÉCRIT le 2026-09-05, après ES-22 à ES-29. Onze familles étaient sous le plancher
-# AVANT ces ajouts, dont `equilibre-egale-arret-total` qui n'en avait alors AUCUN. Les huit items
-# couvrent les trois registres de la notion : le critère d'évolution et son
-# universalité, le vocabulaire de l'oxydoréduction et l'équilibrage des
-# demi-équations, l'écriture de $Q_r$ et le montage de la pile. Tableau GÉNÉRÉ,
-# gardé par web/scripts/resume-couverture.mjs.
+# RÉÉCRIT le 2026-09-27, après ES-30 à ES-33 (item-author, spec §8.3 de
+# docs/pipeline/propositions/pc-evolution-spontanee-scene-quotient.md). Ces
+# quatre items servent le modèle NEUF seuil-un-au-lieu-de-k (§8.2 de la même
+# spec), déclaré dans la polarité EMPLOYÉE par la scène : le seuil de
+# comparaison est 1, jamais K. Trois d'entre eux servent aussi
+# critere-inverse (5→8), et un chacun reactivite-metal-fixe (4→6),
+# confond-qr-et-k (6→7), pas-de-critere-predictif (3→4) et solide-dans-qr
+# (3→4) — chiffres recalculés à la main ci-dessous ; à revérifier par
+# web/scripts/resume-couverture.mjs quand le CI tourne (non exécuté ici,
+# item-author n'a pas Bash).
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -1825,35 +2077,43 @@ coverage_summary:
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
     web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
-    mc.chemistry.pc_evolution_spontanee.critere-inverse:               { count: 5, items: [ES-1, ES-2, ES-17, ES-19, ES-21] }
-    mc.chemistry.pc_evolution_spontanee.confond-qr-et-k:               { count: 6, items: [ES-1, ES-2, ES-8, ES-17, ES-18, ES-19] }
-    mc.chemistry.pc_evolution_spontanee.reactivite-metal-fixe:         { count: 4, items: [ES-2, ES-7, ES-8, ES-12] }
+    mc.chemistry.pc_evolution_spontanee.critere-inverse:               { count: 8, items: [ES-1, ES-2, ES-17, ES-19, ES-21, ES-30, ES-31, ES-33] }
+    mc.chemistry.pc_evolution_spontanee.confond-qr-et-k:               { count: 7, items: [ES-1, ES-2, ES-8, ES-17, ES-18, ES-19, ES-32] }
+    mc.chemistry.pc_evolution_spontanee.reactivite-metal-fixe:         { count: 6, items: [ES-2, ES-7, ES-8, ES-12, ES-31, ES-33] }
     mc.chemistry.pc_evolution_spontanee.sens-symetrique:               { count: 4, items: [ES-8, ES-22, ES-24, ES-29] }
-    mc.chemistry.pc_evolution_spontanee.pas-de-critere-predictif:      { count: 3, items: [ES-7, ES-22, ES-23] }
+    mc.chemistry.pc_evolution_spontanee.pas-de-critere-predictif:      { count: 4, items: [ES-7, ES-22, ES-23, ES-32] }
     mc.chemistry.pc_evolution_spontanee.spontane-egale-instantane:     { count: 3, items: [ES-9, ES-24, ES-29] }
     mc.chemistry.pc_evolution_spontanee.spontane-egale-chaleur:        { count: 3, items: [ES-3, ES-4, ES-14] }
     mc.chemistry.pc_evolution_spontanee.oxydation-reduction-inversees: { count: 3, items: [ES-10, ES-25, ES-29] }
     mc.chemistry.pc_evolution_spontanee.demi-equation-isolee:          { count: 4, items: [ES-10, ES-11, ES-25, ES-26] }
     mc.chemistry.pc_evolution_spontanee.electrons-non-equilibres:      { count: 3, items: [ES-12, ES-25, ES-26] }
-    mc.chemistry.pc_evolution_spontanee.solide-dans-qr:                { count: 3, items: [ES-13, ES-27, ES-28] }
+    mc.chemistry.pc_evolution_spontanee.solide-dans-qr:                { count: 4, items: [ES-13, ES-27, ES-28, ES-30] }
     mc.chemistry.pc_evolution_spontanee.qr-produits-reactifs-inverses: { count: 3, items: [ES-18, ES-19, ES-20] }
     mc.chemistry.pc_evolution_spontanee.exposants-oublies:             { count: 3, items: [ES-20, ES-27, ES-28] }
     mc.chemistry.pc_evolution_spontanee.oxydoreduction-egale-pile:     { count: 3, items: [ES-5, ES-6, ES-21] }
     mc.chemistry.pc_evolution_spontanee.fil-jonction-confondus:        { count: 3, items: [ES-15, ES-27, ES-28] }
     mc.chemistry.pc_evolution_spontanee.critere-limite-redox:          { count: 3, items: [ES-16, ES-17, ES-23] }
     mc.chemistry.pc_evolution_spontanee.equilibre-egale-arret-total:   { count: 3, items: [ES-22, ES-23, ES-24] }
-  total_items: 29
+    mc.chemistry.pc_evolution_spontanee.seuil-un-au-lieu-de-k:         { count: 4, items: [ES-30, ES-31, ES-32, ES-33] }
+  total_items: 33
   floor: 3
   floor_met: true
   ramp_coverage:
     R0: 3
     R1: 5
-    R2: 6
+    R2: 10
     R3: 4
     R4: 4
     R5: 4
     R6: 3
   honest_state: >-
-    Les dix-sept misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Douze y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item la casse.
+    Les dix-huit misconceptions déclarées (dix-sept + seuil-un-au-lieu-de-k,
+    neuf en vague 1 de la spec de la scène « échelle des quotients ») sont
+    toutes couvertes, aucune sous le plancher. Dix familles siègent
+    EXACTEMENT à 3 items : la marge y est nulle et tout retrait la casse.
+    seuil-un-au-lieu-de-k arrive à 4 (marge de un, ES-30…ES-33) ; les quatre
+    items neufs sont tous au rung R2, déjà le rung le plus chargé (6 → 10),
+    et déplacent aussi trois autres familles au-dessus du plancher minimal
+    (critere-inverse 5→8, confond-qr-et-k 6→7, reactivite-metal-fixe 4→6,
+    pas-de-critere-predictif 3→4, solide-dans-qr 3→4) — un déséquilibre de
+    rung connu et assumé (spec §8.4), pas un défaut de plancher.
