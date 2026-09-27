@@ -183,21 +183,27 @@ misconceptions:
       qu'il faut un calcul de plus — ici, reconnaître une définition déjà
       établie (le nombre dérivé), pas relire l'expression telle quelle en h=0.
   - id: mc.math.maths_fonction_exponentielle.facteur-multiplicatif-oublie
-    label: "(e^{ah}-1)/h (ou variante après changement de variable) lue comme -> 1 au lieu de -> a"
+    label: "(e^{ah}-1)/h (ou variante après changement de variable) lue comme -> 1 au lieu de -> a — ou le contraire"
     description: >-
-      L'élève reconnaît la forme du taux d'accroissement de référence mais
-      oublie d'ajuster le facteur : devant (e^{ah}-1)/h, un facteur devant
-      l'expression, ou une limite à l'infini ramenée par t=1/x, il conclut
-      directement 1 (la valeur du cas non habillé), sans multiplier ou diviser
-      par le coefficient a qui multiplie h dans l'exposant (ou sans reporter un
-      facteur multiplicatif externe).
+      L'élève ne suit pas correctement le coefficient qui doit apparaître au
+      numérateur ET au dénominateur d'un taux d'accroissement habillé. Surface
+      la plus fréquente : devant (e^{ah}-1)/h, un facteur devant l'expression,
+      ou une limite à l'infini ramenée par t=1/x, il conclut directement 1 (la
+      valeur du cas non habillé), sans multiplier ou diviser par le
+      coefficient a. Surface miroir, moins fréquente mais du même défaut de
+      suivi : devant une expression où le coefficient figure DÉJÀ
+      identiquement au numérateur et au dénominateur (ex. (e^{ah}-1)/(ah), qui
+      vaut exactement 1, sans rien à ajuster), l'élève réapplique quand même
+      le réflexe « multiplier par a », introduisant un facteur qui n'a pas
+      lieu d'être.
     contradicts_principle: >-
-      Devant (e^{ah}-1)/h, il faut faire apparaître le MÊME nombre au
-      numérateur (dans l'exposant) et au dénominateur :
-      (e^{ah}-1)/h = a x (e^{ah}-1)/(ah), et seul le second facteur tend
-      vers 1. La limite vaut a, pas 1 — le facteur multiplicatif ne doit
-      jamais disparaître, qu'il soit dans l'exposant ou à l'extérieur de
-      l'expression.
+      Devant un taux d'accroissement habillé, il faut vérifier si le MÊME
+      nombre figure déjà au numérateur (dans l'exposant) et au dénominateur.
+      S'il ne l'est pas encore (ex. (e^{ah}-1)/h), on fait apparaître ce
+      nombre en multipliant et divisant : (e^{ah}-1)/h = a x (e^{ah}-1)/(ah),
+      et la limite vaut a, pas 1. S'il l'est déjà (ex. (e^{ah}-1)/(ah)), il
+      n'y a rien à ajuster : la limite vaut exactement 1, et introduire un
+      facteur a supplémentaire est une erreur symétrique de la première.
 items:
   - id: EXP-1
     rung: "R1"
@@ -1874,11 +1880,18 @@ items:
   # d'accroissement » (docs/audits/dette-examen/maths.md ~l.224-238). Six
   # items, R4 : trois à dominante « forme 0/0 non reconnue » (EXP-32 à
   # EXP-34), trois à dominante « facteur multiplicatif oublié » (EXP-35 à
-  # EXP-37) — habillages distincts de ceux déjà travaillés en leçon (e^{3x})
-  # ou suggérés par le bank.yaml cité par l'audit ((e^{2x}-1)/x, (e^{-x}-1)/x) :
-  # coefficients et structures différents à chaque fois (coefficient dans
-  # l'exposant, facteur externe, changement de variable t=1/x en +infini,
-  # quotient factorisé en un point fini non nul).
+  # EXP-37).
+  # ÉTAT HONNÊTE des habillages, corrigé le 2026-09-27 (wave-1, critique
+  # pédagogie M-2) : EXP-32 (coefficient dans l'exposant), EXP-33 (coefficient
+  # négatif + facteur externe) et EXP-35 (quotient factorisé en un point fini
+  # non nul) SONT des structures distinctes de la leçon (e^{3x}) et du
+  # bank.yaml cité par l'audit. EXP-36, en revanche, reprend directement le
+  # habillage $(e^{-x}-1)/x$ cité par le bank.yaml de l'audit (avec un simple
+  # facteur externe $4$ ajouté) — ce n'est pas un habillage neuf, seulement
+  # d'autres nombres dans la même structure déjà citée. Et EXP-34 / EXP-37
+  # partagent la MÊME structure de fond (changement de variable t=1/x en
+  # +infini) : EXP-37 est une variation de coefficient, de signe et de facteur
+  # externe d'EXP-34, pas une structure indépendante.
 
   - id: EXP-32
     rung: "R4"
@@ -1994,7 +2007,7 @@ items:
   - id: EXP-34
     rung: "R4"
     difficulty_level: 4
-    habilete: synthese
+    habilete: application_non_explicite
     skill_code: maths_fonction_exponentielle
     tags: [limites, taux-accroissement, changement-variable, infini-fois-zero]
     primary_misconception: mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue
@@ -2042,7 +2055,8 @@ items:
 
       **Le changement de variable.** Pose $t=\dfrac6x$ ; quand $x\to+\infty$,
       $t\to0^+$, et $x=\dfrac6t$ :
-      $$x\left(e^{6/x}-1\right) = \frac{6}{t}\left(e^{t}-1\right) = 6\times\frac{e^{t}-1}{t}$$
+      $$x\left(e^{6/x}-1\right) = \frac{6}{t}\left(e^{t}-1\right)$$
+      $$= 6\times\frac{e^{t}-1}{t}$$
 
       **La limite de référence.** $\dfrac{e^{t}-1}{t}\to1$ quand $t\to0$
       (chapitre 4), donc :
@@ -2099,7 +2113,8 @@ items:
 
       **Reconnaître le numérateur.** $3x+3=3(x+1)$ ; en posant $h=x+1$
       (donc $h\to0$ quand $x\to-1$) :
-      $$\frac{e^{3x+3}-1}{x^2+3x+2} = \frac{e^{3h}-1}{h(x+2)} = \frac{e^{3h}-1}{h}\times\frac{1}{x+2}$$
+      $$\frac{e^{3x+3}-1}{x^2+3x+2} = \frac{e^{3h}-1}{h(x+2)}$$
+      $$= \frac{e^{3h}-1}{h}\times\frac{1}{x+2}$$
 
       **Les deux limites.** $\dfrac{e^{3h}-1}{h}\to3$ (référence, coefficient
       $3$) et $\dfrac{1}{x+2}\to\dfrac{1}{-1+2}=1$ quand $x\to-1$ :
@@ -2161,7 +2176,7 @@ items:
   - id: EXP-37
     rung: "R4"
     difficulty_level: 4
-    habilete: synthese
+    habilete: application_non_explicite
     skill_code: maths_fonction_exponentielle
     tags: [limites, taux-accroissement, changement-variable, facteur-externe]
     primary_misconception: mc.math.maths_fonction_exponentielle.facteur-multiplicatif-oublie
@@ -2206,11 +2221,171 @@ items:
 
       **Le changement de variable.** Pose $t=-\dfrac7x$ ; $t\to0^-$ quand
       $x\to+\infty$, et $x=-\dfrac7t$ :
-      $$2x\left(e^{-7/x}-1\right) = 2\times\left(-\frac7t\right)\left(e^{t}-1\right) = -14\times\frac{e^{t}-1}{t}$$
+      $$2x\left(e^{-7/x}-1\right) = 2\times\left(-\frac7t\right)\left(e^{t}-1\right)$$
+      $$= -14\times\frac{e^{t}-1}{t}$$
 
       **La limite de référence.** $\dfrac{e^{t}-1}{t}\to1$ quand $t\to0$,
       qu'on approche par valeurs négatives ou positives :
       $$\lim_{x\to+\infty} 2x\left(e^{-7/x}-1\right) = -14\times1 = -14$$
+
+  # ── Wave-1 fixes (critiques bac + pédagogie), ajouté 2026-09-27 ───────────
+  # EXP-38 répond au critique bac (direction M-2/I-1) : le bank.yaml cite
+  # systématiquement ce taux de référence dans un registre de DÉRIVABILITÉ
+  # (« en déduire que f est dérivable à droite en 0 », demi-tangente), jamais
+  # en simple « que vaut cette limite ? ». Coefficient propre ($-3$), distinct
+  # de la leçon (3), du bank.yaml cité ($2$, $-1$) et des autres items de ce
+  # lot. Ses distracteurs réutilisent l'inventaire existant (aucun nouveau
+  # modèle, pour ne pas passer sous le plancher de 3) : B relève de
+  # forme-0-sur-0-non-reconnue (sous-estimer ce que la limite prouve), C de
+  # facteur-multiplicatif-oublie, D d'allure-courbe-erreur (demi-tangente
+  # invoquée sans raison — le modèle couvre déjà les erreurs de tangente/allure
+  # pour ce chapitre).
+  # EXP-39 répond au critique pédagogie I-2 (le « tell » du gabarit) : dans
+  # EXP-32 à EXP-37, la clé n'est jamais un simple 1 — ici, le coefficient de
+  # l'exposant (8) figure DÉJÀ identiquement au dénominateur, donc la limite
+  # vaut exactement 1 : l'heuristique « la clé est le coefficient qu'on voit »
+  # se retourne contre l'élève qui l'a sur-apprise.
+  - id: EXP-38
+    rung: "R7"
+    difficulty_level: 4
+    habilete: synthese
+    skill_code: maths_fonction_exponentielle
+    tags: ["limites", "taux-accroissement", "derivabilite", "interpretation-graphique"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue
+    stem: >
+      Soit $g$ la fonction définie sur $\mathbb{R}$ par $g(x) = e^{-3x}$. En
+      utilisant le taux d'accroissement de $g$ entre $0$ et $h$, que peut-on
+      affirmer sur la dérivabilité de $g$ en $0$, et quelle tangente cela
+      donne-t-il à sa courbe au point d'abscisse $0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $g$ est dérivable en $0$, avec $g'(0)=-3$ : la courbe de $g$ admet,
+          au point $(0\,;1)$, une tangente de coefficient directeur $-3$.
+        correct: true
+      - id: B
+        text: >-
+          $\dfrac{e^{-3h}-1}{h}$ est une forme $\frac00$ : elle établit la
+          continuité de $g$ en $0$, mais conclure à sa dérivabilité
+          demanderait un calcul distinct de cette seule limite.
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue
+        feedback: >
+          Cette limite ne se contente pas de montrer une continuité :
+          reconnaître une forme $\frac00$ comme un taux d'accroissement,
+          c'est reconnaître EXACTEMENT la définition du nombre dérivé — sa
+          limite, quand elle est finie, EST la dérivabilité en ce point, pas
+          un indice partiel qui resterait à confirmer.
+      - id: C
+        text: >-
+          $g'(0)=1$, car $\dfrac{e^{-3h}-1}{h}$ se ramène à la limite de
+          référence $\dfrac{e^{H}-1}{H}\to1$.
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.facteur-multiplicatif-oublie
+        feedback: >
+          Tu as reconnu la forme de référence, mais oublié d'ajuster le
+          facteur : en posant $H=-3h$, $\dfrac{e^{-3h}-1}{h}=-3\times
+          \dfrac{e^{H}-1}{H}$, et seul le second facteur tend vers $1$. Le
+          coefficient $-3$ ne doit pas disparaître.
+      - id: D
+        text: >-
+          $g$ n'est dérivable qu'à droite en $0$ (la limite ne concernant que
+          $h\to0^{+}$), avec une demi-tangente de coefficient directeur $-3$
+          au point $(0\,;1)$.
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.allure-courbe-erreur
+        feedback: >
+          Rien n'impose ici de restreindre l'approche à $h\to0^{+}$ : $g$ est
+          définie sur $\mathbb{R}$ tout entier, et la limite du taux
+          d'accroissement se prend des deux côtés de $0$. Parler de
+          demi-tangente revient à imposer, sans raison, une restriction de
+          domaine qui n'existe pas ici — la tangente est entière, pas une
+          demi-tangente.
+    correct_feedback: >
+      Exactement : reconnaître $\dfrac{e^{-3h}-1}{h}$ comme le taux
+      d'accroissement de $g$ entre $0$ et $h$ prouve, d'un seul geste, que
+      $g$ est dérivable en $0$ avec $g'(0)=-3$ — et cela donne directement
+      l'équation de la tangente en $(0\,;1)$.
+    solution: |
+      **Le taux d'accroissement, directement.** Puisque $g(0)=e^{0}=1$ :
+      $$\frac{g(h)-g(0)}{h} = \frac{e^{-3h}-1}{h}$$
+
+      **La limite de référence, avec facteur $-3$.** En posant $H=-3h$ (donc
+      $H\to0$ quand $h\to0$) :
+      $$\frac{e^{-3h}-1}{h} = -3\times\frac{e^{H}-1}{H}$$
+
+      $$\lim_{h\to0}\frac{e^{H}-1}{H} = 1$$
+      $$\lim_{h\to0}\frac{e^{-3h}-1}{h} = -3\times1 = -3$$
+
+      **La conclusion.** Cette limite existe et est finie : $g$ est
+      dérivable en $0$, avec $g'(0)=-3$.
+
+      **L'interprétation graphique.** La courbe de $g$ admet, au point
+      $(0\,;1)$, une tangente de coefficient directeur $-3$ — pas une
+      demi-tangente : $g$ est définie sur $\mathbb{R}$, la limite se prend
+      des deux côtés.
+
+  - id: EXP-39
+    rung: "R4"
+    difficulty_level: 3
+    habilete: application_non_explicite
+    skill_code: maths_fonction_exponentielle
+    tags: ["limites", "taux-accroissement", "forme-indeterminee", "coefficient-deja-accorde"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to 0} \dfrac{e^{8x}-1}{8x}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$1$"
+        correct: true
+      - id: B
+        text: "$8$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.facteur-multiplicatif-oublie
+        feedback: >
+          Multiplier par le coefficient $8$ sert quand le dénominateur ne
+          contient PAS déjà le
+          bon coefficient — ce n'est pas le cas ici : le dénominateur est
+          $8x$, pas $x$ seul. Le nombre $H=8x$ apparaît déjà identique au
+          numérateur et au dénominateur ; il n'y a aucun facteur
+          supplémentaire à extraire.
+      - id: C
+        text: "Elle n'existe pas."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue
+        feedback: >
+          « Indéterminée » signale qu'il faut reconnaître ce que cache
+          l'expression, pas qu'il n'y a pas de réponse. Ici, poser $H=8x$
+          montre que l'expression est très exactement $\dfrac{e^{H}-1}{H}$,
+          une limite déjà connue.
+      - id: D
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue
+        feedback: >
+          Substituer $x=0$ dans l'expression telle quelle donne $\frac00$,
+          qui n'est pas une valeur qu'on peut lire par substitution directe —
+          il faut d'abord reconnaître la structure de la limite de
+          référence.
+    correct_feedback: >
+      Exactement : en posant $H=8x$, $\dfrac{e^{8x}-1}{8x}=\dfrac{e^{H}-1}{H}\to1$.
+      Le coefficient $8$ figure déjà identiquement au numérateur ET au
+      dénominateur — aucun ajustement supplémentaire n'est nécessaire.
+    solution: |
+      **Le signal $\frac00$.** $e^{8x}-1\to0$ et $8x\to0$ : forme
+      indéterminée, pas absence de réponse.
+
+      **Le même nombre des deux côtés, déjà en place.** Pose $H=8x$ : quand
+      $x\to0$, $H\to0$ aussi, et
+      $$\frac{e^{8x}-1}{8x} = \frac{e^{H}-1}{H} \to 1$$
+
+      **Le point de vigilance.** Contrairement aux exemples précédents (où
+      le dénominateur était $x$ seul, sans le coefficient de l'exposant),
+      ici le dénominateur contient déjà le facteur $8$ : il n'y a rien à
+      multiplier ou diviser en plus. La limite vaut $1$, exactement le cas
+      non habillé.
 
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après EXP-28 à EXP-31. Sept familles siégeaient sous
@@ -2225,6 +2400,16 @@ items:
 # ajoutés (EXP-32 à EXP-37, tous R4), chacun couvrant les deux modèles à la
 # fois (un modèle porté par la majorité des distracteurs, l'autre par un seul
 # — comptés ici selon la MÊME méthode par-distracteur que le reste du fichier).
+# MIS À JOUR le 2026-09-27, wave-1 (critiques bac + pédagogie) : deux items de
+# plus (EXP-38, EXP-39). EXP-38 (R7, registre dérivabilité/tangente) reprend
+# les deux modèles ci-dessus SANS en créer de nouveau — pour ne pas passer un
+# modèle sous le plancher avec un seul item — et ajoute une troisième
+# attribution à `allure-courbe-erreur` (réutilisé pour le distracteur
+# demi-tangente). EXP-39 (R4, clé = 1 par coefficients déjà accordés) casse le
+# gabarit « la clé n'est jamais 1 » des six items précédents ; son distracteur
+# B est le premier exemple, dans ce fichier, de la surface MIROIR de
+# `facteur-multiplicatif-oublie` (réappliquer un facteur déjà accordé), d'où
+# la description élargie du modèle en tête de fichier.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2242,13 +2427,13 @@ coverage_summary:
     mc.math.maths_fonction_exponentielle.croissances-comparees-inversees:   { count: 3, items: [EXP-5, EXP-28, EXP-31] }
     mc.math.maths_fonction_exponentielle.limite-exp-moins-infini:           { count: 3, items: [EXP-15, EXP-19, EXP-30] }
     mc.math.maths_fonction_exponentielle.inegalite-reference-erreur:        { count: 3, items: [EXP-16, EXP-28, EXP-31] }
-    mc.math.maths_fonction_exponentielle.allure-courbe-erreur:              { count: 3, items: [EXP-17, EXP-18, EXP-19] }
+    mc.math.maths_fonction_exponentielle.allure-courbe-erreur:              { count: 4, items: [EXP-17, EXP-18, EXP-19, EXP-38] }
     mc.math.maths_fonction_exponentielle.primitive-exp-erreur:              { count: 3, items: [EXP-20, EXP-21, EXP-22] }
     mc.math.maths_fonction_exponentielle.resolution-exp-erreur:             { count: 4, items: [EXP-6, EXP-23, EXP-25, EXP-27] }
     mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible:    { count: 3, items: [EXP-24, EXP-27, EXP-30] }
-    mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue:        { count: 6, items: [EXP-32, EXP-33, EXP-34, EXP-35, EXP-36, EXP-37] }
-    mc.math.maths_fonction_exponentielle.facteur-multiplicatif-oublie:      { count: 6, items: [EXP-32, EXP-33, EXP-34, EXP-35, EXP-36, EXP-37] }
-  total_items: 37
+    mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue:        { count: 8, items: [EXP-32, EXP-33, EXP-34, EXP-35, EXP-36, EXP-37, EXP-38, EXP-39] }
+    mc.math.maths_fonction_exponentielle.facteur-multiplicatif-oublie:      { count: 8, items: [EXP-32, EXP-33, EXP-34, EXP-35, EXP-36, EXP-37, EXP-38, EXP-39] }
+  total_items: 39
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2256,17 +2441,22 @@ coverage_summary:
     R1: 3
     R2: 4
     R3: 3
-    R4: 11
+    R4: 12
     R5: 3
     R6: 3
-    R7: 4
+    R7: 5
     R8: 3
   honest_state: >-
     Les quinze misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Onze y siègent EXACTEMENT (3 items) : la marge est nulle et
-    tout retrait d'item la casse. Les deux modèles ajoutés le 2026-09-27
+    plancher. Dix y siègent EXACTEMENT (3 items) : la marge est nulle et tout
+    retrait d'item la casse. `allure-courbe-erreur` est passé de 3 à 4 (marge
+    1) avec l'ajout d'EXP-38. Les deux modèles ajoutés le 2026-09-27
     (`forme-0-sur-0-non-reconnue`, `facteur-multiplicatif-oublie`) ont chacun
-    une marge de 3 au-dessus du plancher (6 items chacun, dont 3 où le modèle
-    est porté par la majorité des distracteurs de l'item, 3 où il n'est
-    porté que par un seul distracteur secondaire) : par construction, chacun
-    des six nouveaux items porte les deux modèles à la fois.
+    une marge de 5 au-dessus du plancher (8 items chacun). Aucun modèle neuf
+    n'a été créé pour EXP-38/EXP-39 : leurs distracteurs « dérivabilité
+    confondue avec continuité » et « demi-tangente mal invoquée » réutilisent
+    des modèles existants (respectivement forme-0-sur-0-non-reconnue,
+    élargi, et allure-courbe-erreur) précisément pour ne pas fragmenter la
+    couverture sous le plancher avec un modèle porté par un seul item — un
+    jugement à relire par un humain si un modèle dédié s'avère préférable à
+    l'usage.

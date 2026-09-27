@@ -276,6 +276,8 @@ $$\lim_{x \to 0} \frac{e^{3x}-1}{x} = 3 \times 1 = 3$$
 
 **Point de vigilance :** le nombre par lequel on multiplie et divise doit être EXACTEMENT celui qui multiplie $x$ dans l'exposant — ici $3$, pas un autre. Avec un exposant $-2x$, on multiplierait et diviserait par $-2$, pour obtenir $\dfrac{e^{-2x}-1}{-2x}\to1$.
 
+[[checkpoint:cp-r4-facteur-oublie]]
+
 ### Croissances comparées : $e^x$ contre $x$
 
 Voici un fait moins intuitif : $e^x$ ne se contente pas de tendre vers $+\infty$, il **écrase** $x$ dans cette course :

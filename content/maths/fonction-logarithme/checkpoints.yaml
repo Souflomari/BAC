@@ -35,6 +35,16 @@ skill_code: maths_fonction_logarithme
 #                                       cross-tag to limites-de-ln (the
 #                                       "ln x -> -infty en 0" trap misapplied
 #                                       here).
+#   cp-r4-facteur-oublie (in R4)      — SECOND commit gate, ajouté 2026-09-27
+#                                       (wave-1, critique pédagogie I-3),
+#                                       placed right AFTER the worked example
+#                                       ("Point de vigilance" in lesson.md) :
+#                                       turns the habillage-with-coefficient
+#                                       case into a commit. Probes
+#                                       facteur-multiplicatif-oublie (the
+#                                       x·ln(1+a/x) -> 1 instead of -> a
+#                                       trap), with a cross-tag to
+#                                       forme-0-sur-0-non-reconnue.
 #
 # EVERY distractor carries a named misconception id from this notion's inventory
 # (items.yaml). Option lengths are balanced so the correct choice is never the
@@ -460,3 +470,66 @@ checkpoints:
           diverge — mais ici l'argument du $\ln$ tend vers $\ln(1+0)=1$, pas
           vers $0$. Le point où $\ln$ diverge n'est pas celui que cette
           expression approche.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-NEW-2 | id: cp-r4-facteur-oublie | placed IN R4, right AFTER the
+  #        worked example ("Point de vigilance", lesson.md) — a SECOND
+  #        commit point, ajouté 2026-09-27 (wave-1, critique pédagogie
+  #        I-3). Le premier commit (cp-r4-taux-accroissement) porte sur la
+  #        forme non habillée (ln(1+x)/x) et sur forme-0-sur-0-non-reconnue ;
+  #        celui-ci porte sur la forme HABILLÉE d'un coefficient (changement
+  #        de variable $t=1/x$ à l'infini) et sur facteur-multiplicatif-
+  #        oublie : le piège nommé est x·ln(1+a/x) -> 1 au lieu de -> a.
+  #        Coefficient propre (5), distinct de celui de l'exemple travaillé
+  #        (1) et de celui de cp-r4-taux-accroissement (1, cas non habillé).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-facteur-oublie
+    rung: "R4"
+    habilete: application_directe
+    skill_code: maths_fonction_logarithme
+    tags: [checkpoint, formative, misconception_driven, maths_fonction_logarithme, limites, taux_accroissement, facteur_multiplicatif]
+    primary_misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie
+    item_source: original
+    lesson_placement: after_worked_example_R4
+
+    stem: |
+      Même geste que dans l'exemple qui précède : que vaut
+      $\displaystyle\lim_{x \to +\infty} x\ln\!\left(1+\dfrac{5}{x}\right)$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$5$"
+        correct: true
+        feedback: |
+          Exact : en posant $t=\dfrac5x$ (donc $t\to0^+$ et $x=\dfrac5t$),
+          $x\ln\!\left(1+\dfrac5x\right)=5\times\dfrac{\ln(1+t)}{t}\to5\times1=5$
+          — le même geste que dans l'exemple qui précède, avec un coefficient
+          différent.
+      - id: B
+        text: "$1$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie
+        feedback: |
+          Modèle détecté : le coefficient $5$ apporté par le changement de
+          variable $t=5/x$ a disparu en route. Il faut reporter ce facteur
+          $5$ jusqu'au bout ; la limite vaut $5$, pas $1$.
+      - id: C
+        text: "Elle n'existe pas."
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+        feedback: |
+          Modèle détecté : « indéterminée » lu comme « sans réponse ». Le
+          changement de variable $t=5/x$ ramène exactement à la limite de
+          référence $\ln(1+t)/t\to1$, qui, elle, existe.
+      - id: D
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+        feedback: |
+          Modèle détecté : « un facteur tend vers $0$, donc le produit tend
+          vers $0$ » n'est pas une règle valable ici — $x\to+\infty$ et
+          $\ln(1+5/x)\to0$ forment une forme $\infty\times0$ qui exige un
+          changement de variable pour être levée, pas une lecture directe.

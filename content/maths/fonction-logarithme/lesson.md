@@ -308,6 +308,8 @@ $$\lim_{x \to +\infty} x\ln\!\left(1+\frac1x\right) = 1$$
 
 **Point de vigilance :** ce n'est pas une propriété de $x\to+\infty$ en soi qui donne ce résultat — c'est le changement de variable $t=1/x$ qui ramène l'expression, terme à terme, à la forme $\dfrac{\ln(1+t)}{t}$ avec $t\to0$. Sans ce même $t$ aux deux étages (dans le $\ln$ et au dénominateur), la limite de référence ne s'applique pas telle quelle.
 
+[[checkpoint:cp-r4-facteur-oublie]]
+
 ### Exemple travaillé
 
 Calcule $\displaystyle\lim_{x \to +\infty} \big(\ln(x) - x\big)$.

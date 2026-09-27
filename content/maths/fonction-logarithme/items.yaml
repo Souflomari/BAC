@@ -61,9 +61,9 @@ misconceptions:
     contradicts_principle: "$\\ln(1+x)/x$ est EXACTEMENT le taux d'accroissement de $\\ln$ entre $1$ et $1+x$ ; comme $\\ln$ est dérivable en $1$ avec $\\ln'(1)=1$, ce taux tend vers $1$ quand $x\\to0$. Une forme $0/0$ n'est jamais une absence de réponse : elle exige un calcul de plus — ici, reconnaître une définition déjà établie (le nombre dérivé), pas relire l'expression telle quelle en $x=0$."
 
   - id: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie
-    label: "ln(1+ax)/x (ou variante après changement de variable) lue comme -> 1 au lieu de -> a"
-    description: "L'élève reconnaît la forme du taux d'accroissement de référence mais oublie d'ajuster le facteur : devant $\\ln(1+ax)/x$, un facteur devant l'expression, ou une limite ramenée par un changement de variable, il conclut directement $1$ (la valeur du cas non habillé), sans multiplier ou diviser par le coefficient $a$ (ou sans reporter un facteur multiplicatif externe)."
-    contradicts_principle: "Devant $\\ln(1+ax)/x$, il faut faire apparaître le MÊME nombre à l'intérieur du $\\ln$ et au dénominateur : $\\ln(1+ax)/x = a\\times\\ln(1+ax)/(ax)$, et seul le second facteur tend vers $1$. La limite vaut $a$, pas $1$ — le facteur multiplicatif ne doit jamais disparaître."
+    label: "ln(1+ax)/x (ou variante après changement de variable) lue comme -> 1 au lieu de -> a — ou le contraire"
+    description: "L'élève ne suit pas correctement le coefficient qui doit apparaître à l'intérieur du $\\ln$ ET au dénominateur d'un taux d'accroissement habillé. Surface la plus fréquente : devant $\\ln(1+ax)/x$, un facteur devant l'expression, ou une limite ramenée par un changement de variable, il conclut directement $1$ (la valeur du cas non habillé), sans multiplier ou diviser par le coefficient $a$. Surface miroir, moins fréquente mais du même défaut de suivi : devant une expression où le coefficient figure DÉJÀ identiquement à l'intérieur du $\\ln$ et au dénominateur (ex. $\\ln(1+ax)/(ax)$, qui vaut exactement $1$, sans rien à ajuster), l'élève réapplique quand même le réflexe « multiplier par $a$ », introduisant un facteur qui n'a pas lieu d'être."
+    contradicts_principle: "Devant un taux d'accroissement habillé, il faut vérifier si le MÊME nombre figure déjà à l'intérieur du $\\ln$ et au dénominateur. S'il ne l'est pas encore (ex. $\\ln(1+ax)/x$), on fait apparaître ce nombre en multipliant et divisant : $\\ln(1+ax)/x = a\\times\\ln(1+ax)/(ax)$, et la limite vaut $a$, pas $1$. S'il l'est déjà (ex. $\\ln(1+ax)/(ax)$), il n'y a rien à ajuster : la limite vaut exactement $1$, et introduire un facteur $a$ supplémentaire est une erreur symétrique de la première."
 
 items:
   - id: LOG-1
@@ -1298,12 +1298,18 @@ items:
   # d'accroissement » (docs/audits/dette-examen/maths.md ~l.224-238). Six
   # items, R4 : trois à dominante « forme 0/0 non reconnue » (LOG-25 à
   # LOG-27), trois à dominante « facteur multiplicatif oublié » (LOG-28 à
-  # LOG-30) — habillages distincts de ceux déjà travaillés en leçon
-  # ($x\ln(1+1/x)$) ou cités par le bank.yaml de l'audit (le taux de ln en 1
-  # dans $\ln x/(x^2-1)$, ou $(1+1/x)\ln(1+x)$) : coefficients et structures
-  # différents à chaque fois (coefficient à l'intérieur du ln, facteur
-  # externe, changement de variable t=1/x en +infini, quotient factorisé en
-  # un point fini non nul).
+  # LOG-30).
+  # ÉTAT HONNÊTE des habillages, corrigé le 2026-09-27 (wave-1, critique
+  # pédagogie M-2) : LOG-25 (coefficient à l'intérieur du ln), LOG-26
+  # (coefficient négatif + facteur externe), LOG-28 (facteur externe) et
+  # LOG-29 (quotient factorisé en un point fini non nul) SONT des structures
+  # distinctes de la leçon et du bank.yaml de l'audit. LOG-27 et LOG-30, en
+  # revanche, sont des VARIATIONS DE COEFFICIENT du même exemple travaillé de
+  # la leçon ($x\ln(1+1/x)$, changement de variable $t=1/x$ en $+\infty$) —
+  # pas des habillages nouveaux, seulement d'autres nombres dans la même
+  # structure. LOG-27 relabellisé `difficulty_level: 3` (au lieu de 4) en
+  # conséquence : il n'ajoute pas de difficulté structurelle par rapport à la
+  # leçon, seulement un signe différent dans le coefficient.
 
   - id: LOG-25
     rung: "R4"
@@ -1421,8 +1427,8 @@ items:
 
   - id: LOG-27
     rung: "R4"
-    difficulty_level: 4
-    habilete: synthese
+    difficulty_level: 3
+    habilete: application_non_explicite
     skill_code: maths_fonction_logarithme
     tags: ["limites", "taux-accroissement", "changement-variable", "infini-fois-zero"]
     primary_misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
@@ -1581,7 +1587,8 @@ items:
 
       **Reconnaître le numérateur.** $2x-3=1+2(x-2)$ ; en posant $h=x-2$
       (donc $h\to0$ quand $x\to2$) :
-      $$\frac{\ln(2x-3)}{x^2-4} = \frac{\ln(1+2h)}{h(x+2)} = \frac{\ln(1+2h)}{h}\times\frac{1}{x+2}$$
+      $$\frac{\ln(2x-3)}{x^2-4} = \frac{\ln(1+2h)}{h(x+2)}$$
+      $$= \frac{\ln(1+2h)}{h}\times\frac{1}{x+2}$$
 
       **Les deux limites.** $\dfrac{\ln(1+2h)}{h}\to2$ (référence,
       coefficient $2$) et $\dfrac{1}{x+2}\to\dfrac{1}{2+2}=\dfrac14$ quand
@@ -1591,7 +1598,7 @@ items:
   - id: LOG-30
     rung: "R4"
     difficulty_level: 4
-    habilete: synthese
+    habilete: application_non_explicite
     skill_code: maths_fonction_logarithme
     tags: ["limites", "taux-accroissement", "changement-variable", "facteur-externe"]
     primary_misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie
@@ -1641,6 +1648,161 @@ items:
       **La limite de référence.** $\dfrac{\ln(1+t)}{t}\to1$ quand $t\to0$ :
       $$\lim_{x\to+\infty} 3x\ln\!\left(1+\frac2x\right) = 6\times1 = 6$$
 
+  # ── Wave-1 fixes (critiques bac + pédagogie), ajouté 2026-09-27 ───────────
+  # LOG-31 répond au critique bac (direction M-2/I-1) : le bank.yaml cite
+  # systématiquement ce taux de référence dans un registre de DÉRIVABILITÉ
+  # (« en déduire que f est dérivable à droite en 0 », demi-tangente), jamais
+  # en simple « que vaut cette limite ? ». Coefficient propre ($4$), distinct
+  # des autres items de ce lot (6, -4, -5, 2). Ses distracteurs réutilisent
+  # l'inventaire existant (aucun nouveau modèle, pour ne pas passer sous le
+  # plancher de 3 en PRIMARY) : primary forme-0-sur-0-non-reconnue, secondary
+  # facteur-multiplicatif-oublie et — pour le distracteur demi-tangente —
+  # domaine-neglige, réutilisé ici pour l'erreur MIROIR (restreindre le
+  # domaine à droite quand il ne l'est pas), une extension honnête à relire
+  # par un humain si un modèle dédié à la tangente s'avère préférable.
+  # LOG-32 répond au critique pédagogie I-2 (le « tell » du gabarit) : dans
+  # LOG-25 à LOG-30, la clé n'est jamais un simple 1 — ici, le coefficient à
+  # l'intérieur du ln (7) figure DÉJÀ identiquement au dénominateur, donc la
+  # limite vaut exactement 1.
+  - id: LOG-31
+    rung: "R7"
+    difficulty_level: 4
+    habilete: synthese
+    skill_code: maths_fonction_logarithme
+    tags: ["limites", "taux-accroissement", "derivabilite", "interpretation-graphique"]
+    primary_misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+    stem: >
+      Soit $h$ la fonction définie sur $\left]-\dfrac14,+\infty\right[$ par
+      $h(x) = \ln(1+4x)$. En utilisant le taux d'accroissement de $h$ entre
+      $0$ et $t$, que peut-on affirmer sur la dérivabilité de $h$ en $0$, et
+      quelle tangente cela donne-t-il à sa courbe au point d'abscisse $0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $h$ est dérivable en $0$, avec $h'(0)=4$ : la courbe de $h$ admet,
+          au point $(0\,;0)$, une tangente de coefficient directeur $4$.
+        correct: true
+      - id: B
+        text: >-
+          $\dfrac{\ln(1+4t)}{t}$ est une forme $\frac00$ : elle établit la
+          continuité de $h$ en $0$, mais conclure à sa dérivabilité
+          demanderait un calcul distinct de cette seule limite.
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+        feedback: >
+          Cette limite ne se contente pas de montrer une continuité :
+          reconnaître une forme $\frac00$ comme un taux d'accroissement,
+          c'est reconnaître EXACTEMENT la définition du nombre dérivé — sa
+          limite, quand elle est finie, EST la dérivabilité en ce point, pas
+          un indice partiel qui resterait à confirmer.
+      - id: C
+        text: >-
+          $h'(0)=1$, car $\dfrac{\ln(1+4t)}{t}$ se ramène à la limite de
+          référence $\dfrac{\ln(1+u)}{u}\to1$.
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie
+        feedback: >
+          Tu as reconnu la forme de référence, mais oublié d'ajuster le
+          facteur : en posant $u=4t$, $\dfrac{\ln(1+4t)}{t}=4\times
+          \dfrac{\ln(1+u)}{u}$, et seul le second facteur tend vers $1$. Le
+          coefficient $4$ ne doit pas disparaître.
+      - id: D
+        text: >-
+          $h$ n'est dérivable qu'à droite en $0$, le domaine de $h$
+          empêchant d'approcher $0$ par la gauche, avec une demi-tangente de
+          coefficient directeur $4$ au point $(0\,;0)$.
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.domaine-neglige
+        feedback: >
+          Le domaine de $h$ est $\left]-\frac14,+\infty\right[$ : il contient
+          des réels des deux côtés de $0$ (par exemple $t=-0{,}1$ vérifie
+          $1+4t=0{,}6>0$). Rien n'empêche d'approcher $0$ par la gauche ici
+          — la tangente est entière, pas une demi-tangente.
+    correct_feedback: >
+      Exactement : reconnaître $\dfrac{\ln(1+4t)}{t}$ comme le taux
+      d'accroissement de $h$ entre $0$ et $t$ prouve, d'un seul geste, que
+      $h$ est dérivable en $0$ avec $h'(0)=4$ — et cela donne directement
+      l'équation de la tangente en $(0\,;0)$.
+    solution: |
+      **Le taux d'accroissement, directement.** Puisque $h(0)=\ln(1)=0$ :
+      $$\frac{h(t)-h(0)}{t} = \frac{\ln(1+4t)}{t}$$
+
+      **La limite de référence, avec facteur $4$.** En posant $u=4t$ (donc
+      $u\to0$ quand $t\to0$) :
+      $$\frac{\ln(1+4t)}{t} = 4\times\frac{\ln(1+u)}{u}$$
+
+      $$\lim_{t\to0}\frac{\ln(1+u)}{u} = 1$$
+      $$\lim_{t\to0}\frac{\ln(1+4t)}{t} = 4\times1 = 4$$
+
+      **La conclusion.** Cette limite existe et est finie : $h$ est
+      dérivable en $0$, avec $h'(0)=4$.
+
+      **L'interprétation graphique.** La courbe de $h$ admet, au point
+      $(0\,;0)$, une tangente de coefficient directeur $4$ — le domaine de
+      $h$ entoure $0$ des deux côtés, ce n'est pas une demi-tangente.
+
+  - id: LOG-32
+    rung: "R4"
+    difficulty_level: 3
+    habilete: application_non_explicite
+    skill_code: maths_fonction_logarithme
+    tags: ["limites", "taux-accroissement", "forme-indeterminee", "coefficient-deja-accorde"]
+    primary_misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to 0} \dfrac{\ln(1+7x)}{7x}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$1$"
+        correct: true
+      - id: B
+        text: "$7$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie
+        feedback: >
+          Multiplier par le coefficient $7$ sert quand le dénominateur ne
+          contient PAS déjà le
+          bon coefficient — ce n'est pas le cas ici : le dénominateur est
+          $7x$, pas $x$ seul. Le nombre $u=7x$ apparaît déjà identique à
+          l'intérieur du $\ln$ et au dénominateur ; il n'y a aucun facteur
+          supplémentaire à extraire.
+      - id: C
+        text: "Elle n'existe pas."
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+        feedback: >
+          « Indéterminée » signale qu'il faut reconnaître ce que cache
+          l'expression, pas qu'il n'y a pas de réponse. Ici, poser $u=7x$
+          montre que l'expression est très exactement $\dfrac{\ln(1+u)}{u}$,
+          une limite déjà connue.
+      - id: D
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+        feedback: >
+          Substituer $x=0$ dans l'expression telle quelle donne $\frac00$,
+          qui n'est pas une valeur qu'on peut lire par substitution directe
+          — il faut d'abord reconnaître la structure de la limite de
+          référence.
+    correct_feedback: >
+      Exactement : en posant $u=7x$, $\dfrac{\ln(1+7x)}{7x}=\dfrac{\ln(1+u)}{u}\to1$.
+      Le coefficient $7$ figure déjà identiquement à l'intérieur du $\ln$ ET
+      au dénominateur — aucun ajustement supplémentaire n'est nécessaire.
+    solution: |
+      **Le signal $\frac00$.** $\ln(1+7x)\to0$ et $7x\to0$ : forme
+      indéterminée, pas absence de réponse.
+
+      **Le même nombre des deux côtés, déjà en place.** Pose $u=7x$ : quand
+      $x\to0$, $u\to0$ aussi, et
+      $$\frac{\ln(1+7x)}{7x} = \frac{\ln(1+u)}{u} \to 1$$
+
+      **Le point de vigilance.** Contrairement aux exemples précédents (où
+      le dénominateur était $x$ seul, sans le coefficient de l'intérieur du
+      $\ln$), ici le dénominateur contient déjà le facteur $7$ : il n'y a
+      rien à multiplier ou diviser en plus. La limite vaut $1$, exactement
+      le cas non habillé.
+
 # ── Coverage summary (summit-conversion floor backfill — HONEST) ───────────
 # This was a LEGACY end-bank (`misconceptions: []`, item-level tags only). The
 # backfill above added the 7-model inventory, a `primary_misconception` per
@@ -1657,17 +1819,26 @@ items:
 # ci-dessous —, l'autre par un seul distracteur secondaire, listé dans
 # `secondary_coverage`), si bien que le plancher est atteint par PRIMARY seul
 # pour les deux : 3 items chacun.
+# MIS À JOUR le 2026-09-27, wave-1 (critiques bac + pédagogie) : deux items de
+# plus (LOG-31, LOG-32). LOG-31 (R7, registre dérivabilité/tangente) et
+# LOG-32 (R4, clé = 1 par coefficients déjà accordés) réutilisent les deux
+# modèles déclarés SANS en créer de nouveau — pour ne pas faire passer un
+# modèle sous le plancher avec un seul item. LOG-31 ajoute une attribution
+# secondaire à `domaine-neglige` (distracteur D, réutilisé pour l'erreur
+# MIROIR : restreindre le domaine à droite quand il ne l'est pas) — une
+# extension honnête à relire par un humain si un modèle dédié à la tangente
+# s'avère préférable.
 coverage_summary:
-  total_items: 30
+  total_items: 32
   per_rung:
     R0: 3   # LOG-7, LOG-8, LOG-9  (accroche : la fonction L, produit→somme)
     R1: 3   # LOG-1, LOG-10, LOG-11
     R2: 3   # LOG-2, LOG-3, LOG-12
     R3: 3   # LOG-4, LOG-13, LOG-14
-    R4: 9   # LOG-5, LOG-15, LOG-16, LOG-25, LOG-26, LOG-27, LOG-28, LOG-29, LOG-30
+    R4: 10  # LOG-5, LOG-15, LOG-16, LOG-25, LOG-26, LOG-27, LOG-28, LOG-29, LOG-30, LOG-32
     R5: 3   # LOG-17, LOG-18, LOG-19
     R6: 3   # LOG-6, LOG-20, LOG-21
-    R7: 3   # LOG-22, LOG-23, LOG-24
+    R7: 4   # LOG-22, LOG-23, LOG-24, LOG-31
   per_misconception:
     mc.math.maths_fonction_logarithme.domaine-neglige: 4            # LOG-1, LOG-6, LOG-20, LOG-24
     mc.math.maths_fonction_logarithme.produit-somme-confondus: 3    # LOG-3, LOG-7, LOG-9
@@ -1676,7 +1847,7 @@ coverage_summary:
     mc.math.maths_fonction_logarithme.limites-de-ln: 3              # LOG-5, LOG-15, LOG-16
     mc.math.maths_fonction_logarithme.lecture-variations-signe: 4   # LOG-10, LOG-11, LOG-19, LOG-23
     mc.math.maths_fonction_logarithme.unicite-bijection-tvi: 3      # LOG-17, LOG-18, LOG-22
-    mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue: 3       # LOG-25, LOG-26, LOG-27 (PRIMARY)
+    mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue: 5       # LOG-25, LOG-26, LOG-27, LOG-31, LOG-32 (PRIMARY)
     mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie: 3    # LOG-28, LOG-29, LOG-30 (PRIMARY)
   floor_met: true   # all 9 models have >= 3 primary items; none faked.
 
@@ -1698,6 +1869,9 @@ coverage_summary:
     - { item: LOG-28, choice: D, misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue,   note: "0/0 fois 3 lu comme « n'existe pas » (item primaire : facteur-multiplicatif-oublie)." }
     - { item: LOG-29, choice: D, misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue,   note: "substitution directe x=2 au numérateur seul (item primaire : facteur-multiplicatif-oublie)." }
     - { item: LOG-30, choice: D, misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue,   note: "∞×0 lu directement comme 0 (item primaire : facteur-multiplicatif-oublie)." }
+    - { item: LOG-31, choice: C, misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie, note: "coefficient 4 oublié, lu comme 1 (item primaire : forme-0-sur-0-non-reconnue)." }
+    - { item: LOG-31, choice: D, misconception: mc.math.maths_fonction_logarithme.domaine-neglige,              note: "domaine restreint à droite sans raison — erreur miroir de domaine-neglige (item primaire : forme-0-sur-0-non-reconnue)." }
+    - { item: LOG-32, choice: B, misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie, note: "coefficient 7 déjà accordé au dénominateur, réappliqué à tort (item primaire : forme-0-sur-0-non-reconnue)." }
 
   notes: >-
     Backfill only : aucun nouvel item écrit, aucun compte gonflé. Les 24 items
@@ -1712,3 +1886,11 @@ coverage_summary:
     porte les deux modèles à la fois (primary + un distracteur secondaire),
     listés ci-dessus dans secondary_coverage — aucun n'est sous le plancher,
     ni par PRIMARY (3 chacun) ni en comptant tout distracteur (6 chacun).
+    AJOUT 2026-09-27, wave-1 (critiques bac + pédagogie) : LOG-31 (registre
+    dérivabilité/tangente, direction bac) et LOG-32 (clé = 1, casse le gabarit
+    « la clé n'est jamais 1 ») portent tous deux forme-0-sur-0-non-reconnue en
+    PRIMARY (désormais 5) et facteur-multiplicatif-oublie en secondaire
+    (toujours 3 en PRIMARY, marge inchangée). LOG-31 ajoute aussi une
+    attribution secondaire à domaine-neglige, réutilisé pour l'erreur MIROIR
+    (restreindre à droite un domaine qui ne l'exige pas) plutôt que de créer un
+    modèle « tangente » qui resterait, avec un seul item, sous le plancher.

@@ -36,6 +36,16 @@ skill_code: maths_fonction_exponentielle
 #                                       forme-0-sur-0-non-reconnue, with a
 #                                       cross-tag to valeurs-et-reciprocite-
 #                                       confondues (the "e" trap).
+#   cp-r4-facteur-oublie (in R4)      — SECOND commit gate, ajouté 2026-09-27
+#                                       (wave-1, critique pédagogie I-3),
+#                                       placed right AFTER the worked example
+#                                       ("Point de vigilance" in lesson.md) :
+#                                       turns the habillage-with-coefficient
+#                                       case into a commit. Probes
+#                                       facteur-multiplicatif-oublie (the
+#                                       (e^{ah}-1)/h -> 1 instead of -> a
+#                                       trap), with a cross-tag to
+#                                       forme-0-sur-0-non-reconnue.
 #
 # EVERY distractor carries a named misconception id from this notion's inventory
 # (items.yaml). Option lengths are balanced so the correct choice is never the
@@ -274,14 +284,78 @@ checkpoints:
           substitution ; c'est le signal qu'il faut retravailler l'écriture
           avant de faire tendre $h$ vers $0$.
       - id: D
-        text: "$e$ : c'est la valeur de référence de ce chapitre."
+        text: "$e$, parce que l'expression contient $e^h$ : une limite où $e$ apparaît doit redonner $e$."
         correct: false
         misconception: mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues
         feedback: |
-          Modèle détecté : $e$ répond à une autre question — c'est $e^1$, le
+          Modèle détecté : la simple présence de $e$ dans l'écriture ne dit
+          rien du résultat. $e$ répond à une autre question — c'est $e^1$, le
           réel dont le logarithme vaut $1$. Ici, l'expression est un taux
           d'accroissement en $h\to0$, dont la limite est le nombre DÉRIVÉ en
           $0$, qui vaut $1$, pas $e$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-NEW-2 | id: cp-r4-facteur-oublie | placed IN R4, right AFTER the
+  #        worked example ("Point de vigilance", lesson.md) — a SECOND
+  #        commit point, ajouté 2026-09-27 (wave-1, critique pédagogie
+  #        I-3). Le premier commit (cp-r4-taux-accroissement) porte sur la
+  #        forme non habillée ((e^h-1)/h) et sur forme-0-sur-0-non-reconnue ;
+  #        celui-ci porte sur la forme HABILLÉE d'un coefficient et sur
+  #        facteur-multiplicatif-oublie : le piège nommé est
+  #        (e^{ah}-1)/h -> 1 au lieu de -> a. Coefficient propre (4), distinct
+  #        de celui de l'exemple travaillé (3) et de celui de
+  #        cp-r4-taux-accroissement (1, cas non habillé).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-facteur-oublie
+    rung: "R4"
+    habilete: application_directe
+    skill_code: maths_fonction_exponentielle
+    tags: [checkpoint, formative, misconception_driven, maths_fonction_exponentielle, limites, taux_accroissement, facteur_multiplicatif]
+    primary_misconception: mc.math.maths_fonction_exponentielle.facteur-multiplicatif-oublie
+    item_source: original
+    lesson_placement: after_worked_example_R4
+
+    stem: |
+      Même geste que dans l'exemple qui précède : que vaut
+      $\displaystyle\lim_{x \to 0} \dfrac{e^{4x}-1}{x}$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$4$"
+        correct: true
+        feedback: |
+          Exact : en posant $H=4x$, $\dfrac{e^{4x}-1}{x}=4\times\dfrac{e^{H}-1}{H}\to4\times1=4$
+          — le même geste que dans l'exemple qui précède, avec un coefficient
+          différent.
+      - id: B
+        text: "$1$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.facteur-multiplicatif-oublie
+        feedback: |
+          Modèle détecté : le coefficient $4$ de l'exposant a disparu en
+          route. Le dénominateur est $x$ seul, pas $4x$ — il faut multiplier
+          ET diviser par $4$ pour faire apparaître le même nombre des deux
+          côtés ; la limite vaut $4$, pas $1$.
+      - id: C
+        text: "Elle n'existe pas."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue
+        feedback: |
+          Modèle détecté : « indéterminée » lu comme « sans réponse ». La
+          forme $\frac00$ signale seulement qu'il faut reconnaître une
+          structure connue — ici, un taux d'accroissement habillé d'un
+          coefficient.
+      - id: D
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue
+        feedback: |
+          Modèle détecté : substitution directe de $x=0$ dans l'expression
+          telle quelle. $\frac00$ n'est pas une valeur lisible par
+          substitution ; il faut d'abord isoler le coefficient $4$.
 
   # ════════════════════════════════════════════════════════════════
   # CP-3 | id: cp-r4-croissances | placed AFTER R4
