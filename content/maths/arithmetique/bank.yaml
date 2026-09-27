@@ -49,18 +49,18 @@
 # content/maths/nombres-complexes-1/bank.yaml et sur bk-2021-n-x1 de
 # content/pc/reactions-acido-basiques/bank.yaml.
 #
-# OUTIL HORS-RUNG : NEUF des DIX entrées mobilisent le PETIT THÉORÈME DE
-# FERMAT — bk-2024-r-x5 est la seule qui ne le mobilise pas du tout, elle ne
-# sort d'aucun rung (R1, R2, R4, R5 lui suffisent) — (p premier, p ∤ a ⟹ a^(p−1) ≡ 1 [p]), qui n'a pas de rung dédié
-# dans la leçon (R0–R8 couvrent divisibilité, division euclidienne,
-# congruences, PGCD/Euclide, Bézout, Gauss, nombres premiers, équations
-# diophantiennes — pas Fermat). Le théorème est nommé et justifié au point
-# d'usage dans le champ `reasoning` de chaque question qui le mobilise
-# (bk-2017-n-x3 q3 ; bk-2019-n-x3 q4 ; bk-2020-n-x1 q2 ; bk-2021-n-x3 q3,
-# q6 ; bk-2022-n-x3 q3 ; bk-2023-n-x4 q1, q4 ; bk-2023-r-x4 q2 ;
-# bk-2024-n-x5 q1 ; bk-2025-n-x3 q1, q2),
-# exactement comme le fait déjà le rupture-gate cp-r6-fermat côté
-# lesson.md, juste avant [[exercise:r-bac]].
+# LE PETIT THÉORÈME DE FERMAT A DÉSORMAIS SON CHAPITRE (R6b — « Le petit
+# théorème de Fermat », content/maths/arithmetique/lesson.md, ajouté
+# 2026-09-27, entre R6 et R7). NEUF des DIX entrées mobilisent le théorème
+# (p premier, p ∤ a ⟹ a^(p−1) ≡ 1 [p]) — bk-2024-r-x5 est la seule qui ne
+# le mobilise pas du tout, elle ne sort d'aucun rung (R1, R2, R4, R5 lui
+# suffisent). Le théorème est nommé et re-justifié au point d'usage dans
+# le champ `reasoning` de chaque question qui le mobilise (bk-2017-n-x3 q3 ;
+# bk-2019-n-x3 q4 ; bk-2020-n-x1 q2 ; bk-2021-n-x3 q3, q6 ; bk-2022-n-x3 q3 ;
+# bk-2023-n-x4 q1, q4 ; bk-2023-r-x4 q2 ; bk-2024-n-x5 q1 ; bk-2025-n-x3 q1,
+# q2) plutôt que simplement cité par renvoi — la banque reste attempt-first,
+# pas une suite de « voir plus haut » — exactement comme le fait déjà le
+# rupture-gate cp-r6-fermat côté lesson.md, juste avant [[exercise:r-bac]].
 #
 # TROIS AUTRES OUTILS HORS-RUNG, propres aux entrées 2021/2023/2025 (chacun
 # nommé et bridgé au point d'usage dans reasoning, jamais supposé acquis,
@@ -79,8 +79,9 @@
 #     nombres complexes.
 #   - bk-2025-n-x3 (q1–q3) : le **critère d'Euler** ($a^{(p-1)/2} \equiv
 #     \pm1\ [p]$), construit ici de A à Z à partir du seul petit théorème
-#     de Fermat et du lemme d'Euclide (R6) — aucun rung dédié, mais rien
-#     n'est admis sans être re-dérivé dans le raisonnement.
+#     de Fermat (R6b) et du lemme d'Euclide (R6) — le critère d'Euler
+#     lui-même n'a aucun rung dédié, mais rien n'est admis sans être
+#     re-dérivé dans le raisonnement.
 #
 # Raisonnement rédigé à la voix experte de la maison sur 100 % des
 # questions, citant les rungs mobilisés (R1 division euclidienne, R2
@@ -123,7 +124,7 @@ entries:
 
       On admet que $2969$ (l'année amazighe actuelle) est un **nombre premier**. Soient $n$ et $m$ deux entiers naturels vérifiant $n^8 + m^8 \equiv 0\ [2969]$.
 
-      L'exercice enchaîne, en une seule chaîne serrée, le théorème de Bézout (chapitre 5), les congruences et leurs puissances (chapitre 3), le petit théorème de Fermat — hors-chapitre, rappelé au moment où il sert — et le lemme d'Euclide « un premier qui divise une puissance divise la base » (chapitre 7).
+      L'exercice enchaîne, en une seule chaîne serrée, le théorème de Bézout (chapitre 5), les congruences et leurs puissances (chapitre 3), le petit théorème de Fermat — vu au chapitre du petit théorème de Fermat, rappelé au moment où il sert — et le lemme d'Euclide « un premier qui divise une puissance divise la base » (chapitre 7).
     questions:
       - id: q1
         part: "Partie A — Un inverse de $n$ modulo $2969$ par Bézout"
@@ -172,7 +173,7 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire qu'on a aussi $(u \times m)^{2968} \equiv 1\ [2969]$
         reasoning: |-
-          C'est ici qu'intervient le **petit théorème de Fermat** — un outil du programme SM qui déborde le corps des chapitres de la leçon (aucun chapitre dédié ; chapitres 1 à 9 couvrent divisibilité, division euclidienne, congruences, PGCD/Euclide, Bézout, Gauss, nombres premiers, équations diophantiennes, mais pas Fermat) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$.
+          C'est ici qu'intervient le **petit théorème de Fermat**, vu au chapitre du petit théorème de Fermat : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$.
 
           On applique ce théorème avec $p = 2969$ (premier, admis) et $a = u\,m$. La condition $p \nmid a$ est exactement le résultat de la question précédente : $2969 \nmid u\,m$. Comme $p - 1 = 2968$, il vient directement $(u\,m)^{2968} \equiv 1 \pmod{2969}$.
         steps:
@@ -238,7 +239,7 @@ entries:
 
       On considère dans $\mathbb{Z}\times\mathbb{Z}$ l'équation $(D) : 7x^3 - 13y = 5$.
 
-      L'exercice mobilise les congruences et leurs puissances (chapitre 3), la coprimalité avec un nombre premier (chapitre 5), et le petit théorème de Fermat — hors-chapitre, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) — pour montrer, par deux calculs contradictoires du même $x^{12}$ modulo $13$, que $(D)$ n'a **aucune solution**.
+      L'exercice mobilise les congruences et leurs puissances (chapitre 3), la coprimalité avec un nombre premier (chapitre 5), et le petit théorème de Fermat — vu au chapitre du petit théorème de Fermat, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) — pour montrer, par deux calculs contradictoires du même $x^{12}$ modulo $13$, que $(D)$ n'a **aucune solution**.
     questions:
       - id: q1
         part: "Partie A — $x$ premier avec $13$, puis Fermat"
@@ -259,7 +260,7 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que : $x^{12} \equiv 1\ [13]$
         reasoning: |-
-          Le petit théorème de Fermat — hors-chapitre, déjà utilisé dans l'exercice de fin de leçon (le sujet 2019) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$. Ici $p=13$ (premier) et $a=x$, avec $13 \nmid x$ établi à la question précédente. Comme $p-1=12$, le théorème donne directement $x^{12} \equiv 1 \pmod{13}$.
+          Le petit théorème de Fermat — vu au chapitre du petit théorème de Fermat, déjà utilisé dans l'exercice de fin de leçon (le sujet 2019) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$. Ici $p=13$ (premier) et $a=x$, avec $13 \nmid x$ établi à la question précédente. Comme $p-1=12$, le théorème donne directement $x^{12} \equiv 1 \pmod{13}$.
         steps:
           - math: 'x^{12} \equiv 1 \pmod{13}'
             note: "Petit théorème de Fermat : p = 13 premier, 13 ne divise pas x (question précédente), donc x puissance douze congru a 1 modulo 13."
@@ -335,7 +336,7 @@ entries:
 
       Soit $n$ un entier naturel strictement supérieur à $1$. On considère dans $\mathbb{N}^2$ l'équation $(E_n) : (x+1)^n - x^n = ny$. Soit $(x,y)$ une solution de l'équation $(E_n)$ dans $\mathbb{N}^2$ et soit $p$ le plus petit diviseur premier de $n$.
 
-      L'exercice enchaîne les congruences et leurs puissances (chapitre 3), la coprimalité et le lemme d'Euclide (chapitres 5 et 7), le petit théorème de Fermat — hors-chapitre, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) — et, dans le cas $n$ impair, une construction de Bézout (chapitre 5) entre $n$ et $p-1$, pour montrer que $(E_n)$ n'admet **jamais** de solution dans $\mathbb{Z}^2$, que $n$ soit pair ou impair.
+      L'exercice enchaîne les congruences et leurs puissances (chapitre 3), la coprimalité et le lemme d'Euclide (chapitres 5 et 7), le petit théorème de Fermat — vu au chapitre du petit théorème de Fermat, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) — et, dans le cas $n$ impair, une construction de Bézout (chapitre 5) entre $n$ et $p-1$, pour montrer que $(E_n)$ n'admet **jamais** de solution dans $\mathbb{Z}^2$, que $n$ soit pair ou impair.
     questions:
       - id: q1
         part: "Partie A — $p$ divise $n$ : une congruence, puis une coprimalité"
@@ -374,7 +375,7 @@ entries:
         stem: |-
           **(0,25 pt)** En déduire que : $(x+1)^{p-1} \equiv x^{p-1}\ [p]$
         reasoning: |-
-          Le petit théorème de Fermat — hors-chapitre, déjà mobilisé dans l'exercice de fin de leçon (le sujet 2019) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$. La question précédente donne $p \nmid x$ et $p \nmid (x+1)$ : le théorème s'applique aux deux.
+          Le petit théorème de Fermat — vu au chapitre du petit théorème de Fermat, déjà mobilisé dans l'exercice de fin de leçon (le sujet 2019) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$. La question précédente donne $p \nmid x$ et $p \nmid (x+1)$ : le théorème s'applique aux deux.
 
           D'où $x^{p-1} \equiv 1 \pmod p$ et $(x+1)^{p-1} \equiv 1 \pmod p$. Les deux membres sont congrus au même nombre $1$, donc congrus entre eux : $(x+1)^{p-1} \equiv x^{p-1} \pmod p$.
         steps:
@@ -505,14 +506,14 @@ entries:
 
       Soient $p$ et $q$ deux nombres premiers distincts et $r$ un entier naturel premier avec $p$ et avec $q$.
 
-      L'exercice construit une version « à deux modules » du petit théorème de Fermat — hors-chapitre, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) — en s'appuyant sur le corollaire du théorème de Gauss (chapitre 6), puis l'applique à une équation modulaire concrète.
+      L'exercice construit une version « à deux modules » du petit théorème de Fermat — vu au chapitre du petit théorème de Fermat, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) — en s'appuyant sur le corollaire du théorème de Gauss (chapitre 6), puis l'applique à une équation modulaire concrète.
     questions:
       - id: q1
         part: "Partie A — Fermat pour $p$, puis pour $q$"
         stem: |-
           **(1 pt)** Montrer que $p$ divise $r^{p-1} - 1$ et que $q$ divise $r^{q-1} - 1$.
         reasoning: |-
-          Le petit théorème de Fermat — hors-chapitre, déjà mobilisé dans l'exercice de fin de leçon (le sujet 2019) : si un nombre premier $\pi$ ne divise pas un entier $a$, alors $a^{\pi-1} \equiv 1 \pmod \pi$, c'est-à-dire $\pi \mid (a^{\pi-1}-1)$.
+          Le petit théorème de Fermat — vu au chapitre du petit théorème de Fermat, déjà mobilisé dans l'exercice de fin de leçon (le sujet 2019) : si un nombre premier $\pi$ ne divise pas un entier $a$, alors $a^{\pi-1} \equiv 1 \pmod \pi$, c'est-à-dire $\pi \mid (a^{\pi-1}-1)$.
 
           On l'applique une première fois avec $\pi = p$ et $a = r$ : $r$ est premier avec $p$ par hypothèse, donc $p \mid (r^{p-1}-1)$. On l'applique une seconde fois avec $\pi = q$ et $a = r$ : $r$ est aussi premier avec $q$ par hypothèse, donc $q \mid (r^{q-1}-1)$.
         steps:
@@ -609,7 +610,7 @@ entries:
 
       **Partie III :** on considère dans $\mathbb{Z}$ le système à deux équations $(S) : \begin{cases} x^{41} \equiv 4\ [43] \\ x^{47} \equiv 10\ [47] \end{cases}$
 
-      L'exercice enchaîne la résolution complète d'une équation diophantienne (chapitre 8, construite sur Bézout (chapitre 5) et Gauss (chapitre 6)), le petit théorème de Fermat — hors-chapitre, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) — appliqué deux fois, modulo $43$ puis, sous sa forme $a^p \equiv a\ [p]$, modulo $47$, et enfin une résolution de système de congruences par combinaison directe des deux modules via la relation de Bézout de la Partie I — une technique de type « restes chinois », non nommée et sans chapitre dédié, construite ici entièrement à partir du chapitre 5.
+      L'exercice enchaîne la résolution complète d'une équation diophantienne (chapitre 8, construite sur Bézout (chapitre 5) et Gauss (chapitre 6)), le petit théorème de Fermat — vu au chapitre du petit théorème de Fermat, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) — appliqué deux fois, modulo $43$ puis, sous sa forme $a^p \equiv a\ [p]$, modulo $47$, et enfin une résolution de système de congruences par combinaison directe des deux modules via la relation de Bézout de la Partie I — une technique de type « restes chinois », non nommée et sans chapitre dédié, construite ici entièrement à partir du chapitre 5.
     questions:
       - id: q1
         part: "Partie I — Bézout : $47x - 43y = 1$"
@@ -643,7 +644,7 @@ entries:
         reasoning: |-
           Si $43 \mid x$, alors $x^{41} \equiv 0 \pmod{43}$ ; or $(F)$ dit $x^{41} \equiv 4 \pmod{43}$, et $4 \not\equiv 0 \pmod{43}$ (car $0 < 4 < 43$). Contradiction : $43$ ne divise pas $x$. Comme $43$ est premier, son seul diviseur commun possible avec $x$ est alors $1$, donc $\mathrm{PGCD}(43,x)=1$ (chapitre 5).
 
-          C'est ici qu'intervient le **petit théorème de Fermat** — hors-chapitre, déjà mobilisé dans l'exercice de fin de leçon (le sujet 2019) : $p$ premier et $p \nmid a$ entraîne $a^{p-1} \equiv 1 \pmod p$. Avec $p=43$ et $a=x$, cela donne directement $x^{42} \equiv 1 \pmod{43}$.
+          C'est ici qu'intervient le **petit théorème de Fermat** — vu au chapitre du petit théorème de Fermat, déjà mobilisé dans l'exercice de fin de leçon (le sujet 2019) : $p$ premier et $p \nmid a$ entraîne $a^{p-1} \equiv 1 \pmod p$. Avec $p=43$ et $a=x$, cela donne directement $x^{42} \equiv 1 \pmod{43}$.
         steps:
           - math: '43 \mid x \implies x^{41} \equiv 0 \pmod{43}'
             note: "Hypothèse absurde : si 43 divise x, sa puissance 41-ieme aussi est congrue a 0."
@@ -775,7 +776,7 @@ entries:
 
       Soit $p$ un nombre premier impair. On considère dans $\mathbb{Z}$ l'équation $(E) : x^2 \equiv 2\ [p]$.
 
-      L'exercice combine le petit théorème de Fermat — hors-chapitre, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) —, le lemme d'Euclide (chapitre 7) et le théorème de Gauss (chapitre 6), avec deux outils entièrement extérieurs au corps de la leçon arithmétique : une identité combinatoire sur les coefficients binomiaux $C_p^k$ (fournie par l'énoncé, non démontrée dans la leçon) et la formule de Moivre en forme trigonométrique — un registre qui relève de la notion nombres complexes, pas de l'arithmétique. Les deux sont bridgés au point d'usage dans le raisonnement, jamais supposés acquis.
+      L'exercice combine le petit théorème de Fermat — vu au chapitre du petit théorème de Fermat, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) —, le lemme d'Euclide (chapitre 7) et le théorème de Gauss (chapitre 6), avec deux outils entièrement extérieurs au corps de la leçon arithmétique : une identité combinatoire sur les coefficients binomiaux $C_p^k$ (fournie par l'énoncé, non démontrée dans la leçon) et la formule de Moivre en forme trigonométrique — un registre qui relève de la notion nombres complexes, pas de l'arithmétique. Les deux sont bridgés au point d'usage dans le raisonnement, jamais supposés acquis.
     questions:
       - id: q1
         part: "Partie A — Fermat, puis un carré qui se factorise"
@@ -784,7 +785,7 @@ entries:
         reasoning: |-
           $p$ est premier et **impair** (hypothèse de l'énoncé), donc $p \neq 2$ : le seul diviseur premier de $2$ étant $2$ lui-même, $p$ ne divise pas $2$. Comme $p$ est premier, cela donne $\mathrm{PGCD}(p,2)=1$ (chapitre 5).
 
-          C'est ici qu'intervient le **petit théorème de Fermat** — hors-chapitre, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) : $p$ premier et $p \nmid a$ entraîne $a^{p-1} \equiv 1 \pmod p$. Avec $a=2$, cela donne directement $2^{p-1} \equiv 1 \pmod p$.
+          C'est ici qu'intervient le **petit théorème de Fermat** — vu au chapitre du petit théorème de Fermat, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) : $p$ premier et $p \nmid a$ entraîne $a^{p-1} \equiv 1 \pmod p$. Avec $a=2$, cela donne directement $2^{p-1} \equiv 1 \pmod p$.
         steps:
           - math: 'p\ \text{premier et impair} \implies p \nmid 2 \implies \mathrm{PGCD}(p,2) = 1'
             note: "p est impair donc différent de 2, seul diviseur premier de 2 : p ne divise pas 2 (chapitre 5)."
@@ -965,7 +966,7 @@ entries:
 
       Soit $q$ un nombre premier qui divise $S$.
 
-      L'exercice est un raisonnement par l'absurde en deux temps, et c'est ce qui fait sa difficulté : la question 2 travaille sous une hypothèse — « $p$ et $q-1$ sont premiers entre eux » — dont la question 3 démontre qu'elle est **intenable**. Tout ce que la question 2 établit est donc vrai *sous cette hypothèse seulement*, et sert uniquement à fabriquer la contradiction finale. Les outils mobilisés : les congruences et leurs puissances (chapitre 3), la coprimalité et le théorème de Bézout (chapitre 5), les nombres premiers et le lemme d'Euclide (chapitre 7), plus le **petit théorème de Fermat** — hors-chapitre, rappelé au point d'usage comme partout ailleurs dans cette banque.
+      L'exercice est un raisonnement par l'absurde en deux temps, et c'est ce qui fait sa difficulté : la question 2 travaille sous une hypothèse — « $p$ et $q-1$ sont premiers entre eux » — dont la question 3 démontre qu'elle est **intenable**. Tout ce que la question 2 établit est donc vrai *sous cette hypothèse seulement*, et sert uniquement à fabriquer la contradiction finale. Les outils mobilisés : les congruences et leurs puissances (chapitre 3), la coprimalité et le théorème de Bézout (chapitre 5), les nombres premiers et le lemme d'Euclide (chapitre 7), plus le **petit théorème de Fermat** — vu au chapitre du petit théorème de Fermat, rappelé au point d'usage comme partout ailleurs dans cette banque.
     questions:
       - id: q1
         part: "Partie A — Deux congruences qui valent $1$ modulo $q$"
@@ -1000,7 +1001,7 @@ entries:
         stem: |-
           **(0,25 pt)** En déduire que : $p^{q-1} \equiv 1\ [q]$
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » signale que la question précédente fournit exactement l'hypothèse manquante d'un théorème. Ce théorème, c'est le **petit théorème de Fermat** — un outil du programme SM qui déborde le corps des chapitres de la leçon (chapitres 1 à 9 couvrent divisibilité, division euclidienne, congruences, PGCD/Euclide, Bézout, Gauss, nombres premiers, équations diophantiennes, mais pas Fermat) : si $\ell$ est un nombre **premier** et si $\ell \nmid a$, alors $a^{\ell-1} \equiv 1 \pmod{\ell}$.
+          **Ce qu'on cherche et pourquoi ce geste.** « En déduire » signale que la question précédente fournit exactement l'hypothèse manquante d'un théorème. Ce théorème, c'est le **petit théorème de Fermat**, vu au chapitre du petit théorème de Fermat : si $\ell$ est un nombre **premier** et si $\ell \nmid a$, alors $a^{\ell-1} \equiv 1 \pmod{\ell}$.
 
           Ici le module est $q$ — c'est lui le « premier » du théorème — et la base est $p$.
 
@@ -1164,24 +1165,24 @@ entries:
         diff caractère-par-caractère conforme au scan, équivalence (F)
         re-dérivée et confirmée, Unicode propre, agent-vérificateur-
         adversarial, 2026-08-06). NB : l'exercice construit le critère
-        d'Euler de A à Z à partir du petit théorème de Fermat (hors-rung)
-        et du lemme d'Euclide (R6) — aucun rung dédié au critère d'Euler
-        dans la leçon (R0–R8) ; bridgé au point d'usage dans reasoning,
-        comme le petit théorème de Fermat l'est déjà dans les six autres
-        entrées de cette banque.
+        d'Euler de A à Z à partir du petit théorème de Fermat (R6b) et du
+        lemme d'Euclide (R6) — aucun rung dédié au critère d'Euler
+        lui-même dans la leçon (R0–R8) ; bridgé au point d'usage dans
+        reasoning, comme le petit théorème de Fermat l'est déjà dans les
+        six autres entrées de cette banque.
     intro: |-
       **Arithmétique (examen national Sciences Mathématiques, session normale 2025, Exercice 3).**
 
       Soient $p$ un nombre premier impair et $a$ un entier premier avec $p$.
 
-      L'exercice construit, de A à Z, le **critère d'Euler** — hors-chapitre, dérivé ici uniquement à partir du petit théorème de Fermat (lui-même hors-chapitre, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019)) et du lemme d'Euclide (chapitre 7) — puis l'applique deux fois, avec $p=11$ à chaque fois : une fois pour garantir, via Bézout (chapitre 5), l'existence d'une solution à une équation diophantienne paramétrée par $n$, une fois pour montrer qu'une équation modulo $11$ n'a aucune solution entière.
+      L'exercice construit, de A à Z, le **critère d'Euler** — hors-chapitre, dérivé ici uniquement à partir du petit théorème de Fermat (lui-même vu au chapitre du petit théorème de Fermat, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019)) et du lemme d'Euclide (chapitre 7) — puis l'applique deux fois, avec $p=11$ à chaque fois : une fois pour garantir, via Bézout (chapitre 5), l'existence d'une solution à une équation diophantienne paramétrée par $n$, une fois pour montrer qu'une équation modulo $11$ n'a aucune solution entière.
     questions:
       - id: q1
         part: "Partie A — Fermat et un carré qui se factorise"
         stem: |-
           **(0,5 pt)** Montrer que $a^{\frac{p-1}{2}} \equiv 1\ [p]$ ou $a^{\frac{p-1}{2}} \equiv -1\ [p]$.
         reasoning: |-
-          $a$ est premier avec $p$ par hypothèse (chapitre 5), donc le **petit théorème de Fermat** — hors-chapitre, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) — s'applique : $a^{p-1} \equiv 1 \pmod p$.
+          $a$ est premier avec $p$ par hypothèse (chapitre 5), donc le **petit théorème de Fermat** — vu au chapitre du petit théorème de Fermat, déjà rencontré dans l'exercice de fin de leçon (le sujet 2019) — s'applique : $a^{p-1} \equiv 1 \pmod p$.
 
           On retrouve ici le même geste qu'à chaque fois qu'une puissance paire cache une différence de carrés : $a^{p-1} - 1 = \left(a^{\frac{p-1}{2}}\right)^2 - 1 = \left(a^{\frac{p-1}{2}}-1\right)\left(a^{\frac{p-1}{2}}+1\right)$ (l'exposant $\frac{p-1}{2}$ est un entier, car $p$ est impair). Comme $p \mid (a^{p-1}-1)$, $p$ divise ce produit. $p$ étant premier, le lemme d'Euclide (chapitre 7) donne $p \mid \left(a^{\frac{p-1}{2}}-1\right)$ ou $p \mid \left(a^{\frac{p-1}{2}}+1\right)$ — c'est-à-dire $a^{\frac{p-1}{2}} \equiv 1 \pmod p$ ou $a^{\frac{p-1}{2}} \equiv -1 \pmod p$.
         steps:
@@ -1198,7 +1199,7 @@ entries:
         reasoning: |-
           Si $p \mid x_0$, alors $x_0^2 \equiv 0 \pmod p$, donc $a\,x_0^2 \equiv 0 \pmod p$ ; or l'équation dit $a\,x_0^2 \equiv 1 \pmod p$, donc $0 \equiv 1 \pmod p$, c'est-à-dire $p \mid 1$ — impossible, puisque $p \geq 2$. Contradiction : $p$ ne divise pas $x_0$.
 
-          Comme $p$ est premier, $\mathrm{PGCD}(p,x_0)=1$ (chapitre 5). Le petit théorème de Fermat — hors-chapitre, déjà mobilisé à la question 1 — s'applique alors à $x_0$ : $x_0^{p-1} \equiv 1 \pmod p$.
+          Comme $p$ est premier, $\mathrm{PGCD}(p,x_0)=1$ (chapitre 5). Le petit théorème de Fermat — vu au chapitre du petit théorème de Fermat, déjà mobilisé à la question 1 — s'applique alors à $x_0$ : $x_0^{p-1} \equiv 1 \pmod p$.
         steps:
           - math: 'p \mid x_0 \implies a\,x_0^2 \equiv 0 \pmod p'
             note: "Hypothèse absurde : si p divise x zéro, son carré et donc a fois son carré sont congrus a 0."
@@ -1331,7 +1332,7 @@ entries:
 
       On admet que $2017$ est un nombre premier, et que $2016 = 2^5\,3^2\,7$. Soit $p$ un nombre premier supérieur ou égal à $5$.
 
-      L'exercice mobilise le petit théorème de Fermat — hors-chapitre, rappelé au point d'usage — pour contraindre $p$ à une seule valeur possible via la factorisation de $2016$, puis termine par une résolution explicite de l'équation $px+y^{p-1}=2017$ dans $\mathbb{N}^*\times\mathbb{N}^*$.
+      L'exercice mobilise le petit théorème de Fermat — vu au chapitre du petit théorème de Fermat, rappelé au point d'usage — pour contraindre $p$ à une seule valeur possible via la factorisation de $2016$, puis termine par une résolution explicite de l'équation $px+y^{p-1}=2017$ dans $\mathbb{N}^*\times\mathbb{N}^*$.
     questions:
       - id: q1
         part: "Partie A — Encadrer $p$, puis exclure $p$ diviseur de $y$"
@@ -1366,7 +1367,7 @@ entries:
         stem: |-
           **(0,75 pt)** Montrer que : $y^{p-1} \equiv 1\ [p]$ et en déduire que $p$ divise $2016$
         reasoning: |-
-          C'est ici qu'intervient le **petit théorème de Fermat** — un outil du programme SM qui déborde le corps des chapitres de la leçon (aucun chapitre dédié ; chapitres 1 à 9 couvrent divisibilité, division euclidienne, congruences, PGCD/Euclide, Bézout, Gauss, nombres premiers, équations diophantiennes, mais pas Fermat) : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$. On l'applique avec $a=y$ : $p$ est premier (donné, $p\geq5$) et $p \nmid y$ (question précédente), donc $y^{p-1} \equiv 1 \pmod p$.
+          C'est ici qu'intervient le **petit théorème de Fermat**, vu au chapitre du petit théorème de Fermat : si $p$ est premier et $p \nmid a$, alors $a^{p-1} \equiv 1 \pmod p$. On l'applique avec $a=y$ : $p$ est premier (donné, $p\geq5$) et $p \nmid y$ (question précédente), donc $y^{p-1} \equiv 1 \pmod p$.
 
           On réduit ensuite l'équation elle-même modulo $p$ : le terme $px$ disparaît, donc $y^{p-1} \equiv px+y^{p-1} = 2017 \pmod p$. En combinant les deux congruences pour $y^{p-1}$, il vient $1 \equiv 2017 \pmod p$, c'est-à-dire $p \mid (2017-1) = 2016$.
         steps:

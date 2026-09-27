@@ -588,25 +588,35 @@ Une fois le sujet 2019 compris, voici une **variation fraîche** — un autre no
      `cp-r6-fermat` (inchangé, toujours juste avant `[[exercise:r-bac]]`)
      en vérifie la mémoire, non l'apprentissage.
 
-     (2) [DÉCISION DE PORTÉE — cadre silencieux, à confirmer] Le petit
-     théorème de Fermat N'APPARAÎT PAS dans la ligne de programme du cadre :
-     `docs/cadre/curriculum/maths-sm.yaml:277-281` (programme d'arithmétique
-     SM) ne le nomme pas, et sa ligne `limites` (`:287`) exclut
-     explicitement « la fonction indicatrice d'Euler comme théorème central »,
-     « RSA/cryptographie formelle » et « résidus quadratiques » — mais reste
-     muette sur Fermat lui-même, ni inclus ni exclu. Cette édition tranche en
-     faveur d'une PREUVE complète (plutôt qu'un énoncé admis) parce que (i)
-     elle ne coûte aucun prérequis nouveau — Gauss et le lemme d'Euclide sont
-     déjà construits dans ce chapitre — et (ii) elle suit la voix déjà
-     établie par la notion elle-même, qui répète « on le construit, on ne
-     l'admet pas » (R1, R4, R7). Mais le cadre ne confirme ni n'infirme que
-     cette preuve soit attendue au bac SM : `checkpoints.yaml` (garde-fou en
-     tête de fichier) affirme de son côté « Le petit théorème de Fermat est
-     au programme SM et légitime pour un sujet type-bac » sans citer de
-     source cadre non plus. Pédagogie-architecte / propriétaire du cadre : la
-     ligne de programme mériterait d'être complétée explicitement (comme
-     elle l'est pour les trois exclusions voisines), plutôt que de laisser
-     ce silence trancher par défaut à chaque notion qui en a besoin.
+     (2) [CORRECTION DE PORTÉE — cadre désormais nommé, 2026-09-27] Était
+     écrit jusqu'au 2026-09-27 : « Le petit théorème de Fermat N'APPARAÎT PAS
+     dans la ligne de programme du cadre […], ni inclus ni exclu », en
+     invoquant aussi l'exclusion « résidus quadratiques » comme motif
+     d'incertitude. Les deux affirmations sont maintenant fausses : le cadre
+     NOMME le petit théorème de Fermat, au chapitre `arithmetique_z` (bloc
+     « Arithmétique dans ℤ », `docs/cadre/curriculum/maths-sm.yaml`), à la
+     fois dans `programme` (capacité 2.1.8, verbatim pdfmath : « Utiliser la
+     divisibilité, la division euclidienne, les théorèmes de Gauss, de
+     Bézout et de Fermat, le théorème fondamental et les propriétés des
+     nombres premiers ») et dans `savoir_faire` (« APPLIQUER le petit
+     théorème de Fermat : vérifier les deux hypothèses [p premier, p ∤ a],
+     réduire une puissance modulo p, et exploiter la forme générale
+     $a^p \equiv a \pmod p$ »). Ce n'est donc plus une décision de portée à
+     confirmer : le théorème est prescrit.
+
+     Ce qui reste une question ouverte, posée par le cadre lui-même
+     (`_question_ouverte_owner` du chapitre `arithmetique_z`) : la PREUVE
+     est-elle évaluable au bac, ou le théorème est-il attendu comme admis ?
+     Le cadre ne tranche pas — la capacité 2.1.8 commence par « Utiliser »,
+     un verbe qui décrit ce qui est évaluable, pas ce que le cours démontre.
+     Motif de corpus observé, sans valeur de frontière (`_observation_examens`,
+     même chapitre) : sur les 6 sujets nationaux SM vérifiés qui mobilisent
+     Fermat, le théorème est toujours appliqué comme outil, et jamais demandé
+     en démonstration. Cette édition garde la preuve complète construite plus
+     haut (Gauss + lemme d'Euclide, aucun prérequis nouveau) : elle reste
+     légitime à enseigner indépendamment de l'issue de cette question — c'est
+     à l'owner du cadre de trancher si la preuve elle-même doit rester
+     examinable.
 
      (3) Aucune misconception nouvelle proposée : le checkpoint ajouté
      (cp-r6b-fermat-predict, ci-dessous dans checkpoints.yaml) réutilise
