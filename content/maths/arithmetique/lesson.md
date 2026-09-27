@@ -428,7 +428,7 @@ $$a^{p-1} \times (p-1)! \equiv (p-1)! \pmod p$$
 
 **Étape 4 — simplifier par $(p-1)!$, légitimement.** On veut diviser les deux membres par $(p-1)!$ — mais ce n'est permis que si $(p-1)!$ est premier avec $p$. Chacun des facteurs $1, 2, \ldots, p-1$ est strictement inférieur à $p$, donc non divisible par $p$ ; par le lemme d'Euclide, appliqué facteur par facteur, $p$ ne divise pas leur produit $(p-1)!$. Donc $\mathrm{PGCD}(p, (p-1)!) = 1$. L'égalité de l'étape 3 se réécrit $p \mid \big((p-1)! \times (a^{p-1} - 1)\big)$ ; le théorème de Gauss, appliqué avec $\mathrm{PGCD}(p,(p-1)!)=1$, donne :
 
-$$p \mid (a^{p-1} - 1) \qquad \text{c'est-à-dire} \qquad a^{p-1} \equiv 1 \pmod p$$
+$$p \mid (a^{p-1} - 1) \qquad \text{c’est-à-dire} \qquad a^{p-1} \equiv 1 \pmod p$$
 
 C'est exactement le petit théorème de Fermat — construit, pas décrété, à partir de deux théorèmes que tu as déjà démontrés toi-même.
 

@@ -50,7 +50,7 @@ Avec un générateur de courant, rien ne vient jamais ralentir ce courant — ni
 
 En intégrant $i(t) = \dfrac{dq}{dt} = I_0$ à partir d'un condensateur initialement déchargé, $q(t) = I_0 t$, donc
 
-$$\boxed{u_C(t) = \frac{q(t)}{C} = \frac{I_0}{C}\,t \qquad (\text{générateur de courant : } i \text{ imposé, pas } u)}$$
+$$\boxed{u_C(t) = \frac{q(t)}{C} = \frac{I_0}{C}\,t \qquad (\text{générateur de courant\,: } i \text{ imposé, pas } u)}$$
 
 [[figure:charge-courant-constant]]
 
@@ -318,13 +318,13 @@ De n'importe lequel des trois on remonte à $\tau$, puis à $C$ par $\tau = RC$.
 
 *Exemple numérique — un circuit différent de celui des chapitres précédents, avec ses propres valeurs.* Une droite $\dfrac{du_C}{dt} = f(u_C)$ relevée sur un graphe donne une ordonnée à l'origine $\dfrac{E}{RC} = 4{,}0\times10^{3}\ \text{V.s}^{-1}$ et une racine — l'intersection avec l'axe des abscisses — $E = 8{,}0\ \text{V}$. Le rapport de ces deux lectures donne $\tau$ directement, sans même passer par la pente :
 
-$$\tau = \frac{\text{racine}}{\text{ordonnée à l'origine}} = \frac{8{,}0}{4{,}0\times10^{3}} = 2{,}0\times10^{-3}\ \text{s} = 2{,}0\ \text{ms}$$
+$$\tau = \frac{\text{racine}}{\text{ordonnée à l’origine}} = \frac{8{,}0}{4{,}0\times10^{3}} = 2{,}0\times10^{-3}\ \text{s} = 2{,}0\ \text{ms}$$
 
 Avec $R = 4{,}0\ \text{k}\Omega$ donné dans l'énoncé, on isole $C$ dans $\tau = RC$ :
 
 $$C = \frac{\tau}{R} = \frac{2{,}0\times10^{-3}}{4{,}0\times10^{3}} = 0{,}50\times10^{-6}\ \text{F} = 0{,}50\ \mu\text{F}$$
 
-Recoupement : la pente $-1/\tau$ vaut $-500\ \text{s}^{-1}$, et c'est aussi $-(\text{ordonnée à l'origine})/(\text{racine}) = -4{,}0\times10^{3}/8{,}0 = -500\ \text{s}^{-1}$ — les deux lectures concordent.
+Recoupement : la pente $-1/\tau$ vaut $-500\ \text{s}^{-1}$, et c'est aussi $-(\text{ordonnée à l’origine})/(\text{racine}) = -4{,}0\times10^{3}/8{,}0 = -500\ \text{s}^{-1}$ — les deux lectures concordent.
 
 ### Deux condensateurs en parallèle : une seule capacité équivalente
 

@@ -218,7 +218,7 @@ Le dispositif qui fait ça s'appelle un **détecteur de crête** (ou détecteur 
 
 Ce compromis — charge rapide, décharge lente — a un **critère chiffré**, et les sujets demandent de le vérifier. La décharge doit être **lente devant la période de la porteuse** : sinon le condensateur se vide entre deux sommets, et sa tension **retombe sur la porteuse**. Elle doit être **rapide devant la période du signal** : sinon elle **rate les descentes** de l'enveloppe et s'en va presque tout droit. Avec $R_0$ la résistance dans laquelle se décharge le condensateur $C_0$ :
 
-$$\frac{1}{F} \ll R_0C_0 \ll \frac{1}{f} \qquad\text{c'est-à-dire}\qquad T_p \ll R_0C_0 \ll T$$
+$$\frac{1}{F} \ll R_0C_0 \ll \frac{1}{f} \qquad\text{c’est-à-dire}\qquad T_p \ll R_0C_0 \ll T$$
 
 Sur le banc du chapitre 4, à $F = 8{,}0\ \text{kHz}$ et au réglage qui marche ($R_0 = 5{,}0\ \text{k}\Omega$) : $1/F = 0{,}125\ \text{ms}$, $R_0C_0 = 0{,}500\ \text{ms}$, $1/f = 2{,}50\ \text{ms}$ — quatre fois l'une, cinq fois moins que l'autre. Cette fenêtre est étroite parce que la porteuse du banc n'est que vingt fois plus rapide que le signal ; dans les sujets, les écarts sont souvent d'un ou deux ordres de grandeur. Et une conséquence que la scène fait découvrir : **cette fenêtre n'existe que si $F \gg f$**. Si la porteuse n'est que trois fois plus rapide que le signal, **aucune** valeur de $R_0C_0$ ne convient. La première condition de bonne modulation n'est donc pas seulement un confort de lisibilité : c'est aussi elle qui **ouvre** la fenêtre du détecteur.
 
