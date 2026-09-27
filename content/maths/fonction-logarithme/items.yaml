@@ -44,6 +44,27 @@ misconceptions:
     description: "L'élève applique mal l'existence-unicité : il confond le domaine $]0,+\\infty[$ de $\\ln$ (arguments positifs) avec son image $\\mathbb{R}$ (valeurs, y compris négatives), croit à $0$ ou plusieurs solutions là où la stricte monotonie en garantit exactement une, ou inverse la définition du nombre $e$."
     contradicts_principle: "$\\ln$ réalise une bijection de $]0,+\\infty[$ sur $\\mathbb{R}$ : pour tout réel $k$ (même négatif), $\\ln(x)=k$ a une unique solution. Le corollaire du TVI (continuité + stricte monotonie + changement de signe) donne existence ET unicité. Le nombre $e$ est défini par $\\ln(e)=1$, pas l'inverse."
 
+  # ── Ajout dette d'examen, vague B2 — GAP-A « ln(1+x)/x -> 1 lue comme taux
+  # d'accroissement » (docs/audits/dette-examen/maths.md ~l.224-238, partagée
+  # avec fonction-exponentielle). Les deux modèles ci-dessous répondent à la
+  # note de portée laissée dans lesson.md (NOTE AJOUTÉE, ~l.515-563) : le
+  # premier nomme le refus de reconnaître la forme 0/0 comme un taux
+  # d'accroissement connu ; le second, distinct, nomme l'oubli du facteur
+  # multiplicatif quand la forme est habillée (coefficient à l'intérieur du
+  # ln, facteur externe, ou changement de variable t=1/x). Ni l'un ni l'autre
+  # ne recouvre `limites-de-ln` (câblé sur ln(x)/x en +inf, infini/infini, et
+  # sur $0\times\infty$ via $x\ln x$) : cette forme-ci est un 0/0 en un point
+  # fini (ou ramené à un point fini par changement de variable).
+  - id: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+    label: "« 0/0 donc rien à dire », ou x substitué directement à 0"
+    description: "Devant $\\ln(1+x)/x$ (ou une variante habillée, avec un coefficient à l'intérieur du $\\ln$ ou après changement de variable), l'élève constate que numérateur et dénominateur tendent tous deux vers $0$ et conclut soit que « la limite n'existe pas » ou qu'« on ne peut rien dire », soit il substitue directement $x=0$ dans l'expression telle quelle (obtenant $\\ln(1)/0=0/0$, qu'il évalue parfois à $0$), au lieu de reconnaître un taux d'accroissement déjà connu."
+    contradicts_principle: "$\\ln(1+x)/x$ est EXACTEMENT le taux d'accroissement de $\\ln$ entre $1$ et $1+x$ ; comme $\\ln$ est dérivable en $1$ avec $\\ln'(1)=1$, ce taux tend vers $1$ quand $x\\to0$. Une forme $0/0$ n'est jamais une absence de réponse : elle exige un calcul de plus — ici, reconnaître une définition déjà établie (le nombre dérivé), pas relire l'expression telle quelle en $x=0$."
+
+  - id: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie
+    label: "ln(1+ax)/x (ou variante après changement de variable) lue comme -> 1 au lieu de -> a"
+    description: "L'élève reconnaît la forme du taux d'accroissement de référence mais oublie d'ajuster le facteur : devant $\\ln(1+ax)/x$, un facteur devant l'expression, ou une limite ramenée par un changement de variable, il conclut directement $1$ (la valeur du cas non habillé), sans multiplier ou diviser par le coefficient $a$ (ou sans reporter un facteur multiplicatif externe)."
+    contradicts_principle: "Devant $\\ln(1+ax)/x$, il faut faire apparaître le MÊME nombre à l'intérieur du $\\ln$ et au dénominateur : $\\ln(1+ax)/x = a\\times\\ln(1+ax)/(ax)$, et seul le second facteur tend vers $1$. La limite vaut $a$, pas $1$ — le facteur multiplicatif ne doit jamais disparaître."
+
 items:
   - id: LOG-1
     rung: "R1"
@@ -1273,6 +1294,352 @@ items:
       $x>1$ :
       $$\mathcal{S} = \{3\}$$
 
+  # ── Ajout dette d'examen, vague B2 — GAP-A « ln(1+x)/x -> 1 lue comme taux
+  # d'accroissement » (docs/audits/dette-examen/maths.md ~l.224-238). Six
+  # items, R4 : trois à dominante « forme 0/0 non reconnue » (LOG-25 à
+  # LOG-27), trois à dominante « facteur multiplicatif oublié » (LOG-28 à
+  # LOG-30) — habillages distincts de ceux déjà travaillés en leçon
+  # ($x\ln(1+1/x)$) ou cités par le bank.yaml de l'audit (le taux de ln en 1
+  # dans $\ln x/(x^2-1)$, ou $(1+1/x)\ln(1+x)$) : coefficients et structures
+  # différents à chaque fois (coefficient à l'intérieur du ln, facteur
+  # externe, changement de variable t=1/x en +infini, quotient factorisé en
+  # un point fini non nul).
+
+  - id: LOG-25
+    rung: "R4"
+    difficulty_level: 2
+    habilete: application_directe
+    skill_code: maths_fonction_logarithme
+    tags: ["limites", "taux-accroissement", "forme-indeterminee"]
+    primary_misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to 0} \dfrac{\ln(1+6x)}{x}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$6$"
+        correct: true
+      - id: B
+        text: >-
+          $\frac00$ est une forme indéterminée : la limite n'existe pas.
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+        feedback: >
+          « Indéterminée » ne veut pas dire « sans réponse » : ça veut dire
+          qu'il faut reconnaître ce que l'expression cache. Ici, c'est le
+          taux d'accroissement de $\ln$ entre $1$ et $1+6x$ — un calcul de
+          plus suffit à conclure, la limite existe bel et bien.
+      - id: C
+        text: >-
+          $0$, en remplaçant directement $x$ par $0$ :
+          $\ln(1+0)/0=\ln(1)/0=0/0=0$.
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+        feedback: >
+          Substituer $x=0$ directement dans l'expression telle quelle ne
+          calcule rien : $\frac00$ n'est pas $0$ « par défaut », c'est un
+          signal qu'il faut retravailler l'écriture avant de faire tendre $x$
+          vers $0$.
+      - id: D
+        text: "$1$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie
+        feedback: >
+          Tu as reconnu le taux d'accroissement de référence, mais oublié
+          l'ajustement : $\ln(1+6x)/x$ n'est PAS $\ln(1+6x)/(6x)$. Il faut
+          multiplier et diviser par $6$ pour faire apparaître le même nombre
+          à l'intérieur du $\ln$ et au dénominateur.
+    correct_feedback: >
+      Exactement : en posant $t=6x$, $\dfrac{\ln(1+6x)}{x}=6\times\dfrac{\ln(1+t)}{t}\to6\times1=6$.
+    solution: |
+      **Le signal $\frac00$.** $\ln(1+6x)\to\ln(1)=0$ et $x\to0$ : forme
+      indéterminée, pas absence de réponse.
+
+      **Le geste : faire apparaître le même $t$ des deux côtés.** Pose $t=6x$ :
+      $$\frac{\ln(1+6x)}{x} = 6\times\frac{\ln(1+6x)}{6x} = 6\times\frac{\ln(1+t)}{t}$$
+
+      Quand $x\to0$, $t\to0$ aussi, et $\dfrac{\ln(1+t)}{t}\to1$ (limite de
+      référence, chapitre 4) :
+      $$\lim_{x\to0}\frac{\ln(1+6x)}{x} = 6\times1 = 6$$
+
+  - id: LOG-26
+    rung: "R4"
+    difficulty_level: 3
+    habilete: application_non_explicite
+    skill_code: maths_fonction_logarithme
+    tags: ["limites", "taux-accroissement", "forme-indeterminee", "coefficient-negatif"]
+    primary_misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to 0} \dfrac{\ln(1-4x)}{5x}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-\\dfrac{4}{5}$"
+        correct: true
+      - id: B
+        text: >-
+          $\frac00$ divisée par $5$ reste indéterminée : la limite n'existe
+          pas.
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+        feedback: >
+          Le facteur $\frac15$ au dénominateur ne change rien au fait qu'il
+          faut LEVER l'indétermination du quotient, pas la déclarer
+          insoluble. Une fois le taux d'accroissement reconnu, la limite
+          existe et se calcule.
+      - id: C
+        text: >-
+          $0$, en substituant $x=0$ dans le seul numérateur : $\ln(1-4\times0)=\ln(1)=0$,
+          donc tout le quotient est nul.
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+        feedback: >
+          Le dénominateur $5x$ tend AUSSI vers $0$ — ce n'est pas « $0$
+          divisé par un nombre », c'est $\frac00$. Substituer $x=0$ dans le
+          seul numérateur ignore que le dénominateur s'effondre en même
+          temps.
+      - id: D
+        text: "$-4$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie
+        feedback: >
+          Tu as correctement retrouvé le taux d'accroissement intérieur,
+          $\ln(1-4x)/x\to-4$, mais oublié le facteur $\frac15$ apporté par le
+          dénominateur $5x$ (et non $x$ seul). Il manque la dernière
+          multiplication.
+    correct_feedback: >
+      Exactement : $\dfrac{\ln(1-4x)}{5x}=\dfrac15\times\dfrac{\ln(1-4x)}{x}\to\dfrac15\times(-4)=-\dfrac45$.
+    solution: |
+      **Séparer le facteur $\frac15$.**
+      $$\frac{\ln(1-4x)}{5x} = \frac15 \times \frac{\ln(1-4x)}{x}$$
+
+      **Le taux d'accroissement intérieur.** En posant $t=-4x$ :
+      $$\frac{\ln(1-4x)}{x} = -4\times\frac{\ln(1+t)}{t} \to -4\times1 = -4$$
+
+      **Le produit.**
+      $$\lim_{x\to0}\frac{\ln(1-4x)}{5x} = \frac15\times(-4) = -\frac45$$
+
+  - id: LOG-27
+    rung: "R4"
+    difficulty_level: 4
+    habilete: synthese
+    skill_code: maths_fonction_logarithme
+    tags: ["limites", "taux-accroissement", "changement-variable", "infini-fois-zero"]
+    primary_misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to +\infty} x\ln\!\left(1-\dfrac{5}{x}\right)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-5$"
+        correct: true
+      - id: B
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+        feedback: >
+          $x\to+\infty$ et $\ln(1-5/x)\to0$ : c'est une forme
+          $\infty\times0$, pas un produit qu'on peut lire directement. « Un
+          facteur tend vers $0$ » ne suffit pas à conclure que le produit
+          tend vers $0$ — il faut d'abord comparer les vitesses, ici par un
+          changement de variable.
+      - id: C
+        text: >-
+          La limite n'existe pas : $\infty\times0$ est une forme
+          indéterminée non levée.
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+        feedback: >
+          Indéterminée signifie qu'il faut transformer l'écriture, pas
+          qu'aucune valeur n'existe. Le changement de variable $t=-5/x$
+          ramène exactement à la limite de référence $\ln(1+t)/t\to1$, qui,
+          elle, existe.
+      - id: D
+        text: "$1$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie
+        feedback: >
+          Tu as retrouvé la bonne stratégie (poser $t=-5/x$) et la bonne
+          limite de référence $\ln(1+t)/t\to1$, mais oublié de reporter le
+          facteur $-5$ qui accompagne $t$ dans $x=-5/t$.
+    correct_feedback: >
+      Exactement : en posant $t=-\dfrac5x$ (donc $x=-\dfrac5t$, et
+      $t\to0^-$ quand $x\to+\infty$), l'expression devient
+      $-5\times\dfrac{\ln(1+t)}{t}\to-5\times1=-5$.
+    solution: |
+      **L'obstacle.** $x\to+\infty$, $\ln(1-5/x)\to0$ : forme
+      $\infty\times0$.
+
+      **Le changement de variable.** Pose $t=-\dfrac5x$ ; quand
+      $x\to+\infty$, $t\to0^-$, et $x=-\dfrac5t$ :
+      $$x\ln\!\left(1-\frac5x\right) = -\frac5t\ln(1+t) = -5\times\frac{\ln(1+t)}{t}$$
+
+      **La limite de référence.** $\dfrac{\ln(1+t)}{t}\to1$ quand $t\to0$
+      (chapitre 4), donc :
+      $$\lim_{x\to+\infty} x\ln\!\left(1-\frac5x\right) = -5\times1 = -5$$
+
+  - id: LOG-28
+    rung: "R4"
+    difficulty_level: 3
+    habilete: application_non_explicite
+    skill_code: maths_fonction_logarithme
+    tags: ["limites", "taux-accroissement", "facteur-externe"]
+    primary_misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to 0} \dfrac{3\ln(1+2x)}{x}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$6$"
+        correct: true
+      - id: B
+        text: "$3$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie
+        feedback: >
+          Tu as gardé le facteur externe $3$, mais oublié celui caché à
+          l'intérieur du $\ln$ : $\ln(1+2x)/x\to2$, pas $1$ — le coefficient
+          $2$ devant $x$ fait partie du facteur à reporter.
+      - id: C
+        text: "$2$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie
+        feedback: >
+          Tu as correctement calculé le taux d'accroissement intérieur,
+          $\ln(1+2x)/x\to2$, mais oublié de le multiplier par le facteur
+          externe $3$ qui figure devant le $\ln$.
+      - id: D
+        text: >-
+          $\frac00$ multipliée par $3$ reste indéterminée : la limite
+          n'existe pas.
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+        feedback: >
+          Un facteur constant devant une forme $\frac00$ ne change rien à la
+          nécessité de la lever, mais ne rend pas la limite inexistante pour
+          autant : $\ln(1+2x)/x$ est un taux d'accroissement connu, qui tend
+          vers $2$.
+    correct_feedback: >
+      Exactement : $\dfrac{3\ln(1+2x)}{x}=3\times\dfrac{\ln(1+2x)}{x}\to3\times2=6$.
+    solution: |
+      **Isoler le taux d'accroissement.**
+      $$\frac{3\ln(1+2x)}{x} = 3\times\frac{\ln(1+2x)}{x}$$
+
+      **La limite de référence, coefficient $2$.** En posant $t=2x$ :
+      $$\frac{\ln(1+2x)}{x} = 2\times\frac{\ln(1+t)}{t} \to 2$$
+
+      **Le produit.**
+      $$\lim_{x\to0}\frac{3\ln(1+2x)}{x} = 3\times2 = 6$$
+
+  - id: LOG-29
+    rung: "R4"
+    difficulty_level: 4
+    habilete: synthese
+    skill_code: maths_fonction_logarithme
+    tags: ["limites", "taux-accroissement", "quotient-factorise"]
+    primary_misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to 2} \dfrac{\ln(2x-3)}{x^{2}-4}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{1}{2}$"
+        correct: true
+      - id: B
+        text: "$\\dfrac{1}{4}$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie
+        feedback: >
+          Tu as bien factorisé le dénominateur, mais oublié le facteur $2$
+          caché dans $2x-3=1+2(x-2)$ : $\ln(1+2h)/h\to2$, pas $1$, en posant
+          $h=x-2$.
+      - id: C
+        text: "$2$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie
+        feedback: >
+          Le facteur $2$ du numérateur est correct, mais tu as oublié de le
+          multiplier par le second facteur issu de la factorisation du
+          dénominateur, $\dfrac{1}{x+2}\to\dfrac14$.
+      - id: D
+        text: >-
+          $0$, en substituant directement $x=2$ dans le numérateur seul :
+          $\ln(2\times2-3)=\ln(1)=0$, donc tout le quotient est nul.
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+        feedback: >
+          Constater que le numérateur s'annule en $x=2$ dit seulement qu'il y
+          a une forme $\frac00$ à lever (le dénominateur s'annule aussi) —
+          pas que le quotient vaut $0$. Il faut factoriser le dénominateur et
+          faire apparaître le taux d'accroissement caché avant de conclure.
+    correct_feedback: >
+      Exactement : en posant $h=x-2$ (donc $2x-3=1+2h$) et en factorisant
+      $x^2-4=(x-2)(x+2)$, l'expression devient
+      $\dfrac{\ln(1+2h)}{h}\times\dfrac{1}{x+2}\to2\times\dfrac14=\dfrac12$.
+    solution: |
+      **Factoriser le dénominateur.** $x^2-4=(x-2)(x+2)$.
+
+      **Reconnaître le numérateur.** $2x-3=1+2(x-2)$ ; en posant $h=x-2$
+      (donc $h\to0$ quand $x\to2$) :
+      $$\frac{\ln(2x-3)}{x^2-4} = \frac{\ln(1+2h)}{h(x+2)} = \frac{\ln(1+2h)}{h}\times\frac{1}{x+2}$$
+
+      **Les deux limites.** $\dfrac{\ln(1+2h)}{h}\to2$ (référence,
+      coefficient $2$) et $\dfrac{1}{x+2}\to\dfrac{1}{2+2}=\dfrac14$ quand
+      $x\to2$ :
+      $$\lim_{x\to2}\frac{\ln(2x-3)}{x^2-4} = 2\times\frac14 = \frac12$$
+
+  - id: LOG-30
+    rung: "R4"
+    difficulty_level: 4
+    habilete: synthese
+    skill_code: maths_fonction_logarithme
+    tags: ["limites", "taux-accroissement", "changement-variable", "facteur-externe"]
+    primary_misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie
+    stem: >
+      Que vaut $\displaystyle\lim_{x \to +\infty} 3x\ln\!\left(1+\dfrac{2}{x}\right)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$6$"
+        correct: true
+      - id: B
+        text: "$3$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie
+        feedback: >
+          Tu as gardé le facteur externe $3$ mais oublié celui caché dans le
+          changement de variable : avec $t=2/x$, il reste un facteur $2$ à
+          reporter, pas seulement $3\times1$.
+      - id: C
+        text: "$2$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie
+        feedback: >
+          Le facteur $2$ venu du changement de variable est correct, mais
+          celui qui multipliait déjà $x$ au départ, $3$, a disparu en route :
+          il fallait garder les deux facteurs, $3\times2$.
+      - id: D
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+        feedback: >
+          « $x\to\infty$ fois un facteur qui tend vers $0$ » n'est pas une
+          règle : $\infty\times0$ est une forme indéterminée, qui exige ici
+          un changement de variable pour être levée, pas une lecture directe
+          à $0$.
+    correct_feedback: >
+      Exactement : en posant $t=2/x$ (donc $x=2/t$, $t\to0^+$), l'expression
+      devient $6\times\dfrac{\ln(1+t)}{t}\to6\times1=6$.
+    solution: |
+      **L'obstacle.** $x\to+\infty$ et $\ln(1+2/x)\to0$ : forme
+      $\infty\times0$, aggravée ici par le facteur externe $3$.
+
+      **Le changement de variable.** Pose $t=\dfrac2x$ ; $t\to0^+$ quand
+      $x\to+\infty$, et $x=\dfrac2t$ :
+      $$3x\ln\!\left(1+\frac2x\right) = 3\times\frac2t\ln(1+t) = 6\times\frac{\ln(1+t)}{t}$$
+
+      **La limite de référence.** $\dfrac{\ln(1+t)}{t}\to1$ quand $t\to0$ :
+      $$\lim_{x\to+\infty} 3x\ln\!\left(1+\frac2x\right) = 6\times1 = 6$$
 
 # ── Coverage summary (summit-conversion floor backfill — HONEST) ───────────
 # This was a LEGACY end-bank (`misconceptions: []`, item-level tags only). The
@@ -1281,14 +1648,23 @@ items:
 # choice is a generic slip — e.g. "on ne peut rien conclure" — not a named
 # model). Counts below are BY PRIMARY (each item counted once, toward its
 # primary model); they are real, not padded.
+#
+# MIS À JOUR le 2026-09-27 (dette d'examen, vague B2, GAP-A « ln(1+x)/x -> 1
+# lue comme taux d'accroissement ») : deux modèles neufs déclarés
+# (`forme-0-sur-0-non-reconnue`, `facteur-multiplicatif-oublie`), six items
+# ajoutés (LOG-25 à LOG-30, tous R4). Chaque item porte les deux modèles à la
+# fois (un porté par la majorité des distracteurs — le PRIMARY compté
+# ci-dessous —, l'autre par un seul distracteur secondaire, listé dans
+# `secondary_coverage`), si bien que le plancher est atteint par PRIMARY seul
+# pour les deux : 3 items chacun.
 coverage_summary:
-  total_items: 24
+  total_items: 30
   per_rung:
     R0: 3   # LOG-7, LOG-8, LOG-9  (accroche : la fonction L, produit→somme)
     R1: 3   # LOG-1, LOG-10, LOG-11
     R2: 3   # LOG-2, LOG-3, LOG-12
     R3: 3   # LOG-4, LOG-13, LOG-14
-    R4: 3   # LOG-5, LOG-15, LOG-16
+    R4: 9   # LOG-5, LOG-15, LOG-16, LOG-25, LOG-26, LOG-27, LOG-28, LOG-29, LOG-30
     R5: 3   # LOG-17, LOG-18, LOG-19
     R6: 3   # LOG-6, LOG-20, LOG-21
     R7: 3   # LOG-22, LOG-23, LOG-24
@@ -1300,7 +1676,9 @@ coverage_summary:
     mc.math.maths_fonction_logarithme.limites-de-ln: 3              # LOG-5, LOG-15, LOG-16
     mc.math.maths_fonction_logarithme.lecture-variations-signe: 4   # LOG-10, LOG-11, LOG-19, LOG-23
     mc.math.maths_fonction_logarithme.unicite-bijection-tvi: 3      # LOG-17, LOG-18, LOG-22
-  floor_met: true   # all 7 models have >= 3 primary items; none faked.
+    mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue: 3       # LOG-25, LOG-26, LOG-27 (PRIMARY)
+    mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie: 3    # LOG-28, LOG-29, LOG-30 (PRIMARY)
+  floor_met: true   # all 9 models have >= 3 primary items; none faked.
 
   # Distractors whose model differs from their item's primary — SECONDARY
   # coverage, NOT counted in per_misconception above (an item is counted once,
@@ -1314,6 +1692,12 @@ coverage_summary:
     - { item: LOG-14, choice: C, misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe,     note: "signe de f' mal lu, dérivée correcte (item primaire : derivee-de-ln-u)." }
     - { item: LOG-20, choice: C, misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe,     note: "sens de l'inégalité inversé (item primaire : domaine)." }
     - { item: LOG-24, choice: D, misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus,      note: "regroupé en ln(2x) — somme à l'intérieur (item primaire : domaine)." }
+    - { item: LOG-25, choice: D, misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie, note: "coefficient 6 oublié, lu comme 1 (item primaire : forme-0-sur-0-non-reconnue)." }
+    - { item: LOG-26, choice: D, misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie, note: "facteur externe 1/5 oublié (item primaire : forme-0-sur-0-non-reconnue)." }
+    - { item: LOG-27, choice: D, misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie, note: "facteur -5 du changement de variable oublié (item primaire : forme-0-sur-0-non-reconnue)." }
+    - { item: LOG-28, choice: D, misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue,   note: "0/0 fois 3 lu comme « n'existe pas » (item primaire : facteur-multiplicatif-oublie)." }
+    - { item: LOG-29, choice: D, misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue,   note: "substitution directe x=2 au numérateur seul (item primaire : facteur-multiplicatif-oublie)." }
+    - { item: LOG-30, choice: D, misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue,   note: "∞×0 lu directement comme 0 (item primaire : facteur-multiplicatif-oublie)." }
 
   notes: >-
     Backfill only : aucun nouvel item écrit, aucun compte gonflé. Les 24 items
@@ -1323,3 +1707,8 @@ coverage_summary:
     des impasses de raisonnement génériques, pas des modèles nommés. Un futur
     passage d'items pourra ajouter des items dédiés aux modèles conceptuels R5-R7
     (bijection/TVI, concavité) pour épaissir leur couverture au-delà du plancher.
+    AJOUT 2026-09-27 (dette d'examen, vague B2) : LOG-25 à LOG-30 couvrent les
+    deux modèles neufs déclarés pour le GAP-A « ln(1+x)/x -> 1 » ; chaque item
+    porte les deux modèles à la fois (primary + un distracteur secondaire),
+    listés ci-dessus dans secondary_coverage — aucun n'est sous le plancher,
+    ni par PRIMARY (3 chacun) ni en comptant tout distracteur (6 chacun).

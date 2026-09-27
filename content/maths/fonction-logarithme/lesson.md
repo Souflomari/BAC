@@ -280,6 +280,34 @@ Quand $X \to +\infty$, $\dfrac{\ln(X)}{X} \to 0$ (croissances comparées, juste 
 
 $$\lim_{x \to 0^{+}} x\ln(x) = 0$$
 
+### Une autre limite de référence : $\dfrac{\ln(1+x)}{x}$, lue comme un taux d'accroissement
+
+Avant de lire la suite, essaie de calculer, sans repasser par une formule toute faite : que vaut $\displaystyle\lim_{x \to 0} \dfrac{\ln(1+x)}{x}$ ? Note ta réponse, et surtout la raison pour laquelle tu la crois vraie — même si cette raison est « je ne sais pas trancher, c'est $\frac00$ ».
+
+[[checkpoint:cp-r4-taux-accroissement]]
+
+**Ce qu'on cherche et pourquoi ce geste :** au numérateur, $\ln(1+x) \to \ln(1) = 0$ quand $x\to0$ ; au dénominateur, $x\to0$ aussi. C'est une forme indéterminée $\frac00$ — le signal que quelque chose doit se simplifier, pas que la question n'a pas de réponse. Le réflexe : reconnaître une forme déjà connue plutôt que de calculer à l'aveugle. Rappelle-toi (chapitre « Dérivabilité et étude des fonctions ») comment le nombre dérivé se définit : $f'(a) = \displaystyle\lim_{h\to0}\dfrac{f(a+h)-f(a)}{h}$. Applique cette définition à $f=\ln$ et $a=1$, sachant que $\ln(1)=0$ :
+
+$$\frac{\ln(1+x) - \ln(1)}{x} = \frac{\ln(1+x)}{x}$$
+
+C'est très exactement le taux d'accroissement de $\ln$ entre $1$ et $1+x$. Or $\ln$ est dérivable en tout point de $]0,+\infty[$, avec $\ln'(t) = \dfrac1t$ (chapitre 2) — en particulier $\ln'(1) = 1$. Le taux d'accroissement d'une fonction dérivable en un point tend, par définition même de la dérivée, vers le nombre dérivé en ce point :
+
+$$\lim_{x \to 0} \frac{\ln(1+x)}{x} = \ln'(1) = 1$$
+
+Le $\frac00$ ne signalait donc pas une absence de réponse : il signalait qu'on venait de retomber, sous un autre habillage, sur une définition déjà connue. « Forme indéterminée » veut dire « il faut un calcul de plus », jamais « il n'y a rien à dire ».
+
+**Exemple travaillé — un taux d'accroissement déguisé, à l'infini.** Calcule $\displaystyle\lim_{x \to +\infty} x\ln\!\left(1+\frac1x\right)$.
+
+**Ce qu'on cherche et pourquoi ce geste :** quand $x\to+\infty$, $\dfrac1x\to0$ donc $\ln\!\left(1+\dfrac1x\right)\to\ln(1)=0$, tandis que $x\to+\infty$ : c'est une forme indéterminée $\infty\times0$. Le réflexe : poser $t=\dfrac1x$ pour ramener l'expression à la limite de référence qu'on vient d'établir, où c'est le MÊME nombre qui doit apparaître au numérateur (dans le $\ln(1+\cdot)$) et au dénominateur.
+
+$$x\ln\!\left(1+\frac1x\right) = \frac{\ln(1+t)}{t} \qquad \text{avec } t = \frac1x$$
+
+Quand $x\to+\infty$, $t=\dfrac1x\to0^+$, donc $\dfrac{\ln(1+t)}{t} \to 1$ (la limite de référence qu'on vient d'établir). D'où :
+
+$$\lim_{x \to +\infty} x\ln\!\left(1+\frac1x\right) = 1$$
+
+**Point de vigilance :** ce n'est pas une propriété de $x\to+\infty$ en soi qui donne ce résultat — c'est le changement de variable $t=1/x$ qui ramène l'expression, terme à terme, à la forme $\dfrac{\ln(1+t)}{t}$ avec $t\to0$. Sans ce même $t$ aux deux étages (dans le $\ln$ et au dénominateur), la limite de référence ne s'applique pas telle quelle.
+
 ### Exemple travaillé
 
 Calcule $\displaystyle\lim_{x \to +\infty} \big(\ln(x) - x\big)$.
@@ -485,4 +513,54 @@ Le même squelette, décor renversé : ici la courbe passe **sous** la première
      APRÈS ce chapitre. À confirmer que cette dépendance est bien gérée
      ainsi dans le produit (ou si le théorème général est en fait
      disponible plus tôt).
+
+     NOTE AJOUTÉE (dette d'examen, vague B2 — GAP-A « Reference limits
+     (eʰ−1)/h → 1 and ln(1+x)/x → 1, read as a taux d'accroissement »,
+     docs/audits/dette-examen/maths.md, § fonction-exponentielle (partagé
+     avec fonction-logarithme), lignes ~224-238, sources citées :
+     bank.yaml:3451, 3631, 4647 (entrées bk-2024-n-x1 et bk-2022-n-x1) et
+     3425, 2948 (bk-2023-n-x1), toutes filière SM) :
+     (5) [PROSE LIVRÉE, 2026-09-27] R4 gagne une sous-section « Une autre
+     limite de référence : ln(1+x)/x, lue comme un taux d'accroissement »,
+     insérée entre le corollaire $\lim_{x\to0^+}x\ln x=0$ et l'exemple
+     travaillé déjà présent ($\lim_{x\to+\infty}(\ln x-x)$). Elle fait voir
+     la limite comme le nombre dérivé $\ln'(1)$ (établi au chapitre 2 de ce
+     chapitre), avec un engagement écrit avant la révélation (« essaie de
+     calculer… note ta réponse, et surtout la raison »), puis un exemple
+     travaillé original sur une limite habillée à l'infini, la forme
+     suggérée par la consigne de reprise : $\lim_{x\to+\infty}
+     x\ln(1+1/x) = 1$ — un décor différent de celui suggéré pour l'item de
+     ce même gap (bank.yaml suggère $(e^{2x}-1)/x=2$, côté exponentielle ;
+     rien ici n'est repris tel quel d'un bank.yaml).
+     Vérification de la note de portée : aucune note de portée de ce
+     chapitre ne contredisait un sujet vérifié sur ce point (recherche
+     « portée » sur lesson.md : aucun résultat) — rien à corriger avant
+     d'écrire.
+     Checkpoint gradé : PAS ajouté. Le piège visé par la consigne (« $0/0$
+     donc forme indéterminée, donc rien à conclure », ou substituer $x=0$
+     directement dans l'expression) ne correspond à AUCUN identifiant de
+     `mc.math.maths_fonction_logarithme` déjà déclaré dans items.yaml — le
+     plus proche, `limites-de-ln`, est câblé sur $\ln x/x$ en $+\infty$
+     ($\infty/\infty$) et sur $0\times\infty$, jamais explicitement sur un
+     $0/0$ en un point fini lu comme taux d'accroissement (sa clause
+     générique « confond forme indéterminée avec limite inexistante »
+     s'en rapproche mais son étiquette et ses trois items existants sont
+     tous câblés sur les croissances comparées à l'infini — un tag forcé
+     ici aurait rendu le diagnostic malhonnête). Je ne l'ai donc pas fait,
+     conformément à la consigne (« si aucun ne convient, le dire plutôt
+     qu'en inventer un »). L'engagement prédictif est porté à la place par
+     un geste écrit explicite dans la prose, qui satisfait le
+     predict-commit-confront du gabarit via sa variante « explicit
+     written-attempt gate » (NOTION-TEMPLATE-V2.md, lignes ~25-28) sans
+     mécanisme gradé. Item-author, à toi : au moins un item pour cette
+     limite de référence, et une misconception neuve à déclarer dans
+     l'inventaire de items.yaml avant d'écrire l'item et le checkpoint
+     gradé qui l'accompagnerait :
+       - `mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue`
+         — devant $\ln(1+x)/x$ (ou une variante habillée), l'élève conclut
+         « forme indéterminée donc rien à dire » au lieu de reconnaître un
+         taux d'accroissement connu, ou substitue $x=0$ directement dans
+         l'expression telle quelle au lieu de la retravailler.
+     Aucun item ni checkpoint n'a été touché par cette édition — seule la
+     prose de R4 et cette note de portée ont changé.
 -->

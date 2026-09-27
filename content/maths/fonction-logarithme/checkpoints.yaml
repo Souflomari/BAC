@@ -25,6 +25,16 @@ skill_code: maths_fonction_logarithme
 #                                       directe ; ln x écrasé par x. Probes M4.
 #   cp-lecture-variations(after R5)   — rupture gate: lire le signe de f' → les
 #                                       variations (sans inverser le sens). Probes M6.
+#   cp-r4-taux-accroissement (in R4)  — COMMIT gate, ajouté 2026-09-27 (dette
+#                                       d'examen, vague B2, GAP-A) : turns R4's
+#                                       "essaie de calculer... note ta réponse,
+#                                       et surtout la raison" into a real MCQ
+#                                       commit BEFORE the reveal that
+#                                       ln(1+x)/x is ln'(1). Probes
+#                                       forme-0-sur-0-non-reconnue, with a
+#                                       cross-tag to limites-de-ln (the
+#                                       "ln x -> -infty en 0" trap misapplied
+#                                       here).
 #
 # EVERY distractor carries a named misconception id from this notion's inventory
 # (items.yaml). Option lengths are balanced so the correct choice is never the
@@ -388,3 +398,65 @@ checkpoints:
           de $f'$** suffit à déterminer les variations — c'est tout l'intérêt de
           la dérivée. Les valeurs de $f$ ne servent qu'à placer la courbe, pas à
           connaître son sens de variation.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-NEW | id: cp-r4-taux-accroissement | placed IN R4 (before the reveal)
+  #        Ajouté 2026-09-27, dette d'examen vague B2, GAP-A. Turns R4's
+  #        "essaie de calculer... note ta réponse, et surtout la raison" into
+  #        a real MCQ commit BEFORE the lesson reveals ln(1+x)/x = ln'(1).
+  #        Probes forme-0-sur-0-non-reconnue (2 surfaces: "FI donc rien" /
+  #        substitution directe de x=0), with a cross-tag to limites-de-ln
+  #        (le piège "$\ln \to -\infty$ en $0$", mal appliqué ici).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-taux-accroissement
+    rung: "R4"
+    habilete: raisonnement
+    skill_code: maths_fonction_logarithme
+    tags: [checkpoint, formative, misconception_driven, maths_fonction_logarithme, limites, taux_accroissement, hook_commit]
+    primary_misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+    item_source: original
+    lesson_placement: in_R4
+
+    stem: |
+      **Avant de lire la suite, engage-toi :** que vaut
+      $\displaystyle\lim_{x \to 0} \dfrac{\ln(1+x)}{x}$, et pourquoi ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$1$ : c'est le taux d'accroissement de $\\ln$ entre $1$ et $1+x$, qui tend vers $\\ln'(1)$."
+        correct: true
+        feedback: |
+          Exact, et c'est tout le geste de cette section. $\dfrac{\ln(1+x)-\ln(1)}{x}$
+          est très exactement le taux d'accroissement de $\ln$ en $1$ ; comme
+          $\ln$ est dérivable en $1$ avec $\ln'(1)=\dfrac11=1$, ce taux tend
+          vers $1$.
+      - id: B
+        text: "La limite n'existe pas : $\\frac00$ est une forme indéterminée, il n'y a rien à conclure."
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+        feedback: |
+          Modèle détecté : « indéterminée » lu comme « sans réponse ». Une
+          forme $\frac00$ signale qu'il faut un calcul de plus — ici,
+          reconnaître une définition déjà connue (le nombre dérivé) — pas
+          qu'il n'y a rien à dire.
+      - id: C
+        text: "$0$, en remplaçant directement $x$ par $0$ dans le quotient : $\\dfrac{\\ln(1)}{0}=\\dfrac{0}{0}=0$."
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue
+        feedback: |
+          Modèle détecté : substitution directe de $x=0$ dans l'expression
+          telle quelle. $\frac00$ n'est pas une valeur qu'on peut lire par
+          substitution ; c'est le signal qu'il faut retravailler l'écriture
+          avant de faire tendre $x$ vers $0$.
+      - id: D
+        text: "$-\\infty$, car le logarithme diverge vers $-\\infty$ en $0$."
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.limites-de-ln
+        feedback: |
+          Modèle détecté : c'est $\displaystyle\lim_{t\to0^+}\ln(t)=-\infty$ qui
+          diverge — mais ici l'argument du $\ln$ tend vers $\ln(1+0)=1$, pas
+          vers $0$. Le point où $\ln$ diverge n'est pas celui que cette
+          expression approche.

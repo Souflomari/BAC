@@ -27,6 +27,15 @@ skill_code: maths_fonction_exponentielle
 #   cp-r5-lecture-courbe (after R5)   — rupture gate: lire le tableau/la courbe
 #                                       de exp (croissante partout, pas de min).
 #                                       Probes M10 + M8.
+#   cp-r4-taux-accroissement (in R4)  — COMMIT gate, ajouté 2026-09-27 (dette
+#                                       d'examen, vague B2, GAP-A) : turns R4's
+#                                       "essaie de calculer... note ta réponse,
+#                                       et surtout la raison" into a real MCQ
+#                                       commit BEFORE the reveal that
+#                                       (e^h-1)/h is exp'(0). Probes
+#                                       forme-0-sur-0-non-reconnue, with a
+#                                       cross-tag to valeurs-et-reciprocite-
+#                                       confondues (the "e" trap).
 #
 # EVERY distractor carries a named misconception id from this notion's inventory
 # (items.yaml). Option lengths are balanced so the correct choice is never the
@@ -210,6 +219,69 @@ checkpoints:
           Modèle détecté : on a multiplié par $u(x)=-x^2$ au lieu de $u'(x)=-2x$.
           La formule $(e^u)'=u'e^u$ fait intervenir la **dérivée** de l'intérieur,
           pas l'intérieur recopié.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-NEW | id: cp-r4-taux-accroissement | placed IN R4 (before the reveal)
+  #        Ajouté 2026-09-27, dette d'examen vague B2, GAP-A. Turns R4's
+  #        "essaie de calculer... note ta réponse, et surtout la raison" into
+  #        a real MCQ commit BEFORE the lesson reveals (e^h-1)/h = exp'(0).
+  #        Probes forme-0-sur-0-non-reconnue (2 surfaces: "FI donc rien" /
+  #        substitution directe de h=0), with a cross-tag to
+  #        valeurs-et-reciprocite-confondues (le piège "$e$, valeur du
+  #        chapitre").
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-taux-accroissement
+    rung: "R4"
+    habilete: raisonnement
+    skill_code: maths_fonction_exponentielle
+    tags: [checkpoint, formative, misconception_driven, maths_fonction_exponentielle, limites, taux_accroissement, hook_commit]
+    primary_misconception: mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue
+    item_source: original
+    lesson_placement: in_R4
+
+    stem: |
+      **Avant de lire la suite, engage-toi :** que vaut
+      $\displaystyle\lim_{h \to 0} \dfrac{e^{h}-1}{h}$, et pourquoi ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$1$ : c'est le taux d'accroissement de $\\exp$ entre $0$ et $h$, qui tend vers $\\exp'(0)$."
+        correct: true
+        feedback: |
+          Exact, et c'est tout le geste de cette section. $\dfrac{e^{0+h}-e^0}{h}$
+          est très exactement le taux d'accroissement de $\exp$ en $0$ ; comme
+          $\exp$ est dérivable en $0$ avec $\exp'(0)=e^0=1$, ce taux tend vers
+          $1$.
+      - id: B
+        text: "La limite n'existe pas : $\\frac00$ est une forme indéterminée, il n'y a rien à conclure."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue
+        feedback: |
+          Modèle détecté : « indéterminée » lu comme « sans réponse ». Une
+          forme $\frac00$ signale qu'il faut un calcul de plus — ici,
+          reconnaître une définition déjà connue (le nombre dérivé) — pas
+          qu'il n'y a rien à dire.
+      - id: C
+        text: "$0$, en remplaçant directement $h$ par $0$ dans le quotient : $\\dfrac{e^{0}-1}{0}=\\dfrac{0}{0}=0$."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue
+        feedback: |
+          Modèle détecté : substitution directe de $h=0$ dans l'expression
+          telle quelle. $\frac00$ n'est pas une valeur qu'on peut lire par
+          substitution ; c'est le signal qu'il faut retravailler l'écriture
+          avant de faire tendre $h$ vers $0$.
+      - id: D
+        text: "$e$ : c'est la valeur de référence de ce chapitre."
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues
+        feedback: |
+          Modèle détecté : $e$ répond à une autre question — c'est $e^1$, le
+          réel dont le logarithme vaut $1$. Ici, l'expression est un taux
+          d'accroissement en $h\to0$, dont la limite est le nombre DÉRIVÉ en
+          $0$, qui vaut $1$, pas $e$.
 
   # ════════════════════════════════════════════════════════════════
   # CP-3 | id: cp-r4-croissances | placed AFTER R4

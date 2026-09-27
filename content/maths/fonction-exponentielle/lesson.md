@@ -248,6 +248,34 @@ $$\lim_{x \to -\infty} e^x = \lim_{X \to +\infty} \frac{1}{e^X} = 0$$
 
 Graphiquement : la courbe de $\exp$ admet l'**asymptote horizontale** $y=0$ en $-\infty$ (jamais atteinte, puisque $e^x>0$ toujours).
 
+### Une autre limite de référence : $\dfrac{e^h-1}{h}$, lue comme un taux d'accroissement
+
+Avant de lire la suite, essaie de calculer, sans repasser par une formule toute faite : que vaut $\displaystyle\lim_{h \to 0} \dfrac{e^{h}-1}{h}$ ? Note ta réponse, et surtout la raison pour laquelle tu la crois vraie — même si cette raison est « je ne sais pas trancher, c'est $\frac00$ ».
+
+[[checkpoint:cp-r4-taux-accroissement]]
+
+**Ce qu'on cherche et pourquoi ce geste :** au numérateur, $e^h-1 \to 0$ quand $h\to0$ ; au dénominateur, $h\to0$ aussi. C'est une forme indéterminée $\frac00$ — le signal que quelque chose doit se simplifier, pas que la question n'a pas de réponse. Le réflexe : reconnaître une forme déjà connue plutôt que de calculer à l'aveugle. Rappelle-toi (chapitre « Dérivabilité et étude des fonctions ») comment le nombre dérivé se définit : $f'(a) = \displaystyle\lim_{h\to0}\dfrac{f(a+h)-f(a)}{h}$. Applique cette définition à $f=\exp$ et $a=0$, sachant que $e^0=1$ :
+
+$$\frac{e^{0+h}-e^0}{h} = \frac{e^h-1}{h}$$
+
+C'est très exactement le taux d'accroissement de $\exp$ entre $0$ et $h$. Or $\exp$ est dérivable en tout réel, avec $(e^x)'=e^x$ (chapitre 4 de ce chapitre) — en particulier $\exp'(0) = e^0 = 1$. Le taux d'accroissement d'une fonction dérivable en un point tend, par définition même de la dérivée, vers le nombre dérivé en ce point :
+
+$$\lim_{h \to 0} \frac{e^h-1}{h} = \exp'(0) = 1$$
+
+Le $\frac00$ ne signalait donc pas une absence de réponse : il signalait qu'on venait de retomber, sous un autre habillage, sur une définition déjà connue. « Forme indéterminée » veut dire « il faut un calcul de plus », jamais « il n'y a rien à dire ».
+
+**Exemple travaillé — un taux d'accroissement déguisé.** Calcule $\displaystyle\lim_{x \to 0} \dfrac{e^{3x}-1}{x}$.
+
+**Ce qu'on cherche et pourquoi ce geste :** même signal $\frac00$ qu'à l'instant (numérateur et dénominateur tendent tous les deux vers $0$), mais le dénominateur n'est pas le même $h$ que celui de l'exposant : la limite de référence qu'on vient d'établir exige le MÊME $h$ au numérateur et au dénominateur. Le geste : faire apparaître ce $h$ commun, ici $h=3x$, en multipliant et divisant par $3$.
+
+$$\frac{e^{3x}-1}{x} = 3 \times \frac{e^{3x}-1}{3x}$$
+
+Pose $h=3x$ : quand $x\to0$, $h\to0$ aussi, et $\dfrac{e^{3x}-1}{3x} = \dfrac{e^h-1}{h} \to 1$ (la limite de référence qu'on vient d'établir). D'où :
+
+$$\lim_{x \to 0} \frac{e^{3x}-1}{x} = 3 \times 1 = 3$$
+
+**Point de vigilance :** le nombre par lequel on multiplie et divise doit être EXACTEMENT celui qui multiplie $x$ dans l'exposant — ici $3$, pas un autre. Avec un exposant $-2x$, on multiplierait et diviserait par $-2$, pour obtenir $\dfrac{e^{-2x}-1}{-2x}\to1$.
+
 ### Croissances comparées : $e^x$ contre $x$
 
 Voici un fait moins intuitif : $e^x$ ne se contente pas de tendre vers $+\infty$, il **écrase** $x$ dans cette course :
@@ -468,4 +496,48 @@ Aucun de ces trois n'est un manque de ce chapitre : ce sont des outils transvers
      règle générale ? Cette leçon présente directement la règle générale
      (R3) par cohérence avec le traitement de (ln u)' dans le chapitre
      précédent — à confirmer contre la progression réelle des manuels.
+
+     NOTE AJOUTÉE (dette d'examen, vague B2 — GAP-A « Reference limits
+     (eʰ−1)/h → 1 and ln(1+x)/x → 1, read as a taux d'accroissement »,
+     docs/audits/dette-examen/maths.md, § fonction-exponentielle,
+     lignes ~224-238, sources citées : fonction-logarithme/bank.yaml:3451,
+     3631, 4647, 3425, 2948, toutes filière SM) :
+     (5) [PROSE LIVRÉE, 2026-09-27] R4 gagne une sous-section « Une autre
+     limite de référence : (eʰ−1)/h, lue comme un taux d'accroissement »,
+     insérée entre la limite en -∞ et les croissances comparées $e^x/x$.
+     Elle fait voir la limite comme le nombre dérivé $\exp'(0)$ (établi au
+     chapitre 3 de ce même chapitre), avec un engagement écrit avant la
+     révélation (« essaie de calculer… note ta réponse, et surtout la
+     raison »), puis un exemple travaillé original sur une limite habillée :
+     $\lim_{x\to0}(e^{3x}-1)/x = 3$ — ni les nombres ni la forme exacte du
+     bank.yaml cité par l'audit, qui suggère un item en $e^{2x}$ (choix
+     délibéré, pour ne pas pré-résoudre l'item que l'auteur d'items écrira).
+     Vérification de la note de portée : aucune note de portée de ce
+     chapitre ne contredisait un sujet vérifié sur ce point (recherche
+     « portée » sur lesson.md : aucun résultat) — rien à corriger avant
+     d'écrire.
+     Checkpoint gradé : PAS ajouté. Le piège visé par la consigne (« $0/0$
+     donc forme indéterminée, donc rien à conclure », ou substituer $h=0$
+     directement dans l'expression) ne correspond à AUCUN identifiant de
+     `mc.math.maths_fonction_exponentielle` déjà déclaré dans items.yaml —
+     le plus proche, `croissances-comparees-inversees`, est câblé
+     spécifiquement sur le rapport $e^x/x$ en $+\infty$ ($\infty/\infty$),
+     pas sur un $0/0$ en un point fini lu comme taux d'accroissement.
+     Forcer ce tag aurait rendu le diagnostic malhonnête ; je ne l'ai donc
+     pas fait, conformément à la consigne (« si aucun ne convient, le dire
+     plutôt qu'en inventer un »). L'engagement prédictif est porté à la
+     place par un geste écrit explicite dans la prose, qui satisfait le
+     predict-commit-confront du gabarit via sa variante « explicit
+     written-attempt gate » (NOTION-TEMPLATE-V2.md, lignes ~25-28) sans
+     mécanisme gradé. Item-author, à toi : au moins un item pour cette
+     limite de référence, et une misconception neuve à déclarer dans
+     l'inventaire de items.yaml avant d'écrire l'item et le checkpoint
+     gradé qui l'accompagnerait :
+       - `mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue`
+         — devant $(e^h-1)/h$ (ou une variante habillée), l'élève conclut
+         « forme indéterminée donc rien à dire » au lieu de reconnaître un
+         taux d'accroissement connu, ou substitue $h=0$ directement dans
+         l'expression telle quelle au lieu de la retravailler.
+     Aucun item ni checkpoint n'a été touché par cette édition — seule la
+     prose de R4 et cette note de portée ont changé.
 -->
