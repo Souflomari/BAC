@@ -77,6 +77,30 @@ misconceptions:
     description: "L'élève confond la fonction à laquelle Rolle/TAF doit être appliqué (f au lieu de f', ou f' au lieu de f'') avec la fonction visée par la question, croit que ces théorèmes exigent un signe constant ou des valeurs non nulles aux bornes, ou croit pouvoir calculer explicitement le point c dont ils garantissent seulement l'existence. N'apparaît pas parmi les 21 items historiques de cette banque (Rolle/TAF sont hors périmètre de l'end bank existant) — catalogué ici car utilisé par les checkpoints qui préparent l'exercice de type bac."
     contradicts_principle: "Rolle appliqué à une fonction $g$ sur $[a,b]$ (continue, dérivable sur $]a,b[$, $g(a)=g(b)$) donne un point $c\\in\\,]a,b[$ où $g'(c)=0$ — rien de plus, rien de moins, et jamais de valeur explicite pour $c$. Le théorème des accroissements finis généralise ce résultat à une égalité $g(b)-g(a)=g'(c)(b-a)$ — toujours une existence, jamais un calcul de $c$."
 
+  # Déclarées le 2026-09-27 (dette d'examen, vague B1), pour payer trois trous
+  # de docs/audits/dette-examen/maths.md (section « derivabilite-etude-fonctions ») :
+  # la branche parabolique (GAP-A, prose ajoutée par le content-author,
+  # lesson.md:351-381), l'asymptote oblique + position relative (GAP-B,
+  # lesson.md:389-395) et la fonction réciproque (GAP-B, lesson.md:427-541).
+  - id: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+    label: "« lim f(x)/x = a fini non nul suffirait à conclure à une asymptote oblique »"
+    description: "L'élève s'arrête à la première limite, $\\lim f(x)/x = a$ (fini, non nul), et conclut directement à une asymptote oblique $y=ax+b$ sans calculer $\\lim\\bigl(f(x)-ax\\bigr)$ — ou, à l'inverse, lit $\\lim f(x)/x = \\pm\\infty$ ou $=0$ comme « rien à en dire », au lieu d'y reconnaître directement une direction de branche parabolique déjà nommée, $(Oy)$ ou $(Ox)$."
+    contradicts_principle: "La chaîne de décision de la branche infinie ne s'arrête JAMAIS à la seule valeur de $\\lim f(x)/x$ quand ce nombre $a$ est fini et non nul : c'est la SECONDE limite, $\\lim\\bigl(f(x)-ax\\bigr)$, qui tranche entre asymptote oblique (limite finie $b$) et branche parabolique de direction $y=ax$ (limite infinie). Et quand $\\lim f(x)/x$ vaut $\\pm\\infty$ ou $0$, la conclusion est au contraire immédiate et déjà nommée — direction $(Oy)$ ou $(Ox)$ — ce n'est jamais une impasse qui exigerait un calcul supplémentaire."
+
+  # Dédiée par cet auteur (item-writer) : le piège « J = I » nommé par le
+  # pédagogue n'est couvert par AUCUNE des treize misconceptions ci-dessus —
+  # ni domaine-fraction-mal-identifie (qui porte sur la valeur interdite d'une
+  # fraction, pas sur l'intervalle image d'une bijection), ni
+  # confond-valeur-et-nombre-derive (qui porte sur f(a) vs f'(a), pas sur un
+  # intervalle entier). L'autre piège nommé par le pédagogue, « 1/f'(b) au
+  # lieu de 1/f'(a) », lui, RÉUTILISE confond-valeur-et-nombre-derive
+  # ci-dessus (voir DERIVFCT-35, 36 : c'est exactement son thème — la bonne
+  # grandeur, évaluée au mauvais point).
+  - id: mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul
+    label: "« L'intervalle image J se recopierait depuis I, sans calculer les valeurs (ou limites) aux bornes »"
+    description: "L'élève affirme (ou suppose implicitement) que $J=I$, ou range les bornes de $J$ dans le même ordre que celles de $I$, sans calculer les images (ou limites) de $f$ à ces bornes ni vérifier le sens de variation de $f$ — obtenant un intervalle faux, voire écrit à l'envers, dès que $f$ est strictement décroissante."
+    contradicts_principle: "$J=f(I)$ SE CALCULE : ce sont les valeurs (ou limites) de $f$ aux bornes de $I$ qui donnent $J$, jamais une recopie de $I$ lui-même. Et l'ordre de ces deux valeurs dépend du sens de variation de $f$ — conservé si $f$ est strictement croissante, ÉCHANGÉ si $f$ est strictement décroissante. $J=I$ n'est vrai que par coïncidence numérique isolée, jamais par principe."
+
 items:
   - id: DERIVFCT-1
     rung: "R1"
@@ -1757,16 +1781,583 @@ items:
       critère de l'extremum. $x^{3} + x$ a un point d'inflexion en $0$ avec une
       tangente de pente $1$.
 
+  # Ajoutés le 2026-09-27 (dette d'examen, vague B1) : neuf items qui payent
+  # trois trous de docs/audits/dette-examen/maths.md, section
+  # « derivabilite-etude-fonctions ». DERIVFCT-30 à 33 : la branche
+  # parabolique (GAP-A, prose ajoutée par le content-author,
+  # lesson.md:351-381), y compris DERIVFCT-32, le cas qui la sépare de
+  # l'asymptote oblique (lim f(x)/x fini non nul MAIS lim(f(x)-ax) infinie),
+  # et DERIVFCT-33, l'asymptote oblique + position relative (GAP-B,
+  # lesson.md:389-395). DERIVFCT-34 à 37 : la fonction réciproque — J depuis
+  # les variations, puis (f^{-1})'(b)=1/f'(a) (GAP-B, lesson.md:427-541).
+  # DERIVFCT-38 : la demi-tangente verticale (GAP-A mineur, lesson.md:108-112).
+  # AUCUNE fonction ci-dessous ne reprend un exemple travaillé de la leçon
+  # (x+\sqrt{x}, x+1/(x-1), x^3-3x, (x^2-x+1)/(x-1)) ni le sujet vérifié de
+  # bank.yaml ((x^2-x)e^{-x}+x) — mêmes techniques, nombres différents.
+  - id: DERIVFCT-30
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [branche-parabolique, limite-f-sur-x]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+    stem: >
+      Soit $f$ une fonction telle que $\lim_{x\to+\infty} f(x) = +\infty$ et
+      $\lim_{x\to+\infty}\dfrac{f(x)}{x} = +\infty$. Que peut-on en conclure
+      sur la courbe $(C_f)$ au voisinage de $+\infty$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Rien : il faut d'abord calculer $\lim_{x\to+\infty}\bigl(f(x)-x\bigr)$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        feedback: >
+          Ce second calcul n'a de sens que si $\lim f(x)/x$ est un nombre FINI
+          et non nul. Ici, le rapport lui-même part à l'infini : cela donne
+          DÉJÀ la conclusion, sans aucun calcul supplémentaire.
+      - id: B
+        text: >-
+          $(C_f)$ admet une branche parabolique de direction $(Oy)$.
+        correct: true
+      - id: C
+        text: >-
+          $(C_f)$ admet une branche parabolique de direction $(Ox)$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        feedback: >
+          $(Ox)$ correspond au cas $\lim f(x)/x = 0$ (la courbe s'aplatit
+          contre l'horizontale) — pas au cas où ce rapport part lui-même à
+          l'infini. Ici c'est l'inverse : le rapport explose, donc c'est
+          $(Oy)$ qui s'impose.
+      - id: D
+        text: >-
+          $(C_f)$ admet une asymptote oblique d'équation $y=x$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        feedback: >
+          Une asymptote oblique exige que $\lim f(x)/x$ soit un nombre FINI et
+          non nul. Ce n'est pas le cas ici : ce rapport part lui-même à
+          l'infini, ce qui signale au contraire qu'aucune droite oblique ne
+          peut être suivie.
+    correct_feedback: >
+      Exact : $\lim f(x)/x=+\infty$ donne directement la conclusion, sans
+      second calcul — le rapport lui-même explose, la courbe s'écrase contre
+      la direction verticale : c'est la branche parabolique de direction
+      $(Oy)$.
+    solution: |
+      La chaîne de décision du cours se lit sur $\lim f(x)/x$ :
+      - $\pm\infty$ : direction $(Oy)$ ;
+      - $0$ : direction $(Ox)$ ;
+      - $a$ fini non nul : il faut ENCORE $\lim(f(x)-ax)$ pour trancher entre
+        asymptote et branche de direction $y=ax$.
+
+      Ici $\lim f(x)/x=+\infty$ : c'est le premier cas, la conclusion est
+      immédiate — branche parabolique de direction $(Oy)$ — et aucun second
+      calcul n'est requis (il ne le serait que pour un $a$ fini non nul).
+
+  - id: DERIVFCT-31
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [branche-parabolique, limite-f-sur-x]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+    stem: >
+      Soit $f$ une fonction telle que $\lim_{x\to-\infty} f(x) = -\infty$ et
+      $\lim_{x\to-\infty}\dfrac{f(x)}{x} = 0$. Quelle est la branche infinie de
+      $(C_f)$ au voisinage de $-\infty$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $(C_f)$ admet une branche parabolique de direction $(Oy)$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        feedback: >
+          $(Oy)$ correspond au cas $\lim f(x)/x=\pm\infty$ (le rapport
+          lui-même explose) — pas au cas où il tend vers $0$. Ici c'est
+          l'inverse : $f$ grandit beaucoup plus lentement que $x$, donc c'est
+          $(Ox)$, pas $(Oy)$.
+      - id: B
+        text: >-
+          $(C_f)$ admet une asymptote horizontale d'équation $y=0$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        feedback: >
+          $\lim f(x)/x=0$ ne dit rien sur la limite de $f(x)$ elle-même — ici
+          $f(x)\to-\infty$, donc $f$ n'a certainement pas d'asymptote
+          horizontale. C'est le RAPPORT, pas $f(x)$, qui tend vers $0$ : cela
+          donne une direction de branche parabolique, pas une asymptote.
+      - id: C
+        text: >-
+          Rien de particulier : $f$ reste simplement proche de $0$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        feedback: >
+          Un rapport $f(x)/x\to0$ n'est jamais « rien à en dire » : c'est au
+          contraire une conclusion immédiate et déjà nommée — la courbe
+          s'aplatit contre l'horizontale, sans jamais la rejoindre au sens
+          d'une vraie asymptote. C'est la branche parabolique de direction
+          $(Ox)$.
+      - id: D
+        text: >-
+          $(C_f)$ admet une branche parabolique de direction $(Ox)$.
+        correct: true
+    correct_feedback: >
+      Exact : $\lim f(x)/x=0$ signale que $f$ grandit beaucoup plus lentement
+      que $x$ — la courbe s'aplatit contre l'horizontale sans jamais la
+      rejoindre au sens d'une asymptote : c'est la branche parabolique de
+      direction $(Ox)$.
+    solution: |
+      $\lim f(x)/x=0$ est le deuxième cas de la chaîne de décision : direction
+      $(Ox)$, une conclusion immédiate, sans second calcul. Ne pas confondre
+      avec $\lim f(x)$ elle-même (ici $-\infty$, ce qui exclut toute
+      asymptote horizontale) ni avec le cas $\lim f(x)/x=\pm\infty$ (qui donne
+      $(Oy)$, l'autre extrême de la chaîne).
+
+  - id: DERIVFCT-32
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [branche-parabolique, asymptote-oblique, limite-f-sur-x]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+    stem: >
+      Soit $f(x) = 3x - \sqrt{x}$, définie sur $[0,+\infty[$. Étudier la
+      branche infinie de $(C_f)$ au voisinage de $+\infty$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Branche parabolique de direction la droite $y=3x$.
+        correct: true
+      - id: B
+        text: >-
+          Asymptote oblique d'équation $y=3x$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        feedback: >
+          Trouver un $a$ fini non nul à la première limite ne suffit JAMAIS,
+          à lui seul, à conclure à une asymptote oblique. Ici
+          $\lim_{x\to+\infty}(f(x)-3x)=\lim_{x\to+\infty}(-\sqrt{x})=-\infty$ :
+          l'écart avec $y=3x$ ne se stabilise pas, il grandit sans borne.
+          C'est une branche parabolique de direction $y=3x$, pas une
+          asymptote.
+      - id: C
+        text: >-
+          Branche parabolique de direction $(Oy)$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        feedback: >
+          $(Oy)$ correspond au cas où $\lim f(x)/x$ est elle-même infinie —
+          ce n'est pas le cas ici, où ce rapport tend vers $3$, un nombre fini
+          non nul. Que $f(x)\to+\infty$ ne suffit jamais à lui seul : il faut
+          examiner $f(x)/x$, pas $f(x)$ seul.
+      - id: D
+        text: >-
+          Branche parabolique de direction $(Ox)$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        feedback: >
+          $(Ox)$ exigerait que $\lim f(x)/x$ tende vers $0$ — ce n'est pas le
+          cas, ce rapport tend vers $3$, un $a$ fini NON NUL. C'est
+          précisément parce que $a=3\neq0$ qu'un second calcul,
+          $\lim(f(x)-3x)$, est nécessaire.
+    correct_feedback: >
+      Exact : $\dfrac{f(x)}{x} = 3-\dfrac{1}{\sqrt{x}} \to 3$ (fini, non nul),
+      ce qui impose le second calcul : $f(x)-3x=-\sqrt{x}\to-\infty$. L'écart
+      avec $y=3x$ grandit sans borne : branche parabolique de direction
+      $y=3x$, pas une asymptote.
+    solution: |
+      $$\frac{f(x)}{x} = \frac{3x-\sqrt{x}}{x} = 3-\frac{1}{\sqrt{x}} \xrightarrow[x\to+\infty]{} 3$$
+      Le rapport tend vers un $a=3$ fini et non nul : ni $(Oy)$ ni $(Ox)$. Le
+      second calcul tranche :
+      $$f(x)-3x = -\sqrt{x} \xrightarrow[x\to+\infty]{} -\infty$$
+      La limite est infinie, pas finie : $(C_f)$ admet une branche
+      parabolique de direction la droite $y=3x$ — et non une asymptote.
+      Comparer avec le cours : $f(x)=x+\sqrt{x}$ donne, de la même façon,
+      $f(x)-x\to+\infty$ (branche), tandis que $f(x)=x+\frac{1}{x-1}$ donne
+      $f(x)-x\to0$ (asymptote) : seule la SECONDE limite distingue les deux.
+
+  - id: DERIVFCT-33
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [asymptote-oblique, position-relative]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.trinome-signe-mal-lu
+    stem: >
+      Soit $f(x) = x+3+\dfrac{5}{x-2}$, définie sur $\mathbb{R}\setminus\{2\}$
+      (on admet que $(D): y=x+3$ est asymptote oblique à $(C_f)$ en $+\infty$
+      et en $-\infty$). Quelle est la position de $(C_f)$ par rapport à
+      $(D)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Au-dessus de $(D)$ sur $]-\infty,2[$, en dessous sur $]2,+\infty[$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.trinome-signe-mal-lu
+        feedback: >
+          C'est l'inverse : $f(x)-(x+3)=\dfrac{5}{x-2}$ est NÉGATIF quand
+          $x-2<0$ (donc $x<2$, en dessous) et POSITIF quand $x-2>0$ (donc
+          $x>2$, au-dessus) — les deux zones sont échangées ici.
+      - id: B
+        text: >-
+          Au-dessus de $(D)$, car le numérateur $5$ est positif.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.trinome-signe-mal-lu
+        feedback: >
+          Le signe d'une fraction dépend AUSSI du dénominateur, pas seulement
+          du numérateur : $5>0$ ne suffit pas, il faut aussi le signe de
+          $x-2$. Pour $x<2$, $x-2<0$, donc $\dfrac{5}{x-2}<0$ : $(C_f)$ est en
+          dessous de $(D)$ sur cette partie, pas toujours au-dessus.
+      - id: C
+        text: >-
+          En dessous de $(D)$ sur $]-\infty,2[$, au-dessus sur $]2,+\infty[$.
+        correct: true
+      - id: D
+        text: >-
+          $(C_f)$ admet en réalité l'asymptote $y=x$ (pas $y=x+3$).
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote
+        feedback: >
+          Trouver $\lim f(x)/x=1$ ne suffit jamais, à lui seul, à écrire
+          l'équation complète de l'asymptote : ce rapport ne donne que le
+          coefficient directeur $a=1$, pas l'ordonnée à l'origine $b$. Ici
+          $f(x)-x=3+\dfrac{5}{x-2}\to3$ (et non $0$) : l'asymptote est bien
+          $y=x+3$, pas $y=x$.
+    correct_feedback: >
+      Exact : $f(x)-(x+3)=\dfrac{5}{x-2}$ est du signe de $x-2$ (le numérateur
+      $5$ étant positif) : négatif pour $x<2$ (en dessous de $(D)$), positif
+      pour $x>2$ (au-dessus).
+    solution: |
+      $$f(x)-(x+3) = \frac{5}{x-2}$$
+      Le numérateur $5$ est une constante strictement positive : le signe de
+      cette expression est donc exactement celui de $x-2$.
+      - Pour $x<2$ : $x-2<0$, donc $\dfrac{5}{x-2}<0$ : $(C_f)$ est EN DESSOUS
+        de $(D)$.
+      - Pour $x>2$ : $x-2>0$, donc $\dfrac{5}{x-2}>0$ : $(C_f)$ est AU-DESSUS
+        de $(D)$.
+
+      À ne pas confondre : établir l'existence de $(D)$ (via
+      $\lim f(x)/x=1$ puis $\lim(f(x)-x)=3$, ce qui donne $y=x+3$) et
+      déterminer la POSITION de $(C_f)$ par rapport à $(D)$ (via le signe de
+      $f(x)-(x+3)$) sont deux étapes distinctes de la méthode.
+
+  - id: DERIVFCT-34
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [fonction-reciproque, intervalle-image, bijection]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul
+    stem: >
+      Soit $g(x) = 5-x^{3}$, strictement décroissante et continue sur
+      $I=[0,2]$ (avec $g'(0)=0$, mais $g'(x)<0$ ailleurs sur $I$). Sachant que
+      $g(0)=5$ et $g(2)=-3$, sur quel intervalle $J$ la fonction $g$
+      réalise-t-elle une bijection de $I$ sur $J$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $J=[-3,5]$.
+        correct: true
+      - id: B
+        text: >-
+          $J=[0,2]$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul
+        feedback: >
+          $J=g(I)$ ne se recopie jamais depuis $I$ : ce sont les VALEURS de
+          $g$ aux bornes de $I$ (ici $g(0)=5$ et $g(2)=-3$) qui donnent $J$,
+          pas les bornes de $I$ elles-mêmes.
+      - id: C
+        text: >-
+          $J=[5,-3]$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul
+        feedback: >
+          Il manque l'étape qui range les deux valeurs : $g$ étant strictement
+          DÉCROISSANTE, les bornes de $J$ s'ÉCHANGENT par rapport à celles de
+          $I$ — $J=[g(2),g(0)]=[-3,5]$, dans l'ordre croissant, pas $[5,-3]$
+          (qui n'est même pas un intervalle valide).
+      - id: D
+        text: >-
+          $J=[g'(2),g'(0)]=[-12,0]$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.confond-valeur-et-nombre-derive
+        feedback: >
+          $g'(0)=0$ et $g'(2)=-12$ sont des NOMBRES DÉRIVÉS, pas des valeurs
+          de $g$ : $J$ se détermine avec $g(0)$ et $g(2)$ (les valeurs de la
+          fonction elle-même), jamais avec $g'(0)$ et $g'(2)$.
+    correct_feedback: >
+      Exact : $g$ est strictement décroissante sur $I=[0,2]$, donc les bornes
+      s'échangent : $J=[g(2),g(0)]=[-3,5]$.
+    solution: |
+      $g$ est continue et strictement décroissante sur $I=[0,2]$ (l'isolé
+      $g'(0)=0$ n'empêche pas la stricte décroissance globale) : $g$ réalise
+      donc une bijection de $I$ sur $J=g(I)$.
+
+      $g$ décroissante : les bornes de $J$ s'échangent par rapport à celles de
+      $I$.
+      $$J = [g(2),\ g(0)] = [-3,\ 5]$$
+
+      Au passage : $g'(2)=-3\times2^2=-12$ et $g'(0)=0$ sont des nombres
+      dérivés, jamais utilisés pour déterminer $J$ lui-même — seules les
+      VALEURS $g(0)$ et $g(2)$ comptent ici.
+
+  - id: DERIVFCT-35
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [fonction-reciproque, derivee-reciproque]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.confond-valeur-et-nombre-derive
+    stem: >
+      Soit $h(x)=x^{3}+2x$, une bijection strictement croissante de
+      $[0,+\infty[$ sur $[0,+\infty[$. Sachant que $h(1)=3$, quelle est la
+      valeur de $\left(h^{-1}\right)'(3)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\dfrac{1}{h'(3)}=\dfrac{1}{29}$
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.confond-valeur-et-nombre-derive
+        feedback: >
+          Tu as évalué $h'$ au point d'ARRIVÉE $b=3$ au lieu du point de
+          DÉPART $a=1$ (l'antécédent de $3$). La formule est
+          $\left(h^{-1}\right)'(b)=\dfrac{1}{h'(a)}$ — on dérive $h$ au point
+          de départ, jamais au point d'arrivée.
+      - id: B
+        text: >-
+          $h'(1)=5$
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.confond-valeur-et-nombre-derive
+        feedback: >
+          Il manque l'inversion : $\left(h^{-1}\right)'(b)$ est l'INVERSE de
+          $h'(a)$, pas $h'(a)$ lui-même. $h'(1)=5$ est une étape
+          intermédiaire, pas la réponse finale.
+      - id: C
+        text: >-
+          $\dfrac{1}{h'(1)}=\dfrac{1}{5}$
+        correct: true
+      - id: D
+        text: >-
+          $\dfrac{1}{h(1)}=\dfrac{1}{3}$
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.confond-valeur-et-nombre-derive
+        feedback: >
+          $h(1)=3$ est la VALEUR de $h$ en $1$ (elle sert seulement à
+          identifier l'antécédent $a=1$) — pas le nombre dérivé $h'(1)$. La
+          formule utilise $h'(a)$, jamais $h(a)$.
+    correct_feedback: >
+      Exact : l'antécédent de $3$ est $a=1$ (car $h(1)=3$). $h'(x)=3x^2+2$,
+      donc $h'(1)=5\neq0$, et
+      $\left(h^{-1}\right)'(3)=\dfrac{1}{h'(1)}=\dfrac{1}{5}$.
+    solution: |
+      L'antécédent de $b=3$ dans $[0,+\infty[$ est $a=1$, puisque $h(1)=3$.
+      $$h'(x) = 3x^2+2 \qquad h'(1) = 3+2 = 5 \neq 0$$
+      $$\left(h^{-1}\right)'(3) = \frac{1}{h'(1)} = \frac{1}{5}$$
+      Le piège systématique : dériver $h$ en $b=3$ au lieu de $a=1$, ou
+      oublier l'inversion.
+
+  - id: DERIVFCT-36
+    rung: "R6"
+    difficulty_level: 5
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [fonction-reciproque, intervalle-image, derivee-reciproque]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul
+    stem: >
+      Soit $k(x) = x+\dfrac{4}{x+1}$, restriction d'une fonction rationnelle à
+      l'intervalle $I=[1,3]$. On admet que $k$ est strictement croissante sur
+      $I$ (avec $k'(1)=0$, mais $k'(x)>0$ ailleurs sur $I$), continue, donc
+      bijective de $I$ sur $J=k(I)$. Sachant que $k(1)=3$, $k(3)=4$, et
+      $k'(x)=1-\dfrac{4}{(x+1)^{2}}$, déterminer $J$ puis calculer
+      $\left(k^{-1}\right)'(4)$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $J=[1,3]$ ; $\left(k^{-1}\right)'(4)=\dfrac{4}{3}$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul
+        feedback: >
+          $J$ se calcule à partir des VALEURS de $k$ aux bornes de $I$
+          ($k(1)=3$ et $k(3)=4$), jamais en recopiant $I$ lui-même : $k$ étant
+          strictement croissante, l'ordre des bornes se conserve, $J=[3,4]$,
+          un intervalle entièrement différent de $I=[1,3]$.
+      - id: B
+        text: >-
+          $J=[3,4]$ ; $\left(k^{-1}\right)'(4)=k'(3)=\dfrac{3}{4}$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.confond-valeur-et-nombre-derive
+        feedback: >
+          Il manque l'inversion : $\left(k^{-1}\right)'(b)=\dfrac{1}{k'(a)}$,
+          pas $k'(a)$ directement. $k'(3)=\dfrac{3}{4}$ est le bon antécédent
+          et la bonne dérivée, mais la réponse finale est son INVERSE,
+          $\dfrac{4}{3}$.
+      - id: C
+        text: >-
+          $J=[3,4]$ ; $\left(k^{-1}\right)'(4)=\dfrac{1}{k'(4)}=\dfrac{25}{21}$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.confond-valeur-et-nombre-derive
+        feedback: >
+          L'antécédent de $4$ dans $I$ est $a=3$ (car $k(3)=4$), pas $b=4$
+          lui-même : la formule exige $k'$ évaluée en l'ANTÉCÉDENT, $k'(3)$,
+          pas en $k'(4)$.
+      - id: D
+        text: >-
+          $J=[3,4]$ ; $\left(k^{-1}\right)'(4)=\dfrac{1}{k'(3)}=\dfrac{4}{3}$.
+        correct: true
+    correct_feedback: >
+      Exact : $k$ croissante donne $J=[k(1),k(3)]=[3,4]$. L'antécédent de $4$
+      est $a=3$ (puisque $k(3)=4$) ; $k'(3)=1-\dfrac{4}{16}=\dfrac{3}{4}\neq0$,
+      donc $\left(k^{-1}\right)'(4)=\dfrac{1}{3/4}=\dfrac{4}{3}$.
+    solution: |
+      **Existence et $J$.** $k$ est continue et strictement croissante sur
+      $I=[1,3]$ (l'isolé $k'(1)=0$ n'empêche pas la stricte croissance
+      globale) : bijection de $I$ sur $J=k(I)$. $k$ croissante : l'ordre des
+      bornes se conserve.
+      $$J = [k(1),\ k(3)] = [3,\ 4]$$
+
+      **L'antécédent de $4$.** $k(3)=4$, donc l'antécédent de $b=4$ dans $I$
+      est $a=3$.
+
+      **La dérivée.**
+      $$k'(3) = 1-\frac{4}{(3+1)^{2}} = 1-\frac{4}{16} = \frac{3}{4} \neq 0$$
+      $$\left(k^{-1}\right)'(4) = \frac{1}{k'(3)} = \frac{4}{3}$$
+
+      Les deux pièges systématiques, réunis dans ce même item : recopier $I$
+      pour $J$, et dériver $k$ au point d'arrivée $b=4$ (ou oublier
+      l'inversion) au lieu de l'antécédent $a=3$.
+
+  - id: DERIVFCT-37
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [fonction-reciproque, intervalle-image]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul
+    stem: >
+      Soit $p(x)=\dfrac{1}{x+1}$, strictement décroissante et continue sur
+      $I=[0,+\infty[$. Sachant que $p(0)=1$ et que
+      $\displaystyle\lim_{x\to+\infty} p(x)=0$, quel est l'intervalle image
+      $J=p(I)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $J=\,]0,1]$.
+        correct: true
+      - id: B
+        text: >-
+          $J=[0,+\infty[$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul
+        feedback: >
+          $J$ n'est jamais une recopie de $I$ : ici $p$ est strictement
+          décroissante, donc $J$ se calcule (et s'échange par rapport à
+          l'ordre de $I$) à partir de $p(0)=1$ et de la limite $0$ — un
+          intervalle borné, rien à voir avec $I=[0,+\infty[$.
+      - id: C
+        text: >-
+          $J=[0,1[$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul
+        feedback: >
+          Le TYPE des bornes doit lui aussi s'ajuster au sens de variation,
+          pas seulement leur ordre : $p$ étant décroissante, c'est la valeur
+          ATTEINTE $p(0)=1$ qui reste fermée, et la limite (jamais atteinte)
+          qui reste ouverte — donc $]0,1]$, pas $[0,1[$, qui inverse les deux
+          types de bornes.
+      - id: D
+        text: >-
+          $J=[-1,0[$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.confond-valeur-et-nombre-derive
+        feedback: >
+          $p'(0)=-1$ et $\lim p'(x)=0$ sont des valeurs de la DÉRIVÉE de $p$,
+          pas de $p$ elle-même : $J=p(I)$ se détermine avec $p(0)$ et
+          $\lim p(x)$, jamais avec $p'$.
+    correct_feedback: >
+      Exact : $p$ décroissante échange les bornes — la valeur atteinte
+      $p(0)=1$ reste fermée, la limite (jamais atteinte) $0$ reste ouverte :
+      $J=\,]0,1]$.
+    solution: |
+      $p$ est continue et strictement décroissante sur $I=[0,+\infty[$ :
+      bijection de $I$ sur $J=p(I)$. $p$ décroissante : les bornes
+      s'échangent, ET leur type s'ajuste — la valeur atteinte en $x=0$ reste
+      fermée, la limite jamais atteinte reste ouverte.
+      $$J = \,\bigl]\lim_{x\to+\infty}p(x),\ p(0)\bigr] = \,]0,\ 1]$$
+
+  - id: DERIVFCT-38
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [derivabilite-laterale, demi-tangente-verticale]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.continuite-implique-derivabilite
+    stem: >
+      Soit $q(x)=\sqrt{x+1}$, définie sur $[-1,+\infty[$. Que peut-on dire de
+      la dérivabilité de $q$ en $x=-1$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Oui, car $q$ est continue en $-1$.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.continuite-implique-derivabilite
+        feedback: >
+          La continuité ne suffit jamais, à elle seule, à garantir la
+          dérivabilité. Ici le taux d'accroissement part à l'infini : la
+          tangente devient verticale, $q$ n'est donc pas dérivable en $-1$,
+          bien qu'elle y soit continue.
+      - id: B
+        text: >-
+          Non : le taux d'accroissement part à $+\infty$.
+        correct: true
+      - id: C
+        text: >-
+          Non, car $q(-1)$ n'existe pas.
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.continuite-implique-derivabilite
+        feedback: >
+          $q(-1)=\sqrt{-1+1}=\sqrt{0}=0$ est parfaitement défini. Le problème
+          n'est pas l'existence de $q(-1)$, mais le fait que le taux
+          d'accroissement ne tend pas vers un nombre FINI quand $h\to0^{+}$ —
+          il part à l'infini.
+      - id: D
+        text: >-
+          Non, car les dérivées latérales diffèrent (point anguleux).
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.continuite-implique-derivabilite
+        feedback: >
+          Il n'y a ici qu'un seul côté possible ($q$ n'est définie qu'à
+          droite de $-1$) : ce n'est donc pas un conflit entre deux pentes
+          finies différentes (un point anguleux), mais un taux d'accroissement
+          qui part directement à l'infini d'un seul côté — une demi-tangente
+          verticale, une cause différente de non-dérivabilité.
+    correct_feedback: >
+      Exact : pour $h>0$,
+      $\dfrac{q(-1+h)-q(-1)}{h}=\dfrac{\sqrt{h}}{h}=\dfrac{1}{\sqrt{h}}\to+\infty$
+      quand $h\to0^{+}$. Le taux d'accroissement explose au lieu de se
+      stabiliser : $(C_q)$ admet en $-1$ une demi-tangente verticale, et $q$
+      n'y est pas dérivable — malgré sa continuité en ce point.
+    solution: |
+      $$\frac{q(-1+h)-q(-1)}{h} = \frac{\sqrt{h}-0}{h} = \frac{\sqrt{h}}{h} = \frac{1}{\sqrt{h}} \quad (h>0)$$
+      Quand $h\to0^{+}$, $\sqrt{h}\to0^{+}$ donc $\dfrac{1}{\sqrt{h}}\to+\infty$ :
+      le taux d'accroissement explose au lieu de se stabiliser. $q$ n'est donc
+      pas dérivable en $-1$ — pour une raison différente d'un point anguleux :
+      une seule pente qui part à l'infini, pas deux pentes finies qui
+      divergent. $(C_q)$ admet en $-1$ une demi-tangente verticale.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
-# RÉÉCRIT le 2026-09-05, après DERIVFCT-22 à DERIVFCT-29. Neuf familles sous le
-# plancher AVANT ces ajouts, dont `rolle-taf-hypotheses-mal-identifiees` qui n'en avait alors AUCUN de banc
-# — elle n'était sondée que par les deux checkpoints du sommet (cp-bac-rolle,
-# cp-bac-taf). Les items qui la referment siègent au barreau R6, celui du
-# sommet : c'est là que Rolle et les accroissements finis apparaissent, via
-# l'extrait de sujet SM 2019. Le corps de la leçon, lui, admet le théorème du
-# signe de $f'$ sans les invoquer — choix de portée assumé, consigné dans la
-# note de validation en fin de lesson.md. Tableau GÉNÉRÉ, gardé par
-# web/scripts/resume-couverture.mjs.
+# RÉÉCRIT le 2026-09-27, après DERIVFCT-30 à DERIVFCT-38 (dette d'examen,
+# vague B1 — docs/audits/dette-examen/maths.md). Deux misconceptions
+# nouvelles depuis la version précédente :
+# `limite-finie-de-f-sur-x-suffit-asymptote` (proposée par le
+# content-author, reformulée par cet auteur) et
+# `intervalle-image-recopie-sans-calcul` (dédiée par cet auteur, aucune des
+# treize précédentes ne couvrant le piège « J = I » nommé par la leçon). Le
+# second piège nommé par la leçon pour la réciproque, « 1/f'(b) au lieu de
+# 1/f'(a) », RÉUTILISE `confond-valeur-et-nombre-derive` (même thème : la
+# bonne grandeur, évaluée au mauvais point) — pas une misconception séparée.
+# Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -1775,31 +2366,40 @@ coverage_summary:
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
     web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
-    mc.math.maths_derivabilite_etude_fonctions.limite-non-comprise-comme-processus:   { count: 4, items: [DERIVFCT-1, DERIVFCT-7, DERIVFCT-8, DERIVFCT-9] }
-    mc.math.maths_derivabilite_etude_fonctions.confond-valeur-et-nombre-derive:       { count: 6, items: [DERIVFCT-1, DERIVFCT-7, DERIVFCT-9, DERIVFCT-10, DERIVFCT-16, DERIVFCT-20] }
-    mc.math.maths_derivabilite_etude_fonctions.regle-produit-mal-appliquee:           { count: 3, items: [DERIVFCT-3, DERIVFCT-22, DERIVFCT-28] }
-    mc.math.maths_derivabilite_etude_fonctions.regle-quotient-mal-appliquee:          { count: 3, items: [DERIVFCT-11, DERIVFCT-22, DERIVFCT-28] }
-    mc.math.maths_derivabilite_etude_fonctions.regle-composee-mal-appliquee:          { count: 3, items: [DERIVFCT-4, DERIVFCT-13, DERIVFCT-14] }
-    mc.math.maths_derivabilite_etude_fonctions.regle-puissance-terme-omis:            { count: 4, items: [DERIVFCT-1, DERIVFCT-12, DERIVFCT-22, DERIVFCT-28] }
-    mc.math.maths_derivabilite_etude_fonctions.derivee-nulle-suffit-extremum:         { count: 3, items: [DERIVFCT-5, DERIVFCT-24, DERIVFCT-27] }
-    mc.math.maths_derivabilite_etude_fonctions.trinome-signe-mal-lu:                  { count: 3, items: [DERIVFCT-15, DERIVFCT-19, DERIVFCT-24] }
-    mc.math.maths_derivabilite_etude_fonctions.criteres-inflexion-extremum-confondus: { count: 4, items: [DERIVFCT-6, DERIVFCT-17, DERIVFCT-18, DERIVFCT-29] }
-    mc.math.maths_derivabilite_etude_fonctions.inflexion-ignore-domaine:              { count: 3, items: [DERIVFCT-18, DERIVFCT-25, DERIVFCT-29] }
-    mc.math.maths_derivabilite_etude_fonctions.domaine-fraction-mal-identifie:        { count: 4, items: [DERIVFCT-21, DERIVFCT-25, DERIVFCT-26, DERIVFCT-27] }
-    mc.math.maths_derivabilite_etude_fonctions.continuite-implique-derivabilite:      { count: 4, items: [DERIVFCT-2, DERIVFCT-25, DERIVFCT-26, DERIVFCT-27] }
-    mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees:  { count: 3, items: [DERIVFCT-23, DERIVFCT-24, DERIVFCT-29] }
-  total_items: 29
+    mc.math.maths_derivabilite_etude_fonctions.limite-non-comprise-comme-processus:            { count: 4, items: [DERIVFCT-1, DERIVFCT-7, DERIVFCT-8, DERIVFCT-9] }
+    mc.math.maths_derivabilite_etude_fonctions.confond-valeur-et-nombre-derive:                 { count: 10, items: [DERIVFCT-1, DERIVFCT-7, DERIVFCT-9, DERIVFCT-10, DERIVFCT-16, DERIVFCT-20, DERIVFCT-34, DERIVFCT-35, DERIVFCT-36, DERIVFCT-37] }
+    mc.math.maths_derivabilite_etude_fonctions.regle-produit-mal-appliquee:                     { count: 3, items: [DERIVFCT-3, DERIVFCT-22, DERIVFCT-28] }
+    mc.math.maths_derivabilite_etude_fonctions.regle-quotient-mal-appliquee:                    { count: 3, items: [DERIVFCT-11, DERIVFCT-22, DERIVFCT-28] }
+    mc.math.maths_derivabilite_etude_fonctions.regle-composee-mal-appliquee:                    { count: 3, items: [DERIVFCT-4, DERIVFCT-13, DERIVFCT-14] }
+    mc.math.maths_derivabilite_etude_fonctions.regle-puissance-terme-omis:                      { count: 4, items: [DERIVFCT-1, DERIVFCT-12, DERIVFCT-22, DERIVFCT-28] }
+    mc.math.maths_derivabilite_etude_fonctions.derivee-nulle-suffit-extremum:                   { count: 3, items: [DERIVFCT-5, DERIVFCT-24, DERIVFCT-27] }
+    mc.math.maths_derivabilite_etude_fonctions.trinome-signe-mal-lu:                            { count: 4, items: [DERIVFCT-15, DERIVFCT-19, DERIVFCT-24, DERIVFCT-33] }
+    mc.math.maths_derivabilite_etude_fonctions.criteres-inflexion-extremum-confondus:           { count: 4, items: [DERIVFCT-6, DERIVFCT-17, DERIVFCT-18, DERIVFCT-29] }
+    mc.math.maths_derivabilite_etude_fonctions.inflexion-ignore-domaine:                        { count: 3, items: [DERIVFCT-18, DERIVFCT-25, DERIVFCT-29] }
+    mc.math.maths_derivabilite_etude_fonctions.domaine-fraction-mal-identifie:                  { count: 4, items: [DERIVFCT-21, DERIVFCT-25, DERIVFCT-26, DERIVFCT-27] }
+    mc.math.maths_derivabilite_etude_fonctions.continuite-implique-derivabilite:                { count: 5, items: [DERIVFCT-2, DERIVFCT-25, DERIVFCT-26, DERIVFCT-27, DERIVFCT-38] }
+    mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees:            { count: 3, items: [DERIVFCT-23, DERIVFCT-24, DERIVFCT-29] }
+    mc.math.maths_derivabilite_etude_fonctions.limite-finie-de-f-sur-x-suffit-asymptote:        { count: 4, items: [DERIVFCT-30, DERIVFCT-31, DERIVFCT-32, DERIVFCT-33] }
+    mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul:            { count: 3, items: [DERIVFCT-34, DERIVFCT-36, DERIVFCT-37] }
+  total_items: 38
   floor: 3
   floor_met: true
   ramp_coverage:
     R0: 3
-    R1: 4
+    R1: 5
     R2: 5
     R3: 3
     R4: 4
     R5: 5
-    R6: 5
+    R6: 13
   honest_state: >-
-    Les treize misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Sept y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item la casse.
+    Les quinze misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Sept y siègent EXACTEMENT (3 items) — dont
+    `intervalle-image-recopie-sans-calcul`, ajoutée cette vague : la marge y
+    est nulle, et tout retrait d'item la casse. `trinome-signe-mal-lu` sort du
+    plancher cette vague (3 → 4, DERIVFCT-33 en plus). R6 concentre désormais
+    13 des 38 items (branches
+    infinies, asymptote + position, réciproque, Rolle/TAF) — c'est le barreau
+    de synthèse où ce vocabulaire d'examen (2018, 2019) se rejoint ; aucun
+    autre barreau n'a reçu d'ajout cette vague hormis R1 (+1, demi-tangente
+    verticale).
