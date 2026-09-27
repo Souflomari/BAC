@@ -183,6 +183,15 @@ export function creerRenduQuotient(canvas: HTMLCanvasElement, hote: HTMLElement)
 
     // les graduations de décade — OPAQUES ; une sur cinq étiquetée (une sur dix à largeur réduite, §5.5 A)
     const pas = largeur < 540 ? 10 : 5;
+    // Un nombre de décade que le PIVOT recouvrirait n'est pas peint : son disque creux (à 13 px au-dessus
+    // de l'axe) tombait sur « 10³⁶ » au bain A (K = 10^37,26, à 9,5 px du nombre au téléphone) — un
+    // anneau sur un « 0 », illisible pour l'élève et pour toute lecture du dessin (construction de la
+    // porte). Le trait reste ; seul le nombre se tait, et le pivot porte déjà son étiquette.
+    const xKaxe = Xo(e.logK);
+    const libre = (x: number, t: string, xPivot: number) => {
+      ctx!.font = `${h}px ${police}`;
+      return Math.abs(x - xPivot) >= ctx!.measureText(t).width / 2 + 7;
+    };
     for (let k = AXE.min; k <= AXE.max; k++) {
       const x = net(Xo(k));
       const marque = (k - AXE.min) % pas === 0;
@@ -193,7 +202,7 @@ export function creerRenduQuotient(canvas: HTMLCanvasElement, hote: HTMLElement)
       c.moveTo(x, yAxe - long);
       c.lineTo(x, yAxe + long);
       c.stroke();
-      if (marque) {
+      if (marque && libre(x, decade(k), xKaxe)) {
         texte(decade(k), x, yAxe - long - 3, "center", "bottom");
         zonesTexte.push({ x0: x - 16, y0: yAxe - long - 3 - h, x1: x + 16, y1: yAxe - long });
       }
@@ -267,8 +276,10 @@ export function creerRenduQuotient(canvas: HTMLCanvasElement, hote: HTMLElement)
       c.moveTo(x, yBande - 7);
       c.lineTo(x, yBande + 7);
       c.stroke();
-      texte(decade(k), x, yBande - 10, "center", "bottom");
-      zonesTexte.push({ x0: x - 16, y0: yBande - 10 - h, x1: x + 16, y1: yBande - 7 });
+      if (libre(x, decade(k), Xb(e.logK))) {
+        texte(decade(k), x, yBande - 10, "center", "bottom");
+        zonesTexte.push({ x0: x - 16, y0: yBande - 10 - h, x1: x + 16, y1: yBande - 7 });
+      }
       rep[`bande-decade-${k - debutBande}`] = P(x, yBande);
     }
     c.strokeStyle = encre;
@@ -394,8 +405,12 @@ export function creerRenduQuotient(canvas: HTMLCanvasElement, hote: HTMLElement)
       const direct = e.verdict === "direct";
       // oxydé : la lame en sens direct, le dépôt en sens inverse (seul le bain B atteint l'inverse)
       const posOxyde = direct ? { x: xLame, y: yLameHaut } : { x: xDepot, y: yDepot };
-      // réduit : le dépôt quand il existe (l'ion qui s'y dépose), sinon l'espèce ionique voisine
-      const posReduit = direct ? (e.deuxSolides ? { x: xDepot, y: yDepot } : { x: rep["espece-oxydant"].x, y: rep["espece-oxydant"].y }) : { x: xLame, y: yLameHaut };
+      // réduit : TOUJOURS un ION — l'oxydant du sens qui l'emporte (Cu²⁺, Pb²⁺, Ag⁺ en sens direct ;
+      // Sn²⁺ en sens inverse). Un métal n'est jamais « réduit » : la première version posait le
+      // mot sur le dépôt de plomb (sens direct) et sur la lame d'étain (sens inverse) — c'est-à-dire
+      // sur le PRODUIT de la réduction, là où `especes` écrit l'ion (relu par l'orchestrateur).
+      const ion = rep[direct ? "espece-oxydant" : "espece-produit"];
+      const posReduit = { x: ion.x, y: ion.y };
       fleche(posOxyde.x, posOxyde.y - 13, posOxyde.x, posOxyde.y - 25, accent, 2, 5);
       fleche(posReduit.x, posReduit.y - 25, posReduit.x, posReduit.y - 13, accent, 2, 5);
       rep["role-oxyde"] = P(posOxyde.x, posOxyde.y - 29);
