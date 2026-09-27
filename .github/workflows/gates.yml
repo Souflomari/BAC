@@ -1407,6 +1407,19 @@ jobs:
           npm run scene-plan-complexe-rapport
           node scripts/scene-plan-complexe-rapport.mjs --essai-rouge
 
+      # L'échelle des quotients (PC évolution spontanée) : Q_r,i et K sur une
+      # échelle de décades. La porte refait chaque NOMBRE par une seconde voie
+      # indépendante (BigInt, exacte) et lit le dessin à ses propres graduations
+      # (le pas, le pivot, la pastille, le côté, la flèche, la bande de huit
+      # décades), le bécher et ses rôles, et les étiquettes à 390 et 1 280 px.
+      # Deux passes vertes locales (889 mesures, 26 familles), puis 26/26
+      # familles rouges à l'essai — ~1 min chacune.
+      - name: "L'échelle des quotients (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-quotient
+          node scripts/scene-quotient.mjs --essai-rouge
+
   # LE VERDICT DES QCM SUR LE CORPUS ENTIER (DÉCISIONS §17, levée par son
   # prémisse, comme §16). `verdict-qcm` répond à la question la plus grave du
   # produit — l'élève qui répond JUSTE est-il dit juste ? — et le job `gates`

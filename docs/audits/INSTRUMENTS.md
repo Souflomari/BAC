@@ -2449,3 +2449,36 @@ réel »), `fuite-inter-etapes`, `libelles-de-cran`, `frontiere`, `katex` (les d
 `etiquettes`, `cadre`, `lectures-entieres`, `annonce`, `console`, `ergonomie` — à 1 280 et à
 390 px. `node scripts/scene-plan-complexe-rapport.mjs --porte` (⚠️ depuis `web/`, après build),
 `--essai-rouge` pour l'inversion de chaque famille.
+
+## `web/scripts/scene-quotient.mjs` — $Q_{r,i}$ et $K$ sont-ils à leur place sur l'échelle, et le verdict est-il dit du bon côté ?
+
+**Porte de « l'échelle des quotients »** (pc/evolution-spontanee ; spec
+`docs/pipeline/propositions/` Qr/K §11–§12). Panneau `[data-scene="echelle-des-quotients"]`, ouvert
+au clic (« Ouvrir l'échelle des quotients »). `test-quotient` (10 tests, en CI) garde le modèle
+EXACT (quotients en BigInt, deux chiffres significatifs, « K écrit = K qui juge »).
+
+**Les nombres par une SECONDE VOIE.** La porte refait chaque $Q_{r,i}$, chaque écart en décades
+et chaque verdict par son propre calcul (BigInt, indépendant de `quotient-modele.ts`) : zéro
+désaccord sur 75 états. Une lecture de l'écran n'est jamais la valeur attendue.
+
+**Les pixels, lus aux graduations du dessin.** `axe-decades` (46 décades, le pas = MOYENNE des
+écarts d'un rang — la médiane des écarts arrondis au pixel était biaisée) ; `position-k`,
+`position-qri` (en décades, depuis les graduations) ; `bande-de-travail` (huit décades au pas
+constant, le pivot au centre, la pastille ou le chevron du bon côté) ; `cote-et-verdict` (le côté
+du repère dit le sens ; « confondu » à 2 px sur la bande) ; `fleche-du-verdict` (part du repère,
+pointe vers le pivot ; la tête lue de 3 à 7 px de chaque bout, et pour une flèche de moins de
+20 px, par la colonne où la tête est la plus haute — premier lancement : une flèche de 11,5 px
+avait une tête plus longue que sa hampe, défaut du PRODUIT aussi) ; `becher-et-roles` (oxydé =
+un métal, réduit = un ion, jamais à l'équilibre) ; et `avant-pari`, `fuite-inter-etapes`,
+`formule-graduee`, `frontiere` (avec auto-contrôle), `fleches-chimiques`, `katex`,
+`lectures-entieres`, `etiquettes`, `cadre`, `palette`, `decades-affirmees`, `annonce`, `console`,
+`ergonomie` — à 1 280 et à 390 px. `node scripts/scene-quotient.mjs --porte` (⚠️ depuis `web/`,
+après build), `--essai-rouge` pour l'inversion de chaque famille (26/26 le 2026-09-27).
+
+**Ce que les premiers lancements ont appris** : quatre fois la porte se lisait mal (pas médian
+biaisé, chevron fondu dans le trait de bande, tête cherchée trop près de la pointe, `K=2,5`
+confondu avec un cran) avant de lire juste le produit — et deux défauts du PRODUIT que seul le
+dessin montrait (la région vivante gardait l'annonce de l'étape précédente ; « réduit » posé sur
+le métal). Les étiquettes des rôles ne connaissaient pas leurs flèches : une fois les flèches
+déclarées TRAITS, « oxydé » est passé de la pointe (1 px) sur la lame (44 px) — l'ancre, coincée
+entre les deux, n'avait pas de place propre ; elle est désormais posée au-dessus de la pointe.
