@@ -3296,6 +3296,10 @@ items:
   # misconceptions neuves ensemble, Ω ET R rendus tels quels) — dual-tag au
   # sens du standard (une seule et même erreur combinée, pas une
   # co-attribution inter-compétence).
+  # WAVE 1 (2026-09-27) : GE-60 et GE-64 recoefficientés (motif mémorisable
+  # "9+9t=0 ⟹ t=-1" partagé avec GE-58, cassé — voir coverage_summary
+  # `wave1_2026_09_27`) ; GE-65 ajouté, palier d'entrée (Δ FOURNIE, formulation
+  # bac décomposée), aucun nombre repris de GE-58…64 ni de la leçon.
   - id: GE-58
     rung: "R9"
     habilete: application_directe
@@ -3327,9 +3331,10 @@ items:
         correct: false
         misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
-          En reportant $\Omega+t\vec n$ dans le plan on obtient $9+9t=0$,
-          donc $t=-1$. Ce résultat vient de $t=+1$ : le signe a été perdu en
-          isolant $t$.
+          Le report de $\Omega+t\vec n$ dans l'équation du plan aboutit à
+          $9+9t=0$, soit $t=-1$ une fois résolu correctement. Ici, un signe
+          s'est inversé au moment d'isoler $t$, ce qui a produit $t=+1$ à la
+          place — d'où ce triplet.
       - id: D
         text: "$H(1,2,4)$, c'est-à-dire $A$."
         correct: false
@@ -3351,7 +3356,9 @@ items:
       $$(\Delta):\ \Omega+t\vec n=(4+2t,\ 3+t,\ 5+2t)$$
 
       **On reporte dans $\mathcal P$.**
-      $$2(4+2t)+(3+t)+2(5+2t)-12=0 \iff 9+9t=0 \iff t=-1$$
+      $$2(4+2t)+(3+t)+2(5+2t)-12=0$$
+      $$\iff 9+9t=0$$
+      $$\iff t=-1$$
 
       **On reporte $t=-1$ dans $(\Delta)$.**
       $$H=(4-2,\ 3-1,\ 5-2)=(2,\,2,\,3)$$
@@ -3415,57 +3422,59 @@ items:
     tags: [sphere, plan, tangence, calcul_H]
     primary_misconception: mc.math.maths_geometrie_espace.centre-cercle-confondu-omega
     stem: >
-      La sphère $(S)$ a pour centre $\Omega(5,4,7)$ et rayon $R=3$. Le plan
-      $\mathcal P$ a pour équation $2x+y+2z-19=0$. On admet que $\mathcal P$
-      est tangent à $(S)$. Quel est le point de contact ?
+      La sphère $(S)$ a pour centre $\Omega(2,3,-1)$ et rayon $R=3\sqrt6$. Le
+      plan $\mathcal P$ a pour équation $x+y+2z+15=0$. On admet que
+      $\mathcal P$ est tangent à $(S)$. Quel est le point de contact ?
     type: mcq
     choices:
       - id: A
-        text: "$(3,3,5)$"
+        text: "$(-1,0,-7)$"
         correct: true
       - id: B
-        text: "$(5,4,7)$, c'est-à-dire $\\Omega$."
+        text: "$(2,3,-1)$, c'est-à-dire $\\Omega$."
         correct: false
         misconception: mc.math.maths_geometrie_espace.centre-cercle-confondu-omega
         feedback: >
           Modèle détecté : « tangent » lu comme « le contact se fait au
           centre ». Le point de contact est $H$, le projeté orthogonal de
-          $\Omega$ sur $\mathcal P$ — un point DU PLAN, jamais $\Omega$ lui-même
-          (qui n'appartient au plan que si $d=0$, un cas encore plus
-          particulier que la tangence).
+          $\Omega$ sur $\mathcal P$ — un point DU PLAN, distinct de $\Omega$
+          en dehors du cas particulier $d=0$, plus restrictif encore que la
+          tangence.
       - id: C
-        text: "$(7,5,9)$"
+        text: "$(5,6,5)$"
         correct: false
         misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
-          En reportant $\Omega+t\vec n$ dans $\mathcal P$ on obtient
-          $9+9t=0$, donc $t=-1$. Ce résultat vient de $t=+1$ : le signe a été
-          perdu en isolant $t$.
+          Substituer $\Omega+t\vec n$ dans $\mathcal P$ conduit à
+          $18+6t=0$, donc à $t=-3$. La valeur $t=+3$ vue ici provient d'un
+          signe oublié lors de la résolution de cette équation en $t$.
       - id: D
         text: >-
           Il n'y a pas de point de contact : $d(\Omega,\mathcal
-          P)=\dfrac{28}{3}\neq R$, le plan n'est pas tangent.
+          P)=\dfrac{\sqrt6}{2}\neq R$, le plan n'est pas tangent.
         correct: false
         misconception: mc.math.maths_geometrie_espace.distance-numerateur-mal-forme
         feedback: >
           Le numérateur a été formé sans la constante de l'équation,
-          $|2\times5+4+2\times7|=28$, au lieu de $|2\times5+4+2\times7-19|=9$.
-          Avec la constante, $d=9/3=3=R$ : le plan est bien tangent.
+          $|2+3-2|=3$, au lieu de $|2+3-2+15|=18$. Avec la constante,
+          $d=18/\sqrt6=3\sqrt6=R$ : le plan est bien tangent.
     correct_feedback: >
-      $d(\Omega,\mathcal P)=\dfrac{|10+4+14-19|}{3}=\dfrac{9}{3}=3=R$ :
+      $d(\Omega,\mathcal P)=\dfrac{|2+3-2+15|}{\sqrt6}=\dfrac{18}{\sqrt6}=3\sqrt6=R$ :
       tangence confirmée. Le point de contact est $H$, obtenu en reportant
-      $\Omega+t\vec n=(5+2t,4+t,7+2t)$ dans $\mathcal P$ : $9+9t=0$, $t=-1$,
-      $H(3,3,5)$.
+      $\Omega+t\vec n=(2+t,3+t,-1+2t)$ dans $\mathcal P$ : $18+6t=0$, $t=-3$,
+      $H(-1,0,-7)$.
     solution: |
       **La distance, d'abord.**
-      $$d(\Omega,\mathcal P)=\frac{|2\times5+1\times4+2\times7-19|}{\sqrt{2^2+1^2+2^2}}=\frac93=3=R$$
+      $$d(\Omega,\mathcal P)=\frac{|1\times2+1\times3+2\times(-1)+15|}{\sqrt{1^2+1^2+2^2}}=\frac{18}{\sqrt6}=3\sqrt6=R$$
 
       Tangence confirmée : $d=R$.
 
       **Le point de contact, c'est $H$.**
-      $$(\Delta):\ \Omega+t\vec n=(5+2t,\ 4+t,\ 7+2t)$$
-      $$2(5+2t)+(4+t)+2(7+2t)-19=0 \iff 9+9t=0 \iff t=-1$$
-      $$H=(5-2,\ 4-1,\ 7-2)=(3,\,3,\,5)$$
+      $$(\Delta):\ \Omega+t\vec n=(2+t,\ 3+t,\ -1+2t)$$
+      $$(2+t)+(3+t)+2(-1+2t)+15=0$$
+      $$\iff 18+6t=0$$
+      $$\iff t=-3$$
+      $$H=(2-3,\ 3-3,\ -1-6)=(-1,\,0,\,-7)$$
 
   - id: GE-61
     rung: "R9"
@@ -3570,12 +3579,14 @@ items:
       dans $\mathcal P$ donne $-9+9t=0$, $t=1$, $H(3,3,-1)$.
     solution: |
       $$(\Delta):\ \Omega+t\vec n=(2+t,\ 5-2t,\ -3+2t)$$
-      $$(2+t)-2(5-2t)+2(-3+2t)+5=0 \iff -9+9t=0 \iff t=1$$
+      $$(2+t)-2(5-2t)+2(-3+2t)+5=0$$
+      $$\iff -9+9t=0$$
+      $$\iff t=1$$
       $$H=(2+1,\ 5-2,\ -3+2)=(3,\,3,\,-1)$$
 
   - id: GE-63
     rung: "R9"
-    habilete: synthese
+    habilete: application_non_explicite
     difficulty_level: 5
     skill_code: maths_geometrie_espace
     tags: [sphere, plan, cercle, plancher]
@@ -3628,17 +3639,17 @@ items:
     tags: [sphere, plan, cercle, calcul_H, plancher]
     primary_misconception: mc.math.maths_geometrie_espace.centre-cercle-confondu-omega
     stem: >
-      La sphère $(S)$ a pour centre $\Omega(-3,2,6)$ et rayon $R=5$. Le plan
-      $\mathcal P$ passe par le point $B(0,0,2)$ et admet pour vecteur normal
-      $\vec n(1,2,2)$. Quels sont le centre $H$ et le rayon $r$ du cercle
-      d'intersection de $(S)$ et $\mathcal P$ ?
+      La sphère $(S)$ a pour centre $\Omega(1,4,7)$ et rayon $R=\sqrt{34}$.
+      Le plan $\mathcal P$ passe par le point $B(0,0,7)$ et admet pour
+      vecteur normal $\vec n(2,4,4)$. Quels sont le centre $H$ et le rayon
+      $r$ du cercle d'intersection de $(S)$ et $\mathcal P$ ?
     type: mcq
     choices:
       - id: A
-        text: "$H(-4,0,4)$ et $r=4$"
+        text: "$H(0,2,5)$ et $r=5$"
         correct: true
       - id: B
-        text: "$H(-3,2,6)$ et $r=5$ — c'est-à-dire $\\Omega$ et $R$ tels quels."
+        text: "$H(1,4,7)$ et $r=\\sqrt{34}$ — c'est-à-dire $\\Omega$ et $R$ tels quels."
         correct: false
         misconception:
           - mc.math.maths_geometrie_espace.centre-cercle-confondu-omega
@@ -3649,40 +3660,99 @@ items:
           Il faut construire $H$ (projeté orthogonal de $\Omega$ sur
           $\mathcal P$), puis $d=\Omega H$, puis $r=\sqrt{R^2-d^2}$.
       - id: C
-        text: "$H(-2,4,8)$ et $r=4$"
+        text: "$H(2,6,9)$ et $r=5$"
         correct: false
         misconception: mc.math.maths_geometrie_espace.signe-arithmetique
         feedback: >
           Le rayon est correct, mais $H$ vient d'un signe perdu en résolvant
-          $t$ : $9+9t=0$ donne $t=-1$, pas $t=+1$. Avec $t=-1$,
-          $H=(-4,0,4)$.
+          $t$ : $18+36t=0$ donne $t=-\frac12$, pas $t=+\frac12$. Avec
+          $t=-\frac12$, $H=(0,2,5)$.
       - id: D
-        text: "$H(-4,0,4)$ et $r=\\sqrt{34}$"
+        text: "$H(0,2,5)$ et $r=\\sqrt{43}$"
         correct: false
         misconception: mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur
         feedback: >
           $H$ est correct, mais le rayon vient d'un Pythagore mal signé :
-          $\sqrt{R^2+d^2}=\sqrt{25+9}=\sqrt{34}$ additionne là où il faut
-          soustraire. Avec $d=3$, $r=\sqrt{R^2-d^2}=\sqrt{25-9}=4$.
+          $\sqrt{R^2+d^2}=\sqrt{34+9}=\sqrt{43}$ additionne là où il faut
+          soustraire. Avec $d=3$, $r=\sqrt{R^2-d^2}=\sqrt{34-9}=5$.
     correct_feedback: >
-      $\mathcal P: x+2y+2z-4=0$. La droite $\Omega+t\vec n=(-3+t,2+2t,6+2t)$
-      reportée dans $\mathcal P$ donne $9+9t=0$, $t=-1$, $H(-4,0,4)$. Puis
-      $d=\Omega H=3$ et $r=\sqrt{R^2-d^2}=\sqrt{25-9}=4$.
+      $\mathcal P: 2x+4y+4z-28=0$ (soit $x+2y+2z-14=0$). La droite
+      $\Omega+t\vec n=(1+2t,4+4t,7+4t)$ reportée dans $\mathcal P$ donne
+      $18+36t=0$, $t=-\frac12$, $H(0,2,5)$. Puis $d=\Omega H=3$ et
+      $r=\sqrt{R^2-d^2}=\sqrt{34-9}=5$.
     solution: |
-      **Équation du plan.** $\vec n(1,2,2)$, $B(0,0,2)$ :
-      $(x-0)+2(y-0)+2(z-2)=0 \iff x+2y+2z-4=0$.
+      **Équation du plan.** $\vec n(2,4,4)$, $B(0,0,7)$ :
+      $2(x-0)+4(y-0)+4(z-7)=0 \iff 2x+4y+4z-28=0$.
 
       **Le centre du cercle, $H$.**
-      $$(\Delta):\ \Omega+t\vec n=(-3+t,\ 2+2t,\ 6+2t)$$
-      $$(-3+t)+2(2+2t)+2(6+2t)-4=0 \iff 9+9t=0 \iff t=-1$$
-      $$H=(-3-1,\ 2-2,\ 6-2)=(-4,\,0,\,4)$$
+      $$(\Delta):\ \Omega+t\vec n=(1+2t,\ 4+4t,\ 7+4t)$$
+      $$2(1+2t)+4(4+4t)+4(7+4t)-28=0$$
+      $$\iff 18+36t=0$$
+      $$\iff t=-\frac12$$
+      $$H=\left(1-1,\ 4-2,\ 7-2\right)=(0,\,2,\,5)$$
 
       **Le rayon, $r$.**
       $$d=\Omega H=\sqrt{(-1)^2+(-2)^2+(-2)^2}=\sqrt9=3,\qquad
-      r=\sqrt{R^2-d^2}=\sqrt{25-9}=4$$
+      r=\sqrt{R^2-d^2}=\sqrt{34-9}=5$$
+
+  - id: GE-65
+    rung: "R9"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_geometrie_espace
+    tags: [droite, plan, intersection, calcul_H]
+    primary_misconception: mc.math.maths_geometrie_espace.signe-arithmetique
+    stem: >
+      La droite $(\Delta)$ a pour représentation paramétrique
+      $x=2+t,\ y=1+t,\ z=3-t\ (t\in\mathbb R)$, et le plan $\mathcal P$ a pour
+      équation $x+2y-z-5=0$. Déterminer les coordonnées de $H$, point
+      d'intersection de la droite $(\Delta)$ et du plan $\mathcal P$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$H(3,2,2)$"
+        correct: true
+      - id: B
+        text: "$H(1,0,4)$"
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.signe-arithmetique
+        feedback: >
+          Le report de $(\Delta)$ dans $\mathcal P$ donne $-4+4t=0$, donc
+          $t=1$. Ce triplet vient de $t=-1$ : un signe a été perdu en isolant
+          $t$ dans cette équation.
+      - id: C
+        text: "$H(3,1,3)$"
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.appartenance-t-non-simultane
+        feedback: >
+          La valeur $t=1$ n'a été reportée que dans la première équation de
+          $(\Delta)$ ($x=2+1=3$) ; $y$ et $z$ sont restés à leurs valeurs de
+          départ ($t=0$). $H$ exige la MÊME valeur de $t$ dans les trois
+          équations à la fois — pas une par coordonnée.
+      - id: D
+        text: "$H(1,1,-1)$"
+        correct: false
+        misconception: mc.math.maths_geometrie_espace.directeur-vs-point
+        feedback: >
+          $(1,1,-1)$ est le vecteur DIRECTEUR de $(\Delta)$ — il donne un
+          sens, pas une position. $H$ se lit en reportant la valeur de $t$
+          trouvée dans $(\Delta)$, jamais en recopiant les coefficients de
+          $t$.
+    correct_feedback: >
+      En reportant $x=2+t,\,y=1+t,\,z=3-t$ dans $\mathcal P$ :
+      $(2+t)+2(1+t)-(3-t)-5=0 \iff -4+4t=0 \iff t=1$. On reporte $t=1$ dans
+      $(\Delta)$ : $H(3,2,2)$.
+    solution: |
+      **On reporte $(\Delta)$ dans $\mathcal P$.**
+      $$(2+t)+2(1+t)-(3-t)-5=0$$
+      $$\iff -4+4t=0$$
+      $$\iff t=1$$
+
+      **On reporte $t=1$ dans $(\Delta)$.**
+      $$H=(2+1,\ 1+1,\ 3-1)=(3,\,2,\,2)$$
 
 coverage_summary:
-  total_items: 64
+  total_items: 65
   # NOTE (§6 honnête) — banque « legacy » rétro-taguée, puis COMPLÉTÉE.
   # Les 33 items d'origine avaient été écrits AVANT la discipline du tag par
   # distracteur : conçus pour la VARIÉTÉ des pièges de calcul par item, pas
@@ -3700,17 +3770,29 @@ coverage_summary:
   # passe (5 et 3 en any_distractor). GE-64/B porte les deux à la fois
   # (dual-tag, une seule erreur combinée) ; ce distracteur compte pour
   # chaque id dans any_distractor, une seule fois chacun.
+  # WAVE 1 (les deux critiques, 2026-09-27) : GE-60 et GE-64 recoefficientés
+  # (‖n‖²≠9, t≠-1 — GE-64 passe à t=-1/2, fractionnaire, H restant lisible)
+  # pour casser le motif mémorisable "9+9t=0 ⟹ t=-1" partagé avec GE-58 ;
+  # feedback du distracteur C reformulé dans GE-58 et GE-60 (n'étaient plus
+  # verbatim identiques de toute façon après recoefficientage, reformulés
+  # quand même) ; GE-63 passe de `synthese` à `application_non_explicite`
+  # (I1) ; GE-65 ajouté comme palier d'entrée (application_directe,
+  # difficulté 2, droite (Δ) FOURNIE, seule la substitution et la lecture de
+  # H restent — formulation bac décomposée, nombres propres). Habileté sur
+  # les 8 items de la sous-section « Calculer H » : 4 application_directe,
+  # 3 application_non_explicite, 1 synthese (50 / 37,5 / 12,5 — proche de la
+  # cible 50/35/15).
   counting_convention: any_distractor   # métrique retenue pour le plancher ≥3
   floor_met: true
-  per_rung: { R0: 3, R1: 5, R2: 4, R3: 6, R4: 5, R5: 6, R6: 6, R7: 8, R8: 4, R9: 14, R10: 3 }
+  per_rung: { R0: 3, R1: 5, R2: 4, R3: 6, R4: 5, R5: 6, R6: 6, R7: 8, R8: 4, R9: 15, R10: 3 }
 
   per_misconception_any_distractor:
-    mc.math.maths_geometrie_espace.signe-arithmetique: 27
+    mc.math.maths_geometrie_espace.signe-arithmetique: 28
     mc.math.maths_geometrie_espace.oubli-racine: 14
     mc.math.maths_geometrie_espace.scalaire-vectoriel-confondus: 7
     mc.math.maths_geometrie_espace.colinearite-mal-testee: 6
     mc.math.maths_geometrie_espace.operation-vectorielle-comme-somme: 6
-    mc.math.maths_geometrie_espace.directeur-vs-point: 5
+    mc.math.maths_geometrie_espace.directeur-vs-point: 6
     mc.math.maths_geometrie_espace.normal-vs-directeur: 6
     mc.math.maths_geometrie_espace.position-critere-inverse: 5
     mc.math.maths_geometrie_espace.raisonnement-spatial-naif: 5
@@ -3726,7 +3808,7 @@ coverage_summary:
     mc.math.maths_geometrie_espace.distance-denominateur-somme: 4
     mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur: 6
     mc.math.maths_geometrie_espace.aire-oubli-demi: 3
-    mc.math.maths_geometrie_espace.appartenance-t-non-simultane: 3
+    mc.math.maths_geometrie_espace.appartenance-t-non-simultane: 4
     mc.math.maths_geometrie_espace.normal-inclut-constante: 3
     mc.math.maths_geometrie_espace.orthogonal-vs-perpendiculaire: 3
     mc.math.maths_geometrie_espace.paralleles-vs-confondus: 3
@@ -3740,7 +3822,7 @@ coverage_summary:
 
   per_misconception_primary:
     mc.math.maths_geometrie_espace.centre-cercle-confondu-omega: 5
-    mc.math.maths_geometrie_espace.signe-arithmetique: 4
+    mc.math.maths_geometrie_espace.signe-arithmetique: 5
     mc.math.maths_geometrie_espace.appartenance-t-non-simultane: 3
     mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur: 3
     mc.math.maths_geometrie_espace.orthogonal-vs-perpendiculaire: 3
@@ -3770,7 +3852,7 @@ coverage_summary:
     # jamais en primary (seulement distracteur secondaire) : oubli-racine, oubli-valeur-absolue, colinearite-mal-testee, raisonnement-spatial-naif.
 
   meets_floor_any_distractor:   # ≥3 items exposent ces 32 modèles — soit TOUS
-    - mc.math.maths_geometrie_espace.signe-arithmetique         # 27
+    - mc.math.maths_geometrie_espace.signe-arithmetique         # 28
     - mc.math.maths_geometrie_espace.oubli-racine               # 14
     - mc.math.maths_geometrie_espace.scalaire-vectoriel-confondus # 7
     - mc.math.maths_geometrie_espace.colinearite-mal-testee     # 6
@@ -3778,7 +3860,7 @@ coverage_summary:
     - mc.math.maths_geometrie_espace.normal-vs-directeur        # 6
     - mc.math.maths_geometrie_espace.operation-vectorielle-comme-somme # 6
     - mc.math.maths_geometrie_espace.centre-cercle-confondu-omega # 5
-    - mc.math.maths_geometrie_espace.directeur-vs-point         # 5
+    - mc.math.maths_geometrie_espace.directeur-vs-point         # 6
     - mc.math.maths_geometrie_espace.distance-numerateur-mal-forme # 5
     - mc.math.maths_geometrie_espace.position-critere-inverse   # 5
     - mc.math.maths_geometrie_espace.raisonnement-spatial-naif  # 5
@@ -3791,7 +3873,7 @@ coverage_summary:
     - mc.math.maths_geometrie_espace.secantes-comme-dans-le-plan # 4
     - mc.math.maths_geometrie_espace.sphere-centre-rayon-mal-lu # 4
     - mc.math.maths_geometrie_espace.aire-oubli-demi            # 3
-    - mc.math.maths_geometrie_espace.appartenance-t-non-simultane # 3
+    - mc.math.maths_geometrie_espace.appartenance-t-non-simultane # 4
     - mc.math.maths_geometrie_espace.normal-inclut-constante    # 3
     - mc.math.maths_geometrie_espace.orthogonal-vs-perpendiculaire # 3
     - mc.math.maths_geometrie_espace.paralleles-vs-confondus    # 3
@@ -3826,3 +3908,22 @@ coverage_summary:
       intersection-sphere-plan-erreur, centre-cercle-confondu-omega,
       rayon-cercle-confondu-R et raisonnement-spatial-naif — mais ne sont PAS
       recomptés dans ce plancher (clones formatifs, non ajoutés à la banque).
+    wave1_2026_09_27: >-
+      Corrections wave-1 (deux critiques) sur GE-58…64 et GE-65 : (1) motif
+      mémorisable cassé — GE-60 recoefficienté (Ω(2,3,-1), n de norme² 6,
+      t=-3 — Ω distinct de celui de GE-61) et GE-64 recoefficienté
+      (Ω(1,4,7), n de norme² 36, t=-1/2,
+      fractionnaire — H reste lisible, $(0,2,5)$) ; les trois items R9
+      "Calculer H" ne partagent plus ni le même ‖n‖² ni le même t ; feedback
+      du distracteur C reformulé dans GE-58 et GE-60 pour ne plus être
+      verbatim identique. (2) palier d'entrée ajouté — GE-65 (rung R9,
+      difficulté 2, application_directe), droite (Δ) FOURNIE, formulation
+      bac décomposée « Déterminer les coordonnées de H, point
+      d'intersection de la droite (Δ) et du plan (P) », nombres propres
+      (aucun repris de la leçon ni de la banque). (3) habileté — GE-63 passe
+      de `synthese` à `application_non_explicite` (I1) ; répartition sur les
+      8 items de la sous-section : 4 application_directe / 3
+      application_non_explicite / 1 synthese (50/37,5/12,5, cible ≈50/35/15).
+      Aucune misconception nouvelle ; comptages any_distractor mis à jour
+      pour `directeur-vs-point` (5→6), `appartenance-t-non-simultane`
+      (3→4), `signe-arithmetique` (27→28, primary 4→5) du fait de GE-65.
