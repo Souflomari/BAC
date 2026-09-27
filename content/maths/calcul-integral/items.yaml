@@ -190,6 +190,64 @@ misconceptions:
       convertit avec $k$, une aire avec $k^2$, un volume avec $k^3$ — le facteur
       compte les DIRECTIONS.
 
+  # ── Dette d'examen, vague B — GAP-A "Primitive of u'/u -> ln|u| (and
+  # u'/u^2 -> -1/u)", docs/audits/dette-examen/maths.md § calcul-integral —
+  # 6 sites de banque (fonction-exponentielle/bank.yaml:518-524,2478,2810 ;
+  # fonction-logarithme/bank.yaml:792,2740-2799,4570-4591). R1 porte
+  # maintenant la prose (lesson.md, "Généraliser : reconnaître u'/u et u'/u²
+  # dans une primitive", note (7)) ; ce qui suit couvre le "au moins un item
+  # par modèle" laissé en attente par cette note.
+  # Le content-author proposait DEUX misconceptions neuves. L'une
+  # ("primitive-u-sur-u-signal-mal-lu") réunissait sous un seul id deux
+  # erreurs de nature différente — l'auteur d'items l'a scindée en deux, une
+  # polarité chacune (le "reworded if needed" du brief) :
+  #   - valeur absolue OU condition d'intervalle ignorée (le modèle $\ln|u|$
+  #     appliqué sans vérifier que $u$ garde un signe constant et ne s'annule
+  #     pas sur TOUT l'intervalle) ;
+  #   - $u'$ primitivé à la place de $u$ (confusion sur QUELLE partie de la
+  #     fraction passe dans le logarithme).
+  # La troisième, `u-sur-u-vs-u-sur-u2`, est gardée telle que proposée : une
+  # seule polarité déjà (confusion entre les deux modèles).
+  - id: mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee
+    label: "Primitive de u'/u : valeur absolue omise, ou intervalle où u ne s'annule pas ignoré"
+    description: >-
+      L'élève écrit une primitive de $u'/u$ sous la forme $\ln(u)$ au lieu de
+      $\ln|u|$ — silencieusement invalide dès que $u<0$ quelque part sur
+      l'intervalle — ou applique la formule $\ln|u|$ sans vérifier que $u$
+      garde un signe constant (ne s'annule jamais) sur TOUT l'intervalle
+      d'intégration, y compris quand $u$ s'annule réellement entre les deux
+      bornes.
+    contradicts_principle: >-
+      Sur un intervalle $I$ où $u$ est dérivable et ne s'annule jamais, une
+      primitive de $u'/u$ est $\ln|u|$ — jamais $\ln(u)$ seul, qui n'a de sens
+      que si $u>0$ sur $I$. Et la formule elle-même exige que $u$ garde un
+      signe constant sur TOUT $I$ : si $u$ s'annule entre les deux bornes,
+      $f=u'/u$ n'est même pas définie partout, et l'intégrale n'existe pas.
+  - id: mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u
+    label: "Primitive de u'/u : u' primitivé à la place de u"
+    description: >-
+      Face à $u'/u$, l'élève confond quelle partie de la fraction doit passer
+      dans le logarithme : il primitive $u'$ (le numérateur, ou la quantité
+      qui ressemble à une dérivée) au lieu de reconnaître $u$ au dénominateur
+      — écrivant $\ln(u')$ (souvent une simple constante, si $u$ est affine)
+      ou $\dfrac{1}{u'}$ à la place de $\ln|u|$.
+    contradicts_principle: >-
+      Dans $u'/u$, c'est $u$ — la fonction au DÉNOMINATEUR, dont $u'$ est la
+      dérivée — qui passe dans le logarithme : la primitive est $\ln|u|$,
+      jamais une expression construite à partir de $u'$ seul.
+  - id: mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2
+    label: "Confusion entre les deux modèles u'/u -> ln|u| et u'/u² -> −1/u"
+    description: >-
+      L'élève applique le modèle $\ln|u|$ à une fraction de la forme $u'/u^2$
+      (dénominateur au carré), ou applique $-\dfrac1u$ à une fraction de la
+      forme $u'/u$ (dénominateur à la puissance $1$) — sans vérifier
+      l'exposant du dénominateur avant de choisir la formule.
+    contradicts_principle: >-
+      L'exposant du dénominateur décide seul le modèle : exposant $1$
+      ($u'/u$) donne $\ln|u|$ ; exposant $2$ ($u'/u^2$) donne $-\dfrac1u$. Les
+      deux formules ne sont pas interchangeables — le contrôle immédiat :
+      dériver la primitive candidate et vérifier qu'elle redonne $f$.
+
 items:
 
   - id: CI-1
@@ -2938,6 +2996,491 @@ items:
       Le montage est celui du bac (§8.1/§8.4) : une racine dans $f$ pour
       que $f^2$ soit une intégrale déjà rencontrée.
 
+  # ── Dette d'examen, vague B — GAP-A "u'/u -> ln|u| et u'/u² -> -1/u"
+  # (docs/audits/dette-examen/maths.md § calcul-integral, 6 sites de banque).
+  # CI-51 -> CI-58, rung R1 (là où lesson.md porte désormais la prose).
+  # Fonctions et nombres tous originaux : aucun ne reprend une fonction ou
+  # des bornes des sites cités (fonction-exponentielle/bank.yaml:518-524,
+  # 2478, 2810 ; fonction-logarithme/bank.yaml:792, 2740-2799, 4570-4591), ni
+  # les deux exemples travaillés de lesson.md ($\frac{6}{3-2x}$ sur $[2,3]$,
+  # $\frac{-3}{(2x+1)^2}$ sur $[0,2]$).
+  - id: CI-51
+    rung: "R1"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_calcul_integral
+    tags: [primitive_u_sur_u, facteur_constant]
+    primary_misconception: mc.math.maths_calcul_integral.linearite-abusive
+    stem: >
+      Sur $[0,2]$, $u(x)=4x+1$ est strictement positive (elle ne s'annule
+      qu'en $x=-\frac14$, hors de l'intervalle). Calcule
+      $\displaystyle\int_0^2 \frac{12}{4x+1}\,\mathrm{d}x$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$2\\ln 3$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        feedback: >
+          Ce choix reconnaît bien $u=4x+1$ et $\ln|u|$ comme forme de la
+          primitive, mais oublie le facteur : $12=3\times4$, donc le
+          numérateur n'est pas $u'$ lui-même mais $3\,u'$. La primitive est
+          $3\ln(4x+1)$, pas $\ln(4x+1)$ tout court — ce choix correspond à
+          $\ln9-\ln1=\ln9=2\ln3$, sans le $3$ devant.
+      - id: B
+        text: "$6\\ln 3$"
+        correct: true
+      - id: C
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u
+        feedback: >
+          Ce résultat vient de primitiver $u'=4$ au lieu de reconnaître $u$ au
+          dénominateur : la candidate $\ln(u')=\ln4$ est une CONSTANTE, donc
+          $F(2)-F(0)=\ln4-\ln4=0$. Une primitive d'une fonction qui n'est pas
+          nulle ne peut pas être constante — c'est $u=4x+1$ qui doit passer
+          dans le logarithme, pas $u'$.
+      - id: D
+        text: "$-6\\ln 3$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
+        feedback: >
+          C'est l'opposé du bon résultat : les bornes ont été évaluées dans
+          le mauvais ordre, $F(0)-F(2)$ au lieu de $F(2)-F(0)$. L'intégrale
+          $\int_0^2$ se calcule toujours borne du haut moins borne du bas.
+    correct_feedback: >
+      $u(x)=4x+1$, $u'(x)=4$, et $12=3\times4$ : la fraction s'écrit
+      $3\times\dfrac{u'}{u}$, donc une primitive est $3\ln|u|=3\ln(4x+1)$
+      (positive sur $[0,2]$, pas besoin de valeur absolue). D'où
+      $\int_0^2\frac{12}{4x+1}\mathrm{d}x = 3\ln9-3\ln1 = 3\ln9 = 6\ln3$.
+    solution: |
+      **Reconnaître le modèle :** $u(x)=4x+1$, $u'(x)=4$. Le numérateur $12$
+      n'est pas $u'$ lui-même, mais un multiple : $12=3\times4$, donc
+      $\dfrac{12}{4x+1} = 3\times\dfrac{u'(x)}{u(x)}$.
+
+      **La primitive :** $3\ln|u|=3\ln(4x+1)$ — sur $[0,2]$, $u$ va de $1$ à
+      $9$, toujours positive, donc $|u|=u$.
+
+      $$\int_0^2 \frac{12}{4x+1}\,\mathrm{d}x = \Big[3\ln(4x+1)\Big]_0^2 = 3\ln9-3\ln1 = 3\ln9$$
+
+      $$= 6\ln3 \quad (\text{car } 9=3^2)$$
+
+  - id: CI-52
+    rung: "R1"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [primitive_u_sur_u, valeur_absolue]
+    primary_misconception: mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee
+    stem: >
+      Sur $[1,2]$, $u(x)=5-6x$ est strictement négative tout du long ($u(1)=-1$,
+      $u(2)=-7$ ; elle ne s'annule qu'en $x=\frac56$, hors de $[1,2]$).
+      Laquelle des expressions suivantes est une primitive VALIDE sur
+      $[1,2]$ de $f(x)=\dfrac{18}{5-6x}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$F(x) = -3\\ln(5-6x)$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee
+        feedback: >
+          Cette expression n'est même pas définie sur $[1,2]$ : $5-6x$ y est
+          strictement négatif, et $\ln$ n'est défini que sur
+          $\left]0,+\infty\right[$. C'est exactement pour ça que la valeur
+          absolue n'est pas un détail cosmétique — elle est nécessaire dès que
+          $u<0$ sur l'intervalle.
+      - id: B
+        text: "$F(x) = \\ln|5-6x|$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        feedback: >
+          La structure $\ln|u|$ est correcte, mais le facteur est oublié :
+          $18=-3\times(-6)$, donc $\dfrac{18}{5-6x}=-3\times\dfrac{u'}{u}$. La
+          primitive doit être $-3\ln|5-6x|$, pas $\ln|5-6x|$ seul.
+      - id: C
+        text: "$F(x) = -3\\ln|5-6x|$"
+        correct: true
+      - id: D
+        text: "$F(x) = -3\\ln 6$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u
+        feedback: >
+          $u'(x)=-6$ est une CONSTANTE : primitiver $u'$ au lieu de
+          reconnaître $u=5-6x$ au dénominateur donne $\ln|u'|=\ln6$, qui ne
+          dépend pas de $x$ — ça ne peut pas être la primitive d'une fonction
+          qui, elle, varie avec $x$.
+    correct_feedback: >
+      $u(x)=5-6x$, $u'(x)=-6$, et $18=-3\times(-6)$ : la fraction s'écrit
+      $-3\times\dfrac{u'}{u}$, donc une primitive est $-3\ln|u|=-3\ln|5-6x|$.
+      Comme $u<0$ sur tout $[1,2]$, la valeur absolue est réellement utilisée
+      ici, pas une précaution creuse.
+    solution: |
+      **Reconnaître le modèle :** $u(x)=5-6x$, $u'(x)=-6$. Le numérateur
+      $18=-3\times(-6)$, donc $\dfrac{18}{5-6x}=-3\times\dfrac{u'(x)}{u(x)}$.
+
+      **L'intervalle :** sur $[1,2]$, $u$ vaut $-1$ en $x=1$ et $-7$ en
+      $x=2$ — strictement négative tout du long, jamais nulle. La valeur
+      absolue est donc indispensable : $\ln(5-6x)$ seul serait un logarithme
+      d'un nombre négatif, ce qui n'existe pas.
+
+      **La primitive valide :** $F(x)=-3\ln|5-6x|$ — vérifie-le en dérivant :
+      $F'(x) = -3\times\dfrac{-6}{5-6x} = \dfrac{18}{5-6x}$.
+
+  - id: CI-53
+    rung: "R1"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_calcul_integral
+    tags: [primitive_u_sur_u, intervalle_validite]
+    primary_misconception: mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee
+    stem: >
+      Sur $[1,4]$, $u(x)=3x-8$. Quelle est la valeur de
+      $\displaystyle\int_1^4 \frac{15}{3x-8}\,\mathrm{d}x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$5\\ln\\frac45$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee
+        feedback: >
+          C'est ce que donne $5\ln|3x-8|$ évaluée aux deux bornes
+          ($5\ln|4|-5\ln|-5|=5\ln4-5\ln5=5\ln\frac45$), sans vérifier que
+          $u(x)=3x-8$ garde un signe constant sur TOUT $[1,4]$. Or
+          $u\left(\frac83\right)=0$ et $\frac83\in[1,4]$ : $f$ n'est pas
+          définie en ce point, donc l'intégrale n'existe pas — ce nombre ne
+          mesure rien de réel.
+      - id: B
+        text: "$\\ln\\frac45$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        feedback: >
+          $15=5\times3=5\,u'$ : le facteur $5$ manque devant $\ln|u|$. Mais
+          même corrigé (voir l'autre distracteur), ce calcul resterait
+          invalide — $u$ s'annule à l'intérieur de $[1,4]$.
+      - id: C
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u
+        feedback: >
+          $u'=3$ est une constante : $\ln|u'|=\ln3$ ne dépend pas de $x$, et
+          s'évalue à $\ln3-\ln3=0$ entre deux bornes. Ce n'est de toute façon
+          pas la bonne approche — c'est $u=3x-8$, pas $u'$, qui doit passer
+          dans le logarithme.
+      - id: D
+        text: "Indéfini."
+        correct: true
+    correct_feedback: >
+      $u(x)=3x-8$ s'annule en $x=\frac83$, et $\frac83\in[1,4]$ (puisque
+      $1<\frac83<4$). La fonction $f(x)=\frac{15}{3x-8}$ n'est donc pas
+      définie en ce point : l'intégrale $\int_1^4 f$ n'a pas de sens, quel
+      que soit le nombre qu'un calcul mené sans vérifier cette hypothèse
+      pourrait afficher.
+    solution: |
+      **La condition à vérifier avant tout calcul :** le modèle $u'/u\to\ln|u|$
+      exige que $u$ ne s'annule PAS sur l'intervalle d'intégration.
+
+      $$u(x)=3x-8=0 \iff x=\frac83$$
+
+      Or $\frac83\approx2{,}67$, et $1<\frac83<4$ : ce point est bien à
+      l'intérieur de $[1,4]$.
+
+      **Conclusion :** $f(x)=\frac{15}{3x-8}$ n'est pas définie en
+      $x=\frac83$, donc $\int_1^4 f(x)\,\mathrm{d}x$ n'existe pas. Le nombre
+      $5\ln\frac45$ obtenu en ignorant cette vérification n'est pas une
+      valeur d'intégrale — c'est le piège exact que l'intervalle est censé
+      prévenir.
+
+  - id: CI-54
+    rung: "R1"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [primitive_u_sur_u2, modele_u_sur_u_vs_u_sur_u2]
+    primary_misconception: mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2
+    stem: >
+      Sur $[0,3]$, $u(x)=2x+9$ est strictement positive (elle ne s'annule
+      qu'en $x=-\frac92$, hors de l'intervalle). Calcule
+      $\displaystyle\int_0^3 \frac{10}{(2x+9)^2}\,\mathrm{d}x$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$5\\ln\\frac53$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2
+        feedback: >
+          Modèle détecté : le modèle $\ln|u|$ appliqué à une fraction $u'/u^2$
+          (dénominateur au CARRÉ). L'exposant $2$ au dénominateur signale
+          $-\dfrac1u$, pas $\ln|u|$ — regarder l'exposant avant de choisir la
+          formule.
+      - id: B
+        text: "$\\frac{2}{45}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        feedback: >
+          Le modèle $-\dfrac1u$ est le bon, mais le facteur est oublié :
+          $10=5\times2$, donc $\dfrac{10}{(2x+9)^2}=5\times\dfrac{u'}{u^2}$.
+          La primitive doit être $5\times\left(-\dfrac1u\right)$, pas
+          $-\dfrac1u$ seule.
+      - id: C
+        text: "$-\\frac29$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
+        feedback: >
+          C'est l'opposé du bon résultat : le signe « moins » du modèle
+          $u'/u^2\to-\dfrac1u$ a été perdu en route — vérifie-le en dérivant,
+          $\left(\dfrac1u\right)'=-\dfrac{u'}{u^2}$, pas $+\dfrac{u'}{u^2}$.
+      - id: D
+        text: "$\\frac29$"
+        correct: true
+    correct_feedback: >
+      $u(x)=2x+9$, $u'(x)=2$, et $10=5\times2$ : la fraction s'écrit
+      $5\times\dfrac{u'}{u^2}$, donc une primitive est $5\times\left(-\dfrac1u\right)=-\dfrac{5}{2x+9}$.
+      D'où $\int_0^3\frac{10}{(2x+9)^2}\mathrm{d}x = -\frac{5}{15}-\left(-\frac{5}{9}\right)=-\frac13+\frac59=\frac29$.
+    solution: |
+      **Reconnaître le modèle :** dénominateur au carré $\Rightarrow$ c'est
+      $u'/u^2\to-\dfrac1u$, pas $\ln|u|$. Ici $u(x)=2x+9$, $u'(x)=2$, et
+      $10=5\times2$, donc $\dfrac{10}{(2x+9)^2}=5\times\dfrac{u'(x)}{u(x)^2}$.
+
+      **La primitive :** $5\times\left(-\dfrac1u\right)=-\dfrac{5}{2x+9}$ —
+      vérifie-le en dérivant : $\left(-\dfrac{5}{2x+9}\right)'=\dfrac{5\times2}{(2x+9)^2}=\dfrac{10}{(2x+9)^2}$.
+
+      $$\int_0^3 \frac{10}{(2x+9)^2}\,\mathrm{d}x = \left[-\frac{5}{2x+9}\right]_0^3 = -\frac{5}{15}-\left(-\frac{5}{9}\right) = -\frac13+\frac59 = \frac29$$
+
+  - id: CI-55
+    rung: "R1"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [primitive_u_sur_u2, modele_u_sur_u_vs_u_sur_u2]
+    primary_misconception: mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2
+    stem: >
+      Sur $[1,3]$, $u(x)=4x-1$ est strictement positive (elle ne s'annule
+      qu'en $x=\frac14$, hors de l'intervalle). Laquelle des expressions
+      suivantes est une primitive de $g(x)=\dfrac{7}{(4x-1)^2}$ sur $[1,3]$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\frac74\\ln(4x-1)$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2
+        feedback: >
+          Modèle détecté : le modèle $\ln|u|$ appliqué à une fraction $u'/u^2$.
+          Le dénominateur de $g$ est au CARRÉ : c'est le modèle
+          $-\dfrac1u$, pas $\ln|u|$, qui s'applique ici.
+      - id: B
+        text: "$-\\frac{7}{4(4x-1)}$"
+        correct: true
+      - id: C
+        text: "$-\\frac{7}{4x-1}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        feedback: >
+          Le modèle $-\dfrac1u$ est le bon, mais le facteur est mal ajusté :
+          $7=\dfrac74\times4$, donc $g(x)=\dfrac74\times\dfrac{u'}{u^2}$. La
+          primitive doit être $\dfrac74\times\left(-\dfrac1u\right)$, pas $7\times\left(-\dfrac1u\right)$.
+      - id: D
+        text: "$\\frac{7}{4(4x-1)}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
+        feedback: >
+          Même facteur que la bonne réponse, mais le signe du modèle
+          $u'/u^2\to-\dfrac1u$ a été perdu : $\left(\dfrac1u\right)'=-\dfrac{u'}{u^2}$,
+          jamais $+\dfrac{u'}{u^2}$.
+    correct_feedback: >
+      $u(x)=4x-1$, $u'(x)=4$, et $7=\dfrac74\times4$ : la fraction s'écrit
+      $\dfrac74\times\dfrac{u'}{u^2}$, donc une primitive est
+      $\dfrac74\times\left(-\dfrac1u\right)=-\dfrac{7}{4(4x-1)}$.
+    solution: |
+      **Reconnaître le modèle :** dénominateur au carré $\Rightarrow$
+      $u'/u^2\to-\dfrac1u$. Ici $u(x)=4x-1$, $u'(x)=4$, et $7=\dfrac74\times4$,
+      donc $g(x)=\dfrac74\times\dfrac{u'(x)}{u(x)^2}$.
+
+      **La primitive :** $\dfrac74\times\left(-\dfrac1u\right)=-\dfrac{7}{4(4x-1)}$
+      — vérifie-le en dérivant : $\left(-\dfrac{7}{4(4x-1)}\right)'=\dfrac{7}{4}\times\dfrac{4}{(4x-1)^2}=\dfrac{7}{(4x-1)^2}$.
+
+  - id: CI-56
+    rung: "R1"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_calcul_integral
+    tags: [primitive_u_sur_u, modele_u_sur_u_vs_u_sur_u2]
+    primary_misconception: mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2
+    stem: >
+      Sur $[0,1]$, $u(x)=7-4x$ est strictement positive (elle ne s'annule
+      qu'en $x=\frac74$, hors de l'intervalle). Calcule
+      $\displaystyle\int_0^1 \frac{20}{7-4x}\,\mathrm{d}x$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\frac{20}{21}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2
+        feedback: >
+          Modèle détecté : le modèle $-\dfrac1u$ appliqué à une fraction
+          $u'/u$ (dénominateur à la puissance $1$, pas $2$). Ici le
+          dénominateur $7-4x$ n'est pas élevé au carré : c'est $\ln|u|$ qui
+          s'applique, pas $-\dfrac1u$.
+      - id: B
+        text: "$\\ln\\frac37$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        feedback: >
+          La structure $\ln|u|$ est la bonne, mais le facteur est oublié :
+          $20=-5\times(-4)$, donc $\dfrac{20}{7-4x}=-5\times\dfrac{u'}{u}$. La
+          primitive doit être $-5\ln(7-4x)$, pas $\ln(7-4x)$ seul.
+      - id: C
+        text: "$5\\ln\\frac73$"
+        correct: true
+      - id: D
+        text: "$-5\\ln\\frac73$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
+        feedback: >
+          C'est l'opposé du bon résultat : les bornes ont été évaluées dans
+          le mauvais ordre, $F(0)-F(1)$ au lieu de $F(1)-F(0)$.
+    correct_feedback: >
+      $u(x)=7-4x$, $u'(x)=-4$, et $20=-5\times(-4)$ : la fraction s'écrit
+      $-5\times\dfrac{u'}{u}$, donc une primitive est $-5\ln|u|=-5\ln(7-4x)$
+      (positive sur $[0,1]$). D'où
+      $\int_0^1\frac{20}{7-4x}\mathrm{d}x = -5\ln3-(-5\ln7) = 5\ln\frac73$.
+    solution: |
+      **Reconnaître le modèle :** dénominateur à la puissance $1$
+      $\Rightarrow$ $u'/u\to\ln|u|$. Ici $u(x)=7-4x$, $u'(x)=-4$, et
+      $20=-5\times(-4)$, donc $\dfrac{20}{7-4x}=-5\times\dfrac{u'(x)}{u(x)}$.
+
+      **La primitive :** $-5\ln|u|=-5\ln(7-4x)$ — sur $[0,1]$, $u$ va de $7$ à
+      $3$, toujours positive.
+
+      $$\int_0^1 \frac{20}{7-4x}\,\mathrm{d}x = \Big[-5\ln(7-4x)\Big]_0^1 = -5\ln3-(-5\ln7) = 5\ln\frac73$$
+
+  - id: CI-57
+    rung: "R1"
+    habilete: synthese
+    difficulty_level: 5
+    skill_code: maths_calcul_integral
+    tags: [primitive_u_sur_u, linearite, bac_style]
+    primary_misconception: mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u
+    stem: >
+      On donne, pour tout réel $x$, $\dfrac{6}{2+e^x} = 3 - \dfrac{3e^x}{2+e^x}$
+      (vérifie-le en réduisant au même dénominateur). Utilise cette écriture
+      pour calculer $\displaystyle\int_0^{\ln 2} \frac{6}{2+e^x}\,\mathrm{d}x$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$3\\ln\\frac32$"
+        correct: true
+      - id: B
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u
+        feedback: >
+          Ce résultat vient de primitiver $\ln(e^x)=x$ pour le second terme,
+          comme si $e^x$ (le numérateur) était le $u$ à reconnaître. Mais
+          c'est $u=2+e^x$ — le DÉNOMINATEUR — dont $u'=e^x$ est la dérivée,
+          qui doit passer dans le logarithme : la primitive du second terme
+          est $3\ln(2+e^x)$, pas $3\ln(e^x)=3x$ (qui annule exactement le
+          premier terme et donne $0$).
+      - id: C
+        text: "$3\\ln\\frac34$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        feedback: >
+          Ce résultat vient d'avoir primitivé seulement le second terme,
+          $-3\ln(2+e^x)$, en oubliant que le premier terme, la constante $3$,
+          a lui aussi une primitive ($3x$) à intégrer par linéarité. Les
+          deux morceaux de la décomposition doivent être primitivés, pas un
+          seul.
+      - id: D
+        text: "$-3\\ln\\frac32$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
+        feedback: >
+          C'est l'opposé du bon résultat : les bornes ont été évaluées dans
+          le mauvais ordre, $F(0)-F(\ln2)$ au lieu de $F(\ln2)-F(0)$.
+    correct_feedback: >
+      Le premier terme, $3$, se primitive en $3x$. Le second,
+      $\dfrac{3e^x}{2+e^x}$, est de la forme $u'/u$ avec $u=2+e^x$
+      ($u'=e^x$) : sa primitive est $3\ln(2+e^x)$. D'où
+      $F(x)=3x-3\ln(2+e^x)$, et $F(\ln2)-F(0) = -3\ln2-(-3\ln3) = 3\ln\frac32$.
+    solution: |
+      **Le premier terme :** primitive de la constante $3$ est $3x$.
+
+      **Le second terme :** $\dfrac{3e^x}{2+e^x}$ est de la forme $u'/u$ avec
+      $u(x)=2+e^x$ (toujours strictement positive), $u'(x)=e^x$ : c'est
+      exactement le numérateur. Sa primitive est $3\ln(2+e^x)$.
+
+      **La primitive complète :** $F(x) = 3x-3\ln(2+e^x)$.
+
+      $$F(\ln2) = 3\ln2-3\ln(2+2) = 3\ln2-3\ln4 = 3\ln2-6\ln2 = -3\ln2$$
+
+      $$F(0) = 0-3\ln(2+1) = -3\ln3$$
+
+      $$\int_0^{\ln2}\frac{6}{2+e^x}\,\mathrm{d}x = F(\ln2)-F(0) = -3\ln2-(-3\ln3) = 3\ln3-3\ln2 = 3\ln\frac32$$
+
+      C'est exactement le montage que le bac utilise pour router une
+      fraction en $e^x$ vers le modèle $u'/u$ : une réécriture algébrique
+      d'abord, la reconnaissance du modèle ensuite.
+
+  - id: CI-58
+    rung: "R1"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_calcul_integral
+    tags: [primitive_u_sur_u, intervalle_validite]
+    primary_misconception: mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee
+    stem: >
+      Sur $[0,4]$, $u(x)=2x-3$. Quelle est la valeur de
+      $\displaystyle\int_0^4 \frac{12}{2x-3}\,\mathrm{d}x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u
+        feedback: >
+          $u'=2$ est une constante : $\ln|u'|=\ln2$ ne dépend pas de $x$, et
+          s'évalue à $\ln2-\ln2=0$ entre deux bornes. Ce n'est de toute façon
+          pas la bonne approche — c'est $u=2x-3$, pas $u'$, qui doit passer
+          dans le logarithme.
+      - id: B
+        text: "Indéfini."
+        correct: true
+      - id: C
+        text: "$6\\ln\\frac53$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee
+        feedback: >
+          C'est ce que donne $6\ln|2x-3|$ évaluée aux deux bornes
+          ($6\ln|5|-6\ln|-3|=6\ln5-6\ln3=6\ln\frac53$), sans vérifier que
+          $u(x)=2x-3$ garde un signe constant sur TOUT $[0,4]$. Or
+          $u\left(\frac32\right)=0$ et $\frac32\in[0,4]$ : $f$ n'est pas
+          définie en ce point, donc l'intégrale n'existe pas — ce nombre ne
+          mesure rien de réel.
+      - id: D
+        text: "$\\ln\\frac53$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        feedback: >
+          $12=6\times2=6\,u'$ : le facteur $6$ manque devant $\ln|u|$. Mais
+          même corrigé (voir l'autre distracteur), ce calcul resterait
+          invalide — $u$ s'annule à l'intérieur de $[0,4]$.
+    correct_feedback: >
+      $u(x)=2x-3=0 \iff x=\frac32$, et $\frac32\in[0,4]$. La formule
+      $u'/u\to\ln|u|$ exige que $u$ ne s'annule sur aucun point de
+      l'intervalle — ici elle s'annule à l'intérieur, donc $f$ n'est pas
+      définie partout sur $[0,4]$ et l'intégrale n'a pas de sens, même si le
+      calcul formel affiche un nombre.
+    solution: |
+      **Vérifier l'hypothèse d'abord :** $u(x)=2x-3$ s'annule en
+      $x=\frac32$. Comme $0<\frac32<4$, ce point est à l'intérieur de $[0,4]$.
+
+      **Conclusion :** $f(x)=\frac{12}{2x-3}$ n'est pas définie en
+      $x=\frac32$, donc $\int_0^4 f(x)\,\mathrm{d}x$ n'existe pas. Le calcul
+      formel affiché — arithmétiquement correct à chaque étape — repose sur
+      une hypothèse (l'intervalle où $u$ ne s'annule pas) qui n'a jamais été
+      vérifiée. C'est précisément l'erreur que le réflexe « vérifier
+      l'intervalle avant de calculer » prévient.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05 (CI-31→CI-34), le 2026-09-23 pour le rung « volume
 # d'un solide de révolution » (CI-35→CI-50, spec-extension.md §7.2), puis
@@ -2969,6 +3512,14 @@ items:
 # $h' = F$ ». C'est exactement ce que fait CI-31, et CI-32 y ajoute le piège de
 # la constante dont on croit l'intégrale nulle « puisque la dérivée d'une
 # constante l'est ». CI-33 et CI-34 referment la conversion d'unités d'aire.
+# RÉÉCRIT à nouveau le 2026-09-27 (CI-51→CI-58) : dette d'examen, vague B,
+# GAP-A "primitive de u'/u -> ln|u| (et u'/u² -> -1/u)"
+# (docs/audits/dette-examen/maths.md § calcul-integral). Trois misconceptions
+# neuves déclarées (une scindée en deux depuis la proposition du
+# content-author, voir le commentaire au-dessus du bloc `misconceptions`),
+# chacune au plancher exact (3 items) sauf `u-sur-u-derivee-au-lieu-de-u`
+# (5 items, marge réelle). Huit items ajoutés, tous rung R1, tous avec un tag
+# par distracteur dès l'écriture (pas de dette de marquage sur ce lot).
 # Tableau GÉNÉRÉ contre la convention de la chaîne, gardé par
 # web/scripts/resume-couverture.mjs.
 coverage_summary:
@@ -2979,9 +3530,9 @@ coverage_summary:
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
     web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
-    mc.math.maths_calcul_integral.primitive-vs-derivee:            { count: 3, items: [CI-11, CI-31, CI-32] }
-    mc.math.maths_calcul_integral.constante-et-bornes:             { count: 5, items: [CI-1, CI-10, CI-13, CI-15, CI-17] }
-    mc.math.maths_calcul_integral.linearite-abusive:               { count: 8, items: [CI-2, CI-12, CI-32, CI-36, CI-37, CI-43, CI-44, CI-50] }
+    mc.math.maths_calcul_integral.primitive-vs-derivee:            { count: 5, items: [CI-11, CI-31, CI-32, CI-54, CI-55] }
+    mc.math.maths_calcul_integral.constante-et-bornes:             { count: 8, items: [CI-1, CI-10, CI-13, CI-15, CI-17, CI-51, CI-56, CI-57] }
+    mc.math.maths_calcul_integral.linearite-abusive:               { count: 16, items: [CI-2, CI-12, CI-32, CI-36, CI-37, CI-43, CI-44, CI-50, CI-51, CI-52, CI-53, CI-54, CI-55, CI-56, CI-57, CI-58] }
     mc.math.maths_calcul_integral.chasles-mal-appliquee:           { count: 3, items: [CI-14, CI-16, CI-32] }
     mc.math.maths_calcul_integral.integrale-signee-vs-aire:        { count: 5, items: [CI-6, CI-11, CI-17, CI-26, CI-28] }
     mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe:      { count: 3, items: [CI-5, CI-24, CI-25] }
@@ -2995,12 +3546,15 @@ coverage_summary:
     mc.math.maths_calcul_integral.volume-integrale-sans-pi:        { count: 10, items: [CI-36, CI-37, CI-38, CI-39, CI-41, CI-42, CI-43, CI-44, CI-49, CI-50] }
     mc.math.maths_calcul_integral.volume-carre-mal-place:          { count: 5, items: [CI-36, CI-37, CI-43, CI-44, CI-50] }
     mc.math.maths_calcul_integral.conversion-unites-volume:        { count: 4, items: [CI-46, CI-47, CI-48, CI-49] }
-  total_items: 47
+    mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee: { count: 3, items: [CI-52, CI-53, CI-58] }
+    mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u:        { count: 5, items: [CI-51, CI-52, CI-53, CI-57, CI-58] }
+    mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2:                { count: 3, items: [CI-54, CI-55, CI-56] }
+  total_items: 55
   floor: 3
   floor_met: true
   ramp_coverage:
     R0: 3
-    R1: 4
+    R1: 12
     R2: 3
     R3: 4
     R4: 3
@@ -3019,20 +3573,29 @@ coverage_summary:
     distracteurs hétérogènes de l'accroche CI-7/8/9, dont les raisons d'erreur
     ne se ramènent pas toutes à un modèle unique — reste une passe à faire. Les
     items ajoutés depuis (CI-31 à CI-34, puis CI-36 à CI-50 pour le rung
-    volume — CI-35/CI-40/CI-45 retirés le 2026-09-24) portent, eux, un tag sur
+    volume — CI-35/CI-40/CI-45 retirés le 2026-09-24 —, puis CI-51 à CI-58
+    pour la dette d'examen vague B du 2026-09-27) portent, eux, un tag sur
     chaque distracteur.
   honest_state: >-
-    Seize misconceptions déclarées (onze historiques + cinq du rung volume),
-    toutes couvertes, aucune sous le plancher. Cinq y siègent EXACTEMENT
-    (3 items) — `primitive-vs-derivee`, `chasles-mal-appliquee`,
-    `ipp-mauvais-choix-ou-signe`, `aire-naive-geometrique`,
-    `conversion-unites-aire` — la marge y est nulle et tout retrait d'item la
-    casse. Les cinq misconceptions du rung volume gardent une marge réelle
-    après la coupe du 2026-09-24 (de 4 à 10 items chacune) ; les deux plus
-    tendues sont désormais `conversion-unites-volume` et
-    `volume-circonference-vs-disque`, à 4 items chacune — une seule marge
-    d'item au-dessus du plancher, à surveiller si une future passe retire
-    encore un item du rung. `linearite-abusive` reste au-dessus du plancher
-    exact (8
-    items, dual-tag ADR 0009 sur `π(∫f)²` : CI-36, CI-37, CI-43, CI-44,
-    CI-50) mais avec une marge réduite par le retrait de CI-45.
+    Dix-neuf misconceptions déclarées (onze historiques + cinq du rung volume
+    + trois de la dette d'examen vague B, u'/u et u'/u²), toutes couvertes,
+    aucune sous le plancher. Six y siègent EXACTEMENT (3 items) —
+    `chasles-mal-appliquee`, `ipp-mauvais-choix-ou-signe`,
+    `aire-naive-geometrique`, `conversion-unites-aire`,
+    `u-sur-u-absolue-ou-intervalle-oubliee`, `u-sur-u-vs-u-sur-u2` — la marge
+    y est nulle et tout retrait d'item la casse (`primitive-vs-derivee` en
+    sort désormais avec 5 items, CI-54 et CI-55 ajoutés). Les cinq
+    misconceptions du rung volume gardent une marge réelle après la coupe du
+    2026-09-24 (de 4 à 10 items chacune) ; les deux plus tendues sont
+    désormais `conversion-unites-volume` et `volume-circonference-vs-disque`,
+    à 4 items chacune — une seule marge d'item au-dessus du plancher, à
+    surveiller si une future passe retire encore un item du rung.
+    `linearite-abusive` gagne une marge large avec ce lot (16 items, dual-tag
+    ADR 0009 sur `π(∫f)²` toujours vrai pour CI-36, CI-37, CI-43, CI-44,
+    CI-50 ; les huit occurrences neuves, CI-51 à CI-58, y voient toutes le
+    même modèle — le facteur constant du ratio numérateur/u' mal ajusté ou
+    oublié devant $\ln|u|$ ou $-\frac1u$). `u-sur-u-derivee-au-lieu-de-u`
+    garde une marge réelle (5 items) ; les deux autres misconceptions de ce
+    lot (`u-sur-u-absolue-ou-intervalle-oubliee`,
+    `u-sur-u-vs-u-sur-u2`) siègent au plancher exact et n'ont aucune marge —
+    à surveiller en priorité si un futur audit retire un item du rung R1.
