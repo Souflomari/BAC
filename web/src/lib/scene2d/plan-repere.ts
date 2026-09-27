@@ -16,6 +16,7 @@
  * opaque (`voile`), jamais d'alpha.
  */
 import { melange, type JetonsFigure as Jetons, type RGB } from "../jetons-figure";
+import { tailleTexte } from "./texte";
 
 export interface Projection {
   x: number;
@@ -134,7 +135,9 @@ export function peindreRepere(
 
   // ── les graduations entières, et leurs nombres (tous les 1, ou tous les 2 au téléphone) ──
   const pas = cote < COTE_GRADUATIONS_FINES ? 2 : 1;
-  c.font = `12px ${police}`;
+  // la taille suit le réglage du lecteur (texte.ts) ; les zones d'occupation des nombres, avec elle
+  const h = tailleTexte(12);
+  c.font = `${h}px ${police}`;
   c.fillStyle = encre;
   const nombre = (k: number) => (k < 0 ? `−${-k}` : `${k}`);
   c.beginPath();
@@ -160,7 +163,7 @@ export function peindreRepere(
     if (k === 0 || k % pas !== 0) continue;
     const t = nombre(k), w = c.measureText(t).width;
     rep[`grad-x${k}`] = P(X(k), y0);
-    const b = { x0: X(k) - w / 2 - 1, y0: y0 + 5, x1: X(k) + w / 2 + 1, y1: y0 + 20 };
+    const b = { x0: X(k) - w / 2 - 1, y0: y0 + 5, x1: X(k) + w / 2 + 1, y1: y0 + 8 + h };
     if (sousUnPoint(b)) continue;
     c.fillText(t, X(k), y0 + 6);
     zones.push(b);
@@ -171,7 +174,7 @@ export function peindreRepere(
     if (k === 0 || k % pas !== 0) continue;
     const t = nombre(k), w = c.measureText(t).width;
     rep[`grad-y${k}`] = P(x0, Y(k));
-    const b = { x0: x0 - 8 - w, y0: Y(k) - 8, x1: x0 - 6, y1: Y(k) + 8 };
+    const b = { x0: x0 - 8 - w, y0: Y(k) - (h * 2) / 3, x1: x0 - 6, y1: Y(k) + (h * 2) / 3 };
     if (sousUnPoint(b)) continue;
     c.fillText(t, x0 - 7, Y(k));
     zones.push(b);
@@ -180,7 +183,7 @@ export function peindreRepere(
   c.textAlign = "right";
   c.textBaseline = "top";
   c.fillText("O", x0 - 5, y0 + 5);
-  zones.push({ x0: x0 - 16, y0: y0 + 4, x1: x0 - 4, y1: y0 + 20 });
+  zones.push({ x0: x0 - 16 - (h - 12), y0: y0 + 4, x1: x0 - 4, y1: y0 + 8 + h });
   rep["origine"] = P(X(0), Y(0));
 
   // les deux vecteurs du repère, u⃗ et v⃗, nommés quand il y a la place
@@ -216,7 +219,7 @@ export function peindreRepere(
     };
     nomVecteur("u", X(0.5), y0 - 5);
     nomVecteur("v", x0 + 9, Y(0.5) + 5);
-    c.font = `12px ${police}`;
+    c.font = `${tailleTexte(12)}px ${police}`;
   }
 
   // ── le cercle unité : l'étalon ──

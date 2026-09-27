@@ -214,7 +214,15 @@ jobs:
       # critère par critère (jamais un décompte), le balayage borné qui garde
       # l'invariant exact et avance d'au moins 4 px, et les libellés de crans
       # qui n'impriment aucune réponse.
-      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange · noyaux · diffraction · tremplin · modulation · électrolyse · plan complexe · rapport)
+      #
+      # test-quotient garde le modèle EXACT de « l'échelle des quotients »
+      # (Q_r face à K) avant qu'un pixel soit dessiné : les 75 Q_r,i et leurs
+      # verdicts refaits en flottants depuis la spec (bain B : 9 / 1 / 15, un
+      # seul équilibre, qui n'existe qu'à K = 2,5 EXACTEMENT), l'exposant du
+      # bain C (×10 sur [Ag⁺] = deux décades), le pari de S4 (« exposant
+      # omis » à deux décades pile), ce qui est atteignable à chaque étape, et
+      # K écrit = K qui juge.
+      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange · noyaux · diffraction · tremplin · modulation · électrolyse · plan complexe · rapport · quotient)
         run: |
           npm run test-learner-model
           npm run test-attempt-events
@@ -229,6 +237,7 @@ jobs:
           npm run test-electrolyse
           npm run test-plan-complexe
           npm run test-plan-complexe-rapport
+          npm run test-quotient
 
       # PORTE LIENS (2026-09-05). Ce projet se pilote par ses documents :
       # `.claude/CLAUDE.md` envoie vers la vision, la vision vers les règles,

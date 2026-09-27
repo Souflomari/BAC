@@ -104,7 +104,11 @@ const LIBELLES = {
   pointM: ["2+4i", "\\sqrt{3}+i", "-\\sqrt{3}+i", "2\\sqrt{3}\\,i", "4"],
 };
 const BADGE = { A: "w=\\dfrac{z_C-z_A}{z_B-z_A}", B: "w=\\dfrac{z_C-z_B}{z_A-z_B}", C: "w=\\dfrac{z_B-z_C}{z_A-z_C}", lieu: "u=\\dfrac{z-z_A}{z-z_B}" };
-const DECIMAL = /\d[.,]\d|°/;
+// Un décimal ou un degré, sous TOUTES les formes que la scène peut écrire : les lectures sont lues
+// en TeX (window.__tex), où la virgule française s'écrit « {,} » — « 0{,}87 » échappait à « \d[.,]\d »,
+// et la campagne de sabotages l'a trouvé (module arrondi à deux décimales : [frontiere] restée verte).
+// La porte sœur (scene-plan-complexe.mjs) avait déjà la forme juste ; le motif est repris d'elle.
+const DECIMAL = /\d\s*[.,]\s*\d|\{,\}|°|\\circ|degré|(^|[^\p{L}])deg(?![\p{L}])/u;
 
 /** Un petit lecteur de TeX : ce que la scène écrit (fractions, √, i, π) → [re, im]. null s'il ne sait pas. */
 function evalTex(s0) {
@@ -163,6 +167,11 @@ page.on("console", (m) => { if (m.type() === "error") erreurs.push(`console : ${
 const resultats = [];
 const noter = (famille, ok, detail) => resultats.push({ famille, ok: !!ok, detail });
 const juger = (famille, ok, detail) => noter(famille, ESSAI ? !ok : ok, detail);
+// le motif du décimal, contre chaque forme qu'il doit voir (une porte qui ne voit pas « 0{,}87 » est verte pour rien)
+{
+  const muets = ["1,41", "0.52", "0{,}87", "30°", "30^\\circ", "30 degrés"].filter((x) => !DECIMAL.test(x));
+  noter("frontiere", muets.length === 0, `le motif du décimal : ${muets.length ? `MUET sur ${muets.join(", ")}` : "6 formes, chacune vue (dont « 0{,}87 » et « ^\\circ »)"}`);
+}
 process.on("uncaughtException", (e) => {
   for (const r of resultats) console.log(`  ${r.ok ? "·" : "✘"} [${r.famille}] ${r.detail}`);
   console.log(`  ✘ [execution] la porte s'est ARRÊTÉE en cours de mesure : ${String(e?.stack ?? e).split("\n").slice(0, 3).join(" | ")}`);

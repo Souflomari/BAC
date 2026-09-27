@@ -21,6 +21,7 @@
  */
 import * as N from "./noyaux-modele";
 import { lireJetons, type RGB } from "../jetons-figure";
+import { tailleTexte } from "./texte";
 
 export interface Projection {
   x: number;
@@ -121,7 +122,7 @@ export function creerRenduNoyaux(canvas: HTMLCanvasElement, hote: HTMLElement): 
   // 12 px : la taille « caption » des jetons, celle des étiquettes posées sur la scène
   const texte = (t: string, x: number, y: number, aligne: CanvasTextAlign = "center", base: CanvasTextBaseline = "top", encre = false) => {
     const c = ctx!;
-    c.font = `12px ${police}`;
+    c.font = `${tailleTexte(12)}px ${police}`;
     c.textAlign = aligne;
     c.textBaseline = base;
     c.fillStyle = css(encre ? jetons.encre : jetons.encreDouce);

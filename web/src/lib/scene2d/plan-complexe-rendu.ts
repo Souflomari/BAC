@@ -35,6 +35,7 @@
 import { FENETRE } from "./plan-complexe-modele";
 import { lireJetons, melange, type RGB } from "../jetons-figure";
 import { COTE_GRADUATIONS_FINES, geometrie, peindreRepere, pointe as pointeSur, type Projection, type Pt } from "./plan-repere";
+import { tailleTexte } from "./texte";
 
 export type { Projection };
 export { COTE_GRADUATIONS_FINES };
@@ -126,7 +127,7 @@ export function creerRenduPlan(canvas: HTMLCanvasElement, hote: HTMLElement): Re
     rep = r0.rep;
     segs = r0.segs;
     zonesNombres = r0.zones;
-    c.font = `12px ${police}`;
+    c.font = `${tailleTexte(12)}px ${police}`;
 
     const ctr: Pt = e.centre ?? [0, 0];
     const cx = X(ctr[0]), cy = Y(ctr[1]);

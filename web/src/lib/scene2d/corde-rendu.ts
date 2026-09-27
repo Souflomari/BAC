@@ -16,6 +16,7 @@
  */
 import * as C from "./corde";
 import { lireJetons, type RGB } from "../jetons-figure";
+import { tailleTexte } from "./texte";
 
 export interface Projection {
   x: number;
@@ -148,7 +149,7 @@ export function creerRenduCorde(canvas: HTMLCanvasElement, hote: HTMLElement): R
   // scène — le canvas n'a pas une seconde échelle de texte (vague 2 : 10 et 11 px)
   const texte = (t: string, x: number, y: number, aligne: CanvasTextAlign = "center", taille = 12) => {
     const c = ctx!;
-    c.font = `${taille}px ${police}`;
+    c.font = `${tailleTexte(taille)}px ${police}`;
     c.textAlign = aligne;
     c.textBaseline = "top";
     c.fillStyle = css(jetons.encreDouce);

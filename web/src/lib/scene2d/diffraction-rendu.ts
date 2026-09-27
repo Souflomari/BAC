@@ -26,6 +26,7 @@
  */
 import * as M from "./diffraction-modele";
 import { lireJetons, type RGB } from "../jetons-figure";
+import { tailleTexte } from "./texte";
 
 export interface Projection {
   x: number;
@@ -97,7 +98,7 @@ export function creerRenduDiffraction(canvas: HTMLCanvasElement, hote: HTMLEleme
   // 11 px n'était dans aucun jeton, et ce sont les nombres qu'on demande de LIRE
   const texte = (t: string, x: number, y: number, aligne: CanvasTextAlign, base: CanvasTextBaseline) => {
     const c = ctx!;
-    c.font = `12px ${police}`;
+    c.font = `${tailleTexte(12)}px ${police}`;
     c.textAlign = aligne;
     c.textBaseline = base;
     c.fillStyle = css(jetons.encre);
