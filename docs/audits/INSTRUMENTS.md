@@ -2450,6 +2450,17 @@ réel »), `fuite-inter-etapes`, `libelles-de-cran`, `frontiere`, `katex` (les d
 390 px. `node scripts/scene-plan-complexe-rapport.mjs --porte` (⚠️ depuis `web/`, après build),
 `--essai-rouge` pour l'inversion de chaque famille.
 
+**Campagne de sabotages du produit (2026-09-27, après la vague 2).** Neuf sabotages rejoués sur le
+produit de la vague 2 (porte verte avant et après, arbre identique) : huit attrapés, dont
+`module-decimal`, que le motif du décimal repris le matin même voit désormais. Un MANQUÉ, et c'était
+la porte : `sans-borne` (le cercle ouvert jusqu'à −172,5°). Le balayage testait UNE borne, atteinte
+par « cinquante flèches gauches » ; mais la vague 2 a fait suivre au curseur le côté LONG du parcours
+(`sensBal`), et le sabotage, en allongeant le côté bas, retournait le sens : la flèche gauche menait
+à +172,5°, qui passait le contrôle. La porte parcourt désormais les DEUX bornes (cent appuis, puis
+deux cents dans l'autre sens) et rougit si les deux lectures sont égales. Vert ×2 sur le produit,
+rouge sur le sabotage (« le cercle franchit l'axe réel (θ = −172,5°) », une famille seule). *Un
+correctif d'ergonomie qui change le sens d'un contrôle change ce qu'une porte atteint en appuyant.*
+
 ## `web/scripts/scene-quotient.mjs` — $Q_{r,i}$ et $K$ sont-ils à leur place sur l'échelle, et le verdict est-il dit du bon côté ?
 
 **Porte de « l'échelle des quotients »** (pc/evolution-spontanee ; spec

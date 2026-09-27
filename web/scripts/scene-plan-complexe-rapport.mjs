@@ -1036,19 +1036,28 @@ if (pret) {
       const dit = await annonce();
       const invDit = inv === "module" ? /module du rapport reste écrit/ : /argument du rapport reste écrit/;
       if (!invDit.test(dit) || !/glisse sur/.test(dit)) fautes.push(`la région vivante ne dit pas l'invariant au début du geste (« ${dit} »)`);
-      // la BORNE : cinquante appuis, et l'invariant tient toujours
-      for (let k = 0; k < 50; k++) await page.keyboard.press(m === "mediatrice" ? "ArrowRight" : "ArrowLeft");
-      await deuxImages();
-      const pB = Number(await attr("data-balayage-p"));
-      const gardeB = sansBlanc(await part(`[data-rapport="${inv}"]`));
-      if (gardeB !== val) fautes.push(`à la borne (p = ${pB}), l'invariant écrit « ${gardeB} »`);
-      if (m === "cercle-1" && !(pB > 0 && pB < 180)) fautes.push(`le cercle franchit l'axe réel (θ = ${pB}°)`);
-      if (m === "droite" && !(pB > 2)) fautes.push(`la droite franchit B (x = ${pB})`);
+      // les DEUX BORNES : cent appuis dans un sens, puis deux cents dans l'autre, et l'invariant tient aux
+      // deux bouts. Une seule borne ne suffisait pas : depuis la vague 2, le SENS du curseur suit le côté
+      // long du parcours (sensBal), donc « flèche gauche » ne mène pas toujours au minimum — la campagne
+      // de sabotages l'a trouvé (« sans-borne » : le cercle ouvert jusqu'à −172,5°, porte VERTE, parce
+      // que la flèche gauche menait alors à +172,5°, qui passait le contrôle).
+      const bouts = [];
+      for (const [touche, n] of [["ArrowLeft", 100], ["ArrowRight", 200]]) {
+        for (let k = 0; k < n; k++) await page.keyboard.press(touche);
+        await deuxImages();
+        const pB = Number(await attr("data-balayage-p"));
+        bouts.push(pB);
+        const gardeB = sansBlanc(await part(`[data-rapport="${inv}"]`));
+        if (gardeB !== val) fautes.push(`à la borne (p = ${pB}), l'invariant écrit « ${gardeB} »`);
+        if (m === "cercle-1" && !(pB > 0 && pB < 180)) fautes.push(`le cercle franchit l'axe réel (θ = ${pB}°)`);
+        if (m === "droite" && !(pB > 2)) fautes.push(`la droite franchit B (x = ${pB})`);
+      }
+      if (bouts[0] === bouts[1]) fautes.push(`les deux bornes lues sont la même valeur (p = ${bouts[0]}) : la porte n'a pas parcouru le curseur`);
       await page.keyboard.press("Escape");
       await deuxImages();
       const apres = sansBlanc(await part(`[data-rapport="${inv}"]`)), apresAutre = sansBlanc(await part(`[data-rapport="${autre}"]`));
       if ((await attr("data-balayage")) !== "non" || apres !== val || apresAutre === "—") fautes.push("Échap ne remet pas M à sa place, ou les lectures ne reviennent pas");
-      juger("balayage-invariants", fautes.length === 0, `étape 4, balayage sur ${m} : ${fautes.length ? fautes.join(" ; ") : `« ${val} » tenu à trois positions et à la borne, l'autre ligne en « — » à hauteur constante, M sur sa courbe, pas de ${pas.toFixed(1)} px, la valeur parlée dit le déplacement, la région vivante l'invariant`}`);
+      juger("balayage-invariants", fautes.length === 0, `étape 4, balayage sur ${m} : ${fautes.length ? fautes.join(" ; ") : `« ${val} » tenu à trois positions et aux deux bornes (${bouts.join(" ; ")}), l'autre ligne en « — » à hauteur constante, M sur sa courbe, pas de ${pas.toFixed(1)} px, la valeur parlée dit le déplacement, la région vivante l'invariant`}`);
     }
     await katex("étape 4 révélée");
     await lecturesEntieres("étape 4 révélée");
