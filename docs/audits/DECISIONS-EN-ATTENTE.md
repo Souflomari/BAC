@@ -1914,3 +1914,65 @@ la porte 1 (relecture des cadres scannés) reste ouverte.
 avec les révisions du jour. Une réécriture mécanique a été tentée puis ANNULÉE : elle touchait
 des revues datées (justes à leur date) et produisait des chemins qui ne localisaient rien. À
 refaire en visant la CLÉ de chapitre (`lesson_slug`), pas le numéro de ligne.
+
+## 33. L'échelle des quotients, vague 2 : ce qui est appliqué, quatre coupes de prose au propriétaire, quatre défauts « de maison » — et une famille de porte dont le premier rouge était le banc
+
+**LE FAIT.** Trois critiques de vague 2 (dessin, calme, ergonomie) ont relu la scène
+« l'échelle des quotients » (`pc/evolution-spontanee`). Aucun interdit du §0/§7 (ni horloge, ni
+score, ni animation que l'élève n'a pas causée). Appliqué le 2026-09-27 :
+
+- **Dessin.** Sans la bande, l'axe se pose à 0,45 de sa moitié (à 0,26, un vide d'environ 36 % du
+  plateau le séparait du bécher à S1 et S2) ; densité de graduation du bureau à partir de 460 px, pas
+  540 (le plateau fait 482 px de 1 280 à 1 920 — §25.14 — et le bureau recevait la densité du
+  téléphone) ; crochet de la bande sous la flèche du verdict quand elle est sur l'axe, et bouts de
+  7 px ; **filets** qui relient « Q_{r,i} » et « K » à leur marque quand le placeur les éloigne (au
+  téléphone, « K = 1,8×10³⁷ » flottait à dix décades de son pivot).
+- **Calme.** « oxydé » / « réduit » passent en encre (la flèche d'accent les désigne déjà :
+  deux accents de moins dans la figure) ; la légende du plateau dit le COUPLE (« zinc / cuivre »),
+  plus la clé d'auteur « Bain A », qui ne renvoyait à rien à S1 et S2 ; la phrase « 9 en sens
+  inverse, 1 sans évolution, 15 en sens direct » retirée de S3 (trois nombres que le dessin ne
+  montre pas et que l'élève ne peut pas vérifier).
+- **Ergonomie.** Les crans de concentration en COLONNE (ordinaux : repliés 2 + 2 + 1 au téléphone,
+  « descends d'un cran » désignait l'élément en haut à droite) ; revenir à S2 par « Précédent »
+  n'écrase plus le mélange de l'élève (la révélation pose son réglage une fois par étape, pas à
+  chaque entrée) ; la région vivante dit « le quotient initial vaut 10 », plus « Q_r,i = 10 ».
+
+**AU PROPRIÉTAIRE — coupes de prose que le critique de calme lui-même demande de confirmer**
+(elles retirent de la chimie juste et bien écrite ; la règle ROSTER §5 donne l'égalité au calme
+dans le cœur d'apprentissage, mais c'est un arbitrage de voix) :
+
+1. **S5, retour juste** (`echelle-des-quotients.json`, `rien-ne-change`) : s'arrêter après
+   « …c'est pour cela que rien ne bouge à l'échelle où l'on regarde. » — trois phrases (« Rare à
+   préparer, inévitable à atteindre ») ouvrent une seconde idée à l'instant de la première.
+2. **Les `suite`** de S1, S3, S4, S5 : garder la consigne citée, retirer la phrase qui dit ce que
+   l'élève y verrait — elle transforme un manipulable en légende.
+3. **S2, retour de « aucun »** (réponse juste) : la phrase « Tu as peut-être répondu « aucun » pour
+   une raison qui n'est pas la bonne… » invite un élève qui a raison à se méfier de lui-même.
+4. **S4, retour de `produits-reactifs-inverses`** : un devoir de trois manipulations (« Mais passe
+   au bain B… ») logé dans une note de mauvaise réponse.
+
+**DE MAISON — vrais ici, mais partagés par les seize scènes ; pas corrigés dans une seule :**
+le `ResultRow` « Bonne réponse. » de `PariBloc` redit, 500 px plus bas et dans la même couleur, le
+« ✓ correct » de la carte choisie ; les contrôles sous les lectures (le geste que la `suite` demande
+est l'élément le plus loin de la figure) ; le sourcil décoratif « CHIMIE » en tête d'un manipulable
+de chimie ; les distracteurs estompés après révélation. Une passe unique sur `PariBloc` et la
+disposition commune, mesurée sur toutes les scènes, vaut mieux que seize retouches.
+
+**DIFFÉRÉ PARCE QU'IL TOUCHE LES TABLES DE LA SPEC DONT LA PORTE EST TIRÉE :** ne plus offrir le
+bain à S5 (M3 : treize boutons quand la `suite` en demande un groupe) ; ne montrer la ligne
+« espèces » que quand les rôles ne sont PAS dessinés (I4 : « Pb oxydé, Sn²⁺ réduit » dit deux fois
+dans le même écran). Les deux sont justes ; les deux changent ce que `scene-quotient` attend
+(§7.6, §11.2). À faire avec la spec, pas contre elle.
+
+**QUESTION DE CORPUS :** les espèces chimiques s'écrivent en italique mathématique partout où elles
+passent par `$…$` (`$Sn^{2+}$`) — la convention IUPAC les veut droites. Le défaut est du corpus
+entier (PC), pas de cette scène ; il mérite une décision et une porte, pas une retouche locale.
+
+**CE QUE LA PORTE A APPRIS.** Une famille neuve, `rattachement` : une étiquette est à 40 px au plus
+de sa marque LUE AUX PIXELS, ou un filet encré (≥ 80 %) la relie à un point à 18 px au plus de la
+marque. Premier passage sur le produit corrigé : ROUGE (bain C, étape 5, « qri » à 57 px, 42 à 53 %
+d'encre). Le produit était juste ; le **banc** mesurait le filet depuis le CENTRE du disque, alors
+que le placeur le fait partir de l'ancre au bord (ADR 0034 : un rouge neuf est ambigu). Réécrite,
+verte deux fois (1 022 mesures, 27 familles) ; puis le produit saboté (filets non tracés) :
+ROUGE sur `rattachement` seule, deux manquements, les 26 autres familles vertes. Reste dû : la
+campagne de sabotages du produit (spec §11.4, 35 sabotages).

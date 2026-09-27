@@ -2471,9 +2471,9 @@ pointe vers le pivot ; la tête lue de 3 à 7 px de chaque bout, et pour une fl�
 avait une tête plus longue que sa hampe, défaut du PRODUIT aussi) ; `becher-et-roles` (oxydé =
 un métal, réduit = un ion, jamais à l'équilibre) ; et `avant-pari`, `fuite-inter-etapes`,
 `formule-graduee`, `frontiere` (avec auto-contrôle), `fleches-chimiques`, `katex`,
-`lectures-entieres`, `etiquettes`, `cadre`, `palette`, `decades-affirmees`, `annonce`, `console`,
+`lectures-entieres`, `etiquettes`, `rattachement`, `cadre`, `palette`, `decades-affirmees`, `annonce`, `console`,
 `ergonomie` — à 1 280 et à 390 px. `node scripts/scene-quotient.mjs --porte` (⚠️ depuis `web/`,
-après build), `--essai-rouge` pour l'inversion de chaque famille (26/26 le 2026-09-27).
+après build), `--essai-rouge` pour l'inversion de chaque famille (26/26 le 2026-09-27, avant `rattachement`).
 
 **Ce que les premiers lancements ont appris** : quatre fois la porte se lisait mal (pas médian
 biaisé, chevron fondu dans le trait de bande, tête cherchée trop près de la pointe, `K=2,5`
@@ -2482,3 +2482,13 @@ dessin montrait (la région vivante gardait l'annonce de l'étape précédente ;
 le métal). Les étiquettes des rôles ne connaissaient pas leurs flèches : une fois les flèches
 déclarées TRAITS, « oxydé » est passé de la pointe (1 px) sur la lame (44 px) — l'ancre, coincée
 entre les deux, n'avait pas de place propre ; elle est désormais posée au-dessus de la pointe.
+
+**`rattachement` (vague 2, 2026-09-27).** `etiquettes` vérifiait qu'une étiquette ne chevauche
+rien — pas qu'elle est À CÔTÉ de ce qu'elle nomme : au téléphone, « K = 1,8×10³⁷ » flottait à dix
+décades de son pivot, porte verte. La famille exige que « K » et « Q_{r,i} » soient à 40 px au
+plus de la marque LUE AUX PIXELS, ou reliées à elle par un filet encré à 80 % au moins, qui finit
+à 18 px au plus de la marque. Premier rouge : le BANC (le filet mesuré depuis le centre du
+disque, alors que le produit le tire depuis son ancre au bord — 42 à 53 % d'encre sur un filet
+bien visible). Réécrite, verte deux fois (1 022 mesures, 27 familles) ; produit saboté (filets
+non tracés) : rouge sur cette famille SEULE, deux manquements (bain C, étape 5).
+DÉCISIONS §33.

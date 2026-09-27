@@ -15,7 +15,7 @@
  * avant-pari · fuite-inter-etapes · nombres (N1–N12, sur les états ATTEIGNABLES, les 75 à S5) ·
  * decades-affirmees (N13) · axe-decades · position-qri · position-k · cote-et-verdict ·
  * fleche-du-verdict · bande-de-travail · becher-et-roles · palette · formule-graduee · frontiere ·
- * fleches-chimiques · katex · lectures-entieres · etiquettes · cadre · annonce · console · ergonomie.
+ * fleches-chimiques · katex · lectures-entieres · etiquettes · rattachement · cadre · annonce · console · ergonomie.
  *
  * Ce que la porte NE mesure PAS, écrit à côté (ADR 0035) : la mise en page à ≥ 560 px de canvas
  * (axe et bécher côte à côte) — le plateau n'y arrive pas aux largeurs mesurées (1 280 et 390 px de
@@ -396,6 +396,7 @@ async function verifierEtat(b, p, o, ou, { revele, bande, qri = true, qq = panne
   // K et Q_{r,i}, aux pixels, en décades lues sur les graduations
   if (m.kx === null || Math.abs(m.decAxe(m.kx) - lK) * m.ra.pente > 2) fK.push(`pivot ${m.kx === null ? "INTROUVABLE" : `à ${m.decAxe(m.kx).toFixed(2)} décade (attendu ${lK.toFixed(2)}, ${((m.decAxe(m.kx) - lK) * m.ra.pente).toFixed(1)} px)`}`);
   juger("position-k", fK.length === 0, `${ou} : ${fK.length ? fK.join(" ; ") : `pivot K à ${m.decAxe(m.kx).toFixed(2)} décade`}`);
+  await rattachement(m, ou, qq);
   const dots = m.axe.pastilles;
   if (qri) {
     const d = dots.map((x) => ({ x, e: Math.abs(m.decAxe(x) - lQ) * m.ra.pente })).sort((a, b2) => a.e - b2.e)[0];
@@ -597,6 +598,71 @@ async function lecturesEntieres(ou, qq = panneau) {
   });
   if (!r) return juger("lectures-entieres", false, `${ou} : aucune liste de lectures`);
   juger("lectures-entieres", r.n > 0 && !r.dehors.length, `${ou} : ${r.n} lecture(s) dans ${r.largeur} px — ${r.dehors.length ? `DÉBORDENT : ${r.dehors.join(", ")}` : "chaque formule tient dans la liste"}`);
+}
+/**
+ * RATTACHEMENT — « K = … » et « Q_{r,i} = … » nomment une MARQUE : chacune doit être à moins de 40 px
+ * de la marque qu'elle nomme, ou reliée à elle par un filet visible. La marque est celle que la PORTE a
+ * lue aux pixels (le pivot, la pastille — sur la bande quand la bande la porte), jamais l'ancre que
+ * le produit déclare. Né de la vague 2 (dessin) : au téléphone, « K = 1,8×10³⁷ » flottait à dix
+ * décades de son pivot, et `etiquettes` était verte — elle vérifiait qu'une étiquette ne chevauche
+ * rien, pas qu'elle est à côté de ce qu'elle nomme.
+ */
+async function rattachement(m, ou, qq = panneau) {
+  const marques = [];
+  if (m.bande && m.kbx !== null) marques.push({ nom: "k", x: m.kbx, y: m.bande.y - 13 });
+  else if (m.kx !== null) marques.push({ nom: "k", x: m.kx, y: m.axe.y - 13 });
+  if (m.bande && m.bande.pastilles.length === 1) marques.push({ nom: "qri", x: m.bande.pastilles[0], y: m.bande.y });
+  else if (m.axe.pastilles.length === 1) marques.push({ nom: "qri", x: m.axe.pastilles[0], y: m.axe.y });
+  const res = await qq.evaluate((el, marques) => {
+    const cv = el.querySelector("canvas");
+    const rc = cv.getBoundingClientRect();
+    const dpr = cv.width / cv.clientWidth, g = cv.getContext("2d");
+    const f = g.getImageData(cv.width - 1, cv.height - 1, 1, 1).data;
+    const lum = (d, i) => 0.2126 * d[i] + 0.7152 * d[i + 1] + 0.0722 * d[i + 2];
+    const lf = lum(f, 0);
+    return marques.map((mq) => {
+      const e = el.querySelector(`[data-etiquette="${mq.nom}"]`);
+      if (!e || getComputedStyle(e).visibility !== "visible" || !(e.textContent ?? "").trim()) return { ...mq, absente: true };
+      const b = e.getBoundingClientRect();
+      const bx0 = b.left - rc.left, by0 = b.top - rc.top, bx1 = b.right - rc.left, by1 = b.bottom - rc.top;
+      const qx = Math.max(bx0, Math.min(mq.x, bx1)), qy = Math.max(by0, Math.min(mq.y, by1));
+      const d = Math.hypot(qx - mq.x, qy - mq.y);
+      if (d <= 40) return { ...mq, d, filet: null };
+      // le filet : un TRAIT qui part de la boîte et FINIT près de la marque (à ≤ 18 px). Le produit
+      // tire le sien depuis son ancre (sous la pastille), pas depuis le centre de la marque : un
+      // premier essai qui échantillonnait le segment centre → boîte ne trouvait que 42–53 % d'encre
+      // sur un filet bien visible (premier lancement, bain C). On essaie donc chaque extrémité E
+      // d'une grille autour de la marque, et l'on garde le segment boîte → E le plus encré.
+      const encreEn = (x, y) => {
+        for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+          const px = g.getImageData(Math.round((x + dx) * dpr), Math.round((y + dy) * dpr), 1, 1).data;
+          if (Math.abs(lum(px, 0) - lf) > 20) return true;
+        }
+        return false;
+      };
+      let meilleur = 0;
+      for (let ex = -18; ex <= 18; ex += 3) for (let ey = -18; ey <= 18; ey += 3) {
+        if (Math.hypot(ex, ey) > 18) continue;
+        const Ex = mq.x + ex, Ey = mq.y + ey, L = Math.hypot(qx - Ex, qy - Ey);
+        if (L < 12) continue;
+        let n = 0, encre = 0;
+        for (let t = 0; t <= 1.0001; t += 1 / 24) {
+          const x = Ex + (qx - Ex) * t, y = Ey + (qy - Ey) * t;
+          if (Math.hypot(x - Ex, y - Ey) < 3 || Math.hypot(x - qx, y - qy) < 3) continue;
+          n++;
+          if (encreEn(x, y)) encre++;
+        }
+        if (n && encre / n > meilleur) meilleur = encre / n;
+      }
+      return { ...mq, d, filet: meilleur };
+    });
+  }, marques);
+  const f = [];
+  for (const r of res) {
+    if (r.absente) continue;
+    if (r.filet !== null && r.filet < 0.8) f.push(`« ${r.nom} » à ${r.d.toFixed(0)} px de sa marque, sans filet (au mieux ${Math.round(r.filet * 100)} % d'encre sur un segment qui finit près d'elle)`);
+  }
+  juger("rattachement", f.length === 0, `${ou} : ${f.length ? f.join(" ; ") : res.filter((r) => !r.absente).map((r) => `« ${r.nom} » ${r.filet === null ? `à ${r.d.toFixed(0)} px` : `reliée (${r.d.toFixed(0)} px, filet ${Math.round(r.filet * 100)} %)`}`).join(", ") || "aucune étiquette de valeur visible"}`);
 }
 /** Les étiquettes : ni chevauchées, ni sous la légende, dans le cadre, jamais sur un trait ; six au plus (§6.2). */
 async function etiquettesLisibles(ou, qq = panneau) {

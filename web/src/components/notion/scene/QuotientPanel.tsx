@@ -144,7 +144,9 @@ export function QuotientPanel({ scene, className }: { scene: Scene3DDescriptor; 
   const [annonce, setAnnonce] = useState("");
   const etatRef = useRef<EtatQuotient>(etat);
   etatRef.current = etat;
-  const reveleApplique = useRef(false);
+  // les étapes dont la révélation a DÉJÀ posé son réglage : revenir à S2 par « Précédent » écrasait le
+  // mélange de l'élève et parlait par-dessus le titre de l'étape (vague 2, ergonomie)
+  const revelesAppliques = useRef(new Set<string>());
 
   const idTitre = useId();
   const idConsigne = useId();
@@ -193,11 +195,11 @@ export function QuotientPanel({ scene, className }: { scene: Scene3DDescriptor; 
     return M.BAINS.filter((b) => vus.has(b));
   }, [etapes, indexEtape]);
 
-  // la révélation pose, UNE fois par entrée dans l'étape, le réglage que le pari décrivait
+  // la révélation pose, UNE fois par étape (pas à chaque retour), le réglage que le pari décrivait
   // (seule S2 en a un : le mélange extrême, §7.2) — et le DIT dans la région vivante
   useEffect(() => {
-    if (pari.phase !== "revele" || reveleApplique.current) return;
-    reveleApplique.current = true;
+    if (pari.phase !== "revele" || revelesAppliques.current.has(etape.id)) return;
+    revelesAppliques.current.add(etape.id);
     const r = etape.etat_revele;
     if (!r) return;
     const s = appliquer(r, etatRef.current);
@@ -240,10 +242,10 @@ export function QuotientPanel({ scene, className }: { scene: Scene3DDescriptor; 
     const ancreQri = bandeActive && p["bande-qri-marque"]?.visible ? "bande-qri-marque" : "qri-marque";
     const ancreK = bandeActive ? "bande-k-marque" : "k-marque";
     const rolesVisibles = revele && rolesAutorises && verdictCourant !== "equilibre";
-    disposer(
+    const places = disposer(
       [
-        { el: refs.qri.current, p: en(ancreQri, logQ !== null), directions: [[0, -1], [1, -1], [-1, -1], [0, 1], [1, 1], [-1, 1]], portee: 40 },
-        { el: refs.k.current, p: en(ancreK), directions: [[0, -1], [-1, -1], [1, -1], [0, 1], [-1, 1], [1, 1]], portee: 40 },
+        { el: refs.qri.current, p: en(ancreQri, logQ !== null), directions: [[0, -1], [1, -1], [-1, -1], [0, 1], [1, 1], [-1, 1]], portee: 40, filet: 10 },
+        { el: refs.k.current, p: en(ancreK), directions: [[0, -1], [-1, -1], [1, -1], [0, 1], [-1, 1], [1, 1]], portee: 40, filet: 10 },
         { el: refs.especeProduit.current, p: en("espece-produit"), directions: [[1, 0]], portee: 4 },
         { el: refs.especeOxydant.current, p: en("espece-oxydant"), directions: [[1, 0]], portee: 4 },
         { el: refs.roleOxyde.current, p: en("role-oxyde", rolesVisibles), surAncre: verdictCourant === "inverse", directions: [[1, 0], [-1, 0], [0, -1]], portee: 4 },
@@ -253,6 +255,7 @@ export function QuotientPanel({ scene, className }: { scene: Scene3DDescriptor; 
       s.cadre(),
       [boiteLegende(rendu.hoteRef.current), ...s.zones()].filter((b): b is NonNullable<typeof b> => b !== null)
     );
+    s.lier(places.flatMap((b) => (b?.filet ? [b.filet] : [])));
     for (const n of REPERES) poser(repRefs.current[n].current, p[n] ?? cache);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [etat, logQ, bandeActive, verdictCourant, revele, deuxSolides, rolesAutorises, indexEtape]);
@@ -268,7 +271,6 @@ export function QuotientPanel({ scene, className }: { scene: Scene3DDescriptor; 
       const e = etapes[i];
       setIndexEtape(i);
       pari.changerEtape(etapes[indexEtape].id, e.id, i === 0 && indexEtape === etapes.length - 1);
-      reveleApplique.current = false;
       // la région vivante se TAIT en changeant d'étape : elle gardait la dernière phrase de l'étape
       // d'avant — « Q_{r,i} = 10. sens inverse (2). » restait dite avant le pari de S4, dont
       // Q_{r,i} est précisément la réponse (première mesure de la porte)
@@ -285,7 +287,8 @@ export function QuotientPanel({ scene, className }: { scene: Scene3DDescriptor; 
     // mots que l'étape a le droit d'écrire (les contrôles ne s'ouvrent qu'après la révélation :
     // « sens » est déjà légal partout où `regler` peut être appelé)
     const bits: string[] = [];
-    if (lit("qri")) bits.push(`Q_{r,i} = ${M.texQri(s)}`);
+    // dit en mots : `enClair` retire les accolades, pas le souligné — « Q_r,i = 10 » (vague 2)
+    if (lit("qri")) bits.push(`le quotient initial vaut ${M.texQri(s)}`);
     if (lit("ecart")) bits.push(texteEcart(s));
     const phrase = bits.length ? enClair(bits.join(" ; ")) : "";
     const v = M.verdict(s);
@@ -311,7 +314,7 @@ export function QuotientPanel({ scene, className }: { scene: Scene3DDescriptor; 
   const ligneLecture = (cleL: string, terme: React.ReactNode, valeur: React.ReactNode, empile = false) => (
     <div key={cleL} className={cn("flex min-w-0 border-b border-subtle pb-1.5", empile ? "flex-col gap-1" : "flex-wrap items-baseline justify-between gap-x-3")}>
       <dt className="text-secondary">{terme}</dt>
-      <dd className={cn("tabular-nums text-primary", empile ? "min-w-0 pl-3" : "ml-auto text-right")} data-lecture={cleL}>
+      <dd className={cn("tabular-nums text-primary", empile ? "min-w-0 pl-3" : "ml-auto min-w-0 text-right")} data-lecture={cleL}>
         {typeof valeur === "string" ? frenchTypography(valeur) : valeur}
       </dd>
     </div>
@@ -347,12 +350,15 @@ export function QuotientPanel({ scene, className }: { scene: Scene3DDescriptor; 
       </dl>
     ) : null;
 
-  const groupe = (id: string, legende: string, valeurs: readonly string[], courant: string, texte: (v: string) => string, choisir: (v: string) => void) => (
+  // les crans de concentration sont ORDINAUX : une colonne, de haut en bas — en ligne repliée
+  // (2 + 2 + 1 au téléphone), « descends d'un cran » désignait l'élément en haut à droite (vague 2,
+  // ergonomie). Le couple, nominal, garde sa ligne.
+  const groupe = (id: string, legende: string, valeurs: readonly string[], courant: string, texte: (v: string) => string, choisir: (v: string) => void, colonne = false) => (
     <fieldset key={id} className="flex flex-col gap-1" data-controle={id}>
       <legend className="mb-1 text-body-sm text-secondary">
         <MathText>{legende}</MathText>
       </legend>
-      <div className="flex flex-wrap gap-x-2 gap-y-1">
+      <div className={colonne ? "flex flex-col gap-1" : "flex flex-wrap gap-x-2 gap-y-1"}>
         {valeurs.map((x) => (
           <label key={x} className={LIGNE_RADIO}>
             <input type="radio" name={`${idTitre}-${id}`} value={x} checked={courant === x} onChange={() => choisir(x)} aria-label={enClair(texte(x).replace(/\$/g, ""))} className="accent-figure-ink-soft" />
@@ -368,14 +374,14 @@ export function QuotientPanel({ scene, className }: { scene: Scene3DDescriptor; 
   const groupes: Record<string, () => React.ReactNode> = {
     // texte(x) porte le $...$ lui-même (MathText ne parse le LaTeX qu'entre délimiteurs —
     // sans eux, « \times10^{-3} » s'afficherait tel quel, en clair, backslash compris)
-    oxydant: () => groupe("oxydant", `solution de $${couple.oxydantTex}$`, M.CRANS, etat.oxydant, (v) => `$${M.texCranUnite(v as M.Cran)}$`, (v) => regler({ oxydant: v as M.Cran })),
-    produit: () => groupe("produit", `solution de $${couple.produitTex}$`, M.CRANS, etat.produit, (v) => `$${M.texCranUnite(v as M.Cran)}$`, (v) => regler({ produit: v as M.Cran })),
+    oxydant: () => groupe("oxydant", `solution de $${couple.oxydantTex}$`, M.CRANS, etat.oxydant, (v) => `$${M.texCranUnite(v as M.Cran)}$`, (v) => regler({ oxydant: v as M.Cran }), true),
+    produit: () => groupe("produit", `solution de $${couple.produitTex}$`, M.CRANS, etat.produit, (v) => `$${M.texCranUnite(v as M.Cran)}$`, (v) => regler({ produit: v as M.Cran }), true),
     bain: () => groupe("bain", "Le couple étudié", bainsOfferts, etat.bain, (v) => LIBELLE_BAIN[v as M.Bain], (v) => regler({ bain: v as M.Bain })),
   };
 
   // ── Ce que le lecteur d'écran entend ──
   const description =
-    `Un axe gradué de 10 puissance −4 à 10 puissance 42, décade par décade. Le pivot K est marqué à ${enClair(kSeul)}` +
+    `Un axe gradué de 10 puissance ${M.AXE.min < 0 ? "−" : ""}${Math.abs(M.AXE.min)} à 10 puissance ${M.AXE.max}, décade par décade. Le pivot K est marqué à ${enClair(kSeul)}` +
     (logQ !== null ? `, le repère Q_{r,i} à ${enClair(M.texQri(etatCourant))}` : "") +
     "." +
     (bandeActive ? " En dessous, une bande de travail agrandit huit décades autour de K." : "") +
@@ -383,7 +389,9 @@ export function QuotientPanel({ scene, className }: { scene: Scene3DDescriptor; 
     ` À côté, un bécher avec une lame de ${couple.metalDirect}${deuxSolides ? ` et un dépôt de ${couple.metalInverse} au fond` : ""}.` +
     (revele && verdictCourant !== "equilibre" ? " Une flèche part du repère vers le pivot." : "");
 
-  const legende = `Bain ${etat.bain}`;
+  // le COUPLE, pas la clé d'auteur : « Bain A » ne renvoyait à rien à S1 et S2, où aucun contrôle
+  // ne nomme les bains (vague 2, calme)
+  const legende = LIBELLE_BAIN[etat.bain].replace(/^[A-C]\s*—\s*/, "");
 
   return (
     <section
@@ -426,10 +434,10 @@ export function QuotientPanel({ scene, className }: { scene: Scene3DDescriptor; 
             {math(`[${couple.oxydantTex}]`)}
           </Etiquette>
           <Etiquette refEl={refs.roleOxyde} nom="role-oxyde" fond>
-            {revele && rolesAutorises && verdictCourant !== "equilibre" && <span className="text-figure-accent">oxydé</span>}
+            {revele && rolesAutorises && verdictCourant !== "equilibre" && <span>oxydé</span>}
           </Etiquette>
           <Etiquette refEl={refs.roleReduit} nom="role-reduit" fond>
-            {revele && rolesAutorises && verdictCourant !== "equilibre" && <span className="text-figure-accent">réduit</span>}
+            {revele && rolesAutorises && verdictCourant !== "equilibre" && <span>réduit</span>}
           </Etiquette>
           {/* le texte du chevron, aussi porté par la description du canvas (ci-dessus) : un
               second nœud, pour la porte et pour qui navigue directement au canvas (§11.2) */}

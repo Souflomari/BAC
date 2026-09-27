@@ -76,6 +76,7 @@ export interface RenduQuotient {
   reperes(): Record<string, Projection>;
   cadre(): { largeur: number; hauteur: number };
   segments(): [Projection, Projection][];
+  lier(filets: [{ x: number; y: number }, { x: number; y: number }][]): void;
   /** les zones déjà occupées par du texte peint (chiffres de décade) : les étiquettes les évitent */
   zones(): { x0: number; y0: number; x1: number; y1: number }[];
 }
@@ -183,10 +184,14 @@ export function creerRenduQuotient(canvas: HTMLCanvasElement, hote: HTMLElement)
     const xA0 = x0 + mG, xA1 = x1 - mD;
     const pxDec = (xA1 - xA0) / (AXE.max - AXE.min);
     const Xo = (v: number) => xA0 + (v - AXE.min) * pxDec;
-    const yAxe = Math.round(y0 + 0.26 * (y1 - y0)) + 0.5;
+    // sans la bande, l'axe se pose au milieu de sa moitié : à 0,26, il laissait un vide que rien ne
+    // tenait entre lui et le bécher (vague 2, dessin : ~36 % de la hauteur du plateau à S1 et S2)
+    const yAxe = Math.round(y0 + (e.bande ? 0.26 : 0.45) * (y1 - y0)) + 0.5;
 
-    // les graduations de décade — OPAQUES ; une sur cinq étiquetée (une sur dix à largeur réduite, §5.5 A)
-    const pas = largeur < 540 ? 10 : 5;
+    // les graduations de décade — OPAQUES ; une sur cinq étiquetée (une sur dix à largeur réduite, §5.5 A).
+    // Seuil à 460 px, pas 540 : le plateau fait 482 px à 1 280 (et à 1 440, 1 920 — DÉCISIONS §25.14),
+    // et à 540 le bureau recevait la densité du téléphone — cinq nombres pour 46 décades (vague 2)
+    const pas = largeur < 460 ? 10 : 5;
     // Un nombre de décade que le PIVOT recouvrirait n'est pas peint : son disque creux (à 13 px au-dessus
     // de l'axe) tombait sur « 10³⁶ » au bain A (K = 10^37,26, à 9,5 px du nombre au téléphone) — un
     // anneau sur un « 0 », illisible pour l'élève et pour toute lecture du dessin (construction de la
@@ -257,18 +262,22 @@ export function creerRenduQuotient(canvas: HTMLCanvasElement, hote: HTMLElement)
     const Xb = (v: number) => xB0 + (v - bMin) * pxDecB;
 
     // le crochet, posé SUR l'axe d'ensemble : la portion qu'agrandit la bande (§10.5)
-    const xc0 = Xo(bMin), xc1 = Xo(bMax), yCr = yAxe + 24;
+    // Sous la flèche du verdict quand elle est sur l'axe (à +17 : le crochet à +24 la touchait, vague 2,
+    // dessin) ; et des bouts de 7 px, la longueur des graduations nommées — le crochet est la marque qui
+    // dit « la bande agrandit CECI », il ne peut pas être la plus maigre du plateau
+    const flecheSurAxe = e.logQ !== null && e.accent && !!e.verdict && e.verdict !== "equilibre" && !(e.logQ >= bMin && e.logQ <= bMax);
+    const xc0 = Xo(bMin), xc1 = Xo(bMax), yCr = yAxe + (flecheSurAxe ? 34 : 24);
     c.strokeStyle = encre;
     c.lineWidth = 1;
     c.beginPath();
-    c.moveTo(xc0, yCr - 4);
+    c.moveTo(xc0, yCr - 7);
     c.lineTo(xc0, yCr);
     c.lineTo(xc1, yCr);
-    c.lineTo(xc1, yCr - 4);
+    c.lineTo(xc1, yCr - 7);
     c.stroke();
-    seg(xc0, yCr - 4, xc0, yCr);
+    seg(xc0, yCr - 7, xc0, yCr);
     seg(xc0, yCr, xc1, yCr);
-    seg(xc1, yCr, xc1, yCr - 4);
+    seg(xc1, yCr, xc1, yCr - 7);
     rep["bande-crochet"] = P((xc0 + xc1) / 2, yCr + 4);
 
     // les décades de la bande sont nommées par leur RANG relatif (0…7), pas par leur valeur
@@ -462,12 +471,15 @@ export function creerRenduQuotient(canvas: HTMLCanvasElement, hote: HTMLElement)
     zonesTexte = [];
     if (!etat) return;
     const top = RESERVE_LEGENDE;
+    // Côte à côte à partir de 560 px de canvas — branche que le produit n'ATTEINT PAS aujourd'hui : le
+    // plateau fait ~482 px de 1 280 à 1 920 (DÉCISIONS §25.14), et la porte ne la mesure pas (en-tête de
+    // scene-quotient.mjs). Gardée pour une colonne plus large ; à mesurer le jour où elle s'active.
     if (largeur >= 560) {
       const coupe = Math.round(largeur * 0.64);
       rendreAxes(etat, 0, top, coupe, hauteur);
       rendreBecher(etat, coupe, top, largeur, hauteur);
     } else {
-      const coupe = Math.round(top + (hauteur - top) * (etat.bande ? 0.6 : 0.46));
+      const coupe = Math.round(top + (hauteur - top) * (etat.bande ? 0.6 : 0.34));
       rendreAxes(etat, 0, top, largeur, coupe);
       rendreBecher(etat, 0, coupe, largeur, hauteur);
     }
@@ -495,6 +507,20 @@ export function creerRenduQuotient(canvas: HTMLCanvasElement, hote: HTMLElement)
     reperes: () => rep,
     cadre: () => ({ largeur, hauteur }),
     segments: () => segs,
+    // les FILETS qui relient une étiquette éloignée à sa marque (le placeur les rend) — comme le plan
+    // complexe : sans eux, au téléphone, « K = 1,8×10³⁷ » flottait à dix décades de son pivot
+    lier(filets) {
+      const c = ctx!;
+      c.setTransform(dpr, 0, 0, dpr, 0, 0);
+      c.strokeStyle = voile(jetons.encreDouce, 0.8);
+      c.lineWidth = 1;
+      c.beginPath();
+      for (const [a, b] of filets) {
+        c.moveTo(a.x, a.y);
+        c.lineTo(b.x, b.y);
+      }
+      c.stroke();
+    },
     zones: () => zonesTexte,
   };
 }
