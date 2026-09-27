@@ -278,6 +278,8 @@ $$\frac{Q}{2F} = \frac{1080}{2\times9{,}65\times10^{4}} \approx 5{,}6\times10^{-
 
 $$[\text{Cu}^{2+}]_f = \frac{[\text{Cu}^{2+}]_i\cdot V - \dfrac{Q}{2F}}{V} = \frac{0{,}50\times0{,}500 - 5{,}6\times10^{-3}}{0{,}500} \approx 0{,}49\ \text{mol/L}$$
 
+*Le piège, chiffré :* oublier ce terme initial — écrire directement $[\text{Cu}^{2+}]_f = \dfrac{Q}{2FV}$, comme si la solution partait de zéro — donne $[\text{Cu}^{2+}]_f \approx \dfrac{5{,}6\times10^{-3}}{0{,}500} \approx 1{,}1\times10^{-2}\ \text{mol/L}$ au lieu de $0{,}49\ \text{mol/L}$ : ce nombre n'est pas la concentration finale, c'est seulement, par un hasard trompeur, la variation de concentration elle-même (environ $2{,}2\,\%$ du stock initial) — la pile n'a consommé qu'une petite fraction du réactif, pas la quasi-totalité.
+
 Pour l'ion produit, $\text{Zn}^{2+}$, on ajoute à la quantité initiale, on ne part pas de zéro :
 
 $$[\text{Zn}^{2+}]_f = \frac{[\text{Zn}^{2+}]_i\cdot V + \dfrac{Q}{2F}}{V} = \frac{0{,}10\times0{,}500 + 5{,}6\times10^{-3}}{0{,}500} \approx 0{,}11\ \text{mol/L}$$

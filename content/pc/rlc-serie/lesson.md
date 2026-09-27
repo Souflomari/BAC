@@ -447,7 +447,7 @@ On peut lire davantage sur un oscillogramme qu'une simple pseudo-période : on p
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* entre deux maxima consécutifs, l'amplitude de $u_C$ a diminué — c'est visible sur la courbe. Cette perte d'amplitude correspond à une perte d'énergie, dissipée par effet Joule pendant ce cycle. On la calcule par différence, sans jamais avoir besoin de connaître $R$.
 
-Sur un oscillogramme, on lit deux maxima successifs de $u_C$ : $U_1 = 6{,}0\ \text{V}$, puis $U_2 = 4{,}0\ \text{V}$ au pic suivant, avec $C = 2\ \mu\text{F} = 2\times10^{-6}\ \text{F}$.
+Sur l'oscillogramme d'un circuit différent de celui de l'exemple précédent (même principe, mais un autre condensateur), on lit deux maxima successifs de $u_C$ : $U_1 = 6{,}0\ \text{V}$, puis $U_2 = 4{,}0\ \text{V}$ au pic suivant, avec $C = 2\ \mu\text{F} = 2\times10^{-6}\ \text{F}$.
 
 Aux deux instants, $i = 0$, donc :
 
@@ -462,6 +462,12 @@ $$E_j = \frac{1}{2}\times 2\times10^{-6}\times\left(6{,}0^2 - 4{,}0^2\right) = 1
 $$\boxed{E_j = 2{,}0\times10^{-5}\ \text{J} = 20\ \mu\text{J}}$$
 
 Cette énergie n'a pas disparu du calcul par hasard : c'est exactement ce que R a dissipé par effet Joule pendant ce cycle, la quantité même que la relation $\frac{dE_t}{dt} = -Ri^2$, établie plus haut à partir de l'équation amortie, dit être toujours perdue, jamais gagnée.
+
+*Le piège quasi universel :* écrire $E_j = \dfrac12 C\,(U_1-U_2)^2$ au lieu de $\dfrac12 C\,(U_1^2-U_2^2)$ — remplacer « la différence des carrés » par « le carré de la différence ». Avec les nombres de cet exemple, ce piège donne :
+
+$$E_j^{(\text{faux})} = \frac12\times2\times10^{-6}\times(6{,}0-4{,}0)^2 = \frac12\times2\times10^{-6}\times4{,}0 = 4{,}0\times10^{-6}\ \text{J} = 4{,}0\ \mu\text{J}$$
+
+— cinq fois trop petit par rapport aux $20\ \mu\text{J}$ corrects. La raison : $E_t=\frac12Cu_C^2$ est **quadratique** en $u_C$, donc sa variation entre deux instants n'est pas la variation de $u_C$ mise au carré.
 
 Si les deux instants choisis ne sont **pas** des maxima de $u_C$, l'astuce « $i = 0$ » ne s'applique plus : il faut revenir à l'expression complète, $E_t = \frac{1}{2}Cu_C^2 + \frac{1}{2}Li^2$, avec $i$ obtenu en pratique à partir de la tension aux bornes de $R$ lue sur l'oscillogramme, $i = \frac{u_R}{R}$.
 

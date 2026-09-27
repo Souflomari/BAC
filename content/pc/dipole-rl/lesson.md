@@ -367,6 +367,8 @@ Cette énergie reste emmagasinée dans la bobine tant que le courant de $100\ \t
 - Réponse à un échelon $E$ : équation $L\dfrac{di}{dt} + Ri = E$, solution $i(t) = I_{max}(1-e^{-t/\tau})$, avec $I_{max} = E/R$ et $\tau = L/R$.
 - $\tau$ est une durée ($\text{H}/\Omega = \text{s}$) ; régime permanent atteint pour $t \gtrsim 5\tau$.
 - Énergie emmagasinée : $E_L = \frac{1}{2}Li^2$.
+- Rupture (ouverture de $K$) : $i(0^+) = I_{max}$ (continuité du courant dans la bobine), maille de secours de résistance totale $R'$, $\tau' = L/R'$ ; à $t=\tau'$ il ne reste que $37\,\%$ de $I_{max}$ — pas $63\,\%$, qui serait la montée.
+- Droite $\dfrac{di}{dt} = f(i)$ : ordonnée à l'origine $E/L$, pente $-1/\tau$, racine $I_{max}$ — donne $L$ et $R$ séparément, pas seulement leur rapport.
 
 ### Exercice de type bac
 

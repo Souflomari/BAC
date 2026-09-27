@@ -40,9 +40,27 @@ Avant de regarder ce qui se passe réellement, demande-toi : à quoi ressemble l
 
 Teste ce modèle avant de le croire. S'il était vrai, le courant $i$ resterait constant — égal à sa valeur de départ, non nulle, sinon rien ne se serait chargé du tout — pendant toute la durée de la charge, jusqu'à l'instant où $u_C$ atteindrait $E$. Regarde ce qui se passe à cet instant précis, en appliquant ce qui est toujours vrai dans ce circuit, que la charge soit rapide ou lente : la loi des mailles impose $u_R = E - u_C$, et la loi d'Ohm impose $i = \dfrac{u_R}{R}$. Au moment où $u_C = E$, ces deux lois donnent $u_R = 0$, donc $i = 0$. Le courant serait donc à la fois resté constant à sa valeur de départ non nulle et tombé à zéro au même instant — deux choses contradictoires. Le modèle « débit constant » se contredit lui-même : il ne peut pas être vrai.
 
+### Un circuit différent : la charge à courant constant
+
+Le modèle qu'on vient de réfuter — débit constant, $u_C$ en ligne droite — n'est pourtant pas absurde en soi : il décrit fidèlement un **autre** circuit, celui où le générateur impose un **courant** $I_0$ constant dans toute la boucle, quelle que soit $u_C$. Ce n'est pas le cas ici (notre générateur impose une **tension** $E$), mais garde ce cas de côté : un sujet peut te le poser séparément.
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* avant tout calcul, trancher lequel des deux générateurs on a en face de soi — parce que les deux répondent à la même question, « comment se charge le condensateur ? », par des courbes $u_C(t)$ complètement différentes. **Le repère qui tranche :** générateur de **courant** ($i$ imposé, indépendant de $u_C$) contre générateur de **tension** ($u$ imposée, comme $E$ ici) — un sujet précise toujours lequel, souvent par un symbole de source différent sur le schéma.
+
+Avec un générateur de courant, rien ne vient jamais ralentir ce courant — ni la loi des mailles ni un $u_R$ qui grandirait, puisqu'il n'y a même pas de tension totale imposée à partager entre deux dipôles. $u_C(t)$ ne ralentit donc jamais : c'est une **droite**, qui monte à vitesse constante, et $E$ n'intervient même pas.
+
+En intégrant $i(t) = \dfrac{dq}{dt} = I_0$ à partir d'un condensateur initialement déchargé, $q(t) = I_0 t$, donc
+
+$$\boxed{u_C(t) = \frac{q(t)}{C} = \frac{I_0}{C}\,t \qquad (\text{générateur de courant : } i \text{ imposé, pas } u)}$$
+
+*Exemple numérique.* Avec $I_0 = 2{,}0\ \mu\text{A}$, la courbe $u_C(t)$ enregistrée est une droite passant par l'origine, de pente $0{,}50\ \text{V.s}^{-1}$ (lue par exemple entre $t=0$ et $t=8{,}0\ \text{s}$, où $u_C$ atteint $4{,}0\ \text{V}$). On en tire $C$ :
+
+$$C = \frac{I_0}{\text{pente}} = \frac{2{,}0\times10^{-6}}{0{,}50} = 4{,}0\times10^{-6}\ \text{F} = 4{,}0\ \mu\text{F}$$
+
+*Le piège nommé :* inverser le rapport — écrire $C = \text{pente}/I_0$ au lieu de $I_0/\text{pente}$ — ou lire la pente sur un intervalle qui ne part pas de l'origine. Le contrôle qui tranche : $I_0/\text{pente}$ a les unités d'une capacité ($\text{A}/(\text{V/s}) = \text{A}\cdot\text{s/V} = \text{F}$) ; l'inverse ($\text{V}/(\text{A}\cdot\text{s})$) n'en a pas — signal immédiat que le rapport est inversé.
+
 ### Le mécanisme : une boucle qui se referme sur elle-même
 
-Voici pourquoi ce modèle échoue, et ce qui se passe réellement. Le générateur impose une tension totale fixe $E$, partagée à chaque instant entre la résistance et le condensateur — la loi des mailles, en convention récepteur pour $R$ et $C$ :
+Revenons maintenant au générateur de tension, celui de cette leçon : voici pourquoi ce modèle échoue, et ce qui se passe réellement. Le générateur impose une tension totale fixe $E$, partagée à chaque instant entre la résistance et le condensateur — la loi des mailles, en convention récepteur pour $R$ et $C$ :
 
 $$E = u_R + u_C$$
 
@@ -224,27 +242,21 @@ $$i(\tau) = \frac{E}{R}\,e^{-1} \approx 10 \times 0{,}37 = 3{,}7\ \text{mA}$$
 
 La charge est pratiquement terminée à $t \approx 5\tau = 5{,}0\ \text{ms}$ : à cet instant $u_C \approx 10\ \text{V}$ et $i \approx 0$. On garde ces valeurs — $\tau = 1{,}0\ \text{ms}$, $i(0^+) = 10\ \text{mA}$ — elles reviennent dans les chapitres suivants.
 
-### Un circuit différent : la charge à courant constant
-
-Attention à ne pas mélanger ce cas avec tout ce qui précède : un générateur idéal de **courant** impose un courant $I_0$ constant dans toute la boucle, quelle que soit $u_C$. Le courant ne ralentit jamais comme dans le mécanisme du chapitre 2 — donc $u_C(t)$ n'est **pas** une exponentielle, c'est une **droite**, et $E$ n'intervient même pas.
-
-En intégrant $i(t) = \dfrac{dq}{dt} = I_0$ à partir d'un condensateur initialement déchargé, $q(t) = I_0 t$, donc
-
-$$\boxed{u_C(t) = \frac{q(t)}{C} = \frac{I_0}{C}\,t}$$
-
-*Exemple numérique.* Avec $I_0 = 2{,}0\ \mu\text{A}$, la courbe $u_C(t)$ enregistrée est une droite passant par l'origine, de pente $0{,}50\ \text{V.s}^{-1}$ (lue par exemple entre $t=0$ et $t=8{,}0\ \text{s}$, où $u_C$ atteint $4{,}0\ \text{V}$). On en tire $C$ :
-
-$$C = \frac{I_0}{\text{pente}} = \frac{2{,}0\times10^{-6}}{0{,}50} = 4{,}0\times10^{-6}\ \text{F} = 4{,}0\ \mu\text{F}$$
-
 ### Le temps pour atteindre un seuil
 
-Un sujet pose parfois une contrainte différente : non pas suivre $u_C(t)$ indéfiniment, mais trouver la date $t_S$ où elle atteint un seuil $U_S$ imposé — celle où un composant électronique bascule, par exemple une minuterie d'escalier qui s'éteint dès que $u_C$ dépasse $U_S$. On repart de la solution établie plus haut et on isole $t_S$ ; c'est le même geste qu'en décroissance radioactive, où l'on inverse $N(t)$ avec un $\ln$ pour dater un instant.
+Un sujet pose parfois une contrainte différente : non pas suivre $u_C(t)$ indéfiniment, mais trouver la date $t_S$ où elle atteint un seuil $U_S$ imposé — celle où un composant électronique bascule, par exemple une minuterie d'escalier qui s'éteint dès que $u_C$ dépasse $U_S$.
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* $t_S$ est caché à l'intérieur d'un exposant, dans $e^{-t_S/\tau}$ — pour l'en extraire, il faut la fonction qui **défait** l'exponentielle, c'est-à-dire sa réciproque : le logarithme népérien. C'est le même geste qu'en décroissance radioactive, où l'on inverse $N(t)$ avec un $\ln$ pour dater un instant. On repart donc de la solution établie plus haut et on isole $t_S$ :
 
 $$E\left(1-e^{-t_S/\tau}\right) = U_S \implies e^{-t_S/\tau} = \frac{E-U_S}{E} \implies \boxed{t_S = \tau\,\ln\!\left(\frac{E}{E-U_S}\right)}$$
+
+*Le piège nommé :* écrire directement $e^{-t_S/\tau} = \dfrac{U_S}{E}$, en oubliant le « $1-$ » devant l'exponentielle dans $u_C(t) = E(1-e^{-t/\tau})$. Ce « $1-$ » n'est pas un détail : $u_C$ est ce qui a **déjà été gagné**, pas ce qui reste à gagner — c'est $E-u_C$, pas $u_C$, qui décroît en exponentielle pure.
 
 *Exemple.* Une minuterie de cage d'escalier utilise $E = 12\ \text{V}$, $\tau = 20\ \text{s}$, et s'éteint dès que $u_C$ dépasse $U_S = 9{,}0\ \text{V}$ :
 
 $$t_S = 20\times\ln\!\left(\frac{12}{12-9{,}0}\right) = 20\times\ln(4{,}0) \approx 20\times1{,}386 = 27{,}7\ \text{s}$$
+
+*Contrôle d'ordre de grandeur :* $U_S/E = 9{,}0/12 = 75\,\%$, à comparer aux $63\,\%$ déjà atteints en $t=\tau$ (chapitre 3). Puisque $75\,\% > 63\,\%$, $t_S$ doit forcément dépasser $\tau = 20\ \text{s}$ — et c'est bien ce que donne le calcul : $27{,}7\ \text{s} > 20\ \text{s}$.
 
 ---
 
@@ -300,7 +312,7 @@ De n'importe lequel des trois on remonte à $\tau$, puis à $C$ par $\tau = RC$.
 
 *Le piège nommé de cette lecture :* prendre la pente pour $\tau$ au lieu de $-\dfrac{1}{\tau}$, ou en oublier le signe. Le contrôle qui tranche : une pente **positive** décrirait un condensateur qui se charge de plus en plus vite à mesure qu'il se remplit — l'inverse exact du mécanisme établi au chapitre 2.
 
-*Exemple numérique.* Une droite $\dfrac{du_C}{dt} = f(u_C)$ relevée sur un graphe donne une ordonnée à l'origine $\dfrac{E}{RC} = 4{,}0\times10^{3}\ \text{V.s}^{-1}$ et une racine — l'intersection avec l'axe des abscisses — $E = 8{,}0\ \text{V}$. Le rapport de ces deux lectures donne $\tau$ directement, sans même passer par la pente :
+*Exemple numérique — un circuit différent de celui des chapitres précédents, avec ses propres valeurs.* Une droite $\dfrac{du_C}{dt} = f(u_C)$ relevée sur un graphe donne une ordonnée à l'origine $\dfrac{E}{RC} = 4{,}0\times10^{3}\ \text{V.s}^{-1}$ et une racine — l'intersection avec l'axe des abscisses — $E = 8{,}0\ \text{V}$. Le rapport de ces deux lectures donne $\tau$ directement, sans même passer par la pente :
 
 $$\tau = \frac{\text{racine}}{\text{ordonnée à l'origine}} = \frac{8{,}0}{4{,}0\times10^{3}} = 2{,}0\times10^{-3}\ \text{s} = 2{,}0\ \text{ms}$$
 
@@ -384,6 +396,9 @@ Vérifie tout ça par toi-même, en manipulation directe : construis le montage,
 - $\tau = RC$ est une durée ($\Omega\cdot F = s$) : $63\,\%$ de $E$ à $t=\tau$, régime permanent ($>99\,\%$) à $t \approx 5\tau$. Lecture graphique : méthode des $63\,\%$ ou tangente à l'origine.
 - Énergie emmagasinée : $E_C = \dfrac{1}{2}Cu_C^2$, soit $\dfrac{1}{2}CE^2$ une fois chargé.
 - Décharge : $u_C(t) = E\,e^{-t/\tau}$, même $\tau$.
+- Sur une courbe **décroissante** (décharge), $\tau$ se lit où il reste $37\,\%$ de la valeur de départ ($e^{-1}\approx0{,}37$) — pas $63\,\%$, qui serait la part déjà perdue.
+- Seuil : $u_C(t_S)=U_S$ se résout par $t_S = \tau\ln\!\left(\dfrac{E}{E-U_S}\right)$ — le $\ln$ défait l'exponentielle.
+- Générateur de **courant** (au lieu de tension) : $u_C(t) = \dfrac{I_0}{C}\,t$, une droite qui monte à vitesse constante, pas une exponentielle.
 
 ### Exercice de type bac
 
