@@ -394,7 +394,7 @@ Le pendule de torsion fait intervenir deux grandeurs bien distinctes : le moment
 
 [[figure:travail-torsion-triangle]]
 
-Le réflexe du chapitre précédent reviendrait ici : traiter $M = C\theta$ comme le moment de tout le trajet, et écrire $W = C\theta \times \theta = C\theta^2$. C'est la même erreur, juste habillée en rotation — elle ignore que $M$ part de $0$ et ne vaut $C\theta$ qu'à l'instant final. Comme pour le ressort, le moment moyen sur tout le trajet est $\frac{1}{2}C\theta$, et le travail du couple de rappel, pour tordre le fil de $0$ à $\theta$, est l'aire du triangle sous la droite $M(\theta) = C\theta$ :
+Le réflexe du chapitre précédent reviendrait ici : traiter $M = C\theta$ comme le moment de tout le trajet, et écrire $W = C\theta \times \theta = C\theta^2$. C'est la même erreur, juste habillée en rotation — elle ignore que $M$ part de $0$ et ne vaut $C\theta$ qu'à l'instant final. Comme pour le ressort, le moment moyen sur tout le trajet est $\frac{1}{2}C\theta$, et le travail qu'il faut **fournir**, contre le couple de rappel, pour tordre le fil de $0$ à $\theta$, est l'aire du triangle sous la droite $M(\theta) = C\theta$ :
 
 $$W = \frac{1}{2}\times\theta\times(C\theta) = \frac{1}{2}C\theta^2$$
 
@@ -402,7 +402,7 @@ On définit l'**énergie potentielle de torsion** :
 
 $$E_{p,torsion} = \frac{1}{2}C\theta^2$$
 
-avec, comme pour le ressort, $W(M_{rappel})_{A\to B} = -\Delta E_{p,torsion}$. Regarde ce que dit cette expression : **$J$ n'y figure nulle part.** L'énergie potentielle de torsion ne dépend que de $C$ et de $\theta$ — jamais du moment d'inertie du disque. Si tu avais répondu « $J$ » à la question posée plus haut, voilà l'écart à corriger : $J$ n'est pas un rappel, c'est une inertie — il vit ailleurs, dans l'énergie cinétique.
+avec, comme pour le ressort, $W(M_{rappel})_{A\to B} = -\Delta E_{p,torsion}$ — le couple de rappel, lui, travaille **contre** la torsion : de $0$ à $\theta$, son travail vaut $-\frac{1}{2}C\theta^2$, l'opposé de ce qu'on a fourni. Regarde ce que dit cette expression : **$J$ n'y figure nulle part.** L'énergie potentielle de torsion ne dépend que de $C$ et de $\theta$ — jamais du moment d'inertie du disque. Si tu avais répondu « $J$ » à la question posée plus haut, voilà l'écart à corriger : $J$ n'est pas un rappel, c'est une inertie — il vit ailleurs, dans l'énergie cinétique.
 
 [[checkpoint:cp-r6-tor]]
 
