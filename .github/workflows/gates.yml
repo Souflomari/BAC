@@ -770,6 +770,14 @@ jobs:
       - name: Cliquet eleve-ruse (l'union des ficelles de QCM ne rapporte pas plus qu'hier)
         run: node scripts/eleve-ruse.mjs --porte
 
+      # CARTE DES CHAPITRES (2026-09-28, §11.215). Le numéro de chapitre que
+      # l'élève lit est calculé depuis les titres `## ` ; la prose, les banques
+      # et les légendes le citent en dur. Quatre insertions en une semaine ont
+      # rendu dix-sept renvois faux (« le chapitre 6 a établi f'(x) » menait à
+      # Rolle). La carte est scellée ; la bouger liste les renvois à relire.
+      - name: Carte des chapitres (un renvoi « chapitre N » suit son chapitre)
+        run: node scripts/carte-chapitres.mjs --porte
+
       - name: Porte d'engagement (l'élève parie dans l'accroche, le produit retient)
         run: node scripts/porte-engagement.mjs --porte
 

@@ -16642,3 +16642,17 @@ l'architecte.
 **Vérifié** : `validate-content` (62 dossiers, 0 échec), `resume-couverture`,
 `couverture-diagnostique`, `eleve-ruse` (cliquet tenu), les artefacts du modèle apprenant
 régénérés, `verdict-qcm` sur les six leçons touchées.
+
+## §11.215 — Le chapitre inséré : dix-sept renvois qui pointaient un chapitre trop tôt, et la carte qu'on scelle désormais
+
+**LE FAIT.** Le numéro de chapitre que l'élève lit est calculé depuis les titres `## ` ; les
+renvois « au chapitre 6 » sont écrits en dur. Quatre insertions de la semaine (arithmétique R6b,
+calcul intégral R9, suites R8b/R8c, dérivabilité R4b) ont décalé dix-sept renvois rendus : « le
+chapitre 6 a établi f′(x) = … » menait à Rolle, « la méthode du chapitre 8 » (les équations
+diophantiennes) menait à Fermat, deux « hors des chapitres 1 à 12 » disaient hors de la leçon un
+outil qu'elle enseigne désormais. Trouvé par la vague 1 de pédagogie, pas par une porte.
+**Corrigé** partout, et l'exercice sommet de dérivabilité, qui disait encore « la leçon ne les
+ayant pas couverts » de Rolle et du TAF un commit après leur sous-rung, les rappelle du chapitre 6.
+**Armé** : `carte-chapitres` (voir `INSTRUMENTS.md`) — la carte des chapitres est scellée ; la
+bouger liste les renvois à relire. Rejouée verte puis rouge sur les quatre insertions réelles avant
+d'être crue ; essai rouge §11.215.

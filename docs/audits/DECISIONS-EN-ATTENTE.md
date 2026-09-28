@@ -2091,3 +2091,37 @@ décalé les numéros de ligne que citent des en-têtes d'items et des fichiers 
 Aucune porte ne vérifie qu'une citation `lesson.md:NNN` pointe encore sur ce qu'elle nomme ; les
 auteurs ont relevé chaque décalage dans leur rapport. *Un renvoi par numéro de ligne est une
 affirmation sur un fichier qui bouge* — la même famille que les notes de portée (§31).
+
+---
+
+## 36. La vague 1 des vagues D–F : deux défauts rendus que les portes ne voyaient pas, un instrument neuf — et la file de ce qui reste
+
+**Corrigé avant tout le reste (défauts que l'élève lit).**
+1. *Les renvois décalés* — dix-sept, dans quatre notions (HANDOFF §11.215) ; et la porte
+   `carte-chapitres` pour que la prochaine insertion ne le refasse pas en silence.
+2. *L'exercice sommet de dérivabilité* disait que la leçon n'avait pas couvert Rolle ni le TAF.
+3. *R4b est propre à SM* : la phrase qui le dit ajoute maintenant, comme la leçon de suites, qu'il
+   est hors programme en Sciences Expérimentales (même ajout à la mention du TAF en R4).
+
+**La vague 1, telle qu'elle a pu tourner.** Quatre critiques commandées ; une limite de débit a
+coupé la fidélité PC (D–E) avant son rapport. Trois rapports complets : pédagogie PC (D–E),
+pédagogie maths (F), fidélité maths (F). **La fidélité PC (D–E) reste due.**
+
+**Ce qui reste, par ordre de coût pour l'élève** (le détail est dans les rapports, cités ici par
+leur fond) :
+- *Aspects énergétiques* : l'exemple de lecture de diagramme dit « le pendule qu'on vient
+  d'étudier » avec une énergie (2,5 mJ) qui n'est pas la sienne (3,2 mJ) ; deux identifiants neufs
+  (degrés non convertis, largeur totale lue pour l'amplitude) testés par six items sur un geste que
+  la leçon ne montre nulle part ; AE-43 décrit sa propre parabole de travers (« les deux zéros »).
+- *Items rangés un chapitre trop tôt* (CMP-46 en R4 pour un geste de R5, EE-28 en R3 pour un geste
+  de R4) ; OMPP-29 fait le compte à la place de l'élève ; LOG-33 et le nouvel exemple de logarithme
+  reprennent mot pour mot la question du sujet 2019 qui est l'exercice sommet de la notion ; SA-35
+  reprend la loi du sujet 2025 ; les trois items de l'angle moitié ne testent qu'une branche ;
+  AR-38…40 se passent par substitution.
+- *Propositions encore barrables* : des paires ± qui ne laissent que le signe à décider, un
+  $\text{pH} = 7{,}0$ trop devinable, des masses de planète hors de toute échelle plausible, trois
+  longues phrases-refus survivantes.
+- *La confrontation* : aucun des pièges neufs n'est ROMPU (l'élève ne s'engage jamais avant qu'on
+  lui nomme l'erreur) — un défaut de gabarit sur toute la vague, à trancher passage par passage.
+- *Récapitulatifs express* non mis à jour (cinq notions) ; un repère de figure anisotrope
+  (`impact-plan-incline`) qui déforme l'angle même dont le cosinus est la leçon.

@@ -18,13 +18,13 @@
 # Rolle, TAF, point d'inflexion — with a different function, different
 # coefficient, and different roots: 0 and 2, not 0 and 1; status not-applicable).
 #
-# Note on scope: lesson.md's R4/R5 deliberately do NOT teach Rolle's theorem or
-# the théorème des accroissements finis (TAF) — see the lesson's own closing
-# validation note, item (3): "sans démonstration par les accroissements finis /
-# le théorème de Rolle — choix délibéré pour rester au niveau bac." Since the
-# sourced sujet uses both by name, each theorem is stated inline (hypotheses +
-# conclusion) the first time it is used, in `reasoning` — so the exercise is
-# self-teaching without requiring a lesson.md rewrite.
+# Note on scope (2026-09-28): the lesson now STATES Rolle, the TAF and the
+# inequality in its own sub-rung « R4b — Rolle et les accroissements finis »
+# (chapitre 6), statements admitted as the SM programme wants. The `reasoning`
+# blocks below recall each statement where it is used — a reminder of chapitre 6,
+# no longer a first encounter. (Until 2026-09-27 the lesson did not state them and
+# this exercise was their only source; its intro said so, and was left saying it
+# for one commit after R4b existed — fixed with the chapter renumbering.)
 
 notion: derivabilite-etude-fonctions
 
@@ -44,7 +44,7 @@ exercises:
 
       On considère la fonction $f$ définie sur $\mathbb{R}$ par $f(x) = 4x\left(e^{-x} + \dfrac{1}{2}x - 1\right)$, et on note $(C)$ sa courbe représentative dans un repère orthonormé.
 
-      Cet extrait porte sur un enchaînement précis : montrer que $f$ est dérivable et calculer $f'$, puis utiliser le théorème de **Rolle** et le théorème des **accroissements finis** (deux outils énoncés ici au moment où on s'en sert, la leçon ne les ayant pas couverts) pour localiser un point d'inflexion de $(C)$ sans jamais calculer $x_0$ explicitement.
+      Cet extrait porte sur un enchaînement précis : montrer que $f$ est dérivable et calculer $f'$, puis utiliser le théorème de **Rolle** et le théorème des **accroissements finis** (les deux énoncés du chapitre 6 — ici, toute la difficulté est de les appliquer à la bonne fonction et sur le bon intervalle) pour localiser un point d'inflexion de $(C)$ sans jamais calculer $x_0$ explicitement.
     questions:
       - id: q-2a
         part: "Partie A — Dérivabilité de f et calcul de f'"
@@ -71,7 +71,7 @@ exercises:
         stem: |-
           **(0,5 pt)** En appliquant le théorème de Rolle à la fonction $f'$, montrer qu'il existe un réel $x_0$ de l'intervalle $]0,1[$ tel que $f''(x_0) = 0$.
         reasoning: |-
-          Premier théorème nouveau : le théorème de **Rolle**. Il énonce que si une fonction $g$ est continue sur $[a,b]$, dérivable sur $]a,b[$, et si $g(a) = g(b)$, alors il existe (au moins) un réel $c \in\ ]a,b[$ tel que $g'(c) = 0$.
+          Premier outil, rappelé du chapitre 6 : le théorème de **Rolle**. Il énonce que si une fonction $g$ est continue sur $[a,b]$, dérivable sur $]a,b[$, et si $g(a) = g(b)$, alors il existe (au moins) un réel $c \in\ ]a,b[$ tel que $g'(c) = 0$.
 
           Ici, on applique ce théorème non pas à $f$ mais à $f'$ elle-même, qui joue le rôle de « $g$ » — sa dérivée est alors $f''$, et la conclusion du théorème porte donc sur $f''$, pas sur $f'$.
 
@@ -90,7 +90,7 @@ exercises:
         stem: |-
           **(0,5 pt)** En appliquant le théorème des accroissements finis à la fonction $f''$, montrer que, pour tout réel $x$ différent de $x_0$ de l'intervalle $[0,1]$, on a $\dfrac{f''(x)}{x - x_0} > 0$.
         reasoning: |-
-          Deuxième théorème nouveau : le **théorème des accroissements finis** (TAF). Il énonce que si une fonction $h$ est continue sur $[p,q]$ et dérivable sur $]p,q[$, alors il existe (au moins) un réel $c$ strictement entre $p$ et $q$ tel que $h(q) - h(p) = h'(c)\,(q-p)$ — la pente moyenne entre $p$ et $q$ est atteinte **exactement** par la dérivée en un point intermédiaire $c$. (Rolle est le cas particulier où $h(p)=h(q)$ : alors $h'(c)=0$, exactement la question précédente.)
+          Deuxième outil, rappelé du chapitre 6 : le **théorème des accroissements finis** (TAF). Il énonce que si une fonction $h$ est continue sur $[p,q]$ et dérivable sur $]p,q[$, alors il existe (au moins) un réel $c$ strictement entre $p$ et $q$ tel que $h(q) - h(p) = h'(c)\,(q-p)$ — la pente moyenne entre $p$ et $q$ est atteinte **exactement** par la dérivée en un point intermédiaire $c$. (Rolle est le cas particulier où $h(p)=h(q)$ : alors $h'(c)=0$, exactement la question précédente.)
 
           Ici, on applique le TAF à $h = f''$ entre $x_0$ (fixé par la question précédente) et un $x$ quelconque de $[0,1]$, $x \neq x_0$. Comme $f''$ est elle-même dérivable sur $\mathbb{R}$ (encore une fois somme/produit de fonctions usuelles — sa dérivée est $f'''$), le TAF donne : il existe $c$ strictement entre $x$ et $x_0$ tel que $f''(x) - f''(x_0) = f'''(c)\,(x-x_0)$. Or $f''(x_0) = 0$ (question précédente) : l'égalité se simplifie en $f''(x) = f'''(c)\,(x-x_0)$, soit $\dfrac{f''(x)}{x-x_0} = f'''(c)$ (le quotient a un sens car $x \neq x_0$).
 
@@ -117,18 +117,18 @@ exercises:
         reasoning: |-
           La question précédente a établi que, pour tout $x \neq x_0$ dans $[0,1]$, le quotient $\dfrac{f''(x)}{x-x_0}$ est strictement positif. Un quotient positif signifie que le numérateur et le dénominateur ont le même signe. Donc : si $x < x_0$ (donc $x-x_0 < 0$), alors $f''(x) < 0$ aussi ; si $x > x_0$ (donc $x-x_0>0$), alors $f''(x) > 0$ aussi.
 
-          Autrement dit, $f''$ est négative avant $x_0$ et positive après — elle change de signe exactement en $x_0$ (où elle s'annule, d'après la question A). Un changement de signe de $f''$ est précisément le critère du point d'inflexion (vu au chapitre 6 de cette leçon) : la concavité de la courbe $(C)$ bascule en ce point, de concave (avant $x_0$) à convexe (après $x_0$).
+          Autrement dit, $f''$ est négative avant $x_0$ et positive après — elle change de signe exactement en $x_0$ (où elle s'annule, d'après la question A). Un changement de signe de $f''$ est précisément le critère du point d'inflexion (vu au chapitre 7 de cette leçon) : la concavité de la courbe $(C)$ bascule en ce point, de concave (avant $x_0$) à convexe (après $x_0$).
 
-          Reste la condition de domaine, vue au chapitre 6 comme le piège qui empêchait l'asymptote verticale de l'exemple $\frac{x^2-x+1}{x-1}$ d'être un point d'inflexion : il faut que $f$ soit réellement définie (et deux fois dérivable) en $x_0$. Ici, $f$ est définie sur $\mathbb{R}$ tout entier, et $x_0 \in\ ]0,1[ \subset \mathbb{R}$ : la condition est automatiquement acquise, sans qu'il y ait le moindre piège de ce type. Le point $I(x_0, f(x_0))$ est donc bien un point d'inflexion de $(C)$ — sans qu'on ait eu besoin de connaître $x_0$ explicitement.
+          Reste la condition de domaine, vue au chapitre 7 comme le piège qui empêchait l'asymptote verticale de l'exemple $\frac{x^2-x+1}{x-1}$ d'être un point d'inflexion : il faut que $f$ soit réellement définie (et deux fois dérivable) en $x_0$. Ici, $f$ est définie sur $\mathbb{R}$ tout entier, et $x_0 \in\ ]0,1[ \subset \mathbb{R}$ : la condition est automatiquement acquise, sans qu'il y ait le moindre piège de ce type. Le point $I(x_0, f(x_0))$ est donc bien un point d'inflexion de $(C)$ — sans qu'on ait eu besoin de connaître $x_0$ explicitement.
         steps:
           - math: 'x < x_0 \ \Longrightarrow\ x - x_0 < 0 \ \Longrightarrow\ f''''(x) < 0'
             note: "Un quotient positif impose que le numérateur et le dénominateur aient le même signe."
           - math: 'x > x_0 \ \Longrightarrow\ x - x_0 > 0 \ \Longrightarrow\ f''''(x) > 0'
             note: "Même raisonnement de l'autre côté de x0."
           - math: 'f'''' \text{ change de signe en } x_0, \quad x_0 \in\ ]0,1[\ \subset\ \mathbb{R} = \text{dom}(f)'
-            note: "f est définie sur R tout entier, donc en particulier en x0 : aucune restriction de domaine ne fait obstacle ici, contrairement a l'exemple de l'asymptote verticale vu au chapitre 6."
+            note: "f est définie sur R tout entier, donc en particulier en x0 : aucune restriction de domaine ne fait obstacle ici, contrairement a l'exemple de l'asymptote verticale vu au chapitre 7."
           - math: '\Longrightarrow\ I\left(x_0, f(x_0)\right) \text{ est un point d''inflexion de } (C)'
-            note: "Changement de signe de f seconde + domaine verifie = point d'inflexion, exactement le critère pose au chapitre 6."
+            note: "Changement de signe de f seconde + domaine verifie = point d'inflexion, exactement le critère pose au chapitre 7."
 
   # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ─────────
   - id: r-variation

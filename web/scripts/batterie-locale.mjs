@@ -73,6 +73,10 @@ const ETAPES = [
   { nom: "dette-manipulable", cmd: ["scripts/dette-manipulable.mjs", "--porte"] },
   { nom: "tracabilite-spec", cmd: ["scripts/tracabilite-spec.mjs", "--porte"] },
   { nom: "couverture-diagnostique", cmd: ["scripts/couverture-diagnostique.mjs", "--porte"] },
+  //  §11.215 : le numéro de chapitre que citent prose, banques et légendes est
+  //  CALCULÉ depuis les titres `## ` ; en insérer un décale en silence tous les
+  //  renvois qui suivent. La carte est scellée, la bouger oblige à relire.
+  { nom: "carte-chapitres", cmd: ["scripts/carte-chapitres.mjs", "--porte"] },
   { nom: "resume-couverture", cmd: ["scripts/resume-couverture.mjs", "--porte"] },
   { nom: "arithmetique-rendue", cmd: ["scripts/arithmetique-rendue.mjs", "--strict"] },
   // Énumérateur de routes que l'étape dom-truth consomme : sans navigateur,

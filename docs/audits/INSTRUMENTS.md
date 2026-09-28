@@ -2503,3 +2503,28 @@ disque, alors que le produit le tire depuis son ancre au bord — 42 à 53 % d'e
 bien visible). Réécrite, verte deux fois (1 022 mesures, 27 familles) ; produit saboté (filets
 non tracés) : rouge sur cette famille SEULE, deux manquements (bain C, étape 5).
 DÉCISIONS §33.
+
+## `web/scripts/carte-chapitres.mjs` — un renvoi « chapitre N » vise-t-il encore le chapitre qu'il nommait ?
+
+**Question.** Le numéro de chapitre que l'élève lit est CALCULÉ (1 + le nombre de titres `## `
+qui précèdent, `web/src/lib/chapters.ts`) ; la prose, les banques, les exercices et les légendes le
+citent EN DUR. Insérer un chapitre décale donc, sans bruit, tous les renvois vers un chapitre
+suivant. Aucun motif ne peut dire ce qu'un renvoi « voulait » viser : la porte ne juge pas le
+renvoi, elle **scelle la carte** — la liste ordonnée des titres de chapitre de chaque notion — et
+rougit dès qu'elle bouge (insertion, retrait, réordonnancement), en listant chaque renvoi dont le
+numéro est à partir du premier chapitre déplacé : dans les fichiers de la notion, et « chapitre N
+de « Titre » » partout ailleurs. Un titre reformulé à rang égal n'est qu'une ligne d'information.
+
+**Commandes.** `--porte` (batterie, CI job `gates`), `--sceller` (après relecture des renvois
+listés). Sceau : `web/scripts/carte-chapitres.base.json`.
+
+**Preuves avant armement (2026-09-28).** Rejouée sur les quatre insertions réelles de la semaine :
+sceau au commit précédent → VERTE ; au commit d'insertion → ROUGE, avec exactement les renvois
+qu'il fallait relire — dérivabilité R4b : dix (dont trois « le chapitre 6 a établi f′(x) » qui
+menaient à Rolle), arithmétique R6b : huit (dont cinq encore faux ce matin), calcul intégral R9 :
+un, suites R8b/R8c : un. Un balayage par `git blame` fait avant elle en avait manqué un (une ligne
+modifiée APRÈS l'insertion n'avait pas pour autant été corrigée). Essai rouge : §11.215.
+
+**Ce qu'elle ne fait pas.** Elle ne dit pas qu'un renvoi est juste ; elle oblige à regarder ceux
+qu'un déplacement a pu fausser. Un renvoi écrit faux dès le départ, sur une carte qui ne bouge
+pas, lui reste invisible.

@@ -609,6 +609,15 @@
       "vers": "\"misconception\": \"mc.math.maths_calcul_integral.volume-circonference-vs-disque-fantome\"",
       "motif": "NON DÉCLARÉE",
       "note": "La règle §11.58 (un tag de distracteur doit être déclaré) ne lisait que items.yaml et checkpoints.yaml ; les paris des scènes lui échappaient. Vue en construisant la sixième scène, dont la spec exige l'ordre inverse : le modèle déclaré AVANT la scène (spec-scene-manege §8.5)."
+    },
+    {
+      "id": "§11.215",
+      "quoi": "un chapitre inséré décale en silence les renvois « chapitre N » qui le suivent",
+      "porte": "node scripts/carte-chapitres.mjs --porte",
+      "fichier": "../content/maths/arithmetique/lesson.md",
+      "de": "## R6b — Le petit théorème de Fermat",
+      "vers": "## R6a — Un chapitre inséré\n\n## R6b — Le petit théorème de Fermat",
+      "note": "La casse même de la semaine du 2026-09-21 : un « ## » inséré avant Fermat. Rejouée sur l'histoire réelle avant d'armer : sceau au commit précédent, porte VERTE ; au commit d'insertion, ROUGE avec les huit renvois qu'il fallait relire (dérivabilité R4b : les dix, calcul intégral R9 et suites R8b/R8c : un chacun)."
     }
   ]
 }

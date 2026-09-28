@@ -426,14 +426,14 @@ entries:
         stem: |-
           **(0,5 pt)** En déduire que la courbe $(C)$ admet deux points d'inflexion d'abscisses respectives $1$ et $4$.
         reasoning: |-
-          Un point d'inflexion, ce n'est pas « $f''$ s'annule » — c'est « $f''$ s'annule EN CHANGEANT DE SIGNE » (chapitre 6). Factorise $x^2-5x+4=(x-1)(x-4)$ : deux racines simples et distinctes. Comme $e^{-x}$ est toujours strictement positif, le signe de $f''$ est exactement celui de $(x-1)(x-4)$, qui bascule réellement à chacune de ces deux racines (positif à l'extérieur de $[1,4]$, négatif à l'intérieur) — ce n'est pas un simple contact avec zéro, c'est un vrai changement de signe, aux DEUX endroits.
+          Un point d'inflexion, ce n'est pas « $f''$ s'annule » — c'est « $f''$ s'annule EN CHANGEANT DE SIGNE » (chapitre 7). Factorise $x^2-5x+4=(x-1)(x-4)$ : deux racines simples et distinctes. Comme $e^{-x}$ est toujours strictement positif, le signe de $f''$ est exactement celui de $(x-1)(x-4)$, qui bascule réellement à chacune de ces deux racines (positif à l'extérieur de $[1,4]$, négatif à l'intérieur) — ce n'est pas un simple contact avec zéro, c'est un vrai changement de signe, aux DEUX endroits.
         steps:
           - math: 'x^{2}-5x+4 = (x-1)(x-4) \qquad e^{-x}>0 \ (\forall x) \ \Longrightarrow\ \text{signe de } f^{(2)}(x) = \text{signe de } (x-1)(x-4)'
             note: "On factorise le trinôme ; le facteur exponentiel, toujours positif, ne pèse jamais sur le signe."
           - math: '(x-1)(x-4) < 0 \text{ sur } \left]1,4\right[ \qquad (x-1)(x-4) > 0 \text{ ailleurs, avec changement strict en } x=1 \text{ et } x=4'
             note: "Deux racines simples et distinctes : le signe bascule réellement à chaque racine, pas un simple contact avec zéro."
           - math: 'f^{(2)} \text{ s''annule en changeant de signe en } x=1 \text{ et en } x=4 \ \Longrightarrow\ (C) \text{ admet deux points d''inflexion, d''abscisses } 1 \text{ et } 4'
-            note: "Définition du point d'inflexion (chapitre 6) : changement STRICT de signe de la dérivée seconde, verifie ici aux deux racines."
+            note: "Définition du point d'inflexion (chapitre 7) : changement STRICT de signe de la dérivée seconde, verifie ici aux deux racines."
       - id: qII5
         part: "Partie II, 5) — Construction de (D) et (C)"
         stem: |-

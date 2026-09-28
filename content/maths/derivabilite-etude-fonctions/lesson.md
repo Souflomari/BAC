@@ -275,7 +275,7 @@ Voici le résultat qui rend le calcul de $f'$ aussi utile : le signe de $f'$ com
 - Si $f'(x) < 0$ pour tout $x$ de $I$ (sauf éventuellement en un nombre fini de points), alors $f$ est **strictement décroissante** sur $I$.
 - Si $f'(x) = 0$ pour tout $x$ de $I$, alors $f$ est **constante** sur $I$.
 
-**Pourquoi c'est crédible, avec l'image de la tangente :** $f'(x)$ est la pente de la tangente au point d'abscisse $x$. Si cette pente est positive **en chaque point** de $I$, la courbe "monte" localement partout sur $I$ — elle ne peut pas redescendre nulle part, sinon il existerait un point où la tangente pointerait vers le bas, donc où $f'$ serait négative, ce qui contredit l'hypothèse. Recoller ces montées locales en une seule conclusion globale demande un argument plus fin (le théorème des accroissements finis — au programme Sciences Mathématiques, admis ici sans démonstration : c'est la démonstration qui est hors programme à ce niveau) — mais l'image de la pente qui ne s'annule jamais dans le mauvais sens explique pourquoi le résultat est vrai.
+**Pourquoi c'est crédible, avec l'image de la tangente :** $f'(x)$ est la pente de la tangente au point d'abscisse $x$. Si cette pente est positive **en chaque point** de $I$, la courbe "monte" localement partout sur $I$ — elle ne peut pas redescendre nulle part, sinon il existerait un point où la tangente pointerait vers le bas, donc où $f'$ serait négative, ce qui contredit l'hypothèse. Recoller ces montées locales en une seule conclusion globale demande un argument plus fin (le théorème des accroissements finis — au programme Sciences Mathématiques, admis ici sans démonstration : c'est la démonstration qui est hors programme à ce niveau ; hors programme en Sciences Expérimentales) — mais l'image de la pente qui ne s'annule jamais dans le mauvais sens explique pourquoi le résultat est vrai.
 
 ### Les extremums locaux — et un piège à éviter
 
@@ -319,7 +319,7 @@ Ce sont exactement les valeurs $f(-1)=2$ et $f(1)=-2$ que le chapitre précéden
 
 ## R4b — Rolle et les accroissements finis
 
-Le chapitre 5 vient d'invoquer, sans l'énoncer précisément, l'outil qui permet de recoller des montées locales en une conclusion globale : le théorème des accroissements finis. En voici l'énoncé exact, avec son cas particulier le plus simple, le théorème de Rolle — les deux sont au programme Sciences Mathématiques, admis ici sans démonstration : c'est la démonstration qui est hors programme à ce niveau, pas le résultat lui-même.
+Le chapitre 5 vient d'invoquer, sans l'énoncer précisément, l'outil qui permet de recoller des montées locales en une conclusion globale : le théorème des accroissements finis. En voici l'énoncé exact, avec son cas particulier le plus simple, le théorème de Rolle — les deux sont au programme Sciences Mathématiques, admis ici sans démonstration : c'est la démonstration qui est hors programme à ce niveau, pas le résultat lui-même ; ils sont hors programme en Sciences Expérimentales, où ce chapitre peut être laissé de côté.
 
 ### Le théorème de Rolle
 
@@ -585,11 +585,11 @@ Note enfin que $f^{-1}$ ne désigne **pas** $\dfrac{1}{f}$. C'est une notation, 
 
 ### Dans l'habillage de l'examen : la rédaction complète, en trois temps
 
-**Exemple travaillé.** Soit $f(x) = \dfrac{x^2-x+1}{x-1}$, étudiée au chapitre 6. On note $g$ sa restriction à l'intervalle $I=\,]1,2]$. Montrer que $g$ admet une fonction réciproque $g^{-1}$ définie sur un intervalle $J$ à déterminer, puis calculer $\left(g^{-1}\right)'\!\left(\dfrac{7}{2}\right)$.
+**Exemple travaillé.** Soit $f(x) = \dfrac{x^2-x+1}{x-1}$, étudiée au chapitre 7. On note $g$ sa restriction à l'intervalle $I=\,]1,2]$. Montrer que $g$ admet une fonction réciproque $g^{-1}$ définie sur un intervalle $J$ à déterminer, puis calculer $\left(g^{-1}\right)'\!\left(\dfrac{7}{2}\right)$.
 
-**Ce qu'on cherche et pourquoi ce geste :** tout est déjà fait dans l'étude du chapitre 6 — il ne s'agit pas de recommencer, mais d'aller y **prélever** les trois ingrédients : la dérivabilité (pour la continuité), le signe de $f'$ sur $I$ (pour la monotonie), et les valeurs aux bornes de $I$ (pour $J$).
+**Ce qu'on cherche et pourquoi ce geste :** tout est déjà fait dans l'étude du chapitre 7 — il ne s'agit pas de recommencer, mais d'aller y **prélever** les trois ingrédients : la dérivabilité (pour la continuité), le signe de $f'$ sur $I$ (pour la monotonie), et les valeurs aux bornes de $I$ (pour $J$).
 
-**1. Existence.** $g$ est dérivable sur $I$ comme restriction d'une fonction rationnelle définie sur $I$, donc **continue** sur $I$. Le chapitre 6 a établi $f'(x)=\dfrac{x(x-2)}{(x-1)^2}$, strictement négative sur $]1,2[$ : $g$ est donc **strictement décroissante** sur $I=\,]1,2]$. Continue et strictement monotone sur un intervalle, $g$ réalise une bijection de $I$ sur $J=g(I)$.
+**1. Existence.** $g$ est dérivable sur $I$ comme restriction d'une fonction rationnelle définie sur $I$, donc **continue** sur $I$. Le chapitre 7 a établi $f'(x)=\dfrac{x(x-2)}{(x-1)^2}$, strictement négative sur $]1,2[$ : $g$ est donc **strictement décroissante** sur $I=\,]1,2]$. Continue et strictement monotone sur un intervalle, $g$ réalise une bijection de $I$ sur $J=g(I)$.
 
 **2. Détermination de $J$.** On lit les deux bornes, puis on les range — $g$ décroît, donc elles s'échangent :
 
