@@ -186,6 +186,15 @@ function fautesScene3d(desc) {
       if (!def.controles.includes(c)) fautes.push(`${ou} : contrôle "${c}" inconnu de la scène`);
       ouverts.add(c);
     }
+    // `crans` : ce qu'un contrôle OFFRE à cette étape (champ des pentes : le cran −1 retenu jusqu'à
+    // S6). Un cran hors du registre ne s'afficherait pas ; un contrôle que l'étape n'ouvre pas ne
+    // s'afficherait pas non plus — la restriction serait une intention, pas un fait du DOM.
+    for (const [c, vs] of Object.entries(e?.crans ?? {})) {
+      if (!(e?.controles ?? []).includes(c)) fautes.push(`${ou} : crans de "${c}", un contrôle que l'étape n'ouvre pas`);
+      const permises = def.valeurs?.[c];
+      if (!Array.isArray(vs) || vs.length < 2) fautes.push(`${ou} : crans de "${c}" — au moins deux crans, sinon ce n'est pas un contrôle`);
+      else if (permises) for (const v of vs) if (!permises.includes(v)) fautes.push(`${ou} : cran "${v}" de "${c}" absent du registre (attendu : ${permises.join(" | ")})`);
+    }
     if (i === 0 && !e?.etat) fautes.push(`${ou} : la première étape doit poser un état`);
     for (const l of e?.lectures ?? [])
       if (!(def.lectures ?? []).includes(l)) fautes.push(`${ou} : lecture "${l}" inconnue de la scène`);

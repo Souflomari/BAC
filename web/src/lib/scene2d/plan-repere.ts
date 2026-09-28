@@ -198,27 +198,31 @@ export function peindreRepere(
     pointe(c, X(1), y0, 1, 0, 6);
     pointe(c, x0, Y(1), 0, -1, 6);
     c.lineWidth = 1;
+    // La lettre suit le réglage du lecteur comme les nombres de l'axe ; sa flèche, réglée au
+    // pixel pour 13 px, suit dans la même proportion k (k = 1 à A : pas un pixel ne bouge).
+    const tv = tailleTexte(13);
+    const k = tv / 13;
     const nomVecteur = (lettre: string, x: number, y: number) => {
-      c.font = `italic 13px ${police}`;
+      c.font = `italic ${tv}px ${police}`;
       c.textAlign = "center";
       c.textBaseline = "alphabetic";
       c.fillText(lettre, x, y);
       const w = c.measureText(lettre).width;
       // la flèche au-dessus de la lettre
       c.beginPath();
-      c.moveTo(x - w / 2 - 1, y - 11.5);
-      c.lineTo(x + w / 2 + 2, y - 11.5);
+      c.moveTo(x - w / 2 - 1 * k, y - 11.5 * k);
+      c.lineTo(x + w / 2 + 2 * k, y - 11.5 * k);
       c.stroke();
       c.beginPath();
-      c.moveTo(x + w / 2 + 3, y - 11.5);
-      c.lineTo(x + w / 2 - 0.5, y - 13.5);
-      c.lineTo(x + w / 2 - 0.5, y - 9.5);
+      c.moveTo(x + w / 2 + 3 * k, y - 11.5 * k);
+      c.lineTo(x + w / 2 - 0.5 * k, y - 13.5 * k);
+      c.lineTo(x + w / 2 - 0.5 * k, y - 9.5 * k);
       c.closePath();
       c.fill();
-      zones.push({ x0: x - w / 2 - 2, y0: y - 16, x1: x + w / 2 + 4, y1: y + 3 });
+      zones.push({ x0: x - w / 2 - 2 * k, y0: y - 16 * k, x1: x + w / 2 + 4 * k, y1: y + 3 * k });
     };
-    nomVecteur("u", X(0.5), y0 - 5);
-    nomVecteur("v", x0 + 9, Y(0.5) + 5);
+    nomVecteur("u", X(0.5), y0 - 5 * k);
+    nomVecteur("v", x0 + 9 * k, Y(0.5) + 5 * k);
     c.font = `${tailleTexte(12)}px ${police}`;
   }
 

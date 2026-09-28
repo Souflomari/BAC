@@ -123,6 +123,10 @@ $$T'(t) = -kT(t) + 20k$$
 
 Ce n'est **pas** de la forme $y'=ay$ : il traîne un terme constant, $20k$, qui ne dépend pas de $T$. C'est le signe que le café ne se refroidit pas vers $0\ °\text{C}$, mais vers la température de la pièce, $20\ °\text{C}$ — un **palier** non nul. Le modèle du chapitre 2 doit être élargi.
 
+Le chapitre 2 a laissé une famille entière de courbes, solutions de $y'=ay$, sans jamais dire où elles vont une fois qu'un terme constant s'ajoute. Avant de le démontrer, on va essayer : le plan qui suit affiche, en chaque point, la pente qu'une solution y recevrait. Attention à ce qu'il est : un banc d'essai, pas une preuve — douze équations bien choisies ne démontrent rien en mathématiques, la démonstration vient juste après, et elle vaut pour tous les $a$ et tous les $b$ à la fois. Une seule question le guide : à quel endroit ce plan devient-il plat — pas comment on l'écrit.
+
+[[embed:champ-des-pentes]]
+
 ### Poser l'équation générale
 
 Soient $a$ (non nul) et $b$ deux réels fixés. On cherche les fonctions $y$, dérivables sur $\mathbb{R}$, telles que pour tout $x$ :
@@ -139,7 +143,7 @@ $$0 = ak+b$$
 
 $$k = -\frac{b}{a}$$
 
-(On a besoin ici que $a \neq 0$ — sinon cette division n'a pas de sens, et l'équation $y'=b$ se traite directement comme une primitive constante, hors du cadre de ce chapitre.) La fonction constante $y_p(x) = -\dfrac{b}{a}$ est donc bien une solution — on l'appelle la **solution particulière constante**, ou le **palier** de l'équation.
+(On a besoin ici que $a \neq 0$ — sinon cette division n'a pas de sens, et l'équation $y'=b$ se traite directement comme une primitive constante, hors du cadre de ce chapitre.) La fonction constante $y_p(x) = -\dfrac{b}{a}$ est donc bien une solution — on l'appelle la **solution particulière constante**, ou le **palier** de l'équation. Reconnais ce palier : c'est exactement la ligne que le plan précédent affichait comme plate — une fonction dont la dérivée est nulle partout, c'est une courbe qui, en chaque point, reçoit la pente $0$.
 
 ### Étape 2 : ramener le cas général au chapitre 2
 
@@ -181,7 +185,7 @@ $$y(x) = Ce^{-3x} + 4, \qquad C \in \mathbb{R}$$
 
 Une erreur très fréquente : recopier $b$ tel quel dans la solution, en écrivant $y(x)=Ce^{ax}+b$ au lieu de $y(x)=Ce^{ax}-\dfrac{b}{a}$. Teste ce modèle avant de le croire, avec l'exemple ci-dessus ($a=-3$, $b=12$) : si $y(x)=Ce^{-3x}+12$ était une solution, on aurait $y'(x)=-3Ce^{-3x}$, et d'autre part $ay+b = -3(Ce^{-3x}+12)+12 = -3Ce^{-3x}-36+12=-3Ce^{-3x}-24$. Les deux membres diffèrent de $24$ — ils ne coïncident jamais, quelle que soit la valeur de $C$. Le modèle « le palier, c'est $b$ » échoue clairement : le vrai palier est $-b/a=4$, pas $b=12$.
 
-En toute généralité : si $y(x)=Ce^{ax}+b$ était solution, l'identification des deux membres imposerait $b(a+1)=0$ — donc $b=0$ ou $a=-1$ seulement. Rien de tel n'est vrai en général : recopier $b$ ne marche presque jamais.
+En toute généralité : si $y(x)=Ce^{ax}+b$ était solution, l'identification des deux membres imposerait $b(a+1)=0$ — donc $b=0$ ou $a=-1$ seulement. Ce cas existe, et on peut le rencontrer : quand $a=-1$, recopier $b$ tombe juste par accident — le pire des cas, une règle fausse qui ne se fait pas prendre. Rien de tel n'est vrai en général : recopier $b$ ne marche presque jamais.
 
 [[checkpoint:cp-r2-palier]]
 
@@ -253,7 +257,7 @@ La formule qu'on vient d'établir n'est pas juste une courbe qui « ressemble »
 
 [[figure:famille-solutions]]
 
-La figure ci-dessus rend visible ce que le chapitre 2 avait déjà annoncé : l'équation $T'=-0{,}1T+2$, à elle seule, ne dessine pas une courbe mais toute une **famille** — une par valeur de $T_0=T(0)$ — qui partagent toutes le même palier $T_p=-b/a=20$ sans jamais le franchir. La courbe en accent, celle avec $T(0)=90$, est la seule que le calcul ci-dessus a isolée dans cette famille.
+La figure ci-dessus rend visible ce que le chapitre 2 avait déjà annoncé : l'équation $T'=-0{,}1T+2$, à elle seule, ne dessine pas une courbe mais toute une **famille** — une par valeur de $T_0=T(0)$ — qui partagent toutes le même palier $T_p=-b/a=20$ sans jamais le franchir. C'est exactement ce que le plan du chapitre 3 montrait déjà, sur une équation particulière : plusieurs départs, un seul palier, jamais franchi. La courbe en accent, celle avec $T(0)=90$, est la seule que le calcul ci-dessus a isolée dans cette famille.
 
 [[checkpoint:cp-r3-condition-initiale]]
 

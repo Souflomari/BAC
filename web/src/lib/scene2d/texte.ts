@@ -8,8 +8,9 @@
  * figure. La taille de base de la racine (16 px × `--font-scale`) donne le facteur ; à A il vaut
  * exactement 1, et rien ne bouge d'un pixel — les portes de pixels mesurent à A.
  *
- * Ce qui NE suit PAS, écrit à côté : les glyphes composés d'un tracé (la lettre d'un vecteur et
- * sa flèche, le « X » du multiplieur), dont les décalages sont réglés au pixel pour une taille.
+ * Ce qui NE suit PAS, écrit à côté : le « X » du multiplieur (modulation), un symbole dans une
+ * boîte de taille fixe — le glyphe grandirait hors de sa boîte. La lettre d'un vecteur et sa
+ * flèche (`plan-repere.ts`) suivent, décalages compris, dans la proportion tailleTexte(13) / 13.
  * Le redessin au changement de réglage est déjà câblé (`useSceneRendu`, MutationObserver sur
  * l'attribut `style` de <html>).
  */

@@ -213,6 +213,12 @@ export interface Scene3DEtape {
   suite?: string;
   /** les contrôles que l'étape OUVRE ; les autres sont absents du DOM */
   controles: Scene3DControle[];
+  /**
+   * Les crans qu'un contrôle OFFRE à cette étape, quand ce n'est pas tous ceux du registre
+   * (champ des pentes, S4 et S5 : le coefficient n'offre que −0,5 et 0,5 — le cran −1 est la
+   * RÉPONSE du pari de S6, et un cran offert est une réponse à un clic). Absent : tous les crans.
+   */
+  crans?: Record<string, string[]>;
   /** les lectures que l'étape affiche une fois le pari révélé ; aucune par défaut */
   lectures?: Scene3DLecture[];
   /** l'état posé en entrant dans l'étape (annoncé par la consigne) ; absent = on garde l'état courant */

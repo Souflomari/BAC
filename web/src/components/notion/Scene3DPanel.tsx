@@ -27,6 +27,7 @@ import { RevolutionPanel } from "./scene/RevolutionPanel";
 import { VectorielPanel } from "./scene/VectorielPanel";
 import { PlanComplexePanel } from "./scene/PlanComplexePanel";
 import { PlanComplexeRapportPanel } from "./scene/PlanComplexeRapportPanel";
+import { ChampPentesPanel } from "./scene/ChampPentesPanel";
 import { QuotientPanel } from "./scene/QuotientPanel";
 
 const PANNEAUX: Record<string, React.ComponentType<{ scene: Scene3DDescriptor; className?: string }>> = {
@@ -62,6 +63,7 @@ const PANNEAUX: Record<string, React.ComponentType<{ scene: Scene3DDescriptor; c
   // docs/pipeline/propositions/maths-nombres-complexes-2-scene-plan.md). Tout y est EXACT.
   "plan-complexe-transformation": PlanComplexePanel,
   "plan-complexe-rapport": PlanComplexeRapportPanel,
+  "champ-des-pentes": ChampPentesPanel,
   // Le seizième : trois bains, cinq crans, un critère — Q_{r,i} face à K, jamais face à 1 (spec
   // docs/pipeline/propositions/pc-evolution-spontanee-scene-quotient.md).
   "echelle-des-quotients": QuotientPanel,
