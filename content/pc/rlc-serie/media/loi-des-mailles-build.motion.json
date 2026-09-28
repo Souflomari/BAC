@@ -1,0 +1,114 @@
+{
+  "slug": "loi-des-mailles-build",
+  "viewBox": "0 0 760 600",
+  "label": "Construction de la loi des mailles, terme par terme",
+  "layout": "replace",
+  "regions": {
+    "chrome":    { "x":   0, "y":   0, "w": 760, "h":  54 },
+    "schematic": { "x":   0, "y":  54, "w": 374, "h": 466 },
+    "eq-slot":   { "x": 374, "y":  54, "w": 386, "h": 466 },
+    "footer":    { "x":   0, "y": 520, "w": 760, "h":  80 }
+  },
+  "replaces": [
+    { "beat": "beat-1", "slot": "eq-slot", "enter": "eq-b", "exit": "eq-a" },
+    { "beat": "beat-2", "slot": "eq-slot", "enter": "eq-c", "exit": "eq-b" },
+    { "beat": "beat-3", "slot": "eq-slot", "enter": "eq-d", "exit": "eq-c" }
+  ],
+  "beats": [
+    {
+      "id": "beat-0",
+      "caption": "La loi des mailles dans un circuit LC sans source : u_C + u_L = 0. La somme des tensions dans la boucle est nulle.",
+      "tweens": [
+        {
+          "target": "#eq-a",
+          "verb": "assemble",
+          "duration": 0.5,
+          "ease": "power3.out",
+          "stagger": 0.09
+        }
+      ]
+    },
+    {
+      "id": "beat-1",
+      "caption": "Substitution : on remplace u_C = q/C et u_L = L·d²q/dt². Les tensions deviennent des expressions en q.",
+      "tweens": [
+        {
+          "target": "#hl-C",
+          "verb": "pulse-settle",
+          "peak": 0.24,
+          "settleTo": 0.14,
+          "duration": 0.5,
+          "at": 0
+        },
+        {
+          "target": "#hl-L",
+          "verb": "pulse-settle",
+          "peak": 0.24,
+          "settleTo": 0.14,
+          "duration": 0.5,
+          "at": 0
+        },
+        {
+          "target": "#eq-b",
+          "verb": "assemble",
+          "duration": 0.5,
+          "ease": "power3.out",
+          "stagger": 0.09,
+          "at": 0.28
+        }
+      ]
+    },
+    {
+      "id": "beat-2",
+      "caption": "Forme canonique L·q'' + q/C = 0 : c'est l'équation différentielle du circuit idéal. R n'y figure pas — la période T₀ est indépendante de R.",
+      "tweens": [
+        {
+          "target": "#eq-c",
+          "verb": "assemble",
+          "duration": 0.5,
+          "ease": "power3.out",
+          "stagger": 0.09,
+          "at": 0
+        }
+      ]
+    },
+    {
+      "id": "beat-3",
+      "caption": "Cas amorti (R présente) : u_R = R·i apparaît. L'équation amortie a un résidu non annulable — on s'arrête ici.",
+      "tweens": [
+        {
+          "target": "#resistor-R",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.45,
+          "ease": "power3.out",
+          "at": 0
+        },
+        {
+          "target": "#hl-R",
+          "verb": "pulse-settle",
+          "peak": 0.20,
+          "settleTo": 0.12,
+          "duration": 0.5,
+          "at": 0.1
+        },
+        {
+          "target": "#badge-rlc",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.4,
+          "ease": "power3.out",
+          "at": 0.15
+        },
+        {
+          "target": "#eq-d",
+          "verb": "assemble",
+          "duration": 0.5,
+          "ease": "power3.out",
+          "stagger": 0.09,
+          "at": 0.3
+        }
+      ]
+    }
+  ]
+}

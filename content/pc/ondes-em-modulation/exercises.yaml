@@ -1,0 +1,144 @@
+# Attempt-first exercises (summit-conversion campaign — ondes-em-modulation).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2017 session
+# normale, PC BIOF, code NS28F, AlloSchool element/57711 — statut « vérifié »
+# in docs/sujets/pc/ondes-em-modulation.md, Exercice III Partie II). r-variation
+# is a fresh anti-memorisation twin (same skills, different numbers/context,
+# status not-applicable) — it re-homes the training exercise + expert prose that
+# used to be printed in clear at the R6 summit.
+
+notion: ondes-em-modulation
+
+exercises:
+  # ── r-bac — the VERIFIED 2017 national sujet, Ex III Partie II ────────────
+  # Faithful transcription of docs/sujets/pc/ondes-em-modulation.md → "2017 —
+  # session normale — Exercice III (Partie II)". Montage : circuit intégré
+  # multiplieur (X), u1 = Pm cos(2π Fp t) sur E1, u2 = U0 + s(t) sur E2 avec
+  # s(t) = Sm cos(2π fs t) la tension modulante ; sortie us = k u1 u2.
+  # L'oscillogramme (figure 4) et ses lectures (extrema d'enveloppe, périodes)
+  # sont décrits explicitement dans l'intro — voir la note de sourcing sur la
+  # reconstruction fidèle de la figure.
+  - id: r-bac
+    title: "Exercice de type bac — modulation d'amplitude (2017)"
+    sourcing:
+      status: sourced
+      note: >-
+        2017 session normale — examen national PC BIOF (Sciences Physiques
+        SPC), code NS28F, Exercice III Partie II (modulation d'amplitude ;
+        barème ≈ 1,75 pt sur les 5 pt de l'exercice). Transcription vérifiée :
+        re-fetch indépendant AlloSchool element/57711 + diff OK
+        (docs/sujets/pc/ondes-em-modulation.md, statut « vérifié »). La lecture
+        de l'oscillogramme (figure 4) est reconstruite fidèlement à partir de
+        la description vérifiée — enveloppe 1 V–3 V (d'où m = 0,5), repères
+        d'abscisse 5 et 15 ms ; les périodes lues (Ts de l'enveloppe, Tp de la
+        porteuse) sont explicitées dans l'intro pour que la question de lecture
+        graphique reste faisable au niveau TP décrit par le sujet.
+    intro: |-
+      **Modulation d'amplitude (examen national, session normale 2017).**
+
+      Au cours d'une séance de TP, pour étudier la modulation d'amplitude et vérifier sa qualité, on utilise un circuit intégré multiplieur $(X)$. On applique à son entrée $E_1$ une tension sinusoïdale $u_1(t) = P_m \cos(2\pi F_p\,t)$, et à son entrée $E_2$ une tension $u_2(t) = U_0 + s(t)$, où $U_0$ est la composante continue et $s(t) = S_m \cos(2\pi f_s\,t)$ la tension modulante. Le multiplieur délivre en sortie la tension $u_s(t) = k\,u_1(t)\,u_2(t)$, où $k$ est une constante positive caractérisant le multiplieur.
+
+      L'oscillogramme (figure 4) représente $u_s$ (en volts) en fonction du temps (en millisecondes). On y voit une oscillation rapide — la porteuse — dont les sommets successifs dessinent une **enveloppe** sinusoïdale lente, image de la tension modulante. L'enveloppe supérieure oscille entre un maximum $U_{s,\text{max}} = 3\ \text{V}$ et un minimum $U_{s,\text{min}} = 1\ \text{V}$, et accomplit une période complète entre les deux instants repérés sur l'axe des abscisses, $t_1 = 5\ \text{ms}$ et $t_2 = 15\ \text{ms}$. Sur ce même axe, on relève la période de l'oscillation rapide : $T_p = 0{,}5\ \text{ms}$.
+    questions:
+      - id: q1
+        part: "Partie II — Établir la forme canonique de la tension modulée"
+        stem: |-
+          **(0,75 pt)** Montrer, en précisant les expressions de $A$ et de $m$, que la tension de sortie s'écrit sous la forme :
+          $$u_s(t) = A\left[1 + m \cos(2\pi f_s\,t)\right]\cos(2\pi F_p\,t)$$
+        reasoning: |-
+          On ne « résout » rien ici : on part de la définition du multiplieur, $u_s = k\,u_1\,u_2$, on développe, et on identifie terme à terme avec la forme demandée. Le geste-clé est de mettre la composante continue $U_0$ en facteur dans la tension d'entrée $u_2$ : c'est cette mise en facteur qui fait apparaître, d'un coup, l'amplitude globale $A$ (tout ce qui multiplie l'oscillation) et le taux de modulation $m$ (le poids relatif de la partie variable devant la composante continue). Reconnaître que $A$ et $m$ ne sont pas donnés mais construits par ce factoring, c'est tout l'enjeu de la question.
+        steps:
+          - math: 'u_s(t) = k\,u_1(t)\,u_2(t) = k\,P_m\cos(2\pi F_p\,t)\left(U_0 + S_m\cos(2\pi f_s\,t)\right)'
+            note: "Définition du multiplieur : on remplace u1 et u2 par leurs expressions."
+          - math: 'u_2(t) = U_0 + S_m\cos(2\pi f_s\,t) = U_0\left[1 + \frac{S_m}{U_0}\cos(2\pi f_s\,t)\right]'
+            note: "Le geste-clé : on met la composante continue U0 en facteur dans la tension d'entrée E2."
+          - math: 'u_s(t) = k\,P_m\,U_0\left[1 + \frac{S_m}{U_0}\cos(2\pi f_s\,t)\right]\cos(2\pi F_p\,t)'
+            note: "On reporte ; l'oscillation rapide cos(2π Fp t) reste en facteur."
+          - math: '\boxed{A = k\,P_m\,U_0 \qquad \text{et} \qquad m = \frac{S_m}{U_0}}'
+            note: "Identification avec la forme demandée : A est l'amplitude globale, m le taux de modulation."
+      - id: q2
+        part: "Partie II — Exploiter la courbe (figure 4)"
+        stem: |-
+          **(0,5 pt)** En exploitant la courbe de la figure 4, trouver la fréquence $F_p$ de la porteuse et la fréquence $f_s$ de la tension modulante.
+        reasoning: |-
+          Deux échelles de temps cohabitent sur l'oscillogramme, et il ne faut surtout pas les confondre. L'enveloppe lente varie au rythme de la tension modulante : sa période est donc $T_s$, d'où $f_s = 1/T_s$. L'oscillation rapide, elle, est la porteuse : sa période est $T_p$, d'où $F_p = 1/T_p$. On lit la période lente (entre les deux repères) pour $f_s$, et la période rapide pour $F_p$.
+        steps:
+          - math: 'T_s = t_2 - t_1 = 15\ \text{ms} - 5\ \text{ms} = 10\ \text{ms} = 10\times10^{-3}\ \text{s}'
+            note: "Période de l'enveloppe (tension modulante), lue entre les deux repères 5 et 15 ms."
+          - math: 'f_s = \frac{1}{T_s} = \frac{1}{10\times10^{-3}} = 100\ \text{Hz}'
+            note: "Fréquence de la tension modulante."
+          - math: 'F_p = \frac{1}{T_p} = \frac{1}{0{,}5\times10^{-3}} = 2000\ \text{Hz} = 2\ \text{kHz}'
+            note: "Fréquence de la porteuse, à partir de la période de l'oscillation rapide Tp = 0,5 ms."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Déterminer le taux de modulation $m$ et en déduire la qualité de la modulation.
+        reasoning: |-
+          Sur l'oscillogramme, l'enveloppe supérieure vaut $A(1+m)$ à son maximum et $A(1-m)$ à son minimum — c'est la lecture directe de la forme établie à la question 1. Le rapport de ces deux lectures élimine $A$ et ne garde que $m$ : on obtient $m$ à partir des seuls extrema, sans connaître $A$. La qualité se juge ensuite au seul critère $m < 1$ (bonne modulation, enveloppe fidèle et toujours positive) ou $m \geq 1$ (surmodulation, enveloppe déformée).
+        steps:
+          - math: 'U_{s,\text{max}} = A(1+m) = 3\ \text{V} \qquad U_{s,\text{min}} = A(1-m) = 1\ \text{V}'
+            note: "Lecture des extrema de l'enveloppe sur la figure 4."
+          - math: 'm = \frac{U_{s,\text{max}} - U_{s,\text{min}}}{U_{s,\text{max}} + U_{s,\text{min}}} = \frac{3 - 1}{3 + 1} = \frac{2}{4} = 0{,}5'
+            note: "Le rapport des extrema élimine A ; il ne reste que le taux m."
+          - math: 'm = 0{,}5 < 1 \implies \text{bonne modulation}'
+            note: "Critère de qualité : m < 1, l'enveloppe reste positive et reproduit fidèlement la tension modulante."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ─────────
+  # Same deep skills as r-bac (lire l'enveloppe → Sm et f_signal, juger la
+  # qualité par m = Sm/U0, plus le calcul d'accord C) mais un autre habillage :
+  # on lit directement l'enveloppe reçue, sans repasser par le multiplieur, et
+  # on remonte au condensateur d'accord. Reprend le contenu et le raisonnement
+  # de l'ancien exercice d'entraînement imprimé au sommet R6, déplacés de
+  # « affiché-au-sommet » vers « révélé-après-tentative ».
+  - id: r-variation
+    title: "Une variation pour ne pas mémoriser"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2017, sourcé). Reprend, en
+        les déplaçant vers l'après-tentative, l'exercice d'entraînement et son
+        raisonnement expert qui figuraient en clair au sommet de la leçon (R6).
+    intro: |-
+      Même structure profonde que le sujet précédent, mais un autre habillage : ici on lit directement l'enveloppe reçue, sans repasser par le multiplieur. Le but est que tu ne puisses pas recopier la solution du sujet 2017 — tu dois reconnaître quelle lecture et quelle relation s'appliquent.
+
+      Une station de radio en modulation d'amplitude émet une porteuse de fréquence $F_p = 1\,200\ \text{kHz}$. À la réception, juste après le circuit d'accord et avant la démodulation, on enregistre à l'oscilloscope une tension qui oscille très rapidement ; les sommets successifs de ces oscillations, une fois reliés, dessinent une enveloppe qui monte d'un minimum de $3\ \text{V}$ jusqu'à un maximum de $7\ \text{V}$, redescend jusqu'à $3\ \text{V}$, puis recommence à l'identique toutes les $0{,}2\ \text{ms}$.
+    questions:
+      - id: q1
+        stem: |-
+          À partir de la description de l'enveloppe, déterminer l'amplitude $S_m$ de la tension modulante et sa fréquence $f_\text{signal}$.
+        reasoning: |-
+          L'enveloppe oscille entre $U_0 - S_m$ (son minimum) et $U_0 + S_m$ (son maximum) : sa valeur moyenne redonne donc $U_0$, et l'écart entre le maximum et cette moyenne donne $S_m$. La fréquence, elle, se lit sur la période de répétition de l'enveloppe — c'est la période de la tension modulante, à ne pas confondre avec celle, bien plus courte, de l'oscillation rapide.
+        steps:
+          - math: 'U_0 = \frac{U_\text{max} + U_\text{min}}{2} = \frac{7 + 3}{2} = 5\ \text{V}'
+            note: "Valeur moyenne de l'enveloppe = composante continue U0 (cohérent avec l'énoncé)."
+          - math: 'S_m = U_\text{max} - U_0 = 7 - 5 = 2\ \text{V}'
+            note: "Écart entre le maximum de l'enveloppe et sa valeur moyenne."
+          - math: 'f_\text{signal} = \frac{1}{T_\text{signal}} = \frac{1}{0{,}2\times10^{-3}} = 5000\ \text{Hz} = 5\ \text{kHz}'
+            note: "Période de répétition de l'enveloppe : Tsignal = 0,2 ms."
+      - id: q2
+        stem: |-
+          Vérifier que les deux conditions d'une bonne modulation sont respectées.
+        reasoning: |-
+          Deux critères, pas un seul. Le premier, $F_p \gg f_\text{signal}$, garantit assez d'oscillations rapides par cycle de l'enveloppe pour que celle-ci se dessine nettement. Le second, $m = S_m/U_0 < 1$, garantit que l'amplitude instantanée reste positive à tout instant — donc pas de surmodulation. On teste les deux avec les valeurs trouvées.
+        steps:
+          - math: '\frac{F_p}{f_\text{signal}} = \frac{1\,200\,000}{5\,000} = 240 \gg 1'
+            note: "Première condition : la porteuse oscille bien plus vite que la modulante."
+          - math: 'm = \frac{S_m}{U_0} = \frac{2}{5} = 0{,}4 < 1'
+            note: "Seconde condition : taux de modulation inférieur à 1, pas de surmodulation."
+      - id: q3
+        stem: |-
+          Le récepteur utilise une bobine $L = 150\ \mu\text{H}$ dans son circuit d'accord. Calculer la valeur du condensateur $C$ à régler pour recevoir cette station.
+        reasoning: |-
+          Accorder le récepteur, c'est régler sa fréquence propre $f_0 = 1/(2\pi\sqrt{LC})$ sur la porteuse de la station voulue : on impose $f_0 = F_p$, puis on isole $C$ dans cette relation — exactement comme au chapitre 6, mais avec cette bobine et cette porteuse-ci. C'est le condensateur variable qu'on règle, la bobine $L$ étant fixée.
+        steps:
+          - math: 'f_0 = \frac{1}{2\pi\sqrt{LC}} = F_p \implies C = \frac{1}{(2\pi F_p)^2\,L}'
+            note: "On isole C dans la condition d'accord f0 = Fp."
+          - math: '2\pi F_p = 2\pi \times 1{,}20\times10^{6} \approx 7{,}540\times10^{6}\ \text{rad/s}'
+            note: "Pulsation de la porteuse."
+          - math: 'C = \frac{1}{(7{,}540\times10^{6})^2 \times 1{,}50\times10^{-4}} \approx 1{,}17\times10^{-10}\ \text{F} \approx 117\ \text{pF}'
+            note: "Application numérique : une centaine de pF, ordre de grandeur réel d'un condensateur d'accord AM."

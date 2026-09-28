@@ -1,0 +1,210 @@
+# Attempt-first exercises (summit-conversion campaign — maths, calcul-integral).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2022 session
+# normale, Mathématiques SExp BIOF — SVT et Sciences Physiques, code NS 22F,
+# AlloSchool element/136586 — statut « vérifié » in
+# docs/sujets/maths/calcul-integral.md, "2022 — session normale — Exercice 4").
+# r-variation is a fresh anti-memorisation twin (same skills — reconnaître une
+# primitive en dérivant, calculer une intégrale définie, intégration par parties
+# qui réutilise la première intégrale — with a different function, interval and
+# numbers; status not-applicable).
+
+notion: calcul-integral
+
+exercises:
+  # ── r-bac — the VERIFIED 2022 national sujet (Ex. 4, partie calcul intégral) ──
+  # Faithful transcription of docs/sujets/maths/calcul-integral.md → "2022 —
+  # session normale — Exercice 4 (partie « calcul intégral »)". h(x)=(x+1)e^x ;
+  # 1a) vérifier que x↦xe^x est une primitive de h puis calculer I=∫_{-1}^0 h ;
+  # 1b) par intégration par parties calculer J=∫_{-1}^0 (x+1)^2 e^x. La question
+  # 1b réutilise I : c'est le fil qui relie les deux parties.
+  - id: r-bac
+    title: "Exercice de type bac — primitive et intégration par parties (2022)"
+    sourcing:
+      status: sourced
+      note: >-
+        2022 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques, option française), Mathématiques (3 h, coef 7), code NS 22F,
+        Exercice 4 « Équations différentielles et calcul intégral » (partie
+        calcul intégral : questions 1a et 1b, 1,5 pt sur les 2,5 pts de
+        l'exercice). Transcription vérifiée : re-fetch AlloSchool element/136586
+        (course-438/upload-84495, p.3), statut « vérifié » dans
+        docs/sujets/maths/calcul-integral.md.
+    intro: |-
+      **Équations différentielles et calcul intégral (examen national, session normale 2022).**
+
+      On considère la fonction $h$ définie sur $\mathbb{R}$ par $h(x) = (x+1)e^x$.
+
+      Cet exercice enchaîne deux gestes du chapitre. D'abord **reconnaître une primitive** : on te propose une fonction candidate, et vérifier qu'elle est une primitive de $h$, ce n'est pas l'intégrer — c'est la **dériver** et contrôler qu'on retombe sur $h$. Ensuite calculer une seconde intégrale, plus difficile, par une **intégration par parties** qui réutilise le premier résultat.
+
+      *(La question 2 du sujet — l'équation différentielle $y'' - 2y' + y = 0$ — est traitée dans le chapitre « Équations différentielles ». On ne garde ici que la partie calcul intégral.)*
+
+      Prends une feuille : cherche chaque question, engage une réponse, puis seulement ouvre le raisonnement pour le comparer au tien.
+    questions:
+      - id: q1a
+        part: "Partie A — Reconnaître une primitive et calculer $I$"
+        stem: |-
+          **(0,75 pt)** Vérifier que la fonction $x \mapsto x\,e^x$ est une primitive de la fonction $h$ sur $\mathbb{R}$, puis calculer $I = \displaystyle\int_{-1}^{0} h(x)\,\mathrm{d}x$.
+        reasoning: |-
+          Deux gestes distincts, à ne pas confondre.
+
+          **Vérifier la primitive.** Une primitive $F$ de $h$ est une fonction telle que $F' = h$. Pour contrôler que $x \mapsto x\,e^x$ convient, on ne l'intègre pas et on ne dérive pas $h$ : on **dérive la candidate** et on vérifie qu'on obtient bien $h$. Comme $x\,e^x$ est un produit, on applique la règle de dérivation d'un produit.
+
+          **Calculer $I$.** Une fois qu'on tient une primitive $F(x) = x\,e^x$, la définition de l'intégrale donne $I = F(0) - F(-1)$. Peu importe la primitive choisie : une éventuelle constante additive s'annulerait dans la soustraction. Le seul point de vigilance est le signe en $x=-1$ : $F(-1) = -1 \cdot e^{-1} = -e^{-1}$, et l'on soustrait ce nombre négatif.
+        steps:
+          - math: '\bigl(x\,e^x\bigr)^{\prime} = 1\cdot e^x + x\cdot e^x = (x+1)e^x = h(x)'
+            note: "Pour vérifier une primitive, on DÉRIVE la candidate (règle du produit) et on retombe sur h : c'est bien une primitive. On ne cherche pas à intégrer h ici."
+          - math: 'I = \int_{-1}^{0} h(x)\,\mathrm{d}x = \bigl[x\,e^x\bigr]_{-1}^{0} = 0\cdot e^{0} - (-1)\cdot e^{-1}'
+            note: "Définition de l'intégrale : F(0) − F(−1), avec F(x) = x·e^x."
+          - math: 'I = 0 - \bigl(-e^{-1}\bigr) = e^{-1} = \dfrac{1}{e}'
+            note: "En 0, x·e^x = 0 ; en −1, x·e^x = −1/e. Donc I = 0 − (−1/e) = 1/e."
+      - id: q1b
+        part: "Partie B — Une intégration par parties : le calcul de $J$"
+        stem: |-
+          **(0,75 pt)** À l'aide d'une intégration par parties, calculer $J = \displaystyle\int_{-1}^{0} (x+1)^2 e^x\,\mathrm{d}x$.
+        reasoning: |-
+          L'intégrande $(x+1)^2 e^x$ est un produit : c'est le signal de l'intégration par parties. Reste à choisir lequel des deux facteurs on dérive et lequel on primitive.
+
+          Si on dérive $(x+1)^2$, on obtient $2(x+1)$ — un facteur **plus simple**. Si on primitive $e^x$, on retombe sur $e^x$ — **immédiat**. Le bon choix est donc $u = (x+1)^2$ et $v' = e^x$. Le mauvais réflexe serait de poser $u = e^x$ : dériver l'exponentielle ne simplifie rien.
+
+          La formule $\int u v' = [uv] - \int u' v$ transforme alors $J$ en un terme de bord moins $\displaystyle\int_{-1}^{0} 2(x+1)e^x\,\mathrm{d}x$. Et cette intégrale restante est exactement $2I$ : l'intégrande $(x+1)e^x$ n'est autre que $h(x)$, dont l'intégrale a déjà été calculée en Partie A. C'est là que les deux parties se relient — on ne recalcule rien.
+        steps:
+          - math: 'u = (x+1)^2,\quad u^{\prime} = 2(x+1),\qquad v^{\prime} = e^x,\quad v = e^x'
+            note: "On dérive (x+1)² (ça se simplifie en 2(x+1)) et on primitive e^x (immédiat). Poser u = e^x ne simplifierait rien."
+          - math: 'J = \bigl[(x+1)^2 e^x\bigr]_{-1}^{0} - \int_{-1}^{0} 2(x+1)e^x\,\mathrm{d}x'
+            note: "Formule de l'IPP : terme de bord moins l'intégrale du produit dérivé-primitivé."
+          - math: '\bigl[(x+1)^2 e^x\bigr]_{-1}^{0} = (0+1)^2 e^{0} - (-1+1)^2 e^{-1} = 1 - 0 = 1'
+            note: "En 0 : 1²·1 = 1. En −1 : 0²·(1/e) = 0. Le terme de bord vaut 1."
+          - math: '\int_{-1}^{0} 2(x+1)e^x\,\mathrm{d}x = 2\int_{-1}^{0} (x+1)e^x\,\mathrm{d}x = 2\int_{-1}^{0} h(x)\,\mathrm{d}x = 2I'
+            note: "L'intégrale restante est 2·I : l'intégrande (x+1)e^x est exactement h(x), déjà intégré en Partie A."
+          - math: 'J = 1 - 2I = 1 - \dfrac{2}{e} = \dfrac{e-2}{e}'
+            note: "Terme de bord (1) moins 2I (= 2/e). Résultat positif car e > 2."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ────────
+  # Same deep skills as r-bac (vérifier une primitive en dérivant un produit,
+  # calculer une intégrale définie, intégration par parties qui réutilise la
+  # première intégrale) with a different function g(x)=(x+2)e^x, a different
+  # interval [0,1], and a different square (x+2)^2 e^x — so the student cannot
+  # copy the 2022 sujet and must recognise that the same machinery applies when
+  # the numbers change.
+  - id: r-variation
+    title: "Variation fraîche — une autre primitive, une autre IPP"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2022, sourcé). Fonction,
+        intervalle et nombres choisis pour donner des résultats exacts vérifiés
+        à la main (K = 2e − 1 ; L = 5e − 2).
+    intro: |-
+      Même structure profonde que le sujet, habillage différent : une autre fonction du même type, $g(x) = (x+2)e^x$, un autre intervalle $[0,1]$, et une seconde intégrale bâtie sur le carré $(x+2)^2 e^x$. Le but est que tu ne recopies pas le sujet 2022 : tu dois reconnaître que la même mécanique — **vérifier une primitive en dérivant**, puis une **intégration par parties qui réutilise la première intégrale** — s'applique quels que soient les nombres.
+
+      On considère la fonction $g$ définie sur $\mathbb{R}$ par $g(x) = (x+2)e^x$.
+    questions:
+      - id: q1a
+        part: "Partie A — Reconnaître une primitive et calculer $K$"
+        stem: |-
+          Vérifier que la fonction $x \mapsto (x+1)e^x$ est une primitive de $g$ sur $\mathbb{R}$, puis calculer $K = \displaystyle\int_{0}^{1} g(x)\,\mathrm{d}x$.
+        reasoning: |-
+          Comme pour la Partie A du sujet : vérifier une primitive, c'est **dériver** la candidate et contrôler qu'on retombe sur $g$, pas l'intégrer. On dérive donc $(x+1)e^x$ par la règle du produit.
+
+          Une fois la primitive $F(x) = (x+1)e^x$ en main, la définition donne $K = F(1) - F(0)$. Aucun changement de signe piégeux ici (les bornes $0$ et $1$ sont positives), mais on garde le réflexe d'évaluer soigneusement aux deux bornes.
+        steps:
+          - math: '\bigl((x+1)e^x\bigr)^{\prime} = 1\cdot e^x + (x+1)e^x = (x+2)e^x = g(x)'
+            note: "On dérive la candidate (règle du produit) et on retombe sur g : c'est une primitive."
+          - math: 'K = \bigl[(x+1)e^x\bigr]_{0}^{1} = (1+1)e^{1} - (0+1)e^{0} = 2e - 1'
+            note: "F(1) − F(0) : en 1, 2e ; en 0, 1. Donc K = 2e − 1."
+      - id: q1b
+        part: "Partie B — Une intégration par parties : le calcul de $L$"
+        stem: |-
+          À l'aide d'une intégration par parties, calculer $L = \displaystyle\int_{0}^{1} (x+2)^2 e^x\,\mathrm{d}x$.
+        reasoning: |-
+          Même geste que pour $J$ dans le sujet. L'intégrande $(x+2)^2 e^x$ est un produit : on dérive $(x+2)^2$ (qui se simplifie en $2(x+2)$) et on primitive $e^x$ (immédiat). Donc $u = (x+2)^2$ et $v' = e^x$.
+
+          L'IPP fait apparaître un terme de bord moins $\displaystyle\int_{0}^{1} 2(x+2)e^x\,\mathrm{d}x$, c'est-à-dire moins $2K$ : l'intégrande $(x+2)e^x$ est exactement $g(x)$, déjà intégré en Partie A. On réutilise $K = 2e-1$ sans le recalculer.
+        steps:
+          - math: 'u = (x+2)^2,\quad u^{\prime} = 2(x+2),\qquad v^{\prime} = e^x,\quad v = e^x'
+            note: "On dérive (x+2)² → 2(x+2) et on primitive e^x → e^x."
+          - math: 'L = \bigl[(x+2)^2 e^x\bigr]_{0}^{1} - \int_{0}^{1} 2(x+2)e^x\,\mathrm{d}x'
+            note: "Terme de bord moins l'intégrale du produit dérivé-primitivé."
+          - math: '\bigl[(x+2)^2 e^x\bigr]_{0}^{1} = 3^2 e^{1} - 2^2 e^{0} = 9e - 4'
+            note: "En 1 : 3²·e = 9e. En 0 : 2²·1 = 4."
+          - math: '\int_{0}^{1} 2(x+2)e^x\,\mathrm{d}x = 2\int_{0}^{1} (x+2)e^x\,\mathrm{d}x = 2K = 2(2e-1) = 4e - 2'
+            note: "L'intégrale restante est 2K : (x+2)e^x est exactement g(x), déjà intégré en Partie A."
+          - math: 'L = (9e - 4) - (4e - 2) = 5e - 2'
+            note: "Terme de bord (9e − 4) moins 2K (4e − 2) = 5e − 2."
+
+  # ── r-volume — a fresh volume-of-revolution twin (NOT a real sujet) ─────
+  # Built on the PATTERN of a verified national sujet (2023, session de
+  # rattrapage, Sciences Mathématiques, Exercice 1 Partie III question 2c —
+  # same bac phrase, same ‖i⃗‖=1cm device, same procédé: a root inside f so
+  # f² integrates by a single IPP). That sujet itself needs a DOUBLE IPP
+  # (SM-only, past the SExp limite — spec-extension.md §1.4 B3), so it is
+  # cited as precedent, not shipped verbatim (filière arbitration pending,
+  # REVIEW S1.2/S1.3). This variation stays at single-IPP level: f(x)=√(x ln x)
+  # on [1,e], question 1 proving the IPP identity that question 2 reuses for
+  # the volume — same anti-memorisation machinery as r-bac/r-variation,
+  # applied to the volume savoir-faire taught in R9.
+  - id: r-volume
+    title: "Une question de volume, comme au bac"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite sur le PATRON d'une question nationale vérifiée :
+        2023, session de rattrapage, Sciences Mathématiques, Exercice 1 Partie
+        III question 2c (docs/sujets/_incoming/maths-sm-2023-r.md:122) — même
+        phrase, même dispositif d'unité, même procédé (une racine dans f pour
+        que f² se traite par IPP). Le sujet 2023 lui-même demande une DOUBLE
+        IPP : il est SM et reste hors de cette variation (limite SExp, B3).
+        Sa reprise verbatim comme item « sourced » attend l'arbitrage de
+        filière (REVIEW S1.2/S1.3, spec-extension.md §10 Q3).
+    intro: |-
+      On considère la fonction $f$ définie sur $[1,e]$ par $f(x) = \sqrt{x\ln x}$, et $(C)$ sa courbe dans un repère **orthonormé** $(O;\vec i,\vec j)$.
+    questions:
+      - id: q1
+        part: "Question 1 — Une intégration par parties"
+        stem: |-
+          À l'aide d'une intégration par parties, montrer que $\displaystyle\int_1^e t\ln t\,\mathrm{d}t = \dfrac{e^2+1}{4}$.
+        reasoning: |-
+          L'intégrande $t\ln t$ est un produit : c'est le signal de l'intégration par parties (chapitre 8). Reste à choisir quel facteur dériver et lequel primitiver.
+
+          Le bon choix est $u=\ln t$, pas $v'=\ln t$ : dériver $\ln t$ donne $\dfrac1t$, un facteur **plus simple** — alors que le **primitiver** est plus difficile et n'aurait rien simplifié. Avec $v'=t$, une primitive immédiate est $v=\dfrac{t^2}{2}$.
+        steps:
+          - math: 'u = \ln t,\quad u^{\prime} = \frac{1}{t},\qquad v^{\prime} = t,\quad v = \frac{t^2}{2}'
+            note: "On dérive ln t (il se simplifie en 1/t) et on primitive t (immédiat) — poser v' = ln t rendrait l'intégrale suivante pire, pas meilleure."
+          - math: '\int_1^e t\ln t\,\mathrm{d}t = \left[\frac{t^2}{2}\ln t\right]_1^e - \int_1^e \frac{t}{2}\,\mathrm{d}t'
+            note: "Formule de l'IPP : terme de bord moins l'intégrale du produit dérivé-primitivé."
+          - math: '\left[\frac{t^2}{2}\ln t\right]_1^e = \frac{e^2}{2}\ln e - \frac{1}{2}\ln 1 = \frac{e^2}{2}'
+            note: "En e : ln e = 1. En 1 : ln 1 = 0, le terme au bord inférieur s'annule."
+          - math: '\int_1^e \frac{t}{2}\,\mathrm{d}t = \left[\frac{t^2}{4}\right]_1^e = \frac{e^2}{4}-\frac14'
+            note: "Le facteur t restant se primitive directement en t²/4."
+          - math: '\int_1^e t\ln t\,\mathrm{d}t = \frac{e^2}{2} - \left(\frac{e^2}{4}-\frac14\right) = \frac{e^2+1}{4}'
+            note: "On recombine les deux morceaux : e²/2 − e²/4 = e²/4, plus 1/4."
+      - id: q2
+        part: "Question 2 — Le volume, en cm³"
+        stem: |-
+          Calculer, en $\text{cm}^3$, le volume du solide engendré par la rotation d'un tour complet autour de l'axe des abscisses de la portion de la courbe $(C)$ relative à l'intervalle $[1,e]$. (On prendra $\|\vec i\| = 1\ \text{cm}$.)
+        reasoning: |-
+          Le premier geste n'est pas de calculer : c'est de **traduire la phrase**. « Un tour complet autour de l'axe des abscisses » donne directement $V=\pi\displaystyle\int_1^e f(x)^2\,\mathrm{d}x$ — aucune autre formule n'est en jeu.
+
+          Le deuxième geste est de **regarder $f^2$ avant de paniquer** devant la racine : $f(x)^2 = x\ln x$, et sur $[1,e]$, $x\geq1$ donc $\ln x\geq0$, donc $x\ln x\geq0$ — $f$ est bien définie et l'hypothèse $f\geq0$ de la formule est vérifiée. Or $x\ln x$, c'est **exactement** l'intégrande de la question précédente : rien à recalculer.
+
+          Le troisième geste est de **ne pas oublier l'unité**. Ici $\|\vec i\|=1$ cm, donc $1$ u.v. $=1$ cm³ et le nombre ne bouge pas — mais avec $\|\vec i\|=2$ cm, il aurait fallu multiplier par $2^3=8$.
+
+          Retiens le montage, pas les nombres : une racine dans $f$, une intégration par parties préparée juste avant — c'est la construction standard d'une question de volume au bac.
+        steps:
+          - math: 'f(x)^2 = x\ln x'
+            note: "Sur [1,e], x ln x ≥ 0 (car x≥1 donne ln x≥0) : f est bien définie et positive, l'hypothèse de la formule est vérifiée."
+          - math: 'V = \pi\int_1^e \big(f(x)\big)^2\,\mathrm{d}x = \pi\int_1^e x\ln x\,\mathrm{d}x'
+            note: "« Un tour complet autour de l'axe des abscisses » se traduit directement par cette formule."
+          - math: 'V = \pi\times\frac{e^2+1}{4} = \frac{\pi(e^2+1)}{4}\ \text{u.v.}'
+            note: "On réutilise l'intégrale de la question 1 — sans la recalculer."
+          - math: '\|\vec i\| = 1\ \text{cm} \Rightarrow 1\ \text{u.v.} = 1^3\ \text{cm}^3 = 1\ \text{cm}^3'
+            note: "Repère orthonormé, unité 1 cm : la conversion ne change pas le nombre."
+          - math: 'V = \frac{\pi(e^2+1)}{4}\ \text{cm}^3 \approx 6{,}59\ \text{cm}^3'
+            note: "Avec un repère où l'unité vaudrait 2 cm, ce même volume vaudrait 8 fois plus : 2π(e²+1) cm³."

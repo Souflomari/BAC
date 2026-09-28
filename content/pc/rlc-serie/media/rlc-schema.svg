@@ -1,0 +1,228 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 320" width="560" height="320"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Schéma du circuit RLC série — révélation progressive en 4 étapes">
+  <title>Circuit RLC série</title>
+
+  <!-- Dégradés partagés — hors des step-groups pour rester accessibles quelle que soit la visibilité -->
+  <defs>
+    <!-- Dégradé corps résistance (utilisé par step-4) -->
+    <linearGradient id="r-body-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="var(--figure-surface)"/>
+      <stop offset="45%"  stop-color="var(--figure-grid)"/>
+      <stop offset="100%" stop-color="var(--figure-surface)"/>
+    </linearGradient>
+  </defs>
+
+  <!--
+    rlc-schema.svg — Circuit RLC série, 4 progressive steps
+    step-1 : boucle LC nue + interrupteur K  (R absent — délibéré)
+    step-2 : + courant i et sa flèche
+    step-3 : + tensions u_C, u_L (convention récepteur)
+    step-4 : + résistance R et u_R  (à partir de R3)
+
+    Palette: var(--figure-*) CSS vars throughout — dark-mode works for free.
+    Role-color convention (matching the motion clips):
+      C (condensateur) : --figure-energy-C  (blue)
+      L (bobine)       : --figure-energy-L  (teal-green)
+      i (courant)      : --figure-accent
+      R / u_R          : --figure-ink-soft
+
+    Layout — boucle série, sens horaire :
+      K  : fil du haut, centre  (x=195..265, y=64)
+      C  : fil gauche, vertical  (x=72, y=118..194)
+      L  : fil du bas, horizontal  (x=170..370, y=256)
+      R  : fil droit, vertical  (x=456, y=118..194)
+      Coins : TL(72,64) TR(456,64) BR(456,256) BL(72,256)
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — boucle LC nue + interrupteur K
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+
+    <!-- Titre de la figure -->
+    <text x="280" y="26" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Circuit LC idéal — condensateur + bobine
+    </text>
+
+    <!-- ── Fils du circuit ──────────────────────────────── -->
+    <!-- Fil haut gauche → borne gauche de K -->
+    <line x1="72" y1="64" x2="195" y2="64"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <!-- Fil haut droite, borne droite de K → coin TR -->
+    <line x1="265" y1="64" x2="456" y2="64"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <!-- Fil droit (steps 1–3 : sans R, fil continu) -->
+    <line x1="456" y1="64" x2="456" y2="256"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <!-- Fil bas droite → bobine-droite -->
+    <line x1="370" y1="256" x2="456" y2="256"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <!-- Fil bas gauche, bobine-gauche → coin BL -->
+    <line x1="72" y1="256" x2="170" y2="256"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <!-- Fil gauche bas → plaque basse du condo -->
+    <line x1="72" y1="256" x2="72" y2="194"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <!-- Fil gauche haut → plaque haute du condo -->
+    <line x1="72" y1="118" x2="72" y2="64"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Points de coin (jonctions) -->
+    <circle cx="72"  cy="64"  r="3" fill="var(--figure-ink)"/>
+    <circle cx="456" cy="64"  r="3" fill="var(--figure-ink)"/>
+    <circle cx="456" cy="256" r="3" fill="var(--figure-ink)"/>
+    <circle cx="72"  cy="256" r="3" fill="var(--figure-ink)"/>
+
+    <!-- ── Interrupteur K (haut centre) ─────────────────── -->
+    <circle cx="195" cy="64" r="3" fill="var(--figure-ink)"/>
+    <circle cx="265" cy="64" r="3" fill="var(--figure-ink)"/>
+    <!-- Lame de l'interrupteur (ouverte, inclinée) -->
+    <line x1="195" y1="64" x2="258" y2="46"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <!-- Étiquette K -->
+    <text x="226" y="40" text-anchor="middle"
+          font-size="13" font-style="italic" fill="var(--figure-ink)">K</text>
+
+    <!-- ── Condensateur C (fil gauche, vertical) ─────────── -->
+    <!-- Plaque haute (+) — energy-C -->
+    <line x1="46" y1="118" x2="98" y2="118"
+          stroke="var(--figure-energy-C)" stroke-width="3" stroke-linecap="round"/>
+    <!-- Plaque basse (−) — energy-C, polarity distinguished by glyph -->
+    <line x1="46" y1="194" x2="98" y2="194"
+          stroke="var(--figure-energy-C)" stroke-width="3" stroke-linecap="round"/>
+    <!-- Signe + (plaque haute) — figure-ink for contrast on energy-C plate -->
+    <text x="60" y="113" text-anchor="middle"
+          font-size="9" font-weight="700" fill="var(--figure-ink)">+</text>
+    <!-- Signe − (plaque basse) — figure-ink for contrast -->
+    <text x="60" y="202" text-anchor="middle"
+          font-size="9" font-weight="700" fill="var(--figure-ink)">−</text>
+
+    <!-- Étiquette C — energy-C -->
+    <text x="108" y="162" text-anchor="start"
+          font-size="13" font-style="italic" fill="var(--figure-energy-C)">C</text>
+
+    <!-- ── Bobine L (fil du bas, horizontal) — energy-L ─── -->
+    <!-- 4 demi-cercles réguliers, x=170..370, y=256 -->
+    <path d="M170,256 a25,18 0 0,1 50,0"
+          fill="none" stroke="var(--figure-energy-L)" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M220,256 a25,18 0 0,1 50,0"
+          fill="none" stroke="var(--figure-energy-L)" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M270,256 a25,18 0 0,1 50,0"
+          fill="none" stroke="var(--figure-energy-L)" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M320,256 a25,18 0 0,1 50,0"
+          fill="none" stroke="var(--figure-energy-L)" stroke-width="2.2" stroke-linecap="round"/>
+    <!-- Étiquette L — energy-L -->
+    <text x="270" y="240" text-anchor="middle"
+          font-size="13" font-style="italic" fill="var(--figure-energy-L)">L</text>
+
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — + courant i et sa flèche
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Flèche de courant sur le fil supérieur (sens horaire, gauche→droite) -->
+    <line x1="330" y1="64" x2="376" y2="64"
+          stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="376,64 362,58.5 362,69.5" fill="var(--figure-accent)"/>
+    <!-- Étiquette i au-dessus de la flèche -->
+    <text x="353" y="53" text-anchor="middle"
+          font-size="14" font-style="italic" fill="var(--figure-accent)">i</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — + tensions u_C, u_L (convention récepteur)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- u_C : flèche en tirets, à gauche des plaques, pointant vers le bas -->
+    <!-- (convention récepteur : + en haut = plaque +) — energy-C -->
+    <line x1="32" y1="124" x2="32" y2="188"
+          stroke="var(--figure-energy-C)" stroke-width="1.6"
+          stroke-dasharray="5,3" stroke-linecap="round"/>
+    <polygon points="32,188 27.5,176 36.5,176" fill="var(--figure-energy-C)"/>
+    <!-- Étiquette u_C à gauche -->
+    <text x="18" y="162" text-anchor="middle"
+          font-size="12" font-style="italic" fill="var(--figure-energy-C)">u<tspan
+          dy="4" font-size="8.5" font-style="italic">C</tspan>
+    </text>
+
+    <!-- u_L : flèche en tirets sous la bobine, pointant vers la gauche -->
+    <!-- (convention récepteur : sens opposé au courant) — energy-L -->
+    <line x1="170" y1="275" x2="368" y2="275"
+          stroke="var(--figure-energy-L)" stroke-width="1.6"
+          stroke-dasharray="5,3" stroke-linecap="round"/>
+    <polygon points="170,275 182,270.5 182,279.5" fill="var(--figure-energy-L)"/>
+    <!-- Étiquette u_L sous la flèche -->
+    <text x="270" y="293" text-anchor="middle"
+          font-size="12" font-style="italic" fill="var(--figure-energy-L)">u<tspan
+          dy="4" font-size="8.5" font-style="italic">L</tspan>
+    </text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — + résistance R et u_R
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <!-- Titre mis à jour : Circuit RLC série (R est maintenant présent).
+         Un rect de masquage efface le titre step-1 avant de poser le nouveau
+         titre — les deux <text> sont simultanément dans le DOM quand step-4
+         est visible, SVG peint en ordre document (dernier = dessus). -->
+    <!-- RECOUVREMENT ASSUMÉ : « Circuit LC idéal — condensateur + bobine »
+         — le titre du step-1 est masqué par ce rect puis remplacé par celui
+         du circuit RLC. Les deux <text> coexistent dans le DOM ; seul le
+         second se voit, et c'est voulu. -->
+    <rect x="120" y="10" width="320" height="20"
+          fill="var(--figure-surface)"/>
+    <text x="280" y="26" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Circuit RLC série
+    </text>
+
+    <!-- Masquer le fil droit continu de step-1 dans la zone de R
+         en posant un rect à la couleur du fond SVG (transparent = bg app).
+         On redessine les deux tronçons autour de R. -->
+    <rect x="442" y="110" width="28" height="92"
+          fill="var(--figure-surface)"/>
+    <!-- Tronçon haut -->
+    <line x1="456" y1="64"  x2="456" y2="114"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <!-- Tronçon bas -->
+    <line x1="456" y1="190" x2="456" y2="256"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Corps de la résistance : rectangle arrondi avec dégradé subtil -->
+    <rect x="436" y="114" width="40" height="76" rx="5"
+          fill="url(#r-body-grad)"
+          stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <!-- Hachures stylisées à l'intérieur (symbole européen de la résistance) -->
+    <line x1="445" y1="128" x2="467" y2="128"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-linecap="round"/>
+    <line x1="445" y1="140" x2="467" y2="140"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-linecap="round"/>
+    <line x1="445" y1="152" x2="467" y2="152"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-linecap="round"/>
+    <line x1="445" y1="164" x2="467" y2="164"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-linecap="round"/>
+    <line x1="445" y1="176" x2="467" y2="176"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-linecap="round"/>
+    <!-- Étiquette R à l'intérieur -->
+    <text x="456" y="156" text-anchor="middle"
+          font-size="13" font-style="italic" fill="var(--figure-ink)">R</text>
+
+    <!-- u_R : flèche en tirets à droite de la résistance, vers le bas -->
+    <line x1="494" y1="118" x2="494" y2="186"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6"
+          stroke-dasharray="5,3" stroke-linecap="round"/>
+    <polygon points="494,118 489.5,130 498.5,130" fill="var(--figure-ink-soft)"/>
+    <!-- Étiquette u_R -->
+    <text x="514" y="158" text-anchor="middle"
+          font-size="12" font-style="italic" fill="var(--figure-ink-soft)">u<tspan
+          dy="4" font-size="8.5" font-style="italic">R</tspan>
+    </text>
+  </g><!-- /step-4 -->
+
+</svg>

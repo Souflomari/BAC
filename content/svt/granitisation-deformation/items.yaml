@@ -1,0 +1,740 @@
+notion: granitisation-deformation
+skill_code: svt_granitisation
+misconceptions:
+  # Inventaire écrit le 2026-09-05, tiré des feedbacks déjà présents.
+  - id: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
+    label: "« Ce gradient s'explique par l'âge, la composition ou la chronologie — pas par la profondeur ni par le temps d'exhumation »"
+    description: >
+      Devant une série qui varie avec la profondeur (faille puis pli ; schiste,
+      gneiss, migmatite) ou avec le temps d'érosion (granite affleurant dans les
+      chaînes anciennes), l'élève cherche la cause ailleurs : nature chimique de
+      la roche, âge des échantillons, ordre chronologique des structures,
+      collision qui « s'intensifierait », chaîne jeune « trop froide ».
+    contradicts_principle: >
+      C'est la PROFONDEUR au moment de la déformation qui commande : la
+      température et la pression de confinement augmentent avec elle, faisant
+      passer une même roche du cassant au ductile, et une même pélite du schiste
+      au gneiss puis à la migmatite. Et une chaîne jeune produit déjà du granite
+      en profondeur : ce qui lui manque, ce sont les dizaines de millions
+      d'années d'érosion nécessaires pour le mettre à l'affleurement.
+
+  - id: mc.svt.svt_granitisation.cassant-ductile-inverses
+    label: "« Une faille est une déformation ductile, un pli une déformation cassante »"
+    description: >
+      L'élève intervertit les deux définitions.
+    contradicts_principle: >
+      Une FAILLE est une cassure nette : déformation CASSANTE. Un PLI est une
+      courbure continue sans rupture : déformation DUCTILE.
+
+  - id: mc.svt.svt_granitisation.transformation-attribuee-a-lerosion
+    label: "« La migmatite est un schiste plus érodé »"
+    description: >
+      L'élève explique une recristallisation profonde par une altération de
+      surface.
+    contradicts_principle: >
+      L'érosion use et fragmente la roche en surface ; elle ne recristallise
+      aucun minéral. La migmatite résulte d'un enfouissement très profond où la
+      roche a commencé à FONDRE partiellement.
+
+  - id: mc.svt.svt_granitisation.fusion-mal-expliquee
+    label: "« La roche fond parce qu'elle est enfouie depuis longtemps, ou parce qu'un magma venu d'ailleurs l'a atteinte »"
+    description: >
+      L'élève fait de l'anatexie une affaire de durée, ou une infiltration : un
+      manteau réservoir de magma liquide, ou de l'eau de pluie descendue à des
+      dizaines de kilomètres.
+    contradicts_principle: >
+      Une roche reste enfouie indéfiniment sans fondre tant que la température
+      locale reste sous son SOLIDUS — c'est tout le métamorphisme, qui se fait à
+      l'état solide. Le manteau est essentiellement solide, pas un réservoir de
+      magma. Et l'anatexie est une fusion partielle produite SUR PLACE, aidée
+      par l'eau déjà piégée dans les micas, jamais par une eau venue de la
+      surface.
+
+  - id: mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire
+    label: "« Le granite est une roche volcanique, ou une accumulation de cendres — et la taille des cristaux vient de la composition »"
+    description: >
+      L'élève situe la formation du granite en surface (lave refroidie à l'air
+      libre, cendres compactées) ou attribue sa texture grenue à la chimie du
+      magma plutôt qu'à la vitesse de refroidissement.
+    contradicts_principle: >
+      Une lave refroidie à l'air libre perd sa chaleur en quelques heures : elle
+      donne un grain FIN. Les gros cristaux du granite exigent un
+      refroidissement très lent, possible seulement en PROFONDEUR, où la roche
+      encaissante isole le magma. La composition détermine la NATURE des
+      minéraux ; la vitesse de refroidissement détermine leur TAILLE.
+
+items:
+  - id: GRD-1
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: svt_granitisation
+    tags: [deformation_ductile, deformation_cassante, profondeur]
+    stem: >
+      Dans une coupe de terrain, on observe qu'à faible profondeur, la roche
+      est fracturée le long de failles nettes, tandis qu'à plus grande
+      profondeur, la même couche de roche, soumise à la même compression, se
+      retrouve plissée sans aucune cassure. Comment qualifie-t-on chacun de
+      ces deux comportements, et qu'est-ce qui explique le changement entre
+      les deux ?
+    type: mcq
+    choices:
+      - id: A
+        text: >
+          Le comportement en surface est une déformation cassante (la
+          faille), celui en profondeur une déformation ductile (le pli) ;
+          l'augmentation de la température et de la pression de confinement
+          avec la profondeur rend la roche capable de se courber sans se
+          rompre.
+        correct: true
+      - id: B
+        text: >
+          Le comportement en surface est ductile (la faille résulte d'un pli trop
+          discret pour être vu), et celui en profondeur est cassant (le pli est en
+          réalité une accumulation de petites fractures que rien ne distingue à l'œil
+          nu).
+          Ce serait donc l'échelle d'observation, et non la profondeur, qui déciderait du comportement de la roche.
+        correct: false
+        misconception: mc.svt.svt_granitisation.cassant-ductile-inverses
+        feedback: >
+          C'est l'inverse des définitions : une faille est justement le nom
+          d'une cassure nette (déformation cassante), et un pli est
+          justement le nom d'une courbure continue sans rupture (déformation
+          ductile). Ici, en plus d'inverser les deux comportements, ce choix
+          confond leur définition même.
+      - id: C
+        text: >
+          Cela dépend uniquement de la nature chimique de la roche (calcaire ou grès) :
+          certaines roches se plissent, d'autres se cassent, indépendamment de la
+          profondeur ou des conditions physiques régnant à cet endroit.
+        correct: false
+        misconception: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
+        feedback: >
+          La même roche peut se plisser en profondeur et se casser plus
+          haut dans la même coupe : ce n'est donc pas une propriété fixe du
+          type de roche, ce sont la température et la pression de
+          confinement, qui augmentent avec la profondeur, qui décident du
+          comportement.
+      - id: D
+        text: >
+          Les failles se forment toujours avant les plis dans l'histoire d'une chaîne ;
+          ce que l'on observe ici est un stade chronologique différent d'un même
+          épisode, et non un effet de la profondeur.
+        correct: false
+        misconception: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
+        feedback: >
+          Rien n'indique ici un décalage dans le temps : les deux structures
+          coexistent dans la même coupe, à la même étape de la collision.
+          C'est la profondeur au moment de la déformation, pas l'ordre
+          chronologique, qui explique pourquoi l'une est cassante et l'autre
+          ductile.
+    correct_feedback: >
+      Près de la surface, la roche est froide et peu confinée : elle casse
+      net (déformation cassante, faille). En profondeur, elle est chaude et
+      fortement confinée : elle se courbe sans se rompre (déformation
+      ductile, pli). C'est la profondeur, via la température et la pression,
+      qui décide, jamais la roche seule.
+    solution: |
+      **Près de la surface :** température basse, faible confinement -> la
+      roche casse le long d'un plan net (faille, déformation cassante).
+
+      **En profondeur :** température élevée, fort confinement -> les
+      minéraux peuvent se réorganiser progressivement, et la roche se
+      courbe sans jamais perdre sa cohésion (pli, déformation ductile).
+
+      **Piège à éviter :** croire que « ductile » et « cassant » sont des
+      propriétés fixes du matériau. La même roche change de comportement
+      selon la profondeur où elle se trouve.
+
+  - id: GRD-2
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: svt_granitisation
+    tags: [metamorphisme, facies_metamorphique, profondeur]
+    stem: >
+      Le long d'une coupe traversant une chaîne de collision, on prélève, à
+      des profondeurs croissantes, des échantillons d'une même roche
+      sédimentaire de départ (une pélite argileuse) : à faible profondeur
+      elle est peu transformée, un peu plus profond on trouve un schiste,
+      encore plus profond un gneiss, et au plus profond une migmatite. Que
+      faut-il conclure de cette succession ?
+    type: mcq
+    choices:
+      - id: A
+        text: >
+          Cette succession de faciès métamorphiques traduit une
+          augmentation continue de la pression et de la température avec la
+          profondeur : chaque faciès correspond à un intervalle de pression
+          et de température précis, et leur ordre reflète directement
+          l'ordre des profondeurs d'enfouissement.
+        correct: true
+      - id: B
+        text: >
+          Cette succession reflète seulement des âges différents : le schiste est la
+          roche la plus ancienne et la migmatite la plus récente, chacune s'étant formée
+          à son époque sans lien avec la profondeur de prélèvement.
+        correct: false
+        misconception: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
+        feedback: >
+          Schiste, gneiss et migmatite sont une seule et même roche de
+          départ, prise à des profondeurs croissantes d'un seul et même
+          épisode d'enfouissement : ce n'est pas l'âge qui les distingue,
+          c'est la profondeur atteinte, donc la pression et la température
+          subies.
+      - id: C
+        text: >
+          Chaque échantillon provient d'une roche de départ chimiquement différente ; le
+          hasard de la composition initiale explique à lui seul ces quatre aspects si
+          différents, et la profondeur n'intervient ni dans leur formation ni dans leur
+          aspect actuel.
+          Deux échantillons prélevés à la même profondeur pourraient donc présenter n'importe lesquels de ces quatre aspects.
+        correct: false
+        misconception: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
+        feedback: >
+          L'énoncé précise que les quatre échantillons proviennent de la
+          MÊME pélite de départ. Leur transformation progressive ne peut
+          donc s'expliquer par une différence de composition initiale : elle
+          s'explique par l'augmentation de la pression et de la température
+          avec la profondeur atteinte.
+      - id: D
+        text: >
+          La migmatite est un schiste qui a subi une érosion plus intense que les autres
+          : ce n'est pas un effet de la profondeur d'enfouissement mais de l'altération
+          subie une fois la roche revenue en surface.
+        correct: false
+        misconception: mc.svt.svt_granitisation.transformation-attribuee-a-lerosion
+        feedback: >
+          L'érosion est un phénomène de surface qui use et fragmente la
+          roche ; elle ne recristallise pas ses minéraux. La migmatite
+          résulte au contraire d'un enfouissement très profond, où la
+          roche a commencé à fondre partiellement : c'est l'opposé d'un
+          effet de surface.
+    correct_feedback: >
+      Chaque faciès (schiste, gneiss, migmatite) est la signature minérale
+      d'un intervalle de pression et de température précis. Identifier le
+      faciès d'une roche, c'est donc lire, indirectement, la profondeur
+      approximative à laquelle elle a été enfouie.
+    solution: |
+      **Ce que dit chaque faciès :** un assemblage minéral donné n'est
+      stable que dans une fenêtre précise de pression et de température ;
+      hors de cette fenêtre, les minéraux se réorganisent en un autre
+      assemblage.
+
+      **Ce que ça permet de faire :** remonter, à partir de l'assemblage
+      minéral observé, à la profondeur approximative d'enfouissement -
+      exactement comme un thermomètre et un baromètre combinés.
+
+      **Piège à éviter :** séparer les trois roches en leur attribuant un
+      âge ou une origine chimique différente, alors qu'elles ne sont qu'une
+      seule roche suivie à des profondeurs croissantes.
+
+  - id: GRD-3
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: svt_granitisation
+    tags: [anatexie, fusion_partielle, solidus]
+    stem: >
+      En très grande profondeur, au cœur d'une chaîne de collision,
+      certaines roches métamorphiques ne se contentent plus de recristalliser
+      à l'état solide : on y trouve des poches de roche fondue, mêlées à des
+      cristaux solides encore en place (une migmatite). Qu'est-ce qui a
+      permis cette fusion partielle, appelée anatexie, alors que des roches
+      voisines, à peine moins profondes, restent entièrement solides ?
+    type: mcq
+    choices:
+      - id: A
+        text: >
+          À cette profondeur, la température locale a franchi le solidus de la roche —
+          la température à partir de laquelle elle commence à fondre —, souvent parce
+          que l'eau contenue dans certains minéraux abaisse ce seuil ; un peu moins
+          profond, la température reste en dessous et la roche demeure solide.
+        correct: true
+      - id: B
+        text: >
+          Toute roche enfouie suffisamment longtemps finit par fondre, quelle que soit
+          sa profondeur : c'est une question de durée d'enfouissement et non de
+          température, et les roches situées plus haut, enfouies depuis moins longtemps,
+          fondront elles aussi avec le temps.
+          Il suffirait donc d'attendre pour obtenir du magma à n'importe quelle profondeur.
+        correct: false
+        misconception: mc.svt.svt_granitisation.fusion-mal-expliquee
+        feedback: >
+          Une roche peut rester enfouie très longtemps sans jamais fondre,
+          tant que la température locale reste sous son solidus : c'est le
+          cas du métamorphisme (schiste, gneiss), qui se produit à l'état
+          solide sur de très longues durées sans fusion. C'est le
+          franchissement d'un seuil de température, pas la durée en elle-
+          même, qui déclenche la fusion.
+      - id: C
+        text: >
+          La roche fond parce qu'elle se rapproche d'un manteau qui serait un réservoir
+          de magma liquide en permanence, et parce qu'un peu de ce magma s'infiltre dans
+          la roche environnante en la portant à sa propre température.
+        correct: false
+        misconception: mc.svt.svt_granitisation.fusion-mal-expliquee
+        feedback: >
+          Le manteau n'est pas un réservoir de magma liquide préexistant :
+          il est essentiellement solide. L'anatexie n'est pas une
+          infiltration de magma venu d'ailleurs, mais une fusion partielle
+          produite SUR PLACE, dans la roche elle-même, quand sa propre
+          température dépasse son propre solidus.
+      - id: D
+        text: >
+          Cette fusion partielle est en réalité un phénomène de surface, causé par
+          l'infiltration d'eau de pluie depuis l'extérieur : l'eau chaude circulant dans
+          les fractures dissout les minéraux et donne l'aspect d'une roche fondue.
+        correct: false
+        misconception: mc.svt.svt_granitisation.fusion-mal-expliquee
+        feedback: >
+          À des dizaines de kilomètres de profondeur, l'eau de pluie ne
+          s'infiltre pas : l'eau en cause ici est celle déjà piégée dans la
+          structure cristalline de certains minéraux de la roche (les
+          micas), pas une eau venue de la surface. Et la fusion elle-même
+          a lieu en très grande profondeur, pas en surface.
+    correct_feedback: >
+      L'anatexie se déclenche quand la température locale franchit le
+      solidus de la roche, un seuil souvent abaissé par la présence d'eau
+      piégée dans ses minéraux ; sous ce seuil, la roche reste solide et se
+      métamorphise seulement, comme au rang précédent.
+    solution: |
+      **Le solidus :** la température en dessous de laquelle une roche
+      reste entièrement solide, quelle que soit la profondeur.
+
+      **Le rôle de l'eau :** elle abaisse nettement ce seuil, exactement
+      comme au-dessus d'une plaque en subduction, mais ici appliquée à une
+      roche continentale déjà métamorphisée.
+
+      **Fusion partielle, pas totale :** seuls les minéraux au point de
+      fusion le plus bas fondent d'abord, d'où le mélange caractéristique
+      de la migmatite.
+
+  - id: GRD-4
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: svt_granitisation
+    tags: [granite, roche_plutonique, texture_grenue, misconception_volcanique]
+    stem: >
+      Le granite est une roche à gros cristaux bien visibles à l'œil nu
+      (texture grenue), assemblés de quartz, de feldspath et de mica.
+      Comment cette texture s'explique-t-elle, et que révèle-t-elle sur le
+      lieu de formation du granite ?
+    type: mcq
+    choices:
+      - id: A
+        text: >
+          Les gros cristaux résultent d'un refroidissement très lent du
+          magma granitique, possible seulement en profondeur, où la roche
+          encaissante isole le magma et ralentit sa perte de chaleur : le
+          granite est donc une roche plutonique, qui cristallise en
+          profondeur et non en surface.
+        correct: true
+      - id: B
+        text: >
+          Le granite est une roche volcanique : ses gros cristaux se forment quand une
+          lave refroidit lentement à l'air libre, après une éruption, et la texture
+          grenue est la signature de ce refroidissement de surface.
+        correct: false
+        misconception: mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire
+        feedback: >
+          C'est l'inverse : une lave qui refroidit à l'air libre perd sa
+          chaleur en quelques heures ou quelques jours, un temps bien trop
+          court pour que de gros cristaux aient le temps de croître - elle
+          donne une roche à grain fin (comme l'andésite), jamais une
+          texture grenue comme celle du granite.
+      - id: C
+        text: >
+          La taille des cristaux du granite ne dépend pas de la vitesse de
+          refroidissement mais uniquement de la composition chimique du magma : un magma
+          riche en silice donne toujours de gros cristaux, qu'il refroidisse en
+          profondeur ou à l'air libre.
+          Une coulée de lave donnerait donc les mêmes gros cristaux qu'un pluton granitique.
+        correct: false
+        misconception: mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire
+        feedback: >
+          La composition chimique influence la nature des minéraux formés,
+          mais c'est bien la vitesse de refroidissement qui détermine la
+          TAILLE des cristaux : un refroidissement lent laisse le temps aux
+          cristaux de grossir, un refroidissement rapide ne le permet pas.
+      - id: D
+        text: >
+          Le granite se forme par accumulation progressive de cendres volcaniques
+          compactées au sommet d'un volcan, les grains visibles étant les fragments
+          soudés les uns aux autres par la pression.
+        correct: false
+        misconception: mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire
+        feedback: >
+          Une accumulation de cendres compactées donnerait une roche
+          volcanique fragmentaire à grain fin ou variable, jamais un
+          assemblage de gros cristaux de quartz, feldspath et mica bien
+          formés. Cette texture grenue signe une cristallisation lente d'un
+          magma en profondeur, pas une accumulation de débris en surface.
+    correct_feedback: >
+      Des cristaux de plusieurs millimètres, visibles à l'œil nu, ne
+      peuvent résulter que d'un refroidissement extrêmement lent - un temps
+      qui n'existe qu'en profondeur, protégé par des kilomètres de roche
+      encaissante. Le granite est une roche plutonique, jamais épanchée en
+      surface au moment de sa formation.
+    solution: |
+      **Ce que dit la texture :** grain grossier = refroidissement lent =
+      profondeur ; grain fin = refroidissement rapide = surface.
+
+      **Pourquoi ce n'est pas volcanique :** une roche volcanique (basalte,
+      andésite) refroidit en surface en quelques heures ou jours, ce qui
+      exclut la formation de gros cristaux.
+
+      **Conclusion :** le granite cristallise entièrement en profondeur,
+      sur des durées de l'ordre de dizaines de milliers à quelques millions
+      d'années.
+
+  - id: GRD-5
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: svt_granitisation
+    tags: [granite, exhumation, chaine_collision]
+    stem: >
+      On trouve aujourd'hui de vastes affleurements de granite au cœur de
+      chaînes de montagnes très anciennes et fortement érodées (comme le
+      Massif central ou la Meseta marocaine), alors qu'on en trouve très peu
+      au cœur de chaînes de collision jeunes, encore actives. Comment
+      expliquer cette différence ?
+    type: mcq
+    choices:
+      - id: A
+        text: >
+          Le granite se forme par anatexie en très grande profondeur, au cœur de la
+          chaîne ; il faut ensuite des dizaines de millions d'années de soulèvement et
+          d'érosion pour décaper la croûte qui le recouvre et l'exposer en surface.
+        correct: true
+      - id: B
+        text: >
+          Les chaînes anciennes fabriquent davantage de granite que les chaînes jeunes,
+          parce que la collision s'intensifie avec le temps et finit par produire assez
+          de magma pour former de vastes massifs.
+        correct: false
+        misconception: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
+        feedback: >
+          Rien n'indique que la collision « s'intensifie » avec l'âge d'une
+          chaîne. L'anatexie se produit dès que la croûte est assez
+          épaissie et assez chaude, y compris dans une chaîne jeune : ce qui
+          diffère, c'est le temps écoulé pour éroder la roche qui recouvre
+          ce granite, pas la quantité de granite produite.
+      - id: C
+        text: >
+          Le granite ne se forme qu'après la fin complète de toute activité tectonique,
+          ce qui explique qu'on ne le trouve jamais dans une chaîne encore active : sa
+          présence signe une chaîne définitivement éteinte.
+          Trouver du granite suffirait donc à conclure qu'une chaîne ne bouge plus.
+        correct: false
+        misconception: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
+        feedback: >
+          L'anatexie se produit PENDANT la collision elle-même, dès que
+          l'épaississement crustal rend certaines roches assez profondes et
+          assez chaudes - pas après l'arrêt de toute tectonique. Une chaîne
+          active produit déjà du granite en profondeur ; il reste
+          simplement encore enfoui, pas exposé.
+      - id: D
+        text: >
+          Une chaîne jeune est trop froide en profondeur pour produire du granite ; il
+          faut attendre que la chaîne vieillisse pour que sa base s'échauffe
+          suffisamment et que la fusion des roches devienne possible.
+        correct: false
+        misconception: mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause
+        feedback: >
+          Une chaîne de collision jeune possède déjà, dès le début de son
+          épaississement, une croûte très épaisse et donc des profondeurs
+          suffisamment chaudes pour l'anatexie. Ce qui manque à une chaîne
+          jeune, ce n'est pas la chaleur nécessaire à la formation du
+          granite, c'est le temps d'érosion nécessaire pour l'exposer.
+    correct_feedback: >
+      Le granite, formé aux niveaux les plus profonds d'une chaîne de
+      collision, demande une érosion plus poussée et donc plus de temps
+      pour être exposé que les roches métamorphiques moins profondes : c'est
+      pour ça qu'on le trouve surtout dans les chaînes anciennes,
+      fortement érodées.
+    solution: |
+      **Ce qui est commun aux chaînes jeunes et anciennes :** l'anatexie se
+      produit dès que la croûte est assez épaisse et assez chaude, même
+      dans une chaîne encore active.
+
+      **Ce qui diffère :** le temps écoulé depuis la formation du granite,
+      et donc l'épaisseur de roche qui a eu le temps d'être érodée
+      au-dessus de lui.
+
+      **Conséquence :** le granite affleure surtout dans les chaînes
+      anciennes et très érodées ; dans une chaîne jeune, il reste enfoui,
+      pas encore mis à nu par l'érosion.
+
+  # ── TROIS ITEMS AJOUTÉS LE 2026-09-05 ──────────────────────────────────────
+  # Motif : quatre des cinq erreurs déclarées étaient sous le plancher de 3
+  # items du banc, donc inévaluables. Périmètre : lesson.md.
+  - id: GRD-6
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: svt_granitisation
+    tags: [deformation_ductile, deformation_cassante, anatexie]
+    stem: >
+      En descendant le long d'une coupe de chaîne de collision, on rencontre
+      successivement : des failles nettes, puis des plis serrés, puis des
+      migmatites à poches de roche fondue. Qu'est-ce qui organise cette
+      succession ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La profondeur : elle fait monter la température et la pression de confinement, faisant passer la roche du cassant au ductile, puis au franchissement du solidus où elle commence à fondre."
+        correct: true
+      - id: B
+        text: "Rien de commun : les failles sont des déformations ductiles produites en surface, et les plis des ruptures cassantes produites en profondeur, ce qui rend cette succession purement fortuite."
+        correct: false
+        misconception: mc.svt.svt_granitisation.cassant-ductile-inverses
+        feedback: >
+          Les deux définitions sont interverties. Une FAILLE est une cassure
+          nette : déformation CASSANTE. Un PLI est une courbure continue sans
+          rupture : déformation DUCTILE. La succession observée est donc
+          parfaitement ordonnée.
+      - id: C
+        text: "La durée d'enfouissement : les roches les plus profondes sont restées enfouies bien plus longtemps, et c'est ce temps accumulé qui finit par les faire fondre indépendamment de leur température."
+        correct: false
+        misconception: mc.svt.svt_granitisation.fusion-mal-expliquee
+        feedback: >
+          Une roche reste enfouie indéfiniment sans fondre tant que la
+          température locale reste sous son SOLIDUS — c'est tout le
+          métamorphisme, qui se produit à l'état solide sur des durées
+          immenses. Ce n'est pas le temps qui fait fondre, c'est la
+          température.
+      - id: D
+        text: "L'altération de surface : les niveaux profonds ont été moins exposés à l'érosion, si bien que leurs minéraux se sont recristallisés puis ont fondu, alors que ceux du haut se sont simplement fracturés."
+        correct: false
+        misconception: mc.svt.svt_granitisation.transformation-attribuee-a-lerosion
+        feedback: >
+          L'érosion use et fragmente la roche en surface ; elle ne recristallise
+          aucun minéral et n'en fait fondre aucun. La recristallisation et la
+          fusion partielle sont des effets de la pression et de la température
+          en profondeur.
+    correct_feedback: >
+      Une seule variable ordonne toute la coupe : la profondeur. Elle fait
+      croître température et pression de confinement, ce qui fait passer la
+      même roche du comportement cassant (failles) au comportement ductile
+      (plis), puis au franchissement du solidus (migmatites).
+    solution: |
+      **Le gradient.** Vers le bas : température croissante, pression de
+      confinement croissante.
+
+      **Trois seuils successifs.** Assez froid et peu confiné : la roche casse.
+      Plus chaud et confiné : elle flue, sans rompre. Au-delà du solidus : elle
+      commence à fondre, partiellement.
+
+      **Les deux mots à ne pas intervertir.** Faille = cassure = cassant.
+      Pli = courbure continue = ductile.
+
+  - id: GRD-7
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: svt_granitisation
+    tags: [granite, texture_grenue, refroidissement, anatexie]
+    stem: >
+      Un basalte et un granite ont des compositions chimiques voisines, mais
+      le premier est à grain très fin et le second à gros cristaux visibles à
+      l'œil nu. Qu'est-ce qui explique cette différence de texture ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La vitesse de refroidissement du magma : rapide à l'air libre pour le basalte, très lente en profondeur pour le granite, où la roche encaissante isole le magma pendant des dizaines de milliers d'années."
+        correct: true
+      - id: B
+        text: "Leur composition chimique : un magma riche en silice donne mécaniquement de gros cristaux, un magma pauvre en silice donne un grain fin, indépendamment des conditions de sa mise en place."
+        correct: false
+        misconception: mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire
+        feedback: >
+          La composition détermine la NATURE des minéraux formés (quartz,
+          feldspath, mica…), pas leur TAILLE. C'est la vitesse de
+          refroidissement qui laisse — ou non — le temps aux cristaux de
+          grossir.
+      - id: C
+        text: "Le granite est en réalité une roche sédimentaire : ses gros grains sont des fragments de quartz et de feldspath transportés puis compactés, alors que le basalte est bien d'origine magmatique."
+        correct: false
+        misconception: mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire
+        feedback: >
+          Une roche sédimentaire détritique montre des grains usés, triés,
+          souvent cimentés. Le granite montre au contraire des cristaux
+          automorphes, imbriqués, formés sur place : une texture grenue signe
+          une cristallisation à partir d'un magma.
+      - id: D
+        text: "L'érosion : le granite, resté longtemps exposé en surface après sa mise en place, y a vu ses minéraux s'agrandir progressivement par altération chimique, contrairement au basalte plus récent."
+        correct: false
+        misconception: mc.svt.svt_granitisation.transformation-attribuee-a-lerosion
+        feedback: >
+          L'altération de surface diminue et fragmente les minéraux, elle ne
+          les fait jamais grossir. La taille des cristaux est acquise au moment
+          de la cristallisation, en profondeur, et ne change plus ensuite.
+    correct_feedback: >
+      La taille des cristaux mesure le TEMPS dont ils ont disposé pour croître.
+      Une lave refroidie à l'air libre perd sa chaleur en quelques heures :
+      grain fin. Un magma isolé par la roche encaissante refroidit sur des
+      dizaines de milliers d'années : gros cristaux.
+    solution: |
+      **Ce que la composition décide.** Quels minéraux se forment — quartz,
+      feldspaths, micas pour un granite.
+
+      **Ce que la vitesse de refroidissement décide.** Leur taille. Lent : les
+      cristaux ont le temps de grossir. Rapide : ils restent minuscules, voire
+      le verre se fige sans cristalliser du tout.
+
+      **Ce que la texture grenue prouve donc.** Une mise en place en
+      PROFONDEUR, où la roche encaissante joue le rôle d'isolant — jamais une
+      coulée à l'air libre, jamais une accumulation de grains transportés.
+
+  - id: GRD-8
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: svt_granitisation
+    tags: [anatexie, solidus, eau, migmatite]
+    stem: >
+      Deux niveaux d'une même chaîne se trouvent à la même profondeur et à la
+      même température. L'un a commencé à fondre partiellement, l'autre non.
+      Quelle explication est cohérente avec le mécanisme de l'anatexie ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Leurs solidus diffèrent : la roche qui a fondu contenait des minéraux hydratés, comme les micas, dont l'eau libérée abaisse la température à laquelle la fusion partielle commence."
+        correct: true
+      - id: B
+        text: "Le niveau qui a fondu est resté enfoui plus longtemps : à profondeur et température égales, c'est la durée d'enfouissement qui finit par déclencher la fusion d'une roche."
+        correct: false
+        misconception: mc.svt.svt_granitisation.fusion-mal-expliquee
+        feedback: >
+          Sous son solidus, une roche peut rester enfouie indéfiniment sans
+          fondre : c'est le régime du métamorphisme, qui se produit à l'état
+          solide. La durée ne fait pas franchir un seuil de température.
+      - id: C
+        text: "Le niveau qui a fondu était plus proche du manteau, réservoir de magma liquide en permanence, dont une partie s'est infiltrée dans la roche et l'a fait passer à l'état fondu."
+        correct: false
+        misconception: mc.svt.svt_granitisation.fusion-mal-expliquee
+        feedback: >
+          Le manteau est essentiellement SOLIDE, pas un réservoir de magma
+          préexistant. Et l'anatexie n'est pas une infiltration venue
+          d'ailleurs : c'est une fusion partielle produite SUR PLACE, dans la
+          roche elle-même.
+      - id: D
+        text: "Le niveau qui n'a pas fondu était protégé par une couche imperméable qui l'a soustrait à l'érosion, laquelle est le facteur déclenchant de toute fusion partielle en profondeur."
+        correct: false
+        misconception: mc.svt.svt_granitisation.transformation-attribuee-a-lerosion
+        feedback: >
+          L'érosion est un phénomène de SURFACE : elle ne joue aucun rôle à des
+          dizaines de kilomètres de profondeur, et ne déclenche aucune fusion.
+          Ce qui décide, c'est le franchissement du solidus.
+    correct_feedback: >
+      L'anatexie commence quand la température locale franchit le SOLIDUS de la
+      roche — et ce seuil dépend de sa composition. L'eau piégée dans les micas
+      l'abaisse nettement : deux roches placées dans les mêmes conditions
+      peuvent donc se comporter différemment.
+    solution: |
+      **Le critère.** Température locale comparée au SOLIDUS de la roche
+      considérée. Au-dessus : fusion partielle. En dessous : métamorphisme, à
+      l'état solide.
+
+      **Ce qui fait varier le solidus.** La composition — et notamment la
+      présence d'eau, libérée par les minéraux hydratés comme les micas. Cette
+      eau abaisse fortement la température de début de fusion.
+
+      **Ce qui ne l'explique pas.** Ni la durée d'enfouissement, ni une
+      infiltration venue du manteau (solide), ni l'érosion (de surface).
+
+  - id: GRD-9
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: svt_granitisation
+    tags: [granite, deformation_ductile, deformation_cassante, mise_en_place]
+    stem: >
+      Un massif de granite montre, en son cœur, des minéraux orientés et
+      étirés — une foliation acquise alors que la roche était encore chaude —
+      et, sur ses bords, un réseau de fractures nettes recoupant cette
+      foliation. Dans quel ordre ces deux structures se sont-elles formées, et
+      pourquoi diffèrent-elles ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La foliation d'abord, en profondeur et à chaud, quand la roche se déformait sans rompre ; les fractures ensuite, une fois le massif refroidi et remonté vers la surface, où il ne pouvait plus que casser."
+        correct: true
+      - id: B
+        text: "Les fractures d'abord, car une roche chaude est cassante et une roche froide est ductile : le granite s'est donc fracturé en profondeur avant que la foliation ne se dessine près de la surface."
+        correct: false
+        misconception: mc.svt.svt_granitisation.cassant-ductile-inverses
+        feedback: >
+          Les deux comportements sont intervertis. À chaud et sous forte
+          pression de confinement, une roche flue sans rompre : c'est le
+          régime DUCTILE, celui de la foliation. Froide et peu confinée, elle
+          casse : régime CASSANT.
+      - id: C
+        text: "Les deux se sont formées en même temps, la foliation traduisant l'écoulement d'une lave à l'air libre et les fractures son refroidissement rapide au contact de l'atmosphère."
+        correct: false
+        misconception: mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire
+        feedback: >
+          Un granite ne se met jamais en place à l'air libre : sa texture
+          grenue exige un refroidissement très lent, donc une mise en place en
+          profondeur. La foliation n'est pas un écoulement de lave, c'est une
+          déformation à l'état solide.
+      - id: D
+        text: "La foliation est un litage sédimentaire hérité, et les fractures des fentes de dessiccation : le massif est en réalité un ancien dépôt compacté, que la chaleur a ensuite durci sans le fondre."
+        correct: false
+        misconception: mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire
+        feedback: >
+          Un granite est une roche magmatique, cristallisée à partir d'un
+          magma : quartz, feldspaths et micas y sont imbriqués, non déposés.
+          Une foliation d'origine tectonique se reconnaît à l'étirement des
+          minéraux, pas à un empilement de couches.
+    correct_feedback: >
+      Une même roche enregistre deux régimes successifs, dans l'ordre de son
+      histoire : ductile tant qu'elle est chaude et profondément enfouie,
+      cassant une fois refroidie et remontée. Les fractures recoupent la
+      foliation : elles lui sont postérieures.
+    solution: |
+      **La règle de lecture.** Une structure qui en RECOUPE une autre lui est
+      postérieure. Ici, les fractures recoupent la foliation.
+
+      **Le régime de chaque structure.** Foliation : minéraux étirés et
+      orientés, sans rupture — déformation DUCTILE, à chaud et sous forte
+      pression de confinement. Fractures : cassures nettes — déformation
+      CASSANTE, à froid et près de la surface.
+
+      **L'histoire reconstituée.** Mise en place en profondeur, déformation
+      ductile pendant la collision, puis refroidissement et exhumation par
+      érosion, où la roche ne peut plus que casser.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
+# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
+# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
+# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# web/scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
+# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
+# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul.
+  per_misconception:
+    mc.svt.svt_granitisation.profondeur-et-duree-remplacees-par-une-autre-cause: { count: 3, items: [GRD-1, GRD-2, GRD-5] }
+    mc.svt.svt_granitisation.cassant-ductile-inverses:                           { count: 3, items: [GRD-1, GRD-6, GRD-9] }
+    mc.svt.svt_granitisation.transformation-attribuee-a-lerosion:                { count: 4, items: [GRD-2, GRD-6, GRD-7, GRD-8] }
+    mc.svt.svt_granitisation.fusion-mal-expliquee:                               { count: 3, items: [GRD-3, GRD-6, GRD-8] }
+    mc.svt.svt_granitisation.granite-cru-volcanique-ou-sedimentaire:             { count: 3, items: [GRD-4, GRD-7, GRD-9] }
+  total_items: 9
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    # Mesuré le 2026-09-19 sur les 62 notions : 51 portent au moins un item
+    # au barreau R0 et 50 au DERNIER barreau. Un zéro ici n'est donc PAS une
+    # fatalité de structure, c'est un état de cette notion — il s'écrit.
+    R0: 0   # l'accroche ne porte aucun item de banc
+    R1: 1
+    R2: 2
+    R3: 2
+    R4: 3
+    R5: 1
+    R6: 0   # le chapitre « Pour t'entraîner » ne porte aucun item de banc
+  honest_state: >-
+    Les cinq misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Quatre y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

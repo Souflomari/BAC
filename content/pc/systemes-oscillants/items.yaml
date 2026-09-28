@@ -1,0 +1,2894 @@
+notion: systemes-oscillants
+skill_code: pc_systemes_oscillants
+misconceptions:
+  # ── LES CHAPITRES R1-R5, ENFIN COUVERTS (2026-09-05). L'inventaire ne
+  #    portait que l'amortissement et la résonance ; les 24 items du banc sur
+  #    l'oscillateur libre — isochronisme, formules de période, énergie —
+  #    étaient muets. Sept familles, tirées des distracteurs eux-mêmes.
+  - id: M-OSC-ISO-1
+    label: "Isochronisme nié : la période dépendrait de l'amplitude ou de la masse"
+    description: >-
+      L'élève fait varier la période propre avec l'écart initial (« le trajet
+      est plus long, donc l'aller-retour est plus long ») ou avec la masse
+      accrochée (« plus lourd, donc plus vite » — ou l'inverse), voire avec la
+      matière de la bille.
+    contradicts_principle: >-
+      Aux petites oscillations, la période propre est ISOCHRONE : elle ne dépend
+      pas de l'amplitude. Et selon l'oscillateur, elle dépend de $m$ et $k$
+      (pendule élastique) ou de $L$ et $g$ SEULEMENT (pendule simple, où la
+      masse se simplifie) — jamais de la matière ni de l'amplitude.
+  - id: M-OSC-FORM-1
+    label: "Formule de la période propre inversée, ou dépouillée de son 2π et de sa racine"
+    description: >-
+      L'élève écrit $T_0 = \sqrt{m/k}$ sans le $2\pi$, met le rapport à
+      l'envers ($\sqrt{k/m}$, $\sqrt{C/J}$), oublie la racine, confond
+      $\omega_0$ et $f_0$ (facteur $2\pi$), ou applique au pendule pesant la
+      formule du pendule simple.
+    contradicts_principle: >-
+      Une même architecture pour les quatre oscillateurs :
+      $T_0 = 2\pi\sqrt{\text{inertie}/\text{rappel}}$ — $m/k$, $L/g$,
+      $J_\Delta/(mgd)$, $J/C$ — d'où $\omega_0 = \sqrt{\text{rappel}/\text{inertie}}$
+      et $f_0 = \omega_0/(2\pi)$. Inverser le rapport, perdre la racine ou le
+      $2\pi$ change l'ordre de grandeur du résultat.
+  - id: M-OSC-RAID-1
+    label: "« Plus raide, donc plus lent »"
+    description: >-
+      L'élève raisonne sur la difficulté à déformer : un ressort plus raide, ou
+      un fil de torsion plus rigide, résisterait davantage et ralentirait donc
+      l'oscillateur. Variante : la raideur n'interviendrait pas du tout.
+    contradicts_principle: >-
+      La raideur est le terme de RAPPEL, au dénominateur de la période :
+      $T_0 = 2\pi\sqrt{m/k}$. Un rappel plus fort ramène plus vite vers
+      l'équilibre, donc la période DIMINUE et l'oscillateur va plus vite.
+  - id: M-OSC-EQD-1
+    label: "Équation différentielle de l'oscillateur mal posée"
+    description: >-
+      L'élève écrit un signe $-$ devant le terme de rappel, laisse un second
+      membre non nul ($mg$), ou n'écrit qu'une dérivée première.
+    contradicts_principle: >-
+      La deuxième loi de Newton projetée donne $\ddot{x} + \dfrac{k}{m}x = 0$ :
+      dérivée SECONDE, signe $+$ devant le terme de rappel (c'est lui qui ramène
+      vers l'équilibre), et second membre NUL sur un banc horizontal, où le
+      poids est compensé par la réaction du support.
+  - id: M-OSC-ENER-1
+    label: "Énergie de l'oscillateur mal répartie, ou mal reliée à l'amplitude"
+    description: >-
+      L'élève place l'énergie cinétique maximale aux extrémités, la croit
+      constante, confond énergie potentielle élastique et de pesanteur selon
+      l'oscillateur, fait varier $E_m$ comme l'amplitude plutôt que comme son
+      carré, ou oublie le facteur $\frac12$.
+    contradicts_principle: >-
+      L'énergie mécanique se CONSERVE et s'échange : $E_c$ est maximale au
+      passage par l'équilibre, nulle aux extrémités, où l'énergie potentielle
+      est maximale. Cette énergie potentielle est ÉLASTIQUE pour un ressort
+      ($\frac12 k x^2$), de PESANTEUR pour un pendule simple, de TORSION pour un
+      fil ($\frac12 C\theta^2$). Et $E_m \propto X_m^2$ : doubler l'amplitude
+      quadruple l'énergie.
+  - id: M-OSC-LIBRE-1
+    label: "Un oscillateur libre sans frottement s'arrêterait — ou s'amplifierait"
+    description: >-
+      L'élève arrête le mobile à l'équilibre (« c'est là que le ressort ne tire
+      plus »), le fait s'immobiliser avant d'y arriver, ou lui fait perdre
+      (voire gagner) de l'amplitude à chaque aller-retour alors que le frottement
+      est négligeable.
+    contradicts_principle: >-
+      À l'équilibre la FORCE est nulle, pas la VITESSE : le mobile y passe à
+      vitesse maximale et le dépasse. Sans frottement, l'énergie mécanique se
+      conserve : l'amplitude reste la même d'un aller-retour à l'autre, ni
+      décroissante ni croissante.
+  - id: M-OSC-PHASE-1
+    label: "Phase à l'origine lue sans le sens du lancer"
+    description: >-
+      L'élève choisit le signe de $\varphi$ au hasard, ou juge qu'on ne peut la
+      déterminer sans connaître d'abord l'amplitude.
+    contradicts_principle: >-
+      $\varphi$ se lit dans les CONDITIONS INITIALES, position ET sens de la
+      vitesse : un lancer depuis l'équilibre dans le sens positif impose
+      $x(0)=0$ et $\dot{x}(0)>0$, donc $\varphi = -\pi/2$. L'amplitude, elle,
+      n'intervient pas dans ce choix.
+  - id: M-OSC-AMO-1
+    label: "Amortissement confondu avec une dérive de la période"
+    description: >-
+      L'élève fusionne la décroissance de l'amplitude avec un changement du
+      rythme des oscillations : il pense que la pseudo-période est nettement
+      différente de la période propre dès qu'il y a du frottement, ou même
+      qu'un système amorti n'a plus de période du tout.
+    contradicts_principle: >-
+      Pour un amortissement faible, la pseudo-période $T$ reste voisine de la
+      période propre $T_0$ (fixée par $m$ et $k$, ou $J$ et $C$) : l'amplitude
+      décroît cycle après cycle, mais l'espacement entre deux passages par un
+      même extrême, lui, ne change presque pas.
+  - id: M-OSC-AMO-2
+    label: "Ordre des régimes d'amortissement inversé"
+    description: >-
+      L'élève classe les régimes selon « plus de frottement = retour toujours
+      plus lent » ou l'inverse, sans isoler le régime critique comme cas-limite
+      le plus rapide ; il peut croire que le régime critique oscille encore,
+      ou que l'apériodique revient plus vite que le critique.
+    contradicts_principle: >-
+      Le retour à l'équilibre est le plus rapide au régime critique (le
+      cas-limite sans oscillation) ; en-deçà, le pseudo-périodique oscille en
+      s'amortissant ; au-delà, l'apériodique revient sans osciller mais plus
+      lentement que le critique.
+  - id: M-OSC-AMO-3
+    label: "Le frottement peut restituer ou entretenir l'énergie"
+    description: >-
+      L'élève pense qu'un oscillateur amorti finit par se relancer tout seul,
+      que le frottement « entretient » le mouvement, ou qu'une réserve
+      d'énergie cachée sera libérée plus tard — en confondant l'amortissement
+      (perte pure) avec l'entretien (apport extérieur, hors de ce chapitre).
+    contradicts_principle: >-
+      Le frottement dissipe toujours l'énergie mécanique en chaleur ($W<0$) ;
+      il ne peut jamais en fournir. Sans dispositif d'entretien extérieur
+      (étudié en RLC), l'amplitude décroît jusqu'à l'arrêt — de façon
+      irréversible.
+  - id: M-OSC-RES-1
+    label: "Condition de résonance mal comprise"
+    description: >-
+      L'élève pense que l'amplitude du résonateur est maximale quand
+      l'excitateur va « le plus vite », « le plus fort », ou à n'importe
+      quelle fréquence pourvu qu'on attende assez longtemps — au lieu d'une
+      coïncidence de fréquences.
+    contradicts_principle: >-
+      L'amplitude du résonateur est maximale quand $f_{exc} \approx f_0$, la
+      fréquence propre du résonateur — ni la plus haute ni la plus basse
+      fréquence testée, mais celle qui coïncide avec $f_0$.
+  - id: M-OSC-RES-2
+    label: "Rôle de l'amortissement inversé (résonance)"
+    description: >-
+      L'élève croit qu'un amortissement plus fort rend la résonance plus
+      aiguë, plus intense, ou plus étroite, au lieu de l'émousser ; ou pense
+      que l'amortissement n'a aucune influence sur la forme du pic.
+    contradicts_principle: >-
+      Un amortissement faible donne une résonance aiguë (pic haut et étroit) ;
+      un amortissement fort donne une résonance floue (pic bas et large).
+      L'amortissement émousse toujours la résonance, il ne la concentre
+      jamais.
+  - id: M-OSC-RES-3
+    label: "Excitateur et résonateur confondus"
+    description: >-
+      L'élève ne distingue pas qui impose la fréquence réglable (l'excitateur)
+      de qui garde sa fréquence propre fixe (le résonateur) ; il peut croire
+      que $f_0$ se déplace pour rejoindre $f_{exc}$, ou que c'est le
+      résonateur qui impose le rythme.
+    contradicts_principle: >-
+      L'excitateur impose $f_{exc}$ (réglable) ; le résonateur garde sa
+      fréquence propre $f_0$, fixée par ses caractéristiques ($m,k$ ou $J,C$),
+      qui ne change jamais. La résonance survient quand $f_{exc}$ rejoint ce
+      $f_0$ fixe.
+
+items:
+  - id: SO-1
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [pendule_simple, isochronisme, amplitude]
+    stem: >
+      Un pendule simple de longueur $L$ oscille au voisinage d'un lieu où
+      l'intensité de la pesanteur vaut $g$. On le lâche une première fois avec
+      un angle de $5^\circ$, une seconde fois avec un angle de $12^\circ$ (les
+      deux restent dans le domaine des petites oscillations). Que peut-on dire
+      de la période propre $T_0$ dans les deux cas ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$T_0$ est la même dans les deux cas : elle ne dépend pas de l'amplitude."
+        correct: true
+      - id: B
+        text: >-
+          $T_0$ est plus grande pour l'angle de $12^\circ$, car le trajet
+          parcouru à chaque aller-retour est plus long.
+        correct: false
+        misconception: M-OSC-ISO-1
+        feedback: >
+          Ce choix suppose que la période dépend de la distance parcourue,
+          donc de l'amplitude. Mais $T_0 = 2\pi\sqrt{L/g}$ : l'amplitude
+          $\theta_m$ n'apparaît nulle part dans cette formule, parce qu'elle
+          n'apparaît pas non plus dans l'équation linéarisée
+          $\ddot{\theta} + (g/L)\theta = 0$ obtenue avec l'approximation des
+          petites oscillations ($\sin\theta \approx \theta$). Un trajet plus
+          long est parcouru... à une vitesse angulaire proportionnellement
+          plus grande, et les deux effets se compensent exactement.
+      - id: C
+        text: >-
+          $T_0$ est plus petite pour l'angle de $12^\circ$, car la vitesse
+          moyenne du pendule est plus grande.
+        correct: false
+        misconception: M-OSC-ISO-1
+        feedback: >
+          Même erreur que « le trajet plus long allonge $T_0$ », dans l'autre
+          sens : la vitesse
+          moyenne est effectivement plus grande pour un lâcher à $12^\circ$,
+          mais ça ne change pas la durée d'un aller-retour, parce que le
+          trajet à parcourir est proportionnellement plus long lui aussi.
+          $T_0 = 2\pi\sqrt{L/g}$ ne contient aucune trace de l'amplitude.
+      - id: D
+        text: "On ne peut pas savoir sans connaître la masse du pendule."
+        correct: false
+        misconception: M-OSC-ISO-1
+        feedback: >
+          La masse n'intervient pas non plus : elle se simplifie complètement
+          dans l'établissement de l'équation du pendule simple (des deux
+          côtés de $mL\ddot{\theta} = -mg\sin\theta$), donc elle ne peut pas
+          réapparaître dans $T_0 = 2\pi\sqrt{L/g}$, qui ne dépend que de $L$
+          et $g$.
+    correct_feedback: >
+      $T_0 = 2\pi\sqrt{L/g}$ : seules $L$ et $g$ figurent dans cette formule.
+      Ni la masse ni l'amplitude n'y apparaissent — c'est l'isochronisme des
+      petites oscillations, une conséquence directe du fait qu'aucune des deux
+      ne figure dans l'équation différentielle linéarisée.
+    solution: |
+      **Équation du pendule simple, petites oscillations :**
+      $$\ddot{\theta} + \frac{g}{L}\theta = 0 \quad \Longrightarrow \quad T_0 = 2\pi\sqrt{\frac{L}{g}}$$
+
+      **Lecture de la formule :** seules $L$ et $g$ y figurent. Ni la masse
+      $m$ (simplifiée dès l'établissement de l'équation), ni l'amplitude
+      $\theta_m$ (absente de l'équation linéarisée elle-même) ne peuvent donc
+      influencer $T_0$, quel que soit l'angle de lâcher — tant qu'on reste
+      dans le domaine des petites oscillations où $\sin\theta \approx \theta$.
+
+  - id: SO-2
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [pendule_simple, isochronisme, masse]
+    stem: >
+      Deux pendules simples ont la même longueur de fil $L$ : le premier porte
+      une bille de masse $50\ \text{g}$, le second une bille de masse
+      $200\ \text{g}$ (quatre fois plus lourde). Lâchés du même petit angle,
+      au même instant : lequel des deux effectue son premier aller-retour le
+      plus vite ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux effectuent l'aller-retour dans le même temps."
+        correct: true
+      - id: B
+        text: >-
+          La bille de $200\ \text{g}$ met moins de temps, car elle est plus
+          lourde et tombe plus vite.
+        correct: false
+        misconception: M-OSC-ISO-1
+        feedback: >
+          C'est la même confusion masse/poids qu'en chute libre : un objet
+          plus lourd ne « tombe » pas plus vite, et un pendule plus lourd
+          n'oscille pas plus vite non plus. Dans
+          $mL\ddot{\theta} = -mg\sin\theta$, la masse $m$ se simplifie des
+          deux côtés — elle ne joue aucun rôle dans le mouvement du pendule
+          simple, quelle que soit sa valeur.
+      - id: C
+        text: >-
+          La bille de $50\ \text{g}$ met moins de temps, car elle est plus
+          légère et réagit plus vite au rappel.
+        correct: false
+        misconception: M-OSC-ISO-1
+        feedback: >
+          Une masse plus faible n'accélère pas « plus vite au rappel » ici :
+          la force de rappel $-mg\sin\theta$ est elle-même proportionnelle à
+          $m$, donc le rapport force/masse (l'accélération angulaire) ne
+          dépend pas de $m$. La masse se simplifie complètement de
+          l'équation du mouvement.
+      - id: D
+        text: >-
+          Cela dépend de la matière dont sont faites les billes (acier,
+          plomb...).
+        correct: false
+        misconception: M-OSC-ISO-1
+        feedback: >
+          La nature du matériau n'intervient que par la masse (et éventuellement
+          la résistance de l'air, négligée ici), et la masse s'annule
+          complètement dans l'équation $\ddot{\theta} + (g/L)\theta = 0$. Seules
+          $L$ et $g$ déterminent $T_0$ ; la composition des billes n'a aucun
+          effet.
+    correct_feedback: >
+      $T_0 = 2\pi\sqrt{L/g}$ ne dépend pas de la masse : elle a été simplifiée
+      dès l'établissement de l'équation, des deux côtés de
+      $mL\ddot{\theta} = -mg\sin\theta$. Deux pendules simples de même
+      longueur ont toujours la même période, quelle que soit leur masse.
+    solution: |
+      **Établissement de l'équation :**
+      $$mL\ddot{\theta} = -mg\sin\theta \quad \Longrightarrow \quad \ddot{\theta} = -\frac{g}{L}\sin\theta$$
+
+      La masse $m$ disparaît par simplification avant même l'approximation
+      des petites oscillations. Donc :
+      $$T_0 = 2\pi\sqrt{\frac{L}{g}}$$
+
+      ne contient pas $m$ : les deux pendules, même longueur, ont exactement
+      la même période propre, quelle que soit la masse de leur bille.
+
+  - id: SO-3
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [pulsation, frequence, definitions]
+    stem: >
+      Un oscillateur harmonique a une période propre $T_0 = 0{,}20\ \text{s}$.
+      Que vaut sa pulsation propre $\omega_0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\omega_0 \\approx 31{,}4\\ \\text{rad/s}$"
+        correct: true
+      - id: B
+        text: "$\\omega_0 = 5\\ \\text{rad/s}$"
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Ce nombre, c'est $f_0 = 1/T_0 = 5\ \text{Hz}$ — la fréquence, pas la
+          pulsation. Ce choix confond les deux grandeurs : $\omega_0$ (en
+          rad/s) et $f_0$ (en Hz) ne sont égales que si on multiplie par le
+          facteur $2\pi$ manquant ici : $\omega_0 = 2\pi f_0 = 2\pi \times 5
+          \approx 31{,}4\ \text{rad/s}$.
+      - id: C
+        text: "$\\omega_0 = 0{,}20\\ \\text{rad/s}$"
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Ce choix recopie directement la valeur de $T_0$ comme si
+          $\omega_0 = T_0$. Ce sont deux grandeurs différentes, reliées par
+          $\omega_0 = 2\pi/T_0$ — il faut diviser $2\pi$ par $T_0$, pas
+          confondre les deux valeurs numériques.
+      - id: D
+        text: "$\\omega_0 \\approx 6{,}28\\ \\text{rad/s}$"
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          $6{,}28 \approx 2\pi$ : ce choix s'arrête après avoir calculé « les
+          radians d'un cycle complet », mais oublie de diviser par $T_0$ pour
+          obtenir un RYTHME (des radians par seconde). $\omega_0 = 2\pi/T_0$,
+          pas $2\pi$ tout court — le résultat doit dépendre de la durée du
+          cycle.
+    correct_feedback: >
+      $\omega_0 = \dfrac{2\pi}{T_0} = \dfrac{2\pi}{0{,}20} \approx
+      31{,}4\ \text{rad/s}$. Le facteur $2\pi$ est incontournable pour passer
+      d'une durée (ou d'une fréquence) à une pulsation.
+    solution: |
+      $$\omega_0 = \frac{2\pi}{T_0} = \frac{2\pi}{0{,}20} \approx 31{,}4\ \text{rad/s}$$
+
+      **Vérification :** $f_0 = 1/T_0 = 5\ \text{Hz}$, et
+      $\omega_0 = 2\pi f_0 = 2\pi \times 5 \approx 31{,}4\ \text{rad/s}$ ✓ — les
+      deux méthodes donnent le même résultat, mais $5$ et $31{,}4$ ne sont pas
+      interchangeables : l'un est une fréquence, l'autre une pulsation.
+
+  - id: SO-4
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [pulsation, frequence, definitions]
+    stem: >
+      Un pendule de torsion a une pulsation propre $\omega_0 = 4\pi\
+      \text{rad/s}$. Quelle est sa fréquence propre $f_0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$f_0 = 2\\ \\text{Hz}$"
+        correct: true
+      - id: B
+        text: "$f_0 = 4\\pi\\ \\text{Hz}$"
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Ce choix recopie la valeur numérique de $\omega_0$ (en rad/s) et la
+          renomme « Hz » sans aucune conversion. $\omega_0$ compte des
+          radians par seconde, une unité d'angle ; $f_0$ compte des cycles
+          par seconde. Il faut diviser par $2\pi$ pour passer de l'un à
+          l'autre : $f_0 = \omega_0/(2\pi)$.
+      - id: C
+        text: "$f_0 = 4\\ \\text{Hz}$"
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Ce résultat vient d'une division par $\pi$ au lieu de $2\pi$ — la
+          moitié du bon facteur a été oubliée. La relation exacte est
+          $f_0 = \omega_0/(2\pi)$, pas $\omega_0/\pi$.
+      - id: D
+        text: "$f_0 = 0{,}5\\ \\text{Hz}$"
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          $0{,}5\ \text{s}$ est la valeur de la PÉRIODE $T_0 = 2\pi/\omega_0$,
+          pas de la fréquence. $T_0$ et $f_0$ sont reliées par
+          $f_0 = 1/T_0$ : ici $T_0 = 0{,}5\ \text{s}$ donne bien
+          $f_0 = 1/0{,}5 = 2\ \text{Hz}$, pas $0{,}5\ \text{Hz}$ — les deux
+          grandeurs ont été interverties.
+    correct_feedback: >
+      $f_0 = \dfrac{\omega_0}{2\pi} = \dfrac{4\pi}{2\pi} = 2\ \text{Hz}$. Le
+      pendule effectue deux oscillations complètes chaque seconde.
+    solution: |
+      $$f_0 = \frac{\omega_0}{2\pi} = \frac{4\pi}{2\pi} = 2\ \text{Hz}$$
+
+      **Recoupement :** $T_0 = 2\pi/\omega_0 = 2\pi/4\pi = 0{,}5\ \text{s}$, et
+      $f_0 = 1/T_0 = 1/0{,}5 = 2\ \text{Hz}$ ✓.
+
+  - id: SO-5
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [equation_differentielle, mecanisme, pendule_elastique]
+    stem: >
+      Un solide de masse $m$ est accroché à un ressort horizontal de raideur
+      $k$, sans frottement, sur un banc horizontal. Quelle est l'équation
+      différentielle vérifiée par $x(t)$, l'écart algébrique à l'équilibre ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\ddot{x} + \\dfrac{k}{m}x = 0$"
+        correct: true
+      - id: B
+        text: "$\\ddot{x} - \\dfrac{k}{m}x = 0$"
+        correct: false
+        misconception: M-OSC-EQD-1
+        feedback: >
+          Erreur de signe : cette équation décrirait un écart qui s'emballe
+          exponentiellement, jamais une oscillation. La force de rappel du
+          ressort est $\vec{F}_{rappel} = -kx\,\vec{u}$ (le signe « $-$ » est
+          essentiel — elle ramène toujours vers l'équilibre) ; oublier ce
+          signe en projetant la deuxième loi de Newton change complètement la
+          nature du mouvement obtenu.
+      - id: C
+        text: "$m\\ddot{x} + kx = mg$"
+        correct: false
+        misconception: M-OSC-EQD-1
+        feedback: >
+          Ce choix ajoute un terme $mg$ comme si le poids agissait le long de
+          l'axe du mouvement. Mais le ressort est horizontal : le poids et la
+          réaction normale du banc se compensent verticalement (comme pour la
+          caisse tirée sur le sol, chapitre précédent) et n'apparaissent pas
+          du tout dans l'équation horizontale. Seule la force de rappel du
+          ressort agit selon $(Ox)$.
+      - id: D
+        text: "$\\dot{x} + \\dfrac{k}{m}x = 0$"
+        correct: false
+        misconception: M-OSC-EQD-1
+        feedback: >
+          Ce choix utilise la dérivée première (la vitesse) au lieu de la
+          dérivée seconde (l'accélération). La deuxième loi de Newton relie
+          la force à l'ACCÉLÉRATION, $\sum\vec{F}_{ext} = m\vec{a}_G$, donc à
+          $\ddot{x}$ — pas à $\dot{x}$. Une équation en $\dot{x}$ décrirait un
+          phénomène amorti sans inertie, pas un oscillateur mécanique sans
+          frottement.
+    correct_feedback: >
+      La deuxième loi de Newton, projetée sur l'axe du mouvement, donne
+      $-kx = m\ddot{x}$, soit $\ddot{x} + (k/m)x = 0$ : c'est l'équation de
+      l'oscillateur harmonique, dont la solution est
+      $x(t) = X_m\cos(\omega_0 t + \varphi)$ avec $\omega_0 = \sqrt{k/m}$.
+    solution: |
+      **Bilan des forces :** poids $\vec{P}$, réaction normale $\vec{N}$
+      (verticales, se compensent), force de rappel $\vec{F}_{rappel}=-kx\,\vec{u}$
+      (horizontale, seule force agissant selon $(Ox)$).
+
+      **Deuxième loi, projetée sur $(Ox)$ :**
+      $$-kx = m\ddot{x}$$
+      $$\ddot{x} + \frac{k}{m}x = 0$$
+
+  - id: SO-6
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [energie, mecanisme, pendule_elastique]
+    stem: >
+      Pour un pendule élastique horizontal sans frottement, à quel endroit de
+      la trajectoire l'énergie cinétique $E_c$ du solide est-elle maximale ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Au passage par la position d'équilibre ($x=0$)."
+        correct: true
+      - id: B
+        text: >-
+          Au moment où l'écart $x$ est maximal (aux extrémités du mouvement).
+        correct: false
+        misconception: M-OSC-ENER-1
+        feedback: >
+          Aux extrémités, le solide s'arrête un instant pour repartir en sens
+          inverse : $\dot{x}=0$, donc $E_c=0$ à cet endroit précisément — c'est
+          l'énergie potentielle élastique qui y est maximale, pas l'énergie
+          cinétique. Ce choix confond le point d'écart maximal avec le point de
+          vitesse maximale ; ce sont deux instants opposés, décalés d'un quart
+          de période.
+      - id: C
+        text: >-
+          $E_c$ est constante tout au long du mouvement ; seule $E_{pe}$ varie.
+        correct: false
+        misconception: M-OSC-ENER-1
+        feedback: >
+          Si $E_c$ restait constante pendant que $E_{pe}$ varie, leur somme
+          $E_m = E_c + E_{pe}$ ne serait pas constante — ce qui contredirait
+          la conservation de l'énergie mécanique établie dans la leçon. En
+          réalité, $E_c$ ET $E_{pe}$ varient toutes les deux au cours du temps,
+          en s'échangeant l'une dans l'autre, de sorte que leur somme reste
+          fixe.
+      - id: D
+        text: >-
+          Cela dépend de la phase à l'origine $\varphi$, donc ça change d'une
+          expérience à l'autre.
+        correct: false
+        misconception: M-OSC-ENER-1
+        feedback: >
+          L'INSTANT où $E_c$ est maximale dépend bien de $\varphi$ (cela se
+          produit chaque fois que $x(t)=0$, ce qui arrive à des instants
+          différents selon le lancer) — mais l'ENDROIT sur la trajectoire, lui,
+          ne change jamais : c'est toujours la position d'équilibre. La
+          question porte sur le lieu, pas sur l'instant.
+    correct_feedback: >
+      À l'équilibre, $E_{pe} = \frac{1}{2}kx^2 = 0$ puisque $x=0$ ; toute
+      l'énergie mécanique y est donc cinétique. C'est là, et seulement là, que
+      la vitesse — et donc $E_c$ — est maximale.
+    solution: |
+      **Aux extrémités ($x=\pm X_m$) :** $\dot{x}=0 \Rightarrow E_c = 0$,
+      $E_{pe} = \frac{1}{2}kX_m^2$ (maximale).
+
+      **À l'équilibre ($x=0$) :** $E_{pe}=0$, donc, par conservation de
+      $E_m = E_c+E_{pe}$ :
+      $$E_c = E_m = \frac{1}{2}kX_m^2 \quad (\text{maximale})$$
+
+      $E_c$ et $E_{pe}$ sont donc maximales en des points opposés de la
+      trajectoire, jamais au même endroit.
+
+  - id: SO-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_systemes_oscillants
+    tags: [prediction, oscillation, equilibre]
+    stem: >
+      On écarte un chariot accroché à un ressort horizontal (frottement
+      quasi nul) de sa position d'équilibre, puis on le lâche sans vitesse
+      initiale. Que va-t-il se passer, dans la réalité ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il revient vers l'équilibre et s'y arrête définitivement, car c'est l'endroit où le ressort n'exerce plus aucune force."
+        correct: false
+        misconception: M-OSC-LIBRE-1
+        feedback: >
+          Ce raisonnement confond « force nulle » et « vitesse nulle » : le
+          chariot arrive à l'équilibre avec de la vitesse, acquise pendant
+          tout le trajet précédent, donc il continue son mouvement par
+          inertie au lieu de s'arrêter net à cet endroit.
+      - id: B
+        text: "Il revient vers l'équilibre, le dépasse, s'écarte à peu près autant de l'autre côté, s'arrête un instant, puis repart en sens inverse : un va-et-vient qui se répète."
+        correct: true
+      - id: C
+        text: "Il revient vers l'équilibre, le dépasse, puis continue indéfiniment dans le même sens en s'éloignant de plus en plus."
+        correct: false
+        misconception: M-OSC-LIBRE-1
+        feedback: >
+          Dès que le chariot dépasse l'équilibre, le ressort change de côté
+          d'étirement, donc de sens de rappel : la force recommence
+          immédiatement à le freiner puis à le ramener. Le mouvement ne peut
+          pas s'échapper indéfiniment dans un seul sens.
+      - id: D
+        text: "Il ralentit progressivement en s'approchant de l'équilibre et s'arrête avant même de l'atteindre, car le ressort perd de la force à mesure qu'il se détend."
+        correct: false
+        misconception: M-OSC-LIBRE-1
+        feedback: >
+          C'est l'inverse : à mesure que le chariot se rapproche de
+          l'équilibre, la force de rappel diminue, mais la vitesse, elle,
+          continue d'augmenter (moins de force freinante) jusqu'à devenir
+          maximale exactement à l'équilibre — le chariot ne s'arrête donc
+          jamais avant de l'atteindre.
+    correct_feedback: >
+      C'est une oscillation, pas un simple retour au repos : l'inertie
+      acquise pendant le trajet fait traverser l'équilibre au chariot, qui
+      s'écarte de l'autre côté avant de repartir en sens inverse, encore et
+      encore.
+    solution: |
+      Le chariot arrive à l'équilibre avec une vitesse non nulle (accélérée
+      par la force de rappel tout au long du trajet). Cette vitesse
+      l'entraîne au-delà de l'équilibre, où la force de rappel change de sens
+      et le freine, l'arrête un instant, puis le ramène. Ce cycle se répète :
+      c'est une oscillation, pas un simple retour à l'équilibre suivi d'un
+      arrêt.
+
+  - id: SO-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_systemes_oscillants
+    tags: [prediction, amplitude, conservation]
+    stem: >
+      Dans les conditions décrites (frottement presque nul), le chariot
+      effectue de nombreux allers-retours. Après plusieurs dizaines
+      d'oscillations, que peut-on dire de l'écart maximal atteint à chaque
+      aller-retour, comparé au tout premier ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il diminue progressivement à chaque aller-retour, même sans frottement, car le chariot « perd de l'élan » en repassant plusieurs fois par l'équilibre."
+        correct: false
+        misconception: M-OSC-LIBRE-1
+        feedback: >
+          Rien, dans un mouvement sans frottement, ne « consomme » l'écart au
+          fil des cycles : repasser par l'équilibre ne coûte rien en soi. Une
+          décroissance de l'amplitude a toujours une cause physique précise
+          (le frottement) ; en son absence, il n'y a pas de raison pour que
+          l'écart diminue tout seul.
+      - id: B
+        text: "Il ne peut pas rester le même indéfiniment : aucun mouvement ne peut se répéter sans une cause extérieure qui l'entretient en permanence."
+        correct: false
+        misconception: M-OSC-LIBRE-1
+        feedback: >
+          C'est vrai pour un système réellement freiné (il faudrait alors un
+          dispositif d'entretien pour compenser les pertes) — mais ici, le
+          frottement est justement quasi nul : il n'y a essentiellement rien
+          à compenser, donc rien à entretenir de l'extérieur pour que le
+          mouvement persiste tel quel.
+      - id: C
+        text: "Il reste à peu près le même d'un aller-retour à l'autre, tant que le frottement reste négligeable."
+        correct: true
+      - id: D
+        text: "Il augmente à chaque aller-retour, le ressort « emmagasinant » de plus en plus d'énergie au fil des cycles."
+        correct: false
+        misconception: M-OSC-LIBRE-1
+        feedback: >
+          Le ressort ne reçoit aucun apport d'énergie supplémentaire entre
+          les allers-retours : il n'y a ici ni frottement qui dissipe, ni
+          dispositif qui ajoute de l'énergie à chaque cycle. Sans apport
+          extérieur, l'écart ne peut pas grandir tout seul.
+    correct_feedback: >
+      Sans frottement, rien ne dissipe ni n'ajoute d'énergie au fil des
+      cycles : l'écart maximal reste essentiellement constant, aller-retour
+      après aller-retour.
+    solution: |
+      Tant que le frottement est négligeable, aucune cause physique ne fait
+      varier l'écart maximal d'un cycle à l'autre : il n'est ni dissipé (pas
+      de frottement) ni renforcé (pas d'apport extérieur). L'amplitude
+      observée au premier aller-retour se retrouve donc, à peu de choses
+      près, à chaque aller-retour suivant.
+
+  - id: SO-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_systemes_oscillants
+    tags: [prediction, raideur, pendule_elastique]
+    stem: >
+      Avant tout calcul : si on utilise un ressort plus raide (plus grande
+      valeur de $k$), sans changer la masse du chariot, celui-ci
+      effectue-t-il ses allers-retours plus vite, plus lentement, ou pareil ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Plus lentement, car un ressort plus raide est plus difficile à déformer, ce qui ralentit davantage le mouvement."
+        correct: false
+        misconception: M-OSC-RAID-1
+        feedback: >
+          « Difficile à déformer » décrit l'intensité de la force nécessaire
+          pour étirer le ressort d'un écart donné, pas la vitesse du
+          mouvement qui en résulte. Au contraire, un ressort plus raide
+          exerce une force de rappel plus grande pour le même écart, ce qui
+          accélère davantage le chariot vers l'équilibre — donc un
+          aller-retour plus rapide, pas plus lent.
+      - id: B
+        text: "Pareil, car la raideur du ressort n'intervient pas dans la durée d'un aller-retour, seule la masse compte."
+        correct: false
+        misconception: M-OSC-RAID-1
+        feedback: >
+          C'est le rôle de la masse dans le pendule simple (elle s'annule)
+          qu'on étend ici à tort au ressort. Pour le pendule élastique, la
+          raideur $k$ joue au contraire un rôle central : c'est elle qui
+          fixe la force de rappel, donc la rapidité du retour vers
+          l'équilibre.
+      - id: C
+        text: "Cela dépend de l'amplitude du lâcher : pour un petit écart, plus raide va plus vite ; pour un grand écart, l'effet s'inverse."
+        correct: false
+        misconception: M-OSC-RAID-1
+        feedback: >
+          La durée d'un aller-retour d'un pendule élastique ne dépend jamais
+          de l'amplitude du lâcher (on le vérifiera précisément dans les
+          chapitres suivants) : l'effet d'une raideur plus grande sur la
+          rapidité du mouvement est donc le même, quel que soit l'écart de
+          départ.
+      - id: D
+        text: "Plus vite (aller-retour plus court), car un ressort plus raide rappelle plus fortement le chariot vers l'équilibre."
+        correct: true
+    correct_feedback: >
+      Un ressort plus raide exerce, pour le même écart, une force de rappel
+      plus grande : le chariot est ramené plus fortement, donc plus vite,
+      vers l'équilibre. On retrouvera cette intuition précisément dans la
+      formule $T_0 = 2\pi\sqrt{m/k}$.
+    solution: |
+      Une raideur $k$ plus grande signifie une force de rappel $-kx$ plus
+      intense pour le même écart $x$, donc une accélération plus grande,
+      donc un retour plus rapide vers l'équilibre. L'aller-retour est plus
+      court : $T_0$ diminue quand $k$ augmente (à $m$ fixée) — ce que la
+      formule $T_0=2\pi\sqrt{m/k}$ confirmera précisément.
+
+  - id: SO-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [periode_propre, calcul, pendule_elastique]
+    stem: >
+      Un chariot de masse $m = 0{,}25\ \text{kg}$ est accroché à un ressort
+      horizontal de raideur $k = 100\ \text{N/m}$ (frottement négligé).
+      Quelle est la période propre $T_0$ de ce pendule élastique ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$T_0 = \\sqrt{m/k} = \\sqrt{0{,}25/100} = 0{,}05\\ \\text{s}$"
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Le facteur $2\pi$ a été oublié : $T_0 = 2\pi\sqrt{m/k}$, pas
+          $\sqrt{m/k}$ seul. Le rapport $\sqrt{m/k}$ donne une durée
+          caractéristique, mais il faut la multiplier par $2\pi$ pour
+          obtenir la période d'un cycle complet.
+      - id: B
+        text: "$T_0 \\approx 0{,}314\\ \\text{s}$"
+        correct: true
+      - id: C
+        text: "$T_0 = 2\\pi\\sqrt{k/m} \\approx 2\\pi \\times 20 \\approx 125{,}7\\ \\text{s}$"
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Le rapport est inversé : c'est $\sqrt{m/k}$ qui figure dans $T_0$,
+          pas $\sqrt{k/m}$ (c'est ce dernier rapport qui donne $\omega_0$,
+          pas $T_0$). Confondre les deux formules inverse le résultat :
+          $\sqrt{k/m}=20\ \text{rad/s}$ est la pulsation, pas un facteur de
+          la période.
+      - id: D
+        text: "$T_0 = k/m = 400\\ \\text{s}$"
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Ce calcul confond $\omega_0^2 = k/m$ avec $T_0$ lui-même : il
+          manque à la fois la racine carrée et le facteur $2\pi$. $k/m$
+          donne le carré de la pulsation (en $\text{rad}^2/\text{s}^2$), pas
+          une durée.
+    correct_feedback: >
+      $\omega_0 = \sqrt{k/m} = \sqrt{100/0{,}25} = \sqrt{400} = 20\ \text{rad/s}$,
+      donc $T_0 = 2\pi/\omega_0 = 2\pi/20 \approx 0{,}314\ \text{s}$.
+    solution: |
+      $$\omega_0 = \sqrt{\frac{k}{m}} = \sqrt{\frac{100}{0{,}25}} = \sqrt{400} = 20\ \text{rad/s}$$
+      $$T_0 = \frac{2\pi}{\omega_0} = \frac{2\pi}{20} \approx 0{,}314\ \text{s}$$
+
+  - id: SO-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [isochronisme, amplitude, pendule_elastique]
+    stem: >
+      On a établi l'équation différentielle du pendule élastique horizontal
+      (sans frottement) : $\ddot{x} + \dfrac{k}{m}x = 0$, dont la solution
+      est $x(t) = X_m\cos(\omega_0 t + \varphi)$ avec $\omega_0 = \sqrt{k/m}$.
+      Un même ressort et une même masse sont lancés deux fois différemment :
+      une fois écartés de $2\ \text{cm}$ et lâchés sans vitesse, une fois
+      écartés de $6\ \text{cm}$ et lâchés sans vitesse. Que peut-on dire des
+      périodes propres $T_0$ dans les deux cas ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$T_0$ est plus grande pour le lancer à $6\\ \\text{cm}$, car le chariot doit parcourir une plus grande distance à chaque aller-retour."
+        correct: false
+        misconception: M-OSC-ISO-1
+        feedback: >
+          Un plus grand écart signifie un plus grand trajet, mais aussi une
+          force de rappel (et donc une vitesse) proportionnellement plus
+          grande tout du long : les deux effets se compensent exactement,
+          comme pour le pendule simple. $T_0$ ne dépend pas de $X_m$, qui
+          n'apparaît d'ailleurs pas dans l'équation différentielle.
+      - id: B
+        text: "On ne peut pas savoir sans connaître $\\varphi$ dans chaque cas."
+        correct: false
+        misconception: M-OSC-ISO-1
+        feedback: >
+          $\varphi$ change bien d'un lancer à l'autre (c'est un paramètre
+          fixé par les conditions initiales), mais ce n'est pas parce qu'un
+          paramètre de la solution dépend du lancer que $T_0$ en dépend
+          aussi : $T_0$ est fixée par $m$ et $k$ seuls, indépendamment de
+          $\varphi$.
+      - id: C
+        text: "Elles sont rigoureusement égales : $T_0$ ne dépend que de $m$ et $k$, qui figurent seuls dans l'équation différentielle."
+        correct: true
+      - id: D
+        text: "$T_0$ est plus petite pour le lancer à $6\\ \\text{cm}$, car un plus grand écart initial provoque une force de rappel plus grande dès le départ, donc un retour plus rapide."
+        correct: false
+        misconception: M-OSC-ISO-1
+        feedback: >
+          La force de rappel est effectivement plus grande dès le départ
+          pour un plus grand écart — mais elle doit aussi ramener le chariot
+          sur une plus grande distance. Ces deux effets s'annulent
+          exactement : ni $X_m$ ni $\varphi$ n'apparaissent dans
+          $T_0 = 2\pi\sqrt{m/k}$.
+    correct_feedback: >
+      Seuls $m$ et $k$ figurent dans l'équation différentielle
+      $\ddot{x}+(k/m)x=0$ : $T_0=2\pi\sqrt{m/k}$ ne peut donc dépendre que
+      d'eux, jamais de $X_m$ ni de $\varphi$, qui sont fixés par le lancer,
+      pas par le système.
+    solution: |
+      L'équation $\ddot{x} + (k/m)x = 0$ ne contient que $m$ et $k$. Toute
+      grandeur qui n'apparaît pas dans cette équation ne peut pas apparaître
+      dans $T_0 = 2\pi\sqrt{m/k}$ non plus. $X_m$ et $\varphi$ sont fixés par
+      les conditions initiales (le lancer), pas par le ressort et la masse :
+      ils n'ont donc aucune influence sur $T_0$, quel que soit l'écart de
+      lâcher.
+
+  - id: SO-12
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [conditions_initiales, phase_origine, pendule_elastique]
+    stem: >
+      On lance un pendule élastique horizontal ($\omega_0 = 10\ \text{rad/s}$
+      connu) en poussant le chariot au passage par l'équilibre ($x(0)=0$),
+      avec une vitesse $v(0) = +0{,}3\ \text{m/s}$ (vers les $x$ positifs).
+      Quelle est la valeur de la phase à l'origine $\varphi$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\varphi = \\pi/2$"
+        correct: false
+        misconception: M-OSC-PHASE-1
+        feedback: >
+          $\cos\varphi = 0$ admet deux solutions, $\varphi=\pi/2$ ou
+          $\varphi=-\pi/2$ : ce choix retient la première sans vérifier
+          laquelle est compatible avec le signe de $v(0)$. Avec
+          $\varphi=\pi/2$, on aurait $v(0) = -X_m\omega_0\sin(\pi/2) =
+          -X_m\omega_0 < 0$, ce qui contredit $v(0) = +0{,}3\ \text{m/s} > 0$.
+      - id: B
+        text: "$\\varphi = 0$"
+        correct: false
+        misconception: M-OSC-PHASE-1
+        feedback: >
+          $\varphi=0$ correspond au cas d'un lâcher sans vitesse depuis
+          l'écart maximal ($x(0)=X_m$, $v(0)=0$), déjà rencontré dans la
+          leçon — pas au cas ici, où c'est $x(0)$ qui est nul et $v(0)$ qui
+          ne l'est pas. Ce choix confond les deux types de lancers.
+      - id: C
+        text: "On ne peut pas déterminer $\\varphi$ sans connaître d'abord $X_m$."
+        correct: false
+        misconception: M-OSC-PHASE-1
+        feedback: >
+          Ce n'est pas l'ordre de résolution : $x(0)=X_m\cos\varphi=0$
+          impose déjà $\cos\varphi=0$ (donc $\varphi=\pm\pi/2$) sans
+          connaître $X_m$ numériquement ; c'est ensuite le signe de $v(0)$
+          qui tranche entre les deux valeurs possibles. $X_m$ se déduit
+          seulement après, à partir de $\varphi$.
+      - id: D
+        text: "$\\varphi = -\\pi/2$"
+        correct: true
+    correct_feedback: >
+      $x(0)=0 \Rightarrow \cos\varphi=0 \Rightarrow \varphi=\pm\pi/2$. Comme
+      $v(0)=-X_m\omega_0\sin\varphi$ doit être positif, il faut
+      $\sin\varphi<0$, donc $\varphi=-\pi/2$ (et alors
+      $X_m = v(0)/\omega_0 = 0{,}03\ \text{m}$).
+    solution: |
+      $$x(0) = X_m\cos\varphi = 0 \quad\Longrightarrow\quad \cos\varphi=0 \quad\Longrightarrow\quad \varphi=\frac{\pi}{2}\text{ ou }-\frac{\pi}{2}$$
+      $$v(0) = -X_m\,\omega_0\,\sin\varphi = +0{,}3 > 0 \quad\Longrightarrow\quad \sin\varphi < 0 \quad\Longrightarrow\quad \varphi = -\frac{\pi}{2}$$
+      On en déduit $X_m = \dfrac{0{,}3}{10} = 0{,}03\ \text{m}$.
+
+  - id: SO-13
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [pendule_pesant, moment_inertie, isochronisme]
+    stem: >
+      Un pendule pesant est un solide de forme quelconque (par exemple une
+      plaque métallique) qui pivote autour d'un axe fixe $\Delta$ ne passant
+      pas par son centre d'inertie $G$. Aux petites oscillations, sa période propre est-elle donnée par
+      la même formule $T_0 = 2\pi\sqrt{L/g}$ que celle du pendule simple,
+      avec $L$ une longueur caractéristique du solide ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, car tout pendule qui oscille sous l'effet de la pesanteur, quelle que soit sa forme, obéit à la même formule $2\\pi\\sqrt{L/g}$ avec $L$ la distance de l'axe au centre de gravité."
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Cette formule est un cas particulier, valable seulement quand
+          toute la masse est concentrée en un point (le pendule simple).
+          Pour un solide étendu, la façon dont la masse est répartie compte,
+          à travers le moment d'inertie $J_\Delta$ — deux solides de même
+          distance $\Delta G$ mais de formes différentes n'ont pas la même
+          période.
+      - id: B
+        text: "Non : pour un pendule pesant, $T_0 = 2\\pi\\sqrt{J_\\Delta/(mgd)}$, où $J_\\Delta$ est le moment d'inertie par rapport à $\\Delta$ et $d=\\Delta G$ ; cette expression ne se réduit à celle du pendule simple que pour une masse ponctuelle."
+        correct: true
+      - id: C
+        text: "Oui, à la seule condition de remplacer $L$ par le moment d'inertie $J_\\Delta$ directement dans la formule, ce qui donne $T_0 = 2\\pi\\sqrt{J_\\Delta/g}$."
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Ce n'est pas une simple substitution de $L$ par $J_\Delta$ : la
+          formule correcte, $T_0=2\pi\sqrt{J_\Delta/(mgd)}$, fait intervenir
+          aussi $m$ et $d$ au dénominateur, pas seulement $g$. Cette version
+          hybride oublie ces deux grandeurs.
+      - id: D
+        text: "Non, la période propre du pendule pesant ne dépend d'aucune des grandeurs $m$, $g$, $J_\\Delta$ ou $d$ prises séparément, seulement de la forme géométrique globale du solide."
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          C'est l'inverse : $T_0=2\pi\sqrt{J_\Delta/(mgd)}$ est construite
+          exactement à partir de ces quatre grandeurs. La « forme
+          géométrique » n'intervient que parce qu'elle détermine $J_\Delta$
+          et $d$ — ce ne sont pas des ingrédients à écarter.
+    correct_feedback: >
+      Le pendule pesant obéit à $J_\Delta\ddot\theta = -mgd\sin\theta$, d'où
+      $T_0=2\pi\sqrt{J_\Delta/(mgd)}$. On retrouve le pendule simple
+      seulement quand $J_\Delta=mL^2$ et $d=L$ (masse ponctuelle) :
+      $T_0=2\pi\sqrt{mL^2/(mgL)}=2\pi\sqrt{L/g}$.
+    solution: |
+      $$J_\Delta\,\ddot{\theta} = -mgd\sin\theta \;\xrightarrow{\text{petites oscillations}}\; T_0 = 2\pi\sqrt{\frac{J_\Delta}{mgd}}$$
+
+      Cette formule ne se réduit à $2\pi\sqrt{L/g}$ que si $J_\Delta = mL^2$
+      et $d=L$, c'est-à-dire pour une masse ponctuelle — le cas particulier
+      du pendule simple, pas la règle générale.
+
+  - id: SO-14
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [pendule_torsion, periode_propre, mecanisme]
+    stem: >
+      Un pendule de torsion est constitué d'un disque de moment d'inertie
+      $J$ par rapport à l'axe du fil, suspendu par un fil de constante de
+      torsion $C$. Quelle est l'expression correcte de sa période propre
+      $T_0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$T_0 = 2\\pi\\sqrt{C/J}$"
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Le rapport est inversé : c'est $J$ (l'« inertie ») qui doit être
+          au numérateur et $C$ (le « rappel ») au dénominateur, exactement
+          comme $m$ et $k$ pour le pendule élastique. $\sqrt{C/J}$ donne en
+          réalité $\omega_0$, pas $T_0$.
+      - id: B
+        text: "$T_0 = 2\\pi\\sqrt{m/C}$"
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Ce choix remplace le moment d'inertie $J$ par la masse $m$ toute
+          seule, comme si l'inertie en rotation ne dépendait que de la
+          masse. Or $J$ dépend aussi de la façon dont cette masse est
+          répartie (forme, distance à l'axe) — ce n'est pas la même grandeur
+          que $m$.
+      - id: C
+        text: "$T_0 = 2\\pi\\sqrt{J/C}$"
+        correct: true
+      - id: D
+        text: "$T_0 = 2\\pi\\sqrt{J/(mgd)}$"
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Cette formule est celle du pendule pesant, où le rappel vient de
+          la pesanteur. Ici, le poids du solide et la réaction du fil
+          passent par l'axe de rotation : leur moment est nul. Le rappel
+          vient entièrement de la torsion du fil, $-C\theta$, pas de la
+          pesanteur.
+    correct_feedback: >
+      $J\ddot\theta = -C\theta \Rightarrow \ddot\theta + (C/J)\theta = 0$,
+      donc $\omega_0=\sqrt{C/J}$ et $T_0 = 2\pi/\omega_0 = 2\pi\sqrt{J/C}$ —
+      même structure que le pendule élastique, avec $J$ à la place de $m$
+      (inertie) et $C$ à la place de $k$ (rappel).
+    solution: |
+      $$J\ddot{\theta} = M_{rappel} = -C\theta \;\Longrightarrow\; \ddot{\theta} + \frac{C}{J}\theta = 0$$
+      $$\omega_0 = \sqrt{\frac{C}{J}} \qquad T_0 = 2\pi\sqrt{\frac{J}{C}}$$
+
+  - id: SO-15
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [pendule_torsion, raideur_torsion, periode_propre]
+    stem: >
+      Si on utilise un fil plus raide en torsion (constante $C$ plus
+      grande), à moment d'inertie $J$ fixé, le pendule de torsion
+      oscille-t-il plus vite ou plus lentement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Plus lentement (période $T_0$ plus grande), car un fil plus raide résiste davantage à la rotation, ce qui ralentit le mouvement."
+        correct: false
+        misconception: M-OSC-RAID-1
+        feedback: >
+          « Résister à la rotation » décrit ici un moment de rappel plus
+          fort, pas un frein qui ralentit la vitesse angulaire. Au
+          contraire, un moment de rappel plus fort accélère davantage le
+          retour vers l'équilibre — exactement comme un ressort plus raide
+          accélère le pendule élastique.
+      - id: B
+        text: "Cela ne change rien : $T_0$ ne dépend que de $J$, pas de $C$."
+        correct: false
+        misconception: M-OSC-RAID-1
+        feedback: >
+          $T_0 = 2\pi\sqrt{J/C}$ contient bien $C$ au dénominateur :
+          augmenter $C$ diminue $T_0$. Ce choix étend à tort au pendule de
+          torsion une indépendance (celle de la masse pour le pendule
+          simple) qui ne s'applique pas ici.
+      - id: C
+        text: "Cela dépend de l'angle de torsion initial : pour un petit angle, un $C$ plus grand accélère ; pour un grand angle, l'effet peut s'inverser."
+        correct: false
+        misconception: M-OSC-RAID-1
+        feedback: >
+          L'effet de $C$ sur $T_0$ ne dépend jamais de l'amplitude du
+          lâcher : $\theta_m$ n'apparaît pas dans $T_0=2\pi\sqrt{J/C}$, tout
+          comme pour les autres oscillateurs harmoniques étudiés.
+          L'isochronisme s'applique ici aussi.
+      - id: D
+        text: "Plus vite (période $T_0$ plus petite), car un fil plus raide exerce un moment de rappel plus fort, qui ramène plus rapidement le solide vers l'équilibre."
+        correct: true
+    correct_feedback: >
+      $T_0 = 2\pi\sqrt{J/C}$ : à $J$ fixé, augmenter $C$ diminue $T_0$. Un
+      rappel plus fort ramène plus vite vers l'équilibre — exactement le
+      même effet que $k$ pour le pendule élastique.
+    solution: |
+      $$T_0 = 2\pi\sqrt{\frac{J}{C}}$$
+
+      À $J$ fixé, $T_0$ décroît quand $C$ augmente : plus le fil est raide
+      en torsion, plus le moment de rappel $-C\theta$ est fort, plus le
+      retour vers l'équilibre est rapide.
+
+  - id: SO-16
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [pendule_torsion, pulsation, calcul]
+    stem: >
+      Un pendule de torsion a un moment d'inertie
+      $J = 2{,}0\times10^{-4}\ \text{kg}\cdot\text{m}^2$ et une constante de
+      torsion $C = 8{,}0\times10^{-2}\ \text{N}\cdot\text{m/rad}$. Quelle est
+      sa pulsation propre $\omega_0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\omega_0 = 20\\ \\text{rad/s}$"
+        correct: true
+      - id: B
+        text: "$\\omega_0 = \\sqrt{J/C} = \\sqrt{2{,}5\\times10^{-3}} \\approx 0{,}05\\ \\text{rad/s}$"
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Le rapport est inversé : $\omega_0 = \sqrt{C/J}$ (le rappel au
+          numérateur, l'inertie au dénominateur), pas $\sqrt{J/C}$ — ce
+          dernier rapport intervient dans $T_0$, pas dans $\omega_0$.
+      - id: C
+        text: "$\\omega_0 = C/J = 400\\ \\text{rad/s}$"
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          La racine carrée a été oubliée : $C/J = 400$ est $\omega_0^2$ (en
+          $\text{rad}^2/\text{s}^2$), pas $\omega_0$ lui-même. Il faut
+          encore prendre la racine carrée.
+      - id: D
+        text: "$\\omega_0 = 2\\pi\\sqrt{C/J} = 2\\pi\\times20 \\approx 125{,}7\\ \\text{rad/s}$"
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Le facteur $2\pi$ n'a rien à faire ici : $\omega_0=\sqrt{C/J}$
+          directement, sans $2\pi$. C'est $T_0=2\pi/\omega_0$ qui contient
+          ce facteur, pas $\omega_0$ lui-même — ce choix mélange les deux
+          formules.
+    correct_feedback: >
+      $\omega_0 = \sqrt{C/J} = \sqrt{8{,}0\times10^{-2}/2{,}0\times10^{-4}} =
+      \sqrt{400} = 20\ \text{rad/s}$.
+    solution: |
+      $$\omega_0 = \sqrt{\frac{C}{J}} = \sqrt{\frac{8{,}0\times10^{-2}}{2{,}0\times10^{-4}}} = \sqrt{400} = 20\ \text{rad/s}$$
+
+      (soit $T_0 = 2\pi/\omega_0 \approx 0{,}314\ \text{s}$, mais seule
+      $\omega_0$ était demandée ici.)
+
+  - id: SO-17
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [energie, amplitude, pendule_elastique]
+    stem: >
+      Un pendule élastique horizontal (sans frottement) a une énergie
+      mécanique $E_m = 0{,}08\ \text{J}$ pour une amplitude
+      $X_m = 4{,}0\ \text{cm}$. Si on relance le même pendule avec une
+      amplitude deux fois plus grande ($X_m' = 8{,}0\ \text{cm}$), que
+      devient $E_m$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$E_m' = 0{,}08\\ \\text{J}$ (inchangée), car l'énergie mécanique ne dépend que de $k$, pas de l'amplitude."
+        correct: false
+        misconception: M-OSC-ENER-1
+        feedback: >
+          C'est la période $T_0$ qui ne dépend pas de l'amplitude
+          (isochronisme), pas l'énergie mécanique. $E_m = \frac{1}{2}kX_m^2$
+          contient bien $X_m$ : ce sont deux grandeurs différentes, qui
+          n'ont pas la même dépendance à l'amplitude.
+      - id: B
+        text: "$E_m' = 0{,}32\\ \\text{J}$ (quadruplée), car $E_m \\propto X_m^2$ : doubler l'amplitude quadruple l'énergie."
+        correct: true
+      - id: C
+        text: "$E_m' = 0{,}02\\ \\text{J}$ (divisée par 4), car en doublant l'amplitude, on double la distance à parcourir donc on divise le temps, et l'énergie par 4."
+        correct: false
+        misconception: M-OSC-ENER-1
+        feedback: >
+          Ce raisonnement mélange plusieurs grandeurs sans lien direct avec
+          $E_m$ : la formule est simplement $E_m=\frac{1}{2}kX_m^2$. Doubler
+          $X_m$ multiplie $X_m^2$ par 4, donc multiplie $E_m$ par 4 —
+          l'inverse de « diviser ».
+      - id: D
+        text: "$E_m' = 0{,}16\\ \\text{J}$ (doublée), car l'énergie mécanique est proportionnelle à l'amplitude."
+        correct: false
+        misconception: M-OSC-ENER-1
+        feedback: >
+          $E_m=\frac{1}{2}kX_m^2$ est proportionnelle au carré de
+          l'amplitude, pas à l'amplitude elle-même. Doubler $X_m$ multiplie
+          donc $E_m$ par $2^2=4$, pas par 2.
+    correct_feedback: >
+      $E_m = \frac{1}{2}kX_m^2$ : en doublant $X_m$, on multiplie $X_m^2$ par
+      4, donc $E_m$ par 4 aussi. $E_m' = 4\times0{,}08 = 0{,}32\ \text{J}$.
+    solution: |
+      $$\frac{E_m'}{E_m} = \left(\frac{X_m'}{X_m}\right)^2 = \left(\frac{8{,}0}{4{,}0}\right)^2 = 4$$
+      $$E_m' = 4 \times 0{,}08 = 0{,}32\ \text{J}$$
+
+  - id: SO-18
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [energie, pendule_simple, energie_potentielle]
+    stem: >
+      Un pendule simple (fil + bille), sans frottement, oscille avec de
+      petites oscillations. À l'écart angulaire maximal $\theta_m$, la
+      vitesse est nulle. Quelle énergie potentielle faut-il utiliser dans le
+      bilan $E_m = E_c + E_p$ pour ce système ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'énergie potentielle élastique $E_{pe} = \\frac{1}{2}k\\theta^2$, en remplaçant $x$ par $\\theta$ et $k$ par $g/L$, comme le suggère l'équation différentielle du mouvement."
+        correct: false
+        misconception: M-OSC-ENER-1
+        feedback: >
+          Cette substitution de variables ($x\to\theta$, $k/m\to g/L$) est
+          légitime pour l'équation différentielle, où les deux systèmes ont
+          la même forme mathématique. Mais elle ne l'est pas pour l'énergie :
+          il n'y a pas de ressort ici, donc pas d'énergie potentielle
+          élastique du tout.
+      - id: B
+        text: "Aucune énergie potentielle n'intervient ici : seule l'énergie cinétique compte, puisque le pendule simple ne comporte aucun ressort."
+        correct: false
+        misconception: M-OSC-ENER-1
+        feedback: >
+          C'est vrai qu'il n'y a pas d'énergie élastique (pas de ressort) —
+          mais ce n'est pas la même chose que « aucune énergie
+          potentielle ». La pesanteur, elle, fournit une énergie potentielle
+          (de pesanteur), même en l'absence de tout ressort.
+      - id: C
+        text: "L'énergie potentielle de pesanteur, car le rappel du pendule simple vient du poids, pas d'un ressort — il n'y a pas d'énergie potentielle élastique ici."
+        correct: true
+      - id: D
+        text: "L'énergie potentielle électrique, par analogie directe avec le condensateur du circuit LC étudié au chapitre précédent."
+        correct: false
+        misconception: M-OSC-ENER-1
+        feedback: >
+          L'analogie avec le circuit LC concerne la forme de l'équation
+          différentielle, pas la nature physique du système : un pendule
+          mécanique n'a aucune énergie électrique. C'est une confusion de
+          catégorie.
+    correct_feedback: >
+      Le rappel du pendule simple vient du poids, pas d'un ressort :
+      l'énergie potentielle à utiliser est celle de pesanteur, pas une
+      énergie élastique — le mécanisme de conservation est identique, seule
+      la nature de l'énergie potentielle change.
+    solution: |
+      Le pendule simple n'a pas de ressort : sa force de rappel est une
+      composante du poids. L'énergie potentielle à utiliser dans
+      $E_m = E_c + E_p$ est donc l'énergie potentielle de pesanteur, et non
+      une énergie élastique — comme le précise la leçon (chapitre 6, avant-dernier
+      paragraphe).
+
+  - id: SO-19
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, regimes, pseudo_periode]
+    stem: >
+      On lâche un pendule élastique horizontal avec un frottement fluide
+      modéré. Le dispositif de mesure montre que le solide oscille encore,
+      avec un intervalle de temps régulier entre deux passages successifs
+      par un même extrême, mais que cet écart maximal diminue légèrement à
+      chaque aller-retour, jusqu'à devenir imperceptible après un grand
+      nombre de cycles. Quel régime décrit-on ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le régime apériodique, puisque le mouvement du solide finit malgré tout par s'arrêter complètement."
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: >
+          Le régime apériodique se reconnaît à l'absence totale
+          d'oscillation : le solide revient vers l'équilibre sans jamais le
+          dépasser. Ici, au contraire, il y a bien des allers-retours
+          réguliers qui persistent longtemps — ce n'est pas le même signe
+          observable, même si le mouvement finit lui aussi par s'arrêter au
+          bout d'un très grand nombre de cycles.
+      - id: B
+        text: "Le régime périodique, puisqu'un intervalle de temps parfaitement régulier subsiste entre deux passages successifs aux extrêmes."
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: >
+          La régularité de l'intervalle est un indice, mais le régime
+          périodique exige en plus une amplitude constante (frottement quasi
+          nul). Ici l'amplitude décroît clairement à chaque cycle : ce
+          détail exclut le régime périodique.
+      - id: C
+        text: "On ne peut identifier aucun régime sans connaître au préalable la valeur exacte du coefficient de frottement $h$."
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: >
+          Le régime se reconnaît sur son comportement observable (intervalle
+          régulier + amplitude qui décroît), pas sur la valeur numérique de
+          $h$ : c'est précisément ce que permet une trace ou une description
+          expérimentale, sans avoir besoin de connaître $h$ au préalable.
+      - id: D
+        text: "Le régime pseudo-périodique : les oscillations persistent avec un intervalle de temps régulier, la pseudo-période, mais leur amplitude décroît."
+        correct: true
+    correct_feedback: >
+      Deux indices combinés signent le régime pseudo-périodique : un
+      intervalle de temps régulier entre extrêmes (la pseudo-période) et une
+      amplitude qui décroît cycle après cycle.
+    solution: |
+      **Périodique :** amplitude constante — exclu ici (l'amplitude
+      décroît).
+
+      **Apériodique :** aucune oscillation, retour direct sans dépassement —
+      exclu ici (il y a bien des allers-retours réguliers).
+
+      **Pseudo-périodique :** oscillations qui persistent avec un intervalle
+      régulier, mais amplitude décroissante — c'est exactement ce qui est
+      décrit.
+
+  - id: SO-20
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, pseudo_periode, frottement]
+    stem: >
+      Sur un pendule élastique horizontal, on augmente progressivement le
+      frottement (la valeur de $h$), à $m$ et $k$ fixés, tout en restant
+      dans le régime pseudo-périodique. Comment évolue l'intervalle de temps
+      entre deux passages successifs par un même extrême (la pseudo-période
+      $T$) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$T$ reste voisine de $T_0 = 2\\pi\\sqrt{m/k}$, peu affectée pour un amortissement modéré ; c'est surtout l'amplitude qui décroît de plus en plus vite."
+        correct: true
+      - id: B
+        text: "$T$ diminue nettement : davantage de frottement fait osciller le système plus vite qu'auparavant."
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          C'est le frottement qui gouverne l'amortissement (la vitesse à
+          laquelle l'amplitude décroît), pas la fréquence des oscillations
+          elles-mêmes. Confondre les deux, c'est prendre un frein pour un
+          accélérateur.
+      - id: C
+        text: "$T$ augmente nettement : davantage de frottement freine le mouvement, si bien que chaque aller-retour prend plus de temps."
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          Le frottement dissipe de l'énergie (donc réduit l'amplitude)
+          plutôt que de ralentir fondamentalement le rythme des passages par
+          les extrêmes. Pour un amortissement pas trop fort, l'intervalle
+          entre deux extrêmes reste voisin de $T_0$, sans s'allonger
+          nettement.
+      - id: D
+        text: "$T$ devient égale à $2\\pi\\sqrt{h/k}$, une nouvelle expression qui fait intervenir le coefficient $h$."
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          Aucune formule de ce type n'a été établie dans la leçon : établir
+          l'équation différentielle amortie s'arrête volontairement là
+          (elle est hors-programme à résoudre complètement). On sait
+          seulement que, pour un amortissement faible, la pseudo-période
+          reste voisine de $T_0$.
+    correct_feedback: >
+      Le frottement $h$ gouverne l'amortissement (la décroissance de
+      l'amplitude), pas fondamentalement le rythme des oscillations : pour
+      un amortissement modéré, la pseudo-période reste proche de
+      $T_0=2\pi\sqrt{m/k}$.
+    solution: |
+      Le coefficient $h$ apparaît dans l'équation $m\ddot{x}+h\dot{x}+kx=0$
+      comme un terme d'amortissement : il gouverne la décroissance de
+      l'amplitude d'un cycle à l'autre, et, au-delà d'une certaine valeur,
+      le passage au régime apériodique. Il n'introduit pas de formule de
+      pseudo-période dépendant de $h$ dans le programme ; pour un
+      amortissement faible, $T\approx T_0 = 2\pi\sqrt{m/k}$.
+
+  - id: SO-21
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [entretien, amortissement, pendule_torsion]
+    stem: >
+      Dans une montre mécanique, un ressort moteur (le barillet) redonne,
+      via l'échappement, une petite impulsion au balancier à chaque
+      oscillation, pour compenser les frottements internes. Quel est le
+      rôle de ce dispositif d'entretien sur la période des oscillations du
+      balancier ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il impose sa propre fréquence au balancier, comme le ferait un moteur qui entraînerait le mouvement depuis l'extérieur du mécanisme."
+        correct: false
+        misconception: M-OSC-RES-3
+        feedback: >
+          L'entretien ne pilote pas la fréquence : il compense exactement
+          l'énergie perdue par frottement, sans imposer de rythme. Le
+          balancier continue d'osciller à sa propre période, fixée par son
+          moment d'inertie et la raideur de son ressort spiral, pas par le
+          dispositif d'entretien.
+      - id: B
+        text: "Il ne fixe pas le rythme : le balancier oscille à sa période propre, fixée par son moment d'inertie et la raideur de son spiral ; le dispositif ne fait que compenser l'énergie perdue."
+        correct: true
+      - id: C
+        text: "Sans ce dispositif, le balancier oscillerait bien plus vite ; il ralentit donc le mouvement afin de le rendre parfaitement régulier tout au long de la journée."
+        correct: false
+        misconception: M-OSC-RES-3
+        feedback: >
+          Le dispositif ne joue pas le rôle d'un frein régulateur : sans
+          lui, le balancier ne ralentirait pas ni n'accélérerait, il
+          finirait par s'amortir et s'arrêter à cause du frottement. Le rôle
+          de l'entretien est de compenser cette perte, pas de contrôler la
+          vitesse.
+      - id: D
+        text: "Il n'a aucun effet sur les oscillations du balancier ; son seul rôle est de faire avancer les aiguilles de la montre."
+        correct: false
+        misconception: M-OSC-RES-3
+        feedback: >
+          C'est l'inverse : sans ce dispositif, les frottements internes
+          amortiraient et arrêteraient le balancier, et la montre
+          s'arrêterait complètement. C'est justement parce qu'il entretient
+          l'oscillation du balancier que les aiguilles peuvent continuer
+          d'avancer régulièrement.
+    correct_feedback: >
+      Le dispositif d'entretien compense exactement l'énergie dissipée par
+      frottement, à chaque cycle — il ne fixe pas le rythme. Le balancier
+      oscille à sa propre période propre, déterminée par $J$ et $C$ (son
+      ressort spiral), exactement comme le générateur d'entretien du
+      circuit RLC ne fixe pas non plus la fréquence du circuit.
+    solution: |
+      Le dispositif d'entretien apporte, à chaque période, un complément
+      d'énergie calé pour compenser exactement la perte par frottement — ni
+      plus, ni moins. Le balancier continue donc d'osciller à sa période
+      propre $T_0 = 2\pi\sqrt{J/C}$, fixée par son moment d'inertie $J$ et
+      la raideur de son ressort spiral $C$ : l'entretien ne fait que
+      prolonger l'oscillation naturelle, il ne la pilote pas depuis
+      l'extérieur.
+
+  - id: SO-22
+    rung: "R8"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [pendule_simple, isochronisme, bac]
+    stem: >
+      Un pendule simple de longueur $L = 2{,}5\ \text{m}$ oscille avec de
+      petites oscillations au voisinage d'un lieu où
+      $g \approx 10\ \text{m}\cdot\text{s}^{-2}$ (on prendra
+      $\pi^2\approx 10$). Un élève affirme : « Si on utilise une bille deux
+      fois plus lourde au bout du même fil, la période $T_0$ va doubler,
+      car il faudra deux fois plus d'énergie pour la faire osciller. » Que
+      peut-on dire de cette affirmation, et quelle est la valeur numérique
+      de $T_0$ (pour la masse initiale) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'affirmation est vraie : en doublant la masse, $T_0$ double aussi, ce qui donnerait, pour la masse initiale, une valeur de référence $T_0 \\approx 6{,}28\\ \\text{s}$."
+        correct: false
+        misconception: M-OSC-ISO-1
+        feedback: >
+          $T_0 = 2\pi\sqrt{L/g}$ ne contient pas la masse : elle se
+          simplifie complètement dans l'établissement de l'équation du
+          pendule simple. « Plus d'énergie nécessaire » n'implique pas
+          « plus de temps » — c'est la même confusion masse/durée qu'en
+          chute libre. $6{,}28\ \text{s}$ n'est d'ailleurs pas non plus la
+          bonne valeur numérique.
+      - id: B
+        text: "L'affirmation est fausse, mais $T_0 \\approx 0{,}5\\ \\text{s}$ (on a confondu $T_0$ avec $\\sqrt{L/g}$, en oubliant le facteur $2\\pi$ entièrement)."
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Le rejet de l'affirmation sur la masse est correct, mais le
+          calcul numérique oublie complètement le facteur $2\pi$ :
+          $\sqrt{L/g}=\sqrt{2{,}5/10}=0{,}5\ \text{s}$ n'est qu'une étape
+          intermédiaire, pas $T_0$.
+      - id: C
+        text: "L'affirmation est fausse : $T_0 = 2\\pi\\sqrt{L/g} = 2\\pi\\sqrt{2{,}5/10} = 2\\pi\\times0{,}5 \\approx 3{,}14\\ \\text{s}$, une valeur indépendante de la masse."
+        correct: true
+      - id: D
+        text: "L'affirmation est fausse, mais $T_0 \\approx 1{,}57\\ \\text{s}$ (on a calculé $\\pi\\sqrt{L/g}$ au lieu de $2\\pi\\sqrt{L/g}$)."
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Le rejet de l'affirmation sur la masse est correct, mais il
+          manque un facteur 2 dans le calcul : c'est $2\pi\sqrt{L/g}$, pas
+          $\pi\sqrt{L/g}$. $1{,}57\ \text{s}\approx\pi\times0{,}5$
+          correspond à la moitié seulement de la bonne valeur.
+    correct_feedback: >
+      La masse se simplifie entièrement dans l'établissement de l'équation
+      du pendule simple : elle n'a aucun effet sur $T_0$. Numériquement,
+      $T_0 = 2\pi\sqrt{2{,}5/10} = 2\pi\times0{,}5\approx3{,}14\ \text{s}$,
+      quelle que soit la masse de la bille.
+    solution: |
+      **Sur l'affirmation :** dans $mL\ddot\theta = -mg\sin\theta$, la masse
+      se simplifie des deux côtés avant même d'arriver à $T_0$ : elle ne
+      peut donc pas réapparaître dans $T_0=2\pi\sqrt{L/g}$. L'argument
+      énergétique de l'élève ne trouve aucune prise dans cette formule —
+      l'affirmation est fausse.
+
+      **Calcul :**
+      $$T_0 = 2\pi\sqrt{\frac{L}{g}} = 2\pi\sqrt{\frac{2{,}5}{10}} = 2\pi\sqrt{0{,}25} = 2\pi\times0{,}5 \approx 3{,}14\ \text{s}$$
+
+  - id: SO-23
+    rung: "R8"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [pendule_torsion, energie, bac]
+    stem: >
+      Un pendule de torsion (disque de moment d'inertie
+      $J = 5{,}0\times10^{-3}\ \text{kg}\cdot\text{m}^2$, fil de constante
+      de torsion $C = 0{,}20\ \text{N}\cdot\text{m/rad}$) est lâché depuis
+      $\theta_0 = 0{,}30\ \text{rad}$, sans vitesse angulaire initiale, sans
+      frottement. Par analogie avec le pendule élastique (où
+      $E_{pe}=\frac{1}{2}kx^2$), l'énergie potentielle de torsion s'écrit
+      $E_{p,tor} = \frac{1}{2}C\theta^2$. Quelle est l'énergie mécanique de
+      ce pendule ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$E_m = 1{,}8\\times10^{-2}\\ \\text{J}$ (calculée comme $C\\theta_0^2$, sans le facteur $\\frac12$)."
+        correct: false
+        misconception: M-OSC-ENER-1
+        feedback: >
+          Le facteur $\frac12$ a été oublié : $E_{p,tor}=\frac{1}{2}C\theta_0^2$,
+          exactement comme $E_{pe}=\frac{1}{2}kx^2$ pour le ressort. Sans ce
+          facteur, le résultat est deux fois trop grand.
+      - id: B
+        text: "$E_m = 3{,}0\\times10^{-2}\\ \\text{J}$ (calculée comme $\\frac{1}{2}C\\theta_0$, avec $\\theta_0$ à la puissance 1)."
+        correct: false
+        misconception: M-OSC-ENER-1
+        feedback: >
+          L'énergie potentielle varie comme le carré de l'écart, pas
+          proportionnellement à l'écart : il faut $\theta_0^2$, pas
+          $\theta_0$ seul. C'est la même dépendance quadratique que pour
+          $E_{pe}=\frac{1}{2}kx^2$.
+      - id: C
+        text: "$E_m = \\frac{1}{2}J\\theta_0^2 = 2{,}25\\times10^{-4}\\ \\text{J}$."
+        correct: false
+        misconception: M-OSC-ENER-1
+        feedback: >
+          Ce calcul utilise $J$ (la grandeur d'« inertie », qui
+          interviendrait dans une énergie cinétique, $E_c=\frac12
+          J\dot\theta^2$) à la place de $C$ (la grandeur de « rappel », qui
+          intervient dans l'énergie potentielle). Ce sont deux rôles
+          différents, à ne pas intervertir.
+      - id: D
+        text: "$E_m = 9{,}0\\times10^{-3}\\ \\text{J}$"
+        correct: true
+    correct_feedback: >
+      Au lâcher, la vitesse angulaire est nulle : toute l'énergie mécanique
+      est potentielle. $E_m = \frac{1}{2}C\theta_0^2 =
+      \frac{1}{2}\times0{,}20\times(0{,}30)^2 = 9{,}0\times10^{-3}\ \text{J}$,
+      et elle reste constante ensuite (pas de frottement).
+    solution: |
+      $$E_m = E_{p,tor}(0) = \frac{1}{2}C\theta_0^2 = \frac{1}{2}\times0{,}20\times(0{,}30)^2 = \frac{1}{2}\times0{,}20\times0{,}09 = 9{,}0\times10^{-3}\ \text{J}$$
+
+      Sans vitesse angulaire initiale, l'énergie cinétique est nulle à
+      $t=0$ : toute l'énergie est dans le fil tordu. Sans frottement, $E_m$
+      reste constante à cette valeur pendant tout le mouvement.
+
+  - id: SO-24
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: pc_systemes_oscillants
+    tags: [synthese, analogie, tous_systemes]
+    stem: >
+      Pour les quatre systèmes oscillants étudiés (pendule élastique,
+      pendule simple, pendule pesant, pendule de torsion), l'équation
+      différentielle a toujours la forme $\ddot{X} + \omega_0^2 X = 0$, où
+      $X$ joue le rôle d'une position ou d'un angle. Laquelle des
+      propositions suivantes associe correctement la grandeur $\omega_0^2$
+      à chacun des quatre systèmes ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Pendule élastique : $k/m$ ; pendule simple : $g/L$ ; pendule pesant : $mgd/J_\\Delta$ ; pendule de torsion : $C/J$."
+        correct: true
+      - id: B
+        text: "Pendule élastique : $k/m$ ; pendule simple : $L/g$ ; pendule pesant : $J_\\Delta/(mgd)$ ; pendule de torsion : $J/C$."
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Chaque rapport (sauf celui du pendule élastique) est inversé :
+          « inertie » doit toujours être au dénominateur et « rappel » au
+          numérateur dans $\omega_0^2$. Ces rapports inversés donneraient
+          en réalité $T_0^2/(4\pi^2)$, pas $\omega_0^2$.
+      - id: C
+        text: "Pendule élastique : $k/m$ ; pendule simple : $g/L$ ; pendule pesant : $g/L$ (comme le pendule simple) ; pendule de torsion : $C/J$."
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Le pendule pesant ne se réduit à $g/L$ que dans le cas particulier
+          d'une masse ponctuelle. Pour un solide étendu quelconque, il faut
+          $mgd/J_\Delta$, qui dépend de la répartition de la masse (via
+          $J_\Delta$) et de la distance $d=\Delta G$ — pas seulement d'une
+          longueur $L$.
+      - id: D
+        text: "Pendule élastique : $k/m$ ; pendule simple : $g/L$ ; pendule pesant : $mgd/J_\\Delta$ ; pendule de torsion : $J/C$."
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Les trois premiers rapports sont corrects, mais celui du pendule
+          de torsion est inversé : c'est $J$ (l'inertie) qui doit être au
+          dénominateur et $C$ (le rappel) au numérateur, soit $C/J$ — pas
+          $J/C$.
+    correct_feedback: >
+      Dans chaque cas, $\omega_0^2$ = (grandeur de rappel) / (grandeur
+      d'inertie) : $k/m$, $g/L$, $mgd/J_\Delta$, $C/J$ — la même structure
+      se répète, seuls les noms changent.
+    solution: |
+      | Système | Inertie | Rappel | $\omega_0^2$ |
+      |---|---|---|---|
+      | Pendule élastique | $m$ | $k$ | $k/m$ |
+      | Pendule simple | — (s'annule) | $g/L$ | $g/L$ |
+      | Pendule pesant | $J_\Delta$ | $mgd$ | $mgd/J_\Delta$ |
+      | Pendule de torsion | $J$ | $C$ | $C/J$ |
+
+      Dans les quatre cas, $\omega_0^2$ = rappel / inertie, jamais l'inverse.
+
+  - id: SO-25
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, pseudo_periode, regime_pseudo_periodique, utilisation]
+    stem: >
+      Un solide-ressort ($m$, $k$ fixés) oscille sur un banc à frottement
+      faible. On mesure l'intervalle de temps entre deux passages successifs
+      par l'écart maximal du même côté. Comparé à la période propre
+      $T_0 = 2\pi\sqrt{m/k}$, cet intervalle (la pseudo-période $T$) :
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          vaut approximativement $T_0$ : un amortissement faible ne change presque rien
+          à la période.
+        correct: true
+      - id: B
+        text: >-
+          est nettement plus court, car l'amplitude diminue à chaque
+          aller-retour.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          Ce choix fusionne deux effets distincts : le terme de frottement
+          $h\dot{x}$ retire de l'énergie, donc fait décroître l'amplitude,
+          mais le terme de rappel $kx$ (qui fixe le rythme) n'est pas
+          touché. Pour un amortissement faible, l'espacement entre deux
+          extrêmes reste voisin de $T_0$, même si leur hauteur diminue
+          nettement.
+      - id: C
+        text: >-
+          n'existe pas : dès qu'il y a du frottement, il n'y a plus de
+          période.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          Le régime pseudo-périodique garde une pseudo-période bien définie
+          et mesurable — c'est justement ce qui permet de la comparer à
+          $T_0$. Ce n'est que pour un amortissement très fort (régime
+          apériodique) qu'il n'y a plus aucune oscillation, donc plus de
+          période au sens propre.
+      - id: D
+        text: >-
+          augmente d'un aller-retour au suivant, à mesure que l'amplitude
+          décroît.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          Ce choix imagine que la décroissance de l'amplitude « traîne »
+          aussi la période vers le haut. Mais l'amplitude et la
+          pseudo-période ne dépendent pas des mêmes termes de l'équation
+          $m\ddot{x}+h\dot{x}+kx=0$ : rien n'indique une dérive progressive
+          de $T$ d'un cycle à l'autre.
+    correct_feedback: >
+      Le frottement fait fuir l'énergie (donc l'amplitude) cycle après
+      cycle, mais il ne touche pas au terme de rappel qui fixe le rythme :
+      pour un amortissement faible, $T \approx T_0 = 2\pi\sqrt{m/k}$.
+    solution: |
+      **Deux effets à ne pas fusionner :** le terme $h\dot{x}$ dissipe de
+      l'énergie (l'amplitude décroît) ; le terme $kx$ fixe le rythme du
+      mouvement. Pour un amortissement faible, seul le premier effet est
+      net :
+      $$T \approx T_0 = 2\pi\sqrt{\frac{m}{k}}$$
+
+      L'amplitude diminue visiblement d'un aller-retour à l'autre ;
+      l'espacement entre deux passages par un même extrême, lui, reste
+      presque inchangé.
+
+  - id: SO-26
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, regimes, application_experimentale, document_experimental, hors_cadre_probe]
+    stem: >
+      On enregistre $x(t)$ pour trois amortissements croissants d'un même
+      pendule élastique. Le premier oscille en s'amortissant. Le second
+      revient à l'équilibre sans osciller, le plus rapidement possible
+      parmi les trois. Le troisième revient à l'équilibre sans osciller lui
+      non plus, mais lentement. Quels sont, dans l'ordre (premier, second,
+      troisième), les trois régimes ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          périodique ; pseudo-périodique ; apériodique.
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: >
+          Le régime périodique (amplitude constante, sans frottement) n'est
+          pas un régime d'amortissement : il correspond au cas idéal étudié
+          avant ce chapitre. Le premier système décrit ici oscille en
+          s'amortissant : c'est le régime pseudo-périodique, pas le régime
+          périodique.
+      - id: B
+        text: >-
+          pseudo-périodique ; apériodique ; critique.
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: >
+          Le second et le troisième régime sont inversés. Le second système
+          décrit revient le plus vite, sans osciller : c'est le régime
+          critique, le cas-limite le plus rapide. Le troisième, plus lent,
+          est l'apériodique — pas l'inverse.
+      - id: C
+        text: >-
+          pseudo-périodique ; critique ; apériodique.
+        correct: true
+      - id: D
+        text: >-
+          amorti ; critique ; forcé.
+        correct: false
+        misconception: null
+        feedback: >
+          « Amorti » n'est pas le nom d'un régime précis (les trois régimes
+          de ce chapitre sont pseudo-périodique, critique, apériodique), et
+          « forcé » désigne un régime d'oscillations entretenues par un
+          excitateur extérieur — une notion hors de ce chapitre sur les
+          oscillations libres.
+    correct_feedback: >
+      Pseudo-périodique : oscille en s'amortissant. Critique : retour le
+      plus rapide, sans dépassement — le cas-limite. Apériodique : retour
+      sans dépassement lui aussi, mais plus lent que le critique.
+    solution: |
+      **Pseudo-périodique :** amplitude décroissante, oscillations
+      persistantes.
+
+      **Critique :** cas-limite entre les deux, retour le plus rapide
+      possible sans aucun dépassement de l'équilibre.
+
+      **Apériodique :** retour sans dépassement, mais plus lent que le
+      critique (amortissement plus fort que le critique).
+
+  - id: SO-27
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, energie, bilan_energetique, resolution, hors_cadre_probe]
+    stem: >
+      Un pendule pesant oscille avec frottement, sans aucun dispositif
+      d'entretien extérieur. Que peut-on affirmer sur son énergie mécanique
+      $E_m$ et sur son mouvement à long terme ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $E_m$ finit par réaugmenter et l'amplitude repart, car l'oscillateur finit par
+          s'entretenir de lui-même.
+        correct: false
+        misconception: M-OSC-AMO-3
+        feedback: >
+          Rien, dans le frottement seul, ne peut faire réaugmenter $E_m$ :
+          le travail des forces de frottement est toujours négatif (elles
+          s'opposent au mouvement). Un oscillateur ne peut « se relancer »
+          que grâce à un dispositif d'entretien extérieur — absent ici, par
+          hypothèse.
+      - id: B
+        text: >-
+          $E_m$ décroît (dissipée en chaleur) et l'amplitude tend vers
+          zéro ; sans dispositif d'entretien, le mouvement s'arrête.
+        correct: true
+      - id: C
+        text: >-
+          $E_m$ reste rigoureusement constante : le frottement ne change que la période,
+          jamais l'énergie du système.
+        correct: false
+        misconception: [M-OSC-AMO-1, M-OSC-AMO-3]
+        feedback: >
+          Double erreur : le frottement n'agit pas d'abord sur la période
+          (c'est l'amplitude qui décroît, la pseudo-période reste voisine
+          de $T_0$), et il ne laisse surtout pas $E_m$ constante — il la
+          dissipe continûment en chaleur.
+      - id: D
+        text: >-
+          $E_m$ décroît, ce dont on peut déduire la pseudo-période par une formule du
+          type $T = f(m, h, k)$.
+        correct: false
+        misconception: null
+        feedback: >
+          La leçon établit l'équation différentielle amortie
+          $m\ddot{x}+h\dot{x}+kx=0$ puis s'arrête volontairement là : aucune
+          formule fermée de la pseudo-période en fonction de $m$, $h$, $k$
+          n'est au programme. Que $E_m$ décroisse ne donne pas accès à une
+          telle formule.
+    correct_feedback: >
+      Le frottement dissipe l'énergie mécanique en chaleur, cycle après
+      cycle ; sans dispositif d'entretien extérieur (étudié au chapitre
+      RLC), l'amplitude décroît jusqu'à l'arrêt complet du mouvement.
+    solution: |
+      Les forces de frottement s'opposant toujours au mouvement, leur
+      travail est négatif à chaque instant : $E_m$ décroît continûment, en
+      chaleur. Sans aucun apport extérieur, cette perte n'est jamais
+      compensée : l'amplitude tend vers zéro et le pendule finit par
+      s'immobiliser à l'équilibre.
+
+  - id: SO-28
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, pseudo_periode, pendule_torsion, application_experimentale, document_experimental]
+    stem: |
+      Un pendule de torsion ($J$, $C$ fixés, période propre théorique
+      $T_0 = 1{,}20\ \text{s}$) oscille avec un amortissement faible. Un
+      dispositif relève les instants de passage par l'élongation angulaire
+      maximale du même côté, et l'amplitude correspondante :
+
+      | Cycle | instant (s) | intervalle avec le précédent (s) | amplitude ($^\circ$) |
+      |---|---|---|---|
+      | 1 | 0,00 | — | 40 |
+      | 2 | 1,21 | 1,21 | 34 |
+      | 3 | 2,39 | 1,18 | 29 |
+      | 4 | 3,60 | 1,21 | 25 |
+
+      Que peut-on conclure de ce tableau ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Les intervalles diminuent nettement d'un cycle à l'autre, de $1{,}21$ à
+          $1{,}18\ \text{s}$, preuve que le frottement raccourcit la période du pendule.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          L'écart entre $1{,}21$ et $1{,}18\ \text{s}$ (moins de $3\%$)
+          relève de la précision de mesure, pas d'une tendance : les quatre
+          intervalles restent tous voisins de $T_0=1{,}20\ \text{s}$, sans
+          dérive systématique.
+      - id: B
+        text: >-
+          Les intervalles restent voisins de $T_0=1{,}20\ \text{s}$ malgré
+          la décroissance nette de l'amplitude (de $40^\circ$ à $25^\circ$) :
+          c'est cohérent avec un amortissement faible.
+        correct: true
+      - id: C
+        text: >-
+          Puisque l'amplitude a diminué d'environ $40\%$, de $40^\circ$ à $25^\circ$, la
+          pseudo-période a nécessairement diminué elle aussi d'environ $40\%$.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          L'amplitude et la pseudo-période ne varient pas dans les mêmes
+          proportions : le tableau montre justement que la pseudo-période
+          reste quasi constante ($\approx 1{,}20\ \text{s}$) pendant que
+          l'amplitude chute nettement — ce sont deux grandeurs
+          indépendantes ici.
+      - id: D
+        text: >-
+          Ce tableau ne permet de conclure sur aucune période : dès qu'il y
+          a du frottement, la notion de période perd tout son sens.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          Le régime pseudo-périodique garde une pseudo-période bien définie
+          et mesurable — c'est exactement ce que ce tableau permet de
+          vérifier, colonne par colonne.
+    correct_feedback: >
+      Les trois intervalles mesurés ($1{,}21$ ; $1{,}18$ ;
+      $1{,}21\ \text{s}$) restent tous voisins de $T_0=1{,}20\ \text{s}$,
+      alors que l'amplitude chute nettement : c'est la signature attendue
+      d'un amortissement faible.
+    solution: |
+      **Colonne « intervalle » :** $1{,}21$ ; $1{,}18$ ; $1{,}21\ \text{s}$
+      — toutes proches de $T_0=1{,}20\ \text{s}$, aux incertitudes de
+      mesure près.
+
+      **Colonne « amplitude » :** décroissance nette et régulière,
+      $40^\circ \to 25^\circ$.
+
+      Ces deux lectures combinées confirment le régime pseudo-périodique
+      pour un amortissement faible : rythme quasi inchangé, amplitude en
+      baisse.
+
+  - id: SO-29
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, regimes, pendule_simple, classement, application_experimentale]
+    stem: >
+      Trois pendules simples identiques sont plongés dans trois fluides de
+      viscosités croissantes (fluide 1 < fluide 2 < fluide 3) puis lâchés
+      du même angle. Dans le fluide 1, le pendule oscille encore plusieurs
+      fois en s'amortissant. Dans le fluide 3, il revient à l'équilibre
+      sans le dépasser, mais très lentement. Dans le fluide 2, il revient à
+      l'équilibre sans le dépasser, le plus rapidement possible parmi les
+      trois. Lequel des trois pendules atteint l'équilibre en premier ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Celui du fluide 1 (régime pseudo-périodique), car il n'est pas
+          ralenti par un frottement fort.
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: >
+          Le pendule du fluide 1 oscille encore plusieurs fois avant de
+          s'immobiliser : même si chaque aller-retour n'est pas ralenti
+          individuellement, le fait de devoir osciller à répétition avant
+          de se stabiliser le rend plus long à atteindre l'équilibre que le
+          retour direct du régime critique.
+      - id: B
+        text: >-
+          Celui du fluide 3 (régime apériodique), car plus de frottement
+          ramène toujours plus vite vers l'équilibre.
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: >
+          C'est l'inverse au-delà du régime critique : un amortissement
+          plus fort que le critique ralentit lui-même le retour (le
+          pendule « patauge » dans un fluide trop visqueux). Le fluide 3
+          est justement décrit comme le plus lent des trois.
+      - id: C
+        text: >-
+          Les trois atteignent l'équilibre exactement en même temps ; seul
+          le chemin suivi diffère.
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: >
+          Le temps de retour à l'équilibre dépend bel et bien de
+          l'amortissement, et de façon non monotone : il diminue jusqu'au
+          régime critique, puis réaugmente au-delà. Les trois pendules
+          décrits n'ont pas le même temps de stabilisation.
+      - id: D
+        text: >-
+          Celui du fluide 2 (régime critique) : c'est le cas-limite qui
+          revient le plus vite, sans dépassement.
+        correct: true
+    correct_feedback: >
+      Le régime critique est le cas-limite qui sépare le pseudo-périodique
+      (retour retardé par les oscillations) de l'apériodique (retour
+      retardé par un frottement trop fort) : c'est lui qui atteint
+      l'équilibre le plus rapidement des trois.
+    solution: |
+      **Fluide 1 (pseudo-périodique) :** le pendule doit osciller plusieurs
+      fois, en s'amortissant, avant de s'immobiliser — un détour qui prend
+      du temps.
+
+      **Fluide 3 (apériodique) :** retour direct, mais ralenti par un
+      frottement trop important.
+
+      **Fluide 2 (critique) :** le compromis exact entre les deux effets —
+      retour direct, sans le frein d'un excès de frottement : c'est le plus
+      rapide des trois.
+
+  - id: SO-30
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, energie, bilan_energetique, application_experimentale, document_experimental]
+    stem: >
+      On trace l'énergie mécanique $E_m(t)$ d'un pendule élastique
+      horizontal soumis à un frottement fluide, sans aucun dispositif
+      d'entretien. La courbe obtenue décroît régulièrement vers zéro. Que
+      peut-on prévoir de cette courbe si l'on prolonge l'enregistrement
+      suffisamment longtemps ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $E_m$ va forcément remonter à un moment donné, car un système
+          physique ne peut pas perdre indéfiniment de l'énergie.
+        correct: false
+        misconception: M-OSC-AMO-3
+        feedback: >
+          Un système isolé (sans apport extérieur) peut au contraire perdre
+          de l'énergie jusqu'à épuisement complet de son mouvement : rien
+          n'oblige $E_m$ à remonter. Seul un dispositif d'entretien
+          extérieur pourrait provoquer une remontée — absent ici.
+      - id: B
+        text: >-
+          $E_m$ va se stabiliser à une valeur non nulle et rester constante
+          indéfiniment, sans jamais s'annuler.
+        correct: false
+        misconception: M-OSC-AMO-3
+        feedback: >
+          Tant que le solide bouge encore, le frottement continue de
+          dissiper de l'énergie : il n'existe aucun palier non nul où la
+          dissipation s'arrêterait spontanément. Supposer un tel palier
+          revient à supposer, implicitement, un apport qui compenserait la
+          perte — exactement le rôle d'un dispositif d'entretien, absent
+          ici.
+      - id: C
+        text: >-
+          $E_m$ continue de décroître, sans jamais remonter, jusqu'à
+          devenir quasi nulle : le solide finit par s'immobiliser à
+          l'équilibre.
+        correct: true
+      - id: D
+        text: >-
+          $E_m$ oscille indéfiniment entre une valeur haute et une valeur
+          basse, sans jamais décroître en moyenne.
+        correct: false
+        misconception: M-OSC-AMO-3
+        feedback: >
+          C'est l'échange $E_c \leftrightarrow E_{pe}$ (à énergie totale
+          fixée) qui oscille dans le cas SANS frottement. Ici, avec
+          frottement, c'est la somme $E_m = E_c + E_{pe}$ elle-même qui
+          diminue en moyenne, cycle après cycle — pas seulement sa
+          répartition entre les deux réservoirs.
+    correct_feedback: >
+      Sans dispositif d'entretien, rien ne peut compenser la dissipation
+      par frottement : $E_m$ décroît de façon monotone vers zéro, et le
+      solide s'immobilise à l'équilibre.
+    solution: |
+      Le frottement dissipe de l'énergie tant qu'il y a du mouvement ; il
+      n'existe aucun mécanisme, dans ce système isolé, pour interrompre
+      cette perte avant l'arrêt complet. $E_m(t)$ décroît donc de façon
+      monotone vers zéro — jamais de remontée, jamais de palier non nul,
+      jamais d'oscillation autour d'une moyenne constante.
+
+  - id: SO-31
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, pseudo_periode, pendule_simple, utilisation]
+    stem: >
+      Un pendule simple oscille dans l'air (frottement très faible), aux
+      petites oscillations. Un
+      élève, en observant que l'amplitude a nettement diminué après
+      quelques minutes, affirme : « Comme l'amplitude a diminué de moitié,
+      la pseudo-période a dû, elle aussi, diminuer d'environ moitié. »
+      Cette affirmation est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : pour un amortissement faible, la pseudo-période $T$ reste voisine de
+          $T_0=2\pi\sqrt{L/g}$, quelle que soit la décroissance de l'amplitude.
+        correct: true
+      - id: B
+        text: >-
+          Oui, car l'amplitude et la pseudo-période sont deux mesures d'un seul et même
+          phénomène de décroissance du mouvement.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          Ce sont deux grandeurs distinctes, gouvernées par des termes
+          différents de l'équation du mouvement amorti : l'amplitude
+          décroît sous l'effet du frottement, tandis que la pseudo-période
+          reste fixée, pour un amortissement faible, par $L$ et $g$ (comme
+          $T_0$), pas par le frottement.
+      - id: C
+        text: >-
+          Oui, mais dans l'autre sens : une amplitude divisée par deux entraîne une
+          pseudo-période multipliée par deux.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          Même erreur, dans l'autre sens : cela suppose encore un lien
+          direct entre amplitude et pseudo-période, qui n'existe pas pour
+          un amortissement faible. $T$ reste voisine de $T_0$, quelle que
+          soit l'ampleur de la décroissance de l'amplitude.
+      - id: D
+        text: >-
+          On ne peut rien en dire : un pendule qui perd de l'amplitude n'a déjà plus de
+          période clairement définie.
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          Le régime pseudo-périodique garde une pseudo-période bien
+          définie et mesurable, précisément parce que les passages par les
+          extrêmes restent régulièrement espacés, même si leur hauteur
+          diminue.
+    correct_feedback: >
+      L'amplitude et la pseudo-période obéissent à des mécanismes
+      différents : la première décroît sous l'effet du frottement, la
+      seconde reste voisine de $T_0$ tant que l'amortissement est faible.
+      L'affirmation de l'élève fusionne à tort les deux.
+    solution: |
+      Dans l'équation amortie du pendule simple, le terme de frottement
+      agit sur la décroissance de l'amplitude, pas sur le terme de rappel
+      qui fixe le rythme ($g/L$). Pour un amortissement faible,
+      $$T \approx T_0 = 2\pi\sqrt{\frac{L}{g}}$$
+      quelle que soit l'ampleur de la décroissance de l'amplitude observée.
+
+  - id: SO-32
+    rung: "R6"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, regimes, pendule_pesant, application_experimentale]
+    stem: >
+      Un pendule pesant est lâché deux fois du même angle, avec deux
+      réglages d'amortissement différents. Réglage 1 : le solide revient à
+      l'équilibre sans jamais le dépasser, en $2{,}4\ \text{s}$. Réglage 2 :
+      le solide revient à l'équilibre sans jamais le dépasser non plus,
+      mais en seulement $1{,}1\ \text{s}$. Que peut-on en conclure sur ces
+      deux réglages ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le réglage 1, plus lent, est forcément le régime critique, car
+          « critique » signifie « qui prend le plus de temps à se
+          stabiliser ».
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: >
+          C'est l'inverse : le régime critique est le cas-limite le plus
+          RAPIDE parmi les régimes non oscillants, pas le plus lent. Un
+          retour sans dépassement mais lent (réglage 1) signale au
+          contraire un amortissement plus fort que le critique
+          (apériodique).
+      - id: B
+        text: >-
+          C'est impossible : deux réglages sans aucune oscillation sont
+          nécessairement identiques ; seul le régime pseudo-périodique peut
+          varier en durée.
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: >
+          Il existe une famille entière de réglages sans oscillation, du
+          régime critique (le plus rapide) aux réglages de plus en plus
+          apériodiques (de plus en plus lents à mesure que le frottement
+          augmente) : l'absence d'oscillation ne signifie pas l'identité
+          des temps de retour.
+      - id: C
+        text: >-
+          Le réglage le plus rapide (réglage 2) est forcément le plus
+          fortement amorti, car plus de frottement fait toujours revenir
+          plus vite vers l'équilibre.
+        correct: false
+        misconception: M-OSC-AMO-2
+        feedback: >
+          « Plus de frottement = toujours plus vite » n'est vrai que
+          jusqu'au régime critique ; au-delà, plus de frottement ralentit
+          le retour. Le réglage le plus rapide des deux est donc le plus
+          proche du critique, pas nécessairement le plus amorti des deux.
+      - id: D
+        text: >-
+          Le réglage 2 est plus proche du régime critique — le retour le plus rapide
+          sans aucune oscillation ; le réglage 1, plus lent, correspond à un
+          amortissement plus fort.
+        correct: true
+    correct_feedback: >
+      Parmi les régimes sans oscillation, le retour le plus rapide est
+      celui du régime critique ; un retour plus lent, toujours sans
+      dépassement, signale un amortissement plus fort que le critique
+      (apériodique) — pas l'inverse.
+    solution: |
+      Le temps de retour à l'équilibre, parmi les régimes non oscillants,
+      est minimal au régime critique et croît à mesure que l'amortissement
+      s'en éloigne (vers l'apériodique). Le réglage 2 ($1{,}1\ \text{s}$,
+      plus rapide) est donc le plus proche du critique ; le réglage 1
+      ($2{,}4\ \text{s}$, plus lent) est plus fortement amorti que le
+      critique.
+
+  - id: SO-33
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, energie, entretien, pendule_torsion, resolution]
+    stem: >
+      Un pendule de torsion oscille avec un frottement non négligeable,
+      sans aucun dispositif d'entretien. Après quelques dizaines
+      d'oscillations, l'amplitude est devenue très faible. Un élève
+      propose : « Il suffit d'attendre encore un peu : le fil, en se
+      détordant, va relâcher l'énergie qu'il avait emmagasinée au début et
+      relancer les oscillations. » Que penser de cette proposition ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elle est vraie : le fil accumule de l'énergie de torsion au fil des cycles
+          successifs, énergie qu'il finira nécessairement par restituer d'un seul coup.
+        correct: false
+        misconception: M-OSC-AMO-3
+        feedback: >
+          Le fil ne fait qu'échanger, à chaque cycle, son énergie de
+          torsion contre de l'énergie cinétique (et réciproquement) — il
+          n'en accumule pas de réserve supplémentaire d'un cycle à l'autre.
+          C'est justement cet échange, de plus en plus faible, qui
+          s'amortit.
+      - id: B
+        text: >-
+          Elle est vraie, car l'amortissement observé n'est qu'une pause temporaire
+          avant que le système ne reparte de lui-même dans un nouveau cycle.
+        correct: false
+        misconception: M-OSC-AMO-3
+        feedback: >
+          L'amortissement n'est pas une pause : c'est une perte
+          irréversible d'énergie mécanique, dissipée en chaleur par
+          frottement. Rien, dans ce mécanisme, ne prépare un « redépart »
+          futur du système livré à lui-même.
+      - id: C
+        text: >-
+          Elle est fausse : l'énergie du fil est déjà restituée en énergie cinétique à
+          chaque passage par l'équilibre, cycle après cycle — c'est cet échange qui
+          s'amortit.
+        correct: true
+      - id: D
+        text: >-
+          Elle est fausse, mais seulement parce que le fil a fini par se casser ; en
+          théorie, l'énergie serait bien restituée intégralement au système.
+        correct: false
+        misconception: M-OSC-AMO-3
+        feedback: >
+          Aucune casse n'est en jeu ici : c'est le mécanisme même de
+          l'amortissement (le frottement, qui dissipe de l'énergie à
+          chaque cycle) qui rend la restitution impossible, indépendamment
+          de tout dommage matériel sur le fil.
+    correct_feedback: >
+      À chaque cycle, l'énergie de torsion du fil est déjà restituée en
+      énergie cinétique au passage par l'équilibre — c'est l'échange
+      normal d'un oscillateur. Le frottement grignote cet échange cycle
+      après cycle ; il n'existe pas de réserve cachée que le fil
+      « garderait » pour plus tard.
+    solution: |
+      Le fil de torsion échange son énergie potentielle avec l'énergie
+      cinétique du disque à chaque quart de période, comme dans tout
+      oscillateur — ce n'est pas une accumulation. Le frottement prélève
+      une petite fraction de l'énergie totale à chaque cycle : c'est cette
+      fuite progressive, et non une réserve cachée dans le fil, qui explique
+      la décroissance de l'amplitude jusqu'à l'arrêt.
+
+  - id: SO-34
+    rung: "R7"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [resonance, condition_resonance, excitateur_resonateur, utilisation]
+    stem: >
+      Un résonateur de fréquence propre $f_0$ est forcé par un excitateur
+      de fréquence $f_{exc}$ réglable. Pour quelle valeur de $f_{exc}$
+      l'amplitude des oscillations du résonateur est-elle maximale ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $f_{exc} \approx f_0$ : c'est la condition de résonance du système forcé.
+        correct: true
+      - id: B
+        text: >-
+          Pour $f_{exc}$ la plus grande possible.
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: >
+          Une amplitude maximale ne vient pas d'un excitateur « rapide »,
+          mais d'une coïncidence de fréquences : au-delà de $f_0$,
+          l'amplitude retombe au contraire, elle ne continue pas de
+          croître avec $f_{exc}$.
+      - id: C
+        text: >-
+          Pour n'importe quelle $f_{exc}$, si on attend suffisamment
+          longtemps.
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: >
+          Le temps d'attente ne remplace pas la coïncidence de fréquences :
+          loin de $f_0$, l'amplitude du résonateur reste petite, aussi
+          longtemps qu'on excite le système à cette fréquence-là.
+      - id: D
+        text: >-
+          Pour $f_{exc}$ la plus petite possible.
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: >
+          Symétrique de l'erreur « le plus vite » : ici aussi, ce n'est ni
+          la fréquence la plus basse ni la plus haute qui maximise
+          l'amplitude, mais celle qui coïncide avec $f_0$.
+    correct_feedback: >
+      L'amplitude du résonateur culmine quand l'excitateur pousse au même
+      rythme que la fréquence propre du résonateur : $f_{exc} \approx f_0$
+      — ni la plus haute, ni la plus basse fréquence, mais celle qui
+      coïncide.
+    solution: |
+      À chaque cycle, l'excitateur transmet de l'énergie au résonateur.
+      Quand $f_{exc} \approx f_0$, ces apports arrivent en phase avec le
+      mouvement propre du résonateur et s'accumulent efficacement : c'est
+      la condition de résonance. Loin de $f_0$, les apports sont
+      partiellement désynchronisés et l'amplitude reste faible.
+
+  - id: SO-35
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: pc_systemes_oscillants
+    tags: [resonance, amortissement, acuite, application_experimentale, document_experimental]
+    stem: >
+      On trace, pour un même résonateur, la courbe amplitude = $f(f_{exc})$
+      dans deux conditions : (1) frottements faibles, (2) frottements
+      forts. Laquelle des deux courbes présente le pic le plus haut et le
+      plus étroit, et comment nomme-t-on cette résonance ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La courbe à frottements forts ; résonance aiguë.
+        correct: false
+        misconception: M-OSC-RES-2
+        feedback: >
+          C'est l'inverse : un amortissement fort abaisse et élargit le
+          pic (résonance floue), il ne le rend jamais plus haut ni plus
+          étroit.
+      - id: B
+        text: >-
+          La courbe à frottements faibles ; résonance aiguë.
+        correct: true
+      - id: C
+        text: >-
+          La courbe à frottements forts, car un fort amortissement
+          concentre l'énergie sur $f_0$.
+        correct: false
+        misconception: M-OSC-RES-2
+        feedback: >
+          Le frottement dissipe de l'énergie à chaque cycle, il n'en
+          « concentre » aucune : plus le frottement est fort, plus il faut
+          une large plage de $f_{exc}$ pour entretenir une amplitude
+          notable, d'où un pic bas et large, pas concentré.
+      - id: D
+        text: >-
+          Les deux courbes ont le même pic ; l'amortissement ne change que
+          la position de $f_0$.
+        correct: false
+        misconception: [M-OSC-RES-2, M-OSC-RES-3]
+        feedback: >
+          Double erreur : l'amortissement change la hauteur et la largeur
+          du pic (pas son existence), et $f_0$ est une propriété fixe du
+          résonateur (fixée par $m,k$ ou $J,C$) — elle ne se déplace
+          jamais, quel que soit le frottement.
+    correct_feedback: >
+      Un amortissement faible donne un pic haut et étroit (résonance
+      aiguë) ; un amortissement fort donne un pic bas et large (résonance
+      floue). L'amortissement émousse toujours la résonance, il ne la
+      concentre jamais.
+    solution: |
+      L'amplitude à l'équilibre est atteinte quand l'énergie dissipée par
+      frottement sur un cycle égale l'énergie injectée par l'excitateur.
+      Faible amortissement → cet équilibre n'est atteint qu'à très grande
+      amplitude, et seulement tout près de $f_0$ → pic haut et étroit.
+      Fort amortissement → équilibre atteint à amplitude modeste, sur une
+      large plage de $f_{exc}$ → pic bas et large.
+
+  - id: SO-36
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [resonance, excitateur_resonateur, utilisation]
+    stem: >
+      À la résonance, on observe que le résonateur oscille avec une très
+      grande amplitude. Que peut-on dire des fréquences en jeu ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le résonateur oscille à sa fréquence propre $f_0$, qui a augmenté jusqu'à
+          rejoindre celle imposée par l'excitateur.
+        correct: false
+        misconception: M-OSC-RES-3
+        feedback: >
+          $f_0$ est fixée par les caractéristiques du résonateur ($m,k$ ou
+          $J,C$) : elle ne « bouge » jamais pour rejoindre quoi que ce
+          soit. C'est au contraire l'excitateur qui règle $f_{exc}$ pour
+          la rapprocher de $f_0$.
+      - id: B
+        text: >-
+          C'est le résonateur qui impose sa propre fréquence à l'excitateur, et non
+          l'inverse comme on pourrait le croire.
+        correct: false
+        misconception: M-OSC-RES-3
+        feedback: >
+          Les rôles sont inversés : c'est l'excitateur qui impose une
+          fréquence réglable $f_{exc}$ au résonateur ; le résonateur, lui,
+          garde sa fréquence propre fixe $f_0$ — il ne pilote rien de
+          l'extérieur.
+      - id: C
+        text: >-
+          Le résonateur oscille à la fréquence imposée par l'excitateur
+          ($f_{exc}$), et cette $f_{exc}$ est proche de sa fréquence propre
+          $f_0$, qui elle reste fixe.
+        correct: true
+      - id: D
+        text: >-
+          Les deux oscillent à des fréquences sans aucun rapport entre elles ; la grande
+          amplitude vient seulement de la puissance de l'excitateur.
+        correct: false
+        misconception: [M-OSC-RES-1, M-OSC-RES-3]
+        feedback: >
+          Double erreur : la grande amplitude ne vient pas de la
+          « puissance » de l'excitateur mais de la coïncidence des
+          fréquences, et les deux fréquences ne sont justement pas « sans
+          rapport » à la résonance — $f_{exc}$ y est au contraire proche de
+          $f_0$.
+    correct_feedback: >
+      En régime établi, le résonateur oscille à la fréquence imposée par
+      l'excitateur ($f_{exc}$) ; l'amplitude est grande précisément parce
+      que cette $f_{exc}$ coïncide avec la fréquence propre fixe $f_0$ du
+      résonateur.
+    solution: |
+      L'excitateur impose $f_{exc}$ (réglable) ; le résonateur, en régime
+      établi, suit cette fréquence imposée. Sa fréquence PROPRE $f_0$, elle,
+      reste une caractéristique fixe du résonateur (fixée par $m,k$ ou
+      $J,C$), qui ne se déplace jamais. La grande amplitude observée
+      signale que $f_{exc}$ a rejoint ce $f_0$ fixe — pas l'inverse.
+
+  - id: SO-37
+    rung: "R7"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [resonance, condition_resonance, application_experimentale, document_experimental]
+    stem: |
+      Pour un résonateur de fréquence propre $f_0 = 2{,}0\ \text{Hz}$, on
+      relève l'amplitude des oscillations pour différentes fréquences
+      d'excitation :
+
+      | $f_{exc}$ (Hz) | 1,0 | 1,6 | 1,9 | 2,0 | 2,1 | 3,0 |
+      |---|---|---|---|---|---|---|
+      | Amplitude (cm) | 0,4 | 1,1 | 3,8 | 5,2 | 3,6 | 0,3 |
+
+      D'après ce tableau, à quelle fréquence d'excitation le résonateur
+      atteint-il sa plus grande amplitude, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          À $f_{exc}=3{,}0\ \text{Hz}$, car c'est la fréquence la plus
+          élevée du tableau.
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: >
+          Le tableau montre au contraire l'amplitude la plus faible
+          ($0{,}3\ \text{cm}$) à cette fréquence : « le plus élevé » n'est
+          pas le bon critère, c'est la coïncidence avec $f_0$ qui compte,
+          et $3{,}0\ \text{Hz}$ en est la plus éloignée du tableau.
+      - id: B
+        text: >-
+          L'amplitude devrait continuer à croître au-delà de
+          $f_{exc}=3{,}0\ \text{Hz}$ si on poursuivait l'essai à des
+          fréquences encore plus hautes.
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: >
+          Le tableau montre au contraire une amplitude déjà en chute nette
+          entre $2{,}1$ et $3{,}0\ \text{Hz}$ : rien n'indique une reprise
+          de la croissance au-delà, bien au contraire — la tendance est
+          à la baisse continue, loin de $f_0$.
+      - id: C
+        text: >-
+          On ne peut pas le dire sans savoir combien de temps a duré
+          chaque essai ; en attendant assez longtemps à n'importe quelle
+          fréquence, l'amplitude finirait par y culminer.
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: >
+          Le tableau lui-même donne la réponse, sans besoin de connaître
+          la durée des essais : c'est la coïncidence entre $f_{exc}$ et
+          $f_0$ qui détermine où l'amplitude culmine, pas le temps
+          d'attente à une fréquence quelconque.
+      - id: D
+        text: >-
+          À $f_{exc}=2{,}0\ \text{Hz}$, car cette valeur coïncide avec
+          $f_0$ : l'amplitude est maximale exactement autour de cette
+          fréquence, et décroît de part et d'autre.
+        correct: true
+    correct_feedback: >
+      Le tableau montre un maximum net ($5{,}2\ \text{cm}$) à
+      $f_{exc}=2{,}0\ \text{Hz}$, exactement là où $f_{exc}$ coïncide avec
+      $f_0$ ; l'amplitude décroît nettement de part et d'autre de cette
+      valeur.
+    solution: |
+      L'amplitude croît de $1{,}0$ à $2{,}0\ \text{Hz}$
+      ($0{,}4 \to 5{,}2\ \text{cm}$), culmine à $f_{exc}=f_0=2{,}0\
+      \text{Hz}$, puis redécroît jusqu'à $3{,}0\ \text{Hz}$
+      ($3{,}6 \to 0{,}3\ \text{cm}$) : c'est la signature expérimentale de
+      la condition de résonance $f_{exc} \approx f_0$.
+
+  - id: SO-38
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [resonance, amortissement, acuite, resolution]
+    stem: >
+      Deux résonateurs identiques (même $f_0$) sont testés : le premier est
+      immergé dans l'air (frottement très faible), le second dans l'huile
+      (frottement important). On balaie $f_{exc}$ autour de $f_0$ pour
+      chacun. Lequel présente une résonance floue (pic bas et étalé sur une
+      large plage de fréquences) ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le second, dans l'huile : un amortissement fort étale le pic de résonance et
+          en abaisse le sommet.
+        correct: true
+      - id: B
+        text: >-
+          Le premier (dans l'air), car un amortissement faible laisse le
+          système « flotter » sur une large plage de fréquences.
+        correct: false
+        misconception: M-OSC-RES-2
+        feedback: >
+          C'est l'inverse : un amortissement faible donne au contraire un
+          pic haut et ÉTROIT (résonance aiguë), concentré tout près de
+          $f_0$ — pas une réponse étalée sur une large plage.
+      - id: C
+        text: >-
+          Les deux présentent une résonance tout aussi aiguë ; seul le
+          frottement change l'amplitude absolue, pas la largeur du pic.
+        correct: false
+        misconception: M-OSC-RES-2
+        feedback: >
+          Le frottement ne change pas seulement la hauteur du pic : il en
+          change aussi la largeur. Plus l'amortissement est fort, plus il
+          faut s'écarter de $f_0$ que l'amplitude reste notable — d'où un
+          pic plus large, pas seulement plus bas.
+      - id: D
+        text: >-
+          Le second, mais uniquement parce que l'huile modifie $f_0$ du
+          résonateur, pas à cause de l'amortissement lui-même.
+        correct: false
+        misconception: [M-OSC-RES-2, M-OSC-RES-3]
+        feedback: >
+          $f_0$ est une propriété fixe du résonateur ($m,k$ ou $J,C$), pas
+          du fluide environnant : l'huile ne la modifie pas. C'est bien
+          l'amortissement lui-même (le frottement fluide) qui élargit et
+          abaisse le pic, indépendamment de toute variation de $f_0$.
+    correct_feedback: >
+      Un fort amortissement (l'huile) élargit et abaisse le pic de
+      résonance : le second résonateur présente donc la résonance floue,
+      pendant que le premier (dans l'air, faiblement amorti) garde une
+      résonance aiguë.
+    solution: |
+      L'amplitude à l'équilibre résulte d'une balance entre énergie
+      injectée par l'excitateur et énergie dissipée par frottement. Un
+      frottement fort (huile) dissipe beaucoup à chaque cycle : la balance
+      se fait à amplitude modeste, sur une plage large de $f_{exc}$
+      — résonance floue. Un frottement faible (air) dissipe peu : la
+      balance ne se fait qu'à grande amplitude, tout près de $f_0$
+      — résonance aiguë.
+
+  - id: SO-39
+    rung: "R7"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [resonance, excitateur_resonateur, pendule_simple, utilisation]
+    stem: >
+      Un moteur à vitesse réglable fait vibrer, via un excentrique, le
+      support d'un pendule simple de longueur $L$ fixe, oscillant à petite
+      amplitude. On fait varier la
+      vitesse du moteur et on observe l'amplitude du pendule. Lequel des
+      deux éléments a une fréquence propre fixe, et lequel a une fréquence
+      réglable ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le moteur a une fréquence fixe, imposée par sa construction ;
+          c'est le pendule qui doit ajuster sa longueur effective pour
+          suivre.
+        correct: false
+        misconception: M-OSC-RES-3
+        feedback: >
+          Les rôles sont inversés : c'est précisément parce que le moteur
+          est réglable qu'on peut faire varier $f_{exc}$ pour chercher la
+          résonance. Le pendule, lui, garde sa longueur $L$ fixe pendant
+          l'essai — c'est lui qui a la fréquence propre fixe.
+      - id: B
+        text: >-
+          Le pendule simple (résonateur) a une fréquence propre fixe
+          $f_0=\frac{1}{2\pi}\sqrt{g/L}$, fixée par $L$ ; le moteur
+          (excitateur) impose une fréquence $f_{exc}$ réglable.
+        correct: true
+      - id: C
+        text: >-
+          Les deux ont une fréquence réglable : on peut aussi changer $L$
+          en cours d'expérience pour accorder le pendule.
+        correct: false
+        misconception: M-OSC-RES-3
+        feedback: >
+          Dans ce montage, $L$ reste fixe pendant le balayage de
+          $f_{exc}$ : le pendule est le résonateur, à fréquence propre
+          fixe, et c'est justement en gardant $L$ fixe qu'on peut observer
+          la résonance en balayant la fréquence du moteur.
+      - id: D
+        text: >-
+          Aucun des deux n'a de fréquence propre au sens strict ; seule la
+          fréquence du mouvement final, commune aux deux, compte.
+        correct: false
+        misconception: M-OSC-RES-3
+        feedback: >
+          Le pendule a une fréquence propre bien définie,
+          $f_0=\frac{1}{2\pi}\sqrt{g/L}$, indépendante du moteur ; c'est
+          justement parce que cette fréquence propre existe et reste fixe
+          qu'on peut chercher la valeur de $f_{exc}$ qui la rejoint.
+    correct_feedback: >
+      Le pendule (résonateur) garde sa fréquence propre fixe $f_0$, fixée
+      par $L$ ; le moteur (excitateur) impose une fréquence $f_{exc}$
+      réglable, que l'on balaie pour chercher la coïncidence
+      $f_{exc} \approx f_0$.
+    solution: |
+      $$f_0 = \frac{1}{2\pi}\sqrt{\frac{g}{L}} \quad \text{(fixe, tant que } L \text{ ne change pas)}$$
+      Le moteur, via l'excentrique, impose au support une vibration à
+      $f_{exc}$, réglable indépendamment de $L$. La résonance survient
+      quand $f_{exc}$ rejoint ce $f_0$ fixe — jamais l'inverse.
+
+  - id: SO-40
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [resonance, condition_resonance, application_experimentale, document_experimental]
+    stem: >
+      La courbe expérimentale amplitude = $f(f_{exc})$ d'un résonateur
+      présente un seul pic net, situé à $f_{exc} = 3{,}5\ \text{Hz}$, avec
+      des amplitudes faibles avant et après ce pic. Que peut-on en déduire
+      sur la fréquence propre $f_0$ du résonateur ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          On ne peut rien en déduire sur $f_0$ ; le pic indique seulement
+          la fréquence à laquelle l'excitateur a le plus « travaillé ».
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: >
+          C'est justement la position du pic qui révèle $f_0$ : l'amplitude
+          du résonateur est maximale quand $f_{exc}$ coïncide avec sa
+          fréquence propre, pas quand l'excitateur « travaille » plus ou
+          moins fort.
+      - id: B
+        text: >-
+          $f_0$ est forcément supérieure à $3{,}5\ \text{Hz}$, puisque
+          l'amplitude semble encore vouloir augmenter juste avant le
+          maximum observé.
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: >
+          Le maximum observé EST le pic de résonance : au-delà, la courbe
+          redescend (amplitudes faibles après le pic, précisé dans
+          l'énoncé). Rien n'indique une croissance qui se poursuivrait
+          au-delà de $3{,}5\ \text{Hz}$.
+      - id: C
+        text: >-
+          $f_0 \approx 3{,}5\ \text{Hz}$ : le pic de la courbe expérimentale
+          se situe exactement là où $f_{exc}$ coïncide avec la fréquence
+          propre du résonateur.
+        correct: true
+      - id: D
+        text: >-
+          $f_0$ ne peut pas être déterminée à partir d'une courbe
+          amplitude-fréquence ; seule une mesure directe de la période
+          propre du résonateur seul le permettrait.
+        correct: false
+        misconception: M-OSC-RES-1
+        feedback: >
+          C'est au contraire l'intérêt de la courbe de résonance : la
+          position de son pic donne directement $f_0$, sans avoir besoin
+          d'isoler le résonateur pour mesurer sa période propre
+          séparément.
+    correct_feedback: >
+      Le pic de la courbe amplitude-fréquence marque exactement la
+      coïncidence $f_{exc} \approx f_0$ : sa position, $3{,}5\ \text{Hz}$,
+      donne directement la fréquence propre du résonateur.
+    solution: |
+      L'amplitude du résonateur est maximale quand $f_{exc} \approx f_0$ :
+      la position du pic de la courbe expérimentale amplitude-fréquence
+      est donc, par définition de la condition de résonance, une mesure de
+      $f_0$. Ici, $f_0 \approx 3{,}5\ \text{Hz}$.
+
+  - id: SO-41
+    rung: "R7"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [resonance, amortissement, acuite, resolution]
+    stem: >
+      On amortit fortement un premier résonateur et très faiblement un
+      second, tous deux de même $f_0$. On mesure la plage de fréquences
+      $f_{exc}$ pour laquelle l'amplitude dépasse la moitié de sa valeur
+      maximale (« largeur du pic »). Comparez ces deux plages.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La plage est plus étroite pour le résonateur fortement amorti,
+          car le frottement resserre la réponse autour de $f_0$.
+        correct: false
+        misconception: M-OSC-RES-2
+        feedback: >
+          C'est l'inverse : le frottement élargit la plage utile, il ne la
+          resserre jamais. Un fort amortissement donne une résonance
+          floue, étalée sur une large plage de $f_{exc}$.
+      - id: B
+        text: >-
+          Les deux plages sont nécessairement identiques : la largeur du
+          pic ne dépend que de $f_0$, pas de l'amortissement.
+        correct: false
+        misconception: M-OSC-RES-2
+        feedback: >
+          La largeur du pic dépend au contraire directement de
+          l'amortissement, pas seulement de $f_0$ : c'est justement ce qui
+          distingue une résonance aiguë d'une résonance floue pour deux
+          résonateurs de même $f_0$.
+      - id: C
+        text: >-
+          La plage est plus large pour le résonateur faiblement amorti,
+          car il « explore » plus de fréquences avant de se stabiliser sur
+          $f_0$.
+        correct: false
+        misconception: M-OSC-RES-2
+        feedback: >
+          C'est l'inverse (et la justification imaginée n'a pas de sens
+          physique ici) : un amortissement faible donne au contraire une
+          plage ÉTROITE (résonance aiguë), concentrée tout près de $f_0$.
+      - id: D
+        text: >-
+          La plage est plus large pour le résonateur fortement amorti
+          (résonance floue) et plus étroite pour le résonateur faiblement
+          amorti (résonance aiguë).
+        correct: true
+    correct_feedback: >
+      Un amortissement fort élargit la plage de fréquences où l'amplitude
+      reste notable (résonance floue) ; un amortissement faible la
+      resserre tout près de $f_0$ (résonance aiguë).
+    solution: |
+      La largeur du pic de résonance croît avec l'amortissement : plus le
+      frottement est fort, plus il faut s'écarter de $f_0$ pour que
+      l'amplitude retombe sous la moitié du maximum, d'où une plage large
+      (résonance floue) pour le résonateur fortement amorti, et une plage
+      étroite (résonance aiguë) pour le résonateur faiblement amorti.
+
+  # ── Deux items ajoutés le 2026-09-05 pour amener au plancher les quatre
+  #    familles qui y siégeaient en dessous : M-OSC-EQD-1 (1 item),
+  #    M-OSC-PHASE-1 (1), M-OSC-LIBRE-1 (2), M-OSC-RAID-1 (2). Le résumé de
+  #    couverture en fin de fichier annonçait `floor_met: true` en ne comptant
+  #    que les six ids AMO/RES du cluster amortissement-résonance, décrits comme
+  #    « le seul inventaire tagué de la notion » — ce qui avait cessé d'être
+  #    vrai. Voir web/scripts/resume-couverture.mjs, qui garde désormais l'écart
+  #    entre ce qu'un fichier affirme et ce qu'il contient.
+  - id: SO-42
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_systemes_oscillants
+    tags: [conditions_initiales, phase_a_l_origine, equation_differentielle]
+    stem: >
+      Un solide accroché à un ressort horizontal de raideur $k$ est lancé à
+      $t = 0$ depuis sa position d'ÉQUILIBRE, avec une vitesse dirigée dans le
+      sens positif de l'axe. On écrit son mouvement sous la forme
+      $x(t) = X_m\cos(\omega_0 t + \varphi)$. Quelle proposition est
+      entièrement correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\varphi = -\\dfrac{\\pi}{2}$, et $x(t)$ vérifie $\\ddot{x} + \\dfrac{k}{m}x = 0$, soit $x(t) = X_m\\sin(\\omega_0 t)$ avec $\\omega_0 = \\sqrt{k/m}$"
+        correct: true
+      - id: B
+        text: >-
+          $\varphi = +\dfrac{\pi}{2}$, et $x(t)$ vérifie
+          $\ddot{x} + \dfrac{k}{m}x = 0$ : le sens du lancer ne change pas le
+          signe de la phase
+        correct: false
+        misconception: M-OSC-PHASE-1
+        feedback: >
+          Le sens du lancer est justement ce qui fixe le signe. Avec
+          $\varphi = +\pi/2$, on aurait $\dot{x}(0) = -X_m\omega_0 < 0$ : le
+          solide partirait dans le sens NÉGATIF. Les deux conditions initiales
+          se lisent ensemble — $x(0) = 0$ donne $\varphi = \pm\pi/2$, et
+          $\dot{x}(0) > 0$ tranche pour $-\pi/2$.
+      - id: C
+        text: >-
+          $\varphi = -\dfrac{\pi}{2}$, et $x(t)$ vérifie
+          $\ddot{x} - \dfrac{k}{m}x = 0$, le signe moins traduisant le rappel
+          qui s'oppose au mouvement
+        correct: false
+        misconception: M-OSC-EQD-1
+        feedback: >
+          Le signe « moins » du rappel est déjà passé de l'autre côté de
+          l'égalité : $m\ddot{x} = -kx$ s'écrit $\ddot{x} + \frac{k}{m}x = 0$,
+          avec un PLUS. Avec un moins, les solutions seraient des
+          exponentielles réelles — un écart qui s'emballe, jamais une
+          oscillation.
+      - id: D
+        text: >-
+          $\varphi = -\dfrac{\pi}{2}$ et $\ddot{x} + \dfrac{k}{m}x = 0$, mais
+          avec un ressort plus raide la pulsation $\omega_0$ serait plus petite
+        correct: false
+        misconception: M-OSC-RAID-1
+        feedback: >
+          Les deux premières affirmations sont justes, la troisième non.
+          $\omega_0 = \sqrt{k/m}$ : la raideur est au NUMÉRATEUR. Un ressort
+          plus raide rappelle plus fort, donc oscille plus vite — pulsation
+          plus grande, période plus courte. L'intuition « plus dur à déformer,
+          donc plus lent » confond la force qu'il faut exercer et la vitesse
+          du retour à l'équilibre.
+    correct_feedback: >
+      $x(0) = 0$ impose $\cos\varphi = 0$, donc $\varphi = \pm\pi/2$ ; le sens
+      du lancer, $\dot{x}(0) > 0$, tranche pour $\varphi = -\pi/2$. Et la
+      deuxième loi de Newton projetée sur l'axe donne
+      $\ddot{x} + \frac{k}{m}x = 0$, avec un PLUS devant le terme de rappel.
+    solution: |
+      **L'équation différentielle.** La seule force selon $(Ox)$ est le
+      rappel $-kx$ (poids et réaction se compensent verticalement) :
+      $$
+      m\ddot{x} = -kx \quad\Longrightarrow\quad
+      \ddot{x} + \frac{k}{m}x = 0, \qquad \omega_0 = \sqrt{\frac{k}{m}}
+      $$
+      **La phase.** Les deux conditions initiales se lisent ensemble :
+      $$
+      x(0) = X_m\cos\varphi = 0 \quad\Longrightarrow\quad
+      \varphi = \pm\frac{\pi}{2}
+      $$
+      $$
+      \dot{x}(0) = -X_m\omega_0\sin\varphi > 0 \quad\Longrightarrow\quad
+      \sin\varphi < 0 \quad\Longrightarrow\quad \varphi = -\frac{\pi}{2}
+      $$
+      La position seule laisse deux possibilités ; c'est le SENS de la vitesse
+      qui choisit. L'amplitude $X_m$, elle, n'intervient jamais dans ce choix.
+
+  - id: SO-43
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: pc_systemes_oscillants
+    tags: [oscillateur_libre, conservation_energie, equation_differentielle]
+    stem: >
+      Sur un banc à coussin d'air (frottements négligeables), un solide
+      accroché à un ressort est écarté de $X_m$ de sa position d'équilibre,
+      puis lâché SANS vitesse initiale. Que peut-on affirmer de la suite du
+      mouvement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il oscille indéfiniment entre $-X_m$ et $+X_m$, et passe par l'équilibre à vitesse maximale"
+        correct: true
+      - id: B
+        text: >-
+          Il revient à sa position d'équilibre et s'y arrête : c'est là que le
+          ressort ne tire plus, donc plus rien ne le met en mouvement
+        correct: false
+        misconception: M-OSC-LIBRE-1
+        feedback: >
+          À l'équilibre, c'est la FORCE qui est nulle, pas la VITESSE. Le
+          solide y arrive lancé — l'énergie potentielle élastique du départ
+          s'y est entièrement convertie en énergie cinétique — et il le
+          dépasse. Une force nulle ne freine rien : elle cesse simplement
+          d'accélérer.
+      - id: C
+        text: >-
+          Son écart obéit à $\ddot{x} - \dfrac{k}{m}x = 0$ : il s'éloigne donc
+          de plus en plus de l'équilibre
+        correct: false
+        misconception: M-OSC-EQD-1
+        feedback: >
+          Cette équation-là décrirait bien une fuite exponentielle — et c'est
+          précisément le contrôle qui permet de repérer l'erreur de signe. Le
+          rappel du ressort vaut $-kx$, d'où $\ddot{x} + \frac{k}{m}x = 0$,
+          dont les solutions sont sinusoïdales.
+      - id: D
+        text: >-
+          Il oscille selon $x(t) = X_m\cos(\omega_0 t + \varphi)$, la phase
+          $\varphi$ valant $+\dfrac{\pi}{2}$ ou $-\dfrac{\pi}{2}$ selon le côté
+          d'où on l'a lâché
+        correct: false
+        misconception: M-OSC-PHASE-1
+        feedback: >
+          Lâché SANS vitesse depuis l'écart maximal, le solide part d'un
+          sommet de la sinusoïde : $x(0) = X_m$ donne $\cos\varphi = 1$, donc
+          $\varphi = 0$ (et $\varphi = \pi$ s'il est lâché de l'autre côté).
+          Les valeurs $\pm\pi/2$ correspondent au cas inverse — un départ
+          DEPUIS l'équilibre, à vitesse maximale.
+    correct_feedback: >
+      Sans frottement, l'énergie mécanique se conserve : le solide repasse
+      indéfiniment par les mêmes positions, entre $-X_m$ et $+X_m$. À
+      l'équilibre l'énergie est entièrement cinétique, donc la vitesse y est
+      maximale ; aux extrémités elle est entièrement potentielle, donc la
+      vitesse y est nulle.
+    solution: |
+      L'équation du mouvement est $\ddot{x} + \dfrac{k}{m}x = 0$, dont les
+      solutions sont sinusoïdales : $x(t) = X_m\cos(\omega_0 t + \varphi)$ avec
+      $\omega_0 = \sqrt{k/m}$. Ici $x(0) = X_m$ et $\dot{x}(0) = 0$ donnent
+      $\varphi = 0$, soit $x(t) = X_m\cos(\omega_0 t)$.
+      Le raisonnement énergétique dit la même chose sans calcul :
+      $$
+      E_m = \frac{1}{2}kx^2 + \frac{1}{2}m\dot{x}^2 = \frac{1}{2}kX_m^2
+      = \text{constante}
+      $$
+      En $x = 0$, tout est cinétique : $\dot{x}$ y est maximale en valeur
+      absolue. En $x = \pm X_m$, tout est potentiel : la vitesse y est nulle.
+      Rien ne retire d'énergie au système, donc l'amplitude ne décroît pas.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05. La version précédente annonçait `floor_met: true` en
+# ne comptant que les six ids AMO/RES du cluster amortissement-résonance,
+# qu'elle décrivait comme « le seul inventaire tagué de la notion ». C'était
+# vrai à l'écriture. Depuis, les sept familles antérieures (ISO, FORM, RAID,
+# EQD, ENER, LIBRE, PHASE) ont été déclarées et les items hérités tagués : le
+# périmètre a doublé, le drapeau n'a pas bougé, et quatre familles siégeaient
+# sous le plancher — M-OSC-EQD-1 (1 item), M-OSC-PHASE-1 (1), M-OSC-LIBRE-1
+# (2), M-OSC-RAID-1 (2).
+#
+# Deux items les y amènent : SO-42 (R2, phase à l'origine lue avec le SENS du
+# lancer, signe du terme de rappel, place de $k$ dans $\omega_0$) et SO-43 (R1,
+# ce que fait un oscillateur libre sans frottement). R1 porte désormais 4 items
+# et R2 en porte 4.
+#
+# DEUX AUTRES AFFIRMATIONS de l'ancien résumé étaient devenues fausses et sont
+# supprimées plutôt que corrigées :
+#   • « SO-19, SO-20, SO-21 ne portent aucun champ `misconception:` » — ils en
+#     portent tous, depuis la passe de tagage. Le bloc
+#     `legacy_items_not_retagged` n'avait plus d'objet.
+#   • les décomptes AMO/RES eux-mêmes, qui excluaient ces trois items.
+# Le tableau ci-dessous est désormais GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# web/scripts/resume-couverture.mjs.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte — tag simple ou co-marquage $[a, b]$ — une seule fois
+    par item. Les checkpoints ne comptent pas : le modèle apprenant est bâti
+    sur le banc de fin seul. Les cinq checkpoints se répartissent en UNE porte
+    d'engagement originale à l'accroche (cp-r0-predict, in_R0) et QUATRE portes
+    de rupture clonant SO-25, SO-26, SO-34 et SO-35, placées dans R6 et R7 —
+    aucune n'est au sommet R8.
+  per_misconception:
+    M-OSC-ISO-1:   { count: 4, items: [SO-1, SO-2, SO-11, SO-22] }
+    M-OSC-FORM-1:  { count: 8, items: [SO-3, SO-4, SO-10, SO-13, SO-14, SO-16, SO-22, SO-24] }
+    M-OSC-RAID-1:  { count: 3, items: [SO-9, SO-15, SO-42] }
+    M-OSC-EQD-1:   { count: 3, items: [SO-5, SO-42, SO-43] }
+    M-OSC-ENER-1:  { count: 4, items: [SO-6, SO-17, SO-18, SO-23] }
+    M-OSC-LIBRE-1: { count: 3, items: [SO-7, SO-8, SO-43] }
+    M-OSC-PHASE-1: { count: 3, items: [SO-12, SO-42, SO-43] }
+    M-OSC-AMO-1:   { count: 5, items: [SO-20, SO-25, SO-27, SO-28, SO-31] }
+    M-OSC-AMO-2:   { count: 4, items: [SO-19, SO-26, SO-29, SO-32] }
+    M-OSC-AMO-3:   { count: 3, items: [SO-27, SO-30, SO-33] }
+    M-OSC-RES-1:   { count: 4, items: [SO-34, SO-36, SO-37, SO-40] }
+    M-OSC-RES-2:   { count: 3, items: [SO-35, SO-38, SO-41] }
+    M-OSC-RES-3:   { count: 5, items: [SO-21, SO-35, SO-36, SO-38, SO-39] }
+  total_items: 43
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 4
+    R2: 4
+    R3: 3
+    R4: 3
+    R5: 3
+    R6: 12
+    R7: 8
+    R8: 3
+    note: >-
+      Le plancher de barreau (>= 3 items) est tenu partout. R1 et R2 en portent
+      4 depuis l'ajout de SO-43 et SO-42. R6 et R7 sont plus fournis (12 et 8)
+      : ce sont les deux chapitres du cluster amortissement-résonance.
+  summit_conversion_note: >-
+    La conversion du sommet R8 (« Pour t'entraîner ») a retiré de lesson.md
+    l'exercice de bac rédigé et ses variations « À toi » au profit de
+    [[exercise:r-bac]] (sujet 2018 vérifié, partie oscillations) et
+    [[exercise:r-variation]], et ajouté cinq checkpoints en ligne
+    (cp-r0-predict + quatre portes de rupture CLONANT SO-25/SO-26/SO-34/SO-35).
+    Le surfaçage en ligne ne recompte pas : le tableau ci-dessus est inchangé
+    par cette passe. Les items de banc R8 (SO-22, SO-23, SO-24) restent en
+    place comme items de compétence fondamentale ; ils ne portent aucun tag
+    M-OSC-* parce qu'ils n'exhibent aucune erreur d'amortissement ou de
+    résonance.
+  non_floor_tags:
+    note: >-
+      Les distracteurs SONDE DE BORD sont délibérément exclus du plancher :
+      ils testent la limite du programme (pas de pseudo-période en forme close
+      $f(m, h, k)$ pour l'amortissement LIMITE ; le régime « forcé » est hors
+      champ des oscillations libres) plutôt qu'une erreur nommée. Règle de
+      spec-extension.md §6 : une sonde de bord n'est JAMAIS la clé — vérifié
+      pour les deux occurrences.
+    hors_cadre_probe: {count: 2, items: [SO-26/D, SO-27/D]}
+  gated_floor_met: true
+  honest_state: >-
+    Les 13 misconceptions déclarées sont couvertes, aucune sous le plancher.

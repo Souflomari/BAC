@@ -1,0 +1,201 @@
+# Attempt-first exercises (summit-conversion campaign — aspects-energetiques).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is built around the ENERGY volet of a VERIFIED
+# national sujet (2018 session normale, Ex IV Partie II — étude énergétique
+# solide-ressort ; statut « vérifié » cross-list dans
+# docs/sujets/pc/aspects-energetiques.md et systemes-oscillants.md). The coupled
+# lesson systemes-oscillants exploits the OSCILLATION questions (X_m/T_0/φ) of
+# the same exam ; this notion exploits the ENERGY questions (E_pe1, W_AB), which
+# alone are thin (2 sous-questions, dont une nulle) — so Partie A transcrit le
+# volet vérifié et Partie B le prolonge sur le même oscillateur (prolongement
+# pédagogique clairement délimité, PAS extrait du sujet). r-variation is a fresh
+# anti-memorisation twin (torsion + pendule, other numbers, status
+# not-applicable).
+
+notion: aspects-energetiques
+
+exercises:
+  # ── r-bac — the VERIFIED 2018 national sujet, volet énergétique ──────────
+  # Faithful transcription of docs/sujets/pc/aspects-energetiques.md +
+  # systemes-oscillants.md → "2018 — session normale — Exercice IV, Partie II :
+  # étude énergétique d'un oscillateur solide-ressort". Ressort horizontal,
+  # raideur K = 35 N/m, sans frottement ; référence d'E_pe à l'équilibre x = 0 ;
+  # équation horaire x(t) = X_m cos(2πt/T_0 + φ). La courbe (figure 4) donne
+  # x (cm) en fonction de t (s) : sinusoïde entre −6 et +6 cm, partant de
+  # x(0) = −6 cm (minimum), période lue T_0 = 1 s.
+  - id: r-bac
+    title: "Exercice de type bac — énergie d'un oscillateur solide-ressort (2018)"
+    sourcing:
+      status: sourced
+      note: >-
+        2018 session normale — examen national PC BIOF (Sciences Physiques
+        SPC), code NS28F, Exercice IV Partie II « étude énergétique d'un
+        oscillateur mécanique (solide-ressort) », AlloSchool element/57726
+        (upload-45118, pages 7–8). Statut « vérifié » (re-fetch AlloSchool +
+        diff OK, agent-vérificateur 2026-07-11, cross-list
+        systemes-oscillants.md). Partie A (q1–q3) = transcription du volet
+        ÉNERGÉTIQUE du sujet (lecture de la courbe X_m/T_0/φ, énergie potentielle
+        élastique E_pe1, travail W_AB de la force de rappel). Partie B (q4–q6) =
+        prolongement pédagogique sur le MÊME oscillateur (E_c=E_pe, vitesse
+        maximale, diagramme d'énergie) — NON extrait du sujet original, ajouté
+        parce que le volet énergétique seul (barème 1,25 pt, dont Q3 = 0 J) est
+        trop mince pour un exercice de type bac complet.
+    intro: |-
+      **Étude énergétique d'un oscillateur mécanique solide-ressort (examen national, session normale 2018).**
+
+      On modélise une partie d'une machine par un oscillateur horizontal : un solide $(S)$ de centre d'inertie $G$ et de masse $m$, accroché à l'extrémité d'un ressort horizontal à spires non jointives, de masse négligeable et de raideur $K = 35\ \text{N.m}^{-1}$. L'autre extrémité du ressort est fixée à un support immobile.
+
+      On écarte $(S)$ de sa position d'équilibre puis on le lâche sans vitesse initiale ; il oscille **sans frottements** sur un plan horizontal. On repère la position de $G$ par son abscisse $x$ dans un repère $(O, \vec{i})$ lié à un référentiel terrestre galiléen, l'origine $O$ coïncidant avec la position d'équilibre de $G$. On choisit cette position d'équilibre ($x = 0$) comme **référence de l'énergie potentielle élastique**.
+
+      L'équation horaire du mouvement s'écrit $x(t) = X_m \cos\left(\dfrac{2\pi t}{T_0} + \varphi\right)$.
+
+      La courbe enregistrée (figure 4) donne l'abscisse $x$ (en cm) en fonction du temps $t$ (en s) : c'est une sinusoïde (ordonnées graduées $-6,\ -3,\ 3,\ 6$), qui **part de $x(0) = -6\ \text{cm}$** (un minimum) à $t = 0$, puis oscille entre $-6$ et $+6\ \text{cm}$ ; l'axe des temps est repéré aux dates $0{,}5\ \text{s}$ et $1\ \text{s}$, et une période complète correspond à $T_0 = 1\ \text{s}$.
+    questions:
+      - id: q1
+        part: "Partie A — Le sujet 2018 (volet énergétique vérifié)"
+        stem: |-
+          **(0,75 pt)** Déterminer, à partir de la courbe $x(t)$ (figure 4), les valeurs de l'amplitude $X_m$, de la période propre $T_0$ et de la phase $\varphi$.
+        reasoning: |-
+          Trois lectures graphiques, chacune sur une caractéristique différente de la sinusoïde. **L'amplitude** $X_m$ est l'écart maximal atteint de part et d'autre de l'équilibre : la courbe plafonne à $\pm 6\ \text{cm}$, donc $X_m = 6\ \text{cm}$. **La période** $T_0$ est la durée d'un aller-retour complet : la courbe repart identique à elle-même après $1\ \text{s}$, donc $T_0 = 1\ \text{s}$. **La phase** $\varphi$ se lit sur la valeur de départ : à $t = 0$, $x(0) = X_m\cos\varphi = -X_m$ (la courbe part du minimum), donc $\cos\varphi = -1$, ce qui impose $\varphi = \pi\ \text{rad}$. On garde ces trois valeurs : elles servent de socle à tout le volet énergétique, car pour trouver l'énergie il faudra d'abord savoir OÙ est le solide à l'instant demandé.
+        steps:
+          - math: 'X_m = 6\ \text{cm} = 6\times10^{-2}\ \text{m}'
+            note: "Amplitude : écart maximal lu sur les extrêmes de la courbe (±6 cm)."
+          - math: 'T_0 = 1\ \text{s}'
+            note: "Période : durée d'un cycle complet lue sur l'axe des temps."
+          - math: 'x(0) = X_m\cos\varphi = -X_m \implies \cos\varphi = -1 \implies \varphi = \pi\ \text{rad}'
+            note: "Phase : la courbe part du minimum à t = 0, donc cos(φ) = −1."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Trouver la valeur de l'énergie potentielle élastique $E_{pe1}$ du système mécanique à la date $t_1 = 0{,}5\ \text{s}$.
+        reasoning: |-
+          Le réflexe correct est de **localiser le solide avant de calculer une énergie**. À $t_1 = 0{,}5\ \text{s} = T_0/2$, une demi-période s'est écoulée depuis le lâcher au minimum : le solide est passé à l'extrême opposé. On le vérifie avec l'équation horaire : $x(t_1) = X_m\cos\left(\frac{2\pi\times0{,}5}{1} + \pi\right) = X_m\cos(2\pi) = +X_m$. Le solide est donc à l'allongement maximal $x = +X_m$. L'énergie potentielle élastique se calcule alors avec $E_{pe} = \frac{1}{2}Kx^2$ (établie au chapitre 6, aire du triangle sous $F = Kx$) — et comme on est à un extrême où la vitesse s'annule, cette valeur est aussi l'énergie mécanique totale : $E_{pe1} = E_m$.
+        steps:
+          - math: 'x(t_1) = X_m\cos\left(\frac{2\pi\times0{,}5}{1} + \pi\right) = X_m\cos(2\pi) = +X_m'
+            note: "À t1 = T0/2, le solide est à l'extrême opposé du départ : x = +X_m."
+          - math: 'E_{pe1} = \frac{1}{2}K\,x(t_1)^2 = \frac{1}{2}K\,X_m^2'
+            note: "Énergie potentielle élastique, avec x = +X_m à cet instant."
+          - math: 'E_{pe1} = \frac{1}{2}\times 35 \times (6\times10^{-2})^2 = 6{,}3\times10^{-2}\ \text{J}'
+            note: "Application numérique : K = 35 N/m, X_m = 6×10⁻² m. Soit 63 mJ."
+      - id: q3
+        stem: |-
+          **(0,75 pt)** Calculer le travail $W_{AB}(\vec{F})$ de la force de rappel $\vec{F}$ lorsque le centre d'inertie $G$ se déplace de la position $A$ d'abscisse $x_A = X_m$ à la position $B$ d'abscisse $x_B = -X_m$.
+        reasoning: |-
+          Ici, le résultat est plus subtil qu'il n'en a l'air, et c'est exactement ce que la question teste. Le travail de la force de rappel est l'opposé de la variation de l'énergie potentielle élastique (chapitre 6) : $W_{AB}(\vec{F}) = -\Delta E_{pe} = E_{pe}(x_A) - E_{pe}(x_B)$. Or $E_{pe}$ ne dépend que de $x^2$ : aux deux positions $A$ et $B$, l'abscisse a la même valeur absolue $X_m$, donc **la même énergie potentielle**. La différence est nulle : $W_{AB}(\vec{F}) = 0$. Physiquement, sur la première moitié du trajet ($X_m \to 0$) la force de rappel ramène le solide vers l'équilibre, elle est motrice (travail positif) ; sur la seconde moitié ($0 \to -X_m$) elle s'oppose à l'éloignement, elle est résistante (travail négatif de même valeur) — les deux se compensent exactement. Le solide repart avec la même énergie potentielle qu'au départ.
+        steps:
+          - math: 'W_{AB}(\vec{F}) = -\Delta E_{pe} = E_{pe}(x_A) - E_{pe}(x_B) = \frac{1}{2}K\,x_A^2 - \frac{1}{2}K\,x_B^2'
+            note: "Le travail de la force de rappel est l'opposé de la variation d'E_pe (chapitre 6)."
+          - math: '\frac{1}{2}K\,X_m^2 - \frac{1}{2}K\,(-X_m)^2 = \frac{1}{2}K\,X_m^2 - \frac{1}{2}K\,X_m^2'
+            note: "x est élevé au carré : (−X_m)² = (X_m)², donc E_pe est la même en A et en B."
+          - math: '\boxed{W_{AB}(\vec{F}) = 0\ \text{J}}'
+            note: "Travail nul : la force de rappel est motrice puis résistante, en compensation exacte."
+      - id: q4
+        part: "Partie B — Prolongement énergétique (même oscillateur, hors sujet)"
+        stem: |-
+          Sans connaître la masse $m$ du solide, indiquer en quel point de la trajectoire la vitesse du solide est maximale au cours des oscillations, et justifier énergétiquement.
+        reasoning: |-
+          On raisonne sur le partage de l'énergie mécanique, constante car il n'y a pas de frottement : $E_m = E_c + E_{pe} = \frac{1}{2}mv^2 + \frac{1}{2}Kx^2$. Comme $E_m$ est fixe, $E_c$ est maximale là où $E_{pe}$ est minimale. Or $E_{pe} = \frac{1}{2}Kx^2$ est minimale (nulle) en $x = 0$, la position d'équilibre. C'est donc **au passage par l'équilibre** ($x = 0$) que toute l'énergie mécanique est cinétique, et que la vitesse est maximale — inversement, aux extrêmes $x = \pm X_m$, la vitesse s'annule. On n'a pas besoin de la masse pour situer ce point : le partage $E_c \leftrightarrow E_{pe}$ ne dépend que de la position, pas de $m$ (la masse ne ferait qu'en fixer la valeur numérique de $v_{max}$, pas sa localisation).
+      - id: q5
+        stem: |-
+          Pour quelle élongation $x$ l'énergie cinétique est-elle égale à l'énergie potentielle élastique ? Exprimer $x$ en fonction de $X_m$, puis calculer sa valeur.
+        reasoning: |-
+          On traduit la condition $E_c = E_{pe}$ en s'appuyant sur la conservation. À l'extrême, toute l'énergie est élastique : $E_m = \frac{1}{2}KX_m^2$. En un point quelconque, $E_c + E_{pe} = E_m$ ; si de plus $E_c = E_{pe}$, alors chacune vaut la moitié de $E_m$. On écrit donc $E_{pe} = \frac{1}{2}E_m$ et on résout en $x$. Le résultat, $x = \pm \frac{X_m}{\sqrt{2}}$, ne dépend ni de $K$ ni de la masse — c'est une position purement géométrique sur le diagramme d'énergie, là où les deux paraboles se croisent.
+        steps:
+          - math: 'E_c = E_{pe} \quad\text{et}\quad E_c + E_{pe} = E_m \implies E_{pe} = \frac{1}{2}E_m'
+            note: "Si les deux réservoirs sont égaux, chacun vaut la moitié de l'énergie mécanique."
+          - math: '\frac{1}{2}Kx^2 = \frac{1}{2}\left(\frac{1}{2}KX_m^2\right) \implies x^2 = \frac{X_m^2}{2}'
+            note: "On remplace E_pe = ½Kx² et E_m = ½KX_m², puis on simplifie."
+          - math: 'x = \pm\frac{X_m}{\sqrt{2}} = \pm\frac{6\times10^{-2}}{\sqrt{2}} \approx \pm 4{,}2\times10^{-2}\ \text{m}'
+            note: "Soit x ≈ ±4,2 cm — ni l'équilibre, ni l'extrême, mais entre les deux."
+      - id: q6
+        stem: |-
+          Tracer l'allure des courbes $E_c(x)$, $E_{pe}(x)$ et $E_m(x)$ sur un même diagramme d'énergie (en fonction de la position $x$), et y placer le point de la question précédente.
+        reasoning: |-
+          On porte les trois grandeurs en fonction de $x$, chacune avec sa forme caractéristique. $E_{pe} = \frac{1}{2}Kx^2$ est une **parabole**, minimale (nulle) en $x = 0$ et valant $E_m = 6{,}3\times10^{-2}\ \text{J}$ aux extrêmes $x = \pm X_m$. $E_c = E_m - E_{pe}$ est la **parabole inversée**, maximale ($= E_m$) en $x = 0$ et nulle aux extrêmes. $E_m$ est une **droite horizontale** à $6{,}3\times10^{-2}\ \text{J}$ : le plafond que ni $E_c$ ni $E_{pe}$ ne dépasse. Les deux paraboles se croisent là où $E_c = E_{pe} = \frac{1}{2}E_m = 3{,}15\times10^{-2}\ \text{J}$, c'est-à-dire aux deux abscisses $x = \pm\frac{X_m}{\sqrt{2}} \approx \pm 4{,}2\ \text{cm}$ trouvées à la question précédente — ce sont exactement les points à marquer sur le diagramme.
+    # (see the figure [[figure:diagrammes-energie-elastique]] rendered in R5 for
+    # the exact shape of these three curves.)
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ────────
+  # Same deep skill as r-bac (identifier le réservoir de rappel, écrire E_m,
+  # exploiter la conservation, lire un diagramme d'énergie), mais sur DEUX
+  # autres oscillateurs (torsion puis pendule pesant) et avec d'autres nombres
+  # que le sujet ET que l'exemple travaillé de la leçon — pour que l'élève ne
+  # puisse pas recopier, et doive reconnaître quelle procédure s'applique.
+  - id: r-variation
+    title: "Variation fraîche — torsion et pendule pesant"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2018, sourcé). Nombres
+        choisis différents à la fois du sujet et de l'exemple travaillé de la
+        leçon (R6 : J = 4×10⁻³, C = 0,16, θ₀ = 0,20) pour empêcher toute
+        recopie.
+    intro: |-
+      Même démarche profonde que l'exercice précédent — identifier le réservoir de rappel, écrire l'énergie mécanique, exploiter sa conservation sans frottement — mais l'habillage change **deux fois** : d'abord un pendule de torsion, puis un pendule pesant. Le but est que tu ne puisses pas recopier la solution du solide-ressort : tu dois reconnaître, sous chaque habillage, quelle grandeur joue le rôle du rappel et laquelle celui de l'inertie.
+
+      **Partie A — pendule de torsion.** Un disque de moment d'inertie $J = 6{,}0\times10^{-3}\ \text{kg}\cdot\text{m}^2$ est suspendu à un fil vertical de constante de torsion $C = 0{,}20\ \text{N}\cdot\text{m}/\text{rad}$. On l'écarte de sa position d'équilibre d'un angle $\theta_0 = 0{,}30\ \text{rad}$, puis on le lâche sans vitesse angulaire. Les frottements sont négligés.
+
+      **Partie B — pendule pesant.** Un pendule simple, de longueur $L = 1{,}2\ \text{m}$ et de masse $m = 0{,}30\ \text{kg}$, est écarté d'un angle $\theta_m = 0{,}25\ \text{rad}$ par rapport à la verticale, puis lâché sans vitesse ($g \approx 9{,}8\ \text{m/s}^2$, $\cos 0{,}25\ \text{rad} \approx 0{,}969$). Les frottements sont négligés.
+    questions:
+      - id: q1
+        part: "Partie A — Pendule de torsion"
+        stem: |-
+          Exprimer l'énergie mécanique du pendule de torsion à l'instant du lâcher, et calculer sa valeur.
+        reasoning: |-
+          Au lâcher, la vitesse angulaire est nulle ($\dot\theta_0 = 0$), donc l'énergie cinétique de rotation $\frac{1}{2}J\dot\theta^2$ est nulle : **toute** l'énergie est stockée dans le fil tordu. Le réservoir de rappel de la torsion est l'énergie potentielle de torsion $E_{p,tor} = \frac{1}{2}C\theta^2$ (analogue exact de $\frac{1}{2}Kx^2$, avec $C$ au rôle de $k$ et $\theta$ au rôle de $x$). Attention au piège du réservoir : c'est la constante de torsion $C$ qui entre ici, jamais le moment d'inertie $J$ — $J$ ne vit que dans l'énergie cinétique.
+        steps:
+          - math: 'E_m = \frac{1}{2}J\dot\theta_0^2 + \frac{1}{2}C\theta_0^2 = \frac{1}{2}C\theta_0^2'
+            note: "Au lâcher θ̇₀ = 0, donc E_c = 0 : toute l'énergie est potentielle de torsion."
+          - math: 'E_m = \frac{1}{2}\times 0{,}20 \times (0{,}30)^2 = 9{,}0\times10^{-3}\ \text{J}'
+            note: "Application numérique : C = 0,20 N·m/rad, θ₀ = 0,30 rad. J n'intervient pas."
+      - id: q2
+        stem: |-
+          En déduire la vitesse angulaire maximale $\dot\theta_{max}$ du disque, et préciser en quelle position elle est atteinte.
+        reasoning: |-
+          L'énergie mécanique se conserve (pas de frottement), donc elle vaut toujours $9{,}0\times10^{-3}\ \text{J}$. La vitesse angulaire est maximale là où l'énergie cinétique est maximale, c'est-à-dire là où l'énergie potentielle de torsion est nulle : **au passage par l'équilibre** $\theta = 0$. En ce point, toute l'énergie mécanique est cinétique de rotation, et c'est ici que le moment d'inertie $J$ intervient enfin — dans $E_c$, pas dans $E_p$. On isole $\dot\theta_{max}$.
+        steps:
+          - math: '\frac{1}{2}J\dot\theta_{max}^2 = E_m \implies \dot\theta_{max} = \sqrt{\frac{2E_m}{J}}'
+            note: "Au passage par θ = 0, toute l'énergie mécanique est cinétique."
+          - math: '\dot\theta_{max} = \sqrt{\frac{2\times 9{,}0\times10^{-3}}{6{,}0\times10^{-3}}} = \sqrt{3{,}0} \approx 1{,}7\ \text{rad/s}'
+            note: "Application numérique : atteinte en θ = 0 (position d'équilibre)."
+      - id: q3
+        stem: |-
+          Pour quelle valeur de l'angle $\theta$ l'énergie cinétique est-elle égale à l'énergie potentielle de torsion ? Exprimer $\theta$ en fonction de $\theta_0$.
+        reasoning: |-
+          C'est rigoureusement la même condition qu'à la question 5 de l'exercice précédent, transposée à la rotation. Si $E_c = E_{p,tor}$ et que leur somme vaut $E_m = \frac{1}{2}C\theta_0^2$, alors chacune vaut la moitié : $E_{p,tor} = \frac{1}{2}E_m$. On résout en $\theta$. Le résultat $\theta = \pm\frac{\theta_0}{\sqrt{2}}$ est le strict analogue de $x = \pm\frac{X_m}{\sqrt{2}}$ — même géométrie du diagramme d'énergie, seul le nom de la variable a changé.
+        steps:
+          - math: '\frac{1}{2}C\theta^2 = \frac{1}{2}\left(\frac{1}{2}C\theta_0^2\right) \implies \theta^2 = \frac{\theta_0^2}{2}'
+            note: "E_c = E_p impose E_p = E_m/2, avec E_m = ½Cθ₀²."
+          - math: '\theta = \pm\frac{\theta_0}{\sqrt{2}} = \pm\frac{0{,}30}{\sqrt{2}} \approx \pm 0{,}21\ \text{rad}'
+            note: "Même forme que x = ±X_m/√2 pour le ressort : le diagramme d'énergie est identique."
+      - id: q4
+        part: "Partie B — Pendule pesant"
+        stem: |-
+          De quelle hauteur $z$ le point matériel du pendule pesant s'est-il élevé par rapport à sa position la plus basse, lorsqu'il est écarté de $\theta_m = 0{,}25\ \text{rad}$ ?
+        reasoning: |-
+          Pour un pendule, le réservoir de rappel n'est ni un ressort ni un fil tordu : c'est la **pesanteur**, et l'énergie de rappel est $E_{pp} = mgz$. Le piège classique est de prendre pour $z$ la longueur du fil $L$, ou la longueur de l'arc parcouru $L\theta_m$. Ce sont deux erreurs : $L$ est une longueur de fil (constante), $L\theta_m$ est une distance curviligne le long de la trajectoire — aucune n'est une élévation verticale. La vraie hauteur est la projection géométrique $z = L(1 - \cos\theta_m)$ : à l'angle $\theta$, le point est à la distance verticale $L\cos\theta$ sous le point de suspension, contre $L$ au plus bas ; la différence est $L(1-\cos\theta_m)$.
+        steps:
+          - math: 'z = L - L\cos\theta_m = L(1 - \cos\theta_m)'
+            note: "Projection verticale : hauteur gagnée, ni L (fil) ni Lθ (arc)."
+          - math: 'z = 1{,}2\times(1 - 0{,}969) = 1{,}2\times 0{,}031 \approx 3{,}7\times10^{-2}\ \text{m}'
+            note: "Soit z ≈ 3,7 cm — bien plus petit que L = 1,2 m ou l'arc Lθ_m ≈ 0,30 m."
+      - id: q5
+        stem: |-
+          En déduire, par un bilan d'énergie, la vitesse $v$ du point matériel à son passage par la position la plus basse.
+        reasoning: |-
+          Sans frottement, l'énergie mécanique se conserve. Au lâcher, la vitesse est nulle : toute l'énergie est potentielle de pesanteur, $E_m = mgz$. Au point le plus bas, on prend cette position comme référence d'altitude ($z = 0$, donc $E_{pp} = 0$) : toute l'énergie mécanique y est cinétique, $E_m = \frac{1}{2}mv^2$. On égale les deux et on isole $v$ — la masse se simplifie, exactement comme pour la chute libre (chapitre 3). C'est le même raccourci énergétique : la vitesse au point bas sans jamais résoudre l'équation horaire.
+        steps:
+          - math: 'mgz = \frac{1}{2}mv^2 \implies v = \sqrt{2gz}'
+            note: "Conservation : toute l'E_pp du départ devient E_c au point bas ; m se simplifie."
+          - math: 'v = \sqrt{2\times 9{,}8 \times 3{,}7\times10^{-2}} \approx \sqrt{0{,}73} \approx 0{,}85\ \text{m/s}'
+            note: "Application numérique, avec z = 3,7×10⁻² m trouvé à la question précédente."
+      - id: q6
+        stem: |-
+          En comparant les deux parties, qu'est-ce qui change et qu'est-ce qui reste rigoureusement identique quand on passe du ressort (exercice précédent) au fil de torsion, puis au pendule pesant ?
+        reasoning: |-
+          **Ce qui reste identique**, d'un oscillateur à l'autre, c'est toute la démarche : sans frottement, l'énergie mécanique se conserve ; au lâcher sans vitesse, toute l'énergie est potentielle ; au passage par la position d'équilibre (ou le point le plus bas), toute l'énergie est cinétique et la vitesse y est maximale ; et le diagramme d'énergie a la même allure (les deux réservoirs s'échangent en antiphase, leur somme reste plate). **Ce qui change**, c'est uniquement le contenu de chaque réservoir : le rappel est élastique $\frac{1}{2}Kx^2$ pour le ressort, de torsion $\frac{1}{2}C\theta^2$ pour le fil, gravitationnel $mgz$ avec $z = L(1-\cos\theta)$ pour le pendule ; et l'inertie qui porte l'énergie cinétique est la masse $m$ (dans $\frac{1}{2}mv^2$) pour le ressort et le pendule, mais le moment d'inertie $J$ (dans $\frac{1}{2}J\dot\theta^2$) pour la torsion. La règle d'or ne change jamais : l'inertie ($m$ ou $J$) ne vit que dans $E_c$, le rappel ($K$, $C$, ou $mg$) ne vit que dans $E_p$ — les deux réservoirs ne se mélangent jamais.

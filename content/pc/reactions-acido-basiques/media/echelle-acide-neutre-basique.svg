@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Échelle de pH de 0 à 14 : la frontière de neutralité se situe à pH = 7, où [H3O+] = [HO-] = racine de Ke = 10 puissance moins 7 — une conséquence de Ke = 10 puissance moins 14, pas une convention. À gauche de 7, [H3O+] est supérieur à [HO-], la solution est acide ; exemple, à pH = 2, [H3O+] = 10 puissance moins 2. À droite de 7, [H3O+] est inférieur à [HO-], la solution est basique ; exemple, à pH = 9, [H3O+] = 10 puissance moins 9, bien moins qu’à pH = 2. Le pH le plus petit porte donc le plus de H3O+ : ce n’est jamais la solution la plus basique.">
+  <title>L&#8217;échelle de pH : d&#8217;où vient le 7 ?</title>
+  <!--
+    echelle-acide-neutre-basique.svg — figure STAGED (3 étapes), rung R3.
+
+    RÉUTILISE l'échelle linéaire déjà établie par les figures sœurs de
+    cette leçon (diagramme-predominance.svg, zones-predominance-2.svg),
+    pour la cohérence visuelle du corpus de la leçon :
+      x(pH) = 70 + 38·pH
+      x(pH=0)  = 70
+      x(pH=2)  = 146   (point travaillé, zone acide)
+      x(pH=7)  = 336   (frontière de neutralité)
+      x(pH=9)  = 412   (point travaillé, zone basique)
+      x(pH=14) = 602
+    Aucune exagération : chaque tick est la projection exacte de sa valeur
+    de pH sur cette échelle linéaire commune à toute la leçon.
+
+    Contenu numérique repris tel quel du texte (rung R3) :
+      neutralité : [H3O+] = [HO-] = √Ke = 10⁻⁷ mol/L, conséquence de
+        Ke = 10⁻¹⁴ à 25°C (PAS une convention — le texte insiste sur ce
+        point : "Voilà d'où vient le fameux « pH = 7 »").
+      zone acide, exemple : pH = 2 → [H3O+] = 10⁻² mol/L.
+      zone basique, exemple : pH = 9 → [H3O+] = 10⁻⁹ mol/L.
+    Cible précise : la confusion nommée explicitement dans le texte
+    ("pH petit, c'est plus faible, donc plus basique") — la figure place
+    délibérément les DEUX points chiffrés côte à côte à l'étape 3 pour
+    que le contraste soit visible d'un coup d'œil : le point le PLUS À
+    GAUCHE (pH = 2, le plus petit) porte le concentration en H3O+ la PLUS
+    GRANDE (10⁻² ≫ 10⁻⁹) — l'inverse de ce que l'intuition du nombre
+    "petit" suggère.
+
+    Convention de mise en page reprise de diagramme-predominance.svg
+    (même leçon) : titre + panneau + bande de zone + axe + ticks 0/14
+    forment le SOCLE toujours visible (hors des groupes step-N) ; seule la
+    frontière pH = 7 elle-même (le VRAI foyer du rung R3, puisque le texte
+    le dérive de Ke plutôt que de l'admettre) est réservée à l'étape 1 —
+    contrairement à diagramme-predominance.svg où pH = 7 n'était qu'un
+    repère générique, ici la frontière EST le sujet, donc son tick et son
+    étiquette accent ne préexistent pas au step-1.
+
+    Mise en étapes (reprend l'ordre du texte : dérivation du 7, puis zone
+    acide avec son exemple, puis zone basique avec son exemple et le
+    contraste qui tue la confusion) :
+      step-1 : la frontière pH = 7, avec sa dérivation depuis Ke.
+      step-2 : la zone acide (pH < 7) et son point travaillé pH = 2.
+      step-3 : la zone basique (pH > 7), son point travaillé pH = 9, et la
+               phrase de contraste qui compare directement les deux points.
+
+    Rôle des couleurs : la frontière pH = 7 (tick, dérivation) et les deux
+    points travaillés (tick, point, valeur de concentration) sont le foyer
+    numérique de la figure → --figure-accent (répété trois fois, même
+    convention que zones-predominance-2.svg). Bande de zone, inégalités
+    qualitatives ([H3O+] > [HO-] etc.), axe, ticks 0/14 : --figure-ink /
+    --figure-ink-soft / --figure-grid. La phrase de contraste finale
+    (étape 3, la conclusion pédagogique) est en --figure-ink, en gras,
+    comme la phrase de contraste de jauge-avancement-tau.svg (même
+    leçon-sœur de convention) — l'accent reste réservé aux marques
+    numériques, jamais à une phrase entière.
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="24" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">L&#8217;échelle de pH : d&#8217;où vient le 7 ?</text>
+
+  <!-- Panneau -->
+  <rect x="24" y="38" width="608" height="230" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- Bande de zone (continue, coupée par la frontière) -->
+  <rect x="70" y="64" width="532" height="32" rx="4"
+        fill="var(--figure-grid)" fill-opacity="0.55"
+        stroke="var(--figure-ink-soft)" stroke-width="1" stroke-opacity="0.5"/>
+
+  <!-- Axe de pH -->
+  <line x1="60" y1="140" x2="612" y2="140"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="612,140 600,135.5 600,144.5" fill="var(--figure-ink-soft)"/>
+  <text x="618" y="144" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">pH</text>
+
+  <!-- Ticks 0 / 14 (repères, toujours visibles) -->
+  <line x1="70" y1="137" x2="70" y2="143" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="70" y="156" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">0</text>
+  <line x1="602" y1="137" x2="602" y2="143" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="602" y="156" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">14</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — la frontière pH = 7, dérivée de Ke (le sujet du rung)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+
+    <line x1="336" y1="48" x2="336" y2="134"
+          stroke="var(--figure-accent)" stroke-width="1.3" stroke-dasharray="5,3"/>
+    <line x1="336" y1="134" x2="336" y2="146"
+          stroke="var(--figure-accent)" stroke-width="2"/>
+    <text x="336" y="156" text-anchor="middle" font-size="11" font-weight="700"
+          fill="var(--figure-accent)">7</text>
+
+    <!-- Le bloc de neutralité descend d'une ligne. Sur la même ligne que
+         les deux lectures ponctuelles, il courait de x≈243 à x≈429 et
+         « pH = 9 → [H₃O⁺] = 10⁻⁹ » (x≈330 à 495) s'imprimait dedans
+         (recouvrement mesuré 42 %, illisible à l'œil). Trois annotations
+         ne tiennent pas sur une seule ligne de 640 px : les deux lectures
+         gardent la ligne, la neutralité prend la suivante. -->
+    <text x="336" y="192" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">[H<tspan
+          dy="3" font-size="8">3</tspan><tspan
+          dy="-3">O</tspan><tspan
+          dy="-4" font-size="8">+</tspan><tspan
+          dy="4">] = [HO</tspan><tspan
+          dy="-4" font-size="8">-</tspan><tspan
+          dy="4">] = √K</tspan><tspan
+          dy="3" font-size="8">e</tspan><tspan
+          dy="-3"> = 10&#8315;&#8311; mol/L</tspan>
+    </text>
+    <text x="336" y="206" text-anchor="middle" font-size="9.5" font-style="italic"
+          fill="var(--figure-ink-soft)">conséquence de K<tspan
+          dy="3" font-size="7">e</tspan><tspan
+          dy="-3"> = 10&#8315;&#185;&#8308; à 25°C — pas une convention</tspan>
+    </text>
+
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la zone acide (pH < 7) et son point pH = 2
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+
+    <text x="203" y="54" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink-soft)">solution acide</text>
+    <text x="203" y="82" text-anchor="middle" font-size="13"
+          fill="var(--figure-ink)">[H<tspan
+          dy="3" font-size="8">3</tspan><tspan
+          dy="-3">O</tspan><tspan
+          dy="-4" font-size="8">+</tspan><tspan
+          dy="4">] &gt; [HO</tspan><tspan
+          dy="-4" font-size="8">-</tspan><tspan
+          dy="4">]</tspan>
+    </text>
+
+    <line x1="146" y1="137" x2="146" y2="150" stroke="var(--figure-accent)" stroke-width="2"/>
+    <circle cx="146" cy="140" r="3" fill="var(--figure-accent)"/>
+    <text x="146" y="170" text-anchor="middle" font-size="10"
+          fill="var(--figure-accent)">pH = 2 &#8594; [H<tspan
+          dy="3" font-size="7">3</tspan><tspan
+          dy="-3">O</tspan><tspan
+          dy="-4" font-size="7">+</tspan><tspan
+          dy="4">] = 10&#8315;&#178; mol/L</tspan>
+    </text>
+
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la zone basique (pH > 7), son point pH = 9, et le
+       contraste qui tue la confusion "pH petit = plus basique"
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+
+    <text x="469" y="54" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink-soft)">solution basique</text>
+    <text x="469" y="82" text-anchor="middle" font-size="13"
+          fill="var(--figure-ink)">[H<tspan
+          dy="3" font-size="8">3</tspan><tspan
+          dy="-3">O</tspan><tspan
+          dy="-4" font-size="8">+</tspan><tspan
+          dy="4">] &lt; [HO</tspan><tspan
+          dy="-4" font-size="8">-</tspan><tspan
+          dy="4">]</tspan>
+    </text>
+
+    <line x1="412" y1="137" x2="412" y2="150" stroke="var(--figure-accent)" stroke-width="2"/>
+    <circle cx="412" cy="140" r="3" fill="var(--figure-accent)"/>
+    <text x="412" y="170" text-anchor="middle" font-size="10"
+          fill="var(--figure-accent)">pH = 9 &#8594; [H<tspan
+          dy="3" font-size="7">3</tspan><tspan
+          dy="-3">O</tspan><tspan
+          dy="-4" font-size="7">+</tspan><tspan
+          dy="4">] = 10&#8315;&#8313; mol/L</tspan>
+    </text>
+
+    <text x="320" y="236" text-anchor="middle" font-size="11.5" font-weight="600"
+          fill="var(--figure-ink)">pH = 2, le plus petit ici, porte pourtant le PLUS de H<tspan
+          dy="3" font-size="8">3</tspan><tspan
+          dy="-3">O</tspan><tspan
+          dy="-4" font-size="8">+</tspan><tspan
+          dy="4"> — jamais &#171; plus basique &#187;</tspan>
+    </text>
+
+  </g><!-- /step-3 -->
+
+</svg>

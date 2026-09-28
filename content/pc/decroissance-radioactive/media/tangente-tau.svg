@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="La constante de temps τ de la décroissance radioactive : la tangente à la courbe N(t) à l’origine coupe l’axe des temps en t = τ, et le point t½ = τ·ln2 est marqué avant τ sur le même axe.">
+  <title>La constante de temps τ — tangente à l’origine</title>
+  <!--
+    tangente-tau.svg — graphe STATIQUE de N(t) = N0 · e^(-t/τ), avec :
+      - la tangente à l'origine, qui coupe l'axe des temps (N=0) exactement
+        en t = τ (propriété standard des exponentielles décroissantes,
+        même construction que pour i(t) du dipôle RL — cf i-etablissement.svg —
+        mais ici la tangente coupe l'AXE lui-même, pas une asymptote séparée,
+        puisque l'asymptote de N(t) est N=0, confondue avec l'axe des temps) ;
+      - le point réel de la courbe à t=τ (méthode des 37 % : N(τ) = N0/e ≈ 0,368 N0) ;
+      - le repère t½ = τ·ln2 sur le même axe, pour rendre visible que
+        t½ < τ (ln2 ≈ 0,693 < 1).
+
+    Mise en étapes (LESSON-EXPERIENCE-SPEC §2.5) : graphe → toujours stagé,
+    ordre canonique axes → données → lecture.
+      step-1 : axes, repère N0 (chrome neutre)
+      step-2 : la courbe N(t) (les données)
+      step-3 : la tangente à l'origine, le repère τ, le repère t½, le
+               point à t=τ (méthode des 37 %) et la formule t½ = τ ln2
+               (la lecture — la construction interprétative, ajoutée en dernier)
+
+    Géométrie (calculée, pas devinée) :
+      origine (t=0, N=N0) : (x0,y0) = (80, 70)
+      axe N=0             : y = 350   → hauteur pleine N0 = 280 px
+      échelle temporelle  : τ_px = 200 px  (1 τ = 200 px sur x)
+      (échelle différente de decroissance-courbe.svg, choisie ici pour
+      loger proprement la tangente jusqu'à l'axe — meme loi physique,
+      simple re-cadrage.)
+
+    Tangente à l'origine : pente = -hauteur/τ_px = -280/200 = -1,4.
+    Partant de (80,70), elle atteint EXACTEMENT (80+200, 70+280) =
+    (280,350) — l'axe des temps — en t = τ. Ce n'est pas une approximation
+    graphique : c'est la propriété dN/dt|_0 = -N0/τ, vérifiée par construction.
+
+    Point réel à t=τ (x=280) : N/N0 = e^-1 ≈ 0,367879 → y = 350 - 280×0,367879
+      ≈ 246,99 — la méthode des 37 % (analogue à la méthode des 63 % de
+      i-etablissement.svg, mais pour une décroissance).
+
+    t½ = τ·ln2 ≈ 0,693147×200 ≈ 138,63 px depuis l'origine → x ≈ 218,6.
+    Valeur non arrondie à un pixel rond par construction : c'est la vraie
+    position de ln2, pas une approximation forcée.
+
+    Rôle des couleurs :
+      courbe N(t), tangente, repères τ et t½, point à t=τ : --figure-accent
+      (aucune couleur de rôle L/C ne s'applique ici — phénomène nucléaire,
+      pas un circuit — donc tout le sujet de la figure reste en accent)
+      axes, "0", N0 (référence initiale) : --figure-ink-soft (chrome neutre)
+  -->
+
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      La constante de temps τ — tangente à l’origine et lien avec t<tspan dy="3" font-size="8.5">1/2</tspan>
+    </text>
+
+    <!-- Fond du panneau -->
+    <rect x="40" y="32" width="590" height="350" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- ── Axes — ink-soft, chrome neutre ───────────────────────── -->
+    <line x1="80" y1="350" x2="610" y2="350"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="610,350 598,345.5 598,354.5" fill="var(--figure-ink-soft)"/>
+    <line x1="80" y1="350" x2="80" y2="50"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+    <text x="617" y="354" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">t</text>
+    <text x="72" y="54" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">N</text>
+    <text x="72" y="354" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Repère N0 (ink-soft — référence initiale, comme dans decroissance-courbe.svg) -->
+    <line x1="76" y1="70" x2="84" y2="70"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="70" y="74" text-anchor="end" font-size="10.5"
+          fill="var(--figure-ink-soft)">N<tspan dy="3" font-size="7.5">0</tspan></text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!--
+      Courbe N(t) — polyligne calculée, pas=25px (=τ_px/8), de t=0 à t=2,5τ.
+      Valeurs N/N0 = e^(-Δt/τ) ; y = 350 - 280×(N/N0). Voir calcul en tête de fichier.
+    -->
+    <path d="
+      M80,70
+      L105,102.9 L130,131.94 L155,157.56 L180,180.17 L205,200.13
+      L230,217.74 L255,233.28 L280,246.99 L305,259.1 L330,269.78
+      L355,279.21 L380,287.52 L405,294.87 L430,301.34 L455,307.06
+      L480,312.11 L505,316.56 L530,320.49 L555,323.96 L580,327.02
+    " fill="none"
+      stroke="var(--figure-accent)"
+      stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!--
+      Tangente à l'origine — droite exacte de (80,70) [pente = -hauteur/τ_px]
+      jusqu'à (280,350), où elle rencontre l'axe des temps pile en t = τ.
+    -->
+    <line x1="80" y1="70" x2="280" y2="350"
+          stroke="var(--figure-accent)" stroke-width="1.8"
+          stroke-dasharray="6,4" stroke-linecap="round"/>
+
+    <!-- Repère t½ = τ·ln2 (x≈218,6) — tick + label, avant τ sur le même axe -->
+    <line x1="218.6" y1="345" x2="218.6" y2="355"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="218.6" y="366" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-accent)">t<tspan dy="4" font-size="8">1/2</tspan></text>
+
+    <!-- Repère τ (x=280) — tick + label, là où la tangente coupe l'axe -->
+    <line x1="280" y1="345" x2="280" y2="355"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="280" y="366" text-anchor="middle" font-size="12" font-style="italic"
+          fill="var(--figure-accent)">τ</text>
+
+    <!-- Point : valeur réelle de la courbe à t = τ (méthode des 37 %) -->
+    <circle cx="280" cy="246.99" r="3.2" fill="var(--figure-accent)"/>
+    <!-- Ligne de repère discrète vers le label (finding : ancrer les labels flottants) -->
+    <line x1="283" y1="243" x2="322" y2="220"
+          stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="328" y="223" font-size="9.5" fill="var(--figure-ink)">N(τ) ≈ 0,37 · N<tspan dy="3" font-size="7">0</tspan></text>
+    <text x="328" y="236" font-size="9" fill="var(--figure-ink-soft)">(méthode des 37 %)</text>
+
+    <!-- Boîte formule -->
+    <rect x="405" y="48" width="210" height="32" rx="5"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="510" y="69" text-anchor="middle" font-size="13" font-style="italic"
+          fill="var(--figure-accent)">t<tspan
+          dy="4" font-size="9">1/2</tspan><tspan
+          dy="-4"> = τ ln 2</tspan>
+    </text>
+  </g><!-- /step-3 -->
+
+</svg>

@@ -1,0 +1,255 @@
+{
+  "slug": "champ-magnetique",
+  "tool": "scene3d",
+  "scene": "particule-champ-magnetique",
+  "title_fr": "Une particule chargée dans un champ magnétique, en trois dimensions",
+  "caption_fr": "Un électron — ou un positon — entre dans un champ magnétique uniforme, perpendiculaire à sa vitesse. Cinq étapes : à chaque fois tu paries d'abord, puis tu lances la particule. Mêmes constantes que la leçon : |q| = 1,6 × 10⁻¹⁹ C, m = 9,1 × 10⁻³¹ kg.",
+  "etapes": [
+    {
+      "id": "sens",
+      "titre": "De quel côté ?",
+      "consigne": "Un électron entre à $v_0 = 0{,}8\\times10^{7}\\ \\text{m/s}$ dans un champ magnétique uniforme de $1{,}5\\ \\text{mT}$, perpendiculaire à sa vitesse et dirigé vers l'arrière de la figure (⊗). Le champ occupe tout l'espace. Tu regardes la scène comme la figure du manuel.",
+      "pari": {
+        "question": "Vu comme sur la figure, la trajectoire de l'électron va s'infléchir…",
+        "revele_apres_course": 0.25,
+        "choix": [
+          {
+            "id": "haut",
+            "texte": "vers le haut",
+            "juste": false,
+            "misconception": "mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise",
+            "retour": "C'est le sens de $\\vec v_0 \\wedge \\vec B$ — celui que donne la main droite. Mais $\\vec F = q\\,\\vec v \\wedge \\vec B$ et, pour un électron, $q = -e$ est négative : la force pointe dans le sens OPPOSÉ, vers le bas."
+          },
+          {
+            "id": "bas",
+            "texte": "vers le bas",
+            "juste": true,
+            "retour": "La main droite donne $\\vec v_0 \\wedge \\vec B$ vers le haut ; la charge de l'électron est négative, donc $\\vec F$ lui est opposée : vers le bas. C'est le signe de $q$ qui choisit le côté."
+          },
+          {
+            "id": "droit",
+            "texte": "ni l'un ni l'autre : la force le pousse droit devant, et il accélère",
+            "juste": false,
+            "misconception": "mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise",
+            "retour": "La force de Lorentz est toujours perpendiculaire à la vitesse : elle ne pousse jamais « devant ». Elle dévie la particule dès son entrée dans le champ."
+          }
+        ]
+      },
+      "suite": "Remplace l'électron par un positon — même masse, charge $+e$ — et relance : le même cercle, de l'autre côté.",
+      "controles": [
+        "particule"
+      ],
+      "etat": {
+        "particule": "electron",
+        "B_mT": 1.5,
+        "sens": "entrant",
+        "v0": 0.8,
+        "region": "partout",
+        "vue": "manuel"
+      }
+    },
+    {
+      "id": "vitesse",
+      "titre": "Plus vite, moins vite ?",
+      "consigne": "Même électron, même champ. La flèche $\\vec v$ suit la particule : sa longueur est proportionnelle à la norme de la vitesse. On la regarde pendant un tour complet.",
+      "pari": {
+        "question": "Pendant ce tour, la norme de la vitesse de l'électron…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "augmente",
+            "texte": "augmente : la force le pousse",
+            "juste": false,
+            "misconception": "mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise",
+            "retour": "La force est perpendiculaire à la vitesse à chaque instant : elle n'a aucune composante le long du mouvement. Elle ne peut ni accélérer ni freiner — elle ne travaille pas."
+          },
+          {
+            "id": "constante",
+            "texte": "reste la même à chaque instant",
+            "juste": true,
+            "retour": "La force de Lorentz, perpendiculaire à $\\vec v$, ne travaille pas : l'énergie cinétique, donc la norme de la vitesse, ne change pas. Seule la DIRECTION de $\\vec v$ tourne."
+          },
+          {
+            "id": "diminue",
+            "texte": "diminue : la force le freine",
+            "juste": false,
+            "misconception": "mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise",
+            "retour": "Un frein est une force opposée au mouvement ; celle-ci lui est perpendiculaire à chaque instant. Elle ne travaille pas : la vitesse garde sa norme."
+          }
+        ]
+      },
+      "suite": "Change $v_0$ et relance : le cercle change de taille, mais pendant un tour la vitesse ne varie jamais.",
+      "controles": [
+        "vitesse"
+      ],
+      "lectures": [
+        "v",
+        "F",
+        "angle"
+      ],
+      "etat": {
+        "particule": "electron",
+        "B_mT": 1.5,
+        "sens": "entrant",
+        "v0": 0.8,
+        "region": "partout",
+        "vue": "manuel"
+      }
+    },
+    {
+      "id": "rayon",
+      "titre": "Et si le champ double ?",
+      "consigne": "Même électron, même vitesse — mais le champ vaut maintenant $3{,}0\\ \\text{mT}$, le double. Le cercle de tout à l'heure, à $1{,}5\\ \\text{mT}$, reste dessiné en pointillé.",
+      "pari": {
+        "question": "Comparé au cercle en pointillé, le nouveau cercle a un rayon…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "double",
+            "texte": "deux fois plus grand : un champ plus fort, un plus grand cercle",
+            "juste": false,
+            "misconception": "mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise",
+            "retour": "C'est l'inverse : $R = \\dfrac{m\\,v_0}{|q|\\,B}$. Un champ deux fois plus fort donne une force deux fois plus grande, qui courbe deux fois plus : le cercle est deux fois plus SERRÉ."
+          },
+          {
+            "id": "moitie",
+            "texte": "deux fois plus petit",
+            "juste": true,
+            "retour": "$R = \\dfrac{m\\,v_0}{|q|\\,B}$ : le rayon est inversement proportionnel au champ. De $1{,}5$ à $3{,}0\\ \\text{mT}$, il passe de $3{,}0\\ \\text{cm}$ à $1{,}5\\ \\text{cm}$."
+          },
+          {
+            "id": "meme",
+            "texte": "le même : le champ ne change que la force, pas le cercle",
+            "juste": false,
+            "retour": "Une force plus grande, à la même vitesse, courbe davantage : l'accélération normale $v_0^2/R$ doit égaler $|q|\\,v_0\\,B/m$, donc $R$ dépend bien de $B$."
+          }
+        ]
+      },
+      "suite": "Fais varier $B$ et relance : le rayon suit $R = \\dfrac{m\\,v_0}{|q|\\,B}$.",
+      "controles": [
+        "champ"
+      ],
+      "lectures": [
+        "R",
+        "F"
+      ],
+      "etat": {
+        "particule": "electron",
+        "B_mT": 3,
+        "sens": "entrant",
+        "v0": 0.8,
+        "region": "partout",
+        "trace_B_mT": 1.5,
+        "vue": "manuel"
+      }
+    },
+    {
+      "id": "couloir",
+      "titre": "Un champ limité à un couloir",
+      "consigne": "Le champ n'occupe plus qu'un couloir de $\\ell = 2{,}0\\ \\text{cm}$ de large, avec les valeurs de l'exemple travaillé : un électron, $v_0 = 1{,}0\\times10^{7}\\ \\text{m/s}$, $B = 1{,}0\\ \\text{mT}$. L'électron arrive par la gauche.",
+      "pari": {
+        "question": "À la sortie du couloir, l'électron…",
+        "revele_apres_course": 1,
+        "choix": [
+          {
+            "id": "droite",
+            "texte": "repart en ligne droite, dans une direction qui a tourné",
+            "juste": true,
+            "retour": "Hors du champ, plus aucune force (le poids est négligé) : la particule garde la vitesse acquise, en ligne droite. Sa direction a tourné de $\\theta$, avec $\\sin\\theta = \\ell/R$ : ici $R \\approx 5{,}7\\ \\text{cm}$ et $\\theta \\approx 21°$, les nombres de l'exemple travaillé."
+          },
+          {
+            "id": "cercle",
+            "texte": "continue de tourner, sur le même cercle",
+            "juste": false,
+            "retour": "Le cercle n'existe que tant que la force agit, c'est-à-dire dans le champ. À la sortie, la force disparaît : la trajectoire devient une droite."
+          },
+          {
+            "id": "retour",
+            "texte": "reprend sa direction de départ, puisque la force a cessé",
+            "juste": false,
+            "retour": "La force a cessé, mais la vitesse qu'elle a fait tourner reste tournée : rien ne la ramène. C'est le principe d'inertie."
+          }
+        ]
+      },
+      "suite": "Augmente $B$ jusqu'à ce que le rayon devienne plus petit que la largeur du couloir. Que devient l'électron — et que devient la relation $\\sin\\theta = \\ell/R$ ?",
+      "controles": [
+        "champ"
+      ],
+      "lectures": [
+        "R",
+        "theta"
+      ],
+      "etat": {
+        "particule": "electron",
+        "B_mT": 1,
+        "sens": "entrant",
+        "v0": 1,
+        "region": "couloir",
+        "vue": "manuel"
+      }
+    },
+    {
+      "id": "libre",
+      "titre": "À toi",
+      "consigne": "Tous les réglages sont ouverts : la particule, la valeur et le sens du champ, la vitesse, la région où règne le champ.",
+      "pari": {
+        "question": "Avant de toucher aux réglages : un positon entre dans un champ SORTANT (⊙). Vu comme sur la figure, il s'infléchit…",
+        "revele_apres_course": 0.25,
+        "choix": [
+          {
+            "id": "bas",
+            "texte": "vers le bas, comme l'électron dans le champ entrant",
+            "juste": true,
+            "retour": "Deux inversions : la charge ($+e$ au lieu de $-e$) et le champ (⊙ au lieu de ⊗). Chacune retourne la force ; les deux ensemble la ramènent vers le bas."
+          },
+          {
+            "id": "haut",
+            "texte": "vers le haut",
+            "juste": false,
+            "misconception": "mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise",
+            "retour": "Tu as compté une seule inversion. Il y en a deux : la charge ET le sens du champ. $\\vec v_0 \\wedge \\vec B$ pointe maintenant vers le bas, et $q > 0$ garde ce sens."
+          },
+          {
+            "id": "droit",
+            "texte": "tout droit : les deux inversions s'annulent",
+            "juste": false,
+            "retour": "Les deux inversions s'annulent sur le SENS de la force, pas sur la force elle-même : sa norme $|q|\\,v\\,B$ n'a pas changé. La particule tourne, du même côté que l'électron dans le champ entrant."
+          }
+        ]
+      },
+      "controles": [
+        "particule",
+        "champ",
+        "sens",
+        "vitesse",
+        "region"
+      ],
+      "lectures": [
+        "v",
+        "F",
+        "R",
+        "theta"
+      ],
+      "etat": {
+        "particule": "positon",
+        "B_mT": 2,
+        "sens": "sortant",
+        "v0": 1,
+        "region": "partout",
+        "vue": "manuel"
+      }
+    }
+  ],
+  "boundary": "Cadre du programme (2ème Bac PC et SM) : force de Lorentz, champ $\\vec B$ uniforme et PERPENDICULAIRE à $\\vec v_0$ — le seul cas au programme ; poids négligé ; mouvement circulaire uniforme de rayon $R = m v_0/(|q| B)$ ; déflexion à la traversée d'un couloir, $\\sin\\theta = \\ell/R$. Électron et positon : même masse, charges opposées (le positon est celui de la désintégration β⁺).",
+  "fit_caveat": "Les longueurs sont à la vraie échelle, en centimètres, et la vitesse affichée est celle de l'écran : 10⁷ m/s, c'est exactement 1 cm par nanoseconde. Le temps est ralenti environ 300 millions de fois (3 ns de vol par seconde). Les flèches $\\vec v$ et $\\vec F$ ont des longueurs proportionnelles à leurs normes — et le champ s'arrête à 3,0 mT pour que la flèche $\\vec F$ reste toujours dans le cercle vers le centre duquel elle pointe. Les curseurs avancent par pas de 0,1.",
+  "fallback_note": "Sans WebGL, le panneau le dit et garde les paris, les réglages et les calculs ; la figure de la déflexion magnétique, plus bas dans la leçon, en montre l'essentiel. À l'impression, le panneau disparaît et la figure figée reste.",
+  "pedagogy_wiring": {
+    "misconceptions": [
+      "mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise"
+    ],
+    "why_3d": "La force de Lorentz est un produit vectoriel : $\\vec v$, $\\vec B$ et $\\vec F$ sont deux à deux perpendiculaires, et la figure plane doit coder la troisième direction par ⊗ et ⊙. Vue de biais, la scène montre ce que ces symboles veulent dire — un champ perpendiculaire au plan du mouvement — et la règle de la main droite devient une construction dans l'espace.",
+    "predict_then_reveal": "Chaque étape demande un pari AVANT toute preuve ; le verdict attend que la particule ait parcouru la fraction de course annoncée (revele_apres_course : un quart pour le côté, une course entière pour la vitesse, le rayon et la sortie). Avant le pari, ni la force, ni v₀ ∧ B, ni la fiche ne sont montrées."
+  },
+  "spec_ref": "content/pc/chute-mouvements-plans/lesson.md R6 (la force de Lorentz, la règle du sens, la vitesse constante, le mouvement circulaire, la déflexion et son exemple travaillé) ; items.yaml, misconception force-de-lorentz-mal-comprise. Aucun callout média ne prescrivait ce manipulable : spec-extension.md couvre R7–R10 et demande de ne pas toucher à R0–R6 ; la scène s'AJOUTE à R6 (un marqueur et un paragraphe d'annonce), elle n'en réécrit rien. Décision et critère : ADR 0041.",
+  "adr_ref": "docs/decisions/0041-scenes-3d-de-premiere-partie.md"
+}

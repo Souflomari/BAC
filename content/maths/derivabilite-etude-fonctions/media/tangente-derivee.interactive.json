@@ -1,0 +1,25 @@
+{
+  "slug": "tangente-derivee",
+  "control": {
+    "kind": "drag-point",
+    "axis": "t",
+    "domain": [0.3, 4.0],
+    "step": 0.05,
+    "initial": 2
+  },
+  "bindings": [
+    { "target": "#point-a", "recompute": "point" },
+    { "target": "#point-a-halo", "recompute": "pointHalo" },
+    { "target": "#label-a", "recompute": "labelAPos" },
+    { "target": "#label-a", "recompute": "labelAText" },
+    { "target": "#repere-dash", "recompute": "repereDash" },
+    { "target": "#repere-tick", "recompute": "repereTick" },
+    { "target": "#repere-label", "recompute": "repereLabelPos" },
+    { "target": "#repere-label", "recompute": "repereLabelText" },
+    { "target": "#tangente-line", "recompute": "tangentPath" },
+    { "target": "#formule-equation", "recompute": "equationLabel" },
+    { "target": "#formule-pente", "recompute": "slopeLabel" }
+  ],
+  "unlockAfterStage": 3,
+  "readoutTemplate": "En t = {value} s : pente de la tangente = d′(t) = {slope}"
+}

@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250" width="640" height="250"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Comparaison de deux ondes : à gauche une onde transversale sur une corde, où le déplacement de la matière est vertical, perpendiculaire à la propagation horizontale ; à droite une onde longitudinale sur un ressort, où le déplacement des spires est horizontal, parallèle à la propagation.">
+  <title>Onde transversale vs onde longitudinale</title>
+  <!--
+    transverse-longitudinal.svg — deux schémas côte à côte, STATIQUES.
+    Le seul critère qui compte (R2 du texte) : la direction du déplacement
+    de la matière, comparée à la direction de propagation.
+
+    Convention de couleur commune aux deux panneaux (permet la comparaison
+    directe) :
+      déplacement de la matière (la grandeur qui change de direction
+        d'un panneau à l'autre — c'est ELLE le sujet de la figure) : --figure-accent
+      propagation (la même direction dans les deux panneaux, sert de
+        référence fixe)                                            : --figure-ink-soft
+      points de repère (neutres)                                   : --figure-ink
+
+    Panneau gauche (corde) : flèche de déplacement VERTICALE, flèche de
+      propagation HORIZONTALE — les deux sont perpendiculaires, visible
+      d'un coup d'œil par la simple orientation des deux flèches.
+    Panneau droit (ressort) : flèche de déplacement HORIZONTALE — même
+      orientation que la flèche de propagation, donc parallèles.
+    Aucun repère d'angle explicite n'est ajouté : l'orientation des deux
+    flèches suffit à montrer perpendicularité vs parallélisme (principe
+    de cohérence — pas de marque superflue).
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="18" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Le critère : direction du déplacement, comparée à la direction de propagation
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       PANNEAU GAUCHE — onde transversale (corde de Melde)
+       rect x=30..305, y=46..236 ; baseline (corde au repos) y=166
+       ══════════════════════════════════════════════════════ -->
+  <g id="panel-transverse">
+    <rect x="30" y="46" width="275" height="190" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Flèche de propagation — horizontale, au-dessus de la corde -->
+    <line x1="60" y1="70" x2="280" y2="70"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="280,70 268,65.5 268,74.5" fill="var(--figure-ink-soft)"/>
+    <text x="170" y="58" text-anchor="middle" font-size="9.5"
+          fill="var(--figure-ink-soft)">sens de propagation</text>
+
+    <!-- Corde + bosse (demi-largeur 40, amplitude 42), pic en (170,124) -->
+    <path d="M50,166 L130,166 C143,166 150,124 170,124 C190,124 197,166 210,166 L290,166"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Point repère sur la corde, au sommet -->
+    <circle cx="170" cy="124" r="3" fill="var(--figure-ink)"/>
+
+    <!-- Flèche de déplacement — VERTICALE, superposée au point repère
+         (double flèche : la matière oscille de part et d'autre du repos) -->
+    <line x1="170" y1="90" x2="170" y2="145"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <polygon points="170,90 165.5,98 174.5,98" fill="var(--figure-accent)"/>
+    <polygon points="170,145 165.5,137 174.5,137" fill="var(--figure-accent)"/>
+    <text x="182" y="120" text-anchor="start" font-size="10"
+          fill="var(--figure-accent)">déplacement</text>
+
+    <!-- Nom du panneau -->
+    <text x="167" y="228" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-ink)">Onde transversale (corde)</text>
+  </g><!-- /panel-transverse -->
+
+  <!-- ══════════════════════════════════════════════════════
+       PANNEAU DROIT — onde longitudinale (ressort)
+       rect x=335..610, y=46..236 ; axe des spires y=166
+       ══════════════════════════════════════════════════════ -->
+  <g id="panel-longitudinale">
+    <rect x="335" y="46" width="275" height="190" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Flèche de propagation — horizontale, au-dessus du ressort -->
+    <line x1="375" y1="70" x2="575" y2="70"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="575,70 563,65.5 563,74.5" fill="var(--figure-ink-soft)"/>
+    <text x="475" y="58" text-anchor="middle" font-size="9.5"
+          fill="var(--figure-ink-soft)">sens de propagation</text>
+
+    <!--
+      Ressort — zigzag horizontal, pas VARIABLE : spires resserrées au
+      centre (zone comprimée, la perturbation en cours de passage) et
+      plus espacées de part et d'autre (zones détendues), exactement le
+      même principe que la bosse isolée du panneau de gauche, mais rendu
+      par une densité de spires plutôt que par une hauteur transversale.
+      Sommets alternés (haut y=152 / bas y=180) — pas large (26px) aux
+      extrémités, pas resserré (12px) au centre.
+    -->
+    <path d="M355,152 L381,180 L407,152 L433,180 L445,152 L457,180 L469,152 L481,180 L493,152 L519,180 L545,152 L571,180 L590,152"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Point repère : une spire au centre de la zone comprimée -->
+    <circle cx="469" cy="152" r="3" fill="var(--figure-ink)"/>
+    <!-- Fil de rappel discret vers la flèche de déplacement, en dessous -->
+    <line x1="469" y1="152" x2="469" y2="192"
+          stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+
+    <!-- Flèche de déplacement — HORIZONTALE, même orientation que la
+         flèche de propagation ci-dessus : les deux sont parallèles -->
+    <line x1="440" y1="198" x2="498" y2="198"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <polygon points="440,198 448,193.5 448,202.5" fill="var(--figure-accent)"/>
+    <polygon points="498,198 490,193.5 490,202.5" fill="var(--figure-accent)"/>
+    <text x="469" y="212" text-anchor="middle" font-size="10"
+          fill="var(--figure-accent)">déplacement</text>
+
+    <!-- Nom du panneau -->
+    <text x="472" y="228" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-ink)">Onde longitudinale (ressort)</text>
+  </g><!-- /panel-longitudinale -->
+
+</svg>

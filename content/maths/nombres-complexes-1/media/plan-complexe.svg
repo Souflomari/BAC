@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Le plan complexe : le point M d’affixe z = 3 + 4i, ses projections a = 3 et b = 4 sur les axes Re et Im, le vecteur OM, et le module |z| = 5, longueur de OM.">
+  <title>Le plan complexe — affixe, image et module de z</title>
+  <!--
+    plan-complexe.svg — figure STAGED (LESSON-EXPERIENCE-SPEC.md §2.5 : "graphes,
+    toujours staged", ordre canonique axes → données → lecture) pour le R5
+    (représentation géométrique : affixe, image). Légendes dans
+    plan-complexe.stages.json.
+      step-1 : le repère — les axes Re/Im et l'origine O.
+      step-2 : les données — le point M, image de z = 3 + 4i, et le vecteur OM.
+      step-3 : la lecture — les projections a = 3, b = 4, et le module
+               |z| = OM = 5.
+
+    Reprend l'exemple filé au R5 (le point B de l'exemple travaillé
+    "Soient A et B les points d'affixes zA=0 et zB=3+4i" — |zB|=5 est un
+    triplet 3-4-5, donc géométriquement propre) : z = 3 + 4i, M(a,b) avec
+    a=3, b=4, |z| = sqrt(3²+4²) = 5.
+
+    PÉRIMÈTRE : cette leçon (nombres-complexes-1) couvre volontairement la
+    forme algébrique, le conjugué, le module et la géométrie du plan
+    complexe — mais PAS l'argument (voir la note de validation en fin de
+    lesson.md, point 3 : arg(z)/forme trigonométrique est hors périmètre,
+    réservé à un chapitre 2). En conséquence, CETTE figure ne trace PAS
+    d'angle ni de arg(z) = θ, contrairement à la géométrie "vue polaire"
+    parfois associée à ce genre de schéma : ce serait introduire une
+    notation jamais définie dans le texte. Le focus accent porte donc sur
+    le module |z| = OM (la grandeur que le R4/R5 mettent effectivement en
+    avant), pas sur un couple module+argument.
+
+    Repère (échelle 70 px/unité, origine en bas à gauche du panneau,
+    seul le premier quadrant est utile ici puisque a>0 et b>0) :
+      origine O_px = (110, 380)
+      M = O_px + (3·70, −4·70) = (320, 100)
+
+    Vecteur OM : direction unitaire (Δx,Δy)/|OM| = (210,−280)/350 = (0.6,−0.8)
+    (350 px = 5 unités × 70 px, cohérent avec |z|=5). La pointe de flèche
+    est reculée de 12 px le long de cette direction pour laisser place au
+    point M lui-même (cercle plein).
+
+    Rôle des couleurs :
+      axes, projections en pointillé, labels a/b, O          : --figure-ink-soft
+      nom du point M et son affixe "z = 3+4i"                 : --figure-ink
+      vecteur OM, le point M, et le label |z|                 : --figure-accent
+      (le module — la grandeur mise en avant par cette figure)
+  -->
+  <rect width="640" height="480" fill="var(--figure-surface)"/>
+
+  <!-- Titre -->
+  <text x="320" y="24" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Le plan complexe : affixe, image et module
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — Le repère : axes (Re, Im) et l'origine O
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <line x1="110" y1="380" x2="560" y2="380"
+          stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <polygon points="574,380 560,375.5 560,384.5" fill="var(--figure-ink-soft)"/>
+    <line x1="110" y1="380" x2="110" y2="64"
+          stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <polygon points="110,50 105.5,64 114.5,64" fill="var(--figure-ink-soft)"/>
+    <text x="584" y="384" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">Re</text>
+    <text x="118" y="54" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">Im</text>
+    <text x="98" y="392" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">O</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — Les données : le point M, image de z, et le vecteur OM
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line x1="110" y1="380" x2="312.8" y2="109.6"
+          stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+    <polygon points="320,100 316.8,112.6 308.8,106.6" fill="var(--figure-accent)"/>
+    <circle cx="320" cy="100" r="4" fill="var(--figure-accent)"/>
+
+    <!-- Nom du point et son affixe -->
+    <text x="330" y="90" font-size="14" font-style="italic" fill="var(--figure-ink)">M</text>
+    <text x="330" y="106" font-size="12" fill="var(--figure-ink)"><tspan
+          font-style="italic">z</tspan><tspan> = 3 + 4</tspan><tspan font-style="italic">i</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — La lecture : projections a, b et le module |z| = OM
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Projections en pointillé, jusqu'aux axes -->
+    <line x1="320" y1="106" x2="320" y2="380"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4" stroke-dasharray="5,4" stroke-linecap="round"/>
+    <line x1="110" y1="100" x2="316" y2="100"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4" stroke-dasharray="5,4" stroke-linecap="round"/>
+    <text x="320" y="400" text-anchor="middle" font-size="12" fill="var(--figure-ink-soft)"><tspan
+          font-style="italic">a</tspan><tspan> = 3</tspan></text>
+    <text x="100" y="96" text-anchor="end" font-size="12" fill="var(--figure-ink-soft)"><tspan
+          font-style="italic">b</tspan><tspan> = 4</tspan></text>
+
+    <!-- Label du module, dans la zone dégagée entre O, l'axe et le vecteur -->
+    <text x="250" y="250" text-anchor="middle" font-size="13" fill="var(--figure-accent)"><tspan
+          font-style="italic">|z|</tspan><tspan> = 5</tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

@@ -1,0 +1,184 @@
+# Attempt-first exercises (summit-conversion campaign).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2019 session
+# normale, PC BIOF, code NS28F, AlloSchool element/68300 — statut « vérifié »
+# in docs/sujets/pc/lois-de-newton.md, Exercice IV Partie I). r-variation is a
+# fresh anti-memorisation twin (same skills, different numbers/context,
+# status not-applicable).
+
+notion: lois-de-newton
+
+exercises:
+  # ── r-bac — the VERIFIED 2019 national sujet, Exercice IV Partie I ────────
+  # Faithful transcription of docs/sujets/pc/lois-de-newton.md → "2019 — session
+  # normale — Exercice IV (Partie I)". Système (S), m = 190 kg, descend la piste
+  # rectiligne inclinée A'B' (angle β = 10°) sous une force motrice F constante
+  # parallèle au mouvement, frottements négligés. La 2e loi projetée sur l'axe
+  # (A, i) parallèle à la pente donne a_G = F/m + g·sinβ. La figure 2 (V_G(t),
+  # droite par l'origine) donne a_G ; on remonte à F, puis à x(t), t_B et V_B.
+  - id: r-bac
+    title: "Exercice de type bac — mouvement d'un système sur un plan incliné (2019)"
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national PC BIOF, AlloSchool NS28F
+        (Exercice IV, Partie I — mouvement du centre d'inertie sur le plan
+        incliné A'B', 2e loi de Newton ; barème 5 pt sur l'exercice complet,
+        Partie I ≈ 3 pt). Transcription vérifiée : re-fetch indépendant
+        AlloSchool element/68300 + diff OK (docs/sujets/pc/lois-de-newton.md).
+    intro: |-
+      **Mouvement du centre d'inertie d'un système mécanique (examen national, session normale 2019).**
+
+      Une piste est formée d'une partie rectiligne A'B', inclinée d'un angle $\beta$ par rapport à l'horizontale, d'un tremplin circulaire B'C', puis d'une zone d'atterrissage horizontale. On étudie ici seulement la **Partie I : le mouvement sur la portion A'B'.** Dans tout l'exercice, les frottements sont négligés et l'étude du mouvement du centre d'inertie $G$ du système $(S)$ est menée dans le référentiel terrestre, considéré comme galiléen.
+
+      **Données :** angle $\beta = 10°$ (on prendra $\sin 10° \approx 0{,}17$) ; intensité de la pesanteur $g = 10\ \text{m}\cdot\text{s}^{-2}$ ; masse du système $m = 190\ \text{kg}$.
+
+      À l'instant $t = 0$ pris comme origine des dates, le système $(S)$ s'élance **sans vitesse initiale**, depuis une position où $G$ est confondu avec le point A, et descend la pente jusqu'au point B. Pendant cette phase, $(S)$ est soumis à trois forces : la réaction $\vec{R}$ du plan (perpendiculaire au plan, les frottements étant négligés), son poids $\vec{P}$, et une **force motrice $\vec{F}$ constante**, de ligne d'action parallèle à la trajectoire de $G$ et de sens celui du mouvement. On repère la position de $G$ par son abscisse $x$ sur un axe $(A, \vec{i})$ parallèle à A'B' et orienté dans le sens du mouvement (de A vers B).
+
+      **Figure 2 (fournie au candidat) :** la courbe donne la vitesse instantanée $V_G$ (en $\text{m}\cdot\text{s}^{-1}$) du centre d'inertie en fonction du temps $t$ (en $\text{s}$). C'est une **droite qui passe par l'origine** (mouvement rectiligne uniformément accéléré) ; l'axe des vitesses est gradué $3,\ 6,\ 9$ et l'axe des temps $0{,}5,\ 1,\ 1{,}5,\ 2$. La droite passe par le point de coordonnées $(t = 2\ \text{s},\ V_G = 9\ \text{m}\cdot\text{s}^{-1})$.
+    questions:
+      - id: q1
+        part: "Partie I — Établir l'équation du mouvement sur A'B'"
+        stem: |-
+          **(0,5 pt)** En appliquant la deuxième loi de Newton au système $(S)$, montrer que l'expression de l'accélération $a_G$ du mouvement de $G$ sur la partie A'B' est :
+          $$a_G = \frac{F}{m} + g\sin\beta$$
+        reasoning: |-
+          On suit la méthode de la leçon (chapitre 6), dans l'ordre : système, bilan, deuxième loi, repère, projection. Le système est $(S)$, étudié dans le référentiel terrestre galiléen. Le bilan comporte trois forces : le poids $\vec{P}$ (vertical, vers le bas), la réaction $\vec{R}$ du plan (perpendiculaire au plan puisque les frottements sont négligés), et la force motrice $\vec{F}$ (parallèle au mouvement, dans son sens). On écrit $\sum \vec{F}_{ext} = m\,\vec{a}_G$, puis on projette sur l'axe $(A, \vec{i})$ orienté dans le sens de la descente. Sur cet axe, $\vec{R}$ n'a **aucune composante** (elle est perpendiculaire au plan) ; $\vec{F}$ donne $+F$ ; et le poids donne sa composante le long du plan, $+mg\sin\beta$ (le test des cas extrêmes de la leçon au chapitre 8 confirme que c'est bien $\sin\beta$, et non $\cos\beta$, qui pèse le long de la pente). Il ne reste plus qu'à isoler $a_G$.
+        steps:
+          - math: '\sum \vec{F}_{ext} = \vec{P} + \vec{R} + \vec{F} = m\,\vec{a}_G'
+            note: "Deuxième loi de Newton, forme vectorielle, appliquée au système (S)."
+          - math: 'F + mg\sin\beta = m\,a_G'
+            note: "Projection sur l'axe (A, i) parallèle au plan, sens du mouvement : R perpendiculaire donne 0, F donne +F, le poids donne +mg·sinβ."
+          - math: '\boxed{a_G = \frac{F}{m} + g\sin\beta}'
+            note: "On divise par la masse m pour isoler l'accélération."
+      - id: q2
+        stem: |-
+          **(0,5 pt)** La courbe de la figure 2 représente les variations de la vitesse instantanée $V_G$ du centre d'inertie $G$ en fonction du temps. En exploitant cette courbe, trouver la valeur de l'accélération $a_G$.
+        reasoning: |-
+          Le mouvement est rectiligne uniformément accéléré : $V_G(t)$ est une droite passant par l'origine, donc de la forme $V_G = a_G\,t$. L'accélération est alors exactement la **pente** de cette droite — pas besoin de calcul de forces ici, c'est une lecture graphique. On prend deux points bien lisibles de la droite : l'origine $(0 ; 0)$ et le point $(2\ \text{s} ; 9\ \text{m}\cdot\text{s}^{-1})$ marqué sur les graduations, et on calcule le coefficient directeur.
+        steps:
+          - math: 'a_G = \frac{\Delta V_G}{\Delta t} = \frac{9 - 0}{2 - 0}'
+            note: "Pente de la droite V_G(t), entre l'origine et le point (2 s ; 9 m/s)."
+          - math: '\boxed{a_G = 4{,}5\ \text{m}\cdot\text{s}^{-2}}'
+            note: "Valeur de l'accélération, constante (mouvement uniformément accéléré)."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Déduire l'intensité $F$ de la force motrice.
+        reasoning: |-
+          On dispose maintenant de tout : l'expression $a_G = \frac{F}{m} + g\sin\beta$ (question 1) et la valeur $a_G = 4{,}5\ \text{m}\cdot\text{s}^{-2}$ (question 2). Il suffit d'isoler $F$ dans l'expression et de faire l'application numérique. Le terme $g\sin\beta$ représente la part de l'accélération due au poids ; ce qui reste, une fois cette part retranchée, est fourni par la force motrice.
+        steps:
+          - math: 'a_G = \frac{F}{m} + g\sin\beta \implies F = m\left(a_G - g\sin\beta\right)'
+            note: "On isole F à partir de l'expression établie en question 1."
+          - math: 'F = 190 \times \left(4{,}5 - 10 \times 0{,}17\right) = 190 \times \left(4{,}5 - 1{,}7\right)'
+            note: "Application numérique : m = 190 kg, a_G = 4,5 m/s², g·sinβ = 10 × 0,17 = 1,7 m/s²."
+          - math: '\boxed{F = 190 \times 2{,}8 \approx 532\ \text{N}}'
+            note: "Intensité de la force motrice."
+      - id: q4
+        part: "Partie I — Équation horaire, instant et vitesse de passage en B"
+        stem: |-
+          **(0,5 pt)** Écrire l'expression numérique de l'équation horaire $x = f(t)$ du mouvement de $G$ sur la partie A'B'.
+        reasoning: |-
+          L'accélération est constante : le mouvement est uniformément accéléré. On remonte de l'accélération à la position par intégrations successives (comme au chapitre de cinématique), en tenant compte des conditions initiales : à $t = 0$, le système part **sans vitesse initiale** ($V_G(0) = 0$) depuis A, pris comme origine des abscisses ($x(0) = 0$). La vitesse est donc $V_G(t) = a_G\,t$, et la position $x(t) = \frac{1}{2}a_G\,t^2$.
+        steps:
+          - math: 'V_G(t) = a_G\,t \qquad (V_G(0) = 0)'
+            note: "Vitesse : primitive de l'accélération constante, sans vitesse initiale."
+          - math: 'x(t) = \frac{1}{2}a_G\,t^2 \qquad (x(0) = 0,\ \text{origine en A})'
+            note: "Position : primitive de la vitesse, origine des abscisses au point A."
+          - math: '\boxed{x(t) = \frac{1}{2}\times 4{,}5\times t^2 = 2{,}25\,t^2} \quad (x \text{ en m},\ t \text{ en s})'
+            note: "Application numérique avec a_G = 4,5 m/s²."
+      - id: q5
+        stem: |-
+          **(0,5 pt)** Sachant que $AB = 36\ \text{m}$, déterminer l'instant $t_B$ de passage de $G$ par le point B.
+        reasoning: |-
+          Le point B est atteint lorsque l'abscisse de $G$ vaut la longueur parcourue depuis A, soit $x(t_B) = AB = 36\ \text{m}$. On reporte cette condition dans l'équation horaire $x(t) = 2{,}25\,t^2$ obtenue à la question précédente, et on résout pour $t_B$ (on ne garde que la solution positive, un temps).
+        steps:
+          - math: 'x(t_B) = AB \implies 2{,}25\,t_B^2 = 36'
+            note: "Condition de passage en B, reportée dans l'équation horaire."
+          - math: 't_B^2 = \frac{36}{2{,}25} = 16 \implies t_B = \sqrt{16}'
+            note: "On isole t_B² puis on prend la racine carrée (solution positive)."
+          - math: '\boxed{t_B = 4{,}0\ \text{s}}'
+            note: "Instant de passage de G par le point B."
+      - id: q6
+        stem: |-
+          **(0,5 pt)** Calculer la vitesse $V_B$ de passage de $G$ par le point B.
+        reasoning: |-
+          La vitesse suit la loi $V_G(t) = a_G\,t$ (question 4). Il suffit d'y reporter l'instant de passage $t_B = 4{,}0\ \text{s}$ trouvé à la question 5. On pourrait aussi utiliser la relation $V_B^2 = 2\,a_G\,AB$ (indépendante du temps) : les deux donnent la même valeur, ce qui offre une vérification.
+        steps:
+          - math: 'V_B = a_G\,t_B = 4{,}5 \times 4{,}0'
+            note: "On reporte t_B = 4,0 s dans V_G(t) = a_G·t."
+          - math: '\boxed{V_B = 18\ \text{m}\cdot\text{s}^{-1}}'
+            note: "Vitesse de passage en B. Vérification : √(2 × 4,5 × 36) = √324 = 18 m/s."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ─────────
+  # Same deep skills as r-bac (bilan + 2e loi projetée sur un plan incliné,
+  # accélération, réaction normale, cinématique du mouvement uniformément
+  # accéléré, rôle de la masse) mais un habillage DIFFÉRENT : ici la descente se
+  # fait AVEC frottement et SANS force motrice ni graphe. La procédure change
+  # (a_G = g·sinα − f/m au lieu de F/m + g·sinβ), donc l'élève ne peut pas
+  # recopier le sujet 2019 : il doit reconnaître quelle procédure s'applique.
+  - id: r-variation
+    title: "Variation fraîche — descente d'un plan incliné avec frottement"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2019, sourcé).
+    intro: |-
+      Même structure profonde que l'exercice précédent (bilan des forces, deuxième loi projetée sur un plan incliné, cinématique du mouvement uniformément accéléré), mais un enrobage différent : ici le solide descend **avec frottement** et **sans force motrice**, et aucun graphe n'est fourni. Tu ne peux donc pas recopier la solution du sujet 2019 — tu dois reconnaître que la procédure a changé.
+
+      On étudie le mouvement dans le référentiel terrestre, supposé galiléen. Un solide de masse $m = 2{,}0\ \text{kg}$ est lâché **sans vitesse initiale** en haut d'un plan incliné d'angle $\alpha = 30°$ par rapport à l'horizontale. Il glisse vers le bas ; les frottements exercent une force $\vec{f}$, de norme $f = 4{,}0\ \text{N}$, opposée au sens de la descente. On prend $g = 10\ \text{m}\cdot\text{s}^{-2}$, $\sin 30° = 0{,}5$ et $\cos 30° \approx 0{,}87$. On choisit un axe $Ox$ le long du plan, orienté dans le sens de la descente, et un axe $Oy$ perpendiculaire au plan, orienté vers l'extérieur.
+    questions:
+      - id: q1
+        stem: |-
+          Faire le bilan des forces, puis, en appliquant la deuxième loi de Newton, établir l'expression de l'accélération $a_G$ du solide le long du plan, en fonction de $g$, $\alpha$, $f$ et $m$.
+        reasoning: |-
+          Trois forces s'exercent sur le solide : le poids $\vec{P}$ (vertical, vers le bas), la réaction normale $\vec{N}$ (perpendiculaire au plan) et le frottement $\vec{f}$ (le long du plan, opposé à la descente, donc dirigé vers le haut de la pente). On écrit $\sum \vec{F}_{ext} = m\,\vec{a}_G$ et on projette sur $Ox$ (sens de la descente). La composante du poids le long du plan vaut $+mg\sin\alpha$ (elle entraîne le solide vers le bas), le frottement donne $-f$ (il s'oppose au mouvement), et $\vec{N}$, perpendiculaire, ne donne rien. Contrairement au sujet 2019, il n'y a pas de force motrice $\vec{F}$, mais un frottement qui se **retranche**.
+        steps:
+          - math: '\vec{P} + \vec{N} + \vec{f} = m\,\vec{a}_G'
+            note: "Deuxième loi de Newton, forme vectorielle."
+          - math: 'mg\sin\alpha - f = m\,a_G'
+            note: "Projection sur Ox (sens de la descente) : le poids donne +mg·sinα, le frottement −f, la réaction normale 0."
+          - math: '\boxed{a_G = g\sin\alpha - \frac{f}{m}}'
+            note: "On divise par m pour isoler a_G. Le frottement se retranche, il ne s'ajoute pas."
+      - id: q2
+        stem: |-
+          Calculer la valeur de l'accélération $a_G$.
+        reasoning: |-
+          Application numérique directe de l'expression établie en question 1, avec $g\sin\alpha = 10 \times 0{,}5 = 5{,}0\ \text{m}\cdot\text{s}^{-2}$ et $\frac{f}{m} = \frac{4{,}0}{2{,}0} = 2{,}0\ \text{m}\cdot\text{s}^{-2}$.
+        steps:
+          - math: 'a_G = g\sin\alpha - \frac{f}{m} = 10 \times 0{,}5 - \frac{4{,}0}{2{,}0}'
+            note: "On reporte les valeurs : g = 10, sinα = 0,5, f = 4,0 N, m = 2,0 kg."
+          - math: '\boxed{a_G = 5{,}0 - 2{,}0 = 3{,}0\ \text{m}\cdot\text{s}^{-2}}'
+            note: "Accélération de la descente, dans le sens du mouvement (a_G > 0)."
+      - id: q3
+        stem: |-
+          Déterminer la valeur de la réaction normale $N$ du plan sur le solide.
+        reasoning: |-
+          La réaction normale se trouve en projetant la deuxième loi sur l'axe $Oy$, **perpendiculaire au plan**. Le solide ne décolle pas du plan : sa composante d'accélération selon $Oy$ est nulle. L'équilibre perpendiculaire relie alors $\vec{N}$ à la seule autre force ayant une composante selon $Oy$ : la composante du poids perpendiculaire au plan, $mg\cos\alpha$ (avec $\cos\alpha$, pas $\sin\alpha$). Le frottement, parallèle au plan, n'intervient pas ici.
+        steps:
+          - math: 'N - mg\cos\alpha = 0 \implies N = mg\cos\alpha'
+            note: "Projection sur Oy (perpendiculaire au plan), accélération nulle dans cette direction."
+          - math: '\boxed{N = 2{,}0 \times 10 \times 0{,}87 \approx 17\ \text{N}}'
+            note: "Application numérique : sur un plan incliné, N = mg·cosα, pas mg."
+      - id: q4
+        stem: |-
+          Le solide part du repos. Quelle vitesse $v$ atteint-il après avoir parcouru une distance $d = 6{,}0\ \text{m}$ le long du plan ?
+        reasoning: |-
+          L'accélération est constante (question 2) et le départ se fait sans vitesse initiale : c'est un mouvement uniformément accéléré. On utilise la relation entre vitesse et distance parcourue, $v^2 = 2\,a_G\,d$, qui relie directement la vitesse à la distance sans passer par le temps. Attention à bien prendre la **racine carrée** à la fin.
+        steps:
+          - math: 'v^2 = 2\,a_G\,d = 2 \times 3{,}0 \times 6{,}0'
+            note: "Relation vitesse-distance du mouvement uniformément accéléré, départ du repos."
+          - math: 'v^2 = 36 \implies v = \sqrt{36}'
+            note: "On isole v en prenant la racine carrée (v² n'est pas une vitesse)."
+          - math: '\boxed{v = 6{,}0\ \text{m}\cdot\text{s}^{-1}}'
+            note: "Vitesse après 6,0 m de descente."
+      - id: q5
+        stem: |-
+          Si le plan était **sans frottement** (même angle, même masse), l'accélération de la descente serait-elle plus grande ou plus petite ? La masse du solide jouerait-elle alors un rôle ? Justifier sans nouveau calcul lourd.
+        reasoning: |-
+          Sans frottement, le terme $-\frac{f}{m}$ disparaît : l'expression devient $a_G = g\sin\alpha = 10 \times 0{,}5 = 5{,}0\ \text{m}\cdot\text{s}^{-2}$, soit **plus grande** que les $3{,}0\ \text{m}\cdot\text{s}^{-2}$ avec frottement — c'est logique, puisque le frottement s'opposait à la descente et la freinait. De plus, dans $a_G = g\sin\alpha$, la masse $m$ a **entièrement disparu** : comme en chute libre (chapitre 7), deux solides de masses différentes descendraient le même plan sans frottement avec la même accélération. Remarque au passage que le frottement, lui, RÉINTRODUISAIT la masse (via $\frac{f}{m}$) : c'est seulement le cas sans frottement qui rend l'accélération indépendante de la masse.

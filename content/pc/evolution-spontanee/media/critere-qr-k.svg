@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Critère d’évolution : sur l’axe des quotients de réaction Qr, la constante d’équilibre K est le pivot. Si Qr,i est à gauche de K (Qr,i inférieur à K), le système évolue dans le sens direct, Qr augmentant vers K. Si Qr,i est à droite de K (Qr,i supérieur à K), le système évolue dans le sens inverse, Qr diminuant vers K. À Qr = K, le système est déjà à l’équilibre et n’évolue plus.">
+  <title>Critère d’évolution : Qr,i face à K</title>
+  <!--
+    critere-qr-k.svg — STAGED (docs/design/LESSON-EXPERIENCE-SPEC.md §2), 3 étapes,
+    R2 (évolution spontanée).
+
+    Ce n'est pas un graphe à l'échelle mais un axe QUALITATIF (nombre-droite) :
+    le seuil de mise en étapes retenu est donc celui des schémas (§2.5) — ≥3
+    couches sémantiques ET un ordre de couches qui est un geste d'enseignement,
+    pas le canon "axes → données → lecture" réservé aux graphes tracés.
+
+    Ce que la figure montre :
+      - un axe des quotients de réaction Qr (Qr >= 0 par construction physique,
+        d'où l'origine "0" à gauche) — chrome permanent, visible dès l'étape 1 ;
+      - step-1 : K, la constante d'équilibre, posée comme pivot sur cet axe
+        (tige + disque + étiquette "K" + note d'équilibre) — établit le repère
+        avant de comparer quoi que ce soit ;
+      - step-2 : à gauche de K (Qr,i < K) : le système évolue dans le sens
+        direct, Qr augmente pour rejoindre K (flèche vers la droite, vers K) ;
+      - step-3 : à droite de K (Qr,i > K) : le système évolue dans le sens
+        inverse, Qr diminue pour rejoindre K (flèche vers la gauche, vers K).
+      L'ordre des étapes reprend le geste d'enseignement du rung 2 de
+      lesson.md : poser K comme repère, puis les deux cas de comparaison, dans
+      le même ordre que les puces de la leçon (Qr,i < K, puis Qr,i > K).
+
+    Les captions sont portées par critere-qr-k.stages.json — aucun texte de
+    légende baké ici (même convention que les autres figures migrées, ex.
+    arbre-pondere.svg).
+
+    Choix schématiques déclarés (pas une donnée physique) :
+      - Cette figure est un axe QUALITATIF (un nombre-droite), pas un graphe
+        à l'échelle : aucune valeur numérique de Qr ou de K n'est portée sur
+        l'axe. La position de K est centrée sur l'axe uniquement pour la
+        symétrie de la mise en page ; sa position réelle dépend entièrement
+        de la réaction considérée (K peut valoir 1,8×10^37 comme dans
+        l'exemple travaillé du rung 2, ou une tout autre valeur ailleurs).
+      - Les deux points de départ Qr,i (un dans chaque zone) sont des
+        exemples illustratifs quelconques, choisis loin de K pour que les
+        flèches soient lisibles — ils ne représentent pas les valeurs
+        numériques de l'exemple travaillé du rung 2.
+
+    Géométrie (calculée, pas devinée) :
+      axe : y = 168, de x = 90 (origine, Qr = 0) à x = 595 (flèche ouverte).
+      K (pivot) : x = 343 (centre de l'axe, choix de mise en page ci-dessus).
+      flèche gauche (sens direct)  : de (115,116) vers (328,116), pointe → K.
+      flèche droite (sens inverse) : de (575,116) vers (358,116), pointe → K.
+      guide pointillé vertical : (343,116) → (343,160), jusqu'au repère K.
+
+    Rôle des couleurs (contrat de rendu) :
+      K (pivot : tige, disque, guide pointillé, étiquette "K") et les deux
+      flèches d'évolution : --figure-accent (le sujet de la figure).
+      Axe, flèche de l'axe, étiquettes "0" et "Qr", les en-têtes "sens
+      direct"/"sens inverse" et les inégalités Qr,i ⋚ K : --figure-ink /
+      --figure-ink-soft (chrome et texte, jamais le focus).
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Critère d’évolution : <tspan font-style="italic">Q</tspan><tspan dy="3" font-size="8.5">r,i</tspan><tspan dy="-3"> face à </tspan><tspan font-style="italic">K</tspan>
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="20" y="38" width="600" height="200" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ── Axe des Qr — chrome permanent, ink-soft ──────────────────────── -->
+  <line x1="90" y1="168" x2="595" y2="168"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="595,168 583,163.5 583,172.5" fill="var(--figure-ink-soft)"/>
+  <line x1="90" y1="164" x2="90" y2="172"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="90" y="186" text-anchor="middle" font-size="10"
+        fill="var(--figure-ink-soft)">0</text>
+  <text x="603" y="172" font-size="12" fill="var(--figure-ink-soft)"
+        ><tspan font-style="italic">Q</tspan><tspan dy="3" font-size="8">r</tspan></text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — Le pivot K posé sur l'axe
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Guide pointillé reliant la zone des flèches au repère K -->
+    <line x1="343" y1="116" x2="343" y2="160"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="3,2"/>
+
+    <!-- Pivot K : tige + disque, sur l'axe -->
+    <line x1="343" y1="160" x2="343" y2="176"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <circle cx="343" cy="168" r="3.6" fill="var(--figure-accent)"/>
+    <text x="343" y="196" text-anchor="middle" font-style="italic" font-weight="600"
+          font-size="15" fill="var(--figure-accent)">K</text>
+    <text x="343" y="213" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)"
+          >(<tspan font-style="italic">Q</tspan><tspan dy="3" font-size="7">r</tspan><tspan dy="-3"> = </tspan><tspan font-style="italic">K</tspan><tspan> : système déjà à l’équilibre)</tspan></text>
+  </g>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — Cas Qr,i < K : évolution en sens direct
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <text x="217" y="66" text-anchor="middle" font-size="13" font-weight="600"
+          fill="var(--figure-ink)">sens direct</text>
+    <text x="217" y="86" text-anchor="middle" font-size="11" fill="var(--figure-ink)"
+          ><tspan font-style="italic">Q</tspan><tspan dy="3" font-size="8">r,i</tspan><tspan dy="-3"> &lt; </tspan><tspan font-style="italic">K</tspan></text>
+
+    <line x1="115" y1="116" x2="328" y2="116"
+          stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+    <polygon points="328,116 316,111 316,121" fill="var(--figure-accent)"/>
+    <circle cx="115" cy="116" r="3.2" fill="var(--figure-accent)"/>
+    <text x="115" y="104" text-anchor="middle" font-size="10.5" fill="var(--figure-ink)"
+          ><tspan font-style="italic">Q</tspan><tspan dy="3" font-size="7.5">r,i</tspan></text>
+  </g>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — Cas Qr,i > K : évolution en sens inverse
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <text x="469" y="66" text-anchor="middle" font-size="13" font-weight="600"
+          fill="var(--figure-ink)">sens inverse</text>
+    <text x="469" y="86" text-anchor="middle" font-size="11" fill="var(--figure-ink)"
+          ><tspan font-style="italic">Q</tspan><tspan dy="3" font-size="8">r,i</tspan><tspan dy="-3"> &gt; </tspan><tspan font-style="italic">K</tspan></text>
+
+    <line x1="575" y1="116" x2="358" y2="116"
+          stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+    <polygon points="358,116 370,111 370,121" fill="var(--figure-accent)"/>
+    <circle cx="575" cy="116" r="3.2" fill="var(--figure-accent)"/>
+    <text x="575" y="104" text-anchor="middle" font-size="10.5" fill="var(--figure-ink)"
+          ><tspan font-style="italic">Q</tspan><tspan dy="3" font-size="7.5">r,i</tspan></text>
+  </g>
+
+</svg>

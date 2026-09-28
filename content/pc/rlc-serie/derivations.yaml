@@ -1,0 +1,38 @@
+# Stepped derivations (Day-6 — DESIGN-BIBLE §7's step-revealed worked examples,
+# finally implemented as designed). Rendered by the Derivation component via
+# [[derivation:<id>]] markers: ONE transformation per step, learner-paced
+# reveal, per-step `note` = the expert-decision layer ("why this move").
+# Template v2 display-math rule: chained one-liners are a template failure.
+
+notion: rlc-serie
+
+derivations:
+  - id: verification-cosinus
+    title: "Vérification — le cosinus est-il vraiment solution ?"
+    steps:
+      - math: 'q(t) = Q_{max} \cos\!\left(\frac{2\pi t}{T_0} + \varphi\right)'
+        note: "L'hypothèse à tester. On ne la croit pas encore — on la met à l'épreuve de l'équation."
+      - math: '\frac{d^2q}{dt^2} = -\left(\frac{2\pi}{T_0}\right)^2 Q_{max}\cos\!\left(\frac{2\pi t}{T_0} + \varphi\right) = -\frac{4\pi^2}{T_0^2}\, q'
+        note: "Dériver deux fois : chaque dérivation d'un cosinus sort un facteur $\\frac{2\\pi}{T_0}$ et le signe bascule. Le geste clé : reconnaître que le résultat est proportionnel à $q$ lui-même."
+      - math: 'L \cdot \left(-\frac{4\pi^2}{T_0^2}\,q\right) + \frac{q}{C} = 0'
+        note: "On substitue dans l'équation différentielle — c'est le test : si l'hypothèse est bonne, cette égalité doit tenir pour TOUT $t$."
+      - math: 'q\left(\frac{1}{C} - \frac{4\pi^2 L}{T_0^2}\right) = 0'
+        note: "On factorise par $q$. Vraie pour tout $t$ (donc pour $q \\neq 0$) seulement si la parenthèse est nulle — voilà la condition qui va nous donner $T_0$."
+      - math: '\frac{1}{C} = \frac{4\pi^2 L}{T_0^2}'
+        note: "La parenthèse annulée. Il ne reste qu'à isoler $T_0$."
+      - math: 'T_0^2 = 4\pi^2 LC'
+        note: null
+      - math: '\boxed{T_0 = 2\pi\sqrt{LC}}'
+        note: "L'hypothèse est confirmée — et la substitution nous a offert en prime la valeur de $T_0$. Remarque : $R$ n'y figure pas, et ce n'est pas un hasard — il n'était pas dans l'équation idéale."
+
+  - id: i-de-t
+    title: "Dériver i(t) — le cosinus composé"
+    steps:
+      - math: 'q(t) = Q_{max} \cos\!\left(\frac{2\pi t}{T_0} + \varphi\right)'
+        note: "Le point de départ : c'est la solution qu'on vient de confirmer. Il ne reste qu'à dériver une fois — c'est la définition du courant posée au début de la leçon, $i = \\frac{dq}{dt}$."
+      - math: 'i(t) = \frac{dq}{dt} = -Q_{max}\sin\!\left(\frac{2\pi t}{T_0} + \varphi\right) \cdot \frac{d}{dt}\!\left(\frac{2\pi t}{T_0} + \varphi\right)'
+        note: "Dériver un cosinus composé : d'abord le cosinus extérieur — ça donne $-\\sin$ du même argument — PUIS multiplier par la dérivée de l'intérieur (la règle de la chaîne). Le réflexe fautif classique : s'arrêter après le $-\\sin$ et oublier ce second facteur — ça efface le $\\frac{2\\pi}{T_0}$ et fausse l'amplitude du courant."
+      - math: '\frac{d}{dt}\!\left(\frac{2\pi t}{T_0} + \varphi\right) = \frac{2\pi}{T_0}'
+        note: "L'intérieur, c'est $\\frac{2\\pi}{T_0}\\cdot t + \\varphi$ : linéaire en $t$ (sa dérivée est le coefficient $\\frac{2\\pi}{T_0}$), plus $\\varphi$ — une CONSTANTE, fixée une fois pour toutes par les conditions initiales, dont la dérivée est nulle. Deuxième réflexe fautif : essayer de « dériver $\\varphi$ », ou le faire disparaître à tort."
+      - math: '\boxed{i(t) = -\frac{2\pi Q_{max}}{T_0}\sin\!\left(\frac{2\pi t}{T_0} + \varphi\right)}'
+        note: "On réinjecte ce facteur dans l'expression du départ. Le courant est sinusoïdal, à la même période $T_0$ que $q(t)$ — mais c'est un sinus là où $q(t)$ est un cosinus. L'amplitude du courant, $i_{max} = \\frac{2\\pi Q_{max}}{T_0}$, se lit directement sur le facteur de tête."

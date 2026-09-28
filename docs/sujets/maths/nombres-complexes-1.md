@@ -1,0 +1,195 @@
+# `nombres-complexes-1` — Nombres complexes (forme trigonométrique, rotations/translations, configurations)
+
+> Annales examen national, Mathématiques 2ème Bac. Transcriptions **non
+> vérifiées** — voir `README.md` §3. Provenance sur chaque entrée.
+> Ce fichier regroupe les exercices de complexes de l'épreuve **Sciences
+> Expérimentales (SVT et Sciences Physiques)** — équations du second degré,
+> forme trigonométrique, transformations (rotation/translation), alignement,
+> cercles. (Les complexes d'approfondissement SM sont sous
+> `nombres-complexes-2.md`.)
+
+---
+
+## 2019 — session normale — Exercice 2
+Source: https://www.alloschool.com/element/68527
+Statut: vérifié — agent-vérificateur-adversarial, 2026-07-12 : source re-fetchée indépendamment (element → course/upload re-dérivé) et diff caractère-par-caractère conforme au scan (valeurs, notation, indices, exposants, barèmes, énoncé) ; filière et code NS..F confirmés sur l'en-tête du scan.
+
+- Filière / épreuve : SVT **et** Sciences Physiques (BIOF) — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 3 points
+- Images lues : `.../course-438/upload-54971/0002-big.jpg`
+- Pages du scan : 2 (sur 4)
+
+**Nombres complexes (équation du second degré, alignement, rotation, triangle rectangle isocèle).**
+
+1. (0,75) Résoudre dans l'ensemble $\mathbb{C}$ des nombres complexes l'équation : $z^2 - 2z + 4 = 0$
+2. Dans le plan complexe rapporté à un repère orthonormé direct $(O,\vec{u},\vec{v})$, on considère les points $A$, $B$, $C$ et $D$ d'affixes respectives $a = 1 - i\sqrt{3}$, $b = 2 + 2i$, $c = \sqrt{3} + i$ et $d = -2 + 2\sqrt{3}$
+   a) (0,5) Vérifier que $a - d = -\sqrt{3}(c - d)$
+   b) (0,25) En déduire que les points $A$, $C$ et $D$ sont alignés.
+3. (0,5) On considère $z$ l'affixe d'un point $M$ et $z'$ l'affixe de $M'$ image de $M$ par la rotation $R$ de centre $O$ et d'angle $\dfrac{-\pi}{3}$
+   Vérifier que $z' = \dfrac{1}{2}az$
+4. Soient $H$ l'image du point $B$ par la rotation $R$, $h$ son affixe et $P$ le point d'affixe $p$ tel que $p = a - c$
+   a) (0,5) Vérifier que $h = ip$
+   b) (0,5) Montrer que le triangle $OHP$ est rectangle et isocèle en $O$
+
+---
+
+## 2022 — session normale — Exercice 2
+Source: https://www.alloschool.com/element/136586
+Statut: vérifié — agent-vérificateur-adversarial, 2026-07-12 : source re-fetchée indépendamment (element → course/upload re-dérivé) et diff caractère-par-caractère conforme au scan (valeurs, notation, indices, exposants, barèmes, énoncé) ; filière et code NS..F confirmés sur l'en-tête du scan.
+
+- Filière / épreuve : SVT **et** Sciences Physiques (BIOF) — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 3 points
+- Images lues : `.../course-438/upload-84495/0002-big.jpg`
+- Pages du scan : 2 (sur 4)
+
+**Nombres complexes (translation, rotation, forme trigonométrique, intersection de deux cercles).**
+
+Dans le plan complexe rapporté à un repère orthonormé $(O,\vec{u},\vec{v})$, on considère le point $A$ d'affixe $a = -1 - i\sqrt{3}$, le point $B$ d'affixe $b = -1 + i\sqrt{3}$ et la translation $t$ de vecteur $\overrightarrow{OA}$
+
+1. (0,5) Prouver que l'affixe du point $D$ image du point $B$ par la translation $t$ est $d = -2$
+2. (0,5) On considère la rotation $R$ de centre $D$ et d'angle $\left(\dfrac{2\pi}{3}\right)$.
+   Montrer que l'affixe du point $C$ image du point $B$ par la rotation $R$ est $c = -4$
+3. a) (0,5) Écrire le nombre $\dfrac{b-c}{a-c}$ sous forme trigonométrique
+   b) (0,5) En déduire que $\left(\dfrac{b-c}{a-c}\right)^2 = \dfrac{c-d}{b-d}$
+4. Soient $(\Gamma)$ le cercle de centre $D$ et de rayon $2$, $(\Gamma')$ le cercle de centre $O$ et de rayon $4$ et $M$ un point d'affixe $z$ appartenant aux deux cercles $(\Gamma)$ et $(\Gamma')$
+   a) (0,25) Vérifier que $|z+2| = 2$
+   b) (0,5) Prouver que $z + \bar{z} = -8$ *(remarquer que $|z| = 4$)*
+   c) (0,25) En déduire que les cercles $(\Gamma)$ et $(\Gamma')$ se coupent en un point unique qu'on déterminera
+
+---
+
+## 2023 — session normale — Exercice 2
+Source: https://www.alloschool.com/element/137482
+Statut: vérifié — agent-vérificateur-adversarial, 2026-07-12 : source re-fetchée indépendamment (element → course/upload re-dérivé) et diff caractère-par-caractère conforme au scan (valeurs, notation, indices, exposants, barèmes, énoncé) ; filière et code NS..F confirmés sur l'en-tête du scan.
+
+- Filière / épreuve : SVT **et** Sciences Physiques (BIOF) — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 3 points
+- Images lues : `.../course-438/upload-84924/0002-big.jpg`
+- Pages du scan : 2 (sur 4)
+
+**Nombres complexes (forme trigonométrique, alignement, rotation, angle orienté).**
+
+Dans le plan complexe rapporté à un repère orthonormé direct $(O,\vec{u},\vec{v})$, on considère les points $A$, $B$, $C$ et $D$ d'affixes respectives $a = \sqrt{2} + i\sqrt{2}$, $b = 1 + \sqrt{2} + i$, $c = \bar{b}$ et $d = 2i$
+
+1. (0,25) Écrire le nombre complexe $a$ sous forme trigonométrique.
+2. a) (0,25) Vérifier que $b - d = c$
+   b) (0,5) Montrer que $(\sqrt{2} + 1)(b - a) = b - d$ et déduire que les points $A$, $B$ et $D$ sont alignés.
+3. a) (0,25) Vérifier que $ac = 2b$
+   b) (0,5) En déduire que $2\arg(b) \equiv \dfrac{\pi}{4}\ [2\pi]$
+4. Soit $R$ la rotation de centre $O$ et d'angle $\dfrac{\pi}{4}$ et qui transforme chaque point $M$ du plan d'affixe $z$ en un point $M'$ d'affixe $z'$.
+   a) (0,25) Montrer que $z' = \dfrac{1}{2}az$
+   b) (0,5) En déduire que $R(C) = B$ et que $R(A) = D$
+   c) (0,5) Montrer que $\dfrac{b-a}{c-a} = \left(\dfrac{\sqrt{2}-1}{2}\right)a$, puis déduire une mesure de l'angle $(\overrightarrow{AC}, \overrightarrow{AB})$
+
+---
+
+## 2024 — session normale — Exercice 3
+Source: https://www.alloschool.com/element/144505
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06 : source re-fetchée indépendamment (element 144505 → course-438/upload-87124 re-dérivé, document 4 pages), diff caractère-par-caractère conforme au scan (valeurs, affixes, exposants, barèmes par question et total 4 pts, énoncé) ; page Composantes (p.1) = **Exercice 3 — Nombres complexes — 4 points** confirmé ; maths re-dérivées (|a|=√6 et arg(a)=−π/4, b/a=(3+√3)/6+((1+√3)/2)i=(3+√3)/3·e^{iπ/3}, arg(b)=π/12 ⇒ b²⁴ réel, arg(a′)=−π/12, a″=√6·e^{iπ/12} ⇒ alignement O,A″,B, b′=(3+√3)/3·ā ⇒ OAB′ rectangle en O) ; barre de conjugaison sur a en 3c (et non un vecteur) confirmée au zoom et par le calcul ; filière Sciences Expérimentales (maslaks SVT et Sc. Physiques, option française) et code NS 22F confirmés sur l'en-tête du scan.
+
+- Filière / épreuve : Sciences Expérimentales (SVT et Sc. Physiques) — مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) (BIOF) — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 4 points
+- Images lues : `.../course-438/upload-87124/0003-big.jpg`
+- Pages du scan : 3 (sur 4)
+
+> **Note de lecture (mojibake)** : aucun (lecture directe du scan image).
+
+**Nombres complexes (module et argument, forme exponentielle, rotation, alignement, triangle rectangle).**
+
+Dans le plan complexe rapporté à un repère orthonormé direct $(O,\vec{u},\vec{v})$, on considère les points $A$ et $B$ d'affixes respectives $a = \sqrt{3}(1-i)$ et $b = 2 + \sqrt{3} + i$
+
+1. (0,5) Vérifier que $|a| = \sqrt{6}$ et que $\arg(a) \equiv \dfrac{-\pi}{4}\ [2\pi]$
+2. a) (0,75) Montrer que $\dfrac{b}{a} = \dfrac{3 + \sqrt{3}}{6} + \left(\dfrac{1 + \sqrt{3}}{2}\right)i$ puis vérifier que $\dfrac{b}{a} = \dfrac{3 + \sqrt{3}}{3}e^{i\frac{\pi}{3}}$
+   b) (0,75) En déduire une forme trigonométrique du complexe $b$ puis vérifier que $b^{24}$ est un nombre réel.
+3. Soit $R$ la rotation de centre $O$ et d'angle $\dfrac{\pi}{6}$, qui transforme chaque point $M$ du plan d'affixe $z$ en un point $M'$ d'affixe $z'$. On pose $R(B) = B'$, $R(A) = A'$ et $R(A') = A''$
+   a) (0,5) Vérifier que $z' = \dfrac{1}{2}(\sqrt{3} + i)z$ et que $\arg(a') \equiv \dfrac{-\pi}{12}\ [2\pi]$ où $a'$ est l'affixe du point $A'$
+   b) (0,5) Montrer que l'affixe du point $A''$ est $a'' = \sqrt{6}\,e^{i\frac{\pi}{12}}$ et en déduire que les points $O$, $A''$ et $B$ sont alignés.
+   c) (0,5) Montrer que $b'$, l'affixe du point $B'$, vérifie $b' = \left(\dfrac{3 + \sqrt{3}}{3}\right)\overline{a}$
+   d) (0,5) En déduire que le triangle $OAB'$ est rectangle en $O$
+
+---
+
+## 2021 — session normale — Exercice 3
+Source: https://www.alloschool.com/element/127180
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06 : source re-fetchée indépendamment (element 127180 → course-438/upload-84139 re-dérivé, document 4 pages), diff caractère-par-caractère conforme au scan (valeurs, affixes, exposants, barèmes par question et total 5 pts, énoncé) ; anomalie de numérotation confirmée — le corps du scan (p.2) intitule l'exercice « Exercice 2 : (5 points) » (second « Exercice 2 » après les suites) alors que la page Composantes (p.1) le désigne **Exercice 3 — Nombres complexes — 5 points**, autorité retenue ; maths re-dérivées (z²−√3z+1=0 ⇒ a=e^{iπ/6}, ā·b=√3, homothétie de rapport √3, d−b=(√3−1)/2·(1−i)) ; filière Sciences Expérimentales (شعبة العلوم التجريبية, maslaks SVT et Sc. Physiques, option française) et code NS 22F confirmés sur l'en-tête du scan.
+
+- Filière / épreuve : Sciences Expérimentales (SVT et Sc. Physiques) — شعبة العلوم التجريبية مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) (BIOF) — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 5 points
+- Images lues : `.../course-438/upload-84139/0002-big.jpg`, `.../course-438/upload-84139/0003-big.jpg`
+- Pages du scan : 2–3 (sur 4)
+
+> **Note de lecture (mojibake)** : aucun (lecture directe du scan image). Le corps du sujet intitule cet exercice « Exercice 2 : (5 points) » — coquille du scan : un second « Exercice 2 » après celui des suites numériques. La page « Composantes du sujet » (page 1) le désigne comme **Exercice 3 — Nombres complexes — 5 points** ; numérotation des composantes retenue ici.
+
+**Nombres complexes (équation du second degré, forme algébrique, forme exponentielle, homothétie, rotation, losange, argument, forme trigonométrique, angle orienté).**
+
+1. (0,75) Résoudre dans l'ensemble $\mathbb{C}$ des nombres complexes, l'équation : $z^2 - \sqrt{3}z + 1 = 0$
+2. Soient les nombres complexes $a = e^{i\frac{\pi}{6}}$ et $b = \dfrac{3}{2} + i\dfrac{\sqrt{3}}{2}$
+   a) (0,25) Ecrire $a$ sous forme algébrique.
+   b) (0,5) Vérifier que $\overline{a}b = \sqrt{3}$
+
+Dans le plan complexe rapporté à un repère orthonormé direct $(O,\vec{u},\vec{v})$, on considère les points $A$, $B$ et $C$ d'affixes respectives $a$, $b$ et $\overline{a}$.
+
+3. (0,5) Montrer que le point $B$ est l'image du point $A$ par une homothétie $h$ de centre $O$ dont on déterminera le rapport.
+4. Soient $z$ l'affixe d'un point $M$ du plan et $z'$ l'affixe du point $M'$ image de $M$ par la rotation $R$ de centre $A$ et d'angle $\dfrac{\pi}{2}$
+   a) (0,5) Ecrire $z'$ en fonction de $z$ et $a$.
+   b) (0,25) Soit $d$ l'affixe du point $D$ image de $C$ par la rotation $R$, montrer que $d = a + 1$
+   c) (0,5) Soit $I$ le point d'affixe le nombre $1$, montrer que $ADIO$ est un losange.
+5. a) (0,75) Vérifier que $d - b = \dfrac{\sqrt{3} - 1}{2}(1 - i)$ ; en déduire un argument du nombre $d - b$
+   b) (0,5) Ecrire le nombre $1 - b$ sous forme trigonométrique.
+   c) (0,5) Déduire une mesure de l'angle $\left(\overrightarrow{BI}, \overrightarrow{BD}\right)$
+
+---
+
+## 2020 — session normale — Exercice 2
+Source: https://www.alloschool.com/element/109797
+Statut: vérifié — agent-vérificateur-adversarial, 2026-08-06 : source re-fetchée indépendamment (element 109797 → course-438/upload-80918 re-dérivé, document 4 pages), diff caractère-par-caractère conforme au scan (valeurs, affixes, exposants, discriminant, barèmes par question et total 5 pts, numérotation, énoncé) ; maths re-dérivées (Δ = −4(√6−√2)² = 16√3−32 conforme au développement de (E), identité b·c̄ = a puis ac = 4b, a = 4e^{iπ/12}, a⁴ = 128b ⇒ alignement O,B,D) ; glyphe ℂ (cadre vide/tofu à la q.1) résolu par contexte « des nombres complexes » et confirmé au zoom ; filière Sciences Expérimentales (شعبة العلوم التجريبية, maslaks SVT et Sc. Physiques, option française) et code NS 22F confirmés sur l'en-tête du scan.
+
+- Filière / épreuve : Sciences Expérimentales (SVT et Sc. Physiques) — شعبة العلوم التجريبية مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية) (BIOF) — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 5 points
+- Images lues : `.../course-438/upload-80918/0002-big.jpg`
+- Pages du scan : 2 (sur 4)
+
+> **Note de lecture (mojibake)** : lecture directe du scan image. Le symbole de l'ensemble des nombres complexes $\mathbb{C}$ apparaît comme un cadre vide (glyphe non rendu par la police du scan) à la question 1) ; résolu en $\mathbb{C}$ d'après le contexte « des nombres complexes ». *(Titre AlloSchool trompeur : la fiche indique « Sciences et Technologies » ; l'en-tête arabe du scan — page 1 — atteste bien la filière Sciences Expérimentales, SVT et Sc. Physiques option française.)*
+
+**Nombres complexes (équation du second degré, discriminant, conjugué, forme trigonométrique, rotation, nature d'un triangle, alignement).**
+
+1) Dans l'ensemble $\mathbb{C}$ des nombres complexes, on considère l'équation :
+$$(E)\ :\ z^2 - 2\left(\sqrt{2} + \sqrt{6}\right)z + 16 = 0$$
+   a) (0,5) Vérifier que le discriminant de l'équation $(E)$ est $\Delta = -4\left(\sqrt{6} - \sqrt{2}\right)^2$
+   b) (1) En déduire les solutions de l'équation $(E)$.
+2) Soient les nombres complexes $a = \left(\sqrt{6} + \sqrt{2}\right) + i\left(\sqrt{6} - \sqrt{2}\right)$, $b = 1 + i\sqrt{3}$ et $c = \sqrt{2} + i\sqrt{2}$
+   a) (0,75) Vérifier que $b\bar{c} = a$, puis en déduire que $ac = 4b$
+   b) (0,5) Ecrire les nombres complexes $b$ et $c$ sous forme trigonométrique.
+   c) (0,5) En déduire que $a = 4\left(\cos\dfrac{\pi}{12} + i\sin\dfrac{\pi}{12}\right)$
+3) Dans le plan complexe rapporté à un repère orthonormé direct $(O,\vec{u},\vec{v})$, on considère les points $B$, $C$ et $D$ d'affixes respectives $b$, $c$ et $d$ telle que $d = a^4$. Soit $z$ l'affixe d'un point $M$ du plan et $z'$ l'affixe de $M'$ image de $M$ par la rotation $R$ de centre $O$ et d'angle $\dfrac{\pi}{12}$
+   a) (0,5) Vérifier que $z' = \dfrac{1}{4}az$
+   b) (0,25) Déterminer l'image du point $C$ par la rotation $R$
+   c) (0,25) Déterminer la nature du triangle $OBC$.
+   d) (0,75) Montrer que $a^4 = 128b$ et en déduire que les points $O$, $B$ et $D$ sont alignés
+
+---
+
+## 2018 — session normale — Exercice 2
+Source: https://www.alloschool.com/element/94699
+Statut: vérifié **avec correction de fond** — agent-vérificateur-adversarial, 2026-08-07 : **brouillon Gemini confronté au scan — 1ʳᵉ passe adversariale Claude**. Source re-fetchée indépendamment (element 94699 → course-438/upload-70450 re-dérivé, 4 pages, page 2) et conforme à la citation du brouillon ; page « Composantes du sujet » (p.1) lue et confirmée — Exercice 2 *Nombres complexes* 3 points. Diff caractère-par-caractère mené sur chaque valeur, coefficient, affixe, numérotation et barème (position comprise : $0{,}75$ sur Q1, $0{,}25$ sur Q2a, $0{,}5$ sur Q2b, $0{,}75$ sur Q3a, $0{,}75$ sur Q3b = 3) ; aucune figure dans cet exercice (confirmé sur le scan). **Corrigé sur re-lecture — erreur de fond du brouillon Gemini** : l'affixe du point $A$ à la question 2)b) était transcrite $a=-\tfrac12+\tfrac{\sqrt3}{2}i$ ; le scan imprime $a=-\dfrac{1}{2}+\dfrac{3}{2}i$ (zoom ×2 sur la zone : le radical est absent, contrairement à $d$ imprimé juste au-dessus, d'où la contamination probable). La correction est confirmée par les mathématiques : $2z^2+2z+5=0$ a pour discriminant $\Delta=4-40=-36$ et pour racines $-\tfrac12\pm\tfrac32 i$ — $a$ est donc **la racine à partie imaginaire positive de la question 1)**, ce qui est précisément l'articulation Q1→Q2 que la version Gemini détruisait. Autres corrections : « Écrire » → « **Ecrire** » (le scan imprime la majuscule non accentuée) ; `\vec{OA}` → `\overrightarrow{OA}` (flèche longue au scan) ; ajout de la note de lecture sur le glyphe $\mathbb{C}$ non rendu à la question 1). **Re-lecture de confirmation effectuée** — agent-relecteur indépendant, 2026-08-07 : les quatre points corrigés ont été re-vérifiés un à un sur le scan, indépendamment du correcteur. **Correction de fond CONFIRMÉE** — zoom ×8 sur la zone Q2a/Q2b, comparaison des deux fractions côte à côte : au-dessus du $3$ de l'affixe $a$ (question 2)b)) la zone est *vierge de toute encre* — aucun pixel sombre sur $x \in [600,675]$, $y \in [1186,1209]$, le chiffre ne commençant qu'à $y = 1210$ par sa propre boucle — alors qu'au-dessus du $3$ de $d$ (question 2)a)) on lit nettement la barre du radical (segment horizontal de $16$ px à $y = 1124$–$1125$) prolongée par la hampe oblique du $\sqrt{\ }$ ; le trait de fraction lui-même mesure $\approx 27$ px sous $a$ contre $\approx 39$ px sous $d$, largeur cohérente avec un $3$ nu d'un côté et un $\sqrt{3}$ de l'autre. Le scan imprime donc bien $a = -\dfrac{1}{2} + \dfrac{3}{2}i$, sans radical, et le contrôle mathématique indépendant redonne $\Delta = -36$ et les racines $-\tfrac12 \pm \tfrac32 i$ de la question 1). Les trois autres points sont également confirmés : « **Ecrire** » sans accent (la même ligne imprime « trigonométrique » avec l'accent aigu — la police rend donc bien les accents, la majuscule est réellement nue) ; flèche longue $\overrightarrow{OA}$ à la question 3), couvrant les deux lettres (contrôle interne : dans l'exercice 1 de la même page, les flèches longues de $\overrightarrow{AB}$ / $\overrightarrow{AC}$ contrastent avec les flèches courtes de $\vec{i}, \vec{j}, \vec{k}$ — le scan distingue donc réellement les deux notations) ; glyphe $\mathbb{C}$ non rendu à la question 1), imprimé comme deux traits horizontaux vides entre « l'ensemble » et « des nombres complexes ». Corrections toutes **CONFIRMÉES** ; l'entrée est close. Maths re-dérivées : $d=-\tfrac12+\tfrac{\sqrt3}{2}i=e^{i\frac{2\pi}{3}}$ (module $1$, argument $\tfrac{2\pi}{3}$) donc $b=d\,a$ est bien l'écriture de la rotation de centre $O$ et d'angle $\tfrac{2\pi}{3}$ ✓ ; $c=b+a=a(d+1)=a\!\left(\tfrac12+\tfrac{\sqrt3}{2}i\right)$ ✓ ; $\tfrac{c}{a}=e^{i\frac{\pi}{3}}$ donc $|c|=|a|$ et $\arg\!\left(\tfrac{c}{a}\right)\equiv\tfrac{\pi}{3}$ ⇒ $OA=OC$ avec $\widehat{AOC}=\tfrac{\pi}{3}$ ⇒ $OAC$ équilatéral ✓ (conclusion valable pour la valeur corrigée de $a$, dont le module vaut $\tfrac{\sqrt{10}}{2}$). Filière Sciences Expérimentales (مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية – خيار فرنسية) et code NS 22F confirmés sur l'en-tête du scan — titre AlloSchool (« Sciences et Technologies ») trompeur.
+
+- Filière / épreuve : Sciences Expérimentales (SVT et Sc. Physiques) — مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية — خيار فرنسية — Mathématiques, 3 h, coef 7
+- Code sujet : NS 22F · Barème de l'exercice : 3 points
+- Images lues : `.../course-438/upload-70450/0002-big.jpg`
+- Pages du scan : 2 (sur 4)
+
+> **Note de lecture (glyphes)** : lecture directe du scan image. Le symbole $\mathbb{C}$ n'est pas rendu par la police du scan à la question 1) — il apparaît comme un cadre/trait vide (« dans l'ensemble ▭ des nombres complexes ») ; résolu en $\mathbb{C}$ par le contexte, exactement comme dans l'entrée 2020 de ce fichier. Aucune figure dans cet exercice (vérifié sur le scan). Le scan imprime « **Ecrire** » sans accent et « $b = d.a$ » avec un point simple, rendu ici `\cdot`. Barème imprimé au point décimal (`0.75`, `0.25`, `0.5`), rendu ici à la virgule selon la convention du corpus.
+
+**Nombres complexes (équation du second degré, rotation, translation, triangle équilatéral).**
+
+1) (0,75) Résoudre dans l'ensemble $\mathbb{C}$ des nombres complexes l'équation : $2z^2 + 2z + 5 = 0$
+2) Dans le plan complexe rapporté à un repère orthonormé direct $(O, \vec{u}, \vec{v})$, on considère la rotation $R$ de centre $O$ et d'angle $\dfrac{2\pi}{3}$
+   a) (0,25) Ecrire sous forme trigonométrique le nombre complexe $d = -\dfrac{1}{2} + \dfrac{\sqrt{3}}{2}i$
+   b) (0,5) On considère le point $A$ d'affixe $a = -\dfrac{1}{2} + \dfrac{3}{2}i$ et le point $B$ image du point $A$ par la rotation $R$. Soit $b$ l'affixe du point $B$, montrer que $b = d \cdot a$
+3) Soit $t$ la translation de vecteur $\overrightarrow{OA}$ et $C$ l'image de $B$ par la translation $t$ et $c$ l'affixe de $C$
+   a) (0,75) Vérifier que $c = b + a$ et en déduire que $c = a\left(\dfrac{1}{2} + \dfrac{\sqrt{3}}{2}i\right)$ *(on pourra utiliser la question 2)b))*
+   b) (0,75) Déterminer $\arg\left(\dfrac{c}{a}\right)$ puis en déduire que le triangle $OAC$ est équilatéral.
+
+*(Somme du barème : 0,75 + 0,25 + 0,5 + 0,75 + 0,75 = 3 points.)*
+
+---

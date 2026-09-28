@@ -1,0 +1,199 @@
+# Attempt-first exercises (summit-conversion campaign — maths, géométrie dans l'espace).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2019 session
+# normale, Mathématiques SExp BIOF, code NS 22F, AlloSchool element/68527 —
+# statut « vérifié » in docs/sujets/maths/geometrie-espace.md, Ex. 1). It is
+# the recurring opening exercise of the SExp paper (produit vectoriel → équation
+# d'un plan → sphère → intersection plan/sphère). r-variation is a fresh
+# anti-memorisation twin (same chain of tools, different points, a sphere given
+# by its developed equation to complete-the-square, and an intersection whose
+# circle radius IS asked; status not-applicable).
+
+notion: geometrie-espace
+
+exercises:
+  # ── r-bac — the VERIFIED 2019 national sujet (Ex. 1, SExp) ────────────────
+  # Faithful transcription of docs/sujets/maths/geometrie-espace.md
+  # → "2019 — session normale — Exercice 1". Points A, B, C ; produit vectoriel
+  # AB∧AC = i+j+k ; équation cartésienne x+y+z+1=0 du plan (ABC) ; sphère (S)
+  # donnée sous forme développée (centre Ω(2,−1,1), R=√5) ; distance d(Ω,(ABC)) ;
+  # le plan coupe la sphère selon un cercle (Γ). C'est l'enchaînement canonique
+  # des outils R3 → R6 → R9 → R8 → R9 du chapitre.
+  - id: r-bac
+    title: "Exercice de type bac — produit vectoriel, plan, sphère et section plane (2019)"
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national SExp BIOF (SVT et Sciences
+        Physiques, option française), Mathématiques, code NS 22F, barème 3
+        points (Exercice 1, « Géométrie dans l'espace »). Source AlloSchool
+        element/68527. Transcription vérifiée : docs/sujets/maths/geometrie-espace.md,
+        statut « vérifié » (agent-vérificateur-adversarial, 2026-07-12, diff
+        caractère-par-caractère conforme au scan).
+    intro: |-
+      **Géométrie dans l'espace (examen national, session normale 2019).**
+
+      L'espace est rapporté à un repère orthonormé direct $(O\,;\,\vec{i},\vec{j},\vec{k})$. On considère les points $A(1,-1,-1)$, $B(0,-2,1)$ et $C(1,-2,0)$.
+
+      L'exercice enchaîne les outils du chapitre dans leur ordre naturel : on fabrique d'abord un vecteur normal au plan $(ABC)$ avec le produit vectoriel, on en déduit une équation cartésienne du plan, puis on étudie une sphère $(S)$ et la façon dont ce plan la coupe. Rien de neuf à inventer — chaque question applique un geste déjà construit dans la leçon.
+    questions:
+      - id: q1a
+        part: "Partie A — Du produit vectoriel à l'équation du plan $(ABC)$"
+        stem: |-
+          **(0,75 pt)** Montrer que $\overrightarrow{AB}\wedge\overrightarrow{AC} = \vec{i}+\vec{j}+\vec{k}$.
+        reasoning: |-
+          Le produit vectoriel de deux vecteurs $\overrightarrow{AB}$ et $\overrightarrow{AC}$ fabrique un troisième vecteur, **orthogonal aux deux à la fois** (chapitre 4) — c'est exactement ce qu'il faut pour obtenir, plus loin, une direction normale au plan $(ABC)$.
+
+          On procède en deux temps. D'abord les coordonnées des deux vecteurs, par la règle « arrivée moins départ » (chapitre 2). Ensuite la formule du produit vectoriel : chaque composante se calcule en « cachant » la coordonnée de même nom et en croisant les deux autres en diagonale, avec un signe. Attention à ce signe, coordonnée par coordonnée — c'est là que se logent la plupart des erreurs.
+        steps:
+          - math: '\overrightarrow{AB} = B-A = (-1,\,-1,\,2), \qquad \overrightarrow{AC} = C-A = (0,\,-1,\,1)'
+            note: "Coordonnées « arrivée moins départ » (chapitre 2)."
+          - math: '\overrightarrow{AB}\wedge\overrightarrow{AC} = \big((-1)(1)-(2)(-1),\ \ (2)(0)-(-1)(1),\ \ (-1)(-1)-(-1)(0)\big)'
+            note: "Formule du produit vectoriel (chapitre 4) : (yz′−zy′, zx′−xz′, xy′−yx′)."
+          - math: '\overrightarrow{AB}\wedge\overrightarrow{AC} = (1,\,1,\,1) = \vec{i}+\vec{j}+\vec{k}'
+            note: "Ce vecteur, orthogonal à AB et à AC, servira de vecteur normal au plan (ABC)."
+      - id: q1b
+        stem: |-
+          **(0,5 pt)** En déduire que $x+y+z+1=0$ est une équation cartésienne du plan $(ABC)$.
+        reasoning: |-
+          Puisque $\overrightarrow{AB}\wedge\overrightarrow{AC}$ est orthogonal à deux vecteurs du plan, c'est un **vecteur normal** au plan $(ABC)$ (chapitre 7). Or, pour un plan de vecteur normal $\vec{n}(a,b,c)$, l'équation cartésienne s'écrit $ax+by+cz+d=0$ : les coefficients de $x,y,z$ sont exactement les coordonnées de $\vec{n}$ — **jamais** la constante $d$, qui ne fait que fixer la position du plan.
+
+          Ici $\vec{n}(1,1,1)$, donc l'équation a la forme $x+y+z+d=0$. On détermine $d$ en imposant qu'un point connu du plan — par exemple $A$ — la vérifie.
+        steps:
+          - math: 'x+y+z+d=0'
+            note: "Coefficients = coordonnées du vecteur normal n(1,1,1) (chapitre 7) ; d reste à déterminer."
+          - math: 'A(1,-1,-1)\in(ABC):\quad 1+(-1)+(-1)+d=0 \implies -1+d=0 \implies d=1'
+            note: "d est fixé en imposant que A appartienne au plan."
+          - math: '(ABC):\ \ x+y+z+1=0'
+            note: "Vérification : B(0,−2,1) → 0−2+1+1=0 ✓ ; C(1,−2,0) → 1−2+0+1=0 ✓."
+      - id: q2
+        part: "Partie B — La sphère $(S)$ : centre et rayon"
+        stem: |-
+          **(0,75 pt)** Soit $(S)$ la sphère d'équation $x^2+y^2+z^2-4x+2y-2z+1=0$. Montrer que le centre de $(S)$ est $\Omega(2,-1,1)$ et que son rayon est $R=\sqrt{5}$.
+        reasoning: |-
+          L'équation est donnée sous **forme développée** : le centre et le rayon ne s'y lisent pas directement. On revient à la forme centre-rayon en **complétant le carré** dans chaque variable séparément (chapitre 10) — la même technique que pour un cercle en 2D, appliquée trois fois.
+
+          Pour chaque groupe $x^2+px$, on écrit $\left(x+\tfrac{p}{2}\right)^2-\left(\tfrac{p}{2}\right)^2$ : le carré parfait fait apparaître la coordonnée du centre, et le terme soustrait qu'on traîne vient corriger le second membre.
+        steps:
+          - math: '(x^2-4x)+(y^2+2y)+(z^2-2z)+1=0'
+            note: "On regroupe par variable avant de compléter chaque carré (chapitre 10)."
+          - math: '(x-2)^2-4 \;+\; (y+1)^2-1 \;+\; (z-1)^2-1 \;+\;1 = 0'
+            note: "Chaque groupe devient un carré parfait ; on compense le terme constant introduit."
+          - math: '(x-2)^2+(y+1)^2+(z-1)^2 = 4+1+1-1 = 5'
+            note: "Forme centre-rayon (x−xΩ)²+(y−yΩ)²+(z−zΩ)² = R²."
+          - math: '\Omega(2,\,-1,\,1), \qquad R=\sqrt{5}'
+            note: "Centre = valeurs qui annulent chaque carré ; rayon = racine du second membre (pas 5 lui-même)."
+      - id: q3a
+        part: "Partie C — Le plan coupe-t-il la sphère ?"
+        stem: |-
+          **(0,5 pt)** Calculer $d(\Omega,(ABC))$, la distance du point $\Omega$ au plan $(ABC)$.
+        reasoning: |-
+          On applique la formule de la distance d'un point à un plan (chapitre 9) : le numérateur est l'équation du plan **évaluée au point**, prise en valeur absolue ; le dénominateur est la **norme du vecteur normal** — la racine de la somme des carrés des coefficients, jamais leur simple somme.
+        steps:
+          - math: 'd(\Omega,(ABC)) = \dfrac{\big|\,2+(-1)+1+1\,\big|}{\sqrt{1^2+1^2+1^2}}'
+            note: "Formule distance point-plan (chapitre 9) : |ax₀+by₀+cz₀+d| au numérateur, ‖n‖ au dénominateur."
+          - math: 'd(\Omega,(ABC)) = \dfrac{|3|}{\sqrt{3}} = \dfrac{3}{\sqrt{3}} = \sqrt{3}'
+            note: "3/√3 = √3."
+      - id: q3b
+        stem: |-
+          **(0,5 pt)** En déduire que le plan $(ABC)$ coupe la sphère $(S)$ selon un cercle $(\Gamma)$. *(La détermination du centre et du rayon de $(\Gamma)$ n'est pas demandée.)*
+        reasoning: |-
+          Le critère (chapitre 10) compare la distance $d(\Omega,(ABC))$ au rayon $R$ : trois cas selon que $d>R$ (aucun point commun), $d=R$ (plan tangent, un seul point) ou $d<R$ (un **cercle**). Le réflexe attendu par un correcteur : on calcule $d$, on la compare à $R$, **puis** on conclut — jamais l'inverse.
+
+          Ici $d=\sqrt{3}$ et $R=\sqrt{5}$. Comme $3<5$, on a $\sqrt{3}<\sqrt{5}$, donc $d<R$.
+        steps:
+          - math: 'd(\Omega,(ABC)) = \sqrt{3}\approx 1{,}73, \qquad R=\sqrt{5}\approx 2{,}24'
+            note: "On compare la distance au rayon (chapitre 10)."
+          - math: '\sqrt{3} < \sqrt{5} \iff d<R'
+            note: "d < R : le plan traverse la sphère de part en part."
+          - math: '(ABC)\cap(S) = (\Gamma)\ \ \text{est un cercle}'
+            note: "Cas d < R : l'intersection est un cercle (centre et rayon non demandés)."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ─────────
+  # Same deep chain as r-bac (produit vectoriel → vecteur normal → équation du
+  # plan → sphère par complétion du carré → distance → intersection) with other
+  # points, another sphere, and — pour aller un cran plus loin — le rayon du
+  # cercle d'intersection EST demandé (Pythagore R²−d²). Numbers chosen to give
+  # exact integer/√ results verified by hand.
+  - id: r-variation
+    title: "Variation fraîche — d'autres points, une autre sphère"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2019, sourcé). Points,
+        sphère et nombres choisis pour donner des résultats exacts vérifiés à
+        la main.
+    intro: |-
+      Même structure profonde que le sujet précédent, habillage différent : d'autres points, une autre sphère. Le but est que tu ne puisses pas recopier la solution du sujet 2019 — tu dois reconnaître que la **même chaîne d'outils** (produit vectoriel → vecteur normal → équation du plan → sphère → intersection) s'applique quels que soient les nombres.
+
+      L'espace est rapporté à un repère orthonormé direct $(O\,;\,\vec{i},\vec{j},\vec{k})$. On considère les points $A(1,0,0)$, $B(3,0,1)$ et $C(1,2,2)$, ainsi que la sphère $(S)$ d'équation $x^2+y^2+z^2-4x-2y-6z+5=0$.
+    questions:
+      - id: q1a
+        part: "Partie A — Du produit vectoriel à l'équation du plan $(ABC)$"
+        stem: |-
+          Calculer $\overrightarrow{AB}\wedge\overrightarrow{AC}$, et en déduire qu'un vecteur normal au plan $(ABC)$ est $\vec{n}(1,2,-2)$.
+        reasoning: |-
+          Exactement le geste du sujet : coordonnées des deux vecteurs (chapitre 2), puis produit vectoriel (chapitre 4) pour obtenir un vecteur orthogonal aux deux. Le résultat n'a pas à être « joli » : on peut le **simplifier** par un facteur non nul, car un multiple non nul d'un vecteur normal reste normal.
+        steps:
+          - math: '\overrightarrow{AB} = (2,\,0,\,1), \qquad \overrightarrow{AC} = (0,\,2,\,2)'
+            note: "Arrivée moins départ (chapitre 2)."
+          - math: '\overrightarrow{AB}\wedge\overrightarrow{AC} = \big((0)(2)-(1)(2),\ (1)(0)-(2)(2),\ (2)(2)-(0)(0)\big) = (-2,\,-4,\,4)'
+            note: "Produit vectoriel (chapitre 4)."
+          - math: '(-2,\,-4,\,4) = -2\,(1,\,2,\,-2) \implies \vec{n}(1,\,2,\,-2)'
+            note: "On divise par −2 : un vecteur colinéaire reste normal au plan."
+      - id: q1b
+        stem: |-
+          En déduire une équation cartésienne du plan $(ABC)$.
+        reasoning: |-
+          Vecteur normal $\vec{n}(1,2,-2)$ → équation de la forme $x+2y-2z+d=0$ (les coefficients sont les coordonnées de $\vec{n}$, chapitre 7). On fixe $d$ avec un point du plan, ici $A(1,0,0)$.
+        steps:
+          - math: 'x+2y-2z+d=0'
+            note: "Coefficients = coordonnées de n(1,2,−2) (chapitre 7)."
+          - math: 'A(1,0,0)\in(ABC):\quad 1+0-0+d=0 \implies d=-1'
+            note: "d fixé par A."
+          - math: '(ABC):\ \ x+2y-2z-1=0'
+            note: "Vérification : B(3,0,1) → 3+0−2−1=0 ✓ ; C(1,2,2) → 1+4−4−1=0 ✓."
+      - id: q2
+        part: "Partie B — La sphère $(S)$ : centre et rayon"
+        stem: |-
+          Montrer que la sphère $(S)$ a pour centre $\Omega(2,1,3)$ et pour rayon $R=3$.
+        reasoning: |-
+          Même technique qu'au sujet : l'équation est développée, on **complète le carré** dans chaque variable (chapitre 10) pour retrouver la forme centre-rayon.
+        steps:
+          - math: '(x^2-4x)+(y^2-2y)+(z^2-6z)+5=0'
+            note: "On regroupe par variable (chapitre 10)."
+          - math: '(x-2)^2-4 \;+\; (y-1)^2-1 \;+\; (z-3)^2-9 \;+\;5 = 0'
+            note: "Chaque groupe devient un carré parfait."
+          - math: '(x-2)^2+(y-1)^2+(z-3)^2 = 4+1+9-5 = 9'
+            note: "Forme centre-rayon."
+          - math: '\Omega(2,\,1,\,3), \qquad R=\sqrt{9}=3'
+            note: "Rayon = √9 = 3 (pas 9)."
+      - id: q3a
+        part: "Partie C — L'intersection du plan et de la sphère"
+        stem: |-
+          Calculer $d(\Omega,(ABC))$, la distance du centre $\Omega$ au plan $(ABC)$.
+        reasoning: |-
+          Formule distance point-plan (chapitre 9) : équation du plan évaluée en $\Omega$, en valeur absolue, sur la norme du vecteur normal $\sqrt{1^2+2^2+(-2)^2}=3$.
+        steps:
+          - math: 'd(\Omega,(ABC)) = \dfrac{\big|\,2+2(1)-2(3)-1\,\big|}{\sqrt{1^2+2^2+(-2)^2}} = \dfrac{|\,2+2-6-1\,|}{\sqrt{9}}'
+            note: "Numérateur = |x+2y−2z−1| en Ω ; dénominateur = ‖n‖ = 3."
+          - math: 'd(\Omega,(ABC)) = \dfrac{|-3|}{3} = 1'
+            note: "Distance = 1."
+      - id: q3b
+        stem: |-
+          En déduire que le plan $(ABC)$ coupe la sphère $(S)$ selon un cercle $(\Gamma)$, et déterminer le rayon de $(\Gamma)$.
+        reasoning: |-
+          On compare $d$ et $R$ (chapitre 10). Ici $d=1<R=3$ : l'intersection est un **cercle**. Cette fois on va jusqu'au rayon : pour tout point $M$ commun, le triangle $\Omega H M$ est rectangle en $H$ (projeté de $\Omega$ sur le plan), avec $\Omega M=R$ et $\Omega H=d$. Le théorème de Pythagore donne $R^2=d^2+r^2$, d'où le rayon $r=\sqrt{R^2-d^2}$ — un **moins**, pas un plus.
+        steps:
+          - math: 'd=1 < R=3 \implies (ABC)\cap(S)=(\Gamma)\ \text{cercle}'
+            note: "Cas d < R : cercle."
+          - math: 'r = \sqrt{R^2-d^2} = \sqrt{3^2-1^2} = \sqrt{9-1} = \sqrt{8}'
+            note: "Pythagore R² − d² (jamais R² + d²)."
+          - math: 'r = \sqrt{8} = 2\sqrt{2}'
+            note: "Rayon du cercle d'intersection (Γ)."

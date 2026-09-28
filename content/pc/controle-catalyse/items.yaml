@@ -1,0 +1,1554 @@
+notion: controle-catalyse
+skill_code: pc_controle_catalyse
+misconceptions:
+  # Déclarées le 2026-09-05. Les cinq checkpoints de la leçon visaient déjà
+  # ces erreurs par leur id ; l'inventaire, lui, était resté `[]` — la chaîne
+  # comptait les tags, mais rien ne pouvait en afficher le libellé.
+  # Sept entrées ajoutées le 2026-09-05 pour couvrir le BANC (les cinq
+  # premières venaient des checkpoints, qui ne comptent pas au plancher).
+  - id: mc.physics.pc_controle_catalyse.equation-de-lanhydride-erronee
+    label: "« L'équation de l'anhydride est celle de l'acide : double flèche, eau en sous-produit »"
+    description: >
+      L'élève recopie l'équation de l'estérification par l'acide pour la voie de
+      l'anhydride, ou fait apparaître de l'eau, ou double l'ester obtenu.
+    contradicts_principle: >
+      Un anhydride réagit par une SEULE flèche (réaction totale) et libère un
+      ACIDE CARBOXYLIQUE, pas de l'eau : son autre moitié repart en
+      $CH_3COOH$. Une molécule d'ester et une molécule d'acide, jamais deux
+      esters.
+
+  - id: mc.physics.pc_controle_catalyse.reactif-limitant-ou-pertes-invoques
+    label: "« Le plafond de rendement vient d'un manque de réactif, d'une perte matérielle, ou d'une donnée absente »"
+    description: >
+      Pour expliquer un rendement inférieur à 100 %, l'élève cherche une cause
+      matérielle — réactif limitant introduit en défaut, ester évaporé, quantité
+      d'anhydride inconnue — plutôt que la chimie de l'équilibre.
+    contradicts_principle: >
+      Le plafond à $\tau \approx 2/3$ vient de la réaction INVERSE, qui s'installe
+      dès qu'ester et eau apparaissent — pas d'un manque de réactif ni d'une
+      perte physique. Et quand un réactif est en EXCÈS, sa quantité exacte
+      n'entre pas dans le calcul : c'est l'autre qui limite.
+
+  - id: mc.physics.pc_controle_catalyse.double-fleche-mal-comprise
+    label: "« La double flèche signifie qu'on peut inverser la réaction en chauffant, ou qu'un seul sens a vraiment lieu »"
+    description: >
+      L'élève lit le symbole comme une possibilité (on POURRAIT écrire à
+      l'envers), une condition (il FAUDRAIT chauffer), ou une succession (la
+      directe s'arrête, l'inverse prend le relais).
+    contradicts_principle: >
+      La double flèche dit que les deux réactions se produisent SIMULTANÉMENT,
+      dès le début et sans condition particulière. L'équilibre est atteint quand
+      leurs vitesses s'égalisent — les deux continuent alors, exactement à la
+      même vitesse.
+
+  - id: mc.physics.pc_controle_catalyse.selectivite-du-catalyseur-ignoree
+    label: "« Un catalyseur accélère forcément toutes les réactions possibles — ou bien il en empêche une »"
+    description: >
+      L'élève refuse au catalyseur son rôle sélectif : il l'imagine agissant
+      partout à la fois, ou bloquant activement la voie concurrente en
+      consommant ses réactifs.
+    contradicts_principle: >
+      Un catalyseur peut être SÉLECTIF : il abaisse la barrière d'UNE voie et
+      oriente le système vers son produit, sans toucher à la voie concurrente,
+      qu'il n'empêche pas — il la laisse simplement derrière. Et augmenter cette
+      sélectivité ne change pas le rendement maximal d'une réaction limitée.
+
+  - id: mc.physics.pc_controle_catalyse.saponification-confondue-avec-lesterification
+    label: "« La saponification est un équilibre, ou elle produit un acide gras, ou un ester »"
+    description: >
+      L'élève applique à l'hydrolyse BASIQUE ce qui vaut pour l'hydrolyse acide
+      ou pour l'estérification.
+    contradicts_principle: >
+      L'hydrolyse basique forme l'ion CARBOXYLATE $R-COO^-$ (le savon), qui ne
+      se réestérifie pas : sans réaction inverse, elle est TOTALE. Elle défait
+      les fonctions ester du corps gras et donne du glycérol — jamais un ester
+      ni de l'eau, jamais l'acide $R-COOH$.
+
+  - id: mc.physics.pc_controle_catalyse.hydrophile-hydrophobe-inverses
+    label: "« C'est la taille, ou l'origine, qui décide de l'affinité pour l'eau »"
+    description: >
+      L'élève attribue le caractère hydrophile à la longue chaîne (parce qu'elle
+      est grande) ou le caractère hydrophobe à la tête $-COO^-$ (parce qu'elle
+      vient d'un acide gras, ou parce qu'elle porte une charge), voire déclare
+      les deux parties hydrophiles.
+    contradicts_principle: >
+      Le critère est la CHARGE. La tête $-COO^-$, chargée, est HYDROPHILE ; la
+      longue chaîne carbonée, neutre, est HYDROPHOBE. C'est cette double
+      personnalité qui fait le pouvoir lavant : un ion entièrement hydrophile ne
+      laverait rien.
+
+  - id: mc.physics.pc_controle_catalyse.stoechiometrie-du-triglyceride-ignoree
+    label: "« Un triglycéride ne compte qu'une fonction ester — ou il en faut deux $HO^-$ par fonction »"
+    description: >
+      L'élève se trompe sur le nombre de fonctions ester d'un triglycéride, ou
+      sur le nombre d'ions hydroxyde consommés par fonction.
+    contradicts_principle: >
+      Un triglycéride porte TROIS fonctions ester, et chacune consomme UN ion
+      $HO^-$ : il faut donc $3n$ ions hydroxyde pour saponifier $n$ moles de
+      corps gras.
+
+  - id: mc.physics.pc_controle_catalyse.anhydride-mal-compris
+    label: "« Changer de réactif ne fait que gagner du temps, comme un catalyseur »"
+    description: "L'élève traite le passage de l'acide à l'anhydride comme une accélération : même équilibre limité au bout du compte, atteint plus vite."
+    contradicts_principle: "L'anhydride change aussi l'ÉTAT FINAL : sa réaction avec l'alcool s'écrit avec une seule flèche, elle est totale ($\\tau = 1$), et non un équilibre à $\\tau \\approx 2/3$. Un catalyseur, lui, ne toucherait qu'à la vitesse."
+
+  - id: mc.physics.pc_controle_catalyse.vitesse-avancement-confondus
+    label: "« Vitesse et avancement final vont ensemble (totale = lente, rapide = limitée) »"
+    description: "L'élève lie les deux propriétés : une transformation qui va au bout devrait, selon lui, prendre plus de temps, et inversement."
+    contradicts_principle: "« Rapide » (vitesse) et « totale » (avancement final) sont deux propriétés INDÉPENDANTES. La saponification est lente et totale ; l'anhydride est rapide et total. L'une ne se déduit jamais de l'autre."
+
+  - id: mc.physics.pc_controle_catalyse.catalyseur-dans-bilan
+    label: "« Le catalyseur figure dans le bilan, parmi les réactifs »"
+    description: "L'élève, voyant que le catalyseur participe activement, lui donne un coefficient stœchiométrique du côté des réactifs."
+    contradicts_principle: "Un catalyseur participe au MÉCANISME mais n'est pas consommé : il ressort en même quantité qu'au départ. Il ne figure donc pas dans l'équation-bilan, mais au-dessus de la flèche."
+
+  - id: mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final
+    label: "« Le catalyseur déplace l'équilibre / change l'état final »"
+    description: "L'élève range le catalyseur du côté des facteurs qui modifient la composition finale, et non du côté des facteurs cinétiques."
+    contradicts_principle: "Le catalyseur accélère les DEUX sens dans les mêmes proportions et laisse $K$ intact : c'est un facteur cinétique. Il change la vitesse d'arrivée, jamais l'état final atteint."
+
+  - id: mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase
+    label: "« Les types de catalyse se distinguent par la nature chimique du catalyseur »"
+    description: "L'élève classe homogène / hétérogène / enzymatique selon que le catalyseur est minéral, organique ou biologique."
+    contradicts_principle: "Tous les catalyseurs sont des espèces distinctes des réactifs ; leur nature chimique ne tranche rien. Le critère est la PHASE : même phase que les réactifs (homogène), phase différente (hétérogène), catalyseur biologique agissant sur un substrat spécifique (enzymatique)."
+
+
+items:
+  - id: CTC-1
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      On veut synthétiser l'éthanoate d'éthyle par deux voies : (voie 1)
+      acide éthanoïque + éthanol ; (voie 2) anhydride éthanoïque + éthanol.
+      Laquelle des affirmations est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La voie de l'anhydride est rapide et totale ; celle de l'acide est lente et limitée ($\\tau \\approx 2/3$)."
+        correct: true
+      - id: B
+        text: "Les deux voies sont limitées par un même équilibre ; l'anhydride ne fait que l'atteindre plus vite."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.anhydride-mal-compris
+        feedback: >
+          C'est confondre les deux réactions. Acide + alcool est un équilibre
+          (double flèche, limité à $\tau \approx 2/3$), mais anhydride + alcool
+          est une réaction TOTALE (une seule flèche) : elle va jusqu'à
+          épuisement du réactif limitant, il n'y a pas d'équilibre à son terme.
+      - id: C
+        text: "La voie de l'acide est totale ; celle de l'anhydride est limitée par un équilibre."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.anhydride-mal-compris
+        feedback: >
+          Les deux caractères sont inversés. C'est l'acide + alcool qui est
+          lente et limitée (équilibre), et l'anhydride + alcool qui est rapide
+          et totale — c'est justement pour ça qu'on change de réactif.
+      - id: D
+        text: "Les deux voies donnent la même quantité finale d'ester ; seul le sous-produit (eau ou acide) change."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.anhydride-mal-compris
+        feedback: >
+          Le sous-produit change bien (eau pour l'acide, acide carboxylique
+          pour l'anhydride), mais la quantité finale d'ester n'est pas la même :
+          la voie de l'acide plafonne à $\tau \approx 2/3$ (rendement $\approx
+          67\,\%$), la voie de l'anhydride atteint $\tau = 1$ (rendement
+          $\approx 100\,\%$).
+    correct_feedback: >
+      Anhydride + alcool est rapide et totale ($\tau = 1$) ; acide + alcool est
+      lente et limitée par un équilibre ($\tau \approx 2/3$). C'est tout
+      l'intérêt de contrôler la synthèse en changeant de réactif.
+    solution: |
+      **Voie de l'acide :** $CH_3COOH + C_2H_5OH \rightleftharpoons
+      CH_3COOC_2H_5 + H_2O$ — double flèche, lente et limitée à
+      $\tau \approx 2/3$.
+
+      **Voie de l'anhydride :** $(CH_3CO)_2O + C_2H_5OH \rightarrow
+      CH_3COOC_2H_5 + CH_3COOH$ — une seule flèche, rapide et totale.
+
+      Changer de réactif (l'anhydride au lieu de l'acide) rend la réaction à
+      la fois plus rapide et complète : c'est le contrôle par un réactif.
+
+  - id: CTC-2
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Quelle est l'équation correcte de la réaction de l'anhydride éthanoïque
+      $(CH_3CO)_2O$ avec l'éthanol $C_2H_5OH$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$(CH_3CO)_2O + C_2H_5OH \\rightarrow CH_3COOC_2H_5 + CH_3COOH$"
+        correct: true
+      - id: B
+        text: "$(CH_3CO)_2O + C_2H_5OH \\rightleftharpoons CH_3COOC_2H_5 + H_2O$"
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.equation-de-lanhydride-erronee
+        feedback: >
+          C'est l'équation de l'estérification par l'ACIDE (double flèche, eau
+          en sous-produit), recopiée à tort pour l'anhydride. Un anhydride
+          réagit par une seule flèche (totale) et libère un acide carboxylique,
+          pas de l'eau.
+      - id: C
+        text: "$(CH_3CO)_2O + C_2H_5OH \\rightarrow CH_3COOC_2H_5 + H_2O$"
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.equation-de-lanhydride-erronee
+        feedback: >
+          Le sens (flèche unique, totale) est bon, mais le sous-produit est
+          faux : un anhydride ne libère pas d'eau. Son second morceau repart
+          en acide carboxylique — ici l'acide éthanoïque $CH_3COOH$.
+      - id: D
+        text: "$(CH_3CO)_2O + C_2H_5OH \\rightarrow 2\\,CH_3COOC_2H_5$"
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.equation-de-lanhydride-erronee
+        feedback: >
+          L'équation n'est pas conservée : l'anhydride ne fournit qu'un seul
+          groupe ester à l'alcool ; son autre moitié devient de l'acide
+          éthanoïque. On obtient une molécule d'ester et une molécule d'acide,
+          pas deux esters.
+    correct_feedback: >
+      L'anhydride cède un groupe acyle à l'alcool (formation de l'ester) et
+      son autre moitié repart en acide carboxylique : $(CH_3CO)_2O + C_2H_5OH
+      \rightarrow CH_3COOC_2H_5 + CH_3COOH$, une seule flèche.
+    solution: |
+      Un anhydride $R-CO-O-CO-R$ réagit avec un alcool $R'-OH$ selon
+      $$R-CO-O-CO-R + R'-OH \rightarrow R-CO-O-R' + R-COOH$$
+      Avec $R = CH_3$ et $R' = C_2H_5$ :
+      $$(CH_3CO)_2O + C_2H_5OH \rightarrow CH_3COOC_2H_5 + CH_3COOH$$
+      Une seule flèche (totale), et un acide carboxylique en sous-produit —
+      jamais de l'eau.
+
+  - id: CTC-3
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Pour l'estérification
+      $CH_3COOH + C_2H_5OH \rightleftharpoons CH_3COOC_2H_5 + H_2O$, catalysée
+      par l'acide sulfurique $H_2SO_4$, un élève affirme : « En ajoutant plus
+      d'acide sulfurique, on déplace l'équilibre vers la droite et on obtient
+      plus d'ester. » Que peut-on répondre ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Faux — $H_2SO_4$ est un catalyseur : il accélère l'établissement de l'équilibre dans les deux sens, sans changer ni $K$ ni la quantité d'ester à l'équilibre."
+        correct: true
+      - id: B
+        text: "Vrai — un catalyseur accélère seulement la réaction directe, ici l'estérification, ce qui favorise d'autant la formation de l'ester."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final
+        feedback: >
+          Un véritable catalyseur accélère la réaction directe ET la réaction
+          inverse (l'hydrolyse) dans les mêmes proportions — c'est le même
+          chemin, parcouru dans les deux sens. S'il n'accélérait qu'un seul
+          sens, il déplacerait l'équilibre — mais alors ce ne serait plus un
+          catalyseur.
+      - id: C
+        text: "Vrai — plus de catalyseur signifie davantage de chocs efficaces menant au produit, donc un meilleur rendement une fois l'équilibre atteint."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final
+        feedback: >
+          Plus de catalyseur accélère l'ARRIVÉE à l'équilibre, dans les deux
+          sens, mais pas sa POSITION. Le rendement à l'équilibre dépend de $K$
+          et des quantités initiales, jamais de la quantité de catalyseur.
+      - id: D
+        text: "Faux, mais seulement parce qu'il y a déjà assez de catalyseur dans le mélange — en ajouter davantage ferait au contraire reculer la réaction.
+        La quantité de catalyseur déciderait donc du sens d'évolution."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final
+        feedback: >
+          Il n'existe aucun effet de « surdose » qui ferait reculer une
+          réaction catalysée. La vraie raison est structurelle : $K$ ne dépend
+          que de la réaction et de la température, jamais de la quantité de
+          catalyseur présente.
+    correct_feedback: >
+      $H_2SO_4$ multiplie les vitesses directe et inverse par le même facteur,
+      donc l'égalité des deux vitesses (l'équilibre) se produit pour le même
+      rapport de concentrations qu'avant — même $K$, même quantité d'ester.
+      Seul le temps pour l'atteindre change.
+    solution: |
+      À l'équilibre, la vitesse directe égale la vitesse inverse. Un
+      catalyseur multiplie ces deux vitesses par le même facteur $\alpha$ :
+      l'égalité $\alpha\,v_{\text{directe}} = \alpha\,v_{\text{inverse}}$ est
+      la même que $v_{\text{directe}} = v_{\text{inverse}}$ (on divise par
+      $\alpha$). Elle est donc vérifiée pour le même rapport de concentrations,
+      c'est-à-dire le même $K$. Ajouter du $H_2SO_4$ fait atteindre l'équilibre
+      plus vite, jamais un équilibre différent.
+
+  - id: CTC-4
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Un catalyseur solide, sous forme de grains, est placé dans un réacteur
+      traversé par un flux gazeux de réactifs. Comment qualifie-t-on cette
+      catalyse, et pourquoi ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Hétérogène, car le catalyseur (solide) et les réactifs (gaz) ne sont pas dans la même phase — la réaction se produit à la surface des grains."
+        correct: true
+      - id: B
+        text: "Homogène, car le catalyseur est une espèce chimique différente des réactifs, comme c'est le cas dans tous les exemples de catalyse."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase
+        feedback: >
+          Être une espèce chimique différente des réactifs est vrai de TOUS
+          les catalyseurs, homogènes comme hétérogènes — ce n'est pas le
+          critère de classement. Ce qui distingue homogène et hétérogène, c'est
+          uniquement la phase du catalyseur par rapport à celle des réactifs.
+      - id: C
+        text: "Enzymatique, car un catalyseur solide agit exactement comme une enzyme, en offrant une surface spécifique aux molécules de réactif."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase
+        feedback: >
+          Un catalyseur enzymatique est un catalyseur biologique (une
+          protéine). Offrir une surface de réaction ne suffit pas à rendre une
+          catalyse enzymatique — il faut un catalyseur biologique et une
+          spécificité de type substrat-enzyme.
+      - id: D
+        text: "Homogène, car le catalyseur ressort chimiquement inchangé au terme de la réaction, quelle que soit la phase dans laquelle il se trouve."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase
+        feedback: >
+          Rester chimiquement inchangé est vrai de tout catalyseur, qu'il soit
+          homogène ou hétérogène — ce n'est pas non plus le critère. Ici,
+          catalyseur (solide) et réactifs (gaz) sont dans des phases
+          différentes : la catalyse est hétérogène.
+    correct_feedback: >
+      Le catalyseur solide et les réactifs gazeux occupent des phases
+      différentes : la catalyse est hétérogène, et la réaction se produit à la
+      surface des grains (adsorption, réaction, puis désorption).
+    solution: |
+      Le critère de classement homogène / hétérogène porte uniquement sur la
+      phase : ici, catalyseur solide et réactifs gazeux sont dans des phases
+      différentes, donc la catalyse est hétérogène. C'est exactement le
+      principe du pot catalytique automobile.
+
+  - id: CTC-5
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      On chauffe un corps gras (triglycéride) avec de la soude : c'est une
+      saponification. Quelle affirmation est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est une hydrolyse basique totale, qui donne un savon (ions carboxylate à longue chaîne) et du glycérol."
+        correct: true
+      - id: B
+        text: "C'est un équilibre, comme l'estérification : on n'hydrolyse jamais tout le corps gras.
+        La saponification laisserait donc toujours des triglycérides intacts."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.saponification-confondue-avec-lesterification
+        feedback: >
+          C'est confondre hydrolyse acide et hydrolyse basique. L'hydrolyse
+          ACIDE est un équilibre (limitée) ; l'hydrolyse BASIQUE forme l'ion
+          carboxylate $R-COO^-$, qui ne se réestérifie pas — sans réaction
+          inverse, elle est totale.
+      - id: C
+        text: "Elle produit un acide gras $R-COOH$ et du glycérol."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.saponification-confondue-avec-lesterification
+        feedback: >
+          En milieu basique, le produit n'est pas l'acide $R-COOH$ mais sa
+          base conjuguée, l'ion carboxylate $R-COO^-$ (le savon). C'est
+          d'ailleurs parce que le carboxylate ne se réestérifie pas que la
+          réaction est totale.
+      - id: D
+        text: "Elle produit un ester et de l'eau, comme une estérification."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.saponification-confondue-avec-lesterification
+        feedback: >
+          C'est l'inverse d'une estérification : une saponification DÉFAIT les
+          fonctions ester du corps gras. Elle ne forme pas d'ester ni d'eau,
+          mais des ions carboxylate (le savon) et du glycérol.
+    correct_feedback: >
+      La saponification est l'hydrolyse basique, totale, d'un triglycéride :
+      $C_3H_5(O-CO-R)_3 + 3\,HO^- \rightarrow 3\,R-COO^- + C_3H_5(OH)_3$ — savon
+      (carboxylates) et glycérol.
+    solution: |
+      $$C_3H_5(O-CO-R)_3 + 3\,HO^- \rightarrow 3\,R-COO^- + C_3H_5(OH)_3$$
+      Les trois fonctions ester du triglycéride sont hydrolysées en milieu
+      basique. Le produit est l'ion carboxylate $R-COO^-$ (le savon), pas
+      l'acide : comme le carboxylate ne se réestérifie pas, il n'y a pas de
+      réaction inverse et la transformation est totale — contrairement à
+      l'hydrolyse acide, limitée.
+
+  - id: CTC-6
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Dans un ion de savon $C_{17}H_{35}-COO^-$, quelle partie est hydrophile
+      et quelle partie est hydrophobe ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La tête $-COO^-$ (chargée) est hydrophile ; la longue chaîne $C_{17}H_{35}$ est hydrophobe."
+        correct: true
+      - id: B
+        text: "La longue chaîne $C_{17}H_{35}$ est hydrophile car elle est grande ; la tête $-COO^-$ est hydrophobe."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.hydrophile-hydrophobe-inverses
+        feedback: >
+          Le critère n'est pas la taille, mais la charge. La longue chaîne
+          carbonée, neutre, fuit l'eau (hydrophobe) ; c'est la tête chargée
+          $-COO^-$ qui est attirée par l'eau (hydrophile). Les deux rôles sont
+          ici inversés.
+      - id: C
+        text: "Les deux parties sont hydrophiles, puisque le savon se dissout dans l'eau."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.hydrophile-hydrophobe-inverses
+        feedback: >
+          Si tout l'ion était hydrophile, le savon n'aurait aucun pouvoir
+          lavant. C'est justement sa double personnalité qui compte : une tête
+          hydrophile ($-COO^-$) ET une queue hydrophobe (la chaîne carbonée).
+      - id: D
+        text: "La tête $-COO^-$ est hydrophobe car elle provient d'un acide gras."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.hydrophile-hydrophobe-inverses
+        feedback: >
+          L'origine (un acide gras) ne décide pas de l'affinité pour l'eau ;
+          la charge, si. Le groupe $-COO^-$ porte une charge et est donc
+          hydrophile ; c'est la longue chaîne carbonée neutre qui est
+          hydrophobe.
+    correct_feedback: >
+      On classe par la charge : la tête $-COO^-$, chargée, est hydrophile ; la
+      longue chaîne carbonée $C_{17}H_{35}$, neutre, est hydrophobe. Cette
+      double affinité fait le pouvoir lavant du savon.
+    solution: |
+      Un ion carboxylate à longue chaîne est amphiphile. Le groupe $-COO^-$
+      porte une charge électrique : attiré par l'eau (solvant polaire), il est
+      **hydrophile**. La longue chaîne $C_{17}H_{35}$, faite de carbone et
+      d'hydrogène sans charge, n'a aucune affinité pour l'eau mais se mêle aux
+      graisses : elle est **hydrophobe**. La queue plonge dans le gras, la tête
+      reste dans l'eau — d'où le lavage.
+
+  # ── R0 : lente ≠ limitée (vitesse vs avancement) ──────────────────────────
+  - id: CTC-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Le parfumeur du chapitre 1 affirme que son estérification est « lente » ET
+      « limitée ». Que désignent précisément ces deux mots ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux mots disent exactement la même chose : une réaction lente est nécessairement limitée, et une réaction limitée est nécessairement lente."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.vitesse-avancement-confondus
+        feedback: >
+          Vitesse et avancement final sont deux propriétés indépendantes.
+          Une réaction peut être lente ET totale (la saponification, vue au
+          chapitre 5) ou rapide ET limitée : rien n'impose qu'elles aillent
+          ensemble.
+      - id: B
+        text: "« Lente » décrit la vitesse (plusieurs jours pour atteindre l'état final) ; « limitée » décrit l'avancement final ($\\tau \\approx 2/3$, jamais $\\tau = 1$) — deux caractéristiques indépendantes."
+        correct: true
+      - id: C
+        text: "« Limitée » signifie que la réaction met très longtemps à démarrer ; « lente » signifie qu'elle n'ira jamais jusqu'au bout de sa transformation, faute de réactifs.
+        Les deux mots décriraient donc l'un la durée et l'autre la quantité, mais échangés."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.vitesse-avancement-confondus
+        feedback: >
+          Les définitions sont inversées. « Lente » concerne le TEMPS pour
+          atteindre l'état final (une question de vitesse), pas le fait de
+          démarrer ; « limitée » concerne la POSITION de cet état final (un
+          avancement $\tau \approx 2/3$), pas un délai de démarrage.
+      - id: D
+        text: "« Lente » et « limitée » décrivent toutes les deux le rendement final de la réaction, sous deux formulations équivalentes."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.vitesse-avancement-confondus
+        feedback: >
+          Seule « limitée » concerne le rendement final (l'avancement
+          atteint). « Lente » est un renseignement sur le TEMPS nécessaire
+          pour y arriver — une question de vitesse, pas de rendement.
+    correct_feedback: >
+      « Lente » = une question de vitesse (le temps pour atteindre l'état
+      final) ; « limitée » = une question d'avancement (l'état final
+      lui-même, plafonné à $\tau \approx 2/3$). Les deux idées sont
+      indépendantes : ce chapitre va justement montrer qu'on peut agir sur
+      l'une sans agir sur l'autre.
+    solution: |
+      Rien n'oblige une réaction lente à être limitée, ni une réaction
+      limitée à être lente : ce sont deux axes différents (le temps d'un
+      côté, l'avancement final de l'autre). Le chapitre le confirmera : le
+      catalyseur (chapitre 3) agit sur la vitesse sans toucher à l'avancement final,
+      tandis que le changement de réactif (chapitre 2) agit sur l'avancement final
+      et, en prime, sur la vitesse.
+
+  # ── R0 : pourquoi τ plafonne (réaction inverse, pas manque de réactif) ────
+  - id: CTC-8
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      D'après le chapitre 1, pourquoi le parfumeur ne convertit-il qu'environ deux
+      tiers de son acide éthanoïque en ester, même en attendant
+      indéfiniment ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que l'acide éthanoïque est le réactif limitant : il n'y en avait que les deux tiers d'un équivalent au départ.
+        Le taux d'avancement se lirait donc sur les proportions initiales seules."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.reactif-limitant-ou-pertes-invoques
+        feedback: >
+          Rien dans l'énoncé n'indique un manque de réactif au départ : le
+          plafond à $\tau \approx 2/3$ n'est pas une question de quantités
+          initiales, mais du fait que la réaction inverse (l'hydrolyse)
+          s'installe dès que de l'ester et de l'eau apparaissent.
+      - id: B
+        text: "Parce que la réaction est trop lente pour aller plus loin en un temps raisonnable."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.vitesse-avancement-confondus
+        feedback: >
+          L'énoncé précise « même en attendant indéfiniment » : le plafond
+          ne vient donc pas d'un manque de temps. C'est confondre, encore,
+          la vitesse (lente) et l'avancement final (limité) — deux choses
+          différentes.
+      - id: C
+        text: "Parce que la réaction inverse (l'hydrolyse de l'ester) se produit en même temps que l'estérification et ronge une partie de l'ester formé."
+        correct: true
+      - id: D
+        text: "Parce qu'une partie de l'ester formé s'évapore au fur et à mesure, ce qui limite la quantité récupérée."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.reactif-limitant-ou-pertes-invoques
+        feedback: >
+          Rien n'indique une perte physique par évaporation. La limitation
+          vient de la chimie de l'équilibre — la réaction inverse — pas
+          d'une perte matérielle du produit.
+    correct_feedback: >
+      La double flèche dit tout : l'hydrolyse (réaction inverse) redémarre
+      dès que l'ester et l'eau apparaissent, et ronge une partie de l'ester
+      formé, jusqu'à ce que les deux vitesses s'égalent à $\tau \approx 2/3$.
+    solution: |
+      L'estérification et l'hydrolyse se déroulent simultanément. Au fur et
+      à mesure que l'ester se forme, l'hydrolyse le décompose en partie ;
+      l'équilibre s'installe quand les deux vitesses s'égalent, bien avant
+      que tout l'acide n'ait réagi — d'où $\tau \approx 2/3$, quel que soit
+      le temps d'attente.
+
+  # ── R0 : la double flèche = deux réactions simultanées, pas figées ───────
+  - id: CTC-9
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Dans l'équation du chapitre 1,
+      $CH_3COOH + C_2H_5OH \rightleftharpoons CH_3COOC_2H_5 + H_2O$, que
+      signifie la double flèche $\rightleftharpoons$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les réactions directe (estérification) et inverse (hydrolyse) se produisent simultanément ; l'équilibre est atteint quand leurs vitesses s'égalent, sans que ni l'une ni l'autre ne s'arrête."
+        correct: true
+      - id: B
+        text: "Elle signifie que la réaction peut être inversée, mais seulement si l'on chauffe fortement le mélange pour lui fournir l'énergie nécessaire."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.double-fleche-mal-comprise
+        feedback: >
+          Aucun déclencheur extérieur n'est nécessaire : les deux réactions
+          ont lieu spontanément et en même temps, dès que les réactifs sont
+          mélangés — pas seulement sous l'effet d'un chauffage.
+      - id: C
+        text: "Elle signifie que la réaction directe s'arrête complètement une fois l'équilibre atteint, et que seule la réaction d'hydrolyse continue de se produire ensuite.
+        L'équilibre serait donc un arrêt d'un côté et une poursuite de l'autre."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.double-fleche-mal-comprise
+        feedback: >
+          À l'équilibre, les DEUX réactions continuent — elles ne
+          s'arrêtent jamais — mais à des vitesses devenues égales, si bien
+          que les quantités n'évoluent plus globalement.
+      - id: D
+        text: "Elle signifie simplement que l'on pourrait aussi bien écrire l'équation à l'envers, mais dans les faits une seule des deux réactions a réellement lieu."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.double-fleche-mal-comprise
+        feedback: >
+          Ce n'est pas une simple convention d'écriture : les deux réactions
+          se produisent réellement et simultanément, pas une seule à la
+          fois.
+    correct_feedback: >
+      La double flèche signale deux réactions réellement simultanées ;
+      l'équilibre est l'instant où leurs vitesses deviennent égales, pas
+      l'instant où l'une des deux s'arrête.
+    solution: |
+      $\rightleftharpoons$ indique que l'estérification et l'hydrolyse ont
+      lieu en même temps, dans les deux sens, dès le mélange des réactifs.
+      L'état final n'est pas un arrêt de la réaction, mais un équilibre
+      dynamique : $v_{\text{directe}} = v_{\text{inverse}}$. Cette idée sera
+      la clé, au chapitre 3, pour comprendre pourquoi un catalyseur ne peut pas
+      déplacer un tel équilibre.
+
+  # ── R1 : transférer l'équation générale à un nouveau couple (rendement) ──
+  - id: CTC-10
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      On mélange de l'anhydride éthanoïque $(CH_3CO)_2O$, en excès, avec
+      $n_0 = 0{,}30\ \text{mol}$ de propan-1-ol $C_3H_7OH$. Quelle quantité
+      d'éthanoate de propyle obtient-on, et quel est le rendement de cette
+      synthèse ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$n(\\text{ester}) \\approx 0{,}20\\ \\text{mol}$ et $\\eta \\approx 67\\,\\%$, comme pour toute estérification."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.anhydride-mal-compris
+        feedback: >
+          C'est appliquer le plafond de l'estérification par l'ACIDE
+          ($\tau \approx 2/3$) à une réaction qui n'est pas concernée :
+          anhydride + alcool est une réaction totale, sans équilibre, donc
+          sans ce plafond.
+      - id: B
+        text: "$n(\\text{ester}) = 0{,}30\\ \\text{mol}$, mais le rendement ne peut jamais atteindre $100\\,\\%$ car il faut toujours soustraire une fraction perdue par la réaction inverse."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.reactif-limitant-ou-pertes-invoques
+        feedback: >
+          Il n'existe pas de réaction inverse ici : le sous-produit est un
+          acide carboxylique, pas de l'eau, et le carboxylate ne peut pas se
+          reformer en anhydride. Rien ne « ronge » l'ester obtenu.
+      - id: C
+        text: "On ne peut pas calculer le rendement sans connaître la quantité exacte d'anhydride introduite."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.reactif-limitant-ou-pertes-invoques
+        feedback: >
+          Seule la quantité du réactif LIMITANT (ici le propan-1-ol, puisque
+          l'anhydride est en excès) fixe $n_{\text{obtenu}}$ et
+          $n_{\text{max}}$ ; la quantité exacte de l'excès n'intervient pas
+          dans le calcul du rendement.
+      - id: D
+        text: "$n(\\text{ester}) = 0{,}30\\ \\text{mol}$ et $\\eta = 100\\,\\%$ : le propan-1-ol, réactif limitant, est intégralement consommé par une réaction totale."
+        correct: true
+    correct_feedback: >
+      Anhydride + alcool est une réaction totale : le réactif limitant
+      (le propan-1-ol) est entièrement consommé, donc $n(\text{ester}) =
+      n_0 = 0{,}30\ \text{mol}$ et $\eta = 100\,\%$.
+    solution: |
+      $$(CH_3CO)_2O + C_3H_7OH \rightarrow CH_3COOC_3H_7 + CH_3COOH$$
+      L'anhydride étant en excès, le propan-1-ol est le réactif limitant et
+      la réaction étant totale, il est intégralement consommé :
+      $n(\text{ester}) = 0{,}30\ \text{mol}$. C'est aussi la quantité
+      maximale théorique, d'où $\eta = 0{,}30/0{,}30 = 100\,\%$.
+
+  # ── R2 : le catalyseur ne se consomme pas (écriture au-dessus de la flèche) ─
+  - id: CTC-11
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Dans l'équation de la réaction entre les ions peroxodisulfate
+      $S_2O_8^{2-}$ et les ions iodure $I^-$, catalysée par les ions
+      $Fe^{3+}$, comment doit-on faire figurer $Fe^{3+}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parmi les réactifs, avec un coefficient stœchiométrique comme les autres espèces, puisqu'il participe activement au déroulement de la réaction."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-dans-bilan
+        feedback: >
+          $Fe^{3+}$ participe au mécanisme mais n'est pas consommé : il
+          ressort en même quantité qu'au départ. On ne lui attribue donc pas
+          de coefficient stœchiométrique parmi les réactifs.
+      - id: B
+        text: "Au-dessus de la flèche de l'équation, jamais parmi les réactifs ni les produits : $Fe^{3+}$ intervient dans le mécanisme mais ressort intact, en même quantité et de même nature."
+        correct: true
+      - id: C
+        text: "Parmi les produits de la réaction, puisqu'il se retrouve régénéré à l'identique une fois la transformation achevée."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-dans-bilan
+        feedback: >
+          Être régénéré ne veut pas dire apparaître comme produit : la
+          quantité de $Fe^{3+}$ à la fin est la même qu'au départ, donc son
+          bilan net est nul — il n'appartient ni aux réactifs ni aux
+          produits.
+      - id: D
+        text: "Il ne doit apparaître nulle part dans l'écriture de l'équation, car un catalyseur n'intervient jamais dans la réaction chimique elle-même, seulement autour d'elle."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-dans-bilan
+        feedback: >
+          Un catalyseur participe bel et bien au déroulement de la
+          transformation (ici, par deux étapes rapides qui, additionnées,
+          redonnent l'équation bilan) — c'est justement pour ça qu'on
+          l'indique, au-dessus de la flèche.
+    correct_feedback: >
+      Un catalyseur n'est ni réactif ni produit puisqu'il ressort intact :
+      on l'écrit donc au-dessus de la flèche, jamais dans le bilan matière.
+    solution: |
+      $Fe^{3+}$ accélère la réaction par deux étapes rapides qui,
+      additionnées, redonnent exactement l'équation bilan entre $S_2O_8^{2-}$
+      et $I^-$ — sans que $Fe^{3+}$ (régénéré) n'y apparaisse. Il se note donc
+      au-dessus de la flèche : ni réactif, ni produit.
+
+  # ── R2 : le rôle sélectif (accélérer une réaction, pas toutes) ───────────
+  - id: CTC-12
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Un mélange de réactifs peut, en principe, évoluer selon deux réactions
+      concurrentes A et B, menant à deux produits différents. On y ajoute un
+      catalyseur qui n'accélère que la réaction A. Quel est l'effet de ce
+      catalyseur sur le système ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Aucun effet particulier : un catalyseur accélère nécessairement toutes les réactions possibles du mélange, pas une seule."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.selectivite-du-catalyseur-ignoree
+        feedback: >
+          C'est justement le contraire du rôle sélectif : un catalyseur
+          donné peut n'accélérer qu'une seule réaction parmi plusieurs
+          possibles, sans toucher aux autres.
+      - id: B
+        text: "Il empêche complètement la réaction B de se produire, en consommant les réactifs qui y mèneraient."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.selectivite-du-catalyseur-ignoree
+        feedback: >
+          Un catalyseur n'est jamais consommé, et n'empêche pas une réaction
+          concurrente de se produire : il se contente de ne pas
+          l'accélérer. La réaction B reste possible, simplement plus lente
+          que A.
+      - id: C
+        text: "Il joue un rôle sélectif : il oriente le système vers le produit de la réaction A, sans accélérer la réaction concurrente B."
+        correct: true
+      - id: D
+        text: "Il déplace l'équilibre du système en faveur du produit de la réaction A."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final
+        feedback: >
+          Un catalyseur ne déplace jamais un équilibre, même dans un rôle
+          sélectif : il multiplie les vitesses directe et inverse de la
+          réaction qu'il accélère par le même facteur. La sélectivité
+          oriente entre réactions concurrentes, elle ne déplace pas une
+          position d'équilibre.
+    correct_feedback: >
+      C'est le rôle sélectif du catalyseur : accélérer une réaction précise
+      parmi plusieurs possibles, orientant ainsi le système vers son produit,
+      sans agir sur les réactions concurrentes.
+    solution: |
+      Le programme reconnaît deux rôles à un catalyseur : accélérateur (il
+      augmente une vitesse) et sélectif (il choisit LAQUELLE des réactions
+      possibles accélérer). Ici, en n'accélérant que A, il favorise
+      l'obtention du produit de A — sans consommer de réactif, sans bloquer
+      B, et sans déplacer aucun équilibre.
+
+  # ── R3 : spécificité enzymatique ≠ classification homogène/hétérogène ────
+  - id: CTC-13
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      L'amylase salivaire catalyse l'hydrolyse de l'amidon en sucres plus
+      petits, mais elle est incapable de catalyser l'hydrolyse d'un ester
+      comme l'éthanoate d'éthyle. Comment expliquer cette différence ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Une enzyme est extrêmement spécifique : sa forme géométrique ne s'ajuste qu'à un seul type de substrat (ici l'amidon) — une clé qui n'ouvre qu'une seule serrure."
+        correct: true
+      - id: B
+        text: "L'amylase est un catalyseur hétérogène : elle n'agit qu'en phase solide, jamais sur des molécules dissoutes en solution comme l'ester considéré ici."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase
+        feedback: >
+          C'est confondre deux critères différents. La spécificité d'une
+          enzyme (quel substrat elle accepte) n'a rien à voir avec la phase
+          homogène/hétérogène (où se trouve le catalyseur par rapport aux
+          réactifs) : l'amylase agit d'ailleurs en solution, donc de façon
+          homogène.
+      - id: C
+        text: "Toute enzyme perd son efficacité en dehors de l'amidon, car les enzymes ne sont actives qu'à la température de $37\\,^\\circ\\text{C}$ du corps humain."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase
+        feedback: >
+          La température n'est pas en cause ici : l'éthanoate d'éthyle
+          pourrait tout à fait être présent à $37\,^\circ\text{C}$. C'est la
+          forme géométrique du site actif, ajustée à l'amidon et à lui
+          seul, qui explique l'inaction de l'amylase sur l'ester.
+      - id: D
+        text: "L'amylase est un catalyseur homogène, alors que l'hydrolyse de l'ester exigerait un catalyseur hétérogène pour pouvoir se produire."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase
+        feedback: >
+          Là encore, c'est mélanger deux critères. La raison pour laquelle
+          l'amylase n'agit pas sur l'ester n'est pas une question de phase
+          (homogène/hétérogène), mais de spécificité : sa forme ne
+          correspond qu'au substrat amidon.
+    correct_feedback: >
+      C'est la spécificité, extrême chez les enzymes, qui explique cette
+      différence : la forme du site actif de l'amylase s'ajuste à l'amidon
+      et à lui seul, pas à l'ester.
+    solution: |
+      Une enzyme catalyse en général une seule réaction, sur un seul type de
+      substrat, grâce à une forme géométrique qui s'ajuste précisément à ce
+      substrat — une clé qui n'ouvre qu'une seule serrure. L'amidon est le
+      substrat de l'amylase ; l'éthanoate d'éthyle, chimiquement très
+      différent, ne s'ajuste pas à son site actif. Cette spécificité est un
+      critère à part, indépendant de la classification homogène/hétérogène
+      (qui ne porte que sur la phase).
+
+  # ── R3 : catalyse homogène (phase, pas nature chimique) ───────────────────
+  - id: CTC-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Dans l'estérification de l'acide éthanoïque et de l'éthanol,
+      catalysée par quelques gouttes d'acide sulfurique $H_2SO_4$, comment
+      qualifie-t-on cette catalyse ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Hétérogène, car $H_2SO_4$ est une espèce minérale, chimiquement très différente des espèces organiques du mélange."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase
+        feedback: >
+          La différence de nature chimique ne suffit pas à rendre une
+          catalyse hétérogène — TOUS les catalyseurs sont des espèces
+          différentes des réactifs. Ce qui compte, c'est la phase : ici,
+          $H_2SO_4$ est dissous dans le même mélange liquide que les
+          réactifs.
+      - id: B
+        text: "Enzymatique, car l'acide sulfurique joue le rôle d'un catalyseur biologique dans cette réaction organique."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase
+        feedback: >
+          Une catalyse enzymatique exige un catalyseur BIOLOGIQUE (une
+          protéine, une enzyme) — pas simplement une réaction sur des
+          espèces organiques. $H_2SO_4$ est un acide minéral, pas une
+          enzyme.
+      - id: C
+        text: "On ne peut pas classer cette catalyse sans connaître la concentration de l'acide sulfurique utilisé."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase
+        feedback: >
+          Le classement homogène/hétérogène ne dépend jamais de la
+          concentration ou de la quantité de catalyseur, seulement de sa
+          phase par rapport à celle des réactifs.
+      - id: D
+        text: "Homogène : l'acide sulfurique est dissous dans le même mélange liquide que les réactifs organiques — même phase."
+        correct: true
+    correct_feedback: >
+      $H_2SO_4$ est dissous dans le même mélange liquide que l'acide
+      éthanoïque et l'éthanol : même phase, donc catalyse homogène — la
+      nature minérale de l'acide n'entre pas en jeu dans ce classement.
+    solution: |
+      Le critère homogène/hétérogène porte uniquement sur la phase du
+      catalyseur par rapport à celle des réactifs. Ici, $H_2SO_4$ est
+      dissous dans le même liquide que les espèces organiques : catalyse
+      homogène — exactement comme les ions $Fe^{3+}$ dans le mélange
+      peroxodisulfate/iodure.
+
+  # ── R4 : totale ≠ rapide (vitesse et avancement, encore) ─────────────────
+  - id: CTC-15
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Un élève affirme : « La saponification est totale, donc elle doit
+      forcément être rapide. » Cette affirmation est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Vrai : une réaction totale va nécessairement plus vite qu'une réaction limitée, puisqu'aucune réaction inverse ne vient la ralentir tout au long de son déroulement."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.vitesse-avancement-confondus
+        feedback: >
+          Rien n'impose ce lien. La saponification est un contre-exemple
+          direct : elle est totale, mais lente (elle nécessite souvent un
+          chauffage à reflux prolongé). L'absence de réaction inverse fixe
+          l'avancement final, pas la vitesse.
+      - id: B
+        text: "Faux : la saponification est lente (chauffage à reflux prolongé) mais totale — l'avancement final ne dit jamais rien de la vitesse, ce sont deux propriétés indépendantes."
+        correct: true
+      - id: C
+        text: "Vrai, car dans une réaction totale le catalyseur agit forcément plus efficacement que dans une réaction qui s'arrête avant son terme."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.vitesse-avancement-confondus
+        feedback: >
+          Il n'y a pas de catalyseur en jeu dans la saponification : la
+          soude, $HO^-$, est un RÉACTIF (consommé), pas un catalyseur. La
+          totalité de la réaction vient de l'absence de réaction inverse
+          (le carboxylate ne se réestérifie pas), pas d'un quelconque
+          catalyseur.
+      - id: D
+        text: "Faux : c'est en réalité l'inverse, une réaction totale est toujours plus lente qu'une réaction limitée, qui atteint son état final plus tôt."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.vitesse-avancement-confondus
+        feedback: >
+          C'est encore lier vitesse et avancement, mais dans l'autre sens.
+          Les deux propriétés restent indépendantes : rien n'impose qu'une
+          réaction totale soit plus lente (l'anhydride + alcool du chapitre 2 est
+          rapide ET totale).
+    correct_feedback: >
+      La saponification est lente mais totale : « lente » décrit la
+      vitesse, « totale » décrit l'avancement final — deux propriétés
+      indépendantes, comme le rappelle le tableau récapitulatif du chapitre 6.
+    solution: |
+      Rien ne relie nécessairement vitesse et avancement final. La
+      saponification est lente (chauffage à reflux prolongé) car elle
+      requiert une activation thermique importante, mais totale car le
+      carboxylate formé ne se réestérifie jamais. À l'inverse, la réaction
+      anhydride + alcool du chapitre 2 est rapide ET totale : les deux propriétés
+      varient bien indépendamment l'une de l'autre.
+
+  # ── R5 : intégratif — anhydride vs acide catalysé, valeurs neuves ────────
+  - id: CTC-16
+    rung: "R5"
+    difficulty_level: 5
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      On veut synthétiser du propanoate d'éthyle. Voie 1 : anhydride
+      propanoïque $(C_2H_5CO)_2O$, en excès, avec $n_0 = 0{,}60\ \text{mol}$
+      d'éthanol. Voie 2 : acide propanoïque et éthanol en quantités égales
+      ($0{,}60\ \text{mol}$ chacun), avec quelques gouttes d'acide
+      sulfurique comme catalyseur (on admet le même $\tau \approx 2/3$ que
+      pour l'acide éthanoïque). Quelle affirmation est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La voie 1 donne $n(\\text{ester}) = 0{,}60\\ \\text{mol}$ ($\\eta = 100\\,\\%$) ; la voie 2 plafonne à $n(\\text{ester}) \\approx 0{,}40\\ \\text{mol}$ ($\\eta \\approx 67\\,\\%$) : le catalyseur accélère la voie 2 sans jamais combler l'écart de rendement avec la voie 1."
+        correct: true
+      - id: B
+        text: "Les deux voies donnent finalement $0{,}60\\ \\text{mol}$ d'ester, car le catalyseur de la voie 2 finit par compenser entièrement l'absence d'anhydride."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final
+        feedback: >
+          Un catalyseur accélère l'estérification et l'hydrolyse dans les
+          mêmes proportions : il ne peut jamais faire dépasser à la voie 2
+          son plafond d'équilibre $\tau \approx 2/3$, quelle que soit la
+          quantité de catalyseur ajoutée.
+      - id: C
+        text: "La voie 1 est plus lente que la voie 2, car une réaction catalysée va toujours plus vite qu'une réaction conduite sans catalyseur."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.vitesse-avancement-confondus
+        feedback: >
+          C'est confondre catalyseur et réactif plus réactif. La voie 1 est
+          rapide grâce à la réactivité intrinsèque de l'anhydride, sans
+          aucun catalyseur — ce n'est pas une règle générale qu'une réaction
+          catalysée batte toujours une réaction sans catalyseur.
+      - id: D
+        text: "Les deux voies plafonnent à $0{,}40\\ \\text{mol}$ d'ester, car $0{,}60\\ \\text{mol}$ d'éthanol ne peut jamais réagir en totalité, quel que soit le réactif choisi en face et quelle que soit la durée.
+        Changer le réactif en excès ne modifierait donc jamais le rendement."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.anhydride-mal-compris
+        feedback: >
+          Le plafond $\tau \approx 2/3$ n'est pas universel : il est propre
+          à l'équilibre acide + alcool. La voie de l'anhydride n'a pas cet
+          équilibre (une seule flèche) et atteint $\tau = 1$.
+    correct_feedback: >
+      Changer de réactif (voie 1) rend la réaction totale ; ajouter un
+      catalyseur (voie 2) ne fait qu'accélérer l'arrivée au même équilibre
+      limité — deux leviers différents, aux effets différents.
+    solution: |
+      **Voie 1 :** $(C_2H_5CO)_2O + C_2H_5OH \rightarrow
+      CH_3CH_2COOC_2H_5 + C_2H_5COOH$ — totale, donc $n(\text{ester}) =
+      0{,}60\ \text{mol}$, $\eta = 100\,\%$.
+
+      **Voie 2 :** équilibre acide + alcool, $\tau \approx 2/3$, donc
+      $n(\text{ester}) \approx \tfrac{2}{3}\times 0{,}60 = 0{,}40\ \text{mol}$,
+      $\eta \approx 67\,\%$ — le catalyseur ne change que le temps pour y
+      arriver, jamais cette valeur.
+
+  # ── R5 : intégratif — stœchiométrie de saponification + amphiphile ───────
+  - id: CTC-17
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      On saponifie $n = 0{,}050\ \text{mol}$ d'un corps gras (triglycéride)
+      par de la soude en excès, libérant l'ion palmitate
+      $C_{15}H_{31}-COO^-$. Quelle quantité minimale d'ions $HO^-$ faut-il
+      pour une saponification totale, et quelle est la partie hydrophobe de
+      l'ion palmitate obtenu ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$n = 0{,}050\\ \\text{mol}$ d'ions $HO^-$, car un triglycéride ne compte qu'une seule fonction ester à hydrolyser."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.stoechiometrie-du-triglyceride-ignoree
+        feedback: >
+          Un triglycéride est un TRIester : il porte trois fonctions ester,
+          chacune hydrolysée par un ion $HO^-$. Il en faut donc $3n$, pas
+          $n$.
+      - id: B
+        text: "$6n = 0{,}30\\ \\text{mol}$ d'ions $HO^-$, car chaque fonction ester nécessite deux ions $HO^-$ pour être hydrolysée."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.stoechiometrie-du-triglyceride-ignoree
+        feedback: >
+          L'hydrolyse d'une seule fonction ester ne consomme qu'UN ion
+          $HO^-$ : $R-CO-O-R' + HO^- \rightarrow R-COO^- + R'-OH$. Avec
+          trois fonctions ester, il en faut $3n$, pas $6n$.
+      - id: C
+        text: "$3n = 0{,}15\\ \\text{mol}$ d'ions $HO^-$ ; la partie hydrophobe est la longue chaîne carbonée $C_{15}H_{31}$."
+        correct: true
+      - id: D
+        text: "$3n = 0{,}15\\ \\text{mol}$ d'ions $HO^-$, mais la partie hydrophobe est la tête $-COO^-$, car elle porte la charge la plus grande."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.hydrophile-hydrophobe-inverses
+        feedback: >
+          La stœchiométrie est correcte, mais le classement hydrophile /
+          hydrophobe est inversé. C'est la tête CHARGÉE $-COO^-$ qui est
+          attirée par l'eau (hydrophile) ; c'est la longue chaîne carbonée
+          NEUTRE qui fuit l'eau (hydrophobe) — le critère est la charge, pas
+          sa « grandeur ».
+    correct_feedback: >
+      Trois fonctions ester par triglycéride $\Rightarrow 3n = 0{,}15\
+      \text{mol}$ de $HO^-$. Sur l'ion palmitate, la tête chargée $-COO^-$
+      est hydrophile, la longue chaîne carbonée $C_{15}H_{31}$ est
+      hydrophobe.
+    solution: |
+      $$
+      C_3H_5(O-CO-C_{15}H_{31})_3 + 3\,HO^- \rightarrow
+      3\,C_{15}H_{31}-COO^- + C_3H_5(OH)_3
+      $$
+      Il faut $3n = 3 \times 0{,}050 = 0{,}15\ \text{mol}$ d'ions $HO^-$
+      pour hydrolyser les trois fonctions ester. Sur l'ion obtenu, la tête
+      $-COO^-$, chargée, est hydrophile ; la chaîne $C_{15}H_{31}$, neutre,
+      est hydrophobe.
+
+  # ── R5 : intégratif — quel levier atteint réellement 100 % ? (capstone) ──
+  - id: CTC-18
+    rung: "R5"
+    difficulty_level: 5
+    skill_code: pc_controle_catalyse
+    tags: []
+    stem: >
+      Un chimiste industriel part d'une synthèse d'ester lente et limitée
+      (acide + alcool, $\tau \approx 2/3$). Parmi les quatre modifications
+      suivantes, laquelle, seule, permet d'atteindre un rendement de
+      $100\,\%$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Ajouter davantage de catalyseur acide au mélange."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final
+        feedback: >
+          Un catalyseur, quelle que soit sa quantité, accélère
+          l'estérification et l'hydrolyse dans les mêmes proportions : il
+          ne change ni $K$ ni le rendement à l'équilibre, seulement le temps
+          pour l'atteindre.
+      - id: B
+        text: "Remplacer le catalyseur homogène ($H_2SO_4$) par un catalyseur hétérogène solide."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase
+        feedback: >
+          Changer le TYPE de catalyseur (homogène vers hétérogène) reste un
+          changement de catalyseur : ça ne modifie que la vitesse à laquelle
+          on rejoint l'équilibre, jamais sa position — quel que soit le type
+          de catalyse employé.
+      - id: C
+        text: "Augmenter la sélectivité du catalyseur utilisé."
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.selectivite-du-catalyseur-ignoree
+        feedback: >
+          La sélectivité choisit LAQUELLE réaction un catalyseur accélère
+          parmi plusieurs concurrentes ; ici il n'y a qu'une seule réaction
+          en jeu (estérification/hydrolyse). Ce levier ne change pas
+          l'avancement final d'un équilibre déjà fixé.
+      - id: D
+        text: "Remplacer l'acide carboxylique par son anhydride d'acide correspondant."
+        correct: true
+    correct_feedback: >
+      Seul un changement de RÉACTIF (l'anhydride, sans équilibre à établir)
+      élimine la réaction inverse et atteint $\tau = 1$. Aucun réglage sur le
+      catalyseur — sa quantité, son type, sa sélectivité — ne peut déplacer
+      l'état final d'un équilibre.
+    solution: |
+      Le chapitre distingue nettement deux familles de leviers : ceux qui
+      changent l'ÉTAT FINAL (ici, seul le changement de réactif — passer à
+      l'anhydride — supprime l'équilibre et ses $\tau \approx 2/3$) et ceux
+      qui ne changent que la VITESSE (tout ce qui touche au catalyseur :
+      quantité, type homogène/hétérogène, sélectivité). Seule la
+      modification D agit sur le premier axe.
+
+  # Ajoutés le 2026-09-05 : huit familles sous le plancher de 3 items du banc,
+  # cinq à un item et trois à deux. Cinq items, treize places.
+  - id: CTC-19
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    primary_misconception: mc.physics.pc_controle_catalyse.equation-de-lanhydride-erronee
+    stem: >
+      On estérifie l'éthanol par l'anhydride éthanoïque
+      $(CH_3CO)_2O$. Quelle équation décrit correctement cette
+      transformation ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $(CH_3CO)_2O + C_2H_5OH \rightarrow CH_3COOC_2H_5 + CH_3COOH$, avec
+          une flèche simple
+        correct: true
+      - id: B
+        text: >-
+          $(CH_3CO)_2O + C_2H_5OH \rightleftharpoons CH_3COOC_2H_5 + H_2O$,
+          comme pour l'acide, avec formation d'eau
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.equation-de-lanhydride-erronee
+        feedback: >
+          C'est l'équation de l'estérification par l'ACIDE, recopiée. Avec un
+          anhydride, le sous-produit n'est pas de l'eau mais un acide
+          carboxylique : $CH_3COOH$. Et c'est justement l'absence d'eau qui
+          supprime l'hydrolyse — donc la limitation.
+      - id: C
+        text: >-
+          $(CH_3CO)_2O + C_2H_5OH \rightleftharpoons CH_3COOC_2H_5 + CH_3COOH$
+          : la double flèche indique qu'on pourrait, en chauffant, inverser la
+          réaction
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.double-fleche-mal-comprise
+        feedback: >
+          La double flèche ne signale ni une possibilité ni une condition : elle
+          dit que les deux sens ont lieu SIMULTANÉMENT dans les conditions de
+          l'expérience. Ici la transformation est totale, donc flèche simple —
+          l'acide formé ne reconstitue pas l'anhydride.
+      - id: D
+        text: >-
+          $(CH_3CO)_2O + C_2H_5OH + H^{+} \rightarrow CH_3COOC_2H_5 + CH_3COOH$,
+          le catalyseur figurant parmi les réactifs
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-dans-bilan
+        feedback: >
+          Un catalyseur est régénéré à la fin : il apparaît dans le mécanisme,
+          jamais dans le bilan. L'écrire côté réactifs supposerait qu'il soit
+          consommé — ce qui contredit sa définition, et fausserait tout calcul de
+          quantité de matière. Il se note au-dessus de la flèche.
+    correct_feedback: >
+      $(CH_3CO)_2O + C_2H_5OH \rightarrow CH_3COOC_2H_5 + CH_3COOH$. Le
+      sous-produit est un acide carboxylique, pas de l'eau : sans eau, pas
+      d'hydrolyse, donc pas de limitation — d'où la flèche simple.
+    solution: |
+      **Ce que change le passage à l'anhydride.** L'estérification par l'acide
+      produit de l'EAU, laquelle hydrolyse l'ester en retour : la transformation
+      est limitée. L'anhydride produit un ACIDE CARBOXYLIQUE à la place :
+      $$(CH_3CO)_2O + C_2H_5OH \rightarrow CH_3COOC_2H_5 + CH_3COOH$$
+      Sans eau formée, la réaction inverse n'a pas lieu : la transformation est
+      totale, et s'écrit avec une flèche simple.
+
+      **Le catalyseur.** $H^{+}$ accélère la réaction et se retrouve intact à la
+      fin. Il se note au-dessus de la flèche, jamais dans le bilan.
+
+  - id: CTC-20
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    primary_misconception: mc.physics.pc_controle_catalyse.reactif-limitant-ou-pertes-invoques
+    stem: >
+      Une estérification par l'ACIDE, menée avec des quantités égales d'acide et
+      d'alcool, plafonne à un rendement de $67\,\%$. Comment l'expliquer ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Par l'hydrolyse : l'eau formée reconvertit une partie de l'ester, et
+          l'équilibre s'établit là où les deux réactions se compensent
+        correct: true
+      - id: B
+        text: >-
+          Par un défaut de réactif ou une perte matérielle : une partie de
+          l'ester s'est évaporée, ou l'un des réactifs manquait
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.reactif-limitant-ou-pertes-invoques
+        feedback: >
+          Aucune de ces causes ne tient : les quantités sont égales, donc aucun
+          réactif n'est limitant, et le plafond se reproduit à l'identique quelle
+          que soit la propreté du montage. Un rendement REPRODUCTIBLE à
+          $67\,\%$ n'est pas un accident de manipulation, c'est une propriété
+          chimique — la position de l'équilibre.
+      - id: C
+        text: >-
+          Par la double flèche : elle signifie qu'il faudrait chauffer davantage
+          pour que la réaction directe l'emporte
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.double-fleche-mal-comprise
+        feedback: >
+          La double flèche décrit ce qui a lieu, pas ce qu'il faudrait faire.
+          Chauffer accélère les DEUX sens également : on atteint l'équilibre plus
+          vite, au même endroit. Ce qui déplacerait l'équilibre, c'est retirer un
+          produit ou changer les proportions — pas la température seule.
+      - id: D
+        text: >-
+          Par le catalyseur, qui est consommé au cours de la réaction et finit
+          par manquer, comme le montre sa présence dans le bilan
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-dans-bilan
+        feedback: >
+          Le catalyseur n'est pas consommé : il est régénéré à chaque cycle, et
+          c'est pourquoi il n'apparaît pas dans le bilan. Une trace suffit pour
+          des quantités molaires de réactifs. Et même absent, l'équilibre
+          s'établirait au même endroit — simplement bien plus lentement.
+    correct_feedback: >
+      Le plafond vient de la réaction INVERSE. L'eau formée hydrolyse l'ester ;
+      quand les deux vitesses s'égalisent, les quantités cessent de varier. Ce
+      $67\,\%$ est reproductible parce qu'il est thermodynamique, pas
+      accidentel.
+    solution: |
+      **Le test qui écarte les causes matérielles.** Le rendement est le même
+      d'une expérience à l'autre, avec des quantités égales et sans perte
+      décelable. Une cause accidentelle donnerait des valeurs dispersées.
+
+      **La cause réelle.** L'estérification produit de l'eau ; l'eau hydrolyse
+      l'ester. Les deux réactions coexistent, et l'état final est celui où elles
+      se compensent :
+      $$
+      \tau_{\text{final}} \approx \frac{2}{3} \ \text{pour un mélange
+      équimolaire acide + alcool primaire}
+      $$
+
+      **Ce qui déplacerait le plafond.** Changer les proportions (excès d'un
+      réactif), retirer l'eau au fur et à mesure, ou passer à l'anhydride — qui
+      supprime l'eau à la source. Pas le catalyseur, pas la durée, pas la
+      température seule.
+
+  - id: CTC-21
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: pc_controle_catalyse
+    tags: []
+    primary_misconception: mc.physics.pc_controle_catalyse.saponification-confondue-avec-lesterification
+    stem: >
+      On chauffe un triglycéride avec une solution concentrée d'hydroxyde de
+      sodium. Que produit cette transformation, et en quelle proportion ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Trois ions carboxylate et une molécule de glycérol par triglycéride,
+          la transformation étant totale
+        correct: true
+      - id: B
+        text: >-
+          Trois acides gras et du glycérol, la réaction s'arrêtant à un
+          équilibre comme l'estérification
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.saponification-confondue-avec-lesterification
+        feedback: >
+          L'hydrolyse BASIQUE ne donne pas l'acide mais sa base conjuguée : l'ion
+          carboxylate, qui ne peut pas réagir avec l'alcool. C'est justement ce
+          qui rend la saponification TOTALE, alors que l'hydrolyse acide, elle,
+          est limitée. Le milieu basique n'est pas un détail — il change la
+          nature du produit et le caractère de la transformation.
+      - id: C
+        text: >-
+          Un seul ion carboxylate et un glycérol, un triglycéride ne comportant
+          qu'une seule fonction ester
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.stoechiometrie-du-triglyceride-ignoree
+        feedback: >
+          « Tri- » compte les trois : un triglycéride est un triester du
+          glycérol, qui porte trois fonctions alcool estérifiées. Il consomme
+          donc trois ions $HO^{-}$ — un par fonction — et libère trois ions
+          carboxylate.
+      - id: D
+        text: >-
+          Trois ions carboxylate, dont la longue chaîne carbonée est hydrophile
+          parce qu'elle est grande, et la tête $-COO^{-}$ hydrophobe
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.hydrophile-hydrophobe-inverses
+        feedback: >
+          Les deux caractères sont inversés. C'est la CHARGE qui décide de
+          l'affinité pour l'eau, pas la taille : la tête $-COO^{-}$, ionique, est
+          hydrophile ; la longue chaîne carbonée, apolaire, est hydrophobe. C'est
+          cette double nature qui fait du savon un agent lavant.
+    correct_feedback: >
+      Un triglycéride porte trois fonctions ester : la saponification consomme
+      trois ions $HO^{-}$ et libère trois ions carboxylate plus un glycérol. En
+      milieu basique, le produit est l'ion carboxylate — pas l'acide — et c'est
+      ce qui rend la transformation totale.
+    solution: |
+      **L'équation.**
+      $$
+      \text{triglycéride} + 3\,HO^{-} \rightarrow 3\,R\!-\!COO^{-}
+      + \text{glycérol}
+      $$
+
+      **Pourquoi elle est totale.** L'ion carboxylate $R\!-\!COO^{-}$ est la
+      base conjuguée de l'acide gras : il ne réagit pas avec le glycérol pour
+      reformer l'ester. La réaction inverse est donc supprimée, alors que
+      l'hydrolyse en milieu acide, qui donne l'acide lui-même, reste limitée.
+
+      **La stœchiométrie.** Trois fonctions ester, trois ions hydroxyde, trois
+      carboxylates — un par fonction.
+
+      **Le savon.** L'ion carboxylate a une tête ionique $-COO^{-}$, hydrophile,
+      et une longue queue carbonée apolaire, hydrophobe. C'est cette double
+      affinité qui lui permet d'emprisonner les graisses dans l'eau.
+
+  - id: CTC-22
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    primary_misconception: mc.physics.pc_controle_catalyse.stoechiometrie-du-triglyceride-ignoree
+    stem: >
+      On veut saponifier $0{,}10\ \text{mol}$ de triglycéride. Quelle quantité
+      minimale d'ions hydroxyde faut-il introduire ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $0{,}30\ \text{mol}$ : un triglycéride porte trois fonctions ester, et
+          chacune consomme exactement un ion $HO^{-}$
+        correct: true
+      - id: B
+        text: >-
+          $0{,}60\ \text{mol}$ : il faut deux ions $HO^{-}$ par fonction ester,
+          l'un pour couper la liaison et l'autre pour neutraliser l'acide formé
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.stoechiometrie-du-triglyceride-ignoree
+        feedback: >
+          Un seul ion $HO^{-}$ par fonction suffit : il n'y a pas deux étapes à
+          payer séparément. La saponification donne directement le
+            carboxylate : aucun acide libre n'est formé, qu'il faudrait ensuite
+            neutraliser. Le compte est donc $3 \times 0{,}10 = 0{,}30\ \text{mol}$.
+      - id: C
+        text: >-
+          $0{,}10\ \text{mol}$ : la réaction étant un équilibre, un défaut d'ions
+          hydroxyde se rattrape par un excès de durée
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.saponification-confondue-avec-lesterification
+        feedback: >
+          La saponification n'est pas un équilibre : elle est TOTALE, parce que
+          l'ion carboxylate formé ne peut pas reformer l'ester. Et aucune durée
+          ne compense un réactif manquant : avec $0{,}10\ \text{mol}$ d'ions
+          hydroxyde, seule une fonction ester sur trois serait saponifiée, quel
+          que soit le temps accordé.
+      - id: D
+        text: >-
+          $0{,}30\ \text{mol}$, mais il faut y ajouter le catalyseur, qui
+          accélère nécessairement toutes les réactions du milieu
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.selectivite-du-catalyseur-ignoree
+        feedback: >
+          Deux erreurs. La saponification n'a pas besoin de catalyseur — l'ion
+          hydroxyde est un réactif, pas un catalyseur. Et un catalyseur n'agit
+          pas partout à la fois : il est SÉLECTIF, il accélère une voie
+          particulière, ce qui est justement son intérêt quand plusieurs
+          réactions sont possibles.
+    correct_feedback: >
+      $0{,}30\ \text{mol}$. Un triglycéride porte trois fonctions ester, et
+      chacune consomme exactement un ion $HO^{-}$ pour donner un ion carboxylate.
+    solution: |
+      **Le bilan.**
+      $$
+      \text{triglycéride} + 3\,HO^{-} \rightarrow 3\,R\!-\!COO^{-}
+      + \text{glycérol}
+      $$
+      $$
+      n(HO^{-}) = 3 \times n(\text{triglycéride}) = 3 \times 0{,}10
+      = 0{,}30\ \text{mol}
+      $$
+
+      **Pourquoi un seul $HO^{-}$ par fonction.** La saponification transforme
+        directement chaque fonction ester en carboxylate. Aucun acide libre n'apparaît qu'il faudrait ensuite
+      neutraliser.
+
+      **En pratique** on introduit un excès d'hydroxyde, pour compenser
+      l'imprécision des masses et accélérer la transformation — mais le minimum
+      stœchiométrique reste $0{,}30\ \text{mol}$.
+
+  - id: CTC-23
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    primary_misconception: mc.physics.pc_controle_catalyse.selectivite-du-catalyseur-ignoree
+    stem: >
+      Dans un mélange où deux transformations sont possibles, on introduit un
+      catalyseur qui n'accélère que la première. Que peut-on en dire ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Que la sélectivité est justement l'intérêt du catalyseur : il oriente
+          le mélange vers un produit en accélérant une voie, sans empêcher
+          l'autre
+        correct: true
+      - id: B
+        text: >-
+          Que c'est impossible : un catalyseur accélère nécessairement toutes les
+          réactions du milieu, faute de quoi il ne serait pas un catalyseur
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.selectivite-du-catalyseur-ignoree
+        feedback: >
+          Un catalyseur accélère UNE transformation précise, parce qu'il agit avec des
+            réactifs déterminés. Il n'a aucune raison d'agir sur une autre transformation.
+          Les enzymes poussent cette sélectivité à l'extrême : une enzyme, un
+          substrat.
+      - id: C
+        text: >-
+          Qu'il bloque la seconde voie en consommant ses réactifs, ce qui
+          explique qu'un seul produit se forme
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.selectivite-du-catalyseur-ignoree
+        feedback: >
+          Un catalyseur ne consomme rien : il est régénéré. Il n'empêche donc pas
+          la seconde transformation, qui continue à sa propre vitesse — plus
+          lente. Ce qu'on obtient est une orientation, pas un blocage : le
+          produit majoritaire est celui de la voie accélérée.
+      - id: D
+        text: >-
+          Qu'il faut alors le faire figurer dans le bilan de la première
+          réaction, puisqu'il en modifie le déroulement
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-dans-bilan
+        feedback: >
+          Modifier le déroulement n'est pas être consommé. Le catalyseur entre
+          dans le mécanisme puis en ressort intact : il ne figure jamais dans le
+          bilan, où l'on n'écrit que ce qui disparaît et ce qui apparaît. Sa
+          présence se note au-dessus de la flèche.
+    correct_feedback: >
+      La sélectivité est l'intérêt même du catalyseur : accélérer UNE voie parmi
+      plusieurs, ce qui oriente le mélange vers le produit voulu. Il n'empêche
+      pas l'autre transformation — il la laisse simplement loin derrière.
+    solution: |
+      **Comment un catalyseur agit.** Il accélère la transformation en agissant avec
+        des réactifs DÉTERMINÉS. Cette spécificité est structurelle : il n'a aucune prise sur
+      une transformation dont les réactifs ne l'engagent pas.
+
+      **Ce que la sélectivité permet.** Orienter un mélange. En chimie
+      industrielle comme en biologie, c'est ce qui rend une synthèse praticable :
+      on n'empêche pas les autres réactions, on rend la voie utile beaucoup plus
+      rapide.
+
+      **Ce qu'un catalyseur ne fait jamais.** Il ne se consomme pas, ne figure
+      pas dans le bilan, et ne déplace pas l'état d'équilibre — il ne change que
+      la VITESSE à laquelle on l'atteint.
+
+  - id: CTC-24
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: pc_controle_catalyse
+    tags: []
+    primary_misconception: mc.physics.pc_controle_catalyse.equation-de-lanhydride-erronee
+    stem: >
+      Pourquoi l'estérification par l'anhydride d'acide donne-t-elle un
+      rendement bien supérieur à celle qui part de l'acide carboxylique ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Parce que son sous-produit est un acide carboxylique et non de l'eau :
+          sans eau, l'hydrolyse de l'ester n'a pas lieu
+        correct: true
+      - id: B
+        text: >-
+          Parce que l'anhydride est plus réactif : l'équation reste la même —
+          ester et eau — mais l'équilibre se déplace vers la droite
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.equation-de-lanhydride-erronee
+        feedback: >
+          L'équation n'est pas la même : l'anhydride ne libère pas d'eau, mais
+          un acide carboxylique. C'est un changement de PRODUIT, pas un
+          déplacement d'équilibre — et c'est justement pour cela que le gain est
+          si net : sans eau, il n'y a plus de réaction inverse du tout.
+      - id: C
+        text: >-
+          Parce qu'il faut chauffer moins fort : la double flèche de la voie
+          acide signifie qu'un chauffage excessif inverse la réaction
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.double-fleche-mal-comprise
+        feedback: >
+          La double flèche ne dépend pas du chauffage : elle dit que les deux
+          sens ont lieu ensemble dans les conditions de l'expérience. Chauffer
+          accélère les deux également, ce qui rapproche de l'équilibre sans le
+          déplacer. Le gain de l'anhydride ne vient pas de la température.
+      - id: D
+        text: >-
+          Parce que l'anhydride joue le rôle de son propre catalyseur, et doit à
+          ce titre figurer parmi les réactifs du bilan
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-dans-bilan
+        feedback: >
+          L'anhydride est un RÉACTIF : il est consommé, et c'est bien pour cela
+          qu'il figure dans le bilan. Un catalyseur, lui, est régénéré et n'y
+          figure jamais. Confondre les deux rôles rend tout calcul de quantité
+          de matière impossible.
+    correct_feedback: >
+      Le sous-produit change : $CH_3COOH$ au lieu de $H_2O$. Or c'est l'eau qui
+      hydrolysait l'ester et limitait la transformation. Sans eau, la réaction
+      inverse disparaît et la transformation devient totale.
+    solution: |
+      **La voie acide.**
+      $$CH_3COOH + C_2H_5OH \rightleftharpoons CH_3COOC_2H_5 + H_2O$$
+      L'eau formée hydrolyse l'ester : la transformation est limitée, avec
+      $\tau \approx 2/3$ pour un mélange équimolaire.
+
+      **La voie anhydride.**
+      $$(CH_3CO)_2O + C_2H_5OH \rightarrow CH_3COOC_2H_5 + CH_3COOH$$
+      Le sous-produit est un acide carboxylique, qui ne réagit pas avec l'ester.
+      Aucune réaction inverse : transformation totale, flèche simple.
+
+      **Ce qui est en jeu.** Un changement de RÉACTIF, donc de produits — pas un
+      déplacement d'équilibre, pas un effet de température, pas une histoire de
+      catalyseur.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après CTC-19 à CTC-24. Huit familles siégeaient sous
+# le plancher de 3 items du banc : l'équation de la voie anhydride, la lecture
+# de la double flèche, la place du catalyseur dans le bilan, la cause du
+# plafond de rendement, la saponification confondue avec l'estérification, la
+# stœchiométrie du triglycéride, la sélectivité du catalyseur et l'inversion
+# hydrophile/hydrophobe. Tableau GÉNÉRÉ, gardé par
+# web/scripts/resume-couverture.mjs.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.physics.pc_controle_catalyse.equation-de-lanhydride-erronee:                { count: 3, items: [CTC-2, CTC-19, CTC-24] }
+    mc.physics.pc_controle_catalyse.reactif-limitant-ou-pertes-invoques:           { count: 3, items: [CTC-8, CTC-10, CTC-20] }
+    mc.physics.pc_controle_catalyse.double-fleche-mal-comprise:                    { count: 4, items: [CTC-9, CTC-19, CTC-20, CTC-24] }
+    mc.physics.pc_controle_catalyse.selectivite-du-catalyseur-ignoree:             { count: 4, items: [CTC-12, CTC-18, CTC-22, CTC-23] }
+    mc.physics.pc_controle_catalyse.saponification-confondue-avec-lesterification: { count: 3, items: [CTC-5, CTC-21, CTC-22] }
+    mc.physics.pc_controle_catalyse.hydrophile-hydrophobe-inverses:                { count: 3, items: [CTC-6, CTC-17, CTC-21] }
+    mc.physics.pc_controle_catalyse.stoechiometrie-du-triglyceride-ignoree:        { count: 3, items: [CTC-17, CTC-21, CTC-22] }
+    mc.physics.pc_controle_catalyse.anhydride-mal-compris:                         { count: 3, items: [CTC-1, CTC-10, CTC-16] }
+    mc.physics.pc_controle_catalyse.vitesse-avancement-confondus:                  { count: 4, items: [CTC-7, CTC-8, CTC-15, CTC-16] }
+    mc.physics.pc_controle_catalyse.catalyseur-dans-bilan:                         { count: 5, items: [CTC-11, CTC-19, CTC-20, CTC-23, CTC-24] }
+    mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final:                 { count: 4, items: [CTC-3, CTC-12, CTC-16, CTC-18] }
+    mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase:                   { count: 4, items: [CTC-4, CTC-13, CTC-14, CTC-18] }
+  total_items: 24
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 6
+    R2: 4
+    R3: 3
+    R4: 5
+    R5: 3
+  honest_state: >-
+    Les douze misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Six y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

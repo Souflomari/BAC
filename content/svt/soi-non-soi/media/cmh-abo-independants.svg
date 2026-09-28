@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 480"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Comparaison CMH et ABO pour le choix d’un donneur de rein : le patient, son frère jumeau monozygote et un donneur non apparenté partagent le même groupe sanguin ABO, mais seul le jumeau partage un profil CMH identique à celui du patient. Le donneur non apparenté a un CMH différent malgré l’ABO compatible, d’où un risque de rejet plus élevé.">
+  <title>CMH et ABO : deux systèmes de marqueurs indépendants</title>
+
+  <!--
+    cmh-abo-independants.svg — figure STATIQUE.
+    Cible précise : l'erreur classique nommée en toutes lettres au R3 du
+    lesson.md — « penser qu'un donneur compatible au sens des groupes
+    sanguins (ABO) est automatiquement compatible pour une greffe d'organe » —
+    et directement testée par l'item SNS-3 (items.yaml) sur le même exemple
+    (jumeau monozygote vs donneur non apparenté, même ABO).
+
+    Structure (3 cartes) :
+      Donneur 1 (jumeau monozygote) | Patient (receveur) | Donneur 2 (non apparenté)
+    Pour chaque carte : groupe sanguin ABO (identique = "A" partout, EXPRÈS,
+    pour isoler la seule variable qui change) puis profil CMH (3 glyphes).
+    - Patient & Jumeau : mêmes 3 glyphes (triangle, cercle, carré) → CMH
+      identique → badge "=" neutre → verdict "soi reconnu".
+    - Donneur non apparenté : 3 glyphes DIFFÉRENTS (losange, croix,
+      astérisque) → CMH différent → badge "≠" en accent → verdict
+      "non-soi détecté", MALGRÉ le même groupe ABO.
+
+    Ligne pointillée horizontale sous les valeurs ABO (y=182) : traverse les
+    trois cartes pour montrer visuellement que l'ABO est constant — en
+    contraste avec la ligne CMH juste en dessous, où seul un badge sur deux
+    est une égalité.
+
+    Convention couleur : accent réservé à UNE seule idée — le donneur non
+    apparenté dont le CMH diffère malgré l'ABO identique (ses glyphes, le
+    badge "≠", et le mot-clé "CMH différent"). Tout le reste (cartes,
+    ABO, jumeau) reste en ink / ink-soft / grid neutres.
+  -->
+
+  <!-- Titre -->
+  <text x="350" y="24" text-anchor="middle"
+        font-size="15" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    CMH et ABO : deux systèmes indépendants
+  </text>
+  <text x="350" y="43" text-anchor="middle"
+        font-size="11.5" fill="var(--figure-ink-soft)">
+    Choisir un donneur de rein : même groupe sanguin ne suffit pas
+  </text>
+
+  <!-- ══════════════════════ Carte 1 — Donneur 1 (jumeau) ══════════════ -->
+  <rect x="16" y="70" width="200" height="360" rx="14"
+        fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+
+  <text x="116" y="96" text-anchor="middle" font-size="13" font-weight="700"
+        fill="var(--figure-ink)">Donneur 1</text>
+  <text x="116" y="112" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">frère jumeau monozygote</text>
+
+  <line x1="34" y1="128" x2="198" y2="128" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <text x="116" y="148" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">
+    Groupe sanguin (ABO)
+  </text>
+  <text x="116" y="173" text-anchor="middle" font-size="20" font-weight="700"
+        fill="var(--figure-ink)">A</text>
+
+  <line x1="34" y1="192" x2="198" y2="192" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <text x="116" y="212" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">
+    Profil CMH
+  </text>
+
+  <!-- glyphes CMH jumeau : triangle, cercle, carré (identiques au patient) -->
+  <polygon points="82,238 89,252 75,252" fill="var(--figure-ink)"/>
+  <circle cx="116" cy="246" r="7" fill="var(--figure-ink)"/>
+  <rect x="143" y="239" width="14" height="14" rx="2" fill="var(--figure-ink)"/>
+
+  <text x="116" y="286" text-anchor="middle" font-size="13" font-weight="700"
+        fill="var(--figure-ink)">CMH identique</text>
+  <text x="116" y="306" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    → soi reconnu par le receveur
+  </text>
+  <text x="116" y="324" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    risque de rejet quasi nul
+  </text>
+
+  <!-- ══════════════════════ Carte 2 — Patient (receveur) ══════════════ -->
+  <rect x="250" y="70" width="200" height="360" rx="14"
+        fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2"/>
+
+  <text x="350" y="96" text-anchor="middle" font-size="13" font-weight="700"
+        fill="var(--figure-ink)">Patient (receveur)</text>
+  <text x="350" y="112" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">a besoin d’une greffe de rein</text>
+
+  <line x1="268" y1="128" x2="432" y2="128" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <text x="350" y="148" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">
+    Groupe sanguin (ABO)
+  </text>
+  <text x="350" y="173" text-anchor="middle" font-size="20" font-weight="700"
+        fill="var(--figure-ink)">A</text>
+
+  <line x1="268" y1="192" x2="432" y2="192" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <text x="350" y="212" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">
+    Profil CMH
+  </text>
+
+  <!-- glyphes CMH patient : triangle, cercle, carré (référence) -->
+  <polygon points="316,238 323,252 309,252" fill="var(--figure-ink)"/>
+  <circle cx="350" cy="246" r="7" fill="var(--figure-ink)"/>
+  <rect x="377" y="239" width="14" height="14" rx="2" fill="var(--figure-ink)"/>
+
+  <text x="350" y="290" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    (profil de référence)
+  </text>
+
+  <!-- ══════════════════════ Carte 3 — Donneur 2 (non apparenté) ═══════ -->
+  <rect x="484" y="70" width="200" height="360" rx="14"
+        fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+
+  <text x="584" y="96" text-anchor="middle" font-size="13" font-weight="700"
+        fill="var(--figure-ink)">Donneur 2</text>
+  <text x="584" y="112" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">non apparenté</text>
+
+  <line x1="502" y1="128" x2="666" y2="128" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <text x="584" y="148" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">
+    Groupe sanguin (ABO)
+  </text>
+  <text x="584" y="173" text-anchor="middle" font-size="20" font-weight="700"
+        fill="var(--figure-ink)">A</text>
+
+  <line x1="502" y1="192" x2="666" y2="192" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <text x="584" y="212" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">
+    Profil CMH
+  </text>
+
+  <!-- glyphes CMH donneur non apparenté : losange, croix, astérisque (DIFFÉRENTS) -->
+  <polygon points="550,238 558,246 550,254 542,246" fill="var(--figure-accent)"/>
+  <line x1="578" y1="240" x2="590" y2="252" stroke="var(--figure-accent)" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="578" y1="252" x2="590" y2="240" stroke="var(--figure-accent)" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="610" y1="246" x2="626" y2="246" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="614" y1="239.07" x2="622" y2="252.93" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="622" y1="239.07" x2="614" y2="252.93" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+
+  <text x="584" y="286" text-anchor="middle" font-size="13" font-weight="700"
+        fill="var(--figure-accent)">CMH différent</text>
+  <text x="584" y="306" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    → non-soi détecté par le receveur
+  </text>
+  <text x="584" y="324" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    risque de rejet élevé
+  </text>
+
+  <!-- ── Ligne pointillée : l'ABO est identique dans les 3 cas ─────────── -->
+  <line x1="116" y1="182" x2="584" y2="182"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <!-- ── Badges de comparaison CMH, entre les cartes ────────────────────── -->
+  <!-- Jumeau ↔ Patient : CMH identique -->
+  <circle cx="233" cy="246" r="14" fill="var(--figure-surface)"
+          stroke="var(--figure-ink)" stroke-width="1.6"/>
+  <text x="233" y="251" text-anchor="middle" font-size="16" font-weight="700"
+        fill="var(--figure-ink)">=</text>
+
+  <!-- Patient ↔ Donneur non apparenté : CMH différent (accent) -->
+  <circle cx="467" cy="246" r="14" fill="var(--figure-surface)"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+  <text x="467" y="251" text-anchor="middle" font-size="16" font-weight="700"
+        fill="var(--figure-accent)">≠</text>
+
+  <!-- ── Synthèse en bas ─────────────────────────────────────────────── -->
+  <text x="350" y="456" text-anchor="middle" font-size="11.5" fill="var(--figure-ink-soft)">
+    <tspan x="350" dy="0">Le groupe sanguin (ABO) est identique dans les 3 cas.</tspan>
+    <tspan x="350" dy="16">C’est le CMH, pas l’ABO, qui gouverne le rejet de greffe.</tspan>
+  </text>
+</svg>

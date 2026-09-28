@@ -1,0 +1,389 @@
+notion: ondes-em-modulation
+skill_code: pc_ondes_em_modulation
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — ondes-em-modulation)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong PHYSICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT
+# altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict        (in R0)     — COMMIT gate: turns the rhetorical "prends
+#                                      position" into a real MCQ commit before
+#                                      the reveal. Probes antenne-taille-vs-λ.
+#   cp-r2-porteuse-signal (after R2) — rupture gate: porteuse (HF fixe, support
+#                                      de rayonnement) vs signal modulant (BF,
+#                                      porte l'info via l'amplitude, pas la
+#                                      fréquence — ≠ FM).
+#   cp-r3-taux-modulation (after R3) — rupture gate: m = Sm/U0, m<1 bonne
+#                                      modulation vs m≥1 surmodulation.
+#   cp-r4-condensateur   (after R4)  — rupture gate: rôle du condensateur du
+#                                      détecteur de crête (charge rapide /
+#                                      décharge lente = suit l'enveloppe).
+#   cp-r5-bande-frequences (after R5) — rupture gate: l'antenne reçoit une bande
+#                                      de porteuses superposées ; le circuit
+#                                      accordé sélectionne celle proche de f0.
+#
+# Clone note: cp-r2-porteuse-signal clones OEM-2's stem, cp-r3-taux-modulation
+# clones OEM-4's, cp-r4-condensateur clones OEM-15's. cp-r0-predict and
+# cp-r5-bande-frequences are original commit/rupture items (not end-bank
+# clones). EVERY distractor carries a named misconception tag. No end-bank
+# tally is adjusted — inline surfacing does not double-count.
+#
+# Boundary guard: 2ème Bac PC modulation d'amplitude. Antenne rayonne à
+# l'échelle de λ = c/f ; modulation s(t) = (U0 + sm)cos(2π fp t), l'info dans
+# l'amplitude ; m = Sm/U0, m<1 bonne modulation ; démodulation par détecteur de
+# crête (enveloppe) ; sélection par circuit accordé f0 = 1/(2π√(LC)). Le
+# spectre de fréquences EST au cadre (« connaître et exploiter », traitement
+# qualitatif) : l'allure à trois raies, Fp et Fp ± fs, que demande 2023 N
+# (bk-2023-n-x3 q3) — corrigé le 2026-09-25, cette garde l'interdisait (spec
+# du banc de modulation §13.7). Pas de résonance en régime sinusoïdal forcé.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns "prends position avant de continuer" into a real MCQ
+  #        commit before the reveal. Probes: antenne-taille-vs-longueur-onde
+  #        (croire qu'on peut rayonner un signal audio tel quel).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_ondes_em_modulation
+    tags: [checkpoint, formative, misconception_driven, pc_ondes_em_modulation, hook_commit]
+    primary_misconception: mc.physics.pc_ondes_em_modulation.antenne-taille-vs-longueur-onde
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Un ingénieur relie un micro directement à une antenne d'un mètre de long
+      et y envoie tel quel le signal audio (quelques kHz au plus), en espérant
+      diffuser sa musique jusqu'à un poste de radio du quartier. **Ce montage
+      direct va-t-il rayonner efficacement la musique ?**
+      Engage-toi — c'est ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: >-
+          Non : l'antenne d'un mètre est bien trop petite devant la longueur d'onde d'un signal audio, elle ne rayonnera presque rien.
+        correct: true
+        feedback: |
+          Exact — et c'est le bon réflexe. La longueur d'onde d'un signal audio
+          se compte en centaines de kilomètres ($\lambda = c/f$) ; une antenne
+          d'un mètre est totalement hors d'échelle. La vraie question s'ouvre
+          alors : **que font les stations de radio de différent** pour que, chez
+          elles, ça marche ? C'est tout l'objet de la leçon.
+
+      - id: B
+        text: >-
+          Oui : dès qu'un signal électrique parcourt une antenne, il rayonne une onde qui part se propager jusqu'au poste de radio.
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.antenne-taille-vs-longueur-onde
+        feedback: |
+          Modèle détecté : « toute antenne rayonne tout signal ». En réalité,
+          une antenne ne rayonne efficacement que si sa taille est de l'ordre de
+          la longueur d'onde ($\lambda = c/f$). Pour un signal audio,
+          $\lambda$ vaut des centaines de km : l'antenne d'un mètre ne rayonne
+          quasiment rien, l'énergie reste « collée » près d'elle.
+
+      - id: C
+        text: >-
+          Non, mais uniquement parce que le micro est trop faible : avec un amplificateur assez puissant, l'antenne d'un mètre rayonnerait la musique.
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.antenne-taille-vs-longueur-onde
+        feedback: |
+          Modèle détecté : « c'est une question de puissance ». Augmenter la
+          puissance ne change rien à l'efficacité du rayonnement : celle-ci
+          dépend du rapport entre la taille de l'antenne et la longueur d'onde,
+          pas de l'énergie injectée. À $\lambda$ de centaines de km, l'antenne
+          reste hors d'échelle, quelle que soit la puissance.
+
+      - id: D
+        text: >-
+          Non, mais parce qu'un signal sonore ne peut pas, physiquement, se transformer en onde électromagnétique.
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.antenne-taille-vs-longueur-onde
+        feedback: |
+          Modèle détecté : « impossibilité de conversion ». N'importe quel
+          signal électrique, quelle que soit son origine, peut en principe être
+          rayonné en onde électromagnétique. Le problème n'est pas une
+          impossibilité de principe : c'est que l'antenne est bien trop petite
+          devant $\lambda$ pour ce signal basse fréquence.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r2-porteuse-signal | placed AFTER R2
+  #        Rupture gate: porteuse (HF fixe) vs signal modulant (BF, porte
+  #        l'info via l'AMPLITUDE, pas la fréquence). Clone of OEM-3's stem
+  #        family. Probes porteuse-vs-signal-modulant.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-porteuse-signal
+    rung: "R2"
+    habilete: utilisation
+    skill_code: pc_ondes_em_modulation
+    tags: [checkpoint, formative, misconception_driven, pc_ondes_em_modulation]
+    primary_misconception: mc.physics.pc_ondes_em_modulation.porteuse-vs-signal-modulant
+    item_source: clone_of_OEM-2
+    lesson_placement: after_R2
+
+    stem: |
+      Dans la tension modulée $s(t) = \big(U_0 + s_m(t)\big)\cos(2\pi f_p t)$,
+      l'information (la musique) est bien transmise. **Où voyage-t-elle, et à
+      quoi sert la fréquence $f_p$ ?**
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: >-
+          Dans l'amplitude instantanée $U_0 + s_m(t)$ ; la fréquence $f_p$, fixe, ne sert qu'au rayonnement.
+        correct: true
+        feedback: |
+          Exact. L'information est portée par l'enveloppe $U_0 + s_m(t)$, qui
+          suit les hauts et les bas du message. La fréquence $f_p$, elle, ne
+          change jamais : elle assure seulement que l'antenne rayonne
+          efficacement (chapitre 2). L'info voyage dans l'amplitude, pas dans la
+          fréquence.
+
+      - id: B
+        text: >-
+          Dans la fréquence $f_p$, qui se met à varier au rythme du message pour porter l'information.
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.porteuse-vs-signal-modulant
+        feedback: |
+          Modèle détecté : l'info « dans la fréquence ». C'est justement l'autre
+          technique — la modulation de **fréquence** (FM), hors programme ici.
+          En modulation d'**amplitude**, $f_p$ reste rigoureusement constante ;
+          c'est l'amplitude qui varie.
+
+      - id: C
+        text: >-
+          Dans la porteuse elle-même, qui contient déjà l'information avant même toute modulation.
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.porteuse-vs-signal-modulant
+        feedback: |
+          Modèle détecté : « la porteuse porte déjà l'info ». Une porteuse seule
+          $U_0\cos(2\pi f_p t)$ oscille toujours de la même façon : rien n'y
+          varie au rythme d'un message, donc elle ne transporte, seule, aucune
+          information. C'est la modulation qui l'y inscrit, dans l'amplitude.
+
+      - id: D
+        text: >-
+          Le signal modulant $s_m(t)$ est en réalité la haute fréquence, fixe, qui assure à elle seule le rayonnement de l'onde jusqu'au récepteur.
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.porteuse-vs-signal-modulant
+        feedback: |
+          Modèle détecté : rôles inversés. $s_m(t)$ est la **basse** fréquence,
+          variable, celle qui porte l'information ; c'est la porteuse $f_p$ qui
+          est la haute fréquence fixe assurant le rayonnement. Ne pas
+          intervertir les deux.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r3-taux-modulation | placed AFTER R3
+  #        Rupture gate: m = Sm/U0 ; m<1 bonne modulation, m≥1 surmodulation.
+  #        Clone of OEM-4's stem. Probes taux-modulation-calcul.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-taux-modulation
+    rung: "R3"
+    habilete: utilisation
+    skill_code: pc_ondes_em_modulation
+    tags: [checkpoint, formative, misconception_driven, pc_ondes_em_modulation]
+    primary_misconception: mc.physics.pc_ondes_em_modulation.taux-modulation-calcul
+    item_source: clone_of_OEM-4
+    lesson_placement: after_R3
+
+    stem: |
+      La tension modulante appliquée au multiplieur a une composante continue
+      $U_0 = 4\ \text{V}$ et un signal d'amplitude maximale $S_m = 6\ \text{V}$.
+      **Que vaut le taux de modulation, et quelle est la qualité de la
+      modulation ?**
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: >-
+          $m = S_m/U_0 = 6/4 = 1{,}5$. Comme $m > 1$, il y a surmodulation.
+        correct: true
+        feedback: |
+          Exact. $m = S_m/U_0 = 1{,}5 > 1$ : c'est une surmodulation. Au pire
+          instant, la tension modulante $U_0 + s_m(t)$ vaudrait
+          $U_0 - S_m = -2\ \text{V}$ : elle change de signe, et l'enveloppe,
+          qui la suit en valeur absolue, se replie — elle ne reproduit plus
+          fidèlement le signal.
+
+      - id: B
+        text: >-
+          $m = U_0/S_m = 4/6 \approx 0{,}67$. Comme $m < 1$, la modulation est bonne.
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.taux-modulation-calcul
+        feedback: |
+          Modèle détecté : rapport inversé. Le taux se définit comme
+          $m = S_m/U_0$ (le signal rapporté à la composante continue), pas l'inverse.
+          Inverser le rapport masque justement la surmodulation réelle : ici
+          $S_m > U_0$, donc $m = 6/4 = 1{,}5 > 1$.
+
+      - id: C
+        text: >-
+          $m = S_m - U_0 = 2$. Une valeur positive signifie une bonne modulation.
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.taux-modulation-calcul
+        feedback: |
+          Modèle détecté : différence au lieu du rapport. Le taux de modulation
+          est un nombre sans dimension, $m = S_m/U_0$, pas une différence de
+          tensions. Le signe de $S_m - U_0$ ne mesure rien de correct ici.
+
+      - id: D
+        text: >-
+          $m = S_m/U_0 = 1{,}5$, et plus $m$ est grand, meilleure est la modulation.
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.surmodulation-nature
+        feedback: |
+          Le calcul est juste, la conclusion inversée. La bonne modulation exige
+          $m < 1$ : au-delà, la tension modulante deviendrait négative à
+          certains instants, ce qui **déforme** le signal (surmodulation) — ce
+          n'est pas une modulation « meilleure », c'est une modulation ratée.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r4-condensateur | placed AFTER R4
+  #        Rupture gate: rôle du condensateur du DÉTECTEUR DE CRÊTE (charge
+  #        rapide / décharge lente = suivre l'enveloppe). Clone of OEM-15's
+  #        stem. Probes demodulation-detecteur-crete.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-condensateur
+    rung: "R4"
+    habilete: utilisation
+    skill_code: pc_ondes_em_modulation
+    tags: [checkpoint, formative, misconception_driven, pc_ondes_em_modulation]
+    primary_misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
+    item_source: clone_of_OEM-15
+    lesson_placement: after_R4
+
+    stem: |
+      Dans le détecteur de crête qui démodule le signal, un condensateur est
+      placé juste après la diode. **Pourquoi doit-il se charger très vite à
+      chaque sommet de l'oscillation rapide, mais se décharger lentement entre
+      deux sommets ?**
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: >-
+          Pour que sa tension suive au plus près la courbe des sommets successifs, qui est justement l'enveloppe à reconstituer.
+        correct: true
+        feedback: |
+          Exact. La charge quasi instantanée capte chaque nouveau sommet ; la
+          décharge lente l'empêche de retomber avant le sommet suivant. Résultat :
+          la tension du condensateur épouse l'enveloppe $U_0 + s_m(t)$ — c'est
+          l'information, qu'il ne reste qu'à débarrasser de $U_0$.
+
+      - id: B
+        text: >-
+          Pour qu'il entre en oscillation libre à sa fréquence propre $f_0 = \dfrac{1}{2\pi\sqrt{LC}}$, comme le condensateur d'un circuit RLC.
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
+        feedback: |
+          Modèle détecté : confusion avec le circuit accordé. Le condensateur du
+          détecteur de crête n'oscille pas librement : il n'est pas dans un
+          circuit bouchon. Sa charge/décharge **suit** l'enveloppe, elle
+          n'entretient aucune oscillation propre.
+
+      - id: C
+        text: >-
+          Pour filtrer et supprimer entièrement le signal modulant, en ne laissant subsister que la composante continue $U_0$.
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
+        feedback: |
+          Modèle détecté : but inversé. Le détecteur de crête cherche justement
+          à **conserver** le signal modulant (porté par l'enveloppe), pas à
+          l'effacer. C'est la composante continue $U_0$ qu'on retirera ensuite,
+          par un filtrage distinct.
+
+      - id: D
+        text: >-
+          Pour amplifier l'enveloppe du signal reçu et la rendre plus puissante avant le haut-parleur.
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.demodulation-detecteur-crete
+        feedback: |
+          Modèle détecté : « le condensateur amplifie ». Un condensateur
+          n'amplifie rien : le couple diode + condensateur ne fait que **suivre**
+          les sommets pour retracer l'enveloppe. L'amplification, si elle a lieu,
+          est une étape ultérieure et distincte.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r5-bande-frequences | placed AFTER R5
+  #        Rupture gate: l'antenne reçoit une BANDE de porteuses superposées ;
+  #        le circuit accordé sélectionne celle proche de f0 (accord f0 = fp).
+  #        Original rupture item. Probes circuit-accorde-selection.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-bande-frequences
+    rung: "R5"
+    habilete: utilisation
+    skill_code: pc_ondes_em_modulation
+    tags: [checkpoint, formative, misconception_driven, pc_ondes_em_modulation]
+    primary_misconception: mc.physics.pc_ondes_em_modulation.circuit-accorde-selection
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |
+      L'antenne d'un récepteur capte en même temps les porteuses de toutes les
+      stations qui l'atteignent — une bande de fréquences différentes,
+      superposées. **Comment le récepteur isole-t-il une seule station ?**
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: >-
+          Un circuit accordé règle sa fréquence propre $f_0 = \dfrac{1}{2\pi\sqrt{LC}}$ sur la porteuse voulue, et répond alors fortement à elle seule.
+        correct: true
+        feedback: |
+          Exact. En réglant le condensateur variable $C$, on ajuste $f_0$
+          jusqu'à $f_0 = f_p$ de la station voulue. Le circuit privilégie alors
+          fortement cette porteuse et répond beaucoup moins aux autres : c'est
+          l'accord qui réalise la sélection.
+
+      - id: B
+        text: >-
+          Le récepteur agit à distance sur les émetteurs, pour qu'une seule station à la fois accepte d'émettre vers son antenne.
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.circuit-accorde-selection
+        feedback: |
+          Modèle détecté : le récepteur « commande » les émetteurs. Il n'a
+          aucune action sur des stations situées à des kilomètres : elles
+          émettent toutes en permanence. C'est la fréquence propre $f_0$ du
+          récepteur qu'on ajuste, pour privilégier l'une d'elles.
+
+      - id: C
+        text: >-
+          Le circuit accordé amplifie exactement de la même manière toutes les porteuses captées par l'antenne, sans jamais en privilégier aucune en particulier.
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.circuit-accorde-selection
+        feedback: |
+          Modèle détecté : circuit « non sélectif ». C'est l'inverse de son
+          rôle : le circuit accordé répond fortement à la fréquence proche de
+          $f_0$ et faiblement aux autres. S'il les traitait toutes également,
+          aucune sélection ne serait possible.
+
+      - id: D
+        text: >-
+          En réalité l'antenne ne capte jamais qu'une seule porteuse à la fois, si bien qu'il n'y a aucune sélection à opérer.
+        correct: false
+        misconception: mc.physics.pc_ondes_em_modulation.circuit-accorde-selection
+        feedback: |
+          Modèle détecté : « une seule porteuse à la fois ». L'antenne capte au
+          contraire, superposées, toutes les porteuses qui l'atteignent. C'est
+          précisément parce qu'elles arrivent ensemble qu'il faut un circuit
+          accordé pour en sélectionner une.

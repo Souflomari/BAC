@@ -1,0 +1,720 @@
+# ════════════════════════════════════════════════════════════════════════
+# Frontière curriculaire — Sciences Mathématiques (SM-A / SM-B) · MATHÉMATIQUES
+#
+# Cadre source : « Cadre de référence de l'examen national du baccalauréat —
+#   Mathématiques — Sciences Mathématiques » (MEN/CNEEO). Cadre 2015 en vigueur
+#   pour la session 2026 (version « option français » 2025 : CDR_EXAM_NAT_BAC_25).
+#   PDF officiel = image SCANNÉE sans couche texte → voir docs/cadre/sources/README-maths.md
+#
+#   Coef 9 · 4h · l'épreuve la plus dense du bac scientifique marocain.
+#
+# ════════════════════════════════════════════════════════════════════════
+# STATUT : PROPOSITION — NON AUTORITATIVE.
+#   Ne devient fiable qu'après les TROIS portes (RULES §5) :
+#     1. relecture longue Gemini (couverture) ;
+#     2. research-challenger (attaque de la couche `derived`) ;
+#     3. validation humaine (profondeur).
+#   Révisions 2026-09-27 (wave B1), DEUX entrées dans `coverage_notes.corrections` :
+#     (a) FONCTION RÉCIPROQUE — voir ci-dessous ;
+#     (b) ARITHMÉTIQUE — petit théorème de Fermat absent du programme (cadre 2.1.8),
+#         exclusion « résidus quadratiques » falsifiée DEUX fois par des annales
+#         vérifiées (x² ≡ a [p] en 2023 N ; critère d'Euler en 2025 N) et finalement
+#         réécrite en PRINCIPE DE TRI « admis vs construit par l'énoncé », et
+#         SYSTÈMES DE NUMÉRATION (2.1.4/2.1.5/2.1.6, un tiers du sous-domaine)
+#         entièrement absents. Le statut de la PREUVE de Fermat reste une question
+#         ouverte pour l'owner : la source ne la tranche pas.
+#         PORTE 2 (research-challenger) PASSÉE pour le bloc arithmétique le 2026-09-27
+#         (4 claims soutenus ; 2 corrections intégrées : compte Fermat 7 → 9/10, et
+#         extension du principe de tri aux RESTES CHINOIS). Restent la porte 1
+#         (Gemini) et la porte 3 (humain + décision owner sur la preuve de Fermat).
+#   (a) Correction de la frontière FONCTION RÉCIPROQUE
+#   (elle était présentée à tort comme une spécificité SM, et taguée `derived`).
+#   Détail, preuves et diff : voir `coverage_notes.corrections`. À LIRE AVEC son
+#   MIROIR docs/cadre/curriculum/maths-sexp.yaml (même date) — les deux frontières
+#   sur la réciproque ne doivent plus jamais être révisées séparément.
+#   Elle-même PROPOSITION, mêmes trois portes.
+# ════════════════════════════════════════════════════════════════════════
+#
+# ── Convention de provenance (spécifique maths ; PAS de `cadre p.N` ici) ──
+#   research-consensus → corroboré par ≥2 sources indépendantes (synthèse
+#                        pdfmath.com + cadre.yaml/bac-reference.md du dépôt +
+#                        COMPOSITION des examens nationaux SM 2008-2025).
+#   derived            → reconstruit du programme SM standard + expertise.
+#                        NON vérifié verbatim. À VALIDER.
+#   ⚠ PDF officiel scanné/non-texte → aucune page ne peut être citée sans la
+#     fabriquer. Aucune provenance `cadre p.N` n'est utilisée.
+#
+# ── Structure ──  domaines → sous_domaines → chapitres → {programme, savoir_faire, limites}
+# ════════════════════════════════════════════════════════════════════════
+
+filiere: sciences_mathematiques       # SM-A et SM-B (même cadre maths)
+matiere: mathematiques
+series_concernees: [sciences_mathematiques_a, sciences_mathematiques_b]
+cadre_annee: 2015
+cadre_session: 2026
+coefficient: 9                        # source: research-consensus (fiable, non contesté)
+duree_epreuve_h: 4                    # source: research-consensus
+
+habiletes_ratios_examen:              # source: research-consensus (cadre.yaml + pdfmath)
+  application_directe: 40             # niveau 1
+  application_non_explicite: 40       # niveau 2
+  synthese_situations_inhabituelles: 20   # niveau 3 (plus exigeant qu'en SExp : 20 vs 15)
+  # NB : cellules du Tableau de spécification non lisibles (PDF scanné) → non reproduites.
+
+# Insight structurel (bac-reference §7) : SM ajoute des DOMAINES ENTIERS absents de
+# SExp — arithmétique, structures algébriques (+ espaces vectoriels), sommes de
+# Riemann, Rolle & accroissements finis — et NE TESTE PAS la géométrie de l'espace
+# au national (contrairement à SExp). Répartition 50/50 (vs 55/45 en SExp).
+
+domaines:
+
+  # ══════════════════════════════════════════════════════════════════════
+  - id: analyse
+    nom: "Analyse"
+    poids: { part_examen: 50 }        # source: research-consensus (pdfmath + cadre.yaml)
+    sous_domaines:
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: suites_numeriques
+        nom: "Suites numériques"
+        poids: { part_domaine: "Analyse", note: "répartition interne Analyse non publiée à cette granularité" }   # source: derived
+        competences_ciblees:          # source: research-consensus (pdfmath : 5 capacités)
+          - "Étudier une suite, déterminer sa limite (comparaison, limite monotone, u_{n+1}=f(u_n)), et exploiter les suites adjacentes."
+        chapitres:
+          - id: suites_convergence
+            nom: "Suites : récurrence, convergence, suites adjacentes"
+            lesson_slug: suites-numeriques
+            programme:                # source: research-consensus (pdfmath) + derived (suites adjacentes)
+              - "Récurrence ; suites majorées/minorées/bornées ; monotonie ; suites arithmétiques et géométriques."
+              - "Limite d'une suite ; opérations ; théorèmes de comparaison et des gendarmes ; théorème de la limite monotone."
+              - "Suites u_{n+1}=f(u_n) : convergence et détermination de la limite."
+              - "Suites adjacentes ; critère de convergence."   # source: derived — spécificité SM
+            savoir_faire:             # source: derived
+              - "Démontrer par récurrence ; étudier monotonie et bornitude."
+              - "Déterminer une limite (opérations, gendarmes, limite monotone) ; résoudre ℓ=f(ℓ) pour u_{n+1}=f(u_n)."
+              - "Reconnaître deux suites adjacentes et conclure à leur convergence vers une limite commune."
+            limites:                  # source: derived
+              - "Pas de critère de Cauchy formel ; convergence via limite monotone / suites adjacentes. Pas de séries."
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: limites_continuite
+        nom: "Limites et continuité (avec fonction réciproque)"
+        poids: { part_domaine: "Analyse" }   # source: derived
+        competences_ciblees:          # source: research-consensus (pdfmath : 7 capacités)
+          - "Maîtriser limites et continuité, appliquer le TVI (et la dichotomie), et étudier la fonction réciproque d'une fonction continue strictement monotone."
+        chapitres:
+          - id: limites_continuite_reciproque
+            nom: "Limites, continuité, TVI et fonction réciproque"
+            lesson_slug: limites-continuite
+            programme:                # source: research-consensus (pdfmath) + derived (limites trigo)
+              - "Limites (point / infini) ; opérations ; formes indéterminées."
+              - "Continuité en un point / sur un intervalle ; image d'un segment ; TVI ; dichotomie."
+              # ⚠ CORRECTION PROPOSÉE 2026-09-27 (wave B1) — voir coverage_notes.corrections.
+              #   Cette ligne était taguée « source: derived — spécificité SM ». Les DEUX
+              #   affirmations étaient fausses : (a) elle n'est pas `derived`, le cadre SM la
+              #   porte en DEUX capacités, reproduites verbatim par la synthèse pdfmath
+              #   (source 3 du README) — 1.2.6 « Déterminer la fonction réciproque d'une
+              #   fonction continue et strictement monotone sur un intervalle. » et 1.2.7
+              #   « Appliquer le théorème de la fonction réciproque (l'existence, la
+              #   continuité, les variations et la représentation graphique de la fonction
+              #   réciproque). » ; (b) ce n'est PAS une spécificité SM — le cadre SExp porte
+              #   la capacité homologue 1.2.11, dérivée comprise, attestée sur 4 copies
+              #   nationales SExp vérifiées (voir docs/cadre/curriculum/maths-sexp.yaml,
+              #   chapitre derivabilite_etude_fonctions + coverage_notes.corrections).
+              - "Fonction réciproque d'une fonction continue strictement monotone : existence, continuité, sens de variation, courbe."   # source: research-consensus (capacités 1.2.6 et 1.2.7 du cadre SM, pdfmath verbatim) — PARTAGÉE avec SExp (capacité 1.2.11), PAS une spécificité SM
+              - "Limites de fonctions trigonométriques (lim (sin x)/x = 1, etc.)."   # source: derived
+            savoir_faire:             # source: derived
+              - "Lever une forme indéterminée (factorisation, conjugué, terme dominant, limites trigonométriques de référence)."
+              - "Appliquer le TVI ; localiser une solution par dichotomie."
+              - "Établir l'existence de f⁻¹, déterminer son sens de variation et tracer sa courbe (symétrie par rapport à y=x)."
+            limites:                  # source: derived
+              - "Réciproque : cadre d'une fonction continue STRICTEMENT MONOTONE sur un intervalle. La dérivée de f⁻¹ est traitée au chapitre dérivabilité (capacité 1.3.7 du cadre SM)."   # source: derived (découpage) ; le renvoi au bloc dérivation est research-consensus (numérotation 1.2.x / 1.3.x, pdfmath)
+              - "⚠ Ce chapitre ne porte AUCUNE exclusivité SM sur la réciproque : la même capacité existe en SExp (1.2.11). Ce qui est réellement SM-seul dans le voisinage de la réciproque est listé au chapitre derivabilite_rolle_taf et au chapitre fonction_exponentielle (racine n-ième, puissances réelles, réciproques trigonométriques). Toute frontière SM-vs-SExp écrite ici doit rester en miroir de docs/cadre/curriculum/maths-sexp.yaml."   # source: derived — garde-fou anti-dérive entre les deux fichiers
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: derivation_etude_fonctions
+        nom: "Dérivabilité, étude de fonctions, log, exp, équations différentielles"
+        poids: { part_domaine: "Analyse", note: "sous-domaine le plus lourd (20 capacités, pdfmath)" }   # source: research-consensus
+        competences_ciblees:          # source: research-consensus (pdfmath : 20 capacités, le plus dense)
+          - "Étudier une fonction (dérivabilité, Rolle et accroissements finis, variations, concavité, courbe), maîtriser log/exp et les fonctions puissances, et résoudre les équations différentielles y'=ay+b et y''+ay'+by=0."
+        chapitres:
+
+          - id: derivabilite_rolle_taf
+            nom: "Dérivabilité, théorème de Rolle et des accroissements finis"
+            lesson_slug: derivabilite-etude-fonctions   # ne couvre PAS Rolle/TAF → voir coverage_notes
+            programme:                # source: research-consensus (pdfmath cite explicitement Rolle + inégalité des accroissements finis)
+              - "Dérivabilité en un point / sur un intervalle ; dérivée d'une composée ; dérivée de la réciproque."   # « dérivée de la réciproque » = capacité 1.3.7 du cadre SM, pdfmath verbatim : « Étudier la dérivabilité et déterminer la dérivée de la fonction réciproque d'une fonction continue et strictement monotone. » — homologue de 1.2.11 en SExp, donc PARTAGÉE, pas spécifique SM
+              - "Théorème de Rolle ; théorème des accroissements finis (TAF) ; INÉGALITÉ des accroissements finis."   # source: research-consensus (nommés par pdfmath) — spécifique SM
+              - "Dérivées successives ; signe de f' et variations ; concavité, dérivée seconde, points d'inflexion ; branches infinies ; étude complète."
+            savoir_faire:             # source: derived
+              - "Étudier la dérivabilité (y compris à gauche/à droite, demi-tangentes) ; dériver une composée et une réciproque."
+              - "Appliquer le théorème de Rolle et le TAF ; utiliser l'inégalité des accroissements finis pour majorer |f(b)−f(a)| ou étudier une suite u_{n+1}=f(u_n)."
+              - "Dresser un tableau de variations, étudier concavité et points d'inflexion, tracer la courbe."
+            limites:                  # source: derived
+              - "Rolle/TAF au programme SM (absents en SExp). Pas de formule de Taylor-Lagrange ni de développements limités (hors programme 2e Bac)."
+              - "Ce qui, AUTOUR de la réciproque, est réellement SM-seul : la fonction racine n-ième x ↦ ⁿ√x, le calcul sur les PUISSANCES RÉELLES (capacité 1.3.15 du cadre SM, pdfmath verbatim : « Maîtriser le calcul sur les puissances réelles. »), et les réciproques TRIGONOMÉTRIQUES (arctan — attestée sur copie SM : content/maths/fonction-exponentielle/bank.yaml:1705-1715, bk-2025-n-x1 SM q I-5b, et content/maths/calcul-integral/bank.yaml bk-2024-r-x2 q1-a). Le théorème de la réciproque et sa dérivée, eux, sont COMMUNS aux deux filières."   # source: research-consensus pour 1.3.15 + arctan (pdfmath verbatim + composition des examens nationaux SM) ; derived pour la racine n-ième et pour le tri « SM-seul »
+
+          - id: fonction_logarithme
+            nom: "Fonction logarithme (et logarithme de base a)"
+            lesson_slug: fonction-logarithme
+            programme:                # source: research-consensus (pdfmath) + derived (base a)
+              - "ln : définition (primitive de 1/x s'annulant en 1), propriétés algébriques, dérivée, limites, étude, nombre e."
+              - "Logarithme décimal ; logarithme de base a ; équations et inéquations."   # base a : source derived
+            savoir_faire:             # source: derived
+              - "Exploiter les propriétés algébriques et les limites de référence de ln."
+              - "Dériver et étudier des fonctions contenant ln(u) ; résoudre équations/inéquations logarithmiques."
+            limites:                  # source: derived
+              - "Fonctions puissances x^α et log de base a traitées en lien avec exp/ln."
+
+          - id: fonction_exponentielle
+            nom: "Fonction exponentielle (et exponentielle de base a, fonctions puissances)"
+            lesson_slug: fonction-exponentielle
+            programme:                # source: research-consensus (pdfmath) + derived (base a, puissances)
+              - "exp = réciproque de ln ; propriétés algébriques, dérivée, croissances comparées, étude, courbe."
+              - "Exponentielle de base a (a^x = e^{x ln a}) ; fonctions puissances x^α (α réel) ; primitives faisant intervenir exp."   # base a : source derived — spécifique SM. PUISSANCES : upgrade 2026-09-27 en research-consensus — capacité 1.3.15 du cadre SM, pdfmath verbatim « Maîtriser le calcul sur les puissances réelles. » ; absente du cadre SExp, donc bien SM-seule (contrairement à la fonction réciproque — voir coverage_notes.corrections)
+            savoir_faire:             # source: derived
+              - "Manipuler exp et e^u ; exploiter les croissances comparées."
+              - "Étudier a^x et x^α (domaine, dérivée, variations, limites)."
+              - "Résoudre équations/inéquations exponentielles ; reconnaître les primitives u'·e^u."
+            limites:                  # source: derived
+              - "Fonctions puissances : α réel quelconque ; pas de fonctions hyperboliques (ch, sh) qui sont hors programme."
+
+          - id: equations_differentielles
+            nom: "Équations différentielles"
+            lesson_slug: equations-differentielles   # ne couvre PAS y''+ay'+by=0 générale → voir coverage_notes
+            programme:                # source: research-consensus (pdfmath : « y'=ay+b et y''+ay'+by=0 »)
+              - "Équations y'=ay et y'=ay+b : solutions, condition initiale."
+              - "Équation linéaire du second ordre à coefficients constants y''+ay'+by=0 : équation caractéristique, forme des solutions selon le discriminant (cas y''+ω²y=0 inclus)."   # source: research-consensus — spécifique SM (SExp s'arrête à y''+ω²y=0)
+            savoir_faire:             # source: derived
+              - "Résoudre y'=ay+b avec condition initiale."
+              - "Écrire et résoudre l'équation caractéristique de y''+ay'+by=0 ; donner la forme des solutions (Δ>0, Δ=0, Δ<0) et fixer les constantes."
+            limites:                  # source: derived — frontière de profondeur SM vs SExp
+              - "SM : équation caractéristique du 2e ordre à coefficients constants et SANS second membre. Pas de second membre non constant (pas de solution particulière/variation de la constante générale)."
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: calcul_integral
+        nom: "Calcul intégral (primitives, sommes de Riemann, intégration par parties)"
+        poids: { part_domaine: "Analyse", note: "≈ 7 capacités (pdfmath)" }   # source: research-consensus
+        competences_ciblees:          # source: research-consensus (pdfmath : Riemann sums, fonctions définies par intégrale)
+          - "Calculer et encadrer des intégrales (primitives, sommes de Riemann, intégration par parties) et étudier des fonctions définies par une intégrale ; calculer aires et volumes."
+        chapitres:
+
+          - id: primitives
+            nom: "Fonctions primitives"
+            lesson_slug: null          # LACUNE : pas de leçon primitives dédiée (dispersé) — voir coverage_notes
+            programme:                # source: derived (chapitre programme SM standard)
+              - "Primitive d'une fonction continue ; primitives des fonctions usuelles ; formes u'·uⁿ, u'/u, u'·e^u, u'·cos u, u'·sin u ; primitive vérifiant une condition."
+            savoir_faire:             # source: derived
+              - "Déterminer une primitive par lecture inverse des dérivées et par reconnaissance de formes ; imposer une condition."
+            limites:                  # source: derived
+              - "Pas de primitives par changement de variable formel (ce dernier n'est pas au programme 2e Bac)."
+
+          - id: integrale_riemann_ipp
+            nom: "Intégrale, sommes de Riemann, intégration par parties, aires et volumes"
+            lesson_slug: calcul-integral   # ne couvre PAS les sommes de Riemann → voir coverage_notes
+            programme:                # source: research-consensus (pdfmath : « Riemann sums, functions defined by integrals »)
+              - "Intégrale d'une fonction continue ; SOMMES DE RIEMANN (approche par sommes) ; linéarité, Chasles, positivité, comparaison ; inégalité de la moyenne, valeur moyenne."   # Riemann : research-consensus — spécifique SM
+              - "Intégration par parties ; fonctions définies par une intégrale (x ↦ ∫ₐˣ f) ; calcul d'aires et de volumes de révolution."
+            savoir_faire:             # source: derived
+              - "Encadrer/approcher une intégrale par des sommes de Riemann ; calculer une intégrale par primitive."
+              - "Appliquer l'intégration par parties ; étudier une fonction définie par une intégrale (dérivée, variations)."
+              - "Calculer une aire entre courbes et un volume de révolution."
+            limites:                  # source: derived
+              - "Sommes de Riemann : construction/encadrement ; pas d'intégrale de Riemann abstraite (théorie de la mesure). Pas d'intégrales impropres/généralisées."
+
+  # ══════════════════════════════════════════════════════════════════════
+  - id: algebre_geometrie
+    nom: "Algèbre et géométrie"
+    poids: { part_examen: 50 }        # source: research-consensus (pdfmath + cadre.yaml)
+    # Répartition interne (research-consensus : pdfmath + composition des examens nationaux) :
+    #   Nombres complexes + Structures algébriques ≈ 35 %
+    #   Arithmétique + Dénombrement-Probabilités   ≈ 15 %
+    #   Géométrie de l'espace : NON TESTÉE au national (programme mais hors épreuve)
+    sous_domaines:
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: nombres_complexes
+        nom: "Nombres complexes"
+        poids: { part_examen_bloc: 35, note: "bloc « Complexes + Structures » ≈ 35 % ; partage interne dérivé" }   # source: research-consensus (bloc) / derived (partage)
+        competences_ciblees:          # source: research-consensus (pdfmath : formes, zⁿ=a, transformations)
+          - "Maîtriser les formes d'un complexe, la formule de Moivre et les racines n-ièmes, résoudre des équations dans ℂ, et exploiter les transformations géométriques (rotation, homothétie, similitude)."
+        chapitres:
+
+          - id: complexes_formes
+            nom: "Formes, opérations, module et argument"
+            lesson_slug: nombres-complexes-1
+            programme:                # source: research-consensus (pdfmath)
+              - "Forme algébrique, conjugué, module ; forme trigonométrique et exponentielle ; argument ; propriétés (produit, quotient, puissance)."
+            savoir_faire:             # source: derived
+              - "Effectuer les opérations dans ℂ ; passer d'une forme à l'autre ; exploiter module et argument."
+            limites: []               # (voir chapitre suivant)
+
+          - id: complexes_moivre_racines_transformations
+            nom: "Moivre, racines n-ièmes, équations et transformations géométriques"
+            lesson_slug: nombres-complexes-2
+            programme:                # source: research-consensus (pdfmath : zⁿ=a, transformations, linéarisation)
+              - "Formule de Moivre ; linéarisation ; racines n-ièmes de l'unité et d'un complexe ; résolution de zⁿ=a."   # racines n-ièmes : spécifique SM
+              - "Résolution d'équations dans ℂ (second degré à coefficients complexes, équations se ramenant au 2e degré)."
+              - "Interprétation géométrique : module/argument comme distance/angle ; transformations (translation, homothétie, ROTATION, similitude directe z'=az+b) ; nature de configurations (triangle, cercle, alignement)."
+            savoir_faire:             # source: derived
+              - "Appliquer Moivre ; linéariser cosⁿ/sinⁿ ; déterminer et représenter les racines n-ièmes."
+              - "Résoudre zⁿ=a et des équations du second degré à coefficients complexes."
+              - "Caractériser une similitude directe (rapport, angle, centre) ; démontrer une propriété de configuration par les affixes."
+            limites:                  # source: derived — frontière SM vs SExp (profondeur)
+              - "SM va jusqu'aux racines n-ièmes générales, aux équations à coefficients COMPLEXES et aux similitudes — profondeur absente de SExp."
+              - "Pas de similitudes indirectes/antidéplacements approfondis (au-delà de z ↦ conjugué) ; pas de géométrie projective."
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: structures_algebriques
+        nom: "Structures algébriques et espaces vectoriels"
+        poids: { part_examen_bloc: 35, note: "bloc « Complexes + Structures » ≈ 35 % ; partage interne dérivé" }   # source: research-consensus (bloc) / derived (partage)
+        competences_ciblees:          # source: research-consensus (pdfmath : groupes/anneaux/corps, espaces vectoriels, bases, indépendance linéaire, homomorphismes)
+          - "Reconnaître et démontrer les structures de groupe, anneau, corps ; manipuler les espaces vectoriels (sous-espaces, familles libres/génératrices, bases) et les homomorphismes."
+        chapitres:
+
+          - id: lois_groupes_anneaux_corps
+            nom: "Lois de composition, groupes, anneaux, corps"
+            lesson_slug: structures-algebriques
+            programme:                # source: research-consensus (pdfmath)
+              - "Loi de composition interne ; propriétés (associativité, commutativité, élément neutre, symétrique) ; partie stable."
+              - "Groupe, sous-groupe, groupe commutatif ; homomorphisme de groupes."   # homomorphismes : research-consensus (pdfmath)
+              - "Anneau (unitaire, commutatif, intègre) ; corps."
+            savoir_faire:             # source: derived
+              - "Vérifier qu'une loi confère une structure (dresser/lire une table ; vérifier les axiomes)."
+              - "Démontrer qu'un ensemble muni d'une loi est un groupe / sous-groupe ; reconnaître un anneau, un corps."
+              - "Étudier un homomorphisme (noyau, image, propriétés)."
+            limites:                  # source: derived
+              - "Structures classiques (groupe/anneau/corps) ; pas de théorie de Galois, pas de quotients au-delà de ℤ/nℤ comme exemple."
+
+          - id: espaces_vectoriels
+            nom: "Espaces vectoriels"
+            lesson_slug: null          # LACUNE : la leçon structures-algebriques ne couvre PAS les e.v. — voir coverage_notes
+            programme:                # source: research-consensus (pdfmath : « vector spaces, bases and linear independence »)
+              - "Espace vectoriel réel ; sous-espace vectoriel ; combinaison linéaire ; famille génératrice, famille libre, base ; dimension (en dimension finie) ; applications linéaires."
+            savoir_faire:             # source: derived
+              - "Démontrer qu'un ensemble est un sous-espace vectoriel ; déterminer une base et la dimension."
+              - "Étudier la liberté/génération d'une famille ; reconnaître une application linéaire (noyau, image)."
+            limites:                  # source: derived
+              - "Espaces vectoriels de dimension finie ; pas de réduction d'endomorphismes (valeurs propres/diagonalisation — hors 2e Bac), pas de produit scalaire euclidien abstrait."
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: arithmetique
+        nom: "Arithmétique dans ℤ"
+        poids: { part_examen_bloc: 15, note: "bloc « Arithmétique + Probabilités » ≈ 15 % ; partage interne dérivé" }   # source: research-consensus (bloc) / derived (partage)
+        competences_ciblees:          # source: research-consensus (pdfmath : divisibilité, Euclide, Bézout, ℤ/nℤ)
+          - "Utiliser divisibilité, congruences, PGCD (Euclide, Bézout), Gauss, nombres premiers et l'arithmétique modulaire (ℤ/nℤ) pour résoudre des problèmes et des équations diophantiennes."
+        chapitres:
+          - id: arithmetique_z
+            nom: "Divisibilité, congruences, Bézout, Gauss, nombres premiers, équations diophantiennes"
+            lesson_slug: arithmetique
+            programme:                # source: research-consensus (pdfmath)
+              - "Divisibilité dans ℤ ; division euclidienne ; congruences modulo n et calculs de restes."
+              - "PGCD, algorithme d'Euclide ; PPCM ; nombres premiers entre eux ; théorème de Bézout ; théorème de Gauss."
+              - "Nombres premiers ; décomposition en facteurs premiers ; arithmétique dans ℤ/nℤ."
+              - "Équations diophantiennes ax+by=c."
+              # ⚠ AJOUT PROPOSÉ 2026-09-27 (wave B1, signalement d'un auteur de contenu) —
+              #   le PETIT THÉORÈME DE FERMAT ne figurait NULLE PART dans ce chapitre : ni
+              #   programme, ni savoir_faire, et la ligne `limites` nommait trois exclusions
+              #   voisines en restant muette sur lui. Ce silence a fait trancher par défaut,
+              #   notion par notion (voir content/maths/arithmetique/lesson.md:591-609, qui
+              #   demandait explicitement cet arbitrage au propriétaire du cadre). Le cadre,
+              #   lui, le NOMME : capacité 2.1.8, verbatim par la synthèse pdfmath (source 3
+              #   du README) — « Utiliser la divisibilité, la division euclidienne, les
+              #   théorèmes de Gauss, de Bézout et de Fermat, le théorème fondamental et les
+              #   propriétés des nombres premiers ». Corroboré par 6 exercices nationaux SM
+              #   vérifiés (2019, 2020 N, 2021 N, 2022 N, 2023 N, 2024 N).
+              - "Petit théorème de Fermat (p premier, p ∤ a ⇒ a^{p-1} ≡ 1 [p]) ; théorème fondamental de l'arithmétique."   # source: research-consensus (capacité 2.1.8 du cadre SM, pdfmath verbatim + composition des examens nationaux SM : 6 exercices vérifiés)
+              # ⚠ AJOUT PROPOSÉ 2026-09-27 — SECOND manque trouvé en relisant la liste
+              #   complète des 9 capacités de ce sous-domaine : les SYSTÈMES DE NUMÉRATION
+              #   occupent TROIS capacités sur neuf (2.1.4, 2.1.5, 2.1.6) et n'étaient pas
+              #   dans le programme non plus. C'est la plus grosse lacune de ce chapitre, et
+              #   notre corpus ne la couvre pas du tout (voir coverage_notes).
+              - "Systèmes de numération : écriture d'un entier naturel dans une base donnée ; opérations (addition, multiplication) et comparaison dans une base ; usage des écritures en base dans des situations d'arithmétique."   # source: research-consensus (capacités 2.1.4, 2.1.5 et 2.1.6 du cadre SM, pdfmath verbatim)
+            savoir_faire:             # source: derived
+              - "Poser une division euclidienne ; calculer un reste par congruences ; établir des critères de divisibilité."
+              - "Calculer un PGCD (Euclide) ; déterminer les coefficients de Bézout (remontée) ; appliquer le théorème de Gauss."
+              - "Décomposer en facteurs premiers ; résoudre une équation diophantienne (solution particulière + solution générale)."
+              - "APPLIQUER le petit théorème de Fermat : vérifier les deux hypothèses (p premier, p ∤ a), réduire une puissance modulo p, et exploiter la forme générale a^p ≡ a [p] valable sans condition de coprimalité."   # source: derived pour la granularité ; le verbe « Utiliser » est celui de la capacité 2.1.8 (research-consensus)
+              - "Écrire un entier dans une base donnée et revenir à la base 10 ; opérer et comparer dans une base ; exploiter une écriture en base pour une question de divisibilité ou de reste."   # source: derived pour la granularité ; capacités 2.1.4/2.1.5/2.1.6 (research-consensus)
+            limites:                  # source: derived — spécifique SM (absent de SExp)
+              # ⚠ RÉVISION 2026-09-27, en DEUX temps le même jour — l'exclusion initiale
+              #   « pas de résidus quadratiques » a été falsifiée DEUX fois par des copies
+              #   vérifiées, et resserrée deux fois :
+              #     1er temps — bk-2023-n-x4 (2023 N, Ex.4, SM, 3 pts,
+              #       content/maths/arithmetique/bank.yaml:744-778) porte entièrement sur la
+              #       résolubilité de x² ≡ 2 [p]. Exclusion resserrée sur « la THÉORIE
+              #       (symbole de Legendre, CRITÈRE D'EULER, réciprocité quadratique) ».
+              #     2e temps (signalement bloquant du critique de fidélité bac) — le
+              #       resserrement lui-même était encore trop large : bk-2025-n-x3 (2025 N,
+              #       Ex.3, SM, 3 pts, bank.yaml:1145-1216) s'intitule « Critère d'Euler,
+              #       petit théorème de Fermat et équation modulo 11 », et sa q1 (:1182) EST
+              #       le critère — a^{(p-1)/2} ≡ ±1 [p] — construit de A à Z depuis Fermat et
+              #       le lemme d'Euclide (voir l'en-tête de la banque, :80-83). Le critère
+              #       d'Euler sort donc de l'exclusion à son tour.
+              #   TROISIÈME occurrence du même mode de défaut en une journée, sur deux
+              #   fichiers (les deux autres : « toujours une restriction » et « dérivée en un
+              #   point » dans maths-sexp.yaml). D'où la réécriture en PRINCIPE DE TRI dans la
+              #   ligne `limites` ci-dessous — un principe absorbe les cas nouveaux là où une
+              #   liste se falsifie sujet par sujet. Il a d'ailleurs fallu l'ÉTENDRE dès la
+              #   porte 2 (restes chinois) : le principe a tenu, sa liste d'attestations non.
+              - "Arithmétique élémentaire dans ℤ. Pas de fonction indicatrice d'Euler comme théorème central, pas de RSA/cryptographie formelle."   # source: derived
+              - "PRINCIPE DE TRI (et non liste de sujets interdits) — vaut pour TOUT résultat d'arithmétique qui déborde les capacités 2.1.x : ce qui est hors cadre, c'est d'INVOQUER le résultat comme théorème NOMMÉ ET ADMIS ; ce qui est attesté, c'est de le faire CONSTRUIRE par l'énoncé, question par question, à partir des outils du chapitre. Restent donc exclus comme théorie nommée : le SYMBOLE DE LEGENDRE et la LOI DE RÉCIPROCITÉ QUADRATIQUE. Sont en revanche ATTESTÉS à l'examen national SM, et ne doivent JAMAIS être écartés sur la base de cette limite : (a) la résolubilité concrète de x² ≡ a [p] — 2023 N Ex.4 ; (b) le CRITÈRE D'EULER a^{(p-1)/2} ≡ ±1 [p] lorsque l'énoncé le construit depuis Fermat et le lemme d'Euclide — 2025 N Ex.3, q1→q3 ; (c) le THÉORÈME DES RESTES CHINOIS, même statut : une résolution de système de congruences à modules premiers entre eux par combinaison directe via une relation de Bézout établie plus haut dans le sujet est ATTESTÉE — 2021 N Ex.3, q6-q7, « apparentée au théorème des restes chinois, NON NOMMÉE dans l'énoncé » (content/maths/arithmetique/bank.yaml:596-603 ; voir aussi le flag de jumelage :1431-1442, où 2024 R Ex.5 résout le même type de système par une autre voie imposée). Le théorème des restes chinois INVOQUÉ par son nom comme résultat admis reste, lui, hors cadre."   # source: derived (le principe de tri) ; les trois attestations sont research-consensus (copies vérifiées, barème à l'appui). Porte 2 (research-challenger, 2026-09-27) : principe SOUTENU PAR LE CORPUS EN MAIN (les 10 entrées de la banque arithmétique), PAS DÉMONTRÉ — n=10 n'est pas une preuve ; extension aux restes chinois ajoutée par cette même porte
+            _question_ouverte_owner:   # ce que la source NE tranche PAS — à décider par l'humain, pas par le silence
+              - "PREUVE DU PETIT THÉORÈME DE FERMAT : attendue, ou théorème admis ? **La source ne le tranche pas, et je ne le tranche pas.** La capacité 2.1.8 commence par « Utiliser » — mais ce verbe ne dit RIEN de spécifique à Fermat : 6 des 9 capacités de ce sous-domaine commencent par « Utiliser » (2.1.1, 2.1.2, 2.1.3, 2.1.6, 2.1.7, 2.1.8), les trois autres par « Écrire », « Additionner… », « Résoudre ». C'est le registre de la liste entière, pas une indication sur le statut démonstratif d'un théorème. En outre un cadre de référence d'EXAMEN décrit ce qui est ÉVALUABLE, et reste par nature muet sur ce que le cours démontre. Ce qui EST tranché : le théorème est NOMMÉ au cadre, donc l'enseigner — et le démontrer — n'est en aucun cas hors-programme. La décision de porter la preuve (content/maths/arithmetique/lesson.md R6b, construite sur Gauss + lemme d'Euclide) est donc LÉGITIME et n'a pas besoin de cette frontière pour se justifier ; reste à l'owner de dire si la preuve est elle-même ÉVALUABLE. Voir lesson.md:591-609, qui posait exactement cette question au propriétaire du cadre."
+            _observation_examens:      # NI programme NI limite — motif OBSERVÉ, sans valeur de frontière
+              # ⚠ COMPTE CORRIGÉ TROIS FOIS le 2026-09-27 : 6 → 7 → **9 sur 10**. Le chiffre
+              #   juste est celui que l'en-tête de la banque imprimait déjà
+              #   (content/maths/arithmetique/bank.yaml:1421 : « Neuf entrées sur dix
+              #   mobilisent le petit théorème de Fermat »). Les deux entrées que mes comptes
+              #   successifs avaient manquées : bk-2017-n-x3 (bank.yaml:1308-1410, Fermat aux
+              #   q3 et q4, :1370-1379) et bk-2023-r-x4 (bank.yaml:931-1010, q2, :1002-1010).
+              #   La seule entrée sur dix qui ne mobilise PAS Fermat est bk-2024-r-x5 (elle
+              #   construit un critère de divisibilité par 23). Quatrième fois dans la journée
+              #   qu'un compte est donné sans avoir grepé l'ensemble — voir corrections.
+              - "Sur les 10 exercices nationaux SM vérifiés de la banque arithmétique, NEUF mobilisent Fermat (2017 N Ex.3 q3-q4 · 2019 p=2969 · 2020 N p=13 · 2021 N p=43 et 47 · 2022 N p premier générique · 2023 N p premier impair · 2023 R Ex.4 q2 · 2024 N deux premiers p et q · 2025 N Ex.3 q1-q2) ; seul bk-2024-r-x5 ne l'utilise pas. Dans les NEUF, le théorème est TOUJOURS appliqué comme outil et JAMAIS demandé en démonstration ; deux sujets en mobilisent la forme générale a^p ≡ a [p]. Motif observé sur n=9/10, adossé à aucun libellé de cadre : il ÉCLAIRE la question ouverte ci-dessus, il ne la tranche pas, et il ne doit pas servir à exclure un item qui demanderait la preuve."   # source: derived (observation de corpus) ; compte aligné sur bank.yaml:1421 après la porte research-challenger du 2026-09-27
+              - "Le cadre borne les OUTILS mobilisables, pas les RÉSULTATS atteignables : un sujet national SM peut faire CONSTRUIRE par l'élève un résultat absent du cadre, en le décomposant en questions appuyées sur des outils qui y sont. ⚠ Cette observation ne repose que sur n=1 — bk-2025-n-x3 (critère d'Euler construit depuis Fermat + lemme d'Euclide). Elle est cohérente avec le cas apparenté des restes chinois (bk-2021-n-x3 q6-q7), mais un seul exemple franc : à traiter comme une piste, pas comme un principe établi."   # source: derived (observation de corpus, n=1) — portée explicitement bornée par la porte research-challenger du 2026-09-27
+
+      # ──────────────────────────────────────────────────────────────────
+      - id: denombrement_probabilites
+        nom: "Dénombrement et calcul des probabilités"
+        poids: { part_examen_bloc: 15, note: "bloc « Arithmétique + Probabilités » ≈ 15 % ; partage interne dérivé" }   # source: research-consensus (bloc) / derived (partage)
+        competences_ciblees:          # source: research-consensus (pdfmath : combinatoire, conditionnelle, binomiale)
+          - "Dénombrer et calculer des probabilités (conditionnelles, indépendance) ; exploiter la variable aléatoire et la loi binomiale."
+        chapitres:
+          - id: denombrement
+            nom: "Dénombrement"
+            lesson_slug: denombrement
+            programme:                # source: research-consensus (pdfmath)
+              - "Principe multiplicatif ; p-listes ; arrangements ; permutations ; combinaisons ; triangle de Pascal."
+            savoir_faire:             # source: derived
+              - "Choisir le bon modèle de dénombrement ; calculer arrangements, permutations, combinaisons."
+            limites: []               # (voir chapitre suivant)
+          - id: probabilites
+            nom: "Probabilités, variable aléatoire, loi binomiale"
+            lesson_slug: probabilites-conditionnelles   # ne couvre PAS variable aléatoire / loi binomiale → voir coverage_notes
+            programme:                # source: research-consensus (pdfmath)
+              - "Probabilité, équiprobabilité ; probabilité conditionnelle ; arbre pondéré ; probabilités totales ; indépendance."
+              - "Variable aléatoire : loi, espérance, variance, écart-type ; épreuve de Bernoulli ; loi binomiale."
+            savoir_faire:             # source: derived
+              - "Calculer une probabilité (dénombrement, conditionnelle, totales) ; utiliser un arbre pondéré."
+              - "Reconnaître l'indépendance ; déterminer la loi, l'espérance d'une variable aléatoire ; exploiter la loi binomiale."
+            limites:                  # source: derived
+              - "Loi binomiale (Bernoulli répété) ; pas de loi continue, pas d'approximation gaussienne, pas de statistique inférentielle."
+
+      # ──────────────────────────────────────────────────────────────────
+      # GÉOMÉTRIE DANS L'ESPACE — au PROGRAMME SM mais NON TESTÉE au national.
+      # ──────────────────────────────────────────────────────────────────
+      - id: geometrie_espace_hors_examen
+        nom: "Géométrie dans l'espace (programme SM — NON testée à l'examen national)"
+        poids: { part_examen: 0 }     # source: research-consensus (pdfmath « Géométrie de l'espace : Non » + composition des examens nationaux SM 2008-2025 : aucun exercice de géométrie)
+        _statut: "AU PROGRAMME, HORS ÉPREUVE NATIONALE. Enseignée/évaluée en contrôle continu, mais le cadre de l'examen national SM ne l'inclut pas. Divergence majeure avec SExp (où elle vaut 15 %)."
+        competences_ciblees:          # source: derived
+          - "Utiliser produit scalaire/vectoriel et géométrie analytique dans l'espace (usage programme ; non mobilisé à l'examen national)."
+        chapitres:
+          - id: geometrie_espace_programme
+            nom: "Produit scalaire/vectoriel, droites, plans, sphère (programme)"
+            lesson_slug: geometrie-espace
+            programme:                # source: derived (programme SM ; hors cadre d'examen)
+              - "Repère orthonormé ; produit scalaire dans l'espace ; produit vectoriel (aire, normale) ; produit mixte / déterminant / volume."
+              - "Droites et plans (représentations, positions relatives) ; distances ; sphère (équation, intersection avec un plan)."
+            savoir_faire:             # source: derived
+              - "Calculer produit scalaire, produit vectoriel, produit mixte ; déterminer équations de droites/plans, distances, intersections."
+            limites:                  # source: derived — LE point le plus contre-intuitif du fichier
+              - "⚠ Bien que la leçon geometrie-espace existe et couvre produit vectoriel ET produit mixte (notions SM), ce sous-domaine N'EST PAS testé à l'examen national SM. À CONFIRMER par la relecture Gemini du cadre scanné + validation humaine (un ancien candidat SM tranchera immédiatement)."
+
+# ════════════════════════════════════════════════════════════════════════
+# EXCLUSIONS TRANSVERSALES (frontière anti-hors-programme SM) — source: derived
+# ════════════════════════════════════════════════════════════════════════
+exclusions_transversales:             # source: derived — À VALIDER
+  - { topic: "Développements limités / formule de Taylor", raison: "Hors 2e Bac ; l'approximation locale s'arrête au TAF." }
+  - { topic: "Intégrales impropres / généralisées", raison: "Hors programme ; intégrale sur un segment de fonction continue." }
+  - { topic: "Réduction d'endomorphismes (valeurs propres, diagonalisation)", raison: "Hors 2e Bac ; les espaces vectoriels s'arrêtent aux bases/dimension/applications linéaires." }
+  - { topic: "Théorie de Galois, corps finis au-delà de ℤ/nℤ", raison: "Hors programme." }
+  - { topic: "Lois de probabilité continues, statistique inférentielle", raison: "Hors 2e Bac ; on s'arrête à la loi binomiale." }
+  - { topic: "Fonctions hyperboliques (ch, sh, th)", raison: "Hors programme." }
+  - { topic: "Géométrie de l'espace comme objet d'EXAMEN NATIONAL", raison: "Au programme mais NON testée au national (voir sous-domaine dédié)." }
+
+# ════════════════════════════════════════════════════════════════════════
+# COVERAGE_NOTES — mapping cadre ↔ nos 14 leçons content/maths/ (source: derived)
+# ════════════════════════════════════════════════════════════════════════
+coverage_notes:
+  intro: >
+    Les 14 leçons content/maths/ sont orientées SM et couvrent bien la plupart des
+    chapitres. Restent des LACUNES (chapitres du cadre SM sans leçon dédiée, ou
+    notions SM absentes d'une leçon existante) — listées ci-dessous, à corriger en
+    amont de l'authoring.
+
+  chapitres_cadre_sans_lecon:         # lesson_slug: null
+    - chapitre: "Fonctions primitives (chapitre systématique)"
+      lesson_slug: null
+      note: "Dispersé (calcul-integral R1, fonction-exponentielle R6) ; pas de chapitre systématique des primitives usuelles/formes. LACUNE."
+    - chapitre: "Espaces vectoriels (sous-espaces, familles libres/génératrices, bases, dimension, applications linéaires)"
+      lesson_slug: null
+      note: "La leçon structures-algebriques (R1-R6) s'arrête aux groupes/anneaux/corps — les ESPACES VECTORIELS, pourtant au cadre SM, n'ont PAS de leçon. LACUNE PRIORITAIRE."
+    - chapitre: "Variable aléatoire, loi de probabilité, espérance, LOI BINOMIALE"
+      lesson_slug: null
+      note: "probabilites-conditionnelles couvre conditionnel/indépendance/totales mais PAS la variable aléatoire ni la loi binomiale. LACUNE PRIORITAIRE."
+    - chapitre: "SYSTÈMES DE NUMÉRATION (écriture d'un entier dans une base, opérations et comparaison dans une base, usage en arithmétique)"
+      lesson_slug: null
+      note: >-
+        AJOUT 2026-09-27. TROIS capacités du cadre SM sur les neuf du sous-domaine
+        arithmétique (2.1.4, 2.1.5, 2.1.6) — un tiers du bloc — et le corpus ne les couvre
+        PAS : un seul appariement de « numération / base » dans tout content/maths/arithmetique/
+        (grep lesson.md + items.yaml + bank.yaml + exercises.yaml + checkpoints.yaml).
+        Ni rung, ni item, ni annale. LACUNE PRIORITAIRE, probablement la plus grosse de ce
+        sous-domaine — trouvée en relisant la liste complète des capacités à l'occasion du
+        signalement Fermat, et non signalée par l'audit dette-examen (qui part du corpus, donc
+        ne peut pas voir ce qui manque ENTIÈREMENT — cf. ADR 0036 : « un filtre anti-bruit
+        bâti sur ce qui EXISTE DÉJÀ est structurellement aveugle à ce qui manque entièrement »).
+
+  notions_manquantes_dans_lecons_existantes:   # la leçon existe mais une notion SM du cadre y manque
+    - lesson_slug: derivabilite-etude-fonctions
+      manque: "Théorème de ROLLE et théorème/inégalité des ACCROISSEMENTS FINIS (nommés explicitement par le cadre SM ; R1-R5 ne les traitent pas)."
+    - lesson_slug: calcul-integral
+      manque: "SOMMES DE RIEMANN (construction/encadrement de l'intégrale). Fonctions définies par une intégrale (x↦∫ₐˣf) à vérifier."
+    - lesson_slug: equations-differentielles
+      manque: "Équation générale du 2e ordre y''+ay'+by=0 (équation caractéristique, cas Δ>0/Δ=0/Δ<0). La leçon (R4) ne traite que y''+ω²y=0."
+    - lesson_slug: limites-continuite
+      manque: "LIMITES TRIGONOMÉTRIQUES (lim (sin x)/x). À vérifier."
+      note_2026_09_27: >-
+        Le « théorème/dérivée de la FONCTION RÉCIPROQUE » figurait ici comme lacune : c'est
+        FAUX et c'était une erreur de mapping, pas de couverture. Le corpus l'enseigne, mais
+        dans une AUTRE leçon : content/maths/derivabilite-etude-fonctions/lesson.md:427-541
+        (chapitre R5b « Fonction réciproque » — théorème d'existence, courbe symétrique par
+        rapport à y=x, théorème de la dérivée (f⁻¹)'(b)=1/f'(a) avec la condition f'(a)≠0, et
+        deux exemples travaillés), plus les items DERIVFCT-34→37
+        (content/maths/derivabilite-etude-fonctions/items.yaml:1791-1792, 2049+). Ce qui reste
+        vrai et ouvert : le cadre SM range l'EXISTENCE en 1.2.x (bloc continuité) et la
+        DÉRIVÉE en 1.3.7 (bloc dérivation), alors que notre corpus met les trois temps dans la
+        seule leçon derivabilite-etude-fonctions — divergence de PLACEMENT à arbitrer, pas
+        lacune de contenu. Voir aussi content/maths/derivabilite-etude-fonctions/REVIEW-2026-09-20.md,
+        qui signale que ce chapitre R5b n'a pas de code/manipulable associé.
+    - lesson_slug: fonction-exponentielle
+      manque: "Exponentielle de base a (a^x) et FONCTIONS PUISSANCES x^α. À vérifier."
+    - lesson_slug: fonction-logarithme
+      manque: "Logarithme de base a (au-delà du log décimal en R6). À vérifier."
+    - lesson_slug: suites-numeriques
+      manque: "OK (R9 traite les suites adjacentes) — pas de lacune apparente."
+
+  divergences_majeures_sm:
+    - "SM TESTE arithmétique + structures algébriques (2 leçons entières) — inexistantes en SExp."
+    - "SM NE TESTE PAS la géométrie de l'espace au national (contrairement à SExp, 15 %) — bien que la leçon geometrie-espace existe et que produit vectoriel/mixte soient des notions SM."
+    - "SM complexes vont jusqu'aux racines n-ièmes, zⁿ=a, coefficients complexes, similitudes (bien plus profond que SExp)."
+    # ⚠ CORRECTION PROPOSÉE 2026-09-27 (wave B1) — voir coverage_notes.corrections.
+    #   Rédaction précédente : « SM analyse ajoute Rolle/TAF, sommes de Riemann, 2e ordre
+    #   général, FONCTION RÉCIPROQUE, fonctions puissances/base a. » La fonction réciproque
+    #   n'y a jamais eu sa place : elle est au cadre SExp (capacité 1.2.11), dérivée comprise.
+    - "SM analyse ajoute Rolle/TAF, sommes de Riemann, 2e ordre général, fonctions puissances/base a, racine n-ième et réciproques trigonométriques (arctan) — mais PAS la fonction réciproque elle-même, qui est COMMUNE aux deux filières (SM 1.2.6/1.2.7/1.3.7 ; SExp 1.2.11). Le vrai écart sur la réciproque est de PROFONDEUR, pas de présence : SM la nomme en trois capacités et l'étend aux puissances réelles et à arctan."
+    - "Asymétrie de PREUVE à connaître (observation, pas frontière) : la réciproque comme objet explicitement interrogé est attestée sur 4/4 problèmes nationaux SExp vérifiés du corpus, et sur 0 des entrées SM vérifiées (qui emploient la bijection pour l'existence-unicité via le TVI, et arctan comme primitive de référence). Ne PAS en conclure qu'elle est hors cadre SM — elle y est nommée trois fois ; conclure seulement que notre échantillon SM ne la montre pas encore."
+    - "Nombres complexes = 2 leçons (nc-1, nc-2) pour 1 sous-domaine du cadre."
+
+  corrections:                        # défauts trouvés APRÈS la rédaction initiale, et ce qui a été changé
+    - date: 2026-09-27
+      origine: "wave B1 — companion fix de la correction jumelle de docs/cadre/curriculum/maths-sexp.yaml (coverage_notes.corrections, même date). Les deux entrées se lisent ENSEMBLE."
+      defaut: >-
+        Ce fichier affirmait, à deux endroits, que la FONCTION RÉCIPROQUE est une spécificité
+        SM : (a) la ligne `programme` du chapitre limites_continuite_reciproque portait le tag
+        « source: derived — spécificité SM » ; (b) la ligne de divergences_majeures_sm listait
+        « fonction réciproque » parmi ce que « SM analyse ajoute ». Les deux étaient fausses,
+        et fausses de deux façons : la réciproque n'est pas `derived` (le cadre SM la nomme en
+        trois capacités) et elle n'est pas SM-seule (le cadre SExp la nomme aussi, dérivée
+        comprise). Un troisième défaut, découvert au passage : la réciproque était inscrite
+        comme LACUNE de couverture sous la leçon limites-continuite, alors que le corpus
+        l'enseigne complètement dans derivabilite-etude-fonctions R5b — erreur de mapping.
+      preuve_cadre_sm: >-
+        Synthèse pdfmath.com/cours/bacsm-2026-sm/ (= source 3 de docs/cadre/sources/README-maths.md),
+        qui se déclare reproduire « Cadres de référence de l'examen national du baccalauréat —
+        options internationales, option français — Mathématiques, Série Sciences Mathématiques,
+        filières A et B, CNEEO 2025 ». Trois capacités verbatim : 1.2.6 « Déterminer la fonction
+        réciproque d'une fonction continue et strictement monotone sur un intervalle. » ;
+        1.2.7 « Appliquer le théorème de la fonction réciproque (l'existence, la continuité, les
+        variations et la représentation graphique de la fonction réciproque). » ; 1.3.7 « Étudier
+        la dérivabilité et déterminer la dérivée de la fonction réciproque d'une fonction
+        continue et strictement monotone. » La numérotation corrobore en outre notre découpage
+        en deux chapitres (1.2 = limites et continuité ; 1.3 = dérivation et étude de fonctions).
+        Le PDF officiel SM reste une image scannée sans couche texte → aucune provenance
+        `cadre p.N` possible, convention du fichier inchangée.
+      preuve_que_ce_n_est_pas_specifique_sm: >-
+        Côté SExp, deux jambes indépendantes : capacité 1.2.11 du cadre SExp, verbatim
+        « Déterminer la dérivée et la monotonie de la fonction réciproque d'une fonction
+        continue et strictement monotone, et la représenter graphiquement. »
+        (pdfmath.com/cours/bac-2026-pc-svt/) ; et la composition des examens nationaux SExp —
+        4 problèmes vérifiés sur 4 portent une partie réciproque, 3 demandent la dérivée
+        (2020 N q8c, 2022 N q7b, 2024 N II-5b), le 4e la courbe (2021 N q7). Détail des
+        file:line dans docs/cadre/curriculum/maths-sexp.yaml, coverage_notes.corrections.
+      ce_qui_reste_sm_seul: >-
+        La racine n-ième x ↦ ⁿ√x (derived), le calcul sur les PUISSANCES RÉELLES (capacité
+        1.3.15, pdfmath verbatim), et les réciproques TRIGONOMÉTRIQUES — arctan, attestée sur
+        copie SM (content/maths/fonction-exponentielle/bank.yaml:1705-1715, bk-2025-n-x1
+        q I-5b ; content/maths/calcul-integral/bank.yaml, bk-2024-r-x2 q1-a). L'écart SM/SExp
+        sur la réciproque est donc de PROFONDEUR et d'EXTENSION, jamais de présence.
+      correctif: >-
+        (1) chapitre limites_continuite_reciproque : tag de provenance de la ligne `programme`
+        corrigé en research-consensus (1.2.6 + 1.2.7) avec mention explicite « PARTAGÉE avec
+        SExp » ; (2) une `limites` ajoutée dans le même chapitre comme garde-fou anti-dérive
+        entre les deux fichiers ; (3) chapitre derivabilite_rolle_taf : provenance verbatim de
+        1.3.7 notée en regard de la ligne existante, et une `limites` ajoutée qui nomme ce qui
+        est réellement SM-seul ; (4) divergences_majeures_sm : ligne fautive remplacée, plus
+        une ligne d'asymétrie de preuve ; (5) notions_manquantes_dans_lecons_existantes :
+        fausse lacune retirée et remplacée par la divergence de PLACEMENT réelle.
+        Aucune `exclusions_transversales` touchée.
+      miroir: "docs/cadre/curriculum/maths-sexp.yaml — coverage_notes.corrections, entrée du 2026-09-27. Toute révision future de la frontière « fonction réciproque » doit modifier les DEUX fichiers dans le même geste, sinon ils redivergent."
+
+      statut: "PROPOSITION — en attente de research-challenger + validation humaine ; la relecture longue Gemini doit vérifier les capacités 1.2.6/1.2.7/1.3.7/1.3.15 contre le cadre SM scanné et confirmer qu'aucune autre capacité 1.2.x/1.3.x ne manque."
+    - date: 2026-09-27
+      origine: "signalement d'un auteur de contenu (wave B1), au départ sur le seul PETIT THÉORÈME DE FERMAT. La relecture de la liste COMPLÈTE des 9 capacités du sous-domaine a trouvé deux autres défauts."
+      defaut_1_fermat_absent: >-
+        Le petit théorème de Fermat ne figurait NULLE PART dans le chapitre arithmetique_z :
+        ni `programme`, ni `savoir_faire`. Pire que l'absence : la ligne `limites` nommait
+        TROIS exclusions voisines (indicatrice d'Euler, RSA, résidus quadratiques) en restant
+        muette sur Fermat — configuration qui se lit comme une décision, alors que c'était un
+        oubli. content/maths/arithmetique/lesson.md:591-609 avait explicitement remonté le
+        problème au propriétaire du cadre (« cadre silencieux, à confirmer … la ligne de
+        programme mériterait d'être complétée explicitement, plutôt que de laisser ce silence
+        trancher par défaut à chaque notion qui en a besoin »). Réponse : le cadre n'était pas
+        silencieux, NOTRE frontière l'était.
+      preuve_1: >-
+        Capacité 2.1.8 du cadre SM, verbatim par pdfmath.com/cours/bacsm-2026-sm/ (source 3
+        du README) : « Utiliser la divisibilité, la division euclidienne, les théorèmes de
+        Gauss, de Bézout et de Fermat, le théorème fondamental et les propriétés des nombres
+        premiers. » Seconde jambe (composition des examens nationaux SM) : SIX exercices
+        vérifiés du corpus mobilisent Fermat — content/maths/arithmetique/bank.yaml, entrées
+        2019 (p=2969), 2020 N (p=13, :262), 2021 N (p=43 et 47, :646 et :695), 2022 N (:377),
+        2023 N (:787), 2024 N (deux premiers p et q, :515). Audit indépendant :
+        docs/audits/dette-examen/maths.md:51-60 (« GAP-B (inverse): Petit théorème de Fermat
+        has no rung ») et :485.
+      defaut_2_exclusion_residus_falsifiee: >-
+        L'exclusion « pas de résidus quadratiques » était falsifiée par une copie vérifiée :
+        bk-2023-n-x4 (2023 N, Exercice 4, SM, 3 points — content/maths/arithmetique/bank.yaml:744-778)
+        porte entièrement sur la résolubilité de x² ≡ 2 [p]. Exclusion resserrée sur la THÉORIE
+        (symbole de Legendre, critère d'Euler, réciprocité quadratique), avec mention explicite
+        que la question concrète est attestée et ne doit pas être écartée. Même mode de défaut
+        que celui trouvé le même jour dans maths-sexp.yaml par la passe research-challenger :
+        une exclusion `derived` contredite par une annale que la frontière pouvait citer.
+      defaut_3_numeration_absente: >-
+        TROISIÈME défaut, le plus gros et non signalé par personne : les SYSTÈMES DE NUMÉRATION
+        occupent trois des neuf capacités du sous-domaine (2.1.4 « Écrire un entier naturel dans
+        un système de numération de base donnée », 2.1.5 « Additionner, multiplier et comparer
+        deux entiers dans un système de numération », 2.1.6 « Utiliser les écritures dans des
+        systèmes de numération dans des situations d'arithmétique ») et ne figuraient pas au
+        programme. Le corpus ne les couvre pas du tout (un seul appariement « numération/base »
+        dans tout content/maths/arithmetique/). Ajoutées au programme + savoir_faire, et
+        inscrites en LACUNE PRIORITAIRE dans chapitres_cadre_sans_lecon.
+      statut_de_la_preuve_de_fermat: >-
+        DEMANDÉ : « la preuve est-elle attendue, ou le théorème est-il admis ? » RÉPONSE
+        HONNÊTE : **la source ne le tranche pas.** La capacité 2.1.8 commence par « Utiliser »,
+        mais ce verbe ne porte aucune information sur Fermat en particulier — 6 des 9 capacités
+        du sous-domaine commencent par « Utiliser ». C'est le registre de la liste, pas un
+        statut démonstratif. Et un cadre de référence d'EXAMEN énumère ce qui est ÉVALUABLE : il
+        est structurellement muet sur ce que le cours démontre. Consigné en
+        `_question_ouverte_owner` sur le chapitre, avec le motif d'examen observé (6/6
+        applications, 0 demande de preuve) rangé séparément en `_observation_examens` pour
+        qu'il ÉCLAIRE la décision sans la prendre. Ce qui EST tranché : le théorème étant nommé
+        au cadre, la preuve portée par content/maths/arithmetique/lesson.md R6b (construite sur
+        Gauss + lemme d'Euclide) n'est PAS hors-programme ; seule son caractère évaluable reste
+        à l'owner.
+      correctif: >-
+        Chapitre arithmetique_z : deux lignes `programme` ajoutées (Fermat + théorème
+        fondamental ; systèmes de numération), deux `savoir_faire` ajoutés, ligne `limites`
+        scindée et resserrée, deux nouvelles clés de chapitre `_question_ouverte_owner` et
+        `_observation_examens`. coverage_notes : une lacune de couverture ajoutée (numération).
+        Aucune `exclusions_transversales` touchée.
+      dette_signalee_hors_perimetre: >-
+        content/maths/arithmetique/lesson.md:593-594 cite « maths-sm.yaml:277-281 » et « :287 »
+        pour le programme et les limites d'arithmétique — références devenues FAUSSES (les
+        lignes ont glissé avec les révisions du 2026-09-27 ; c'est aujourd'hui ~:297-318). Le
+        fichier de leçon n'est pas dans le périmètre d'édition de cette passe : à corriger par
+        qui en a la main (ADR 0031 : une référence croisée est une instruction).
+      statut: "PROPOSITION — en attente de research-challenger + validation humaine. La relecture longue Gemini doit vérifier les 9 capacités 2.1.1→2.1.9 contre le cadre SM scanné (en particulier que 2.1.8 nomme bien Fermat et que les trois capacités de numération existent), et trancher le statut de la preuve n'appartient qu'à l'owner. ⚠ Ce correctif a lui-même été repris le même jour — voir l'entrée suivante (critère d'Euler)."
+
+    - date: 2026-09-27
+      origine: "signalement BLOQUANT du critique de fidélité bac, sur MON PROPRE correctif de l'entrée précédente. Le resserrement que je venais d'écrire était encore trop large."
+      defaut: >-
+        En resserrant l'exclusion « résidus quadratiques » sur « la THÉORIE (symbole de
+        Legendre, CRITÈRE D'EULER, loi de réciprocité quadratique) », j'ai laissé le critère
+        d'Euler dans la liste des exclusions. Il est FALSIFIÉ par une copie vérifiée :
+        bk-2025-n-x3 (2025 session normale, filière SM, Exercice 3, 3 points, statut
+        `sourced` — content/maths/arithmetique/bank.yaml:1145-1216), intitulé « Critère
+        d'Euler, petit théorème de Fermat et équation modulo 11 », dont la question q1
+        (:1182) demande littéralement de montrer a^{(p-1)/2} ≡ 1 [p] ou ≡ -1 [p], construit
+        depuis le petit théorème de Fermat et le lemme d'Euclide (différence de carrés +
+        p premier divise un produit). L'en-tête de la banque le dit déjà en clair (:80-83) :
+        « le critère d'Euler …, construit ici de A à Z à partir du seul petit théorème de
+        Fermat et du lemme d'Euclide — aucun rung dédié, mais rien n'est admis sans être
+        re-dérivé ». L'information était dans le dépôt ; je ne l'avais pas lue.
+      correctif: >-
+        Exclusion resserrée une seconde fois, et surtout REFORMULÉE en PRINCIPE DE TRI plutôt
+        qu'en liste de sujets interdits : est hors cadre le fait d'INVOQUER un résultat comme
+        théorème nommé et ADMIS ; est attesté le fait de le faire CONSTRUIRE par l'énoncé à
+        partir d'outils du chapitre. Ne restent donc nommés comme exclus que le SYMBOLE DE
+        LEGENDRE et la LOI DE RÉCIPROCITÉ QUADRATIQUE. Deux attestations citées dans la ligne
+        elle-même : x² ≡ a [p] (2023 N Ex.4) et le critère d'Euler construit (2025 N Ex.3).
+        Le compte de `_observation_examens` est passé de 6 à 7 exercices Fermat (bk-2025-n-x3
+        en mobilise aussi à q1 et q2), et une seconde observation y note que le cadre borne
+        les OUTILS mobilisables, pas les résultats atteignables.
+      pattern_a_retenir: >-
+        TROISIÈME occurrence du même mode de défaut en une seule journée, sur deux fichiers :
+        (1) maths-sexp.yaml « la réciproque porte toujours sur une RESTRICTION » — falsifiée
+        par 2 des 4 copies que la frontière citait ; (2) maths-sexp.yaml « dérivée demandée EN
+        UN POINT » — généralisation sur n=3 sans libellé de cadre ; (3) ici, deux fois de
+        suite, une exclusion de résidus quadratiques falsifiée par une annale vérifiée du
+        dépôt. Le mode est toujours le même : **une exclusion `derived` écrite par
+        raisonnement de plausibilité disciplinaire, sans la confronter au corpus d'annales que
+        le dépôt possède déjà.** Règle de travail qui en découle, pour les frontières à venir :
+        avant d'écrire une exclusion, GREPER la banque sur le terme exclu — le corpus est
+        consultable, et il a tranché trois fois contre moi aujourd'hui. Et préférer, quand
+        c'est possible, un PRINCIPE DE TRI (admis vs construit) à une liste de sujets, parce
+        qu'une liste se falsifie sujet par sujet là où un principe absorbe les cas nouveaux.
+      statut: "PROPOSITION. ⚠ Repris par la PORTE 2 le même jour — voir l'entrée suivante, qui la clôt."
+
+    - date: 2026-09-27
+      origine: "PORTE 2 — research-challenger sur le bloc arithmétique (RULES §5). C'est la passe qui CLÔT la porte 2 pour ce bloc."
+      verdicts_soutenus: >-
+        Quatre claims ATTAQUÉS et SOUTENUS : (1) Fermat au cadre via la capacité 2.1.8 ;
+        (2) les systèmes de numération 2.1.4-2.1.6 et la lacune de couverture associée — zéro
+        appariement dans la banque, la lacune est réelle ; (3) le PRINCIPE DE TRI
+        « admis vs construit » — soutenu par les 10 entrées de la banque arithmétique, ce qui
+        s'énonce « SOUTENU PAR LE CORPUS EN MAIN, PAS DÉMONTRÉ » (n=10 n'est pas une preuve, et
+        le corpus a déjà contredit quatre de mes affirmations aujourd'hui) ; (4) les exclusions
+        « indicatrice d'Euler comme théorème central » et « RSA/cryptographie formelle » — zéro
+        appariement, maintenues.
+      defaut_1_compte_faux_encore: >-
+        `_observation_examens` annonçait 7 exercices mobilisant Fermat. Le chiffre est 9 sur 10.
+        Manquaient bk-2017-n-x3 (content/maths/arithmetique/bank.yaml:1308-1410, Fermat aux q3
+        et q4, :1370-1379) et bk-2023-r-x4 (:931-1010, q2, :1002-1010) — deux applications
+        pures, aucune démonstration, donc le MOTIF ne change pas, seul le compte était faux.
+        Aggravant : l'en-tête de la banque imprimait déjà le bon chiffre (:1421, « Neuf entrées
+        sur dix mobilisent le petit théorème de Fermat »), et la seule entrée qui ne l'utilise
+        pas y est même nommée (bk-2024-r-x5). QUATRIÈME fois dans la journée qu'un compte est
+        avancé sans avoir grepé l'ensemble — et le compte avait déjà été corrigé deux fois
+        (6 → 7 → 9). Corollaire de travail : un compte de corpus se LIT dans l'instrument ou se
+        CALCULE sur le corpus entier ; il ne s'incrémente pas au fil des lectures.
+      defaut_2_omission_restes_chinois: >-
+        Le principe de tri ne nommait que les résidus quadratiques, alors qu'un second cas de
+        la même forme existe dans la banque : bk-2021-n-x3, q6-q7, résout un système de
+        congruences à modules premiers entre eux par combinaison directe via la relation de
+        Bézout de la Partie I — « apparentée au théorème des restes chinois, NON NOMMÉE dans
+        l'énoncé et sans rung dédié » (bank.yaml:596-603), et le flag de jumelage :1431-1442
+        montre 2024 R Ex.5 résolvant le même type de système par une voie imposée différente.
+        Sans mention explicite, un auteur futur pouvait écarter un tel item comme
+        « hors-programme : restes chinois ». Le principe de tri a donc été généralisé (il vaut
+        pour TOUT résultat débordant les capacités 2.1.x) et les restes chinois y sont nommés
+        comme troisième attestation.
+      defaut_3_portee_de_l_observation: >-
+        L'observation « le cadre borne les OUTILS, pas les RÉSULTATS » était écrite comme un
+        constat général alors qu'elle ne reposait que sur n=1 (bk-2025-n-x3). Portée bornée
+        explicitement dans la ligne elle-même : « à traiter comme une piste, pas comme un
+        principe établi ».
+      correctif: >-
+        Chapitre arithmetique_z : ligne `limites` du principe de tri généralisée et étendue aux
+        restes chinois (troisième attestation citée) ; `_observation_examens` recompté à 9/10
+        avec les deux entrées manquantes citées et un commentaire d'audit sur les trois comptes
+        successifs ; seconde observation bornée à n=1.
+      statut: "PROPOSITION — **PORTE 2 (research-challenger) PASSÉE pour le bloc arithmétique**, avec les deux corrections ci-dessus intégrées. Restent la PORTE 1 (relecture longue Gemini : vérifier les 9 capacités 2.1.1→2.1.9 contre le cadre SM scanné) et la PORTE 3 (validation humaine + la décision owner sur le caractère évaluable de la preuve de Fermat). Le bloc n'est PAS autoritatif tant que les trois portes ne sont pas passées."
+
+  claims_derives_les_plus_faibles:    # à attaquer en priorité (research-challenger)
+    - "« Géométrie de l'espace NON testée au national SM » (part_examen: 0). Sourcé (pdfmath explicite + composition 2008-2025) mais CONTRE-INTUITIF et à confirmer par un ancien candidat SM."
+    - "Partage interne du bloc 35 % (Complexes vs Structures) et du bloc 15 % (Arithmétique vs Probabilités) — seuls les TOTAUX de bloc sont sourcés."
+    - "Inclusion des espaces vectoriels au cadre SM (research-consensus via pdfmath « vector spaces, bases » ; à confirmer contre le cadre scanné)."
+    - "Périmètre exact de l'équation du 2e ordre (y''+ay'+by=0 générale vs seulement y''+ω²y=0) en SM."
+    - "Toutes les limites/exclusions (couche dérivée anti-hors-programme) — par construction non imprimées au cadre."

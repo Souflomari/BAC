@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 480"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="La texture d’une roche magmatique révèle sa profondeur de formation : gros cristaux (texture grenue) pour un refroidissement lent en profondeur — le granite ; grains fins pour un refroidissement rapide en surface — une lave volcanique.">
+  <title>La taille des cristaux du granite révèle sa profondeur de formation</title>
+
+  <!--
+    granite-texture-grenue.svg — figure STATIQUE (pas de step-groups).
+    Cible précise : l'erreur classique nommée en R4 du lesson.md — croire que
+    le granite, roche magmatique à gros cristaux, est une lave refroidie en
+    surface. C'est la seule des trois « erreurs à ne pas commettre » de cette
+    leçon qui n'a PAS déjà un tableau dans le texte (R1 et R2 en ont un) — et
+    la taille des cristaux est une preuve intrinsèquement visuelle (le texte
+    lui-même le dit : « teste cette idée directement sur la texture »).
+
+    Structure : une coupe verticale simple, un seul trait de sol horizontal.
+      Au-dessus du sol : un échantillon de lave, grain fin (nombreux petits
+      points), refroidissement rapide (heures-jours) → roche VOLCANIQUE.
+      Au-dessous du sol : un pluton, gros cristaux (quelques polygones),
+      refroidissement très lent (dizaines de milliers à millions d'années)
+      → roche PLUTONIQUE, le granite.
+
+    Convention couleur : le pluton (idée centrale — ce que l'élève ne croit
+    pas spontanément) est en --figure-accent (contour du cadre + mots clés
+    PLUTONIQUE/GRANITE). La lave (le cas de comparaison, déjà intuitif) reste
+    en --figure-ink-soft. Une seule idée accentuée, répétée à 3 endroits.
+
+    Simplification pédagogique assumée : les polygones de cristaux et les
+    points de grain fin sont des représentations schématiques de la texture
+    (grenue vs fine), pas des formes minéralogiques réelles — hors programme
+    d'aller plus loin que « gros grains visibles » vs « grains invisibles ».
+  -->
+
+  <!-- Titre -->
+  <text x="280" y="22" text-anchor="middle"
+        font-size="14" font-weight="600" fill="var(--figure-ink)">
+    <tspan x="280" dy="0">La taille des cristaux révèle</tspan>
+    <tspan x="280" dy="18">la profondeur de refroidissement du magma</tspan>
+  </text>
+
+  <!-- ── Rangée A : en surface (lave, grain fin) ─────────────────────── -->
+  <text x="280" y="62" text-anchor="middle"
+        font-size="12" font-weight="700" letter-spacing="0.04em"
+        fill="var(--figure-ink-soft)">EN SURFACE</text>
+
+  <rect x="170" y="72" width="220" height="86" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
+
+  <!-- Texture fine : nombreux petits grains -->
+  <g fill="var(--figure-ink-soft)">
+    <circle cx="195" cy="93" r="1.8"/><circle cx="215" cy="93" r="1.8"/>
+    <circle cx="235" cy="93" r="1.8"/><circle cx="255" cy="93" r="1.8"/>
+    <circle cx="275" cy="93" r="1.8"/><circle cx="295" cy="93" r="1.8"/>
+    <circle cx="315" cy="93" r="1.8"/><circle cx="335" cy="93" r="1.8"/>
+    <circle cx="355" cy="93" r="1.8"/>
+    <circle cx="205" cy="113" r="1.8"/><circle cx="225" cy="113" r="1.8"/>
+    <circle cx="245" cy="113" r="1.8"/><circle cx="265" cy="113" r="1.8"/>
+    <circle cx="285" cy="113" r="1.8"/><circle cx="305" cy="113" r="1.8"/>
+    <circle cx="325" cy="113" r="1.8"/><circle cx="345" cy="113" r="1.8"/>
+    <circle cx="365" cy="113" r="1.8"/>
+    <circle cx="195" cy="133" r="1.8"/><circle cx="220" cy="133" r="1.8"/>
+    <circle cx="245" cy="133" r="1.8"/><circle cx="270" cy="133" r="1.8"/>
+    <circle cx="295" cy="133" r="1.8"/><circle cx="320" cy="133" r="1.8"/>
+    <circle cx="345" cy="133" r="1.8"/><circle cx="365" cy="133" r="1.8"/>
+  </g>
+
+  <text x="280" y="176" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)">
+    texture fine : grains invisibles à l’œil nu
+  </text>
+  <text x="280" y="192" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    refroidissement rapide — quelques heures à quelques jours
+  </text>
+  <text x="280" y="210" text-anchor="middle" font-size="12" fill="var(--figure-ink-soft)">
+    → roche <tspan font-weight="700">VOLCANIQUE</tspan> (andésite, basalte)
+  </text>
+
+  <!-- ── Trait de sol ─────────────────────────────────────────────────── -->
+  <line x1="40" y1="232" x2="520" y2="232" stroke="var(--figure-ink)" stroke-width="1.8"/>
+  <text x="500" y="226" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">
+    surface du sol
+  </text>
+  <g stroke="var(--figure-ink-soft)" stroke-width="1.2" opacity="0.6">
+    <line x1="60"  y1="236" x2="68"  y2="244"/>
+    <line x1="100" y1="236" x2="108" y2="244"/>
+    <line x1="140" y1="236" x2="148" y2="244"/>
+    <line x1="180" y1="236" x2="188" y2="244"/>
+    <line x1="220" y1="236" x2="228" y2="244"/>
+    <line x1="260" y1="236" x2="268" y2="244"/>
+    <line x1="300" y1="236" x2="308" y2="244"/>
+    <line x1="340" y1="236" x2="348" y2="244"/>
+    <line x1="380" y1="236" x2="388" y2="244"/>
+    <line x1="420" y1="236" x2="428" y2="244"/>
+    <line x1="460" y1="236" x2="468" y2="244"/>
+    <line x1="500" y1="236" x2="508" y2="244"/>
+  </g>
+
+  <!-- Repère de profondeur -->
+  <line x1="55" y1="250" x2="55" y2="400" stroke="var(--figure-ink)" stroke-width="1.6"/>
+  <polygon points="55,410 49,396 61,396" fill="var(--figure-ink)"/>
+  <text x="55" y="424" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    ≈ 25 à 30 km
+  </text>
+
+  <!-- ── Rangée B : en profondeur (pluton, gros cristaux) ────────────── -->
+  <text x="280" y="252" text-anchor="middle"
+        font-size="12" font-weight="700" letter-spacing="0.04em"
+        fill="var(--figure-ink)">EN PROFONDEUR</text>
+
+  <rect x="170" y="260" width="220" height="110" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.4"/>
+
+  <!-- Texture grenue : quelques gros cristaux -->
+  <g fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.4">
+    <polygon points="205,285 235,278 250,300 238,325 210,328 198,308"/>
+    <polygon points="280,280 320,272 345,290 340,318 305,325 278,308"/>
+    <polygon points="205,335 250,330 260,345 245,355 210,352"/>
+    <polygon points="315,325 355,322 362,345 340,358 312,350"/>
+  </g>
+
+  <text x="280" y="388" text-anchor="middle" font-size="11.5" fill="var(--figure-ink)">
+    texture grenue : gros cristaux visibles à l’œil nu
+  </text>
+  <text x="280" y="404" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    (quartz, feldspath, mica)
+  </text>
+  <text x="280" y="420" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    refroidissement très lent
+  </text>
+  <text x="280" y="436" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    (dizaines de milliers à quelques millions d’années)
+  </text>
+  <text x="280" y="456" text-anchor="middle" font-size="12" fill="var(--figure-ink)">
+    → roche <tspan font-weight="700" fill="var(--figure-accent)">PLUTONIQUE</tspan> : le <tspan font-weight="700" fill="var(--figure-accent)">GRANITE</tspan> se forme ici
+  </text>
+</svg>

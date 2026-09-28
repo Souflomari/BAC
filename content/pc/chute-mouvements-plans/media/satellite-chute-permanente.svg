@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 500" width="640" height="500"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="La chute permanente d’un satellite : depuis un point P, sans force la trajectoire serait une ligne droite tangente ; avec la force gravitationnelle, centripète, la trajectoire courbe et reste au-dessus du sol indéfiniment — un écart de chute entre la ligne droite et la trajectoire réelle est indiqué.">
+  <title>Le satellite qui tombe sans jamais toucher le sol</title>
+  <!--
+    satellite-chute-permanente.svg — figure figée (STATIQUE) qui remplace
+    la vidéo [[motion:satellite-chute-permanente]] pour cette passe de
+    couverture : au lieu d'une animation, DEUX trajectoires superposées à
+    partir du même point P, même v0 — celle "sans force" (inertie, ligne
+    droite) et celle "avec force centripète" (orbite, courbe). STAGED
+    (schéma-trajectoire, même statut que trajectoire-parabolique.svg /
+    deflexion-magnetique.svg). Sert CH-SAT-1/CH-SAT-2 (R9).
+
+    Géométrie (schématique, rapport Terre/orbite non à l'échelle réelle) :
+      Terre : centre C=(320,340), rayon 110.
+      Orbite (rayon 130, un peu au-dessus du sol), P au sommet :
+        P = C+(0,−130) = (320,210).
+      v0, tangent en P, horizontal : de (320,210) à (390,210).
+      Ligne droite "sans force" : prolongement de v0, de (320,210) à
+        (600,210) — c'est ce que dit l'inertie (1re loi) en l'absence de
+        force.
+      Trajectoire réelle (avec F centripète) : arc de cercle de centre C,
+        rayon 130, paramétré par θ de −90° à 30°, P(θ)=C+130(cosθ,sinθ) :
+          θ=−90° (320,210)     [P]
+          θ=−70° (364.46,217.84)
+          θ=−50° (403.56,240.42)
+          θ=−30° (432.58,275.0)
+          θ=−10° (448.02,317.43)
+          θ=10°  (448.02,362.57)
+          θ=30°  (432.58,405.0)
+      F, en θ=−50°, dirigée vers C : direction (−0.643,0.766) (norme
+        vérifiée = 1, car (403.56,240.42) est bien à 130 px de C).
+      Écart de "chute" : à x=432.58 (le point θ=−30° de la courbe), la
+        droite "sans force" est à y=210 ; la courbe réelle, à y=275 — un
+        écart de 65 px, montré comme segment vertical : EXACTEMENT le
+        canon de Newton (la Terre "s'est dérobée" sous la trajectoire
+        rectiligne, d'où la chute qui ne s'arrête jamais).
+
+    Rôle des couleurs :
+      Terre                                  : --figure-ink-soft (fond léger)
+      droite "sans force" (référence)        : --figure-ink-soft (tireté)
+      trajectoire réelle (grandeur d'intérêt) : --figure-accent
+      v0, F (vecteurs)                        : --figure-ink
+      écart de chute et annotation            : --figure-accent
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="22" text-anchor="middle" font-size="12" font-weight="600"
+        letter-spacing="0.01em" fill="var(--figure-ink)">
+    Le satellite « tombe » en permanence — et rate toujours le sol
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="20" y="34" width="600" height="440" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — données : Terre, P, v0, et la droite "sans force"
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <circle cx="320" cy="340" r="110" fill="var(--figure-ink-soft)" fill-opacity="0.20"
+            stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="320" y="345" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-ink)">Terre</text>
+
+    <circle cx="320" cy="210" r="4.5" fill="var(--figure-ink)"/>
+    <text x="308" y="200" text-anchor="end" font-size="10" fill="var(--figure-ink)">P</text>
+
+    <!-- v0, tangent -->
+    <line x1="320" y1="210" x2="382" y2="210" stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="390,210 378,205.5 378,214.5" fill="var(--figure-ink)"/>
+    <text x="356" y="200" text-anchor="middle" font-size="12" font-style="italic" fill="var(--figure-ink)">v<tspan dy="3" font-size="8.5">0</tspan></text>
+
+    <!-- Droite "sans force" -->
+    <line x1="320" y1="210" x2="595" y2="210" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-dasharray="6,4"/>
+    <text x="470" y="200" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">sans force : ligne droite (inertie)</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — mécanisme : la force gravitationnelle, centripète
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line x1="403.56" y1="240.42" x2="371.42" y2="278.72"
+          stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="365,286 373.6,273.7 380.5,281.9" fill="var(--figure-ink)"/>
+    <text x="358" y="290" text-anchor="end" font-size="12" font-style="italic" fill="var(--figure-ink)">F</text>
+    <text x="358" y="302" text-anchor="end" font-size="9" fill="var(--figure-ink-soft)">(gravitationnelle, vers C)</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : la trajectoire réelle courbe, et l'écart de chute
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <path d="
+      M320,210 L364.46,217.84 L403.56,240.42 L432.58,275.0
+      L448.02,317.43 L448.02,362.57 L432.58,405.0
+    " fill="none" stroke="var(--figure-accent)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="425.58,417.12 436.91,407.5 428.25,402.5" fill="var(--figure-accent)"/>
+    <text x="460" y="400" font-size="10.5" font-style="italic" fill="var(--figure-accent)">trajectoire réelle (avec F)</text>
+
+    <!-- Écart de chute -->
+    <line x1="432.58" y1="210" x2="432.58" y2="275.0" stroke="var(--figure-accent)" stroke-width="1.6" stroke-dasharray="3,3"/>
+    <polygon points="432.58,281 428.58,270 436.58,270" fill="var(--figure-accent)"/>
+    <text x="440" y="248" font-size="10" fill="var(--figure-accent)">chute</text>
+
+    <text x="320" y="454" text-anchor="middle" font-size="11" fill="var(--figure-accent)">elle tombe en permanence — mais le sol se dérobe toujours autant : elle ne le touche jamais</text>
+  </g><!-- /step-3 -->
+
+</svg>

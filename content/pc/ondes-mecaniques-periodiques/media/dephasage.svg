@@ -1,0 +1,266 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" width="640" height="520"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Déphasage entre deux points M1 et M2 d’une corde, séparés d’une distance d : en haut, d égal à lambda, les deux points vibrent en concordance de phase, leurs courbes y(t) sont exactement superposées ; en bas, d égal à lambda demi, les deux points vibrent en opposition de phase, le maximum de l’un coïncide avec le minimum de l’autre ; formule delta-phi = 2 pi d sur lambda.">
+  <title>Déphasage : concordance et opposition de phase</title>
+  <!--
+    dephasage.svg — deux points M1, M2 séparés d'une distance d le long de la
+    corde ; le déphasage Δφ = 2πd/λ entre eux, illustré dans les deux cas
+    particuliers nommés en R3 ("Les deux cas particuliers à repérer") :
+      Panneau A : d = λ    → Δφ = 2π  → concordance de phase
+      Panneau B : d = λ/2  → Δφ = π   → opposition de phase
+
+    Chaque panneau a trois parties :
+      1. un schéma spatial (une ligne = la corde, deux points M1/M2, un
+         bracket "d") — pour montrer explicitement la séparation physique ;
+      2. un graphe y(t) : la courbe de M1 (trait plein, --figure-accent) et
+         celle de M2 (trait pointillé, --figure-ink-soft), superposées sur le
+         même axe des temps ;
+      3. une légende de lecture sous le graphe.
+
+    Gabarit de courbe réutilisé (identique à double-periodicite.svg) :
+    sinusoïde en Bézier, période géométrique 125px, amplitude 32px, la trace
+    s'arrête à x=554 (gutter libre 554..624 pour la légende M1/M2).
+
+    Panneau A (concordance, axis_y=158) :
+      M1 : gabarit + 60 en y  → crête=126, creux=190.
+      M2 : IDENTIQUE à M1 (concordance parfaite — même élongation à chaque
+           instant), tracé en pointillé par-dessus.
+
+    Panneau B (opposition, axis_y=380) :
+      M1 : gabarit + 282 en y → crête=348, creux=412.
+      M2 : M1 REFLÉCHI par rapport à l'axe (y' = 2*axis_y - y), ce qui est
+           exact pour un déphasage de π (cos(θ+π) = -cos(θ)) : là où M1 a une
+           crête, M2 a un creux, et réciproquement. Vérifié point par point
+           lors de la construction (voir commentaires inline).
+
+    Schémas spatiaux : M1 à x=260 dans les deux panneaux ; M2 à x=360
+    (panneau A, séparation large = λ) ou x=310 (panneau B, séparation moitié
+    moindre = λ/2) — l'écart entre M1 et M2 est deux fois plus petit dans le
+    panneau B, cohérent avec d = λ/2 contre d = λ.
+
+    MISE EN ÉTAPES (LESSON-EXPERIENCE-SPEC §2.5 — graphe, toujours staged,
+    axes → données → lecture) :
+      step-1 : les deux schémas spatiaux (M1, M2, bracket d) + les deux
+               paires d'axes vides, dans les deux panneaux.
+      step-2 : les courbes y(t) de M1 et M2 se tracent, dans les deux
+               panneaux (+ la légende de trait qui identifie M1/M2).
+      step-3 : la lecture — repères de mesure (même élongation en A,
+               maximum/minimum en B) + la formule de synthèse Δφ = 2πd/λ.
+    Les deux légendes-paragraphes qui répétaient la lecture en toutes lettres
+    sous chaque panneau ont été retirées : ce texte vit maintenant dans
+    dephasage.stages.json (étape 3), pour ne pas dupliquer la caption.
+  -->
+
+  <!-- Titre (chrome non-stagé — doit précéder tous les groupes step-N,
+       la réassemblage du renderer les ajoute en dernier avant </svg>) -->
+  <text x="320" y="16" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">Déphasage entre deux points séparés de <tspan
+        font-style="italic">d</tspan> : concordance et opposition de phase</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — Axes : les deux schémas spatiaux + les deux paires d'axes vides
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+
+    <!-- ── Panneau A — en-tête + schéma spatial + axes ── -->
+    <text x="96" y="40" font-size="11.5" font-weight="600"
+          fill="var(--figure-accent)">Concordance de phase — <tspan
+          font-style="italic">d</tspan> = λ</text>
+
+    <!-- Schéma spatial : la corde, M1, M2, bracket d -->
+    <line x1="140" y1="64" x2="560" y2="64" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <circle cx="260" cy="64" r="4.5" fill="var(--figure-accent)"/>
+    <circle cx="360" cy="64" r="4.5" fill="var(--figure-ink-soft)"/>
+    <text x="260" y="50" text-anchor="middle" font-size="10" fill="var(--figure-ink)"><tspan
+          font-style="italic">M</tspan><tspan dy="3" font-size="7">1</tspan></text>
+    <text x="360" y="50" text-anchor="middle" font-size="10" fill="var(--figure-ink)"><tspan
+          font-style="italic">M</tspan><tspan dy="3" font-size="7">2</tspan></text>
+    <line x1="260" y1="70" x2="260" y2="76" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="360" y1="70" x2="360" y2="76" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="260" y1="76" x2="360" y2="76" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="310" y="90" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-accent)">d = λ</text>
+
+    <rect x="88" y="100" width="536" height="118" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Axes -->
+    <line x1="104" y1="158" x2="604" y2="158"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="604,158 592,153.5 592,162.5" fill="var(--figure-ink-soft)"/>
+    <line x1="104" y1="208" x2="104" y2="118"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="104,118 99.5,129 108.5,129" fill="var(--figure-ink-soft)"/>
+    <text x="611" y="162" font-size="11" fill="var(--figure-ink-soft)"><tspan
+          font-style="italic">t</tspan><tspan> (s)</tspan></text>
+    <text x="96" y="118" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">y</text>
+    <text x="96" y="162" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+
+    <!-- ── Panneau B — en-tête + schéma spatial + axes ── -->
+    <text x="96" y="262" font-size="11.5" font-weight="600"
+          fill="var(--figure-accent)">Opposition de phase — <tspan
+          font-style="italic">d</tspan> = λ/2</text>
+
+    <!-- Schéma spatial : M2 deux fois plus proche de M1 que dans le panneau A -->
+    <line x1="140" y1="286" x2="560" y2="286" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <circle cx="260" cy="286" r="4.5" fill="var(--figure-accent)"/>
+    <circle cx="310" cy="286" r="4.5" fill="var(--figure-ink-soft)"/>
+    <text x="260" y="272" text-anchor="middle" font-size="10" fill="var(--figure-ink)"><tspan
+          font-style="italic">M</tspan><tspan dy="3" font-size="7">1</tspan></text>
+    <text x="310" y="272" text-anchor="middle" font-size="10" fill="var(--figure-ink)"><tspan
+          font-style="italic">M</tspan><tspan dy="3" font-size="7">2</tspan></text>
+    <line x1="260" y1="292" x2="260" y2="298" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="310" y1="292" x2="310" y2="298" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="260" y1="298" x2="310" y2="298" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <text x="285" y="312" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-accent)">d = λ/2</text>
+
+    <rect x="88" y="322" width="536" height="118" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Axes -->
+    <line x1="104" y1="380" x2="604" y2="380"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="604,380 592,375.5 592,384.5" fill="var(--figure-ink-soft)"/>
+    <line x1="104" y1="430" x2="104" y2="340"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="104,340 99.5,351 108.5,351" fill="var(--figure-ink-soft)"/>
+    <text x="611" y="384" font-size="11" fill="var(--figure-ink-soft)"><tspan
+          font-style="italic">t</tspan><tspan> (s)</tspan></text>
+    <text x="96" y="340" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">y</text>
+    <text x="96" y="384" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — Données : les courbes y(t) de M1 et M2, dans les deux panneaux
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+
+    <!-- Panneau A : M2 tracé d'abord (dessous), pointillé, EXACTEMENT superposé à M1 (concordance) -->
+    <path d="
+      M104,158
+      C113,136 128,126 141.5,126
+      C155,126 170,136 179,158
+      C188,180 203,190 216.5,190
+      C230,190 245,180 254,158
+      C263,136 278,126 291.5,126
+      C305,126 320,136 329,158
+      C338,180 353,190 366.5,190
+      C380,190 395,180 404,158
+      C413,136 428,126 441.5,126
+      C455,126 470,136 479,158
+      C488,180 503,190 516.5,190
+      C530,190 545,180 554,158
+    " fill="none" stroke="var(--figure-ink-soft)" stroke-width="2"
+      stroke-dasharray="5,4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Panneau A : M1, trait plein, par-dessus -->
+    <path d="
+      M104,158
+      C113,136 128,126 141.5,126
+      C155,126 170,136 179,158
+      C188,180 203,190 216.5,190
+      C230,190 245,180 254,158
+      C263,136 278,126 291.5,126
+      C305,126 320,136 329,158
+      C338,180 353,190 366.5,190
+      C380,190 395,180 404,158
+      C413,136 428,126 441.5,126
+      C455,126 470,136 479,158
+      C488,180 503,190 516.5,190
+      C530,190 545,180 554,158
+    " fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Panneau A : légende M1 / M2 dans le gutter libre (x=554..624) -->
+    <line x1="562" y1="130" x2="580" y2="130" stroke="var(--figure-accent)" stroke-width="2.4"/>
+    <text x="584" y="133" font-size="9" fill="var(--figure-ink)"><tspan
+          font-style="italic">M</tspan><tspan dy="2" font-size="6.5">1</tspan></text>
+    <line x1="562" y1="146" x2="580" y2="146" stroke="var(--figure-ink-soft)" stroke-width="2"
+          stroke-dasharray="4,3"/>
+    <text x="584" y="149" font-size="9" fill="var(--figure-ink)"><tspan
+          font-style="italic">M</tspan><tspan dy="2" font-size="6.5">2</tspan></text>
+
+    <!--
+      Panneau B : M1 (plein, accent) : gabarit + 282 (axis 380, crête 348, creux 412).
+    -->
+    <path d="
+      M104,380
+      C113,358 128,348 141.5,348
+      C155,348 170,358 179,380
+      C188,402 203,412 216.5,412
+      C230,412 245,402 254,380
+      C263,358 278,348 291.5,348
+      C305,348 320,358 329,380
+      C338,402 353,412 366.5,412
+      C380,412 395,402 404,380
+      C413,358 428,348 441.5,348
+      C455,348 470,358 479,380
+      C488,402 503,412 516.5,412
+      C530,412 545,402 554,380
+    " fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!--
+      Panneau B : M2 (pointillé, ink-soft) : M1 réfléchi par rapport à axis=380
+      (y' = 760 - y) — déphasage exact de π. Où M1 a une crête (348), M2 a un
+      creux (412), et réciproquement.
+    -->
+    <path d="
+      M104,380
+      C113,402 128,412 141.5,412
+      C155,412 170,402 179,380
+      C188,358 203,348 216.5,348
+      C230,348 245,358 254,380
+      C263,402 278,412 291.5,412
+      C305,412 320,402 329,380
+      C338,358 353,348 366.5,348
+      C380,348 395,358 404,380
+      C413,402 428,412 441.5,412
+      C455,412 470,402 479,380
+      C488,358 503,348 516.5,348
+      C530,348 545,358 554,380
+    " fill="none" stroke="var(--figure-ink-soft)" stroke-width="2"
+      stroke-dasharray="5,4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Panneau B : légende M1 / M2 -->
+    <line x1="562" y1="352" x2="580" y2="352" stroke="var(--figure-accent)" stroke-width="2.4"/>
+    <text x="584" y="355" font-size="9" fill="var(--figure-ink)"><tspan
+          font-style="italic">M</tspan><tspan dy="2" font-size="6.5">1</tspan></text>
+    <line x1="562" y1="368" x2="580" y2="368" stroke="var(--figure-ink-soft)" stroke-width="2"
+          stroke-dasharray="4,3"/>
+    <text x="584" y="371" font-size="9" fill="var(--figure-ink)"><tspan
+          font-style="italic">M</tspan><tspan dy="2" font-size="6.5">2</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — Lecture : repères de mesure + formule de synthèse
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+
+    <!-- Panneau A : repère — même élongation à chaque instant (ici à x=204, un creux) -->
+    <line x1="204" y1="158" x2="204" y2="190"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <circle cx="204" cy="190" r="3.2" fill="var(--figure-accent)"/>
+
+    <!-- Panneau B : repère — M1 au maximum (crête, x=141.5) pendant que M2 est au minimum -->
+    <line x1="141.5" y1="348" x2="141.5" y2="412"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <circle cx="141.5" cy="348" r="3.2" fill="var(--figure-accent)"/>
+    <circle cx="141.5" cy="412" r="3.2" fill="var(--figure-ink-soft)"/>
+
+    <!-- Relation de synthèse -->
+    <rect x="205" y="472" width="230" height="34" rx="6"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="320" y="494" text-anchor="middle" font-size="15" font-style="italic"
+          fill="var(--figure-accent)">Δφ = 2π d/λ</text>
+  </g><!-- /step-3 -->
+
+</svg>

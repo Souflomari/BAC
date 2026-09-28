@@ -1,0 +1,2153 @@
+notion: le-droit-la-justice
+skill_code: philo_droit_justice
+
+# Misconception inventory — summit-conversion campaign (Gap-4 fix: this
+# file previously carried `misconceptions: []`, no tags on any distractor).
+# Id convention: mc.philo.<slug>.<name>, where <slug> is skill_code with
+# the "philo_" prefix stripped (philo_droit_justice → droit_justice) —
+# matches the precedent set in content/philo/la-liberte/items.yaml and
+# content/philo/theorie-experience/items.yaml. Built from scratch by
+# reading the lesson (R0-R7) rung by rung and asking, at each rung's own
+# named "erreur à éviter" box (mined FIRST, per the recipe's philo
+# addendum) or central move, what real wrong model a student would carry
+# into an item; consolidated across rungs where the SAME underlying wrong
+# model recurs (e.g. the R0 "légal=juste" / "juste doit toujours l'emporter"
+# dilemma reappears, in the same shape, at R6's légalité/légitimité) rather
+# than minted as one narrow tag per distractor — matching the ratio of
+# distinct tags to items set by theorie-experience's own inventory
+# (16 misconceptions / 24 items À LA DATE DE CETTE NOTE ; theorie-experience
+# en compte 29 depuis la passe du 2026-09-05) rather than fragmenting into 40+ near-
+# singleton tags.
+
+misconceptions:
+  - id: mc.philo.droit_justice.faux-dilemme-legalite-justice
+    label: "« Légal implique toujours juste — ou juste doit toujours l'emporter sur légal, sans réserve »"
+    description: >-
+      L'élève traite légalité et justice (ou, au chapitre 7, légalité et
+      légitimité) comme deux camps entre lesquels il faudrait trancher de
+      façon absolue : soit une décision légale est nécessairement juste
+      par cela seul, soit le sentiment de justice doit toujours l'emporter
+      sur la loi écrite, quelles qu'en soient les conséquences pour la
+      sécurité juridique.
+    contradicts_principle: >-
+      Le tribunal de R0 est irréprochable en droit et pourtant discutable
+      en justice — les deux notions peuvent se dissocier sans qu'aucune
+      des deux formules absolues (légal=juste ; juste doit toujours
+      l'emporter) ne rende compte de cet écart.
+
+  - id: mc.philo.droit_justice.injustice-ressentie-implique-erreur-juridique
+    label: "« Si je juge une décision injuste, c'est que le tribunal a dû commettre une erreur de droit »"
+    description: >-
+      L'élève déduit, du seul sentiment d'injustice qu'une décision lui
+      inspire, qu'elle doit être entachée d'une erreur juridique — alors
+      que le texte établit explicitement que le tribunal n'a violé aucune
+      règle.
+    contradicts_principle: >-
+      Le sentiment d'injustice porte sur le CONTENU de la règle (ou son
+      silence), pas sur son APPLICATION par le tribunal — les deux
+      jugements sont indépendants l'un de l'autre.
+
+  - id: mc.philo.droit_justice.paires-notions-confondues-synonymes
+    label: "« Deux notions techniques que la leçon distingue soigneusement ne sont que deux mots pour la même chose »"
+    description: >-
+      L'élève traite comme parfaitement synonymes deux notions que la
+      leçon prend justement soin de distinguer — droit et justice, droit
+      positif et droit naturel, légalité et légitimité selon le cas — au
+      lieu de les tenir pour deux propriétés distinctes qui peuvent se
+      dissocier.
+    contradicts_principle: >-
+      Chacune de ces paires désigne deux propriétés indépendantes l'une de
+      l'autre (une procédurale, l'autre évaluative) — les confondre revient
+      à effacer l'écart même que la leçon construit.
+
+  - id: mc.philo.droit_justice.droit-naturel-mal-defini
+    label: "« Le droit naturel, ce sont les lois de la nature physique — ou ses propriétés sont celles du droit positif, inversées »"
+    description: >-
+      L'élève définit mal le droit naturel : soit en l'assimilant aux lois
+      physiques (la gravitation), qui DÉCRIVENT plutôt que PRESCRIVENT ;
+      soit en inversant ses propriétés avec celles du droit positif
+      (universalité/contingence) ; soit en niant, contre Locke, que des
+      droits naturels précèdent le contrat et l'État.
+    contradicts_principle: >-
+      Le droit naturel, au sens jusnaturaliste, prescrit des principes de
+      justice valables indépendamment de toute loi écrite — ni une loi
+      physique, ni le simple inverse du droit positif, ni une création de
+      l'État plutôt qu'un donné qu'il protège.
+
+  - id: mc.philo.droit_justice.debat-positivisme-jusnaturalisme-mal-restitue
+    label: "« Le positivisme et le jusnaturalisme défendent, au fond, la même position — ou l'un des deux camps n'a rien à répondre à l'autre »"
+    description: >-
+      L'élève mélange ou inverse les deux camps du débat né des procès de
+      Nuremberg : il attribue au positivisme le critère jusnaturaliste (la
+      conformité à des principes moraux universels), ou prétend que le
+      positivisme n'a aucune réponse à l'objection jusnaturaliste, ou nie
+      que la question se soit même posée dans les faits.
+    contradicts_principle: >-
+      Le positivisme répond précisément à l'objection jusnaturaliste
+      (fixer un « seuil d'injustice extrême » réintroduirait l'incertitude
+      morale que la séparation droit/morale voulait éviter) — les deux
+      camps restent nettement distincts et chacun a une réponse à l'autre.
+
+  - id: mc.philo.droit_justice.critere-de-validite-mal-identifie
+    label: "« La validité d'une norme se mesure à sa popularité d'opinion ou à ses conséquences bénéfiques »"
+    description: >-
+      L'élève propose, pour le critère de validité juridique (Kelsen) ou
+      de légitimité, un critère étranger à la théorie étudiée —
+      l'approbation majoritaire de l'opinion publique, ou les conséquences
+      globalement bénéfiques produites — au lieu du seul critère retenu
+      par la leçon : la conformité procédurale à la norme supérieure.
+    contradicts_principle: >-
+      Pour Kelsen, seule la conformité procédurale à la norme supérieure
+      habilitante rend une norme valide — ni l'adhésion de l'opinion, ni
+      les effets produits, n'entrent dans ce critère.
+
+  - id: mc.philo.droit_justice.positivisme-separation-mal-comprise
+    label: "« Kelsen approuve moralement les lois injustes qu'il dit valides — ou il interdit tout jugement moral personnel »"
+    description: >-
+      L'élève comprend mal la thèse méthodologique de Kelsen : soit il
+      croit que déclarer une loi valide revient, chez Kelsen, à
+      l'approuver moralement ; soit il croit, à l'inverse, que le
+      positivisme interdit à quiconque de porter, à titre personnel, un
+      jugement moral sur une loi.
+    contradicts_principle: >-
+      La séparation droit/morale de Kelsen est méthodologique : elle
+      sépare l'analyse JURIDIQUE de l'évaluation MORALE, sans empêcher
+      Kelsen — ou quiconque — de juger, à titre personnel, une loi
+      injuste.
+
+  - id: mc.philo.droit_justice.contredit-fait-etabli-par-texte
+    label: "« Nier ou inventer un fait que le texte de la leçon établit explicitement »"
+    description: >-
+      L'élève avance une affirmation qui contredit directement un fait que
+      le cours établit noir sur blanc (l'esclavage a été légal à
+      certaines époques ; des lois furent bien votées et promulguées en
+      Allemagne durant cette période), au lieu de raisonner à partir des
+      faits donnés.
+    contradicts_principle: >-
+      Le raisonnement philosophique part des faits établis par le texte,
+      il ne les nie ni ne les invente pour éviter la difficulté qu'ils
+      posent.
+
+  - id: mc.philo.droit_justice.critere-justice-mal-identifie
+    label: "« Ce qui distingue justice commutative et justice distributive, c'est le nombre de personnes en jeu »"
+    description: >-
+      L'élève croit que le critère qui sépare les deux formes de justice
+      d'Aristote est le nombre de personnes impliquées, plutôt que le TYPE
+      de rapport en jeu (un échange strict entre deux parties, ou la
+      répartition d'un bien commun entre plusieurs contributions
+      inégales).
+    contradicts_principle: >-
+      Ce n'est pas le nombre de personnes qui distingue les deux formes de
+      justice, mais le type de rapport : échange (commutative) contre
+      répartition d'un bien commun (distributive).
+
+  - id: mc.philo.droit_justice.commutative-distributive-inversees
+    label: "« Justice commutative et justice distributive sont interverties » (l'erreur la plus fréquente du programme, selon le chapitre 5)"
+    description: >-
+      L'élève applique l'égalité arithmétique stricte (commutative) à une
+      situation de répartition, et l'égalité proportionnelle
+      (distributive) à un simple échange — inversant exactement les deux
+      principes par rapport à leur domaine propre.
+    contradicts_principle: >-
+      L'égalité arithmétique stricte gouverne les rapports d'échange entre
+      deux parties ; l'égalité proportionnelle gouverne la répartition de
+      biens communs entre plusieurs membres — chaque principe est réservé
+      à son domaine, jamais à l'autre.
+
+  - id: mc.philo.droit_justice.formes-justice-non-distinguees
+    label: "« Il n'existe qu'une seule forme de justice — ou l'une des deux formes est toujours supérieure à l'autre »"
+    description: >-
+      L'élève nie qu'Aristote distingue deux formes d'égalité, ou pense
+      qu'un même principe unique (l'égalité stricte) devrait s'appliquer à
+      toute situation ; ou, à l'inverse, il hiérarchise les deux formes en
+      jugeant l'une « plus juste » ou devant toujours l'emporter sur
+      l'autre.
+    contradicts_principle: >-
+      Aristote distingue précisément deux formes d'égalité, chacune
+      réservée à son type de situation — ni une seule forme universelle,
+      ni une hiérarchie entre les deux, ne rend compte de sa position.
+
+  - id: mc.philo.droit_justice.voile-ignorance-mecanisme-mal-compris
+    label: "« Le voile d'ignorance dissimule les inégalités réelles en permanence, ou cache les principes choisis aux citoyens, ou revient à l'état de nature de Hobbes »"
+    description: >-
+      L'élève méprend ce que fait réellement le voile d'ignorance chez
+      Rawls : il croit qu'il dissimule en permanence les inégalités une
+      fois la société en place, ou qu'il sert à cacher aux citoyens
+      ordinaires le contenu des principes choisis, ou qu'il correspond à
+      l'état de guerre de tous contre tous décrit par Hobbes.
+    contradicts_principle: >-
+      Le voile d'ignorance ne porte que sur la situation hypothétique de
+      choix des principes (position originelle) — pas sur la société
+      réelle une fois le voile levé, ni sur le contenu des principes
+      eux-mêmes, publics une fois adoptés, ni sur un état de guerre
+      hobbesien.
+
+  - id: mc.philo.droit_justice.principe-difference-mal-compris
+    label: "« Le principe de différence exige l'égalité stricte des richesses — ou se réduit à maximiser la richesse totale produite »"
+    description: >-
+      L'élève confond le principe de différence de Rawls avec une
+      exigence d'égalitarisme absolu des richesses, ou, à l'inverse, avec
+      un critère utilitariste de maximisation globale qui ignorerait le
+      sort réel des plus désavantagés.
+    contradicts_principle: >-
+      Le principe de différence admet des inégalités, à la condition
+      qu'elles profitent réellement aux plus désavantagés — ni une
+      égalité stricte des résultats, ni un simple gain global de
+      richesse, n'en tiennent lieu.
+
+  - id: mc.philo.droit_justice.priorite-principes-rawls-inversee
+    label: "« Le principe de différence a priorité sur le principe d'égale liberté, ou les deux n'ont entre eux aucun ordre de priorité »"
+    description: >-
+      L'élève ignore, ou inverse, l'ordre de priorité que Rawls établit
+      entre ses deux principes : le principe d'égale liberté prime sur le
+      principe de différence, lequel ne peut jamais l'effacer.
+    contradicts_principle: >-
+      Rawls ordonne strictement les deux principes — l'égale liberté prime
+      toujours sur la différence, jamais l'inverse.
+
+  - id: mc.philo.droit_justice.legalite-legitimite-mutuellement-exclusives
+    label: "« Une loi légitime serait forcément illégale, comme si les deux notions s'excluaient par nature »"
+    description: >-
+      L'élève traite légalité et légitimité comme deux propriétés qui
+      s'excluraient nécessairement l'une l'autre, alors que la plupart des
+      lois légitimes sont aussi parfaitement légales — l'écart possible
+      entre les deux n'implique aucune opposition systématique.
+    contradicts_principle: >-
+      Légalité et légitimité coïncident le plus souvent ; l'écart entre
+      elles est possible, pas systématique, et ne fait jamais de l'une
+      l'opposé automatique de l'autre.
+
+  - id: mc.philo.droit_justice.legitimite-justifie-desobeissance-automatique
+    label: "« Une loi légale ne mérite jamais l'obéissance dès lors qu'elle me paraît personnellement illégitime » (l'erreur nommée par le chapitre 7)"
+    description: >-
+      L'élève conclut de l'écart possible entre légalité et légitimité
+      qu'un jugement personnel d'illégitimité suffit toujours, à lui
+      seul, à justifier la désobéissance individuelle à une loi.
+    contradicts_principle: >-
+      La distinction légalité/légitimité sert à ANALYSER pourquoi un
+      décalage est possible entre les deux — elle ne justifie pas
+      automatiquement la désobéissance individuelle, question distincte
+      que la leçon ne tranche pas.
+
+  - id: mc.philo.droit_justice.legitimite-reduite-au-pouvoir-de-fait
+    label: "« Une loi est légitime dès lors qu'elle n'a rencontré aucune résistance — ou que sa légitimité se limite au seul monopole de la violence physique »"
+    description: >-
+      L'élève fonde la légitimité sur un simple rapport de force ou
+      d'absence de résistance (Rousseau : la force seule ne fonde jamais
+      le droit), ou réduit la légitimité, chez Weber, au seul monopole
+      institutionnel de la violence physique, sans rapport avec le
+      jugement porté sur le contenu d'une loi.
+    contradicts_principle: >-
+      « Le plus fort n'est jamais assez fort pour être toujours le
+      maître, s'il ne transforme sa force en droit » (Rousseau) —
+      l'absence de résistance ne fonde jamais, à elle seule, la
+      légitimité ; et le monopole wébérien de la violence n'épuise pas la
+      question de la reconnaissance du contenu d'une loi.
+
+  - id: mc.philo.droit_justice.dommage-r0-mal-lu
+    label: "« Le tribunal nierait le dommage subi, ou le désaccord porterait sur son montant » (mélire les faits du chapitre 1)"
+    description: >-
+      L'élève méprend un fait clairement établi par le texte du chapitre 1 : le
+      dommage (eau non potable, enfants malades) est réel et non contesté
+      par le tribunal ; ce n'est ni son existence ni son montant qui
+      motive le rejet de la plainte.
+    contradicts_principle: >-
+      Le tribunal rejette la plainte parce qu'aucune règle n'a été
+      violée, pas parce qu'il nierait le dommage ou en contesterait
+      l'ampleur — celui-ci est établi sans ambiguïté par le texte.
+
+  - id: mc.philo.droit_justice.silence-loi-confondu-vice-procedure
+    label: "« L'absence de loi applicable serait un vice de procédure du tribunal, ou une erreur de droit qu'il aurait commise »"
+    description: >-
+      L'élève confond le SILENCE de la loi (aucune règle n'existait sur ce
+      point précis au moment des faits) avec une erreur de procédure ou
+      de droit commise par le tribunal lui-même dans l'examen du dossier.
+    contradicts_principle: >-
+      Le texte établit explicitement que le tribunal n'a commis aucune
+      erreur de droit — le mécanisme en jeu est un silence de la loi, pas
+      un vice de procédure.
+
+  - id: mc.philo.droit_justice.fait-invente-hors-texte
+    label: "« Une loi existait bien, ou l'usine aurait menti aux experts » (un fait non donné par le texte)"
+    description: >-
+      L'élève invente un fait absent du texte du chapitre 1 pour expliquer la
+      décision du tribunal — une loi qui aurait existé mais que le
+      tribunal aurait jugée trop sévère pour l'appliquer, ou une fraude de
+      l'usine lors de l'examen du dossier — plutôt que de s'en tenir au
+      mécanisme réel : le silence de la loi.
+    contradicts_principle: >-
+      Le texte établit qu'aucune loi n'existait sur ce point précis, et
+      que le dossier fut examiné « avec le plus grand sérieux » —
+      inventer un fait non donné pour expliquer la décision manque le vrai
+      mécanisme.
+
+  - id: mc.philo.droit_justice.generalisation-abusive-exemple-ponctuel
+    label: "« Cet exemple ponctuel prouve que toute loi finit par produire une injustice — ou qu'aucun tribunal n'a jamais respecté le droit »"
+    description: >-
+      L'élève généralise abusivement un exemple ponctuel (le silence de la
+      loi sur un produit chimique précis, ou l'argument invoqué par
+      certains accusés à Nuremberg) en une loi universelle sur toutes les
+      lois ou tous les tribunaux, ce que rien dans la leçon n'établit.
+    contradicts_principle: >-
+      Le droit reste, dans l'immense majorité des cas, l'instrument par
+      lequel une société réalise la justice — un exemple ponctuel d'écart
+      ne prouve ni l'inutilité générale du droit, ni qu'aucun tribunal n'a
+      jamais respecté la loi.
+
+  - id: mc.philo.droit_justice.argument-r0-mal-identifie
+    label: "« L'argument invoqué à Nuremberg viendrait des juges, ou l'objection au sentiment de justice porterait sur les pouvoirs institutionnels des tribunaux »"
+    description: >-
+      L'élève méprend à qui appartient un argument ou ce qu'il vise
+      réellement : il attribue aux juges de Nuremberg l'argument de
+      défense invoqué par certains accusés, ou réduit l'objection au
+      sentiment personnel de justice à une question de pouvoirs
+      institutionnels réels des tribunaux.
+    contradicts_principle: >-
+      L'argument de Nuremberg est celui de la DÉFENSE de certains
+      accusés, pas des juges ; et l'objection au sentiment personnel de
+      justice porte sur un principe (que distinguerait alors un tribunal
+      d'une opinion privée ?), pas sur les pouvoirs institutionnels
+      effectifs des tribunaux.
+
+  - id: mc.philo.droit_justice.methode-dissertation-mal-appliquee
+    label: "« Les gestes de la méthode de dissertation (problématiser, construire un plan, rédiger une introduction) sont de simples formalités interchangeables »"
+    description: >-
+      L'élève traite les exigences de la méthode comme des cases à cocher
+      plutôt que des gestes ayant chacun une fonction précise : il prend
+      une reformulation du sujet, une annonce de plan ou une simple
+      définition des termes pour une problématique ; il croit qu'un plan
+      doit obligatoirement compter deux parties ou citer un nombre fixe
+      d'auteurs plutôt que de construire une vraie tension ; il pense
+      qu'une introduction peut affirmer la réponse au sujet avant de
+      l'avoir posée comme problème.
+    contradicts_principle: >-
+      Une problématique met en tension deux positions également
+      recevables ; un plan doit construire cette tension plutôt que
+      trancher dès la partie I ; une introduction doit poser la question
+      avant d'y répondre — ce sont des gestes fonctionnels, pas des
+      formalités interchangeables ou des règles arbitraires de nombre.
+
+items:
+  - id: DRJ-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: philo_droit_justice
+    tags: [distinction_concepts, droit_justice]
+    primary_misconception: mc.philo.droit_justice.faux-dilemme-legalite-justice
+    stem: >
+      Un tribunal, saisi après qu'une usine a rejeté dans une rivière un
+      produit chimique qu'aucune réglementation n'interdisait au moment des
+      faits, conclut qu'aucune loi n'a été violée et rejette la plainte des
+      riverains. Que peut-on dire, du point de vue étudié dans cette leçon,
+      de cette décision ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est nécessairement juste, puisqu'un tribunal ne saurait, par définition même de sa fonction, rendre une seule décision injuste aussi longtemps qu'il se contente d'appliquer correctement le droit positif en vigueur."
+        correct: false
+        misconception: mc.philo.droit_justice.faux-dilemme-legalite-justice
+        feedback: >
+          C'est confondre légalité et justice : appliquer correctement une
+          règle en vigueur garantit que la décision est légale, pas qu'elle
+          est juste -- le contenu même de la règle (ou son silence) peut,
+          lui, rester discutable du point de vue de la justice.
+      - id: B
+        text: "Elle est en réalité illégale, car aucune décision qui laisse un dommage sans réparation ne peut être conforme au droit."
+        correct: false
+        misconception: mc.philo.droit_justice.injustice-ressentie-implique-erreur-juridique
+        feedback: >
+          Ce n'est pas parce qu'une décision paraît moralement insatisfaisante
+          qu'elle est illégale : le tribunal a correctement établi qu'aucune
+          règle en vigueur n'avait été violée. Nier cette possibilité revient
+          à effacer, par principe, l'écart entre droit et justice que la leçon
+          cherche justement à mettre en évidence.
+      - id: C
+        text: "La question ne se pose pas : « légal » et « juste » désignent, en philosophie du droit, exactement la même propriété sous deux noms différents."
+        correct: false
+        misconception: mc.philo.droit_justice.paires-notions-confondues-synonymes
+        feedback: >
+          Ce ne sont pas des synonymes : le droit positif décrit ce qui est
+          effectivement en vigueur, la justice sert de mesure pour évaluer ce
+          contenu -- une loi (ou son silence) peut être légale sans être
+          jugée juste, précisément parce que ces deux notions ne coïncident
+          pas nécessairement.
+      - id: D
+        text: "Elle peut être légale, aucune règle en vigueur n'ayant été enfreinte, tout en restant discutable du point de vue de la justice : droit positif et justice ne coïncident pas automatiquement."
+        correct: true
+    correct_feedback: >
+      Le tribunal n'a commis aucune erreur de droit : sa décision est
+      parfaitement légale. Mais le sentiment d'injustice porte sur le contenu
+      de la règle (ou son silence), jugé à l'aune d'un critère qui n'est pas
+      lui-même une loi -- c'est cet écart entre droit positif et justice que
+      la leçon va construire.
+    solution: |
+      **Le droit positif :** l'ensemble des règles effectivement posées par
+      une autorité et en vigueur à un moment et un lieu donnés.
+
+      **La justice :** un idéal qui sert de mesure au droit positif, pas
+      seulement à le décrire.
+
+      **Ce que la situation montre :** une décision peut être irréprochable
+      du strict point de vue du droit en vigueur, et rester pourtant jugée
+      injuste dans son résultat -- signe que droit et justice ne sont pas
+      une seule et même chose.
+
+  - id: DRJ-2
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: philo_droit_justice
+    tags: [droit_positif, droit_naturel, jusnaturalisme]
+    primary_misconception: mc.philo.droit_justice.droit-naturel-mal-defini
+    stem: >
+      Quelle affirmation distingue correctement le droit positif et le droit
+      naturel, au sens de la tradition jusnaturaliste ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le droit naturel désignerait les lois de la nature physique, comme la loi de la gravitation ou celle de la chute des corps, purement et simplement transposées par analogie au domaine du droit et de la justice."
+        correct: false
+        misconception: mc.philo.droit_justice.droit-naturel-mal-defini
+        feedback: >
+          C'est confondre deux emplois différents du mot « loi ». Une loi
+          physique décrit ce qui se passe nécessairement ; le droit naturel,
+          au sens jusnaturaliste, prescrit des principes de justice que
+          l'autorité politique devrait respecter -- ce n'est pas une loi de
+          la nature au sens scientifique.
+      - id: B
+        text: "Le droit positif est universel et immuable, tandis que le droit naturel varie d'un pays et d'une époque à l'autre."
+        correct: false
+        misconception: mc.philo.droit_justice.droit-naturel-mal-defini
+        feedback: >
+          C'est l'inverse : c'est le droit naturel que la tradition
+          jusnaturaliste présente comme universel et valable indépendamment
+          des lois écrites ; c'est le droit positif qui est contingent et
+          varie effectivement d'un pays et d'une époque à l'autre.
+      - id: C
+        text: "Le droit positif, ce sont les lois posées par une autorité et en vigueur ici et maintenant, donc variables ; le droit naturel, des principes de justice universels valables sans loi écrite."
+        correct: true
+      - id: D
+        text: "Ce sont deux expressions synonymes employées indifféremment pour désigner les lois écrites d'un pays."
+        correct: false
+        misconception: mc.philo.droit_justice.paires-notions-confondues-synonymes
+        feedback: >
+          Ce ne sont pas des synonymes : le droit naturel est précisément
+          défini par le fait de ne PAS dépendre d'avoir été écrit ou posé par
+          une autorité pour être valable, à la différence du droit positif.
+    correct_feedback: >
+      Le droit positif est posé par une autorité et varie selon les lieux et
+      les époques ; le droit naturel, selon la tradition jusnaturaliste,
+      désigne des principes de justice universels qui vaudraient même sans
+      loi écrite pour les protéger.
+    solution: |
+      **Le droit positif :** contingent -- il aurait pu être autrement, il
+      change avec une nouvelle loi, il varie d'un pays à l'autre.
+
+      **Le droit naturel :** selon le jusnaturalisme, des principes (vie,
+      liberté, dignité...) valables par nature, indépendamment de ce que dit
+      une loi écrite -- cf. Locke et les droits naturels antérieurs au
+      contrat (leçon « L'État », chapitre 4).
+
+      **Ce que cela permet :** juger une loi positive injuste en la mesurant
+      à un critère qui ne dépend pas d'elle.
+
+  - id: DRJ-3
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_droit_justice
+    tags: [kelsen, positivisme_juridique, jusnaturalisme]
+    primary_misconception: mc.philo.droit_justice.debat-positivisme-jusnaturalisme-mal-restitue
+    stem: >
+      Selon le positivisme juridique de Kelsen, qu'est-ce qui rend une norme
+      juridique valide ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Sa conformité à des principes moraux universels, valables par eux-mêmes indépendamment des lois écrites et de toute autorité politique qui viendrait les poser."
+        correct: false
+        misconception: mc.philo.droit_justice.debat-positivisme-jusnaturalisme-mal-restitue
+        feedback: >
+          C'est le critère jusnaturaliste, exactement l'inverse de la thèse
+          de Kelsen. Le positivisme juridique sépare précisément le droit de
+          la morale : la validité d'une norme se juge sur sa conformité
+          procédurale, jamais sur son contenu moral.
+      - id: B
+        text: "Sa conformité procédurale à la norme supérieure qui l'habilite, dans la hiérarchie des normes -- indépendamment de son contenu moral."
+        correct: true
+      - id: C
+        text: "Le fait qu'elle soit majoritairement approuvée par l'opinion publique au moment de son adoption."
+        correct: false
+        misconception: mc.philo.droit_justice.critere-de-validite-mal-identifie
+        feedback: >
+          La popularité d'une loi dans l'opinion n'entre pas dans le critère
+          de validité de Kelsen : seule compte la conformité procédurale à la
+          norme supérieure qui autorise sa production, quelle que soit
+          l'adhésion qu'elle recueille par ailleurs.
+      - id: D
+        text: "Le fait qu'elle produise, dans les faits, des conséquences globalement bénéfiques pour la société."
+        correct: false
+        misconception: mc.philo.droit_justice.critere-de-validite-mal-identifie
+        feedback: >
+          C'est un critère de conséquences (proche d'un raisonnement
+          utilitariste), étranger à la théorie de Kelsen : sa théorie de la
+          validité est purement procédurale, elle n'évalue ni le contenu
+          moral ni les effets produits par la norme.
+    correct_feedback: >
+      Pour Kelsen, une norme est valide si elle a été produite conformément à
+      la norme supérieure qui l'habilite (hiérarchie des normes) --
+      indépendamment de sa bonté ou de sa justice. C'est la séparation du
+      droit et de la morale, thèse centrale du positivisme juridique.
+    solution: |
+      **Le critère de Kelsen :** conformité procédurale à la norme
+      supérieure -- un règlement se conforme à la loi, une loi à la
+      Constitution, jusqu'à la norme fondamentale (Grundnorm) hypothétique.
+
+      **Ce que cela exclut :** toute évaluation du contenu moral de la norme
+      -- une loi peut être moralement odieuse et rester, en ce sens,
+      juridiquement valide.
+
+      **Pourquoi cette séparation :** protéger la sécurité juridique, en
+      évitant de faire dépendre la validité du droit d'un accord moral
+      toujours incertain.
+
+  - id: DRJ-4
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: philo_droit_justice
+    tags: [aristote, justice_commutative, justice_distributive]
+    primary_misconception: mc.philo.droit_justice.commutative-distributive-inversees
+    stem: >
+      Un tribunal condamne un particulier à rembourser exactement la somme
+      empruntée à son créancier, sans tenir compte de la richesse respective
+      des deux parties. Une bourse d'études, elle, est répartie entre
+      plusieurs candidats selon leurs résultats scolaires et leurs besoins
+      financiers. Comment Aristote qualifierait-il, respectivement, ces deux
+      formes de justice ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux relèvent de la justice distributive, puisque les deux situations impliquent de traiter plusieurs personnes."
+        correct: false
+        misconception: mc.philo.droit_justice.critere-justice-mal-identifie
+        feedback: >
+          Ce n'est pas le nombre de personnes impliquées qui distingue les
+          deux formes de justice, mais le TYPE de rapport en jeu : un échange
+          strict entre deux parties (le remboursement) relève de la justice
+          commutative, pas distributive.
+      - id: B
+        text: "Le remboursement relèverait de la justice distributive (proportionnelle au mérite et à la situation du débiteur) ; la bourse, elle, relèverait de la justice commutative (égalité stricte et identique entre tous les candidats)."
+        correct: false
+        misconception: mc.philo.droit_justice.commutative-distributive-inversees
+        feedback: >
+          C'est inverser exactement les deux catégories -- la confusion la
+          plus fréquente sur ce point du programme. Un remboursement de
+          dette est un échange qui exige une égalité stricte (commutative) ;
+          une bourse répartie selon le mérite et le besoin exige une
+          proportionnalité (distributive).
+      - id: C
+        text: "Aristote ne distingue pas plusieurs formes de justice comme égalité : il n'existe, chez lui, qu'une seule notion de justice, applicable indifféremment à toute situation."
+        correct: false
+        misconception: mc.philo.droit_justice.formes-justice-non-distinguees
+        feedback: >
+          C'est nier la distinction centrale d'Aristote : il identifie
+          précisément deux formes d'égalité -- arithmétique (commutative) et
+          proportionnelle (distributive) -- réservées chacune à un type de
+          situation différent.
+      - id: D
+        text: "Le remboursement relève de la justice commutative (égalité arithmétique stricte, quel que soit le statut des parties) ; la bourse relève de la justice distributive (égalité proportionnelle au mérite et au besoin)."
+        correct: true
+    correct_feedback: >
+      La justice commutative applique une égalité stricte, indépendante des
+      personnes, aux rapports d'échange ou de réparation. La justice
+      distributive applique une égalité proportionnelle au mérite ou au
+      besoin, à la répartition de biens communs entre plusieurs membres
+      d'une communauté.
+    solution: |
+      **Justice commutative :** égalité arithmétique stricte -- ce qu'on doit
+      rendre égale exactement ce qu'on a reçu, quel que soit le statut des
+      parties.
+
+      **Justice distributive :** égalité proportionnelle (géométrique) --
+      chacun reçoit une part proportionnelle à son mérite, sa contribution ou
+      son besoin.
+
+      **Pourquoi il faut les deux :** appliquer l'égalité stricte à une
+      répartition de biens communs, ou la proportionnalité à un simple
+      échange entre deux parties, produirait dans les deux cas un résultat
+      absurde -- chaque principe est réservé à son domaine propre.
+
+  - id: DRJ-5
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: philo_droit_justice
+    tags: [rawls, voile_ignorance, position_originelle]
+    primary_misconception: mc.philo.droit_justice.voile-ignorance-mecanisme-mal-compris
+    stem: >
+      Pourquoi, selon Rawls, placer les participants de la position
+      originelle derrière un « voile d'ignorance » permet-il de choisir des
+      principes de justice impartiaux ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce qu'ignorant la place qu'ils occuperont une fois le voile levé, les participants choisissent rationnellement des principes acceptables même dans la pire position -- d'où la priorité donnée aux plus désavantagés."
+        correct: true
+      - id: B
+        text: "Parce que le voile d'ignorance dissimulerait en permanence aux citoyens, une fois la société bien en place et les principes appliqués, l'existence même des profondes inégalités sociales et économiques qui subsistent malgré tout autour d'eux."
+        correct: false
+        misconception: mc.philo.droit_justice.voile-ignorance-mecanisme-mal-compris
+        feedback: >
+          Le voile d'ignorance ne porte que sur la situation hypothétique de
+          choix des principes, dans la position originelle -- une fois le
+          voile levé, chacun retrouve parfaitement conscience de sa situation
+          réelle et des inégalités existantes. Ce n'est pas un dispositif de
+          dissimulation permanente.
+      - id: C
+        text: "Parce qu'il garantit que tous les individus, dans la société réelle une fois les principes appliqués, disposeront exactement des mêmes richesses."
+        correct: false
+        misconception: mc.philo.droit_justice.principe-difference-mal-compris
+        feedback: >
+          C'est confondre le voile d'ignorance avec une exigence d'égalité
+          stricte des richesses. Le principe de différence de Rawls admet au
+          contraire des inégalités, à condition qu'elles bénéficient aux plus
+          désavantagés -- ce n'est pas un égalitarisme absolu des résultats.
+      - id: D
+        text: "Parce qu'il sert à cacher les principes de justice choisis aux citoyens ordinaires, afin que seuls des experts puissent les élaborer et les appliquer."
+        correct: false
+        misconception: mc.philo.droit_justice.voile-ignorance-mecanisme-mal-compris
+        feedback: >
+          Le voile d'ignorance porte sur ce que les participants savent de
+          leur PROPRE position, pas sur le contenu des principes choisis --
+          ceux-ci sont, au contraire, censés être publics et connus de tous
+          une fois adoptés.
+    correct_feedback: >
+      Ignorer sa propre place future rend rationnel de choisir des principes
+      acceptables même dans la position la moins enviable -- c'est ce
+      mécanisme, et non un simple souci moral abstrait, qui pousse à protéger
+      en priorité le sort des plus désavantagés.
+    solution: |
+      **Le mécanisme :** ne connaissant pas sa future place, un participant
+      ne peut pas choisir des règles qui l'avantagent lui en particulier --
+      la seule stratégie rationnelle est de choisir des principes tolérables
+      quelle que soit la place occupée.
+
+      **Ce que cela produit :** une priorité donnée à la protection des
+      moins avantagés (principe de différence), pas une égalité stricte des
+      richesses.
+
+      **Ce qu'il ne faut pas confondre :** le voile d'ignorance est une
+      expérience de pensée pour choisir des principes -- pas une description
+      de la vie en société une fois ces principes adoptés, ni un dispositif
+      de secret entourant les principes eux-mêmes.
+
+  - id: DRJ-6
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: philo_droit_justice
+    tags: [legalite, legitimite, kelsen, weber]
+    primary_misconception: mc.philo.droit_justice.faux-dilemme-legalite-justice
+    stem: >
+      En quel sens peut-on dire qu'une loi légale n'est pas automatiquement
+      légitime ?
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est impossible : une loi légale, du seul fait qu'elle aurait été votée et promulguée dans les formes prescrites, serait nécessairement reconnue comme pleinement légitime par l'ensemble de ceux qu'elle prétend gouverner."
+        correct: false
+        misconception: mc.philo.droit_justice.faux-dilemme-legalite-justice
+        feedback: >
+          C'est précisément l'écart que la leçon établit qui est ici nié : la
+          légalité (conformité procédurale) et la légitimité (reconnaissance
+          comme fondée) sont deux propriétés distinctes, qui coïncident
+          souvent mais pas toujours.
+      - id: B
+        text: "C'est impossible dans l'autre sens : une loi légitime est forcément illégale, puisque la légitimité s'oppose par nature à toute procédure formelle."
+        correct: false
+        misconception: mc.philo.droit_justice.legalite-legitimite-mutuellement-exclusives
+        feedback: >
+          Légalité et légitimité ne sont pas mutuellement exclusives : la
+          plupart des lois légitimes sont aussi parfaitement légales.
+          L'écart possible entre les deux ne signifie pas qu'elles
+          s'opposent systématiquement, seulement qu'elles ne coïncident pas
+          nécessairement.
+      - id: C
+        text: "Une loi peut respecter parfaitement la procédure requise (légalité) sans être reconnue comme fondée ni méritant l'obéissance (légitimité) : la régularité de la forme ne garantit jamais la justice du contenu."
+        correct: true
+      - id: D
+        text: "La légitimité d'une loi se mesure uniquement à sa popularité dans les sondages d'opinion au moment de son vote."
+        correct: false
+        misconception: mc.philo.droit_justice.critere-de-validite-mal-identifie
+        feedback: >
+          Réduire la légitimité à la seule popularité d'opinion manque ce qui
+          est réellement en jeu : la reconnaissance d'une loi comme fondée en
+          droit ou en justice (cf. Rousseau et Weber, leçon « L'État », chapitre 6),
+          pas un simple sondage à un instant donné.
+    correct_feedback: >
+      La légalité se vérifie par la procédure ; la légitimité engage un
+      jugement sur le contenu et sur la reconnaissance effective par ceux qui
+      doivent obéir. Une loi peut donc traverser sans accroc toute la
+      procédure requise et rester perçue comme profondément injustifiée dans
+      ce qu'elle ordonne ou permet.
+    solution: |
+      **Légalité :** conformité aux règles de production du droit en
+      vigueur -- le critère procédural de Kelsen (chapitre 4).
+
+      **Légitimité :** reconnaissance d'un pouvoir ou d'une loi comme fondés,
+      méritant l'obéissance -- cf. Rousseau (force/droit) et Weber (monopole
+      de la violence physique légitime), leçon « L'État », chapitre 6.
+
+      **Pourquoi l'écart est possible :** la légalité ne porte que sur la
+      forme ; la légitimité engage un jugement sur le contenu et son
+      acceptation par ceux qui obéissent -- les deux coïncident souvent, mais
+      pas nécessairement.
+
+  - id: DRJ-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: philo_droit_justice
+    tags: [comprehension_faits, droit_justice]
+    primary_misconception: mc.philo.droit_justice.silence-loi-confondu-vice-procedure
+    stem: >
+      Dans la situation de l'usine et de la rivière (chapitre 1), pourquoi le
+      tribunal rejette-t-il la plainte des riverains ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce qu'aucune réglementation n'interdisait, au moment des faits, le rejet de ce produit chimique précis -- ce n'est pas une loi violée puis ignorée, mais un silence de la loi."
+        correct: true
+      - id: B
+        text: "Parce que le tribunal considère que les riverains n'ont subi, dans les faits, aucun dommage réel, malgré les éléments du dossier et les témoignages recueillis auprès des familles concernées."
+        correct: false
+        misconception: mc.philo.droit_justice.dommage-r0-mal-lu
+        feedback: >
+          Le texte établit au contraire un dommage réel (eau non potable,
+          enfants malades) ; le rejet de la plainte porte sur la conformité
+          légale, pas sur un déni du dommage constaté.
+      - id: C
+        text: "Parce qu'une loi interdisait bien ce rejet, mais le tribunal a jugé cette loi trop sévère pour l'appliquer."
+        correct: false
+        misconception: mc.philo.droit_justice.fait-invente-hors-texte
+        feedback: >
+          Contredit l'énoncé -- aucune loi n'existait sur ce point précis ;
+          prêter au tribunal le pouvoir d'écarter une loi existante par
+          jugement de sévérité, c'est lui attribuer un rôle qu'il n'exerce
+          jamais ici.
+      - id: D
+        text: "Parce que l'usine, bien qu'ayant enfreint une loi, a pu invoquer un vice de procédure pour échapper à la condamnation."
+        correct: false
+        misconception: mc.philo.droit_justice.silence-loi-confondu-vice-procedure
+        feedback: >
+          Ce n'est pas un vice de procédure qui explique le rejet, mais
+          l'absence totale de règle applicable au moment des faits -- pas un
+          problème technique, un silence de la loi.
+    correct_feedback: >
+      Le tribunal a examiné le dossier avec rigueur et conclu qu'aucune
+      règle en vigueur n'avait été violée : le produit rejeté n'était soumis,
+      au moment des faits, à aucune limite légale -- ce silence, pas une
+      erreur de procédure, nourrit toute la réflexion de la leçon.
+    solution: |
+      **Les faits établis par le chapitre 1 :** l'usine respecte toute la
+      réglementation en vigueur ; un dommage réel survient pourtant ; le
+      produit rejeté n'était soumis, à l'époque, à aucune limite légale.
+
+      **Ce que conclut le tribunal :** aucune loi n'a été violée -- la
+      décision repose sur un silence de la loi, pas sur un vice de
+      procédure ni sur un déni du dommage.
+
+      **Pourquoi cela importe :** ce silence, et le sentiment d'injustice
+      qu'il provoque malgré une décision irréprochable en droit, ouvre la
+      tension centrale de la leçon.
+
+  - id: DRJ-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: philo_droit_justice
+    tags: [nuremberg, argument_legaliste]
+    primary_misconception: mc.philo.droit_justice.argument-r0-mal-identifie
+    stem: >
+      Pourquoi le texte du chapitre 1 évoque-t-il l'argument invoqué par certains
+      responsables lors des procès de Nuremberg ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Pour montrer que les juges de Nuremberg ont eux-mêmes appliqué le droit positif sans tenir compte de la justice, exactement comme le tribunal de la rivière l'avait déjà fait avant eux, sans qu'aucune voix ne s'élève pour le leur reprocher."
+        correct: false
+        misconception: mc.philo.droit_justice.argument-r0-mal-identifie
+        feedback: >
+          Ce n'est pas le raisonnement des juges qui est en cause, mais
+          l'argument de défense invoqué par certains accusés -- symétrique à
+          la première réponse envisagée face au tribunal du chapitre 1.
+      - id: B
+        text: "Pour montrer que si la seule conformité à la loi suffisait toujours à excuser une décision, aucune loi ne pourrait jamais être jugée injuste de l'extérieur -- ce qui semble pourtant excessif."
+        correct: true
+      - id: C
+        text: "Pour montrer que le droit positif et le droit naturel désignent, en réalité, exactement la même chose en temps de guerre."
+        correct: false
+        misconception: mc.philo.droit_justice.paires-notions-confondues-synonymes
+        feedback: >
+          Confond deux notions distinctes (droit positif / droit naturel,
+          introduites au chapitre 3) que rien dans le texte ne vient assimiler
+          l'une à l'autre.
+      - id: D
+        text: "Pour prouver qu'aucun tribunal, au XXe siècle, n'a jamais réellement respecté le droit en vigueur."
+        correct: false
+        misconception: mc.philo.droit_justice.generalisation-abusive-exemple-ponctuel
+        feedback: >
+          Généralisation injustifiée, sans rapport avec l'argument précis
+          du texte, qui porte sur un cas ciblé : la défense fondée sur la
+          seule légalité.
+    correct_feedback: >
+      L'exemple pousse la première réponse à sa limite : si la conformité à
+      la loi suffisait toujours à excuser, on se priverait de tout moyen de
+      juger, depuis l'extérieur, qu'une loi a pu être injuste -- ce que
+      l'histoire rend difficile à accepter sans réserve.
+    solution: |
+      **L'argument évoqué :** certains accusés ont invoqué avoir « seulement
+      appliqué une loi en vigueur ».
+
+      **Ce que cet argument, poussé à bout, impliquerait :** si la
+      conformité légale suffisait toujours à excuser, aucune loi ne
+      pourrait jamais être jugée injuste depuis l'extérieur.
+
+      **Le rôle de l'exemple dans le chapitre 1 :** il ne tranche rien, il montre
+      pourquoi la première réponse, prise au sérieux, pose un problème.
+
+  - id: DRJ-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: philo_droit_justice
+    tags: [sentiment_justice, tribunal]
+    primary_misconception: mc.philo.droit_justice.faux-dilemme-legalite-justice
+    stem: >
+      Quelle objection le texte du chapitre 1 adresse-t-il à la position selon
+      laquelle un tribunal devrait toujours faire prévaloir son propre
+      sentiment de justice sur la loi écrite ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Cette position est absurde parce qu'aucun tribunal, en pratique, ne dispose du pouvoir de refuser d'appliquer une loi votée."
+        correct: false
+        misconception: mc.philo.droit_justice.argument-r0-mal-identifie
+        feedback: >
+          Ce n'est pas un argument sur les pouvoirs institutionnels réels
+          des tribunaux, mais un argument sur ce qui distinguerait encore
+          un jugement de tribunal d'une simple opinion privée.
+      - id: B
+        text: "Cette position revient à confondre le droit positif avec le droit naturel, deux notions qui, en réalité, désignent la même chose."
+        correct: false
+        misconception: mc.philo.droit_justice.paires-notions-confondues-synonymes
+        feedback: >
+          Ni la distinction en jeu à ce stade du texte (elle n'est
+          introduite qu'au chapitre 3), ni une affirmation correcte -- droit
+          positif et droit naturel ne désignent pas la même chose.
+      - id: C
+        text: "Si chacun peut invoquer son sentiment personnel de justice pour refuser d'appliquer une loi, plus rien ne distingue alors un tribunal d'une simple opinion privée parmi d'autres."
+        correct: true
+      - id: D
+        text: "Cette position est vraie sans réserve : le juste doit toujours l'emporter sur le légal, quelles qu'en soient les conséquences pour la sécurité juridique et la prévisibilité des décisions futures."
+        correct: false
+        misconception: mc.philo.droit_justice.faux-dilemme-legalite-justice
+        feedback: >
+          C'est l'inverse de l'objection du texte -- celui-ci ne valide pas
+          sans réserve cette position, il en pointe la difficulté (à quoi
+          servirait-il encore d'écrire des lois ?).
+    correct_feedback: >
+      Le texte objecte que si le sentiment personnel de justice suffisait
+      toujours à écarter une loi, un tribunal ne se distinguerait plus
+      d'une opinion privée parmi d'autres -- et l'écriture même des lois
+      perdrait alors son sens.
+    solution: |
+      **La seconde réponse :** le tribunal aurait manqué sa mission en ne
+      réparant pas un tort réel.
+
+      **L'objection que le texte lui adresse :** au nom de quoi juger une
+      loi injuste, si ce n'est un sentiment personnel ? Et si ce sentiment
+      suffit toujours, qu'est-ce qui distingue encore un tribunal d'une
+      opinion parmi d'autres ?
+
+      **Ce que cela prépare :** la nécessité, développée dès les chapitres 2 à 3, d'un
+      critère de justice qui ne soit pas un simple sentiment individuel.
+
+  - id: DRJ-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: philo_droit_justice
+    tags: [droit_justice, erreur_a_eviter]
+    primary_misconception: mc.philo.droit_justice.generalisation-abusive-exemple-ponctuel
+    stem: >
+      Un élève conclut de l'exemple de l'usine et de la rivière (chapitre 1) que :
+      « on voit bien que le droit ne sert à rien, il vaudrait mieux n'avoir
+      aucune loi écrite. » Que peut-on lui objecter, du point de vue de la
+      leçon ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Cette conclusion est correcte : la leçon montre précisément que toute loi écrite finit, tôt ou tard, par produire une injustice, et qu'aucune société n'a jamais eu besoin d'un droit positif écrit pour vivre en paix et régler ses conflits de façon équitable entre ses membres."
+        correct: false
+        misconception: mc.philo.droit_justice.generalisation-abusive-exemple-ponctuel
+        feedback: >
+          Généralise abusivement un exemple ponctuel (le silence de la loi
+          sur un produit chimique précis) en une loi universelle sur
+          toutes les lois écrites, ce que rien dans la leçon n'établit.
+      - id: B
+        text: "Cette conclusion est fausse, car le tribunal a en réalité commis une erreur de droit en rejetant la plainte."
+        correct: false
+        misconception: mc.philo.droit_justice.injustice-ressentie-implique-erreur-juridique
+        feedback: >
+          Contredit le texte, qui établit explicitement que « le tribunal
+          n'a commis aucune erreur de droit » -- l'erreur ici est de croire
+          que le sentiment d'injustice révèle forcément une faute
+          juridique.
+      - id: C
+        text: "Cette conclusion est fausse, car le droit positif et la justice désignent, par définition, exactement la même chose."
+        correct: false
+        misconception: mc.philo.droit_justice.paires-notions-confondues-synonymes
+        feedback: >
+          C'est l'erreur inverse -- confondre droit et justice --, alors
+          que le chapitre 2 établit précisément que ce sont deux notions distinctes,
+          qui ne coïncident pas automatiquement.
+      - id: D
+        text: "Le droit reste, dans l'immense majorité des cas, l'instrument par lequel une société réalise la justice et se protège de l'arbitraire ; l'exemple montre seulement que droit positif et justice ne coïncident pas automatiquement, pas que le droit est inutile."
+        correct: true
+    correct_feedback: >
+      L'« erreur à éviter » du chapitre 2 est explicite : le droit protège contre
+      l'arbitraire et permet de trancher les conflits sans recourir à la
+      force privée -- l'exemple du chapitre 1 montre un écart possible entre droit
+      et justice, pas l'inutilité du droit en général.
+    solution: |
+      **Ce que le chapitre 1 montre réellement :** un cas où droit positif et justice
+      ne coïncident pas -- pas une preuve que le droit, en général, ne sert
+      à rien.
+
+      **Le rôle protecteur du droit :** fixer des règles connues de tous,
+      trancher les conflits sans recourir à la force privée.
+
+      **L'erreur à éviter, nommément :** généraliser un exemple ponctuel de
+      désaccord en un rejet global du droit écrit.
+
+  - id: DRJ-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: philo_droit_justice
+    tags: [droit_justice, mecanisme_r0]
+    primary_misconception: mc.philo.droit_justice.silence-loi-confondu-vice-procedure
+    stem: >
+      Selon le mécanisme précis identifié au chapitre 2, sur quoi porte exactement
+      le sentiment d'injustice que la plupart des élèves éprouvent face à
+      la décision du tribunal (chapitre 1) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Sur le contenu de la règle elle-même, ou plus précisément sur son silence -- le fait qu'aucune règle n'ait, à ce moment-là, protégé la rivière et le village -- pas sur une mauvaise application du droit par le tribunal."
+        correct: true
+      - id: B
+        text: "Sur une erreur de procédure que le tribunal aurait commise en examinant le dossier, en ne convoquant pas suffisamment d'experts indépendants pour établir clairement les faits avant de statuer sur la plainte des riverains."
+        correct: false
+        misconception: mc.philo.droit_justice.silence-loi-confondu-vice-procedure
+        feedback: >
+          Le texte établit au contraire que le tribunal n'a commis aucune
+          erreur de droit ; le sentiment d'injustice ne porte donc pas sur
+          la procédure suivie, mais sur le contenu (ou le silence) de la
+          règle.
+      - id: C
+        text: "Sur le montant du préjudice subi par les riverains, qui serait jugé insuffisant par le tribunal."
+        correct: false
+        misconception: mc.philo.droit_justice.dommage-r0-mal-lu
+        feedback: >
+          Le texte ne dit rien d'un désaccord sur le montant du préjudice
+          -- le tribunal rejette la plainte parce qu'aucune règle n'a été
+          violée, indépendamment de l'ampleur du dommage constaté.
+      - id: D
+        text: "Sur le fait que l'usine aurait menti aux experts lors de l'examen du dossier."
+        correct: false
+        misconception: mc.philo.droit_justice.fait-invente-hors-texte
+        feedback: >
+          Rien dans le texte n'évoque un mensonge de l'usine -- le dossier
+          est examiné « avec le plus grand sérieux » et le fait déterminant
+          est l'absence de règle applicable, pas une fraude.
+    correct_feedback: >
+      Le mécanisme précis du chapitre 2 : le tribunal est irréprochable sur le plan
+      juridique, mais le sentiment d'injustice porte sur le CONTENU de la
+      règle -- ou plutôt sur son silence -- jugé à l'aune d'un critère qui
+      n'est pas lui-même une loi.
+    solution: |
+      **Ce qui est irréprochable :** l'application du droit par le
+      tribunal -- aucune règle en vigueur n'a été violée.
+
+      **Ce qui reste discutable :** le contenu de la règle, ou son silence
+      sur ce produit chimique précis.
+
+      **Ce que cela révèle :** on juge la loi (et son silence) à l'aune
+      d'un critère distinct de la loi elle-même -- objet des chapitres
+      suivants.
+
+  - id: DRJ-12
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: philo_droit_justice
+    tags: [droit_positif, droit_naturel, jusnaturalisme]
+    primary_misconception: mc.philo.droit_justice.droit-naturel-mal-defini
+    stem: >
+      En quoi l'esclavage, « parfaitement conforme au droit positif alors en
+      vigueur » à certaines époques (chapitre 3), illustre-t-il la distinction
+      entre droit positif et droit naturel ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il montre que le droit naturel, tout comme le droit positif, varie selon les pays et les époques, et qu'aucun principe de justice universel ne pourrait donc jamais exister indépendamment des lois effectivement écrites, ce qui rendrait incohérente jusqu'à l'idée même de droits universels."
+        correct: false
+        misconception: mc.philo.droit_justice.droit-naturel-mal-defini
+        feedback: >
+          C'est l'inverse de la thèse jusnaturaliste -- c'est précisément
+          le droit positif qui varie ; le droit naturel est présenté comme
+          universel, valable indépendamment des lois écrites.
+      - id: B
+        text: "Il montre qu'une pratique peut être légale au regard du droit positif d'une époque tout en violant des principes jusnaturalistes valables indépendamment de toute loi écrite : sa légalité passée ne prouve jamais sa conformité au droit naturel."
+        correct: true
+      - id: C
+        text: "Il montre que l'esclavage n'a, en réalité, jamais été légal nulle part, contrairement à ce que prétend le texte."
+        correct: false
+        misconception: mc.philo.droit_justice.contredit-fait-etabli-par-texte
+        feedback: >
+          Contredit directement le texte, qui affirme explicitement que
+          l'esclavage a été, à certaines époques et dans certains pays,
+          parfaitement conforme au droit positif alors en vigueur.
+      - id: D
+        text: "Il montre que le droit positif, contrairement au droit naturel, ne peut jamais être injuste puisqu'il est toujours voté par une autorité légitime."
+        correct: false
+        misconception: mc.philo.droit_justice.faux-dilemme-legalite-justice
+        feedback: >
+          Confond légalité et justice -- la leçon établit au contraire
+          qu'une pratique légale (l'esclavage, en son temps) peut être
+          jugée profondément injuste au regard d'un critère distinct.
+    correct_feedback: >
+      L'esclavage était, en son temps et en certains lieux, parfaitement
+      conforme au droit positif -- ce que le chapitre 3 en tire, c'est que la légalité
+      passée d'une pratique ne prouve rien quant à sa conformité à des
+      principes que la tradition jusnaturaliste juge universels.
+    solution: |
+      **Le fait rapporté par le chapitre 3 :** l'esclavage a été, à certaines époques,
+      conforme au droit positif en vigueur.
+
+      **Ce que le jusnaturalisme en tire :** la légalité d'une pratique ne
+      garantit pas sa conformité à des principes de justice universels et
+      indépendants des lois écrites.
+
+      **L'erreur à ne pas commettre :** ni nier le fait, ni confondre
+      légalité (droit positif) et justice (mesure jusnaturaliste).
+
+  - id: DRJ-13
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: philo_droit_justice
+    tags: [droit_naturel, locke, jusnaturalisme]
+    primary_misconception: mc.philo.droit_justice.droit-naturel-mal-defini
+    stem: >
+      Pourquoi peut-on dire que la position de Locke sur l'État (leçon
+      « L'État », chapitre 4) illustre une logique jusnaturaliste ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que Locke soutient que c'est l'État, par le contrat social, qui crée intégralement les droits des individus, lesquels n'existaient pas avant lui ni même dans l'état de nature qui aurait précédé ce contrat fondateur."
+        correct: false
+        misconception: mc.philo.droit_justice.droit-naturel-mal-defini
+        feedback: >
+          Inverse exactement la thèse de Locke -- pour lui, les droits
+          naturels (vie, liberté, propriété) existent déjà dans l'état de
+          nature, avant tout contrat ; l'État les protège, il ne les crée
+          pas.
+      - id: B
+        text: "Parce que Locke identifie purement et simplement le droit naturel aux lois de la nature physique, comme la loi de la gravitation."
+        correct: false
+        misconception: mc.philo.droit_justice.droit-naturel-mal-defini
+        feedback: >
+          Confusion classique entre deux emplois du mot « loi » -- une loi
+          physique décrit ce qui se passe nécessairement, le droit naturel
+          chez Locke prescrit des principes de justice.
+      - id: C
+        text: "Parce que Locke soutient que des droits naturels (vie, liberté, propriété) existent déjà dans l'état de nature, avant tout contrat et toute loi positive -- l'État ne les crée pas, il les protège."
+        correct: true
+      - id: D
+        text: "Parce que Locke nie l'existence de tout droit antérieur au contrat social, qu'il soit naturel ou positif."
+        correct: false
+        misconception: mc.philo.droit_justice.droit-naturel-mal-defini
+        feedback: >
+          Contredit directement la thèse de Locke, pour qui des droits
+          naturels précèdent au contraire tout contrat et toute loi
+          positive.
+    correct_feedback: >
+      Locke fait précéder les droits naturels (vie, liberté, propriété) à
+      tout contrat : l'État ne les invente pas, il les protège -- exactement
+      la logique jusnaturaliste, où le droit naturel précède et mesure le
+      droit positif.
+    solution: |
+      **La thèse de Locke :** des droits naturels existent déjà dans
+      l'état de nature, avant l'État et avant toute loi positive.
+
+      **Le rôle de l'État chez Locke :** protéger ces droits préexistants,
+      pas les créer.
+
+      **Pourquoi c'est jusnaturaliste :** le droit naturel précède et
+      mesure le droit positif, exactement la structure que le chapitre 3 définit.
+
+  - id: DRJ-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_droit_justice
+    tags: [kelsen, positivisme_juridique, nuremberg]
+    primary_misconception: mc.philo.droit_justice.debat-positivisme-jusnaturalisme-mal-restitue
+    stem: >
+      Que répond, en substance, un partisan du positivisme juridique à
+      l'objection jusnaturaliste selon laquelle certaines lois invoquées à
+      Nuremberg auraient dû être jugées invalides pour immoralité extrême ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le positivisme n'a, en réalité, aucune réponse à cette objection et l'accepte pleinement, en abandonnant toute prétention à séparer le droit de la morale, ce qui reviendrait à donner raison, sans condition, à la tradition jusnaturaliste sur ce point précis, sans plus rien lui opposer."
+        correct: false
+        misconception: mc.philo.droit_justice.debat-positivisme-jusnaturalisme-mal-restitue
+        feedback: >
+          Le texte rapporte au contraire une réponse précise du positivisme
+          à cette objection -- il ne l'accepte pas sans discussion.
+      - id: B
+        text: "Le positivisme répond que ces lois n'étaient de toute façon pas valides, puisqu'elles violaient des principes moraux évidents."
+        correct: false
+        misconception: mc.philo.droit_justice.debat-positivisme-jusnaturalisme-mal-restitue
+        feedback: >
+          C'est la réponse jusnaturaliste (celle de Radbruch), pas la
+          réponse positiviste -- attribuer cette position à Kelsen inverse
+          exactement les deux camps du débat.
+      - id: C
+        text: "Le positivisme répond que la question ne se pose pas, car aucune loi n'a jamais été votée en Allemagne durant cette période."
+        correct: false
+        misconception: mc.philo.droit_justice.contredit-fait-etabli-par-texte
+        feedback: >
+          Contredit le texte, qui rapporte que plusieurs responsables ont
+          invoqué des lois « votées, promulguées, parfaitement valides au
+          sens procédural du terme ».
+      - id: D
+        text: "Accepter un tel critère reviendrait à réintroduire, par la porte de derrière, l'incertitude que la séparation du droit et de la morale voulait précisément éviter -- qui déciderait alors du « seuil d'injustice extrême », sinon un jugement moral tout aussi contestable ?"
+        correct: true
+    correct_feedback: >
+      Le positivisme objecte que fixer un « seuil d'injustice extrême »
+      revient à réintroduire un jugement moral incertain -- exactement ce
+      que la séparation du droit et de la morale visait à éviter.
+    solution: |
+      **L'objection jusnaturaliste :** au-delà d'un certain seuil
+      d'injustice, une « loi » cesserait de mériter le nom de droit.
+
+      **La réponse positiviste :** qui déciderait de ce seuil, sinon un
+      jugement moral aussi contestable que ceux qu'on voulait éviter ?
+
+      **Le débat reste ouvert :** chaque camp reproche à l'autre de
+      désarmer, soit la sécurité juridique, soit la possibilité de juger
+      les pires crimes commis au nom de la loi.
+
+  - id: DRJ-15
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_droit_justice
+    tags: [kelsen, positivisme_juridique]
+    primary_misconception: mc.philo.droit_justice.positivisme-separation-mal-comprise
+    stem: >
+      Que faut-il comprendre de la thèse de Kelsen sur la validité
+      juridique, au sujet de son propre jugement moral sur les lois ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Kelsen peut, à titre personnel, juger une loi injuste ; sa thèse est seulement que ce jugement moral n'affecte pas la validité JURIDIQUE de la norme -- le positivisme est une thèse méthodologique, pas une apologie du contenu des lois qu'il déclare valides."
+        correct: true
+      - id: B
+        text: "Kelsen soutient que toute loi valide en droit est, par voie de conséquence, nécessairement bonne moralement, puisque validité juridique et validité morale se confondent entièrement chez lui, sans qu'aucune distinction ne subsiste jamais entre ces deux registres bien différents."
+        correct: false
+        misconception: mc.philo.droit_justice.positivisme-separation-mal-comprise
+        feedback: >
+          Contredit directement la thèse de Kelsen, dont le geste central
+          est justement de séparer validité juridique et évaluation
+          morale -- les deux ne se confondent jamais chez lui.
+      - id: C
+        text: "Kelsen rejette toute possibilité de porter un jugement moral sur une loi, y compris à titre personnel et en dehors de l'analyse juridique."
+        correct: false
+        misconception: mc.philo.droit_justice.positivisme-separation-mal-comprise
+        feedback: >
+          Exactement l'erreur à éviter signalée par la leçon -- la thèse de
+          Kelsen est méthodologique et ne l'empêche nullement de juger, à
+          titre personnel, une loi injuste.
+      - id: D
+        text: "Kelsen soutient qu'une loi ne peut être valide juridiquement que si elle a d'abord été jugée bonne moralement par le législateur qui l'a votée."
+        correct: false
+        misconception: mc.philo.droit_justice.debat-positivisme-jusnaturalisme-mal-restitue
+        feedback: >
+          Réintroduit précisément le critère moral que Kelsen exclut de la
+          validité juridique -- sa théorie est purement procédurale.
+    correct_feedback: >
+      La thèse de Kelsen est méthodologique : séparer l'analyse juridique
+      de l'évaluation morale, pas nier toute possibilité de juger, à titre
+      personnel, une loi injuste.
+    solution: |
+      **Ce que Kelsen sépare :** la validité JURIDIQUE d'une norme
+      (procédurale) et son évaluation MORALE (son contenu, sa justice).
+
+      **Ce que cela n'empêche pas :** Kelsen, comme n'importe qui, peut
+      juger une loi injuste à titre personnel.
+
+      **L'erreur à éviter, nommément :** présenter Kelsen comme approuvant
+      moralement les lois injustes qu'il déclare valides.
+
+  - id: DRJ-16
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: philo_droit_justice
+    tags: [aristote, justice_commutative, justice_distributive]
+    primary_misconception: mc.philo.droit_justice.commutative-distributive-inversees
+    stem: >
+      Deux voisins partagent à parts strictement égales le coût de
+      réparation d'un mur mitoyen endommagé par une tempête, indépendamment
+      de leurs revenus respectifs. Dans une coopérative agricole, les
+      bénéfices annuels sont répartis entre les membres selon le nombre
+      d'heures travaillées par chacun. Comment qualifier, respectivement,
+      ces deux répartitions selon Aristote ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux relèvent de la justice distributive, puisque dans les deux cas plusieurs personnes touchent une part identique."
+        correct: false
+        misconception: mc.philo.droit_justice.critere-justice-mal-identifie
+        feedback: >
+          Ce n'est pas le nombre de personnes ni l'identité formelle des
+          parts qui distingue les deux formes de justice, mais le TYPE de
+          rapport en jeu -- un échange strict (le mur) relève de la justice
+          commutative, pas distributive.
+      - id: B
+        text: "Le partage du mur relève de la justice commutative (égalité arithmétique stricte, dans un rapport entre deux parties) ; la répartition des bénéfices relève de la justice distributive (égalité proportionnelle à la contribution de chacun)."
+        correct: true
+      - id: C
+        text: "Le partage du mur relève de la justice distributive (proportionnelle aux revenus de chacun) ; la répartition des bénéfices relève de la justice commutative (égalité stricte, indépendamment des heures effectivement travaillées par chacun des membres)."
+        correct: false
+        misconception: mc.philo.droit_justice.commutative-distributive-inversees
+        feedback: >
+          Inverse exactement les deux catégories -- un partage à parts
+          strictement égales entre deux parties est un cas d'égalité
+          arithmétique (commutative), une répartition selon la contribution
+          est un cas d'égalité proportionnelle (distributive).
+      - id: D
+        text: "Aristote jugerait la répartition des bénéfices « plus juste » que le partage du mur, car elle tient compte du mérite de chacun."
+        correct: false
+        misconception: mc.philo.droit_justice.formes-justice-non-distinguees
+        feedback: >
+          Ce ne sont pas deux degrés d'une même échelle de justice --
+          l'« erreur à éviter » du chapitre 5 le précise : ce sont deux principes
+          adaptés à deux types de situations, ni l'un ni l'autre n'étant
+          « plus juste » en général.
+    correct_feedback: >
+      Le partage égal du mur, rapport strict entre deux parties, relève de
+      la justice commutative ; la répartition des bénéfices selon les
+      heures travaillées, entre plusieurs membres d'une communauté, relève
+      de la justice distributive.
+    solution: |
+      **Justice commutative :** égalité arithmétique stricte, dans un
+      rapport d'échange entre parties -- ici, le partage égal du mur.
+
+      **Justice distributive :** égalité proportionnelle à la
+      contribution, dans la répartition d'un bien commun -- ici, les
+      bénéfices selon les heures travaillées.
+
+      **Ce qu'il ne faut jamais dire :** que l'une des deux formes est
+      « plus juste » que l'autre -- chacune est réservée à son domaine
+      propre.
+
+  - id: DRJ-17
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: philo_droit_justice
+    tags: [aristote, justice_commutative, justice_distributive]
+    primary_misconception: mc.philo.droit_justice.formes-justice-non-distinguees
+    stem: >
+      Un partisan de l'égalité universelle propose d'appliquer, à toute
+      situation sans exception -- aussi bien à un remboursement de dette
+      qu'au partage des bénéfices d'une entreprise -- une seule et même
+      règle : une part strictement identique pour tous. Que répondrait
+      Aristote à cette proposition ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Aristote approuverait cette proposition, car l'égalité arithmétique stricte est, pour lui, le seul principe valable de justice, applicable à toute situation sans exception."
+        correct: false
+        misconception: mc.philo.droit_justice.formes-justice-non-distinguees
+        feedback: >
+          Nie la distinction centrale d'Aristote entre deux formes
+          d'égalité -- il n'existe pas, chez lui, un principe unique valable
+          pour toute situation, précisément parce que échange et
+          répartition obéissent à des logiques opposées.
+      - id: B
+        text: "Aristote répondrait que cette règle unique convient parfaitement à la répartition des biens communs entre plusieurs membres, mais qu'il faudrait au contraire moduler les remboursements de dettes selon le statut social et la fortune respective des parties."
+        correct: false
+        misconception: mc.philo.droit_justice.commutative-distributive-inversees
+        feedback: >
+          Inverse les deux domaines d'application -- c'est l'égalité
+          stricte qui convient à l'échange (remboursement) et la
+          proportionnalité qui convient à la répartition d'un bien commun,
+          pas l'inverse.
+      - id: C
+        text: "Appliquer l'égalité stricte à une répartition de biens communs entre contributions inégales produirait un résultat absurde -- c'est précisément pourquoi il faut deux principes distincts, chacun réservé à son domaine propre."
+        correct: true
+      - id: D
+        text: "Aristote répondrait que la justice distributive doit toujours l'emporter sur la justice commutative, car elle est fondée sur le mérite."
+        correct: false
+        misconception: mc.philo.droit_justice.formes-justice-non-distinguees
+        feedback: >
+          Établit un classement entre les deux formes de justice, ce que
+          l'« erreur à éviter » du chapitre 5 exclut explicitement -- ce ne sont
+          pas deux degrés d'une même échelle.
+    correct_feedback: >
+      Appliquer une règle unique à toute situation confondrait deux
+      logiques opposées : l'égalité stricte de l'échange et la
+      proportionnalité de la répartition -- c'est pourquoi Aristote
+      distingue deux principes, chacun réservé à son domaine.
+    solution: |
+      **Le mécanisme rappelé par le chapitre 5 :** appliquer l'égalité stricte à une
+      répartition de biens communs produit un résultat absurde ; appliquer
+      la proportionnalité à un simple échange produit un résultat tout
+      aussi absurde.
+
+      **Ce qui en découle :** deux principes distincts, chacun réservé à
+      son type de situation propre.
+
+      **L'erreur à éviter, une nouvelle fois :** croire qu'un seul principe
+      d'égalité pourrait, sans absurdité, s'appliquer à toute situation
+      indifféremment.
+
+  - id: DRJ-18
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: philo_droit_justice
+    tags: [rawls, position_originelle, voile_ignorance, utilitarisme]
+    primary_misconception: mc.philo.droit_justice.voile-ignorance-mecanisme-mal-compris
+    stem: >
+      Un élève affirme : « la position originelle de Rawls revient, au fond,
+      à demander à des individus qui connaissent déjà leur richesse et leur
+      situation de voter à la majorité les règles qu'ils préfèrent. » Que
+      peut-on objecter à cette présentation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle passe sous silence le mécanisme central du dispositif : derrière le voile d'ignorance, les participants ignorent leur propre position future ; ce n'est pas un vote entre intérêts déjà connus, mais un choix rationnel effectué dans l'ignorance de sa propre place."
+        correct: true
+      - id: B
+        text: "Elle est trompeuse, mais en un sens inverse : selon Rawls, les participants chercheraient avant tout à maximiser la richesse totale produite par la société dans son ensemble, sans se soucier le moins du monde de sa répartition entre les membres les plus désavantagés de cette société."
+        correct: false
+        misconception: mc.philo.droit_justice.principe-difference-mal-compris
+        feedback: >
+          C'est confondre la position originelle avec un raisonnement
+          utilitariste de maximisation globale. Rawls fait au contraire de
+          la protection des plus désavantagés une priorité (principe de
+          différence), précisément pour éviter qu'un gain global ne masque
+          le sort des moins bien lotis.
+      - id: C
+        text: "Elle est trompeuse pour une autre raison : la position originelle correspond en réalité à l'état de nature décrit par Hobbes, un état de guerre de tous contre tous précédant tout contrat."
+        correct: false
+        misconception: mc.philo.droit_justice.voile-ignorance-mecanisme-mal-compris
+        feedback: >
+          La position originelle de Rawls n'est pas l'état de nature
+          hobbesien : c'est une expérience de pensée construite pour
+          choisir des principes de justice de façon impartiale, pas la
+          description d'un état de guerre préexistant à toute règle.
+      - id: D
+        text: "Elle décrit en réalité fidèlement le dispositif de Rawls : c'est bien un vote majoritaire entre des intérêts déjà connus et opposés, ce qui constitue précisément l'originalité de sa théorie."
+        correct: false
+        misconception: mc.philo.droit_justice.voile-ignorance-mecanisme-mal-compris
+        feedback: >
+          C'est l'inverse : l'originalité du dispositif de Rawls tient
+          justement au fait que les participants ignorent leur position, ce
+          qui exclut tout vote fondé sur des intérêts déjà connus.
+    correct_feedback: >
+      Le point que l'élève manque, c'est le voile d'ignorance lui-même : en
+      ignorant sa future place, chaque participant est rationnellement
+      conduit à choisir des principes tolérables quelle que soit cette
+      place -- un mécanisme sans rapport avec un vote entre intérêts déjà
+      fixés.
+    solution: |
+      **Ce que l'élève confond :** un vote entre intérêts déjà connus
+      (majoritaire) et un choix rationnel effectué dans l'ignorance de sa
+      propre position (le voile d'ignorance).
+
+      **Pourquoi la différence compte :** connaître déjà sa position
+      inciterait à voter dans son propre intérêt ; l'ignorer force à
+      choisir des principes acceptables quelle que soit la place occupée.
+
+      **Ce qu'il ne faut pas non plus faire :** assimiler ce dispositif à
+      l'état de nature hobbesien, ni à un calcul utilitariste de
+      maximisation globale -- Rawls s'oppose explicitement aux deux.
+
+  - id: DRJ-19
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: philo_droit_justice
+    tags: [rawls, principe_difference, egale_liberte, priorite]
+    primary_misconception: mc.philo.droit_justice.principe-difference-mal-compris
+    stem: >
+      Un gouvernement adopte une réforme qui augmente fortement les revenus
+      des plus riches, en avançant que cette réforme produira, par
+      ruissellement, une très légère amélioration du niveau de vie des plus
+      pauvres. Que dirait, selon les deux principes de justice de Rawls, un
+      participant raisonnant depuis la position originelle sur une telle
+      réforme ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le principe de différence n'exige pas l'égalité stricte, mais que toute inégalité profite réellement aux plus désavantagés : si la réforme améliore, même modestement, leur sort et respecte l'égalité des chances, elle reste compatible avec ce principe."
+        correct: true
+      - id: B
+        text: "Une telle réforme serait automatiquement rejetée par Rawls, car le principe de différence interdit toute inégalité de richesse, aussi minime soit-elle pour les plus désavantagés."
+        correct: false
+        misconception: mc.philo.droit_justice.principe-difference-mal-compris
+        feedback: >
+          C'est confondre le principe de différence avec une exigence
+          d'égalité stricte des richesses. Rawls admet au contraire des
+          inégalités, à condition qu'elles bénéficient aux plus
+          désavantagés -- ce n'est pas un égalitarisme absolu des
+          résultats.
+      - id: C
+        text: "Une telle réforme serait automatiquement acceptée, car le principe d'égale liberté n'a, chez Rawls, absolument aucune priorité sur le principe de différence -- seul compte, au bout du compte, l'effet mesurable sur le niveau de vie des plus désavantagés de la société."
+        correct: false
+        misconception: mc.philo.droit_justice.priorite-principes-rawls-inversee
+        feedback: >
+          Rawls ordonne les deux principes par priorité : le principe
+          d'égale liberté prime sur le principe de différence, il ne
+          s'efface pas devant lui. Une réforme qui restreindrait les
+          libertés fondamentales ne serait donc pas automatiquement
+          acceptée au seul nom d'un léger bénéfice économique.
+      - id: D
+        text: "Une telle réforme serait jugée juste par Rawls dès lors que la richesse totale produite par la société augmente, même si les plus pauvres n'en profitent pas du tout."
+        correct: false
+        misconception: mc.philo.droit_justice.principe-difference-mal-compris
+        feedback: >
+          C'est un critère utilitariste de maximisation globale, étranger
+          au principe de différence : une inégalité qui n'améliore en rien
+          le sort des plus désavantagés reste injustifiée, quelle que soit
+          la richesse totale produite.
+    correct_feedback: >
+      Le principe de différence évalue une inégalité à son effet réel sur
+      les plus désavantagés, pas à son ampleur ni à la richesse totale
+      produite -- une amélioration même modeste peut, sous condition
+      d'égalité des chances, suffire à la justifier.
+    solution: |
+      **Le principe de différence :** une inégalité est acceptable
+      seulement si elle profite aux plus désavantagés et si les postes
+      restent ouverts à tous à égalité des chances.
+
+      **Ce qu'il ne faut pas en conclure :** ni qu'il interdit toute
+      inégalité (égalitarisme strict), ni qu'un gain global suffit à la
+      justifier (logique utilitariste).
+
+      **Ce qu'il ne faut pas oublier :** le principe d'égale liberté garde
+      la priorité sur le principe de différence -- ce dernier ne l'efface
+      jamais.
+
+  - id: DRJ-20
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: philo_droit_justice
+    tags: [legalite, legitimite, desobeissance, erreur_a_eviter]
+    primary_misconception: mc.philo.droit_justice.legitimite-justifie-desobeissance-automatique
+    stem: >
+      Un élève conclut de la distinction entre légalité et légitimité
+      qu'« une loi légale ne mérite jamais l'obéissance dès lors qu'elle me
+      paraît personnellement illégitime. » Que peut-on lui objecter, du
+      point de vue de la leçon ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La distinction sert à ANALYSER pourquoi un décalage entre légalité et légitimité est possible, pas à justifier automatiquement la désobéissance individuelle à toute loi qu'on juge personnellement injuste -- question distincte, plus large, que la leçon ne tranche pas ici."
+        correct: true
+      - id: B
+        text: "Il a raison : la légitimité, comme la justice en général, n'est jamais qu'une affaire de sentiment personnel -- rien ne distingue alors qui a raison de qui a tort."
+        correct: false
+        misconception: mc.philo.droit_justice.legitimite-justifie-desobeissance-automatique
+        feedback: >
+          C'est exactement l'objection que le chapitre 1 adressait déjà à cette
+          position : si le sentiment personnel suffisait toujours à
+          écarter une loi, plus rien ne distinguerait un jugement -- de
+          tribunal ou de citoyen -- d'une opinion privée parmi d'autres.
+      - id: C
+        text: "Il a tort, mais pour une autre raison : une loi légale est, par définition, toujours légitime, donc la question de la désobéissance individuelle ne se pose jamais."
+        correct: false
+        misconception: mc.philo.droit_justice.faux-dilemme-legalite-justice
+        feedback: >
+          C'est nier l'écart même que la leçon établit entre légalité et
+          légitimité : les deux coïncident souvent, mais pas
+          nécessairement -- une loi peut traverser toute la procédure
+          requise et rester perçue comme profondément injustifiée.
+      - id: D
+        text: "Il a tort, car pour Weber la légitimité se limite au seul monopole de la violence physique légalement détenu par l'État, sans le moindre rapport avec le jugement que les citoyens portent, à titre individuel, sur le contenu des lois en vigueur à un moment donné de leur histoire commune."
+        correct: false
+        misconception: mc.philo.droit_justice.legitimite-reduite-au-pouvoir-de-fait
+        feedback: >
+          Cela réduit abusivement la légitimité, chez Weber, à une seule
+          question institutionnelle, en évacuant ce qui est ici en jeu :
+          la reconnaissance -- ou non -- du contenu d'une loi par ceux qui
+          doivent lui obéir.
+    correct_feedback: >
+      L'écart entre légalité et légitimité permet de nommer un problème,
+      pas de trancher automatiquement la question, distincte, de savoir si
+      la désobéissance individuelle est alors justifiée.
+    solution: |
+      **Ce que la distinction permet :** comprendre pourquoi une loi
+      parfaitement légale peut être perçue comme illégitime.
+
+      **Ce qu'elle ne permet pas, automatiquement :** conclure que la
+      désobéissance individuelle est alors toujours justifiée -- c'est une
+      question distincte, plus large.
+
+      **L'erreur à éviter, nommément :** réduire la légitimité à un pur
+      sentiment personnel, ou au contraire l'identifier purement et
+      simplement à la légalité.
+
+  - id: DRJ-21
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: philo_droit_justice
+    tags: [legalite, legitimite, rousseau, weber]
+    primary_misconception: mc.philo.droit_justice.legitimite-reduite-au-pouvoir-de-fait
+    stem: >
+      Un régime autoritaire fait voter, par un parlement légalement
+      constitué selon la procédure prévue par sa propre Constitution, une
+      loi interdisant toute presse indépendante. Que peut-on dire, du point
+      de vue de la distinction légalité/légitimité, de cette loi ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle peut être parfaitement légale, ayant respecté la procédure requise par la Constitution en vigueur, tout en restant contestée comme illégitime par une partie au moins de ceux qu'elle prétend gouverner, si son contenu heurte des principes de justice jugés supérieurs : la régularité d'une procédure ne rend jamais son contenu juste."
+        correct: true
+      - id: B
+        text: "Elle est en réalité illégale, car aucune procédure ne peut valablement produire une loi aussi restrictive des libertés fondamentales."
+        correct: false
+        misconception: mc.philo.droit_justice.injustice-ressentie-implique-erreur-juridique
+        feedback: >
+          C'est confondre le jugement sur le contenu (injuste, illégitime)
+          avec la conformité procédurale (légale). Rien dans l'énoncé
+          n'indique un vice de procédure : c'est le contenu de la loi, pas
+          sa production, qui pose problème.
+      - id: C
+        text: "Elle est légitime du seul fait qu'elle n'a rencontré, à l'époque, aucune résistance armée de la part de la population."
+        correct: false
+        misconception: mc.philo.droit_justice.legitimite-reduite-au-pouvoir-de-fait
+        feedback: >
+          C'est exactement ce que Rousseau récuse : la force -- ou
+          l'absence de résistance qu'elle impose -- ne transforme jamais,
+          à elle seule, une contrainte en droit légitime.
+      - id: D
+        text: "La question ne se pose pas : légalité et légitimité, comme droit positif et droit naturel, désignent en réalité deux noms différents pour une seule et même propriété, qu'aucune situation concrète ne permettrait jamais de dissocier l'une de l'autre, quel que soit le régime politique considéré."
+        correct: false
+        misconception: mc.philo.droit_justice.paires-notions-confondues-synonymes
+        feedback: >
+          Ce sont deux couples de notions distincts, introduits à des
+          chapitres différents de la leçon, et aucun des deux ne réduit ses
+          deux termes à une seule et même propriété.
+    correct_feedback: >
+      La procédure suivie -- légale -- ne garantit rien quant à la
+      reconnaissance de son contenu comme fondé : c'est exactement le cas
+      des lois liberticides votées, en bonne et due forme, par des régimes
+      qu'on juge aujourd'hui illégitimes.
+    solution: |
+      **Ce qui est établi :** la loi respecte la procédure constitutionnelle
+      en vigueur -- elle est donc légale.
+
+      **Ce qui reste contestable :** sa légitimité, c'est-à-dire sa
+      reconnaissance comme fondée par ceux qu'elle gouverne, en particulier
+      si son contenu heurte des principes de justice supérieurs.
+
+      **Ce qu'il ne faut pas confondre :** l'absence de résistance n'est
+      pas la légitimité (Rousseau) ; le couple légalité/légitimité n'est
+      pas non plus le couple droit positif/droit naturel (chapitre 3).
+
+  - id: DRJ-22
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: philo_droit_justice
+    tags: [methode_dissertation, problematique]
+    primary_misconception: mc.philo.droit_justice.methode-dissertation-mal-appliquee
+    stem: >
+      Pour le sujet « Suffit-il qu'une loi soit légale pour qu'elle soit
+      juste ? », quelle formulation constitue une véritable problématique,
+      au sens défini par la méthode ?
+    type: mcq
+    choices:
+      - id: A
+        text: "« Une loi légale est-elle juste ? »"
+        correct: false
+        misconception: mc.philo.droit_justice.methode-dissertation-mal-appliquee
+        feedback: >
+          Ce n'est qu'une reformulation du sujet, sans qu'aucune tension
+          entre deux positions également recevables n'ait été mise en
+          évidence -- une problématique doit faire apparaître ce qui rend
+          la question difficile, pas seulement la répéter autrement.
+      - id: B
+        text: "« Si la légalité d'une loi ne dépend que de sa conformité procédurale, comment rendre compte du fait qu'on puisse pourtant juger certaines lois légales profondément injustes -- et ce jugement est-il possible sans mettre en péril la sécurité juridique ? »"
+        correct: true
+      - id: C
+        text: "« On étudiera d'abord la thèse positiviste, puis la thèse jusnaturaliste, avant de proposer, en une troisième partie, un dépassement de leur opposition. »"
+        correct: false
+        misconception: mc.philo.droit_justice.methode-dissertation-mal-appliquee
+        feedback: >
+          C'est une annonce de plan, pas une problématique : elle décrit
+          la structure du devoir à venir, sans formuler la question --
+          sous forme interrogative -- que ce plan est censé résoudre.
+      - id: D
+        text: "« La légalité désigne la conformité d'une loi à la procédure qui l'a produite et l'habilite, tandis que la justice désigne un idéal permettant d'évaluer, indépendamment de cette procédure, le contenu même du droit et son origine politique, historique ou sociale. »"
+        correct: false
+        misconception: mc.philo.droit_justice.methode-dissertation-mal-appliquee
+        feedback: >
+          C'est une définition des termes (étape 1 de la méthode), utile
+          mais insuffisante : une problématique va plus loin, elle met ces
+          définitions en tension pour faire surgir une question.
+    correct_feedback: >
+      Une problématique formule, sous forme de question, la tension entre
+      deux positions également recevables en apparence -- ici, entre la
+      sécurité que garantit la conformité procédurale et la possibilité de
+      juger certaines lois légales injustes -- plus qu'elle ne redit
+      simplement le sujet, l'annonce du plan ou la définition des termes.
+    solution: |
+      **Ce qu'une problématique n'est pas :** ni une reformulation du
+      sujet, ni une annonce de plan, ni une simple définition des termes.
+
+      **Ce qu'elle est :** une question qui met en tension deux positions
+      également recevables en apparence, à laquelle le devoir devra
+      répondre.
+
+      **Pourquoi c'est décisif :** sans cette tension formulée, le plan
+      qui suit n'a plus de question à résoudre -- il devient une simple
+      juxtaposition de parties.
+
+  - id: DRJ-23
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: philo_droit_justice
+    tags: [methode_dissertation, plan_dialectique]
+    primary_misconception: mc.philo.droit_justice.methode-dissertation-mal-appliquee
+    stem: >
+      Un élève propose, pour le sujet « Suffit-il qu'une loi soit légale
+      pour qu'elle soit juste ? », le plan suivant : « I. Non, une loi
+      légale n'est jamais juste, car toute loi sert les intérêts de ceux
+      qui la votent. II. Étude de plusieurs lois historiques injustes. III.
+      Conclusion : le droit ne sert donc à rien. » Qu'objecter à ce plan, du
+      point de vue de la méthode ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il commet exactement l'erreur signalée à l'étape 1 : trancher d'emblée par « non, jamais » avant d'avoir mis en tension les deux thèses, ce qui revient à nier tout rôle du droit dans la justice -- une généralisation que le chapitre 2 exclut déjà."
+        correct: true
+      - id: B
+        text: "Le plan est globalement valable, mais il faudrait ajouter davantage de dates précises dans la partie II pour être complet."
+        correct: false
+        misconception: mc.philo.droit_justice.methode-dissertation-mal-appliquee
+        feedback: >
+          Ce n'est pas un problème de densité factuelle : le défaut du
+          plan est structurel -- il tranche la question dès la première
+          partie au lieu de construire une tension entre deux thèses.
+      - id: C
+        text: "Le plan est irrecevable car une dissertation de philosophie ne doit jamais comporter trois parties, mais toujours deux, opposant strictement une thèse à son antithèse."
+        correct: false
+        misconception: mc.philo.droit_justice.methode-dissertation-mal-appliquee
+        feedback: >
+          C'est une fausse règle : la méthode enseignée ici recommande
+          précisément un plan en trois temps (thèse / antithèse /
+          dépassement), pas une opposition binaire stricte en deux
+          parties.
+      - id: D
+        text: "Le plan est irrecevable uniquement parce qu'il ne mentionne pas Rawls, alors que toute dissertation sur ce sujet précis doit obligatoirement citer, dans un ordre fixe et sans exception, tous les auteurs étudiés au fil de cette leçon."
+        correct: false
+        misconception: mc.philo.droit_justice.methode-dissertation-mal-appliquee
+        feedback: >
+          Aucun auteur n'est obligatoire en tant que tel : ce qui compte,
+          c'est de mobiliser les ressources pertinentes pour construire
+          l'argumentation -- pas de cocher une liste fixe de noms propres.
+    correct_feedback: >
+      Le défaut central de ce plan n'est ni un manque de dates, ni un
+      mauvais nombre de parties, ni l'absence d'un auteur précis : c'est
+      d'avoir tranché la question dès la première ligne, sans jamais
+      construire la tension que le sujet appelait.
+    solution: |
+      **L'erreur commise :** répondre « non, jamais » dès la partie I, au
+      lieu de mettre en tension deux positions également recevables.
+
+      **Ce que cela produit :** un plan qui n'a plus rien à résoudre en
+      partie III -- puisque tout est déjà tranché en partie I -- et qui
+      généralise abusivement (cf. l'erreur à éviter du chapitre 2).
+
+      **Ce qu'il ne faut pas confondre avec le vrai problème :** ni le
+      nombre de dates citées, ni le nombre de parties, ni la liste des
+      auteurs mobilisés.
+
+  - id: DRJ-24
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: philo_droit_justice
+    tags: [methode_dissertation, introduction]
+    primary_misconception: mc.philo.droit_justice.methode-dissertation-mal-appliquee
+    stem: >
+      Un élève rédige l'introduction suivante pour le sujet « Une loi
+      peut-elle être légale sans être légitime ? » : « La légalité désigne
+      la conformité d'une loi à la procédure qui l'a produite. La
+      légitimité désigne sa reconnaissance comme fondée. Une loi peut donc
+      être légale sans être légitime. Nous verrons cela en deux parties. »
+      Que lui manque-t-il, du point de vue de la méthode enseignée ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il manque la tension et la problématique : l'élève affirme d'emblée la réponse au sujet au lieu de la construire à partir d'une tension entre deux positions, et l'annonce de plan qui suit ne repose donc sur aucune question réellement formulée."
+        correct: true
+      - id: B
+        text: "Il suffirait d'ajouter une citation d'auteur en ouverture ; le reste de l'introduction, qui expose déjà la réponse au sujet, est parfaitement conforme à la méthode."
+        correct: false
+        misconception: mc.philo.droit_justice.methode-dissertation-mal-appliquee
+        feedback: >
+          Une accroche manquante n'est pas le vrai problème : donner la
+          réponse au sujet avant même d'avoir formulé la tension entre
+          deux positions court-circuite tout le mouvement de
+          l'introduction.
+      - id: C
+        text: "Rien ne manque : dans une introduction de philosophie, il faut au contraire annoncer directement et fermement la thèse retenue dès la toute première phrase, pour ne surtout pas faire perdre un temps précieux au correcteur, déjà submergé par des dizaines d'autres copies."
+        correct: false
+        misconception: mc.philo.droit_justice.methode-dissertation-mal-appliquee
+        feedback: >
+          C'est l'inverse de ce qu'enseigne la méthode : le mouvement
+          attendu va de l'accroche à la problématique, en passant par la
+          mise en tension des positions, avant l'annonce du plan -- pas
+          une thèse assenée d'emblée.
+      - id: D
+        text: "Il manque seulement l'annonce du plan en toute première phrase, avant même la définition des termes, pour indiquer au correcteur la direction prise dès le départ."
+        correct: false
+        misconception: mc.philo.droit_justice.methode-dissertation-mal-appliquee
+        feedback: >
+          Cela inverse l'ordre du mouvement enseigné (accroche, puis
+          définition des termes, puis tension, puis problématique, puis
+          annonce du plan en dernier) -- et ne corrige de toute façon pas
+          le vrai défaut : l'absence de tension et de problématique.
+    correct_feedback: >
+      Une introduction ne doit pas répondre au sujet avant de l'avoir posé
+      comme problème : ici, la réponse arrive avant la question, ce qui
+      prive le devoir de toute tension à résoudre dans le développement.
+    solution: |
+      **Le défaut de cette introduction :** elle affirme la réponse au
+      sujet avant d'avoir construit la tension qui justifierait de se la
+      poser.
+
+      **Le mouvement attendu :** accroche, définition des termes, mise en
+      tension, problématique -- sous forme de question --, puis seulement
+      l'annonce du plan.
+
+      **Ce qu'il ne faut pas faire pour corriger :** ni se contenter
+      d'ajouter une citation, ni assener la thèse en premier, ni avancer
+      l'annonce du plan avant la problématique.
+
+  # Ajoutés le 2026-09-05 : quatorze familles sous le plancher de 3 items du
+  # banc. Six items, dix-huit places — chaque distracteur porte une famille
+  # distincte, l'ajustement est exact.
+  - id: DRJ-25
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: philo_droit_justice
+    tags: [kelsen, positivisme, validite]
+    stem: >
+      Kelsen soutient qu'une loi peut être juridiquement valide et moralement
+      injuste. Que dit-il exactement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que la validité se juge à la production de la norme selon les règles du système, non à son contenu moral — ce qui laisse la critique entière."
+        correct: true
+      - id: B
+        text: "Qu'une loi valide est par là même moralement acceptable, et qu'il n'y a donc pas lieu de la juger au nom d'autre chose que du droit."
+        correct: false
+        misconception: mc.philo.droit_justice.positivisme-separation-mal-comprise
+        feedback: >
+          Kelsen SÉPARE les deux questions, il ne les confond pas. Dire qu'une
+          norme est valide, c'est constater qu'elle a été produite selon les
+          règles du système ; cela ne l'approuve pas. Sa thèse est
+          méthodologique — elle délimite ce que la science du droit peut
+          établir — et laisse la critique morale entièrement libre.
+      - id: C
+        text: "Qu'une norme est valide lorsqu'elle recueille l'approbation de la majorité de l'opinion et produit des conséquences bénéfiques."
+        correct: false
+        misconception: mc.philo.droit_justice.critere-de-validite-mal-identifie
+        feedback: >
+          Ni l'opinion ni les conséquences n'entrent dans le critère kelsénien :
+          une norme est valide si elle a été édictée conformément à une norme
+          supérieure du même système, jusqu'à la norme fondamentale. Une loi
+          impopulaire et nuisible peut être parfaitement valide — c'est
+          précisément ce qui rend la critique nécessaire.
+      - id: D
+        text: "Qu'une loi légitime est nécessairement illégale, légalité et légitimité s'excluant l'une l'autre."
+        correct: false
+        misconception: mc.philo.droit_justice.legalite-legitimite-mutuellement-exclusives
+        feedback: >
+          Les deux notions ne s'excluent pas : l'immense majorité des lois sont à
+          la fois légales et légitimes. Ce que le chapitre établit, c'est
+          seulement qu'elles PEUVENT diverger — ce qui suppose justement qu'elles
+          coïncident d'ordinaire.
+    correct_feedback: >
+      La thèse de Kelsen est méthodologique : la validité juridique se constate
+      (la norme a-t-elle été produite selon les règles ?), la valeur morale se
+      juge — et ce sont deux opérations distinctes. Séparer n'est pas approuver.
+    solution: |
+      **La thèse.** Une norme est valide si elle a été édictée conformément à
+      une norme supérieure du même système. Son contenu moral n'entre pas dans
+      ce test.
+
+      **Ce que la séparation permet.** Précisément la critique : constater
+      qu'une loi est valide et affirmer qu'elle est injuste ne se contredit pas.
+      Les lois raciales de certains régimes étaient valides et monstrueuses.
+
+      **Les deux contresens symétriques.** Croire que Kelsen approuve ce qu'il
+      déclare valide ; croire qu'il interdit tout jugement moral sur le droit.
+
+  - id: DRJ-26
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: philo_droit_justice
+    tags: [legalite, legitimite, desobeissance]
+    stem: >
+      Un citoyen juge une loi illégitime. Que peut-il en conclure quant à son
+      obéissance ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Rien d'immédiat : un jugement personnel d'illégitimité ouvre une discussion publique, il ne vaut pas à lui seul autorisation de désobéir."
+        correct: true
+      - id: B
+        text: "Qu'il peut cesser d'obéir sur-le-champ : dès qu'une loi paraît illégitime à quelqu'un, elle cesse de l'obliger."
+        correct: false
+        misconception: mc.philo.droit_justice.legitimite-justifie-desobeissance-automatique
+        feedback: >
+          Si le sentiment individuel suffisait, chacun serait juge de ce qui
+          l'oblige et le droit cesserait d'exister. La désobéissance civile,
+          quand elle se justifie, s'entoure de conditions exigeantes : gravité de
+          l'injustice, publicité de l'acte, acceptation de la sanction, épuisement
+          des recours légaux.
+      - id: C
+        text: "Que la loi est légitime après tout, puisqu'elle s'applique sans rencontrer de résistance organisée."
+        correct: false
+        misconception: mc.philo.droit_justice.legitimite-reduite-au-pouvoir-de-fait
+        feedback: >
+          L'absence de résistance mesure un rapport de force, pas une
+          légitimité. C'est l'argument que Rousseau réfute : la force ne fonde
+          jamais le droit, et céder à la contrainte est un acte de prudence, non
+          de devoir.
+      - id: D
+        text: "Que la loi, étant illégitime, est nécessairement invalide au sens de Kelsen, et qu'elle n'existe donc pas juridiquement."
+        correct: false
+        misconception: mc.philo.droit_justice.positivisme-separation-mal-comprise
+        feedback: >
+          C'est effacer la séparation que Kelsen établit. Une norme injuste reste
+          valide tant qu'elle a été produite selon les règles du système : c'est
+          même ce qui rend le problème réel — il faut alors la changer par le
+          droit, ou assumer de lui désobéir, mais on ne peut pas la déclarer
+          inexistante.
+    correct_feedback: >
+      Un jugement individuel d'illégitimité ne suffit pas : il ouvre un débat, il
+      ne délie pas. La désobéissance civile s'entoure de conditions — gravité,
+      publicité, acceptation de la sanction — précisément parce que la conviction
+      seule ne peut pas faire office de tribunal.
+    solution: |
+      **Le risque de l'automatisme.** Si l'illégitimité ressentie déliait aussitôt
+      de l'obéissance, chacun deviendrait juge de ce qui l'oblige, et aucune
+      règle commune ne tiendrait.
+
+      **Ce qui reste ouvert.** Contester la loi par les voies du droit, la
+      soumettre au débat public, et — dans les cas extrêmes — la désobéissance
+      civile, qui assume publiquement la sanction pour rendre l'injustice
+      visible.
+
+      **Ce que l'absence de résistance ne prouve pas.** La légitimité. Une loi
+      peut s'appliquer sans opposition et rester injuste : c'est un fait sur le
+      rapport de force, pas sur le droit.
+
+  - id: DRJ-27
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: philo_droit_justice
+    tags: [rawls, voile-ignorance, principes]
+    stem: >
+      Chez Rawls, quel rapport les deux principes de justice entretiennent-ils,
+      et à quoi sert le voile d'ignorance ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'égale liberté prime sur le principe de différence ; le voile sert à choisir les principes sans connaître sa propre place."
+        correct: true
+      - id: B
+        text: "Le principe de différence prime sur l'égale liberté, l'urgence sociale passant avant les libertés formelles."
+        correct: false
+        misconception: mc.philo.droit_justice.priorite-principes-rawls-inversee
+        feedback: >
+          L'ordre est l'inverse, et il est lexical : aucun gain de bien-être ne
+          justifie de rogner les libertés de base. Le principe de différence ne
+          s'applique qu'une fois l'égale liberté garantie — c'est ce qui empêche
+          la théorie de justifier une servitude confortable.
+      - id: C
+        text: "Le voile d'ignorance dissimule les inégalités réelles une fois la société établie, afin que personne ne prenne conscience de sa position."
+        correct: false
+        misconception: mc.philo.droit_justice.voile-ignorance-mecanisme-mal-compris
+        feedback: >
+          Le voile n'est pas un dispositif permanent : c'est une expérience de
+          pensée qui vaut au moment du CHOIX des principes. Une fois choisis, ils
+          s'appliquent dans une société où chacun connaît parfaitement sa
+          position — et c'est justement pour cela qu'ils devaient être choisis
+          en l'ignorant.
+      - id: D
+        text: "Les deux principes distinguent la justice commutative de la justice distributive selon le nombre de personnes impliquées."
+        correct: false
+        misconception: mc.philo.droit_justice.critere-justice-mal-identifie
+        feedback: >
+          Deux confusions. Les principes de Rawls ne recouvrent pas la
+          distinction aristotélicienne. Et celle-ci ne porte pas sur le NOMBRE de
+          personnes mais sur le TYPE de rapport : un échange entre deux parties
+          (commutative) ou une répartition selon les mérites (distributive).
+    correct_feedback: >
+      L'égale liberté prime, de façon lexicale : le principe de différence ne
+      s'applique qu'ensuite. Et le voile d'ignorance ne vaut qu'au moment du
+      choix des principes, dans la position originelle — pas dans la société une
+      fois constituée.
+    solution: |
+      **Les deux principes.**
+      1. *Égale liberté* : chacun a un droit égal au système le plus étendu de
+         libertés de base compatible avec le même système pour tous.
+      2. *Différence* : les inégalités ne sont justes que si elles profitent aux
+         plus défavorisés, et si les positions sont ouvertes à tous.
+
+      **La priorité lexicale.** Le second ne s'applique qu'une fois le premier
+      satisfait : aucun gain matériel n'achète une liberté de base.
+
+      **Le voile.** Il retire aux contractants la connaissance de leur place —
+      classe, talents, conception du bien — pour que les principes choisis ne
+      soient taillés pour personne. Il est levé dès que les principes sont
+      choisis.
+
+  - id: DRJ-28
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: philo_droit_justice
+    tags: [rawls, legalite, legitimite]
+    stem: >
+      Une loi respecte scrupuleusement la procédure de son système juridique
+      mais restreint fortement une liberté de base au nom d'un gain économique
+      collectif. Comment l'apprécier ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est légale, et injuste au sens de Rawls : la priorité de l'égale liberté interdit d'échanger une liberté de base contre un avantage matériel."
+        correct: true
+      - id: B
+        text: "Elle est juste au sens de Rawls, puisque le principe de différence autorise une inégalité qui profite au plus grand nombre."
+        correct: false
+        misconception: mc.philo.droit_justice.priorite-principes-rawls-inversee
+        feedback: >
+          Le principe de différence ne s'applique qu'APRÈS que l'égale liberté
+          est garantie : il ne peut donc jamais servir à la rogner. Sans cette
+          priorité, la théorie autoriserait une prospérité fondée sur la
+          privation de libertés, ce que Rawls écarte explicitement.
+      - id: C
+        text: "Étant légale, elle ne peut pas être illégitime : les deux notions s'excluent, et une loi ne peut relever que de l'une ou de l'autre."
+        correct: false
+        misconception: mc.philo.droit_justice.legalite-legitimite-mutuellement-exclusives
+        feedback: >
+          Loin de s'exclure, les deux notions coïncident le plus souvent : la
+          plupart des lois sont légales ET légitimes. Ce chapitre montre
+          seulement qu'elles PEUVENT diverger — et le cas présent en est un
+          exemple, non une impossibilité logique.
+      - id: D
+        text: "Elle cesse d'obliger dès qu'un citoyen la juge injuste : l'illégitimité ressentie suffit à autoriser la désobéissance."
+        correct: false
+        misconception: mc.philo.droit_justice.legitimite-justifie-desobeissance-automatique
+        feedback: >
+          Le jugement individuel ouvre la contestation, il ne délie pas de
+          l'obéissance. Rawls lui-même encadre strictement la désobéissance
+          civile : injustice grave et manifeste, recours légaux épuisés, acte
+          public, sanction acceptée.
+    correct_feedback: >
+      Légale et injuste : les deux jugements portent sur des plans différents et
+      peuvent parfaitement coexister. La priorité lexicale de l'égale liberté
+      interdit précisément le troc que cette loi opère.
+    solution: |
+      **Deux questions distinctes.** « Cette loi est-elle valide ? » relève de la
+      procédure. « Est-elle juste ? » relève des principes. Rien n'oblige les
+      réponses à coïncider.
+
+      **Le verdict rawlsien.** La priorité lexicale du premier principe interdit
+      d'échanger une liberté de base contre un gain de bien-être, même
+      largement réparti.
+
+      **Ce qui suit pratiquement.** Contester par le droit, faire évoluer la loi ;
+      et, dans les cas extrêmes seulement, la désobéissance civile — encadrée,
+      publique, assumée.
+
+  - id: DRJ-29
+    rung: "R0"
+    difficulty_level: 3
+    skill_code: philo_droit_justice
+    tags: [accroche, lecture-de-texte]
+    stem: >
+      Dans l'affaire de l'usine et de la rivière, le tribunal déboute les
+      plaignants. Sur quoi porte exactement sa décision ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Sur le silence de la loi : nulle règle n'interdisait alors ce rejet — le dommage, lui, n'est pas contesté."
+        correct: true
+      - id: B
+        text: "Sur la réalité du dommage : le tribunal estime que l'eau n'était pas réellement impropre à la consommation."
+        correct: false
+        misconception: mc.philo.droit_justice.dommage-r0-mal-lu
+        feedback: >
+          Le texte est explicite : le dommage est réel et le tribunal ne le
+          conteste pas. C'est ce qui rend le cas philosophiquement intéressant —
+          l'injustice ressentie ne vient pas d'une erreur sur les faits, mais de
+          l'absence de règle applicable.
+      - id: C
+        text: "Sur un vice de procédure : le tribunal a commis une erreur de droit en n'appliquant pas la loi existante."
+        correct: false
+        misconception: mc.philo.droit_justice.silence-loi-confondu-vice-procedure
+        feedback: >
+          Aucune loi n'existait sur ce point précis : ce n'est pas une erreur du
+          tribunal, c'est un SILENCE du droit. La distinction est essentielle —
+          une erreur se corrige par un recours, un silence ne se comble que par
+          une loi nouvelle.
+      - id: D
+        text: "Sur un argument avancé par les juges de Nuremberg, repris ici pour justifier l'acquittement."
+        correct: false
+        misconception: mc.philo.droit_justice.argument-r0-mal-identifie
+        feedback: >
+          L'argument « nous n'avons fait qu'appliquer la loi » fut invoqué à
+          Nuremberg par certains ACCUSÉS, en défense, et non par les juges — qui
+          l'ont au contraire écarté. Attribuer un argument au mauvais camp
+          renverse le sens de l'exemple.
+    correct_feedback: >
+      Le tribunal ne conteste ni le dommage ni sa gravité : il constate qu'aucune
+      règle n'interdisait ce rejet au moment des faits. C'est le silence de la
+      loi, non une erreur de jugement — et c'est ce qui ouvre l'écart entre le
+      légal et le juste.
+    solution: |
+      **Ce que le tribunal admet.** Le dommage : eau non potable, enfants
+      malades. Rien de cela n'est mis en doute.
+
+      **Ce sur quoi il fonde sa décision.** L'absence de règle applicable au
+      moment des faits. Un juge ne peut pas condamner sur le fondement d'une
+      norme qui n'existait pas.
+
+      **Pourquoi ce n'est pas un vice de procédure.** Une erreur de droit se
+      corrige en appel ; un silence de la loi ne se comble que par le
+      législateur. L'exemple sert à montrer que le droit peut être fidèle à
+      lui-même et laisser un sentiment d'injustice entier.
+
+  - id: DRJ-30
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: philo_droit_justice
+    tags: [droit-positif, droit-naturel, lecture-de-texte]
+    stem: >
+      Que peut-on légitimement conclure de l'exemple de l'usine et de la
+      rivière ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Qu'un système juridique peut, sur un point donné, ne rien avoir à dire — sans que ce silence soit une faute du juge."
+        correct: true
+      - id: B
+        text: "Que toute loi finit nécessairement par produire une injustice, et qu'aucun tribunal ne rend jamais de décision juste."
+        correct: false
+        misconception: mc.philo.droit_justice.generalisation-abusive-exemple-ponctuel
+        feedback: >
+          Un cas ne fonde pas une loi générale. L'exemple montre qu'un écart est
+          POSSIBLE entre le légal et le juste ; il ne montre pas que cet écart
+          soit la règle, ni que les tribunaux se trompent d'ordinaire. Une
+          généralisation de cette ampleur demanderait tout autre chose qu'une
+          anecdote.
+      - id: C
+        text: "Qu'une loi existait en réalité, mais que le tribunal l'a jugée trop sévère pour l'appliquer."
+        correct: false
+        misconception: mc.philo.droit_justice.fait-invente-hors-texte
+        feedback: >
+          Le texte ne dit rien de tel : il établit qu'aucune règle n'existait sur
+          ce point. Inventer une loi que le tribunal aurait écartée transforme un
+          silence du droit en une décision discrétionnaire — et fait disparaître
+          le problème que l'exemple sert à poser.
+      - id: D
+        text: "Que l'esclavage n'a jamais été légal nulle part, puisque le droit positif ne peut pas contredire à ce point le droit naturel."
+        correct: false
+        misconception: mc.philo.droit_justice.contredit-fait-etabli-par-texte
+        feedback: >
+          Le cours établit explicitement le contraire : l'esclavage a été légal à
+          certaines époques et dans certains États. C'est même l'exemple le plus
+          fort de l'écart entre droit positif et droit naturel — le nier prive le
+          chapitre de son point d'appui historique.
+    correct_feedback: >
+      L'exemple établit une POSSIBILITÉ — celle d'un écart entre ce qui est légal
+      et ce qui paraît juste — et rien de plus. Il n'autorise ni à généraliser à
+      toute loi, ni à inventer des faits qu'il ne contient pas.
+    solution: |
+      **Ce que l'exemple établit.** Qu'un système juridique peut rester muet là
+      où un dommage est réel, et que le juge, tenu par la loi, ne peut pas y
+      suppléer.
+
+      **Ce qu'il n'établit pas.** Que toute loi soit injuste, que tout tribunal
+      se trompe, ou qu'il faille renoncer au droit. Un exemple ouvre une
+      question ; il ne la tranche pas dans toute sa généralité.
+
+      **La règle de lecture.** Ne rien ajouter au texte, ne rien lui retirer. Les
+      faits qu'il pose — le dommage réel, l'absence de loi, la légalité passée de
+      l'esclavage — sont les prémisses avec lesquelles il faut travailler.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après DRJ-25 à DRJ-30. Quatorze familles siégeaient
+# sous le plancher de 3 items du banc — la thèse méthodologique de Kelsen,
+# l'ordre lexical des principes de Rawls, le rapport légalité/légitimité, et
+# une série de lectures fautives de l'accroche (nier le dommage, inventer une
+# loi, confondre le silence de la loi avec un vice de procédure). Tableau
+# GÉNÉRÉ contre web/scripts/lib/couverture-compte.mjs, gardé par
+# web/scripts/resume-couverture.mjs.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.philo.droit_justice.faux-dilemme-legalite-justice:                 { count: 5, items: [DRJ-1, DRJ-6, DRJ-9, DRJ-12, DRJ-20] }
+    mc.philo.droit_justice.injustice-ressentie-implique-erreur-juridique: { count: 3, items: [DRJ-1, DRJ-10, DRJ-21] }
+    mc.philo.droit_justice.paires-notions-confondues-synonymes:           { count: 6, items: [DRJ-1, DRJ-2, DRJ-8, DRJ-9, DRJ-10, DRJ-21] }
+    mc.philo.droit_justice.droit-naturel-mal-defini:                      { count: 3, items: [DRJ-2, DRJ-12, DRJ-13] }
+    mc.philo.droit_justice.debat-positivisme-jusnaturalisme-mal-restitue: { count: 3, items: [DRJ-3, DRJ-14, DRJ-15] }
+    mc.philo.droit_justice.critere-de-validite-mal-identifie:             { count: 3, items: [DRJ-3, DRJ-6, DRJ-25] }
+    mc.philo.droit_justice.positivisme-separation-mal-comprise:           { count: 3, items: [DRJ-15, DRJ-25, DRJ-26] }
+    mc.philo.droit_justice.contredit-fait-etabli-par-texte:               { count: 3, items: [DRJ-12, DRJ-14, DRJ-30] }
+    mc.philo.droit_justice.critere-justice-mal-identifie:                 { count: 3, items: [DRJ-4, DRJ-16, DRJ-27] }
+    mc.philo.droit_justice.commutative-distributive-inversees:            { count: 3, items: [DRJ-4, DRJ-16, DRJ-17] }
+    mc.philo.droit_justice.formes-justice-non-distinguees:                { count: 3, items: [DRJ-4, DRJ-16, DRJ-17] }
+    mc.philo.droit_justice.voile-ignorance-mecanisme-mal-compris:         { count: 3, items: [DRJ-5, DRJ-18, DRJ-27] }
+    mc.philo.droit_justice.principe-difference-mal-compris:               { count: 3, items: [DRJ-5, DRJ-18, DRJ-19] }
+    mc.philo.droit_justice.priorite-principes-rawls-inversee:             { count: 3, items: [DRJ-19, DRJ-27, DRJ-28] }
+    mc.philo.droit_justice.legalite-legitimite-mutuellement-exclusives:   { count: 3, items: [DRJ-6, DRJ-25, DRJ-28] }
+    mc.philo.droit_justice.legitimite-justifie-desobeissance-automatique: { count: 3, items: [DRJ-20, DRJ-26, DRJ-28] }
+    mc.philo.droit_justice.legitimite-reduite-au-pouvoir-de-fait:         { count: 3, items: [DRJ-20, DRJ-21, DRJ-26] }
+    mc.philo.droit_justice.dommage-r0-mal-lu:                             { count: 3, items: [DRJ-7, DRJ-11, DRJ-29] }
+    mc.philo.droit_justice.silence-loi-confondu-vice-procedure:           { count: 3, items: [DRJ-7, DRJ-11, DRJ-29] }
+    mc.philo.droit_justice.fait-invente-hors-texte:                       { count: 3, items: [DRJ-7, DRJ-11, DRJ-30] }
+    mc.philo.droit_justice.generalisation-abusive-exemple-ponctuel:       { count: 3, items: [DRJ-8, DRJ-10, DRJ-30] }
+    mc.philo.droit_justice.argument-r0-mal-identifie:                     { count: 3, items: [DRJ-8, DRJ-9, DRJ-29] }
+    mc.philo.droit_justice.methode-dissertation-mal-appliquee:            { count: 3, items: [DRJ-22, DRJ-23, DRJ-24] }
+  total_items: 30
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 4
+    R1: 3
+    R2: 4
+    R3: 4
+    R4: 3
+    R5: 5
+    R6: 4
+    R7: 3
+  honest_state: >-
+    Les vingt-trois misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Vingt et une y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.

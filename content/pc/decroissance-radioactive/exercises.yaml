@@ -1,0 +1,185 @@
+# Attempt-first exercises (summit-conversion campaign).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2021 session
+# normale, PC BIOF, code NS28F, AlloSchool element/127287 — statut « vérifié »
+# in docs/sujets/pc/decroissance-radioactive.md). r-variation is a fresh
+# anti-memorisation twin (same skills, different isotope/decay/context,
+# status not-applicable).
+
+notion: decroissance-radioactive
+
+exercises:
+  # ── r-bac — the VERIFIED 2021 national sujet (plutonium 238) ─────────────
+  # Faithful transcription of docs/sujets/pc/decroissance-radioactive.md →
+  # "2021 — session normale — Exercice III". Stimulateur cardiaque au
+  # plutonium 238 : désintégration α (Soddy), courbe d'activité a(t), lecture
+  # graphique de t_1/2, déduction de λ, calcul de N0 depuis a0, durée de
+  # fonctionnement efficace. La figure (courbe a(t) en Bq) est REDESSINÉE
+  # (media/courbe-activite-pu238.svg, [[figure:courbe-activite-pu238]] dans
+  # l'intro) à partir des seules graduations de la transcription (ordonnée
+  # 2,5×10¹⁰ ; 5×10¹⁰ ; 7,5×10¹⁰ ; 10¹¹ Bq — abscisse 20, 40, 60, 80, 100 ans)
+  # et du corrigé (q2 : t½ ≈ 88 ans ; q4 : a0 = 10¹¹ Bq) — le scan original
+  # n'est pas dans le dépôt. Aucun autre nombre n'y est encodé ; le
+  # quadrillage fin (4 ans / 0,5×10¹⁰ Bq) fait tomber la lecture pile sur un
+  # trait. Le paragraphe « La courbe. » ci-dessous reste la transcription
+  # fidèle du document (texte) ; la figure en est le tracé.
+  - id: r-bac
+    title: "Exercice de type bac — désintégration du plutonium 238 (2021)"
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session normale — examen national PC BIOF, AlloSchool NS28F
+        (Exercice III — désintégration du plutonium 238 ; barème 2,5 pt).
+        Transcription vérifiée : re-fetch AlloSchool element/127287 + diff OK
+        (docs/sujets/pc/decroissance-radioactive.md).
+    intro: |-
+      **Un stimulateur cardiaque au plutonium 238 (examen national, session normale 2021).**
+
+      Le stimulateur cardiaque (pacemaker) est un dispositif qui, une fois implanté dans l'organisme, fournit des impulsions électriques destinées à stimuler les muscles cardiaques. Certains stimulateurs fonctionnent à partir de l'énergie libérée lors de la désintégration $\alpha$ des noyaux du plutonium 238. On étudie ici un tel stimulateur.
+
+      **Données.** On dispose des noyaux suivants (symbole et couple $(Z, A)$) : protactinium $^{238}_{91}\text{Pa}$, uranium $^{234}_{92}\text{U}$, uranium $^{238}_{92}\text{U}$, neptunium $^{238}_{93}\text{Np}$, plutonium $^{238}_{94}\text{Pu}$. On prend $1\ \text{an} = 365\ \text{jours}$.
+
+      **La courbe.** Un enregistrement donne l'évolution de l'activité $a(t)$ (en becquerels) d'un échantillon de plutonium 238 présent dans le stimulateur, en fonction du temps $t$ (en années). L'instant d'implantation est pris comme origine des dates ($t = 0$). L'axe des ordonnées $a$ est gradué en $2{,}5\times10^{10},\ 5\times10^{10},\ 7{,}5\times10^{10},\ 10^{11}\ \text{Bq}$ ; l'axe des abscisses $t$ en $20,\ 40,\ 60,\ 80,\ 100\ \text{ans}$. La courbe est une décroissance exponentielle qui part de $a_0 \approx 10^{11}\ \text{Bq}$ à $t = 0$ et décroît régulièrement.
+
+      [[figure:courbe-activite-pu238]]
+    questions:
+      - id: q1
+        part: "Partie I — La transformation nucléaire"
+        stem: |-
+          **(0,5 pt)** Écrire l'équation de la désintégration $\alpha$ du plutonium 238 $^{238}_{94}\text{Pu}$, en identifiant le noyau fils parmi les noyaux donnés.
+        reasoning: |-
+          Une désintégration $\alpha$ émet un noyau d'hélium $^{4}_{2}\text{He}$. On ne connaît que le père et le type de particule émise : les deux lois de conservation de Soddy (établies au chapitre 3) suffisent à reconstruire le fils, on n'a besoin de rien d'autre. On pose le fils inconnu $^{A}_{Z}\text{Y}$ et on applique **les deux** lois ensemble — conservation du nombre de nucléons ET conservation de la charge. Le piège classique de l'$\alpha$ est de ne toucher qu'à une seule des deux grandeurs : ici $A$ *et* $Z$ diminuent, car la particule $\alpha$ emporte 4 nucléons *et* 2 charges positives. Le $Z$ trouvé se lit ensuite dans le tableau des données.
+        steps:
+          - math: '^{238}_{94}\text{Pu} \longrightarrow\ ^{A}_{Z}\text{Y} +\ ^{4}_{2}\text{He}'
+            note: "On pose l'équation avec le noyau fils inconnu et la particule α."
+          - math: 'A + 4 = 238 \implies A = 234'
+            note: "Conservation du nombre de nucléons : la somme des A est la même avant et après."
+          - math: 'Z + 2 = 94 \implies Z = 92'
+            note: "Conservation de la charge : la particule α emporte 2 charges positives, donc Z du fils diminue de 2."
+          - math: '\boxed{^{238}_{94}\text{Pu} \longrightarrow\ ^{234}_{92}\text{U} +\ ^{4}_{2}\text{He}}'
+            note: "Z = 92 correspond à l'uranium : le fils est l'uranium 234 du tableau."
+      - id: q2
+        part: "Partie II — Exploiter la courbe d'activité"
+        stem: |-
+          **(0,5 pt)** Déterminer graphiquement la demi-vie $t_{1/2}$ du plutonium 238.
+        reasoning: |-
+          La demi-vie est la durée au bout de laquelle l'activité tombe à la moitié de sa valeur initiale — l'activité $a(t) = a_0\,e^{-\lambda t}$ suit exactement la même loi que le nombre de noyaux, donc $t_{1/2}$ se lit aussi bien sur $a$ que sur $N$ (c'est le point du chapitre 5). On part de $a_0 \approx 10^{11}\ \text{Bq}$, on repère l'ordonnée $\dfrac{a_0}{2} = 5\times10^{10}\ \text{Bq}$ (une graduation de l'axe), on rejoint la courbe, puis on redescend sur l'axe des temps.
+
+          $$\frac{a_0}{2} = 5\times10^{10}\ \text{Bq} \quad\Longrightarrow\quad t_{1/2} \approx 88\ \text{ans}$$
+      - id: q3
+        stem: |-
+          **(0,5 pt)** En déduire que la constante radioactive $\lambda$ du plutonium 238 vaut environ $\lambda \approx 7{,}88\times10^{-3}\ \text{ans}^{-1}$.
+        reasoning: |-
+          $\lambda$ n'est pas lu sur la courbe : on le déduit de $t_{1/2}$ par la relation établie au chapitre 5, $t_{1/2} = \dfrac{\ln 2}{\lambda}$, qu'on inverse. C'est là que la distinction demi-vie / constante radioactive se joue : $t_{1/2}$ et $\lambda$ ne sont pas la même grandeur ni de simples inverses l'une de l'autre — elles sont reliées par le facteur $\ln 2 \approx 0{,}693$.
+        steps:
+          - math: 't_{1/2} = \frac{\ln 2}{\lambda} \implies \lambda = \frac{\ln 2}{t_{1/2}}'
+            note: "On inverse la relation demi-vie ↔ constante radioactive du chapitre 5."
+          - math: '\lambda = \frac{\ln 2}{88} \approx \frac{0{,}693}{88} \approx 7{,}88\times10^{-3}\ \text{ans}^{-1}'
+            note: "Application numérique avec t_1/2 ≈ 88 ans : on retrouve bien la valeur annoncée."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Trouver le nombre $N_0$ de noyaux de plutonium 238 présents à $t = 0$ dans le stimulateur.
+        reasoning: |-
+          Le lien entre l'activité et le nombre de noyaux est $a = \lambda N$ (chapitre 5) : l'activité n'est pas le nombre de noyaux, c'est le nombre de désintégrations par seconde, et le facteur qui relie les deux est justement $\lambda$. À $t = 0$ : $a_0 = \lambda N_0$, donc $N_0 = \dfrac{a_0}{\lambda}$. Attention aux unités — c'est le vrai piège de la question : $a_0$ est en becquerels, donc en désintégrations **par seconde**, alors que $\lambda$ vient d'être calculée en $\text{ans}^{-1}$. Il faut convertir $\lambda$ en $\text{s}^{-1}$ avant de diviser (d'où la donnée $1\ \text{an} = 365\ \text{jours}$).
+        steps:
+          - math: 'a_0 = \lambda N_0 \implies N_0 = \frac{a_0}{\lambda}'
+            note: "On inverse la relation activité ↔ nombre de noyaux a = λN."
+          - math: '\lambda = \frac{7{,}88\times10^{-3}}{365\times24\times3600} \approx 2{,}50\times10^{-10}\ \text{s}^{-1}'
+            note: "Conversion de λ en s⁻¹ : le becquerel est une désintégration par seconde."
+          - math: 'N_0 = \frac{10^{11}}{2{,}50\times10^{-10}} \approx 4{,}0\times10^{20}\ \text{noyaux}'
+            note: "Application numérique avec a_0 ≈ 10¹¹ Bq lu à l'origine sur la courbe."
+      - id: q5
+        part: "Partie III — Durée de fonctionnement efficace"
+        stem: |-
+          **(0,5 pt)** Le stimulateur fonctionne de façon efficace tant que le nombre de noyaux de plutonium 238 qui se sont désintégrés ne dépasse pas $30\ \%$ du nombre de noyaux présents à $t = 0$. Déterminer, en années, la durée maximale $t_{max}$ de fonctionnement efficace.
+        reasoning: |-
+          Le premier geste est de traduire la condition en une condition sur $N(t)$. Le nombre de noyaux désintégrés à l'instant $t$ vaut $N_0 - N(t)$ (les noyaux fils, chapitre 4). « Pas plus de $30\ \%$ désintégrés » signifie donc $N_0 - N(t) \leq 0{,}30\,N_0$, c'est-à-dire qu'il reste **au moins** $70\ \%$ des noyaux : $N(t) \geq 0{,}70\,N_0$. À la limite $t_{max}$, il en reste exactement $70\ \%$. On inverse alors la loi de décroissance comme au chapitre 6 (datation), en passant par le logarithme. Ici on garde $\lambda$ en $\text{ans}^{-1}$ pour obtenir directement $t_{max}$ en années.
+        steps:
+          - math: 'N_0 - N(t) \leq 0{,}30\,N_0 \iff N(t) \geq 0{,}70\,N_0'
+            note: "Traduction de la condition : pas plus de 30 % désintégrés, donc au moins 70 % restants."
+          - math: '0{,}70 = e^{-\lambda t_{max}} \implies t_{max} = \frac{1}{\lambda}\ln\!\left(\frac{1}{0{,}70}\right)'
+            note: "À la limite N(t_max) = 0,70 N_0 ; on isole le temps par le logarithme (méthode du chapitre 6)."
+          - math: 't_{max} = \frac{\ln(1{,}43)}{7{,}88\times10^{-3}} \approx \frac{0{,}357}{7{,}88\times10^{-3}} \approx 45\ \text{ans}'
+            note: "Application numérique avec λ en ans⁻¹ : le résultat sort directement en années."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ────────
+  # Same deep skills as r-bac (écrire une équation de désintégration + identifier
+  # le fils, lire t_1/2 sur une courbe, déduire λ, remonter à N0 depuis A0,
+  # inverser la loi pour un temps) mais désintégration β⁻ au lieu de α, contexte
+  # médical au lieu du pacemaker, et une condition finale « 5 % restants » au
+  # lieu de « 30 % désintégrés » — pour que l'élève ne puisse pas recopier le
+  # sujet 2021 et doive reconnaître quelle procédure s'applique.
+  - id: r-variation
+    title: "Variation fraîche"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2021, sourcé).
+    intro: |-
+      Même structure profonde que l'exercice précédent, enrobage différent : ici la désintégration est de type $\beta^-$ (et non $\alpha$), le contexte est médical (et non un pacemaker), et la question finale porte sur l'activité **restante** (et non sur la fraction désintégrée). Le but est que tu ne puisses pas recopier la solution du sujet 2021 — tu dois reconnaître quelle procédure s'applique.
+
+      L'iode 131 $^{131}_{53}\text{I}$ est un isotope radioactif utilisé en médecine pour traiter certaines maladies de la thyroïde. On prépare un échantillon d'iode 131 d'activité initiale $A_0 = 4{,}0\times10^{8}\ \text{Bq}$, et on enregistre l'évolution de son activité $A(t)$ (en Bq) au cours du temps $t$ (en jours). On prend $1\ \text{jour} = 86\,400\ \text{s}$.
+
+      La courbe ci-dessous est tracée sur un quadrillage : en abscisse, un trait fort tous les **8 jours** ; en ordonnée, un trait fort tous les **$10^{8}$ Bq**, l'activité initiale étant sur le quatrième.
+
+      [[figure:courbe-activite-quadrillee]]
+    questions:
+      - id: q1
+        stem: |-
+          Écrire l'équation de la désintégration $\beta^-$ de l'iode 131 $^{131}_{53}\text{I}$, en identifiant le noyau fils.
+        reasoning: |-
+          La démarche est celle du sujet — poser le fils inconnu et appliquer les deux lois de Soddy — mais l'habillage a changé : c'est une désintégration $\beta^-$, pas $\alpha$. Reconnaître ce changement est exactement le point de l'exercice. En $\beta^-$, un neutron se transforme en proton et un électron $^{0}_{-1}\text{e}$ est émis : le nombre de nucléons $A$ ne change **pas** (le neutron devient un proton, il ne disparaît pas), tandis que $Z$ **augmente** de 1 (un proton de plus). C'est l'inverse du réflexe $\alpha$ où $A$ et $Z$ diminuent tous les deux.
+        steps:
+          - math: '^{131}_{53}\text{I} \longrightarrow\ ^{A}_{Z}\text{Y} +\ ^{0}_{-1}\text{e}'
+            note: "On pose l'équation avec le fils inconnu et l'électron émis en β⁻."
+          - math: 'A + 0 = 131 \implies A = 131'
+            note: "Conservation des nucléons : l'électron ne porte aucun nucléon, A est inchangé."
+          - math: 'Z + (-1) = 53 \implies Z = 54'
+            note: "Conservation de la charge : l'électron porte −1, donc Z du fils augmente de 1."
+          - math: '\boxed{^{131}_{53}\text{I} \longrightarrow\ ^{131}_{54}\text{Xe} +\ ^{0}_{-1}\text{e}}'
+            note: "Z = 54 correspond au xénon : le fils est le xénon 131."
+      - id: q2
+        stem: |-
+          Déterminer la demi-vie $t_{1/2}$ de l'iode 131 à partir de la courbe.
+        reasoning: |-
+          Comme au sujet, on n'a pas besoin de calcul : la demi-vie est la durée au bout de laquelle l'activité tombe à la moitié de sa valeur initiale. On repère l'ordonnée $A_0/2 = 2{,}0\times10^{8}\ \text{Bq}$ (le deuxième trait fort de l'axe), on trace l'horizontale jusqu'à la courbe, puis on redescend par la verticale jusqu'à l'axe des temps.
+
+          $$t_{1/2} = 8{,}0\ \text{jours}$$
+      - id: q3
+        stem: |-
+          En déduire la constante radioactive $\lambda$ de l'iode 131.
+        reasoning: |-
+          Même geste qu'au sujet : $\lambda$ se déduit de $t_{1/2}$ par $t_{1/2} = \dfrac{\ln 2}{\lambda}$ (chapitre 5), qu'on inverse. On garde ici $\lambda$ en $\text{jour}^{-1}$, cohérent avec la demi-vie exprimée en jours.
+        steps:
+          - math: '\lambda = \frac{\ln 2}{t_{1/2}} = \frac{\ln 2}{8}'
+            note: "On inverse la relation demi-vie ↔ constante radioactive."
+          - math: '\lambda \approx \frac{0{,}693}{8} \approx 8{,}66\times10^{-2}\ \text{jour}^{-1}'
+            note: "Application numérique : λ en jour⁻¹ (même unité de temps que t_1/2)."
+      - id: q4
+        stem: |-
+          Déterminer le nombre $N_0$ de noyaux d'iode 131 présents à $t = 0$ dans l'échantillon.
+        reasoning: |-
+          On repart de la relation activité ↔ nombre de noyaux $A = \lambda N$ (chapitre 5), retournée : $N_0 = \dfrac{A_0}{\lambda}$. Comme au sujet, le piège est l'unité : $A_0$ est en becquerels (désintégrations par **seconde**), donc il faut $\lambda$ en $\text{s}^{-1}$, pas en $\text{jour}^{-1}$. D'où la conversion via $1\ \text{jour} = 86\,400\ \text{s}$.
+        steps:
+          - math: 'A_0 = \lambda N_0 \implies N_0 = \frac{A_0}{\lambda}'
+            note: "On inverse a = λN pour isoler le nombre de noyaux."
+          - math: '\lambda = \frac{8{,}66\times10^{-2}}{86\,400} \approx 1{,}00\times10^{-6}\ \text{s}^{-1}'
+            note: "Conversion de λ en s⁻¹ : le becquerel est une désintégration par seconde."
+          - math: 'N_0 = \frac{4{,}0\times10^{8}}{1{,}00\times10^{-6}} \approx 4{,}0\times10^{14}\ \text{noyaux}'
+            note: "Application numérique avec A_0 = 4,0 × 10⁸ Bq."
+      - id: q5
+        stem: |-
+          Au bout de combien de jours l'activité de l'échantillon sera-t-elle tombée à $5\ \%$ de sa valeur initiale $A_0$ ?
+        reasoning: |-
+          L'activité suit la même loi exponentielle que le nombre de noyaux, $A(t) = A_0\,e^{-\lambda t}$ : on inverse cette loi pour trouver le temps, comme au chapitre 6. On veut $A(t) = 0{,}05\,A_0$, donc $0{,}05 = e^{-\lambda t}$, d'où $t = \dfrac{1}{\lambda}\ln\!\left(\dfrac{1}{0{,}05}\right)$. Ici $\dfrac{1}{0{,}05} = 20$ n'est pas une puissance de 2, donc on passe obligatoirement par le logarithme (pas par un comptage de demi-vies). On garde $\lambda$ en $\text{jour}^{-1}$ pour obtenir $t$ en jours.
+        steps:
+          - math: '0{,}05 = e^{-\lambda t} \implies t = \frac{1}{\lambda}\ln\!\left(\frac{1}{0{,}05}\right) = \frac{\ln 20}{\lambda}'
+            note: "On isole le temps par le logarithme (méthode d'inversion du chapitre 6)."
+          - math: 't = \frac{\ln 20}{8{,}66\times10^{-2}} \approx \frac{3{,}00}{8{,}66\times10^{-2}} \approx 35\ \text{jours}'
+            note: "Application numérique avec λ en jour⁻¹ : le résultat sort en jours."

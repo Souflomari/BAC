@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img"
+     aria-label="Courbe de la fonction exponentielle y = e puissance x et droite y = x+1 : la courbe reste toujours au-dessus de la droite, les deux se touchant exactement au point (0,1) — l’inégalité globale e puissance x supérieur ou égal à x+1 pour tout réel x. L’axe des abscisses porte l’asymptote horizontale y=0 en moins l’infini.">
+  <title>eˣ ≥ x + 1 : l’inégalité globale, sur tout le domaine</title>
+  <!--
+    exp-au-dessus-de-x-plus-1.svg — STAGED (docs/design/LESSON-EXPERIENCE-SPEC.md §2).
+    R4 — l'inégalité GLOBALE eˣ ≥ x+1 pour TOUT réel x (distincte de la
+    figure R5/courbe-exponentielle.svg qui cadre la même droite comme LA
+    TANGENTE locale en 0 — ici le cadrage est l'inégalité elle-même,
+    valable sur tout le domaine, établie au tout début du R4).
+
+    Repère (calculé, pas deviné) :
+      px_x(x) = 390 + 90·x        px_y(y) = 275 - 30·y
+      -> x=0 : px_x=390            y=0 : px_y=275 (l'axe des abscisses)
+      fenêtre visible : x ∈ [-3,3 ; 2,3], y ∈ [-2,5 ; 7,5]
+
+    Courbe y = eˣ — polyligne à pas régulier de 0,3 en x (jamais une bézier
+    devinée), de x=-3,3 à x=ln(7,5)≈2,014903 (coupe exacte du bord haut du
+    cadre, y=7,5) :
+      e^-3.3=0,036883  e^-3.0=0,049787  e^-2.7=0,067206  e^-2.4=0,090718
+      e^-2.1=0,122456  e^-1.8=0,165299  e^-1.5=0,223130  e^-1.2=0,301194
+      e^-0.9=0,406570  e^-0.6=0,548812  e^-0.3=0,740818  e^0.0=1,000000
+      e^0.3=1,349859   e^0.6=1,822119   e^0.9=2,459603   e^1.2=3,320117
+      e^1.5=4,481689   e^1.8=6,049647   e^2.0=7,389056   e^2,014903=7,5 (coupe)
+
+    Droite y = x+1 — droite EXACTE, tracée de (x=-3,3 ; y=-2,3) à
+      (x=2,3 ; y=3,3), c'est-à-dire du bord gauche au bord droit du cadre.
+      Elle est TANGENTE à la courbe en (0,1) (établi au R5) — ici on la
+      relit comme la droite de l'inégalité de référence, valable partout,
+      pas seulement localement en 0.
+
+    Zone teintée (step-4, accent 8%) : le polygone borné en haut par la
+      courbe et en bas par la droite, sur X∈[-3,3 ; 2,014903] (l'étendue
+      visible de la courbe) — traduction visuelle de eˣ-(x+1) ≥ 0.
+      Épaisseur nulle exactement en X=0 (point de tangence), comme il se
+      doit (même convention que la zone teintée de courbe-logarithme.svg,
+      miroir : ici la courbe est AU-DESSUS, la droite EN DESSOUS).
+
+    Un repère d'écart (step-4) est ajouté à x=1 (segment vertical entre la
+      droite, y=2, et la courbe, y=e≈2,718282) pour rendre l'écart eˣ-(x+1)
+      visible et mesurable à un point précis, pas seulement suggéré par
+      la zone teintée.
+
+    Asymptote horizontale y=0 (x→-∞, R4) : rendue en tireté sur la moitié
+      négative de l'axe des abscisses (même convention que
+      courbe-exponentielle.svg) — marquée dès step-1, avant même la courbe.
+
+    Rôle des couleurs :
+      courbe eˣ (structure déjà établie au R5)        : --figure-ink
+      droite y=x+1, zone teintée, repère d'écart (LE sujet de cette figure) :
+        --figure-accent
+      axes, asymptote, ticks                          : --figure-ink-soft
+
+    Mise en étapes (ordre du callout R4, 4 étapes, axes comme étape à part
+    entière — même convention que continuite-tvi.svg) :
+      step-1 : les axes, l'asymptote y=0 annotée.
+      step-2 : la courbe y=eˣ.
+      step-3 : la droite y=x+1.
+      step-4 : la lecture — la zone teintée, le repère d'écart, la
+               tangence en (0,1).
+
+    Les captions sont portées par exp-au-dessus-de-x-plus-1.stages.json —
+    aucun texte de légende baké ici (même convention que
+    courbe-exponentielle.svg).
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    <tspan font-style="italic">e</tspan><tspan dy="-4" font-size="8.5" font-style="italic">x</tspan><tspan
+    dy="4"> &#8805; </tspan><tspan font-style="italic">x</tspan><tspan> + 1 : l’inégalité globale</tspan>
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="32" width="590" height="350" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les axes, l'asymptote y=0 annotée
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Axe des abscisses : tireté pour x&lt;0 (asymptote y=0 de exp), plein pour x&gt;0 -->
+    <line x1="390" y1="275" x2="82" y2="275"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <line x1="390" y1="275" x2="598" y2="275"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="610,275 598,270.5 598,279.5" fill="var(--figure-ink-soft)"/>
+    <text x="617" y="279" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">x</text>
+
+    <!-- Axe des ordonnées -->
+    <line x1="390" y1="350" x2="390" y2="58"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="390,46 385.5,58 394.5,58" fill="var(--figure-ink-soft)"/>
+    <text x="382" y="54" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">y</text>
+
+    <text x="381" y="289" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Repère x=1 -->
+    <line x1="480" y1="271" x2="480" y2="279" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="480" y="291" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">1</text>
+
+    <!-- Annotation de l'asymptote -->
+    <text x="108" y="260" font-size="10" fill="var(--figure-ink-soft)">
+      <tspan font-style="italic">y</tspan> = 0 (asymptote en −&#8734;)
+    </text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la courbe y = eˣ
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="M93.0,273.89 L120.0,273.51 L147.0,272.98 L174.0,272.28 L201.0,271.33
+             L228.0,270.04 L255.0,268.31 L282.0,265.96 L309.0,262.80 L336.0,258.54
+             L363.0,252.78 L390.0,245.00 L417.0,234.50 L444.0,220.34 L471.0,201.21
+             L498.0,175.40 L525.0,140.55 L552.0,93.51 L570.0,53.33 L571.34,50.00"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
+          stroke-linecap="round" stroke-linejoin="round"/>
+
+    <rect x="430" y="60" width="140" height="28" rx="5"
+          fill="var(--figure-ink)" fill-opacity="0.06"/>
+    <text x="500" y="79" text-anchor="middle" font-size="12" fill="var(--figure-ink)">
+      <tspan font-style="italic">y</tspan> = <tspan font-style="italic">e</tspan><tspan
+      dy="-4" font-size="9" font-style="italic">x</tspan><tspan dy="4"></tspan>
+    </text>
+
+    <!-- Point (0,1) — neutre pour l'instant, la tangence sera relue au step-4 -->
+    <circle cx="390.0" cy="245.0" r="3.2" fill="var(--figure-ink)"/>
+    <text x="378" y="234" text-anchor="end" font-size="10.5" fill="var(--figure-ink)">(0, 1)</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la droite y = x + 1
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <line x1="93.0" y1="344.0" x2="597.0" y2="176.0"
+          stroke="var(--figure-accent)" stroke-width="1.8" stroke-dasharray="6,4"
+          stroke-linecap="round"/>
+    <!-- REMONTÉE ET ANCRÉE À DROITE (2026-09-04) : posée à (515;190) elle
+         était couchée sur la droite qu'elle nomme — qui descend de y=203 à
+         y=188 sur sa longueur — et s'en trouvait rayée sur 37 %. La droite
+         étant OBLIQUE, il ne suffit pas de monter : il faut dégager la
+         hauteur du texte PLUS la pente sur sa largeur, et l'ancrage à droite
+         raccourcit d'autant ce trajet. Deuxième passe : à (545;184) c'est la
+         COURBE exp qui la reprenait par la gauche (24 %) — entre deux tracés
+         qui se rapprochent, il n'y a pas de « un peu plus loin », il y a un
+         seul créneau, et il est au bout de la droite. -->
+    <text x="575" y="178" text-anchor="end" font-size="12" fill="var(--figure-accent)">
+      <tspan font-style="italic">y</tspan> = <tspan font-style="italic">x</tspan> + 1
+    </text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — la lecture : la zone teintée, le repère d'écart,
+       la tangence en (0,1)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <!-- Zone teintée : au-dessus la courbe, en dessous la droite —
+         épaisseur nulle en x=0 -->
+    <path d="M93.0,273.89 L120.0,273.51 L147.0,272.98 L174.0,272.28 L201.0,271.33
+             L228.0,270.04 L255.0,268.31 L282.0,265.96 L309.0,262.80 L336.0,258.54
+             L363.0,252.78 L390.0,245.00 L417.0,234.50 L444.0,220.34 L471.0,201.21
+             L498.0,175.40 L525.0,140.55 L552.0,93.51 L570.0,53.33 L571.34,50.00
+             L571.34,184.55 L93.0,344.0 Z"
+          fill="var(--figure-accent)" fill-opacity="0.08" stroke="none"/>
+
+    <!-- Halo de tangence sur (0,1) -->
+    <circle cx="390.0" cy="245.0" r="5.5" fill="none"
+            stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <text x="330" y="222" font-size="10.5" fill="var(--figure-accent)">tangente en (0, 1)</text>
+
+    <!-- Repère d'écart à x=1 : entre la droite (y=2) et la courbe (y=e) -->
+    <line x1="480" y1="215.00" x2="480" y2="193.45"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <line x1="474" y1="215.00" x2="486" y2="215.00" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <line x1="474" y1="193.45" x2="486" y2="193.45" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <!-- DESCENDUE SOUS LA DROITE (2026-09-04) : à y=207 elle était sur la
+         droite (rayée sur 37 %) ET collée à « y = x + 1 ». L'écart qu'elle
+         chiffre se lit entre la droite et la courbe ; elle vit maintenant
+         SOUS la droite, du côté où il n'y a plus rien. -->
+    <text x="495" y="226" font-size="10" fill="var(--figure-accent)">
+      <tspan font-style="italic">e</tspan> − 2 &#8776; 0,72
+    </text>
+
+    <!-- Boîte formule : la conclusion -->
+    <rect x="430" y="308" width="165" height="30" rx="5"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="512" y="328" text-anchor="middle" font-size="13" fill="var(--figure-accent)">
+      <tspan font-style="italic">e</tspan><tspan dy="-4" font-size="9" font-style="italic">x</tspan><tspan
+      dy="4"> &#8805; </tspan><tspan font-style="italic">x</tspan><tspan> + 1</tspan>
+    </text>
+  </g><!-- /step-4 -->
+
+</svg>

@@ -1,0 +1,219 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 390"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Le mécanisme du transfert de proton entre l’ion ammonium et l’eau, en quatre étapes : d’abord la demi-équation du couple 1, NH4+ qui cède un proton pour donner NH3 ; puis la demi-équation du couple 2, l’eau qui capte ce proton pour donner H3O+ ; puis la somme des deux demi-équations, où le H+ apparaît une fois de chaque côté ; enfin ce H+ s’annule dans les deux membres, laissant l’équation nette NH4+ + H2O donne NH3 + H3O+, exactement comme les électrons s’annulent en oxydoréduction.">
+  <title>Le transfert de proton : l’ion ammonium face à l’eau</title>
+  <!--
+    transfert-proton-ammonium.svg — figure STAGED (4 étapes), rung R1.
+
+    Reprend EXACTEMENT l'exemple travaillé du texte (R1, "L'ion ammonium
+    face à l'eau", lignes 40-58 de lesson.md) : les mêmes deux
+    demi-équations, numérotées (1)/(2) comme dans le texte, additionnées
+    membre à membre, avec annulation du H+ — aucune valeur ni espèce
+    ajoutée qui ne soit déjà dans le texte.
+
+      (1) NH4+ ⇌ NH3 + H+                (couple 1, l'acide cède)
+      (2) H2O + H+ ⇌ H3O+                (couple 2, la base capte)
+      somme : NH4+ + H2O + H+ ⇌ NH3 + H+ + H3O+
+      net   : NH4+ + H2O ⇌ NH3 + H3O+
+
+    Mise en page : chaque terme chimique (NH4+, NH3, H2O, H3O+, H+) est un
+    <text> séparé, positionné à un x choisi — pas une seule ligne fluide —
+    pour que les flèches de transfert (étapes 1 et 2) et les marques
+    d'annulation (étape 4) puissent viser un terme précis sans deviner sa
+    largeur de rendu.
+
+    Mise en étapes (LESSON-EXPERIENCE-SPEC §2.5 — geste d'enseignement,
+    reprend l'ordre littéral du texte : demi-équation 1, puis demi-équation
+    2, puis leur somme, puis l'annulation) :
+      step-1 : titre + panneau + demi-équation (1) — NH4+ ⇌ NH3 + H+ — avec
+               une accolade accent au-dessus, de NH4+ vers H+, montrant le
+               proton qui PART de l'acide du couple 1.
+      step-2 : demi-équation (2) — H2O + H+ ⇌ H3O+ — avec une accolade
+               accent, de H+ vers H2O, montrant le proton qui ARRIVE sur la
+               base du couple 2.
+      step-3 : le signe "+" et la barre d'addition (métaphore d'addition en
+               colonne, comme dans le texte : "on additionne (1) et (2)"),
+               puis la somme NH4+ + H2O + H+ ⇌ NH3 + H+ + H3O+, avec les
+               DEUX H+ mis en évidence (capsule accent) — ce sont eux qui
+               vont s'annuler.
+      step-4 : une marque barrée accent traverse chacun des deux H+ de la
+               somme (le rendu StagedFigure adoucit alors les étapes 1-3 à
+               opacité 0,55 — la somme s'efface, la barre reste nette) ;
+               une flèche verticale descend vers l'équation nette
+               NH4+ + H2O ⇌ NH3 + H3O+, annotée "comme les e− en
+               oxydoréduction" — la même mécanique que le rung R1 du texte
+               invoque explicitement.
+
+    Rôle des couleurs :
+      les deux accolades de transfert (étapes 1-2), les capsules + la barre
+        d'annulation sur les deux H+ (étapes 3-4), la flèche de conclusion
+        et l'équation nette finale (étape 4) : --figure-accent — c'est LE
+        fil que suit cette figure (le proton, puis son annulation).
+      les équations elles-mêmes (texte des espèces), le signe "+"
+        d'addition, la barre horizontale, les numéros (1)/(2), l'annotation
+        finale entre parenthèses : --figure-ink / --figure-ink-soft —
+        structure, jamais le foyer.
+  -->
+
+  <g id="step-1">
+
+    <!-- Titre -->
+    <text x="320" y="24" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">Le transfert de proton : l&#8217;ion ammonium face à l&#8217;eau</text>
+    <text x="320" y="40" text-anchor="middle"
+          font-size="10" font-style="italic" fill="var(--figure-ink-soft)">
+      le H+ ne flotte jamais seul — deux demi-équations, additionnées
+    </text>
+
+    <!-- Panneau -->
+    <rect x="24" y="48" width="592" height="322" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- ── Demi-équation (1) : NH4+ ⇌ NH3 + H+ ─────────────────────── -->
+    <text x="220" y="100" text-anchor="middle" font-size="16"
+          fill="var(--figure-ink)">NH<tspan
+          dy="4" font-size="9">4</tspan><tspan
+          dy="-9" font-size="9">+</tspan>
+    </text>
+    <text x="290" y="100" text-anchor="middle" font-size="16" fill="var(--figure-ink)">&#8652;</text>
+    <text x="350" y="100" text-anchor="middle" font-size="16"
+          fill="var(--figure-ink)">NH<tspan dy="4" font-size="9">3</tspan></text>
+    <text x="384" y="100" text-anchor="middle" font-size="16" fill="var(--figure-ink)">+</text>
+    <text x="420" y="100" text-anchor="middle" font-size="16"
+          fill="var(--figure-ink)">H<tspan dy="-5" font-size="9">+</tspan></text>
+    <text x="560" y="100" text-anchor="start" font-size="12" fill="var(--figure-ink-soft)">(1)</text>
+
+    <!-- Accolade accent : NH4+ CÈDE H+ (le proton part de l'acide) -->
+    <line x1="220" y1="72" x2="420" y2="72" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <line x1="220" y1="72" x2="220" y2="86" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <line x1="420" y1="72" x2="420" y2="84" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <polygon points="420,90 414,80 426,80" fill="var(--figure-accent)"/>
+    <text x="320" y="64" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-accent)">cède H+</text>
+
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — demi-équation (2) : H2O + H+ ⇌ H3O+, la base
+       du couple 2 CAPTE le proton
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+
+    <text x="220" y="170" text-anchor="middle" font-size="16"
+          fill="var(--figure-ink)">H<tspan
+          dy="4" font-size="9">2</tspan><tspan
+          dy="-4">O</tspan>
+    </text>
+    <text x="254" y="170" text-anchor="middle" font-size="16" fill="var(--figure-ink)">+</text>
+    <text x="288" y="170" text-anchor="middle" font-size="16"
+          fill="var(--figure-ink)">H<tspan dy="-5" font-size="9">+</tspan></text>
+    <text x="345" y="170" text-anchor="middle" font-size="16" fill="var(--figure-ink)">&#8652;</text>
+    <text x="405" y="170" text-anchor="middle" font-size="16"
+          fill="var(--figure-ink)">H<tspan
+          dy="4" font-size="9">3</tspan><tspan
+          dy="-4">O</tspan><tspan
+          dy="-5" font-size="9">+</tspan>
+    </text>
+    <text x="560" y="170" text-anchor="start" font-size="12" fill="var(--figure-ink-soft)">(2)</text>
+
+    <!-- Accolade accent : H+ ARRIVE sur H2O (la base capte) -->
+    <line x1="220" y1="142" x2="288" y2="142" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <line x1="220" y1="142" x2="220" y2="154" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <polygon points="220,160 214,150 226,150" fill="var(--figure-accent)"/>
+    <line x1="288" y1="142" x2="288" y2="156" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <text x="254" y="134" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-accent)">capte H+</text>
+
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — on additionne (1) et (2) : la somme, avec les
+       deux H+ mis en évidence (ce sont eux qui vont s'annuler)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+
+    <!-- Métaphore d'addition en colonne : signe "+" et barre -->
+    <text x="45" y="177" text-anchor="middle" font-size="20" font-weight="700"
+          fill="var(--figure-ink-soft)">+</text>
+    <line x1="45" y1="195" x2="595" y2="195" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+
+    <!-- Capsules de mise en évidence, DERRIÈRE les deux H+ de la somme -->
+    <rect x="246" y="230" width="28" height="24" rx="6"
+          fill="var(--figure-accent)" fill-opacity="0.18"
+          stroke="var(--figure-accent)" stroke-width="1.1" stroke-opacity="0.55"/>
+    <rect x="430" y="230" width="28" height="24" rx="6"
+          fill="var(--figure-accent)" fill-opacity="0.18"
+          stroke="var(--figure-accent)" stroke-width="1.1" stroke-opacity="0.55"/>
+
+    <!-- La somme : NH4+ + H2O + H+ ⇌ NH3 + H+ + H3O+ -->
+    <text x="120" y="245" text-anchor="middle" font-size="13.5"
+          fill="var(--figure-ink)">NH<tspan
+          dy="3" font-size="8">4</tspan><tspan
+          dy="-8" font-size="8">+</tspan>
+    </text>
+    <text x="160" y="245" text-anchor="middle" font-size="13.5" fill="var(--figure-ink)">+</text>
+    <text x="196" y="245" text-anchor="middle" font-size="13.5"
+          fill="var(--figure-ink)">H<tspan dy="3" font-size="8">2</tspan><tspan dy="-3">O</tspan></text>
+    <text x="232" y="245" text-anchor="middle" font-size="13.5" fill="var(--figure-ink)">+</text>
+    <text x="260" y="245" text-anchor="middle" font-size="13.5"
+          font-weight="700" fill="var(--figure-ink)">H<tspan dy="-5" font-size="8">+</tspan></text>
+    <text x="320" y="245" text-anchor="middle" font-size="13.5" fill="var(--figure-ink)">&#8652;</text>
+    <text x="380" y="245" text-anchor="middle" font-size="13.5"
+          fill="var(--figure-ink)">NH<tspan dy="3" font-size="8">3</tspan></text>
+    <text x="416" y="245" text-anchor="middle" font-size="13.5" fill="var(--figure-ink)">+</text>
+    <text x="444" y="245" text-anchor="middle" font-size="13.5"
+          font-weight="700" fill="var(--figure-ink)">H<tspan dy="-5" font-size="8">+</tspan></text>
+    <text x="474" y="245" text-anchor="middle" font-size="13.5" fill="var(--figure-ink)">+</text>
+    <text x="520" y="245" text-anchor="middle" font-size="13.5"
+          fill="var(--figure-ink)">H<tspan
+          dy="3" font-size="8">3</tspan><tspan
+          dy="-3">O</tspan><tspan
+          dy="-5" font-size="8">+</tspan>
+    </text>
+
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — les deux H+ s'annulent ; équation nette
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+
+    <!-- Marques barrées, exactement sur les deux H+ mis en évidence -->
+    <line x1="244" y1="232" x2="276" y2="252" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="428" y1="232" x2="460" y2="252" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+
+    <!-- Flèche verticale : de la somme (annulée) vers l'équation nette -->
+    <line x1="320" y1="262" x2="320" y2="292" stroke="var(--figure-accent)" stroke-width="2"/>
+    <polygon points="320,297 313,287 327,287" fill="var(--figure-accent)"/>
+    <text x="336" y="283" text-anchor="start" font-size="11" font-style="italic"
+          fill="var(--figure-accent)">s&#8217;annule</text>
+
+    <!-- Équation nette : NH4+ + H2O ⇌ NH3 + H3O+ -->
+    <text x="190" y="320" text-anchor="middle" font-size="16" font-weight="600"
+          fill="var(--figure-accent)">NH<tspan
+          dy="4" font-size="9">4</tspan><tspan
+          dy="-9" font-size="9">+</tspan>
+    </text>
+    <text x="230" y="320" text-anchor="middle" font-size="16" font-weight="600" fill="var(--figure-accent)">+</text>
+    <text x="264" y="320" text-anchor="middle" font-size="16" font-weight="600"
+          fill="var(--figure-accent)">H<tspan dy="4" font-size="9">2</tspan><tspan dy="-4">O</tspan></text>
+    <text x="320" y="320" text-anchor="middle" font-size="16" font-weight="600" fill="var(--figure-accent)">&#8652;</text>
+    <text x="376" y="320" text-anchor="middle" font-size="16" font-weight="600"
+          fill="var(--figure-accent)">NH<tspan dy="4" font-size="9">3</tspan></text>
+    <text x="410" y="320" text-anchor="middle" font-size="16" font-weight="600" fill="var(--figure-accent)">+</text>
+    <text x="452" y="320" text-anchor="middle" font-size="16" font-weight="600"
+          fill="var(--figure-accent)">H<tspan
+          dy="4" font-size="9">3</tspan><tspan
+          dy="-4">O</tspan><tspan
+          dy="-5" font-size="9">+</tspan>
+    </text>
+
+    <!-- Annotation -->
+    <text x="320" y="345" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink)">(comme les e<tspan dy="-5" font-size="8">&#8722;</tspan><tspan dy="5"> en oxydoréduction)</tspan></text>
+
+  </g><!-- /step-4 -->
+
+</svg>

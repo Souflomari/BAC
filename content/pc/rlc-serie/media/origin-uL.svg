@@ -1,0 +1,212 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" width="480" height="240"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Origine de la relation u_L = L·di/dt : la bobine s’oppose aux variations de courant">
+  <title>Pourquoi u_L = L·di/dt ?</title>
+  <!--
+    origin-uL.svg — Origine de u_L = L·di/dt
+    Deux panneaux côte à côte :
+      GAUCHE  : bobine avec courant croissant + flèche d'opposition + mini-graphe i(t)
+      DROITE  : chaîne proportionnalité → formule u_L = L·di/dt
+
+    La bobine et le graphe i(t) sont réunis dans le panneau gauche pour éviter
+    la densité à trois panneaux serrés. Le graphe sert d'illustration du di/dt,
+    pas d'axe quantitatif.
+
+    Palette : var(--figure-*) CSS vars. Fond transparent.
+    Largeur 480px, hauteur 240px.
+
+    Panneaux : --figure-surface fond + --figure-grid bordure
+    Axe 0 / arrowheads : --figure-ink-soft
+    "pente = di/dt" : ancré sur le triangle Δt/Δi, pas sur l'axe
+    "u_L ∝ di/dt" : ancré par une ligne de repère discrète vers la bobine
+    ↓ ASCII remplacé par polygon dessiné
+    Subscripts : dy="4" uniforme pour u_L
+
+    Mise en étapes (LESSON-EXPERIENCE-SPEC §2.5 — figure classée schéma : ce
+    n'est pas un u_L(t) tracé sur des axes, le mini-graphe i(t) n'est qu'une
+    illustration qualitative interne au panneau gauche). Révélation
+    progressive 3 étapes, ordre = geste d'enseignement (voit la bobine résister
+    → visualise le taux de variation → formalise en équation) :
+      step-1 : la scène physique — bobine, courant croissant, opposition,
+               lien conceptuel u_L ∝ di/dt
+      step-2 : le mini-graphe i(t) — visualise di/dt comme une pente
+      step-3 : le panneau droit — chaîne de proportionnalité → u_L = L·di/dt
+  -->
+
+  <g id="step-1">
+    <!-- ── Titre ──────────────────────────────────────────── -->
+    <text x="240" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Pourquoi u<tspan dy="3" font-size="8.5">L</tspan><tspan dy="-3"> = L·di/dt ?</tspan>
+    </text>
+
+    <!-- ══════════════════════════════════════════════════════
+         PANNEAU GAUCHE — Bobine + graphe i(t) qualitatif
+         x=12..290, y=30..232
+         ══════════════════════════════════════════════════════ -->
+    <rect x="12" y="30" width="278" height="202" rx="7"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- ── Sous-panneau bobine (haut) ── -->
+    <!-- Fil entrant à gauche -->
+    <line x1="20"  y1="100" x2="50"  y2="100"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <!-- Fil sortant à droite (vers bord panneau) -->
+    <line x1="170" y1="100" x2="282" y2="100"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Corps de la bobine — 4 arcs, x=50..170, y=100 -->
+    <path d="M50,100  a15,12 0 0,1 30,0"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M80,100  a15,12 0 0,1 30,0"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M110,100 a15,12 0 0,1 30,0"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M140,100 a15,12 0 0,1 30,0"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+
+    <!-- Étiquette L au-dessus de la bobine -->
+    <text x="110" y="84" text-anchor="middle"
+          font-size="13" font-style="italic" fill="var(--figure-ink)">L</text>
+
+    <!-- Flèche courant i → (croissant, entrant à gauche) -->
+    <line x1="22" y1="120" x2="62" y2="120"
+          stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="62,120 52,115.5 52,124.5" fill="var(--figure-accent)"/>
+    <text x="40" y="136" text-anchor="middle"
+          font-size="11" font-style="italic" fill="var(--figure-accent)">i ↑</text>
+    <text x="40" y="148" text-anchor="middle"
+          font-size="9" fill="var(--figure-ink-soft)">(croissant)</text>
+
+    <!-- Flèche d'opposition ← (bobine résiste) -->
+    <line x1="172" y1="120" x2="128" y2="120"
+          stroke="var(--figure-ink-soft)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="128,120 138,115.5 138,124.5" fill="var(--figure-ink-soft)"/>
+    <text x="156" y="136" text-anchor="middle"
+          font-size="9.5" fill="var(--figure-ink-soft)">opposition</text>
+    <text x="156" y="148" text-anchor="middle"
+          font-size="9.5" fill="var(--figure-ink-soft)">au changement</text>
+
+    <!--
+      Lien conceptuel u_L ∝ di/dt : ancré sous la bobine, à gauche,
+      avec une ligne de repère discrète pointant vers le fil de la bobine
+      [finding 6 — anchor floating labels].
+    -->
+    <!-- Ligne de repère : du label vers le fil de sortie de la bobine -->
+    <line x1="220" y1="88" x2="210" y2="101"
+          stroke="var(--figure-ink-soft)" stroke-width="0.9"
+          stroke-dasharray="3,2" stroke-linecap="round"/>
+    <text x="224" y="86" font-size="9" font-style="italic"
+          fill="var(--figure-ink-soft)">u<tspan
+          dy="3" font-size="7.5">L</tspan><tspan dy="-3"> ∝ di/dt</tspan>
+    </text>
+
+    <!-- ══════════════════════════════════════════════════════
+         PANNEAU DROIT — cadre (contenu ajouté à l'étape 3)
+         x=302..468, y=30..232
+         ══════════════════════════════════════════════════════ -->
+    <rect x="302" y="30" width="166" height="202" rx="7"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!-- ── Mini-graphe i(t) (bas du panneau gauche) ── -->
+    <!-- Zone graphe : axes de y=165..215, x=32..200 -->
+    <!-- Axes mini — ink-soft -->
+    <line x1="32"  y1="208" x2="200" y2="208"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-linecap="round"/>
+    <polygon points="200,208 191,204.5 191,211.5" fill="var(--figure-ink-soft)"/>
+    <line x1="32"  y1="208" x2="32"  y2="168"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-linecap="round"/>
+    <polygon points="32,168 27.5,177 36.5,177" fill="var(--figure-ink-soft)"/>
+
+    <!-- Labels axes mini -->
+    <text x="206" y="212" font-size="10" font-style="italic"
+          fill="var(--figure-ink-soft)">t</text>
+    <text x="28"  y="168" text-anchor="end" font-size="10" font-style="italic"
+          fill="var(--figure-ink-soft)">i</text>
+    <text x="28"  y="212" text-anchor="end" font-size="9.5"
+          fill="var(--figure-ink-soft)">0</text>
+
+    <!-- i(t) croissant — droite de (32,208) à (192,174) -->
+    <line x1="32" y1="208" x2="192" y2="174"
+          stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+
+    <!-- Triangle Δt/Δi pour montrer la pente = di/dt -->
+    <!-- Triangle : x=90..150, horizontal à y=197, vertical à x=150 de 197 à 184 -->
+    <line x1="90"  y1="196" x2="150" y2="196"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"
+          stroke-dasharray="3,2" stroke-linecap="round"/>
+    <line x1="150" y1="196" x2="150" y2="183"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"
+          stroke-dasharray="3,2" stroke-linecap="round"/>
+    <text x="120"  y="206" text-anchor="middle"
+          font-size="8.5" fill="var(--figure-ink-soft)">Δt</text>
+    <text x="158"  y="190" text-anchor="start"
+          font-size="8.5" fill="var(--figure-ink-soft)">Δi</text>
+
+    <!--
+      "pente = di/dt" ancré à côté du sommet du triangle (x=150, y=183),
+      pas sur l'axe — claire association avec le triangle [finding 6].
+    -->
+    <!-- REMONTÉE de 14 px (2026-09-04) : à y=180 elle était couchée sur la
+         droite i(t) elle-même (y≈182 à cette abscisse), qui la rayait sur
+         54 % de sa largeur. La droite MONTE : une étiquette horizontale
+         posée près d'elle est rattrapée par la pente sur sa propre longueur —
+         il faut dégager la hauteur du texte PLUS la montée sur sa largeur. -->
+    <text x="156" y="166" text-anchor="start"
+          font-size="8.5" fill="var(--figure-ink-soft)">pente = di/dt</text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- ══════════════════════════════════════════════════════
+         PANNEAU DROIT — Proportionnalité → formule
+         x=302..468, y=30..232
+         ══════════════════════════════════════════════════════ -->
+
+    <!-- Étape 1 -->
+    <text x="385" y="62" text-anchor="middle"
+          font-size="10" fill="var(--figure-ink-soft)">u<tspan
+          dy="3" font-size="7.5">L</tspan><tspan dy="-3"> ∝ di/dt</tspan>
+    </text>
+
+    <!-- Séparateur -->
+    <line x1="324" y1="74" x2="446" y2="74"
+          stroke="var(--figure-grid)" stroke-width="0.8" stroke-dasharray="4,4"/>
+
+    <!-- L = constante de proportionnalité -->
+    <text x="385" y="94" text-anchor="middle"
+          font-size="10" fill="var(--figure-ink-soft)">L = « inertie »</text>
+    <text x="385" y="108" text-anchor="middle"
+          font-size="10" fill="var(--figure-ink-soft)">de la bobine</text>
+
+    <!-- Flèche vers bas — dessinée (pas de glyphe ASCII ↓) -->
+    <line x1="385" y1="116" x2="385" y2="132"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round"/>
+    <polygon points="385,132 380.5,122 389.5,122" fill="var(--figure-ink-soft)"/>
+
+    <!-- Boîte formule -->
+    <rect x="312" y="140" width="146" height="36" rx="5"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="385" y="164" text-anchor="middle"
+          font-size="15" font-style="italic" fill="var(--figure-accent)">u<tspan
+          dy="4" font-size="9">L</tspan><tspan dy="-4"> = L·di/dt</tspan>
+    </text>
+
+    <!-- Séparateur -->
+    <line x1="324" y1="186" x2="446" y2="186"
+          stroke="var(--figure-grid)" stroke-width="0.8" stroke-dasharray="4,4"/>
+
+    <!-- Interprétation de L -->
+    <text x="385" y="200" text-anchor="middle"
+          font-size="9" fill="var(--figure-ink-soft)">L grand :</text>
+    <text x="385" y="212" text-anchor="middle"
+          font-size="9" fill="var(--figure-ink-soft)">forte résistance au</text>
+    <text x="385" y="224" text-anchor="middle"
+          font-size="9" fill="var(--figure-ink-soft)">changement de courant</text>
+  </g><!-- /step-3 -->
+
+</svg>

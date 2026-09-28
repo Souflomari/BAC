@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 620" width="640" height="620"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img"
+     aria-label="Les racines n-ièmes de l’unité sur le cercle trigonométrique : un curseur sur n (de 3 à 8) redessine le polygone régulier formé par les n racines, régulièrement espacées de 2π/n.">
+  <title>Les racines n-ièmes de l’unité, étape par étape puis manipulable</title>
+  <!--
+    racines-unite.svg — STAGED + MANIPULABLE (docs/design/INTERACTIVE-FIGURE-SPEC.md).
+    Le pilote "fun/quirky" délibéré de la vague interactive : un CURSEUR
+    (control.kind = "slider", pas un point à glisser — n est un nombre de
+    sommets, pas une position sur une courbe) sur n ∈ [3,8] redessine le
+    polygone régulier des racines n-ièmes de l'unité.
+
+    step-1 : le cercle unité seul.
+    step-2 : + les n racines (points + polygone) et la boîte formule — ici
+             que la manipulation se déverrouille (racines-unite.interactive.json,
+             unlockAfterStage = 2). Un pulse-settle-once (voir globals.css)
+             se déclenche UNE FOIS quand n revient à 3 — l'exemple travaillé
+             au R4 (racines cubiques) — jamais en boucle, jamais au montage.
+
+    Repère écran (inchangé de l'original) : centre O = (320,300), rayon du
+    cercle unité R = 170 px. z_k = e^{i2kπ/n} -> pixel (320+170·cos(2kπ/n),
+    300-170·sin(2kπ/n)) — voir web/src/lib/interactive-figures/racines-unite.ts.
+
+    Les n points sont régénérés comme UN SEUL path (n sous-chemins en
+    cercle, remplis) plutôt qu'un pool fixe de <circle> avec une capacité
+    de masquage que le contrat recompute (path/point/text) n'a pas — même
+    idée que le path multi-sous-chemins, appliquée aux points cette fois.
+    L'arc 2π/3 de l'original (spécifique à n=3) n'est pas repris ici : sa
+    généralisation à n quelconque (Bézier quadratique d'angle variable)
+    n'apportait pas assez pour sa complexité ; la formule + le polygone qui
+    se redessine portent déjà tout le "watch it redraw" du pilote.
+
+    Rôle des couleurs (inchangé de l'original) :
+      les racines (points) et la formule : --figure-accent
+      cercle unité, polygone, axes, origine : --figure-ink-soft
+
+    Les captions sont portées par racines-unite.stages.json — aucun texte
+    de légende baké ici (même convention que tangente-derivee.svg).
+  -->
+
+  <rect x="20" y="34" width="600" height="520" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- Titre -->
+  <text x="320" y="14" text-anchor="middle" font-size="12.5" font-weight="600"
+        fill="var(--figure-ink)">Les racines n-ièmes de l’unité</text>
+  <!-- Sous-titre — formule générale, valable pour tout n, jamais recalculé -->
+  <text x="320" y="28" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">z<tspan dy="2" font-size="8">k</tspan><tspan dy="-2"> = e</tspan><tspan dy="-4" font-size="8">i2k&#960;/n</tspan><tspan dy="4">, k = 0, 1, …, n−1 — n points régulièrement espacés sur le cercle unité</tspan></text>
+
+  <!-- Axe Re -->
+  <line x1="120" y1="300" x2="520" y2="300" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,4"/>
+  <polygon points="520,300 508,295.5 508,304.5" fill="var(--figure-ink-soft)"/>
+  <text x="505" y="316" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">Re</text>
+
+  <!-- Axe Im -->
+  <line x1="320" y1="500" x2="320" y2="100" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,4"/>
+  <polygon points="320,100 315.5,111 324.5,111" fill="var(--figure-ink-soft)"/>
+  <text x="333" y="110" text-anchor="start" font-size="11" fill="var(--figure-ink-soft)">Im</text>
+
+  <!-- Origine -->
+  <circle cx="320" cy="300" r="2.5" fill="var(--figure-ink-soft)"/>
+  <text x="306" y="317" text-anchor="middle" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">O</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le cercle unité seul
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <circle cx="320" cy="300" r="170" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — les n racines, le polygone, la formule —
+       déverrouille la manipulation (unlockAfterStage = 2)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path id="roots-polygon" d="M490,300 L235,152.78 L235,447.22 Z"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="6,4"/>
+
+    <path id="roots-dots"
+          d="M485,300 a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0
+             M230,152.78 a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0
+             M230,447.22 a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0"
+          fill="var(--figure-accent)"/>
+
+    <!-- z0 est toujours à l'angle 0 (point (490,300)), quel que soit n —
+         seule racine assez stable pour porter une étiquette algébrique
+         fixe sans jamais être fausse. -->
+    <text x="505" y="304" font-size="11" fill="var(--figure-accent)">z₀ = 1</text>
+
+    <!-- Boîte formule -->
+    <rect x="160" y="490" width="320" height="56" rx="6" fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="320" y="510" text-anchor="middle" font-size="13" font-style="italic"
+          fill="var(--figure-accent)">z<tspan dy="3" font-size="9" font-style="normal">k</tspan><tspan dy="-3"> = e</tspan><tspan dy="-6" font-size="9">i2k&#960;/n</tspan><tspan dy="6" font-style="normal"> (k = 0, 1, …, n−1)</tspan></text>
+    <text id="formule-n" x="320" y="533" text-anchor="middle" font-size="12.5"
+          fill="var(--figure-accent)">ici, n = 3 : 3 racines espacées de 2π/3</text>
+  </g><!-- /step-2 -->
+
+</svg>

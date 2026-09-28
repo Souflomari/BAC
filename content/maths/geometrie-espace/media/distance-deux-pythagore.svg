@@ -1,0 +1,126 @@
+<svg viewBox="0 0 760 480" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Un repère de l’espace O, i, j, k avec le plan de base O,i,j légèrement quadrillé ; deux points A et B au-dessus du plan, reliés à leurs projetés H A et H B par des verticales en pointillé ; le segment H A H B dans le plan, avec son angle droit, illustrant le premier Pythagore à plat ; puis un triangle rectangle vertical dressé sur ce segment, d’hypoténuse A B, illustrant le second Pythagore, menant à la formule de la distance dans l’espace.">
+  <title>La formule de la distance AB : deux Pythagore empilés</title>
+  <!--
+    distance-deux-pythagore.svg — figure du R1 (« La formule de la
+    distance — et pourquoi elle est juste »).
+    Convention de projection, perspective cavalière (comme plan-normal.svg
+    et sphere-plan.svg) :
+    - axe i (horizontal) : vraie grandeur, angle 0°.
+    - axe j (profondeur) : incliné 45°, réduction 0,5.
+    - axe k (vertical) : vraie grandeur, tracé strictement vertical.
+    Le plan de base (O,i,j) est représenté par un parallélogramme
+    légèrement quadrillé (lignes fines, var(--figure-grid)) — décor, pas
+    une mesure.
+
+    H_A et H_B sont deux points CHOISIS dans le plan (leurs coordonnées
+    (x,y) exactes ne sont pas affichées — la figure illustre le mécanisme,
+    pas un exemple chiffré). A et B sont directement au-dessus, à des
+    hauteurs différentes (vraie grandeur, vertical).
+
+    Angles droits DIVULGUÉS : au coin K (étape 2), le petit repère en
+    équerre suit les directions LOCALES du plan (une patte parallèle à i,
+    horizontale à l'écran — vraie grandeur — l'autre parallèle à j, à 45°
+    réduite) : l'angle droit est réel dans la géométrie du plan, mais son
+    dessin en équerre à 45° n'est pas visuellement carré à l'écran — la
+    même imprécision acceptée qu'entre n⃗ et l'arête de profondeur dans
+    plan-normal.svg. Au point P (étape 3), l'angle droit est entre PB
+    (vertical, vraie grandeur) et PA (direction générale, translatée de
+    H_AH_B) — pour la même raison, le dessin de cette équerre n'est pas
+    non plus visuellement carré ; c'est l'angle droit réel du théorème
+    (AH_A et BH_B parallèles à k⃗, donc perpendiculaires au plan et à
+    H_AH_B) qui est mis en scène, pas une fidélité au pixel près.
+
+    Mise en étapes (StagedFigure) — 4 couches, l'ordre exact du texte :
+    d'abord les deux points et leurs projetés (le geste « aplatir »),
+    puis le premier Pythagore à plat, puis le second Pythagore à la
+    verticale, puis la formule assemblée.
+    step-1 : repère léger, plan quadrillé, A, B, H_A, H_B, verticales
+             pointillées.
+    step-2 : + segment H_AH_B (accent) + angle droit en K + sa formule.
+    step-3 : + triangle rectangle A-P-B (P auxiliaire), hypoténuse AB
+             (accent), angle droit en P, |z_B − z_A|, sa formule.
+    step-4 : + la formule assemblée AB = √(...).
+  -->
+  <rect width="760" height="480" fill="var(--figure-surface)"/>
+
+  <g id="step-1">
+    <!-- ── Repère léger (O ; i, j, k) ────────────────────────────────────  -->
+    <line x1="70" y1="430" x2="130" y2="430" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <polygon points="140,430 128,425 128,435" fill="var(--figure-ink-soft)"/>
+    <line x1="70" y1="430" x2="98" y2="402" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <polygon points="106,394 96,398 100,408" fill="var(--figure-ink-soft)"/>
+    <line x1="70" y1="430" x2="70" y2="370" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <polygon points="70,358 65,370 75,370" fill="var(--figure-ink-soft)"/>
+    <circle cx="70" cy="430" r="3" fill="var(--figure-ink-soft)"/>
+    <text x="52" y="448" font-size="14" font-style="italic" fill="var(--figure-ink-soft)">O</text>
+    <text x="140" y="446" font-size="13" font-style="italic" fill="var(--figure-ink-soft)">i</text>
+    <text x="106" y="392" font-size="13" font-style="italic" fill="var(--figure-ink-soft)">j</text>
+    <text x="56" y="366" font-size="13" font-style="italic" fill="var(--figure-ink-soft)">k</text>
+
+    <!-- ── Le plan de base (O,i,j), légèrement quadrillé ────────────────── -->
+    <path d="M 70 430 L 600 430 L 680 350 L 150 350 Z"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1.5"/>
+    <line x1="96.4" y1="403.6" x2="626.4" y2="403.6" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="122.8" y1="377.2" x2="652.8" y2="377.2" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="202.5" y1="430" x2="282.5" y2="350" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="335" y1="430" x2="415" y2="350" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="467.5" y1="430" x2="547.5" y2="350" stroke="var(--figure-grid)" stroke-width="1"/>
+    <text x="612" y="418" font-size="13" fill="var(--figure-ink-soft)">(<tspan font-style="italic">O, i, j</tspan>)</text>
+
+    <!-- ── Verticales pointillées vers les projetés ──────────────────────  -->
+    <line x1="250" y1="405" x2="250" y2="265" stroke="var(--figure-ink-soft)" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <line x1="480" y1="375" x2="480" y2="285" stroke="var(--figure-ink-soft)" stroke-width="1.5" stroke-dasharray="5 4"/>
+
+    <!-- ── Points A, B (au-dessus du plan) ───────────────────────────────  -->
+    <circle cx="250" cy="265" r="4" fill="var(--figure-ink)"/>
+    <text x="228" y="256" font-size="16" font-style="italic" fill="var(--figure-ink)">A</text>
+    <circle cx="480" cy="285" r="4" fill="var(--figure-ink)"/>
+    <text x="490" y="280" font-size="16" font-style="italic" fill="var(--figure-ink)">B</text>
+
+    <!-- ── Projetés H_A, H_B (dans le plan) ──────────────────────────────  -->
+    <circle cx="250" cy="405" r="3.5" fill="var(--figure-ink)"/>
+    <text x="222" y="425" font-size="14" font-style="italic" fill="var(--figure-ink)">H<tspan dy="3" font-size="70%">A</tspan></text>
+    <circle cx="480" cy="375" r="3.5" fill="var(--figure-ink)"/>
+    <text x="486" y="396" font-size="14" font-style="italic" fill="var(--figure-ink)">H<tspan dy="3" font-size="70%">B</tspan></text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!-- ── Angle droit au coin K (local, patte i puis patte j) ───────────── -->
+    <path d="M 436 405 L 446 395 L 460 395" fill="none" stroke="var(--figure-ink)" stroke-width="1.3"/>
+
+    <!-- ── Segment H_AH_B, accent — premier Pythagore, à plat ────────────── -->
+    <line x1="250" y1="405" x2="480" y2="375" stroke="var(--figure-accent)" stroke-width="2.4"/>
+
+    <text x="330" y="430" font-size="13" fill="var(--figure-accent)">H<tspan dy="3" font-size="70%">A</tspan><tspan dy="-3">H</tspan><tspan dy="3" font-size="70%">B</tspan><tspan dy="-3"> = &#8730;((x</tspan><tspan dy="3" font-size="70%">B</tspan><tspan dy="-3">&#8722;x</tspan><tspan dy="3" font-size="70%">A</tspan><tspan dy="-3">)&#178; + (y</tspan><tspan dy="3" font-size="70%">B</tspan><tspan dy="-3">&#8722;y</tspan><tspan dy="3" font-size="70%">A</tspan><tspan dy="-3">)&#178;)</tspan></text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- ── Point auxiliaire P (à la hauteur de A, à la verticale de H_B) ── -->
+    <line x1="250" y1="265" x2="480" y2="235" stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <line x1="480" y1="235" x2="480" y2="285" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <circle cx="480" cy="235" r="3" fill="var(--figure-ink-soft)"/>
+    <text x="488" y="230" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">P</text>
+
+    <!-- ── Angle droit en P ───────────────────────────────────────────────  -->
+    <path d="M 480 249 L 466 251 L 466 237" fill="none" stroke="var(--figure-ink)" stroke-width="1.3"/>
+
+    <!-- ── Hypoténuse AB, accent — second Pythagore, à la verticale ─────── -->
+    <line x1="250" y1="265" x2="480" y2="285" stroke="var(--figure-accent)" stroke-width="2.6"/>
+    <!-- DESCENDUE dans l'entre-deux (2026-09-04) : posée à y=252, l'étiquette
+         chevauchait la ligne pointillée A→P, qui la rayait sur 58 % de sa
+         largeur. Elle nomme pourtant le segment PLEIN A→B, situé plus bas ;
+         à y=270 elle tombe dans l'espace libre entre les deux, du côté de ce
+         qu'elle désigne. -->
+    <text x="330" y="270" font-size="15" font-style="italic" fill="var(--figure-accent)">AB</text>
+
+    <text x="492" y="264" font-size="13" fill="var(--figure-ink)">|z<tspan dy="3" font-size="70%">B</tspan><tspan dy="-3">&#8722;z</tspan><tspan dy="3" font-size="70%">A</tspan><tspan dy="-3">|</tspan></text>
+
+    <text x="330" y="465" font-size="13" fill="var(--figure-ink)">AB&#178; = H<tspan dy="3" font-size="70%">A</tspan><tspan dy="-3">H</tspan><tspan dy="3" font-size="70%">B</tspan><tspan dy="-3">&#178; + (z</tspan><tspan dy="3" font-size="70%">B</tspan><tspan dy="-3">&#8722;z</tspan><tspan dy="3" font-size="70%">A</tspan><tspan dy="-3">)&#178;</tspan></text>
+  </g><!-- /step-3 -->
+
+  <g id="step-4">
+    <!-- ── La formule assemblée ──────────────────────────────────────────  -->
+    <text x="380" y="40" font-size="16" font-style="italic" fill="var(--figure-ink)" text-anchor="middle">AB = &#8730;( (x<tspan dy="3" font-size="70%">B</tspan><tspan dy="-3">&#8722;x</tspan><tspan dy="3" font-size="70%">A</tspan><tspan dy="-3">)&#178; + (y</tspan><tspan dy="3" font-size="70%">B</tspan><tspan dy="-3">&#8722;y</tspan><tspan dy="3" font-size="70%">A</tspan><tspan dy="-3">)&#178; + (z</tspan><tspan dy="3" font-size="70%">B</tspan><tspan dy="-3">&#8722;z</tspan><tspan dy="3" font-size="70%">A</tspan><tspan dy="-3">)&#178; )</tspan></text>
+  </g><!-- /step-4 -->
+</svg>

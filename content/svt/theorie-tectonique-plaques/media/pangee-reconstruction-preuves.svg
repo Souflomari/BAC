@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 560"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Reconstruction schématique du Gondwana : Amérique du Sud et Afrique assemblées le long du bord de leur plateau continental, avec l’Antarctique, l’Inde et l’Australie regroupées autour. Quatre familles de preuves indépendantes se superposent sur ce même assemblage : les fossiles de Mesosaurus et de Cynognathus à cheval sur la jointure Amérique du Sud-Afrique, le Glossopteris présent sur les cinq masses, une chaîne de montagnes plissées continue entre Afrique australe et Argentine, et des stries glaciaires vieilles d’environ 300 millions d’années rayonnant depuis un pôle Sud reconstitué, avec des fossiles de forêt tropicale dans une Antarctique alors tempérée.">
+  <title>Les quatre arguments de Wegener, sur la même reconstruction</title>
+
+  <!--
+    pangee-reconstruction-preuves.svg — STAGED, 4 étapes (LESSON-EXPERIENCE-
+    SPEC §2.5) — la figure phare du R1 : les quatre familles de preuves sont
+    INDÉPENDANTES mais se superposent toutes sur LA MÊME reconstruction. La
+    force de l'argument tient précisément à cette superposition (R1, "Ce qui
+    rend l'ensemble convaincant") — la figure doit donc garder l'assemblage
+    du step-1 identique à travers les quatre étapes, et se contenter
+    d'AJOUTER une couche de preuve à chaque étape, jamais reconstruire.
+
+    step-1 (concordance des côtes) : Amérique du Sud et Afrique assemblées
+      le long du bord du plateau continental (ligne dentelée commune, PAS le
+      littoral actuel) ; Antarctique, Inde, Australie regroupées autour.
+    step-2 (paléontologique) : Mesosaurus et Cynognathus à cheval sur la
+      jointure Amérique du Sud/Afrique ; Glossopteris sur les cinq masses.
+    step-3 (géologique) : chaîne plissée continue Afrique australe ↔
+      Argentine, traversant la même jointure.
+    step-4 (paléoclimatique) : pôle Sud reconstitué (~-300 Ma) au sein de
+      l'Antarctique, stries glaciaires rayonnant vers les quatre autres
+      masses, fossiles de forêt tropicale dans l'Antarctique elle-même.
+
+    Convention couleur (5 tokens) :
+      continents (contours, fond)      : --figure-ink / --figure-ink-soft / --figure-surface
+      SEUL accent, réutilisé pour CHAQUE preuve ajoutée (jointure du
+      step-1, zones fossiles du step-2, bande géologique du step-3, pôle et
+      stries du step-4) : --figure-accent — une preuve nouvelle par étape,
+      mais une seule couleur d'accent du début à la fin, pour que l'œil
+      comprenne que ce sont des preuves DU MÊME phénomène, pas des idées
+      concurrentes.
+
+    Simplifications pédagogiques assumées (schéma introductif, pas une
+    carte) : formes continentales lissées et non côtières, pas une
+    projection cartographique réelle — suffisantes pour porter la
+    reconstruction. Le raccord dentelé exact (bord du plateau continental)
+    n'est modélisé PRÉCISÉMENT qu'entre l'Amérique du Sud et l'Afrique — le
+    couple explicitement cité par l'argument 1 du texte ; l'Antarctique,
+    l'Inde et l'Australie sont simplement regroupées, adjacentes, sans
+    jointure dentelée dédiée (l'argument des côtes du texte ne porte que sur
+    le couple Afrique/Amérique du Sud).
+  -->
+
+  <text x="390" y="20" text-anchor="middle" font-size="13" font-weight="600"
+        letter-spacing="0.01em" fill="var(--figure-ink)">
+    Les quatre arguments de Wegener, sur une seule reconstruction
+  </text>
+
+  <g id="step-1">
+    <!-- Amérique du Sud — bord est = la jointure dentelée partagée avec l'Afrique -->
+    <path d="M345,380 C310,390 275,388 250,370 C220,348 200,310 195,270
+             C192,240 200,210 220,195 C250,178 300,180 335,195
+             L345,195 L338,230 L352,255 L332,285 L348,315 L335,345 Z"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.7"/>
+    <text x="250" y="290" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-ink)">Amérique du Sud</text>
+
+    <!-- Afrique — bord ouest = la MÊME jointure dentelée -->
+    <path d="M345,195 C400,178 470,182 505,208 C530,228 535,265 528,300
+             C522,335 505,368 475,382 C440,398 395,392 365,378
+             L345,380 L335,345 L348,315 L332,285 L352,255 L338,230 Z"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.7"/>
+    <text x="440" y="280" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-ink)">Afrique</text>
+
+    <!-- Jointure — bord du plateau continental, PAS le littoral actuel : accent -->
+    <path d="M345,195 L338,230 L352,255 L332,285 L348,315 L335,345 L345,380"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2.2"/>
+    <!-- Le bloc passe du côté AMÉRIQUE de la jointure : à droite, ses deux
+         dernières lignes entraient dans « Afrique » et « (pas le littoral
+         actuel) » recouvrait le mot à 44 %. À gauche la place existe entre
+         les ellipses de Cynognathus (y ≤ 233) et « Amérique du Sud »
+         (y ≥ 281). Une amorce garde le lien avec la ligne dentelée. -->
+    <line x1="330" y1="250" x2="349" y2="256" stroke="var(--figure-accent)"
+          stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="326" y="244" text-anchor="end" font-size="9.5" font-weight="600" fill="var(--figure-accent)">bord du plateau</text>
+    <text x="326" y="256" text-anchor="end" font-size="9.5" font-weight="600" fill="var(--figure-accent)">continental</text>
+    <text x="326" y="268" text-anchor="end" font-size="9" fill="var(--figure-accent)">(pas le littoral actuel)</text>
+
+    <!-- Antarctique -->
+    <path d="M300,400 C330,385 380,382 420,388 C460,395 490,410 500,435
+             C508,455 495,475 470,485 C430,500 370,498 335,480
+             C310,467 295,445 295,420 C295,412 297,406 300,400 Z"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <text x="397" y="445" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)">Antarctique</text>
+
+    <!-- Inde -->
+    <path d="M535,150 C565,140 600,145 615,168 C625,185 618,205 600,215
+             C580,225 555,220 540,203 C528,190 528,168 535,150 Z"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <!-- « Inde » remonte au-dessus du marqueur Glossopteris, qui partage son
+         abscisse (cercle en 573;178, rayon 9) et la traversait. -->
+    <text x="573" y="163" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)">Inde</text>
+
+    <!-- Australie -->
+    <path d="M590,270 C630,258 680,262 705,285 C720,300 718,320 705,335
+             C685,355 645,362 610,352 C588,345 578,325 582,305
+             C584,292 587,280 590,270 Z"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <!-- DESCENDUE de 26 px (2026-09-04) : le marqueur Glossopteris de
+         l'étape 2 (cercle en 645;305) se posait exactement sur le nom du
+         continent et le rayait sur 39 % de sa largeur. Comme pour
+         « Mesosaurus », c'est une preuve d'une étape qui vient barrer
+         l'étiquette d'une autre — le défaut naît de la superposition des
+         étapes, jamais visible en regardant une seule. -->
+    <text x="648" y="338" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)">Australie</text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!-- Mesosaurus — à cheval sur la jointure, plus bas -->
+    <ellipse cx="300" cy="330" rx="22" ry="13" fill="var(--figure-accent)" fill-opacity="0.28" stroke="var(--figure-accent)" stroke-width="1.2"/>
+    <ellipse cx="390" cy="330" rx="22" ry="13" fill="var(--figure-accent)" fill-opacity="0.28" stroke="var(--figure-accent)" stroke-width="1.2"/>
+    <line x1="322" y1="330" x2="368" y2="330" stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,3"/>
+    <!-- REMONTÉE au-dessus du trait pointillé (2026-09-04) : posée à y=352,
+         elle tombait sur la bande épaisse des chaînes plissées (étape 3), qui
+         la rayait sur 71 % de sa largeur — la preuve paléontologique barrée
+         par la preuve géologique. Au-dessus, l'inter-ellipse est libre, et
+         c'est aussi de ce côté-là que « Cynognathus » porte la sienne. -->
+    <text x="345" y="324" text-anchor="middle" font-size="9.5" font-style="italic" fill="var(--figure-accent)">Mesosaurus</text>
+
+    <!-- Cynognathus — à cheval sur la jointure, plus haut -->
+    <ellipse cx="308" cy="222" rx="18" ry="11" fill="var(--figure-accent)" fill-opacity="0.28" stroke="var(--figure-accent)" stroke-width="1.2"/>
+    <ellipse cx="382" cy="222" rx="18" ry="11" fill="var(--figure-accent)" fill-opacity="0.28" stroke="var(--figure-accent)" stroke-width="1.2"/>
+    <line x1="326" y1="222" x2="364" y2="222" stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="345" y="207" text-anchor="middle" font-size="9.5" font-style="italic" fill="var(--figure-accent)">Cynognathus</text>
+
+    <!-- Glossopteris — présent sur les cinq masses -->
+    <circle cx="232" cy="255" r="10" fill="var(--figure-accent)" fill-opacity="0.22" stroke="var(--figure-accent)" stroke-width="1"/>
+    <circle cx="470" cy="245" r="10" fill="var(--figure-accent)" fill-opacity="0.22" stroke="var(--figure-accent)" stroke-width="1"/>
+    <circle cx="573" cy="178" r="9" fill="var(--figure-accent)" fill-opacity="0.22" stroke="var(--figure-accent)" stroke-width="1"/>
+    <circle cx="645" cy="305" r="9" fill="var(--figure-accent)" fill-opacity="0.22" stroke="var(--figure-accent)" stroke-width="1"/>
+    <circle cx="395" cy="440" r="9" fill="var(--figure-accent)" fill-opacity="0.22" stroke="var(--figure-accent)" stroke-width="1"/>
+
+    <rect x="215" y="515" width="350" height="34" rx="7" fill="var(--figure-accent)" fill-opacity="0.1"/>
+    <text x="390" y="529" text-anchor="middle" font-size="10" font-weight="600" font-style="italic" fill="var(--figure-accent)">Glossopteris</text>
+    <text x="390" y="543" text-anchor="middle" font-size="9" fill="var(--figure-accent)">Amérique du Sud, Afrique, Inde, Australie ET Antarctique</text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- Chaîne plissée continue, traversant la jointure -->
+    <path d="M270,352 C295,345 320,340 335,345 C348,349 358,349 385,343 C405,339 425,336 445,340"
+          fill="none" stroke="var(--figure-accent)" stroke-width="3" stroke-linecap="round"/>
+    <!-- REMONTÉE de 14 px (2026-09-04) : à y=365, l'étiquette était traversée
+         par le contour du continent qui passe en y≈370 sous elle (21 %). -->
+    <text x="255" y="351" text-anchor="end" font-size="9.5" font-weight="600" fill="var(--figure-accent)">Argentine</text>
+    <text x="460" y="343" text-anchor="start" font-size="9.5" font-weight="600" fill="var(--figure-accent)">Afrique australe</text>
+    <text x="390" y="400" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">chaînes plissées, même structure, mêmes roches</text>
+  </g><!-- /step-3 -->
+
+  <g id="step-4">
+    <!-- Pôle Sud reconstitué, au sein de l'Antarctique -->
+    <circle cx="397" cy="450" r="4" fill="var(--figure-accent)"/>
+    <text x="397" y="470" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--figure-accent)">pôle Sud reconstitué</text>
+    <text x="397" y="482" text-anchor="middle" font-size="9" fill="var(--figure-accent)">(≈ -300 Ma)</text>
+
+    <!-- Stries glaciaires : flèches rayonnant depuis le pôle -->
+    <g stroke="var(--figure-accent)" stroke-width="1.6" fill="none">
+      <line x1="397" y1="450" x2="255" y2="330"/>
+      <line x1="397" y1="450" x2="450" y2="270"/>
+      <line x1="397" y1="450" x2="570" y2="205"/>
+      <line x1="397" y1="450" x2="640" y2="335"/>
+    </g>
+    <g fill="var(--figure-accent)">
+      <polygon points="255,330 268,332 262,318"/>
+      <polygon points="450,270 442,282 458,282"/>
+      <polygon points="570,205 558,210 566,220"/>
+      <polygon points="640,335 628,332 632,346"/>
+    </g>
+
+    <!-- Forêt tropicale en Antarctique — décalée pour ne pas chevaucher le
+         libellé du pôle Sud juste au-dessus -->
+    <circle cx="455" cy="455" r="5" fill="var(--figure-accent)" fill-opacity="0.4" stroke="var(--figure-accent)" stroke-width="1.2"/>
+    <text x="465" y="458" font-size="9" fill="var(--figure-accent)">fossiles de forêt</text>
+    <text x="465" y="469" font-size="9" fill="var(--figure-accent)">tropicale (aujourd’hui polaire)</text>
+
+    <text x="390" y="502" text-anchor="middle" font-size="10" font-style="italic" fill="var(--figure-accent)">
+      stries glaciaires (~300 Ma) rayonnant depuis le pôle Sud — climat incompatible avec la position actuelle
+    </text>
+  </g><!-- /step-4 -->
+
+</svg>

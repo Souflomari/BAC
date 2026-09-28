@@ -1,0 +1,291 @@
+{
+  "slug": "champ-des-pentes",
+  "tool": "scene2d",
+  "type": "manipulable",
+  "scene": "champ-des-pentes",
+  "title_fr": "Ce que l'équation dit en chaque point",
+  "caption_fr": "Une équation qui impose une pente en chaque point du plan : à quel endroit devient-elle plate ? À chaque étape, tu paries d'abord ; le plan répond ensuite, avec les nombres exacts de la leçon — jamais un arrondi.",
+  "boundary": "Cadre (maths, 2ème Bac SM et SExp) : l'équation $y'=ay+b$ ($a \\neq 0$) lue comme une pente imposée en chaque point du plan, son invariance en $x$ (elle ne dépend que de la hauteur $y$), l'existence et le calcul du palier $-\\dfrac{b}{a}$, le comportement d'une solution au voisinage de ce palier selon le signe de $a$, le fait qu'une famille entière de solutions partage le même palier sans jamais le franchir, et le réglage où « le palier, c'est $b$ » tombe juste à chaque coup. Hors de la scène : toute formule de solution ($Ce^{ax}$, une constante $C$), toute condition initiale, tout second membre non constant, toute méthode de résolution (séparation des variables, méthode d'Euler), le second ordre, la physique (RC, RL, oscillateur, unités), et tout vocabulaire de systèmes dynamiques (isocline, portrait de phase, Cauchy-Lipschitz).",
+  "fit_caveat": "1. La scène ne démontre rien : elle exhibe la règle sur 60 états (3 valeurs de $a$ × 4 de $b$ × 5 points) — un échantillon, pas une preuve ; la démonstration est la prose qui suit le marqueur. 2. La scène n'entraîne à aucun geste d'examen : c'est un instrument d'enseignement, pas d'entraînement. 3. Aucun dessin fini ne peut montrer « jamais » : la courbe est asymptote au palier, donc pour toute fenêtre il existe un endroit où les deux traits se confondent au pixel — à l'état posé de l'étape « on part au-dessus », l'écart vaut encore 6,3 px au bureau et 4,0 px au téléphone. Ce que « jamais » a de démontrable à ce niveau est arithmétique, pas visuel : si l'écart était nul, la pente le serait aussi, et la courbe serait la ligne plate elle-même. 4. Les nombres affichés sont exacts ; le dessin est arrondi au pixel. 5. Les segments du champ ont une longueur fixe à l'écran, indépendante de la pente — une exagération constante et déclarée. 6. Le champ est échantillonné, un segment par point entier ; l'équation, elle, impose une pente en chaque point du plan, y compris entre les segments. 7. Le point $P$ ne se déplace pas librement : cinq positions choisies pour que toute lecture affichée reste exacte. 8. La scène ne montre qu'une équation à la fois, toujours à coefficients constants. 9. La scène ne dit rien de la vitesse à laquelle une solution s'approche de son palier — seulement que cette approche a lieu, sans jamais l'atteindre. 10. Les courbes à $a>0$ quittent le cadre : elles sont coupées, jamais aplaties sur le bord — une courbe plafonnée dessinerait un palier qui n'existe pas. 11. L'origine du repère n'est pas au centre du cadre : la partie gauche ne porte jamais de courbe, c'est le prix payé pour que « jamais » ne soit pas démenti par le dessin.",
+  "fallback_note": "Sans JavaScript et à l'impression, le panneau disparaît. La figure « famille-solutions », plus loin dans ce chapitre, couvre une partie de l'idée — plusieurs départs, un palier partagé — mais sur une équation déjà figée, et après la démonstration. L'élève sans JavaScript perd donc les quatre faits que cette scène installe : l'équation comme loi locale en chaque point, l'invariance de la pente en $x$, le palier qui se déplace quand $b$ change, et le réglage où « le palier, c'est $b$ » tombe juste. Le dernier est le seul que la prose donne aussi : le paragraphe « Arrête-toi » qui suit l'écrit en toutes lettres.",
+  "pedagogy_wiring": {
+    "why_manipulable": "Aucune figure fixe de la notion ne fait varier une équation : la figure la plus proche gèle $a$ et $b$, donc son palier ne bouge jamais — exactement ce que les items du palier demandent de calculer. « Le palier vaut $-b/a$, pas $b$ » ne se voit pas sur un seul exemple : il faut garder $a$ et promener $b$ pour voir la ligne plate se déplacer. « La pente ne dépend que de la hauteur » n'est pas un dessin, c'est une observation : il faut comparer deux points à la même hauteur, puis deux points à la même abscisse. Et le réglage où « le palier, c'est $b$ » tombe juste ne se trouve pas sur une figure : il se cherche, en pariant, sur la grille de la scène.",
+    "predict_then_reveal": "Six paris, un verdict immédiat à chaque fois : tant que l'élève n'a pas choisi, le contrôle de l'étape n'existe pas dans le DOM, ni aucune lecture qui dépend de l'issue. Après l'engagement, c'est le plan qui répond avant le texte — le champ s'étend, la ligne du palier se pose, la courbe se trace — et chaque « suite » fait chercher un geste, jamais relire une réponse déjà donnée.",
+    "misconceptions": [
+      "mc.math.maths_equations_differentielles.ed-comme-primitive",
+      "mc.math.maths_equations_differentielles.signe-exposant",
+      "mc.math.maths_equations_differentielles.ed-inconnue-nombre",
+      "mc.math.maths_equations_differentielles.modele-sans-ecart",
+      "mc.math.maths_equations_differentielles.modele-taux-constant",
+      "mc.math.maths_equations_differentielles.palier-recopie-b",
+      "mc.math.maths_equations_differentielles.palier-signe",
+      "mc.math.maths_equations_differentielles.palier-oubli",
+      "mc.math.maths_equations_differentielles.signe-a-comportement",
+      "mc.math.maths_equations_differentielles.nombre-solutions-condition",
+      "mc.math.maths_equations_differentielles.solution-fonction-unique"
+    ],
+    "distracteurs_sans_modele": [
+      {
+        "etape": "le-cran-ou-la-regle-fausse-se-cache",
+        "choix": "b-zero-seulement",
+        "motif": "recherche incomplète, pas un modèle tenu — spec §13.20"
+      }
+    ]
+  },
+  "spec_ref": "docs/pipeline/propositions/maths-equations-differentielles-scene-pentes.md",
+  "adr_ref": "docs/decisions/0041-scenes-3d-de-premiere-partie.md",
+  "etapes": [
+    {
+      "id": "la-pente-en-un-point",
+      "titre": "Que dit l'équation, ici ?",
+      "consigne": "Le plan, ses graduations, et un point $P$ aux coordonnées $(0\\,;3)$. L'équation du chapitre 2, $y' = -y$. Tu sais déjà à quoi ressemblent ses solutions. **Oublie-les une minute.** **Avant même de rien tracer**, l'équation dit **une seule chose en chaque point du plan** : quelle pente aurait une solution qui passerait par là.",
+      "pari": {
+        "question": "Une solution passe par $P(0\\,;3)$. Quelle pente l'équation lui impose-t-elle en ce point ?",
+        "choix": [
+          {
+            "id": "produit",
+            "texte": "$-3$ — la pente vaut $a\\,y$, c'est-à-dire $-1 \\times 3$",
+            "juste": true,
+            "retour": "Oui, et **retiens le mécanisme, pas le résultat** : l'équation $y'=-y$ se lit « la pente vaut moins la hauteur ». Elle a besoin de **deux** choses pour répondre — le coefficient, et **l'endroit où tu te tiens**. Pose $P$ ailleurs et relis : la pente change, alors que l'équation n'a pas bougé d'une lettre."
+          },
+          {
+            "id": "coefficient-seul",
+            "texte": "$-1$ — l'équation dit $y' = -1$ : la pente est le coefficient",
+            "juste": false,
+            "misconception": "mc.math.maths_equations_differentielles.ed-comme-primitive",
+            "retour": "Le plan dit $-3$. Ton modèle traite $y'=-y$ comme s'il s'agissait de $y'=-1$, c'est-à-dire d'une **primitive à trouver** — et une primitive de $-1$ est une droite, pas ce que le chapitre 2 a démontré. Le membre de droite ne dépend pas de $x$ : il dépend de **$y$**, donc de l'endroit. Change $P$ et regarde : si la pente valait $-1$, elle ne bougerait jamais."
+          },
+          {
+            "id": "signe-recopie",
+            "texte": "$+3$ — $y'=-y$ se récrit $y'+y=0$ : le coefficient est $1$, donc la pente vaut $1 \\times 3$",
+            "juste": false,
+            "misconception": "mc.math.maths_equations_differentielles.signe-exposant",
+            "retour": "Le geste est juste, la lecture est faite trop tôt. $y'+y=0$ est la **même** équation, mais le coefficient ne se lit **qu'une fois l'équation mise sous la forme $y'=ay$** : ici $y'=-y$, donc $a=-1$ — et le signe compte. Le plan le confirme : le segment **descend**. Un $+3$ ferait monter une solution que le chapitre 2 fait tendre vers $0$."
+          },
+          {
+            "id": "pente-nulle",
+            "texte": "$0$ — résoudre une équation, c'est chercher où quelque chose s'annule : la pente cherchée est $0$",
+            "juste": false,
+            "misconception": "mc.math.maths_equations_differentielles.ed-inconnue-nombre",
+            "retour": "Regarde le segment : il descend. Ce que ton modèle cherche — **un point** où quelque chose s'annule — n'est pas ce qu'une équation différentielle demande : son inconnue n'est ni un nombre ni un point, c'est une **fonction entière**, et l'équation relie $y'$ à $y$ **en chaque point**, pas seulement là où c'est nul. Il y aura bien une hauteur où la pente est nulle ; elle n'a rien à voir avec « résoudre », et ce n'est pas encore la question."
+          }
+        ]
+      },
+      "suite": "Ne lis pas le nombre : **compte sur le quadrillage.** En avançant d'**un** carreau vers la droite le long du segment, de combien de carreaux descend-il ?",
+      "controles": ["point"],
+      "lectures": ["pente"],
+      "etat": { "a": "-1", "b": "0", "point": "origine", "champ": "un-point", "famille": "aucune" }
+    },
+    {
+      "id": "la-hauteur-seule-decide",
+      "titre": "Et deux unités plus loin ?",
+      "consigne": "Même équation, $y'=-y$. À l'étape précédente, en $(0\\,;3)$, elle imposait la pente $-3$. **Voici maintenant $P$.**",
+      "pari": {
+        "question": "Quelle pente l'équation impose-t-elle en $P$ ?",
+        "choix": [
+          {
+            "id": "amortie",
+            "texte": "$-1{,}5$ — plus loin, la pente s'est amortie : elle vaut la moitié",
+            "juste": false,
+            "misconception": "mc.math.maths_equations_differentielles.modele-sans-ecart",
+            "retour": "Le plan affiche $-3$, comme au départ. Ton modèle fait dépendre la pente **du chemin parcouru** — et c'est exactement ce que le chapitre 1 a démenti : le rythme diminue, oui, mais **pas parce qu'on a avancé**. Il diminue parce que la **hauteur** a changé. Ici, elle n'a pas bougé, donc la pente non plus. **Déplace $P$ vers le haut : là, elles diffèrent.**"
+          },
+          {
+            "id": "arretee",
+            "texte": "$0$ — une solution qui descend de $3$ par unité serait déjà arrivée en bas bien avant : là où elle s'arrête, sa pente est nulle",
+            "juste": false,
+            "misconception": "mc.math.maths_equations_differentielles.modele-taux-constant",
+            "retour": "Regarde où $P$ est posé : à la hauteur $3$ — le plan l'y montre, et il lui donne $-3$. Ton modèle prédisait qu'il ne pouvait plus y être. **Une pente de $-3$ ne dit pas « je vais m'arrêter là » : elle ne dit que ce qui se passe ICI, à cette hauteur. Déplace $P$ vers le haut et relis : la pente n'est pas la même. Il n'y a donc aucun rythme unique à prolonger jusqu'à une arrivée.**"
+          },
+          {
+            "id": "identique",
+            "texte": "$-3$ — la **même** qu'en $(0;3)$",
+            "juste": true,
+            "retour": "Oui, et c'est **la** chose à retenir de cette étape : **dans l'équation, l'abscisse n'apparaît nulle part.** À droite du signe égal il n'y a que la hauteur. L'équation ne sait pas où tu en es ; elle ne sait qu'**à quelle hauteur** tu es. Le champ vient de se déplier sur toute la ligne : treize segments, tous parallèles. **Maintenant déplace $P$ : mets-le à une autre hauteur et regarde les deux lectures.**"
+          },
+          {
+            "id": "coefficient-seul",
+            "texte": "$-1$ — la pente vaut le coefficient, partout et toujours",
+            "juste": false,
+            "misconception": "mc.math.maths_equations_differentielles.ed-comme-primitive",
+            "retour": "Le plan affiche $-3$. Si la pente valait $-1$ partout, **tous** les segments du champ seraient parallèles, y compris à des hauteurs différentes — étends le champ à tout le plan et regarde : ils ne le sont pas. Ce que tu viens de voir de vrai, c'est qu'ils sont parallèles **sur une même ligne horizontale**, et seulement là."
+          }
+        ]
+      },
+      "suite": "Pose $P$ à une **autre hauteur**. Les deux lectures restent-elles égales ?",
+      "controles": ["champ", "point"],
+      "lectures": ["pentes-comparees"],
+      "etat": { "a": "-1", "b": "0", "point": "decale", "champ": "un-point", "famille": "aucune" },
+      "etat_revele": { "champ": "ligne" }
+    },
+    {
+      "id": "la-ligne-plate",
+      "titre": "À quelle hauteur le champ est-il plat ?",
+      "consigne": "L'équation change : $y' = -0{,}5\\,y + 2$. Un terme constant est apparu. **Et on efface le champ** : c'est à toi de dire, avant de le revoir, ce qu'il fait. Quelque part dans ce plan, il y a une hauteur où les segments sont **horizontaux** — une solution qui passerait par là ne monterait ni ne descendrait.",
+      "pari": {
+        "question": "À quelle hauteur le champ est-il plat ?",
+        "choix": [
+          {
+            "id": "recopie-b",
+            "texte": "à la hauteur $2$ — c'est la valeur de $b$",
+            "juste": false,
+            "misconception": "mc.math.maths_equations_differentielles.palier-recopie-b",
+            "retour": "Le plan vient de tracer la ligne plate à $4$, pas à $2$. Vérifie-le toi-même sans le plan : si $y=2$ était plat, on aurait $0 = -0{,}5\\times 2 + 2 = 1$ — et $1 \\neq 0$. **Pose $P$ sur $(0\\,;2)$ : la lecture affiche $+1$**, le champ y **monte**. Le terme $b$ ne se recopie pas : il se **divise**, et il change de signe."
+          },
+          {
+            "id": "moins-b-sur-a",
+            "texte": "à la hauteur $4$",
+            "juste": true,
+            "retour": "Oui. Et voici **pourquoi**, en une ligne : une solution plate est une fonction **constante**, $y=k$ ; sa dérivée est nulle partout ; l'équation devient donc $0 = a\\,k + b$, et il n'y a qu'un $k$ possible : $k = -\\dfrac{b}{a} = -\\dfrac{2}{-0{,}5} = 4$. **On ne devine pas cette hauteur : on la résout.** Le paragraphe qui suit cette scène la démontre pour tous les $a$ et tous les $b$ à la fois."
+          },
+          {
+            "id": "signe",
+            "texte": "à la hauteur $-4$",
+            "juste": false,
+            "misconception": "mc.math.maths_equations_differentielles.palier-signe",
+            "retour": "La route est la bonne, le signe non — et c'est l'erreur la plus coûteuse du chapitre, parce qu'elle donne un nombre qui **ressemble** à la réponse. $-\\dfrac{b}{a} = -\\dfrac{2}{-0{,}5}$ : **deux** signes moins, donc un résultat **positif**, $+4$. Le contrôle qui ne trompe jamais : réinjecte. À $y=-4$, la pente vaudrait $-0{,}5\\times(-4)+2 = +4$ — **et tu peux le vérifier toi-même : regarde les segments tout en bas du plan, ils sont tout sauf plats. Pose $P$ sur $(0\\,;-3)$ et lis.** En bas, rien n'est plat."
+          },
+          {
+            "id": "zero",
+            "texte": "à la hauteur $0$ — comme au chapitre 2",
+            "juste": false,
+            "misconception": "mc.math.maths_equations_differentielles.palier-oubli",
+            "retour": "C'était vrai **tant que $b$ valait $0$** — et c'est exactement ce qui vient de changer. **Remets $b$ à $0$ : la ligne plate revient sur l'axe, et ta réponse redevient juste.** Remets-le à $2$ : elle remonte. À la hauteur $0$ le champ **monte** maintenant, tu le vois sur les segments — le terme constant est précisément ce qui décolle la ligne plate de l'axe."
+          }
+        ]
+      },
+      "suite": "Promène $b$, $a$ inchangé, et **suis la ligne plate du regard** : de combien de graduations se déplace-t-elle quand $b$ passe de $1$ à $2$ ?",
+      "controles": ["b", "point"],
+      "lectures": ["pente", "palier"],
+      "etat": { "a": "-0.5", "b": "2", "point": "haut", "champ": "aucun", "famille": "aucune" },
+      "etat_revele": { "champ": "plan" }
+    },
+    {
+      "id": "elle-n-y-arrive-jamais",
+      "titre": "On part au-dessus : que fait la courbe ?",
+      "consigne": "Même équation. Tu viens de trouver la ligne plate : elle est à $4$. Le point $P$ est en $(0\\,;5)$ — **juste au-dessus**.",
+      "pari": {
+        "question": "La solution qui passe par $P$…",
+        "choix": [
+          {
+            "id": "droite-puis-stop",
+            "texte": "descend **en ligne droite** jusqu'à $4$, puis s'arrête net",
+            "juste": false,
+            "misconception": "mc.math.maths_equations_differentielles.modele-taux-constant",
+            "retour": "C'est le modèle A du chapitre 1, et le champ le dément sous tes yeux : une droite garderait la même pente, or les segments **changent d'inclinaison à chaque hauteur** — raides en haut, presque plats près de $4$. Une courbe qui suit ce champ ne peut pas être droite, et rien dans le plan ne lui dit de « s'arrêter »."
+          },
+          {
+            "id": "vers-zero",
+            "texte": "descend vers $0$, comme au chapitre 2",
+            "juste": false,
+            "misconception": "mc.math.maths_equations_differentielles.palier-oubli",
+            "retour": "C'était la réponse **avant** que $b$ n'existe. Regarde le champ à la hauteur $0$ : les segments y **montent** (pente $+2$). Une courbe qui arriverait là serait repoussée vers le haut. Ce qui l'attend n'est pas l'axe, c'est la ligne que tu viens de trouver."
+          },
+          {
+            "id": "vers-moins-infini",
+            "texte": "descend **sans limite** : $a$ est négatif, donc la solution décroît indéfiniment",
+            "juste": false,
+            "misconception": "mc.math.maths_equations_differentielles.signe-a-comportement",
+            "retour": "$a<0$ ne veut pas dire « ça descend toujours » : ça veut dire « ça **se rapproche** ». Regarde l'inclinaison des segments **au-dessous** de la ligne plate, et **compare-la à celle des segments au-dessus** : ce n'est pas la même chose. Ce que le signe de $a$ décide, c'est si la courbe **vise** le palier ou le **fuit**, pas le sens dans lequel elle va. **Et tu peux voir « sans limite », le vrai : bascule le coefficient sur $+0{,}5$. Là, la courbe s'éloigne de la ligne et sort du cadre. C'est ça, une décroissance — ou une croissance — sans limite ; ce n'est pas ce que fait $-0{,}5$.**"
+          },
+          {
+            "id": "approche",
+            "texte": "descend vers $4$ et s'en approche **sans jamais l'atteindre**",
+            "juste": true,
+            "retour": "Oui — et regarde les deux lectures l'une sous l'autre, c'est là qu'est le mécanisme : l'écart au palier vaut $1$, la pente vaut $-0{,}5$. **La pente est l'écart multiplié par $a$.** Promène $b$ et vérifie-le : écart $3$, pente $-1{,}5$ ; écart $5$, pente $-2{,}5$ ; écart $9$, pente $-4{,}5$. **Et voilà pourquoi « jamais » :** si l'écart tombait à zéro, la pente tomberait à zéro — la courbe serait alors la ligne plate elle-même, celle qui ne bouge jamais. Une courbe qui n'est pas cette ligne-là ne peut donc pas avoir un écart nul. Ce n'est pas le dessin qui te le dit : à droite du cadre, les deux traits sont à quelques pixels l'un de l'autre, et plus loin encore ils se confondraient. **« Jamais » ne se voit pas ; il se calcule.**"
+          }
+        ]
+      },
+      "suite": "**Promène $b$**, sans rien changer d'autre. Regarde les deux lectures bouger ensemble : **que vaut la pente quand l'écart double ?**",
+      "controles": ["a", "b"],
+      "crans": { "a": ["-0.5", "0.5"] },
+      "lectures": ["pente", "palier", "ecart-au-palier"],
+      "etat": { "a": "-0.5", "b": "2", "point": "haut", "champ": "plan", "famille": "aucune" },
+      "etat_revele": { "famille": "une" }
+    },
+    {
+      "id": "toutes-la-meme-ligne",
+      "titre": "Trois départs, trois courbes : que font-elles ?",
+      "consigne": "Dernière question. Même équation, même ligne plate à $4$. On marque **trois** départs : $(0\\,;5)$ au-dessus, $(0\\,;2)$ en dessous, $(0\\,;-3)$ bien en dessous. Une solution part de chacun.",
+      "pari": {
+        "question": "Ces trois courbes…",
+        "choix": [
+          {
+            "id": "meme-ligne",
+            "texte": "s'approchent **toutes les trois** de la même hauteur $4$, et **aucune n'en traverse une autre**",
+            "juste": true,
+            "retour": "Oui, et c'est ce que l'équation a d'étrange et de puissant : **la ligne plate ne dépend que de $a$ et de $b$**, jamais du point de départ. Les trois courbes viennent de trois endroits et visent le même $4$ — et **aucune n'en traverse une autre** : traverser voudrait dire deux pentes différentes au même point, ce que le champ ne permet pas. Regarde les trois écarts au palier : chacun rétrécit de son côté, aucun ne change de signe."
+          },
+          {
+            "id": "se-coupent",
+            "texte": "se croisent quelque part, puisqu'elles vont toutes au même endroit",
+            "juste": false,
+            "misconception": "mc.math.maths_equations_differentielles.nombre-solutions-condition",
+            "retour": "Regarde le point où elles se couperaient : le champ n'y donne **qu'une** direction. Deux courbes qui se croisent auraient, en ce point, deux pentes différentes — l'équation ne le permet pas. **Ce que tu observes, c'est qu'aucune n'en traverse une autre.** Le chapitre 4 le démontrera : il suffit d'une valeur en un point pour n'en garder qu'une."
+          },
+          {
+            "id": "une-seule-vraie",
+            "texte": "une seule des trois est **la** solution de l'équation ; les deux autres n'en sont pas",
+            "juste": false,
+            "misconception": "mc.math.maths_equations_differentielles.solution-fonction-unique",
+            "retour": "Les trois suivent le champ partout, donc les trois sont des solutions — le chapitre 2 le disait déjà : une équation différentielle ne détermine pas **une** fonction mais une **famille**. Ce qui choisit un membre de la famille, c'est le **point de départ**, pas l'équation. Change le nombre de courbes et regarde-les apparaître : rien ne distingue l'une des autres."
+          },
+          {
+            "id": "celle-du-bas-descend",
+            "texte": "celle qui part de $-3$ **descend** : $a$ est négatif, donc toute solution décroît",
+            "juste": false,
+            "misconception": "mc.math.maths_equations_differentielles.signe-a-comportement",
+            "retour": "Regarde-la : elle **monte**. Sous la ligne plate, le champ pointe vers le haut — à la hauteur $-3$ la pente vaut $-0{,}5\\times(-3)+2 = 3{,}5$, et la lecture l'affiche. Son écart au palier vaut $-7$ : il est **négatif**, et c'est lui qui donne à la pente son signe $+$. $a<0$ ne dit pas « décroît » : il dit « **revient vers la ligne** », par en haut ou par en bas."
+          }
+        ]
+      },
+      "suite": "L'équation ne change pas. **Réduis à une seule courbe**, puis promène son départ sur les cinq crans : **sur combien de ces crans la ligne plate change-t-elle de hauteur ?**",
+      "controles": ["famille", "point", "b", "champ", "a"],
+      "crans": { "a": ["-0.5", "0.5"] },
+      "lectures": ["pente", "palier", "ecart-au-palier"],
+      "etat": { "a": "-0.5", "b": "2", "point": "bas", "champ": "plan", "famille": "aucune" },
+      "etat_revele": { "famille": "trois" }
+    },
+    {
+      "id": "le-cran-ou-la-regle-fausse-se-cache",
+      "titre": "Pour quel coefficient « le palier, c'est b » tombe-t-il juste ?",
+      "consigne": "Une dernière chose, et **c'est le piège le plus coûteux de ce chapitre**. **La formule du palier se lit vite, et de travers** : « le palier, c'est $b$ ». Tu as vu que non — ici $b$ vaut $1$ et la ligne plate est à $2$. **Mais il y a un réglage où cette règle fausse tombe juste à tous les coups.**",
+      "pari": {
+        "question": "Pour quel coefficient $a$ la ligne plate tombe-t-elle exactement sur la valeur de $b$, **et cela pour CHACUN des quatre crans de $b$** ?",
+        "choix": [
+          {
+            "id": "tous",
+            "texte": "pour **tous** : le palier, c'est $b$, toujours",
+            "juste": false,
+            "misconception": "mc.math.maths_equations_differentielles.palier-recopie-b",
+            "retour": "Remets $a$ sur $-0{,}5$ : $b$ vaut $1$ et la ligne est à $2$. Mets $b$ sur $2$ : elle est à $4$. **À ce réglage-là, la ligne vaut le DOUBLE de $b$, jamais $b$.** Ta règle n'est pas « presque toujours vraie avec quelques exceptions » : **elle est fausse partout sauf à un endroit**, et tout l'intérêt de cette étape est de savoir lequel."
+          },
+          {
+            "id": "a-plus-un",
+            "texte": "pour $a = +1$",
+            "juste": false,
+            "misconception": "mc.math.maths_equations_differentielles.palier-signe",
+            "retour": "La route est la bonne — tu as bien résolu « palier $=b$ » — mais un signe s'est perdu en chemin. $-\\dfrac{b}{a}=b$ donne $-b = a\\,b$, donc $a = -1$, **pas $+1$**. Le contrôle qui ne trompe jamais : essaie. À $a=-1$ et $b=2$, la ligne est à $2$ ; le plan te le montre. **C'est exactement le même signe perdu qu'à l'étape de la ligne plate** — et il coûte deux fois."
+          },
+          {
+            "id": "a-moins-un",
+            "texte": "pour $a = -1$, et pour lui seul",
+            "juste": true,
+            "retour": "Oui. Et voici **pourquoi il est unique** : dire « le palier vaut $b$ », c'est écrire $-\\dfrac{b}{a} = b$, donc $-b = ab$, donc $b(a+1)=0$. **Ou bien $b=0$ — le cas trivial, il n'y a rien à recopier — ou bien $a=-1$.** Il n'y a pas de troisième porte. Promène $b$ : à $-2$ la ligne est à $-2$, à $1$ elle est à $1$, à $2$ elle est à $2$. **C'est le pire cas possible pour un élève : une règle fausse qui ne se fait pas prendre.** Le paragraphe « Arrête-toi » qui suit cette scène l'écrit en toutes lettres."
+          },
+          {
+            "id": "b-zero-seulement",
+            "texte": "pour **aucun** $a$ : ça ne tombe juste qu'à $b=0$",
+            "juste": false,
+            "retour": "Tu as raison sur ce que tu as pu essayer : à $a=-0{,}5$ comme à $a=+0{,}5$, la seule coïncidence est $b=0$ — **c'est une racine de la question, et c'est la triviale : quand $b$ vaut $0$, il n'y a rien à recopier.** Mais il y en a une seconde, et elle est ailleurs : **mets le coefficient sur $-1$ et promène $b$. La ligne suit $b$ à chaque cran.** **Il existe, et il est unique.**"
+          }
+        ]
+      },
+      "suite": "Le coefficient reste sur $-1$. **Promène $b$ et lis la hauteur à chaque cran : sur combien de crans la ligne rate-t-elle la valeur de $b$ ?**",
+      "controles": ["a", "b", "point", "champ", "famille"],
+      "lectures": ["palier"],
+      "etat": { "a": "-0.5", "b": "1", "point": "sur", "champ": "plan", "famille": "aucune" },
+      "etat_revele": { "a": "-1" }
+    }
+  ]
+}

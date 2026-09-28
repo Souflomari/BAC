@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" width="680" height="380"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="L’étage qui retire la composante continue : un condensateur C en série sur la ligne, suivi d’une résistance R vers la masse ; la tension de sortie s_m(t) est prise aux bornes de R. Avant ce filtrage, l’oscillogramme montre une enveloppe oscillant entre 3 volts et 9 volts, entièrement au-dessus de zéro (centrée sur U0 = 6 volts) ; après, la même forme oscille entre moins 3 volts et plus 3 volts, centrée sur zéro.">
+  <title>L’étage qui retire la composante continue U₀</title>
+  <!--
+    etage-composante-continue.svg — figure STAGED (LESSON-EXPERIENCE-SPEC
+    §2.5), 3 étapes. content/pc/ondes-em-modulation/lesson.md, R4, le
+    paragraphe "Il reste à retirer la composante continue U0".
+
+    Écart assumé à l'ordre canonique "axes seules d'abord" (comme
+    detecteur-crete.svg, MÊME leçon, le déclare déjà pour son propre
+    schéma) : le brief demande explicitement 3 étapes narratives — le
+    circuit, puis "avant", puis "après" — pas un triptyque axes/données/
+    lecture générique. Chaque panneau d'oscillogramme est donc monté en
+    UN temps (quadrillage + ligne de zéro + trace), pas fractionné,
+    parce que la trace EST la donnée que ce panneau existe pour montrer ;
+    scinder "axes vides" et "trace" en deux étapes séparées n'aurait
+    ajouté aucune lecture intermédiaire utile.
+
+    Circuit (topologie, pas un graphe — aucun mapping valeur→pixel requis) :
+    entrée U0+s_m(t) (à gauche) → condensateur C en série sur le fil du
+    haut → nœud → résistance R vers la masse → sortie s_m(t) prise aux
+    bornes de R (à droite). Conventions de symboles reprises de
+    detecteur-crete.svg (MÊME dossier) : C = deux barres verticales
+    traversant le fil, couleur --figure-energy-C ; R = rectangle avec
+    hachures internes, couleur --figure-ink-soft ; masse = 3 barres
+    décroissantes.
+
+    ═══ Oscillogrammes — MÊME échelle verticale dans les deux panneaux
+    (10 px/V), pour que la comparaison "même forme, décalée" soit honnête
+    (une amplitude de 3 V occupe exactement 30 px dans les deux panneaux) :
+
+    Panneau "avant" (x = 30..330, origine locale E=0 V en y=335) :
+      U0 = 6 V → y = 275   ;   9 V → y = 245   ;   3 V → y = 305
+    Panneau "après" (x = 350..650, origine locale E=0 V en y=285, CENTRÉE
+    au milieu du panneau puisque le signal est symétrique) :
+      +3 V → y = 255   ;   −3 V → y = 315
+
+    Sinusoïde échantillonnée tous les 30° (13 points, un cycle complet
+    sur la largeur du panneau) — même table de sin() dans les deux
+    panneaux, seul le décalage (275 vs 285) et non l'amplitude (30 px =
+    3 V dans les deux cas) change :
+      avant : y = 275 − 30·sin(k·30°), x = 30 + 25k, k=0..12
+        k=0 (sin 0)     → (30 ; 275)
+        k=3 (sin 1)     → (105 ; 245)   ← crête, 9 V ✓
+        k=9 (sin −1)    → (255 ; 305)   ← creux, 3 V ✓
+        k=12 (sin 0)    → (330 ; 275)
+      après : y = 285 − 30·sin(k·30°), x = 350 + 25k, k=0..12
+        k=0             → (350 ; 285)
+        k=3 (sin 1)     → (425 ; 255)   ← crête, +3 V ✓
+        k=9 (sin −1)    → (575 ; 315)   ← creux, −3 V ✓
+        k=12            → (650 ; 285)
+    Vérification : à k=3 et k=9, l'ordonnée locale (par rapport à la
+    ligne de zéro de CHAQUE panneau) vaut exactement ±30 px = ±3 V dans
+    les deux panneaux — la même excursion, seulement le niveau moyen a
+    changé (275→285 en unités-écran, soit 6 V de moins une fois convertis
+    en volts, exactement U0). C'est le point pédagogique de la figure.
+
+    Rôle des couleurs :
+      trace avant / trace après (LE MÊME signal, décalé)  : --figure-accent
+        (même logique que detecteur-crete.svg, même dossier : "s(t),
+        signal redressé et u_C partagent tous --figure-accent" — un seul
+        signal, distingué par l'étape, pas par la couleur)
+      lignes de référence (zéro, crêtes/creux), axes, masse : --figure-ink-soft
+      condensateur C                                       : --figure-energy-C
+  -->
+
+  <!-- Titre (chrome) -->
+  <text x="340" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    L’étage qui retire la composante continue U₀
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le circuit : C en série, R vers la masse,
+       s_m(t) pris aux bornes de R
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <rect x="30" y="40" width="620" height="170" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Entrée -->
+    <circle cx="130" cy="100" r="3" fill="var(--figure-ink)"/>
+    <text x="130" y="84" text-anchor="middle" font-size="11" fill="var(--figure-ink)"
+      ><tspan font-style="italic">U</tspan><tspan dy="3" font-size="7.5">0</tspan><tspan
+      dy="-3"> + s</tspan><tspan dy="3" font-size="7.5">m</tspan><tspan dy="-3">(t)</tspan></text>
+
+    <!-- Fil du haut, jusqu'au condensateur -->
+    <line x1="130" y1="100" x2="200" y2="100" stroke="var(--figure-ink)" stroke-width="1.6" stroke-linecap="round"/>
+
+    <!-- Condensateur C (deux barres verticales, en série sur le fil) -->
+    <line x1="200" y1="85" x2="200" y2="115" stroke="var(--figure-energy-C)" stroke-width="2.6" stroke-linecap="round"/>
+    <line x1="212" y1="85" x2="212" y2="115" stroke="var(--figure-energy-C)" stroke-width="2.6" stroke-linecap="round"/>
+    <text x="206" y="76" text-anchor="middle" font-size="12" font-style="italic" fill="var(--figure-energy-C)">C</text>
+
+    <!-- Fil du haut, après C, jusqu'au nœud puis à la sortie -->
+    <line x1="212" y1="100" x2="450" y2="100" stroke="var(--figure-ink)" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="350" cy="100" r="3" fill="var(--figure-ink)"/>
+
+    <!-- Sortie -->
+    <circle cx="450" cy="100" r="3" fill="var(--figure-ink)"/>
+    <text x="450" y="84" text-anchor="middle" font-size="11" fill="var(--figure-ink)"
+      ><tspan font-style="italic">s</tspan><tspan dy="3" font-size="7.5">m</tspan><tspan dy="-3">(t)</tspan></text>
+
+    <!-- Branche R, du nœud vers la masse -->
+    <line x1="350" y1="100" x2="350" y2="130" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <rect x="343" y="130" width="14" height="30" rx="2" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.2"/>
+    <line x1="345" y1="138" x2="355" y2="138" stroke="var(--figure-ink-soft)" stroke-width="0.8"/>
+    <line x1="345" y1="145" x2="355" y2="145" stroke="var(--figure-ink-soft)" stroke-width="0.8"/>
+    <line x1="345" y1="152" x2="355" y2="152" stroke="var(--figure-ink-soft)" stroke-width="0.8"/>
+    <line x1="350" y1="160" x2="350" y2="180" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="366" y="148" text-anchor="start" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">R</text>
+
+    <!-- Rail de masse commun (entrée, résistance, sortie) -->
+    <line x1="130" y1="180" x2="450" y2="180" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <circle cx="130" cy="180" r="3" fill="var(--figure-ink)"/>
+    <circle cx="450" cy="180" r="3" fill="var(--figure-ink)"/>
+    <line x1="130" y1="100" x2="130" y2="180" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <line x1="450" y1="100" x2="450" y2="180" stroke="var(--figure-ink)" stroke-width="1.6" stroke-dasharray="3,2" opacity="0.6"/>
+
+    <!-- Symbole de masse -->
+    <line x1="290" y1="180" x2="290" y2="186" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="280" y1="186" x2="300" y2="186" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="284" y1="190" x2="296" y2="190" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="288" y1="194" x2="292" y2="194" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — panneau « avant » : l'enveloppe entre 3 V et 9 V,
+       au-dessus de la ligne de zéro
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <text x="180" y="219" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-ink)">avant</text>
+    <rect x="30" y="225" width="300" height="120" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Repères 9 V / 3 V -->
+    <line x1="30" y1="245" x2="330" y2="245" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="4,3"/>
+    <line x1="30" y1="305" x2="330" y2="305" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="36" y="241" text-anchor="start" font-size="9" fill="var(--figure-ink-soft)">9 V</text>
+    <text x="36" y="301" text-anchor="start" font-size="9" fill="var(--figure-ink-soft)">3 V</text>
+
+    <!-- Ligne de zéro -->
+    <line x1="30" y1="335" x2="330" y2="335" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <text x="38" y="331" text-anchor="start" font-size="9.5" fill="var(--figure-ink-soft)">0</text>
+
+    <!--
+      Trace : y = 275 − 30·sin(k·30°), x = 30 + 25k, k=0..12.
+      Entièrement au-dessus de la ligne de zéro (y=335).
+    -->
+    <path d="M30,275 L55,260 L80,249.0 L105,245 L130,249.0 L155,260 L180,275
+             L205,290 L230,301.0 L255,305 L280,301.0 L305,290 L330,275"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — panneau « après » : la même forme, recentrée sur zéro
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <text x="500" y="219" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-ink)">après</text>
+    <rect x="350" y="225" width="300" height="120" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Repères +3 V / −3 V -->
+    <line x1="350" y1="255" x2="650" y2="255" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="4,3"/>
+    <line x1="350" y1="315" x2="650" y2="315" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="356" y="251" text-anchor="start" font-size="9" fill="var(--figure-ink-soft)">+3 V</text>
+    <text x="356" y="311" text-anchor="start" font-size="9" fill="var(--figure-ink-soft)">−3 V</text>
+
+    <!-- Ligne de zéro — CENTRÉE (le signal est désormais symétrique) -->
+    <line x1="350" y1="285" x2="650" y2="285" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <text x="358" y="281" text-anchor="start" font-size="9.5" fill="var(--figure-ink-soft)">0</text>
+
+    <!--
+      Trace : y = 285 − 30·sin(k·30°), x = 350 + 25k, k=0..12.
+      Même forme que le panneau "avant" (mêmes offsets ±30 px), recentrée.
+    -->
+    <path d="M350,285 L375,270 L400,259.0 L425,255 L450,259.0 L475,270 L500,285
+             L525,300 L550,311.0 L575,315 L600,311.0 L625,300 L650,285"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-3 -->
+
+</svg>

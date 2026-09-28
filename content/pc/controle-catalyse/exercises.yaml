@@ -1,0 +1,157 @@
+# Attempt-first exercises (summit-conversion campaign).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2025 session
+# normale, PC BIOF, code NS28F, AlloSchool element/145796 — statut « vérifié »
+# in docs/sujets/pc/controle-catalyse.md, Exercice 1 Partie 2). r-variation is
+# a fresh anti-memorisation twin (same skills, different couple/numbers,
+# status not-applicable).
+
+notion: controle-catalyse
+
+exercises:
+  # ── r-bac — the VERIFIED 2025 national sujet, Ex.1 Partie 2 (cinétique) ────
+  # Faithful transcription of docs/sujets/pc/controle-catalyse.md → "2025 —
+  # session normale — Exercice 1 (Chimie), Partie 2". Suivi cinétique d'une
+  # estérification (acide éthanoïque + propan-1-ol) menée dans trois conditions
+  # (θ1 ; θ2 > θ1 ; θ2 + H2SO4). Barème Partie 2 = 3,25 pt (0,75 + 0,5 + 0,75 +
+  # 0,75 + 0,5). Les questions 2-1…2-5 sont transcrites une par q-id.
+  - id: r-bac
+    title: "Exercice de type bac — facteurs cinétiques d'une estérification (2025)"
+    sourcing:
+      status: sourced
+      required_for_done: true
+      note: >-
+        2025 session normale — examen national PC BIOF, AlloSchool NS28F
+        (Exercice 1, Partie 2 — suivi cinétique d'une estérification ; barème
+        3,25 pt : 0,75 + 0,5 + 0,75 + 0,75 + 0,5). Transcription vérifiée :
+        re-fetch AlloSchool element/145796 + diff OK (docs/sujets/pc/controle-catalyse.md).
+    intro: |-
+      **Suivi cinétique d'une réaction d'estérification (examen national, session normale 2025).**
+
+      On étudie la cinétique de la réaction entre l'acide éthanoïque $CH_3-CO-OH$ et le propan-1-ol $CH_3-CH_2-CH_2-OH$. On réalise cette estérification dans trois conditions expérimentales différentes :
+
+      - **Expérience (1) :** on mélange $0{,}200\ \text{mol}$ d'acide éthanoïque avec $0{,}200\ \text{mol}$ de propan-1-ol, à la température $\theta_1$.
+      - **Expérience (2) :** le même mélange ($0{,}200\ \text{mol}$ de chaque), mais porté à une température plus élevée $\theta_2$ (avec $\theta_2 > \theta_1$).
+      - **Expérience (3) :** le même mélange qu'en (2), à la température $\theta_2$, avec en plus quelques gouttes d'acide sulfurique concentré.
+
+      Un dispositif d'acquisition suit, pour chaque condition, l'évolution de l'avancement $x$ de la réaction au cours du temps. On obtient trois courbes croissantes, partant de l'origine et rejoignant chacune un palier. L'axe des ordonnées porte $x$ en millimoles ($26{,}6$ et $53{,}2\ \text{mmol}$ sont gradués) ; l'axe des abscisses porte le temps $t$ en minutes ($30$ et $60\ \text{min}$ sont gradués). La **courbe (a)** est la plus rapide (elle atteint son palier le plus tôt), la **courbe (b)** est intermédiaire et la **courbe (c)** la plus lente. Les paliers des courbes (a) et (b) coïncident, à $x_f \approx 133\ \text{mmol}$.
+    questions:
+      - id: q1
+        part: "Partie 2 — La réaction d'estérification étudiée"
+        stem: |-
+          **(0,75 pt)** Écrire, en utilisant les formules semi-développées, l'équation modélisant la réaction d'estérification qui se produit. Donner le nom de l'ester $(E)$ formé.
+        reasoning: |-
+          Une estérification met en jeu un acide carboxylique et un alcool, qui donnent un ester et de l'eau. C'est une réaction **limitée** : on l'écrit avec une double flèche $\rightleftharpoons$. Il suffit d'accrocher le groupe $-OH$ de l'alcool sur le carboxyle de l'acide, en libérant une molécule d'eau. En formules semi-développées :
+
+          $$CH_3-CO-OH + CH_3-CH_2-CH_2-OH \rightleftharpoons CH_3-CO-O-CH_2-CH_2-CH_3 + H_2O$$
+
+          L'ester formé, de formule $CH_3-CO-O-CH_2-CH_2-CH_3$, est l'**éthanoate de propyle** : la partie acyle $CH_3-CO-$ vient de l'acide éthanoïque (d'où « éthanoate »), et la chaîne fixée sur l'oxygène, $-CH_2-CH_2-CH_3$, vient du propan-1-ol (d'où « de propyle »).
+      - id: q2
+        part: "Partie 2 — Lire l'effet des facteurs cinétiques sur les courbes"
+        stem: |-
+          **(0,5 pt)** Indiquer, en le justifiant, laquelle des trois courbes — (a), (b) ou (c) — correspond à l'expérience $(3)$.
+        reasoning: |-
+          L'expérience $(3)$ cumule **deux** facteurs cinétiques accélérateurs : la température élevée $\theta_2$ **et** l'ajout d'un catalyseur (l'acide sulfurique). Elle est donc la plus rapide des trois : sa courbe atteint son palier le plus tôt. C'est la **courbe (a)**.
+
+          Le classement des trois se lit d'ailleurs comme une échelle de facteurs cinétiques : l'expérience $(1)$ (à $\theta_1$, sans catalyseur) est la plus lente → courbe (c) ; l'expérience $(2)$ (à $\theta_2$, sans catalyseur) est accélérée par la seule température → courbe (b), intermédiaire ; l'expérience $(3)$ ($\theta_2$ + catalyseur) est la plus rapide → courbe (a).
+      - id: q3
+        stem: |-
+          **(0,75 pt)** Répondre, en justifiant, par vrai ou faux à l'affirmation : « La valeur de l'avancement final $x_f$ de la réaction est la même pour les trois conditions expérimentales ».
+        reasoning: |-
+          **Vrai.** La température et le catalyseur sont des **facteurs cinétiques** : ils modifient la **vitesse** à laquelle le système atteint son état final, mais pas **l'état final lui-même**. Un catalyseur accélère l'estérification et l'hydrolyse dans les mêmes proportions, donc il ne déplace pas l'équilibre ; et l'estérification étant athermique, sa position d'équilibre ne dépend pas de la température.
+
+          Or les trois expériences partent des **mêmes quantités initiales** ($0{,}200\ \text{mol}$ d'acide et $0{,}200\ \text{mol}$ d'alcool, mélange équimolaire) : elles atteignent donc **le même état d'équilibre**, à la même valeur $x_f$. C'est confirmé par le graphe : les paliers des courbes (a) et (b) coïncident. Les facteurs cinétiques ont seulement changé *quand* on arrive au palier, jamais *où* il se trouve.
+      - id: q4
+        part: "Partie 2 — Chiffrer : temps de demi-réaction et rendement"
+        stem: |-
+          **(0,75 pt)** Déterminer graphiquement le temps de demi-réaction $t_{1/2}$ correspondant à l'expérience $(2)$.
+        reasoning: |-
+          Le temps de demi-réaction $t_{1/2}$ est la durée au bout de laquelle l'avancement atteint la **moitié** de sa valeur finale, $x_f/2$. On procède en deux temps : on calcule d'abord $x_f/2$ à partir du palier, puis on lit sur la **courbe de l'expérience (2)** — c'est-à-dire la courbe (b) — l'abscisse du point dont l'ordonnée vaut $x_f/2$.
+        steps:
+          - math: 'x_f \approx 133\ \text{mmol} \quad\Rightarrow\quad \frac{x_f}{2} \approx 66{,}5\ \text{mmol}'
+            note: "t_1/2 est l'instant où l'avancement atteint la moitié de sa valeur finale x_f."
+          - math: 't_{1/2} \approx 20\ \text{min}'
+            note: "Abscisse, lue sur la courbe (2) [courbe (b)], du point d'ordonnée 66,5 mmol."
+      - id: q5
+        stem: |-
+          **(0,5 pt)** Calculer le rendement de la réaction pour l'expérience $(3)$.
+        reasoning: |-
+          Le rendement $\eta$ est le rapport de l'avancement réellement atteint, $x_f$, à l'avancement maximal $x_{max}$ qu'on obtiendrait si la réaction était **totale**. Le mélange étant équimolaire ($0{,}200\ \text{mol}$ de chaque réactif), une réaction totale consommerait entièrement les réactifs : $x_{max} = 0{,}200\ \text{mol} = 200\ \text{mmol}$.
+
+          Pour l'expérience $(3)$, le catalyseur n'a pas changé l'état final (question 3) : le palier reste à $x_f \approx 133\ \text{mmol}$. On en déduit le rendement.
+        steps:
+          - math: '\eta = \frac{x_f}{x_{max}}'
+            note: "Rendement : avancement final atteint rapporté à l'avancement d'une réaction totale."
+          - math: 'x_{max} = n_0 = 0{,}200\ \text{mol} = 200\ \text{mmol}'
+            note: "Mélange équimolaire : une réaction totale consommerait les 0,200 mol de chaque réactif."
+          - math: '\eta = \frac{133}{200} \approx 0{,}67 = 67\ \%'
+            note: "x_f ≈ 133 mmol lu sur le palier de l'expérience (3) ; le catalyseur n'a pas déplacé l'état final."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ─────────
+  # Same deep skills as r-bac (écrire l'équation d'estérification, lire l'effet
+  # d'un facteur cinétique sur les courbes, distinguer vitesse et état final,
+  # nommer les facteurs cinétiques, calculer un rendement) with a different
+  # acid/alcohol couple, different numbers, and a two-experiment comparison —
+  # so the student cannot recopy the 2025 corrigé and must recognise which idea
+  # applies.
+  - id: r-variation
+    title: "Variation fraîche"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2025, sourcé).
+    intro: |-
+      Même structure profonde que le sujet précédent, habillage différent : un autre couple acide/alcool, d'autres nombres, et une comparaison entre **deux** expériences seulement. Le but est que tu ne puisses pas recopier le corrigé de 2025 — tu dois reconnaître quelle idée s'applique.
+
+      On étudie la cinétique de l'estérification entre l'acide propanoïque $CH_3-CH_2-CO-OH$ et l'éthanol $CH_3-CH_2-OH$. On compare deux expériences, chacune partant de $0{,}40\ \text{mol}$ d'acide propanoïque et $0{,}40\ \text{mol}$ d'éthanol :
+
+      - **Expérience (A) :** à $60\,^\circ\text{C}$, sans catalyseur.
+      - **Expérience (B) :** à $60\,^\circ\text{C}$, avec quelques gouttes d'acide sulfurique.
+
+      On suit l'avancement $x(t)$ dans les deux cas. Les deux courbes rejoignent le **même** palier, à $x_f = 0{,}267\ \text{mol}$.
+    questions:
+      - id: q1
+        stem: |-
+          Écrire, en formules semi-développées, l'équation de l'estérification entre l'acide propanoïque et l'éthanol. Nommer l'ester formé.
+        reasoning: |-
+          Comme toute estérification, l'acide et l'alcool donnent un ester et de l'eau, avec une double flèche (réaction limitée). On soude le $-OH$ de l'éthanol sur le carboxyle de l'acide propanoïque :
+
+          $$CH_3-CH_2-CO-OH + CH_3-CH_2-OH \rightleftharpoons CH_3-CH_2-CO-O-CH_2-CH_3 + H_2O$$
+
+          L'ester, $CH_3-CH_2-CO-O-CH_2-CH_3$, est le **propanoate d'éthyle** : partie acyle issue de l'acide propanoïque (« propanoate »), chaîne portée par l'oxygène issue de l'éthanol (« d'éthyle »).
+      - id: q2
+        stem: |-
+          Laquelle des deux courbes — celle qui atteint son palier le plus tôt, ou l'autre — correspond à l'expérience $(B)$ ? Justifier.
+        reasoning: |-
+          L'expérience $(B)$ se distingue de $(A)$ par la seule présence du catalyseur (l'acide sulfurique), à la même température. Le catalyseur est un facteur cinétique : il **accélère** la réaction. La courbe de $(B)$ atteint donc son palier **plus tôt** que celle de $(A)$ : c'est la courbe la plus rapide. Les deux courbes finissent au même palier, mais $(B)$ y arrive avant $(A)$.
+      - id: q3
+        stem: |-
+          Vrai ou faux, en justifiant : « L'expérience $(B)$, catalysée, donnera un rendement final plus élevé que l'expérience $(A)$ ».
+        reasoning: |-
+          **Faux.** Le catalyseur change la **vitesse**, pas **l'état final**. Il accélère l'estérification et l'hydrolyse dans les mêmes proportions, sans déplacer l'équilibre. Les deux expériences partant des mêmes quantités initiales atteignent donc le **même** avancement final $x_f = 0{,}267\ \text{mol}$ — c'est bien ce que montre le palier commun aux deux courbes. Le rendement, qui ne dépend que de $x_f$ et de $x_{max}$, est donc **identique** dans les deux cas. Le catalyseur a seulement fait gagner du temps à $(B)$.
+      - id: q4
+        stem: |-
+          Citer deux autres facteurs cinétiques (différents du catalyseur) qui permettraient d'accélérer cette estérification.
+        reasoning: |-
+          Un facteur cinétique est un paramètre qui modifie la **vitesse** d'une transformation. Outre le catalyseur, on peut citer :
+
+          - la **température** : chauffer davantage le mélange (au-delà de $60\,^\circ\text{C}$) augmente la fréquence et l'efficacité des chocs entre molécules, donc la vitesse ;
+          - la **concentration des réactifs** : partir de concentrations initiales plus élevées (mélange plus concentré) augmente la fréquence des chocs, donc la vitesse.
+
+          Comme le catalyseur, ces deux leviers n'agissent que sur la vitesse : ils ne changeraient pas l'avancement final $x_f$, donc pas non plus le rendement.
+      - id: q5
+        stem: |-
+          Calculer le rendement de l'estérification pour chacune des deux expériences.
+        reasoning: |-
+          Le rendement est $\eta = x_f / x_{max}$, où $x_{max}$ est l'avancement d'une réaction totale. Le mélange étant équimolaire ($0{,}40\ \text{mol}$ de chaque), une réaction totale donnerait $x_{max} = 0{,}40\ \text{mol}$. Avec le palier commun $x_f = 0{,}267\ \text{mol}$ :
+        steps:
+          - math: '\eta = \frac{x_f}{x_{max}} = \frac{0{,}267}{0{,}40}'
+            note: "x_max = 0,40 mol (mélange équimolaire, réaction totale) ; x_f = 0,267 mol lu au palier."
+          - math: '\eta \approx 0{,}67 = 67\ \%'
+            note: "Même rendement pour (A) et (B) : le catalyseur n'a pas changé l'état final."

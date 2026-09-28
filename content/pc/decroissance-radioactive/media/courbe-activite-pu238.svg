@@ -1,0 +1,229 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" width="640" height="440"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="L’activité a du plutonium 238, en becquerels, en fonction du temps t en années, tracée sur un quadrillage : traits forts tous les 20 ans et tous les 2,5×10¹⁰ Bq, traits fins tous les 4 ans et 0,5×10¹⁰ Bq, jusqu’à 100 ans et 10¹¹ Bq. La courbe part de a₀ ≈ 10¹¹ Bq à t = 0 et décroît.">
+  <title>Activité du plutonium 238, en fonction du temps, sur quadrillage</title>
+  <!--
+    courbe-activite-pu238.svg — courbe STATIQUE de l'activité
+    a(t) = a0 · 2^(-t/T), REDESSINÉE depuis la transcription de l'énoncé
+    (content/pc/decroissance-radioactive/exercises.yaml, r-bac, paragraphe
+    « La courbe. ») et le corrigé (q2), pas depuis le scan original (absent
+    du dépôt). Même discipline que la figure sœur
+    courbe-activite-quadrillee.svg (r-variation) : conventions, ids de
+    groupe, jetons et mécanisme d'étapes repris à l'identique ; seules la
+    géométrie et l'opacité du quadrillage changent (voir plus bas).
+
+    NOMBRES AUTORISÉS, et leur origine — aucun autre chiffre n'est encodé :
+      · graduations de l'ordonnée a (Bq)  : 2,5×10¹⁰ ; 5×10¹⁰ ; 7,5×10¹⁰ ;
+        10¹¹  — transcription de l'énoncé, telle quelle (y compris
+        l'absence de « 1× » devant le dernier, qui suit l'énoncé).
+      · graduations de l'abscisse t (ans) : 20, 40, 60, 80, 100 —
+        transcription telle quelle.
+      · a0 = 1,0×10¹¹ Bq — donnée de l'énoncé, reprise telle quelle dans le
+        corrigé (q4 : N0 = a0/λ avec a0 = 10¹¹).
+      · la demi-vie physique du plutonium 238 (valeur académique, jamais
+        affichée) sert UNIQUEMENT à calculer la forme de la courbe — ce
+        n'est pas le nombre que l'élève doit lire ni celui qu'affiche cette
+        figure avant l'étape 3.
+      · le pas fin du quadrillage (4 ans ; 0,5×10¹⁰ Bq) est un choix
+        d'auteur, pas une donnée du sujet : il rend la lecture exacte
+        possible (cf. plus bas), rien de plus.
+
+    Géométrie (calculée, jamais devinée) :
+      origine (t=0, a=0)   : (x0,y0) = (80, 350)
+      échelle temporelle    : 5 px/an       → dernier trait fort (100 ans), x = 580
+      échelle d'activité    : 2,8×10⁻⁹ px/Bq → dernier trait fort (10¹¹ Bq), y = 70
+      x(t) = 80 + 5·t ;  y(a) = 350 − 2,8×10⁻⁹·a
+      (aucun cadre non chiffré au-delà : contrairement à la figure sœur,
+      rien dans la transcription ne mentionne un trait au-delà de 100 ans
+      ou 10¹¹ Bq — le dernier trait FORT ferme donc le quadrillage des deux
+      côtés hauts, l'axe continue seul jusqu'à la flèche.)
+
+    La courbe est une polyligne calculée à pas de 4 ans (20 px, le pas fin
+    du quadrillage), plus un point inséré à l'endroit exact où elle vaut
+    a0/2 — jamais une bézier devinée. a(t) = a0·2^(-t/T) (T = demi-vie
+    académique du plutonium 238) ; y = 350 − 280×(a/a0). Valeurs exactes
+    vérifiées aux repères :
+      t = 0   an  → a = 1,000×10¹¹ Bq → y = 70,00   (exact, sommet du cadre)
+      t = 20  ans → a ≈ 8,538×10¹⁰ Bq → y ≈ 110,94
+      t = 40  ans → a ≈ 7,285×10¹⁰ Bq → y ≈ 146,01
+      t = 60  ans → a ≈ 6,224×10¹⁰ Bq → y ≈ 175,73
+      t = 80  ans → a ≈ 5,314×10¹⁰ Bq → y ≈ 201,21
+      t = 100 ans → a ≈ 4,537×10¹⁰ Bq → y ≈ 223,97
+    La courbe croise l'ordonnée moitié (5×10¹⁰ Bq, deuxième trait fort) à
+    x ≈ 518,5 — à 1,5 px du trait FIN le plus proche du quadrillage (pas de
+    4 ans), sur lequel la construction de l'étape 3 tombe donc, comme le
+    ferait une lecture graphique au trait le plus proche.
+
+    Mise en étapes (LESSON-EXPERIENCE-SPEC §2.5), "enonce": 2 :
+      step-1 : les axes + le quadrillage — le DOCUMENT tel que l'énoncé le
+               donne, avant toute lecture (majeurs chiffrés, fins nus)
+      step-2 : la courbe a(t) (la donnée) — l'énoncé s'ARRÊTE ici
+      step-3 : la construction — report horizontal depuis 5×10¹⁰ Bq, chute
+               verticale, lecture sur le trait fin le plus proche. Hors de
+               l'énoncé (au-delà de "enonce": 2) : c'est la réponse de q2.
+
+    Rôle des couleurs :
+      quadrillage (mineurs 0,8 px, majeurs 1 px) : --figure-ink-soft à
+        opacité réduite — jamais --figure-grid (#ECEBE9 sur blanc, quasi
+        invisible, alors que c'est le papier même de la lecture). Opacité
+        choisie pour que les traits FORTS atteignent ≥ 3:1 sur
+        --figure-surface dans LES DEUX thèmes (WCAG 1.4.11 — l'élève les
+        COMPTE), les traits fins restant nettement en dessous, la courbe
+        loin au-dessus. Mesuré (formule WCAG, luminance relative) :
+          mineurs (stroke-opacity 0,30) : clair ≈ 1,62:1 · sombre ≈ 1,9:1
+          majeurs (stroke-opacity 0,68) : clair ≈ 3,48:1 · sombre ≈ 4,47:1
+          courbe  (opacité pleine, --figure-ink) : clair ≈ 17,4:1 · sombre ≈ 14,3:1
+      axes, « 0 », les nombres de graduation, les noms d'axe a (Bq) et
+        t (ans) : --figure-ink-soft (chrome neutre, comme les figures
+        sœurs) ;
+      la courbe a(t) : --figure-ink — c'est le DOCUMENT de l'énoncé, pas la
+        réponse ;
+      la construction (guides, point, tick renforcé, lecture), step-3
+        SEUL : --figure-accent — rien d'autre n'est en accent avant cette
+        étape.
+
+    Pas de boîte-formule sur cette figure : un sujet de bac ne montre
+    jamais la loi sur la figure elle-même — la retrouver EST l'exercice.
+  -->
+
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Activité du plutonium 238, en fonction du temps
+    </text>
+
+    <!-- Fond du panneau -->
+    <rect x="16" y="32" width="608" height="376" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- ── Quadrillage — mineurs (0,8 px), encre douce à opacité réduite ── -->
+    <line x1="100" y1="70" x2="100" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="120" y1="70" x2="120" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="140" y1="70" x2="140" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="160" y1="70" x2="160" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="200" y1="70" x2="200" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="220" y1="70" x2="220" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="240" y1="70" x2="240" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="260" y1="70" x2="260" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="300" y1="70" x2="300" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="320" y1="70" x2="320" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="340" y1="70" x2="340" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="360" y1="70" x2="360" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="400" y1="70" x2="400" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="420" y1="70" x2="420" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="440" y1="70" x2="440" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="460" y1="70" x2="460" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="500" y1="70" x2="500" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="520" y1="70" x2="520" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="540" y1="70" x2="540" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="560" y1="70" x2="560" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+
+    <line x1="80" y1="336" x2="580" y2="336" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="322" x2="580" y2="322" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="308" x2="580" y2="308" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="294" x2="580" y2="294" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="266" x2="580" y2="266" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="252" x2="580" y2="252" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="238" x2="580" y2="238" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="224" x2="580" y2="224" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="196" x2="580" y2="196" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="182" x2="580" y2="182" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="168" x2="580" y2="168" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="154" x2="580" y2="154" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="126" x2="580" y2="126" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="112" x2="580" y2="112" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="98"  x2="580" y2="98"  stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="84"  x2="580" y2="84"  stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+
+    <!-- ── Quadrillage — majeurs (1 px), chiffrés ───────────────────────── -->
+    <line x1="180" y1="70" x2="180" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="280" y1="70" x2="280" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="380" y1="70" x2="380" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="480" y1="70" x2="480" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="580" y1="70" x2="580" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+
+    <line x1="80" y1="280" x2="580" y2="280" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="80" y1="210" x2="580" y2="210" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="80" y1="140" x2="580" y2="140" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="80" y1="70"  x2="580" y2="70"  stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+
+    <!-- ── Axes — ink-soft, chrome neutre ────────────────────────────────── -->
+    <line x1="80" y1="350" x2="598" y2="350"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="598,350 586,345.5 586,354.5" fill="var(--figure-ink-soft)"/>
+    <line x1="80" y1="350" x2="80" y2="50"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+
+    <text x="78" y="54" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)"
+          ><tspan font-style="italic">a</tspan><tspan font-size="9"> (Bq)</tspan></text>
+    <!-- le nom de l'axe SOUS la rangée des graduations : « 100 » est chiffré
+         (l'énoncé gradue 20 à 100 ans), et à la même hauteur les deux textes
+         se recouvraient au bout de l'axe (première capture) -->
+    <text x="598" y="384" text-anchor="end" font-size="11" fill="var(--figure-ink-soft)"
+          ><tspan font-style="italic">t</tspan><tspan font-size="9.5"> (ans)</tspan></text>
+    <text x="72" y="354" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Graduations t (ans) — 20, 40, 60, 80, 100 -->
+    <text x="180" y="366" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">20</text>
+    <text x="280" y="366" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">40</text>
+    <text x="380" y="366" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">60</text>
+    <text x="480" y="366" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">80</text>
+    <text x="580" y="366" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">100</text>
+
+    <!-- Graduations a (Bq) — 2,5×10¹⁰ ; 5×10¹⁰ ; 7,5×10¹⁰ ; 10¹¹ -->
+    <text x="72" y="283.5" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)"
+          >2,5×10<tspan dy="-4" font-size="7.5">10</tspan></text>
+    <text x="72" y="213.5" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)"
+          >5×10<tspan dy="-4" font-size="7.5">10</tspan></text>
+    <text x="72" y="143.5" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)"
+          >7,5×10<tspan dy="-4" font-size="7.5">10</tspan></text>
+    <text x="72" y="73.5" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)"
+          >10<tspan dy="-4" font-size="7.5">11</tspan></text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!--
+      Courbe a(t) — polyligne calculée, pas = 4 ans (20 px, le pas fin du
+      quadrillage), de t=0 à t=100 ans, plus un point inséré à l'endroit
+      exact où elle vaut a0/2. Voir calcul en tête de fichier.
+    -->
+    <path d="
+      M80,70 L100,78.72 L120,87.15 L140,95.33 L160,103.26 L180,110.94
+      L200,118.38 L220,125.58 L240,132.57 L260,139.33 L280,146.01
+      L300,152.23 L320,158.39 L340,164.35 L360,170.13 L380,175.73
+      L400,181.15 L420,186.41 L440,191.5 L460,196.43 L480,201.21
+      L500,205.84 L518.5,210 L520,210.33 L540,214.68 L560,218.89 L580,223.97
+    " fill="none"
+      stroke="var(--figure-ink)"
+      stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- Report horizontal depuis l'ordonnée 5×10¹⁰ Bq (moitié de a0) jusqu'à la courbe -->
+    <line x1="80" y1="210" x2="520" y2="210"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <!-- Chute verticale jusqu'à l'axe des temps, sur le trait fin le plus proche -->
+    <line x1="520" y1="210" x2="520" y2="350"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+
+    <!-- Départ du report, sur l'axe a -->
+    <line x1="76" y1="210" x2="84" y2="210"
+          stroke="var(--figure-accent)" stroke-width="1.2"/>
+
+    <!-- Point : la courbe passe par ce croisement -->
+    <circle cx="520" cy="210.33" r="3.2" fill="var(--figure-accent)"/>
+
+    <!-- Arrivée du report, sur l'axe des temps -->
+    <line x1="520" y1="345" x2="520" y2="355"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+
+    <!-- La lecture — une rangée sous le nom de l'axe, pour ne pas le côtoyer -->
+    <text x="520" y="404" text-anchor="middle" font-size="11" fill="var(--figure-accent)"
+          ><tspan font-style="italic">t</tspan><tspan dy="4" font-size="8">1/2</tspan><tspan dy="-4"> ≈ 88 ans</tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

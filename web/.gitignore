@@ -1,0 +1,85 @@
+# Next.js
+.next/
+out/
+
+# Node
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Editor
+.DS_Store
+*.swp
+*.swo
+
+# TypeScript build info
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+
+# screenshot harness output (web/scripts/shots.mjs)
+/shots/
+
+# Day-3 option-set images are COMMITTED evidence (owner decision aid) —
+# exception to the shots/ ignore above.
+!/shots/
+/shots/*
+!/shots/options/
+
+# Day-6 report evidence (curated before/afters for phone review) — same
+# committed-evidence exception; the full day6 matrix stays local.
+!/shots/day6/
+/shots/day6/*
+!/shots/day6/report/
+
+# Day-7 owner blind-test pairs (unlabeled; key sealed in the ledger) —
+# committed evidence; the full day7 matrix stays local.
+!/shots/day7/
+/shots/day7/*
+!/shots/day7/blind/
+
+# July-2026 external-audit evidence (curated before/afters) — committed;
+# the full day8-audit measurement set stays local.
+!/shots/day8-audit/
+/shots/day8-audit/*
+!/shots/day8-audit/report/
+
+# Day-8 wide-viewport option sets + before evidence — committed for the
+# owner's same-day picks; the full day8-wide matrix stays local.
+!/shots/day8-wide/
+/shots/day8-wide/*
+!/shots/day8-wide/report/
+
+# Day-9 site-skeleton evidence (dashboard / matière / onboarding) — committed
+# for the owner's audit; the full day9 matrix stays local.
+!/shots/day9/
+/shots/day9/*
+!/shots/day9/report/
+
+# D12 persistence-arc evidence (zero-state dashboard + auth UI, both themes)
+# — committed for the owner's review; the full-page captures stay local.
+!/shots/d12/
+/shots/d12/*
+!/shots/d12/report/
+
+# Persistance-wave evidence (SVT media fan-out + dropdown UI) — committed for
+# the owner's review; the full local matrix stays local.
+!/shots/persistance-wave/
+/shots/persistance-wave/*
+!/shots/persistance-wave/report/
+
+# Shelf-collapse evidence (AvailableShelf accordion + bounded MasteryMap) —
+# committed for the owner's review; the full local matrix stays local.
+!/shots/shelf-collapse/
+/shots/shelf-collapse/*
+!/shots/shelf-collapse/report/
+
+# Empreintes de DOM prises par katex-identite.mjs (des dizaines de Mo,
+# régénérables en une commande — jamais versionnées).
+.empreintes/

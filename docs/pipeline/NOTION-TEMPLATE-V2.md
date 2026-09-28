@@ -1,0 +1,146 @@
+# Notion template v2 — measurable content criteria
+
+> **Authority:** VISION.md's notion anatomy (L48–96) + the Day-1 audit's
+> content diagnosis (`docs/audits/fable-ui-content-audit.md` §3, findings
+> C1–C5). **Replaces adjectives with checkable boxes** (the C4 fix): the
+> authors build to these, the critics CHECK these — a box is pass/fail with a
+> line citation, never a vibe. Audience includes Sonnet 5 cold.
+>
+> Gold-standard executions to imitate: `docs/pipeline/EXEMPLARS.md`.
+
+## How this template is used
+
+- **pedagogy-architect** attaches this checklist, filled with rung numbers, to
+  every spec (which misconception is ruptured where; which rungs teach a
+  model). An UNCLAIMED row in the misconception ledger is a SPEC failure.
+- **content-author / item-author** build until every box they own is checkable.
+- **pedagogy-critic** verifies box by box, citing `lesson.md:<line>` for each.
+  A finding without a citation is an opinion (bac-fidelity-critic's rule,
+  generalized).
+- **The human editorial gate** (RULES §2) remains the final judge of whether
+  checked boxes add up to good teaching — boxes are the floor, not the bar.
+
+## A. Per-rung boxes (every `## R<n>` section)
+
+- [ ] **Predict-commit-confront** — REQUIRED where the rung teaches a mental
+  model (hook, mechanism, any misconception rupture): the student is asked to
+  predict, COMMITS through a real interaction (checkpoint MCQ) or an explicit
+  written-attempt gate — never only rhetorically — and is then confronted.
+  Rungs that are pure procedure practice may skip; the spec says which.
+- [ ] **Mechanism-why present** — no bare procedure: every formula or rule the
+  rung introduces carries its "pourquoi c'est vrai" (VISION L60-61: mechanism
+  made obvious, not stated). Test: could a student ask "mais pourquoi ?" and
+  find the answer in the rung?
+- [ ] **Reasoning-annotation on 100% of worked steps** — every worked example
+  and every summit question exposes the expert's DECISION ("what do I reach
+  for and why / what would a wrong reflex be here"), not just clean algebra
+  (VISION L65-68). One unannotated worked step = the box fails.
+- [ ] **Voice** — tu/on tutor register; zero detached academic passive ("il
+  est établi que…"); imperatives welcome; written to be spoken (VISION
+  L236-238).
+- [ ] **Display-math discipline (Day-6 amendment; boundary tightened Day 7 —
+  the portability test showed the old "≥3 steps → component" wording
+  contradicts the practiced corpus)** — any derivation of ≥2 transformations
+  is BLOCK math, ONE transformation per line; inline math is reserved for
+  symbols and single expressions; chained `a = b = c = d` one-liners are a
+  template failure. **Which multi-step math goes through the `Derivation`
+  component** (`derivations.yaml` + `[[derivation:<id>]]`, or `steps:` on an
+  exercise question — learner-paced, one move per step, per-step "why this
+  move" note) **vs narrated block math is decided by the math's ROLE, not its
+  step count:**
+  - **Component:** procedural verification and solution algebra — the student
+    gains by advancing move-by-move, and each move's note is a one-line
+    expert decision (exemplars: `verification-cosinus` in RLC R2; R8/R9
+    solution steps).
+  - **Narrated blocks:** equation-ESTABLISHMENT that is the rung's argument
+    spine, where the prose BETWEEN blocks carries the teaching (exemplars:
+    RLC R2 « loi des mailles, terme par terme »; RLC R5's rupture — the Day-6
+    ledger decision that deliberately kept R5 out of the component).
+  A ≥3-step derivation in neither register (unnarrated AND uncomponentized)
+  fails the box.
+- [ ] **Motion-decision rule (Day-6 amendment)** — the rung teaches a DYNAMIC
+  relationship (something evolves in time) → it carries a motion figure
+  through the beat engine, OR the spec records an explicit static-suffices
+  justification. Silence is a failure; "the engine exists, the asset is debt"
+  is recorded, not ignored.
+- [ ] **French orthotypography (wording fixed Day 7 — the old box
+  contradicted the practiced convention)** — the box checks the RENDERED
+  output (curly apostrophes, U+202F before double punctuation), and the path
+  there differs by surface: **markdown sources are written with plain ASCII
+  apostrophes** and flow through the remarkFrenchTypography pipeline, which
+  converts at render (both existing lessons follow this — never hand-type
+  U+202F in markdown); **TSX chrome strings bypass the pipeline** and must
+  hand-type the curly apostrophe (’) directly.
+
+## B. The misconception ledger (whole notion — an unclaimed row is a failure)
+
+For EVERY misconception in the spec's inventory, exactly one of:
+
+| Misconception id | Ruptured in prose @ rung | OR delegated to items (explicit) |
+|---|---|---|
+| *(every id from spec §1 / items.yaml)* | `R<n>` + line | item ids + why prose rupture isn't needed |
+
+- "Ruptured" means STAGED (the wrong model is voiced and broken on its own
+  consequence), not merely "the correct fact is stated nearby." Exemplar:
+  R1's « Arrête-toi — qui stocke quoi » (EXEMPLARS.md §2).
+- Delegation is legitimate (some models are best confronted by doing) but must
+  be WRITTEN in the spec — silence is an unclaimed row, and unclaimed = fail.
+
+## C. The summit (R-max rungs: bac exercise + variation)
+
+- [ ] **Attempt-first, never printed** — summit exercises render through the
+  staged-reveal contract (`AttemptFirstExercise`: question → student commits →
+  expert reasoning unlocks; `exercises.yaml`). Solutions printed inline in
+  lesson prose at the summit = automatic fail (audit C1). dom-truth guards
+  the rendered form.
+- [ ] **Reasoning on every summit question** — same 100% annotation rule; the
+  variation (R9-style) is NOT allowed to thin out (the pre-v2 R9 failed this).
+- [ ] **BLOCKING — real-bac sourcing (audit C2):** the bac-type exercise is
+  sourced from an identified real national sujet (year + session) or validated
+  against one, recorded in `exercises.yaml` `sourcing.status: sourced`.
+  **Summit unsourced = notion NOT DONE.** This box cannot be checked by an
+  agent inventing a source; it requires the owner's sources. Do not fake it.
+- [ ] **Anti-memorization variation** — same deep structure, different
+  dressing, stated to the student ("tu dois reconnaître la procédure").
+
+## D. The hook (R0)
+
+- [ ] Opens on a concrete phenomenon/stake before any definition (VISION
+  L51-55).
+- [ ] Predict-commit-confront with a REAL commit (checkpoint) — see box A.
+- [ ] **Stands without pending assets** (audit C5): no load-bearing reference
+  to an asset that doesn't exist; missing-asset slots are marked as
+  enhancement comments and render as silent no-ops.
+
+## E. Assets
+
+- [ ] Every `[[marker]]` in lesson.md resolves to an existing asset OR is an
+  explicitly-commented enhancement slot.
+- [ ] Structural diagrams coded (ADR 0017); math live KaTeX, never imaged.
+- [ ] **`stages` (Day-11, LESSON-EXPERIENCE-SPEC §2.8):** every figure brief
+  declares either `stages: [ordered list — one line per stage stating what
+  that stage TEACHES, ending with the reading/method stage]` or
+  `stages: whole (reason)`. Graphs are always staged (axes → data →
+  reading); other figures staged only when the layer order is a teaching
+  gesture (threshold rule, ledger 11.6). Stage order is AUTHORED here —
+  never improvised by the implementing agent. The shipped asset pairs the
+  SVG's `step-N` groups with a `media/<slug>.stages.json` sidecar whose
+  captions match this brief.
+- [ ] **Authoring-annotation channel (July-2026 external-audit fix — a
+  guard-class failure):** internal notes in lesson.md are written as HTML
+  comments (`<!-- … -->`) and are STRIPPED AT LOAD by
+  `stripAuthoringComments` in `web/src/lib/content.ts` — they cannot render
+  by construction. Never rely on the renderer to hide them: react-markdown
+  without rehype-raw renders raw-HTML nodes as text (three enhancement-slot
+  comments shipped as student-visible prose before this rule). dom-truth
+  guards the CLASS: no page's rendered text may contain the authoring
+  lexicon (TODO/FIXME/SLOT/À SOURCER/À FAIRE/AMÉLIORATION/asset-pending).
+  New internal-note vocabulary must be added to that lexicon guard in the
+  same commit.
+
+## Critic protocol
+
+pedagogy-critic's report = this checklist, one verdict + citation per box,
+plus the ledger table filled. bac-fidelity-critic unchanged (cadre citations).
+An all-boxes-green notion still goes to the human gate — the boxes make weak
+notions detectable, not good notions automatic.

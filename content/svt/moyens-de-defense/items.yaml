@@ -1,0 +1,728 @@
+notion: moyens-de-defense
+skill_code: svt_moyens_defense
+
+misconceptions:
+  # Ajoutées le 2026-09-05 : quatre distracteurs restaient sans tag, dont deux
+  # portaient une erreur qu'aucune entrée existante ne décrivait.
+  - id: mc.svt.svt_moyens_defense.inflammation-reduite-a-un-phenomene-vasculaire
+    label: "« L'inflammation ne mobilise aucune cellule immunitaire : ce n'est qu'une dilatation des vaisseaux »"
+    description: >
+      Symétrique de la confusion innée/adaptative : au lieu de prêter à
+      l'inflammation une reconnaissance qu'elle n'a pas, l'élève lui retire
+      toute dimension cellulaire et la réduit à un phénomène circulatoire.
+    contradicts_principle: >
+      La réaction inflammatoire mobilise bel et bien des cellules immunitaires —
+      les phagocytes, qui rejoignent le tissu lésé par diapédèse. Ce qui lui
+      manque, ce n'est pas la présence de cellules immunitaires, c'est la
+      SPÉCIFICITÉ.
+
+  - id: mc.svt.svt_moyens_defense.portee-des-anticorps-mal-situee
+    label: "« Les anticorps atteignent un virus déjà entré dans une cellule — ou n'existent pas du tout contre lui »"
+    description: >
+      L'élève situe mal le champ d'action des anticorps : soit il les fait
+      agir à l'intérieur d'une cellule infectée, soit, constatant qu'ils n'y
+      parviennent pas, il en conclut qu'aucun anticorps n'est jamais produit
+      contre ce virus.
+    contradicts_principle: >
+      Des anticorps spécifiques sont bien produits : ils agissent sur les
+      particules virales encore LIBRES, avant qu'elles n'infectent une nouvelle
+      cellule. Une fois le virus entré, ils ne peuvent plus l'atteindre — c'est
+      alors le lymphocyte T cytotoxique qui prend le relais.
+
+  - id: mc.svt.svt_moyens_defense.confond-innee-adaptative
+    label: "« Toute réaction immunitaire est une reconnaissance spécifique de l'intrus »"
+    description: >
+      L'élève croit que la réaction inflammatoire (rougeur, chaleur, gonflement,
+      douleur) et la phagocytose supposent déjà une identification précise de
+      l'agent infectieux en cause — comme si l'organisme avait reconnu
+      spécifiquement quelle bactérie ou quel virus est présent dès les premières
+      heures. Il fusionne ainsi l'immunité innée (rapide, non spécifique) et
+      l'immunité adaptative (lente la première fois, spécifique).
+    contradicts_principle: >
+      La réaction inflammatoire aiguë se déclenche par la lésion tissulaire
+      elle-même (via des substances chimiques libérées par les cellules
+      abîmées), indépendamment de l'identité de l'agent qui l'a causée — un
+      traumatisme sans aucun microbe (une entorse) produit les quatre mêmes
+      signes qu'une infection. La reconnaissance spécifique d'un antigène précis
+      n'intervient qu'avec la sélection clonale des lymphocytes B et T, un
+      mécanisme plus lent (plusieurs jours la première fois) et propre à
+      l'immunité adaptative.
+
+  - id: mc.svt.svt_moyens_defense.anticorps-detruisent-directement
+    label: "« Les anticorps détruisent directement l'agent infectieux ou la cellule infectée »"
+    description: >
+      L'élève imagine l'anticorps comme une arme qui tue au contact — un poison
+      ou une lame qui dissout ou perce l'agent infectieux, voire la cellule
+      infectée elle-même, dès la liaison antigène-anticorps.
+    contradicts_principle: >
+      Un anticorps agit toujours de façon indirecte : il neutralise (bloque la
+      capacité d'adhésion de l'agent infectieux), agglutine (relie plusieurs
+      agents infectieux entre eux grâce à ses deux sites de fixation), ou marque
+      l'agent infectieux pour une phagocytose ultérieure. La destruction
+      effective vient d'un autre acteur (un phagocyte, le plus souvent), pas de
+      l'anticorps lui-même. De plus, les anticorps ne peuvent atteindre que des
+      antigènes libres ou extracellulaires : une fois un virus entré dans une
+      cellule, il est hors de portée de tout anticorps circulant — seule la
+      réponse à médiation cellulaire (lymphocytes T8 puis T cytotoxiques) peut
+      détruire, par contact direct, une cellule déjà infectée.
+
+  - id: mc.svt.svt_moyens_defense.confond-lb-lt
+    label: "« Les lymphocytes B et les lymphocytes T ont le même rôle, ou leurs rôles sont interchangeables »"
+    description: >
+      L'élève attribue la production d'anticorps à un lymphocyte T, ou la
+      destruction directe d'une cellule infectée à un lymphocyte B (ou à un
+      plasmocyte), comme si les deux lignées lymphocytaires étaient
+      interchangeables.
+    contradicts_principle: >
+      Le lymphocyte B, sélectionné par un antigène puis différencié en
+      plasmocyte, sécrète des anticorps qui agissent à distance, par voie
+      humorale, sur des cibles extracellulaires. Le lymphocyte T8, sélectionné
+      par un fragment antigénique affiché à la surface d'une cellule infectée
+      puis différencié en lymphocyte T cytotoxique (LTc), détruit cette cellule
+      par CONTACT DIRECT — sans produire ni utiliser d'anticorps. Ce sont deux
+      lignées cellulaires distinctes, avec des mécanismes d'action différents
+      (sécrétion à distance vs contact direct) et des cibles différentes
+      (antigènes libres vs cellules infectées).
+
+items:
+
+  # ── M1 · confond-innee-adaptative ───────────────────────────────────────────
+  - id: MD-M1-1
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: svt_moyens_defense
+    tags: [misconception_driven, svt_moyens_defense, immunite_innee_adaptative]
+    stem: >
+      Quelques heures après une écharde infectée, la zone est rouge, chaude,
+      gonflée et douloureuse. Un élève affirme : « c'est parce que des
+      lymphocytes déjà sélectionnés contre cette bactérie précise ont produit
+      des anticorps qui ont déclenché cette réaction. » Cette affirmation
+      est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : cette réaction, rapide et non spécifique, est une réaction inflammatoire aiguë (immunité innée) ; la sélection clonale des lymphocytes et la production d'anticorps (immunité adaptative) demandent plusieurs jours, pas quelques heures."
+        correct: true
+      - id: B
+        text: "Oui, car toute réaction de l'organisme contre un agent infectieux implique nécessairement une reconnaissance spécifique de cet agent par des lymphocytes, quelle que soit la vitesse à laquelle elle apparaît."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+        also_reveals: []
+        feedback: >
+          Cela fusionne les deux systèmes de défense. La réaction inflammatoire
+          (rougeur, chaleur, gonflement, douleur) se déclenche par la lésion
+          tissulaire elle-même, sans reconnaissance spécifique de l'intrus — une
+          entorse sans aucun microbe produit les mêmes quatre signes. La
+          reconnaissance spécifique par sélection clonale est un mécanisme
+          distinct, plus lent, propre à l'immunité adaptative.
+      - id: C
+        text: "Non, mais uniquement parce que l'inflammation ne fait intervenir aucune cellule immunitaire : elle se réduit à une dilatation des vaisseaux sanguins de la zone blessée, sans participation des globules blancs.
+        Aucun leucocyte ne quitterait donc le sang vers le tissu lésé."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.inflammation-reduite-a-un-phenomene-vasculaire
+        feedback: >
+          C'est faux pour une autre raison : la réaction inflammatoire mobilise
+          bien des cellules immunitaires, les phagocytes, qui rejoignent le
+          tissu lésé par diapédèse. Ce qui manque à l'affirmation de départ,
+          c'est la spécificité, pas la présence de cellules immunitaires.
+      - id: D
+        text: "Oui, car la rapidité de la réaction (quelques heures) prouve justement qu'elle cible précisément cette bactérie : seule une reconnaissance spécifique peut produire un effet aussi net en si peu de temps."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+        also_reveals: []
+        feedback: >
+          C'est l'inverse : la rapidité est justement la signature de
+          l'immunité INNÉE, non spécifique — une réponse spécifique (sélection
+          clonale, expansion, production d'anticorps) est nécessairement plus
+          lente la première fois, car elle part d'un clone rare qui doit se
+          multiplier.
+    correct_feedback: >
+      L'inflammation aiguë est une réaction non spécifique de l'immunité innée,
+      déclenchée par la lésion tissulaire elle-même — elle ne demande aucune
+      sélection clonale préalable, d'où sa rapidité. La production d'anticorps
+      spécifiques, elle, exige la sélection puis l'expansion d'un clone de
+      lymphocytes B, un processus qui prend plusieurs jours.
+    solution: |
+      **Ce qui distingue les deux systèmes :** l'immunité innée (inflammation,
+      phagocytose) est immédiate et non spécifique — elle réagit de la même
+      façon à toute lésion tissulaire, microbienne ou non. L'immunité adaptative
+      (sélection clonale, anticorps) est spécifique mais lente la première fois.
+
+      **Application :** une réaction visible en quelques heures ne peut pas
+      reposer sur une sélection clonale (qui prend plusieurs jours) : c'est donc
+      une réaction inflammatoire, non spécifique.
+
+  - id: MD-M1-2
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: svt_moyens_defense
+    tags: [misconception_driven, svt_moyens_defense, immunite_innee_adaptative]
+    stem: >
+      Un individu blessé développe, en quelques heures, une rougeur et un
+      gonflement local. Une semaine plus tard, des anticorps spécifiques de la
+      bactérie en cause apparaissent dans son sang. Quelle affirmation décrit
+      correctement ces deux phénomènes ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La réaction locale immédiate relève de l'immunité innée, non spécifique de la bactérie ; l'apparition des anticorps une semaine plus tard relève de l'immunité adaptative, spécifique de cette bactérie et plus lente à se mettre en place."
+        correct: true
+      - id: B
+        text: "Les deux phénomènes relèvent de la même immunité innée, simplement à des vitesses différentes selon la quantité de bactéries présentes au moment de la blessure et selon l'état général de l'individu."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+        also_reveals: []
+        feedback: >
+          L'immunité innée ne produit pas d'anticorps : les anticorps résultent
+          de la sélection clonale puis de la différenciation de lymphocytes B en
+          plasmocytes, un mécanisme propre à l'immunité adaptative. Le délai
+          d'une semaine ne s'explique pas par « plus ou moins de bactéries »,
+          mais par la nature différente du mécanisme mis en jeu.
+      - id: C
+        text: "Les deux phénomènes relèvent de l'immunité adaptative, la rapidité de la réaction locale s'expliquant par une mémoire immunitaire déjà acquise lors d'une rencontre antérieure avec la même bactérie."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+        also_reveals: []
+        feedback: >
+          Il s'agit ici d'une première rencontre avec cette bactérie : aucune
+          mémoire immunitaire spécifique ne peut donc être déjà disponible. La
+          réaction rapide et non spécifique observée en quelques heures est le
+          signe de l'immunité innée, pas d'une réponse adaptative mémorisée.
+      - id: D
+        text: "La réaction locale immédiate est aussi spécifique de la bactérie que le sont les anticorps apparus une semaine plus tard : seul le délai les distingue, et non leur mode de reconnaissance de l'agent.
+        Une inflammation différerait donc d'un agent infectieux à l'autre."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+        also_reveals: []
+        feedback: >
+          La réaction locale immédiate (inflammation) est non spécifique : elle
+          se produirait de façon identique face à n'importe quel agent
+          agresseur, voire sans aucun microbe (une simple lésion mécanique
+          suffit). Seuls les anticorps, apparus plus tard, sont spécifiques de
+          cette bactérie précise.
+    correct_feedback: >
+      Le délai très différent entre les deux phénomènes (heures contre semaine)
+      est la signature de deux systèmes distincts : l'immunité innée, immédiate
+      et non spécifique, et l'immunité adaptative, plus lente la première fois
+      mais spécifique de l'antigène en cause.
+    solution: |
+      **Réaction en quelques heures :** immunité innée — non spécifique,
+      déclenchée par la lésion tissulaire elle-même.
+
+      **Anticorps après une semaine :** immunité adaptative — nécessite la
+      sélection clonale d'un lymphocyte B spécifique, puis son expansion en
+      plasmocytes, un processus qui prend plusieurs jours.
+
+  # ── M2 · anticorps-detruisent-directement ───────────────────────────────────
+  - id: MD-M2-1
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: svt_moyens_defense
+    tags: [misconception_driven, svt_moyens_defense, anticorps]
+    stem: >
+      Un anticorps se fixe sur un virus qui circule librement dans le sang,
+      formant un complexe immun. Que se passe-t-il DIRECTEMENT, du seul fait de
+      cette fixation ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le virus est neutralisé et/ou agglutiné à d'autres particules virales, et devient plus facilement reconnaissable par les phagocytes — mais il n'est pas détruit par l'anticorps lui-même."
+        correct: true
+      - id: B
+        text: "L'anticorps détruit directement le virus au moment où il s'y fixe, comme le ferait une enzyme digestive découpant sa cible, et le complexe immun n'est plus qu'un déchet à évacuer."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.anticorps-detruisent-directement
+        also_reveals: []
+        feedback: >
+          L'anticorps n'a aucune activité destructrice propre : il se lie, il
+          neutralise, il agglutine, il marque — mais il ne dissout ni ne
+          détruit le virus par lui-même. La destruction effective, quand elle a
+          lieu, vient d'un autre acteur, en général un phagocyte qui élimine
+          ensuite le virus neutralisé ou agglutiné.
+      - id: C
+        text: "Le complexe immun formé transforme le virus en une cellule infectée, que l'anticorps élimine ensuite lui-même par contact, sans qu'aucune autre cellule immunitaire n'ait à intervenir."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.anticorps-detruisent-directement
+        feedback: >
+          Un virus libre dans le sang n'est pas une « cellule » et un complexe
+          immun ne transforme rien en cellule infectée. Le complexe immun est
+          simplement l'assemblage anticorps-antigène ; il ne modifie pas la
+          nature du virus.
+      - id: D
+        text: "L'anticorps pénètre à l'intérieur du virus pour le détruire de l'intérieur, comme le ferait un lymphocyte T cytotoxique sur une cellule infectée par ce même virus."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.anticorps-detruisent-directement
+        also_reveals: []
+        feedback: >
+          Ce choix confond deux mécanismes très différents. L'anticorps se lie
+          à la SURFACE de l'antigène par ses sites de fixation ; il ne pénètre
+          nulle part. Le mécanisme de destruction par contact décrit ici est
+          celui du lymphocyte T cytotoxique (LTc) sur une cellule infectée — un
+          mécanisme de la réponse cellulaire, pas de la réponse humorale.
+    correct_feedback: >
+      La liaison anticorps-antigène neutralise, agglutine ou marque l'agent
+      infectieux — elle prépare son élimination par un autre acteur (le plus
+      souvent un phagocyte), mais ne le détruit pas directement. L'anticorps
+      n'a pas d'action destructrice propre.
+    solution: |
+      **Ce que fait l'anticorps :** neutraliser (bloquer l'adhésion du virus),
+      agglutiner (relier plusieurs particules virales via ses deux sites de
+      fixation), ou marquer (faciliter la reconnaissance par un phagocyte).
+
+      **Ce qu'il ne fait pas :** détruire lui-même le virus. La destruction
+      effective est le fait d'un autre acteur, en général un phagocyte qui
+      élimine ensuite l'agent neutralisé ou agglutiné.
+
+  - id: MD-M2-2
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: svt_moyens_defense
+    tags: [misconception_driven, svt_moyens_defense, anticorps, reponse_cellulaire]
+    stem: >
+      Une cellule de l'organisme est infectée par un virus, qui se multiplie à
+      l'intérieur d'elle. Un élève affirme : « les anticorps spécifiques de ce
+      virus vont se fixer sur la cellule infectée et la détruire directement. »
+      Cette affirmation est-elle correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : une fois le virus entré dans la cellule, il est hors de portée des anticorps circulants ; c'est la réponse à médiation cellulaire (lymphocytes T8, puis T cytotoxiques) qui détruit, par contact direct, la cellule infectée elle-même."
+        correct: true
+      - id: B
+        text: "Oui, car les anticorps peuvent traverser la membrane plasmique de la cellule pour atteindre un virus déjà installé à l'intérieur d'elle, et s'y fixer exactement comme ils le font sur un virus circulant dans le sang.
+        Une cellule infectée serait donc neutralisée sans intervention des lymphocytes T."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.anticorps-detruisent-directement
+        also_reveals: []
+        feedback: >
+          Les anticorps circulent dans le sang et la lymphe et n'agissent que
+          sur des antigènes libres ou extracellulaires. Ils ne traversent pas la
+          membrane d'une cellule pour atteindre un virus déjà intracellulaire —
+          ce virus est, à ce stade, totalement hors de leur portée.
+      - id: C
+        text: "Non, car aucun anticorps n'est jamais produit contre ce type de virus : l'organisme ne dispose contre lui que de la phagocytose, seule capable d'atteindre une cellule infectée."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.portee-des-anticorps-mal-situee
+        feedback: >
+          Des anticorps spécifiques de ce virus peuvent parfaitement être
+          produits (ils agiraient sur les particules virales encore libres,
+          avant qu'elles n'infectent une nouvelle cellule) — mais une fois le
+          virus entré dans une cellule, ces mêmes anticorps ne peuvent plus rien
+          contre lui. Le problème n'est pas l'absence de production
+          d'anticorps, mais leur incapacité à atteindre une cible
+          intracellulaire.
+      - id: D
+        text: "Oui, mais uniquement si la cellule infectée libère temporairement le virus hors d'elle-même, ce qui laisse aux anticorps circulants une fenêtre pour s'y fixer et le neutraliser."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.anticorps-detruisent-directement
+        also_reveals: []
+        feedback: >
+          Ce scénario n'a pas lieu : ce n'est pas ainsi que la cellule infectée
+          est éliminée. La cellule infectée affiche à sa surface des fragments
+          du virus, reconnus directement par des lymphocytes T8, qui se
+          différencient en lymphocytes T cytotoxiques et détruisent la cellule
+          par contact — sans qu'aucun anticorps n'intervienne dans cette
+          destruction.
+    correct_feedback: >
+      Un virus déjà installé à l'intérieur d'une cellule est hors de portée de
+      tout anticorps circulant. C'est la réponse à médiation cellulaire — les
+      lymphocytes T8, différenciés en lymphocytes T cytotoxiques (LTc) — qui
+      détruit, par contact direct, la cellule infectée elle-même, éliminant du
+      même coup le virus qu'elle abritait.
+    solution: |
+      **Limite des anticorps :** ils n'agissent que sur des antigènes libres ou
+      extracellulaires ; un virus intracellulaire leur est inaccessible.
+
+      **Mécanisme réel :** la cellule infectée affiche à sa surface des
+      fragments viraux, reconnus par des lymphocytes T8 spécifiques ; ceux-ci se
+      différencient en lymphocytes T cytotoxiques (LTc), qui détruisent la
+      cellule infectée par contact direct.
+
+  # ── M3 · confond-lb-lt ──────────────────────────────────────────────────────
+  - id: MD-M3-1
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: svt_moyens_defense
+    tags: [misconception_driven, svt_moyens_defense, lb_lt]
+    stem: >
+      Quelle cellule, une fois différenciée après la sélection clonale, produit
+      et sécrète les anticorps ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le plasmocyte, issu de la différenciation d'un lymphocyte B sélectionné par un antigène."
+        correct: true
+      - id: B
+        text: "Le lymphocyte T8, qui reconnaît l'antigène affiché par une cellule infectée."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-lb-lt
+        also_reveals: []
+        feedback: >
+          Le lymphocyte T8 ne produit aucun anticorps : sélectionné puis
+          différencié en lymphocyte T cytotoxique, il détruit directement, par
+          contact, les cellules infectées qu'il reconnaît. La production
+          d'anticorps est le fait exclusif de la lignée des lymphocytes B (via
+          le plasmocyte).
+      - id: C
+        text: "Le lymphocyte T4 auxiliaire, qui coordonne l'ensemble de la réponse immunitaire."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-lb-lt
+        also_reveals: []
+        feedback: >
+          Le lymphocyte T4 ne produit pas d'anticorps non plus : son rôle est de
+          sécréter des signaux qui stimulent les lymphocytes B et T8 déjà
+          sélectionnés, pas de produire lui-même la molécule effectrice. La
+          production d'anticorps reste le fait du plasmocyte, issu du
+          lymphocyte B.
+      - id: D
+        text: "Le phagocyte, qui présente l'antigène aux autres cellules immunitaires."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+        feedback: >
+          Le phagocyte (ou la cellule présentatrice d'antigène) capture et
+          présente l'antigène, mais ne produit pas d'anticorps. Cette fonction
+          appartient à une lignée totalement différente, celle des lymphocytes
+          B différenciés en plasmocytes.
+    correct_feedback: >
+      Seul le plasmocyte, résultat de la différenciation d'un lymphocyte B
+      sélectionné par son antigène, sécrète les anticorps correspondants. Les
+      lymphocytes T8, T4 et les phagocytes ont d'autres rôles, mais aucun d'eux
+      ne produit d'anticorps.
+    solution: |
+      **Chaîne correcte :** lymphocyte B sélectionné par l'antigène → expansion
+      clonale → différenciation en plasmocyte → sécrétion d'anticorps.
+
+      **Rôles à ne pas confondre :** le lymphocyte T8 (puis LTc) détruit par
+      contact ; le lymphocyte T4 coordonne par signalisation ; ni l'un ni
+      l'autre ne produit d'anticorps.
+
+  - id: MD-M3-2
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: svt_moyens_defense
+    tags: [misconception_driven, svt_moyens_defense, lb_lt, reponse_cellulaire]
+    stem: >
+      Quelle cellule est directement responsable de la destruction, par
+      contact, d'une cellule de l'organisme infectée par un virus ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le lymphocyte T cytotoxique (LTc), issu de la différenciation d'un lymphocyte T8 sélectionné par les fragments viraux affichés à la surface de la cellule infectée."
+        correct: true
+      - id: B
+        text: "Le lymphocyte B, qui reconnaît directement l'antigène viral affiché par la cellule infectée et la détruit par contact, sans passer par la production d'anticorps."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-lb-lt
+        also_reveals: []
+        feedback: >
+          Le lymphocyte B ne détruit aucune cellule par contact : sélectionné
+          par un antigène, il se différencie en plasmocyte, qui sécrète des
+          anticorps agissant à distance sur des cibles extracellulaires. La
+          destruction par contact d'une cellule infectée est le mécanisme
+          propre au lymphocyte T8 différencié en LTc, une lignée distincte.
+      - id: C
+        text: "Le plasmocyte, qui libère ses anticorps directement au contact de la cellule infectée afin de la détruire sur place, à la manière d'une injection ciblée."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-lb-lt
+        also_reveals: [mc.svt.svt_moyens_defense.anticorps-detruisent-directement]
+        feedback: >
+          Le plasmocyte sécrète des anticorps qui diffusent dans le sang et la
+          lymphe pour agir sur des antigènes EXTRACELLULAIRES — il n'entre pas
+          en contact avec les cellules infectées et n'a aucune action sur
+          elles. La destruction d'une cellule infectée relève d'un mécanisme de
+          contact direct, propre au lymphocyte T cytotoxique, pas du plasmocyte
+          ni des anticorps qu'il sécrète.
+      - id: D
+        text: "Le lymphocyte T4 auxiliaire, qui détruit lui-même les cellules infectées après avoir reconnu l'antigène qu'elles présentent à leur surface."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-lb-lt
+        also_reveals: []
+        feedback: >
+          Le lymphocyte T4 ne détruit aucune cellule : son rôle est de
+          sécréter des signaux qui stimulent la différenciation complète des
+          lymphocytes B et des lymphocytes T8 déjà sélectionnés. La destruction
+          par contact d'une cellule infectée reste le fait du lymphocyte T
+          cytotoxique (issu du lymphocyte T8), pas du lymphocyte T4.
+    correct_feedback: >
+      Le lymphocyte T8, sélectionné par les fragments viraux affichés à la
+      surface d'une cellule infectée puis différencié en lymphocyte T
+      cytotoxique (LTc), est seul responsable de la destruction par contact
+      direct de cette cellule. Ni le lymphocyte B, ni le plasmocyte, ni le
+      lymphocyte T4 n'exercent ce rôle.
+    solution: |
+      **Chaîne correcte :** lymphocyte T8 sélectionné par le fragment viral
+      affiché → expansion clonale (avec l'aide du lymphocyte T4) →
+      différenciation en lymphocyte T cytotoxique (LTc) → destruction par
+      contact direct de la cellule infectée.
+
+      **Rôles à ne pas confondre :** le lymphocyte B (puis plasmocyte) agit à
+      distance, par anticorps, sur des cibles extracellulaires ; le lymphocyte
+      T4 coordonne sans détruire ; seul le LTc détruit par contact.
+
+  # ── DEUX ITEMS AJOUTÉS LE 2026-09-05 ───────────────────────────────────────
+  # Motif : quatre des cinq erreurs déclarées étaient sous le plancher de 3
+  # items du banc, donc inévaluables par le modèle apprenant.
+  - id: MD-M4-1
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: svt_moyens_defense
+    tags: [misconception_driven, immunite_innee, inflammation, anticorps]
+    stem: >
+      Une écharde provoque en quelques heures rougeur, chaleur, gonflement et
+      douleur ; quelques jours plus tard, des anticorps spécifiques de la
+      bactérie en cause apparaissent dans le sang. Quel rôle joue chacun de
+      ces deux dispositifs, et par quel moyen agit le second ?
+    type: mcq
+    choices:
+      - id: A
+        text: "L'inflammation mobilise des phagocytes sans reconnaître l'intrus ; les anticorps, eux, se lient spécifiquement à l'antigène et forment un complexe immun qui facilite ensuite la phagocytose."
+        correct: true
+      - id: B
+        text: "L'inflammation se réduit à une dilatation des vaisseaux de la zone blessée, sans aucune cellule immunitaire mobilisée ; ce sont les anticorps qui, seuls, apportent la dimension cellulaire de la défense."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.inflammation-reduite-a-un-phenomene-vasculaire
+        feedback: >
+          La réaction inflammatoire mobilise bel et bien des cellules
+          immunitaires : les phagocytes rejoignent le tissu lésé par
+          diapédèse. Ce qui lui manque n'est pas la présence de cellules,
+          c'est la SPÉCIFICITÉ.
+      - id: C
+        text: "L'inflammation prépare le terrain, et les anticorps détruisent ensuite directement la bactérie en perçant sa paroi au contact, sans qu'aucune autre cellule immunitaire n'ait à intervenir."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.anticorps-detruisent-directement
+        feedback: >
+          Un anticorps ne tue rien par contact : il se LIE à l'antigène et
+          forme un complexe immun. C'est ce complexe qui est ensuite reconnu
+          et ingéré par les phagocytes — la destruction reste cellulaire.
+      - id: D
+        text: "L'inflammation reconnaît déjà la bactérie précise en cause, et les anticorps ne font que confirmer ensuite cette identification, en se liant à l'antigène que l'inflammation avait repéré la première."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-innee-adaptative
+        feedback: >
+          La réaction inflammatoire se déclenche par la LÉSION tissulaire
+          elle-même, sans identifier l'agent — une entorse sans microbe donne
+          les mêmes quatre signes. La reconnaissance spécifique n'apparaît
+          qu'avec la sélection clonale, plusieurs jours plus tard.
+    correct_feedback: >
+      Deux étages complémentaires. L'immunité innée agit vite et sans
+      reconnaissance : lésion, inflammation, phagocytose. L'immunité
+      adaptative agit plus tard mais avec spécificité : l'anticorps se lie à
+      son antigène et forme un complexe immun, que le phagocyte élimine.
+    solution: |
+      **L'étage inné.** Déclenché par la lésion, pas par l'identité de
+      l'intrus. Il mobilise des cellules — les phagocytes — mais ne les
+      dirige contre rien de précis.
+
+      **L'étage adaptatif.** Plusieurs jours, le temps de la sélection puis de
+      l'expansion clonale. Il produit un anticorps taillé pour UN antigène.
+
+      **Comment agit un anticorps.** Il se lie, il agglutine, il marque. Il ne
+      perce ni ne dissout : la destruction revient au phagocyte, qui ingère le
+      complexe immun.
+
+  - id: MD-M4-2
+    # RE-BARREAUDÉ le 2026-09-19 : portait `rung: "R4"` (le chapitre 5, la
+    # sélection clonale des LB). Sa bonne réponse A est « Le lymphocyte T
+    # cytotoxique » — le mot « cytotoxique » et le sigle LTc n'apparaissent
+    # pour la première fois qu'à lesson.md:252, dans le chapitre 7 (R6).
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: svt_moyens_defense
+    tags: [misconception_driven, lb_lt, cellule_infectee, anticorps]
+    stem: >
+      Une cellule du poumon est infectée par un virus qui se multiplie à
+      l'intérieur d'elle. Des anticorps spécifiques de ce virus circulent déjà
+      dans le sang du patient. Qui élimine cette cellule infectée, et pourquoi
+      pas les anticorps ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le lymphocyte T cytotoxique : les anticorps n'atteignent que les particules virales restées libres dans les liquides, jamais un virus déjà entré à l'intérieur d'une cellule."
+        correct: true
+      - id: B
+        text: "Les anticorps eux-mêmes, qui traversent la membrane de la cellule infectée pour aller neutraliser le virus à l'intérieur, la cellule étant ensuite réparée sans avoir à être détruite."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.portee-des-anticorps-mal-situee
+        feedback: >
+          Un anticorps est une grosse protéine, qui reste dans les liquides
+          biologiques : il ne traverse pas la membrane d'une cellule. Une fois
+          le virus entré, il est hors de sa portée — c'est précisément pour
+          cela qu'une seconde voie existe.
+      - id: C
+        text: "Le plasmocyte, qui se déplace jusqu'à la cellule infectée et la détruit par contact : c'est la même cellule qui produit les anticorps et qui élimine les cellules devenues anormales."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-lb-lt
+        feedback: >
+          Deux lignées, deux métiers. Le PLASMOCYTE, issu d'un lymphocyte B,
+          SÉCRÈTE des anticorps et ne se déplace pas pour tuer. La destruction
+          par contact d'une cellule infectée revient au lymphocyte T
+          cytotoxique, issu d'un LT8.
+      - id: D
+        text: "Le phagocyte, qui reconnaît spécifiquement le virus grâce aux anticorps déjà produits, et qui va le chercher quelle que soit la cellule de l'organisme où il s'est réfugié."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.confond-lb-lt
+        feedback: >
+          Le phagocyte ingère des éléments présents dans le milieu — bactéries,
+          débris, complexes immuns — mais n'entre pas dans une cellule vivante
+          de l'organisme pour y chercher un virus. C'est le lymphocyte T
+          cytotoxique qui détruit la cellule infectée elle-même.
+    correct_feedback: >
+      Une fois le virus entré dans une cellule, les anticorps ne peuvent plus
+      l'atteindre : ils n'agissent que sur les particules virales libres.
+      C'est alors le lymphocyte T cytotoxique qui reconnaît la cellule
+      infectée et provoque sa destruction.
+    solution: |
+      **Ce que les anticorps savent faire.** Se lier à un antigène ACCESSIBLE :
+      virus libre dans le sang ou la lymphe, toxine, bactérie. Ils neutralisent
+      et marquent, en dehors des cellules.
+
+      **Ce qu'ils ne peuvent pas faire.** Traverser une membrane cellulaire.
+      Un virus intracellulaire leur échappe entièrement.
+
+      **La seconde voie.** Le lymphocyte T cytotoxique reconnaît, à la surface
+      de la cellule infectée, les fragments viraux qu'elle affiche — et détruit
+      la cellule entière, virus compris.
+
+      **La règle à retenir.** Agent hors des cellules → voie des anticorps
+      (lymphocytes B, plasmocytes). Agent dans les cellules → voie cellulaire
+      (lymphocytes T cytotoxiques).
+
+  - id: MD-M4-3
+    # RE-BARREAUDÉ le 2026-09-19 : portait `rung: "R2"` (le chapitre 3, la
+    # phagocytose). Sa bonne réponse A repose sur « la défense contre un virus
+    # circulant en dépend étroitement [des anticorps] » — or les anticorps ne
+    # sont enseignés qu'au chapitre 6 (R5, lesson.md:192) ; avant, ils ne sont
+    # que renvoyés en avant (« on reviendra sur ce point au chapitre 6 »).
+    # L'item n'était pas répondable au sortir de R2.
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: svt_moyens_defense
+    tags: [misconception_driven, immunite_innee, anticorps, portee]
+    stem: >
+      Une patiente sous traitement supprimant totalement la production
+      d'anticorps se coupe le doigt. La plaie rougit, chauffe et gonfle
+      normalement dans les heures qui suivent, mais une infection virale
+      contractée la même semaine évolue mal. Que montre ce contraste ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que la réaction inflammatoire ne dépend pas des anticorps — elle mobilise des phagocytes sans reconnaissance spécifique — alors que la défense contre un virus circulant, elle, en dépend étroitement."
+        correct: true
+      - id: B
+        text: "Que la réaction inflammatoire observée n'engage aucune cellule immunitaire : elle se limite à une dilatation locale des vaisseaux, ce qui explique qu'elle survienne quel que soit l'état du système immunitaire."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.inflammation-reduite-a-un-phenomene-vasculaire
+        feedback: >
+          L'inflammation mobilise des phagocytes, qui rejoignent le tissu lésé
+          par diapédèse : elle est bel et bien cellulaire. Si elle survient
+          malgré tout ici, ce n'est pas parce qu'elle serait purement
+          vasculaire, mais parce qu'elle ne réclame aucun anticorps.
+      - id: C
+        text: "Que les anticorps sont indispensables à toute défense, y compris innée : la plaie du doigt n'a en réalité pas rougi normalement, et l'énoncé décrit une inflammation qui ne peut pas avoir eu lieu."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.portee-des-anticorps-mal-situee
+        feedback: >
+          Les anticorps n'interviennent pas dans la réaction inflammatoire
+          aiguë, qui se déclenche par la lésion tissulaire elle-même. Une
+          patiente sans anticorps développe une inflammation parfaitement
+          normale — c'est justement ce que le contraste montre.
+      - id: D
+        text: "Que les anticorps auraient de toute façon été inutiles contre ce virus, puisqu'un agent viral se réfugie dans les cellules dès son entrée dans l'organisme et échappe donc entièrement à leur portée."
+        correct: false
+        misconception: mc.svt.svt_moyens_defense.portee-des-anticorps-mal-situee
+        feedback: >
+          Un virus circule d'abord LIBREMENT dans les liquides avant d'infecter
+          une nouvelle cellule : c'est là que les anticorps agissent, en le
+          neutralisant avant l'entrée. Leur absence est donc bien une perte,
+          même contre un agent intracellulaire.
+    correct_feedback: >
+      L'inflammation relève de l'immunité innée : elle se déclenche par la
+      lésion, mobilise des phagocytes, et ne réclame aucun anticorps. La
+      défense contre un virus circulant relève de l'immunité adaptative :
+      supprimer les anticorps la prive de son moyen d'agir sur les particules
+      libres.
+    solution: |
+      **Ce que le traitement supprime.** Les anticorps, donc une partie de
+      l'immunité ADAPTATIVE.
+
+      **Ce qui fonctionne encore.** L'inflammation : déclenchée par la lésion
+      tissulaire, elle mobilise des phagocytes sans identifier quoi que ce
+      soit. Aucun anticorps requis.
+
+      **Ce qui manque.** La neutralisation des particules virales libres, entre
+      deux cellules — le domaine propre des anticorps. Sans eux, le virus passe
+      plus facilement d'une cellule à l'autre.
+
+      **La nuance à ne pas manquer.** Les anticorps n'atteignent pas un virus
+      DÉJÀ intracellulaire ; ils l'atteignent quand il circule. Leur perte
+      compte donc, même face à un agent qui finit par entrer.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# Ajouté le 2026-09-05. Cette notion n'en avait aucun : son état de couverture
+# n'était lisible qu'en relançant un instrument, donc invisible à qui ouvrait le
+# fichier — et une dette qu'aucun document ne nomme est une dette qu'on ne paie
+# jamais. Le tableau est GÉNÉRÉ contre la convention de la chaîne
+# (web/scripts/lib/couverture-compte.mjs) et gardé par
+# web/scripts/resume-couverture.mjs : la porte échoue dès que `floor_met` ou
+# `total_items` cesse de correspondre au contenu du fichier — dans les DEUX
+# directions, donc combler le plancher oblige aussi à venir retourner le drapeau.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul.
+  per_misconception:
+    mc.svt.svt_moyens_defense.inflammation-reduite-a-un-phenomene-vasculaire: { count: 3, items: [MD-M1-1, MD-M4-1, MD-M4-3] }
+    mc.svt.svt_moyens_defense.portee-des-anticorps-mal-situee:                { count: 3, items: [MD-M2-2, MD-M4-2, MD-M4-3] }
+    mc.svt.svt_moyens_defense.confond-innee-adaptative:                       { count: 4, items: [MD-M1-1, MD-M1-2, MD-M3-1, MD-M4-1] }
+    mc.svt.svt_moyens_defense.anticorps-detruisent-directement:               { count: 3, items: [MD-M2-1, MD-M2-2, MD-M4-1] }
+    mc.svt.svt_moyens_defense.confond-lb-lt:                                  { count: 3, items: [MD-M3-1, MD-M3-2, MD-M4-2] }
+  total_items: 9
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    # Recompté le 2026-09-19 après le re-barreaudage de MD-M4-2 et MD-M4-3,
+    # puis complété le même jour : les barreaux à ZÉRO sont ÉCRITS, pas omis.
+    # RECTIFIÉ le 2026-09-19 : cette note affirmait que R0 et le dernier
+    # chapitre « n'ont jamais d'item par construction » et étaient « exemptés ».
+    # C'est FAUX, et mesuré : sur les 62 notions du dépôt, 51 portent au moins
+    # un item à R0 et 50 au dernier barreau. Aucun barreau n'est exempté — tous
+    # portent leur compte, zéro compris.
+    #
+    # QUATRE BARREAUX D'ENSEIGNEMENT SANS AUCUN ITEM, et ce sont eux le vrai
+    # état de la notion :
+    #   R1 — la réaction inflammatoire, dont les quatre signes cardinaux sont
+    #        le meilleur « pourquoi c'est vrai » de la leçon ;
+    #   R2 — la phagocytose et ses cinq étapes (l'item qui y était rangé n'y
+    #        était pas répondable : sa clé est au chapitre 6) ;
+    #   R7 — la coopération CPA/LT4, qui n'a NI item NI checkpoint alors que la
+    #        leçon en fait le point de bascule de toute la réponse ;
+    #   R8 — la mémoire immunitaire, qui répond à la SECONDE des deux questions
+    #        d'ouverture, et dont le mot n'apparaît au banc que côté distracteur.
+    # Mesuré le 2026-09-19 sur les 62 notions : 51 portent au moins un item
+    # au barreau R0 et 50 au DERNIER barreau. Un zéro ici n'est donc PAS une
+    # fatalité de structure, c'est un état de cette notion — il s'écrit.
+    R0: 0   # l'accroche ne porte aucun item de banc
+    R1: 0
+    R2: 0
+    R3: 3
+    R4: 1
+    R5: 2
+    R6: 3
+    R7: 0
+    R8: 0
+    R9: 0   # le chapitre « Pour t'entraîner » ne porte aucun item de banc
+  honest_state_2026_09_19: >-
+    Les cinq misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Quatre y siègent EXACTEMENT (3 items) : la marge est nulle
+    et tout retrait d'item la casse.
+    TROIS TROUS DE RAMPE, mesurés et laissés VISIBLES plutôt que comblés par
+    un rangement : le chapitre 3 (phagocytose) n'a aucun item depuis le
+    re-barreaudage ; le chapitre 8 (CPA et LT4) n'a ni item ni checkpoint,
+    alors qu'il enseigne le rôle coordinateur du LT4 que la leçon présente
+    comme le point de bascule ; et le chapitre 9 (mémoire immunitaire) —
+    qui répond à la SECONDE des deux questions d'ouverture — n'est la bonne
+    réponse d'aucun item du banc, le mot « mémoire » n'y apparaissant que
+    du côté distracteur. Les trois se comblent en écrivant des items, pas en
+    déplaçant des étiquettes.

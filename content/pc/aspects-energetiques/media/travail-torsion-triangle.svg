@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" width="640" height="460"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Le travail du couple de rappel de torsion : la droite M égale C thêta, partant de l’origine ; l’aire du triangle sous cette droite, égale à un demi C thêta carré, mise en évidence ; le moment moyen, un demi C thêta, marqué par un repère horizontal ; et, en pointillé estompé, le rectangle C thêta carré que donnerait à tort le calcul moment fois angle en traitant C thêta comme le moment de tout le trajet — deux fois trop grand. La même construction que pour le ressort.">
+  <title>Le travail du couple de rappel : l’aire du triangle, W = ½Cθ²</title>
+  <!--
+    travail-torsion-triangle.svg — figure STAGED (LESSON-EXPERIENCE-SPEC
+    §2.5 : un graphe est TOUJOURS stagé, ordre canonique axes → données →
+    lecture), 3 étapes, cœur du rung R6.
+
+    EXACT TWIN de travail-ressort-triangle.svg (R5) — même géométrie en
+    pixels, seules les grandeurs changent : F→M, x→θ, k→C.
+      origine O (θ=0, M=0)     : (90, 360)
+      point final (θ, Cθ)      : (470, 110)
+      base (= θ, en px)        : 380      hauteur (= Cθ, en px) : 250
+    Aire du triangle = ½×380×250 = 47 500 px² = W = ½Cθ².
+    Rectangle fantôme (M-TOR-1, "M traité comme constant") : 380×250
+    = 95 000 px², le double — même propriété que le ressort, transposée.
+    Moment moyen ½Cθ : hauteur moitié, y = (360+110)/2 = 235.
+
+    Rôle des couleurs — identique à travail-ressort-triangle.svg :
+      droite M(θ)=Cθ, repères (θ, Cθ) : --figure-energy-C (réservoir de
+        rappel — même convention que pour k au R5)
+      aire du triangle, moment moyen, W=½Cθ² : --figure-accent
+      rectangle fantôme Cθ² (faux)           : --figure-ink-soft, pointillé
+      axes, chrome                           : --figure-ink-soft
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Le travail du couple de rappel — l’aire du triangle sous M(θ) = Cθ
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les axes (repère vide)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <rect x="20" y="32" width="600" height="350" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <line x1="90" y1="360" x2="605" y2="360"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="615,360 603,355.5 603,364.5" fill="var(--figure-ink-soft)"/>
+    <line x1="90" y1="360" x2="90" y2="60"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="90,50 85.5,61 94.5,61" fill="var(--figure-ink-soft)"/>
+
+    <text x="78" y="64" text-anchor="end" font-size="12" font-style="italic"
+          fill="var(--figure-ink-soft)">M</text>
+    <text x="598" y="344" text-anchor="end" font-size="11"
+          fill="var(--figure-ink-soft)"><tspan font-style="italic">θ</tspan><tspan> (angle de torsion)</tspan></text>
+    <text x="78" y="364" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — les données : la droite M(θ) = Cθ
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line x1="470" y1="110" x2="470" y2="360"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,2"/>
+    <line x1="90" y1="110" x2="470" y2="110"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,2"/>
+
+    <line x1="90" y1="360" x2="470" y2="110"
+          stroke="var(--figure-energy-C)" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="470" cy="110" r="3.5" fill="var(--figure-energy-C)"/>
+
+    <line x1="470" y1="356" x2="470" y2="364" stroke="var(--figure-energy-C)" stroke-width="1.4"/>
+    <text x="470" y="378" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-energy-C)">θ</text>
+
+    <line x1="86" y1="110" x2="94" y2="110" stroke="var(--figure-energy-C)" stroke-width="1.4"/>
+    <text x="80" y="114" text-anchor="end" font-size="11" fill="var(--figure-energy-C)"
+      ><tspan font-style="italic">Cθ</tspan></text>
+
+    <!-- DESCENDUE SOUS LA DIAGONALE (2026-09-04) : à y=145 elle était couchée
+         sur la droite qu'elle nomme (qui passe de y≈159 à y≈113 sur sa
+         longueur) et s'en trouvait rayée sur un tiers de sa largeur. Le
+         dessous de la droite, près de son sommet, est la seule bande où la
+         pente ne la rattrape pas : plus à gauche, la droite redescend et
+         repasserait dessus. -->
+    <text x="395" y="175" font-size="12.5" fill="var(--figure-energy-C)"><tspan
+          font-style="italic">M</tspan><tspan font-style="normal">(</tspan><tspan
+          font-style="italic">θ</tspan><tspan font-style="normal">) = </tspan><tspan
+          font-style="italic">Cθ</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la lecture : le triangle, le moment moyen, le
+       rectangle fantôme (faux)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <path d="M90,360 L470,360 L470,110 Z"
+          fill="var(--figure-accent)" fill-opacity="0.18"
+          stroke="var(--figure-accent)" stroke-width="1.3" stroke-linejoin="round"/>
+
+    <text x="335" y="300" text-anchor="middle" font-size="14" font-weight="600"
+          fill="var(--figure-ink)"><tspan font-style="italic">W</tspan><tspan
+          font-style="normal"> = ½</tspan><tspan font-style="italic">Cθ</tspan><tspan
+          dy="-5" font-size="10" font-style="normal">2</tspan></text>
+
+    <!-- Moment moyen ½Cθ — hauteur moitié -->
+    <line x1="90" y1="235" x2="470" y2="235"
+          stroke="var(--figure-accent)" stroke-width="1.6" stroke-dasharray="6,4"/>
+    <line x1="90" y1="231" x2="90" y2="239" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <line x1="470" y1="231" x2="470" y2="239" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <line x1="86" y1="235" x2="94" y2="235" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <text x="80" y="239" text-anchor="end" font-size="10.5" fill="var(--figure-accent)"
+      >½<tspan font-style="italic">Cθ</tspan></text>
+    <text x="480" y="231" font-size="11.5" fill="var(--figure-accent)"><tspan
+          font-style="italic">M</tspan><tspan dy="3" font-size="8">moy</tspan><tspan
+          dy="-3" font-style="normal"> = ½</tspan><tspan font-style="italic">Cθ</tspan></text>
+
+    <!-- Rectangle fantôme Cθ² (faux — M-TOR-1) -->
+    <rect x="90" y="110" width="380" height="250"
+          fill="var(--figure-ink-soft)" fill-opacity="0.05"
+          stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="5,3"/>
+    <text x="100" y="130" font-size="10.5" fill="var(--figure-ink-soft)"><tspan
+          font-style="italic">Cθ</tspan><tspan dy="-5" font-size="8" font-style="normal">2</tspan><tspan
+          dy="5" font-style="normal"> (faux)</tspan></text>
+    <text x="100" y="145" font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)"
+      >— moment supposé constant</text>
+
+    <!-- Note d'analogie avec le ressort -->
+    <text x="320" y="404" text-anchor="middle" font-size="9.5" font-style="italic"
+          fill="var(--figure-ink-soft)">même construction que pour le ressort — k ↔ C, x ↔ θ</text>
+  </g><!-- /step-3 -->
+
+</svg>

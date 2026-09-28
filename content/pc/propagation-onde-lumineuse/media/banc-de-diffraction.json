@@ -1,0 +1,314 @@
+{
+  "slug": "banc-de-diffraction",
+  "tool": "scene2d",
+  "type": "manipulable",
+  "scene": "banc-de-diffraction",
+  "title_fr": "Le banc de diffraction",
+  "caption_fr": "Un laser, une fente, un écran et sa règle : rétrécis la fente, change de laser, recule l'écran, mets un cheveu à la place — et mesure. À chaque étape, tu paries d'abord.",
+  "etapes": [
+    {
+      "id": "fente-deux-fois-plus-fine",
+      "titre": "Une fente deux fois plus fine",
+      "consigne": "Le laser émet à $600$ nanomètres, la fente mesure $0{,}200$ millimètre, l'écran est à $2{,}00$ mètres : sur la règle, la tache centrale mesure $L = 1{,}20$ centimètre. La cuve à ondes a donné le **sens** — une ouverture plus étroite étale plus. Ici, on demande **de combien**.",
+      "pari": {
+        "question": "On remplace la fente par une fente **deux fois plus fine**, $0{,}100$ mm. Même laser, même écran, même distance. La tache centrale mesurera…",
+        "choix": [
+          {
+            "id": "image-de-la-fente",
+            "texte": "$0{,}60$ cm — deux fois moins : la tache est l'image de la fente, elle rétrécit avec elle",
+            "juste": false,
+            "misconception": "mc.physics.pc_propagation_onde_lumineuse.figure-ombre-geometrique",
+            "retour": "Lis la règle : $2{,}40$ cm, deux fois **plus** large qu'avant. Et vérifie l'idée sur les nombres qu'elle prédit : si la tache était l'image de la fente, elle mesurerait $0{,}100$ millimètre — **deux cent quarante** fois moins que ce que la règle affiche. Ce qui arrive sur l'écran n'a pas la forme de l'objet, il a la forme de l'**étalement** que l'objet provoque. Et l'étalement grandit quand l'ouverture rétrécit."
+          },
+          {
+            "id": "deux-fois-plus-large",
+            "texte": "$2{,}40$ cm — deux fois plus large",
+            "juste": true,
+            "retour": "Oui, et retiens la forme exacte du résultat : la largeur de la fente est **au dénominateur**. La diviser par deux multiplie la tache par deux. Regarde ce que la scène vient d'ajouter : deux rayons partent de la fente vers les bords de la tache, et l'angle qu'ils font avec l'axe — $\\theta$, le **demi**-écart angulaire, de l'axe au bord, jamais d'un bord à l'autre — passe de $3{,}00\\times10^{-3}$ à $6{,}00\\times10^{-3}$ radian. Deux fois plus grand, lui aussi."
+          },
+          {
+            "id": "inchangee",
+            "texte": "$1{,}20$ cm — inchangée : c'est la distance à l'écran qui fixe la largeur de la tache, pas la fente",
+            "juste": false,
+            "misconception": "mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta",
+            "retour": "La règle dit $2{,}40$ cm, et l'écran n'a pas bougé : il est resté à $2{,}00$ m. La distance décide de la **taille** de ce qu'on voit, pas de l'**ouverture** de l'éventail — et l'ouverture, c'est la fente qui la fixe. Fais défiler les sept fentes sans toucher à l'écran : la tache passe de $4{,}00$ à $0{,}240$ cm. Si la distance décidait seule, rien de tout cela ne bougerait."
+          },
+          {
+            "id": "quatre-fois",
+            "texte": "$4{,}80$ cm — quatre fois plus : l'angle double, et la tache s'élargit des deux côtés",
+            "juste": false,
+            "misconception": "mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta",
+            "retour": "Le raisonnement contient une vraie idée et un doublon. L'idée juste : l'angle double, de $3{,}00\\times10^{-3}$ à $6{,}00\\times10^{-3}$ radian. Le doublon : « des deux côtés » est **déjà** dans la tache de départ — $1{,}20$ cm, c'était déjà $0{,}60$ d'un côté de l'axe et $0{,}60$ de l'autre. On ne le compte qu'une fois : la règle donne $2{,}40$ cm. Les sujets jouent sur ces deux grandeurs : $\\theta$ va de l'axe au **bord**, $L$ d'un bord à l'**autre**."
+          }
+        ]
+      },
+      "suite": "Promène la fente sur les sept pièces et multiplie chaque fois les deux largeurs affichées : $0{,}060 \\times 4{,}00$ ; $0{,}100 \\times 2{,}40$ ; $0{,}300 \\times 0{,}800$. Toujours $0{,}240$. À un millimètre, la tache tombe à $2{,}4$ millimètres.",
+      "controles": [
+        "fente"
+      ],
+      "lectures": [
+        "largeur-fente",
+        "largeur-tache",
+        "ecart-angulaire",
+        "rapport"
+      ],
+      "etat": {
+        "a_mm": "0.200",
+        "lambda_nm": "600",
+        "D_m": 2.0,
+        "objet": "fente",
+        "vue": "banc",
+        "reference": "depart"
+      },
+      "etat_revele": {
+        "a_mm": "0.100"
+      }
+    },
+    {
+      "id": "meme-fente-autre-laser",
+      "titre": "La même fente, un autre laser",
+      "consigne": "La fente mesure $0{,}100$ millimètre, et **on n'y touchera plus**. L'écran reste à $2{,}00$ mètres. On change une seule chose : le laser. Celui-ci est **bleu**, $450$ nanomètres, et sa tache centrale mesure $1{,}80$ centimètre sur la règle. On va le remplacer par un laser **rouge**, $650$ nanomètres.",
+      "pari": {
+        "question": "Avec le laser rouge, la tache centrale…",
+        "choix": [
+          {
+            "id": "plus-large",
+            "texte": "sera **plus large**, $2{,}60$ cm : la longueur d'onde est plus grande, et l'étalement grandit avec elle",
+            "juste": true,
+            "retour": "Oui. Et voici la relation entière, maintenant qu'on a fait varier les deux : $\\theta = \\dfrac{\\lambda}{a}$. La longueur d'onde est **au numérateur**, la largeur de la fente **au dénominateur**. Vérifie-le sur les deux nombres de la règle : $\\dfrac{1{,}80}{2{,}60} = 0{,}692$ et $\\dfrac{450}{650} = 0{,}692$ — le même rapport. Et remarque ce que ça dit de la comparaison : cette fente vaut $222$ fois le bleu, mais seulement $154$ fois le rouge. La même fente est « moins large » pour le rouge."
+          },
+          {
+            "id": "plus-etroite",
+            "texte": "sera **plus étroite**, $1{,}25$ cm : le rouge passe plus difficilement par une fente fine et ressort plus concentré",
+            "juste": false,
+            "misconception": "mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta",
+            "retour": "La règle dit $2{,}60$ cm : plus large, pas plus étroite. L'image du « passage difficile » vient d'un fluide qu'on force dans un tuyau ; rien, dans une plaque percée, ne pousse la lumière vers l'axe. Et ton modèle demanderait d'écrire la fraction retournée, $a$ sur $\\lambda$ : elle donnerait ici $154$ radians — vingt-quatre tours complets. Un angle pareil aurait dû t'alerter."
+          },
+          {
+            "id": "inchangee",
+            "texte": "restera la **même**, $1{,}80$ cm : c'est la fente qui décide de l'étalement, et elle n'a pas bougé",
+            "juste": false,
+            "misconception": "mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta",
+            "retour": "La fente n'a pas bougé, et la tache a changé quand même : $1{,}80$ puis $2{,}60$ centimètres. Parcours les quatre lasers : $450$, $532$, $600$, $650$ nanomètres donnent $1{,}80$ ; $2{,}13$ ; $2{,}40$ ; $2{,}60$ centimètres. Une ouverture n'est jamais « fine » toute seule : elle l'est **devant une longueur d'onde** — la phrase de la cuve à ondes, avec des nombres mille fois plus petits."
+          }
+        ]
+      },
+      "suite": "Repasse les quatre lasers sans toucher à la fente : $450$, $532$, $600$, $650$ nanomètres donnent $1{,}80$ ; $2{,}13$ ; $2{,}40$ ; $2{,}60$ centimètres. Les deux suites de nombres sont dans le même rapport : la tache suit la longueur d'onde.",
+      "controles": [
+        "couleur"
+      ],
+      "lectures": [
+        "longueur-onde",
+        "largeur-tache",
+        "ecart-angulaire",
+        "rapport"
+      ],
+      "etat": {
+        "a_mm": "0.100",
+        "lambda_nm": "450",
+        "D_m": 2.0,
+        "objet": "fente",
+        "vue": "banc",
+        "reference": "depart"
+      },
+      "etat_revele": {
+        "lambda_nm": "650"
+      }
+    },
+    {
+      "id": "ecran-qui-recule",
+      "titre": "L'écran qui recule",
+      "consigne": "Changement de but. La fente mesure $0{,}060$ millimètre — celle du sujet national de 2021. Le laser, lui, est **inconnu** : sa longueur d'onde, c'est ce qu'on cherche. L'écran est tout près, à $0{,}40$ mètre, et la règle donne $L = 0{,}800$ centimètre. À côté, une feuille quadrillée vide : en abscisse la distance $D$, en ordonnée la largeur $L$, toutes deux en centimètres. On va reculer l'écran jusqu'à $2{,}00$ mètres en portant chaque mesure sur la feuille.",
+      "pari": {
+        "question": "Pendant qu'on recule l'écran de $0{,}40$ à $2{,}00$ mètres — cinq fois plus loin —, les points vont…",
+        "choix": [
+          {
+            "id": "constante",
+            "texte": "s'aligner sur une **horizontale** : l'écart angulaire ne dépend pas de $D$, donc la tache non plus",
+            "juste": false,
+            "misconception": "mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta",
+            "retour": "Ta première moitié est **juste** et ta conclusion ne l'est pas : l'angle ne dépend pas de $D$. Mais un angle constant ne donne pas une longueur constante : regarde les deux rayons de bord que la scène vient de tracer. Ils partent de la fente avec une ouverture fixe, et plus l'écran est loin, plus ils sont écartés quand il les coupe : $0{,}800$ cm à $0{,}40$ m, $4{,}00$ cm à $2{,}00$ m. L'éventail n'a pas bougé ; c'est l'écran qui l'a coupé plus loin."
+          },
+          {
+            "id": "proportionnelle",
+            "texte": "s'aligner sur une **droite qui passe par l'origine** : $L$ est multipliée par cinq, $4{,}00$ cm à $2{,}00$ mètres",
+            "juste": true,
+            "retour": "Oui, et cette droite est la figure du sujet 2021. La relation entière, maintenant qu'on a fait varier les trois grandeurs : $\\theta = \\dfrac{\\lambda}{a}$ et $\\dfrac{L}{2} = D\\theta$, donc $L = \\dfrac{2\\lambda D}{a}$ — de la forme $L = p\\,D$, une droite par l'origine de pente $p = \\dfrac{2\\lambda}{a}$. Lis la pente sur un point : $4{,}00/200 = 2{,}00\\times10^{-2}$, sans unité. Retourne la relation, avec $a = 6{,}0\\times10^{-5}$ m : $\\lambda = p\\,a/2 = 6{,}00\\times10^{-7}$ m. **Le laser inconnu émet à 600 nanomètres** : tu viens de mesurer une longueur d'onde avec une règle."
+          },
+          {
+            "id": "theta-grandit",
+            "texte": "s'aligner sur une **courbe qui monte de plus en plus vite** : plus loin, la lumière a plus de place pour s'étaler, l'angle grandit",
+            "juste": false,
+            "misconception": "mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta",
+            "retour": "Mesure l'angle toi-même, aux deux bouts : à $0{,}40$ m, $L/(2D) = \\dfrac{0{,}800}{80{,}0} = 1{,}00\\times10^{-2}$ ; à $2{,}00$ m, $\\dfrac{4{,}00}{400} = 1{,}00\\times10^{-2}$. **Le même nombre.** L'angle est décidé à la fente, par la fente et par le laser, et il ne sait rien de ce qu'il y a plus loin. Ce qui grandit, c'est ce qu'un angle fixe découpe de plus en plus loin — **proportionnellement**, jamais plus vite."
+          },
+          {
+            "id": "droite-decalee",
+            "texte": "s'aligner sur une droite qui **ne passe pas par l'origine** : à $D = 0$, la tache a déjà la largeur de la fente",
+            "juste": false,
+            "misconception": "mc.physics.pc_propagation_onde_lumineuse.figure-ombre-geometrique",
+            "retour": "L'idée : à distance nulle on verrait l'ouverture elle-même, et la diffraction l'élargirait ensuite. Chiffre-la : la fente mesure $0{,}060$ millimètre, soit $0{,}0060$ centimètre — sur cette feuille, un **trentième** de la plus petite division. Et le point le plus bas mesuré, $0{,}800$ cm à $0{,}40$ m, est déjà $133$ fois plus large que la fente. Ce n'est pas l'ombre de la fente, élargie : c'est un étalement, et il part de zéro."
+          }
+        ]
+      },
+      "suite": "Refais les mesures toi-même, cran par cran, et regarde le point se poser sur la droite. Lis la pente sur deux points quelconques : toujours $2{,}00\\times10^{-2}$. C'est elle qui porte la longueur d'onde.",
+      "controles": [
+        "distance"
+      ],
+      "lectures": [
+        "largeur-tache",
+        "bords",
+        "pente",
+        "lambda-deduite",
+        "ecart-angulaire"
+      ],
+      "etat": {
+        "a_mm": "0.060",
+        "lambda_nm": "600",
+        "D_m": 0.4,
+        "objet": "fente",
+        "vue": "banc-et-graphe",
+        "reference": "aucune"
+      },
+      "etat_revele": {
+        "D_m": 2.0
+      }
+    },
+    {
+      "id": "le-cheveu",
+      "titre": "Le cheveu à la place de la fente",
+      "consigne": "On connaît maintenant le laser : $600$ nanomètres. La fente de $0{,}060$ millimètre est en place, l'écran à $2{,}00$ mètres, et la règle donne $L = 4{,}00$ centimètres. On retire la plaque et on tend, **exactement à sa place**, un **cheveu** : non plus une ouverture, mais un **obstacle** — un fil opaque de quelques dizaines de micromètres, de diamètre inconnu.",
+      "pari": {
+        "question": "Sur l'écran, avec le cheveu, on verra…",
+        "choix": [
+          {
+            "id": "ombre-nette",
+            "texte": "l'**ombre** du cheveu : un trait sombre fin, large comme lui, au milieu du faisceau — et rien d'autre",
+            "juste": false,
+            "misconception": "mc.physics.pc_propagation_onde_lumineuse.figure-ombre-geometrique",
+            "retour": "Regarde l'écran : la même figure qu'avec la fente — une tache centrale large, encadrée de taches plus petites —, et la règle donne $3{,}00$ centimètres. L'ombre que tu décris mesurerait quelques centièmes de millimètre. La lumière qui passe **à côté** d'un obstacle fin s'étale, exactement comme celle qui passe **au travers** d'une ouverture fine. Retiens la règle que les sujets emploient : **un fil diffracte comme une fente de même largeur.**"
+          },
+          {
+            "id": "rien",
+            "texte": "rien de comparable : un cheveu fait environ $130$ fois la longueur d'onde, il est bien trop gros pour diffracter",
+            "juste": false,
+            "misconception": "mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille",
+            "retour": "Le rapport est juste — $8{,}00\\times10^{-5}/6{,}00\\times10^{-7} = 133$ — et la conclusion ne l'est pas : la règle affiche $3{,}00$ centimètres. « Du même ordre de grandeur » ne veut pas dire « rapport voisin de 1 ». Compare avec la fente que tu viens de quitter : $0{,}060$ millimètre, soit $100$ fois la longueur d'onde — à peine moins que le cheveu, et personne ne doutait qu'elle diffracte."
+          },
+          {
+            "id": "meme-figure",
+            "texte": "la **même figure** qu'avec une fente, et sa largeur permettra de remonter au diamètre du cheveu",
+            "juste": true,
+            "retour": "Oui, et c'est ce que fait le sujet national de 2021. La règle donne $L = 3{,}00$ centimètres ; on garde la relation en remplaçant la largeur de la fente par le diamètre du fil : $d = \\dfrac{2\\lambda D}{L} = \\dfrac{2 \\times 600\\times10^{-9} \\times 2{,}00}{3{,}00\\times10^{-2}} = 8{,}00\\times10^{-5}$ m, soit **80 micromètres**. Tu viens de mesurer huit centièmes de millimètre avec une règle graduée en centimètres, sans microscope."
+          },
+          {
+            "id": "plus-large",
+            "texte": "une figure de diffraction, mais **plus large** qu'avec la fente : le cheveu est plus gros, il gêne davantage le passage",
+            "juste": false,
+            "misconception": "mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta",
+            "retour": "Les deux nombres sont sur la règle : $4{,}00$ centimètres avec la fente, $3{,}00$ avec le cheveu — plus **étroite**. Tu peux en tirer une conclusion sans calcul : l'objet le plus gros donne la tache la plus étroite, donc le cheveu est plus gros que la fente — $80$ micromètres contre $60$. Ton intuition sur la taille était juste ; c'est le sens de la variation qui est retourné."
+          }
+        ]
+      },
+      "suite": "Bascule plusieurs fois entre la fente et le cheveu. Même figure, deux largeurs : $4{,}00$ et $3{,}00$ centimètres. Le plus **large** des deux objets donne la tache la plus **étroite**.",
+      "controles": [
+        "objet"
+      ],
+      "lectures": [
+        "largeur-fente",
+        "longueur-onde",
+        "distance",
+        "largeur-tache",
+        "diametre-deduit"
+      ],
+      "etat": {
+        "a_mm": "0.060",
+        "lambda_nm": "600",
+        "D_m": 2.0,
+        "objet": "fente",
+        "vue": "banc",
+        "reference": "depart"
+      },
+      "etat_revele": {
+        "objet": "cheveu"
+      }
+    },
+    {
+      "id": "libre",
+      "titre": "Tout s'ouvre, et une dernière comparaison",
+      "consigne": "Tout s'ouvre : les sept fentes, les quatre lasers, l'écran de $0{,}40$ à $2{,}00$ mètres, et le cheveu. Une lecture neuve apparaîtra à côté de l'écart angulaire : $L/(2D)$, l'angle **calculé depuis la mesure** — on mesure la tache, on la divise par deux fois la distance, et on compare.",
+      "pari": {
+        "question": "Tu veux la tache centrale **la plus large possible**, l'écran à $2{,}00$ mètres. Le meilleur réglage, c'est…",
+        "choix": [
+          {
+            "id": "fine-et-bleu",
+            "texte": "la fente la plus fine, $0{,}060$ mm, avec le laser **bleu**, $450$ nm : la plus petite longueur d'onde passe le mieux par la plus petite ouverture",
+            "juste": false,
+            "misconception": "mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta",
+            "retour": "La bonne fente, le mauvais laser : $3{,}00$ centimètres, contre $4{,}33$ avec le rouge sur la **même** fente. Garde la fente et parcours les quatre lasers : $3{,}00$ ; $3{,}55$ ; $4{,}00$ ; $4{,}33$. La longueur d'onde est au **numérateur** de $\\theta = \\lambda/a$ : c'est la plus **grande** qui étale le plus, et dans le visible c'est le rouge."
+          },
+          {
+            "id": "fine-et-rouge",
+            "texte": "la fente la plus fine, $0{,}060$ mm, avec le laser **rouge**, $650$ nm",
+            "juste": true,
+            "retour": "Oui : $4{,}33$ centimètres, le maximum de ce banc — le plus petit dénominateur avec le plus grand numérateur. Vérifie la chaîne entière, c'est le geste que le programme demande : $\\lambda/a = \\dfrac{6{,}50\\times10^{-7}}{6{,}0\\times10^{-5}} = 1{,}08\\times10^{-2}$ rad, et $\\dfrac{L}{2D} = \\dfrac{4{,}33}{400} = 1{,}08\\times10^{-2}$. Deux bouts de la relation, le même nombre."
+          },
+          {
+            "id": "large-et-rouge",
+            "texte": "la fente la plus **large**, $1{,}000$ mm, avec le laser rouge : une grande ouverture laisse passer beaucoup plus de lumière",
+            "juste": false,
+            "misconception": "mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille",
+            "retour": "« Laisser passer » et « étaler », ce n'est pas la même chose — la phrase de la cuve à ondes vaut ici avec des nombres mille fois plus petits. Cette fente donne $0{,}260$ centimètre, seize fois moins que la plus fine. Elle vaut $1\\,538$ fois la longueur d'onde du rouge : à ce rapport, la lumière va pratiquement tout droit — un faisceau presque droit, le régime de l'optique géométrique."
+          },
+          {
+            "id": "les-trois-pareils",
+            "texte": "les trois se valent : l'écran est à $2{,}00$ mètres dans les trois cas, et c'est la distance qui fixe la largeur",
+            "juste": false,
+            "misconception": "mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta",
+            "retour": "Les trois réglages donnent $4{,}33$ ; $3{,}00$ ; $0{,}260$ centimètre, avec le même écran, à la même place. La distance multiplie ; elle ne décide pas. Ce qu'elle multiplie, c'est l'angle $\\theta = \\lambda/a$, fixé bien avant l'écran, à la sortie de la fente. Fais le test qui tranche : garde un réglage et promène l'écran — la tache change, et $L/(2D)$ ne bouge pas d'un chiffre."
+          }
+        ]
+      },
+      "suite": "Trois vérifications. Fente et laser fixes : $L/(2D)$ ne bouge pas. Laser et écran fixes : $a \\times L$ ne bouge pas. Fente et écran fixes : $L/\\lambda$ ne bouge pas. Trois constantes, une seule relation.",
+      "controles": [
+        "fente",
+        "couleur",
+        "distance",
+        "objet"
+      ],
+      "lectures": [
+        "largeur-fente",
+        "longueur-onde",
+        "largeur-tache",
+        "ecart-angulaire",
+        "theta-mesure",
+        "pente",
+        "diametre-deduit"
+      ],
+      "etat": {
+        "a_mm": "0.100",
+        "lambda_nm": "600",
+        "D_m": 2.0,
+        "objet": "fente",
+        "vue": "banc",
+        "reference": "aucune"
+      }
+    }
+  ],
+  "boundary": "Cadre (ondes → onde_lumineuse, 2ème Bac PC/SM) : la diffraction de la lumière par une ouverture ou un obstacle, exploitée par $\\theta = \\lambda/a$ — le DEMI-écart angulaire, de l'axe au bord de la tache centrale — et $L = 2\\lambda D/a$ ; l'influence de la dimension de l'objet ; l'exploitation de mesures pour vérifier $\\theta = \\lambda/a$. Tout se passe dans l'air. Hors de la scène : toute interférence, tout réseau, toute intégrale de diffraction ou profil nommé, toute polarisation, tout changement de milieu (R2, R4), tout prisme (R5), toute démonstration de l'équivalence fil–fente, tout critère chiffré de diffraction, toute photométrie, tout angle en degrés, toute échelle logarithmique.",
+  "boundary_guard_details": "La porte scene-diffraction refuse dans le panneau ouvert, une sonde par FORME (spec §9) : interférence, interfrange, Young, frange, cohérence, déphasage, réseau, ordre k, sinc, intensité, éclairement, Huygens, Fresnel, Fraunhofer, source secondaire, extinction, intégrale, polarisation, Doppler, équation d'onde, indice, réfraction, liquide, monochromatique, polychromatique, lumière blanche, spectre, prisme, dispersion, fréquence, Babinet, complémentaire, critère, seuil, luminosité, photon, degré, °, logarithmique, travaux pratiques.",
+  "fit_caveat": "1. L'angle est exagéré, d'un facteur déclaré et constant : les largeurs sont dessinées dix fois plus grandes que les distances ; tout angle paraît donc dix fois trop ouvert, à tous les réglages. Les rapports dessinés sont vrais, les angles ne le sont pas. 2. La fente n'est à aucune des deux échelles : c'est un symbole, de largeur constante. On ne peut pas dessiner $a$ et $\\lambda$ sur la même image ($a/\\lambda$ va ici de 100 à 1 667) : la comparaison se lit en nombre, jamais en dessin. 3. L'image de la tache est éclaircie : sur un vrai écran, la première tache voisine est environ vingt fois moins lumineuse que la centrale. La scène affirme des largeurs, jamais des luminosités. 4. La règle est parfaite : $L$ est calculée, pas mesurée ; l'accord entre $\\lambda/a$ et $L/(2D)$ y est construit, pas découvert.",
+  "param_manipulation_guide": "Sept fentes ($0{,}060$ ; $0{,}080$ ; $0{,}100$ ; $0{,}150$ ; $0{,}200$ ; $0{,}300$ ; $1{,}000$ mm), quatre lasers ($450$, $532$, $600$, $650$ nm), l'écran de $0{,}40$ à $2{,}00$ m par pas de $0{,}10$ m (dix-sept positions ; à $0{,}060$ mm et $600$ nm, $L$ avance de $0{,}200$ cm à chaque cran), et un cheveu de $80$ µm. À $600$ nm et $2{,}00$ m, le produit $a \\times L$ vaut $0{,}240$ (mm × cm) aux sept fentes.",
+  "fallback_note": "Sans JavaScript et à l'impression, le panneau disparaît. La figure diffraction-fente, plus bas dans le chapitre, couvre la géométrie (fente, θ, écran, L) ; aucune figure du corpus ne fait varier la fente, le laser, la distance, ni ne remplace la fente par un fil : c'est ce que le banc apporte.",
+  "pedagogy_wiring": {
+    "why_manipulable": "La seule figure de diffraction du corpus ne porte aucun nombre et exagère son angle d'un facteur 54 sans le dire ; rien n'y bouge. Quatre gestes n'existent qu'en manipulation : rétrécir la fente et voir la tache s'élargir, changer de laser à fente fixe, reculer l'écran dans un éventail qui ne bouge pas en posant soi-même les points du graphe $L = f(D)$, et remplacer la fente par un cheveu pour le mesurer à la règle.",
+    "predict_then_reveal": "Chaque étape pose une question ; l'élève parie AVANT que la scène ne réponde (aucun rayon, aucun arc, aucun point, aucune lecture-réponse, aucune encre d'accent), puis la révélation pose le réglage interrogé et la règle répond ; les réglages de l'étape s'ouvrent ensuite.",
+    "misconceptions": [
+      "mc.physics.pc_propagation_onde_lumineuse.figure-ombre-geometrique",
+      "mc.physics.pc_propagation_onde_lumineuse.diffraction-formule-theta",
+      "mc.physics.pc_propagation_onde_lumineuse.diffraction-condition-taille"
+    ]
+  },
+  "spec_ref": "content/pc/propagation-onde-lumineuse/spec-scene-diffraction.md",
+  "adr_ref": "docs/decisions/0041-scenes-3d-de-premiere-partie.md"
+}

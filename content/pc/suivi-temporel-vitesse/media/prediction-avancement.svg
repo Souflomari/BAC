@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Prédiction de l’allure de l’avancement x(t) avant la mesure : deux hypothèses graphiques sans aucune graduation numérique — une droite à vitesse constante et une courbe qui ralentit vers un plateau — puis la révélation que c’est la courbe qui correspond à l’observation réelle.">
+  <title>Avant de mesurer — quelle allure pour x(t) ?</title>
+  <!--
+    prediction-avancement.svg — figure d'accroche (R0, wave B2 P5) : AVANT
+    toute mesure, la question posée à l'élève est purement qualitative —
+    quelle allure pour x(t) ? Contrainte dure du brief : AUCUNE graduation
+    numérique n'apparaît sur cette figure (ni "0", ni x_max, ni aucune
+    tangente) — seule l'allure compte, jamais une valeur.
+
+    Étape 1 : les axes seuls, chrome dérivé de avancement-tangente.svg step-1
+    (mêmes proportions 640×420, même origine (80,350), même style
+    ink-soft) mais SANS les repères "0" et x_max de ce fichier-là — seuls
+    les noms d'axes (x, t) restent, en italique, SANS unité : l'unité
+    elle-même suggérerait déjà une échelle numérique, contraire à la
+    consigne "qualitatif uniquement" de cette figure précise (les figures
+    suivantes de la leçon, avancement-tangente.svg et
+    tangentes-decroissantes.svg, remettent l'unité une fois qu'on entre
+    dans la mesure).
+
+    Étape 2 : deux hypothèses rivales, tracées à STRICTE égalité de
+    traitement (même couleur ink-soft, même pointillé "6,4", même
+    épaisseur 1.8) pour ne trahir AUCUN biais avant la révélation de
+    l'étape 3 :
+      - une droite montant à taux constant, de l'origine (80,350) à
+        (610,140) — un tracé PUREMENT illustratif (aucune donnée réelle
+        derrière ces deux points ; c'est justement l'hypothèse que la
+        leçon va réfuter en R3) ;
+      - la courbe décroissante réelle, mais dessinée ici en APERÇU MUET
+        (pointillé, ink-soft) : c'est exactement le même chemin "d" que le
+        step-2 de avancement-tangente.svg (x(t) = x_max·(1−e^(−t/τ)),
+        x_max=5,0 mmol, τ=8/ln2≈11,542 min — calcul complet dans ce
+        fichier-là), réutilisé tel quel pour que la "révélation" de
+        l'étape 3 soit une authentique PROMOTION du même tracé, pas une
+        courbe redessinée à l'oeil.
+
+    Étape 3 : la révélation. Un nouveau tracé — géométrie IDENTIQUE à
+    l'aperçu de l'étape 2, mais plein, plus épais (2.4 contre 1.8),
+    --figure-accent — est superposé par-dessus l'aperçu pointillé : la
+    courbe "gagne" visuellement, sans être redessinée.
+
+    La droite hypothèse, elle, N'EST PAS retouchée dans ce groupe : elle
+    s'estompe par le mécanisme STANDARD de StagedFigure.tsx ("Calm
+    prior-stage emphasis" — tout groupe de stage antérieur au stage
+    courant reçoit automatiquement opacity="0.55" sur son <g> propre,
+    "No other treatment", cf. StagedFigure.tsx). Le brief de cette figure
+    demandait de faire tomber la droite à une "opacité très faible" ; le
+    mécanisme du composant offre 0.55, UNIFORME sur tout le groupe step-2
+    (donc aussi sur l'aperçu de courbe muet en dessous, qui de toute façon
+    disparaît sous le nouveau tracé plein). Décision délibérée : s'appuyer
+    sur ce mécanisme déjà existant plutôt que de le contourner par un hack
+    d'opacité au niveau SVG (une superposition "gomme" à la couleur du
+    panneau, par exemple) — un tel hack entrerait en conflit avec la
+    classe CSS stage-group-dim posée par le composant, ET donner d'entrée
+    à la droite une opacité de départ plus basse dans l'étape 2 trahirait
+    la réponse avant la révélation (l'étape 2 doit rester neutre entre les
+    deux hypothèses). Voir la note de livraison de l'agent pour ce choix.
+
+    Rôle des couleurs :
+      accent : le tracé promu de la courbe à l'étape 3 (LE sujet de la
+        révélation) ;
+      ink-soft : tout le chrome neutre (axes) et les deux hypothèses de
+        l'étape 2, à égalité de traitement.
+  -->
+
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Avant de mesurer — quelle allure pour x(t) ?
+    </text>
+
+    <!-- Fond du panneau -->
+    <rect x="40" y="32" width="590" height="350" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- ── Axes — ink-soft, chrome neutre, SANS graduation ─────────── -->
+    <line x1="80" y1="350" x2="610" y2="350"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="610,350 598,345.5 598,354.5" fill="var(--figure-ink-soft)"/>
+    <line x1="80" y1="350" x2="80" y2="50"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+
+    <text x="72" y="54" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">x</text>
+    <text x="605" y="368" text-anchor="end" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink-soft)">t</text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!-- Hypothèse 1 : droite à vitesse constante — tracé illustratif, aucune donnée réelle -->
+    <line x1="80" y1="350" x2="610" y2="140"
+          stroke="var(--figure-ink-soft)" stroke-width="1.8"
+          stroke-dasharray="6,4" stroke-linecap="round"/>
+    <!-- REMONTÉE au-dessus de sa droite (2026-09-04) : centrée à y=230, elle
+         était couchée sur la droite pointillée qu'elle nomme (23 % rayés).
+         Entre cette droite et la courbe teal, la bande fait une centaine de
+         pixels : c'est le seul endroit vraiment libre de la figure. -->
+    <text x="350" y="205" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink-soft)">vitesse constante ?</text>
+
+    <!-- Hypothèse 2 : la courbe réelle, en aperçu muet (même "d" qu'avancement-tangente.svg step-2) -->
+    <path d="
+      M80,350 L106.5,276.78 L133,225 L159.5,188.39 L186,162.5
+      L212.5,144.19 L239,131.25 L265.5,122.1 L292,115.63 L318.5,111.05
+      L345,107.81 L371.5,105.53 L398,103.91 L424.5,102.76 L451,101.95
+      L477.5,101.38 L504,100.98 L530.5,100.69 L557,100.49 L583.5,100.35
+      L610,100.24
+    " fill="none"
+      stroke="var(--figure-ink-soft)"
+      stroke-width="1.8" stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="390" y="88" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink-soft)">ralentissement ?</text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- La révélation : la courbe promue, pleine, accent — géométrie
+         identique à l'aperçu de step-2, superposée par-dessus. La droite
+         s'estompe par le mécanisme standard de StagedFigure (voir en-tête). -->
+    <path d="
+      M80,350 L106.5,276.78 L133,225 L159.5,188.39 L186,162.5
+      L212.5,144.19 L239,131.25 L265.5,122.1 L292,115.63 L318.5,111.05
+      L345,107.81 L371.5,105.53 L398,103.91 L424.5,102.76 L451,101.95
+      L477.5,101.38 L504,100.98 L530.5,100.69 L557,100.49 L583.5,100.35
+      L610,100.24
+    " fill="none"
+      stroke="var(--figure-accent)"
+      stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-3 -->
+
+</svg>

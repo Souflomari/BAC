@@ -1,0 +1,427 @@
+# Attempt-first exercises (summit-conversion campaign — PHILO, notion #2
+# after la-liberte). Rendered by AttemptFirstExercise via [[exercise:<id>]]
+# markers in lesson.md: the student sees the question, commits to an
+# attempt, and only then unlocks the expert reasoning. Printed solutions at
+# the summit are a template-v2 failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered — see rlc-serie's header
+# comment for the audit U3/C2 rule this follows): while status != sourced,
+# the notion is NOT DONE.
+#
+# PHILO judgment call — no steps[], no math (docs/pipeline/SUMMIT-CONVERSION-
+# RECIPE.md, "Philo" addendum): every question's `reasoning` carries the full
+# philosophical argument in prose — thèse identification, argument analysis,
+# position justification — never a stepped derivation.
+#
+# r-bac/r-variation sourcing decision (per the recipe addendum's decision
+# rule): docs/sujets/philo/la-verite.md carries exactly ONE verified entry
+# for this notion — "2025 — session normale — Sujet 3 (نص)", statut vérifié
+# (re-fetch indépendant + diff conforme, agent-vérificateur 2026-07-15). With
+# only one verified text on the ledger, the rule falls back to its default:
+# r-bac = that one text, r-variation = a fresh FABRICATED twin (status:
+# not-applicable) rather than borrowing a second real sujet that doesn't
+# exist here. CORRIGÉ le 2026-09-19 : la note disait « R0's opening quote-in-
+# miniature » sans qualifier de quelle leçon — le R0 de CETTE notion est la
+# soirée de samedi, sans une ligne d'arabe. Le R0 visé est celui de
+# content/philo/analyse-de-texte. Il y a donc DEUX usages de ce texte dans
+# cette notion-ci, pas trois. This is the same text used, this session, as
+# content/philo/analyse-de-texte's R0 opening quote-in-miniature AND as its
+# r-variation
+# summit (the méthode lesson's own attempt-first application of the SAME
+# text, transcribed there from this exact sujets-bank entry). The Arabic and
+# French paragraphs below are copied verbatim from
+# docs/sujets/philo/la-verite.md (verified programmatically — see the
+# campaign's length/verbatim-check script — by stripping blockquote markers,
+# collapsing whitespace, and string-comparing against the sujets-bank
+# source; the trailing "المطلوب"/"Consigne :" instruction lines are hoisted
+# out into the intro's leading consigne quote instead of duplicated inside
+# the text blocks, matching the house convention set by la-liberte's and
+# analyse-de-texte's r-bac entries).
+#
+# Exercise-framing decision (the task's own explicit judgment call):
+# analyse-de-texte already uses this identical text, but as a METHOD drill
+# (four moments: compréhension/analyse/discussion/synthèse — نص-analysis
+# procedure). That framing does not fit HERE: la-verite is a NOTION lesson,
+# not a méthode lesson, and its own R9 already teaches the dissertation
+# method on a different (constructed) sujet. So r-bac below asks a
+# NOTION-style question around the same source text — dégager la thèse,
+# confronter à une théorie déjà enseignée, relier à un rung déjà connu,
+# discuter — following exactly la-liberte's r-bac shape (Bakounine), not
+# analyse-de-texte's four-moments shape. The text's axis (empirisme des
+# sens, teinté de relativisme, avec un rôle secondaire-mais-vital de la
+# raison) is NOT new relative to R1-R8 — R2 (correspondance), R4 (Bachelard,
+# obstacle épistémologique / évidence sensible), R5 (Descartes doutant des
+# sens), R7-R8 (fallibilisme vs relativisme) all bear directly on it, so the
+# reasoning below bridges to already-taught rungs rather than importing new
+# content (per the addendum's rule for when only one verified text exists:
+# route it to whichever framing keeps the exercise inside already-taught
+# rungs).
+
+notion: la-verite
+
+exercises:
+  # ── r-bac — VERIFIED 2025 session normale sujet (نص) ─────────────────────
+  # Faithful transcription of docs/sujets/philo/la-verite.md → "2025 —
+  # session normale — Sujet 3 (نص)". Real bac text, not built for this
+  # lesson.
+  - id: r-bac
+    title: "Exercice de type bac — les sens, critère de la vérité ? (نص, 2025 N)"
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session normale — Sujet 3 (نص, troisième des trois sujets
+        proposés) ; filière كل مسالك الشعب العلمية والتقنية والمهنية
+        والأصيلة — الفلسفة, 2 h, coef 2 ; source profsalmi
+        (https://www.profsalmi.com/2025/05/exam-nat2025-philo-3olom.html) ;
+        texte transcrit intégralement dans docs/sujets/philo/la-verite.md
+        (entrée « 2025 — session normale — Sujet 3 (نص) »), statut
+        « vérifié » (re-fetch indépendant + diff conforme, agent-vérificateur,
+        2026-07-15). Auteur non indiqué dans la source consultée (à confirmer
+        sur le scan officiel). Ce même texte sert aussi de matériau
+        d'accroche (R0, en extrait) et de summit à la méthode de l'analyse
+        de texte (content/philo/analyse-de-texte/, en entier, comme
+        r-variation) — trois usages différents du même texte réel, pas une
+        coïncidence : c'est le seul texte vérifié de la banque pour cette
+        notion.
+    intro: |-
+      **Sujet réel, examen national de philosophie, 2025 (session normale) —
+      troisième sujet (un texte à analyser et discuter) :**
+
+      > المطلوب : حلّل(ي) النص وناقشه(يه).
+      >
+      > *(« Analyse le texte et discute-le. »)*
+
+      **Texte arabe (original) :**
+
+      > إن الحواس هي معيار الحقيقة. ولكن المعيار هو الحواس كلها، فقد تخدعنا حاسة واحدة،
+      > كما يخدعنا الضوء بالنسبة للألوان، أو المسافة بالنسبة للحجم. ولا تستطيع أن تصحّح ما
+      > تُحدثه حاسة من خطأ إلا حاسة أخرى. والحقيقة هي الإحساس الثابت، غير أن الإحساس يجب
+      > أن يشمل كل ما نتعلّمه من الآلات التي نوسّع بها دائرة الحواس ونجعلها دقيقة.
+      > فالتلسكوب والميكروسكوب وغيرهما هي وسائل لمضاعفة ما تبصره عيوننا، والهاتف وسمّاعة
+      > الطبيب هما امتداد لآذاننا العجيبة. وليس ثمة أمور مطلقة بل أمور نسبية فقط، وعلينا
+      > أن نتعلّم كيف نساير الأمور النسبية، وهناك غيرنا من الناس في هذا العالم، ولن تتفق
+      > حواسهم دائما مع حواسنا وبالتالي حقائقهم مع حقائقنا. فالحقيقة عبارة عن قبة من
+      > البلور متعدد الألوان حيث يرى كل واحد من زاويته تأليفا خاصا من الألوان.
+      >
+      > أين، إذن، موضع العقل؟ إن وظيفته هنا كما في كل مكان هي التنسيق؛ إنه ينسّق
+      > الإحساسات إلى معانٍ، والمعاني إلى معرفة، والمعرفة إلى حكمة. إن عمل العقل في الظفر
+      > بالحقيقة ثانوي لكنه حيوي؛ إذ يجب أن ينسج فوضى الحواس المختلفة وما بينها من تناقض
+      > في نتائج موحّدة ومنسّقة تكون عرضة للتحقيق والتأييد أو الحذف بواسطة الإحساس
+      > المتكرر، وكل خطوة استدلالية تبعد عن الإحساس المباشر تقلّل من احتمال الحقيقة.
+      > إننا نقف على أقدامنا ثابتين على الأرض بواسطة الإحساس.
+
+      **Traduction de travail française :**
+
+      > Les sens sont le critère de la vérité. Mais le critère, ce sont tous les sens
+      > ensemble, car un seul sens peut nous tromper — comme la lumière nous trompe
+      > quant aux couleurs, ou la distance quant à la taille. Et seul un autre sens peut
+      > corriger l'erreur produite par un sens. La vérité est la sensation constante ;
+      > toutefois, la sensation doit englober tout ce que nous apprenons des instruments
+      > par lesquels nous élargissons le domaine des sens et les rendons précis. Le
+      > télescope, le microscope et d'autres sont des moyens de démultiplier ce que nos
+      > yeux perçoivent, et le téléphone comme le stéthoscope du médecin sont un
+      > prolongement de nos oreilles admirables. Il n'existe pas de choses absolues,
+      > mais seulement des choses relatives, et nous devons apprendre à composer avec le
+      > relatif ; il y a, dans ce monde, d'autres que nous, dont les sens ne
+      > s'accorderont pas toujours avec les nôtres, et par suite leurs vérités avec les
+      > nôtres. La vérité est comme une coupole de cristal aux multiples couleurs, où
+      > chacun voit, depuis son angle, une composition particulière de couleurs.
+      >
+      > Où se situe alors la raison ? Sa fonction, ici comme partout, est la
+      > coordination : elle coordonne les sensations en significations, les
+      > significations en connaissance, et la connaissance en sagesse. Le travail de la
+      > raison dans la conquête de la vérité est secondaire, mais vital ; car elle doit
+      > tisser le chaos des différents sens, et les contradictions entre eux, en
+      > résultats unifiés et coordonnés, exposés à la vérification et à la confirmation
+      > — ou à l'élimination — par la sensation répétée ; et chaque pas inférentiel qui
+      > s'éloigne de la sensation immédiate diminue la probabilité de la vérité. Nous
+      > nous tenons debout, fermes sur la terre, par le moyen de la sensation.
+
+      Ce texte défend une thèse empiriste (les sens comme critère de la
+      vérité) tout en y logeant deux nuances sur lesquelles la leçon t'a déjà
+      donné de quoi discuter : un parfum de relativisme (« leurs vérités
+      avec les nôtres », la coupole de cristal) et un rôle de la raison
+      annoncé comme « secondaire, mais vital ». Rien ici n'est un axe
+      nouveau — c'est exactement le terrain des chapitres 3, 5, 6, 8 et 9.
+    questions:
+      - id: q1
+        part: "Partie 1 — Dégager la thèse"
+        stem: |-
+          Le texte affirme plus qu'« il faut faire confiance à ses sens ».
+          Formule sa thèse en une phrase précise : quel est le critère exact
+          de la vérité qu'il défend, et quel rôle attribue-t-il à la raison ?
+        reasoning: |-
+          Le texte pose d'abord un critère, puis le corrige aussitôt : « les
+          sens sont le critère de la vérité » n'est PAS la thèse complète —
+          la phrase suivante la corrige immédiatement : « mais le critère,
+          ce sont tous les sens ensemble, car un seul sens peut nous
+          tromper ». La thèse exacte, c'est cette version corrigée : le
+          critère de la vérité est l'ENSEMBLE des sens, qui se contrôlent
+          mutuellement (« seul un autre sens peut corriger l'erreur produite
+          par un sens »), étendu par les instruments qui les prolongent
+          (télescope, microscope, téléphone, stéthoscope) et coordonné par
+          la raison.
+
+          Le rôle de la raison est explicitement qualifié, pas laissé dans
+          le vague : « secondaire, mais vital ». Ne rate pas ces deux mots à
+          la fois — le texte ne fait pas de la raison l'auteure de la
+          connaissance (ce serait un rationalisme), ni un simple ornement
+          sans fonction réelle : elle « tisse le chaos des différents sens »
+          en « résultats unifiés et coordonnés, exposés à la vérification et
+          à la confirmation... par la sensation répétée ». Demande-toi
+          toujours, comme pour un texte de méthode, « tout ça, c'est pour
+          dire quoi ? » : la thèse n'est ni « les sens seuls suffisent » ni
+          « la raison seule décide », c'est une position à deux étages —
+          sens (source), raison (coordination) — que le texte tient
+          ensemble du début à la fin, jusqu'à sa dernière phrase : « nous
+          nous tenons debout... par le moyen de la sensation. »
+
+      - id: q2
+        part: "Partie 2 — Confronter au relativisme apparent (chapitre 9)"
+        stem: |-
+          Le texte affirme : « il n'existe pas de choses absolues, mais
+          seulement des choses relatives », et compare la vérité à une
+          « coupole de cristal » où chacun voit sa propre composition de
+          couleurs. Ce langage ressemble-t-il au relativisme que le chapitre 9 met en
+          garde ? Justifie en distinguant précisément ce que le texte
+          affirme réellement de ce qu'il ne dit pas.
+        reasoning: |-
+          Le langage est trompeur si on l'isole de son contexte — et c'est
+          exactement le piège que le chapitre 9 nomme : « chacun sa vérité ». Pris tout
+          seul, « leurs vérités avec les nôtres » pourrait sembler dire que
+          chaque sujet a sa vérité propre, aussi légitime qu'une autre —
+          exactement le relativisme que le chapitre 9 réfute.
+
+          Mais le texte, lu en entier, ne s'arrête pas là : il maintient,
+          juste après cette image relativiste, l'exigence d'une
+          coordination rationnelle vers « des résultats unifiés et
+          coordonnés, exposés à la vérification et à la confirmation... par
+          la sensation répétée ». Un vrai relativiste n'aurait aucune raison
+          de chercher une coordination COMMUNE, ni de soumettre un résultat
+          à une vérification qui pourrait le contredire — les deux gestes
+          n'ont de sens que si une différence entre correct et incorrect
+          existe encore à départager. C'est très exactement la distinction
+          que le chapitre 9 pose entre fallibilisme (aucune certitude n'est jamais
+          absolument garantie, mais un critère de vérité réel subsiste,
+          révisable) et relativisme (aucune version ne vaut mieux qu'une
+          autre) : la coupole de cristal, image frappante mais isolée,
+          flirte avec le second ; la phrase sur la « vérification » et la
+          « confirmation... par la sensation répétée » relève, elle, du
+          premier — la démarche même que Popper (chapitre 8) attribue à la science
+          corroborée, jamais prouvée absolument mais toujours soumise à
+          l'épreuve. Une bonne copie doit nommer cette tension dans le texte
+          lui-même, pas se contenter de citer l'une des deux phrases en
+          ignorant l'autre.
+
+      - id: q3
+        part: "Partie 3 — Relier à un chapitre déjà connu (chapitre 5, Bachelard)"
+        stem: |-
+          Le texte se conclut ainsi : « nous nous tenons debout, fermes sur
+          la terre, par le moyen de la sensation. » Que répondrait Bachelard
+          (chapitre 5) à cette dernière phrase — la rejoint-il, ou la met-il en
+          question ?
+        reasoning: |-
+          Il faut résister à la tentation de faire de Bachelard un allié
+          immédiat de ce texte simplement parce que les deux parlent des
+          sens et de la raison. Le texte prend bien la précaution de ne pas
+          faire confiance à UN sens isolé — « un seul sens peut nous tromper
+          » — ce qui ressemble, de loin, à une prudence bachelardienne
+          contre l'évidence immédiate. Mais l'accord s'arrête là.
+
+          Le texte finit par ancrer toute la connaissance dans la sensation
+          ELLE-MÊME, prise dans son ensemble — « nous nous tenons debout...
+          par le moyen de la sensation » est la toute dernière phrase, la
+          conclusion, pas une réserve provisoire. Bachelard (chapitre 5) va
+          beaucoup plus loin dans la méfiance : pour lui, l'évidence
+          sensible en tant que TELLE — même coordonnée, même répétée — peut
+          être un obstacle épistémologique, une résistance interne à
+          l'esprit qu'il faut ROMPRE, pas seulement corriger sens par sens.
+          « L'opinion pense mal ; elle ne pense pas » vaut aussi contre une
+          confiance ultime dans le sentir, fût-il collectif et coordonné.
+
+          La différence précise à formuler : ce texte corrige les sens PAR
+          les sens (et par une raison qui les coordonne sans jamais les
+          dépasser), alors que Bachelard exige une rupture active AVEC
+          l'évidence sensible elle-même comme point de départ fiable — deux
+          gestes qui se ressemblent en surface (tous deux se méfient d'UNE
+          évidence isolée) mais divergent sur le fond (le texte reste
+          fondé, en dernière instance, sur la sensation ; Bachelard ne l'est
+          jamais). Confondre les deux, c'est manquer précisément ce qui fait
+          l'originalité du geste bachelardien.
+
+      - id: q4
+        part: "Partie 4 — Objecter et discuter (chapitre 6, Descartes)"
+        stem: |-
+          Formule l'objection cartésienne (chapitre 6) à ce texte : pourquoi
+          Descartes refuserait-il de fonder la vérité sur les sens, même
+          coordonnés ? Cette objection réfute-t-elle le texte, ou seulement
+          l'un de ses points faibles ?
+        reasoning: |-
+          L'objection : Descartes (chapitre 6) commence précisément par récuser les
+          sens comme point de départ — « les sens m'ont déjà trompé par le
+          passé... donc je ne peux plus leur accorder une confiance
+          absolue » — et pousse le doute jusqu'à des vérités mathématiques
+          elles-mêmes, bien au-delà de la simple prudence sensorielle que ce
+          texte pratique. Du point de vue cartésien, corriger un sens par un
+          autre sens ne résout rien : c'est rester à l'intérieur du même
+          registre douteux (la sensation), sans jamais atteindre un point
+          qui résiste absolument au doute, comme le fait le cogito.
+
+          Pourquoi cette objection ne suffit pas à annuler le texte : elle
+          suppose une exigence de certitude absolue que le texte ne
+          revendique jamais pour lui-même — il parle explicitement de «
+          probabilité de la vérité » qui diminue à mesure qu'on s'éloigne de
+          la sensation immédiate, pas de certitude indubitable. Le texte
+          n'essaie pas de rivaliser avec le cogito sur SON terrain (une
+          certitude qui résiste à tout doute) ; il propose un critère
+          praticable pour la connaissance ordinaire et scientifique, plus
+          proche de la corroboration popperienne (chapitre 8) — toujours révisable,
+          jamais absolument prouvée — que du projet cartésien d'une
+          fondation indubitable. L'objection de Descartes est donc sérieuse
+          contre toute PRÉTENTION à la certitude absolue que ce texte
+          n'énonce d'ailleurs pas explicitement pour lui-même ; elle ne
+          l'est pas contre un critère qui s'assume, dès le départ, comme
+          probable et révisable plutôt qu'indubitable. Une bonne discussion
+          nomme cette différence d'ambition plutôt que de déclarer l'un des
+          deux textes simplement « faux ».
+
+  # ── r-variation — FABRIQUÉE (aucun second texte vérifié disponible) ──────
+  # Per the decision rule: only ONE verified entry exists in
+  # docs/sujets/philo/la-verite.md, so r-variation falls back to a fresh,
+  # fabricated twin rather than borrowing a second real sujet. To respect
+  # the addendum's caution against manufacturing bad philosophy, the
+  # fabricated stimulus below is a deliberately NAIVE claim to be examined
+  # and refuted (not a subtle real philosophical position that could be
+  # subtly misstated) — the same "sujet d'entraînement construit pour cette
+  # leçon, pas un sujet d'examen authentique" disclaimer R9 already uses for
+  # its own constructed dissertation sujet. French only (no fabricated
+  # Arabic phrasing is invented, to avoid it reading as if it were an
+  # authentic bac citation).
+  - id: r-variation
+    title: "Une variation pour ne pas mémoriser — la vérité et le nombre (sujet construit)"
+    sourcing:
+      status: not-applicable
+    intro: |-
+      **Sujet construit pour cette leçon — anti-mémorisation, pas un sujet
+      d'examen national authentique** (contrairement à r-bac, un vrai sujet
+      d'annales) :
+
+      > « Ce que la majorité des gens croit avec le plus de force finit
+      > toujours par devenir la vérité. »
+      >
+      > Consigne : explique et discute cette affirmation.
+
+      Habillage différent, mêmes gestes que r-bac : dégager ce que la
+      phrase affirme vraiment, la confronter à une théorie déjà enseignée,
+      la relier à un chapitre déjà connu, puis discuter. Rien de nouveau à
+      apprendre ici — seulement à reconnaître, sous un nouvel angle, ce que
+      tu sais déjà de la vérité, de l'opinion et de la certitude.
+    questions:
+      - id: q1
+        part: "Partie 1 — Dégager l'erreur"
+        stem: |-
+          Reformule précisément ce que cette affirmation confond, en
+          t'appuyant sur les trois notions distinguées au chapitre 2.
+        reasoning: |-
+          L'affirmation fait deux mouvements en une seule phrase, qu'il faut
+          séparer pour la comprendre. D'abord, elle décrit un phénomène
+          social réel : une opinion largement et fermement partagée finit
+          souvent par s'imposer dans les esprits, par habitude ou par
+          pression du nombre. Ensuite, et c'est là l'erreur, elle en tire
+          une conclusion qui ne suit pas : que cette généralisation de
+          l'opinion FERAIT la vérité de l'énoncé — comme si la vérité était
+          une conséquence causale de la force et de l'étendue d'une
+          croyance.
+
+          Le chapitre 2 distingue précisément ces deux plans : l'opinion (ce qu'un
+          sujet, ou ici une majorité de sujets, tient pour vrai, à un degré
+          de conviction qui lui est propre) et la vérité (une propriété de
+          l'énoncé lui-même, indépendante de cette conviction — fût-elle
+          partagée par tous). La phrase confond le fait qu'une opinion
+          DEVIENNE majoritaire avec le fait qu'elle DEVIENNE vraie — deux
+          choses qui n'ont, à ce stade, aucun rapport nécessaire entre
+          elles.
+
+      - id: q2
+        part: "Partie 2 — Confronter à la correspondance (chapitre 3)"
+        stem: |-
+          Utilise le critère de correspondance d'Aristote (chapitre 3) pour montrer
+          précisément pourquoi la majorité qui croit un énoncé n'est jamais
+          ce qui LE REND vrai.
+        reasoning: |-
+          Le critère de correspondance (chapitre 3) est sans ambiguïté sur ce point :
+          un énoncé est vrai s'il y a adéquation entre ce qu'il affirme et
+          ce qui est réellement le cas — c'est le réel, et lui seul, qui
+          rend un énoncé vrai ou faux, pas l'opinion de celui qui l'énonce,
+          ni celle du plus grand nombre. Le texte du chapitre 3 le nomme
+          explicitement comme une confusion à éviter : l'accord du plus
+          grand nombre n'est ni la correspondance avec le réel, ni même la
+          cohérence logique d'un système — un consensus, même large, peut
+          parfaitement se tromper collectivement.
+
+          Applique ce critère à la phrase : que la Terre tourne autour du
+          Soleil est resté vrai pendant les siècles où la majorité croyait
+          fermement le contraire (le modèle géocentrique de Ptolémée, chapitre 4) —
+          la force et l'étendue de la croyance majoritaire n'ont, à aucun
+          moment, changé ce qui était réellement le cas. La majorité peut
+          se tromper ENSEMBLE, avec la même conviction sincère qu'une
+          minorité qui aurait raison.
+
+      - id: q3
+        part: "Partie 3 — Relier à un chapitre déjà connu (chapitre 8, Popper)"
+        stem: |-
+          En quoi le raisonnement de Popper sur la confirmation (chapitre 8)
+          s'applique-t-il, presque mot pour mot, à cette affirmation sur la
+          majorité ?
+        reasoning: |-
+          Le parallèle est direct, presque une transposition. Popper (chapitre 8)
+          montre qu'aucun nombre, même immense, d'observations confirmantes
+          ne peut prouver définitivement qu'une loi générale est vraie : il
+          suffirait d'un seul contre-exemple, découvert demain, pour réfuter
+          d'un coup ce que des millions d'observations semblaient confirmer.
+
+          Remplace « observations qui confirment » par « personnes qui
+          croient » : le raisonnement ne change pas de nature. Qu'un très
+          grand nombre de personnes tiennent un énoncé pour vrai ressemble à
+          une accumulation de confirmations — et comme pour les
+          observations de Popper, cette accumulation ne prouve jamais rien
+          définitivement : il suffirait qu'un seul fait vienne contredire
+          la croyance majoritaire pour la réfuter, quel qu'ait été le nombre
+          de ceux qui la partageaient. La CONFIRMATION SOCIALE d'un énoncé
+          (le nombre de gens qui y croient) et sa CORROBORATION (le fait
+          d'avoir résisté à des tentatives sérieuses de le mettre en
+          défaut) sont deux choses très différentes — seule la seconde a un
+          rapport, même partiel et révisable, avec la vérité.
+
+      - id: q4
+        part: "Partie 4 — Objecter et discuter"
+        stem: |-
+          Y a-t-il malgré tout un grain de vérité dans cette affirmation ?
+          Formule l'objection la plus forte qu'on pourrait lui opposer en sa
+          faveur, puis explique pourquoi elle ne suffit pas à la sauver.
+        reasoning: |-
+          Le grain de vérité, à ne pas balayer trop vite : un consensus
+          scientifique large n'est pas TOUJOURS sans rapport avec la vérité
+          — quand il résulte d'une corroboration rigoureuse, répétée par
+          des méthodes indépendantes (chapitre 8), l'accord d'un grand nombre de
+          chercheurs a effectivement plus de chances de tracker le réel
+          qu'une opinion isolée et non testée. On pourrait objecter que
+          l'affirmation n'est donc pas absurde, seulement mal formulée :
+          peut-être visait-elle ce genre de consensus scientifique
+          construit, pas n'importe quelle opinion majoritaire.
+
+          Pourquoi cette défense ne suffit pas à sauver la phrase telle
+          qu'elle est formulée : elle confond encore deux choses que le chapitre 8 et
+          le chapitre 9 distinguent avec soin. Ce qui donne sa valeur au consensus
+          scientifique n'est jamais LE NOMBRE de ceux qui y adhèrent, c'est
+          la PROCÉDURE qui l'a produit — la mise à l'épreuve, l'exposition
+          à la réfutation, la corroboration par des tests sévères et
+          indépendants. Une croyance massive obtenue sans cette procédure
+          (par répétition, par pression sociale, par habitude) — exactement
+          ce que le chapitre 9 identifie comme le mécanisme de la propagande : «
+          fabriquer de la certitude et un consensus apparent comme un
+          succédané de vérité » — n'a, elle, aucun rapport avec le vrai,
+          quel que soit le nombre de gens qu'elle rallie. La phrase, prise
+          telle quelle, mélange ces deux mécanismes très différents sous un
+          seul mot, « croit » : c'est précisément cette confusion, pas le
+          fait de mentionner le nombre en général, qui la rend fausse.

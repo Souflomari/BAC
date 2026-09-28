@@ -1,0 +1,292 @@
+/**
+ * typo-francaise.mjs — la typographie française, dans le texte RENDU.
+ *
+ * Le français met une espace insécable fine (U+202F) devant `;`, `:`, `!`,
+ * `?`, et à l'intérieur des guillemets « … ». Sans elle, une ligne peut
+ * commencer par « : » ou « ? » — ce qu'aucun livre scolaire ne fait, et ce
+ * qu'un élève lit comme du travail bâclé. L'apostrophe droite (`'`) est
+ * l'autre marque d'un texte non relu.
+ *
+ * `remarkFrenchTypography` normalise la PROSE des leçons. La question que
+ * cette sonde pose est l'autre : que reste-t-il ailleurs — dans les
+ * étiquettes de figure écrites à la main, dans les légendes des sidecars,
+ * dans les pages hors leçon ?
+ *
+ * On lit le texte RENDU (`innerText`), pas les fichiers : c'est ce que
+ * l'élève voit qui compte, et la chaîne de rendu peut aussi bien réparer que
+ * casser.
+ */
+import { chromium } from "playwright-core";
+import { spawn } from "child_process";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const WEB = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+// PORT UNIQUE PAR EXÉCUTION (2026-09-05). Les ports fixes se marchaient
+// dessus : `copie-maths` et `ancres-uniques` réclamaient tous deux 3497,
+// `donnees-sweep` et `accents-manquants` tous deux 3496. Chaque porte lance
+// son propre `next start` détaché et le tue en fin de course — mais tuer
+// l'enveloppe `npx` ORPHELINE son enfant `next-server`, défaut déjà écrit en
+// toutes lettres dans l'en-tête de dom-truth. Une porte qui trouve le port
+// occupé sonde alors le serveur d'une AUTRE porte : au mieux elle mesure un
+// build voisin, au pire elle attend.
+//
+// C'est le motif de dom-truth, mot pour mot : l'espace 3200-3699 est assez
+// large pour que deux exécutions simultanées ne se croisent pas.
+const PORT = Number(process.env.PORT_TYPO ?? 3200 + (process.pid % 500));
+const AUTONOME = !process.env.BASE;
+const BASE = process.env.BASE ?? `http://127.0.0.1:${PORT}`;
+const routes = process.argv.slice(2).filter((a) => !a.startsWith("--"));
+const porte = process.argv.includes("--porte");
+if (routes.length === 0) {
+  console.error("usage: node scripts/typo-francaise.mjs [--porte] <routes…>");
+  process.exit(1);
+}
+// Les pages HORS LEÇON comptent autant : /atelier et une épreuve portaient à
+// elles seules 65 écarts que la première passe n'avait pas vus, simplement
+// parce qu'elles n'étaient pas dans la liste. Une porte ne juge que ce qu'on
+// lui donne — la liste EST la portée.
+
+let serveur = null;
+if (AUTONOME) {
+  serveur = spawn("npx", ["next", "start", "-p", String(PORT)], { cwd: WEB, stdio: "ignore", detached: true });
+  const t0 = Date.now();
+  let pret = false;
+  while (Date.now() - t0 < 60000) {
+    try { if ((await fetch(`${BASE}/`)).ok) { pret = true; break; } } catch { /* pas encore */ }
+    await new Promise((r) => setTimeout(r, 500));
+  }
+  if (!pret) { console.error("✗ serveur absent — rien n'est mesuré"); try { process.kill(-serveur.pid); } catch {} process.exit(1); }
+}
+const arreter = () => { if (serveur?.pid) { try { process.kill(-serveur.pid); } catch {} } };
+
+const nav = await chromium.launch({
+  executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium",
+});
+const page = await (await nav.newContext({ viewport: { width: 1280, height: 900 } })).newPage();
+
+const total = { haute: 0, guillemets: 0, apostrophe: 0, dansLatex: 0 };
+const exemples = [];
+const parSite = {};
+
+for (const route of routes) {
+  const reponse = await page.goto(`${BASE}${route}`, { waitUntil: "networkidle" });
+  // UNE ROUTE QUI N'EXISTE PAS N'EST PAS UNE ROUTE PROPRE (2026-09-05).
+  // La liste de routes EST la portée de cette porte, et une entrée fautive
+  // l'amputait en silence : `/options` figurait dans la liste CI de la porte
+  // typographie et rend un 404 depuis que les bancs d'options ont été purgés.
+  // La porte mesurait la page « Page introuvable » et annonçait « ✓ /options ».
+  // Un contrôle qui ne peut pas devenir rouge n'est pas un contrôle.
+  if (reponse && reponse.status() !== 200) {
+    console.error(`✗ ${route} — HTTP ${reponse.status()} : cette route n'existe pas, la porte ne mesure rien.`);
+    process.exitCode = 1;
+    continue;
+  }
+  // LES ÉNONCÉS D'ÉPREUVE SONT DERRIÈRE « Commencer » (2026-09-05). Même
+  // angle mort que pour la porte accents : `EpreuveShell` démarre au « seuil »
+  // et les 39 sujets n'entrent dans le DOM qu'après l'action primaire. Une
+  // porte qui n'ouvre pas la page mesure le masthead et se déclare verte.
+  const commencer = page.getByRole("button", { name: /Commencer l.épreuve/i });
+  if (await commencer.count()) {
+    await commencer.first().click();
+    await page.waitForSelector("[data-sujet-complet]", { timeout: 60000 });
+    // ET LA CORRECTION. Le raisonnement expert — la partie du produit qui
+    // prétend enseigner — n'entre dans le DOM qu'en phase « correction »
+    // (attempt-first absolu, gardé par dom-truth). Sans ce second clic, la
+    // porte mesure l'énoncé et pas le corrigé.
+    const terminer = page.getByRole("button", { name: /Terminer l.épreuve/i });
+    if (await terminer.count()) {
+      await terminer.first().click();
+      await page.waitForSelector("[data-corrige-complet]", { timeout: 60000 });
+    }
+  }
+  await page.waitForTimeout(250);
+  const r = await page.evaluate(() => {
+    const racine = document.querySelector("main");
+    if (!racine) return null;
+    // Chapitres dépliés : ce que l'élève voit au fil de sa lecture, pas
+    // seulement le chapitre ouvert à l'arrivée.
+    for (const g of racine.querySelectorAll("[hidden]")) g.removeAttribute("hidden");
+
+    const NNBSP = "\u202F", NBSP = "\u00A0";
+
+    // ── LE SENS INVERSE : L'ESPACE QUI NE DOIT PAS Y ÊTRE (§11.165) ────
+    // Les trois mesures ci-dessous cherchent une espace MANQUANTE dans la
+    // prose. Celle-ci cherche l'espace EN TROP — une insécable posée dans
+    // une formule, où elle n'a rien à faire.
+    //
+    // Une porte à deux directions, parce qu'une seule se triche : appliquer
+    // la règle partout rend la première verte et fabrique la seconde. C'est
+    // exactement ce qui était arrivé — `frenchTypography` est appelée sur
+    // des chaînes BRUTES à une soixantaine d'endroits (titres d'exercice,
+    // légendes, `aria-label`), LaTeX compris, et la règle de ponctuation
+    // haute glissait sa fine DANS les formules : 24 sur 10 pages, dont des
+    // `\;` coupés entre la contre-oblique et le point-virgule — la commande
+    // d'espacement LaTeX cesse alors d'exister.
+    //
+    // L'annotation TeX de KaTeX porte la source de la formule TELLE QU'ELLE
+    // A ÉTÉ COMPILÉE : c'est le seul endroit où l'on voit ce que le moteur a
+    // réellement reçu, et non ce que le fichier contenait.
+    let dansLatex = 0;
+    const exLatex = [];
+    for (const a of racine.querySelectorAll('annotation[encoding="application/x-tex"]')) {
+      const t = a.textContent || "";
+      const k = (t.match(new RegExp(`[${NNBSP}${NBSP}]`, "gu")) || []).length;
+      if (!k) continue;
+      dansLatex += k;
+      if (exLatex.length < 2) exLatex.push(t.slice(0, 60).replace(new RegExp(NNBSP, "g"), "<fine>").replace(new RegExp(NBSP, "g"), "<insec>"));
+    }
+
+    const RE_APO = /\p{L}'\p{L}/gu;
+    // Une lettre, un chiffre, une parenthèse ou un guillemet fermant ; une
+    // espace ORDINAIRE facultative ; puis ; : ?. L'insécable fine, elle, ne
+    // matche pas — c'est justement ce qu'on veut voir.
+    const RE_HAUTE = new RegExp(`[\\p{L}\\d)»][ ${NBSP}]?[;:?](?!\\d)`, "gu");
+    const RE_GUILL = new RegExp(`«[^${NNBSP}${NBSP}]|[^${NNBSP}${NBSP}]»`, "gu");
+
+    // ── L'UNITÉ DE MESURE (2026-09-21, §11.164) ────────────────────────
+    // Cette sonde lisait chaque NŒUD DE TEXTE séparément. Un nœud de texte
+    // n'est pas une phrase : « l'**amylase** » en fait trois (le texte
+    // « …molécule, l' », le `strong`, la suite), et l'apostrophe se retrouve
+    // en DERNIER caractère de son nœud, la lettre qui la suit dans le nœud
+    // d'à côté. Le motif ne pouvait pas la voir. Mesuré le 2026-09-21 :
+    // 0 vue par cette porte, **152 lisibles par un élève sur 50 pages** —
+    // une porte verte qui répondait honnêtement à une question plus étroite
+    // que son en-tête (ADR 0033), avec le MÊME angle mort que le plugin
+    // qu'elle est censée surveiller (ADR 0037, 2e loi : borner le motif à
+    // l'unité où vit le défaut).
+    //
+    // L'unité est donc désormais le BLOC : on recolle les nœuds de texte
+    // successifs qui partagent le même bloc, et on mesure la chaîne entière.
+    // Trois frontières cassent la chaîne, et chacune pour une raison :
+    //   · le bloc change — deux paragraphes ne se lisent pas d'affilée ;
+    //   · un nœud est SAUTÉ (code, MathML, style) — `l'` suivi de `<code>`
+    //     n'est pas une élision, et le plugin ne la convertit pas non plus ;
+    //   · le nœud est dans une formule KaTeX — chaque nœud y reste son
+    //     propre îlot, sinon « \{x : x>0\} » recollé ferait crier la règle
+    //     de ponctuation haute sur du LaTeX rendu.
+    const BLOCS = new Set(["P","DIV","LI","UL","OL","TABLE","TR","TD","TH","SECTION","ARTICLE",
+      "H1","H2","H3","H4","H5","H6","BLOCKQUOTE","FIGCAPTION","HEADER","FOOTER","NAV","ASIDE",
+      "BUTTON","LABEL","DL","DT","DD","SUMMARY","DETAILS","FORM","MAIN","FIGURE"]);
+    const unite = (el) => {
+      const k = el.closest(".katex");
+      if (k) return null; // îlot : l'appelant utilisera le nœud lui-même
+      let e = el;
+      while (e && e !== racine && !BLOCS.has(e.tagName)) e = e.parentElement;
+      return e || racine;
+    };
+    const chemin = (el) => {
+      let e = el, c = [];
+      while (e && e !== racine && c.length < 3) {
+        c.push(e.tagName.toLowerCase() +
+          (typeof e.className === "string" && e.className ? "." + e.className.split(/\s+/)[0] : ""));
+        e = e.parentElement;
+      }
+      return c.join(" < ");
+    };
+
+    const compte = { haute: 0, guillemets: 0, apostrophe: 0 };
+    const sites = {};
+    const ex = [];
+    // Un lot en cours d'assemblage : { texte, cle, el }.
+    let lot = null;
+    const vider = () => {
+      if (!lot) return;
+      const t = lot.texte;
+      const a = (t.match(RE_APO) || []).length;
+      const h = (t.match(RE_HAUTE) || []).length;
+      const g = (t.match(RE_GUILL) || []).length;
+      if (a || h || g) {
+        compte.apostrophe += a; compte.haute += h; compte.guillemets += g;
+        sites[lot.cle] = (sites[lot.cle] || 0) + a + h + g;
+        if (ex.length < 2) ex.push(`${lot.cle} :: ${t.trim().slice(0, 60)}`);
+      }
+      lot = null;
+    };
+
+    const w = document.createTreeWalker(racine, NodeFilter.SHOW_TEXT);
+    let n;
+    while ((n = w.nextNode())) {
+      const parent = n.parentElement;
+      // Le MathML de KaTeX double chaque formule, et le code n'est pas du
+      // français. Le `\text{…}` d'une formule, LUI, en est — on le garde.
+      // `style` et `script` sont des NŒUDS DE TEXTE dans le DOM : le CSS d'une
+      // figure inlinée (« .f-edge { stroke: … } ») ressemble à du français mal
+      // ponctué et faisait crier la sonde sur cinq leçons. Ce n'est pas de la
+      // langue, c'est du code.
+      if (!parent || parent.closest(".katex-mathml, code, pre, style, script")) { vider(); continue; }
+      const u = unite(parent);
+      if (u === null) { // îlot KaTeX : le nœud est à lui seul son unité
+        vider();
+        lot = { texte: n.nodeValue || "", cle: chemin(parent), el: parent };
+        vider();
+        continue;
+      }
+      if (lot && lot.el !== u) vider();
+      if (!lot) lot = { texte: "", cle: chemin(parent), el: u };
+      lot.texte += n.nodeValue || "";
+    }
+    vider();
+    return { ...compte, dansLatex, exLatex, sites, ex };
+  });
+  if (!r) { console.log(`  · ${route} — pas de <main>, page ignorée`); continue; }
+  const n = r.haute + r.guillemets + r.apostrophe + r.dansLatex;
+  total.haute += r.haute; total.guillemets += r.guillemets; total.apostrophe += r.apostrophe;
+  total.dansLatex += r.dansLatex;
+  for (const e of r.exLatex) if (exemples.length < 8) exemples.push(`${route} — DANS UNE FORMULE : ${e}`);
+  for (const [k, v] of Object.entries(r.sites)) parSite[k] = (parSite[k] || 0) + v;
+  for (const e of r.ex) if (exemples.length < 6) exemples.push(`${route} — ${e}`);
+  console.log(
+    `  ${n === 0 ? "✓" : "✗"} ${route} — ${r.haute} ponctuation haute, ` +
+    `${r.guillemets} guillemet(s), ${r.apostrophe} apostrophe(s) droite(s), ` +
+    `${r.dansLatex} insécable(s) DANS du LaTeX`
+  );
+}
+
+const n = total.haute + total.guillemets + total.apostrophe + total.dansLatex;
+// `routes.length` compterait les routes DEMANDÉES ; une route morte n'a pas été
+// mesurée, et l'annoncer comme tenue serait exactement le mensonge que le
+// garde-fou ci-dessus est là pour empêcher.
+const mesurees = routes.length - (process.exitCode === 1 ? 1 : 0);
+console.log(
+  n === 0 && process.exitCode !== 1
+    ? `\nLa typographie française tient sur ${mesurees} page(s) : aucune apostrophe droite, ` +
+      `aucune espace manquante devant une ponctuation haute, ` +
+      `aucune insécable injectée dans une formule.`
+    : `\n${n} écart(s) : ${total.haute} espace(s) manquante(s) devant une ponctuation haute, ` +
+      `${total.guillemets} guillemet(s) mal espacé(s), ${total.apostrophe} apostrophe(s) droite(s), ` +
+      `${total.dansLatex} insécable(s) injectée(s) DANS du LaTeX.`
+);
+if (n > 0) {
+  console.log("\n  Par site de rendu :");
+  for (const [k, v] of Object.entries(parSite).sort((a, b) => b[1] - a[1]).slice(0, 12)) {
+    console.log(`    ${String(v).padStart(4)}  ${k}`);
+  }
+  for (const e of exemples) console.log(`   · ${e}`);
+}
+await nav.close();
+arreter();
+// Une route absente a déjà posé process.exitCode = 1 plus haut : la porte doit
+// tomber même si toutes les pages REELLEMENT visitées sont propres. Sinon la
+// liste de routes peut rétrécir en silence — le défaut que ce garde-fou existe
+// pour empêcher.
+if (porte && process.exitCode === 1) {
+  console.error(
+    "\n━━ porte typographie : ROMPUE — une route de la liste n'existe pas ━━\n" +
+    "   La liste de routes EST la portée de cette porte. Une entrée fautive\n" +
+    "   l'ampute sans rien dire : la page 404 est propre, et la porte annonce\n" +
+    "   un ✓ pour une page que personne ne lit."
+  );
+  process.exit(1);
+}
+if (porte && n > 0) {
+  console.error(
+    "\n━━ porte typographie : le français du produit s'écrit d'une seule façon ━━\n" +
+    "   (apostrophe ’ entre deux lettres, insécable fine devant ; : ? et dans\n" +
+    "    les guillemets. La prose passe par `remarkFrenchTypography` ; ce qui\n" +
+    "    ne passe pas par lui — titres, cartes, légendes, figures — se corrige\n" +
+    "    à SA source : lib/chapters.ts, lib/content.ts, scripts/typo-figures.py,\n" +
+    "    scripts/typo-math.py.)"
+  );
+  process.exit(1);
+}

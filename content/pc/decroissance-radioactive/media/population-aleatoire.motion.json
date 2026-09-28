@@ -1,0 +1,53 @@
+{
+  "slug": "population-aleatoire",
+  "viewBox": "0 0 700 480",
+  "label": "Une grille de 64 noyaux radioactifs : à chaque demi-vie, la moitié de ceux qui restent se désintègrent, au hasard, jamais les mêmes — un petit encart relie ce comptage à la loi N(t) = N0 e^(-λt).",
+  "layout": "replace",
+  "regions": {
+    "chrome": { "x": 0, "y": 0, "w": 700, "h": 50 },
+    "grid": { "x": 20, "y": 56, "w": 390, "h": 362 },
+    "state-slot": { "x": 428, "y": 56, "w": 250, "h": 40 },
+    "legend": { "x": 428, "y": 104, "w": 250, "h": 64 },
+    "inset": { "x": 428, "y": 180, "w": 250, "h": 210 },
+    "footer": { "x": 0, "y": 422, "w": 700, "h": 54 }
+  },
+  "replaces": [
+    { "beat": "beat-1", "slot": "state-slot", "enter": "state-1", "exit": "state-0" },
+    { "beat": "beat-2", "slot": "state-slot", "enter": "state-2", "exit": "state-1" },
+    { "beat": "beat-3", "slot": "state-slot", "enter": "state-3", "exit": "state-2" }
+  ],
+  "beats": [
+    {
+      "id": "beat-0",
+      "caption": "Chacun des 64 noyaux peut se désintégrer à tout instant : impossible de prédire LEQUEL, ni QUAND, pour un seul d'entre eux.",
+      "tweens": []
+    },
+    {
+      "id": "beat-1",
+      "caption": "À t = t½, la moitié de la population a désintégré — mais regarde où : ce ne sont pas « les plus vieux » qui sont partis en premier, ce sont des noyaux choisis au hasard, dispersés dans toute la population.",
+      "tweens": [
+        { "target": "#decay-batch-1", "verb": "fade", "from": "none", "duration": 0.6, "ease": "power3.out", "at": 0 },
+        { "target": "#state-1", "verb": "fade", "from": "none", "duration": 0.35, "ease": "power3.out", "at": 0.3 }
+      ]
+    },
+    {
+      "id": "beat-2",
+      "caption": "À t = 2·t½, il reste la moitié de la moitié : chaque demi-vie divise à nouveau ce qui reste par 2. Les survivants ne sont pas « usés » — leur probabilité de désintégrer à chaque instant reste exactement la même qu'au départ.",
+      "tweens": [
+        { "target": "#decay-batch-2", "verb": "fade", "from": "none", "duration": 0.55, "ease": "power3.out", "at": 0 },
+        { "target": "#state-2", "verb": "fade", "from": "none", "duration": 0.35, "ease": "power3.out", "at": 0.3 }
+      ]
+    },
+    {
+      "id": "beat-3",
+      "caption": "À t = 3·t½, il ne reste qu'un huitième de la population initiale. L'individu reste imprévisible ; c'est la population entière qui obéit à une loi exacte : N(t) = N₀ · e^(−λt).",
+      "tweens": [
+        { "target": "#decay-batch-3", "verb": "fade", "from": "none", "duration": 0.6, "ease": "power3.out", "at": 0 },
+        { "target": "#state-3", "verb": "fade", "from": "none", "duration": 0.35, "ease": "power3.out", "at": 0.3 },
+        { "target": "#inset-frame", "verb": "fade", "from": "none", "duration": 0.4, "ease": "power2.out", "at": 0.15 },
+        { "target": "#inset-curve", "verb": "trace", "duration": 0.6, "ease": "power2.out", "at": 0.55 },
+        { "target": "#inset-dots", "verb": "assemble", "duration": 0.4, "ease": "power3.out", "stagger": 0.09, "at": 1.05 }
+      ]
+    }
+  ]
+}

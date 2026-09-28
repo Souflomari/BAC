@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 360" width="680" height="360"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Tension modulée en amplitude s(t) : une oscillation rapide (la porteuse, fréquence f_p constante) dont l’amplitude suit une enveloppe lente qui redessine le signal informatif s_m(t), décalée de U0.">
+  <title>Modulation d’amplitude — s(t)</title>
+  <!--
+    modulation-amplitude.svg — figure STAGED (docs/design/LESSON-EXPERIENCE-SPEC.md §2).
+    Graphe -> toujours stagée (§2.5). Ordre = axes (chrome) -> step-1 données
+    (la porteuse modulée + son enveloppe, la formule) -> step-2 lecture (les
+    étiquettes qui identifient l'enveloppe et la porteuse — exactement le
+    geste du cours en R2 : « l'amplitude instantanée ... à l'intérieur de
+    cette enveloppe, la tension oscille 300 fois plus vite »). Les captions
+    sont portées par modulation-amplitude.stages.json — aucun texte de
+    légende prose baké ici (même convention que courbe-exponentielle.svg) ;
+    seule la formule (notation, pas de la prose) reste sur la figure.
+
+    Le tracé n'est pas devine a la main : c'est un vrai cosinus rapide dont
+    l'amplitude instantanee suit un cosinus lent (l'enveloppe), calcule point
+    par point puis relie par des arcs de Bezier cubiques (meme technique que
+    regimes-uc.svg : ancrage plat a chaque extremum, tangente raide a chaque
+    passage par zero — voir le detail des controles ci-dessous).
+
+    Modele :  s(t) = (U0 + Sm*cos(2*pi*f_signal*t)) * cos(2*pi*f_p*t)
+    Valeurs reprises de R2/R3 du cours : U0 = 6 V, Sm = 3 V (m = Sm/U0 = 0,5
+    -> bonne modulation, cf. modulation-amplitude et bonne-surmodulation).
+
+    Rapport f_p/f_signal REDUIT a 6 (au lieu de 300 dans le cours) pour que
+    l'oeil distingue les cycles individuels de la porteuse — voir la note en
+    bas de figure. Seul ce rapport est schematique ; toutes les AUTRES
+    valeurs (U0, Sm, la forme de l'enveloppe) sont physiquement exactes.
+
+    Construction des points-cles (tous les demi-periodes de la porteuse,
+    k = 0..18, soit 1,5 periode du signal informatif) :
+      phase du signal a l'instant du k-ieme extremum de la porteuse :
+        theta_k = 30*k degres   (car f_p = 6*f_signal -> pas de 360/(2*6)=30 deg)
+      valeur formelle de l'enveloppe a cet instant :
+        E_k = U0 + Sm*cos(theta_k) = 6 + 3*cos(30k deg)   (toujours positive : m<1)
+      valeur reelle de la porteuse a cet instant (alternance pic/creux) :
+        v_k = E_k        si k pair  (pic, cos(2*pi*f_p*t)=+1)
+        v_k = -E_k       si k impair (creux, cos(2*pi*f_p*t)=-1)
+
+    Echelle graphique : 1 V = 12 px, axe s=0 a y=170.
+      y_k = 170 - 12*v_k
+
+    k :  0     1      2    3     4     5      6    7      8     9     10    11     12    13    14   15    16    17    18
+    Ek:  9    8.598  7.5   6    4.5   3.402   3   3.402   4.5   6     7.5  8.598   9   8.598  7.5   6    4.5  3.402   3
+    vk: +9  -8.598  +7.5  -6   +4.5 -3.402   +3 -3.402   +4.5  -6    +7.5 -8.598  +9  -8.598  +7.5  -6   +4.5 -3.402  +3
+    yk: 62   273.18  80   242  116  210.82  134 210.82   116   242   80  273.18   62  273.18   80   242  116  210.82 134
+    x_k = 80 + 26*k  (espacement uniforme : en AM, seule l'AMPLITUDE change,
+    jamais la frequence f_p — les instants de pics/creux restent equidistants)
+
+    Chaque "bosse" entre deux extremums consecutifs est tracee en 2 arcs
+    cubiques passant par le zero au milieu (approximation : le zero de la
+    porteuse tombe exactement au milieu du segment, l'enveloppe variant trop
+    lentement sur un quart de periode de la porteuse pour que ce soit visible
+    a cette echelle). Recette des points de controle (identique a
+    regimes-uc.svg) : le controle proche d'un EXTREMUM est a y = extremum
+    (tangente plate) ; le controle proche d'un ZERO est a
+    y = 0,3125*170 + 0,6875*y_extremum (tangente raide).
+
+    Enveloppe (haute = +E_k, basse = -E_k), tracee en polyligne simple (les
+    19 points calcules ci-dessus suffisent a une courbe lisse a l'oeil sur un
+    cosinus lent) — en pointilles, MEME teinte que la porteuse (comme
+    l'enveloppe pointillee de regimes-uc.svg) : l'enveloppe n'est pas un
+    autre signal, c'est une lecture de l'amplitude du meme signal.
+
+    Couleurs : porteuse + enveloppe = --figure-accent (le seul accent, trace
+    vs pointille les distingue) ; axes / reperes U0 / fuites = --figure-ink-soft.
+  -->
+
+  <!-- Titre -->
+  <text x="340" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Tension modulée en amplitude — s(t)
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="32" y="32" width="616" height="272" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ── Axes ──────────────────────────────────────────────── -->
+  <line x1="80" y1="170" x2="630" y2="170"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="630,170 618,165.5 618,174.5" fill="var(--figure-ink-soft)"/>
+  <line x1="80" y1="296" x2="80" y2="44"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="80,44 75.5,56 84.5,56" fill="var(--figure-ink-soft)"/>
+  <text x="637" y="174" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">t</text>
+  <text x="72" y="52" text-anchor="end" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">s(t)</text>
+  <text x="72" y="174" text-anchor="end" font-size="10"
+        fill="var(--figure-ink-soft)">0</text>
+
+  <!-- Repère U0 (= 6 V -> y = 170 - 12*6 = 98) -->
+  <line x1="72" y1="98" x2="80" y2="98"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="66" y="102" text-anchor="end" font-size="9.5"
+        fill="var(--figure-ink-soft)">U<tspan dy="2.5" font-size="7">0</tspan></text>
+
+  <!-- ── Note de bas de figure : rapport schématique divulgué (chrome, permanent) ── -->
+  <text x="340" y="351" text-anchor="middle" font-size="9" font-style="italic"
+        fill="var(--figure-ink-soft)">(rapport f<tspan
+        dy="2" font-size="6.5">p</tspan><tspan
+        dy="-2">/f</tspan><tspan
+        dy="2" font-size="6.5">signal</tspan><tspan
+        dy="-2"> réduit ici pour la lisibilité — en réalité f</tspan><tspan
+        dy="2" font-size="6.5">p</tspan><tspan
+        dy="-2"> ≫ f</tspan><tspan
+        dy="2" font-size="6.5">signal</tspan><tspan
+        dy="-2">)</tspan>
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — données : la porteuse modulée, son enveloppe, la formule
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- ── Enveloppe basse (pointillés, -E(t)) — dessinée avant la porteuse ── -->
+    <polyline points="
+      80,278 106,273.176 132,260 158,242 184,224 210,210.824 236,206
+      262,210.824 288,224 314,242 340,260 366,273.176 392,278
+      418,273.176 444,260 470,242 496,224 522,210.824 548,206
+    " fill="none" stroke="var(--figure-accent)" stroke-width="1.3"
+      stroke-dasharray="5,3" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- ── Enveloppe haute (pointillés, +E(t)) ── -->
+    <polyline points="
+      80,62 106,66.824 132,80 158,98 184,116 210,129.176 236,134
+      262,129.176 288,116 314,98 340,80 366,66.824 392,62
+      418,66.824 444,80 470,98 496,116 522,129.176 548,134
+    " fill="none" stroke="var(--figure-accent)" stroke-width="1.3"
+      stroke-dasharray="5,3" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- ── Porteuse modulée s(t) — arcs cubiques calculés (voir commentaire) ── -->
+    <path d="
+      M80,62
+      C84.68,62 89.88,95.75 93,170
+      C96.12,240.94 101.32,273.18 106,273.18
+      C110.68,273.18 115.88,240.94 119,170
+      C122.12,108.125 127.32,80 132,80
+      C136.68,80 141.88,108.125 145,170
+      C148.12,219.5 153.32,242 158,242
+      C162.68,242 167.88,219.5 171,170
+      C174.12,132.875 179.32,116 184,116
+      C188.68,116 193.88,132.875 197,170
+      C200.12,198.06 205.32,210.82 210,210.82
+      C214.68,210.82 219.88,198.06 223,170
+      C226.12,145.25 231.32,134 236,134
+      C240.68,134 245.88,145.25 249,170
+      C252.12,198.06 257.32,210.82 262,210.82
+      C266.68,210.82 271.88,198.06 275,170
+      C278.12,132.875 283.32,116 288,116
+      C292.68,116 297.88,132.875 301,170
+      C304.12,219.5 309.32,242 314,242
+      C318.68,242 323.88,219.5 327,170
+      C330.12,108.125 335.32,80 340,80
+      C344.68,80 349.88,108.125 353,170
+      C356.12,240.94 361.32,273.18 366,273.18
+      C370.68,273.18 375.88,240.94 379,170
+      C382.12,95.75 387.32,62 392,62
+      C396.68,62 401.88,95.75 405,170
+      C408.12,240.94 413.32,273.18 418,273.18
+      C422.68,273.18 427.88,240.94 431,170
+      C434.12,108.125 439.32,80 444,80
+      C448.68,80 453.88,108.125 457,170
+      C460.12,219.5 465.32,242 470,242
+      C474.68,242 479.88,219.5 483,170
+      C486.12,132.875 491.32,116 496,116
+      C500.68,116 505.88,132.875 509,170
+      C512.12,198.06 517.32,210.82 522,210.82
+      C526.68,210.82 531.88,198.06 535,170
+      C538.12,145.25 543.32,134 548,134
+    " fill="none"
+      stroke="var(--figure-accent)"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- ── Formule (notation, pas de la prose — reste sur la figure) ── -->
+    <text x="340" y="320" text-anchor="middle" font-size="13" font-style="italic"
+          fill="var(--figure-ink)">s(t) = (U<tspan
+          dy="3" font-size="9">0</tspan><tspan
+          dy="-3"> + s</tspan><tspan
+          dy="3" font-size="9">m</tspan><tspan
+          dy="-3">(t)) · cos(2π f</tspan><tspan
+          dy="3" font-size="9">p</tspan><tspan
+          dy="-3"> t)</tspan>
+    </text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — lecture : identifier l'enveloppe et la porteuse
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- ── Étiquette « enveloppe » — pointe vers un point du pointillé, nettement
+         séparé de la porteuse (x=145 tombe exactement sur un zéro de la
+         porteuse : aucune ambiguïté visuelle possible) ── -->
+    <line x1="196" y1="50" x2="145" y2="87"
+          stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="200" y="46" font-size="10.5" font-weight="600"
+          fill="var(--figure-accent)">enveloppe : U<tspan dy="2.5" font-size="7.5">0</tspan><tspan dy="-2.5">+s</tspan><tspan dy="2.5" font-size="7.5">m</tspan><tspan dy="-2.5">(t)</tspan></text>
+    <text x="200" y="59" font-size="9.5"
+          fill="var(--figure-ink-soft)">— l’information transmise</text>
+
+    <!-- ── Étiquette « porteuse » — pointe vers un pic de l'oscillation rapide ── -->
+    <line x1="428" y1="50" x2="392" y2="65"
+          stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="432" y="46" font-size="10.5" font-weight="600"
+          fill="var(--figure-accent)">porteuse (f<tspan dy="2.5" font-size="7.5">p</tspan><tspan dy="-2.5">, fixe)</tspan></text>
+    <text x="432" y="59" font-size="9.5"
+          fill="var(--figure-ink-soft)">oscillation rapide</text>
+  </g><!-- /step-2 -->
+
+</svg>

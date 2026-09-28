@@ -1,0 +1,3045 @@
+notion: la-violence
+skill_code: philo_violence
+
+# Misconception inventory — summit-conversion campaign (Gap-4 fix: this file
+# previously carried `misconceptions: []` and no misconception tags on any
+# distractor, despite feedback already being authored on all 27 legacy
+# items). Id convention: mc.philo.<slug>.<name>, where <slug> is skill_code
+# with the "philo_" prefix stripped (philo_violence -> violence) -- matches
+# the precedent set in content/philo/la-liberte/items.yaml and
+# content/philo/analyse-de-texte/items.yaml.
+#
+# Built from scratch by reading the lesson (R0-R8) rung by rung and mining
+# each rung's own "Erreur à éviter" / "Erreur à éviter -- la confusion la
+# plus fréquente" box first (per the recipe's philo addendum), then
+# cross-checking against the 27 pre-existing items' distractor content.
+# No dedicated "r-bac axis" misconception was added here (contrast
+# la-liberte's autrui-limite-par-nature): the sujets-bank's own
+# cross-reference for this notion's ONE verified text ("Correspondance de
+# cours : la-violence R1 [...] et R7 [...]", docs/sujets/philo/
+# la-violence.md) confirms r-bac maps onto rungs R0-R8 already teach
+# directly, no new axis to smuggle in -- the house precedent for this
+# exact case is content/philo/autrui/exercises.yaml (also a single-
+# verified-text notion whose r-bac axis was already fully taught), which
+# likewise skips a dedicated bac-priming checkpoint and does not invent a
+# "new axis" misconception just to manufacture an honest-looking
+# zero-coverage entry.
+misconceptions:
+  - id: mc.philo.violence.faux-dilemme-legitime-violence
+    label: "« C'est de la violence, un point c'est tout » / « Ce n'est pas différent de la police » (le faux dilemme initial)"
+    description: >-
+      L'élève tranche légitime/violence sur un critère de surface
+      (identité de l'acteur ou culpabilité de la cible), ou réduit la
+      question à un détail secondaire, plutôt que d'isoler le critère
+      procédural (loi, procédure connue, tiers impartial) que la leçon va
+      construire.
+    contradicts_principle: >-
+      Aucune des deux réponses spontanées ne suffit : ni « pas de
+      policiers, donc violence » ni « voleur coupable, donc pas différent
+      de la police » ne dit ce qui distingue précisément le geste des
+      voisins de celui d'un policier légitime -- c'est ce critère que R1
+      construit.
+
+  - id: mc.philo.violence.acteur-determine-legitimite
+    label: "« Seul un policier peut exercer une force légitime »"
+    description: >-
+      L'élève fait de l'identité ou du statut officiel de l'acteur
+      (policier vs particulier), et non de la procédure suivie, le
+      critère qui détermine si un usage de la force est légitime.
+    contradicts_principle: >-
+      Ce n'est pas la nature de l'acteur qui est le critère décisif, mais
+      le fait que l'acte découle d'une loi, suive une procédure connue à
+      l'avance, et reste contestable devant un tiers impartial -- une
+      police qui agirait hors de toute procédure pourrait, elle aussi,
+      commettre un acte de violence.
+
+  - id: mc.philo.violence.culpabilite-determine-legitimite
+    label: "« La culpabilité de la cible détermine, à elle seule, la légitimité de l'acte »"
+    description: >-
+      L'élève traite la culpabilité (ou l'innocence) de la personne visée
+      comme le critère décisif de légitimité -- pour légitimer n'importe
+      quel usage de la force contre un coupable, ou pour délégitimer
+      d'emblée toute réaction à son égard -- sans égard à la procédure
+      suivie.
+    contradicts_principle: >-
+      La culpabilité réelle de la cible ne change rien au diagnostic de
+      légitimité : un tribunal peut légitimement sanctionner un coupable
+      avéré, et un jugement peut rester légitime malgré une erreur ; le
+      problème ne porte pas sur la culpabilité, mais sur l'absence de
+      loi, de procédure et de tiers impartial.
+
+  - id: mc.philo.violence.force-confondue-avec-violence
+    label: "« Force et violence désignent la même chose »"
+    description: >-
+      L'élève traite tout contact physique, toute intensité ou tout
+      danger comme constitutif de violence par définition, sans voir que
+      la force est une capacité neutre et que seul son usage hors d'un
+      cadre reconnu par les deux parties en fait de la violence.
+    contradicts_principle: >-
+      Un même geste physique peut être de la force (encadrée par une
+      règle reconnue et acceptée par les deux parties, comme un coup de
+      boxe sur un ring) ou de la violence (hors de tout cadre consenti) --
+      ce n'est pas le geste lui-même, l'intensité ou le danger qu'il
+      comporte, mais son encadrement, qui en détermine la nature.
+
+  - id: mc.philo.violence.legitime-confondu-avec-juste
+    label: "« Légitime » veut dire « moralement/factuellement juste »"
+    description: >-
+      L'élève confond la légitimité procédurale (issue d'une loi, d'une
+      procédure connue, d'un tiers impartial) avec la justesse morale ou
+      factuelle du résultat obtenu -- au point de dire qu'un acte erroné
+      ou qu'un pouvoir contesté ne pourrait jamais être qualifié de
+      légitime.
+    contradicts_principle: >-
+      « Légitime », au sens de Weber, ne signifie pas « moralement juste
+      en toutes circonstances » : un acte peut être légitime -- issu
+      d'une procédure reconnue -- tout en produisant, dans tel cas
+      précis, une injustice comme une erreur judiciaire.
+
+  - id: mc.philo.violence.violence-reduite-a-la-douleur
+    label: "« La violence se définit par l'intensité de la douleur infligée »"
+    description: >-
+      L'élève définit la violence par la douleur physique ressentie, le
+      contexte (médical ou non), la position hiérarchique des parties, ou
+      le ressenti subjectif de la victime, plutôt que par le fait qu'elle
+      contourne la liberté d'autrui au lieu de s'y adresser.
+    contradicts_principle: >-
+      Une piqûre médicale douloureuse et consentie n'est jamais qualifiée
+      de violence, alors qu'une gifle inattendue, bien moins douloureuse,
+      l'est sans discussion -- ce n'est donc pas la douleur qui définit la
+      violence, mais le contournement de la liberté d'autrui, qui réduit
+      la personne à un pur moyen (Kant) ou à un pur objet (Sartre).
+
+  - id: mc.philo.violence.regard-et-contrainte-physique-confondus
+    label: "« Le regard d'autrui et la contrainte physique produisent la même objectivation »"
+    description: >-
+      L'élève traite l'objectivation réversible du regard sartrien et
+      l'objectivation, momentanément irréversible, que produit la
+      violence physique comme un seul et même mécanisme, sans distinguer
+      leurs degrés.
+    contradicts_principle: >-
+      Le regard sartrien objective de façon réversible -- je peux
+      toujours regarder à mon tour et redevenir sujet ; la contrainte
+      physique pousse ce même mécanisme à son terme le plus radical --
+      pendant l'instant où elle s'exerce, la victime ne peut plus
+      reprendre la position de sujet. Ce sont deux degrés d'un même
+      mécanisme, pas deux mécanismes identiques.
+
+  - id: mc.philo.violence.violence-reduite-au-physique
+    label: "« La violence suppose nécessairement un contact physique »"
+    description: >-
+      L'élève croit que seule une contrainte physique directe peut
+      constituer une violence, en ignorant les formes non-physiques (une
+      menace qui contourne la liberté sans y toucher, ou la violence
+      symbolique de Bourdieu).
+    contradicts_principle: >-
+      Le critère posé en R2 -- contourner la liberté d'autrui au lieu de
+      s'y adresser -- ne suppose aucun contact physique : une menace qui
+      impose par la contrainte ce qu'un assentiment libre aurait dû
+      accorder relève déjà de la violence en ce sens précis ; R7 montre
+      plus loin qu'une domination peut s'exercer sans aucune contrainte
+      physique (violence symbolique).
+
+  - id: mc.philo.violence.hobbes-fait-lapologie-de-la-violence
+    label: "« Hobbes approuve la violence » / « L'État introduit la violence dans une humanité paisible »"
+    description: >-
+      L'élève attribue à Hobbes une approbation morale de la violence ou
+      du droit de nature comme idéal de vie, ou inverse le rôle qu'il
+      donne à l'État en le présentant comme ce qui introduirait la
+      violence plutôt que ce qui la contient.
+    contradicts_principle: >-
+      Hobbes ne fait pas l'apologie de la violence : il la décrit comme un
+      fait structurel de l'absence d'autorité commune, précisément pour
+      justifier la nécessité du Léviathan qui la contient -- il la
+      constate, il ne la recommande pas, et l'État ne produit pas la
+      violence, il la retire à chacun pour la concentrer dans les mains
+      d'un souverain unique.
+
+  - id: mc.philo.violence.droit-de-nature-confondu-avec-droit-moral
+    label: "« Le droit de nature est un droit moralement approuvé (ou une loi civile) »"
+    description: >-
+      L'élève confond le « droit de nature » hobbesien (une simple
+      liberté de fait, en l'absence de toute loi commune) avec un droit
+      moralement approuvé par Hobbes, ou avec une loi civile positive
+      promulguée après coup par un souverain déjà institué.
+    contradicts_principle: >-
+      Le droit de nature n'est pas une licence morale que Hobbes
+      approuverait : c'est le simple constat qu'aucune limite extérieure
+      ne s'impose encore à la force de chacun, tant qu'aucun pouvoir
+      commun ne fait respecter une borne reconnue par tous -- une
+      condition qui précède, et que le contrat social vient précisément
+      retirer à chacun.
+
+  - id: mc.philo.violence.hobbes-rousseau-confondus
+    label: "« Hobbes et Rousseau défendent la même thèse sur l'état de nature » (dans un sens ou dans l'autre)"
+    description: >-
+      L'élève attribue à Rousseau la thèse hobbesienne d'un état de
+      nature violent et d'une guerre de tous contre tous, ou, à
+      l'inverse, prête à Hobbes des concepts rousseauistes (amour-propre,
+      critique de la propriété) -- confondant les deux auteurs dans un
+      sens ou dans l'autre.
+    contradicts_principle: >-
+      C'est l'une des confusions les plus fréquentes sur ce point du
+      programme : la thèse d'un état de nature violent appartient à
+      Hobbes, pas à Rousseau, qui défend à l'inverse un homme naturel
+      paisible et compatissant, corrompu ensuite par la société et la
+      propriété -- deux portraits opposés qu'il ne faut jamais fondre en
+      un seul.
+
+  - id: mc.philo.violence.amour-de-soi-amour-propre-confondus
+    label: "« Amour de soi et amour-propre sont la même notion chez Rousseau »"
+    description: >-
+      L'élève confond les deux notions rousseauistes, inverse leurs
+      définitions, ou n'associe pas correctement l'amour-propre -- et non
+      l'amour de soi -- à la naissance de la violence sociale.
+    contradicts_principle: >-
+      L'amour de soi est un simple instinct de conservation neutre,
+      antérieur à toute société ; l'amour-propre, né avec la propriété et
+      la comparaison sociale, est un désir de primer sur autrui -- c'est
+      lui, et non l'amour de soi, que Rousseau associe au vol, à la
+      guerre et à l'oppression.
+
+  - id: mc.philo.violence.propriete-mal-interpretee-chez-rousseau
+    label: "« La propriété serait, pour Rousseau, une institution juste et pacificatrice »"
+    description: >-
+      L'élève inverse le sens de la formule de Rousseau sur l'enclosure
+      d'un terrain, en traitant la propriété comme une institution qui
+      mettrait fin à la violence plutôt que comme l'événement qui la fait
+      naître, ou en la lisant comme une affirmation d'histoire factuelle
+      datée plutôt que comme l'illustration d'un mécanisme.
+    contradicts_principle: >-
+      Cette formule désigne l'instauration de la propriété comme
+      l'événement institutionnel à l'origine de la violence sociale --
+      non un donné déjà présent dans la nature humaine, ni une
+      institution juste et nécessaire qui y mettrait fin, ni un simple
+      fait historique daté à prendre au pied de la lettre.
+
+  - id: mc.philo.violence.trois-ressorts-hobbes-confondus
+    label: "« Les trois ressorts du conflit chez Hobbes sont interchangeables »"
+    description: >-
+      L'élève attribue à tort un comportement précis (ex. frapper par
+      précaution) à la compétition ou à la gloire, alors qu'il relève de
+      la défiance -- confondant les trois ressorts du conflit
+      (compétition, défiance, gloire) que Hobbes distingue soigneusement.
+    contradicts_principle: >-
+      Les trois ressorts du conflit désignent des mécanismes distincts :
+      la compétition porte sur un bien rare disputé, la défiance sur
+      l'incertitude quant aux intentions d'autrui qui pousse à frapper le
+      premier, la gloire sur la recherche de reconnaissance -- les
+      confondre revient à manquer ce qui rend chacun spécifique.
+
+  - id: mc.philo.violence.echelle-individuelle-collective-confondues
+    label: "« Légitime défense individuelle et violence révolutionnaire collective posent le même problème »"
+    description: >-
+      L'élève fond en un seul problème la légitime défense individuelle,
+      qui se pose à l'intérieur d'un ordre légal donné (chapitre 2), et la
+      violence révolutionnaire collective, qui vise à renverser cet ordre
+      tout entier jugé illégitime (chapitre 6) -- ou réduit leur différence à une
+      simple question de nombre ou de légalité formelle.
+    contradicts_principle: >-
+      La légitime défense se pose à l'intérieur d'un ordre légal donné ;
+      la violence révolutionnaire vise à renverser cet ordre tout entier,
+      jugé illégitime dans son ensemble -- deux échelles et deux
+      problèmes distincts, que la copie ne doit jamais fondre en un seul.
+
+  - id: mc.philo.violence.fanon-marx-confondus
+    label: "« Fanon ne fait qu'appliquer l'analyse marxiste de l'État à la colonisation »"
+    description: >-
+      L'élève traite la thèse de Fanon sur la violence coloniale comme
+      une simple application, sans rien y ajouter, de l'argument marxiste
+      selon lequel l'État sert les intérêts d'une classe dominante, en
+      manquant ce que Fanon y ajoute de spécifique.
+    contradicts_principle: >-
+      Fanon va plus loin que l'argument marxiste : il ne dit pas
+      seulement qu'un ordre existant sert les intérêts d'un groupe, mais
+      que cet ordre colonial repose, à sa racine même, sur un rapport de
+      force déjà violent -- ce qui rend illusoire l'idée d'une opposition
+      strictement pacifique à ce rapport.
+
+  - id: mc.philo.violence.fin-juste-legitime-tout-moyen
+    label: "« Une fin juste suffit à légitimer n'importe quel moyen »"
+    description: >-
+      L'élève croit qu'une fin jugée juste suffit, à elle seule, à
+      justifier pleinement n'importe quel moyen violent employé pour
+      l'atteindre, sans limite propre à la nature de l'acte lui-même, ou
+      réduit les limites à cette idée à un simple risque pratique
+      d'échec.
+    contradicts_principle: >-
+      Même mobilisée au service d'une fin juste, la violence reste, dans
+      son geste même, une négation de la personne d'autrui (R2) ; et
+      toute concentration de pouvoir conquise par la lutte tend
+      structurellement à se retourner contre ceux qu'elle devait
+      libérer, sans nécessairement s'arrêter une fois la fin atteinte.
+
+  - id: mc.philo.violence.non-violence-confondue-avec-passivite
+    label: "« La non-violence gandhienne est une forme de passivité » (ou, à l'inverse, une forme de violence déguisée)"
+    description: >-
+      L'élève réduit le satyagraha gandhien à un refus de résister, un
+      simple désaccord privé, ou une absence de courage -- ou, à
+      l'inverse, le confond avec la violence révolutionnaire en le
+      présentant comme une façon de contraindre par la force -- en
+      manquant sa spécificité de résistance active mais non-violente.
+    contradicts_principle: >-
+      Le satyagraha n'est pas un refus de résister : c'est une résistance
+      active, publique et organisée (désobéissance civile), qui accepte
+      consciemment la répression pour convaincre -- une troisième voie,
+      distincte à la fois de la violence et de la passivité, qui refuse
+      de nier la personne de l'adversaire tout en refusant de renoncer à
+      résister.
+
+  - id: mc.philo.violence.moyens-fins-mal-articules
+    label: "« Les moyens n'ont pas d'importance propre, seule la fin compte » (ou l'inverse : aucun lien nécessaire)"
+    description: >-
+      L'élève articule mal le rapport gandhien entre moyens et fin : soit
+      en croyant que la fin justifie n'importe quel moyen (y compris la
+      violence en dernier recours), soit en croyant, à l'inverse,
+      qu'aucun rapport nécessaire ne relie moyens et fin, comme si une
+      même « graine » pouvait indifféremment produire n'importe quel
+      « arbre ».
+    contradicts_principle: >-
+      Par l'image de la graine et de l'arbre, Gandhi affirme un rapport
+      aussi nécessaire entre moyens et fin qu'entre une graine et l'arbre
+      qui en naît : des moyens violents ne peuvent produire une fin
+      authentiquement juste et libre, quelle que soit par ailleurs la
+      noblesse de cette fin.
+
+  - id: mc.philo.violence.violence-symbolique-annule-legitimite-weberienne
+    label: "« La violence symbolique annule la distinction de Weber » (ou n'y ajoute rien / ne s'applique qu'à un domaine restreint)"
+    description: >-
+      L'élève surestime ou sous-estime la portée du concept bourdieusien
+      de violence symbolique par rapport à la distinction wébérienne :
+      soit en concluant que tout pouvoir légitime ne serait, par
+      principe, qu'une violence déguisée, soit en niant que Bourdieu
+      ajoute quoi que ce soit à Weber, soit en restreignant indûment sa
+      portée à certaines institutions ou époques.
+    contradicts_principle: >-
+      Bourdieu décrit un mécanisme précis, observable dans des
+      institutions particulières (l'école, la culture, le langage), qui
+      vient compléter l'analyse de Weber, pas l'annuler -- il ne prétend
+      ni que le monopole légitime décrit par Weber n'existerait pas, ni
+      que toute obéissance serait, par nature, illégitime.
+
+  - id: mc.philo.violence.meconnaissance-mal-identifiee
+    label: "« La méconnaissance, chez Bourdieu, désigne autre chose que la perception des dominés »"
+    description: >-
+      L'élève situe le mécanisme de la « méconnaissance » du mauvais côté
+      -- chez le groupe dominant lui-même, dans un refus conscient des
+      dominés, ou chez les sociologues qui analysent la domination --
+      plutôt que dans le fait précis que les dominés eux-mêmes ne
+      perçoivent pas le caractère arbitraire des normes qui leur sont
+      imposées.
+    contradicts_principle: >-
+      La méconnaissance désigne le fait que les dominés ne perçoivent pas
+      le caractère arbitraire des normes imposées -- ils les vivent comme
+      naturelles et méritées, au point de contribuer eux-mêmes, sans
+      aucune contrainte physique, à reproduire l'ordre qui les domine.
+
+  - id: mc.philo.violence.methode-dissertation-appliquee-mecaniquement
+    label: "« Les gestes de la méthode de dissertation sont des procédures mécaniques interchangeables »"
+    description: >-
+      L'élève traite la problématisation comme une simple reformulation
+      du sujet, place un auteur dans la mauvaise partie du plan, répète
+      en partie III un développement déjà fait en partie I, ou croit
+      qu'une problématique doit obéir à des règles de forme (personne
+      grammaticale, citation obligatoire d'auteurs) sans rapport avec sa
+      fonction réelle -- en manquant que chaque geste méthodologique a une
+      fonction précise, propre à chaque étape.
+    contradicts_principle: >-
+      Une problématique met en évidence une tension entre deux positions
+      également légitimes en apparence, elle ne reformule pas simplement
+      le sujet ; et un plan dialectique exige qu'une partie III dépasse
+      la thèse et l'antithèse en apportant quelque chose de nouveau, pas
+      qu'elle répète un développement déjà fait.
+
+  - id: mc.philo.violence.limite-institutionnelle-invalide-toute-legitimite
+    label: "« Une limite précise imposée à une institution remettrait en cause sa légitimité tout entière »"
+    description: >-
+      L'élève infère, d'une limite précise qui pèse sur une institution
+      (par exemple, l'interdiction faite à la police de frapper un
+      suspect déjà maîtrisé), que cette institution n'aurait, en réalité,
+      aucune autorité légitime -- alors que l'existence même de cette
+      limite suppose au contraire qu'elle dispose, par ailleurs, d'une
+      autorité légitime qu'elle doit exercer dans un cadre.
+    contradicts_principle: >-
+      L'objection ne remet nullement en cause la légitimité de la police
+      en général -- elle rappelle au contraire une limite précise qui
+      pèse sur elle, ce qui suppose bien qu'elle dispose, par ailleurs,
+      d'une autorité légitime.
+
+items:
+  - id: VIO-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: philo_violence
+    tags: [force_legitime, weber, distinction_concepts]
+    primary_misconception: mc.philo.violence.culpabilite-determine-legitimite
+    stem: >
+      Quatre voisins surprennent un cambrioleur en flagrant délit et le
+      frappent eux-mêmes, sans intervention de la police, jusqu'à ce qu'il ne
+      puisse plus se relever. Pourquoi cet acte reste-t-il, au sens précis du
+      terme, un acte de violence plutôt qu'une force légitime -- même si
+      l'homme était bien coupable ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que tout contact physique entre deux personnes constitue, par définition, un acte de violence, quel que soit le contexte."
+        correct: false
+        misconception: mc.philo.violence.force-confondue-avec-violence
+        feedback: >
+          Ce n'est pas ce qui définit la violence : la force elle-même est
+          neutre (un policier qui maîtrise un suspect exerce aussi une force
+          physique). Ce qui distingue la violence de la force légitime, ce
+          n'est pas le contact physique en soi, mais l'absence de loi, de
+          procédure et de tiers impartial encadrant son usage.
+      - id: B
+        text: "Parce qu'ils étaient à la fois accusateurs, juges et exécuteurs, sans loi qui les y habilite, sans procédure connue à l'avance, et sans tiers impartial pour en contrôler la proportion."
+        correct: true
+      - id: C
+        text: "Parce que la victime était réellement coupable, ce qui rend d'emblée illégitime toute réaction à son égard."
+        correct: false
+        misconception: mc.philo.violence.culpabilite-determine-legitimite
+        feedback: >
+          La culpabilité de la victime n'est pas ce qui est en cause ici :
+          un tribunal peut légitimement sanctionner un coupable avéré. Le
+          problème ne porte pas sur la culpabilité de l'homme battu, mais sur
+          l'absence de procédure et de tiers impartial encadrant l'acte des
+          quatre voisins.
+      - id: D
+        text: "Parce que seule une institution officielle comme la police pourrait, par définition et quelles que soient les circonstances, exercer une force physique sans que cela constitue jamais un acte de violence."
+        correct: false
+        misconception: mc.philo.violence.acteur-determine-legitimite
+        feedback: >
+          Ce n'est pas la nature de l'acteur (policier ou non) qui est le
+          critère décisif en lui-même, mais le fait que l'acte découle d'une
+          loi, suive une procédure connue à l'avance, et reste contestable
+          devant un tiers impartial -- une police qui agirait hors de toute
+          procédure pourrait, elle aussi, commettre un acte de violence.
+    correct_feedback: >
+      La force devient légitime quand elle découle d'une règle reconnue,
+      suit une procédure connue à l'avance, et reste contestable devant un
+      tiers impartial. En étant à la fois accusateurs, juges et exécuteurs,
+      les quatre voisins ne remplissaient aucune de ces conditions -- leur
+      acte reste donc de la violence, quelle qu'ait été la culpabilité de
+      leur cible.
+    solution: |
+      **Le critère (Weber, approfondi) :** une contrainte est légitime si
+      elle découle d'une loi, suit une procédure connue à l'avance, et peut
+      être contestée devant un tiers impartial.
+
+      **Ce qui manque dans le cas des quatre voisins :** aucune loi ne les
+      habilitait à agir seuls, aucune procédure, et surtout aucun tiers --
+      ils étaient juges dans leur propre cause (cf. Locke, leçon "L'État",
+      chapitre 4).
+
+      **Ce que cela n'implique pas :** la culpabilité réelle du voleur ne
+      change rien à ce diagnostic -- légitimité et culpabilité sont deux
+      questions distinctes.
+
+  - id: VIO-2
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: philo_violence
+    tags: [kant, negation_personne, persuasion]
+    primary_misconception: mc.philo.violence.violence-reduite-a-la-douleur
+    stem: >
+      Une piqûre médicale douloureuse et consentie n'est jamais qualifiée de
+      violence, alors qu'une gifle inattendue, bien moins douloureuse, l'est
+      sans discussion. Qu'est-ce que ce contraste montre sur ce qui définit
+      proprement la violence ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Cela montre que la violence se définit uniquement par l'intensité de la douleur physique ressentie par la victime."
+        correct: false
+        misconception: mc.philo.violence.violence-reduite-a-la-douleur
+        feedback: >
+          C'est l'inverse de ce que montre l'exemple : la piqûre est plus
+          douloureuse que la gifle et pourtant non violente. L'intensité de
+          la douleur n'est donc pas le critère qui définit la violence.
+      - id: B
+        text: "Cela montre que seul un acte médical peut échapper à la qualification de violence, quel que soit le consentement de la personne concernée."
+        correct: false
+        misconception: mc.philo.violence.violence-reduite-a-la-douleur
+        feedback: >
+          Ce n'est pas le cadre médical en tant que tel qui est décisif,
+          mais le consentement -- un acte médical pratiqué sans le
+          consentement du patient pourrait, lui, être qualifié de violence.
+          Le critère est l'atteinte, ou non, à la liberté d'autrui, pas le
+          simple contexte médical.
+      - id: C
+        text: "Cela montre que la violence serait une notion purement subjective, dépendant seulement du ressenti propre à chaque individu, sans qu'aucun critère commun et objectif ne soit jamais possible."
+        correct: false
+        misconception: mc.philo.violence.violence-reduite-a-la-douleur
+        feedback: >
+          L'exemple isole au contraire un critère précis et commun (le
+          contournement de la liberté d'autrui, la réduction à un pur
+          moyen), pas une simple affaire de ressenti individuel sans aucune
+          règle générale.
+      - id: D
+        text: "La douleur ne définit jamais à elle seule la violence : ce qui la définit, c'est qu'elle contourne la liberté d'autrui au lieu de s'y adresser, réduisant la personne à un pur moyen."
+        correct: true
+    correct_feedback: >
+      La violence se définit par le fait qu'elle contourne la liberté
+      d'autrui au lieu de s'adresser à elle -- contrairement à la
+      persuasion, qui présente des motifs qu'autrui reste libre de refuser.
+      C'est ce contournement, plus que la douleur elle-même, qui réduit la
+      personne à un pur moyen (Kant) et à un pur objet (Sartre).
+    solution: |
+      **Le critère kantien :** traiter l'humanité toujours comme une fin,
+      jamais simplement comme un moyen -- la violence est précisément le
+      geste qui rate ce principe.
+
+      **La distinction clé :** persuader s'adresse à la raison et à la
+      liberté d'autrui (qui reste libre de refuser) ; violenter contourne
+      cette liberté en imposant par la contrainte ce que la persuasion
+      devrait obtenir par assentiment libre.
+
+      **Le lien avec Sartre (leçon "Autrui", chapitre 5) :** la violence physique
+      pousse le conflit des libertés à son terme le plus radical -- la
+      victime ne peut plus, le temps de l'acte, reprendre la position de
+      sujet.
+
+  - id: VIO-3
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_violence
+    tags: [hobbes, droit_de_nature, distinction_auteurs]
+    primary_misconception: mc.philo.violence.hobbes-fait-lapologie-de-la-violence
+    stem: >
+      Pourquoi, selon Hobbes, la violence est-elle un fait structurel de
+      l'état de nature, et non un simple accident ou une déviation
+      occasionnelle ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que l'égalité de fait engendre compétition, défiance et gloire, et que chacun garde, faute de loi commune, un droit de nature illimité d'user de sa force pour se préserver."
+        correct: true
+      - id: B
+        text: "Parce que Hobbes considère que la violence est moralement souhaitable et qu'il en fait l'apologie dans le Léviathan."
+        correct: false
+        misconception: mc.philo.violence.hobbes-fait-lapologie-de-la-violence
+        feedback: >
+          Hobbes ne fait pas l'apologie de la violence : il la décrit comme
+          un fait structurel de l'absence d'autorité commune, précisément
+          pour justifier la nécessité d'un pouvoir souverain qui la
+          contienne -- il la constate, il ne la recommande pas.
+      - id: C
+        text: "Parce que, selon Hobbes, l'homme naturel est guidé par un amour-propre qui le pousse à rechercher la propriété d'autrui."
+        correct: false
+        misconception: mc.philo.violence.hobbes-rousseau-confondus
+        feedback: >
+          L'amour-propre et la critique de la propriété appartiennent à
+          Rousseau (chapitre 5), pas à Hobbes. Le mécanisme hobbesien repose sur
+          l'égalité de fait, les trois ressorts du conflit (compétition,
+          défiance, gloire) et le droit de nature -- pas sur la propriété.
+      - id: D
+        text: "Parce que l'État, en instituant des lois, introduirait lui-même la violence dans une humanité qui, autrement livrée à elle-même et à ses seuls instincts, serait demeurée naturellement paisible."
+        correct: false
+        misconception: mc.philo.violence.hobbes-fait-lapologie-de-la-violence
+        feedback: >
+          C'est l'inverse de la thèse de Hobbes : l'État ne produit pas la
+          violence, il la contient, en retirant à chacun son droit privé de
+          se faire justice lui-même pour le concentrer dans les mains d'un
+          souverain unique.
+    correct_feedback: >
+      Chez Hobbes, la violence ne résulte d'aucune institution corrompue :
+      elle surgit du seul défaut d'une autorité commune capable de contenir
+      des ressorts (compétition, défiance, gloire) et un droit de nature
+      illimité déjà présents dans la nature humaine la plus ordinaire.
+    solution: |
+      **Le mécanisme :** égalité de fait + compétition, défiance, gloire +
+      droit de nature illimité (aucune loi commune ne borne l'usage de la
+      force) = une disposition structurelle à la violence, en l'absence
+      d'autorité commune.
+
+      **Le rôle de l'État :** contenir cette violence en retirant à chacun
+      son droit privé de se faire justice, pas l'introduire.
+
+      **L'erreur à éviter :** attribuer à Hobbes une apologie de la violence,
+      ou lui prêter des thèses (amour-propre, propriété) qui appartiennent
+      en réalité à Rousseau.
+
+  - id: VIO-4
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: philo_violence
+    tags: [rousseau, hobbes, distinction_auteurs, origine_violence]
+    primary_misconception: mc.philo.violence.hobbes-rousseau-confondus
+    stem: >
+      Un élève écrit dans sa copie : « Rousseau, comme Hobbes, pense que
+      l'homme est naturellement violent et que l'état de nature est une
+      guerre de tous contre tous. » Qu'est-ce que cette phrase confond ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle confond seulement les titres des deux ouvrages : c'est bien Du contrat social, et non le Léviathan, que Rousseau a écrit, mais tout le reste de l'analyse proposée sur l'état de nature resterait parfaitement exact."
+        correct: false
+        misconception: mc.philo.violence.hobbes-rousseau-confondus
+        feedback: >
+          Ce n'est pas seulement une confusion de titre : c'est l'attribution
+          entière de la thèse sur l'origine de la violence qui est erronée.
+          Rousseau ne défend nulle part l'idée d'un homme naturellement
+          violent, quel que soit le titre de l'ouvrage cité.
+      - id: B
+        text: "Elle ne confond rien : Rousseau et Hobbes défendent effectivement la même thèse sur l'état de nature, seule leur solution politique diffère ensuite."
+        correct: false
+        misconception: mc.philo.violence.hobbes-rousseau-confondus
+        feedback: >
+          C'est une erreur : Rousseau conteste, dès la racine, le portrait
+          hobbesien de l'état de nature. Il ne s'agit pas d'un désaccord
+          seulement sur la solution politique, mais d'un désaccord sur la
+          nature humaine elle-même à l'état de nature.
+      - id: C
+        text: "Elle attribue à Rousseau l'inverse de sa thèse : l'homme naturel y est guidé par l'amour de soi et la pitié, et c'est la société, avec la propriété, qui produit la violence, non la nature humaine."
+        correct: true
+      - id: D
+        text: "Elle confond l'amour de soi et l'amour-propre, deux notions que Rousseau emploie de façon interchangeable."
+        correct: false
+        misconception: mc.philo.violence.amour-de-soi-amour-propre-confondus
+        feedback: >
+          Rousseau distingue au contraire soigneusement les deux : l'amour
+          de soi est un instinct de conservation neutre, l'amour-propre est
+          un désir de primer sur autrui, né avec la propriété et la
+          comparaison sociale. Mais ce n'est pas cette distinction interne
+          qui est en cause dans la phrase de l'élève -- c'est l'attribution,
+          à Rousseau, de la thèse hobbesienne de la violence naturelle.
+    correct_feedback: >
+      C'est l'une des confusions les plus fréquentes sur ce point du
+      programme : la thèse d'un état de nature violent et d'une guerre de
+      tous contre tous appartient à Hobbes, pas à Rousseau. Rousseau
+      défend, à l'inverse, un homme naturel paisible et compatissant,
+      corrompu ensuite par la société et la propriété.
+    solution: |
+      **Hobbes (chapitre 4) :** l'homme est structurellement porté à la violence dès
+      que manque une autorité commune -- guerre de tous contre tous.
+
+      **Rousseau (chapitre 5) :** l'homme naturel est guidé par l'amour de soi et la
+      pitié, un frein instinctif à la cruauté. C'est l'instauration de la
+      propriété, et l'amour-propre qu'elle engendre, qui produit la
+      violence sociale -- pas la nature humaine elle-même.
+
+      **Pourquoi la confusion est fréquente :** les deux auteurs discutent
+      tous deux d'un "état de nature", ce qui invite à tort à leur prêter
+      la même thèse sur son contenu.
+
+  - id: VIO-5
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: philo_violence
+    tags: [gandhi, non_violence, passivite]
+    primary_misconception: mc.philo.violence.non-violence-confondue-avec-passivite
+    stem: >
+      Un élève affirme : « La non-violence de Gandhi revient, au fond, à ne
+      pas résister à l'injustice -- une forme de passivité ou de
+      résignation. » Pourquoi cette affirmation manque-t-elle le concept
+      gandhien de satyagraha ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que Gandhi recommandait en réalité l'usage de la force armée dès que les moyens pacifiques échouaient."
+        correct: false
+        misconception: mc.philo.violence.moyens-fins-mal-articules
+        feedback: >
+          C'est l'inverse de la doctrine de Gandhi : le satyagraha exclut
+          par principe le recours à la violence, y compris en cas d'échec
+          des moyens non-violents -- ce n'est pas une étape transitoire
+          avant la force armée.
+      - id: B
+        text: "Parce que le satyagraha est une résistance ACTIVE et organisée -- désobéissance civile publique, refus de coopérer avec des lois injustes -- qui accepte la répression pour convaincre, non un refus de résister."
+        correct: true
+      - id: C
+        text: "Parce que la non-violence gandhienne ne s'oppose à aucune loi en particulier, mais se contente d'exprimer un désaccord moral privé, sans action publique."
+        correct: false
+        misconception: mc.philo.violence.non-violence-confondue-avec-passivite
+        feedback: >
+          C'est l'inverse : le satyagraha suppose une désobéissance civile
+          publique et organisée (comme la Marche du sel), pas un simple
+          désaccord privé sans traduction dans l'action.
+      - id: D
+        text: "Parce que la non-violence, selon Gandhi, ne demanderait pas plus de courage ni de détermination que la riposte violente elle-même -- les deux voies seraient finalement équivalentes en fait d'exigence et de fermeté."
+        correct: false
+        misconception: mc.philo.violence.non-violence-confondue-avec-passivite
+        feedback: >
+          Gandhi soutient au contraire que refuser de rendre les coups, tout
+          en continuant de résister publiquement, demande davantage de force
+          intérieure que la simple riposte -- ce n'est pas une voie plus
+          facile ou équivalente.
+    correct_feedback: >
+      Le satyagraha n'est pas un refus de résister : c'est une résistance
+      active, publique et organisée, qui accepte consciemment la répression
+      pour convaincre -- une troisième voie, distincte à la fois de la
+      violence et de la passivité.
+    solution: |
+      **Le mécanisme :** désobéissance civile publique (ex. Marche du sel,
+      1930) + acceptation consciente de la répression, sans riposte + visée
+      de convaincre l'adversaire ou l'opinion.
+
+      **Le lien avec le chapitre 3 :** le satyagraha s'adresse à la conscience de
+      l'adversaire (comme la persuasion), plutôt que de contourner sa
+      liberté (comme la violence) ou de s'y résigner (comme la passivité).
+
+      **L'erreur à éviter :** confondre non-violence et passivité -- c'est
+      manquer précisément ce qui fait la radicalité active du satyagraha.
+
+  - id: VIO-6
+    rung: "R7"
+    difficulty_level: 5
+    skill_code: philo_violence
+    tags: [bourdieu, weber, violence_symbolique, legitimite]
+    primary_misconception: mc.philo.violence.violence-symbolique-annule-legitimite-weberienne
+    stem: >
+      En quel sens le concept de « violence symbolique » chez Bourdieu
+      vient-il compléter, sans l'annuler, la distinction entre force
+      légitime et violence posée par Weber (chapitre 2) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Bourdieu démontrerait que la distinction établie par Weber serait entièrement fausse et illusoire, et que tout pouvoir dit légitime ne serait jamais, en réalité comme en dernière analyse, rien d'autre qu'une pure violence physique soigneusement déguisée sous les apparences respectables du droit et de la procédure."
+        correct: false
+        misconception: mc.philo.violence.violence-symbolique-annule-legitimite-weberienne
+        feedback: >
+          C'est une lecture excessive : Bourdieu ne prétend pas que la
+          distinction de Weber soit fausse ni que toute légitimité ne soit
+          qu'un déguisement de la force physique -- il ajoute un mécanisme
+          distinct (l'absence de contrainte physique, la méconnaissance),
+          qui complète l'analyse de Weber plutôt qu'il ne l'annule.
+      - id: B
+        text: "Bourdieu utilise le terme de violence symbolique pour désigner une contrainte physique exercée par l'État sans passer par une procédure judiciaire connue à l'avance."
+        correct: false
+        misconception: mc.philo.violence.violence-reduite-au-physique
+        feedback: >
+          La violence symbolique, chez Bourdieu, se définit précisément par
+          l'ABSENCE de toute contrainte physique -- c'est un mécanisme de
+          domination qui n'a besoin d'aucune force physique pour opérer,
+          contrairement à ce que suggère cette formulation.
+      - id: C
+        text: "Bourdieu confirme simplement que « légitime », chez Weber, signifie déjà « moralement juste en toutes circonstances », ce qui rend son propre concept redondant."
+        correct: false
+        misconception: mc.philo.violence.legitime-confondu-avec-juste
+        feedback: >
+          C'est l'inverse : Weber lui-même précise que "légitime" ne veut
+          pas dire "moralement juste" (cf. leçon "L'État", chapitre 6) ; c'est
+          précisément cette faille -- une légitimité reconnue qui peut
+          masquer une domination -- que le concept de violence symbolique
+          vient interroger, pas confirmer une équivalence entre les deux
+          termes.
+      - id: D
+        text: "Bourdieu montre qu'une domination peut s'exercer sans contrainte physique, les dominés tenant pour naturelles des normes arbitraires (méconnaissance) -- la reconnaissance qui fonde la légitimité wébérienne peut alors relever d'une violence plus discrète, sans annuler la distinction de Weber."
+        correct: true
+    correct_feedback: >
+      La violence symbolique n'efface pas le monopole légitime décrit par
+      Weber : elle révèle qu'une part de la reconnaissance qui rend ce
+      pouvoir obéi sans recours constant à la force peut elle-même résulter
+      d'une domination plus discrète, exercée par la méconnaissance plutôt
+      que par la contrainte physique.
+    solution: |
+      **Weber (chapitre 2) :** un pouvoir est légitime s'il découle d'une loi, suit
+      une procédure connue, et reste contestable devant un tiers impartial.
+
+      **Bourdieu :** une domination peut s'exercer sans aucune contrainte
+      physique, par la méconnaissance -- les dominés perçoivent des normes
+      arbitraires (scolaires, culturelles, linguistiques) comme naturelles
+      et légitimes.
+
+      **Ce que cela ajoute, sans l'annuler :** la reconnaissance qui fonde,
+      chez Weber, la légitimité peut être en partie l'effet de cette
+      violence symbolique -- un envers du monopole légitime, pas sa
+      négation.
+
+  - id: VIO-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: philo_violence
+    tags: [accroche, force_legitime, comprehension]
+    primary_misconception: mc.philo.violence.culpabilite-determine-legitimite
+    stem: >
+      Dans la scène du chapitre 1, un habitant objecte à la seconde réponse
+      spontanée (« ils n'ont fait qu'arrêter un voleur pris en flagrant
+      délit, comme l'aurait fait la police ») en remarquant que la police
+      elle-même n'a pas le droit de frapper un suspect déjà maîtrisé et
+      désarmé, une fois l'arrestation faite. Qu'est-ce que cette objection
+      montre exactement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que le seul fait d'arrêter un coupable pris en flagrant délit ne suffit pas à légitimer n'importe quel usage de la force qui accompagne cette arrestation -- sinon cette limite, pourtant bien réelle, n'aurait aucun sens."
+        correct: true
+      - id: B
+        text: "Que la culpabilité du voleur suffit, à elle seule, à légitimer tout ce qu'on lui inflige, y compris après son arrestation."
+        correct: false
+        misconception: mc.philo.violence.culpabilite-determine-legitimite
+        feedback: >
+          C'est l'inverse de ce que montre l'objection : c'est précisément
+          parce que la culpabilité ne suffit pas à elle seule que la
+          police reste limitée, même face à un coupable avéré, une fois
+          l'arrestation faite.
+      - id: C
+        text: "Que la police elle-même n'aurait, en réalité, aucune autorité légitime pour intervenir dans une telle situation."
+        correct: false
+        misconception: mc.philo.violence.limite-institutionnelle-invalide-toute-legitimite
+        feedback: >
+          L'objection ne remet nullement en cause la légitimité de la
+          police en général -- elle rappelle au contraire une limite
+          précise qui pèse sur elle, ce qui suppose bien qu'elle dispose,
+          par ailleurs, d'une autorité légitime.
+      - id: D
+        text: "Que seuls des policiers en exercice pourraient, quelle que soit la situation, être habilités à maîtriser physiquement un suspect -- y compris lorsqu'aucune loi précise ne les y autorise et qu'aucun tiers impartial ne pourrait jamais contrôler la proportion de leur intervention."
+        correct: false
+        misconception: mc.philo.violence.acteur-determine-legitimite
+        feedback: >
+          L'objection ne porte pas sur l'identité de celui qui agit
+          (policier ou non), mais sur l'existence d'une limite à ce que
+          la force employée peut légitimement accomplir, même une fois
+          la culpabilité établie.
+    correct_feedback: >
+      Si arrêter un coupable suffisait à légitimer tout ce qui s'ensuit,
+      rien n'empêcherait un policier de frapper un suspect déjà maîtrisé
+      et désarmé -- or cette limite existe bel et bien. La légitimité ne
+      se résume donc pas au seul fait d'avoir affaire à un coupable.
+    solution: |
+      **L'objection posée au chapitre 1 :** si arrêter un voleur en flagrant délit
+      légitimait n'importe quel usage de la force qui l'accompagne, la
+      limite qui interdit à la police de frapper un suspect déjà maîtrisé
+      n'aurait aucun sens.
+
+      **Ce que cela prépare :** la leçon va devoir isoler un critère plus
+      précis que la seule culpabilité pour distinguer force légitime et
+      violence -- ce sera l'objet du chapitre 2.
+
+  - id: VIO-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: philo_violence
+    tags: [accroche, force_legitime, comprehension]
+    primary_misconception: mc.philo.violence.faux-dilemme-legitime-violence
+    stem: >
+      Toujours dans le chapitre 1, le texte objecte à la première réponse spontanée
+      (« ce ne sont pas des policiers, ils n'avaient aucune autorité,
+      c'est de la violence, un point c'est tout ») que cette réponse,
+      bien que défendable, laisse quelque chose en suspens. Que lui
+      reproche précisément le texte ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle reproche à cette réponse d'excuser trop facilement le retard de la police cette nuit-là, comme si la seule rapidité d'intervention suffisait, à elle seule, à distinguer un usage légitime de la force d'un simple acte de violence entre particuliers."
+        correct: false
+        misconception: mc.philo.violence.faux-dilemme-legitime-violence
+        feedback: >
+          Ce n'est pas le retard de la police qui est en cause dans cette
+          objection : le texte s'interroge sur ce qui distingue
+          précisément le geste des quatre voisins de celui, tout aussi
+          physique, qu'un policier aurait pu légitimement accomplir --
+          pas sur la rapidité de la police.
+      - id: B
+        text: "Elle se contente d'affirmer que l'acte est violent sans dire ce qui distingue précisément ce geste physique de celui, tout aussi physique, qu'un policier aurait légitimement pu accomplir à leur place."
+        correct: true
+      - id: C
+        text: "Elle reproche à cette réponse de mettre en doute la culpabilité réelle du voleur, alors même qu'aucun élément de la scène ne permettrait de douter sérieusement que l'homme surpris en train de forcer une porte fût bien l'auteur du cambriolage en cours."
+        correct: false
+        misconception: mc.philo.violence.culpabilite-determine-legitimite
+        feedback: >
+          La culpabilité du voleur n'est contestée par personne dans la
+          scène : ce que le texte interroge, c'est ce qui rend un même
+          geste physique tantôt légitime, tantôt violent -- pas la
+          réalité de la faute commise.
+      - id: D
+        text: "Elle reproche à cette réponse de confondre violence et pouvoir plutôt que violence et force, un vocabulaire pourtant plus précis que la leçon n'a pas encore eu l'occasion d'introduire à ce stade du raisonnement."
+        correct: false
+        misconception: mc.philo.violence.force-confondue-avec-violence
+        feedback: >
+          Ce vocabulaire précis (force, pouvoir, violence) n'est
+          introduit qu'au chapitre 2 : à ce stade du chapitre 1, l'objection porte
+          seulement sur l'absence d'un critère qui distinguerait le
+          geste des voisins de celui d'un policier légitime.
+    correct_feedback: >
+      Dire « c'est de la violence, un point c'est tout » ne suffit pas :
+      cela ne dit encore rien de ce qui sépare précisément ce geste
+      physique de celui, tout aussi physique, qu'un policier aurait pu
+      légitimement accomplir à leur place. C'est ce critère que la leçon
+      va construire.
+    solution: |
+      **L'objection posée au chapitre 1 :** affirmer « c'est de la violence » sans
+      préciser le critère ne distingue pas encore ce geste de celui, tout
+      aussi physique, qu'un policier aurait pu légitimement accomplir.
+
+      **Ce que cela prépare :** la question posée par le chapitre 1 n'est pas
+      seulement « est-ce violent ? » mais « qu'est-ce qui, précisément,
+      rend un même geste physique légitime ou violent ? »
+
+  - id: VIO-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: philo_violence
+    tags: [accroche, problematisation, comprehension]
+    primary_misconception: mc.philo.violence.faux-dilemme-legitime-violence
+    stem: >
+      D'après le dernier paragraphe du chapitre 1, quelles sont, précisément, les
+      trois questions que la leçon va construire à partir de cette scène ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Si la police est arrivée trop tard cette nuit-là, si les quatre voisins avaient raison d'agir seuls, et si le voleur aurait dû être relâché faute de preuves."
+        correct: false
+        misconception: mc.philo.violence.faux-dilemme-legitime-violence
+        feedback: >
+          Ces questions restent internes au seul fait divers : le chapitre 1 annonce
+          des questions plus générales -- sur la distinction
+          force/violence, l'origine de la violence, et la violence au
+          service d'une fin juste -- que la scène du quartier permet
+          seulement d'introduire.
+      - id: B
+        text: "Si la douleur physique suffit à définir la violence, et si le regard d'autrui produit, comme la violence physique, une objectivation irréversible."
+        correct: false
+        misconception: mc.philo.violence.violence-reduite-a-la-douleur
+        feedback: >
+          Ces questions appartiennent au chapitre 3, pas à l'annonce du chapitre 1 : le chapitre 1 pose des questions plus larges (distinction force/violence,
+          origine de la violence, violence et fin juste), dont le chapitre 3
+          approfondira seulement la seconde.
+      - id: C
+        text: "Ce qui distingue une force légitime d'un acte de violence ; si la violence est un donné de la nature humaine ou le produit des institutions et des rapports sociaux ; si elle peut être employée au nom d'une cause juste sans se nier elle-même."
+        correct: true
+      - id: D
+        text: "Si l'État détient bien, selon Max Weber, le monopole de la violence légitime -- une question que la scène du quartier permettrait, à elle seule et sans qu'il soit besoin d'aller plus loin, de trancher définitivement dans un sens comme dans l'autre."
+        correct: false
+        misconception: mc.philo.violence.faux-dilemme-legitime-violence
+        feedback: >
+          Le chapitre 1 ne prétend trancher aucune de ces questions -- il se
+          contente de les poser, pour que la leçon les construise
+          ensuite pièce par pièce. La question wébérienne, en
+          particulier, sera reprise et approfondie, non résolue
+          d'emblée, au chapitre 2.
+    correct_feedback: >
+      Le chapitre 1 annonce trois questions que la leçon va construire pièce par
+      pièce : la distinction force légitime / violence, l'origine de la
+      violence (nature ou institutions), et la question de la violence
+      au service d'une fin juste.
+    solution: |
+      **Les trois questions annoncées :** (1) qu'est-ce qui distingue une
+      force légitime d'un acte de violence ; (2) la violence est-elle un
+      donné de la nature humaine, ou le produit des institutions et des
+      rapports sociaux ; (3) peut-elle être employée, même au nom d'une
+      cause juste, sans se nier elle-même.
+
+      **Ce que le chapitre 1 ne fait pas :** trancher ces questions -- il les pose,
+      pour que les chapitres 2 à 8 les construisent progressivement.
+
+  - id: VIO-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: philo_violence
+    tags: [force_legitime, weber, legitimite, erreur_judiciaire]
+    primary_misconception: mc.philo.violence.legitime-confondu-avec-juste
+    stem: >
+      Un tribunal condamne, à l'issue d'une procédure parfaitement
+      régulière, un accusé qui se révèle plus tard innocent (erreur
+      judiciaire). Cette condamnation était-elle, au sens précis posé par
+      Weber au chapitre 2, un acte légitime ou un acte de violence au moment où
+      elle a été rendue ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Un acte de violence, puisqu'un jugement erroné ne peut, par définition, jamais être qualifié de légitime."
+        correct: false
+        misconception: mc.philo.violence.legitime-confondu-avec-juste
+        feedback: >
+          C'est confondre légitimité et justesse du résultat : « légitime
+          », au sens de Weber, ne signifie pas « moralement juste en
+          toutes circonstances ». Un acte peut être légitime -- issu
+          d'une procédure reconnue -- tout en produisant, dans tel cas
+          précis, une injustice.
+      - id: B
+        text: "Ni l'un ni l'autre : la notion de légitimité, chez Weber, ne s'appliquerait qu'aux actes moralement justes, jamais aux erreurs."
+        correct: false
+        misconception: mc.philo.violence.legitime-confondu-avec-juste
+        feedback: >
+          C'est la même confusion, reformulée : la légitimité wébérienne
+          porte sur la procédure (loi, procédure connue, tiers
+          impartial), pas sur la justesse morale du résultat obtenu au
+          bout de cette procédure.
+      - id: C
+        text: "Un acte de violence, car seule une décision rendue par un tiers réellement impartial -- c'est-à-dire infaillible et jamais susceptible de se tromper sur les faits -- pourrait, selon cette lecture, être dite véritablement légitime."
+        correct: false
+        misconception: mc.philo.violence.legitime-confondu-avec-juste
+        feedback: >
+          L'impartialité d'un tiers (ne pas être à la fois juge et
+          partie) n'est pas l'infaillibilité : un tiers impartial peut
+          se tromper sans que la procédure cesse, pour autant, d'être
+          légitime au sens de Weber.
+      - id: D
+        text: "Un acte légitime, au sens de Weber : la légitimité ne tient jamais à la justesse du résultat, mais à la reconnaissance de la procédure — laquelle peut produire, dans tel cas précis, une injustice sans cesser d'être légitime au moment où l'acte est rendu."
+        correct: true
+    correct_feedback: >
+      « Légitime », au sens de Weber, ne signifie pas « moralement juste
+      en toutes circonstances » : un acte peut être légitime -- issu
+      d'une loi, d'une procédure connue et d'un tiers impartial -- tout
+      en produisant, dans tel cas précis, une injustice comme une erreur
+      judiciaire.
+    solution: |
+      **Le critère wébérien :** chez Weber, la légitimité d'une
+      contrainte tient à ce qu'elle est reconnue, obéie sans recours
+      constant à la force -- pas à la justesse morale de son résultat.
+      Concrètement, dans un État de droit, une contrainte est reconnue
+      ainsi lorsqu'elle découle d'une loi, suit une procédure connue à
+      l'avance, et reste contestable devant un tiers impartial : ces
+      trois traits sont ce qui, en pratique, fait qu'une société la
+      reconnaît comme légitime plutôt que de la vivre comme une violence
+      arbitraire -- ils portent sur la forme de l'acte, non sur la
+      justesse de son résultat.
+
+      **L'erreur à éviter :** confondre « légitime » et « moralement
+      juste en toutes circonstances ». Une erreur judiciaire reste, au
+      moment où elle est rendue, un acte légitime devenu, après coup,
+      injuste dans ses effets.
+
+  - id: VIO-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: philo_violence
+    tags: [force_legitime, distinction_concepts, procedure]
+    primary_misconception: mc.philo.violence.force-confondue-avec-violence
+    stem: >
+      Un même coup de poing peut être porté lors d'un match de boxe
+      officiel, encadré par des règles acceptées d'avance par les deux
+      adversaires, ou bien dans la rue, hors de tout cadre, contre un
+      inconnu. En quoi cette comparaison illustre-t-elle la distinction
+      entre force et violence posée au chapitre 2 ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le même geste physique peut être de la force (encadré par une règle reconnue et acceptée par les deux parties) ou de la violence (hors de tout cadre consenti) -- ce n'est donc pas le geste lui-même, mais son encadrement, qui en détermine la nature."
+        correct: true
+      - id: B
+        text: "Elle montre que la boxe reste, quel que soit son cadre réglementaire, un acte violent, puisque les coups portés y sont réels et parfois dangereux."
+        correct: false
+        misconception: mc.philo.violence.force-confondue-avec-violence
+        feedback: >
+          Ce n'est pas l'intensité ou le danger du coup qui définit la
+          violence ici, mais l'existence d'une règle reconnue et
+          acceptée d'avance par les deux parties -- un coup encadré par
+          un tel accord relève de la force, non de la violence, quelle
+          que soit sa puissance.
+      - id: C
+        text: "Elle montre que seule l'intention de blesser ou non détermine si un coup relève de la force ou de la violence, indépendamment de tout cadre convenu entre les deux parties."
+        correct: false
+        misconception: mc.philo.violence.force-confondue-avec-violence
+        feedback: >
+          Le chapitre 2 ne fait reposer la distinction non sur l'intention de
+          l'auteur du coup, mais sur l'existence d'un cadre -- loi,
+          règle, procédure -- reconnu par les deux parties : c'est cet
+          encadrement, pas l'intention, qui distingue force et violence.
+      - id: D
+        text: "Elle montre qu'un coup porté dans la rue reste de la force tant que la victime ne riposte pas, la violence ne commençant qu'au moment précis où un conflit ouvert s'installe entre les deux personnes, indépendamment de tout cadre reconnu par avance entre elles."
+        correct: false
+        misconception: mc.philo.violence.force-confondue-avec-violence
+        feedback: >
+          La riposte ou l'absence de riposte de la victime n'est pas le
+          critère posé par le chapitre 2 : c'est l'existence, ou non, d'un cadre
+          reconnu par les deux parties (comme les règles de la boxe) qui
+          distingue force et violence, dès le premier coup porté.
+    correct_feedback: >
+      Le même geste physique peut relever de la force ou de la violence
+      selon qu'il est, ou non, encadré par une règle reconnue d'avance
+      par les deux parties -- ce n'est donc pas le geste en lui-même,
+      mais son cadre, qui en détermine la nature.
+    solution: |
+      **La comparaison :** un coup porté sur un ring, encadré par des
+      règles acceptées d'avance par les deux adversaires, est de la
+      force ; le même coup, porté hors de ce cadre, devient de la
+      violence.
+
+      **Ce que cela confirme :** la distinction force/violence ne tient
+      pas à l'intensité, au danger ou à la douleur causée par le geste,
+      mais à l'existence d'un cadre -- loi, règle, procédure -- reconnu
+      par les deux parties concernées.
+
+  - id: VIO-12
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: philo_violence
+    tags: [sartre, objectivation, negation_personne]
+    primary_misconception: mc.philo.violence.regard-et-contrainte-physique-confondus
+    stem: >
+      D'après le chapitre 3, en quoi l'objectivation produite par le regard d'autrui
+      chez Sartre (leçon « Autrui », chapitre 5) diffère-t-elle de celle que
+      produit un acte de violence physique ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elles ne diffèrent en rien : le regard d'autrui et la violence physique produiraient exactement la même objectivation, sans aucune différence de degré."
+        correct: false
+        misconception: mc.philo.violence.regard-et-contrainte-physique-confondus
+        feedback: >
+          Le chapitre 3 distingue au contraire nettement les deux : ce sont deux
+          degrés d'un même mécanisme, pas deux mécanismes identiques --
+          l'un réversible par un simple retournement du regard, l'autre
+          rendu, le temps de l'acte, radicalement irréversible par la
+          contrainte physique.
+      - id: B
+        text: "Le regard sartrien produit une objectivation réversible -- je peux à tout instant regarder à mon tour et redevenir sujet --, alors que la contrainte physique, le temps de l'acte, ne laisse aucune place à ce retournement."
+        correct: true
+      - id: C
+        text: "Le regard d'autrui serait en réalité plus radical que la violence physique, puisqu'il s'exercerait en permanence tout au long de la vie sociale, alors que la violence physique, elle, ne dure jamais qu'un instant limité et rapidement révolu, sans laisser de trace comparable une fois cet instant passé et refermé."
+        correct: false
+        misconception: mc.philo.violence.regard-et-contrainte-physique-confondus
+        feedback: >
+          C'est l'inverse : le chapitre 3 présente la violence physique comme le
+          mécanisme le plus radical, précisément parce qu'elle prive la
+          victime, le temps de l'acte, de toute possibilité de reprendre
+          la position de sujet -- ce que le regard, lui, ne fait pas.
+      - id: D
+        text: "La violence physique ne produirait, à la différence du regard, aucune objectivation véritable de la victime, seulement une douleur."
+        correct: false
+        misconception: mc.philo.violence.violence-reduite-a-la-douleur
+        feedback: >
+          C'est manquer le point central du chapitre 3 : la violence physique
+          objective bel et bien la victime -- elle la réduit à un pur
+          objet manipulable -- et le fait de façon plus radicale que le
+          regard, pas moins.
+    correct_feedback: >
+      Le regard sartrien objective de façon réversible : je peux toujours
+      regarder à mon tour et redevenir sujet. La contrainte physique
+      pousse ce même mécanisme à son terme le plus radical -- pendant
+      l'instant où elle s'exerce, la victime ne peut plus reprendre la
+      position de sujet.
+    solution: |
+      **Le regard chez Sartre (« Autrui », chapitre 5) :** une objectivation
+      réversible -- je peux, à tout instant, redevenir sujet en
+      regardant à mon tour.
+
+      **La violence physique (chapitre 3) :** pousse ce mécanisme à son terme le
+      plus radical -- la victime est réduite, par la contrainte
+      elle-même, à un pur objet, sans plus aucune prise sur la
+      situation, le temps que dure l'acte.
+
+      **L'erreur à éviter :** ce sont deux degrés d'un même mécanisme
+      d'objectivation, pas deux mécanismes identiques ni deux mécanismes
+      sans aucun rapport.
+
+  - id: VIO-13
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: philo_violence
+    tags: [kant, negation_personne, violence_non_physique]
+    primary_misconception: mc.philo.violence.violence-reduite-au-physique
+    stem: >
+      Un employeur menace un salarié de le licencier sur-le-champ, sans
+      motif réel, s'il ne signe pas immédiatement un document qu'il n'a
+      pas eu le temps de lire. Aucun contact physique n'a lieu. Au regard
+      du critère posé au chapitre 3 (Kant, Sartre), peut-on qualifier cette
+      menace de violence ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non, car la violence, selon le critère posé au chapitre 3, suppose nécessairement un contact physique direct entre les deux personnes."
+        correct: false
+        misconception: mc.philo.violence.violence-reduite-au-physique
+        feedback: >
+          C'est réduire à tort la violence au seul contact physique : le
+          critère posé au chapitre 3 est le contournement de la liberté
+          d'autrui, pas l'existence d'un contact -- une contrainte peut y
+          contrevenir sans aucun geste physique.
+      - id: B
+        text: "Non, car seule une contrainte accompagnée de douleur physique pourrait, par définition, contourner la liberté d'autrui."
+        correct: false
+        misconception: mc.philo.violence.violence-reduite-a-la-douleur
+        feedback: >
+          Le chapitre 3 a justement établi l'inverse à propos de la piqûre et de la
+          gifle : ce n'est pas la douleur qui définit la violence, mais
+          le contournement de la liberté -- une menace peut contourner
+          cette liberté sans infliger aucune douleur physique.
+      - id: C
+        text: "Oui, dans la mesure où elle contourne la liberté du salarié -- lui imposant par la contrainte une décision que la persuasion aurait dû obtenir par un assentiment libre -- même en l'absence de tout contact physique."
+        correct: true
+      - id: D
+        text: "Oui, mais uniquement parce que l'employeur occupe une position hiérarchique supérieure à celle du salarié -- c'est la hiérarchie, non le contournement de la liberté, qui définirait ici la violence, quelle que soit par ailleurs la teneur précise du document à signer."
+        correct: false
+        misconception: mc.philo.violence.violence-reduite-a-la-douleur
+        feedback: >
+          Le critère posé au chapitre 3 n'est pas la position hiérarchique des
+          deux parties, mais le fait que la contrainte s'adresse à la
+          volonté par la force plutôt qu'à la raison par des motifs
+          qu'on resterait libre de refuser -- une hiérarchie peut exister
+          sans qu'il y ait violence.
+    correct_feedback: >
+      Le critère posé au chapitre 3 -- contourner la liberté d'autrui au lieu de
+      s'y adresser -- ne suppose aucun contact physique : une menace qui
+      impose par la contrainte ce qu'un assentiment libre aurait dû
+      accorder relève déjà de la violence en ce sens précis.
+    solution: |
+      **Le critère (chapitre 3) :** la violence contourne la liberté d'autrui au
+      lieu de s'y adresser -- elle impose par la contrainte ce que la
+      persuasion devrait obtenir par un assentiment libre.
+
+      **Application :** la menace de licenciement contourne la liberté
+      du salarié sans aucun contact physique -- ce qui confirme que le
+      critère décisif n'est ni la douleur, ni le contact, mais le
+      contournement de la liberté.
+
+      **Ce que le chapitre 3 annonce :** la violence n'est pas nécessairement
+      physique -- un point que le chapitre 8 développera plus loin, avec la
+      violence symbolique de Bourdieu.
+
+  - id: VIO-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_violence
+    tags: [hobbes, ressorts_conflit, defiance]
+    primary_misconception: mc.philo.violence.trois-ressorts-hobbes-confondus
+    stem: >
+      Dans l'état de nature hobbesien, un homme attaque son voisin par
+      précaution, avant même d'avoir subi la moindre agression de sa
+      part, simplement parce qu'il ne peut être certain que ce voisin ne
+      l'attaquera pas le premier. Lequel des trois ressorts du conflit
+      décrits par Hobbes ce comportement illustre-t-il le plus
+      directement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "La compétition, car les deux hommes se disputeraient nécessairement un bien rare et identifiable."
+        correct: false
+        misconception: mc.philo.violence.trois-ressorts-hobbes-confondus
+        feedback: >
+          Rien, dans cette description, ne mentionne un bien disputé
+          entre les deux hommes : ce qui motive l'attaque est
+          l'incertitude sur les intentions du voisin, pas la rivalité
+          pour une ressource -- c'est le ressort de la défiance, pas
+          celui de la compétition.
+      - id: B
+        text: "La gloire, car l'homme chercherait avant tout à obtenir la reconnaissance et l'estime de son voisin en l'attaquant."
+        correct: false
+        misconception: mc.philo.violence.trois-ressorts-hobbes-confondus
+        feedback: >
+          Aucune recherche de reconnaissance ou d'estime n'apparaît ici :
+          l'homme agit par précaution, non pour obtenir un signe
+          d'honneur ou de respect -- c'est le ressort de la défiance, pas
+          celui de la gloire.
+      - id: C
+        text: "Le droit de nature, car ce comportement démontrerait, à lui seul, que Hobbes fait l'apologie de la violence préventive comme stratégie moralement recommandable."
+        correct: false
+        misconception: mc.philo.violence.hobbes-fait-lapologie-de-la-violence
+        feedback: >
+          Le droit de nature n'est pas un quatrième ressort du conflit,
+          mais la liberté de fait qui laisse ces ressorts s'exercer sans
+          limite extérieure ; et Hobbes ne recommande jamais moralement
+          la violence préventive -- il la constate, il ne l'approuve pas.
+      - id: D
+        text: "La défiance, car chacun, incertain des intentions d'autrui, est poussé à frapper le premier par précaution, plutôt qu'à attendre d'être attaqué."
+        correct: true
+    correct_feedback: >
+      Ce comportement illustre la défiance : dans l'incertitude sur les
+      intentions d'autrui, chacun est poussé à frapper le premier par
+      précaution -- l'un des trois ressorts, avec la compétition et la
+      gloire, qui rendent la violence structurelle chez Hobbes.
+    solution: |
+      **Les trois ressorts (Hobbes) :** la compétition (biens rares), la
+      défiance (frapper le premier par précaution), la gloire (réagir au
+      moindre signe de mépris).
+
+      **Application :** attaquer par précaution, sans avoir subi
+      d'agression, relève précisément de la défiance -- pas de la
+      compétition (aucun bien disputé) ni de la gloire (aucune recherche
+      de reconnaissance).
+
+  - id: VIO-15
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_violence
+    tags: [hobbes, droit_de_nature, distinction_concepts]
+    primary_misconception: mc.philo.violence.droit-de-nature-confondu-avec-droit-moral
+    stem: >
+      Selon Hobbes, le droit de nature qui autorise chacun, dans l'état
+      de nature, à user de sa force comme il l'entend pour se préserver,
+      y compris contre le corps d'autrui, doit-il être compris comme un
+      droit moralement approuvé par Hobbes, ou comme un simple constat ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Comme un simple constat : aucune limite extérieure ne s'impose encore à la force de chacun, tant qu'aucun pouvoir commun ne fait respecter une borne reconnue par tous -- ce n'est pas une licence morale que Hobbes approuverait."
+        correct: true
+      - id: B
+        text: "Comme un droit moralement approuvé par Hobbes, qui y verrait la meilleure façon, pour chaque individu, de mener une vie pleinement épanouie."
+        correct: false
+        misconception: mc.philo.violence.droit-de-nature-confondu-avec-droit-moral
+        feedback: >
+          C'est l'erreur que le texte signale explicitement : Hobbes ne
+          fait pas l'apologie de la violence ni du droit de nature comme
+          idéal de vie -- il le décrit comme un fait structurel,
+          précisément pour justifier la nécessité du Léviathan qui vient
+          le retirer à chacun.
+      - id: C
+        text: "Comme une loi civile positive, promulguée par un souverain déjà institué, que chaque sujet serait tenu de respecter."
+        correct: false
+        misconception: mc.philo.violence.droit-de-nature-confondu-avec-droit-moral
+        feedback: >
+          C'est inverser l'ordre logique : le droit de nature caractérise
+          l'état de nature, avant toute institution d'un souverain -- ce
+          n'est pas une loi civile édictée après coup, mais une liberté
+          de fait qui précède, et que le contrat social vient
+          précisément retirer.
+      - id: D
+        text: "Comme un droit que seul le souverain, une fois le contrat social conclu, accorderait librement à chacun de ses sujets en échange de leur obéissance -- et non comme une condition de fait déjà présente, avant toute institution, dans l'état de nature lui-même."
+        correct: false
+        misconception: mc.philo.violence.droit-de-nature-confondu-avec-droit-moral
+        feedback: >
+          C'est l'inverse : le droit de nature est une condition déjà
+          présente dans l'état de nature, avant tout souverain -- c'est
+          justement ce droit que chacun dépose, en concluant le contrat
+          social, entre les mains du souverain qu'il institue.
+    correct_feedback: >
+      Le droit de nature n'est pas une licence morale que Hobbes
+      approuverait : c'est le simple constat qu'aucune limite extérieure
+      ne s'impose encore à la force de chacun, tant qu'aucun pouvoir
+      commun ne fait respecter une borne reconnue par tous.
+    solution: |
+      **Le droit de nature :** la liberté de fait, dans l'état de
+      nature, d'user de sa force comme on l'entend pour se préserver --
+      une condition qui précède toute institution d'un souverain.
+
+      **L'erreur à éviter :** ne confonds pas cette liberté de fait avec
+      un droit moralement approuvé par Hobbes, ni avec une loi civile
+      édictée après coup par un souverain déjà institué. Hobbes la
+      constate ; il ne la recommande pas.
+
+  - id: VIO-16
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: philo_violence
+    tags: [rousseau, amour_propre, distinction_concepts]
+    primary_misconception: mc.philo.violence.amour-de-soi-amour-propre-confondus
+    stem: >
+      Rousseau distingue soigneusement l'amour de soi de l'amour-propre.
+      En quoi ces deux notions diffèrent-elles exactement, et laquelle
+      Rousseau associe-t-il à la naissance de la violence sociale ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les deux notions désigneraient, chez Rousseau, exactement la même chose : un simple souci de se conserver soi-même, sans aucune dimension de comparaison à autrui ni aucun effet propre sur la naissance de la violence sociale, ni même sur la genèse de la propriété qui l'accompagne selon la leçon."
+        correct: false
+        misconception: mc.philo.violence.amour-de-soi-amour-propre-confondus
+        feedback: >
+          Rousseau distingue au contraire soigneusement les deux :
+          l'amour de soi est antérieur à toute société et à toute
+          comparaison, alors que l'amour-propre naît précisément de la
+          comparaison sociale qu'engendre la propriété -- ce ne sont pas
+          deux noms pour une même chose.
+      - id: B
+        text: "L'amour de soi est un simple instinct de conservation neutre, sans visée de domination ; l'amour-propre, né avec la propriété et la comparaison sociale, est un désir de primer sur autrui -- c'est lui, et non l'amour de soi, que Rousseau associe à la violence sociale."
+        correct: true
+      - id: C
+        text: "L'amour de soi serait un désir de primer sur autrui né de la comparaison sociale, tandis que l'amour-propre serait, à l'inverse, un instinct de conservation neutre et antérieur à toute société -- une inversion complète des deux définitions posées par Rousseau, qui rendrait sa distinction tout entière inutile pour comprendre l'origine de la violence sociale."
+        correct: false
+        misconception: mc.philo.violence.amour-de-soi-amour-propre-confondus
+        feedback: >
+          C'est exactement l'inverse des deux définitions : c'est
+          l'amour de soi qui est l'instinct neutre et antérieur à la
+          société, et l'amour-propre qui est le désir de primer sur
+          autrui, né avec la comparaison sociale.
+      - id: D
+        text: "C'est l'amour de soi, non l'amour-propre, que Rousseau associerait à la naissance du vol, de la guerre et de l'oppression -- l'amour-propre restant, dans cette lecture erronée, une notion sans conséquence sociale réelle, alors que c'est précisément lui qui, selon cette même lecture, expliquerait à lui seul la naissance du conflit."
+        correct: false
+        misconception: mc.philo.violence.amour-de-soi-amour-propre-confondus
+        feedback: >
+          C'est l'amour-propre, né avec la propriété et la comparaison
+          sociale, que Rousseau associe à ces formes de violence --
+          l'amour de soi, lui, n'est qu'un instinct de conservation
+          neutre, sans visée de domination sur autrui.
+    correct_feedback: >
+      L'amour de soi est un instinct de conservation neutre, antérieur à
+      toute société. L'amour-propre, né avec la propriété et la
+      comparaison sociale, est un désir de primer sur autrui -- c'est lui
+      que Rousseau associe au vol, à la guerre et à l'oppression.
+    solution: |
+      **Amour de soi :** instinct de conservation neutre, qui ne vise
+      que la survie, sans viser à dominer autrui -- antérieur à toute
+      société.
+
+      **Amour-propre :** désir de primer sur autrui, né avec la
+      propriété et la comparaison sociale -- c'est lui que Rousseau
+      associe à la violence sociale (vol, guerre, oppression), non
+      l'amour de soi.
+
+  - id: VIO-17
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: philo_violence
+    tags: [rousseau, propriete, origine_violence]
+    primary_misconception: mc.philo.violence.propriete-mal-interpretee-chez-rousseau
+    stem: >
+      Rousseau écrit : « Le premier qui, ayant enclos un terrain, s'avisa
+      de dire : Ceci est à moi, et trouva des gens assez simples pour le
+      croire, fut le vrai fondateur de la société civile. » Que veut-il
+      montrer, précisément, par cette formule, quant à l'origine de la
+      violence ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que la propriété serait, selon Rousseau, une institution juste et nécessaire, seule capable de mettre fin durablement à la violence entre les hommes."
+        correct: false
+        misconception: mc.philo.violence.propriete-mal-interpretee-chez-rousseau
+        feedback: >
+          C'est l'inverse du sens de cette formule : Rousseau y désigne
+          l'instauration de la propriété comme le moment même où naît la
+          violence sociale, pas comme une institution qui y mettrait
+          fin.
+      - id: B
+        text: "Que Rousseau chercherait, par cette formule, à démontrer l'existence historique réelle et datée de ce « premier » homme, comme un fait attesté par les sources et vérifiable, point par point, par les historiens de son époque."
+        correct: false
+        misconception: mc.philo.violence.propriete-mal-interpretee-chez-rousseau
+        feedback: >
+          Cette formule fonctionne comme une illustration du mécanisme
+          qui fait naître la propriété et ses effets, pas comme une
+          affirmation d'histoire factuelle datée -- ce qui compte est le
+          mécanisme qu'elle éclaire, non l'existence attestée d'un
+          individu précis.
+      - id: C
+        text: "Que la violence sociale (vol, guerre, oppression) prend sa source dans un événement institutionnel précis -- l'instauration de la propriété --, et non dans un donné déjà présent dans la nature humaine elle-même."
+        correct: true
+      - id: D
+        text: "Que la violence naîtrait, selon cette formule, du seul fait de clôturer un terrain, indépendamment de toute comparaison sociale ou de tout amour-propre."
+        correct: false
+        misconception: mc.philo.violence.amour-de-soi-amour-propre-confondus
+        feedback: >
+          L'enclosure du terrain n'est que le point de départ : c'est la
+          comparaison sociale qu'elle engendre, et l'amour-propre qui en
+          naît, qui produisent ensuite la violence -- pas le seul geste
+          de clôturer un terrain, isolé de ce mécanisme.
+    correct_feedback: >
+      Cette formule désigne l'instauration de la propriété comme
+      l'événement institutionnel à l'origine de la violence sociale --
+      non un donné déjà présent dans la nature humaine, mais le point de
+      départ d'un mécanisme de comparaison et d'amour-propre que le chapitre 5
+      développe ensuite.
+    solution: |
+      **Ce que montre la formule :** la violence sociale prend sa source
+      dans un événement institutionnel précis -- l'instauration de la
+      propriété -- et non dans la nature humaine elle-même.
+
+      **Ce qu'il ne faut pas en conclure :** ni que Rousseau approuverait
+      la propriété, ni qu'il s'agirait d'un fait historique daté à
+      prendre au pied de la lettre -- ni que l'enclosure suffirait seule,
+      sans la comparaison sociale et l'amour-propre qu'elle engendre.
+
+  - id: VIO-18
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: philo_violence
+    tags: [violence_revolutionnaire, echelle_individuelle_collective, distinction_concepts]
+    primary_misconception: mc.philo.violence.echelle-individuelle-collective-confondues
+    stem: >
+      Un élève écrit : « La légitime défense d'un individu attaqué dans
+      la rue et la violence révolutionnaire visant à renverser un régime
+      politique posent, au fond, exactement le même problème
+      philosophique. » Pourquoi cette phrase confond-elle deux questions
+      distinctes ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que la légitime défense individuelle serait, en réalité, toujours illégale quelle que soit la situation précise, alors que la violence révolutionnaire collective serait, elle, toujours reconnue comme légitime par le droit en vigueur, y compris par l'ordre qu'elle cherche justement à renverser."
+        correct: false
+        misconception: mc.philo.violence.echelle-individuelle-collective-confondues
+        feedback: >
+          Ni l'une ni l'autre de ces deux affirmations générales n'est
+          soutenue par la leçon : la légitime défense peut être encadrée
+          par le droit, et la violence révolutionnaire vise précisément
+          un ordre qu'elle juge illégitime -- ce n'est pas une question
+          de légalité formelle qui distingue les deux échelles.
+      - id: B
+        text: "Parce que ces deux notions ne se distingueraient que par le nombre de personnes impliquées dans chaque cas, sans qu'aucune autre différence de nature, d'objet visé ou d'échelle ne les sépare véritablement l'une de l'autre."
+        correct: false
+        misconception: mc.philo.violence.echelle-individuelle-collective-confondues
+        feedback: >
+          La différence n'est pas seulement quantitative (une personne
+          contre plusieurs) : c'est la nature même de ce qui est visé qui
+          change -- faire respecter une loi existante (chapitre 2) contre
+          renverser l'ordre légal tout entier (chapitre 6).
+      - id: C
+        text: "Parce que la violence révolutionnaire, à la différence de la légitime défense, ne pourrait jamais être analysée avec les critères de force légitime posés au chapitre 2, ces critères étant réservés, par construction, au seul cas individuel et jamais transposables à l'échelle collective."
+        correct: false
+        misconception: mc.philo.violence.echelle-individuelle-collective-confondues
+        feedback: >
+          Les critères du chapitre 2 restent pertinents pour penser la violence
+          révolutionnaire -- ce qui change, ce n'est pas leur
+          applicabilité, mais l'objet visé : un ordre légal tout entier,
+          plutôt qu'un acte ponctuel à l'intérieur de cet ordre.
+      - id: D
+        text: "Parce que la légitime défense individuelle se pose à l'intérieur d'un ordre légal donné (chapitre 2), tandis que la violence révolutionnaire vise à renverser cet ordre tout entier, jugé illégitime dans son ensemble (chapitre 6) -- deux échelles et deux problèmes que la copie ne doit jamais fondre en un seul."
+        correct: true
+    correct_feedback: >
+      La légitime défense se pose à l'intérieur d'un ordre légal donné ;
+      la violence révolutionnaire vise à renverser cet ordre tout entier,
+      jugé illégitime dans son ensemble -- deux échelles et deux
+      problèmes distincts, que la copie ne doit jamais fondre en un seul.
+    solution: |
+      **Chapitre 2 :** ce qui distingue force légitime et violence à l'intérieur
+      d'un ordre légal donné.
+
+      **Chapitre 6 :** que dire d'une violence qui viserait à renverser cet ordre
+      tout entier, jugé illégitime dans son ensemble ?
+
+      **L'erreur à éviter :** fondre ces deux échelles en un seul
+      problème, comme si la légitime défense individuelle et la violence
+      révolutionnaire collective posaient une question identique.
+
+  - id: VIO-19
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: philo_violence
+    tags: [fanon, marx, distinction_auteurs]
+    primary_misconception: mc.philo.violence.fanon-marx-confondus
+    stem: >
+      En quoi la thèse de Fanon sur la violence coloniale va-t-elle plus
+      loin que l'argument marxiste selon lequel l'État sert les intérêts
+      d'une classe dominante ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Pour Fanon, ce n'est pas seulement que l'ordre colonial sert les intérêts d'un groupe : cet ordre repose, à sa racine même, sur un rapport de force déjà violent, de sorte que s'y opposer par des moyens strictement pacifiques reviendrait à accepter les termes, seulement pacifiques en apparence, d'un rapport qui ne l'a jamais été."
+        correct: true
+      - id: B
+        text: "Fanon et Marx défendraient, en réalité, une thèse rigoureusement identique sur la nature de la domination -- Fanon se contenterait d'appliquer l'analyse marxiste de l'État au cas particulier de la colonisation, sans y ajouter quoi que ce soit de spécifique au rapport colonial lui-même, comme si aucune différence de degré ou de nature ne distinguait jamais une critique des intérêts économiques d'une critique de la violence structurelle propre à la domination coloniale."
+        correct: false
+        misconception: mc.philo.violence.fanon-marx-confondus
+        feedback: >
+          C'est manquer précisément ce qui distingue les deux thèses :
+          Fanon ne se limite pas à dire qu'un ordre existant sert des
+          intérêts -- il pose que cet ordre repose lui-même, dès sa
+          racine, sur un rapport de force violent, ce que l'argument
+          marxiste, seul, ne dit pas.
+      - id: C
+        text: "Fanon irait en réalité moins loin que Marx, en se limitant à critiquer certaines lois coloniales précises et ponctuelles, sans jamais mettre en cause le rapport de domination colonial dans son ensemble ni sa racine structurelle."
+        correct: false
+        misconception: mc.philo.violence.fanon-marx-confondus
+        feedback: >
+          C'est l'inverse : Fanon ne critique pas seulement des lois
+          isolées, il met en cause la racine même du rapport colonial
+          comme rapport de force déjà violent -- une thèse plus radicale,
+          pas plus étroite, que l'argument marxiste sur l'État.
+      - id: D
+        text: "Fanon soutiendrait, à la différence de Marx, que l'appareil d'État hérité de la colonisation devrait être conservé tel quel après l'indépendance, sans aucune transformation structurelle ni perspective de disparition à terme."
+        correct: false
+        misconception: mc.philo.violence.fanon-marx-confondus
+        feedback: >
+          Ce point ne fait pas partie de la thèse présentée au chapitre 6 : la
+          différence entre Fanon et Marx porte sur la nature du rapport
+          colonial lui-même (déjà violent à sa racine), pas sur le sort
+          de l'appareil d'État après une transformation politique.
+    correct_feedback: >
+      Fanon va plus loin que l'argument marxiste : il ne dit pas
+      seulement qu'un ordre existant sert les intérêts d'un groupe, mais
+      que cet ordre repose, à sa racine, sur un rapport de force déjà
+      violent -- ce qui rend illusoire l'idée d'une opposition
+      strictement pacifique à ce rapport.
+    solution: |
+      **Marx (« L'État », chapitre 7) :** l'État peut fonctionner comme
+      l'instrument d'une classe dominante.
+
+      **Fanon (chapitre 6) :** la domination coloniale s'est elle-même établie
+      et se maintient par la violence -- un rapport déjà violent à sa
+      racine, pas seulement un ordre qui sert des intérêts.
+
+      **L'erreur à éviter :** dire que Fanon et Marx défendent une
+      position identique -- Fanon pose un problème spécifique, propre au
+      rapport colonial lui-même.
+
+  - id: VIO-20
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: philo_violence
+    tags: [violence_revolutionnaire, negation_personne, critique_anarchiste]
+    primary_misconception: mc.philo.violence.fin-juste-legitime-tout-moyen
+    stem: >
+      Quelles limites la leçon oppose-t-elle à l'idée qu'une violence
+      mobilisée au service d'une fin juste serait, de ce seul fait,
+      pleinement justifiée ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Aucune limite réelle ne serait opposée à cette idée : une fin juste suffirait, selon la leçon, à justifier pleinement n'importe quel moyen employé pour l'atteindre."
+        correct: false
+        misconception: mc.philo.violence.fin-juste-legitime-tout-moyen
+        feedback: >
+          C'est l'inverse de ce qu'établit le chapitre 6 : la leçon oppose
+          précisément des limites à cette idée -- la négation de la
+          personne que reste tout acte violent, et le risque structurel
+          que le pouvoir conquis se retourne contre ceux qu'il devait
+          libérer.
+      - id: B
+        text: "Même au service d'une fin juste, la violence reste une négation de la personne d'autrui (chapitre 3) ; et toute concentration de pouvoir conquise par la lutte tend à se retourner contre ceux qu'elle devait libérer, sans s'arrêter nécessairement une fois la fin atteinte."
+        correct: true
+      - id: C
+        text: "La seule limite évoquée serait d'ordre pratique -- le risque d'échec militaire ou l'éventualité d'une défaite face à un adversaire mieux organisé -- jamais une limite touchant à la nature même de l'acte violent en tant que tel ou à ses effets sur ceux qui l'exercent au quotidien."
+        correct: false
+        misconception: mc.philo.violence.fin-juste-legitime-tout-moyen
+        feedback: >
+          La leçon ne se limite pas à un argument tactique : elle
+          reprend le chapitre 3 (la violence comme négation de la personne, quelle
+          que soit la cible) et la critique anarchiste (le retournement
+          structurel du pouvoir conquis) -- deux limites qui touchent à
+          la nature même de l'acte, pas seulement à son efficacité
+          militaire.
+      - id: D
+        text: "La leçon opposerait à cette idée le seul fait que la violence révolutionnaire serait, par définition, toujours illégale au regard du droit en vigueur -- un argument purement juridique."
+        correct: false
+        misconception: mc.philo.violence.fin-juste-legitime-tout-moyen
+        feedback: >
+          Ce n'est pas un argument juridique qui est mobilisé ici : la
+          violence révolutionnaire vise justement à renverser un ordre
+          légal jugé illégitime, donc l'invoquer contre elle serait
+          circulaire. La limite posée touche à la négation de la
+          personne et au risque de retournement du pouvoir, pas à la
+          légalité en vigueur.
+    correct_feedback: >
+      La leçon oppose deux limites : la violence, même au service d'une
+      fin juste, reste une négation de la personne d'autrui (chapitre 3) ; et
+      toute concentration de pouvoir conquise par la lutte tend
+      structurellement à se retourner contre ceux qu'elle devait
+      libérer, sans nécessairement s'arrêter une fois la fin atteinte.
+    solution: |
+      **Limite 1 (reprise du chapitre 3) :** même mobilisée pour une fin juste,
+      la violence contourne la liberté d'autrui au lieu de s'y adresser
+      -- une négation de la personne, fût-elle celle d'un oppresseur.
+
+      **Limite 2 (critique anarchiste, « L'État », chapitre 7) :** toute
+      concentration de pouvoir, même conquise par une lutte juste, tend
+      structurellement à se retourner contre ceux qu'elle devait
+      libérer.
+
+      **Limite 3 (observation historique) :** la violence, une fois
+      mobilisée comme moyen, ne s'arrête pas nécessairement une fois la
+      fin atteinte.
+
+  - id: VIO-21
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: philo_violence
+    tags: [gandhi, moyens_fins, satyagraha]
+    primary_misconception: mc.philo.violence.moyens-fins-mal-articules
+    stem: >
+      Gandhi affirme, dans Hind Swaraj, que les moyens sont à la fin ce
+      que la graine est à l'arbre. Que veut-il dire, précisément, par
+      cette image ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que la fin recherchée justifierait toujours le moyen employé pour l'atteindre, de la même façon qu'un arbre justifie a posteriori la graine dont il est issu."
+        correct: false
+        misconception: mc.philo.violence.moyens-fins-mal-articules
+        feedback: >
+          C'est exactement la thèse que Gandhi rejette : loin de dire
+          que la fin justifie les moyens, il affirme que la nature du
+          moyen employé détermine, structurellement, celle de la fin
+          obtenue -- une graine violente ne produit pas un arbre de
+          liberté.
+      - id: B
+        text: "Que les moyens et la fin seraient, chez Gandhi, deux éléments sans aucun rapport nécessaire entre eux, la même graine pouvant indifféremment produire n'importe quel arbre."
+        correct: false
+        misconception: mc.philo.violence.moyens-fins-mal-articules
+        feedback: >
+          C'est l'inverse du sens de l'image : Gandhi affirme au
+          contraire un rapport aussi nécessaire que celui de la graine à
+          l'arbre -- ce n'est pas l'absence de lien qu'il souligne, mais
+          sa nécessité structurelle.
+      - id: C
+        text: "Que des moyens violents ne peuvent produire une fin authentiquement juste et libre, quelle que soit par ailleurs la noblesse de cette fin -- le moyen employé détermine, structurellement, la nature du résultat obtenu, comme une graine détermine l'arbre qui en naît."
+        correct: true
+      - id: D
+        text: "Que seule la fin recherchée compterait véritablement dans l'appréciation d'une action, les moyens n'étant qu'une étape secondaire et sans conséquence durable une fois la fin enfin atteinte, quelle que soit par ailleurs la souffrance ou l'injustice que ces moyens auraient pu causer en chemin."
+        correct: false
+        misconception: mc.philo.violence.moyens-fins-mal-articules
+        feedback: >
+          C'est précisément ce que l'image de la graine et de l'arbre
+          récuse : le moyen employé n'est pas une étape secondaire et
+          sans conséquence, il détermine structurellement la nature de
+          la fin qui en résulte.
+    correct_feedback: >
+      Par cette image, Gandhi affirme un rapport aussi nécessaire entre
+      moyens et fin qu'entre une graine et l'arbre qui en naît : des
+      moyens violents ne peuvent produire une fin authentiquement juste
+      et libre, quelle que soit par ailleurs la noblesse de cette fin.
+    solution: |
+      **L'image :** les moyens sont à la fin ce que la graine est à
+      l'arbre -- un rapport nécessaire, pas un simple enchaînement
+      contingent.
+
+      **Ce que cela implique :** des moyens violents ne peuvent produire
+      une fin authentiquement juste et libre, quelle que soit la
+      noblesse de cette fin -- contrairement à l'idée que « la fin
+      justifie les moyens ».
+
+  - id: VIO-22
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: philo_violence
+    tags: [gandhi, satyagraha, negation_personne, distinction_concepts]
+    primary_misconception: mc.philo.violence.non-violence-confondue-avec-passivite
+    stem: >
+      En quoi le satyagraha gandhien se distingue-t-il à la fois de la
+      violence révolutionnaire (chapitre 6) et de la pure soumission, du point de
+      vue du rapport à la personne de l'adversaire ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le satyagraha rejoindrait en réalité la violence révolutionnaire sur ce point précis, les deux visant tout autant, selon cette lecture, à contraindre la volonté de l'adversaire par la force plutôt qu'à s'adresser à sa conscience, de sorte qu'aucune différence morale réelle ne séparerait finalement la désobéissance civile organisée par Gandhi d'une insurrection armée classique."
+        correct: false
+        misconception: mc.philo.violence.non-violence-confondue-avec-passivite
+        feedback: >
+          C'est l'inverse : le satyagraha cherche à s'adresser à la
+          conscience de l'adversaire pour le convaincre, plutôt que de
+          contourner sa liberté par la force -- c'est précisément ce qui
+          l'oppose à la violence révolutionnaire, pas ce qui les
+          rapproche.
+      - id: B
+        text: "Le satyagraha rejoindrait en réalité la pure soumission, dans la mesure où il refuserait, comme elle, toute action organisée et publique contre l'ordre jugé injuste, se contentant d'un désaccord purement intérieur."
+        correct: false
+        misconception: mc.philo.violence.non-violence-confondue-avec-passivite
+        feedback: >
+          C'est confondre non-violence et passivité, l'erreur la plus
+          fréquente sur ce point : le satyagraha est au contraire une
+          résistance active, organisée et publique (désobéissance
+          civile), pas un refus de résister.
+      - id: C
+        text: "Le satyagraha se distinguerait de la violence révolutionnaire uniquement par son efficacité pratique jugée plus grande sur le long terme, jamais par une différence de fond dans sa façon de traiter la personne de l'adversaire."
+        correct: false
+        misconception: mc.philo.violence.non-violence-confondue-avec-passivite
+        feedback: >
+          La distinction posée par la leçon n'est pas d'ordre pratique
+          ou tactique, mais morale : c'est le refus de nier la personne
+          de l'adversaire, même combattu activement, qui distingue le
+          satyagraha de la violence révolutionnaire.
+      - id: D
+        text: "Il refuse de nier la personne de l'adversaire, même en le combattant activement -- à la différence de la violence révolutionnaire, qui contourne sa liberté ; et à la différence de la soumission, il ne renonce pas non plus à résister activement et publiquement à l'ordre jugé injuste."
+        correct: true
+    correct_feedback: >
+      Le satyagraha refuse de nier la personne de l'adversaire, même en
+      le combattant activement -- à la différence de la violence
+      révolutionnaire qui contourne sa liberté, et à la différence de la
+      soumission qui renonce à résister activement et publiquement.
+    solution: |
+      **Face à la violence révolutionnaire (chapitre 6) :** le satyagraha refuse
+      de nier la personne de l'adversaire, même en le combattant
+      activement.
+
+      **Face à la soumission :** il refuse tout autant de renoncer à
+      résister -- il agit, avec constance et organisation, contre
+      l'ordre jugé injuste, mais par des moyens qui n'en nient pas la
+      liberté ni la personne.
+
+  - id: VIO-23
+    rung: "R7"
+    difficulty_level: 5
+    skill_code: philo_violence
+    tags: [bourdieu, meconnaissance, violence_symbolique]
+    primary_misconception: mc.philo.violence.meconnaissance-mal-identifiee
+    stem: >
+      Bourdieu nomme « méconnaissance » un mécanisme précis au cœur de la
+      violence symbolique. En quoi consiste-t-il exactement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le fait que les agents dominés ne perçoivent pas le caractère arbitraire des normes qui leur sont imposées -- ils les vivent comme évidentes, méritées, naturelles, au point de contribuer eux-mêmes à reproduire l'ordre qui les domine, sans aucune contrainte physique."
+        correct: true
+      - id: B
+        text: "Le fait que le groupe dominant lui-même ignorerait, sans en avoir la moindre conscience, qu'il exerce une domination réelle sur les groupes qu'il domine au quotidien."
+        correct: false
+        misconception: mc.philo.violence.meconnaissance-mal-identifiee
+        feedback: >
+          La méconnaissance, chez Bourdieu, caractérise le rapport des
+          dominés aux normes qui leur sont imposées -- pas une ignorance
+          du groupe dominant quant à sa propre domination.
+      - id: C
+        text: "Le refus conscient et délibéré, de la part des dominés, de se soumettre aux normes qui leur sont imposées, malgré la contrainte physique constante qui serait, selon cette lecture, exercée contre eux à chaque instant -- ce qui prouverait, selon cette même lecture, qu'ils ont parfaitement conscience du caractère arbitraire des normes qu'on leur impose."
+        correct: false
+        misconception: mc.philo.violence.meconnaissance-mal-identifiee
+        feedback: >
+          C'est l'inverse : la méconnaissance suppose que les dominés
+          n'exercent aucune résistance consciente, précisément parce
+          qu'ils ne perçoivent pas le caractère arbitraire des normes --
+          et la violence symbolique se définit par l'absence de toute
+          contrainte physique.
+      - id: D
+        text: "L'ignorance, par les sociologues eux-mêmes, des véritables mécanismes de la domination sociale, que seul Bourdieu, parmi tous les chercheurs de sa génération, serait parvenu à percer à jour."
+        correct: false
+        misconception: mc.philo.violence.meconnaissance-mal-identifiee
+        feedback: >
+          La méconnaissance ne concerne pas les sociologues qui
+          analysent la domination, mais les agents dominés eux-mêmes,
+          qui ne perçoivent pas le caractère arbitraire des normes
+          qu'ils vivent comme naturelles.
+    correct_feedback: >
+      La méconnaissance désigne le fait que les dominés ne perçoivent pas
+      le caractère arbitraire des normes imposées -- ils les vivent comme
+      naturelles et méritées, au point de contribuer eux-mêmes, sans
+      aucune contrainte physique, à reproduire l'ordre qui les domine.
+    solution: |
+      **La méconnaissance :** les agents dominés ne perçoivent pas le
+      caractère arbitraire des normes (scolaires, culturelles,
+      linguistiques) qui leur sont imposées -- ils les vivent comme
+      évidentes et naturelles.
+
+      **Ce qui rend ce mécanisme efficace :** il opère sans aucune
+      contrainte physique à aucun moment -- c'est précisément pour cela
+      qu'il échappe le plus facilement à son propre nom de violence.
+
+  - id: VIO-24
+    rung: "R7"
+    difficulty_level: 5
+    skill_code: philo_violence
+    tags: [bourdieu, weber, legitimite, distinction_concepts]
+    primary_misconception: mc.philo.violence.violence-symbolique-annule-legitimite-weberienne
+    stem: >
+      Pourquoi serait-il erroné de conclure, à partir du concept de
+      violence symbolique, que tout pouvoir légitime ne serait, au fond,
+      jamais qu'une violence déguisée ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que Bourdieu, contrairement à ce que l'on pourrait croire de prime abord, approuverait en réalité pleinement chaque forme de pouvoir légitime décrite par Weber, sans jamais en critiquer le moindre aspect ni en nuancer la portée."
+        correct: false
+        misconception: mc.philo.violence.violence-symbolique-annule-legitimite-weberienne
+        feedback: >
+          Bourdieu ne se contente pas d'approuver sans réserve l'analyse
+          de Weber : il y ajoute un mécanisme critique -- la
+          méconnaissance -- qui révèle un envers du monopole légitime,
+          sans pour autant l'annuler.
+      - id: B
+        text: "Parce que Bourdieu décrit un mécanisme précis, observable dans des institutions particulières (école, culture, langage), qui vient compléter l'analyse de Weber, pas l'annuler -- il ne prétend jamais que le monopole légitime décrit par Weber n'existerait pas, ni que toute obéissance serait par nature illégitime."
+        correct: true
+      - id: C
+        text: "Parce que le concept de violence symbolique ne s'appliquerait, selon Bourdieu lui-même, qu'à des sociétés passées et aujourd'hui disparues, sans aucune pertinence réelle pour analyser des institutions contemporaines comme l'école ou la culture, qui relèveraient au contraire d'un tout autre type de domination sans aucun rapport avec celle que Bourdieu a précisément cherché à décrire."
+        correct: false
+        misconception: mc.philo.violence.violence-symbolique-annule-legitimite-weberienne
+        feedback: >
+          C'est l'inverse : Bourdieu observe précisément ce mécanisme
+          dans des institutions contemporaines -- l'école, la culture, le
+          langage -- rien dans la leçon ne restreint sa pertinence aux
+          sociétés passées.
+      - id: D
+        text: "Parce que cette conclusion serait vraie, mais seulement pour les institutions proprement étatiques, jamais pour des institutions plus diffuses comme l'école, la culture ou le langage ordinaire."
+        correct: false
+        misconception: mc.philo.violence.violence-symbolique-annule-legitimite-weberienne
+        feedback: >
+          C'est concéder à tort la conclusion erronée elle-même : la
+          leçon ne dit à aucun moment que tout pouvoir légitime ne serait
+          qu'une violence déguisée -- ni pour l'État, ni pour l'école, la
+          culture ou le langage, où Bourdieu situe justement son
+          analyse.
+    correct_feedback: >
+      Bourdieu décrit un mécanisme précis, observable dans des
+      institutions particulières, qui vient compléter l'analyse de Weber
+      -- il ne prétend ni que le monopole légitime décrit par Weber
+      n'existerait pas, ni que toute obéissance serait, par nature,
+      illégitime.
+    solution: |
+      **Ce que Bourdieu ajoute :** la reconnaissance qui fonde, chez
+      Weber, la légitimité peut être en partie l'effet d'une violence
+      symbolique antérieure et plus discrète.
+
+      **Ce que cela n'implique pas :** que tout pouvoir légitime ne
+      serait qu'une violence déguisée -- Bourdieu complète l'analyse de
+      Weber, dans des institutions particulières (école, culture,
+      langage), il ne l'annule pas.
+
+  - id: VIO-25
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: philo_violence
+    tags: [methode_dissertation, problematique]
+    primary_misconception: mc.philo.violence.methode-dissertation-appliquee-mecaniquement
+    stem: >
+      Un élève propose comme problématique pour le sujet « La violence
+      est-elle dans la nature de l'homme, ou est-ce la société qui la
+      produit ? » la phrase suivante : « Nous allons voir si la violence
+      est dans la nature de l'homme ou si c'est la société qui la
+      produit. » Pourquoi cette phrase ne constitue-t-elle pas une
+      véritable problématique ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce qu'elle ne mentionne pas explicitement Hobbes et Rousseau par leur nom, alors qu'une problématique devrait toujours citer nommément tous les auteurs mobilisés dans la suite du devoir, sous peine d'être jugée incomplète par le correcteur."
+        correct: false
+        misconception: mc.philo.violence.methode-dissertation-appliquee-mecaniquement
+        feedback: >
+          Une problématique n'a pas besoin de nommer les auteurs qu'elle
+          mobilisera ensuite : ce qui lui manque ici n'est pas une liste
+          de noms propres, mais la mise en évidence d'une tension entre
+          deux positions, que le simple fait de nommer Hobbes et Rousseau
+          ne suffirait pas à produire.
+      - id: B
+        text: "Parce qu'elle est formulée à la première personne du pluriel (« nous »), ce qui serait à proscrire dans une problématique, indépendamment de son contenu."
+        correct: false
+        misconception: mc.philo.violence.methode-dissertation-appliquee-mecaniquement
+        feedback: >
+          Ce n'est pas une question de personne grammaticale qui est en
+          cause : une problématique à la première personne du pluriel
+          pourrait très bien faire apparaître une tension réelle -- le
+          défaut ici porte sur le contenu (une simple reformulation),
+          pas sur la forme grammaticale.
+      - id: C
+        text: "Parce qu'elle se contente de reformuler le sujet presque mot pour mot, sans faire apparaître la tension entre deux positions également légitimes en apparence (celle de Hobbes, celle de Rousseau) à laquelle le devoir devra répondre."
+        correct: true
+      - id: D
+        text: "Parce qu'elle prend position, dès l'introduction, en faveur de la thèse de Rousseau contre celle de Hobbes, ce qu'une bonne problématique ne devrait jamais faire."
+        correct: false
+        misconception: mc.philo.violence.methode-dissertation-appliquee-mecaniquement
+        feedback: >
+          Cette phrase ne prend justement position pour aucune des deux
+          thèses -- elle se contente de les juxtaposer sans les mettre
+          en tension. Le problème n'est donc pas une prise de position
+          prématurée, mais l'absence de toute tension construite.
+    correct_feedback: >
+      Une problématique ne reformule pas simplement le sujet : elle met
+      en évidence une tension entre deux positions également légitimes
+      en apparence (ici, celle de Hobbes et celle de Rousseau), à
+      laquelle le devoir devra répondre.
+    solution: |
+      **Le défaut :** cette phrase reformule le sujet presque mot pour
+      mot, sans construire aucune tension entre les deux thèses en
+      présence.
+
+      **Ce qu'une vraie problématique doit faire :** faire apparaître
+      pourquoi les deux réponses semblent également légitimes a priori,
+      et ce que le devoir devra trancher ou dépasser -- pas seulement
+      répéter la question posée par le sujet.
+
+  - id: VIO-26
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: philo_violence
+    tags: [methode_dissertation, plan_dialectique]
+    primary_misconception: mc.philo.violence.methode-dissertation-appliquee-mecaniquement
+    stem: >
+      Un élève place, dans la partie III (le dépassement) de son plan sur
+      ce sujet, un développement sur Hobbes reprenant intégralement les
+      trois ressorts du conflit et le droit de nature illimité, déjà
+      développés en partie I. Quel défaut méthodologique cela
+      illustre-t-il ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Aucun défaut réel : une bonne partie III devrait, au contraire, toujours revenir en détail sur les arguments déjà exposés en partie I, pour bien montrer qu'on les a compris."
+        correct: false
+        misconception: mc.philo.violence.methode-dissertation-appliquee-mecaniquement
+        feedback: >
+          C'est l'inverse de ce qu'exige un plan dialectique : la partie
+          III doit apporter quelque chose de nouveau par rapport aux
+          parties I et II, pas répéter un développement déjà fait --
+          répéter ne prouve rien de plus qu'une première fois bien
+          faite.
+      - id: B
+        text: "Le défaut consisterait seulement à avoir choisi Hobbes plutôt que Rousseau pour cette partie III, alors que Rousseau, et lui seul, devrait y être mobilisé."
+        correct: false
+        misconception: mc.philo.violence.methode-dissertation-appliquee-mecaniquement
+        feedback: >
+          Le problème n'est pas le choix de l'auteur mobilisé en soi,
+          mais la répétition d'un développement déjà fait sans rien y
+          ajouter -- reprendre Rousseau de la même façon, sans
+          dépassement, poserait exactement le même problème.
+      - id: C
+        text: "Le défaut consisterait à mobiliser un auteur du programme dans la partie III, alors que cette partie ne devrait jamais s'appuyer sur des auteurs déjà étudiés en cours d'année, mais uniquement sur l'opinion personnelle et spontanée du candidat lui-même."
+        correct: false
+        misconception: mc.philo.violence.methode-dissertation-appliquee-mecaniquement
+        feedback: >
+          La méthode proposée au chapitre 9 mobilise justement des auteurs du
+          programme dans la partie III (Weber au chapitre 2, Gandhi au chapitre 7) : le
+          problème n'est donc pas de citer un auteur, mais de répéter
+          sans rien ajouter un développement déjà fait en partie I.
+      - id: D
+        text: "La partie III doit dépasser la thèse et l'antithèse -- par exemple en reprenant la distinction force légitime/violence (chapitre 2, Weber) ou la voie gandhienne (chapitre 7) -- non répéter, sans rien y ajouter, un développement déjà fait dans la partie I."
+        correct: true
+    correct_feedback: >
+      Le défaut est la répétition sans dépassement : la partie III doit
+      ajouter quelque chose de nouveau aux parties I et II -- par exemple
+      la distinction force légitime/violence ou la voie gandhienne -- pas
+      reprendre, à l'identique, un développement déjà fait.
+    solution: |
+      **Le défaut :** répéter en partie III un développement déjà fait
+      en partie I, sans rien y ajouter.
+
+      **Ce qu'attend la méthode (étape 3, chapitre 9) :** la partie III doit
+      dépasser la thèse et l'antithèse -- reprendre le chapitre 2 (Weber) ou le chapitre 7
+      (Gandhi), pas reformuler Hobbes une seconde fois.
+
+  - id: VIO-27
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: philo_violence
+    tags: [methode_dissertation, plan_dialectique, distinction_auteurs]
+    primary_misconception: mc.philo.violence.methode-dissertation-appliquee-mecaniquement
+    stem: >
+      Pour enrichir la partie II (l'antithèse : la violence comme produit
+      de la société) de ce sujet au-delà du seul Rousseau, quels auteurs
+      la méthode proposée au chapitre 9 suggère-t-elle de mobiliser, et pourquoi
+      conviennent-ils à cette partie précise ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Marx et Bourdieu, parce que leurs analyses portent, elles aussi, sur des formes de domination produites par les rapports sociaux et les institutions, et non sur un donné déjà présent dans la nature humaine."
+        correct: true
+      - id: B
+        text: "Hobbes et Fanon, parce que leurs analyses porteraient toutes deux sur un donné déjà présent dans la nature humaine, ce qui renforcerait directement la thèse de la partie I plutôt que l'antithèse attendue à ce stade du plan."
+        correct: false
+        misconception: mc.philo.violence.methode-dissertation-appliquee-mecaniquement
+        feedback: >
+          Hobbes appartient précisément à la thèse de la partie I, pas à
+          l'antithèse -- le mobiliser en partie II reviendrait à
+          contredire la structure même du plan. Fanon, lui, porte sur la
+          violence propre au rapport colonial, pas sur un donné de
+          nature humaine.
+      - id: C
+        text: "Gandhi et Weber, parce que leurs analyses porteraient, comme celle de Rousseau, sur l'origine naturelle ou sociale de la violence, ce qui est précisément l'enjeu de la partie II."
+        correct: false
+        misconception: mc.philo.violence.methode-dissertation-appliquee-mecaniquement
+        feedback: >
+          Gandhi et Weber ne portent pas sur l'origine de la violence
+          (nature ou société), mais sur d'autres questions -- la
+          résistance non-violente et la distinction force
+          légitime/violence -- que la méthode réserve plutôt à la partie
+          III, le dépassement.
+      - id: D
+        text: "Kant et Sartre, parce que leur définition de la violence comme négation de la personne serait, comme la thèse de Rousseau, une thèse sur l'origine sociale de la violence."
+        correct: false
+        misconception: mc.philo.violence.methode-dissertation-appliquee-mecaniquement
+        feedback: >
+          Kant et Sartre répondent à une question distincte -- qu'est-ce
+          qui définit la violence (chapitre 3) -- pas à celle de son origine,
+          naturelle ou sociale (chapitres 4 et 5), qui est l'enjeu propre de la
+          partie II.
+    correct_feedback: >
+      La méthode suggère Marx et Bourdieu pour enrichir l'antithèse :
+      leurs analyses portent, comme celle de Rousseau, sur des formes de
+      domination produites par les rapports sociaux et les institutions,
+      non sur un donné déjà présent dans la nature humaine.
+    solution: |
+      **Étape 1 (chapitre 9) :** pour la partie II, mobilise Rousseau (l'amour
+      de soi et la pitié corrompus par la propriété), et ajoute, pour
+      l'enrichir, Marx et Bourdieu sur les formes de domination produites
+      par les rapports sociaux et les institutions.
+
+      **L'erreur à éviter :** placer dans cette partie des auteurs qui
+      répondent à d'autres questions -- l'origine naturelle (Hobbes,
+      thèse), la définition de la violence (Kant, Sartre, chapitre 3), ou sa
+      légitimité et sa résistance (Weber, Gandhi, plutôt réservés au
+      dépassement).
+
+
+  # ════════════════════════════════════════════════════════════════════════════
+  # BACKFILL PLANCHER (2026-09-05) — VIO-28 … VIO-40.
+  # La rétro-tague de VIO-1…27 avait laissé 18 des 23 modèles sous le plancher
+  # de 3 items : la banque d'origine visait la variété des angles, pas la
+  # profondeur par modèle. Ces items comblent le déficit mesuré
+  # (docs/audits/couverture-diagnostique.md) sans déclarer d'erreur nouvelle.
+  # ÉQUILIBRE DES LONGUEURS vérifié par web/scripts/indice-longueur.mjs, jamais à
+  # l'œil (addendum philo de la recette : ~97 % de « clé la plus longue » dans
+  # les bancs de philo écrits sans cette vigilance).
+  # ════════════════════════════════════════════════════════════════════════════
+
+  - id: VIO-28
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: philo_violence
+    tags: [force_legitime, weber, legitimite, plancher]
+    primary_misconception: mc.philo.violence.acteur-determine-legitimite
+    stem: >
+      Un agent municipal, dûment assermenté, immobilise un passant au motif
+      qu'il ne lui « revient pas », sans qu'aucune infraction soit reprochée ni
+      aucune procédure engagée. Comment qualifier son geste ?
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est une violence : aucune loi ni procédure ne fonde l'acte, et rien ne permet de le contester devant un tiers."
+        correct: true
+      - id: B
+        text: "C'est une force légitime, puisque l'agent est assermenté et agit dans le cadre de ses fonctions officielles."
+        correct: false
+        misconception: mc.philo.violence.acteur-determine-legitimite
+        feedback: >
+          Le critère retenu est l'identité de l'acteur, non ce qu'il fait. Or
+          le chapitre 2 place la légitimité ailleurs : dans le fait que l'acte
+          découle d'une loi, suive une procédure connue à l'avance et reste
+          contestable devant un tiers impartial. Un agent qui agit hors de
+          toute procédure peut commettre une violence, et le statut ne le
+          couvre pas.
+      - id: C
+        text: "C'est une force légitime tant que le passant se révèle finalement coupable de quelque chose."
+        correct: false
+        misconception: mc.philo.violence.legitime-confondu-avec-juste
+        feedback: >
+          On confond ici la légitimité avec la justesse du résultat. Un acte
+          est légitime par la procédure dont il découle, pas par ce que
+          l'enquête révélera plus tard : une contrainte peut être légitime et
+          produire une injustice — c'est le cas d'une erreur judiciaire — comme
+          elle peut aboutir au bon coupable sans avoir été légitime un instant.
+      - id: D
+        text: "L'exemple montre que la police n'a, en réalité, aucune autorité légitime dans son principe."
+        correct: false
+        misconception: mc.philo.violence.limite-institutionnelle-invalide-toute-legitimite
+        feedback: >
+          D'une limite précise franchie dans un cas, on tire ici une
+          délégitimation générale. C'est l'inverse qu'il faut lire : dire que
+          cet agent a franchi une borne suppose qu'une borne existe, donc
+          qu'une autorité légitime la trace. Une institution sans légitimité
+          n'aurait aucune limite à outrepasser.
+    correct_feedback: >
+      Ce n'est pas le statut de l'agent qui décide, mais la procédure : sans
+      loi invoquée, sans règle connue à l'avance, sans recours possible, le
+      geste bascule du côté de la violence.
+    solution: |
+      **Le critère construit au chapitre 2** ne porte ni sur l'identité de
+      l'acteur ni sur le résultat obtenu, mais sur trois conditions :
+
+      - l'acte découle d'une **loi** ;
+      - il suit une **procédure connue à l'avance** ;
+      - il reste **contestable devant un tiers impartial**.
+
+      **Application.** Aucune des trois n'est remplie ici : pas d'infraction
+      reprochée, pas de procédure, pas de recours. Le fait que l'agent soit
+      assermenté ne compense rien — c'est justement ce que le critère
+      procédural permet de dire, là où l'intuition ne voyait qu'un uniforme.
+
+  - id: VIO-29
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: philo_violence
+    tags: [force_legitime, weber, legitimite, plancher]
+    primary_misconception: mc.philo.violence.limite-institutionnelle-invalide-toute-legitimite
+    stem: >
+      La loi interdit à un policier de frapper un suspect déjà maîtrisé. Un
+      élève en conclut que l'État n'exerce donc aucun monopole légitime de la
+      violence. Que répondre ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Cette interdiction suppose au contraire une autorité légitime : on ne peut borner que ce qui a d'abord un droit d'agir."
+        correct: true
+      - id: B
+        text: "Il a raison : une institution soumise à des limites n'exerce pas un véritable monopole, donc sa légitimité est un mot vide."
+        correct: false
+        misconception: mc.philo.violence.limite-institutionnelle-invalide-toute-legitimite
+        feedback: >
+          Le raisonnement inverse le sens de la limite. Une règle qui interdit
+          un geste précis à la police reconnaît implicitement qu'elle en
+          autorise d'autres — c'est la définition même d'une autorité encadrée.
+          Un pouvoir sans aucune limite ne serait pas plus légitime : il serait
+          arbitraire.
+      - id: C
+        text: "Il a raison, car dès qu'un policier franchit cette limite, son acte devient injuste, donc l'institution était illégitime depuis le début."
+        correct: false
+        misconception: mc.philo.violence.legitime-confondu-avec-juste
+        feedback: >
+          Deux notions sont ici fondues. La légitimité qualifie la procédure
+          par laquelle une contrainte s'exerce ; la justice qualifie son
+          résultat. Un franchissement ponctuel rend cet acte-là illégitime — il
+          ne rétroagit pas sur l'institution, qui reste jugée sur ses règles et
+          sur les recours qu'elle offre.
+      - id: D
+        text: "Il a tort, mais pour une autre raison : c'est le statut de policier qui rend légitime tout ce qu'un policier fait."
+        correct: false
+        misconception: mc.philo.violence.acteur-determine-legitimite
+        feedback: >
+          La conclusion est bonne, l'argument la ruine. Si le statut suffisait,
+          l'interdiction de frapper un suspect maîtrisé n'aurait aucun sens :
+          il n'y aurait rien à interdire. C'est parce que la légitimité tient à
+          la procédure, et non à l'uniforme, qu'une limite peut exister.
+    correct_feedback: >
+      Une limite imposée à une institution présuppose son autorité : on ne
+      borne que ce qui a, par ailleurs, un droit d'agir. L'objection confirme
+      la légitimité au lieu de l'abolir.
+    solution: |
+      **Ce que l'objection prouve réellement.** Interdire à la police de
+      frapper un suspect maîtrisé n'a de sens que si la police est, par
+      ailleurs, autorisée à contraindre. La règle trace une frontière à
+      l'intérieur d'un pouvoir reconnu.
+
+      **Le vrai enseignement.** Le monopole wébérien n'est pas un pouvoir sans
+      bornes : c'est un pouvoir dont l'usage est réglé, connu à l'avance et
+      contestable. Les limites ne sont pas des failles dans la légitimité —
+      elles en sont la forme.
+
+  - id: VIO-30
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: philo_violence
+    tags: [kant, negation_personne, violence_non_physique, plancher]
+    primary_misconception: mc.philo.violence.violence-reduite-au-physique
+    stem: >
+      Un employeur menace un salarié de le licencier s'il refuse un travail
+      non prévu au contrat. Aucun contact physique n'a lieu. Peut-on parler de
+      violence ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : sans contact ni contrainte corporelle, il s'agit d'une pression désagréable, mais pas d'une violence."
+        correct: false
+        misconception: mc.philo.violence.violence-reduite-au-physique
+        feedback: >
+          Le critère du chapitre 3 ne mentionne aucun contact : il porte sur le
+          fait de CONTOURNER la liberté d'autrui au lieu de s'y adresser. Une
+          menace obtient par la contrainte ce qu'un assentiment libre aurait dû
+          accorder — elle traite la personne comme un moyen, sans avoir besoin
+          de la toucher.
+      - id: B
+        text: "Oui : la menace obtient par contrainte ce qu'un accord libre aurait dû donner, donc elle contourne la liberté du salarié."
+        correct: true
+      - id: C
+        text: "Oui, et c'est exactement le même mécanisme que le regard d'autrui décrit par Sartre : dans les deux cas, la personne devient un objet."
+        correct: false
+        misconception: mc.philo.violence.regard-et-contrainte-physique-confondus
+        feedback: >
+          Les deux relèvent bien de l'objectivation, mais à des degrés qu'il
+          faut tenir séparés. Le regard sartrien objective de façon
+          RÉVERSIBLE — je peux regarder à mon tour et redevenir sujet. Une
+          contrainte pousse ce mécanisme plus loin : le temps qu'elle s'exerce,
+          la reprise de la position de sujet est barrée.
+      - id: D
+        text: "Non : seule la douleur ressentie permettrait de trancher, et l'énoncé n'en dit rien."
+        correct: false
+        misconception: mc.philo.violence.violence-reduite-a-la-douleur
+        feedback: >
+          Mesurer la violence à la douleur revient à en manquer la définition.
+          Une opération chirurgicale fait souffrir sans être violente ; une
+          humiliation calme peut nier une personne sans faire mal. Ce qui
+          compte est le rapport à la liberté d'autrui, pas l'intensité de ce
+          qui est ressenti.
+    correct_feedback: >
+      La violence, au sens du chapitre 3, contourne la liberté d'autrui au lieu
+      de s'y adresser. Une menace le fait sans aucun contact : elle arrache un
+      consentement qui n'en est plus un.
+    solution: |
+      **Le critère.** Est violent l'acte qui obtient d'autrui, par contrainte,
+      ce que seul un assentiment libre aurait dû accorder — autrement dit qui
+      traite la personne comme un moyen, en contournant sa liberté au lieu de
+      s'adresser à elle.
+
+      **Ce que le critère n'exige pas.** Aucun contact physique, aucune
+      douleur. Une menace crédible suffit : le salarié « accepte », mais son
+      acceptation a été fabriquée.
+
+      **Ouverture.** Le chapitre 8 montrera qu'une domination peut s'exercer
+      plus insidieusement encore, sans même être perçue comme une contrainte.
+
+  - id: VIO-31
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: philo_violence
+    tags: [sartre, objectivation, negation_personne, plancher]
+    primary_misconception: mc.philo.violence.regard-et-contrainte-physique-confondus
+    stem: >
+      Sartre décrit le regard d'autrui comme ce qui me fige en objet. En quoi
+      cette objectivation diffère-t-elle de celle que produit une contrainte
+      physique ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle est réversible : je peux regarder à mon tour et reprendre la position de sujet, ce que la contrainte interdit tant qu'elle dure."
+        correct: true
+      - id: B
+        text: "Elle n'en diffère pas : dans les deux cas la personne est réduite à un objet, et le degré n'y change rien."
+        correct: false
+        misconception: mc.philo.violence.regard-et-contrainte-physique-confondus
+        feedback: >
+          Le mécanisme est commun, le degré ne l'est pas — et c'est le degré
+          qui fait ici toute l'analyse. Sous le regard, l'échange reste
+          possible : la réciprocité peut se rétablir à tout instant. Sous la
+          contrainte, elle est suspendue. Effacer cette différence rend
+          incompréhensible pourquoi la violence physique est traitée à part.
+      - id: C
+        text: "Elle est moins grave parce qu'elle ne fait pas souffrir, et la gravité d'un acte se mesure à la douleur qu'il cause."
+        correct: false
+        misconception: mc.philo.violence.violence-reduite-a-la-douleur
+        feedback: >
+          Le critère de la douleur est justement celui que le chapitre 3
+          écarte. Ce qui distingue les deux objectivations n'est pas ce qu'on
+          ressent mais la possibilité, ou non, de redevenir sujet. Un regard
+          peut faire très mal sans rien interdire ; une contrainte indolore
+          peut tout barrer.
+      - id: D
+        text: "Elle n'est pas une violence du tout, faute de contact physique entre les deux personnes concernées."
+        correct: false
+        misconception: mc.philo.violence.violence-reduite-au-physique
+        feedback: >
+          Le contact n'est pas le critère. Le chapitre 3 définit la violence
+          par le contournement de la liberté d'autrui, et l'objectivation par
+          le regard en est bien une forme — atténuée par sa réversibilité, mais
+          réelle. C'est d'ailleurs pourquoi Sartre en fait un moment de la
+          relation à autrui, pas une simple gêne.
+    correct_feedback: >
+      Le regard objective de façon réversible — la réciprocité reste
+      possible ; la contrainte physique suspend cette réciprocité tant qu'elle
+      s'exerce. Deux degrés d'un même mécanisme.
+    solution: |
+      **Ce que les deux ont en commun.** Dans les deux cas, autrui cesse d'être
+      traité comme un sujet libre pour devenir un objet — l'objectivation est
+      le mécanisme partagé.
+
+      **Ce qui les sépare.** La réversibilité :
+
+      - **Le regard** — je suis figé, mais je peux regarder à mon tour ; la
+        position de sujet m'est reprenable à chaque instant.
+      - **La contrainte physique** — pendant qu'elle s'exerce, cette reprise
+        est impossible. C'est la forme la plus radicale du même geste.
+
+      Tenir les deux degrés séparés est ce qui permet de dire à la fois que le
+      regard relève de la violence, et qu'il n'en est pas la forme extrême.
+
+  - id: VIO-32
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_violence
+    tags: [hobbes, droit_de_nature, distinction_concepts, plancher]
+    primary_misconception: mc.philo.violence.droit-de-nature-confondu-avec-droit-moral
+    stem: >
+      Chez Hobbes, chacun possède dans l'état de nature un « droit de nature »
+      sur toute chose. Comment faut-il entendre ce mot de « droit » ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Comme une simple liberté de fait : rien n'arrête encore la force de chacun, faute d'un pouvoir commun reconnu."
+        correct: true
+      - id: B
+        text: "Comme une permission morale : Hobbes juge légitime que chacun prenne ce qu'il peut prendre dans cet état."
+        correct: false
+        misconception: mc.philo.violence.droit-de-nature-confondu-avec-droit-moral
+        feedback: >
+          Hobbes ne délivre aucune approbation morale. Il constate qu'en
+          l'absence de pouvoir commun, aucune limite extérieure ne s'impose à
+          la force de chacun — un fait, pas une permission. Confondre les deux
+          revient à lui prêter l'éloge de ce qu'il décrit précisément pour
+          justifier qu'on en sorte.
+      - id: C
+        text: "Comme une loi civile : le souverain accorde ce droit à ses sujets au moment où il institue l'État."
+        correct: false
+        misconception: mc.philo.violence.droit-de-nature-confondu-avec-droit-moral
+        feedback: >
+          La chronologie est inversée. Le droit de nature PRÉCÈDE l'État : il
+          décrit la condition qui rend le contrat social nécessaire. Une loi
+          civile suppose au contraire un souverain déjà institué, donc
+          l'abandon de ce droit — c'est exactement ce que le contrat opère.
+      - id: D
+        text: "Comme la preuve que Hobbes fait l'apologie de la violence et voit dans la guerre l'état le plus désirable."
+        correct: false
+        misconception: mc.philo.violence.hobbes-fait-lapologie-de-la-violence
+        feedback: >
+          Hobbes décrit, il ne recommande pas. Toute sa démonstration vise à
+          rendre insupportable l'état qu'il dépeint, afin de fonder la
+          nécessité du Léviathan. Lire un éloge là où il y a un diagnostic
+          renverse l'argument du chapitre 4.
+    correct_feedback: >
+      Le droit de nature n'est ni une permission morale ni une loi positive :
+      c'est le constat qu'aucune borne reconnue n'arrête encore la force de
+      chacun, tant qu'aucun pouvoir commun ne la fait respecter.
+    solution: |
+      **Trois sens du mot « droit », à ne pas confondre :**
+
+      - **Droit moral** — ce qu'il est juste de faire. Hobbes n'en dit rien
+        ici.
+      - **Droit positif** — ce qu'une loi civile autorise. Il suppose un État,
+        donc il vient APRÈS.
+      - **Droit de nature** — une simple liberté de fait, faute de toute
+        limite reconnue. C'est ce sens-là, et lui seul.
+
+      **Pourquoi la distinction compte.** Le contrat social consiste à
+      renoncer à ce droit de fait pour obtenir la sécurité. Si le droit de
+      nature était moralement approuvé, y renoncer serait un sacrifice
+      injuste — et l'argument de Hobbes s'effondrerait.
+
+  - id: VIO-33
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: philo_violence
+    tags: [hobbes, ressorts_conflit, defiance, plancher]
+    primary_misconception: mc.philo.violence.trois-ressorts-hobbes-confondus
+    stem: >
+      Un homme frappe son voisin le premier, non parce qu'il convoite ses
+      biens, mais parce qu'il redoute d'être attaqué. Auquel des trois ressorts
+      du conflit hobbesiens ce geste renvoie-t-il ?
+    type: mcq
+    choices:
+      - id: A
+        text: "À la défiance : l'incertitude sur les intentions d'autrui pousse à frapper avant d'être frappé."
+        correct: true
+      - id: B
+        text: "À la compétition, puisque les deux hommes se disputent en réalité la sécurité, qui est un bien rare."
+        correct: false
+        misconception: mc.philo.violence.trois-ressorts-hobbes-confondus
+        feedback: >
+          La compétition porte sur un bien extérieur disputé — une terre, une
+          récolte, un troupeau. Ici l'énoncé écarte expressément la convoitise :
+          ce qui agit est l'incertitude sur les intentions du voisin. Assimiler
+          la sécurité à un « bien rare » efface précisément ce que la défiance
+          ajoute au tableau.
+      - id: C
+        text: "À la gloire, car frapper le premier est une façon d'imposer sa réputation aux autres hommes."
+        correct: false
+        misconception: mc.philo.violence.trois-ressorts-hobbes-confondus
+        feedback: >
+          La gloire vise la reconnaissance : on se bat pour être vu, estimé,
+          craint. Le geste décrit ici ne cherche aucun regard — il anticipe une
+          agression. Confondre les deux revient à manquer ce qui rend l'état de
+          nature invivable même entre gens modestes et sans ambition.
+      - id: D
+        text: "À aucun des trois : ce geste montre que Hobbes recommande de frapper le premier pour se protéger."
+        correct: false
+        misconception: mc.philo.violence.hobbes-fait-lapologie-de-la-violence
+        feedback: >
+          Décrire un mécanisme n'est pas le conseiller. Hobbes montre que, sans
+          autorité commune, la prudence elle-même conduit à l'agression — et
+          c'est cette conclusion insoutenable qui rend le Léviathan nécessaire.
+          Le ressort est bien identifié par la doctrine ; il n'est pas
+          approuvé.
+    correct_feedback: >
+      C'est la défiance : ne pouvant connaître les intentions d'autrui, chacun
+      a intérêt à frapper le premier. Ni convoitise d'un bien, ni recherche de
+      reconnaissance.
+    solution: |
+      **Les trois ressorts, distingués par leur objet :**
+
+      - **Compétition** — un bien rare, extérieur, que deux hommes convoitent.
+      - **Défiance** — l'incertitude sur les intentions d'autrui, qui rend
+        l'attaque préventive rationnelle.
+      - **Gloire** — la recherche de reconnaissance et de réputation.
+
+      **Application.** L'énoncé écarte la convoitise et ne mentionne aucun
+      public : reste la défiance.
+
+      **Ce que ce ressort a de redoutable.** Il n'exige ni méchanceté ni
+      ambition. Deux hommes raisonnables et pacifiques, incapables de se
+      garantir mutuellement leurs intentions, y sont conduits — d'où la
+      nécessité d'un tiers qui les garantisse.
+
+
+  - id: VIO-34
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: philo_violence
+    tags: [rousseau, propriete, origine_violence, plancher]
+    primary_misconception: mc.philo.violence.propriete-mal-interpretee-chez-rousseau
+    stem: >
+      Rousseau écrit que le premier qui enclos un terrain en disant « ceci est
+      à moi » fut le vrai fondateur de la société civile. Que veut dire cette
+      formule ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que l'instauration de la propriété est l'événement d'où naît la violence sociale, non un trait de la nature humaine."
+        correct: true
+      - id: B
+        text: "Que la propriété a mis fin aux conflits en assignant à chacun sa part, et qu'elle est donc pacificatrice."
+        correct: false
+        misconception: mc.philo.violence.propriete-mal-interpretee-chez-rousseau
+        feedback: >
+          Le sens est retourné. Rousseau ne salue pas une institution
+          apaisante : il désigne l'origine des maux qui suivent — inégalité,
+          rivalité, guerre. La phrase se prolonge d'ailleurs par la liste des
+          « crimes, guerres, meurtres » que ce geste aurait épargnés à
+          l'humanité si quelqu'un l'avait empêché.
+      - id: C
+        text: "Que l'homme naturel était déjà violent, la propriété n'ayant fait que donner un nom à ce qu'il pratiquait."
+        correct: false
+        misconception: mc.philo.violence.hobbes-rousseau-confondus
+        feedback: >
+          C'est la thèse de Hobbes, prêtée à Rousseau. Pour Rousseau, l'homme
+          de la nature est paisible et mû par la pitié ; c'est la société, et
+          l'institution de la propriété, qui le corrompent. Les deux portraits
+          sont opposés, et l'examen sanctionne durement leur confusion.
+      - id: D
+        text: "Qu'il faut prendre la formule au pied de la lettre et dater précisément ce premier enclos dans l'histoire humaine."
+        correct: false
+        misconception: mc.philo.violence.propriete-mal-interpretee-chez-rousseau
+        feedback: >
+          Rousseau ne fait pas œuvre d'historien : il construit une hypothèse
+          philosophique pour rendre intelligible un état présent. Chercher une
+          date revient à traiter comme une chronique ce qui est une genèse
+          conceptuelle — et à manquer ce que la formule veut établir.
+    correct_feedback: >
+      La formule désigne l'instauration de la propriété comme l'événement
+      institutionnel d'où naît la violence sociale : ni donnée naturelle, ni
+      institution pacificatrice, ni fait historique daté.
+    solution: |
+      **Ce que la formule affirme.** La violence n'appartient pas à la nature
+      humaine : elle apparaît avec une institution — la propriété — qui crée
+      l'inégalité, la rivalité et le besoin de se défendre.
+
+      **Ce qu'elle n'affirme pas :**
+
+      - qu'un homme naturellement violent aurait enfin été nommé (ce serait
+        Hobbes) ;
+      - que la propriété aurait pacifié les rapports en réglant les partages ;
+      - qu'un événement daté serait à retrouver dans les archives.
+
+      **Portée.** Si la violence naît d'une institution, elle n'est pas
+      inéluctable : une autre organisation politique reste pensable. C'est tout
+      l'enjeu du contrat rousseauiste.
+
+  - id: VIO-35
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: philo_violence
+    tags: [rousseau, hobbes, distinction_auteurs, origine_violence, plancher]
+    primary_misconception: mc.philo.violence.hobbes-rousseau-confondus
+    stem: >
+      Une copie affirme : « Pour Rousseau comme pour Hobbes, l'état de nature
+      est une guerre de tous contre tous que seule la société vient apaiser. »
+      Où est l'erreur ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Rousseau soutient l'inverse : l'homme naturel est paisible, et c'est la société qui le corrompt."
+        correct: true
+      - id: B
+        text: "Il n'y a pas d'erreur : les deux auteurs décrivent le même état de nature et divergent seulement sur le remède politique."
+        correct: false
+        misconception: mc.philo.violence.hobbes-rousseau-confondus
+        feedback: >
+          Le désaccord porte d'abord sur le DIAGNOSTIC, pas sur le remède.
+          Hobbes voit dans l'état de nature une guerre que l'État vient
+          contenir ; Rousseau y voit un homme paisible et compatissant, que la
+          société vient corrompre. Prêter le tableau de l'un à l'autre est la
+          confusion la plus sanctionnée sur ce point du programme.
+      - id: C
+        text: "L'erreur est sur Hobbes : il ne décrit aucune guerre, il se contente d'approuver le droit du plus fort."
+        correct: false
+        misconception: mc.philo.violence.hobbes-fait-lapologie-de-la-violence
+        feedback: >
+          Hobbes décrit bel et bien une guerre de tous contre tous — la copie a
+          raison sur ce point. Ce qu'il ne fait pas, c'est l'approuver : le
+          tableau sert à fonder la nécessité du Léviathan. Le corriger dans ce
+          sens ajoute une erreur au lieu d'en retirer une.
+      - id: D
+        text: "L'erreur est mineure : chez Rousseau, la propriété joue le rôle que la peur joue chez Hobbes, ce qui revient au même."
+        correct: false
+        misconception: mc.philo.violence.propriete-mal-interpretee-chez-rousseau
+        feedback: >
+          Les deux mécanismes ne sont pas interchangeables. Chez Hobbes, la
+          peur est un ressort NATUREL, présent avant toute institution ; chez
+          Rousseau, la propriété est une INSTITUTION, donc quelque chose qui
+          aurait pu ne pas être. De cette différence dépend la possibilité même
+          d'une autre société.
+    correct_feedback: >
+      La thèse de l'état de nature violent appartient à Hobbes. Rousseau
+      défend l'inverse : un homme naturel paisible et compatissant, corrompu
+      ensuite par la société et par la propriété.
+    solution: |
+      **Deux portraits opposés :**
+
+      | | Hobbes | Rousseau |
+      |---|---|---|
+      | État de nature | guerre de tous contre tous | paix, pitié naturelle |
+      | Rôle de la société | contenir la violence | la faire naître |
+      | Origine du mal | la nature humaine sans arbitre | une institution, la propriété |
+
+      **Ce qui est en jeu.** Si la violence est naturelle, elle ne peut être
+      que contenue ; si elle est instituée, elle peut être défaite. Le
+      désaccord n'est donc pas historique, il commande deux politiques.
+
+  - id: VIO-36
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: philo_violence
+    tags: [violence_revolutionnaire, echelle_individuelle_collective, plancher]
+    primary_misconception: mc.philo.violence.echelle-individuelle-collective-confondues
+    stem: >
+      Un candidat justifie la violence révolutionnaire par un raisonnement de
+      légitime défense : « on a le droit de se défendre quand on est agressé ».
+      Que manque-t-il à cette transposition ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle change d'échelle sans le dire : la légitime défense s'exerce dans un ordre légal, la révolution vise à le renverser."
+        correct: true
+      - id: B
+        text: "Rien : les deux situations relèvent du même principe, seule la taille du groupe concerné diffère."
+        correct: false
+        misconception: mc.philo.violence.echelle-individuelle-collective-confondues
+        feedback: >
+          Ce n'est pas une différence de taille mais de cadre. La légitime
+          défense invoque une règle reconnue par l'ordre en place : elle
+          suppose cet ordre. La violence révolutionnaire, elle, conteste
+          l'ordre lui-même comme illégitime — elle ne peut donc pas se réclamer
+          d'une de ses règles.
+      - id: C
+        text: "Il manque de préciser que la fin poursuivie est juste, ce qui suffirait alors à légitimer les moyens employés."
+        correct: false
+        misconception: mc.philo.violence.fin-juste-legitime-tout-moyen
+        feedback: >
+          Ce complément ne réparerait rien, et il introduit une seconde erreur.
+          Même au service d'une fin juste, la violence reste dans son geste une
+          négation de la personne d'autrui (chapitre 3) ; et le pouvoir conquis
+          par la lutte tend à se retourner contre ceux qu'il devait libérer.
+      - id: D
+        text: "Il manque de citer Fanon, qui a démontré que toute violence coloniale relève de la légitime défense collective."
+        correct: false
+        misconception: mc.philo.violence.fanon-marx-confondus
+        feedback: >
+          Ce n'est pas la thèse de Fanon, et elle ne réglerait pas le problème
+          d'échelle. Fanon soutient que l'ordre colonial repose à sa racine sur
+          un rapport de force déjà violent — un argument sur la NATURE de cet
+          ordre, non une extension de la légitime défense à un groupe.
+    correct_feedback: >
+      Deux échelles, deux problèmes : la légitime défense se règle à
+      l'intérieur d'un ordre légal admis ; la violence révolutionnaire conteste
+      cet ordre tout entier. La copie ne doit jamais les fondre.
+    solution: |
+      **Ce que suppose la légitime défense.** Un ordre légal existant, une
+      règle qu'il reconnaît, et un juge devant lequel l'invoquer. Elle se
+      déploie DANS le droit.
+
+      **Ce que suppose la violence révolutionnaire.** Le jugement que cet
+      ordre est illégitime dans son ensemble. Elle se déploie CONTRE le droit
+      en place, dont elle ne peut donc pas emprunter les catégories.
+
+      **Conséquence pour la copie.** Passer de l'une à l'autre sans le
+      signaler, c'est utiliser une autorisation délivrée par l'ordre qu'on
+      prétend renverser. La difficulté du chapitre 6 tient exactement là.
+
+  - id: VIO-37
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: philo_violence
+    tags: [fanon, marx, distinction_auteurs, plancher]
+    primary_misconception: mc.philo.violence.fanon-marx-confondus
+    stem: >
+      Qu'est-ce que l'analyse de Fanon sur la violence coloniale ajoute à
+      l'argument marxiste selon lequel l'État sert les intérêts d'une classe
+      dominante ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Que l'ordre colonial ne sert pas seulement un groupe : il repose à sa racine sur un rapport de force déjà violent."
+        correct: true
+      - id: B
+        text: "Rien de propre : Fanon applique l'analyse marxiste de l'État à la situation coloniale, sans y ajouter de thèse nouvelle."
+        correct: false
+        misconception: mc.philo.violence.fanon-marx-confondus
+        feedback: >
+          C'est manquer ce qui fait la force de Fanon. Marx montre qu'un ordre
+          SERT des intérêts ; Fanon soutient que l'ordre colonial est
+          INSTAURÉ et MAINTENU par la violence même — d'où sa conclusion, bien
+          plus radicale, sur le caractère illusoire d'une opposition
+          strictement pacifique.
+      - id: C
+        text: "Qu'une fin juste, l'indépendance, suffit à légitimer tous les moyens employés pour l'obtenir."
+        correct: false
+        misconception: mc.philo.violence.fin-juste-legitime-tout-moyen
+        feedback: >
+          Ce n'est pas ce que Fanon établit, et la leçon rappelle pourquoi
+          aucune fin ne peut jouer ce rôle : la violence reste, dans son geste
+          même, une négation de la personne, et le pouvoir conquis par elle
+          tend à se perpétuer. L'argument de Fanon porte sur la nature de
+          l'ordre colonial, pas sur un blanc-seing.
+      - id: D
+        text: "Que la lutte coloniale relève de la légitime défense, exactement comme un individu agressé dans la rue."
+        correct: false
+        misconception: mc.philo.violence.echelle-individuelle-collective-confondues
+        feedback: >
+          La légitime défense s'invoque à l'intérieur d'un ordre légal reconnu ;
+          une lutte anticoloniale conteste cet ordre en entier. Transposer la
+          catégorie d'une échelle à l'autre efface précisément le problème que
+          le chapitre 6 pose.
+    correct_feedback: >
+      Fanon va plus loin que Marx : l'ordre colonial n'est pas seulement au
+      service d'un groupe, il est bâti sur un rapport de force violent — ce
+      qui rend illusoire, selon lui, une opposition purement pacifique.
+    solution: |
+      **L'argument marxiste, rappelé.** L'État n'est pas neutre : ses
+      institutions servent les intérêts d'une classe dominante.
+
+      **Ce que Fanon y ajoute.** L'ordre colonial n'est pas seulement
+      orienté — il est CONSTITUÉ par la violence : conquête, expropriation,
+      maintien par la force. La violence n'y est pas un moyen occasionnel,
+      elle en est le fondement.
+
+      **La conséquence qu'il en tire.** Si le rapport est violent à sa racine,
+      une opposition strictement pacifique s'adresse à un interlocuteur qui
+      n'existe pas. C'est une thèse discutée — le chapitre 6 en pèse les
+      limites — mais elle n'est pas réductible à Marx.
+
+
+  - id: VIO-38
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: philo_violence
+    tags: [gandhi, non_violence, moyens_fins, plancher]
+    primary_misconception: mc.philo.violence.non-violence-confondue-avec-passivite
+    stem: >
+      Un élève résume le satyagraha gandhien ainsi : « ne rien faire et
+      attendre que l'adversaire cède ». Que rétablir ?
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est une résistance active et publique — désobéissance organisée — qui accepte la répression pour convaincre l'adversaire."
+        correct: true
+      - id: B
+        text: "Rien : le satyagraha est bien un refus d'agir, et c'est la constance de ce refus qui finit par lasser l'adversaire et le faire céder."
+        correct: false
+        misconception: mc.philo.violence.non-violence-confondue-avec-passivite
+        feedback: >
+          La non-violence gandhienne n'est ni un retrait ni un silence : c'est
+          une action publique, organisée, qui expose délibérément ceux qui la
+          mènent. La marche du sel n'est pas une abstention. La réduire à une
+          passivité efface ce qui en fait une troisième voie, distincte à la
+          fois de la violence et de la résignation.
+      - id: C
+        text: "Rien sur le fond, mais Gandhi admet la violence en dernier recours si la fin poursuivie est juste."
+        correct: false
+        misconception: mc.philo.violence.moyens-fins-mal-articules
+        feedback: >
+          C'est exactement ce que l'image de la graine et de l'arbre exclut.
+          Pour Gandhi, le lien entre moyens et fin est aussi nécessaire
+          qu'entre une graine et l'arbre qui en naît : des moyens violents ne
+          peuvent pas produire une fin authentiquement juste, si noble
+          soit-elle.
+      - id: D
+        text: "Il faut ajouter qu'une fin juste rend légitime n'importe quel moyen, y compris pour un non-violent."
+        correct: false
+        misconception: mc.philo.violence.fin-juste-legitime-tout-moyen
+        feedback: >
+          Ce serait retourner Gandhi contre lui-même. Sa position est
+          précisément que la fin ne rachète pas les moyens — et la leçon en
+          donne la raison générale : la violence reste, dans son geste même,
+          une négation de la personne, quelle que soit la cause invoquée.
+    correct_feedback: >
+      Le satyagraha est une résistance active, publique et organisée, qui
+      accepte consciemment la répression pour convaincre — ni violence, ni
+      passivité.
+    solution: |
+      **Trois positions, pas deux.** Le chapitre 7 refuse l'alternative
+      « violence ou soumission » :
+
+      - **la violence** — elle nie la personne de l'adversaire ;
+      - **la passivité** — elle laisse l'injustice intacte ;
+      - **le satyagraha** — il résiste sans nier, en s'adressant à la
+        conscience de l'adversaire.
+
+      **Ce que cela suppose concrètement.** Désobéir publiquement, revendiquer
+      son acte, accepter la sanction sans y répondre par la force. C'est une
+      exposition, pas un retrait — et elle demande davantage de courage que la
+      riposte.
+
+  - id: VIO-39
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: philo_violence
+    tags: [bourdieu, weber, violence_symbolique, legitimite, plancher]
+    primary_misconception: mc.philo.violence.violence-symbolique-annule-legitimite-weberienne
+    stem: >
+      Le concept bourdieusien de violence symbolique invalide-t-il la
+      distinction wébérienne entre force légitime et violence ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : il décrit un mécanisme observable dans certaines institutions, qui complète l'analyse de Weber sans la congédier."
+        correct: true
+      - id: B
+        text: "Oui : si la domination peut se cacher sous la légitimité, alors tout pouvoir légitime n'est qu'une violence déguisée."
+        correct: false
+        misconception: mc.philo.violence.violence-symbolique-annule-legitimite-weberienne
+        feedback: >
+          Le glissement va d'un mécanisme précis à une thèse générale. Bourdieu
+          repère la violence symbolique dans des institutions particulières —
+          l'école, la culture, le langage — sans soutenir que toute obéissance
+          serait illusoire. Faire de sa description une négation du monopole
+          wébérien lui prête une thèse qu'il ne défend pas.
+      - id: C
+        text: "Non, et pour une raison simple : le concept ne décrit rien de réel, faute d'une contrainte physique repérable."
+        correct: false
+        misconception: mc.philo.violence.violence-reduite-au-physique
+        feedback: >
+          La conclusion est bonne, la raison la détruit. Le critère du chapitre
+          3 ne demande aucun contact : une domination qui obtient l'assentiment
+          en imposant ses normes comme naturelles contourne bel et bien la
+          liberté. Le concept désigne quelque chose de réel, et c'est ce qui le
+          rend utile à côté de Weber.
+      - id: D
+        text: "Oui : Bourdieu montre que les dominants refusent consciemment de voir l'arbitraire de l'ordre qu'ils imposent."
+        correct: false
+        misconception: mc.philo.violence.meconnaissance-mal-identifiee
+        feedback: >
+          La méconnaissance est située du mauvais côté. Elle désigne le fait
+          que les DOMINÉS ne perçoivent pas l'arbitraire des normes imposées :
+          ils les vivent comme naturelles et méritées. Déplacer le mécanisme
+          vers les dominants en fait une hypocrisie consciente, ce qui manque
+          toute la finesse du concept.
+    correct_feedback: >
+      Bourdieu complète Weber, il ne l'annule pas : il décrit un mécanisme
+      repérable dans des institutions précises, sans nier l'existence du
+      monopole légitime ni rendre toute obéissance illusoire.
+    solution: |
+      **Ce que Bourdieu affirme.** Certaines institutions — école, culture,
+      langage — imposent des normes arbitraires que les dominés perçoivent
+      comme naturelles. La domination s'exerce alors sans contrainte visible.
+
+      **Ce qu'il n'affirme pas.** Que le monopole wébérien serait une fiction,
+      ni que toute obéissance serait, par principe, illégitime.
+
+      **Comment les deux s'articulent.** Weber donne un critère pour trancher
+      entre force légitime et violence ; Bourdieu montre qu'une domination peut
+      se loger DANS ce qui satisfait le critère, en obtenant l'assentiment.
+      C'est un ajout, et il rend l'analyse plus exigeante — pas caduque.
+
+  - id: VIO-40
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: philo_violence
+    tags: [bourdieu, meconnaissance, violence_symbolique, plancher]
+    primary_misconception: mc.philo.violence.meconnaissance-mal-identifiee
+    stem: >
+      Chez Bourdieu, que désigne exactement la « méconnaissance » qui
+      accompagne la violence symbolique ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le fait que les dominés vivent comme naturelles et méritées des normes en réalité arbitraires."
+        correct: true
+      - id: B
+        text: "Le refus délibéré, chez les dominants, de reconnaître l'arbitraire des normes qu'ils imposent aux autres."
+        correct: false
+        misconception: mc.philo.violence.meconnaissance-mal-identifiee
+        feedback: >
+          Le mécanisme est situé du mauvais côté, et cela change tout. Une
+          hypocrisie consciente des dominants serait une simple mauvaise foi ;
+          ce que Bourdieu décrit est plus troublant — les dominés adhèrent, et
+          contribuent ainsi eux-mêmes à reproduire l'ordre qui les domine, sans
+          qu'aucune contrainte ne s'exerce.
+      - id: C
+        text: "L'aveuglement des sociologues qui, faute d'enquête, ne repèrent pas les rapports de domination."
+        correct: false
+        misconception: mc.philo.violence.meconnaissance-mal-identifiee
+        feedback: >
+          Le concept ne porte pas sur ceux qui analysent mais sur ceux qui
+          subissent. La méconnaissance est un fait social — la perception que
+          les dominés ont des normes — et non une lacune méthodologique de
+          l'observateur.
+      - id: D
+        text: "Le fait qu'aucune violence symbolique ne peut exister sans une contrainte physique qui la soutienne en dernier ressort."
+        correct: false
+        misconception: mc.philo.violence.violence-reduite-au-physique
+        feedback: >
+          C'est l'inverse qui fait l'intérêt du concept : la violence
+          symbolique opère SANS contrainte physique, par l'adhésion même de
+          ceux qu'elle domine. Exiger une force en arrière-plan revient à
+          ramener toute domination au modèle du coup porté, que le chapitre 3
+          a précisément dépassé.
+    correct_feedback: >
+      La méconnaissance désigne la perception des DOMINÉS : ils vivent comme
+      naturelles et méritées des normes arbitraires, et concourent ainsi, sans
+      contrainte, à reproduire l'ordre qui les domine.
+    solution: |
+      **Où se loge le mécanisme.** Chez les dominés — pas chez les dominants,
+      pas chez le sociologue.
+
+      **Ce qu'il produit.** Les normes imposées cessent d'apparaître comme
+      imposées : elles semblent aller de soi, et les positions qu'elles
+      distribuent semblent méritées.
+
+      **Pourquoi c'est une violence.** Parce que l'assentiment obtenu n'en est
+      pas un : il repose sur une perception faussée. On retrouve le critère du
+      chapitre 3 — la liberté d'autrui est contournée, ici sans qu'aucune main
+      ne se lève.
+
+
+
+  - id: VIO-41
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: philo_violence
+    tags: [accroche, force_legitime, legitimite, plancher]
+    primary_misconception: mc.philo.violence.faux-dilemme-legitime-violence
+    stem: >
+      Reviens aux voisins du premier chapitre, qui immobilisent le voleur. Un
+      élève tranche : « c'est comme la police, puisque l'homme était bien
+      coupable ». Que manque-t-il à ce jugement ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le critère décisif : ni l'identité des acteurs ni la culpabilité de la cible, mais la procédure suivie et le recours possible."
+        correct: true
+      - id: B
+        text: "Rien : ou bien il n'y a pas de policier et c'est une violence, ou bien l'homme est coupable et c'est comme la police."
+        correct: false
+        misconception: mc.philo.violence.faux-dilemme-legitime-violence
+        feedback: >
+          Les deux branches de ce dilemme sont précisément les deux réponses
+          spontanées que le chapitre 2 écarte. Ni l'absence d'uniforme, ni la
+          culpabilité constatée après coup ne disent ce qui sépare le geste des
+          voisins de celui d'un policier légitime. Le critère est ailleurs, et
+          c'est tout l'objet du chapitre de le construire.
+      - id: C
+        text: "Il manque de rappeler que seuls des policiers assermentés peuvent exercer une force légitime."
+        correct: false
+        misconception: mc.philo.violence.acteur-determine-legitimite
+        feedback: >
+          Faire du statut le critère ne résiste pas à l'épreuve inverse : un
+          policier qui agirait hors de toute procédure commettrait, lui aussi,
+          une violence. Ce qui légitime n'est pas qui agit, mais selon quelle
+          règle connue d'avance, et devant quel recours.
+      - id: D
+        text: "Il manque de vérifier que le résultat était juste : un acte n'est légitime que si son résultat l'est aussi."
+        correct: false
+        misconception: mc.philo.violence.legitime-confondu-avec-juste
+        feedback: >
+          Les deux notions sont ici soudées. Un acte peut être légitime — issu
+          d'une procédure reconnue — et produire une injustice : l'erreur
+          judiciaire en est l'exemple. Faire dépendre la légitimité du résultat
+          la rendrait impossible à évaluer sur le moment, alors qu'elle doit
+          l'être avant d'agir.
+    correct_feedback: >
+      La question n'est ni « y avait-il un policier ? » ni « était-il
+      coupable ? », mais : l'acte découlait-il d'une loi, suivait-il une
+      procédure connue, reste-t-il contestable devant un tiers ?
+    solution: |
+      **Les deux réponses spontanées, et pourquoi aucune ne suffit :**
+
+      - « Pas de policiers, donc violence » — fait du statut le critère, ce que
+        le contre-exemple du policier hors procédure démonte.
+      - « Voleur coupable, donc comme la police » — fait du résultat le
+        critère, ce que l'erreur judiciaire démonte en sens inverse.
+
+      **Le critère construit à la place.** Un usage de la force est légitime
+      lorsqu'il découle d'une loi, suit une procédure connue à l'avance, et
+      reste contestable devant un tiers impartial. Les voisins n'en remplissent
+      aucune : leur geste, même dirigé contre un coupable, est une violence.
+
+  - id: VIO-42
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: philo_violence
+    tags: [hobbes, ressorts_conflit, droit_de_nature, plancher]
+    primary_misconception: mc.philo.violence.trois-ressorts-hobbes-confondus
+    stem: >
+      Dans une scène d'état de nature, deux hommes se disputent l'accès à une
+      source, chacun redoute que l'autre l'empoisonne, et l'un veut de surcroît
+      s'imposer aux yeux du groupe. Comment lire cette scène avec Hobbes ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Les trois ressorts du conflit y agissent ensemble : compétition pour la source, défiance réciproque, recherche de gloire."
+        correct: true
+      - id: B
+        text: "Un seul ressort agit, la compétition : la défiance et la gloire n'en sont que des expressions particulières."
+        correct: false
+        misconception: mc.philo.violence.trois-ressorts-hobbes-confondus
+        feedback: >
+          Ramener les trois à un seul fait perdre à l'analyse ce qui la rend
+          redoutable. La défiance n'a besoin d'aucun bien disputé : deux hommes
+          sans rien à se prendre peuvent s'attaquer par simple incertitude sur
+          leurs intentions. Et la gloire vise un regard, non une ressource.
+      - id: C
+        text: "Chacun exerce un droit de nature que Hobbes tient pour moralement fondé, ce qui rend la scène légitime."
+        correct: false
+        misconception: mc.philo.violence.droit-de-nature-confondu-avec-droit-moral
+        feedback: >
+          Le droit de nature n'est pas une approbation morale : c'est le
+          constat qu'aucune limite reconnue ne s'impose encore, faute de
+          pouvoir commun. Hobbes le décrit pour montrer qu'il faut en sortir,
+          non pour en faire une justification.
+      - id: D
+        text: "Hobbes donne cette scène comme un idéal de liberté, chacun y disposant de tout sans entrave."
+        correct: false
+        misconception: mc.philo.violence.hobbes-fait-lapologie-de-la-violence
+        feedback: >
+          C'est l'inverse de son propos. Cette liberté sans limite est
+          invivable, et Hobbes la peint ainsi délibérément : la vie y est
+          « solitaire, misérable, dangereuse, animale et brève ». Le tableau
+          sert à fonder le Léviathan, pas à le regretter.
+    correct_feedback: >
+      Compétition, défiance et gloire sont trois mécanismes distincts, et la
+      scène les réunit — c'est justement leur cumul qui rend l'état de nature
+      invivable.
+    solution: |
+      **Repérer chaque ressort dans la scène :**
+
+      - **Compétition** — la source, bien rare que deux hommes convoitent ;
+      - **Défiance** — la crainte d'un empoisonnement, qui rend l'attaque
+        préventive rationnelle ;
+      - **Gloire** — le désir de s'imposer au regard du groupe.
+
+      **Ce que leur cumul démontre.** Supprimer la rareté ne suffirait pas : la
+      défiance subsisterait. Supprimer la défiance ne suffirait pas non plus :
+      la gloire reste. Aucune correction partielle ne pacifie l'état de nature
+      — d'où la nécessité d'un pouvoir commun, et non d'un simple arrangement.
+
+
+coverage_summary:
+  # Recalculé le 2026-09-05 à partir du fichier, par la convention ANNONCÉE :
+  # un item compte UNE fois par modèle, quel que soit le nombre de ses
+  # distracteurs qui le portent. La table précédente comptait en réalité les
+  # DISTRACTEURS — elle annonçait 7 pour violence-reduite-a-la-douleur là où
+  # 4 items seulement l'exposent, et 3 pour faux-dilemme là où il y en avait
+  # 2. L'écart n'était pas anodin : il masquait des modèles sous le plancher.
+  # La convention retenue est celle de la porte de CI
+  # (web/scripts/couverture-diagnostique.mjs).
+  total_items: 42
+  floor: 3
+  floor_met: true
+  per_misconception:   # nombre d'ITEMS exposant le modèle sur au moins un distracteur
+    mc.philo.violence.hobbes-fait-lapologie-de-la-violence: 6
+    mc.philo.violence.violence-reduite-a-la-douleur: 6
+    mc.philo.violence.violence-reduite-au-physique: 6
+    mc.philo.violence.acteur-determine-legitimite: 5
+    mc.philo.violence.legitime-confondu-avec-juste: 5
+    mc.philo.violence.fin-juste-legitime-tout-moyen: 4
+    mc.philo.violence.hobbes-rousseau-confondus: 4
+    mc.philo.violence.amour-de-soi-amour-propre-confondus: 3
+    mc.philo.violence.culpabilite-determine-legitimite: 3
+    mc.philo.violence.droit-de-nature-confondu-avec-droit-moral: 3
+    mc.philo.violence.echelle-individuelle-collective-confondues: 3
+    mc.philo.violence.fanon-marx-confondus: 3
+    mc.philo.violence.faux-dilemme-legitime-violence: 3
+    mc.philo.violence.force-confondue-avec-violence: 3
+    mc.philo.violence.limite-institutionnelle-invalide-toute-legitimite: 3
+    mc.philo.violence.meconnaissance-mal-identifiee: 3
+    mc.philo.violence.methode-dissertation-appliquee-mecaniquement: 3
+    mc.philo.violence.moyens-fins-mal-articules: 3
+    mc.philo.violence.non-violence-confondue-avec-passivite: 3
+    mc.philo.violence.propriete-mal-interpretee-chez-rousseau: 3
+    mc.philo.violence.regard-et-contrainte-physique-confondus: 3
+    mc.philo.violence.trois-ressorts-hobbes-confondus: 3
+    mc.philo.violence.violence-symbolique-annule-legitimite-weberienne: 3
+  per_misconception_distractor_count:   # pour mémoire : nombre de DISTRACTEURS
+    mc.philo.violence.hobbes-fait-lapologie-de-la-violence: 7
+    mc.philo.violence.violence-reduite-a-la-douleur: 9
+    mc.philo.violence.violence-reduite-au-physique: 6
+    mc.philo.violence.acteur-determine-legitimite: 5
+    mc.philo.violence.legitime-confondu-avec-juste: 7
+    mc.philo.violence.fin-juste-legitime-tout-moyen: 6
+    mc.philo.violence.hobbes-rousseau-confondus: 5
+    mc.philo.violence.amour-de-soi-amour-propre-confondus: 5
+    mc.philo.violence.culpabilite-determine-legitimite: 3
+    mc.philo.violence.droit-de-nature-confondu-avec-droit-moral: 6
+    mc.philo.violence.echelle-individuelle-collective-confondues: 5
+    mc.philo.violence.fanon-marx-confondus: 5
+    mc.philo.violence.faux-dilemme-legitime-violence: 4
+    mc.philo.violence.force-confondue-avec-violence: 5
+    mc.philo.violence.limite-institutionnelle-invalide-toute-legitimite: 3
+    mc.philo.violence.meconnaissance-mal-identifiee: 6
+    mc.philo.violence.methode-dissertation-appliquee-mecaniquement: 9
+    mc.philo.violence.moyens-fins-mal-articules: 5
+    mc.philo.violence.non-violence-confondue-avec-passivite: 6
+    mc.philo.violence.propriete-mal-interpretee-chez-rousseau: 5
+    mc.philo.violence.regard-et-contrainte-physique-confondus: 4
+    mc.philo.violence.trois-ressorts-hobbes-confondus: 5
+    mc.philo.violence.violence-symbolique-annule-legitimite-weberienne: 5
+  ramp_coverage:
+    R0: 3
+    R1: 6
+    R2: 5
+    R3: 6
+    R4: 5
+    R5: 5
+    R6: 4
+    R7: 5
+    R8: 3
+  notes: >-
+    Banque « legacy » (VIO-1…27) rétro-taguée lors de la conversion du
+    sommet : chaque distracteur porte un identifiant réel, chaque item un
+    primary_misconception. Le bilan honnête d'alors comptait cinq modèles à
+    2 items et un à 1 ; le recomptage par ITEM en a révélé douze de plus,
+    masqués par une table qui additionnait les distracteurs. Quinze items
+    neufs (VIO-28 … VIO-42), écrits le 2026-09-05, referment la dette : les
+    23 modèles déclarés atteignent le plancher de 3 items. Aucune erreur
+    nouvelle n'a été déclarée ; aucun énoncé, choix ou retour existant n'a
+    été affaibli.
+    Équilibre des longueurs (addendum philo de la recette, obligatoire) : la
+    banque d'origine avait la clé la plus longue dans 20 items sur 27 avant
+    la passe précédente, ramenés à 0. Les quinze items neufs ont été
+    vérifiés par web/scripts/indice-longueur.mjs, jamais à l'œil.

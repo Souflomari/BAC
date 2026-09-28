@@ -1,0 +1,2840 @@
+notion: nombres-complexes-1
+skill_code: maths_complexes_algebrique
+# Misconception inventory (backfilled in the summit-conversion pass). This end
+# bank was authored BEFORE the inventory existed (`misconceptions: []`), so
+# items carry an item-level `primary_misconception` here AND every distractor
+# now carries a per-distractor `misconception:` field (the gold standard shown
+# in checkpoints.yaml). See coverage_summary at the end for honest counts and
+# the under-covered models flagged for a follow-up item pass — NO counts padded.
+misconceptions:
+  - id: mc.math.maths_complexes_algebrique.im-inclut-i
+    label: >-
+      « La partie imaginaire inclut le i (Im(3-5i) = -5i au lieu de -5) »
+    description: >-
+      L'élève donne bi comme partie imaginaire au lieu de b : le « i » est
+      rattaché à la valeur de Im(z).
+    contradicts_principle: >-
+      Pour z = a + bi, Im(z) = b est un RÉEL (le coefficient de i), pas bi.
+  - id: mc.math.maths_complexes_algebrique.confond-re-im
+    label: >-
+      « Confusion partie réelle / partie imaginaire (on les échange) »
+    description: >-
+      L'élève intervertit a et b : il donne la partie réelle quand on demande
+      l'imaginaire, ou identifie réel avec imaginaire dans une égalité.
+    contradicts_principle: >-
+      Dans z = a + bi, a = Re(z) et b = Im(z) sont deux réels distincts ; une
+      égalité de complexes s'identifie partie réelle avec partie réelle,
+      imaginaire avec imaginaire.
+  - id: mc.math.maths_complexes_algebrique.i2-egale-plus-un
+    label: >-
+      « On utilise i^2 = +1 au lieu de i^2 = -1 »
+    description: >-
+      En développant un produit ou un quotient, l'élève remplace i^2 par +1
+      (ou l'oublie), ce qui fausse le signe de la partie réelle.
+    contradicts_principle: >-
+      La brique fondatrice du chapitre est i^2 = -1 : c'est ce remplacement,
+      à la fin du développement, qui distingue le calcul dans C du calcul réel.
+  - id: mc.math.maths_complexes_algebrique.produit-non-developpe
+    label: >-
+      « On n'effectue pas le produit : on additionne ou on multiplie terme à terme »
+    description: >-
+      L'élève additionne deux complexes quand on demande leur produit, ou
+      multiplie parties réelles entre elles et imaginaires entre elles.
+    contradicts_principle: >-
+      Un produit (a+bi)(a'+b'i) se DÉVELOPPE comme un produit de binômes, puis
+      on réduit avec i^2 = -1 : (aa'-bb') + (ab'+a'b)i.
+  - id: mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference
+    label: >-
+      « Confusion entre z + z̄ (= 2a) et z - z̄ (= 2bi) »
+    description: >-
+      L'élève échange les deux résultats, ou croit que z et son conjugué
+      s'annulent, ne sachant plus quelle partie disparaît.
+    contradicts_principle: >-
+      Dans la SOMME z + z̄ = 2a les parties imaginaires s'annulent (réel) ;
+      dans la DIFFÉRENCE z - z̄ = 2bi les parties réelles s'annulent
+      (imaginaire pur).
+  - id: mc.math.maths_complexes_algebrique.quotient-conjugue-incomplet
+    label: >-
+      « Division par le conjugué mal menée (numérateur oublié, division oubliée, fraction inversée) »
+    description: >-
+      L'élève multiplie seulement le dénominateur par le conjugué, ou oublie de
+      diviser par le réel obtenu, ou confond numérateur et dénominateur.
+    contradicts_principle: >-
+      Pour z/z', on multiplie numérateur ET dénominateur par le conjugué du
+      dénominateur ; le dénominateur devient le réel z'·z̄', puis on divise
+      chaque partie par ce réel.
+  - id: mc.math.maths_complexes_algebrique.module-lineaire
+    label: >-
+      « Le module comme combinaison linéaire des parties (a+b ou |a|+|b|) »
+    description: >-
+      L'élève additionne partie réelle et partie imaginaire (ou leurs valeurs
+      absolues) au lieu d'appliquer Pythagore.
+    contradicts_principle: >-
+      |z| = sqrt(a^2 + b^2) : les deux coordonnées se combinent par une somme
+      de CARRÉS sous une racine (une distance), pas par une simple addition.
+  - id: mc.math.maths_complexes_algebrique.module-oubli-racine
+    label: >-
+      « On calcule a^2 + b^2 mais on oublie la racine carrée »
+    description: >-
+      L'élève s'arrête à la somme des carrés et donne a^2 + b^2 comme module.
+    contradicts_principle: >-
+      Le module est |z| = sqrt(a^2 + b^2) : la racine carrée est indispensable
+      (sqrt(25) = 5, pas 25).
+  - id: mc.math.maths_complexes_algebrique.module-produit-additif
+    label: >-
+      « |z·z'| = |z| + |z'| (ou une différence / un quotient) au lieu du produit »
+    description: >-
+      L'élève additionne, soustrait ou divise les modules d'un produit, ou
+      mésuse la propriété du module d'une puissance.
+    contradicts_principle: >-
+      |z·z'| = |z|·|z'| (produit), et |z/z'| = |z|/|z'|. Le module d'un produit
+      est le PRODUIT des modules.
+  - id: mc.math.maths_complexes_algebrique.distance-affixe-brute
+    label: >-
+      « Distance AB lue sur |z_B| ou |z_A + z_B| au lieu de |z_B - z_A| »
+    description: >-
+      L'élève prend le module d'une affixe seule, ou de la somme des affixes,
+      au lieu de la DIFFÉRENCE.
+    contradicts_principle: >-
+      AB = |z_B - z_A| : la distance est le module de l'affixe du vecteur AB,
+      c'est-à-dire de la DIFFÉRENCE des affixes.
+  - id: mc.math.maths_complexes_algebrique.milieu-sans-moyenne
+    label: >-
+      « Affixe du milieu sans diviser par 2, ou par une différence »
+    description: >-
+      L'élève donne z_A + z_B (somme non moyennée) ou (z_B - z_A)/2 pour le
+      milieu.
+    contradicts_principle: >-
+      z_I = (z_A + z_B)/2 : le milieu est la MOYENNE des deux affixes (somme
+      divisée par 2).
+  - id: mc.math.maths_complexes_algebrique.conjugue-mauvais-axe
+    label: >-
+      « Symétrie : mauvais axe (réels vs imaginaires) ou origine confondue avec l'axe réel »
+    description: >-
+      L'élève change le signe de la mauvaise partie : partie réelle au lieu de
+      l'imaginaire, ou les deux (origine).
+    contradicts_principle: >-
+      Le symétrique par rapport à l'axe des réels est z̄ = a - bi (on change le
+      signe de b SEUL) ; changer les deux signes donne -z (symétrie par rapport
+      à O).
+  - id: mc.math.maths_complexes_algebrique.imaginaire-pur-mauvaise-partie
+    label: >-
+      « Pour un imaginaire pur, on annule la partie imaginaire au lieu de la réelle »
+    description: >-
+      L'élève impose Im(z) = 0 (ce qui rend z réel) au lieu de Re(z) = 0, ou
+      exige que les deux parties soient nulles.
+    contradicts_principle: >-
+      z est imaginaire pur ssi Re(z) = 0 ET Im(z) ≠ 0 : c'est la partie RÉELLE
+      qui doit s'annuler.
+  - id: mc.math.maths_complexes_algebrique.puissance-i-cycle-errone
+    label: >-
+      « Erreurs dans le cycle des puissances de i (i^4 = -1, mauvais reste, facteur oublié) »
+    description: >-
+      L'élève se trompe de reste modulo 4, croit i^4 = -1, ou oublie le facteur
+      i^1 restant.
+    contradicts_principle: >-
+      Les puissances de i sont périodiques de période 4 : i^4 = 1, et
+      i^n = i^(n mod 4). Ex. i^13 = i^(4·3+1) = i.
+  - id: mc.math.maths_complexes_algebrique.signe-parties-perdu
+    label: >-
+      « Perte d'un signe négatif en combinant les parties »
+    description: >-
+      L'élève laisse tomber un signe « moins » (sur une partie, dans une
+      soustraction, en isolant une inconnue).
+    contradicts_principle: >-
+      Chaque partie garde son signe : dans z = a + bi, a et b peuvent être
+      négatifs, et une soustraction distribue le signe à TOUS les termes.
+  - id: mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif
+    label: >-
+      « Un carré de réel pourrait être négatif / -1 serait un cas spécial »
+    description: >-
+      L'élève cherche (ou nie l'existence de) une solution réelle à x^2 = -1
+      sans voir que tout carré de réel est positif ou nul.
+    contradicts_principle: >-
+      Pour tout réel x, x^2 >= 0 : x^2 = -1 n'a aucune solution réelle. La règle
+      « carré >= 0 » est propre à R, ce qui justifie de PROLONGER R.
+  - id: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+    label: >-
+      « i s'obtiendrait en appliquant sqrt à -1 par les règles habituelles »
+    description: >-
+      L'élève croit que i = sqrt(-1) se calcule comme une racine ordinaire.
+    contradicts_principle: >-
+      La racine carrée n'est définie que sur les réels >= 0. i est POSÉ par la
+      propriété i^2 = -1 (un postulat), pas calculé par une racine usuelle.
+  - id: mc.math.maths_complexes_algebrique.extension-equation-mal-appariee
+    label: >-
+      « Mauvais appariement équation ↔ extension d'ensemble »
+    description: >-
+      L'élève associe la mauvaise équation à un passage N→Z, Z→Q, Q→R ou R→C.
+    contradicts_principle: >-
+      x+5=3 motive N→Z, 2x=3 motive Z→Q, x^2=2 motive Q→R, x^2=-1 motive R→C :
+      chaque extension répond à une équation sans solution dans l'ensemble
+      précédent.
+  - id: mc.math.maths_complexes_algebrique.module-argument-vs-parties
+    label: >-
+      « Confusion (module, argument) avec (partie réelle, partie imaginaire) »
+    description: >-
+      L'élève lit la partie réelle comme le module et la partie imaginaire (ou
+      l'angle) comme l'argument, ou inversement.
+    contradicts_principle: >-
+      Le module |z| = sqrt(a^2+b^2) est une distance ; l'argument est un angle.
+      Ni l'un ni l'autre n'est la partie réelle a ou la partie imaginaire b.
+      (Exercé par la couche summit / checkpoints, pas encore par l'end-bank.)
+  - id: mc.math.maths_complexes_algebrique.algebrique-exponentielle-conversion
+    label: >-
+      « Erreur de conversion forme algébrique ↔ forme exponentielle »
+    description: >-
+      L'élève se trompe en passant de a+bi à r·e^{iθ} (ou l'inverse) :
+      typiquement un signe de sinus, ou une lecture directe de l'angle.
+    contradicts_principle: >-
+      e^{iθ} = cos θ + i sin θ (sinus IMPAIR : sin(-θ) = -sin θ). La conversion
+      passe par module et argument, pas par une lecture directe des coefficients.
+      (Exercé par la couche summit / checkpoints, pas encore par l'end-bank.)
+  # ── Ajoutées pour la dette d'examen GAP-B (docs/audits/dette-examen/maths.md,
+  # « nombres-complexes-1 ») : équation du second degré dans ℂ (Δ réel négatif,
+  # Δ complexe carré parfait) et Viète, travaillées au corps de la leçon
+  # (lesson.md:333-470) mais jamais testées avant NBCOMPLEX-34.
+  - id: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+    label: >-
+      « Δ réel négatif ⇒ « aucune solution », comme dans ℝ »
+    description: >-
+      Pour une équation du second degré à coefficients réels, l'élève garde le
+      verdict de ℝ (Δ<0 ⇒ pas de solution) même en travaillant dans ℂ, au lieu
+      de construire δ tel que δ² = Δ.
+    contradicts_principle: >-
+      Dans ℂ, un Δ réel négatif donne δ = i√|Δ| (car δ² = -|Δ| = Δ) et
+      l'équation a toujours deux solutions complexes conjuguées : le mur « Δ<0
+      ⇒ aucune solution » de ℝ est tombé, c'est tout l'objet du chapitre.
+  - id: mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels
+    label: >-
+      « Les deux racines seraient toujours conjuguées, même à coefficients complexes »
+    description: >-
+      L'élève applique la propriété « les racines sont conjuguées » à une
+      équation dont un coefficient n'est pas réel.
+    contradicts_principle: >-
+      La propriété repose entièrement sur ā=a, b̄=b, c̄=c (coefficients
+      réels) ; dès qu'un coefficient est complexe non réel, elle cesse de
+      s'appliquer et les deux racines n'ont plus aucune raison d'être conjuguées.
+  - id: mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose
+    label: >-
+      « Mauvais signe dans le carré parfait retenu pour δ »
+    description: >-
+      Pour reconnaître δ tel que δ² = Δ, l'élève choisit le carré de signe
+      opposé dans la table ((1+i)² = 2i contre (1-i)² = -2i), sans vérifier
+      que son carré redonne bien Δ.
+    contradicts_principle: >-
+      (1+i)² = 2i et (1-i)² = -2i ne sont pas interchangeables : le δ retenu
+      doit être VÉRIFIÉ en le redéveloppant, pas deviné sur la table.
+  - id: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+    label: >-
+      « Somme et produit des racines échangés »
+    description: >-
+      L'élève attribue à la somme des racines la valeur du produit (c/a), et
+      au produit la valeur de la somme (-b/a).
+    contradicts_principle: >-
+      Pour az²+bz+c=0, z1+z2 = -b/a (lié au coefficient de z) et z1z2 = c/a
+      (lié au terme constant) : les deux rôles ne s'échangent pas.
+  - id: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+    label: >-
+      « Relations de Viète appliquées sans diviser par a »
+    description: >-
+      Quand a ≠ 1, l'élève lit z1+z2 = -b et z1z2 = c directement sur les
+      coefficients, en oubliant de diviser par le coefficient dominant a.
+    contradicts_principle: >-
+      Les relations sont z1+z2 = -b/a et z1z2 = c/a : si a ≠ 1, il faut
+      diviser par a, pas seulement lire les coefficients bruts.
+items:
+  - id: NBCOMPLEX-1
+    rung: "R1"
+    difficulty_level: 1
+    skill_code: maths_complexes_algebrique
+    tags: ["forme-algebrique", "partie-imaginaire"]
+    primary_misconception: mc.math.maths_complexes_algebrique.im-inclut-i
+    stem: >
+      Quelle est la partie imaginaire de $z = 3 - 5i$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-5$"
+        correct: true
+      - id: B
+        text: "$-5i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.im-inclut-i
+        feedback: >
+          La partie imaginaire $\text{Im}(z)$ est un nombre RÉEL — c'est le
+          coefficient de $i$, pas le terme "$bi$" tout entier. Ici ce
+          coefficient est $-5$, pas $-5i$.
+      - id: C
+        text: "$5$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Erreur de signe : tu as oublié le signe négatif devant le $5i$.
+          Dans $z=a+bi$, la partie imaginaire garde le signe de $b$ ; ici
+          $b=-5$, pas $5$.
+      - id: D
+        text: "$3$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.confond-re-im
+        feedback: >
+          Tu as donné la partie RÉELLE ($a=3$), pas la partie imaginaire.
+          La partie imaginaire est le coefficient de $i$, c'est-à-dire $-5$.
+    correct_feedback: >
+      Exact — la partie imaginaire est le nombre réel qui multiplie $i$, ici
+      $-5$ (et non $-5i$).
+    solution: |
+      Pour $z=a+bi$ avec $z=3-5i$, on a $a=3$ et $b=-5$. Par définition,
+      $\text{Re}(z)=a=3$ et $\text{Im}(z)=b=-5$ (un nombre réel, sans le
+      $i$).
+
+  - id: NBCOMPLEX-2
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: ["produit", "i-carre"]
+    primary_misconception: mc.math.maths_complexes_algebrique.i2-egale-plus-un
+    stem: >
+      Calculer le produit $(3+2i)(1-4i)$ sous forme algébrique.
+    type: mcq
+    choices:
+      - id: A
+        text: "$11 - 10i$"
+        correct: true
+      - id: B
+        text: "$-5 - 10i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.i2-egale-plus-un
+        feedback: >
+          Tu as utilisé $i^2=+1$ au lieu de $i^2=-1$ — c'est l'erreur
+          inverse de la bonne règle. Le terme $-8i^2$ devient $+8$ (puisque
+          $i^2=-1$), pas $-8$ : c'est ce qui change le signe de la partie
+          réelle.
+      - id: C
+        text: "$4 - 2i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.produit-non-developpe
+        feedback: >
+          Tu as additionné les deux nombres au lieu de les multiplier. La
+          question demande un PRODUIT : il faut développer
+          $(3+2i)(1-4i)$ comme un produit de deux binômes, pas simplement
+          additionner terme à terme.
+      - id: D
+        text: "$11 + 10i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Erreur de signe dans le regroupement des termes en $i$ :
+          $12i - 2i = 10i$, avec un signe MOINS devant le $2i$ (le second
+          facteur est $1-4i$, donc $3\times(-4i)=-12i$ et
+          $2i\times 1=+2i$, ce qui donne $-12i+2i=-10i$), pas $+10i$.
+    correct_feedback: >
+      Bien vu : en développant, $(3+2i)(1-4i) = 3-12i+2i-8i^2$, puis en
+      remplaçant $i^2$ par $-1$, on obtient $3-10i+8 = 11-10i$.
+    solution: |
+      $$(3+2i)(1-4i) = 3\times 1 + 3\times(-4i) + 2i\times 1 + 2i\times(-4i)$$
+      $$= 3 - 12i + 2i - 8i^2$$
+      En remplaçant $i^2$ par $-1$ :
+      $$= 3 - 10i + 8 = 11 - 10i$$
+
+  - id: NBCOMPLEX-3
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: ["conjugue", "propriete"]
+    primary_misconception: mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference
+    stem: >
+      Pour un nombre complexe $z=a+bi$ (avec $a,b$ réels), que vaut
+      $z + \overline{z}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2a$"
+        correct: true
+      - id: B
+        text: "$2bi$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference
+        feedback: >
+          C'est $z - \overline{z}$ que tu calcules là (qui vaut
+          effectivement $2bi$), pas $z + \overline{z}$. Dans la SOMME, ce
+          sont les parties imaginaires qui s'annulent ($bi$ et $-bi$), pas
+          les parties réelles.
+      - id: C
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference
+        feedback: >
+          $z$ et son conjugué ne s'annulent pas en général. Seule la
+          PARTIE IMAGINAIRE s'annule dans la somme ($bi+(-bi)=0$) ; la
+          partie réelle, elle, s'additionne deux fois : $a+a=2a$, qui n'est
+          nul que si $a=0$.
+      - id: D
+        text: "$2a + 2bi$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference
+        feedback: >
+          Tu as additionné $a+bi$ et $a-bi$ comme si les deux termes en
+          $i$ s'ajoutaient, au lieu de s'annuler. Or $bi + (-bi) = 0$ : le
+          résultat ne contient donc plus aucun $i$.
+    correct_feedback: >
+      Exact : $z+\overline{z} = (a+bi)+(a-bi) = 2a$, un nombre réel — c'est
+      toujours le double de la partie réelle.
+    solution: |
+      $$z + \overline{z} = (a+bi) + (a-bi) = 2a = 2\,\text{Re}(z)$$
+      Les termes en $i$ s'annulent ($bi-bi=0$), il ne reste que le double
+      de la partie réelle.
+
+  - id: NBCOMPLEX-4
+    rung: "R3"
+    difficulty_level: 4
+    skill_code: maths_complexes_algebrique
+    tags: ["quotient", "conjugue"]
+    primary_misconception: mc.math.maths_complexes_algebrique.quotient-conjugue-incomplet
+    stem: >
+      Calculer $\dfrac{1+i}{2-i}$ sous forme algébrique.
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{1}{5} + \\dfrac{3}{5}i$"
+        correct: true
+      - id: B
+        text: "$\\dfrac{1}{5} + \\dfrac{1}{5}i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.quotient-conjugue-incomplet
+        feedback: >
+          Tu as multiplié le dénominateur par son conjugué, mais oublié de
+          multiplier aussi le NUMÉRATEUR par la même quantité. Le conjugué
+          doit multiplier haut ET bas, sinon la valeur de l'expression
+          change.
+      - id: C
+        text: "$\\dfrac{3}{5} + \\dfrac{3}{5}i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.i2-egale-plus-un
+        feedback: >
+          Erreur de signe dans le développement du numérateur : tu as
+          traité $i^2$ comme $+1$ au lieu de $-1$. En reprenant
+          $(1+i)(2+i)=2+i+2i+i^2$ avec $i^2=-1$, on obtient $1+3i$, pas
+          $3+3i$.
+      - id: D
+        text: "$\\dfrac{1}{2} - \\dfrac{3}{2}i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.quotient-conjugue-incomplet
+        feedback: >
+          Tu as calculé l'inverse de la fraction demandée (c'est-à-dire
+          $\frac{2-i}{1+i}$) au lieu de $\frac{1+i}{2-i}$. Relis bien lequel
+          est au numérateur et lequel est au dénominateur avant de choisir
+          le conjugué à utiliser.
+    correct_feedback: >
+      Exact : en multipliant haut et bas par $\overline{2-i}=2+i$, le
+      dénominateur devient $2^2+1^2=5$ et le numérateur devient
+      $(1+i)(2+i)=1+3i$, d'où $\frac{1}{5}+\frac{3}{5}i$.
+    solution: |
+      $$\frac{1+i}{2-i} = \frac{(1+i)(2+i)}{(2-i)(2+i)}$$
+      Le dénominateur : $(2-i)(2+i) = 2^2+1^2 = 5$.
+      Le numérateur : $(1+i)(2+i) = 2+i+2i+i^2 = 2+3i-1 = 1+3i$.
+      $$\frac{1+i}{2-i} = \frac{1+3i}{5} = \frac{1}{5}+\frac{3}{5}i$$
+
+  - id: NBCOMPLEX-5
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: ["module"]
+    primary_misconception: mc.math.maths_complexes_algebrique.module-lineaire
+    stem: >
+      Calculer le module de $z = -3+4i$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$5$"
+        correct: true
+      - id: B
+        text: "$1$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-lineaire
+        feedback: >
+          Tu as additionné directement la partie réelle et la partie
+          imaginaire ($-3+4=1$) au lieu d'appliquer la formule
+          $|z|=\sqrt{a^2+b^2}$. Le module n'est pas une simple somme des
+          coordonnées.
+      - id: C
+        text: "$7$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-lineaire
+        feedback: >
+          Tu as additionné les valeurs absolues de $a$ et $b$
+          ($3+4=7$). Mais le module combine les deux coordonnées par une
+          somme de CARRÉS sous une racine, pas par simple addition — les
+          deux ne coïncident que dans des cas particuliers.
+      - id: D
+        text: "$25$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-oubli-racine
+        feedback: >
+          Tu as calculé $a^2+b^2=9+16=25$ mais oublié de prendre la racine
+          carrée. Le module est $\sqrt{a^2+b^2}$, donc $\sqrt{25}=5$, pas
+          $25$.
+    correct_feedback: >
+      Exact : $|z| = \sqrt{(-3)^2+4^2} = \sqrt{9+16} = \sqrt{25} = 5$.
+    solution: |
+      $$|z| = \sqrt{a^2+b^2} = \sqrt{(-3)^2+4^2} = \sqrt{9+16} = \sqrt{25} = 5$$
+
+  - id: NBCOMPLEX-6
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: ["affixe", "distance", "geometrie"]
+    primary_misconception: mc.math.maths_complexes_algebrique.distance-affixe-brute
+    stem: >
+      Soient $A$ et $B$ les points d'affixes respectives $z_A = 2+5i$ et
+      $z_B = 6+2i$. Calculer la distance $AB$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$5$"
+        correct: true
+      - id: B
+        text: "$2\\sqrt{10}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.distance-affixe-brute
+        feedback: >
+          Tu as calculé $|z_B|$ (la distance de $B$ à l'origine), pas
+          $|z_B-z_A|$ (la distance entre $A$ et $B$). Il faut d'abord
+          soustraire les deux affixes avant de prendre le module.
+      - id: C
+        text: "$7$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-lineaire
+        feedback: >
+          Tu as additionné les valeurs absolues des différences de
+          coordonnées ($4+3=7$) au lieu d'appliquer Pythagore. La distance
+          entre deux points combine les deux différences par une somme de
+          carrés sous une racine : $\sqrt{4^2+3^2}=5$, pas $4+3=7$.
+      - id: D
+        text: "$25$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-oubli-racine
+        feedback: >
+          Tu as calculé $(x_B-x_A)^2+(y_B-y_A)^2 = 16+9=25$ mais oublié la
+          racine carrée finale. La distance est $\sqrt{25}=5$, pas $25$.
+    correct_feedback: >
+      Exact : $AB = |z_B-z_A| = |4-3i| = \sqrt{4^2+3^2} = \sqrt{25} = 5$.
+    solution: |
+      $$z_B - z_A = (6+2i)-(2+5i) = 4-3i$$
+      $$AB = |z_B-z_A| = \sqrt{4^2+(-3)^2} = \sqrt{16+9} = \sqrt{25} = 5$$
+
+  - id: NBCOMPLEX-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_complexes_algebrique
+    tags: ["accroche", "carre-reel"]
+    primary_misconception: mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif
+    stem: >
+      Pourquoi l'équation $x^2=-1$ n'a-t-elle aucune solution dans
+      $\mathbb{R}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Parce que $-1$ n'est pas un carré parfait (comme $4$ ou $9$)."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif
+        feedback: >
+          Ce n'est pas la bonne raison : des réels non carrés parfaits,
+          comme $2$, ont quand même une racine carrée réelle (ici
+          $\sqrt{2}$). Le vrai problème avec $x^2=-1$ n'est pas que
+          $-1$ serait un « mauvais » nombre à racine, mais qu'aucun
+          carré de réel ne peut être négatif, quel que soit ce réel.
+      - id: B
+        text: "Parce que le carré d'un nombre réel est toujours positif ou nul, donc jamais égal à $-1$."
+        correct: true
+      - id: C
+        text: "Parce que $x^2=-1$ a une solution réelle, mais irrationnelle, qu'on n'a pas encore trouvée."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif
+        feedback: >
+          Contrairement à $x^2=2$ (qui gagne une solution irrationnelle,
+          $\sqrt{2}$, en passant de $\mathbb{Q}$ à $\mathbb{R}$),
+          $x^2=-1$ n'a aucune solution réelle, rationnelle ou
+          irrationnelle : un carré de réel ne peut jamais être négatif.
+      - id: D
+        text: "Parce que $-1$ est un nombre négatif, et qu'on ne peut pas résoudre d'équation avec un nombre négatif."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif
+        feedback: >
+          Affirmation trop générale : des équations avec des nombres
+          négatifs ont très bien des solutions réelles (par exemple
+          $x+5=3$ donne $x=-2$). Le problème vient spécifiquement du
+          carré, pas de la présence d'un nombre négatif dans l'équation.
+    correct_feedback: >
+      Exact : pour tout réel $x$, on a $x^2 \geq 0$, donc $x^2$ ne peut
+      jamais être égal à $-1$, qui est strictement négatif.
+    solution: |
+      Le carré d'un nombre réel, qu'il soit positif ou négatif, est
+      toujours positif ou nul (par exemple $3^2=9$ et $(-3)^2=9$). Aucun
+      réel élevé au carré ne peut donc donner $-1$, qui est strictement
+      négatif : l'équation $x^2=-1$ n'a aucune solution dans
+      $\mathbb{R}$.
+
+  - id: NBCOMPLEX-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_complexes_algebrique
+    tags: ["accroche", "extension-ensembles"]
+    primary_misconception: mc.math.maths_complexes_algebrique.extension-equation-mal-appariee
+    stem: >
+      D'après le schéma présenté (chaque nouvel ensemble de nombres est
+      inventé pour donner une solution à une équation qui n'en a pas dans
+      l'ensemble précédent), quelle équation a motivé le passage de
+      $\mathbb{Z}$ à $\mathbb{Q}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$x+5=3$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.extension-equation-mal-appariee
+        feedback: >
+          C'est l'équation qui motive le passage de $\mathbb{N}$ à
+          $\mathbb{Z}$ (il faut un entier négatif, $-2$, pour la
+          résoudre), pas le passage de $\mathbb{Z}$ à $\mathbb{Q}$.
+      - id: B
+        text: "$x^2=2$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.extension-equation-mal-appariee
+        feedback: >
+          C'est l'équation qui motive le passage de $\mathbb{Q}$ à
+          $\mathbb{R}$ (il faut un irrationnel, $\sqrt{2}$), une étape
+          plus loin dans le schéma que $\mathbb{Z}$ à $\mathbb{Q}$.
+      - id: C
+        text: "$2x=3$"
+        correct: true
+      - id: D
+        text: "$x^2=-1$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.extension-equation-mal-appariee
+        feedback: >
+          C'est l'équation qui motive le passage de $\mathbb{R}$ à
+          $\mathbb{C}$ (il faut inventer $i$), la toute dernière étape du
+          schéma, pas le passage de $\mathbb{Z}$ à $\mathbb{Q}$.
+    correct_feedback: >
+      Exact : dans $\mathbb{Z}$, $2x=3$ n'a pas de solution (aucun entier
+      doublé ne donne $3$) ; il a fallu inventer les fractions, et
+      $\mathbb{Z}$ est devenu $\mathbb{Q}$.
+    solution: |
+      Le schéma suit l'ordre : $x+5=3$ ($\mathbb{N}\to\mathbb{Z}$),
+      $2x=3$ ($\mathbb{Z}\to\mathbb{Q}$), $x^2=2$
+      ($\mathbb{Q}\to\mathbb{R}$), $x^2=-1$ ($\mathbb{R}\to\mathbb{C}$).
+      L'équation associée au passage de $\mathbb{Z}$ à $\mathbb{Q}$ est
+      donc $2x=3$.
+
+  - id: NBCOMPLEX-9
+    rung: "R0"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: ["accroche", "definition-i"]
+    primary_misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+    stem: >
+      Comment le nombre $i$ est-il introduit pour donner un sens à
+      l'équation $x^2=-1$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "On pose qu'il existe un nombre $i$ vérifiant $i^2=-1$ — ce n'est pas démontré, c'est le point de départ."
+        correct: true
+      - id: B
+        text: "On démontre que $i=\\sqrt{-1}$ en appliquant les règles habituelles de la racine carrée."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+        feedback: >
+          La racine carrée n'est définie que pour des réels positifs ou
+          nuls ; on ne peut pas l'appliquer directement à $-1$. Le nombre
+          $i$ est POSÉ par une propriété ($i^2=-1$), pas obtenu en
+          appliquant la racine carrée usuelle à un nombre négatif.
+      - id: C
+        text: "On démontre que $x=-1$ résout l'équation, en remplaçant $x$ par $-1$."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif
+        feedback: >
+          $(-1)^2=1$, pas $-1$ : $x=-1$ n'est donc pas solution de
+          $x^2=-1$. Cette piste ne fonctionne pas, quel que soit le réel
+          essayé.
+      - id: D
+        text: "On montre que l'équation était en fait résoluble dans $\\mathbb{R}$ depuis le début, et qu'il y avait une erreur de calcul."
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif
+        feedback: >
+          Il n'y a aucune erreur de calcul en cause : c'est une propriété
+          structurelle de $\mathbb{R}$ (tout carré de réel est positif ou
+          nul) qui rend l'équation réellement sans solution dans
+          $\mathbb{R}$.
+    correct_feedback: >
+      Exact : $i$ n'est pas démontré ni calculé à partir de règles
+      existantes — c'est un nouveau nombre, posé comme point de départ,
+      qui vérifie $i^2=-1$ par définition.
+    solution: |
+      Aucun réel ne vérifie $x^2=-1$. Pour donner malgré tout un sens à
+      cette équation, on pose l'existence d'un nombre $i$ tel que
+      $i^2=-1$ : c'est un postulat, la brique de départ de tout le
+      chapitre, pas quelque chose qu'on démontre à partir de règles déjà
+      connues sur $\mathbb{R}$.
+
+  - id: NBCOMPLEX-10
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: ["forme-algebrique", "egalite-complexes"]
+    primary_misconception: mc.math.maths_complexes_algebrique.confond-re-im
+    stem: >
+      Trouver les réels $x$ et $y$ tels que
+      $(2x+1) + (2y-3)i = 7 + 5i$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$x=2$ et $y=5$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.confond-re-im
+        feedback: >
+          Tu as identifié la partie réelle de gauche avec la partie
+          IMAGINAIRE de droite, et inversement ($2x+1=5$ et $2y-3=7$).
+          L'égalité de deux complexes se lit partie réelle avec partie
+          réelle, partie imaginaire avec partie imaginaire : $2x+1=7$ et
+          $2y-3=5$.
+      - id: B
+        text: "$x=4$ et $y=4$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Erreur de signe en isolant $x$ : à partir de $2x+1=7$, il faut
+          SOUSTRAIRE $1$ aux deux membres ($2x=7-1=6$, donc $x=3$), pas
+          l'ajouter ($2x=7+1=8$ donnerait $x=4$).
+      - id: C
+        text: "$x=3$ et $y=1$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Erreur de signe en isolant $y$ : à partir de $2y-3=5$, il faut
+          AJOUTER $3$ aux deux membres ($2y=5+3=8$, donc $y=4$), pas le
+          soustraire ($2y=5-3=2$ donnerait $y=1$).
+      - id: D
+        text: "$x=3$ et $y=4$"
+        correct: true
+    correct_feedback: >
+      Exact : l'égalité de deux complexes donne deux équations réelles,
+      $2x+1=7$ et $2y-3=5$, d'où $x=3$ et $y=4$.
+    solution: |
+      D'après la règle d'égalité des complexes, on identifie partie
+      réelle avec partie réelle et partie imaginaire avec partie
+      imaginaire :
+      $$2x+1=7 \qquad \text{et} \qquad 2y-3=5$$
+      La première donne $2x=6$, donc $x=3$. La seconde donne $2y=8$, donc
+      $y=4$.
+
+  - id: NBCOMPLEX-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: ["forme-algebrique", "imaginaire-pur"]
+    primary_misconception: mc.math.maths_complexes_algebrique.imaginaire-pur-mauvaise-partie
+    stem: >
+      Pour quelle valeur du réel $m$ le nombre complexe
+      $z=(m-2)+(m+1)i$ est-il un imaginaire pur ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$m=-1$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.imaginaire-pur-mauvaise-partie
+        feedback: >
+          $m=-1$ annule la partie IMAGINAIRE ($m+1=0$), ce qui rend $z$
+          RÉEL, pas imaginaire pur. Un imaginaire pur exige au contraire
+          que la partie réelle soit nulle : $m-2=0$.
+      - id: B
+        text: "$m=2$"
+        correct: true
+      - id: C
+        text: "$m=-2$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Erreur de signe en résolvant $m-2=0$ : on ajoute $2$ aux deux
+          membres, ce qui donne $m=2$, pas $m=-2$.
+      - id: D
+        text: "$m$ n'existe pas"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.imaginaire-pur-mauvaise-partie
+        feedback: >
+          Un imaginaire pur exige seulement que la partie réelle soit
+          nulle ($a=0$), pas que les deux parties soient nulles à la
+          fois (sinon $z=0$, qui est réel). Ici $m=2$ annule la partie
+          réelle et laisse la partie imaginaire $m+1=3 \neq 0$ : $z$ est
+          bien un imaginaire pur non nul.
+    correct_feedback: >
+      Exact : pour que $z$ soit un imaginaire pur, il faut et il suffit
+      que sa partie réelle soit nulle et sa partie imaginaire non nulle.
+      $m-2=0$ donne $m=2$, et alors $m+1=3\neq 0$.
+    solution: |
+      $z$ est un imaginaire pur si et seulement si sa partie réelle est
+      nulle et sa partie imaginaire ne l'est pas :
+      $$m-2=0 \quad \text{et} \quad m+1 \neq 0$$
+      La première équation donne $m=2$. On vérifie que $m+1=3\neq 0$ :
+      la condition est bien satisfaite.
+
+  - id: NBCOMPLEX-12
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: ["somme", "forme-algebrique"]
+    primary_misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+    stem: >
+      Calculer $(-3+5i)+(4-2i)$ sous forme algébrique.
+    type: mcq
+    choices:
+      - id: A
+        text: "$7+3i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Tu as ignoré le signe négatif de $-3$ en additionnant les
+          parties réelles ($3+4=7$). La partie réelle est
+          $-3+4=1$, pas $7$.
+      - id: B
+        text: "$1+7i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Tu as ignoré le signe négatif de $-2i$ en additionnant les
+          parties imaginaires ($5+2=7$). La partie imaginaire est
+          $5+(-2)=3$, pas $7$.
+      - id: C
+        text: "$1+3i$"
+        correct: true
+      - id: D
+        text: "$-1-3i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Tu as inversé le signe global de chaque terme avant
+          d'additionner (comme si on calculait $(3-5i)+(-4+2i)$) : cela
+          donne $3-4=-1$ et $-5+2=-3$. En gardant les signes d'origine,
+          $-3+4=1$ et $5-2=3$.
+    correct_feedback: >
+      Exact : on additionne les parties réelles entre elles
+      ($-3+4=1$) et les parties imaginaires entre elles ($5-2=3$).
+    solution: |
+      $$(-3+5i)+(4-2i) = (-3+4)+(5-2)i = 1+3i$$
+
+  - id: NBCOMPLEX-13
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: ["puissances-i"]
+    primary_misconception: mc.math.maths_complexes_algebrique.puissance-i-cycle-errone
+    stem: >
+      Calculer $i^{13}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$i$"
+        correct: true
+      - id: B
+        text: "$1$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.puissance-i-cycle-errone
+        feedback: >
+          Tu as réduit $i^{12}=(i^4)^3=1$ mais oublié de multiplier par
+          le facteur restant $i^1$ : $13=4\times 3+1$, donc
+          $i^{13}=i^{12}\times i = 1\times i = i$, pas $1$ tout seul.
+      - id: C
+        text: "$-i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.puissance-i-cycle-errone
+        feedback: >
+          Tu as utilisé $i^4=-1$ au lieu de $i^4=1$. Rappel :
+          $i^4=(i^2)^2=(-1)^2=1$, un réel POSITIF, pas $-1$.
+      - id: D
+        text: "$-1$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.puissance-i-cycle-errone
+        feedback: >
+          Erreur dans le reste de la division de $13$ par $4$ :
+          $13=4\times 3+1$ (reste $1$), pas reste $2$. Donc
+          $i^{13}=i^1=i$, pas $i^2=-1$.
+    correct_feedback: >
+      Exact : les puissances de $i$ se répètent par groupes de $4$
+      ($i^4=1$). Comme $13=4\times 3+1$, on a
+      $i^{13}=(i^4)^3\times i = 1\times i = i$.
+    solution: |
+      $$13 = 4\times 3 + 1$$
+      $$i^{13} = i^{4\times 3+1} = (i^4)^3 \times i^1 = 1^3 \times i = i$$
+
+  - id: NBCOMPLEX-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: ["conjugue", "propriete"]
+    primary_misconception: mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference
+    stem: >
+      Pour un nombre complexe $z=a+bi$ (avec $a,b$ réels), que vaut
+      $z - \overline{z}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2a$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference
+        feedback: >
+          C'est $z+\overline{z}$ qui vaut $2a$ (les parties imaginaires
+          s'annulent dans la SOMME). Dans la DIFFÉRENCE, ce sont au
+          contraire les parties réelles qui s'annulent ($a-a=0$), et les
+          parties imaginaires qui s'ajoutent : $bi-(-bi)=2bi$.
+      - id: B
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference
+        feedback: >
+          Erreur de distribution du signe moins : si on oublie de
+          changer le signe du $-bi$ à l'intérieur de la parenthèse, on
+          calcule $a+bi-a-bi=0$. Mais il faut distribuer le moins aux
+          DEUX termes : $-(a-bi)=-a+bi$, ce qui donne
+          $a+bi-a+bi=2bi$, pas $0$.
+      - id: C
+        text: "$-2bi$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference
+        feedback: >
+          Tu as calculé $\overline{z}-z$ (dans le mauvais ordre) au lieu
+          de $z-\overline{z}$ : $(a-bi)-(a+bi)=-2bi$. Dans l'ordre
+          demandé, $z-\overline{z}=(a+bi)-(a-bi)=2bi$.
+      - id: D
+        text: "$2bi$"
+        correct: true
+    correct_feedback: >
+      Exact : $z-\overline{z} = (a+bi)-(a-bi) = 2bi$, un imaginaire pur —
+      c'est toujours le double de la partie imaginaire, multiplié par
+      $i$.
+    solution: |
+      $$z - \overline{z} = (a+bi) - (a-bi) = a+bi-a+bi = 2bi$$
+      Les parties réelles s'annulent ($a-a=0$), il ne reste que le
+      double de la partie imaginaire, multiplié par $i$.
+
+  - id: NBCOMPLEX-15
+    rung: "R4"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: ["module", "propriete"]
+    primary_misconception: mc.math.maths_complexes_algebrique.module-produit-additif
+    stem: >
+      Sachant que $|z|=3$ et $|z'|=4$, que vaut $|z \times z'|$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$7$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-produit-additif
+        feedback: >
+          Tu as additionné les modules ($3+4=7$) au lieu de les
+          multiplier. La propriété est $|z\times z'|=|z|\times|z'|$, un
+          PRODUIT, pas une somme.
+      - id: B
+        text: "$12$"
+        correct: true
+      - id: C
+        text: "$1$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-produit-additif
+        feedback: >
+          Tu as soustrait les modules ($4-3=1$) ; il n'existe pas de
+          propriété reliant $|z\times z'|$ à une différence de modules.
+      - id: D
+        text: "$\\dfrac{4}{3}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-produit-additif
+        feedback: >
+          Tu as calculé le quotient des modules, qui correspondrait à
+          $|z'/z|$, pas au produit $|z\times z'|$.
+    correct_feedback: >
+      Exact : $|z\times z'|=|z|\times|z'|=3\times 4=12$.
+    solution: |
+      $$|z \times z'| = |z|\times|z'| = 3\times 4 = 12$$
+
+  - id: NBCOMPLEX-16
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: maths_complexes_algebrique
+    tags: ["module", "developpement", "i-carre"]
+    primary_misconception: mc.math.maths_complexes_algebrique.i2-egale-plus-un
+    stem: >
+      Calculer le module de $z=(1-i)^2$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\sqrt{2}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-produit-additif
+        feedback: >
+          Tu as calculé $|1-i|$ (le module de la base), pas
+          $|(1-i)^2|$ (le module du carré). Il faut développer
+          $(1-i)^2$ d'abord (ou utiliser
+          $|(1-i)^2|=|1-i|^2=(\sqrt{2})^2=2$).
+      - id: B
+        text: "$2\\sqrt{2}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.i2-egale-plus-un
+        feedback: >
+          Erreur de signe en développant : avec $i^2=-1$,
+          $(1-i)^2=1-2i+i^2=1-2i-1=-2i$. Si on utilise par erreur
+          $i^2=+1$, on obtient $1-2i+1=2-2i$, dont le module est
+          $\sqrt{4+4}=2\sqrt{2}$ — mais $i^2=-1$, pas $+1$.
+      - id: C
+        text: "$2$"
+        correct: true
+      - id: D
+        text: "$4$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-oubli-racine
+        feedback: >
+          Tu as bien développé $(1-i)^2=-2i$ (donc $a=0$, $b=-2$), et
+          calculé $a^2+b^2=0+4=4$, mais oublié de prendre la racine
+          carrée finale : le module est $\sqrt{4}=2$, pas $4$.
+    correct_feedback: >
+      Exact : $(1-i)^2 = 1-2i+i^2 = 1-2i-1 = -2i$, donc
+      $|z|=\sqrt{0^2+(-2)^2}=\sqrt{4}=2$.
+    solution: |
+      $$(1-i)^2 = 1-2i+i^2 = 1-2i-1 = -2i$$
+      $$|z| = |-2i| = \sqrt{0^2+(-2)^2} = \sqrt{4} = 2$$
+
+  - id: NBCOMPLEX-17
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: ["affixe", "milieu"]
+    primary_misconception: mc.math.maths_complexes_algebrique.milieu-sans-moyenne
+    stem: >
+      Soient $A$ et $B$ les points d'affixes respectives
+      $z_A=-3+2i$ et $z_B=5-6i$. Quelle est l'affixe du milieu $I$ du
+      segment $[AB]$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$1-2i$"
+        correct: true
+      - id: B
+        text: "$2-4i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.milieu-sans-moyenne
+        feedback: >
+          Tu as calculé $z_A+z_B$ mais oublié de diviser par $2$.
+          L'affixe du milieu est la MOYENNE des deux affixes, pas leur
+          simple somme.
+      - id: C
+        text: "$4-4i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.milieu-sans-moyenne
+        feedback: >
+          Tu as calculé $\dfrac{z_B-z_A}{2}$ au lieu de
+          $\dfrac{z_A+z_B}{2}$. La formule du milieu utilise la SOMME des
+          affixes, pas leur différence.
+      - id: D
+        text: "$1+4i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Erreur de signe : tu as ignoré le signe négatif de $-6$ dans
+          $z_B$, en calculant $2+6=8$ au lieu de $2+(-6)=-4$ pour la
+          partie imaginaire de la somme.
+    correct_feedback: >
+      Exact : $z_I=\dfrac{z_A+z_B}{2}=\dfrac{(-3+5)+(2-6)i}{2}=
+      \dfrac{2-4i}{2}=1-2i$.
+    solution: |
+      $$
+      z_I = \frac{z_A+z_B}{2} = \frac{(-3+5)+(2-6)i}{2} =
+      \frac{2-4i}{2} = 1-2i
+      $$
+
+  - id: NBCOMPLEX-18
+    rung: "R5"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: ["affixe", "symetrie", "conjugue"]
+    primary_misconception: mc.math.maths_complexes_algebrique.conjugue-mauvais-axe
+    stem: >
+      Le point $M$ a pour affixe $z=4-7i$. Quelle est l'affixe du point
+      $M'$, symétrique de $M$ par rapport à l'axe des réels ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-4-7i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-mauvais-axe
+        feedback: >
+          Tu as changé le signe de la partie RÉELLE au lieu de la partie
+          imaginaire (c'est la symétrie par rapport à l'axe des
+          imaginaires, pas des réels). Le symétrique par rapport à l'axe
+          des réels change le signe de $b$ seul : $4-7i \to 4+7i$.
+      - id: B
+        text: "$-4+7i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-mauvais-axe
+        feedback: >
+          Tu as changé le signe des DEUX parties (réelle et imaginaire),
+          ce qui donne le symétrique par rapport à l'ORIGINE ($-z$), pas
+          par rapport à l'axe des réels ($\overline{z}$).
+      - id: C
+        text: "$4-7i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-mauvais-axe
+        feedback: >
+          Tu as gardé $z$ inchangé. Le symétrique par rapport à l'axe des
+          réels change bien le signe de la partie imaginaire ; ici
+          $b=-7\neq 0$, donc $M'\neq M$.
+      - id: D
+        text: "$4+7i$"
+        correct: true
+    correct_feedback: >
+      Exact : le point d'affixe $\overline{z}$ est le symétrique du point
+      d'affixe $z$ par rapport à l'axe des réels ; ici
+      $\overline{4-7i}=4+7i$.
+    solution: |
+      Le symétrique de $M(a,b)$ par rapport à l'axe des réels est le
+      point $(a,-b)$, d'affixe $\overline{z}=a-bi$. Ici $z=4-7i$
+      ($a=4$, $b=-7$), donc $\overline{z}=4+7i$.
+
+  - id: NBCOMPLEX-19
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_complexes_algebrique
+    tags: ["module", "produit", "application"]
+    primary_misconception: mc.math.maths_complexes_algebrique.module-produit-additif
+    stem: >
+      On pose $z_1=3+4i$ et $z_2=5+12i$. Quel est le module de
+      $z_1 \times z_2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$18$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-produit-additif
+        feedback: >
+          Tu as calculé $|z_1|=5$ et $|z_2|=13$ correctement, mais tu les
+          as ADDITIONNÉS ($5+13=18$) au lieu de les multiplier. La
+          propriété est $|z_1z_2|=|z_1|\times|z_2|$, un produit.
+      - id: B
+        text: "$65$"
+        correct: true
+      - id: C
+        text: "$\\dfrac{13}{5}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-produit-additif
+        feedback: >
+          Tu as calculé le QUOTIENT des deux modules ($13/5$), ce qui
+          correspondrait à $|z_2/z_1|$, pas à $|z_1\times z_2|$.
+      - id: D
+        text: "$13$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-produit-additif
+        feedback: >
+          Tu as pris seulement $|z_2|=13$, en oubliant de multiplier par
+          $|z_1|=5$. Le module d'un produit combine les DEUX modules :
+          $|z_1z_2|=|z_1|\times|z_2|=65$, pas $13$.
+    correct_feedback: >
+      Exact : $|z_1|=\sqrt{3^2+4^2}=5$ et $|z_2|=\sqrt{5^2+12^2}=13$,
+      donc $|z_1\times z_2|=|z_1|\times|z_2|=5\times 13=65$.
+    solution: |
+      $$
+      |z_1| = \sqrt{3^2+4^2} = \sqrt{25} = 5 \qquad
+      |z_2| = \sqrt{5^2+12^2} = \sqrt{169} = 13
+      $$
+      $$|z_1\times z_2| = |z_1|\times|z_2| = 5\times 13 = 65$$
+      (Vérification par développement : $z_1z_2=-33+56i$, et
+      $\sqrt{33^2+56^2}=\sqrt{4225}=65$.)
+
+  - id: NBCOMPLEX-20
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_complexes_algebrique
+    tags: ["quotient", "conjugue", "application"]
+    primary_misconception: mc.math.maths_complexes_algebrique.quotient-conjugue-incomplet
+    stem: >
+      On pose $z=\dfrac{4+2i}{1-i}$. Quelle est la forme algébrique de
+      $z$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2+i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.quotient-conjugue-incomplet
+        feedback: >
+          Tu as multiplié le dénominateur par son conjugué mais pas le
+          numérateur : $(4+2i)/2=2+i$. Il faut multiplier haut ET bas par
+          la même quantité, $\overline{1-i}=1+i$.
+      - id: B
+        text: "$3+3i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.i2-egale-plus-un
+        feedback: >
+          Erreur de signe en développant le numérateur : avec $i^2=-1$,
+          $(4+2i)(1+i)=4+6i+2i^2=4+6i-2=2+6i$. Si on utilise par erreur
+          $i^2=+1$, on obtient $4+6i+2=6+6i$, d'où $3+3i$ après division
+          — mais $i^2=-1$, pas $+1$.
+      - id: C
+        text: "$1+3i$"
+        correct: true
+      - id: D
+        text: "$2+6i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.quotient-conjugue-incomplet
+        feedback: >
+          Tu as bien développé le numérateur ($2+6i$) mais oublié de
+          diviser par le dénominateur réel obtenu, $(1-i)(1+i)=2$ : il
+          reste $1+3i$, pas $2+6i$.
+    correct_feedback: >
+      Exact : en multipliant haut et bas par $\overline{1-i}=1+i$, le
+      dénominateur devient $1^2+1^2=2$ et le numérateur devient
+      $(4+2i)(1+i)=2+6i$, d'où $z=1+3i$.
+    solution: |
+      $$z = \frac{4+2i}{1-i} = \frac{(4+2i)(1+i)}{(1-i)(1+i)}$$
+      Dénominateur : $(1-i)(1+i)=1^2+1^2=2$.
+      Numérateur : $(4+2i)(1+i)=4+4i+2i+2i^2=4+6i-2=2+6i$.
+      $$z = \frac{2+6i}{2} = 1+3i$$
+
+  - id: NBCOMPLEX-21
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: ["affixe", "distance", "application"]
+    primary_misconception: mc.math.maths_complexes_algebrique.distance-affixe-brute
+    stem: >
+      Soient $A$ et $B$ les points d'affixes respectives $z_A=-2+3i$ et
+      $z_B=6-3i$. Calculer la distance $AB$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$10$"
+        correct: true
+      - id: B
+        text: "$4$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.distance-affixe-brute
+        feedback: >
+          Tu as calculé $|z_A+z_B|$ au lieu de $|z_B-z_A|$ :
+          $z_A+z_B=4+0i$, de module $4$. La distance $AB$ utilise la
+          DIFFÉRENCE des affixes, pas leur somme.
+      - id: C
+        text: "$100$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-oubli-racine
+        feedback: >
+          Tu as bien calculé $z_B-z_A=8-6i$ et
+          $8^2+(-6)^2=64+36=100$, mais oublié de prendre la racine
+          carrée finale : $AB=\sqrt{100}=10$, pas $100$.
+      - id: D
+        text: "$8$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.distance-affixe-brute
+        feedback: >
+          Tu as utilisé seulement la différence des parties réelles
+          ($6-(-2)=8$), en oubliant la partie imaginaire. La distance
+          combine les deux différences : $AB=\sqrt{8^2+(-6)^2}=10$, pas
+          $8$.
+    correct_feedback: >
+      Exact : $AB=|z_B-z_A|=|8-6i|=\sqrt{8^2+(-6)^2}=\sqrt{100}=10$.
+    solution: |
+      $$z_B - z_A = (6-(-2))+(-3-3)i = 8-6i$$
+      $$AB = |z_B-z_A| = \sqrt{8^2+(-6)^2} = \sqrt{64+36} = \sqrt{100} = 10$$
+
+# ──────────────────────────────────────────────────────────────────────────────
+# COVERAGE (summit-conversion pass — HONEST §6 disclosure, no padding).
+# This end bank predates the misconception inventory and the trig/exponential
+# summit; it was NOT authored to a per-misconception floor. Every distractor is
+# now tagged (per-distractor `misconception:`) and every item carries a
+# `primary_misconception`. MISE À JOUR (revue vague 1, 2026-09-12) : la passe
+# de complément A ÉTÉ faite (NBCOMPLEX-22…33) et le plancher EST atteint —
+# `floor_met: true`, recompté depuis les tags bruts par les deux critiques.
+# ──────────────────────────────────────────────────────────────────────────────
+  # Ajoutés le 2026-09-05 : seize familles sous le plancher de 3 items du banc,
+  # dont DEUX sans aucun item AVANT cet ajout — `module-argument-vs-parties` et
+  # `algebrique-exponentielle-conversion`, sondées par le seul checkpoint
+  # cp-bac-exponentielle. Les items qui les referment siègent au barreau R6 :
+  # la leçon y annonce explicitement que le sujet national emprunte la forme
+  # exponentielle au chapitre suivant, et son point de bascule est justement là.
+  # Douze items, trente-six places.
+  - id: NBCOMPLEX-22
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: [forme_algebrique, parties]
+    primary_misconception: mc.math.maths_complexes_algebrique.im-inclut-i
+    stem: >
+      Soit $z = 3 - 5i$. Que valent $\mathrm{Re}(z)$ et $\mathrm{Im}(z)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\mathrm{Re}(z) = 3$ et $\mathrm{Im}(z) = -5$
+        correct: true
+      - id: B
+        text: >-
+          $\mathrm{Re}(z) = 3$ et $\mathrm{Im}(z) = -5i$ : la partie imaginaire
+          comprend le $i$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.im-inclut-i
+        feedback: >
+          $\mathrm{Im}(z)$ est un nombre RÉEL : c'est le coefficient de $i$, pas
+          le terme entier. Sans cette convention, $\mathrm{Im}(z)$ serait
+          lui-même un complexe et l'écriture $z = a + ib$ perdrait son sens —
+          $a$ et $b$ y sont tous deux réels.
+      - id: C
+        text: >-
+          $\mathrm{Re}(z) = -5$ et $\mathrm{Im}(z) = 3$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.confond-re-im
+        feedback: >
+          Les deux parties sont échangées. Dans $z = a + ib$, la partie RÉELLE
+          est le terme sans $i$ — ici $3$ — et la partie IMAGINAIRE le
+          coefficient de $i$ — ici $-5$, signe compris.
+      - id: D
+        text: >-
+          $\mathrm{Re}(z)$ et $\mathrm{Im}(z)$ valent respectivement le module et
+          l'argument de $z$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-argument-vs-parties
+        feedback: >
+          Ce sont deux couples de coordonnées différents. $(\mathrm{Re},
+          \mathrm{Im})$ sont les coordonnées CARTÉSIENNES du point image ;
+          $(r, \theta)$ — module et argument — ses coordonnées POLAIRES. Ici
+          $|z| = \sqrt{34}$, sans rapport avec $3$ ni $-5$.
+    correct_feedback: >
+      $\mathrm{Re}(3-5i) = 3$ et $\mathrm{Im}(3-5i) = -5$. La partie imaginaire
+      est le COEFFICIENT de $i$ — un réel, signe compris — jamais le terme
+      $-5i$ tout entier.
+    solution: |
+      **La convention.** Pour $z = a + ib$ avec $a, b \in \mathbb{R}$ :
+      $$\mathrm{Re}(z) = a \qquad \mathrm{Im}(z) = b$$
+      Les deux sont des RÉELS.
+
+      **Le contrôle.** $z = \mathrm{Re}(z) + i\,\mathrm{Im}(z)$ : ici
+      $3 + i\times(-5) = 3 - 5i$ ✓.
+
+      **À ne pas confondre avec les coordonnées polaires** $(r, \theta)$, qui
+      décrivent le même point autrement.
+
+  - id: NBCOMPLEX-23
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [imaginaire_pur, conjugue]
+    primary_misconception: mc.math.maths_complexes_algebrique.imaginaire-pur-mauvaise-partie
+    stem: >
+      Pour quelles valeurs du réel $m$ le nombre $z = (m-2) + (m+3)i$ est-il un
+      imaginaire pur ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $m = 2$ : il faut annuler la partie RÉELLE, en gardant la partie
+          imaginaire non nulle
+        correct: true
+      - id: B
+        text: >-
+          $m = -3$ : il faut annuler la partie imaginaire
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.imaginaire-pur-mauvaise-partie
+        feedback: >
+          Annuler la partie imaginaire donne un RÉEL, pas un imaginaire pur.
+          Un imaginaire pur est de la forme $ib$ avec $b \neq 0$ : c'est sa
+          partie réelle qui doit s'annuler. Ici $m = -3$ donnerait $z = -5$, un
+          réel.
+      - id: C
+        text: >-
+          Aucune valeur : $z + \bar{z}$ vaut $2bi$, donc $z$ ne peut pas être
+          imaginaire pur
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference
+        feedback: >
+          Les deux relations sont inversées : $z + \bar{z} = 2a$ (un réel) et
+          $z - \bar{z} = 2ib$. Le critère correct est $z + \bar{z} = 0$ pour un
+          imaginaire pur, et $z - \bar{z} = 0$ pour un réel.
+      - id: D
+        text: >-
+          $m = 2$, ce qui revient à annuler le module de $z$, égal à sa partie
+          réelle
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-argument-vs-parties
+        feedback: >
+          La valeur est juste, la justification non : le module n'est pas la
+          partie réelle. Pour $m = 2$, $z = 5i$ et $|z| = 5 \neq 0$. Annuler le
+          module donnerait $z = 0$, qui n'est pas un imaginaire pur.
+    correct_feedback: >
+      Un imaginaire pur s'écrit $ib$ avec $b \neq 0$ : il faut annuler la partie
+      RÉELLE. Ici $m - 2 = 0$, soit $m = 2$ — et l'on vérifie que la partie
+      imaginaire $m + 3 = 5$ n'est pas nulle.
+    solution: |
+      **La définition.** $z$ est imaginaire pur si $\mathrm{Re}(z) = 0$ et
+      $\mathrm{Im}(z) \neq 0$.
+
+      **La résolution.**
+      $$m - 2 = 0 \iff m = 2$$
+      et pour $m = 2$, $\mathrm{Im}(z) = 5 \neq 0$ ✓.
+
+      **Le critère par le conjugué.**
+      $$
+      z \in i\mathbb{R} \iff z + \bar{z} = 0
+      \qquad z \in \mathbb{R} \iff z - \bar{z} = 0
+      $$
+
+  - id: NBCOMPLEX-24
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [module, forme_exponentielle]
+    primary_misconception: mc.math.maths_complexes_algebrique.module-argument-vs-parties
+    stem: >
+      Soit $z = 1 + i\sqrt{3}$. Que valent son module et son argument, et quelle
+      est sa forme exponentielle ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $|z| = 2$, $\arg(z) = \dfrac{\pi}{3}$, et $z = 2\,e^{i\pi/3}$
+        correct: true
+      - id: B
+        text: >-
+          $|z| = 1$ et $\arg(z) = \sqrt{3}$ : ce sont la partie réelle et la
+          partie imaginaire
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-argument-vs-parties
+        feedback: >
+          Ce sont deux systèmes de coordonnées distincts. $(1, \sqrt{3})$ sont
+          les coordonnées cartésiennes du point image ; le module est sa
+          DISTANCE à l'origine, $\sqrt{1 + 3} = 2$, et l'argument l'ANGLE avec
+          l'axe des réels, ici $\pi/3$.
+      - id: C
+        text: >-
+          $|z| = 2$, $\arg(z) = \dfrac{\pi}{3}$, et $z = 2 + e^{i\pi/3}$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.algebrique-exponentielle-conversion
+        feedback: >
+          La forme exponentielle est un PRODUIT, pas une somme :
+          $z = r\,e^{i\theta}$. Avec une addition, le module de l'expression ne
+          vaudrait plus $r$ — et pour $\theta = 0$ on obtiendrait $3$ au lieu de
+          $2$.
+      - id: D
+        text: >-
+          $|z| = 1 + \sqrt{3}$, le module étant la somme des deux parties
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-lineaire
+        feedback: >
+          Le module est une distance : il se calcule par le théorème de
+          Pythagore, $|z| = \sqrt{a^{2}+b^{2}}$, jamais par une somme. Ici
+          $\sqrt{1+3} = 2$, tandis que $1 + \sqrt{3} \approx 2{,}73$.
+    correct_feedback: >
+      $|z| = \sqrt{1^{2} + (\sqrt3)^{2}} = 2$ et $\arg(z) = \pi/3$ (car
+      $\cos\theta = 1/2$ et $\sin\theta = \sqrt3/2$), d'où
+      $z = 2\,e^{i\pi/3}$ — un PRODUIT du module par l'exponentielle.
+    solution: |
+      **Le module.**
+      $$|z| = \sqrt{a^{2}+b^{2}} = \sqrt{1 + 3} = 2$$
+
+      **L'argument.** On divise par le module :
+      $$
+      \frac{z}{|z|} = \frac{1}{2} + i\frac{\sqrt3}{2}
+      = \cos\frac{\pi}{3} + i\sin\frac{\pi}{3}
+      $$
+      donc $\arg(z) = \dfrac{\pi}{3}\ [2\pi]$.
+
+      **La forme exponentielle.**
+      $$z = r\,e^{i\theta} = 2\,e^{i\pi/3}$$
+      Un produit, jamais une somme.
+
+  - id: NBCOMPLEX-25
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: [produit, quotient]
+    primary_misconception: mc.math.maths_complexes_algebrique.produit-non-developpe
+    stem: >
+      Que vaut $(2 + i)(3 - 2i)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $8 - i$, obtenu en développant les quatre produits puis en remplaçant
+          $i^{2}$ par $-1$
+        correct: true
+      - id: B
+        text: >-
+          $6 - 2i$ : on multiplie les parties réelles entre elles et les parties
+          imaginaires entre elles
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.produit-non-developpe
+        feedback: >
+          Un produit de complexes se DÉVELOPPE, comme un produit de binômes :
+          les quatre termes croisés interviennent. La multiplication terme à
+          terme n'est pas une opération de $\mathbb{C}$ — elle donnerait
+          d'ailleurs un résultat qui dépend de l'écriture choisie.
+      - id: C
+        text: >-
+          $\dfrac{(2+i)(3+2i)}{13}$ : on multiplie par le conjugué du second
+          facteur
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.quotient-conjugue-incomplet
+        feedback: >
+          Multiplier par le conjugué est la technique du QUOTIENT, pas du
+          produit — et elle suppose de diviser aussi le numérateur. Ici il s'agit
+          d'un simple produit : on développe, on remplace $i^{2}$ par $-1$, on
+          regroupe.
+      - id: D
+        text: >-
+          $8 - i$, dont la partie imaginaire vaut $-i$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.im-inclut-i
+        feedback: >
+          Le résultat est juste, sa lecture non : $\mathrm{Im}(8 - i) = -1$, un
+          réel. La partie imaginaire est le coefficient de $i$, jamais le terme
+          entier.
+    correct_feedback: >
+      $(2+i)(3-2i) = 6 - 4i + 3i - 2i^{2} = 6 - i + 2 = 8 - i$. On développe les
+      quatre produits, puis on remplace $i^{2}$ par $-1$.
+    solution: |
+      **Le développement.**
+      $$(2+i)(3-2i) = 2\times 3 + 2\times(-2i) + i\times 3 + i\times(-2i)$$
+      $$= 6 - 4i + 3i - 2i^{2}$$
+
+      **La substitution $i^{2} = -1$.**
+      $$= 6 - i + 2 = 8 - i$$
+
+      **La règle générale.**
+      $$(a+ib)(c+id) = (ac - bd) + i(ad + bc)$$
+      Les parties se mélangent : c'est justement ce qui fait l'intérêt de
+      $\mathbb{C}$.
+
+  - id: NBCOMPLEX-26
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [puissances_de_i, produit]
+    primary_misconception: mc.math.maths_complexes_algebrique.puissance-i-cycle-errone
+    stem: >
+      Que vaut $i^{2026}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $-1$ : le cycle est de longueur $4$, et $2026 = 4\times 506 + 2$
+        correct: true
+      - id: B
+        text: >-
+          $-1$ également, mais parce que $i^{4} = -1$ et que l'exposant est pair
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.puissance-i-cycle-errone
+        feedback: >
+          $i^{4} = +1$, et c'est ce qui crée un cycle de longueur $4$ :
+          $i, -1, -i, 1$. Avec $i^{4} = -1$, le cycle serait de longueur $8$ et
+          tous les restes changeraient. Le résultat est ici juste par accident.
+      - id: C
+        text: >-
+          $2026\,i$ : on multiplie l'exposant par $i$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.produit-non-developpe
+        feedback: >
+          Une puissance n'est pas un produit par l'exposant : $i^{n}$ signifie
+          $i$ multiplié par lui-même $n$ fois. Le calcul passe par le cycle des
+          puissances de $i$, jamais par une multiplication de l'exposant.
+      - id: D
+        text: >-
+          $1$, car un carré est toujours positif et $2026$ est pair
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif
+        feedback: >
+          « Un carré est positif » vaut pour les RÉELS, et c'est précisément
+          l'obstacle que $\mathbb{C}$ lève : $i^{2} = -1$. Transporter la règle
+          des réels dans $\mathbb{C}$ fait disparaître la raison d'être du
+          chapitre.
+    correct_feedback: >
+      Les puissances de $i$ tournent en cycle de longueur $4$ : $i^{1}=i$,
+      $i^{2}=-1$, $i^{3}=-i$, $i^{4}=1$. Comme $2026 = 4\times506 + 2$, on a
+      $i^{2026} = i^{2} = -1$.
+    solution: |
+      **Le cycle.**
+      $$i^{1} = i, \quad i^{2} = -1, \quad i^{3} = -i, \quad i^{4} = 1$$
+      puis tout recommence : la période est $4$.
+
+      **La méthode.** Diviser l'exposant par $4$ et lire le reste :
+      $$2026 = 4\times 506 + 2 \quad\Longrightarrow\quad i^{2026} = i^{2} = -1$$
+
+      **Le point qui fonde tout.** $i^{2} = -1$ : dans $\mathbb{C}$, un carré
+      peut être négatif. C'est exactement ce que l'extension apporte.
+
+  - id: NBCOMPLEX-27
+    rung: "R0"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [construction, extension]
+    primary_misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+    stem: >
+      Comment le nombre $i$ est-il introduit, et pourquoi ne peut-on pas écrire
+      $i = \sqrt{-1}$ en appliquant les règles usuelles des racines ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $i$ est POSÉ par définition comme un nombre vérifiant $i^{2} = -1$ ; les
+          règles de $\sqrt{\ }$ ne valent que pour les réels positifs
+        correct: true
+      - id: B
+        text: >-
+          $i$ s'obtient en appliquant la fonction racine à $-1$, comme pour
+          n'importe quel nombre
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+        feedback: >
+          La fonction $\sqrt{\ }$ n'est définie que sur $[0\,;+\infty[$, et ses
+          règles y sont valides. Les transporter donne des absurdités :
+          $\sqrt{-1}\times\sqrt{-1} = \sqrt{(-1)(-1)} = \sqrt{1} = 1$, alors
+          que $i^{2} = -1$. C'est pourquoi $i$ est POSÉ, non calculé.
+      - id: C
+        text: >-
+          $i$ est introduit pour résoudre $x^{2} = 2$, que $\mathbb{Q}$ ne
+          résolvait pas
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.extension-equation-mal-appariee
+        feedback: >
+          Chaque extension répond à une équation précise : $x + 1 = 0$ mène à
+          $\mathbb{Z}$, $2x = 1$ à $\mathbb{Q}$, $x^{2} = 2$ à $\mathbb{R}$, et
+          $x^{2} = -1$ à $\mathbb{C}$. C'est la dernière qui introduit $i$.
+      - id: D
+        text: >-
+          $i$ n'est pas nécessaire : un carré peut être négatif dans
+          $\mathbb{R}$, à condition de choisir le bon nombre
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif
+        feedback: >
+          Dans $\mathbb{R}$, $x^{2} \geqslant 0$ pour tout $x$ — c'est une
+          conséquence de la règle des signes, sans exception. C'est précisément
+          ce blocage qui motive la construction de $\mathbb{C}$.
+    correct_feedback: >
+      $i$ est POSÉ : on décide qu'il existe un nombre dont le carré vaut $-1$,
+      et on vérifie que l'ensemble ainsi obtenu se comporte bien. Les règles de
+      la racine carrée, elles, ne valent que sur les réels positifs — les
+      appliquer à $-1$ produit des contradictions.
+    solution: |
+      **La démarche.** On ne CALCULE pas $i$ : on POSE son existence, comme on
+      avait posé celle de $\sqrt{2}$ en sortant de $\mathbb{Q}$, puis on vérifie
+      la cohérence de l'ensemble obtenu.
+
+      **Pourquoi $\sqrt{-1}$ est une écriture piégée.**
+      $$
+      \sqrt{-1}\times\sqrt{-1} \overset{?}{=} \sqrt{(-1)\times(-1)}
+      = \sqrt{1} = 1
+      $$
+      alors que $i^{2} = -1$. La règle
+      $\sqrt{a}\sqrt{b} = \sqrt{ab}$ exige $a, b \geqslant 0$.
+
+      **La chaîne des extensions.** $\mathbb{N} \to \mathbb{Z}$ ($x+1=0$),
+      $\to \mathbb{Q}$ ($2x=1$), $\to \mathbb{R}$ ($x^{2}=2$),
+      $\to \mathbb{C}$ ($x^{2}=-1$).
+
+  - id: NBCOMPLEX-28
+    rung: "R0"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [extension, puissances_de_i]
+    primary_misconception: mc.math.maths_complexes_algebrique.extension-equation-mal-appariee
+    stem: >
+      À quelle équation chaque extension d'ensemble répond-elle ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $x + 1 = 0$ pour $\mathbb{Z}$, $2x = 1$ pour $\mathbb{Q}$,
+          $x^{2} = 2$ pour $\mathbb{R}$, $x^{2} = -1$ pour $\mathbb{C}$
+        correct: true
+      - id: B
+        text: >-
+          $x^{2} = 2$ pour $\mathbb{C}$ et $x^{2} = -1$ pour $\mathbb{R}$ : les
+          deux dernières extensions sont échangées
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.extension-equation-mal-appariee
+        feedback: >
+          $x^{2} = 2$ a des solutions réelles ($\pm\sqrt2$) : c'est le passage de
+          $\mathbb{Q}$ à $\mathbb{R}$. $x^{2} = -1$ n'en a aucune dans
+          $\mathbb{R}$ : c'est elle qui force le passage à $\mathbb{C}$.
+      - id: C
+        text: >-
+          $x^{2} = -1$ pour $\mathbb{R}$, puisqu'un carré de réel peut être
+          négatif dès qu'on choisit un nombre assez grand
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif
+        feedback: >
+          Aucun réel n'a un carré négatif, quelle que soit sa taille : la règle
+          des signes l'interdit. C'est ce blocage qui rend l'extension
+          nécessaire — et le nier ferait disparaître la raison d'être de
+          $\mathbb{C}$.
+      - id: D
+        text: >-
+          $x^{4} = 1$ pour $\mathbb{C}$, puisque $i^{4} = -1$ et que cette
+          équation n'a donc pas de solution réelle
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.puissance-i-cycle-errone
+        feedback: >
+          $i^{4} = +1$, pas $-1$ : le cycle des puissances de $i$ est
+          $i, -1, -i, 1$. Et $x^{4} = 1$ a d'ailleurs deux solutions réelles,
+          $1$ et $-1$ : elle ne motive aucune extension.
+    correct_feedback: >
+      Chaque extension répond à une équation que l'ensemble précédent ne sait
+      pas résoudre : $x+1=0$ mène à $\mathbb{Z}$, $2x=1$ à $\mathbb{Q}$,
+      $x^{2}=2$ à $\mathbb{R}$, et $x^{2}=-1$ à $\mathbb{C}$.
+    solution: |
+      **La chaîne.**
+
+      | équation | insoluble dans | résolue dans |
+      |---|---|---|
+      | $x + 1 = 0$ | $\mathbb{N}$ | $\mathbb{Z}$ |
+      | $2x = 1$ | $\mathbb{Z}$ | $\mathbb{Q}$ |
+      | $x^{2} = 2$ | $\mathbb{Q}$ | $\mathbb{R}$ |
+      | $x^{2} = -1$ | $\mathbb{R}$ | $\mathbb{C}$ |
+
+      **Ce que la chaîne montre.** $\mathbb{C}$ n'est pas une bizarrerie : c'est
+      le quatrième terme d'un mouvement régulier, où chaque ensemble naît d'une
+      équation que le précédent ne sait pas résoudre.
+
+  - id: NBCOMPLEX-29
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [plan_complexe, milieu, distance]
+    primary_misconception: mc.math.maths_complexes_algebrique.milieu-sans-moyenne
+    stem: >
+      Deux points $A$ et $B$ ont pour affixes $z_A = 2 + 3i$ et
+      $z_B = 6 - i$. Que valent l'affixe du milieu $I$ de $[AB]$ et la distance
+      $AB$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $z_I = 4 + i$ et $AB = |z_B - z_A| = \sqrt{32}$
+        correct: true
+      - id: B
+        text: >-
+          $z_I = 8 + 2i$ et $AB = \sqrt{32}$ : le milieu est la somme des deux
+          affixes
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.milieu-sans-moyenne
+        feedback: >
+          Le milieu est la MOYENNE : $z_I = \dfrac{z_A + z_B}{2}$. Oublier la
+          division donne un point deux fois plus loin de l'origine — ici
+          $8 + 2i$, qui n'est même pas sur le segment.
+      - id: C
+        text: >-
+          $z_I = 4 + i$ et $AB = |z_A + z_B| = |8 + 2i|$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.distance-affixe-brute
+        feedback: >
+          Une distance se lit sur la DIFFÉRENCE des affixes :
+          $AB = |z_B - z_A|$. La somme n'a pas d'interprétation métrique — elle
+          donnerait la même valeur pour deux points symétriques par rapport à
+          l'origine, qui peuvent être arbitrairement éloignés l'un de l'autre.
+      - id: D
+        text: >-
+          $z_I = 4 + i$ et $AB = |4| + |-4| = 8$, le module étant la somme des
+          valeurs absolues des parties
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-lineaire
+        feedback: >
+          Le module se calcule par Pythagore : $|4 - 4i| = \sqrt{16+16}
+          = \sqrt{32} \approx 5{,}66$, et non $8$. Additionner les valeurs
+          absolues reviendrait à mesurer un trajet en escalier au lieu de la
+          ligne droite.
+    correct_feedback: >
+      $z_I = \dfrac{z_A + z_B}{2} = \dfrac{8 + 2i}{2} = 4 + i$, et
+      $AB = |z_B - z_A| = |4 - 4i| = \sqrt{32}$. Le milieu est une moyenne ; la
+      distance, le module d'une DIFFÉRENCE.
+    solution: |
+      **Le milieu.**
+      $$
+      z_I = \frac{z_A + z_B}{2} = \frac{(2+3i)+(6-i)}{2}
+      = \frac{8+2i}{2} = 4 + i
+      $$
+
+      **La distance.**
+      $$
+      AB = |z_B - z_A| = |(6-i)-(2+3i)| = |4 - 4i|
+      = \sqrt{16+16} = \sqrt{32} = 4\sqrt{2}
+      $$
+
+      **Les deux formules à ne pas mélanger.** Le milieu additionne PUIS divise ;
+      la distance soustrait PUIS prend le module.
+
+  - id: NBCOMPLEX-30
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [plan_complexe, conjugue, symetrie]
+    primary_misconception: mc.math.maths_complexes_algebrique.conjugue-mauvais-axe
+    stem: >
+      Quelle transformation géométrique fait passer du point d'affixe $z$ au
+      point d'affixe $\bar{z}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La symétrie par rapport à l'axe des RÉELS
+        correct: true
+      - id: B
+        text: >-
+          La symétrie par rapport à l'axe des IMAGINAIRES
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-mauvais-axe
+        feedback: >
+          Conjuguer change le signe de la partie imaginaire et laisse la partie
+          réelle intacte : $\overline{a+ib} = a - ib$. L'abscisse ne bouge pas,
+          l'ordonnée change de signe — c'est la définition d'une symétrie
+          d'axe horizontal, donc l'axe des réels.
+      - id: C
+        text: >-
+          La symétrie par rapport à l'origine, qui revient au même que la
+          symétrie axiale
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-mauvais-axe
+        feedback: >
+          La symétrie par rapport à l'origine change les DEUX signes : elle
+          envoie $z$ sur $-z = -a - ib$. Le conjugué n'en change qu'un. Les deux
+          ne coïncident que pour les imaginaires purs.
+      - id: D
+        text: >-
+          Une transformation qui laisse la partie imaginaire inchangée, puisque
+          $\mathrm{Im}(\bar z) = -bi$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.im-inclut-i
+        feedback: >
+          Deux erreurs. $\mathrm{Im}(\bar z) = -b$, un réel — la partie
+          imaginaire ne contient jamais le $i$. Et elle change bien de signe :
+          c'est tout l'effet de la conjugaison.
+    correct_feedback: >
+      $\overline{a+ib} = a - ib$ : l'abscisse est conservée, l'ordonnée changée
+      de signe. C'est la symétrie d'axe horizontal, c'est-à-dire par rapport à
+      l'axe des RÉELS.
+    solution: |
+      **L'effet du conjugué.**
+      $$z = a + ib \quad\longmapsto\quad \bar{z} = a - ib$$
+      Abscisse inchangée, ordonnée opposée.
+
+      **Les trois transformations voisines.**
+      - $z \mapsto \bar{z}$ : symétrie d'axe les réels.
+      - $z \mapsto -\bar{z}$ : symétrie d'axe les imaginaires.
+      - $z \mapsto -z$ : symétrie par rapport à l'origine.
+
+      **Le contrôle immédiat.** Prendre $z = 2 + 3i$ et regarder où atterrit le
+      point : $\bar z = 2 - 3i$ est bien le symétrique par rapport à l'axe
+      horizontal.
+
+  - id: NBCOMPLEX-31
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_complexes_algebrique
+    tags: [forme_exponentielle, sommet]
+    primary_misconception: mc.math.maths_complexes_algebrique.algebrique-exponentielle-conversion
+    stem: >
+      Un sujet donne $z = 2\,e^{i\pi/6}$ et demande sa forme algébrique. Que
+      vaut-elle ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $z = \sqrt{3} + i$, en développant $2\left(\cos\frac{\pi}{6} +
+          i\sin\frac{\pi}{6}\right)$
+        correct: true
+      - id: B
+        text: >-
+          $z = 2 + \dfrac{\pi}{6}i$ : on lit le module et l'argument comme partie
+          réelle et partie imaginaire
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.module-argument-vs-parties
+        feedback: >
+          Le module et l'argument sont les coordonnées POLAIRES ; la partie
+          réelle et la partie imaginaire, les coordonnées CARTÉSIENNES. On passe
+          des unes aux autres par $a = r\cos\theta$ et $b = r\sin\theta$, jamais
+          par recopie.
+      - id: C
+        text: >-
+          $z = 2\cos\frac{\pi}{6} + i\sin\frac{\pi}{6} = \sqrt3 + \dfrac{i}{2}$ :
+          le module ne multiplie que la partie réelle
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.algebrique-exponentielle-conversion
+        feedback: >
+          Le module multiplie la parenthèse ENTIÈRE :
+          $r(\cos\theta + i\sin\theta)$. Ne l'appliquer qu'au cosinus donne un
+          nombre dont le module ne vaut plus $2$ — contrôle qui suffit à
+          repérer l'erreur.
+      - id: D
+        text: >-
+          $z = \sqrt{3} + i$, dont la partie imaginaire vaut $i$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.im-inclut-i
+        feedback: >
+          La forme algébrique est juste, sa lecture non :
+          $\mathrm{Im}(\sqrt3 + i) = 1$, un réel. Le coefficient de $i$ vaut ici
+          $1$, et c'est lui la partie imaginaire.
+    correct_feedback: >
+      $z = 2\left(\cos\frac{\pi}{6} + i\sin\frac{\pi}{6}\right)
+      = 2\left(\frac{\sqrt3}{2} + \frac{i}{2}\right) = \sqrt3 + i$. Le module
+      multiplie la parenthèse entière, cosinus ET sinus.
+    solution: |
+      **La conversion, dans ce sens.**
+      $$r\,e^{i\theta} = r\cos\theta + i\,r\sin\theta$$
+
+      **L'application.**
+      $$
+      z = 2\cos\frac{\pi}{6} + 2i\sin\frac{\pi}{6}
+      = 2\times\frac{\sqrt3}{2} + 2i\times\frac{1}{2} = \sqrt3 + i
+      $$
+
+      **Le contrôle.** $|\sqrt3 + i| = \sqrt{3+1} = 2$ ✓, et
+      $\arg = \pi/6$ puisque $\tan\theta = 1/\sqrt3$ avec les deux
+      coordonnées positives.
+
+      **Dans l'autre sens.** $r = \sqrt{a^{2}+b^{2}}$, puis $\theta$ tel que
+      $\cos\theta = a/r$ et $\sin\theta = b/r$.
+
+  - id: NBCOMPLEX-32
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [definition, imaginaire_pur, plan_complexe]
+    primary_misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+    stem: >
+      Un élève écrit : « $i = \sqrt{-1}$, donc $z = 4 + \sqrt{-9}$ vaut $4+3i$,
+      c'est un imaginaire pur, et son image est le milieu du segment joignant
+      l'origine à $8 + 6i$. » Combien d'affirmations sont fausses ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Deux : l'écriture $\sqrt{-1}$ et la qualification d'imaginaire pur —
+          la remarque sur le milieu, elle, est correcte
+        correct: true
+      - id: B
+        text: >-
+          Une seule : la qualification d'imaginaire pur ; écrire $\sqrt{-1}$ est
+          légitime, la racine s'appliquant à tout nombre
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+        feedback: >
+          La fonction $\sqrt{\ }$ n'est définie que sur les réels positifs, et
+          ses règles y sont valides. L'étendre à $-1$ produit
+          $\sqrt{-1}\sqrt{-1} = \sqrt{1} = 1$, en contradiction avec
+          $i^{2} = -1$. On POSE $i$, on ne le calcule pas.
+      - id: C
+        text: >-
+          Une seule : l'écriture $\sqrt{-1}$ ; $4+3i$ est bien un imaginaire pur,
+          puisque sa partie imaginaire n'est pas nulle
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.imaginaire-pur-mauvaise-partie
+        feedback: >
+          Un imaginaire pur a sa partie RÉELLE nulle. Ici $\mathrm{Re}(z) = 4$ :
+          $z$ n'est ni réel ni imaginaire pur. Avoir une partie imaginaire non
+          nulle ne suffit pas — c'est le cas de presque tous les complexes.
+      - id: D
+        text: >-
+          Trois : le milieu du segment joignant $0$ à $8+6i$ vaut $8+6i$
+          lui-même, la division par $2$ étant inutile
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.milieu-sans-moyenne
+        feedback: >
+          Le milieu est la MOYENNE des deux affixes :
+          $\dfrac{0 + (8+6i)}{2} = 4 + 3i$. Sans la division, on retomberait sur
+          l'extrémité du segment — ce qui rendrait la notion de milieu vide de
+          sens.
+    correct_feedback: >
+      Deux erreurs. $\sqrt{-1}$ est une écriture illégitime : $i$ est posé, non
+      calculé. Et $4+3i$ n'est pas un imaginaire pur, sa partie réelle valant
+      $4$. En revanche, $4+3i$ est bien le milieu de $[0\,;8+6i]$ : la moyenne
+      des affixes.
+    solution: |
+      **Affirmation 1 — fausse.** $\sqrt{\ }$ n'est définie que sur
+      $[0\,;+\infty[$ : $\sqrt{-1}$ n'a pas de sens, et l'écrire mène à
+      $\sqrt{-1}\sqrt{-1} = 1 \neq i^{2}$.
+
+      **Affirmation 2 — fausse.** Un imaginaire pur a une partie réelle nulle.
+      $\mathrm{Re}(4+3i) = 4$.
+
+      **Affirmation 3 — vraie.**
+      $$z_I = \frac{0 + (8+6i)}{2} = 4 + 3i$$
+
+      **Ce qui reste valable de l'intuition.** $\sqrt{-9}$ « vaut » $3i$ au sens
+      où $(3i)^{2} = -9$ — mais cela s'écrit ainsi, et non avec un radical.
+
+  - id: NBCOMPLEX-33
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: maths_complexes_algebrique
+    tags: [conjugue, forme_exponentielle, sommet]
+    primary_misconception: mc.math.maths_complexes_algebrique.conjugue-mauvais-axe
+    stem: >
+      Soit $z = 2\,e^{i\pi/3}$. Quelle est la forme exponentielle de $\bar{z}$,
+      et où se situe son image par rapport à celle de $z$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\bar{z} = 2\,e^{-i\pi/3}$, image symétrique de celle de $z$ par
+          rapport à l'axe des réels
+        correct: true
+      - id: B
+        text: >-
+          $\bar{z} = 2\,e^{i\pi/3}$ inchangé, l'image étant symétrique par
+          rapport à l'axe des imaginaires
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-mauvais-axe
+        feedback: >
+          Conjuguer conserve le module et change le SIGNE de l'argument :
+          $\overline{re^{i\theta}} = re^{-i\theta}$. Géométriquement, l'abscisse
+          reste, l'ordonnée s'inverse : c'est la symétrie d'axe HORIZONTAL, donc
+          par rapport aux réels.
+      - id: C
+        text: >-
+          $\bar{z} = -2\,e^{i\pi/3}$ : conjuguer revient à changer le signe du
+          module
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.algebrique-exponentielle-conversion
+        feedback: >
+          Un module est une distance : il est toujours positif ou nul, et la
+          conjugaison ne le touche pas. $-2e^{i\pi/3}$ s'écrirait d'ailleurs
+          $2e^{i(\pi/3+\pi)}$ — c'est la symétrie par rapport à l'ORIGINE, pas
+          la conjugaison.
+      - id: D
+        text: >-
+          $\bar{z} = 2\,e^{-i\pi/3}$, et $z + \bar{z}$ vaut $2i\,\mathrm{Im}(z)$
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference
+        feedback: >
+          La forme exponentielle est juste, la relation non : $z + \bar z =
+          2\,\mathrm{Re}(z)$, un RÉEL, tandis que $z - \bar z =
+          2i\,\mathrm{Im}(z)$. Les deux se retrouvent en une ligne :
+          $(a+ib)+(a-ib) = 2a$.
+    correct_feedback: >
+      $\overline{re^{i\theta}} = re^{-i\theta}$ : le module est conservé,
+      l'argument changé de signe. Ici $\bar z = 2e^{-i\pi/3}$, image symétrique
+      de celle de $z$ par rapport à l'axe des réels.
+    solution: |
+      **La règle.**
+      $$\overline{r\,e^{i\theta}} = r\,e^{-i\theta}$$
+      Module conservé, argument opposé.
+
+      **La vérification par la forme algébrique.**
+      $$
+      z = 2\left(\cos\frac{\pi}{3} + i\sin\frac{\pi}{3}\right) = 1 + i\sqrt3
+      \qquad \bar z = 1 - i\sqrt3 = 2\,e^{-i\pi/3}
+      $$
+
+      **Les deux relations à ne pas échanger.**
+      $$
+      z + \bar z = 2\,\mathrm{Re}(z) \in \mathbb{R}
+      \qquad z - \bar z = 2i\,\mathrm{Im}(z) \in i\mathbb{R}
+      $$
+
+  # ══════════════════════════════════════════════════════════════════════
+  # DETTE D'EXAMEN (docs/audits/dette-examen/maths.md, « nombres-complexes-1 »,
+  # GAP-B × 2) — équation du second degré dans ℂ (Δ réel négatif ; Δ complexe
+  # carré parfait) et Viète, toutes deux TRAVAILLÉES à lesson.md:333-470
+  # (« Exemple travaillé 1 », « Exemple travaillé 2 », « Usage 1 », « Usage 2 »)
+  # mais jamais testées avant cette vague. Items seuls, sans prose nouvelle,
+  # conformément à la règle de reprise d'un GAP-B (DETTE-EXAMEN.md, fin).
+  # ══════════════════════════════════════════════════════════════════════
+
+  # ── Δ réel négatif, coefficients réels : la paire conjuguée (NBCOMPLEX-34 à 37) ──
+
+  - id: NBCOMPLEX-34
+    rung: "R4b"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: [equation-second-degre, discriminant-negatif, conjuguee]
+    primary_misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+    stem: >
+      Résoudre dans $\mathbb{C}$ l'équation $z^2 - 4z + 5 = 0$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$S = \\varnothing$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+        feedback: >
+          C'est le verdict de $\mathbb{R}$, pas celui de $\mathbb{C}$ : un $\Delta$ négatif
+          n'empêche plus rien. On cherche $\delta$ tel que $\delta^2=\Delta$ — ici $\delta=2i$,
+          car $(2i)^2=-4$ — et l'équation a deux solutions complexes conjuguées.
+      - id: B
+        text: "$S = \\left\\{\\, 2-i\\ ;\\ 2+i \\,\\right\\}$"
+        correct: true
+      - id: C
+        text: "$S = \\left\\{\\, 1\\ ;\\ 3 \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+        feedback: >
+          La racine carrée n'est définie que sur les réels positifs ou nuls : on ne peut pas
+          l'appliquer telle quelle à $-4$. Il faut $\delta$ tel que $\delta^2=-4$, et c'est
+          $\delta=2i$ (avec le $i$), pas $\delta=2$.
+      - id: D
+        text: "$S = \\left\\{\\, -2-i\\ ;\\ -2+i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Le signe de $b$ s'est perdu : la formule est $z=\dfrac{-b\pm\delta}{2a}$, et ici
+          $b=-4$, donc $-b=+4$. Avec $4$ au numérateur, $z=\dfrac{4\pm2i}{2}=2\pm i$ — les deux
+          solutions ont une partie réelle positive, pas négative.
+    correct_feedback: >
+      $\Delta = 16-20=-4$ est réel négatif : $\delta=2i$ convient (car $(2i)^2=-4$), et
+      $z=\dfrac{4\pm2i}{2}=2\pm i$. Deux solutions complexes conjuguées.
+    solution: |
+      $$\Delta = (-4)^2-4\times1\times5 = 16-20=-4$$
+      $\Delta$ est un réel négatif : $\delta=i\sqrt4=2i$ convient, car $(2i)^2=4i^2=-4=\Delta$.
+      $$z=\frac{4\pm2i}{2}=2\pm i \qquad S=\left\{\,2-i\ ;\ 2+i\,\right\}$$
+
+  - id: NBCOMPLEX-35
+    rung: "R4b"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [equation-second-degre, racine-donnee, conjuguee]
+    primary_misconception: mc.math.maths_complexes_algebrique.conjugue-mauvais-axe
+    stem: >
+      L'équation $z^2 - 6z + 13 = 0$, à coefficients RÉELS, admet pour solution
+      $z_1 = 3+2i$. Sans calculer de discriminant, donner l'autre solution $z_2$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$z_2 = 3-2i$"
+        correct: true
+      - id: B
+        text: "$z_2 = -3+2i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.conjugue-mauvais-axe
+        feedback: >
+          Le signe changé est celui de la mauvaise partie : coefficients réels
+          $\Rightarrow$ $z_2=\overline{z_1}$, qui change le signe de la partie
+          IMAGINAIRE seule ($a-bi$), pas celui de la partie réelle.
+      - id: C
+        text: "$z_2 = 2-3i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.confond-re-im
+        feedback: >
+          Les deux coefficients de $z_1=3+2i$ sont échangés en écrivant $z_2$ :
+          $\overline{z_1}$ conserve la partie réelle ($3$) et change seulement le
+          signe du coefficient de $i$ ($2$ devient $-2$) — il ne s'agit pas de
+          permuter les deux valeurs.
+      - id: D
+        text: "$z_2 = -9-2i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Le signe de la somme s'est perdu : $z_1+z_2=-\dfrac{b}{a}=6$ (et non
+          $b=-6$). En repartant de la bonne somme, $z_2=6-z_1=6-(3+2i)=3-2i$, pas
+          $-9-2i$.
+    correct_feedback: >
+      Les coefficients sont réels, donc $z_2=\overline{z_1}=\overline{3+2i}=3-2i$ ;
+      contrôle par Viète : $z_1+z_2=6=-\dfrac{b}{a}$ et $z_1z_2=13=\dfrac{c}{a}$. ✓
+    solution: |
+      Les coefficients de $z^2-6z+13=0$ sont réels : d'après la propriété du
+      chapitre (démontrée en conjuguant l'équation), les deux solutions sont
+      conjuguées l'une de l'autre.
+      $$z_2 = \overline{z_1} = \overline{3+2i} = 3-2i$$
+      Contrôle par les relations coefficients-racines : $z_1+z_2=(3+2i)+(3-2i)=6=-\dfrac{-6}{1}$
+      et $z_1z_2=(3+2i)(3-2i)=9+4=13=\dfrac{13}{1}$. Les deux contrôles tombent juste.
+
+  - id: NBCOMPLEX-36
+    rung: "R4b"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [equation-second-degre, discriminant-negatif, parametre, carre-parfait-donne]
+    primary_misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+    stem: >
+      Soit $m$ un réel. On considère l'équation $(E)\ :\ z^2 - 2z + (m^2-2m+2) = 0$, dont on
+      admet que le discriminant vérifie $\Delta = \big(2i(m-1)\big)^2$. Résoudre $(E)$ dans
+      $\mathbb{C}$, en fonction de $m$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$S = \\left\\{\\, 1-i(m-1)\\ ;\\ 1+i(m-1) \\,\\right\\}$"
+        correct: true
+      - id: B
+        text: "$S = \\varnothing$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+        feedback: >
+          $\Delta=\big(2i(m-1)\big)^2=-4(m-1)^2$ est bien un réel négatif dès que $m\neq1$, mais
+          dans $\mathbb{C}$ ce signe n'empêche plus rien : $\delta=2i(m-1)$ vérifie
+          $\delta^2=\Delta$, et $(E)$ a deux solutions complexes conjuguées.
+      - id: C
+        text: "$S = \\left\\{\\, m\\ ;\\ 2-m \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+        feedback: >
+          Le $i$ de $\delta=2i(m-1)$ a disparu : en le traitant comme $\delta=2(m-1)$ (une
+          racine carrée usuelle, sans le $i$), on obtient des solutions réelles. Il faut
+          $\delta$ tel que $\delta^2=\Delta$ avec le $i$ inclus, jamais une racine carrée
+          ordinaire d'un nombre négatif.
+      - id: D
+        text: "$S = \\left\\{\\, -1-i(m-1)\\ ;\\ -1+i(m-1) \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Le signe de $b$ s'est perdu : la formule est $z=\dfrac{-b\pm\delta}{2a}$, et ici
+          $b=-2$, donc $-b=+2$. Avec $b=-2$ utilisé tel quel au numérateur, on obtient
+          $z=\dfrac{-2\pm2i(m-1)}{2}=-1\pm i(m-1)$, pas la bonne partie réelle.
+    correct_feedback: >
+      $\delta=2i(m-1)$ convient (donné), donc $z=\dfrac{2\pm2i(m-1)}{2}=1\pm i(m-1)$.
+    solution: |
+      On admet $\Delta = \big(2i(m-1)\big)^2$ : $\delta = 2i(m-1)$ convient (l'autre choix,
+      $-2i(m-1)$, échangerait simplement $z_1$ et $z_2$).
+      $$z = \frac{2 \pm 2i(m-1)}{2} = 1 \pm i(m-1)$$
+      $$S = \left\{\, 1-i(m-1)\ ;\ 1+i(m-1) \,\right\}$$
+      Contrôle sur un cas particulier : pour $m=2$, $(E)$ devient $z^2-2z+2=0$ et
+      $S=\{1-i\,;\,1+i\}$, conforme à la formule.
+
+  - id: NBCOMPLEX-37
+    rung: "R4b"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [equation-second-degre, discriminant-negatif, conjuguee, coefficient-dominant]
+    primary_misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+    stem: >
+      Résoudre dans $\mathbb{C}$ l'équation $3z^2 - 6z + 30 = 0$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$S = \\varnothing$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+        feedback: >
+          Dans $\mathbb{C}$, $\Delta<0$ n'interdit plus rien : $\delta=18i$ vérifie
+          $\delta^2=-324=\Delta$, et l'équation a deux solutions complexes conjuguées.
+      - id: B
+        text: "$S = \\left\\{\\, 1-3i\\ ;\\ 1+3i \\,\\right\\}$"
+        correct: true
+      - id: C
+        text: "$S = \\left\\{\\, -2\\ ;\\ 4 \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle
+        feedback: >
+          Il faut $\delta$ tel que $\delta^2=-324$ : c'est $\delta=18i$, pas $\delta=18$ obtenu
+          en appliquant $\sqrt{\ }$ à un nombre négatif par les règles usuelles.
+      - id: D
+        text: "$S = \\left\\{\\, 1-\\sqrt{11}\\ ;\\ 1+\\sqrt{11} \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          $\Delta=b^2-4ac=36-360=-324$, pas $36+360=396$ : le signe moins devant $4ac$
+          s'est perdu, ce qui change la nature même des solutions (réelles au lieu de
+          complexes).
+    correct_feedback: >
+      $\Delta=36-360=-324=(18i)^2$ ; $z=\dfrac{6\pm18i}{2\times3}=1\pm3i$ (on divise par
+      $2a=6$, pas par $2$).
+    solution: |
+      $$\Delta = (-6)^2-4\times3\times30 = 36-360=-324$$
+      $\delta=i\sqrt{324}=18i$, car $(18i)^2=-324=\Delta$.
+      $$z=\frac{6\pm18i}{2\times3}=\frac{6\pm18i}{6}=1\pm3i \qquad S=\left\{\,1-3i\ ;\ 1+3i\,\right\}$$
+
+  # ── Coefficients complexes, Δ carré parfait à reconnaître (NBCOMPLEX-38 à 41) ──
+
+  # ══════════════════════════════════════════════════════════════════════
+  # FIDÉLITÉ FILIÈRE (wave-1 fixes, 2026-09-27, B2) — NBCOMPLEX-38 à
+  # NBCOMPLEX-45 ci-dessous (et NBCOMPLEX-47 plus bas) relèvent d'une
+  # profondeur « filière Sciences Mathématiques » : coefficients COMPLEXES
+  # (non réels) pour l'équation du second degré, et paramètre m/q complexe
+  # non nul pour les relations de Viète. Le garde-fou déclaré pour ce banc
+  # (checkpoints.yaml:41) est 2ème Bac SExp, et le cadre SExp cité par la
+  # revue (maths-sexp.yaml:249/253) ne prévoit que des coefficients RÉELS
+  # pour ce chapitre — le cadre SM (maths-sm.yaml:224/228) couvre seul cette
+  # profondeur. Aucun champ per-item `filiere`/`stream` n'existe dans ce
+  # corpus (grep vérifié sur tous les `items.yaml` du dépôt à cette date) :
+  # pas de champ inventé ici — ce commentaire, plus la ligne dédiée de
+  # `coverage_summary.honest_state`, portent la distinction jusqu'à ce
+  # qu'un schéma per-item soit décidé par le propriétaire. NBCOMPLEX-34 à
+  # 37 (coefficients réels) et NBCOMPLEX-46 (Viète à coefficients réels,
+  # ajouté ci-dessous) restent SExp-légaux.
+  # ══════════════════════════════════════════════════════════════════════
+
+  - id: NBCOMPLEX-38
+    rung: "R4b"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [equation-second-degre, coefficients-complexes, carre-parfait]
+    primary_misconception: mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels
+    stem: >
+      Résoudre dans $\mathbb{C}$ l'équation $z^2 - (5+i)z + (6+2i) = 0$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$S = \\left\\{\\, 2\\ ;\\ 3-i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels
+        feedback: >
+          Les coefficients $-(5+i)$ et $6+2i$ ne sont pas réels : rien n'oblige la seconde
+          racine à être la conjuguée de la première (cette propriété repose entièrement sur
+          $\bar a=a$, $\bar b=b$, $\bar c=c$). Il faut $\delta$ tel que $\delta^2=\Delta$.
+      - id: B
+        text: "$S = \\left\\{\\, 3\\ ;\\ 2+i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose
+        feedback: >
+          $(1-i)^2=-2i$, pas $2i$ : ce n'est pas la racine carrée de $\Delta$ ici. Il fallait
+          vérifier $(1+i)^2=2i=\Delta$ avant de l'utiliser, pas deviner sur la table.
+      - id: C
+        text: "$S = \\left\\{\\, 2\\ ;\\ 3+i \\,\\right\\}$"
+        correct: true
+      - id: D
+        text: "$S = \\left\\{\\, -2\\ ;\\ -3-i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          La formule est $z=\dfrac{-b\pm\delta}{2a}$ : ici $-b=5+i$ (le signe du coefficient
+          $b=-(5+i)$ a été oublié), pas $b=-(5+i)$ lui-même. Conséquence : on obtient
+          l'OPPOSÉ de chaque solution, $-2$ et $-3-i$, au lieu de $2$ et $3+i$.
+    correct_feedback: >
+      $\Delta=(5+i)^2-4(6+2i)=(24+10i)-(24+8i)=2i=(1+i)^2$, donc $\delta=1+i$ convient, et
+      $z=\dfrac{(5+i)\pm(1+i)}{2}$ donne $S=\{2\,;\,3+i\}$ — non conjuguées.
+    solution: |
+      $$\Delta = (5+i)^2-4(6+2i) = (25+10i-1)-(24+8i) = (24+10i)-(24+8i) = 2i$$
+      $2i=(1+i)^2$ (table du chapitre), donc $\delta=1+i$ convient :
+      vérification $(1+i)^2=1+2i+i^2=2i$. ✓
+      $$z=\frac{(5+i)\pm(1+i)}{2} \implies z_1=\frac{6+2i}{2}=3+i,\quad z_2=\frac{4}{2}=2$$
+      $$S=\left\{\,2\ ;\ 3+i\,\right\}$$
+      Les deux racines ne sont pas conjuguées : les coefficients ne sont pas réels.
+
+  - id: NBCOMPLEX-39
+    rung: "R4b"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [equation-second-degre, coefficients-complexes, carre-parfait]
+    primary_misconception: mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels
+    stem: >
+      Résoudre dans $\mathbb{C}$ l'équation $z^2 - (3-i)z + (2-i) = 0$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$S = \\left\\{\\, 1\\ ;\\ 2-i \\,\\right\\}$"
+        correct: true
+      - id: B
+        text: "$S = \\left\\{\\, 2-i\\ ;\\ 2+i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels
+        feedback: >
+          Les coefficients ne sont pas réels : la propriété « racines conjuguées » ne
+          s'applique pas ici. Elle suppose $\bar a=a$, $\bar b=b$, $\bar c=c$, ce qui n'est
+          pas le cas.
+      - id: C
+        text: "$S = \\left\\{\\, 2\\ ;\\ 1-i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose
+        feedback: >
+          $(1+i)^2=2i$, pas $-2i$ : ce n'était pas la racine carrée cherchée ici. On vérifie
+          $(1-i)^2=-2i=\Delta$ avant de l'utiliser, sans deviner.
+      - id: D
+        text: "$S = \\left\\{\\, -1\\ ;\\ -2+i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          La formule utilise $-b=3-i$, pas $b=-(3-i)$ : le signe du coefficient s'est perdu
+          avant la division par $2a$. Conséquence : on obtient l'OPPOSÉ de chaque solution,
+          $-1$ et $-2+i$, au lieu de $1$ et $2-i$.
+    correct_feedback: >
+      $\Delta=(3-i)^2-4(2-i)=(8-6i)-(8-4i)=-2i=(1-i)^2$, donc $\delta=1-i$, et $S=\{1\,;\,2-i\}$.
+    solution: |
+      $$\Delta = (3-i)^2-4(2-i) = (9-6i-1)-(8-4i) = (8-6i)-(8-4i) = -2i$$
+      $-2i=(1-i)^2$, donc $\delta=1-i$ : vérification $(1-i)^2=1-2i+i^2=-2i$. ✓
+      $$z=\frac{(3-i)\pm(1-i)}{2} \implies z_1=\frac{(3-i)+(1-i)}{2}=\frac{4-2i}{2}=2-i,\quad z_2=\frac{(3-i)-(1-i)}{2}=\frac{2}{2}=1$$
+      $$S=\left\{\,1\ ;\ 2-i\,\right\}$$
+
+  - id: NBCOMPLEX-40
+    rung: "R4b"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_complexes_algebrique
+    tags: [equation-second-degre, coefficients-complexes, carre-parfait]
+    primary_misconception: mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose
+    stem: >
+      Résoudre dans $\mathbb{C}$ l'équation $z^2 - (7-i)z + (12-4i) = 0$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$S = \\left\\{\\, 4\\ ;\\ 3+i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels
+        feedback: >
+          Les coefficients ne sont pas réels : rien n'impose de conjuguer une racine trouvée
+          pour deviner l'autre. Chaque racine se calcule séparément avec $\delta$.
+      - id: B
+        text: "$S = \\left\\{\\, 4-i\\ ;\\ 3 \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose
+        feedback: >
+          $(1-i)^2=-2i$, pas $2i=\Delta$ : ce $\delta$-là ne convient pas ici. On vérifie
+          $(1+i)^2=2i$ avant de l'utiliser.
+      - id: C
+        text: "$S = \\left\\{\\, -4\\ ;\\ -3+i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          La formule utilise $-b=7-i$, pas $b=-(7-i)$ : le signe du coefficient s'est perdu
+          avant la division par $2a$. Conséquence : on obtient l'OPPOSÉ de chaque solution,
+          $-4$ et $-3+i$, au lieu de $4$ et $3-i$.
+      - id: D
+        text: "$S = \\left\\{\\, 4\\ ;\\ 3-i \\,\\right\\}$"
+        correct: true
+    correct_feedback: >
+      $\Delta=(7-i)^2-4(12-4i)=(48-14i)-(48-16i)=2i=(1+i)^2$, donc $\delta=1+i$, et
+      $S=\{4\,;\,3-i\}$.
+    solution: |
+      $$\Delta = (7-i)^2-4(12-4i) = (49-14i-1)-(48-16i) = (48-14i)-(48-16i) = 2i$$
+      $2i=(1+i)^2$, donc $\delta=1+i$ : vérification $(1+i)^2=2i$. ✓
+      $$z=\frac{(7-i)\pm(1+i)}{2} \implies z_1=\frac{8}{2}=4,\quad z_2=\frac{6-2i}{2}=3-i$$
+      $$S=\left\{\,4\ ;\ 3-i\,\right\}$$
+
+  - id: NBCOMPLEX-41
+    rung: "R4b"
+    habilete: synthese
+    difficulty_level: 5
+    skill_code: maths_complexes_algebrique
+    tags: [equation-second-degre, coefficients-complexes, carre-parfait, produit-de-carres]
+    primary_misconception: mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose
+    stem: >
+      Résoudre dans $\mathbb{C}$ l'équation $z^2 - (4-2i)z + (3-2i) = 0$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$S = \\left\\{\\, 1\\ ;\\ 3+2i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels
+        feedback: >
+          Les coefficients ne sont pas réels : conjuguer une racine trouvée pour deviner
+          l'autre n'a aucune raison de marcher ici. Il faut le $\delta$ correct.
+      - id: B
+        text: "$S = \\left\\{\\, 1\\ ;\\ 3-2i \\,\\right\\}$"
+        correct: true
+      - id: C
+        text: "$S = \\left\\{\\, 3\\ ;\\ 1-2i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose
+        feedback: >
+          $\left[2(1+i)\right]^2=4\times2i=8i$, pas $-8i=\Delta$ : c'est le facteur $(1-i)$,
+          pas $(1+i)$, qu'il fallait combiner au $2$.
+      - id: D
+        text: "$S = \\left\\{\\, -1\\ ;\\ -3+2i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          La formule utilise $-b=4-2i$, pas $b=-(4-2i)$ : le signe du coefficient s'est perdu
+          avant la division par $2a$. Conséquence : on obtient l'OPPOSÉ de chaque solution,
+          $-1$ et $-3+2i$, au lieu de $1$ et $3-2i$.
+    correct_feedback: >
+      $\Delta=(4-2i)^2-4(3-2i)=(12-16i)-(12-8i)=-8i=2^2(1-i)^2=\left[2(1-i)\right]^2$, donc
+      $\delta=2-2i$, et $S=\{1\,;\,3-2i\}$.
+    solution: |
+      $$\Delta = (4-2i)^2-4(3-2i) = (16-16i-4)-(12-8i) = (12-16i)-(12-8i) = -8i$$
+      $-8i = 4\times(-2i) = 2^2\times(1-i)^2 = \left[2(1-i)\right]^2$ (un produit de carrés est
+      un carré), donc $\delta=2-2i$ : vérification $(2-2i)^2=4-8i+4i^2=4-8i-4=-8i$. ✓
+      $$z=\frac{(4-2i)\pm(2-2i)}{2} \implies z_1=\frac{6-4i}{2}=3-2i,\quad z_2=\frac{2}{2}=1$$
+      $$S=\left\{\,1\ ;\ 3-2i\,\right\}$$
+
+  # ── Somme et produit des racines (Viète), lire sans résoudre (NBCOMPLEX-42 à 45) ──
+
+  - id: NBCOMPLEX-42
+    rung: "R4c"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [viete, somme-produit-racines]
+    primary_misconception: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+    stem: >
+      Soient $z_1$ et $z_2$ les deux solutions de l'équation
+      $2z^2 - (10+4i)z + (16+8i) = 0$. Sans résoudre l'équation, calculer $z_1+z_2$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$5+2i$"
+        correct: true
+      - id: B
+        text: "$8+4i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+        feedback: >
+          $\dfrac{c}{a}$ est le PRODUIT $z_1z_2$, pas la somme. La somme se lit sur le
+          coefficient de $z$ : $z_1+z_2=-\dfrac{b}{a}$, jamais sur le terme constant.
+      - id: C
+        text: "$-5-2i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          La relation est $z_1+z_2=-\dfrac{b}{a}$ : c'est $-\dfrac{b}{a}$, jamais
+          $\dfrac{b}{a}$. Le signe moins n'est pas facultatif.
+      - id: D
+        text: "$10+4i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+        feedback: >
+          Ici $a=2\neq1$ : il faut diviser par $a$. $z_1+z_2=-\dfrac{b}{a}=\dfrac{10+4i}{2}=5+2i$,
+          pas $-b=10+4i$ tout court.
+    correct_feedback: >
+      $z_1+z_2=-\dfrac{b}{a}=\dfrac{10+4i}{2}=5+2i$ — aucun discriminant n'est nécessaire.
+    solution: |
+      $$z_1+z_2 = -\frac{b}{a} = -\frac{-(10+4i)}{2} = \frac{10+4i}{2} = 5+2i$$
+
+  - id: NBCOMPLEX-43
+    rung: "R4c"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [viete, somme-produit-racines]
+    primary_misconception: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+    stem: >
+      Soient $z_1$ et $z_2$ les deux solutions de l'équation
+      $3z^2 - (9-6i)z + (15+3i) = 0$. Sans résoudre l'équation, calculer $z_1z_2$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$3-2i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+        feedback: >
+          $-\dfrac{b}{a}$ est la SOMME $z_1+z_2$, pas le produit. Le produit se lit sur le
+          terme constant : $z_1z_2=\dfrac{c}{a}$.
+      - id: B
+        text: "$-5-i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          La relation du produit est $z_1z_2=\dfrac{c}{a}$, sans signe moins : c'est la SOMME
+          qui en porte un. Ici $\dfrac{15+3i}{3}=5+i$, pas $-(5+i)$.
+      - id: C
+        text: "$5+i$"
+        correct: true
+      - id: D
+        text: "$15+3i$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+        feedback: >
+          Ici $a=3\neq1$ : il faut diviser par $a$. $z_1z_2=\dfrac{c}{a}=\dfrac{15+3i}{3}=5+i$,
+          pas $c=15+3i$ tout court.
+    correct_feedback: >
+      $z_1z_2=\dfrac{c}{a}=\dfrac{15+3i}{3}=5+i$ — aucun discriminant n'est nécessaire.
+    solution: |
+      $$z_1z_2 = \frac{c}{a} = \frac{15+3i}{3} = 5+i$$
+
+  - id: NBCOMPLEX-44
+    rung: "R4c"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_complexes_algebrique
+    tags: [viete, somme-produit-racines, construction-inverse]
+    primary_misconception: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+    stem: >
+      Deux nombres complexes $p$ et $q$ vérifient $p+q = 4-2i$ et $pq = 5-i$.
+      Quelle équation de la forme $2z^2+bz+c=0$ admet $p$ et $q$ pour solutions ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2z^2 - (10-2i)z + (8-4i) = 0$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+        feedback: >
+          La somme et le produit ont échangé leurs rôles : c'est $-2(p+q)$ qui doit
+          multiplier $z$, et $2\,pq$ qui doit être le terme constant, pas l'inverse.
+      - id: B
+        text: "$2z^2 + (8-4i)z + (10-2i) = 0$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Le coefficient de $z$ est $-2(p+q)$, avec un signe MOINS : ici
+          $-2(4-2i)=-(8-4i)$, pas $+(8-4i)$.
+      - id: C
+        text: "$2z^2 - (4-2i)z + (5-i) = 0$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+        feedback: >
+          Pour un coefficient dominant $a=2$, l'équation est $2z^2-2(p+q)z+2\,pq=0$ : il faut
+          multiplier $p+q$ et $pq$ par $a$, pas les recopier tels quels.
+      - id: D
+        text: "$2z^2 - (8-4i)z + (10-2i) = 0$"
+        correct: true
+    correct_feedback: >
+      $(z-p)(z-q)=z^2-(p+q)z+pq$, donc $2(z-p)(z-q)=2z^2-2(p+q)z+2\,pq
+      =2z^2-(8-4i)z+(10-2i)$.
+    solution: |
+      $$(z-p)(z-q) = z^2-(p+q)z+pq = z^2-(4-2i)z+(5-i)$$
+      $$2(z-p)(z-q) = 2z^2-2(4-2i)z+2(5-i) = 2z^2-(8-4i)z+(10-2i)$$
+
+  - id: NBCOMPLEX-45
+    rung: "R4c"
+    habilete: synthese
+    difficulty_level: 5
+    skill_code: maths_complexes_algebrique
+    tags: [viete, somme-produit-racines, expression-symetrique]
+    primary_misconception: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+    stem: >
+      Soit $n$ un nombre complexe non nul, et soient $z_1$, $z_2$ les deux solutions de
+      l'équation $2z^2 - 8nz + 6n^2 = 0$. Sans résoudre, calculer $(z_1-z_2)^2$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$28n^2$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          L'identité est $(z_1-z_2)^2=(z_1+z_2)^2-4\,z_1z_2$, avec un signe MOINS devant le
+          produit — c'est l'identité remarquable du chapitre, pas une somme de carrés.
+      - id: B
+        text: "$4n^2$"
+        correct: true
+      - id: C
+        text: "$9n^4-16n$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+        feedback: >
+          $z_1+z_2=-\dfrac{b}{a}=4n$ et $z_1z_2=\dfrac{c}{a}=3n^2$ : la somme et le produit ont
+          été échangés avant d'appliquer l'identité, ce qui casse jusqu'à l'homogénéité du
+          résultat.
+      - id: D
+        text: "$16n^2$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+        feedback: >
+          $(z_1-z_2)^2=\dfrac{\Delta}{a^2}$, pas $\Delta$ tout court : ici $a=2\neq1$, donc il
+          faut diviser par $a^2=4$. $\dfrac{16n^2}{4}=4n^2$.
+    correct_feedback: >
+      $z_1+z_2=4n$ et $z_1z_2=3n^2$ (lus sur les coefficients), donc
+      $(z_1-z_2)^2=(4n)^2-4(3n^2)=16n^2-12n^2=4n^2$.
+    solution: |
+      $$z_1+z_2 = -\frac{b}{a} = \frac{8n}{2} = 4n \qquad z_1z_2 = \frac{c}{a} = \frac{6n^2}{2} = 3n^2$$
+      $$(z_1-z_2)^2 = (z_1+z_2)^2-4\,z_1z_2 = 16n^2-12n^2 = 4n^2$$
+      Contrôle par $\Delta$ : $\Delta=b^2-4ac=64n^2-48n^2=16n^2$, et
+      $(z_1-z_2)^2=\dfrac{\Delta}{a^2}=\dfrac{16n^2}{4}=4n^2$. ✓
+
+  # ── Viète, coefficients RÉELS — SExp-légal (NBCOMPLEX-46) ──
+  # Ajouté wave-1 (2026-09-27, B2b) : contrairement à NBCOMPLEX-42 à 45
+  # (coefficients complexes, profondeur SM), cet item lit la somme et le
+  # produit sur une équation à coefficients RÉELS — recevable au garde-fou
+  # SExp de ce banc (checkpoints.yaml:41).
+
+  - id: NBCOMPLEX-46
+    rung: "R4c"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_complexes_algebrique
+    tags: [viete, somme-produit-racines, coefficients-reels]
+    primary_misconception: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+    stem: >
+      Soit l'équation $2z^2 - 12z + 40 = 0$, à coefficients RÉELS et de discriminant
+      $\Delta < 0$. Sans résoudre, donner la somme $z_1+z_2$ et le produit $z_1z_2$ de ses
+      deux solutions complexes.
+    type: mcq
+    choices:
+      - id: A
+        text: "$z_1+z_2 = 6$ et $z_1z_2 = 20$"
+        correct: true
+      - id: B
+        text: "$z_1+z_2 = 20$ et $z_1z_2 = 6$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+        feedback: >
+          La somme et le produit ont échangé leurs rôles : $-\dfrac{b}{a}$ est la SOMME,
+          $\dfrac{c}{a}$ est le PRODUIT — ces deux valeurs ne se lisent pas à la même place.
+      - id: C
+        text: "$z_1+z_2 = 12$ et $z_1z_2 = 40$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+        feedback: >
+          Ici $a=2\neq1$ : il faut diviser par $a$. $z_1+z_2=-\dfrac{b}{a}=\dfrac{12}{2}=6$ et
+          $z_1z_2=\dfrac{c}{a}=\dfrac{40}{2}=20$, pas $-b=12$ et $c=40$ tout court.
+      - id: D
+        text: "$z_1+z_2 = -6$ et $z_1z_2 = 20$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          La relation est $z_1+z_2=-\dfrac{b}{a}$ : ici $b=-12$, donc $-\dfrac{b}{a}=+6$, pas
+          $-6$. Le signe moins de la formule n'est pas facultatif.
+    correct_feedback: >
+      $z_1+z_2=-\dfrac{b}{a}=\dfrac{12}{2}=6$ et $z_1z_2=\dfrac{c}{a}=\dfrac{40}{2}=20$ — les
+      relations valent aussi bien à coefficients réels que complexes, aucun discriminant
+      n'est nécessaire.
+    solution: |
+      $$z_1+z_2 = -\frac{b}{a} = -\frac{-12}{2} = 6 \qquad z_1z_2 = \frac{c}{a} = \frac{40}{2} = 20$$
+      (Contrôle : $\Delta=(-12)^2-4\times2\times40=144-320=-176<0$ ; les deux solutions sont
+      complexes conjuguées, de somme $6$ et de produit $20$, sans qu'il soit besoin de les
+      calculer séparément.)
+
+  # ── Viète, forme du banc « 1/z1+1/z2 » — profondeur SM (NBCOMPLEX-47) ──
+  # Fidélité I1 : reprend la forme la plus citée du banc de sujets
+  # (nombres-complexes-2/bank.yaml:431, « Vérifier que 1/z1+1/z2 = 1/m »),
+  # avec une équation et un paramètre propres à cet item (aucun nombre du
+  # sujet source). Filière Sciences Mathématiques — voir le bloc de
+  # commentaire au-dessus de NBCOMPLEX-38.
+
+  - id: NBCOMPLEX-47
+    rung: "R4c"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_complexes_algebrique
+    tags: [viete, somme-produit-racines, expression-symetrique, coefficient-dominant]
+    primary_misconception: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+    stem: >
+      Soit $q$ un nombre complexe non nul, et soient $z_1$, $z_2$ les deux solutions de
+      l'équation $2z^2 - 6qz + 5q^2 = 0$. Sans résoudre l'équation, calculer
+      $\dfrac{1}{z_1}+\dfrac{1}{z_2}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{6}{5q}$"
+        correct: true
+      - id: B
+        text: "$\\dfrac{3}{5q}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie
+        feedback: >
+          Ici $a=2\neq1$ : le produit doit se lire $z_1z_2=\dfrac{c}{a}=\dfrac{5q^2}{2}$, pas
+          $c=5q^2$ tout court. En oubliant de diviser le produit par $a$, le rapport
+          $\dfrac{z_1+z_2}{z_1z_2}$ perd son bon dénominateur.
+      - id: C
+        text: "$\\dfrac{5q}{6}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.viete-somme-produit-inverses
+        feedback: >
+          La somme et le produit ont échangé leurs rôles avant d'appliquer
+          $\dfrac{1}{z_1}+\dfrac{1}{z_2}=\dfrac{z_1+z_2}{z_1z_2}$ : c'est $-\dfrac{b}{a}$ qui
+          est la somme, $\dfrac{c}{a}$ qui est le produit, pas l'inverse.
+      - id: D
+        text: "$-\\dfrac{6}{5q}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Le signe de la somme s'est perdu : $z_1+z_2=-\dfrac{b}{a}=\dfrac{6q}{2}=3q$ (positif),
+          pas $\dfrac{b}{a}=-3q$. Le signe moins de la formule de la somme n'est pas facultatif.
+    correct_feedback: >
+      $z_1+z_2=-\dfrac{b}{a}=\dfrac{6q}{2}=3q$ et $z_1z_2=\dfrac{c}{a}=\dfrac{5q^2}{2}$, donc
+      $\dfrac{1}{z_1}+\dfrac{1}{z_2}=\dfrac{z_1+z_2}{z_1z_2}=\dfrac{3q}{5q^2/2}=\dfrac{6}{5q}$ —
+      aucune racine, ni discriminant, n'est nécessaire : l'expression est symétrique en
+      $z_1,z_2$.
+    solution: |
+      $$z_1+z_2 = -\frac{b}{a} = \frac{6q}{2} = 3q \qquad z_1z_2 = \frac{c}{a} = \frac{5q^2}{2}$$
+      $\dfrac1{z_1}+\dfrac1{z_2}$ est symétrique en $z_1,z_2$ : elle se ramène à la somme et au
+      produit sans calculer les racines.
+      $$\frac{1}{z_1}+\frac{1}{z_2} = \frac{z_1+z_2}{z_1z_2} = \frac{3q}{\;5q^2/2\;} = \frac{6q}{5q^2} = \frac{6}{5q}$$
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-27 (wave-1 fixes, dette d'examen B1) — critique par deux
+# critiques de vague 1 sur NBCOMPLEX-34..45, corrigée ainsi :
+#   (1) RUNGS — la leçon porte désormais deux barreaux propres, R4b
+#       (« Résoudre une équation du second degré dans ℂ », lesson.md:270) et
+#       R4c (« Somme et produit des racines », lesson.md:400). NBCOMPLEX-34 à
+#       41 sont passés de R4 à R4b ; NBCOMPLEX-42 à 47 (dont les deux items
+#       neufs ci-dessous) de R4 à R4c. R4 reprend sa valeur d'AVANT la vague
+#       B1 (4 items : NBCOMPLEX-5, 15, 16, 24) — voir ramp_coverage.
+#   (2) FIDÉLITÉ FILIÈRE (B2) — NBCOMPLEX-38 à 45 et NBCOMPLEX-47 relèvent de
+#       la profondeur Sciences Mathématiques (coefficients/paramètre
+#       complexes) à l'intérieur d'un banc dont le garde-fou déclaré est SExp
+#       (checkpoints.yaml:41) ; signalé par le bloc de commentaire avant
+#       NBCOMPLEX-38 et par cette ligne, faute d'un champ per-item
+#       `filiere`/`stream` dans le corpus (aucun schéma inventé).
+#   (3) NBCOMPLEX-46 ajouté (B2b) : Viète à coefficients RÉELS, Δ<0,
+#       SExp-légal — pour que R4c ne soit pas SM-only dans son ensemble.
+#   (4) NBCOMPLEX-47 ajouté (I1) : reprend la forme la plus citée du banc de
+#       sujets (nombres-complexes-2/bank.yaml:431, 1/z1+1/z2 = (z1+z2)/(z1z2)),
+#       avec une équation et un paramètre propres à l'item.
+#   (5) NBCOMPLEX-35 et NBCOMPLEX-36 RE-DRESSÉS (I7, clones numériques de 34) :
+#       35 devient « racine z1 donnée, déduire z2 par la conjugaison à
+#       coefficients réels » (lesson.md:345) ; 36 devient paramétrique, forme
+#       « Δ=(2i(m−1))² » (lesson.md:379). Conséquence sur la couverture : 35
+#       ne porte plus delta-negatif-aucune-solution ni
+#       i-derive-par-racine-usuelle (36 les porte toujours, sous les mêmes
+#       distracteurs B/C/D qu'avant) ; 35 porte désormais conjugue-mauvais-axe,
+#       confond-re-im et signe-parties-perdu.
+#   (6) NBCOMPLEX-38 D / 39 D / 40 C / 41 D (M4) : le feedback verbatim partagé
+#       « La formule utilise −b=…, pas b=… » complété d'une CONSÉQUENCE propre
+#       à chaque item (la paire obtenue est l'opposée de la vraie paire,
+#       chiffrée pour cet item).
+#   (7) NBCOMPLEX-37 (M4) : difficulty_level 4 → 3 (l'étape /2a en plus de 34
+#       ne justifiait pas un niveau supérieur).
+#   (8) `habilete` (I6) ajouté à NBCOMPLEX-34..47, vocabulaire MATHS
+#       (application_directe / application_non_explicite / synthese), jugé
+#       item par item.
+# Avant cette vague : cinq misconceptions neuves (GAP-B, vague B1, avant
+# corrections ci-dessus) et — RÉÉCRIT le 2026-09-05, après NBCOMPLEX-22 à
+# NBCOMPLEX-33 — seize familles siégeaient sous le plancher de 3, dont deux
+# qui n'avaient alors aucun item (état d'AVANT le 2026-09-05 : module-argument-vs-parties,
+# algebrique-exponentielle-conversion), refermées au barreau R6. Tableau
+# GÉNÉRÉ contre web/scripts/lib/couverture-compte.mjs, gardé par
+# web/scripts/resume-couverture.mjs — à régénérer après cette passe.
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+  per_misconception:
+    mc.math.maths_complexes_algebrique.im-inclut-i:                         { count: 5, items: [NBCOMPLEX-1, NBCOMPLEX-22, NBCOMPLEX-25, NBCOMPLEX-30, NBCOMPLEX-31] }
+    mc.math.maths_complexes_algebrique.confond-re-im:                       { count: 4, items: [NBCOMPLEX-1, NBCOMPLEX-10, NBCOMPLEX-22, NBCOMPLEX-35] }
+    mc.math.maths_complexes_algebrique.i2-egale-plus-un:                    { count: 4, items: [NBCOMPLEX-2, NBCOMPLEX-4, NBCOMPLEX-16, NBCOMPLEX-20] }
+    mc.math.maths_complexes_algebrique.produit-non-developpe:               { count: 3, items: [NBCOMPLEX-2, NBCOMPLEX-25, NBCOMPLEX-26] }
+    mc.math.maths_complexes_algebrique.conjugue-somme-vs-difference:        { count: 4, items: [NBCOMPLEX-3, NBCOMPLEX-14, NBCOMPLEX-23, NBCOMPLEX-33] }
+    mc.math.maths_complexes_algebrique.quotient-conjugue-incomplet:         { count: 3, items: [NBCOMPLEX-4, NBCOMPLEX-20, NBCOMPLEX-25] }
+    mc.math.maths_complexes_algebrique.module-lineaire:                     { count: 4, items: [NBCOMPLEX-5, NBCOMPLEX-6, NBCOMPLEX-24, NBCOMPLEX-29] }
+    mc.math.maths_complexes_algebrique.module-oubli-racine:                 { count: 4, items: [NBCOMPLEX-5, NBCOMPLEX-6, NBCOMPLEX-16, NBCOMPLEX-21] }
+    mc.math.maths_complexes_algebrique.module-produit-additif:              { count: 3, items: [NBCOMPLEX-15, NBCOMPLEX-16, NBCOMPLEX-19] }
+    mc.math.maths_complexes_algebrique.distance-affixe-brute:               { count: 3, items: [NBCOMPLEX-6, NBCOMPLEX-21, NBCOMPLEX-29] }
+    mc.math.maths_complexes_algebrique.milieu-sans-moyenne:                 { count: 3, items: [NBCOMPLEX-17, NBCOMPLEX-29, NBCOMPLEX-32] }
+    mc.math.maths_complexes_algebrique.conjugue-mauvais-axe:                { count: 4, items: [NBCOMPLEX-18, NBCOMPLEX-30, NBCOMPLEX-33, NBCOMPLEX-35] }
+    mc.math.maths_complexes_algebrique.imaginaire-pur-mauvaise-partie:      { count: 3, items: [NBCOMPLEX-11, NBCOMPLEX-23, NBCOMPLEX-32] }
+    mc.math.maths_complexes_algebrique.puissance-i-cycle-errone:            { count: 3, items: [NBCOMPLEX-13, NBCOMPLEX-26, NBCOMPLEX-28] }
+    mc.math.maths_complexes_algebrique.signe-parties-perdu:                 { count: 20, items: [NBCOMPLEX-1, NBCOMPLEX-2, NBCOMPLEX-10, NBCOMPLEX-11, NBCOMPLEX-12, NBCOMPLEX-17, NBCOMPLEX-34, NBCOMPLEX-35, NBCOMPLEX-36, NBCOMPLEX-37, NBCOMPLEX-38, NBCOMPLEX-39, NBCOMPLEX-40, NBCOMPLEX-41, NBCOMPLEX-42, NBCOMPLEX-43, NBCOMPLEX-44, NBCOMPLEX-45, NBCOMPLEX-46, NBCOMPLEX-47] }
+    mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif:        { count: 5, items: [NBCOMPLEX-7, NBCOMPLEX-9, NBCOMPLEX-26, NBCOMPLEX-27, NBCOMPLEX-28] }
+    mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle:         { count: 6, items: [NBCOMPLEX-9, NBCOMPLEX-27, NBCOMPLEX-32, NBCOMPLEX-34, NBCOMPLEX-36, NBCOMPLEX-37] }
+    mc.math.maths_complexes_algebrique.extension-equation-mal-appariee:     { count: 3, items: [NBCOMPLEX-8, NBCOMPLEX-27, NBCOMPLEX-28] }
+    mc.math.maths_complexes_algebrique.module-argument-vs-parties:          { count: 4, items: [NBCOMPLEX-22, NBCOMPLEX-23, NBCOMPLEX-24, NBCOMPLEX-31] }
+    mc.math.maths_complexes_algebrique.algebrique-exponentielle-conversion: { count: 3, items: [NBCOMPLEX-24, NBCOMPLEX-31, NBCOMPLEX-33] }
+    mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution:       { count: 3, items: [NBCOMPLEX-34, NBCOMPLEX-36, NBCOMPLEX-37] }
+    mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels:       { count: 4, items: [NBCOMPLEX-38, NBCOMPLEX-39, NBCOMPLEX-40, NBCOMPLEX-41] }
+    mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose:          { count: 4, items: [NBCOMPLEX-38, NBCOMPLEX-39, NBCOMPLEX-40, NBCOMPLEX-41] }
+    mc.math.maths_complexes_algebrique.viete-somme-produit-inverses:        { count: 6, items: [NBCOMPLEX-42, NBCOMPLEX-43, NBCOMPLEX-44, NBCOMPLEX-45, NBCOMPLEX-46, NBCOMPLEX-47] }
+    mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie:          { count: 6, items: [NBCOMPLEX-42, NBCOMPLEX-43, NBCOMPLEX-44, NBCOMPLEX-45, NBCOMPLEX-46, NBCOMPLEX-47] }
+  total_items: 47
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 5
+    R1: 6
+    R2: 5
+    R3: 3
+    R4: 4
+    R4b: 8
+    R4c: 6
+    R5: 5
+    R6: 5
+  honest_state: >-
+    Les vingt-cinq misconceptions déclarées sont couvertes, aucune sous le
+    plancher — recompté après le re-dressage de NBCOMPLEX-35/36 et l'ajout de
+    NBCOMPLEX-46/47. Dix y siègent EXACTEMENT (3 items), marge nulle :
+    produit-non-developpe, quotient-conjugue-incomplet, module-produit-additif,
+    distance-affixe-brute, milieu-sans-moyenne, imaginaire-pur-mauvaise-partie,
+    puissance-i-cycle-errone, extension-equation-mal-appariee,
+    algebrique-exponentielle-conversion, et — depuis le re-dressage de
+    NBCOMPLEX-35 — delta-negatif-aucune-solution (4→3 : NBCOMPLEX-35 ne porte
+    plus ce modèle depuis qu'il ne demande plus de discriminant). confond-re-im
+    et conjugue-mauvais-axe gagnent un 4e item (NBCOMPLEX-35 en porte
+    désormais un distracteur chacun) ; i-derive-par-racine-usuelle redescend de
+    7 à 6 (retrait de NBCOMPLEX-35, toujours 3 items de marge). Les rungs R4b
+    (équation du second degré dans ℂ) et R4c (Viète) remplacent l'ancien R4:16
+    fourre-tout de la vague B1 : R4 reprend sa valeur d'avant-vague (4),
+    R4b compte 8 items (NBCOMPLEX-34 à 41), R4c en compte 6
+    (NBCOMPLEX-42 à 47). Fidélité filière (B2) : NBCOMPLEX-38 à 45 et
+    NBCOMPLEX-47 sont de profondeur Sciences Mathématiques (coefficients ou
+    paramètre complexes) à l'intérieur d'un banc au garde-fou SExp déclaré
+    (checkpoints.yaml:41) — signalé par le commentaire précédant NBCOMPLEX-38,
+    faute d'un champ per-item `filiere`/`stream` dans ce corpus (aucun schéma
+    inventé pour ce fix ; NBCOMPLEX-34 à 37 et NBCOMPLEX-46 restent
+    SExp-légaux, coefficients réels). viete-somme-produit-inverses et
+    viete-coefficient-a-oublie passent de 4 à 6 items (NBCOMPLEX-46/47
+    ajoutés) — ce sont eux qui portent la plus grande marge parmi les
+    misconceptions de la dette GAP-B.

@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 600" width="640" height="600"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img"
+     aria-label="Construction en escalier de la suite récurrente u(n+1) = f(u_n), avec f(x) = 0,5x + 10 : un point de départ u0 que l’on peut faire glisser sur l’axe, l’escalier qui se reconstruit en direct, et qui converge toujours vers le même point fixe ℓ = 20 quel que soit u0.">
+  <title>Construction en escalier — u(n+1) = f(u_n), étape par étape puis manipulable</title>
+  <!--
+    suite-escalier.svg — STAGED + MANIPULABLE (docs/design/INTERACTIVE-FIGURE-SPEC.md).
+    step-1 : les deux droites de référence (y = f(x), y = x).
+    step-2 : + l'escalier, le point de départ u0 (glissable), le point fixe
+             ℓ — déverrouille la manipulation ici
+             (suite-escalier.interactive.json, unlockAfterStage = 2) :
+             glisser #point-u0 (ou le curseur) recalcule #cobweb-path,
+             #tick-u0, #label-u0 en direct
+             (web/src/lib/interactive-figures/suite-escalier.ts).
+
+    Fichier compagnon `escalier-pas-a-pas.motion.json`/`.motion.svg` (déjà
+    livré, anime le MÊME exemple du réservoir avec u0=100 figé dans ses
+    propres captions) : NON MODIFIÉ, espace d'id entièrement séparé.
+
+    f(x) = 0,5x + 10 (affine, tracée par ses deux points terminaux).
+    Point fixe : L = f(L) => L = 20 — INVARIANT, ne dépend jamais de u0
+    (c'est précisément ce que "Fermeture de l'arc" au R8 établit) — les
+    repères du point fixe (ligne 85-ish, le point, le tick, le label "ℓ")
+    restent donc STATIQUES, jamais recalculés, même en glissant u0.
+
+    Repère écran (inchangé de l'original) : px = 100 + 4x, py = 480 - 4y.
+    L'escalier est régénéré pour 5 itérations fixes (u0..u5), quel que
+    soit u0 du domaine manipulable [10, 100] — reproduit EXACTEMENT les
+    11 points de l'original statique à u0=100 (vérifié).
+
+    Simplification délibérée : les points/ticks/labels intermédiaires u1,
+    u2 de l'original (valeurs figées, fausses dès que u0 change) sont
+    retirés plutôt que laissés obsolètes — seuls u0 (glissable) et ℓ
+    (invariant) restent marqués. La forme de l'escalier porte déjà toute
+    l'histoire "on se rapproche du point fixe".
+
+    Couleurs (inchangé de l'original) : droite y=x et axes en ink-soft ;
+    droite y=f(x) en ink ; l'escalier, u0 et ℓ en accent (seul foyer).
+
+    Les captions sont portées par suite-escalier.stages.json — aucun texte
+    de légende baké ici (même convention que tangente-derivee.svg).
+  -->
+
+  <rect x="20" y="34" width="600" height="506" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <text x="320" y="14" text-anchor="middle" font-size="12.5" font-weight="600"
+        fill="var(--figure-ink)">Construction en escalier : u<tspan dy="3" font-size="9">n+1</tspan><tspan dy="-3"> = f(u</tspan><tspan dy="3" font-size="9">n</tspan><tspan dy="-3">)</tspan></text>
+  <!-- Sous-titre — la règle générale, valable pour tout u0, jamais recalculé -->
+  <text x="320" y="28" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">réservoir : u<tspan dy="3" font-size="8">n+1</tspan><tspan dy="-3"> = 0,5 u</tspan><tspan dy="3" font-size="8">n</tspan><tspan dy="-3"> + 10  &#x2192;  converge vers ℓ = 20, quel que soit u</tspan><tspan dy="3" font-size="8">0</tspan></text>
+
+  <!-- axes -->
+  <line x1="100" y1="480" x2="574" y2="480" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="574,480 562,475.5 562,484.5" fill="var(--figure-ink-soft)"/>
+  <line x1="100" y1="480" x2="100" y2="48" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="100,40 95.5,51 104.5,51" fill="var(--figure-ink-soft)"/>
+  <text x="580" y="498" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">u<tspan dy="3" font-size="8">n</tspan></text>
+  <text x="72" y="66" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">u<tspan dy="3" font-size="8">n+1</tspan></text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les deux droites de référence
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <line x1="100" y1="480" x2="532" y2="48" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <text x="538" y="52" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">y = x</text>
+
+    <line x1="100" y1="440" x2="532" y2="224" stroke="var(--figure-ink)" stroke-width="2"/>
+    <text x="538" y="222" font-size="11" font-style="italic" fill="var(--figure-ink)">f(x) = 0,5x + 10</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — l'escalier, u0 (glissable), le point fixe ℓ (invariant) —
+       déverrouille la manipulation (unlockAfterStage = 2)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Point fixe ℓ = 20 — STATIQUE, jamais recalculé (voir commentaire) -->
+    <line x1="180" y1="400" x2="180" y2="480" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="100" y1="400" x2="180" y2="400" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <circle cx="180" cy="400" r="4" fill="var(--figure-accent)"/>
+    <line x1="180" y1="480" x2="180" y2="488" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <text x="180" y="500" text-anchor="middle" font-size="12" font-weight="600" font-style="italic"
+          fill="var(--figure-accent)">ℓ</text>
+
+    <!-- L'escalier — LIVE -->
+    <path id="cobweb-path" d="M500,480 L500,240 L340,240 L340,320 L260,320 L260,360 L220,360 L220,380 L200,380 L200,390 L190,390"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Halo de glissé (--state-dragged) -->
+    <circle id="point-u0-halo" cx="500" cy="480" r="9" style="cursor:grab"
+            fill="var(--figure-accent)" opacity="0"/>
+
+    <!-- Point de départ u0 — poignée glissable -->
+    <circle id="point-u0" cx="500" cy="480" r="3.5" style="cursor:grab" fill="var(--figure-accent)"/>
+    <path id="tick-u0" d="M500,480 L500,488" stroke="var(--figure-ink-soft)" stroke-width="1.2"
+          style="pointer-events:none"/>
+    <text id="label-u0" x="500" y="500" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-ink)">u₀ = 100</text>
+  </g><!-- /step-2 -->
+
+</svg>

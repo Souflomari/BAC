@@ -1,0 +1,74 @@
+/**
+ * Home — la session + LE programme (refonte Studio, R6 avancé).
+ *
+ * L'ancienne page composait QUATRE modules dont trois disaient la même
+ * chose (audit Fable §3.5) : MasteryMap (liste plate à scroll imbriqué),
+ * AvailableShelf (accordéons d'illustrations répétées), SubjectProgress
+ * (texte sans visualisation) — plus une grille CSS à trois zones pour les
+ * tenir ensemble. Le tout est remplacé par DEUX choses :
+ *
+ *   1. SessionCard — l'action primaire, texte d'abord (le Cover est parti).
+ *      NextUp reste sa ligne discrète en dessous, contrat inchangé
+ *      ([data-primary-action], [data-reco-source]).
+ *   2. ProgrammeMap — le programme par matière, couleur sémantique +
+ *      couverture RÉELLE du cadre (« M/N chapitres », barre à l'appui).
+ *      Chaque notion garde [data-mastery-token].
+ *
+ * Honest-state, revérifié à l'inventaire du 2026-08-18 : signé-déconnecté
+ * il n'existe AUCUNE donnée de progression — cette page n'affiche donc
+ * jamais un « % lu » ni un état de maîtrise ; la couverture du cadre est
+ * la seule barre, et c'est un FAIT de contenu, pas un progrès d'élève.
+ */
+
+import type { Metadata } from "next";
+import { listNotions } from "@/lib/content";
+
+import { Link } from "@/components/ui/Lien";
+import { PageShell } from "@/components/ui/PageShell";
+import { SessionCard } from "@/components/dashboard/SessionCard";
+import { NextUp } from "@/components/dashboard/NextUp";
+import { ProgrammeMap } from "@/components/dashboard/ProgrammeMap";
+import { manifesteEpreuves } from "@/lib/palette-epreuves";
+import { manifestePourHeader } from "@/lib/palette-notions";
+
+export const metadata: Metadata = {
+  title: "Ta session",
+};
+
+export default function HomePage() {
+  const notions = listNotions();
+
+  return (
+    <PageShell epreuves={manifesteEpreuves()} notions={manifestePourHeader()} width="page">
+      <header className="mb-10 max-w-lead">
+        <h1 className="font-display text-display font-bold text-primary">
+          Ta session
+        </h1>
+        <p className="mt-4 text-lead text-secondary">
+          Deux heures calmes, une notion à fond. Voilà par où commencer.
+        </p>
+      </header>
+
+      <SessionCard notions={notions} />
+      <div className="mt-4">
+        <NextUp notions={notions} />
+      </div>
+
+      <ProgrammeMap notions={notions} />
+
+      {/* Examens blancs — l'entrée périphérique du mode épreuve (C5).
+          Une ligne calme APRÈS le programme : la répétition d'examen vient
+          quand les notions sont travaillées, pas avant (§8 périphérie). */}
+      <p className="mt-10 text-body text-secondary">
+        Prêt à te tester en conditions réelles ?{" "}
+        <Link
+          href="/examens"
+          data-lien-examens
+          className="font-medium text-accent underline-offset-2 hover:underline focus-ring rounded [--focus-radius:4px]"
+        >
+          Examens blancs — les épreuves réelles →
+        </Link>
+      </p>
+    </PageShell>
+  );
+}

@@ -1,0 +1,282 @@
+# Attempt-first exercises (summit-conversion campaign — maths, nombres complexes 2).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2019 session
+# normale, Mathématiques SCIENCES MATHÉMATIQUES (SM) A & B, BIOF, code NS 24F,
+# AlloSchool element/68482 — statut « vérifié » in
+# docs/sujets/maths/nombres-complexes-2.md, "2019 — session normale — Ex. 2").
+# C'est un exercice SM d'approfondissement : équation du second degré à
+# paramètre complexe m (discriminant, racines), module/argument d'une somme,
+# puis configuration du plan (rotation, milieu, rapport de complexes → ⟂ et
+# rapport de longueurs, point d'intersection de deux droites). r-variation est
+# une jumelle fraîche anti-mémorisation : même chaîne (discriminant carré
+# parfait via (1−i)²=−2i, racines, module/argument d'une somme, condition de
+# réalité, rotation/milieu, rapport → ⟂, intersection) avec d'autres nombres et
+# X=a+b non requis ; status not-applicable.
+
+notion: nombres-complexes-2
+
+exercises:
+  # ── r-bac — le SUJET VÉRIFIÉ 2019 SM (Exercice 2, NS 24F) ─────────────────
+  - id: r-bac
+    title: "Exercice de type bac — équation à paramètre complexe, rotation et configuration (2019, SM)"
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national filière SCIENCES
+        MATHÉMATIQUES (A) et (B), خيار فرنسية (BIOF), Mathématiques (4 h,
+        coef 9), code sujet NS 24F, barème 3,5 points (Exercice 2, nombres
+        complexes). Source AlloSchool element/68482. Transcription vérifiée :
+        docs/sujets/maths/nombres-complexes-2.md, statut « vérifié »
+        (agent-vérificateur-adversarial, 2026-07-12, source re-fetchée et diff
+        caractère-par-caractère conforme au scan ; filière SM et code NS 24F
+        confirmés sur l'en-tête du scan).
+    intro: |-
+      **Nombres complexes (examen national, session normale 2019, Sciences Mathématiques).**
+
+      Soit $m$ un nombre complexe **non réel** ($m \in \mathbb{C} - \mathbb{R}$).
+
+      L'exercice se déroule en deux temps. La **partie I** étudie une équation du second degré dont un coefficient dépend de $m$ : on montre que son discriminant ne s'annule pas, on calcule ses deux racines, puis on lit le module et un argument de leur somme. La **partie II** place ces mêmes nombres dans le plan complexe et en fait une configuration géométrique (rotation, milieu, orthogonalité, point d'intersection). Le fil conducteur : un rapport de deux affixes encode à la fois un rapport de longueurs (son module) et un angle (son argument) — l'outil central du chapitre.
+    questions:
+      - id: q1a
+        part: "Partie I — L'équation $(E)\\ :\\ z^2 - (1+i)(1+m)z + 2im = 0$"
+        stem: |-
+          **(0,25 pt)** Montrer que le discriminant de l'équation $(E)$ est non nul.
+        reasoning: |-
+          Le discriminant d'une équation du second degré $az^2+bz+c=0$ est $\Delta = b^2-4ac$. Le calcul se mène comme dans $\mathbb{R}$, mais avec des nombres complexes : le geste qui débloque tout est de reconnaître $(1+i)^2 = 2i$ (déjà vu au chapitre précédent), ce qui fait apparaître un carré parfait.
+
+          Une fois $\Delta$ mis sous la forme d'un facteur non nul multiplié par $(m-1)^2$, on conclut : $m$ étant **non réel**, on a $m \neq 1$, donc $(m-1)^2 \neq 0$, et $2i \neq 0$ — le produit est non nul.
+        steps:
+          - math: '\Delta = \big[(1+i)(1+m)\big]^2 - 4\times 1\times 2im = (1+i)^2(1+m)^2 - 8im'
+            note: "Δ = b² − 4ac, avec b = −(1+i)(1+m), a = 1, c = 2im."
+          - math: '(1+i)^2 = 2i \implies \Delta = 2i(1+m)^2 - 8im = 2i\big[(1+m)^2 - 4m\big]'
+            note: "On met 2i en facteur ; c'est (1+i)² = 2i qui amorce le carré parfait."
+          - math: '(1+m)^2 - 4m = m^2 - 2m + 1 = (m-1)^2 \implies \Delta = 2i\,(m-1)^2'
+            note: "Identité remarquable : le crochet est (m−1)²."
+          - math: 'm \notin \mathbb{R} \implies m \neq 1 \implies (m-1)^2 \neq 0, \quad\text{et } 2i \neq 0 \implies \Delta \neq 0'
+            note: "m non réel donc m ≠ 1 : le discriminant ne s'annule pas."
+      - id: q1b
+        stem: |-
+          **(0,5 pt)** Déterminer $z_1$ et $z_2$, les deux solutions de l'équation $(E)$.
+        reasoning: |-
+          Pour résoudre, il faut une **racine carrée** du discriminant, c'est-à-dire un complexe $\delta$ tel que $\delta^2 = \Delta$. Ici on n'a rien à chercher : $\Delta = 2i(m-1)^2$ est déjà un carré, car $2i = (1+i)^2$. Donc $\Delta = \big[(1+i)(m-1)\big]^2$ et une racine carrée est $\delta = (1+i)(m-1)$.
+
+          On applique alors la formule des racines $z = \dfrac{-b \pm \delta}{2a}$, avec $-b = (1+i)(1+m)$. Les deux termes se factorisent par $(1+i)$, et tout se simplifie.
+        steps:
+          - math: '\Delta = 2i\,(m-1)^2 = (1+i)^2(m-1)^2 = \big[(1+i)(m-1)\big]^2 \implies \delta = (1+i)(m-1)'
+            note: "Δ est un carré parfait : δ = (1+i)(m−1) en est une racine carrée."
+          - math: 'z = \frac{(1+i)(1+m) \pm (1+i)(m-1)}{2} = \frac{(1+i)\big[(1+m) \pm (m-1)\big]}{2}'
+            note: "Formule (−b ± δ)/(2a), avec −b = (1+i)(1+m) ; on factorise par (1+i)."
+          - math: 'z_1 = \frac{(1+i)(2m)}{2} = (1+i)m, \qquad z_2 = \frac{(1+i)(2)}{2} = 1+i'
+            note: "Signe + : (1+m)+(m−1) = 2m. Signe − : (1+m)−(m−1) = 2."
+      - id: q2a
+        part: "Partie I (suite) — On suppose $m = e^{i\\theta}$ avec $0 < \\theta < \\pi$"
+        stem: |-
+          **(0,5 pt)** Déterminer le module et un argument de $z_1 + z_2$.
+        reasoning: |-
+          La somme se factorise : $z_1 + z_2 = (1+i)m + (1+i) = (1+i)(m+1)$. Le module d'un produit est le produit des modules, l'argument d'un produit est la somme des arguments (chapitre 3) — on traite donc les deux facteurs séparément.
+
+          Pour $1+i$ : module $\sqrt2$, argument $\dfrac{\pi}{4}$. Pour $m+1 = e^{i\theta}+1$, on utilise la **factorisation par l'angle moitié** : mettre $e^{i\theta/2}$ en facteur fait apparaître $e^{i\theta/2}+e^{-i\theta/2} = 2\cos\dfrac{\theta}{2}$. Comme $0<\theta<\pi$, on a $0<\dfrac{\theta}{2}<\dfrac{\pi}{2}$, donc $\cos\dfrac{\theta}{2} > 0$ : c'est bien un module (positif), et $\dfrac{\theta}{2}$ est bien l'argument.
+        steps:
+          - math: 'z_1 + z_2 = (1+i)m + (1+i) = (1+i)(m+1) = (1+i)\big(e^{i\theta}+1\big)'
+            note: "On factorise la somme par (1+i)."
+          - math: 'e^{i\theta}+1 = e^{i\theta/2}\big(e^{i\theta/2}+e^{-i\theta/2}\big) = 2\cos\tfrac{\theta}{2}\,e^{i\theta/2}'
+            note: "Angle moitié : $e^{iθ/2}+e^{−iθ/2}$ = 2cos(θ/2), positif car 0 < θ/2 < π/2."
+          - math: '1+i = \sqrt2\,e^{i\pi/4} \implies z_1+z_2 = 2\sqrt2\,\cos\tfrac{\theta}{2}\; e^{i\left(\frac{\pi}{4}+\frac{\theta}{2}\right)}'
+            note: "Produit : modules × modules, arguments + arguments (chapitre 3)."
+          - math: '|z_1+z_2| = 2\sqrt2\,\cos\tfrac{\theta}{2}, \qquad \arg(z_1+z_2) = \frac{\pi}{4} + \frac{\theta}{2}\ [2\pi]'
+            note: "Module positif (cos(θ/2) > 0) ; argument π/4 + θ/2."
+      - id: q2b
+        stem: |-
+          **(0,25 pt)** Montrer que si $z_1 z_2 \in \mathbb{R}$, alors $z_1 + z_2 = 2i$.
+        reasoning: |-
+          On calcule d'abord le produit : $z_1 z_2 = (1+i)m \times (1+i) = (1+i)^2 m = 2im$ (encore $(1+i)^2=2i$). Dire que $z_1 z_2 = 2im$ est réel, c'est dire que $im$ est réel, donc que $m$ est un imaginaire pur.
+
+          Or $m = e^{i\theta}$ avec $0<\theta<\pi$ : le seul imaginaire pur de module $1$ dans ce demi-plan (partie imaginaire $>0$) est $m = i$ (soit $\theta = \dfrac{\pi}{2}$). On remplace alors dans $z_1+z_2$.
+        steps:
+          - math: 'z_1 z_2 = (1+i)m\times(1+i) = (1+i)^2 m = 2im'
+            note: "Produit des deux racines ; (1+i)² = 2i."
+          - math: '2im \in \mathbb{R} \iff im \in \mathbb{R} \iff m \in i\mathbb{R} \quad(m \text{ imaginaire pur})'
+            note: "2im réel équivaut à m imaginaire pur."
+          - math: 'm = e^{i\theta},\ 0<\theta<\pi,\ m\in i\mathbb{R} \implies \theta = \frac{\pi}{2} \implies m = i'
+            note: "Seul imaginaire pur de module 1 avec 0 < θ < π : m = i."
+          - math: 'z_1 + z_2 = (1+i)(m+1) = (1+i)(i+1) = (1+i)^2 = 2i'
+            note: "On remplace m = i : la somme vaut 2i."
+      - id: q1a2
+        part: "Partie II — Le plan complexe $(O;\\vec{u},\\vec{v})$ : $a=1+i$, $b=(1+i)m$, $c=1-i$"
+        stem: |-
+          $A$, $B$, $C$ ont pour affixes $a=1+i$, $b=(1+i)m$, $c=1-i$. $D$ est l'image de $B$ par la rotation de centre $O$ et d'angle $\dfrac{\pi}{2}$, et $\Omega$ est le milieu de $[CD]$.
+
+          **(0,5 pt)** Montrer que l'affixe du point $\Omega$ est $\omega = \dfrac{(1-i)(1-m)}{2}$.
+        reasoning: |-
+          Deux outils, chacun déjà construit. **La rotation de centre $O$ et d'angle $\dfrac{\pi}{2}$** s'écrit $z \mapsto e^{i\pi/2}z = iz$ (chapitre 6). Donc l'affixe de $D$ est $d = i\,b$.
+
+          **Le milieu** de $[CD]$ a pour affixe la moyenne des affixes : $\omega = \dfrac{c+d}{2}$. Il ne reste qu'à simplifier, en repérant que $i(1+i) = i - 1 = -(1-i)$.
+        steps:
+          - math: 'd = e^{i\pi/2}\,b = i\,b = i(1+i)m'
+            note: "Rotation de centre O et d'angle π/2 : z ↦ iz (chapitre 6)."
+          - math: 'i(1+i) = i + i^2 = i - 1 = -(1-i) \implies d = -(1-i)m'
+            note: "Simplification de i(1+i)."
+          - math: '\omega = \frac{c+d}{2} = \frac{(1-i) - (1-i)m}{2} = \frac{(1-i)(1-m)}{2}'
+            note: "Affixe du milieu = moyenne des affixes ; on factorise par (1−i)."
+      - id: q1b2
+        stem: |-
+          **(0,25 pt)** Calculer $\dfrac{b-a}{\omega}$.
+        reasoning: |-
+          On exprime numérateur et dénominateur en facteurs simples. Le numérateur $b-a = (1+i)m - (1+i) = (1+i)(m-1)$ ; le dénominateur $\omega = \dfrac{(1-i)(1-m)}{2}$. Le facteur $(m-1)$ (au signe près, car $1-m = -(m-1)$) se simplifie.
+
+          Reste $\dfrac{1+i}{1-i}$, qu'on sait valoir $i$ (méthode du conjugué, chapitre 1 : $\dfrac{1+i}{1-i} = \dfrac{(1+i)^2}{(1-i)(1+i)} = \dfrac{2i}{2} = i$).
+        steps:
+          - math: 'b-a = (1+i)m - (1+i) = (1+i)(m-1), \qquad \omega = \frac{(1-i)(1-m)}{2} = -\frac{(1-i)(m-1)}{2}'
+            note: "Numérateur et dénominateur factorisés ; 1−m = −(m−1)."
+          - math: '\frac{b-a}{\omega} = \frac{(1+i)(m-1)}{-\frac{(1-i)(m-1)}{2}} = \frac{-2(1+i)}{1-i}'
+            note: "Le facteur (m−1) se simplifie."
+          - math: '\frac{1+i}{1-i} = \frac{(1+i)^2}{(1-i)(1+i)} = \frac{2i}{2} = i \implies \frac{b-a}{\omega} = -2i'
+            note: "(1+i)/(1−i) = i (méthode du conjugué)."
+      - id: q1c2
+        stem: |-
+          **(0,5 pt)** En déduire que $(O\Omega) \perp (AB)$ et que $AB = 2\,O\Omega$.
+        reasoning: |-
+          Le nombre $\dfrac{b-a}{\omega} = \dfrac{b-a}{\omega - 0}$ est le rapport de l'affixe de $\vec{AB}$ à celle de $\vec{O\Omega}$. Comme tout rapport de deux affixes de vecteurs, il **encode deux informations** (chapitre 7) : son **module** est le rapport des longueurs $\dfrac{AB}{O\Omega}$, et son **argument** est l'angle $(\vec{O\Omega}, \vec{AB})$.
+
+          On lit donc directement sur $-2i$ : module $2$, argument $-\dfrac{\pi}{2}$. Le module donne $AB = 2\,O\Omega$ ; l'argument, égal à $-\dfrac{\pi}{2}$, dit que les deux directions sont orthogonales, donc $(O\Omega) \perp (AB)$.
+        steps:
+          - math: '\frac{b-a}{\omega} = \frac{\text{aff}(\vec{AB})}{\text{aff}(\vec{O\Omega})} = -2i'
+            note: "ω = ω − 0 est l'affixe du vecteur OΩ ; b − a celle de AB."
+          - math: '\left|\frac{b-a}{\omega}\right| = |-2i| = 2 = \frac{AB}{O\Omega} \implies AB = 2\,O\Omega'
+            note: "Le module donne le rapport des longueurs."
+          - math: '\arg\!\left(\frac{b-a}{\omega}\right) = \arg(-2i) = -\frac{\pi}{2} = \big(\vec{O\Omega},\,\vec{AB}\big) \implies (O\Omega)\perp(AB)'
+            note: "Argument ±π/2 : les directions sont orthogonales."
+      - id: q2a2
+        part: "Partie II (suite) — La droite $(O\\Omega)$ coupe $(AB)$ au point $H$ d'affixe $h$"
+        stem: |-
+          **(0,5 pt)** Montrer que $\dfrac{h-a}{b-a}$ est un réel et que $\dfrac{h}{b-a}$ est un imaginaire pur.
+        reasoning: |-
+          Deux appartenances, deux traductions par un rapport de complexes (chapitre 7).
+
+          $H \in (AB)$ signifie que $A$, $H$, $B$ sont alignés : le vecteur $\vec{AH}$ (affixe $h-a$) est colinéaire à $\vec{AB}$ (affixe $b-a$), donc $\dfrac{h-a}{b-a}$ est **réel**.
+
+          $H \in (O\Omega)$ signifie que $O$, $H$, $\Omega$ sont alignés : $\dfrac{h}{\omega}$ est réel. Or $\dfrac{b-a}{\omega} = -2i$ (question précédente), donc $\dfrac{\omega}{b-a} = \dfrac{1}{-2i} = \dfrac{i}{2}$. En écrivant $\dfrac{h}{b-a} = \dfrac{h}{\omega}\times\dfrac{\omega}{b-a}$, on multiplie un **réel** par $\dfrac{i}{2}$ : le résultat est un **imaginaire pur**.
+        steps:
+          - math: 'H \in (AB) \iff \vec{AH}\ \text{colinéaire à}\ \vec{AB} \iff \frac{h-a}{b-a} \in \mathbb{R}'
+            note: "Alignement A, H, B : rapport des affixes réel."
+          - math: 'H \in (O\Omega) \iff \frac{h}{\omega} \in \mathbb{R}'
+            note: "Alignement O, H, Ω : h/ω réel (ω = affixe de OΩ)."
+          - math: '\frac{b-a}{\omega} = -2i \implies \frac{\omega}{b-a} = \frac{1}{-2i} = \frac{i}{2}'
+            note: "On inverse la relation précédente : 1/(−2i) = i/2."
+          - math: '\frac{h}{b-a} = \frac{h}{\omega}\times\frac{\omega}{b-a} = \underbrace{\frac{h}{\omega}}_{\in\,\mathbb{R}}\times\frac{i}{2} \in i\mathbb{R}'
+            note: "Réel × (i/2) = imaginaire pur."
+      - id: q2b2
+        stem: |-
+          **(0,25 pt)** En déduire $h$ en fonction de $m$.
+        reasoning: |-
+          On pose $\dfrac{h-a}{b-a} = t$ (réel, question 2a) et $\dfrac{h}{b-a} = is$ (imaginaire pur, $s$ réel). La différence des deux fait disparaître $h$ :
+          $$\frac{h}{b-a} - \frac{h-a}{b-a} = \frac{a}{b-a} = is - t.$$
+          Or $\dfrac{a}{b-a} = \dfrac{1+i}{(1+i)(m-1)} = \dfrac{1}{m-1}$. En identifiant partie réelle et partie imaginaire, $s = \operatorname{Im}\!\dfrac{1}{m-1}$. Comme $H \in (O\Omega)$, on a aussi $h = \lambda\omega$ ($\lambda$ réel) ; le report donne $\lambda = 2\operatorname{Im}\!\dfrac{1}{m-1}$, d'où $h = \lambda\omega$.
+        steps:
+          - math: '\frac{a}{b-a} = \frac{1+i}{(1+i)(m-1)} = \frac{1}{m-1}'
+            note: "Le facteur (1+i) se simplifie."
+          - math: '\frac{a}{b-a} = is - t \implies s = \operatorname{Im}\frac{1}{m-1} \quad(t,\,s\ \text{réels})'
+            note: "Identification : la partie imaginaire de 1/(m−1) donne s."
+          - math: 'h = \lambda\,\omega,\ \lambda = 2\operatorname{Im}\frac{1}{m-1} \implies h = \operatorname{Im}\!\left(\frac{1}{m-1}\right)(1-i)(1-m)'
+            note: "h = λω avec ω = (1−i)(1−m)/2. Contrôle m = i : h = i (H(0,1))."
+
+  # ── r-variation — jumelle fraîche anti-mémorisation (PAS un sujet réel) ────
+  - id: r-variation
+    title: "Variation fraîche — un autre paramètre, une autre configuration"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2019, SM, sourcé). Le
+        paramètre passe de (1+i) à (1−i) : le discriminant reste un carré
+        parfait car (1−i)² = −2i, et toute la chaîne (racines, module/argument
+        d'une somme, condition de réalité, rotation/milieu, rapport → ⟂,
+        intersection) se rejoue avec d'autres nombres, vérifiés à la main.
+    intro: |-
+      Même structure profonde que le sujet 2019, habillage différent : le paramètre est monté avec $(1-i)$ au lieu de $(1+i)$, et la rotation de la partie II tourne dans l'autre sens. Le but est que tu ne puisses pas recopier la solution du sujet : tu dois reconnaître que la **même machinerie** (discriminant en carré parfait, racines, rapport de complexes pour l'orthogonalité et le rapport de longueurs) s'applique quels que soient les nombres.
+
+      Soit $m \in \mathbb{C} - \mathbb{R}$. On considère l'équation $(E')\ :\ z^2 - (1-i)(1+m)z - 2im = 0$, puis, dans le plan complexe $(O;\vec{u},\vec{v})$, les points $A$, $B$, $C$ d'affixes $a = 1-i$, $b = (1-i)m$, $c = 1+i$.
+    questions:
+      - id: q1a
+        part: "Partie I — L'équation $(E')\\ :\\ z^2 - (1-i)(1+m)z - 2im = 0$"
+        stem: |-
+          Montrer que le discriminant de $(E')$ est non nul, puis déterminer ses deux solutions $z_1$ et $z_2$.
+        reasoning: |-
+          Exactement le geste du sujet, avec $(1-i)^2 = -2i$ au lieu de $(1+i)^2 = 2i$. On développe $\Delta$, on fait apparaître le carré parfait $(m-1)^2$, et comme $-2i = (1-i)^2$, le discriminant est lui-même un carré : la racine carrée se lit sans effort.
+        steps:
+          - math: '\Delta = (1-i)^2(1+m)^2 - 4(-2im) = -2i(1+m)^2 + 8im = -2i\big[(1+m)^2 - 4m\big] = -2i(m-1)^2'
+            note: "Δ = b² − 4ac ; (1−i)² = −2i ; le crochet est (m−1)²."
+          - math: 'm\notin\mathbb{R} \implies m\neq 1 \implies (m-1)^2\neq 0 \implies \Delta \neq 0'
+            note: "Discriminant non nul (m ≠ 1)."
+          - math: '\Delta = (1-i)^2(m-1)^2 = \big[(1-i)(m-1)\big]^2 \implies \delta = (1-i)(m-1)'
+            note: "Δ est un carré parfait car −2i = (1−i)²."
+          - math: 'z_1 = \frac{(1-i)\big[(1+m)+(m-1)\big]}{2} = (1-i)m, \qquad z_2 = \frac{(1-i)\big[(1+m)-(m-1)\big]}{2} = 1-i'
+            note: "Formule (−b ± δ)/(2a), factorisée par (1−i)."
+      - id: q2a
+        part: "Partie I (suite) — $m = e^{i\\theta}$, $0<\\theta<\\pi$"
+        stem: |-
+          Déterminer le module et un argument de $z_1 + z_2$.
+        reasoning: |-
+          $z_1 + z_2 = (1-i)(m+1)$. On traite chaque facteur : $1-i$ a pour module $\sqrt2$ et pour argument $-\dfrac{\pi}{4}$ ; et $e^{i\theta}+1 = 2\cos\dfrac{\theta}{2}\,e^{i\theta/2}$ par la factorisation de l'angle moitié (avec $\cos\dfrac{\theta}{2}>0$ car $0<\theta<\pi$). Modules multipliés, arguments additionnés.
+        steps:
+          - math: 'z_1 + z_2 = (1-i)m + (1-i) = (1-i)(m+1) = (1-i)\big(e^{i\theta}+1\big)'
+            note: "On factorise la somme par (1−i)."
+          - math: '1-i = \sqrt2\,e^{-i\pi/4}, \qquad e^{i\theta}+1 = 2\cos\tfrac{\theta}{2}\,e^{i\theta/2}'
+            note: "Argument de 1−i : −π/4. Angle moitié pour $e^{iθ}+1$."
+          - math: '|z_1+z_2| = 2\sqrt2\,\cos\tfrac{\theta}{2}, \qquad \arg(z_1+z_2) = \frac{\theta}{2} - \frac{\pi}{4}\ [2\pi]'
+            note: "Produit : modules × modules, arguments + arguments."
+      - id: q2b
+        stem: |-
+          Montrer que si $z_1 z_2 \in \mathbb{R}$, alors $z_1 + z_2 = 2$.
+        reasoning: |-
+          $z_1 z_2 = (1-i)^2 m = -2im$. Réel équivaut à $m$ imaginaire pur ; avec $m = e^{i\theta}$, $0<\theta<\pi$, cela force $m = i$. On remplace dans la somme.
+        steps:
+          - math: 'z_1 z_2 = (1-i)m\times(1-i) = (1-i)^2 m = -2im'
+            note: "Produit des racines ; (1−i)² = −2i."
+          - math: '-2im \in \mathbb{R} \iff m \in i\mathbb{R} \implies m = i \quad(0<\theta<\pi)'
+            note: "m imaginaire pur de module 1, demi-plan supérieur : m = i."
+          - math: 'z_1 + z_2 = (1-i)(m+1) = (1-i)(i+1) = 1 + i - i - i^2 = 2'
+            note: "On remplace m = i : (1−i)(1+i) = 2."
+      - id: q1a2
+        part: "Partie II — $a=1-i$, $b=(1-i)m$, $c=1+i$ ; $D$ image de $B$ par la rotation $(O,-\\tfrac{\\pi}{2})$, $\\Omega$ milieu de $[CD]$"
+        stem: |-
+          Montrer que l'affixe de $\Omega$ est $\omega = \dfrac{(1+i)(1-m)}{2}$.
+        reasoning: |-
+          La rotation de centre $O$ et d'angle $-\dfrac{\pi}{2}$ s'écrit $z \mapsto e^{-i\pi/2}z = -i\,z$. Donc $d = -i\,b$. Puis $\omega = \dfrac{c+d}{2}$, en repérant que $-i(1-i) = -i + i^2 = -(1+i)$.
+        steps:
+          - math: 'd = e^{-i\pi/2}\,b = -i\,b = -i(1-i)m'
+            note: "Rotation de centre O et d'angle −π/2 : z ↦ −iz."
+          - math: '-i(1-i) = -i + i^2 = -i - 1 = -(1+i) \implies d = -(1+i)m'
+            note: "Simplification de −i(1−i)."
+          - math: '\omega = \frac{c+d}{2} = \frac{(1+i) - (1+i)m}{2} = \frac{(1+i)(1-m)}{2}'
+            note: "Milieu = moyenne des affixes ; on factorise par (1+i)."
+      - id: q1b2
+        stem: |-
+          Calculer $\dfrac{b-a}{\omega}$, et en déduire que $(O\Omega)\perp(AB)$ et $AB = 2\,O\Omega$.
+        reasoning: |-
+          $b-a = (1-i)(m-1)$ et $\omega = -\dfrac{(1+i)(m-1)}{2}$ : le facteur $(m-1)$ se simplifie, il reste $\dfrac{1-i}{1+i} = -i$. Le rapport vaut $2i$ ; son module $2$ donne $AB = 2\,O\Omega$, son argument $\dfrac{\pi}{2}$ donne l'orthogonalité.
+        steps:
+          - math: '\frac{b-a}{\omega} = \frac{(1-i)(m-1)}{-\frac{(1+i)(m-1)}{2}} = \frac{-2(1-i)}{1+i}'
+            note: "(m−1) se simplifie ; 1−m = −(m−1)."
+          - math: '\frac{1-i}{1+i} = \frac{(1-i)^2}{(1+i)(1-i)} = \frac{-2i}{2} = -i \implies \frac{b-a}{\omega} = 2i'
+            note: "(1−i)/(1+i) = −i (méthode du conjugué)."
+          - math: '\left|\frac{b-a}{\omega}\right| = 2 \implies AB = 2\,O\Omega, \qquad \arg = \frac{\pi}{2} \implies (O\Omega)\perp(AB)'
+            note: "Module → rapport de longueurs ; argument π/2 → orthogonalité."
+      - id: q2a2
+        part: "Partie II (suite) — $(O\\Omega)$ coupe $(AB)$ en $H$ d'affixe $h$"
+        stem: |-
+          Montrer que $\dfrac{h-a}{b-a}$ est réel et que $\dfrac{h}{b-a}$ est imaginaire pur, puis en déduire $h$ en fonction de $m$.
+        reasoning: |-
+          $H \in (AB)$ donne $\dfrac{h-a}{b-a} \in \mathbb{R}$ (alignement $A,H,B$) ; $H \in (O\Omega)$ donne $\dfrac{h}{\omega} \in \mathbb{R}$. Comme $\dfrac{b-a}{\omega} = 2i$, on a $\dfrac{h}{b-a} = \dfrac{h}{\omega}\times\dfrac{1}{2i} = (\text{réel})\times\left(-\dfrac{i}{2}\right)$, un imaginaire pur. La différence des deux rapports isole $\dfrac{a}{b-a} = \dfrac{1}{m-1}$, d'où $h = \lambda\omega$ avec $\lambda = -2\operatorname{Im}\dfrac{1}{m-1}$.
+        steps:
+          - math: '\frac{a}{b-a} = \frac{1-i}{(1-i)(m-1)} = \frac{1}{m-1}'
+            note: "Le facteur (1−i) se simplifie."
+          - math: '\frac{h}{b-a} - \frac{h-a}{b-a} = \frac{a}{b-a} = \frac{1}{m-1} \implies \lambda = -2\operatorname{Im}\frac{1}{m-1}'
+            note: "h = λω ; identification de la partie imaginaire."
+          - math: 'h = -\operatorname{Im}\!\left(\frac{1}{m-1}\right)(1+i)(1-m)'
+            note: "h = λω avec ω = (1+i)(1−m)/2. Contrôle m = i : h = 1 (H(1,0))."

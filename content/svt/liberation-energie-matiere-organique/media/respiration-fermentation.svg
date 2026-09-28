@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 580"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Schéma comparatif : la glycolyse, dans le cytoplasme, est l’étape commune de départ — une molécule de glucose donne 2 pyruvate et 2 ATP net. En présence de dioxygène, la voie de la respiration cellulaire fait entrer le pyruvate dans la mitochondrie (cycle de Krebs dans la matrice, chaîne respiratoire sur la membrane interne repliée en crêtes), pour un bilan d’environ 36 à 38 ATP par glucose, avec formation de CO2 et d’eau. En l’absence de dioxygène, la fermentation se déroule entièrement dans le cytoplasme, sans aucune mitochondrie : elle régénère le NAD+ nécessaire à la poursuite de la glycolyse et produit tout de même 2 ATP par glucose — jamais zéro — avec formation d’acide lactique ou d’éthanol et de CO2.">
+  <title>Respiration cellulaire et fermentation : une glycolyse commune, deux destins</title>
+
+  <!--
+    respiration-fermentation.svg — figure STATIQUE (pas de step-groups).
+
+    Cibles précises (erreurs classiques nommées dans le texte) :
+      - R2 : la glycolyse est la SEULE étape commune à la respiration et à la
+        fermentation — tout ce qui suit dépend de la présence ou non de O2.
+        Le schéma montre donc UN SEUL tronc partagé (glucose → glycolyse →
+        pyruvate) qui se divise ensuite en deux destins.
+      - R6, « deuxième erreur » : croire qu'en l'absence de dioxygène la
+        cellule ne produit plus AUCUN ATP. C'est faux : la fermentation
+        produit encore 2 ATP (via la glycolyse, maintenue active). C'est la
+        case finale accentuée à droite (« jamais zéro »).
+      - R7 : la localisation cellulaire distingue nettement les deux voies —
+        la respiration seule fait intervenir la mitochondrie (matrice +
+        membrane interne/crêtes) ; la fermentation reste tout entière dans
+        le cytoplasme, sans organite. C'est pourquoi le côté « fermentation »
+        ne porte AUCUNE forme fermée (pas d'ellipse, pas de rectangle) là où
+        le côté « respiration » montre une mitochondrie clairement délimitée
+        — l'absence de contour est elle-même l'information.
+
+    Layout (haut → bas) :
+      Glucose (cytoplasme) → Glycolyse (2 pyruvate + 2 ATP net)
+      → embranchement (éventail, sans tête de flèche — la direction est
+        déjà évidente par la disposition) →
+        gauche : « O2 présent → Respiration cellulaire » → mitochondrie
+                 (matrice : cycle de Krebs ; membrane interne : chaîne
+                 respiratoire) → bilan ≈ 36-38 ATP + CO2 + H2O
+        droite : « O2 absent → Fermentation » → cytoplasme seul (régénère
+                 NAD+, la glycolyse continue) → bilan 2 ATP, jamais zéro
+                 + acide lactique OU éthanol + CO2
+
+    Convention couleur : le seul accent (--figure-accent) de la figure marque
+    la case finale de droite (« 2 ATP / glucose — jamais zéro ») — c'est la
+    seule idée que cette figure accentue par la couleur : l'absence de
+    dioxygène ralentit énormément le bilan, mais ne l'annule pas. Tout le
+    reste (tronc commun, mitochondrie, structure) reste en --figure-ink /
+    --figure-ink-soft, sans hiérarchie de couleur supplémentaire.
+
+    Simplifications pédagogiques assumées : pas de formules moléculaires
+    complètes (C6H12O6...) — seuls les comptages de carbone utiles au
+    raisonnement (« 6 C », « 3 C » implicites dans le texte des rungs) sont
+    repris ; la mitochondrie est simplifiée à ses deux compartiments
+    pertinents pour cette leçon (matrice, membrane interne/crêtes), sans
+    espace intermembranaire détaillé (déjà hors du strict programme de ce
+    rung, qui se concentre sur le bilan).
+  -->
+
+  <!-- Titre -->
+  <text x="360" y="22" text-anchor="middle"
+        font-size="13" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Une glycolyse commune, deux destins selon le dioxygène
+  </text>
+
+  <!-- ── Rangée 1 : glucose (tronc commun) ─────────────────────────────── -->
+  <rect x="250" y="34" width="220" height="44" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+  <text x="360" y="52" text-anchor="middle" font-size="12" fill="var(--figure-ink)">Glucose</text>
+  <text x="360" y="68" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)"
+        >(6 <tspan font-style="italic">C</tspan> — cytoplasme)</text>
+
+  <line x1="360" y1="78" x2="360" y2="100" stroke="var(--figure-ink)" stroke-width="1.8"/>
+  <polygon points="354,100 366,100 360,106" fill="var(--figure-ink)"/>
+
+  <!-- ── Rangée 2 : glycolyse (tronc commun) ────────────────────────────── -->
+  <rect x="250" y="106" width="220" height="46" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+  <text x="360" y="126" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-ink)">Glycolyse</text>
+  <text x="360" y="142" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)"
+        >2 pyruvate + 2 <tspan font-style="italic">ATP</tspan> net</text>
+
+  <line x1="360" y1="152" x2="360" y2="170" stroke="var(--figure-ink)" stroke-width="1.8"/>
+  <polygon points="354,170 366,170 360,176" fill="var(--figure-ink)"/>
+
+  <!-- Éventail : embranchement selon la présence de dioxygène (sans tête de
+       flèche — direction déjà évidente par la disposition, comme dans
+       cascade-inflammatoire.svg) -->
+  <line x1="360" y1="176" x2="170" y2="204" stroke="var(--figure-ink)" stroke-width="1.6"/>
+  <line x1="360" y1="176" x2="550" y2="204" stroke="var(--figure-ink)" stroke-width="1.6"/>
+
+  <!-- ── Rangée 3 : condition + voie ────────────────────────────────────── -->
+  <rect x="70" y="204" width="200" height="48" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+  <text x="170" y="222" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)"
+        ><tspan font-style="italic">O</tspan><tspan dy="3" font-size="7.5" font-style="normal">2</tspan><tspan dy="-3"> présent</tspan></text>
+  <text x="170" y="240" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--figure-ink)">Respiration cellulaire</text>
+
+  <rect x="450" y="204" width="200" height="48" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+  <text x="550" y="222" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)"
+        ><tspan font-style="italic">O</tspan><tspan dy="3" font-size="7.5" font-style="normal">2</tspan><tspan dy="-3"> absent</tspan></text>
+  <text x="550" y="240" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--figure-ink)">Fermentation</text>
+
+  <line x1="170" y1="252" x2="170" y2="270" stroke="var(--figure-ink)" stroke-width="1.8"/>
+  <polygon points="164,270 176,270 170,276" fill="var(--figure-ink)"/>
+  <line x1="550" y1="252" x2="550" y2="270" stroke="var(--figure-ink)" stroke-width="1.8"/>
+  <polygon points="544,270 556,270 550,276" fill="var(--figure-ink)"/>
+
+  <!-- ── Rangée 4, gauche : mitochondrie (organite réellement délimité) ─── -->
+  <ellipse cx="170" cy="360" rx="115" ry="78"
+           fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+  <text x="170" y="306" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--figure-ink)">mitochondrie</text>
+  <text x="170" y="326" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-ink)">matrice</text>
+  <text x="170" y="341" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">cycle de Krebs</text>
+  <line x1="120" y1="353" x2="220" y2="353" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+  <text x="170" y="370" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)">membrane interne (crêtes)</text>
+  <text x="170" y="386" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">chaîne respiratoire</text>
+
+  <!-- Repli des crêtes (marque structurelle minimale, référencée par le texte
+       ci-dessus — pas une décoration gratuite) -->
+  <path d="M115,412 L127,404 L139,412 L151,404 L163,412 L175,404 L187,412 L199,404 L211,412 L223,404"
+        fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+
+  <!-- ── Rangée 4, droite : fermentation — AUCUNE forme fermée (pas
+       d'organite : c'est l'information) ─────────────────────────────────── -->
+  <text x="550" y="306" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--figure-ink)">fermentation</text>
+  <text x="550" y="326" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-ink)">cytoplasme</text>
+  <text x="550" y="341" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">(pas de mitochondrie)</text>
+  <line x1="500" y1="353" x2="600" y2="353" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+  <text x="550" y="370" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)"
+        >régénère <tspan font-style="italic">NAD</tspan><tspan dy="-4" font-size="7.5" font-style="normal">+</tspan></text>
+  <text x="550" y="386" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">→ la glycolyse continue</text>
+
+  <!-- ── Flèches vers les bilans ─────────────────────────────────────────── -->
+  <line x1="170" y1="438" x2="170" y2="456" stroke="var(--figure-ink)" stroke-width="1.8"/>
+  <polygon points="164,456 176,456 170,462" fill="var(--figure-ink)"/>
+  <line x1="550" y1="438" x2="550" y2="456" stroke="var(--figure-ink)" stroke-width="1.8"/>
+  <polygon points="544,456 556,456 550,462" fill="var(--figure-ink)"/>
+
+  <!-- ── Rangée 5, gauche : bilan respiration (neutre) ──────────────────── -->
+  <rect x="60" y="462" width="220" height="56" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+  <text x="170" y="484" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--figure-ink)"
+        >≈ 36 à 38 <tspan font-style="italic">ATP</tspan> / glucose</text>
+  <text x="170" y="502" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)"
+        ><tspan font-style="italic">CO</tspan><tspan dy="3" font-size="7.5" font-style="normal">2</tspan><tspan dy="-3"> + </tspan><tspan font-style="italic">H</tspan><tspan dy="3" font-size="7.5" font-style="normal">2</tspan><tspan dy="-3" font-style="italic">O</tspan></text>
+
+  <!-- ── Rangée 5, droite : bilan fermentation — SEUL ACCENT de la figure ── -->
+  <rect x="440" y="462" width="220" height="56" rx="10"
+        fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.4"/>
+  <text x="550" y="484" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--figure-accent)"
+        >2 <tspan font-style="italic">ATP</tspan> / glucose — jamais zéro</text>
+  <text x="550" y="502" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)"
+        >acide lactique OU éthanol + <tspan font-style="italic">CO</tspan><tspan dy="3" font-size="7" font-style="normal">2</tspan></text>
+
+  <!-- Légende de clôture -->
+  <text x="360" y="536" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    Même point de départ (glycolyse) — la fermentation n’arrête pas tout :
+  </text>
+  <text x="360" y="552" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+    elle produit encore 2 ATP, bien moins que la respiration (≈ 36 à 38).
+  </text>
+</svg>

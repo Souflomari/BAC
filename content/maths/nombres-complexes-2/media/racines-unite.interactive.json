@@ -1,0 +1,19 @@
+{
+  "slug": "racines-unite",
+  "control": {
+    "kind": "slider",
+    "axis": "n",
+    "domain": [3, 8],
+    "step": 1,
+    "initial": 3
+  },
+  "bindings": [
+    { "target": "#roots-dots", "recompute": "rootsDots" },
+    { "target": "#roots-polygon", "recompute": "rootsPolygon" },
+    { "target": "#formule-n", "recompute": "formuleN" }
+  ],
+  "unlockAfterStage": 2,
+  "readoutTemplate": "{formuleN}",
+  "settleAt": 3,
+  "settleTarget": "#roots-dots"
+}

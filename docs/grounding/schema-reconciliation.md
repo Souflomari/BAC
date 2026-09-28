@@ -1,5 +1,30 @@
 # schema-reconciliation.md — the verdict
 
+> **ÉTIQUETTE DE STATUT, posée le 2026-09-05.** Ce document a eu RAISON, et
+> c'est la première chose à en dire : sa conclusion — « le modèle de données
+> est récupérable par extensions successives, aucune partie n'est à
+> réécrire » — et l'ordre qu'il recommandait (RLS → arêtes de prérequis →
+> schéma de misconceptions) sont exactement ce qui a été exécuté. Ce qui a
+> vieilli n'est pas le jugement, c'est le TEMPS des verbes : il dit encore
+> « il faudra », « à livrer comme nouvelle migration ».
+>
+> Re-vérifié contre le dépôt aujourd'hui, sans recopier la proposition de
+> 2026-06 :
+>
+> | ce que le document annonce | ce que le dépôt montre |
+> |---|---|
+> | §5.1 « la faille RLS, sev-1 — une migration, appelons-la **040** » | **LIVRÉE.** `040_enable_rls_curriculum_tables.sql` existe et porte dix `ENABLE ROW LEVEL SECURITY`. Sev-1 close. |
+> | §2.2 arêtes de prérequis : SMA 0, SMB 0, « étendre l'encodeur » | **LIVRÉ.** Migrations 041 (récupération SMB + humanités) et 042 (semis SMA). |
+> | §3.2 « manquent : `common_misconceptions`, `items.distractor_misconceptions`, `user_misconception_states` » | **LIVRÉS**, migrations 043–044, chemin d'écriture 047. Et dépassés depuis : le modèle apprenant courant s'appuie sur `user_answer_events` / `user_notion_progress` (048) et `user_notion_misconception_states` (049). |
+> | §7 « testé sur une branche avant la prod : **inconnu** » | **ÉTABLI.** ADR 0005 + `scripts/branch-test.ps1`, et `CONTRIBUTING.md` en fait une porte dure. (Les journaux `.audit-logs/` cités par la proposition de 2026-06 ne sont pas versionnés — cette preuve-là n'est pas vérifiable ici.) |
+> | §7 « migrations descendantes : **manquantes** » | **TOUJOURS VRAI.** Aucune migration n'embarque de bloc DOWN ; la seule occurrence de `DROP TABLE` du dépôt est en commentaire, dans 043. |
+> | §8 P2 : table `units`, `cadre_ref`, `exam_frequency` | **JAMAIS LIVRÉS**, et probablement sans objet : le curriculum vit désormais en fichiers (`web/src/lib/curriculum.ts`, `docs/cadre/`), pas en tables. |
+> | §6 « la pile frontend : l'audit ne peut pas trancher » | **TRANCHÉ**, et c'est la seule ligne substantielle que la proposition de 2026-06 laissait à un humain : **ADR 0016**, Next.js est tout le frontend. Le §6 de ce document, et toute mention de Flutter Web, décrivent l'ère précédente. |
+>
+> **Ce qui reste NON VÉRIFIÉ, et le restera jusqu'à une session supervisée :
+> l'état réel de la production.** Tout ce qui précède décrit ce que les
+> FICHIERS de migration déclarent. Voir `docs/grounding/architecture.md` §5.
+
 **The question this document answers, copied verbatim from the audit
 brief:**
 

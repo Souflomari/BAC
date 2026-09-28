@@ -1,0 +1,257 @@
+# Attempt-first exercises (summit-conversion campaign — maths, nombres complexes).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2019 session
+# normale, Mathématiques SExp BIOF, code NS 22F, AlloSchool element/68527 —
+# statut « vérifié » in docs/sujets/maths/nombres-complexes-1.md, section
+# « 2019 — session normale — Exercice 2 »). Every affixe value, the alignment
+# identity a-d = -√3(c-d), the rotation z' = (1/2)a z and h = ip were re-derived
+# by hand against the verified énoncé before transcription.
+#
+# r-variation is a fresh anti-memorisation twin (SAME deep skills — équation du
+# second degré dans ℂ, différences d'affixes et alignement, rotation traduite en
+# écriture complexe, triangle rectangle isocèle via multiplication par i) with
+# different numbers and signs; status not-applicable, numbers verified by hand.
+#
+# SCOPE NOTE (honest disclosure, authoring-side): the verified SExp exercise
+# reaches into the forme exponentielle / rotation register (arg, e^{iθ}), which
+# the current lesson body underserves — it teaches the algébrique/conjugué/
+# module/géométrie floor. The before-bac checkpoint (cp-bac-exponentielle) and
+# these reasoning fields bridge the forme algébrique ↔ exponentielle step at the
+# point of use; flagged for the pedagogy pass (see items.yaml coverage_summary).
+
+notion: nombres-complexes-1
+
+exercises:
+  # ── r-bac — the VERIFIED 2019 national sujet (Exercice 2, SExp) ───────────
+  # Faithful transcription of docs/sujets/maths/nombres-complexes-1.md →
+  # « 2019 — session normale — Exercice 2 ». Une équation du second degré, une
+  # configuration de points (alignement), une rotation de centre O et d'angle
+  # -π/3, et un triangle rectangle isocèle. Le fil : a = 1 - i√3 est à la fois
+  # racine de l'équation, affixe du point A, et le nombre dont (1/2)a = e^{-iπ/3}
+  # porte la rotation.
+  - id: r-bac
+    title: "Exercice de type bac — équation, alignement, rotation et triangle rectangle isocèle (2019)"
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national SExp BIOF, AlloSchool NS22F
+        (Exercice 2, « Nombres complexes » ; barème 3 points). Filière SVT et
+        Sciences Physiques, option française. Transcription vérifiée :
+        docs/sujets/maths/nombres-complexes-1.md, section 2019, statut
+        « vérifié » (re-fetch AlloSchool element/68527, diff caractère-par-
+        caractère conforme au scan ; valeurs d'affixes et identités re-dérivées
+        à la main).
+    intro: |-
+      **Nombres complexes (examen national, session normale 2019).**
+
+      Le plan complexe est rapporté à un repère orthonormé direct $(O, \vec{u}, \vec{v})$.
+
+      L'exercice tisse un fil entre une équation du second degré, une configuration de points alignés, une rotation, et un triangle rectangle isocèle.
+    questions:
+      - id: q1
+        part: "L'équation du second degré dans ℂ"
+        stem: |-
+          **(0,75 pt)** Résoudre dans l'ensemble $\mathbb{C}$ des nombres complexes l'équation
+
+          $$z^2 - 2z + 4 = 0.$$
+        reasoning: |-
+          L'équation est du second degré à coefficients réels : le réflexe est de calculer le discriminant $\Delta$. Ici $\Delta$ est **strictement négatif**, donc pas de solution réelle — mais dans $\mathbb{C}$ on écrit $\sqrt{\Delta}$ à l'aide de $i$ : $\sqrt{-12} = i\sqrt{12} = 2i\sqrt{3}$. Les deux solutions sont alors complexes et **conjuguées** l'une de l'autre, données par la formule habituelle $\dfrac{-b \pm \sqrt{\Delta}}{2a}$.
+
+          Retiens l'une d'elles, $1 - i\sqrt{3}$ : c'est exactement l'affixe $a$ du point $A$ de la suite. L'équation et la configuration géométrique partagent le même nombre.
+        steps:
+          - math: '\Delta = (-2)^2 - 4\times 1\times 4 = 4 - 16 = -12'
+            note: "Discriminant de z² - 2z + 4 : ici négatif."
+          - math: '\Delta < 0 \implies \sqrt{\Delta} = i\sqrt{12} = 2i\sqrt{3}'
+            note: "Δ négatif : on écrit sa racine avec i (√(-12) = i√12 = 2i√3)."
+          - math: 'z = \dfrac{2 \pm 2i\sqrt{3}}{2} = 1 \pm i\sqrt{3}'
+            note: "Formule (-b ± √Δ)/(2a) avec b = -2, a = 1."
+          - math: 'S = \left\{\, 1 - i\sqrt{3}\ ;\ 1 + i\sqrt{3} \,\right\}'
+            note: "Deux solutions conjuguées. On garde a = 1 - i√3."
+      - id: q2a
+        part: "Configuration : affixes, différences et alignement"
+        stem: |-
+          On considère les points $A$, $B$, $C$ et $D$ d'affixes respectives
+
+          $$a = 1 - i\sqrt{3}, \qquad b = 2 + 2i, \qquad c = \sqrt{3} + i, \qquad d = -2 + 2\sqrt{3}.$$
+
+          **(0,5 pt)** Vérifier que $a - d = -\sqrt{3}\,(c - d)$.
+        reasoning: |-
+          C'est une pure vérification algébrique : on calcule séparément les deux différences d'affixes $a - d$ et $c - d$, puis on montre que la première vaut $-\sqrt{3}$ fois la seconde. Aucune astuce — on remplace par les valeurs et on développe soigneusement, en surveillant les signes. Le point qui fait trébucher : $d = -2 + 2\sqrt{3}$ est un nombre **réel** — sa partie imaginaire est nulle — et non un imaginaire pur.
+        steps:
+          - math: 'a - d = (1 - i\sqrt{3}) - (-2 + 2\sqrt{3}) = (3 - 2\sqrt{3}) - i\sqrt{3}'
+            note: "On soustrait le réel d = -2 + 2√3 : la partie réelle devient 1 + 2 - 2√3."
+          - math: 'c - d = (\sqrt{3} + i) - (-2 + 2\sqrt{3}) = (2 - \sqrt{3}) + i'
+            note: "Même soustraction pour c - d."
+          - math: '-\sqrt{3}\,(c - d) = -\sqrt{3}\,(2 - \sqrt{3}) - \sqrt{3}\,i = (3 - 2\sqrt{3}) - i\sqrt{3}'
+            note: "On développe : -√3·(2-√3) = -2√3 + 3 ; et -√3·i = -i√3."
+          - math: 'a - d = -\sqrt{3}\,(c - d)'
+            note: "Les deux expressions coïncident : l'égalité est vérifiée."
+      - id: q2b
+        stem: |-
+          **(0,25 pt)** En déduire que les points $A$, $C$ et $D$ sont alignés.
+        reasoning: |-
+          La relation $a - d = -\sqrt{3}(c - d)$ n'est pas qu'une égalité de nombres. Rappelle-toi l'interprétation géométrique de $z_B - z_A$ : $a - d$ est l'affixe du vecteur $\overrightarrow{DA}$, et $c - d$ celle du vecteur $\overrightarrow{DC}$.
+
+          L'égalité dit donc $\overrightarrow{DA} = -\sqrt{3}\,\overrightarrow{DC}$ : les deux vecteurs sont **colinéaires** (le coefficient $-\sqrt{3}$ est un réel). Deux vecteurs colinéaires issus du même point $D$ imposent que $A$, $C$ et $D$ soient **alignés**. Une identité complexe devient une propriété de configuration.
+        steps:
+          - math: 'a - d = z_{\overrightarrow{DA}}, \qquad c - d = z_{\overrightarrow{DC}}'
+            note: "Une différence d'affixes est l'affixe du vecteur correspondant."
+          - math: '\overrightarrow{DA} = -\sqrt{3}\;\overrightarrow{DC}'
+            note: "Coefficient réel -√3 : les vecteurs sont colinéaires."
+          - math: 'A,\ C,\ D \ \text{alignés}'
+            note: "Deux vecteurs colinéaires issus de D : les trois points sont alignés."
+      - id: q3
+        part: "La rotation et sa traduction complexe"
+        stem: |-
+          **(0,5 pt)** Soit $R$ la rotation de centre $O$ et d'angle $-\dfrac{\pi}{3}$, qui transforme tout point $M$ d'affixe $z$ en le point $M'$ d'affixe $z'$. Vérifier que $z' = \dfrac{1}{2}a\,z$.
+        reasoning: |-
+          Une rotation de centre $O$ et d'angle $\theta$ se traduit sur les affixes par $z' = e^{i\theta} z$. Ici $\theta = -\dfrac{\pi}{3}$, donc $z' = e^{-i\pi/3}\,z$.
+
+          Tout revient à reconnaître que le nombre $\dfrac{1}{2}a$ **est** ce facteur $e^{-i\pi/3}$. On écrit les deux sous forme algébrique et on constate qu'ils coïncident. C'est le pont entre forme exponentielle et forme algébrique : $a = 1 - i\sqrt{3}$ a pour module $2$ et pour argument $-\dfrac{\pi}{3}$, donc $\dfrac{1}{2}a$ a pour module $1$ et argument $-\dfrac{\pi}{3}$ — c'est-à-dire exactement $e^{-i\pi/3}$.
+        steps:
+          - math: 'z'' = e^{i\theta}\,z = e^{-i\pi/3}\,z'
+            note: "La rotation de centre O et d'angle θ = -π/3 : z prime = $e^{iθ} z$."
+          - math: 'e^{-i\pi/3} = \cos\!\left(-\dfrac{\pi}{3}\right) + i\sin\!\left(-\dfrac{\pi}{3}\right) = \dfrac{1}{2} - \dfrac{\sqrt{3}}{2}\,i'
+            note: "Forme algébrique de l'exponentielle : cos(-π/3) = 1/2, sin(-π/3) = -√3/2."
+          - math: '\dfrac{1}{2}\,a = \dfrac{1}{2}\,(1 - i\sqrt{3}) = \dfrac{1}{2} - \dfrac{\sqrt{3}}{2}\,i'
+            note: "Forme algébrique de (1/2)a : mêmes parties réelle et imaginaire que $e^{-iπ/3}$."
+          - math: '\dfrac{1}{2}\,a = e^{-i\pi/3} \implies z'' = e^{-i\pi/3}\,z = \dfrac{1}{2}\,a\,z'
+            note: "Les deux nombres coïncident : la rotation s'écrit bien z prime = (1/2) a z."
+      - id: q4a
+        part: "Image d'un point et triangle rectangle isocèle"
+        stem: |-
+          On note $H$ l'image du point $B$ par la rotation $R$, $h$ son affixe, et $P$ le point d'affixe $p = a - c$.
+
+          **(0,5 pt)** Vérifier que $h = i\,p$.
+        reasoning: |-
+          $H$ est l'image de $B$ par la rotation $R$, donc son affixe s'obtient avec la formule de la question précédente : $h = \dfrac{1}{2}a\,b$. On développe ce produit et on réduit avec $i^2 = -1$.
+
+          Il reste à calculer $p = a - c$ de la même façon, puis à vérifier que multiplier $p$ par $i$ redonne $h$. Multiplier par $i$ n'est pas anodin : c'est une rotation d'un quart de tour — ce qui prépare exactement la question suivante.
+        steps:
+          - math: 'h = \dfrac{1}{2}\,a\,b = \dfrac{1}{2}\,(1 - i\sqrt{3})(2 + 2i)'
+            note: "H = R(B), donc h = (1/2) a b (formule de la question 3)."
+          - math: '(1 - i\sqrt{3})(2 + 2i) = 2 + 2i - 2i\sqrt{3} - 2i^2\sqrt{3} = (2 + 2\sqrt{3}) + i\,(2 - 2\sqrt{3})'
+            note: "On développe et on remplace i² par -1 (-2i²√3 = +2√3)."
+          - math: 'h = (1 + \sqrt{3}) + i\,(1 - \sqrt{3})'
+            note: "On multiplie par 1/2."
+          - math: 'p = a - c = (1 - i\sqrt{3}) - (\sqrt{3} + i) = (1 - \sqrt{3}) - i\,(1 + \sqrt{3})'
+            note: "Différence d'affixes p = a - c."
+          - math: 'i\,p = i\,(1 - \sqrt{3}) - i^2(1 + \sqrt{3}) = (1 + \sqrt{3}) + i\,(1 - \sqrt{3}) = h'
+            note: "i·p redonne exactement h : l'égalité h = ip est vérifiée."
+      - id: q4b
+        stem: |-
+          **(0,5 pt)** Montrer que le triangle $OHP$ est rectangle et isocèle en $O$.
+        reasoning: |-
+          On lit les **deux** informations contenues dans $h = i\,p$.
+
+          D'abord les modules : $|h| = |i|\times|p| = |p|$, car $|i| = 1$. Donc $OH = OP$ — le triangle est **isocèle en $O$**.
+
+          Ensuite l'argument : $\dfrac{h}{p} = i$, dont un argument est $\dfrac{\pi}{2}$ ; or $\arg\dfrac{h}{p}$ est une mesure de l'angle $\left(\overrightarrow{OP}, \overrightarrow{OH}\right)$, qui vaut donc $\dfrac{\pi}{2}$ — l'angle en $O$ est **droit**. Un triangle à la fois isocèle en $O$ et rectangle en $O$ : c'est un triangle rectangle isocèle en $O$.
+        steps:
+          - math: '|h| = |i\,p| = |i|\times|p| = |p| \implies OH = OP'
+            note: "|i| = 1, donc |h| = |p| : les deux côtés issus de O sont égaux (isocèle en O)."
+          - math: '\dfrac{h}{p} = i \implies \arg\!\left(\dfrac{h}{p}\right) = \dfrac{\pi}{2} \equiv \left(\overrightarrow{OP},\ \overrightarrow{OH}\right)'
+            note: "h/p = i : son argument π/2 est une mesure de l'angle (OP, OH)."
+          - math: 'OH = OP \ \text{et}\ \left(\overrightarrow{OP},\ \overrightarrow{OH}\right) = \dfrac{\pi}{2} \implies OHP \ \text{rectangle isocèle en}\ O'
+            note: "Isocèle en O et angle droit en O : triangle rectangle isocèle en O."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ────────
+  # Mêmes compétences profondes que r-bac (équation du second degré dans ℂ,
+  # différences d'affixes et alignement, rotation traduite en écriture complexe
+  # z' = (1/2)a z, triangle rectangle isocèle via h = ip) avec d'autres nombres :
+  # z² + 2z + 4 = 0 (racines -1 ± i√3), coefficient d'alignement 1/2 (et non -√3),
+  # rotation d'angle 2π/3 (et non -π/3), b = 4i, p = c + d. L'élève ne peut pas
+  # recopier le sujet 2019 : il doit reconnaître les mêmes gestes. Valeurs
+  # vérifiées à la main (h = -2√3 - 2i, p = -2 + 2i√3, |h| = |p| = 4).
+  - id: r-variation
+    title: "Variation fraîche — équation, alignement, rotation d'angle 2π/3 et triangle rectangle isocèle"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2019, sourcé). Nombres et
+        signes choisis pour donner des identités exactes vérifiées à la main.
+    intro: |-
+      Même structure profonde que le sujet 2019, habillage et nombres différents — pour t'empêcher de recopier la solution et t'obliger à reconnaître les mêmes gestes.
+
+      Le plan complexe est rapporté à un repère orthonormé direct $(O, \vec{u}, \vec{v})$.
+    questions:
+      - id: q1
+        part: "L'équation du second degré dans ℂ"
+        stem: |-
+          Résoudre dans $\mathbb{C}$ l'équation $z^2 + 2z + 4 = 0$.
+        reasoning: |-
+          Même démarche que le sujet : on calcule le discriminant, et comme $\Delta = -12 < 0$, l'équation a deux solutions complexes **conjuguées**, écrites avec $i$. L'une d'elles, $-1 + i\sqrt{3}$, est l'affixe $a$ — le même fil que dans le sujet, avec d'autres nombres.
+        steps:
+          - math: '\Delta = 2^2 - 4\times 1\times 4 = 4 - 16 = -12'
+            note: "Discriminant de z² + 2z + 4."
+          - math: '\sqrt{\Delta} = i\sqrt{12} = 2i\sqrt{3}'
+            note: "Δ négatif : racine écrite avec i."
+          - math: 'z = \dfrac{-2 \pm 2i\sqrt{3}}{2} = -1 \pm i\sqrt{3}'
+            note: "Formule (-b ± √Δ)/(2a) avec b = 2, a = 1. On a a = -1 + i√3."
+      - id: q2
+        part: "Différences d'affixes et alignement"
+        stem: |-
+          On considère les points $A$, $B$, $C$ et $D$ d'affixes respectives
+
+          $$a = -1 + i\sqrt{3}, \qquad b = 4i, \qquad c = -4 + 2i\sqrt{3}, \qquad d = 2.$$
+
+          Vérifier que $a - d = \dfrac{1}{2}(c - d)$, puis en déduire que les points $A$, $C$ et $D$ sont alignés.
+        reasoning: |-
+          On vérifie que $a - d$ est un multiple **réel** de $c - d$ — ici le coefficient est $\dfrac{1}{2}$, et non $-\sqrt{3}$ comme dans le sujet. Le coefficient étant réel, $\overrightarrow{DA}$ et $\overrightarrow{DC}$ sont colinéaires, donc $A$, $C$ et $D$ sont alignés. Reconnais le même raisonnement sous un habillage différent.
+        steps:
+          - math: 'a - d = (-1 + i\sqrt{3}) - 2 = -3 + i\sqrt{3}'
+            note: "d = 2 (réel)."
+          - math: 'c - d = (-4 + 2i\sqrt{3}) - 2 = -6 + 2i\sqrt{3} = 2\,(-3 + i\sqrt{3})'
+            note: "c - d est le double de a - d."
+          - math: 'a - d = \dfrac{1}{2}\,(c - d) \implies \overrightarrow{DA} = \dfrac{1}{2}\,\overrightarrow{DC}'
+            note: "Coefficient réel 1/2 : vecteurs colinéaires, donc A, C, D alignés."
+      - id: q3
+        part: "La rotation et sa traduction complexe"
+        stem: |-
+          Soit $R$ la rotation de centre $O$ et d'angle $\dfrac{2\pi}{3}$, qui transforme tout point $M$ d'affixe $z$ en $M'$ d'affixe $z'$. Vérifier que $z' = \dfrac{1}{2}a\,z$.
+        reasoning: |-
+          La rotation a ici pour angle $\dfrac{2\pi}{3}$ (et non $-\dfrac{\pi}{3}$). On montre que $\dfrac{1}{2}a = e^{i\,2\pi/3}$ en comparant les formes algébriques, sachant que $a = -1 + i\sqrt{3}$ a pour module $2$ et pour argument $\dfrac{2\pi}{3}$.
+        steps:
+          - math: 'z'' = e^{i\theta}\,z = e^{i\,2\pi/3}\,z'
+            note: "Rotation de centre O et d'angle 2π/3 : z prime = $e^{iθ} z$."
+          - math: 'e^{i\,2\pi/3} = \cos\!\left(\dfrac{2\pi}{3}\right) + i\sin\!\left(\dfrac{2\pi}{3}\right) = -\dfrac{1}{2} + \dfrac{\sqrt{3}}{2}\,i'
+            note: "cos(2π/3) = -1/2, sin(2π/3) = √3/2."
+          - math: '\dfrac{1}{2}\,a = \dfrac{1}{2}\,(-1 + i\sqrt{3}) = -\dfrac{1}{2} + \dfrac{\sqrt{3}}{2}\,i'
+            note: "Même forme algébrique que $e^{i2π/3}$."
+          - math: '\dfrac{1}{2}\,a = e^{i\,2\pi/3} \implies z'' = \dfrac{1}{2}\,a\,z'
+            note: "Les deux nombres coïncident : z prime = (1/2) a z."
+      - id: q4a
+        part: "Image d'un point et triangle rectangle isocèle"
+        stem: |-
+          On note $H$ l'image du point $B$ par la rotation $R$, $h$ son affixe, et $P$ le point d'affixe $p = c + d$. Vérifier que $h = i\,p$.
+        reasoning: |-
+          $h = \dfrac{1}{2}a\,b$ avec $b = 4i$ ; on développe. Puis on prend $p = c + d$ et on vérifie que $h = i\,p$ — comme dans le sujet, c'est la multiplication par $i$ (quart de tour) qui donnera le triangle rectangle isocèle.
+        steps:
+          - math: 'h = \dfrac{1}{2}\,a\,b = \dfrac{1}{2}\,(-1 + i\sqrt{3})(4i)'
+            note: "H = R(B), donc h = (1/2) a b avec b = 4i."
+          - math: '(-1 + i\sqrt{3})(4i) = -4i + 4i^2\sqrt{3} = -4\sqrt{3} - 4i'
+            note: "On développe et on remplace i² par -1 (4i²√3 = -4√3)."
+          - math: 'h = \dfrac{1}{2}\,(-4\sqrt{3} - 4i) = -2\sqrt{3} - 2i'
+            note: "On multiplie par 1/2."
+          - math: 'p = c + d = (-4 + 2i\sqrt{3}) + 2 = -2 + 2i\sqrt{3}'
+            note: "Somme d'affixes p = c + d."
+          - math: 'i\,p = i\,(-2 + 2i\sqrt{3}) = -2i + 2i^2\sqrt{3} = -2\sqrt{3} - 2i = h'
+            note: "i·p redonne h : l'égalité h = ip est vérifiée."
+      - id: q4b
+        stem: |-
+          Montrer que le triangle $OHP$ est rectangle et isocèle en $O$.
+        reasoning: |-
+          De $h = i\,p$ on tire deux choses. Les modules : $|h| = |i|\,|p| = |p|$, donc $OH = OP$ (isocèle en $O$). L'argument : $\dfrac{h}{p} = i$, donc l'angle $\left(\overrightarrow{OP}, \overrightarrow{OH}\right)$ vaut $\dfrac{\pi}{2}$ (rectangle en $O$). C'est un triangle rectangle isocèle en $O$.
+        steps:
+          - math: '|h| = \sqrt{(2\sqrt{3})^2 + 2^2} = \sqrt{16} = 4, \qquad |p| = \sqrt{2^2 + (2\sqrt{3})^2} = 4'
+            note: "Contrôle direct : |h| = |p| = 4, donc OH = OP."
+          - math: '\dfrac{h}{p} = i \implies \left(\overrightarrow{OP},\ \overrightarrow{OH}\right) = \dfrac{\pi}{2}'
+            note: "h/p = i, d'argument π/2 : angle droit en O."
+          - math: 'OH = OP \ \text{et}\ \text{angle droit en}\ O \implies OHP \ \text{rectangle isocèle en}\ O'
+            note: "Isocèle en O et rectangle en O."

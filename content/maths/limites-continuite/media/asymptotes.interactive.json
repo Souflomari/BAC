@@ -1,0 +1,19 @@
+{
+  "slug": "asymptotes",
+  "control": {
+    "kind": "drag-point",
+    "axis": "x",
+    "domain": [2.2, 6.0],
+    "step": 0.1,
+    "initial": 3
+  },
+  "bindings": [
+    { "target": "#point-x", "recompute": "point" },
+    { "target": "#point-x-halo", "recompute": "pointHalo" },
+    { "target": "#guide-x", "recompute": "guideX" },
+    { "target": "#label-x", "recompute": "labelXPos" },
+    { "target": "#label-x", "recompute": "labelXText" }
+  ],
+  "unlockAfterStage": 3,
+  "readoutTemplate": "En x = {value} : f(x) = {fValue} — écart à y = 2 : {gapValue}"
+}

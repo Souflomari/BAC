@@ -1,0 +1,424 @@
+# Attempt-first exercises (summit-conversion campaign). Rendered by
+# AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md: the
+# student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered — see rlc-serie's header
+# comment for the audit U3/C2 rule this follows): while status != sourced,
+# the notion is NOT DONE.
+#
+# PHILO judgment call — no steps[], no math (docs/pipeline/SUMMIT-CONVERSION-
+# RECIPE.md, "Philo" addendum): every question's `reasoning` carries the full
+# philosophical argument in prose — thèse identification, argument analysis,
+# position justification — never a stepped derivation.
+#
+# r-bac/r-variation sourcing decision (per the recipe addendum's r-variation
+# decision rule): docs/sujets/philo/le-devoir.md carries exactly ONE verified
+# entry for this notion (2023 session rattrapage, Sujet 3, نص — the Kant
+# "marchand honnête" text). The decision rule is explicit: r-variation
+# defaults to reusing a SECOND verified text only "if the sujets bank has ≥2
+# verified entries for the notion" — with only one available here,
+# r-variation falls back to a fabricated, `not-applicable`-sourced twin, as
+# the rule specifies for the single-text case.
+#
+# IMPORTANT — this exact Kant text (marchand honnête + conservation de la
+# vie) is ALSO used as content/philo/analyse-de-texte/exercises.yaml's r-bac
+# (same source: docs/sujets/philo/le-devoir.md, 2023 R). That lesson uses the
+# text to teach the MÉTHODE (comprendre/analyser/discuter grid: dégager la
+# thèse, problématiser, structure argumentative, concepts et présupposés,
+# discussion interne/convergente/divergente, synthèse) — a lesson about HOW
+# to read any philosophical text. Every question below is independently
+# re-transcribed from docs/sujets/philo/le-devoir.md (not copied from
+# analyse-de-texte's wording) and framed around le-devoir's OWN conceptual
+# ramp instead — the devoir/inclination/intérêt distinction built rung by
+# rung in R1 (légalité vs moralité), R2 (agir par devoir vs conformément au
+# devoir; l'impératif catégorique; autonomie/hétéronomie) and R3 (la critique
+# utilitariste du formalisme; devoir et liberté) — never the comprendre/
+# analyser/discuter grid. Where analyse-de-texte's q1 asks the student to
+# "dégager la thèse" as a general reading-method reflex, le-devoir's q1 below
+# asks the student to state the SAME thèse but immediately test it against R1
+# and R2's own vocabulary (légalité/moralité, conformément/par devoir) —
+# content ownership, not method ownership. Where analyse-de-texte's q3-q4 walk
+# the text's argumentative STRUCTURE and its unstated PRESUPPOSITION as
+# generic reading skills, le-devoir's q2-q3 below stay inside the text's own
+# two examples and ask what each one teaches about devoir's relationship to
+# intérêt (q2, the merchant — already the lesson's own R2 illustration) and
+# to inclination (q3, life-preservation — an axis R2's own worked example
+# never walks through, since R2 only cites the merchant). q4 below bridges
+# forward to R3 (the utilitarian critique, devoir et liberté) rather than to
+# analyse-de-texte's own discussion/synthèse steps.
+
+notion: le-devoir
+
+exercises:
+  # ── r-bac — VERIFIED 2023 session rattrapage sujet (نص) ──────────────────
+  # Faithful, independent transcription of docs/sujets/philo/le-devoir.md →
+  # "2023 — session de rattrapage — Moujaz III (نص)". Real bac text (Kant,
+  # *Fondements de la métaphysique des mœurs*, section I — the two canonical
+  # examples of the honest merchant and the preservation of life), not built
+  # for this lesson. The merchant example is already this lesson's own R2
+  # illustration; the life-preservation example opens a genuinely untaught
+  # nuance (duty coinciding with vs. running against inclination) — see
+  # cp-bac-devoir in checkpoints.yaml, placed immediately before this
+  # exercise to prime exactly that nuance.
+  - id: r-bac
+    title: "Exercice de type bac — le marchand honnête et la conservation de la vie (Kant, 2023 R)"
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session rattrapage — alloschool element/142716 (scan RS 05) ;
+        texte transcrit intégralement dans docs/sujets/philo/le-devoir.md
+        (entrée « 2023 — session de rattrapage — Moujaz III (نص) »,
+        statut « vérifié via reproduction indépendante typée (profsalmi),
+        scan officiel non ré-OCRisé ; citation/consigne/en-tête conformes
+        (agent-vérificateur, 2026-07-15) »). Auteur non indiqué sur le sujet
+        (usage marocain courant pour le نص) ; identification savante
+        (dérivée, non donnée du sujet) : Emmanuel Kant, *Fondements de la
+        métaphysique des mœurs*, section I. Ce même texte sert aussi de
+        texte-spine à la méthode de l'analyse de texte
+        (content/philo/analyse-de-texte/) — deux usages différents du même
+        texte réel : la méthode de lecture là-bas, le contenu propre du
+        devoir (agir par devoir vs conformément au devoir) ici.
+    intro: |-
+      **Sujet réel, examen national de philosophie, 2023 (session de
+      rattrapage) — troisième sujet (un texte à analyser et discuter) :**
+
+      > حلّل (ي) النص و ناقشه (يه).
+      >
+      > *(« Analyse le texte et discute-le. » — rappel : le jour de
+      > l'examen, tu composeras ta réponse en arabe, pas en français ; la
+      > traduction ci-dessous est un outil de travail pour cette leçon,
+      > pas ce que tu écriras le jour J.)*
+
+      **Texte arabe (original) :**
+
+      > " مما يتفق مع الواجب ألا يرفع التاجر من السعر على زبونه قليل الخبرة، و إن التاجر
+      > الفطن يتحاشى ذلك بالفعل حيثما راج سوق البيع و الشراء، بل إنه يحافظ على سعر موحّد
+      > لجميع الزبناء حتى يستطيع الطفل أن يشتري بنفس السعر الذي يشتري به الإنسان الراشد؛
+      > فالتاجر يعامل زبناءه، هنا، بأمانة. غير أن هذه المعاملة الأمينة لا تكفي على الإطلاق
+      > للقول إن التاجر قد تصرف انطلاقا من الإيمان بالواجب لأن مصلحته قد اقتضت ذلك. و لا
+      > يستطيع الإنسان في هذا المقام أن يفترض أنه كان يحمل في نفسه ميلا مباشرا نحو زبنائه؛
+      > حيث جعلته هذه العاطفة التي يحس بها نحوهم لا يفضّل واحدا منهم على الآخر في السعر.
+      > و إذن، فإن التاجر لم يتصرف لا عن واجب و لا عن ميل مباشر، بل كان الباعث على تصرفه
+      > هو المصلحة الذاتية وحدها.
+      >
+      > و على العكس من ذلك، فإن محافظة الإنسان على حياته واجب، و هي بالإضافة إلى هذا أمر
+      > يشعر كل واحد منا نحوه بميل مباشر. غير أن الحرص الشديد الذي يخالج معظم الناس على
+      > حياتهم لا ينطوي على قيمة ذاتية، و المسلَّمة التي يقوم عليها لا تحتوي على أي مضمون
+      > أخلاقي. إنهم يحافظون حقا على حياتهم بما يتفق مع الواجب و لكنهم لا يفعلون ذلك عن
+      > شعور بالواجب. و على خلاف ذلك، حين تفقد المشاكل إنسانا يائسا كل طعم للحياة، و حين
+      > تصبح حياة إنسان عزيز النفس شقية فيشعر بالغضب إلى درجة أنه يتمنى لنفسه الموت و لكنه
+      > يحافظ، مع ذلك، على الحياة دون أن يحبها؛ عندئذ تكون مسلَّمته ذات مضمون أخلاقي، أي
+      > أنها تصدر عن شعور بالواجب لا عن ميل أو خوف."
+
+      **Traduction de travail française :**
+
+      > « Il est conforme au devoir que le marchand ne surfasse pas le prix au
+      > client inexpérimenté ; et le marchand avisé s'en garde effectivement là
+      > où le commerce est actif : il maintient au contraire un prix unique
+      > pour tous les clients, de sorte qu'un enfant puisse acheter au même
+      > prix qu'un adulte. Le marchand traite donc ici ses clients avec
+      > probité. Mais ce traitement honnête ne suffit nullement à affirmer que
+      > le marchand ait agi par foi dans le devoir, car son intérêt le lui
+      > commandait. On ne saurait davantage, en ce cas, supposer qu'il ait
+      > porté en lui-même une inclination immédiate envers ses clients — une
+      > affection qui l'aurait conduit à ne favoriser aucun d'eux sur le prix.
+      > Le marchand n'a donc agi ni par devoir, ni par inclination immédiate :
+      > le mobile de sa conduite fut le seul intérêt personnel.
+      >
+      > À l'inverse, conserver sa vie est un devoir, et c'est en outre une
+      > chose vers laquelle chacun de nous est porté par une inclination
+      > immédiate. Mais le soin anxieux que la plupart des hommes y mettent
+      > n'enveloppe aucune valeur intrinsèque, et la maxime sur laquelle il
+      > repose ne contient aucun contenu moral. Ils conservent bien leur vie
+      > conformément au devoir, mais ils ne le font pas par sentiment du
+      > devoir. Au contraire, lorsque les épreuves ôtent à un homme désespéré
+      > tout goût de la vie, et que l'existence d'un homme au cœur fier devient
+      > si malheureuse qu'il en vienne, de colère, à souhaiter sa propre mort —
+      > et que néanmoins il conserve la vie sans l'aimer, non par inclination
+      > ni par peur, mais par devoir — alors sa maxime a un contenu moral :
+      > elle procède du sentiment du devoir, et non d'une inclination ou d'une
+      > crainte. »
+
+      Le premier exemple (le marchand) est exactement celui que le chapitre 3 a déjà
+      travaillé. Le second (la conservation de la vie) ne l'est pas : le chapitre 3 ne
+      cite que le marchand. À toi de mobiliser ce que tu sais déjà — la
+      distinction légalité/moralité du chapitre 2, agir conformément au devoir vs
+      agir par devoir du chapitre 3 — pour l'étendre à ce cas neuf, où le devoir et
+      l'inclination coïncident d'abord, avant de diverger.
+    questions:
+      - id: q1
+        part: "Partie 1 — Dégager la thèse et la relier aux chapitres 2 à 3"
+        stem: |-
+          Le texte affirme un critère précis pour juger de la valeur morale
+          d'une action. Formule ce critère en une phrase, puis relie-le
+          explicitement au vocabulaire du chapitre 2 (légalité/moralité) et du chapitre 3
+          (agir conformément au devoir vs agir par devoir).
+        reasoning: |-
+          Le texte l'énonce en creux dans ses deux exemples plutôt qu'en une
+          formule unique et frontale : une action n'a de valeur morale que
+          si elle procède du sentiment du devoir lui-même, et non de
+          l'intérêt (« le mobile de sa conduite fut le seul intérêt
+          personnel ») ni de l'inclination immédiate (« ils conservent bien
+          leur vie conformément au devoir, mais ils ne le font pas par
+          sentiment du devoir »).
+
+          Le lien avec le chapitre 2 est direct : le marchand est bien LÉGAL (il ne
+          trompe personne) sans être MORAL au sens fort — exactement la
+          distinction que le chapitre 2 pose avec l'exemple des impôts payés par peur
+          du redressement. Le lien avec le chapitre 3 est plus direct encore : « le
+          marchand traite donc ici ses clients avec probité » puis « mais ce
+          traitement honnête ne suffit nullement » est très exactement le
+          mouvement conformément au devoir → par devoir que le chapitre 3 construit sur
+          ce même exemple.
+
+          Attention à ne pas s'arrêter à la première moitié du texte : le
+          second exemple (la conservation de la vie) applique le MÊME
+          critère à un cas où le chapitre 3 ne t'a encore rien montré — c'est l'objet
+          des parties suivantes.
+      - id: q2
+        part: "Partie 2 — Le marchand : intérêt contre devoir (chapitre 3)"
+        stem: |-
+          En quoi le texte confirme-t-il, avec une précision que le chapitre 3 n'avait
+          pas encore formulée aussi nettement, que le marchand n'a agi « ni
+          par devoir, ni par inclination immédiate » ?
+        reasoning: |-
+          Le chapitre 3 établissait déjà que le marchand agit par intérêt plutôt que
+          par devoir. Le texte ajoute une précision que la leçon n'avait pas
+          rendue aussi explicite : il écarte AUSSI l'inclination comme
+          mobile possible — « on ne saurait davantage... supposer qu'il ait
+          porté en lui-même une inclination immédiate envers ses clients ».
+          Le texte élimine donc méthodiquement les trois mobiles possibles
+          l'un après l'autre : pas l'inclination (aucune affection
+          particulière envers ses clients n'est en jeu), pas le devoir
+          (l'action s'effondrerait si l'honnêteté cessait d'être rentable,
+          exactement le point du chapitre 3), reste l'intérêt seul.
+
+          C'est cette élimination méthodique, plus que le simple constat
+          « il agit par intérêt », qui fait la force du texte : il ne
+          suffit pas de nommer un mobile plausible, il faut écarter les
+          deux autres explicitement pour établir lequel opère réellement —
+          un réflexe que le seul chapitre 3 (qui se contente d'opposer
+          intérêt et devoir, sans mentionner l'inclination pour cet exemple
+          précis) ne t'avait pas encore montré aussi complet.
+      - id: q3
+        part: "Partie 3 — La conservation de la vie : un cas que le chapitre 3 ne t'a pas montré"
+        stem: |-
+          Pourquoi le soin ordinaire que la plupart des gens mettent à
+          préserver leur vie — un acte à la fois conforme au devoir ET porté
+          par une inclination immédiate — « n'enveloppe aucune valeur
+          intrinsèque », alors que le cas de l'homme désespéré, qui préserve
+          la sienne SANS l'aimer, en a une ?
+        reasoning: |-
+          C'est ici que le texte va plus loin que l'exemple du marchand, et
+          plus loin que ce que le chapitre 3 t'a montré directement. Pour la plupart
+          des gens, devoir et inclination COÏNCIDENT : ils tiennent à la vie
+          par devoir ET parce qu'ils l'aiment. Le texte affirme que cette
+          coïncidence, à elle seule, ne prouve RIEN sur le plan moral — on
+          ne peut jamais savoir, dans ce cas ordinaire, si c'est le devoir
+          ou la simple inclination qui produit l'acte, puisque les deux
+          pointent dans la même direction en même temps. La maxime reste
+          alors, dit le texte, sans « contenu moral », de la même façon
+          exactement que le marchand honnête par intérêt n'agissait pas par
+          devoir malgré une action extérieurement identique à celle qu'un
+          homme de devoir aurait accomplie.
+
+          Le cas de l'homme désespéré isole enfin ce que le premier cas ne
+          pouvait pas isoler : ici, l'inclination pointe dans le sens
+          INVERSE du devoir (il « souhaite sa propre mort ») et pourtant il
+          continue de préserver sa vie. Comme aucune inclination ne peut
+          plus expliquer l'acte — elle jouerait plutôt contre —, seul le
+          devoir reste disponible comme mobile possible. C'est ce même
+          geste d'élimination que la question 2 identifiait déjà pour le
+          marchand (éliminer les mobiles concurrents un par un), appliqué
+          ici à un cas plus exigeant, où le devoir doit agir CONTRE
+          l'inclination et non simplement en son absence.
+      - id: q4
+        part: "Partie 4 — Discuter : la critique utilitariste, et le devoir suppose la liberté (chapitre 4)"
+        stem: |-
+          Un utilitariste objecterait-il quelque chose à ce critère (la
+          coïncidence devoir/inclination ne prouve rien, seul le cas où le
+          devoir agit contre l'inclination a un contenu moral) ? Et en quoi
+          ce critère présuppose-t-il, comme le chapitre 4 le montre pour tout devoir,
+          que l'homme désespéré était réellement LIBRE de choisir la mort ?
+        reasoning: |-
+          L'objection utilitariste, construite au chapitre 4 : juger un acte à la
+          seule pureté de son mobile, sans regarder ses conséquences,
+          revient à ignorer ce que l'acte produit réellement dans le monde
+          — un homme désespéré qui reste en vie « sans l'aimer » produit le
+          même résultat concret (il survit) qu'un homme heureux de vivre ;
+          un utilitariste jugerait les deux cas identiques puisque le
+          résultat, la préservation d'une vie, est le même dans les deux
+          cas. Le texte de Kant répondrait que ce résultat identique masque
+          précisément la différence qui l'intéresse : ce n'est pas ce qui
+          est produit qui a une valeur morale, mais ce qui l'a produit.
+
+          Le lien avec la fermeture du chapitre 4 (« tu dois, donc tu peux ») est
+          direct, et souvent manqué : si l'homme désespéré n'était pas
+          réellement LIBRE de choisir la mort — si sa survie était, par
+          exemple, purement causée par un réflexe biologique sur lequel il
+          n'a aucune prise — alors on ne pourrait même pas dire qu'il agit
+          « par devoir » : il n'agirait pas du tout, au sens où l'entend
+          Kant, il subirait. C'est seulement parce qu'on suppose qu'il
+          AURAIT PU choisir autrement (mettre fin à ses jours, comme le
+          texte le suggère : « il en vienne, de colère, à souhaiter sa
+          propre mort ») que sa persévérance devient un acte qui engage sa
+          responsabilité morale, et non un simple fait biologique sans plus
+          de valeur qu'un battement de cœur. Le devoir que le texte lui
+          attribue présuppose donc, silencieusement, exactement la liberté
+          que le chapitre 4 rend explicite.
+
+  # ── r-variation — FABRICATED anti-memorization twin, not-applicable ──────
+  # Per the recipe's r-variation decision rule: the sujets bank
+  # (docs/sujets/philo/le-devoir.md) has exactly ONE verified entry for this
+  # notion, so r-variation falls back to a fabricated, not-applicable-sourced
+  # twin rather than reusing a second real text (there is none to reuse).
+  # Same conceptual ramp as r-bac (devoir vs intérêt, devoir vs inclination),
+  # fresh characters and context (a pharmacist, a broken friendship) so the
+  # student cannot pattern-match on the merchant/life-preservation wording —
+  # clearly NOT presented as a real exam text (see the intro's own framing).
+  - id: r-variation
+    title: "Une variation pour ne pas mémoriser — le pharmacien et la promesse tenue (texte construit)"
+    sourcing:
+      status: not-applicable
+    intro: |-
+      **Ce texte est un exercice construit pour cette leçon, dans l'esprit de
+      la structure argumentative de Kant — il n'est PAS tiré des annales
+      nationales, contrairement au texte de r-bac.** Il te permet de vérifier
+      que tu as vraiment appris à repérer le mobile d'une action, et pas
+      seulement retenu les mots « marchand » et « conservation de la vie ».
+
+      > Il est conforme au devoir qu'un pharmacien ne vende jamais à un
+      > patient mal informé un médicament dont il n'a pas besoin ; le
+      > pharmacien avisé s'en garde d'ailleurs spontanément là où sa
+      > clientèle est nombreuse et fidèle, refusant toute vente superflue
+      > aussi bien au patient exigeant qu'au patient docile. Le pharmacien
+      > traite donc ici ses patients avec probité. Mais cette probité ne
+      > suffit nullement à établir qu'il ait agi par devoir, car sa
+      > réputation professionnelle — et donc sa clientèle future — en
+      > dépendait directement. On ne peut pas non plus supposer qu'il
+      > éprouvait une inclination particulière envers chacun de ses
+      > patients ; le mobile réel de sa conduite fut le seul souci de sa
+      > réputation.
+      >
+      > À l'inverse, tenir une promesse faite à un ami est un devoir, et
+      > c'est aussi, la plupart du temps, un geste vers lequel une affection
+      > sincère nous porte spontanément. Mais l'empressement ordinaire qu'on
+      > met à honorer une promesse à un ami qu'on aime n'a, en lui-même,
+      > aucune valeur morale distinctive. Il en va autrement lorsqu'un
+      > différend a rompu l'amitié, que l'affection s'est éteinte, et que la
+      > personne concernée n'inspire plus qu'indifférence, voire un léger
+      > ressentiment — et que, malgré cela, la promesse est tout de même
+      > tenue, sans plaisir ni élan, par le seul respect de l'engagement
+      > pris. C'est alors, et alors seulement, que l'acte a un contenu moral
+      > véritable : il procède du sentiment du devoir, non d'un attachement
+      > ou d'une crainte.
+
+      Reconnais la même structure sous un habillage différent : deux
+      exemples en miroir, un mobile écarté par élimination dans le premier,
+      un cas de coïncidence puis de divergence devoir/inclination dans le
+      second — exactement le mouvement du texte de Kant, appliqué ici à un
+      pharmacien et à une amitié plutôt qu'à un marchand et à une vie.
+    questions:
+      - id: q1
+        part: "Partie 1 — Dégager la thèse et la relier aux chapitres 2 à 3"
+        stem: |-
+          Formule le critère que ce texte applique aux deux exemples, puis
+          relie-le au vocabulaire du chapitre 2 et du chapitre 3 — sans réutiliser les mots
+          « marchand » ou « conservation de la vie », qui n'apparaissent pas
+          ici.
+        reasoning: |-
+          Le critère est rigoureusement le même que dans r-bac, formulé sur
+          un vocabulaire différent : une action n'a de valeur morale que si
+          elle procède du seul sentiment du devoir, à l'exclusion de
+          l'intérêt (le pharmacien) et de l'inclination (l'ami). Reconnaître
+          que r-bac et ce texte partagent EXACTEMENT le même critère sous un
+          habillage différent est tout l'objet de cet exercice — c'est le
+          signe que tu as compris le critère lui-même, pas seulement
+          l'exemple qui l'illustrait.
+
+          Le lien avec le chapitre 2 : le pharmacien est LÉGAL (il ne vend rien
+          d'inutile) sans être MORAL au sens fort — même écart que
+          l'exemple des impôts. Le lien avec le chapitre 3 : « le pharmacien traite
+          donc ici ses patients avec probité » puis « mais cette probité ne
+          suffit nullement » reproduit très exactement le mouvement
+          conformément au devoir → par devoir, avec un professionnel
+          différent mais un raisonnement identique.
+      - id: q2
+        part: "Partie 2 — Le pharmacien : intérêt contre devoir (chapitre 3)"
+        stem: |-
+          Par quelle démarche le texte élimine-t-il l'inclination comme
+          mobile possible du pharmacien, avant de conclure que seul
+          l'intérêt professionnel explique sa probité ?
+        reasoning: |-
+          Le texte procède par élimination successive, exactement comme
+          pour le marchand : il écarte d'abord l'inclination (« on ne peut
+          pas non plus supposer qu'il éprouvait une inclination
+          particulière envers chacun de ses patients »), puis établit que
+          la réputation professionnelle — donc l'intérêt — suffit à
+          expliquer l'action, sans qu'il soit besoin de supposer un respect
+          désintéressé du devoir lui-même.
+
+          Le fait que ce professionnel soit différent (un pharmacien plutôt
+          qu'un marchand) ne change rien à la structure logique : reconnaître
+          que « éliminer méthodiquement inclination puis devoir pour
+          n'établir que l'intérêt » est un GESTE réutilisable, indépendant
+          du métier ou de la situation choisie, est précisément ce que cette
+          variation te demande de vérifier chez toi-même.
+      - id: q3
+        part: "Partie 3 — La promesse à un ami : un cas de coïncidence puis de divergence"
+        stem: |-
+          En quoi le passage de l'ami qu'on aime encore à l'ami dont
+          l'amitié s'est éteinte reproduit-il, sur un exemple entièrement
+          différent, le même mouvement que le passage du soin ordinaire de
+          sa vie au cas de l'homme désespéré dans le texte de Kant ?
+        reasoning: |-
+          Le mouvement est rigoureusement identique. D'abord un cas où
+          devoir et inclination COÏNCIDENT (tenir une promesse à un ami
+          qu'on aime encore) : le texte affirme que cette coïncidence, à
+          elle seule, ne prouve rien — impossible de savoir si c'est
+          l'affection ou le devoir qui produit l'acte, puisque les deux
+          pointent dans le même sens. Ensuite un cas où l'inclination a
+          disparu, voire s'est retournée en un léger ressentiment, et où la
+          promesse est malgré tout tenue : ici, comme pour l'homme
+          désespéré, aucune inclination ne peut plus expliquer l'acte —
+          seul le devoir reste disponible comme mobile, et c'est alors,
+          seulement alors, que le texte lui reconnaît un « contenu moral
+          véritable ».
+
+          La différence de degré entre les deux textes est réelle et vaut
+          d'être nommée : l'homme désespéré de Kant va jusqu'à souhaiter sa
+          propre mort, un cas extrême ; l'ami devenu indifférent est un cas
+          plus ordinaire, une simple absence d'élan plutôt qu'un désir
+          contraire. Mais la STRUCTURE — coïncidence d'abord, puis
+          divergence qui isole le devoir comme seul mobile restant — est
+          rigoureusement la même dans les deux cas, à des degrés
+          d'intensité différents.
+      - id: q4
+        part: "Partie 4 — Discuter : la critique utilitariste, et le devoir suppose la liberté (chapitre 4)"
+        stem: |-
+          Reprends l'objection utilitariste et le lien devoir/liberté (chapitre 4)
+          construits sur le texte de Kant, et applique-les à celui qui tient
+          sa promesse à un ami qu'il n'aime plus.
+        reasoning: |-
+          L'objection utilitariste : celui qui tient sa promesse par
+          affection et celui qui la tient par devoir seul, malgré
+          l'indifférence, produisent le MÊME résultat concret — la promesse
+          est honorée dans les deux cas. Un utilitariste, jugeant à l'effet
+          produit, ne verrait aucune différence entre les deux. La réponse
+          kantienne reste la même que pour le texte de r-bac : ce n'est pas
+          ce qui est produit qui a une valeur morale, mais ce qui l'a
+          produit — et seul le second cas isole le devoir comme cause
+          unique de l'acte.
+
+          Le lien avec « tu dois, donc tu peux » (chapitre 4) : si celui qui tient
+          sa promesse à un ami devenu indifférent n'était pas réellement
+          LIBRE de rompre cet engagement — s'il y était contraint par une
+          pression sociale à laquelle il ne pouvait objectivement pas
+          échapper — alors on ne pourrait plus parler d'un acte moralement
+          significatif, seulement d'une contrainte subie. C'est seulement
+          parce qu'il aurait PU rompre sa promesse, sans que rien ni
+          personne ne l'en empêche, que la tenir devient un acte qui engage
+          sa responsabilité, exactement comme pour l'homme désespéré du
+          texte de Kant.

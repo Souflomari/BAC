@@ -1,0 +1,162 @@
+# Attempt-first exercises (summit-conversion campaign — dipole-rl).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2020 session
+# normale, PC BIOF, code NS28F, AlloSchool element/109742 — statut « vérifié »
+# in docs/sujets/pc/dipole-rl.md, Exercice IV Partie I). r-variation is a fresh
+# anti-memorisation twin (same skills, different numbers/context, status
+# not-applicable).
+
+notion: dipole-rl
+
+exercises:
+  # ── r-bac — the VERIFIED 2020 national sujet, Exercice IV Partie I ─────────
+  # Faithful transcription of docs/sujets/pc/dipole-rl.md → "2020 — session
+  # normale — Exercice IV (Partie I)". Circuit série : générateur E (résistance
+  # interne négligeable), interrupteur K, conducteur ohmique R = 90 Ω, bobine
+  # (L, r). Deux courbes d'acquisition : (C1) = i(t), (C2) = u_L(t). Tangente
+  # (T) à (C1) à l'origine. Valeurs examinées : I_max = 100 mA, u_L(perm) ≈ 1 V
+  # → r = 10 Ω ; τ (tangente) = 0,01 s → L = τ(R+r) = 1 H ; E = (R+r)I_max = 10 V.
+  - id: r-bac
+    title: "Exercice de type bac — réponse d'un dipôle RL à un échelon (2020)"
+    sourcing:
+      status: sourced
+      note: >-
+        2020 session normale — examen national PC BIOF, AlloSchool NS28F
+        (Exercice IV, Partie I — réponse d'un dipôle RL à un échelon de
+        tension ; barème ≈ 1,5 pt sur les 5 pt de l'exercice). Transcription
+        vérifiée : re-fetch indépendant AlloSchool element/109742 + diff OK
+        (docs/sujets/pc/dipole-rl.md, statut « vérifié »).
+    intro: |-
+      **Réponse d'un dipôle RL à un échelon de tension (examen national, session normale 2020).**
+
+      On réalise un montage en série comportant une bobine d'inductance $L$ et de résistance interne $r$, un conducteur ohmique de résistance $R = 90\ \Omega$, un générateur de force électromotrice $E$ (de résistance interne négligeable) et un interrupteur $K$. On ferme $K$ à l'instant de date $t = 0$.
+
+      Un système d'acquisition informatisé trace deux courbes : $(C_1)$ donne l'évolution de l'intensité $i(t)$ du courant qui traverse le circuit, et $(C_2)$ celle de la tension $u_L(t)$ aux bornes de la bobine.
+
+      - $(C_1)$ : $i$ (en mA) part de $0$ à $t = 0$ et croît vers un palier horizontal $I_{max} = 100\ \text{mA}$ (régime permanent). La droite $(T)$, tangente à $(C_1)$ à l'origine, coupe ce palier à l'instant $t = 0{,}01\ \text{s}$.
+      - $(C_2)$ : $u_L$ (en V) part à $t = 0$ de sa valeur maximale — qui vaut alors $E$, puisque $i(0) = 0$ — et décroît vers un palier bas au voisinage de $1\ \text{V}$.
+
+      L'objectif : établir l'équation du circuit, puis exploiter ces deux courbes pour remonter aux caractéristiques de la bobine.
+    questions:
+      - id: q1
+        part: "Partie I — Établir l'équation différentielle du dipôle RL"
+        stem: |-
+          **(0,5 pt)** Montrer que l'équation différentielle vérifiée par l'intensité $i(t)$ du courant s'écrit :
+          $$\frac{di}{dt} + \frac{R+r}{L}\,i = \frac{E}{L}$$
+        reasoning: |-
+          On écrit la loi des mailles sur la maille série (convention récepteur), orientée par le courant $i$ : la f.é.m. $E$ se partage à chaque instant entre le conducteur ohmique et la bobine. On exprime ensuite chaque tension avec la grandeur qui caractérise son dipôle — la loi d'Ohm pour $R$, et la relation de la bobine $u_L = r\,i + L\frac{di}{dt}$ qui contient à la fois sa résistance interne $r$ et son inductance $L$. On regroupe les deux termes résistifs (ils jouent le même rôle), puis on divise par $L$ pour isoler $\frac{di}{dt}$ et obtenir la forme demandée.
+        steps:
+          - math: 'E = u_R + u_L'
+            note: "Loi des mailles sur la maille série, orientée par le courant i (convention récepteur)."
+          - math: 'u_R = R\,i \qquad u_L = r\,i + L\dfrac{di}{dt}'
+            note: "Loi d'Ohm pour le conducteur R ; relation caractéristique de la bobine (r, L) pour u_L."
+          - math: 'E = R\,i + r\,i + L\dfrac{di}{dt} = (R+r)\,i + L\dfrac{di}{dt}'
+            note: "On reporte les deux tensions et on regroupe les termes résistifs R et r."
+          - math: '\boxed{\dfrac{di}{dt} + \dfrac{R+r}{L}\,i = \dfrac{E}{L}}'
+            note: "On divise chaque terme par L : c'est l'équation demandée."
+      - id: q2
+        part: "Partie I — Exploiter les deux courbes : régime permanent, puis tangente à l'origine"
+        stem: |-
+          **(0,5 pt)** En exploitant les deux courbes $(C_1)$ et $(C_2)$ lorsque le régime permanent est atteint, déterminer la valeur de la résistance interne $r$ de la bobine.
+        reasoning: |-
+          En régime permanent, le courant ne varie plus : $\frac{di}{dt} = 0$. Le terme inductif $L\frac{di}{dt}$ s'annule alors dans la tension de la bobine, et il ne reste que $u_L = r\,i$ — la bobine se comporte comme un simple conducteur ohmique de résistance $r$. On dispose donc de deux lectures au même instant (régime permanent) : $I_{max}$ sur le palier de $(C_1)$, et $u_L$ sur le palier de $(C_2)$. Le rapport des deux livre $r$, sans avoir besoin de connaître $E$ ni $L$.
+        steps:
+          - math: '\dfrac{di}{dt} = 0 \implies u_L = r\,i'
+            note: "Régime permanent : le courant est constant, le terme inductif s'annule, la bobine se réduit à sa résistance interne r."
+          - math: 'I_{max} = 100\ \text{mA} = 0{,}1\ \text{A}'
+            note: "Valeur du palier de (C1) : l'intensité en régime permanent."
+          - math: 'r = \dfrac{u_L(\text{perm})}{I_{max}}'
+            note: "On isole r à partir de u_L = r·i, avec le palier de (C2) pour u_L(perm)."
+          - math: 'r = \dfrac{1}{0{,}1} = 10\ \Omega'
+            note: "Palier de (C2) au voisinage de 1 V, d'où r = 10 Ω."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Vérifier que l'inductance de la bobine est $L = 1\ \text{H}$.
+        reasoning: |-
+          L'équation différentielle de la question 1 a la forme $\frac{di}{dt} + \frac{1}{\tau}\,i = \frac{E}{L}$, avec la constante de temps $\tau = \frac{L}{R+r}$ : c'est le coefficient de $i$ qui la porte. Or la tangente $(T)$ à l'origine coupe l'asymptote horizontale $i = I_{max}$ exactement à l'abscisse $t = \tau$ (propriété de la pente initiale). L'énoncé indique que $(T)$ coupe le palier à $t = 0{,}01\ \text{s}$ : on lit donc $\tau = 0{,}01\ \text{s}$ directement, puis on remonte à $L = \tau\,(R+r)$, avec $R = 90\ \Omega$ (donnée) et $r = 10\ \Omega$ (question 2).
+        steps:
+          - math: '\tau = \dfrac{L}{R+r}'
+            note: "La constante de temps est le coefficient de i dans l'équation différentielle (forme di/dt + i/τ = E/L)."
+          - math: '\tau = 0{,}01\ \text{s}'
+            note: "La tangente (T) à l'origine coupe l'asymptote i = I_max à t = 0,01 s."
+          - math: 'L = \tau\,(R+r) = 0{,}01 \times (90 + 10)'
+            note: "On isole L ; R = 90 Ω (donnée), r = 10 Ω (question 2)."
+          - math: 'L = 0{,}01 \times 100 = 1\ \text{H}'
+            note: "La valeur L = 1 H est bien vérifiée."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ─────────
+  # Same deep skills as r-bac (établir l'ODE du dipôle RL, exploiter le régime
+  # permanent pour r, remonter à L par τ, continuité de i, énergie magnétique)
+  # with different numbers and a different reading method (les 63 % au lieu de
+  # la tangente) — le sujet donne E, on lit un seul i(t), et on ajoute la
+  # continuité de i et l'énergie, pour que l'élève ne puisse pas recopier r-bac.
+  - id: r-variation
+    title: "Variation fraîche"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à
+        être un sujet réel. Le sujet réel est r-bac (2020, sourcé).
+    intro: |-
+      Même structure profonde que l'exercice précédent, enrobage différent : ici la f.é.m. $E$ est donnée, on ne dispose que de la courbe $i(t)$, on lira la constante de temps par la méthode des $63\ \%$ (et non par la tangente), et on ajoute la continuité du courant et l'énergie. Le but est que tu ne puisses pas recopier la solution du sujet 2020 — tu dois reconnaître quelle procédure s'applique.
+
+      Un dipôle RL série comporte un générateur idéal de f.é.m. $E = 6\ \text{V}$, un interrupteur $K$, un conducteur ohmique de résistance $R_0 = 140\ \Omega$, et une bobine d'inductance $L$ et de résistance interne $r$ inconnues. À $t = 0$ on ferme $K$ et on enregistre $i(t)$ à l'oscilloscope. La courbe part de $0$ et croît vers une asymptote horizontale $I_{max} = 40\ \text{mA}$ ; on relève que $i$ atteint $25\ \text{mA}$ à l'instant $t = 2{,}0\ \text{ms}$.
+    questions:
+      - id: q1
+        stem: |-
+          Établir l'équation différentielle vérifiée par l'intensité $i(t)$ au cours de l'établissement du courant.
+        reasoning: |-
+          La démarche est identique à celle du sujet : loi des mailles sur la maille série, $E = u_{R_0} + u_L$, avec $u_{R_0} = R_0\,i$ pour le conducteur ohmique et $u_L = r\,i + L\frac{di}{dt}$ pour la bobine. On regroupe les deux résistances $R_0$ et $r$ en une résistance totale, puisqu'elles jouent le même rôle. Reconnaître que l'habillage a changé (un seul résistor nommé $R_0$, la résistance interne $r$ inconnue) mais pas la procédure, c'est le point de l'exercice.
+        steps:
+          - math: 'E = R_0\,i + \left(r\,i + L\dfrac{di}{dt}\right)'
+            note: "Loi des mailles ; u_L contient la résistance interne r ET l'inductance L."
+          - math: 'E = (R_0 + r)\,i + L\dfrac{di}{dt}'
+            note: "On regroupe les deux termes résistifs en une résistance totale R_0 + r."
+          - math: '\boxed{\dfrac{di}{dt} + \dfrac{R_0 + r}{L}\,i = \dfrac{E}{L}}'
+            note: "On divise par L : forme standard, identique à celle du sujet."
+      - id: q2
+        stem: |-
+          En régime permanent, déterminer la résistance totale du circuit, puis en déduire la résistance interne $r$ de la bobine.
+        reasoning: |-
+          En régime permanent, $\frac{di}{dt} = 0$ : l'équation se réduit à $(R_0 + r)\,I_{max} = E$. On connaît $E$ (donnée) et $I_{max}$ (palier de la courbe), donc on en tire la résistance totale $R_0 + r$. Comme $R_0$ est donnée, on isole enfin $r$. Ici c'est $r$ l'inconnue, pas $R$ : on ne peut pas recopier la lecture de $u_L$ du sujet, il faut passer par la valeur finale du courant.
+        steps:
+          - math: 'R_0 + r = \dfrac{E}{I_{max}} = \dfrac{6}{0{,}040}'
+            note: "En régime permanent, (R_0 + r)·I_max = E ; I_max = 40 mA = 0,040 A."
+          - math: 'R_0 + r = 150\ \Omega'
+            note: "Résistance totale du circuit."
+          - math: 'r = 150 - R_0 = 150 - 140 = 10\ \Omega'
+            note: "On retranche R_0 = 140 Ω pour isoler la résistance interne r."
+      - id: q3
+        stem: |-
+          Déterminer la constante de temps $\tau$ par la méthode des $63\ \%$, puis en déduire l'inductance $L$.
+        reasoning: |-
+          La méthode des $63\ \%$ traduit directement $i(\tau) = I_{max}(1 - e^{-1}) \approx 0{,}63\,I_{max}$ : l'instant où la courbe atteint $63\ \%$ de son asymptote est $\tau$. Ici $0{,}63 \times 40 \approx 25\ \text{mA}$, valeur atteinte à $t = 2{,}0\ \text{ms}$, donc $\tau = 2{,}0\ \text{ms}$. On remonte ensuite à $L$ par $\tau = \frac{L}{R_0 + r}$, la résistance totale ayant été trouvée à la question 2.
+        steps:
+          - math: 'i(\tau) = I_{max}\left(1 - e^{-1}\right) \approx 0{,}63\,I_{max} = 0{,}63 \times 40 \approx 25\ \text{mA}'
+            note: "L'intensité à t = τ vaut 63 % de l'asymptote — c'est la signature de τ."
+          - math: '\tau = 2{,}0\ \text{ms} = 2{,}0\times10^{-3}\ \text{s}'
+            note: "Instant où i = 25 mA, lu sur la courbe."
+          - math: 'L = \tau\,(R_0 + r) = 2{,}0\times10^{-3} \times 150 = 0{,}30\ \text{H}'
+            note: "On inverse τ = L/(R_0 + r) ; ici l'inconnue est L."
+      - id: q4
+        stem: |-
+          Calculer l'intensité $i(0^+)$ juste après la fermeture, et justifier pourquoi le courant est continu à $t = 0$ alors qu'une résistance seule laisserait le courant s'établir instantanément.
+        reasoning: |-
+          Le courant qui traverse une bobine ne peut varier que continûment : un saut de $i$ à $t = 0$ imposerait $\frac{di}{dt}$ infinie, donc une tension $u_L = r\,i + L\frac{di}{dt}$ infinie aux bornes de la bobine, que le générateur de f.é.m. finie $E$ ne peut pas fournir. Avant la fermeture le circuit était ouvert, $i(0^-) = 0$ ; par continuité $i(0^+) = i(0^-) = 0$. Le courant part donc de zéro, puis grimpe — c'est exactement le retard à l'établissement absent d'un circuit purement résistif (où rien n'impose la continuité et où le courant saute à $E/R_0$ dès la fermeture).
+
+          $$i(0^+) = i(0^-) = 0$$
+      - id: q5
+        stem: |-
+          Calculer l'énergie emmagasinée dans la bobine une fois le régime permanent atteint.
+        reasoning: |-
+          « Régime permanent atteint » signifie courant établi, $i = I_{max}$ : on applique $E_L = \frac{1}{2}L\,i^2$ avec la valeur finale $I_{max}$, pas une valeur transitoire. Cette énergie est stockée sous forme magnétique dans la bobine, et reste disponible tant que le courant continue de circuler.
+        steps:
+          - math: 'E_L = \dfrac{1}{2}L\,I_{max}^2 = \dfrac{1}{2}\times 0{,}30 \times (0{,}040)^2'
+            note: "On prend L = 0,30 H (question 3) et i = I_max = 40 mA = 0,040 A (valeur finale)."
+          - math: 'E_L = \dfrac{1}{2}\times 0{,}30 \times 1{,}6\times10^{-3} = 2{,}4\times10^{-4}\ \text{J} = 0{,}24\ \text{mJ}'
+            note: "Application numérique : énergie magnétique en régime permanent."

@@ -1,0 +1,266 @@
+# Docket de complétude des leçons — maths / PC
+
+**Source unique : les SCOPE NOTES (et notes hors-rung apparentées) accumulées
+en tête des `bank.yaml`.** Ce docket ne modifie aucune leçon ni banque — il
+compile, classe et arbitre-prêt les écarts que les auteurs de banque ont déjà
+signalés eux-mêmes, honnêtement, au fil de la transcription des annales
+réelles. Périmètre à l'audit : les 13 `bank.yaml` de `content/maths/` (13/13
+notions, toutes banquées) et les 18 `bank.yaml` de `content/pc/` qui
+existaient alors (7 notions PC — `aspects-energetiques`,
+`atome-mecanique-newton`, `controle-catalyse`, `lois-de-newton`,
+`propagation-onde-lumineuse`, `transformations-deux-sens`,
+`transformations-lentes-rapides` — n'avaient pas encore de banque et étaient
+hors périmètre).
+
+> **ÉTAT AU 2026-08-27 — LA CATÉGORIE A EST SOLDÉE.**
+>
+> Les **26 lacunes de catégorie A** (in-cadre, à intégrer) sont **toutes
+> traitées**, et chaque ligne porte désormais ce qui a été écrit, où, et ce que
+> ça change — pas seulement une coche. Six d'entre elles (A1 à A4, A6, A9)
+> avaient été comblées lors de la passe du 2026-08-22 sans que le docket soit
+> mis à jour ; leurs lignes sont rétro-documentées avec le numéro de ligne du
+> rung dans la leçon, pour qu'aucun auteur ne reparte à vide sur un trou déjà
+> bouché.
+>
+> Deux lignes ne se sont pas soldées comme prévu, et la différence est
+> instructive :
+> — **A23 était un FAUX POSITIF.** Le rung existait depuis toujours au chapitre
+>   précédent ; seul le pont manquait. La ligne porte le constat rectifié et sa
+>   preuve. Un docket est un document de travail : une ligne fausse coûte à un
+>   futur auteur une passe entière sur un trou qui n'existe pas.
+> — **A27 est une lacune NEUVE**, absente de l'audit initial : la rupture du
+>   courant dans `dipole-rl`, remontée par l'auteur de `bk-2025-r-x3` en
+>   convertissant PC 2025 rattrapage. Elle est traitée dans la même passe. La
+>   boucle « écrire un corrigé fait apparaître les trous de la leçon » a
+>   fonctionné une fois de plus — c'est elle qui a produit ce docket en
+>   premier lieu.
+>
+> **Ce qui reste ouvert :** les **3 questions d'arbitrage de catégorie B**, qui
+> demandent une décision de l'owner et n'ont pas bougé, et les **12 lignes de
+> catégorie C**, qui sont correctes en l'état par construction et n'appellent
+> aucune action. Une décision d'architecture est par ailleurs signalée à
+> l'arbitrage sur A24 (un outil transversal logé dans un chapitre particulier).
+>
+> Le périmètre du docket a lui-même changé depuis l'audit : `lois-de-newton` et
+> `propagation-onde-lumineuse` ont maintenant une banque, et les cinq autres
+> notions PC listées ci-dessus n'en ont toujours pas. Un prochain audit devra
+> repartir des scope notes accumulées depuis, notamment celles de la campagne
+> rattrapage.
+
+---
+
+## Résumé chiffré
+
+| | Compte |
+|---|---|
+| Fichiers `bank.yaml` lus (maths + PC) | 31 |
+| Fichiers portant au moins une SCOPE NOTE de lacune d'outil | 22 |
+| Fichiers sans aucune lacune d'outil signalée (« SCOPE NOTE : aucune » ou silence) | `calcul-integral`, `suivi-temporel-vitesse`, `decroissance-radioactive`, `evolution-spontanee`, `probabilites-conditionnelles`* |
+| **Lacunes distinctes (notion · outil) après dédoublonnage** | **41** |
+| — dont **catégorie A** (in-cadre, à intégrer) | **26** à l'audit (9 « contenu neuf à écrire », 17 « pont léger »). **Révisé le 2026-08-27 : 8 et 18.** A23 était classé « contenu neuf » sur un constat erroné — le rung existe depuis toujours au chapitre précédent (voir sa ligne) ; il est requalifié en pont léger, et posé |
+| — dont **catégorie B** (cadre incertain, arbitrage owner) | **3** questions d'arbitrage (+ 1 précédent contextuel déjà tranché ailleurs) |
+| — dont **catégorie C** (hors-corps assumé, correct tel quel) | **12** |
+
+\* `probabilites-conditionnelles` a une SCOPE NOTE, mais elle recouvre la
+même lacune que `denombrement` (variable aléatoire) — comptée une seule fois,
+sous catégorie A7.
+
+**Note de méthode sur les sources cadre.** `docs/cadre/curriculum/
+pc-physique-chimie.yaml` porte le statut `COMPLETE` (ADR 0018) — haute
+confiance. `docs/cadre/curriculum/maths-sm.yaml` et `maths-sexp.yaml`
+portent tous deux l'en-tête `STATUT : PROPOSITION — NON AUTORITATIVE`
+(en attente des trois portes RULES §5 : relecture Gemini, research-challenger,
+validation humaine). Les classements A qui s'appuient sur ces deux fichiers
+utilisent leur tier de provenance le plus solide (`research-consensus` : ≥2
+sources indépendantes) mais héritent de cette réserve — signalé ligne par
+ligne ci-dessous, pas juste ici.
+
+---
+
+## Catégorie A — In-cadre, à intégrer
+
+### A · Maths — contenu pédagogique neuf à écrire
+
+| # | Notion hôte | Outil manquant | Sujets qui le mobilisent | Pontage actuel | Recommandation |
+|---|---|---|---|---|---|
+| A1 | `structures-algebriques` | Critère de **sous-groupe** (checklist restreinte, ou critère compact) | 2019 q7 · 2022 q1 · 2023 q1+q8 · 2024 q8 — **5 occurrences sur 4 sujets** | Chaque entrée redécline le checklist à 4 axiomes du R3 sur le sous-ensemble, sans jamais nommer « sous-groupe » ni de critère dédié | Rung dédié juste après R3/R4. Cadre `maths-sm.yaml:247` (`research-consensus`, pdfmath) : « Groupe, **sous-groupe**, groupe commutatif » — figure explicitement au programme SM **FAIT (2026-08-22, passe précédente — ligne mise à jour le 2026-08-27).** Rung « Sous-groupe : un groupe caché dans un autre » écrit dans `structures-algebriques/lesson.md` (ligne 229), avec la section « Ce que tu gagnes une fois le sous-groupe établi ». Un correctif y a été apporté après coup : le rung disait « l'associativité est héritée, toujours » sans dire que la réciproque est fausse, ce qui rendait deux questions de bac voisines apparemment contradictoires — un paragraphe sur ce que l'héritage NE dit PAS a été ajouté. |
+| A2 | `structures-algebriques` | **Anneau intègre** (absence de diviseurs de zéro) | 2022 q4a–c · 2023 q6 (implicite) — 2 occurrences | Définition introduite au point d'usage à chaque fois, jamais nommée par lesson.md (grep vérifié : 0 occurrence d'« intègre ») | Rung après R5/R6 (« anneau », « corps »). Cadre `maths-sm.yaml:248` : « Anneau (unitaire, commutatif, **intègre**) ; corps » — même ligne cadre que l'axiome « unitaire » déjà remonté P1 dans `docs/audits/content-correctness-docket-2026-07.md` (finding #2) : **les deux lacunes touchent le même couple de rungs R5/R6 et peuvent être corrigées dans la même passe d'auteur** **FAIT (2026-08-22, passe précédente — ligne mise à jour le 2026-08-27).** Rung « Anneau intègre : quand un produit nul force un facteur nul » écrit (ligne 401), avec la définition par absence de diviseur de zéro ET la distinction des trois adjectifs qu'un énoncé accole — unitaire, commutatif, intègre — en disant lequel fait le travail dans les questions. |
+| A3 | `nombres-complexes-1` **et** `nombres-complexes-2` | Résolution d'une **équation du second degré à coefficients complexes** (Δ potentiellement complexe, racine carrée reconnue comme carré parfait, formule (−b±δ)/2a ; relations de Viète en 2021 q1a) | nc-2 : 2017, 2019, 2020, 2021, 2022, 2024, 2025 (7/8 sujets vérifiés) + le sommet r-bac de nc-1 (2019) — **la lacune la plus citée de tout ce docket** | `reasoning` re-expose le geste (Δ carré parfait, ou Viète direct) à chaque occurrence, sans rattacher à un rung nommé — les deux notes de validation en pied des deux `lesson.md` sœurs le signalent déjà | Rung dédié, probablement en tête de `nombres-complexes-1` (avant le socle algébrique) — exactement la question que la SCOPE NOTE 1 de `nombres-complexes-2/bank.yaml` pose déjà. Cadre `maths-sm.yaml:224+228` (`research-consensus`) : « Résolution d'équations dans ℂ (second degré à coefficients complexes…) » listé nommément en programme ET en savoir-faire **FAIT (2026-08-22, passe précédente — ligne mise à jour le 2026-08-27).** Section « Résoudre une équation du second degré dans $\mathbb{C}$ » écrite dans `nombres-complexes-1/lesson.md` (ligne 270), avec les relations de Viète (ligne 416) présentées comme un outil qui se **lit** sur l'équation sans calculer de discriminant, et valable que les coefficients soient réels ou complexes. |
+| A4 | `probabilites-conditionnelles` (+ écho dans `denombrement`) | **Variable aléatoire** (loi, espérance) et **loi binomiale** | `denombrement` 2018 q2/q3 · `probabilites-conditionnelles` 2023 q3 — 3 occurrences sur 2 notions | Chaque fois construite ad hoc depuis la définition d'une répétition d'épreuves indépendantes, sans rung | Nouveau rung dans `probabilites-conditionnelles` (notion hôte naturelle). **Déjà signalé indépendamment comme « LACUNE PRIORITAIRE »** par `maths-sexp.yaml:335` — ce docket confirme, depuis les banques, que la lacune a un coût concret (3 questions de bac déjà transcrites la contournent) **FAIT (2026-08-22, passe précédente — ligne mise à jour le 2026-08-27).** Deux rungs écrits dans `probabilites-conditionnelles/lesson.md` : « Variable aléatoire : mettre un nombre sur chaque issue » (ligne 389) et « La loi binomiale : compter les succès d'une expérience répétée » (ligne 478). |
+| A5 | `equations-differentielles` | **Équation caractéristique générale** $ar^2+br+c=0$ pour $ay''+by'+cy=0$ (cas Δ>0 / Δ=0 / Δ<0) | 2022 q2a (bk-2022-n-x4, = sommet r-bac) | R4 ne couvre que $y''+\omega^2y=0$ (sans terme $y'$) ; `reasoning` autoportant, ré-explique la méthode de A à Z | **FAIT (2026-08-27).** Écrit comme **section terminale de R4**, et non comme rung « R4-bis » : renuméroter les rungs casserait les marqueurs de checkpoint, le menu de chapitres et les références croisées du corpus, pour un gain nul. La section « Le cas général : $ay''+by'+cy=0$ et son équation caractéristique » établit la substitution $y=e^{rx}$ (avec le pourquoi : seule famille dont les dérivées sont proportionnelles à elle-même), le trinôme, les trois cas de discriminant, un exemple travaillé avec contrôle, et le piège nommé (oublier le facteur $x$ du cas double, qui laisse une seule constante là où le second ordre en exige deux). Un « Arrête-toi » dédié **referme le rung sur lui-même** : $y''+\omega^2y=0$ est le cas 3 avec $\alpha=0$, et $e^{\alpha x}=1$ précisément parce qu'il n'y a pas de terme en $y'$ — c'est le terme en $y'$ qui amortit, ce qui donne au passage le pont vers le RLC amorti de la physique. **B1 reste ouvert** : la légitimité pédagogique est cadre-confirmée SM (`maths-sm.yaml:154+157`) et n'attendait pas d'arbitrage ; c'est l'appartenance filière du SUJET porteur, tagué SExp dans la transcription, qui reste à trancher par l'owner — indépendamment de ce rung |
+| A6 | `derivabilite-etude-fonctions` (notion cible, actuellement sans rung) — mobilisé par `fonction-exponentielle` et `fonction-logarithme` | **Fonction réciproque** : existence (bijection continue strictement monotone), construction symétrique par rapport à $y=x$, **dérivée d'une réciproque en un point** | `fonction-exponentielle` 2020 q8a/b/c · `fonction-logarithme` 2021 Q7, 2024 Q5/Q5-b — 2 notions, récurrent | Grep vérifié : `derivabilite-etude-fonctions/lesson.md` (R0–R5) ne construit nulle part la fonction réciproque — ni les deux notions consommatrices. Chaque `reasoning` la reconstruit isolément | Rung dédié, probablement dans `derivabilite-etude-fonctions` (la notion générale de dérivation), avec cross-ref depuis `fonction-exponentielle`/`fonction-logarithme`. Cadre `maths-sexp.yaml:101` confirme : « Théorème de la fonction réciproque : traité de façon opératoire… » — explicitement au programme SExp **FAIT (2026-08-22, passe précédente — ligne mise à jour le 2026-08-27).** Rung « Fonction réciproque : la même courbe, lue dans l'autre sens » écrit dans `derivabilite-etude-fonctions/lesson.md` (ligne 389), avec la section « La dérivée de la réciproque en un point » (ligne 449) — c'est-à-dire les deux moitiés que les sujets mobilisent. |
+| A7 | `geometrie-espace` | **Tangence droite–sphère** (généralisation du critère R9, qui ne couvre que plan–sphère) | 2022 q6 | `reasoning` transpose directement le critère plan-sphère à une droite (distance point-droite R8 + Pythagore) | **FAIT (2026-08-27).** Section « Intersection d'une sphère et d'une DROITE : le même Pythagore » ajoutée au R9, suivie d'un « Arrête-toi » qui isole **le seul point qui diffère** : les cas $d>R$ et $d=R$ sont identiques mot pour mot, et c'est le troisième qui change de nature — un plan donne un **cercle** (M peut s'éloigner de H dans toutes les directions du plan), une droite donne **deux points** et une corde de longueur $2\sqrt{R^2-d^2}$ (M ne peut s'éloigner que dans deux sens). La leçon dit aussi la vigilance qui va avec : $d(\Omega,\mathcal{D})$ et $d(\Omega,\mathcal{P})$ ne se calculent pas avec la même formule du R8 |
+| A8 | `geometrie-espace` | **Médiatrice d'un segment** dans l'espace (lieu des points équidistants) | 2024 q7 | Reconstruite entièrement depuis le milieu (R1) + orthogonalité par produit scalaire (R2), jamais nommée | **FAIT (2026-08-27).** Écrit non pas « après R1/R2 » mais **dans le R6**, section « Le plan médiateur : les points à égale distance de deux points » — c'est là que sa conclusion tombe toute seule, puisque le résultat EST la forme $\vec{n}\cdot\overrightarrow{A_0M}=0$ posée en tête de ce rung. La leçon commence par le point que le nom masque : dans l'espace, le lieu n'est **pas une droite** mais un **plan** — on monte d'une dimension, le lieu aussi. Démonstration en trois lignes ($MA^2=MB^2$, différence de carrés factorisée, Chasles + milieu), résultat identifié comme le plan par $I$ de normale $\overrightarrow{AB}$, et piège nommé : le faire passer par $A$ ou $B$ au lieu du milieu, avec le contrôle qui l'attrape |
+| A9 | `suites-numeriques` | Suite auxiliaire **« homographique »** (ratio $\dfrac{au_n+b}{cu_n+d}$, au-delà du simple $v_n=u_n-L$ de R8) | 2020 q4a · 2021 q5b · 2024 q3a — **3 sujets vérifiés sur 3** | Chaque `reasoning` nomme le geste et son rattachement le plus proche (R8), sans jamais prétendre qu'il est enseigné tel quel | Rung « R8-bis » — la totalité des sujets vérifiés de cette notion en dépendent, ce qui en fait un candidat à fort ratio couverture/effort **FAIT (2026-08-22, passe précédente — ligne mise à jour le 2026-08-27).** Rung « Suites homographiques : quand l'auxiliaire est un rapport » écrit dans `suites-numeriques/lesson.md` (ligne 467), avec le mécanisme en une phrase : quand la relation est homographique, l'auxiliaire qui linéarise n'est pas une différence mais un **rapport** — celui des écarts aux DEUX points fixes. |
+
+### A · Maths — ponts légers (rung cible déjà existant ailleurs dans le corpus)
+
+| # | Notion hôte | Outil manquant | Sujets | Cible du pont |
+|---|---|---|---|---|
+| A10 | `nombres-complexes-1` | Forme trigo/exponentielle, formules de rotation ($z'=e^{i\theta}z$…), vocabulaire « homothétie » | Les **7 sujets vérifiés** de la notion | **FAIT (2026-08-27).** À noter d'abord : la moitié du pont existait déjà sous forme de **rupture-gate**, `cp-bac-exponentielle`, posé au R6 juste avant le sujet. Ce qui manquait, c'est de **nommer le chapitre** et le vocabulaire. Section « Ce que ces exercices empruntent au chapitre suivant » ajoutée après ce gate : forme exponentielle, écritures complexes des trois transformations (rotation $z'=e^{i\theta}z$, translation, homothétie — en précisant que le mot « homothétie » lui-même appartient à l'autre chapitre), et l'équation du second degré dans $\mathbb{C}$. Clôture : les complexes forment un seul édifice découpé en deux chapitres pour l'apprentissage, et un sujet de bac ne connaît pas ce découpage. **La TENSION DE PÉRIMÈTRE consignée en NOTE DE VALIDATION du fichier reste ouverte** — elle porte sur le périmètre du corps R1–R5, pas sur le pont |
+| A11 | `denombrement` | Indépendance de deux événements $p(A\cap B)=p(A)p(B)$ | 2024 q4 | **FAIT (2026-08-27).** Section « Ce que ces exercices empruntent à d'autres chapitres » au R8, nommant deux emprunts : l'indépendance **et sa distinction d'avec l'incompatibilité** — deux notions que le vocabulaire courant confond et que le cours sépare —, puis la variable aléatoire et son espérance, mobilisées dès qu'un sujet demande « le nombre moyen de » plutôt que « la probabilité que ». Les deux vivent dans « Probabilités conditionnelles » |
+| A12 | `fonction-exponentielle` | **Point d'inflexion** (changement de signe de $f''$) | 2022 q5c · 2020 q5 | **FAIT (2026-08-27)** — voir A13/A14 : les trois ponts d'`fonction-exponentielle` sont posés ensemble, en une section « Ce que ces exercices empruntent à d'autres chapitres » au R8, juste avant les exercices qui les mobilisent |
+| A13 | `fonction-exponentielle` | **Intégration par parties** (IPP) | 2019 (calcul de $\int 4xe^{-x}dx$) | **FAIT (2026-08-27)** — même section que A12. La leçon dit désormais que son R6 ne donne que les deux primitives immédiates ($e^x$ et $u'e^u$), insuffisantes dès qu'un facteur polynomial s'invite |
+| A14 | `fonction-exponentielle` | **Limite monotone** (suite décroissante minorée) | 2019 | **FAIT (2026-08-27)** — même section que A12 |
+| A15 | `fonction-logarithme` | Comparaison graphique $e^x$/$x$, $\ln(e^x)=x$, $xe^{-x}\to0$ | 2024 (Partie I) | **FAIT (2026-08-27).** Section « Ce que ces exercices empruntent à d'autres chapitres » au R7, sur le même patron que celle d'`fonction-exponentielle`. Elle nomme trois emprunts, pas un : le chapitre exponentiel entier (avec le point qui compte — la symétrie des deux courbes par rapport à $y=x$ n'est pas une image, c'est ce qui fait que chaque résultat de l'un se traduit dans l'autre), l'IPP, et le couple TVI + stricte monotonie qui porte toute question « il existe un unique réel tel que » |
+| A16 | `arithmetique` | Formule de Moivre pour $(1+i)^p$ | 2023 q6–8 | **FAIT (2026-08-27).** Note courte au R8, après le rupture-gate de Fermat — proportionnée à une occurrence unique. Elle nomme la formule de Moivre et son chapitre d'origine, et dit surtout ce qu'un élève a besoin d'entendre à cet endroit : si un énoncé d'arithmétique te fait écrire une puissance d'un complexe, tu n'as rien oublié de l'arithmétique |
+
+### A · Physique — contenu pédagogique neuf à écrire
+
+| # | Notion hôte | Outil manquant | Sujets | Pontage actuel | Recommandation |
+|---|---|---|---|---|---|
+| A17 | `piles` | **Schéma conventionnel** (notation à barres : anode/cathode, pont salin) | 2020 q2 (+ sommet r-bac déjà concerné) | Écart déjà présent dans `exercises.yaml` r-bac lui-même | **FAIT (2026-08-27).** Section « Le schéma conventionnel : écrire une pile en une ligne » ajoutée au R3 de `piles/lesson.md`, juste avant le checkpoint `cp-r3-anode-cathode` : les trois règles d'écriture (borne − à gauche, barre simple = frontière de phases, double barre = jonction/pont salin), le schéma complet de la Daniell, sa relecture de gauche à droite comme trajet des électrons dans le circuit extérieur, et le piège nommé (écrire la pile à l'envers) avec son contrôle — l'espèce à l'extrême gauche est celle qui s'oxyde. Cadre `pc-physique-chimie.yaml:509` : « Schématiser une pile (schéma conventionnel) » |
+| A18 | `chute-mouvements-plans` | **Poussée d'Archimède** comme 3ᵉ force du bilan (R7 ne modélise qu'un bilan à 2 forces) | 2018 q1 · 2022 q2 · 2024 q1 — 3 occurrences | Ajout de la 3ᵉ force au même schéma de projection, à chaque fois | **FAIT (2026-08-27).** Section « Une troisième force, quand le fluide est dense » ajoutée au R7, juste avant « La limite du cadre ». Elle dit d'abord POURQUOI le bilan à deux forces était légitime — la poussée est négligeable dans l'air, plus du tout dans un liquide — puis $F_A = \rho V g$ (assumée comme acquis d'hydrostatique), le bilan projeté sur l'axe descendant, et $v_\ell = (mg-F_A)/k$ : la poussée **abaisse** la vitesse limite. Deux contrôles offerts : si $F_A > mg$ la vitesse limite sort négative, ce qui n'est pas absurde mais physique (le solide remonte, cas du bouchon) ; et le piège nommé — garder $v_\ell = mg/k$ alors que l'énoncé a fourni une masse volumique et un volume, deux données qui n'apparaissent nulle part dans la résolution. Un énoncé ne donne jamais de valeur pour rien |
+| A19 | `dipole-rl` | Lecture d'une droite $di/dt = f(i)$ (pente → $L$, ordonnées → $R_1+r$) | 2024 q2a/q2b | R3 ne couvre que 2 méthodes de lecture de $\tau$ sur $i(t)$ (tangente à l'origine, 63 %) | **FAIT (2026-08-27).** Troisième méthode ajoutée au R3, sur le même patron qu'A20 : l'équation de R2 réécrite en $di/dt = E/L - \frac{R+r}{L}i$, d'où les trois éléments remarquables de la droite. Avec le point que les deux autres méthodes ne donnent pas et qui justifie à lui seul la section : celle-ci fournit **$L$ et $R+r$ SÉPARÉMENT**, là où les 63 % et la tangente ne donnent que leur quotient $\tau$. Piège nommé identique à A20 (pente prise pour $\tau$, ou signe perdu) |
+| **A27** *(hors audit initial — remonté le 2026-08-27 par l'auteur de `bk-2025-r-x3`)* | `dipole-rl` | **La RUPTURE du courant** : ouverture de l'interrupteur, diode de roue libre, maille de décharge sans générateur | PC 2025 R, ex. 3, questions 2-2 et 2-3 | Aucun : les rungs R0–R5 ne décrivaient que l'ÉTABLISSEMENT (fermeture). L'auteur a reposé les deux questions depuis les principes et l'a signalé en scope note | **FAIT dans la même passe.** Section « La rupture du courant » ajoutée au R3 : pourquoi une ouverture brutale produit une surtension ($u = L\,di/dt$ avec $di/dt$ énorme — l'étincelle à l'interrupteur), la voie de secours (diode de roue libre ou second conducteur ohmique), l'équation **sans second membre** $L\,di/dt + R'i = 0$ de la maille de rupture, et sa décroissance $i(t)=I_{max}e^{-t/\tau'}$ avec $\tau' = L/R'$. Deux pièges nommés : croire que $i(0^+)=0$ « puisqu'on a ouvert » (c'est le courant du GÉNÉRATEUR qui s'annule ; celui de la bobine est continu et vaut encore $I_{max}$), et réutiliser le $\tau$ de l'établissement alors que la maille de secours n'a pas la même résistance totale |
+| A20 | `rc-charge` | Lecture d'une droite $du_C/dt = f(u_C)$ (pente → $E/RC$…) | 2021 q2 | R1 établit l'équation affine mais la leçon ne trace jamais ce type de graphe | **FAIT (2026-08-27).** Troisième méthode ajoutée au R3, après les 63 % et la tangente : l'équation de R1 réécrite en $du_C/dt = E/RC - u_C/RC$ est lue pour ce qu'elle est — une fonction affine de $u_C$ — d'où les trois éléments remarquables de la droite (ordonnée à l'origine $E/\tau$, pente $-1/\tau$, abscisse à l'ordonnée nulle $= E$), et le piège nommé : prendre la pente pour $\tau$ ou en perdre le signe, une pente positive décrivant un condensateur qui se charge de plus en plus vite. **A19 (`dipole-rl`, droite $di/dt = f(i)$) reste à faire** — même logique, à écrire sur le même patron |
+| A21 | `rc-charge` | Association de deux condensateurs en **parallèle** ($C_{eq}=C_1+C_2$) | 2018 q1, q3 | R0–R4 n'étudient qu'un condensateur unique | **FAIT (2026-08-27).** Mention courte en fin de R3 : $C_{eq}=C_1+C_2$, $\tau = R\,C_{eq}$, rien d'autre ne change. Assumé comme prérequis d'électricité générale et présenté comme tel. Avec le garde-fou qui manque partout ailleurs : c'est **en parallèle** que les capacités s'ajoutent, en série elles se composent à l'inverse — le contraire des résistances, d'où la confusion — et le repère physique qui ne trompe pas, mettre deux condensateurs côte à côte revient à élargir les armatures |
+| A22 | `electrolyse` | Conversion **quantité de matière → volume de gaz** via le volume molaire ($n=V/V_m$) | 2018 q4 | R4 ne chiffre que des masses, jamais des volumes de gaz | **FAIT (2026-08-27).** Section « Chiffrer un gaz » ajoutée au R5, juste après l'électrolyse de l'eau — là où les produits sont justement gazeux. Elle donne $V = n\,V_m$, puis la chaîne complète d'un bout à l'autre ($I,\Delta t \to Q \to n(e^-) \to n(\text{gaz}) \to V$) en signalant que l'avant-dernière flèche est la seule qui demande de la réflexion : le coefficient se **lit** sur la demi-équation, jamais ailleurs. Avec le contrôle gratuit qui en découle — deux fois plus de $H_2$ que de $O_2$, en quantité comme en volume, ce que le bilan global dit et ce que le montage montre à l'œil |
+| A23 | `ondes-mecaniques-progressives` (ou `-periodiques`) | Définition générale d'**onde transversale** (perturbation ⊥ propagation) | `-periodiques` 2019 q1, 2020 q2 | ~~Seule la longitudinale est formellement définie (R4 de `-periodiques`) ; la transversale est déduite par contraste + rappel du chapitre précédent, qui ne la définit pas non plus formellement~~ | **RÉSOLU — et le constat de départ était FAUX (2026-08-27).** Le chapitre précédent définit bel et bien les deux : `ondes-mecaniques-progressives/lesson.md` R2 « Ondes transversales et longitudinales » pose le critère des deux directions et énonce la transversale mot pour mot (ligne 74), avec ses deux exemples fondateurs (corde, ressort) et une figure. La lacune n'était donc pas « contenu neuf à écrire » mais un simple **pont manquant** depuis `-periodiques`. Le pont est posé : un rappel du critère complet a été ajouté au R4 de `-periodiques`, renvoyant nommément au rung 2 du chapitre précédent. Aucun rung neuf n'était nécessaire |
+| A24 | `ondes-mecaniques-progressives` | **Analyse dimensionnelle** (équations aux dimensions) | 2024 q3-1 | Outil transversal, jamais introduit par aucun rung d'aucune leçon de mécanique/électricité du corpus | **FAIT (2026-08-27).** Écrit dans le R3 de `ondes-mecaniques-progressives`, juste après la définition de la célérité — c'est là que le sujet porteur le mobilise, et le seul endroit du corpus où il avait un point d'ancrage naturel. **Décision d'architecture assumée, à l'arbitrage de l'owner :** un outil transversal logé dans un chapitre particulier n'est pas idéal ; si un jour le corpus se dote d'un encart méthodologique commun, cette section y déménage telle quelle. La section donne les trois dimensions de base, insiste sur le fait que $[v]$, $[a]$ et $[F]$ se **retrouvent** depuis leur définition et ne se mémorisent pas, déroule un exemple complet ($v=\sqrt{gh}$), et dit surtout **ce que le contrôle ne prouve PAS** : $v=\sqrt{gh}$ et $v=3\sqrt{gh}$ sont toutes deux homogènes. Elle se ferme sur trois invitations à réutiliser l'outil ailleurs ($\tau=RC$, $\frac12Li^2$, $2\pi\sqrt{m/k}$) |
+
+### A · Physique — ponts légers
+
+| # | Notion hôte | Outil manquant | Sujets | Cible du pont |
+|---|---|---|---|---|
+| A25 | `rotation-axe-fixe` | Décomposition du poids sur un plan incliné ($mg\sin\alpha$) | 2024 q3 | **FAIT (2026-08-27).** Section « Ce que ces exercices empruntent à d'autres chapitres » au R7, nommant deux emprunts plutôt qu'un : la décomposition du poids (« Les lois de Newton », rung du plan incliné — mobilisée dès qu'un objet en translation tire le solide tournant) et le travail / théorème de l'énergie cinétique (« Aspects énergétiques »), puisque ce chapitre donne $E_c=\frac12 J_\Delta\dot\theta^2$ mais pas la machinerie qui la fait varier |
+| A26 | `systemes-oscillants` | $W=-\Delta E_p$ (travail d'une force conservative) — R5 · **et** énergie cinétique de rotation $E_c=\frac12 J_\Delta\dot\theta^2$ — 2023 q2a | 2018 q3 · 2023 q2a | **FAIT (2026-08-27).** Section « Ce que ces exercices empruntent à d'autres chapitres » au R8. Elle part du constat honnête que le R5 ne donne les deux réservoirs qu'**en aperçu**, puis nomme les deux outils et leur adresse : $W=-\Delta E_p$ avec $\frac12kx^2$ et $\frac12C\theta^2$ dans « Aspects énergétiques » ; $E_c=\frac12 J_\Delta\dot\theta^2$ et la RFD de rotation dans « Rotation d'un solide autour d'un axe fixe ». Le point de fond, dit en clôture : c'est la même leçon que celle du dictionnaire translation ↔ rotation — une seule machinerie, plusieurs habillages |
+
+---
+
+## Catégorie B — Cadre incertain : questions d'arbitrage owner
+
+**B1. `equations-differentielles` — l'équation caractéristique générale
+appartient-elle au programme SExp, ou seulement SM ?**
+Le sujet 2022 qui mobilise $ay''+by'+cy=0$ avec racine double (bk-2022-n-x4)
+est tagué **filière SExp** dans la transcription (`bank.yaml` de
+`calcul-integral` et `equations-differentielles`, cohérent entre les deux
+fichiers). Or `maths-sexp.yaml:158` exclut explicitement ce cas pour SExp
+(« PAS de $y''+ay'+by=0$ générale… qui relève du programme SM »), et le
+fichier **s'auto-signale incertain sur ce point précis**
+(`_flag_derive_fort`, ligne 159 : « à confirmer »). Le programme SM, lui, ne
+fait aucun doute (`maths-sm.yaml:154`, `research-consensus`). Trois lectures
+possibles, à trancher par l'owner avec le PDF cadre SExp en main : (a) la
+limite SExp dérivée est trop stricte et doit être corrigée ; ~~(b) le tag
+filière de ce sujet 2022 est erroné~~ **— ÉCARTÉE, voir ci-dessous** ; (c) ce
+point du sujet 2022 déborde légitimement le programme SExp officiel (un cas
+de « sujet plus dur que son cadre », déjà vu ailleurs dans le corpus).
+
+> **(b) est écartée par l'arithmétique des barèmes, mesurée le 2026-08-27.**
+> Le docket s'appuyait sur la cohérence du tag entre les deux fichiers — un
+> argument faible, puisque deux fichiers peuvent porter la même erreur. Le
+> contrôle décisif est ailleurs : **les deux épreuves ne bouclent que d'une
+> seule façon.**
+>
+> Il existe un **autre** `bk-2022-n-x4`, tagué **SM**, 3,5 pts, dans
+> `structures-algebriques` — et le recensement confirme indépendamment que
+> l'exercice 4 de SM 2022 EST l'exercice de structures algébriques
+> (`CENSUS.md` §2, sous-section SM : analyse 10 · complexes 3,5 ·
+> arithmétique 3 · structures 3,5 = 20). Le créneau est donc pris.
+>
+> Si les deux fragments d'équations différentielles (1,0 + 1,5 = 2,5 pts)
+> étaient en réalité SM, alors **SExp 2022 tomberait à 17,50/20** avec un trou
+> de 2,50 que rien ne comble, et **SM 2022 monterait à 12,50** alors que sa
+> composition connue ne laisse aucune place pour 2,50 de plus. Aucune des deux
+> épreuves ne boucle sous cette hypothèse ; les deux bouclent sous le tag
+> actuel. Le tag SExp est juste.
+>
+> *(Au passage : c'est le phénomène de known-issues **K-7** en action — un
+> même `entry_id` porté par deux entrées de filières différentes, parce que
+> l'identifiant encode la position sur la copie et que deux filières ont
+> chacune leur exercice 4 la même année. Un lecteur pressé pourrait les
+> confondre ; ils ne se séparent que par `source.filiere`.)*
+>
+> **Ce que ça change pour l'owner** : l'arbitrage se réduit à (a) contre (c) —
+> la limite SExp dérivée est-elle trop stricte, ou ce sujet déborde-t-il
+> légitimement son cadre ? Le PDF du cadre SExp reste nécessaire ; la question
+> de l'erreur de saisie, elle, est close. La réponse ne change rien à la
+légitimité du rung pour SM (voir A5) — elle détermine seulement si
+`equations-differentielles` doit rester une leçon unique ou se
+différencier par filière sur ce point.
+
+**B2. `reactions-acido-basiques` (bk-2023-n-x1, q2.3) — formaliser un
+résultat de pH pour un mélange équimolaire, ou confirmer l'exclusion
+délibérée ?**
+La question demande $pH=(pK_{A1}+pK_{A2})/2$ pour un mélange équimolaire
+acide/base de deux couples. Le rung 8 de `reactions-acido-basiques` exclut
+*explicitement*, par choix de conception, tout calcul analytique de ce type
+(« Ce que ce chapitre ne couvre pas »). Le `reasoning` actuel re-dérive le
+résultat depuis les seules définitions de $K_{A1}$/$K_{A2}$ (R4) et la
+symétrie du tableau d'avancement (R7) — une synthèse légitime, pas une
+formule mémorisée hors-programme — mais reste, dans son ensemble, au-delà de
+ce que les rungs couvrent nommément. La SCOPE NOTE du fichier demande
+elle-même l'arbitrage : est-ce qu'un futur rung formalise ce type de mélange
+(promotion partielle d'un raisonnement de type Henderson-Hasselbalch), ou
+l'exclusion délibérée du R8 doit-elle rester telle quelle et cette entrée
+rester une synthèse ad hoc ?
+
+**B3. `nombres-complexes-2` — le birapport mérite-t-il un rung, ou les
+contournements de géométrie élémentaire restent-ils la doctrine ?**
+Trois entrées (2017 q2c, 2021 q3b, 2025 q II.2c) demandent de montrer que
+quatre points sont cocycliques. L'outil « manuel » standard est le
+birapport — absent des deux `lesson.md` sœurs, et **absent aussi du cadre
+SM extrait** (aucune occurrence de « birapport »/« cross-ratio » dans
+`maths-sm.yaml`, silence complet plutôt qu'exclusion explicite). Les trois
+entrées contournent l'outil avec de la géométrie élémentaire déjà enseignée
+(cercles de Thalès, parallélogramme par affixes, angle inscrit) — un choix
+d'auteur explicitement signalé comme tel, pas une couverture du birapport.
+Question à trancher : le silence du cadre extrait signifie-t-il que le
+birapport est hors-programme (les contournements sont la bonne réponse
+durable, → catégorie C), ou est-ce un simple angle mort de l'extraction
+(le birapport mérite un rung, → catégorie A) ? Le cadre SM étant encore au
+statut PROPOSITION — NON AUTORITATIVE, cette question ne peut pas se
+trancher depuis le dépôt seul.
+
+**Précédent contextuel (pas une nouvelle question d'arbitrage) — statut du
+produit vectoriel en filière SExp.** `geometrie-espace` l'enseigne sans
+ambiguïté (R3) et aucune SCOPE NOTE de banque ne le remet en cause : les deux
+lacunes réelles de cette notion (A7, A8) sont des généralisations du
+mécanisme R8/R9, pas un doute sur le produit vectoriel lui-même. Mais le
+cadre SExp extrait porte sa propre incertitude sur ce point
+(`maths-sexp.yaml:222` : « Son statut d'objet TESTÉ… est incertain. À
+trancher par l'humain ») et le même doute a déjà produit un P1 dans
+`docs/audits/content-correctness-docket-2026-07.md` (« produit vectoriel
+dans le programme SM »). Mentionné ici pour mémoire — precedent que ce type
+de question a déjà, une fois, atteint l'owner par un autre canal — mais ne
+requiert aucune action de ce docket.
+
+---
+
+## Catégorie C — Hors-corps assumé, ponté au point d'usage : correct tel quel
+
+| Notion hôte | Outil hors-corps | Sujets | Pourquoi c'est la bonne réponse en l'état |
+|---|---|---|---|
+| `arithmetique` | Petit théorème de Fermat | 7/8 sujets vérifiés | Déjà traité, dans `lesson.md` lui-même, par un rupture-gate dédié (`cp-r6-fermat`) juste avant `[[exercise:r-bac]]` — même discipline que la banque, précédent établi et cohérent |
+| `arithmetique` | Critère d'Euler | 2025 q1–3 | Entièrement re-dérivé dans le `reasoning` depuis Fermat + lemme d'Euclide (R6) — rien n'est admis sans démonstration, ce n'est pas un « outil manquant » mais une construction en règle |
+| `arithmetique` | Analogue du théorème des restes chinois | 2021 q6–7 | Construit entièrement à partir de R4 (Bézout) — extension directe, pas un import extérieur |
+| `fonction-exponentielle` | Théorèmes de Rolle et des accroissements finis (TAF) | 2019 (bk-2019-n-x4, filière **SM**) | Confirmé **spécifique SM** par le cadre (`maths-sexp.yaml:116` + `:303` : « PAS de Rolle/TAF » en SExp) — et la notion hôte naturelle (`derivabilite-etude-fonctions`) traite déjà Rolle/TAF exactement de la même façon dans son propre sommet r-bac : admis, ponté au point d'usage, jamais promu au rang de rung formel (R4 : « le théorème des accroissements finis, hors programme ici »). Convention maison cohérente sur deux notions — rien à corriger |
+| `noyaux-masse-energie` | Raccourci $E_{lib}=E_\ell(\text{produit})-\sum E_\ell(\text{réactifs})$ | 2023 q2 | Corollaire direct de R2 ($E_\ell=\Delta m\,c^2$) + R4, re-dérivé explicitement dans le `reasoning`, pas assumé sans preuve |
+| `chute-mouvements-plans` | Méthode d'Euler « à l'envers » (inverser l'équation différentielle pour retrouver $v$ à partir de $a$ donné) | 2023 q3c | Simple inversion de sens de la même récurrence d'Euler déjà enseignée (R8) — pas un outil neuf |
+| `chute-mouvements-plans` | Décomposition multi-segments d'une distance parcourue | 2021 q3 | Composition de deux formules déjà établies (R1 et R7), jamais un troisième outil |
+| `ondes-em-modulation` | Lecture de $F_p$/$f_s$/$S_m$/$U_0$ sur deux tensions d'entrée séparées plutôt que sur l'enveloppe de sortie | 2021 q2a/q2b | Même grandeurs, mêmes rungs (R2/R3), scénario de lecture différent — pas un nouvel outil |
+| `rlc-serie` | Généralisation $R\to R+r$ dans les formules d'amortissement/entretien (R5, R7) | 2020 q1b/q2a · 2018 q2b | Substitution triviale (la résistance propre de la bobine s'ajoute à la résistance externe dans la même loi des mailles) — pas un concept neuf |
+| `ondes-mecaniques-progressives` | Notion de milieu dispersif (renvoyée au chapitre suivant) | 2024 q1 (QCM) | Référence en avant assumée et délibérée dans la progression du corpus ; la question se résout par élimination des trois autres propositions, sans invoquer la définition manquante |
+| `systemes-oscillants` | Hauteur d'un pendule $z=\ell(1-\cos\theta)$ | 2023 q1 | Géométrie élémentaire du cercle, jamais un rung requis pour ce genre de fait |
+| `reactions-acido-basiques` | Calcul analytique $K_b=K_e/K_A$ pour recouper une lecture graphique de pH | 2018 q2 | R9 l'exclut *explicitement* par conception (« aucun calcul analytique du pH aux points remarquables ») et le `reasoning` de l'entrée ne s'en sert effectivement jamais — la donnée existe dans la source, la banque l'écarte à bon droit |
+
+---
+
+## Annexe — dépendances inter-notions (hors périmètre A/B/C)
+
+Plusieurs SCOPE NOTES documentent des **valeurs numériques** (pas des
+techniques) empruntées à un sujet-frère transcrit sous une autre notion :
+`rlc-serie` bk-2019-n-x3/bk-2020-n-x4 empruntent $C$, $L$, $r$ à
+`rc-charge`/`dipole-rl` (même sujet, partie différente) ; `rlc-serie`
+bk-2021-n-x4 dépend d'une entrée `rc-charge` 2021 pas encore convertie au
+moment de l'écriture. Ce ne sont pas des lacunes pédagogiques (le rung qui
+donne la *méthode* est bien présent dans chaque leçon) — seulement des
+provenances de données à surveiller si les fichiers sœurs sont réédités.
+Aucune action recommandée ici.
+
+`rlc-serie/bank.yaml` signale aussi que le sommet r-bac de sa propre notion
+(`exercises.yaml`, statut `unsourced`) a une portée obsolète au regard de
+deux sujets maintenant vérifiés (2018, 2020 — cas amorti) — candidats
+directs au remplacement prévu par l'ADR 0019. C'est une question de
+sourcing du sommet de leçon, pas une lacune de corps R : signalée pour
+mémoire, hors périmètre de ce docket.

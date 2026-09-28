@@ -1,0 +1,636 @@
+# In-lesson checkpoint items (summit-conversion campaign). Formative,
+# calm-core probes placed inside the lesson via [[checkpoint:<id>]] markers —
+# NOT the end bank (items.yaml). Same item schema, but NO score/streak/tally.
+# Wrong-answer feedback names the wrong PHILOSOPHICAL model, not just the
+# fact of being wrong. The end-bank ≥3-per-misconception floor lives in
+# items.yaml's coverage_summary and is NOT altered by these checkpoints (a
+# clone or a fresh item here is surfaced inline, never re-counted toward that
+# floor — house convention, see la-liberte/analyse-de-texte's checkpoints.yaml
+# headers).
+#
+# EVERY distractor carries a real `misconception:` id (no null tags) — the
+# task's stricter-than-house-default instruction, matched here to items.yaml.
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict              (in R0)      — commit-gate. Probes the master
+#                                              model: faux-dilemme-
+#                                              confirmation-rejet.
+#   cp-r1-empirisme-rationalisme (after R1) — rupture gate: empirisme-
+#                                              rationalisme-non-distingues
+#                                              (primary), rationalisme-
+#                                              rejette-observation (dual, the
+#                                              R1 "erreur à éviter" box).
+#   cp-r2-induction            (after R2)   — rupture gate: confirmation-
+#                                              egale-preuve (primary),
+#                                              absence-preuve-egale-preuve-
+#                                              contraire (dual, R2's box),
+#                                              necessite-causale-percue
+#                                              (triple, choice D — an
+#                                              under-floor model in
+#                                              items.yaml, 2/24, otherwise
+#                                              uncovered by any checkpoint).
+#   cp-r3-experimentation      (after R3)   — rupture gate: observation-
+#                                              passive-suffit (primary),
+#                                              critere-methodologique-mal-
+#                                              identifie (dual).
+#   cp-r4-falsifiabilite       (after R4)   — rupture gate: corroboration-
+#                                              egale-preuve-definitive
+#                                              (primary, R4's box), reinforced
+#                                              with confirmation-egale-preuve
+#                                              (dual).
+#   cp-r5-kant                 (after R5)   — rupture gate: kant-reduit-a-
+#                                              compromis (primary, R5's box),
+#                                              a-priori-confondu-avec-inne
+#                                              (dual).
+#   cp-r6-fallibilisme         (after R6)   — rupture gate: fallibilisme-
+#                                              confondu-relativisme (primary,
+#                                              R6's box — an under-floor model
+#                                              in items.yaml, 1/24), evidence-
+#                                              spontanee-fiable (dual, also
+#                                              under-floor, 2/24).
+#   cp-bac-coherentisme (before [[exercise:r-bac]]) — rupture gate: critere-
+#                                              scientifique-reduit-a-
+#                                              falsifiabilite — the ONE model
+#                                              in the inventory with ZERO
+#                                              items.yaml coverage (a
+#                                              genuinely new axis, see
+#                                              items.yaml's coverage_summary
+#                                              notes); primes the misconception
+#                                              right before the r-bac نص that
+#                                              turns on it.
+#
+# Length rebalance (recipe's philo addendum, mandatory): every stem below was
+# authored with a deliberately varied correct-answer length — never
+# systematically longest, and checked not to be systematically shortest
+# either. See the length table in the closing comment.
+
+notion: theorie-experience
+skill_code: philo_theorie_experience
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (right after the two spontaneous
+  #        answers are listed, before the reveal "Les deux réponses semblent
+  #        raisonnables..."). Turns "prends position... réponds en une
+  #        phrase" into a real MCQ commit. Probes the master model.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    skill_code: philo_theorie_experience
+    tags: [checkpoint, formative, misconception_driven, philo_theorie_experience, hook_commit]
+    primary_misconception: mc.philo.theorie_experience.faux-dilemme-confirmation-rejet
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |-
+      Avant de lire la suite : engage-toi. Laquelle de ces quatre façons de
+      juger l'expérience de grand-mère te semble la meilleure ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Quarante ans sans la moindre exception, c'est une preuve largement suffisante : on ne peut pas accumuler autant de confirmations concordantes et se tromper sur un point aussi simple."
+        correct: false
+        misconception: mc.philo.theorie_experience.faux-dilemme-confirmation-rejet
+        feedback: |-
+          Modèle détecté : choisir le camp de la confirmation totale pour
+          clore la question. Mais un rhume ordinaire guérit de lui-même en
+          quelques jours — les mêmes observations auraient eu lieu même si la
+          tisane n'avait strictement aucun effet.
+
+      - id: B
+        text: "Aucune des deux réponses, prise seule, ne suffit : la première ignore qu'un rhume guérit souvent seul, la seconde rendrait toute théorie non testée une pure spéculation — c'est cette tension que la leçon va construire."
+        correct: true
+        feedback: |-
+          Exact — et c'est le réflexe à garder pour toute la leçon : ni
+          l'accumulation de confirmations ni le rejet en bloc de toute
+          expérience non contrôlée ne suffit. Les positions qui suivent ne
+          trancheront pas en piochant un camp — elles construiront le
+          problème pièce par pièce.
+
+      - id: C
+        text: "L'expérience personnelle de grand-mère ne prouve rigoureusement rien : seule une expérience menée en laboratoire, dans des conditions contrôlées, aurait la moindre valeur de connaissance."
+        correct: false
+        misconception: mc.philo.theorie_experience.faux-dilemme-confirmation-rejet
+        feedback: |-
+          Modèle détecté : choisir le camp du rejet total pour clore la
+          question. Mais une théorie jamais confrontée à aucune expérience,
+          aussi rigoureuse soit-elle sur le papier, resterait une pure
+          spéculation, sans moyen de savoir si elle dit quoi que ce soit du
+          monde réel.
+
+      - id: D
+        text: "La vraie question n'est en réalité pas du tout philosophique : il faudrait simplement savoir si la tisane de grand-mère a bon goût et si elle coûte cher à préparer, et tout le reste ne mérite certainement pas qu'on s'y attarde davantage."
+        correct: false
+        misconception: mc.philo.theorie_experience.probleme-philosophique-reduit
+        feedback: |-
+          Modèle détecté : réduire une question générale (d'où vient la
+          connaissance ? l'observation peut-elle être neutre ?) à un détail
+          anecdotique sans rapport. Le problème que pose la scène est réel et
+          précis — la leçon va le construire pièce par pièce, pas le déclarer
+          sans objet.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-empirisme-rationalisme | placed AFTER R1
+  #        Probes: empirisme-rationalisme-non-distingues (primary),
+  #        rationalisme-rejette-observation (dual, choice C — R1's own
+  #        "erreur à éviter" box)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-empirisme-rationalisme
+    rung: "R1"
+    skill_code: philo_theorie_experience
+    tags: [checkpoint, formative, misconception_driven, philo_theorie_experience, hume, descartes]
+    primary_misconception: mc.philo.theorie_experience.empirisme-rationalisme-non-distingues
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |-
+      Un camarade résume ainsi le chapitre 2 : « L'empirisme dit qu'il faut tout
+      observer, le rationalisme dit qu'il ne faut jamais observer — il suffit
+      de choisir son camp. » Que répondre ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est une caricature des deux : le rationalisme n'interdit pas d'observer, il soutient seulement que l'observation ne suffit jamais seule pour certaines vérités, et doit être encadrée par la raison."
+        correct: true
+        feedback: |-
+          Exact — c'est exactement le point de vigilance du chapitre 2 : ne jamais
+          réduire l'opposition à « il faut observer » contre « il ne faut
+          jamais observer ». Le rationalisme encadre l'observation, il ne la
+          bannit pas.
+
+      - id: B
+        text: "Il a entièrement raison : c'est exactement ainsi que le chapitre 2 oppose les deux doctrines l'une à l'autre, et il suffit donc de choisir résolument l'un des deux camps pour trancher, une fois pour toutes, la question de la connaissance."
+        correct: false
+        misconception: mc.philo.theorie_experience.empirisme-rationalisme-non-distingues
+        feedback: |-
+          Modèle détecté : transformer une question ouverte (source de la
+          connaissance, articulation possible des deux, comme le chapitre 6 le montrera)
+          en un choix binaire forcé entre deux camps figés.
+
+      - id: C
+        text: "Il a presque raison, sauf sur un détail important : c'est en réalité l'inverse qui est vrai, c'est l'empirisme qui interdit toute observation directe, et le rationalisme qui l'exige au contraire à chaque instant du raisonnement."
+        correct: false
+        misconception: mc.philo.theorie_experience.rationalisme-rejette-observation
+        feedback: |-
+          Modèle détecté, inversé : la caricature reste une caricature même
+          en échangeant les rôles. Ni l'empirisme ni le rationalisme ne
+          « interdit » ou « exige » l'observation de façon absolue — le chapitre 2 est
+          explicite sur ce point.
+
+      - id: D
+        text: "Peu importe au fond : Hume et Descartes défendent en réalité exactement la même position sur la source de la connaissance, et seul leur vocabulaire personnel diffère d'un auteur à l'autre, sans aucune conséquence philosophique réelle."
+        correct: false
+        misconception: mc.philo.theorie_experience.empirisme-rationalisme-non-distingues
+        feedback: |-
+          Modèle détecté : dissoudre un désaccord réel dans une différence de
+          vocabulaire. Hume ramène toute idée à des impressions sensibles ;
+          Descartes admet des vérités (cogito, cire) accessibles à la raison
+          seule — deux réponses rivales, pas deux mots pour la même chose.
+
+    correct_feedback: |-
+      Le rationalisme ne rejette pas l'observation en bloc — il soutient
+      seulement qu'elle ne suffit jamais seule à établir certaines vérités,
+      et qu'elle doit être encadrée par la raison.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-induction | placed AFTER R2
+  #        Probes: confirmation-egale-preuve (primary), absence-preuve-
+  #        egale-preuve-contraire (dual, choice C — R2's own box)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-induction
+    rung: "R2"
+    skill_code: philo_theorie_experience
+    tags: [checkpoint, formative, misconception_driven, philo_theorie_experience, hume, induction]
+    primary_misconception: mc.philo.theorie_experience.confirmation-egale-preuve
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |-
+      Un élève affirme : « J'ai révisé exactement de la même façon avant mes
+      cinq dernières interros, et j'ai eu une bonne note à chaque fois — donc
+      cette méthode marche, c'est prouvé. » Que répondrait Hume ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Que cinq confirmations sans exception suffisent déjà largement à établir une preuve rigoureuse et définitivement acquise, valable non seulement pour la prochaine interrogation mais pour toutes celles qui suivront durant l'année entière."
+        correct: false
+        misconception: mc.philo.theorie_experience.confirmation-egale-preuve
+        feedback: |-
+          Modèle détecté : traiter un petit nombre de confirmations comme une
+          preuve logique. Voir mille cygnes blancs ne prouve pas que tous les
+          cygnes le sont ; cinq bonnes notes ne prouvent pas davantage que la
+          méthode fonctionnera nécessairement demain.
+
+      - id: B
+        text: "Que cette suite de succès établit au mieux une conjonction constante entre la méthode et la bonne note, jamais une preuve logique : rien n'exclut, par exemple, que le contenu des interros ait simplement été facile à chaque fois."
+        correct: true
+        feedback: |-
+          Exact. Exactement comme la tisane de grand-mère : une conjonction
+          constante répétée n'est jamais, à elle seule, une preuve que le
+          premier événement cause le second — une explication concurrente
+          reste toujours possible.
+
+      - id: C
+        text: "Que puisque cinq cas ne suffisent jamais à prouver quoi que ce soit avec certitude, il faut au contraire en conclure que cette méthode de révision est en réalité inefficace."
+        correct: false
+        misconception: mc.philo.theorie_experience.absence-preuve-egale-preuve-contraire
+        feedback: |-
+          Modèle détecté : confondre « pas prouvé » et « prouvé faux ».
+          L'absence de preuve définitive en faveur d'une méthode ne prouve
+          pas davantage son inefficacité — c'est l'erreur inverse, signalée
+          explicitement dans l'encadré du chapitre 3.
+
+      - id: D
+        text: "Que le lien entre la méthode de révision et la bonne note est directement perceptible et garanti, exactement comme on perçoit une couleur, ce qui suffit à établir avec certitude un rapport de nécessité entre les deux plutôt qu'une simple coïncidence répétée."
+        correct: false
+        misconception: mc.philo.theorie_experience.necessite-causale-percue
+        feedback: |-
+          Modèle détecté : croire que le lien de nécessité lui-même est
+          directement perçu. Exactement comme pour la boule de billard, les
+          sens ne perçoivent ici qu'une conjonction constante — méthode puis
+          bonne note — jamais la nécessité qui ferait que l'une doit
+          produire l'autre.
+
+    correct_feedback: |-
+      Le problème de l'induction ne porte pas sur le nombre de cas observés,
+      mais sur ce que ce nombre, aussi grand soit-il, peut logiquement
+      garantir : rien de plus qu'une conjonction constante, jamais une preuve.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r3-experimentation | placed AFTER R3
+  #        Probes: observation-passive-suffit (primary), critere-
+  #        methodologique-mal-identifie (dual, choice C)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-experimentation
+    rung: "R3"
+    skill_code: philo_theorie_experience
+    tags: [checkpoint, formative, misconception_driven, philo_theorie_experience, claude_bernard]
+    primary_misconception: mc.philo.theorie_experience.observation-passive-suffit
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |-
+      Un élève veut « tester scientifiquement » si écouter de la musique
+      aide à se concentrer. Il décide d'écouter de la musique chaque soir en
+      révisant, pendant un mois, et de noter s'il se sent concentré. Que
+      manque-t-il à sa démarche, du point de vue de Claude Bernard ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Un groupe de comparaison sans musique, dans des conditions par ailleurs identiques, et une prédiction précise de ce que l'hypothèse impliquerait : sans quoi rien ne permet de savoir si c'est la musique, ou autre chose, qui explique le résultat ressenti."
+        correct: true
+        feedback: |-
+          Exact. Sans comparaison ni hypothèse précise formulée à l'avance,
+          cette démarche reste une simple accumulation d'observations
+          favorables — exactement le problème que le chapitre 3 a déjà mis en évidence,
+          pas encore une expérimentation au sens de Bernard.
+
+      - id: B
+        text: "Rien : répéter l'observation chaque soir pendant tout un mois entier suffit déjà bien largement à établir, sans le moindre doute possible, une conclusion scientifique parfaitement fiable et tout à fait définitive, sans qu'aucune comparaison ne soit jamais nécessaire."
+        correct: false
+        misconception: mc.philo.theorie_experience.observation-passive-suffit
+        feedback: |-
+          Modèle détecté : confondre répétition et expérimentation. Bernard
+          est explicite : sans hypothèse et sans dispositif de comparaison,
+          l'observation la plus attentive et la plus répétée ne mène nulle
+          part.
+
+      - id: C
+        text: "Il lui manque seulement d'être un chercheur professionnel reconnu : la même démarche, menée par un scientifique diplômé plutôt que par un élève, serait déjà pleinement scientifique telle quelle."
+        correct: false
+        misconception: mc.philo.theorie_experience.critere-methodologique-mal-identifie
+        feedback: |-
+          Modèle détecté : le critère de Bernard n'est pas social ou
+          institutionnel (qui mène l'expérience), mais méthodologique — une
+          hypothèse précise exposée à un dispositif de comparaison, quel que
+          soit le statut de qui la mène.
+
+      - id: D
+        text: "Rien : il vaut mieux qu'il n'ait aucune idée précise de ce qu'il cherche à prouver, pour ne pas influencer, par ses préjugés, ce qu'il va ressentir chaque soir."
+        correct: false
+        misconception: mc.philo.theorie_experience.observation-passive-suffit
+        feedback: |-
+          Modèle détecté, exact inverse de la thèse de Bernard : « celui qui
+          ne sait pas ce qu'il cherche ne comprend pas ce qu'il trouve » —
+          sans idée directrice, l'observation la plus attentive ne devient
+          jamais une découverte.
+
+    correct_feedback: |-
+      Une expérience véritable suppose toujours une hypothèse précise et un
+      groupe de comparaison — sans ces deux éléments, même un mois
+      d'observation quotidienne reste une accumulation, pas une
+      expérimentation.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r4-falsifiabilite | placed AFTER R4
+  #        Probes: corroboration-egale-preuve-definitive (primary — R4's own
+  #        box, and an under-floor-adjacent model in items.yaml, 5/24),
+  #        confirmation-egale-preuve (dual, choice D)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-falsifiabilite
+    rung: "R4"
+    skill_code: philo_theorie_experience
+    tags: [checkpoint, formative, misconception_driven, philo_theorie_experience, popper]
+    primary_misconception: mc.philo.theorie_experience.corroboration-egale-preuve-definitive
+    item_source: original
+    lesson_placement: after_R4
+
+    stem: |-
+      L'hypothèse de grand-mère, reformulée de façon falsifiable (« la
+      tisane raccourcit la durée du rhume, comparée à l'absence de
+      traitement »), est testée selon la méthode de Bernard, et résiste au
+      test : le groupe avec tisane guérit significativement plus vite. Que
+      peut-on en conclure ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Que l'hypothèse sort corroborée, renforcée par ce test sérieusement construit pour la mettre en défaut — sans jamais devenir pour autant une vérité absolument certaine, à l'abri de toute remise en cause future."
+        correct: true
+        feedback: |-
+          Exact. Corroborée n'est pas prouvée : résister à un test rigoureux
+          renforce l'hypothèse sans jamais la rendre définitivement certaine
+          — c'est exactement la distinction posée par l'encadré du chapitre 5.
+
+      - id: B
+        text: "Que l'hypothèse est désormais prouvée de façon absolument et définitivement certaine, et qu'aucune expérience future, aussi rigoureuse soit-elle, ne pourrait plus jamais venir la remettre en cause d'aucune manière."
+        correct: false
+        misconception: mc.philo.theorie_experience.corroboration-egale-preuve-definitive
+        feedback: |-
+          Modèle détecté : confondre corroboration et preuve définitive —
+          l'erreur que le chapitre 5 signale explicitement. Aucune hypothèse n'atteint
+          jamais une certitude absolue de cette façon.
+
+      - id: C
+        text: "Que ce résultat ne prouve en réalité strictement rien du tout, puisque avoir résisté à un seul test sérieusement construit n'est jamais, au fond, qu'un heureux hasard, sans plus de valeur qu'une simple conviction jamais testée."
+        correct: false
+        misconception: mc.philo.theorie_experience.corroboration-egale-preuve-definitive
+        feedback: |-
+          Modèle détecté, en sens inverse : dévaluer à tort la corroboration.
+          Résister à un test sérieusement construit pour réfuter l'hypothèse
+          constitue un renforcement réel, très différent d'une conviction —
+          comme celle de grand-mère — qui n'a jamais couru ce risque.
+
+      - id: D
+        text: "Que ce résultat équivaut très exactement à quarante années d'observations non comparées de grand-mère, puisque dans les deux cas, sans aucune exception, la tisane a fini par être suivie d'une authentique guérison."
+        correct: false
+        misconception: mc.philo.theorie_experience.confirmation-egale-preuve
+        feedback: |-
+          Modèle détecté : confondre le sujet traité (la même tisane) et la
+          structure logique de la démarche. Seul le protocole de Bernard
+          expose l'hypothèse à un résultat qui, s'il avait eu lieu, l'aurait
+          réfutée — l'observation brute de grand-mère ne courait aucun
+          risque de ce genre.
+
+    correct_feedback: |-
+      Une hypothèse falsifiable qui résiste à un test sérieux sort
+      corroborée — renforcée, jamais prouvée avec une certitude définitive.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-r5-kant | placed AFTER R5
+  #        Probes: kant-reduit-a-compromis (primary — R5's own box),
+  #        a-priori-confondu-avec-inne (dual, choice C)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-kant
+    rung: "R5"
+    skill_code: philo_theorie_experience
+    tags: [checkpoint, formative, misconception_driven, philo_theorie_experience, kant]
+    primary_misconception: mc.philo.theorie_experience.kant-reduit-a-compromis
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |-
+      Un élève conclut, après avoir lu le chapitre 6 : « Kant, en fait, c'est juste un
+      peu d'empirisme mélangé à un peu de rationalisme, à parts égales. »
+      Que répondre ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est inexact : Kant ne mélange pas deux thèses, il montre que la sensibilité et l'entendement doivent nécessairement collaborer, chacune apportant ce que l'autre ne peut fournir seule — une position à part entière, pas un compromis."
+        correct: true
+        feedback: |-
+          Exact — c'est précisément ce que l'encadré du chapitre 6 met en garde :
+          Kant ne mélange pas un peu des deux thèses, il montre pourquoi
+          aucune des deux, seule, ne rend compte de la connaissance.
+
+      - id: B
+        text: "Il a raison : la position de Kant n'est rien de plus qu'un dosage, un peu d'expérience et un peu de raison, sans aucune nécessité logique à leur collaboration."
+        correct: false
+        misconception: mc.philo.theorie_experience.kant-reduit-a-compromis
+        feedback: |-
+          Modèle détecté : réduire une collaboration nécessaire (sans
+          sensibilité, aucun objet donné ; sans entendement, aucun objet
+          pensé) à un simple dosage arbitraire entre deux ingrédients.
+
+      - id: C
+        text: "Pas tout à fait : Kant est surtout rationaliste, puisque ses concepts a priori sont des idées innées qui contiennent déjà, avant toute expérience, un savoir déterminé sur le monde."
+        correct: false
+        misconception: mc.philo.theorie_experience.a-priori-confondu-avec-inne
+        feedback: |-
+          Modèle détecté : confondre l'a priori kantien — une forme vide de
+          tout contenu propre — avec une idée innée qui porterait déjà, en
+          elle-même, un contenu déterminé sur le monde.
+
+      - id: D
+        text: "Il a raison, à un détail près qui change tout : Kant penche en réalité beaucoup plus du côté de l'empirisme que du rationalisme, puisque toute connaissance, selon lui, dérive en dernière analyse des seules données sensibles reçues passivement."
+        correct: false
+        misconception: mc.philo.theorie_experience.kant-reduit-a-compromis
+        feedback: |-
+          Modèle détecté, penchant vers l'autre camp cette fois : « des
+          intuitions sans concepts sont aveugles » dit précisément le
+          contraire — la sensibilité seule, sans les concepts de
+          l'entendement, ne produit aucune connaissance.
+
+    correct_feedback: |-
+      Kant ne mélange pas les deux thèses : il montre pourquoi ni l'une ni
+      l'autre, séparément, ne suffit à rendre compte de la connaissance — une
+      collaboration nécessaire, pas un compromis à parts égales.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-6 | id: cp-r6-fallibilisme | placed AFTER R6
+  #        Probes: fallibilisme-confondu-relativisme (primary — R6's own box,
+  #        an under-floor model in items.yaml, 1/24), evidence-spontanee-
+  #        fiable (dual, choice C — also under-floor, 2/24)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-fallibilisme
+    rung: "R6"
+    skill_code: philo_theorie_experience
+    tags: [checkpoint, formative, misconception_driven, philo_theorie_experience, bachelard, fallibilisme]
+    primary_misconception: mc.philo.theorie_experience.fallibilisme-confondu-relativisme
+    item_source: original
+    lesson_placement: after_R6
+
+    stem: |-
+      Un élève conclut la leçon ainsi : « Puisqu'aucune théorie n'est jamais
+      prouvée avec une certitude absolue, la conviction de grand-mère et
+      l'hypothèse testée par Bernard se valent finalement autant l'une que
+      l'autre. » Que répondre ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est confondre le fallibilisme (aucune théorie n'est jamais absolument certaine) et le relativisme (toute conviction en vaudrait une autre) : seule l'hypothèse testée a été réellement exposée au risque d'être réfutée."
+        correct: true
+        feedback: |-
+          Exact — c'est exactement la clôture du chapitre 7 : le fallibilisme et le
+          relativisme sont deux thèses distinctes, et la différence entre
+          grand-mère et Bernard tient à avoir été, ou non, exposé au risque
+          de la réfutation.
+
+      - id: B
+        text: "Il a entièrement raison : dès lors qu'aucune certitude absolue n'existe nulle part, plus aucune méthode ne vaut mieux qu'une autre, et toute hiérarchie entre elles devient arbitraire."
+        correct: false
+        misconception: mc.philo.theorie_experience.fallibilisme-confondu-relativisme
+        feedback: |-
+          Modèle détecté : c'est exactement la confusion que le chapitre 7 met en
+          garde. L'absence de certitude absolue (le fallibilisme) n'implique
+          jamais que toute conviction se vaille (le relativisme).
+
+      - id: C
+        text: "Il a tort, mais pour une autre raison : la certitude immédiate de grand-mère, répétée quarante ans durant sans la moindre exception, est justement le meilleur point de départ possible pour construire une connaissance fiable."
+        correct: false
+        misconception: mc.philo.theorie_experience.evidence-spontanee-fiable
+        feedback: |-
+          Modèle détecté : traiter une certitude spontanée, jamais
+          interrogée, comme un point de départ fiable. Pour Bachelard, c'est
+          l'inverse — la certitude la plus immédiate est précisément le
+          genre d'évidence qu'il faut rompre pour progresser.
+
+      - id: D
+        text: "Il a raison, et c'est même précisément la leçon que Popper voulait enseigner : puisque rien n'est jamais prouvé, mieux vaut ne faire confiance à aucune théorie plutôt que d'en préférer une à une autre."
+        correct: false
+        misconception: mc.philo.theorie_experience.fallibilisme-confondu-relativisme
+        feedback: |-
+          Modèle détecté, attribué à tort à Popper : le fallibilisme de
+          Popper (chapitre 5 ; chapitres 8 et 9 de « La vérité ») ne dit jamais qu'il faut renoncer à
+          hiérarchiser les théories — il distingue justement celles qui ont
+          couru le risque de la réfutation de celles qui ne l'ont jamais
+          couru.
+
+    correct_feedback: |-
+      La conviction de grand-mère et l'hypothèse testée par Bernard ne sont
+      pas logées à la même enseigne : l'une n'a jamais été exposée au risque
+      d'être réfutée, l'autre l'a été et y a, éventuellement, résisté — cette
+      différence, précisément, sépare une connaissance qui progresse d'une
+      conviction qui se répète.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-7 | id: cp-bac-coherentisme | placed BEFORE [[exercise:r-bac]]
+  #        Probes: critere-scientifique-reduit-a-falsifiabilite — the ONE
+  #        model with ZERO items.yaml coverage (see coverage_summary notes);
+  #        primes it right before the نص text that turns on this exact point.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-bac-coherentisme
+    rung: "R7"
+    skill_code: philo_theorie_experience
+    tags: [checkpoint, formative, misconception_driven, philo_theorie_experience, bac_style, coherentisme]
+    primary_misconception: mc.philo.theorie_experience.critere-scientifique-reduit-a-falsifiabilite
+    item_source: original
+    lesson_placement: before_bac
+
+    stem: |-
+      Le texte que tu vas lire répond à la question « qu'est-ce qui rend une
+      théorie scientifique ? » — mais PAS en invoquant la falsifiabilité de
+      Popper (chapitre 5). Il défend un critère différent : la cohérence entre les
+      composantes d'une théorie, et il va jusqu'à nier qu'une « expérience
+      cruciale » puisse jamais exister. Avant de le lire : laquelle de ces
+      formulations correspond le mieux à ce que tu dois en attendre ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Un texte qui affirme qu'une théorie vaut d'abord par sa cohérence interne, pas par son exposition au risque d'être réfutée par l'expérience — une position différente de celle de Popper, qu'il ne faut en aucun cas prendre pour une redite et qu'il faudra confronter aux chapitres 4 et 5."
+        correct: true
+        feedback: |-
+          Exact — c'est très exactement la position que tu vas lire : le
+          critère de vérité n'est pas l'expérience, mais la cohérence entre
+          les composantes de la théorie. Prépare-toi à la mettre en tension
+          avec Bernard et Popper, pas à y retrouver leur thèse sous un autre
+          nom.
+
+      - id: B
+        text: "Un texte qui, comme n'importe quel texte philosophique traitant du caractère scientifique d'une théorie, ne peut jamais faire autre chose que redire, sous un habillage seulement différent, le critère de falsifiabilité de Popper déjà construit en détail au chapitre 5."
+        correct: false
+        misconception: mc.philo.theorie_experience.critere-scientifique-reduit-a-falsifiabilite
+        feedback: |-
+          Modèle détecté : supposer que la falsifiabilité est le seul
+          critère concevable du caractère scientifique. Le texte que tu vas
+          lire défend au contraire un critère de cohérence, indépendant de
+          l'exposition au risque de la réfutation expérimentale.
+
+      - id: C
+        text: "Un texte qui, en niant l'existence même de l'expérience cruciale, ne fait au fond rien d'autre que formuler autrement l'idée popperienne selon laquelle aucune théorie n'est jamais prouvée de façon absolument et définitivement certaine."
+        correct: false
+        misconception: mc.philo.theorie_experience.critere-scientifique-reduit-a-falsifiabilite
+        feedback: |-
+          Modèle détecté, plus discret : le texte va plus loin que le
+          fallibilisme de Popper (« aucune théorie n'est jamais prouvée
+          définitivement ») — il nie que l'expérience soit même le critère
+          pertinent, ce que Popper, lui, ne nie jamais.
+
+      - id: D
+        text: "Un texte qui, cherchant lui aussi un critère du caractère scientifique d'une théorie, va nécessairement finir par proposer une version augmentée, élargie ou corrigée de la falsifiabilité, puisqu'aucune autre option ne serait seulement concevable en épistémologie des sciences contemporaine."
+        correct: false
+        misconception: mc.philo.theorie_experience.critere-scientifique-reduit-a-falsifiabilite
+        feedback: |-
+          Modèle détecté : fermer par avance l'espace des positions
+          possibles. La leçon elle-même a distingué plusieurs critères
+          rivaux (l'expérience selon Bernard, la falsifiabilité selon
+          Popper) — un texte peut légitimement en proposer un troisième.
+
+    correct_feedback: |-
+      Retiens ceci avant de lire le texte : un critère du caractère
+      scientifique n'est pas nécessairement la falsifiabilité. Vérifie, en le
+      lisant, comment ce texte construit un critère rival — et demande-toi ce
+      que le chapitre 4 (Bernard) et le chapitre 5 (Popper) auraient à lui objecter.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# CHECKPOINT COVERAGE NOTE
+#
+# These 8 items do NOT alter the end-bank coverage floor in items.yaml (house
+# convention — see la-liberte/analyse-de-texte's checkpoints.yaml). They
+# exist to give every student, including the 6 models THEN under the floor,
+# in-lesson exposure regardless of the item-bank gap items.yaml's
+# coverage_summary flagged AT THE TIME.
+#
+# RE-MESURÉ le 2026-09-20, depuis les étiquettes `misconception:` brutes,
+# au niveau ITEM. Les dénominateurs « /24 » sont MORTS : la passe du
+# 2026-09-05 (THEXP-25 à THEXP-29) a porté le banc à 29 items. AUCUNE des
+# six familles n'est encore sous le plancher ; `floor_met: true` dit vrai.
+# L'ancien chiffre reste parce qu'il explique le placement de chaque sonde.
+#
+# DEUX RENVOIS MORTS retirés d'ici : (1) `coverage_summary` n'a PAS de clé
+# `note`/`notes` — ses clés sont method, per_misconception, total_items,
+# floor, floor_met, ramp_coverage, honest_state ; le champ à lire est
+# `honest_state`. (2) items.yaml ne porte AUCUNE note sur un « bug
+# distracteurs-vs-items » : son `method` énonce la convention sans jamais
+# mentionner de bug corrigé. Ce renvoi n'avait pas de cible.
+#   rationalisme-rejette-observation       — 1/24 ALORS → 4 items AUJOURD'HUI, +1 here (cp-r1-empirisme-rationalisme)
+#   fallibilisme-confondu-relativisme      — 1/24 ALORS → 4, +2 here (cp-r6-fallibilisme)
+#   probleme-philosophique-reduit          — 1/24 ALORS → 3, +1 here (cp-r0-predict)
+#   necessite-causale-percue               — 2/24 ALORS → 3, +1 here (cp-r2-induction)
+#   evidence-spontanee-fiable              — 1/24 ALORS → 4, +1 here (cp-r6-fallibilisme)
+#   critere-scientifique-reduit-a-falsifiabilite — 0/24 ALORS → 3, +3 here (cp-bac-coherentisme)
+#
+# LENGTH REBALANCE (recipe's philo addendum, mandatory — cited ~97% historical
+# tell): correct-answer character length vs. the three distractors, per item
+# (verified programmatically, not eyeballed — the scratch script used then is
+# gone; the permanent instrument is web/scripts/indice-longueur.mjs, qui mesure
+# la longueur RENDUE et garde le terrain repris par un cliquet en CI); the checkpoints below were authored with a deliberately varied
+# correct-answer length distribution (shortest / middle / longest all
+# represented across the 8 items, no monotonic "correct = longest" pattern).
+# ──────────────────────────────────────────────────────────────────────────────

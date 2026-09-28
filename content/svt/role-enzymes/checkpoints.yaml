@@ -1,0 +1,446 @@
+notion: role-enzymes
+skill_code: svt_role_enzymes
+
+# ──────────────────────────────────────────────────────────────────────────────
+# POINTS D'ARRÊT DANS LA LEÇON (campagne de conversion du sommet — SVT)
+#
+# Sondes formatives posées DANS la leçon, pas le banc de fin. Aucun score,
+# aucune série, aucun décompte ; le plancher du banc n'est pas modifié.
+#
+# Placement (identifiants = marqueurs [[checkpoint:…]] de lesson.md) :
+#   cp-r0-predict       (DANS le chapitre 1) — sucre caché ou transformation ?
+#   cp-r1-non-consommee (après le chapitre 2) — le catalyseur se retrouve intact.
+#   cp-r2-site-actif    (après le chapitre 3) — le site actif se libère.
+#   cp-r3-double-specificite (après le chapitre 4) — deux questions, pas une.
+#   cp-r4-optimum       (après le chapitre 5) — l'optimum, puis la dénaturation.
+#   cp-r5-saturation    (après le chapitre 6) — pourquoi le palier.
+#   cp-r6-digestion     (après le chapitre 7) — chaque enzyme dans son milieu.
+#
+# CHAQUE distracteur porte un identifiant réel de l'inventaire de items.yaml.
+# Aucune erreur nouvelle n'est déclarée : les sondes réutilisent les six modèles
+# existants, pour ne pas rouvrir de dette de couverture.
+#
+# (2026-09-19 : cette garde disait « SVT/PC ». Le cadre déclare la variante
+# PC de la SVT « DISTINCTE — non extraite » (docs/cadre/curriculum/svt.yaml,
+# bloc `variante_pc`) : rien dans le dépôt ne permet d'affirmer que ce
+# périmètre vaut pour la filière PC. Restreint à la filière SVT ; à rouvrir
+# quand la variante sera extraite.)
+# Garde de périmètre : 2ème Bac, filière SVT — nature et rôle des enzymes, site actif
+# et complexe enzyme-substrat, double spécificité, effet de la température, du
+# pH et des concentrations, enzymes digestives. La régulation allostérique et
+# la cinétique de Michaelis ne sont pas au programme et n'apparaissent pas.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: svt_role_enzymes
+    tags: [checkpoint, formative, misconception_driven, svt_role_enzymes, hook_commit]
+    primary_misconception: mc.svt.svt_role_enzymes.effet-attribue-au-substrat
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Le pain devient sucré à mesure que tu le mâches, alors que tu n'as rien
+      ajouté. **Engage-toi avant de lire la suite :** d'où vient ce goût ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Du sucre que le pain contenait déjà, simplement libéré par le broyage : mâcher casse les morceaux et met enfin ce sucre au contact de la langue."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.effet-attribue-au-substrat
+        feedback: |
+          Modèle détecté : attribuer au substrat, ou au traitement mécanique, un
+          effet qui vient d'ailleurs. Le test qui tranche est simple : du pain
+          broyé sans salive ne devient jamais sucré. Quelque chose a donc été TRANSFORMÉ pendant que tu mâchais, et
+          ce quelque chose vient de la salive.
+
+      - id: B
+        text: "D'une transformation chimique : une molécule de la salive découpe l'amidon du pain, qui n'a aucun goût sucré, en molécules plus petites qui, elles, en ont un."
+        correct: true
+        feedback: |
+          C'est cela. L'amidon est une longue chaîne d'unités de glucose, et il
+          est sans saveur ; l'amylase salivaire le coupe en maltose, qui est
+          sucré. Toute la leçon part de là et pose deux questions : comment
+          cette molécule peut-elle découper autant d'amidon sans s'épuiser, et
+          comment fait-elle pour ne couper que l'amidon ?
+
+      - id: C
+        text: "De la chaleur de la bouche, qui rompt progressivement les liaisons de l'amidon : une élévation de température accélère toujours une transformation chimique, quelle qu'elle soit."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.optimum-ignore
+        feedback: |
+          Modèle détecté : faire de la température le moteur de la réaction.
+          Elle intervient bien, mais pas ainsi — tu verras au chapitre 5 qu'une
+          enzyme a un optimum, au-delà duquel son activité s'effondre au lieu
+          d'augmenter. Et à 37 °C, sans salive, l'amidon ne se coupe pas tout
+          seul à une vitesse mesurable.
+
+      - id: D
+        text: "D'une molécule de la salive qui se transforme elle-même en sucre au contact du pain, et qui s'épuise donc à mesure que tu continues de mâcher."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.enzyme-consommee-par-la-reaction
+        feedback: |
+          Modèle détecté : faire de l'agent de la transformation l'un de ses
+          ingrédients. Le sucre produit vient de l'amidon du pain, pas de la
+          salive ; et la molécule salivaire en cause se retrouve intacte à la
+          fin. C'est même la propriété qui la définit — le chapitre 2 la met à
+          l'épreuve.
+
+  - id: cp-r1-non-consommee
+    rung: "R1"
+    habilete: raisonnement
+    skill_code: svt_role_enzymes
+    tags: [checkpoint, formative, misconception_driven, svt_role_enzymes]
+    primary_misconception: mc.svt.svt_role_enzymes.enzyme-consommee-par-la-reaction
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |
+      On place une petite quantité d'amylase dans un grand volume de solution
+      d'amidon. L'hydrolyse se poursuit jusqu'à ce que tout l'amidon soit
+      transformé. Que peut-on dire de l'amylase à la fin de l'expérience ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Elle a été consommée au fur et à mesure : c'est justement l'épuisement du stock d'amylase qui met fin à la réaction quand tout l'amidon a disparu."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.enzyme-consommee-par-la-reaction
+        feedback: |
+          Modèle détecté : compter l'enzyme parmi les réactifs. Le fait
+          expérimental la contredit : une quantité minuscule d'amylase
+          transforme un très grand volume d'amidon, ce qui serait impossible si
+          chaque molécule d'enzyme était détruite après une coupure. La réaction
+          s'arrête parce que le SUBSTRAT est épuisé, pas l'enzyme.
+
+      - id: B
+        text: "On la retrouve en même quantité qu'au départ, chimiquement inchangée : elle peut recommencer aussitôt si l'on rajoute de l'amidon dans le tube."
+        correct: true
+        feedback: |
+          Oui — c'est la définition même d'un catalyseur, et la réponse à la
+          première question du chapitre 1. Une molécule d'amylase enchaîne les
+          cycles : elle fixe un fragment d'amidon, le coupe, libère les
+          produits, et se retrouve disponible. C'est ce qui explique qu'il en
+          faille si peu.
+
+      - id: C
+        text: "Elle est encore présente mais devenue inefficace : son site actif reste occupé par les produits de la réaction, qui ne s'en détachent plus."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.enzyme-usee-ou-modifiee-par-la-catalyse
+        feedback: |
+          Modèle détecté : imaginer une enzyme qui s'use ou se bloque en
+          travaillant. La libération des produits est une étape à part entière
+          du cycle (tu la verras détaillée au chapitre 3) : le site actif se
+          vide et redevient disponible. Sans cette libération, une enzyme ne
+          servirait qu'une fois.
+
+      - id: D
+        text: "Elle s'est transformée en maltose avec l'amidon : le produit final contient donc à la fois le substrat coupé et l'enzyme qui l'a coupé."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.enzyme-consommee-par-la-reaction
+        feedback: |
+          Modèle détecté : la même erreur, poussée jusqu'au bout — l'enzyme
+          devenue produit. Une enzyme est une protéine, le maltose un glucide :
+          l'une ne peut pas se convertir en l'autre. Tout le maltose recueilli
+          provient de l'amidon.
+
+  - id: cp-r2-site-actif
+    rung: "R2"
+    habilete: comprehension
+    skill_code: svt_role_enzymes
+    tags: [checkpoint, formative, misconception_driven, svt_role_enzymes]
+    primary_misconception: mc.svt.svt_role_enzymes.enzyme-usee-ou-modifiee-par-la-catalyse
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |
+      Le complexe enzyme-substrat se forme, la réaction a lieu, les produits
+      sont libérés. Dans quel état se trouve l'enzyme juste après cette
+      libération ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Son site actif est de nouveau libre et sa forme est celle du départ : elle peut fixer une nouvelle molécule de substrat immédiatement."
+        correct: true
+        feedback: |
+          Exact — et c'est ce qui boucle le cycle. Fixation, transformation,
+          libération, retour à l'état initial : la même molécule d'enzyme
+          recommence des milliers de fois. C'est la traduction, à l'échelle
+          moléculaire, du « jamais consommé » du chapitre 2.
+
+      - id: B
+        text: "Sa structure a été durablement modifiée par la transformation qu'elle vient de catalyser, et son efficacité baisse un peu à chaque cycle accompli."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.enzyme-usee-ou-modifiee-par-la-catalyse
+        feedback: |
+          Modèle détecté : l'enzyme qui s'use. Rien, dans le cycle, ne modifie
+          durablement l'enzyme : la seule déformation en jeu est temporaire, le
+          temps de l'ajustement au substrat, et elle est réversible. Si
+          l'efficacité baissait à chaque cycle, une trace d'amylase ne pourrait
+          jamais hydrolyser un grand volume d'amidon.
+
+      - id: C
+        text: "Elle reste liée aux produits qu'elle vient de former, ce qui l'immobilise définitivement : il faut une autre molécule d'enzyme pour le cycle suivant."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.enzyme-usee-ou-modifiee-par-la-catalyse
+        feedback: |
+          Modèle détecté : oublier l'étape de libération. Les produits n'ont
+          plus la forme complémentaire du site actif — c'est justement parce
+          qu'ils ont été transformés — et s'en détachent donc spontanément.
+          C'est cette libération qui rend le catalyseur réutilisable.
+
+      - id: D
+        text: "Elle est partiellement dégradée, et l'organisme doit en synthétiser sans cesse de nouvelles pour compenser cette perte permanente."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.enzyme-consommee-par-la-reaction
+        feedback: |
+          Modèle détecté : confondre le renouvellement normal des protéines de
+          l'organisme avec une destruction par la catalyse. Une enzyme finit
+          bien par être renouvelée, comme toute protéine — mais pas du fait des
+          réactions qu'elle catalyse, et à une tout autre échelle de temps.
+
+  - id: cp-r3-double-specificite
+    rung: "R3"
+    habilete: application
+    skill_code: svt_role_enzymes
+    tags: [checkpoint, formative, misconception_driven, svt_role_enzymes]
+    primary_misconception: mc.svt.svt_role_enzymes.specificites-substrat-action-confondues
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |
+      Deux enzymes agissent l'une et l'autre sur le saccharose, et sur lui seul.
+      La première le coupe en glucose et fructose ; la seconde lui fait subir
+      une tout autre transformation chimique. Que dit cette situation des deux
+      spécificités ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Elle est impossible : deux enzymes qui acceptent le même substrat lui font forcément subir la même transformation, puisque la forme du site actif détermine tout."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.specificites-substrat-action-confondues
+        feedback: |
+          Modèle détecté : fondre les deux spécificités en une seule. Elles
+          répondent à deux questions distinctes — SUR QUOI l'enzyme agit, et CE
+          QU'ELLE FAIT une fois le substrat fixé. Reconnaître la même molécule
+          n'oblige en rien à la transformer de la même façon.
+
+      - id: B
+        text: "Les deux enzymes partagent la même spécificité de substrat, et se distinguent par leur spécificité d'action — les deux propriétés sont bien indépendantes."
+        correct: true
+        feedback: |
+          Oui, et c'est exactement la distinction que le chapitre 4 établit —
+          sans monter ce dispositif-là : le choix du partenaire et ce qui lui
+          est fait sont deux questions séparées. Une enzyme n'accepte qu'un substrat précis, et elle ne lui
+          fait subir qu'un seul type de réaction — mais ces deux restrictions
+          ne se déduisent pas l'une de l'autre.
+
+      - id: C
+        text: "Elle montre que la seconde enzyme n'a pas de spécificité de substrat véritable : agir autrement sur la même molécule revient à accepter n'importe quel substrat."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.specificites-substrat-action-confondues
+        feedback: |
+          Modèle détecté : lire une différence d'action comme une absence de
+          spécificité de substrat. La seconde enzyme est aussi sélective que la
+          première sur le choix du substrat — l'énoncé le dit : elle n'agit que
+          sur le saccharose. Ce qui diffère est la transformation, pas la
+          reconnaissance.
+
+      - id: D
+        text: "Elle montre que la transformation dépend du substrat lui-même, et que les deux enzymes ne servent qu'à accélérer ce que le saccharose ferait de toute façon."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.effet-attribue-au-substrat
+        feedback: |
+          Modèle détecté : attribuer au substrat ce qui vient de l'enzyme. Si la
+          transformation dépendait du saccharose, elle serait la même dans les
+          deux tubes — or elle diffère. C'est bien l'enzyme, et elle seule, qui
+          décide de la réaction catalysée.
+
+  - id: cp-r4-optimum
+    rung: "R4"
+    habilete: raisonnement
+    skill_code: svt_role_enzymes
+    tags: [checkpoint, formative, misconception_driven, svt_role_enzymes]
+    primary_misconception: mc.svt.svt_role_enzymes.optimum-ignore
+    item_source: original
+    lesson_placement: after_R4
+
+    stem: |
+      On mesure l'activité d'une amylase à 20 °C, 37 °C puis 70 °C. Elle est
+      faible à 20 °C, maximale à 37 °C, nulle à 70 °C. On ramène ensuite le
+      tube chauffé à 70 °C jusqu'à 37 °C et on mesure de nouveau. Que
+      lit-on ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Une activité nulle : la chaleur a défait la forme tridimensionnelle de la protéine, et le retour à 37 °C ne la reconstruit pas."
+        correct: true
+        feedback: |
+          Oui, et c'est le point qui fait la différence entre « ralentie » et
+          « dénaturée ». Au-delà de l'optimum, la chaleur rompt les liaisons qui
+          maintiennent le repliement de la protéine ; le site actif perd sa
+          forme, donc sa complémentarité. Cette destruction est irréversible :
+          refroidir ne remet pas la protéine dans son état d'origine.
+
+      - id: B
+        text: "L'activité maximale, retrouvée intégralement : l'enzyme était seulement ralentie par la chaleur, et de bonnes conditions rétablies lui rendent toujours sa forme."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.denaturation-reversible
+        feedback: |
+          Modèle détecté : croire la dénaturation réversible. Il faut distinguer
+          deux régimes : en dessous de l'optimum, l'activité est simplement
+          ralentie et remonte si l'on réchauffe ; au-delà, la protéine est
+          détruite dans sa forme, et refroidir n'y change rien. Un blanc d'œuf
+          cuit ne redevient pas liquide en refroidissant.
+
+      - id: C
+        text: "Une activité supérieure à celle mesurée à 37 °C au premier passage : le chauffage a stimulé l'enzyme, et cet effet persiste après refroidissement."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.optimum-ignore
+        feedback: |
+          Modèle détecté : la règle « plus chaud, plus actif », prolongée
+          au-delà de tout optimum. La courbe activité-température monte,
+          culmine, puis s'effondre — elle n'est jamais croissante partout. À
+          70 °C l'amylase n'est pas stimulée, elle est détruite.
+
+      - id: D
+        text: "Une activité maximale, parce que l'amidon chauffé à 70 °C est devenu plus facile à couper : c'est l'état du substrat qui commande la mesure."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.effet-attribue-au-substrat
+        feedback: |
+          Modèle détecté : imputer au substrat une variation qui vient de
+          l'enzyme. Le témoin qui tranche est facile à imaginer : chauffe
+          l'amidon seul à 70 °C, refroidis-le, ajoute de l'amylase neuve —
+          l'hydrolyse repart normalement. Ce n'est donc pas l'amidon qui a
+          changé.
+
+  - id: cp-r5-saturation
+    rung: "R5"
+    habilete: raisonnement
+    skill_code: svt_role_enzymes
+    tags: [checkpoint, formative, misconception_driven, svt_role_enzymes]
+    primary_misconception: mc.svt.svt_role_enzymes.effet-attribue-au-substrat
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |
+      À quantité d'enzyme fixée, on augmente peu à peu la concentration en
+      substrat. La vitesse de la réaction monte, puis cesse d'augmenter et
+      forme un palier. Comment expliquer ce palier ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Toutes les molécules d'enzyme travaillent déjà en permanence : leurs sites actifs sont occupés sans interruption, et ajouter du substrat ne crée aucun site supplémentaire."
+        correct: true
+        feedback: |
+          Oui — c'est la saturation, et elle se déduit du mécanisme du
+          chapitre 3. Chaque cycle prend un temps donné ; quand chaque enzyme
+          enchaîne les cycles sans jamais attendre un substrat, la vitesse ne
+          peut plus monter. C'est pourquoi la courbe avec la concentration en
+          ENZYME, elle, ne fait pas de palier tant que le substrat reste
+          disponible.
+
+      - id: B
+        text: "Le substrat en excès finit par abîmer les enzymes qu'il rencontre, et le palier traduit l'équilibre entre les enzymes encore actives et celles déjà détruites."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.enzyme-usee-ou-modifiee-par-la-catalyse
+        feedback: |
+          Modèle détecté : expliquer un plafond par une usure. Si les enzymes
+          étaient détruites, la vitesse ne se stabiliserait pas — elle
+          baisserait, puis tomberait à zéro. Un palier stable est au contraire
+          la signature d'enzymes intactes qui tournent à plein régime.
+
+      - id: C
+        text: "L'excès de substrat modifie le milieu au point de faire chuter le pH, et l'enzyme se retrouve écartée de son optimum : c'est le milieu qui impose le palier."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.effet-attribue-au-substrat
+        feedback: |
+          Modèle détecté : chercher la cause dans le milieu plutôt que dans le
+          rapport enzyme/substrat. L'expérience est conduite à pH tamponné
+          justement pour écarter cette hypothèse — et si c'était le pH, la
+          vitesse chuterait au lieu de se stabiliser.
+
+      - id: D
+        text: "Le substrat en excès occupe les sites actifs sans jamais en ressortir, ce qui immobilise une part croissante des enzymes présentes."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.enzyme-usee-ou-modifiee-par-la-catalyse
+        feedback: |
+          Modèle détecté : un site actif qui se bloque. Le substrat entre, il
+          est transformé, les produits sortent — le site se libère à chaque
+          cycle. Rien ne s'immobilise : au palier, les enzymes ne sont pas
+          bloquées, elles sont occupées en continu.
+
+  - id: cp-r6-digestion
+    rung: "R6"
+    habilete: application
+    skill_code: svt_role_enzymes
+    tags: [checkpoint, formative, misconception_driven, svt_role_enzymes]
+    primary_misconception: mc.svt.svt_role_enzymes.denaturation-reversible
+    item_source: original
+    lesson_placement: in_R6
+
+    stem: |
+      L'amylase salivaire hydrolyse l'amidon dans la bouche, à pH voisin de 7.
+      Elle cesse d'agir dès son arrivée dans l'estomac, où le pH avoisine 2.
+      Que se passe-t-il pour cette amylase lorsque le bol alimentaire quitte
+      l'estomac pour l'intestin, où le pH remonte au voisinage de la neutralité ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Elle reprend son activité dès que le pH lui redevient favorable, et achève dans l'intestin l'hydrolyse de l'amidon qu'elle avait commencée dans la bouche."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.denaturation-reversible
+        feedback: |
+          Modèle détecté : croire qu'un retour aux bonnes conditions rend son
+          activité à une enzyme. Le pH très acide de l'estomac ne l'a pas
+          seulement gênée : il a dénaturé la protéine, en défaisant son
+          repliement. Ce qui remonte vers l'intestin n'est plus une amylase
+          fonctionnelle.
+
+      - id: B
+        text: "Elle reste inactive, ayant été dénaturée par l'acidité gastrique ; c'est une autre amylase, pancréatique, qui prend le relais dans l'intestin."
+        correct: true
+        feedback: |
+          Exact — et cette organisation n'est pas un hasard. Chaque enzyme
+          digestive travaille dans le compartiment dont le pH correspond à son
+          optimum : amylase salivaire dans la bouche, pepsine en milieu acide
+          dans l'estomac, amylase et protéases pancréatiques dans l'intestin.
+          Le tube digestif est une succession de milieux, chacun avec ses
+          enzymes.
+
+      - id: C
+        text: "Elle devient plus active qu'elle ne l'était dans la bouche : le pH de 8 dépasse le pH neutre initial, et l'activité d'une enzyme croît avec le pH."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.optimum-ignore
+        feedback: |
+          Modèle détecté : transposer au pH la règle « toujours plus ». Comme
+          pour la température, il y a un optimum : la courbe activité-pH monte,
+          culmine, puis redescend. Un pH de 8 est déjà au-delà de l'optimum de
+          l'amylase salivaire — et de toute façon, elle a été détruite en
+          chemin.
+
+      - id: D
+        text: "Elle reste inactive parce que l'amidon lui-même a été dégradé par l'acide gastrique : il n'y a plus de substrat pour elle en sortie d'estomac."
+        correct: false
+        misconception: mc.svt.svt_role_enzymes.effet-attribue-au-substrat
+        feedback: |
+          Modèle détecté : imputer au substrat ce qui est arrivé à l'enzyme.
+          L'amidon traverse l'estomac sans être hydrolysé — c'est précisément
+          pourquoi une amylase pancréatique est nécessaire dans l'intestin. Ce
+          qui a été détruit par l'acidité, c'est la protéine enzymatique.

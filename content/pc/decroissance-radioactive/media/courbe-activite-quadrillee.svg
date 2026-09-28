@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" width="640" height="440"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="L’activité A d’une dose d’iode 131, en becquerels, en fonction du temps t en jours, tracée sur un quadrillage : traits forts tous les 8 jours et tous les 1×10⁸ Bq, traits fins tous les 4 jours et 0,5×10⁸ Bq, cadre non chiffré à 32 jours et 5×10⁸ Bq. La courbe part de 4,0×10⁸ Bq, sur le quatrième trait fort, et décroît.">
+  <title>Activité d’une dose d’iode 131, sur quadrillage</title>
+  <!--
+    courbe-activite-quadrillee.svg — courbe STATIQUE de l'activité
+    A(t) = A0 · 2^(-t/t½), sur le quadrillage DU BAC (docs/sujets/pc/
+    decroissance-radioactive.md, l. 383-395, figure 3 de 2022 N — géométrie
+    reprise à l'exposant près : §5.2 de docs/pipeline/propositions/
+    pc-decroissance-radioactive-scene-noyaux.md). Valeurs : exercises.yaml,
+    A0 = 4,0×10⁸ Bq, t½ = 8,0 jours.
+
+    Mise en étapes (LESSON-EXPERIENCE-SPEC §2.5) :
+      step-1 : les axes + le quadrillage — le DOCUMENT tel qu'un sujet le
+               donne, avant toute lecture (majeurs chiffrés, mineurs nus,
+               le cadre non chiffré à 32 j / 5×10⁸ Bq, comme le sujet)
+      step-2 : la courbe A(t) (les données)
+      step-3 : la construction de t½ — report horizontal depuis
+               2,0×10⁸ Bq, chute verticale, lecture pile sur le trait
+               fort à 8,0 jours
+
+    Géométrie (calculée, jamais devinée) :
+      origine (t=0, A=0)  : (x0,y0) = (80, 350)
+      échelle temporelle   : 16 px/jour     → cadre à t=32 j,      x = 592
+      échelle d'activité   : 56 px par 1×10⁸ Bq → cadre à A=5×10⁸ Bq, y = 70
+      (A0 = 4,0×10⁸ Bq tombe donc sur le QUATRIÈME trait majeur, y = 126 —
+      exactement la géométrie du sujet, où a0 est posé sur le quatrième
+      trait et le cadre s'étend un trait plus loin, non chiffré.)
+
+    La courbe est une polyligne calculée à pas de 1 jour (16 px), jamais
+    une bézier devinée : A/A0 = 2^(-t/8) ; y = 350 - 56×4×(A/A0). Valeurs
+    exactes vérifiées aux repères (celles de la spec, §5.1/§5.2) :
+      t = 0  j → A = 4,00×10⁸ Bq → y = 126     (exact)
+      t = 4  j → A = 2,83×10⁸ Bq → y ≈ 191,61
+      t = 8  j → A = 2,00×10⁸ Bq → y = 238     (exact — PILE sur le
+                 croisement des traits t=8 et A=2×10⁸, comme le sujet :
+                 « passant exactement par l'intersection »)
+      t = 16 j → A = 1,00×10⁸ Bq → y = 294     (exact, sur un trait majeur)
+      t = 24 j → A = 0,50×10⁸ Bq → y = 322     (exact, sur un trait fin)
+      t = 32 j → A = 0,25×10⁸ Bq → y = 336
+
+    Rôle des couleurs :
+      quadrillage (mineurs 0,8 px à 30 %, majeurs 1 px à 68 %) :
+        les majeurs sont ceux que l'élève COMPTE (« descends de deux gros
+        carreaux ») : WCAG 1.4.11, au moins 3:1 sur la surface — 42 % ne
+        donnait que 2,0:1 (calculé : #55524A sur #FFFFFF), 68 % donne 3,5:1
+        en clair et 4,5:1 en sombre ; les mineurs restent sous 2:1 (même
+        recette que courbe-activite-pu238, sa sœur du sujet 2021) ;
+        --figure-ink-soft à opacité réduite — --figure-grid (#ECEBE9 sur
+        blanc) le rendait presque invisible, et c'est le papier même de la
+        lecture ; jamais plus contrasté que la
+        courbe (règle §5.2 de la spec : « un quadrillage qui crie
+        transforme un document en papier millimétré ») ;
+      axes, « 0 », les nombres de graduation, les noms d'axe A (Bq) et
+        t (jours) : --figure-ink-soft (chrome neutre, comme les figures
+        sœurs decroissance-courbe.svg / tangente-tau.svg / datation-c14.svg) ;
+      la courbe A(t) : --figure-ink — c'est le DOCUMENT de l'énoncé,
+        pas la réponse (vague 2, dessin : en accent, la donnée, la
+        construction et la lecture avaient une seule couleur) ;
+      la construction de t½ (guides, point, tick renforcé, lecture),
+        step-3 SEUL : --figure-accent — rien d'autre n'est en accent
+        avant cette étape.
+
+    Pas de boîte-formule sur cette figure (à la différence des figures
+    sœurs citées plus haut) : un sujet de bac ne montre jamais la loi sur
+    la figure elle-même — la retrouver EST l'exercice (§8.4(b) de la
+    spec). En ajouter une ici donnerait la réponse avant le geste de
+    lecture.
+  -->
+
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Activité d’une dose d’iode 131, sur quadrillage
+    </text>
+
+    <!-- Fond du panneau -->
+    <rect x="40" y="32" width="590" height="376" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- ── Quadrillage — mineurs (0,6 px), encre douce ──────────── -->
+    <line x1="144" y1="70" x2="144" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="272" y1="70" x2="272" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="400" y1="70" x2="400" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="528" y1="70" x2="528" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="322" x2="592" y2="322" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="266" x2="592" y2="266" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="210" x2="592" y2="210" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="154" x2="592" y2="154" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="98" x2="592" y2="98" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+
+    <!-- ── Quadrillage — majeurs (1,1 px), chiffrés ─────────────── -->
+    <line x1="208" y1="70" x2="208" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="336" y1="70" x2="336" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="464" y1="70" x2="464" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="80" y1="294" x2="592" y2="294" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="80" y1="238" x2="592" y2="238" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="80" y1="182" x2="592" y2="182" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="80" y1="126" x2="592" y2="126" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+
+    <!-- Cadre — les deux majeurs NON chiffrés (t=32 j, A=5×10⁸ Bq), comme le sujet -->
+    <rect x="80" y="70" width="512" height="280" fill="none"
+          stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+
+    <!-- ── Axes — ink-soft, chrome neutre ───────────────────────── -->
+    <line x1="80" y1="350" x2="610" y2="350"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="610,350 598,345.5 598,354.5" fill="var(--figure-ink-soft)"/>
+    <line x1="80" y1="350" x2="80" y2="50"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+
+    <text x="78" y="54" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)"
+          ><tspan font-style="italic">A</tspan><tspan font-size="9"> (Bq)</tspan></text>
+    <text x="610" y="366" text-anchor="end" font-size="11" fill="var(--figure-ink-soft)"
+          ><tspan font-style="italic">t</tspan><tspan font-size="9.5"> (jours)</tspan></text>
+    <text x="72" y="354" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Graduations t (jours) — 8, 16, 24 ; 32 reste le cadre, non chiffré -->
+    <text x="208" y="366" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">8</text>
+    <text x="336" y="366" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">16</text>
+    <text x="464" y="366" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">24</text>
+
+    <!-- Graduations A (×10⁸ Bq) — 1, 2, 3, 4 ; 5×10⁸ reste le cadre, non chiffré -->
+    <text x="72" y="297.5" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)"
+          >1×10<tspan dy="-4" font-size="7.5">8</tspan></text>
+    <text x="72" y="241.5" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)"
+          >2×10<tspan dy="-4" font-size="7.5">8</tspan></text>
+    <text x="72" y="185.5" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)"
+          >3×10<tspan dy="-4" font-size="7.5">8</tspan></text>
+    <text x="72" y="129.5" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)"
+          >4×10<tspan dy="-4" font-size="7.5">8</tspan></text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!--
+      Courbe A(t) — polyligne calculée, pas = 1 jour (16 px), de t=0 à
+      t=32 j. A/A0 = 2^(-t/8) ; y = 350 - 56×4×(A/A0). Voir calcul en
+      tête de fichier.
+    -->
+    <path d="
+      M80,126 L96,144.59 L112,161.64 L128,177.27 L144,191.61 L160,204.75
+      L176,216.81 L192,227.86 L208,238 L224,247.3 L240,255.82 L256,263.64
+      L272,270.8 L288,277.38 L304,283.4 L320,288.93 L336,294 L352,298.65
+      L368,302.91 L384,306.82 L400,310.4 L416,313.69 L432,316.7 L448,319.47
+      L464,322 L480,324.32 L496,326.45 L512,328.41 L528,330.2 L544,331.84
+      L560,333.35 L576,334.73 L592,336
+    " fill="none"
+      stroke="var(--figure-ink)"
+      stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- Report horizontal depuis l'ordonnée 2,0×10⁸ Bq (2e trait majeur, la moitié de A0) jusqu'à la courbe -->
+    <line x1="80" y1="238" x2="208" y2="238"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <!-- Chute verticale jusqu'à l'axe des temps -->
+    <line x1="208" y1="238" x2="208" y2="350"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+
+    <!-- Départ du report, sur l'axe A -->
+    <line x1="76" y1="238" x2="84" y2="238"
+          stroke="var(--figure-accent)" stroke-width="1.2"/>
+
+    <!-- Point : la courbe passe exactement par ce croisement -->
+    <circle cx="208" cy="238" r="3.2" fill="var(--figure-accent)"/>
+
+    <!-- Arrivée du report, sur l'axe des temps — pile sur le trait fort à 8 jours -->
+    <line x1="208" y1="345" x2="208" y2="355"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+
+    <!-- La lecture -->
+    <text x="208" y="388" text-anchor="middle" font-size="11" fill="var(--figure-accent)"
+          ><tspan font-style="italic">t</tspan><tspan dy="4" font-size="8">1/2</tspan><tspan dy="-4"> = 8,0 jours</tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

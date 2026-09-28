@@ -1,0 +1,456 @@
+notion: rotation-axe-fixe
+skill_code: pc_rotation_axe_fixe
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion pass, per
+# docs/pipeline/SUMMIT-CONVERSION-RECIPE.md). These are FORMATIVE, calm-core
+# probes placed inside the lesson — NOT the end bank. They share the item
+# schema of items.yaml but carry NO score/streak/tally fields, and every
+# choice (including the correct one) carries its own `feedback`. The
+# end-bank ≥3-per-misconception floor lives in items.yaml's coverage_summary
+# and is NOT altered by these checkpoints.
+#
+# IDs match the [[checkpoint:id]] markers placed in lesson.md:
+#   cp-r0-predict            (in R0, the hook's commit)  — probes
+#     repartition-masse-mal-comprise
+#   cp-r1-omega-v             (after R1)                 — probes
+#     omega-uniforme-vs-v-variable
+#   cp-r2-bras-levier         (after R2)                 — probes
+#     moment-force-sans-bras-de-levier
+#   cp-r3-repartition         (after R3)                 — probes
+#     repartition-masse-mal-comprise (the formalised, quantitative
+#     re-test of the same model R0 introduced qualitatively)
+#   cp-r4-relation-fondamentale (after R4)                — probes
+#     relation-fondamentale-mal-appliquee
+#   cp-r6-pendule-pesant      (after R6)                  — probes
+#     pendule-pesant-bras-de-levier-et-periode-errones
+#
+# Clone note: cp-r1-omega-v, cp-r2-bras-levier, cp-r3-repartition,
+# cp-r4-relation-fondamentale and cp-r6-pendule-pesant are near-verbatim
+# clones of the cleanest matching items.yaml stems (ROT-5, ROT-2, ROT-3,
+# ROT-24, ROT-19 respectively) — same pattern as the RLC exemplar's
+# cp-r3-m1/cp-r2-m4/cp-r7-m8. cp-r0-predict is `item_source: original`
+# (a commit item, not an end-bank clone), turning the lesson's own R0
+# "prends position" line into a real graded choice. None of these six
+# checkpoints are counted in items.yaml's coverage_summary (no
+# double-counting): that table is item-level, end-bank only.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Probes: repartition-masse-mal-comprise
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_rotation_axe_fixe
+    tags: [checkpoint, formative, misconception_driven, pc_rotation_axe_fixe, hook_commit]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Sur le manège de l'accroche, deux enfants de masse égale s'assoient
+      dessus, et un troisième enfant pousse toujours le bord avec la même
+      force horizontale, pendant la même durée, dans deux essais : essai 1,
+      les enfants sont assis tout près de l'axe ; essai 2, ils sont assis
+      tout au bord. **Dans lequel des deux essais le manège tourne-t-il le
+      plus vite à la fin de la poussée ?** Engage-toi — c'est ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Essai 1 (enfants près de l'axe) : le manège y tourne plus vite,
+          bien que la masse totale embarquée soit identique dans les deux
+          essais.
+        correct: true
+        feedback: |
+          Exact — et c'est le bon réflexe de ne PAS conclure que « même
+          masse totale » veut dire « même réponse ». La masse totale ne
+          bouge pas d'un gramme entre les deux essais : seule sa
+          répartition change, et cela suffit à tout changer. La vraie
+          question commence maintenant : **pourquoi**, précisément ?
+          C'est ce que ce chapitre construit, pièce par pièce.
+
+      - id: B
+        text: |
+          Les deux essais atteignent la même vitesse de rotation : ce qui
+          compte, c'est la masse totale embarquée, pas où elle est assise.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+        feedback: |
+          Modèle détecté : « seule la masse totale compte, peu importe sa
+          répartition. » C'est le raisonnement de la translation
+          ($\vec F = m\vec a$ ne voit que la masse totale), transposé tel
+          quel à la rotation — où il ne s'applique pas. Regarde à nouveau
+          l'accroche : la masse totale est rigoureusement la même dans les
+          deux essais, et pourtant les manèges ne réagissent pas pareil.
+
+      - id: C
+        text: |
+          Cela dépend surtout de l'endroit exact où le troisième enfant
+          applique sa poussée sur le bord — pas de la position des
+          enfants assis, qui n'a pas d'importance pour la vitesse finale.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+        feedback: |
+          Le point d'application de la poussée est déjà fixé identique
+          dans les deux essais (« toujours le bord ») : ce n'est pas la
+          variable qui change ici. Ce choix déplace le problème vers le
+          bras de levier de la FORCE, alors que la seule chose qui varie
+          entre les deux essais est la position de la MASSE embarquée —
+          une question différente, traitée plus loin dans ce chapitre.
+
+      - id: D
+        text: |
+          Impossible de savoir sans connaître la vitesse exacte de la
+          main du troisième enfant qui pousse.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: |
+          Cette donnée n'est pas nécessaire : la force, son point
+          d'application et sa durée sont déjà identiques dans les deux
+          essais. Seule diffère la position des enfants par rapport à
+          l'axe — c'est elle seule qui suffit à expliquer l'écart.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-omega-v | placed AFTER R1
+  #        Probes: omega-uniforme-vs-v-variable
+  #        Source: adapted from ROT-5 (reuses the lesson's own R1 exemple
+  #        travaillé numbers: R=1,5 m, omega=2,0 rad/s, d1=0,30 m, d2=1,5 m)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-omega-v
+    rung: "R1"
+    habilete: utilisation
+    skill_code: pc_rotation_axe_fixe
+    tags: [checkpoint, formative, misconception_driven, pc_rotation_axe_fixe]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable
+    item_source: clone_of_ROT-5
+    lesson_placement: after_R1
+
+    stem: |
+      Le manège de l'accroche (rayon $R = 1{,}5\ \text{m}$) tourne à une
+      vitesse angulaire constante $\omega = 2{,}0\ \text{rad/s}$. Compare
+      la vitesse linéaire d'un enfant assis à $d_1 = 0{,}30\ \text{m}$ de
+      l'axe à celle d'un enfant assis tout au bord, à $d_2 = 1{,}5\ \text{m}$.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$v_1 = 0{,}60\\ \\text{m/s}$ et $v_2 = 3{,}0\\ \\text{m/s}$, par $v = d\\,\\omega$ appliqué à chaque distance."
+        correct: true
+        feedback: |
+          Exact : $v = d\,\omega$. Même $\omega$ pour tout le disque, mais
+          une vitesse linéaire différente pour chaque point, proportionnelle
+          à sa distance à l'axe — le bord va cinq fois plus vite.
+
+      - id: B
+        text: |
+          $v_1 = v_2 = 2{,}0\ \text{m/s}$, puisque les deux enfants sont
+          sur le même manège, à la même vitesse angulaire.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable
+        feedback: |
+          Ce choix recopie la valeur numérique de $\omega$ (en rad/s)
+          comme si c'était déjà une vitesse en m/s pour chaque enfant.
+          $\omega$ est bien commune à tout le disque, mais la vitesse
+          LINÉAIRE $v = d\,\omega$ dépend de la distance à l'axe — elle
+          n'est pas la même pour les deux enfants.
+
+      - id: C
+        text: |
+          $v_1 = 0{,}30\ \text{m/s}$ et $v_2 = 1{,}5\ \text{m/s}$, en
+          lisant directement les distances comme des vitesses.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.omega-uniforme-vs-v-variable
+        feedback: |
+          Ce choix lit les distances elles-mêmes comme si elles étaient
+          des vitesses, en oubliant $\omega$. La relation correcte est
+          $v = d\,\omega$ : il faut multiplier chaque distance par la
+          vitesse angulaire commune, pas se contenter de la distance seule.
+
+      - id: D
+        text: "Impossible de comparer sans connaître la masse des deux enfants."
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: |
+          La masse n'intervient pas dans cette relation purement
+          cinématique : $v = d\,\omega$ ne dépend que de la distance à
+          l'axe et de la vitesse angulaire commune, déjà données.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-bras-levier | placed AFTER R2
+  #        Probes: moment-force-sans-bras-de-levier
+  #        Source: CLONE of ROT-2 distinguishing stem
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-bras-levier
+    rung: "R2"
+    habilete: utilisation
+    skill_code: pc_rotation_axe_fixe
+    tags: [checkpoint, formative, misconception_driven, pc_rotation_axe_fixe]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+    item_source: clone_of_ROT-2
+    lesson_placement: in_R2
+
+    stem: |
+      Tu pousses de toutes tes forces, une force $F = 200\ \text{N}$,
+      tangentiellement, exactement sur l'axe $\Delta$ du manège (donc à
+      une distance $d = 0$ de cet axe). Que vaut le moment de cette force
+      par rapport à $\Delta$, et le manège se met-il à tourner ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $\mathcal{M}_\Delta(\vec F) = 0$ : le manège ne tourne pas.
+        correct: true
+        feedback: |
+          Exact : $\mathcal{M}_\Delta(\vec F) = d\cdot F = 0\times 200 = 0$.
+          Le bras de levier est nul, donc le moment est nul, quelle que
+          soit l'intensité de la force — une force réelle et intense peut
+          donc avoir un effet de rotation strictement nul.
+
+      - id: B
+        text: |
+          Une force aussi intense produit forcément un grand moment : le
+          manège accélère fortement.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+        feedback: |
+          Modèle détecté : « grande force = grand effet de rotation »,
+          en oubliant le bras de levier. Le moment vaut $d\cdot F$ ; ici
+          $d = 0$, donc le moment est nul, même pour $F = 200\ \text{N}$.
+
+      - id: C
+        text: "Le moment vaut $F = 200\\ \\text{N}\\cdot\\text{m}$."
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier
+        feedback: |
+          Ce choix recopie directement la valeur de la force comme si
+          c'était déjà un moment, en confondant même les unités (le
+          newton, unité de force, avec le newton-mètre, unité de moment).
+          Le moment se calcule par $d\cdot F$, jamais en recopiant $F$.
+
+      - id: D
+        text: "Il est impossible d'appliquer une force exactement sur l'axe : la question n'a pas de sens."
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: |
+          C'est physiquement tout à fait possible (une force peut
+          s'exercer sur l'axe lui-même, par exemple au niveau d'un
+          palier). Le point important n'est pas de discuter la
+          réalisabilité, mais ce qui arrive au moment quand $d = 0$ : il
+          s'annule.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r3-repartition | placed AFTER R3
+  #        Probes: repartition-masse-mal-comprise
+  #        Source: CLONE of ROT-3 distinguishing stem
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-repartition
+    rung: "R3"
+    habilete: utilisation
+    skill_code: pc_rotation_axe_fixe
+    tags: [checkpoint, formative, misconception_driven, pc_rotation_axe_fixe]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+    item_source: clone_of_ROT-3
+    lesson_placement: in_R3
+
+    stem: |
+      Deux systèmes ont exactement la même masse totale $m = 4{,}0\ \text{kg}$
+      et tournent autour du même axe $\Delta$. Le système 1 est une tige
+      homogène de longueur $L = 2{,}0\ \text{m}$ (axe perpendiculaire
+      passant par le milieu). Le système 2 est constitué de deux masses
+      ponctuelles de $2{,}0\ \text{kg}$ chacune, fixées aux deux
+      extrémités d'une tige sans masse de même longueur $2{,}0\ \text{m}$.
+      Compare les moments d'inertie $J_1$ et $J_2$ des deux systèmes.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $J_2 = 3\,J_1$ : même masse totale, mais $J_\Delta$ très
+          différent selon la répartition.
+        correct: true
+        feedback: |
+          Exact : $J_1 = \tfrac{1}{12}mL^2 \approx 1{,}33\ \text{kg}\cdot\text{m}^2$,
+          $J_2 = 2\times 2{,}0\times 1{,}0^2 = 4{,}0\ \text{kg}\cdot\text{m}^2$.
+          Même masse totale, même longueur — mais $J_\Delta$ dépend de la
+          répartition, pas seulement de la quantité de masse.
+
+      - id: B
+        text: |
+          $J_1 = J_2$, car les deux systèmes ont la même masse totale et
+          la même longueur.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise
+        feedback: |
+          Modèle détecté : « même masse ⇒ même $J_\Delta$ ». Or
+          $J_\Delta = \sum_i m_i d_i^2$ : chaque masse compte au carré de
+          sa distance à l'axe. Concentrer la masse aux extrémités (loin de
+          l'axe) au lieu de l'étaler change radicalement $J_\Delta$, même
+          à masse et longueur totales égales.
+
+      - id: C
+        text: |
+          $J_1 > J_2$, car la tige homogène est un solide continu, donc
+          plus « lourde » à faire tourner.
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: |
+          La continuité de la matière n'entre pour rien dans $J_\Delta$ :
+          seule compte la distribution de masse par rapport à l'axe,
+          $\sum_i m_i d_i^2$. Le calcul donne l'inverse : c'est le
+          système 2 (masse concentrée loin de l'axe) qui a le plus grand
+          $J_\Delta$.
+
+      - id: D
+        text: "Il est impossible de comparer sans connaître le matériau des tiges."
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.mecanisme-alternatif-ou-donnees-invoquees-a-tort
+        feedback: |
+          Le matériau n'intervient que par la masse totale, déjà donnée
+          et identique dans les deux systèmes. $J_\Delta$ ne dépend que
+          des masses et de leurs distances à l'axe.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r4-relation-fondamentale | placed AFTER R4
+  #        Probes: relation-fondamentale-mal-appliquee
+  #        Source: CLONE of ROT-24 distinguishing stem
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-relation-fondamentale
+    rung: "R4"
+    habilete: résolution
+    skill_code: pc_rotation_axe_fixe
+    tags: [checkpoint, formative, misconception_driven, pc_rotation_axe_fixe]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
+    item_source: clone_of_ROT-24
+    lesson_placement: after_R4
+
+    stem: |
+      On fait tourner la roue arrière d'un vélo posé sur un pied
+      d'entretien (la roue ne touche plus le sol) jusqu'à $\omega = 12\ \text{rad/s}$,
+      puis on arrête brusquement de pédaler ; l'axe de la roue est
+      parfaitement sans frottement et on néglige la résistance de l'air.
+      Que devient le mouvement de la roue ensuite ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          La roue continue de tourner à $\omega = 12\ \text{rad/s}$ : plus
+          aucun moment, donc $\ddot\theta = 0$.
+        correct: true
+        feedback: |
+          Exact : une fois le pédalage arrêté, le seul moment restant est
+          celui de la réaction de l'axe — toujours nul, car sans
+          frottement — donc $\sum \mathcal{M}_\Delta(\vec F_{ext}) = 0$ et,
+          par la relation fondamentale, $\ddot\theta = 0$. Cela décrit une
+          vitesse angulaire CONSTANTE, pas un arrêt — l'exact analogue
+          rotationnel du principe d'inertie.
+
+      - id: B
+        text: "La roue s'arrête immédiatement, puisque plus rien ne la fait tourner."
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
+        feedback: |
+          Modèle détecté : « il faut un moment pour MAINTENIR la
+          rotation » — l'équivalent, pour la rotation, de croire qu'une
+          force est nécessaire pour maintenir un mouvement en
+          translation. $\sum \mathcal{M}_\Delta(\vec F_{ext}) = 0$ donne
+          $\ddot\theta = 0$ : $\omega$ reste constante, elle ne s'annule
+          pas.
+
+      - id: C
+        text: "La roue ralentit progressivement puis s'arrête, car son moment d'inertie « se consomme » peu à peu, au fil du temps qui passe."
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
+        feedback: |
+          $J_\Delta$ est une propriété géométrique fixe de la roue (sa
+          masse et sa répartition) : ce n'est pas une ressource qui
+          s'épuise. Rien dans la relation fondamentale ne fait diminuer
+          $J_\Delta$ après l'arrêt du pédalage.
+
+      - id: D
+        text: "La roue continue de tourner, mais en accélérant, car plus rien ne s'oppose à son mouvement."
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.relation-fondamentale-mal-appliquee
+        feedback: |
+          L'absence de moment résultant donne $\ddot\theta = 0$
+          (accélération NULLE), pas une accélération positive : « plus
+          rien ne s'y oppose » signifie que $\omega$ reste constante, pas
+          qu'elle augmente.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-r6-pendule-pesant | placed AFTER R6
+  #        Probes: pendule-pesant-bras-de-levier-et-periode-errones
+  #        Source: CLONE of ROT-19 distinguishing stem
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-pendule-pesant
+    rung: "R6"
+    habilete: résolution
+    skill_code: pc_rotation_axe_fixe
+    tags: [checkpoint, formative, misconception_driven, pc_rotation_axe_fixe]
+    primary_misconception: mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones
+    item_source: clone_of_ROT-19
+    lesson_placement: after_R6
+
+    stem: |
+      Un pendule pesant (masse $m = 1{,}2\ \text{kg}$, centre d'inertie
+      $G$ à $d = \Delta G = 0{,}40\ \text{m}$ de l'axe $\Delta$) est
+      écarté de $\theta = 30°$ par rapport à la verticale, avec
+      $g \approx 9{,}8\ \text{m/s}^2$. Quel est le moment du poids par
+      rapport à $\Delta$ à cet instant ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$\\mathcal{M}_\\Delta(\\vec P) = -mg\\,d\\sin\\theta \\approx -2{,}4\\ \\text{N}\\cdot\\text{m}$"
+        correct: true
+        feedback: |
+          Exact : le bras de levier réel du poids est $d\sin\theta$ (le
+          côté opposé à $\theta$ dans le triangle rectangle $\Delta G$ /
+          verticale), pas $d$ seul.
+
+      - id: B
+        text: "$\\mathcal{M}_\\Delta(\\vec P) = -mg\\,d \\approx -4{,}7\\ \\text{N}\\cdot\\text{m}$, en prenant directement $d$ comme bras de levier."
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones
+        feedback: |
+          Le vrai bras de levier n'est pas $d = \Delta G$ lui-même, mais
+          $d\sin\theta$ : il ne vaudrait $d$ que si $\theta = 90°$.
+          Prendre $d$ seul ignore que le bras de levier change avec
+          l'angle d'écart.
+
+      - id: C
+        text: "$\\mathcal{M}_\\Delta(\\vec P) = -mg\\,d\\cos\\theta \\approx -4{,}1\\ \\text{N}\\cdot\\text{m}$, en utilisant $\\cos\\theta$."
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones
+        feedback: |
+          C'est le sinus, pas le cosinus, qui donne le bras de levier :
+          à $\theta = 0$ (pendule à la verticale), le bras de levier doit
+          être nul — ce que donne $\sin 0 = 0$, pas $\cos 0 = 1$.
+
+      - id: D
+        text: "$\\mathcal{M}_\\Delta(\\vec P) = -mg\\,\\theta \\approx -6{,}2\\ \\text{N}\\cdot\\text{m}$, en utilisant l'angle lui-même (en radians) comme bras de levier."
+        correct: false
+        misconception: mc.physics.pc_rotation_axe_fixe.pendule-pesant-bras-de-levier-et-periode-errones
+        feedback: |
+          Le bras de levier est une DISTANCE (en mètres), pas un angle :
+          $\theta$, même en radians, n'a pas les bonnes unités pour ce
+          rôle. Le bras de levier correct est $d\sin\theta$.

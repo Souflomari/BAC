@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 320" width="560" height="320"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Schéma du circuit série R-L : générateur de f.é.m. E, interrupteur K, résistor R0, bobine (L, r), courant i.">
+  <!--
+    CODES R LÉGITIMES: « R0 » est le nom du RÉSISTOR du montage, pas un code
+    de barreau. C'est l'étiquette portée sur le composant dans le schéma, et
+    le texte de la leçon l'appelle ainsi. La porte de validate-content
+    interdit les R<n> dans le texte rendu d'une figure — parce qu'un renvoi
+    « (cf. R3) » désigne une section dont l'élève ne voit jamais le code —
+    mais elle ne peut pas distinguer seule un renvoi d'un nom de composant.
+  -->
+  <title>Circuit série R-L</title>
+
+  <!-- Dégradé partagé pour le corps de R0 — même technique que rlc-schema.svg -->
+  <defs>
+    <linearGradient id="r-body-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="var(--figure-surface)"/>
+      <stop offset="45%"  stop-color="var(--figure-grid)"/>
+      <stop offset="100%" stop-color="var(--figure-surface)"/>
+    </linearGradient>
+  </defs>
+
+  <!--
+    rl-schema.svg — Circuit série R-L, figure STATIQUE (pas de step-groups).
+    Mirrors rlc-schema.svg's layout grammar exactly, for visual-family
+    consistency across the corpus:
+      Corners : TL(72,64) TR(456,64) BR(456,256) BL(72,256)
+      K  : fil du haut, centre  (x=195..265, y=64)
+      Générateur E : fil gauche, vertical (x=72, y=118..194) — remplace le
+                     condensateur de rlc-schema à la même position
+      Bobine (L, r) : fil du bas, horizontal (x=170..370, y=256) — mêmes arcs
+      R0 : fil droit, vertical (x=436..476, y=114..190) — même boîte que R
+
+    Role-color convention (matches rlc-schema.svg):
+      wires / K / générateur / R0 body : --figure-ink (structural, neutral)
+      hachures R0 / label r            : --figure-ink-soft
+      bobine L                         : --figure-energy-L (teal-green)
+      courant i                        : --figure-accent
+
+    Sens du courant : conventionnel, part de la borne + du générateur (en
+    haut du symbole), remonte vers TL, traverse K puis R0, traverse la
+    bobine, revient à la borne − du générateur. Cohérent avec la flèche i
+    dessinée sur le fil du haut (gauche → droite).
+  -->
+
+  <!-- Titre -->
+  <text x="280" y="26" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Circuit série R-L
+  </text>
+
+  <!-- ── Fils du circuit ──────────────────────────────────── -->
+  <!-- Fil haut gauche → borne gauche de K -->
+  <line x1="72" y1="64" x2="195" y2="64"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <!-- Fil haut droite, borne droite de K → coin TR -->
+  <line x1="265" y1="64" x2="456" y2="64"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <!-- Fil droit haut : TR → haut de la boîte R0 -->
+  <line x1="456" y1="64" x2="456" y2="114"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <!-- Fil droit bas : bas de la boîte R0 → coin BR -->
+  <line x1="456" y1="190" x2="456" y2="256"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <!-- Fil bas droite → bobine-droite -->
+  <line x1="370" y1="256" x2="456" y2="256"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <!-- Fil bas gauche, bobine-gauche → coin BL -->
+  <line x1="72" y1="256" x2="170" y2="256"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <!-- Fil gauche bas : borne − du générateur → coin BL -->
+  <line x1="72" y1="170" x2="72" y2="256"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <!-- Fil gauche haut : coin TL → borne + du générateur -->
+  <line x1="72" y1="64" x2="72" y2="140"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Points de coin (jonctions) -->
+  <circle cx="72"  cy="64"  r="3" fill="var(--figure-ink)"/>
+  <circle cx="456" cy="64"  r="3" fill="var(--figure-ink)"/>
+  <circle cx="456" cy="256" r="3" fill="var(--figure-ink)"/>
+  <circle cx="72"  cy="256" r="3" fill="var(--figure-ink)"/>
+
+  <!-- ── Interrupteur K (haut centre) ─────────────────────── -->
+  <circle cx="195" cy="64" r="3" fill="var(--figure-ink)"/>
+  <circle cx="265" cy="64" r="3" fill="var(--figure-ink)"/>
+  <line x1="195" y1="64" x2="258" y2="46"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <text x="226" y="40" text-anchor="middle"
+        font-size="13" font-style="italic" fill="var(--figure-ink)">K</text>
+
+  <!-- ── Générateur E (fil gauche, vertical) ──────────────── -->
+  <!-- Borne + : trait long et fin -->
+  <line x1="50" y1="140" x2="94" y2="140"
+        stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Borne − : trait court et épais -->
+  <line x1="58" y1="170" x2="86" y2="170"
+        stroke="var(--figure-ink)" stroke-width="5" stroke-linecap="round"/>
+  <!-- Signes + / − -->
+  <text x="72" y="131" text-anchor="middle"
+        font-size="9" font-weight="700" fill="var(--figure-ink)">+</text>
+  <text x="72" y="187" text-anchor="middle"
+        font-size="9" font-weight="700" fill="var(--figure-ink)">−</text>
+  <!-- Étiquette E, à gauche du symbole -->
+  <text x="34" y="159" text-anchor="end"
+        font-size="13" font-style="italic" fill="var(--figure-ink)">E</text>
+
+  <!-- ── Résistor R0 (fil droit, vertical) ─────────────────── -->
+  <rect x="436" y="114" width="40" height="76" rx="5"
+        fill="url(#r-body-grad)"
+        stroke="var(--figure-ink)" stroke-width="1.8"/>
+  <!-- Hachures internes (symbole européen) -->
+  <line x1="445" y1="128" x2="467" y2="128" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-linecap="round"/>
+  <line x1="445" y1="140" x2="467" y2="140" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-linecap="round"/>
+  <line x1="445" y1="152" x2="467" y2="152" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-linecap="round"/>
+  <line x1="445" y1="164" x2="467" y2="164" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-linecap="round"/>
+  <line x1="445" y1="176" x2="467" y2="176" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-linecap="round"/>
+  <!-- Étiquette R0 -->
+  <text x="456" y="156" text-anchor="middle"
+        font-size="13" font-style="italic" fill="var(--figure-ink)">R<tspan
+        dy="4" font-size="8.5" font-style="normal">0</tspan>
+  </text>
+
+  <!-- ── Bobine réelle (L, r) — fil du bas, horizontal ─────── -->
+  <path d="M170,256 a25,18 0 0,1 50,0"
+        fill="none" stroke="var(--figure-energy-L)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M220,256 a25,18 0 0,1 50,0"
+        fill="none" stroke="var(--figure-energy-L)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M270,256 a25,18 0 0,1 50,0"
+        fill="none" stroke="var(--figure-energy-L)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M320,256 a25,18 0 0,1 50,0"
+        fill="none" stroke="var(--figure-energy-L)" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Étiquette (L, r) — les deux grandeurs qui caractérisent la bobine réelle -->
+  <text x="270" y="240" text-anchor="middle"
+        font-size="13" font-style="italic"><tspan
+        fill="var(--figure-energy-L)">L</tspan><tspan
+        fill="var(--figure-ink-soft)">, r</tspan>
+  </text>
+
+  <!-- ── Courant i (fil du haut, entre K et TR) ────────────── -->
+  <line x1="330" y1="64" x2="376" y2="64"
+        stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+  <polygon points="376,64 362,58.5 362,69.5" fill="var(--figure-accent)"/>
+  <text x="353" y="53" text-anchor="middle"
+        font-size="14" font-style="italic" fill="var(--figure-accent)">i</text>
+
+</svg>

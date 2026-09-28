@@ -1,0 +1,433 @@
+notion: piles
+skill_code: pc_piles
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — piles)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong PHYSICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT
+# altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict          (in R0)     — COMMIT gate : turns the rhetorical
+#                                        « prends position » into a real MCQ
+#                                        commit before the reveal. Probes
+#                                        pile-nature-mal-comprise (séparer
+#                                        bloque / la pile crée de l'énergie /
+#                                        la réaction change de nature).
+#   cp-r3-anode-cathode    (after R3)  — rupture gate : anode/cathode ↔
+#                                        oxydation/réduction ↔ polarité (le
+#                                        piège « réduction = négatif »).
+#   cp-r4-courant-electrons(after R4)  — rupture gate : sens du courant vs sens
+#                                        des électrons (le courant conventionnel
+#                                        NE suit PAS les électrons).
+#   cp-r6-quantite-electricite (after R6) — rupture gate : Q = I·Δt = n(e⁻)·F
+#                                        (produit, pas quotient ; la pile s'use).
+#   cp-r6-usure-qr-k       (after R6)  — rupture gate : évolution vers
+#                                        l'équilibre, Qr,i → K et usure.
+#
+# Clone note: cp-r3-anode-cathode clones PILES-1's stem, cp-r4-courant-electrons
+# clones PILES-3's, cp-r6-quantite-electricite clones PILES-5's, cp-r6-usure-qr-k
+# clones PILES-6's. Distractors are curated so EVERY distractor carries a named
+# misconception tag (no null). cp-r0-predict is an original commit item (not in
+# the end bank). No end-bank tally is adjusted — inline surfacing does not
+# double-count.
+#
+# Boundary guard: 2ème Bac PC, piles / transformations spontanées. Sens
+# spontané par comparaison Qr,i / K ; anode = oxydation = borne − ; cathode =
+# réduction = borne + ; courant conventionnel opposé au déplacement des
+# électrons ; Q = IΔt = n(e⁻)F ; usure = Qr,i → K. Pas d'électrolyse, pas de
+# potentiels standard, pas d'équation de Nernst.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns « avant de lire la suite, prends position » into a real
+  #        MCQ commit before the « voici ce qu'on observe » reveal.
+  #        Probes pile-nature-mal-comprise.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_piles
+    tags: [checkpoint, formative, misconception_driven, pc_piles, hook_commit]
+    primary_misconception: mc.physics.pc_piles.pile-nature-mal-comprise
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      On reprend la réaction $Zn + Cu^{2+} \rightarrow Zn^{2+} + Cu$, mais
+      cette fois le zinc et les ions $Cu^{2+}$ ne sont plus dans le même
+      bécher : ils sont séparés, reliés seulement par un fil (avec un
+      ampèremètre) et par un pont salin.
+      **Que va-t-il se passer ?** Engage-toi — c'est ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          C'est la même réaction, mais à distance : le zinc cède ses électrons
+          aux ions $Cu^{2+}$ par le fil. Un courant circule, et l'énergie est
+          redirigée en électricité.
+        correct: true
+        feedback: |
+          Exact — et c'est le bon réflexe : séparer les réactifs ne bloque pas
+          la réaction, ça la réorganise. Regarde ce qu'on observe juste en
+          dessous : l'ampèremètre dévie. La vraie question commence maintenant —
+          **pourquoi** faut-il séparer physiquement les réactifs pour rendre
+          cette énergie récupérable ?
+
+      - id: B
+        text: |
+          Rien : sans contact direct entre le zinc et les ions $Cu^{2+}$, aucun
+          transfert d'électrons n'est possible, donc l'ampèremètre reste à zéro.
+        correct: false
+        misconception: mc.physics.pc_piles.pile-nature-mal-comprise
+        feedback: |
+          Modèle détecté : « pas de contact, pas de réaction ». Ce qui compte
+          n'est pas le contact direct, mais l'existence d'un **chemin** pour les
+          électrons cédés par le zinc. Le fil offre justement ce chemin : la
+          réaction a bien lieu, et c'est précisément elle qui fait dévier
+          l'ampèremètre.
+
+      - id: C
+        text: |
+          Un courant apparaît, et la pile fabrique en prime une énergie
+          électrique nouvelle, qui vient s'ajouter à celle, chimique, déjà
+          libérée par la réaction entre le zinc et les ions $Cu^{2+}$.
+        correct: false
+        misconception: mc.physics.pc_piles.pile-nature-mal-comprise
+        feedback: |
+          Modèle détecté : « la pile crée de l'énergie ». Rien n'est créé : c'est
+          la **même** énergie, libérée par la **même** réaction, qui change
+          seulement de destination — de la chaleur (contact direct) vers un
+          courant électrique exploitable. Une pile ne fabrique jamais d'énergie
+          à partir de rien.
+
+      - id: D
+        text: |
+          Un courant apparaît, mais ce n'est plus la même réaction : séparés, le
+          zinc et les ions $Cu^{2+}$ forment forcément d'autres produits.
+        correct: false
+        misconception: mc.physics.pc_piles.pile-nature-mal-comprise
+        feedback: |
+          Modèle détecté : « séparer change la nature chimique ». C'est très
+          exactement la même transformation : mêmes réactifs ($Zn$, $Cu^{2+}$),
+          mêmes produits ($Zn^{2+}$, $Cu$), même sens. Seul le **trajet** des
+          électrons change (par le fil plutôt qu'au contact), ce qui redirige
+          l'énergie vers le courant.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r3-anode-cathode | placed AFTER R3
+  #        Rupture gate: anode/cathode ↔ oxydation/réduction ↔ polarité.
+  #        Clone of PILES-1's stem. Probes anode-cathode-polarite.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-anode-cathode
+    rung: "R3"
+    habilete: utilisation
+    skill_code: pc_piles
+    tags: [checkpoint, formative, misconception_driven, pc_piles]
+    primary_misconception: mc.physics.pc_piles.anode-cathode-polarite
+    item_source: clone_of_PILES-1
+    lesson_placement: after_R3
+
+    stem: |
+      Dans une pile Daniell en fonctionnement, l'électrode de zinc est le siège
+      de l'oxydation ($Zn \rightarrow Zn^{2+} + 2\,e^-$) et l'électrode de
+      cuivre le siège de la réduction ($Cu^{2+} + 2\,e^- \rightarrow Cu$).
+      Quel est le nom de l'électrode de cuivre, et quelle est sa polarité ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          C'est la cathode, borne $+$.
+        correct: true
+        feedback: |
+          Exact. La réduction se produit à la cathode, et comme elle **consomme**
+          des électrons, cette électrode s'en appauvrit : elle devient
+          relativement plus positive — la borne $+$.
+
+      - id: B
+        text: |
+          C'est la cathode, borne $-$.
+        correct: false
+        misconception: mc.physics.pc_piles.anode-cathode-polarite
+        feedback: |
+          Le nom est juste (la réduction a bien lieu à la cathode), mais la
+          polarité est inversée. Le mot « réduction » évoque une diminution, ce
+          qui pousse à tort vers « négatif » — mais c'est le sens réel des
+          électrons qui décide : la réduction en consomme, l'électrode s'appauvrit
+          et devient la borne $+$.
+
+      - id: C
+        text: |
+          C'est l'anode, borne $+$.
+        correct: false
+        misconception: mc.physics.pc_piles.anode-cathode-polarite
+        feedback: |
+          L'anode est, par définition, le siège de l'**oxydation** — or c'est le
+          zinc qui s'oxyde, pas le cuivre. Et une anode est toujours la borne $-$,
+          jamais $+$. L'électrode de cuivre, siège de la réduction, est la
+          cathode, borne $+$.
+
+      - id: D
+        text: |
+          C'est l'anode, borne $-$.
+        correct: false
+        misconception: mc.physics.pc_piles.anode-cathode-polarite
+        feedback: |
+          Double confusion : le nom (l'anode est le siège de l'oxydation, qui a
+          lieu au zinc, pas au cuivre) et le raisonnement (on nomme l'électrode
+          par ce qui s'y produit, pas au hasard). Le cuivre se réduit : c'est la
+          cathode, borne $+$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r4-courant-electrons | placed AFTER R4
+  #        Rupture gate: le courant conventionnel NE suit PAS les
+  #        électrons. Clone of PILES-3's stem. Probes courant-sens-electrons.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-courant-electrons
+    rung: "R4"
+    habilete: utilisation
+    skill_code: pc_piles
+    tags: [checkpoint, formative, misconception_driven, pc_piles]
+    primary_misconception: mc.physics.pc_piles.courant-sens-electrons
+    item_source: clone_of_PILES-3
+    lesson_placement: after_R4
+
+    stem: |
+      Dans le circuit extérieur d'une pile en fonctionnement, les électrons
+      circulent de la borne $-$ vers la borne $+$. Dans quel sens circule le
+      courant électrique conventionnel, dans ce même circuit extérieur ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          De la borne $+$ vers la borne $-$, en sens inverse des électrons.
+        correct: true
+        feedback: |
+          Exact. Le courant conventionnel a été défini, avant même la découverte
+          de l'électron, comme le sens de déplacement de charges **positives** :
+          il est donc toujours opposé au déplacement réel des électrons (charges
+          négatives). Ici, de $+$ vers $-$.
+
+      - id: B
+        text: |
+          De la borne $-$ vers la borne $+$, dans le même sens que les électrons.
+        correct: false
+        misconception: mc.physics.pc_piles.courant-sens-electrons
+        feedback: |
+          Modèle détecté : « le courant suit les électrons ». C'est l'inverse :
+          les électrons sont des charges négatives, et leur déplacement équivaut
+          à un déplacement de charges positives en sens **opposé**. Courant et
+          électrons pointent toujours dans des sens contraires.
+
+      - id: C
+        text: |
+          Il n'y a pas de courant conventionnel, seulement un déplacement
+          d'électrons.
+        correct: false
+        misconception: mc.physics.pc_piles.courant-sens-electrons
+        feedback: |
+          Le courant conventionnel n'est pas une fiction à écarter : c'est une
+          convention de signe (le sens des charges positives), fixée avant la
+          découverte de l'électron, qui coexiste avec le déplacement réel des
+          électrons — c'est d'ailleurs ce qu'affiche un ampèremètre.
+
+      - id: D
+        text: |
+          Le sens du courant dépend de la nature chimique des électrodes
+          utilisées.
+        correct: false
+        misconception: mc.physics.pc_piles.courant-sens-electrons
+        feedback: |
+          Le sens du courant conventionnel n'a rien à voir avec la nature des
+          électrodes : c'est une pure convention électrique, toujours opposée au
+          sens réel des électrons, quel que soit le couple oxydant/réducteur
+          utilisé.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r6-quantite-electricite | placed AFTER R6
+  #        Rupture gate: Q = I·Δt = n(e⁻)·F (produit, pas quotient ; la
+  #        pile s'use). Clone of PILES-5's stem. Probes
+  #        calcul-quantite-electricite (+ pile-source-illimitee via B).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-quantite-electricite
+    rung: "R6"
+    habilete: résolution
+    skill_code: pc_piles
+    tags: [checkpoint, formative, misconception_driven, pc_piles]
+    primary_misconception: mc.physics.pc_piles.calcul-quantite-electricite
+    item_source: clone_of_PILES-5
+    lesson_placement: after_R6
+
+    stem: |
+      Une pile Daniell débite un courant $I = 100\ \text{mA}$ pendant
+      $\Delta t = 1\ \text{h}$. On donne
+      $F \approx 9{,}65\times10^{4}\ \text{C/mol}$. Quelle affirmation est
+      correcte ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $Q = I\,\Delta t = 360\ \text{C}$, soit $n(e^-) = Q/F \approx
+          3{,}7\times10^{-3}\ \text{mol}$ d'électrons — une quantité finie de
+          zinc consommée.
+        correct: true
+        feedback: |
+          Exact. $Q = I\,\Delta t = 0{,}100 \times 3600 = 360\ \text{C}$, puis
+          $n(e^-) = Q/F \approx 3{,}7\times10^{-3}\ \text{mol}$ : une quantité de
+          matière précise et finie de zinc oxydé. Chaque coulomb débité coûte une
+          part irréversible du réactif.
+
+      - id: B
+        text: |
+          La pile peut fonctionner indéfiniment tant qu'on la laisse branchée,
+          car la réaction chimique se recrée d'elle-même en permanence sans
+          jamais épuiser le zinc.
+        correct: false
+        misconception: mc.physics.pc_piles.pile-source-illimitee
+        feedback: |
+          Modèle détecté : « une pile branchée ne s'use pas ». Chaque coulomb
+          débité correspond, par $Q = n(e^-)\,F$, à une quantité précise et
+          irréversible de zinc oxydé. La lame contient une masse **finie** de
+          métal, qui ne se régénère pas : une pile est un réservoir fini d'énergie
+          chimique.
+
+      - id: C
+        text: |
+          $Q = I/\Delta t = 100/3600 \approx 0{,}028\ \text{C}$.
+        correct: false
+        misconception: mc.physics.pc_piles.calcul-quantite-electricite
+        feedback: |
+          La quantité d'électricité est un **produit**, $Q = I\,\Delta t$ (un
+          débit multiplié par une durée), pas un quotient. Et $I$ doit être
+          converti en ampères ($100\ \text{mA} = 0{,}100\ \text{A}$) avant le
+          calcul : $Q = 0{,}100 \times 3600 = 360\ \text{C}$.
+
+      - id: D
+        text: |
+          La quantité d'électricité débitée ne dépend pas de la durée de
+          fonctionnement, seulement du courant.
+        correct: false
+        misconception: mc.physics.pc_piles.calcul-quantite-electricite
+        feedback: |
+          $Q = I\,\Delta t$ dépend explicitement des deux : à courant fixé, une
+          durée deux fois plus longue débite deux fois plus de charge. Ignorer
+          $\Delta t$, c'est confondre un débit (le courant) avec une quantité
+          accumulée (la charge).
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r6-usure-qr-k | placed AFTER R6
+  #        Rupture gate: évolution vers l'équilibre, Qr,i → K, usure.
+  #        Clone of PILES-6's stem. Probes qr-evolution-equilibre
+  #        (+ pile-source-illimitee via D).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-usure-qr-k
+    rung: "R6"
+    habilete: utilisation
+    skill_code: pc_piles
+    tags: [checkpoint, formative, misconception_driven, pc_piles]
+    primary_misconception: mc.physics.pc_piles.qr-evolution-equilibre
+    item_source: clone_of_PILES-6
+    lesson_placement: after_R6
+
+    stem: |
+      Au fur et à mesure qu'une pile Daniell fonctionne, la concentration en
+      $Zn^{2+}$ augmente et celle en $Cu^{2+}$ diminue. Comment évolue
+      $Q_{r,i} = [Zn^{2+}]/[Cu^{2+}]$ au cours du temps, et que se passe-t-il
+      quand $Q_{r,i}$ se rapproche de $K$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $Q_{r,i}$ augmente ; en se rapprochant de $K$, la f.é.m. s'effondre et
+          la pile cesse de débiter un courant utile.
+        correct: true
+        feedback: |
+          Exact. Numérateur qui grandit, dénominateur qui rétrécit : $Q_{r,i}$ ne
+          peut qu'augmenter. En se rapprochant de $K$, l'écart qui alimente la
+          f.é.m. se réduit — la tension disponible chute jusqu'à ne plus débiter
+          de courant utile. C'est l'usure de la pile.
+
+      - id: B
+        text: |
+          $Q_{r,i}$ diminue progressivement ; la pile devient de plus en plus
+          performante avec le temps.
+        correct: false
+        misconception: mc.physics.pc_piles.qr-evolution-equilibre
+        feedback: |
+          Modèle détecté : évolution de $Q_{r,i}$ à l'envers. Un rapport dont le
+          numérateur $[Zn^{2+}]$ grandit et le dénominateur $[Cu^{2+}]$ rétrécit
+          ne peut qu'**augmenter**. Une pile ne devient jamais plus performante
+          avec le temps — elle s'affaiblit.
+
+      - id: C
+        text: |
+          $Q_{r,i}$ reste constant tant que la pile fonctionne : seule sa valeur
+          à l'équilibre compte.
+        correct: false
+        misconception: mc.physics.pc_piles.qr-evolution-equilibre
+        feedback: |
+          $Q_{r,i}$ se recalcule à chaque instant à partir des concentrations
+          présentes, qui changent en permanence tant que la pile débite. Il ne
+          peut donc pas rester constant pendant le fonctionnement : il monte vers
+          $K$.
+
+      - id: D
+        text: |
+          La pile continue indéfiniment à débiter la même intensité ; l'évolution
+          de $Q_{r,i}$ vers $K$ n'a aucun rapport avec l'affaiblissement d'une
+          pile usée.
+        correct: false
+        misconception: mc.physics.pc_piles.pile-source-illimitee
+        feedback: |
+          C'est au contraire $Q_{r,i}$ qui explique l'usure : la f.é.m. traduit
+          l'écart entre $Q_{r,i}$ et $K$, et cet écart se réduit à mesure que
+          $Q_{r,i}$ grimpe vers $K$. Une pile ne fonctionne jamais indéfiniment à
+          intensité constante.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# CHECKPOINT COVERAGE NOTE
+#
+# These 5 items do NOT alter the end-bank coverage floor in items.yaml.
+# The clones (cp-r3-anode-cathode, cp-r4-courant-electrons,
+# cp-r6-quantite-electricite, cp-r6-usure-qr-k) surface PILES-1 / PILES-3 /
+# PILES-5 / PILES-6 stems inline; they are NOT re-counted in the
+# per-misconception tally. cp-r0-predict is an original commit item, absent
+# from the end bank. Per-misconception counts in items.yaml remain
+# authoritative (see items.yaml coverage_summary):
+#
+#   anode-cathode-polarite      — 6 end-bank items (floor ≥3)  ✓
+#   courant-sens-electrons      — 4 end-bank items (floor ≥3)  ✓
+#   calcul-quantite-electricite — 3 end-bank items (floor ≥3)  ✓
+#   qr-evolution-equilibre      — 3 end-bank items (floor ≥3)  ✓
+#   pile-nature-mal-comprise    — 3 end-bank items (floor ≥3)  ✓
+#   pile-source-illimitee       — 3 end-bank items (floor ≥3)  ✓
+#
+# BOUNDARY CHECK: every correct answer is bac-faithful for 2ème Bac PC —
+#   cp-r0-predict          : same reaction, energy redirected (not created). ✓
+#   cp-r3-anode-cathode    : cathode = réduction = borne +. ✓
+#   cp-r4-courant-electrons: courant conventionnel opposé aux électrons. ✓
+#   cp-r6-quantite-electricite : Q = IΔt (produit), n(e⁻) = Q/F, réactif fini. ✓
+#   cp-r6-usure-qr-k       : Qr,i monte vers K, f.é.m. s'effondre. ✓
+#   No électrolyse, no potentiels standard, no Nernst in any item. ✓
+# ──────────────────────────────────────────────────────────────────────────────

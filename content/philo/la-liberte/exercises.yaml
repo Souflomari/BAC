@@ -1,0 +1,357 @@
+# Attempt-first exercises (summit-conversion campaign — PHILO PILOT, first
+# notion conversion; the maths pilot was probabilites-conditionnelles).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered — see rlc-serie's header
+# comment for the audit U3/C2 rule this follows): while status != sourced,
+# the notion is NOT DONE.
+#
+# PHILO judgment call — no steps[], no math (docs/pipeline/SUMMIT-CONVERSION-
+# RECIPE.md, "Philo" addendum): every question's `reasoning` carries the full
+# philosophical argument in prose — thèse identification, argument analysis,
+# position justification — never a stepped derivation.
+#
+# r-bac/r-variation sourcing decision (documented per the task's judgment
+# call, and in the recipe addendum): docs/sujets/philo/la-liberte.md carries
+# TWO verified texts (statut vérifié) for this notion — 2024 R (نص, Bakounine,
+# "la liberté par la liberté d'autrui") and 2025 N (قولة, "la liberté par la
+# loi"). r-bac uses the Bakounine نص: it is the richer, fuller text (a real
+# تحليل-type sujet, not a short قولة) and its reasoning format — dégager une
+# thèse, analyser un argument, discuter une position — is exactly the prose
+# shape this addendum specifies for philo exercises generally. r-variation
+# reuses the OTHER verified text (2025 N قولة) rather than fabricating a
+# not-applicable twin: this notion's philo house precedent
+# (content/philo/analyse-de-texte/exercises.yaml, r-variation) already
+# established that fabricating a philosophical text risks bad philosophy and
+# breaks the no-fabrication norm, and a second real sourced text is available
+# here too. Both exercises therefore carry `status: sourced`. The 2025 N
+# citation also has the added benefit of mapping directly onto R3's own
+# content (Montesquieu/Rousseau, "la liberté par la loi") with no new axis to
+# introduce, which is why it was kept for r-variation rather than r-bac —
+# the Bakounine text's axis (liberté et autrui) is new relative to R0-R4 and
+# gets its own priming checkpoint (cp-bac-autrui) immediately before it.
+
+notion: la-liberte
+
+exercises:
+  # ── r-bac — VERIFIED 2024 session rattrapage sujet (نص, Bakounine) ───────
+  # Faithful transcription of docs/sujets/philo/la-liberte.md → "2024 —
+  # session de rattrapage — Moujaz III (نص)". Real bac text, not built for
+  # this lesson. Its axis — liberté et autrui — is NOT taught directly by
+  # R0-R4 (which cover déterminisme, Spinoza, Sartre, Rousseau/Montesquieu);
+  # the reasoning below bridges deliberately back to R1 (liberté négative)
+  # and R3 (Rousseau) rather than inventing new authors wholesale.
+  - id: r-bac
+    title: "Exercice de type bac — la liberté par la liberté d'autrui (Bakounine, 2024 R)"
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session rattrapage — alloschool element/146036 (scan RS 05) ;
+        texte transcrit intégralement dans docs/sujets/philo/la-liberte.md
+        (entrée « 2024 — session de rattrapage — Moujaz III (نص) »,
+        statut « vérifié »). Auteur non indiqué sur le sujet ; identification
+        savante (dérivée, non donnée du sujet) : Michel Bakounine, *La
+        Liberté*. Ce même texte sert aussi de texte-spine à la méthode de
+        l'analyse de texte (content/philo/analyse-de-texte/) — deux usages
+        différents du même texte réel, pas une coïncidence : c'est le seul
+        texte vérifié de la banque qui porte sur cet axe.
+    intro: |-
+      **Sujet réel, examen national de philosophie, 2024 (session de
+      rattrapage) — troisième sujet (un texte à analyser et discuter) :**
+
+      > حلّل (ي) النص و ناقشه (يه).
+      >
+      > *(« Analyse le texte et discute-le. »)*
+
+      **Texte arabe (original) :**
+
+      > أنا لا أكون شخصا حرا حقا إلا عندما يكون جميع الناس الذين يحيطون بي، رجالا و نساء،
+      > أحرارا أيضا. إن حرية الآخرين لا تحد من حريتي و لا تنفيها بل على العكس من ذلك إنها
+      > شرط ضروري و تأكيد تام لحريتي، فأنا لا أكون حرا بالفعل إلا بحرية الآخرين، و كلما
+      > ازداد عدد الناس الأحرار حولي و اتسعت دائرة حريتهم صارت حريتي أكثر اتساعا و عمقا.
+      > و على خلاف ذلك، فإن عبودية الناس هي التي تحول بيني و بين الحرية، أو بعبارة أخرى
+      > فإن الحد من حرية الناس أو إنزالهم إلى مرتبة الحيوان هي التي تنفي إنسانيتي لأنني،
+      > كما قلت سابقا، لا أكون حرا على الحقيقة إلا عندما تكون حريتي و كرامتي، بصفتي شخصا،
+      > مضمونتين، و عندما يتأكد حقي في عدم الخضوع لإرادة أي إنسان آخر، و حيث لا تكون
+      > تصرفاتي محددة إلا من خلال قناعاتي الشخصية التي هي في الوقت ذاته انعكاس لوعي
+      > الآخرين الحر أيضا. هكذا تصبح حريتي بوصفي شخصا مؤكدة من خلال حرية الآخرين و مفتوحة
+      > الأفق، كما أن مجالها سوف يتسع إلى ما لا نهاية.
+
+      **Traduction de travail française :**
+
+      > « Je ne suis vraiment un être libre que lorsque tous les êtres humains qui
+      > m'entourent, hommes et femmes, sont eux aussi libres. La liberté d'autrui, loin
+      > de borner ou d'annuler ma liberté, en est au contraire la condition nécessaire
+      > et la pleine confirmation : je ne suis réellement libre que par la liberté des
+      > autres ; et plus le nombre d'hommes libres autour de moi s'accroît, plus le
+      > cercle de leur liberté s'élargit, plus ma propre liberté gagne en étendue et en
+      > profondeur. À l'inverse, c'est la servitude des hommes qui se dresse entre moi
+      > et la liberté ; autrement dit, c'est le fait de restreindre la liberté des
+      > hommes, ou de les abaisser au rang de l'animal, qui nie mon humanité. Car,
+      > comme je l'ai dit, je ne suis vraiment libre que lorsque ma liberté et ma
+      > dignité en tant que personne sont garanties, lorsque se confirme mon droit de ne
+      > me soumettre à la volonté d'aucun autre homme, et que mes actes ne sont
+      > déterminés que par mes convictions personnelles — lesquelles sont en même temps
+      > le reflet de la conscience libre d'autrui. Ainsi ma liberté, en tant que
+      > personne, se trouve confirmée par la liberté des autres et ouverte à l'infini, et
+      > son champ s'élargira sans fin. »
+
+      Ce texte porte sur un axe que les chapitres 1 à 5 n'ont pas encore nommé frontalement :
+      liberté et autrui. Il te demande de mobiliser ce que tu sais déjà — la
+      liberté négative du chapitre 2, la liberté par la loi du chapitre 4 — et de les
+      confronter à une thèse qui va plus loin qu'aucune des deux.
+    questions:
+      - id: q1
+        part: "Partie 1 — Dégager la thèse"
+        stem: |-
+          Bakounine affirme un rapport précis entre ma liberté et celle
+          d'autrui. Formule sa position en une phrase : la présence
+          d'hommes libres autour de moi limite-t-elle ma liberté, ou la
+          fonde-t-elle ? Appuie-toi sur le texte, pas sur ta propre
+          intuition.
+        reasoning: |-
+          Le texte est explicite dès sa première phrase : « je ne suis
+          vraiment un être libre que lorsque tous les êtres humains qui
+          m'entourent... sont eux aussi libres. » Bakounine ne dit pas que la
+          liberté d'autrui menace la mienne — il affirme l'inverse : elle en
+          est la condition nécessaire. Le texte le répète et le renforce
+          aussitôt : « plus le nombre d'hommes libres autour de moi
+          s'accroît... plus ma propre liberté gagne en étendue et en
+          profondeur. »
+
+          Attention à ne pas prendre ce renforcement lui-même pour la thèse —
+          demande-toi toujours « tout ça, c'est pour dire quoi ? » : la
+          phrase sur le nombre d'hommes libres qui s'accroît sert la thèse
+          (je ne suis libre que par la liberté des autres), elle ne la
+          remplace pas.
+
+          Ce qui menace réellement ma liberté, dit le texte un peu plus
+          loin, ce n'est pas la liberté des autres — c'est leur SERVITUDE :
+          « à l'inverse, c'est la servitude des hommes qui se dresse entre
+          moi et la liberté. » Le connecteur « à l'inverse » signale un
+          contre-cas qui confirme la thèse par contraste : la servitude
+          d'autrui n'est jamais posée par le texte comme ce qui fonderait ma
+          liberté — elle est précisément ce que la thèse écarte.
+      - id: q2
+        part: "Partie 2 — Confronter l'intuition spontanée (chapitre 2)"
+        stem: |-
+          L'intuition la plus répandue est que chaque personne autour de moi
+          est une contrainte de plus, un espace de moins pour agir comme je
+          veux — l'intuition que le chapitre 2 associe à la liberté négative (absence
+          de contrainte extérieure). En quoi la thèse de Bakounine s'oppose-
+          t-elle frontalement à cette intuition, et à quelle condition
+          reste-t-elle défendable plutôt que naïvement contraire ?
+        reasoning: |-
+          Si l'on applique tel quel le critère de la liberté négative (chapitre 2) —
+          « je suis libre quand rien, autour de moi, ne m'empêche de faire ce
+          que je veux » — chaque personne libre supplémentaire semble
+          effectivement réduire mon espace d'action : plus de gens, plus de
+          règles de coexistence, plus d'obstacles potentiels. C'est
+          exactement l'intuition que Bakounine renverse.
+
+          Mais le texte ne prétend pas que N'IMPORTE QUELLE présence
+          d'autrui fonde ma liberté — c'est spécifiquement la liberté
+          d'autrui, pas sa simple présence, qui la fonde. C'est le point de
+          vigilance à ne pas manquer : traiter « autrui est par nature une
+          limite » comme une vérité automatique, c'est ignorer que le texte
+          distingue soigneusement deux cas — l'homme libre autour de moi (qui
+          me fonde) et l'homme asservi autour de moi (dont la servitude « se
+          dresse entre moi et la liberté »). La thèse n'est donc défendable
+          que pour la première branche de cette distinction ; elle ne dit pas
+          que toute coexistence est par elle-même libératrice.
+      - id: q3
+        part: "Partie 3 — Relier à ce que tu connais déjà (chapitre 4, Rousseau)"
+        stem: |-
+          Tu as déjà rencontré, avec Rousseau (chapitre 4), l'idée que la loi qu'on
+          se prescrit collectivement fonde la liberté civile plutôt que de
+          la nier. En quoi la thèse de Bakounine rejoint-elle ce même geste
+          — et en quoi s'en distingue-t-elle ?
+        reasoning: |-
+          Le geste commun : les deux auteurs refusent de faire de la liberté
+          une affaire strictement individuelle, indépendante des autres. Pour
+          Rousseau, « l'obéissance à la loi qu'on s'est prescrite est
+          liberté » : je reste libre en obéissant à une loi à laquelle je
+          participe comme citoyen, parce qu'en un sens je n'obéis alors qu'à
+          ma propre volonté rationnelle, telle qu'elle s'exprime
+          collectivement. Pour Bakounine, je suis libre PAR la liberté des
+          autres — un geste tout aussi relationnel : ni l'un ni l'autre ne
+          définit la liberté pour un individu isolé.
+
+          La distinction : chez Rousseau, le mécanisme passe par une
+          médiation institutionnelle précise — la loi, et la condition
+          explicite qu'elle exprime la volonté générale (sinon, une loi
+          imposée par un tyran ne libère personne, chapitre 4 le précise). Chez
+          Bakounine, le lien est plus direct — c'est la liberté des autres
+          elle-même, sans détour par une loi commune, qui fonde la mienne. Ne
+          confonds pas les deux mécanismes sous prétexte qu'ils aboutissent
+          tous deux à « la liberté se construit avec les autres, pas contre
+          eux » : l'un passe par l'institution, l'autre non.
+      - id: q4
+        part: "Partie 4 — Objecter et discuter"
+        stem: |-
+          Formule l'objection libérale classique (liberté négative) à la
+          thèse de Bakounine. Pourquoi cette objection reste-t-elle
+          recevable malgré la force de l'argument de Bakounine — sans pour
+          autant l'annuler complètement ?
+        reasoning: |-
+          L'objection : une conception libérale de la liberté comme absence
+          d'interférence (la liberté négative du chapitre 2) dirait que la présence
+          d'autrui, même libre, reste d'abord une limite potentielle à ce que
+          je peux faire — davantage de personnes libres, ce sont
+          mécaniquement davantage de règles de coexistence, exactement comme
+          Le chapitre 4 le montrait déjà pour le code de la route. Un objecteur de ce
+          type demanderait : même si la liberté d'autrui n'est pas une
+          servitude qui « nie mon humanité », en quoi le simple fait qu'elle
+          existe m'apporte-t-il quelque chose, plutôt que de simplement ne
+          pas me nuire ?
+
+          Pourquoi l'objection ne suffit pas à annuler la thèse : elle
+          suppose une conception de la liberté purement individuelle, que
+          Bakounine ne partage pas — pour lui, ma dignité et ma liberté « en
+          tant que personne » sont conçues comme relationnelles dès le
+          départ (mes convictions personnelles sont dites, dans le texte,
+          « le reflet de la conscience libre d'autrui »). Ce n'est donc pas
+          la même notion de liberté qui est en jeu de part et d'autre : le
+          désaccord porte sur cette prémisse de fond (la liberté est-elle
+          d'abord individuelle ou relationnelle ?), pas sur un simple fait
+          observable que l'une des deux parties aurait mal vu. C'est une
+          vraie tension philosophique, pas une erreur d'un côté ou de
+          l'autre.
+
+  # ── r-variation — VERIFIED 2025 session normale sujet (قولة) ─────────────
+  # Reuses the OTHER verified text rather than fabricating a twin (see the
+  # file-header note on this decision). Faithful transcription of
+  # docs/sujets/philo/la-liberte.md → "2025 — session normale — Moujaz II
+  # (قولة)". Maps directly onto R3's own content (Montesquieu/Rousseau, "la
+  # liberté par la loi") — no new axis to bridge, unlike r-bac.
+  - id: r-variation
+    title: "Une variation pour ne pas mémoriser — la liberté par la loi (قولة, 2025 N)"
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session normale — alloschool element/146054 (scan NS 05) ;
+        texte transcrit intégralement dans docs/sujets/philo/la-liberte.md
+        (entrée « 2025 — session normale — Moujaz II (قولة) »,
+        statut « vérifié »). Auteur non indiqué sur le sujet ; le contenu
+        recoupe directement Montesquieu (*De l'esprit des lois*) et Rousseau
+        (*Du contrat social*) — le cœur de R3 de cette même leçon.
+    intro: |-
+      **Sujet réel, examen national de philosophie, 2025 (session normale) —
+      deuxième sujet (une citation à expliquer et discuter) :**
+
+      > " إذا فعل كل مواطن ما يحلو له فلن تكون هناك حرية أبدا."
+      >
+      > انطلاقا من القولة، بيّن (ي) هل يتعين تقييد أفعال الإنسان بالقانون كي تتحقق حريته.
+
+      **Traduction de travail française :**
+
+      > « Si chaque citoyen faisait ce qui lui plaît, il n'y aurait jamais de
+      > liberté. »
+      >
+      > Consigne : À partir de cette citation, montre si les actes de
+      > l'homme doivent être limités par la loi pour que sa liberté se
+      > réalise.
+
+      Contrairement au texte précédent, cette citation ne t'emmène pas sur un axe
+      nouveau : c'est exactement le terrain du chapitre 4 (Montesquieu, Rousseau).
+      Le but n'est pas d'apprendre autre chose, c'est de reconnaître que la
+      même argumentation s'applique à un habillage différent — une citation
+      brute, sans le contexte narratif construit au chapitre 4 autour du code de la
+      route.
+    questions:
+      - id: q1
+        part: "Partie 1 — Comprendre la citation"
+        stem: |-
+          Explique ce que la citation affirme, et à quelle intuition
+          spontanée sur la loi et la liberté elle s'oppose.
+        reasoning: |-
+          L'intuition spontanée, nommée au chapitre 4, est simple : la loi est une
+          contrainte, donc moins de lois signifierait plus de liberté — la
+          liberté totale serait de pouvoir faire absolument tout ce qu'on
+          veut, sans aucune règle commune (la licence). Cette citation
+          affirme exactement l'inverse : sans aucune règle (« si chaque
+          citoyen faisait ce qui lui plaît »), il n'y aurait « jamais de
+          liberté » — pas moins de liberté, aucune.
+
+          La raison, déjà vue au chapitre 4 : si chacun pouvait vraiment faire tout
+          ce qu'il veut, sans aucune limite, la liberté de chacun entrerait
+          immédiatement en collision avec celle des autres — le plus fort,
+          le plus riche ou le plus rapide imposerait sa volonté aux autres,
+          qui ne seraient alors plus libres du tout. Une liberté sans aucune
+          borne commune ne protège personne : elle finit par ne protéger que
+          les plus puissants. C'est cette collision, pas une préférence
+          arbitraire pour les règles, que la citation résume en une phrase.
+      - id: q2
+        part: "Partie 2 — Mobiliser Montesquieu"
+        stem: |-
+          Quelle définition précise de Montesquieu permet de justifier la
+          citation ? Explique la logique de cette définition, sans te
+          contenter de la citer.
+        reasoning: |-
+          Montesquieu (*De l'esprit des lois*) définit : « la liberté est le
+          droit de faire tout ce que les lois permettent. » La logique n'est
+          pas un paradoxe pervers, c'est une observation : si un citoyen
+          pouvait faire ce que la loi interdit, il aurait un pouvoir que les
+          autres n'ont pas — ce ne serait donc plus une liberté partagée,
+          mais un privilège individuel. La loi, en s'appliquant également à
+          tous, trace un espace commun à l'intérieur duquel chacun peut agir
+          sans craindre l'arbitraire d'autrui.
+
+          Applique cette logique à la citation : « si chaque citoyen faisait
+          ce qui lui plaît », il n'y aurait plus d'espace commun protégé —
+          chacun agirait selon son propre arbitraire, au détriment de tous
+          les autres. C'est précisément ce que la citation nomme « jamais de
+          liberté ».
+      - id: q3
+        part: "Partie 3 — Approfondir avec Rousseau"
+        stem: |-
+          Rousseau va plus loin que Montesquieu. Quelle condition pose-t-il
+          pour que l'obéissance à la loi soit un acte de liberté plutôt
+          qu'une pure contrainte extérieure ?
+        reasoning: |-
+          Rousseau (*Du contrat social*) repose sur l'idée de volonté
+          générale : dans une société légitime, la loi n'est pas imposée par
+          un pouvoir étranger — elle est ce que la communauté des citoyens se
+          donne collectivement à elle-même. « L'impulsion du seul appétit
+          est esclavage, et l'obéissance à la loi qu'on s'est prescrite est
+          liberté » : en obéissant à une loi à laquelle il a lui-même part
+          comme citoyen, l'individu n'obéit pas, en un sens profond, à un
+          autre que lui-même.
+
+          La condition, précisée au chapitre 4 pour ne pas caricaturer la thèse :
+          cela ne vaut que si la loi exprime réellement la volonté générale.
+          Une loi imposée par un tyran, sans que les citoyens y aient part,
+          n'est précisément pas ce dont parle Rousseau — c'est l'inverse même
+          de la volonté générale, et l'obéir ne serait alors qu'une pure
+          contrainte, pas un acte de liberté.
+      - id: q4
+        part: "Partie 4 — Esquisser une réponse argumentée (méthode du chapitre 5)"
+        stem: |-
+          En t'appuyant sur la méthode construite au chapitre 5 (analyse des termes,
+          problématique, plan dialectique), esquisse en quelques lignes
+          comment répondre à la consigne : faut-il limiter les actes de
+          l'homme par la loi pour que sa liberté se réalise ?
+        reasoning: |-
+          Analyse des termes : « ce qui lui plaît » désigne la licence — la
+          liberté comme absence de toute limite, qui suppose qu'on sache
+          déjà ce qu'on veut sans interroger d'où vient ce vouloir (chapitre 5,
+          étape 1). Problématique : si l'absence de loi mène au chaos décrit
+          par la citation, comment continuer à parler de liberté civile sans
+          la vider de tout contenu — faut-il alors accepter la loi comme une
+          condition, plutôt qu'une simple limite, de la liberté ?
+
+          Plan dialectique esquissé : **I. Thèse** — faire ce qu'on veut,
+          sans entrave, semble la liberté la plus complète. **II.
+          Antithèse** — la citation le contredit : sans règle commune,
+          « il n'y aurait jamais de liberté », car le plus fort écrase les
+          autres (Montesquieu). **III. Dépassement** — la liberté civile se
+          construit avec la loi, à condition qu'elle exprime la volonté
+          générale : « l'obéissance à la loi qu'on s'est prescrite est
+          liberté » (Rousseau). Retiens la structure, pas seulement le
+          contenu : c'est exactement le mouvement thèse/antithèse/
+          dépassement pratiqué au chapitre 5 sur un sujet différent — reconnaître
+          cette structure sous un nouvel habillage est tout le but de cette
+          variation.

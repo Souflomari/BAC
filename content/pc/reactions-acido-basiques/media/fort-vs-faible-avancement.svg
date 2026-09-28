@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 410"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Comparaison à concentration apportée égale, c = 1,0 fois 10 puissance moins 2 mol/L : l’acide chlorhydrique HCl, acide fort, réagit avec l’eau en une seule flèche, quasi totalement — tau environ 1, H3O+ environ c, pH = 2,0. L’acide éthanoïque CH3COOH, acide faible, atteint un équilibre — tau environ 0,040, seulement 4 pour cent converti, H3O+ = 4,0 fois 10 puissance moins 4 mol/L, pH = 3,4. Même concentration apportée, extension de la réaction très différente : fort veut dire jusqu’où va la réaction, pas combien on en a mis.">
+  <title>Force et concentration : même c, extensions très différentes</title>
+  <!--
+    fort-vs-faible-avancement.svg — figure STAGED (3 étapes), rung R6.
+
+    Reprend tel quel l'exemple travaillé du texte (R0/R6 : les deux
+    béchers de l'accroche, refermés au rung R6) :
+      c = 1,0×10⁻² mol/L, la MÊME concentration apportée pour les deux.
+      HCl (fort)       : τ ≈ 1, [H3O+] ≈ c = 1,0×10⁻² mol/L, pH = 2,0.
+      CH3COOH (faible) : τ = 0,040 (calculé au rung R6, ligne "Seulement
+        4 % de l'acide éthanoïque introduit a effectivement réagi"),
+        [H3O+]eq = 4,0×10⁻⁴ mol/L (valeur du rung R4), pH = 3,4.
+    Aucune valeur inventée : les deux τ, les deux [H3O+] et les deux pH
+    sont ceux du texte, pas des arrondis esthétiques.
+
+    Grammaire de jauge REPRISE de jauge-avancement-tau.svg (chapitre
+    état-équilibre) : un rail vide (0 → c) qui se remplit jusqu'à la
+    fraction convertie — appliquée ici à DEUX acides different plutôt
+    qu'à un seul système contre son cas hypothétique τ=1. Rail commun aux
+    deux rangées : x = 70 à 602 (532 px, largeur partagée avec les autres
+    figures de cette leçon), 0 % à x=70, 100 % (= c entièrement converti)
+    à x=602.
+      Rangée HCl (fort)      : remplissage 532 px (quasi totalité, τ≈1 —
+        même convention que jauge-avancement-tau.svg pour son cas τ=1).
+      Rangée CH3COOH (faible) : remplissage 0,040 × 532 ≈ 21 px — calculé
+        EXACTEMENT depuis τ = 0,040 du texte, pas choisi pour l'esthétique.
+
+    Mise en étapes (geste d'enseignement, reprend l'ordre du rung R6 :
+    établir l'égalité de départ, puis le cas fort, puis le cas faible et
+    la conclusion) :
+      step-1 : les deux rails VIDES, chacun étiqueté par son acide, tous
+               deux gradués 0 → c — la comparaison à c égale, établie
+               explicitement AVANT tout résultat.
+      step-2 : HCl — le badge "→" (flèche simple, comme l'écrit le texte :
+               "on écrit ici une flèche simple, pas ⇌"), le remplissage
+               quasi total, τ ≈ 1, [H3O+] ≈ c, pH = 2,0.
+      step-3 : CH3COOH — le badge "⇌" (équilibre), le remplissage à
+               4 % à peine, τ = 0,040, [H3O+] = 4,0×10⁻⁴ mol/L, pH = 3,4,
+               et la phrase de clôture du rung : "fort" = jusqu'où va la
+               réaction, pas combien on en a mis.
+
+    Rôle des couleurs : les deux badges de flèche, les deux remplissages
+    et leurs valeurs numériques (τ, [H3O+], pH) sont le foyer de la figure
+    → --figure-accent (répété deux fois, une par acide — même convention
+    que zones-predominance-2.svg et jauge-avancement-tau.svg). Rails vides,
+    étiquettes d'identité des acides, ticks 0/c : --figure-ink /
+    --figure-ink-soft / --figure-grid. La phrase de clôture (étape 3) est
+    en --figure-ink, en gras — l'accent reste réservé aux marques
+    numériques, jamais à une phrase entière (même convention que
+    echelle-acide-neutre-basique.svg, même leçon).
+  -->
+
+  <g id="step-1">
+
+    <!-- Titre -->
+    <text x="320" y="24" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">Force et concentration : même c, extensions très différentes</text>
+    <text x="320" y="40" text-anchor="middle"
+          font-size="10" font-style="italic" fill="var(--figure-ink-soft)">
+      point de départ commun : c = 1,0×10&#8315;&#178; mol/L pour les deux acides — la comparaison est honnête
+    </text>
+
+    <!-- Panneau -->
+    <rect x="20" y="48" width="600" height="342" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- ── Rangée A : HCl (identité, rail vide) ─────────────────────── -->
+    <text x="70" y="70" font-size="11.5" font-weight="600"
+          fill="var(--figure-ink)">Acide chlorhydrique HCl &#8212; acide FORT</text>
+    <rect x="70" y="98" width="532" height="38" rx="6"
+          fill="var(--figure-grid)" fill-opacity="0.55"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-opacity="0.6"/>
+    <text x="70" y="150" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">0</text>
+    <text x="602" y="150" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--figure-ink-soft)">c</text>
+
+    <!-- ── Rangée B : CH3COOH (identité, rail vide) ──────────────────── -->
+    <text x="70" y="210" font-size="11.5" font-weight="600"
+          fill="var(--figure-ink)">Acide éthanoïque CH<tspan
+          dy="3" font-size="8">3</tspan><tspan
+          dy="-3">COOH &#8212; acide FAIBLE</tspan>
+    </text>
+    <rect x="70" y="238" width="532" height="38" rx="6"
+          fill="var(--figure-grid)" fill-opacity="0.55"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-opacity="0.6"/>
+    <text x="70" y="290" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">0</text>
+    <text x="602" y="290" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--figure-ink-soft)">c</text>
+
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — HCl, acide fort : flèche simple, quasi totale
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+
+    <circle cx="336" cy="84" r="9" fill="var(--figure-accent)"/>
+    <text x="336" y="88" text-anchor="middle" font-size="12" font-weight="700"
+          fill="var(--figure-surface)">&#8594;</text>
+
+    <rect x="70" y="98" width="532" height="38" rx="6" fill="var(--figure-accent)" fill-opacity="0.34"/>
+
+    <text x="336" y="168" text-anchor="middle" font-size="10"
+          fill="var(--figure-accent)">τ ≈ 1 (quasi totale) &#8212; HCl + H<tspan
+          dy="3" font-size="7">2</tspan><tspan
+          dy="-3">O &#8594; Cl</tspan><tspan
+          dy="-4" font-size="7">-</tspan><tspan
+          dy="4"> + H</tspan><tspan
+          dy="3" font-size="7">3</tspan><tspan
+          dy="-3">O</tspan><tspan
+          dy="-4" font-size="7">+</tspan><tspan
+          dy="4"> presque en totalité</tspan>
+    </text>
+    <text x="336" y="184" text-anchor="middle" font-size="10"
+          fill="var(--figure-accent)">[H<tspan
+          dy="3" font-size="7">3</tspan><tspan
+          dy="-3">O</tspan><tspan
+          dy="-4" font-size="7">+</tspan><tspan
+          dy="4">] ≈ c = 1,0×10&#8315;&#178; mol/L &#8594; pH = 2,0</tspan>
+    </text>
+
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — CH3COOH, acide faible : équilibre, très limité
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+
+    <circle cx="336" cy="224" r="9" fill="var(--figure-accent)"/>
+    <text x="336" y="228" text-anchor="middle" font-size="11" font-weight="700"
+          fill="var(--figure-surface)">&#8652;</text>
+
+    <rect x="70" y="238" width="21" height="38" rx="2" fill="var(--figure-accent)" fill-opacity="0.55"
+          stroke="var(--figure-accent)" stroke-width="1"/>
+
+    <text x="336" y="308" text-anchor="middle" font-size="10"
+          fill="var(--figure-accent)">τ = 0,040 (limitée) &#8212; CH<tspan
+          dy="3" font-size="7">3</tspan><tspan
+          dy="-3">COOH reste intact à ≈ 96 %</tspan>
+    </text>
+    <text x="336" y="324" text-anchor="middle" font-size="10"
+          fill="var(--figure-accent)">[H<tspan
+          dy="3" font-size="7">3</tspan><tspan
+          dy="-3">O</tspan><tspan
+          dy="-4" font-size="7">+</tspan><tspan
+          dy="4">] = 4,0×10&#8315;&#8308; mol/L &#8594; pH = 3,4</tspan>
+    </text>
+
+    <text x="336" y="352" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-ink)">même c, extension très différente &#8594; pH différent ;</text>
+    <text x="336" y="368" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-ink)">&#171; fort &#187; = jusqu&#8217;où va la réaction, pas combien on en a mis</text>
+
+  </g><!-- /step-3 -->
+
+</svg>

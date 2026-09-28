@@ -1,5 +1,34 @@
 # known-issues.md — reconciled backlog
 
+> **ÉTIQUETTE DE STATUT, posée le 2026-09-05.** Ce document est le backlog
+> réconcilié de l'audit de juin 2026 — celui de l'application **Flutter**,
+> retirée depuis (ADR 0016). Il est conservé pour ce qu'il DIT : la liste
+> des griefs et leurs causes, dont beaucoup ont survécu au changement de
+> pile. Il n'a **pas** été re-scoré ; ses libellés d'agents
+> (`nextjs-frontend`, `pedagogy-auditor`) désignent un roster remplacé
+> (`docs/agents/ROSTER.md` v2).
+>
+> **Ce qui a été RE-VÉRIFIÉ ce jour, entrée par entrée** (le reste est
+> laissé tel quel — re-juger un grief pédagogique est un travail de
+> propriétaire, pas de balayage) :
+>
+> | entrée | ce que dit le dépôt aujourd'hui |
+> |---|---|
+> | **J-2** RLS non activée sur les tables de curriculum | **RÉSOLU.** La migration 040 porte dix `ENABLE ROW LEVEL SECURITY` ; la RLS est déclarée sur les 25 tables du schéma, plus `storage.objects`. |
+> | **K-1** `get_user_weak_areas` référence des colonnes absentes | **TOUJOURS VRAI, ET TOUJOURS MORT.** Zéro référence dans `web/src/` et dans `backend/supabase/functions/`. La fonction n'est appelée par rien : le défaut est réel, son impact nul tant qu'elle le reste. |
+> | **K-2** ni migrations descendantes, ni déploiement testé sur branche | **À MOITIÉ RÉSOLU.** `scripts/branch-test.ps1` existe et `CONTRIBUTING.md` en fait une porte dure avant tout push production. Les migrations descendantes, elles, n'existent toujours pas. |
+> | **K-3** les encodeurs réécrivent les migrations sur place | **INTERDIT DEPUIS, PAS MESURÉ.** `.claude/CLAUDE.md` pose la non-négociable « ne jamais éditer une migration déjà passée en production ». Rien n'automatise cette garde. |
+> | **K-4** PostHog / Sentry non provisionnés | **TOUJOURS VRAI, ET PLUS ASSUMÉ QUE SUBI.** Aucune trace de l'un ni de l'autre dans `web/`. Le produit est instrumenté autrement : par les balayages du dépôt (`docs/audits/INSTRUMENTS.md`), pas par de la télémétrie d'élève. |
+> | **K-6** pas de bucket pour les PDF d'annales | **DEVENU SANS OBJET.** Les annales ne passent plus par `bac_exams.pdf_url` : elles vivent en fichiers sous `docs/sujets/` et `content/*/*/bank.yaml`. Les deux buckets déclarés sont `avatars` (mig 016) et `explications` (mig 051). |
+>
+> **Les entrées A à F** (les griefs produit du dislike-list) ne sont PAS
+> triées ici. Beaucoup décrivent des manques que la reconstruction adresse —
+> l'anatomie d'une notion, le parcours, le diagnostic — mais dire lesquels
+> sont clos est un jugement pédagogique, pas une mesure. `docs/HANDOFF.md`
+> tient l'état réel du produit.
+>
+> **Addendum du 2026-09-20.** Deux fiches ont été RE-MESURÉES contre le dépôt d'aujourd'hui et portent chacune leur bloc daté : **C-2** (SVT sans interactivité — le diagnostic tient et devient chiffré, 0 figure manipulable sur 11 notions ; les preuves d'origine, widgets hérités et migrations de leçons, sont périmées par la reconstruction ADR 0016) et **C-3** (raisonnement expérimental en PC — la CAUSE est morte avec le schéma de leçon v2 ; le mode est aujourd'hui représenté sur 40 items, mais sa SUFFISANCE reste incalculable, §11.120). Les autres fiches n'ont pas été retouchées : leur âge est leur étiquette.
+
 The dislike list's bullets, each reconciled against what the audit
 actually found. Every entry carries: the symptom as stated, the cause
 the audit identifies (or "unconfirmed" where it needs a runtime check),
@@ -181,6 +210,36 @@ reuse `punnett_square` plus the maths widgets for probability
 need *new* drawing-and-labelling widgets; PhET / similar libraries
 have no equivalent.
 
+
+> **RE-MESURÉ LE 2026-09-20 (§11.129).** Le DIAGNOSTIC tient et il est
+> désormais CHIFFRÉ ; les PREUVES ci-dessus sont périmées.
+>
+> **Ce qui est périmé :** « trois widgets hérités », « mig 037 », « 25 skills ».
+> Le frontend a été reconstruit (ADR 0016) et le contenu vit maintenant dans
+> `content/<matière>/<notion>/`. Ni les widgets hérités ni les migrations de
+> leçons ne décrivent l'état courant.
+>
+> **Ce qui tient, et pour la première fois avec un nombre :**
+>
+> | matière | SVG statiques | étagées | **manipulables** | notions avec du manipulable |
+> |---|---|---|---|---|
+> | maths | 72 | 72 | 5 | 5/14 |
+> | pc | 134 | 125 | 6 | 4/25 |
+> | **svt** | **49** | **37** | **0** | **0/11** |
+>
+> SVT porte exactement ce que sa ligne de la VISION exclut — « des images
+> affichées » — et zéro interaction de construction de schéma. La phrase
+> « No diagram-construction interactions (drawing / labelling) » reste vraie
+> mot pour mot, quatre mois et une reconstruction plus tard.
+>
+> **Mesurable désormais :** `node web/scripts/media-manipulable.mjs`. Un cliquet
+> à une seule direction empêche d'en perdre ; il n'en exige aucune de plus.
+>
+> **Et un axe que cette fiche ne voyait pas :** la même ligne de la VISION dit
+> que l'épreuve SVT est « un argument travaillé montré en entier, PUIS
+> ESTOMPÉ ». On n'estompe pas vers rien — et SVT n'a **aucun `exercises.yaml`**
+> (§11.120). C'est le même trou, vu par l'autre phrase du même paragraphe.
+
 ### C-3. PC misses experimental-reasoning content
 **Source.** Not explicit in the dislike list; surfaced by
 `pedagogy-auditor`'s PC profile and the audit confirms.
@@ -197,6 +256,34 @@ new block kind is needed.
 **Severity.** sev-2.
 **Fix shape.** Define a new lesson block kind for experimental-reasoning
 material; render in long-lesson screen; backfill chapter-by-chapter.
+
+
+> **RE-MESURÉ LE 2026-09-20 (§11.129).** Cette fiche est **partiellement
+> dépassée**, et sa CAUSE l'est entièrement.
+>
+> **La cause est morte :** « pas de type de bloc `document_experimental` dans
+> les leçons v2 », « écran long-lesson », « étendre le schéma v2 ». Le schéma de
+> leçon v2 n'existe plus (ADR 0016).
+>
+> **Ce que le corpus porte aujourd'hui**, mesuré sur les 690 items de PC :
+> **40 items** étiquetés pour le raisonnement expérimental —
+> `document_experimental` (13), `application_experimentale` (13),
+> `application-experimentale` (7), `lecture-graphique` (6), `TP-aspirine` (1).
+> Le mode n'est donc **plus absent** : il est représenté, au niveau de l'item
+> et non d'un bloc de leçon.
+>
+> **Ce qui reste ouvert, et que ce chiffre ne tranche PAS :** 40 sur 690, est-ce
+> assez ? La VISION dit que l'épreuve le teste ; le Cadre de Référence porte les
+> ratios d'habiletés qui donneraient la cible — et le champ `habilete` qui les
+> porterait est renseigné sur 36 items du corpus entier, tous dans une seule
+> notion (§11.120). **La question « le mélange cognitif est-il juste ? » est
+> incalculable**, et c'est elle qui fermerait cette fiche.
+>
+> À noter au passage : `application_experimentale` et `application-experimentale`
+> désignent le même concept avec deux orthographes. Trente et un couples de ce
+> genre existent dans le corpus ; rien ne lit `tags:` aujourd'hui, donc rien
+> n'en souffre — mais le premier filtre écrit dessus en manquera une partie
+> (§11.127).
 
 ---
 
@@ -476,6 +563,420 @@ policies for the seed migrations to keep working. Reconciliation
 
 These came up during the audit and need to land in the backlog even
 though the dislike list does not mention them.
+
+### K-0. `lib/examens.ts` ne sait pas représenter un exercice « au choix »
+
+**Découvert le 2026-08-27**, en ouvrant le scan de SM 2020 session normale
+pour décider s'il fallait le transcrire. **Confirmé sur le scan lui-même**,
+pas déduit.
+
+**Le fait.** Certaines épreuves nationales offrent un **choix** entre deux
+exercices. SM 2020 normale (`element/109635`, code NS 25) l'énonce en toutes
+lettres sur sa page 1 :
+
+> « Le candidat doit traiter EXERCICE3 et EXERCICE4 et choisir de traiter
+> EXERCICE1 ou bien EXERCICE2. — Le candidat doit traiter au total trois (3)
+> exercices »
+
+avec le détail : exercice 1 (arithmétique, 3,5 pts, **au choix**) *ou bien*
+exercice 2 (structures algébriques, 3,5 pts, **au choix**) ; exercice 3
+(nombres complexes, 3,5 pts, **obligatoire**) ; exercice 4 (analyse,
+**13 points**, obligatoire). Le barème réel d'un candidat vaut donc
+$3{,}5 + 3{,}5 + 13 = 20$.
+
+**Le défaut.** `web/src/lib/examens.ts` groupe les entrées de banque sur
+`source.{filiere, year, session}` et **somme tous les `bareme_total`** du
+groupe. Il n'a aucune notion d'exercice optionnel. Conséquence immédiate,
+vérifiable dans le corpus tel qu'il est aujourd'hui : SM 2020 normale y
+compte **trois** entrées — arithmétique 3,5 (ex. 1), structures algébriques
+3,5 (ex. 2) et nombres complexes 3,5 (ex. 3) — soit 10,50/20 affichés, alors
+qu'aucun candidat réel n'a jamais traité à la fois l'exercice 1 et
+l'exercice 2. **L'épreuve est déjà sur-comptée**, silencieusement.
+
+**Ce que ça bloque.** L'exercice 4 (analyse, 13 pts) est le seul qui manque
+pour reconstituer cette épreuve. Le convertir donnerait
+$3{,}5+3{,}5+3{,}5+13 = 23{,}5$ — au-dessus de 20, ce qui casserait
+l'affichage et l'honnêteté de la carte. **La transcription de SM 2020 est
+donc suspendue en attendant l'arbitrage**, et c'est la seule des six épreuves
+SM de session normale qui l'est.
+
+**Trois issues possibles, à l'arbitrage de l'owner** — je n'en ai choisi
+aucune :
+
+1. **Apprendre l'option au modèle.** Ajouter un champ optionnel à
+   `source` (par exemple `groupe_choix: "A"`) et faire compter au maximum une
+   entrée par groupe dans le total. C'est la solution juste, et la plus
+   coûteuse : elle touche le schéma de banque, le validateur et l'assembleur.
+2. **N'en banquer qu'un des deux**, et dire lequel et pourquoi dans le
+   `sourcing.note` de l'autre — au prix d'un exercice vérifié laissé hors
+   corpus.
+3. **Laisser SM 2020 hors d'Examens blancs**, en la marquant explicitement
+   comme non assemblable pour cause de format à choix.
+
+**~~À vérifier avant de trancher~~ — MESURÉ le 2026-08-27.** Le balayage
+demandé ici a été fait : `docs/audits/format-a-choix.md`. Résultat, et il
+change les coûts relatifs des trois options.
+
+**Deux épreuves à choix sur 61 examinées** — et la seconde était inconnue :
+
+- **SM 2020 normale** (`element/109635`, `NS 25`) — celle décrite ci-dessus ;
+- **SM 2020 rattrapage** (`element/109639`, `RS 25`) — **fait neuf.** Le
+  census la marquait « sourcé-listé, jamais ouvert ». Format identique mot
+  pour mot (« choisir de traiter EXERCICE1 **ou bien** EXERCICE2 »), même
+  répartition 3,5 / 3,5 au choix · 3,5 · 13, même barème candidat de 20. *(La
+  coquille « EXRECICE1 » est dans le sujet officiel.)*
+
+**Le format est confiné à SM 2020.** Inexistant hors SM, inexistant en SM hors
+2020, présent sur les deux sessions de 2020. La consigne n'existe qu'en
+français ; le grep arabe donne zéro, ce que corrobore le fait structurel que
+l'arabe de la page 1 est confiné au cartouche.
+
+**Le fait le plus dur, non tracé jusqu'ici.** SM 2020 normale porte trois
+entrées (3,5 + 3,5 + 3,5) dont deux sont mutuellement exclusives : **aucun
+candidat réel ne peut dépasser 7,00** avec elles. L'assembleur en tire 10,50.
+Or `LISTEE_MIN` vaut 9,75. Donc :
+
+> **7,00 < 9,75 ≤ 10,50** — cette épreuve n'apparaît dans « Examens blancs »
+> **que grâce au sur-comptage**. Corriger le comptage la fait disparaître de
+> la liste ; elle n'aurait jamais dû y être.
+
+SM 2020 rattrapage a **zéro entrée** en banque : le même piège y est en
+attente, pas encore payé.
+
+**Ce que ça change pour les trois options** — factuellement :
+
+- **Option 3** (laisser SM 2020 hors d'Examens blancs) coûte désormais un
+  chiffre connu : **deux épreuves, les deux de 2020** — dont une qui n'est
+  visible aujourd'hui que par accident. C'est le coût le plus bas des trois.
+- **Option 1** (apprendre l'option au modèle) reste la solution juste, mais
+  son bénéfice est borné à ces deux épreuves-là, pas à une classe ouverte.
+- **Option 2** (n'en banquer qu'un des deux) coûte un exercice vérifié laissé
+  hors corpus, deux fois.
+
+**LES TROIS OPTIONS CONVERGENT SUR L'AFFICHAGE — mesuré le 2026-08-27.**
+Ce point n'est PAS en débat, et le savoir simplifie l'arbitrage. Un candidat
+réel de SM 2020 normale plafonne à **7,00** (un des deux exercices au choix,
+3,5, plus les complexes obligatoires, 3,5). Or :
+
+| option | ce que l'assembleur tirerait | listée ? |
+|---|---|---|
+| 1 — modéliser le choix (max un par groupe) | 3,5 + 3,5 = **7,00** | non |
+| 2 — n'en banquer qu'un des deux | 3,5 + 3,5 = **7,00** | non |
+| 3 — exclure l'épreuve | — | non |
+
+`LISTEE_MIN` vaut 9,75, et 7,00 lui est inférieur dans les trois cas.
+**Quelle que soit l'option retenue, SM 2020 normale disparaît de la liste.**
+
+Ce qui reste réellement à trancher n'est donc pas le sort de cette épreuve,
+mais **si le modèle de données doit apprendre la notion d'exercice optionnel**
+— ce qui ne sert qu'aux deux épreuves de 2020 aujourd'hui (option 1), ou si
+l'on se contente de les mettre de côté (options 2 et 3). C'est une question
+d'architecture, pas d'affichage.
+
+**Rien n'a été fait dans le code**, y compris sur le point non disputé :
+l'exclusion de SM 2020 passe par un mécanisme, et le mécanisme *est*
+l'arbitrage. Mais l'épreuve reste aujourd'hui affichée « 10,50 pts sur 20
+disponibles » là où aucun élève ne peut dépasser 7,00 — c'est le coût de
+l'attente, et il est réel.
+
+**La réserve du comptage, dite par le balayage lui-même :** 47 lignes restent
+non couvertes, dont **20 en SM** — la seule filière où le format existe, et 14
+de ses 36 sessions restent fermées (2010–2016 N et R). Le balayage ne prouve
+l'absence que sur ce qu'il a ouvert.
+
+**Un piège voisin, trouvé au passage et sans rapport avec le choix :** le
+sujet **PC 2014 normale** porte un défaut d'impression officiel — ses
+sous-barèmes de physique totalisent 13,5 quand l'en-tête en déclare 13. Un
+assembleur naïf y afficherait **20,5/20** le jour où ce sujet sera converti.
+Aucune épreuve du corpus ne dépasse 20 aujourd'hui ; celle-là le ferait.
+
+**Severity.** sev-2 — l'affichage est faux sur une épreuve, silencieusement,
+et il le serait davantage après conversion. Aucun risque de production.
+
+### K-7. Un `entry_id` de banque n'est unique que dans son propre fichier
+
+**Découvert le 2026-08-27**, en auditant l'assembleur d'épreuves. **Mesuré
+sur le corpus**, pas supposé. Le symptôme qui l'a révélé est corrigé ; la
+propriété, elle, reste vraie et reste un piège.
+
+**Le fait.** `bank.yaml` numérote ses entrées par la POSITION de l'exercice
+sur la copie du bac : `bk-2018-n-x1` veut dire « exercice 1 du bac 2018,
+session normale ». Deux choses en découlent, toutes deux voulues :
+
+- deux filières différentes ont chacune leur exercice 1 la même année ;
+- **un exercice découpé entre plusieurs notions garde le même identifiant
+  dans chacune** — c'est le protocole de répartition (une cross-list ne
+  devient jamais une seconde entrée, sans quoi le barème serait compté deux
+  fois et l'épreuve dépasserait 20).
+
+Au 2026-08-27 : **42 identifiants sont portés par plusieurs entrées.**
+`bk-2018-n-x1` vit dans quatre banques (`pc/electrolyse`,
+`pc/esterification-hydrolyse`, `pc/reactions-acido-basiques`,
+`maths/geometrie-espace`) ; `bk-2023-n-x1` dans six.
+
+**Ce que ça a déjà cassé.** `useExerciseRevealIds` lisait `item_id` seul et
+renvoyait un Set plat. Révéler une question de `bk-2018-n-x1` dans
+`pc/electrolyse` allumait donc « fait » sur la même question dans les trois
+autres banques — un tick fabriqué sur un exercice jamais ouvert, c'est-à-dire
+exactement ce que l'état honnête interdit. **Corrigé** : la clé porte
+maintenant la notion (`revealKey` dans `lib/student-state.ts`).
+
+**Pourquoi ça reste ouvert.** Le correctif ferme UN consommateur. La
+propriété — « `entry_id` n'identifie rien tout seul » — vaut pour tout ce qui
+viendra ensuite : reprise d'exercice, favoris, statistiques par exercice,
+mode examen persistant, export. Le journal porte déjà `notion_id` à côté de
+`item_id` ; **la règle est donc : toute lecture qui remonte à un exercice
+lit les deux colonnes, jamais `item_id` seul.**
+
+**Ce qu'il ne faut PAS faire** : rendre les identifiants globalement uniques.
+Ils encodent une position sur une copie réelle, et c'est ce qui permet à
+l'assembleur de regrouper une épreuve. Les préfixer par la notion casserait
+le lien avec le sujet et n'apporterait rien que la clé composite n'apporte
+déjà.
+
+**Piste de garde** : `validate-content` pourrait recenser les identifiants
+partagés et refuser qu'un même identifiant porte deux entrées de la MÊME
+filière-année-session dans la même notion (le seul cas réellement fautif).
+Non fait — la vraie défense est la règle de lecture ci-dessus.
+
+#### K-7 bis. Cinq identifiants mentent sur la position qu'ils encodent
+
+**Trouvé le 2026-08-27**, en mesurant l'identifiant contre le libellé imprimé
+de chaque entrée. **Aucun renommage fait** — voir pourquoi plus bas.
+
+Le suffixe `-x<N>` doit dire la place de l'exercice SUR LA COPIE, et les
+morceaux d'un exercice découpé se distinguent par une lettre (`x3`, `x3b`,
+`x3c`) — la convention existe et le corpus l'emploie déjà (`bk-2020-n-x3b`,
+`bk-2022-n-x4b`, `bk-2023-n-x4b`, `bk-2025-n-x1b`, `bk-2025-n-x4b`).
+
+Cinq entrées l'ont manquée. Toutes nommées `x1`, au sens visiblement de
+« première entrée de cette année dans CETTE notion » — ce qui n'est pas ce que
+l'identifiant veut dire :
+
+| Entrée | Notion | Le libellé imprime | Le nom juste serait |
+|---|---|---|---|
+| `bk-2020-n-x1` | `pc/noyaux-masse-energie` | Exercice **III** | `bk-2020-n-x3` |
+| `bk-2023-n-x1` | `pc/noyaux-masse-energie` | Exercice **2 §2** | `bk-2023-n-x2b` |
+| `bk-2022-n-x1` | `pc/rc-charge` | Exercice **3** | `bk-2022-n-x3` |
+| `bk-2025-n-x1` | `pc/rc-charge` | Exercice **3** | `bk-2025-n-x3` |
+| `bk-2024-n-x1` | `pc/rotation-axe-fixe` | Exercice **5**, Partie 2 | `bk-2024-n-x5b` |
+
+**Rien ne casse aujourd'hui.** Le tri des exercices et le compte affiché
+lisent le LIBELLÉ, pas l'identifiant (voir `lib/examens.ts`). Le dégât est
+qu'un identifiant qui ment sur la position ruine exactement la règle que
+BANK-SPEC §4 et K-7 viennent d'écrire — et trompe le prochain lecteur.
+
+**Pourquoi ce n'est PAS renommé, et pourquoi c'est un arbitrage owner.**
+Renommer un `entry_id` **orpheline les lignes de journal déjà écrites
+dessus** : le reveal est enregistré sous `item_id = "<entry_id>:<question_id>"`,
+et un élève qui a déjà travaillé ces exercices perdrait ses marques « fait ».
+Et le renommage **cascade** : corriger `pc/rc-charge|bk-2025-n-x1` en `x3`
+oblige à décaler `rlc-serie|bk-2025-n-x3` en `x3b` et
+`ondes-em-modulation|bk-2025-n-x3` en `x3c`. Ce n'est pas une correction
+mécanique.
+
+**Ce qui EST fait** : `validate-content` refuse désormais toute NOUVELLE
+entrée dont l'identifiant contredit son libellé, et les cinq ci-dessus sont
+nommées une par une dans un ensemble `POSITIONS_HERITEES`, avec en commentaire
+le nom juste. La dette est bornée, visible, et ne peut plus croître.
+
+### K-8. Un même sujet vit en deux endroits sans recoupement — et ça a déjà divergé
+
+**Trouvé le 2026-08-27**, en mesurant après qu'un cas se soit révélé. **Sept
+entrées le signalent elles-mêmes** ; deux cas sont déjà des contradictions
+avérées.
+
+**Le fait.** Un exercice de bac réel peut vivre à deux endroits du dépôt :
+comme entrée de banque (`bank.yaml`) et comme sommet de leçon r-bac
+(`exercises.yaml`). Les deux sont écrits séparément, souvent à des mois
+d'écart, et **rien ne les recoupe** — ni porte, ni relecture. Sept entrées
+portent un avertissement « RECOUPEMENT ASSUMÉ » écrit par leur auteur :
+
+| notion | ligne |
+|---|---|
+| `pc/controle-catalyse` | 47 |
+| `pc/ondes-em-modulation` | 70 et 135 |
+| `pc/ondes-mecaniques-progressives` | 156 |
+| `pc/rotation-axe-fixe` | 87 |
+| `pc/systemes-oscillants` | 40 |
+| `pc/transformations-lentes-rapides` | 187 |
+
+**Deux divergences AVÉRÉES, pas hypothétiques :**
+
+1. **PC 2019, la force $F$** — le sommet r-bac fournit « on prendra
+   $\sin 10° \approx 0{,}17$ » et publie **532 N** ; l'entrée de banque garde
+   $\sin 10° = 0{,}1736$ et publie **525 N**. La donnée arrondie est absente
+   de la transcription vérifiée. Deux réponses publiées pour la même question
+   du même sujet.
+
+2. **PC 2010, le temps de demi-réaction** — `bk-2010-n-x1` affiche
+   $t_{1/2} \approx 20$ min, valeur que son propre bloc « SOURCING GAP »
+   déclarait **reprise du sommet r-bac et jamais re-dérivée**. Une mesure au
+   pixel sur le bitmap d'origine (2026-08-27) donne **12,53 min**. Voir le
+   commentaire daté en tête de
+   `content/pc/transformations-lentes-rapides/bank.yaml`.
+
+**Ce que ça dit du mécanisme.** Les deux divergences ont la même origine : la
+valeur du sommet r-bac a été **reprise** dans la banque « pour rester cohérent
+avec lui », sans re-dérivation. Quand le sommet est faux, la banque hérite du
+faux — et l'avertissement écrit par l'auteur devient le seul indice qu'il
+reste.
+
+**Ce qui n'est PAS fait, et pourquoi.** Aucune valeur n'a été corrigée. Une
+valeur physique publiée ne se change pas sur une lecture unique : le cas
+PC 2010 vient d'une passe de transcription, pas d'une vérification
+indépendante, et le cas PC 2019 demande de savoir si le sujet officiel fournit
+ou non l'arrondi — ce que la transcription vérifiée dit absent, mais qui
+mérite le corrigé officiel.
+
+**Le balayage a été fait le 2026-08-27 — voici ce qu'il donne.** Pour chacune
+des **37 notions portant à la fois une banque et un `exercises.yaml`**, on
+extrait les valeurs encadrées (`\boxed{}`) des deux côtés et on compare.
+
+- **Il retrouve le cas PC 2019 tout seul** : `pc/lois-de-newton` encadre
+  **525** côté banque, absent du sommet. Le balayage marche.
+- **Il ne trouve aucun cas neuf.** Sa seule autre alerte,
+  `pc/noyaux-masse-energie` (sommet 226 contre banque 210), est un **faux
+  positif** : 226 est le *radium 226* d'un exercice de variation
+  **délibérément fabriqué** (`status: not-applicable`, « fabriqué pour
+  l'exercice »), 210 le *polonium 210* du sujet réel. Deux nucléides
+  différents, pas deux réponses au même calcul — l'heuristique a lu des
+  numéros de masse comme des résultats.
+
+**Ce que le balayage ne couvre PAS**, et qui reste ouvert : il ne voit que les
+valeurs **encadrées**, il ignore les entiers < 10, et il ne compare pas
+question par question. Le cas PC 2010 (t½) lui échappe complètement — la
+valeur n'y est pas dans un `\boxed{}`. **Il ne prouve donc pas l'absence
+d'autres divergences ; il prouve seulement qu'il n'y en a pas dans ce
+périmètre-là.**
+
+**Le balayage question par question a été tenté aussi** (apparié sur l'année
+du sujet, en comparant toutes les valeurs suivies d'une unité physique, pas
+seulement les encadrées). Il ne trouve **aucune divergence neuve** non plus,
+et son plancher de bruit est trop haut pour servir de porte. Mais il rend
+visible quelque chose qui vaut plus que son résultat : **les deux cas connus
+ne sont pas de la même nature.**
+
+| | ce que le dépôt contient | ce que ça veut dire |
+|---|---|---|
+| **PC 2019** | 532 des deux côtés, **525 côté banque seulement** | **DIVERGENCE** — les deux endroits se contredisent |
+| **PC 2010** | **20 des deux côtés**, rien d'autre | **HÉRITAGE** — la banque a repris le sommet ; le dépôt est cohérent avec lui-même *et faux ensemble* |
+| **PC 2017** | **2 kHz des deux côtés**, rien d'autre | **HÉRITAGE**, et le pire des trois — voir ci-dessous |
+
+**TROISIÈME CAS, TROUVÉ LE 2026-08-28 — et c'est le plus grave.**
+`bk-2017-n-x3` et le sommet r-bac publient $F_p = 2$ kHz ; le scan porte
+**1 kHz**. Trois preuves convergentes, dont une extérieure au dépôt :
+
+1. mesure sur la **polyligne native** de la figure (PDF natif, figures
+   vectorielles) — 22 crêtes, période moyenne **0,9962 ms** ;
+2. contrôle d'échelle **indépendant du comptage** — les repères imprimés 5 ms
+   et 15 ms sont exactement les deux minima d'enveloppe, avec 10 oscillations
+   pleines entre eux, donc $T_p = 1{,}0$ ms ;
+3. **le corrigé l'écrit mot pour mot** : « 10×Tp = 10ms alors Tp = 1ms et
+   Fp = 1000Hz ».
+
+**Pourquoi il est pire que PC 2010** : la valeur ne vit pas seulement en
+banque. Elle est dans le **sommet de leçon r-bac**, rendu aux élèves au rung
+R6 « Exercice de type bac ». Un élève la rencontre **dans le cours**, pas
+seulement dans une carte d'entraînement.
+
+**Et l'origine était écrite d'avance.** L'en-tête de la banque dit, depuis sa
+conversion, que la valeur est « reprise à l'identique de r-bac ». L'aveu était
+là ; personne n'était allé re-mesurer. C'est le troisième cas où un
+avertissement écrit par l'auteur signale exactement la valeur qui se révélera
+fausse.
+
+**Vérifié le 2026-08-28 par une passe indépendante : SEPT mesures**, dont une
+sans aucune calibration (20 franchissements entre les deux repères imprimés =
+10 périodes pour 10 ms) et une sans le PDF (le seul JPG servi). $F_p = 1\,003
+\pm 15$ Hz ; **2 kHz est à 66 σ**.
+
+**Et la nature du défaut est pire que « une réponse fausse ».** Dans
+`exercises.yaml`, la valeur est dans l'**ÉNONCÉ** : « on **relève** la période
+de l'oscillation rapide : $T_p = 0{,}5$ ms ». Elle est donnée à l'élève comme
+une **lecture de la figure** — que la figure contredit. Un élève qui lit
+vraiment le graphe trouve le double et conclut qu'il s'est trompé. Une donnée
+fabriquée posée en prémisse ne se corrige pas comme un résultat : elle apprend
+à se défier de sa propre lecture.
+
+**Conséquence méthodologique, et c'est le vrai enseignement de K-8 :** un
+contrôle **interne au dépôt** ne peut attraper que la divergence. Il est
+structurellement aveugle à l'héritage — quand une valeur fausse a été recopiée
+d'un endroit à l'autre « pour rester cohérent », plus rien dans le dépôt ne la
+contredit. **Seule une re-mesure contre le scan attrape ce cas-là**, et c'est
+exactement ce qui a révélé PC 2010.
+
+Autrement dit : aucune porte automatique ne fermera K-8. Ce qui la ferme, c'est
+de re-mesurer les valeurs graphiques sur la source la moins dégradée, sujet par
+sujet — le geste que le protocole du sas impose désormais aux transcriptions
+neuves, mais que le contenu **déjà converti** n'a jamais subi.
+
+**L'exposition, chiffrée le 2026-08-27 : 89 entrées sur 187 — soit 48 % de la
+banque — s'appuient sur une lecture de figure** (« lecture graphique », « le
+palier », « la tangente », « d'après la figure »…). Elles se concentrent sur
+21 notions, et très majoritairement en physique :
+
+| notion | entrées concernées |
+|---|---|
+| `pc/chute-mouvements-plans` | 12 |
+| `pc/rlc-serie` | 11 |
+| `pc/rc-charge` | 9 |
+| `pc/reactions-acido-basiques` | 8 |
+| `maths/fonction-logarithme` · `pc/dipole-rl` | 6 chacune |
+
+Les plus chargées en lectures : `bk-2021-r-x4b` (dipole-rl, 19 mentions),
+`bk-2022-r-x3` (18), `bk-2023-r-x3` (rc-charge, 17).
+
+**C'est une borne HAUTE, pas un décompte de valeurs à risque.** Le repérage
+attrape toute mention de figure, y compris quand le raisonnement décrit un
+schéma sans qu'aucune valeur n'en dépende. Il dit l'ordre de grandeur de la
+surface à re-mesurer, pas le nombre de valeurs fausses — ~~qui peut très bien
+être zéro. Le seul cas avéré à ce jour reste PC 2010.~~
+
+> **RECTIFIÉ LE 2026-09-03 — ces deux phrases sont fausses, et la première
+> campagne de re-mesure les a réfutées.**
+> `docs/audits/k8-remesure-2017-2019.md` a re-mesuré les **11 entrées** de
+> SPC 2017 N / 2018 N / 2019 N — la seule fenêtre où un second correcteur
+> d'une AUTRE MAIN existe (voir `docs/audits/gisement-arabophone.md` § 2.2 :
+> de 2020 à 2024, l'arabe et le français sont du même auteur, donc un seul
+> témoin).
+>
+> - **8 confirmées, 2 RÉFUTÉES**, 1 laissée au litige déjà ouvert (F_p 2017).
+> - Le nombre de valeurs fausses n'est donc pas zéro : il y en a **au moins
+>   quatre** parmi les 89, et **le taux mesuré est de 3 sur 11 (27 %)**, ce
+>   qui projette une vingtaine d'entrées suspectes parmi les 78 restantes.
+> - **La surface non re-mesurée passe de 89 à 78 entrées.**
+>
+> **`bk-2018-n-x4b` est le cas d'HÉRITAGE le plus net du corpus** — celui que
+> cette fiche décrit comme indétectable de l'intérieur, désormais attesté :
+> période et phase fausses À LA FOIS en banque et dans le sommet rendu à
+> l'élève, la banque déclarant elle-même son alignement sur le sommet. Le
+> contrôle qui tranche ne demande aucune mesure fine : la figure montre SIX
+> extrema sur 1,25 s, ce qui est impossible avec la période publiée.
+>
+> **UN TROISIÈME MODE D'ÉCHEC, à ajouter aux deux ci-dessus : LE DRAPEAU
+> PERDU.** La transcription de SPC 2018 portait « lecture d'échelle à
+> confirmer » ; la conversion a gardé la valeur et laissé la réserve
+> derrière. C'est le résultat le plus exploitable de la passe : **4 lectures
+> fausses sur 6 drapeautées, contre 1 sur 9 non drapeautées.** Trier
+> l'inventaire par **drapeau non levé**, plutôt que par nombre de mentions,
+> aurait atteint les deux entrées réfutées — c'est l'ordre de priorité que
+> la prochaine campagne doit suivre.
+>
+> Réserve nommée, qui corrige une attente naturelle : l'édition arabe n'est
+> **pas** une meilleure règle sur 2016–2019 — mesurée figure par figure, elle
+> porte le même dessin à 0,02 % près. Ce qui a permis de trancher, c'est que
+> les DEUX éditions sont vectorielles. L'échantillon reste petit (n = 11) et
+> concentré : 7 des 11 sur SPC 2018 N, où vivent les deux défauts.
+
+**Mais l'exposition est presque entièrement VISIBLE : 87 de ces 89 entrées
+appartiennent à une épreuve complète**, donc affichée à l'élève en mode examen.
+Ce n'est pas une réserve dormante dans du contenu marginal.
+
+**L'inventaire nominatif est dans `docs/audits/lectures-graphiques.md`** — les
+89 entrées avec leur notion, leur sujet, leur barème, leur nombre de mentions
+et leur appartenance à une épreuve complète, triées par coût de re-mesure. Une
+campagne s'y planifie ; un chiffre global, non.
 
 ### K-1. `get_user_weak_areas` function references missing columns
 **Source.** `backend/supabase/migrations/004_exam_analytics_and_sync.sql`,

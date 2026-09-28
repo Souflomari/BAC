@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 290" width="680" height="290"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Rupture du courant dans un dipôle RL : décroissance exponentielle i(t) de I_max vers zéro, tangente à l’origine coupant l’axe des temps en τ', et niveau horizontal 0,37 fois I_max rencontrant la courbe exactement en τ'.">
+  <title>Rupture du courant i(t) — décroissance exponentielle</title>
+  <!--
+    rupture-i-decroissante.svg — graphe de i(t) = I_max e^(-t/τ') pendant la
+    RUPTURE du courant (interrupteur rouvert) dans un dipôle RL — le miroir
+    décroissant de i-etablissement.svg, même leçon (content/pc/dipole-rl/
+    lesson.md, "Exemple numérique de la rupture"). STAGED (LESSON-EXPERIENCE
+    -SPEC §2.5 — un graphe est TOUJOURS staged, axes → données → lecture) :
+      step-1 : le repère — axes t (ms) / i (mA), repère I_max en chrome neutre
+      step-2 : les données — la courbe i(t) et sa formule
+      step-3 : la lecture — la tangente à l'origine (coupe l'axe des temps
+               en τ'), ET le niveau 0,37·I_max (rencontre la courbe en τ') —
+               deux constructions indépendantes, la même valeur de τ'
+
+    Données numériques (texte) : I_max = 100 mA, R' = R_d + r = 210 Ω,
+      τ' = L/R' = 0,3/210 ≈ 1,43×10⁻³ s ≈ 1,43 ms
+      i(τ') = I_max·e⁻¹ ≈ 0,37·I_max = 37 mA
+
+    Repère écran (calculé, pas deviné) :
+      origine des axes (t=0, i=0) : (80, 208)  — même corner que
+        i-etablissement.svg (axes en L, i ne redevient jamais négatif)
+      point de départ (t=0, i=I_max) : (80, 70)  → hauteur pleine = 138 px
+      échelle temporelle : τ'_px = 120 px  (1 τ' = 120 px sur x, pas=20px=τ'/6)
+
+    Courbe : polyligne calculée EXACTEMENT via i/I_max = e^(-t/τ') aux pas
+    t = k·τ'/6 (k=0..26), x = 80+20k, y = 208 − 138×e^(−k/6) — jamais une
+    bézier devinée. Valeurs (k, x, y) :
+      0,80,70.0   1,100,91.2   2,120,109.1  3,140,124.3  4,160,137.1
+      5,180,148.0 6,200,157.2  7,220,165.0  8,240,171.6  9,260,177.2
+      10,280,181.9 11,300,185.9 12,320,189.3 13,340,192.2 14,360,194.6
+      15,380,196.7 16,400,198.4 17,420,199.9 18,440,201.1 19,460,202.2
+      20,480,203.1 21,500,203.8 22,520,204.5 23,540,205.0 24,560,205.5
+      25,580,205.9 26,600,206.2
+
+    Tangente à l'origine : pente = −hauteur/τ'_px = −138/120 = −1,15.
+    Partant de (80,70), elle atteint EXACTEMENT (80+120, 70+138) = (200,208)
+    — l'axe des temps — en t = τ'. Propriété vérifiée par construction, pas
+    une approximation graphique.
+
+    Niveau 0,37·I_max : au même x=200 (t=τ'), la courbe réelle (k=6) vaut
+    y=157,2 — soit i/I_max = (208−157,2)/138 = 0,3681 ≈ e⁻¹. La ligne
+    horizontale à cette hauteur, tracée depuis l'axe i jusqu'à x=200,
+    rencontre donc la courbe EXACTEMENT au même x que la tangente rencontre
+    l'axe des temps : les deux constructions, indépendantes, donnent le
+    même τ'.
+
+    Rôle des couleurs (cohérent avec i-etablissement.svg) :
+      courbe i(t)                              : --figure-accent
+      tangente à l'origine + repère τ'          : --figure-energy-L (écho :
+        τ' = L/R')
+      niveau 0,37·I_max, guides, repère I_max   : --figure-ink-soft (chrome)
+      point de rencontre niveau/courbe          : --figure-accent (posé sur
+        la courbe, même couleur qu'elle)
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le repère : axes, repère I_max
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="330" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Rupture du courant — décroissance i(t)
+    </text>
+
+    <!-- Fond du panneau -->
+    <rect x="40" y="32" width="590" height="200" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Axes -->
+    <line x1="80" y1="208" x2="604" y2="208"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="616,208 604,203.5 604,212.5" fill="var(--figure-ink-soft)"/>
+    <line x1="80" y1="208" x2="80" y2="50"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+    <text x="624" y="212" font-size="11" fill="var(--figure-ink-soft)">
+      <tspan font-style="italic">t</tspan><tspan font-size="9"> (ms)</tspan>
+    </text>
+    <text x="72" y="54" text-anchor="end" font-size="11" fill="var(--figure-ink-soft)">
+      <tspan font-style="italic">i</tspan><tspan font-size="9"> (mA)</tspan>
+    </text>
+    <text x="72" y="212" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Repère I_max (chrome neutre — la borne de départ, pas encore "la lecture") -->
+    <line x1="76" y1="70" x2="84" y2="70"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="90" y="64" font-size="10.5"
+          fill="var(--figure-ink-soft)">I<tspan dy="3" font-size="7.5">max</tspan><tspan
+          dy="-3"> = 100 mA</tspan></text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — les données : la courbe i(t) et sa formule
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Boîte formule -->
+    <rect x="260" y="40" width="230" height="32" rx="5"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="375" y="61" text-anchor="middle" font-size="13" font-style="italic"
+          fill="var(--figure-accent)">i(t) = I<tspan
+          dy="4" font-size="9">max</tspan><tspan
+          dy="-4"> e</tspan><tspan
+          dy="-5" font-size="9">-t/τ'</tspan>
+    </text>
+
+    <!-- Courbe i(t) — polyligne calculée, pas=20px (=τ'/6), de t=0 à t≈4,3τ' -->
+    <path d="
+      M80,70
+      L100,91.2  L120,109.1 L140,124.3 L160,137.1 L180,148.0
+      L200,157.2 L220,165.0 L240,171.6 L260,177.2 L280,181.9
+      L300,185.9 L320,189.3 L340,192.2 L360,194.6 L380,196.7
+      L400,198.4 L420,199.9 L440,201.1 L460,202.2 L480,203.1
+      L500,203.8 L520,204.5 L540,205.0 L560,205.5 L580,205.9
+      L600,206.2
+    " fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la lecture : tangente (τ') et niveau 0,37·I_max
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!--
+      Tangente à l'origine — droite exacte de (80,70) [pente = -hauteur/τ'_px]
+      jusqu'à (200,208), où elle rencontre l'axe des temps pile en t = τ'.
+    -->
+    <line x1="80" y1="70" x2="200" y2="208"
+          stroke="var(--figure-energy-L)" stroke-width="1.8"
+          stroke-dasharray="6,4" stroke-linecap="round"/>
+
+    <!-- Repère τ' sur l'axe des temps -->
+    <line x1="200" y1="204" x2="200" y2="212"
+          stroke="var(--figure-energy-L)" stroke-width="1.6"/>
+    <text x="200" y="225" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-energy-L)">τ' ≈ 1,43 ms</text>
+
+    <!-- Niveau horizontal 0,37·I_max, depuis l'axe i jusqu'à la courbe -->
+    <line x1="80" y1="157.2" x2="200" y2="157.2"
+          stroke="var(--figure-ink-soft)" stroke-width="1.1" stroke-dasharray="5,3"/>
+    <line x1="76" y1="157.2" x2="84" y2="157.2"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <!-- Repère vertical reliant le point de la courbe au repère τ' de l'axe -->
+    <line x1="200" y1="157.2" x2="200" y2="204"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+
+    <!-- Point : la courbe réelle rencontre le niveau 0,37·I_max, en t = τ' -->
+    <circle cx="200" cy="157.2" r="3.2" fill="var(--figure-accent)"/>
+    <line x1="204" y1="153" x2="248" y2="130"
+          stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="254" y="133" font-size="9.5" fill="var(--figure-ink)">i(τ') ≈ 0,37 · I<tspan
+          dy="3" font-size="7">max</tspan><tspan dy="-3"> ≈ 37 mA</tspan></text>
+    <text x="254" y="146" font-size="9" fill="var(--figure-ink-soft)">(méthode des 37 %)</text>
+  </g><!-- /step-3 -->
+
+</svg>

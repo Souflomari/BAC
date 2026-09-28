@@ -1,0 +1,671 @@
+# Antigravity — mode d'emploi pas à pas
+
+Ce document est fait pour être suivi **pendant** le travail, écran à
+côté. Il répond à deux questions : comment brancher le dépôt, et quoi
+taper exactement à l'agent.
+
+À lire une fois avant de commencer : `docs/ops/DISTRIBUTED-BUILD.md`
+(le pourquoi). L'agent, lui, lit `docs/ops/SCENE-CONTRACT.md` (le
+comment).
+
+> **Mise à jour, confirmé en direct le 2026-08-12 sur une machine
+> Windows sans droits admin :** Git Bash n'est **plus nécessaire**.
+> Le rendu, `scene-lint.py`, `bank-fidelity.py` et `make-work-order.py`
+> tournent tous en PowerShell natif — confirmé par un rendu complet de
+> la scène pilote (38 sections, 177 animations, signature identique à
+> la version validée). Seules les boucles d'extraction d'images de
+> l'audit (§4 du contrat) utilisent une syntaxe bash à traduire : voir
+> **§0quater** pour l'équivalent PowerShell. §0bis/§0ter restent utiles
+> si tu préfères Git Bash malgré tout, mais ce n'est plus un blocage.
+
+---
+
+## §0. Brancher le dépôt sur GitHub
+
+**Oui, ça marche — et sans rien de spécial.** Antigravity est un
+éditeur local (dérivé de VS Code) : il travaille sur un **clone local**
+du dépôt. Git y est git. Il n'y a pas de « connecteur GitHub » à
+configurer : il y a un dossier, une télécommande, des commits.
+
+### Première fois
+
+```bash
+git clone https://github.com/Souflomari/BAC.git
+cd BAC
+git checkout claude/vibrant-fermi-v1lxj5     # la branche de travail en cours
+git pull
+```
+
+Puis « Open Folder » sur `BAC` dans Antigravity.
+
+- L'authentification GitHub se fait comme dans VS Code : le panneau
+  Source Control propose de se connecter, ou bien on utilise un
+  **Personal Access Token** en HTTPS, ou une **clé SSH** déjà en place.
+  Si `git push` marche depuis le terminal intégré, tout est bon : c'est
+  le seul test qui compte.
+- **Reste sur `claude/vibrant-fermi-v1lxj5`.** La PR #2 est ouverte
+  dessus ; y pousser fait avancer la même PR, et la CI (`gates.yml`)
+  se déclenche toute seule à chaque push.
+
+### Rythme
+
+- `git pull` **avant** de lancer un agent.
+- Un commit par bon de travail terminé, puis `git push`.
+- Si deux agents ont tourné en parallèle, pousser l'un après l'autre :
+  les seuls fichiers partagés sont `animations/manifest.yaml` (une
+  ligne par scène) et `work-orders/LEDGER.md` (append-only). Les
+  conflits, s'il y en a, se règlent à la main en dix secondes.
+
+---
+
+## §0bis. Sur Windows — régler le shell AVANT toute autre installation
+
+**Rencontré en direct, 2026-08-12 : PowerShell fait tout échouer ici.**
+`animations/render.sh` est un script bash (`#!/usr/bin/env bash`), et
+toutes les commandes de ce document et des bons de travail utilisent
+la syntaxe bash (`VAR=valeur commande`, `$(...)`, `for f in $(ls …)`).
+PowerShell ne comprend rien de tout ça — ni `./render.sh` directement,
+ni `QUALITY=l ./render.sh …`.
+
+**Le remède : utiliser Git Bash, pas PowerShell**, pour tout ce qui
+touche au dépôt. Git Bash est installé automatiquement avec « Git for
+Windows » — donc déjà présent, puisque `git clone` a fonctionné.
+
+1. Dans Antigravity : palette de commandes → *Terminal: Select Default
+   Profile* → choisir **Git Bash**. Fermer le terminal PowerShell
+   ouvert, en rouvrir un neuf : il doit s'ouvrir en Git Bash
+   (l'invite ressemble à `soufiane.lomari@MACHINE MINGW64 ~/BAC`).
+2. **Faire ça avant de lancer le moindre agent** — les agents héritent
+   du terminal par défaut, et chaque commande d'un bon de travail est
+   écrite en bash.
+3. Si Git Bash n'apparaît pas dans la liste des profils : ouvrir le
+   menu Démarrer de Windows, chercher « Git Bash », l'épingler — il
+   est installé, juste pas encore proposé par Antigravity tant qu'on
+   ne l'a pas ouvert une fois.
+
+**Deux outils supplémentaires à installer, spécifiquement sur
+Windows** (ni l'un ni l'autre n'est fourni par Git Bash) :
+
+- **Docker Desktop** — https://docker.com/products/docker-desktop.
+  L'installeur propose d'activer WSL2 : accepter, redémarrer si
+  demandé. Vérifier ensuite, **dans Git Bash** :
+  ```bash
+  docker --version
+  ```
+  Si l'installation de Docker Desktop n'est pas possible (pas de
+  droits admin, virtualisation désactivée au BIOS) : la voie native de
+  `animations/SETUP.md` reste ouverte, mais LaTeX sur Windows (MiKTeX)
+  est un téléchargement de plusieurs gigaoctets — prévoir le temps.
+- **ffmpeg** (indispensable : c'est lui qui extrait les images pour
+  l'audit) :
+  ```bash
+  winget install ffmpeg
+  ```
+  (`winget` est intégré à Windows 10/11 ; sinon, télécharger un build
+  sur ffmpeg.org et l'ajouter au PATH). Vérifier : `ffmpeg -version`.
+
+**Une fois Git Bash + Docker + ffmpeg en place**, reprendre le §1
+ci-dessous DANS Git Bash — les commandes sont écrites pour lui.
+
+---
+
+## §0ter. Pas de droits administrateur — tout en mode utilisateur
+
+**Rencontré en direct, 2026-08-12.** Ni Docker Desktop ni `wsl
+--install` ne fonctionnent sans droits admin (les deux installent un
+service système / activent une fonctionnalité Windows). **Aucun des
+deux n'est donc utilisable ici.** La voie native (pas de Docker,
+manim + LaTeX installés en direct) reste ouverte : chacune de ses
+pièces sait s'installer **par utilisateur**, sans élévation.
+
+Cinq installations, dans cet ordre, chacune avec sa vérification.
+
+### 1. Git Bash — version « portable » (pas d'installeur)
+https://git-scm.com/download/win → section *Portable ("thumbdrive
+edition")*, build 64-bit. C'est une archive auto-extractible : on
+choisit un dossier (ex. `C:\Users\<toi>\PortableGit`), on double-clique,
+zéro admin. `git-bash.exe` s'y trouve directement.
+```bash
+"C:\Users\<toi>\PortableGit\git-bash.exe"   # lance le shell
+```
+
+### 2. Python — installeur officiel, mode « pour moi seulement »
+https://python.org/downloads/windows → télécharger → lancer
+l'installeur **sans** cocher « Install for all users » (c'est déjà
+décoché par défaut dans le mode rapide « Install Now ») → il s'installe
+dans `%LocalAppData%\Programs\Python\...`, sans admin.
+*(Alternative encore plus simple : Microsoft Store → « Python 3.12 » →
+Installer — jamais d'admin requis pour un Store app.)*
+```bash
+python --version
+```
+
+### 3. manim, dans un environnement virtuel (isolé, propre)
+Dans Git Bash :
+```bash
+python -m venv ~/manim-venv
+source ~/manim-venv/Scripts/activate
+pip install manim
+manim --version
+```
+Ce venv remplace toutes les commandes `manim ...` du contrat et des
+bons — l'activer (`source ~/manim-venv/Scripts/activate`) en début de
+session Git Bash.
+
+### 4. MiKTeX (LaTeX) — mode privé, par utilisateur
+https://miktex.org/download → télécharger l'installeur Windows → le
+lancer : il propose explicitement un mode **« Install MiKTeX only for
+me »** (mode privé, documenté par MiKTeX lui-même pour ce cas exact —
+aucune élévation). Accepter aussi l'option « toujours installer les
+paquets manquants à la volée » si proposée : la scène n'a besoin que
+d'un gabarit LaTeX minimal (`bac_style.py`), pas d'une distribution
+complète.
+```bash
+latex --version
+```
+
+### 5. ffmpeg — build statique, PATH utilisateur
+Télécharger un build Windows statique (ex.
+https://www.gyan.dev/ffmpeg/builds/, lien « release essentials »),
+extraire dans un dossier perso (ex. `C:\Users\<toi>\ffmpeg`). Puis
+ajouter son `bin\` au PATH **utilisateur** (pas « variables système » —
+celui-là ne demande pas d'admin) :
+- soit via l'interface : *Paramètres système* → *Variables
+  d'environnement* → section du HAUT (« Variables utilisateur »,
+  jamais celle du bas) → `Path` → *Nouveau* → coller le chemin du
+  `bin\` ;
+- soit en une commande, dans Git Bash :
+  ```bash
+  setx PATH "$PATH;C:\Users\<toi>\ffmpeg\bin"
+  ```
+**Fermer et rouvrir** le terminal après cette étape (le PATH ne se
+recharge pas dans une fenêtre déjà ouverte).
+```bash
+ffmpeg -version
+```
+
+### Vérification finale
+```bash
+source ~/manim-venv/Scripts/activate
+manim checkhealth     # doit confirmer ffmpeg ET LaTeX trouvés
+```
+Puis le test de rendu du §1.1, en natif (sans Docker, `MODE=local` le
+force au besoin) :
+```bash
+cd animations
+QUALITY=l MODE=local ./render.sh scenes/maths/nombres-complexes-1/bk-2018-n-x2.py
+cd ..
+```
+
+### Si un installeur refuse même de s'exécuter (pas juste une demande d'admin)
+C'est un signal différent — une politique de restriction logicielle
+(AppLocker/WDAC), plus stricte que le simple manque de droits admin.
+Aucune des étapes ci-dessus n'y changera rien : il faut alors demander
+à qui gère la machine d'installer ces cinq outils, ou basculer la
+totalité du travail de rendu vers une autre machine / un environnement
+distant. Le signaler plutôt que de s'acharner.
+
+---
+
+## §0quater. La voie 100% PowerShell — confirmée en direct
+
+**Bonne nouvelle constatée en conditions réelles :** tout ce dépôt
+tourne en PowerShell natif. La quasi-totalité des commandes du contrat
+et des bons de travail n'a besoin d'AUCUNE traduction : un appel
+`python scripts\....py ...` ou `ffmpeg -i ... -y sortie.png` est
+identique dans les deux mondes. Seule la syntaxe de **contrôle** de
+bash — boucles, substitution de commande, arithmétique inline — a
+besoin d'un équivalent. Deux motifs couvrent l'essentiel de ce qui
+revient dans l'audit (contrat §4).
+
+### Rendu direct, sans `render.sh`
+`render.sh` est un script bash ; son équivalent PowerShell (calcule le
+même `--media_dir` par matière-notion et ajoute `--save_sections`) :
+```powershell
+cd animations
+manim render scenes\<matiere>\<notion>\<id>.py Explication `
+    --quality l --media_dir "media\<matiere>-<notion>" --save_sections
+cd ..
+```
+(`` ` `` en fin de ligne = continuation de ligne PowerShell, comme `\`
+en bash. `--quality` : `l`=brouillon, `m`=final de travail,
+`h`=livraison.)
+
+### Motif A — dernière image de CHAQUE section (planches de contact)
+Bash (contrat §4) → PowerShell :
+```powershell
+$S = "$HOME\audit"; New-Item -ItemType Directory -Force -Path $S | Out-Null
+$D = "media\<matiere>-<notion>\videos\<id>\480p15\sections"
+$i = 0
+Get-ChildItem "$D\*.mp4" | Sort-Object Name | ForEach-Object {
+    $i++
+    ffmpeg -sseof -0.15 -i $_.FullName -frames:v 1 -y ("{0}\f{1:D2}.png" -f $S, $i) -loglevel error
+}
+```
+
+### Motif B — image au MILIEU d'une section (gestes transitoires — arcs qui se tracent, transformations)
+```powershell
+$f = (Get-ChildItem "$D\*_20-*.mp4")[0].FullName   # « 20 » = le numéro d'étape voulu
+$duree = [double](ffprobe -v error -show_entries format=duration -of csv=p=0 $f)
+ffmpeg -ss ($duree * 0.5) -i $f -frames:v 1 -y "$S\mid20.png" -loglevel error
+```
+
+### Motif C — planche 2×2 (montage de quatre images)
+Identique en PowerShell, aucune traduction — c'est un simple appel de
+programme :
+```powershell
+ffmpeg -i f01.png -i f02.png -i f03.png -i f04.png `
+    -filter_complex "[0][1]hstack[t];[2][3]hstack[b];[t][b]vstack" `
+    -y sheet1.png -loglevel error
+```
+
+### Ce qui NE demande jamais de traduction
+`python scripts\scene-lint.py ...`, `python scripts\bank-fidelity.py
+...`, `python scripts\make-work-order.py ...`, `git ...`, `manim
+render ...` — ce sont des appels de programme ordinaires, identiques
+dans les deux shells. Seuls les motifs A et B ci-dessus (boucle +
+arithmétique) demandaient réellement une traduction.
+
+---
+
+## §1. Installation, une seule fois
+
+### 1.1 La chaîne de rendu
+
+C'est le vrai coût d'installation. Deux voies, détaillées dans
+`animations/SETUP.md` :
+
+- **Docker (recommandé)** — zéro dépendance à gérer, LaTeX compris :
+  ```bash
+  docker pull manimcommunity/manim:stable
+  ```
+  `animations/render.sh` détecte tout seul (`MODE=auto`) et bascule sur
+  Docker si `manim` n'est pas installé en natif.
+- **Natif** — plus rapide à l'usage, mais il faut Python ≥ 3.10,
+  FFmpeg, LaTeX et Cairo/Pango. Voir `SETUP.md` pour la ligne
+  d'installation de chaque système.
+
+**Test d'installation** (doit produire une vidéo en moins de deux
+minutes) :
+```bash
+cd animations
+QUALITY=l ./render.sh scenes/maths/nombres-complexes-1/bk-2018-n-x2.py
+```
+
+### 1.2 Les portes doivent tourner
+
+```bash
+python scripts/scene-lint.py --all
+python scripts/bank-fidelity.py content/maths/suites-numeriques/bank.yaml \
+    bk-2020-n-x1 animations/scenes/maths/suites-numeriques/bk-2020-n-x1.py
+```
+
+La première commande affiche **1 erreur attendue** (`bk-2023-n-x4.py`,
+en cours d'écriture — 653/1700 lignes, voir `BT-002` partie B) — le
+reste doit être vert ; la seconde doit afficher « ✓ porte 4
+franchie ». Si ces deux commandes tournent, l'outillage est en place.
+
+### 1.3 LE test qui décide de tout : l'agent voit-il les images ?
+
+**Toute l'économie du plan repose là-dessus.** La porte 3 — l'audit
+image par image — est la seule qui ne peut pas être automatisée. Si
+l'agent ne peut pas *regarder* un PNG, il faudra me renvoyer les
+audits, et le gain s'effondre.
+
+Fais ce test **avant** de lancer quoi que ce soit d'autre. Rends une
+scène déjà validée, extrais une image, et demande à l'agent de la
+décrire :
+
+```bash
+cd animations
+QUALITY=l ./render.sh scenes/maths/suites-numeriques/bk-2020-n-x1.py
+cd ..
+ffmpeg -sseof -0.15 -i animations/media/maths-suites-numeriques/videos/bk-2020-n-x1/480p15/sections/*_20-*.mp4 \
+  -frames:v 1 -y /tmp/test-vision.png
+```
+
+Puis, à l'agent :
+
+> Ouvre `/tmp/test-vision.png` et décris précisément ce que tu vois :
+> combien de droites graduées, où sont les points et leurs étiquettes,
+> et si une étiquette en chevauche une autre.
+
+**S'il décrit correctement l'image** → tout le plan tient, continue.
+**S'il ne peut pas l'ouvrir** → dis-le-moi : on bascule la porte 3 sur
+Claude (échantillonnée, pas systématique) et on ajuste le budget.
+
+---
+
+## §2. Le préambule permanent
+
+À coller **en tête de chaque agent**, avant le bon de travail. C'est ce
+qui tient la qualité.
+
+```
+Tu travailles sur le dépôt BAC, une application de préparation au
+baccalauréat marocain. Lis d'abord `docs/ops/SCENE-CONTRACT.md` EN
+ENTIER : c'est la loi de fabrication, et chacune de ses règles vient
+d'un défaut réel constaté à l'écran. Exécute ensuite le bon de travail
+que je te donne.
+
+Règles absolues :
+- TOUT le contenu produit est en FRANÇAIS : commentaires de code,
+  légendes, narration, messages de commit.
+- Ne touche à AUCUN fichier que le bon ne nomme pas.
+- Ne modifie ni le contrat, ni `animations/bac_scene.py`, ni une scène
+  déjà marquée `validé` au manifeste — sauf si le bon le demande
+  explicitement.
+- La banque (`content/**/bank.yaml`) est la source de vérité et elle
+  est VÉRIFIÉE : chaque nombre, chaque formule s'y recopie chiffre pour
+  chiffre. Si elle te semble incohérente, ARRÊTE-toi et écris-le dans
+  le bloc RÉSULTAT. Ne la corrige jamais.
+- Écris le code par tranches d'environ 120 lignes, jamais un fichier
+  entier d'un seul coup.
+- Franchis les six portes du contrat DANS L'ORDRE et colle la SORTIE
+  RÉELLE de chacune dans le bloc RÉSULTAT du bon. Ne déclare jamais
+  une porte franchie sans sa sortie.
+- Un seul rendu Manim à la fois sur cette machine.
+
+Quand tu as fini, remplis le bloc RÉSULTAT du bon, ajoute une ligne à
+`work-orders/LEDGER.md`, et fais UN commit.
+```
+
+---
+
+## §3. Les prompts, dans l'ordre
+
+**Deux façons d'utiliser cette section :**
+- **Pas à pas** — un prompt par bon, tu regardes entre deux (Étapes 1
+  à 6 ci-dessous). Le plus sûr, le plus lent.
+- **Session autonome du week-end** — un seul prompt, l'agent enchaîne
+  tout seul les bons dans l'ordre de `LEDGER.md` sans attendre que tu
+  reviennes taper la suite. C'est **§3bis**, juste après cette
+  section — lis-le si c'est ce que tu veux faire.
+
+### Étape 1 — `BT-000` : les gardes structurels
+
+> [préambule du §2]
+>
+> Exécute `work-orders/BT-000-gardes-structurels.md`.
+
+**Pourquoi en premier :** ce bon monte dans la classe de base les deux
+remèdes aux défauts les plus coûteux de la campagne. Toutes les scènes
+écrites ensuite en héritent gratuitement. Une heure de travail qui en
+économise des dizaines.
+
+**Ce que tu vérifies après :** les 16 scènes se chargent toujours, et
+un rendu témoin donne toujours 43 sections. Le bon le fait dire à
+l'agent — vérifie que la sortie est bien collée.
+
+---
+
+### Étape 2 — `BT-001` : les graduations
+
+> [préambule du §2]
+>
+> Exécute `work-orders/BT-001-graduations.md`. Travaille notion par
+> notion et fais un commit par notion (quatre commits en tout).
+
+**C'est ta remarque sur les axes sans nombres.** Le lint confirme
+qu'elle vaut pour les 14 scènes validées.
+
+**Le piège de ce bon :** une graduation qui atterrit sous un point déjà
+étiqueté est un défaut, et le lint ne peut pas le voir. L'agent DOIT
+regarder les images des étapes où la figure est visible. Si son bloc
+RÉSULTAT ne liste aucune collision trouvée sur 14 scènes, demande-lui
+de refaire le contrôle visuel.
+
+---
+
+### Étape 3 — `BT-003` : re-vérifier les graduations déjà posées
+
+> [préambule du §2]
+>
+> Exécute `work-orders/BT-003-audit-graduations-existantes.md`.
+
+**PRIORITÉ 1, avant tout le reste.** Un défaut réel de
+`self.graduations()` a été trouvé et corrigé le 2026-08-13 (le trait
+des axes pouvait disparaître, et les nombres de graduation n'étaient
+JAMAIS visibles, dans aucun rendu — voir le bon pour le détail). Le
+correctif est déjà dans `bac_scene.py` et déjà vérifié sur 2 scènes ;
+il reste à re-rendre et re-vérifier visuellement les 11 autres. C'est
+un travail MÉCANIQUE (pas de retouche de scène attendue) : bon
+premier bon pour vérifier que la chaîne de rendu + audit-image
+fonctionne avant d'attaquer l'écriture.
+
+---
+
+### Étape 4 — `BT-002` : fermer le bloc fonction-logarithme (4 parties)
+
+> [préambule du §2]
+>
+> Exécute `work-orders/BT-002-scenes-en-cours.md`, les quatre parties
+> dans l'ordre (A → B → C → D), chacune jusqu'à son commit avant de
+> passer à la suivante.
+
+Quatre entrées de la même notion, la comparaison de modèles demandée
+par l'owner : A = finir les correctifs d'audit de `bk-2019-n-x4`
+(Sonnet) ; B = finir l'écriture de `bk-2023-n-x4` (Opus, 653/1700
+lignes) ; C = auditer `bk-2021-n-x4` (Sonnet, jamais audité) ; D =
+écrire `bk-2024-n-x4` de zéro (l'échantillon « Fable », jamais
+commencé).
+
+---
+
+### Étape 5 — le flot normal (à répéter ~36 fois)
+
+C'est le prompt que tu utiliseras le plus. Un bon, un agent.
+
+> [préambule du §2]
+>
+> Exécute `work-orders/BT-<notion>-<entrée>.md`.
+
+Les bons existent déjà, tous générés, dans l'ordre exact de
+`LEDGER.md` (colonne `#`) :
+
+```bash
+cat work-orders/LEDGER.md       # où on en est, dans l'ordre à suivre
+```
+
+**L'ordre** est celui déjà couché dans `LEDGER.md` : les six entrées
+`nombres-complexes-2` restantes → fonction-exponentielle →
+calcul-integral → equations-differentielles → denombrement →
+probabilites-conditionnelles → arithmetique → structures-algebriques →
+geometrie-espace (la 3D en dernier, c'est la plus dure).
+
+**Combien en parallèle ?** Deux ou trois agents, sur des bons
+différents — mais **un seul rendu à la fois**. En pratique : lance
+l'agent B pendant que l'agent A audite ses images (l'audit ne rend
+rien).
+
+---
+
+### Étape 6 — quand un agent bloque
+
+**Il signale une incohérence de banque :**
+> Ne modifie pas la banque. Écris précisément dans le bloc RÉSULTAT :
+> la ligne concernée, ce que dit la banque, ce que tu attendais, et
+> pourquoi. Puis passe à la question suivante en laissant celle-là de
+> côté, et signale-la dans ton commit.
+
+C'est un point d'arbitrage : il remonte à Claude, pas à l'agent.
+
+**Un rendu échoue bizarrement (erreur dvisvgm, LaTeX, fichier absent) :**
+> Relance le rendu SEUL, sans rien changer au code, et dis-moi ce que
+> donne la seconde tentative.
+
+Une course entre deux rendus simultanés a déjà fait échouer un rendu
+parfaitement sain. **Ne jamais diagnostiquer un échec de rendu avant de
+l'avoir relancé seul.**
+
+**Le lint refuse de passer :**
+> Corrige la cause, pas le symptôme. N'ajoute jamais d'exception au
+> lint et ne modifie pas `scripts/scene-lint.py` : si tu penses que la
+> règle elle-même est fausse, arrête-toi et explique pourquoi.
+
+---
+
+## §3bis. La session autonome du week-end
+
+Pensé pour une seule longue session, sans toi pour retaper un prompt
+entre chaque bon. **Un seul message à coller à l'agent** — il choisit
+lui-même le bon suivant en lisant `LEDGER.md`, l'exécute en entier,
+committe, pousse, met le ledger à jour, et enchaîne — jusqu'à la fin de
+la file ou un vrai point d'arbitrage.
+
+### Ce qui change par rapport au flot pas-à-pas
+- **Tu ne dis plus quel bon exécuter** : l'agent le lit dans
+  `LEDGER.md` (§ « Comment choisir le prochain bon » en tête du
+  fichier).
+- **Il n'attend pas ton feu vert entre deux bons** : un bon fini →
+  ledger mis à jour → commit → push → directement le suivant.
+- **Un blocage n'arrête pas toute la session** : une incohérence de
+  banque, une question de cadre — ça se note et ça se laisse de côté
+  (comme `§3 Étape 6`), et l'agent passe au bon suivant. Le seul arrêt
+  légitime de toute la session, c'est la file vide.
+- **Claude n'est pas dans la boucle pendant la session.** L'échantillon
+  d'acceptation (relire une scène du lot en détail) et la vérification
+  adversariale d'une transcription restent son travail — mais après
+  coup, sur ce que la session aura produit, pas en temps réel ce
+  week-end. Ne bloque pas l'agent en attendant un avis qui ne viendra
+  pas pendant la session.
+
+### Le prompt (à coller tel quel, une seule fois)
+
+```
+Tu travailles sur le dépôt BAC, une application de préparation au
+baccalauréat marocain, pour une LONGUE session autonome (potentiellement
+tout un week-end). Tu vas enchaîner PLUSIEURS bons de travail À LA
+SUITE, sans qu'on te redonne le prochain — c'est à toi de le trouver.
+
+AVANT TOUTE CHOSE, lis en entier :
+1. `docs/ops/SCENE-CONTRACT.md` — la loi de fabrication. Chaque règle
+   vient d'un défaut réel constaté à l'écran.
+2. `work-orders/LEDGER.md` — la file de travail et son ordre. Le
+   paragraphe « Comment choisir le prochain bon » en tête du fichier
+   t'explique comment repérer où reprendre.
+
+RÈGLES ABSOLUES (valables pour TOUS les bons de cette session) :
+- TOUT le contenu produit est en FRANÇAIS : commentaires de code,
+  légendes, narration, messages de commit.
+- Ne touche à AUCUN fichier qu'un bon ne nomme pas.
+- Ne modifie ni le contrat, ni `animations/bac_scene.py`, ni une scène
+  déjà marquée `validé` au manifeste — sauf si le bon en cours le
+  demande explicitement.
+- La banque (`content/**/bank.yaml`) est la source de vérité et elle
+  est VÉRIFIÉE : chaque nombre, chaque formule s'y recopie chiffre pour
+  chiffre. Si elle te semble incohérente, N'ÉCRIS JAMAIS dedans :
+  note précisément le désaccord dans le bloc RÉSULTAT du bon, laisse
+  cette question de côté, et passe à la suite de CE bon (ou au bon
+  suivant si c'est tout le bon qui est bloqué).
+- Écris le code par tranches d'environ 120 lignes, jamais un fichier
+  entier d'un seul coup (un agent est déjà mort sur ce point).
+- Franchis les six portes du contrat DANS L'ORDRE et colle la SORTIE
+  RÉELLE de chacune dans le bloc RÉSULTAT du bon. N'affirme jamais
+  qu'une porte est franchie sans coller sa sortie.
+- La porte 3 (audit image par image) est EXHAUSTIVE, pas un
+  échantillon : la dernière image de CHAQUE section au minimum. Zéro
+  défaut trouvé sur une scène longue est suspect — regarde vraiment.
+- Un seul rendu Manim à la fois sur cette machine.
+- Si un rendu échoue bizarrement (erreur dvisvgm, LaTeX, fichier
+  absent) : relance-le SEUL, sans rien changer au code, avant de
+  diagnostiquer quoi que ce soit — une course entre deux rendus
+  simultanés a déjà fait échouer un rendu parfaitement sain.
+- Ne modifie jamais `scripts/scene-lint.py` pour faire passer un lint
+  qui refuse : corrige la cause. Si tu penses la règle elle-même
+  fausse, arrête-toi sur CE point précis et note-le, mais continue le
+  reste du bon.
+
+LA BOUCLE DE LA SESSION — répète jusqu'à la file vide :
+1. `git pull` (un autre agent a pu pousser entre-temps).
+2. Ouvre `work-orders/LEDGER.md`, prends le premier bon dont le statut
+   n'est pas `validé`/`fait`.
+3. Exécute ce bon EN ENTIER (toutes ses parties s'il en a plusieurs),
+   les six portes dans l'ordre, jusqu'à son bloc RÉSULTAT rempli avec
+   de la vraie sortie de commande.
+4. Un seul commit pour ce bon (message en français, ce que le bon
+   listait comme changé). `git push`.
+5. Ajoute/mets à jour la ligne de ce bon dans `LEDGER.md` (statut,
+   agent, date, note d'une ligne), commit, push.
+6. Retourne à l'étape 1 pour le bon suivant. NE T'ARRÊTE PAS pour
+   demander confirmation entre deux bons — seulement si :
+   - la file est vide (plus aucun bon `à faire`/`à produire`) ;
+   - un bon est bloqué par une vraie incohérence de banque ou une
+     question de cadre pédagogique (note-le dans LEDGER.md avec le
+     statut `bloqué` et sa raison en une ligne, PUIS passe au bon
+     suivant plutôt que d'arrêter toute la session) ;
+   - un outil manque et qu'aucune des voies du runbook
+     (`docs/ops/ANTIGRAVITY-RUNBOOK.md`) ne le résout.
+
+Commence maintenant par le premier bon non fini de `LEDGER.md`.
+```
+
+### Ton rôle pendant que ça tourne
+
+Tu n'as rien à taper entre deux bons — mais reste dans les parages :
+- **Toutes les ~2 heures**, un coup d'œil à `LEDGER.md` (colonne
+  Statut) et à trois images au hasard dans un rendu récent. C'est
+  encore toi le juge : l'élève, c'est ton élève.
+- **Si un bon passe `bloqué`** : c'est un point d'arbitrage
+  pédagogique ou une incohérence de banque — exactement le genre de
+  chose qui remonte à Claude (§6 ci-dessous), pas à l'agent. Note-le,
+  continue de laisser la session avancer sur le reste de la file, et
+  ramène ces points-là à une session Claude quand tu reviens.
+- **En fin de week-end**, ramène `LEDGER.md` (et, si possible, 2-3
+  scènes fraîchement validées) à une session Claude : c'est là que se
+  fait l'échantillon d'acceptation et que les points `bloqué`
+  s'arbitrent.
+
+---
+
+## §4. Ton contrôle de 60 secondes, après chaque bon
+
+Tu n'as pas à tout relire. Quatre réflexes :
+
+1. **Le bloc RÉSULTAT contient-il de la vraie sortie de commande**, ou
+   des affirmations ? Des phrases sans sortie collée = le travail n'est
+   pas fini.
+2. **Combien de défauts trouvés à la porte 3 ?** Sur une scène longue,
+   *zéro* est suspect : sur 16 scènes auditées, deux seulement étaient
+   propres du premier coup. Zéro veut souvent dire « je n'ai pas
+   regardé ».
+3. **`git diff --stat`** ne touche que la scène et le manifeste ?
+4. **Regarde la vidéo finale**, ou au moins trois images au hasard.
+   C'est toi le juge : l'élève, c'est ton élève.
+
+Puis, à la fin d'un lot de cinq ou six bons, reviens me voir avec le
+`LEDGER.md` : je prends une scène du lot, je la juge à fond, et si elle
+tient, le lot passe. Si elle ne tient pas, le lot repart et le contrat
+gagne une règle.
+
+---
+
+## §5. Dépannage
+
+| Symptôme | Cause probable | Remède |
+|---|---|---|
+| `manim: command not found` | chaîne non installée | voie Docker (`SETUP.md`) |
+| Erreur LaTeX / `dvisvgm` | course entre deux rendus | relancer le rendu **seul** |
+| `np.trapz` introuvable | numpy ≥ 2 | `np.trapezoid` |
+| Sections en trop / en moins | noms d'étapes dupliqués | `scripts/scene-lint.py` le dit |
+| Rendus qui s'écrasent entre notions | même nom de fichier dans deux notions | toujours `--media_dir media/<matière>-<notion>` |
+| Texte qui surimprime tout à partir d'une étape | chapitre sans `nettoie()` | contrat §2.1 (a) |
+| Points/flèches qui flottent après un fondu | groupe de figure figé | contrat §2.1 (b) |
+| La CI passe au rouge après un push | voir l'onglet Actions de la PR #2 | les flakes connus se relancent ; le reste se corrige |
+
+---
+
+## §6. Ce qui remonte à Claude, toujours
+
+Ces cinq-là ne se délèguent pas :
+
+1. **La vérification adversariale d'une transcription** (lire un scan
+   et le retaper) — mode d'échec mesuré : ~1 erreur substantielle par
+   3 exercices. Non négociable.
+2. **L'arbitrage pédagogique** : une incohérence de banque, un doute
+   sur le cadre, un barème qui ne tombe pas juste.
+3. **Le contrat, `bac_scene.py`, les ADR** — ce sont les lois ; elles
+   se changent délibérément, par un bon dédié.
+4. **L'échantillon d'acceptation** par lot.
+5. **Tout ce qui touche la production** : migrations, Supabase,
+   déploiement. Poussée de production **humaine, toujours**.

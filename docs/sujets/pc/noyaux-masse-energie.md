@@ -1,0 +1,152 @@
+# `noyaux-masse-energie` — Noyaux, masse et énergie (défaut de masse, énergie de liaison, énergie libérée)
+
+> Annales examen national, PC-SPC (BIOF). Transcriptions **non vérifiées** —
+> voir `README.md` §3 pour le protocole. Provenance sur chaque entrée.
+>
+> Note de classement : ces exercices « désintégration » mêlent masse-énergie
+> (défaut de masse, énergie libérée, diagramme d'énergie) ET décroissance
+> (demi-vie, activité, constante $\lambda$). Classés ici quand le volet
+> masse-énergie est **explicite** (masses, énergies de liaison, diagramme).
+> Voir aussi `decroissance-radioactive.md` (radon 2019, plutonium 2021).
+
+---
+
+## 2020 — session normale — Exercice III
+Source: https://www.alloschool.com/element/109742
+Statut: vérifié — re-fetch indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-11)
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : NS28F · Barème de l'exercice : 2,5 points
+- Images lues : `.../course-422/upload-80870/0004-big.jpg`
+- Pages du scan : 4 (sur 7)
+- Portée : exercice complet. Volet masse-énergie explicite (énergie libérée,
+  défaut de masse, diagramme d'énergie) + volet décroissance (demi-vie,
+  constante $\lambda$, activité) → cross-list `decroissance-radioactive`.
+
+**Désintégration du polonium 210.**
+
+Le polonium est un métal radioactif rare découvert en 1898 par Pierre Curie. Ce
+métal de symbole Po et de numéro atomique 84 est radioactif. Le polonium 210 est
+le seul isotope que l'on trouve dans la nature. La désintégration d'un noyau de
+polonium 210 produit un noyau de plomb $^{A}_{Z}\text{Pb}$ avec émission d'une
+particule $\alpha$.
+
+**Données :**
+- La demi-vie du polonium 210 : $t_{1/2} = 138\ \text{jours}$ ;
+- $1\text{u} = 931{,}41\ \text{MeV/c}^2$ ; $1\text{u} = 1{,}66 \cdot 10^{-27}\ \text{kg}$.
+
+1. (0,5) Écrire l'équation de désintégration du polonium 210 en déterminant $A$
+   et $Z$.
+2. À l'aide du diagramme d'énergie représenté ci-contre, calculer :
+   1. (0,5) l'énergie libérée $E_{lib}$ lors de la désintégration d'un noyau de
+      polonium 210.
+   2. (0,5) le défaut de masse $\Delta m$ du noyau de polonium 210 exprimé en
+      kilogramme (kg).
+3. (0,5) Calculer, en $\text{s}^{-1}$, la constante radioactive $\lambda$ du
+   polonium 210.
+4. (0,5) Un échantillon de noyaux de polonium 210 a une activité
+   $a_0 = 3{,}5 \cdot 10^{11}\ \text{Bq}$ à un instant de date $t = 0$.
+   Déterminer, en jours, l'instant de date $t_1$ où l'activité de cet échantillon
+   est : $a_1 = 3{,}7 \cdot 10^{4}\ \text{Bq}$.
+
+*Diagramme d'énergie (niveaux $E$ en MeV, du plus haut au plus bas) :*
+- $E = 1{,}971820 \cdot 10^{5}$ : système des nucléons séparés
+  $126\,\text{n} + 84\,\text{p}$ ;
+- $E = 1{,}955372 \cdot 10^{5}$ : noyau $^{210}_{84}\text{Po}$ ;
+- $E = 1{,}955318 \cdot 10^{5}$ : produits de désintégration
+  $^{A}_{Z}\text{Pb} +\ ^{4}_{2}\text{He}$.
+
+---
+
+## 2023 — session normale — Exercice 2, §2 (Réaction de fusion du tritium et du deutérium)
+Source: https://www.alloschool.com/element/142476
+Statut: vérifié — **1ʳᵉ passe de vérification adversariale indépendante**
+(agent-vérificateur-adversarial, 2026-08-07), **diff OK**.
+**Élément re-dérivé** : `element/142476` → `course-422/upload-85304`, **6 pages**,
+URLs ré-extraites du HTML de `element/`. **Couverture p.1 relue** : NS 28F, 3 h,
+coef 7, SPC/BIOF ; carte $7+2{,}5+5+5{,}5=\mathbf{20}$ ✓.
+**Portée du diff — `0003-big.jpg`, caractère par caractère** : titre
+« 2- Réaction de fusion du tritium $^3_1\text{H}$ et de deutérium
+$^2_1\text{H}$ » (le scan écrit bien « **de** deutérium »), « conduit à la
+formation d'un noyau d'hélium $^4_2\text{He}$ et s'accompagne de l'émission d'un
+neutron », item **a-** « … pour le dissocier **en ces nucléons** au repos est de
+$8{,}475\ \text{MeV}$ » (la coquille « ces » pour « ses » est **celle du scan**,
+reproduite telle quelle ✓), item **b-** « Le tritium est plus stable que le
+deutérium », $E_{lib}=|\Delta E|$ en MeV — **aucune divergence de valeur, unité,
+indice ou exposant**. **Barème marginal recompté** :
+$0{,}25+0{,}25+0{,}5=\mathbf{1{,}0}$ ✓ ; $\S1+\S2=1{,}5+1{,}0=\mathbf{2{,}5}$ ✓
+(la Q2-1 chapeau ne porte pas de barème propre : seuls **a-** et **b-** sont
+cotés, conformément au scan). **Absence de figure confirmée.**
+**Physique re-dérivée indépendamment** (avec le tableau $E_\ell$ du §1) :
+$^2_1\text{H}+{}^3_1\text{H}\rightarrow{}^4_2\text{He}+{}^1_0\text{n}$ (A et Z
+conservés : $2+3=4+1$, $1+1=2+0$ ✓) ⇒
+$E_{lib}=E_\ell(^4\text{He})-[E_\ell(^2\text{H})+E_\ell(^3\text{H})]
+=28{,}296-(2{,}366+8{,}475)=\mathbf{17{,}455\ \text{MeV}}$ — la valeur canonique
+de la fusion D–T ($\simeq17{,}6$ MeV), ce qui verrouille en retour les trois
+énergies de liaison du tableau ✓. **Contrôle des deux vrai/faux** : **a- vrai**
+(c'est la définition même de l'énergie de liaison) ; **b- vrai** car
+$E_\ell/A$ vaut $8{,}475/3=2{,}83$ MeV/nucléon pour le tritium contre
+$2{,}366/2=1{,}18$ pour le deutérium ✓.
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
+  التجريبية مسلك العلوم الفيزيائية (خيار فرنسية) » = Sciences Physiques,
+  BIOF, option française — le résumé HTML d'AlloSchool pour `element/142476`
+  annonce à tort « Sciences Mathématiques B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 2,5 points ; **§2
+  (Réaction de fusion)** = 1,0 point ($0{,}25+0{,}25+0{,}5$, barème en
+  marge)
+- Images lues (reproductibilité) : `.../course-422/upload-85304/0003-big.jpg`
+- Pages du scan : 3 (sur 6)
+- Portée : **§2 — Réaction de fusion du tritium $^3_1\text{H}$ et de
+  deutérium $^2_1\text{H}$** (énergie de dissociation, stabilité comparée,
+  énergie libérée). Le **§1** (désintégration $\beta^-$ du tritium,
+  demi-vie, activité) du même exercice est sous `decroissance-radioactive.md`
+  (cross-list ici, données communes : tableau des énergies de liaison,
+  $M(^3_1\text{H})=3\ \text{g.mol}^{-1}$, $N_A=6{,}02\cdot10^{23}\
+  \text{mol}^{-1}$).
+
+**2- Réaction de fusion du tritium $^3_1\text{H}$ et de deutérium
+$^2_1\text{H}$**
+
+La réaction de fusion entre un noyau de deutérium et un noyau de tritium
+conduit à la formation d'un noyau d'hélium $^4_2\text{He}$ et s'accompagne
+de l'émission d'un neutron.
+
+1. **2-1.** Pour chaque affirmation suivante répondre par vrai ou faux en
+   justifiant :
+   1. **a-** (0,25) L'énergie qu'il faut fournir à un noyau de tritium au
+      repos pour le dissocier en ces nucléons au repos est de
+      $8{,}475\ \text{MeV}$.
+   2. **b-** (0,25) Le tritium est plus stable que le deutérium.
+2. **2-2.** (0,5) Calculer, en unité MeV, l'énergie libérée
+   $E_{lib} = |\Delta E|$ par la réaction de fusion d'un noyau de tritium
+   et d'un noyau de deutérium.
+
+*(Aucune figure dans ce §2 ; énoncé textuel. Données — tableau des énergies
+de liaison, partagé avec le §1 : voir `decroissance-radioactive.md`.)*
+
+---
+
+## Contenu « masse-énergie » présent dans les transcriptions existantes
+
+- **2025 N — Exercice 2** (désintégration du cadmium 107), transcrit sous
+  `decroissance-radioactive.md` :
+  - Q3-3 (0,5) : calcul, en MeV, de l'énergie libérée $E$ lors de la
+    désintégration de l'échantillon entre $t_1 = 2t_{1/2}$ et
+    $t_2 = 3t_{1/2}$, à partir des masses données
+    ($m(^{107}_{48}\text{Cd})$, $m(^{107}_{47}\text{Ag})$,
+    $m(^{A}_{Z}\text{e})$, $1\text{u} = 931{,}49\ \text{MeV.c}^{-2}$).
+  - Exercice classé dans `decroissance-radioactive.md` (question dominante :
+    demi-vie, activité, nombre de noyaux désintégrés), pas d'entrée dédiée
+    autonome écrite ici pour éviter la duplication.
+
+- **2022 N — Exercice 2 (Partie 2)** (désintégration de l'iode 131),
+  transcrit sous `decroissance-radioactive.md` :
+  - Q2 (0,5) : calcul, en MeV, de l'énergie libérée $|\Delta E|$ par la
+    désintégration d'un noyau d'iode 131, à partir des masses données
+    ($m(^{131}_{53}\text{I})$, $m(^A_Z X)$, $m(\beta^-)$,
+    $1\text{u} = 931{,}5\ \text{MeV.c}^{-2}$).
+  - Exercice classé dans `decroissance-radioactive.md` (question dominante :
+    demi-vie, activité, loi de décroissance), pas d'entrée dédiée autonome
+    écrite ici pour éviter la duplication.

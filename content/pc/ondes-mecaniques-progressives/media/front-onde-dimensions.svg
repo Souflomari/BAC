@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" width="640" height="380"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Trois panneaux, révélés l’un après l’autre. Panneau 1, une dimension : une corde tendue, la source S au centre, le front d’onde réduit à deux points qui s’écartent de S vers la gauche et vers la droite. Panneau 2, deux dimensions : une vue de dessus de la surface de l’eau, la source S au centre, le front d’onde est un cercle qui s’agrandit. Panneau 3, trois dimensions : une source S dans l’air, le front d’onde est une sphère, dessinée en perspective cavalière, qui grandit dans toutes les directions de l’espace.">
+  <title>Le front d’onde selon le nombre de dimensions du milieu</title>
+  <!--
+    front-onde-dimensions.svg — figure STAGED (LESSON-EXPERIENCE-SPEC §2.5 :
+    schéma, ≥3 couches sémantiques, ordre = geste d'enseignement — ici le
+    geste EST la montée en dimension elle-même : R4 du texte construit la
+    même idée trois fois, en ajoutant à chaque fois une dimension).
+
+    Contrairement à bouchon-oscille-sur-place.svg (une scène unique qui
+    évolue), ici les trois étapes sont trois PANNEAUX INDÉPENDANTS,
+    côte à côte, révélés un par un — même grammaire additive que
+    arbre-pondere.svg (chaque step AJOUTE un morceau neuf, ne retouche
+    jamais un morceau déjà posé) :
+      step-1 = panneau 1D seul (corde tendue).
+      step-2 = AJOUTE le panneau 2D (surface de l'eau).
+      step-3 = AJOUTE le panneau 3D (son dans l'air).
+    Au step-3, les panneaux 1 et 2 sont donc atténués (opacité 0.55,
+    injectée par le renderer) pendant que le panneau 3 — le plus riche,
+    le cas du son — reste plein : la construction se lit de gauche à
+    droite, dans l'ordre où le texte l'introduit.
+
+    Trois colonnes égales, mêmes bornes verticales pour comparaison directe :
+      panneau 1 : x = 32..224   (centre 128)
+      panneau 2 : x = 240..432  (centre 336)
+      panneau 3 : x = 448..640  (centre 544)
+      tous : y = 40..340 (hauteur 300), rx = 8
+
+    Convention commune aux trois panneaux (permet la comparaison d'un
+    coup d'œil, même schéma répété) :
+      - la source S : point plein --figure-ink, étiquette italique juste
+        au-dessus (même décalage vertical -14 dans les trois panneaux) ;
+      - le front d'onde actuel : tracé plein --figure-accent ;
+      - une flèche ou un jeu de flèches --figure-accent indique le sens
+        d'expansion ;
+      - une étiquette « front d'onde », en retrait, --figure-ink-soft ;
+      - le titre du panneau (nombre de dimensions + exemple), en bas,
+        --figure-ink, gras.
+
+    Panneau 3 (sphère) : rendue en perspective cavalière minimale — un
+    cercle silhouette (le front d'onde, --figure-accent) plus une ellipse
+    équatoriale et une ellipse méridienne (aplaties, --figure-ink-soft),
+    la même technique de globe filaire que dans d'autres figures 3D du
+    corpus — aucune bibliothèque de rendu 3D, uniquement de la géométrie.
+  -->
+
+  <!-- Titre (chrome — précède tous les groupes step-N) -->
+  <text x="320" y="18" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Le front d’onde selon le nombre de dimensions du milieu
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — 1 dimension : la corde tendue, front d'onde = deux points
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <rect x="32" y="40" width="192" height="300" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- La corde tendue -->
+    <line x1="48" y1="190" x2="208" y2="190"
+          stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+
+    <!-- La source S -->
+    <circle cx="128" cy="190" r="4" fill="var(--figure-ink)"/>
+    <text x="128" y="176" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-ink)">S</text>
+
+    <!-- Front d'onde : deux points qui s'écartent de S -->
+    <circle cx="83" cy="190" r="5" fill="var(--figure-accent)"/>
+    <circle cx="173" cy="190" r="5" fill="var(--figure-accent)"/>
+    <line x1="83" y1="190" x2="63" y2="190" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="63,190 71,185.5 71,194.5" fill="var(--figure-ink-soft)"/>
+    <line x1="173" y1="190" x2="193" y2="190" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="193,190 185,185.5 185,194.5" fill="var(--figure-ink-soft)"/>
+
+    <!-- Accolade « front d'onde » sous les deux points -->
+    <line x1="83" y1="195" x2="83" y2="214" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="173" y1="195" x2="173" y2="214" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="83" y1="214" x2="173" y2="214" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="83" y1="210" x2="83" y2="218" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="173" y1="210" x2="173" y2="218" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="128" y="228" text-anchor="middle" font-size="9.5"
+          fill="var(--figure-ink-soft)">front d’onde</text>
+
+    <text x="128" y="320" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-ink)">1 dimension — corde tendue</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — 2 dimensions : la surface de l'eau, front d'onde = cercle
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <rect x="240" y="40" width="192" height="300" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Position antérieure du front (fantôme, en pointillés) -->
+    <circle cx="336" cy="175" r="35" fill="none"
+            stroke="var(--figure-accent)" stroke-width="1.4" stroke-dasharray="4,3" stroke-opacity="0.7"/>
+    <!-- Front d'onde actuel : un cercle qui s'agrandit -->
+    <circle cx="336" cy="175" r="65" fill="none"
+            stroke="var(--figure-accent)" stroke-width="2.2"/>
+
+    <!-- La source S, au centre -->
+    <circle cx="336" cy="175" r="4" fill="var(--figure-ink)"/>
+    <text x="336" y="161" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-ink)">S</text>
+
+    <!-- Flèche d'expansion -->
+    <line x1="401" y1="175" x2="418" y2="175" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <polygon points="418,175 408,170.5 408,179.5" fill="var(--figure-accent)"/>
+
+    <!-- Étiquette « front d'onde », en retrait au-dessus du cercle -->
+    <line x1="336" y1="110" x2="336" y2="95" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="336" y="86" text-anchor="middle" font-size="9.5"
+          fill="var(--figure-ink-soft)">front d’onde</text>
+
+    <text x="336" y="320" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-ink)">2 dimensions — surface de l’eau</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — 3 dimensions : le son dans l'air, front d'onde = sphère
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <rect x="448" y="40" width="192" height="300" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Globe filaire (perspective cavalière) : méridien + équateur, aplatis -->
+    <ellipse cx="544" cy="175" rx="20" ry="62" fill="none"
+             stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <ellipse cx="544" cy="175" rx="62" ry="20" fill="none"
+             stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <!-- Front d'onde actuel : la sphère (silhouette) -->
+    <circle cx="544" cy="175" r="62" fill="none"
+            stroke="var(--figure-accent)" stroke-width="2.2"/>
+
+    <!-- La source S, au centre -->
+    <circle cx="544" cy="175" r="4" fill="var(--figure-ink)"/>
+    <text x="544" y="161" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-ink)">S</text>
+
+    <!-- Flèches radiales d'expansion (trois directions, pour lire "toutes les directions de l'espace") -->
+    <line x1="606" y1="175" x2="624" y2="175" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <polygon points="624,175 614,170.5 614,179.5" fill="var(--figure-accent)"/>
+    <line x1="597.7" y1="144" x2="613.3" y2="135" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <polygon points="613.3,135 606.9,143.9 602.4,136.1" fill="var(--figure-accent)"/>
+    <line x1="597.7" y1="206" x2="613.3" y2="215" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <polygon points="613.3,215 602.4,213.9 606.9,206.1" fill="var(--figure-accent)"/>
+
+    <!-- Étiquette « front d'onde », en retrait au-dessus de la sphère -->
+    <line x1="544" y1="113" x2="544" y2="95" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="544" y="86" text-anchor="middle" font-size="9.5"
+          fill="var(--figure-ink-soft)">front d’onde</text>
+
+    <text x="544" y="320" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-ink)">3 dimensions — son dans l’air</text>
+  </g><!-- /step-3 -->
+
+</svg>

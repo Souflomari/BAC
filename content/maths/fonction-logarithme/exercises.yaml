@@ -1,0 +1,404 @@
+# Attempt-first exercises (summit-conversion campaign — maths, fonction-logarithme).
+# Rendered by AttemptFirstExercise via [[exercise:<id>]] markers in lesson.md:
+# the student sees the question, commits to an attempt, and only then unlocks
+# the expert reasoning. Printed solutions at the summit are a template-v2
+# failure (docs/pipeline/NOTION-TEMPLATE-V2.md).
+#
+# `sourcing` is AUTHORING-SIDE ONLY (never rendered): while status != sourced,
+# the notion is NOT DONE. r-bac is a VERIFIED national sujet (2019 session
+# normale, Mathématiques SExp BIOF — SVT et Sciences Physiques —, code NS 22F,
+# AlloSchool element/68527, statut « vérifié » in
+# docs/sujets/maths/fonction-logarithme.md — Problème, 11 points).
+# r-variation is a fresh anti-memorisation twin (same deep skills — domaine du
+# ln, limites et croissances comparées, dérivée (ln u)'=u'/u, lecture d'un
+# tableau de variation, IPP, suite récurrente u_{n+1}=f(u_n)) with a DIFFERENT
+# function whose courbe passe EN DESSOUS de (Δ) et dont la suite est
+# DÉCROISSANTE ; status not-applicable.
+
+notion: fonction-logarithme
+
+exercises:
+  # ── r-bac — the VERIFIED 2019 national sujet (Problème, SExp) ─────────────
+  # Faithful transcription of docs/sujets/maths/fonction-logarithme.md →
+  # "2019 — session normale — Problème". Étude de f(x)=x+1/2-ln x+1/2(ln x)^2 :
+  # limites, branche parabolique, dérivée, tableau de variation, point
+  # d'inflexion, position relative à (Δ):y=x, primitive + IPP + aire ; puis
+  # suite u_0=1, u_{n+1}=f(u_n). Les questions du sujet, multi-parties, sont
+  # transcrites une à une (barème d'origine conservé entre parenthèses).
+  - id: r-bac
+    title: "Problème de type bac — étude d'une fonction avec ln, aire et suite (2019)"
+    sourcing:
+      status: sourced
+      note: >-
+        2019 session normale — examen national SVT et Sciences Physiques (BIOF),
+        Mathématiques (3 h, coef 7), code NS 22F, AlloSchool element/68527 —
+        Problème (11 points). Transcription vérifiée : re-fetch AlloSchool
+        element/68527 + diff caractère-par-caractère pages 3 et 4
+        (docs/sujets/maths/fonction-logarithme.md, statut « vérifié »).
+    intro: |-
+      **Problème (examen national, session normale 2019).**
+
+      Soit $f$ la fonction numérique définie sur $]0,+\infty[$ par :
+
+      $$f(x) = x + \frac{1}{2} - \ln x + \frac{1}{2}(\ln x)^2$$
+
+      et $(C)$ sa courbe représentative dans un repère orthonormé $(O,\vec{i},\vec{j})$ *(unité : 1 cm)*.
+
+      Point de vigilance qui traverse tout le problème : $\ln$ n'existe que sur $]0,+\infty[$, et $(\ln u)' = \dfrac{u'}{u}$ ne se lit que là où $u>0$. À chaque limite, garde en tête la hiérarchie des croissances vue en cours : $x$ écrase $\ln x$ à l'infini.
+
+      La **première partie** étudie $f$ (limites, variations, convexité, position par rapport à la droite $(\Delta):y=x$, puis une aire). La **deuxième partie** exploite cette étude pour la suite $(u_n)$ définie par $u_0=1$ et $u_{n+1}=f(u_n)$.
+    questions:
+      - id: q1
+        part: "Première partie — Limites, asymptote et branche parabolique"
+        stem: |-
+          **(0,5 pt)** Calculer $\displaystyle\lim_{\substack{x \to 0 \\ x > 0}} f(x)$ puis interpréter le résultat géométriquement.
+        reasoning: |-
+          En $0^+$, on repère d'abord le comportement de chaque morceau. Le terme $x$ tend vers $0$ (fini), mais $\ln x \to -\infty$ (limite de référence de la leçon, chapitre 5), donc $-\ln x \to +\infty$ et surtout $(\ln x)^2 \to +\infty$. Il n'y a **aucune indétermination** : tous les termes qui bougent poussent vers $+\infty$. La somme tend donc vers $+\infty$.
+
+          Une limite infinie en une borne finie du domaine se lit géométriquement : la droite verticale $x=0$ (l'axe des ordonnées) est **asymptote verticale** à $(C)$.
+        steps:
+          - math: '\lim_{x \to 0^+} \ln x = -\infty \quad\Longrightarrow\quad \lim_{x \to 0^+} (\ln x)^2 = +\infty'
+            note: "En 0+, ln x tend vers -∞ (limite de référence de la leçon) donc son carré tend vers +∞."
+          - math: '\lim_{x \to 0^+} f(x) = \lim_{x \to 0^+}\left(x + \tfrac{1}{2} - \ln x + \tfrac{1}{2}(\ln x)^2\right) = +\infty'
+            note: "Somme de termes tendant vers +∞ (et x → 0) : pas d'indétermination. Géométriquement, la droite x=0 est asymptote verticale à (C)."
+      - id: q2a
+        stem: |-
+          **(0,25 pt)** Vérifier que pour tout $x$ de $]0,+\infty[$ : $f(x) = x + \dfrac{1}{2} + \left(\dfrac{1}{2}\ln x - 1\right)\ln x$.
+        reasoning: |-
+          C'est une simple mise en facteur, à faire dans le bon sens : on développe la forme proposée et on vérifie qu'elle redonne $f$. Le facteur $\left(\dfrac12\ln x - 1\right)\ln x$ se distribue en $\dfrac12(\ln x)^2 - \ln x$. En ajoutant $x + \dfrac12$, on retombe exactement sur l'expression de départ.
+        steps:
+          - math: '\left(\tfrac{1}{2}\ln x - 1\right)\ln x = \tfrac{1}{2}(\ln x)^2 - \ln x'
+            note: "On développe le produit : chaque terme du facteur multiplie ln x."
+          - math: 'x + \tfrac{1}{2} + \tfrac{1}{2}(\ln x)^2 - \ln x = x + \tfrac{1}{2} - \ln x + \tfrac{1}{2}(\ln x)^2 = f(x)'
+            note: "On retrouve f(x) : l'égalité est vérifiée."
+      - id: q2b
+        stem: |-
+          **(0,5 pt)** En déduire que $\displaystyle\lim_{x \to +\infty} f(x) = +\infty$.
+        reasoning: |-
+          La forme factorisée de la question précédente est faite pour lever toute indétermination. Quand $x \to +\infty$, $\ln x \to +\infty$ (chapitre 5), donc $\dfrac12\ln x - 1 \to +\infty$ : le produit $\left(\dfrac12\ln x - 1\right)\ln x$ est un produit de deux quantités qui tendent vers $+\infty$, il tend donc vers $+\infty$. En ajoutant $x + \dfrac12 \to +\infty$, la somme tend vers $+\infty$ — toujours sans indétermination.
+        steps:
+          - math: '\lim_{x \to +\infty} \left(\tfrac{1}{2}\ln x - 1\right) = +\infty \quad\text{et}\quad \lim_{x \to +\infty} \ln x = +\infty'
+            note: "Les deux facteurs tendent vers +∞."
+          - math: '\lim_{x \to +\infty} \left(\tfrac{1}{2}\ln x - 1\right)\ln x = +\infty \quad\Longrightarrow\quad \lim_{x \to +\infty} f(x) = +\infty'
+            note: "Produit de deux facteurs positifs infinis, plus x + 1/2 qui tend vers +∞."
+      - id: q2c
+        stem: |-
+          **(0,5 pt)** Montrer que pour tout $x$ de $]0,+\infty[$, $\dfrac{(\ln x)^2}{x} = 4\left(\dfrac{\ln\sqrt{x}}{\sqrt{x}}\right)^2$, puis en déduire que $\displaystyle\lim_{x \to +\infty} \dfrac{(\ln x)^2}{x} = 0$.
+        reasoning: |-
+          L'égalité se démontre en partant de la droite : on utilise la propriété racine carrée de la leçon, $\ln\sqrt{x} = \dfrac12\ln x$ (chapitre 3), et $\sqrt{x}^2 = x$. Le carré fait apparaître $\dfrac14\dfrac{(\ln x)^2}{x}$, que le facteur $4$ ramène à $\dfrac{(\ln x)^2}{x}$.
+
+          Cette réécriture n'est pas gratuite : elle transforme la limite en un carré de la quantité $\dfrac{\ln\sqrt{x}}{\sqrt{x}}$. Or en posant $t=\sqrt{x}$ (qui tend vers $+\infty$ avec $x$), $\dfrac{\ln\sqrt{x}}{\sqrt{x}} = \dfrac{\ln t}{t} \to 0$ par **croissances comparées** (chapitre 5). Le carré tend donc vers $0$, et $4\times 0 = 0$.
+        steps:
+          - math: '\ln\sqrt{x} = \tfrac{1}{2}\ln x \quad\text{et}\quad (\sqrt{x})^2 = x'
+            note: "Propriété racine carrée (chapitre 3) et définition de la racine."
+          - math: '4\left(\dfrac{\ln\sqrt{x}}{\sqrt{x}}\right)^2 = 4\cdot\dfrac{\tfrac{1}{4}(\ln x)^2}{x} = \dfrac{(\ln x)^2}{x}'
+            note: "Le carré du numérateur donne 1/4 (ln x)^2 ; le carré du dénominateur donne x ; le 4 compense le 1/4."
+          - math: '\lim_{t \to +\infty} \dfrac{\ln t}{t} = 0 \ \ (t=\sqrt{x}) \quad\Longrightarrow\quad \lim_{x \to +\infty} \dfrac{(\ln x)^2}{x} = 4\cdot 0^2 = 0'
+            note: "Croissances comparées appliquées à t=√x ; le carré d'une quantité tendant vers 0 tend vers 0."
+      - id: q2d
+        stem: |-
+          **(0,75 pt)** Montrer que $(C)$ admet au voisinage de $+\infty$ une branche parabolique de direction asymptotique la droite $(\Delta)$ d'équation $y = x$.
+        reasoning: |-
+          Une branche parabolique de direction la droite $y=x$ se démontre en deux temps : la pente $\dfrac{f(x)}{x}$ tend vers $1$ (la direction de $(\Delta)$), mais l'écart $f(x)-x$ ne tend **pas** vers une limite finie — il part à l'infini, ce qui empêche $(\Delta)$ d'être une vraie asymptote et laisse une branche parabolique.
+
+          Pour $\dfrac{f(x)}{x}$, on divise chaque terme par $x$ et on utilise les croissances comparées : $\dfrac{\ln x}{x}\to 0$ (chapitre 5) et $\dfrac{(\ln x)^2}{x}\to 0$ (question 2c). Pour $f(x)-x = \dfrac12 - \ln x + \dfrac12(\ln x)^2$, le terme $\dfrac12(\ln x)^2$ domine et pousse vers $+\infty$.
+        steps:
+          - math: '\dfrac{f(x)}{x} = 1 + \dfrac{1}{2x} - \dfrac{\ln x}{x} + \dfrac{(\ln x)^2}{2x} \xrightarrow[x \to +\infty]{} 1'
+            note: "Chaque terme sauf le 1 tend vers 0 (croissances comparées, question 2c) : la pente tend vers 1, la direction de (Δ)."
+          - math: 'f(x) - x = \dfrac{1}{2} - \ln x + \dfrac{1}{2}(\ln x)^2 \xrightarrow[x \to +\infty]{} +\infty'
+            note: "Le terme 1/2 (ln x)^2 l'emporte : l'écart à (Δ) part à l'infini, donc pas d'asymptote mais une branche parabolique de direction y=x."
+      - id: q3a
+        part: "Première partie — Dérivée, variations et convexité"
+        stem: |-
+          **(0,5 pt)** Montrer que pour tout $x$ de $]0,1]$ : $(x-1) + \ln x \le 0$, et que pour tout $x$ de $[1,+\infty[$ : $(x-1) + \ln x \ge 0$.
+        reasoning: |-
+          On étudie la fonction auxiliaire $g(x) = x - 1 + \ln x$ par sa monotonie — c'est la méthode standard pour fixer le signe d'une expression : $g'(x) = 1 + \dfrac1x > 0$ sur $]0,+\infty[$, donc $g$ est **strictement croissante**. Comme $g(1) = 1 - 1 + \ln 1 = 0$, la croissance stricte fait tout : à gauche de $1$, $g$ est sous $g(1)=0$ ; à droite, au-dessus. C'est exactement la lecture d'un signe à partir des variations et d'un zéro connu.
+        steps:
+          - math: 'g(x) = x - 1 + \ln x, \qquad g''(x) = 1 + \dfrac{1}{x} > 0 \ \text{ sur } ]0,+\infty['
+            note: "g est dérivable, de dérivée strictement positive : g est strictement croissante."
+          - math: 'g(1) = 1 - 1 + \ln 1 = 0'
+            note: "Le zéro de g est en x=1."
+          - math: 'x \le 1 \Rightarrow g(x) \le g(1) = 0 \qquad ; \qquad x \ge 1 \Rightarrow g(x) \ge g(1) = 0'
+            note: "Lecture directe : une fonction strictement croissante est en dessous de sa valeur en 1 avant 1, au-dessus après."
+      - id: q3b
+        stem: |-
+          **(1 pt)** Montrer que pour tout $x$ de $]0,+\infty[$, $f'(x) = \dfrac{x - 1 + \ln x}{x}$.
+        reasoning: |-
+          On dérive terme à terme. La seule subtilité est $\dfrac12(\ln x)^2$ : c'est une composée, on dérive avec $\left(\dfrac12 u^2\right)' = u'\,u$ où $u=\ln x$, donc $u'=\dfrac1x$ — ce qui donne $\dfrac{\ln x}{x}$. Les deux autres termes qui bougent, $x$ et $-\ln x$, donnent $1$ et $-\dfrac1x$. On réduit ensuite au même dénominateur $x$.
+        steps:
+          - math: 'f''(x) = 1 - \dfrac{1}{x} + \dfrac{1}{2}\cdot 2\ln x \cdot \dfrac{1}{x} = 1 - \dfrac{1}{x} + \dfrac{\ln x}{x}'
+            note: "Dérivée de x : 1 ; de -ln x : -1/x ; de 1/2 (ln x)^2 : ln x /x (dérivée de u^2/2 avec u = ln x, soit u fois u')."
+          - math: 'f''(x) = \dfrac{x - 1 + \ln x}{x}'
+            note: "Réduction au même dénominateur x."
+      - id: q3c
+        stem: |-
+          **(0,5 pt)** Dresser le tableau de variations de la fonction $f$.
+        reasoning: |-
+          Tout est déjà en place. Le dénominateur de $f'(x)$ est $x>0$ : le signe de $f'$ est donc celui du numérateur $x-1+\ln x$, dont la question 3a nous donne exactement le signe (négatif sur $]0,1]$, positif sur $[1,+\infty[$, nul en $1$). On **lit** alors les variations : $f$ décroît sur $]0,1]$, croît sur $[1,+\infty[$, avec un **minimum** en $x=1$. On complète avec les limites (questions 1 et 2b) et la valeur $f(1) = 1 + \dfrac12 - 0 + 0 = \dfrac32$.
+        steps:
+          - math: 'f''(x) = \dfrac{x-1+\ln x}{x}, \quad x>0 \ \Rightarrow\ \text{signe de } f''(x) = \text{signe de } (x-1+\ln x)'
+            note: "Le dénominateur x est positif ; seul le numérateur fixe le signe (question 3a)."
+          - math: 'f(1) = 1 + \tfrac{1}{2} - \ln 1 + \tfrac{1}{2}(\ln 1)^2 = \tfrac{3}{2}'
+            note: "Valeur du minimum. f décroît de +∞ (en 0+) à 3/2 (en 1), puis croît de 3/2 à +∞."
+      - id: q4a
+        stem: |-
+          **(0,5 pt)** Montrer que $f''(x) = \dfrac{2 - \ln x}{x^2}$ pour tout $x$ de $]0,+\infty[$.
+        reasoning: |-
+          On dérive $f'(x) = 1 - \dfrac1x + \dfrac{\ln x}{x}$. Le terme $-\dfrac1x$ se dérive en $\dfrac{1}{x^2}$. Le terme $\dfrac{\ln x}{x}$ est un quotient : $\left(\dfrac{\ln x}{x}\right)' = \dfrac{\frac1x\cdot x - \ln x\cdot 1}{x^2} = \dfrac{1 - \ln x}{x^2}$. On additionne et on regroupe sur $x^2$.
+        steps:
+          - math: 'f''''(x) = 0 + \dfrac{1}{x^2} + \dfrac{1 - \ln x}{x^2}'
+            note: "Dérivée de -1/x : +1/x^2 ; dérivée du quotient ln x / x : (1 - ln x)/x^2."
+          - math: 'f''''(x) = \dfrac{1 + 1 - \ln x}{x^2} = \dfrac{2 - \ln x}{x^2}'
+            note: "On regroupe les numérateurs sur le dénominateur commun x^2."
+      - id: q4b
+        stem: |-
+          **(0,5 pt)** En déduire que $(C)$ admet un point d'inflexion dont on déterminera les coordonnées.
+        reasoning: |-
+          Un point d'inflexion est un point où la convexité change, c'est-à-dire où $f''$ **change de signe**. Le dénominateur $x^2>0$ ne change jamais de signe : tout se joue sur le numérateur $2 - \ln x$, qui s'annule en $\ln x = 2$, soit $x = e^2$, en passant du positif au négatif. La convexité change bien en $x=e^2$ : c'est un point d'inflexion. On calcule son ordonnée en remplaçant $\ln(e^2)=2$.
+        steps:
+          - math: 'f''''(x) = 0 \iff 2 - \ln x = 0 \iff \ln x = 2 \iff x = e^2'
+            note: "f'' change de signe en x=e^2 (positif avant, négatif après) : point d'inflexion."
+          - math: 'f(e^2) = e^2 + \tfrac{1}{2} - 2 + \tfrac{1}{2}\cdot 2^2 = e^2 + \tfrac{1}{2}'
+            note: "On remplace ln(e^2)=2 : -ln x donne -2, et 1/2 (ln x)^2 donne 1/2·4=2, qui se compensent. Point d'inflexion I(e^2 , e^2 + 1/2)."
+      - id: q5a
+        part: "Première partie — Position relative et aire"
+        stem: |-
+          **(0,5 pt)** Montrer que pour tout $x$ de $]0,+\infty[$, $f(x) - x = \dfrac{1}{2}(\ln x - 1)^2$, et en déduire la position relative de $(C)$ et $(\Delta)$.
+        reasoning: |-
+          On calcule $f(x)-x = \dfrac12 - \ln x + \dfrac12(\ln x)^2$ et on reconnaît un carré : $\dfrac12\big[(\ln x)^2 - 2\ln x + 1\big] = \dfrac12(\ln x - 1)^2$. Un carré est toujours $\ge 0$, donc $f(x) \ge x$ : **$(C)$ est au-dessus de $(\Delta)$** sur tout $]0,+\infty[$. L'égalité (contact) a lieu uniquement quand le carré est nul, c'est-à-dire $\ln x = 1$, soit $x = e$ : les deux courbes se touchent au point $(e,e)$.
+        steps:
+          - math: 'f(x) - x = \tfrac{1}{2} - \ln x + \tfrac{1}{2}(\ln x)^2 = \tfrac{1}{2}\big[(\ln x)^2 - 2\ln x + 1\big] = \tfrac{1}{2}(\ln x - 1)^2'
+            note: "Identité remarquable : (ln x)^2 - 2 ln x + 1 = (ln x - 1)^2."
+          - math: '\tfrac{1}{2}(\ln x - 1)^2 \ge 0 \ \Rightarrow\ f(x) \ge x, \quad \text{égalité} \iff \ln x = 1 \iff x = e'
+            note: "(C) est au-dessus de (Δ):y=x partout, avec un unique point de contact en (e , e)."
+      - id: q5b
+        stem: |-
+          **(1 pt)** Construire $(\Delta)$ et $(C)$ dans le même repère $(O,\vec{i},\vec{j})$.
+        reasoning: |-
+          On ne construit pas au hasard : on reporte les éléments établis. On trace d'abord la droite $(\Delta):y=x$ (première bissectrice). Pour $(C)$ : l'asymptote verticale $x=0$ (question 1) ; le **minimum** au point $\left(1,\dfrac32\right)$ (question 3c) ; le **point d'inflexion** $I\left(e^2, e^2+\dfrac12\right)$ (question 4b) ; le fait que $(C)$ reste **au-dessus** de $(\Delta)$ en la touchant seulement en $(e,e)$ (question 5a) ; et, au voisinage de $+\infty$, la **branche parabolique** de direction $(\Delta)$ (question 2d), c'est-à-dire une courbe qui s'écarte de plus en plus au-dessus de la première bissectrice. La courbe descend de $+\infty$ (le long de $x=0$) jusqu'au minimum en $1$, puis remonte en restant au-dessus de $(\Delta)$.
+      - id: q6a
+        stem: |-
+          **(0,5 pt)** Montrer que la fonction $H : x \mapsto x\ln x - x$ est une primitive de la fonction $h : x \mapsto \ln x$ sur $]0,+\infty[$.
+        reasoning: |-
+          Montrer que $H$ est une primitive de $h$, c'est vérifier $H'(x) = h(x)$. On dérive $x\ln x$ comme un produit : $(x\ln x)' = 1\cdot\ln x + x\cdot\dfrac1x = \ln x + 1$. En retirant la dérivée de $-x$, qui vaut $-1$, il reste $\ln x$. C'est bien $h(x)$.
+        steps:
+          - math: '(x\ln x)'' = \ln x + x\cdot\dfrac{1}{x} = \ln x + 1'
+            note: "Dérivée d'un produit : (uv)'=u'v+uv', avec u=x et v=ln x."
+          - math: 'H''(x) = (x\ln x)'' - (x)'' = (\ln x + 1) - 1 = \ln x = h(x)'
+            note: "H'=h sur ]0,+∞[ : H est bien une primitive de h."
+      - id: q6b
+        stem: |-
+          **(0,75 pt)** À l'aide d'une intégration par parties, montrer que $\displaystyle\int_1^e (\ln x)^2\, dx = e - 2$.
+        reasoning: |-
+          On pose l'intégration par parties en lisant $(\ln x)^2 = \ln x \cdot \ln x$ : on dérive $u = \ln x$ (qui donne $u' = \dfrac1x$, plus simple) et on primitive $v' = \ln x$ en $v = H(x) = x\ln x - x$ (justement fournie à la question 6a). Le crochet $\big[\ln x\,(x\ln x - x)\big]_1^e$ s'annule aux deux bornes (en $e$ car $\ln e=1$ et $e\cdot 1 - e = 0$ ; en $1$ car $\ln 1 = 0$). Reste $-\displaystyle\int_1^e \dfrac1x(x\ln x - x)\,dx = -\displaystyle\int_1^e(\ln x - 1)\,dx$, qu'on calcule avec $H$.
+        steps:
+          - math: 'u = \ln x,\ u'' = \dfrac{1}{x}\ ; \quad v'' = \ln x,\ v = H(x) = x\ln x - x'
+            note: "Choix IPP : dériver ln x, primitiver ln x via H (question 6a)."
+          - math: '\int_1^e (\ln x)^2\,dx = \big[\ln x\,(x\ln x - x)\big]_1^e - \int_1^e \dfrac{1}{x}(x\ln x - x)\,dx'
+            note: "Formule de l'IPP. Le crochet vaut 0 en x=e (e·1-e=0) et 0 en x=1 (ln 1=0)."
+          - math: '\int_1^e \dfrac{1}{x}(x\ln x - x)\,dx = \int_1^e (\ln x - 1)\,dx = \big[x\ln x - x - x\big]_1^e = (e - 2e) - (0 - 2) = 2 - e'
+            note: "Une primitive de ln x - 1 est (x ln x - x) - x = x ln x - 2x. Évaluée de 1 à e."
+          - math: '\int_1^e (\ln x)^2\,dx = 0 - (2 - e) = e - 2'
+            note: "Le crochet nul moins (2 - e) donne e - 2."
+      - id: q6c
+        stem: |-
+          **(0,5 pt)** Calculer en $\text{cm}^2$ l'aire du domaine plan limité par $(C)$ et $(\Delta)$ et les droites d'équations $x = 1$ et $x = e$.
+        reasoning: |-
+          Sur $[1,e]$, on a montré (question 5a) que $(C)$ est **au-dessus** de $(\Delta)$, donc l'aire vaut $\displaystyle\int_1^e \big(f(x)-x\big)\,dx = \int_1^e \dfrac12(\ln x - 1)^2\,dx$. On développe le carré, et on réutilise deux résultats déjà obtenus : $\displaystyle\int_1^e(\ln x)^2\,dx = e-2$ (question 6b) et $\displaystyle\int_1^e \ln x\,dx = \big[H\big]_1^e = 1$. Le repère étant orthonormé d'unité $1\,\text{cm}$, une unité d'aire vaut $1\,\text{cm}^2$.
+        steps:
+          - math: '\mathcal{A} = \int_1^e \big(f(x)-x\big)\,dx = \int_1^e \tfrac{1}{2}(\ln x - 1)^2\,dx = \int_1^e \left(\tfrac{1}{2}(\ln x)^2 - \ln x + \tfrac{1}{2}\right)dx'
+            note: "(C) au-dessus de (Δ) sur [1,e] : l'aire est l'intégrale de f(x)-x. On développe le carré."
+          - math: '\int_1^e \ln x\,dx = \big[x\ln x - x\big]_1^e = (e - e) - (0 - 1) = 1'
+            note: "Avec la primitive H (question 6a)."
+          - math: '\mathcal{A} = \tfrac{1}{2}(e-2) - 1 + \tfrac{1}{2}(e-1) = e - \tfrac{5}{2}'
+            note: "En réutilisant ∫(ln x)^2 = e-2, ∫ln x = 1 et ∫1 = e-1."
+          - math: '\mathcal{A} = \left(e - \tfrac{5}{2}\right)\ \text{cm}^2 \approx 0{,}22\ \text{cm}^2'
+            note: "Unité orthonormée 1 cm : une unité d'aire vaut 1 cm^2. L'aire est positive, comme attendu."
+      - id: q7a
+        part: "Deuxième partie — La suite $u_0=1$, $u_{n+1}=f(u_n)$"
+        stem: |-
+          **(0,5 pt)** Montrer par récurrence que $1 \le u_n \le e$ pour tout $n$ de $\mathbb{N}$.
+        reasoning: |-
+          Récurrence classique d'encadrement pour une suite $u_{n+1}=f(u_n)$. **Initialisation :** $u_0 = 1$ vérifie $1 \le 1 \le e$. **Hérédité :** on suppose $1 \le u_n \le e$ et on veut $1 \le u_{n+1} \le e$. On exploite que $f$ est **croissante sur $[1,+\infty[$** (question 3c), donc sur $[1,e]$ : appliquée à l'encadrement, la croissance donne $f(1) \le f(u_n) \le f(e)$. Or $f(1) = \dfrac32$ et $f(e) = e + \dfrac12 - 1 + \dfrac12 = e$. Donc $\dfrac32 \le u_{n+1} \le e$, et comme $\dfrac32 \ge 1$, l'encadrement $1 \le u_{n+1} \le e$ est acquis.
+        steps:
+          - math: '\text{Initialisation\,: } u_0 = 1, \quad 1 \le 1 \le e \ \checkmark'
+            note: "Le rang 0 vérifie l'encadrement."
+          - math: 'f \text{ croissante sur } [1,e] \ \Rightarrow\ 1 \le u_n \le e \ \Rightarrow\ f(1) \le f(u_n) \le f(e)'
+            note: "On applique la monotonie de f (question 3c) à l'hypothèse de récurrence."
+          - math: 'f(1) = \tfrac{3}{2}, \quad f(e) = e + \tfrac{1}{2} - 1 + \tfrac{1}{2} = e \ \Rightarrow\ 1 \le \tfrac{3}{2} \le u_{n+1} \le e'
+            note: "f(e)=e (car ln e=1). Comme 3/2 ≥ 1, l'encadrement passe au rang n+1."
+      - id: q7b
+        stem: |-
+          **(0,5 pt)** Montrer que la suite $(u_n)$ est croissante.
+        reasoning: |-
+          Pour comparer $u_{n+1}$ et $u_n$, on étudie le signe de $u_{n+1} - u_n = f(u_n) - u_n$. Mais on connaît déjà cette différence : la question 5a a montré $f(x) - x = \dfrac12(\ln x - 1)^2$, qui est un carré, donc $\ge 0$. Appliquée à $x = u_n$, elle donne $u_{n+1} - u_n \ge 0$ : la suite est **croissante**.
+        steps:
+          - math: 'u_{n+1} - u_n = f(u_n) - u_n = \tfrac{1}{2}(\ln u_n - 1)^2 \ge 0'
+            note: "On réutilise f(x)-x = 1/2 (ln x - 1)^2 (question 5a), un carré donc positif."
+      - id: q7c
+        stem: |-
+          **(0,5 pt)** En déduire que la suite $(u_n)$ est convergente.
+        reasoning: |-
+          On rassemble les deux résultats précédents : $(u_n)$ est **croissante** (question 7b) et **majorée** par $e$ (question 7a). Le théorème de convergence monotone conclut : toute suite croissante et majorée converge (vers une limite finie $\le e$).
+        steps:
+          - math: '(u_n) \text{ croissante et majorée par } e \ \Longrightarrow\ (u_n) \text{ converge}'
+            note: "Théorème de la convergence monotone : croissante + majorée ⇒ convergente."
+      - id: q8
+        stem: |-
+          **(0,75 pt)** Calculer la limite de la suite $(u_n)$.
+        reasoning: |-
+          Notons $\ell$ la limite. Deux faits la déterminent. D'abord, en passant l'encadrement $1 \le u_n \le e$ à la limite, $\ell \in [1,e]$ — en particulier $\ell>0$, donc $f(\ell)$ a un sens. Ensuite, $f$ est continue sur $]0,+\infty[$ et $u_{n+1}=f(u_n)$ : en passant à la limite dans cette relation, $\ell = f(\ell)$. Or $f(\ell) = \ell \iff f(\ell)-\ell = 0 \iff \dfrac12(\ln\ell - 1)^2 = 0 \iff \ln\ell = 1 \iff \ell = e$. Comme $e \in [1,e]$, la limite est $\ell = e$.
+        steps:
+          - math: '1 \le u_n \le e \ \Rightarrow\ \ell \in [1,e]\ ; \quad u_{n+1}=f(u_n),\ f \text{ continue} \ \Rightarrow\ \ell = f(\ell)'
+            note: "La limite est un point fixe de f, et vit dans [1,e]."
+          - math: 'f(\ell) = \ell \iff \tfrac{1}{2}(\ln\ell - 1)^2 = 0 \iff \ln\ell = 1 \iff \ell = e'
+            note: "On réutilise f(x)-x=1/2(ln x -1)^2. Comme e ∈ [1,e] : lim u_n = e."
+
+  # ── r-variation — fresh anti-memorisation twin (NOT a real sujet) ────────
+  # Same deep skills as r-bac (domaine du ln, limites + croissances comparées,
+  # dérivée (ln u)'=u'/u, lecture d'un tableau de variation, IPP, suite
+  # u_{n+1}=f(u_n)) but a DIFFERENT function : f(x) = x - (ln x - 1)^2, dont la
+  # courbe passe EN DESSOUS de (Δ):y=x, qui est STRICTEMENT CROISSANTE (pas de
+  # minimum intérieur), et dont la suite (u_0=e^2) est DÉCROISSANTE. Ainsi
+  # l'élève ne peut pas recopier le sujet 2019 : il doit reconnaître que la même
+  # machinerie s'applique quand le décor change de sens.
+  - id: r-variation
+    title: "Variation fraîche — une fonction ln sous la première bissectrice, suite décroissante"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Variation construite exprès (anti-mémorisation) — n'a pas vocation à être
+        un sujet réel. Le sujet réel est r-bac (2019, sourcé). Fonction et nombres
+        choisis pour donner des résultats exacts vérifiés (aire 2e-5, point fixe e,
+        stricte croissance de f).
+    intro: |-
+      Même structure profonde que le sujet précédent, décor renversé. Soit $f$ la fonction définie sur $]0,+\infty[$ par :
+
+      $$f(x) = x - (\ln x - 1)^2$$
+
+      et $(C)$ sa courbe représentative dans un repère orthonormé $(O,\vec{i},\vec{j})$ *(unité : 1 cm)*. On note $(\Delta)$ la droite d'équation $y=x$.
+
+      Trois différences avec le sujet 2019, pour que tu ne recopies pas : la position de $(C)$ par rapport à $(\Delta)$, le sens de variation de $f$, et celui de la suite. Les trois basculent — à toi d'établir dans quel sens. Mais les outils sont identiques : domaine du $\ln$, croissances comparées, $(\ln u)'=\dfrac{u'}{u}$, lecture des variations, intégration par parties, et l'étude d'une suite $u_{n+1}=f(u_n)$.
+    questions:
+      - id: q1
+        part: "Partie A — Limites et branche parabolique"
+        stem: |-
+          Calculer $\displaystyle\lim_{x \to 0^+} f(x)$ et interpréter géométriquement.
+        reasoning: |-
+          En $0^+$ : $x \to 0$ (fini), tandis que $\ln x \to -\infty$ (chapitre 5), donc $\ln x - 1 \to -\infty$ et $(\ln x - 1)^2 \to +\infty$. Comme ce carré est **retranché**, $f(x) = x - (\ln x - 1)^2 \to -\infty$. Une limite $-\infty$ en la borne finie $0$ signifie que la droite $x=0$ (axe des ordonnées) est **asymptote verticale** à $(C)$.
+        steps:
+          - math: '\lim_{x \to 0^+} \ln x = -\infty \ \Rightarrow\ \lim_{x \to 0^+} (\ln x - 1)^2 = +\infty'
+            note: "ln x - 1 tend vers -∞, son carré vers +∞."
+          - math: '\lim_{x \to 0^+} f(x) = \lim_{x \to 0^+}\big(x - (\ln x - 1)^2\big) = -\infty'
+            note: "On retranche une quantité qui tend vers +∞. Asymptote verticale x=0."
+      - id: q2
+        stem: |-
+          Montrer que $\displaystyle\lim_{x \to +\infty} \dfrac{(\ln x)^2}{x} = 0$ (on pourra poser $t=\sqrt{x}$), puis calculer $\displaystyle\lim_{x \to +\infty} f(x)$.
+        reasoning: |-
+          Pour la première limite, on ramène à une croissance comparée connue en posant $t=\sqrt{x}$ (qui tend vers $+\infty$) : $\dfrac{(\ln x)^2}{x} = 4\left(\dfrac{\ln t}{t}\right)^2 \to 4\cdot 0 = 0$, car $\ln x = 2\ln t$ et $x = t^2$.
+
+          Pour $f$, on factorise par $x$ : $f(x) = x\left(1 - \dfrac{(\ln x - 1)^2}{x}\right)$. En développant, $\dfrac{(\ln x - 1)^2}{x} = \dfrac{(\ln x)^2 - 2\ln x + 1}{x} \to 0$ (croissances comparées). Le facteur tend vers $1$ et $x \to +\infty$, donc $f(x) \to +\infty$.
+        steps:
+          - math: 't=\sqrt{x}: \ \ln x = 2\ln t,\ x = t^2 \ \Rightarrow\ \dfrac{(\ln x)^2}{x} = \dfrac{4(\ln t)^2}{t^2} = 4\left(\dfrac{\ln t}{t}\right)^2 \xrightarrow[t \to +\infty]{} 0'
+            note: "Croissances comparées ln t / t → 0, mises au carré."
+          - math: 'f(x) = x\left(1 - \dfrac{(\ln x)^2 - 2\ln x + 1}{x}\right) \xrightarrow[x \to +\infty]{} +\infty'
+            note: "Le facteur tend vers 1 (croissances comparées), x tend vers +∞."
+      - id: q3
+        stem: |-
+          Montrer que $(C)$ admet au voisinage de $+\infty$ une branche parabolique de direction la droite $(\Delta):y=x$.
+        reasoning: |-
+          Comme pour le sujet, deux vérifications : $\dfrac{f(x)}{x} \to 1$ (la direction de $(\Delta)$) et $f(x)-x \to -\infty$ (pas de limite finie, donc pas d'asymptote mais une branche parabolique). Ici $f(x)-x = -(\ln x - 1)^2 \to -\infty$, et $\dfrac{f(x)}{x} = 1 - \dfrac{(\ln x - 1)^2}{x} \to 1$ par croissances comparées (question 2).
+        steps:
+          - math: '\dfrac{f(x)}{x} = 1 - \dfrac{(\ln x - 1)^2}{x} \xrightarrow[x \to +\infty]{} 1'
+            note: "La pente tend vers 1 : direction de (Δ)."
+          - math: 'f(x) - x = -(\ln x - 1)^2 \xrightarrow[x \to +\infty]{} -\infty'
+            note: "L'écart à (Δ) part vers -∞ : branche parabolique de direction y=x (courbe sous (Δ))."
+      - id: q4
+        part: "Partie B — Dérivée et variations"
+        stem: |-
+          Montrer que $f'(x) = \dfrac{x - 2\ln x + 2}{x}$ pour tout $x>0$, puis prouver que $f$ est strictement croissante sur $]0,+\infty[$.
+        reasoning: |-
+          On dérive $(\ln x - 1)^2$ comme une composée : $\big((\ln x - 1)^2\big)' = 2(\ln x - 1)\cdot\dfrac1x$ (le facteur $\dfrac1x$ est la dérivée de l'intérieur $\ln x - 1$, puisque $(\ln x)'=\dfrac1x$). D'où $f'(x) = 1 - \dfrac{2(\ln x - 1)}{x} = \dfrac{x - 2\ln x + 2}{x}$.
+
+          Pour le signe, le dénominateur $x>0$ ne compte pas : on étudie le numérateur $n(x) = x - 2\ln x + 2$ par sa monotonie. $n'(x) = 1 - \dfrac2x = \dfrac{x-2}{x}$, négatif sur $]0,2[$, positif après : $n$ admet un **minimum** en $x=2$, valant $n(2) = 4 - 2\ln 2 > 0$ (car $2\ln 2 = \ln 4 < 4$). Donc $n(x)>0$ partout, $f'(x)>0$, et $f$ est **strictement croissante**.
+        steps:
+          - math: 'f''(x) = 1 - \dfrac{2(\ln x - 1)}{x} = \dfrac{x - 2\ln x + 2}{x}'
+            note: "Dérivée de -(ln x -1)^2 : -2(ln x -1)·(1/x). Réduction au dénominateur x."
+          - math: 'n(x) = x - 2\ln x + 2, \quad n''(x) = 1 - \dfrac{2}{x} = \dfrac{x-2}{x}'
+            note: "On étudie le signe du numérateur n(x) par sa dérivée : minimum en x=2."
+          - math: 'n(2) = 4 - 2\ln 2 > 0 \ \Rightarrow\ n(x) > 0 \ \Rightarrow\ f''(x) > 0 \ \text{ sur } ]0,+\infty['
+            note: "2 ln 2 = ln 4 ≈ 1,39 < 4. Le minimum de n est positif, donc f' > 0 partout : f strictement croissante."
+      - id: q5
+        stem: |-
+          Dresser le tableau de variations de $f$.
+        reasoning: |-
+          Tout est réuni : $f$ est **strictement croissante** sur $]0,+\infty[$ (question 4), avec $\displaystyle\lim_{x\to 0^+} f(x) = -\infty$ (question 1) et $\displaystyle\lim_{x\to +\infty} f(x) = +\infty$ (question 2). Le tableau tient en une seule flèche montante, de $-\infty$ à $+\infty$. On peut repérer au passage $f(1) = 1 - (0-1)^2 = 0$ et $f(e) = e - 0 = e$.
+        steps:
+          - math: 'f''(x) > 0 \ \text{ sur } ]0,+\infty[\ ; \quad \lim_{x \to 0^+} f(x) = -\infty,\quad \lim_{x \to +\infty} f(x) = +\infty'
+            note: "Une seule ligne strictement croissante de -∞ à +∞."
+          - math: 'f(1) = 1 - (0 - 1)^2 = 0, \qquad f(e) = e - (1 - 1)^2 = e'
+            note: "Deux points de repère utiles : (1,0) et (e,e)."
+      - id: q6
+        part: "Partie C — Position relative et aire"
+        stem: |-
+          Montrer que $f(x) - x = -(\ln x - 1)^2$, et en déduire la position relative de $(C)$ et $(\Delta)$.
+        reasoning: |-
+          Directement, $f(x) - x = -(\ln x - 1)^2$. Un carré étant $\ge 0$, son opposé est $\le 0$ : $f(x) \le x$, donc **$(C)$ est en dessous de $(\Delta)$** sur tout $]0,+\infty[$. L'égalité (contact) a lieu uniquement quand $\ln x - 1 = 0$, soit $x = e$ : les deux courbes se touchent au point $(e,e)$. C'est le miroir exact de la position du sujet 2019 (où la courbe était au-dessus).
+        steps:
+          - math: 'f(x) - x = -(\ln x - 1)^2 \le 0, \quad \text{égalité} \iff \ln x = 1 \iff x = e'
+            note: "(C) en dessous de (Δ):y=x partout, unique point de contact (e , e)."
+      - id: q7
+        stem: |-
+          Vérifier que $H:x\mapsto x\ln x - x$ est une primitive de $x\mapsto \ln x$ sur $]0,+\infty[$, puis, à l'aide d'une intégration par parties, montrer que $\displaystyle\int_1^e (\ln x)^2\,dx = e - 2$.
+        reasoning: |-
+          Pour la primitive : $H'(x) = (x\ln x)' - 1 = (\ln x + 1) - 1 = \ln x$. Pour l'IPP, on lit $(\ln x)^2 = \ln x\cdot\ln x$, on dérive $u=\ln x$ ($u'=\dfrac1x$) et on primitive $v'=\ln x$ en $v=H$. Le crochet $\big[\ln x\,(x\ln x - x)\big]_1^e$ est nul aux deux bornes, et il reste $-\displaystyle\int_1^e(\ln x - 1)\,dx = e-2$. C'est le même geste d'IPP que dans le sujet — une technique canonique du chapitre.
+        steps:
+          - math: 'H''(x) = (\ln x + 1) - 1 = \ln x \ \Rightarrow\ H \text{ primitive de } \ln x'
+            note: "(x ln x)' = ln x + 1 ; moins la dérivée de x, soit 1 ; reste ln x."
+          - math: '\int_1^e (\ln x)^2\,dx = \big[\ln x\,(x\ln x - x)\big]_1^e - \int_1^e \dfrac{1}{x}(x\ln x - x)\,dx'
+            note: "IPP avec u=ln x, v=H. Le crochet vaut 0 en e et en 1."
+          - math: '= 0 - \int_1^e (\ln x - 1)\,dx = -\big[x\ln x - 2x\big]_1^e = -\big((e - 2e) - (0 - 2)\big) = e - 2'
+            note: "Primitive de ln x - 1 : x ln x - 2x. Évaluée de 1 à e."
+      - id: q8
+        stem: |-
+          Calculer, en $\text{cm}^2$, l'aire du domaine limité par $(C)$, $(\Delta)$ et les droites $x=1$ et $x=e$.
+        reasoning: |-
+          Sur $[1,e]$, $(C)$ est **en dessous** de $(\Delta)$ (question 6), donc l'aire est $\displaystyle\int_1^e \big(x - f(x)\big)\,dx = \int_1^e (\ln x - 1)^2\,dx$. On développe le carré et on réutilise $\displaystyle\int_1^e (\ln x)^2 dx = e-2$ (question 7) et $\displaystyle\int_1^e \ln x\,dx = 1$. Attention : ici c'est $x - f(x)$ (et non $f(x)-x$), car c'est $(\Delta)$ qui est au-dessus.
+        steps:
+          - math: '\mathcal{A} = \int_1^e \big(x - f(x)\big)\,dx = \int_1^e (\ln x - 1)^2\,dx = \int_1^e \big((\ln x)^2 - 2\ln x + 1\big)\,dx'
+            note: "(Δ) au-dessus de (C) sur [1,e] : on intègre x - f(x). On développe le carré."
+          - math: '\mathcal{A} = (e - 2) - 2\cdot 1 + (e - 1) = 2e - 5'
+            note: "En réutilisant ∫(ln x)^2 = e-2, ∫ln x = 1, ∫1 = e-1."
+          - math: '\mathcal{A} = (2e - 5)\ \text{cm}^2 \approx 0{,}44\ \text{cm}^2'
+            note: "Repère orthonormé d'unité 1 cm : l'unité d'aire vaut 1 cm^2. Aire positive."
+      - id: q9
+        part: "Partie D — La suite $u_0=e^2$, $u_{n+1}=f(u_n)$"
+        stem: |-
+          Soit $(u_n)$ définie par $u_0 = e^2$ et $u_{n+1}=f(u_n)$. Montrer par récurrence que $e \le u_n \le e^2$ pour tout $n\in\mathbb{N}$.
+        reasoning: |-
+          **Initialisation :** $u_0 = e^2$ vérifie $e \le e^2 \le e^2$. **Hérédité :** on suppose $e \le u_n \le e^2$. Comme $f$ est **strictement croissante** (question 4), $f(e) \le f(u_n) \le f(e^2)$. Or $f(e) = e$ (point fixe, car $\ln e = 1$) et $f(e^2) = e^2 - (2-1)^2 = e^2 - 1$. Donc $e \le u_{n+1} \le e^2 - 1 \le e^2$ : l'encadrement se transmet.
+        steps:
+          - math: '\text{Initialisation\,: } u_0 = e^2, \quad e \le e^2 \le e^2 \ \checkmark'
+            note: "Vrai au rang 0."
+          - math: 'f \text{ croissante} \ \Rightarrow\ e \le u_n \le e^2 \ \Rightarrow\ f(e) \le u_{n+1} \le f(e^2)'
+            note: "On applique la stricte croissance de f à l'hypothèse."
+          - math: 'f(e) = e,\quad f(e^2) = e^2 - 1 \ \Rightarrow\ e \le u_{n+1} \le e^2 - 1 \le e^2'
+            note: "f(e)=e (point fixe). L'encadrement passe au rang n+1."
+      - id: q10
+        stem: |-
+          Montrer que la suite $(u_n)$ est décroissante.
+        reasoning: |-
+          On étudie le signe de $u_{n+1} - u_n = f(u_n) - u_n$. La question 6 a montré $f(x) - x = -(\ln x - 1)^2 \le 0$. Appliquée à $x = u_n$, elle donne $u_{n+1} - u_n \le 0$ : la suite est **décroissante** (c'est le miroir du sujet, où la même différence était positive).
+        steps:
+          - math: 'u_{n+1} - u_n = f(u_n) - u_n = -(\ln u_n - 1)^2 \le 0'
+            note: "On réutilise f(x)-x = -(ln x -1)^2 (question 6), opposé d'un carré donc négatif."
+      - id: q11
+        stem: |-
+          En déduire que $(u_n)$ est convergente et calculer sa limite.
+        reasoning: |-
+          $(u_n)$ est **décroissante** (question 10) et **minorée** par $e$ (question 9) : par le théorème de convergence monotone, elle converge vers une limite $\ell \ge e$. En passant l'encadrement à la limite, $\ell \in [e, e^2]$, donc $\ell>0$ et $f(\ell)$ a un sens. Comme $f$ est continue et $u_{n+1}=f(u_n)$, la limite vérifie $\ell = f(\ell)$, c'est-à-dire $-(\ln\ell - 1)^2 = 0$, soit $\ln\ell = 1$, soit $\ell = e$. Comme $e \in [e, e^2]$, la limite est $\ell = e$.
+        steps:
+          - math: '(u_n) \text{ décroissante et minorée par } e \ \Longrightarrow\ (u_n) \text{ converge, } \ell \in [e, e^2]'
+            note: "Théorème de convergence monotone."
+          - math: '\ell = f(\ell) \iff -(\ln\ell - 1)^2 = 0 \iff \ln\ell = 1 \iff \ell = e'
+            note: "La limite est le point fixe de f dans [e, e^2] : lim u_n = e."

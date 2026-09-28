@@ -1,0 +1,369 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 480"
+     font-family="'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif"
+     aria-label="Les trois régimes de u_C(t) selon la valeur de R">
+
+  <!--
+    regime-traces-forming.motion.svg  (v3 — MotionStage engine, ADR 0022)
+    ─────────────────────────────────────────────────────────────────────────
+    Engine: MotionStage.tsx (GSAP DrawSVGPlugin for trace/draw verbs).
+    Beat contract: beat-0 settled on load (panel-1 visible); beats 1–2
+    played on "Suivant" click, one panel per beat.
+
+    LAYOUT MODEL: reserved-regions
+      chrome:  { x:0, y:0,   w:680, h:52  }  — title + subtitle (always)
+      panel-1: { x:0, y:52,  w:680, h:130 }  — périodique (beat 0, settled)
+      panel-2: { x:0, y:182, w:680, h:130 }  — pseudo-périodique (beat 1)
+      panel-3: { x:0, y:322, w:680, h:120 }  — apériodique (beat 2)
+      footer:  { x:0, y:442, w:680, h:38  }  — footnotes (always)
+
+    BEAT 0 (settled on load): panel-1 — undamped sinusoid + T₀ bracket +
+      "Périodique" badge. All elements authored VISIBLE (no pre-state).
+
+    BEAT 1 (Suivant ▸): panel-2 — axes draw, damped trace, envelope fade,
+      T-bracket fade, badge fade. All elements authored at opacity:0 /
+      stroke-dashoffset full (engine sets pre-state via setPre idempotently).
+
+    BEAT 2 (Suivant ▸): panel-3 — axes draw, monotonic trace, badge + note
+      fade. Same pre-state authoring.
+
+    BOUNDARY §0.4: pseudo-période spacing equal by eye (same 100px gap
+    between peaks). No formula for T. No damping coefficient. No e^{-αt}.
+    Footnote "Aucun coefficient d'amortissement affiché (§0.4)" preserved.
+
+    PALETTE: var(--figure-*) tokens throughout. No hard-coded hex.
+    The engine sets pre-states with gsap.set (idempotent — no flash).
+    prefers-reduced-motion: engine seeks instantly to each beat's
+    settled state; Suivant/Précédent still advance between states.
+  -->
+
+  <!-- ── Background + chrome (always visible) ───────────────────────────── -->
+  <rect width="680" height="480" rx="8" fill="var(--figure-surface)"/>
+
+  <text x="340" y="26" text-anchor="middle"
+        font-size="13" font-weight="600" fill="var(--figure-ink)">
+    Les trois régimes de u<tspan dy="3" font-size="9">C</tspan><tspan dy="-3" font-size="13">(t)</tspan>
+  </text>
+  <text x="340" y="43" text-anchor="middle"
+        font-size="10" fill="var(--figure-ink-soft)">
+    Mêmes conditions initiales — seule R augmente : R ≈ 0 → R modérée → R grande
+  </text>
+
+  <!-- Footer footnotes (always visible) -->
+  <text x="340" y="456" text-anchor="middle"
+        font-size="10.5" fill="var(--figure-ink-soft)">
+    Espacement T entre maxima constant — indépendant de R à cet ordre d’approximation
+  </text>
+  <text x="340" y="471" text-anchor="middle"
+        font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">
+    Aucun coefficient d’amortissement affiché
+  </text>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       PANEL 1 — Régime périodique (R ≈ 0)
+       Beat 0: settled on load. All elements authored VISIBLE.
+       No opacity:0 / dashoffset here — engine will setPre then seek past.
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <!-- Panel background -->
+  <rect id="p1-bg" x="90" y="54" width="550" height="122" rx="5"
+        fill="var(--figure-grid)" opacity="0.35"/>
+
+  <!-- Axes: x-axis -->
+  <line id="p1-xaxis"
+        x1="112" y1="110" x2="622" y2="110"
+        stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+  <polygon id="p1-xarrow" points="622,110 611,105 611,115"
+           fill="var(--figure-ink-soft)"/>
+  <!-- Axes: y-axis -->
+  <line id="p1-yaxis"
+        x1="112" y1="158" x2="112" y2="62"
+        stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+  <polygon id="p1-yarrow" points="112,62 107,73 117,73"
+           fill="var(--figure-ink-soft)"/>
+  <!-- Axis labels -->
+  <text id="p1-xlabel" x="626" y="114" font-size="11"
+        fill="var(--figure-ink-soft)">t</text>
+  <text id="p1-ylabel-u" x="105" y="60" text-anchor="middle"
+        font-size="11" font-style="italic" fill="var(--figure-ink-soft)">u</text>
+  <text id="p1-ylabel-c" x="110" y="67" font-size="8"
+        fill="var(--figure-ink-soft)">C</text>
+  <text id="p1-zero" x="103" y="114" text-anchor="end"
+        font-size="10" fill="var(--figure-ink-soft)">0</text>
+  <line id="p1-u0tick" x1="108" y1="72" x2="116" y2="72"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text id="p1-u0label" x="102" y="76" text-anchor="end"
+        font-size="10" fill="var(--figure-ink-soft)">U₀</text>
+
+  <!-- Undamped sinusoid — beat-0 trace (drawn via DrawSVG on beat 0,
+       but since beat-0 is settled on load, it appears already drawn).
+       Path length ≈ 620px. -->
+  <path id="p1-curve"
+        d="M112,110
+           C119,87 125,72 132,72
+           C139,72 145,87 152,110
+           C159,133 165,148 172,148
+           C179,148 185,133 192,110
+           C199,87 205,72 212,72
+           C219,72 225,87 232,110
+           C239,133 245,148 252,148
+           C259,148 265,133 272,110
+           C279,87 285,72 292,72
+           C299,72 305,87 312,110
+           C319,133 325,148 332,148
+           C339,148 345,133 352,110
+           C359,87 365,72 372,72
+           C379,72 385,87 392,110
+           C399,133 405,148 412,148
+           C419,148 425,133 432,110
+           C439,87 445,72 452,72
+           C459,72 465,87 472,110
+           C479,133 485,148 492,148
+           C499,148 505,133 512,110
+           C519,87 525,72 532,72
+           C539,72 545,87 552,110
+           C559,133 565,148 572,148
+           C579,148 585,133 592,110
+           C599,87 605,72 612,72
+           C619,72 621,91 621,110"
+        fill="none"
+        stroke="var(--figure-regime-periodic)"
+        stroke-width="2.2"
+        stroke-linejoin="round"/>
+
+  <!-- T₀ bracket between peaks at x=132 and x=232 -->
+  <line id="p1-bracket-line"
+        x1="132" y1="162" x2="232" y2="162"
+        stroke="var(--figure-accent)" stroke-width="1.5"/>
+  <line id="p1-bracket-l" x1="132" y1="158" x2="132" y2="166"
+        stroke="var(--figure-accent)" stroke-width="1.5"/>
+  <line id="p1-bracket-r" x1="232" y1="158" x2="232" y2="166"
+        stroke="var(--figure-accent)" stroke-width="1.5"/>
+  <text id="p1-t0label" x="182" y="159" text-anchor="middle"
+        font-size="10.5" font-style="italic" fill="var(--figure-accent)">
+    T<tspan dy="3" font-size="7.5">0</tspan>
+  </text>
+
+  <!-- "Périodique (R ≈ 0)" badge — placed in the sub-bracket gutter (y=167–181)
+       to avoid the sinusoid's right-side peaks. Clear of panel-2 boundary at y=184.
+       Matches p2-badge/p3-badge fade pattern. -->
+  <g id="p1-badge" opacity="0">
+    <rect x="380" y="167" width="196" height="18" rx="4"
+          fill="var(--figure-accent)" opacity="0.12"/>
+    <text x="478" y="179" text-anchor="middle"
+          font-size="11" font-weight="600"
+          fill="var(--figure-regime-periodic)">
+      Périodique (R ≈ 0)
+    </text>
+  </g>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       PANEL 2 — Régime pseudo-périodique (R modérée)
+       Beat 1: authored at opacity:0 / full dashoffset (pre-state).
+       Engine setPre is idempotent with this authoring.
+
+       Animated elements:
+         #p2-xaxis, #p2-xarrow, #p2-yaxis, #p2-yarrow  → draw (group #p2-axes)
+         #p2-curve                                        → trace
+         #p2-env-top, #p2-env-bot                        → fade (from:none)
+         #p2-annot                                        → fade (from:below)
+         #p2-badge-bg, #p2-badge-text (group #p2-badge)  → fade (from:none)
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <!-- Panel background (fades in as part of axes group) -->
+  <rect id="p2-bg" x="90" y="184" width="550" height="124" rx="5"
+        fill="var(--figure-grid)" opacity="0"
+        style="opacity:0"/>
+
+  <!-- Axes group: 4 lines + 2 arrowheads + labels, drawn as a unit -->
+  <g id="p2-axes" opacity="0">
+    <line id="p2-xaxis"
+          x1="112" y1="242" x2="622" y2="242"
+          stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <polygon id="p2-xarrow" points="622,242 611,237 611,247"
+             fill="var(--figure-ink-soft)"/>
+    <line id="p2-yaxis"
+          x1="112" y1="296" x2="112" y2="192"
+          stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <polygon id="p2-yarrow" points="112,192 107,203 117,203"
+             fill="var(--figure-ink-soft)"/>
+    <text x="626" y="246" font-size="11" fill="var(--figure-ink-soft)">t</text>
+    <text x="105" y="190" text-anchor="middle"
+          font-size="11" font-style="italic" fill="var(--figure-ink-soft)">u</text>
+    <text x="110" y="197" font-size="8" fill="var(--figure-ink-soft)">C</text>
+    <text x="103" y="246" text-anchor="end"
+          font-size="10" fill="var(--figure-ink-soft)">0</text>
+    <line x1="108" y1="202" x2="116" y2="202"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="102" y="206" text-anchor="end"
+          font-size="10" fill="var(--figure-ink-soft)">U₀</text>
+  </g>
+
+  <!--
+    Damped sinusoid — SAME 100px peak spacing as panel 1.
+    Peaks at x=132,232,332,432,532 (100px apart — qualitative pseudo-period).
+    Amplitudes decay: 40→28→19→13→9 px above/below axis.
+    Path authored with full stroke-dashoffset (engine setPre sets drawSVG 0%).
+  -->
+  <path id="p2-curve"
+        d="M112,242
+           C119,220 125,202 132,202
+           C139,202 145,220 152,242
+           C159,264 165,282 172,282
+           C179,282 185,264 192,242
+           C199,222 205,214 212,214
+           C219,214 225,222 232,242
+           C239,260 245,270 252,270
+           C259,270 265,260 272,242
+           C279,225 285,223 292,223
+           C299,223 305,225 312,242
+           C319,257 325,261 332,261
+           C339,261 345,257 352,242
+           C359,228 365,233 372,233
+           C379,233 385,228 392,242
+           C399,253 405,255 412,255
+           C419,255 425,253 432,242
+           C439,233 445,235 452,235
+           C459,235 465,233 472,242
+           C479,249 485,251 492,251
+           C499,251 505,249 512,242
+           C519,236 525,237 532,237
+           C539,237 545,236 552,242
+           C559,246 565,247 572,247
+           C579,247 585,246 592,242
+           C599,238 612,240 621,242"
+        fill="none"
+        stroke="var(--figure-regime-pseudo)"
+        stroke-width="2.2"
+        stroke-linejoin="round"
+        opacity="0"/>
+
+  <!-- Decay envelope dashes (upper + lower), faded in together -->
+  <g id="p2-envelope" opacity="0">
+    <path id="p2-env-top"
+          d="M112,242 Q250,192 621,238"
+          fill="none"
+          stroke="var(--figure-regime-pseudo)"
+          stroke-width="1.2"
+          stroke-dasharray="5,4"
+          opacity="0.55"/>
+    <path id="p2-env-bot"
+          d="M112,242 Q250,289 621,246"
+          fill="none"
+          stroke="var(--figure-regime-pseudo)"
+          stroke-width="1.2"
+          stroke-dasharray="5,4"
+          opacity="0.55"/>
+  </g>
+
+  <!-- T annotation: bracket + dashed verticals + note -->
+  <g id="p2-annot" opacity="0">
+    <!-- Dashed verticals at the first three peaks -->
+    <line x1="132" y1="202" x2="132" y2="302"
+          stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
+    <line x1="232" y1="214" x2="232" y2="302"
+          stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
+    <line x1="332" y1="223" x2="332" y2="302"
+          stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
+    <!-- T bracket -->
+    <line x1="132" y1="302" x2="232" y2="302"
+          stroke="var(--figure-accent)" stroke-width="2"/>
+    <line x1="132" y1="298" x2="132" y2="306"
+          stroke="var(--figure-accent)" stroke-width="2"/>
+    <line x1="232" y1="298" x2="232" y2="306"
+          stroke="var(--figure-accent)" stroke-width="2"/>
+    <rect x="169" y="295" width="26" height="16" rx="3"
+          fill="var(--figure-accent)"/>
+    <text x="182" y="306" text-anchor="middle"
+          font-size="11" font-style="italic" font-weight="600"
+          fill="var(--figure-surface)">T</text>
+    <!-- Second T bracket (equal spacing) -->
+    <line x1="232" y1="302" x2="332" y2="302"
+          stroke="var(--figure-accent)" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <line x1="332" y1="298" x2="332" y2="306"
+          stroke="var(--figure-accent)" stroke-width="1.5"/>
+    <!-- Pedagogical note -->
+    <text x="340" y="315" text-anchor="middle"
+          font-size="9.5" fill="var(--figure-ink-soft)">
+      espacement T constant — amplitude seule décroît
+    </text>
+  </g>
+
+  <!-- Badge -->
+  <g id="p2-badge" opacity="0">
+    <rect x="378" y="188" width="238" height="22" rx="4"
+          fill="var(--figure-accent)" opacity="0.12"/>
+    <text x="497" y="203" text-anchor="middle"
+          font-size="11.5" font-weight="600"
+          fill="var(--figure-regime-pseudo)">
+      Pseudo-périodique (R modérée)
+    </text>
+  </g>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       PANEL 3 — Régime apériodique (R grande)
+       Beat 2: all elements at opacity:0 (pre-state).
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <!-- Panel background -->
+  <rect id="p3-bg" x="90" y="326" width="550" height="110" rx="5"
+        fill="var(--figure-grid)" opacity="0"
+        style="opacity:0"/>
+
+  <!-- Axes group -->
+  <g id="p3-axes" opacity="0">
+    <line id="p3-xaxis"
+          x1="112" y1="382" x2="622" y2="382"
+          stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <polygon id="p3-xarrow" points="622,382 611,377 611,387"
+             fill="var(--figure-ink-soft)"/>
+    <line id="p3-yaxis"
+          x1="112" y1="428" x2="112" y2="334"
+          stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <polygon id="p3-yarrow" points="112,334 107,345 117,345"
+             fill="var(--figure-ink-soft)"/>
+    <text x="626" y="386" font-size="11" fill="var(--figure-ink-soft)">t</text>
+    <text x="105" y="332" text-anchor="middle"
+          font-size="11" font-style="italic" fill="var(--figure-ink-soft)">u</text>
+    <text x="110" y="339" font-size="8" fill="var(--figure-ink-soft)">C</text>
+    <text x="103" y="386" text-anchor="end"
+          font-size="10" fill="var(--figure-ink-soft)">0</text>
+    <line x1="108" y1="344" x2="116" y2="344"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="102" y="348" text-anchor="end"
+          font-size="10" fill="var(--figure-ink-soft)">U₀</text>
+  </g>
+
+  <!-- Monotonic return (aperiodic decay) -->
+  <path id="p3-curve"
+        d="M112,344
+           C132,344 148,350 174,358
+           C204,365 234,371 274,376
+           C324,379 384,381 454,382
+           C514,382.6 564,382.8 621,382"
+        fill="none"
+        stroke="var(--figure-regime-aperiodic)"
+        stroke-width="2.2"
+        stroke-linejoin="round"
+        opacity="0"/>
+
+  <!-- Badge + note -->
+  <g id="p3-badge" opacity="0">
+    <rect x="410" y="330" width="206" height="22" rx="4"
+          fill="var(--figure-accent)" opacity="0.12"/>
+    <text x="513" y="345" text-anchor="middle"
+          font-size="11.5" font-weight="600"
+          fill="var(--figure-regime-aperiodic)">
+      Apériodique (R grande)
+    </text>
+  </g>
+  <text id="p3-note" x="290" y="404" text-anchor="middle"
+        font-size="10" font-style="italic"
+        fill="var(--figure-ink-soft)"
+        opacity="0">
+    retour monotone vers 0, sans oscillation
+  </text>
+
+</svg>
