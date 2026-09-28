@@ -2513,6 +2513,24 @@ passait) ; `frontiere` lit ce qu'un nombre EST (suivi de mol/L : un des cinq cra
 « K = » : une des trois constantes), ramené à une forme canonique vérifiée sur sept écritures par un
 auto-contrôle. Rejoué : 8/8 attrapés, contre-essai 2017 N tenu, verte 1 023 mesures avant et après.
 
+## `web/scripts/scene-champ-pentes.mjs` — le champ des pentes dit-il, en chaque point, ce que l'équation dit ?
+
+**⚠️ ÉCRITE, JAMAIS LANCÉE (2026-09-28).** Porte de la scène « Ce que l'équation dit en chaque point »
+(maths/equations-differentielles, chapitre 5 ; spec
+`docs/pipeline/propositions/maths-equations-differentielles-scene-pentes.md`). Elle parse ; elle n'a
+tourné ni verte ni rouge — tant que ce n'est pas fait, la scène n'est PAS livrée et cette porte ne
+prouve rien (ADR 0034). Ni en CI, ni dans la batterie. `test-champ-pentes` garde le modèle exact
+(rationnels, deux routes vers le palier qui doivent s'accorder).
+
+**Ce qu'elle doit dire, une fois vérifiée.** Les nombres par une seconde voie (N1–N10) ; l'isotropie
+lue aux graduations ; chaque segment à la bonne pente (angle par ACP, ≤ 1°) et à longueur fixe ; le
+palier ; une courbe coupée au cadre, jamais plafonnée ; deux courbes jamais confondues, jamais posées
+sur le palier ; le point fixe ; `palette` avec la règle corrigée de la campagne Qr/K (cos ≤ 0,85) ;
+`avant-pari`, `fuite-inter-etapes` (avec les `crans` par étape), `frontiere`, `formule-graduee`,
+`katex`, `etiquettes`, `cadre`, `annonce`, `console`, `ergonomie` — à 1 280 et 390 px.
+
+**Ne dit RIEN de** : si le champ aide un élève à comprendre — c'est la vague 2 et la relecture.
+
 ## `web/scripts/carte-chapitres.mjs` — un renvoi « chapitre N » vise-t-il encore le chapitre qu'il nommait ?
 
 **Question.** Le numéro de chapitre que l'élève lit est CALCULÉ (1 + le nombre de titres `## `

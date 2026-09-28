@@ -95,7 +95,11 @@ const PORTE = process.argv.includes("--porte");
 //  plancher de 19, et l'essai qui garde le cliquet était redevenu aveugle. La
 //  règle écrite plus haut ne suffit pas quand on ne relit pas le fichier : c'est
 //  l'essai rouge qui la fait tenir.
-const CLIQUET = 20;
+//  Relevé à 21 le 2026-09-28, dans le commit qui l'a rendu nécessaire —
+//  maths/equations-differentielles porte le champ des pentes. L'essai rouge
+//  §11.129 l'a encore vu le premier (21 → 20 tenait le plancher de 20) : la
+//  scène est écrite mais pas encore livrée, sa porte n'a jamais tourné.
+const CLIQUET = 21;
 
 const RE_EMBED = /\[\[(?:embed|geogebra|desmos|falstad|phet)[:\]]/gi;
 const parMat = new Map();
