@@ -1816,8 +1816,10 @@ sans un module du produit.
   seul ne l'attrapent qu'environ deux fois sur trois (chaque tirage a ~19 % de
   chances de tomber sous 432) ; la moyenne l'attrape à 4σ, et vaut pour un biais
   sur p d'environ 15 % à 1 024, pas 6 % comme la spec l'écrivait ; et l'isotope rapide à 4 et 16 jours) ; `dispersion-decroit`
-  (20 tirages à 64 et à 1 024 : rapport des écarts relatifs dans [2 ; 8], attendu
-  4) ; `case-ne-se-rallume-pas` (suivi image par image) ; `eclairs` (WCAG 2.3.1) ;
+  (40 tirages à 64 et à 1 024 : rapport des écarts relatifs dans [2 ; 8], attendu
+  4 — 20 jusqu'au 2026-09-28, où la CI 805 a rougi à 8,05 sur un produit inchangé :
+  à 20 tirages, un produit juste sort de la bande ≈ 3,5 fois sur 1 000 (simulé,
+  4 000 exécutions) ; à 40, 0 sur 4 000, et les deux sabotages restent dehors) ; `case-ne-se-rallume-pas` (suivi image par image) ; `eclairs` (WCAG 2.3.1) ;
   `performance` (la course contre l'HORLOGE : plus vite que déclaré est rouge,
   plus lent un avertissement) ; `sans-mouvement` ;
 - **les paris, les étapes, avant le pari rien ne répond** (`avant-pari` : 0 px

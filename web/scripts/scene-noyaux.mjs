@@ -751,12 +751,18 @@ await parier(indexDe("la-loi-est-une-loi-de-population", "autour-de-32"));
   const moy = (v) => v.reduce((a, b) => a + b, 0) / v.length;
   const horsMoy = [64, 256, 1024].filter((n) => Math.abs(moy(vus[n]) - n / 2) > (5 * (Math.sqrt(n) / 2)) / Math.sqrt(5));
   juger("tirage-juste", horsMoy.length === 0, `moyennes des cinq tirages : ${[64, 256, 1024].map((n) => `${n} → ${virgule(moy(vus[n]), 1)} (bande ${virgule(n / 2 - (5 * Math.sqrt(n)) / 2 / Math.sqrt(5), 0)} à ${virgule(n / 2 + (5 * Math.sqrt(n)) / 2 / Math.sqrt(5), 0)})`).join(" ; ")}${horsMoy.length ? ` — HORS : ${horsMoy.join(", ")}` : ""}`);
-  // LA DISPERSION DÉCROÎT : écart relatif sur 20 tirages à 64 contre 1024 — attendu 4, bande [2 ; 8]
-  const serie = async (n) => { await cocher('[data-controle="population"]', n); const v = []; for (let k = 0; k < 20; k++) v.push((await tirageRapide())?.[0] ?? NaN); return v; };
+  // LA DISPERSION DÉCROÎT : écart relatif sur 40 tirages à 64 contre 1024 — attendu 4, bande [2 ; 8].
+  // 40 et non 20 (2026-09-28, CI 805 ROUGE sur un produit inchangé : rapport 8,05). Deux écarts-types
+  // estimés sur 20 tirages chacun : le rapport sort de [2 ; 8] environ 3,5 fois sur 1 000 exécutions
+  // d'un produit JUSTE (simulé : 4 000 exécutions binomiales, p = ½) — une porte qui rougit par hasard
+  // enseigne à ignorer le rouge des autres (ADR 0036). À 40 tirages : 0 sur 4 000 (quantiles 0,1 % et
+  // 99,9 % : 2,36 et 6,75), et les deux sabotages restent loin de la bande — dispersion constante
+  // (rapport ≈ 1) et dispersion en 1/N (≈ 16).
+  const serie = async (n) => { await cocher('[data-controle="population"]', n); const v = []; for (let k = 0; k < 40; k++) v.push((await tirageRapide())?.[0] ?? NaN); return v; };
   const sd = (v) => { const m = v.reduce((a, b) => a + b, 0) / v.length; return Math.sqrt(v.reduce((a, b) => a + (b - m) ** 2, 0) / (v.length - 1)); };
   const s64 = await serie(64), s1024 = await serie(1024);
   const rapport = sd(s64) / 32 / (sd(s1024) / 512);
-  juger("dispersion-decroit", Number.isFinite(rapport) && rapport >= 2 && rapport <= 8, `20 tirages à 64 et à 1024 : écart relatif ${virgule((sd(s64) / 32) * 100, 1)} % contre ${virgule((sd(s1024) / 512) * 100, 1)} % — rapport ${virgule(rapport, 2)} (attendu 4, bande [2 ; 8])`);
+  juger("dispersion-decroit", Number.isFinite(rapport) && rapport >= 2 && rapport <= 8, `40 tirages à 64 et à 1024 : écart relatif ${virgule((sd(s64) / 32) * 100, 1)} % contre ${virgule((sd(s1024) / 512) * 100, 1)} % — rapport ${virgule(rapport, 2)} (attendu 4, bande [2 ; 8])`);
   await cocher('[data-controle="population"]', 64);
   await tirageRapide();
   await grilleEtProba("étape 3");
