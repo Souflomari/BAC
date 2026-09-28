@@ -437,6 +437,7 @@ Un sujet de rotation fait rarement tourner un solide dans le vide. Il l'accroche
 
 - **La décomposition du poids sur un plan incliné** — la composante $mg\sin\alpha$ le long de la pente, $mg\cos\alpha$ perpendiculairement. Elle est établie dans « **Les lois de Newton** », au chapitre consacré au solide sur un plan incliné. Un exercice de rotation la mobilise dès qu'un objet en translation tire le solide tournant.
 - **Le travail d'une force et le théorème de l'énergie cinétique**, dans « **Aspects énergétiques** ». Ce chapitre-ci donne l'énergie cinétique de rotation $E_c = \frac{1}{2}J_\Delta\,\dot\theta^{\,2}$ (chapitre 6), mais pas la machinerie du travail qui la fait varier.
+- **Le couplage poulie–fil inextensible.** Un fil qui ne glisse pas et ne s'allonge pas impose la **même accélération** à la charge qui tombe et au bord de la poulie qui tourne : $a = r\,\ddot\theta$, la dérivée de $v = r\omega$ déjà rencontrée dans cette leçon. Écrire la deuxième loi de Newton sur la charge (« **Les lois de Newton** ») et la relation fondamentale de la dynamique de rotation sur la poulie, côte à côte, élimine la tension du fil entre les deux équations.
 
 Ce ne sont pas des manques : un exercice de mécanique assemble presque toujours translation et rotation, cinématique et énergie. Savoir **d'où vient** chaque geste évite de croire qu'on a oublié une formule de ce chapitre.
 
@@ -449,6 +450,7 @@ Ce ne sont pas des manques : un exercice de mécanique assemble presque toujours
 - La **relation fondamentale de la dynamique de rotation**, $\sum \mathcal{M}_\Delta(\vec F_{ext}) = J_\Delta\,\ddot\theta$, est l'analogue exact — et justifié terme à terme — de $\sum \vec F_{ext} = m\,\vec a_G$.
 - L'**énergie cinétique de rotation** $E_c = \frac12 J_\Delta \omega^2$ suit la même forme que $\frac12 m v^2$, avec la même substitution.
 - Le **pendule pesant** applique tout ceci : $J_\Delta\,\ddot\theta = -mg\,d\sin\theta$, qui redonne, aux petites oscillations, l'équation harmonique et $T_0 = 2\pi\sqrt{J_\Delta/(mg\,d)}$.
+- Sur une **poulie reliée par un fil inextensible** à une charge, $a = r\,\ddot\theta$ couple les deux mouvements : la deuxième loi de Newton sur la charge et la relation fondamentale de la dynamique de rotation sur la poulie, écrites côte à côte, éliminent la tension du fil.
 
 ### Exercice de type bac
 

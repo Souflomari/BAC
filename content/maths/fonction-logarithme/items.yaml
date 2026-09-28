@@ -1805,19 +1805,30 @@ items:
 
   # ── Dette d'examen, § fonction-logarithme (2026-09-27) — GAP-B « Generalised
   # croissances comparées ((ln x)^n/x) via t=√x » (docs/audits/dette-examen/
-  # maths.md ~l.251-259). La prose a déjà l'exemple travaillé (lesson.md, R4,
-  # « Généraliser : (ln x)²/x », l.283-303) mais aucun item ne le testait :
-  # `EXP-31`/`LOG-...` citée par l'audit (`EXP-31` teste $e^x/x^2$ comme un
-  # FAIT, pas la réduction). Formulé comme demandé par le spec « quelle
+  # maths.md ~l.251-259). Formulé comme demandé par le spec « quelle
   # réécriture rend la limite lisible » plutôt que comme une valeur de limite
   # nue, pour tester le GESTE (le choix du changement de variable) et non le
   # simple rappel « croissances comparées = 0 ». Aucun modèle neuf : le
   # distracteur A (rester sur une forme $0\times\infty$ non résolue, en la
   # lisant comme si elle concluait) relève de `limites-de-ln`, déjà câblé sur
   # « $0\times\infty$ comme un résultat direct » ; les distracteurs C et D
-  # (confondre $(\ln x)^2$ et $\ln(x^2)$, puis oublier le facteur $4$ que ce
+  # (confondre $(\ln x)^2$ et $\ln(x^2)$, puis oublier le facteur que ce
   # carré introduit) relèvent tous deux de `regles-quotient-puissance`, déjà
   # câblé sur « puissance avec le mauvais facteur ».
+  #
+  # WAVE F, relecture du 2026-09-28 (§35/§36 de DECISIONS-EN-ATTENTE.md) :
+  # cet item testait $\lim (\ln x)^2/x$ via $t=\sqrt x$ — EXACTEMENT
+  # l'identité $(\ln x)^2/x = 4(\ln\sqrt x/\sqrt x)^2$ que résout déjà le
+  # sommet sourcé de la notion (exercises.yaml, r-bac = bk-2019-n-x4 q4,
+  # bank.yaml:451) ET, dans la même passe, l'exemple travaillé que le
+  # content-author installe en R2 de `lesson.md` (désormais retargeté sur
+  # $x(\ln x)^2$ en $0^+$, lui-même déjà présent à bank.yaml:663 — deux
+  # sources, pas une). Retargeté sur $\lim_{x\to+\infty}(\ln x)^2/\sqrt x$
+  # via $t=\sqrt[4]{x}$ : même GESTE (généraliser croissances comparées par
+  # un changement de variable qui aligne les exposants), calcul différent,
+  # absent de `lesson.md`, `bank.yaml` et `exercises.yaml` de cette notion
+  # (grep vérifié sur `x^{1/4}` et `\sqrt[4]`) — ni SM- ni SExp-spécifique,
+  # le socle croissances comparées étant commun aux deux filières.
   - id: LOG-33
     rung: "R4"
     difficulty_level: 4
@@ -1826,25 +1837,27 @@ items:
     tags: ["limites", "croissances-comparees", "changement-variable"]
     primary_misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
     stem: >
-      Pour calculer $\displaystyle\lim_{x \to +\infty} \dfrac{(\ln x)^2}{x}$,
-      quelle réécriture de $(\ln x)^2/x$ rend cette limite lisible ?
+      Pour calculer $\displaystyle\lim_{x \to +\infty}
+      \dfrac{(\ln x)^2}{\sqrt x}$, quelle réécriture de
+      $(\ln x)^2/\sqrt x$ rend cette limite lisible ?
     type: mcq
     choices:
       - id: A
-        text: "$\\dfrac{\\ln x}{x}\\times\\ln x$"
+        text: "$\\dfrac{\\ln x}{\\sqrt x}\\times\\ln x$"
         correct: false
         misconception: mc.math.maths_fonction_logarithme.limites-de-ln
         feedback: >
-          Cette égalité est vraie, mais elle ne rend rien lisible :
-          $\ln x/x\to0$ et $\ln x\to+\infty$, donc c'est encore une forme
-          $0\times\infty$ — pas une conclusion du genre « $0$ fois
-          l'infini, l'infini l'emporte, la limite est $+\infty$ ». Une
-          forme indéterminée qui reste indéterminée n'a rien réglé.
+          Cette égalité est vraie, mais elle ne rend rien lisible : même en
+          acceptant $\ln x/\sqrt x\to0$, il reste un produit par
+          $\ln x\to+\infty$, donc encore une forme $0\times\infty$ — pas
+          une conclusion du genre « $0$ fois l'infini, l'infini l'emporte,
+          la limite est $+\infty$ ». Une forme indéterminée qui reste
+          indéterminée n'a rien réglé.
       - id: B
-        text: "$4\\left(\\dfrac{\\ln\\sqrt{x}}{\\sqrt{x}}\\right)^2$"
+        text: "$16\\left(\\dfrac{\\ln\\sqrt[4]{x}}{\\sqrt[4]{x}}\\right)^2$"
         correct: true
       - id: C
-        text: "$\\dfrac{2\\ln x}{x}$"
+        text: "$\\dfrac{2\\ln x}{\\sqrt x}$"
         correct: false
         misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
         feedback: >
@@ -1853,39 +1866,44 @@ items:
           $2\ln x$) : ce sont deux expressions différentes, et rien ne
           permet de remplacer l'une par l'autre ici.
       - id: D
-        text: "$\\left(\\dfrac{\\ln\\sqrt{x}}{\\sqrt{x}}\\right)^2$"
+        text: "$\\left(\\dfrac{\\ln\\sqrt[4]{x}}{\\sqrt[4]{x}}\\right)^2$"
         correct: false
         misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
         feedback: >
           Le changement de variable est le bon réflexe, mais il manque le
-          facteur $4$ : $\ln\sqrt x=\frac12\ln x$ fait apparaître un carré
-          de $\frac12$, donc $\left(\ln\sqrt x/\sqrt x\right)^2=(\ln
-          x)^2/(4x)$ — il faut multiplier par $4$ pour retrouver $(\ln
-          x)^2/x$, sinon l'égalité ne tient pas.
+          facteur $16$ : $\ln\sqrt[4]x=\frac14\ln x$ fait apparaître un
+          carré de $\frac14$, donc $\left(\ln\sqrt[4]x/\sqrt[4]x\right)^2=
+          (\ln x)^2/(16\sqrt x)$ — il faut multiplier par $16$ pour
+          retrouver $(\ln x)^2/\sqrt x$, sinon l'égalité ne tient pas.
     correct_feedback: >
-      Exactement : $\ln\sqrt x=\frac12\ln x$ donne $\left(\ln\sqrt
-      x/\sqrt x\right)^2=(\ln x)^2/(4x)$, donc $(\ln x)^2/x=4\left(\ln\sqrt
-      x/\sqrt x\right)^2$. En posant $t=\sqrt x\to+\infty$, cette écriture
-      redevient $4(\ln t/t)^2\to4\times0^2=0$ par croissances comparées.
+      Exactement : $\ln\sqrt[4]x=\frac14\ln x$ donne
+      $\left(\ln\sqrt[4]x/\sqrt[4]x\right)^2=(\ln x)^2/(16\sqrt x)$, donc
+      $(\ln x)^2/\sqrt x=16\left(\ln\sqrt[4]x/\sqrt[4]x\right)^2$. En posant
+      $t=\sqrt[4]x\to+\infty$, cette écriture redevient
+      $16(\ln t/t)^2\to16\times0^2=0$ par croissances comparées.
     solution: |
-      **Pourquoi $(\ln x)^2/x$ n'est pas $\ln x/x$.** C'est une NOUVELLE
-      forme indéterminée $\infty/\infty$ (le carré au numérateur change
-      tout), qu'il faut retraiter depuis le début.
+      **Pourquoi $(\ln x)^2/\sqrt x$ n'est pas $\ln x/x$.** C'est une
+      NOUVELLE forme indéterminée $\infty/\infty$ (le carré au numérateur
+      et la racine au dénominateur changent tout), qu'il faut retraiter
+      depuis le début.
 
-      **Faire apparaître $\sqrt x$.** Puisque $\ln\sqrt x=\frac12\ln x$
-      (propriété racine carrée) :
-      $$\left(\frac{\ln\sqrt x}{\sqrt x}\right)^2 = \frac{\left(\frac12\ln
-      x\right)^2}{x} = \frac{(\ln x)^2}{4x}$$
+      **Faire apparaître $\sqrt[4]{x}$.** Le numérateur porte un carré, le
+      dénominateur une racine carrée : pour que le changement de variable
+      aligne les deux, il faut une racine dont le carré redonne $\sqrt x$,
+      soit $\sqrt[4]{x}$ (puisque $\left(\sqrt[4]x\right)^2=\sqrt x$).
+      Puisque $\ln\sqrt[4]x=\frac14\ln x$ (propriété puissance) :
+      $$\left(\frac{\ln\sqrt[4]x}{\sqrt[4]x}\right)^2 = \frac{\left(\frac14\ln
+      x\right)^2}{\sqrt x} = \frac{(\ln x)^2}{16\sqrt x}$$
 
-      **Compenser par $4$.**
-      $$\frac{(\ln x)^2}{x} = 4\left(\frac{\ln\sqrt x}{\sqrt x}\right)^2$$
+      **Compenser par $16$.**
+      $$\frac{(\ln x)^2}{\sqrt x} = 16\left(\frac{\ln\sqrt[4]x}{\sqrt[4]x}\right)^2$$
 
-      **Poser $t=\sqrt x$.** Quand $x\to+\infty$, $t\to+\infty$ aussi, et
-      $$\frac{\ln\sqrt x}{\sqrt x} = \frac{\ln t}{t} \xrightarrow[t\to+\infty]{} 0$$
+      **Poser $t=\sqrt[4]{x}$.** Quand $x\to+\infty$, $t\to+\infty$ aussi, et
+      $$\frac{\ln\sqrt[4]x}{\sqrt[4]x} = \frac{\ln t}{t} \xrightarrow[t\to+\infty]{} 0$$
       (croissances comparées, déjà établies).
 
       **Conclure.**
-      $$\lim_{x\to+\infty}\frac{(\ln x)^2}{x} = 4\times0^2 = 0$$
+      $$\lim_{x\to+\infty}\frac{(\ln x)^2}{\sqrt x} = 16\times0^2 = 0$$
 
 # ── Coverage summary (summit-conversion floor backfill — HONEST) ───────────
 # This was a LEGACY end-bank (`misconceptions: []`, item-level tags only). The
@@ -1985,3 +2003,11 @@ coverage_summary:
     lisible ? ») plutôt qu'une valeur de limite nue — aucun modèle neuf ; son
     distracteur A ajoute une attribution secondaire à limites-de-ln (0×∞ non
     résolu, lu comme une conclusion).
+    WAVE F (audit §35/§36, DECISIONS-EN-ATTENTE.md, 2026-09-28) : LOG-33
+    retargeté de $\lim(\ln x)^2/x$ (via $t=\sqrt x$) vers
+    $\lim(\ln x)^2/\sqrt x$ (via $t=\sqrt[4]x$), sans effet sur les comptes
+    (`regles-quotient-puissance` reste à 5, `limites-de-ln` secondaire
+    inchangé) : l'ancienne cible était résolue mot pour mot par le sommet
+    sourcé de la notion (exercises.yaml/r-bac = bk-2019-n-x4 q4) ET par
+    l'exemple travaillé que `lesson.md` porte désormais sur ce chapitre.
+    Même geste, calcul frais, absent des trois fichiers de la notion.

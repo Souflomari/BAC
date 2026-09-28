@@ -327,7 +327,24 @@ Le chapitre 5 vient d'invoquer, sans l'énoncer précisément, l'outil qui perme
 
 **L'image qui rend ça crédible :** la courbe part de $(a,f(a))$ et revient exactement à la même hauteur en $(b,f(b))$. Si elle a bougé entre les deux, elle a forcément, à un moment, cessé de monter pour redescendre (ou l'inverse) — et à cet instant précis, la tangente est horizontale.
 
-**Pourquoi chaque hypothèse compte : un contre-exemple.** Retire la dérivabilité sur l'intervalle OUVERT en un seul point intérieur, et la conclusion peut s'effondrer. Prends $f(x)=|x|$ sur $[-1,1]$ : $f$ est continue sur $[-1,1]$ et $f(-1)=f(1)=1$ — les deux hauteurs sont bien égales. Mais $f$ n'est pas dérivable en $x=0$, qui appartient à l'intervalle ouvert $]-1,1[$ — exactement l'hypothèse qui manque. Et de fait, $f'(x)=-1$ pour $x<0$ et $f'(x)=1$ pour $x>0$ : $f'$ ne s'annule jamais, nulle part. Sans la dérivabilité partout à l'intérieur, le théorème n'a plus rien à garantir.
+**Prends position avant de lire la suite :** Rolle demande $f(a) = f(b)$ — cela suffit-il à garantir une tangente horizontale ?
+
+**Pourquoi chaque hypothèse compte : un contre-exemple.** Non : il faut aussi la dérivabilité sur tout l'intervalle OUVERT, pas seulement l'égalité des deux hauteurs. Retire-la en un seul point intérieur, et la conclusion peut s'effondrer. Prends $f(x)=|x|$ sur $[-1,1]$ : $f$ est continue sur $[-1,1]$ et $f(-1)=f(1)=1$ — les deux hauteurs sont bien égales, l'hypothèse de la question est vérifiée. Mais $f$ n'est pas dérivable en $x=0$, qui appartient à l'intervalle ouvert $]-1,1[$ — exactement l'hypothèse qui manque. Et de fait, $f'(x)=-1$ pour $x<0$ et $f'(x)=1$ pour $x>0$ : $f'$ ne s'annule jamais, nulle part. Sans la dérivabilité partout à l'intérieur, le théorème n'a plus rien à garantir.
+
+### Une conséquence de Rolle : passer de $f'$ à $f''$
+
+**Exemple travaillé.** Soit $f(x) = x^3-3x$. On sait que $f'(-1)=0$ et $f'(1)=0$ (deux zéros explicites de $f'$, trouvés en résolvant $3x^2-3=0$). Montrer qu'il existe $c\in\,]-1,1[$ tel que $f''(c)=0$.
+
+**Ce qu'on cherche et pourquoi ce geste :** deux zéros de $f'$, et une question sur $f''$ — c'est le signal d'appliquer Rolle, non plus à $f$, mais à $f'$ elle-même : $f''$ est la dérivée de $f'$, exactement comme $f'$ est la dérivée de $f$.
+
+On vérifie les hypothèses de Rolle pour $f'$ sur $[-1,1]$, une par une :
+- $f'(x) = 3x^2-3$ est un polynôme, donc continue sur $[-1,1]$ ;
+- $f'$ est dérivable sur $]-1,1[$ (encore un polynôme, dérivable partout) ;
+- $f'(-1) = 3(-1)^2-3 = 0$ et $f'(1) = 3(1)^2-3 = 0$ : les deux valeurs coïncident.
+
+Les trois hypothèses de Rolle sont réunies pour $f'$ sur $[-1,1]$ : il existe donc $c\in\,]-1,1[$ tel que $(f')'(c)=0$, c'est-à-dire $f''(c)=0$.
+
+**Vérification directe :** $f''(x) = 6x$, qui s'annule en $x=0$, et $0\in\,]-1,1[$. Le théorème de Rolle ne dit pas où se trouve $c$ — ici on peut le calculer, mais son intérêt est de garantir l'existence même quand on ne peut pas le faire.
 
 ### Le théorème des accroissements finis (TAF)
 
@@ -360,6 +377,20 @@ $$-k(b-a) \le f(b)-f(a) \le k(b-a), \qquad \text{c’est-à-dire} \qquad |f(b)-f
 $\sin'(x)=\cos x$, et $|\cos x| \le 1$ pour tout réel $x$ : $k=1$ convient sur $I=\mathbb{R}$. L'inégalité précédente donne directement :
 
 $$|\sin b - \sin a| \le 1 \times |b-a| = |b-a|$$
+
+**Exemple travaillé — obtenir un nombre.** Montrer que $\sqrt{4{,}1} - 2 \le 0{,}025$.
+
+**Ce qu'on cherche et pourquoi ce geste :** même outil, mais cette fois on veut un nombre précis, pas seulement une inégalité générale — donc il faut choisir un intervalle $I$ contenant les deux valeurs $4$ et $4{,}1$, sur lequel $|f'|$ se majore proprement. Ici $f(x)=\sqrt{x}$, et $2 = \sqrt{4}$.
+
+Prends $I = [4,+\infty[$ : $f$ y est dérivable, $f'(x) = \dfrac{1}{2\sqrt{x}}$, et pour $x\ge4$, $\sqrt{x}\ge2$, donc $\dfrac{1}{2\sqrt{x}} \le \dfrac14$ — $k=\dfrac14$ convient sur $I$. L'IAF donne, pour tous $a,b$ de $I$ :
+
+$$|\sqrt{b} - \sqrt{a}| \le \frac14\,|b-a|$$
+
+Il reste à instancier avec $a=4$ et $b=4{,}1$, qui appartiennent bien à $I=[4,+\infty[$ :
+
+$$\sqrt{4{,}1} - 2 = |\sqrt{4{,}1} - \sqrt{4}| \le \frac14 \times |4{,}1-4| = \frac14 \times 0{,}1 = 0{,}025$$
+
+Ce résultat borne l'écart sans jamais calculer $\sqrt{4{,}1}$ — c'est tout l'intérêt de l'IAF : remplacer un calcul de valeurs par un calcul sur la dérivée. (La calculatrice donne $\sqrt{4{,}1}\approx 2{,}0248$ : l'écart vaut $0{,}0248$, sous la borne, et de peu — la borne est serrée parce que $f'$ varie peu entre $4$ et $4{,}1$.)
 
 Cette même inégalité — sous le nom d'IAF — reparaît au chapitre sur les suites numériques, pour majorer l'écart $|u_{n+1}-\alpha|$ d'une suite $u_{n+1}=f(u_n)$ par $k\,|u_n-\alpha|$.
 

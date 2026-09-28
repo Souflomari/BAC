@@ -123,6 +123,15 @@ misconceptions:
     description: "L'élève lit, sur un diagramme d'énergie potentielle ($E_{p,torsion}(\\theta)$ ou $E_{pe}(x)$), la distance ENTRE les deux zéros de la parabole (de $-\\theta_m$ à $+\\theta_m$, ou de $-X_m$ à $+X_m$) et l'utilise directement dans la formule ($C=2E_m/\\theta_m^2$ ou $k=2E_m/X_m^2$), au lieu de la moitié de cette distance — l'écart maximal, mesuré depuis l'origine."
     contradicts_principle: "$\\theta_m$ (ou $X_m$) est l'écart maximal, mesuré depuis l'origine ($\\theta=0$ ou $x=0$) jusqu'à un zéro de la parabole, jamais la distance entre les deux zéros : cette distance totale vaut $2\\theta_m$ (ou $2X_m$), le double de la grandeur qui entre dans la formule."
 
+  # Déclarée le 2026-09-28 (vague D-E, suite du §35/§36 : la relecture du
+  # coordinateur a jugé le placeholder de AE-45 sur torsion-lecture-angle-non-
+  # converti malhonnête — cet item ne porte aucun angle en degrés). Portée par
+  # trois items dès sa déclaration (AE-45, AE-46, AE-47).
+  - id: mc.physics.pc_energie.diagramme-graduation-imprimee-confondue-maille
+    label: "« Sur un diagramme d'énergie, la valeur lue est la dernière graduation IMPRIMÉE, pas la valeur réelle indiquée par la maille de la grille »"
+    description: "L'élève lit la valeur d'une grandeur ($E_m$, $X_m$, $\\theta_m$…) sur un diagramme d'énergie en s'arrêtant à la dernière graduation IMPRIMÉE sur l'axe, sans compter les mailles plus fines du quadrillage qui séparent cette graduation de la valeur réelle. Un axe peut porter des graduations imprimées régulières (par exemple tous les $1\\ \\text{mJ}$) tout en étant quadrillé plus finement (par exemple une maille tous les $0{,}5\\ \\text{mJ}$) : la valeur à lire est celle de la LIGNE ou du POINT considéré, quel que soit le nombre de mailles qui la sépare de la dernière étiquette imprimée."
+    contradicts_principle: "Une grille plus fine que les valeurs imprimées reste une grille : il faut compter les mailles jusqu'au point ou à la ligne à lire, jamais s'arrêter à la dernière graduation qui porte un chiffre. Deux mailles séparent deux graduations imprimées consécutives (leçon, R6) : une maille vaut donc la moitié de l'écart entre deux graduations imprimées."
+
 items:
   - id: AE-1
     rung: "R3"
@@ -2173,7 +2182,7 @@ items:
     tags: [misconception_driven, energie_torsion, resolution]
     stem: >
       Un fil de torsion de constante $C = 8{,}0\times10^{-2}\ \text{N·m/rad}$,
-      portant un disque de moment d'inertie $J = 4{,}0\times10^{-3}\
+      portant un disque de moment d'inertie $J = 9{,}0\times10^{-2}\
       \text{kg·m}^2$, est tordu depuis sa position d'équilibre ($\theta = 0$)
       jusqu'à un angle $\theta_1 = 0{,}50\ \text{rad}$. Quel est le travail du
       couple de torsion (couple de rappel) $W_C$ sur ce trajet ?
@@ -2201,7 +2210,7 @@ items:
           travail est résistant, donc négatif — l'opposé exact de celui
           fourni contre lui.
       - id: C
-        text: "$-5{,}0\\times10^{-4}\\ \\text{J}$"
+        text: "$\\approx -1{,}1\\times10^{-2}\\ \\text{J}$"
         correct: false
         misconception: mc.physics.pc_energie.torsion-ep-depend-inertie-j
         feedback: >
@@ -2209,7 +2218,8 @@ items:
           $J$ a été mis à la place de $C$. Le travail du couple de rappel
           vaut $-\frac12 C\theta_1^2$, qui ne dépend que de $C$ et de
           $\theta$ ; $J$ n'intervient que dans l'énergie cinétique de
-          rotation, un réservoir séparé.
+          rotation, un réservoir séparé — et sa valeur numérique, ici proche
+          de celle de $C$, ne doit rien changer au choix de la bonne formule.
       - id: D
         text: "$-1{,}0\\times10^{-2}\\ \\text{J}$"
         correct: true
@@ -2236,7 +2246,7 @@ items:
     skill_code: pc_energie
     tags: [misconception_driven, energie_potentielle_elastique, resolution]
     stem: >
-      Un ressort horizontal de raideur $k = 60\ \text{N/m}$, portant un
+      Un ressort horizontal de raideur $k = 1{,}0\ \text{N/m}$, portant un
       solide de masse $m = 0{,}50\ \text{kg}$, est étiré depuis sa position
       d'équilibre ($x = 0$) jusqu'à un allongement $x_1 = 4{,}0\ \text{cm}$.
       Quel est le travail de la force de rappel $W(\vec{F}_{rappel})$ sur ce
@@ -2251,12 +2261,14 @@ items:
           Cette valeur vient de $-\frac12 m x_1^2$ : la masse $m$ a été mise
           à la place de $k$. Le travail de la force de rappel vaut
           $-\frac12 k x_1^2$, qui ne dépend que de $k$ et de $x$ ; la masse du
-          solide accroché vit dans $E_c$, un réservoir séparé.
+          solide accroché vit dans $E_c$, un réservoir séparé — un ressort
+          mou et une masse légère peuvent donner des valeurs proches, mais
+          cela ne change rien au choix de la bonne formule.
       - id: B
-        text: "$-4{,}8\\times10^{-2}\\ \\text{J}$"
+        text: "$-8{,}0\\times10^{-4}\\ \\text{J}$"
         correct: true
       - id: C
-        text: "$+4{,}8\\times10^{-2}\\ \\text{J}$"
+        text: "$+8{,}0\\times10^{-4}\\ \\text{J}$"
         correct: false
         misconception: mc.physics.pc_energie.rappel-travail-signe-operateur
         feedback: >
@@ -2266,7 +2278,7 @@ items:
           résistant, donc négatif — l'opposé exact de celui fourni contre
           elle.
       - id: D
-        text: "$-9{,}6\\times10^{-2}\\ \\text{J}$"
+        text: "$-1{,}6\\times10^{-3}\\ \\text{J}$"
         correct: false
         misconception: mc.physics.pc_energie.epe-force-rappel-traitee-constante
         feedback: >
@@ -2276,19 +2288,20 @@ items:
           l'aire du triangle sous $F(x)=kx$, soit $-\frac12 kx_1^2$ — la
           moitié de cette valeur.
     correct_feedback: >
-      $W(\vec{F}_{rappel}) = -\frac12 k x_1^2 = -\frac12\times60\times
-      (0{,}040)^2 = -4{,}8\times10^{-2}\ \text{J}$ : négatif, car la force de
+      $W(\vec{F}_{rappel}) = -\frac12 k x_1^2 = -\frac12\times1{,}0\times
+      (0{,}040)^2 = -8{,}0\times10^{-4}\ \text{J}$ : négatif, car la force de
       rappel résiste à l'étirement croissant. La masse $m$ (donnée) ne sert
       nulle part dans ce calcul.
     solution: |
       $$W(\vec{F}_{rappel})_{0\to x_1} = -\Delta E_{pe} = -\left(\frac12 k x_1^2 - 0\right)$$
-      $$W(\vec{F}_{rappel}) = -\frac12\times60\times(0{,}040)^2 = -4{,}8\times10^{-2}\ \text{J}$$
+      $$W(\vec{F}_{rappel}) = -\frac12\times1{,}0\times(0{,}040)^2 = -8{,}0\times10^{-4}\ \text{J}$$
       La force de rappel travaille toujours contre le sens dans lequel
       l'écart augmente : ici l'allongement croît, la force de rappel
       résiste, son travail est négatif — l'opposé exact du travail que
       l'opérateur doit fournir. $m$ n'entre jamais dans ce bilan : mettre
       $m$ à la place de $k$ donne $-4{,}0\times10^{-4}\
-      \text{J}$, une valeur bien différente.
+      \text{J}$, une valeur proche mais différente — $k$ et $m$ ne jouent
+      pas le même rôle, même quand leurs valeurs numériques se ressemblent.
 
   - id: AE-39
     rung: "R5"
@@ -2296,10 +2309,12 @@ items:
     skill_code: pc_energie
     tags: [misconception_driven, energie_potentielle_elastique, resolution]
     stem: >
-      Un ressort horizontal de raideur $k = 25\ \text{N/m}$ est comprimé
-      depuis l'équilibre ($x = 0$) jusqu'à $x_1 = -6{,}0\ \text{cm}$, où le
-      solide accroché a pour vitesse $v = 2{,}0\ \text{m/s}$. Quel est le
-      travail de la force de rappel sur ce trajet ?
+      Un ressort horizontal de raideur $k = 25\ \text{N/m}$, portant un
+      solide de masse $m = 0{,}10\ \text{kg}$, est comprimé depuis
+      l'équilibre ($x = 0$) jusqu'à $x_1 = -6{,}0\ \text{cm}$, où le solide a
+      pour vitesse $v = 2{,}0\ \text{m/s}$. On prend $g \approx 9{,}8\
+      \text{m/s}^2$. Quel est le travail de la force de rappel sur ce
+      trajet ?
     type: mcq
     choices:
       - id: A
@@ -2316,16 +2331,17 @@ items:
           ce trajet est résistant, donc négatif — l'opposé exact de celui
           fourni contre elle.
       - id: C
-        text: >-
-          Non calculable ainsi : il faudrait connaître la masse du solide et
-          l'intensité de la pesanteur, comme pour un travail du poids.
+        text: "$\\approx -5{,}9\\times10^{-2}\\ \\text{J}$"
         correct: false
         misconception: mc.physics.pc_energie.epe-confondue-avec-epp
         feedback: >
-          Le ressort est horizontal : l'altitude du solide ne change pas
-          pendant la compression, et ce travail n'a donc rien de
-          gravitationnel. C'est le travail de la force de rappel élastique,
-          $-\Delta E_{pe}$, qui ne dépend que de $k$ et de $x$.
+          Ce calcul traite $|x_1|$ comme une HAUTEUR et applique
+          $W \approx -mg|x_1| = -0{,}10\times9{,}8\times0{,}060$. Le ressort
+          est horizontal : l'altitude du solide ne change pas pendant la
+          compression, et ce travail n'a donc rien de gravitationnel. C'est
+          le travail de la force de rappel ÉLASTIQUE, $-\Delta E_{pe} =
+          -\frac12 k x_1^2$, qui ne dépend que de $k$ et de $x$ — jamais de
+          $m$ ni de $g$.
       - id: D
         text: "$-3{,}6\\times10^{-3}\\ \\text{J}$"
         correct: false
@@ -2339,16 +2355,20 @@ items:
       $W(\vec{F}_{rappel}) = -\frac12 k x_1^2 = -\frac12\times25\times
       (0{,}060)^2 = -4{,}5\times10^{-2}\ \text{J}$ : négatif, car la force de
       rappel résiste à la compression croissante, que $x_1$ soit positif
-      (étirement) ou négatif (compression) — seul $x_1^2$ compte. La vitesse
-      $v$ (donnée) ne sert nulle part dans ce calcul.
+      (étirement) ou négatif (compression) — seul $x_1^2$ compte. La masse
+      $m$, la vitesse $v$ et $g$ (données) ne servent nulle part dans ce
+      calcul.
     solution: |
       $$W(\vec{F}_{rappel})_{0\to x_1} = -\Delta E_{pe} = -\left(\frac12 k x_1^2 - 0\right)$$
       $$W(\vec{F}_{rappel}) = -\frac12\times25\times(-0{,}060)^2 = -\frac12\times25\times3{,}6\times10^{-3} = -4{,}5\times10^{-2}\ \text{J}$$
       Le signe de $x_1$ (compression, négatif) ne change rien : $x_1^2$
       efface ce signe, et la force de rappel résiste toujours au sens dans
-      lequel l'écart augmente, quel que soit ce sens. $v$ n'entre jamais
-      dans ce bilan : mettre $v$ à la place de $k$ donne
-      $-3{,}6\times10^{-3}\ \text{J}$, une valeur bien différente.
+      lequel l'écart augmente, quel que soit ce sens. Ni $v$ ni $m$ ni $g$
+      n'entrent dans ce bilan : mettre $v$ à la place de $k$ donne
+      $-3{,}6\times10^{-3}\ \text{J}$, et traiter $|x_1|$ comme une hauteur
+      ($-mg|x_1|$) donne $\approx -5{,}9\times10^{-2}\ \text{J}$ — deux
+      valeurs bien différentes, obtenues en confondant l'énergie élastique
+      avec des grandeurs qui n'ont rien à y faire.
 
   - id: AE-40
     rung: "R6"
@@ -2358,10 +2378,8 @@ items:
     stem: >
       Un pendule de torsion oscille sans frottement. Sur le diagramme
       d'énergie, la parabole $E_{p,torsion}(\theta)$ et la droite horizontale
-      $E_m$ se coupent en $\theta = \pm\theta_m$, avec $\theta_m = 30°$. Au
-      sommet de la parabole $E_C(\theta)$ (en $\theta = 0$), on lit
-      $E_m = 5{,}0\ \text{mJ}$. Quelle est la constante de torsion $C$ du
-      fil ?
+      $E_m = 5{,}0\ \text{mJ}$ se coupent en $\theta = \pm\theta_m$, avec
+      $\theta_m = 30°$. Quelle est la constante de torsion $C$ du fil ?
     type: mcq
     choices:
       - id: A
@@ -2382,10 +2400,11 @@ items:
         correct: false
         misconception: mc.physics.pc_energie.diagramme-largeur-totale-confondue-amplitude
         feedback: >
-          Cette valeur utilise $2\theta_m$ (l'écart ENTRE les deux zéros de
-          la parabole, $-\theta_m$ à $+\theta_m$) à la place de $\theta_m$
-          lui-même. $\theta_m$ est l'écart maximal mesuré depuis l'origine
-          $\theta=0$ jusqu'à UN SEUL zéro, la moitié de cette largeur totale.
+          Cette valeur utilise $2\theta_m$ (l'écart ENTRE les deux points où
+          la parabole croise la droite $E_m$, de $-\theta_m$ à $+\theta_m$) à
+          la place de $\theta_m$ lui-même. $\theta_m$ est l'écart maximal
+          mesuré depuis l'origine $\theta=0$ jusqu'à UNE SEULE de ces
+          intersections, la moitié de cette largeur totale.
       - id: D
         text: "$\\approx 1{,}1\\times10^{-5}\\ \\text{N·m/rad}$"
         correct: false
@@ -2397,25 +2416,26 @@ items:
           par $\pi/180$, ici $30°\approx0{,}524\ \text{rad}$, avant d'entrer
           dans $C=2E_m/\theta_m^2$.
     correct_feedback: >
-      $\theta_m = 30° \approx 0{,}524\ \text{rad}$ ; aux zéros de $E_C$, toute
-      l'énergie est potentielle : $E_m = \frac12 C\theta_m^2 \implies
+      Aux points où $E_{p,torsion}(\theta)$ croise la droite $E_m$
+      ($\theta=\pm\theta_m$), la vitesse angulaire est nulle : toute
+      l'énergie mécanique y est potentielle. $\theta_m = 30° \approx
+      0{,}524\ \text{rad}$ ; $E_m = \frac12 C\theta_m^2 \implies
       C = 2E_m/\theta_m^2 \approx 3{,}6\times10^{-2}\ \text{N·m/rad}$.
     solution: |
       **Convertir l'angle.** $\theta_m = 30° = 30\times\pi/180 \approx
       0{,}524\ \text{rad}$ — les formules de la torsion exigent des radians.
 
-      **Lire $E_m$.** Sans frottement, $E_m$ est constante : elle vaut ce que
-      $E_C$ vaut à $\theta=0$ (son sommet), soit $5{,}0\ \text{mJ} =
-      5{,}0\times10^{-3}\ \text{J}$.
-
-      **Passer par l'écart maximal.** Aux zéros de $E_C$ ($\theta=\pm\theta_m$),
-      $E_C=0$ et toute l'énergie mécanique est potentielle de torsion :
+      **Aux intersections avec $E_m$.** Aux points où la parabole
+      $E_{p,torsion}(\theta)$ croise la droite $E_m$ ($\theta=\pm\theta_m$),
+      la vitesse angulaire est nulle : toute l'énergie mécanique y est
+      potentielle de torsion.
       $$E_m = \frac12 C\theta_m^2 \implies C = \frac{2E_m}{\theta_m^2} = \frac{2\times5{,}0\times10^{-3}}{(0{,}524)^2} \approx 3{,}6\times10^{-2}\ \text{N·m/rad}$$
 
       Trois pièges à distinguer : oublier le $\frac12$ (donne
       $1{,}8\times10^{-2}$), ne pas convertir les degrés (donne
-      $1{,}1\times10^{-5}$), et confondre la largeur totale $2\theta_m$ avec
-      $\theta_m$ (donne $9{,}1\times10^{-3}$).
+      $1{,}1\times10^{-5}$), et confondre la largeur totale $2\theta_m$
+      (entre les deux intersections) avec $\theta_m$ (donne
+      $9{,}1\times10^{-3}$).
 
   - id: AE-41
     rung: "R6"
@@ -2481,10 +2501,11 @@ items:
     tags: [misconception_driven, energie_torsion, resolution]
     stem: >
       Un pendule de torsion (disque de moment d'inertie
-      $J = 4{,}0\times10^{-3}\ \text{kg·m}^2$, fil de constante
-      $C = 0{,}18\ \text{N·m/rad}$) est lâché sans vitesse angulaire depuis
-      $\theta_0 = 20°$. Quelle est sa vitesse angulaire maximale
-      $\dot\theta_{max}$, atteinte au passage par $\theta = 0$ ?
+      $J = 4{,}0\times10^{-3}\ \text{kg·m}^2$ et de masse $m = 0{,}50\
+      \text{kg}$, fil de constante $C = 0{,}18\ \text{N·m/rad}$) est lâché
+      sans vitesse angulaire depuis $\theta_0 = 20°$. Quelle est sa vitesse
+      angulaire maximale $\dot\theta_{max}$, atteinte au passage par
+      $\theta = 0$ ?
     type: mcq
     choices:
       - id: A
@@ -2500,17 +2521,17 @@ items:
         text: "$\\approx 2{,}3\\ \\text{rad/s}$"
         correct: true
       - id: C
-        text: >-
-          Il faut aussi connaître la masse du disque : l'énergie cinétique de
-          rotation se calcule par $\frac12 mv^2$.
+        text: "$\\approx 0{,}21\\ \\text{rad/s}$"
         correct: false
         misconception: mc.physics.pc_energie.torsion-ec-formule-translation
         feedback: >
-          Un disque en rotation n'a pas une vitesse linéaire unique $v$,
-          mais une vitesse angulaire $\dot\theta$ commune à tous ses points.
-          Son énergie cinétique de rotation est $\frac12 J\dot\theta^2$,
-          l'analogue exact de $\frac12 mv^2$ pour la translation — $J$, déjà
-          donné, suffit.
+          Cette valeur vient de $\dot\theta_{max} = \sqrt{2E_m/m}$, en
+          traitant $\dot\theta_{max}$ comme une vitesse linéaire $v$ et en
+          utilisant la masse $m$ du disque à la place de son moment
+          d'inertie $J$. Un disque en rotation n'a pas une vitesse linéaire
+          unique : son énergie cinétique de rotation est $\frac12
+          J\dot\theta^2$, l'analogue exact de $\frac12 mv^2$ pour la
+          translation — c'est $J$, pas $m$, qui doit y entrer.
       - id: D
         text: "$\\approx 5{,}5\\ \\text{rad/s}$"
         correct: false
@@ -2524,7 +2545,8 @@ items:
       $\theta_0 \approx 0{,}349\ \text{rad}$, donc $E_m = \frac12 C\theta_0^2
       \approx 1{,}10\times10^{-2}\ \text{J}$ ; au passage par $\theta=0$,
       $E_m = \frac12 J\dot\theta_{max}^2 \implies \dot\theta_{max} =
-      \sqrt{2E_m/J} \approx 2{,}3\ \text{rad/s}$.
+      \sqrt{2E_m/J} \approx 2{,}3\ \text{rad/s}$. La masse $m$ (donnée) ne
+      sert nulle part dans ce calcul.
     solution: |
       **Convertir et calculer $E_m$.** $\theta_0 \approx 0{,}349\ \text{rad}$,
       lâché sans vitesse angulaire : toute l'énergie est potentielle.
@@ -2535,7 +2557,10 @@ items:
       $$E_m = \frac12 J\dot\theta_{max}^2 \implies \dot\theta_{max} = \sqrt{\frac{2E_m}{J}} = \sqrt{\frac{2\times1{,}10\times10^{-2}}{4{,}0\times10^{-3}}} \approx 2{,}3\ \text{rad/s}$$
 
       $J$ (déjà donné) suffit : aucune masse séparée n'est nécessaire pour
-      un solide en rotation.
+      un solide en rotation. Mettre $m=0{,}50\ \text{kg}$ à la place de $J$
+      donne $\sqrt{2\times1{,}10\times10^{-2}/0{,}50} \approx 0{,}21\
+      \text{rad/s}$ — une valeur bien différente : $m$ et $J$ ne jouent
+      jamais le même rôle.
 
   - id: AE-43
     rung: "R6"
@@ -2569,32 +2594,34 @@ items:
         misconception: mc.physics.pc_energie.diagramme-largeur-totale-confondue-amplitude
         feedback: >
           Cette valeur utilise $2\dot\theta_{max}$ (l'écart ENTRE les deux
-          zéros de la parabole $E_C(\dot\theta)$) à la place de
-          $\dot\theta_{max}$ lui-même. $\dot\theta_{max}$ est mesuré depuis
-          l'origine $\dot\theta=0$ jusqu'à UN SEUL zéro, la moitié de cette
-          largeur totale.
+          points où la parabole $E_C(\dot\theta)$ croise la droite $E_m$) à
+          la place de $\dot\theta_{max}$ lui-même. $\dot\theta_{max}$ est
+          mesuré depuis l'origine $\dot\theta=0$ jusqu'à UNE SEULE de ces
+          intersections, la moitié de cette largeur totale.
       - id: D
-        text: >-
-          Il faut aussi connaître la masse du disque : l'énergie cinétique de
-          rotation se calcule par $\frac12 mv^2$.
+        text: "$\\approx 4{,}0\\times10^{-3}\\ \\text{kg·m}^2$"
         correct: false
-        misconception: mc.physics.pc_energie.torsion-ec-formule-translation
+        misconception: mc.physics.pc_energie.ec-mauvaise-dependance-en-v
         feedback: >
-          Un disque en rotation n'a pas une vitesse linéaire unique $v$,
-          mais une vitesse angulaire $\dot\theta$ commune à tous ses points.
-          Son énergie cinétique de rotation est $\frac12 J\dot\theta^2$ :
-          $E_m$ et $\dot\theta_{max}$ suffisent pour en tirer $J$.
+          Cette valeur vient de $J=2E_m/\dot\theta_{max}$, en supposant que
+          l'énergie cinétique de rotation varie comme $\dot\theta$ et non
+          comme $\dot\theta^2$. $E_C=\frac12 J\dot\theta^2$ est
+          proportionnelle au CARRÉ de la vitesse angulaire : doubler
+          $\dot\theta$ multiplierait $E_C$ par 4, jamais par 2.
     correct_feedback: >
-      Aux zéros de $E_C(\dot\theta)$, $E_C=E_m$ ; $E_m = \frac12
+      Aux points où $E_C(\dot\theta)$ croise la droite $E_m$ (donc
+      $\dot\theta=\pm\dot\theta_{max}$), $E_C=E_m$ ; $E_m = \frac12
       J\dot\theta_{max}^2 \implies J = 2E_m/\dot\theta_{max}^2 \approx
       1{,}3\times10^{-3}\ \text{kg·m}^2$.
     solution: |
-      Au sommet de la parabole $E_C(\dot\theta)$ (là où elle coupe $E_m$),
-      toute l'énergie mécanique est cinétique de rotation :
+      Aux points où la parabole $E_C(\dot\theta)$ croise la droite $E_m$
+      (donc $\dot\theta=\pm\dot\theta_{max}$), toute l'énergie mécanique est
+      cinétique de rotation :
       $$E_m = \frac12 J\dot\theta_{max}^2 \implies J = \frac{2E_m}{\dot\theta_{max}^2} = \frac{2\times6{,}0\times10^{-3}}{3{,}0^2} \approx 1{,}3\times10^{-3}\ \text{kg·m}^2$$
-      $\dot\theta_{max}$ est l'écart entre l'origine et UN SEUL zéro de la
-      parabole, pas la largeur totale ($2\dot\theta_{max}=6{,}0\ \text{rad/s}$)
-      entre les deux zéros.
+      $\dot\theta_{max}$ est l'écart entre l'origine (où $E_C=0$, l'unique
+      zéro de la parabole) et l'une des deux intersections avec $E_m$, pas la
+      largeur totale ($2\dot\theta_{max}=6{,}0\ \text{rad/s}$) entre ces deux
+      intersections.
 
   - id: AE-44
     rung: "R5"
@@ -2650,6 +2677,249 @@ items:
       de $E_m$ donne $2\times0{,}10/(0{,}20)^2=5{,}0\
       \text{N/m}$ : $m$ n'entre jamais dans ce bilan.
 
+  # ── AE-45 (2026-09-28) — dette d'examen, vague D-E, §36 : le piège de
+  # grille du R6 (lire E_m sur un diagramme d'énergie de torsion à la
+  # dernière valeur IMPRIMÉE au lieu d'une maille au-dessus, cf. lesson.md
+  # §R6 et bank.yaml bk-2017-n-x4). Chiffres propres à cet item (pas les
+  # 2,5 mJ / 0,20 rad de la leçon).
+  - id: AE-45
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_energie
+    tags: [misconception_driven, energie_torsion, lecture_diagramme]
+    stem: >
+      Sur le diagramme d'énergie d'un pendule de torsion, l'axe des énergies
+      est gradué et étiqueté tous les $1\ \text{mJ}$ ($0$, $1$, $2$,
+      $3$…), avec un quadrillage plus fin : une maille tous les
+      $0{,}5\ \text{mJ}$. La droite horizontale $E_m$ passe exactement une
+      maille de grille au-dessus de la dernière valeur imprimée sur cet axe,
+      $3\ \text{mJ}$. Sur l'axe des $\theta$, la parabole
+      $E_{p,torsion}(\theta)$ coupe cette droite en $\theta = \pm\theta_m$,
+      avec $\theta_m = 0{,}50\ \text{rad}$. Quelle est la constante de
+      torsion $C$ du fil ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 2{,}8\\times10^{-2}\\ \\text{N·m/rad}$"
+        correct: true
+      - id: B
+        text: "$\\approx 2{,}4\\times10^{-2}\\ \\text{N·m/rad}$"
+        correct: false
+        misconception: mc.physics.pc_energie.diagramme-graduation-imprimee-confondue-maille
+        feedback: >
+          Cette valeur utilise $E_m = 3\ \text{mJ}$ — la DERNIÈRE VALEUR
+          IMPRIMÉE sur l'axe — au lieu de la valeur réelle de la droite
+          $E_m$, qui passe une maille de grille plus haut ($3{,}5\
+          \text{mJ}$). Une grille plus fine que les valeurs imprimées reste
+          une grille : il faut compter les mailles jusqu'à la droite, pas
+          s'arrêter au dernier chiffre écrit sur l'axe.
+      - id: C
+        text: "$\\approx 1{,}4\\times10^{-2}\\ \\text{N·m/rad}$"
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-moment-traite-constant
+        feedback: >
+          Cette valeur vient de $C=E_m/\theta_m^2$ (avec $E_m$ bien lu à
+          $3{,}5\ \text{mJ}$), en oubliant le facteur $\frac12$ de
+          $E_m=\frac12 C\theta_m^2$. Ce facteur vient de l'aire du triangle
+          sous $M(\theta)=C\theta$ : l'oublier revient à traiter le moment
+          comme constant sur tout le trajet.
+      - id: D
+        text: "$\\approx 7{,}0\\times10^{-3}\\ \\text{N·m/rad}$"
+        correct: false
+        misconception: mc.physics.pc_energie.diagramme-largeur-totale-confondue-amplitude
+        feedback: >
+          Cette valeur utilise $2\theta_m=1{,}0\ \text{rad}$ (l'écart ENTRE
+          les deux points où la parabole croise $E_m$) à la place de
+          $\theta_m$ lui-même. $\theta_m$ est l'écart maximal, mesuré depuis
+          l'origine $\theta=0$ jusqu'à UNE SEULE de ces intersections, la
+          moitié de cette largeur totale.
+    correct_feedback: >
+      La droite $E_m$ passe une maille de grille ($0{,}5\ \text{mJ}$) au-dessus
+      de la dernière valeur imprimée ($3\ \text{mJ}$), donc
+      $E_m = 3{,}5\ \text{mJ}$. Aux points où la parabole croise $E_m$
+      ($\theta=\pm\theta_m$), toute l'énergie est potentielle :
+      $E_m = \frac12 C\theta_m^2 \implies C = 2E_m/\theta_m^2 \approx
+      2{,}8\times10^{-2}\ \text{N·m/rad}$.
+    solution: |
+      **Lire $E_m$ sur la grille, pas sur l'étiquette.** Entre deux valeurs
+      imprimées consécutives ($1\ \text{mJ}$ d'écart), il y a deux mailles :
+      chaque maille vaut donc $0{,}5\ \text{mJ}$. La droite $E_m$ passe une
+      maille au-dessus de la dernière valeur imprimée ($3\ \text{mJ}$) :
+      $$E_m = 3\ \text{mJ} + 0{,}5\ \text{mJ} = 3{,}5\ \text{mJ} = 3{,}5\times10^{-3}\ \text{J}$$
+
+      **Aux intersections avec $E_m$.** Aux points où $E_{p,torsion}(\theta)$
+      croise la droite $E_m$ ($\theta=\pm\theta_m$), la vitesse angulaire est
+      nulle : toute l'énergie mécanique y est potentielle de torsion.
+      $$E_m = \frac12 C\theta_m^2 \implies C = \frac{2E_m}{\theta_m^2} = \frac{2\times3{,}5\times10^{-3}}{(0{,}50)^2} \approx 2{,}8\times10^{-2}\ \text{N·m/rad}$$
+
+      Trois pièges à distinguer : s'arrêter à la dernière valeur imprimée
+      (donne $2{,}4\times10^{-2}$), oublier le $\frac12$ (donne
+      $1{,}4\times10^{-2}$), et confondre la largeur totale $2\theta_m$ avec
+      $\theta_m$ (donne $7{,}0\times10^{-3}$).
+
+  # AE-46 et AE-47 (2026-09-28) — portent
+  # `diagramme-graduation-imprimee-confondue-maille` (déclarée ci-dessus) à
+  # son plancher de 3 items, aux côtés de AE-45. Chiffres propres à chaque
+  # item, distincts de AE-45, de AE-37…AE-44, du sujet 2017 (bk-2017-n-x4)
+  # et de la figure de leçon `lecture-diagramme-torsion.svg` (2 mJ / 0,20 rad
+  # / 2,5 mJ). AE-46 relit le même type de diagramme que AE-45 (l'axe des
+  # énergies) sur un pendule de torsion, avec un distracteur J-pour-E_m en
+  # plus de la grille et de la largeur. AE-47 change de grandeur ET de
+  # système : l'axe des POSITIONS d'un ressort, avec un distracteur
+  # gravitationnel (epe-confondue-avec-epp) plutôt qu'un distracteur
+  # d'inertie, pour ne pas dépasser le plafond de torsion-ep-depend-inertie-j
+  # une deuxième fois.
+  - id: AE-46
+    rung: "R6"
+    difficulty_level: 4
+    skill_code: pc_energie
+    tags: [misconception_driven, energie_torsion, lecture_diagramme]
+    stem: >
+      Un pendule de torsion (fil de constante $C$, disque de moment
+      d'inertie $J = 6{,}0\times10^{-2}\ \text{kg·m}^2$) oscille sans
+      frottement. Sur le diagramme d'énergie, l'axe des énergies est gradué
+      et étiqueté tous les $3\ \text{mJ}$ ($0$, $3$, $6$…), avec un
+      quadrillage plus fin : une maille tous les $1{,}5\ \text{mJ}$. La
+      droite horizontale $E_m$ passe exactement une maille de grille
+      au-dessus de la dernière valeur imprimée sur cet axe, $6\ \text{mJ}$.
+      Sur l'axe des $\theta$, la parabole $E_{p,torsion}(\theta)$ coupe
+      cette droite en $\theta = \pm\theta_m$, avec $\theta_m = 0{,}40\
+      \text{rad}$. Quelle est la constante de torsion $C$ du fil ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\approx 9{,}4\\times10^{-2}\\ \\text{N·m/rad}$"
+        correct: true
+      - id: B
+        text: "$\\approx 7{,}5\\times10^{-2}\\ \\text{N·m/rad}$"
+        correct: false
+        misconception: mc.physics.pc_energie.diagramme-graduation-imprimee-confondue-maille
+        feedback: >
+          Cette valeur utilise $E_m = 6\ \text{mJ}$ — la DERNIÈRE VALEUR
+          IMPRIMÉE sur l'axe — au lieu de la valeur réelle de la droite
+          $E_m$, une maille de grille plus haut ($7{,}5\ \text{mJ}$). Une
+          grille plus fine que les valeurs imprimées reste une grille : il
+          faut compter les mailles jusqu'à la droite, pas s'arrêter au
+          dernier chiffre écrit sur l'axe.
+      - id: C
+        text: "$\\approx 2{,}3\\times10^{-2}\\ \\text{N·m/rad}$"
+        correct: false
+        misconception: mc.physics.pc_energie.diagramme-largeur-totale-confondue-amplitude
+        feedback: >
+          Cette valeur utilise $2\theta_m=0{,}80\ \text{rad}$ (l'écart ENTRE
+          les deux points où la parabole croise $E_m$) à la place de
+          $\theta_m$ lui-même. $\theta_m$ est l'écart maximal, mesuré depuis
+          l'origine $\theta=0$ jusqu'à UNE SEULE de ces intersections, la
+          moitié de cette largeur totale.
+      - id: D
+        text: "$\\approx 0{,}75\\ \\text{N·m/rad}$"
+        correct: false
+        misconception: mc.physics.pc_energie.torsion-ep-depend-inertie-j
+        feedback: >
+          Cette valeur vient de $C=2J/\theta_m^2$, en utilisant le moment
+          d'inertie $J$ à la place de l'énergie mécanique $E_m$ dans la
+          formule. $J$ appartient à l'énergie CINÉTIQUE de rotation, un
+          réservoir séparé de l'énergie potentielle de torsion : il n'a rien
+          à faire dans le calcul de $C$, qui ne dépend que de $E_m$ et de
+          $\theta_m$.
+    correct_feedback: >
+      La droite $E_m$ passe une maille de grille ($1{,}5\ \text{mJ}$)
+      au-dessus de la dernière valeur imprimée ($6\ \text{mJ}$), donc
+      $E_m = 7{,}5\ \text{mJ}$. Aux points où la parabole croise $E_m$
+      ($\theta=\pm\theta_m$), toute l'énergie est potentielle :
+      $E_m = \frac12 C\theta_m^2 \implies C = 2E_m/\theta_m^2 \approx
+      9{,}4\times10^{-2}\ \text{N·m/rad}$. $J$ (donné) ne sert nulle part
+      dans ce calcul.
+    solution: |
+      **Lire $E_m$ sur la grille, pas sur l'étiquette.** Entre deux valeurs
+      imprimées consécutives ($3\ \text{mJ}$ d'écart), il y a deux mailles :
+      chaque maille vaut donc $1{,}5\ \text{mJ}$. La droite $E_m$ passe une
+      maille au-dessus de la dernière valeur imprimée ($6\ \text{mJ}$) :
+      $$E_m = 6\ \text{mJ} + 1{,}5\ \text{mJ} = 7{,}5\ \text{mJ} = 7{,}5\times10^{-3}\ \text{J}$$
+
+      **Aux intersections avec $E_m$.**
+      $$E_m = \frac12 C\theta_m^2 \implies C = \frac{2E_m}{\theta_m^2} = \frac{2\times7{,}5\times10^{-3}}{(0{,}40)^2} \approx 9{,}4\times10^{-2}\ \text{N·m/rad}$$
+
+      $J$ (donné) ne sert nulle part dans ce calcul : mettre $J$ à la place
+      de $E_m$ donne $2\times6{,}0\times10^{-2}/(0{,}40)^2 = 0{,}75\
+      \text{N·m/rad}$, une valeur bien différente.
+
+  - id: AE-47
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: pc_energie
+    tags: [misconception_driven, energie_potentielle_elastique, lecture_diagramme]
+    stem: >
+      Un ressort horizontal de raideur $k$, portant un solide de masse
+      $m = 0{,}15\ \text{kg}$, oscille sans frottement, avec une énergie
+      mécanique $E_m = 6{,}0\times10^{-2}\ \text{J}$. On prend
+      $g \approx 9{,}8\ \text{m/s}^2$. Sur le diagramme d'énergie, l'axe des
+      positions $x$ est gradué et étiqueté tous les $4\ \text{cm}$ ($0$,
+      $4$, $8$…), avec un quadrillage plus fin : une maille tous les
+      $2\ \text{cm}$. La parabole $E_{pe}(x)$ coupe la droite $E_m$
+      exactement une maille de grille au-delà de la dernière valeur
+      imprimée sur cet axe, $8\ \text{cm}$. Quelle est la raideur $k$ du
+      ressort ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$12\\ \\text{N/m}$"
+        correct: true
+      - id: B
+        text: "$19\\ \\text{N/m}$"
+        correct: false
+        misconception: mc.physics.pc_energie.diagramme-graduation-imprimee-confondue-maille
+        feedback: >
+          Cette valeur utilise $X_m = 8\ \text{cm}$ — la DERNIÈRE VALEUR
+          IMPRIMÉE sur l'axe — au lieu de la valeur réelle du point de
+          croisement, une maille de grille plus loin ($10\ \text{cm}$). Une
+          grille plus fine que les valeurs imprimées reste une grille : il
+          faut compter les mailles jusqu'au point à lire, pas s'arrêter au
+          dernier chiffre écrit sur l'axe.
+      - id: C
+        text: "$3{,}0\\ \\text{N/m}$"
+        correct: false
+        misconception: mc.physics.pc_energie.diagramme-largeur-totale-confondue-amplitude
+        feedback: >
+          Cette valeur utilise $2X_m=0{,}20\ \text{m}$ (l'écart ENTRE les
+          deux points où la parabole croise $E_m$) à la place de $X_m$
+          lui-même. $X_m$ est l'amplitude, mesurée depuis l'origine $x=0$
+          jusqu'à UN SEUL de ces points, la moitié de cette largeur totale.
+      - id: D
+        text: "$15\\ \\text{N/m}$"
+        correct: false
+        misconception: mc.physics.pc_energie.epe-confondue-avec-epp
+        feedback: >
+          Ce calcul traite $X_m$ comme une HAUTEUR et applique $k \approx
+          mg/X_m = 0{,}15\times9{,}8/0{,}10$, une formule empruntée au
+          poids. Le ressort est horizontal : l'altitude ne change pas
+          pendant l'allongement, ce qui exclut toute origine gravitationnelle
+          à l'énergie stockée. C'est $E_{pe}=\frac12 kx^2$, purement
+          élastique, qui gouverne ce diagramme — $m$ et $g$ n'y entrent
+          jamais.
+    correct_feedback: >
+      La parabole croise $E_m$ une maille de grille ($2\ \text{cm}$)
+      au-delà de la dernière valeur imprimée ($8\ \text{cm}$), donc
+      $X_m = 10\ \text{cm} = 0{,}10\ \text{m}$. $E_m = \frac12 kX_m^2
+      \implies k = 2E_m/X_m^2 = 2\times6{,}0\times10^{-2}/(0{,}10)^2 =
+      12\ \text{N/m}$. $m$ et $g$ (donnés) ne servent nulle part dans ce
+      calcul.
+    solution: |
+      **Lire $X_m$ sur la grille, pas sur l'étiquette.** Entre deux valeurs
+      imprimées consécutives ($4\ \text{cm}$ d'écart), il y a deux mailles :
+      chaque maille vaut donc $2\ \text{cm}$. Le point de croisement est une
+      maille au-delà de la dernière valeur imprimée ($8\ \text{cm}$) :
+      $$X_m = 8\ \text{cm} + 2\ \text{cm} = 10\ \text{cm} = 0{,}10\ \text{m}$$
+
+      **Aux intersections avec $E_m$.**
+      $$E_m = \frac12 kX_m^2 \implies k = \frac{2E_m}{X_m^2} = \frac{2\times6{,}0\times10^{-2}}{(0{,}10)^2} = 12\ \text{N/m}$$
+
+      $m$ et $g$ (donnés) ne servent nulle part dans ce calcul : mettre
+      $X_m$ à la place d'une hauteur dans $mg/X_m$ donne
+      $0{,}15\times9{,}8/0{,}10 \approx 15\ \text{N/m}$, une valeur bien
+      différente obtenue en confondant l'énergie élastique avec une origine
+      gravitationnelle.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, et c'était la plus grosse des quatre dérives relevées
 # par web/scripts/resume-couverture.mjs : SEPT familles siégeaient sous le plancher
@@ -2690,17 +2960,18 @@ coverage_summary:
   per_misconception:
     mc.physics.pc_energie.epe-force-rappel-traitee-constante:    { count: 6, items: [AE-22, AE-23, AE-24, AE-36, AE-38, AE-44] }   # plafond (6) atteint depuis le 2026-09-27
     mc.physics.pc_energie.epe-depend-masse-ou-vitesse:           { count: 6, items: [AE-22, AE-23, AE-24, AE-38, AE-39, AE-44] }   # plafond (6) atteint depuis le 2026-09-27
-    mc.physics.pc_energie.epe-confondue-avec-epp:                { count: 4, items: [AE-22, AE-23, AE-24, AE-39] }
-    mc.physics.pc_energie.torsion-moment-traite-constant:        { count: 6, items: [AE-25, AE-26, AE-27, AE-37, AE-40, AE-41] }   # plafond (6) atteint depuis le 2026-09-27
-    mc.physics.pc_energie.torsion-ep-depend-inertie-j:           { count: 5, items: [AE-25, AE-26, AE-27, AE-37, AE-41] }
-    mc.physics.pc_energie.torsion-ec-formule-translation:        { count: 5, items: [AE-25, AE-26, AE-27, AE-42, AE-43] }
+    mc.physics.pc_energie.epe-confondue-avec-epp:                { count: 5, items: [AE-22, AE-23, AE-24, AE-39, AE-47] }
+    mc.physics.pc_energie.torsion-moment-traite-constant:        { count: 7, items: [AE-25, AE-26, AE-27, AE-37, AE-40, AE-41, AE-45] }   # plafond (6) dépassé d'une unité depuis le 2026-09-27 ; revérifié le 2026-09-28, non corrigé — voir resolution_2026_09_28
+    mc.physics.pc_energie.torsion-ep-depend-inertie-j:           { count: 6, items: [AE-25, AE-26, AE-27, AE-37, AE-41, AE-46] }   # plafond (6) atteint depuis le 2026-09-28
+    mc.physics.pc_energie.diagramme-graduation-imprimee-confondue-maille: { count: 3, items: [AE-45, AE-46, AE-47] }   # neuve 2026-09-28, vague D-E
+    mc.physics.pc_energie.torsion-ec-formule-translation:        { count: 4, items: [AE-25, AE-26, AE-27, AE-42] }   # AE-43 retiré le 2026-09-28, voir resolution_2026_09_28
+    mc.physics.pc_energie.ec-mauvaise-dependance-en-v:           { count: 4, items: [AE-10, AE-11, AE-31, AE-43] }   # AE-43 ajouté le 2026-09-28, voir resolution_2026_09_28
     mc.physics.pc_energie.pendule-ralentir-egale-perdre-energie: { count: 3, items: [AE-28, AE-29, AE-30] }
     mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil:    { count: 4, items: [AE-28, AE-29, AE-30, AE-35] }
     mc.physics.pc_energie.pendule-em-maximale-en-bas:            { count: 4, items: [AE-3, AE-28, AE-29, AE-30] }
     mc.physics.pc_energie.travail-poids-depend-du-chemin:        { count: 5, items: [AE-1, AE-2, AE-7, AE-8, AE-19] }
     mc.physics.pc_energie.frottement-restitue-energie:           { count: 3, items: [AE-9, AE-20, AE-34] }
     mc.physics.pc_energie.energie-oublie-facteur-demi:           { count: 6, items: [AE-10, AE-15, AE-21, AE-35, AE-36, AE-43] }   # plafond (6) atteint depuis le 2026-09-27
-    mc.physics.pc_energie.ec-mauvaise-dependance-en-v:           { count: 3, items: [AE-10, AE-11, AE-31] }
     mc.physics.pc_energie.energie-oublie-masse:                  { count: 5, items: [AE-1, AE-3, AE-4, AE-10, AE-15] }
     mc.physics.pc_energie.ec-grandeur-vectorielle:               { count: 3, items: [AE-12, AE-31, AE-32] }
     mc.physics.pc_energie.travail-oublie-cos:                    { count: 3, items: [AE-13, AE-32, AE-33] }
@@ -2711,9 +2982,9 @@ coverage_summary:
     mc.physics.pc_energie.signe-travail-poids:                   { count: 4, items: [AE-6, AE-16, AE-21, AE-34] }
     mc.physics.pc_energie.confusion-v-et-v-carre:                { count: 4, items: [AE-15, AE-35, AE-36, AE-42] }
     mc.physics.pc_energie.rappel-travail-signe-operateur:        { count: 3, items: [AE-37, AE-38, AE-39] }   # neuve 2026-09-27 — dette G1 (docs/audits/dette-examen/pc-1.md)
-    mc.physics.pc_energie.torsion-lecture-angle-non-converti:    { count: 3, items: [AE-40, AE-41, AE-42] }   # neuve 2026-09-27 — dette G2
-    mc.physics.pc_energie.diagramme-largeur-totale-confondue-amplitude: { count: 3, items: [AE-40, AE-43, AE-44] }   # neuve 2026-09-27 — dette G2
-  total_items: 41
+    mc.physics.pc_energie.torsion-lecture-angle-non-converti:    { count: 3, items: [AE-40, AE-41, AE-42] }   # neuve 2026-09-27 — dette G2 ; AE-45 retiré le 2026-09-28 (retaggé sur le nouvel id, voir resolution_2026_09_28)
+    mc.physics.pc_energie.diagramme-largeur-totale-confondue-amplitude: { count: 6, items: [AE-40, AE-43, AE-44, AE-45, AE-46, AE-47] }   # neuve 2026-09-27 — dette G2 ; plafond (6) atteint depuis le 2026-09-28
+  total_items: 44
   floor: 3
   floor_met: true
   honest_state_2026_09_19: >-
@@ -2747,8 +3018,8 @@ coverage_summary:
     R2: 5
     R3: 3
     R4: 4
-    R5: 7
-    R6: 8
+    R5: 8
+    R6: 10
     R7: 4
     R8: 3
     note: >-
@@ -2758,7 +3029,12 @@ coverage_summary:
       (2026-09-27, dette G1/G2) : R6 concentre le travail signé du couple de
       torsion et la lecture de diagramme (AE-37, AE-40…AE-43) ; R5 porte les
       variantes ressort des mêmes deux misconceptions neuves (AE-38, AE-39,
-      AE-44).
+      AE-44). R6 passe à 9 avec AE-45 (2026-09-28, vague D-E) : le piège de
+      grille (E_m à la dernière valeur imprimée au lieu d'une maille
+      au-dessus) que le texte de R6 nomme explicitement. R5 (8) et R6 (10)
+      depuis AE-46 (R6, torsion) et AE-47 (R5, ressort) — même jour, pour
+      porter le nouvel id de grille à son plancher de 3 sans dépasser le
+      plafond des id d'inertie/masse déjà pleines (voir resolution_2026_09_28).
   historique:
     removed_items: >-
       AE-5, AE-17 et AE-18 (ancien R5, « TEC contre 2e loi de Newton sur un
@@ -2812,3 +3088,139 @@ coverage_summary:
     sont plus vraies (25 misconceptions ; neuf à exactement 3 ; quatre au
     plafond) — conservées non corrigées pour l'historique, voir ce bloc pour
     l'état courant.
+  resolution_2026_09_28: >-
+    Passe vague D-E (docs/audits/DECISIONS-EN-ATTENTE.md §35/§36) sur les
+    items G1/G2 et ajout du piège de grille R6. (1) AE-43 : le distracteur D
+    portait `torsion-ec-formule-translation` sous la forme d'un refus
+    (« il faut aussi connaître la masse… »). Cette misconception ne peut PAS
+    produire un nombre distinct de la bonne réponse quand la question
+    demande le coefficient $J$ lui-même : résoudre $\frac12 X\dot\theta^2=E_m$
+    pour $X$ donne algébriquement la MÊME valeur, que $X$ s'appelle $J$ ou
+    qu'on le confonde avec $m$ — contrairement à AE-42, où la question porte
+    sur $\dot\theta_{max}$ et où $m$ substitué à $J$ donne un nombre différent
+    (le distracteur y a donc bien été gardé et rendu numérique, à
+    $\approx 0{,}21\ \text{rad/s}$). Retagué en `ec-mauvaise-dependance-en-v`
+    (le disque traité comme si $E_C\propto\dot\theta$ et non $\dot\theta^2$,
+    $J=2E_m/\dot\theta_{max}$ au lieu de $2E_m/\dot\theta_{max}^2$) : erreur
+    honnête, numériquement distincte ($4{,}0\times10^{-3}$), et déjà couverte
+    ailleurs dans le registre (AE-10, AE-11, AE-31). `torsion-ec-formule-
+    translation` retombe de 5 à 4 items — encore loin au-dessus du plancher.
+    (2) AE-37/38/39 (le trio `rappel-travail-signe-operateur`) : chacun
+    opposait le distracteur du signe (même magnitude que la clé, signe
+    opposé) à deux distracteurs de magnitude très différente, laissant le
+    signe seul à trancher une fois la magnitude reconnue. Corrigé en ajustant
+    UN paramètre-écran de l'énoncé (déjà inutilisé dans le calcul correct,
+    donc sans toucher la clé) pour rapprocher un distracteur non-signe de la
+    magnitude de la clé : AE-37 ($J$ : $4{,}0\times10^{-3}\to
+    9{,}0\times10^{-2}\ \text{kg·m}^2$, le distracteur `torsion-ep-depend-
+    inertie-j` passe de $-5{,}0\times10^{-4}$ à $\approx-1{,}1\times10^{-2}\
+    \text{J}$) ; AE-38 ($k$ : $60\to1{,}0\ \text{N/m}$, ce qui rapproche
+    AUTOMATIQUEMENT le distracteur `epe-depend-masse-ou-vitesse`, inchangé à
+    $-4{,}0\times10^{-4}\ \text{J}$, de la nouvelle clé $-8{,}0\times10^{-4}\
+    \text{J}$) ; AE-39 (masse $m=0{,}10\ \text{kg}$ et $g$ ajoutés à
+    l'énoncé, utilisés SEULEMENT par le distracteur `epe-confondue-avec-epp`
+    une fois converti en nombre, voir (3) — $\approx-5{,}9\times10^{-2}\
+    \text{J}$, proche de la clé $-4{,}5\times10^{-2}\ \text{J}$). Aucune
+    valeur n'est dupliquée : la paire ± reste unique en magnitude EXACTE,
+    mais n'est plus la seule paire dans son ordre de grandeur — un balayage
+    par ordre de grandeur seul ne l'isole plus. (3) Trois options-refus
+    converties en valeurs numériques, même misconception : AE-39/C
+    (`epe-confondue-avec-epp`, $\approx-5{,}9\times10^{-2}\ \text{J}$, via
+    $-mg|x_1|$ avec la masse et $g$ ajoutés à l'énoncé) et AE-42/C
+    (`torsion-ec-formule-translation`, $\approx0{,}21\ \text{rad/s}$, via
+    $\sqrt{2E_m/m}$ avec une masse ajoutée à l'énoncé). AE-43/D a nécessité
+    un changement de misconception, voir (1). (4) AE-40 mélangeait
+    $E_{p,torsion}(\theta)$ et $E_C(\theta)$ sans définir $E_C=E_m-E_p$ ;
+    récrit pour ne garder que $E_{p,torsion}(\theta)$ et la droite $E_m$
+    (celle que trace la figure), $E_m$ donné directement dans l'énoncé. (5)
+    AE-40 et AE-43 disaient « les deux zéros de la parabole » pour décrire
+    les points où la parabole croise $E_m$ — faux : ces paraboles n'ont
+    qu'UN zéro (à l'origine) ; les deux points à $\pm\theta_m$ (ou
+    $\pm\dot\theta_{max}$) sont des INTERSECTIONS avec $E_m$, pas des zéros.
+    Reformulé dans le correct_feedback, la solution et le distracteur
+    `diagramme-largeur-totale-confondue-amplitude` des deux items. (6) AE-45
+    (neuf, R6) teste le piège de grille que R6 enseigne explicitement (lire
+    $E_m$ à la dernière valeur IMPRIMÉE plutôt qu'une maille au-dessus),
+    avec des chiffres propres (labels tous les $1\ \text{mJ}$, maille
+    $0{,}5\ \text{mJ}$, dernière valeur imprimée $3\ \text{mJ}$, $E_m$ réel
+    $3{,}5\ \text{mJ}$, $\theta_m=0{,}50\ \text{rad}$ — pas les $2{,}5\
+    \text{mJ}$/$0{,}20\ \text{rad}$ de la leçon). Trois distracteurs :
+    largeur confondue avec l'amplitude (`diagramme-largeur-totale-confondue-
+    amplitude`, honnête, id existant) ; le $\frac12$ oublié (retenu sous
+    `torsion-moment-traite-constant`, le seul id honnête pour cette erreur
+    précise dans ce registre — mais CE CHOIX DÉPASSE LE PLAFOND DE 6 posé par
+    spec-extension.md §7, portant cette misconception à 7 items ; signalé ici
+    plutôt que masqué, arbitrage du propriétaire : accepter le
+    dépassement, retirer un des sept items existants, ou retagger l'un des
+    huit) ; et la lecture à la dernière valeur imprimée elle-même, pour
+    laquelle AUCUN id existant du registre ne dit honnêtement « une valeur
+    lue sur un axe sans compter les mailles au-dessus du dernier repère
+    imprimé ». Faute d'un identifiant dédié (qui demanderait trois items, pas
+    un seul — hors mandat de cette passe), elle est provisoirement rattachée
+    à `torsion-lecture-angle-non-converti` comme le plus proche existant
+    (même famille : une valeur lue brute sur le diagramme, sans l'étape de
+    correction qu'exige la formule) — CE TAG EST UN PLACEHOLDER, pas une
+    affirmation que cette erreur EST une conversion degrés→radians (elle ne
+    l'est pas : aucun angle en degrés n'apparaît dans cet item). Signalé au
+    propriétaire plutôt que forcé : ouvrir `diagramme-graduation-imprimee-
+    confondue-maille` (ou nom équivalent) dès que deux items de plus peuvent
+    l'atteindre honnêtement ailleurs dans le corpus (le diagramme de
+    décroissance radioactive en a un exemple analogue,
+    `decroissance-radioactive/media/courbe-activite-quadrillee.svg`).
+  resolution_2026_09_28_suite: >-
+    Le coordinateur a jugé, à raison, que le placeholder ci-dessus n'était
+    pas acceptable en l'état : un distracteur tagué sur un id dont la
+    description ne nomme pas son mécanisme est un tag malhonnête, qui
+    dirait à l'élève la mauvaise chose. Corrigé le même jour :
+    `diagramme-graduation-imprimee-confondue-maille` est déclarée (voir le
+    bloc `misconceptions`, juste après `diagramme-largeur-totale-confondue-
+    amplitude`), décrivant exactement le geste — s'arrêter à la dernière
+    graduation IMPRIMÉE d'un axe au lieu de compter les mailles du
+    quadrillage jusqu'à la valeur réelle. AE-45/B est retaggé sur ce nouvel
+    id (retiré de `torsion-lecture-angle-non-converti`, qui retombe de 4 à
+    3 — plancher tenu, ses trois items restants, AE-40/41/42, portent tous
+    une conversion degrés→radians authentique). Deux items neufs, AE-46
+    (R6, même diagramme de torsion que AE-45, grille sur l'axe des
+    énergies, distracteur d'inertie J-pour-E_m sur `torsion-ep-depend-
+    inertie-j`) et AE-47 (R5, ressort, grille sur l'axe des POSITIONS —
+    grandeur différente —, distracteur gravitationnel sur `epe-confondue-
+    avec-epp`), portent le nouvel id à son plancher de 3 (AE-45, AE-46,
+    AE-47). Chiffres propres à chaque item (aucun repris de AE-45, de
+    AE-37…AE-44, du sujet 2017 bk-2017-n-x4, ou de la figure de leçon
+    `lecture-diagramme-torsion.svg`). Les deux distracteurs « autres »
+    choisis pour ces deux items ont été choisis PRÉCISÉMENT pour ne pas
+    aggraver un plafond déjà atteint : `torsion-ep-depend-inertie-j` monte
+    de 5 à 6 (plafond atteint, pas dépassé) plutôt que de pousser
+    `torsion-moment-traite-constant` (déjà à 7) à 8 — et le second
+    distracteur de AE-47 est allé chercher `epe-confondue-avec-epp` (5,
+    marge restante) plutôt que `epe-depend-masse-ou-vitesse` ou
+    `epe-force-rappel-traitee-constante` (tous deux déjà à 6). Point de
+    méthode retenu au passage : ni `torsion-ep-depend-inertie-j` ni
+    `torsion-ec-formule-translation` ne peuvent honnêtement fournir un
+    distracteur NUMÉRIQUEMENT DISTINCT quand la question demande de
+    calculer $C$ ou $J$ eux-mêmes (résoudre $\tfrac12 X\theta^2=E$ pour $X$
+    donne le même nombre, qu'on appelle $X$ « $C$ » ou « $J$ ») — la même
+    dégénérescence déjà rencontrée sur AE-43. Ces deux id ne s'appliquent
+    proprement qu'en évaluation DIRECTE de $E_p$ ou $E_c$ (AE-25…27, AE-41,
+    AE-42), ou en substitution dans le NUMÉRATEUR d'une formule de résolution
+    inversée (AE-46 : $J$ substitué à $E_m$, pas à $C$) — jamais en
+    renommant la variable résolue elle-même.
+
+    `torsion-moment-traite-constant` reste à 7, au-dessus du plafond de 6 :
+    vérification demandée par le coordinateur (les sept items un par un).
+    AE-25, AE-26, AE-27, AE-37, AE-41 sont des évaluations DIRECTES et
+    purement formulaires (aucun diagramme, angle ou énergie donné
+    symboliquement ou numériquement sans lecture graphique) : leur
+    distracteur « moment traité constant » n'a aucune autre id honnête
+    disponible, `diagramme-graduation-imprimee-confondue-maille` comprise
+    (il n'y a rien à lire sur un axe dans ces cinq items). AE-40 et AE-45
+    lisent bien un diagramme, mais leur distracteur `torsion-moment-traite-
+    constant` porte sur une étape ULTÉRIEURE à la lecture (une fois $E_m$
+    correctement identifié — à la bonne graduation pour AE-40, à la bonne
+    maille pour AE-45 —, le facteur $\tfrac12$ est quand même oublié) :
+    c'est une erreur de FORMULE distincte de l'erreur de LECTURE, déjà
+    séparée proprement dans ces deux items (chacun porte les deux id sur
+    des distracteurs différents). Aucun des sept n'est donc mieux décrit
+    par un autre id existant ou par le nouvel id de grille : le compte
+    reste à 7, non forcé à la baisse, comme le permet l'arbitrage du
+    coordinateur.

@@ -2126,6 +2126,30 @@ leur fond) :
 - *Récapitulatifs express* non mis à jour (cinq notions) ; un repère de figure anisotrope
   (`impact-plan-incline`) qui déforme l'angle même dont le cosinus est la leçon.
 
+**Appliqué le 2026-09-28 (six auteurs, 40 fichiers).** Prose maths et PC, items maths et PC, deux
+points d'arrêt replacés, la figure `impact-plan-incline` redessinée isotrope (75ee4495). Côté items PC :
+les paires ± rompues par un leurre voisin de la clé (AE-37/38/39), les phrases-refus remplacées par des
+nombres, le pH 7,0 devinable déplacé (RAB-48 → 6,5), OEM-31 réécrit sur la figure de l'étage,
+LDN-39/40 ramenés en R6 avec un identifiant honnête (`pente-de-graphe-mal-lue`, 3 items), CMP-46 en R5,
+EE-28 en R4, OMPP-29 ne compte plus à la place de l'élève. **Trois étiquettes « faute de mieux » ont été
+refusées avant l'entrée** — un distracteur tagué d'un id dont la description ne nomme pas son mécanisme
+dit à l'élève la mauvaise chose : deux ids neufs (`kepler3-donnees-non-preparees`,
+`diagramme-graduation-imprimee-confondue-maille`), chacun porté à 3 items (CMP-49/50, AE-46/47).
+
+**Ce qui reste ouvert, dit tel quel.**
+- NME-19 : la paire ± n'est que resserrée (facteur ~4) — propriété d'une énergie de liaison qui est le
+  petit reste de deux grandeurs proches ; la fermer demanderait de fausser des données nucléaires.
+- `torsion-moment-traite-constant` à 7 items pour un plafond que la notion s'est fixé à 6 : les sept
+  ont été relus, aucun n'appartient honnêtement à un autre id.
+- Les distracteurs « exposants inversés » de Kepler restent écartables à l'ordre de grandeur : l'écart
+  entre r³/T² et une forme fausse est une puissance de r ou de T, qui sont astronomiques.
+- **La fidélité PC (D–E), enfin rendue**, apporte ce que la vague n'avait pas vu : deux exercices
+  sommets PRÉ-RÉSOLUS par la prose qui les précède (suivi temporel : même réaction, même méthode,
+  même t½ = 8 min ; état d'équilibre : l'expression de $Q_{r,éq}$ en fonction de C et τ, mot pour mot
+  la question 2 du sommet), une déclaration d'id qui prête deux zéros à une parabole qui n'en a qu'un,
+  quatre notes de portée que la vague a rendues fausses, un diagramme $E_c(\dot\theta)$ que le bac
+  n'imprime jamais, et onze items sans `habilete`. Commandés à la suite (prose, puis items).
+
 ## 37. Le cadre relu ligne à ligne : 35 lignes sans chapitre — et une question que seul le propriétaire tranche
 
 **LE FAIT.** L'audit de dette d'examen partait des banques ; il ne pouvait pas voir ce qu'aucune banque

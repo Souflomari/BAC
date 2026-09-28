@@ -444,9 +444,7 @@ $$\mathcal{S} = \,]-\infty, 2[$$
 
 Il n'y a ici aucune intersection avec un domaine à effectuer — contrairement à $\ln$ (chapitre précédent, chapitre 7), $\exp$ ne restreint jamais l'ensemble des solutions par une condition de signe : la réponse ci-dessus est finale, telle quelle.
 
-### Exemple travaillé 4 (équation quadratique en $e^x$, par un changement de variable)
-
-Résous dans $\mathbb{R}$ : $e^{2x} - e^{x} - 6 = 0$.
+**Exemple travaillé 4 (équation quadratique en $e^x$, par un changement de variable).** Résous dans $\mathbb{R}$ : $e^{2x} - e^{x} - 6 = 0$.
 
 **Ce qu'on cherche et pourquoi ce geste :** l'équation mélange $e^{2x}=(e^x)^2$ et $e^x$ — un trinôme du second degré déguisé sous l'exponentielle. Le geste : poser $t=e^x$, toujours strictement positif (chapitre 2), pour retrouver une équation ordinaire en $t$.
 
@@ -458,11 +456,15 @@ Discriminant : $\Delta = (-1)^2 - 4\times1\times(-6) = 1+24=25$, donc $\sqrt{\De
 
 $$t = \frac{1-5}{2} = -2 \qquad \text{ou} \qquad t = \frac{1+5}{2} = 3$$
 
-**Le piège à éviter :** garder les deux racines et écrire $x=\ln(-2)$ à côté de $x=\ln(3)$. La racine $t=-2$ ne correspond à **aucun** $x$ réel : $e^x>0$ pour tout réel $x$ (chapitre 2), donc $e^x$ ne peut jamais valoir $-2$, et $\ln(-2)$ n'existe même pas. Seule la racine positive $t=3$ donne une solution.
+**Prends position avant de lire la suite :** deux racines en $t$ — combien de solutions en $x$ ?
+
+Une seule. $t=e^x$ est toujours strictement positif (chapitre 2), donc la valeur $t=-2$ ne peut correspondre à **aucun** $x$ réel : $e^x$ ne s'annule ni ne devient négatif, quel que soit $x$. Seule la racine positive $t=3$ passe le filtre $t>0$ :
 
 $$e^x = 3 \iff x = \ln 3$$
 
 $$\mathcal{S} = \{\ln 3\}$$
+
+**Le piège à éviter :** garder les deux racines et écrire $x=\ln(-2)$ à côté de $x=\ln(3)$. C'est l'erreur qui consiste à résoudre l'équation en $t$ comme une équation ordinaire, sans revenir, une fois les racines trouvées, à la contrainte posée dès le changement de variable ($t=e^x>0$) — et $\ln(-2)$ n'existe même pas.
 
 **Et l'inéquation associée.** Résous maintenant $e^{2x} - e^{x} - 6 \leq 0$.
 
@@ -493,7 +495,7 @@ Un sujet de bac ne s'arrête pas aux frontières d'une leçon. Les problèmes ci
 - **Le théorème de la limite monotone** (une suite décroissante et minorée converge), quand le volet « suites » d'un problème arrive. Il est dans « **Suites numériques** ».
 - **Le théorème de la bijection** et **la dérivée de la réciproque**, $\left(f^{-1}\right)'(y) = \dfrac{1}{f'\!\left(f^{-1}(y)\right)}$ — c'est ce que demandent les deux problèmes ci-dessous, et cette leçon n'admet que l'*existence* d'une réciproque dérivable (chapitre 4), jamais le critère ni la formule. Les deux vivent dans « **Dérivabilité et étude des fonctions** ».
 
-Aucun de ces trois n'est un manque de ce chapitre : ce sont des outils transversaux, et un problème d'analyse en assemble toujours plusieurs. Savoir **d'où vient** chaque geste est la moitié du travail de révision.
+Aucun de ces quatre n'est un manque de ce chapitre : ce sont des outils transversaux, et un problème d'analyse en assemble toujours plusieurs. Savoir **d'où vient** chaque geste est la moitié du travail de révision.
 
 ### Exercice de type bac — session normale 2022
 

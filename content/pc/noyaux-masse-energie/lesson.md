@@ -193,11 +193,11 @@ Puisqu'une réaction nucléaire conserve le nombre total de nucléons (Soddy, ch
 
 $$E_{\text{lib}} = \sum E_l(\text{produits}) - \sum E_l(\text{réactifs})$$
 
-(énergie libérée comptée positivement, cohérent avec $|E| = |\Delta m_{\text{réaction}}|\,c^2$.) Vérification sur la fusion deutérium-tritium étudiée plus bas, avec $E_l(^{2}_{1}\text{H}) \approx 2{,}2\ \text{MeV}$, $E_l(^{3}_{1}\text{H}) \approx 8{,}5\ \text{MeV}$, $E_l(^{4}_{2}\text{He}) \approx 28{,}3\ \text{MeV}$ (chapitre 3) :
+(énergie libérée comptée positivement, cohérent avec $|E| = |\Delta m_{\text{réaction}}|\,c^2$.)
 
-$$E_{\text{lib}} = 28{,}3 - (2{,}2+8{,}5) = 17{,}6\ \text{MeV}$$
+**Prends position avant de lire la suite :** si on soustrayait dans l'autre sens — réactifs moins produits —, quel signe obtiendrait-on, et cela a-t-il un sens pour une réaction qui libère réellement de l'énergie ?
 
-exactement la valeur retrouvée plus bas par les masses. **Le piège :** inverser la différence (réactifs moins produits) donnerait $-17{,}6\ \text{MeV}$, une énergie « libérée » négative, ce qui n'a pas de sens pour une réaction qui en libère réellement. Si un énoncé donne $E_l/A$ plutôt que $E_l$, remultiplie d'abord par $A$ ($E_l = A\times(E_l/A)$) avant de sommer : ce sont les $E_l$ totales qui s'additionnent, pas les $E_l/A$.
+**Le piège :** inverser la différence (réactifs moins produits) donnerait une énergie « libérée » négative, ce qui n'a pas de sens pour une réaction qui en libère réellement. Si un énoncé donne $E_l/A$ plutôt que $E_l$, remultiplie d'abord par $A$ ($E_l = A\times(E_l/A)$) avant de sommer : ce sont les $E_l$ totales qui s'additionnent, pas les $E_l/A$.
 
 ### Exemple — la fission de l'uranium 235
 
@@ -236,6 +236,12 @@ $$m_{\text{produits}} = 4{,}00151 + 1{,}00867 = 5{,}01018\ \text{u}$$
 $$\Delta m_{\text{réaction}} = 5{,}01018 - 5{,}02905 = -0{,}01887\ \text{u}$$
 
 $$E = 0{,}01887 \times 931{,}5 \approx 17{,}6\ \text{MeV}$$
+
+Vérifie ce résultat par l'autre route, celle des énergies de liaison (le corollaire vu plus haut dans ce chapitre), avec $E_l(^{2}_{1}\text{H}) \approx 2{,}2\ \text{MeV}$, $E_l(^{3}_{1}\text{H}) \approx 8{,}5\ \text{MeV}$, $E_l(^{4}_{2}\text{He}) \approx 28{,}3\ \text{MeV}$ (chapitre 3) :
+
+$$E_{\text{lib}} = 28{,}3 - (2{,}2+8{,}5) = 17{,}6\ \text{MeV}$$
+
+exactement la valeur retrouvée ci-dessus par les masses.
 
 Une seule réaction de fusion, entre seulement 2 noyaux légers, libère 17,6 MeV — environ dix fois moins d'un coup que les 173 MeV de la fission de l'uranium, mais à partir d'une masse de départ près de cinquante fois plus petite. C'est ce rapport énergie-libérée sur masse-consommée exceptionnellement élevé qui rend la fusion si attirante comme source d'énergie.
 

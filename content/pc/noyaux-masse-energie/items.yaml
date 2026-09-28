@@ -1205,27 +1205,31 @@ items:
     type: mcq
     choices:
       - id: A
-        text: "Cette réaction libère environ $70{,}9\\ \\text{MeV}$."
+        text: "Cette réaction libère environ $28{,}44\\ \\text{MeV}$."
         correct: false
         misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
         feedback: >
-          Modèle détecté : $7{,}08\ \text{MeV}$ est une énergie PAR NUCLÉON,
-          pas l'énergie de liaison totale d'un noyau d'hélium 4. Il faut
-          d'abord multiplier par $A=4$ : $E_l(^{4}_{2}\text{He}) =
-          4\times7{,}08=28{,}32\ \text{MeV}$ par noyau, avant de sommer les
-          trois réactifs (chapitre 5) - jamais additionner directement des
-          $E_l/A$ entre eux.
+          Modèle détecté : le nombre de noyaux d'hélium réactifs (3) a été
+          utilisé à la place du nombre de nucléons par noyau ($A=4$) pour
+          convertir l'énergie par nucléon en énergie totale. Cela donne
+          $E_l(^{4}_{2}\text{He}) = 3\times7{,}08=21{,}24\ \text{MeV}$ par
+          noyau (au lieu de $4\times7{,}08=28{,}32\ \text{MeV}$), soit
+          $3\times21{,}24=63{,}72\ \text{MeV}$ pour les trois réactifs :
+          $E_{lib}=92{,}16-63{,}72=28{,}44\ \text{MeV}$. Le nombre de
+          NUCLÉONS PAR NOYAU ($A$) et le nombre de NOYAUX réactifs ne jouent
+          pas le même rôle dans cette conversion (chapitre 5).
       - id: B
-        text: "Cette réaction absorbe environ $7{,}20\\ \\text{MeV}$ (elle ne peut pas se produire spontanément)."
+        text: "Cette réaction absorbe environ $7{,}20\\ \\text{MeV}$."
         correct: false
         misconception: mc.physics.pc_noyaux_masse_energie.signe-delta-m-bilan
         feedback: >
           Modèle détecté : la différence a été inversée (réactifs moins
           produits, au lieu de produits moins réactifs). Le chapitre 5 nomme
           précisément ce piège : $E_{lib}=\sum E_l(\text{produits})-\sum
-          E_l(\text{réactifs})$, jamais l'inverse - une énergie « libérée »
-          négative n'a pas de sens pour une réaction qui en libère réellement,
-          comme celle-ci.
+          E_l(\text{réactifs})$, jamais l'inverse - une énergie « absorbée »
+          signifierait que cette réaction ne peut pas se produire
+          spontanément, ce qui contredit l'hypothèse même de l'énoncé (une
+          réaction qui se produit au cœur des étoiles).
       - id: C
         text: "Cette réaction libère environ $177{,}12\\ \\text{MeV}$."
         correct: false
@@ -1321,3 +1325,23 @@ coverage_summary:
   # web/scripts/lib/couverture-compte.mjs, utilisée par
   # esterification-hydrolyse et etat-equilibre) donnerait des comptes égaux ou
   # supérieurs, jamais inférieurs, donc ne casse pas le plancher.
+  #
+  # Ajout du 2026-09-28 (vague D-E, DECISIONS-EN-ATTENTE.md §35/§36) : NME-19
+  # opposait une paire ± exacte (+7,20/-7,20 MeV) à deux distracteurs bien
+  # plus éloignés (70,9 et 177,12 MeV), laissant le signe seul à trancher une
+  # fois la magnitude reconnue. Le distracteur A a été retaggé avec un
+  # mécanisme différent mais honnête (même id, energie-liaison-par-nucleon-
+  # et-aston) : confondre le nombre de noyaux réactifs (3) avec le nombre de
+  # nucléons par noyau (A=4), donnant 28,44 MeV au lieu de 70,9 — un facteur
+  # ~4 de la clé au lieu d'un facteur ~10. NOTE HONNÊTE : cette correction ne
+  # résout le problème qu'à moitié. La bonne réponse ici est un ÉCART entre
+  # deux énergies de liaison proches (92,16 et 84,96 MeV) ; toute erreur qui
+  # utilise un multiple entier de 7,08 MeV/nucléon (au lieu du bon multiple,
+  # 12) produit un résultat dont l'écart à la clé est un multiple FIXE de
+  # 7,08 MeV, indépendant des données choisies — 63,72 MeV pour le
+  # distracteur A (×9), 169,92 MeV pour C (×24). Rapprocher franchement l'un
+  # d'eux de 7,20 MeV demanderait soit de distordre l'échelle réelle des
+  # énergies de liaison nucléaires (non souhaitable), soit d'inventer un
+  # mécanisme d'erreur qui ne correspond à aucune misconception déclarée.
+  # signe-delta-m-bilan (primary de NME-19) n'est pas affecté : plancher tenu
+  # (4 items), aucun nombre de la clé ni du distracteur B (le signe) changé.

@@ -27,7 +27,7 @@ skill_code: pc_etat_equilibre
 #                                  tend vers K, qui reste FIXE (Qr ≠ K tant que
 #                                  l'équilibre n'est pas atteint). Probes
 #                                  confond-qr-et-k.
-#   cp-r4-k-constante (after R4) — rupture gate: Qr,éq = K, constante à T donnée,
+#   cp-r4-k-constante (in R4)    — rupture gate: Qr,éq = K, constante à T donnée,
 #                                  INDÉPENDANTE de l'état initial (deux τ
 #                                  différents, un seul K). Probes
 #                                  k-depend-etat-initial.
@@ -301,7 +301,7 @@ checkpoints:
           une constante, fixée par la réaction et la température.
 
   # ════════════════════════════════════════════════════════════════
-  # CP-4 | id: cp-r4-k-constante | placed AFTER R4
+  # CP-4 | id: cp-r4-k-constante | placed IN R4 (an example follows it in R4)
   #        Rupture gate: Qr,éq = K, constante à T donnée, INDÉPENDANTE de
   #        l'état initial (deux τ différents, un seul K). Clone of EE-5's
   #        stem. Probes k-depend-etat-initial.
@@ -314,7 +314,7 @@ checkpoints:
     tags: [checkpoint, formative, misconception_driven, pc_etat_equilibre]
     primary_misconception: mc.physics.pc_etat_equilibre.k-depend-etat-initial
     item_source: clone_of_EE-5
-    lesson_placement: after_R4
+    lesson_placement: in_R4
 
     stem: |
       Deux expériences portent sur la **même** réaction, à la **même**

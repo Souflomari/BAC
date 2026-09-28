@@ -280,27 +280,21 @@ Quand $X \to +\infty$, $\dfrac{\ln(X)}{X} \to 0$ (croissances comparées, juste 
 
 $$\lim_{x \to 0^{+}} x\ln(x) = 0$$
 
-### Généraliser : $(\ln x)^2/x$, une autre forme indéterminée
+### Généraliser : $x(\ln x)^2$, une autre forme indéterminée
 
-Avant de lire la suite, essaie de calculer $\displaystyle\lim_{x\to+\infty}\dfrac{(\ln x)^2}{x}$. Un réflexe trompeur : répondre tout de suite « c'est $\ln x/x$, déjà connu, donc $0$ » — mais le carré change tout. $(\ln x)^2/x$ n'est pas $\ln x/x$ : c'est une **nouvelle** forme indéterminée $\dfrac{\infty}{\infty}$, à retraiter depuis le début, pas à lire par-dessus la précédente.
+Calcule $\displaystyle\lim_{x\to0^+} x(\ln x)^2$. **Prends position :** $0$, $+\infty$, ou une forme indéterminée à retraiter ?
 
-**Ce qu'on cherche et pourquoi ce geste :** on veut ramener ce rapport à la croissance comparée déjà établie, $\ln t/t \to 0$. Le geste : faire apparaître $\sqrt x$ à l'intérieur, puisque $\ln(\sqrt x) = \frac12\ln x$ (propriété racine carrée, chapitre 3) fait naturellement apparaître le carré de $\ln x$ une fois cette quantité elle-même mise au carré.
+**Ce qu'on cherche et pourquoi ce geste :** en $0^+$, $x\to0$ tandis que $(\ln x)^2\to+\infty$ — une forme indéterminée $0\times\infty$, de la même famille que $x\ln x$ juste établi ci-dessus. Le geste qui a fonctionné pour $x\ln x$ se généralise : on fait apparaître $\sqrt x$, parce que $\ln(\sqrt x)=\frac12\ln x$ absorbe proprement le carré.
 
-$$\left(\frac{\ln\sqrt{x}}{\sqrt{x}}\right)^2 = \frac{\left(\frac12\ln x\right)^2}{x} = \frac{(\ln x)^2}{4x}$$
+Pose $t=\sqrt x$. Alors $x=t^2$ et $\ln x = \ln(t^2) = 2\ln t$, donc :
 
-En multipliant les deux membres par $4$ :
+$$x(\ln x)^2 = t^2 \times (2\ln t)^2 = t^2 \times 4(\ln t)^2 = 4\,(t\ln t)^2$$
 
-$$\frac{(\ln x)^2}{x} = 4\left(\frac{\ln\sqrt{x}}{\sqrt{x}}\right)^2$$
+Quand $x\to0^+$, $t=\sqrt x\to0^+$ aussi, et $t\ln t \to 0$ (corollaire établi juste au-dessus). Le carré d'une quantité qui tend vers $0$ tend vers $0$, donc :
 
-Pose $t=\sqrt x$ : quand $x\to+\infty$, $t\to+\infty$ aussi, et le rapport entre parenthèses redevient exactement la croissance comparée déjà connue :
+$$\lim_{x\to0^+} x(\ln x)^2 = 4\times 0^2 = 0$$
 
-$$\frac{\ln\sqrt x}{\sqrt x} = \frac{\ln t}{t} \xrightarrow[t\to+\infty]{} 0$$
-
-Son carré tend donc aussi vers $0$, et :
-
-$$\lim_{x\to+\infty}\frac{(\ln x)^2}{x} = 4\times 0^2 = 0$$
-
-**Le geste général :** face à une forme comme $(\ln x)^n/x$ ou $x^n e^{-x}$, on choisit une nouvelle variable $t$, puissance de $x$, qui fait réapparaître exactement le rapport connu $\ln t/t$ (ou $t\,e^{-t}$) — par exemple, $(\ln x)^3/x$ se traite avec $t=x^{1/3}$.
+**Le geste général :** face à une forme comme $x^n(\ln x)^m$ ou $(\ln x)^m/x^n$, on choisit une nouvelle variable $t$ liée à $x$ par une puissance, pour faire réapparaître exactement le produit ou le rapport déjà connu — $t\ln t$ ou $\ln t/t$.
 
 ### Une autre limite de référence : $\dfrac{\ln(1+x)}{x}$, lue comme un taux d'accroissement
 

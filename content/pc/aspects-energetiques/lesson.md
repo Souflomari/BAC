@@ -384,7 +384,7 @@ Le pendule de torsion obéit au même mécanisme que le ressort, habillé en rot
 
 $$M_{rappel} = -C\,\theta$$
 
-où $C$ (en $\text{N}\cdot\text{m}/\text{rad}$) est la constante de torsion du fil — l'exact analogue de la raideur $k$, mais pour un moment plutôt qu'une force.
+où $C$ (en $\text{N}\cdot\text{m}/\text{rad}$) est la constante de torsion du fil — l'exact analogue de la raideur $k$, mais pour un moment plutôt qu'une force. Le « rad » dans cette unité n'est pas décoratif : un angle donné en degrés se convertit en radians AVANT de calculer ($\theta_{rad} = \theta_{°}\times\pi/180$) — $20° \approx 0{,}349\ \text{rad}$.
 
 ### Avant de calculer : quelle grandeur entre dans l'énergie de rappel ?
 
@@ -458,21 +458,23 @@ Vérifie avec l'autre chemin, celui de l'équation horaire (chapitre Systèmes o
 
 ### Exemple travaillé : lire $C$ sur un diagramme d'énergie de torsion
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* jusqu'ici, ces diagrammes n'ont été décrits qu'en mots. Le bac donne souvent un graphe gradué et demande d'en extraire une valeur — ici, la constante de torsion $C$ du pendule qu'on vient d'étudier, à partir de son diagramme $E_{p,torsion}(\theta)$ et de la droite $E_m$.
+*Ce qu'on cherche ici, et pourquoi ce geste :* jusqu'ici, ces diagrammes n'ont été décrits qu'en mots. Le bac donne souvent un graphe gradué et demande d'en extraire une valeur — ici, la constante de torsion $C$ d'un autre pendule de torsion, dont on ne connaît que le diagramme $E_{p,torsion}(\theta)$ et la droite $E_m$.
 
 [[figure:lecture-diagramme-torsion]]
 
 Le graphe montre la parabole $E_{p,torsion}(\theta) = \frac12 C\theta^2$ (nulle en $\theta=0$, remontant des deux côtés) et la droite horizontale $E_m$ — le plafond que la parabole touche exactement aux deux écarts extrêmes $\theta=\pm\theta_m$ (là où $E_c=0$, toute l'énergie est potentielle). Deux lectures, une seule information : $E_m$ se lit soit directement sur la hauteur de la droite, soit comme le sommet atteint par la parabole en $\theta=\pm\theta_m$.
 
-Sur l'axe des $\theta$, l'écart où la parabole rejoint la droite tombe sur une graduation imprimée : $\theta_m = 0{,}20\ \text{rad}$.
+Sur l'axe des $\theta$, l'écart où la parabole rejoint la droite tombe sur une graduation imprimée : $\theta_m = 0{,}20\ \text{rad}$. Ce $\theta_m$ se lit depuis l'origine jusqu'à l'intersection — pas la largeur totale $2\theta_m$ entre les deux intersections, à $-\theta_m$ et $+\theta_m$.
 
-Sur l'axe des énergies, en revanche, attention : la dernière valeur **imprimée** sur l'axe est $2\ \text{mJ}$, mais la droite $E_m$ ne passe pas par cette graduation-là — elle passe une maille **au-dessus**. Compte le pas de la grille : deux mailles entre deux graduations imprimées, qui sont à $1\ \text{mJ}$ l'une de l'autre, donc une maille vaut $0{,}5\ \text{mJ}$ ; une maille au-dessus de $2\ \text{mJ}$, c'est $2{,}5\ \text{mJ}$.
+**Prends position avant de lire la suite :** sur l'axe des énergies, la dernière valeur imprimée est $2\ \text{mJ}$ — est-ce la valeur de $E_m$ à lire, ou faut-il compter autre chose ?
+
+En réalité, la droite $E_m$ ne passe pas par cette graduation-là — elle passe une maille **au-dessus**. Compte le pas de la grille : deux mailles entre deux graduations imprimées, qui sont à $1\ \text{mJ}$ l'une de l'autre, donc une maille vaut $0{,}5\ \text{mJ}$ ; une maille au-dessus de $2\ \text{mJ}$, c'est $2{,}5\ \text{mJ}$.
 
 $$E_m = 2{,}5\ \text{mJ} = 2{,}5\times10^{-3}\ \text{J}$$
 
 D'où $C$ :
 
-$$E_m = \frac12 C\theta_m^2 \quad\Longrightarrow\quad C = \frac{2E_m}{\theta_m^2} = \frac{2\times2{,}5\times10^{-3}}{(0{,}20)^2} = \frac{5{,}0\times10^{-3}}{0{,}040} \approx 0{,}13\ \text{N·m/rad}$$
+$$E_m = \frac12 C\theta_m^2 \quad\Longrightarrow\quad C = \frac{2E_m}{\theta_m^2} = \frac{2\times2{,}5\times10^{-3}}{(0{,}20)^2} = \frac{5{,}0\times10^{-3}}{0{,}040} = 0{,}125 \approx 0{,}13\ \text{N·m/rad}$$
 
 **Le piège :** répondre $E_m=2\ \text{mJ}$ — la dernière valeur imprimée sur l'axe — sans compter la maille qui reste au-dessus. Cette lecture donnerait $C = 2\times2{,}0\times10^{-3}/0{,}040 = 0{,}10\ \text{N·m/rad}$ au lieu de $0{,}125$ : une valeur fausse de $20\,\%$, pour avoir simplement oublié de compter un pas de grille.
 

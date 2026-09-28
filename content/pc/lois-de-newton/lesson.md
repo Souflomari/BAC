@@ -382,6 +382,8 @@ Sur un tel relevé, la droite $x=f(t^2)$ passe par les points $(t^2=2{,}0\ \text
 
 $$\text{pente} = \frac{\Delta x}{\Delta(t^2)} = \frac{12{,}0-3{,}0}{8{,}0-2{,}0} = \frac{9{,}0}{6{,}0} = 1{,}5\ \text{m/s}^2$$
 
+**Prends position avant de lire la suite :** cette pente, est-ce directement $a$, ou reste-t-il un facteur à appliquer ?
+
 **Le piège, et c'est le plus cher de ce type de question :** cette pente n'est PAS l'accélération — elle vaut $a/2$, pas $a$. Les deux grandeurs partagent la même unité ($\text{m/s}^2$), ce qui ne prévient de rien ; seule la relation $x=\frac12 a t^2$ le rappelle. Il faut **doubler** la pente lue, jamais la lire telle quelle :
 
 $$a = 2\times\text{pente} = 2\times1{,}5 = \boxed{3{,}0\ \text{m/s}^2}$$
@@ -468,6 +470,9 @@ Le piège nommé : répondre $R=N\approx8{,}5\ \text{N}$ en oubliant le frotteme
 - **2ᵉ loi :** $\sum \vec{F}_{ext} = m\,\vec{a}_G$. La masse mesure l'inertie : à force égale, un solide plus massif accélère moins.
 - **3ᵉ loi (actions réciproques) :** $\vec{F}_{B \to A} = -\vec{F}_{A \to B}$, toujours vraie, sur deux corps DIFFÉRENTS — à ne jamais confondre avec deux forces en équilibre sur un même corps.
 - **Méthode :** système + référentiel → bilan des forces → $\sum \vec{F}_{ext} = m\,\vec{a}_G$ → repère et projection → équations scalaires.
+- Sans le temps, $v^2 = v_0^2 + 2a\,(x-x_0)$ relie directement vitesse et position.
+- Sur un relevé graphique, la pente d'une droite $v(t)$ donne $a$ directement ; la pente d'une droite $x=f(t^2)$ donne $a/2$ — il faut la doubler pour obtenir $a$.
+- Sur un plan incliné avec frottement, l'action totale du plan a pour intensité $R=\sqrt{N^2+f^2}$ — $N$ et $f$ ne s'additionnent jamais directement, ce sont deux composantes perpendiculaires d'une même action de contact.
 
 ### Exercice de type bac
 

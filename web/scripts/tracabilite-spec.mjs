@@ -69,7 +69,11 @@ const CLIQUET = 18;
 //  retrouvé notion par notion et barreau par barreau : 7 + 4 + 5. La classe
 //  n'a pas bougé depuis qu'elle a été consignée. C'est une PORTE D'OWNER
 //  ouverte (rattachement éditorial), donc un cliquet et non une porte franche.
-const CLIQUET_BARREAUX = 16;
+//  Descendu à 15 le 2026-09-28 : la vague 1 des dettes D–F a rattaché
+//  DERIVFCT-23 au barreau R4b (Rolle/TAF), qui l'enseigne — il visait un R6
+//  sans chapitre. L'essai rouge §11.140 a vu la place libre (+1 retombait sur
+//  16) avant la poussée, exactement comme §11.136 pour le sens 1.
+const CLIQUET_BARREAUX = 15;
 //  SENS 3 — mesuré au 2026-09-20 : 13 barreaux portent un chapitre et aucun
 //  item ni point d'arrêt. **Douze des treize sont en SVT**, et ils touchent
 //  les 11 notions sur 11 ; maths 0/14, pc 0/25, philo 1/12. Le barreau manquant

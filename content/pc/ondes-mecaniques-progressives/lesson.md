@@ -272,13 +272,15 @@ Cette même lecture — décalage en divisions, multiplié par la sensibilité �
 
 Un bateau de pêche utilise un sondeur à ultrasons pour connaître la profondeur de l'eau sous sa coque. À l'instant $t=0$, le sondeur émet, à la verticale, une brève salve d'ultrasons ; elle descend jusqu'au fond marin, s'y réfléchit, et revient vers le sondeur, qui la détecte à l'instant $\Delta t = 80\ \text{ms}$. La célérité des ultrasons dans l'eau de mer vaut $v = 1500\ \text{m/s}$. Quelle est la profondeur $L$ ?
 
-Le piège immédiat serait d'écrire $L = v\,\Delta t$, comme pour un trajet simple au chapitre 4. Mais ici $\Delta t$ n'est pas la durée d'**un** trajet : c'est la durée d'un aller-retour, et la salve a parcouru deux fois la distance $L$ — une fois à la descente, une fois à la remontée.
+**Prends position avant de lire la suite :** proposerais-tu $L = v\,\Delta t$, comme pour un trajet simple au chapitre 4 — ou faut-il autre chose ?
+
+Ici $\Delta t$ n'est pas la durée d'**un** trajet : c'est la durée d'un aller-retour, et la salve a parcouru deux fois la distance $L$ — une fois à la descente, une fois à la remontée.
 
 $$v\,\Delta t = 2L \quad\Longrightarrow\quad L = \frac{v\,\Delta t}{2}$$
 
 $$L = \frac{1500 \times 80\times10^{-3}}{2} = \frac{120}{2} = 60\ \text{m}$$
 
-Le fond est à $60\ \text{m}$ sous la coque. Oublier le facteur $2$ — écrire $L = v\,\Delta t$ — aurait donné $120\ \text{m}$, le double de la vraie profondeur.
+Le fond est à $60\ \text{m}$ sous la coque. **Le piège immédiat :** écrire $L = v\,\Delta t$ sans diviser par deux — cela aurait donné $120\ \text{m}$, le double de la vraie profondeur.
 
 ---
 
@@ -292,6 +294,8 @@ Le fond est à $60\ \text{m}$ sous la coque. Oublier le facteur $2$ — écrire 
 - Retard $\tau = d/v$, et $y_M(t) = y_S(t - \tau)$ : $M$ rejoue le mouvement de $S$, à l'identique, avec ce retard.
 - Deux graphes à ne jamais confondre : le **film** d'un point ($y$ en fonction du **temps** : la courbe de $S$ décalée vers la droite de $\tau$) et la **photo** de la corde ($y$ en fonction de la **distance** : le geste **retourné**, front à $v\,t$, rien au-delà). Sur une photo, une largeur est une distance ; on passe à une durée en divisant par $v$.
 - Ondes à une (corde), deux (surface de l'eau) ou trois (son) dimensions : la géométrie du milieu fixe la forme du front d'onde.
+- Sur un oscillogramme à deux voies, le retard entre deux salves se lit en comptant les divisions entre deux points **homologues**, multipliées par la sensibilité horizontale.
+- Pour un écho (sondeur, échographie), $\Delta t$ est la durée d'un aller-retour : la distance parcourue une fois vaut $L = v\,\Delta t/2$, pas $v\,\Delta t$.
 
 ### Exercice de type bac
 

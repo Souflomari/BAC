@@ -1941,67 +1941,80 @@ items:
     rung: "R4"
     difficulty_level: 3
     skill_code: pc_ondes_em_modulation
-    habilete: utilisation
+    habilete: application_experimentale
     tags: []
     primary_misconception: mc.physics.pc_ondes_em_modulation.etage-reception-role-confondu
     stem: >
-      Un camarade affirme, à propos de l'étage placé juste après le
-      détecteur de crête (un condensateur en série suivi d'un conducteur
-      ohmique vers la masse) : « cet étage sélectionne la station voulue
-      parmi toutes celles reçues par l'antenne. » Que peut-on lui répondre ?
+      Un oscilloscope affiche, juste AVANT l'étage qui retire la composante
+      continue $U_0$ (un condensateur en série sur le fil de signal, suivi
+      d'un conducteur ohmique vers la masse), un signal qui oscille entre
+      $3\ \text{V}$ et $9\ \text{V}$ — entièrement au-dessus de zéro, la
+      composante continue valant $U_0 = 6\ \text{V}$. À quoi doit
+      ressembler le signal à la SORTIE de cet étage ?
     type: mcq
     choices:
       - id: A
         text: >-
-          Non : cet étage élimine la composante continue $U_0$ laissée par
-          le détecteur de crête.
+          Une oscillation de même forme, mais entre $-3\ \text{V}$ et
+          $+3\ \text{V}$, symétrique autour de zéro.
         correct: true
       - id: B
         text: >-
-          Oui : un condensateur en série bloque les fréquences des autres
-          stations, y compris celles déjà captées par l'antenne.
+          Une oscillation de même forme, encore entre $3\ \text{V}$ et
+          $9\ \text{V}$ : cet étage ne change pas l'allure du signal.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.etage-reception-role-confondu
         feedback: >
-          À ce stade de la chaîne, une seule porteuse a déjà été
-          sélectionnée par le circuit accordé et démodulée : il n'y a plus
-          d'autres stations à bloquer ici. Le condensateur en série bloque
-          seulement la composante continue $U_0$, pas des fréquences
-          porteuses concurrentes.
+          C'est l'ALLURE (la forme du signal, ses variations) qui ne change
+          pas — pas sa POSITION verticale. Un condensateur en série bloque
+          tout courant continu en régime permanent : il retire exactement
+          $U_0=6\ \text{V}$, ce qui décale toute la courbe vers le bas,
+          jusqu'à osciller autour de zéro.
       - id: C
         text: >-
-          Non : cet étage amplifie plutôt le signal avant qu'il n'atteigne le
-          haut-parleur.
+          Une courbe qui reste positive, avec des pics arrondis suivant
+          l'enveloppe du signal reçu.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.etage-reception-role-confondu
         feedback: >
-          Un condensateur en série et une résistance vers la masse ne sont
-          pas des composants actifs : ils ne fournissent aucune énergie
-          supplémentaire au signal. L'amplification est un étage distinct,
-          placé après celui-ci.
+          Cette forme (qui ne descend jamais sous zéro) est celle que
+          produit le DÉTECTEUR DE CRÊTE, un étage plus en amont — pas celui
+          qui retire $U_0$. Ici le signal d'entrée est déjà une sinusoïde
+          simple, $U_0+s_m(t)$ : cet étage ne fait que la recentrer sur
+          zéro, il ne la redresse pas une seconde fois.
       - id: D
         text: >-
-          Non : cet étage élimine plutôt la porteuse, et non la composante
-          continue.
+          Une oscillation rapide, à la fréquence de la porteuse, inchangée
+          par rapport au signal capté par l'antenne.
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.etage-reception-role-confondu
         feedback: >
-          La porteuse a déjà disparu à ce stade : c'est le détecteur de
-          crête, en amont, qui l'a effacée en retraçant l'enveloppe
-          $U_0+s_m(t)$. Ce qui reste à retirer ici, c'est $U_0$, pas une
-          oscillation rapide qui n'existe plus dans le signal.
+          La porteuse a déjà disparu bien avant cet étage : c'est le
+          détecteur de crête qui l'a effacée en retraçant l'enveloppe
+          $U_0+s_m(t)$. Cet étage-ci ne reçoit plus aucune trace de la
+          porteuse ; il ne fait que retirer $U_0$ de ce qu'il reçoit.
     correct_feedback: >
-      La sélection de la station est déjà faite, en amont, par le circuit
-      accordé. Cet étage-ci, placé après la démodulation, ne fait
-      qu'éliminer $U_0$ pour ne garder que $s_m(t)$.
+      Un condensateur en série bloque toute composante continue en régime
+      permanent : il retire $U_0=6\ \text{V}$ sans changer la forme du
+      signal, qui oscille alors symétriquement autour de zéro, entre
+      $-3\ \text{V}$ et $+3\ \text{V}$.
     solution: |
-      La chaîne de réception attribue un rôle et un seul à chaque étage :
-      circuit accordé → sélection ; détecteur de crête → démodulation
-      (enveloppe $U_0+s_m(t)$) ; condensateur en série + résistance vers la
-      masse → élimination de $U_0$ ; amplificateur → amplification. L'étage
-      décrit ici, placé après le détecteur de crête, ne peut donc pas
-      sélectionner une station : cette étape est déjà terminée, en amont,
-      avant même la démodulation.
+      Le signal reçu en entrée de cet étage, $U_0+s_m(t)$, oscille entre
+      $3\ \text{V}$ et $9\ \text{V}$ : sa valeur moyenne, $U_0=6\ \text{V}$,
+      est la composante continue laissée par le détecteur de crête. Un
+      condensateur en régime permanent ne laisse passer aucun courant
+      continu : monté en série, il bloque exactement cette valeur moyenne,
+      sans toucher à l'amplitude des variations. Le signal de sortie,
+      $s_m(t)$ seul, a donc la MÊME forme et la même amplitude
+      ($\pm3\ \text{V}$ autour de sa valeur moyenne), mais recentrée sur
+      zéro : il oscille entre $-3\ \text{V}$ et $+3\ \text{V}$.
+
+      Trois confusions à écarter, chacune empruntant la forme d'un AUTRE
+      étage de la chaîne : garder $U_0$ (rien ne change), c'est ignorer que
+      cet étage sert précisément à le retirer ; l'enveloppe redressée qui ne
+      descend jamais sous zéro, c'est la sortie du détecteur de crête, un
+      étage plus en amont ; la porteuse inchangée, c'est le signal capté par
+      l'antenne, avant toute démodulation.
 
   - id: OEM-32
     rung: "R2"
@@ -2077,9 +2090,10 @@ items:
         correct: false
         misconception: mc.physics.pc_ondes_em_modulation.spectre-raies-position
         feedback: >
-          La porteuse est la raie CENTRALE, la plus grande des trois
-          hauteurs (celle de hauteur $U_0$ ou $A$) : c'est
-          $1\,200\ \text{kHz}$, pas l'une des deux raies latérales.
+          La porteuse est la raie CENTRALE, celle qui est équidistante des
+          deux autres ($1\,200-1\,193=1\,207-1\,200=7\ \text{kHz}$) : c'est
+          $1\,200\ \text{kHz}$, pas l'une des deux raies latérales — le
+          spectre ne donne ici que des fréquences, pas de hauteurs.
       - id: B
         text: "$f_p=1\\,200\\ \\text{kHz}$, $f_s=7\\ \\text{kHz}$"
         correct: true

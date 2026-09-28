@@ -692,6 +692,12 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "DERIVFCT-41": [
       "mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees"
     ],
+    "DERIVFCT-42": [
+      "mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees"
+    ],
+    "DERIVFCT-43": [
+      "mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees"
+    ],
     "DERIVFCT-5": [
       "mc.math.maths_derivabilite_etude_fonctions.derivee-nulle-suffit-extremum"
     ],
@@ -2106,12 +2112,16 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_complexes_trigo.ensemble-points-locus-confondu"
     ],
     "NBCOMPLEX2-46": [
+      "mc.math.maths_complexes_trigo.angle-moitie-perdu",
+      "mc.math.maths_complexes_trigo.definition-exponentielle-erronee",
       "mc.math.maths_complexes_trigo.demi-angle-coefficient-negatif-mal-corrige"
     ],
     "NBCOMPLEX2-47": [
+      "mc.math.maths_complexes_trigo.angle-moitie-perdu",
       "mc.math.maths_complexes_trigo.demi-angle-coefficient-negatif-mal-corrige"
     ],
     "NBCOMPLEX2-48": [
+      "mc.math.maths_complexes_trigo.angle-moitie-perdu",
       "mc.math.maths_complexes_trigo.demi-angle-coefficient-negatif-mal-corrige"
     ],
     "NBCOMPLEX2-5": [
@@ -2904,13 +2914,28 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "AE-43": [
       "mc.physics.pc_energie.diagramme-largeur-totale-confondue-amplitude",
-      "mc.physics.pc_energie.energie-oublie-facteur-demi",
-      "mc.physics.pc_energie.torsion-ec-formule-translation"
+      "mc.physics.pc_energie.ec-mauvaise-dependance-en-v",
+      "mc.physics.pc_energie.energie-oublie-facteur-demi"
     ],
     "AE-44": [
       "mc.physics.pc_energie.diagramme-largeur-totale-confondue-amplitude",
       "mc.physics.pc_energie.epe-depend-masse-ou-vitesse",
       "mc.physics.pc_energie.epe-force-rappel-traitee-constante"
+    ],
+    "AE-45": [
+      "mc.physics.pc_energie.diagramme-graduation-imprimee-confondue-maille",
+      "mc.physics.pc_energie.diagramme-largeur-totale-confondue-amplitude",
+      "mc.physics.pc_energie.torsion-moment-traite-constant"
+    ],
+    "AE-46": [
+      "mc.physics.pc_energie.diagramme-graduation-imprimee-confondue-maille",
+      "mc.physics.pc_energie.diagramme-largeur-totale-confondue-amplitude",
+      "mc.physics.pc_energie.torsion-ep-depend-inertie-j"
+    ],
+    "AE-47": [
+      "mc.physics.pc_energie.diagramme-graduation-imprimee-confondue-maille",
+      "mc.physics.pc_energie.diagramme-largeur-totale-confondue-amplitude",
+      "mc.physics.pc_energie.epe-confondue-avec-epp"
     ],
     "AE-6": [
       "mc.physics.pc_energie.confond-ec-et-em",
@@ -3263,10 +3288,19 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises"
     ],
     "CMP-48": [
+      "mc.physics.pc_chute_plans.kepler3-donnees-non-preparees",
+      "mc.physics.pc_chute_plans.kepler3-exposants-inverses"
+    ],
+    "CMP-49": [
+      "mc.physics.pc_chute_plans.kepler3-donnees-non-preparees",
       "mc.physics.pc_chute_plans.kepler3-exposants-inverses"
     ],
     "CMP-5": [
       "mc.physics.pc_chute_plans.portee-fleche-et-angle-mal-maitrises"
+    ],
+    "CMP-50": [
+      "mc.physics.pc_chute_plans.kepler3-donnees-non-preparees",
+      "mc.physics.pc_chute_plans.kepler3-exposants-inverses"
     ],
     "CMP-6": [
       "mc.physics.pc_chute_plans.force-de-lorentz-mal-comprise"
@@ -4440,18 +4474,22 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre"
     ],
     "LDN-39": [
-      "mc.physics.pc_lois_newton.erreur-cinematique-uniforme"
+      "mc.physics.pc_lois_newton.erreur-cinematique-uniforme",
+      "mc.physics.pc_lois_newton.pente-de-graphe-mal-lue"
     ],
     "LDN-4": [
       "mc.physics.pc_lois_newton.action-reaction-inegale-ou-conditionnelle",
       "mc.physics.pc_lois_newton.action-reaction-meme-corps"
     ],
     "LDN-40": [
-      "mc.physics.pc_lois_newton.erreur-cinematique-uniforme"
+      "mc.physics.pc_lois_newton.pente-de-graphe-mal-lue"
     ],
     "LDN-41": [
       "mc.physics.pc_lois_newton.projection-plan-incline",
       "mc.physics.pc_lois_newton.role-normale-mal-compris"
+    ],
+    "LDN-42": [
+      "mc.physics.pc_lois_newton.pente-de-graphe-mal-lue"
     ],
     "LDN-5": [
       "mc.physics.pc_lois_newton.chute-depend-masse",

@@ -50,12 +50,19 @@ misconceptions:
       L'élève garde l'addition au lieu de la transformer (e^{a+b}=e^a+e^b), ou
       croit que multiplier deux exponentielles multiplie leurs exposants
       (e^a x e^b = e^{a x b}). La règle « somme d'exposants -> produit » est mal
-      encodee.
+      encodee. Cas particulier avec a=b (donc avec un exposant multiplié par un
+      entier k plutôt qu'une somme de deux exposants distincts) : e^{2x} lu
+      comme 2·e^x (puisque e^{2x}=e^{x+x}=e^x+e^x=2e^x sous cette même erreur),
+      ou plus généralement e^{kx} confondu avec k·e^x — le facteur k de
+      l'exposant traité comme un facteur multiplicatif de l'exponentielle
+      elle-même.
     contradicts_principle: >-
       Propriété fondatrice : e^{a+b} = e^a x e^b — une SOMME d'exposants devient
       un PRODUIT d'exponentielles. exp ne se distribue pas sur une somme
       (e^{a+b} != e^a+e^b), et un produit d'exponentielles ADDITIONNE les
-      exposants (e^a x e^b = e^{a+b}, pas e^{a x b}).
+      exposants (e^a x e^b = e^{a+b}, pas e^{a x b}). Avec a=b=x, ceci donne
+      e^{2x}=(e^x)^2, un CARRE de e^x, jamais 2e^x : plus généralement,
+      e^{kx}=(e^x)^k, une PUISSANCE k-ième, jamais k fois e^x.
   - id: mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur
     label: "e^{-a} mal gere ; différence lue comme quotient ; signe d'exposant"
     description: >-
@@ -2440,9 +2447,12 @@ items:
         misconception: mc.math.maths_fonction_exponentielle.somme-produit-confondus
         feedback: >
           $e^{2x}$ est $(e^x)^2$, un carré — pas $2e^x$, un double. En
-          remplaçant $e^{2x}$ par $2e^x$, l'équation en $t$ devient
-          linéaire au lieu de quadratique, et l'une des deux racines
-          réelles disparaît en route.
+          remplaçant $e^{2x}$ par $2e^x$, l'équation entière devient
+          $2e^x-e^x-20=0$, soit $e^x=20$ : ce n'est plus une équation
+          quadratique en $t=e^x$ du tout, juste une équation linéaire, qui
+          se résout directement en $x=\ln20$ — c'est l'équation elle-même
+          qui a changé de nature sous cette confusion, pas une racine qui
+          se serait perdue en cours de résolution.
     correct_feedback: >
       Exactement : en posant $t=e^x$ ($t>0$), l'équation devient
       $t^2-t-20=0$, de racines $5$ et $-4$. Seule $t=5$ est positive :
@@ -2548,3 +2558,14 @@ coverage_summary:
     `exp-valeur-negative-impossible` de 3 à 4 — cette dernière quitte donc,
     elle aussi, le lot à marge nulle. Aucun modèle neuf ; R7 passe de 5 à 6
     items sur le ramp.
+
+    WAVE F (audit §35/§36, DECISIONS-EN-ATTENTE.md, 2026-09-28) : sans effet
+    sur les comptes. Le distracteur D d'EXP-40 affirmait qu'en remplaçant
+    $e^{2x}$ par $2e^x$, « l'une des deux racines réelles disparaît » — faux :
+    cette substitution transforme l'équation de départ en $e^x=20$, qui
+    n'est plus quadratique en $t=e^x$ DU TOUT (pas de racine qui se perd,
+    une équation d'une autre nature). Feedback corrigé. La description de
+    `somme-produit-confondus` gagne explicitement la forme $e^{kx}\neq
+    k\cdot e^x$ (cas $a=b$ de $e^{a+b}\neq e^a+e^b$), pour que ce
+    distracteur — et tout futur item du même type — s'y rattache sans
+    ambiguïté.

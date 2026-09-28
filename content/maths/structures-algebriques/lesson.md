@@ -159,8 +159,6 @@ $$(x' \star x) \star x'' = e \star x''$$
 
 Et $e$ est neutre, donc $e \star x'' = x''$. En suivant la chaîne de ces égalités, $x' = x''$ : les deux symétriques supposés sont en réalité le même élément. Remarque où l'associativité intervient — à la troisième étape, quand on redéplace les parenthèses : sans elle, cette chaîne ne tiendrait pas. C'est pour cette raison que "le" symétrique de $x$ n'a de sens, avec l'article défini, que lorsque la loi est associative.
 
-[[checkpoint:cp-r2-neutre-symetrique]]
-
 ### Un exemple donné par une formule, pas par une table
 
 Tout ce qui précède se lisait sur une table finie. Beaucoup de sujets nationaux donnent la loi par une **formule**, sur un ensemble infini — il n'y a plus de table à consulter, seulement les mêmes quatre définitions du chapitre, appliquées à un calcul littéral.
@@ -185,7 +183,15 @@ $$x\ast(y\ast z) = x+(y+z+yz)+x(y+z+yz) = x+y+z+yz+xy+xz+xyz$$
 
 Les deux membres sont exactement la même somme de sept termes : $\ast$ est associative sur $E$.
 
-**Le raccourci de l'expert, une fois l'expansion vue.** La stabilité a révélé une identité qu'on peut réutiliser : $x\ast y+1=(x+1)(y+1)$. Pose $\varphi(x)=x+1$ ; cette identité dit que $\varphi(x\ast y)=\varphi(x)\times\varphi(y)$ — combiner par $\ast$, c'est multiplier les images par $\varphi$. L'associativité de $\ast$ se relit alors sans développer un seul terme : $\varphi\big((x\ast y)\ast z\big) = \varphi(x\ast y)\times\varphi(z) = \varphi(x)\varphi(y)\varphi(z)$, et le même calcul à partir de $\varphi\big(x\ast(y\ast z)\big)$ donne le même produit $\varphi(x)\varphi(y)\varphi(z)$ — symétrique en $x,y,z$ par l'associativité (et la commutativité) de $\times$ sur $\mathbb{R}$, donc acquis d'un coup, dans les deux ordres de parenthésage à la fois.
+**Le raccourci de l'expert, une fois l'expansion vue.** La stabilité a révélé une identité qu'on peut réutiliser : $x\ast y+1=(x+1)(y+1)$. Pose $\varphi(x)=x+1$ ; cette identité dit que $\varphi(x\ast y)=\varphi(x)\times\varphi(y)$ — combiner par $\ast$, c'est multiplier les images par $\varphi$. L'associativité de $\ast$ se relit alors sans développer un seul terme, en appliquant cette identité deux fois, une transformation à la fois :
+
+$$\varphi\big((x\ast y)\ast z\big) = \varphi(x\ast y)\times\varphi(z)$$
+
+$$\varphi(x\ast y)\times\varphi(z) = \big(\varphi(x)\varphi(y)\big)\times\varphi(z)$$
+
+$$\big(\varphi(x)\varphi(y)\big)\times\varphi(z) = \varphi(x)\varphi(y)\varphi(z)$$
+
+et le même calcul à partir de $\varphi\big(x\ast(y\ast z)\big)$ donne le même produit $\varphi(x)\varphi(y)\varphi(z)$ — symétrique en $x,y,z$ par l'associativité (et la commutativité) de $\times$ sur $\mathbb{R}$, donc acquis d'un coup, dans les deux ordres de parenthésage à la fois.
 
 **L'élément neutre, et le piège à éviter.** On cherche $e$ tel que $x\ast e=x$ **pour tout** $x$ de $E$ :
 
@@ -198,6 +204,8 @@ $$x+e+xe = x \iff e+xe=0 \iff e(1+x)=0$$
 $$x+x'+xx' = 0 \iff x'(1+x) = -x \iff x' = \frac{-x}{1+x}$$
 
 (la division est légitime car $1+x\neq0$ sur $E$). Il reste à vérifier que $x'$ ne s'échappe pas de $E$ : $x'=-1 \iff -x=-(1+x) \iff 0=-1$, impossible — donc $x'\neq-1$ pour tout $x$ de $E$, et le symétrique existe bien dans $E$.
+
+[[checkpoint:cp-r2-neutre-symetrique]]
 
 ---
 

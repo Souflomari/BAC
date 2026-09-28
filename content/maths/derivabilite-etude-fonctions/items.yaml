@@ -1306,8 +1306,13 @@ items:
       Mêmes termes, mais somme contre différence, et un carré au dénominateur
       d'un seul côté.
 
+  # Retagué de "R6" à "R4b" le 2026-09-28 (WAVE F, §35/§36 de
+  # DECISIONS-EN-ATTENTE.md) : "R6" n'existe dans aucun `## ` de lesson.md
+  # (la leçon s'arrête à R5b) — un rung fantôme. Le contenu de l'item,
+  # Rolle appliqué à $f'$ pour conclure sur $f''$, est exactement le geste
+  # de R4b (« Rolle et les accroissements finis », lesson.md:320-364).
   - id: DERIVFCT-23
-    rung: "R6"
+    rung: "R4b"
     difficulty_level: 4
     skill_code: maths_derivabilite_etude_fonctions
     tags: [rolle, derivation, operations]
@@ -2494,12 +2499,24 @@ items:
   # inversé (trinome-signe-mal-lu, déjà porté par DERIVFCT-33 pour ce même
   # type d'erreur). DERIVFCT-41 paye le GAP-B (inverse) « Rolle / TAF tested
   # but deliberately not taught », maintenant que R4b existe (lesson.md:320-364,
-  # livré par le content-author le même jour) : il teste l'inégalité des
-  # accroissements finis elle-même (« $|f'|\le k$ sur $I$ donne quelle
-  # inégalité ? »), une face distincte de DERIVFCT-23 (Rolle appliqué à $f'$
-  # pour obtenir $f''(c)=0$) et de DERIVFCT-29 (conditions supplémentaires
-  # pour l'inflexion, avec Rolle en distracteur) — aucun des deux n'a jamais
-  # testé la FORME de l'IAF elle-même.
+  # livré par le content-author le même jour) : il applique l'inégalité des
+  # accroissements finis à un cas concret, une face distincte de DERIVFCT-23
+  # (Rolle appliqué à $f'$ pour obtenir $f''(c)=0$) et de DERIVFCT-29
+  # (conditions supplémentaires pour l'inflexion, avec Rolle en distracteur)
+  # — aucun des deux n'a jamais testé l'IAF elle-même.
+  # WAVE F, relecture du 2026-09-28 (§35/§36 de DECISIONS-EN-ATTENTE.md) :
+  # l'item demandait à l'origine de choisir une FORME d'inégalité abstraite
+  # ($|f(b)-f(a)|\le k$, $=k(b-a)$, $\le k|b-a|$, $\ge k|b-a|$) — un format
+  # que le bac ne pose jamais (l'IAF y sert toujours à borner un ÉCART
+  # NUMÉRIQUE, pas à faire choisir sa forme littérale) ; et le distracteur A
+  # se réfutait par « prends $a=b$ », qui ne réfute rien (le membre de
+  # gauche vaut $0\le k$, ce qui reste vrai). Reformulé en valeur calculée :
+  # $f$ dérivable sur $\mathbb{R}$, $|f'|\le3$, quelle borne pour
+  # $|f(5)-f(1)|$ ? Les trois distracteurs reprennent les erreurs
+  # originales (facteur $|b-a|$ oublié, borne sur $f'$ oubliée, égalité au
+  # lieu d'une majoration), chacun réfuté par un contre-exemple concret
+  # ($f(x)=3x$ ou une fonction constante), pas par un cas dégénéré qui ne
+  # tranche rien.
   - id: DERIVFCT-40
     rung: "R5"
     difficulty_level: 4
@@ -2582,54 +2599,222 @@ items:
     tags: [rolle, taf, inegalite-accroissements-finis]
     primary_misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
     stem: >
-      Soit $f$ une fonction dérivable sur un intervalle $I$, telle que
-      $|f'(x)| \leq k$ pour tout $x$ de $I$ (avec $k \geq 0$). Que peut-on
-      en déduire, par l'inégalité des accroissements finis, pour tous
-      $a,b$ de $I$ ?
+      Soit $f$ une fonction dérivable sur $\mathbb{R}$, telle que
+      $|f'(x)| \leq 3$ pour tout $x$ réel. Que peut-on affirmer de
+      $|f(5)-f(1)|$ ?
     type: mcq
     choices:
       - id: A
-        text: "$|f(b)-f(a)| \\leq k$"
+        text: "$|f(5)-f(1)| \\leq 3$"
         correct: false
         misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
         feedback: >
-          Il manque le facteur $|b-a|$ : la borne doit tenir compte de
-          l'écart entre $a$ et $b$, pas rester une constante fixe. Prends
-          $a=b$ : le membre de gauche vaut alors $0$, ce qu'une borne
-          constante $k>0$ ne reflète pas.
+          Il manque le facteur $|5-1|=4$ : le TAF donne
+          $f(5)-f(1)=f'(c)(5-1)$ pour un certain $c$, donc
+          $|f(5)-f(1)|=|f'(c)|\times4$, pas $|f'(c)|$ seul. Prends
+          $f(x)=3x$ (qui vérifie $|f'|=3\leq3$ partout) :
+          $|f(5)-f(1)|=|15-3|=12$, largement au-dessus de $3$.
       - id: B
-        text: "$f(b)-f(a) = k(b-a)$"
+        text: "$|f(5)-f(1)| \\leq 4$"
         correct: false
         misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
         feedback: >
-          L'inégalité des accroissements finis ne donne pas une égalité
-          avec la constante $k$ elle-même : le TAF donne une égalité, mais
-          avec $f'(c)$ pour un certain $c$ dont la valeur reste inconnue,
-          pas avec $k$, qui n'est qu'une borne sur $|f'|$.
+          Il manque la borne sur $f'$ : $4$ n'est que l'écart $|5-1|$, sans
+          tenir compte de $|f'(c)|\leq3$. Reprends $f(x)=3x$ :
+          $|f(5)-f(1)|=12$, au-dessus de $4$ — c'est le PRODUIT $3\times4$
+          qui borne l'écart, pas l'un des deux facteurs seul.
       - id: C
-        text: "$|f(b)-f(a)| \\leq k\\,|b-a|$"
+        text: "$|f(5)-f(1)| \\leq 12$"
         correct: true
       - id: D
-        text: "$|f(b)-f(a)| \\geq k\\,|b-a|$"
+        text: "$|f(5)-f(1)| = 12$"
         correct: false
         misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
         feedback: >
-          Le sens de l'inégalité est inversé : une borne sur la vitesse de
-          variation ($|f'|\leq k$) majore la variation totale, elle ne la
-          minore pas — c'est $\leq$, pas $\geq$.
+          L'inégalité des accroissements finis donne une borne SUPÉRIEURE,
+          pas une valeur exacte : rien ne garantit que $|f'(c)|$ atteigne
+          $3$ pour le $c$ que fournit le théorème. Prends $f$ constante
+          (par exemple $f(x)=7$) : elle vérifie $|f'|=0\leq3$, et
+          $|f(5)-f(1)|=0$, pas $12$.
     correct_feedback: >
-      Exact : par le TAF, $f(b)-f(a)=f'(c)(b-a)$ pour un certain $c$ entre
-      $a$ et $b$ ; comme $|f'(c)|\leq k$, on obtient
-      $|f(b)-f(a)|=|f'(c)|\,|b-a|\leq k\,|b-a|$.
+      Exact : par le TAF, $f(5)-f(1)=f'(c)(5-1)$ pour un certain $c$ entre
+      $1$ et $5$ ; comme $|f'(c)|\leq3$, on obtient
+      $|f(5)-f(1)|=|f'(c)|\times4\leq3\times4=12$.
     solution: |
       D'après le théorème des accroissements finis, il existe $c$ entre
-      $a$ et $b$ tel que $f(b)-f(a)=f'(c)(b-a)$. En passant aux valeurs
-      absolues :
-      $$|f(b)-f(a)| = |f'(c)|\,|b-a|$$
-      Comme $|f'(c)|\leq k$ (l'hypothèse vaut pour tout $x$ de $I$, donc en
-      particulier pour ce $c$) et $|b-a|\geq0$, multiplier l'inégalité par
-      $|b-a|$ ne change pas son sens :
-      $$|f(b)-f(a)| \leq k\,|b-a|$$
+      $1$ et $5$ tel que $f(5)-f(1)=f'(c)(5-1)=4f'(c)$. En passant aux
+      valeurs absolues :
+      $$|f(5)-f(1)| = 4\,|f'(c)|$$
+      Comme $|f'(c)|\leq3$ (l'hypothèse vaut pour tout $x$ réel, donc en
+      particulier pour ce $c$) :
+      $$|f(5)-f(1)| \leq 4\times3 = 12$$
+
+      **Pourquoi pas les trois autres.** $3$ oublie de multiplier par
+      l'écart $|5-1|=4$ ; $4$ oublie de multiplier par la borne sur $f'$ ;
+      $12$ en ÉGALITÉ suppose que $f'(c)$ atteint exactement $3$, ce que
+      rien ne garantit — une fonction constante, par exemple, vérifie
+      l'hypothèse et donne $|f(5)-f(1)|=0$.
+
+  # Ajoutés le 2026-09-28 (WAVE F, §35/§36 de DECISIONS-EN-ATTENTE.md) : R4b
+  # ne portait qu'UN item (DERIVFCT-41, plus DERIVFCT-23 retagué depuis le
+  # rung fantôme R6 dans cette même vague) pour un sous-rung au programme
+  # SM, cité par l'extrait d'examen de CETTE leçon et par la leçon de
+  # suites — deux items neufs pour l'étoffer.
+  # DERIVFCT-42 applique Rolle lui-même, sous forme de vérification
+  # d'hypothèses sur quatre situations : une seule les réunit toutes trois
+  # (continuité, dérivabilité sur l'ouvert, égalité aux bornes), les trois
+  # autres échouent chacune sur UNE hypothèse différente. Le distracteur B
+  # reprend $|x|$ sur $[-1,1]$, le contre-exemple même de lesson.md:332 (la
+  # dérivabilité manque en un point intérieur) — un contre-exemple déjà
+  # enseigné, utilisé ici comme distracteur pour vérifier qu'il a été
+  # retenu, pas comme un calcul neuf à pré-résoudre.
+  # DERIVFCT-43 applique l'IAF à l'écart $|u_{n+1}-\alpha|$ d'une suite
+  # $u_{n+1}=f(u_n)$ par $k|u_n-\alpha|$ — exactement l'application que
+  # lesson.md:395 NOMME sans la travailler avec des nombres
+  # (« cette même inégalité... reparaît au chapitre sur les suites »).
+  # $k=\frac12$ choisi frais (ni le $k=1$ de l'exemple $\sin$, ni le
+  # $k=\frac12$ de l'exemple $\ln$ de lesson.md:385, qui porte sur des
+  # nombres $a,b$ fixes, pas sur une récurrence).
+  - id: DERIVFCT-42
+    rung: "R4b"
+    difficulty_level: 3
+    habilete: application_non_explicite
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [rolle, hypotheses, continuite, derivabilite]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+    stem: >
+      Pour laquelle de ces quatre situations le théorème de Rolle
+      permet-il de conclure à l'existence de $c$, dans l'intervalle
+      ouvert indiqué, tel que $g'(c) = 0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$g(x) = x^{2}-2x$ sur $[0\\,;2]$"
+        correct: true
+      - id: B
+        text: "$g(x) = |x|$ sur $[-1\\,;1]$"
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: >
+          $g(-1)=g(1)=1$, l'égalité aux bornes tient — mais $g$ n'est pas
+          dérivable en $0$, qui appartient à l'intervalle OUVERT
+          $]-1\,;1[$ : c'est un point anguleux, deux demi-tangentes de
+          pentes différentes ($-1$ et $1$). Rolle exige la dérivabilité
+          sur tout l'intervalle ouvert, pas seulement l'égalité des
+          hauteurs ; ici la conclusion échoue d'ailleurs vraiment,
+          $g'$ ne s'annulant nulle part.
+      - id: C
+        text: "$g(x) = x^{2}$ sur $[0\\,;2]$"
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: >
+          $g$ est continue et dérivable partout, mais $g(0)=0$ et
+          $g(2)=4$ : les deux bornes ne donnent pas la même valeur.
+          Rolle exige $g(a)=g(b)$ — une hauteur de départ qui n'est pas
+          retrouvée à l'arrivée ne permet aucune conclusion sur $g'$.
+      - id: D
+        text: "$g(x) = \\dfrac1x$ sur $[-1\\,;1]$"
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: >
+          $g$ n'est même pas définie en $0$, qui appartient à
+          $[-1\,;1]$ : elle n'est donc pas continue sur l'intervalle
+          FERMÉ tout entier, la première hypothèse de Rolle. Une fonction
+          qui explose au milieu de l'intervalle ne peut fournir aucune
+          garantie sur sa dérivée.
+    correct_feedback: >
+      Exact : $g(x)=x^2-2x$ est continue et dérivable sur $\mathbb{R}$
+      (polynôme), et $g(0)=0=g(2)$ : les trois hypothèses de Rolle sont
+      réunies sur $[0\,;2]$, donc il existe $c\in\,]0\,;2[$ tel que
+      $g'(c)=0$ (ici $g'(x)=2x-2$, qui s'annule bien en $c=1\in\,]0\,;2[$).
+    solution: |
+      **Vérifier les trois hypothèses de Rolle, une par une, pour chaque
+      candidat.**
+
+      $g(x)=x^2-2x$ sur $[0\,;2]$ : continue et dérivable sur
+      $\mathbb{R}$ (polynôme) ; $g(0)=0$ et $g(2)=4-4=0$, les bornes
+      coïncident. Les trois hypothèses tiennent : Rolle s'applique, et
+      $g'(x)=2x-2$ s'annule effectivement en $c=1\in\,]0\,;2[$.
+
+      **Pourquoi les trois autres échouent, chacune sur une hypothèse
+      différente.** $|x|$ sur $[-1\,;1]$ : bornes égales, mais pas
+      dérivable en $0$ (intérieur de l'intervalle). $x^2$ sur $[0\,;2]$ :
+      continue et dérivable, mais $g(0)\neq g(2)$. $1/x$ sur $[-1\,;1]$ :
+      pas même définie en $0$, donc pas continue sur le fermé. Les trois
+      hypothèses de Rolle sont INDÉPENDANTES : chacune peut manquer sans
+      que les deux autres suffisent à la remplacer.
+
+  - id: DERIVFCT-43
+    rung: "R4b"
+    difficulty_level: 4
+    habilete: synthese
+    skill_code: maths_derivabilite_etude_fonctions
+    tags: [taf, suite, contraction, inegalite-accroissements-finis]
+    primary_misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+    stem: >
+      Soit $f$ une fonction dérivable sur $\mathbb{R}$ telle que
+      $|f'(x)| \leq \dfrac12$ pour tout $x$ réel, et $\alpha$ un réel
+      vérifiant $f(\alpha)=\alpha$. On définit une suite $(u_n)$ par
+      $u_{n+1}=f(u_n)$. Par l'inégalité des accroissements finis, que
+      peut-on affirmer sur $|u_{n+1}-\alpha|$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$|u_{n+1}-\\alpha| \\leq \\dfrac12\\,|u_n-\\alpha|$"
+        correct: true
+      - id: B
+        text: "$|u_{n+1}-\\alpha| \\leq \\dfrac12$"
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: >
+          Il manque le facteur $|u_n-\alpha|$ : l'IAF donne
+          $|f(u_n)-f(\alpha)|\leq\frac12\,|u_n-\alpha|$, une borne qui
+          dépend de l'écart précédent, pas une constante fixe. Si $u_n$
+          est déjà loin de $\alpha$, une borne constante $\frac12$ ne
+          suffirait pas.
+      - id: C
+        text: "$|u_{n+1}-\\alpha| = \\dfrac12\\,|u_n-\\alpha|$"
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: >
+          L'inégalité des accroissements finis donne une MAJORATION, pas
+          une égalité : $u_{n+1}-\alpha=f(u_n)-f(\alpha)=f'(c)(u_n-\alpha)$
+          pour un certain $c$ entre $u_n$ et $\alpha$, et seul
+          $|f'(c)|\leq\frac12$ est connu — rien ne garantit que $f'(c)$
+          atteigne exactement $\frac12$.
+      - id: D
+        text: "$|u_{n+1}-\\alpha| \\leq 2\\,|u_n-\\alpha|$"
+        correct: false
+        misconception: mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees
+        feedback: >
+          Le coefficient est inversé : $|f'|\leq\frac12$ donne un facteur
+          $\frac12$, pas son inverse $2$. Un facteur $\frac12$ RESSERRE
+          l'écart à chaque étape (c'est ce qui fait converger la suite
+          vers $\alpha$) ; un facteur $2$ l'éloignerait au contraire, ce
+          que l'hypothèse sur $f'$ interdit.
+    correct_feedback: >
+      Exact : $u_{n+1}-\alpha=f(u_n)-f(\alpha)$, et l'IAF entre $u_n$ et
+      $\alpha$ donne $|f(u_n)-f(\alpha)|\leq\frac12\,|u_n-\alpha|$, donc
+      $|u_{n+1}-\alpha|\leq\frac12\,|u_n-\alpha|$.
+    solution: |
+      **Ramener à une différence d'images.** Comme $f(\alpha)=\alpha$ :
+      $$u_{n+1}-\alpha = f(u_n)-\alpha = f(u_n)-f(\alpha)$$
+
+      **Appliquer l'IAF entre $u_n$ et $\alpha$.** $f$ est dérivable sur
+      $\mathbb{R}$ et $|f'|\leq\frac12$ partout, donc en particulier entre
+      ces deux points :
+      $$|f(u_n)-f(\alpha)| \leq \frac12\,|u_n-\alpha|$$
+
+      **Conclure.**
+      $$|u_{n+1}-\alpha| \leq \frac12\,|u_n-\alpha|$$
+
+      **Pourquoi pas les trois autres.** $\frac12$ seul oublie l'écart
+      $|u_n-\alpha|$ : la borne doit RESSERRER l'écart précédent, pas
+      rester une constante ; l'égalité suppose que $f'(c)$ atteint
+      exactement $\frac12$ ; et le facteur $2$ inverse le rôle du
+      coefficient — un facteur supérieur à $1$ éloignerait les termes de
+      $\alpha$ au lieu de les en rapprocher, contredisant l'hypothèse
+      $|f'|\leq\frac12<1$.
 
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-27, après DERIVFCT-30 à DERIVFCT-39 (dette d'examen,
@@ -2669,12 +2854,12 @@ coverage_summary:
     mc.math.maths_derivabilite_etude_fonctions.inflexion-ignore-domaine:                        { count: 3, items: [DERIVFCT-18, DERIVFCT-25, DERIVFCT-29] }
     mc.math.maths_derivabilite_etude_fonctions.domaine-fraction-mal-identifie:                  { count: 4, items: [DERIVFCT-21, DERIVFCT-25, DERIVFCT-26, DERIVFCT-27] }
     mc.math.maths_derivabilite_etude_fonctions.continuite-implique-derivabilite:                { count: 5, items: [DERIVFCT-2, DERIVFCT-25, DERIVFCT-26, DERIVFCT-27, DERIVFCT-38] }
-    mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees:            { count: 4, items: [DERIVFCT-23, DERIVFCT-24, DERIVFCT-29, DERIVFCT-41] }
+    mc.math.maths_derivabilite_etude_fonctions.rolle-taf-hypotheses-mal-identifiees:            { count: 6, items: [DERIVFCT-23, DERIVFCT-24, DERIVFCT-29, DERIVFCT-41, DERIVFCT-42, DERIVFCT-43] }
     mc.math.maths_derivabilite_etude_fonctions.asymptote-oblique-conclue-sans-second-calcul:    { count: 4, items: [DERIVFCT-30, DERIVFCT-32, DERIVFCT-33, DERIVFCT-40] }
     mc.math.maths_derivabilite_etude_fonctions.branche-immediate-oy-ox-mal-conclue:             { count: 3, items: [DERIVFCT-30, DERIVFCT-31, DERIVFCT-39] }
     mc.math.maths_derivabilite_etude_fonctions.limite-f-sur-x-confondue-avec-limite-de-f:       { count: 4, items: [DERIVFCT-31, DERIVFCT-32, DERIVFCT-39, DERIVFCT-40] }
     mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul:            { count: 3, items: [DERIVFCT-34, DERIVFCT-36, DERIVFCT-37] }
-  total_items: 41
+  total_items: 43
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2683,10 +2868,10 @@ coverage_summary:
     R2: 5
     R3: 3
     R4: 4
-    R4b: 1
+    R4b: 4
     R5: 11
     R5b: 4
-    R6: 5
+    R6: 4
   honest_state: >-
     Dix-sept misconceptions déclarées, toutes couvertes, aucune sous le
     plancher. Huit y siègent EXACTEMENT (3 items) — dont
@@ -2704,13 +2889,13 @@ coverage_summary:
     cette vague pointaient vers un barreau fantôme. Cette révision règle le
     sort des neuf qui appartenaient réellement à un contenu daté (branches
     infinies R5, lesson.md:351-381 ; réciproque R5b, lesson.md:427-541) en
-    les rattachant à leur rung réel ; les CINQ pré-existants qui restent
+    les rattachant à leur rung réel ; les CINQ pré-existants qui restaient
     (DERIVFCT-19, 20, 21, 23, 29 — étude complète, tangente sur extremum,
-    domaine + asymptote verticale, Rolle, inflexion + domaine) demeurent
-    listés sous `R6`, laissés tels quels par la présente vague (hors
-    périmètre) : leur rattachement à un rung réel — ou la création d'un
-    `## R6` dans `lesson.md` qui les justifie — reste un travail non fait,
-    à faire nommément, pas à présenter comme déjà résolu.
+    domaine + asymptote verticale, Rolle, inflexion + domaine) demeuraient
+    listés sous `R6`, laissés tels quels par cette vague (hors périmètre) —
+    DERIVFCT-23 en est sorti depuis (WAVE F, ci-dessous) ; les QUATRE autres
+    (DERIVFCT-19, 20, 21, 29) restent un travail non fait, à faire
+    nommément, pas à présenter comme déjà résolu.
 
     DERIVFCT-39 était le seul item neuf de la précédente révision.
 
@@ -2737,3 +2922,22 @@ coverage_summary:
     `ramp_coverage.R4b` : 0→1, un sous-rung tout neuf ; la misconception
     qu'il sert (`rolle-taf-hypotheses-mal-identifiees`) reste, elle,
     au-dessus du plancher (4, répartie sur R4b et R6).
+
+    WAVE F (audit §35/§36, DECISIONS-EN-ATTENTE.md, 2026-09-28) : trois
+    correctifs sur ce même sous-rung. (1) DERIVFCT-23 retagué de `R6`
+    (fantôme) à `R4b` (son contenu réel — Rolle appliqué à $f'$) ;
+    `ramp_coverage.R6` 5→4, `R4b` 1→2 avant les ajouts ci-dessous. (2)
+    DERIVFCT-41 demandait de choisir la FORME abstraite de l'IAF, un
+    format que le bac ne pose jamais, réfutée par un contre-exemple qui ne
+    réfutait rien (« prends $a=b$ ») ; reformulé en valeur calculée
+    ($f$ dérivable sur $\mathbb{R}$, $|f'|\le3$, borne pour
+    $|f(5)-f(1)|$), chaque distracteur désormais réfuté par un
+    contre-exemple concret ($f(x)=3x$ ou une constante). (3) Deux items
+    neufs pour étoffer un sous-rung à un seul item : DERIVFCT-42 (Rolle
+    lui-même, vérification d'hypothèses sur quatre candidats — le
+    distracteur $|x|$ sur $[-1,1]$ reprend le contre-exemple de
+    lesson.md:332) et DERIVFCT-43 (IAF sur l'écart $|u_{n+1}-\alpha|$
+    d'une suite $u_{n+1}=f(u_n)$, l'application que lesson.md:395 NOMME
+    sans la travailler). `rolle-taf-hypotheses-mal-identifiees` monte à
+    **6** (4→6) ; `ramp_coverage.R4b` atteint **4** (1→4, comptant le
+    retag) ; `R6` retombe à **4** (5→4) ; `total_items` 41→43.

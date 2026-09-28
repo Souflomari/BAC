@@ -226,6 +226,8 @@ Le tableau donne directement $\sigma(8\ \text{min}) = 0{,}34\ \text{S}\cdot\text
 
 $$t_{1/2} = 8\ \text{min}$$
 
+**Prends position avant de lire la suite :** pour lire $t_{1/2}$ sur la courbe $\sigma(t)$, faut-il chercher l'instant où $\sigma = \sigma_0/2$, ou une autre demi-hauteur ?
+
 **Le piège à éviter :** ne lis jamais $t_{1/2}$ à l'instant où $\sigma = \sigma_0/2$ — la moitié de la valeur initiale, et non de l'écart entre l'initiale et la finale. Ici, $\sigma_0/2 = 0{,}25\ \text{S}\cdot\text{m}^{-1}$, une valeur atteinte seulement vers $t \approx 18\ \text{min}$ sur ce même tableau — plus de deux fois trop tard. La bonne demi-hauteur se prend entre $\sigma_0$ et la valeur finale $\sigma_f$ (le palier : $\sigma_f = \sigma_0 + k\,x_{max} = 0{,}50 - 63\times5{,}0\times10^{-3} \approx 0{,}19\ \text{S}\cdot\text{m}^{-1}$ ici), jamais entre $\sigma_0$ et zéro : $\sigma(x_{max}/2) = (\sigma_0+\sigma_f)/2$, une propriété de toute fonction affine, quelle que soit par ailleurs l'allure — jamais affine, elle — de $\sigma$ en fonction du temps.
 
 [[figure:t-demi-sur-sigma]]
@@ -268,6 +270,7 @@ $$t_{1/2} : \quad \Delta P(t_{1/2}) = \frac{\Delta P_{max}}{2}$$
 - La vitesse volumique de réaction : $v = \dfrac{1}{V}\dfrac{dx}{dt}$, en $\text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$ ; graphiquement, la pente de la tangente à $x(t)$ divisée par $V$.
 - $v(t)$ diminue continûment au cours du temps : maximale au début, elle tend vers zéro quand la réaction s'achève — parce que les concentrations des réactifs chutent, donc les chocs efficaces se raréfient (lien avec le chapitre précédent).
 - Le temps de demi-réaction $t_{1/2}$ : l'instant où $x(t_{1/2}) = x_{max}/2$, lu graphiquement ; un repère de durée pratique pour comparer la rapidité de deux transformations.
+- Quand la grandeur suivie n'est pas $x$ mais une grandeur affine de $x$ (conductivité, pression…), $t_{1/2}$ se lit à la demi-hauteur **entre la valeur initiale et la valeur finale** — $\sigma = (\sigma_0+\sigma_f)/2$, ou $\Delta P = \Delta P_{max}/2$ — jamais à la moitié de la seule valeur initiale.
 
 ### Exercice de type bac
 

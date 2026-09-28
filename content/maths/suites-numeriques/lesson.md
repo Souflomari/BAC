@@ -214,13 +214,13 @@ $$\frac{u_{n+1}}{u_n} \geq 1 \iff u_{n+1} \geq u_n \quad \text{(croissante, si t
 
 Cette méthode du quotient est surtout pratique pour les suites géométriques à termes positifs, où $u_{n+1}/u_n = q$ est immédiat à calculer.
 
-**Exemple travaillé.** Soit $u_n = \dfrac{2^n}{n!}$ pour $n \geq 0$. Étudier sa monotonie.
+**Exemple travaillé.** Soit $u_n = \dfrac{2^n}{n!}$ pour $n \geq 0$ ($n! = 1\times2\times\cdots\times n$, la notation du chapitre Dénombrement). Étudier sa monotonie.
 
 **Ce qu'on cherche ici, et pourquoi ce geste :** $u_n$ est un quotient de deux quantités strictement positives ($2^n>0$ et $n!>0$), donc $u_n>0$ pour tout $n$ — exactement la condition qui autorise la variante du quotient plutôt que la différence.
 
 $$\frac{u_{n+1}}{u_n} = \frac{2^{n+1}/(n+1)!}{2^n/n!} = 2 \times \frac{n!}{(n+1)!} = \frac{2}{n+1}$$
 
-Pour $n \geq 1$, $n+1 \geq 2$, donc $\dfrac{2}{n+1} \leq 1$ : **$(u_n)$ décroît à partir du rang $1$.**
+Pour $n=0$, $\dfrac{u_1}{u_0} = \dfrac{2}{1} = 2 > 1$ : le premier pas **monte**. Ce n'est pas une exception à ignorer — c'est le quotient lui-même qui dit où commence la baisse, pas une supposition. Pour $n \geq 1$, $n+1 \geq 2$, donc $\dfrac{2}{n+1} \leq 1$ : **$(u_n)$ décroît à partir du rang $1$.**
 
 **Pourquoi il faut $u_n>0$ pour utiliser cette variante :** comparer $u_{n+1}/u_n$ à $1$ n'équivaut à comparer $u_{n+1}$ à $u_n$ que si multiplier l'inégalité $u_{n+1}/u_n \leq 1$ par $u_n$ conserve son sens — ce qui exige $u_n>0$. Si $u_n$ était négatif, cette multiplication inverserait l'inégalité, et $u_{n+1}/u_n \leq 1$ correspondrait alors à $u_{n+1} \geq u_n$ (croissante) : exactement l'inverse de ce qu'on veut lire.
 
@@ -485,7 +485,7 @@ $$|f(b)-f(a)| \le k\,|b-a|$$
 
 **L'image qui rend ça crédible :** $|f'|$ mesure à quel point $f$ « étire » les écarts, localement, en chaque point. Si cette dilatation locale ne dépasse jamais $k$ nulle part sur $I$, alors un écart entre deux points quelconques de $I$ ne peut pas, lui non plus, être dilaté de plus d'un facteur $k$ en passant par $f$ — même un chemin qui zigzague entre $a$ et $b$ ne peut pas s'éloigner plus vite, en moyenne, que sa pente maximale ne l'y autorise à chaque instant.
 
-Ce résultat est un corollaire du théorème des accroissements finis — un outil au programme Sciences Mathématiques, admis ici sans démonstration (c'est la démonstration qui est hors programme à ce niveau) ; il est hors programme en Sciences Expérimentales, où l'étude des suites reste calculatoire. Plusieurs sujets nationaux (filière SM) l'utilisent pour ce type de suite : on l'énonce donc ici, directement, pour savoir s'en servir correctement le jour où un sujet le demande. Retiens surtout la condition qui fait tout fonctionner : $k$ doit être **strictement inférieur à 1**, et l'inégalité $|f'|\le k$ doit être valable **sur tout un intervalle stable qui contient tous les $u_n$** — pas seulement vérifiée au point $\alpha$.
+Cette inégalité (l'IAF) est un corollaire du théorème des accroissements finis — démontrée à partir du TAF au chapitre sur Rolle et les accroissements finis, dans Dérivabilité —, un outil au programme Sciences Mathématiques, admis ici sans démonstration (c'est la démonstration qui est hors programme à ce niveau) ; elle est hors programme en Sciences Expérimentales, où l'étude des suites reste calculatoire. Plusieurs sujets nationaux (filière SM) l'utilisent pour ce type de suite : on l'énonce donc ici, directement, pour savoir s'en servir correctement le jour où un sujet le demande. Retiens surtout la condition qui fait tout fonctionner — pour l'usage qui suit, celui qui prouve une convergence : $k$ doit être **strictement inférieur à 1** ; l'IAF elle-même n'exige rien de tel, elle vaut pour n'importe quel $k\ge0$. Et l'inégalité $|f'|\le k$ doit être valable **sur tout un intervalle stable qui contient tous les $u_n$** — pas seulement vérifiée au point $\alpha$.
 
 ### Exemple travaillé
 

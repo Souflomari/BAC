@@ -1080,14 +1080,16 @@ items:
           moitié de la durée totale du suivi ne se soit écoulée.
       - id: D
         text: >-
-          $t_{1/2} = 20\ \text{min}$
+          $t_{1/2} = 16\ \text{min}$
         correct: false
         misconception: mc.physics.pc_suivi_temporel_vitesse.demi-reaction-mal-definie
         feedback: >-
-          $t_{1/2}$ se définit à partir de $\Delta P(t)$ (donc de $x(t)$),
-          pas à partir de la vitesse (la pente de $\Delta P(t)$) : ces
-          deux courbes n'atteignent pas « la moitié » de leur échelle au
-          même instant.
+          Ce résultat prend la ligne du MILIEU du tableau (la 4e sur les 7
+          lignes listées, $t=16\ \text{min}$) pour « la moitié », au lieu de
+          chercher la ligne où $\Delta P$ vaut la moitié de $\Delta
+          P_{max}$. Le RANG d'une ligne dans le tableau ne dit rien de la
+          valeur de $\Delta P$ qu'elle porte : il faut comparer des
+          valeurs de $\Delta P$, pas compter des lignes.
     correct_feedback: >
       $\Delta P_{max} = 12{,}0\ \text{kPa}$ (le palier) ; $\Delta
       P_{max}/2 = 6{,}0\ \text{kPa}$, atteint exactement à $t=8\

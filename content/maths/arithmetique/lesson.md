@@ -324,8 +324,6 @@ Un entier $n$ vérifie $11 \mid 3n$. Que peut-on en déduire sur $n$ ?
 
 $$11 \mid 3n \quad \text{et} \quad \mathrm{PGCD}(11,3)=1 \quad \Longrightarrow \quad 11 \mid n$$
 
-[[checkpoint:cp-r5-gauss]]
-
 ### Exemple travaillé : un inverse par Bézout, puis un système de deux congruences
 
 **Ce qu'on cherche et pourquoi ce geste :** une identité de Bézout qui vaut $1$, lue modulo $n$, donne directement un inverse de $a$ modulo $n$ — l'outil qui permet de résoudre $ax \equiv b \pmod{n}$ sans jamais « diviser » par $a$, une opération qui n'a pas de sens en général dans les congruences.
@@ -371,6 +369,16 @@ Une seule classe modulo $17\times6=102$ :
 $$x \equiv 73 \pmod{102}$$
 
 **Vérification dans les deux congruences de départ :** $73 = 17\times4+5$, donc $x\equiv5\pmod{17}$. ✓ Et $73=6\times12+1$, donc $x\equiv1\pmod{6}$. ✓
+
+### Exemple travaillé : deux limites de la méthode, en une ligne de calcul chacune
+
+**Ce qu'on cherche et pourquoi ce geste :** les deux exemples précédents se sont appuyés, sans le dire, sur deux conditions de coprimalité — l'inverse modulo $17$, et les modules $17$ et $6$ premiers entre eux. Voici, sur un cas concret plutôt que sur une règle à retenir, ce qui se casse quand ces conditions manquent.
+
+**« Diviser » une congruence par $6$ modulo $6$ est illégal :** $6\times2=12$ et $6\times4=24$, et $12\equiv24\equiv0\pmod6$, donc $6\times2\equiv6\times4\pmod6$ — pourtant $2\not\equiv4\pmod6$. Simplifier les deux membres par $6$ aurait transformé une congruence vraie en une congruence fausse : exactement ce que prédit l'absence d'inverse, poussée à l'extrême ($\mathrm{PGCD}(6,6)=6\neq1$, alors qu'à l'exemple précédent $\mathrm{PGCD}(5,17)=1$ garantissait l'inverse).
+
+**Des modules non premiers entre eux peuvent rendre un système sans aucune solution :** cherche $x$ tel que $x\equiv1\pmod4$ et $x\equiv2\pmod6$. La première congruence s'écrit $x=4k+1$, toujours **impair** ; la seconde s'écrit $x=6k+2$, toujours **pair**. Aucun entier n'est à la fois pair et impair : ce système n'a **aucune** solution. La méthode de combinaison de l'exemple précédent, elle, supposait les deux modules premiers entre eux ($\mathrm{PGCD}(17,6)=1$) ; ici $\mathrm{PGCD}(4,6)=2\neq1$, et elle ne s'applique tout simplement pas.
+
+[[checkpoint:cp-r5-gauss]]
 
 ---
 

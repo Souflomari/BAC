@@ -456,6 +456,8 @@ $$\tau = \frac{x_f}{x_{max}} = \frac{0{,}240\,n_0}{n_0} = 0{,}240$$
 
 Seulement $24\,\%$ d'avancement : bien moins que l'exemple 1, et c'est cohérent avec les deux $pK_A$ en présence — $4{,}8$ et $3{,}8$ ne diffèrent que d'une unité, deux acides de force assez proche, donc une réaction qui reste franchement partielle entre eux, sans favoriser massivement un camp.
 
+### Le pH du mélange, quand les quantités initiales sont égales
+
 *Ce qu'on cherche ici, et pourquoi ce geste :* les deux réactifs ayant été apportés en quantités égales $n_0$, et rien d'autre n'ayant été ajouté au mélange, le tableau d'avancement ci-dessus donne directement deux égalités croisées entre les couples : $[CH_3COOH]_{eq} = [HCOO^-]_{eq} = (n_0-x)/V$ et $[CH_3COO^-]_{eq} = [HCOOH]_{eq} = x/V$. Écris la relation entre pH et $pK_A$ (chapitre 6) pour chacun des deux couples séparément :
 
 $$\text{pH} = pK_{A1} + \log\frac{[CH_3COO^-]_{eq}}{[CH_3COOH]_{eq}} = pK_{A1} + \log\frac{x}{n_0-x} \qquad \text{pH} = pK_{A2} + \log\frac{[HCOO^-]_{eq}}{[HCOOH]_{eq}} = pK_{A2} + \log\frac{n_0-x}{x}$$

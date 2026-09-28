@@ -291,9 +291,19 @@ La portée, elle, se comporte différemment, à cause du terme $\sin(2\alpha)$. 
 
 **La portée est donc maximale pour un angle de lancement de $45^\circ$ — à vitesse initiale fixée, et à condition que l'arrivée se fasse au même niveau que le départ.** Cette seconde condition compte autant que la première : dès qu'on lance d'une hauteur, ou qu'on retombe sur un plan incliné, l'angle optimal n'est plus $45^\circ$. Ni le tir le plus plat, ni le tir le plus vertical, ne donnent la plus grande distance — c'est un compromis entre les deux qui l'emporte.
 
+### La symétrie surprenante : deux angles complémentaires, la même portée
+
+Il y a une conséquence de $\sin(2\alpha)$ qui surprend souvent : deux angles **complémentaires** (qui s'additionnent à $90^\circ$) donnent exactement la **même portée**. En effet, $\sin(2(90^\circ - \alpha)) = \sin(180^\circ - 2\alpha) = \sin(2\alpha)$ — la même valeur.
+
+Vérifions-le sur notre exemple numérique. On avait $\sin\alpha = 0{,}60$, $\cos\alpha = 0{,}80$, et $D \approx 61{,}2\ \text{m}$. Prenons maintenant l'angle complémentaire $\alpha' = 90^\circ - \alpha$, pour lequel $\sin\alpha' = \cos\alpha = 0{,}80$ et $\cos\alpha' = \sin\alpha = 0{,}60$ — les deux valeurs sont simplement échangées.
+
+$$D' = \frac{2v_0^2\sin\alpha'\cos\alpha'}{g} = \frac{2\times 25^2\times 0{,}80\times 0{,}60}{g} = \frac{2\times 25^2\times 0{,}60\times 0{,}80}{g} = D$$
+
+Le produit $\sin\alpha'\cos\alpha'$ contient les deux mêmes facteurs $0{,}60$ et $0{,}80$ que $\sin\alpha\cos\alpha$, juste échangés — et un produit ne change pas quand on échange ses deux facteurs. Les deux tirs — l'un plus plat et plus rapide horizontalement, l'autre plus haut et plus lent horizontalement — atterrissent donc au même endroit, à $61{,}2\ \text{m}$, bien que leurs trajectoires (et leurs flèches) soient très différentes : le tir à $\alpha'$ (plus incliné) a une flèche plus grande que le tir à $\alpha$, exactement parce que $\sin^2\alpha' = 0{,}80^2 = 0{,}64 > \sin^2\alpha = 0{,}60^2 = 0{,}36$.
+
 ### Exemple travaillé : le point de chute sur une pente qui descend
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* la formule de la portée $D$, établie plus haut, suppose que le sol d'arrivée est à la **même hauteur** que le point de lancement ($y=0$). Dès que ce n'est plus vrai — ici, une pente qui descend sous le point de lancement —, il faut revenir à la méthode du chapitre 4 : trouver où la trajectoire croise la droite du sol réel, pas deviner un raccourci.
+*Ce qu'on cherche ici, et pourquoi ce geste :* les formules de $f$ et $D$, et la symétrie qu'on vient de voir, supposent toutes que le sol d'arrivée est à la **même hauteur** que le point de lancement ($y=0$). Dès que ce n'est plus vrai — ici, une pente qui descend sous le point de lancement —, il faut revenir à la méthode du chapitre 4 : trouver où la trajectoire croise la droite du sol réel, pas deviner un raccourci.
 
 On lance une bille **horizontalement** — sans composante verticale de vitesse —, à $v_0 = 14\ \text{m/s}$, depuis le sommet $O$ d'une pente qui descend sous l'horizontale, à un angle $\beta$ tel que $\sin\beta = 0{,}60$ et $\cos\beta = 0{,}80$ (donc $\tan\beta = 0{,}75$). On prend $g \approx 9{,}8\ \text{m/s}^2$, origine en $O$.
 
@@ -317,21 +327,13 @@ $$x_E = 0 \quad \text{ou} \quad x_E = \frac{0{,}75}{0{,}025} = 30\ \text{m}$$
 
 $$y_E = -0{,}025\times 30^2 = -22{,}5\ \text{m} \qquad (\text{contrôle\,: } -0{,}75\times 30 = -22{,}5\ \text{m})$$
 
+**Prends position avant de lire la suite :** le point de chute tombe à $x_E = 30\ \text{m}$ de $O$. Est-ce la distance $OE$ que demanderait un énoncé, ou faut-il encore un calcul ?
+
 **La distance demandée n'est pas $x_E$.** $x_E = 30\ \text{m}$ n'est que la projection horizontale du point de chute — pas la distance parcourue le long de la pente, celle que demande en général un énoncé qui parle de « la distance $OE$ ». Dans le triangle rectangle formé par $x_E$, $|y_E|$ et $OE$, $x_E$ est le côté adjacent à l'angle $\beta$ :
 
 $$OE = \frac{x_E}{\cos\beta} = \frac{30}{0{,}80} = 37{,}5\ \text{m}$$
 
 **Le piège nommé :** répondre « $30\ \text{m}$ », qui n'est que $x_E$, quand la question demande $OE$. Diviser par $\cos\beta<1$ agrandit toujours le résultat : $OE$ est nécessairement plus grand que $x_E$ dès que la pente n'est pas horizontale.
-
-### La symétrie surprenante : deux angles complémentaires, la même portée
-
-Il y a une conséquence de $\sin(2\alpha)$ qui surprend souvent : deux angles **complémentaires** (qui s'additionnent à $90^\circ$) donnent exactement la **même portée**. En effet, $\sin(2(90^\circ - \alpha)) = \sin(180^\circ - 2\alpha) = \sin(2\alpha)$ — la même valeur.
-
-Vérifions-le sur notre exemple numérique. On avait $\sin\alpha = 0{,}60$, $\cos\alpha = 0{,}80$, et $D \approx 61{,}2\ \text{m}$. Prenons maintenant l'angle complémentaire $\alpha' = 90^\circ - \alpha$, pour lequel $\sin\alpha' = \cos\alpha = 0{,}80$ et $\cos\alpha' = \sin\alpha = 0{,}60$ — les deux valeurs sont simplement échangées.
-
-$$D' = \frac{2v_0^2\sin\alpha'\cos\alpha'}{g} = \frac{2\times 25^2\times 0{,}80\times 0{,}60}{g} = \frac{2\times 25^2\times 0{,}60\times 0{,}80}{g} = D$$
-
-Le produit $\sin\alpha'\cos\alpha'$ contient les deux mêmes facteurs $0{,}60$ et $0{,}80$ que $\sin\alpha\cos\alpha$, juste échangés — et un produit ne change pas quand on échange ses deux facteurs. Les deux tirs — l'un plus plat et plus rapide horizontalement, l'autre plus haut et plus lent horizontalement — atterrissent donc au même endroit, à $61{,}2\ \text{m}$, bien que leurs trajectoires (et leurs flèches) soient très différentes : le tir à $\alpha'$ (plus incliné) a une flèche plus grande que le tir à $\alpha$, exactement parce que $\sin^2\alpha' = 0{,}80^2 = 0{,}64 > \sin^2\alpha = 0{,}60^2 = 0{,}36$.
 
 ### L'effet de la vitesse initiale, à $\alpha$ fixé
 
@@ -843,6 +845,8 @@ Les orbites **elliptiques quantitatives restent hors cadre** : les trois lois de
 - En éliminant le temps entre $x(t)$ et $y(t)$, on obtient l'équation de la trajectoire, une **parabole** : $y(x) = \tan\alpha \cdot x - \dfrac{g}{2v_0^2\cos^2\alpha}x^2$.
 - La **flèche** $f = \dfrac{v_0^2\sin^2\alpha}{2g}$ est une hauteur (au sommet, où $v_y=0$) ; la **portée** $D = \dfrac{v_0^2\sin(2\alpha)}{g}$ est une distance horizontale (au sol, à l'arrivée). Ce ne sont jamais le même nombre.
 - À $v_0$ fixé, la portée est maximale pour $\alpha = 45^\circ$ ; deux angles complémentaires donnent la même portée. À $\alpha$ fixé, $f$ et $D$ varient comme $v_0^2$.
+- Si le sol d'arrivée n'est pas au même niveau que le départ (par exemple une pente qui descend), la formule de $D$ ne s'applique plus : on pose l'équation de la trajectoire et celle de la pente, on résout leur intersection $x_E$, et on convertit en distance le long de la pente si c'est elle qu'on demande : $OE = x_E/\cos\beta$.
+- La 3e loi de Kepler se retourne aussi pour trouver la masse de l'astre central à partir d'un satellite observé : $M = \dfrac{4\pi^2 r^3}{GT^2}$, avec $T$ **en secondes**.
 - Une particule chargée qui entre dans un champ magnétique uniforme (avec $\vec{B}\perp\vec{v}_0$) subit la force de Lorentz $\vec{F} = q\,\vec{v}\wedge\vec{B}$, toujours perpendiculaire à la vitesse : elle ne travaille pas, la **norme de la vitesse reste constante** ($v = v_0$), et le mouvement est **circulaire uniforme** de rayon $R = \dfrac{m\,v_0}{|q|\,B}$. La déflexion à la traversée d'un couloir de champ de largeur $\ell$ vérifie $\sin\theta = \dfrac{\ell}{R}$.
 
 ### Vérifie tes réflexes avant de te lancer

@@ -211,6 +211,8 @@ $$K_2 = \frac{0{,}75\times10^{-3}}{2{,}0\times10^{-3}\times0{,}20\times10^{-3}} 
 
 $K_1 = K_2 = 1875$, très exactement, alors que les concentrations initiales n'ont rien à voir entre les deux expériences. Vérifie d'ailleurs que le taux d'avancement final, lui, diffère bel et bien : $\tau_2 = [FeSCN^{2+}]_{eq}'/c_2' = 0{,}75/0{,}95 \approx 0{,}79$, contre $\tau_1 = 0{,}60$ - deux valeurs différentes de $\tau$, pour une seule et même valeur de $K$. C'est exactement ce qu'annonce le principe : $K$ décrit la réaction elle-même, pas la manière dont on l'a préparée.
 
+[[checkpoint:cp-r4-k-constante]]
+
 ### Exemple travaillé : l'expression littérale de $Q_{r,eq}$, en fonction de $C$ et $\tau$ seulement
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* jusqu'ici, $Q_{r,eq}$ n'a été calculé qu'à partir de concentrations numériques, sur $Fe^{3+}/SCN^-$. Le bac demande souvent l'expression **littérale** de $Q_{r,eq}$ — en fonction de la concentration apportée $C$ et du taux d'avancement final $\tau$ seulement, sans aucun nombre. Construisons-la sur un acide faible générique $AH$, de concentration apportée $C$, dissous dans l'eau (dont l'apport propre en $H_3O^+$ est négligeable devant celui de l'acide) :
@@ -231,9 +233,9 @@ Application numérique, sur des valeurs choisies ici pour l'exemple : $C = 2{,}0
 
 $$Q_{r,eq} = \frac{2{,}0\times10^{-2}\times(0{,}10)^2}{1-0{,}10} = \frac{2{,}0\times10^{-4}}{0{,}90} \approx 2{,}2\times10^{-4}$$
 
-**Le piège :** oublier le $(1-\tau)$ au dénominateur et écrire $Q_{r,eq} = C\tau^2$ — ici, $2{,}0\times10^{-4}$, environ $10\,\%$ plus petit que la valeur exacte $2{,}2\times10^{-4}$. Cette approximation ne devient légitime que si $\tau \ll 1$ (alors $1-\tau \approx 1$) ; dès que $\tau$ n'est plus négligeable, comme ici, l'écart se voit, et le bac demande l'expression exacte, pas l'approximation.
+**Prends position avant de lire la suite :** si on oubliait le facteur $(1-\tau)$ au dénominateur, la valeur obtenue serait-elle plus grande, plus petite, ou identique à $2{,}2\times10^{-4}$ ?
 
-[[checkpoint:cp-r4-k-constante]]
+**Le piège :** oublier le $(1-\tau)$ au dénominateur et écrire $Q_{r,eq} = C\tau^2$ — ici, $2{,}0\times10^{-4}$, environ $10\,\%$ plus petit que la valeur exacte $2{,}2\times10^{-4}$. Cette approximation ne devient légitime que si $\tau \ll 1$ (alors $1-\tau \approx 1$) ; dès que $\tau$ n'est plus négligeable, comme ici, l'écart se voit, et le bac demande l'expression exacte, pas l'approximation.
 
 ---
 

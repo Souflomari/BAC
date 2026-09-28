@@ -1544,20 +1544,30 @@ items:
   # propres (4 jaunes / 5 vertes / 7 violettes, tirage de 3), différents du
   # triplet 3R/4V/5B cité par l'audit et des couleurs déjà utilisées dans ce
   # fichier (rouges/bleues, rouges/vertes, scientifiques/littéraires). Aucun
-  # modèle neuf : le distracteur A (produit des trois combinaisons au lieu de
-  # leur somme) et le distracteur B (une seule des trois couleurs comptée,
-  # les deux autres cas disjoints oubliés de la somme) relèvent tous deux
-  # d'`additif-vs-multiplicatif` — les deux manières de mal construire l'« ou »
-  # entre les trois cas disjoints (le sur-combiner par un produit, ou ne pas
-  # le compléter) ; le distracteur D (numérateur en arrangements $A_n^3$,
-  # dénominateur resté en combinaison $\binom{N}{3}$ : les deux modèles de
-  # comptage sont mélangés dans un même calcul) relève
-  # d'`ordre-arrangement-vs-combinaison`. Aucun distracteur n'est laissé
-  # `null` ici : le fichier en porte ailleurs (legacy, DENOMB-1.C/D et
-  # consorts), mais un id neuf doit rester DÉCLARÉ pour cette passe.
+  # modèle neuf : le distracteur B (une seule des trois couleurs comptée, les
+  # deux autres cas disjoints oubliés de la somme) relève
+  # d'`additif-vs-multiplicatif` — l'« ou » entre les trois cas disjoints mal
+  # complété ; le distracteur A (les trois tirages traités comme AVEC remise,
+  # $\left(\frac{n_i}{16}\right)^3$ sommés au lieu de $\binom{n_i}{3}$ sur un
+  # univers $\binom{16}{3}$) relève de `remise-avec-vs-sans` ; le distracteur
+  # D (numérateur en arrangements $A_n^3$, dénominateur resté en combinaison
+  # $\binom{N}{3}$ : les deux modèles de comptage mélangés dans un même
+  # calcul) relève d'`ordre-arrangement-vs-combinaison`. Aucun distracteur
+  # n'est laissé `null` ici : le fichier en porte ailleurs (legacy,
+  # DENOMB-1.C/D et consorts), mais un id neuf doit rester DÉCLARÉ pour cette
+  # passe.
+  # WAVE F, relecture du 2026-09-28 (§35/§36 de DECISIONS-EN-ATTENTE.md) : le
+  # commentaire ci-dessus décrivait un distracteur A « produit des trois
+  # combinaisons » jamais livré — celui réellement écrit teste le tirage AVEC
+  # remise (532/4096), et `remise-avec-vs-sans` n'apparaissait pas dans son
+  # compte de couverture malgré ce distracteur. Corrigé (voir
+  # coverage_summary). `habilete: application_non_explicite` ajouté (aucun
+  # autre item de cette notion ne porte le champ — voir la note en fin de
+  # fichier).
   - id: DENOMB-28
     rung: "R7"
     difficulty_level: 4
+    habilete: application_non_explicite
     skill_code: maths_denombrement
     tags: ["probabilite", "equiprobabilite", "combinaison", "cas-disjoints"]
     primary_misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
@@ -1640,7 +1650,7 @@ coverage_summary:
     mc.math.maths_denombrement.additif-vs-multiplicatif: 4          # DENOMB-1, DENOMB-10, DENOMB-11, DENOMB-28
     mc.math.maths_denombrement.base-exposant-inverse: 5             # DENOMB-7, DENOMB-8, DENOMB-9, DENOMB-12, DENOMB-25
     mc.math.maths_denombrement.ordre-arrangement-vs-combinaison: 8  # DENOMB-3, DENOMB-5, DENOMB-14, DENOMB-15, DENOMB-18, DENOMB-19, DENOMB-24, DENOMB-28
-    mc.math.maths_denombrement.remise-avec-vs-sans: 6               # DENOMB-2, DENOMB-4, DENOMB-13, DENOMB-16, DENOMB-17, DENOMB-27
+    mc.math.maths_denombrement.remise-avec-vs-sans: 7               # DENOMB-2, DENOMB-4, DENOMB-13, DENOMB-16, DENOMB-17, DENOMB-27, DENOMB-28
     mc.math.maths_denombrement.proba-quotient-denombrement: 3       # DENOMB-6, DENOMB-23, DENOMB-26
   floor_met: true   # les 5 modèles de l'inventaire ont chacun >= 3 items dont un distracteur porte le tag primaire
   notes: >-
@@ -1660,14 +1670,21 @@ coverage_summary:
     DENOMB-6, DENOMB-23 et DENOMB-26 (exactement au plancher de 3).
     AJOUT 2026-09-27 (dette d'examen, § denombrement, GAP-B « case split with
     combinations, même couleur = Σ C(nᵢ,k) ») : DENOMB-28 (R7), aucun modèle
-    neuf. Primary additif-vs-multiplicatif (désormais 4), porté par DEUX
-    distracteurs de cet item (produit des trois combinaisons au lieu de leur
-    somme ; une seule couleur comptée, les deux autres cas disjoints oubliés)
-    — compté une seule fois par item, comme le reste du fichier ; secondaire
-    ordre-arrangement-vs-combinaison (désormais 8) pour le distracteur
-    numérateur-en-arrangement/dénominateur-en-combinaison. Aucun `null` :
-    contrairement aux items legacy de ce fichier, un id neuf reste déclaré.
-    `habilete` : ce notion n'en porte sur AUCUN item (vérifié sur les 27
-    existants) ; DENOMB-28 suit donc le même format, sans ce champ — à
-    signaler si une passe future harmonise les quatre notions maths sur ce
-    point.
+    neuf. Primary additif-vs-multiplicatif (désormais 4), porté par UN
+    distracteur de cet item (une seule couleur comptée, les deux autres cas
+    disjoints oubliés) ; secondaire ordre-arrangement-vs-combinaison
+    (désormais 8) pour le distracteur numérateur-en-arrangement/dénominateur-
+    en-combinaison. Aucun `null` : contrairement aux items legacy de ce
+    fichier, un id neuf reste déclaré.
+
+    WAVE F (audit §35/§36, DECISIONS-EN-ATTENTE.md, 2026-09-28) : deux
+    corrections. (1) Le distracteur A de DENOMB-28 (tirage traité comme AVEC
+    remise, $532/4\,096$) relève de `remise-avec-vs-sans`, qui n'apparaissait
+    pas dans son compte malgré ce distracteur écrit et étiqueté depuis le
+    début — la note ci-dessus le décrivait à tort comme un « produit des
+    trois combinaisons » sous `additif-vs-multiplicatif`, un distracteur
+    jamais livré. `remise-avec-vs-sans` passe de 6 à 7 (+DENOMB-28) ;
+    `additif-vs-multiplicatif` inchangé (4, un seul distracteur de cet item
+    le porte, pas deux). (2) `habilete: application_non_explicite` ajouté à
+    DENOMB-28 — cette notion n'en portait sur AUCUN des 27 items précédents ;
+    DENOMB-28 est désormais le premier, pas un oubli à harmoniser plus tard.

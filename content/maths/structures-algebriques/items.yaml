@@ -2160,13 +2160,16 @@ items:
   # Le geste est déjà servi par SA-13 (associativité, x⋆y=x+y+1), SA-23/-24
   # (neutre puis symétrique, x⋆y=x+y-xy) ; la prose de R2 (lesson.md:164-201)
   # travaille une TROISIÈME loi, x∗y=x+y+xy sur R\{-1}. SA-35 utilise une
-  # QUATRIÈME loi, jamais réutilisée : x∗y=x+y-2xy sur R\{1/2}, choisie sur
-  # l'une des deux propositions de la tâche (l'autre, xy-x-y+2 sur ]1,+∞[,
-  # sert déjà l'exemple travaillé du transport en R7, lesson.md:581-583 —
-  # écartée pour ne pas recycler le matériel d'un autre geste). Stabilité
-  # vérifiée à la main par le même procédé que la leçon (poser
-  # $\varphi(x)=1-2x$ : $\varphi(x\ast y)=\varphi(x)\varphi(y)$, donc
-  # $\varphi(x\ast y)\neq0$ dès que $\varphi(x)\neq0$ et $\varphi(y)\neq0$).
+  # QUATRIÈME loi : x∗y=x+y+3xy sur R\{-1/3} (WAVE F, 2026-09-28 — §35/§36
+  # de DECISIONS-EN-ATTENTE.md : la loi précédente, x∗y=x+y-2xy sur R\{1/2},
+  # ÉTAIT le sujet 2025 SM lui-même — bank.yaml, bk-2025-n-x4 q2/q5/q6 —
+  # malgré le commentaire d'origine qui l'annonçait « jamais réutilisée » ;
+  # ni cette loi ni le coefficient $3$ ne recoupent aucun autre bank.yaml de
+  # maths, grep vérifié). Stabilité vérifiée à la main par le même procédé
+  # que la leçon (poser $\varphi(x)=1+3x$ :
+  # $\varphi(x\ast y)=\varphi(x)\varphi(y)$, donc $\varphi(x\ast y)\neq0$
+  # dès que $\varphi(x)\neq0$ et $\varphi(y)\neq0$). Neutre $0$, symétrique
+  # de $x$ égal à $-x/(1+3x)$.
   # Aucune misconception neuve : le piège « une seule valeur de x » nommé
   # par la leçon (lesson.md:194) n'était encore porté par AUCUN item — ici
   # distracteur B, `generalisation-hative`. Le second distracteur demandé
@@ -2175,81 +2178,92 @@ items:
   # troisième (symétrique confondu avec le neutre) reprend
   # `neutre-vs-symetrique` tel quel, cette fois pour une question sur le
   # NEUTRE plutôt que sur le symétrique (distracteur D).
+  # WAVE F, même relecture : les quatre options s'annonçaient elles-mêmes
+  # (« on teste seulement… », « on suppose, par ressemblance…, sans
+  # vérifier », et la clé seule ajoutait « valable pour tout x, pas pour un
+  # cas isolé ») — un élève pouvait repérer la bonne réponse au REGISTRE de
+  # la phrase, sans faire le calcul. Les quatre sont réécrites dans un même
+  # registre neutre (« on résout l'équation … : elle s'écrit … , d'où … ») ;
+  # seule la clé utilise un $x$ générique, les distracteurs un $x$ concret
+  # ou une affirmation non vérifiée — la différence est dans les
+  # MATHÉMATIQUES, plus dans le vocabulaire. La référence « chapitre 2 »
+  # de l'ancien distracteur B pour l'associativité était fausse dans cette
+  # notion (R2 = chapitre 3, deux `## ` avant lui) ; corrigée.
   - id: SA-35
     rung: "R2"
+    habilete: application_directe
     difficulty_level: 3
     skill_code: maths_structures_alg
     tags: [misconception_driven, maths_structures_alg, neutre, formule]
     stem: >
-      On munit $E=\mathbb{R}\setminus\left\{\dfrac12\right\}$ de la loi
-      $\ast$ définie, pour tous $x,y\in E$, par $x\ast y = x+y-2xy$ (loi
-      distincte de celle du chapitre 2). Quel raisonnement établit
-      correctement l'élément neutre de $(E,\ast)$ ?
+      On munit $E=\mathbb{R}\setminus\left\{-\dfrac13\right\}$ de la loi
+      $\ast$ définie, pour tous $x,y\in E$, par $x\ast y = x+y+3xy$. Quel
+      raisonnement établit correctement l'élément neutre de $(E,\ast)$ ?
     type: mcq
     choices:
       - id: A
         text: |
-          On résout $x\ast e=x$ pour $x$ quelconque : $e(1-2x)=0$ donne
-          $e=0$, le facteur $1-2x$ étant non nul sur $E$ — valable pour
-          tout $x$, pas pour un cas isolé.
+          On résout l'équation $x\ast e=x$ pour $x$ quelconque de $E$ :
+          elle s'écrit $e(1+3x)=0$, donc $e=0$ car $1+3x$ ne s'annule pas
+          sur $E$.
         correct: true
       - id: B
         text: |
-          On teste seulement $x=2$ : $2\ast e=2$ donne $e=0$ ; comme
-          l'égalité tient pour ce $x$-là, on en déduit directement que $0$
-          est le neutre de la loi entière.
+          On résout l'équation $2\ast e=2$ : elle s'écrit
+          $e(1+3\times2)=0$, d'où $e=0$, qui est l'élément neutre de
+          $(E,\ast)$.
         correct: false
         misconception: mc.math.structures_algebriques.generalisation-hative
         feedback: |
-          Modèle détecté : un cas particulier généralisé. Que l'équation se
-          résolve pour $x=2$ ne prouve rien pour les autres éléments de
-          $E$ — il faut reprendre la résolution avec $x$ quelconque, sans
-          lui donner de valeur, exactement comme pour l'associativité
-          testée sur un seul triplet (chapitre 2).
+          Modèle détecté : un cas particulier généralisé. L'équation
+          $e(1+3\times2)=0$ ne concerne que $x=2$ ; qu'elle donne $e=0$ ne
+          prouve rien pour les autres éléments de $E$ — il faut reprendre
+          la résolution avec $x$ quelconque, sans lui donner de valeur,
+          exactement comme pour l'associativité testée sur un seul triplet
+          (chapitre 3).
       - id: C
         text: |
-          Comme la formule de $\ast$ fait intervenir un produit
-          ($-2xy$), on suppose, par ressemblance avec la multiplication
-          usuelle, que le neutre est $1$, sans vérifier sur un seul cas.
+          La loi $\ast$ contient un terme en $xy$, comme la multiplication
+          usuelle : l'élément neutre de $(E,\ast)$ est donc $1$.
         correct: false
         misconception: mc.math.structures_algebriques.generalisation-hative
         feedback: |
           Modèle détecté : une propriété supposée par ressemblance, sans
           aucun cas vérifié — un degré de moins que se tromper sur un seul
-          exemple. $1$ échoue dès le premier essai : $2\ast1=2+1-4=-1\neq2$.
-          Une propriété universelle ne se suppose jamais par analogie avec
-          une loi usuelle, elle se démontre pour $x$ quelconque ou se
+          exemple. $1$ échoue dès le premier essai : $2\ast1=2+1+6=9\neq2$.
+          Une propriété universelle ne se déduit pas d'une ressemblance
+          avec une loi usuelle : elle se démontre pour $x$ quelconque ou se
           vérifie exhaustivement.
       - id: D
         text: |
-          On cherche le symétrique de $2$, l'élément $x'$ tel que
-          $2\ast x'=0$ ; on trouve $x'=\frac23$, et on conclut que ce
-          nombre $\frac23$ est le neutre de la loi $(E,\ast)$.
+          On résout l'équation $2\ast x'=0$ : elle s'écrit
+          $x'(1+3\times2)=-2$, d'où $x'=-\dfrac27$, qui est l'élément
+          neutre de $(E,\ast)$.
         correct: false
         misconception: mc.math.structures_algebriques.neutre-vs-symetrique
         feedback: |
           Modèle détecté : le symétrique confondu avec le neutre.
-          $\frac23$ est le SYMÉTRIQUE de $2$ (il dépend de $2$), pas le
+          $-\frac27$ est le SYMÉTRIQUE de $2$ (il dépend de $2$), pas le
           neutre, qui est unique et ne dépend d'aucun élément particulier :
-          $\frac23$ ne redonne pas $x$ dans $x\ast\frac23$ pour un autre
-          $x$ quelconque, contrairement au vrai neutre $0$.
+          $-\frac27$ ne redonne pas $x$ dans $x\ast\left(-\frac27\right)$
+          pour un autre $x$ quelconque, contrairement au vrai neutre $0$.
     correct_feedback: |
       Exact : l'équation $x\ast e=x$ se résout pour $x$ générique —
-      $e(1-2x)=0$ pour tout $x$ de $E$ impose $e=0$, puisque $1-2x$ est
-      non nul sur $E=\mathbb{R}\setminus\{\frac12\}$. Vérification :
-      $x\ast0=x+0-0=x$.
+      $e(1+3x)=0$ pour tout $x$ de $E$ impose $e=0$, puisque $1+3x$ est
+      non nul sur $E=\mathbb{R}\setminus\{-\frac13\}$. Vérification :
+      $x\ast0=x+0+0=x$.
     solution: |
       On résout, pour tout $x\in E$ :
-      $$x\ast e=x \iff x+e-2xe=x \iff e(1-2x)=0$$
-      Comme cette égalité doit tenir pour tout $x$ de $E$ (et $1-2x$ est
-      non nul, puisque $x\neq\frac12$), il faut $e=0$. Vérification :
-      $x\ast0=x+0-2x\times0=x$, pour tout $x$. L'élément neutre est $0$.
+      $$x\ast e=x \iff x+e+3xe=x \iff e(1+3x)=0$$
+      Comme cette égalité doit tenir pour tout $x$ de $E$ (et $1+3x$ est
+      non nul, puisque $x\neq-\frac13$), il faut $e=0$. Vérification :
+      $x\ast0=x+0+3x\times0=x$, pour tout $x$. L'élément neutre est $0$.
 
       **Pourquoi les distracteurs échouent.** Tester un seul $x$ (ici
       $x=2$) redonne $e=0$ par coïncidence, mais ne prouve rien pour les
       autres éléments — c'est la méthode, pas le nombre, qui est en cause.
       Supposer $e=1$ par analogie avec la multiplication usuelle échoue dès
-      le premier test : $2\ast1=-1\neq2$. Et $\frac23$, trouvé en résolvant
+      le premier test : $2\ast1=9\neq2$. Et $-\frac27$, trouvé en résolvant
       $2\ast x'=0$, est le symétrique de $2$, pas le neutre de la loi.
 
 coverage_summary:
@@ -2337,3 +2351,19 @@ coverage_summary:
     livraison ne comble aucune marge nulle, elle ferme un TROU DE GESTE
     (le piège « une seule valeur » restait cité par la prose sans qu'aucun
     item ne l'exerce). `total_items` 34→35 ; `ramp_coverage.R2` 4→5.
+
+    WAVE F (audit §35/§36, DECISIONS-EN-ATTENTE.md, 2026-09-28) : deux
+    défauts corrigés, sans effet sur les comptes (`generalisation-hative`
+    reste à 13, `neutre-vs-symetrique` à 14, `total_items` à 35). (1) La loi
+    de SA-35 ($x\ast y=x+y-2xy$ sur $\mathbb{R}\setminus\{\frac12\}$),
+    annoncée « jamais réutilisée », ÉTAIT en réalité le sujet 2025 SM
+    lui-même (bank.yaml, bk-2025-n-x4 q2/q5/q6) : remplacée par
+    $x\ast y=x+y+3xy$ sur $\mathbb{R}\setminus\{-\frac13\}$ (neutre $0$,
+    symétrique $-x/(1+3x)$), grep vérifié contre tous les bank.yaml de
+    maths. (2) Les quatre options citaient leur propre défaut en toutes
+    lettres (« on teste seulement… », « sans vérifier », « valable pour
+    tout $x$ ») : réécrites dans un registre neutre unique (chaque option
+    résout une équation et énonce sa conclusion), pour que la discrimination
+    vienne du calcul, pas du vocabulaire. `habilete: application_directe`
+    ajouté ; la référence « chapitre 2 » de l'ancien distracteur B (associa-
+    tivité) était fausse — R2 est le chapitre 3 dans cette notion — corrigée.

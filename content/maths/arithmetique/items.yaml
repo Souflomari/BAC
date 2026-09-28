@@ -2391,12 +2391,33 @@ items:
   # `congruence-lineaire-mal-resolue` déclarée plus haut dans l'inventaire.
   # Trois items, nombres propres à ce lot (ni 2969, 43, 47, 13 du banc, ni
   # 7/26 de l'exemple de l'audit, ni aucun nombre déjà utilisé ailleurs dans ce
-  # fichier pour Bézout/Gauss) : AR-38 (a=5, n=18, application directe),
-  # AR-39 (a=7, n=30, variation fraîche — mêmes gestes, autre couple), AR-40
-  # (combinaison de deux congruences à modules premiers entre eux, 18 et 7,
-  # via Gauss — le second sous-geste du même GAP-A, « systems of
-  # congruences »). Plancher de 3 items atteint exactement, sur trois contextes
-  # distincts plutôt que trois copies, comme demandé pour tout id neuf.
+  # fichier pour Bézout/Gauss) : AR-38 (application directe), AR-39
+  # (variation fraîche — mêmes gestes, autre couple), AR-40 (combinaison de
+  # deux congruences à modules premiers entre eux, 18 et 7, via Gauss — le
+  # second sous-geste du même GAP-A, « systems of congruences »). Plancher
+  # de 3 items atteint exactement, sur trois contextes distincts plutôt que
+  # trois copies, comme demandé pour tout id neuf.
+  #
+  # WAVE F, relecture du 2026-09-28 (§35/§36 de DECISIONS-EN-ATTENTE.md) :
+  # trois défauts corrigés, sans toucher au plancher (toujours 3 items).
+  # (1) AR-38 utilisait $a=5$, $n=18$ et concluait $x\equiv5$ — exactement
+  # le couple ET la valeur de l'exemple travaillé que le content-author
+  # ajoute à la leçon ($5x\equiv8\pmod{17}$, inverse $7$, $x\equiv5$) : un
+  # élève qui reconnaît juste « $a=5$ donne $5$ » répondait juste sans
+  # comprendre le geste. Couple changé pour $11\times2-7\times3=1$,
+  # $11x\equiv4\pmod7$ (clé $x\equiv1\pmod7$) — un calcul entièrement
+  # différent, qui réutilise le modulus $7$ déjà présent dans AR-40 (un
+  # CONTEXTE frais : une congruence simple, pas une copie du système
+  # combiné). (2) AR-38/39/40 se laissaient tous les trois retrouver par
+  # substitution directe (tester chaque option dans la congruence de
+  # départ). AR-39 ne demande plus la classe solution mais LE GESTE : par
+  # quel entier multiplier les deux membres — une question dont les quatre
+  # réponses sont des ENTIERS BRUTS ($7$, $3$, $13$, $11$), non vérifiable
+  # en substituant une classe candidate dans $7x\equiv11\pmod{30}$. (3) La
+  # stem d'AR-40 nommait « modulo $126$ » avant la question, ce qui
+  # écartait à vue les options B (deux classes séparées) et D (modulus
+  # $25=18+7$) sans qu'aucun calcul ne soit nécessaire ; la mention est
+  # retirée, et le distracteur D redevient un choix vivant.
   - id: AR-38
     rung: "R5"
     habilete: application_directe
@@ -2405,61 +2426,62 @@ items:
     tags: [bezout, congruences, inverse]
     primary_misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
     stem: >
-      On sait que $5 \times 11 - 18 \times 3 = 1$. Quelle est la classe
-      solution de $5x \equiv 7 \pmod{18}$ ?
+      On sait que $11 \times 2 - 7 \times 3 = 1$. Quelle est la classe
+      solution de $11x \equiv 4 \pmod{7}$ ?
     type: mcq
     choices:
       - id: A
-        text: "$x \\equiv 15 \\pmod{18}$"
+        text: "$x \\equiv 2 \\pmod{7}$"
         correct: false
         misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
         feedback: >
-          $15$ vient de multiplier $7$ par $-3$, le coefficient de $18$
-          dans la relation ($-3\times7=-21\equiv15\pmod{18}$) — mais $-3$
-          est l'inverse de $18$ modulo $5$, pas celui de $5$ modulo $18$.
-          C'est le coefficient de $5$, soit $11$, qu'il fallait utiliser.
+          $2$ vient de multiplier $4$ par $-3$, le coefficient de $7$
+          dans la relation ($-3\times4=-12\equiv2\pmod7$) — mais $-3$
+          est l'inverse de $7$ modulo $11$, pas celui de $11$ modulo $7$.
+          C'est le coefficient de $11$, soit $2$ (au sens propre, pas
+          $-3$), qu'il fallait utiliser.
       - id: B
-        text: "$x \\equiv 5 \\pmod{18}$"
+        text: "$x \\equiv 1 \\pmod{7}$"
         correct: true
       - id: C
-        text: "$x \\equiv 17 \\pmod{18}$"
+        text: "$x \\equiv 1 \\pmod{11}$"
         correct: false
         misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
         feedback: >
-          $17$ vient de $7\times5=35\equiv17\pmod{18}$ : multiplier $b$
-          par $a$ lui-même, comme dans $\mathbb{Z}$. Résoudre une
-          congruence ne se fait pas en multipliant par le coefficient de
-          $x$ — il faut multiplier par SON INVERSE modulo $18$, qui est
-          $11$, pas $5$.
+          La valeur $1$ est la bonne, mais le modulus ne l'est pas : la
+          congruence de départ est modulo $7$, pas modulo $11$ (le
+          coefficient de $x$). La classe solution garde toujours le
+          modulus de la congruence résolue.
       - id: D
-        text: "$x \\equiv 5 \\pmod{90}$"
+        text: "$x \\equiv 5 \\pmod{7}$"
         correct: false
         misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
         feedback: >
-          La valeur $5$ est la bonne, mais le modulus ne l'est pas :
-          $90=18\times5$ n'a aucune raison d'apparaître ici. La classe
-          solution d'une congruence modulo $18$ reste une classe modulo
-          $18$, pas modulo $18$ multiplié par autre chose.
+          $5$ vient de multiplier $4$ par $3$ (le coefficient de $7$
+          dans la relation, sans son signe) : $3\times4=12\equiv5\pmod7$.
+          Ce $3$, avec ou sans signe, reste le coefficient de $7$ — ce
+          n'est jamais lui qui isole $x$ dans une congruence modulo $7$ ;
+          il faut le coefficient de $11$, soit $2$.
     correct_feedback: >
-      Exact. En lisant $5\times11-18\times3=1$ modulo $18$, il reste
-      $5\times11\equiv1\pmod{18}$ : $11$ est l'inverse de $5$ modulo $18$.
-      En multipliant $5x\equiv7\pmod{18}$ par $11$ : $x\equiv11\times7=77
-      \equiv5\pmod{18}$.
+      Exact. En lisant $11\times2-7\times3=1$ modulo $7$, il reste
+      $11\times2\equiv1\pmod7$ : $2$ est l'inverse de $11$ modulo $7$.
+      En multipliant $11x\equiv4\pmod7$ par $2$ : $x\equiv2\times4=8
+      \equiv1\pmod7$.
     solution: |
-      **Lire la relation modulo $18$.** $5\times11-18\times3=1$, et
-      $18\times3\equiv0\pmod{18}$, donc $5\times11\equiv1\pmod{18}$ : $11$
-      est l'inverse de $5$ modulo $18$ (pas $-3$, qui est l'inverse de $18$
-      modulo $5$).
+      **Lire la relation modulo $7$.** $11\times2-7\times3=1$, et
+      $7\times3\equiv0\pmod7$, donc $11\times2\equiv1\pmod7$ : $2$
+      est l'inverse de $11$ modulo $7$ (pas $-3$, qui est l'inverse de $7$
+      modulo $11$).
 
-      **Multiplier les deux membres de $5x\equiv7\pmod{18}$ par cet
+      **Multiplier les deux membres de $11x\equiv4\pmod7$ par cet
       inverse.**
-      $$11\times5x \equiv 11\times7 \pmod{18}$$
-      $$x \equiv 77 \pmod{18}$$
+      $$2\times11x \equiv 2\times4 \pmod7$$
+      $$x \equiv 8 \pmod7$$
 
-      **Réduire $77$ modulo $18$.** $77 = 18\times4+5$, donc
-      $$x \equiv 5 \pmod{18}$$
+      **Réduire $8$ modulo $7$.** $8 = 7\times1+1$, donc
+      $$x \equiv 1 \pmod7$$
 
-      **Vérification directe :** $5\times5=25=18+7\equiv7\pmod{18}$. ✓
+      **Vérification directe :** $11\times1=11=7+4\equiv4\pmod7$. ✓
 
   - id: AR-39
     rung: "R5"
@@ -2469,57 +2491,70 @@ items:
     tags: [bezout, congruences, inverse]
     primary_misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
     stem: >
-      On sait que $7 \times 13 - 30 \times 3 = 1$. Quelle est la classe
-      solution de $7x \equiv 11 \pmod{30}$ ?
+      Pour résoudre $7x \equiv 11 \pmod{30}$ à partir de
+      $7 \times 13 - 30 \times 3 = 1$, par quel entier faut-il multiplier
+      les deux membres de la congruence ?
     type: mcq
     choices:
       - id: A
-        text: "$x \\equiv 17 \\pmod{30}$"
+        text: "$7$"
         correct: false
         misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
         feedback: >
-          $17$ vient de $11\times7=77\equiv17\pmod{30}$ : multiplier $b$
-          par $a$, comme une opération de $\mathbb{Z}$. Ce n'est pas ainsi
-          qu'on isole $x$ modulo $30$ : il faut multiplier par l'inverse de
-          $7$ modulo $30$, qui est $13$, pas par $7$ lui-même.
+          Multiplier par $7$ (le coefficient de $x$ lui-même) donne
+          $7\times7=49\equiv19\pmod{30}$ à gauche — pas $1$. Ce n'est pas
+          ainsi qu'on isole $x$ : il faut multiplier par l'INVERSE de $7$
+          modulo $30$, qui est $13$, pas par $7$ lui-même.
       - id: B
-        text: "$x \\equiv 27 \\pmod{30}$"
+        text: "$3$"
         correct: false
         misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
         feedback: >
-          $27$ vient de $-3\times11=-33\equiv27\pmod{30}$ : $-3$ est le
-          coefficient de $30$ dans la relation, l'inverse de $30$ modulo
-          $7$ — pas l'inverse de $7$ modulo $30$, qui est $13$.
+          $3$ est le coefficient de $30$ dans la relation
+          $7\times13-30\times3=1$ : lu modulo $7$, il donnerait l'inverse
+          de $30$ modulo $7$, pas celui de $7$ modulo $30$. C'est le
+          coefficient de $7$, soit $13$, qu'il faut utiliser.
       - id: C
-        text: "$x \\equiv 23 \\pmod{7}$"
+        text: "$13$"
+        correct: true
+      - id: D
+        text: "$11$"
         correct: false
         misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
         feedback: >
-          La valeur $23$ est la bonne, mais pas son modulus : la
-          congruence de départ est modulo $30$, pas modulo $7$ (le
-          coefficient de $x$). La classe solution garde toujours le
-          modulus de la congruence résolue.
-      - id: D
-        text: "$x \\equiv 23 \\pmod{30}$"
-        correct: true
+          $11$ est la constante du membre de droite de la congruence, pas
+          un multiplicateur à appliquer : $7\times11=77\equiv17\pmod{30}$,
+          différent de $1$, donc multiplier par $11$ ne fait rien pour
+          isoler $x$.
     correct_feedback: >
-      Exact. Modulo $30$, $7\times13-30\times3=1$ donne $7\times13\equiv1$ :
-      $13$ est l'inverse de $7$ modulo $30$. En multipliant
-      $7x\equiv11\pmod{30}$ par $13$ : $x\equiv13\times11=143\equiv23
-      \pmod{30}$.
+      Exact. Modulo $30$, $7\times13-30\times3=1$ donne
+      $7\times13\equiv1\pmod{30}$ : multiplier les deux membres par $13$
+      élimine le $7$ à gauche, quelle que soit la valeur de $x$.
     solution: |
-      **L'inverse.** $7\times13-30\times3=1$, donc modulo $30$ :
-      $7\times13\equiv1\pmod{30}$. C'est $13$ qui est l'inverse de $7$
-      modulo $30$ — pas $-3$, coefficient de l'autre terme.
+      **Lire la relation modulo $30$.** $7\times13-30\times3=1$, et
+      $30\times3\equiv0\pmod{30}$, donc $7\times13\equiv1\pmod{30}$ :
+      $13$ est l'inverse de $7$ modulo $30$.
 
-      **Multiplier.**
-      $$13\times7x \equiv 13\times11 \pmod{30} \qquad\Longrightarrow\qquad
-      x \equiv 143 \pmod{30}$$
+      **Pourquoi multiplier par cet inverse règle la congruence.** En
+      multipliant les deux membres de $7x\equiv11\pmod{30}$ par $13$, le
+      coefficient $7$ devient $7\times13\equiv1\pmod{30}$ à gauche : $x$
+      se retrouve seul, quelle que soit sa valeur. C'est ce rôle — annuler
+      le coefficient de $x$ — qui définit le bon multiplicateur, pas sa
+      taille ni sa position dans la relation.
 
-      **Réduire.** $143 = 30\times4+23$, donc
-      $$x \equiv 23 \pmod{30}$$
+      **Pourquoi pas les trois autres.** Multiplier par $7$ (lui-même) ne
+      fait qu'élever le coefficient au carré modulo $30$
+      ($7\times7=49\equiv19$), qui ne vaut pas $1$. Multiplier par $3$ (le
+      coefficient de $30$ dans la relation) revient à utiliser l'inverse
+      de $30$ modulo $7$, pas celui de $7$ modulo $30$. Multiplier par
+      $11$ (la constante du membre de droite) ne joue aucun rôle dans
+      l'isolation de $x$ : c'est une donnée du problème, pas un outil pour
+      le résoudre.
 
-      **Vérification :** $7\times23=161=30\times5+11\equiv11\pmod{30}$. ✓
+      **Une fois le multiplicateur trouvé, la classe suit** :
+      $x\equiv13\times11=143\equiv23\pmod{30}$ (vérification :
+      $7\times23=161=30\times5+11\equiv11\pmod{30}$) — mais c'est le choix
+      du multiplicateur $13$, pas ce calcul final, que cet item mesure.
 
   - id: AR-40
     rung: "R5"
@@ -2530,8 +2565,7 @@ items:
     primary_misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
     stem: >
       On sait que $x \equiv 5 \pmod{18}$ et $x \equiv 2 \pmod{7}$. Comme $18$
-      et $7$ sont premiers entre eux, quelle est la classe de $x$ modulo
-      $126$ ?
+      et $7$ sont premiers entre eux, quelle est la classe de $x$ ?
     type: mcq
     choices:
       - id: A
@@ -2682,3 +2716,12 @@ coverage_summary:
     d'emblée le lot à marge nulle (count: 3, AR-38/39/40) — dixième famille à
     ce statut. Aucune autre famille n'est touchée par cette édition ; R5 passe
     de 3 à 6 items sur le ramp.
+
+    WAVE F (audit §35/§36, DECISIONS-EN-ATTENTE.md, 2026-09-28) : les trois
+    items AR-38/39/40 sont recomposés (couple neuf pour AR-38, question
+    reformulée pour AR-39, stem allégée pour AR-40 — voir le commentaire
+    au-dessus des items), sans effet sur les comptes : `congruence-lineaire-
+    mal-resolue` reste à **3** items (AR-38/39/40), `total_items` et
+    `ramp_coverage` inchangés. Les trois anciens défauts (clone de l'exemple
+    de leçon, vulnérabilité à la substitution directe, modulus donné dans la
+    stem) sont corrigés sans toucher au plancher ni à la marge.

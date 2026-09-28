@@ -165,6 +165,12 @@ $$1-e^{i\theta} = e^{i\theta/2}\left(e^{-i\theta/2}-e^{i\theta/2}\right) = -2i\s
 - si $\cos(\theta/2) > 0$ : module $2\cos(\theta/2)$, argument $\dfrac{\theta}{2}\ [2\pi]$ — l'écriture est déjà sous la bonne forme ;
 - si $\cos(\theta/2) < 0$ : il faut sortir le signe, $2\cos(\theta/2)\,e^{i\theta/2} = -2\cos(\theta/2) \times \left(-e^{i\theta/2}\right) = -2\cos(\theta/2)\,e^{i(\theta/2+\pi)}$ (puisque $-e^{i\alpha}=e^{i(\alpha+\pi)}$) : module $-2\cos(\theta/2)$ (qui est bien positif dans ce cas), argument $\dfrac{\theta}{2}+\pi\ [2\pi]$.
 
+**Un premier cas, où il n'y a rien à corriger : $\theta=\dfrac{\pi}{2}$.** Alors $\dfrac{\theta}{2}=\dfrac{\pi}{4}$, et $\cos\dfrac{\pi}{4}=\dfrac{\sqrt2}{2}>0$ : c'est le premier cas, l'écriture obtenue est déjà sous la forme $r\,e^{i\varphi}$ voulue.
+
+$$1+e^{i\pi/2} = 1+i = 2\cos\frac{\pi}{4}\,e^{i\pi/4} = \sqrt2\,e^{i\pi/4}$$
+
+module $\sqrt2$, argument $\dfrac{\pi}{4}$ — rien à corriger, puisque $\cos(\pi/4)>0$.
+
 **Exemple travaillé.** Donner le module et un argument de $1+e^{i\frac{4\pi}{3}}$.
 
 **Ce qu'on cherche et pourquoi ce geste :** avant de recopier "module $2\cos(\theta/2)$", il faut d'abord évaluer le signe de $\cos(\theta/2)$ — c'est ce signe qui choisit entre les deux lignes de la table ci-dessus.
@@ -448,7 +454,7 @@ Pourquoi cela place $M$ sur un cercle : soit $O$ le milieu de $[AB]$. Si le tria
 
 Cette propriété a un nom dans tes cours de géométrie : le **théorème de l'angle inscrit**, qui dit qu'un angle inscrit dans un demi-cercle est droit. Ce que tu viens de démontrer en est le cas particulier, obtenu avec la seule médiane. Le nom ne change rien à la démonstration.
 
-**En une ligne, la cocyclicité.** Lu en deux points $C$ et $D$ plutôt qu'en un seul, le rapport $u$ ci-dessus donne $u_C=\dfrac{z_C-z_A}{z_C-z_B}$ et $u_D=\dfrac{z_D-z_A}{z_D-z_B}$ : leur quotient $\dfrac{u_C}{u_D}$ est réel exactement quand $C$ et $D$ voient $[AB]$ sous des angles égaux ou supplémentaires — par l'angle inscrit et sa réciproque, $A,B,C,D$ sont alors cocycliques (ou alignés).
+**En une ligne, la cocyclicité.** Lu en deux points $C$ et $D$ plutôt qu'en un seul, le rapport $u$ ci-dessus donne $u_C=\dfrac{z_C-z_A}{z_C-z_B}$ et $u_D=\dfrac{z_D-z_A}{z_D-z_B}$. Par les règles du quotient (chapitre 4), $\arg\!\left(\dfrac{u_C}{u_D}\right) = \arg(u_C) - \arg(u_D)\ [2\pi]$ — l'écart entre l'angle vu depuis $C$ et l'angle vu depuis $D$. Ce quotient $\dfrac{u_C}{u_D}$ est réel exactement quand cette différence vaut $0$ ou $\pi$ (modulo $2\pi$), c'est-à-dire exactement quand $C$ et $D$ voient $[AB]$ sous des angles égaux ou supplémentaires — par l'angle inscrit et sa réciproque, $A,B,C,D$ sont alors cocycliques (ou alignés).
 
 [[figure:nature-triangle-w]]
 

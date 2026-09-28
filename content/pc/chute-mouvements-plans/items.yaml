@@ -172,6 +172,16 @@ misconceptions:
     description: "L'élève retient mal la position des exposants dans la 3e loi, faute de repartir de son établissement."
     contradicts_principle: "L'établissement (egaler $v=\\sqrt{GM/r}$ et $v=2\\pi r/T$) donne directement $T^2/r^3=4\\pi^2/GM$ : le carré est sur la période, le cube sur le rayon."
 
+  # Déclarée le 2026-09-28 (vague D-E, suite du §35/§36 : le coordinateur a
+  # jugé malhonnête le placeholder posé sur les deux distracteurs neufs de
+  # CMP-48, qui utilisaient les BONS exposants mais des données NON
+  # préparées). Portée par trois items dès sa déclaration (CMP-48, CMP-49,
+  # CMP-50).
+  - id: mc.physics.pc_chute_plans.kepler3-donnees-non-preparees
+    label: "« La 3e loi de Kepler ($T^2/r^3$=constante) est appliquée à des données BRUTES, non préparées »"
+    description: "L'élève applique $T^2/r^3=4\\pi^2/GM$ avec les BONS exposants, mais sans préparer les données au préalable : soit il prend pour $r$ la seule altitude au-dessus de la surface de l'astre, au lieu du rayon compté depuis son CENTRE ($r=R_{astre}+\\text{altitude}$) ; soit il élève au carré une durée encore exprimée en jours ou en heures, sans l'avoir d'abord convertie en secondes."
+    contradicts_principle: "La 3e loi exige un rayon d'orbite mesuré depuis le CENTRE de l'astre central ($r=R_{astre}+h$, jamais l'altitude $h$ seule) et une période en SECONDES avant d'être élevée au carré (jamais en jours ou en heures) : ni l'un ni l'autre n'est une question d'exposant, mais de préparation des données AVANT de les faire entrer dans la formule."
+
   - id: mc.physics.pc_chute_plans.geostationnaire-immobile-absolu
     label: "« Le satellite géostationnaire est immobile dans l'espace / n'a pas de vitesse »"
     description: "L'élève confond « immobile par rapport au sol » et « immobile dans l'absolu », en oubliant le référentiel géocentrique."
@@ -2709,7 +2719,7 @@ items:
   # ══════════════════════════════════════════════════════════════
 
   - id: CMP-46
-    rung: "R4"
+    rung: "R5"
     difficulty_level: 4
     habilete: résolution
     skill_code: pc_chute_plans
@@ -2849,8 +2859,9 @@ items:
     skill_code: pc_chute_plans
     tags: [misconception_driven, kepler_geostationnaire, resolution]
     stem: >
-      Une planète possède un satellite naturel en orbite circulaire, à une
-      distance $r = 8{,}0\times10^6\ \text{m}$ de son centre, avec une
+      Un satellite naturel orbite en cercle autour d'une planète de rayon
+      $R = 2{,}0\times10^5\ \text{m}$, à une altitude
+      $h = 2{,}8\times10^6\ \text{m}$ au-dessus de sa surface, avec une
       période $T = 1{,}25$ jours. On donne
       $G \approx 6{,}67\times10^{-11}\ \text{N.m}^2.\text{kg}^{-2}$.
       Quelle est la masse $M$ de la planète ?
@@ -2858,56 +2869,229 @@ items:
     choices:
       - id: A
         text: >-
-          $M \approx 4{,}4\times10^{13}\ \text{kg}$
-        correct: false
-        misconception: mc.physics.pc_chute_plans.kepler3-exposants-inverses
-        feedback: >
-          Cette expression vient d'une 3e loi retenue comme $T/r$ =
-          constante. L'établissement (égaler $v=\sqrt{GM/r}$ et
-          $v=2\pi r/T$) donne $T^2/r^3 = 4\pi^2/GM$ : ni $T$ ni $r$ n'y
-          figurent au premier degré.
+          $M \approx 1{,}4\times10^{21}\ \text{kg}$
+        correct: true
       - id: B
         text: >-
-          $M \approx 3{,}0\times10^{10}\ \text{kg}$
+          $M \approx 1{,}1\times10^{21}\ \text{kg}$
         correct: false
-        misconception: mc.physics.pc_chute_plans.kepler3-exposants-inverses
+        misconception: mc.physics.pc_chute_plans.kepler3-donnees-non-preparees
         feedback: >
-          Cette expression vient d'une 3e loi retenue comme $T^3/r^2$ =
-          constante — les exposants inversés par rapport à
-          $T^2/r^3 = 4\pi^2/GM$, où le carré porte sur la période et le
-          cube sur le rayon, jamais l'inverse.
+          Cette valeur utilise $r = h = 2{,}8\times10^6\ \text{m}$ (l'altitude
+          seule) à la place du rayon de l'orbite, mesuré depuis le CENTRE de
+          la planète : $r = R + h = 2{,}0\times10^5+2{,}8\times10^6 =
+          3{,}0\times10^6\ \text{m}$. La 3e loi de Kepler porte sur ce rayon
+          $r$, jamais sur l'altitude seule au-dessus de la surface.
       - id: C
         text: >-
-          $M \approx 3{,}2\times10^{15}\ \text{kg}$
+          $M \approx 7{,}9\times10^{23}\ \text{kg}$
+        correct: false
+        misconception: mc.physics.pc_chute_plans.kepler3-donnees-non-preparees
+        feedback: >
+          Cette valeur utilise $T = 1{,}25\times3\,600 = 4\,500\ \text{s}$, en
+          traitant les $1{,}25$ JOURS de l'énoncé comme s'ils étaient déjà
+          des HEURES avant de passer aux secondes. Il faut d'abord convertir
+          les jours en heures ($\times24$), puis les heures en secondes
+          ($\times3\,600$) : $T = 1{,}25\times24\times3\,600 =
+          108\,000\ \text{s}$, pas $4\,500\ \text{s}$.
+      - id: D
+        text: >-
+          $M \approx 4{,}6\times10^{14}\ \text{kg}$
         correct: false
         misconception: mc.physics.pc_chute_plans.kepler3-exposants-inverses
         feedback: >
           Cette expression vient d'une 3e loi retenue comme $T^2/r^2$ =
           constante, avec le rayon au carré au lieu du cube. L'établissement
-          donne $T^2/r^3$ : c'est bien le CUBE de $r$ qui doit figurer au
+          (égaler $v=\sqrt{GM/r}$ et $v=2\pi r/T$) donne $T^2/r^3 =
+          4\pi^2/GM$ : c'est bien le CUBE de $r$ qui doit figurer au
+          dénominateur une fois $M$ isolée.
+    correct_feedback: >
+      $T = 1{,}25\times24\times3\,600 = 108\,000\ \text{s}$ ; le rayon de
+      l'orbite se mesure depuis le centre de la planète,
+      $r = R+h = 2{,}0\times10^5+2{,}8\times10^6 = 3{,}0\times10^6\ \text{m}$
+      (pas l'altitude $h$ seule). $M = 4\pi^2 r^3/(GT^2) \approx
+      1{,}4\times10^{21}\ \text{kg}$.
+    solution: |
+      **Le rayon de l'orbite, pas l'altitude.** La 3e loi de Kepler porte sur
+      la distance au CENTRE de la planète, pas sur la hauteur au-dessus de sa
+      surface :
+      $$r = R + h = 2{,}0\times10^5 + 2{,}8\times10^6 = 3{,}0\times10^6\ \text{m}$$
+
+      **La conversion de la période, en secondes, jusqu'au bout.** $1{,}25$
+      jours passe d'abord en heures ($\times24$), puis en secondes
+      ($\times3\,600$) :
+      $$T = 1{,}25\times24\times3\,600 = 108\,000\ \text{s} = 1{,}08\times10^5\ \text{s}$$
+
+      **La 3e loi de Kepler**, établie en égalant $v=\sqrt{GM/r}$ et
+      $v=2\pi r/T$ :
+      $$\frac{T^2}{r^3} = \frac{4\pi^2}{GM} \implies M = \frac{4\pi^2 r^3}{GT^2}$$
+      $$
+      M = \frac{4\pi^2\times(3{,}0\times10^6)^3}
+      {6{,}67\times10^{-11}\times(1{,}08\times10^5)^2}
+      = \frac{39{,}48\times2{,}7\times10^{19}}
+      {6{,}67\times10^{-11}\times1{,}1664\times10^{10}}
+      $$
+      $$M = \frac{1{,}07\times10^{21}}{0{,}778} \approx
+      1{,}4\times10^{21}\ \text{kg}$$
+
+      Deux pièges à distinguer de la bonne démarche : confondre le rayon de
+      l'orbite avec l'altitude seule (donne $1{,}1\times10^{21}$), et
+      confondre les jours de l'énoncé avec des heures avant de convertir en
+      secondes (donne $7{,}9\times10^{23}$).
+
+  # CMP-49 et CMP-50 (2026-09-28) — portent `kepler3-donnees-non-preparees`
+  # (déclarée ci-dessus) à son plancher de 3 items, aux côtés de CMP-48.
+  # Chiffres propres à chaque item : aucun ne reprend R, h, r, T, T en
+  # secondes ou M de CMP-48, ni les valeurs du sujet 2017
+  # (bk-2017-n-x4/2012-r-x4, r'=4,2.10^8 m, T_Io=1,77 j, M_J=1,88.10^27 kg),
+  # ni celles de l'exemple travaillé ou du sommet de la leçon (R_T=6,37.10^6,
+  # M_T=5,97.10^24, T=24 h, r=4,2.10^7, h=3,6.10^7 — cette dernière valeur
+  # réapparaît aussi en CMP-36). CMP-49 teste le premier geste
+  # (rayon confondu avec l'altitude) ; CMP-50 teste le second (durée non
+  # convertie jusqu'au bout). Les deux autres distracteurs de chaque item
+  # restent sur `kepler3-exposants-inverses` (T²/r² et T/r), comme dans
+  # CMP-34…36 et CMP-48 — voir la note de couverture sur l'écart de grandeur
+  # structurel que ces deux formes gardent quels que soient les chiffres
+  # choisis (resolution_2026_09_28_suite).
+  - id: CMP-49
+    rung: "R10"
+    difficulty_level: 4
+    habilete: résolution
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, kepler_geostationnaire, resolution]
+    stem: >
+      Un satellite naturel orbite en cercle autour d'une planète de rayon
+      $R = 5{,}0\times10^5\ \text{m}$, à une altitude
+      $h = 1{,}5\times10^6\ \text{m}$ au-dessus de sa surface, avec une
+      période $T = 2{,}0$ jours. On donne
+      $G \approx 6{,}67\times10^{-11}\ \text{N.m}^2.\text{kg}^{-2}$.
+      Quelle est la masse $M$ de la planète ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $M \approx 1{,}6\times10^{20}\ \text{kg}$
+        correct: true
+      - id: B
+        text: >-
+          $M \approx 6{,}7\times10^{19}\ \text{kg}$
+        correct: false
+        misconception: mc.physics.pc_chute_plans.kepler3-donnees-non-preparees
+        feedback: >
+          Cette valeur utilise $r = h = 1{,}5\times10^6\ \text{m}$
+          (l'altitude seule) à la place du rayon de l'orbite, mesuré depuis
+          le CENTRE de la planète : $r = R + h = 5{,}0\times10^5 +
+          1{,}5\times10^6 = 2{,}0\times10^6\ \text{m}$. La 3e loi de Kepler
+          porte sur ce rayon $r$, jamais sur l'altitude seule au-dessus de
+          la surface.
+      - id: C
+        text: >-
+          $M \approx 7{,}9\times10^{13}\ \text{kg}$
+        correct: false
+        misconception: mc.physics.pc_chute_plans.kepler3-exposants-inverses
+        feedback: >
+          Cette expression vient d'une 3e loi retenue comme $T^2/r^2$ =
+          constante, avec le rayon au carré au lieu du cube. L'établissement
+          (égaler $v=\sqrt{GM/r}$ et $v=2\pi r/T$) donne $T^2/r^3 =
+          4\pi^2/GM$ : c'est bien le CUBE de $r$ qui doit figurer au
           dénominateur une fois $M$ isolée.
       - id: D
         text: >-
-          $M \approx 2{,}6\times10^{22}\ \text{kg}$
-        correct: true
+          $M \approx 6{,}8\times10^{12}\ \text{kg}$
+        correct: false
+        misconception: mc.physics.pc_chute_plans.kepler3-exposants-inverses
+        feedback: >
+          Cette expression vient d'une 3e loi retenue comme $T/r$ =
+          constante. L'établissement donne $T^2/r^3 = 4\pi^2/GM$ : ni $T$
+          ni $r$ n'y figurent au premier degré.
     correct_feedback: >
-      $T^2/r^3 = 4\pi^2/(GM)$, donc $M = 4\pi^2 r^3/(GT^2)$. Avec
-      $T = 1{,}25\times86400 = 1{,}08\times10^5\ \text{s}$ (conversion en
-      secondes faite en premier) : $M \approx
-      2{,}6\times10^{22}\ \text{kg}$.
+      Le rayon de l'orbite se mesure depuis le centre de la planète,
+      $r = R+h = 5{,}0\times10^5+1{,}5\times10^6 = 2{,}0\times10^6\
+      \text{m}$ (pas l'altitude $h$ seule). $T = 2{,}0\times24\times3\,600 =
+      172\,800\ \text{s}$. $M = 4\pi^2 r^3/(GT^2) \approx
+      1{,}6\times10^{20}\ \text{kg}$.
     solution: |
-      $$\frac{T^2}{r^3} = \frac{4\pi^2}{GM} \implies M =
-      \frac{4\pi^2 r^3}{GT^2}$$
-      Conversion de la période en secondes, avant tout calcul :
-      $$T = 1{,}25 \times 86400 = 1{,}08\times10^5\ \text{s}$$
-      $$
-      M = \frac{4\pi^2\times(8{,}0\times10^6)^3}
-      {6{,}67\times10^{-11}\times(1{,}08\times10^5)^2}
-      = \frac{39{,}48\times5{,}12\times10^{20}}
-      {6{,}67\times10^{-11}\times1{,}1664\times10^{10}}
-      $$
-      $$M = \frac{2{,}02\times10^{22}}{0{,}778} \approx
-      2{,}6\times10^{22}\ \text{kg}$$
+      **Le rayon de l'orbite, pas l'altitude.**
+      $$r = R + h = 5{,}0\times10^5 + 1{,}5\times10^6 = 2{,}0\times10^6\ \text{m}$$
+
+      **La période, en secondes.**
+      $$T = 2{,}0\times24\times3\,600 = 172\,800\ \text{s}$$
+
+      **La 3e loi de Kepler :**
+      $$M = \frac{4\pi^2 r^3}{GT^2} = \frac{4\pi^2\times(2{,}0\times10^6)^3}{6{,}67\times10^{-11}\times(172\,800)^2} \approx 1{,}6\times10^{20}\ \text{kg}$$
+
+      Confondre le rayon de l'orbite avec l'altitude seule donne
+      $6{,}7\times10^{19}\ \text{kg}$ ; les deux formes aux exposants
+      inversés donnent $7{,}9\times10^{13}$ et $6{,}8\times10^{12}\
+      \text{kg}$.
+
+  - id: CMP-50
+    rung: "R10"
+    difficulty_level: 4
+    habilete: résolution
+    skill_code: pc_chute_plans
+    tags: [misconception_driven, kepler_geostationnaire, resolution]
+    stem: >
+      Un satellite naturel orbite en cercle autour d'une planète, à un rayon
+      orbital $r = 6{,}0\times10^6\ \text{m}$, avec une période
+      $T = 3{,}0$ jours. On donne
+      $G \approx 6{,}67\times10^{-11}\ \text{N.m}^2.\text{kg}^{-2}$.
+      Quelle est la masse $M$ de la planète ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $M \approx 1{,}9\times10^{21}\ \text{kg}$
+        correct: true
+      - id: B
+        text: >-
+          $M \approx 1{,}1\times10^{24}\ \text{kg}$
+        correct: false
+        misconception: mc.physics.pc_chute_plans.kepler3-donnees-non-preparees
+        feedback: >
+          Cette valeur utilise $T = 3{,}0\times3\,600 = 10\,800\ \text{s}$,
+          en traitant les $3{,}0$ JOURS de l'énoncé comme s'ils étaient
+          déjà des HEURES avant de passer aux secondes. Il faut d'abord
+          convertir les jours en heures ($\times24$), puis les heures en
+          secondes ($\times3\,600$) : $T = 3{,}0\times24\times3\,600 =
+          259\,200\ \text{s}$, pas $10\,800\ \text{s}$.
+      - id: C
+        text: >-
+          $M \approx 3{,}2\times10^{14}\ \text{kg}$
+        correct: false
+        misconception: mc.physics.pc_chute_plans.kepler3-exposants-inverses
+        feedback: >
+          Cette expression vient d'une 3e loi retenue comme $T^2/r^2$ =
+          constante, avec le rayon au carré au lieu du cube. L'établissement
+          donne $T^2/r^3 = 4\pi^2/GM$ : c'est bien le CUBE de $r$ qui doit
+          figurer au dénominateur une fois $M$ isolée.
+      - id: D
+        text: >-
+          $M \approx 1{,}4\times10^{13}\ \text{kg}$
+        correct: false
+        misconception: mc.physics.pc_chute_plans.kepler3-exposants-inverses
+        feedback: >
+          Cette expression vient d'une 3e loi retenue comme $T/r$ =
+          constante. L'établissement donne $T^2/r^3 = 4\pi^2/GM$ : ni $T$
+          ni $r$ n'y figurent au premier degré.
+    correct_feedback: >
+      $T = 3{,}0\times24\times3\,600 = 259\,200\ \text{s}$ (jours convertis
+      jusqu'au bout, pas seulement en heures). $M = 4\pi^2 r^3/(GT^2)
+      \approx 1{,}9\times10^{21}\ \text{kg}$.
+    solution: |
+      **La période, en secondes, jusqu'au bout.** $3{,}0$ jours passe
+      d'abord en heures ($\times24$), puis en secondes ($\times3\,600$) :
+      $$T = 3{,}0\times24\times3\,600 = 259\,200\ \text{s}$$
+
+      **La 3e loi de Kepler :**
+      $$M = \frac{4\pi^2 r^3}{GT^2} = \frac{4\pi^2\times(6{,}0\times10^6)^3}{6{,}67\times10^{-11}\times(259\,200)^2} \approx 1{,}9\times10^{21}\ \text{kg}$$
+
+      S'arrêter à la conversion en heures ($T=10\,800\ \text{s}$ au lieu de
+      $259\,200\ \text{s}$) donne $1{,}1\times10^{24}\ \text{kg}$ — une
+      masse elle aussi plausible pour une planète, ce qui rend le calcul
+      complet, et non une estimation d'ordre de grandeur, nécessaire pour
+      trancher. Les deux formes aux exposants inversés donnent
+      $3{,}2\times10^{14}$ et $1{,}4\times10^{13}\ \text{kg}$.
 
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, et il faut dire pourquoi : la version précédente
@@ -3039,10 +3223,11 @@ coverage_summary:
     mc.physics.pc_chute_plans.orbite-sans-gravite:                     { count: 3, items: [CMP-31, CMP-32, CMP-33] }
     mc.physics.pc_chute_plans.orbite-necessite-force-tangentielle:     { count: 3, items: [CMP-31, CMP-32, CMP-33] }
     mc.physics.pc_chute_plans.vitesse-orbitale-depend-masse-satellite: { count: 3, items: [CMP-31, CMP-32, CMP-33] }
-    mc.physics.pc_chute_plans.kepler3-exposants-inverses:              { count: 4, items: [CMP-34, CMP-35, CMP-36, CMP-48] }
+    mc.physics.pc_chute_plans.kepler3-exposants-inverses:              { count: 6, items: [CMP-34, CMP-35, CMP-36, CMP-48, CMP-49, CMP-50] }
     mc.physics.pc_chute_plans.geostationnaire-immobile-absolu:         { count: 3, items: [CMP-34, CMP-35, CMP-36] }
     mc.physics.pc_chute_plans.geostationnaire-toute-altitude:          { count: 3, items: [CMP-34, CMP-35, CMP-36] }
-  total_items: 48
+    mc.physics.pc_chute_plans.kepler3-donnees-non-preparees:           { count: 3, items: [CMP-48, CMP-49, CMP-50] }   # neuve 2026-09-28, vague D-E
+  total_items: 50
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -3050,13 +3235,13 @@ coverage_summary:
     R1: 5
     R2: 3
     R3: 3
-    R4: 4
-    R5: 4
+    R4: 3
+    R5: 5
     R6: 3
     R7: 9
     R8: 3
     R9: 3
-    R10: 4
+    R10: 6
     R11: 4
     note: >-
       Le plancher de barreau (>= 3 items par barreau) est tenu partout. R1 en
@@ -3064,9 +3249,15 @@ coverage_summary:
       CMP-42 puis CMP-44/CMP-45, extension Archimède, frottement quadratique
       — audit audit-banque-pc1.md, C1-C4, puis passe critique wave-1 du
       2026-09-27, C-4/I-7) et R11 en porte 4 (CMP-22/23/24, et CMP-43
-      re-dressé en place par la même passe wave-1, C-5). R4, R5 et R10 en
-      portent désormais 4 chacun depuis l'ajout de CMP-46/47/48 (item-author,
-      2026-09-27, audit-banque C5/C6/C7).
+      re-dressé en place par la même passe wave-1, C-5). R5 et R10 en
+      portent 4 depuis l'ajout de CMP-46/47/48 (item-author, 2026-09-27,
+      audit-banque C5/C6/C7). CMP-46 a été déplacé de R4 à R5 le 2026-09-28
+      (vague D-E, DECISIONS-EN-ATTENTE.md §35/§36) : le geste qu'il teste
+      (passer de $x_E$ à $OE$ le long d'un plan incliné) n'est enseigné qu'en
+      R5. R4 retombe à 3 (plancher nu, sans marge), R5 monte à 5. R10 monte
+      à 6 le même jour avec CMP-49 et CMP-50, qui portent `kepler3-donnees-
+      non-preparees` (neuve) à son plancher de 3 aux côtés de CMP-48 — voir
+      resolution_2026_09_28_suite.
   honest_state: >-
     Les 22 misconceptions déclarées sont couvertes, aucune sous le plancher.
     Dix d'entre elles y siègent EXACTEMENT (3 items) : la marge est nulle et
@@ -3106,3 +3297,77 @@ coverage_summary:
     pièges que l'audit nommait (conversion d'unité, rayon vs altitude)
     restent un vrai trou de couverture, signalé au pedagogy-architect pour
     une déclaration future accompagnée d'un plan à 3 items.
+
+    MISE À JOUR 2026-09-28 (vague D-E, DECISIONS-EN-ATTENTE.md §35/§36) : les
+    trois distracteurs de CMP-48 étaient tous barrables par ordre de grandeur
+    contre la clé $2{,}6\times10^{22}\ \text{kg}$ ($4{,}4\times10^{13}$,
+    $3{,}0\times10^{10}$, $3{,}2\times10^{15}$). L'énoncé est reconstruit
+    (un rayon planétaire $R$ et une altitude $h$ remplacent le rayon
+    d'orbite donné directement ; $M$ recalculée à
+    $\approx1{,}4\times10^{21}\ \text{kg}$) et DEUX des trois distracteurs
+    portent maintenant les deux pièges que l'audit nommait, avec des valeurs
+    dans $10^{21}$–$10^{24}$ : « $r$ confondu avec l'altitude seule »
+    ($\approx1{,}1\times10^{21}$) et « les jours traités comme des heures
+    avant la conversion en secondes » ($\approx7{,}9\times10^{23}$). Le
+    troisième distracteur (T²/r², $\approx4{,}6\times10^{14}$) reste
+    barrable par ordre de grandeur — la consigne demandait d'en corriger au
+    moins deux, pas les trois. AUCUNE ID NEUVE DÉCLARÉE : faute d'un
+    identifiant honnête pour « rayon confondu avec altitude » et « unité de
+    temps non convertie », les deux nouveaux distracteurs restent rattachés
+    à `kepler3-exposants-inverses` — un PLACEHOLDER, pas une affirmation que
+    ces deux erreurs sont des exposants mal mémorisés (elles ne le sont pas :
+    les deux nouveaux distracteurs utilisent les BONS exposants, seule une
+    des DONNÉES est mal lue ou mal convertie). Le compte de
+    `kepler3-exposants-inverses` ne change pas (toujours 4 items,
+    CMP-34/35/36/48), mais sa marge de diagnostic à l'intérieur de CMP-48
+    reste faible (3 de ses 4 choix). Deux ids honnêtes restent à ouvrir,
+    chacune avec son propre plan à 3 items, si le propriétaire les juge
+    utiles : une pour « rayon d'orbite confondu avec l'altitude au-dessus de
+    la surface » (probablement transférable à d'autres notions de mécanique
+    orbitale), une pour « unité de temps non convertie jusqu'au bout (jours
+    → heures → secondes) » (probablement transférable à toute notion qui
+    élève un temps au carré ou au cube après conversion).
+  resolution_2026_09_28_suite: >-
+    Le coordinateur a jugé, à raison, le placeholder ci-dessus inacceptable :
+    un distracteur tagué sur un id dont la description ne nomme pas son
+    mécanisme est un tag malhonnête. Corrigé le même jour :
+    `kepler3-donnees-non-preparees` est déclarée (voir le bloc
+    `misconceptions`, juste après `kepler3-exposants-inverses`), décrivant
+    exactement les deux gestes — rayon compté depuis la surface au lieu du
+    centre, durée non convertie en secondes avant d'être élevée au carré.
+    CMP-48/B et CMP-48/C sont retagués sur ce nouvel id. Deux items neufs,
+    CMP-49 (R10, teste le geste du rayon) et CMP-50 (R10, teste le geste de
+    la durée), portent l'id à son plancher de 3 (CMP-48, CMP-49, CMP-50).
+    Chiffres propres à chaque item — aucun repris de CMP-48, du sujet 2017
+    (bk-2017-n-x4/2012-r-x4 : $r'=4{,}2\times10^8$, $T_{Io}=1{,}77$ j,
+    $M_J=1{,}88\times10^{27}$ kg), de l'exemple travaillé de la leçon
+    ($R_T=6{,}37\times10^6$, $M_T=5{,}97\times10^{24}$, $T=24$ h,
+    $r=4{,}2\times10^7$, $h=3{,}6\times10^7$), ni de CMP-36 (qui réutilise
+    cette dernière valeur de rayon). Les deux AUTRES distracteurs de CMP-49
+    et CMP-50 restent sur `kepler3-exposants-inverses` (T²/r² et T/r), qui
+    monte de 4 à 6 items (CMP-34/35/36/48/49/50) — aucun plafond déclaré
+    pour cette notion, donc rien à arbitrer là.
+
+    ÉCART DE GRANDEUR STRUCTUREL, VÉRIFIÉ ET NON CORRIGÉ. Les distracteurs
+    `kepler3-exposants-inverses` de CMP-49 et CMP-50 restent barrables par
+    ordre de grandeur (10¹²–10¹⁴ kg contre des clés à 10²⁰–10²¹ kg), et ce
+    n'est pas un défaut de choix de chiffres : l'écart entre la forme
+    correcte ($r^3/T^2$) et une forme aux exposants inversés (par exemple
+    $r^2/T^2$) vaut exactement un facteur $r$ (ici $2\times10^6$ ou
+    $6\times10^6$ mètres) — et $r$, pour une orbite réelle, ne peut pas être
+    proche de 1 sans cesser d'être une orbite. Vérifié sur les trois formes
+    pour les deux items : $T/r$ diverge de la clé par un facteur $r^2/T$
+    (~$10^7$), $T^3/r^2$ par un facteur $rT$ (~$10^{11}$, la pire des
+    trois — volontairement écartée des distracteurs neufs), $T^2/r^2$ par
+    un facteur $r$ (~$10^6$, comparable à l'écart déjà accepté sur le
+    distracteur D de CMP-48 lui-même, $\approx3\times10^6$). Un élève qui
+    connaît l'ordre de grandeur réel d'une masse planétaire peut écarter ces
+    deux-là sans calcul — mais ne peut PAS, par ce seul geste, trancher
+    entre la clé et le distracteur `kepler3-donnees-non-preparees` de chaque
+    item (CMP-50/B, $1{,}1\times10^{24}\ \text{kg}$, est une masse tout
+    aussi plausible que la clé $1{,}9\times10^{21}\ \text{kg}$) : c'est là,
+    et seulement là, que le calcul complet reste nécessaire. Les deux
+    distracteurs `kepler3-exposants-inverses` de CMP-49/50 ne sont donc pas
+    moins bien conçus que ceux, déjà en place, de CMP-34…36 et CMP-48 — ils
+    partagent la même limite mathématique, propre à cette famille d'erreur
+    à cette échelle physique, et non à un choix de nombres.

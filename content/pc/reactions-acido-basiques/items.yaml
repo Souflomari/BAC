@@ -2977,6 +2977,11 @@ items:
   #    de la formule — quantités initiales inégales (RAB-50). Couples
   #    propres à chaque item, distincts du chapitre 7 (4,8/3,8) et de la
   #    banque (4,79/3,75).
+  # MISE À JOUR 2026-09-28 (vague D-E, DECISIONS-EN-ATTENTE.md §35/§36) :
+  # RAB-48 donnait pK_A2=9,0, donc pH=7,0 — une valeur devinable sans calcul
+  # (le « 7 neutre » réflexe). pK_A2 changé à 8,0 (pH=6,5) ; les quatre
+  # choix et le texte recalculés. RAB-49 : difficulty_level 5→4, l'inversion
+  # d'une formule à une seule étape ne justifiait pas le niveau le plus haut.
   - id: RAB-48
     rung: "R7"
     difficulty_level: 4
@@ -2986,7 +2991,7 @@ items:
     stem: >
       On mélange, dans un même volume, des quantités initiales ÉGALES
       $n_0$ d'un acide $A_1H$ (couple $A_1H/A_1^-$, $pK_{A1} = 5{,}0$) et
-      d'une base $A_2^-$ (couple $A_2H/A_2^-$, $pK_{A2} = 9{,}0$), sans
+      d'une base $A_2^-$ (couple $A_2H/A_2^-$, $pK_{A2} = 8{,}0$), sans
       aucune trace initiale de $A_1^-$ ni de $A_2H$. Quel est le pH du
       mélange à l'équilibre ?
     type: mcq
@@ -3005,7 +3010,7 @@ items:
           qu'une — que $[H_3O^+]_{eq}^2 = K_{A1}K_{A2}$ apparaît.
       - id: B
         text: >-
-          $\text{pH} = 4{,}0$
+          $\text{pH} = 3{,}0$
         correct: false
         misconception: AB-BASE-9
         feedback: >
@@ -3017,7 +3022,7 @@ items:
           des deux couples, le pH décrit l'acidité du mélange.
       - id: C
         text: >-
-          $\text{pH} = 14{,}0$
+          $\text{pH} = 13{,}0$
         correct: false
         misconception: AB-BASE-9
         feedback: >
@@ -3029,7 +3034,7 @@ items:
           après le passage au log, pas de s'arrêter à la somme des $pK_A$.
       - id: D
         text: >-
-          $\text{pH} = 7{,}0$
+          $\text{pH} = 6{,}5$
         correct: true
     correct_feedback: >
       En posant $[H_3O^+]_{eq}=K_{A1}[A_1H]_{eq}/[A_1^-]_{eq}$ et
@@ -3037,7 +3042,7 @@ items:
       (les quantités initiales égales font que
       $[A_1H]_{eq}[A_2H]_{eq} = [A_1^-]_{eq}[A_2^-]_{eq}$),
       $[H_3O^+]_{eq}^2=K_{A1}K_{A2}$, d'où
-      $\text{pH}=(pK_{A1}+pK_{A2})/2=7{,}0$.
+      $\text{pH}=(pK_{A1}+pK_{A2})/2=6{,}5$.
     solution: |
       Quantités initiales égales $n_0$ de $A_1H$ et de $A_2^-$, même
       volume, même avancement $x$ à l'équilibre pour les deux couples
@@ -3055,11 +3060,11 @@ items:
 
       $$[H_3O^+]_{eq}^2 = K_{A1}K_{A2}\times\frac{[A_1H]_{eq}\,[A_2H]_{eq}}{[A_1^-]_{eq}\,[A_2^-]_{eq}} = K_{A1}K_{A2}$$
 
-      $$\text{pH} = \frac{pK_{A1}+pK_{A2}}{2} = \frac{5{,}0+9{,}0}{2} = 7{,}0$$
+      $$\text{pH} = \frac{pK_{A1}+pK_{A2}}{2} = \frac{5{,}0+8{,}0}{2} = 6{,}5$$
 
   - id: RAB-49
     rung: "R7"
-    difficulty_level: 5
+    difficulty_level: 4
     skill_code: pc_reactions_acido_basiques
     habilete: résolution
     tags: ["pH-melange-deux-couples", "relation-inversee"]

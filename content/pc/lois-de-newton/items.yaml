@@ -63,6 +63,21 @@ misconceptions:
       Oublier le facteur ½ (ou 2) dans h = ½·g·t², oublier la racine carrée
       dans v = √(2·a·d), ou traiter un mouvement accéléré comme à vitesse
       constante (h = g·t, v = a·d).
+  - id: mc.physics.pc_lois_newton.pente-de-graphe-mal-lue
+    label: "La pente d'une droite mal lue sur un graphe cinématique"
+    description: >-
+      Déclarée le 2026-09-28 (vague D-E, DECISIONS-EN-ATTENTE.md §35/§36),
+      distincte d'`erreur-cinematique-uniforme` (qui vise un facteur ½ ou 2
+      mal placé dans une FORMULE). Ici l'erreur est un GESTE DE LECTURE DE
+      GRAPHE, quelle que soit la formule : traiter une droite affine
+      (v = at + v₀, avec v₀ ≠ 0 à l'origine) comme si elle passait par
+      l'origine (calculer v₂/t₂ au lieu de Δv/Δt) ; diviser la variation par
+      un seul temps compté depuis l'origine du graphe (÷t₂) plutôt que par
+      l'intervalle Δt = t₂ − t₁ ; inverser l'ordre des deux points au
+      numérateur sans l'inverser au dénominateur (ce qui change le signe de
+      la pente, donc masque une décélération) ; ou relire l'abscisse d'un
+      point sur un axe transformé (t², par exemple) comme si c'était
+      directement t.
   - id: mc.physics.pc_lois_newton.action-reaction-meme-corps
     label: "Paire action-réaction confondue avec deux forces en équilibre sur un même corps"
     description: >-
@@ -2904,21 +2919,24 @@ items:
   # (bk-2022-r-x4 pour N1 : m=2 kg, alpha=17,5°, F≈12 N ; bk-2019-n-x4 pour
   # N2 : m=190 kg, beta=10°, F≈525 N ; bk-2017-n-x4 pour N3 : le contexte
   # skieur/ski, N≈586 N — aucune de ces valeurs n'apparaît ci-dessous).
-  # Les trois placés au rung 7 (méthode bilan/projection sur plan incliné) :
-  # c'est le rung où la leçon établit N=mg.cos(alpha) (L395-401) et où les
-  # trois sujets bancarisés posent le même bilan à trois forces.
+  # N1 (LDN-39) et N2 (LDN-40) sont au rung 6 depuis le 2026-09-28 (vague
+  # D-E, DECISIONS-EN-ATTENTE.md §35/§36) : ce sont des lectures de pente sur
+  # un graphe, gestes enseignés au rung 6, pas le bilan/projection à trois
+  # forces du rung 7 (où N3/LDN-41 reste). N3 (LDN-41) reste au rung 7.
   #
-  # N1 (LDN-39) et N2 (LDN-40) réutilisent `erreur-cinematique-uniforme` :
-  # « oublier le facteur 1/2 (ou 2) », « traiter un mouvement accéléré
-  # comme à vitesse constante » couvre honnêtement la pente d'une droite
-  # x=f(t^2) (oubli du facteur 2, facteur appliqué deux fois, abscisse
-  # relue comme t au lieu de t^2) et celle d'une droite v=f(t) qui ne part
-  # pas de l'origine (v_2/t_2 en ignorant v_0, ordre inversé au numérateur
-  # sans l'être au dénominateur, division par t_2 seul). Aucune des 20
-  # misconceptions déclarées ne nomme spécifiquement une lecture de pente
-  # sur un graphe ; deux nouvelles id auraient chacune exigé un plan à 3
-  # items hors du mandat de cette passe (un item par gap) — signalé au
-  # pedagogy-architect ci-dessous plutôt que forcé.
+  # N1 (LDN-39) et N2 (LDN-40) — RETAGUÉS le 2026-09-28. Les distracteurs qui
+  # portent sur le facteur ½ de x=½at² (LDN-39/A, LDN-39/C) restent sous
+  # `erreur-cinematique-uniforme` : c'est une erreur de FORMULE, pas de
+  # lecture de graphe. Les distracteurs qui lisent mal la pente elle-même
+  # (LDN-39/D, abscisse t² relue comme t ; LDN-40/A, v_2/t_2 en ignorant
+  # l'ordonnée à l'origine ; LDN-40/B, ordre inversé au numérateur sans
+  # l'être au dénominateur ; LDN-40/D, division par t_2 seul) portent
+  # désormais `pente-de-graphe-mal-lue`, déclarée ci-dessus et portée à son
+  # plancher de 3 items par LDN-42 (une droite v=f(t) décroissante, rung 6,
+  # même famille de gestes sur un cas neuf). LDN-40 sort du compte de
+  # `erreur-cinematique-uniforme` (plus aucun de ses distracteurs n'y reste
+  # tagué) ; ce compte retombe de 5 à 4 items — encore loin au-dessus du
+  # plancher (LDN-22, LDN-26, LDN-32, LDN-39).
   #
   # N3 (LDN-41) réutilise deux id déjà déclarées plutôt que d'en créer une
   # 21e pour « R = N+f au lieu de Pythagore » : `role-normale-mal-compris`
@@ -2929,17 +2947,15 @@ items:
   # horizontal) reprend `projection-plan-incline`, son exemple déclaré
   # verbatim (« prend N=mg comme à l'horizontale »).
   #
-  # SIGNALÉ pour une passe future : aucune des 20 misconceptions de ce
-  # fichier ne nomme une pente lue sur un graphe (droite x=f(t^2) ou
-  # v=f(t)) ni une combinaison de deux forces perpendiculaires par une
+  # SIGNALÉ pour une passe future : aucune des 21 misconceptions de ce
+  # fichier ne nomme une combinaison de deux forces perpendiculaires par une
   # somme algébrique plutôt que par Pythagore (l'analogue en FORCES de ce
   # que `acceleration-traitee-comme-un-nombre` nomme déjà pour les
-  # composantes de l'ACCÉLÉRATION, Forme E) — deux trous de couverture
-  # réels, chacun candidat à sa propre id s'il s'accompagne d'un plan à 3
-  # items.
+  # composantes de l'ACCÉLÉRATION, Forme E) — un trou de couverture réel,
+  # candidat à sa propre id s'il s'accompagne d'un plan à 3 items.
 
   - id: LDN-39
-    rung: "R7"
+    rung: "R6"
     difficulty_level: 3
     skill_code: pc_lois_newton
     tags: []
@@ -2981,7 +2997,7 @@ items:
         text: >-
           $a \approx 0{,}67\ \text{m/s}^2$
         correct: false
-        misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+        misconception: mc.physics.pc_lois_newton.pente-de-graphe-mal-lue
         feedback: >
           Ce calcul traite l'abscisse $9$ comme un temps $t=9\ \text{s}$,
           alors que l'axe horizontal porte $t^2$, pas $t$ : le point donné
@@ -3002,11 +3018,11 @@ items:
       $$a = 2\times3{,}0 = 6{,}0\ \text{m/s}^2$$
 
   - id: LDN-40
-    rung: "R7"
+    rung: "R6"
     difficulty_level: 3
     skill_code: pc_lois_newton
     tags: []
-    primary_misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+    primary_misconception: mc.physics.pc_lois_newton.pente-de-graphe-mal-lue
     stem: >
       Sur un graphe donnant la vitesse $v$ du centre d'inertie $G$ d'un
       solide en fonction du temps, la courbe obtenue est une droite. Elle
@@ -3019,7 +3035,7 @@ items:
         text: >-
           $a \approx 3{,}7\ \text{m/s}^2$
         correct: false
-        misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+        misconception: mc.physics.pc_lois_newton.pente-de-graphe-mal-lue
         feedback: >
           Ce calcul prend $v_2/t_2$ comme si la droite passait par
           l'origine, comme dans $v=at$. Mais $v_1=10\ \text{m/s}\neq0$ à
@@ -3031,7 +3047,7 @@ items:
         text: >-
           $a = -3{,}0\ \text{m/s}^2$
         correct: false
-        misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+        misconception: mc.physics.pc_lois_newton.pente-de-graphe-mal-lue
         feedback: >
           Ce calcul inverse l'ordre de la soustraction au numérateur
           ($v_1-v_2$) sans l'inverser au dénominateur : la pente
@@ -3046,7 +3062,7 @@ items:
         text: >-
           $a = 2{,}0\ \text{m/s}^2$
         correct: false
-        misconception: mc.physics.pc_lois_newton.erreur-cinematique-uniforme
+        misconception: mc.physics.pc_lois_newton.pente-de-graphe-mal-lue
         feedback: >
           Ce calcul divise la variation de vitesse $v_2-v_1$ par $t_2$
           seul, sans soustraire $t_1$. La pente d'une droite se lit sur un
@@ -3132,6 +3148,79 @@ items:
       $$R = \sqrt{N^2+f^2} = \sqrt{8{,}0^2+6{,}0^2} = \sqrt{64+36} =
       \sqrt{100} = 10{,}0\ \text{N}$$
 
+  # Ajouté le 2026-09-28 (vague D-E, DECISIONS-EN-ATTENTE.md §35/§36), pour
+  # porter `pente-de-graphe-mal-lue` (déclarée ci-dessus, LDN-39/D et
+  # LDN-40/A,B,D) à son plancher de 3 items. Lecture NEUVE par rapport à
+  # LDN-40 : une droite v=f(t) qui DÉCROÎT (décélération), pour que le piège
+  # du signe (inverser l'ordre au numérateur sans l'inverser au dénominateur)
+  # masque cette fois une décélération plutôt qu'une accélération.
+  - id: LDN-42
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: pc_lois_newton
+    tags: []
+    primary_misconception: mc.physics.pc_lois_newton.pente-de-graphe-mal-lue
+    stem: >
+      Sur un graphe donnant la vitesse $v$ du centre d'inertie $G$ d'un
+      solide en fonction du temps, la courbe obtenue est une droite. Elle
+      passe par les points $(t_1=1{,}0\ \text{s}\,;\,v_1=18\ \text{m/s})$ et
+      $(t_2=5{,}0\ \text{s}\,;\,v_2=6{,}0\ \text{m/s})$. Quelle est la valeur
+      de l'accélération $a$ de ce solide ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $a = 1{,}2\ \text{m/s}^2$
+        correct: false
+        misconception: mc.physics.pc_lois_newton.pente-de-graphe-mal-lue
+        feedback: >
+          Ce calcul prend $v_2/t_2$ comme si la droite passait par
+          l'origine, comme dans $v=at$. Mais $v_1=18\ \text{m/s}\neq0$ à
+          $t_1=1{,}0\ \text{s}$ : la relation est $v=at+v_0$, une droite
+          AFFINE — sa pente se lit avec DEUX points, jamais avec un seul
+          rapporté à une origine qui n'est pas la bonne.
+      - id: B
+        text: >-
+          $a = +3{,}0\ \text{m/s}^2$
+        correct: false
+        misconception: mc.physics.pc_lois_newton.pente-de-graphe-mal-lue
+        feedback: >
+          Ce calcul inverse l'ordre de la soustraction au numérateur
+          ($v_1-v_2$) sans l'inverser au dénominateur : la pente
+          $a=(v_2-v_1)/(t_2-t_1)$ doit garder le MÊME ordre aux deux étages
+          de la fraction. Ici $v$ DIMINUE avec $t$ ($6{,}0<18$) : $a$ est
+          négative, le mouvement décélère — inverser l'ordre au numérateur
+          seul masque cette décélération derrière un signe positif.
+      - id: C
+        text: >-
+          $a = -2{,}4\ \text{m/s}^2$
+        correct: false
+        misconception: mc.physics.pc_lois_newton.pente-de-graphe-mal-lue
+        feedback: >
+          Ce calcul divise la variation de vitesse $v_2-v_1$ par $t_2$ seul,
+          sans soustraire $t_1$. La pente d'une droite se lit sur un
+          INTERVALLE de temps, $\Delta t=t_2-t_1$ — pas sur une durée
+          comptée depuis l'origine du graphe, qui n'est pas l'instant $t_1$
+          ici.
+      - id: D
+        text: >-
+          $a = -3{,}0\ \text{m/s}^2$
+        correct: true
+    correct_feedback: >
+      La droite ne passe pas par l'origine ($v_1\neq0$) : il faut deux
+      points pour sa pente. $a = \Delta v/\Delta t = (v_2-v_1)/(t_2-t_1) =
+      (6{,}0-18)/(5{,}0-1{,}0) = -3{,}0\ \text{m/s}^2$, négative car $v$
+      décroît avec $t$.
+    solution: |
+      Le mouvement est uniformément décéléré : $v(t)=at+v_0$, une droite
+      affine de pente négative. Sa pente se lit entre deux points
+      quelconques de la droite, dans le MÊME ordre au numérateur et au
+      dénominateur :
+      $$a = \frac{\Delta v}{\Delta t} = \frac{v_2-v_1}{t_2-t_1} =
+      \frac{6{,}0-18}{5{,}0-1{,}0} = \frac{-12}{4} = -3{,}0\ \text{m/s}^2$$
+      Le signe négatif est cohérent avec une vitesse qui décroît de
+      $18\ \text{m/s}$ à $6{,}0\ \text{m/s}$ : le mouvement est décéléré.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après LDN-28 à LDN-33. Dix familles siégeaient sous le
 # plancher de 3 items du banc : la relativité du mouvement, le référentiel
@@ -3157,7 +3246,8 @@ coverage_summary:
     mc.physics.pc_lois_newton.resultante-mal-composee:                   { count: 3, items: [LDN-15, LDN-20, LDN-31] }
     mc.physics.pc_lois_newton.masse-poids-confondus:                     { count: 3, items: [LDN-5, LDN-21, LDN-27] }
     mc.physics.pc_lois_newton.chute-depend-masse:                        { count: 3, items: [LDN-5, LDN-21, LDN-22] }
-    mc.physics.pc_lois_newton.erreur-cinematique-uniforme:               { count: 5, items: [LDN-22, LDN-26, LDN-32, LDN-39, LDN-40] }
+    mc.physics.pc_lois_newton.erreur-cinematique-uniforme:               { count: 4, items: [LDN-22, LDN-26, LDN-32, LDN-39] }   # LDN-40 retiré le 2026-09-28, voir MISE À JOUR ci-dessous
+    mc.physics.pc_lois_newton.pente-de-graphe-mal-lue:                   { count: 3, items: [LDN-39, LDN-40, LDN-42] }   # neuve 2026-09-28, vague D-E
     mc.physics.pc_lois_newton.action-reaction-meme-corps:                { count: 3, items: [LDN-4, LDN-17, LDN-32] }
     mc.physics.pc_lois_newton.action-reaction-inegale-ou-conditionnelle: { count: 3, items: [LDN-4, LDN-16, LDN-17] }
     mc.physics.pc_lois_newton.mouvement-absolu:                          { count: 3, items: [LDN-10, LDN-28, LDN-33] }
@@ -3169,7 +3259,7 @@ coverage_summary:
     mc.physics.pc_lois_newton.frottement-mal-traite:                     { count: 5, items: [LDN-6, LDN-13, LDN-20, LDN-25, LDN-26] }
     mc.physics.pc_lois_newton.frottement-absent-accelere:                { count: 3, items: [LDN-7, LDN-29, LDN-31] }
     mc.physics.pc_lois_newton.acceleration-traitee-comme-un-nombre:      { count: 5, items: [LDN-34, LDN-35, LDN-36, LDN-37, LDN-38] }
-  total_items: 41
+  total_items: 42
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -3179,8 +3269,8 @@ coverage_summary:
     R3: 6
     R4: 3
     R5: 4
-    R6: 4
-    R7: 6
+    R6: 7
+    R7: 4
     R8: 6
   honest_state: >-
     Les vingt misconceptions déclarées sont couvertes, aucune sous le
@@ -3215,3 +3305,23 @@ coverage_summary:
     sortait du mandat de cette passe (un item par gap). Signalé au
     pedagogy-architect pour une déclaration future, chacune accompagnée
     d'un plan à 3 items avant d'être ajoutée.
+
+    MISE À JOUR 2026-09-28 (vague D-E, DECISIONS-EN-ATTENTE.md §35/§36) :
+    le premier des deux trous signalés ci-dessus est comblé. `pente-de-
+    graphe-mal-lue` est déclarée (21e id) : elle porte les quatre
+    distracteurs qui lisent mal une pente sur un graphe cinématique
+    (LDN-39/D, l'abscisse $t^2$ relue comme $t$ ; LDN-40/A, $v_2/t_2$ en
+    ignorant l'ordonnée à l'origine ; LDN-40/B, l'ordre inversé au
+    numérateur sans l'être au dénominateur ; LDN-40/D, la division par
+    $t_2$ seul), et atteint son plancher de 3 grâce à LDN-42 (rung 6, une
+    droite $v=f(t)$ DÉCROISSANTE — cas neuf, pas une répétition de LDN-40).
+    Les distracteurs de LDN-39 qui portent sur le facteur ½ de $x=\frac12
+    at^2$ (LDN-39/A, LDN-39/C) restent sous `erreur-cinematique-uniforme`,
+    une erreur de FORMULE et non de lecture de graphe. Conséquence :
+    `erreur-cinematique-uniforme` retombe de 5 à 4 items (LDN-40 n'y porte
+    plus aucun distracteur), toujours loin au-dessus du plancher. LDN-39 et
+    LDN-40 sont aussi déplacés du rung 7 au rung 6 : le geste qu'ils testent
+    (lire une pente sur un graphe) est enseigné au rung 6, pas au
+    bilan/projection à trois forces du rung 7 où LDN-41 (N3) reste à juste
+    titre. Le second trou (« $R=N+f$ au lieu de Pythagore ») reste ouvert,
+    hors mandat de cette passe.
