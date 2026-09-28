@@ -2125,3 +2125,48 @@ leur fond) :
   lui nomme l'erreur) — un défaut de gabarit sur toute la vague, à trancher passage par passage.
 - *Récapitulatifs express* non mis à jour (cinq notions) ; un repère de figure anisotrope
   (`impact-plan-incline`) qui déforme l'angle même dont le cosinus est la leçon.
+
+## 37. Le cadre relu ligne à ligne : 35 lignes sans chapitre — et une question que seul le propriétaire tranche
+
+**LE FAIT.** L'audit de dette d'examen partait des banques ; il ne pouvait pas voir ce qu'aucune banque
+n'atteste (ADR 0036). La question retournée — chaque ligne du cadre a-t-elle un chapitre qui l'enseigne
+et un item qui la teste ? — a lu 343 lignes : 286 couvertes, 5 enseignées sans item, 17 seulement
+énoncées, **35 absentes** (`docs/audits/cadre-couverture.md`, plan par vague dans
+`docs/audits/DETTE-CADRE.md`). Les absences les plus lourdes ont été re-cherchées sous plusieurs formes
+avant d'être crues : les espaces vectoriels (aucun chapitre ; le sujet vérifié bk-2023-n-x5 demande un
+sous-espace), le logarithme de base a et `x^α`, le PPCM, la linéarisation, la variance.
+
+**LA QUESTION DU PROPRIÉTAIRE (défaut écrit, pour ne pas bloquer).** Le cadre PC imprime, p. 14, le
+suivi temporel d'une transformation « par titrage » (`pc-physique-chimie.yaml:398`) ; la même fiche
+porte une exclusion DÉRIVÉE, « dosages d'oxydo-réduction quantitatifs » (`:480`). Les deux ne tiennent
+pas ensemble. **Défaut : la ligne imprimée gagne sur l'exclusion dérivée** — un suivi par titrage
+(prélèvement, trempe, dosage de la quantité restante) s'enseigne comme GESTE de suivi temporel, sans
+théorie des dosages redox au-delà de l'équivalence. *Pour défaire :* garder l'exclusion et écrire dans
+le cadre que la p. 14 est lue comme « suivi par une autre méthode physique ».
+
+**LA LEVÉE, pour SM seulement.** `calcul-integral/checkpoints.yaml:78` écartait « les sommes de
+Riemann formelles » — garde calibrée SExp, contredite par le cadre SM (`maths-sm.yaml:216`) et par
+bk-2024-r-x2. Elle reste pour SExp ; SM les travaille (vague G3).
+
+**TROIS LECTURES DE CADRE, faites par défaut en écrivant la prose de la vague G/H — à confirmer.**
+
+1. *Ce qu'on dit à un élève de Sciences Expérimentales de sauter.* Une phrase de filière (« au programme
+   de la filière Sciences Mathématiques ; en Sciences Expérimentales, tu peux passer… ») n'est posée
+   que là où le cadre dit la ligne spécifique SM en `research-consensus` ou en limite explicite : les
+   sommes de Riemann (`calcul-integral`, chapitre 5) et les fonctions puissances `x^α` avec la racine
+   n-ième (`fonction-exponentielle`, chapitre 5 — « hors cœur SExp (plutôt SM) »). Les formes
+   `u'·cos u`, `u'·sin u` et la primitive sous condition ne manquent au cadre SExp que dans une ligne
+   `savoir_faire` DÉRIVÉE : **défaut, aucune phrase de filière** — dire à un élève de sauter la
+   primitive de `cos 3x` sur la foi d'une ligne dérivée coûte plus cher que l'inverse. Le logarithme
+   de base a et `a^x` sont une « mention possible » en SExp : pas de phrase non plus.
+2. *« Les deux types d'amortissement »* (`pc-physique-chimie.yaml:315`). La ligne peut se lire
+   frottement fluide / frottement solide, ou oscillant / non oscillant (les régimes, déjà enseignés).
+   **Défaut : fluide / solide** (enveloppe courbe contre enveloppe rectiligne), la lecture courante des
+   cours marocains ; la section neuve « Deux types de frottement » distingue explicitement TYPE et
+   RÉGIME, donc elle ne contredit pas l'autre lecture.
+3. *La taille du lot de numération.* La critique de fidélité relève que 0 des 10 sujets SM vérifiés ne
+   porte sur une écriture en base, pendant que la spec en prévoit 15 items (27 % du banc de la notion).
+   La capacité est au cadre, donc elle s'enseigne ; la TAILLE est un arbitrage. **Défaut : un lot au
+   plancher** (≈ 12, trois par modèle), l'effort libéré va aux items de la capacité 2.1.6 — celle dont
+   le geste est attesté à la base 10 par bk-2024-r-x5. Et la notation d'une base attend une source
+   marocaine avant qu'une ligne ne soit écrite.

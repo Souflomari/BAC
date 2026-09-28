@@ -16656,3 +16656,30 @@ ayant pas couverts » de Rolle et du TAF un commit après leur sous-rung, les ra
 **Armé** : `carte-chapitres` (voir `INSTRUMENTS.md`) — la carte des chapitres est scellée ; la
 bouger liste les renvois à relire. Rejouée verte puis rouge sur les quatre insertions réelles avant
 d'être crue ; essai rouge §11.215.
+
+## §11.216 — La campagne de l'échelle des quotients : 87 sabotages, trois manqués prévus, et une porte qui avait un cône mort
+
+**LE FAIT.** La campagne de sabotages du PRODUIT de la scène $Q_{r,i}$ face à $K$
+(pc/evolution-spontanee ; spec §11.4) : 87 retouches posées une à une dans un arbre à part, chacune
+bâtie, mesurée, retirée, l'arbre comparé à l'identique entre deux. Avant et après : la porte VERTE sur
+le produit propre (1 022 mesures, 27 familles). **75 attrapés** (dont un en partie, comme prévu),
+**8 rouges ailleurs** (le défaut attrapé par une famille voisine — prévu pour six d'entre eux), **1
+contre-essai tenu** (le sujet 2017 N reposé tel quel : verte), et **3 MANQUÉS — tous trois écrits
+« MANQUÉ prévu » dans le fichier des sabotages avant le premier lancement**.
+
+**Les trois manqués, et ce qu'ils disaient de la porte.**
+1. *Un bécher peint en BLEU « parce que c'est du sulfate de cuivre »* : la famille `palette` comptait
+   hors palette les pixels teintés de cosinus < 0,6 avec l'accent ; l'accent, lui, commençait à 0,85.
+   Entre les deux, un cône mort d'une trentaine de degrés — ni accent, ni hors palette. Le bleu y
+   tombait (cos ≈ 0,75). **Corrigé** : hors palette = tout pixel franchement teinté qui n'est pas
+   l'accent (cos ≤ 0,85). La même règle est reprise, dès sa naissance, par la porte du champ des pentes.
+2. et 3. *Une concentration hors des cinq crans et un K hors des trois constantes*, écrits dans une
+   `suite` (« Essaie aussi [Cu²⁺]ᵢ = 2,0×10⁻³ mol/L », « K = 3,0 ») : `frontiere` ne lisait que ses
+   motifs de mots. Une liste « tout nombre affiché appartient à l'union » ne suffisait pas — 2,0×10⁻³
+   est aussi un QUOTIENT légitime (1,0×10⁻³ / 5,0×10⁻¹). **Corrigé** : la sonde lit ce que le nombre
+   EST — suivi de mol/L, un cran ; précédé de « K = », une des trois constantes —, ramené à une forme
+   canonique (chiffres, exposant) qu'un auto-contrôle vérifie sur sept écritures.
+
+**Rejoué.** Les trois manqués, leurs voisins (« bécher hors teinte », « 1e−6 », « 1e−5 », les unités
+sur $Q_{r,i}$ et sur $K$) et le contre-essai, avec la porte corrigée, entre deux passes propres :
+voir la fin de `scratchpad` n'étant pas versionné, le compte est écrit ici et dans `INSTRUMENTS.md`.
