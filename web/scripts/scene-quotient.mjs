@@ -247,7 +247,11 @@ const classer = (qq = panneau, ac = accent) => qq.evaluate((el, accent) => {
     if (nc > 12 && cos > 0.85) { cls[k] = 1; accentN++; }
     else if (nc < 25 && Math.abs(l - lf) > 60) cls[k] = 2;
     else if (nc < 25 && Math.abs(l - lf) > 12) cls[k] = 3;
-    if (nc > 20 && cos < 0.6) horsPalette++;
+    // Hors palette : tout pixel franchement teinté qui n'est PAS l'accent. Jusqu'au 2026-09-28 le seuil
+    // était cos < 0,6 : entre 0,6 et 0,85, un pixel n'était ni accent ni hors palette — un cône mort
+    // de ~30° autour de la teinte d'accent, où un bécher BLEU « parce que c'est du sulfate de cuivre »
+    // (cos ≈ 0,75) passait vert (campagne de sabotage, §11.4 n° 20a, MANQUÉ prévu et obtenu).
+    if (nc > 20 && cos <= 0.85) horsPalette++;
   }
   window.__cls = { cls, w: cv.width, h: cv.height, dpr };
   return { accentN, horsPalette, dpr, larg: cv.clientWidth, haut: cv.clientHeight };
@@ -541,9 +545,47 @@ const FRONTIERE = [
   const bruits = FRONTIERE.filter(([, re]) => re.test("L'axe est logarithmique ; la constante K vaut 2,5 ; le quotient Q_{r,i} ; une lame d'étain ; un dépôt de plomb ; l'équation ; 10 puissance 42 ; le mélange à l'instant initial ; bornes de l'axe")).map(([n]) => n);
   noter("frontiere", muets.length === 0 && bruits.join() === "borne", `les ${FRONTIERE.length} formes, chacune contre son exemple : ${muets.length ? `MUETTES : ${muets.join(", ")}` : "chacune vue"} ; sur une phrase propre de la scène, seule « borne » répond (« bornes de l'axe », que la scène n'écrit pas) : ${bruits.join(", ") || "aucune"}`);
 }
+/**
+ * LES ENSEMBLES DE NOMBRES (§9.10) — ajoutés le 2026-09-28. `frontiere` ne lisait que ses motifs : une
+ * concentration hors des cinq crans (« Essaie aussi [Cu²⁺]ᵢ = 2,0×10⁻³ mol/L ») et un K hors des trois
+ * (« pour une autre réaction, K = 3,0 ») passaient VERTS (campagne §11.4, n° 23, MANQUÉS prévus et
+ * obtenus). Une liste « tout nombre affiché appartient à l'union » ne suffit pas : 2,0×10⁻³ est aussi un
+ * QUOTIENT légitime (1,0×10⁻³ / 5,0×10⁻¹). La sonde lit donc ce que le nombre EST : suivi de mol/L, un
+ * cran ; précédé de « K = », un des trois K.
+ */
+const NOMBRE = String.raw`(\d+(?:\{,\}\d+)?(?:\\times\s*10\^\{?[−-]?\d+\}?)?)`;
+function canon(x) {
+  const m = x.match(/^(\d+)(?:\{,\}(\d+))?(?:\\times\s*10\^\{?([−-]?)(\d+)\}?)?$/);
+  if (!m) return null;
+  let chiffres = (m[1] + (m[2] ?? "")).replace(/^0+(?=\d)/, "");
+  let e = (m[3] ? -1 : 1) * Number(m[4] ?? 0) - (m[2]?.length ?? 0);
+  while (chiffres.length > 1 && chiffres.endsWith("0")) { chiffres = chiffres.slice(0, -1); e++; }
+  return `${chiffres}e${e}`;
+}
+const CRANS_CANON = new Set(CRANS.map((c) => { const [m, e] = c.split("e"); return canon(`${m.replace(".", "{,}")}\\times10^{${e}}`); }));
+const K_CANON = new Set(Object.values(K_TEX).map(canon));
+{
+  const essais = [["2{,}0\\times10^{-3}", "2e-3"], ["2{,}5\\times10^{-2}", "25e-3"], ["1{,}8\\times10^{37}", "18e36"], ["2{,}5", "25e-1"], ["4{,}0\\times10^{15}", "4e15"], ["3{,}0", "3e0"], ["5{,}0\\times10^{−1}", "5e-1"]];
+  noter("frontiere", essais.every(([x, v]) => canon(x) === v) && CRANS_CANON.size === 5 && K_CANON.size === 3 && !CRANS_CANON.has("2e-3") && !K_CANON.has("3e0"),
+    `la sonde des nombres : ${essais.length} écritures ramenées à leur valeur, 5 crans et 3 K distincts, 2,0×10⁻³ hors des crans et 3,0 hors des K`);
+}
+function nombresHorsEnsembles(t) {
+  const hors = [];
+  for (const m of t.matchAll(new RegExp(NOMBRE + String.raw`\$?\s*(?:\\\s)?\s*(?:\\text\{)?\s*mol\/L`, "gu"))) {
+    const v = canon(m[1]);
+    if (v && !CRANS_CANON.has(v)) hors.push(`une concentration hors des cinq crans (« ${m[0]} »)`);
+  }
+  for (const m of t.matchAll(new RegExp(String.raw`(?<![\p{L}_])K\s*=\s*\$?\s*` + NOMBRE, "gu"))) {
+    const v = canon(m[1]);
+    if (v && !K_CANON.has(v)) hors.push(`un K hors des trois constantes (« ${m[0]} »)`);
+  }
+  return hors;
+}
+
 async function frontiere(ou, qq = panneau) {
   const t = await texteRendu(qq);
   const vues = FRONTIERE.filter(([, re]) => re.test(t)).map(([n]) => n);
+  vues.push(...nombresHorsEnsembles(t));
   if (DECIMAL.test(t)) vues.push(`un point décimal ou un degré (« ${t.match(DECIMAL)[0]} »)`);
   const lu = await lectures(qq);
   for (const c of ["qri", "k"]) if (lu[c] !== undefined && /mol/.test(lu[c])) vues.push(`une UNITÉ sur la lecture ${c} (« ${lu[c]} ») — Q_r et K sont sans unité`);

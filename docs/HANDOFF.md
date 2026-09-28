@@ -16680,6 +16680,23 @@ contre-essai tenu** (le sujet 2017 N reposé tel quel : verte), et **3 MANQUÉS 
    EST — suivi de mol/L, un cran ; précédé de « K = », une des trois constantes —, ramené à une forme
    canonique (chiffres, exposant) qu'un auto-contrôle vérifie sur sept écritures.
 
-**Rejoué.** Les trois manqués, leurs voisins (« bécher hors teinte », « 1e−6 », « 1e−5 », les unités
-sur $Q_{r,i}$ et sur $K$) et le contre-essai, avec la porte corrigée, entre deux passes propres :
-voir la fin de `scratchpad` n'étant pas versionné, le compte est écrit ici et dans `INSTRUMENTS.md`.
+**Rejoué.** Les trois manqués, leurs cinq voisins (« bécher hors teinte », « 1e−6 », « 1e−5 », les
+unités sur $Q_{r,i}$ et sur $K$) et le contre-essai, avec la porte corrigée, entre deux passes propres —
+le journal vit hors du dépôt, le compte est donc écrit ici et dans `INSTRUMENTS.md` :
+
+| retouche | verdict |
+|---|---|
+| bécher bleu « sulfate de cuivre » (ancien manqué) | ATTRAPÉ par `palette` (2 rouges) |
+| concentration hors des crans (ancien manqué) | ATTRAPÉ par `frontiere` |
+| K hors des trois (ancien manqué) | ATTRAPÉ par `frontiere` |
+| bécher hors teinte | ATTRAPÉ par `palette` |
+| « 1e−6 », « 1e−5 » | ATTRAPÉS par `frontiere` |
+| unité sur $Q_{r,i}$, unité sur $K$ | ATTRAPÉS par `frontiere` et `nombres` |
+| contre-essai : le sujet 2017 N reposé tel quel | TENU — porte VERTE |
+
+Passe propre avant et après : **VERTE, 1 023 mesures, 27 familles** (une mesure de plus qu'avant la
+correction : l'auto-contrôle de la sonde des nombres). Arbre du produit **identique** après la
+dernière retouche retirée. Bilan de la campagne : **86 retouches sur 86 ont rougi** (78 par leur
+famille, 8 par une voisine), le contre-essai a tenu. *Leçon* : un cône mort ne se voit pas en
+regardant les deux seuils séparément — 0,6 et 0,85 étaient chacun raisonnables ; c'est l'ESPACE
+entre eux qui n'appartenait à personne.

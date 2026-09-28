@@ -2506,6 +2506,13 @@ bien visible). Réécrite, verte deux fois (1 022 mesures, 27 familles) ; produi
 non tracés) : rouge sur cette famille SEULE, deux manquements (bain C, étape 5).
 DÉCISIONS §33.
 
+**Campagne de sabotages du produit (2026-09-28, HANDOFF §11.216).** 87 retouches : trois MANQUÉS,
+tous prévus par écrit. Corrigés : `palette` compte hors palette tout pixel franchement teinté qui
+n'est pas l'accent (cos ≤ 0,85 — l'ancien seuil 0,6 laissait un cône mort de ~30° où un bécher bleu
+passait) ; `frontiere` lit ce qu'un nombre EST (suivi de mol/L : un des cinq crans ; précédé de
+« K = » : une des trois constantes), ramené à une forme canonique vérifiée sur sept écritures par un
+auto-contrôle. Rejoué : 8/8 attrapés, contre-essai 2017 N tenu, verte 1 023 mesures avant et après.
+
 ## `web/scripts/carte-chapitres.mjs` — un renvoi « chapitre N » vise-t-il encore le chapitre qu'il nommait ?
 
 **Question.** Le numéro de chapitre que l'élève lit est CALCULÉ (1 + le nombre de titres `## `
