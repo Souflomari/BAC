@@ -9,4 +9,5 @@ written; re-check them against the current files before acting.
 | `pc-vagues-DE-fidelite.md` | PC exam-debt waves D and E (37 items, 14 passages, 6 figures) | no cadre breach; 11 findings | partly — see `docs/LOCAL-TRANSITION.md` §4.2 for what remains |
 | `numeration-pedagogie.md` | spec `maths-arithmetique-numeration.md` | BUILD AFTER FIXES | no |
 | `numeration-fidelite.md` | same spec | BUILD AFTER FIXES | B1 answered by `docs/cadre/sources/verification-numeration-2026-09-28.md`; rest no |
-| `espaces-vectoriels-pedagogie.md` | spec `maths-structures-espaces-vectoriels.md` | BUILD AFTER FIXES | no (fidelity critic not yet run) |
+| `espaces-vectoriels-pedagogie.md` | spec `maths-structures-espaces-vectoriels.md` | BUILD AFTER FIXES | see the revision log at the end of the spec |
+| `espaces-vectoriels-fidelite.md` | same spec (written 2026-10-20) | BUILD AFTER FIXES — no cadre breach; 4 blocking exam-shape fixes (criterion in three conditions, no weight claim, a summit, « toujours/jamais » demoted) | see the revision log at the end of the spec |
