@@ -2730,53 +2730,132 @@ items:
 
   # ── Rung R7b — les systèmes de numération (ajoutés le 2026-10-20) ──────────
   # Spec : docs/pipeline/propositions/maths-arithmetique-numeration.md §9,
-  # révisée le 2026-10-20 contre deux critiques. Douze items, AR-41 à AR-52,
-  # tous en R7b. Aucun item existant n'est re-tagué, renuméroté ni déplacé.
+  # révisée le 2026-10-20 contre deux critiques. Douze items à la livraison,
+  # AR-41 à AR-52 ; quatorze depuis la vague 1 des critiques du chapitre
+  # construit (docs/audits/critiques/numeration-build-pedagogie.md et
+  # numeration-build-fidelite.md, même jour) : AR-53 et AR-54. Tous en R7b.
+  # Aucun item hors R7b n'est re-tagué, renuméroté ni déplacé. AR-53 et AR-54
+  # sont simplement les deux ids libres suivants — PAS les étiquettes de
+  # brouillon homonymes du tableau de traçabilité de la spec (où « AR-53 » est
+  # l'ancien nom d'AR-51, et « AR-54 » un item coupé).
   #
-  # TAILLE : 12, pas 15 — défaut du propriétaire (DECISIONS-EN-ATTENTE.md §37,
-  # « un lot au plancher ») : 0 des 10 sujets SM vérifiés de bank.yaml ne porte
-  # sur une écriture en base. L'effort libéré est allé à la capacité « utiliser
-  # les écritures en base », sous la forme que le cadre décrit : trois QCM
-  # (AR-50, AR-51, AR-52) et l'exercice attempt-first r-numeration
-  # (exercises.yaml), quatre questions dont une conceptuelle terminale.
+  # TAILLE : 12 à la livraison, pas 15 — défaut du propriétaire
+  # (DECISIONS-EN-ATTENTE.md §37, « un lot au plancher ») : 0 des 10 sujets SM
+  # vérifiés de bank.yaml ne porte sur une écriture en base. L'effort libéré est
+  # allé à la capacité « utiliser les écritures en base », sous la forme que le
+  # cadre décrit : trois QCM (AR-50, AR-51, AR-52) et l'exercice attempt-first
+  # r-numeration (exercises.yaml), quatre questions dont une conceptuelle
+  # terminale. La vague 1 ajoute deux items, chacun pour une raison nommée :
+  #   - AR-53 (pédagogie 13) : AR-48 est RETIRÉ de l'affichage par la règle du
+  #     clone (voir PLANCHER), si bien que `numeration-retenue-a-dix` n'avait
+  #     que deux items RENDUS. AR-53 est une ADDITION en base 8 dont l'erreur de
+  #     seuil donne une écriture légale, 601 en base 8 — le cas que la leçon
+  #     affirme sans le montrer (« l'erreur devient invisible »).
+  #   - AR-54 (fidélité S1) : une opération ENTRE bases — deux opérandes dans
+  #     deux bases, résultat demandé dans une troisième, par la base 10 —, la
+  #     forme que la source D de
+  #     docs/cadre/sources/verification-numeration-2026-09-28.md atteste
+  #     littéralement. Leurre principal : l'addition chiffre à chiffre
+  #     par-dessus deux bases (`numeration-ecriture-prise-pour-le-nombre`).
+  #
+  # VAGUE 1, LES AUTRES RETOUCHES (2026-10-20) :
+  #   - AR-51 RE-HABILLÉ (pédagogie 8). Aucune CLÉ du banc n'exigeait le
+  #     critère par b+1 : il n'apparaissait qu'en leurre. La clé d'AR-51
+  #     l'exige désormais — reste modulo 10 = b+1 de 581 en base 9 (= 478). La
+  #     base 9 est gardée, ce qui punit encore le transport de la table de la
+  #     base 7 de la leçon ; la somme simple reste un leurre. Trois chiffres
+  #     exprès : la somme alternée y vaut la même chose qu'on parte des unités
+  #     ou de la tête, donc le leurre « départ par la tête » n'existe pas, et
+  #     chaque leurre a UN modèle de l'inventaire — somme simple (4), chiffre
+  #     des unités (1), reste négatif rendu par son opposé (2,
+  #     `reste-non-normalise`). Un chemin rare atteint aussi 2 : la somme
+  #     alternée commencée par un signe moins aux unités (−1+8−5) ; il n'est
+  #     pas tagué, aucune famille déclarée ne le décrit. Les chemins « bon
+  #     critère, module de la base 9 »
+  #     (somme 14, soit 6 modulo 8 ; alternée −2, soit 6 modulo 8 ou 7 modulo
+  #     9) ne tombent sur aucune option. Familles visées inchangées (critère,
+  #     reste non normalisé) ; `habilete` et niveau inchangés
+  #     (application_directe, 3) : c'est le geste de la version b−1, sur
+  #     l'autre module. AR-52 garde la clé par b−1 et le leurre alterné : les
+  #     deux critères sont désormais chacun une clé et chacun un leurre.
+  #   - AR-47, AR-48 (pédagogie 9) : le retour du leurre « restes lus dans
+  #     l'ordre de sortie » imprime l'écriture juste à côté de la fausse, comme
+  #     le fait le point d'arrêt cp-r7b-retenue.
+  #   - AR-52 (pédagogie 10) : chaîne symbolique sans espace fine, 3x4 en base
+  #     9 écrit \overline{3x4}_{(9)} — convention commune avec la leçon et avec
+  #     r-numeration (\overline{xyx}_{(7)}).
   #
   # MIX `habilete`, le réel imprimé à côté de la cible SM (40/40/20) :
-  #   application_directe 8/12 ≈ 67 % · application_non_explicite 3/12 = 25 %
-  #   · synthese 1/12 ≈ 8 %. NON forcé. Raison structurelle : neuf des douze
-  #   items servent « écrire » et « opérer / comparer », gestes de niveau 1 une
-  #   fois la prose faite ; seule la capacité « utiliser » porte naturellement
-  #   les niveaux 2-3, et la charge de niveau 3 est portée par r-numeration et
-  #   par les trois points d'arrêt en `raisonnement`. Forcer 40/40/20 sur douze
-  #   items serait refaire le geste que ce fichier s'est déjà reproché plus haut
-  #   (« échantillon trop petit pour forcer ce ratio sans fausser un tag »).
-  #   Aucun mix de NOTION n'est calculable : `habilete` n'existe que sur les
-  #   items AR-33 et suivants.
+  #   LOT R7b (14 items) : application_directe 9/14 ≈ 64 % ·
+  #   application_non_explicite 4/14 ≈ 29 % · synthese 1/14 ≈ 7 %. NON forcé.
+  #   Raison structurelle : onze des quatorze items servent « écrire » et
+  #   « opérer / comparer », gestes de niveau 1 une fois la prose faite ; seule
+  #   la capacité « utiliser » porte naturellement les niveaux 2-3, et la charge
+  #   de niveau 3 est portée par r-numeration et par les trois points d'arrêt en
+  #   `raisonnement`. Forcer 40/40/20 sur quatorze items serait refaire le geste
+  #   que ce fichier s'est déjà reproché plus haut (« échantillon trop petit
+  #   pour forcer ce ratio sans fausser un tag »).
+  #   NOTION : `habilete` n'existe que sur AR-33 et suivants (champ opt-in).
+  #   Deux chiffres se calculent donc, et aucun n'est « le mix de la notion »
+  #   (ADR 0036 : un total opt-in est un plancher, pas une somme) :
+  #     • la SOMME sur l'ensemble tagué, 22 items (AR-33 à AR-54) :
+  #       11/8/3 ≈ 50/36/14 % — AR-33…AR-40 : 2/4/2 ; AR-41…AR-54 : 9/4/1 ;
+  #     • le PLANCHER sur les 54 items : au moins 11 application_directe, au
+  #       moins 8 application_non_explicite, au moins 3 synthese — les 32
+  #       items AR-1 à AR-32, sans tag, peuvent relever de n'importe lequel.
+  #   Commande : grep -c '^    habilete: synthese' items.yaml (et de même
+  #   pour les deux autres valeurs). Le déficit en non_explicite et en
+  #   synthese se rembourse dans un PROCHAIN lot d'items neufs, jamais en
+  #   re-taguant ceux-ci.
   #
-  # PLANCHER : `numeration-retenue-a-dix` tombe EXACTEMENT au plancher (AR-47,
-  # AR-48, AR-49) — marge nulle, onzième famille à ce statut ; tout retrait
-  # d'item la casse. Note de rendu : le point d'arrêt cp-r7b-retenue déclare
-  # `item_source: clone_of_AR-48`, ce qui RETIRE AR-48 de la liste d'items du
-  # chapitre à l'affichage (convention de la maison, ItemsSection) ; le compte
-  # du banc, lui, n'en dépend pas.
+  # PLANCHER : `numeration-retenue-a-dix` compte QUATRE items de banc (AR-47,
+  # AR-48, AR-49, AR-53), marge 1 au banc. Mais le point d'arrêt cp-r7b-retenue
+  # déclare `item_source: clone_of_AR-48`, ce qui RETIRE AR-48 du bloc d'items
+  # du chapitre à l'affichage (NotionPageView.tsx, par buildCheckpointCloneIds
+  # d'ItemsSection.tsx) : l'élève en rencontre TROIS — AR-47, AR-49, AR-53 —,
+  # et le modèle apprenant ne recevra jamais de réponse à AR-48. Le compte
+  # RENDU est donc exactement au plancher ; avant AR-53, il était à deux, sous
+  # un compte de banc qui affichait 3.
   #
-  # ORDRE DES ids = ordre des blocs de la rung (écrire → comparer puis opérer →
-  # utiliser), PAS ordre de difficulté : la série des `difficulty_level` est
-  # 2,3,3 | 3,4,5,2,3,4 | 5,3,4 — en dents de scie, déclaré ici. Si une surface
-  # rend un jour la banque par id, trier par `difficulty_level` à l'affichage
-  # plutôt que renuméroter.
+  # ORDRE : ChapterQuestions.tsx rend les items d'une rung DANS L'ORDRE DU
+  # FICHIER — aucun tri par `difficulty_level` n'existe à l'affichage (la
+  # version précédente de ce commentaire en promettait un, qui n'a jamais été
+  # écrit). L'ordre se règle donc ici, en déplaçant les items sans les
+  # renuméroter : les ids ne se suivent plus. Trois blocs, un par capacité du
+  # cadre, chacun en difficulté croissante et clos sur son item le plus dur ;
+  # à niveau égal, l'ordre de la leçon (opérer avant comparer) :
+  #   2.1.4 écrire / revenir    AR-41 (2) · AR-42 (3) · AR-43 (3)
+  #   2.1.5 opérer / comparer   AR-47 (2) · AR-48 (3, retiré à l'affichage) ·
+  #                             AR-53 (3) · AR-44 (3) · AR-49 (4) · AR-54 (4) ·
+  #                             AR-45 (4) · AR-46 (5)
+  #   2.1.6 utiliser            AR-51 (3) · AR-52 (4) · AR-50 (5)
+  # Série rendue : 2,3,3 | 2,3,3,4,4,4,5 | 3,4,5 — la difficulté ne redescend
+  # qu'au changement de capacité.
   #
   # CHIFFRE HORS BASE (spec §9.1) : jamais dans un distracteur dont le modèle
   # est autre chose que le report ou la borne des chiffres. AR-48 (et le point
   # d'arrêt) sont des MULTIPLICATIONS exprès : l'erreur de seuil y donne une
-  # écriture bien formée, donc non barrable à vue. AR-47 garde, une seule fois
-  # et volontairement, la version barrable (476 en base 5) : la barrer suppose
-  # de tenir la borne a_i ≤ 4, ce qui est du savoir et non une fuite. Les
-  # racines hors base d'AR-50 et d'AR-52 SONT le modèle visé (borne oubliée).
+  # écriture bien formée, donc non barrable à vue. AR-53 fait de même pour
+  # l'ADDITION : ses colonnes atteignent 11 et 10, et l'erreur de seuil y écrit
+  # des chiffres légaux. AR-47 garde, une seule fois et volontairement, la
+  # version barrable (476 en base 5) : la barrer suppose de tenir la borne
+  # a_i ≤ 4, ce qui est du savoir et non une fuite. Les racines hors base
+  # d'AR-50 et d'AR-52 SONT le modèle visé (borne oubliée). AR-54 : aucune
+  # option ne porte de chiffre hors de la base 8, la somme chiffre à chiffre
+  # comprise (ses colonnes restent sous 8).
   #
   # NON-DUPLICATION : aucun item ne rejoue un exemple travaillé de la rung
   # (2025 en base 7, 100 en base 6, 3204 en base 5, 356+243 et 34×5 en base 7,
   # la paire xy en bases 7 et 5, 5622 et 3405 en base 7) ; aucun nombre n'est
-  # repris d'une annale de bank.yaml.
+  # repris d'une annale de bank.yaml. AR-53, AR-54 et le nouvel habillage
+  # d'AR-51 ont été tirés à la machine contre tous les entiers de la prose
+  # R7b, de ses trois points d'arrêt, d'AR-41…AR-52, de r-numeration et de
+  # bank.yaml : aucun opérande, aucune valeur, aucune option n'y figure. Les
+  # seules rencontres sont des poids de base (64, 81), de petites sommes de
+  # colonne et trois quotients intermédiaires (17, 47, 53), sans chemin de
+  # mémorisation. AR-54 évite aussi, jusque dans ses divisions, les nombres
+  # réservés le 2026-10-20 à l'exemple travaillé d'opération entre bases de la
+  # leçon (213 en base 5, 36 en base 8, 58, 30, 88, 154 en base 7).
   #
   # TROIS PRÉCISIONS de rédaction par rapport aux tableaux de la spec, sans
   # changer aucune clé ni aucun nombre : (1) AR-42, le distracteur « 1 » est
@@ -2786,6 +2865,7 @@ items:
   # raisonnement, aucun mot absolu), et le tronc ne présuppose plus
   # l'existence de N ; (3) AR-50, « N = 31 » passe de l'option clé au retour,
   # pour que la clé ne soit pas la seule à porter une information de plus.
+  # ── Capacité 2.1.4 — écrire un entier dans une base, revenir à la base 10 ──
   - id: AR-41
     rung: "R7b"
     habilete: application_directe
@@ -2950,6 +3030,212 @@ items:
       $$\overline{203}_{(5)} = 50 + 0 + 3$$
       $$\overline{203}_{(5)} = 53$$
 
+  # ── Capacité 2.1.5 — opérer et comparer dans une base ──
+  - id: AR-47
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_arithmetique
+    tags: [numeration, base, addition, retenue]
+    primary_misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+    stem: >
+      Effectue $\overline{342}_{(5)} + \overline{134}_{(5)}$, résultat en
+      base $5$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\overline{476}_{(5)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          Tu as gardé le seuil de la base $10$ : $2+4 = 6$ et $4+3 = 7$ restent
+          sous $10$, donc tu n'as rien reporté. Mais en base $5$, une colonne
+          déborde dès qu'elle atteint $5$ — et $6$, $7$ ne sont même pas des
+          chiffres de la base $5$ : ton écriture n'en est pas une.
+      - id: B
+        text: >-
+          $\overline{1301}_{(5)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Le passage par la base $10$ est juste : $97+44 = 141$. Mais en
+          reconvertissant, tu as lu les restes dans l'ordre de sortie :
+          $141 = 5\times28+1$, $28 = 5\times5+3$, $5 = 5\times1+0$,
+          $1 = 5\times0+1$ donnent $1$, $3$, $0$, $1$. Le premier reste est le
+          chiffre des unités : il fallait lire $1, 0, 3, 1$, pas $1, 3, 0, 1$.
+          Ton écriture vaut $201$.
+      - id: C
+        text: >-
+          $\overline{1031}_{(5)}$
+        correct: true
+      - id: D
+        text: >-
+          $\overline{421}_{(5)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          Tu as bien ramené chaque colonne dans $\{0,\dots,4\}$ — $6$ donne $1$,
+          $7$ donne $2$ — mais sans reporter la retenue sur la colonne de gauche.
+          Ton écriture vaut $111$ ; la somme vaut $141$.
+    correct_feedback: >
+      Exact. Unités : $2+4 = 6 = 5+1$, on écrit $1$, on retient $1$. Puis
+      $4+3+1 = 8 = 5+3$, on écrit $3$, on retient $1$. Puis $3+1+1 = 5$, on
+      écrit $0$, on retient $1$, qui devient le chiffre de tête.
+    solution: |
+      **En colonnes, de droite à gauche ; une colonne déborde dès qu'elle
+      atteint $5$.**
+
+      Unités : $2+4 = 6 = 5+1$ — on écrit $1$, on retient $1$.
+
+      Paquets de $5$ : $4+3+1 = 8 = 5+3$ — on écrit $3$, on retient $1$.
+
+      Paquets de $25$ : $3+1+1 = 5 = 5+0$ — on écrit $0$, on retient $1$.
+
+      La dernière retenue devient le chiffre de tête :
+      $\overline{342}_{(5)} + \overline{134}_{(5)} = \overline{1031}_{(5)}$.
+
+      **Contrôle en base $10$ :** $\overline{342}_{(5)} = 97$,
+      $\overline{134}_{(5)} = 44$, et
+      $$97 + 44 = 141$$
+      $$\overline{1031}_{(5)} = 125 + 0 + 3\times5 + 1 = 141$$
+
+  - id: AR-48
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [numeration, base, multiplication, retenue]
+    primary_misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+    stem: >
+      Effectue $\overline{45}_{(6)} \times \overline{3}_{(6)}$, résultat en
+      base $6$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\overline{135}_{(6)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          Tu as gardé le seuil de la base $10$ : $5\times3 = 15$, tu as écrit $5$
+          et retenu $1$ ; puis $4\times3+1 = 13$, écrit $3$, retenu $1$. Tous ces
+          chiffres existent en base $6$ : l'erreur ne se voit pas, il faut
+          recalculer. $\overline{135}_{(6)}$ vaut $59$, alors que le produit vaut
+          $29\times3 = 87$.
+      - id: B
+        text: >-
+          $\overline{322}_{(6)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Le passage par la base $10$ est juste : $29\times3 = 87$. Mais en
+          reconvertissant, tu as lu les restes dans l'ordre de sortie :
+          $87 = 6\times14+3$, $14 = 6\times2+2$, $2 = 6\times0+2$ donnent $3$,
+          $2$, $2$. Le premier reste est le chiffre des unités : il fallait lire
+          $2, 2, 3$, pas $3, 2, 2$. Ton écriture vaut $122$.
+      - id: C
+        text: >-
+          $\overline{1215}_{(6)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          Tu as écrit chaque produit de colonne tel quel, en entier —
+          $4\times3 = 12$ et $5\times3 = 15$, mis côte à côte — sans rien
+          reporter. Un produit de colonne qui atteint $6$ doit être rangé en
+          paquets de $6$. Ton écriture vaut $299$.
+      - id: D
+        text: >-
+          $\overline{223}_{(6)}$
+        correct: true
+    correct_feedback: >
+      Exact. $5\times3 = 15 = 2\times6+3$ : on écrit $3$, on retient $2$. Puis
+      $4\times3+2 = 14 = 2\times6+2$ : on écrit $2$, on retient $2$, qui devient
+      le chiffre de tête. Contrôle : $\overline{223}_{(6)}$ vaut
+      $72+12+3 = 87 = 29\times3$.
+    solution: |
+      **En colonnes, en partant des unités ; chaque produit se range en paquets
+      de $6$.**
+
+      Unités : $5\times3 = 15 = 2\times6+3$ — on écrit $3$, on retient $2$.
+
+      Paquets de $6$ : $4\times3+2 = 14 = 2\times6+2$ — on écrit $2$, on
+      retient $2$, qui devient le chiffre de tête.
+
+      Donc $\overline{45}_{(6)} \times \overline{3}_{(6)} = \overline{223}_{(6)}$.
+
+      **Contrôle en base $10$ :** $\overline{45}_{(6)} = 29$, et
+      $$29 \times 3 = 87$$
+      $$\overline{223}_{(6)} = 2\times36 + 2\times6 + 3 = 87$$
+
+  - id: AR-53
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [numeration, base, addition, retenue]
+    primary_misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+    stem: >
+      Calcule $\overline{237}_{(8)} + \overline{364}_{(8)}$ et écris le
+      résultat en base $8$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\overline{623}_{(8)}$
+        correct: true
+      - id: B
+        text: >-
+          $\overline{601}_{(8)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          Tu as gardé le seuil de la base $10$ : $7+4 = 11$, tu as écrit $1$ et
+          retenu $1$ ; puis $3+6+1 = 10$, tu as écrit $0$ et retenu $1$. Tous
+          ces chiffres existent en base $8$ : l'erreur ne se voit pas, il faut
+          recalculer. $\overline{601}_{(8)}$ vaut $385$, alors que la somme vaut
+          $159+244 = 403$.
+      - id: C
+        text: >-
+          $\overline{513}_{(8)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          Tu as bien ramené chaque colonne dans $\{0,\dots,7\}$ — $11$ donne
+          $3$, $9$ donne $1$ — mais sans reporter les retenues sur la colonne de
+          gauche. Ton écriture vaut $331$ ; la somme vaut $403$.
+      - id: D
+        text: >-
+          $\overline{403}_{(8)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Le passage par la base $10$ est juste : $159+244 = 403$. Mais tu as
+          gardé les chiffres de l'écriture décimale en changeant seulement
+          l'étiquette de base. $\overline{403}_{(8)}$ vaut $4\times64+3 = 259$,
+          pas $403$ : il restait à écrire $403$ en base $8$.
+    correct_feedback: >
+      Exact. Unités : $7+4 = 11 = 8+3$, on écrit $3$, on retient $1$. Puis
+      $3+6+1 = 10 = 8+2$, on écrit $2$, on retient $1$. Puis $2+3+1 = 6$.
+      Contrôle : $\overline{623}_{(8)}$ vaut $384+16+3 = 403$, et
+      $159+244 = 403$.
+    solution: |
+      **En colonnes, de droite à gauche ; une colonne déborde dès qu'elle
+      atteint $8$.**
+
+      Unités : $7+4 = 11 = 8+3$ — on écrit $3$, on retient $1$.
+
+      Paquets de $8$ : $3+6+1 = 10 = 8+2$ — on écrit $2$, on retient $1$.
+
+      Paquets de $64$ : $2+3+1 = 6$ — on écrit $6$.
+
+      Donc $\overline{237}_{(8)} + \overline{364}_{(8)} = \overline{623}_{(8)}$.
+
+      **Contrôle en base $10$ :** $\overline{237}_{(8)} = 159$,
+      $\overline{364}_{(8)} = 244$, et
+      $$159 + 244 = 403$$
+      $$\overline{623}_{(8)} = 6\times64 + 2\times8 + 3 = 403$$
+
   - id: AR-44
     rung: "R7b"
     habilete: application_directe
@@ -3014,6 +3300,144 @@ items:
       $$\overline{344}_{(5)} = 3\times25 + 4\times5 + 4 = 99$$
       $$\overline{412}_{(5)} = 4\times25 + 1\times5 + 2 = 107$$
       $$\overline{1203}_{(5)} = 125 + 2\times25 + 0\times5 + 3 = 178$$
+
+  - id: AR-49
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [numeration, base, retenue, mecanisme]
+    primary_misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+    stem: >
+      Dans une addition posée en base $b$, une colonne donne la somme $c$, avec
+      $c \ge b$. Quelle règle faut-il appliquer à cette colonne ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          On écrit le reste de $c$ dans la division par $10$, et on reporte le
+          quotient sur la colonne de gauche.
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          Tu as gardé le seuil de la base $10$ par automatisme. Le report vient
+          de ce que la colonne de gauche pèse exactement $b$ fois plus : c'est
+          par $b$ qu'on divise, et $10$ n'a aucun rôle en base $b$.
+      - id: B
+        text: >-
+          On écrit $c - b$ dès que $c > b$, avec une retenue de $1$ ; pour
+          $c = b$, on écrit $b$.
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+        feedback: >
+          Le seuil est décalé d'un cran : à $c = b$ exactement, la colonne
+          déborde déjà — on écrit $0$ et on retient $1$. Écrire $b$ ferait de $b$
+          un chiffre, alors que les chiffres de la base $b$ s'arrêtent à $b-1$.
+      - id: C
+        text: >-
+          On écrit le reste de $c$ dans la division par $b$, et on reporte le
+          quotient sur la colonne de gauche.
+        correct: true
+      - id: D
+        text: >-
+          On écrit $c$ si $c < 10$, et sinon $c - 10$ avec une retenue de $1$.
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          C'est la règle apprise à l'école primaire, valable en base $10$
+          seulement. En base $b$, une colonne déborde dès qu'elle atteint $b$, et
+          c'est $b$ qu'on retranche, pas $10$.
+    correct_feedback: >
+      Exact. La colonne de gauche pèse exactement $b$ fois plus : on écrit
+      $c = qb + r$ avec $0 \le r < b$, on note $r$ et on reporte $q$. C'est la
+      division euclidienne par la base, quelle que soit la base.
+    solution: |
+      **Pourquoi le seuil est $b$.** Dans une écriture en base $b$, chaque
+      colonne pèse exactement $b$ fois plus que sa voisine de droite : $b$
+      unités d'une colonne valent exactement une unité de la suivante.
+
+      **La règle.** Si une colonne donne $c$, on fait la division euclidienne
+      par $b$ :
+      $$c = qb + r \qquad \text{avec} \qquad 0 \le r < b$$
+      On écrit $r$ dans la colonne, et on reporte $q$ sur la colonne de gauche.
+      À $c = b$ exactement, cela donne $r = 0$ et $q = 1$ : la colonne déborde
+      déjà. Le nombre $10$ n'intervient nulle part.
+
+  - id: AR-54
+    rung: "R7b"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [numeration, base, addition, conversion]
+    primary_misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+    stem: >
+      Calcule $\overline{204}_{(6)} + \overline{73}_{(9)}$ et donne le
+      résultat en base $8$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\overline{277}_{(8)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as additionné les chiffres colonne par colonne — $4+3 = 7$,
+          $0+7 = 7$, puis $2$ — comme si les deux écritures étaient dans la même
+          base. Or la deuxième colonne compte des paquets de $6$ dans
+          $\overline{204}_{(6)}$, et des paquets de $9$ dans
+          $\overline{73}_{(9)}$ : leurs chiffres ne s'ajoutent pas. Entre deux
+          bases, on calcule d'abord les valeurs, $76+66 = 142$. Ton écriture
+          vaut $191$.
+      - id: B
+        text: >-
+          $\overline{612}_{(8)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Le passage par la base $10$ est juste : $76+66 = 142$. Mais en
+          écrivant $142$ en base $8$, tu as lu les restes dans l'ordre de
+          sortie : $142 = 8\times17+6$, $17 = 8\times2+1$, $2 = 8\times0+2$
+          donnent $6$, $1$, $2$. Le premier reste est le chiffre des unités :
+          il fallait lire $2, 1, 6$, pas $6, 1, 2$. Ton écriture vaut $394$.
+      - id: C
+        text: >-
+          $\overline{216}_{(8)}$
+        correct: true
+      - id: D
+        text: >-
+          $\overline{142}_{(8)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Les deux conversions sont justes, $\overline{204}_{(6)} = 76$ et
+          $\overline{73}_{(9)} = 66$, et la somme vaut bien $142$. Mais tu t'es
+          arrêté là, en gardant les chiffres de l'écriture décimale sous
+          l'étiquette de la base $8$. $\overline{142}_{(8)}$ vaut
+          $64+4\times8+2 = 98$ : il restait à écrire $142$ en base $8$.
+    correct_feedback: >
+      Exact. Entre deux bases, on passe par les valeurs :
+      $\overline{204}_{(6)} = 72+0+4 = 76$ et $\overline{73}_{(9)} = 63+3 = 66$,
+      donc la somme vaut $142$. On écrit ensuite $142$ en base $8$ par
+      divisions successives, restes lus de bas en haut. Contrôle :
+      $2\times64+1\times8+6 = 142$.
+    solution: |
+      **Deux bases différentes : on ne pose pas l'addition en colonnes.** Une
+      même colonne ne compte pas les mêmes paquets dans les deux écritures —
+      des paquets de $6$ d'un côté, de $9$ de l'autre. On passe par les
+      valeurs.
+
+      **Chaque écriture avec sa propre base :**
+      $$\overline{204}_{(6)} = 2\times6^2 + 0\times6 + 4 = 76$$
+      $$\overline{73}_{(9)} = 7\times9 + 3 = 66$$
+      $$76 + 66 = 142$$
+
+      **Écrire $142$ en base $8$**, par divisions successives :
+      $$142 = 8\times17 + 6$$
+      $$17 = 8\times2 + 1$$
+      $$2 = 8\times0 + 2$$
+      Lus de bas en haut, les restes donnent $\overline{216}_{(8)}$.
+
+      **Contrôle :** $\overline{216}_{(8)} = 2\times64 + 1\times8 + 6 = 142$.
 
   - id: AR-45
     rung: "R7b"
@@ -3130,202 +3554,132 @@ items:
       Le nombre de chiffres n'est pas une propriété de l'entier seul : $125$,
       par exemple, s'écrit $\overline{1000}_{(5)}$ et $\overline{175}_{(8)}$.
 
-  - id: AR-47
-    rung: "R7b"
-    habilete: application_directe
-    difficulty_level: 2
-    skill_code: maths_arithmetique
-    tags: [numeration, base, addition, retenue]
-    primary_misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
-    stem: >
-      Effectue $\overline{342}_{(5)} + \overline{134}_{(5)}$, résultat en
-      base $5$.
-    type: mcq
-    choices:
-      - id: A
-        text: >-
-          $\overline{476}_{(5)}$
-        correct: false
-        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
-        feedback: >
-          Tu as gardé le seuil de la base $10$ : $2+4 = 6$ et $4+3 = 7$ restent
-          sous $10$, donc tu n'as rien reporté. Mais en base $5$, une colonne
-          déborde dès qu'elle atteint $5$ — et $6$, $7$ ne sont même pas des
-          chiffres de la base $5$ : ton écriture n'en est pas une.
-      - id: B
-        text: >-
-          $\overline{1301}_{(5)}$
-        correct: false
-        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
-        feedback: >
-          Le passage par la base $10$ est juste : $97+44 = 141$. Mais en
-          reconvertissant, tu as lu les restes dans l'ordre de sortie :
-          $141 = 5\times28+1$, $28 = 5\times5+3$, $5 = 5\times1+0$,
-          $1 = 5\times0+1$ donnent $1$, $3$, $0$, $1$, à lire de bas en haut.
-          Ton écriture vaut $201$.
-      - id: C
-        text: >-
-          $\overline{1031}_{(5)}$
-        correct: true
-      - id: D
-        text: >-
-          $\overline{421}_{(5)}$
-        correct: false
-        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
-        feedback: >
-          Tu as bien ramené chaque colonne dans $\{0,\dots,4\}$ — $6$ donne $1$,
-          $7$ donne $2$ — mais sans reporter la retenue sur la colonne de gauche.
-          Ton écriture vaut $111$ ; la somme vaut $141$.
-    correct_feedback: >
-      Exact. Unités : $2+4 = 6 = 5+1$, on écrit $1$, on retient $1$. Puis
-      $4+3+1 = 8 = 5+3$, on écrit $3$, on retient $1$. Puis $3+1+1 = 5$, on
-      écrit $0$, on retient $1$, qui devient le chiffre de tête.
-    solution: |
-      **En colonnes, de droite à gauche ; une colonne déborde dès qu'elle
-      atteint $5$.**
-
-      Unités : $2+4 = 6 = 5+1$ — on écrit $1$, on retient $1$.
-
-      Paquets de $5$ : $4+3+1 = 8 = 5+3$ — on écrit $3$, on retient $1$.
-
-      Paquets de $25$ : $3+1+1 = 5 = 5+0$ — on écrit $0$, on retient $1$.
-
-      La dernière retenue devient le chiffre de tête :
-      $\overline{342}_{(5)} + \overline{134}_{(5)} = \overline{1031}_{(5)}$.
-
-      **Contrôle en base $10$ :** $\overline{342}_{(5)} = 97$,
-      $\overline{134}_{(5)} = 44$, et
-      $$97 + 44 = 141$$
-      $$\overline{1031}_{(5)} = 125 + 0 + 3\times5 + 1 = 141$$
-
-  - id: AR-48
+  # ── Capacité 2.1.6 — utiliser une écriture en base (divisibilité, chiffres) ──
+  - id: AR-51
     rung: "R7b"
     habilete: application_directe
     difficulty_level: 3
     skill_code: maths_arithmetique
-    tags: [numeration, base, multiplication, retenue]
-    primary_misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+    tags: [numeration, base, divisibilite, congruences]
+    primary_misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
     stem: >
-      Effectue $\overline{45}_{(6)} \times \overline{3}_{(6)}$, résultat en
-      base $6$.
+      Soit $N = \overline{581}_{(9)}$. Quel est le reste de la division
+      euclidienne de $N$ par $10$ ?
     type: mcq
     choices:
       - id: A
-        text: >-
-          $\overline{135}_{(6)}$
+        text: "$4$"
         correct: false
-        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
         feedback: >
-          Tu as gardé le seuil de la base $10$ : $5\times3 = 15$, tu as écrit $5$
-          et retenu $1$ ; puis $4\times3+1 = 13$, écrit $3$, retenu $1$. Tous ces
-          chiffres existent en base $6$ : l'erreur ne se voit pas, il faut
-          recalculer. $\overline{135}_{(6)}$ vaut $59$, alors que le produit vaut
-          $29\times3 = 87$.
+          Tu as pris la somme des chiffres, $5+8+1 = 14$, qui laisse $4$ modulo
+          $10$. Mais la somme des chiffres vient de $9 \equiv 1 \pmod 8$ : en
+          base $9$, elle donne le reste modulo $b-1 = 8$. Modulo $b+1 = 10$, la
+          base vérifie $9 \equiv -1 \pmod{10}$, et c'est la somme ALTERNÉE des
+          chiffres qui compte.
       - id: B
-        text: >-
-          $\overline{322}_{(6)}$
-        correct: false
-        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
-        feedback: >
-          Le passage par la base $10$ est juste : $29\times3 = 87$. Mais en
-          reconvertissant, tu as lu les restes dans l'ordre de sortie :
-          $87 = 6\times14+3$, $14 = 6\times2+2$, $2 = 6\times0+2$ donnent $3$,
-          $2$, $2$, à lire de bas en haut. Ton écriture vaut $122$.
-      - id: C
-        text: >-
-          $\overline{1215}_{(6)}$
-        correct: false
-        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
-        feedback: >
-          Tu as écrit chaque produit de colonne tel quel, en entier —
-          $4\times3 = 12$ et $5\times3 = 15$, mis côte à côte — sans rien
-          reporter. Un produit de colonne qui atteint $6$ doit être rangé en
-          paquets de $6$. Ton écriture vaut $299$.
-      - id: D
-        text: >-
-          $\overline{223}_{(6)}$
+        text: "$8$"
         correct: true
+      - id: C
+        text: "$2$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.reste-non-normalise
+        feedback: >
+          Le critère est le bon : la somme alternée, $1-8+5 = -2$. Mais tu as
+          rendu $2$, comme si le reste d'un nombre négatif était l'opposé de
+          celui du positif. Un reste modulo $10$ est compris entre $0$ et $9$ :
+          il faut ajouter $10$, car $-2 = 10\times(-1)+8$.
+      - id: D
+        text: "$1$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: >
+          Tu as lu le chiffre des unités, comme en base $10$. En base $9$, il
+          donne le reste modulo la base, $9$ — et en effet
+          $N = 478 = 9\times53+1$ —, pas le reste modulo $10$.
     correct_feedback: >
-      Exact. $5\times3 = 15 = 2\times6+3$ : on écrit $3$, on retient $2$. Puis
-      $4\times3+2 = 14 = 2\times6+2$ : on écrit $2$, on retient $2$, qui devient
-      le chiffre de tête. Contrôle : $\overline{223}_{(6)}$ vaut
-      $72+12+3 = 87 = 29\times3$.
+      Exact. En base $9$, $9 \equiv -1 \pmod{10}$ : modulo $10$, $N$ est congru
+      à la somme alternée de ses chiffres, en partant des unités :
+      $1-8+5 = -2$, et $-2 \equiv 8 \pmod{10}$. Contrôle direct :
+      $N = 478 = 10\times47+8$.
     solution: |
-      **En colonnes, en partant des unités ; chaque produit se range en paquets
-      de $6$.**
+      **À quoi la base est-elle congrue ?** Ici $b = 9$ et le module est
+      $10 = b+1$ :
+      $$9 \equiv -1 \pmod{10}$$
+      Les puissances de $9$ valent donc alternativement $1$ et $-1$ modulo
+      $10$, en partant des unités, et $N$ est congru à la somme alternée de ses
+      chiffres :
+      $$N \equiv 1 - 8 + 5 \pmod{10}$$
+      $$N \equiv -2 \pmod{10}$$
+      $$N \equiv 8 \pmod{10}$$
+      Le dernier pas ramène le résultat entre $0$ et $9$ :
+      $-2 = 10\times(-1) + 8$.
 
-      Unités : $5\times3 = 15 = 2\times6+3$ — on écrit $3$, on retient $2$.
+      **Contrôle direct :** $N = 5\times81 + 8\times9 + 1 = 478$, et
+      $478 = 10\times47 + 8$.
 
-      Paquets de $6$ : $4\times3+2 = 14 = 2\times6+2$ — on écrit $2$, on
-      retient $2$, qui devient le chiffre de tête.
-
-      Donc $\overline{45}_{(6)} \times \overline{3}_{(6)} = \overline{223}_{(6)}$.
-
-      **Contrôle en base $10$ :** $\overline{45}_{(6)} = 29$, et
-      $$29 \times 3 = 87$$
-      $$\overline{223}_{(6)} = 2\times36 + 2\times6 + 3 = 87$$
-
-  - id: AR-49
+  - id: AR-52
     rung: "R7b"
-    habilete: application_directe
+    habilete: application_non_explicite
     difficulty_level: 4
     skill_code: maths_arithmetique
-    tags: [numeration, base, retenue, mecanisme]
-    primary_misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+    tags: [numeration, base, divisibilite, chiffres]
+    primary_misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
     stem: >
-      Dans une addition posée en base $b$, une colonne donne la somme $c$, avec
-      $c \ge b$. Quelle règle faut-il appliquer à cette colonne ?
+      Déterminer tous les chiffres $x$ de la base $9$ tels que
+      $N = \overline{3x4}_{(9)}$ soit divisible par $8$.
     type: mcq
     choices:
       - id: A
-        text: >-
-          On écrit le reste de $c$ dans la division par $10$, et on reporte le
-          quotient sur la colonne de gauche.
-        correct: false
-        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
-        feedback: >
-          Tu as gardé le seuil de la base $10$ par automatisme. Le report vient
-          de ce que la colonne de gauche pèse exactement $b$ fois plus : c'est
-          par $b$ qu'on divise, et $10$ n'a aucun rôle en base $b$.
+        text: "$x = 1$"
+        correct: true
       - id: B
-        text: >-
-          On écrit $c - b$ dès que $c > b$, avec une retenue de $1$ ; pour
-          $c = b$, on écrit $b$.
+        text: "$x = 2$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: >
+          Tu as pris le bon critère, la somme des chiffres, mais au mauvais
+          module : $x + 7 \equiv 0 \pmod 9$ au lieu de $\pmod 8$. En base $9$, la
+          somme des chiffres donne le reste modulo $b-1 = 8$, pas modulo $9$.
+          Contrôle : $\overline{324}_{(9)}$ vaut $265 = 8\times33+1$.
+      - id: C
+        text: "$x = 1$ ou $x = 9$"
         correct: false
         misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
         feedback: >
-          Le seuil est décalé d'un cran : à $c = b$ exactement, la colonne
-          déborde déjà — on écrit $0$ et on retient $1$. Écrire $b$ ferait de $b$
-          un chiffre, alors que les chiffres de la base $b$ s'arrêtent à $b-1$.
-      - id: C
-        text: >-
-          On écrit le reste de $c$ dans la division par $b$, et on reporte le
-          quotient sur la colonne de gauche.
-        correct: true
+          Tu as gardé la seconde solution de $x \equiv 1 \pmod 8$, $x = 9$. Mais
+          $9$ n'est pas un chiffre de la base $9$, dont les chiffres vont de $0$
+          à $8$ : la borne $0 \le x \le 8$ fait partie de l'énoncé.
       - id: D
-        text: >-
-          On écrit $c$ si $c < 10$, et sinon $c - 10$ avec une retenue de $1$.
+        text: "$x = 7$"
         correct: false
-        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
         feedback: >
-          C'est la règle apprise à l'école primaire, valable en base $10$
-          seulement. En base $b$, une colonne déborde dès qu'elle atteint $b$, et
-          c'est $b$ qu'on retranche, pas $10$.
+          Tu as utilisé la somme alternée, $4 - x + 3 = 7 - x$ : c'est le
+          critère du module $b+1 = 10$, pas de $8$. Contrôle :
+          $\overline{374}_{(9)}$ vaut $310 = 8\times38+6$, qui n'est pas
+          divisible par $8$.
     correct_feedback: >
-      Exact. La colonne de gauche pèse exactement $b$ fois plus : on écrit
-      $c = qb + r$ avec $0 \le r < b$, on note $r$ et on reporte $q$. C'est la
-      division euclidienne par la base, quelle que soit la base.
+      Exact. Modulo $b-1 = 8$, $N$ est congru à la somme de ses chiffres :
+      $3 + x + 4 = x + 7 \equiv 0 \pmod 8$, donc $x \equiv 1 \pmod 8$. Avec
+      $0 \le x \le 8$, seul $x = 1$ convient. Contrôle : $\overline{314}_{(9)}$
+      vaut $243+9+4 = 256 = 8\times32$.
     solution: |
-      **Pourquoi le seuil est $b$.** Dans une écriture en base $b$, chaque
-      colonne pèse exactement $b$ fois plus que sa voisine de droite : $b$
-      unités d'une colonne valent exactement une unité de la suivante.
+      **Le bon critère.** En base $9$, $9 \equiv 1 \pmod 8$ : modulo $8$, $N$
+      est congru à la somme de ses chiffres.
+      $$N \equiv 3 + x + 4 \pmod 8$$
+      $$N \equiv x + 7 \pmod 8$$
 
-      **La règle.** Si une colonne donne $c$, on fait la division euclidienne
-      par $b$ :
-      $$c = qb + r \qquad \text{avec} \qquad 0 \le r < b$$
-      On écrit $r$ dans la colonne, et on reporte $q$ sur la colonne de gauche.
-      À $c = b$ exactement, cela donne $r = 0$ et $q = 1$ : la colonne déborde
-      déjà. Le nombre $10$ n'intervient nulle part.
+      **La condition.** $8 \mid N$ équivaut à $x + 7 \equiv 0 \pmod 8$,
+      c'est-à-dire :
+      $$x \equiv 1 \pmod 8$$
+
+      **Les bornes.** $x$ est un chiffre de la base $9$, donc
+      $0 \le x \le 8$ : seul $x = 1$ convient ($9$ n'est pas un chiffre de la
+      base $9$).
+
+      **Contrôle :** $\overline{314}_{(9)} = 3\times81 + 1\times9 + 4 = 256$,
+      et $256 = 8\times32$.
 
   - id: AR-50
     rung: "R7b"
@@ -3400,125 +3754,6 @@ items:
       **Contrôle :** $\overline{34}_{(9)} = 27 + 4 = 31$ et
       $\overline{43}_{(7)} = 28 + 3 = 31$.
 
-  - id: AR-51
-    rung: "R7b"
-    habilete: application_directe
-    difficulty_level: 3
-    skill_code: maths_arithmetique
-    tags: [numeration, base, divisibilite, congruences]
-    primary_misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
-    stem: >
-      Soit $N = \overline{8523}_{(9)}$. Quel est le reste de la division
-      euclidienne de $N$ par $8$ ?
-    type: mcq
-    choices:
-      - id: A
-        text: "$18$"
-        correct: false
-        misconception: mc.math.maths_arithmetique.reste-non-normalise
-        feedback: >
-          Tu as bien pris la somme des chiffres, $8+5+2+3 = 18$, et c'est le bon
-          critère, puisque $9 \equiv 1 \pmod 8$. Mais un reste modulo $8$ est
-          compris entre $0$ et $7$ : il faut encore réduire, $18 = 8\times2+2$.
-      - id: B
-        text: "$6$"
-        correct: false
-        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
-        feedback: >
-          Tu as pris la somme alternée, $3-2+5-8 = -2 \equiv 6 \pmod 8$. C'est le
-          critère du module $b+1 = 10$, qui vient de $9 \equiv -1 \pmod{10}$.
-          Modulo $b-1 = 8$, on a $9 \equiv 1$ : c'est la somme simple des
-          chiffres qui compte.
-      - id: C
-        text: "$3$"
-        correct: false
-        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
-        feedback: >
-          Tu as lu le chiffre des unités. Il donne le reste modulo la base,
-          $9$ — et en effet $N = 6258 = 9\times695+3$ —, pas le reste
-          modulo $8$.
-      - id: D
-        text: "$2$"
-        correct: true
-    correct_feedback: >
-      Exact. En base $9$, $9 \equiv 1 \pmod 8$, donc $N$ est congru modulo $8$
-      à la somme de ses chiffres : $8+5+2+3 = 18 = 8\times2+2$. Contrôle
-      direct : $N = 6258 = 8\times782+2$.
-    solution: |
-      **À quoi la base est-elle congrue ?** Ici $b = 9$ et le module est
-      $8 = b-1$ :
-      $$9 \equiv 1 \pmod 8$$
-      Donc toute puissance de $9$ est congrue à $1$ modulo $8$, et $N$ est
-      congru à la somme de ses chiffres :
-      $$N \equiv 8 + 5 + 2 + 3 \pmod 8$$
-      $$N \equiv 18 \pmod 8$$
-      $$N \equiv 2 \pmod 8$$
-      **Contrôle direct :** $N = 8\times729 + 5\times81 + 2\times9 + 3 = 6258$,
-      et $6258 = 8\times782 + 2$.
-
-  - id: AR-52
-    rung: "R7b"
-    habilete: application_non_explicite
-    difficulty_level: 4
-    skill_code: maths_arithmetique
-    tags: [numeration, base, divisibilite, chiffres]
-    primary_misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
-    stem: >
-      Déterminer tous les chiffres $x$ de la base $9$ tels que
-      $N = \overline{3\,x\,4}_{(9)}$ soit divisible par $8$.
-    type: mcq
-    choices:
-      - id: A
-        text: "$x = 1$"
-        correct: true
-      - id: B
-        text: "$x = 2$"
-        correct: false
-        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
-        feedback: >
-          Tu as pris le bon critère, la somme des chiffres, mais au mauvais
-          module : $x + 7 \equiv 0 \pmod 9$ au lieu de $\pmod 8$. En base $9$, la
-          somme des chiffres donne le reste modulo $b-1 = 8$, pas modulo $9$.
-          Contrôle : $\overline{324}_{(9)}$ vaut $265 = 8\times33+1$.
-      - id: C
-        text: "$x = 1$ ou $x = 9$"
-        correct: false
-        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
-        feedback: >
-          Tu as gardé la seconde solution de $x \equiv 1 \pmod 8$, $x = 9$. Mais
-          $9$ n'est pas un chiffre de la base $9$, dont les chiffres vont de $0$
-          à $8$ : la borne $0 \le x \le 8$ fait partie de l'énoncé.
-      - id: D
-        text: "$x = 7$"
-        correct: false
-        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
-        feedback: >
-          Tu as utilisé la somme alternée, $4 - x + 3 = 7 - x$ : c'est le
-          critère du module $b+1 = 10$, pas de $8$. Contrôle :
-          $\overline{374}_{(9)}$ vaut $310 = 8\times38+6$, qui n'est pas
-          divisible par $8$.
-    correct_feedback: >
-      Exact. Modulo $b-1 = 8$, $N$ est congru à la somme de ses chiffres :
-      $3 + x + 4 = x + 7 \equiv 0 \pmod 8$, donc $x \equiv 1 \pmod 8$. Avec
-      $0 \le x \le 8$, seul $x = 1$ convient. Contrôle : $\overline{314}_{(9)}$
-      vaut $243+9+4 = 256 = 8\times32$.
-    solution: |
-      **Le bon critère.** En base $9$, $9 \equiv 1 \pmod 8$ : modulo $8$, $N$
-      est congru à la somme de ses chiffres.
-      $$N \equiv 3 + x + 4 \pmod 8$$
-      $$N \equiv x + 7 \pmod 8$$
-
-      **La condition.** $8 \mid N$ équivaut à $x + 7 \equiv 0 \pmod 8$,
-      c'est-à-dire :
-      $$x \equiv 1 \pmod 8$$
-
-      **Les bornes.** $x$ est un chiffre de la base $9$, donc
-      $0 \le x \le 8$ : seul $x = 1$ convient ($9$ n'est pas un chiffre de la
-      base $9$).
-
-      **Contrôle :** $\overline{314}_{(9)} = 3\times81 + 1\times9 + 4 = 256$,
-      et $256 = 8\times32$.
-
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après AR-28 à AR-32. Huit familles sous le plancher,
 # dont `fermat-condition-ou-exposant` sans AUCUN item de banc — elle n'était
@@ -3550,6 +3785,12 @@ items:
 # `critere-divisibilite-mal-applique` élargie à la base générique sans
 # re-tagage. Comptes RÉGÉNÉRÉS par la règle de web/scripts/lib/couverture-compte.mjs
 # (mesurerNotion), pas édités à la main. Vingt et une familles déclarées.
+# RÉÉCRIT une sixième fois le 2026-10-20 (vague 1 des critiques du chapitre de
+# numération construit) : AR-53 et AR-54 ajoutés, AR-51 re-habillé ; N1 7 → 8,
+# N2 6 → 8, N4 3 → 4 ; `total_items` 52 → 54. Comptes régénérés par
+# mesurerNotion. `honest_state` réordonné, l'état courant d'abord : il s'ouvrait
+# encore sur « dix-sept misconceptions » quand le fichier en déclarait vingt et
+# une.
 # Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
@@ -3576,11 +3817,11 @@ coverage_summary:
     mc.math.maths_arithmetique.diviser-relation-inversee:                 { count: 3, items: [AR-11, AR-22, AR-31] }
     mc.math.maths_arithmetique.prime-divise-produit:                      { count: 3, items: [AR-2, AR-12, AR-22] }
     mc.math.maths_arithmetique.congruence-lineaire-mal-resolue:           { count: 3, items: [AR-38, AR-39, AR-40] }
-    mc.math.maths_arithmetique.numeration-restes-ordre-inverse:           { count: 7, items: [AR-41, AR-42, AR-43, AR-44, AR-47, AR-48, AR-50] }
-    mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre:  { count: 6, items: [AR-41, AR-42, AR-43, AR-44, AR-45, AR-46] }
+    mc.math.maths_arithmetique.numeration-restes-ordre-inverse:           { count: 8, items: [AR-41, AR-42, AR-43, AR-44, AR-47, AR-48, AR-50, AR-54] }
+    mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre:  { count: 8, items: [AR-41, AR-42, AR-43, AR-44, AR-45, AR-46, AR-53, AR-54] }
     mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres:   { count: 5, items: [AR-41, AR-46, AR-49, AR-50, AR-52] }
-    mc.math.maths_arithmetique.numeration-retenue-a-dix:                  { count: 3, items: [AR-47, AR-48, AR-49] }
-  total_items: 52
+    mc.math.maths_arithmetique.numeration-retenue-a-dix:                  { count: 4, items: [AR-47, AR-48, AR-49, AR-53] }
+  total_items: 54
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -3593,16 +3834,27 @@ coverage_summary:
     R6: 4
     R6b: 6
     R7: 4
-    R7b: 12
+    R7b: 14
     R8: 4
   honest_state: >-
-    Les dix-sept misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Neuf y siègent EXACTEMENT (3 items) — pgcd-vs-ppcm,
+    ÉTAT COURANT (2026-10-20, après la vague 1 du chapitre de numération) :
+    les vingt et une misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Dix y siègent EXACTEMENT (3 items) — pgcd-vs-ppcm,
+    gauss-condition-ignoree, bezout-portee, solution-unique-vs-infinie,
+    solution-generale-mal-parametree, primalite-test-incomplet,
+    solution-mise-a-echelle, diviser-relation-inversee, prime-divise-produit,
+    congruence-lineaire-mal-resolue : la marge y est nulle et tout retrait
+    d'item la casse. `numeration-retenue-a-dix` a quitté ce lot (3 → 4,
+    AR-53) — au BANC ; à l'affichage, AR-48 est retiré par la règle du clone
+    (cp-r7b-retenue), si bien que l'élève en rencontre trois.
+
+    HISTORIQUE, chaque compte vrai à sa date (l'état courant est au
+    paragraphe précédent). Après la première édition du 2026-09-27, neuf
+    familles siégeaient EXACTEMENT au plancher — pgcd-vs-ppcm,
     gauss-condition-ignoree, bezout-portee, solution-unique-vs-infinie,
     solution-generale-mal-parametree, primalite-test-incomplet,
     solution-mise-a-echelle, diviser-relation-inversee,
-    prime-divise-produit : la marge y est nulle et tout retrait d'item la
-    casse. Recompté le 2026-09-27 après AR-33/34/35 (dette d'examen, vague
+    prime-divise-produit. Recompté le 2026-09-27 après AR-33/34/35 (dette d'examen, vague
     B2) : `fermat-condition-ou-exposant` quitte ce lot exact (3→6), avec
     `congruence-puissance-mal-reduite` et `critere-divisibilite-mal-applique`
     (3→4 chacune) et `reste-non-normalise` (4→5) — neuf familles à la marge
@@ -3642,3 +3894,15 @@ coverage_summary:
     plancher. Ce plancher est un plancher de CONSTRUCTION : les quatre modèles
     de numération sont une lecture didactique adossée à zéro donnée d'usage, et
     aucune annale vérifiée de numération n'existe dans bank.yaml.
+
+    VAGUE 1 DU CHAPITRE CONSTRUIT (2026-10-20, critiques
+    numeration-build-pedagogie et numeration-build-fidelite) : AR-53 et AR-54
+    ajoutés, AR-51 re-habillé (sa clé exige désormais le critère par b+1),
+    `total_items` 52 → 54, `ramp_coverage.R7b` 12 → 14.
+    `numeration-retenue-a-dix` 3 → 4 (AR-53) : elle quitte la marge nulle au
+    banc, et passe de deux à trois items RENDUS. `numeration-restes-ordre-
+    inverse` 7 → 8 (AR-54) ; `numeration-ecriture-prise-pour-le-nombre` 6 → 8
+    (AR-53, AR-54). AR-51 garde ses deux familles
+    (`critere-divisibilite-mal-applique`, `reste-non-normalise`) sous un
+    habillage neuf : leurs comptes ne bougent pas. Aucun compte ne baisse ; dix
+    familles à marge nulle, contre onze.

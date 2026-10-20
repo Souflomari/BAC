@@ -246,13 +246,16 @@ exercises:
     sourcing:
       status: not-applicable
       note: >-
-        Forme attendue de l'idiome SM, construite exprès — aucune annale
-        vérifiée de numération dans bank.yaml (0/10). N'a pas vocation à être
-        un sujet réel.
+        Construit sur le modèle des exercices d'arithmétique SM (questions
+        enchaînées, question terminale de synthèse) — aucune annale vérifiée
+        de numération dans bank.yaml (0/10), donc aucune forme de question sur
+        une écriture en base n'est attestée par le corpus : l'intro rendue ne
+        le prétend plus (critique de fidélité S3, 2026-10-20). N'a pas
+        vocation à être un sujet réel.
     intro: |-
-      Cet exercice a été construit exprès pour ce chapitre : il a la forme que prennent les questions sur les écritures en base, mais ce n'est pas un sujet d'examen. Il enchaîne tout ce que tu viens de voir — écrire un nombre à partir de ses chiffres, lire deux restes sur ces chiffres, chercher des chiffres sous contraintes — puis te demande ce que ces divisibilités permettent vraiment de conclure.
+      Cet exercice a été construit exprès pour ce chapitre, sur le modèle des exercices d'arithmétique du bac, mais ce n'est pas un sujet d'examen. Il enchaîne tout ce que tu viens de voir — écrire un nombre à partir de ses chiffres, lire deux restes sur ces chiffres, chercher des chiffres sous contraintes — puis te demande ce que ces divisibilités permettent vraiment de conclure.
 
-      Soit $N = \overline{x\,y\,x}_{(7)}$, où $x$ et $y$ sont des chiffres de la base $7$ et $x \neq 0$.
+      Soit $N = \overline{xyx}_{(7)}$, où $x$ et $y$ sont des chiffres de la base $7$ et $x \neq 0$.
     questions:
       - id: qa
         stem: |-
@@ -292,7 +295,7 @@ exercises:
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste :** d'abord les bornes, avant toute résolution : $x$ est le chiffre de tête, donc $x \in \{1, \dots, 6\}$, et $y$ est un chiffre de la base $7$, donc $y \in \{0, \dots, 6\}$.
 
-          Ensuite, pourquoi un tableau sur $x$ plutôt que de l'algèbre ? Il n'y a que six valeurs de $x$, et chacune force un seul $y$ : pour $x$ fixé, $2x - y$ parcourt sept entiers consécutifs quand $y$ va de $0$ à $6$, et un seul d'entre eux est un multiple de $8$. L'énumération est ici plus sûre qu'une manipulation de congruences. On impose donc $8 \mid 2x - y$, on lit le $y$ forcé, puis on teste $6 \mid 2x + y$.
+          Ensuite, pourquoi un tableau sur $x$ plutôt que de l'algèbre ? Il n'y a que six valeurs de $x$, et chacune force un seul $y$. Pour $x$ fixé, $2x - y$ parcourt les sept entiers consécutifs de $2x - 6$ à $2x$ quand $y$ va de $0$ à $6$. Sept entiers consécutifs contiennent au plus un multiple de $8$, parfois aucun (de $1$ à $7$, par exemple). Ici, chaque fenêtre en contient exactement un : $0$ quand $x \leq 3$, et $8$ quand $x \geq 4$. L'énumération est ici plus sûre qu'une manipulation de congruences. On impose donc $8 \mid 2x - y$, on lit le $y$ forcé, puis on teste $6 \mid 2x + y$.
 
           | $x$ | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ |
           |---|---|---|---|---|---|---|
@@ -305,7 +308,7 @@ exercises:
           - math: 'x \in \{1,\dots,6\}, \qquad y \in \{0,\dots,6\}'
             note: "Les bornes d'abord : x est le chiffre de tête, y un chiffre de la base 7."
           - math: '8 \mid 2x - y'
-            note: "Pour chaque x, une seule valeur de y convient : 2x − y prend sept valeurs consécutives, et une seule est multiple de 8."
+            note: "Pour chaque x, au plus une valeur de y convient : 2x − y prend les sept valeurs consécutives de 2x − 6 à 2x, qui contiennent au plus un multiple de 8 — ici exactement un, 0 si x ≤ 3 et 8 si x ≥ 4."
           - math: '6 \mid 2x + y'
             note: "On teste ensuite la condition modulo 6 sur les six couples obtenus : seuls x = 3 et x = 5 la vérifient."
           - math: '(x, y) \in \{(3, 6),\ (5, 2)\}'

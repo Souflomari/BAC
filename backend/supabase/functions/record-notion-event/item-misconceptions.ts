@@ -188,6 +188,14 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_arithmetique.critere-divisibilite-mal-applique",
       "mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres"
     ],
+    "AR-53": [
+      "mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre",
+      "mc.math.maths_arithmetique.numeration-retenue-a-dix"
+    ],
+    "AR-54": [
+      "mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre",
+      "mc.math.maths_arithmetique.numeration-restes-ordre-inverse"
+    ],
     "AR-6": [
       "mc.math.maths_arithmetique.diophantienne-critere-existence"
     ],
