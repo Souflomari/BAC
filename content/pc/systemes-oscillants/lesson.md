@@ -118,6 +118,8 @@ Un aller-retour complet dure un peu plus d'une demi-seconde. Si on double la mas
 
 Beaucoup répondent oui — après tout, la pesanteur agit bel et bien sur la masse, et l'ignorer semble une erreur. Engage vraiment ta réponse avant de continuer.
 
+[[checkpoint:cp-r1-poids-vertical]]
+
 **Le ressort vertical.** Accroche le solide $(S)$ à un ressort vertical de raideur $k$, fixé au plafond. Repère la position de $G$ par $X$, l'allongement TOTAL du ressort par rapport à sa longueur à vide, orienté vers le bas (positif). Bilan des forces : le poids $\vec P = m\vec g$ (vers le bas, donc $+mg$ dans ce repère) et la force de rappel $\vec F_{rappel} = -kX\,\vec u$ (vers le haut quand le ressort est étiré, donc $-kX$). La deuxième loi de Newton, projetée :
 
 $$m\,\ddot X = mg - kX$$
@@ -317,11 +319,13 @@ On retrouve exactement la formule du pendule simple — la masse $m$ se simplifi
 
 Beaucoup répondent oui — $d$ est bien « la distance qui compte » dans le moment du poids. Engage vraiment ta réponse avant de continuer.
 
+[[checkpoint:cp-r3-longueur-synchrone]]
+
 On cherche une longueur $\ell$ telle que le pendule simple de longueur $\ell$ ait la même période propre que le pendule pesant $(J_\Delta, m, d)$ :
 
 $$2\pi\sqrt{\frac{\ell}{g}} = 2\pi\sqrt{\frac{J_\Delta}{mgd}} \qquad \Longrightarrow \qquad \frac{\ell}{g} = \frac{J_\Delta}{mgd} \qquad \Longrightarrow \qquad \boxed{\ell = \frac{J_\Delta}{m\,d}}$$
 
-Ce $\ell$ s'appelle la **longueur du pendule simple synchrone** du pendule pesant considéré : un pendule simple de cette longueur précise bat exactement au même rythme, quel que soit le pendule pesant de départ. Il ne coïncide avec $d$ que dans le cas particulier déjà rencontré (masse ponctuelle, $J_\Delta = md^2$) : alors $\ell = md^2/(md) = d$ exactement — le pendule simple lui-même. Dans tous les autres cas, $\ell \neq d$. Un énoncé peut noter cette longueur $L$ ; ici, $L$ désigne déjà la longueur de la tige de l'exemple qui suit, d'où la lettre $\ell$.
+Ce $\ell$ s'appelle la **longueur du pendule simple synchrone** du pendule pesant considéré : un pendule simple de cette longueur précise bat exactement au même rythme, quel que soit le pendule pesant de départ. Il ne coïncide avec $d$ que dans le cas particulier déjà rencontré (masse ponctuelle, $J_\Delta = md^2$) : alors $\ell = md^2/(md) = d$ exactement — le pendule simple lui-même. Dans tous les autres cas, $\ell \neq d$. Un énoncé peut noter cette longueur $L$.
 
 **Exemple numérique — une barre pivotée par une extrémité.** Une tige homogène de longueur $L = 1{,}20\ \text{m}$ et de masse $m = 0{,}80\ \text{kg}$, pivotant autour d'un axe horizontal passant par une extrémité, a pour moment d'inertie $J_\Delta = \dfrac{1}{3}mL^2$ (donnée) et son centre d'inertie est à $d = L/2$ de l'axe.
 
@@ -361,20 +365,6 @@ où $J$ est le moment d'inertie du solide par rapport à l'axe du fil. Encore un
 
 $$\theta(t) = \theta_m\cos(\omega_0 t + \varphi), \qquad \omega_0 = \sqrt{\frac{C}{J}}, \qquad T_0 = 2\pi\sqrt{\frac{J}{C}}$$
 
-### Ce qu'il faut retenir : un seul mécanisme, plusieurs habillages
-
-Les systèmes étudiés obéissent tous à LA MÊME équation différentielle, $\ddot{X} + \omega_0^2 X = 0$ (avec $X$ une position ou un angle) — seuls les noms des grandeurs changent :
-
-| Système | Grandeur $X$ | « Inertie » | « Rappel » | $\omega_0$ | $T_0$ |
-|---|---|---|---|---|---|
-| Pendule élastique | $x$ | $m$ | $k$ | $\sqrt{k/m}$ | $2\pi\sqrt{m/k}$ |
-| Pendule simple | $\theta$ | — (s'annule) | $g/L$ | $\sqrt{g/L}$ | $2\pi\sqrt{L/g}$ |
-| Pendule pesant | $\theta$ | $J_\Delta$ | $mgd$ | $\sqrt{mgd/J_\Delta}$ | $2\pi\sqrt{J_\Delta/(mgd)}$ |
-| Pendule de torsion | $\theta$ | $J$ | $C$ | $\sqrt{C/J}$ | $2\pi\sqrt{J/C}$ |
-| (Circuit LC, pour mémoire) | $q$ | $L$ | $1/C$ | $\sqrt{1/(LC)}$ | $2\pi\sqrt{LC}$ |
-
-Ce n'est pas un hasard si la même équation revient à chaque fois : chaque système a une grandeur qui joue le rôle de « l'inertie » (résiste à la mise en mouvement) et une grandeur qui joue le rôle du « rappel » (ramène vers l'équilibre, proportionnellement à l'écart). Dès que ces deux ingrédients sont présents et qu'aucune autre force ou moment ne s'en mêle, l'équation — et donc le comportement sinusoïdal — est la même, qu'il s'agisse de mécanique ou d'électricité.
-
 ### Aller plus loin : un oscillateur composé, quand translation et rotation se combinent
 
 *Ce qu'on cherche ici, et pourquoi ce geste :* jusqu'ici, chaque système oscillant était SOIT en translation pure (pendule élastique), SOIT en rotation pure (pendule simple, pesant, de torsion). Un sujet peut aussi accrocher les deux ensemble dans un seul dispositif — typiquement un fil qui passe sur une poulie. Il faut alors écrire DEUX équations (une par méthode), puis les combiner en une seule équation différentielle, exactement comme pour un système {solide en translation, solide en rotation} au chapitre sur la rotation autour d'un axe fixe.
@@ -384,6 +374,8 @@ Ce n'est pas un hasard si la même équation revient à chaque fois : chaque sys
 **Prends position avant de lire la suite : cette poulie a sa propre inertie ($J_\Delta \neq 0$) — la période propre de cet oscillateur est-elle la même que si la poulie était idéale, sans masse ni inertie ?**
 
 Beaucoup répondent que la poulie « ne fait que guider le fil » et ne change rien à la période, tant que le fil ne glisse pas. Engage vraiment ta réponse avant de continuer.
+
+[[checkpoint:cp-r4-poulie-inertie]]
 
 **Choix de la variable.** Le fil étant inextensible et ne glissant pas sur la poulie, un déplacement $x$ du solide $(S)$ correspond exactement au même déplacement $x$ du point d'attache du ressort, et à une rotation $\theta = x/R$ de la poulie — une seule variable $x$ décrit tout le système.
 
@@ -399,13 +391,39 @@ $$J_\Delta\,\ddot\theta = T_1 R - T_2 R \qquad \text{avec} \qquad \ddot\theta = 
 
 **La position d'équilibre — exactement le geste du ressort vertical, plus haut.** À l'équilibre ($\ddot x = 0$, $\ddot\theta=0$), la relation de la poulie donne $T_{1,eq}=T_{2,eq}$, et celle du solide donne $T_{1,eq}=mg$. Donc $T_{2,eq}=mg=k\,X_{eq}$, soit $X_{eq}=mg/k$ — exactement la même pré-tension que pour le ressort vertical, ici transmise par le fil plutôt que portée directement par le solide.
 
-**Recentrer sur l'équilibre.** Pose $x$ comme l'écart par rapport à cette position d'équilibre (donc $X = x + X_{eq}$, avec $T_2 = k(x+X_{eq})$). En combinant les trois relations et en éliminant $T_1$ et $T_2$ :
+**Recentrer sur l'équilibre.** Pose $x$ comme l'écart par rapport à cette position d'équilibre : $X = x + X_{eq}$, donc $T_2 = k(x+X_{eq})$. Il reste à éliminer $T_1$ et $T_2$ pour qu'il ne reste que $x$ — un geste par ligne.
 
-$$J_\Delta\,\frac{\ddot x}{R} = R\big[T_1 - T_2\big] = R\Big[(mg - m\ddot x) - k(x+X_{eq})\Big] = R\Big[\underbrace{(mg-kX_{eq})}_{=\ 0} - m\ddot x - kx\Big]$$
+On part de la relation de la poulie, où l'on remplace $\ddot\theta$ par $\ddot x/R$, puisque le fil ne glisse pas :
 
-Le même terme qu'au ressort vertical s'annule ($mg=kX_{eq}$). Il reste, après multiplication par $R$ :
+$$J_\Delta\,\frac{\ddot x}{R} = T_1 R - T_2 R$$
 
-$$J_\Delta\,\ddot x = -R^2 m\,\ddot x - R^2 k\,x \qquad \Longrightarrow \qquad \boxed{(J_\Delta + mR^2)\,\ddot x + k R^2\,x = 0}$$
+On multiplie les deux membres par $R$, pour chasser la fraction :
+
+$$J_\Delta\,\ddot x = T_1 R^2 - T_2 R^2$$
+
+On remplace $T_1$ par ce que donne la relation du solide, $T_1 = mg - m\ddot x$ :
+
+$$J_\Delta\,\ddot x = (mg - m\ddot x)R^2 - T_2 R^2$$
+
+On remplace $T_2$ par la tension du ressort, $T_2 = k(x+X_{eq})$ :
+
+$$J_\Delta\,\ddot x = (mg - m\ddot x)R^2 - k(x+X_{eq})R^2$$
+
+On développe, en rangeant ensemble les deux termes qui ne contiennent ni $x$ ni $\ddot x$ :
+
+$$J_\Delta\,\ddot x = \underbrace{(mg - kX_{eq})}_{=\ 0}\,R^2 - mR^2\,\ddot x - kR^2\,x$$
+
+Le même terme qu'au ressort vertical s'annule, et EXACTEMENT : $mg = kX_{eq}$ est la condition d'équilibre elle-même. Il reste :
+
+$$J_\Delta\,\ddot x = -mR^2\,\ddot x - kR^2\,x$$
+
+On fait passer tous les termes dans le premier membre :
+
+$$J_\Delta\,\ddot x + mR^2\,\ddot x + kR^2\,x = 0$$
+
+On met $\ddot x$ en facteur dans les deux premiers termes :
+
+$$\boxed{(J_\Delta + mR^2)\,\ddot x + kR^2\,x = 0}$$
 
 **Lire le résultat.** C'est encore la même famille d'équation, $\ddot x + \omega_0^2 x = 0$, mais avec une « inertie » qui n'est plus $m$ seul ni $J_\Delta$ seul : c'est la SOMME $J_\Delta + mR^2$ — le moment d'inertie de la poulie, plus la contribution du solide en translation vue à travers le rayon $R$ (exactement le terme $md^2$ du chapitre sur le moment d'inertie, avec $d=R$).
 
@@ -424,6 +442,23 @@ $$X_{eq} = \frac{mg}{k} = \frac{1{,}0\times10}{50} = 0{,}20\ \text{m} = 20\ \tex
 Dans cet exemple, $J_\Delta$ et $mR^2$ valent exactement la même chose ($1{,}0\times10^{-2}\ \text{kg}\cdot\text{m}^2$ chacun) : l'inertie de la poulie pèse ici pour EXACTEMENT LA MOITIÉ de l'inertie totale du système — si la poulie était idéale ($J_\Delta=0$), $\omega_0$ vaudrait $\sqrt{kR^2/(mR^2)}=\sqrt{k/m}=\sqrt{50/1{,}0}\approx7{,}07\ \text{rad/s}$, nettement plus rapide. La réponse à la question de départ est donc non : une poulie réelle, avec sa propre inertie, RALENTIT l'oscillateur par rapport à une poulie idéale — elle n'est jamais un simple guide neutre pour le fil.
 
 **Le piège à éviter.** Traiter la poulie comme un point de renvoi sans inertie ($J_\Delta$ absent de l'équation), ou au contraire écrire la relation fondamentale de la poulie SANS relier $\ddot\theta$ à $\ddot x$ par $\ddot\theta = \ddot x/R$ — deux équations qui ne se combinent jamais en une seule tant que cette relation cinématique, imposée par le fil inextensible qui ne glisse pas, n'est pas explicitement posée.
+
+### Ce qu'il faut retenir : un seul mécanisme, plusieurs habillages
+
+Les systèmes étudiés obéissent tous à LA MÊME équation différentielle, $\ddot{X} + \omega_0^2 X = 0$ (avec $X$ une position ou un angle) — seuls les noms des grandeurs changent :
+
+| Système | Grandeur $X$ | « Inertie » | « Rappel » | $\omega_0$ | $T_0$ |
+|---|---|---|---|---|---|
+| Pendule élastique | $x$ | $m$ | $k$ | $\sqrt{k/m}$ | $2\pi\sqrt{m/k}$ |
+| Pendule simple | $\theta$ | — (s'annule) | $g/L$ | $\sqrt{g/L}$ | $2\pi\sqrt{L/g}$ |
+| Pendule pesant | $\theta$ | $J_\Delta$ | $mgd$ | $\sqrt{mgd/J_\Delta}$ | $2\pi\sqrt{J_\Delta/(mgd)}$ |
+| Pendule de torsion | $\theta$ | $J$ | $C$ | $\sqrt{C/J}$ | $2\pi\sqrt{J/C}$ |
+| Oscillateur composé (solide, poulie, ressort) | $x$ | $J_\Delta + mR^2$ | $kR^2$ | $\sqrt{kR^2/(J_\Delta+mR^2)}$ | $2\pi\sqrt{(J_\Delta+mR^2)/(kR^2)}$ |
+| (Circuit LC, pour mémoire) | $q$ | $L$ | $1/C$ | $\sqrt{1/(LC)}$ | $2\pi\sqrt{LC}$ |
+
+Ce n'est pas un hasard si la même équation revient à chaque fois : chaque système a une grandeur qui joue le rôle de « l'inertie » (résiste à la mise en mouvement) et une grandeur qui joue le rôle du « rappel » (ramène vers l'équilibre, proportionnellement à l'écart). Dès que ces deux ingrédients sont présents et qu'aucune autre force ou moment ne s'en mêle, l'équation — et donc le comportement sinusoïdal — est la même, qu'il s'agisse de mécanique ou d'électricité.
+
+La ligne de l'oscillateur composé ajoute une leçon : quand un même mouvement entraîne deux corps à la fois, leurs inerties s'additionnent — $J_\Delta$ pour la poulie, $mR^2$ pour le solide que le fil entraîne.
 
 ---
 
@@ -482,12 +517,18 @@ L'équation qu'on vient d'établir suppose un **frottement fluide** (ou visqueux
 
 Beaucoup répondent que « du frottement, c'est du frottement » — l'amplitude décroît dans les deux cas, alors pourquoi la forme changerait-elle ? Engage vraiment ta réponse avant de continuer.
 
+[[checkpoint:cp-r6-types-frottement]]
+
 Le mécanisme qui distingue les deux types tient dans une seule question : la quantité d'énergie perdue à chaque aller-retour dépend-elle de l'amplitude EN COURS, ou reste-t-elle fixe ?
 
 - **Frottement fluide.** La force $-h\dot x$ est proportionnelle à la vitesse, donc plus grande quand l'oscillation est ample (le solide va plus vite), plus petite quand elle s'est déjà réduite. La perte d'énergie par cycle est donc une FRACTION à peu près constante de l'énergie déjà présente — comme un pourcentage prélevé à chaque tour. L'enveloppe qui relie les sommets successifs de $x(t)$ est une courbe qui s'aplatit progressivement, sans jamais toucher tout à fait zéro : en théorie, il faut un temps infini pour s'arrêter complètement.
 - **Frottement solide.** La force de frottement sec a une intensité à peu près constante, indépendante de l'amplitude en cours. La perte d'énergie par cycle est donc une quantité à peu près FIXE, la même que l'amplitude soit grande ou petite. L'enveloppe qui relie les sommets successifs de $x(t)$ est alors une DROITE — un écart constant retranché à chaque aller-retour — et l'oscillation s'arrête NET, après un nombre fini d'allers-retours, dès que la force de rappel du ressort n'est plus assez forte pour vaincre le frottement sec. Le solide s'immobilise alors là où il se trouve à cet instant — tout près de la position d'équilibre, mais pas forcément exactement dessus.
 
-**Illustration.** Deux oscillateurs identiques ($m$, $k$), lâchés avec le même écart initial de $8{,}0\ \text{cm}$, mais freinés différemment : celui à frottement fluide voit son amplitude s'approcher indéfiniment de zéro sans jamais l'atteindre ; celui à frottement solide voit ses sommets successifs baisser d'une même quantité à chaque aller-retour, et s'immobilise net après un nombre fini d'allers-retours (par exemple six), dès que l'écart restant est trop petit pour que le ressort vainque le frottement sec.
+**Sur les enregistrements.** La figure ci-dessous montre deux oscillateurs identiques ($m$, $k$), lâchés du même écart initial, l'un freiné par un frottement fluide, l'autre par un frottement solide. Fais le geste qui permet de lire le type sur un enregistrement $x(t)$ : pointe les sommets successifs de chaque trace, relie-les, et regarde la forme de l'enveloppe ainsi tracée.
+
+[[figure:frottement-fluide-solide]]
+
+Les deux amplitudes décroissent, mais pas de la même façon. En haut, chaque aller-retour emporte la même fraction de l'amplitude restante : les sommets baissent de moins en moins, sur une courbe qui s'aplatit sans toucher zéro. En bas, chaque aller-retour retranche le même écart : les sommets descendent en ligne droite, et le mouvement s'arrête net au bout de quatre allers-retours, tout près de l'équilibre mais pas exactement dessus. Au moment où le frottement solide a tout immobilisé, l'oscillateur à frottement fluide, lui, oscille encore.
 
 **Le piège à éviter.** Croire qu'il n'existe qu'UN SEUL type d'amortissement, ou juger le type d'un enregistrement $x(t)$ seulement à la vitesse à laquelle l'amplitude décroît. Le critère qui distingue les deux types n'est pas la vitesse de décroissance, c'est sa FORME : une enveloppe courbe qui ne touche jamais zéro signe le frottement fluide ; une enveloppe rectiligne, avec un arrêt au bout d'un temps fini, signe le frottement solide. Ne confonds pas non plus ces deux TYPES avec les trois RÉGIMES du paragraphe suivant (pseudo-périodique, critique, apériodique) : le type dit QUELLE force freine ; le régime dit COMMENT le système répond, une fois l'intensité du frottement fixée.
 
@@ -660,11 +701,21 @@ C'est la même leçon que celle du dictionnaire translation ↔ rotation : la m�
      « Et si le ressort n'est pas horizontal ? » — :315 (« horizontal / incliné / vertical ») ;
      « Le pendule simple synchrone… » — :317, attesté par un sujet national vérifié
        (content/pc/rotation-axe-fixe/bank.yaml, « Calculer la valeur de la longueur L du pendule simple
-       synchrone ») : le sujet écrit L, la leçon ℓ (L est déjà la longueur de la tige) — dit une fois au lecteur ;
+       synchrone ») : le sujet écrit L, la leçon ℓ (L y nomme déjà la longueur de la tige de l'exemple). L'élève
+       lit seulement qu'un énoncé peut noter cette longueur L ; la justification de la lettre, aparté d'auteur,
+       est sortie de la prose (critique pédagogique cadre-GH-pedagogie.md, P7) ;
      « Aller plus loin : un oscillateur composé… » — :319 (« 2e loi + RFD … pour établir les équations
        différentielles »), J_Δ donné (:306). La leçon va jusqu'à ω₀/T₀ : dans le cadre selon :315 et :321
        (forme fermée sans amortissement) — question posée au propriétaire, DECISIONS-EN-ATTENTE §37, point 5 ;
      « Deux types de frottement, pas un seul » — :315, lu fluide/solide (défaut de §37, point 2). La ligne dit
-       « à partir des diagrammes x_G(t) » : la section n'a pas encore de figure qui oppose les deux enveloppes.
+       « à partir des diagrammes x_G(t) » : la figure frottement-fluide-solide (quatre étapes, modèles exacts et
+       paramètres dans son en-tête) oppose les deux enveloppes ; elle est placée APRÈS le point d'arrêt
+       cp-r6-types-frottement, puisqu'elle en est la réponse.
+     Engagement (critique pédagogique, P1) : chacune des quatre prises de position neuves a son point d'arrêt
+       AVANT la révélation — cp-r1-poids-vertical, cp-r3-longueur-synchrone, cp-r4-poulie-inertie,
+       cp-r6-types-frottement (checkpoints.yaml, items originaux, aucun clone).
+     Oscillateur composé (P7) : la dérivation suit une transformation par ligne, chacune annoncée par son
+       pourquoi ; la synthèse « un seul mécanisme, plusieurs habillages » est déplacée en fin de chapitre pour
+       recevoir la ligne de l'oscillateur composé sans renvoyer l'élève vers une section qu'il n'a pas lue.
      Aucune phrase de filière : le domaine est commun aux filières PC. Critique de fidélité :
      docs/audits/critiques/cadre-GH-fidelite.md (FIX THEN SHIP, corrections appliquées le 2026-10-20). -->

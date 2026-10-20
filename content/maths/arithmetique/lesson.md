@@ -658,22 +658,11 @@ La raison, maintenant. Dans la première division, $N = 7q + r$, le reste $r$ es
 
 Le même argument garantit que l'écriture existe et qu'elle est unique : les quotients décroissent strictement jusqu'à $0$, donc les divisions s'arrêtent ; et toute égalité $N = b \times (\ldots) + a_0$ avec $0 \leq a_0 < b$ est une division euclidienne, dont l'unicité (chapitre 2) force $a_0$, puis de proche en proche chaque chiffre.
 
-<!-- FIGURE COMMANDÉE, NON LIVRÉE — SLOT (non bloquant : la prose ci-dessus porte
-     déjà la lecture de bas en haut) — brief pour la file diagram :
-     type: structural-diagram · tool: svg+katex (taxonomie ADR 0017).
-     slug : numeration-cascade-2025-base7. Placement : ICI, après le point
-     d'arrêt sur l'ordre des restes (son troisième étage donne la réponse ; le
-     poser avant contaminerait l'engagement). Sujet : la cascade des quatre
-     divisions de 2025 par 7, restes encadrés, et la flèche de bas en haut qui
-     assemble l'écriture en base 7. Même grammaire visuelle que la figure
-     euclide-cascade de cette notion — à réutiliser, pas à réinventer.
-     stages:
-       - "Les quatre divisions écrites de haut en bas, restes non marqués"
-       - "Les quatre restes encadrés et étiquetés a0, a1, a2, a3 : chaque reste porte un poids, et le premier porte 7 puissance 0"
-       - "La flèche remontante et l'écriture assemblée, avec la légende : on lit de bas en haut parce que le premier reste est celui des unités"
-     Le marqueur n'est posé qu'avec l'asset : un marqueur sans fichier est un
-     échec dur de validate-content. Vérification de rendu exigée avant de le
-     poser (figure-preview, clair et sombre). -->
+<!-- Figure numeration-cascade-2025-base7 (3 étapes, brief d'origine recopié dans
+     l'en-tête du SVG) : à garder APRÈS le point d'arrêt sur l'ordre des restes —
+     sa troisième étape en donne la réponse. -->
+
+[[figure:numeration-cascade-2025-base7]]
 
 <!-- ENHANCEMENT SLOT (manipulable, non bloquant) — brief pour la file interactive :
      type: manipulable · tool: geogebra/desmos/falstad/phet (taxonomie ADR 0017).

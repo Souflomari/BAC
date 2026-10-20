@@ -6538,11 +6538,23 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "cp-r0-predict": [
       "M-OSC-LIBRE-1"
     ],
+    "cp-r1-poids-vertical": [
+      "M-OSC-EQD-1"
+    ],
+    "cp-r3-longueur-synchrone": [
+      "M-OSC-FORM-1"
+    ],
+    "cp-r4-poulie-inertie": [
+      "M-OSC-COMP-1"
+    ],
     "cp-r6-pseudo-periode": [
       "M-OSC-AMO-1"
     ],
     "cp-r6-regimes": [
       "M-OSC-AMO-2"
+    ],
+    "cp-r6-types-frottement": [
+      "M-OSC-AMO-4"
     ],
     "cp-r7-acuite": [
       "M-OSC-RES-2",

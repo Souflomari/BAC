@@ -2875,6 +2875,15 @@ items:
   #    • R6, « Deux types de frottement, pas un seul » — SO-50, SO-51, SO-52,
   #      sur un id neuf, M-OSC-AMO-4 (lecture fluide/solide, défaut du
   #      propriétaire, docs/audits/DECISIONS-EN-ATTENTE.md §37).
+  #      SO-50 et SO-51 restent des RELEVÉS DE SOMMETS, délibérément. Les items
+  #      de ce corpus ne portent pas de figure ; décrire les enregistrements
+  #      par leur enveloppe (« sur le second, les sommets s'alignent sur une
+  #      droite ») livrerait la lecture que ces deux items existent pour
+  #      tester, et il ne resterait que l'étiquette « droite → solide », mot
+  #      pour mot le piège de la leçon. Le relevé oblige au geste : comparer
+  #      les écarts successifs, constants ou décroissants. La forme elle-même
+  #      est montrée par la figure frottement-fluide-solide de la leçon
+  #      (critiques cadre-GH, P2 et F4 ; vague du 2026-10-20).
   #    Le champ `habilete:` n'est posé que sur ces neuf items ; les 43 items
   #    antérieurs n'en portent pas.
   - id: SO-44
@@ -3544,9 +3553,11 @@ coverage_summary:
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte — tag simple ou co-marquage $[a, b]$ — une seule fois
     par item. Les checkpoints ne comptent pas : le modèle apprenant est bâti
-    sur le banc de fin seul. Les cinq checkpoints se répartissent en UNE porte
-    d'engagement originale à l'accroche (cp-r0-predict, in_R0) et QUATRE portes
-    de rupture clonant SO-25, SO-26, SO-34 et SO-35, placées dans R6 et R7 —
+    sur le banc de fin seul. Les neuf checkpoints se répartissent en CINQ
+    portes d'engagement originales — cp-r0-predict à l'accroche, puis, depuis
+    la vague H1, cp-r1-poids-vertical, cp-r3-longueur-synchrone,
+    cp-r4-poulie-inertie et cp-r6-types-frottement — et QUATRE portes de
+    rupture clonant SO-25, SO-26, SO-34 et SO-35, placées dans R6 et R7 ;
     aucune n'est au sommet R8.
   per_misconception:
     M-OSC-ISO-1:   { count: 4, items: [SO-1, SO-2, SO-11, SO-22] }

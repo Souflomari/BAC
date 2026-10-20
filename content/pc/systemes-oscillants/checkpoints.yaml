@@ -14,6 +14,19 @@ skill_code: pc_systemes_oscillants
 #   cp-r0-predict       (in R0)      — COMMIT gate: turns the rhetorical "prends
 #                                      position" (oscille-t-il ou s'arrête-t-il ?)
 #                                      into a real MCQ commit before the reveal.
+#   cp-r1-poids-vertical (in R1)     — COMMIT gate (vague H1) : le poids reste-t-il
+#                                      dans l'équation du ressort vertical ?
+#                                      (M-OSC-EQD-1)
+#   cp-r3-longueur-synchrone (in R3) — COMMIT gate (vague H1) : la longueur du
+#                                      pendule simple synchrone vaut-elle d ?
+#                                      (M-OSC-FORM-1)
+#   cp-r4-poulie-inertie (in R4)     — COMMIT gate (vague H1) : une poulie qui a
+#                                      sa propre inertie change-t-elle la
+#                                      période ? (M-OSC-COMP-1)
+#   cp-r6-types-frottement (in R6)   — COMMIT gate (vague H1) : fluide et solide
+#                                      dessinent-ils la même enveloppe ?
+#                                      (M-OSC-AMO-4) — la figure
+#                                      frottement-fluide-solide vient APRÈS.
 #   cp-r6-pseudo-periode (after R6)  — rupture gate: pendule élastique, la
 #                                      pseudo-période T ≈ T₀ = 2π√(m/k) malgré
 #                                      la décroissance de l'amplitude (M-OSC-AMO-1).
@@ -31,6 +44,17 @@ skill_code: pc_systemes_oscillants
 #   (M-OSC-RES-2). On each, EVERY distractor carries a named misconception tag
 #   (M-OSC-* ; SO-26/D and SO-35/D keep their boundary/dual tags). No end-bank
 #   tally is adjusted — inline surfacing does not double-count.
+#
+# VAGUE H1 (2026-10-20) — les quatre prises de position ajoutées à la prose ce
+# jour-là étaient toutes rhétoriques : réponse au paragraphe suivant, aucun
+# engagement réel (critique docs/audits/critiques/cadre-GH-pedagogie.md, P1).
+# Chacune voice une vraie erreur d'élève, donc chacune reçoit son point d'arrêt,
+# posé AVANT la révélation — cp-r1-poids-vertical, cp-r3-longueur-synchrone,
+# cp-r4-poulie-inertie, cp-r6-types-frottement. Tous ORIGINAUX, aucun clone :
+# aucun des items SO-44…SO-52 ne pose la question telle que la prose la pose
+# (ils calculent, lisent un relevé ou comparent deux poulies), donc aucun item
+# n'est à retirer du chapitre. Chaque distracteur porte un id déjà déclaré dans
+# items.yaml, sous une forme distincte de l'erreur que cet id décrit.
 #
 # cp-r0-predict is an ORIGINAL commit item (not in the end bank). Its three
 # distractors are the lesson's R0 naive models (retour-et-arrêt / fuite / arrêt
@@ -143,6 +167,328 @@ checkpoints:
           mais la vitesse, elle, ne cesse d'**augmenter** (il est de moins en moins
           freiné) jusqu'à être maximale exactement à l'équilibre. Il ne peut donc
           pas s'arrêter avant de l'atteindre.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-H1a | id: cp-r1-poids-vertical | placé DANS R1, entre la prise
+  #        de position « le poids reste-t-il dans l'équation ? » et le
+  #        calcul du ressort vertical. COMMIT gate, item original.
+  #        Sonde M-OSC-EQD-1 (« laisse un second membre non nul (mg) »),
+  #        sous trois formes : le poids gardé, le poids « négligé » par
+  #        approximation, le poids qui accélérerait les oscillations.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-poids-vertical
+    rung: "R1"
+    habilete: utilisation
+    skill_code: pc_systemes_oscillants
+    tags: [checkpoint, formative, misconception_driven, pc_systemes_oscillants, predict_commit, ressort_vertical]
+    primary_misconception: M-OSC-EQD-1
+    item_source: original
+    lesson_placement: in_R1
+
+    stem: |
+      Un solide de masse $m$, suspendu à un ressort vertical de raideur $k$,
+      oscille de haut en bas. On repère sa position par $x$, son écart à la
+      position d'équilibre. **Prends position avant de lire la suite :**
+      dans l'équation différentielle finale en $x$, le poids apparaît-il ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: >-
+          Oui : la pesanteur agit à chaque instant sur le solide, donc
+          l'équation garde un terme en $mg$ : $m\ddot x + kx = mg$.
+        correct: false
+        misconception: M-OSC-EQD-1
+        feedback: |
+          Modèle détecté : « le poids agit, donc il reste dans l'équation ». Il
+          agit, oui — mais il est déjà équilibré : à l'équilibre, le ressort est
+          étiré de $\Delta L_0$ et sa tension $k\,\Delta L_0$ vaut exactement
+          $mg$. Mesurer $x$ depuis cet équilibre, c'est avoir déjà utilisé le
+          poids une fois ; le garder en second membre le compterait deux fois,
+          et l'équilibre ($\ddot x = 0$) tomberait en $x = mg/k$ au lieu de
+          $x = 0$.
+
+      - id: B
+        text: >-
+          Non : à l'équilibre, la tension du ressort compense déjà le poids ;
+          mesuré depuis cet équilibre, il reste $m\ddot x + kx = 0$.
+        correct: true
+        feedback: |
+          Exact. Le poids fixe la position d'équilibre — l'allongement
+          $\Delta L_0 = mg/k$ — et c'est tout : une fois $x$ mesuré depuis cet
+          équilibre, le terme $mg - k\,\Delta L_0$ est nul exactement. Le calcul
+          juste en dessous le montre ligne par ligne.
+
+      - id: C
+        text: >-
+          Non, mais seulement parce qu'on néglige le poids devant la force du
+          ressort : c'est une approximation.
+        correct: false
+        misconception: M-OSC-EQD-1
+        feedback: |
+          Modèle détecté : « le poids disparaît par approximation ». Rien n'est
+          négligé : le terme $mg - k\,\Delta L_0$ est nul EXACTEMENT, parce que
+          $\Delta L_0 = mg/k$ est la condition d'équilibre elle-même. Un ressort
+          très souple sous une masse lourde obéit à la même équation
+          $m\ddot x + kx = 0$ — seul son allongement d'équilibre est grand.
+
+      - id: D
+        text: >-
+          Oui, et c'est lui qui accélère les oscillations : suspendu, le solide
+          oscille plus vite qu'à l'horizontale.
+        correct: false
+        misconception: M-OSC-EQD-1
+        feedback: |
+          Modèle détecté : « la pesanteur s'ajoute au rappel ». Le poids est une
+          force CONSTANTE : il ne grandit pas avec l'écart, il ne peut donc pas
+          renforcer le rappel, qui lui est proportionnel à l'écart. Il ne fait
+          que déplacer la position d'équilibre. Le rythme reste fixé par $k$ et
+          $m$ : $T_0 = 2\pi\sqrt{m/k}$, à l'horizontale comme à la verticale.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-H1b | id: cp-r3-longueur-synchrone | placé DANS R3, entre la
+  #        prise de position « ℓ = d ? » et l'égalité des deux périodes.
+  #        COMMIT gate, item original. Sonde M-OSC-FORM-1 (« applique au
+  #        pendule pesant la formule du pendule simple », « met le rapport
+  #        à l'envers ») : trois longueurs qu'on croit lire ou tirer trop
+  #        vite — d, la taille de l'objet, le rapport inversé.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-longueur-synchrone
+    rung: "R3"
+    habilete: utilisation
+    skill_code: pc_systemes_oscillants
+    tags: [checkpoint, formative, misconception_driven, pc_systemes_oscillants, predict_commit, pendule_simple_synchrone]
+    primary_misconception: M-OSC-FORM-1
+    item_source: original
+    lesson_placement: in_R3
+
+    stem: |
+      Un pendule pesant — un solide de masse $m$, de moment d'inertie
+      $J_\Delta$ par rapport à son axe, dont le centre d'inertie $G$ est à la
+      distance $d$ de l'axe — oscille avec de petites amplitudes. On cherche
+      le pendule simple qui bat exactement au même rythme.
+      **Prends position avant de lire la suite :** quelle est sa longueur
+      $\ell$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: >-
+          $\ell = d$ : c'est la distance de l'axe à $G$ qui compte dans le
+          moment du poids.
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: |
+          Modèle détecté : on applique au pendule pesant la formule du pendule
+          simple, avec toute la masse ramenée en $G$. Ce serait juste si
+          $J_\Delta$ valait $md^2$ — une masse ponctuelle. Dès que la masse est
+          répartie autour de $G$, $J_\Delta$ dépasse $md^2$, et la longueur
+          synchrone se calcule en égalant les deux périodes.
+
+      - id: B
+        text: >-
+          $\ell = J_\Delta/(m\,d)$, qui ne se réduit à $d$ que si toute la
+          masse est concentrée en $G$.
+        correct: true
+        feedback: |
+          Exact. On égale les deux périodes,
+          $2\pi\sqrt{\ell/g} = 2\pi\sqrt{J_\Delta/(mgd)}$ : $g$ disparaît et il
+          reste $\ell = J_\Delta/(md)$. Pour une masse ponctuelle,
+          $J_\Delta = md^2$ et l'on retrouve $\ell = d$ — le pendule simple
+          lui-même. Le calcul juste en dessous le fait pas à pas.
+
+      - id: C
+        text: >-
+          La distance de l'axe au point le plus bas du solide : c'est là que
+          pendrait la masse d'un pendule simple.
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: |
+          Modèle détecté : le solide pris pour le fil d'un pendule simple qui
+          porterait sa masse au bout. Sa masse est répartie sur tout son
+          volume : la longueur synchrone ne se lit pas sur l'objet, elle se
+          calcule à partir de $J_\Delta$, $m$ et $d$.
+
+      - id: D
+        text: >-
+          $\ell = m\,d/J_\Delta$ : on égale les deux périodes, puis on isole
+          $\ell$.
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: |
+          Modèle détecté : la bonne méthode, mais le rapport retourné en
+          isolant $\ell$. Contrôle par les unités : $md/J_\Delta$ s'exprime en
+          $\text{kg}\cdot\text{m}/(\text{kg}\cdot\text{m}^2)$, soit en
+          $\text{m}^{-1}$ — ce n'est pas une longueur. De
+          $\ell/g = J_\Delta/(mgd)$, on tire $\ell = J_\Delta/(md)$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-H1c | id: cp-r4-poulie-inertie | placé DANS R4, entre la prise
+  #        de position « poulie réelle ou idéale, même période ? » et le
+  #        choix de la variable. COMMIT gate, item original. Sonde
+  #        M-OSC-COMP-1 sous les trois formes que sa description nomme :
+  #        la poulie simple renvoi, la poulie seule comme inertie, le lien
+  #        cinématique faux (θ = R·x au lieu de x/R).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-poulie-inertie
+    rung: "R4"
+    habilete: utilisation
+    skill_code: pc_systemes_oscillants
+    tags: [checkpoint, formative, misconception_driven, pc_systemes_oscillants, predict_commit, oscillateur_compose, poulie]
+    primary_misconception: M-OSC-COMP-1
+    item_source: original
+    lesson_placement: in_R4
+
+    stem: |
+      Un solide de masse $m$ pend au bout d'un fil inextensible qui passe sans
+      glisser sur une poulie de rayon $R$ et de moment d'inertie
+      $J_\Delta \neq 0$ ; de l'autre côté, le fil est attaché à un ressort
+      horizontal de raideur $k$. **Prends position avant de lire la suite :**
+      comparée à ce qu'elle serait avec une poulie idéale, sans inertie, que
+      devient la période propre de cet oscillateur ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: >-
+          Elle ne change pas : tant que le fil ne glisse pas, la poulie ne fait
+          que guider le fil.
+        correct: false
+        misconception: M-OSC-COMP-1
+        feedback: |
+          Modèle détecté : la poulie comme simple renvoi. Une poulie qui a sa
+          propre inertie doit être mise en rotation, puis freinée, à chaque
+          aller-retour : il faut pour cela un moment, donc les tensions de part
+          et d'autre diffèrent ($T_1 \neq T_2$). Son inertie s'ajoute à celle du
+          solide, et la période s'allonge.
+
+      - id: B
+        text: >-
+          Elle s'allonge : il faut aussi mettre la poulie en rotation, et son
+          inertie s'ajoute à celle du solide.
+        correct: true
+        feedback: |
+          Exact. Le fil qui ne glisse pas lie les deux mouvements,
+          $\ddot\theta = \ddot x/R$ : à chaque aller-retour, le ressort doit
+          mettre en mouvement le solide ET la poulie. L'inertie totale grandit,
+          le rappel ne change pas : l'oscillateur est plus lent. Le calcul qui
+          suit dit de combien.
+
+      - id: C
+        text: >-
+          Elle ne dépend plus que de la poulie, $2\pi\sqrt{J_\Delta/(kR^2)}$ :
+          c'est elle qui tourne, le solide ne fait que suivre.
+        correct: false
+        misconception: M-OSC-COMP-1
+        feedback: |
+          Modèle détecté : la poulie seule comme inertie. Le solide suspendu
+          est pourtant entraîné par le fil : il accélère et ralentit avec lui,
+          et son inertie compte autant que celle de la poulie. Les deux
+          s'ajoutent — c'est ce que le calcul qui suit va montrer.
+
+      - id: D
+        text: >-
+          Elle s'allonge, d'autant plus que $R$ est grand : une grande poulie
+          tourne plus vite pour un même déplacement du fil.
+        correct: false
+        misconception: M-OSC-COMP-1
+        feedback: |
+          Modèle détecté : le lien entre rotation et translation retourné. Pour
+          un même déplacement $x$ du fil, la poulie tourne de $\theta = x/R$ —
+          une longueur d'arc divisée par le rayon —, un angle d'autant plus
+          PETIT que la poulie est grande. Le lien juste, $\ddot\theta = \ddot x/R$,
+          est celui que le calcul juste en dessous utilise.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-H1d | id: cp-r6-types-frottement | placé DANS R6, entre la prise
+  #        de position « fluide et solide, même enveloppe ? » et le
+  #        mécanisme. COMMIT gate, item original. La figure
+  #        frottement-fluide-solide, qui EST la réponse, vient après.
+  #        Sonde M-OSC-AMO-4 sous trois formes : un seul type (« du
+  #        frottement, c'est du frottement »), les formes inversées
+  #        (« proportionnelle, donc droite »), le type jugé à la rapidité.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-types-frottement
+    rung: "R6"
+    habilete: utilisation
+    skill_code: pc_systemes_oscillants
+    tags: [checkpoint, formative, misconception_driven, pc_systemes_oscillants, predict_commit, types_de_frottement, enveloppe]
+    primary_misconception: M-OSC-AMO-4
+    item_source: original
+    lesson_placement: in_R6
+
+    stem: |
+      Deux oscillateurs identiques, lâchés du même écart initial, sont freinés
+      l'un par un frottement fluide (force proportionnelle à la vitesse),
+      l'autre par un frottement solide (force d'intensité constante). On
+      relie, pour chacun, les sommets successifs de l'enregistrement $x(t)$.
+      **Prends position avant de lire la suite :** quelle forme dessinent ces
+      deux enveloppes ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: >-
+          La même allure : une courbe qui s'aplatit en s'approchant de zéro,
+          car du frottement, c'est du frottement.
+        correct: false
+        misconception: M-OSC-AMO-4
+        feedback: |
+          Modèle détecté : « un seul type de frottement ». Les deux freinages
+          ne retirent pas l'énergie de la même façon. La force fluide grandit
+          avec la vitesse : elle prélève à chaque aller-retour une FRACTION de
+          ce qui reste — d'où une courbe. La force sèche garde la même
+          intensité : elle retire une QUANTITÉ fixe — d'où une droite, et un
+          arrêt net.
+
+      - id: B
+        text: >-
+          Une courbe qui s'aplatit pour le fluide ; une droite qui descend
+          jusqu'à un arrêt net pour le solide.
+        correct: true
+        feedback: |
+          Exact. La force fluide, proportionnelle à la vitesse, prélève à chaque
+          aller-retour une fraction à peu près constante de l'énergie présente :
+          les sommets s'alignent sur une courbe qui s'aplatit sans toucher zéro.
+          La force sèche, d'intensité constante, retire à chaque aller-retour
+          une quantité fixe : les sommets descendent en ligne droite, jusqu'à
+          l'arrêt. La figure, un peu plus bas, montre les deux.
+
+      - id: C
+        text: >-
+          Une droite pour le fluide, puisque sa force est proportionnelle à la
+          vitesse ; une courbe pour le solide.
+        correct: false
+        misconception: M-OSC-AMO-4
+        feedback: |
+          Modèle détecté : « proportionnelle, donc droite ». La
+          proportionnalité relie la FORCE à la vitesse, pas l'amplitude au
+          temps. Une force qui grandit avec la vitesse freine fort quand
+          l'oscillation est ample et peu quand elle est petite : la perte par
+          aller-retour diminue avec l'amplitude, et l'enveloppe se courbe. C'est
+          la force CONSTANTE du frottement sec qui retire le même écart à chaque
+          fois — d'où sa droite.
+
+      - id: D
+        text: >-
+          La même forme pour les deux ; seule change la vitesse de la
+          décroissance, plus rapide pour le frottement sec.
+        correct: false
+        misconception: M-OSC-AMO-4
+        feedback: |
+          Modèle détecté : le type jugé à la RAPIDITÉ de la décroissance. La
+          rapidité dit l'INTENSITÉ du frottement — un frottement fluide intense
+          fait chuter l'amplitude très vite, lui aussi. Ce qui distingue les
+          deux types, c'est la FORME de l'enveloppe : une courbe pour le fluide,
+          une droite pour le solide.
 
   # ════════════════════════════════════════════════════════════════
   # CP-1 | id: cp-r6-pseudo-periode | placed AFTER R6
