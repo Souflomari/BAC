@@ -94,7 +94,11 @@ S = {
  "deux-decimales": ("nombres", [(M, TEXQ, "export function texQ(x: Q): string {\n  if (x.d === 2) return (x.n / x.d).toFixed(2).replace(\".\", \"{,}\"); /* SABOTAGE : deux décimales */\n  if (x.d === 1) return `${x.n}`;")]),
  # ── AVANT LE PARI (§11.2) ──
  # 19 — les courbes tracées avant le pari. PRÉVU : avant-pari.
- "courbe-avant-pari": ("avant-pari", [(P, COURBES_P, COURBES_P.replace("!revele ? [] : ", "") + " /* SABOTAGE : courbes avant le pari */")]),
+ # Réécrit le 2026-10-20 : la version d'origine (retirer « !revele ? [] : ») était INERTE — l'état POSÉ de chaque
+ # étape porte famille « aucune », la famille n'apparaît que dans etat_revele ; retirer la garde ne dessinait rien
+ # (campagne : « MANQUÉ — porte VERTE », verdict AMBIGU au sens de l'ADR 0038). Celle-ci dessine AVANT le pari les
+ # courbes que l'étape révélera.
+ "courbe-avant-pari": ("avant-pari", [(P, COURBES_P, '  const famAvant = etape.etat_revele?.famille ?? etat.famille; const courbes: [number, number][] = famAvant === "une" ? [[px, py]] : famAvant === "trois" ? M.DEPARTS.map((d) => [...M.POINT_XY[d]] as [number, number]) : []; /* SABOTAGE : courbes avant le pari */')]),
  # 20 — le champ retiré de l'énoncé de S4–S6. PRÉVU : avant-pari (second sens).
  "champ-absent-de-l-enonce": ("avant-pari", [(P, CHAMP_AFF, '  const champAffiche: M.Champ = revele ? etat.champ : "aucun"; /* SABOTAGE : le champ retiré de l\'énoncé */')]),
  # 21 — un segment en P à S3 avant la révélation. PRÉVU : avant-pari.
