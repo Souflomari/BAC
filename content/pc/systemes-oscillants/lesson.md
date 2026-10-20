@@ -461,7 +461,7 @@ Les systèmes étudiés obéissent tous à LA MÊME équation différentielle, $
 | Pendule simple | $\theta$ | — (s'annule) | $g/L$ | $\sqrt{g/L}$ | $2\pi\sqrt{L/g}$ |
 | Pendule pesant | $\theta$ | $J_\Delta$ | $mgd$ | $\sqrt{mgd/J_\Delta}$ | $2\pi\sqrt{J_\Delta/(mgd)}$ |
 | Pendule de torsion | $\theta$ | $J$ | $C$ | $\sqrt{C/J}$ | $2\pi\sqrt{J/C}$ |
-| Oscillateur composé (solide, poulie, ressort) | $x$ | $J_\Delta + mR^2$ | $kR^2$ | $\sqrt{kR^2/(J_\Delta+mR^2)}$ | $2\pi\sqrt{(J_\Delta+mR^2)/(kR^2)}$ |
+| Oscillateur composé | $x$ | $J_\Delta + mR^2$ | $kR^2$ | $\sqrt{\frac{kR^2}{J_\Delta+mR^2}}$ | $2\pi\sqrt{\frac{J_\Delta+mR^2}{kR^2}}$ |
 | (Circuit LC, pour mémoire) | $q$ | $L$ | $1/C$ | $\sqrt{1/(LC)}$ | $2\pi\sqrt{LC}$ |
 
 Ce n'est pas un hasard si la même équation revient à chaque fois : chaque système a une grandeur qui joue le rôle de « l'inertie » (résiste à la mise en mouvement) et une grandeur qui joue le rôle du « rappel » (ramène vers l'équilibre, proportionnellement à l'écart). Dès que ces deux ingrédients sont présents et qu'aucune autre force ou moment ne s'en mêle, l'équation — et donc le comportement sinusoïdal — est la même, qu'il s'agisse de mécanique ou d'électricité.
