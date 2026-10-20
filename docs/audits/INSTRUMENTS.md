@@ -2531,6 +2531,19 @@ sur le palier ; le point fixe ; `palette` avec la règle corrigée de la campagn
 
 **Ne dit RIEN de** : si le champ aide un élève à comprendre — c'est la vague 2 et la relecture.
 
+## `web/scripts/pw.mjs` — sur quelle machine la porte au navigateur trouvera-t-elle son Chromium ?
+
+**Lanceur, pas instrument** (2026-10-20, passage du conteneur cloud aux fichiers locaux). Les 79 scripts
+au navigateur lisent `PW_CHROMIUM_PATH` et retombent sur `/opt/pw-browsers/chromium`, le chemin du
+conteneur. `node scripts/pw.mjs <porte> [args]` (ou `npm run pw -- <porte> [args]`) pose la variable
+comme la CI le fait — la valeur déjà posée, sinon le chemin du conteneur s'il existe, sinon le Chromium
+de `playwright-core` (`npx playwright@1.61.1 install --with-deps chromium`) — et passe la main.
+Cinq scripts lançaient Chromium sur le chemin en dur sans lire la variable (`noms-accessibles`,
+`cibles-tactiles`, `cls-sweep`, `recherche-navigateur`, `couleurs-forcees`) : corrigés le même jour.
+
+**Ne dit RIEN de** : si la porte qu'il lance est verte — il ne mesure rien ; ni de Windows natif (les
+portes détachent `next start` et le tuent par groupe de processus : Linux, macOS, WSL2).
+
 ## `web/scripts/carte-chapitres.mjs` — un renvoi « chapitre N » vise-t-il encore le chapitre qu'il nommait ?
 
 **Question.** Le numéro de chapitre que l'élève lit est CALCULÉ (1 + le nombre de titres `## `

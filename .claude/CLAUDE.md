@@ -25,6 +25,10 @@ answers to it.
 
 ## The documentation map
 
+**Working on a local machine (since 2026-10-20)? Start with `docs/LOCAL-TRANSITION.md`** — setup,
+the daily loop (`scripts/verif-commit.sh` before every push, `npm run pw -- <gate>` for browser
+gates), the git state, and where every open thread stands with its next step.
+
 Read the right document for the task at hand:
 
 - **`docs/product/VISION.md`** — *why and what.* The product vision. The

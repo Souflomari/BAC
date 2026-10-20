@@ -23,13 +23,17 @@ canonical statement of what the app is and why.
 
 ## Develop
 
+New machine? Follow **`docs/LOCAL-TRANSITION.md`** (Node 22, Chromium for the gates, the pre-push check).
+
 ```bash
 cd web
-npm install
+npm ci
 npm run dev          # local dev server
 npm run build        # production build (runs the token --check first)
 npm run dom-truth    # the rendered-truth harness (computed-style assertions)
 npm run token-gate   # the design-token guard (one consumption syntax)
+npm run pw -- <gate> --porte   # any browser gate, with this machine's Chromium
+cd .. && scripts/verif-commit.sh   # the CI battery on a clean copy of HEAD — before every push
 ```
 
 Content is validated by `web/scripts/validate-content.mjs`; item length-tells by

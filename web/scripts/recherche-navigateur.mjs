@@ -26,7 +26,7 @@ import { chromium } from "playwright-core";
 import { spawn } from "child_process";
 const s=spawn("npx",["next","start","-p","3494"],{stdio:"ignore",detached:true});
 for(let i=0;i<80;i++){try{if((await fetch("http://127.0.0.1:3494/")).ok)break}catch{}await new Promise(r=>setTimeout(r,500));}
-const nav=await chromium.launch({executablePath:"/opt/pw-browsers/chromium"});
+const nav=await chromium.launch({executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium"});
 const p=await (await nav.newContext()).newPage();
 await p.goto("http://127.0.0.1:3494/notions/pc/rlc-serie",{waitUntil:"networkidle"});
 await p.waitForTimeout(500);

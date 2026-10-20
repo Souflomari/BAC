@@ -1,5 +1,11 @@
 # HANDOFF — the July-2026 sprint, closed (2026-07-03 · addendum 07-06)
 
+> ## 2026-10-20 — LA SESSION CLOUD EST CLOSE ; LE TRAVAIL PASSE EN LOCAL
+>
+> **Lire d'abord `docs/LOCAL-TRANSITION.md`** : installation, boucle quotidienne, état git, et chaque
+> fil ouvert avec sa prochaine commande. Ce fichier-ci reste l'histoire (le §11 en est le journal) ;
+> la transition, elle, est écrite là-bas pour qu'un seul document dise « où on en est ».
+
 > ## ÉTIQUETTE DE STATUT — 2026-09-20
 >
 > **Le titre et les §0 à §5 de ce fichier datent de juillet 2026 et restent le

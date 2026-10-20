@@ -1,0 +1,204 @@
+# Moving from the cloud session to local files
+
+*Written 2026-10-20, as the last act of the cloud session that ran from July to October 2026.*
+Everything that session had is now in this repository: no work is left in a scratch folder or a side
+clone. This page tells you how to pick it up on your own machine, and where every open thread stands.
+
+---
+
+## 1. Five steps to be running
+
+```bash
+# 1. Clone and stand on the working branch (all the work lives here, not on main — see §3)
+git clone https://github.com/Souflomari/BAC.git && cd BAC
+git checkout claude/vibrant-fermi-v1lxj5
+
+# 2. Node 22 (the version CI uses; .nvmrc says so — `nvm use` picks it up)
+nvm use
+
+# 3. Dependencies + the Chromium the browser gates drive (the exact command CI runs)
+cd web && npm ci && npx playwright@1.61.1 install --with-deps chromium
+
+# 4. Build and look at it
+npm run build && npm start            # http://localhost:3000 — no secrets needed: auth is off by default
+
+# 5. The pre-push check, on a clean copy of the commit (from the repo root)
+cd .. && scripts/verif-commit.sh      # must end « exit 0 »
+```
+
+**Which machine.** Linux, macOS, or **WSL2 on Windows** (strongly recommended on Windows: it is the
+same Ubuntu that CI and the cloud container ran). Native Windows works for editing and for the plain
+Node checks, but **not for the browser gates**: they start `next start` detached and stop it by process
+group, which only POSIX does. The two `.ps1` scripts (`scripts/branch-test.ps1`,
+`scripts/edge-function-smoke-test.ps1`) are the exception — they are PowerShell by design.
+
+**Line endings** are pinned to LF by `.gitattributes`. Several gates compare files byte for byte; a
+CRLF checkout would turn them red for nothing.
+
+---
+
+## 2. The daily loop
+
+| what | command (from `web/` unless said) |
+|---|---|
+| dev server | `npm run dev` |
+| validate content | `node scripts/validate-content.mjs content/<subject>/<notion>` — repo-relative path, run from `web/` |
+| all non-browser gates, as CI runs them | `node scripts/batterie-locale.mjs` (in the working tree) |
+| **before every push** | `scripts/verif-commit.sh [commit]` from the repo root — same battery, on a clean worktree of the commit, so uncommitted files cannot make it green |
+| a browser gate | `npm run build`, then `npm run pw -- <gate> --porte` (e.g. `npm run pw -- scene-quotient --porte`) |
+| a gate's red test | `npm run pw -- <gate> --essai-rouge` — every family must turn red |
+| all registered red tests | `node scripts/essais-rouges.mjs` |
+| regenerate learner-model inputs after editing items | `npm run build-learner-inputs` |
+| chapter map after adding/removing a `## ` heading | `node scripts/carte-chapitres.mjs`, re-read the listed renvois, then `--sceller` |
+
+`npm run pw` is new: it gives a browser gate the Chromium of *this* machine (the scripts were written
+against the container path `/opt/pw-browsers/chromium`). It sets `PW_CHROMIUM_PATH` exactly as CI does.
+
+**Never run two browser gates, or a gate and a build, at the same time** — the timing-sensitive
+families flake under load, and a flaky gate teaches you to ignore red (ADR 0036).
+
+**Product-sabotage campaigns** (the strongest test a scene gate gets) now live in
+`scripts/campagnes/`: `campagne.sh` plus one sabotage set per gate. Run them in a *separate* worktree,
+never the working tree:
+
+```bash
+git worktree add --detach ../BAC-sab HEAD && ln -s "$PWD/web/node_modules" ../BAC-sab/web/node_modules
+ARBRE=../BAC-sab PORTE=scene-quotient SABOTAGES=scripts/campagnes/sabotages-quotient.py \
+  PORT_QUOTIENT=3875 bash scripts/campagnes/campagne.sh      # ~4 min per sabotage
+```
+
+---
+
+## 3. Git: where things are, and what not to do
+
+- **Everything is on `claude/vibrant-fermi-v1lxj5`** — 1 478 commits ahead of `main`, zero behind.
+  Draft PR **#2** (`claude/vibrant-fermi-v1lxj5 → main`) carries it. Last fully green CI: run 807 on
+  bfe43534 (all 5 jobs); later commits were checked with the local battery (green on ff15dbc2) and
+  CI runs on every push.
+- **`main` is production.** Merging PR #2 is a production deploy *and* brings four database
+  migrations (`backend/supabase/migrations/048…051`) that production has never seen. The CLAUDE.md
+  non-negotiables apply: a passing `scripts/branch-test.ps1` against staging, a supervised check that
+  production's migration state matches local history, and your explicit decision. Nothing in this
+  handoff merges anything.
+- **Before merging, deal with the slope-field scene** (§4.1): it is embedded in a lesson and has never
+  passed its own gate. Either get the gate green, or delete the line `[[embed:champ-des-pentes]]` from
+  `content/maths/equations-differentielles/lesson.md` until it does.
+- Old remote branches (`claude/wizardly-hypatia-2fmoui`, `reestablish-state`, `slice-2-prep*`) predate
+  this work and were left untouched — yours to keep or delete.
+- Recommended local habit: keep working on this branch (or branch off it), push, let CI run; open a
+  fresh PR only when you decide what `main` should become.
+
+---
+
+## 4. Open threads — state, and the next concrete step
+
+Ordered by what most affects a student. "Report" means the full critic report in
+`docs/audits/critiques/`.
+
+### 4.1 Slope-field scene « Ce que l'équation dit en chaque point » (maths/équations différentielles)
+- **State:** model, renderer, panel, descriptor and lesson embed committed (30ef9de3), unit test
+  green (`node scripts/test-champ-pentes.mjs`, 11/11). Its gate `scripts/scene-champ-pentes.mjs` was
+  run ONCE: **red, 42 of 256 measures, in 5 of 29 families** — log in
+  `docs/wip/scene-champ-pentes-premier-lancement.txt`.
+- **Diagnosis so far (not finished):** most reds look like the *bench*, not the product —
+  (a) `avant-pari` / the segment-at-P check count the ring drawn around P, and the y-axis tick at
+  y = 3, as "a segment" (P = (0 ; 3) sits on the axis); (b) every measured angle is 1,2–1,6° too far
+  from horizontal, on every state — a systematic bias in the PCA of thin antialiased strokes
+  (contamination by neighbouring ink is the first suspect), not a slope error; (c) lengths read
+  11–17,5 px for 16 px segments — the "ink" class keeps only stroke cores, and round caps blur the
+  ends; (d) `ligne-du-palier` asks ≥ 90 % coverage of a *dashed* line (dash 7, gap 5); (e) `frontiere`
+  flags the words « unités » and « examen » in the descriptor — check whether the forbidden list is too
+  broad or the text should change.
+- **Next:** fix the bench one family at a time, re-run until green twice, then `--essai-rouge`, then
+  the 44-sabotage campaign (`scripts/campagnes/sabotages-champ-pentes.py`). Then wire it like the other
+  scenes: `package.json` scripts, a `gates.yml` step in the `scene-champ` job, the battery's list.
+
+### 4.2 PC waves D–E: what the fidelity critic found that is not yet fixed
+Report: `pc-vagues-DE-fidelite.md`. Already fixed (bfe43534): the ± pairs, refusal options, pH 7,0,
+CMP-48 masses, LDN-39/40 rung + honest id, CMP-46 → R5, EE-28 → R4, OMPP-29 wording, STV-19 D,
+the AE-43/AE-40 « deux zéros » feedbacks. **Still open, check each before applying:**
+1. **Two summits pre-solved by prose** (HIGH): `suivi-temporel-vitesse` worked example = the 2021 N
+   summit (same reaction, method, t½ = 8 min); `etat-equilibre` worked example derives exactly summit
+   q2 ($Q_{r,eq} = C\tau^2/(1-\tau)$).
+2. The id `diagramme-largeur-totale-confondue-amplitude` still *declares* « les deux zéros de la
+   parabole »; AE-44 B too; AE-43 plots $E_c(\dot\theta)$, a diagram the bac never prints.
+3. Four bank scope notes say « taught nowhere » about gestures now taught.
+4. Tags whose id description does not cover them: OND-CALC-1 (OMPP-29), LDN-41 D, CMP-46 A/D.
+5. EH-30 C and OMP-27 D: the stated model does not produce the number.
+6. POL-27 → R4, OEM-33 → R2; CMP-46 α → β; $E_C$ → $E_c$; the 0,13 / 0,125 pair; drop R = 8,314.
+7. The degrees→radians id is aimed at torsion, where the bac never uses degrees — move one item to
+   the pendule pesant; and 11 new items carry no `habilete`.
+- **Why it is still open:** the four agents commissioned for it hit the account's session limit
+  before writing a line (2026-09-28, 09:50 UTC reset).
+
+### 4.3 Cadre debt, waves G and H (syllabus lines with no chapter — `docs/audits/DETTE-CADRE.md`)
+- **Prose done and committed (ff15dbc2):** G3 integrals (u'·uⁿ, u'·cos u, condition, F = ∫ₐˣ f,
+  Riemann [SM]), G4 log base a / a^x / x^α / n-th root, G5 image of a segment + dichotomy, G6
+  linearisation + Z = z², H1 oscillators (vertical/inclined spring, synchronous pendulum, composed
+  oscillator, fluid vs dry friction), G7 variance — plus its four items.
+- **Items:** G7 done. G3 — ten items (CI-59…68) drafted but unreviewed and with a stale ramp table:
+  parked as `docs/wip/g3-items-calcul-integral.patch` (`git apply` it, fix the two table counts that
+  `validate-content` names, review every item against the house rules, then commit). G4, G5, G6, H1 —
+  no items yet. The prose of every one of them asks the student to « prendre position »: those are
+  prose-only commits until a checkpoint backs them.
+- **Then:** wave-1 critics (pedagogy + bac-fidelity) on all of G/H, and the rest of the plan: G1
+  numeration (4.4), G2 vector spaces (4.5), G8, H2–H5.
+
+### 4.4 Numeration (SM arithmetic, a new rung R7b) — spec ready for its second draft
+- Spec: `docs/pipeline/propositions/maths-arithmetique-numeration.md`. Reports
+  `numeration-pedagogie.md` and `numeration-fidelite.md`: both **BUILD AFTER FIXES**, every number
+  correct. The cadre line is now confirmed by seven Moroccan sources
+  (`docs/cadre/sources/verification-numeration-2026-09-28.md`); the base notation is split between
+  sources (use $\overline{\cdots}_{(b)}$ through one place, say once that some documents write it in
+  superscript).
+- **Next:** pedagogy-architect revises the spec against both reports (the revision agent died at the
+  session limit before starting), then content-author and item-author, then `carte-chapitres --sceller`.
+
+### 4.5 Vector spaces (SM structures, a new chapter 11) — spec written, one critic done
+- Spec: `docs/pipeline/propositions/maths-structures-espaces-vectoriels.md`. Report
+  `espaces-vectoriels-pedagogie.md`: **BUILD AFTER FIXES** — no summit (an `r8-bac` on the verified
+  bk-2023-n-x5 is available), two misconceptions neither staged nor delegated (M3, M5), « combinaison
+  linéaire » never defined though Vect leans on it; all 18 worked computations and 18 keys correct.
+- **Next:** the bac-fidelity critic (it died mid-read), then the architect's revision.
+
+### 4.6 Smaller loose ends
+- **A+ text in scenes:** vector names now scale with the reader's text size (30ef9de3); not yet
+  looked at, at A and A+, in a browser.
+- **Owner decisions** waiting with a written default: `docs/audits/DECISIONS-EN-ATTENTE.md` §31–§37
+  (notably §37: what SExp students are told to skip, « les deux types d'amortissement », the size of
+  the numeration lot, and redox titration vs the cadre exclusion).
+- **SVT is frozen**; the Andes 3D-scene spec waits for it to thaw.
+
+---
+
+## 5. Working with Claude Code locally
+
+- `.claude/CLAUDE.md` is read automatically; the agent roster (`.claude/agents/`) and the three project
+  skills (`design-bible`, `figure-authoring`, `verification`) work unchanged.
+- **What the cloud session had that a local one does not:** a scratch folder (anything worth keeping
+  from it is now in `docs/` or `scripts/`), side clones (BAC-c, BAC-g, … — replaced by
+  `git worktree`, see §2), scheduled self check-ins and PR webhooks (use GitHub's own notifications).
+- **Parallel agents and the session limit:** on 2026-09-28 eleven agents running at once exhausted
+  the account's session limit and all died mid-task, most before writing anything. Locally, run two
+  or three at a time, and commit between rounds.
+- `.mcp.json` declares two MCP servers for the media lane: `gemini-image` (needs `GEMINI_API_KEY` in
+  your environment) and `notebooklm`. Both failed to connect from the cloud container; they may work
+  locally. Canva is a claude.ai connector that needs authorising in your claude.ai connector settings.
+
+---
+
+## 6. What moved from the cloud session into the repo (2026-10-20)
+
+| was | now |
+|---|---|
+| `verif-batterie.sh` in the scratch folder + a side clone | `scripts/verif-commit.sh` (a `git worktree`, reused) |
+| the container's Chromium path, hard-coded | `web/scripts/pw.mjs` (`npm run pw -- <gate>`), and five scripts that ignored `PW_CHROMIUM_PATH` fixed |
+| sabotage campaigns in the scratch folder | `scripts/campagnes/` — runner + sets for `scene-quotient` (87) and `scene-champ-pentes` (44) |
+| critic reports only in the session transcript | `docs/audits/critiques/` (4 reports) |
+| uncommitted prose in side clones | committed (ff15dbc2) |
+| unreviewed G3 items in a side clone | `docs/wip/g3-items-calcul-integral.patch` |
+| first slope-field gate log | `docs/wip/scene-champ-pentes-premier-lancement.txt` |
+| — | `.gitattributes` (LF), `.nvmrc` (Node 22) |
+
+The deep history — why every gate exists, what each ADR learned — is unchanged: `docs/HANDOFF.md`,
+`docs/decisions/`, `docs/audits/INSTRUMENTS.md`.

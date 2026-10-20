@@ -14,7 +14,7 @@
 import { chromium } from "playwright-core";
 const BASE = process.env.BASE ?? "http://127.0.0.1:3911";
 const routes = ["/", "/examens", "/examens/sm-2025-normale", "/notions/pc/rlc-serie", "/notions/philo/la-verite", "/commencer", "/connexion", "/atelier", "/matieres/svt"];
-const nav = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
+const nav = await chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium" });
 let total = 0;
 for (const w of [390, 1280]) {
   const ctx = await nav.newContext({ viewport: { width: w, height: 900 } }); const p = await ctx.newPage();

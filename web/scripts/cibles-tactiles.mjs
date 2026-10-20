@@ -12,7 +12,7 @@
 // Une commande sous 24×24 sans espacement de 24 px autour est un échec AA.
 import { chromium } from "playwright-core";
 const BASE = process.env.BASE ?? "http://127.0.0.1:3911";
-const nav = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
+const nav = await chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium" });
 const p = await nav.newPage({ viewport: { width: 390, height: 780 }, hasTouch: true });
 const mesure = async (etiq) => {
   const petites = await p.evaluate(() => {

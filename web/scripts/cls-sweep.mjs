@@ -31,7 +31,7 @@
  */
 import { chromium } from "playwright-core";
 const BASE = process.env.BASE ?? "http://localhost:3477";
-const b = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
+const b = await chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium" });
 const routes = ["/", "/notions/pc/rlc-serie", "/notions/maths/suites-numeriques", "/examens", "/examens/spc-2023-normale", "/matieres/pc", "/notions/svt/moyens-de-defense"];
 for (const lent of [false, true]) {
   console.log(`\n=== ${lent ? "3G lent (400 kb/s, 400 ms de latence)" : "réseau libre"}`);

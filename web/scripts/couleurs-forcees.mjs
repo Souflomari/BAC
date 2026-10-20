@@ -17,7 +17,7 @@
  *   BASE=http://127.0.0.1:3911 S=/chemin/des/captures node scripts/couleurs-forcees.mjs   (⚠️ depuis web/)
  */
 import { chromium } from "playwright-core";
-const nav = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
+const nav = await chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium" });
 const ctx = await nav.newContext({ viewport: { width: 1280, height: 900 } });
 const p = await ctx.newPage();
 await p.emulateMedia({ forcedColors: "active", colorScheme: "light" });
