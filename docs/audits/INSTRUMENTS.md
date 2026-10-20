@@ -2544,6 +2544,18 @@ sur le palier ; le point fixe ; `palette` avec la règle corrigée de la campagn
 
 **Ne dit RIEN de** : si le champ aide un élève à comprendre — c'est la vague 2 et la relecture.
 
+**Campagne de sabotages du produit (2026-10-20, `scripts/campagnes/sabotages-champ-pentes.py`).**
+44 entrées, lancées en quatre parties pour tenir sous la limite de deux heures d'une tâche de fond
+(19, 13, 7, 6), toutes dans un arbre à part : porte VERTE avant et après chaque partie (256 mesures,
+29 familles), arbre produit IDENTIQUE après chaque partie. **43 sabotages ATTRAPÉS, 1 contre-essai
+tenu** (`ce-piege-seul`, qui ne doit PAS rougir, est resté vert). Une seule entrée a d'abord été
+MANQUÉE, `courbe-avant-pari` : elle était INERTE, pas la porte aveugle — elle traçait les courbes
+selon la famille POSÉE, qui vaut toujours « aucune » avant le pari, donc l'écran ne changeait pas
+(verdict AMBIGU, ADR 0038). Réécrite (cfff3c42) pour tracer selon la famille de l'état révélé, elle
+est ATTRAPÉE par `avant-pari`. Familles qui ont rougi : `avant-pari`, `fuite-inter-etapes`,
+`stem-non-contamine`, `formule-graduee`, `frontiere`, `pas-de-3d`. Journaux : conteneur cloud
+seulement (`/home/user/campagne-scene-champ-pentes{,-p2,-p3a,-p3b}/campagne.log`).
+
 ## `web/scripts/pw.mjs` — sur quelle machine la porte au navigateur trouvera-t-elle son Chromium ?
 
 **Lanceur, pas instrument** (2026-10-20, passage du conteneur cloud aux fichiers locaux). Les 79 scripts
