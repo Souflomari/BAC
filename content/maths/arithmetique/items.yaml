@@ -84,11 +84,19 @@ misconceptions:
     description: >-
       L'élève confond « somme des chiffres » (mod 9) et « chiffre des unités »
       (mod 10), croit qu'une somme des chiffres non multiple de 9 donne un reste
-      nul, ou affirme une divisibilité (reste 0) qui n'a pas lieu.
+      nul, ou affirme une divisibilité (reste 0) qui n'a pas lieu. Dans une base
+      $b$ quelconque, il applique un critère de chiffres sans re-dériver la
+      congruence que la base satisfait : il confond la somme des chiffres et la
+      somme ALTERNÉE (l'une employée là où c'est l'autre, dans un sens ou dans
+      l'autre), rattache la somme des chiffres au module $b$ alors qu'elle donne
+      le reste modulo $b-1$, ou prend le chiffre des unités pour le reste modulo
+      autre chose que $b$.
     contradicts_principle: >-
       Le critère par somme des chiffres vient de $10 \equiv 1 \pmod 9$ (pas mod
-      10). Un reste nul équivaut exactement à la divisibilité ; il ne se décrète
-      pas.
+      10) — et, dans une base $b$, de $b \equiv 1 \pmod{b-1}$ ; modulo $b+1$,
+      c'est $b \equiv -1$, donc la somme ALTERNÉE ; le chiffre des unités, lui,
+      donne le reste modulo $b$. Un reste nul équivaut exactement à la
+      divisibilité ; il ne se décrète pas.
 
   - id: mc.math.maths_arithmetique.diophantienne-critere-existence
     label: "Critère d'existence de ax+by=c mal posé (ou reachability des bidons)"
@@ -216,6 +224,99 @@ misconceptions:
       à modules premiers entre eux, se combinent par Gauss en UNE SEULE classe
       modulo $n\times m$ — jamais modulo $n+m$, jamais comme deux classes
       distinctes.
+
+  # Ajoutés le 2026-10-20 (rung R7b — les systèmes de numération ; spec
+  # docs/pipeline/propositions/maths-arithmetique-numeration.md §4). Quatre
+  # familles neuves ; aucune des dix-sept ci-dessus ne nomme ces erreurs.
+  # `numeration-restes-ordre-inverse` n'est pas `reste-non-normalise` : ici
+  # chaque reste est JUSTE et normalisé, c'est l'ASSEMBLAGE qui est faux. Les
+  # faces de N3 (borne haute / chiffre de tête non nul) et de N4 (seuil à 10 /
+  # retenue non reportée) restent réunies, un mécanisme chacune (question
+  # owner Q3 de la spec). Le critère par b−1 / b+1 n'a PAS de famille neuve :
+  # `critere-divisibilite-mal-applique` est élargie à la base générique plus
+  # haut, sans re-tagage. Les descriptions de N2, N3 et N4 portent chacune une
+  # clause de plus que la spec, pour couvrir mot pour mot un distracteur que
+  # la spec leur rattache (voir le commentaire au-dessus d'AR-41).
+  - id: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+    label: "Chiffres d'une écriture en base b assemblés dans l'ordre où les restes sortent"
+    description: >-
+      L'élève enchaîne correctement les divisions euclidiennes par $b$, mais lit
+      les restes de haut en bas : le PREMIER reste devient le chiffre de tête. Le
+      réflexe « on lit de gauche à droite » l'emporte sur le poids que porte
+      chaque reste, et le lien « premier reste = chiffre des unités » n'est jamais
+      établi. Variante à demi corrigée : le dernier reste est bien mis en tête,
+      puis les autres sont laissés dans l'ordre de sortie. Même mécanisme au
+      retour vers la base 10 : le chiffre de gauche se voit affecter $b^0$, les
+      exposants sont décalés d'un cran, ou deux écritures sont comparées en
+      partant des unités.
+    contradicts_principle: >-
+      Dans $N = b q_0 + r_0$, le reste $r_0$ est le SEUL terme qui n'est pas
+      multiplié par $b$ : c'est le chiffre des unités, $a_0$. Chaque division
+      suivante extrait le chiffre du poids immédiatement supérieur. Les restes
+      sortent donc du poids le plus FAIBLE au plus fort, et l'écriture se lit de
+      bas en haut.
+
+  - id: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+    label: "L'écriture confondue avec le nombre (lue en base 10, ou comparée comme une chaîne)"
+    description: >-
+      Pour l'élève, la suite de chiffres EST le nombre, et la base n'est qu'une
+      étiquette posée à côté. Il lit $\overline{123}_{(5)}$ comme cent vingt-trois,
+      conclut de « la même suite de chiffres » à « le même nombre », croit que
+      plus la base est grande (ou plus l'écriture est longue) plus le nombre est
+      grand, et compare deux écritures SANS repasser par la valeur — chiffre à
+      chiffre, par leur nombre de chiffres, ou par leur somme de chiffres. Cette
+      comparaison fautive existe aussi DANS UNE MÊME BASE : comparer les chiffres
+      de tête sans aligner d'abord le nombre de chiffres donne un ordre faux
+      ($\overline{412}_{(5)} = 107 < \overline{1203}_{(5)} = 178$, et pourtant
+      $4 > 1$). Pour la même raison, il attribue au nombre lui-même un nombre de
+      chiffres, et juge impossible qu'un entier ait quatre chiffres dans une base
+      et trois dans une autre.
+    contradicts_principle: >-
+      Une écriture est une liste de COEFFICIENTS :
+      $\overline{a_p\cdots a_0}_{(b)} = \sum_i a_i b^i$. Le même entier a une
+      écriture différente dans chaque base ($17 = \overline{23}_{(7)} =
+      \overline{32}_{(5)}$), et la même suite de chiffres désigne des entiers
+      différents selon la base ($\overline{201}_{(3)} = 19$,
+      $\overline{201}_{(5)} = 51$). Dans une même base, c'est le nombre de
+      chiffres qui décide d'abord, et les chiffres de gauche à droite ensuite ;
+      entre deux bases, rien ne se compare avant d'avoir calculé les valeurs.
+
+  - id: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+    label: "Un chiffre traité comme un entier libre (borne a_i ≤ b−1, ou chiffre de tête non nul, oubliée)"
+    description: >-
+      L'élève manipule un chiffre comme un entier quelconque. Il accepte une
+      écriture dont un chiffre atteint ou dépasse la base ($\overline{1206}_{(6)}$),
+      décale la borne d'un cran (croire que la base 8 s'arrête à 6), retient comme
+      solution d'une équation une racine dont un chiffre sort de
+      $\{0,\dots,b-1\}$, ou garde une écriture à chiffre de tête nul. Quand le
+      même nombre est écrit dans DEUX bases, il n'intersecte pas les deux
+      contraintes et garde la plus large. À l'inverse, il croit qu'une base qui
+      n'a que peu de chiffres ne peut pas écrire les entiers qui « demandent »
+      des chiffres plus grands.
+    contradicts_principle: >-
+      En base $b$ il y a exactement $b$ chiffres, $0$ à $b-1$ ; un « chiffre » égal
+      à $b$ est une retenue qui n'a pas été faite. Le chiffre de tête d'une
+      écriture est non nul, sinon le nombre n'a pas ce nombre de chiffres — d'où
+      l'encadrement $b^{p} \le N \le b^{p+1}-1$ pour une écriture à $p+1$ chiffres.
+      Dans une équation portant sur des chiffres, ces bornes sont des CONTRAINTES
+      de l'énoncé : une racine qui les viole n'est pas une solution.
+
+  - id: mc.math.maths_arithmetique.numeration-retenue-a-dix
+    label: "Report de colonne non conduit en base b (seuil resté à 10, ou retenue non reportée)"
+    description: >-
+      L'élève pose l'opération en colonnes correctement, mais ne re-dérive pas la
+      règle de report à partir de la base : ou bien le seuil reste celui de la base
+      10 (rien ne déborde avant $10$, et la retenue retranche $10$ au lieu de $b$) ;
+      ou bien le débordement est bien vu et ramené dans $\{0,\dots,b-1\}$, mais la
+      retenue n'est pas ajoutée à la colonne voisine, chaque colonne étant traitée
+      indépendamment ; ou encore aucun report n'est fait du tout, et chaque
+      résultat de colonne est écrit tel quel, en entier.
+    contradicts_principle: >-
+      Une colonne déborde quand elle atteint $b$, parce que la colonne voisine à
+      gauche pèse exactement $b$ fois plus. La règle est la division euclidienne
+      par $b$ : $c = qb + r$ avec $0 \le r < b$ — on écrit $r$, on reporte $q$. Le
+      nombre $10$ n'a aucun rôle : c'est la base qui fixe le seuil, et la retenue
+      n'est pas facultative.
 
 items:
   - id: AR-1
@@ -2627,6 +2728,797 @@ items:
       **Vérification :** $23=18+5\equiv5\pmod{18}$, et $23=21+2\equiv2
       \pmod7$. ✓
 
+  # ── Rung R7b — les systèmes de numération (ajoutés le 2026-10-20) ──────────
+  # Spec : docs/pipeline/propositions/maths-arithmetique-numeration.md §9,
+  # révisée le 2026-10-20 contre deux critiques. Douze items, AR-41 à AR-52,
+  # tous en R7b. Aucun item existant n'est re-tagué, renuméroté ni déplacé.
+  #
+  # TAILLE : 12, pas 15 — défaut du propriétaire (DECISIONS-EN-ATTENTE.md §37,
+  # « un lot au plancher ») : 0 des 10 sujets SM vérifiés de bank.yaml ne porte
+  # sur une écriture en base. L'effort libéré est allé à la capacité « utiliser
+  # les écritures en base », sous la forme que le cadre décrit : trois QCM
+  # (AR-50, AR-51, AR-52) et l'exercice attempt-first r-numeration
+  # (exercises.yaml), quatre questions dont une conceptuelle terminale.
+  #
+  # MIX `habilete`, le réel imprimé à côté de la cible SM (40/40/20) :
+  #   application_directe 8/12 ≈ 67 % · application_non_explicite 3/12 = 25 %
+  #   · synthese 1/12 ≈ 8 %. NON forcé. Raison structurelle : neuf des douze
+  #   items servent « écrire » et « opérer / comparer », gestes de niveau 1 une
+  #   fois la prose faite ; seule la capacité « utiliser » porte naturellement
+  #   les niveaux 2-3, et la charge de niveau 3 est portée par r-numeration et
+  #   par les trois points d'arrêt en `raisonnement`. Forcer 40/40/20 sur douze
+  #   items serait refaire le geste que ce fichier s'est déjà reproché plus haut
+  #   (« échantillon trop petit pour forcer ce ratio sans fausser un tag »).
+  #   Aucun mix de NOTION n'est calculable : `habilete` n'existe que sur les
+  #   items AR-33 et suivants.
+  #
+  # PLANCHER : `numeration-retenue-a-dix` tombe EXACTEMENT au plancher (AR-47,
+  # AR-48, AR-49) — marge nulle, onzième famille à ce statut ; tout retrait
+  # d'item la casse. Note de rendu : le point d'arrêt cp-r7b-retenue déclare
+  # `item_source: clone_of_AR-48`, ce qui RETIRE AR-48 de la liste d'items du
+  # chapitre à l'affichage (convention de la maison, ItemsSection) ; le compte
+  # du banc, lui, n'en dépend pas.
+  #
+  # ORDRE DES ids = ordre des blocs de la rung (écrire → comparer puis opérer →
+  # utiliser), PAS ordre de difficulté : la série des `difficulty_level` est
+  # 2,3,3 | 3,4,5,2,3,4 | 5,3,4 — en dents de scie, déclaré ici. Si une surface
+  # rend un jour la banque par id, trier par `difficulty_level` à l'affichage
+  # plutôt que renuméroter.
+  #
+  # CHIFFRE HORS BASE (spec §9.1) : jamais dans un distracteur dont le modèle
+  # est autre chose que le report ou la borne des chiffres. AR-48 (et le point
+  # d'arrêt) sont des MULTIPLICATIONS exprès : l'erreur de seuil y donne une
+  # écriture bien formée, donc non barrable à vue. AR-47 garde, une seule fois
+  # et volontairement, la version barrable (476 en base 5) : la barrer suppose
+  # de tenir la borne a_i ≤ 4, ce qui est du savoir et non une fuite. Les
+  # racines hors base d'AR-50 et d'AR-52 SONT le modèle visé (borne oubliée).
+  #
+  # NON-DUPLICATION : aucun item ne rejoue un exemple travaillé de la rung
+  # (2025 en base 7, 100 en base 6, 3204 en base 5, 356+243 et 34×5 en base 7,
+  # la paire xy en bases 7 et 5, 5622 et 3405 en base 7) ; aucun nombre n'est
+  # repris d'une annale de bank.yaml.
+  #
+  # TROIS PRÉCISIONS de rédaction par rapport aux tableaux de la spec, sans
+  # changer aucune clé ni aucun nombre : (1) AR-42, le distracteur « 1 » est
+  # rattaché à la variante à DEMI corrigée de N1 (dernier reste en tête, puis
+  # ordre de sortie : 6, 5, 1), qui le produit exactement ; (2) AR-46, les
+  # options sont réduites à leurs conclusions (aucune ne confesse son
+  # raisonnement, aucun mot absolu), et le tronc ne présuppose plus
+  # l'existence de N ; (3) AR-50, « N = 31 » passe de l'option clé au retour,
+  # pour que la clé ne soit pas la seule à porter une information de plus.
+  - id: AR-41
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_arithmetique
+    tags: [numeration, base, division_euclidienne]
+    primary_misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+    stem: >
+      On écrit $N = 234$ en base $8$ par divisions successives :
+      $234 = 8\times29+2$, puis $29 = 8\times3+5$, puis $3 = 8\times0+3$.
+      Quelle est l'écriture de $234$ en base $8$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\overline{253}_{(8)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Tu as écrit les restes dans l'ordre où ils sont sortis. Mais le premier
+          reste, $2$, est le chiffre des unités : il se lit en dernier.
+          Recalcule : $\overline{253}_{(8)}$ vaut $2\times64+5\times8+3 = 171$,
+          pas $234$.
+      - id: B
+        text: >-
+          $\overline{352}_{(8)}$
+        correct: true
+      - id: C
+        text: >-
+          $\overline{234}_{(8)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as gardé les chiffres de l'écriture décimale en changeant seulement
+          l'étiquette de base. Une même suite de chiffres ne désigne pas le même
+          nombre dans deux bases : $\overline{234}_{(8)}$ vaut
+          $2\times64+3\times8+4 = 156$, pas $234$.
+      - id: D
+        text: >-
+          $\overline{0352}_{(8)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+        feedback: >
+          La valeur est juste, mais ce n'est pas une écriture : le quotient final
+          $0$ a été gardé comme un chiffre. Le chiffre de tête d'une écriture
+          n'est jamais nul — avec quatre chiffres en base $8$, un nombre vaudrait
+          au moins $8^3 = 512$.
+    correct_feedback: >
+      Exact. Les restes sortent des unités vers la tête : $2$, puis $5$, puis
+      $3$, qu'on lit de bas en haut. Contrôle : $3\times64+5\times8+2 = 234$.
+    solution: |
+      Le premier reste est le chiffre des unités, le dernier le chiffre de tête :
+      on lit les restes de bas en haut, ce qui donne $\overline{352}_{(8)}$.
+
+      **Contrôle, en recalculant la valeur :**
+      $$\overline{352}_{(8)} = 3\times8^2 + 5\times8 + 2$$
+      $$\overline{352}_{(8)} = 192 + 40 + 2$$
+      $$\overline{352}_{(8)} = 234$$
+
+  - id: AR-42
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [numeration, base, division_euclidienne]
+    primary_misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+    stem: >
+      Dans l'écriture de $N = 500$ en base $9$, quel est le **chiffre des
+      unités** ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$6$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Tu as pris le dernier reste pour le chiffre des unités, comme si le
+          premier reste était le chiffre de tête. Les divisions donnent
+          $500 = 9\times55+5$, $55 = 9\times6+1$, $6 = 9\times0+6$ : le dernier
+          reste, $6$, est le chiffre de TÊTE de $\overline{615}_{(9)}$.
+      - id: B
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as transporté l'écriture décimale : $500$ finit par $0$, mais cela
+          dit seulement que $10$ divise $500$. Un chiffre des unités nul en base
+          $9$ voudrait dire que $9$ divise $500$ — or $500 = 9\times55+5$.
+      - id: C
+        text: "$5$"
+        correct: true
+      - id: D
+        text: "$1$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Tu as bien mis le dernier reste, $6$, en tête, mais laissé les deux
+          autres dans l'ordre de sortie : $6$, $5$, $1$, ce qui met $1$ aux
+          unités. Or le premier reste, $5$, est celui des unités : l'écriture est
+          $\overline{615}_{(9)}$.
+    correct_feedback: >
+      Exact. Le chiffre des unités est le reste de la PREMIÈRE division par
+      $9$ : $500 = 9\times55+5$. Pas besoin des autres divisions pour le
+      connaître.
+    solution: |
+      **Le chiffre des unités, c'est le premier reste** : dans
+      $N = 9q + r$, $r$ est le seul terme qui n'est pas multiplié par $9$.
+      $$500 = 9\times55 + 5$$
+      Le chiffre des unités est donc $5$.
+
+      **Pour aller jusqu'au bout**, les deux divisions suivantes :
+      $$55 = 9\times6 + 1$$
+      $$6 = 9\times0 + 6$$
+      Lus de bas en haut, les restes donnent $500 = \overline{615}_{(9)}$, et
+      en effet $6\times81 + 1\times9 + 5 = 500$.
+
+  - id: AR-43
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [numeration, base, poids]
+    primary_misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+    stem: >
+      Que vaut $\overline{203}_{(5)}$ en base $10$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$203$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as lu l'écriture comme si elle était en base $10$. En base $5$, les
+          positions pèsent $25$, $5$ et $1$ : $\overline{203}_{(5)}$ vaut
+          $2\times25+0\times5+3 = 53$.
+      - id: B
+        text: "$77$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Tu as lu les poids à l'envers, en donnant le poids $1$ au chiffre de
+          gauche : $2\times1+0\times5+3\times25 = 77$. C'est le chiffre de DROITE
+          qui porte le poids $1$.
+      - id: C
+        text: "$265$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Tu as décalé les exposants d'un cran, en commençant à $5^1$ pour les
+          unités : $2\times125+0\times25+3\times5 = 265$. Le chiffre des unités
+          porte $5^0 = 1$.
+      - id: D
+        text: "$53$"
+        correct: true
+    correct_feedback: >
+      Exact : $2\times25+0\times5+3 = 53$. Le $0$ compte — il occupe la
+      position des cinq, et le sauter ferait glisser le $2$ d'un cran.
+    solution: |
+      Chaque chiffre est multiplié par le poids de sa position, de gauche à
+      droite $5^2$, $5$ et $1$ :
+      $$\overline{203}_{(5)} = 2\times5^2 + 0\times5 + 3$$
+      $$\overline{203}_{(5)} = 50 + 0 + 3$$
+      $$\overline{203}_{(5)} = 53$$
+
+  - id: AR-44
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [numeration, base, comparaison]
+    primary_misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+    stem: >
+      Range dans l'ordre croissant ces trois écritures de la base $5$ :
+      $\overline{344}_{(5)}$, $\overline{412}_{(5)}$, $\overline{1203}_{(5)}$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\overline{1203}_{(5)} < \overline{344}_{(5)} < \overline{412}_{(5)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as comparé les chiffres de tête — $1 < 3 < 4$ — sans d'abord compter
+          les chiffres. Or $\overline{1203}_{(5)}$ a quatre chiffres : il vaut au
+          moins $5^3 = 125$, alors qu'une écriture à trois chiffres vaut au plus
+          $5^3-1 = 124$. Les valeurs sont $99$, $107$ et $178$.
+      - id: B
+        text: >-
+          $\overline{1203}_{(5)} < \overline{412}_{(5)} < \overline{344}_{(5)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as comparé les sommes des chiffres — $6 < 7 < 11$. Mais une somme de
+          chiffres ignore les poids : elle ne dit rien de l'ordre. Les valeurs
+          sont $\overline{344}_{(5)} = 99$, $\overline{412}_{(5)} = 107$ et
+          $\overline{1203}_{(5)} = 178$.
+      - id: C
+        text: >-
+          $\overline{344}_{(5)} < \overline{412}_{(5)} < \overline{1203}_{(5)}$
+        correct: true
+      - id: D
+        text: >-
+          $\overline{412}_{(5)} < \overline{344}_{(5)} < \overline{1203}_{(5)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Tu as comparé en partant des unités, comme si le chiffre de droite
+          pesait le plus : lues ainsi, les trois écritures vaudraient $123$, $59$
+          et $386$. Mais c'est le chiffre de GAUCHE qui pèse le plus, et les
+          vraies valeurs, $99$, $107$ et $178$, donnent un autre ordre.
+    correct_feedback: >
+      Exact. D'abord le nombre de chiffres : $\overline{1203}_{(5)}$, seul à
+      quatre chiffres, est le plus grand. Puis, à trois chiffres, on compare de
+      gauche à droite : $3 < 4$, donc $\overline{344}_{(5)} <
+      \overline{412}_{(5)}$. Contrôle : $99 < 107 < 178$.
+    solution: |
+      **Le nombre de chiffres décide d'abord.** Une écriture à quatre chiffres
+      en base $5$ vaut au moins $5^3 = 125$ ; une écriture à trois chiffres vaut
+      au plus $5^3 - 1 = 124$. Donc $\overline{1203}_{(5)}$ est le plus grand.
+
+      **À nombre de chiffres égal, de gauche à droite.** Entre
+      $\overline{344}_{(5)}$ et $\overline{412}_{(5)}$, les chiffres de tête
+      diffèrent déjà : $3 < 4$, donc $\overline{344}_{(5)} < \overline{412}_{(5)}$.
+
+      **Contrôle par les valeurs :**
+      $$\overline{344}_{(5)} = 3\times25 + 4\times5 + 4 = 99$$
+      $$\overline{412}_{(5)} = 4\times25 + 1\times5 + 2 = 107$$
+      $$\overline{1203}_{(5)} = 125 + 2\times25 + 0\times5 + 3 = 178$$
+
+  - id: AR-45
+    rung: "R7b"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [numeration, base, comparaison]
+    primary_misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+    stem: >
+      Range dans l'ordre croissant : $A = \overline{11011}_{(2)}$,
+      $B = \overline{34}_{(5)}$, $C = \overline{23}_{(9)}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$C < B < A$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as lu les trois chaînes comme des nombres décimaux, $23 < 34 <
+          11011$ — c'est aussi l'ordre que donne « plus de chiffres gagne »,
+          une règle qui ne vaut que dans UNE MÊME base. Chaque écriture doit
+          d'abord être convertie avec sa propre base : $A = 27$, $B = 19$,
+          $C = 21$.
+      - id: B
+        text: "$A < B < C$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as rangé les nombres selon leur base, comme si une base plus grande
+          donnait un nombre plus grand. La base fixe la longueur de l'écriture,
+          pas la taille du nombre : $A = 27$, $B = 19$, $C = 21$.
+      - id: C
+        text: "$A < C < B$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as comparé les sommes des chiffres : $4$ pour $A$, $5$ pour $C$,
+          $7$ pour $B$. Une somme de chiffres ignore les poids comme les bases.
+          Les valeurs sont $A = 27$, $B = 19$, $C = 21$.
+      - id: D
+        text: "$B < C < A$"
+        correct: true
+    correct_feedback: >
+      Exact. Entre bases différentes, on convertit d'abord :
+      $A = 16+8+0+2+1 = 27$, $B = 3\times5+4 = 19$, $C = 2\times9+3 = 21$.
+      Donc $B < C < A$.
+    solution: |
+      **Entre deux bases, rien ne se compare avant d'avoir calculé les
+      valeurs.** Chaque écriture se convertit avec sa propre base :
+      $$A = \overline{11011}_{(2)} = 16 + 8 + 0 + 2 + 1 = 27$$
+      $$B = \overline{34}_{(5)} = 3\times5 + 4 = 19$$
+      $$C = \overline{23}_{(9)} = 2\times9 + 3 = 21$$
+      Comme $19 < 21 < 27$, l'ordre croissant est $B < C < A$.
+
+  - id: AR-46
+    rung: "R7b"
+    habilete: synthese
+    difficulty_level: 5
+    skill_code: maths_arithmetique
+    tags: [numeration, base, encadrement]
+    primary_misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+    stem: >
+      On cherche les entiers naturels $N$ qui s'écrivent avec exactement $4$
+      chiffres en base $5$ et avec exactement $3$ chiffres en base $8$. Que
+      peut-on dire de ces entiers ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$64 \\le N \\le 624$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+        feedback: >
+          Tu as réuni les deux encadrements au lieu de les croiser, en gardant le
+          plus large de chaque côté. Or $N$ doit vérifier les DEUX conditions :
+          $125 \le N \le 624$ et $64 \le N \le 511$, donc $125 \le N \le 511$.
+      - id: B
+        text: "$125 \\le N \\le 511$"
+        correct: true
+      - id: C
+        text: "Il n'en existe pas."
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as traité le nombre de chiffres comme une propriété du nombre. C'en
+          est une du couple (nombre, base) : un même entier a d'autant plus de
+          chiffres que la base est petite. Ici, les deux encadrements
+          $125 \le N \le 624$ et $64 \le N \le 511$ se recouvrent.
+      - id: D
+        text: "$N \\ge 1000$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as lu $\overline{1000}_{(5)}$, la plus petite écriture à quatre
+          chiffres en base $5$, comme « mille ». Elle vaut $5^3 = 125$. Et un
+          entier à trois chiffres en base $8$ ne dépasse pas $8^3-1 = 511$.
+    correct_feedback: >
+      Exact. Quatre chiffres en base $5$ : $5^3 \le N \le 5^4-1$, soit
+      $125 \le N \le 624$. Trois chiffres en base $8$ : $8^2 \le N \le 8^3-1$,
+      soit $64 \le N \le 511$. Les deux à la fois : l'intersection,
+      $125 \le N \le 511$.
+    solution: |
+      **Une écriture à $p+1$ chiffres encadre le nombre** : le chiffre de tête
+      n'est pas nul, et le plus grand nombre à $p+1$ chiffres est $b^{p+1}-1$.
+
+      **Quatre chiffres en base $5$** ($p = 3$) :
+      $$125 \le N \le 624$$
+
+      **Trois chiffres en base $8$** ($p = 2$) :
+      $$64 \le N \le 511$$
+
+      **Les deux conditions à la fois** : on garde le plus contraignant de
+      chaque côté — le plus grand des minimums, le plus petit des maximums.
+      $$125 \le N \le 511$$
+      Le nombre de chiffres n'est pas une propriété de l'entier seul : $125$,
+      par exemple, s'écrit $\overline{1000}_{(5)}$ et $\overline{175}_{(8)}$.
+
+  - id: AR-47
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_arithmetique
+    tags: [numeration, base, addition, retenue]
+    primary_misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+    stem: >
+      Effectue $\overline{342}_{(5)} + \overline{134}_{(5)}$, résultat en
+      base $5$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\overline{476}_{(5)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          Tu as gardé le seuil de la base $10$ : $2+4 = 6$ et $4+3 = 7$ restent
+          sous $10$, donc tu n'as rien reporté. Mais en base $5$, une colonne
+          déborde dès qu'elle atteint $5$ — et $6$, $7$ ne sont même pas des
+          chiffres de la base $5$ : ton écriture n'en est pas une.
+      - id: B
+        text: >-
+          $\overline{1301}_{(5)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Le passage par la base $10$ est juste : $97+44 = 141$. Mais en
+          reconvertissant, tu as lu les restes dans l'ordre de sortie :
+          $141 = 5\times28+1$, $28 = 5\times5+3$, $5 = 5\times1+0$,
+          $1 = 5\times0+1$ donnent $1$, $3$, $0$, $1$, à lire de bas en haut.
+          Ton écriture vaut $201$.
+      - id: C
+        text: >-
+          $\overline{1031}_{(5)}$
+        correct: true
+      - id: D
+        text: >-
+          $\overline{421}_{(5)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          Tu as bien ramené chaque colonne dans $\{0,\dots,4\}$ — $6$ donne $1$,
+          $7$ donne $2$ — mais sans reporter la retenue sur la colonne de gauche.
+          Ton écriture vaut $111$ ; la somme vaut $141$.
+    correct_feedback: >
+      Exact. Unités : $2+4 = 6 = 5+1$, on écrit $1$, on retient $1$. Puis
+      $4+3+1 = 8 = 5+3$, on écrit $3$, on retient $1$. Puis $3+1+1 = 5$, on
+      écrit $0$, on retient $1$, qui devient le chiffre de tête.
+    solution: |
+      **En colonnes, de droite à gauche ; une colonne déborde dès qu'elle
+      atteint $5$.**
+
+      Unités : $2+4 = 6 = 5+1$ — on écrit $1$, on retient $1$.
+
+      Paquets de $5$ : $4+3+1 = 8 = 5+3$ — on écrit $3$, on retient $1$.
+
+      Paquets de $25$ : $3+1+1 = 5 = 5+0$ — on écrit $0$, on retient $1$.
+
+      La dernière retenue devient le chiffre de tête :
+      $\overline{342}_{(5)} + \overline{134}_{(5)} = \overline{1031}_{(5)}$.
+
+      **Contrôle en base $10$ :** $\overline{342}_{(5)} = 97$,
+      $\overline{134}_{(5)} = 44$, et
+      $$97 + 44 = 141$$
+      $$\overline{1031}_{(5)} = 125 + 0 + 3\times5 + 1 = 141$$
+
+  - id: AR-48
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [numeration, base, multiplication, retenue]
+    primary_misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+    stem: >
+      Effectue $\overline{45}_{(6)} \times \overline{3}_{(6)}$, résultat en
+      base $6$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\overline{135}_{(6)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          Tu as gardé le seuil de la base $10$ : $5\times3 = 15$, tu as écrit $5$
+          et retenu $1$ ; puis $4\times3+1 = 13$, écrit $3$, retenu $1$. Tous ces
+          chiffres existent en base $6$ : l'erreur ne se voit pas, il faut
+          recalculer. $\overline{135}_{(6)}$ vaut $59$, alors que le produit vaut
+          $29\times3 = 87$.
+      - id: B
+        text: >-
+          $\overline{322}_{(6)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Le passage par la base $10$ est juste : $29\times3 = 87$. Mais en
+          reconvertissant, tu as lu les restes dans l'ordre de sortie :
+          $87 = 6\times14+3$, $14 = 6\times2+2$, $2 = 6\times0+2$ donnent $3$,
+          $2$, $2$, à lire de bas en haut. Ton écriture vaut $122$.
+      - id: C
+        text: >-
+          $\overline{1215}_{(6)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          Tu as écrit chaque produit de colonne tel quel, en entier —
+          $4\times3 = 12$ et $5\times3 = 15$, mis côte à côte — sans rien
+          reporter. Un produit de colonne qui atteint $6$ doit être rangé en
+          paquets de $6$. Ton écriture vaut $299$.
+      - id: D
+        text: >-
+          $\overline{223}_{(6)}$
+        correct: true
+    correct_feedback: >
+      Exact. $5\times3 = 15 = 2\times6+3$ : on écrit $3$, on retient $2$. Puis
+      $4\times3+2 = 14 = 2\times6+2$ : on écrit $2$, on retient $2$, qui devient
+      le chiffre de tête. Contrôle : $\overline{223}_{(6)}$ vaut
+      $72+12+3 = 87 = 29\times3$.
+    solution: |
+      **En colonnes, en partant des unités ; chaque produit se range en paquets
+      de $6$.**
+
+      Unités : $5\times3 = 15 = 2\times6+3$ — on écrit $3$, on retient $2$.
+
+      Paquets de $6$ : $4\times3+2 = 14 = 2\times6+2$ — on écrit $2$, on
+      retient $2$, qui devient le chiffre de tête.
+
+      Donc $\overline{45}_{(6)} \times \overline{3}_{(6)} = \overline{223}_{(6)}$.
+
+      **Contrôle en base $10$ :** $\overline{45}_{(6)} = 29$, et
+      $$29 \times 3 = 87$$
+      $$\overline{223}_{(6)} = 2\times36 + 2\times6 + 3 = 87$$
+
+  - id: AR-49
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [numeration, base, retenue, mecanisme]
+    primary_misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+    stem: >
+      Dans une addition posée en base $b$, une colonne donne la somme $c$, avec
+      $c \ge b$. Quelle règle faut-il appliquer à cette colonne ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          On écrit le reste de $c$ dans la division par $10$, et on reporte le
+          quotient sur la colonne de gauche.
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          Tu as gardé le seuil de la base $10$ par automatisme. Le report vient
+          de ce que la colonne de gauche pèse exactement $b$ fois plus : c'est
+          par $b$ qu'on divise, et $10$ n'a aucun rôle en base $b$.
+      - id: B
+        text: >-
+          On écrit $c - b$ dès que $c > b$, avec une retenue de $1$ ; pour
+          $c = b$, on écrit $b$.
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+        feedback: >
+          Le seuil est décalé d'un cran : à $c = b$ exactement, la colonne
+          déborde déjà — on écrit $0$ et on retient $1$. Écrire $b$ ferait de $b$
+          un chiffre, alors que les chiffres de la base $b$ s'arrêtent à $b-1$.
+      - id: C
+        text: >-
+          On écrit le reste de $c$ dans la division par $b$, et on reporte le
+          quotient sur la colonne de gauche.
+        correct: true
+      - id: D
+        text: >-
+          On écrit $c$ si $c < 10$, et sinon $c - 10$ avec une retenue de $1$.
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          C'est la règle apprise à l'école primaire, valable en base $10$
+          seulement. En base $b$, une colonne déborde dès qu'elle atteint $b$, et
+          c'est $b$ qu'on retranche, pas $10$.
+    correct_feedback: >
+      Exact. La colonne de gauche pèse exactement $b$ fois plus : on écrit
+      $c = qb + r$ avec $0 \le r < b$, on note $r$ et on reporte $q$. C'est la
+      division euclidienne par la base, quelle que soit la base.
+    solution: |
+      **Pourquoi le seuil est $b$.** Dans une écriture en base $b$, chaque
+      colonne pèse exactement $b$ fois plus que sa voisine de droite : $b$
+      unités d'une colonne valent exactement une unité de la suivante.
+
+      **La règle.** Si une colonne donne $c$, on fait la division euclidienne
+      par $b$ :
+      $$c = qb + r \qquad \text{avec} \qquad 0 \le r < b$$
+      On écrit $r$ dans la colonne, et on reporte $q$ sur la colonne de gauche.
+      À $c = b$ exactement, cela donne $r = 0$ et $q = 1$ : la colonne déborde
+      déjà. Le nombre $10$ n'intervient nulle part.
+
+  - id: AR-50
+    rung: "R7b"
+    habilete: application_non_explicite
+    difficulty_level: 5
+    skill_code: maths_arithmetique
+    tags: [numeration, base, gauss, chiffres]
+    primary_misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+    stem: >
+      Déterminer tous les couples de chiffres $(x,y)$ tels que
+      $\overline{xy}_{(9)} = \overline{yx}_{(7)}$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $(x,y) = (3,4)$ et $(x,y) = (6,8)$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+        feedback: >
+          Tu as gardé la racine $x = 6$, $y = 8$ : elle vérifie bien $4x = 3y$,
+          mais $8$ n'est pas un chiffre de la base $7$, et $\overline{86}_{(7)}$
+          n'existe pas. $x$ et $y$ sont chiffres des DEUX écritures : il fallait
+          les borner par $\{0,\dots,6\}$ avant de résoudre.
+      - id: B
+        text: >-
+          $(x,y) = (3,4)$ seulement
+        correct: true
+      - id: C
+        text: >-
+          $(x,y) = (4,3)$ seulement
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Tu as interverti les poids en mettant en équation : $\overline{xy}_{(9)}$
+          lu $9y + x$ au lieu de $9x + y$. On obtient alors $4y = 3x$, d'où
+          $(4,3)$. Contrôle : $\overline{43}_{(9)} = 39$ et
+          $\overline{34}_{(7)} = 25$ ne sont pas égaux.
+      - id: D
+        text: >-
+          $(x,y) = (0,0)$ et $(x,y) = (3,4)$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+        feedback: >
+          $(0,0)$ vérifie bien $4x = 3y$, mais $x$ et $y$ sont chacun en tête
+          d'une écriture, $\overline{xy}_{(9)}$ pour l'un et
+          $\overline{yx}_{(7)}$ pour l'autre : ni l'un ni l'autre ne peut être
+          nul. C'est la condition « chiffre de tête non nul » qui l'écarte, et
+          elle n'a pas été posée.
+    correct_feedback: >
+      Exact. $9x + y = 7y + x$ donne $8x = 6y$, soit $4x = 3y$. Comme
+      $3 \mid 4x$ et $\mathrm{PGCD}(3,4) = 1$, le théorème de Gauss donne
+      $3 \mid x$. Les bornes — chiffres des deux bases, en tête d'une
+      écriture, donc entre $1$ et $6$ — ne laissent que $x = 3$, $y = 4$, et
+      le nombre vaut $\overline{34}_{(9)} = 31 = \overline{43}_{(7)}$.
+    solution: |
+      **Les bornes d'abord.** $x$ et $y$ sont des chiffres des deux écritures,
+      donc dans $\{0,\dots,8\} \cap \{0,\dots,6\} = \{0,\dots,6\}$ ; chacun est
+      en tête d'une écriture, donc aucun n'est nul.
+
+      **L'équation.**
+      $$9x + y = 7y + x$$
+      $$8x = 6y$$
+      $$4x = 3y$$
+
+      **Gauss, pas une division « pour voir ».** $3$ divise $4x$ et
+      $\mathrm{PGCD}(3,4) = 1$, donc $3 \mid x$ : avec $1 \le x \le 6$,
+      $x \in \{3, 6\}$.
+
+      **Le tri par les bornes.** $x = 3$ donne $y = 4$, un chiffre valable.
+      $x = 6$ donne $y = 8$, qui n'est pas un chiffre de la base $7$ : rejeté.
+
+      **Contrôle :** $\overline{34}_{(9)} = 27 + 4 = 31$ et
+      $\overline{43}_{(7)} = 28 + 3 = 31$.
+
+  - id: AR-51
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [numeration, base, divisibilite, congruences]
+    primary_misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+    stem: >
+      Soit $N = \overline{8523}_{(9)}$. Quel est le reste de la division
+      euclidienne de $N$ par $8$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$18$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.reste-non-normalise
+        feedback: >
+          Tu as bien pris la somme des chiffres, $8+5+2+3 = 18$, et c'est le bon
+          critère, puisque $9 \equiv 1 \pmod 8$. Mais un reste modulo $8$ est
+          compris entre $0$ et $7$ : il faut encore réduire, $18 = 8\times2+2$.
+      - id: B
+        text: "$6$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: >
+          Tu as pris la somme alternée, $3-2+5-8 = -2 \equiv 6 \pmod 8$. C'est le
+          critère du module $b+1 = 10$, qui vient de $9 \equiv -1 \pmod{10}$.
+          Modulo $b-1 = 8$, on a $9 \equiv 1$ : c'est la somme simple des
+          chiffres qui compte.
+      - id: C
+        text: "$3$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: >
+          Tu as lu le chiffre des unités. Il donne le reste modulo la base,
+          $9$ — et en effet $N = 6258 = 9\times695+3$ —, pas le reste
+          modulo $8$.
+      - id: D
+        text: "$2$"
+        correct: true
+    correct_feedback: >
+      Exact. En base $9$, $9 \equiv 1 \pmod 8$, donc $N$ est congru modulo $8$
+      à la somme de ses chiffres : $8+5+2+3 = 18 = 8\times2+2$. Contrôle
+      direct : $N = 6258 = 8\times782+2$.
+    solution: |
+      **À quoi la base est-elle congrue ?** Ici $b = 9$ et le module est
+      $8 = b-1$ :
+      $$9 \equiv 1 \pmod 8$$
+      Donc toute puissance de $9$ est congrue à $1$ modulo $8$, et $N$ est
+      congru à la somme de ses chiffres :
+      $$N \equiv 8 + 5 + 2 + 3 \pmod 8$$
+      $$N \equiv 18 \pmod 8$$
+      $$N \equiv 2 \pmod 8$$
+      **Contrôle direct :** $N = 8\times729 + 5\times81 + 2\times9 + 3 = 6258$,
+      et $6258 = 8\times782 + 2$.
+
+  - id: AR-52
+    rung: "R7b"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [numeration, base, divisibilite, chiffres]
+    primary_misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+    stem: >
+      Déterminer tous les chiffres $x$ de la base $9$ tels que
+      $N = \overline{3\,x\,4}_{(9)}$ soit divisible par $8$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$x = 1$"
+        correct: true
+      - id: B
+        text: "$x = 2$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: >
+          Tu as pris le bon critère, la somme des chiffres, mais au mauvais
+          module : $x + 7 \equiv 0 \pmod 9$ au lieu de $\pmod 8$. En base $9$, la
+          somme des chiffres donne le reste modulo $b-1 = 8$, pas modulo $9$.
+          Contrôle : $\overline{324}_{(9)}$ vaut $265 = 8\times33+1$.
+      - id: C
+        text: "$x = 1$ ou $x = 9$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+        feedback: >
+          Tu as gardé la seconde solution de $x \equiv 1 \pmod 8$, $x = 9$. Mais
+          $9$ n'est pas un chiffre de la base $9$, dont les chiffres vont de $0$
+          à $8$ : la borne $0 \le x \le 8$ fait partie de l'énoncé.
+      - id: D
+        text: "$x = 7$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: >
+          Tu as utilisé la somme alternée, $4 - x + 3 = 7 - x$ : c'est le
+          critère du module $b+1 = 10$, pas de $8$. Contrôle :
+          $\overline{374}_{(9)}$ vaut $310 = 8\times38+6$, qui n'est pas
+          divisible par $8$.
+    correct_feedback: >
+      Exact. Modulo $b-1 = 8$, $N$ est congru à la somme de ses chiffres :
+      $3 + x + 4 = x + 7 \equiv 0 \pmod 8$, donc $x \equiv 1 \pmod 8$. Avec
+      $0 \le x \le 8$, seul $x = 1$ convient. Contrôle : $\overline{314}_{(9)}$
+      vaut $243+9+4 = 256 = 8\times32$.
+    solution: |
+      **Le bon critère.** En base $9$, $9 \equiv 1 \pmod 8$ : modulo $8$, $N$
+      est congru à la somme de ses chiffres.
+      $$N \equiv 3 + x + 4 \pmod 8$$
+      $$N \equiv x + 7 \pmod 8$$
+
+      **La condition.** $8 \mid N$ équivaut à $x + 7 \equiv 0 \pmod 8$,
+      c'est-à-dire :
+      $$x \equiv 1 \pmod 8$$
+
+      **Les bornes.** $x$ est un chiffre de la base $9$, donc
+      $0 \le x \le 8$ : seul $x = 1$ convient ($9$ n'est pas un chiffre de la
+      base $9$).
+
+      **Contrôle :** $\overline{314}_{(9)} = 3\times81 + 1\times9 + 4 = 256$,
+      et $256 = 8\times32$.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après AR-28 à AR-32. Huit familles sous le plancher,
 # dont `fermat-condition-ou-exposant` sans AUCUN item de banc — elle n'était
@@ -2652,6 +3544,12 @@ items:
 # EXACTEMENT au plancher (3 items, trois contextes distincts — solve direct,
 # variation fraîche, combinaison de deux congruences). Dix-sept familles
 # désormais déclarées ; R5 passe de 3 à 6 items sur le ramp.
+# RÉÉCRIT une cinquième fois le 2026-10-20 (rung R7b, systèmes de numération —
+# docs/pipeline/propositions/maths-arithmetique-numeration.md §9) : AR-41 à
+# AR-52 ajoutés, quatre familles neuves (numeration-*), et
+# `critere-divisibilite-mal-applique` élargie à la base générique sans
+# re-tagage. Comptes RÉGÉNÉRÉS par la règle de web/scripts/lib/couverture-compte.mjs
+# (mesurerNotion), pas édités à la main. Vingt et une familles déclarées.
 # Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
@@ -2661,24 +3559,28 @@ coverage_summary:
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
     web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
-    mc.math.maths_arithmetique.premier-vs-premiers-entre-eux:     { count: 6, items: [AR-4, AR-7, AR-16, AR-17, AR-19, AR-27] }
-    mc.math.maths_arithmetique.pgcd-vs-ppcm:                      { count: 3, items: [AR-3, AR-14, AR-21] }
-    mc.math.maths_arithmetique.pgcd-plus-grand-oublie:            { count: 4, items: [AR-3, AR-14, AR-15, AR-21] }
-    mc.math.maths_arithmetique.gauss-condition-ignoree:           { count: 3, items: [AR-5, AR-18, AR-19] }
-    mc.math.maths_arithmetique.reste-non-normalise:               { count: 5, items: [AR-1, AR-2, AR-10, AR-13, AR-35] }
-    mc.math.maths_arithmetique.congruence-puissance-mal-reduite:  { count: 5, items: [AR-2, AR-12, AR-28, AR-33, AR-37] }
-    mc.math.maths_arithmetique.critere-divisibilite-mal-applique: { count: 4, items: [AR-1, AR-13, AR-31, AR-34] }
-    mc.math.maths_arithmetique.diophantienne-critere-existence:   { count: 7, items: [AR-6, AR-7, AR-8, AR-9, AR-17, AR-23, AR-25] }
-    mc.math.maths_arithmetique.bezout-portee:                     { count: 3, items: [AR-5, AR-16, AR-17] }
-    mc.math.maths_arithmetique.solution-unique-vs-infinie:        { count: 3, items: [AR-24, AR-25, AR-29] }
-    mc.math.maths_arithmetique.solution-generale-mal-parametree:  { count: 3, items: [AR-24, AR-29, AR-32] }
-    mc.math.maths_arithmetique.primalite-test-incomplet:          { count: 3, items: [AR-20, AR-27, AR-31] }
-    mc.math.maths_arithmetique.fermat-condition-ou-exposant:      { count: 8, items: [AR-28, AR-30, AR-32, AR-33, AR-34, AR-35, AR-36, AR-37] }
-    mc.math.maths_arithmetique.solution-mise-a-echelle:           { count: 3, items: [AR-26, AR-30, AR-32] }
-    mc.math.maths_arithmetique.diviser-relation-inversee:         { count: 3, items: [AR-11, AR-22, AR-31] }
-    mc.math.maths_arithmetique.prime-divise-produit:              { count: 3, items: [AR-2, AR-12, AR-22] }
-    mc.math.maths_arithmetique.congruence-lineaire-mal-resolue:   { count: 3, items: [AR-38, AR-39, AR-40] }
-  total_items: 40
+    mc.math.maths_arithmetique.premier-vs-premiers-entre-eux:             { count: 6, items: [AR-4, AR-7, AR-16, AR-17, AR-19, AR-27] }
+    mc.math.maths_arithmetique.pgcd-vs-ppcm:                              { count: 3, items: [AR-3, AR-14, AR-21] }
+    mc.math.maths_arithmetique.pgcd-plus-grand-oublie:                    { count: 4, items: [AR-3, AR-14, AR-15, AR-21] }
+    mc.math.maths_arithmetique.gauss-condition-ignoree:                   { count: 3, items: [AR-5, AR-18, AR-19] }
+    mc.math.maths_arithmetique.reste-non-normalise:                       { count: 6, items: [AR-1, AR-2, AR-10, AR-13, AR-35, AR-51] }
+    mc.math.maths_arithmetique.congruence-puissance-mal-reduite:          { count: 5, items: [AR-2, AR-12, AR-28, AR-33, AR-37] }
+    mc.math.maths_arithmetique.critere-divisibilite-mal-applique:         { count: 6, items: [AR-1, AR-13, AR-31, AR-34, AR-51, AR-52] }
+    mc.math.maths_arithmetique.diophantienne-critere-existence:           { count: 7, items: [AR-6, AR-7, AR-8, AR-9, AR-17, AR-23, AR-25] }
+    mc.math.maths_arithmetique.bezout-portee:                             { count: 3, items: [AR-5, AR-16, AR-17] }
+    mc.math.maths_arithmetique.solution-unique-vs-infinie:                { count: 3, items: [AR-24, AR-25, AR-29] }
+    mc.math.maths_arithmetique.solution-generale-mal-parametree:          { count: 3, items: [AR-24, AR-29, AR-32] }
+    mc.math.maths_arithmetique.primalite-test-incomplet:                  { count: 3, items: [AR-20, AR-27, AR-31] }
+    mc.math.maths_arithmetique.fermat-condition-ou-exposant:              { count: 8, items: [AR-28, AR-30, AR-32, AR-33, AR-34, AR-35, AR-36, AR-37] }
+    mc.math.maths_arithmetique.solution-mise-a-echelle:                   { count: 3, items: [AR-26, AR-30, AR-32] }
+    mc.math.maths_arithmetique.diviser-relation-inversee:                 { count: 3, items: [AR-11, AR-22, AR-31] }
+    mc.math.maths_arithmetique.prime-divise-produit:                      { count: 3, items: [AR-2, AR-12, AR-22] }
+    mc.math.maths_arithmetique.congruence-lineaire-mal-resolue:           { count: 3, items: [AR-38, AR-39, AR-40] }
+    mc.math.maths_arithmetique.numeration-restes-ordre-inverse:           { count: 7, items: [AR-41, AR-42, AR-43, AR-44, AR-47, AR-48, AR-50] }
+    mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre:  { count: 6, items: [AR-41, AR-42, AR-43, AR-44, AR-45, AR-46] }
+    mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres:   { count: 5, items: [AR-41, AR-46, AR-49, AR-50, AR-52] }
+    mc.math.maths_arithmetique.numeration-retenue-a-dix:                  { count: 3, items: [AR-47, AR-48, AR-49] }
+  total_items: 52
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2691,6 +3593,7 @@ coverage_summary:
     R6: 4
     R6b: 6
     R7: 4
+    R7b: 12
     R8: 4
   honest_state: >-
     Les dix-sept misconceptions déclarées sont couvertes, aucune sous le
@@ -2725,3 +3628,17 @@ coverage_summary:
     `ramp_coverage` inchangés. Les trois anciens défauts (clone de l'exemple
     de leçon, vulnérabilité à la substitution directe, modulus donné dans la
     stem) sont corrigés sans toucher au plancher ni à la marge.
+
+    RUNG R7b, SYSTÈMES DE NUMÉRATION (2026-10-20) : douze items AR-41 à AR-52,
+    `total_items` 40 → 52, `ramp_coverage.R7b` = 12. Quatre familles neuves,
+    toutes au plancher ou au-dessus : `numeration-restes-ordre-inverse`
+    7, `numeration-ecriture-prise-pour-le-nombre` 6,
+    `numeration-contraintes-sur-les-chiffres` 5, et `numeration-retenue-a-dix`
+    EXACTEMENT 3 (AR-47/48/49) — onzième famille à marge nulle ; tout retrait
+    d'item la casse. Deux familles existantes montent sans qu'aucun item ancien
+    ne change de tag : `critere-divisibilite-mal-applique` 4 → 6 (AR-51, AR-52)
+    et `reste-non-normalise` 5 → 6 (AR-51). Aucun compte ne baisse. Les
+    vingt et une misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Ce plancher est un plancher de CONSTRUCTION : les quatre modèles
+    de numération sont une lecture didactique adossée à zéro donnée d'usage, et
+    aucune annale vérifiée de numération n'existe dans bank.yaml.

@@ -44,6 +44,22 @@ skill_code: maths_arithmetique
 #                                          placement before_bac inchangé).
 #                                          Sonde
 #                                          fermat-condition-ou-exposant.
+#   cp-r7b-predict-ecriture (dans R7b,   — COMMIT gate : le nombre a-t-il
+#                            accroche)     changé, ou seulement son écriture ?
+#                                          Posé juste après « 2025 en base 2 »,
+#                                          avant l'explication. Sonde
+#                                          numeration-ecriture-prise-pour-le-nombre.
+#   cp-r7b-ordre-restes (dans R7b, entre — COMMIT gate : dans quel ordre lire
+#                        les divisions et   les restes des divisions
+#                        l'écriture)        successives ? Sonde
+#                                          numeration-restes-ordre-inverse.
+#   cp-r7b-retenue    (dans R7b, après   — rupture gate : le report de colonne
+#                      la multiplication)   en base b, sur une multiplication
+#                                          (erreur de seuil non barrable à vue).
+#                                          Sonde numeration-retenue-a-dix.
+#                                          Clone d'AR-48 (nombres frais).
+#   Les trois points d'arrêt de la rung de numération (ajoutée le 2026-10-20,
+#   spec docs/pipeline/propositions/maths-arithmetique-numeration.md §6).
 #
 # CHAQUE distracteur porte un id de modèle nommé de l'inventaire de la notion
 # (items.yaml). Les longueurs d'options sont équilibrées : la bonne réponse
@@ -51,8 +67,10 @@ skill_code: maths_arithmetique
 #
 # Garde-fou périmètre : 2ème Bac Sciences Mathématiques — divisibilité, division
 # euclidienne, congruences, PGCD/PPCM, algorithme d'Euclide, Bézout, Gauss,
-# nombres premiers, décomposition, équations diophantiennes ax+by=c. Le petit
-# théorème de Fermat est au programme SM et légitime pour un sujet type-bac.
+# nombres premiers, décomposition, équations diophantiennes ax+by=c, systèmes
+# de numération (écriture en base, opérations, comparaison, critères par b−1 et
+# b+1). Le petit théorème de Fermat est au programme SM et légitime pour un
+# sujet type-bac.
 # ──────────────────────────────────────────────────────────────────────────────
 
 checkpoints:
@@ -384,6 +402,212 @@ checkpoints:
           contradiction du type $-1 \equiv 1$ à exhiber), pas la conclusion
           de Fermat lui-même — et de toute façon pas le résultat ici, où
           $p \mid a$ rend même l'énoncé du théorème inapplicable.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-R7b-1 | id: cp-r7b-predict-ecriture | placé DANS R7b, juste après
+  #        l'égalité « 2025 en base 2 », AVANT la phrase qui l'explique.
+  #        COMMIT gate de la rung de numération : le nombre a-t-il changé, ou
+  #        seulement son écriture ? Sonde le modèle racine
+  #        numeration-ecriture-prise-pour-le-nombre ; un distracteur porte
+  #        numeration-contraintes-sur-les-chiffres (moins de chiffres pris pour
+  #        moins de nombres). item_source original. Spec :
+  #        docs/pipeline/propositions/maths-arithmetique-numeration.md §6.1.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7b-predict-ecriture
+    rung: "R7b"
+    habilete: raisonnement
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, numeration, hook_commit]
+    primary_misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+    item_source: original
+    lesson_placement: in_R7b
+
+    stem: |
+      $2025 = \overline{11111101001}_{(2)}$. **Prends position avant de lire
+      la suite :** en passant de l'écriture en base $10$ à l'écriture en
+      base $2$, qu'est-ce qui a changé ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Le nombre a changé : avec onze chiffres,
+          $\overline{11111101001}_{(2)}$ est bien plus grand que $2025$.
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: |
+          Modèle détecté : l'écriture prise pour le nombre — ici, « plus de
+          chiffres, donc plus grand ». Recompte avec les poids de la base $2$ :
+          $1024+512+256+128+64+32+8+1 = 2025$. C'est le même entier ; il lui
+          faut simplement plus de colonnes quand les paquets sont plus petits.
+      - id: B
+        text: |
+          Seulement l'écriture : c'est le même entier, compté par paquets de
+          $2$ au lieu de paquets de $10$.
+        correct: true
+        feedback: |
+          Exact. Une base est une taille de paquet, pas une transformation du
+          nombre : $2025$ reste $2025$, que tu le comptes par dix ou par deux.
+      - id: C
+        text: |
+          L'écriture et le nombre : passer à une base plus petite rend le
+          nombre lui-même plus petit.
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: |
+          Modèle détecté : la base crue proportionnelle au nombre. La base ne
+          change que la LONGUEUR de l'écriture : plus la base est petite, plus
+          il faut de colonnes pour écrire le même entier — onze en base $2$,
+          quatre en base $10$.
+      - id: D
+        text: |
+          L'écriture seulement — mais la base $2$ écrit moins de nombres que la
+          base $10$ : il lui manque les chiffres $2$ à $9$.
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+        feedback: |
+          Modèle détecté : moins de chiffres confondu avec moins de nombres. La
+          base $2$ a exactement deux chiffres, $0$ et $1$, et elle écrit tous
+          les entiers naturels : dès qu'une colonne atteint $2$, on forme un
+          paquet de la colonne suivante. Elle utilise juste plus de colonnes.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-R7b-2 | id: cp-r7b-ordre-restes | placé DANS R7b, entre les quatre
+  #        divisions de 2025 par 7 et l'écriture assemblée.
+  #        COMMIT gate sur le modèle signature de la rung : dans quel ordre
+  #        lire les restes ? Sonde numeration-restes-ordre-inverse (lecture
+  #        dans l'ordre de sortie, et demi-renversement) ; un distracteur porte
+  #        numeration-ecriture-prise-pour-le-nombre (les chiffres décimaux
+  #        gardés). Aucun distracteur ne porte de chiffre hors base : rien ne
+  #        se barre à vue. item_source original. Spec §6.2.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7b-ordre-restes
+    rung: "R7b"
+    habilete: raisonnement
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, numeration, predict_commit]
+    primary_misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+    item_source: original
+    lesson_placement: in_R7b
+
+    stem: |
+      Les quatre divisions de $2025$ par $7$ ont donné les restes $2$, $2$,
+      $6$, $5$, dans cet ordre. **Prends position avant de lire la suite :**
+      quelle est l'écriture de $2025$ en base $7$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $\overline{2265}_{(7)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: |
+          Modèle détecté : les restes écrits dans l'ordre où ils sont sortis. Or
+          le premier reste est celui des unités. Recalcule : $\overline{2265}_{(7)}$
+          vaut $2\times343 + 2\times49 + 6\times7 + 5 = 831$, pas $2025$.
+      - id: B
+        text: |
+          $\overline{5226}_{(7)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: |
+          Modèle détecté : un renversement à moitié fait. Le dernier reste est
+          bien en tête, mais les trois autres sont restés dans l'ordre de
+          sortie. Recalcule : $\overline{5226}_{(7)}$ vaut
+          $5\times343 + 2\times49 + 2\times7 + 6 = 1833$, pas $2025$.
+      - id: C
+        text: |
+          $\overline{5622}_{(7)}$
+        correct: true
+        feedback: |
+          Exact. Le premier reste donne les unités, le dernier le chiffre de
+          tête : on lit de bas en haut. Contrôle :
+          $5\times343 + 6\times49 + 2\times7 + 2 = 2025$.
+      - id: D
+        text: |
+          $\overline{2025}_{(7)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: |
+          Modèle détecté : l'écriture prise pour le nombre — les chiffres
+          décimaux gardés, comme si seule l'étiquette de base changeait. Les
+          restes, eux, ont été ignorés. En base $7$, $\overline{2025}_{(7)}$
+          vaut $2\times343 + 0\times49 + 2\times7 + 5 = 705$, pas $2025$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-R7b-3 | id: cp-r7b-retenue | placé DANS R7b, juste après la
+  #        multiplication posée en base 7 et sa rupture (le seuil 10).
+  #        Rupture gate : le report de colonne en base b. Une MULTIPLICATION
+  #        exprès : l'erreur de seuil y produit une écriture bien formée, donc
+  #        non barrable à vue. Sonde numeration-retenue-a-dix (seuil resté à
+  #        10, retenue non reportée) ; un distracteur porte
+  #        numeration-restes-ordre-inverse (conversion par la base 10, restes
+  #        lus dans l'ordre de sortie). Même forme que l'item AR-48, nombres
+  #        frais ; le clone le retire de la liste d'items du chapitre. Spec §6.3.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7b-retenue
+    rung: "R7b"
+    habilete: utilisation
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, numeration, retenue]
+    primary_misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+    item_source: clone_of_AR-48      # même forme, nombres frais
+    lesson_placement: in_R7b
+
+    stem: |
+      Pose et effectue $\overline{25}_{(6)} \times \overline{4}_{(6)}$. Le
+      résultat est attendu en base $6$.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $\overline{100}_{(6)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: |
+          Modèle détecté : le seuil de la base $10$ gardé. $5\times4 = 20$ :
+          tu as écrit $0$ et retenu $2$ ; puis $2\times4+2 = 10$ : tu as écrit
+          $0$ et retenu $1$. L'écriture obtenue est parfaitement légale en
+          base $6$ — c'est pour cela que l'erreur ne se voit pas — mais elle
+          vaut $36$, alors que $\overline{25}_{(6)} \times 4 = 17\times4 = 68$.
+      - id: B
+        text: |
+          $\overline{251}_{(6)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: |
+          Modèle détecté : les restes lus dans l'ordre de sortie. Le passage
+          par la base $10$ est juste ($17\times4 = 68$), et les divisions aussi :
+          $68 = 6\times11+2$, $11 = 6\times1+5$, $1 = 6\times0+1$. Mais le
+          premier reste est le chiffre des unités : il fallait lire $1,5,2$, pas
+          $2,5,1$. Ton écriture vaut $72+30+1 = 103$.
+      - id: C
+        text: |
+          $\overline{22}_{(6)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: |
+          Modèle détecté : la retenue calculée puis oubliée. Tu as bien ramené
+          chaque colonne dans $\{0,\dots,5\}$ — $20$ donne $2$, $8$ donne $2$ —
+          mais sans rien reporter sur la colonne de gauche. Ton écriture vaut
+          $14$ ; le produit vaut $68$.
+      - id: D
+        text: |
+          $\overline{152}_{(6)}$
+        correct: true
+        feedback: |
+          Exact. $5\times4 = 20 = 3\times6+2$ : on écrit $2$, on retient $3$.
+          Puis $2\times4+3 = 11 = 1\times6+5$ : on écrit $5$, on retient $1$.
+          Contrôle : $\overline{152}_{(6)}$ vaut $36+30+2 = 68$, et
+          $\overline{25}_{(6)} \times 4 = 17\times4 = 68$.
 
   # ════════════════════════════════════════════════════════════════
   # CP-4 | id: cp-r6-fermat | placé AVANT [[exercise:r-bac]]

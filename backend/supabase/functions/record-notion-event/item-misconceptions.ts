@@ -136,9 +136,57 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "AR-40": [
       "mc.math.maths_arithmetique.congruence-lineaire-mal-resolue"
     ],
+    "AR-41": [
+      "mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres",
+      "mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre",
+      "mc.math.maths_arithmetique.numeration-restes-ordre-inverse"
+    ],
+    "AR-42": [
+      "mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre",
+      "mc.math.maths_arithmetique.numeration-restes-ordre-inverse"
+    ],
+    "AR-43": [
+      "mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre",
+      "mc.math.maths_arithmetique.numeration-restes-ordre-inverse"
+    ],
+    "AR-44": [
+      "mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre",
+      "mc.math.maths_arithmetique.numeration-restes-ordre-inverse"
+    ],
+    "AR-45": [
+      "mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre"
+    ],
+    "AR-46": [
+      "mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres",
+      "mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre"
+    ],
+    "AR-47": [
+      "mc.math.maths_arithmetique.numeration-restes-ordre-inverse",
+      "mc.math.maths_arithmetique.numeration-retenue-a-dix"
+    ],
+    "AR-48": [
+      "mc.math.maths_arithmetique.numeration-restes-ordre-inverse",
+      "mc.math.maths_arithmetique.numeration-retenue-a-dix"
+    ],
+    "AR-49": [
+      "mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres",
+      "mc.math.maths_arithmetique.numeration-retenue-a-dix"
+    ],
     "AR-5": [
       "mc.math.maths_arithmetique.bezout-portee",
       "mc.math.maths_arithmetique.gauss-condition-ignoree"
+    ],
+    "AR-50": [
+      "mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres",
+      "mc.math.maths_arithmetique.numeration-restes-ordre-inverse"
+    ],
+    "AR-51": [
+      "mc.math.maths_arithmetique.critere-divisibilite-mal-applique",
+      "mc.math.maths_arithmetique.reste-non-normalise"
+    ],
+    "AR-52": [
+      "mc.math.maths_arithmetique.critere-divisibilite-mal-applique",
+      "mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres"
     ],
     "AR-6": [
       "mc.math.maths_arithmetique.diophantienne-critere-existence"
@@ -176,6 +224,18 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "cp-r6b-fermat-predict": [
       "mc.math.maths_arithmetique.fermat-condition-ou-exposant"
+    ],
+    "cp-r7b-ordre-restes": [
+      "mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre",
+      "mc.math.maths_arithmetique.numeration-restes-ordre-inverse"
+    ],
+    "cp-r7b-predict-ecriture": [
+      "mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres",
+      "mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre"
+    ],
+    "cp-r7b-retenue": [
+      "mc.math.maths_arithmetique.numeration-restes-ordre-inverse",
+      "mc.math.maths_arithmetique.numeration-retenue-a-dix"
     ]
   },
   "maths/calcul-integral": {

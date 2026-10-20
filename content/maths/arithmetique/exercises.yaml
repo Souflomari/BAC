@@ -228,3 +228,101 @@ exercises:
             note: "Sens ⟹ : question (2a)."
           - math: 'm^4 \equiv 0 \pmod{101} \implies 101 \mid m^4 \implies 101 \mid m'
             note: "101 premier, lemme d'Euclide (chapitre 7) : 101 | m, soit m ≡ 0."
+
+  # ── r-numeration — exercice attempt-first de la rung R7b (PAS un vrai sujet) ──
+  # Construit exprès (spec docs/pipeline/propositions/maths-arithmetique-numeration.md
+  # §10.2) : aucune annale vérifiée de numération dans bank.yaml (0/10), donc
+  # aucune source à transcrire — et AUCUNE entrée ajoutée à bank.yaml. Il porte
+  # le sommet de la rung, pas celui de la notion : le sommet sourcé reste r-bac
+  # (2019). Chaîne : écriture en base 7 → critères par b−1 = 6 et b+1 = 8 →
+  # énumération sous contraintes de chiffres → le corollaire de Gauss
+  # (chapitre 6), dont la condition de coprimalité fait tomber 48.
+  # Contrôles, refaits à la main : 363 en base 7 = 192 = 6×32 = 8×24 ;
+  # 525 en base 7 = 264 = 6×44 = 8×33 ; 192 = 48×4 ; 264 = 48×5 + 24 ;
+  # 192 = 24×8 ; 264 = 24×11. (192 figure aussi dans bank.yaml, comme EXPOSANT
+  # de bk-2024-n-x5 — aucun chemin de mémorisation ne relie les deux.)
+  - id: r-numeration
+    title: "Exercice construit — un nombre écrit en base 7, ses chiffres et ses diviseurs"
+    sourcing:
+      status: not-applicable
+      note: >-
+        Forme attendue de l'idiome SM, construite exprès — aucune annale
+        vérifiée de numération dans bank.yaml (0/10). N'a pas vocation à être
+        un sujet réel.
+    intro: |-
+      Cet exercice a été construit exprès pour ce chapitre : il a la forme que prennent les questions sur les écritures en base, mais ce n'est pas un sujet d'examen. Il enchaîne tout ce que tu viens de voir — écrire un nombre à partir de ses chiffres, lire deux restes sur ces chiffres, chercher des chiffres sous contraintes — puis te demande ce que ces divisibilités permettent vraiment de conclure.
+
+      Soit $N = \overline{x\,y\,x}_{(7)}$, où $x$ et $y$ sont des chiffres de la base $7$ et $x \neq 0$.
+    questions:
+      - id: qa
+        stem: |-
+          Montrer que $N = 50x + 7y$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste :** une écriture est une liste de coefficients ; sa valeur s'obtient en multipliant chaque chiffre par le poids de sa position. En base $7$, sur trois chiffres, ces poids sont, de gauche à droite, $7^2 = 49$, $7$ et $1$.
+
+          Le chiffre $x$ apparaît deux fois — en tête et aux unités — avec deux poids différents : c'est ce qui donne le coefficient $50$, et non $2$.
+        steps:
+          - math: 'N = x \times 7^2 + y \times 7 + x'
+            note: "Chaque chiffre multiplié par le poids de sa position : 49, puis 7, puis 1."
+          - math: 'N = 49x + 7y + x'
+            note: "On calcule 7² = 49."
+          - math: 'N = 50x + 7y'
+            note: "On regroupe les deux termes en x : 49x + x = 50x."
+      - id: qb
+        stem: |-
+          Montrer que $N \equiv 2x + y \pmod 6$ et que $N \equiv 2x - y \pmod 8$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste :** pourquoi $6$ et $8$, et pas d'autres modules ? Parce qu'en base $7$, $b - 1 = 6$ et $b + 1 = 8$ sont les deux modules que l'écriture donne gratuitement : $7 \equiv 1 \pmod 6$ et $7 \equiv -1 \pmod 8$. On lit donc les deux restes sur les chiffres, sans calculer $N$.
+
+          Modulo $6$, chaque puissance de $7$ est congrue à $1$ : $N$ est congru à la somme de ses chiffres, $x + y + x$. Modulo $8$, les puissances de $7$ valent alternativement $1$ et $-1$ en partant des unités : $N$ est congru à la somme alternée $x - y + x$.
+
+          Un contrôle par l'autre chemin, celui de la question précédente : $50 = 6\times8 + 2$ et $7 \equiv 1 \pmod 6$, donc $50x + 7y \equiv 2x + y \pmod 6$ ; $50 = 8\times6 + 2$ et $7 \equiv -1 \pmod 8$, donc $50x + 7y \equiv 2x - y \pmod 8$. Les deux lectures tombent sur la même chose.
+        steps:
+          - math: 'N \equiv x + y + x \pmod 6'
+            note: "Modulo b − 1 = 6 : 7 ≡ 1, donc chaque chiffre compte avec le poids 1 — la somme des chiffres."
+          - math: 'N \equiv 2x + y \pmod 6'
+            note: "On regroupe les deux x."
+          - math: 'N \equiv x - y + x \pmod 8'
+            note: "Modulo b + 1 = 8 : 7 ≡ −1, donc les poids valent +1, −1, +1 en partant des unités — la somme alternée."
+          - math: 'N \equiv 2x - y \pmod 8'
+            note: "On regroupe ; contrôle par N = 50x + 7y, avec 50 ≡ 2 modulo 6 comme modulo 8."
+      - id: qc
+        stem: |-
+          Déterminer tous les couples $(x, y)$ pour lesquels $N$ est divisible à la fois par $6$ et par $8$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste :** d'abord les bornes, avant toute résolution : $x$ est le chiffre de tête, donc $x \in \{1, \dots, 6\}$, et $y$ est un chiffre de la base $7$, donc $y \in \{0, \dots, 6\}$.
+
+          Ensuite, pourquoi un tableau sur $x$ plutôt que de l'algèbre ? Il n'y a que six valeurs de $x$, et chacune force un seul $y$ : pour $x$ fixé, $2x - y$ parcourt sept entiers consécutifs quand $y$ va de $0$ à $6$, et un seul d'entre eux est un multiple de $8$. L'énumération est ici plus sûre qu'une manipulation de congruences. On impose donc $8 \mid 2x - y$, on lit le $y$ forcé, puis on teste $6 \mid 2x + y$.
+
+          | $x$ | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ |
+          |---|---|---|---|---|---|---|
+          | $y$ forcé | $2$ | $4$ | $6$ | $0$ | $2$ | $4$ |
+          | $2x + y$ | $4$ | $8$ | $12$ | $8$ | $12$ | $16$ |
+          | divisible par $6$ ? | non | non | oui | non | oui | non |
+
+          Deux couples survivent, $(3, 6)$ et $(5, 2)$. Contrôle complet : $\overline{363}_{(7)}$ vaut $147 + 42 + 3 = 192$, et $192 = 6\times32 = 8\times24$ ; $\overline{525}_{(7)}$ vaut $245 + 14 + 5 = 264$, et $264 = 6\times44 = 8\times33$.
+        steps:
+          - math: 'x \in \{1,\dots,6\}, \qquad y \in \{0,\dots,6\}'
+            note: "Les bornes d'abord : x est le chiffre de tête, y un chiffre de la base 7."
+          - math: '8 \mid 2x - y'
+            note: "Pour chaque x, une seule valeur de y convient : 2x − y prend sept valeurs consécutives, et une seule est multiple de 8."
+          - math: '6 \mid 2x + y'
+            note: "On teste ensuite la condition modulo 6 sur les six couples obtenus : seuls x = 3 et x = 5 la vérifient."
+          - math: '(x, y) \in \{(3, 6),\ (5, 2)\}'
+            note: "Contrôle : 363 en base 7 vaut 192 = 6×32 = 8×24 ; 525 en base 7 vaut 264 = 6×44 = 8×33."
+      - id: qd
+        stem: |-
+          Ces nombres $N$ sont-ils divisibles par $48$ ?
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste :** le réflexe dit « divisible par $6$ et par $8$, donc par $6 \times 8 = 48$ ». Avant de le suivre, on vérifie la condition du corollaire du chapitre 6 : si $a \mid c$, $b \mid c$ et $\mathrm{PGCD}(a, b) = 1$, alors $ab \mid c$. Ici $\mathrm{PGCD}(6, 8) = 2 \neq 1$ : le corollaire ne s'applique pas. C'est d'ailleurs pour cela que l'énoncé t'a fait travailler avec $6$ et $8$ : ce sont les deux modules que la base donne, pas $48$.
+
+          Et en effet, la réponse est **non** : $192 = 48\times4$, mais $264 = 48\times5 + 24$, donc $48$ ne divise pas $264$.
+
+          Ce que $6$ et $8$ donnent vraiment : $8 \mid N$, et $3 \mid N$ puisque $3 \mid 6$. Or $3$ et $8$ sont premiers entre eux, donc le corollaire s'applique cette fois, et $24 \mid N$ — en effet $192 = 24\times8$ et $264 = 24\times11$. Ce $24$ est le PPCM de $6$ et $8$. La condition que le chapitre 6 a nommée n'était pas décorative : voilà le contre-exemple, sorti d'un problème de numération.
+        steps:
+          - math: '\mathrm{PGCD}(6, 8) = 2 \neq 1'
+            note: "Avant d'appliquer le corollaire du chapitre 6, on vérifie sa condition : elle manque."
+          - math: '264 = 48 \times 5 + 24'
+            note: "Le reste n'est pas nul : 48 ne divise pas 264, alors que 6 et 8 le divisent."
+          - math: '3 \mid N \ \text{et} \ 8 \mid N, \quad \mathrm{PGCD}(3, 8) = 1 \implies 24 \mid N'
+            note: "Ce qu'on peut conclure : 3 divise 6, donc N ; avec 3 et 8 premiers entre eux, le corollaire donne 24, pas 48."
