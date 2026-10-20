@@ -261,6 +261,81 @@ misconceptions:
       limites se détermine en multipliant les signes des facteurs, jamais
       par défaut.
 
+  # ── 2026-10-20, dette de cadre, vague G5 — deux sections neuves du chapitre 6
+  # (lesson.md, sous « ## R5 ») : « L'image d'un segment par une fonction
+  # continue » et « La dichotomie ». Chacune nomme ses pièges dans un
+  # paragraphe « Le piège à éviter » ; trois d'entre eux sont déclarés ici, et
+  # seulement ceux-là :
+  #   - image d'un segment, premier piège : « recopier les bornes de [a,b] dans
+  #     le même ordre pour f(a) et f(b) sans vérifier le sens de variation » ;
+  #   - image d'un segment, second piège : « citer f(a) et f(b) sans avoir
+  #     vérifié que f est strictement monotone sur TOUT l'intervalle » ;
+  #   - dichotomie, second piège : garder la moitié où le signe ne change pas.
+  # Le PREMIER piège de la dichotomie — réappliquer le TVI sans vérifier la
+  # continuité — n'a pas d'id neuf : `tvi-hypotheses-ou-conclusion-mal-cernees`
+  # le décrit déjà en toutes lettres (« ignore que la continuité doit être
+  # vérifiée (pas seulement les signes aux bornes) »), et il porte aussi
+  # l'unicité affirmée sans monotonie. La règle d'arrêt (b−a)/2ⁿ ≤ ε est
+  # enseignée sans être nommée comme piège : pas d'id, donc pas d'item qui la
+  # vise (voir le `honest_state`). Même famille, dans une AUTRE notion :
+  # `mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul`
+  # (l'intervalle image d'une bijection) — un id est propre à sa notion, d'où
+  # la déclaration ici.
+  - id: mc.math.maths_limites_continuite.image-segment-ordre-des-bornes-recopie
+    label: "Image d'un segment : f(a) pris pour le minimum et f(b) pour le maximum, sans vérifier le sens de variation"
+    description: >-
+      Pour écrire $f([a,b])$, l'élève recopie l'ordre des bornes de $[a,b]$ :
+      il associe $f(a)$ au minimum et $f(b)$ au maximum sans vérifier le sens
+      de variation de $f$ — ce qui donne un « segment » $[f(a)\,;f(b)]$ écrit
+      à l'envers dès que $f$ est décroissante. Quand $f$ n'est pas monotone
+      sur $[a,b]$, le même réflexe place par défaut le minimum en $a$ ou le
+      maximum en $b$, même après avoir trouvé l'extremum atteint à
+      l'intérieur, sans comparer $f(a)$ et $f(b)$.
+    contradicts_principle: >-
+      L'ordre des bornes de $f([a,b])$ est dicté par le sens de variation de
+      $f$, pas par l'ordre de $a$ et $b$ : $f([a,b])=[f(a)\,;f(b)]$ si $f$
+      est continue et strictement croissante, $[f(b)\,;f(a)]$ si elle est
+      strictement décroissante — un segment $[u\,;v]$ suppose $u\leq v$.
+      Sans monotonie, le minimum et le maximum se cherchent parmi toutes les
+      valeurs candidates (aux bornes et aux points où $f$ change de sens de
+      variation), en les COMPARANT : ni $a$ ni $b$ n'est d'office le lieu du
+      minimum ou du maximum.
+
+  - id: mc.math.maths_limites_continuite.image-segment-extremum-interieur-oublie
+    label: "Image d'un segment lue aux seules bornes, sans vérifier la monotonie sur tout l'intervalle"
+    description: >-
+      L'élève détermine $f([a,b])$ — ou le minimum et le maximum de $f$ sur
+      $[a,b]$ — à partir des seules valeurs $f(a)$ et $f(b)$, sans avoir
+      vérifié que $f$ est strictement monotone sur TOUT l'intervalle : quand
+      $f$ change de sens de variation à l'intérieur de $[a,b]$, il manque le
+      minimum (ou le maximum) atteint en ce point de retournement, et donne
+      pour image le segment compris entre $f(a)$ et $f(b)$.
+    contradicts_principle: >-
+      $f([a,b])=[m\,;M]$, où $m$ et $M$ sont la plus petite et la plus grande
+      valeur prises par $f$ sur $[a,b]$. L'écriture « entre $f(a)$ et
+      $f(b)$ » n'est un raccourci valable que si $f$ est strictement
+      monotone sur tout $[a,b]$ ; sinon, le minimum ou le maximum peut être
+      atteint en un point intérieur, là où $f$ change de sens de variation,
+      et il faut étudier les variations pour le localiser.
+
+  - id: mc.math.maths_limites_continuite.dichotomie-moitie-sans-changement-de-signe
+    label: "Dichotomie : la moitié gardée est celle où le signe ne change pas"
+    description: >-
+      Après avoir calculé $g(m)$ au milieu $m$ de l'intervalle courant,
+      l'élève garde la moitié dont les deux bornes donnent à $g$ le MÊME
+      signe — par exemple « $g(m)<0$, donc on garde le côté où $g$ est
+      négative » —, au lieu de celle où le signe change réellement ; ou il
+      ne voit pas qu'un intervalle gardé avec le même signe aux deux bornes
+      ne garantit plus aucune solution.
+    contradicts_principle: >-
+      À chaque étape, la moitié à garder est celle dont les bornes donnent à
+      $g$ des signes CONTRAIRES : c'est là seulement que le TVI, réappliqué
+      au sous-intervalle (où $g$ est continue), garantit encore une
+      solution. Une moitié où $g$ a le même signe aux deux bornes ne
+      garantit rien et s'abandonne. Le repère : $g(m)$ a un signe opposé à
+      l'une des deux bornes actuelles — c'est la moitié qui va de $m$ à
+      cette borne-là qu'on garde.
+
 items:
   - id: LIMCONT-1
     rung: "R1"
@@ -2167,6 +2242,468 @@ items:
       courbe la longe par en bas du côté gauche, quel que soit son comportement
       à droite.
 
+  # ── 2026-10-20, dette de cadre, vague G5 — LIMCONT-33 → LIMCONT-38 ─────────
+  # Les items des deux sections neuves du chapitre 6 (sous « ## R5 »), sur les
+  # trois ids déclarés le même jour en tête de fichier, plus
+  # `tvi-hypotheses-ou-conclusion-mal-cernees` pour le premier piège de la
+  # dichotomie (la continuité) et l'unicité affirmée sans monotonie.
+  #   - LIMCONT-33/34/35, image d'un segment : chaque fonction change de sens
+  #     de variation à l'intérieur du segment, avec f(a) > f(b). C'est la seule
+  #     configuration où les deux pièges nommés donnent deux réponses
+  #     DISTINCTES et bien formées : « [f(a);f(b)] » recopié (ordre ET bornes
+  #     seules, double marquage), les deux valeurs aux bornes rangées (bornes
+  #     seules), l'extremum intérieur trouvé mais l'autre lu en a ou en b par
+  #     défaut (ordre seul). Avec une fonction décroissante, le premier piège ne
+  #     produit qu'un segment écrit à l'envers, éliminable à vue : c'est
+  #     pourquoi les propositions de 33 et 35 sont des écritures en f(·), non
+  #     évaluées, et celles de 34 des points où les extremums sont atteints.
+  #   - LIMCONT-36/37, dichotomie : plan croisé (moitié gardée × ce qu'on
+  #     affirme), pour qu'aucune proposition ne se distingue des trois autres.
+  #   - LIMCONT-38 : repérer l'étape fautive d'une dichotomie déjà menée.
+  # Fonctions et nombres originaux : ni 1/x sur [1,3], ni x² sur [−1;2], ni
+  # x³+x−1 (exemples travaillés du chapitre), ni x³+2x−5 (LIMCONT-18), ni les
+  # fonctions de bank.yaml ou du sommet d'exercices.
+  - id: LIMCONT-33
+    rung: "R5"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: [image_segment, sens_de_variation, extremum_interieur]
+    primary_misconception: mc.math.maths_limites_continuite.image-segment-ordre-des-bornes-recopie
+    stem: >
+      Soit $f(x)=x^2+6x+5$, définie et continue sur $\mathbb{R}$. Laquelle de
+      ces écritures donne l'image du segment $[-6\,;-2]$ par $f$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $[f(-6)\,;f(-2)]$
+        correct: false
+        misconception:
+          - mc.math.maths_limites_continuite.image-segment-ordre-des-bornes-recopie
+          - mc.math.maths_limites_continuite.image-segment-extremum-interieur-oublie
+        feedback: >
+          C'est l'écriture $[f(a)\,;f(b)]$, les bornes de $[-6\,;-2]$ recopiées
+          dans le même ordre, sans étude des variations. Or $f(-6)=5$ et
+          $f(-2)=-3$ : elle n'est même pas un segment. Et $f$ n'est pas
+          monotone sur $[-6\,;-2]$ : $f(x)=(x+3)^2-4$ décroît jusqu'en $-3$
+          puis croît, et son minimum $f(-3)=-4$ est atteint à l'intérieur.
+      - id: B
+        text: >-
+          $[f(-2)\,;f(-6)]$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.image-segment-extremum-interieur-oublie
+        feedback: >
+          Les deux valeurs aux bornes, $f(-2)=-3$ et $f(-6)=5$, sont bien
+          rangées, mais seules les bornes ont été regardées. $f(x)=(x+3)^2-4$
+          change de sens de variation en $x=-3$, à l'intérieur de
+          $[-6\,;-2]$, où elle descend jusqu'à $f(-3)=-4$, plus bas que
+          $f(-2)$ : le minimum n'est pas à une borne.
+      - id: C
+        text: >-
+          $[f(-3)\,;f(-6)]$
+        correct: true
+      - id: D
+        text: >-
+          $[f(-3)\,;f(-2)]$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.image-segment-ordre-des-bornes-recopie
+        feedback: >
+          Le minimum intérieur $f(-3)=-4$ est bien trouvé, mais le maximum a
+          été lu à la borne de droite, $x=-2$, par défaut. Il faut comparer
+          les deux candidats : $f(-6)=5$ et $f(-2)=-3$. Le maximum est
+          $f(-6)$, atteint à la borne de GAUCHE : $f$ part de $5$, descend
+          jusqu'à $-4$, puis ne remonte que jusqu'à $-3$.
+    correct_feedback: >
+      $f(x)=(x+3)^2-4$ décroît sur $[-6\,;-3]$ puis croît sur $[-3\,;-2]$. Le
+      minimum est $f(-3)=-4$, atteint au point de retournement ; le maximum
+      est le plus grand de $f(-6)=5$ et $f(-2)=-3$. D'où
+      $f([-6\,;-2])=[f(-3)\,;f(-6)]=[-4\,;5]$.
+    solution: |
+      **Les variations.** $f(x)=x^2+6x+5=(x+3)^2-4$. Comme $x\mapsto x^2$
+      (fonction de référence), $f$ est strictement décroissante sur
+      $]-\infty\,;-3]$ et strictement croissante sur $[-3\,;+\infty[$. Sur
+      $[-6\,;-2]$, elle n'est donc PAS monotone : elle change de sens en
+      $x=-3$, à l'intérieur du segment.
+
+      **Les valeurs candidates.**
+      $$f(-6)=(-6+3)^2-4=5 \qquad f(-3)=-4 \qquad f(-2)=(-2+3)^2-4=-3$$
+
+      **L'image, morceau par morceau.** Sur $[-6\,;-3]$, $f$ décroît de $5$
+      à $-4$ : elle balaie $[-4\,;5]$. Sur $[-3\,;-2]$, elle croît de $-4$ à
+      $-3$ : elle balaie $[-4\,;-3]$. La réunion :
+      $$f([-6\,;-2])=[f(-3)\,;f(-6)]=[-4\,;5]$$
+
+      L'écriture $[f(-6)\,;f(-2)]$, bornes recopiées dans l'ordre, vaudrait
+      $[5\,;-3]$ : pas un segment. Ranger les deux valeurs aux bornes donne
+      $[-3\,;5]$ : il y manque les valeurs de $-4$ à $-3$, prises près de
+      $x=-3$.
+
+  - id: LIMCONT-34
+    rung: "R5"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_limites_continuite
+    tags: [image_segment, extremums, sens_de_variation, composee]
+    primary_misconception: mc.math.maths_limites_continuite.image-segment-extremum-interieur-oublie
+    stem: >
+      Soit $f(x)=\dfrac{4}{x^2+1}$, définie et continue sur $\mathbb{R}$. Sur
+      le segment $[-1\,;3]$, en quels points $f$ atteint-elle son minimum et
+      son maximum ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          minimum en $x=-1$, maximum en $x=3$
+        correct: false
+        misconception:
+          - mc.math.maths_limites_continuite.image-segment-ordre-des-bornes-recopie
+          - mc.math.maths_limites_continuite.image-segment-extremum-interieur-oublie
+        feedback: >
+          C'est le réflexe « minimum à la borne de gauche, maximum à la borne
+          de droite », pris sans étudier les variations. Or $f(3)=\dfrac25$
+          est plus petit que $f(-1)=2$, et surtout $f$ n'est pas monotone sur
+          $[-1\,;3]$ : elle croît jusqu'en $0$, où elle vaut $4$, puis décroît.
+      - id: B
+        text: >-
+          minimum en $x=3$, maximum en $x=-1$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.image-segment-extremum-interieur-oublie
+        feedback: >
+          Les valeurs aux bornes sont bien comparées, $f(3)=\dfrac25<f(-1)=2$,
+          mais rien n'a été cherché entre les deux. $x^2+1$ est minimal en
+          $x=0$, donc $\dfrac{4}{x^2+1}$ y est maximal : $f(0)=4$ dépasse les
+          deux valeurs aux bornes.
+      - id: C
+        text: >-
+          minimum en $x=3$, maximum en $x=0$
+        correct: true
+      - id: D
+        text: >-
+          minimum en $x=-1$, maximum en $x=0$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.image-segment-ordre-des-bornes-recopie
+        feedback: >
+          Le maximum intérieur $f(0)=4$ est bien trouvé, mais le minimum a
+          été placé à la borne de gauche, $x=-1$, par défaut. Il faut comparer
+          les deux candidats : $f(-1)=2$ et $f(3)=\dfrac25$. Le plus petit est
+          $f(3)$ — sur $[0\,;3]$, $f$ redescend plus bas que sa valeur de
+          départ.
+    correct_feedback: >
+      Sur $[-1\,;0]$, $x^2+1$ décroît de $2$ à $1$, donc $f$ croît de $2$ à
+      $4$ ; sur $[0\,;3]$, $x^2+1$ croît de $1$ à $10$, donc $f$ décroît de
+      $4$ à $\frac25$. Le maximum est $f(0)=4$ ; le minimum est le plus petit
+      de $f(-1)=2$ et $f(3)=\frac25$, atteint en $x=3$. Ainsi
+      $f([-1\,;3])=\left[\frac25\,;4\right]$.
+    solution: |
+      **Les variations.** $x\mapsto x^2$ décroît sur $[-1\,;0]$ et croît sur
+      $[0\,;3]$ ; il en va de même de $x^2+1$, qui reste strictement
+      positif. Passer à $\dfrac{4}{x^2+1}$ inverse le sens de variation
+      (la fonction $t\mapsto\dfrac4t$ décroît sur $]0\,;+\infty[$) : $f$
+      croît sur $[-1\,;0]$ et décroît sur $[0\,;3]$. Elle change de sens en
+      $x=0$, à l'intérieur du segment.
+
+      **Les valeurs candidates.**
+      $$f(-1)=\frac{4}{2}=2 \qquad f(0)=\frac41=4 \qquad f(3)=\frac{4}{10}=\frac25$$
+
+      **Les extremums.** Le maximum est atteint au point de retournement :
+      $f(0)=4$. Le minimum est atteint à une borne, mais il faut COMPARER
+      les deux : $\frac25<2$, c'est donc en $x=3$.
+      $$f([-1\,;3])=\left[f(3)\,;f(0)\right]=\left[\frac25\,;4\right]$$
+
+  - id: LIMCONT-35
+    rung: "R5"
+    habilete: synthese
+    difficulty_level: 4
+    skill_code: maths_limites_continuite
+    tags: [image_segment, sens_de_variation, changement_de_variable]
+    primary_misconception: mc.math.maths_limites_continuite.image-segment-extremum-interieur-oublie
+    stem: >
+      Soit $f(x)=x-4\sqrt{x}$, définie et continue sur $[0\,;+\infty[$.
+      Laquelle de ces écritures donne l'image du segment $[0\,;9]$ par $f$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $[f(9)\,;f(0)]$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.image-segment-extremum-interieur-oublie
+        feedback: >
+          Les valeurs aux bornes, $f(9)=-3$ et $f(0)=0$, sont bien rangées,
+          mais seules les bornes ont été regardées. En posant $t=\sqrt{x}$,
+          $f(x)=t^2-4t=(t-2)^2-4$ : $f$ décroît tant que $\sqrt{x}\leq2$, puis
+          croît. Elle atteint $f(4)=-4$, plus bas que $f(9)$, en $x=4$, à
+          l'intérieur du segment.
+      - id: B
+        text: >-
+          $[f(4)\,;f(0)]$
+        correct: true
+      - id: C
+        text: >-
+          $[f(4)\,;f(9)]$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.image-segment-ordre-des-bornes-recopie
+        feedback: >
+          Le minimum intérieur $f(4)=-4$ est bien trouvé, mais le maximum a
+          été lu à la borne de droite, $x=9$, par défaut. Il faut comparer
+          $f(0)=0$ et $f(9)=-3$ : le maximum est $f(0)$. Après $x=4$, $f$
+          remonte, mais pas jusqu'à sa valeur de départ.
+      - id: D
+        text: >-
+          $[f(0)\,;f(9)]$
+        correct: false
+        misconception:
+          - mc.math.maths_limites_continuite.image-segment-ordre-des-bornes-recopie
+          - mc.math.maths_limites_continuite.image-segment-extremum-interieur-oublie
+        feedback: >
+          C'est l'écriture $[f(a)\,;f(b)]$, les bornes de $[0\,;9]$ recopiées
+          dans le même ordre, sans étude des variations. Or $f(0)=0$ et
+          $f(9)=-3$ : elle n'est même pas un segment. Et $f$ n'est pas
+          monotone sur $[0\,;9]$ : avec $t=\sqrt{x}$, $f(x)=(t-2)^2-4$
+          descend jusqu'à $-4$ pour $t=2$, c'est-à-dire en $x=4$.
+    correct_feedback: >
+      Avec $t=\sqrt{x}$, qui croît de $0$ à $3$ quand $x$ va de $0$ à $9$ :
+      $f(x)=t^2-4t=(t-2)^2-4$. $f$ décroît sur $[0\,;4]$, de $0$ à $-4$, puis
+      croît sur $[4\,;9]$, de $-4$ à $-3$. Minimum $f(4)=-4$ ; maximum, le
+      plus grand de $f(0)=0$ et $f(9)=-3$. Donc
+      $f([0\,;9])=[f(4)\,;f(0)]=[-4\,;0]$.
+    solution: |
+      **Le changement de variable.** Pour $x\geq0$, posons $t=\sqrt{x}$, de
+      sorte que $x=t^2$ :
+      $$f(x)=t^2-4t=(t-2)^2-4$$
+      Quand $x$ parcourt $[0\,;9]$, $t=\sqrt{x}$ parcourt $[0\,;3]$ en
+      croissant.
+
+      **Les variations.** $t\mapsto(t-2)^2-4$ décroît sur $[0\,;2]$ et croît
+      sur $[2\,;3]$. Comme $t=\sqrt{x}$ croît avec $x$, $f$ décroît sur
+      $[0\,;4]$ (là où $t\leq2$) et croît sur $[4\,;9]$. Elle change de sens
+      en $x=4$, à l'intérieur du segment.
+
+      **Les valeurs candidates.**
+      $$f(0)=0 \qquad f(4)=4-4\times2=-4 \qquad f(9)=9-4\times3=-3$$
+
+      **L'image.** Le minimum est $f(4)=-4$ ; le maximum est la plus grande
+      des deux valeurs aux bornes, $f(0)=0$.
+      $$f([0\,;9])=[f(4)\,;f(0)]=[-4\,;0]$$
+
+  - id: LIMCONT-36
+    rung: "R5"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: [dichotomie, changement_de_signe, existence_unicite]
+    primary_misconception: mc.math.maths_limites_continuite.dichotomie-moitie-sans-changement-de-signe
+    stem: >
+      Une fonction $g$ est continue sur $[0\,;4]$, avec $g(0)=-3$ et
+      $g(4)=5$ ; on ne sait rien d'autre de ses variations. Deux étapes de
+      dichotomie donnent $g(2)=1$, puis $g(1)=-0{,}5$. Que peut-on affirmer
+      avec certitude ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $g$ s'annule au moins une fois sur $[0\,;1]$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.dichotomie-moitie-sans-changement-de-signe
+        feedback: >
+          Sur $[0\,;1]$, $g(0)=-3$ et $g(1)=-0{,}5$ ont le même signe : le TVI
+          n'y garantit rien. C'est la moitié où le signe ne change pas, celle
+          qu'on abandonne. Le changement de signe est entre $g(1)<0$ et
+          $g(2)>0$.
+      - id: B
+        text: >-
+          $g$ s'annule au moins une fois sur $[1\,;2]$
+        correct: true
+      - id: C
+        text: >-
+          $g$ s'annule une seule fois sur $[1\,;2]$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+        feedback: >
+          L'existence d'une solution sur $[1\,;2]$ est acquise : $g$ est
+          continue et $g(1)<0<g(2)$. Mais l'UNICITÉ demanderait que $g$ soit
+          strictement monotone sur $[1\,;2]$, et on ne sait rien de ses
+          variations. Le TVI garantit « au moins une », pas « une seule ».
+      - id: D
+        text: >-
+          $g$ s'annule une seule fois sur $[0\,;1]$
+        correct: false
+        misconception:
+          - mc.math.maths_limites_continuite.dichotomie-moitie-sans-changement-de-signe
+          - mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+        feedback: >
+          Deux affirmations de trop. Sur $[0\,;1]$, $g(0)=-3$ et
+          $g(1)=-0{,}5$ ont le même signe : aucune solution n'y est garantie,
+          c'est la moitié à abandonner. Et même sur la bonne moitié,
+          « une seule » demanderait la stricte monotonie de $g$, que rien ne
+          fournit.
+    correct_feedback: >
+      Étape 1 : $g(0)<0<g(2)$, on garde $[0\,;2]$. Étape 2 : $g(1)<0<g(2)$, on
+      garde $[1\,;2]$. $g$ étant continue, le TVI y garantit au moins une
+      solution — sans rien dire de son unicité, faute de monotonie connue.
+    solution: |
+      **Étape 1.** Milieu de $[0\,;4]$ : $2$. $g(2)=1>0$, de signe contraire à
+      $g(0)=-3$ et de même signe que $g(4)=5$ : le changement de signe est
+      sur $[0\,;2]$, on garde cette moitié.
+
+      **Étape 2.** Milieu de $[0\,;2]$ : $1$. $g(1)=-0{,}5<0$, de même signe
+      que $g(0)$ et de signe contraire à $g(2)$ : on garde $[1\,;2]$.
+
+      **Ce que cela garantit.** $g$ est continue sur $[1\,;2]$ et
+      $g(1)\times g(2)<0$ : par le corollaire du TVI, $g$ s'annule AU MOINS
+      une fois sur $]1\,;2[$. Rien de plus — pour « une seule fois », il
+      faudrait savoir $g$ strictement monotone sur $[1\,;2]$. Et sur
+      $[0\,;1]$, deux valeurs de même signe ne garantissent rien.
+
+  - id: LIMCONT-37
+    rung: "R5"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_limites_continuite
+    tags: [dichotomie, continuite, changement_de_signe]
+    primary_misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+    stem: >
+      On applique la dichotomie à $g(x)=\dfrac{3}{10x-13}$ sur $[1\,;2]$, où
+      $g(1)=-1$ et $g(2)=\dfrac37$ sont de signes contraires. Après deux
+      étapes, que peut-on affirmer avec certitude ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $g$ prend la valeur $0$ entre $1{,}25$ et $1{,}5$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+        feedback: >
+          Le changement de signe entre $1{,}25$ et $1{,}5$ est réel,
+          $g(1{,}25)=-6$ et $g(1{,}5)=1{,}5$ ; mais il ne garantit un zéro que
+          si $g$ est continue sur l'intervalle. Or $g$ n'est pas définie en
+          $x=1{,}3$, qui s'y trouve. Et un quotient de numérateur $3$ ne
+          s'annule pour aucune valeur de $x$ : $g$ change de signe en sautant
+          par-dessus $0$.
+      - id: B
+        text: >-
+          $g$ change de signe entre $1$ et $1{,}25$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.dichotomie-moitie-sans-changement-de-signe
+        feedback: >
+          Sur $[1\,;1{,}25]$, $g(1)=-1$ et $g(1{,}25)=-6$ ont le même signe :
+          c'est la moitié à abandonner, pas à garder. Le changement de signe
+          est entre $1{,}25$ et $1{,}5$, où $g(1{,}5)=1{,}5$.
+      - id: C
+        text: >-
+          $g$ prend la valeur $0$ entre $1$ et $1{,}25$
+        correct: false
+        misconception:
+          - mc.math.maths_limites_continuite.dichotomie-moitie-sans-changement-de-signe
+          - mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+        feedback: >
+          Deux erreurs. $g(1)=-1$ et $g(1{,}25)=-6$ ont le même signe :
+          $[1\,;1{,}25]$ est la moitié à abandonner. Et même sur la bonne
+          moitié, aucun zéro n'est garanti : $g$ n'est pas définie en $1{,}3$,
+          donc pas continue sur $[1\,;2]$, et un quotient de numérateur $3$
+          ne s'annule pas.
+      - id: D
+        text: >-
+          $g$ change de signe entre $1{,}25$ et $1{,}5$
+        correct: true
+    correct_feedback: >
+      $g(1{,}5)=\dfrac32>0$ : on garde $[1\,;1{,}5]$. $g(1{,}25)=-6<0$ : on garde
+      $[1{,}25\,;1{,}5]$. Le signe change bien sur cet intervalle — mais $g$
+      n'y est pas continue, son dénominateur $10x-13$ s'annulant en $x=1{,}3$,
+      et $g$ ne s'annule nulle part. La dichotomie a convergé vers la valeur
+      interdite, pas vers une solution.
+    solution: |
+      **Les deux étapes.**
+      $$g(1{,}5)=\frac{3}{10\times1{,}5-13}=\frac32>0 \qquad\text{: on garde } [1\,;1{,}5]$$
+      $$g(1{,}25)=\frac{3}{10\times1{,}25-13}=\frac{3}{-0{,}5}=-6<0 \qquad\text{: on garde } [1{,}25\,;1{,}5]$$
+
+      **Ce qu'on n'a pas vérifié au départ.** $g$ est une fonction
+      rationnelle : elle n'est continue que là où son dénominateur ne
+      s'annule pas (boîte à outils du chapitre 5). Or $10x-13=0$ pour
+      $x=1{,}3$, qui est dans $[1\,;2]$ — et dans $[1{,}25\,;1{,}5]$. Sans
+      continuité, le TVI ne s'applique pas : un changement de signe ne
+      garantit RIEN.
+
+      **Et de fait.** Le numérateur vaut $3$ : $g(x)$ n'est jamais nul. $g$
+      est négative avant $1{,}3$, positive après, et passe de l'une à l'autre
+      en traversant la valeur interdite. La seule affirmation certaine est
+      celle qu'on a calculée : $g(1{,}25)<0<g(1{,}5)$.
+
+  - id: LIMCONT-38
+    rung: "R5"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: [dichotomie, changement_de_signe, analyse_d_erreur]
+    primary_misconception: mc.math.maths_limites_continuite.dichotomie-moitie-sans-changement-de-signe
+    stem: >
+      Un élève cherche par dichotomie une solution de $g(x)=0$ dans
+      $[2\,;3]$, avec $g(x)=x^2-2x-1$ ; il a vérifié que $g(2)=-1$ et
+      $g(3)=2$. Étape 1 : milieu $2{,}5$, $g(2{,}5)=0{,}25$, il garde
+      $[2\,;2{,}5]$. Étape 2 : milieu $2{,}25$, $g(2{,}25)=-0{,}4375$, il
+      garde $[2{,}25\,;2{,}5]$. Étape 3 : milieu $2{,}375$,
+      $g(2{,}375)=-0{,}109375$, il garde $[2{,}25\,;2{,}375]$. À quelle étape
+      s'est-il trompé pour la première fois ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          À l'étape 1
+        correct: false
+        misconception: mc.math.maths_limites_continuite.dichotomie-moitie-sans-changement-de-signe
+        feedback: >
+          À l'étape 1, $g(2)=-1<0$ et $g(2{,}5)=0{,}25>0$ : le signe change
+          sur $[2\,;2{,}5]$, c'est bien la moitié à garder. L'autre, $[2{,}5\,;3]$,
+          est le côté où $g$ est positive comme $g(2{,}5)$ — mais $g(3)=2$
+          l'est aussi : le signe n'y change pas.
+      - id: B
+        text: >-
+          À l'étape 2
+        correct: false
+        misconception: mc.math.maths_limites_continuite.dichotomie-moitie-sans-changement-de-signe
+        feedback: >
+          À l'étape 2, $g(2{,}25)=-0{,}4375<0$ et $g(2{,}5)=0{,}25>0$ : le
+          signe change sur $[2{,}25\,;2{,}5]$, le bon choix. L'autre moitié,
+          $[2\,;2{,}25]$, est le côté où $g$ est négative comme $g(2{,}25)$ —
+          mais $g(2)$ l'est aussi : deux bornes de même signe.
+      - id: C
+        text: >-
+          À l'étape 3
+        correct: true
+      - id: D
+        text: >-
+          Les trois étapes sont justes
+        correct: false
+        misconception: mc.math.maths_limites_continuite.dichotomie-moitie-sans-changement-de-signe
+        feedback: >
+          À l'étape 3, $g(2{,}25)=-0{,}4375$ et $g(2{,}375)=-0{,}109375$ sont
+          tous deux négatifs : sur $[2{,}25\,;2{,}375]$, le signe ne change
+          pas, et rien n'y garantit une solution. Il fallait garder
+          $[2{,}375\,;2{,}5]$, où $g$ passe de négatif à positif.
+    correct_feedback: >
+      Les étapes 1 et 2 gardent chacune la moitié où le signe change. À
+      l'étape 3, $g(2{,}375)<0$, comme $g(2{,}25)$ : le changement de signe
+      est entre $2{,}375$ et $2{,}5$, car $g(2{,}5)>0$. C'est
+      $[2{,}375\,;2{,}5]$ qu'il fallait garder — la solution,
+      $1+\sqrt2\approx2{,}414$, est d'ailleurs hors de $[2{,}25\,;2{,}375]$.
+    solution: |
+      **Le repère, à chaque étape :** on garde la moitié dont les deux bornes
+      donnent à $g$ des signes CONTRAIRES.
+
+      | étape | intervalle | milieu $m$ | $g(m)$ | moitié où le signe change |
+      |---|---|---|---|---|
+      | 1 | $[2\,;3]$ | $2{,}5$ | $0{,}25$ | $[2\,;2{,}5]$ |
+      | 2 | $[2\,;2{,}5]$ | $2{,}25$ | $-0{,}4375$ | $[2{,}25\,;2{,}5]$ |
+      | 3 | $[2{,}25\,;2{,}5]$ | $2{,}375$ | $-0{,}109375$ | $[2{,}375\,;2{,}5]$ |
+
+      **L'erreur, à l'étape 3.** $g(2{,}375)<0$ a le même signe que
+      $g(2{,}25)$ : la moitié $[2{,}25\,;2{,}375]$ a deux bornes négatives,
+      le TVI n'y garantit rien. C'est $[2{,}375\,;2{,}5]$, entre une valeur
+      négative et $g(2{,}5)>0$, qu'il fallait garder.
+
+      **Contrôle.** $x^2-2x-1=(x-1)^2-2$ s'annule en $1+\sqrt2\approx2{,}414$,
+      qui est bien dans $[2{,}375\,;2{,}5]$.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après LIMCONT-27 à LIMCONT-32. Six familles sous le
 # plancher, dont les quatre pièges du formulaire trigonométrique — coefficient
@@ -2174,6 +2711,12 @@ items:
 # de $1-\cos x$, et la condition « l'argument doit tendre vers 0 » — plus la
 # limite latérale et l'asymptote verticale. Tableau GÉNÉRÉ, gardé par
 # web/scripts/resume-couverture.mjs.
+# 2026-10-20 (dette de cadre, vague G5) : LIMCONT-33→LIMCONT-38 pour les deux sections neuves du
+# chapitre 6 (image d'un segment ; dichotomie). Trois ids neufs, un par piège que la prose nomme
+# (ordre des bornes recopié ; image lue aux seules bornes ; moitié gardée sans changement de signe),
+# chacun porté à 3 items ; le premier piège de la dichotomie (la continuité) et l'unicité sans
+# monotonie rejoignent `tvi-hypotheses-ou-conclusion-mal-cernees` (4 → 6). R5 passe de 3 à 9 items.
+# Tableau GÉNÉRÉ contre la convention de la chaîne, gardé par web/scripts/resume-couverture.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2192,10 +2735,13 @@ coverage_summary:
     mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee:                 { count: 3, items: [LIMCONT-2, LIMCONT-12, LIMCONT-13] }
     mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale: { count: 5, items: [LIMCONT-3, LIMCONT-4, LIMCONT-8, LIMCONT-14, LIMCONT-21] }
     mc.math.maths_limites_continuite.definition-continuite-mal-appliquee:               { count: 4, items: [LIMCONT-5, LIMCONT-15, LIMCONT-16, LIMCONT-21] }
-    mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees:          { count: 4, items: [LIMCONT-6, LIMCONT-17, LIMCONT-18, LIMCONT-20] }
+    mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees:          { count: 6, items: [LIMCONT-6, LIMCONT-17, LIMCONT-18, LIMCONT-20, LIMCONT-36, LIMCONT-37] }
     mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee:                { count: 3, items: [LIMCONT-10, LIMCONT-30, LIMCONT-32] }
     mc.math.maths_limites_continuite.parite-signe-terme-dominant-mal-geree:             { count: 3, items: [LIMCONT-11, LIMCONT-13, LIMCONT-19] }
-  total_items: 32
+    mc.math.maths_limites_continuite.image-segment-ordre-des-bornes-recopie:            { count: 3, items: [LIMCONT-33, LIMCONT-34, LIMCONT-35] }
+    mc.math.maths_limites_continuite.image-segment-extremum-interieur-oublie:           { count: 3, items: [LIMCONT-33, LIMCONT-34, LIMCONT-35] }
+    mc.math.maths_limites_continuite.dichotomie-moitie-sans-changement-de-signe:        { count: 3, items: [LIMCONT-36, LIMCONT-37, LIMCONT-38] }
+  total_items: 38
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2204,10 +2750,19 @@ coverage_summary:
     R2: 3
     R3: 3
     R4: 4
-    R5: 3
+    R5: 9
     R6: 8
     R7: 3
   honest_state: >-
-    Les treize misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Cinq y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item la casse.
+    Les seize misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Huit y siègent EXACTEMENT (3 items) — dont les trois ids de la
+    vague G5 (2026-10-20) : la marge est nulle et tout retrait d'item la
+    casse. Les deux ids de l'image d'un segment portent la MÊME liste
+    d'items (LIMCONT-33, 34, 35), et c'est voulu, pas un défaut de mesure :
+    chacun de ces items offre les deux pièges sur des distracteurs
+    distincts, plus un distracteur qui les exhibe ensemble (double
+    marquage) — c'est le choix coché qui les sépare, pas l'item. Ce qui
+    reste NON testé dans les deux sections neuves : la règle d'arrêt de la
+    dichotomie ((b−a)/2ⁿ ≤ ε, compter les étapes) et la lecture de
+    l'intervalle final comme valeur approchée — enseignées, mais non
+    nommées comme pièges par la prose, donc sans id ni item.

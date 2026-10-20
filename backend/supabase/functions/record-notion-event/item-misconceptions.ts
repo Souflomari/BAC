@@ -1759,6 +1759,29 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee",
       "mc.math.maths_limites_continuite.limite-laterale-non-verifiee"
     ],
+    "LIMCONT-33": [
+      "mc.math.maths_limites_continuite.image-segment-extremum-interieur-oublie",
+      "mc.math.maths_limites_continuite.image-segment-ordre-des-bornes-recopie"
+    ],
+    "LIMCONT-34": [
+      "mc.math.maths_limites_continuite.image-segment-extremum-interieur-oublie",
+      "mc.math.maths_limites_continuite.image-segment-ordre-des-bornes-recopie"
+    ],
+    "LIMCONT-35": [
+      "mc.math.maths_limites_continuite.image-segment-extremum-interieur-oublie",
+      "mc.math.maths_limites_continuite.image-segment-ordre-des-bornes-recopie"
+    ],
+    "LIMCONT-36": [
+      "mc.math.maths_limites_continuite.dichotomie-moitie-sans-changement-de-signe",
+      "mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees"
+    ],
+    "LIMCONT-37": [
+      "mc.math.maths_limites_continuite.dichotomie-moitie-sans-changement-de-signe",
+      "mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees"
+    ],
+    "LIMCONT-38": [
+      "mc.math.maths_limites_continuite.dichotomie-moitie-sans-changement-de-signe"
+    ],
     "LIMCONT-4": [
       "mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale"
     ],
