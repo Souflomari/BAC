@@ -126,11 +126,10 @@ the AE-43/AE-40 « deux zéros » feedbacks. **Still open, check each before app
   Riemann [SM]), G4 log base a / a^x / x^α / n-th root, G5 image of a segment + dichotomy, G6
   linearisation + Z = z², H1 oscillators (vertical/inclined spring, synchronous pendulum, composed
   oscillator, fluid vs dry friction), G7 variance — plus its four items.
-- **Items:** G7 done. G3 — ten items (CI-59…68) drafted but unreviewed and with a stale ramp table:
-  parked as `docs/wip/g3-items-calcul-integral.patch` (`git apply` it, fix the two table counts that
-  `validate-content` names, review every item against the house rules, then commit). G4, G5, G6, H1 —
-  no items yet. The prose of every one of them asks the student to « prendre position »: those are
-  prose-only commits until a checkpoint backs them.
+- **Items:** G7 done (PC-M23-1…4). G3 done (CI-59…72, 2026-10-20): the ten drafted items reviewed —
+  four rewritten — and four more written so the three new ids reach the floor of three. G4, G5, G6,
+  H1 — no items yet. The prose of every one of them asks the student to « prendre position »: those
+  are prose-only commits until a checkpoint backs them.
 - **Then:** wave-1 critics (pedagogy + bac-fidelity) on all of G/H, and the rest of the plan: G1
   numeration (4.4), G2 vector spaces (4.5), G8, H2–H5.
 
@@ -186,7 +185,7 @@ the AE-43/AE-40 « deux zéros » feedbacks. **Still open, check each before app
 | sabotage campaigns in the scratch folder | `scripts/campagnes/` — runner + sets for `scene-quotient` (87) and `scene-champ-pentes` (44) |
 | critic reports only in the session transcript | `docs/audits/critiques/` (4 reports) |
 | uncommitted prose in side clones | committed (ff15dbc2) |
-| unreviewed G3 items in a side clone | `docs/wip/g3-items-calcul-integral.patch` |
+| unreviewed G3 items in a side clone | reviewed, completed and committed (CI-59…72) |
 | the slope-field scene, written but never run | verified: green ×2, red 29/29, armed in CI (§4.1) |
 | — | `.gitattributes` (LF), `.nvmrc` (Node 22) |
 

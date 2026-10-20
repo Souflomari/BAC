@@ -381,11 +381,64 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_calcul_integral.fonction-cumulee-confondue-avec-f",
       "mc.math.maths_calcul_integral.primitive-vs-derivee"
     ],
+    "CI-59": [
+      "mc.math.maths_calcul_integral.constante-et-bornes",
+      "mc.math.maths_calcul_integral.u-puissance-n-facteur-non-ajuste"
+    ],
     "CI-6": [
       "mc.math.maths_calcul_integral.integrale-signee-vs-aire"
     ],
+    "CI-60": [
+      "mc.math.maths_calcul_integral.constante-et-bornes",
+      "mc.math.maths_calcul_integral.u-puissance-n-facteur-non-ajuste"
+    ],
+    "CI-61": [
+      "mc.math.maths_calcul_integral.constante-et-bornes",
+      "mc.math.maths_calcul_integral.u-puissance-n-facteur-non-ajuste"
+    ],
+    "CI-62": [
+      "mc.math.maths_calcul_integral.trig-facteur-chaine-ou-signe-oublie"
+    ],
+    "CI-63": [
+      "mc.math.maths_calcul_integral.constante-et-bornes",
+      "mc.math.maths_calcul_integral.trig-facteur-chaine-ou-signe-oublie"
+    ],
+    "CI-64": [
+      "mc.math.maths_calcul_integral.condition-constante-non-isolee",
+      "mc.math.maths_calcul_integral.primitive-vs-derivee"
+    ],
+    "CI-65": [
+      "mc.math.maths_calcul_integral.fonction-cumulee-confondue-avec-f",
+      "mc.math.maths_calcul_integral.integrale-signee-vs-aire"
+    ],
+    "CI-66": [
+      "mc.math.maths_calcul_integral.fonction-cumulee-confondue-avec-f",
+      "mc.math.maths_calcul_integral.integrale-signee-vs-aire",
+      "mc.math.maths_calcul_integral.primitive-vs-derivee"
+    ],
+    "CI-67": [
+      "mc.math.maths_calcul_integral.riemann-somme-mal-identifiee",
+      "mc.math.maths_calcul_integral.u-puissance-n-facteur-non-ajuste"
+    ],
+    "CI-68": [
+      "mc.math.maths_calcul_integral.riemann-somme-mal-identifiee"
+    ],
+    "CI-69": [
+      "mc.math.maths_calcul_integral.trig-facteur-chaine-ou-signe-oublie"
+    ],
     "CI-7": [
       "mc.math.maths_calcul_integral.aire-naive-geometrique"
+    ],
+    "CI-70": [
+      "mc.math.maths_calcul_integral.condition-constante-non-isolee",
+      "mc.math.maths_calcul_integral.primitive-vs-derivee"
+    ],
+    "CI-71": [
+      "mc.math.maths_calcul_integral.condition-constante-non-isolee",
+      "mc.math.maths_calcul_integral.u-puissance-n-facteur-non-ajuste"
+    ],
+    "CI-72": [
+      "mc.math.maths_calcul_integral.riemann-somme-mal-identifiee"
     ],
     "CI-8": [
       "mc.math.maths_calcul_integral.aire-naive-geometrique"
