@@ -139,25 +139,36 @@ Report: `pc-vagues-DE-fidelite.md`. Fixed in bfe43534, then 248d37b1, 7eaf4a43, 
 - **eleve-ruse was re-sealed** (c0bd7121). Its per-notion ratchet compares averages, so honest
   items exactly at chance push a below-chance notion over its seal. INSTRUMENTS.md names the
   property; a measure that would not move is noted there, not armed.
-- **Then:** wave-1 critics on all of G/H (bac-fidelity running 2026-10-20, then pedagogy). The rest
-  of the plan: G1 numeration (4.4), G2 vector spaces (4.5), G8, H2–H5.
+- **Wave-1 critics, both done and applied (2026-10-20):** `cadre-GH-fidelite.md` (no breach, 0
+  arithmetic errors; the blocking fix — two lesson notes that said « no filière marker » — applied in
+  0b4c28ce) and `cadre-GH-pedagogie.md` (13 rhetorical « Prends position », no checkpoint behind any;
+  applied in 03464042 (G3) and e265bcb7 (G4–G7): 8 checkpoints, the two hollow predicts replaced,
+  the Riemann portmanteau id split, worked examples and items added).
+- **Still open on G/H:** the H1 fixes (four checkpoints, the two-envelope friction figure, the
+  composite derivation one step per line) were being written when this was updated; owner questions
+  §37 points 4–5 (R4b's missing filière sentence; ω₀/T₀ of the composite oscillator); figures for
+  Riemann rectangles and for dispersion (pedagogy critic fix 14) not drawn; counting the dichotomy
+  steps ((b−a)/2ⁿ ≤ ε solved for n) still untested.
+- **Then:** the rest of the plan — G8, H2–H5 (`docs/audits/DETTE-CADRE.md`).
 
-### 4.4 Numeration (SM arithmetic, a new rung R7b) — spec ready for its second draft
-- Spec: `docs/pipeline/propositions/maths-arithmetique-numeration.md`. Reports
-  `numeration-pedagogie.md` and `numeration-fidelite.md`: both **BUILD AFTER FIXES**, every number
-  correct. The cadre line is now confirmed by seven Moroccan sources
-  (`docs/cadre/sources/verification-numeration-2026-09-28.md`); the base notation is split between
-  sources (use $\overline{\cdots}_{(b)}$ through one place, say once that some documents write it in
-  superscript).
-- **Next:** pedagogy-architect revises the spec against both reports (the revision agent died at the
-  session limit before starting), then content-author and item-author, then `carte-chapitres --sceller`.
+### 4.4 Numeration (SM arithmetic) — BUILT (2026-10-20)
+- Spec revised against both critics (8887cc8b); chapter built from it (35df5738): `## R7b — Les
+  systèmes de numération` in `content/maths/arithmetique/lesson.md` (chapter 10; R8 → 11, chapter map
+  resealed), three checkpoints, the attempt-first exercise `r-numeration`, items AR-41…52, four new ids
+  (N4 « carry at ten » sits at the floor of 3).
+- **Still open:** the cascade figure `numeration-cascade-2025-base7` (being drawn); a wave-1 critic
+  pass on the BUILT chapter (the critics saw only the spec); the habileté mix is ≈ 67/25/8 against
+  40/40/20 — owner question Q11 in the spec; AR-47's « 476₅ » option is strikeable on sight (an
+  illegal digit), kept on purpose by the spec.
 
-### 4.5 Vector spaces (SM structures, a new chapter 11) — spec written, one critic done
-- Spec: `docs/pipeline/propositions/maths-structures-espaces-vectoriels.md`. Report
-  `espaces-vectoriels-pedagogie.md`: **BUILD AFTER FIXES** — no summit (an `r8-bac` on the verified
-  bk-2023-n-x5 is available), two misconceptions neither staged nor delegated (M3, M5), « combinaison
-  linéaire » never defined though Vect leans on it; all 18 worked computations and 18 keys correct.
-- **Next:** the bac-fidelity critic (it died mid-read), then the architect's revision.
+### 4.5 Vector spaces (SM structures, a new chapter) — spec revised, arithmetic fixes in progress
+- Spec `docs/pipeline/propositions/maths-structures-espaces-vectoriels.md`, revised against both
+  critics (64c29aae): the three-condition subspace criterion the bank prints, an `r8-bac` on
+  bk-2023-n-x5 q1–q2 and an `r8-variation`, no weight claim, Vect named in French first.
+- An independent arithmetic pass (`espaces-vectoriels-arithmetique.md`) found SA-41's key false and two
+  number collisions; the fixes were being applied when this was updated.
+- **Next:** owner questions Q1a/Q1b, Q7, Q11, Q12 in the spec's §15 (defaults written), then
+  content-author + item-author, then `carte-chapitres --sceller`.
 
 ### 4.6 Smaller loose ends
 - **A+ text in scenes:** vector names now scale with the reader's text size (30ef9de3); not yet
