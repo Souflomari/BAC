@@ -474,9 +474,11 @@ $$E_m = 2{,}5\ \text{mJ} = 2{,}5\times10^{-3}\ \text{J}$$
 
 D'où $C$ :
 
-$$E_m = \frac12 C\theta_m^2 \quad\Longrightarrow\quad C = \frac{2E_m}{\theta_m^2} = \frac{2\times2{,}5\times10^{-3}}{(0{,}20)^2} = \frac{5{,}0\times10^{-3}}{0{,}040} = 0{,}125 \approx 0{,}13\ \text{N·m/rad}$$
+$$E_m = \frac12 C\theta_m^2 \quad\Longrightarrow\quad C = \frac{2E_m}{\theta_m^2} = \frac{2\times2{,}5\times10^{-3}}{(0{,}20)^2} = \frac{5{,}0\times10^{-3}}{0{,}040} = 0{,}125\ \text{N·m/rad}$$
 
-**Le piège :** répondre $E_m=2\ \text{mJ}$ — la dernière valeur imprimée sur l'axe — sans compter la maille qui reste au-dessus. Cette lecture donnerait $C = 2\times2{,}0\times10^{-3}/0{,}040 = 0{,}10\ \text{N·m/rad}$ au lieu de $0{,}125$ : une valeur fausse de $20\,\%$, pour avoir simplement oublié de compter un pas de grille.
+(soit environ $0{,}13\ \text{N·m/rad}$ si l'on arrondit à deux chiffres significatifs).
+
+**Le piège :** répondre $E_m=2\ \text{mJ}$ — la dernière valeur imprimée sur l'axe — sans compter la maille qui reste au-dessus. Cette lecture donnerait $C = 2\times2{,}0\times10^{-3}/0{,}040 = 0{,}10\ \text{N·m/rad}$ au lieu de $0{,}125\ \text{N·m/rad}$ : une valeur fausse de $20\,\%$, pour avoir simplement oublié de compter un pas de grille.
 
 ---
 
@@ -524,7 +526,7 @@ $$E_m = E_c + E_{pp} = \frac{1}{2}mv^2 + mgz, \qquad z = L(1-\cos\theta)$$
 
 Sans frottement, $\Delta E_m = 0$ (établi ci-dessus). Au point le plus bas ($\theta=0$, $z=0$) : $E_{pp}=0$, toute l'énergie est cinétique, la vitesse y est maximale. Aux écarts extrêmes ($\theta=\pm\theta_m$) : $v=0$, $E_c=0$, toute l'énergie est potentielle. Entre les deux, $E_c$ et $E_{pp}$ s'échangent en permanence — le même va-et-vient qu'entre $E_c$ et $E_{pe}$ pour le ressort (chapitre 6), ou entre $E_c$ et $E_{p,torsion}$ pour la torsion (chapitre 7) — mais cette fois le réservoir de rappel est **gravitationnel**, pas élastique.
 
-Une remarque, pour ne pas la laisser filer : pour de petites oscillations, $1-\cos\theta \approx \frac{1}{2}\theta^2$ (même régime des petites oscillations que le $\sin\theta \approx \theta$ de Systèmes oscillants, poussé d'un ordre de plus), donc $E_{pp} \approx \frac{1}{2}(mgL)\theta^2$ — la même forme que $\frac{1}{2}kx^2$, avec $mgL$ qui joue le rôle d'une « raideur » effective. Ce n'est qu'un éclairage : l'expression à retenir reste $E_{pp}=mgz$, exacte à tout angle, pas seulement aux petites oscillations.
+Une remarque, pour ne pas la laisser filer : pour de petites oscillations, $1-\cos\theta \approx \frac{1}{2}\theta^2$ (même régime des petites oscillations que le $\sin\theta \approx \theta$ de Systèmes oscillants, poussé d'un ordre de plus), donc $E_{pp} \approx \frac{1}{2}(mgL)\theta^2$ — la même forme que $\frac{1}{2}kx^2$, avec $mgL$ qui joue le rôle d'une « raideur » effective. Cette approximation n'est vraie qu'avec $\theta$ en **radians** : un énoncé qui donne l'angle en degrés demande d'abord la conversion, $\theta = \theta_{(°)}\times\dfrac{\pi}{180}$ — sinon $\theta^2$ sort plus de trois mille fois trop grand. Ce n'est qu'un éclairage : l'expression à retenir reste $E_{pp}=mgz$, exacte à tout angle, pas seulement aux petites oscillations.
 
 ### L'erreur à repérer : $E_m$ n'est ni maximale en bas, ni toujours égale à $E_c$
 

@@ -2985,11 +2985,11 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "AE-42": [
       "mc.physics.pc_energie.confusion-v-et-v-carre",
-      "mc.physics.pc_energie.torsion-ec-formule-translation",
+      "mc.physics.pc_energie.pendule-hauteur-egale-longueur-fil",
       "mc.physics.pc_energie.torsion-lecture-angle-non-converti"
     ],
     "AE-43": [
-      "mc.physics.pc_energie.diagramme-largeur-totale-confondue-amplitude",
+      "mc.physics.pc_energie.diagramme-graduation-imprimee-confondue-maille",
       "mc.physics.pc_energie.ec-mauvaise-dependance-en-v",
       "mc.physics.pc_energie.energie-oublie-facteur-demi"
     ],
