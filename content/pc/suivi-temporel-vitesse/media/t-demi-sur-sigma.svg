@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 460" width="680" height="460"
      font-family="'IBM Plex Sans', system-ui, sans-serif"
-     aria-label="Conductivité σ en fonction du temps t, pour la saponification de l’éthanoate d’éthyle suivie par conductimétrie. Les huit points mesurés décroissent de σ₀ = 0,50 S·m⁻¹ vers un palier σ_f ≈ 0,19 S·m⁻¹, sur une courbe lissée. La bonne lecture du temps de demi-réaction se fait à la demi-hauteur (σ₀ + σ_f)/2 = 0,34 S·m⁻¹, atteinte à t₁/₂ = 8 minutes : la courbe et le tableau s’accordent. Le piège consiste à lire, à tort, la demi-hauteur σ₀/2 = 0,25 S·m⁻¹, atteinte seulement vers 18 minutes — plus de deux fois trop tard.">
-  <title>Lire t₁/₂ sur σ(t) : la bonne demi-hauteur, et le piège σ₀/2</title>
+     aria-label="Conductivité σ en fonction du temps t, pour l’attaque du magnésium par l’acide chlorhydrique suivie par conductimétrie. Les huit points mesurés décroissent de σ₀ = 0,60 S·m⁻¹ vers un palier final de 0,18 S·m⁻¹, sur une courbe lissée. La bonne lecture du temps de demi-réaction se fait à mi-chemin entre σ₀ et ce palier, à 0,39 S·m⁻¹, atteinte à t₁/₂ = 6 minutes : la courbe et le tableau s’accordent. Le piège consiste à lire, à tort, la demi-hauteur σ₀/2 = 0,30 S·m⁻¹, atteinte seulement vers 11 minutes — près de deux fois trop tard.">
+  <title>Lire t₁/₂ sur σ(t) : la bonne demi-hauteur, et le piège σ₀/2</title>
   <!--
     t-demi-sur-sigma.svg — figure de R4, sous-section « Exemple travaillé :
     suivre par conductimétrie — lire t½ et la vitesse sur σ(t) »
@@ -10,105 +10,139 @@
     à éviter »). Sœur de temps-demi-reaction.svg (même geste de lecture,
     même rôle des couleurs), transposée sur σ(t) au lieu de x(t).
 
-    Valeurs AUTORITAIRES, reprises telles quelles du tableau de cette
-    sous-section (ne PAS re-dériver depuis σ(x) = σ0 + k·x) :
-      n0(HO−) = 5,0 mmol = x_max ; V = 250 mL ; σ0 = 0,50 S·m⁻¹ ;
-      k = −63 S·m⁻¹·mol⁻¹ ; σ_f = σ0 + k·x_max = 0,50 − 0,315 = 0,185 S·m⁻¹
-        (valeur EXACTE ; le texte l'arrondit en « ≈ 0,19 » — repris ici tel quel)
-      σ(t½) = σ0 + k·(x_max/2) = 0,50 − 0,1575 = 0,3425 S·m⁻¹
-        (valeur EXACTE ; le texte arrondit CE calcul-là aussi, à « = 0,34 »,
-        pour qu'il coïncide au 2ᵉ chiffre avec la valeur mesurée du tableau
-        à t = 8 min — ce n'est pas un second hasard, x_max/2 = 2,5 mmol et
-        σ(8 min) = 0,34 S·m⁻¹ sont bien la MÊME ligne du tableau)
-      Tableau t (min) / σ (S·m⁻¹) :
-        0/0,50 ; 4/0,40 ; 8/0,34 ; 12/0,29 ; 16/0,26 ; 20/0,24 ; 30/0,21 ; 45/0,19
+    RÉÉCRITE le 2026-10-20 (rapport de fidélité PC vagues D-E, constat 1a) :
+    l'exemple travaillé et la figure portaient la saponification de
+    l'éthanoate d'éthyle, la réaction même du sommet r-bac (sujet 2021 N),
+    avec sa réponse t½ = 8 min. L'exemple est désormais l'attaque du
+    magnésium par l'acide chlorhydrique ; aucun nombre ci-dessous n'est un
+    nombre du sommet ni de la banque de la notion.
 
-    Courbe lissée (donnée par le brief, PAS re-choisie) :
-      σ(t) = 0,185 + 0,315·e^(−t/11,02)   [0,185 = σ_f exact, 0,315 = σ0−σ_f
-      exact : la formule encode donc EXACTEMENT σ0 et σ_f — cohérence
-      vérifiée, pas une coïncidence]
-      C'est un AJUSTEMENT lissé, pas une interpolation exacte des 8 points
-      (comme avancement-tangente.svg pour x(t) dans ce même dossier) :
-        t=0  min : calc 0,50000  | tableau 0,50 | écart  0,0000
-        t=4  min : calc 0,40410  | tableau 0,40 | écart +0,0041
-        t=8  min : calc 0,33743  | tableau 0,34 | écart −0,0026
-        t=12 min : calc 0,29102  | tableau 0,29 | écart +0,0010
-        t=16 min : calc 0,25875  | tableau 0,26 | écart −0,0013
-        t=20 min : calc 0,23630  | tableau 0,24 | écart −0,0037
-        t=30 min : calc 0,20570  | tableau 0,21 | écart −0,0043
-        t=45 min : calc 0,19031  | tableau 0,19 | écart +0,0003
-      Écart maximal 0,0043 S·m⁻¹ (à t=30 min) : dans la tolérance ≤0,005
-      annoncée. À l'échelle de 500 px/(S·m⁻¹) ci-dessous, ceci donne un
-      écart-pixel maximal de 2,15 px entre un point mesuré et la courbe —
-      imperceptible (rayon des points : 2,6 px), documenté ici plutôt que
-      masqué. Conséquence pour LA lecture : la courbe croise réellement
-      σ = 0,34 en t ≈ 7,81 min (x_px ≈ 158,1), soit ≈1,9 px avant le point
-      de construction posé en t = 8 min (x_px = 160) — le point de
+    Valeurs AUTORITAIRES, reprises telles quelles de cette sous-section :
+      Mg(s) + 2 H3O+ → Mg2+ + H2(g) + 2 H2O ; Mg en excès, H3O+ limitant ;
+      C = 1,4×10⁻² mol·L⁻¹ ; V = 300 mL ; n0(H3O+) = 4,2 mmol ;
+      x_max = n0(H3O+)/2 = 2,1 mmol (coefficient 2) ;
+      σ0 = 0,60 S·m⁻¹ ; k = −2,0×10² S·m⁻¹·mol⁻¹ ;
+      σ_f = σ0 + k·x_max = 0,60 − 0,42 = 0,18 S·m⁻¹ (exact, aucun arrondi) ;
+      σ(t½) = σ0 + k·x_max/2 = 0,60 − 0,21 = 0,39 S·m⁻¹ (exact) ;
+      σ0/2 = 0,30 S·m⁻¹ (exact).
+      Tableau t (min) / σ (S·m⁻¹) :
+        0/0,60 ; 3/0,48 ; 6/0,39 ; 9/0,33 ; 12/0,29 ; 15/0,26 ; 20/0,22 ; 30/0,19
+
+    D'où viennent σ0, k et σ_f (plausibilité physique — calcul NON montré à
+    l'élève, la leçon donne la relation affine toute faite) : conductivités
+    molaires ioniques usuelles λ(H3O+) = 35,0 ; λ(Mg2+) = 10,6 ;
+    λ(Cl−) = 7,63 mS·m²·mol⁻¹ ; C = 14 mol·m⁻³ ; V = 3,00×10⁻⁴ m³.
+      σ0  = C·(λH3O+ + λCl−)       = 14 × 42,63 mS·m⁻¹ = 0,597 → 0,60
+      σ_f = C·(λCl− + λMg2+/2)     = 14 × 12,93 mS·m⁻¹ = 0,181 → 0,18
+      k   = (λMg2+ − 2·λH3O+) / V = −59,4×10⁻³ / 3,00×10⁻⁴ = −198 → −2,0×10²
+      Les valeurs données sont les arrondis à deux chiffres de ces trois
+      calculs, et elles restent cohérentes entre elles : 0,60 + (−200)
+      × 2,1×10⁻³ = 0,18, l'arrondi de 0,181.
+
+    Courbe lissée (AJUSTEMENT, pas une interpolation exacte des 8 points —
+    comme avancement-tangente.svg pour x(t) dans ce même dossier) :
+      σ(t) = 0,18 + 0,42·e^(−t/8,8)   [0,18 = σ_f exact, 0,42 = σ0 − σ_f
+      exact : la formule encode EXACTEMENT σ0 et σ_f]
+      τ = 8,8 min est l'optimum des moindres carrés sur les 8 points (pas
+      de 0,01 min, σ0 et σ_f tenus fixes) ; c'est aussi le seul voisinage
+      de τ où les 8 valeurs du tableau sont exactement les arrondis à 0,01
+      de la courbe. Allure exponentielle physiquement justifiée : le
+      magnésium en excès garde une surface presque constante, la vitesse
+      ne dépend plus que de [H3O+] (ceci reste dans ce commentaire ; une loi
+      de vitesse est hors cadre pour l'élève).
+        t=0  min : calc 0,60000 | tableau 0,60 | écart  0,0000
+        t=3  min : calc 0,47867 | tableau 0,48 | écart +0,0013
+        t=6  min : calc 0,39239 | tableau 0,39 | écart −0,0024
+        t=9  min : calc 0,33104 | tableau 0,33 | écart −0,0010
+        t=12 min : calc 0,28741 | tableau 0,29 | écart +0,0026
+        t=15 min : calc 0,25638 | tableau 0,26 | écart +0,0036
+        t=20 min : calc 0,22327 | tableau 0,22 | écart −0,0033
+        t=30 min : calc 0,19389 | tableau 0,19 | écart −0,0039
+      Écart maximal 0,0039 S·m⁻¹ (à t=30 min) : dans la tolérance ≤0,005.
+      À l'échelle de 400 px/(S·m⁻¹) ci-dessous, cela donne un écart-pixel
+      maximal de 1,56 px entre un point mesuré et la courbe — sous le rayon
+      des points (2,6 px), documenté ici plutôt que masqué. Conséquence pour
+      LA lecture : la courbe croise réellement σ = 0,39 en
+      t = 8,8 × ln 2 ≈ 6,10 min (x_px ≈ 156,25), soit ≈1,25 px APRÈS le
+      point de construction posé en t = 6 min (x_px = 155) — le point de
       construction suit le TABLEAU (l'autorité de cette sous-section), pas
-      la courbe lissée ; le petit écart est sous le rayon du point tracé.
+      la courbe lissée ; l'écart est sous le rayon du point tracé.
 
     Repère écran (calculé) :
       origine (t=0 min, σ=0 S·m⁻¹) : (x0,y0) = (80, 350)
-      échelle t : 10 px/min          → x(t) = 80 + 10·t
-      échelle σ : 500 px/(S·m⁻¹)     → y(σ) = 350 − 500·σ
+      échelle t : 12,5 px/min        → x(t) = 80 + 12,5·t
+      échelle σ : 400 px/(S·m⁻¹)     → y(σ) = 350 − 400·σ
       Cadre (non chiffré au bord, comme courbe-activite-quadrillee.svg) :
-        t = 50 min → x = 580 ; σ = 0,55 S·m⁻¹ → y = 75
+        t = 40 min → x = 580 ; σ = 0,65 S·m⁻¹ → y = 90
       Quadrillage : mineurs tous les 5 min / 0,05 S·m⁻¹ (nus) ; majeurs
-        tous les 10 min / 0,10 S·m⁻¹ (chiffrés) à 10,20,30,40 min et
-        0,10 ; 0,20 ; 0,30 ; 0,40 ; 0,50 S·m⁻¹ — bord du cadre (50 min,
-        0,55 S·m⁻¹) volontairement non chiffré.
+        tous les 10 min / 0,10 S·m⁻¹, chiffrés à 10, 20, 30 min et
+        0,10 ; 0,20 ; 0,30 ; 0,50 ; 0,60 S·m⁻¹. Le majeur 0,40 garde son
+        trait mais PAS son chiffre : la lecture accent « 0,39 » tombe 4 px
+        sous lui (y=194 contre y=190), les deux étiquettes se seraient
+        recouvertes ; c'est la lecture qui garde la place. Bord du cadre
+        (40 min, 0,65 S·m⁻¹) volontairement non chiffré.
 
     Vérification de 3 points de table contre le pixel mapping (x_px,y_px) :
-      t=0  min, σ=0,50 → (80,100)   [exact : 80+10×0=80 ; 350−500×0,50=100]
-      t=8  min, σ=0,34 → (160,180)  [exact : 80+10×8=160 ; 350−500×0,34=180]
-      t=45 min, σ=0,19 → (530,255)  [exact : 80+10×45=530 ; 350−500×0,19=255]
+      t=0  min, σ=0,60 → (80,110)    [80+12,5×0=80 ; 350−400×0,60=110]
+      t=6  min, σ=0,39 → (155,194)   [80+12,5×6=155 ; 350−400×0,39=194]
+      t=30 min, σ=0,19 → (455,274)   [80+12,5×30=455 ; 350−400×0,19=274]
 
     Points mesurés (8, step-2, --figure-ink — la DONNÉE, pas la lecture) :
-      (0,100) (120,150) (160,180) (200,205) (240,220) (280,230) (380,245) (530,255)
+      (80,110) (117.5,158) (155,194) (192.5,218) (230,234) (267.5,246)
+      (330,262) (455,274)
 
-    Courbe (step-2, --figure-ink), polyligne calculée pas=2,5 min (25 px) :
-      t   0    2,5    5    7,5   10    12,5  15    17,5  20    22,5  25
-      y 100  131,97 157,44 177,77 193,95 206,85 217,13 225,32 231,85 237,06 241,21
-      t  27,5  30    32,5  35    37,5  40    42,5  45    47,5  50
-      y 244,51 247,15 249,25 250,92 252,26 253,32 254,17 254,85 255,39 255,81
+    Courbe (step-2, --figure-ink), polyligne calculée pas = 1 min (12,5 px),
+      y = 350 − 400·(0,18 + 0,42·e^(−t/8,8)) :
+      t   0     1      2      3      4      5      6      7      8      9     10
+      y 110,00 128,05 144,15 158,53 171,36 182,82 193,04 202,17 210,31 217,59 224,07
+      t  11     12     13     14     15     16     17     18     19     20
+      y 229,87 235,04 239,65 243,77 247,45 250,73 253,66 256,27 258,61 260,69
+      t  21     22     23     24     25     26     27     28     29     30
+      y 262,55 264,21 265,69 267,01 268,19 269,25 270,19 271,03 271,78 272,44
+      t  31     32     33     34     35     36     37     38     39     40
+      y 273,04 273,57 274,05 274,47 274,85 275,19 275,49 275,76 276,00 276,22
+      Palier σ_f = 0,18 → y = 278 (pointillé de référence).
 
     LA lecture (step-3, --figure-accent — seul sujet en accent) :
-      σ(t½) = (σ0+σ_f)/2 → affiché arrondi « 0,34 » (cf. note ci-dessus),
-      guide horizontal (80,180)→(160,180), point (160,180), guide vertical
-      (160,180)→(160,350), t½ = 8 min. Boîte formule en haut de figure,
-      convention reprise verbatim d'avancement-tangente.svg / temps-demi-
-      reaction.svg de ce même dossier (« la lecture, à distance du trait,
-      mais seul élément en accent du panneau » — pour que les deux
-      lectures de cette leçon restent sœurs).
+      σ(t½) = (σ0+σ_f)/2 = 0,39 (exact), guide horizontal (80,194)→(155,194),
+      point (155,194), guide vertical (155,194)→(155,350), t½ = 6 min. Boîte
+      formule en haut de figure, convention reprise verbatim
+      d'avancement-tangente.svg / temps-demi-reaction.svg de ce même dossier
+      (« la lecture, à distance du trait, mais seul élément en accent du
+      panneau » — pour que les deux lectures de cette leçon restent sœurs).
 
     LE piège (step-3 aussi — la mise en scène cappe à 3 étapes dans tout
       ce dépôt, comme temps-demi-reaction.svg / avancement-tangente.svg /
-      courbe-activite-quadrillee.svg ; ce brief autorisait explicitement
-      cette fusion) : σ0/2 = 0,25 S·m⁻¹ (exact, aucun arrondi) coïncide
-      avec le quadrillage mineur (y=225) — ce n'est pas un hasard non plus,
-      c'est justement ce qui le rend « tentant ». Croisement RÉEL avec la
+      courbe-activite-quadrillee.svg) : σ0/2 = 0,30 S·m⁻¹ (exact) tombe sur
+      un trait MAJEUR chiffré (y=230) — c'est justement ce qui le rend
+      « tentant » : l'axe lui-même affiche « 0,30 ». Le guide pointillé du
+      piège est donc tracé un peu plus épais (1,6) que les autres guides,
+      pour rester visible par-dessus ce trait. Croisement RÉEL avec la
       courbe résolu analytiquement (pas à l'oeil) :
-        0,25 = 0,185 + 0,315·e^(−t/11,02)
-        e^(−t/11,02) = 0,065/0,315 = 13/63 ≈ 0,206349
-        t = 11,02 × ln(63/13) = 11,02 × 1,578186 ≈ 17,392 min
-        x_px = 80 + 10×17,392 ≈ 253,9 ; y_px = 350 − 500×0,25 = 225 (exact)
-      Le texte de la leçon donne « vers 18 min » (lecture interpolée sur
-      LE TABLEAU, entre 16 min/0,26 et 20 min/0,24). Écart avec le
-      croisement réel de la courbe : 18 − 17,39 = 0,61 min < 1 min → on
-      étiquette donc « ≈ 18 min » (règle du brief), pas « ≈ 17 min ».
+        0,30 = 0,18 + 0,42·e^(−t/8,8)
+        e^(−t/8,8) = 0,12/0,42 = 2/7 ≈ 0,285714
+        t = 8,8 × ln(3,5) = 8,8 × 1,252763 ≈ 11,024 min
+        x_px = 80 + 12,5×11,024 ≈ 217,8 ; y_px = 350 − 400×0,30 = 230 (exact)
+      Le texte de la leçon dit « vers t ≈ 11 min » (lecture interpolée sur
+      LE TABLEAU, entre 9 min/0,33 et 12 min/0,29 : 11,25 min). Écart avec
+      le croisement réel de la courbe : 0,23 min < 1 min → on étiquette
+      « ≈ 11 min », ce que disent à la fois la courbe et le tableau.
       Jamais --figure-accent ; tracé pointillé fin (2,2) distinct du trait
       accent (5,3) de la vraie lecture ; --figure-ink-soft partout.
       Étiquette « σ0/2 : piège » posée juste après la pointe du piège
-      (x≥270), avec un fond --figure-surface (elle traverserait sinon
-      deux traits de quadrillage, t=20 et t=25 min).
+      (x≥226), au-dessus de la courbe, avec un fond --figure-surface (elle
+      traverserait sinon deux traits de quadrillage, t=15 min et σ=0,35).
+      Étiquettes de temps sous l'axe : « t½ = 6 min » centrée en x=155
+      (≈127→184) et « ≈ 11 min » centrée en x=217,8 (≈196→240) — ≈12 px
+      d'écart à la police de la figure.
 
     Rôle des couleurs :
       points mesurés + courbe                    : --figure-ink (la donnée)
       σ0 (étiquette), palier σ_f (ligne pointillée
         + étiquette), quadrillage, axes           : --figure-ink-soft (chrome)
-      LA lecture (guides, point, tick « 0,34 »,
+      LA lecture (guides, point, tick « 0,39 »,
         étiquette t½, boîte formule)               : --figure-accent (le sujet)
-      LE piège (guides, point, étiquette, « ≈18 min ») : --figure-ink-soft,
+      LE piège (guides, point, étiquette, « ≈11 min ») : --figure-ink-soft,
         JAMAIS accent, tracé visiblement différent
   -->
 
@@ -117,7 +151,7 @@
     <text x="340" y="20" text-anchor="middle"
           font-size="12" font-weight="600" letter-spacing="0.01em"
           fill="var(--figure-ink)">
-      Lire t<tspan dy="3" font-size="8.5">1/2</tspan><tspan dy="-3"> sur σ(t) : la bonne demi-hauteur, et le piège</tspan>
+      Lire t<tspan dy="3" font-size="8.5">1/2</tspan><tspan dy="-3"> sur σ(t) : la bonne demi-hauteur, et le piège</tspan>
     </text>
 
     <!-- Fond du panneau -->
@@ -126,117 +160,121 @@
           stroke="var(--figure-grid)" stroke-width="1"/>
 
     <!-- ── Quadrillage — mineurs (0,8 px, 30 %), encre douce ─────── -->
-    <line x1="130" y1="75" x2="130" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
-    <line x1="230" y1="75" x2="230" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
-    <line x1="330" y1="75" x2="330" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
-    <line x1="430" y1="75" x2="430" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
-    <line x1="530" y1="75" x2="530" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
-    <line x1="80" y1="325" x2="580" y2="325" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
-    <line x1="80" y1="275" x2="580" y2="275" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
-    <line x1="80" y1="225" x2="580" y2="225" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
-    <line x1="80" y1="175" x2="580" y2="175" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
-    <line x1="80" y1="125" x2="580" y2="125" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="142.5" y1="90" x2="142.5" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="267.5" y1="90" x2="267.5" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="392.5" y1="90" x2="392.5" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="517.5" y1="90" x2="517.5" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="330" x2="580" y2="330" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="290" x2="580" y2="290" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="250" x2="580" y2="250" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="210" x2="580" y2="210" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="170" x2="580" y2="170" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
+    <line x1="80" y1="130" x2="580" y2="130" stroke="var(--figure-ink-soft)" stroke-opacity="0.30" stroke-width="0.8"/>
 
     <!-- ── Quadrillage — majeurs (1 px, 68 %), chiffrés ─────────── -->
-    <line x1="180" y1="75" x2="180" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
-    <line x1="280" y1="75" x2="280" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
-    <line x1="380" y1="75" x2="380" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
-    <line x1="480" y1="75" x2="480" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
-    <line x1="80" y1="300" x2="580" y2="300" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
-    <line x1="80" y1="250" x2="580" y2="250" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
-    <line x1="80" y1="200" x2="580" y2="200" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="205" y1="90" x2="205" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="330" y1="90" x2="330" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="455" y1="90" x2="455" y2="350" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="80" y1="310" x2="580" y2="310" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="80" y1="270" x2="580" y2="270" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="80" y1="230" x2="580" y2="230" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="80" y1="190" x2="580" y2="190" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
     <line x1="80" y1="150" x2="580" y2="150" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
-    <line x1="80" y1="100" x2="580" y2="100" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
+    <line x1="80" y1="110" x2="580" y2="110" stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
 
-    <!-- Cadre — bords non chiffrés (t=50 min, σ=0,55 S·m⁻¹) -->
-    <rect x="80" y="75" width="500" height="275" fill="none"
+    <!-- Cadre — bords non chiffrés (t=40 min, σ=0,65 S·m⁻¹) -->
+    <rect x="80" y="90" width="500" height="260" fill="none"
           stroke="var(--figure-ink-soft)" stroke-opacity="0.68" stroke-width="1"/>
 
     <!-- ── Axes — ink-soft, chrome neutre ───────────────────────── -->
     <line x1="80" y1="350" x2="598" y2="350"
           stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
     <polygon points="598,350 586,345.5 586,354.5" fill="var(--figure-ink-soft)"/>
-    <line x1="80" y1="350" x2="80" y2="55"
+    <line x1="80" y1="350" x2="80" y2="70"
           stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
-    <polygon points="80,55 75.5,66 84.5,66" fill="var(--figure-ink-soft)"/>
+    <polygon points="80,70 75.5,81 84.5,81" fill="var(--figure-ink-soft)"/>
 
-    <text x="78" y="59" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)"
+    <text x="78" y="74" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)"
           ><tspan font-style="italic">σ</tspan><tspan font-size="9"> (S·m<tspan
           dy="-4" font-size="70%">−1</tspan><tspan dy="4">)</tspan></tspan></text>
     <text x="590" y="366" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)"
           ><tspan font-style="italic">t</tspan><tspan font-size="9"> (min)</tspan></text>
     <text x="72" y="354" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
 
-    <!-- Graduations t (min) — majeures, 10/20/30/40 ; 50 reste le cadre -->
-    <text x="180" y="366" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">10</text>
-    <text x="280" y="366" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">20</text>
-    <text x="380" y="366" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">30</text>
-    <text x="480" y="366" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">40</text>
+    <!-- Graduations t (min) — majeures, 10/20/30 ; 40 reste le cadre -->
+    <text x="205" y="366" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">10</text>
+    <text x="330" y="366" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">20</text>
+    <text x="455" y="366" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">30</text>
 
-    <!-- Graduations σ (S·m⁻¹) — majeures ; 0,55 reste le cadre -->
-    <text x="72" y="304" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)">0,10</text>
-    <text x="72" y="254" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)">0,20</text>
-    <text x="72" y="204" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)">0,30</text>
-    <text x="72" y="154" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)">0,40</text>
-    <text x="72" y="104" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)">0,50</text>
+    <!-- Graduations σ (S·m⁻¹) — majeures ; 0,40 sans chiffre (la lecture
+         « 0,39 » occupe sa place, voir en tête) ; 0,65 reste le cadre -->
+    <text x="72" y="314" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)">0,10</text>
+    <text x="72" y="274" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)">0,20</text>
+    <text x="72" y="234" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)">0,30</text>
+    <text x="72" y="154" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)">0,50</text>
+    <text x="72" y="114" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)">0,60</text>
 
     <!-- σ0 : repère de départ, juste au-dessus du premier point mesuré -->
-    <text x="88" y="92" font-size="9.5" fill="var(--figure-ink-soft)"
+    <text x="88" y="102" font-size="9.5" fill="var(--figure-ink-soft)"
           ><tspan font-style="italic">σ</tspan><tspan dy="3" font-size="7">0</tspan></text>
   </g><!-- /step-1 -->
 
   <g id="step-2">
     <!--
       Palier σ_f — ligne de référence pointillée légère, sous le dernier
-      point mesuré (t=45 min), AVANT la courbe pour rester chrome discret.
+      point mesuré (t=30 min), AVANT la courbe pour rester chrome discret.
     -->
-    <line x1="80" y1="255" x2="580" y2="255"
+    <line x1="80" y1="278" x2="580" y2="278"
           stroke="var(--figure-ink-soft)" stroke-width="1" stroke-opacity="0.75"
           stroke-dasharray="1.5,3"/>
 
-    <!-- Courbe σ(t) — polyligne calculée, pas=2,5 min ; voir calcul en tête -->
+    <!-- Courbe σ(t) — polyligne calculée, pas = 1 min ; voir calcul en tête -->
     <path d="
-      M80,100 L105,131.97 L130,157.44 L155,177.77 L180,193.95 L205,206.85
-      L230,217.13 L255,225.32 L280,231.85 L305,237.06 L330,241.21
-      L355,244.51 L380,247.15 L405,249.25 L430,250.92 L455,252.26
-      L480,253.32 L505,254.17 L530,254.85 L555,255.39 L580,255.81
+      M80,110 L92.5,128.05 L105,144.15 L117.5,158.53 L130,171.36 L142.5,182.82
+      L155,193.04 L167.5,202.17 L180,210.31 L192.5,217.59 L205,224.07
+      L217.5,229.87 L230,235.04 L242.5,239.65 L255,243.77 L267.5,247.45
+      L280,250.73 L292.5,253.66 L305,256.27 L317.5,258.61 L330,260.69
+      L342.5,262.55 L355,264.21 L367.5,265.69 L380,267.01 L392.5,268.19
+      L405,269.25 L417.5,270.19 L430,271.03 L442.5,271.78 L455,272.44
+      L467.5,273.04 L480,273.57 L492.5,274.05 L505,274.47 L517.5,274.85
+      L530,275.19 L542.5,275.49 L555,275.76 L567.5,276 L580,276.22
     " fill="none"
       stroke="var(--figure-ink)"
       stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
 
     <!-- Les 8 points mesurés du tableau — la donnée -->
-    <circle cx="80"  cy="100" r="2.6" fill="var(--figure-ink)"/>
-    <circle cx="120" cy="150" r="2.6" fill="var(--figure-ink)"/>
-    <circle cx="160" cy="180" r="2.6" fill="var(--figure-ink)"/>
-    <circle cx="200" cy="205" r="2.6" fill="var(--figure-ink)"/>
-    <circle cx="240" cy="220" r="2.6" fill="var(--figure-ink)"/>
-    <circle cx="280" cy="230" r="2.6" fill="var(--figure-ink)"/>
-    <circle cx="380" cy="245" r="2.6" fill="var(--figure-ink)"/>
-    <circle cx="530" cy="255" r="2.6" fill="var(--figure-ink)"/>
+    <circle cx="80"    cy="110" r="2.6" fill="var(--figure-ink)"/>
+    <circle cx="117.5" cy="158" r="2.6" fill="var(--figure-ink)"/>
+    <circle cx="155"   cy="194" r="2.6" fill="var(--figure-ink)"/>
+    <circle cx="192.5" cy="218" r="2.6" fill="var(--figure-ink)"/>
+    <circle cx="230"   cy="234" r="2.6" fill="var(--figure-ink)"/>
+    <circle cx="267.5" cy="246" r="2.6" fill="var(--figure-ink)"/>
+    <circle cx="330"   cy="262" r="2.6" fill="var(--figure-ink)"/>
+    <circle cx="455"   cy="274" r="2.6" fill="var(--figure-ink)"/>
 
     <!-- Étiquette du palier σ_f, fond surface (couvre 2 traits de quadrillage) -->
-    <rect x="289" y="271" width="114" height="16" fill="var(--figure-surface)"/>
-    <text x="295" y="283" font-size="10.5" fill="var(--figure-ink-soft)"
+    <rect x="289" y="292" width="114" height="16" fill="var(--figure-surface)"/>
+    <text x="295" y="304" font-size="10.5" fill="var(--figure-ink-soft)"
           ><tspan font-style="italic">σ</tspan><tspan dy="3" font-size="7.5">f</tspan><tspan
-          dy="-3"> ≈ 0,19 S·m<tspan dy="-4" font-size="70%">−1</tspan></tspan></text>
+          dy="-3"> = 0,18 S·m<tspan dy="-4" font-size="70%">−1</tspan></tspan></text>
   </g><!-- /step-2 -->
 
   <g id="step-3">
     <!-- ══════════════════════════════════════════════════════
          LA lecture — la bonne demi-hauteur (σ0+σ_f)/2, accent
          ══════════════════════════════════════════════════════ -->
-    <line x1="76" y1="180" x2="84" y2="180" stroke="var(--figure-accent)" stroke-width="1.6"/>
-    <line x1="80" y1="180" x2="160" y2="180"
+    <line x1="76" y1="194" x2="84" y2="194" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <line x1="80" y1="194" x2="155" y2="194"
           stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
-    <line x1="160" y1="180" x2="160" y2="350"
+    <line x1="155" y1="194" x2="155" y2="350"
           stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
-    <line x1="160" y1="345" x2="160" y2="355" stroke="var(--figure-accent)" stroke-width="1.6"/>
-    <circle cx="160" cy="180" r="3.4" fill="var(--figure-accent)"/>
+    <line x1="155" y1="345" x2="155" y2="355" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <circle cx="155" cy="194" r="3.4" fill="var(--figure-accent)"/>
 
-    <text x="72" y="184" text-anchor="end" font-size="10.5" fill="var(--figure-accent)">0,34</text>
-    <text x="160" y="386" text-anchor="middle" font-size="11" fill="var(--figure-accent)"
+    <text x="72" y="198" text-anchor="end" font-size="10.5" fill="var(--figure-accent)">0,39</text>
+    <text x="155" y="386" text-anchor="middle" font-size="11" fill="var(--figure-accent)"
           ><tspan font-style="italic">t</tspan><tspan dy="4" font-size="8">1/2</tspan><tspan
-          dy="-4"> = 8 min</tspan></text>
+          dy="-4"> = 6 min</tspan></text>
 
     <!-- Boîte formule -->
     <rect x="395" y="40" width="245" height="30" rx="5"
@@ -249,20 +287,20 @@
     <!-- ══════════════════════════════════════════════════════
          LE piège — σ0/2, jamais accent, tracé visiblement différent
          ══════════════════════════════════════════════════════ -->
-    <line x1="80" y1="225" x2="253.9" y2="225"
+    <line x1="80" y1="230" x2="217.8" y2="230"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-dasharray="2,2"/>
+    <line x1="217.8" y1="230" x2="217.8" y2="350"
           stroke="var(--figure-ink-soft)" stroke-width="1.1" stroke-dasharray="2,2"/>
-    <line x1="253.9" y1="225" x2="253.9" y2="350"
-          stroke="var(--figure-ink-soft)" stroke-width="1.1" stroke-dasharray="2,2"/>
-    <line x1="253.9" y1="345" x2="253.9" y2="355" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
-    <circle cx="253.9" cy="225" r="2.6" fill="var(--figure-ink-soft)"/>
+    <line x1="217.8" y1="345" x2="217.8" y2="355" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <circle cx="217.8" cy="230" r="2.6" fill="var(--figure-ink-soft)"/>
 
-    <text x="253.9" y="386" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">≈ 18 min</text>
+    <text x="217.8" y="386" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">≈ 11 min</text>
 
     <!-- Étiquette « piège », fond surface (couvre 2 traits de quadrillage) -->
-    <rect x="262" y="205" width="96" height="17" fill="var(--figure-surface)"/>
-    <text x="270" y="217" font-size="10" fill="var(--figure-ink-soft)"
+    <rect x="226" y="209" width="96" height="17" fill="var(--figure-surface)"/>
+    <text x="234" y="221" font-size="10" fill="var(--figure-ink-soft)"
           ><tspan font-style="italic">σ</tspan><tspan dy="3" font-size="7">0</tspan><tspan
-          dy="-3">/2 : piège</tspan></text>
+          dy="-3">/2 : piège</tspan></text>
   </g><!-- /step-3 -->
 
 </svg>

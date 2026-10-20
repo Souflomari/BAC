@@ -213,30 +213,6 @@ $K_1 = K_2 = 1875$, très exactement, alors que les concentrations initiales n'o
 
 [[checkpoint:cp-r4-k-constante]]
 
-### Exemple travaillé : l'expression littérale de $Q_{r,eq}$, en fonction de $C$ et $\tau$ seulement
-
-*Ce qu'on cherche ici, et pourquoi ce geste :* jusqu'ici, $Q_{r,eq}$ n'a été calculé qu'à partir de concentrations numériques, sur $Fe^{3+}/SCN^-$. Le bac demande souvent l'expression **littérale** de $Q_{r,eq}$ — en fonction de la concentration apportée $C$ et du taux d'avancement final $\tau$ seulement, sans aucun nombre. Construisons-la sur un acide faible générique $AH$, de concentration apportée $C$, dissous dans l'eau (dont l'apport propre en $H_3O^+$ est négligeable devant celui de l'acide) :
-
-$$AH + H_2O \rightleftharpoons A^- + H_3O^+$$
-
-Ici $x_{max} = C$ (l'acide, au maximum, se dissocierait en entier), donc $x_f = \tau C$. Le tableau d'avancement, à l'équilibre :
-
-| | $AH$ | $A^-$ | $H_3O^+$ |
-|---|---|---|---|
-| Concentration à l'éq. (mol/L) | $C(1-\tau)$ | $C\tau$ | $C\tau$ |
-
-D'où, l'eau (solvant) n'entrant pas dans $Q_r$ :
-
-$$Q_{r,eq} = \frac{[A^-]_{eq}[H_3O^+]_{eq}}{[AH]_{eq}} = \frac{(C\tau)(C\tau)}{C(1-\tau)} = \frac{C\tau^2}{1-\tau}$$
-
-Application numérique, sur des valeurs choisies ici pour l'exemple : $C = 2{,}0\times10^{-2}\ \text{mol/L}$, $\tau = 0{,}10$.
-
-$$Q_{r,eq} = \frac{2{,}0\times10^{-2}\times(0{,}10)^2}{1-0{,}10} = \frac{2{,}0\times10^{-4}}{0{,}90} \approx 2{,}2\times10^{-4}$$
-
-**Prends position avant de lire la suite :** si on oubliait le facteur $(1-\tau)$ au dénominateur, la valeur obtenue serait-elle plus grande, plus petite, ou identique à $2{,}2\times10^{-4}$ ?
-
-**Le piège :** oublier le $(1-\tau)$ au dénominateur et écrire $Q_{r,eq} = C\tau^2$ — ici, $2{,}0\times10^{-4}$, environ $10\,\%$ plus petit que la valeur exacte $2{,}2\times10^{-4}$. Cette approximation ne devient légitime que si $\tau \ll 1$ (alors $1-\tau \approx 1$) ; dès que $\tau$ n'est plus négligeable, comme ici, l'écart se voit, et le bac demande l'expression exacte, pas l'approximation.
-
 ---
 
 ## R5 — Le critère qualitatif d'évolution : comparer $Q_{r,i}$ à $K$

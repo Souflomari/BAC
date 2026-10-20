@@ -1704,10 +1704,15 @@ items:
   # Ajouté le 2026-09-27 : GAP-B de docs/audits/dette-examen/pc-1.md —
   # bk-2015-n-x1 q2 demande cette expression littérale ; ni la leçon ni aucun
   # item ne la construisait jusqu'ici (seul le r-bac, le même sujet, la
-  # travaillait, et le r-bac de reactions-acido-basiques). Rung R3 :
-  # construction de Qr (exposants, exclusion du solvant) + tableau paramétré
-  # par τ, exactement les deux gestes du chapitre 4 (le second déjà vu au
-  # chapitre 3).
+  # travaillait, et le r-bac de reactions-acido-basiques). Rung R4 (depuis
+  # le 2026-09-28) : le rung où Qr,éq = K est posé ; l'item assemble deux
+  # gestes enseignés plus tôt — [X]éq = Cτ à partir de τ (chapitre 3, R2)
+  # et la construction de Qr, solvant exclu (chapitre 4, R3).
+  # 2026-10-20 : aucune prose ne fait plus cet assemblage. L'exemple
+  # travaillé de R4 qui le dérivait (Qr,éq = Cτ²/(1−τ)) a été retiré —
+  # il pré-résolvait la question 2 du sommet r-bac, et la règle de reprise
+  # (DETTE-EXAMEN.md : un GAP-B se paie par un item, sans prose) n'en
+  # demandait pas. Cet item paie seul la dette.
   - id: EE-28
     rung: "R4"
     difficulty_level: 3
@@ -1819,8 +1824,13 @@ coverage_summary:
     note: >-
       EE-28 déplacé de R3 à R4 le 2026-09-28 (vague D-E,
       DECISIONS-EN-ATTENTE.md §35/§36) : le geste qu'il teste (construire
-      $Q_{r,eq}$ à partir de $\tau$ et de $C$) n'est enseigné qu'en R4. R3
-      retombe à 4, R4 monte à 6 ; le plancher (>= 3) reste tenu partout.
+      $Q_{r,eq}$ à partir de $\tau$ et de $C$) s'appuie sur R4, où $Q_{r,eq}=K$
+      est posé. R3 retombe à 4, R4 monte à 6 ; le plancher (>= 3) reste tenu
+      partout. Depuis le 2026-10-20, aucune prose n'assemble plus
+      $Q_{r,eq}(C,\tau)$ : l'exemple travaillé qui le faisait dérivait
+      exactement la question 2 du sujet de synthèse, et a été retiré (règle
+      GAP-B de DETTE-EXAMEN.md : un item, sans prose). L'item assemble seul
+      ce que R2 ($\tau$) et R4 ($Q_r$) enseignent.
   gated_misconceptions:
     # Les familles nommées par les portes de conversion du sommet
     # (checkpoints.yaml) — un ÉCHO formatif du banc, qui ne compte pas deux

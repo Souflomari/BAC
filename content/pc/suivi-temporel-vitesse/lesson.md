@@ -202,59 +202,61 @@ $t_{1/2}$ condense en un seul nombre ce qui prendrait sinon toute une courbe à 
 
 Reprends le principe du chapitre 2 : si la réaction met en jeu des ions, la conductimétrie fournit un suivi continu — mais ce que l'appareil affiche, c'est une conductivité $\sigma(t)$, pas $x(t)$. Il faut donc traduire chaque condition posée sur $x$ en une condition sur $\sigma$, avant de la lire sur la courbe.
 
-Prends la saponification de l'éthanoate d'éthyle par la soude, suivie par conductimétrie :
+Prends l'attaque d'un ruban de magnésium par l'acide chlorhydrique $(H_3O^+ + Cl^-)$, suivie par conductimétrie :
 
-$$CH_3COOC_2H_5 + HO^- \rightarrow CH_3COO^- + C_2H_5OH$$
+$$Mg_{(s)} + 2\,H_3O^+_{(aq)} \rightarrow Mg^{2+}_{(aq)} + H_{2(g)} + 2\,H_2O_{(\ell)}$$
 
-L'éthanoate d'éthyle est introduit en excès ; l'ion hydroxyde $HO^-$, limitant, est apporté en quantité $n_0(HO^-) = 5{,}0\ \text{mmol}$, dans un volume $V = 250\ \text{mL} = 2{,}50\times10^{-4}\ \text{m}^3$ constant. Comme au chapitre 3 : $x_{max} = n_0(HO^-) = 5{,}0\ \text{mmol} = 5{,}0\times10^{-3}\ \text{mol}$.
+Le magnésium est introduit en excès dans un volume $V = 300\ \text{mL} = 3{,}00\times10^{-4}\ \text{m}^3$, supposé constant, d'acide chlorhydrique de concentration $C = 1{,}4\times10^{-2}\ \text{mol}\cdot\text{L}^{-1}$. Les ions oxonium apportés valent donc $n_0(H_3O^+) = C\cdot V = 1{,}4\times10^{-2}\times0{,}300 = 4{,}2\times10^{-3}\ \text{mol}$. Comme au chapitre 3, on cherche le réactif limitant : le magnésium étant en excès, c'est $H_3O^+$ qui s'épuise le premier — mais attention à son coefficient $2$ : sa quantité restante, $n_0(H_3O^+) - 2x$, s'annule pour
 
-Au fil de la réaction, l'ion hydroxyde $HO^-$ (très mobile) cède la place à l'ion éthanoate $CH_3COO^-$ (nettement moins mobile) ; l'ion sodium $Na^+$, spectateur, ne bouge pas. Le tableau d'avancement donne donc une conductivité $\sigma$ fonction affine de $x$, exactement comme le principe du chapitre 2 le voulait — mais cette fois décroissante, puisque l'ion qui apparaît conduit moins bien que celui qui disparaît :
+$$x_{max} = \frac{n_0(H_3O^+)}{2} = \frac{4{,}2\times10^{-3}}{2} = 2{,}1\times10^{-3}\ \text{mol}$$
 
-$$\sigma(x) = \sigma_0 + k\,x \qquad \sigma_0 = 0{,}50\ \text{S}\cdot\text{m}^{-1} \qquad k = -63\ \text{S}\cdot\text{m}^{-1}\cdot\text{mol}^{-1}$$
+Au fil de la réaction, chaque ion magnésium $Mg^{2+}$ qui apparaît prend la place de deux ions oxonium $H_3O^+$, les plus mobiles de tous les ions en solution ; l'ion chlorure $Cl^-$, spectateur, ne bouge pas. Le tableau d'avancement donne donc une conductivité $\sigma$ fonction affine de $x$, exactement comme le principe du chapitre 2 le voulait — mais décroissante, puisque ce qui apparaît conduit bien moins que ce qui disparaît. Et elle ne tombe jamais à zéro : les ions $Cl^-$ et $Mg^{2+}$ restent en solution jusqu'au bout.
+
+$$\sigma(x) = \sigma_0 + k\,x \qquad \sigma_0 = 0{,}60\ \text{S}\cdot\text{m}^{-1} \qquad k = -2{,}0\times10^{2}\ \text{S}\cdot\text{m}^{-1}\cdot\text{mol}^{-1}$$
 
 Voici les mesures relevées :
 
-| $t$ (min) | $0$ | $4$ | $8$ | $12$ | $16$ | $20$ | $30$ | $45$ |
+| $t$ (min) | $0$ | $3$ | $6$ | $9$ | $12$ | $15$ | $20$ | $30$ |
 |---|---|---|---|---|---|---|---|---|
-| $\sigma$ ($\text{S}\cdot\text{m}^{-1}$) | $0{,}50$ | $0{,}40$ | $0{,}34$ | $0{,}29$ | $0{,}26$ | $0{,}24$ | $0{,}21$ | $0{,}19$ |
+| $\sigma$ ($\text{S}\cdot\text{m}^{-1}$) | $0{,}60$ | $0{,}48$ | $0{,}39$ | $0{,}33$ | $0{,}29$ | $0{,}26$ | $0{,}22$ | $0{,}19$ |
 
-**(a) Lire $t_{1/2}$ sur $\sigma(t)$.** *Ce qu'on cherche ici, et pourquoi ce geste :* la condition posée plus haut dans ce chapitre porte sur $x$, $x(t_{1/2}) = x_{max}/2$ — il faut la traduire en une condition sur $\sigma$, la seule grandeur portée sur cette courbe, à l'aide de la relation ci-dessus :
+**Prends position avant de lire la suite :** pour lire $t_{1/2}$ sur ce tableau, faut-il chercher l'instant où $\sigma = \sigma_0/2 = 0{,}30\ \text{S}\cdot\text{m}^{-1}$, ou une autre valeur de $\sigma$ ? Note ta réponse avant de continuer.
 
-$$x(t_{1/2}) = \frac{x_{max}}{2} \iff \sigma(t_{1/2}) = \sigma_0 + k\,\frac{x_{max}}{2} = 0{,}50 + (-63)\times2{,}5\times10^{-3} = 0{,}34\ \text{S}\cdot\text{m}^{-1}$$
+**(a) Lire $t_{1/2}$ sur $\sigma(t)$.** *Ce qu'on cherche ici, et pourquoi ce geste :* la condition posée plus haut dans ce chapitre porte sur $x$, $x(t_{1/2}) = x_{max}/2$ — il faut la traduire en une condition sur $\sigma$, la seule grandeur portée sur cette courbe, à l'aide de la relation ci-dessus, avec $x_{max}/2 = 1{,}05\times10^{-3}\ \text{mol}$ :
 
-Le tableau donne directement $\sigma(8\ \text{min}) = 0{,}34\ \text{S}\cdot\text{m}^{-1}$ :
+$$x(t_{1/2}) = \frac{x_{max}}{2} \iff \sigma(t_{1/2}) = \sigma_0 + k\,\frac{x_{max}}{2} = 0{,}60 + (-2{,}0\times10^{2})\times1{,}05\times10^{-3} = 0{,}39\ \text{S}\cdot\text{m}^{-1}$$
 
-$$t_{1/2} = 8\ \text{min}$$
+Le tableau donne directement $\sigma(6\ \text{min}) = 0{,}39\ \text{S}\cdot\text{m}^{-1}$ :
 
-**Prends position avant de lire la suite :** pour lire $t_{1/2}$ sur la courbe $\sigma(t)$, faut-il chercher l'instant où $\sigma = \sigma_0/2$, ou une autre demi-hauteur ?
+$$t_{1/2} = 6\ \text{min}$$
 
-**Le piège à éviter :** ne lis jamais $t_{1/2}$ à l'instant où $\sigma = \sigma_0/2$ — la moitié de la valeur initiale, et non de l'écart entre l'initiale et la finale. Ici, $\sigma_0/2 = 0{,}25\ \text{S}\cdot\text{m}^{-1}$, une valeur atteinte seulement vers $t \approx 18\ \text{min}$ sur ce même tableau — plus de deux fois trop tard. La bonne demi-hauteur se prend entre $\sigma_0$ et la valeur finale $\sigma_f$ (le palier : $\sigma_f = \sigma_0 + k\,x_{max} = 0{,}50 - 63\times5{,}0\times10^{-3} \approx 0{,}19\ \text{S}\cdot\text{m}^{-1}$ ici), jamais entre $\sigma_0$ et zéro : $\sigma(x_{max}/2) = (\sigma_0+\sigma_f)/2$, une propriété de toute fonction affine, quelle que soit par ailleurs l'allure — jamais affine, elle — de $\sigma$ en fonction du temps.
+**Le piège à éviter :** ne lis jamais $t_{1/2}$ à l'instant où $\sigma = \sigma_0/2$ — la moitié de la valeur initiale, et non de l'écart entre l'initiale et la finale. Ici, $\sigma_0/2 = 0{,}30\ \text{S}\cdot\text{m}^{-1}$, une valeur atteinte seulement vers $t \approx 11\ \text{min}$ sur ce même tableau (entre $0{,}33$ à $9\ \text{min}$ et $0{,}29$ à $12\ \text{min}$) — près de deux fois trop tard. La bonne demi-hauteur se prend entre $\sigma_0$ et la valeur finale $\sigma_f$ (le palier : $\sigma_f = \sigma_0 + k\,x_{max} = 0{,}60 + (-2{,}0\times10^{2})\times2{,}1\times10^{-3} = 0{,}18\ \text{S}\cdot\text{m}^{-1}$ ici), jamais entre $\sigma_0$ et zéro : $\sigma(x_{max}/2) = (\sigma_0+\sigma_f)/2$, une propriété de toute fonction affine, quelle que soit par ailleurs l'allure — jamais affine, elle — de $\sigma$ en fonction du temps. Le piège n'existe que parce que $\sigma_f$ n'est pas nul ; c'est justement le cas ici, où les ions $Cl^-$ et $Mg^{2+}$ conduisent encore le courant une fois la réaction terminée.
 
 [[figure:t-demi-sur-sigma]]
 
-**(b) La vitesse, à partir de $d\sigma/dt$.** *Ce qu'on cherche ici, et pourquoi ce geste :* on veut $v$ à $t = 12\ \text{min}$. Le principe du chapitre 3 reste entier, $v = \dfrac{1}{V}\dfrac{dx}{dt}$ — seulement, ici, on ne dérive pas $x$ directement : on inverse la relation $\sigma = \sigma_0+kx$ pour écrire $x = (\sigma-\sigma_0)/k$, puis on dérive par rapport au temps :
+**(b) La vitesse, à partir de $d\sigma/dt$.** *Ce qu'on cherche ici, et pourquoi ce geste :* on veut $v$ à $t = 6\ \text{min}$, l'instant $t_{1/2}$ qu'on vient de lire. Le principe du chapitre 3 reste entier, $v = \dfrac{1}{V}\dfrac{dx}{dt}$ — seulement, ici, on ne dérive pas $x$ directement : on inverse la relation $\sigma = \sigma_0+kx$ pour écrire $x = (\sigma-\sigma_0)/k$, puis on dérive par rapport au temps :
 
 $$\frac{dx}{dt} = \frac{1}{k}\frac{d\sigma}{dt} \qquad \Longrightarrow \qquad v = \frac{1}{V}\frac{dx}{dt} = \frac{1}{kV}\frac{d\sigma}{dt}$$
 
-On estime $d\sigma/dt$ en $t=12\ \text{min}$ par la sécante symétrique entre $t=8$ et $t=16\ \text{min}$ (méthode du chapitre 3) :
+On estime $d\sigma/dt$ en $t=6\ \text{min}$ par la sécante symétrique entre $t=3$ et $t=9\ \text{min}$ (méthode du chapitre 3), en passant tout de suite l'intervalle de temps en secondes ($9 - 3 = 6\ \text{min}$, soit $360\ \text{s}$) :
 
-$$\left.\frac{d\sigma}{dt}\right|_{12\ \text{min}} \approx \frac{\sigma(16)-\sigma(8)}{16-8} = \frac{0{,}26-0{,}34}{8} = -1{,}0\times10^{-2}\ \text{S}\cdot\text{m}^{-1}\cdot\text{min}^{-1} \approx -1{,}7\times10^{-4}\ \text{S}\cdot\text{m}^{-1}\cdot\text{s}^{-1}$$
+$$\left.\frac{d\sigma}{dt}\right|_{6\ \text{min}} \approx \frac{\sigma(9)-\sigma(3)}{(9-3)\times60} = \frac{0{,}33-0{,}48}{360} \approx -4{,}2\times10^{-4}\ \text{S}\cdot\text{m}^{-1}\cdot\text{s}^{-1}$$
 
-On reporte dans la formule ci-dessus, avec $k = -63\ \text{S}\cdot\text{m}^{-1}\cdot\text{mol}^{-1}$ et $V = 2{,}50\times10^{-4}\ \text{m}^3$ :
+On reporte dans la formule ci-dessus, avec $k = -2{,}0\times10^{2}\ \text{S}\cdot\text{m}^{-1}\cdot\text{mol}^{-1}$ et $V = 3{,}00\times10^{-4}\ \text{m}^3$ :
 
-$$v(12\ \text{min}) = \frac{1}{kV}\times\left.\frac{d\sigma}{dt}\right|_{12\ \text{min}} = \frac{1}{(-63)\times2{,}50\times10^{-4}}\times(-1{,}7\times10^{-4})$$
+$$v(6\ \text{min}) = \frac{1}{kV}\times\left.\frac{d\sigma}{dt}\right|_{6\ \text{min}} = \frac{1}{(-2{,}0\times10^{2})\times3{,}00\times10^{-4}}\times(-4{,}2\times10^{-4})$$
 
-$$v(12\ \text{min}) \approx 1{,}1\times10^{-2}\ \text{mol}\cdot\text{m}^{-3}\cdot\text{s}^{-1} = 1{,}1\times10^{-5}\ \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$$
+$$v(6\ \text{min}) \approx 7{,}0\times10^{-3}\ \text{mol}\cdot\text{m}^{-3}\cdot\text{s}^{-1} = 7{,}0\times10^{-6}\ \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$$
 
 Les deux signes moins — celui de $k$, celui de la pente de $\sigma(t)$ — se compensent exactement : une vitesse volumique de réaction ne peut pas être négative, puisque $x(t)$ ne fait que croître.
 
 ### Et si la grandeur suivie est une pression ?
 
-Le même principe — traduire la condition sur $x$ en condition sur la grandeur réellement mesurée — s'applique au suivi manométrique. Si la réaction dégage un gaz dans une enceinte fermée, à volume $V_{gaz}$ constant, la surpression $\Delta P = P(t) - P_0$ mesurée est due exactement au gaz formé, en quantité $x(t)$ : la loi des gaz parfaits donne $\Delta P\cdot V_{gaz} = x\cdot R\cdot T$ ($\Delta P$ en $\text{Pa}$, $V_{gaz}$ en $\text{m}^3$, $R = 8{,}314\ \text{J}\cdot\text{mol}^{-1}\cdot\text{K}^{-1}$, $T$ en $\text{K}$). En divisant cette relation, prise à l'instant $t$, par la même relation prise à l'état final, $V_{gaz}$, $R$ et $T$ se simplifient tous les trois :
+Le même principe — traduire la condition sur $x$ en condition sur la grandeur réellement mesurée — s'applique au suivi manométrique. Si la réaction dégage un gaz dans une enceinte fermée, à volume $V_{gaz}$ constant, la surpression $\Delta P = P(t) - P_0$ mesurée est due exactement au gaz formé, en quantité $x(t)$ : la loi des gaz parfaits donne $\Delta P\cdot V_{gaz} = x\cdot R\cdot T$ ($\Delta P$ en $\text{Pa}$, $V_{gaz}$ en $\text{m}^3$, $T$ en $\text{K}$, $R$ la constante des gaz parfaits). En divisant cette relation, prise à l'instant $t$, par la même relation prise à l'état final, $V_{gaz}$, $R$ et $T$ se simplifient tous les trois :
 
 $$x(t) = x_{max}\,\frac{\Delta P}{\Delta P_{max}}$$
 
-La condition $x(t_{1/2}) = x_{max}/2$ se traduit alors sans jamais calculer $R$, $T$ ni $V_{gaz}$ :
+La condition $x(t_{1/2}) = x_{max}/2$ se traduit alors sans avoir besoin de connaître ni $R$, ni $T$, ni $V_{gaz}$ — pas même la valeur numérique de $R$ :
 
 $$t_{1/2} : \quad \Delta P(t_{1/2}) = \frac{\Delta P_{max}}{2}$$
 
@@ -270,7 +272,7 @@ $$t_{1/2} : \quad \Delta P(t_{1/2}) = \frac{\Delta P_{max}}{2}$$
 - La vitesse volumique de réaction : $v = \dfrac{1}{V}\dfrac{dx}{dt}$, en $\text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$ ; graphiquement, la pente de la tangente à $x(t)$ divisée par $V$.
 - $v(t)$ diminue continûment au cours du temps : maximale au début, elle tend vers zéro quand la réaction s'achève — parce que les concentrations des réactifs chutent, donc les chocs efficaces se raréfient (lien avec le chapitre précédent).
 - Le temps de demi-réaction $t_{1/2}$ : l'instant où $x(t_{1/2}) = x_{max}/2$, lu graphiquement ; un repère de durée pratique pour comparer la rapidité de deux transformations.
-- Quand la grandeur suivie n'est pas $x$ mais une grandeur affine de $x$ (conductivité, pression…), $t_{1/2}$ se lit à la demi-hauteur **entre la valeur initiale et la valeur finale** — $\sigma = (\sigma_0+\sigma_f)/2$, ou $\Delta P = \Delta P_{max}/2$ — jamais à la moitié de la seule valeur initiale.
+- Quand la grandeur suivie n'est pas $x$ mais une grandeur affine de $x$ (conductivité, pression…), $t_{1/2}$ se lit à la demi-hauteur **entre la valeur initiale et la valeur finale** — $\sigma = (\sigma_0+\sigma_f)/2$, ou $\Delta P = \Delta P_{max}/2$ — jamais à la moitié de la seule valeur initiale. Pour la vitesse, même réflexe : on exprime d'abord $x$ en fonction de la grandeur mesurée, en inversant la relation affine, puis on dérive par rapport au temps.
 
 ### Exercice de type bac
 
