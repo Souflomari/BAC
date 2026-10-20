@@ -84,7 +84,13 @@ $$F(x) = \int_a^x f(t)\,\mathrm{d}t$$
 
 Prends une primitive $G$ de $f$ sur $I$ — n'importe laquelle, comme tu l'as vu plus haut dans ce chapitre. Par définition de l'intégrale, $F(x) = G(x) - G(a)$ pour tout $x$ : $F$ n'est donc rien d'autre que $G$, décalée d'une constante $-G(a)$. Or une fonction qui diffère d'une primitive par une constante est **elle-même** une primitive (la dérivée d'une constante est nulle), donc :
 
-$$\boxed{F' = f} \qquad \text{et} \qquad F(a) = G(a) - G(a) = 0 \quad \big(\text{convention } \textstyle\int_a^a = 0,\ \text{chapitre 4}\big)$$
+$$\boxed{F' = f} \qquad \text{et} \qquad F(a) = G(a) - G(a) = 0$$
+
+La seconde égalité dit quelque chose qui servira souvent : une intégrale dont les deux bornes sont égales est nulle. C'est la définition elle-même, appliquée avec $b=a$ :
+
+$$\int_a^a f(t)\,\mathrm{d}t = G(a) - G(a) = 0$$
+
+On s'en servira désormais comme d'une convention, $\int_a^a f = 0$, sans la redémontrer.
 
 $F$ est donc **la** primitive de $f$ qui s'annule en $a$ — sans qu'il soit nécessaire de connaître $G$ explicitement pour l'affirmer.
 
@@ -94,7 +100,9 @@ Prends $f(t)=t$ (continue sur $\mathbb{R}$) et $F(x) = \displaystyle\int_{-2}^{x
 
 **Ce qu'on cherche et pourquoi ce geste :** d'après le mécanisme ci-dessus, $F$ est une primitive de $f$ : elle est donc décroissante là où $f\leq0$, croissante là où $f\geq0$, avec un minimum en $x=0$.
 
-**Prends position avant de lire la suite :** $f$ devient positive dès que $x$ dépasse $0$. $F(x)$ devient-elle positive elle aussi dès que $x$ dépasse $0$ ?
+**Prends position avant de lire la suite :** $f$ devient positive dès que $x$ dépasse $0$. Et $F$ — sur quelle partie de $[-2,3]$ est-elle strictement positive ? Engage-toi avant de calculer.
+
+[[checkpoint:cp-r1-signe-de-F]]
 
 Calcule $F$ avec une primitive connue de $t\mapsto t$, à savoir $t\mapsto\frac{t^2}{2}$ :
 
@@ -108,7 +116,7 @@ Mais regarde le **signe** de $F$, pas seulement ses variations. $F(x)=0 \iff x^2
 
 $$\boxed{F(x) < 0 \text{ pour tout } x \in\, ]-2,2[\, ,\quad\text{alors que } f(x) > 0 \text{ dès } x>0}$$
 
-$F$ ne devient positive qu'en $x=2$ — deux unités **après** que $f$ soit devenue positive en $x=0$. Si ta prédiction disait « oui, dès $0$ », regarde pourquoi ce n'est pas le cas.
+$F$ ne devient positive qu'en $x=2$ — deux unités **après** que $f$ soit devenue positive en $x=0$. Si tu avais parié sur « dès que $x$ dépasse $0$ », regarde pourquoi ce n'est pas le cas. Et si tu l'avais crue positive partout, comme une aire, ou positive d'abord puis négative après $2$, un seul nombre tranche : $F(0)=-2$. $F$ part de $0$ en $x=-2$ et commence par **descendre** sous zéro.
 
 **Le piège à éviter.** Confondre le signe de $F$ avec celui de $f$. $F(x)$ **accumule** tout ce qui s'est passé depuis $a=-2$ : même quand $f$ redevient positive après $0$, $F$ doit d'abord compenser toute l'aire négative accumulée sur $[-2,0]$ avant de pouvoir redevenir positive elle-même. C'est la dérivée $F'=f$ qui partage le signe de $f$, point par point — jamais $F$ elle-même, qui garde la mémoire du passé.
 
@@ -212,9 +220,11 @@ Tu sais depuis le début de ce chapitre qu'une fonction a une infinité de primi
 
 **Ce qu'on cherche et pourquoi ce geste :** d'abord une primitive quelconque, par le modèle $u'u^n$ du paragraphe précédent. Ici $u(x)=x^2+1$, $u'(x)=2x$, et $6x = 3\times2x$, donc $f(x) = 3\,u'(x)\,u(x)^2$. Une primitive de $u'u^2$ est $\frac{u^3}{3}$, donc une primitive de $3u'u^2$ est $u^3 = (x^2+1)^3$. La famille complète de primitives de $f$ est donc $(x^2+1)^3 + C$, $C$ décrivant $\mathbb{R}$.
 
-**Prends position avant de lire la suite :** pour trouver $C$, faut-il remplacer $x$ par $0$ dans $f$, ou dans $(x^2+1)^3+C$ ?
+**Prends position avant de lire la suite :** pour trouver $C$, faut-il remplacer $x$ par $0$ dans $f$, ou dans $(x^2+1)^3+C$ ? Fais les deux essais sur ta feuille avant de continuer, et regarde ce que chacun te permet de trouver.
 
-C'est dans la primitive, jamais dans $f$, que la condition se lit : $F(0) = (0^2+1)^3+C = 1+C$. La condition dit $F(0)=5$, donc $1+C=5$, c'est-à-dire $C=4$.
+Suis d'abord la piste $f$, jusqu'au bout. $f(0) = 6\times0\times(0^2+1)^2 = 0$. Et maintenant ? La condition dit $F(0)=5$ : tu as un $0$ d'un côté, un $5$ de l'autre, et aucun $C$ nulle part — $f$ ne contient pas la constante, il n'y a **rien à résoudre**. La piste s'arrête là, et c'est elle-même qui te renseigne : la condition $F(0)=5$ porte sur $F$, la seule des deux fonctions qui contient le $+C$.
+
+Dans la primitive, l'équation existe bel et bien : $F(0) = (0^2+1)^3+C = 1+C$. La condition dit $F(0)=5$, donc $1+C=5$, c'est-à-dire $C=4$.
 
 $$\boxed{F(x) = (x^2+1)^3 + 4}$$
 
@@ -282,7 +292,7 @@ Jusqu'ici, on a toujours écrit $\int_a^b$ en supposant $a \leq b$. Pour que ce 
 
 $$\int_a^a f(x)\,\mathrm{d}x = 0 \qquad \text{et} \qquad \int_b^a f(x)\,\mathrm{d}x = -\int_a^b f(x)\,\mathrm{d}x$$
 
-La première est immédiate : $F(a)-F(a)=0$. La deuxième aussi : $F(a)-F(b) = -\big(F(b)-F(a)\big)$.
+La première, tu l'as déjà rencontrée au chapitre 2 : $F(a)-F(a)=0$. La deuxième est tout aussi immédiate : $F(a)-F(b) = -\big(F(b)-F(a)\big)$.
 
 ### Le mécanisme
 
@@ -366,7 +376,15 @@ Cette section est au programme de la filière Sciences Mathématiques ; en Scien
 
 **Le problème.** Le chapitre 2 a défini $\int_a^b f$ à partir d'une primitive. Mais certains sujets construisent une somme — un nombre de termes qui grandit avec $n$ — et demandent sa limite, sans qu'aucune primitive n'apparaisse dans l'énoncé. Le mécanisme de la comparaison, que tu viens de voir, est exactement l'outil qui relie une telle somme à une intégrale.
 
-**Le mécanisme, sur $f$ continue et croissante sur $[0,1]$.** Découpe $[0,1]$ en $n$ tranches égales de largeur $\frac1n$ : $\left[0,\frac1n\right]$, $\left[\frac1n,\frac2n\right]$, …, $\left[\frac{n-1}{n},1\right]$. Sur la tranche $\left[\frac{k-1}{n},\frac{k}{n}\right]$, $f$ étant croissante, son minimum est à gauche et son maximum à droite :
+**Deux sommes de rectangles.** Prends $f$ continue et **croissante** sur $[0,1]$, et découpe $[0,1]$ en $n$ tranches égales de largeur $\frac1n$ : $\left[0,\frac1n\right]$, $\left[\frac1n,\frac2n\right]$, …, $\left[\frac{n-1}{n},1\right]$. Sur chaque tranche, pose un rectangle de largeur $\frac1n$. Pour sa hauteur, deux choix se présentent : la valeur de $f$ au bord **droit** de la tranche, ou au bord **gauche**. Les deux sommes d'aires correspondantes s'écrivent :
+
+$$S_n = \frac1n\sum_{k=1}^{n} f\!\left(\frac{k}{n}\right) \quad \text{(bords droits)} \qquad\qquad T_n = \frac1n\sum_{k=0}^{n-1} f\!\left(\frac{k}{n}\right) \quad \text{(bords gauches)}$$
+
+**Prends position avant de lire la suite :** par rapport à $\int_0^1 f(x)\,\mathrm{d}x$, l'aire sous la courbe, où se placent $S_n$ et $T_n$ ?
+
+[[checkpoint:cp-r4-riemann-position]]
+
+**Le mécanisme.** Regarde une seule tranche, $\left[\frac{k-1}{n},\frac{k}{n}\right]$. $f$ étant croissante, son minimum sur la tranche est à gauche et son maximum à droite :
 
 $$f\!\left(\frac{k-1}{n}\right) \leq f(x) \leq f\!\left(\frac{k}{n}\right) \qquad \text{pour } x \in \left[\frac{k-1}{n},\frac{k}{n}\right]$$
 
@@ -374,11 +392,13 @@ Intègre cet encadrement sur la tranche, de longueur $\frac1n$, grâce à la com
 
 $$\frac1n f\!\left(\frac{k-1}{n}\right) \ \leq\ \int_{\frac{k-1}{n}}^{\frac{k}{n}} f(x)\,\mathrm{d}x\ \leq\ \frac1n f\!\left(\frac{k}{n}\right)$$
 
-Somme ces $n$ encadrements pour $k=1,\ldots,n$, et recolle les $n$ intégrales de tranches en une seule, de $0$ à $1$, par la relation de Chasles (chapitre 4) :
+Somme ces $n$ encadrements pour $k=1,\ldots,n$, et recolle les $n$ intégrales de tranches en une seule, de $0$ à $1$, par la relation de Chasles (chapitre 4). À gauche, les hauteurs $f\!\left(\frac{k-1}{n}\right)$, pour $k$ de $1$ à $n$, sont exactement les $f\!\left(\frac{j}{n}\right)$ pour $j$ de $0$ à $n-1$ : c'est $T_n$. À droite, c'est $S_n$ :
 
-$$T_n \ \leq\ \int_0^1 f(x)\,\mathrm{d}x\ \leq\ S_n \qquad\text{où}\qquad S_n = \frac1n\sum_{k=1}^{n} f\!\left(\frac{k}{n}\right), \quad T_n = \frac1n\sum_{k=0}^{n-1} f\!\left(\frac{k}{n}\right)$$
+$$T_n \ \leq\ \int_0^1 f(x)\,\mathrm{d}x\ \leq\ S_n$$
 
-$S_n$ est la somme des rectangles **au-dessus** de la courbe (hauteur au bord droit de chaque tranche), $T_n$ la somme des rectangles **en dessous** (hauteur au bord gauche). Reste à montrer qu'elles se resserrent l'une contre l'autre. En écrivant les deux sommes terme à terme, tous les termes du milieu ($k=1$ à $n-1$) sont **identiques** dans $S_n$ et $T_n$ — ils s'annulent dans la différence, et il ne reste que les deux bords :
+**Confronte ta prédiction.** Sur chaque tranche, le rectangle de $S_n$ prend la hauteur du point le plus haut : il **déborde** au-dessus de la courbe. Celui de $T_n$ prend la hauteur du point le plus bas : il reste **sous** la courbe. Si tu avais placé $T_n$ au-dessus, tu avais lu le maximum de la tranche à son bord gauche — c'est l'inverse pour une fonction croissante. Si tu pensais que les deux sommes grossissent quand $n$ grandit, regarde la largeur : chaque rectangle ne mesure que $\frac1n$, donc plus il y en a, plus ils sont fins. Et si tu pensais qu'elles finissent par **égaler** l'intégrale, l'encadrement te répond : pour $f$ strictement croissante, chaque rectangle de $S_n$ dépasse un peu, chaque rectangle de $T_n$ manque un peu, et cela pour tout $n$. L'écart ne disparaît pas ; il se resserre — et c'est ce qu'il reste à montrer.
+
+En écrivant les deux sommes terme à terme, tous les termes du milieu ($k=1$ à $n-1$) sont **identiques** dans $S_n$ et $T_n$ — ils s'annulent dans la différence, et il ne reste que les deux bords :
 
 $$S_n - T_n = \frac1n\Big(f(1) - f(0)\Big) \xrightarrow[n\to+\infty]{} 0$$
 
@@ -392,9 +412,7 @@ Calcule $\displaystyle\lim_{n\to+\infty} S_n$ où $S_n = \dfrac1n\displaystyle\s
 
 **Ce qu'on cherche et pourquoi ce geste :** $S_n$ a exactement la forme $\frac1n\sum f\!\left(\frac{k}{n}\right)$ avec $f(x)=x^2$, continue et croissante sur $[0,1]$ — le mécanisme ci-dessus s'applique directement, avec $T_n = \frac1n\sum_{k=0}^{n-1}\left(\frac{k}{n}\right)^2$.
 
-**Prends position avant de lire la suite :** $S_n$ (indices $k=1$ à $n$) et $T_n$ (indices $k=0$ à $n-1$) convergent-elles, selon toi, vers la même limite, ou vers deux limites différentes ?
-
-Le mécanisme répond déjà : $S_n - T_n = \frac1n\big(f(1)-f(0)\big) = \frac1n(1-0) = \frac1n \to 0$, donc les deux **ont la même limite**, quelle que soit $f$. Reste à identifier cette limite : $T_n \leq \displaystyle\int_0^1 x^2\,\mathrm{d}x \leq S_n$, et tu as déjà calculé cette intégrale plus haut dans ce chapitre : $\displaystyle\int_0^1 x^2\,\mathrm{d}x = \dfrac13$.
+**Deux sommes, une seule limite.** Le mécanisme a déjà fait le travail : $S_n - T_n = \frac1n\big(f(1)-f(0)\big) = \frac1n(1-0) = \frac1n \to 0$, donc les deux **ont la même limite**. Reste à identifier cette limite : $T_n \leq \displaystyle\int_0^1 x^2\,\mathrm{d}x \leq S_n$, et tu as déjà calculé cette intégrale plus haut dans ce chapitre : $\displaystyle\int_0^1 x^2\,\mathrm{d}x = \dfrac13$.
 
 $$\boxed{\lim_{n\to+\infty} S_n = \lim_{n\to+\infty} T_n = \frac13}$$
 
@@ -899,4 +917,58 @@ Une troisième question, toujours dans le registre du bac, sur l'intervalle $[1,
      la primitive de cos(3x) sur la foi d'une ligne dérivée serait plus
      coûteux que l'inverse. Point ouvert pour le propriétaire si le cadre
      SExp est un jour vérifié.
+
+     NOTE AJOUTÉE (dette de cadre G3, passe pédagogie, 2026-10-20 —
+     docs/audits/critiques/cadre-GH-pedagogie.md, correctifs 2, 3, 10, 15) :
+     (10) [CORRIGÉ, correctif 15] Le chapitre 2 s'appuyait sur « la
+     convention ∫ₐᵃ = 0, chapitre 4 » — un renvoi vers l'avant. La
+     convention est maintenant énoncée là où elle sert pour la première fois
+     (F(a) = G(a) − G(a) = 0, c'est la définition avec b = a) ; le
+     chapitre 4 la rappelle au lieu de l'introduire. L'énoncé général de
+     Riemann pour f seulement continue était déjà présent (fin de la
+     démonstration du chapitre 5) ; inchangé.
+     (11) [DÉCIDÉ, correctif 2 — template v2, case A] Les cinq « Prends
+     position » de la vague G3, un par un :
+       - signe de F contre signe de f (chapitre 2) : PORTE DE RUPTURE — le
+         modèle « F a le signe de f » est une vraie erreur de conception.
+         Point d'arrêt `cp-r1-signe-de-F`, placé avant le calcul de F.
+       - sommes de Riemann (chapitre 5) : PORTE DE RUPTURE — voir (12).
+         Point d'arrêt `cp-r4-riemann-position`.
+       - primitive de x(x²+1)³ et « sin(3x) ou ⅓ sin(3x) » (chapitre 2) :
+         RESTENT EN PROSE. Ce sont deux exécutions du même geste
+         procédural (ajuster la constante entre le facteur donné et u'),
+         déjà engagé sur u'/u ; la consigne demande d'écrire une primitive
+         candidate, et les lignes suivantes la font dériver et casser sur
+         son propre nombre (8 fois f, puis 1 au lieu de 1/3). Les modèles
+         sont portés par le banc (CI-59, CI-60, CI-67, CI-71 ;
+         CI-62, CI-63, CI-69).
+       - « C dans f ou dans F » (chapitre 2) : RESTE EN PROSE, mais
+         devient une porte d'essai ÉCRIT (« fais les deux essais sur ta
+         feuille »), et la piste fausse est maintenant suivie jusqu'à son
+         impasse (correctif 10) : f(0) = 0, aucun C, rien à résoudre. Un
+         QCM à quatre choix y aurait été forcé : la piste f et la piste
+         « C = y₀ » donnent ici la même valeur (f(0) = 0), si bien que deux
+         choix auraient affiché C = 5.
+     (12) [CORRIGÉ, correctif 3] La prédiction des sommes de Riemann était
+     creuse : « S_n et T_n ont-elles la même limite ? » arrivait dans
+     l'exemple travaillé, une dizaine de lignes APRÈS S_n − T_n → 0. Elle
+     est remplacée par une prédiction posée AVANT la construction de
+     l'encadrement — où se placent S_n et T_n par rapport à l'intégrale,
+     pour f croissante — engagée par `cp-r4-riemann-position`, et
+     confrontée juste après l'encadrement (« Confronte ta prédiction »),
+     chacun des trois modèles faux étant repris par son nom.
+     (13) [LEDGER, case B] Les ids Riemann après la scission (items.yaml) :
+       - `riemann-facteur-un-sur-n-oublie` et
+         `riemann-bornes-indices-changent-limite` : rompus en prose (piège
+         de l'exemple travaillé du chapitre 5 ; le premier aussi dans
+         « Confronte ta prédiction »).
+       - `riemann-terme-constant-ignore` : DÉLÉGUÉ aux items CI-68, CI-72,
+         CI-76 — le modèle n'apparaît que lorsque f a un terme constant,
+         et chaque retour le casse par le calcul (1/n)·n·c = c.
+       - `riemann-somme-mal-identifiee` (fonction ou intervalle lus de
+         travers) : DÉLÉGUÉ aux items CI-67, CI-72, CI-74 — c'est un geste
+         de lecture qui se pratique sur des sommes données.
+       - l'encadrement inversé (`inegalite-moyenne-sans-longueur`, m et M
+         intervertis tranche par tranche) : rompu en prose
+         (« Confronte ta prédiction ») et au point d'arrêt.
 -->

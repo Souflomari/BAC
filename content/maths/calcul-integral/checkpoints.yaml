@@ -16,7 +16,7 @@ skill_code: maths_calcul_integral
 #                                      Probes aire-naive-geometrique (a naive
 #                                      geometric shortcut instead of the exact
 #                                      integral).
-#   cp-r1-primitive   (after R1)     — rupture gate: PRIMITIVE vs DÉRIVÉE. To
+#   cp-r1-primitive   (in R1)        — rupture gate: PRIMITIVE vs DÉRIVÉE. To
 #                                      verify F is a primitive of h, one
 #                                      DIFFERENTIATES F, never integrates h nor
 #                                      differentiates h. Probes primitive-vs-derivee.
@@ -64,6 +64,24 @@ skill_code: maths_calcul_integral
 #                                      from CI-53 (u(x)=3x-8 on [1,4]) and from
 #                                      this rung's two worked examples. Probes
 #                                      u-sur-u-absolue-ou-intervalle-oubliee.
+#   cp-r1-signe-de-F  (in R1, staged  — COMMIT gate (cadre G/H, pedagogy fix
+#      before the computation)         2): where is F(x)=∫₋₂ˣ t dt strictly
+#                                      positive? Before the text computes
+#                                      F = x²/2 − 2. Probes
+#                                      fonction-cumulee-confondue-avec-f.
+#   cp-r4-riemann-position (in R4,    — COMMIT gate (cadre G/H, pedagogy fixes
+#      staged before the encadrement)  2 and 3): for f strictly increasing,
+#                                      where do S_n and T_n sit relative to
+#                                      ∫₀¹ f? Replaces the hollow « même
+#                                      limite ? » prompt, which came after
+#                                      its answer. Probes
+#                                      inegalite-moyenne-sans-longueur (min
+#                                      and max of each slice swapped).
+#   The other three new « Prends position » of wave G3 stay PROSE, by
+#   decision (lesson.md, validation note (11)): u'·uⁿ and cos(3x) are the
+#   constant-adjustment PROCEDURE, self-checked by differentiation in the
+#   next lines; « C dans f ou dans F ? » is a written-attempt gate whose
+#   wrong branch the prose now runs to its dead end.
 #
 # EVERY distractor carries a named misconception id from this notion's inventory
 # (items.yaml). Option lengths are balanced so the correct choice is never the
@@ -156,7 +174,7 @@ checkpoints:
           un peu au-dessus de ton estimation. Il faut l'intégrale pour trancher.
 
   # ════════════════════════════════════════════════════════════════
-  # CP-1 | id: cp-r1-primitive | placed AFTER R1
+  # CP-1 | id: cp-r1-primitive | placed IN R1 (label corrected 2026-10-20: R1 grew past its marker)
   #        Rupture gate: PRIMITIVE vs DÉRIVÉE. Verifying that F is a
   #        primitive of h means checking F' = h (differentiate F) — not
   #        integrating h, not differentiating h. Probes primitive-vs-derivee.
@@ -169,7 +187,7 @@ checkpoints:
     tags: [checkpoint, formative, misconception_driven, maths_calcul_integral]
     primary_misconception: mc.math.maths_calcul_integral.primitive-vs-derivee
     item_source: original
-    lesson_placement: after_R1
+    lesson_placement: in_R1
 
     stem: |
       Le sujet de type bac te demandera de vérifier que $F(x) = x\,e^x$ est une
@@ -618,3 +636,153 @@ checkpoints:
           question n'est même pas le choix du modèle : $u$ s'annule en
           $x=2{,}5\in[0,4]$, donc aucun des deux modèles ne s'applique — cette
           intégrale n'existe pas.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-8 | id: cp-r1-signe-de-F | placed IN R1, staged BEFORE the
+  #        computation of F(x) = x²/2 − 2 (the worked example
+  #        « lire les variations de F sur le signe de f »). Turns the
+  #        rhetorical « F devient-elle positive dès 0 ? » into a real
+  #        commit (pedagogy critic, cadre G/H, P1). Four distinct models,
+  #        four distinct ids: F given the sign of f (the target), F read
+  #        as an area (so positive everywhere), the bounds evaluated in
+  #        the wrong order (F = G(−2) − G(x)). Not a clone of CI-58,
+  #        CI-65, CI-66 (abstract sign tables there; explicit f(t)=t
+  #        here, the lesson's own example).
+  #        Probes fonction-cumulee-confondue-avec-f.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-signe-de-F
+    rung: "R1"
+    habilete: application_non_explicite
+    skill_code: maths_calcul_integral
+    tags: [checkpoint, formative, misconception_driven, maths_calcul_integral, fonction_definie_par_integrale, predict_commit]
+    primary_misconception: mc.math.maths_calcul_integral.fonction-cumulee-confondue-avec-f
+    item_source: original
+    lesson_placement: in_R1
+
+    stem: |
+      Soit $f(t)=t$ et, pour $x\in[-2\,;3]$, $F(x)=\displaystyle\int_{-2}^{x} t\,\mathrm{d}t$.
+      $f$ est négative sur $[-2\,;0[$ et positive sur $]0\,;3]$. **Avant de
+      lire la suite, engage-toi :** sur quelle partie de $[-2\,;3]$ la
+      fonction $F$ est-elle strictement positive ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Sur $]0\\,;3]$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.fonction-cumulee-confondue-avec-f
+        feedback: |
+          Modèle détecté : **$F$ prend le signe de $f$**. C'est la dérivée
+          $F'=f$ qui change de signe en $0$, pas $F$. En $x=0$, $F$ a
+          accumulé toute l'aire négative de $[-2\,;0]$ : $F(0)=-2$. Elle
+          remonte ensuite, mais doit d'abord regagner ces deux unités ; elle
+          ne repasse au-dessus de $0$ qu'en $x=2$.
+
+      - id: B
+        text: "Sur $]2\\,;3]$"
+        correct: true
+        feedback: |
+          Exact. $F(x)=\dfrac{x^2}{2}-2$ part de $F(-2)=0$, descend jusqu'à
+          $F(0)=-2$ tant que $f<0$, puis remonte, et ne redevient nulle qu'en
+          $x=2$. $F$ garde la mémoire de l'aire négative accumulée sur
+          $[-2\,;0]$.
+
+      - id: C
+        text: "Sur $]-2\\,;3]$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.integrale-signee-vs-aire
+        feedback: |
+          Modèle détecté : **$F(x)$ lue comme une aire**, donc positive. Mais
+          l'interprétation en aire suppose $f\geq0$ ; ici $f<0$ sur
+          $[-2\,;0[$, et l'intégrale compte cette partie en négatif :
+          $F(0)=-2<0$.
+
+      - id: D
+        text: "Sur $]-2\\,;2[$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.constante-et-bornes
+        feedback: |
+          Modèle détecté : **les bornes évaluées dans le mauvais ordre**.
+          Avec la primitive $G(t)=\dfrac{t^2}{2}$, $F(x)=G(x)-G(-2)=\dfrac{x^2}{2}-2$.
+          Écrire $G(-2)-G(x)=2-\dfrac{x^2}{2}$ donne exactement l'opposé :
+          positif sur $]-2\,;2[$, négatif ensuite. Borne du haut moins borne
+          du bas.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-9 | id: cp-r4-riemann-position | placed IN R4 (sommes de
+  #        Riemann, filière SM), staged BEFORE the slice encadrement is
+  #        derived. Replaces the hollow « S_n et T_n ont-elles la même
+  #        limite ? », which was asked after the answer was printed
+  #        (pedagogy critic, cadre G/H, P1 and fix 3). Four distinct
+  #        ids: the min/max of each slice swapped (the target —
+  #        inegalite-moyenne-sans-longueur, whose « m et M intervertis »
+  #        is this exact error applied slice by slice), the width 1/n
+  #        forgotten (sums « grow with n »), the approximation taken for
+  #        the exact value. « Strictement croissante » so that no
+  #        distractor becomes true for a constant f.
+  #        Probes inegalite-moyenne-sans-longueur.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-riemann-position
+    rung: "R4"
+    habilete: application_non_explicite
+    skill_code: maths_calcul_integral
+    tags: [checkpoint, formative, misconception_driven, maths_calcul_integral, sommes_riemann, predict_commit]
+    primary_misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+    item_source: original
+    lesson_placement: in_R4
+
+    stem: |
+      $f$ est continue et strictement croissante sur $[0\,;1]$. On découpe
+      $[0\,;1]$ en $n$ tranches de largeur $\frac1n$, et sur chacune on pose
+      un rectangle de largeur $\frac1n$ : avec pour hauteur la valeur de $f$
+      au bord droit de la tranche, la somme des aires est $S_n$ ; au bord
+      gauche, c'est $T_n$. **Avant de lire la suite, engage-toi :** comment
+      $S_n$ et $T_n$ se placent-ils par rapport à $\int_0^1 f(x)\,\mathrm{d}x$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$S_n$ reste en dessous de l'intégrale, $T_n$ au-dessus"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+        feedback: |
+          Modèle détecté : **le minimum et le maximum de la tranche lus du
+          mauvais côté**. $f$ étant croissante, sur chaque tranche son point
+          le plus bas est au bord gauche et son point le plus haut au bord
+          droit. Le rectangle de $S_n$ (bord droit) dépasse donc la courbe,
+          celui de $T_n$ (bord gauche) reste dessous.
+
+      - id: B
+        text: "Les deux dépassent l'intégrale, d'autant plus que $n$ est grand"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.riemann-facteur-un-sur-n-oublie
+        feedback: |
+          Modèle détecté : **la somme des hauteurs prise pour la somme des
+          aires**. Chaque rectangle n'a que la largeur $\frac1n$ : quand $n$
+          grandit, il y a plus de rectangles, mais chacun est plus fin. Les
+          deux sommes ne grossissent pas ; elles se resserrent autour de
+          l'intégrale, l'une par en dessous, l'autre par au-dessus.
+
+      - id: C
+        text: "$T_n$ reste en dessous de l'intégrale, $S_n$ au-dessus"
+        correct: true
+        feedback: |
+          Exact. Sur chaque tranche, $f$ croissante atteint son minimum au
+          bord gauche et son maximum au bord droit : le rectangle de $T_n$
+          reste sous la courbe, celui de $S_n$ la dépasse. D'où
+          $T_n\leq\int_0^1 f(x)\,\mathrm{d}x\leq S_n$, pour tout $n$.
+
+      - id: D
+        text: "Les deux égalent l'intégrale dès que $n$ est assez grand"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.aire-naive-geometrique
+        feedback: |
+          Modèle détecté : **l'approximation prise pour la valeur exacte**.
+          $f$ étant strictement croissante, sur chaque tranche le rectangle
+          de $S_n$ dépasse un peu la courbe et celui de $T_n$ manque un peu,
+          et cela pour tout $n$. L'écart se resserre quand $n$ grandit, sans
+          jamais s'annuler pour un $n$ donné.

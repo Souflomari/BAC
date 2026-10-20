@@ -90,7 +90,9 @@ misconceptions:
       L'élève encadre $\int_a^b f$ par $m$ et $M$ sans multiplier par $b-a$,
       multiplie par une borne au lieu de la longueur, ou choisit mal le minimum
       $m$ et le maximum $M$ (bornes de l'intervalle au lieu de valeurs de $f$,
-      ou $m$ et $M$ intervertis).
+      ou $m$ et $M$ intervertis — y compris tranche par tranche, quand il
+      encadre une intégrale par des sommes de Riemann et permute la somme
+      aux bords gauches et la somme aux bords droits).
     contradicts_principle: >-
       Si $m\le f\le M$ sur $[a,b]$, alors $m(b-a)\le \int_a^b f\le M(b-a)$ : les
       DEUX bornes se multiplient par la LONGUEUR $b-a$, et $m,M$ sont le minimum
@@ -325,14 +327,19 @@ misconceptions:
       référence par le facteur numérique qui relie le coefficient
       réellement donné à $u'$ : il écrit $u^{n+1}$ seule (sans diviser par
       $n+1$), ou reprend $\dfrac{u^{n+1}}{n+1}$ telle quelle sans l'ajuster
-      au facteur constant nécessaire.
+      au facteur constant nécessaire — y compris quand le coefficient donné
+      n'est même pas un multiple constant de $u'$ (le facteur $x$ devant
+      $(x^3+1)^2$, avec $u'=3x^2$) : il prend alors ce coefficient pour $u'$
+      sans avoir vérifié que le modèle s'applique.
     contradicts_principle: >-
       Si $f = k\cdot u'\cdot u^n$ avec $k\neq1$, une primitive est
       $k\times\dfrac{u^{n+1}}{n+1}$ — jamais $u^{n+1}$ seule (l'exposant
       $n+1$ au dénominateur ne disparaît pas), ni $\dfrac{u^{n+1}}{n+1}$
       sans le facteur $k$ : le coefficient qui relie le numérateur donné à
       $u'$ doit multiplier toute la primitive de référence, il ne disparaît
-      pas en cours de route.
+      pas en cours de route. Et ce coefficient $k$ doit être un NOMBRE : si
+      le facteur devant $u^n$ n'est pas un multiple constant de $u'$, le
+      modèle ne s'applique pas tel quel (on développe, par exemple).
   - id: mc.math.maths_calcul_integral.trig-facteur-chaine-ou-signe-oublie
     label: "Primitive de u'·cos u / u'·sin u : facteur de chaîne mal ajusté, ou signe de −cos u perdu"
     description: >-
@@ -361,23 +368,80 @@ misconceptions:
       $C=y_0-G(x_0)$ à partir de cette égalité complète — jamais poser
       $C=y_0$ directement (sauf le cas particulier où $G(x_0)=0$), et
       jamais inverser le signe de la soustraction en isolant $C$.
+  # ── Dette de cadre G3, passe pédagogie (2026-10-20) — SCISSION de
+  # `riemann-somme-mal-identifiee`. L'id déclarait TROIS modèles sans rapport
+  # entre eux (facteur 1/n oublié · bornes d'indices censées changer la
+  # limite · fonction ou intervalle de référence erronés), si bien qu'une
+  # mauvaise réponse à CI-68 ne disait pas lequel tournait ; et le
+  # distracteur « limite 1 » de CI-68 portait un quatrième modèle que la
+  # déclaration ne nommait pas du tout (le terme constant « ne contribue
+  # pas »). Quatre ids, un modèle chacun. L'ancienne chaîne est GARDÉE —
+  # c'est une clé du modèle apprenant — pour le modèle le plus proche de son
+  # nom : la somme mal IDENTIFIÉE (fonction ou intervalle lus de travers).
+  # Plancher : chacun des quatre est porté par au moins 3 items du banc
+  # (CI-74, CI-75, CI-76 écrits pour cela, CI-67/68/72 retagués) — voir
+  # `coverage_summary`.
+  # L'encadrement inversé (bords gauche/droit permutés, CI-74, CI-75 et le
+  # point d'arrêt `cp-r4-riemann-position`) n'a PAS d'id Riemann à lui : c'est
+  # exactement le modèle « m et M intervertis » de
+  # `inegalite-moyenne-sans-longueur` (chapitre 6), appliqué tranche par
+  # tranche — l'encadrement de Riemann EST une inégalité de la moyenne sur
+  # chaque tranche, et la leçon le construit ainsi.
   - id: mc.math.maths_calcul_integral.riemann-somme-mal-identifiee
-    label: "Somme de Riemann mal identifiée : facteur 1/n oublié, bornes d'indices confondues avec l'intervalle, ou fonction/intervalle de référence erronés"
+    label: "Somme de Riemann mal identifiée : fonction ou intervalle de référence lus de travers"
     description: >-
-      Face à une somme de la forme $\frac1n\sum f(k/n)$ dont on demande la
-      limite, l'élève oublie le facteur $\frac1n$ qui rend la somme
-      convergente (et la traite comme une somme qui diverge), ou croit que
-      changer les bornes de sommation ($k=0,\ldots,n-1$ contre
-      $k=1,\ldots,n$) change la limite obtenue, ou identifie la somme à
-      l'intégrale d'une fonction, ou sur un intervalle, différents de ceux
-      que la somme représente réellement.
+      Face à une somme de la forme $\frac1n\sum f(k/n)$, l'élève l'identifie
+      à l'intégrale d'une autre fonction, ou sur un autre intervalle, que
+      ceux qu'elle échantillonne réellement : il suppose la fonction (celle
+      d'un exemple déjà vu, un exposant recopié de travers) au lieu de la
+      lire dans le terme général, ou il lit mal le point d'échantillonnage
+      (il prend $\frac{2k}{n}$ pour un point de $[0,2]$ alors que le pas est
+      $\frac1n$, ou il écrit $f(k)$ à la place de $f(k/n)$).
     contradicts_principle: >-
-      $\frac1n\sum_{k=1}^n f(k/n)$ et $\frac1n\sum_{k=0}^{n-1} f(k/n)$
-      convergent TOUTES LES DEUX vers $\int_0^1 f(x)\,\mathrm{d}x$ (leur
-      différence, $\frac1n\big(f(1)-f(0)\big)$, tend vers $0$) : le facteur
-      $\frac1n$ est ce qui rend la somme convergente, et le choix des
-      bornes d'indices ne change pas la limite. La fonction et l'intervalle
-      corrects se lisent dans la forme exacte de la somme, jamais supposés.
+      La fonction et l'intervalle se LISENT dans la forme exacte de la
+      somme : le pas $\frac1n$ et les points $\frac kn$ découpent $[0,1]$, et
+      la fonction est l'expression qu'on évalue en ces points —
+      $\frac1n\sum f(k/n)$ représente $\int_0^1 f(x)\,\mathrm{d}x$, jamais une
+      fonction ou un intervalle supposés.
+  - id: mc.math.maths_calcul_integral.riemann-facteur-un-sur-n-oublie
+    label: "Somme de Riemann : le facteur 1/n, largeur de chaque tranche, oublié"
+    description: >-
+      L'élève traite une somme de Riemann sans son facteur $\frac1n$ : il
+      additionne les hauteurs $f(k/n)$ comme si chacune était déjà une aire.
+      La somme de $n$ termes lui paraît alors grandir sans borne (il annonce
+      une limite infinie, ou prédit que les sommes grossissent avec $n$), ou,
+      dans un encadrement, il écrit $\sum f(k/n)$ là où chaque rectangle
+      vaut $\frac1n f(k/n)$.
+    contradicts_principle: >-
+      Chaque rectangle a pour largeur $\frac1n$ : sa contribution est
+      $\frac1n f(k/n)$, et c'est ce facteur qui fait de la somme une MOYENNE
+      de $n$ valeurs de $f$, qui converge vers $\int_0^1 f(x)\,\mathrm{d}x$ —
+      plus il y a de rectangles, plus ils sont fins.
+  - id: mc.math.maths_calcul_integral.riemann-bornes-indices-changent-limite
+    label: "Somme de Riemann : changer les bornes de sommation est cru changer la limite"
+    description: >-
+      L'élève croit que deux sommes de Riemann qui ne diffèrent que par
+      leurs bornes d'indices ($k=1,\ldots,n$ contre $k=0,\ldots,n-1$, ou
+      $k=0,\ldots,n$) ont des limites différentes : le terme de bord ajouté
+      ou retiré lui paraît survivre à la limite, comme s'il n'était pas, lui
+      aussi, divisé par $n$.
+    contradicts_principle: >-
+      Deux telles sommes ne diffèrent que de termes de bord de la forme
+      $\frac1n f(0)$ ou $\frac1n f(1)$, qui tendent vers $0$ — par exemple
+      $S_n-T_n=\frac1n\big(f(1)-f(0)\big)\to0$. Le choix des bornes
+      d'indices change chaque somme, pas sa limite.
+  - id: mc.math.maths_calcul_integral.riemann-terme-constant-ignore
+    label: "Somme de Riemann : le terme constant de f cru sans contribution à la limite"
+    description: >-
+      Quand la fonction échantillonnée contient un terme constant $c$ (le
+      $3$ de $2x+3$), l'élève croit que ce terme ne contribue pas à la
+      limite : il lit $\frac1n\sum c$ comme $\frac cn$, qui tend vers $0$, et
+      identifie la limite à l'intégrale de $f$ privée de sa constante.
+    contradicts_principle: >-
+      $\frac1n\sum_{k=1}^{n} c = \frac1n\times nc = c$ : chacun des $n$
+      termes porte la constante, et le facteur $\frac1n$ ne fait que les
+      moyenner. Le terme constant contribue $c=\int_0^1 c\,\mathrm{d}x$ à la
+      limite, exactement comme le reste de $f$.
 
 items:
 
@@ -3765,65 +3829,82 @@ items:
 
       $$\int_0^1 10(2x+3)^3\,\mathrm{d}x = \left[\frac54(2x+3)^4\right]_0^1 = \frac54(5^4)-\frac54(3^4) = \frac{3125}{4}-\frac{405}{4} = \frac{2720}{4}=680$$
 
+  # 2026-10-20 (dette de cadre G3, passe pédagogie) : CI-61 RE-PURPOSÉ. Il était
+  # le troisième exemplaire du même item que CI-59 et CI-60 (repérer u, ajuster
+  # une constante, évaluer — jusqu'au motif des distracteurs). Il pose
+  # maintenant la question qu'aucun item du lot ne posait : le modèle u'·uⁿ
+  # s'applique-t-il ? Même u que CI-59 (x³+1), mais le facteur devant u² est x,
+  # qui n'est PAS un multiple constant de u'=3x² : la clé passe par le
+  # développement. Les deux items forment une paire de contraste voulue.
   - id: CI-61
     rung: "R1"
-    habilete: application_directe
+    habilete: application_non_explicite
     difficulty_level: 3
     skill_code: maths_calcul_integral
-    tags: [primitive_u_prime_u_n, facteur_numerique]
+    tags: [primitive_u_prime_u_n, reconnaissance_du_modele, developpement]
     primary_misconception: mc.math.maths_calcul_integral.u-puissance-n-facteur-non-ajuste
     stem: >
-      Calcule $\displaystyle\int_0^1 6(x+1)^2\,\mathrm{d}x$.
+      Calcule $\displaystyle\int_0^1 x(x^3+1)^2\,\mathrm{d}x$.
     type: mcq
     choices:
       - id: A
-        text: "$14$"
-        correct: true
-      - id: B
-        text: "$42$"
-        correct: false
-        misconception: mc.math.maths_calcul_integral.u-puissance-n-facteur-non-ajuste
-        feedback: >
-          Le modèle $u'u^2$ est bien reconnu ($u=x+1$, $u'=1$, et $6=6\times
-          1$), mais l'exposant $n+1=3$ au dénominateur de la primitive de
-          référence a été oublié : la primitive candidate est $6u^3$ au
-          lieu de $6\times\tfrac{u^3}{3}$ — soit $3$ fois trop grand.
-      - id: C
         text: "$\\dfrac{7}{3}$"
         correct: false
         misconception: mc.math.maths_calcul_integral.u-puissance-n-facteur-non-ajuste
         feedback: >
-          La structure $\tfrac{u^3}{3}$ est correcte, mais le facteur $6$
-          qui relie $6$ à $u'=1$ a été oublié : la primitive doit être
-          $6\times\tfrac{u^3}{3}$, pas $\tfrac{u^3}{3}$ seule (comme si le
-          coefficient devant $u^2$ valait déjà $1$).
+          C'est $\left[\tfrac{(x^3+1)^3}{3}\right]_0^1$ : le modèle $u'u^2$ a
+          été appliqué avec $u=x^3+1$, en prenant le facteur $x$ pour $u'$.
+          Or $u'=3x^2$, et $x$ n'en est pas un multiple constant : le
+          rapport $\tfrac{x}{3x^2}=\tfrac{1}{3x}$ dépend de $x$, aucun
+          coefficient ne raccorde les deux. Dérive $\tfrac{(x^3+1)^3}{3}$
+          pour vérifier : tu obtiens $3x^2(x^3+1)^2$, pas $x(x^3+1)^2$.
+      - id: B
+        text: "$\\dfrac{4}{3}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.linearite-abusive
+        feedback: >
+          C'est $\left[\tfrac{x^2}{2}\times\tfrac{(x^3+1)^3}{3}\right]_0^1$ :
+          chaque facteur a été primitivé à part, puis les deux primitives
+          multipliées. Une primitive d'un produit n'est pas le produit des
+          primitives — la linéarité ne porte que sur les sommes et les
+          facteurs constants. Dérive ce produit : la règle du produit donne
+          $\tfrac{x(x^3+1)^3}{3}+\tfrac32x^4(x^3+1)^2$, pas $x(x^3+1)^2$.
+      - id: C
+        text: "$\\dfrac{41}{40}$"
+        correct: true
       - id: D
-        text: "$-14$"
+        text: "$-\\dfrac{41}{40}$"
         correct: false
         misconception: mc.math.maths_calcul_integral.constante-et-bornes
         feedback: >
-          C'est l'opposé du bon résultat : les bornes ont été évaluées dans
-          le mauvais ordre, $F(0)-F(1)$ au lieu de $F(1)-F(0)$.
+          La primitive obtenue en développant est la bonne, mais elle a été
+          évaluée dans le mauvais ordre, $F(0)-F(1)$ au lieu de $F(1)-F(0)$.
+          Contrôle immédiat : la fonction intégrée est positive sur $[0,1]$,
+          son intégrale ne peut pas être négative.
     correct_feedback: >
-      $u(x)=x+1$, $u'(x)=1$, et $6=6\times1$ : la fonction s'écrit
-      $6\,u'u^2$, donc une primitive est $6\times\tfrac{u^3}{3}=2u^3 =
-      2(x+1)^3$. D'où $\int_0^1 6(x+1)^2\,\mathrm{d}x = 2(2^3)-2(1^3) =
-      16-2=14$.
+      Avec $u=x^3+1$, $u'=3x^2$ : le facteur $x$ n'est pas un multiple
+      constant de $u'$, donc le modèle $u'u^n$ ne s'applique pas tel quel.
+      On développe : $x(x^3+1)^2=x^7+2x^4+x$, d'où
+      $\int_0^1 x(x^3+1)^2\,\mathrm{d}x=\tfrac18+\tfrac25+\tfrac12=\tfrac{41}{40}$.
     solution: |
-      **Reconnaître le modèle :** $u(x)=x+1$, $u'(x)=1$. Le facteur devant
-      $u^2$ est déjà $6\times1$, donc $f(x)=6\,u'(x)\,u(x)^2$.
+      **Le modèle s'applique-t-il ?** Le candidat naturel est $u(x)=x^3+1$,
+      de dérivée $u'(x)=3x^2$. Pour reconnaître $u'u^2$, il faudrait que le
+      facteur devant $(x^3+1)^2$ s'écrive $k\times3x^2$, avec $k$ un
+      nombre. Or ce facteur est $x$, et $\dfrac{x}{3x^2}=\dfrac{1}{3x}$
+      dépend de $x$ : aucun nombre $k$ ne convient. Le modèle ne s'applique
+      pas — il faut une autre route.
 
-      **La primitive :** une primitive de $u'u^2$ est $\tfrac{u^3}{3}$,
-      donc une primitive de $6u'u^2$ est $6\times\tfrac{u^3}{3}=2u^3 =
-      2(x+1)^3$ — vérifie en dérivant : $\big(2(x+1)^3\big)' =
-      2\times3(x+1)^2 = 6(x+1)^2 = f(x)$ ✓.
+      **Développer :** $(x^3+1)^2 = x^6+2x^3+1$, donc
+      $x(x^3+1)^2 = x^7+2x^4+x$, un polynôme qu'on primitive terme à terme.
 
-      **Vérification par expansion polynomiale (méthode indépendante) :**
-      $f(x)=6(x+1)^2=6x^2+12x+6$. Une primitive est $2x^3+6x^2+6x$.
+      $$\int_0^1 \big(x^7+2x^4+x\big)\,\mathrm{d}x = \left[\frac{x^8}{8}+\frac{2x^5}{5}+\frac{x^2}{2}\right]_0^1$$
 
-      $$\int_0^1 6(x+1)^2\,\mathrm{d}x = \Big[2x^3+6x^2+6x\Big]_0^1 = (2+6+6)-0 = 14$$
+      $$= \frac18+\frac25+\frac12 = \frac{5+16+20}{40} = \frac{41}{40}$$
 
-      Les deux méthodes coïncident : $14$.
+      **Le réflexe :** avant d'écrire $\dfrac{u^{n+1}}{n+1}$, vérifie que le
+      facteur devant $u^n$ est bien $u'$ à une constante près. Devant
+      $(x^3+1)^2$, un facteur $x^2$, $5x^2$ ou $-x^2$ conviendrait ; un
+      facteur $x$ ne convient pas.
 
   - id: CI-62
     rung: "R1"
@@ -3946,7 +4027,7 @@ items:
   - id: CI-64
     rung: "R1"
     habilete: application_directe
-    difficulty_level: 4
+    difficulty_level: 2
     skill_code: maths_calcul_integral
     tags: [primitive_condition, constante]
     primary_misconception: mc.math.maths_calcul_integral.condition-constante-non-isolee
@@ -4163,13 +4244,13 @@ items:
       - id: B
         text: "$+\\infty$"
         correct: false
-        misconception: mc.math.maths_calcul_integral.riemann-somme-mal-identifiee
+        misconception: mc.math.maths_calcul_integral.riemann-facteur-un-sur-n-oublie
         feedback: >
-          Ce choix traite la somme sans son facteur $\frac1n$ : sans lui,
-          elle grandirait sans borne. Mais $S_n$ contient bien le facteur
-          $\frac1n$ écrit dans l'énoncé : c'est précisément lui qui rend
-          la somme convergente. Sans lui, la somme grandirait effectivement
-          sans borne — mais $S_n$, telle qu'elle est définie, l'inclut.
+          C'est la limite de la somme privée de son facteur $\frac1n$ : $n$
+          termes compris entre $0$ et $1$, additionnés seuls, grandissent bien
+          sans borne. Mais $S_n$ porte ce facteur — la largeur de chaque
+          tranche —, qui fait de la somme une moyenne de valeurs de $f$, et
+          une moyenne qui converge.
       - id: C
         text: "$\\dfrac14$"
         correct: true
@@ -4201,8 +4282,8 @@ items:
     habilete: synthese
     difficulty_level: 5
     skill_code: maths_calcul_integral
-    tags: [sommes_riemann, bornes_indices, identification_intervalle]
-    primary_misconception: mc.math.maths_calcul_integral.riemann-somme-mal-identifiee
+    tags: [sommes_riemann, bornes_indices, terme_constant]
+    primary_misconception: mc.math.maths_calcul_integral.riemann-bornes-indices-changent-limite
     stem: >
       Pour $f(x)=2x+3$ (continue et croissante sur $[0,1]$), on pose
       $\displaystyle A_n=\frac1n\sum_{k=1}^{n} f\!\left(\frac kn\right)$ et
@@ -4215,9 +4296,9 @@ items:
         text: "Les deux suites convergent vers $4$"
         correct: true
       - id: B
-        text: "Les deux suites ont des limites différentes"
+        text: "Les deux suites convergent vers des nombres distincts"
         correct: false
-        misconception: mc.math.maths_calcul_integral.riemann-somme-mal-identifiee
+        misconception: mc.math.maths_calcul_integral.riemann-bornes-indices-changent-limite
         feedback: >
           Changer de bord (droit ou gauche) change chaque TERME de la
           somme, mais pas sa LIMITE : la différence $A_n-B_n$ ne porte que
@@ -4227,7 +4308,7 @@ items:
       - id: C
         text: "Les deux suites tendent vers $+\\infty$"
         correct: false
-        misconception: mc.math.maths_calcul_integral.riemann-somme-mal-identifiee
+        misconception: mc.math.maths_calcul_integral.riemann-facteur-un-sur-n-oublie
         feedback: >
           Ce choix lit les sommes sans leur facteur $\frac1n$ : $n$ termes
           qui valent chacun entre $3$ et $5$ font bien une somme qui
@@ -4237,13 +4318,13 @@ items:
       - id: D
         text: "Les deux suites convergent vers $1$"
         correct: false
-        misconception: mc.math.maths_calcul_integral.riemann-somme-mal-identifiee
+        misconception: mc.math.maths_calcul_integral.riemann-terme-constant-ignore
         feedback: >
-          Le terme constant $3$ fait partie intégrante de $f(x)=2x+3$ : il
-          contribue à chaque $f\!\left(\frac kn\right)$ de la somme, donc à
-          la limite $\int_0^1 f(x)\,\mathrm{d}x$, exactement comme le
-          terme en $x$. Rien dans la construction de la somme de Riemann
-          n'annule une contribution constante.
+          $1$ est $\int_0^1 2x\,\mathrm{d}x$ : le terme constant $3$ a été
+          traité comme s'il ne comptait pas, comme si $\frac1n\sum 3$ valait
+          $\frac3n$ et s'effaçait. Mais la constante figure dans chacun des
+          $n$ termes : $\frac1n\times(3+3+\cdots+3)=\frac1n\times3n=3$. Elle
+          contribue à la limite exactement comme le terme en $x$.
     correct_feedback: >
       $A_n-B_n = \frac1n\big(f(1)-f(0)\big) = \frac1n\big(5-3\big) =
       \frac2n \xrightarrow[n\to+\infty]{} 0$ : $(A_n)$ et $(B_n)$
@@ -4433,11 +4514,12 @@ items:
       - id: A
         text: "$1$"
         correct: false
-        misconception: mc.math.maths_calcul_integral.riemann-somme-mal-identifiee
+        misconception: mc.math.maths_calcul_integral.riemann-terme-constant-ignore
         feedback: >
-          La somme a été identifiée à l'intégrale d'une partie seulement de
-          la fonction échantillonnée. Ici $S_n=\frac1n\sum f\!\left(\frac kn\right)$
-          avec $f(x)=1+2x$ : le terme constant $1$ compte aussi, et
+          $1$ est $\int_0^1 2x\,\mathrm{d}x$ : le terme constant $1$ a été
+          traité comme s'il s'effaçait à la limite. Mais il figure dans
+          chacun des $n$ termes, et $\frac1n\times(1+1+\cdots+1)=1$. Ici
+          $S_n=\frac1n\sum f\!\left(\frac kn\right)$ avec $f(x)=1+2x$, donc
           $\int_0^1(1+2x)\,\mathrm{d}x=1+1=2$.
       - id: B
         text: "$2$"
@@ -4454,7 +4536,7 @@ items:
       - id: D
         text: "$+\\infty$"
         correct: false
-        misconception: mc.math.maths_calcul_integral.riemann-somme-mal-identifiee
+        misconception: mc.math.maths_calcul_integral.riemann-facteur-un-sur-n-oublie
         feedback: >
           Sans le facteur $\frac1n$, la somme de $n$ termes compris entre
           $1$ et $3$ grandirait bien sans borne. Mais $S_n$ est divisée par
@@ -4532,6 +4614,237 @@ items:
 
       **La primitive :** $F(x)=\ln|x^2-4|=\ln(4-x^2)$. Vérifie en dérivant :
       $F'(x)=\dfrac{-2x}{4-x^2}=\dfrac{2x}{x^2-4}=f(x)$.
+
+  # ── 2026-10-20 (dette de cadre G3, passe pédagogie) — CI-74 → CI-76 ──────
+  # Trois items Riemann neufs, R4 [filière SM].
+  #   CI-74 — ÉTABLIR l'encadrement (le verbe imprimé « encadrer », question
+  #           d'ouverture du sujet vérifié bk-2023-n-x2), sur f croissante.
+  #   CI-75 — le même mécanisme sur f strictement DÉCROISSANTE (l'ordre
+  #           s'inverse), croisé avec la question de la limite commune :
+  #           plan 2×2 (ordre juste/faux × limite commune/distincte), si
+  #           bien qu'aucun choix n'est le « centre » des trois autres.
+  #   CI-76 — une somme à n+1 termes (k de 0 à n) : le terme de bord en trop
+  #           s'efface-t-il ?
+  # Ils portent la scission de `riemann-somme-mal-identifiee` au plancher
+  # (voir le bloc des misconceptions). Fonctions originales : ni √(1+e^{2t})
+  # ni 1/(1+x²) (banque), ni x², x³, 2x+3, 1+2x (leçon, CI-67, CI-68, CI-72).
+  - id: CI-74
+    rung: "R4"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [sommes_riemann, encadrement, monotonie]
+    primary_misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+    stem: >
+      Soit $f(x)=\sqrt{1+x}$, strictement croissante sur $[0,1]$, et
+      $I=\displaystyle\int_0^1\sqrt{1+x}\,\mathrm{d}x$. On encadre $f$ sur
+      chacune des $n$ tranches de largeur $\frac1n$ qui découpent $[0,1]$,
+      puis on additionne. Quel encadrement de $I$ obtient-on, pour tout
+      $n\geq1$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac1n\\displaystyle\\sum_{k=1}^{n}\\sqrt{1+\\tfrac{k}{n}} \\leq I \\leq \\dfrac1n\\displaystyle\\sum_{k=0}^{n-1}\\sqrt{1+\\tfrac{k}{n}}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+        feedback: >
+          Le minimum et le maximum de chaque tranche ont été permutés. $f$
+          est croissante : sur la tranche $\left[\tfrac kn,\tfrac{k+1}n\right]$,
+          sa plus petite valeur est au bord gauche et sa plus grande au bord
+          droit. La somme aux bords gauches ($k$ de $0$ à $n-1$) minore donc
+          $I$, et la somme aux bords droits ($k$ de $1$ à $n$) la majore —
+          pas l'inverse.
+      - id: B
+        text: "$\\dfrac1n\\displaystyle\\sum_{k=0}^{n-1}\\sqrt{1+k} \\leq I \\leq \\dfrac1n\\displaystyle\\sum_{k=1}^{n}\\sqrt{1+k}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.riemann-somme-mal-identifiee
+        feedback: >
+          Le point d'échantillonnage a été mal lu. Les tranches découpent
+          $[0,1]$ : leurs bords sont les abscisses $\tfrac kn$, pas les
+          entiers $k$. Avec $\sqrt{1+k}$, la somme évalue $f$ en
+          $0,1,2,\ldots,n$, c'est-à-dire sur $[0,n]$ : elle ne représente plus
+          $f$ sur $[0,1]$.
+      - id: C
+        text: "$\\displaystyle\\sum_{k=0}^{n-1}\\sqrt{1+\\tfrac{k}{n}} \\leq I \\leq \\displaystyle\\sum_{k=1}^{n}\\sqrt{1+\\tfrac{k}{n}}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.riemann-facteur-un-sur-n-oublie
+        feedback: >
+          Les rectangles ont été comptés sans leur largeur. Intégrer
+          l'encadrement $f\!\left(\tfrac kn\right)\leq f(x)\leq
+          f\!\left(\tfrac{k+1}n\right)$ sur une tranche de longueur $\tfrac1n$
+          multiplie chaque borne par $\tfrac1n$. Sans ce facteur, le membre
+          de gauche additionne $n$ hauteurs au moins égales à $1$ : il vaut au
+          moins $n$, alors que $I$ reste entre $1$ et $\sqrt2$.
+      - id: D
+        text: "$\\dfrac1n\\displaystyle\\sum_{k=0}^{n-1}\\sqrt{1+\\tfrac{k}{n}} \\leq I \\leq \\dfrac1n\\displaystyle\\sum_{k=1}^{n}\\sqrt{1+\\tfrac{k}{n}}$"
+        correct: true
+    correct_feedback: >
+      Sur chaque tranche $\left[\tfrac kn,\tfrac{k+1}n\right]$, $f$ croissante
+      vérifie $f\!\left(\tfrac kn\right)\leq f(x)\leq f\!\left(\tfrac{k+1}n\right)$.
+      On intègre sur la tranche (longueur $\tfrac1n$), on additionne pour $k$
+      de $0$ à $n-1$, et on recolle les tranches par Chasles ; à droite, le
+      changement d'indice $j=k+1$ ramène la somme de $1$ à $n$.
+    solution: |
+      **Sur une tranche.** Pour $k$ de $0$ à $n-1$ et $x\in\left[\tfrac kn,\tfrac{k+1}n\right]$,
+      $f$ étant croissante, son minimum est au bord gauche et son maximum au
+      bord droit :
+      $$\sqrt{1+\tfrac{k}{n}} \leq \sqrt{1+x} \leq \sqrt{1+\tfrac{k+1}{n}}$$
+
+      **On intègre sur la tranche**, de longueur $\tfrac1n$ (comparaison) :
+      $$\frac1n\sqrt{1+\tfrac{k}{n}} \leq \int_{\frac kn}^{\frac{k+1}n}\sqrt{1+x}\,\mathrm{d}x \leq \frac1n\sqrt{1+\tfrac{k+1}{n}}$$
+
+      **On additionne pour $k$ de $0$ à $n-1$** ; Chasles recolle les $n$
+      tranches en $I$ :
+      $$\frac1n\sum_{k=0}^{n-1}\sqrt{1+\tfrac{k}{n}} \leq I \leq \frac1n\sum_{k=0}^{n-1}\sqrt{1+\tfrac{k+1}{n}}$$
+
+      **Le changement d'indice $j=k+1$** à droite : quand $k$ va de $0$ à
+      $n-1$, $j$ va de $1$ à $n$ :
+      $$\frac1n\sum_{k=0}^{n-1}\sqrt{1+\tfrac{k}{n}} \leq I \leq \frac1n\sum_{j=1}^{n}\sqrt{1+\tfrac{j}{n}}$$
+
+      Le nom de l'indice ne compte pas : c'est l'encadrement attendu, avec
+      $k$ à la place de $j$.
+
+  - id: CI-75
+    rung: "R4"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_calcul_integral
+    tags: [sommes_riemann, encadrement, monotonie, bornes_indices]
+    primary_misconception: mc.math.maths_calcul_integral.riemann-bornes-indices-changent-limite
+    stem: >
+      Soit $f$ une fonction continue et strictement décroissante sur
+      $[0,1]$, et $I=\displaystyle\int_0^1 f(x)\,\mathrm{d}x$. Pour $n\geq1$,
+      on pose $\displaystyle A_n=\frac1n\sum_{k=1}^{n} f\!\left(\frac kn\right)$
+      et $\displaystyle B_n=\frac1n\sum_{k=0}^{n-1} f\!\left(\frac kn\right)$.
+      Quelle affirmation est vraie ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$B_n\\leq I\\leq A_n$ pour tout $n$, et $(A_n)$, $(B_n)$ ont la même limite"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur
+        feedback: >
+          Le minimum et le maximum de chaque tranche ont été permutés : c'est
+          l'ordre du cas croissant, recopié. Ici $f$ décroît : sur la
+          tranche $\left[\tfrac{k-1}n,\tfrac kn\right]$, son maximum est au
+          bord GAUCHE et son minimum au bord DROIT. La somme aux bords droits,
+          $A_n$, minore donc $I$, et la somme aux bords gauches, $B_n$, la
+          majore. La limite commune, elle, est juste.
+      - id: B
+        text: "$A_n\\leq I\\leq B_n$ pour tout $n$, et $(A_n)$, $(B_n)$ ont la même limite"
+        correct: true
+      - id: C
+        text: "$A_n\\leq I\\leq B_n$ pour tout $n$, mais $(A_n)$, $(B_n)$ ont des limites distinctes"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.riemann-bornes-indices-changent-limite
+        feedback: >
+          L'encadrement est juste, mais l'écart entre les deux sommes a été
+          cru durable. $A_n-B_n=\tfrac1n\big(f(1)-f(0)\big)$ : un seul terme
+          de bord de chaque côté, divisé par $n$, qui tend vers $0$. Changer
+          les bornes de sommation change chaque somme, pas sa limite — et
+          les gendarmes donnent $\lim A_n=\lim B_n=I$.
+      - id: D
+        text: "$B_n\\leq I\\leq A_n$ pour tout $n$, mais $(A_n)$, $(B_n)$ ont des limites distinctes"
+        correct: false
+        misconception: [mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur, mc.math.maths_calcul_integral.riemann-bornes-indices-changent-limite]
+        feedback: >
+          Deux erreurs se cumulent ici. L'ordre est celui du cas croissant :
+          pour $f$ décroissante, le maximum de chaque tranche est à gauche,
+          donc $A_n\leq I\leq B_n$. Et l'écart $A_n-B_n=\tfrac1n\big(f(1)-f(0)\big)$,
+          un terme de bord divisé par $n$, tend vers $0$ : les deux suites ont
+          la même limite, $I$.
+    correct_feedback: >
+      $f$ décroît : sur chaque tranche, son maximum est au bord gauche et son
+      minimum au bord droit, d'où $A_n\leq I\leq B_n$. Et
+      $A_n-B_n=\tfrac1n\big(f(1)-f(0)\big)\to0$ : les deux suites, coincées
+      autour de $I$ et de plus en plus proches, convergent vers $I$.
+    solution: |
+      **Sur une tranche.** Pour $x\in\left[\tfrac{k-1}n,\tfrac kn\right]$, $f$
+      étant décroissante, la valeur au bord droit est la plus petite :
+      $$f\!\left(\tfrac kn\right) \leq f(x) \leq f\!\left(\tfrac{k-1}n\right)$$
+
+      **On intègre sur la tranche** (longueur $\tfrac1n$), puis on additionne
+      pour $k$ de $1$ à $n$ (Chasles recolle les tranches) :
+      $$A_n \leq I \leq B_n$$
+
+      — l'ordre est l'inverse du cas croissant, parce que la monotonie
+      s'est inversée.
+
+      **L'écart :** les termes du milieu sont communs aux deux sommes,
+      il ne reste que les bords :
+      $$A_n - B_n = \frac1n\Big(f(1)-f(0)\Big) \xrightarrow[n\to+\infty]{} 0$$
+
+      **Conclusion :** $B_n-I$ et $I-A_n$ sont positifs et majorés par
+      $B_n-A_n$, qui tend vers $0$ ; par les gendarmes, $(A_n)$ et $(B_n)$
+      convergent toutes deux vers $I$.
+
+  - id: CI-76
+    rung: "R4"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_calcul_integral
+    tags: [sommes_riemann, bornes_indices, terme_constant]
+    primary_misconception: mc.math.maths_calcul_integral.riemann-bornes-indices-changent-limite
+    stem: >
+      Pour $n\geq1$, on pose
+      $\displaystyle U_n=\frac1n\sum_{k=0}^{n}\left(3+6\left(\frac kn\right)^2\right)$,
+      une somme de $n+1$ termes. Quelle est la limite de $(U_n)$ quand
+      $n\to+\infty$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$8$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.riemann-bornes-indices-changent-limite
+        feedback: >
+          Le terme en trop a été cru survivre à la limite. Avec
+          $f(x)=3+6x^2$, $U_n$ est la somme $S_n$ (indices de $1$ à $n$)
+          augmentée du seul terme $k=0$, qui vaut $\tfrac1n f(0)=\tfrac3n$ —
+          divisé par $n$ comme tous les autres, il tend vers $0$. Le compter
+          pour $3$ dans la limite, c'est croire que changer les bornes de
+          sommation change la limite.
+      - id: B
+        text: "$2$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.riemann-terme-constant-ignore
+        feedback: >
+          $2$ est $\int_0^1 6x^2\,\mathrm{d}x$ : le terme constant $3$ a été
+          traité comme s'il s'effaçait, comme si $\tfrac1n\sum 3$ valait
+          $\tfrac3n$. Mais la constante figure dans chacun des $n+1$ termes :
+          leur part vaut $\tfrac1n\times3(n+1)$, qui tend vers $3$, pas vers
+          $0$.
+      - id: C
+        text: "$+\\infty$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.riemann-facteur-un-sur-n-oublie
+        feedback: >
+          C'est la limite de la somme sans son facteur $\tfrac1n$ : $n+1$
+          termes au moins égaux à $3$ grandissent bien sans borne. Mais $U_n$
+          est divisée par $n$ — c'est, à un terme près, une moyenne de
+          valeurs de $f$, et elle converge.
+      - id: D
+        text: "$5$"
+        correct: true
+    correct_feedback: >
+      Avec $f(x)=3+6x^2$, continue sur $[0,1]$ :
+      $U_n=\tfrac1n\sum_{k=1}^{n}f\!\left(\tfrac kn\right)+\tfrac1n f(0)$. Le
+      premier morceau tend vers $\int_0^1(3+6x^2)\,\mathrm{d}x=3+2=5$, le
+      second, $\tfrac3n$, vers $0$ : $(U_n)$ tend vers $5$.
+    solution: |
+      **Reconnaître $f$ :** le terme général est $f\!\left(\tfrac kn\right)$
+      avec $f(x)=3+6x^2$, continue sur $[0,1]$.
+
+      **Isoler le terme en trop :** les indices vont de $0$ à $n$, soit un
+      terme de plus que $S_n=\tfrac1n\sum_{k=1}^{n}f\!\left(\tfrac kn\right)$ :
+      $$U_n = S_n + \frac1n f(0)$$
+
+      $$U_n = S_n + \frac3n$$
+
+      **Les deux limites :** $S_n\to\int_0^1(3+6x^2)\,\mathrm{d}x$ (sommes de
+      Riemann, chapitre 5), et $\tfrac3n\to0$ :
+      $$\int_0^1(3+6x^2)\,\mathrm{d}x = \Big[3x+2x^3\Big]_0^1 = 3+2 = 5$$
+
+      $$\lim_{n\to+\infty} U_n = 5$$
 
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05 (CI-31→CI-34), le 2026-09-23 pour le rung « volume
@@ -4624,6 +4937,23 @@ items:
 # « H(3) > H(1) »). CI-69→CI-72 écrits pour porter les trois ids neufs au plancher (trig, condition,
 # Riemann : 2, 1, 2 → 3, 3, 3). `u-sur-u-absolue-ou-intervalle-oubliee` restait à 2 (dette antérieure) :
 # CI-73 la porte à 3 le même jour — plancher tenu pour les 25 ids.
+# 2026-10-20 (dette de cadre G3, passe pédagogie — docs/audits/critiques/cadre-GH-pedagogie.md) :
+#   - `riemann-somme-mal-identifiee` SCINDÉE en quatre ids, un modèle chacun (voir le bloc des
+#     misconceptions) ; l'ancienne chaîne est gardée pour la somme mal IDENTIFIÉE (fonction ou
+#     intervalle). Retags : CI-67 (distracteur « +∞ » → facteur-un-sur-n) ; CI-68 (primaire →
+#     bornes-indices ; « nombres distincts » → bornes-indices, « +∞ » → facteur-un-sur-n,
+#     « limite 1 » → terme-constant) ; CI-72 (« limite 1 » → terme-constant, « +∞ » →
+#     facteur-un-sur-n). Le distracteur « nombres distincts » de CI-68 est reformulé : il
+#     reprenait le mot « limites » du tronc, seul de son item à le faire.
+#   - CI-74, CI-75, CI-76 ÉCRITS (encadrement sur f croissante ; f strictement décroissante, plan
+#     2×2 ordre × limite ; somme à n+1 termes) : chacun des quatre ids Riemann atteint 3 items.
+#     L'encadrement inversé est tagué `inegalite-moyenne-sans-longueur` (m et M intervertis,
+#     tranche par tranche), qui passe de 4 à 6 items.
+#   - CI-61 RE-PURPOSÉ : ∫₀¹ x(x³+1)² — le modèle u'·uⁿ ne s'applique pas, on développe. Ses
+#     tags passent de (u-puissance-n ×2, constante-et-bornes) à (u-puissance-n,
+#     linearite-abusive, constante-et-bornes) : `linearite-abusive` 9 → 10.
+#   - CI-64 : difficulté 4 → 2 (substitution dans une primitive G DONNÉE).
+#   Total 70 → 73 items, 25 → 28 misconceptions déclarées, toutes au plancher ou au-dessus.
 # Tableau GÉNÉRÉ contre la convention de la chaîne, gardé par
 # web/scripts/resume-couverture.mjs.
 coverage_summary:
@@ -4634,32 +4964,35 @@ coverage_summary:
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
     web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
   per_misconception:
-    mc.math.maths_calcul_integral.primitive-vs-derivee:                   { count: 9, items: [CI-11, CI-31, CI-32, CI-54, CI-55, CI-58, CI-64, CI-66, CI-70] }
-    mc.math.maths_calcul_integral.constante-et-bornes:                    { count: 12, items: [CI-1, CI-10, CI-13, CI-15, CI-17, CI-51, CI-56, CI-57, CI-59, CI-60, CI-61, CI-63] }
-    mc.math.maths_calcul_integral.linearite-abusive:                      { count: 9, items: [CI-2, CI-12, CI-32, CI-36, CI-37, CI-43, CI-44, CI-50, CI-57] }
-    mc.math.maths_calcul_integral.chasles-mal-appliquee:                  { count: 4, items: [CI-14, CI-16, CI-32, CI-58] }
-    mc.math.maths_calcul_integral.integrale-signee-vs-aire:               { count: 7, items: [CI-6, CI-11, CI-17, CI-26, CI-28, CI-65, CI-66] }
-    mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe:             { count: 3, items: [CI-5, CI-24, CI-25] }
-    mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee:          { count: 4, items: [CI-4, CI-22, CI-23, CI-30] }
-    mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur:        { count: 4, items: [CI-19, CI-20, CI-21, CI-29] }
-    mc.math.maths_calcul_integral.hypothese-non-verifiee:                 { count: 8, items: [CI-3, CI-11, CI-12, CI-17, CI-18, CI-21, CI-23, CI-29] }
-    mc.math.maths_calcul_integral.aire-naive-geometrique:                 { count: 3, items: [CI-7, CI-8, CI-9] }
-    mc.math.maths_calcul_integral.conversion-unites-aire:                 { count: 3, items: [CI-27, CI-33, CI-34] }
-    mc.math.maths_calcul_integral.volume-oubli-du-carre:                  { count: 8, items: [CI-36, CI-37, CI-38, CI-39, CI-41, CI-42, CI-43, CI-44] }
-    mc.math.maths_calcul_integral.volume-circonference-vs-disque:         { count: 4, items: [CI-38, CI-39, CI-41, CI-42] }
-    mc.math.maths_calcul_integral.volume-integrale-sans-pi:               { count: 10, items: [CI-36, CI-37, CI-38, CI-39, CI-41, CI-42, CI-43, CI-44, CI-49, CI-50] }
-    mc.math.maths_calcul_integral.volume-carre-mal-place:                 { count: 5, items: [CI-36, CI-37, CI-43, CI-44, CI-50] }
-    mc.math.maths_calcul_integral.conversion-unites-volume:               { count: 4, items: [CI-46, CI-47, CI-48, CI-49] }
-    mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee:  { count: 3, items: [CI-52, CI-53, CI-73] }
-    mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u:           { count: 4, items: [CI-51, CI-53, CI-57, CI-73] }
-    mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2:                    { count: 5, items: [CI-52, CI-54, CI-55, CI-56, CI-73] }
-    mc.math.maths_calcul_integral.facteur-constant-non-ajuste:            { count: 6, items: [CI-51, CI-52, CI-53, CI-54, CI-55, CI-56] }
-    mc.math.maths_calcul_integral.fonction-cumulee-confondue-avec-f:      { count: 3, items: [CI-58, CI-65, CI-66] }
-    mc.math.maths_calcul_integral.u-puissance-n-facteur-non-ajuste:       { count: 5, items: [CI-59, CI-60, CI-61, CI-67, CI-71] }
-    mc.math.maths_calcul_integral.trig-facteur-chaine-ou-signe-oublie:    { count: 3, items: [CI-62, CI-63, CI-69] }
-    mc.math.maths_calcul_integral.condition-constante-non-isolee:         { count: 3, items: [CI-64, CI-70, CI-71] }
-    mc.math.maths_calcul_integral.riemann-somme-mal-identifiee:           { count: 3, items: [CI-67, CI-68, CI-72] }
-  total_items: 70
+    mc.math.maths_calcul_integral.primitive-vs-derivee:                    { count: 9, items: [CI-11, CI-31, CI-32, CI-54, CI-55, CI-58, CI-64, CI-66, CI-70] }
+    mc.math.maths_calcul_integral.constante-et-bornes:                     { count: 12, items: [CI-1, CI-10, CI-13, CI-15, CI-17, CI-51, CI-56, CI-57, CI-59, CI-60, CI-61, CI-63] }
+    mc.math.maths_calcul_integral.linearite-abusive:                       { count: 10, items: [CI-2, CI-12, CI-32, CI-36, CI-37, CI-43, CI-44, CI-50, CI-57, CI-61] }
+    mc.math.maths_calcul_integral.chasles-mal-appliquee:                   { count: 4, items: [CI-14, CI-16, CI-32, CI-58] }
+    mc.math.maths_calcul_integral.integrale-signee-vs-aire:                { count: 7, items: [CI-6, CI-11, CI-17, CI-26, CI-28, CI-65, CI-66] }
+    mc.math.maths_calcul_integral.ipp-mauvais-choix-ou-signe:              { count: 3, items: [CI-5, CI-24, CI-25] }
+    mc.math.maths_calcul_integral.valeur-moyenne-mal-normalisee:           { count: 4, items: [CI-4, CI-22, CI-23, CI-30] }
+    mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur:         { count: 6, items: [CI-19, CI-20, CI-21, CI-29, CI-74, CI-75] }
+    mc.math.maths_calcul_integral.hypothese-non-verifiee:                  { count: 8, items: [CI-3, CI-11, CI-12, CI-17, CI-18, CI-21, CI-23, CI-29] }
+    mc.math.maths_calcul_integral.aire-naive-geometrique:                  { count: 3, items: [CI-7, CI-8, CI-9] }
+    mc.math.maths_calcul_integral.conversion-unites-aire:                  { count: 3, items: [CI-27, CI-33, CI-34] }
+    mc.math.maths_calcul_integral.volume-oubli-du-carre:                   { count: 8, items: [CI-36, CI-37, CI-38, CI-39, CI-41, CI-42, CI-43, CI-44] }
+    mc.math.maths_calcul_integral.volume-circonference-vs-disque:          { count: 4, items: [CI-38, CI-39, CI-41, CI-42] }
+    mc.math.maths_calcul_integral.volume-integrale-sans-pi:                { count: 10, items: [CI-36, CI-37, CI-38, CI-39, CI-41, CI-42, CI-43, CI-44, CI-49, CI-50] }
+    mc.math.maths_calcul_integral.volume-carre-mal-place:                  { count: 5, items: [CI-36, CI-37, CI-43, CI-44, CI-50] }
+    mc.math.maths_calcul_integral.conversion-unites-volume:                { count: 4, items: [CI-46, CI-47, CI-48, CI-49] }
+    mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee:   { count: 3, items: [CI-52, CI-53, CI-73] }
+    mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u:            { count: 4, items: [CI-51, CI-53, CI-57, CI-73] }
+    mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2:                     { count: 5, items: [CI-52, CI-54, CI-55, CI-56, CI-73] }
+    mc.math.maths_calcul_integral.facteur-constant-non-ajuste:             { count: 6, items: [CI-51, CI-52, CI-53, CI-54, CI-55, CI-56] }
+    mc.math.maths_calcul_integral.fonction-cumulee-confondue-avec-f:       { count: 3, items: [CI-58, CI-65, CI-66] }
+    mc.math.maths_calcul_integral.u-puissance-n-facteur-non-ajuste:        { count: 5, items: [CI-59, CI-60, CI-61, CI-67, CI-71] }
+    mc.math.maths_calcul_integral.trig-facteur-chaine-ou-signe-oublie:     { count: 3, items: [CI-62, CI-63, CI-69] }
+    mc.math.maths_calcul_integral.condition-constante-non-isolee:          { count: 3, items: [CI-64, CI-70, CI-71] }
+    mc.math.maths_calcul_integral.riemann-somme-mal-identifiee:            { count: 3, items: [CI-67, CI-72, CI-74] }
+    mc.math.maths_calcul_integral.riemann-facteur-un-sur-n-oublie:         { count: 5, items: [CI-67, CI-68, CI-72, CI-74, CI-76] }
+    mc.math.maths_calcul_integral.riemann-bornes-indices-changent-limite:  { count: 3, items: [CI-68, CI-75, CI-76] }
+    mc.math.maths_calcul_integral.riemann-terme-constant-ignore:           { count: 3, items: [CI-68, CI-72, CI-76] }
+  total_items: 73
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -4667,7 +5000,7 @@ coverage_summary:
     R1: 24
     R2: 3
     R3: 4
-    R4: 6
+    R4: 9
     R5: 3
     R6: 3
     R7: 3
@@ -4687,7 +5020,16 @@ coverage_summary:
     pour la dette d'examen vague B du 2026-09-27, révisés wave-1 le même jour)
     portent, eux, un tag sur chaque distracteur.
   honest_state: >-
-    FLOOR TENU depuis le 2026-10-20 : CI-73 (u du second degré, négative sur
+    FLOOR TENU (2026-10-20, après la scission de `riemann-somme-mal-identifiee`
+    en quatre ids et l'écriture de CI-74 → CI-76) : 28 misconceptions
+    déclarées, chacune portée par au moins 3 items du banc. Dix siègent
+    EXACTEMENT au plancher : `ipp-mauvais-choix-ou-signe`,
+    `aire-naive-geometrique`, `conversion-unites-aire`,
+    `u-sur-u-absolue-ou-intervalle-oubliee`, `fonction-cumulee-confondue-avec-f`,
+    `trig-facteur-chaine-ou-signe-oublie`, `condition-constante-non-isolee`,
+    `riemann-somme-mal-identifiee`, `riemann-bornes-indices-changent-limite` et
+    `riemann-terme-constant-ignore` — aucune marge sur ces ids, à surveiller
+    si un futur audit retire un item. — FLOOR TENU depuis le 2026-10-20 : CI-73 (u du second degré, négative sur
     l'intervalle, clé écrite sans valeur absolue) donne son troisième item à
     `u-sur-u-absolue-ou-intervalle-oubliee`, et la vague G3 avait déjà porté
     `fonction-cumulee-confondue-avec-f` à 3 (CI-58, CI-65, CI-66). Historique

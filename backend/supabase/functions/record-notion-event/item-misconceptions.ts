@@ -454,6 +454,7 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "CI-61": [
       "mc.math.maths_calcul_integral.constante-et-bornes",
+      "mc.math.maths_calcul_integral.linearite-abusive",
       "mc.math.maths_calcul_integral.u-puissance-n-facteur-non-ajuste"
     ],
     "CI-62": [
@@ -477,11 +478,14 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_calcul_integral.primitive-vs-derivee"
     ],
     "CI-67": [
+      "mc.math.maths_calcul_integral.riemann-facteur-un-sur-n-oublie",
       "mc.math.maths_calcul_integral.riemann-somme-mal-identifiee",
       "mc.math.maths_calcul_integral.u-puissance-n-facteur-non-ajuste"
     ],
     "CI-68": [
-      "mc.math.maths_calcul_integral.riemann-somme-mal-identifiee"
+      "mc.math.maths_calcul_integral.riemann-bornes-indices-changent-limite",
+      "mc.math.maths_calcul_integral.riemann-facteur-un-sur-n-oublie",
+      "mc.math.maths_calcul_integral.riemann-terme-constant-ignore"
     ],
     "CI-69": [
       "mc.math.maths_calcul_integral.trig-facteur-chaine-ou-signe-oublie"
@@ -498,12 +502,28 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_calcul_integral.u-puissance-n-facteur-non-ajuste"
     ],
     "CI-72": [
-      "mc.math.maths_calcul_integral.riemann-somme-mal-identifiee"
+      "mc.math.maths_calcul_integral.riemann-facteur-un-sur-n-oublie",
+      "mc.math.maths_calcul_integral.riemann-somme-mal-identifiee",
+      "mc.math.maths_calcul_integral.riemann-terme-constant-ignore"
     ],
     "CI-73": [
       "mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee",
       "mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u",
       "mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2"
+    ],
+    "CI-74": [
+      "mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur",
+      "mc.math.maths_calcul_integral.riemann-facteur-un-sur-n-oublie",
+      "mc.math.maths_calcul_integral.riemann-somme-mal-identifiee"
+    ],
+    "CI-75": [
+      "mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur",
+      "mc.math.maths_calcul_integral.riemann-bornes-indices-changent-limite"
+    ],
+    "CI-76": [
+      "mc.math.maths_calcul_integral.riemann-bornes-indices-changent-limite",
+      "mc.math.maths_calcul_integral.riemann-facteur-un-sur-n-oublie",
+      "mc.math.maths_calcul_integral.riemann-terme-constant-ignore"
     ],
     "CI-8": [
       "mc.math.maths_calcul_integral.aire-naive-geometrique"
@@ -527,10 +547,20 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "cp-r1-primitive": [
       "mc.math.maths_calcul_integral.primitive-vs-derivee"
     ],
+    "cp-r1-signe-de-F": [
+      "mc.math.maths_calcul_integral.constante-et-bornes",
+      "mc.math.maths_calcul_integral.fonction-cumulee-confondue-avec-f",
+      "mc.math.maths_calcul_integral.integrale-signee-vs-aire"
+    ],
     "cp-r1-u-annule": [
       "mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee",
       "mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u",
       "mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2"
+    ],
+    "cp-r4-riemann-position": [
+      "mc.math.maths_calcul_integral.aire-naive-geometrique",
+      "mc.math.maths_calcul_integral.inegalite-moyenne-sans-longueur",
+      "mc.math.maths_calcul_integral.riemann-facteur-un-sur-n-oublie"
     ],
     "cp-volume-disque": [
       "mc.math.maths_calcul_integral.volume-circonference-vs-disque",
