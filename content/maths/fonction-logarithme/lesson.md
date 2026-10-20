@@ -584,17 +584,17 @@ Le même squelette, décor renversé : ici la courbe passe **sous** la première
      généralise le logarithme décimal déjà présent dans cette même sous-section.
      Le logarithme décimal lui-même est COMMUN aux deux filières (maths-
      sexp.yaml:165 le nomme explicitement au programme SExp) — il n'a donc reçu
-     aucun marquage, et n'a pas été touché. Le logarithme de base a général
-     (log_a x = ln x/ln a, a quelconque) est en revanche SM-seul (maths-
-     sexp.yaml:171 : « le cœur SExp est ln (+ log décimal) », fonctions
-     puissances hors cœur SExp). Convention de filière suivie, après vérification
-     qu'aucune autre n'existe dans le corpus : aucun marqueur inline n'apparaît
-     dans le texte élève de cette leçon ni de ses homologues qui portent pourtant
-     un écart SM/SExp comparable (Rolle/TAF dans derivabilite-etude-fonctions,
-     produit mixte dans geometrie-espace, racines n-ièmes dans nombres-
-     complexes-2 — aucun des trois n'est marqué dans le texte lu par l'élève) ;
-     le scope filière se déclare seulement en note de validation, ici, jamais
-     dans la prose. Exemple travaillé ajouté : nombre de chiffres de 2^100
+     aucun marquage, et n'a pas été touché. Le logarithme de base a général (log_a x = ln x/ln a,
+     a quelconque) est une « mention possible » en SExp (maths-sexp.yaml:171,
+     limite dérivée) : pas de phrase de filière, selon la règle de
+     DECISIONS-EN-ATTENTE §37 — une phrase lue par l'élève seulement là où le
+     cadre nomme la ligne SM en research-consensus ou dans une limite
+     explicite (c'est le cas des fonctions puissances x^α dans
+     fonction-exponentielle et des sommes de Riemann dans calcul-integral, qui
+     la portent). Corrigé le 2026-10-20 (docs/audits/critiques/
+     cadre-GH-fidelite.md, constat F1) : la version précédente disait log_a
+     « SM-seul » et « aucun marqueur inline … ni de ses homologues, jamais
+     dans la prose » — faux dès son commit, et dangereux à suivre. Exemple travaillé ajouté : nombre de chiffres de 2^100
      (base 10 seulement, pour ne dépendre d'aucun exposant réel — 2^100 reste
      une puissance ENTIÈRE ordinaire, l'exponentielle de base a n'étant définie
      qu'au chapitre suivant), recalculé : log(2^100) = 100×log(2) ≈ 30,1, d'où

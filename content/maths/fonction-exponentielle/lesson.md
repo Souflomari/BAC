@@ -629,15 +629,20 @@ Aucun de ces quatre n'est un manque de ce chapitre : ce sont des outils transver
      défaut différé F2) : R4 gagne « Exponentielle de base a » et « Fonctions
      puissances x^α » (+ racine n-ième comme cas α=1/n), comblant exactement
      le savoir-faire signalé par F2 comme absent des cinq fichiers de la
-     notion (« Étudier a^x et x^α », maths-sm.yaml:177). Les deux sont
-     SM-seuls : maths-sexp.yaml:185 dit « cœur SExp = e^x » et « pas d'étude
-     systématique des fonctions puissances » ; la racine n-ième est exclue de
-     SExp par maths-sm.yaml:155 (qui la nomme SM-seule aux côtés des
-     puissances réelles et d'arctan). Même convention de filière que la leçon
-     sœur (fonction-logarithme, même date) après la même vérification
-     d'absence de précédent : aucun marqueur inline dans le texte élève — le
-     scope filière se déclare seulement dans cette note, jamais dans la prose
-     lue par l'élève. Étude travaillée ajoutée : f(x) = x^{1/3} (domaine
+     notion (« Étudier a^x et x^α », maths-sm.yaml:177). Filière (règle de DECISIONS-EN-ATTENTE §37) :
+     a^x est une « mention » en SExp (maths-sexp.yaml:185, « cœur SExp =
+     e^x ») — pas de phrase de filière ; x^α et la racine n-ième sont SM
+     (« pas d'étude systématique des fonctions puissances », même ligne ; la
+     racine n-ième nommée SM-seule par maths-sm.yaml:155) — la section
+     « Fonctions puissances x^α » porte donc, dans la prose lue par l'élève,
+     la phrase « au programme de la filière Sciences Mathématiques ; en
+     Sciences Expérimentales, tu peux passer… ». Corrigé le 2026-10-20
+     (docs/audits/critiques/cadre-GH-fidelite.md, constat F1) : la version
+     précédente de cette note disait « a^x et x^α SM-seuls » et « aucun
+     marqueur inline, jamais dans la prose lue par l'élève » — deux erreurs,
+     la seconde contredite par la phrase posée dans le même commit. Une note
+     est une instruction pour l'auteur suivant (ADR 0031) : la suivre aurait
+     retiré la phrase qui protège l'élève de SExp. Étude travaillée ajoutée : f(x) = x^{1/3} (domaine
      ]0,+∞[, dérivée f'(x)=1/(3x^{2/3}), croissante, limites 0 en 0⁺ et +∞ en
      +∞) — absente de bank.yaml et exercises.yaml (grep vérifié avant
      rédaction, aucune occurrence de x^{1/3}, racine cubique, x^\alpha, a^x

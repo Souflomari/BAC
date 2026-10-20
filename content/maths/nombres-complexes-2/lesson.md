@@ -285,7 +285,9 @@ $$\cos^3 x = \frac{2\cos3x+6\cos x}{8} = \frac{\cos3x+3\cos x}{4}$$
 
 **Le gain concret**, maintenant que $\cos^3x$ est linéarisé : chaque terme, $\cos(3x)$ et $\cos x$, a une primitive immédiate (une primitive de $\cos(kx)$ est $\frac1k\sin(kx)$), alors qu'aucune formule directe ne donne de primitive à $\cos^3x$ tel quel.
 
-$$\int \cos^3x\,dx = \int \frac{\cos3x+3\cos x}{4}\,dx = \frac14\times\frac{\sin3x}{3} + \frac34\sin x + C = \frac{\sin3x}{12} + \frac34\sin x + C$$
+Puisque $\cos^3x = \dfrac14\cos3x + \dfrac34\cos x$, une primitive de $x \mapsto \cos^3x$ sur $\mathbb{R}$ est :
+
+$$F(x) = \frac14\times\frac{\sin3x}{3} + \frac34\sin x = \frac{\sin3x}{12} + \frac34\sin x$$
 
 ---
 

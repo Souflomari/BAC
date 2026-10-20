@@ -477,6 +477,8 @@ Les deux solutions sont bien distinctes, puisque l'énoncé suppose $u+v \neq 2i
 
 ### Une équation qui se ramène au second degré : le changement d'inconnue $Z=z^2$
 
+Cette section est au programme de la filière Sciences Mathématiques ; en Sciences Expérimentales, tu peux passer directement au chapitre suivant.
+
 Certaines équations ne sont pas, à première vue, du second degré, mais s'y ramènent par un changement d'inconnue. Le cas le plus courant : une équation où $z$ n'apparaît qu'à travers $z^2$ et $z^4$ — une équation **bicarrée**.
 
 **Exemple travaillé.** Résoudre dans $\mathbb{C}$ l'équation $(E)\ :\ z^4-6z^2+25=0$.

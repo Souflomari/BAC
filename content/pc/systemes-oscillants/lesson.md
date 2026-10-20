@@ -321,7 +321,7 @@ On cherche une longueur $\ell$ telle que le pendule simple de longueur $\ell$ ai
 
 $$2\pi\sqrt{\frac{\ell}{g}} = 2\pi\sqrt{\frac{J_\Delta}{mgd}} \qquad \Longrightarrow \qquad \frac{\ell}{g} = \frac{J_\Delta}{mgd} \qquad \Longrightarrow \qquad \boxed{\ell = \frac{J_\Delta}{m\,d}}$$
 
-Ce $\ell$ s'appelle la **longueur du pendule simple synchrone** du pendule pesant considéré : un pendule simple de cette longueur précise bat exactement au même rythme, quel que soit le pendule pesant de départ. Il ne coïncide avec $d$ que dans le cas particulier déjà rencontré (masse ponctuelle, $J_\Delta = md^2$) : alors $\ell = md^2/(md) = d$ exactement — le pendule simple lui-même. Dans tous les autres cas, $\ell \neq d$.
+Ce $\ell$ s'appelle la **longueur du pendule simple synchrone** du pendule pesant considéré : un pendule simple de cette longueur précise bat exactement au même rythme, quel que soit le pendule pesant de départ. Il ne coïncide avec $d$ que dans le cas particulier déjà rencontré (masse ponctuelle, $J_\Delta = md^2$) : alors $\ell = md^2/(md) = d$ exactement — le pendule simple lui-même. Dans tous les autres cas, $\ell \neq d$. Un énoncé peut noter cette longueur $L$ ; ici, $L$ désigne déjà la longueur de la tige de l'exemple qui suit, d'où la lettre $\ell$.
 
 **Exemple numérique — une barre pivotée par une extrémité.** Une tige homogène de longueur $L = 1{,}20\ \text{m}$ et de masse $m = 0{,}80\ \text{kg}$, pivotant autour d'un axe horizontal passant par une extrémité, a pour moment d'inertie $J_\Delta = \dfrac{1}{3}mL^2$ (donnée) et son centre d'inertie est à $d = L/2$ de l'axe.
 
@@ -545,7 +545,7 @@ Reprends les trois courbes de la figure ci-dessus. Voici le raisonnement, dans l
 
 **Deuxième question, seulement si la réponse à la première est non : ce retour est-il le plus rapide possible, ou plus lent ?** Compare le temps de retour à celui des autres courbes de la même famille (même $m$, même $k$, frottement croissant). Le retour le plus court, sans dépassement : c'est le **régime critique**. Un retour plus long, sans dépassement non plus : c'est le régime **apériodique**.
 
-En résumé, dans l'ordre où on le lit sur une trace réelle : *amplitude qui décroît ET espacement régulier entre les pics → pseudo-périodique ; retour direct, sans dépassement, le plus rapide → critique ; retour direct mais lent → apériodique.* C'est exactement cette lecture qu'un exercice de type bac te demandera de faire — jamais de recalculer $h$, seulement de reconnaître le régime à partir de sa signature graphique.
+En résumé, dans l'ordre où on le lit sur une trace réelle : *amplitude qui décroît ET espacement régulier entre les pics → pseudo-périodique ; retour direct, sans dépassement, le plus rapide → critique ; retour direct mais lent → apériodique.* C'est cette lecture qu'on attend de toi : reconnaître le régime à partir de sa signature graphique.
 
 ---
 
@@ -654,3 +654,17 @@ C'est la même leçon que celle du dictionnaire translation ↔ rotation : la m�
 ### Une variation pour ne pas mémoriser
 
 [[exercise:r-variation]]
+
+<!-- NOTE DE VALIDATION (dette de cadre, vague H1 — prose ff15dbc2, items SO-44…52 ; jamais dans le rendu).
+     Quatre sections neuves, chacune adossée à une ligne imprimée de docs/cadre/curriculum/pc-physique-chimie.yaml :
+     « Et si le ressort n'est pas horizontal ? » — :315 (« horizontal / incliné / vertical ») ;
+     « Le pendule simple synchrone… » — :317, attesté par un sujet national vérifié
+       (content/pc/rotation-axe-fixe/bank.yaml, « Calculer la valeur de la longueur L du pendule simple
+       synchrone ») : le sujet écrit L, la leçon ℓ (L est déjà la longueur de la tige) — dit une fois au lecteur ;
+     « Aller plus loin : un oscillateur composé… » — :319 (« 2e loi + RFD … pour établir les équations
+       différentielles »), J_Δ donné (:306). La leçon va jusqu'à ω₀/T₀ : dans le cadre selon :315 et :321
+       (forme fermée sans amortissement) — question posée au propriétaire, DECISIONS-EN-ATTENTE §37, point 5 ;
+     « Deux types de frottement, pas un seul » — :315, lu fluide/solide (défaut de §37, point 2). La ligne dit
+       « à partir des diagrammes x_G(t) » : la section n'a pas encore de figure qui oppose les deux enveloppes.
+     Aucune phrase de filière : le domaine est commun aux filières PC. Critique de fidélité :
+     docs/audits/critiques/cadre-GH-fidelite.md (FIX THEN SHIP, corrections appliquées le 2026-10-20). -->

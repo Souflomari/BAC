@@ -2194,3 +2194,25 @@ bk-2024-r-x2. Elle reste pour SExp ; SM les travaille (vague G3).
    plancher** (≈ 12, trois par modèle), l'effort libéré va aux items de la capacité 2.1.6 — celle dont
    le geste est attesté à la base 10 par bk-2024-r-x5. Et la notation d'une base attend une source
    marocaine avant qu'une ligne ne soit écrite.
+
+**Addendum 2026-10-20 — la critique de fidélité des vagues G/H** (`docs/audits/critiques/cadre-GH-fidelite.md` :
+aucune sortie du cadre, aucune erreur de calcul sur 43 items ; G5 SHIP, le reste FIX THEN SHIP). Appliqué
+le jour même : les deux notes de validation (exponentielle, logarithme) qui affirmaient « aucun marqueur
+de filière dans la prose » — le contraire de la règle 1 ci-dessus, et de la phrase posée dans le même
+commit — réécrites ; une phrase de filière posée sur la section `Z = z²` (`nombres-complexes-1`), car
+`maths-sexp.yaml:345` l'exclut EXPLICITEMENT (« SExp : second degré à coefficients réels seulement ») ;
+la primitive de cos³x écrite sans intégrale indéfinie ; « König-Huygens » ramené à une parenthèse ; le
+théorème de Riemann admis pour f continue quelconque ; « jamais de recalculer h » retiré ; L nommé à côté
+de ℓ ; quatre habiletés corrigées. **Deux questions restent au propriétaire :**
+4. *La section R4b de `nombres-complexes-1`* (le « filet de sécurité », déjà au niveau SM) ne porte pas
+   de phrase de filière, alors que `Z = z²` en porte une désormais. **Défaut : laisser R4b tel quel** —
+   la règle 1 ne pose une phrase que sur une ligne nommée SM ; si R4b relève de la même exclusion
+   (`maths-sexp.yaml:345`), lui ajouter la même phrase.
+5. *L'oscillateur composé* : `pc-physique-chimie.yaml:319` n'imprime que « établir les équations
+   différentielles » ; la leçon et SO-47/SO-49 vont jusqu'à ω₀ et T₀. **Défaut : dans le cadre** — `:315`
+   imprime « établir et exploiter la période propre » en général et `:321` autorise la forme fermée sans
+   amortissement, ce qui est le cas ici.
+Reste aussi à faire, hors de cette session : une figure qui oppose les deux enveloppes (« à partir des
+diagrammes x_G(t) », `:315`) dans « Deux types de frottement » ; un item qui fasse ÉTABLIR l'encadrement
+de Riemann (le verbe imprimé, `maths-sm.yaml:219`) ; et, pour research-lead, les « LACUNE PRIORITAIRE —
+variable aléatoire / binomiale » de `maths-sm.yaml` et `maths-sexp.yaml`, devenues fausses.

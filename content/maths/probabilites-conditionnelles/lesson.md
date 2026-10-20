@@ -494,11 +494,13 @@ $$V(X) = 0{,}9604 \times 0{,}32 + 0{,}0004 \times 0{,}38 + 1{,}0404 \times 0{,}3
 
 $$V(X) = 0{,}307328 + 0{,}000152 + 0{,}31212 = 0{,}6196$$
 
-#### Un raccourci : la formule de König-Huygens
+#### Un raccourci : une deuxième formule de la variance
 
 Calculer chaque écart, l'élever au carré, puis repondérer — c'est trois opérations par valeur de $X$. Il existe une deuxième écriture, qui donne toujours le même nombre :
 
 $$V(X) = E(X^2) - \big(E(X)\big)^2$$
+
+(Certains manuels l'appellent formule de König-Huygens.)
 
 **Ce que fait cette formule :** on calcule l'espérance des carrés des valeurs — $E(X^2)$, ce qui n'est pas $\big(E(X)\big)^2$ — puis on retranche le carré de l'espérance déjà connue. Sur le même tableau :
 

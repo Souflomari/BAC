@@ -362,7 +362,7 @@ Calcule la borne de droite : $\displaystyle\int_0^1 x\,\mathrm{d}x = \left[\frac
 
 ### Sommes de Riemann : une somme de rectangles qui devient une intégrale
 
-Ce qui suit est un outil supplémentaire de la filière Sciences Mathématiques ; en Sciences Expérimentales, l'intégrale se construit uniquement à partir de la primitive (chapitre 2), et tu peux passer directement au chapitre suivant.
+Cette section est au programme de la filière Sciences Mathématiques ; en Sciences Expérimentales, l'intégrale se construit uniquement à partir de la primitive (chapitre 2), et tu peux passer directement au chapitre suivant.
 
 **Le problème.** Le chapitre 2 a défini $\int_a^b f$ à partir d'une primitive. Mais certains sujets construisent une somme — un nombre de termes qui grandit avec $n$ — et demandent sa limite, sans qu'aucune primitive n'apparaisse dans l'énoncé. Le mécanisme de la comparaison, que tu viens de voir, est exactement l'outil qui relie une telle somme à une intégrale.
 
@@ -383,6 +383,8 @@ $S_n$ est la somme des rectangles **au-dessus** de la courbe (hauteur au bord dr
 $$S_n - T_n = \frac1n\Big(f(1) - f(0)\Big) \xrightarrow[n\to+\infty]{} 0$$
 
 $T_n \leq \int_0^1 f \leq S_n$ et $S_n-T_n\to0$ : par le théorème des gendarmes (chapitre "Suites numériques"), $S_n$ et $T_n$ convergent tous les deux vers $\displaystyle\int_0^1 f(x)\,\mathrm{d}x$.
+
+Le même résultat vaut pour toute fonction $f$ **continue** sur $[0,1]$, croissante ou non : on l'admet. Si $f$ est continue sur $[0,1]$, les deux sommes $\dfrac1n\displaystyle\sum_{k=1}^{n} f\!\left(\frac{k}{n}\right)$ et $\dfrac1n\displaystyle\sum_{k=0}^{n-1} f\!\left(\frac{k}{n}\right)$ tendent vers $\displaystyle\int_0^1 f(x)\,\mathrm{d}x$. La preuve ci-dessus, faite pour $f$ croissante, montre pourquoi ; c'est l'énoncé général qu'on applique.
 
 ### Exemple travaillé — la limite d'une somme de Riemann
 

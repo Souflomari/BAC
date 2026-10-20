@@ -40,13 +40,13 @@ logarithme de base a / `a^x` / `x^α` / racine n-ième (aucune occurrence dans l
 |---|---|---|---|
 | G1 | arithmétique [SM] | systèmes de numération (2.1.4–2.1.6) ; PPCM | spec en cours (`docs/pipeline/propositions/maths-arithmetique-numeration.md`) |
 | G2 | structures algébriques [SM] | **espaces vectoriels** (sous-espace, famille libre/génératrice, base, dimension, application linéaire) ; noyau et image d'un morphisme ; items sous-groupe et anneau intègre | spec à écrire (un sous-domaine entier) |
-| G3 | calcul intégral | sommes de Riemann [SM] ; primitives `u'·uⁿ` [commun], `u'·cos u`, `u'·sin u`, primitive sous condition [SM] | à écrire |
-| G4 | exponentielle / logarithme [SM] | logarithme décimal et de base a ; `a^x = e^{x ln a}` ; `x^α` ; racine n-ième | à écrire |
-| G5 | limites et continuité [commun] | image d'un segment ; dichotomie | à écrire |
-| G6 | complexes [SM] | linéarisation ; équations se ramenant au second degré | à écrire |
-| G7 | probabilités [commun] | variance, écart-type | à écrire |
+| G3 | calcul intégral | sommes de Riemann [SM] ; primitives `u'·uⁿ` [commun], `u'·cos u`, `u'·sin u`, primitive sous condition [SM] | écrit 2026-10-20 (prose ff15dbc2, items CI-59…73) |
+| G4 | exponentielle / logarithme [SM] | logarithme décimal et de base a ; `a^x = e^{x ln a}` ; `x^α` ; racine n-ième | écrit 2026-10-20 (prose ff15dbc2, items 49ecdfd2) |
+| G5 | limites et continuité [commun] | image d'un segment ; dichotomie | écrit 2026-10-20 (prose ff15dbc2, items 063259a1) |
+| G6 | complexes [SM pour Z = z² ; linéarisation simple aussi en SExp, maths-sexp.yaml:283] | linéarisation ; équations se ramenant au second degré | écrit 2026-10-20 (prose ff15dbc2, items c0bd7121) |
+| G7 | probabilités [commun] | variance, écart-type | écrit 2026-10-20 (prose ff15dbc2, items PC-M23-1…4) |
 | G8 | équations différentielles, suites | Δ < 0 avec α ≠ 0 travaillé ; Δ > 0 testé ; sommes arithmétiques et géométriques travaillées [SExp] | à écrire |
-| H1 | systèmes oscillants [PC] | ressort vertical et incliné, frottement solide ; types et régimes d'amortissement ; pendule simple synchrone ; oscillateur composé | à écrire |
+| H1 | systèmes oscillants [PC] | ressort vertical et incliné, frottement solide ; types et régimes d'amortissement ; pendule simple synchrone ; oscillateur composé | écrit 2026-10-20 (prose ff15dbc2, items d09fe04c) ; figure des deux enveloppes à faire |
 | H2 | noyaux, décroissance [PC] | choisir le radioélément pour dater ; applications et dangers ; usages de l'énergie nucléaire ; bilan ΔE testé | à écrire |
 | H3 | RC, RL, RLC [PC] | brancher l'oscilloscope (quelle tension sur quelle voie) ; convention récepteur ; associations de condensateurs | à écrire |
 | H4 | rotation, atome [PC] | θ(t) uniformément varié ; a_N et a_T en grandeurs angulaires ; ΔE = hν travaillé | à écrire |

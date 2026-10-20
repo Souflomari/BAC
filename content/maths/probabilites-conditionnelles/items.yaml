@@ -150,7 +150,7 @@ misconceptions:
   # — voir le commentaire au fil de chaque item pour la justification exacte.
   - id: mc.math.sma_prob_conditionnelle.variance-carre-de-moyenne-oublie
     label: "« V(X) = E(X²) − E(X), le carré de l'espérance oublié »"
-    description: "En appliquant la formule de König-Huygens, l'élève retranche l'espérance $E(X)$ elle-même au lieu de son carré $\\big(E(X)\\big)^2$ — un résultat plausible, souvent proche de la bonne réponse, ce qui rend l'erreur difficile à repérer sur le seul ordre de grandeur du résultat."
+    description: "En appliquant la formule $V(X)=E(X^2)-\\big(E(X)\\big)^2$, l'élève retranche l'espérance $E(X)$ elle-même au lieu de son carré $\\big(E(X)\\big)^2$ — un résultat plausible, souvent proche de la bonne réponse, ce qui rend l'erreur difficile à repérer sur le seul ordre de grandeur du résultat."
     contradicts_principle: "$V(X) = E(X^2) - \\big(E(X)\\big)^2$ : le second terme est le CARRÉ de l'espérance, jamais l'espérance elle-même. $V(X)$ est par ailleurs une somme de carrés pondérés par des probabilités, donc elle ne peut jamais être négative — un résultat négatif signale à coup sûr cet oubli du carré."
 
   - id: mc.math.sma_prob_conditionnelle.ecart-type-variance-confondus
@@ -2757,8 +2757,8 @@ items:
         also_reveals: []
         feedback: >
           Ce choix calcule $E(X^2)-E(X)=5{,}5-2{,}1=3{,}4$, en retranchant
-          l'espérance elle-même au lieu de son carré. La formule de
-          König-Huygens retranche $\big(E(X)\big)^2=2{,}1^2=4{,}41$, pas
+          l'espérance elle-même au lieu de son carré. La formule
+          $V(X)=E(X^2)-\big(E(X)\big)^2$ retranche $\big(E(X)\big)^2=2{,}1^2=4{,}41$, pas
           $E(X)=2{,}1$. Modèle erroné : « $V(X)=E(X^2)-E(X)$, le carré de
           l'espérance oublié ».
       - id: C
@@ -2796,14 +2796,14 @@ items:
       **Étape 2 — Espérance des carrés :**
       $$E(X^2) = 1^2\times0{,}3 + 2^2\times0{,}5 + 4^2\times0{,}2 = 0{,}3+2{,}0+3{,}2 = 5{,}5$$
 
-      **Étape 3 — König-Huygens :**
+      **Étape 3 — La deuxième formule de la variance :**
       $$V(X) = E(X^2) - \big(E(X)\big)^2 = 5{,}5 - 2{,}1^2 = 5{,}5 - 4{,}41 = 1{,}09$$
 
       **Contrôle :** $V(X)=1{,}09 \geq 0$ ✓.
 
   - id: PC-M23-2
     rung: "R5b"
-    habilete: application_directe
+    habilete: application_non_explicite
     difficulty_level: 4
     skill_code: sma_prob_conditionnelle
     tags: [misconception_driven, sma_prob_conditionnelle, variable_aleatoire, variance]
@@ -2828,8 +2828,8 @@ items:
         feedback: >
           Ce choix calcule $V(X)$ par $E(X^2)-E(X)=4{,}9-2{,}1=2{,}8$, en
           retranchant l'espérance au lieu de son carré, puis prend la
-          racine carrée de ce résultat déjà faux. La formule de
-          König-Huygens retranche $\big(E(X)\big)^2=4{,}41$, pas
+          racine carrée de ce résultat déjà faux. La formule
+          $V(X)=E(X^2)-\big(E(X)\big)^2$ retranche $\big(E(X)\big)^2=4{,}41$, pas
           $E(X)=2{,}1$. Modèle erroné : le carré de l'espérance oublié
           dans le calcul de $V(X)$.
       - id: C
@@ -2871,7 +2871,7 @@ items:
       **Étape 2 — Espérance des carrés :**
       $$E(X^2) = 1^2\times0{,}2 + 2^2\times0{,}5 + 3^2\times0{,}3 = 0{,}2+2{,}0+2{,}7 = 4{,}9$$
 
-      **Étape 3 — Variance, par König-Huygens :**
+      **Étape 3 — Variance, par la deuxième formule :**
       $$V(X) = E(X^2) - \big(E(X)\big)^2 = 4{,}9 - 2{,}1^2 = 4{,}9 - 4{,}41 = 0{,}49$$
 
       **Étape 4 — Écart-type :**
@@ -2943,7 +2943,7 @@ items:
 
   - id: PC-M23-4
     rung: "R5b"
-    habilete: application_non_explicite
+    habilete: application_directe
     difficulty_level: 3
     skill_code: sma_prob_conditionnelle
     tags: [misconception_driven, sma_prob_conditionnelle, variable_aleatoire, variance]
@@ -2966,7 +2966,7 @@ items:
         misconception: mc.math.sma_prob_conditionnelle.variance-carre-de-moyenne-oublie
         also_reveals: []
         feedback: >
-          La formule de König-Huygens retranche le CARRÉ de l'espérance,
+          La formule $V(X)=E(X^2)-\big(E(X)\big)^2$ retranche le CARRÉ de l'espérance,
           $\big(E(X)\big)^2$, jamais l'espérance elle-même. Un résultat
           négatif issu de cette formule fautive n'est d'ailleurs pas
           anodin : $V(X)$, la vraie variance, est une somme de carrés
@@ -3001,7 +3001,7 @@ items:
           $0{,}6196^2\approx 0{,}384$. Modèle erroné : variance et
           écart-type confondus.
     correct_feedback: >
-      $V(X) = E(X^2) - \big(E(X)\big)^2$ est la formule de König-Huygens,
+      $V(X) = E(X^2) - \big(E(X)\big)^2$ est la deuxième formule de la variance,
       et $V(X)$, une somme de carrés pondérés par des probabilités, ne
       peut jamais être négative — un résultat négatif signale toujours
       une erreur de calcul.
