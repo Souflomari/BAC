@@ -620,7 +620,7 @@ Fixe un entier $b \geq 2$, la **base**. Écrire un entier naturel $N$ en base $b
 
 $$N = a_p b^p + a_{p-1} b^{p-1} + \cdots + a_1 b + a_0$$
 
-où chaque **chiffre** $a_i$ vérifie $0 \leq a_i \leq b-1$ — car $b$ unités d'une colonne font exactement un paquet de la suivante —, et où le chiffre de tête $a_p$ n'est pas nul. On note $N = \overline{a_p a_{p-1} \cdots a_1 a_0}_{(b)}$ : la barre dit « ceci est une suite de chiffres, pas un produit », et l'indice $(b)$ dit dans quelle base la lire. Certains documents écrivent la base en exposant, $\overline{a_p \cdots a_0}^{(b)}$ : c'est la même chose.
+où chaque **chiffre** $a_i$ vérifie $0 \leq a_i \leq b-1$, et où le chiffre de tête $a_p$ n'est pas nul. Pourquoi aucun chiffre ne vaut $b$ ? Parce que $b$ unités d'une colonne font exactement un paquet de la suivante : on les y range. On note $N = \overline{a_p a_{p-1} \cdots a_1 a_0}_{(b)}$ : la barre dit « ceci est une suite de chiffres, pas un produit », et l'indice $(b)$ dit dans quelle base la lire. Certains documents écrivent la base en exposant, $\overline{a_p \cdots a_0}^{(b)}$ : c'est la même chose.
 
 ### Exemple travaillé : écrire $2025$ en base $7$
 
@@ -656,8 +656,6 @@ Lus dans l'ordre de sortie, ces restes donnent $\overline{442}_{(6)}$. Recalcule
 
 La raison, maintenant. Dans la première division, $N = 7q + r$, le reste $r$ est le seul terme qui n'est pas multiplié par $7$ : c'est ce qui reste une fois retirés tous les paquets de $7$, donc le chiffre des **unités**. Le quotient $q$ compte les paquets ; le diviser à son tour par $7$ donne le chiffre du poids juste au-dessus, et ainsi de suite. Les restes sortent du poids le plus faible au plus fort : l'écriture se lit de bas en haut.
 
-Le même argument garantit que l'écriture existe et qu'elle est unique : les quotients décroissent strictement jusqu'à $0$, donc les divisions s'arrêtent ; et toute égalité $N = b \times (\ldots) + a_0$ avec $0 \leq a_0 < b$ est une division euclidienne, dont l'unicité (chapitre 2) force $a_0$, puis de proche en proche chaque chiffre.
-
 <!-- Figure numeration-cascade-2025-base7 (3 étapes, brief d'origine recopié dans
      l'en-tête du SVG) : à garder APRÈS le point d'arrêt sur l'ordre des restes —
      sa troisième étape en donne la réponse. -->
@@ -670,6 +668,20 @@ Le même argument garantit que l'écriture existe et qu'elle est unique : les qu
      recompose sous les yeux pendant que le nombre ne bouge pas. Remède le plus
      direct au modèle « l'écriture est le nombre ». La section tient sans lui :
      la comparaison entre bases, plus bas, fait le même travail en statique. -->
+
+### Pourquoi l'écriture existe, et pourquoi elle est unique
+
+Ce procédé promet deux choses : tout entier $N \geq 1$ a une écriture en base $b$, et il n'en a qu'une.
+
+**Existence.** Dans $N = bq + r$, le reste est positif ou nul, donc $bq \leq N$ et $q \leq \frac{N}{b}$. Comme $b \geq 2$, $\frac{N}{b}$ est strictement plus petit que $N$ : chaque quotient est strictement plus petit que le nombre qu'on vient de diviser. Des entiers naturels qui baissent strictement à chaque pas finissent par atteindre $0$ — sur $2025$ : $289$, puis $41$, puis $5$, puis $0$. Les divisions s'arrêtent donc, et les restes recueillis en chemin sont les chiffres. Le dernier n'est pas nul : c'est le dernier quotient non nul lui-même.
+
+**Unicité.** Suppose que $N$ ait deux écritures en base $b$, de chiffres des unités $a_0$ et $c_0$. Dans chacune, mets $b$ en facteur dans tout ce qui précède les unités :
+
+$$N = b \times (\ldots) + a_0 \qquad \text{avec } 0 \leq a_0 \leq b-1$$
+
+$$N = b \times (\ldots) + c_0 \qquad \text{avec } 0 \leq c_0 \leq b-1$$
+
+Ce sont deux divisions euclidiennes de $N$ par $b$, et la division euclidienne est unique (chapitre 2) : $a_0 = c_0$, et les deux parenthèses, qui sont les quotients, sont égales. Ce quotient commun, c'est l'écriture privée de son dernier chiffre, et il est plus petit que $N$. Recommence sur lui : son chiffre des unités est $a_1$ d'un côté, $c_1$ de l'autre, donc $a_1 = c_1$, et ainsi de suite. Les deux quotients restent égaux à chaque pas, donc ils atteignent $0$ ensemble : les deux écritures ont autant de chiffres, et les mêmes, à la même place.
 
 ### Exemple travaillé : revenir en base $10$
 
@@ -685,7 +697,7 @@ $$\overline{3204}_{(5)} = 429$$
 
 Le chiffre $0$ n'est pas un blanc : c'est un coefficient qui vaut zéro. Si tu le sautes, tous les poids à sa gauche glissent d'un cran.
 
-### Additionner et multiplier dans une base
+### Additionner dans une base
 
 **Ce qu'on cherche et pourquoi ce geste :** poser $\overline{356}_{(7)} + \overline{243}_{(7)}$ en colonnes, exactement comme en base $10$ — de droite à gauche, parce qu'une colonne peut déborder sur sa voisine de gauche, jamais l'inverse. Seule change la règle de débordement.
 
@@ -699,39 +711,63 @@ $$\boxed{\,\overline{356}_{(7)} + \overline{243}_{(7)} = \overline{632}_{(7)}\,}
 
 Contrôle en base $10$ : $\overline{356}_{(7)} = 188$, $\overline{243}_{(7)} = 129$, $188+129 = 317$, et $\overline{632}_{(7)}$ vaut bien $6\times49+3\times7+2 = 317$ ✓.
 
-**Ce qu'on cherche et pourquoi ce geste :** $\overline{34}_{(7)} \times \overline{5}_{(7)}$, posée elle aussi : on multiplie colonne par colonne en partant des unités, et chaque résultat se range en paquets de $7$.
+### Multiplier dans une base
 
-Unités : $4\times5 = 20$, et $20 = 2\times7+6$ — on écrit $6$, on retient $2$.
+**Ce qu'on cherche et pourquoi ce geste :** $\overline{34}_{(7)} \times \overline{5}_{(7)}$, posée elle aussi. On multiplie chaque chiffre par $5$ en partant des unités, on ajoute la retenue venue de la droite, et chaque résultat se range en paquets de $7$. C'est ici qu'on perd le plus facilement une retenue : on la note à chaque ligne.
 
-Paquets de $7$ : $3\times5+2 = 17$, et $17 = 2\times7+3$ — on écrit $3$, on retient $2$, qui devient le chiffre de tête.
+| colonne | calcul | on écrit | retenue |
+|---|---|---|---|
+| unités | $4\times5 = 20 = 2\times7+6$ | $6$ | $2$ |
+| paquets de $7$ | $3\times5+2 = 17 = 2\times7+3$ | $3$ | $2$ |
+| paquets de $49$ | plus rien à multiplier : la retenue seule | $2$ | — |
 
 $$\boxed{\,\overline{34}_{(7)} \times \overline{5}_{(7)} = \overline{236}_{(7)}\,}$$
 
 Contrôle : $\overline{34}_{(7)} = 25$, $25\times5 = 125$, et $\overline{236}_{(7)}$ vaut bien $2\times49+3\times7+6 = 125$ ✓.
 
-Pourquoi reporter dès $7$, et pas à partir de $10$ ? Parce que la colonne de gauche pèse exactement sept fois plus que celle de droite. Dès qu'une colonne atteint sept unités, ces sept unités valent exactement **une** unité de la colonne voisine : on les y envoie. Le nombre dix n'intervient nulle part — il n'intervenait, en base $10$, que parce que la base valait dix. Dans une base $b$ quelconque, la règle est une division euclidienne : une colonne qui donne $c$ s'écrit $c = qb + r$ avec $0 \leq r < b$ ; on écrit $r$, on reporte $q$.
+Pourquoi reporter dès $7$, et pas à partir de $10$ ? Tu fais déjà ce geste sur une horloge : soixante minutes font une heure, et une minute après 2 h 59, il est 3 h 00, pas 2 h 60 — le report se fait à soixante, pas à cent. Ici, c'est la même chose avec sept : la colonne de gauche pèse exactement sept fois plus que celle de droite. Dès qu'une colonne atteint sept unités, ces sept unités valent exactement **une** unité de la colonne voisine : on les y envoie. Le nombre dix n'intervient nulle part — il n'intervenait, en base $10$, que parce que la base valait dix. Dans une base $b$ quelconque, la règle est une division euclidienne : une colonne qui donne $c$ s'écrit $c = qb + r$ avec $0 \leq r < b$ ; on écrit $r$, on reporte $q$.
 
-Fais l'essai inverse, au seuil de la base $10$. Les unités donnent $20$ : on écrirait $0$ en retenant $2$. Puis $3\times5+2 = 17$ : on écrirait $7$ en retenant $1$. Résultat : $\overline{170}$, tout simplement $34\times5$ calculé en base $10$. Ici l'erreur se voit, car le chiffre $7$ n'existe pas en base $7$ — sur l'addition, la colonne des unités aurait de même donné $9$. Mais dès qu'une colonne atteint $10$, on écrit $c-10$, qui peut très bien être un chiffre légal de la base : l'erreur devient invisible, et seul le recalcul la démasque.
+Fais l'essai inverse, au seuil de la base $10$. Les unités donnent $20$ : on écrirait $0$ en retenant $2$. Puis $3\times5+2 = 17$ : on écrirait $7$ en retenant $1$. Résultat : les chiffres $1$, $7$, $0$, exactement ceux du produit $\overline{34}_{(10)} \times 5 = \overline{170}_{(10)}$. C'est la multiplication de l'école, faite sur des chiffres qu'il fallait lire en base sept. Ici l'erreur se voit, car le chiffre $7$ n'existe pas en base $7$ — sur l'addition, la colonne des unités aurait de même donné $9$. Mais dès qu'une colonne atteint $10$, on écrit $c-10$, qui peut très bien être un chiffre légal de la base : l'erreur devient invisible, et seul le recalcul la démasque.
 
 À toi, en base $6$ cette fois. Prends position avant de lire la suite :
 
 [[checkpoint:cp-r7b-retenue]]
 
+### Calculer avec deux bases différentes
+
+Que vaut $\overline{213}_{(5)} + \overline{36}_{(8)}$, écrit en base $7$ ?
+
+**Ce qu'on cherche et pourquoi ce geste :** ici, pas d'addition posée. Les colonnes ne se correspondent pas : la deuxième vaut $5$ d'un côté et $8$ de l'autre, et additionner chiffre à chiffre mélangerait des paquets de tailles différentes. Il n'y a rien à aligner. Ce que les deux écritures ont en commun, c'est leur valeur : on revient en base $10$, qui n'a rien de spécial sinon d'être celle où tu sais calculer, on fait l'opération, puis on écrit le résultat dans la base demandée.
+
+Les valeurs : $\overline{213}_{(5)}$ vaut $2\times25 + 1\times5 + 3 = 58$, et $\overline{36}_{(8)}$ vaut $3\times8 + 6 = 30$. La somme vaut $58 + 30 = 88$. Puis les divisions par $7$, comme pour $2025$ :
+
+$$88 = 7 \times 12 + 4$$
+
+$$12 = 7 \times 1 + 5$$
+
+$$1 = 7 \times 0 + 1$$
+
+Les restes se lisent de bas en haut :
+
+$$\boxed{\,\overline{213}_{(5)} + \overline{36}_{(8)} = \overline{154}_{(7)}\,}$$
+
+Contrôle : $\overline{154}_{(7)}$ vaut $49 + 5\times7 + 4 = 88$ ✓.
+
 ### Comparer deux écritures
 
 **Ce qu'on cherche et pourquoi ce geste :** comparer deux entiers à partir de leurs écritures, sans tout recalculer — et savoir quand c'est permis.
 
-Dans une même base, d'abord, **plus de chiffres gagne**. En base $3$, $\overline{1000}_{(3)}$ vaut $27$ et $\overline{222}_{(3)}$ vaut $26$. Ajoute $1$ à $\overline{222}_{(3)}$ : chaque colonne atteint $3$ et déborde, et tu obtiens $\overline{1000}_{(3)}$. Dans toute base, la plus grande écriture à $p+1$ chiffres n'a que des chiffres $b-1$, et lui ajouter $1$ donne $1$ suivi de $p+1$ zéros. Une écriture à $p+1$ chiffres, de chiffre de tête non nul, vérifie donc :
+Dans une même base, d'abord, **plus de chiffres gagne**. Ajoute $1$ à $\overline{222}_{(3)}$, qui vaut $26$ : chaque colonne atteint $3$ et déborde, et tu obtiens $\overline{1000}_{(3)}$, qui vaut $27$. Dans toute base, la plus grande écriture à $p+1$ chiffres n'a que des chiffres $b-1$, et lui ajouter $1$ donne $1$ suivi de $p+1$ zéros. Une écriture à $p+1$ chiffres, de chiffre de tête non nul, vérifie donc :
 
 $$b^p \leq N \leq b^{p+1} - 1$$
 
-Elle reste strictement sous toute écriture plus longue.
+Ensuite, **à nombre de chiffres égal, on compare de gauche à droite** : la première position où les chiffres diffèrent décide, parce qu'une unité de plus à cette position vaut $b^k$, alors que tous les chiffres à sa droite totalisent au plus $b^k - 1$. Ce qui est plus à droite ne peut donc pas rattraper l'écart.
 
-Ensuite, **à nombre de chiffres égal, on compare de gauche à droite**, et la première position où les chiffres diffèrent décide. La raison : une unité de plus à cette position vaut $b^k$, alors que tous les chiffres situés à sa droite totalisent au plus $b^k - 1$ — la remarque précédente, appliquée aux $k$ derniers chiffres. Rien plus à droite ne peut rattraper l'écart.
+Entre deux bases différentes, maintenant, ces deux règles cessent de valoir. Lequel est le plus grand, de $\overline{21}_{(3)}$ ou de $\overline{12}_{(5)}$ ? Chiffre à chiffre, la réponse semble évidente : le premier commence par $2$, le second par $1$. Calcule pourtant : $\overline{21}_{(3)}$ vaut $2\times3+1 = 7$, et $\overline{12}_{(5)}$ vaut $5+2 = 7$. Ni l'un ni l'autre n'est le plus grand : deux écritures différentes, un seul et même nombre.
 
-Entre deux bases différentes, maintenant. Prends position : $\overline{21}_{(3)}$ ou $\overline{12}_{(5)}$, lequel est le plus grand ?
+La règle « plus de chiffres gagne » ne traverse pas non plus les bases. $\overline{1000}_{(3)}$ a quatre chiffres et vaut $27$ ; $\overline{201}_{(5)}$ n'en a que trois, et vaut $2\times25+1 = 51$. Et une même suite de chiffres change de valeur avec la base : $\overline{201}_{(3)}$ vaut $2\times9+1 = 19$, quand $\overline{201}_{(5)}$ vaut $51$. Une seule suite de chiffres, deux nombres.
 
-Ni l'un ni l'autre. $\overline{21}_{(3)}$ vaut $2\times3+1 = 7$, et $\overline{12}_{(5)}$ vaut $5+2 = 7$ : deux écritures différentes, un seul et même nombre. Et dans l'autre sens, $\overline{201}_{(3)}$ vaut $2\times9+1 = 19$, tandis que $\overline{201}_{(5)}$ vaut $2\times25+1 = 51$ : une seule suite de chiffres, deux nombres.
+La raison est la même dans les trois cas : un chiffre ne pèse rien par lui-même, il multiplie le poids de sa colonne, et ces poids sont les puissances de la base. Changer de base, c'est changer tous les poids à la fois.
 
 **Le piège à éviter :** comparer deux écritures de bases différentes en regardant les chiffres. La suite de chiffres n'est pas le nombre ; elle ne le devient qu'une fois la base appliquée. Tant qu'on n'a pas calculé les deux valeurs, on ne sait rien.
 
@@ -749,9 +785,11 @@ $$N = \sum_{i} a_i b^i \equiv \sum_{i} a_i \pmod{b-1}$$
 
 Tu as déjà fait exactement ce calcul. Au chapitre 3, tu as démontré le critère par $9$ en partant de $10 \equiv 1 \pmod 9$ : c'est le cas $b = 10$, et $9 = b-1$. Rien de neuf ici — la même démonstration, avec une lettre à la place d'un chiffre.
 
-Un réflexe guette alors : « la somme des chiffres, c'est LE critère ». Prends position avant de lire la suite. En base $7$, la somme des chiffres de $\overline{5622}_{(7)}$ vaut $15$. D'après ce réflexe, quel est le reste de ce nombre modulo $8$ ?
+Prends position avant de lire la suite. En base $7$, la somme des chiffres de $\overline{5622}_{(7)}$ vaut $15$. Quel est le reste de ce nombre modulo $8$ ?
 
-Le réflexe répond : $15 = 8+7$, donc un reste de $7$. Or tu connais ce nombre, c'est $2025$, et $2025 = 8\times253 + 1$. Le vrai reste est $1$, pas $7$ : le réflexe casse sur sa propre conséquence. La raison : en base $7$, $7 \equiv -1 \pmod 8$, et non $1$. Une base congrue à $-1$ donne une autre règle :
+[[checkpoint:cp-r7b-critere-predict]]
+
+Un réflexe guette ici : « la somme des chiffres, c'est LE critère ». Il répond : $15 = 8+7$, donc un reste de $7$. Or tu connais ce nombre, c'est $2025$, et $2025 = 8\times253 + 1$. Le vrai reste est $1$, pas $7$ : le réflexe casse sur sa propre conséquence. La raison : en base $7$, $7 \equiv -1 \pmod 8$, et non $1$. Une base congrue à $-1$ donne une autre règle :
 
 $$b \equiv -1 \pmod{b+1}$$
 
@@ -783,6 +821,8 @@ $$3x = 2y$$
 Ici, on ne « divise pas par $3$ pour voir ». $2$ divise $3x$, et $\mathrm{PGCD}(2,3) = 1$ : le théorème de Gauss (chapitre 6) donne $2 \mid x$ — on invoque le théorème après avoir vérifié son hypothèse. Comme $x$ est le chiffre de tête d'une écriture en base $7$, il est compris entre $1$ et $6$ : $x \in \{2, 4, 6\}$, d'où les couples $(2,3)$, $(4,6)$ et $(6,9)$.
 
 Prends position avant de lire la suite : combien de ces trois couples sont des réponses ?
+
+[[checkpoint:cp-r7b-chiffres-predict]]
 
 Le couple $(6,9)$ tombe tout seul : $9$ n'est un chiffre d'aucune des deux bases. Reste $(4,6)$, et c'est lui le piège. Vérifie-le dans l'équation : $7\times4+6 = 34$ et $5\times6+4 = 34$. Deux nombres égaux — et pourtant la réponse est fausse, car $\overline{64}_{(5)}$ n'existe pas : $6$ n'est pas un chiffre de la base $5$. L'idée « un chiffre est un entier comme un autre » vient de produire une réponse cohérente faite d'une écriture qui n'existe pas, et l'équation seule ne pouvait pas le voir.
 
@@ -821,6 +861,21 @@ Avant cela, un exercice construit pour ce chapitre : engage-toi sur chaque quest
        vise la phrase d'ancrage ci-dessus, sans en recopier aucun nombre.
      - Notation tranchée par la spec : indice parenthésé partout, une seule phrase
        sur la variante en exposant ; jamais de parenthèses autour des chiffres.
+       Chaînes de chiffres symboliques sans espacement (\overline{xy}_{(7)}).
+     - Correctifs de la vague 1 (2026-10-20, docs/audits/critiques/
+       numeration-build-pedagogie.md et numeration-build-fidelite.md) :
+       existence et unicité démontrées (terminaison : le quotient est au plus
+       N/b, donc strictement plus petit que N ; unicité par celle de la
+       division euclidienne) ; la multiplication a son titre et son tableau
+       par colonne ; l'horloge de l'accroche revient
+       dans le report ; la comparaison entre bases a plus de place que la
+       comparaison dans une base (spec §5.2) et n'a plus de faux engagement ;
+       deux engagements réels de plus, cp-r7b-critere-predict (critère, avant
+       la rupture) et cp-r7b-chiffres-predict (contraintes sur les chiffres,
+       avant la rupture) ; un passage d'opération entre bases différentes
+       (fidélité S1, source D de la vérification de la numération : valeurs,
+       opération en base 10, écriture dans la base demandée), avec des nombres
+       absents de la rung, des items, des points d'arrêt et de l'exercice.
      - Aucune base supérieure à 9 n'est utilisée, et aucune ligne ne traite des
        chiffres supérieurs ou égaux à dix (question owner Q1(b) ouverte).
      - Réponse de la demande de travail (pour l'auteur seulement, jamais

@@ -58,8 +58,24 @@ skill_code: maths_arithmetique
 #                                          (erreur de seuil non barrable à vue).
 #                                          Sonde numeration-retenue-a-dix.
 #                                          Clone d'AR-48 (nombres frais).
-#   Les trois points d'arrêt de la rung de numération (ajoutée le 2026-10-20,
-#   spec docs/pipeline/propositions/maths-arithmetique-numeration.md §6).
+#   cp-r7b-critere-predict (dans R7b,    — COMMIT gate : quel reste modulo 8
+#                           avant la        pour 5622 en base 7, dont la somme
+#                           rupture du      des chiffres vaut 15 ? Posé AVANT
+#                           critère)        que le réflexe « la somme des
+#                                          chiffres, c'est LE critère » soit
+#                                          dit et cassé. Sonde
+#                                          critere-divisibilite-mal-applique.
+#   cp-r7b-chiffres-predict (dans R7b,   — COMMIT gate : combien des trois
+#                            avant la       couples candidats de 3x = 2y sont
+#                            rupture des    des réponses ? Posé AVANT que (4,6)
+#                            chiffres)      ne casse sur 64 en base 5. Sonde
+#                                          numeration-contraintes-sur-les-chiffres.
+#   Les trois premiers points d'arrêt de la rung de numération (ajoutée le
+#   2026-10-20, spec docs/pipeline/propositions/maths-arithmetique-numeration.md
+#   §6) ; les deux derniers ajoutés le même jour par les correctifs de la
+#   critique pédagogique de vague 1 (docs/audits/critiques/
+#   numeration-build-pedagogie.md, constat 1) : les deux ruptures de plus forte
+#   demande n'avaient qu'un engagement écrit.
 #
 # CHAQUE distracteur porte un id de modèle nommé de l'inventaire de la notion
 # (items.yaml). Les longueurs d'options sont équilibrées : la bonne réponse
@@ -608,6 +624,166 @@ checkpoints:
           Puis $2\times4+3 = 11 = 1\times6+5$ : on écrit $5$, on retient $1$.
           Contrôle : $\overline{152}_{(6)}$ vaut $36+30+2 = 68$, et
           $\overline{25}_{(6)} \times 4 = 17\times4 = 68$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-R7b-4 | id: cp-r7b-critere-predict | placé DANS R7b, après la
+  #        construction du critère modulo b−1 et AVANT la rupture « la somme
+  #        des chiffres, c'est LE critère » (que la prose dit, teste et casse
+  #        juste après le marqueur).
+  #        COMMIT gate : le reste modulo 8 = b+1 d'un nombre écrit en base 7,
+  #        sur le nombre de l'exemple (5622 en base 7, soit 2025), la somme
+  #        des chiffres donnée dans l'énoncé comme simple donnée.
+  #        Sonde critere-divisibilite-mal-applique (somme employée là où c'est
+  #        la somme alternée ; chiffre des unités pris pour le reste modulo
+  #        autre chose que b) ; un distracteur porte
+  #        numeration-ecriture-prise-pour-le-nombre (5622 lu en base dix).
+  #        Valeurs recalculées, chemin par chemin :
+  #          7 = 15 − 8 (somme des chiffres réduite modulo 8) ;
+  #          2 = chiffre des unités = reste modulo 7 (2025 = 7×289 + 2) ;
+  #          6 = reste de cinq mille six cent vingt-deux (5622 = 8×702 + 6) ;
+  #          1 = la clé (2025 = 8×253 + 1 ; somme alternée 2−2+6−5).
+  #        Contamination de la clé examinée : seul « 15 réduit modulo 7 »
+  #        tombe sur 1, ce qui suppose de réduire modulo 7 une question posée
+  #        modulo 8 — ce n'est pas un modèle déclaré. La somme alternée lue
+  #        depuis la tête (5−6+2−2 = −1, soit 7) n'est pas encore enseignée au
+  #        moment de l'engagement. Quatre réponses à un chiffre, toutes des
+  #        restes possibles modulo 8 : rien ne se barre à vue, aucune longueur
+  #        ne parle. item_source original : AR-51 (base 9, modulo 8 = b−1) n'est
+  #        pas un clone, et le marquer comme tel le retirerait de la liste
+  #        d'items du chapitre.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7b-critere-predict
+    rung: "R7b"
+    habilete: raisonnement
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, numeration, predict_commit, critere]
+    primary_misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+    item_source: original
+    lesson_placement: in_R7b
+
+    stem: |
+      En base $7$, la somme des chiffres de $\overline{5622}_{(7)}$ vaut $15$.
+      **Prends position avant de lire la suite :** quel est le reste de la
+      division euclidienne de ce nombre par $8$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $7$
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: |
+          Modèle détecté : la somme des chiffres prise pour LE critère, quel
+          que soit le module. $15 = 8+7$ donne bien $7$, mais en base $7$ la
+          somme des chiffres ne renseigne que modulo $b-1 = 6$, parce que
+          $7 \equiv 1 \pmod 6$. Modulo $8$, ce n'est plus vrai. Le nombre vaut
+          $2025$, et $2025 = 8\times253+1$ : le reste est $1$.
+      - id: B
+        text: |
+          $2$
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: |
+          Modèle détecté : le chiffre des unités pris pour le reste. Il donne
+          le reste modulo la base : $2025 = 7\times289+2$. Modulo $8$, c'est
+          une autre division : $2025 = 8\times253+1$, et le reste est $1$.
+      - id: C
+        text: |
+          $1$
+        correct: true
+        feedback: |
+          Exact. $\overline{5622}_{(7)}$ vaut $2025$, et $2025 = 8\times253+1$.
+          La somme des chiffres, elle, aurait annoncé $15 = 8+7$, donc $7$ :
+          modulo $8$, ce n'est pas elle qui parle. La suite dit pourquoi.
+      - id: D
+        text: |
+          $6$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: |
+          Modèle détecté : l'écriture prise pour le nombre. Tu as divisé cinq
+          mille six cent vingt-deux par $8$, comme si les chiffres se lisaient
+          en base dix : $5622 = 8\times702+6$. Mais $\overline{5622}_{(7)}$
+          vaut $2025$, et $2025 = 8\times253+1$ : le reste est $1$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-R7b-5 | id: cp-r7b-chiffres-predict | placé DANS R7b, après la
+  #        résolution de 3x = 2y (Gauss, x chiffre de tête en base 7) et AVANT
+  #        la rupture « (4,6) vérifie l'équation, et 64 en base 5 n'existe
+  #        pas » que la prose met en scène juste après le marqueur.
+  #        COMMIT gate : combien des trois couples candidats (2,3), (4,6),
+  #        (6,9) donnent une solution de xy en base 7 = yx en base 5 ?
+  #        Sonde numeration-contraintes-sur-les-chiffres, ses deux faces :
+  #          « les trois » = aucune borne de chiffre (les trois couples
+  #            vérifient 3x = 2y : 7×4+6 = 5×6+4 = 34, 7×6+9 = 5×9+6 = 51) ;
+  #          « deux » = la borne d'UNE base seulement, la plus large (base 7 :
+  #            le 9 tombe, le 6 reste) — les deux contraintes non croisées.
+  #        TROIS choix, et non quatre — décision écrite à côté du motif
+  #        (ADR 0035/0038) : les modèles de l'inventaire ne produisent que ces
+  #        trois ensembles de réponses (borner par la base 5 seule, ou chaque
+  #        lettre par la base où elle est en tête, donne la clé). Un quatrième
+  #        choix n'aurait porté aucun modèle — un distracteur muet, que le
+  #        fichier s'interdit. Le validateur accepte 2 à 4 choix.
+  #        Longueurs : la clé n'est ni la plus longue ni la plus courte ;
+  #        aucun mot de l'énoncé n'est repris dans un seul choix.
+  #        item_source original : AR-50 (base 9 / base 7, 4x = 3y) n'est pas
+  #        un clone.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7b-chiffres-predict
+    rung: "R7b"
+    habilete: raisonnement
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, numeration, predict_commit, chiffres]
+    primary_misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+    item_source: original
+    lesson_placement: in_R7b
+
+    stem: |
+      Pour $\overline{xy}_{(7)} = \overline{yx}_{(5)}$, l'équation $3x = 2y$
+      a fourni trois candidats : $(2,3)$, $(4,6)$ et $(6,9)$. **Prends
+      position avant de lire la suite :** combien de ces couples sont des
+      réponses ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Les trois
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+        feedback: |
+          Modèle détecté : un chiffre traité comme un entier libre. Les trois
+          couples vérifient bien $3x = 2y$, mais $x$ et $y$ doivent aussi être
+          des chiffres des deux écritures. Le $9$ de $(6,9)$ n'est un chiffre
+          ni de la base $7$ ni de la base $5$, et le $6$ de $(4,6)$ n'est pas
+          un chiffre de la base $5$ : $\overline{64}_{(5)}$ n'existe pas. Un
+          seul couple répond, $(2,3)$.
+      - id: B
+        text: |
+          Deux : $(2,3)$ et $(4,6)$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+        feedback: |
+          Modèle détecté : les chiffres bornés par une seule des deux bases.
+          Tu as écarté $(6,9)$, mais $(4,6)$ demande d'écrire
+          $\overline{64}_{(5)}$, et $6$ n'est pas un chiffre de la base $5$ :
+          cette écriture n'existe pas, même si $7\times4+6$ et $5\times6+4$
+          valent tous deux $34$. Les chiffres doivent appartenir aux deux bases
+          à la fois : un seul couple répond, $(2,3)$.
+      - id: C
+        text: |
+          Un seul : $(2,3)$
+        correct: true
+        feedback: |
+          Exact. $(6,9)$ tombe à cause du $9$, et $(4,6)$ parce que $6$ n'est
+          pas un chiffre de la base $5$, bien que ce couple vérifie
+          l'équation. Reste $(2,3)$ : $\overline{23}_{(7)}$ et
+          $\overline{32}_{(5)}$ valent tous deux $17$.
 
   # ════════════════════════════════════════════════════════════════
   # CP-4 | id: cp-r6-fermat | placé AVANT [[exercise:r-bac]]

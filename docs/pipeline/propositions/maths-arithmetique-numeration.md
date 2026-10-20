@@ -645,6 +645,8 @@ par §10.2.**
 
 ## 6. Les trois points d'arrêt — énoncés et clés exacts
 
+> **Après la critique du chapitre construit (2026-10-20) : cinq, pas trois.** `cp-r7b-critere-predict` (le reste de $\overline{5622}_{(7)}$ par 8, avant la rupture « la somme des chiffres, c'est LE critère ») et `cp-r7b-chiffres-predict` (combien des paires (2,3), (4,6), (6,9) sont des réponses, avant la rupture de N3) ont été ajoutés — `docs/audits/critiques/numeration-build-pedagogie.md`, constat 1. Les trois ci-dessous restent tels quels ; les deux nouveaux sont dans `checkpoints.yaml`, leur raison dans l'en-tête du fichier.
+
 **Trois, comme dans la version précédente, mais pas les mêmes.** `cp-r7b-critere` est **retiré**
 et remplacé par `cp-r7b-ordre-restes` (N1). *Motif : N1 est le modèle signature de la rung et le
 seul endroit où un élève en difficulté est réellement perdu, et il n'avait aucun engagement

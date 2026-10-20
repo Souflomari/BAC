@@ -225,6 +225,13 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "cp-r6b-fermat-predict": [
       "mc.math.maths_arithmetique.fermat-condition-ou-exposant"
     ],
+    "cp-r7b-chiffres-predict": [
+      "mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres"
+    ],
+    "cp-r7b-critere-predict": [
+      "mc.math.maths_arithmetique.critere-divisibilite-mal-applique",
+      "mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre"
+    ],
     "cp-r7b-ordre-restes": [
       "mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre",
       "mc.math.maths_arithmetique.numeration-restes-ordre-inverse"
