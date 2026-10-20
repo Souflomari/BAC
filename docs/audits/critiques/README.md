@@ -7,8 +7,8 @@ written; re-check them against the current files before acting.
 | report | object | verdict | applied? |
 |---|---|---|---|
 | `pc-vagues-DE-fidelite.md` | PC exam-debt waves D and E (37 items, 14 passages, 6 figures) | no cadre breach; 11 findings | partly — see `docs/LOCAL-TRANSITION.md` §4.2 for what remains |
-| `numeration-pedagogie.md` | spec `maths-arithmetique-numeration.md` | BUILD AFTER FIXES | no |
-| `numeration-fidelite.md` | same spec | BUILD AFTER FIXES | B1 answered by `docs/cadre/sources/verification-numeration-2026-09-28.md`; rest no |
+| `numeration-pedagogie.md` | spec `maths-arithmetique-numeration.md` | BUILD AFTER FIXES | yes — revised 2026-10-20, see the spec's revision log |
+| `numeration-fidelite.md` | same spec | BUILD AFTER FIXES | yes — revised 2026-10-20 (B1 answered by `docs/cadre/sources/verification-numeration-2026-09-28.md`) |
 | `espaces-vectoriels-pedagogie.md` | spec `maths-structures-espaces-vectoriels.md` | BUILD AFTER FIXES | see the revision log at the end of the spec |
 | `espaces-vectoriels-fidelite.md` | same spec (written 2026-10-20) | BUILD AFTER FIXES — no cadre breach; 4 blocking exam-shape fixes (criterion in three conditions, no weight claim, a summit, « toujours/jamais » demoted) | see the revision log at the end of the spec |
 | `cadre-GH-fidelite.md` | cadre debt G3–G7 + H1: prose ff15dbc2 and the 43 new items (written 2026-10-20) | no breach, 0 arithmetic errors; G5 SHIP, the rest FIX THEN SHIP | see `docs/LOCAL-TRANSITION.md` §4.3 |
