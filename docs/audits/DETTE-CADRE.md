@@ -45,7 +45,7 @@ logarithme de base a / `a^x` / `x^α` / racine n-ième (aucune occurrence dans l
 | G5 | limites et continuité [commun] | image d'un segment ; dichotomie | écrit 2026-10-20 (prose ff15dbc2, items 063259a1) |
 | G6 | complexes [SM pour Z = z² ; linéarisation simple aussi en SExp, maths-sexp.yaml:283] | linéarisation ; équations se ramenant au second degré | écrit 2026-10-20 (prose ff15dbc2, items c0bd7121) |
 | G7 | probabilités [commun] | variance, écart-type | écrit 2026-10-20 (prose ff15dbc2, items PC-M23-1…4) |
-| G8 | équations différentielles, suites | Δ < 0 avec α ≠ 0 travaillé ; Δ > 0 testé ; sommes arithmétiques et géométriques travaillées [SExp] | à écrire |
+| G8 | équations différentielles, suites | Δ < 0 avec α ≠ 0 travaillé ; Δ > 0 testé ; sommes arithmétiques et géométriques travaillées [SExp] | écrit 2026-10-20 (prose : y''+4y'+13y=0 travaillé au chapitre 5 d'`equations-differentielles`, sommes de u_p à u_n au chapitre 3 de `suites-numeriques` ; items EQDIFF-34…39 et SUITES-54…56, ids neufs `complexe-alpha-perdu` et `bornes-somme-mal-comptees` ; points d'arrêt `cp-r4-amorti-b`, `cp-r2-nombre-de-termes`) |
 | H1 | systèmes oscillants [PC] | ressort vertical et incliné, frottement solide ; types et régimes d'amortissement ; pendule simple synchrone ; oscillateur composé | écrit 2026-10-20 (prose ff15dbc2, items d09fe04c) ; figure des deux enveloppes faite (a976cdee, `frottement-fluide-solide.svg`) |
 | H2 | noyaux, décroissance [PC] | choisir le radioélément pour dater ; applications et dangers ; usages de l'énergie nucléaire ; bilan ΔE testé | à écrire |
 | H3 | RC, RL, RLC [PC] | brancher l'oscilloscope (quelle tension sur quelle voie) ; convention récepteur ; associations de condensateurs | à écrire |

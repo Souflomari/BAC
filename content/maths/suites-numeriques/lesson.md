@@ -134,13 +134,94 @@ La preuve suit exactement le même moule (à toi de la refaire : initialisation 
 
 ### Somme des premiers termes
 
-Deux formules à connaître (admises ici — elles se prouvent aussi par récurrence, mais ce n'est pas l'objet de cette leçon) :
+Deux formules à connaître (elles se prouvent par récurrence ; l'exemple travaillé juste après montre surtout **pourquoi** elles ont cette forme) :
 
 $$\text{Arithmétique\,:} \quad S_n = u_0 + u_1 + \cdots + u_n = (n+1) \times \frac{u_0 + u_n}{2}$$
 
 $$\text{Géométrique (}q \neq 1\text{)\,:} \quad S_n = u_0 + u_1 + \cdots + u_n = u_0 \times \frac{1 - q^{\,n+1}}{1-q}$$
 
 Ce qu'il faut retenir de la formule arithmétique : c'est **(nombre de termes) × (moyenne du premier et du dernier)**. Ce qu'il faut retenir de la formule géométrique : elle échoue si $q=1$ (division par 0) — mais dans ce cas la suite est constante, donc $S_n = (n+1)\,u_0$ directement, sans avoir besoin de la formule.
+
+### Exemple travaillé : sommer des termes consécutifs, et compter ce qu'on somme
+
+<!-- G8 (docs/audits/DETTE-CADRE.md, 2026-10-20) : les deux formules étaient énoncées
+     sans exemple, et la somme de u_p à u_n n'était posée nulle part (maths-sexp.yaml,
+     « calculer une somme de termes consécutifs »). Commun aux deux filières : pas de
+     phrase de filière. -->
+
+Les deux formules ci-dessus partent de $u_0$. Une somme peut démarrer plus loin — de $u_4$ à $u_{15}$, par exemple. Les formules se transportent, à condition de les lire par leur structure plutôt que par leurs indices :
+
+$$\text{Arithmétique\,:} \quad S = (\text{nombre de termes}) \times \frac{\text{premier terme} + \text{dernier terme}}{2}$$
+
+$$\text{Géométrique (}q \neq 1\text{)\,:} \quad S = \text{premier terme} \times \frac{1 - q^{\,\text{nombre de termes}}}{1-q}$$
+
+Les deux réclament la même donnée, et c'est elle qui fait trébucher : le **nombre de termes**.
+
+**Arrête-toi : compte avant de calculer.** Combien de termes la somme $u_4 + u_5 + \cdots + u_{15}$ contient-elle ? Engage-toi avant de lire la suite.
+
+[[checkpoint:cp-r2-nombre-de-termes]]
+
+**Le compte.** De $u_4$ à $u_{15}$, l'indice avance de $15 - 4 = 11$ crans. Mais $11$ compte les **pas**, pas les termes. Pense aux poteaux d'une clôture : du poteau numéro $4$ au poteau numéro $15$, tu franchis $11$ intervalles et tu passes devant $12$ poteaux, les deux du bout compris. Une somme compte les poteaux :
+
+$$\text{nombre de termes} = 15 - 4 + 1 = 12$$
+
+En général, de $u_p$ à $u_n$ inclus, il y a $n - p + 1$ termes. Contrôle sur le cas déjà connu : de $u_0$ à $u_n$, ça donne $n - 0 + 1 = n + 1$ — exactement le facteur $(n+1)$ des formules ci-dessus.
+
+**Cas arithmétique.** La suite $(u_n)$ est arithmétique, avec $u_0 = 7$ et $r = 4$. Calcule $S = u_4 + u_5 + \cdots + u_{15}$.
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* le nombre de termes est réglé, c'est $12$ ; il manque le premier et le dernier terme. On les obtient par la formule explicite, sans remonter terme à terme.
+
+$$u_4 = 7 + 4 \times 4 = 23$$
+
+$$u_{15} = 7 + 15 \times 4 = 67$$
+
+*Pourquoi « nombre de termes × moyenne des extrêmes » :* écris la somme deux fois, une fois à l'endroit, une fois à l'envers, et additionne colonne par colonne. La première colonne donne $u_4 + u_{15} = 90$, la deuxième $u_5 + u_{14} = 27 + 63 = 90$ : en haut on avance d'un cran ($+4$), en bas on recule d'un cran ($-4$), et la somme de la colonne ne bouge pas. Il y a une colonne par terme, donc $12$ colonnes, et la double somme vaut :
+
+$$2S = 12 \times 90$$
+
+$$S = 12 \times 45$$
+
+$$S = 540$$
+
+**Cas géométrique.** La suite $(v_n)$ est géométrique, avec $v_0 = 5$ et $q = 3$. Calcule $T = v_2 + v_3 + \cdots + v_6$.
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* même ordre de travail — compter d'abord, puis le premier terme. Mais ici le nombre de termes devient un **exposant** : une erreur de compte ne décale plus un facteur, elle change une puissance.
+
+$$\text{nombre de termes} = 6 - 2 + 1 = 5$$
+
+$$v_2 = 5 \times 3^2 = 45$$
+
+*Pourquoi cette formule :* multiplie $T$ par $q = 3$. Chaque terme devient le suivant, donc :
+
+$$3T = v_3 + v_4 + \cdots + v_7$$
+
+Retranche $T$ : tous les termes du milieu se compensent, il ne reste que les deux bouts.
+
+$$3T - T = v_7 - v_2$$
+
+Or $v_7 = v_2 \times 3^5$ : de $v_2$ à $v_7$, cinq pas — et cinq, c'est justement le nombre de termes de $T$.
+
+$$2T = v_2 \times 3^5 - v_2$$
+
+$$T = v_2 \times \frac{3^5 - 1}{3 - 1}$$
+
+C'est la formule du cours, écrite avec le **premier terme de la somme** ($v_2$, pas $v_0$) et son **nombre de termes** en exposant ; multiplier le haut et le bas par $-1$ redonne la forme $\dfrac{1-q^{5}}{1-q}$. On calcule :
+
+$$T = 45 \times \frac{243 - 1}{2}$$
+
+$$T = 45 \times 121$$
+
+$$T = 5445$$
+
+**Contrôle**, possible à la main ici : $45 + 135 + 405 + 1215 + 3645 = 5445$ ✔.
+
+**Le piège à éviter.** Prendre l'écart des indices, $6 - 2 = 4$, pour le nombre de termes. Fais tourner ce modèle jusqu'au bout :
+
+$$45 \times \frac{3^4 - 1}{2} = 45 \times 40$$
+
+$$45 \times 40 = 1800$$
+
+Or $1800$, c'est exactement $v_2 + v_3 + v_4 + v_5$ : le calcul a perdu le dernier terme, $v_6 = 3645$ — à lui seul plus lourd que les quatre autres réunis. Avec une raison $3$, se tromper d'un terme n'est pas une erreur de bord : c'est la plus grosse part de la somme qui disparaît. L'autre réflexe, partir de $v_0$ parce que la formule du cours part de $v_0$, compte au contraire deux termes qu'on ne t'a pas demandés : $5 \times \dfrac{3^7 - 1}{2} = 5465$, soit $T + v_0 + v_1$.
 
 ### Pourquoi c'est utile pour la suite du chapitre
 

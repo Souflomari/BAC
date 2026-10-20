@@ -115,6 +115,15 @@ misconceptions:
     description: "Pour une suite définie implicitement par $f_n(x_n)=0$, l'élève devine l'ordre de $x_n$ et $x_{n+1}$ depuis la forme de la formule (« $n$ augmente donc ça doit monter »), sans jamais évaluer $f_{n+1}(x_n)$ — ou, l'ayant évalué, applique le sens de la monotonie de $f_{n+1}$ à l'envers pour transformer l'inégalité entre les SORTIES en une inégalité entre les entrées."
     contradicts_principle: "$x_n$ et $x_{n+1}$ sont les zéros de DEUX fonctions différentes : rien ne permet de les comparer directement, ni de deviner leur ordre sur la forme de la définition. La seule voie est d'évaluer $f_{n+1}$ (ou $f_n$) aux deux points et de comparer les sorties obtenues à $0$ ; une fonction strictement CROISSANTE range alors les sorties dans le MÊME sens que les entrées, une fonction strictement DÉCROISSANTE les range dans le sens INVERSE — se tromper de sens inverse la conclusion sur $x_n$ et $x_{n+1}$."
 
+  # ── Ajoutée lors de la vague G8 (2026-10-20, docs/audits/DETTE-CADRE.md) :
+  # la somme de u_p à u_n n'était posée nulle part. Le distracteur « n termes
+  # au lieu de n+1 » de SUITES-13 était porté par arith-geom-confondues, qui
+  # ne le décrit pas ; il est rattaché ici.
+  - id: mc.math.sma_suites_numeriques.bornes-somme-mal-comptees
+    label: "« Entre deux indices, nombre de pas et nombre de termes confondus »"
+    description: "Pour une somme de termes consécutifs $u_p+\\cdots+u_n$, l'élève prend pour nombre de termes l'écart $n-p$ ou le dernier indice $n$, au lieu de $n-p+1$ — d'où un facteur faux dans la somme arithmétique, un exposant faux dans la somme géométrique —, ou applique la formule du cours depuis $u_0$ quand la somme démarre plus loin. Même confusion entre pas et termes quand une suite démarre à $u_1$ : il écrit $u_n=u_1+n\\,r$ (ou $u_1\\,q^n$) au lieu de $u_1+(n-1)\\,r$ (ou $u_1\\,q^{n-1}$)."
+    contradicts_principle: "Entre $u_p$ et $u_n$, il y a $n-p$ PAS et $n-p+1$ TERMES : les deux bouts sont dans la somme, comme les poteaux d'une clôture. Une somme se calcule avec SON premier terme et SON nombre de termes — (nombre de termes) × (premier + dernier)/2, ou premier × $\\frac{1-q^{\\text{nombre de termes}}}{1-q}$ —, pas avec ceux de la somme qui partirait de $u_0$."
+
 items:
 
   - id: SUITES-1
@@ -876,7 +885,7 @@ items:
       - id: B
         text: "$47{,}5$"
         correct: false
-        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
+        misconception: mc.math.sma_suites_numeriques.bornes-somme-mal-comptees
         feedback: >
           Ceci vient d'avoir compté $n=5$ termes au lieu de $n+1=6$ : de
           $u_0$ à $u_5$, il y a bien SIX termes ($u_0,u_1,u_2,u_3,u_4,u_5$),
@@ -3588,6 +3597,192 @@ items:
 
       $$\lim_{n\to+\infty}u_n = \frac{0+2}{1-0} = 2$$
 
+  # ── R2 · sommes de termes consécutifs (vague G8, DETTE-CADRE, 2026-10-20) ──
+  # La somme géométrique n'était jamais testée, la somme de u_p à u_n jamais
+  # posée (cadre-couverture.md §2.9). Nouveau modèle bornes-somme-mal-comptees.
+  - id: SUITES-54
+    rung: "R2"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: sma_suites_numeriques
+    tags: [somme, suite_geometrique]
+    primary_misconception: mc.math.sma_suites_numeriques.bornes-somme-mal-comptees
+    stem: >
+      La suite $(w_n)$ est géométrique, de premier terme $w_0=3$ et de raison
+      $q=2$. Que vaut la somme $w_2+w_3+\cdots+w_8$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$1533$"
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.bornes-somme-mal-comptees
+        feedback: >
+          Ce total part de $w_0$ : c'est $w_0+w_1+\cdots+w_8$, la formule du
+          cours appliquée telle quelle avec $n+1=9$ termes. Il contient
+          $w_0=3$ et $w_1=6$, que la somme demandée n'inclut pas :
+          $1533-9=1524$.
+      - id: B
+        text: "$1524$"
+        correct: true
+      - id: C
+        text: "$756$"
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.bornes-somme-mal-comptees
+        feedback: >
+          Ce calcul prend l'écart des indices, $8-2=6$, pour le nombre de
+          termes. On obtient alors la somme de $w_2$ à $w_7$ : le dernier
+          terme, $w_8=768$, a disparu — et c'est le plus gros. De $w_2$ à $w_8$,
+          il y a $8-2+1=7$ termes.
+      - id: D
+        text: "$2730$"
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
+        feedback: >
+          Ce calcul applique la formule ARITHMÉTIQUE, nombre de termes ×
+          moyenne des extrêmes : $7\times\dfrac{12+768}{2}$. Mais $(w_n)$ est
+          géométrique : ses termes ne se répartissent pas régulièrement autour
+          de cette moyenne, et le total réel est bien plus petit.
+    correct_feedback: >
+      Premier terme de la somme : $w_2=3\times2^2=12$. Nombre de termes :
+      $8-2+1=7$. Donc $12\times\dfrac{1-2^7}{1-2}=12\times127=1524$.
+    solution: |
+      **Compter d'abord.** De $w_2$ à $w_8$ inclus : $8-2+1=7$ termes.
+
+      **Le premier terme de la somme**, pas celui de la suite :
+      $$w_2 = 3\times2^2 = 12$$
+
+      **La formule géométrique**, avec ce premier terme et ce nombre de
+      termes :
+      $$w_2+\cdots+w_8 = 12\times\frac{1-2^7}{1-2}$$
+      $$w_2+\cdots+w_8 = 12\times127 = 1524$$
+
+      **Contrôle à la main.** $12+24+48+96+192+384+768=1524$ ✓.
+
+  - id: SUITES-55
+    rung: "R2"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: sma_suites_numeriques
+    tags: [somme, suite_arithmetique, contexte]
+    primary_misconception: mc.math.sma_suites_numeriques.bornes-somme-mal-comptees
+    stem: >
+      Dans un amphithéâtre, la première rangée compte $18$ places, et chaque
+      rangée compte $2$ places de plus que la précédente. Combien de places
+      comptent au total les rangées numérotées de $6$ à $20$, incluses ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$740$"
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.bornes-somme-mal-comptees
+        feedback: >
+          Ce total compte les rangées $1$ à $20$ :
+          $20\times\dfrac{18+56}{2}=740$. Les cinq premières rangées ne sont
+          pas demandées. La somme cherchée démarre à la rangée $6$ ; c'est SON
+          premier terme, $28$, qui entre dans la formule.
+      - id: B
+        text: "$588$"
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.bornes-somme-mal-comptees
+        feedback: >
+          Ce calcul prend $20-6=14$ rangées. Or de la rangée $6$ à la rangée
+          $20$, il y en a $20-6+1=15$ : l'écart des numéros compte les pas
+          d'une rangée à la suivante, pas les rangées elles-mêmes.
+      - id: C
+        text: "$630$"
+        correct: true
+      - id: D
+        text: "$660$"
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.bornes-somme-mal-comptees
+        feedback: >
+          Ce calcul donne $30$ places à la rangée $6$ et $58$ à la rangée
+          $20$ : il écrit $18+2n$ pour la rangée $n$. Mais la rangée $1$ a
+          $18$ places, et de la rangée $1$ à la rangée $n$ il n'y a que $n-1$
+          pas : la rangée $n$ compte $18+2(n-1)$ places, soit $28$ pour la
+          sixième.
+    correct_feedback: >
+      La rangée $n$ compte $18+2(n-1)$ places : $28$ pour la sixième, $56$
+      pour la vingtième. Il y a $20-6+1=15$ rangées, donc
+      $15\times\dfrac{28+56}{2}=15\times42=630$ places.
+    solution: |
+      **La suite.** Les places forment une suite arithmétique de raison $2$
+      dont le PREMIER terme est celui de la rangée $1$ : la rangée $n$ compte
+      $18+2(n-1)$ places — $n-1$ pas depuis la première rangée.
+
+      **Les deux bouts de la somme.**
+      $$a_6 = 18+2\times5 = 28$$
+      $$a_{20} = 18+2\times19 = 56$$
+
+      **Le nombre de termes.** De $6$ à $20$ inclus : $20-6+1=15$ rangées.
+
+      **La somme.** Nombre de termes × moyenne des extrêmes :
+      $$S = 15\times\frac{28+56}{2}$$
+      $$S = 15\times42 = 630$$
+
+  - id: SUITES-56
+    rung: "R2"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: sma_suites_numeriques
+    tags: [somme, suite_geometrique, contexte]
+    primary_misconception: mc.math.sma_suites_numeriques.bornes-somme-mal-comptees
+    stem: >
+      Une association reçoit un don de $800$ dirhams la première année, puis,
+      chaque année, un don supérieur de $10\,\%$ au précédent. Quelle
+      expression donne le total des dons reçus de la première à la douzième
+      année incluses ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$800\\times\\dfrac{1-1{,}1^{11}}{1-1{,}1}$"
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.bornes-somme-mal-comptees
+        feedback: >
+          Cette expression ne compte que $11$ dons : l'écart $12-1=11$ compte
+          les hausses d'une année à la suivante, pas les dons. De la première à
+          la douzième année, il y a $12$ dons, et c'est ce nombre qui va en
+          exposant.
+      - id: B
+        text: "$12\\times\\dfrac{800+800\\times1{,}1^{11}}{2}$"
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.arith-geom-confondues
+        feedback: >
+          Cette expression additionne comme pour une suite ARITHMÉTIQUE —
+          nombre de termes × moyenne du premier et du dernier. Mais une hausse
+          de $10\,\%$ par an MULTIPLIE chaque don par $1{,}1$ : les dons
+          forment une suite géométrique, et c'est la formule géométrique qui
+          s'applique.
+      - id: C
+        text: "$800\\times\\dfrac{1-1{,}1^{12}}{1-1{,}1}$"
+        correct: true
+      - id: D
+        text: "$880\\times\\dfrac{1-1{,}1^{12}}{1-1{,}1}$"
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.bornes-somme-mal-comptees
+        feedback: >
+          Cette expression part d'un premier don de $880$ dirhams, comme si le
+          don de l'année $n$ valait $800\times1{,}1^{n}$. Mais le premier don
+          vaut $800$ : de la première année à l'année $n$ il n'y a que $n-1$
+          hausses, et le don de l'année $n$ vaut $800\times1{,}1^{n-1}$.
+    correct_feedback: >
+      Le don de l'année $n$ vaut $800\times1{,}1^{n-1}$ : une suite
+      géométrique de premier terme $800$ et de raison $1{,}1$. De l'année $1$
+      à l'année $12$, il y a $12$ termes, d'où
+      $800\times\dfrac{1-1{,}1^{12}}{1-1{,}1}$, soit environ $17\,107$
+      dirhams.
+    solution: |
+      **La suite.** Chaque année, le don est multiplié par $1+\dfrac{10}{100}=1{,}1$ :
+      suite géométrique de raison $1{,}1$, de premier terme $800$ (le don de
+      la première année). Le don de l'année $n$ vaut $800\times1{,}1^{n-1}$.
+
+      **Le nombre de termes.** De l'année $1$ à l'année $12$ incluses :
+      $12-1+1=12$ dons — et $11$ hausses entre eux.
+
+      **La somme.** Premier terme × $\dfrac{1-q^{\text{nombre de termes}}}{1-q}$ :
+      $$S = 800\times\frac{1-1{,}1^{12}}{1-1{,}1}$$
+      soit environ $17\,107$ dirhams.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-27, après SUITES-39 à SUITES-53 (dette d'examen, vague
 # B1 : contraction/IAF, suites implicites f_n(x_n)=0, suites homographiques —
@@ -3602,6 +3797,13 @@ items:
 # GÉNÉRÉ contre web/scripts/lib/couverture-compte.mjs, gardé par
 # web/scripts/resume-couverture.mjs — CE TABLEAU EST MIS À JOUR À LA MAIN ET
 # DOIT ÊTRE RE-VÉRIFIÉ PAR CE SCRIPT avant tout passage en base.
+# COMPLÉTÉ le 2026-10-20 (vague G8, docs/audits/DETTE-CADRE.md : sommes de
+# termes consécutifs). Nouveau modèle bornes-somme-mal-comptees, porté par
+# SUITES-54 à -56 et par le distracteur B de SUITES-13 (« 5 termes au lieu de
+# 6 »), qui était rattaché à arith-geom-confondues sans que sa description le
+# nomme — SUITES-13 reste compté pour arith-geom-confondues par ses deux autres
+# distracteurs. Deltas : total_items 53→56 ; ramp_coverage.R2 3→6 ; nouveau
+# modèle 4 ; arith-geom-confondues 13→15. Recompté avec lib/couverture-compte.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -3621,7 +3823,7 @@ coverage_summary:
     mc.math.sma_suites_numeriques.forme-indeterminee-mal-geree:       { count: 3, items: [SUITES-20, SUITES-35, SUITES-36] }
     mc.math.sma_suites_numeriques.gendarmes-comparaison-mal-applique: { count: 4, items: [SUITES-4, SUITES-22, SUITES-23, SUITES-43] }
     mc.math.sma_suites_numeriques.adjacentes-condition-incomplete:    { count: 3, items: [SUITES-6, SUITES-29, SUITES-30] }
-    mc.math.sma_suites_numeriques.arith-geom-confondues:              { count: 13, items: [SUITES-3, SUITES-12, SUITES-13, SUITES-14, SUITES-21, SUITES-28, SUITES-32, SUITES-33, SUITES-42, SUITES-44, SUITES-50, SUITES-51, SUITES-53] }
+    mc.math.sma_suites_numeriques.arith-geom-confondues:              { count: 15, items: [SUITES-3, SUITES-12, SUITES-13, SUITES-14, SUITES-21, SUITES-28, SUITES-32, SUITES-33, SUITES-42, SUITES-44, SUITES-50, SUITES-51, SUITES-53, SUITES-54, SUITES-56] }
     mc.math.sma_suites_numeriques.limite-liee-terme-initial:          { count: 7, items: [SUITES-3, SUITES-5, SUITES-21, SUITES-41, SUITES-42, SUITES-51, SUITES-53] }
     mc.math.sma_suites_numeriques.ordre-notation-recurrence:          { count: 6, items: [SUITES-7, SUITES-8, SUITES-11, SUITES-42, SUITES-44, SUITES-53] }
     mc.math.sma_suites_numeriques.tendance-implique-limite:           { count: 4, items: [SUITES-9, SUITES-37, SUITES-38, SUITES-48] }
@@ -3629,13 +3831,14 @@ coverage_summary:
     mc.math.sma_suites_numeriques.contraction-k-pas-strict:           { count: 5, items: [SUITES-39, SUITES-41, SUITES-43, SUITES-44, SUITES-45] }
     mc.math.sma_suites_numeriques.tvi-sans-stricte-monotonie:         { count: 4, items: [SUITES-45, SUITES-47, SUITES-48, SUITES-49] }
     mc.math.sma_suites_numeriques.comparaison-xn-sans-evaluation:     { count: 3, items: [SUITES-46, SUITES-47, SUITES-49] }
-  total_items: 53
+    mc.math.sma_suites_numeriques.bornes-somme-mal-comptees:          { count: 4, items: [SUITES-13, SUITES-54, SUITES-55, SUITES-56] }
+  total_items: 56
   floor: 3
   floor_met: true
   ramp_coverage:
     R0: 4
     R1: 3
-    R2: 3
+    R2: 6
     R3: 3
     R4: 5
     R5: 4
@@ -3648,8 +3851,9 @@ coverage_summary:
     R9: 3
     R10: 3
   honest_state: >-
-    Dix-neuf misconceptions déclarées, toutes couvertes, aucune sous le
-    plancher. Deux y siègent EXACTEMENT (3 items, marge nulle) :
+    Vingt misconceptions déclarées, toutes couvertes, aucune sous le
+    plancher. (Vague G8, 2026-10-20 : bornes-somme-mal-comptees, quatre items,
+    un de marge.) Deux y siègent EXACTEMENT (3 items, marge nulle) :
     quotient-monotonie-sans-positivite et adjacentes-condition-incomplete —
     ni l'une ni l'autre touchées par cette vague, non retesté. Parmi les
     quatre ids ajoutés dans cette vague, deux siègent aussi exactement au

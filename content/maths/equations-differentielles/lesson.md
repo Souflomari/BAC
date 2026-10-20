@@ -471,6 +471,92 @@ Deux annulations séparées — celle des termes en $x$ et celle des constantes.
 
 [[checkpoint:cp-r4-racine-double]]
 
+### Exemple travaillé — deux racines complexes, avec amortissement ($\Delta < 0$, $\alpha \neq 0$)
+
+<!-- G8 (docs/audits/DETTE-CADRE.md, 2026-10-20) : le cas 3 n'avait qu'une formule et
+     l'oscillateur (alpha = 0) comme seule illustration. Aucune phrase de filière : la seule
+     ligne qui exclut y''+ay'+by=0 du programme SExp (maths-sexp.yaml, limites) est `derived`,
+     démentie par le sujet SExp vérifié 2022 N (voir checkpoints.yaml, en-tête) ; règle 1 de
+     DECISIONS-EN-ATTENTE §37. -->
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* la même chaîne qu'aux deux exemples précédents — trinôme, discriminant, solution générale, conditions initiales, contrôle. Ce qui est neuf : les racines ont une partie réelle $\alpha$ non nulle. Pour l'oscillateur, $\alpha$ valait $0$, et le facteur $e^{\alpha x}=1$ passait inaperçu ; ici il est bien là, et il pèse jusque dans le calcul des constantes.
+
+Résous $(E) : y'' + 4y' + 13y = 0$ avec $y(0) = 2$ et $y'(0) = -1$.
+
+**Le trinôme.** Ici $a=1$, $b=4$, $c=13$, donc l'équation caractéristique est $r^2+4r+13=0$.
+
+**Le discriminant.** C'est lui qui dit lequel des trois cas s'applique :
+
+$$\Delta = 4^2 - 4\times1\times13$$
+
+$$\Delta = -36$$
+
+$\Delta<0$ : deux racines complexes conjuguées. Comme $-\Delta=36$, on a $\sqrt{-\Delta}=6$, d'où :
+
+$$r = \frac{-4 \pm 6i}{2}$$
+
+$$r = -2 \pm 3i$$
+
+**La solution générale.** On lit les deux parties de la racine, chacune à sa place : la partie réelle $\alpha=-2$ va dans l'exponentielle, la partie imaginaire $\beta=3$ dans le cosinus et le sinus.
+
+$$y(x) = e^{-2x}\left(A\cos(3x) + B\sin(3x)\right), \qquad A,B \in \mathbb{R}$$
+
+**Pourquoi le facteur $e^{-2x}$ ne se discute pas.** Essaie de t'en passer : avec $y=\cos(3x)$, on a $y'=-3\sin(3x)$ et $y''=-9\cos(3x)$. On substitue dans $(E)$ :
+
+$$y''+4y'+13y = -9\cos(3x) - 12\sin(3x) + 13\cos(3x)$$
+
+$$y''+4y'+13y = 4\cos(3x) - 12\sin(3x)$$
+
+Un résidu non nul : sans le facteur $e^{-2x}$, rien ne compense le terme $4y'$. C'est le terme en $y'$ qui amortit, on l'a vu plus haut ; le facteur $e^{\alpha x}$ est la trace de cet amortissement dans la solution.
+
+**La première condition.** En $x=0$, on a $e^{0}=1$, $\cos 0=1$ et $\sin 0=0$, donc $y(0)=A$ : l'énoncé donne directement $A=2$.
+
+**Arrête-toi : engage-toi avant de dériver.** Pour l'oscillateur, la seconde constante se lisait d'un coup : $B=\dfrac{y'(0)}{\omega}$. Ici, avec $y'(0)=-1$, que vaut $B$ ? Choisis, puis laisse le calcul trancher.
+
+[[checkpoint:cp-r4-amorti-b]]
+
+**La seconde condition.** On dérive un produit — et le facteur $e^{-2x}$ se dérive lui aussi :
+
+$$y'(x) = -2e^{-2x}\left(A\cos(3x)+B\sin(3x)\right) + e^{-2x}\left(-3A\sin(3x)+3B\cos(3x)\right)$$
+
+On évalue en $x=0$, où il ne reste que les termes en cosinus :
+
+$$y'(0) = -2A + 3B$$
+
+On remplace $A=2$ et $y'(0)=-1$ :
+
+$$-4 + 3B = -1$$
+
+$$3B = 3$$
+
+$$B = 1$$
+
+$$\boxed{y(x) = e^{-2x}\left(2\cos(3x) + \sin(3x)\right)}$$
+
+**Le contrôle, à faire systématiquement.** $y(0)=2$ ✔. On redérive avec $A=2$ et $B=1$ :
+
+$$y'(x) = e^{-2x}\left(-4\cos(3x) - 2\sin(3x) - 6\sin(3x) + 3\cos(3x)\right)$$
+
+On regroupe les cosinus, puis les sinus :
+
+$$y'(x) = e^{-2x}\left(-\cos(3x) - 8\sin(3x)\right)$$
+
+donc $y'(0)=-1$ ✔.
+
+**Le piège à éviter.** Recopier la règle de l'oscillateur, $B=\dfrac{y'(0)}{\beta}$, ce qui donnerait ici $B=-\dfrac13$. Fais tourner ce modèle jusqu'au bout : avec $A=2$ et $B=-\dfrac13$, la relation qu'on vient d'établir donne
+
+$$y'(0) = -2\times2 + 3\times\left(-\frac13\right)$$
+
+$$y'(0) = -5$$
+
+au lieu de $-1$ : la condition de départ n'est plus tenue. L'écart, $-4$, vaut exactement $\alpha A$ — la contribution du facteur $e^{-2x}$, qui vaut $1$ en $x=0$ mais dont la dérivée y vaut $-2$. En toute généralité, la dérivée du produit donne en $x=0$ :
+
+$$y'(0) = \alpha A + \beta B$$
+
+La règle $B=\dfrac{y'(0)}{\omega}$ n'en est que le cas $\alpha=0$ ; dès que $\alpha\neq0$, on isole $B$ dans cette relation.
+
+**Lire la solution.** Le facteur $e^{-2x}$ tend vers $0$ quand $x\to+\infty$ : les oscillations de $2\cos(3x)+\sin(3x)$ sont écrasées dans une enveloppe qui se resserre — c'est le régime pseudo-périodique du circuit RLC amorti. Le rythme, lui, ne dépend que de $\beta=3$ : $y$ s'annule à intervalles réguliers de longueur $\dfrac{\pi}{3}$, et la physique appelle $\dfrac{2\pi}{\beta}$ la pseudo-période. Les deux parties de la racine se partagent le travail : $\alpha$ règle l'amortissement, $\beta$ règle le rythme.
+
 ---
 
 ## R5 — Reconnaître l'équation en physique : RC, RL, oscillateur

@@ -233,6 +233,11 @@ leçon lues ; « Fix » donne le correctif minimal.
   - Δ = 0 : couvert (EQDIFF-31, -32, -33, `cp-r4-racine-double`).
   - La note du cadre `maths-sm.yaml:184` (« ne couvre PAS ») est périmée.
   - **Fix :** un exemple y'' + 2y' + 5y = 0 et deux items (Δ > 0 et Δ < 0).
+  - **Payé le 2026-10-20 (vague G8).** Re-mesuré avant d'écrire : constat inchangé, seules les lignes
+    ont glissé (formule du cas 3 en `:374-376`, exemple Δ > 0 en `:392-410`). Écrit : l'exemple
+    y'' + 4y' + 13y = 0 avec y(0) = 2, y'(0) = −1, en fin de chapitre 5 (y'' + 2y' + 5y = 0 est
+    passé à un item, EQDIFF-38), point d'arrêt `cp-r4-amorti-b` avant le calcul de B ; items
+    EQDIFF-34/35 (Δ > 0) et EQDIFF-36…39 (Δ < 0, id neuf `complexe-alpha-perdu`).
 
 ### 2.9 suites-numeriques [SExp]
 
@@ -242,6 +247,11 @@ leçon lues ; « Fix » donne le correctif minimal.
   - SUITES-13 (`items.yaml:856`) teste la somme **arithmétique** seulement ; la somme géométrique
     n'est jamais testée, et la somme de u_p à u_n n'est pas posée.
   - **Fix :** un exemple de somme géométrique (de u_p à u_n) et 1 item.
+  - **Payé le 2026-10-20 (vague G8).** Re-mesuré avant d'écrire : constat inchangé. Écrit en R2
+    (chapitre 3) : « Exemple travaillé : sommer des termes consécutifs », une somme arithmétique
+    (u_4 à u_15) et une géométrique (v_2 à v_6), le compte n − p + 1 engagé par
+    `cp-r2-nombre-de-termes` avant d'être révélé ; items SUITES-54…56, id neuf
+    `bornes-somme-mal-comptees` (le distracteur B de SUITES-13 y est rattaché).
 
 ### 2.10 systemes-oscillants [PC]
 

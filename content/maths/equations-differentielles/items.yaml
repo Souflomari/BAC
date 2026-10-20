@@ -23,7 +23,10 @@ misconceptions:
     label: "Signe de a inversé (ou mal isolé) dans l'exposant"
     description: >-
       L'élève reporte mal le signe de $a$ : il écrit $Ce^{-ax}$ pour $y'=ay$, ou
-      recopie $y'+ay=0$ tel quel sans l'écrire $y'=-ay$ avant de lire $a$.
+      recopie $y'+ay=0$ tel quel sans l'écrire $y'=-ay$ avant de lire $a$. Au
+      second ordre, même geste sur une racine du trinôme : il la reporte (ou
+      reporte sa partie réelle $\alpha$) avec le mauvais signe dans
+      l'exposant, $e^{-rx}$ au lieu de $e^{rx}$.
     contradicts_principle: >-
       $y'=ay \iff y=Ce^{ax}$ garde le signe de $a$ tel quel dans l'exposant. Le
       signe de $a$ ne se lit qu'APRÈS avoir mis l'équation sous la forme $y'=ay$.
@@ -106,7 +109,9 @@ misconceptions:
     label: "Mal relier le signe de a au comportement en ±∞"
     description: >-
       L'élève associe mal le signe de $a$ à la croissance/décroissance ou à la
-      limite : il conclut $a>0$ pour une décroissance vers $0$, ou l'inverse.
+      limite : il conclut $a>0$ pour une décroissance vers $0$, ou l'inverse. Au
+      second ordre avec $\Delta<0$, même erreur sur le signe de la partie
+      réelle $\alpha$, qui décide si l'amplitude s'éteint ou grandit.
     contradicts_principle: >-
       Le signe de $a$ pilote tout : $a<0\Rightarrow e^{ax}\to0$ en $+\infty$,
       $a>0\Rightarrow e^{ax}\to+\infty$. Le signe de $C$ n'y change rien.
@@ -134,7 +139,10 @@ misconceptions:
     description: >-
       L'élève traite l'équation de l'oscillateur comme si elle admettait des
       solutions exponentielles réelles — $Ae^{\omega x}+Be^{-\omega x}$, ou
-      $(Ax+B)e^{\omega x}$ quand il lit $\omega$ comme une racine double.
+      $(Ax+B)e^{\omega x}$ quand il lit $\omega$ comme une racine double. Même
+      confusion pour toute équation à $\Delta<0$ dont il lit le discriminant
+      comme positif : des exponentielles réelles, sans oscillation, là où il
+      faut un cosinus et un sinus.
     contradicts_principle: >-
       Le signe $+$ devant $\omega^2y$ impose des solutions oscillantes
       ($\cos,\sin$) ; seul $y''-\omega^2y=0$ donnerait des exponentielles réelles.
@@ -229,6 +237,26 @@ misconceptions:
       alors solution, et $(Ax+B)e^{r_0x}$ est la forme complète. Ce facteur ne
       se justifie QUE là — substitué dans une équation à racines distinctes, il
       laisse un reste non nul.
+
+  # Ajouté le 2026-10-20 (vague G8 de docs/audits/DETTE-CADRE.md : le cas
+  # Δ<0 avec α≠0 n'avait ni exemple travaillé ni item). Aucun id existant ne
+  # nomme ce modèle : omega-vs-omega2 et oscillateur-B-sans-omega portent sur
+  # l'oscillateur pur (α=0), où justement il n'y a rien à oublier.
+  - id: mc.math.maths_equations_differentielles.complexe-alpha-perdu
+    label: "Cas Δ<0 : la partie réelle α perdue, ou échangée avec β"
+    description: >-
+      Quand les racines sont $\alpha\pm i\beta$ avec $\alpha\neq0$, l'élève
+      raisonne comme pour l'oscillateur ($\alpha=0$) : il écrit
+      $A\cos(\beta x)+B\sin(\beta x)$ sans le facteur $e^{\alpha x}$, échange
+      les rôles de $\alpha$ et de $\beta$ (l'un dans l'exponentielle, l'autre
+      dans le cosinus), ou fixe $B$ par $y'(0)/\beta$ en oubliant que le
+      facteur $e^{\alpha x}$ apporte $\alpha A$ à $y'(0)$.
+    contradicts_principle: >-
+      La partie réelle $\alpha$ vit dans $e^{\alpha x}$ et règle
+      l'amortissement ; la partie imaginaire $\beta$ vit dans $\cos(\beta x)$
+      et $\sin(\beta x)$ et règle le rythme. Dès que $\alpha\neq0$, la
+      dérivée du produit donne $y'(0)=\alpha A+\beta B$ : la règle
+      $B=y'(0)/\omega$ de l'oscillateur n'en est que le cas $\alpha=0$.
 
 items:
 
@@ -2190,6 +2218,400 @@ items:
       **Le contrôle.** $y'(x)=-16x\,e^{-4x}$, donc $y'(0)=0$ ✓ ; et
       $y(0)=1$ ✓.
 
+  # ── R4 · Δ>0 testé, Δ<0 avec α≠0 (vague G8, DETTE-CADRE, 2026-10-20) ───────
+  - id: EQDIFF-34
+    rung: "R4"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_equations_differentielles
+    tags: [second_ordre, discriminant_positif]
+    primary_misconception: mc.math.maths_equations_differentielles.signe-exposant
+    stem: >
+      Quelles sont les solutions sur $\mathbb{R}$ de l'équation
+      différentielle $y'' + y' - 6y = 0$ ? (Dans les propositions, $A$ et $B$
+      désignent des constantes réelles quelconques.)
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $y(x) = Ae^{-2x} + Be^{3x}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-exposant
+        feedback: >
+          Ce choix reporte les deux racines avec le mauvais signe : le trinôme
+          $r^2+r-6$ s'annule en $2$ et en $-3$, pas en $-2$ et en $3$
+          (vérifie : $(-2)^2+(-2)-6=-4$). Le $-b$ de la formule
+          $\dfrac{-b\pm\sqrt\Delta}{2a}$ a sauté. Substitue $e^{-2x}$ dans
+          l'équation : il reste $-4e^{-2x}$, pas $0$.
+      - id: B
+        text: >-
+          $y(x) = e^{2x} + e^{-3x}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.solution-fonction-unique
+        feedback: >
+          Les deux exponentielles sont les bonnes, mais ce choix ne donne
+          qu'UNE fonction — celle où $A=B=1$. L'équation détermine une famille
+          à deux constantes libres ; sans elles, on ne pourrait pas satisfaire
+          ensuite deux conditions initiales données.
+      - id: C
+        text: >-
+          $y(x) = Ae^{2x} + Be^{-3x}$
+        correct: true
+      - id: D
+        text: >-
+          Les réels $2$ et $-3$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.ed-inconnue-nombre
+        feedback: >
+          $2$ et $-3$ sont les racines de l'équation CARACTÉRISTIQUE
+          $r^2+r-6=0$ — une étape du calcul, pas la réponse. L'inconnue d'une
+          équation différentielle est une fonction : il reste à écrire les
+          fonctions $Ae^{2x}+Be^{-3x}$ que ces racines construisent.
+    correct_feedback: >
+      Le trinôme $r^2+r-6$ a pour discriminant $\Delta=1+24=25>0$ : deux
+      racines réelles distinctes, $r_1=2$ et $r_2=-3$. Les solutions sont les
+      fonctions $Ae^{2x}+Be^{-3x}$, avec deux constantes libres.
+    solution: |
+      **Le trinôme.** $a=1$, $b=1$, $c=-6$ : $r^2+r-6=0$.
+
+      **Le discriminant.**
+      $$\Delta = 1^2-4\times1\times(-6) = 25$$
+      $\Delta>0$ : deux racines réelles distinctes,
+      $$r = \frac{-1\pm5}{2}$$
+      soit $r_1=2$ et $r_2=-3$.
+
+      **La solution générale.**
+      $$y(x) = Ae^{2x} + Be^{-3x}, \qquad A,B\in\mathbb{R}$$
+
+      **Le contrôle.** $2^2+2-6=0$ et $(-3)^2+(-3)-6=0$ : chaque racine
+      annule le trinôme, donc $e^{2x}$ et $e^{-3x}$ sont bien solutions.
+
+  - id: EQDIFF-35
+    rung: "R4"
+    habilete: application_directe
+    difficulty_level: 4
+    skill_code: maths_equations_differentielles
+    tags: [second_ordre, discriminant_positif, conditions_initiales]
+    primary_misconception: mc.math.maths_equations_differentielles.signe-exposant
+    stem: >
+      On considère $(E) : y'' - y' - 2y = 0$. Quelle est la solution de $(E)$
+      qui vérifie $y(0)=4$ et $y'(0)=-1$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $y(x) = \dfrac73e^{x} + \dfrac53e^{-2x}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-exposant
+        feedback: >
+          Cette fonction vérifie bien $y(0)=4$ et $y'(0)=-1$ — mais pas
+          l'équation : ses exponentielles portent les racines avec le mauvais
+          signe. Le trinôme $r^2-r-2$ s'annule en $2$ et en $-1$ ; en $1$, il
+          vaut $1-1-2=-2$. Les conditions initiales fixent les constantes,
+          elles ne valident pas les exponentielles.
+      - id: B
+        text: >-
+          $y(x) = (4-9x)\,e^{2x}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.racine-double-sans-x
+        feedback: >
+          Le facteur $x$ appartient au seul cas $\Delta=0$. Ici
+          $\Delta=1+8=9>0$ : deux racines distinctes, $2$ et $-1$. Substituée
+          dans $(E)$, $(4-9x)e^{2x}$ laisse un reste $-27e^{2x}$ : elle
+          respecte les deux conditions, pas l'équation.
+      - id: C
+        text: >-
+          $y(x) = e^{2x} + 3e^{-x}$
+        correct: true
+      - id: D
+        text: >-
+          Une infinité de fonctions : les $Ae^{2x}+Be^{-x}$ avec $A+B=4$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.nombre-solutions-condition
+        feedback: >
+          La condition $y(0)=4$ seule laisse en effet une infinité de
+          solutions — mais l'énoncé en donne une seconde, $y'(0)=-1$, qui fixe
+          la deuxième constante : $2A-B=-1$. Avec $A+B=4$, on obtient $A=1$ et
+          $B=3$ : une seule fonction.
+    correct_feedback: >
+      $\Delta=1+8=9>0$, racines $2$ et $-1$ : $y=Ae^{2x}+Be^{-x}$. Puis
+      $y(0)=A+B=4$ et $y'(0)=2A-B=-1$ ; en additionnant, $3A=3$, d'où $A=1$
+      et $B=3$.
+    solution: |
+      **Le trinôme.** $r^2-r-2=0$, de discriminant
+      $$\Delta = (-1)^2-4\times1\times(-2) = 9$$
+      Deux racines réelles distinctes :
+      $$r = \frac{1\pm3}{2}$$
+      soit $r_1=2$ et $r_2=-1$.
+
+      **La solution générale.** $y(x)=Ae^{2x}+Be^{-x}$, donc
+      $y'(x)=2Ae^{2x}-Be^{-x}$.
+
+      **Les conditions.** $y(0)=A+B=4$ et $y'(0)=2A-B=-1$. En additionnant
+      les deux équations, $3A=3$ : $A=1$, puis $B=3$.
+      $$y(x) = e^{2x}+3e^{-x}$$
+
+      **Le contrôle.** $y(0)=1+3=4$ ✓ ; $y'(0)=2-3=-1$ ✓. D'autres
+      fonctions respectent ces deux valeurs — $(4-9x)e^{2x}$, par exemple —
+      et échouent pourtant sur l'ÉQUATION : les conditions fixent les
+      constantes, ce sont les racines qui valident la forme.
+
+  - id: EQDIFF-36
+    rung: "R4"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_equations_differentielles
+    tags: [second_ordre, racines_complexes]
+    primary_misconception: mc.math.maths_equations_differentielles.complexe-alpha-perdu
+    stem: >
+      Quelles sont les solutions sur $\mathbb{R}$ de l'équation
+      différentielle $y'' - 6y' + 10y = 0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $y(x) = A\cos x + B\sin x$, $A, B \in \mathbb{R}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.complexe-alpha-perdu
+        feedback: >
+          Les racines du trinôme sont $3\pm i$ : partie imaginaire $\beta=1$,
+          mais partie réelle $\alpha=3$, non nulle. Ce choix la perd, comme si
+          l'équation n'avait pas de terme en $y'$. Substitue $y=\cos x$ :
+          $y''-6y'+10y=-\cos x+6\sin x+10\cos x=9\cos x+6\sin x$, pas $0$.
+      - id: B
+        text: >-
+          $y(x) = e^{3x}\left(A\cos x + B\sin x\right)$, $A, B \in \mathbb{R}$
+        correct: true
+      - id: C
+        text: >-
+          $y(x) = e^{x}\left(A\cos(3x) + B\sin(3x)\right)$, $A, B \in \mathbb{R}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.complexe-alpha-perdu
+        feedback: >
+          Ce choix échange les deux parties de la racine $3\pm i$ : c'est la
+          partie RÉELLE, $\alpha=3$, qui va dans l'exponentielle, et la partie
+          imaginaire, $\beta=1$, dans le cosinus et le sinus. $e^{x}\cos(3x)$
+          correspondrait aux racines $1\pm3i$, donc à l'équation
+          $y''-2y'+10y=0$.
+      - id: D
+        text: >-
+          $y(x) = Ae^{4x} + Be^{2x}$, $A, B \in \mathbb{R}$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-second-membre-second-ordre
+        feedback: >
+          Le discriminant vaut $36-40=-4$, négatif : pas de racine réelle. Lu
+          comme $+4$, il donnerait les racines $4$ et $2$, et des exponentielles
+          sans oscillation. Avec $\Delta<0$, les racines sont complexes,
+          $3\pm i$, et les solutions oscillent.
+    correct_feedback: >
+      $\Delta=36-40=-4<0$ : racines $r=\dfrac{6\pm2i}{2}=3\pm i$. La partie
+      réelle $\alpha=3$ va dans l'exponentielle, la partie imaginaire
+      $\beta=1$ dans le cosinus et le sinus : $y=e^{3x}(A\cos x+B\sin x)$.
+    solution: |
+      **Le trinôme.** $r^2-6r+10=0$, de discriminant
+      $$\Delta = (-6)^2-4\times1\times10 = -4$$
+      $\Delta<0$, et $\sqrt{-\Delta}=2$ :
+      $$r = \frac{6\pm2i}{2} = 3\pm i$$
+
+      **Chaque partie à sa place.** $\alpha=3$ dans l'exponentielle, $\beta=1$
+      dans le cosinus et le sinus :
+      $$y(x) = e^{3x}\left(A\cos x+B\sin x\right), \qquad A,B\in\mathbb{R}$$
+
+      **Lecture.** $\alpha=3>0$ : l'amplitude $e^{3x}$ grandit, l'oscillation
+      s'amplifie — l'inverse d'un amortissement.
+
+  - id: EQDIFF-37
+    rung: "R4"
+    habilete: application_directe
+    difficulty_level: 4
+    skill_code: maths_equations_differentielles
+    tags: [second_ordre, racines_complexes, conditions_initiales]
+    primary_misconception: mc.math.maths_equations_differentielles.complexe-alpha-perdu
+    stem: >
+      Les solutions de $(E) : y'' + 2y' + 10y = 0$ sont les fonctions
+      $y(x) = e^{-x}\left(A\cos(3x) + B\sin(3x)\right)$. Laquelle vérifie
+      $y(0)=1$ et $y'(0)=2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $y(x) = e^{-x}\left(\cos(3x) + \dfrac23\sin(3x)\right)$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.complexe-alpha-perdu
+        feedback: >
+          C'est la règle de l'oscillateur, $B=\dfrac{y'(0)}{\beta}$, qui
+          suppose $\alpha=0$. Ici $\alpha=-1$ : en dérivant le produit,
+          $y'(0)=-A+3B$. Avec $B=\dfrac23$, on obtiendrait $y'(0)=-1+2=1$,
+          pas $2$.
+      - id: B
+        text: >-
+          $y(x) = e^{-x}\left(\cos(3x) + 2\sin(3x)\right)$
+        correct: false
+        misconception: [mc.math.maths_equations_differentielles.oscillateur-B-sans-omega, mc.math.maths_equations_differentielles.complexe-alpha-perdu]
+        feedback: >
+          Ce choix lit $B$ directement sur $y'(0)$ : il oublie de diviser par
+          $\beta=3$, et il oublie la contribution $\alpha A=-1$ du facteur
+          $e^{-x}$. Avec $B=2$, on obtiendrait $y'(0)=-1+6=5$, pas $2$.
+      - id: C
+        text: >-
+          $y(x) = e^{-x}\left(\cos(3x) + \sin(3x)\right)$
+        correct: true
+      - id: D
+        text: >-
+          $y(x) = e^{-x}\left(\cos(3x) + \dfrac13\sin(3x)\right)$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-exposant
+        feedback: >
+          Ici la dérivée de $e^{-x}$ a été prise égale à $+e^{-x}$ : on écrit
+          alors $y'(0)=A+3B=2$, d'où $B=\dfrac13$. Mais $(e^{-x})'=-e^{-x}$,
+          donc $y'(0)=-A+3B$ ; avec $B=\dfrac13$, on obtiendrait
+          $y'(0)=-1+1=0$, pas $2$.
+    correct_feedback: >
+      $y(0)=A=1$. En dérivant le produit, $y'(0)=\alpha A+\beta B=-A+3B$, donc
+      $-1+3B=2$ et $B=1$. Le facteur $e^{-x}$ pèse dans $y'(0)$ : c'est ce que
+      la règle $B=y'(0)/\omega$ de l'oscillateur ne voit pas.
+    solution: |
+      **Première condition.** En $x=0$ : $y(0)=e^{0}(A\cos0+B\sin0)=A$, donc
+      $A=1$.
+
+      **Seconde condition.** On dérive le produit :
+      $$y'(x) = -e^{-x}\left(A\cos(3x)+B\sin(3x)\right)+e^{-x}\left(-3A\sin(3x)+3B\cos(3x)\right)$$
+      En $x=0$ :
+      $$y'(0) = -A+3B$$
+      Avec $A=1$ et $y'(0)=2$ : $3B=3$, donc $B=1$.
+      $$y(x) = e^{-x}\left(\cos(3x)+\sin(3x)\right)$$
+
+      **Le contrôle.** $y(0)=1$ ✓ ; $y'(0)=-1+3=2$ ✓.
+
+  - id: EQDIFF-38
+    rung: "R4"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_equations_differentielles
+    tags: [second_ordre, racines_complexes, sens_inverse]
+    primary_misconception: mc.math.maths_equations_differentielles.complexe-alpha-perdu
+    stem: >
+      Les solutions sur $\mathbb{R}$ d'une équation différentielle de la forme
+      $y''+by'+cy=0$ sont exactement les fonctions
+      $x\mapsto e^{-x}\left(A\cos(2x)+B\sin(2x)\right)$, $A, B \in \mathbb{R}$.
+      De quelle équation s'agit-il ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $y'' - 2y' + 5y = 0$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-exposant
+        feedback: >
+          Ce trinôme, $r^2-2r+5$, a pour racines $1\pm2i$ : partie réelle $+1$,
+          donc des solutions $e^{x}(\ldots)$ qui grandissent. La famille donnée
+          porte $e^{-x}$ : il faut $\alpha=-1$, donc les racines $-1\pm2i$.
+      - id: B
+        text: >-
+          $y'' + 2y' + 5y = 0$
+        correct: true
+      - id: C
+        text: >-
+          $y'' + 4y' + 5y = 0$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.complexe-alpha-perdu
+        feedback: >
+          Ce trinôme a pour racines $-2\pm i$ : les rôles sont échangés.
+          $\alpha=-2$ irait dans l'exponentielle et $\beta=1$ dans le cosinus,
+          soit $e^{-2x}\left(A\cos x+B\sin x\right)$ — pas la famille donnée.
+      - id: D
+        text: >-
+          $y'' + 4y = 0$
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.complexe-alpha-perdu
+        feedback: >
+          $y''+4y=0$ a pour racines $\pm2i$ : $\alpha=0$, et ses solutions
+          sont $A\cos(2x)+B\sin(2x)$, sans facteur exponentiel. Elle garde le
+          rythme $\beta=2$ de la famille donnée, mais perd son amortissement
+          $e^{-x}$.
+    correct_feedback: >
+      La famille $e^{-x}\left(A\cos(2x)+B\sin(2x)\right)$ est celle du cas
+      $\Delta<0$ avec $\alpha=-1$ et $\beta=2$ : les racines sont $-1\pm2i$,
+      et le trinôme qui les admet est $r^2+2r+5$.
+    solution: |
+      **Lire $\alpha$ et $\beta$ sur la famille.** L'exponentielle porte
+      $\alpha=-1$, le cosinus et le sinus portent $\beta=2$ : les racines
+      cherchées sont $r=-1\pm2i$.
+
+      **Reconstruire le trinôme.** $r=-1\pm2i$ équivaut à $r+1=\pm2i$, donc
+      à $(r+1)^2=-4$ :
+      $$(r+1)^2+4 = 0$$
+      $$r^2+2r+5 = 0$$
+      L'équation est $y''+2y'+5y=0$.
+
+      **Le contrôle.** $\Delta=4-20=-16<0$, et
+      $r=\dfrac{-2\pm4i}{2}=-1\pm2i$ ✓.
+
+  - id: EQDIFF-39
+    rung: "R4"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_equations_differentielles
+    tags: [second_ordre, racines_complexes, comportement]
+    primary_misconception: mc.math.maths_equations_differentielles.complexe-alpha-perdu
+    stem: >
+      On considère $(E) : y'' + 2y' + 17y = 0$. Comment se comportent ses
+      solutions non nulles quand $x$ tend vers $+\infty$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elles oscillent autour de $0$, avec une amplitude qui grandit sans borne.
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-a-comportement
+        feedback: >
+          Le signe de la partie réelle décide : les racines sont $-1\pm4i$,
+          donc $\alpha=-1<0$, et le facteur $e^{-x}$ tend vers $0$. Une
+          amplitude qui grandit demanderait $\alpha>0$, comme pour
+          $y''-2y'+17y=0$.
+      - id: B
+        text: >-
+          Elles oscillent autour de $0$, avec une amplitude qui reste constante.
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.complexe-alpha-perdu
+        feedback: >
+          Une amplitude constante, c'est l'oscillateur pur, sans terme en $y'$
+          ($\alpha=0$). Ici le terme $2y'$ donne $\alpha=-1$ : les solutions
+          sont $e^{-x}\left(A\cos(4x)+B\sin(4x)\right)$, et le facteur
+          $e^{-x}$ écrase l'oscillation.
+      - id: C
+        text: >-
+          Elles oscillent autour de $0$, avec une amplitude qui tend vers $0$.
+        correct: true
+      - id: D
+        text: >-
+          Elles décroissent vers $0$ sans osciller, comme une exponentielle.
+        correct: false
+        misconception: mc.math.maths_equations_differentielles.signe-second-membre-second-ordre
+        feedback: >
+          Pas d'oscillation, ce serait le cas $\Delta>0$ ou $\Delta=0$. Ici
+          $\Delta=4-68=-64<0$ : racines complexes $-1\pm4i$, et la partie
+          imaginaire $\beta=4$ fait osciller $y$ — de moins en moins fort, mais
+          sans s'arrêter.
+    correct_feedback: >
+      $\Delta=4-68=-64<0$ : racines $-1\pm4i$, solutions
+      $e^{-x}\left(A\cos(4x)+B\sin(4x)\right)$. Le facteur $e^{-x}$
+      ($\alpha=-1<0$) tend vers $0$ et écrase l'amplitude ; la partie
+      imaginaire $\beta=4$ entretient l'oscillation. C'est le régime
+      pseudo-périodique.
+    solution: |
+      **Les racines.** $r^2+2r+17=0$ :
+      $$\Delta = 2^2-4\times1\times17 = -64$$
+      $\sqrt{-\Delta}=8$, donc
+      $$r = \frac{-2\pm8i}{2} = -1\pm4i$$
+
+      **La forme.** $y(x)=e^{-x}\left(A\cos(4x)+B\sin(4x)\right)$.
+
+      **Le comportement.** Le facteur $\cos$/$\sin$ oscille entre des bornes
+      fixes ; le facteur $e^{-x}$, porté par $\alpha=-1<0$, tend vers $0$.
+      Le produit oscille autour de $0$ dans une enveloppe
+      $\pm\sqrt{A^2+B^2}\,e^{-x}$ qui se resserre : l'amplitude tend vers $0$.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après EQDIFF-22 à EQDIFF-30. Seize familles siégeaient
 # sous le plancher de 3 items du banc : la nature de l'inconnue et la famille de
@@ -2208,6 +2630,17 @@ items:
 # par `node web/scripts/couverture-diagnostique.mjs --porte` (« cliquet tenu,
 # 62 notions ») et `node web/scripts/resume-couverture.mjs --porte` (« portes
 # tenues, 0 affirmation contredite ») — relancés le 2026-09-25 après l'ajout.
+# COMPLÉTÉ À LA MAIN le 2026-10-20 (vague G8, docs/audits/DETTE-CADRE.md) —
+# EQDIFF-34/35 testent le cas Δ>0 (enseigné, jamais testé) ; EQDIFF-36 à -39
+# ouvrent le modèle mc...complexe-alpha-perdu (cas Δ<0 avec α≠0 : facteur
+# e^{αx} perdu, α et β échangés, B=y'(0)/β recopié de l'oscillateur). Trois
+# descriptions élargies d'une phrase pour nommer leur forme au second ordre
+# (signe-exposant, signe-a-comportement, signe-second-membre-second-ordre).
+# Deltas : total_items 33→39 ; ramp_coverage.R4 7→13 ; nouveau modèle 4 ;
+# signe-exposant 3→7 ; signe-second-membre-second-ordre 5→7 ;
+# solution-fonction-unique 5→6 ; nombre-solutions-condition 4→5 ;
+# signe-a-comportement, oscillateur-B-sans-omega, ed-inconnue-nombre,
+# racine-double-sans-x 3→4. Recompté avec lib/couverture-compte.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2217,8 +2650,8 @@ coverage_summary:
     la convention de web/scripts/lib/couverture-compte.mjs, gardé par
     web/scripts/resume-couverture.mjs.
   per_misconception:
-    mc.math.maths_equations_differentielles.solution-fonction-unique:           { count: 5, items: [EQDIFF-1, EQDIFF-22, EQDIFF-23, EQDIFF-31, EQDIFF-33] }
-    mc.math.maths_equations_differentielles.signe-exposant:                     { count: 3, items: [EQDIFF-1, EQDIFF-10, EQDIFF-13] }
+    mc.math.maths_equations_differentielles.solution-fonction-unique:           { count: 6, items: [EQDIFF-1, EQDIFF-22, EQDIFF-23, EQDIFF-31, EQDIFF-33, EQDIFF-34] }
+    mc.math.maths_equations_differentielles.signe-exposant:                     { count: 7, items: [EQDIFF-1, EQDIFF-10, EQDIFF-13, EQDIFF-34, EQDIFF-35, EQDIFF-37, EQDIFF-38] }
     mc.math.maths_equations_differentielles.ed-comme-primitive:                 { count: 3, items: [EQDIFF-1, EQDIFF-22, EQDIFF-24] }
     mc.math.maths_equations_differentielles.coefficient-a-mal-identifie:        { count: 3, items: [EQDIFF-10, EQDIFF-22, EQDIFF-24] }
     mc.math.maths_equations_differentielles.palier-recopie-b:                   { count: 5, items: [EQDIFF-2, EQDIFF-6, EQDIFF-12, EQDIFF-17, EQDIFF-19] }
@@ -2227,20 +2660,21 @@ coverage_summary:
     mc.math.maths_equations_differentielles.condition-initiale-sans-decalage:   { count: 3, items: [EQDIFF-3, EQDIFF-14, EQDIFF-25] }
     mc.math.maths_equations_differentielles.condition-initiale-exposant-sans-a: { count: 3, items: [EQDIFF-3, EQDIFF-25, EQDIFF-26] }
     mc.math.maths_equations_differentielles.resolution-exponentielle-lineaire:  { count: 3, items: [EQDIFF-3, EQDIFF-20, EQDIFF-23] }
-    mc.math.maths_equations_differentielles.signe-a-comportement:               { count: 3, items: [EQDIFF-11, EQDIFF-19, EQDIFF-26] }
-    mc.math.maths_equations_differentielles.nombre-solutions-condition:         { count: 4, items: [EQDIFF-15, EQDIFF-25, EQDIFF-26, EQDIFF-33] }
+    mc.math.maths_equations_differentielles.signe-a-comportement:               { count: 4, items: [EQDIFF-11, EQDIFF-19, EQDIFF-26, EQDIFF-39] }
+    mc.math.maths_equations_differentielles.nombre-solutions-condition:         { count: 5, items: [EQDIFF-15, EQDIFF-25, EQDIFF-26, EQDIFF-33, EQDIFF-35] }
     mc.math.maths_equations_differentielles.omega-vs-omega2:                    { count: 3, items: [EQDIFF-4, EQDIFF-16, EQDIFF-21] }
-    mc.math.maths_equations_differentielles.signe-second-membre-second-ordre:   { count: 5, items: [EQDIFF-4, EQDIFF-18, EQDIFF-27, EQDIFF-29, EQDIFF-32] }
-    mc.math.maths_equations_differentielles.oscillateur-B-sans-omega:           { count: 3, items: [EQDIFF-5, EQDIFF-21, EQDIFF-27] }
+    mc.math.maths_equations_differentielles.signe-second-membre-second-ordre:   { count: 7, items: [EQDIFF-4, EQDIFF-18, EQDIFF-27, EQDIFF-29, EQDIFF-32, EQDIFF-36, EQDIFF-39] }
+    mc.math.maths_equations_differentielles.oscillateur-B-sans-omega:           { count: 4, items: [EQDIFF-5, EQDIFF-21, EQDIFF-27, EQDIFF-37] }
     mc.math.maths_equations_differentielles.oscillateur-A-B-roles:              { count: 4, items: [EQDIFF-4, EQDIFF-5, EQDIFF-18, EQDIFF-21] }
     mc.math.maths_equations_differentielles.periode-omega:                      { count: 4, items: [EQDIFF-16, EQDIFF-27, EQDIFF-28, EQDIFF-30] }
     mc.math.maths_equations_differentielles.charge-decharge-confondues:         { count: 4, items: [EQDIFF-6, EQDIFF-17, EQDIFF-28, EQDIFF-30] }
     mc.math.maths_equations_differentielles.tau-inverse:                        { count: 3, items: [EQDIFF-17, EQDIFF-28, EQDIFF-30] }
     mc.math.maths_equations_differentielles.modele-taux-constant:               { count: 3, items: [EQDIFF-7, EQDIFF-8, EQDIFF-29] }
     mc.math.maths_equations_differentielles.modele-sans-ecart:                  { count: 3, items: [EQDIFF-7, EQDIFF-8, EQDIFF-29] }
-    mc.math.maths_equations_differentielles.ed-inconnue-nombre:                 { count: 3, items: [EQDIFF-9, EQDIFF-23, EQDIFF-24] }
-    mc.math.maths_equations_differentielles.racine-double-sans-x:               { count: 3, items: [EQDIFF-31, EQDIFF-32, EQDIFF-33] }
-  total_items: 33
+    mc.math.maths_equations_differentielles.ed-inconnue-nombre:                 { count: 4, items: [EQDIFF-9, EQDIFF-23, EQDIFF-24, EQDIFF-34] }
+    mc.math.maths_equations_differentielles.racine-double-sans-x:               { count: 4, items: [EQDIFF-31, EQDIFF-32, EQDIFF-33, EQDIFF-35] }
+    mc.math.maths_equations_differentielles.complexe-alpha-perdu:               { count: 4, items: [EQDIFF-36, EQDIFF-37, EQDIFF-38, EQDIFF-39] }
+  total_items: 39
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2248,12 +2682,20 @@ coverage_summary:
     R1: 6
     R2: 3
     R3: 5
-    R4: 7
+    R4: 13
     R5: 5
     R6: 3
   honest_state: >-
-    Les vingt-trois misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Quatorze y siègent EXACTEMENT (3 items) : la marge est nulle
-    et tout retrait d'item les casse. R4 (chapitre 5) est le seul rung porté
-    par un sujet vérifié (bac SExp 2022 N, cas Δ=0) ; il était le seul sans
+    Les vingt-quatre misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Neuf y siègent EXACTEMENT (3 items) : la marge est nulle et
+    tout retrait d'item les casse. R4 (chapitre 5) est le seul rung porté par
+    un sujet vérifié (bac SExp 2022 N, cas Δ=0) ; il était le seul sans
     checkpoint jusqu'au 2026-09-25 (cf. checkpoints.yaml, cp-r4-racine-double).
+    Depuis le 2026-10-20, les trois cas du discriminant y sont travaillés ET
+    testés : Δ>0 (EQDIFF-34/35), Δ=0 (EQDIFF-31 à -33), Δ<0 avec α≠0
+    (EQDIFF-36 à -39, point d'arrêt cp-r4-amorti-b). Le nouveau modèle
+    complexe-alpha-perdu a un item de marge (4) ; chacun de ses quatre items
+    porte aussi au moins un modèle voisin (signe-exposant,
+    oscillateur-B-sans-omega, signe-a-comportement,
+    signe-second-membre-second-ordre), ce qui est voulu : chaque distracteur
+    nomme l'erreur qui le produit.

@@ -20,6 +20,12 @@ skill_code: sma_suites_numeriques   # proposé — à confirmer par supabase-arc
 #                                              (and the hérédité is an implication
 #                                              on ONE fixed rank, not circular).
 #                                              Probes recurrence-etape-manquante.
+#   cp-r2-nombre-de-termes   (in R2)         — COMMIT gate (G8, 2026-10-20),
+#                                              staged before the count's own
+#                                              reveal in « Exemple travaillé :
+#                                              sommer des termes consécutifs »:
+#                                              how many terms in u_4+…+u_15?
+#                                              Probes bornes-somme-mal-comptees.
 #   cp-majoree-minoree       (after R3)      — rupture gate: a majorant is not
 #                                              unique, not attained, not the
 #                                              limit. Probes majorant-atteint-
@@ -191,6 +197,67 @@ checkpoints:
           Calculer quelques termes ne prouve rien pour l'infinité des rangs
           restants. Ce n'est pas ce qui manque : ce qui manque, c'est
           l'initialisation, la première étape de la récurrence.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1b | id: cp-r2-nombre-de-termes | placed IN R2 (G8, DETTE-CADRE,
+  #        2026-10-20), before « Le compte » reveals 15 − 4 + 1 = 12.
+  #        COMMIT gate: pas vs termes. Probes bornes-somme-mal-comptees.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-nombre-de-termes
+    rung: "R2"
+    habilete: raisonnement
+    skill_code: sma_suites_numeriques
+    tags: [checkpoint, formative, misconception_driven, sma_suites_numeriques, somme, predict_commit]
+    primary_misconception: mc.math.sma_suites_numeriques.bornes-somme-mal-comptees
+    item_source: original
+    lesson_placement: in_R2
+
+    stem: |
+      La somme $u_4 + u_5 + \cdots + u_{15}$ additionne des termes consécutifs
+      d'une suite. **Avant de calculer quoi que ce soit, engage-toi :**
+      combien de termes contient-elle ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $11$ termes
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.bornes-somme-mal-comptees
+        feedback: |
+          Modèle détecté : l'écart des indices, $15-4=11$, pris pour le nombre
+          de termes. Cet écart compte les PAS d'un terme au suivant ; les deux
+          bouts, $u_4$ et $u_{15}$, sont tous les deux dans la somme — il y a
+          un terme de plus que de pas.
+      - id: B
+        text: |
+          $12$ termes
+        correct: true
+        feedback: |
+          Exact : $15-4+1=12$. L'écart $15-4=11$ compte les pas ; les termes
+          sont un de plus, puisque les deux bouts sont dans la somme — comme
+          les poteaux d'une clôture.
+      - id: C
+        text: |
+          $15$ termes
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.bornes-somme-mal-comptees
+        feedback: |
+          Modèle détecté : le dernier indice lu comme le nombre de termes.
+          $15$ termes, ce serait de $u_1$ à $u_{15}$ ; ici la somme démarre à
+          $u_4$, et $u_1$, $u_2$, $u_3$ n'en font pas partie.
+      - id: D
+        text: |
+          $16$ termes
+        correct: false
+        misconception: mc.math.sma_suites_numeriques.bornes-somme-mal-comptees
+        feedback: |
+          Modèle détecté : le facteur $(n+1)$ de la formule du cours, recopié
+          avec $n=15$. Ce facteur compte les termes de $u_0$ à $u_n$ ; ici la
+          somme démarre à $u_4$, et $u_0$, $u_1$, $u_2$, $u_3$ n'en font pas
+          partie.
 
   # ════════════════════════════════════════════════════════════════
   # CP-2 | id: cp-majoree-minoree | placed AFTER R3

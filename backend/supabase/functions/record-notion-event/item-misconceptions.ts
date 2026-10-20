@@ -1022,6 +1022,34 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_equations_differentielles.racine-double-sans-x",
       "mc.math.maths_equations_differentielles.solution-fonction-unique"
     ],
+    "EQDIFF-34": [
+      "mc.math.maths_equations_differentielles.ed-inconnue-nombre",
+      "mc.math.maths_equations_differentielles.signe-exposant",
+      "mc.math.maths_equations_differentielles.solution-fonction-unique"
+    ],
+    "EQDIFF-35": [
+      "mc.math.maths_equations_differentielles.nombre-solutions-condition",
+      "mc.math.maths_equations_differentielles.racine-double-sans-x",
+      "mc.math.maths_equations_differentielles.signe-exposant"
+    ],
+    "EQDIFF-36": [
+      "mc.math.maths_equations_differentielles.complexe-alpha-perdu",
+      "mc.math.maths_equations_differentielles.signe-second-membre-second-ordre"
+    ],
+    "EQDIFF-37": [
+      "mc.math.maths_equations_differentielles.complexe-alpha-perdu",
+      "mc.math.maths_equations_differentielles.oscillateur-B-sans-omega",
+      "mc.math.maths_equations_differentielles.signe-exposant"
+    ],
+    "EQDIFF-38": [
+      "mc.math.maths_equations_differentielles.complexe-alpha-perdu",
+      "mc.math.maths_equations_differentielles.signe-exposant"
+    ],
+    "EQDIFF-39": [
+      "mc.math.maths_equations_differentielles.complexe-alpha-perdu",
+      "mc.math.maths_equations_differentielles.signe-a-comportement",
+      "mc.math.maths_equations_differentielles.signe-second-membre-second-ordre"
+    ],
     "EQDIFF-4": [
       "mc.math.maths_equations_differentielles.omega-vs-omega2",
       "mc.math.maths_equations_differentielles.oscillateur-A-B-roles",
@@ -1065,6 +1093,11 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_equations_differentielles.condition-initiale-exposant-sans-a",
       "mc.math.maths_equations_differentielles.condition-initiale-sans-decalage",
       "mc.math.maths_equations_differentielles.resolution-exponentielle-lineaire"
+    ],
+    "cp-r4-amorti-b": [
+      "mc.math.maths_equations_differentielles.complexe-alpha-perdu",
+      "mc.math.maths_equations_differentielles.oscillateur-B-sans-omega",
+      "mc.math.maths_equations_differentielles.signe-exposant"
     ],
     "cp-r4-racine-double": [
       "mc.math.maths_equations_differentielles.racine-double-sans-x",
@@ -2964,7 +2997,8 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.sma_suites_numeriques.arith-geom-confondues"
     ],
     "SUITES-13": [
-      "mc.math.sma_suites_numeriques.arith-geom-confondues"
+      "mc.math.sma_suites_numeriques.arith-geom-confondues",
+      "mc.math.sma_suites_numeriques.bornes-somme-mal-comptees"
     ],
     "SUITES-14": [
       "mc.math.sma_suites_numeriques.arith-geom-confondues"
@@ -3138,6 +3172,17 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.sma_suites_numeriques.limite-liee-terme-initial",
       "mc.math.sma_suites_numeriques.ordre-notation-recurrence"
     ],
+    "SUITES-54": [
+      "mc.math.sma_suites_numeriques.arith-geom-confondues",
+      "mc.math.sma_suites_numeriques.bornes-somme-mal-comptees"
+    ],
+    "SUITES-55": [
+      "mc.math.sma_suites_numeriques.bornes-somme-mal-comptees"
+    ],
+    "SUITES-56": [
+      "mc.math.sma_suites_numeriques.arith-geom-confondues",
+      "mc.math.sma_suites_numeriques.bornes-somme-mal-comptees"
+    ],
     "SUITES-6": [
       "mc.math.sma_suites_numeriques.adjacentes-condition-incomplete"
     ],
@@ -3162,6 +3207,9 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.sma_suites_numeriques.arith-geom-confondues",
       "mc.math.sma_suites_numeriques.majorant-atteint-ou-limite",
       "mc.math.sma_suites_numeriques.tendance-implique-limite"
+    ],
+    "cp-r2-nombre-de-termes": [
+      "mc.math.sma_suites_numeriques.bornes-somme-mal-comptees"
     ],
     "cp-r8b-k-non-strict": [
       "mc.math.sma_suites_numeriques.contraction-k-pas-strict"
