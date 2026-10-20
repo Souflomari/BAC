@@ -72,32 +72,29 @@
 # explicitement en ce sens. Les barèmes sont RÉPARTIS, jamais dupliqués :
 # 2,25 pt ici + 2,75 pt là-bas = 5 pt, le barème réel de l'exercice.
 #
-# SCOPE NOTES (techniques de lecture graphique mobilisées au-delà de ce que la
-# leçon montre explicitement pas à pas — pontées au point d'usage dans le
-# raisonnement de la question concernée, PAS corrigées ni simplifiées ici ;
-# DRAPEAU reporté à l'orchestrateur/pédagogue, pas résolu ici) :
-#   - bk-2024-r-x5, q1-2-1 : la lecture graphique d'une accélération sur une
-#     courbe v(t) n'est pas montrée pas à pas par la leçon : le rung 1
-#     construit le vecteur vitesse et le rung 3 le vecteur accélération, mais
-#     aucun rung ne fait l'exercice « prendre deux points sur une droite v(t)
-#     et en tirer le coefficient directeur ». À remonter à pedagogy-architect :
-#     ajouter ce geste au rung 3, ou l'assumer hors périmètre.
-#   - bk-2022-r-x4, q1-2-1 (« 1.2.1 ») : la lecture graphique d'une
-#     accélération sur une courbe x = f(t²) n'est montrée NULLE PART dans la
-#     leçon : R6 écrit bien x(t) = (1/2).g.t² pour la chute libre, mais aucun
-#     rung n'exploite cette forme comme une droite en portant t² en abscisse,
-#     ni ne signale que la pente lue vaut alors a/2 et non a — un piège plus
-#     cher que celui de bk-2024-r-x5, jamais nommé dans ce cours. À remonter
-#     à pedagogy-architect : ajouter ce geste (R1, R6, ou un rung dédié), ou
-#     l'assumer hors périmètre.
-#   - bk-2019-n-x4, q2 : même lacune que bk-2024-r-x5, q1-2-1 ci-dessus — la
-#     lecture graphique d'une accélération sur une courbe v(t) n'est montrée
-#     nulle part pas à pas par la leçon (rung 3 construit le vecteur, sans
-#     jamais faire l'exercice « deux points, coefficient directeur »). Pontée
-#     au même endroit dans le raisonnement de la question, avec en prime une
-#     ambiguïté de lecture propre à cette entrée (source : « V_G ≈ 9,5 m.s⁻¹
-#     vers t ≈ 2 s, lecture d'échelle à confirmer ») résolue au point d'usage
-#     par un contrôle aval (t_B tombe rond à 4,0 s).
+# SCOPE NOTES (techniques de lecture graphique mobilisées par les entrées
+# ci-dessous). Jusqu'au 2026-09-27, ces trois notes constataient que la leçon
+# ne montrait le geste nulle part et le remontaient à pedagogy-architect ; ce
+# constat est PÉRIMÉ — le geste est désormais enseigné, et le drapeau est levé.
+# Les ponts écrits au point d'usage dans les raisonnements restent valables
+# (ils refont le geste sur les données du sujet) :
+#   - bk-2024-r-x5, q1-2-1 : lire une accélération comme coefficient
+#     directeur d'une droite v(t) (deux points éloignés, pente = a, sans
+#     facteur caché). Geste enseigné depuis 2026-09-27 :
+#     content/pc/lois-de-newton/lesson.md, R6 — sous-section « Lire
+#     l'accélération sur un relevé graphique $v(t)$ ».
+#   - bk-2022-r-x4, q1-2-1 (« 1.2.1 ») : lire une accélération sur une
+#     droite x = f(t²), dont la pente vaut a/2 et non a. Geste enseigné
+#     depuis 2026-09-27 : content/pc/lois-de-newton/lesson.md, R6 —
+#     sous-section « Lire l'accélération sur une droite $x=f(t^2)$ » (le
+#     piège a/2 y est nommé et suivi d'une prise de position ; figure
+#     droite-x-t2).
+#   - bk-2019-n-x4, q2 : même geste que bk-2024-r-x5, q1-2-1 ci-dessus.
+#     Geste enseigné depuis 2026-09-27 au même endroit (R6, « Lire
+#     l'accélération sur un relevé graphique $v(t)$ »). Reste propre à cette
+#     entrée : l'ambiguïté de lecture de la source (« V_G ≈ 9,5 m.s⁻¹ vers
+#     t ≈ 2 s, lecture d'échelle à confirmer »), résolue au point d'usage par
+#     un contrôle aval (t_B tombe rond à 4,0 s).
 #
 # NOTE ÉDITORIALE — bk-2011-n-x4 (2026-08-29, ajout). Exercice « Mécanique
 # (05,5 points) » du sujet 2011 N (le skieur sur glace), situations 1 + 2 :
@@ -231,8 +228,9 @@ entries:
         2x4,5x36 = 324, racine 18,0 m/s — ces trois valeurs coïncident
         exactement avec r-bac. la
         question 2 (lecture d'une pente sur une courbe v(t)) mobilise un
-        geste que le rung 3 de la leçon ne montre pas pas à pas ; ponté au
-        point d'usage dans le raisonnement de la question.
+        geste enseigné depuis 2026-09-27 au R6 de la leçon (« Lire
+        l'accélération sur un relevé graphique $v(t)$ ») ; le pont écrit au
+        point d'usage dans le raisonnement de la question reste valable.
     intro: |-
       **Mouvement du centre d'inertie d'un système mécanique, sur la partie rectiligne inclinée A'B' (examen national, session normale 2019 — Exercice IV, Partie I, 3,00 points).**
 
@@ -300,7 +298,7 @@ entries:
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** Le mouvement est uniformément accéléré (question 1 : $a_G$ constante), donc $V_G(t) = a_G\,t$ — une droite par l'origine, puisque le système part **sans vitesse initiale**. Sur un graphe $V_G(t)$, l'accélération se lit comme la **pente** : c'est la définition $a_G = dv_G/dt$ du chapitre 4, appliquée à un graphe.
 
-          **Le pont à faire, parce que la leçon ne fait pas ce geste pas à pas.** Le chapitre 4 construit le vecteur accélération comme dérivée de la vitesse ; il ne montre jamais explicitement l'opération « prendre deux points d'une droite $v(t)$ et calculer son coefficient directeur » — la même lacune déjà signalée pour le sujet 2024. Le geste : choisir deux points de la droite qui tombent sur des **intersections du quadrillage**, jamais deux points lus au jugé.
+          **Le geste, celui du chapitre 7 (« Lire l'accélération sur un relevé graphique $v(t)$ »).** Le chapitre 4 construit le vecteur accélération comme dérivée de la vitesse ; le chapitre 7 en tire l'opération « prendre deux points d'une droite $v(t)$ et calculer son coefficient directeur ». Le geste : choisir deux points de la droite qui tombent sur des **intersections du quadrillage**, jamais deux points lus au jugé.
 
           $$a_G = \frac{\Delta V_G}{\Delta t} = \frac{V_2 - V_1}{t_2 - t_1}$$
 
@@ -834,7 +832,7 @@ entries:
         reasoning: |-
           **Ce qu'on cherche et pourquoi ce geste.** L'accélération est, par définition, la dérivée de la vitesse par rapport au temps. Sur un graphe $V_x(t)$, la dérivée se lit comme la **pente** de la courbe. Et comme le tracé est une **droite**, cette pente est la même partout : une seule mesure suffit, et elle donne $a_{x1}$ exactement.
 
-          **Le pont à faire, parce que la leçon ne fait pas ce geste pas à pas.** Le chapitre 4 construit le vecteur accélération comme taux de variation de la vitesse ; il ne montre pas l'opération « prendre deux points d'une droite $v(t)$ et calculer son coefficient directeur ». Voilà le geste, en clair : on choisit **deux points de la droite qui tombent sur des intersections du quadrillage** — jamais deux points lus au jugé — et on forme
+          **Le geste, celui du chapitre 7 (« Lire l'accélération sur un relevé graphique $v(t)$ »).** Le chapitre 4 construit le vecteur accélération comme taux de variation de la vitesse ; le chapitre 7 en tire l'opération « prendre deux points d'une droite $v(t)$ et calculer son coefficient directeur ». Voilà le geste, en clair : on choisit **deux points de la droite qui tombent sur des intersections du quadrillage** — jamais deux points lus au jugé — et on forme
 
           $$a_{x1} = \frac{\Delta V_x}{\Delta t} = \frac{V_2 - V_1}{t_2 - t_1}$$
 

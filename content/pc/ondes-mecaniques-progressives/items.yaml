@@ -1955,14 +1955,16 @@ items:
           profondeur, pas deux.
       - id: D
         text: >-
-          $L \approx 6{,}49\times10^{-9}\ \text{m}$
+          $L \approx 1{,}30\times10^{-8}\ \text{m}$
         correct: false
         misconception: mc.physics.pc_omp.retard-relation-fausse
         feedback: >
-          Ce calcul inverse le rapport entre la distance et la célérité :
-          une distance s'obtient en MULTIPLIANT une célérité par une durée,
-          pas en divisant l'une par l'autre. Le résultat obtenu ici, de
-          l'ordre du nanomètre, est d'ailleurs sans rapport avec la taille
+          Ce calcul divise la durée par la célérité, $\Delta t/v$, au lieu
+          de les multiplier : il inverse le rapport entre la distance et la
+          célérité. Une distance s'obtient en MULTIPLIANT une célérité par
+          une durée, pas en divisant l'une par l'autre. Le résultat obtenu
+          ici, de l'ordre de la dizaine de nanomètres, est d'ailleurs sans
+          rapport avec la taille
           d'une structure interne visible en échographie — un contrôle
           d'ordre de grandeur qui, à lui seul, écarte cette réponse.
     correct_feedback: >

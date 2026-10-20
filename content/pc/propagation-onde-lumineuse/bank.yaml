@@ -105,21 +105,19 @@
 #     une question ouverte — renforcent le même signal pour l'orchestrateur /
 #     pedagogy-architect : R5 gagnerait à nommer explicitement « milieu
 #     dispersif ». Pas corrigé unilatéralement ici.
-#   - bk-2015-n-x2, q3 : l'énergie d'un photon, $E = hc/\lambda$. AUCUN rung
-#     de cette leçon (R1–R5, qui ne traitent que la propagation, l'indice,
-#     la diffraction, la couleur et la dispersion) n'introduit la nature
-#     corpusculaire de la lumière ni la relation $E=h\nu$ — et aucune autre
-#     notion du corpus PC actuel ne le fait non plus (vérifié :
-#     `noyaux-masse-energie` couvre l'énergie de liaison NUCLÉAIRE, pas le
-#     photon). La relation est mobilisée ici comme un résultat de cours
-#     général, hors de toute leçon de ce corpus, exactement comme
-#     `decroissance-radioactive` mobilise l'énergie de liaison par nucléon
-#     (domaine `noyaux-masse-energie`, signalé de la même façon dans son
-#     propre fichier). Signalé pour l'orchestrateur / pedagogy-architect :
-#     ce corpus PC n'a aujourd'hui aucune notion qui introduise la
-#     quantification de l'énergie lumineuse ($E=h\nu$) ; soit un rung de
-#     cette leçon (ou une nouvelle notion) l'introduit, soit la question
-#     reste balisée hors rung comme telle. Pas corrigé unilatéralement ici.
+#   - bk-2015-n-x2, q3 : l'énergie d'un photon, $E = hc/\lambda$. Aucun rung
+#     de CETTE leçon (R1–R5 : propagation, indice, diffraction, couleur,
+#     dispersion) n'introduit la nature corpusculaire de la lumière. Cette
+#     note affirmait aussi qu'aucune autre notion du corpus PC ne le faisait ;
+#     c'était FAUX dès son écriture, et la remontée à pedagogy-architect est
+#     levée. Geste enseigné : $\Delta E = h\nu$ dans
+#     content/pc/atome-mecanique-newton/lesson.md, R4 — « Vers un modèle
+#     quantifié » (prose présente depuis 2026-07-04, contrôlée par le point
+#     d'arrêt cp-r4-planck) ; $\lambda_0 = c/\nu$ dans cette leçon-ci, R4 —
+#     « Couleur, longueur d'onde, et lumière monochromatique ». La forme
+#     $E = hc/\lambda$ est la composition de ces deux relations enseignées ;
+#     le raisonnement de la question 3 fait cette composition au point
+#     d'usage.
 #
 # Le 2015 N (bk-2015-n-x2, ajouté le 2026-08-28) est la QUATRIÈME entrée de
 # cette banque — première à porter un format QCM complet (trois questions,
@@ -932,8 +930,9 @@ entries:
         \approx 3{,}753\times10^{-19}$ J, conforme à la proposition
         imprimée $3{,}75\times10^{-19}$. Aucune divergence. SCOPE NOTE
         (q3, énergie du photon) : voir l'en-tête du fichier — $E=hc/\lambda$
-        n'est enseignée par aucun rung de cette leçon ni d'aucune autre
-        notion du corpus PC actuel.
+        n'est enseignée par aucun rung de cette leçon, mais $\Delta E = h\nu$
+        l'est dans content/pc/atome-mecanique-newton/lesson.md, R4 (point
+        d'arrêt cp-r4-planck), et $\lambda_0 = c/\nu$ au R4 de cette leçon.
     intro: |-
       **Propagation des ondes lumineuses dans un milieu transparent (examen national, session normale 2015, Exercice 2 — bloc « Ondes », 1,5 point).**
 
@@ -1012,7 +1011,7 @@ entries:
           | **C** | $E \approx 35{,}7\times10^{-19}$ |
           | **D** | $E \approx 3{,}75\times10^{-28}$ |
         reasoning: |-
-          l'énergie d'un photon, $E = hc/\lambda$, n'est enseignée par aucun chapitre de cette leçon (qui reste tout entière dans le cadre ondulatoire) ni d'aucune autre notion de ce corpus. C'est un résultat de cours général — la quantification de l'énergie lumineuse — mobilisé ici tel quel, avec la constante de Planck donnée dans l'énoncé.
+          L'énergie d'un photon ne vient pas de cette leçon, qui reste tout entière dans le cadre ondulatoire : elle vient de la notion **Atome et mécanique de Newton** (chapitre 5, « Vers un modèle quantifié »), où $\Delta E = h\nu$. Avec $\nu = c/\lambda$ (chapitre 5 de cette leçon-ci), elle s'écrit $E = hc/\lambda$ — la constante de Planck est donnée dans l'énoncé.
 
           $$E = \frac{hc}{\lambda}$$
 

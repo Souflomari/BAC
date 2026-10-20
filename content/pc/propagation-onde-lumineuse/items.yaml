@@ -1673,7 +1673,7 @@ items:
       $600$ nm est bien une longueur d'onde du visible.
 
   - id: POL-27
-    rung: "R6"
+    rung: "R4"
     difficulty_level: 4
     skill_code: pc_propagation_onde_lumineuse
     tags: []
@@ -1732,10 +1732,10 @@ items:
       tout sauf le rapport des longueurs d'onde, donc l'indice du liquide.
     solution: |
       Ni $a$ ni $D$ ne changent entre les deux mesures : la largeur de la
-      tache centrale vérifie $L = 2D\lambda/a$ (chapitre 3), donc $L$ est
+      tache centrale vérifie $L = 2D\lambda/a$ (chapitre 4), donc $L$ est
       proportionnelle à $\lambda$ à $a$ et $D$ fixés. Dans l'air,
       $\lambda_{air}\approx\lambda_0$ (l'indice de l'air vaut environ $1$) ;
-      dans le liquide, $\lambda_{liquide} = \lambda_0/n$ (chapitre 4). Le
+      dans le liquide, $\lambda_{liquide} = \lambda_0/n$ (chapitre 5). Le
       rapport des deux largeurs mesurées élimine $a$, $D$ et $\lambda_0$ :
       $$\frac{L_{liquide}}{L_{air}} = \frac{\lambda_{liquide}}{\lambda_{air}} = \frac{1}{n}$$
       D'où :
@@ -1785,9 +1785,9 @@ coverage_summary:
     R1: 3   # POL-1, POL-10, POL-11
     R2: 3   # POL-2, POL-12, POL-13
     R3: 6   # POL-3, POL-4, POL-14, POL-22, POL-23, POL-24
-    R4: 3   # POL-5, POL-15, POL-16
+    R4: 4   # POL-5, POL-15, POL-16, POL-27
     R5: 3   # POL-6, POL-17, POL-18
-    R6: 6   # POL-19, POL-20, POL-21, POL-25, POL-26, POL-27
+    R6: 5   # POL-19, POL-20, POL-21, POL-25, POL-26
   note: >
     Floor met for all eight models without padding. The seven pre-existing
     models were already at or above the floor (see the POL-1…POL-22 history
@@ -1817,6 +1817,12 @@ coverage_summary:
     rises from 4 to 5 items (POL-27 dual-tags one distractor to
     indice-vitesse-erronee, an honest same-skill co-attribution, not a new
     model); total_items 26 -> 27; R6 rises from 5 to 6.
+    RUNG UPDATE (2026-10-20, docs/audits/critiques/pc-vagues-DE-fidelite.md,
+    finding 7): POL-27 moves from R6 to R4, the rung whose worked example
+    (« Retrouver l'indice d'un liquide en comparant deux largeurs de
+    tache ») teaches the gesture — R4 rises from 3 to 4, R6 falls back from
+    6 to 5. Its solution's two chapter references were also off by one
+    (diffraction is chapter 4, lambda = lambda_0/n chapter 5) and are fixed.
     Historical note (POL-1…POL-22 pass): six of the original seven models
     already had ≥3 primaries across POL-1…POL-21; only diffraction-condition-
     taille needed one fresh item (POL-22, R3) to reach 3. Per-distractor

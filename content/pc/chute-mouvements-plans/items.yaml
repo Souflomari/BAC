@@ -2686,7 +2686,18 @@ items:
   # d'un plan incliné » : c'est structurellement la MÊME projection que
   # v_{0x}=v_0\cos\alpha (x_E est l'adjacent d'un triangle dont OE est
   # l'hypoténuse), donc rattaché à signe-et-projection-mal-poses plutôt
-  # qu'à une 23e id qui n'atteindrait pas le plancher de 3. Le distracteur
+  # qu'à une 23e id qui n'atteindrait pas le plancher de 3.
+  # ÉTIQUETTE PROVISOIRE (2026-10-20) : la critique de fidélité des vagues
+  # D-E (docs/audits/critiques/pc-vagues-DE-fidelite.md, constat 5) relève
+  # que la description déclarée de signe-et-projection-mal-poses (a_y=+g,
+  # sinus/cosinus échangés, a_x=0 mal justifié) ne couvre pas « x_E pris
+  # pour OE » ni « multiplier par cos β au lieu de diviser ». Les deux
+  # distracteurs concernés gardent cette étiquette en attendant la décision
+  # du propriétaire sur les identifiants manquants
+  # (docs/audits/DECISIONS-EN-ATTENTE.md, §35, question 3) — ne pas les
+  # retaguer d'ici là. Notation : β désigne l'angle du PLAN, comme dans
+  # l'exemple travaillé de R5 de la leçon, où α reste l'angle de LANCEMENT.
+  # Le distracteur
   # « portée sur sol plat » (oublie que l'arrivée n'est pas à y=0) reprend
   # le geste nommé par equation-de-trajectoire-mal-etablie : « applique la
   # formule de la flèche à la portée (et réciproquement) », étendu ici à
@@ -2728,8 +2739,8 @@ items:
       Un projectile est lancé depuis l'origine $O$ ; son équation de
       trajectoire est $y(x) = 0{,}53\,x - 0{,}02\,x^2$ ($x$ et $y$ en
       mètres). Il retombe sur un plan incliné qui descend depuis $O$, en
-      faisant un angle $\alpha = 25^\circ$ avec l'horizontale
-      ($\tan\alpha \approx 0{,}47$, $\cos\alpha \approx 0{,}91$), au point
+      faisant un angle $\beta = 25^\circ$ avec l'horizontale
+      ($\tan\beta \approx 0{,}47$, $\cos\beta \approx 0{,}91$), au point
       de chute $E$. Quelle est la distance $OE$, mesurée le long du plan ?
     type: mcq
     choices:
@@ -2742,9 +2753,9 @@ items:
           Cette valeur est $x_E$, l'abscisse HORIZONTALE du point $E$ — pas
           $OE$. $E$ est sur le plan incliné : la distance parcourue le long
           de la pente est plus grande que sa seule projection horizontale,
-          exactement comme $v_{0x} = v_0\cos\alpha$ est plus petite que
-          $v_0$. Recopier $x_E$ tel quel revient à ignorer cette
-          projection.
+          exactement comme, pour un lancer d'angle $\alpha$,
+          $v_{0x} = v_0\cos\alpha$ est plus petite que $v_0$. Recopier
+          $x_E$ tel quel revient à ignorer cette projection.
       - id: B
         text: >-
           $OE = 26{,}5\ \text{m}$
@@ -2754,7 +2765,7 @@ items:
           Cette valeur annule $y(x)$ seule : c'est la portée qu'aurait ce
           tir sur un sol HORIZONTAL ($y=0$), pas le point de chute sur le
           plan incliné donné. Ici le sol d'arrivée obéit à
-          $y = -x\tan\alpha$, pas à $y=0$ : il faut résoudre l'intersection
+          $y = -x\tan\beta$, pas à $y=0$ : il faut résoudre l'intersection
           des deux courbes, pas la portée d'un sol plat qui n'existe pas
           dans cet énoncé.
       - id: C
@@ -2767,7 +2778,7 @@ items:
         correct: false
         misconception: mc.physics.pc_chute_plans.signe-et-projection-mal-poses
         feedback: >
-          Le passage de $x_E$ à $OE$ se fait en DIVISANT par $\cos\alpha$
+          Le passage de $x_E$ à $OE$ se fait en DIVISANT par $\cos\beta$
           ($x_E$ est le côté adjacent d'un triangle rectangle dont $OE$ est
           l'hypoténuse), pas en multipliant : multiplier raccourcit encore
           la distance, alors que suivre une pente l'allonge par rapport à
@@ -2775,11 +2786,11 @@ items:
     correct_feedback: >
       Il faut d'abord résoudre l'intersection trajectoire/plan pour
       trouver $x_E = 50\ \text{m}$, puis convertir cette abscisse en
-      distance le long du plan : $OE = x_E/\cos\alpha \approx
+      distance le long du plan : $OE = x_E/\cos\beta \approx
       54{,}9\ \text{m}$.
     solution: |
       La droite du plan incliné, qui descend depuis $O$, s'écrit
-      $y_{plan}(x) = -x\tan\alpha$. Le point $E$ vérifie à la fois la
+      $y_{plan}(x) = -x\tan\beta$. Le point $E$ vérifie à la fois la
       trajectoire et cette droite :
       $$0{,}53\,x - 0{,}02\,x^2 = -0{,}47\,x$$
       $$x\left(1{,}00 - 0{,}02\,x\right) = 0$$
@@ -2788,7 +2799,7 @@ items:
       $E$ est sur le plan incliné, pas sur un axe horizontal : la distance
       $OE$ se relie à $x_E$ par le cosinus de l'angle du plan (le triangle
       rectangle formé par $O$, le pied de $E$ sur l'axe $x$, et $E$) :
-      $$OE = \frac{x_E}{\cos\alpha} = \frac{50}{0{,}91} \approx
+      $$OE = \frac{x_E}{\cos\beta} = \frac{50}{0{,}91} \approx
       54{,}9\ \text{m}$$
 
   - id: CMP-47

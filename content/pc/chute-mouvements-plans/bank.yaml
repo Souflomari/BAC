@@ -153,14 +153,14 @@
 #     jamais explicitement ce sens inverse ; ponté au point d'usage.
 #   - bk-2025-r-x4, q3 : le point de chute E est l'intersection de la
 #     trajectoire parabolique avec la droite du plan incliné — pas avec
-#     l'axe horizontal y=0. Le rung 4 ne calcule que la PORTÉE (l'intersection
-#     avec y=0, un cas particulier) ; il ne montre jamais explicitement la
-#     résolution d'un système {parabole ; droite oblique quelconque}. La
-#     méthode reste la même dans l'esprit (poser deux équations, éliminer une
-#     inconnue commune) mais le geste — écrire l'équation de la droite du
-#     plan à partir de sa description graphique, PUIS résoudre le système —
-#     n'est modélisé nulle part pas à pas. Ponté au point d'usage dans le
-#     raisonnement de la question 3.
+#     l'axe horizontal y=0. Jusqu'au 2026-09-27, cette note constatait que
+#     ce geste (écrire l'équation de la droite du plan, PUIS résoudre le
+#     système {parabole ; droite}, écarter la racine x=0, passer de x_E à
+#     OE) n'était modélisé nulle part pas à pas ; c'est PÉRIMÉ. Geste
+#     enseigné depuis 2026-09-27 : content/pc/chute-mouvements-plans/lesson.md,
+#     R5 — sous-section « Exemple travaillé : le point de chute sur une pente
+#     qui descend » (figure impact-plan-incline). Le pont écrit au point
+#     d'usage dans le raisonnement de la question 3 reste valable.
 #   - bk-2023-r-x4, q1 et q2 : l'origine du repère est au SOL, pas au
 #     point de lancement. Les rungs 2 et 3 placent SYSTÉMATIQUEMENT
 #     l'origine au point de lancement (« L'origine est prise au point de
@@ -1952,8 +1952,10 @@ entries:
   #   — bk-2025-r-x4 (ici) lance HORIZONTALEMENT (alpha = 0 au départ) mais
   #     atterrit sur un plan incliné dont la position n'est PAS donnée : il
   #     faut poser le système {trajectoire ; droite du plan} et le résoudre
-  #     pour trouver E — un geste que le rung 4 ne montre jamais tel quel (il
-  #     ne traite explicitement que y = 0). C'est la seule des trois entrées
+  #     pour trouver E — un geste que le rung 4 ne traite pas (il s'en tient à
+  #     y = 0), mais que R5 modélise pas à pas depuis 2026-09-27 (« Exemple
+  #     travaillé : le point de chute sur une pente qui descend » ; voir la
+  #     SCOPE NOTE d'en-tête). C'est la seule des trois entrées
   #     où le point de chute est un véritable inconnu à deux équations.
   # Proposition : garder les trois, elles couvrent trois configurations
   # différentes de rencontre avec le sol. À l'arbitrage de l'owner.
@@ -2092,7 +2094,7 @@ entries:
         stem: |-
           **3-** (1 pt) Le skieur tombe au point $E$ du plan incliné de l'angle $\alpha = 20°$ par rapport à l'horizontale. Trouver la distance $d = OE$.
         reasoning: |-
-          **Ce qu'on cherche et pourquoi ce geste.** La question la plus chère de la partie, et un geste que la leçon (chapitre 5) ne montre jamais tel quel : le chapitre 5 calcule la **portée**, c'est-à-dire l'intersection de la trajectoire avec l'axe horizontal $y=0$ — un cas particulier. Ici, le sol d'atterrissage n'est pas horizontal, c'est le plan incliné de la figure 1 : il faut **poser le système** formé par les deux courbes — la trajectoire parabolique et la droite du plan incliné — et le résoudre, sans deviner.
+          **Ce qu'on cherche et pourquoi ce geste.** La question la plus chère de la partie, et le geste de l'exemple travaillé du chapitre 6 (« le point de chute sur une pente qui descend ») : le chapitre 5 calcule la **portée**, c'est-à-dire l'intersection de la trajectoire avec l'axe horizontal $y=0$ — un cas particulier. Ici, le sol d'atterrissage n'est pas horizontal, c'est le plan incliné de la figure 1 : il faut **poser le système** formé par les deux courbes — la trajectoire parabolique et la droite du plan incliné — et le résoudre, sans deviner.
 
           **L'équation de la droite du plan incliné, lue sur la figure 1.** Le plan part de $O$ et descend vers la droite jusqu'à $Q$, à l'angle $\alpha$ sous l'horizontale (l'arc marqué en $Q$, entre le plan et le segment horizontal explicite tracé sous l'axe $x$). Pour tout point du plan, d'abscisse $x\geq0$, l'ordonnée est donc :
 
