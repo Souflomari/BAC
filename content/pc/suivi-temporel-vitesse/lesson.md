@@ -108,17 +108,36 @@ $\dfrac{dx}{dt}$, à un instant $t$, c'est la pente de la tangente à la courbe 
 
 Voici des valeurs de $x(t)$ obtenues par spectrophotométrie sur le mélange décrit plus haut ($n_0(S_2O_8^{2-}) = 5{,}0\ \text{mmol}$, $V = 0{,}100\ \text{L}$) :
 
+<!-- Données changées le 2026-10-20 (critique de fidélité, pc-vagues-DE-fidelite.md ;
+     LOCAL-TRANSITION §4.2 « Still open ») : l'ancien tableau (x = 0,0 ; 1,4 ; 2,5 ;
+     3,4 ; 4,0 ; 4,3 ; 4,7 ; 4,85 ; 4,97) donnait t½ = 8 min, la réponse même du
+     sommet r-bac (q3, t½ ≈ 8 min) et de deux entrées de bank.yaml : un élève qui
+     retenait « t½ = 8 min » écrivait la réponse du sommet sans la méthode. t½ est
+     désormais 12 min. 10 min était exclu aussi (réponse de l'item STV-14), comme
+     4, 5, 6, 8, 11, 14, 15, 16, 24, 28 et 42 (déjà pris dans la notion).
+     Valeurs = modèle x(t) = 5,0 × (1 − 2^(−t/12)) arrondi au centième de mmol
+     (écart max 0,005 mmol). Deux décimales partout, et non une : arrondi au
+     dixième, x(4 min) valait 1,0 mmol, le point exact (4 min ; 1,0 mmol) où
+     r-variation lit SON t½ = 4 min. Les quatre figures de x(t)
+     (prediction-avancement, avancement-tangente, tangentes-decroissantes,
+     temps-demi-reaction) tracent ce même modèle. Chaque valeur dérivée (0,146 ;
+     2,4e-5 ; 0,0535 ; 8,9e-6 ; 0,017 ; rapports 2,7 et 15) a été cherchée dans
+     exercises/bank/items/checkpoints : aucune n'y figure. Le rythme initial est
+     écrit « un peu plus de 0,25 » (il vaut 0,2575) plutôt que « 0,26 », valeur
+     de K dans une entrée de bank.yaml. L'item STV-11 cite ce tableau ; il a été
+     mis à jour en même temps. -->
+
 | $t$ (min) | $0$ | $4$ | $8$ | $12$ | $16$ | $20$ | $30$ | $40$ | $60$ |
 |---|---|---|---|---|---|---|---|---|---|
-| $x$ (mmol) | $0{,}0$ | $1{,}4$ | $2{,}5$ | $3{,}4$ | $4{,}0$ | $4{,}3$ | $4{,}7$ | $4{,}85$ | $4{,}97$ |
+| $x$ (mmol) | $0{,}00$ | $1{,}03$ | $1{,}85$ | $2{,}50$ | $3{,}02$ | $3{,}43$ | $4{,}12$ | $4{,}50$ | $4{,}84$ |
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* on veut $v$ à $t = 8\ \text{min}$. On construit la sécante entre les points encadrants $t = 4\ \text{min}$ et $t = 12\ \text{min}$, on en tire la pente, puis on divise par $V$ — jamais l'inverse.
+*Ce qu'on cherche ici, et pourquoi ce geste :* on veut $v$ à $t = 12\ \text{min}$. On construit la sécante entre les points encadrants $t = 8\ \text{min}$ et $t = 16\ \text{min}$, on en tire la pente, puis on divise par $V$ — jamais l'inverse.
 
-$$\text{pente} \approx \frac{x(12) - x(4)}{12 - 4} = \frac{3{,}4 - 1{,}4}{8} = 0{,}25\ \text{mmol/min}$$
+$$\text{pente} \approx \frac{x(16) - x(8)}{16 - 8} = \frac{3{,}02 - 1{,}85}{8} \approx 0{,}146\ \text{mmol/min}$$
 
-$$v(8\ \text{min}) = \frac{1}{V}\times\text{pente} = \frac{0{,}25\times10^{-3}}{0{,}100 \times 60}\ \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$$
+$$v(12\ \text{min}) = \frac{1}{V}\times\text{pente} = \frac{0{,}146\times10^{-3}}{0{,}100 \times 60}\ \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$$
 
-$$v(8\ \text{min}) \approx 4{,}2\times10^{-5}\ \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$$
+$$v(12\ \text{min}) \approx 2{,}4\times10^{-5}\ \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$$
 
 Garde cette valeur et ce tableau : ils reviennent dans les chapitres suivants.
 
@@ -134,7 +153,7 @@ Garde cette valeur et ce tableau : ils reviennent dans les chapitres suivants.
 
 Une intuition trompeuse consiste à imaginer une transformation chimique comme une voiture qui roulerait à vitesse constante : l'avancement progresserait alors régulièrement, au même rythme du début à la fin, et $x(t)$ serait une droite.
 
-Regarde le tableau du chapitre 3 : entre $t=0$ et $t=4\ \text{min}$, $x$ gagne $1{,}4\ \text{mmol}$, soit un rythme de $0{,}35\ \text{mmol/min}$. Entre $t=40$ et $t=60\ \text{min}$, $x$ ne gagne plus que $0{,}12\ \text{mmol}$ en $20$ minutes, soit $0{,}006\ \text{mmol/min}$ — près de $60$ fois moins vite. Une droite unique ne peut pas passer par des points aussi inégalement espacés : l'hypothèse « vitesse constante » est directement contredite par les mesures elles-mêmes.
+Regarde le tableau du chapitre 3 : entre $t=0$ et $t=4\ \text{min}$, $x$ gagne $1{,}03\ \text{mmol}$, soit un rythme d'un peu plus de $0{,}25\ \text{mmol/min}$. Entre $t=40$ et $t=60\ \text{min}$, $x$ ne gagne plus que $0{,}34\ \text{mmol}$ en $20$ minutes, soit $0{,}017\ \text{mmol/min}$ — environ $15$ fois moins vite. Une droite unique ne peut pas passer par des points aussi inégalement espacés : l'hypothèse « vitesse constante » est directement contredite par les mesures elles-mêmes.
 
 ### Ce que dit vraiment la vitesse volumique
 
@@ -142,13 +161,13 @@ $v(t)$ est **maximale tout au début** de la réaction (au tout premier instant,
 
 [[figure:tangentes-decroissantes]]
 
-Reprends le calcul du chapitre 3 : $v(8\ \text{min}) \approx 4{,}2\times10^{-5}\ \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$. Calculons maintenant $v(30\ \text{min})$, avec la même méthode de sécante symétrique, en utilisant les points $t=20\ \text{min}$ et $t=40\ \text{min}$ du tableau :
+Reprends le calcul du chapitre 3 : $v(12\ \text{min}) \approx 2{,}4\times10^{-5}\ \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$. Calculons maintenant $v(30\ \text{min})$, avec la même méthode de sécante symétrique, en utilisant les points $t=20\ \text{min}$ et $t=40\ \text{min}$ du tableau :
 
-$$\text{pente} \approx \frac{x(40) - x(20)}{40 - 20} = \frac{4{,}85 - 4{,}3}{20} = 0{,}0275\ \text{mmol/min}$$
+$$\text{pente} \approx \frac{x(40) - x(20)}{40 - 20} = \frac{4{,}50 - 3{,}43}{20} = 0{,}0535\ \text{mmol/min}$$
 
-$$v(30\ \text{min}) = \frac{1}{V}\times\text{pente} \approx 4{,}6\times10^{-6}\ \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$$
+$$v(30\ \text{min}) = \frac{1}{V}\times\text{pente} \approx 8{,}9\times10^{-6}\ \text{mol}\cdot\text{L}^{-1}\cdot\text{s}^{-1}$$
 
-La vitesse a été divisée par environ $9$ entre $t=8\ \text{min}$ et $t=30\ \text{min}$ : une chute nette, pas une petite variation.
+La vitesse a été divisée par environ $2{,}7$ entre $t=12\ \text{min}$ et $t=30\ \text{min}$ : une chute nette, pas une petite variation.
 
 ### Le lien avec les chocs efficaces
 
@@ -182,11 +201,11 @@ $x(t)$ ne fait qu'augmenter au cours du temps — un avancement ne peut jamais r
 
 Concrètement : on repère (ou on calcule à partir du tableau d'avancement) la valeur $x_{max}$ — le plateau vers lequel la courbe tend. On calcule $x_{max}/2$. On trace une droite horizontale à cette hauteur sur le graphe $x(t)$ ; le point où elle coupe la courbe donne, en abscisse, $t_{1/2}$.
 
-*Ce qu'on cherche ici, et pourquoi ce geste :* reprends le tableau du chapitre 3. $x_{max} = 5{,}0\ \text{mmol}$, donc $x_{max}/2 = 2{,}5\ \text{mmol}$. Le tableau donne directement $x(8\ \text{min}) = 2{,}5\ \text{mmol}$ :
+*Ce qu'on cherche ici, et pourquoi ce geste :* reprends le tableau du chapitre 3. $x_{max} = 5{,}0\ \text{mmol}$, donc $x_{max}/2 = 2{,}5\ \text{mmol}$. Le tableau donne directement $x(12\ \text{min}) = 2{,}50\ \text{mmol}$ :
 
-$$t_{1/2} = 8\ \text{min}$$
+$$t_{1/2} = 12\ \text{min}$$
 
-Remarque : c'est exactement l'instant qu'on a utilisé au chapitre 3 pour calculer $v(8\ \text{min})$ — pas un hasard de la nature, mais un choix pour que tu repères tout de suite où $t_{1/2}$ se situe sur la courbe qu'on vient d'étudier en détail.
+Remarque : c'est exactement l'instant qu'on a utilisé au chapitre 3 pour calculer $v(12\ \text{min})$ — pas un hasard de la nature, mais un choix pour que tu repères tout de suite où $t_{1/2}$ se situe sur la courbe qu'on vient d'étudier en détail.
 
 [[figure:temps-demi-reaction]]
 

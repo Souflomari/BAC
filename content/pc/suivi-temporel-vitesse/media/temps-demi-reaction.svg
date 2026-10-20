@@ -5,22 +5,30 @@
   <!--
     temps-demi-reaction.svg — même courbe x(t) que dans
     avancement-tangente.svg (modèle x(t) = x_max·(1−e^(−t/τ)),
-    x_max=5,0 mmol, τ=8/ln2≈11,542 min — voir calcul complet dans ce
+    x_max=5,0 mmol, τ=12/ln2≈17,312 min — voir calcul complet dans ce
     fichier-là), ici annotée pour la construction graphique du temps de
     demi-réaction t½ : une horizontale tracée à x_max/2 coupe la courbe,
     et la verticale abaissée en ce point de rencontre donne t½ en abscisse.
 
     Par construction du modèle (le même qu'en R2/R4 de la leçon), ce
-    point de rencontre tombe exactement à t½ = 8 min, x_max/2 = 2,5 mmol
-    — cohérent avec le tableau de R2 (x(8 min) = 2,5 mmol mesuré) et avec
+    point de rencontre tombe exactement à t½ = 12 min, x_max/2 = 2,5 mmol
+    — cohérent avec le tableau de R2 (x(12 min) = 2,5 mmol mesuré) et avec
     la remarque explicite de R4 : ce n'est pas un hasard, c'est le même
     instant que la tangente étudiée dans la figure précédente.
 
     Géométrie (identique à avancement-tangente.svg, pour la cohérence
     visuelle entre les deux figures compagnes) :
-      origine (t=0, x=0) : (80, 350) ; échelle temps 6,625 px/min
-      (t=80 min → x=610 px) ; échelle x 50 px/mmol (x_max=5,0 mmol
-      → y=100 px). x_max/2 = 2,5 mmol → y=225 px ; t½ = 8 min → x_px=133.
+      origine (t=0, x=0) : (80, 350) ; échelle temps 530/120 ≈ 4,4167
+      px/min (t=120 min → x=610 px) ; échelle x 50 px/mmol (x_max=5,0 mmol
+      → y=100 px). x_max/2 = 2,5 mmol → y=225 px ; t½ = 12 min →
+      x_px = 80 + 12×530/120 = 133.
+      2026-10-20 : t½ déplacé de 8 à 12 min (l'ancienne valeur était la
+      réponse du sommet r-bac ; note dans lesson.md). L'échelle des temps
+      passe de 6,625 px/min sur 80 min à 530/120 px/min sur 120 min :
+      x(t) ne dépendant que de t/t½, chaque point retombe au MÊME pixel
+      (recalculé, écart ≤ 0,006 px) — l'axe des temps ne porte aucune
+      graduation chiffrée, l'échelle est donc libre, et la mise en page
+      déjà vérifiée au rendu est conservée.
       (Coordonnées exactes, pas arrondies à l'oeil — mêmes formules que
       dans avancement-tangente.svg.)
 

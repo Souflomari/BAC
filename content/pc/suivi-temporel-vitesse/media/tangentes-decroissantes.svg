@@ -4,7 +4,7 @@
   <title>Deux tangentes à x(t) : la pente diminue avec le temps</title>
   <!--
     tangentes-decroissantes.svg — figure de lecture (R3, wave B2 P5), placée
-    juste avant la confirmation numérique v(8 min)/v(30 min) du texte : rend
+    juste avant la confirmation numérique v(12 min)/v(30 min) du texte : rend
     VISIBLE, par contraste de pente seul, que la vitesse volumique de
     réaction diminue continûment. Contrainte dure du brief : AUCUN nombre
     de pente affiché sur la figure — seul le contraste "raide" vs "presque
@@ -17,35 +17,43 @@
 
     Étape 2 : la même courbe x(t) qu'avancement-tangente.svg step-2, chemin
     "d" identique, verbatim (x(t) = x_max·(1−e^(−t/τ)), x_max=5,0 mmol,
-    τ=8/ln2≈11,5416 min — calcul complet dans ce fichier-là).
+    τ=12/ln2≈17,3123 min, axe des temps de 120 min sur 530 px — calcul
+    complet dans ce fichier-là).
+
+    2026-10-20 : t½ du modèle déplacé de 8 à 12 min (l'ancienne valeur était
+    la réponse du sommet r-bac ; note dans lesson.md). x(t) ne dépend que de
+    t/t½ : avec 530/120 px/min au lieu de 6,625, la courbe ET les deux
+    tangentes retombent au même pixel (recalculé, écart ≤ 0,006 px) pourvu
+    que les deux instants soient multipliés par 12/8 — d'où t = 3 et
+    t = 75 min ci-dessous (anciennement 2 et 50 min).
 
     Étape 3 : deux tangentes à la courbe, calculées ANALYTIQUEMENT à partir
     du même modèle (pas devinées à l'oeil), à deux instants choisis pour
-    leur seul contraste visuel — ni l'un ni l'autre n'est un repère nommé
-    ailleurs dans la leçon (ni t1=8 min de avancement-tangente.svg, ni
+    leur seul contraste visuel — ni l'un ni l'autre n'est un instant du
+    tableau de R2 (ni t1=12 min de avancement-tangente.svg, ni
     t=30 min du calcul de R3 ; choisis délibérément différents pour ne pas
     laisser croire que cette figure ILLUSTRE ces calculs-là au pixel près —
     elle illustre seulement le CONTRASTE de pente) :
 
-      dx/dt(t) = (x_max/τ)·e^(−t/τ) = 0,43325·e^(−t/τ) mmol/min (analytique,
+      dx/dt(t) = (x_max/τ)·e^(−t/τ) = 0,28881·e^(−t/τ) mmol/min (analytique,
       dérivée exacte du modèle tracé en step-2, pas une estimation par
       sécante).
 
-      "pente forte" en t=2 min :
-        x(2) = 5,0·(1−e^(−2/τ)) = 0,79545 mmol → point de tangence en pixels
-        (93,25 ; 310,23) [t_px = 80+6,625·t ; y_px = 350−50·x, mêmes
+      "pente forte" en t=3 min :
+        x(3) = 5,0·(1−e^(−3/τ)) = 0,79552 mmol → point de tangence en pixels
+        (93,25 ; 310,22) [t_px = 80+(530/120)·t ; y_px = 350−50·x, mêmes
         échelles qu'avancement-tangente.svg].
-        dx/dt(2) = 0,36433 mmol/min → pente écran = −(50·dx/dt)/6,625
-        ≈ −2,7497 px/px (quasi verticale, cohérent avec "pente forte").
+        dx/dt(3) = 0,24286 mmol/min → pente écran = −(50·dx/dt)/(530/120)
+        ≈ −2,7494 px/px (quasi verticale, cohérent avec "pente forte").
         Droite tracée de (80 ; 346,67) [bord gauche du repère, t≈0] à
         (187,89 ; 50) [bord haut du repère] — calculée pour passer
         EXACTEMENT par le point de tangence avec cette pente, pas raccourcie
         à l'oeil.
 
-      "pente faible" en t=50 min :
-        x(50) = 5,0·(1−e^(−50/τ)) = 4,93433 mmol → point de tangence en
+      "pente faible" en t=75 min :
+        x(75) = 5,0·(1−e^(−75/τ)) = 4,93430 mmol → point de tangence en
         pixels (411,25 ; 103,28).
-        dx/dt(50) = 0,005692 mmol/min → pente écran ≈ −0,04296 px/px
+        dx/dt(75) = 0,003795 mmol/min → pente écran ≈ −0,04296 px/px
         (quasi horizontale, cohérent avec "pente faible").
         Droite tracée de (300 ; 108,06) à (610 ; 94,74).
 
@@ -55,7 +63,7 @@
       aux deux extrémités de chaque segment tracé (pas de croisement visuel
       avec la courbe de l'étape 2).
 
-      Aucune de ces valeurs (pentes, instants t=2 min / t=50 min) n'apparaît
+      Aucune de ces valeurs (pentes, instants t=3 min / t=75 min) n'apparaît
       en texte sur la figure : seules les étiquettes "pente forte" / "pente
       faible" sont affichées, conformément à la contrainte dure du brief.
 
@@ -117,14 +125,14 @@
   </g><!-- /step-2 -->
 
   <g id="step-3">
-    <!-- Tangente "pente forte" (t=2 min — calcul en en-tête) -->
+    <!-- Tangente "pente forte" (t=3 min — calcul en en-tête) -->
     <line x1="80" y1="346.67" x2="187.89" y2="50"
           stroke="var(--figure-accent)" stroke-width="1.8"
           stroke-dasharray="6,4" stroke-linecap="round"/>
     <circle cx="93.25" cy="310.23" r="3.2" fill="var(--figure-accent)"/>
     <text x="193" y="46" font-size="11" fill="var(--figure-accent)">pente forte</text>
 
-    <!-- Tangente "pente faible" (t=50 min — calcul en en-tête) -->
+    <!-- Tangente "pente faible" (t=75 min — calcul en en-tête) -->
     <line x1="300" y1="108.06" x2="610" y2="94.74"
           stroke="var(--figure-accent)" stroke-width="1.8"
           stroke-dasharray="6,4" stroke-linecap="round"/>

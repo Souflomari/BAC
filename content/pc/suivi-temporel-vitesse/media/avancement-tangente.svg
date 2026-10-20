@@ -1,44 +1,53 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420"
      font-family="'IBM Plex Sans', system-ui, sans-serif"
-     aria-label="Courbe d’avancement x(t) pour la réaction S2O8 2 moins + 2 I moins, croissante vers un plateau x_max = 5,0 mmol. La tangente à la courbe en t1 = 8 minutes est tracée : sa pente est le taux de variation dx/dt à cet instant, et la vitesse volumique de réaction v(t1) vaut (1/V) fois cette pente.">
+     aria-label="Courbe d’avancement x(t) pour la réaction S2O8 2 moins + 2 I moins, croissante vers un plateau x_max = 5,0 mmol. La tangente à la courbe en t1 = 12 minutes est tracée : sa pente est le taux de variation dx/dt à cet instant, et la vitesse volumique de réaction v(t1) vaut (1/V) fois cette pente.">
   <title>x(t) et la tangente en t1 — vitesse volumique de réaction</title>
   <!--
     avancement-tangente.svg — courbe STATIQUE de x(t) pour la réaction
     S2O8²⁻ + 2I⁻ → 2SO4²⁻ + I2 (exemple travaillé de R2 de la leçon), avec
-    la tangente à la courbe en t1 = 8 min : sa pente est le taux de
+    la tangente à la courbe en t1 = 12 min : sa pente est le taux de
     variation dx/dt à cet instant, et v(t1) = (1/V)×pente est la vitesse
     volumique de réaction à cet instant.
 
     Modèle de courbe (calculé, pas deviné) :
       x(t) = x_max·(1 − e^(−t/τ)),  x_max = 5,0 mmol,
-      τ = 8/ln2 ≈ 11,542 min — choisi pour que x(8 min) = x_max/2 = 2,5 mmol
-      exactement, cohérent avec t½ = 8 min établi en R4 de la leçon (le
-      même instant sert de tangente ici et de temps de demi-réaction dans
-      temps-demi-reaction.svg — la leçon signale explicitement que ce
-      n'est pas un hasard).
+      τ = 12/ln2 ≈ 17,312 min — choisi pour que x(12 min) = x_max/2 =
+      2,5 mmol exactement, cohérent avec t½ = 12 min établi en R4 de la
+      leçon (le même instant sert de tangente ici et de temps de
+      demi-réaction dans temps-demi-reaction.svg — la leçon signale
+      explicitement que ce n'est pas un hasard).
 
-      Ce modèle lisse à un seul paramètre (τ) APPROCHE les valeurs
-      mesurées du tableau de R2 sans les reproduire au pixel près (écart
-      max ≈ 0,25 mmol vers t = 12-20 min, soit ≈5 % de x_max ; il
-      coïncide exactement avec les données à t=0, t=8, t=40 et t=60 min) :
-      c'est un ajustement schématique, pas une réplique brute du tableau.
+      2026-10-20 — DONNÉES CHANGÉES : la version précédente traçait
+      τ = 8/ln2 (t½ = 8 min), la réponse même du sommet r-bac ; le tableau
+      de R2 a été réécrit pour déplacer t½ à 12 min (note dans lesson.md).
+      Le tableau de R2 EST désormais ce modèle arrondi au centième de
+      mmol : écart max 0,005 mmol, exact à t = 0 et à t = 12 min.
 
     Géométrie (calculée) :
       origine (t=0, x=0) : (x0,y0) = (80, 350)
-      échelle temporelle  : 6,625 px/min  (t=80 min → x=610 px, bord d'axe)
+      échelle temporelle  : 530/120 ≈ 4,4167 px/min  (t=120 min → x=610 px,
+                            bord d'axe)
       échelle verticale   : 50 px/mmol    (x_max=5,0 mmol → y=100 px)
+      Pourquoi 120 min sur l'axe : x(t) ne dépend que de t/t½. Avec
+      t½ = 12 min sur 530 px pour 120 min, chaque point tombe EXACTEMENT au
+      pixel où la version t½ = 8 min (6,625 px/min sur 80 min) le plaçait
+      — recalculé point par point le 2026-10-20, écart ≤ 0,006 px (arrondi
+      au centième). L'axe des temps ne porte AUCUNE graduation chiffrée,
+      donc l'échelle est un choix libre ; la garder invariante conserve la
+      mise en page déjà vérifiée au rendu (étiquettes hors des tracés).
 
-    Tangente en t1 = 8 min (x_px=133, y_px=225, exact par construction) :
-      pente réelle du modèle dx/dt(8) = (x_max/τ)·e^(−8/τ) = 2,5/τ
-        ≈ 0,2166 mmol/min — valeur ANALYTIQUE exacte de la courbe tracée
+    Tangente en t1 = 12 min (x_px = 80 + 12×530/120 = 133, y_px = 225,
+    exact par construction) :
+      pente réelle du modèle dx/dt(12) = (x_max/τ)·e^(−12/τ) = 2,5/τ
+        ≈ 0,1444 mmol/min — valeur ANALYTIQUE exacte de la courbe tracée
         ici, légèrement différente de l'estimation par sécante
-        ≈0,25 mmol/min que le texte calcule à partir des points du
-        tableau à t=4 et t=12 min. C'est attendu : la sécante N'EST
+        ≈ 0,146 mmol/min que le texte calcule à partir des points du
+        tableau à t=8 et t=16 min. C'est attendu : la sécante N'EST
         QU'UNE approximation de la tangente (le texte le dit lui-même en
         R2) — donc AUCUNE valeur numérique de pente n'est affichée sur la
         figure, pour ne pas laisser croire à une contradiction.
       La droite tracée a la pente EXACTE de ce modèle, convertie en
-        pixels à partir des deux échelles ci-dessus (slope_px ≈ -1,6345),
+        pixels à partir des deux échelles ci-dessus (slope_px ≈ -1,6348),
         pas une pente devinée à l'oeil. Elle va de (80 ; 311,63) [bord
         gauche du repère] à (240,1 ; 50) [bord haut du repère] — calculée
         pour toucher exactement y=50, pas raccourcie arbitrairement.
@@ -99,7 +108,7 @@
 
   <g id="step-2">
     <!--
-      Courbe x(t) — polyligne calculée, pas=4 min, de t=0 à t=80 min.
+      Courbe x(t) — polyligne calculée, pas=6 min, de t=0 à t=120 min.
       x(t) = x_max·(1-e^(-t/τ)) ; voir calcul complet en tête de fichier.
       Couleur ink : la courbe est la structure de fond, pas le sujet accent.
     -->
@@ -116,7 +125,7 @@
 
   <g id="step-3">
     <!-- ══════════════════════════════════════════════════════
-         La tangente en t1 = 8 min — LE sujet de cette figure, tout en accent
+         La tangente en t1 = 12 min — LE sujet de cette figure, tout en accent
          ══════════════════════════════════════════════════════ -->
 
     <!-- Droite tangente, pente exacte du modèle en t1 (voir calcul en tête) -->
@@ -124,7 +133,7 @@
           stroke="var(--figure-accent)" stroke-width="1.8"
           stroke-dasharray="6,4" stroke-linecap="round"/>
 
-    <!-- Point de tangence (t1=8 min ; x1=2,5 mmol) -->
+    <!-- Point de tangence (t1=12 min ; x1=2,5 mmol) -->
     <circle cx="133" cy="225" r="3.2" fill="var(--figure-accent)"/>
 
     <!-- Repère vertical de l'instant t1, jusqu'à l'axe des temps -->
