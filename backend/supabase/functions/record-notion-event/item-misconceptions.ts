@@ -2853,8 +2853,7 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "SA-40": [
       "mc.math.structures_algebriques.sous-espace-affine-confondu",
-      "mc.math.structures_algebriques.sous-espace-vs-sous-groupe",
-      "mc.math.structures_algebriques.sous-espace-zero-suffit"
+      "mc.math.structures_algebriques.sous-espace-vs-sous-groupe"
     ],
     "SA-41": [
       "mc.math.structures_algebriques.cloture-non-verifiee",
@@ -2863,9 +2862,11 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "SA-42": [
       "mc.math.structures_algebriques.dimension-compte-parametres",
-      "mc.math.structures_algebriques.famille-libre-mal-testee"
+      "mc.math.structures_algebriques.famille-libre-mal-testee",
+      "mc.math.structures_algebriques.generalisation-hative"
     ],
     "SA-43": [
+      "mc.math.structures_algebriques.dimension-lue-sur-la-notation",
       "mc.math.structures_algebriques.famille-libre-mal-testee",
       "mc.math.structures_algebriques.generalisation-hative"
     ],
@@ -2901,8 +2902,7 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     ],
     "SA-50": [
       "mc.math.structures_algebriques.dimension-compte-parametres",
-      "mc.math.structures_algebriques.famille-generatrice-non-verifiee",
-      "mc.math.structures_algebriques.famille-libre-mal-testee"
+      "mc.math.structures_algebriques.famille-generatrice-non-verifiee"
     ],
     "SA-51": [
       "mc.math.structures_algebriques.dimension-compte-parametres",
