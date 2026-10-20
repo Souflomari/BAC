@@ -2256,3 +2256,26 @@ l'arithmétique (le slug entier était déjà hors SExp ; c'est la liste qui se 
 spec de numération, « aucune ligne ne cite le chapitre 10 ni 11 », était faux dans la lettre : deux
 « chapitres 1 à 10 » (une plage, que `grep -o` ne voit pas) — mis à jour dans le commit du chapitre, et
 la porte `carte-chapitres` lit les plages.
+
+**Addendum 2026-10-20 — les deux critiques de vague 1 sur le chapitre CONSTRUIT « Espaces vectoriels »**
+(`docs/audits/critiques/espaces-vectoriels-build-{pedagogie,fidelite}.md` : FIX THEN SHIP, aucune
+sortie du cadre, aucune erreur de calcul). Les correctifs d'auteur sont appliqués dans la foulée ;
+quatre points relèvent du propriétaire :
+5. *La longueur du chapitre.* 416 lignes visibles pour un budget écrit de 230 ± 30 : le lecteur ne
+   pagine que sur les titres `##`, et un douzième `##` afficherait un chapitre de plus sur la carte.
+   **Défaut : tel quel**, la vague 1 ajoutant un point d'engagement dans le dernier tiers ; *pour
+   défaire* : couper le chapitre en deux `##` (« Sous-espaces, familles » / « Base, dimension,
+   applications linéaires ») et re-sceller `carte-chapitres`.
+6. *Le poids d'items sur la moitié non attestée.* 12 des 18 items portent sur la liberté, la
+   génération, la dimension et les applications linéaires, que seule une ligne `research-consensus`
+   sur un PDF scanné et deux lignes `derived` soutiennent (`maths-sm.yaml:293-296`, `:718`).
+   **Défaut : accepté tant que la relecture du cadre scanné (porte 1) n'a pas rendu son verdict** ;
+   si elle restreint `:293`, c'est la première charge à revoir.
+7. *Le vocabulaire `habilete` des checkpoints.* Les checkpoints de maths portent `raisonnement` /
+   `utilisation` (registre PC), quand les items portent le triplet maths du cadre. Les checkpoints
+   n'entrent pas dans le mix. **Défaut : laisser, et l'écrire** — si le propriétaire veut un seul
+   vocabulaire, c'est une passe de re-étiquetage sur tous les checkpoints de maths.
+8. *L'ordre de la page.* Les questions de fin de chapitre s'affichent APRÈS les deux exercices à
+   rédiger (`NotionBody.tsx`), donc l'élève rédige un sujet puis répond à un QCM facile — une rampe
+   inversée, déjà vraie au chapitre 10. **Défaut : tel quel** (c'est le rendu de toute la maison) ;
+   le changer est une décision de produit, pas de contenu.
