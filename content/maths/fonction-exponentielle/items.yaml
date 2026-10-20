@@ -211,6 +211,39 @@ misconceptions:
       et la limite vaut a, pas 1. S'il l'est déjà (ex. (e^{ah}-1)/(ah)), il
       n'y a rien à ajuster : la limite vaut exactement 1, et introduire un
       facteur a supplémentaire est une erreur symétrique de la première.
+  # ── Ajout dette de cadre, vague G4 (2026-10-20) — « Exponentielle de base
+  # a » (lesson.md, chapitre 5, sections neuves). La prose nomme UN piège, et
+  # un seul : (a^x)' = x·a^{x-1}, la règle de x^n appliquée à une
+  # exponentielle de base fixe. Aucun modèle existant ne le recouvre :
+  # `derivee-exp-composee` décrit un MORCEAU oublié ou mal dérivé de u'e^u
+  # (e^u seul, u' seul, u·e^u) — ici, c'est la règle de l'autre situation,
+  # prise tout entière. Les deux erreurs voisines sur a^x = e^{x ln a}
+  # (ln a oublié ; x·ln a à la place de ln a) sont, elles, exactement les
+  # surfaces « e^u seul » et « u·e^u » de `derivee-exp-composee`, et y sont
+  # taguées. La surface MIROIR ((x^α)' = ln(x)·x^α) est la même confusion des
+  # deux situations, que la prose désigne ensemble (« les deux situations
+  # n'ont rien à voir, et leurs dérivées non plus ») ; seuls les deux items de
+  # la section x^α la portent, et le plancher n'en dépend pas (quatre items
+  # portent la surface principale).
+  - id: mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances
+    label: "(a^x)' = x·a^{x-1} : la règle de x^n appliquée à une base fixe"
+    description: >-
+      Pour dériver a^x (base a fixe, exposant x variable), l'élève applique la
+      règle d'une puissance x^n (base variable, exposant fixe) : il « descend
+      l'exposant et lui retire 1 », et écrit (a^x)' = x·a^{x-1}. Il en tire
+      des nombres dérivés faux et des variations fausses — x·a^{x-1} a le
+      signe de x, d'où un a^x « décroissant puis croissant », minimum en 0,
+      pour toute base. Surface miroir, la même confusion des deux situations
+      prise dans l'autre sens : pour une puissance x^α (base x variable,
+      exposant fixe), il applique la règle de a^x et écrit (x^α)' = ln(x)·x^α.
+    contradicts_principle: >-
+      a^x = e^{x ln a} est une exponentielle : la base est fixe, c'est
+      l'exposant qui varie. Par (e^u)' = u'e^u avec u = x ln a, (a^x)' =
+      ln(a)·a^x, du signe constant de ln(a) — a^x est strictement croissante
+      si a>1, strictement décroissante si 0<a<1. La règle (x^n)' = n·x^{n-1},
+      prolongée en (x^α)' = α·x^{α-1}, vaut pour la situation inverse : base
+      variable, exposant fixe. Les deux situations n'ont rien à voir, et leurs
+      dérivées non plus.
 items:
   - id: EXP-1
     rung: "R1"
@@ -2476,6 +2509,381 @@ items:
 
       $$\mathcal{S} = \{\ln 5\}$$
 
+  # ── 2026-10-20 (dette de cadre, vague G4) : EXP-41→EXP-46 pour les sections
+  # neuves du chapitre 5 — « Exponentielle de base a » et « Fonctions
+  # puissances x^α » (lesson.md, sous `## R4`, donc rung R4 pour les six).
+  # Un modèle neuf, `derivee-base-a-regle-des-puissances` (le piège que la
+  # prose nomme, (a^x)' = x·a^{x-1}), porté par les six items : la surface
+  # principale par EXP-41→EXP-44 (plancher tenu sans les deux suivants), la
+  # surface miroir ((x^α)' = ln(x)·x^α) par EXP-45 et EXP-46. Les autres
+  # distracteurs sont les surfaces « e^u seul » (ln a oublié) et « u·e^u »
+  # (x·ln a au lieu de ln a) de `derivee-exp-composee`, que la leçon rend
+  # visibles en dérivant a^x = e^{x ln a} par (e^u)' = u'e^u.
+  # FILIÈRE. x^α (et la racine n-ième) est SM-seul, et la leçon le dit à
+  # l'élève (« au programme de la filière Sciences Mathématiques »). Le corpus
+  # n'a aucun champ par item `filiere`/`stream` (grep sur tous les items.yaml
+  # et checkpoints.yaml ; même constat que nombres-complexes-1, bloc
+  # « FIDÉLITÉ FILIÈRE », et que les sommes de Riemann CI-67/68/72) : pas de
+  # champ inventé. EXP-45 et EXP-46 sont donc les SEULS items x^α, gardés à
+  # deux, et signalés ici et dans `honest_state`. a^x (EXP-41→EXP-44) n'est pas
+  # marqué, comme la prose : le cadre SExp le nomme en « mention », sur une
+  # ligne dérivée (DECISIONS-EN-ATTENTE §37).
+  # CHIFFRES. Aucun nombre de ces items ne reprend ceux des exemples de
+  # lesson.md (a=2, x=3, 8ln2≈5,55, 12 ; 8^{1/3} ; x^{1/3}, x^{-2/3}), de
+  # bank.yaml ni d'exercises.yaml — grep sur 5^x, 3^x, 4^x, x^4, 4/5, 9ln3,
+  # 18ln3, √2, √5 avant écriture. √3 est écarté (bank.yaml l'emploie comme
+  # borne d'un zéro). Aucun item ne refait l'étude de x^{1/3}.
+  - id: EXP-41
+    rung: "R4"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_fonction_exponentielle
+    tags: ["exponentielle-base-a", "derivee"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances
+    stem: >
+      Quelle est la dérivée sur $\mathbb{R}$ de la fonction $f$ définie par
+      $f(x)=5^x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$f'(x)=x\\times5^{x-1}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances
+        feedback: >
+          C'est la règle de dérivation de $x^n$ — on descend l'exposant, on
+          lui retire $1$ — appliquée à $5^x$. Cette règle vaut quand la base
+          varie et que l'exposant est fixe ; ici c'est l'inverse : la base $5$
+          est fixe et c'est l'exposant $x$ qui varie. $5^x=e^{x\ln5}$ est une
+          exponentielle, pas une puissance de $x$.
+      - id: B
+        text: "$f'(x)=\\ln(5)\\times5^x$"
+        correct: true
+      - id: C
+        text: "$f'(x)=5^x$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          Tu as dérivé $5^x$ comme $e^x$, qui est sa propre dérivée. Or
+          $5^x=e^{u}$ avec $u(x)=x\ln5$, et la règle $(e^u)'=u'e^u$ fait
+          apparaître le facteur $u'(x)=\ln5$, qui manque ici. Ce facteur ne
+          vaut $1$ que pour la base $e$, puisque $\ln e=1$.
+      - id: D
+        text: "$f'(x)=x\\ln(5)\\times5^x$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          Le facteur placé devant $5^x$ est $u(x)=x\ln5$ lui-même, au lieu de
+          sa dérivée $u'(x)=\ln5$ : la règle est $(e^u)'=u'e^u$, pas $u\,e^u$.
+          Avec ce facteur $x$ en trop, la dérivée s'annulerait en $x=0$, alors
+          que $5^x$ y croît comme ailleurs.
+    correct_feedback: >
+      $5^x=e^{x\ln5}$ : avec $u(x)=x\ln5$, on a $u'(x)=\ln5$, et
+      $(e^u)'=u'e^u$ donne $f'(x)=\ln(5)\times5^x$.
+    solution: |
+      **Revenir à la définition :** $f(x)=5^x=e^{x\ln5}$, de la forme $e^{u}$
+      avec $u(x)=x\ln5$. Comme la base $5$ est fixée, $\ln5$ est une
+      constante, donc $u'(x)=\ln5$.
+
+      **Dériver :** par la règle $(e^u)'=u'e^u$,
+      $$f'(x)=\ln(5)\times e^{x\ln5}=\ln(5)\times5^x$$
+
+      **Contrôle du signe :** $\ln5>0$ et $5^x>0$, donc $f'(x)>0$ : $f$ est
+      strictement croissante sur $\mathbb{R}$, ce qu'on attend d'une base
+      $a=5>1$.
+
+  - id: EXP-42
+    rung: "R4"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: ["exponentielle-base-a", "nombre-derive", "tangente"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances
+    stem: >
+      Soit $g$ la fonction définie sur $\mathbb{R}$ par $g(x)=3^x$. Quel est
+      le coefficient directeur de la tangente à la courbe de $g$ au point
+      d'abscisse $2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$6$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances
+        feedback: >
+          C'est la valeur en $x=2$ de $x\times3^{x-1}$, soit $2\times3^1$ : la
+          règle de dérivation de $x^n$, appliquée à une exponentielle. Or dans
+          $3^x$ la base $3$ est fixe et c'est l'exposant qui varie — la
+          situation inverse de $x^n$ —, et sa dérivée est $\ln(3)\times3^x$.
+      - id: B
+        text: "$9$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          C'est $g(2)=3^2$ lui-même : tu as pris $g'=g$, comme pour $e^x$.
+          Mais $3^x=e^{x\ln3}$, et la règle $(e^u)'=u'e^u$ ajoute le facteur
+          $u'=\ln3$ : le nombre dérivé en $2$ est $\ln(3)\times3^2$.
+      - id: C
+        text: "$18\\ln3$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          C'est $x\ln(3)\times3^x$ évalué en $x=2$ : le facteur devant
+          l'exponentielle est $u(x)=x\ln3$ au lieu de $u'(x)=\ln3$. La règle
+          est $(e^u)'=u'e^u$ ; le facteur $x=2$ est en trop, et double le
+          résultat.
+      - id: D
+        text: "$9\\ln3$"
+        correct: true
+    correct_feedback: >
+      $g'(x)=\ln(3)\times3^x$, donc le coefficient directeur cherché est
+      $g'(2)=\ln(3)\times3^2=9\ln3\approx9{,}89$.
+    solution: |
+      **Dériver $g$ :** $g(x)=3^x=e^{x\ln3}$, de la forme $e^u$ avec
+      $u(x)=x\ln3$ et $u'(x)=\ln3$ (une constante). Par la règle
+      $(e^u)'=u'e^u$ :
+      $$g'(x)=\ln(3)\times3^x$$
+
+      **Le coefficient directeur** de la tangente au point d'abscisse $2$ est
+      le nombre dérivé en $2$ :
+      $$g'(2)=\ln(3)\times3^2=9\ln3\approx9{,}89$$
+
+  - id: EXP-43
+    rung: "R4"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: ["exponentielle-base-a", "variations", "base-inferieure-a-1"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances
+    stem: >
+      Quel est le sens de variation sur $\mathbb{R}$ de la fonction $h$
+      définie par $h(x)=\left(\dfrac45\right)^x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "strictement croissante sur $\\mathbb{R}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          Ce sens de variation vient de $h'(x)=\left(\tfrac45\right)^x$,
+          strictement positive, comme si $h$ était sa propre dérivée à la
+          manière de $e^x$. Mais $h(x)=e^{x\ln(4/5)}$ : la règle
+          $(e^u)'=u'e^u$ fait apparaître le facteur $u'=\ln\tfrac45$, et ce
+          facteur est négatif puisque $\tfrac45<1$.
+      - id: B
+        text: "décroissante sur $]-\\infty,0]$, puis croissante sur $[0,+\\infty[$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances
+        feedback: >
+          Ce tableau est celui de $x\left(\tfrac45\right)^{x-1}$, qui a le
+          signe de $x$ : la règle de dérivation de $x^n$, appliquée à une
+          exponentielle dont la base est fixe et l'exposant variable. La vraie
+          dérivée, $\ln\left(\tfrac45\right)\times\left(\tfrac45\right)^x$,
+          garde un signe constant : celui de $\ln\tfrac45$.
+      - id: C
+        text: "strictement décroissante sur $\\mathbb{R}$"
+        correct: true
+      - id: D
+        text: "croissante sur $]-\\infty,0]$, puis décroissante sur $[0,+\\infty[$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          Ce tableau est celui de $x\ln\left(\tfrac45\right)\times
+          \left(\tfrac45\right)^x$ : le facteur devant l'exponentielle est
+          $u(x)=x\ln\tfrac45$ au lieu de $u'(x)=\ln\tfrac45$. Ce produit change
+          de signe en $0$ ; la vraie dérivée garde le signe constant de
+          $\ln\tfrac45$, négatif.
+    correct_feedback: >
+      $h(x)=e^{x\ln(4/5)}$, donc $h'(x)=\ln\left(\tfrac45\right)\times
+      \left(\tfrac45\right)^x$. Comme $\tfrac45<1$, $\ln\tfrac45<0$, et
+      $\left(\tfrac45\right)^x>0$ : $h'<0$ sur $\mathbb{R}$, donc $h$ est
+      strictement décroissante.
+    solution: |
+      **Dériver :** $h(x)=\left(\tfrac45\right)^x=e^{x\ln(4/5)}$, de la forme
+      $e^u$ avec $u'(x)=\ln\tfrac45$, une constante. Par $(e^u)'=u'e^u$ :
+      $$h'(x)=\ln\left(\frac45\right)\times\left(\frac45\right)^x$$
+
+      **Le signe :** $\left(\tfrac45\right)^x>0$ pour tout réel $x$ ; et
+      $0<\tfrac45<1$, donc $\ln\tfrac45<0$. Le produit est strictement
+      négatif sur $\mathbb{R}$.
+
+      **Conclusion :** $h$ est strictement décroissante sur $\mathbb{R}$ — le
+      cas d'une base comprise entre $0$ et $1$, où $\ln a<0$.
+
+  - id: EXP-44
+    rung: "R4"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: ["exponentielle-base-a", "derivee", "puissance-ou-exponentielle"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances
+    stem: >
+      Quelle est la dérivée sur $\mathbb{R}$ de la fonction $k$ définie par
+      $k(x)=x^4+4^x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$k'(x)=4x^3+\\ln(4)\\times4^x$"
+        correct: true
+      - id: B
+        text: "$k'(x)=4x^3+x\\times4^{x-1}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances
+        feedback: >
+          Le terme $x^4$ est bien dérivé, mais $4^x$ l'a été avec la même
+          règle : on a descendu l'exposant $x$ et on lui a retiré $1$. Or dans
+          $4^x$ c'est la base $4$ qui est fixe et l'exposant qui varie — la
+          situation inverse de $x^4$. $4^x=e^{x\ln4}$ se dérive en
+          $\ln(4)\times4^x$.
+      - id: C
+        text: "$k'(x)=\\ln(x)\\times x^4+\\ln(4)\\times4^x$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances
+        feedback: >
+          Le terme $4^x$ est bien dérivé, mais $x^4$ l'a été avec la même
+          règle, comme une exponentielle de base $x$. Or dans $x^4$ c'est la
+          base $x$ qui varie et l'exposant $4$ qui est fixe : c'est la règle
+          des puissances qui s'applique, $(x^4)'=4x^3$.
+      - id: D
+        text: "$k'(x)=4x^3+4^x$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          Le terme $x^4$ est bien dérivé, mais $4^x$ l'a été comme $e^x$, sa
+          propre dérivée. Or $4^x=e^{x\ln4}$, et la règle $(e^u)'=u'e^u$ fait
+          apparaître le facteur $u'=\ln4$, qui manque ici.
+    correct_feedback: >
+      Deux termes, deux situations : dans $x^4$ la base varie, $(x^4)'=4x^3$ ;
+      dans $4^x$ l'exposant varie, $(4^x)'=\ln(4)\times4^x$. D'où
+      $k'(x)=4x^3+\ln(4)\times4^x$.
+    solution: |
+      **Le terme $x^4$ :** la base $x$ varie, l'exposant $4$ est fixe — règle
+      des puissances : $(x^4)'=4x^3$.
+
+      **Le terme $4^x$ :** la base $4$ est fixe, l'exposant $x$ varie. Avec
+      $4^x=e^{x\ln4}$ et $(e^u)'=u'e^u$, où $u'(x)=\ln4$ :
+      $(4^x)'=\ln(4)\times4^x$.
+
+      **La somme :**
+      $$k'(x)=4x^3+\ln(4)\times4^x$$
+
+  # EXP-45 et EXP-46 : filière Sciences Mathématiques (section « Fonctions
+  # puissances x^α », marquée SM dans la prose) — voir le bloc G4 ci-dessus.
+  - id: EXP-45
+    rung: "R4"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: ["fonction-puissance", "derivee", "puissance-reelle"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+    stem: >
+      Pour tout réel $x>0$, on pose $f(x)=x^{\sqrt2}=e^{\sqrt2\,\ln x}$.
+      Quelle est la dérivée de $f$ sur $]0,+\infty[$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$f'(x)=\\ln(x)\\times x^{\\sqrt2}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances
+        feedback: >
+          Tu as dérivé $x^{\sqrt2}$ comme une exponentielle de base fixe, sur
+          le modèle $(a^x)'=\ln(a)\times a^x$ avec $x$ à la place de $a$. Mais
+          ici la base $x$ varie et l'exposant $\sqrt2$ est fixe — la situation
+          inverse. Avec $u(x)=\sqrt2\ln x$, la règle $(e^u)'=u'e^u$ donne le
+          facteur $u'(x)=\dfrac{\sqrt2}{x}$, pas $\ln x$.
+      - id: B
+        text: "$f'(x)=x^{\\sqrt2}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          Tu as pris $f'=f$, comme pour $e^x$. Mais $f=e^{u}$ avec
+          $u(x)=\sqrt2\ln x$ : la règle $(e^u)'=u'e^u$ fait apparaître le
+          facteur $u'(x)=\dfrac{\sqrt2}{x}$, qui manque ici.
+      - id: C
+        text: "$f'(x)=\\sqrt2\\,x^{\\sqrt2-1}$"
+        correct: true
+      - id: D
+        text: "$f'(x)=\\sqrt2\\,\\ln(x)\\times x^{\\sqrt2}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          Le facteur placé devant $x^{\sqrt2}$ est $u(x)=\sqrt2\ln x$
+          lui-même, au lieu de sa dérivée $u'(x)=\dfrac{\sqrt2}{x}$ : la règle
+          est $(e^u)'=u'e^u$, pas $u\,e^u$.
+    correct_feedback: >
+      Avec $u(x)=\sqrt2\ln x$, $u'(x)=\dfrac{\sqrt2}{x}$, donc
+      $f'(x)=\dfrac{\sqrt2}{x}\times x^{\sqrt2}=\sqrt2\,x^{\sqrt2-1}$ : la
+      règle $(x^\alpha)'=\alpha x^{\alpha-1}$, ici avec $\alpha=\sqrt2$.
+    solution: |
+      **Dériver l'exponentielle :** $f(x)=e^{u(x)}$ avec $u(x)=\sqrt2\ln x$,
+      donc $u'(x)=\dfrac{\sqrt2}{x}$, et
+      $$f'(x)=\frac{\sqrt2}{x}\times x^{\sqrt2}$$
+
+      **Simplifier :** $\dfrac1x=x^{-1}$, et les exposants s'ajoutent :
+      $x^{-1}\times x^{\sqrt2}=e^{-\ln x}\times e^{\sqrt2\ln x}=e^{(\sqrt2-1)\ln x}=x^{\sqrt2-1}$.
+      D'où
+      $$f'(x)=\sqrt2\,x^{\sqrt2-1}$$
+
+      C'est la règle $(x^\alpha)'=\alpha x^{\alpha-1}$, établie pour tout
+      réel $\alpha$, avec $\alpha=\sqrt2$.
+
+  - id: EXP-46
+    rung: "R4"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_fonction_exponentielle
+    tags: ["fonction-puissance", "variations", "exposant-negatif"]
+    primary_misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+    stem: >
+      Pour tout réel $x>0$, on pose $g(x)=x^{-\sqrt5}=e^{-\sqrt5\,\ln x}$.
+      Quel est le sens de variation de $g$ sur $]0,+\infty[$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "strictement croissante sur $]0,+\\infty[$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          Ce sens de variation suppose $g'=g$, strictement positive, comme pour
+          $e^x$. Mais $g=e^{u}$ avec $u(x)=-\sqrt5\ln x$, et la règle
+          $(e^u)'=u'e^u$ fait apparaître le facteur $u'(x)=-\dfrac{\sqrt5}{x}$,
+          négatif sur $]0,+\infty[$.
+      - id: B
+        text: "strictement décroissante sur $]0,+\\infty[$"
+        correct: true
+      - id: C
+        text: "décroissante sur $]0,1]$, puis croissante sur $[1,+\\infty[$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances
+        feedback: >
+          Ce tableau est celui de $\ln(x)\times x^{-\sqrt5}$, qui a le signe de
+          $\ln x$ : négatif avant $1$, positif après. C'est la dérivée d'une
+          exponentielle de base fixe, $(a^x)'=\ln(a)\times a^x$, recopiée avec
+          $x$ à la place de $a$ ; or ici la base $x$ varie et l'exposant
+          $-\sqrt5$ est fixe. La vraie dérivée, $-\sqrt5\,x^{-\sqrt5-1}$, garde
+          le signe constant de $-\sqrt5$.
+      - id: D
+        text: "croissante sur $]0,1]$, puis décroissante sur $[1,+\\infty[$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: >
+          Ce tableau est celui de $-\sqrt5\ln(x)\times x^{-\sqrt5}$ : le
+          facteur devant l'exponentielle est $u(x)=-\sqrt5\ln x$ au lieu de
+          $u'(x)=-\dfrac{\sqrt5}{x}$. Ce produit change de signe en $1$, avec
+          $\ln x$ ; la vraie dérivée, elle, garde le signe de $-\sqrt5$.
+    correct_feedback: >
+      $g'(x)=-\dfrac{\sqrt5}{x}\times x^{-\sqrt5}=-\sqrt5\,x^{-\sqrt5-1}$ :
+      sur $]0,+\infty[$, $x^{-\sqrt5-1}>0$, donc $g'$ a le signe de $-\sqrt5$,
+      négatif. $g$ est strictement décroissante.
+    solution: |
+      **Dériver :** $g(x)=e^{u(x)}$ avec $u(x)=-\sqrt5\ln x$, donc
+      $u'(x)=-\dfrac{\sqrt5}{x}$ et
+      $$g'(x)=-\frac{\sqrt5}{x}\times x^{-\sqrt5}=-\sqrt5\,x^{-\sqrt5-1}$$
+
+      **Le signe :** sur $]0,+\infty[$, $\dfrac1x>0$ et $x^{-\sqrt5}>0$ ; le
+      signe de $g'(x)$ est donc celui de $-\sqrt5$, strictement négatif.
+
+      **Conclusion :** $g$ est strictement décroissante sur $]0,+\infty[$ —
+      le cas d'un exposant $\alpha<0$.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après EXP-28 à EXP-31. Sept familles siégeaient sous
 # le plancher de 3 items du banc — deux à un item, cinq à deux. Neuf places à
@@ -2504,6 +2912,14 @@ items:
 # neuf — ses trois distracteurs réutilisent `exp-valeur-negative-impossible`,
 # `resolution-exp-erreur` et `somme-produit-confondus`, tous trois déjà
 # au-dessus du plancher.
+# MIS À JOUR le 2026-10-20 (dette de cadre, vague G4 — « Exponentielle de base
+# a », « Fonctions puissances x^α ») : un modèle neuf déclaré
+# (`derivee-base-a-regle-des-puissances`, 6 items) et six items ajoutés
+# (EXP-41 à EXP-46, tous R4) ; `derivee-exp-composee` passe de 3 à 9. Tableau
+# RÉGÉNÉRÉ en entier contre web/scripts/lib/couverture-compte.mjs, ce qui
+# corrige au passage la ligne `somme-produit-confondus` : EXP-40 la porte
+# (distracteur « $e^{2x}$ lu $2e^x$ ») depuis le 2026-09-27, et le tableau
+# l'annonçait encore à 3 items au lieu de 4.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2515,9 +2931,9 @@ coverage_summary:
     mc.math.maths_fonction_exponentielle.exp-signe-ou-domaine:              { count: 3, items: [EXP-1, EXP-26, EXP-29] }
     mc.math.maths_fonction_exponentielle.valeurs-et-reciprocite-confondues: { count: 3, items: [EXP-7, EXP-10, EXP-11] }
     mc.math.maths_fonction_exponentielle.bijection-existence-unicite:       { count: 3, items: [EXP-9, EXP-26, EXP-29] }
-    mc.math.maths_fonction_exponentielle.somme-produit-confondus:           { count: 3, items: [EXP-2, EXP-8, EXP-30] }
+    mc.math.maths_fonction_exponentielle.somme-produit-confondus:           { count: 4, items: [EXP-2, EXP-8, EXP-30, EXP-40] }
     mc.math.maths_fonction_exponentielle.oppose-quotient-exposant-erreur:   { count: 4, items: [EXP-2, EXP-3, EXP-8, EXP-12] }
-    mc.math.maths_fonction_exponentielle.derivee-exp-composee:              { count: 3, items: [EXP-4, EXP-13, EXP-14] }
+    mc.math.maths_fonction_exponentielle.derivee-exp-composee:              { count: 9, items: [EXP-4, EXP-13, EXP-14, EXP-41, EXP-42, EXP-43, EXP-44, EXP-45, EXP-46] }
     mc.math.maths_fonction_exponentielle.croissances-comparees-inversees:   { count: 3, items: [EXP-5, EXP-28, EXP-31] }
     mc.math.maths_fonction_exponentielle.limite-exp-moins-infini:           { count: 3, items: [EXP-15, EXP-19, EXP-30] }
     mc.math.maths_fonction_exponentielle.inegalite-reference-erreur:        { count: 3, items: [EXP-16, EXP-28, EXP-31] }
@@ -2527,7 +2943,8 @@ coverage_summary:
     mc.math.maths_fonction_exponentielle.exp-valeur-negative-impossible:    { count: 4, items: [EXP-24, EXP-27, EXP-30, EXP-40] }
     mc.math.maths_fonction_exponentielle.forme-0-sur-0-non-reconnue:        { count: 8, items: [EXP-32, EXP-33, EXP-34, EXP-35, EXP-36, EXP-37, EXP-38, EXP-39] }
     mc.math.maths_fonction_exponentielle.facteur-multiplicatif-oublie:      { count: 8, items: [EXP-32, EXP-33, EXP-34, EXP-35, EXP-36, EXP-37, EXP-38, EXP-39] }
-  total_items: 40
+    mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances: { count: 6, items: [EXP-41, EXP-42, EXP-43, EXP-44, EXP-45, EXP-46] }
+  total_items: 46
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2535,7 +2952,7 @@ coverage_summary:
     R1: 3
     R2: 4
     R3: 3
-    R4: 12
+    R4: 18
     R5: 3
     R6: 3
     R7: 6
@@ -2569,3 +2986,22 @@ coverage_summary:
     k\cdot e^x$ (cas $a=b$ de $e^{a+b}\neq e^a+e^b$), pour que ce
     distracteur — et tout futur item du même type — s'y rattache sans
     ambiguïté.
+
+    DETTE DE CADRE, VAGUE G4 (2026-10-20) : seize misconceptions déclarées,
+    aucune sous le plancher ; sept siègent EXACTEMENT à 3 items
+    (`exp-signe-ou-domaine`, `valeurs-et-reciprocite-confondues`,
+    `bijection-existence-unicite`, `croissances-comparees-inversees`,
+    `limite-exp-moins-infini`, `inegalite-reference-erreur`,
+    `primitive-exp-erreur`) — `derivee-exp-composee` quitte ce lot (3 → 9).
+    Le modèle neuf `derivee-base-a-regle-des-puissances` (6 items) tient son
+    plancher par sa surface PRINCIPALE seule — (a^x)' = x·a^{x-1}, sur
+    EXP-41→EXP-44 — ; sa surface miroir ((x^α)' = ln(x)·x^α) n'apporte
+    qu'EXP-45 et EXP-46, une extension à relire par un humain si l'usage
+    montre que les deux sens ne se confondent pas chez les mêmes élèves.
+    FIDÉLITÉ FILIÈRE : EXP-45 et EXP-46 portent sur x^α, SM-seul (la leçon le
+    dit à l'élève) ; aucun champ par item ne le marque dans ce corpus, d'où ce
+    signalement et le bloc de commentaire qui les précède. Le banc reste donc
+    à 44 items lisibles en SExp. Non couvert par un item, par choix : la
+    racine n-ième et l'étude travaillée de x^{1/3} (les reprendre serait
+    refaire l'exemple), et les limites de a^x, dont aucune erreur nommée par la
+    prose ni aucun modèle déclaré ne porte un distracteur honnête.

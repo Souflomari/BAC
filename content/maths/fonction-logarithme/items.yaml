@@ -1905,6 +1905,331 @@ items:
       **Conclure.**
       $$\lim_{x\to+\infty}\frac{(\ln x)^2}{\sqrt x} = 16\times0^2 = 0$$
 
+  # ── 2026-10-20 (dette de cadre, vague G4) : LOG-34→LOG-38 pour les sections
+  # neuves du chapitre 7 — « Le logarithme de base a » et son exemple
+  # travaillé (nombre de chiffres d'un entier) — toutes deux sous `## R6`,
+  # donc rung R6 pour les cinq. AUCUN modèle neuf : les deux pièges que la
+  # prose nomme sont déjà déclarés, et leurs descriptions les couvrent mot pour
+  # mot — log_a(x+y) = log_a(x)+log_a(y) est la surface « distribue ln sur une
+  # somme » de `produit-somme-confondus` (log_a n'est que ln divisé par une
+  # constante), et « un quotient de deux logarithmes lu comme le logarithme
+  # d'un quotient » est la surface « ln(a/b) = ln a / ln b » de
+  # `regles-quotient-puissance`, lue dans l'autre sens.
+  # Ce que ces items NE proposent PAS, faute d'un modèle déclaré qui le
+  # recouvre honnêtement (la prose ne le nomme pas comme piège) : sur le
+  # nombre de chiffres, l'oubli du « +1 » (d = partie entière de log N) et
+  # l'emploi de ln au lieu de log ; sur log_a, la définition renversée
+  # (ln a / ln x). Aucun distracteur n'est donc offert sur ces erreurs-là —
+  # ce sont les plus naturelles du geste « nombre de chiffres », et elles
+  # restent à arbitrer par le propriétaire (un id dédié, ou rien).
+  # FILIÈRE : log_a n'est pas marqué, comme la prose (cadre SExp : « mention
+  # possible », ligne dérivée — DECISIONS-EN-ATTENTE §37) ; le logarithme
+  # décimal (LOG-37) est commun aux deux filières.
+  # CHIFFRES : aucun nombre de ces items ne reprend ceux des exemples de
+  # lesson.md (2^100, log 2≈0,301, ln 2≈0,693, ln 10≈2,303, 347, ln 50/ln 2,
+  # ln 25 ; les équations des exemples 1 à 3, dont x+3 et 2x−1), de bank.yaml
+  # ni d'exercises.yaml (dont l'aire e−5/2 du sommet, qui a fait écarter une
+  # première version de LOG-36) — grep avant écriture. Aucun item ne refait
+  # 2^100.
+  - id: LOG-34
+    rung: "R6"
+    difficulty_level: 2
+    habilete: application_directe
+    skill_code: maths_fonction_logarithme
+    tags: ["logarithme-base-a", "propriete-produit"]
+    primary_misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
+    stem: >
+      Soit $x>0$. À quelle expression $\log_4(16x)$ est-elle égale ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2+\\log_4(x)$"
+        correct: true
+      - id: B
+        text: "$16+\\log_4(x)$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
+        feedback: >
+          La décomposition $\log_4(16x)=\log_4(16)+\log_4(x)$ est la bonne,
+          mais $\log_4(16)$ a ensuite été remplacé par $16$, comme si le
+          logarithme rendait la valeur qu'on lui donne. Or $16=4^2$, donc
+          $\log_4(16)=\dfrac{2\ln(4)}{\ln(4)}=2$.
+      - id: C
+        text: "$2\\log_4(x)$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
+        feedback: >
+          C'est $\log_4(16)\times\log_4(x)$ : le produit $16\times x$ à
+          l'intérieur est resté un produit à l'extérieur. Or $\log_4$ hérite de
+          $\ln$ la propriété du produit, qui donne une SOMME :
+          $\log_4(16x)=\log_4(16)+\log_4(x)$.
+      - id: D
+        text: "$\\log_4(16+x)$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
+        feedback: >
+          Le produit $16x$ est devenu la somme $16+x$ à l'intérieur du
+          logarithme — deux nombres différents (pour $x=1$ : $16$ contre
+          $17$). $\log_4(16+x)$ ne se décompose pas : c'est le PRODUIT
+          intérieur qui devient une somme de logarithmes,
+          $\log_4(16x)=\log_4(16)+\log_4(x)$.
+    correct_feedback: >
+      $\log_4(16x)=\log_4(16)+\log_4(x)$ (propriété du produit, héritée de
+      $\ln$), et $\log_4(16)=\dfrac{\ln(4^2)}{\ln(4)}=2$, d'où $2+\log_4(x)$.
+    solution: |
+      **La propriété du produit**, héritée de $\ln$ en divisant par la
+      constante $\ln(4)\neq0$ :
+      $$\log_4(16x)=\log_4(16)+\log_4(x)$$
+
+      **Calculer $\log_4(16)$ :** $16=4^2$, donc
+      $$\log_4(16)=\frac{\ln(4^2)}{\ln(4)}=\frac{2\ln(4)}{\ln(4)}=2$$
+
+      **Conclusion :** $\log_4(16x)=2+\log_4(x)$.
+
+  - id: LOG-35
+    rung: "R6"
+    difficulty_level: 2
+    habilete: application_directe
+    skill_code: maths_fonction_logarithme
+    tags: ["logarithme-base-a", "quotient-de-logarithmes"]
+    primary_misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
+    stem: >
+      Sans calculatrice, que vaut $\dfrac{\ln(81)}{\ln(3)}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$3$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
+        feedback: >
+          Tu as bien vu que $81=3^4$, mais la propriété de la puissance a été
+          appliquée avec la base au lieu de l'exposant : $\ln(3^4)$ remplacé
+          par $3\ln(3)$, au lieu de $4\ln(3)$. C'est l'EXPOSANT qui devient le
+          coefficient.
+      - id: B
+        text: "$27$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
+        feedback: >
+          Tu as « simplifié par $\ln$ », c'est-à-dire traité $\ln(81)$ comme
+          $81$ et $\ln(3)$ comme $3$. Mais $\ln$ ne rend pas la valeur
+          qu'on lui donne ($\ln(3)\approx1{,}1$, pas $3$), et ce n'est pas un
+          facteur qu'on barre en haut et en bas.
+      - id: C
+        text: "$4$"
+        correct: true
+      - id: D
+        text: "$\\ln(27)$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
+        feedback: >
+          Le quotient de deux logarithmes a été lu comme le logarithme du
+          quotient $\dfrac{81}{3}=27$. Ce sont deux calculs différents : la
+          propriété du quotient dit $\ln\!\left(\dfrac{81}{3}\right)=
+          \ln(81)-\ln(3)$, une DIFFÉRENCE de logarithmes. Numériquement,
+          $\ln(27)\approx3{,}30$.
+    correct_feedback: >
+      $81=3^4$, donc $\ln(81)=4\ln(3)$, et
+      $\dfrac{\ln(81)}{\ln(3)}=\dfrac{4\ln(3)}{\ln(3)}=4$ : c'est
+      $\log_3(81)$.
+    solution: |
+      **Décomposer :** $81=3^4$, donc, par la propriété de la puissance,
+      $\ln(81)=4\ln(3)$.
+
+      **Simplifier par $\ln(3)\neq0$ :**
+      $$\frac{\ln(81)}{\ln(3)}=\frac{4\ln(3)}{\ln(3)}=4$$
+
+      Ce quotient est exactement $\log_3(81)$, le logarithme de $81$ en base
+      $3$ — et non $\ln\!\left(\dfrac{81}{3}\right)=\ln(27)\approx3{,}30$.
+
+  - id: LOG-36
+    rung: "R6"
+    difficulty_level: 4
+    habilete: synthese
+    skill_code: maths_fonction_logarithme
+    tags: ["logarithme-base-a", "equations", "domaine"]
+    primary_misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
+    stem: >
+      Résous dans $\mathbb{R}$ l'équation $\log_5(x+2)+\log_5(x-1)=1$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\mathcal{S}=\\{2\\}$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
+        feedback: >
+          Tu as regroupé $\log_5(x+2)+\log_5(x-1)$ en
+          $\log_5\big((x+2)+(x-1)\big)=\log_5(2x+1)$ — une SOMME à l'intérieur.
+          Mais une somme de logarithmes devient le logarithme d'un PRODUIT,
+          $\log_5\big((x+2)(x-1)\big)$. Vérifie : en $x=2$, le membre de gauche
+          vaut $\log_5(4)+\log_5(1)=\log_5(4)$, qui n'est pas $1$.
+      - id: B
+        text: "$\\mathcal{S}=\\left\\{\\dfrac{-1+\\sqrt{29}}{2}\\right\\}$"
+        correct: true
+      - id: C
+        text: "$\\mathcal{S}=\\left\\{\\dfrac{-1-\\sqrt{29}}{2}\\,;\\,\\dfrac{-1+\\sqrt{29}}{2}\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.domaine-neglige
+        feedback: >
+          Les deux racines de $x^2+x-7=0$ sont bien calculées, mais pas
+          confrontées au domaine : il faut $x+2>0$ ET $x-1>0$, soit $x>1$. La
+          racine $\dfrac{-1-\sqrt{29}}{2}\approx-3{,}19$ rend $x-1$ négatif :
+          $\log_5(x-1)$ n'y existe pas, elle est rejetée.
+      - id: D
+        text: "$\\mathcal{S}=\\left\\{\\dfrac{-1+\\sqrt{13}}{2}\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
+        feedback: >
+          Tu as traduit $\log_5\big((x+2)(x-1)\big)=1$ par $(x+2)(x-1)=1$,
+          comme si le logarithme rendait la valeur qu'on lui donne. Or
+          $\log_5(1)=0$ : c'est $\log_5(5)$ qui vaut $1$, et l'équation demande
+          $(x+2)(x-1)=5$.
+    correct_feedback: >
+      Domaine $x>1$ ; puis $\log_5\big((x+2)(x-1)\big)=1=\log_5(5)$ donne
+      $(x+2)(x-1)=5$, soit $x^2+x-7=0$. Des deux racines
+      $\dfrac{-1\pm\sqrt{29}}{2}$, seule $\dfrac{-1+\sqrt{29}}{2}\approx2{,}19$
+      est dans le domaine.
+    solution: |
+      **Domaine :** il faut $x+2>0$ et $x-1>0$, soit $x>1$.
+
+      **Regrouper :** sur ce domaine, la propriété du produit (héritée de
+      $\ln$) donne
+      $$\log_5(x+2)+\log_5(x-1)=\log_5\big((x+2)(x-1)\big)$$
+
+      **Écrire $1$ comme un logarithme de base $5$ :**
+      $\log_5(5)=\dfrac{\ln(5)}{\ln(5)}=1$. Comme $5>1$, $\log_5$ est
+      strictement croissante, donc injective :
+      $$\log_5\big((x+2)(x-1)\big)=\log_5(5) \iff (x+2)(x-1)=5 \iff x^2+x-7=0$$
+
+      **Résoudre :** $\Delta=1+28=29$, d'où
+      $x=\dfrac{-1-\sqrt{29}}{2}\approx-3{,}19$ ou
+      $x=\dfrac{-1+\sqrt{29}}{2}\approx2{,}19$.
+
+      **Confronter au domaine $x>1$ :** seule la seconde racine convient.
+      $$\mathcal{S}=\left\{\frac{-1+\sqrt{29}}{2}\right\}$$
+
+  - id: LOG-37
+    rung: "R6"
+    difficulty_level: 4
+    habilete: application_non_explicite
+    skill_code: maths_fonction_logarithme
+    tags: ["logarithme-decimal", "nombre-de-chiffres", "propriete-produit"]
+    primary_misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
+    stem: >
+      On donne $\log(3)\approx0{,}4771$, où $\log$ désigne le logarithme
+      décimal. Combien de chiffres possède l'entier
+      $N=3^{40}+3^{40}+3^{40}$, écrit en base dix ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$58$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
+        feedback: >
+          C'est le compte obtenu en distribuant le logarithme sur la SOMME :
+          $\log(3^{40})+\log(3^{40})+\log(3^{40})=120\log(3)\approx57{,}25$.
+          Le logarithme ne fait pas cela d'une somme. Il faut d'abord
+          simplifier $N$ : $3^{40}+3^{40}+3^{40}=3\times3^{40}=3^{41}$, puis
+          prendre le logarithme.
+      - id: B
+        text: "$10$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus
+        feedback: >
+          $N=3\times3^{40}$ est bien vu, mais le produit à l'intérieur est
+          resté un produit à l'extérieur :
+          $\log(3)\times\log(3^{40})\approx0{,}4771\times19{,}08\approx9{,}10$.
+          La propriété du produit donne une SOMME :
+          $\log(3\times3^{40})=\log(3)+40\log(3)=41\log(3)$.
+      - id: C
+        text: "$42$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
+        feedback: >
+          $N=3^{41}$ est bien trouvé, mais la propriété de la puissance a été
+          appliquée en AJOUTANT l'exposant, $\log(3)+41\approx41{,}48$, au lieu
+          de le prendre comme coefficient : $\log(3^{41})=41\log(3)$.
+      - id: D
+        text: "$20$"
+        correct: true
+    correct_feedback: >
+      $N=3\times3^{40}=3^{41}$, donc $\log(N)=41\log(3)\approx19{,}56$. Un
+      entier à $d$ chiffres vérifie $d-1\le\log(N)<d$ : ici $d-1=19$, donc
+      $N$ a $20$ chiffres.
+    solution: |
+      **Simplifier la somme d'abord :** les trois termes sont égaux, donc
+      $$N=3^{40}+3^{40}+3^{40}=3\times3^{40}=3^{41}$$
+
+      **Prendre le logarithme décimal :** par la propriété de la puissance,
+      $$\log(N)=41\log(3)\approx41\times0{,}4771\approx19{,}56$$
+
+      **Compter les chiffres :** un entier à $d$ chiffres vérifie
+      $10^{d-1}\le N<10^{d}$, soit $d-1\le\log(N)<d$ ($\log$ est
+      strictement croissant). Ici $19\le\log(N)<20$, donc $d-1=19$ et
+      $d=20$.
+
+      (Pour vérification : $3^{41}=36\,472\,996\,377\,170\,786\,403$, qui a
+      bien $20$ chiffres.)
+
+  - id: LOG-38
+    rung: "R6"
+    difficulty_level: 3
+    habilete: application_non_explicite
+    skill_code: maths_fonction_logarithme
+    tags: ["logarithme-base-a", "variations", "base-inferieure-a-1"]
+    primary_misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
+    stem: >
+      Quel est le sens de variation de la fonction
+      $x\mapsto\log_{0{,}3}(x)$, et sur quel ensemble ?
+    type: mcq
+    choices:
+      - id: A
+        text: "strictement décroissante sur $]0,+\\infty[$"
+        correct: true
+      - id: B
+        text: "strictement croissante sur $]0,+\\infty[$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
+        feedback: >
+          C'est le sens de $\ln$, transporté tel quel. Or la dérivée de
+          $\log_{0{,}3}(x)=\dfrac{\ln(x)}{\ln(0{,}3)}$ est
+          $\dfrac{1}{x\ln(0{,}3)}$ : seul le facteur $\dfrac1x$, positif, a
+          été retenu de son signe. Comme $0{,}3<1$, $\ln(0{,}3)<0$, et diviser
+          par un nombre négatif inverse le sens de variation.
+      - id: C
+        text: "strictement décroissante sur $]-\\infty,+\\infty[$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.domaine-neglige
+        feedback: >
+          Le sens de variation est le bon, mais l'ensemble est trop large :
+          $\log_{0{,}3}(x)=\dfrac{\ln(x)}{\ln(0{,}3)}$ n'existe que là où
+          $\ln(x)$ existe, c'est-à-dire pour $x>0$.
+      - id: D
+        text: "strictement croissante sur $]-\\infty,+\\infty[$"
+        correct: false
+        misconception: [mc.math.maths_fonction_logarithme.lecture-variations-signe, mc.math.maths_fonction_logarithme.domaine-neglige]
+        feedback: >
+          Deux erreurs se cumulent. L'ensemble est trop large :
+          $\log_{0{,}3}$ n'est défini que pour $x>0$, comme $\ln$. Et le sens
+          est celui de $\ln$, recopié sans tenir compte du signe de
+          $\ln(0{,}3)$ — négatif puisque $0{,}3<1$ —, qui inverse le sens de
+          variation.
+    correct_feedback: >
+      $\log_{0{,}3}(x)=\dfrac{\ln(x)}{\ln(0{,}3)}$ est défini pour $x>0$, et
+      sa dérivée $\dfrac{1}{x\ln(0{,}3)}$ est négative, car $\ln(0{,}3)<0$ :
+      la fonction est strictement décroissante sur $]0,+\infty[$.
+    solution: |
+      **L'ensemble :** $\log_{0{,}3}(x)=\dfrac{\ln(x)}{\ln(0{,}3)}$ n'existe
+      que si $\ln(x)$ existe, donc pour $x>0$ : l'ensemble est
+      $]0,+\infty[$.
+
+      **Le sens :** $0<0{,}3<1$, donc $\ln(0{,}3)<0$. $\log_{0{,}3}$ est $\ln$
+      divisée par une constante NÉGATIVE : le sens de variation de $\ln$
+      s'inverse. Par la dérivée :
+      $$\big(\log_{0{,}3}(x)\big)'=\frac{1}{x\ln(0{,}3)}<0 \quad\text{sur } ]0,+\infty[$$
+
+      **Conclusion :** strictement décroissante sur $]0,+\infty[$.
+
 # ── Coverage summary (summit-conversion floor backfill — HONEST) ───────────
 # This was a LEGACY end-bank (`misconceptions: []`, item-level tags only). The
 # backfill above added the 7-model inventory, a `primary_misconception` per
@@ -1930,8 +2255,16 @@ items:
 # MIROIR : restreindre le domaine à droite quand il ne l'est pas) — une
 # extension honnête à relire par un humain si un modèle dédié à la tangente
 # s'avère préférable.
+# MIS À JOUR le 2026-10-20 (dette de cadre, vague G4 — « Le logarithme de
+# base a » et le nombre de chiffres d'un entier) : cinq items ajoutés (LOG-34
+# à LOG-38, tous R6), AUCUN modèle neuf. Le tableau `per_misconception`
+# ci-dessous garde la convention déclarée de ce fichier (PRIMARY) ; les
+# attributions non primaires des cinq items sont ajoutées à
+# `secondary_coverage`, et les comptes selon la convention de la CHAÎNE
+# (web/scripts/lib/couverture-compte.mjs, celle qui juge `floor_met`) sont
+# donnés dans `notes`.
 coverage_summary:
-  total_items: 33
+  total_items: 38
   per_rung:
     R0: 3   # LOG-7, LOG-8, LOG-9  (accroche : la fonction L, produit→somme)
     R1: 3   # LOG-1, LOG-10, LOG-11
@@ -1939,15 +2272,15 @@ coverage_summary:
     R3: 3   # LOG-4, LOG-13, LOG-14
     R4: 11  # LOG-5, LOG-15, LOG-16, LOG-25, LOG-26, LOG-27, LOG-28, LOG-29, LOG-30, LOG-32, LOG-33
     R5: 3   # LOG-17, LOG-18, LOG-19
-    R6: 3   # LOG-6, LOG-20, LOG-21
+    R6: 8   # LOG-6, LOG-20, LOG-21, LOG-34, LOG-35, LOG-36, LOG-37, LOG-38
     R7: 4   # LOG-22, LOG-23, LOG-24, LOG-31
   per_misconception:
     mc.math.maths_fonction_logarithme.domaine-neglige: 4            # LOG-1, LOG-6, LOG-20, LOG-24
-    mc.math.maths_fonction_logarithme.produit-somme-confondus: 3    # LOG-3, LOG-7, LOG-9
-    mc.math.maths_fonction_logarithme.regles-quotient-puissance: 5  # LOG-2, LOG-8, LOG-12, LOG-21, LOG-33 (PRIMARY)
+    mc.math.maths_fonction_logarithme.produit-somme-confondus: 6    # LOG-3, LOG-7, LOG-9, LOG-34, LOG-36, LOG-37
+    mc.math.maths_fonction_logarithme.regles-quotient-puissance: 6  # LOG-2, LOG-8, LOG-12, LOG-21, LOG-33, LOG-35 (PRIMARY)
     mc.math.maths_fonction_logarithme.derivee-de-ln-u: 3            # LOG-4, LOG-13, LOG-14
     mc.math.maths_fonction_logarithme.limites-de-ln: 3              # LOG-5, LOG-15, LOG-16
-    mc.math.maths_fonction_logarithme.lecture-variations-signe: 4   # LOG-10, LOG-11, LOG-19, LOG-23
+    mc.math.maths_fonction_logarithme.lecture-variations-signe: 5   # LOG-10, LOG-11, LOG-19, LOG-23, LOG-38
     mc.math.maths_fonction_logarithme.unicite-bijection-tvi: 3      # LOG-17, LOG-18, LOG-22
     mc.math.maths_fonction_logarithme.forme-0-sur-0-non-reconnue: 5       # LOG-25, LOG-26, LOG-27, LOG-31, LOG-32 (PRIMARY)
     mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie: 3    # LOG-28, LOG-29, LOG-30 (PRIMARY)
@@ -1975,6 +2308,11 @@ coverage_summary:
     - { item: LOG-31, choice: D, misconception: mc.math.maths_fonction_logarithme.domaine-neglige,              note: "domaine restreint à droite sans raison — erreur miroir de domaine-neglige (item primaire : forme-0-sur-0-non-reconnue)." }
     - { item: LOG-32, choice: B, misconception: mc.math.maths_fonction_logarithme.facteur-multiplicatif-oublie, note: "coefficient 7 déjà accordé au dénominateur, réappliqué à tort (item primaire : forme-0-sur-0-non-reconnue)." }
     - { item: LOG-33, choice: A, misconception: mc.math.maths_fonction_logarithme.limites-de-ln,                note: "0×∞ non résolu, lu comme s'il concluait (item primaire : regles-quotient-puissance)." }
+    - { item: LOG-35, choice: B, misconception: mc.math.maths_fonction_logarithme.produit-somme-confondus,      note: "ln(81)/ln(3) « simplifié » en 81/3 — ln lu comme rendant son argument (item primaire : regles-quotient-puissance)." }
+    - { item: LOG-36, choice: C, misconception: mc.math.maths_fonction_logarithme.domaine-neglige,              note: "racine (−1−√29)/2 gardée hors du domaine x>1 (item primaire : produit-somme)." }
+    - { item: LOG-37, choice: C, misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance,   note: "log(3^41) lu log(3)+41 — exposant ajouté (item primaire : produit-somme)." }
+    - { item: LOG-38, choice: C, misconception: mc.math.maths_fonction_logarithme.domaine-neglige,              note: "log_{0,3} posé sur ℝ entier (item primaire : lecture-variations-signe)." }
+    - { item: LOG-38, choice: D, misconception: mc.math.maths_fonction_logarithme.domaine-neglige,              note: "co-marqué avec le primaire : ℝ entier ET sens de ln recopié (item primaire : lecture-variations-signe)." }
 
   notes: >-
     Backfill only : aucun nouvel item écrit, aucun compte gonflé. Les 24 items
@@ -2011,3 +2349,24 @@ coverage_summary:
     sourcé de la notion (exercises.yaml/r-bac = bk-2019-n-x4 q4) ET par
     l'exemple travaillé que `lesson.md` porte désormais sur ce chapitre.
     Même geste, calcul frais, absent des trois fichiers de la notion.
+    DETTE DE CADRE, VAGUE G4 (2026-10-20) : LOG-34 à LOG-38 (tous R6, le
+    rung passe de 3 à 8 items) adossent « Le logarithme de base a » et
+    l'exemple du nombre de chiffres. Aucun modèle neuf : les deux pièges
+    nommés par la prose sont des surfaces déjà déclarées — log_a(x+y) lu
+    log_a(x)+log_a(y) pour produit-somme-confondus (LOG-34, LOG-36, LOG-37),
+    le quotient de deux logarithmes lu comme logarithme du quotient pour
+    regles-quotient-puissance (LOG-35). PRIMARY : produit-somme-confondus
+    3 → 6, regles-quotient-puissance 5 → 6, lecture-variations-signe 4 → 5.
+    Selon la convention de la CHAÎNE (un item compte une fois par
+    misconception dès qu'un de ses distracteurs la porte) : domaine-neglige
+    8, produit-somme-confondus 10, regles-quotient-puissance 8,
+    derivee-de-ln-u 3, limites-de-ln 4, lecture-variations-signe 7,
+    unicite-bijection-tvi 3, forme-0-sur-0-non-reconnue 8,
+    facteur-multiplicatif-oublie 8 — plancher tenu pour les neuf, deux à
+    marge nulle (derivee-de-ln-u, unicite-bijection-tvi), que ce lot ne
+    touche pas. Les quatre distracteurs `null` hérités (LOG-7, LOG-8, LOG-9)
+    sont inchangés ; les cinq items neufs n'en portent aucun. Non offert en
+    distracteur, faute d'un modèle déclaré qui le recouvre et d'un piège
+    nommé par la prose : l'oubli du « +1 » dans le nombre de chiffres, ln
+    employé au lieu de log, et la définition renversée ln(a)/ln(x) — à
+    arbitrer par le propriétaire.

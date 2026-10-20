@@ -1097,6 +1097,30 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.maths_fonction_exponentielle.resolution-exp-erreur",
       "mc.math.maths_fonction_exponentielle.somme-produit-confondus"
     ],
+    "EXP-41": [
+      "mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances",
+      "mc.math.maths_fonction_exponentielle.derivee-exp-composee"
+    ],
+    "EXP-42": [
+      "mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances",
+      "mc.math.maths_fonction_exponentielle.derivee-exp-composee"
+    ],
+    "EXP-43": [
+      "mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances",
+      "mc.math.maths_fonction_exponentielle.derivee-exp-composee"
+    ],
+    "EXP-44": [
+      "mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances",
+      "mc.math.maths_fonction_exponentielle.derivee-exp-composee"
+    ],
+    "EXP-45": [
+      "mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances",
+      "mc.math.maths_fonction_exponentielle.derivee-exp-composee"
+    ],
+    "EXP-46": [
+      "mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances",
+      "mc.math.maths_fonction_exponentielle.derivee-exp-composee"
+    ],
     "EXP-5": [
       "mc.math.maths_fonction_exponentielle.croissances-comparees-inversees"
     ],
@@ -1241,6 +1265,25 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "LOG-33": [
       "mc.math.maths_fonction_logarithme.limites-de-ln",
       "mc.math.maths_fonction_logarithme.regles-quotient-puissance"
+    ],
+    "LOG-34": [
+      "mc.math.maths_fonction_logarithme.produit-somme-confondus"
+    ],
+    "LOG-35": [
+      "mc.math.maths_fonction_logarithme.produit-somme-confondus",
+      "mc.math.maths_fonction_logarithme.regles-quotient-puissance"
+    ],
+    "LOG-36": [
+      "mc.math.maths_fonction_logarithme.domaine-neglige",
+      "mc.math.maths_fonction_logarithme.produit-somme-confondus"
+    ],
+    "LOG-37": [
+      "mc.math.maths_fonction_logarithme.produit-somme-confondus",
+      "mc.math.maths_fonction_logarithme.regles-quotient-puissance"
+    ],
+    "LOG-38": [
+      "mc.math.maths_fonction_logarithme.domaine-neglige",
+      "mc.math.maths_fonction_logarithme.lecture-variations-signe"
     ],
     "LOG-4": [
       "mc.math.maths_fonction_logarithme.derivee-de-ln-u"
