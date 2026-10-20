@@ -1,7 +1,10 @@
 # spec — les espaces vectoriels (Maths · `structures-algebriques`, **R8 = chapitre 11**)
 
 **Statut : PROPOSITION RÉVISÉE le 2026-10-20 par pedagogy-architect, contre deux rapports de
-critique.** Première écriture : 2026-09-28. **Rien n'a été construit.**
+critique, puis corrigée le même jour (révision (b)) contre une passe arithmétique indépendante**
+(`docs/audits/critiques/espaces-vectoriels-arithmetique.md` : une erreur de mathématiques, SA-41,
+et deux collisions, SA-50 et `r8-variation` — journal en fin de document). Première écriture :
+2026-09-28. **Rien n'a été construit.**
 Aucun fichier de la notion n'a été touché — ni `lesson.md`, ni `items.yaml`, ni `checkpoints.yaml`,
 ni `bank.yaml`, ni `exercises.yaml`, ni `media/`. Aucun fichier du cadre non plus. Le seul fichier
 écrit par cette session est le présent document.
@@ -33,6 +36,8 @@ ni `bank.yaml`, ni `exercises.yaml`, ni `media/`. Aucun fichier du cadre non plu
 > faits chiffrés du §1 ont été relevés par lecture directe et par l'outil `Grep` ; la commande
 > donnée en regard est celle qui les REPRODUIT, elle n'a pas été lancée ici.** Aucun nombre n'est
 > attribué à une sortie que je n'ai pas lue. Ce que je n'ai pas pu vérifier est au §16.
+> *Révision (b) du 2026-10-20 : cette passe-là a exécuté des commandes (scripts d'arithmétique
+> exacte et `grep`) ; ce qu'elles ont re-mesuré est dit au §1.i, §1.k et dans le journal (b).*
 
 > ⚠ **AVERTISSEMENT DE FONDATION.** La ligne de cadre qui commande ce chapitre
 > (`maths-sm.yaml:293`) porte `source: research-consensus` et le fichier lui-même se dit
@@ -61,11 +66,11 @@ classe **ABSENT** (aucun chapitre, aucun item), et un sujet national **vérifié
 | **d** | **Le registre de dette le porte en G2.** « *espaces vectoriels … ; noyau et image d'un morphisme ; items sous-groupe et anneau intègre — spec à écrire (un sous-domaine entier)* » | `docs/audits/DETTE-CADRE.md:42` (et `:20-21`) |
 | **e** | **Zéro enseignement dans tout `content/maths`.** « espace vectoriel », « sous-espace », « famille libre », « famille génératrice », « combinaison linéaire », « dimension » → **aucune occurrence d'enseignement**. Les seules occurrences du mot « vectoriel » dans les leçons de maths sont le **produit vectoriel** de `geometrie-espace` (autre sens) et « colinéaires » dans les complexes. | `grep -rniE 'espace vectoriel\|sous-espace\|famille (libre\|génératrice)' content/maths/*/lesson.md` ⇒ 0 |
 | **f** | **La leçon porte 10 titres `## `, donc 10 chapitres**, dans cet ordre : R0 (1), R1 (2), R2 (3), R3 (4), *Sous-groupe* (5), R4 (6), R5 (7), *Anneau intègre* (8), R6 (9), R7 (10). **Deux titres sans code de barreau** décalent les rungs — c'est écrit et vérifié dans `chapters.ts` : « *structures-algebriques 10 headings / 8 rungs (plain at ch5, ch8)* ». **Contre-vérifié sur le texte** : « *un homomorphisme (chapitre 10)* » = R7 ✓ (`bank.yaml:660`) · « *un anneau … (chapitre 7)* » = R5 ✓ (`bank.yaml:660`) · « *le chapitre 9 ajoute deux exigences à la définition de l'anneau pour obtenir un corps* » = R6 ✓ (`lesson.md:693`) · « *reconnaître une LCI (chapitre 2), tester ses propriétés (chapitre 3) … (chapitres 4 à 9)* » ✓ (`lesson.md:565`) · « *la table du chapitre 2* » = R1 ✓ (`lesson.md:273`) · « *le chapitre 8 « Anneau intègre »* » ✓ (`bank.yaml:1454`). | `grep -c '^## ' content/maths/structures-algebriques/lesson.md` ⇒ **10** ; `web/src/lib/chapters.ts:6-28` |
-| **g** | **AUCUNE ligne du dépôt ne cite « chapitre 11 » de cette notion.** Dans `content/maths/structures-algebriques/`, le motif `[Cc]hapitres? 11\b` rend **0**. (Les 31 occurrences de « chapitre 11 » du dépôt visent `pc/reactions-acido-basiques`, `pc/chute-mouvements-plans`, et deux documents d'audit.) **C'est le fait qui décide du §4.** | `grep -rnoE '[Cc]hapitres? 11\b' content/maths/structures-algebriques/` ⇒ **0** |
+| **g** | **AUCUNE ligne du dépôt ne cite « chapitre 11 » de cette notion.** Dans `content/maths/structures-algebriques/`, le motif `[Cc]hapitres? 11\b` rend **0**. (Les 31 occurrences de « chapitre 11 » du dépôt visent `pc/reactions-acido-basiques`, `pc/chute-mouvements-plans`, et deux documents d'audit.) *Re-mesuré le 2026-10-20 (b) : le « 31 » ne se reproduit plus — on compte aujourd'hui **37** occurrences hors de cette spec et de ses critiques (`pc/reactions-acido-basiques` 22, `pc/chute-mouvements-plans` 10, `maths-arithmetique-numeration.md` 3, `suites-numeriques/REVIEW` 1, `calcul-integral/spec-extension.md` 1) ; le dépôt a bougé. **Le 0 décisif, lui, tient.*** **C'est le fait qui décide du §4.** | `grep -rnoE '[Cc]hapitres? 11\b' content/maths/structures-algebriques/` ⇒ **0** |
 | **h** | **Aucune autre notion ne cite un chapitre de celle-ci.** La forme croisée « chapitre N de « Titre » » ne rend **rien** pour cette leçon dans tout le dépôt. | `grep -rn 'chapitre [0-9]\+ de « [^»]*[Ss]tructures' .` ⇒ **0** |
-| **i** | **Coût d'une insertion ailleurs, chiffré.** `[Cc]hapitres? 10\b` dans la notion ⇒ **34** occurrences (bank 25, items 5, exercises 1, lesson 1, REVIEW 2). `[Cc]hapitres? (6\|7\|8\|9\|10)\b` ⇒ **97** (bank 47, items 32, lesson 13, exercises 1, checkpoints 1, REVIEW 3). | `grep -rcoE …` sur le dossier de la notion |
+| **i** | **Coût d'une insertion ailleurs, chiffré — en LIGNES.** `[Cc]hapitres? 10\b` dans la notion ⇒ **34 lignes** (bank 25, items 5, exercises 1, lesson 1, REVIEW 2). `[Cc]hapitres? (6\|7\|8\|9\|10)\b` ⇒ **97 lignes** (bank 47, items 32, lesson 13, exercises 1, checkpoints 1, REVIEW 3). *Libellé corrigé le 2026-10-20 (b) : ces chiffres sont des comptes de lignes (`grep -c`), pas d'occurrences. Les occurrences, re-mesurées par `grep -oE … \| wc -l`, sont **35** (REVIEW en porte 3 sur 2 lignes) et **110** (bank 58, REVIEW 5). Le coût réel d'une renumérotation est le second chiffre ; aucun des deux ne change la décision du §4.* | `grep -cE …` (lignes) et `grep -oE … \| wc -l` (occurrences), fichier par fichier, sur le dossier de la notion |
 | **j** | **35 items, 9 modèles d'erreur, tous au-dessus du plancher 3.** `total_items: 35`, `floor: 3`, `floor_met: true` ; dernier id = **SA-35** ; `ramp_coverage` va de R0 à R7. | `items.yaml:2255-2339` |
-| **k** | **Le champ `habilete` n'existe que sur les 8 items les plus récents** (SA-27…SA-34, la « famille transport ») et sur les checkpoints. Les items neufs en portent un — précédent posé par la vague B2. | `grep -n 'habilete:' items.yaml` ⇒ SA-27, -28, -29, -30, -31, -32, -33, -34 |
+| **k** | **Le champ `habilete` n'existe que sur les 9 items les plus récents** (SA-27…SA-35 : les huit de la « famille transport », SA-27…SA-34, **et SA-35**, `items.yaml:2194`) et sur les checkpoints. Les items neufs en portent un — précédent posé par la vague B2. *(Corrigé le 2026-10-20 (b) : la version précédente disait « 8 items, SA-27…SA-34 » et oubliait SA-35. Le `coverage_summary` d'`items.yaml` répète la même omission — « les seuls à porter l'étiquette `habilete` » — et devra être corrigé à la livraison, §14.)* | `grep -n 'habilete:' items.yaml` ⇒ 9 lignes d'item : SA-27, -28, -29, -30, -31, -32, -33, -34, -35 (une dixième ligne, `:2367`, est une mention dans la prose du `coverage_summary`) |
 | **l** | **La leçon n'a NI « Pour t'entraîner » NI récapitulatif.** Zéro occurrence de `Pour t'entraîner`, `Récapitulatif`, `Ce qu'il faut retenir`, `En résumé` dans `lesson.md` (la chaîne « retenir » n'y apparaît qu'en prose courante, `:340`). Elle n'a pas non plus de `retenir.json`. **Cette spec n'en crée pas** (§12). | `grep -c "Pour t'entraîner\|Récapitulatif\|En résumé" lesson.md` ⇒ **0** ; `ls content/maths/structures-algebriques/` ⇒ pas de `retenir.json` |
 | **m** | **La banque le demandait explicitement depuis le 2026-08-06.** « *à l'attention du pedagogy-architect si un pont explicite avec le chapitre « espaces vectoriels » est jugé utile* » ; et, sur `bk-2023-n-x5` q2 : « *mobilise la notion d'ESPACE VECTORIEL, qui n'appartient PAS à ce chapitre … C'est le rappel de tête d'énoncé du sujet lui-même qui introduit « (M₂(ℝ),+,·) est un espace vectoriel réel », signe que la notion est supposée acquise d'un chapitre antérieur du cursus* ». **Ce document est la réponse à cette demande.** | `bank.yaml:164-175` ; `:1448-1449` |
 
@@ -274,8 +279,8 @@ non attesté. Mais **la charge de mesure suit la preuve** :
 | option | où | renvois à relire | autres coûts |
 |---|---|---|---|
 | **(a) nouvelle notion** — slug `espaces-vectoriels` dans `curriculum.ts` | unité « Approfondissement (Sciences Mathématiques) », après `structures-algebriques` (`curriculum.ts:128-134`) | 0 | **15 fichiers de `web/` nomment cette notion**, dont **7 sceaux `.base.json`** (`carte-chapitres`, `eleve-ruse`, `indice-longueur`, `indice-absolu`, `indice-refus`, `rampe-bac`, `couverture-diagnostique`) à re-baseliner ; une `lesson.md` neuve avec sa propre accroche ; un `skill_code` neuf **sans aucun historique** dans `learner-model-data.json` ; **et une banque impossible à constituer** (voir ci-dessous) |
-| **(b) au milieu, après « Sous-groupe »** (nouveau chapitre 6) | **97** occurrences `chapitre 6..10` (bank 47, items 32, lesson 13, exercises 1, checkpoints 1, REVIEW 3 — dont **94 vues par la porte**, qui ignore les fichiers `REVIEW-*`) | toutes à +1 | casse l'escalier groupe → anneau → corps au milieu |
-| **(c) juste avant R7** (nouveau chapitre 10, R7 → 11) | **34** occurrences `chapitre 10` (bank 25, items 5, exercises 1, lesson 1, REVIEW 2) | toutes à réécrire en « 11 » | garde l'exercice bac en dernier |
+| **(b) au milieu, après « Sous-groupe »** (nouveau chapitre 6) | **97** lignes `chapitre 6..10` (bank 47, items 32, lesson 13, exercises 1, checkpoints 1, REVIEW 3 — dont **94 vues par la porte**, qui ignore les fichiers `REVIEW-*`) ; **110** occurrences (§1.i) | toutes à +1 | casse l'escalier groupe → anneau → corps au milieu |
+| **(c) juste avant R7** (nouveau chapitre 10, R7 → 11) | **34** lignes `chapitre 10` (bank 25, items 5, exercises 1, lesson 1, REVIEW 2) ; **35** occurrences (§1.i) | toutes à réécrire en « 11 » | garde l'exercice bac en dernier |
 | **(d) à la fin — RETENUE** | **0** — aucune ligne du dépôt ne cite « chapitre 11 » de cette notion, et aucune autre notion ne cite un chapitre de celle-ci | — | la porte `carte-chapitres` rougit **une fois**, avec la liste de renvois **vide** |
 
 **Ce que la porte dira, exactement.** `carte-chapitres.mjs --porte` compare la liste ORDONNÉE des
@@ -1114,6 +1119,20 @@ coefficients » :* **une option qui atteindrait $4$ en comptant les cases donner
 avec le mauvais modèle** — c'est la contamination de la bonne réponse, et elle se corrige sur
 l'énoncé, jamais sur le distracteur (§11.2). La clé **doit** confesser le bon raisonnement (une
 base : génératrice **et** libre).
+⚠ **Ce que cela ne règle pas — écrit le 2026-10-20 (b), passe arithmétique.** Un élève qui tient
+**M4** (« la dimension, c'est le nombre de lettres ») compte les quatre lettres de
+$\left(\begin{smallmatrix}x&y\\z&t\end{smallmatrix}\right)$ et **atteint B quand même** : aucune
+autre option ne dit $4$. **On ne peut pas changer le nombre** — $\dim M_2(\mathbb{R}) = 4$ est le
+fait enseigné. **Pourquoi c'est accepté, et à quelles conditions :** (1) sur $M_2(\mathbb{R})$, les
+quatre lettres sont des coordonnées **libres** ; compter les lettres y coïncide avec compter une
+base, et l'élève saute une vérification qui se trouve être vraie. M4 est **muet** sur cet objet,
+il n'y donne pas un mauvais nombre ; (2) le checkpoint **ne porte pas M4** : ses faces fausses
+sont M5 (A, C) et M8 (D). Une réponse B n'est donc lue comme l'absence d'aucun modèle que l'item
+prétend diagnostiquer ; (3) M4 est rompu **au pari suivant**, `cp-r8-pari-dimension`, sur un objet
+où compter donne $3$ contre $2$. Il est aussi mesuré par huit items où le compte et la dimension
+diffèrent (§11.0). Ajouter une option « $4$ : il y a quatre coefficients » ne serait **pas** un
+remède : sa conclusion est juste et sa raison défendable, puisque les quatre coefficients sont
+libres. On aurait alors deux bonnes réponses.
 **Prémisse de D, vérifiée ici** (et c'est ce que le [C11] va utiliser) :
 $\alpha I + \beta\left(\begin{smallmatrix}0&1\\0&0\end{smallmatrix}\right) + \gamma\left(\begin{smallmatrix}0&0\\1&0\end{smallmatrix}\right) = \left(\begin{smallmatrix}\alpha&\beta\\\gamma&\alpha\end{smallmatrix}\right)$,
 dont les deux coefficients diagonaux sont **forcément égaux** : la famille rate
@@ -1147,7 +1166,7 @@ donc échec** (correctif B2).*
 
 | id | comment il est rompu | pourquoi pas de pari instrumenté |
 |---|---|---|
-| **M3** `famille-libre-mal-testee` | **[C9], remis en scène** en voix-test-rupture : le modèle parle à la première personne, ses deux vérifications passent, la définition le contredit. L'élève **prend position** en prose (« cette famille est-elle libre ? ») | **Option (b) de la critique, retenue.** Un pari instrumenté exigerait que l'élève tranche *avant* de connaître la définition de « libre », posée deux paragraphes plus haut : le pari porterait sur un mot neuf, pas sur un modèle installé. **La rupture est réelle, l'engagement est rhétorique, et c'est écrit.** *Contrepartie assumée : M3 est le seul des quatre modèles de la moitié haute du chapitre sans mesure d'engagement — ses trois items (SA-42/43/44) portent donc toute la mesure, et **SA-44 est bâti exprès avec une relation invisible** (I10) pour que le lot ne soit pas trois fois le même geste.* |
+| **M3** `famille-libre-mal-testee` | **[C9], remis en scène** en voix-test-rupture : le modèle parle à la première personne, ses deux vérifications passent, la définition le contredit. L'élève **prend position** en prose (« cette famille est-elle libre ? ») | **Option (b) de la critique, retenue.** Un pari instrumenté exigerait que l'élève tranche *avant* de connaître la définition de « libre », posée deux paragraphes plus haut : le pari porterait sur un mot neuf, pas sur un modèle installé. **La rupture est réelle, l'engagement est rhétorique, et c'est écrit.** *Contrepartie assumée : M3 est le seul des quatre modèles de la moitié haute du chapitre sans mesure d'engagement — les **cinq** items qui le portent en font donc toute la mesure : **SA-42, SA-43 et SA-44** où il est la cible, plus **SA-45 D** et **SA-50 D** où il est une face de distracteur (en double étiquette avec M8 pour SA-50). Et **SA-44 est bâti exprès avec une relation invisible** (I10) pour que le lot ne soit pas trois fois le même geste. (Corrigé le 2026-10-20 (b) : le texte disait « ses trois items (SA-42/43/44) », alors que le §11.0 en compte cinq.)* |
 | **M6** `noyau-toujours-nul` | **[C16]** exhibe un noyau de dimension 1 et l'équivalence injectivité ⟺ noyau trivial, **démontrée** | **Délégation au banc d'items, maintenue** (décision du 2026-09-28, validée par les deux critiques). Quatre items le diagnostiquent (SA-48, SA-51, SA-52, SA-53). Un cinquième pari alourdirait une fin de chapitre qui porte déjà deux exercices. |
 | **M7** `sous-espace-affine-confondu` | **[C4]** (la droite décalée, le test du zéro qui tombe en une ligne) + **[C15]** ($g(x,y) = (x+1,y)$ qui rate l'origine) + **l'étape 2 de la figure** | **Pas de pari : la rupture est à deux lignes du coût zéro.** « $2\times 0 + 1 = 1 \neq 0$ » est si court qu'un engagement préalable n'ajouterait pas de tension — et le chapitre en porte déjà quatre. *Trois items (SA-38, SA-40, SA-48) le mesurent. **Plancher à exactement 3, sans marge** : signalé au §15 Q12.* |
 | **M8** `famille-generatrice-non-verifiee` | **[C9b] (ii)** (une famille libre qui n'engendre pas, avec son témoin) + **[C11]** (la face D du pari n°3, tuée par un témoin) | **Pas de pari dédié, mais une FACE de pari :** le modèle est l'option D de `cp-r8-pari-notation`, donc il est bien engagé par l'élève — simplement pas comme cible principale d'un checkpoint. *Trois items (SA-47, SA-49, SA-50). **Plancher à exactement 3, sans marge** : §15 Q12.* |
@@ -1182,6 +1201,14 @@ dans `items.yaml.misconceptions` (`validate-content.mjs:457-520`).
 > | il a **sauté** le test du zéro parce que l'objet *avait l'air* linéaire (une droite, un plan, une équation à constante) | **M7** |
 > | il a vérifié **un cas particulier** ou **des exemples** et généralisé | `generalisation-hative` (id existant) |
 > | il a affirmé qu'une famille **engendre** sans l'avoir écrit sur un élément quelconque | **M8** |
+> | il a vérifié **deux conditions sur trois** (le zéro **et** $+$) et conclu, sans atteindre la troisième — celle qui porte les opposés | `axiome-oublie` (id existant) — *ajouté le 2026-10-20 (b), sert SA-38 D* |
+> | il a **supposé** qu'une opération ne fait pas sortir de l'ensemble (souvent parce qu'une autre loi, ou un autre cas, n'en sortait pas), sans jamais le tester | `cloture-non-verifiee` (id existant) — *ajouté le 2026-10-20 (b), sert SA-36 D et SA-41 D* |
+> | il a pris pour neutre **le nombre d'une autre structure** (le $0$ de $+$ dans un groupe multiplicatif) au lieu de celui de la loi en jeu | `neutre-non-transporte` (id existant) — *ajouté le 2026-10-20 (b), sert SA-53 C ; ajustement imparfait, dit au §11.1* |
+>
+> *Les trois dernières lignes viennent de la passe arithmétique du 2026-10-20 (rapport, §3). Elle a
+> montré que quatre distracteurs étiquetés M2 n'étaient **pas produits** par M2 : SA-36 D, SA-38 D,
+> SA-53 C, et SA-37 D, qui ne l'est pas par M2 seul. Un id existant de la notion décrivait mieux leur
+> mécanisme. Ces quatre étiquettes ont été corrigées (§11.1).*
 
 ### M1 · `mc.math.structures_algebriques.sous-espace-zero-suffit`
 - **label** *(resserré le 2026-10-20 — la parenthèse est supprimée)* — « Le test du zéro suffit :
@@ -1322,8 +1349,11 @@ déclaré, l'autre réaffecté), et un cinquième entre.*
    (généraliser une vérification partielle), pas son CONTENU. S'il fallait déclarer un neuvième id,
    ce serait celui-là, et il faudrait +3 items.*
 4. **« Prouver un sous-espace, c'est revérifier les huit axiomes »** — l'erreur coûteuse, pas
-   fausse. Elle apparaît **comme distracteur** de SA-41 sous l'étiquette M2 (mauvaise liste de
-   contrôle), ce qui est honnête sans être parfait.
+   fausse. *Corrigé le 2026-10-20 (b) :* le texte disait qu'elle apparaît comme distracteur de
+   SA-41 (C, « les quatre axiomes du groupe, puis les huit de l'espace vectoriel »). C'était vrai
+   pour la version du 2026-09-28. **Ce n'est plus vrai depuis la refonte de SA-41 en révision (a)**,
+   ni après la révision (b). **Elle n'est portée par aucun distracteur du lot** : c'est de la dette
+   pure, non mesurée.
 5. **« Le noyau vit dans l'ensemble d'arrivée »** ($\ker f = \{1\}$ pris côté image).
 6. **« $\lambda u = 0 \Rightarrow \lambda = 0$ ET $u = 0$ »** (au lieu de « ou »).
 
@@ -1550,7 +1580,7 @@ application linéaire · rang d'une famille · toute affirmation de fréquence o
 
 ### 11.0 Le lot, vu de haut — **RECOMPTÉ LE 2026-10-20**
 - **18 items**, tous `rung: "R8"`, `skill_code: maths_structures_alg`, tous portant `habilete`
-  (précédent SA-27…SA-34). **Le nombre ne change pas** : les quatre besoins neufs (un item de
+  (précédent SA-27…SA-35 — §1.k, corrigé en (b)). **Le nombre ne change pas** : les quatre besoins neufs (un item de
   génération, un item « est-elle linéaire ? », un quatrième item M6, un item de base) sont servis
   par **conversion** de slots existants, pas par ajout — précisément pour ne pas aggraver la part
   de R8 dans la notion (§15 Q11).
@@ -1569,19 +1599,32 @@ application linéaire · rang d'une famille · toute affirmation de fréquence o
   casser une corrélation, c'est la difficulté réelle de l'item.*
 - **HUIT ids neufs à DÉCLARER d'abord** dans `items.yaml.misconceptions` (§8) — sans quoi la porte
   refuse le fichier. *(C'était six : M7 et M8 s'ajoutent, correctifs I6 et S5.)*
-- **Plancher ≥3 : tenu partout.** **M1 6 · M2 7 · M3 5 · M4 8 · M5 6 · M6 4 · M7 3 · M8 3.**
-  L'id existant `generalisation-hative` gagne **4** items (13 → 17, contre `items.yaml:2283`).
-  *Recompté item par item sur la table du §11.1 dans cette session* — **M1** SA-36/37/38/39/40/41 ·
-  **M2** SA-36/37/38/39/40/41/53 · **M3** SA-42/43/44/45/50 ·
-  **M4** SA-42/44/45/46/47/50/51/52 · **M5** SA-45/46/47/49/51/52 · **M6** SA-48/51/52/53 ·
-  **M7** SA-38/40/48 · **M8** SA-47/49/50 · **`generalisation-hative`** SA-36/37/43/44.
+- **Plancher ≥3 : tenu partout.** **M1 6 · M2 4 · M3 5 · M4 8 · M5 6 · M6 4 · M7 3 · M8 3.**
+  **Quatre ids existants** gagnent des items R8 :
+  - `generalisation-hative` **+4** (13 → 17, contre `items.yaml:2283`) ;
+  - `cloture-non-verifiee` **+2** (8 → 10, contre `:2281`) ;
+  - `axiome-oublie` **+1** (7 → 8, contre `:2279`) ;
+  - `neutre-non-transporte` **+1** (5 → 6, contre `:2285`).
+  *Recompté le 2026-10-20 (b), par script, sur l'étiquetage de la table du §11.1 après les
+  corrections de la passe arithmétique* :
+  - **M1** SA-36/37/38/39/40/41 · **M2** SA-37/39/40/41 · **M3** SA-42/43/44/45/50 ;
+  - **M4** SA-42/44/45/46/47/50/51/52 · **M5** SA-45/46/47/49/51/52 · **M6** SA-48/51/52/53 ;
+  - **M7** SA-38/40/48 · **M8** SA-47/49/50 ;
+  - **`generalisation-hative`** SA-36/37/43/44 · **`cloture-non-verifiee`** SA-36/41 ·
+    **`axiome-oublie`** SA-38 · **`neutre-non-transporte`** SA-53.
+
+  ⚠ **M2 passe de 7 à 4** : SA-36 D, SA-38 D et SA-53 C sont ré-étiquetés (§8, règle opératoire).
+  Il garde une marge d'un item.
   ⚠ **M7 et M8 sont à exactement 3, sans marge** : un seul item re-étiqueté en revue les ferait
   tomber sous le plancher et la porte rougirait. **C'est dit, pas masqué** → §15 Q12.
   *Un item compte **une fois** par id, même si deux de ses distracteurs le portent.*
-- **`coverage_summary` à mettre à jour** : `total_items` 35 → **53** ; `ramp_coverage` gagne
-  `R8: 18` ; les **huit** lignes `per_misconception` neuves + `generalisation-hative` à 17 ; un
-  paragraphe `honest_state` qui dit ce que cette vague ferme et ce qu'elle laisse (§8.9), **y
-  compris les deux planchers sans marge**.
+- **`coverage_summary` à mettre à jour** :
+  - `total_items` 35 → **53** ; `ramp_coverage` gagne `R8: 18` ;
+  - les **huit** lignes `per_misconception` neuves ;
+  - **quatre** lignes existantes mises à jour : `generalisation-hative` 17,
+    `cloture-non-verifiee` 10, `axiome-oublie` 8, `neutre-non-transporte` 6 ;
+  - un paragraphe `honest_state` qui dit ce que cette vague ferme et ce qu'elle laisse (§8.9),
+    **y compris les deux planchers sans marge**.
 
 ### 11.1 Les 18 items — objet, clé, distracteurs
 
@@ -1596,14 +1639,26 @@ application linéaire · rang d'une famille · toute affirmation de fréquence o
 > correctif m4) · **option sans raisonnement, donc sans diagnostic** (SA-44 B — correctif m5).
 > **Tous les nombres ci-dessous ont été recalculés dans cette session ; les contrôles sont écrits
 > en regard, dans la ligne.**
+>
+> **RÉVISION (b) DU 2026-10-20 — passe arithmétique indépendante.** Trois objets ont encore changé :
+> - **SA-41** : la **question** change. L'ancienne clé « Rien » était fausse — erreur E1,
+>   bloquante.
+> - **SA-50** : les **vecteurs** changent. Deux d'entre eux venaient du §6 alors que la ligne
+>   affirmait le contraire — E2.
+> - **SA-46** : l'**objet** change. Le modèle M5 atteignait la clé.
+>
+> Les étiquettes de **cinq** distracteurs sont corrigées : SA-36 D, SA-37 D, SA-38 D, SA-46 D
+> (réécrit) et SA-53 C. Pour **deux** items, SA-49 et `cp-r8-pari-notation` (§7.3), une note dit
+> pourquoi un modèle faux qui atteint la clé y est accepté. Toutes ces lignes sont re-vérifiées en
+> arithmétique exacte (journal (b)).
 
 **M1 · `sous-espace-zero-suffit`**
 
 | id | hab. | diff | objet et question | clé | distracteurs → modèle |
 |---|---|---|---|---|---|
-| **SA-36** | directe | 2 | $S = \{(x,y) \in \mathbb{R}^2\ /\ y = \lvert x\rvert\}$. Sous-espace de $\mathbb{R}^2$ ? *(ensemble renommé $K \to S$ : $K$ est une matrice fixe du [C13] — F10)* | **Non** : $(1,1) \in S$ mais $(-1)\cdot(1,1) = (-1,-1) \notin S$ car $\lvert -1\rvert = 1 \neq -1$ — **la troisième condition tombe** | B « oui : $(0,0) \in S$ car $\lvert 0\rvert = 0$, la première condition est remplie » → **M1** · C « oui : pour $\lambda \geq 0$, $\lambda(x,\lvert x\rvert) = (\lambda x, \lvert\lambda x\rvert)$ reste dans $S$ » → **`generalisation-hative`** · D « oui : $S$ est stable pour $+$, et c'est la condition qui compte » → **M2** *(prémisse fausse aussi : $(1,1)+(-2,2) = (-1,3)$, $\lvert-1\rvert = 1 \neq 3$ — le retour doit le dire)* |
-| **SA-37** | non_explicite | 3 | **OBJET REFAIT (I7 : l'ancien $T$ des matrices diagonales à $xy=0$ était le $X$ du [C5] re-habillé, avec les mêmes deux éléments $(1,0)$ et $(0,1)$ et la même paire-témoin que le checkpoint ; I8 : son option D portait « **toute** partie stable… »).** $T = \{(x,y) \in \mathbb{R}^2\ /\ (y-x)(y+2x) = 0\}$ — la réunion de **deux droites passant par l'origine**. Sous-espace ? | **Non** : $(1,1) \in T$ (car $y-x = 0$) et $(1,-2) \in T$ (car $y+2x = -2+2 = 0$), mais $(1,1)+(1,-2) = (2,-1) \notin T$ : $(-1-2)(-1+4) = (-3)(3) = -9 \neq 0$ | B « oui : $(0,0) \in T$ et $\lambda(x,y)$ y reste, puisque le produit se multiplie par $\lambda^2$ » → **M1** *(les deux prémisses sont VRAIES : $(\lambda y - \lambda x)(\lambda y + 2\lambda x) = \lambda^2(y-x)(y+2x) = 0$)* · C « oui : $T$ est la réunion de deux droites passant par l'origine, et chacune est un sous-espace » → **`generalisation-hative`** *(prémisse vraie, inférence fausse — §8.9 n°3)* · D « oui : $T$ contient le vecteur nul et les opposés, et la somme de deux points d'une même droite y reste — la liste du sous-groupe est cochée » → **M2** |
-| **SA-38** | synthese | 4 | Quatre parties de $\mathbb{R}^3$ : laquelle est un sous-espace ? | **$\{(x,y,z)\ /\ x-2y+z = 0\}$** *(contient $(0,0,0)$ ; stable pour $+$ et pour $\cdot$ par linéarité de l'expression)* | B $\{x^2 = y^2\}$ *(contient $0$, stable pour $\cdot$ ; $(1,1,0)+(1,-1,0) = (2,0,0)$ et $4 \neq 0$)* → **M1** · C $\{x+y+z = 1\}$ « c'est un plan, donc un sous-espace » → **M7** *(re-étiqueté : un élève qui choisit C n'a pas buté sur le test du zéro, il l'a **sauté** — I6)* · D $\{x \geq 0\}$ *(contient $0$, stable pour $+$, pas pour $\lambda = -1$)* → **M2** *(étiquette MAINTENUE : sous le label resserré de M1, « s'arrêter à une stabilité sans jamais atteindre la loi externe » est M2 — la règle opératoire du §8)* |
+| **SA-36** | directe | 2 | $S = \{(x,y) \in \mathbb{R}^2\ /\ y = \lvert x\rvert\}$. Sous-espace de $\mathbb{R}^2$ ? *(ensemble renommé $K \to S$ : $K$ est une matrice fixe du [C13] — F10)* | **Non** : $(1,1) \in S$ mais $(-1)\cdot(1,1) = (-1,-1) \notin S$ car $\lvert -1\rvert = 1 \neq -1$ — **la troisième condition tombe** | B « oui : $(0,0) \in S$ car $\lvert 0\rvert = 0$, la première condition est remplie » → **M1** · C « oui : pour $\lambda \geq 0$, $\lambda(x,\lvert x\rvert) = (\lambda x, \lvert\lambda x\rvert)$ reste dans $S$ » → **`generalisation-hative`** · D « oui : $(0,0) \in S$, et la somme de deux points de $S$ reste dans $S$ — l'addition ne fait pas sortir de l'ensemble » → **`cloture-non-verifiee`** *(prémisse fausse : $(1,1)+(-2,2) = (-1,3)$, $\lvert-1\rvert = 1 \neq 3$ — le retour doit donner ce couple. **Ré-étiqueté et réécrit le 2026-10-20 (b)** : l'option disait « $S$ est stable pour $+$, et c'est la condition qui compte » → M2. M2 ne la produit pas : la liste du sous-groupe, appliquée, rejette $S$ par les opposés, avec **le témoin même de la clé**, puisque $(-1)\cdot(1,1) = -(1,1)$. L'élève qui choisit D a **supposé** la clôture pour $+$ sans la tester, et c'est `cloture-non-verifiee`. Le « c'est la condition qui compte » était de plus un absolu régulateur (§11.2). **Conséquence nommée :** M2, appliqué, atteint la clé de SA-36. C'est acceptable parce que SA-36 ne porte plus M2 (précision de §11.2).)* |
+| **SA-37** | non_explicite | 3 | **OBJET REFAIT (I7 : l'ancien $T$ des matrices diagonales à $xy=0$ était le $X$ du [C5] re-habillé, avec les mêmes deux éléments $(1,0)$ et $(0,1)$ et la même paire-témoin que le checkpoint ; I8 : son option D portait « **toute** partie stable… »).** $T = \{(x,y) \in \mathbb{R}^2\ /\ (y-x)(y+2x) = 0\}$ — la réunion de **deux droites passant par l'origine**. Sous-espace ? | **Non** : $(1,1) \in T$ (car $y-x = 0$) et $(1,-2) \in T$ (car $y+2x = -2+2 = 0$), mais $(1,1)+(1,-2) = (2,-1) \notin T$ : $(-1-2)(-1+4) = (-3)(3) = -9 \neq 0$ | B « oui : $(0,0) \in T$ et $\lambda(x,y)$ y reste, puisque le produit se multiplie par $\lambda^2$ » → **M1** *(les deux prémisses sont VRAIES : $(\lambda y - \lambda x)(\lambda y + 2\lambda x) = \lambda^2(y-x)(y+2x) = 0$)* · C « oui : $T$ est la réunion de deux droites passant par l'origine, et chacune est un sous-espace » → **`generalisation-hative`** *(prémisse vraie, inférence fausse — §8.9 n°3)* · D « oui : $T$ contient le vecteur nul et les opposés, et la somme de deux points d'une même droite y reste — la liste du sous-groupe est cochée » → **M2** *+ double-tag* **`generalisation-hative`** *(double étiquette ajoutée le 2026-10-20 (b). $T$ n'est **pas** un sous-groupe. D exige donc M2 **et** un test de $+$ fait seulement sur des paires d'une même droite, un cas particulier généralisé. **M2 seul**, appliqué sur des paires quelconques, trouve le témoin de la clé, $(1,1)+(1,-2) \notin T$, et atteint la clé : c'est le cas de la variante « sous-groupe » de M2, nommé à la précision de §11.2)* |
+| **SA-38** | synthese | 4 | Quatre parties de $\mathbb{R}^3$ : laquelle est un sous-espace ? | **$\{(x,y,z)\ /\ x-2y+z = 0\}$** *(contient $(0,0,0)$ ; stable pour $+$ et pour $\cdot$ par linéarité de l'expression)* | B $\{x^2 = y^2\}$ *(contient $0$, stable pour $\cdot$ ; $(1,1,0)+(1,-1,0) = (2,0,0)$ et $4 \neq 0$)* → **M1** · C $\{x+y+z = 1\}$ « c'est un plan, donc un sous-espace » → **M7** *(re-étiqueté : un élève qui choisit C n'a pas buté sur le test du zéro, il l'a **sauté** — I6)* · D $\{x \geq 0\}$ *(contient $0$, stable pour $+$, pas pour $\lambda = -1$)* → **`axiome-oublie`** *(**ré-étiqueté le 2026-10-20 (b)** ; la révision (a) l'avait « maintenu » à M2. M2 ne produit pas D : la liste du sous-groupe, appliquée, **rejette** $\{x \geq 0\}$, car l'opposé de $(1,0,0)$ est $(-1,0,0)$, hors de l'ensemble. L'élève qui choisit D a vérifié **le zéro et $+$**, deux conditions sur trois, puis conclu. La condition oubliée est précisément celle qui porte les opposés : c'est le mécanisme d'`axiome-oublie`, règle opératoire du §8. **Conséquence nommée :** M2 appliqué ne retient, des quatre parties, que la clé, qui est aussi un sous-groupe. M2 atteint donc la clé, ce qui est acceptable parce que SA-38 ne porte pas M2, précision de §11.2)* |
 
 **M2 · `sous-espace-vs-sous-groupe`**
 
@@ -1611,16 +1666,60 @@ application linéaire · rang d'une famille · toute affirmation de fréquence o
 |---|---|---|---|---|---|
 | **SA-39** | directe | 2 | $U = \left\{\left(\begin{smallmatrix}a&0\\a+b&b\end{smallmatrix}\right)\ /\ (a,b) \in \mathbb{Z}^2\right\}$ : sous-groupe de $(M_2(\mathbb{R}),+)$ ? sous-espace ? *(renommé $V \to U$ : $V$ est l'objet du [C6] — F10)* | **Sous-groupe oui, sous-espace non** : $\tfrac12 \left(\begin{smallmatrix}1&0\\1&0\end{smallmatrix}\right) = \left(\begin{smallmatrix}1/2&0\\1/2&0\end{smallmatrix}\right)$ demanderait $a = \tfrac12 \notin \mathbb{Z}$ *(contrôle : $\left(\begin{smallmatrix}1&0\\1&0\end{smallmatrix}\right) = $ le cas $a=1$, $b=0$ ✓)* | B « les deux : le sous-groupe règle la question » → **M2** · C « ni l'un ni l'autre : $U$ ne contient pas $I$ » → **M2** · D « les deux : $U$ contient la matrice nulle » → **M1** |
 | **SA-40** | non_explicite | 3 | $N = \{(x,y) \in \mathbb{R}^2\ /\ x+y \in \mathbb{Z}\}$ *(renommé $W \to N$ : $W$ est le plan du [C9b] — F10)* | **Sous-groupe de $(\mathbb{R}^2,+)$, pas sous-espace** : $(1,0) \in N$ et $\tfrac12(1,0) = (\tfrac12,0)$ avec $\tfrac12 \notin \mathbb{Z}$ | B « sous-groupe donc sous-espace » → **M2** · C « sous-espace : $(0,0) \in N$ » → **M1** · D « sous-espace : $N$ est une réunion de droites parallèles $x+y = k$, et une droite est un sous-espace » → **M7** *(option REFAITE : l'ancienne, « c'est la même question, seule la loi $+$ compte », portait un absolu interdit par `indice-absolu` — I8 — et doublait la face M2 de B. La prémisse de la nouvelle est **vraie** : $N$ **est** cette réunion.)* |
-| **SA-41** | **synthese** | **3** | **OBJET ET PRÉMISSE REFAITS (I7 + F3 : l'ancienne version demandait « la question précédente a établi le SOUS-GROUPE, que reste-t-il ? », dont la réponse était écrite mot pour mot au §6.6 — et c'est désormais la réponse de la q2 du sommet `r8-bac`. L'item la pré-résolvait.)** $Z = \left\{\left(\begin{smallmatrix}a&b\\b&a+b\end{smallmatrix}\right)\ /\ (a,b) \in \mathbb{R}^2\right\}$ ; **la question précédente a établi que $Z$ est une partie stable de $(M_2(\mathbb{R}),\times)$.** Que cela apporte-t-il à la démonstration de « $Z$ est un sous-espace vectoriel de $(M_2(\mathbb{R}),+,\cdot)$ » ? | **Rien** : la stabilité pour $\times$ n'intervient dans aucune des trois conditions, qui restent toutes à écrire — non vide, stable pour $+$, stable pour la loi externe | B « les deux premières : une partie stable pour $\times$ contient $I$, donc elle est non vide, et la stabilité pour $+$ suit par distributivité » → **M2** · C « il reste seulement à vérifier que $Z$ contient la matrice nulle » → **M1** *+ double-tag* **M2** · D « elle donne la stabilité pour la loi externe : $\lambda \cdot M$ est un produit » → **M2** |
+| **SA-41** | **synthese** | **3** | **OBJET ET PRÉMISSE REFAITS (I7 + F3 : l'ancienne version demandait « la question précédente a établi le SOUS-GROUPE, que reste-t-il ? », dont la réponse était écrite mot pour mot au §6.6 — et c'est désormais la réponse de la q2 du sommet `r8-bac`. L'item la pré-résolvait.)** $Z = \left\{\left(\begin{smallmatrix}a&b\\b&a+b\end{smallmatrix}\right)\ /\ (a,b) \in \mathbb{R}^2\right\}$ ; **la question précédente a établi que $Z$ est une partie stable de $(M_2(\mathbb{R}),\times)$.** **Cette stabilité suffit-elle à conclure que $Z$ est un sous-espace vectoriel de $(M_2(\mathbb{R}),+,\cdot)$ ?** **QUESTION REFAITE le 2026-10-20 (b) — passe arithmétique, erreur E1, bloquante.** La question précédente, « Que cela apporte-t-il à la démonstration ? », avait pour clé « **Rien** ». **C'était faux.** $\lambda I = \left(\begin{smallmatrix}\lambda&0\\0&\lambda\end{smallmatrix}\right)$ est l'élément $(a,b) = (\lambda,0)$ de $Z$, et $\lambda\cdot M = (\lambda I)\times M$ : la stabilité pour $\times$ **donne** la loi externe. L'ancienne option D, « $\lambda\cdot M$ est un produit », était donc un argument **valide**. Changer de $Z$ ne réparait rien : toute famille paramétrée linéairement qui contient $I$ offre la même route. C'est donc la **question** qui change (option (i) du rapport). | **Non : la stabilité pour $\times$ ne donne ni la non-vacuité ni la stabilité pour $+$ ; ces deux conditions restent à écrire** *(la clé est **muette sur la loi externe**, exprès : contrôles ci-dessous)* | B « oui : une partie stable pour $\times$ qui contient $I$ a tout d'un sous-anneau, et c'est bien la liste qu'un sous-espace demande » → **M2** *(variante « sous-anneau ». La prémisse est vraie, $I$ est l'élément $(1,0)$ de $Z$ ; l'inférence est fausse)* · C « pas encore : il ne reste qu'à vérifier que $Z$ contient la matrice nulle (cas $a = b = 0$), la stabilité est acquise » → **M1** *+ double-tag* **M2** · D « oui : puisque le produit de deux éléments de $Z$ reste dans $Z$, leur somme et leurs multiples y restent aussi » → **`cloture-non-verifiee`** *(la conclusion est vraie pour ce $Z$, mais l'inférence $\times \Rightarrow +$ est fausse : la clôture pour $+$ est supposée, jamais testée)* |
 
-*Contrôle de la prémisse de SA-41, refait à la main dans cette session* — le produit de deux
-éléments de $Z$ :
+*Contrôle de la prémisse de SA-41 — inchangé, et re-vérifié en arithmétique exacte le 2026-10-20
+(b).* Le produit de deux éléments de $Z$ :
 $\left(\begin{smallmatrix}a&b\\b&a+b\end{smallmatrix}\right)\left(\begin{smallmatrix}c&d\\d&c+d\end{smallmatrix}\right) = \left(\begin{smallmatrix}ac+bd & ad+bc+bd\\ bc+ad+bd & ac+ad+bc+2bd\end{smallmatrix}\right)$,
 et la forme exige coefficient $(2,1) = $ coefficient $(1,2)$ ✓ (les deux valent $ad+bc+bd$) et
 coefficient $(2,2) = (1,1)+(1,2)$ ✓ ($ac+bd + ad+bc+bd = ac+ad+bc+2bd$). **$Z$ est bien stable pour
 $\times$ : la prémisse de l'énoncé est VRAIE**, et un élève qui la vérifie ne doit pas trouver un
 énoncé faux. *L'ancien $E'$ est renommé $Z$ : $E'$ désigne désormais l'espace d'arrivée générique
 (F10).*
+
+*Contrôles de la question refaite (b), tous en arithmétique exacte :*
+- **Pourquoi l'ancienne clé était fausse (E1).** $\lambda I = \left(\begin{smallmatrix}\lambda&0\\0&\lambda\end{smallmatrix}\right)$
+  est l'élément $(a,b) = (\lambda,0)$ de $Z$. Pour toute matrice $M$, $(\lambda I)\times M = \lambda\cdot M$.
+  Donc stabilité pour $\times$ et $\lambda I \in Z$ entraînent la stabilité pour la loi externe.
+  *C'est le défaut à ne pas réintroduire : aucune option, ni la clé ni son retour, ne doit dire que
+  $\times$ « n'apporte rien » à la loi externe.*
+- **La clé est vraie.** La stabilité pour $\times$ ne donne **jamais** la non-vacuité : $\varnothing$
+  est stable pour $\times$. Elle ne donne **pas** la stabilité pour $+$ : $\{I\}$ est stable pour
+  $\times$ ($I \times I = I$) et contient $I$, mais $I + I = 2I \notin \{I\}$. La clé est **muette sur
+  la loi externe**, et c'est voulu : elle ne prétend ni que $\times$ la donne, ni le contraire. Le
+  retour de la clé peut nommer la route $\lambda\cdot M = (\lambda I)\times M$ comme prolongement,
+  jamais comme une impossibilité.
+- **Chaque distracteur est faux, et faux sans ambiguïté.**
+  - **B.** Un sous-anneau n'est pas un sous-espace : $M_2(\mathbb{Z})$ contient $I$ et est stable
+    pour $+$, $\times$ et les opposés, mais $\tfrac12 I \notin M_2(\mathbb{Z})$. Et « stable pour
+    $\times$, contient $I$ » ne donne même pas le sous-anneau, puisque $\{I\}$ n'est pas stable pour
+    $+$.
+  - **C.** La stabilité pour $+$ reste à écrire ($\{I\}$).
+  - **D.** L'inférence « stable pour $\times$ donc stable pour $+$ » est réfutée par $\{I\}$. Sa
+    conclusion est **vraie pour ce $Z$** : $Z(a,b)+Z(a',b') = Z(a+a',b+b')$ et
+    $\lambda Z(a,b) = Z(\lambda a,\lambda b)$. Le retour doit donc dire « vrai ici, mais à
+    **démontrer par le calcul**, pas à déduire de $\times$ ».
+  - **Contrôle (a)** : B, C et D affirment chacune une implication qu'un contre-exemple réfute.
+    Aucune n'est atteignable par une méthode correcte.
+  - **Longueurs des canevas** (LaTeX retiré) : 114 caractères pour la clé, 119 pour B, 112 pour C
+    et 106 pour D. La clé n'est ni la plus longue ni la plus courte. `indice-longueur` reste à
+    relancer sur la rédaction finale.
+- **Modèles faux et clé.**
+  - M1 mène à C, la variante « sous-anneau » de M2 mène à B, `cloture-non-verifiee` mène à D.
+  - **Résidu nommé :** M2 dans sa variante « liste du **sous-groupe** » (zéro, $+$, opposés)
+    **atteint la clé**. La clé ne nomme que deux conditions communes aux deux listes, et la
+    question ne peut pas départager.
+  - SA-41 porte M2 pour sa variante « sous-anneau », celle que sa prémisse appelle : une
+    stabilité pour $\times$. La variante « sous-groupe » est mesurée là où sous-groupe et
+    sous-espace divergent, à SA-39 et SA-40. C'est accepté, et écrit comme tel à la précision de
+    §11.2.
+  - *L'élève qui croit « $\times$ n'a rien à voir avec un sous-espace » (l'ancienne clé fausse)
+    atteint lui aussi la clé. Ce n'est pas un modèle déclaré, et la clé, muette sur la loi externe,
+    ne lui fait endosser aucune affirmation fausse.*
+- **Habileté et difficulté maintenues : `synthese` / 3.** L'élève doit confronter une propriété
+  établie aux trois conditions et juger si elle suffit. C'est une synthèse, posée en question
+  fermée (verdict et raison) de difficulté 3. La rupture de lockstep du §11.0 tient, et le
+  7 / 7 / 4 ne bouge pas.
 
 **M3 · `famille-libre-mal-testee`**
 
@@ -1657,8 +1756,31 @@ D, vraie) : $g_1,g_2$ (première coordonnée $0$ contre $1$, troisième $2$ cont
 
 | id | hab. | diff | objet et question | clé | distracteurs → modèle |
 |---|---|---|---|---|---|
-| **SA-46** | **directe** | **3** | $Q = \left\{\left(\begin{smallmatrix}a+b&a+b\\c&0\end{smallmatrix}\right)\ /\ (a,b,c) \in \mathbb{R}^3\right\}$ : dimension ? *(renommé $U \to Q$, $U$ étant pris par SA-39)* | **2** : $a+b$ parcourt tout $\mathbb{R}$, donc $Q = \mathrm{Vect}\big(\left(\begin{smallmatrix}1&1\\0&0\end{smallmatrix}\right), \left(\begin{smallmatrix}0&0\\1&0\end{smallmatrix}\right)\big)$, et cette famille est libre | B « 3, trois lettres » → **M4** · C « 4, $Q \subset M_2(\mathbb{R})$ » → **M5** · D « 1 : les deux coefficients de la **première ligne** sont égaux, il n'y a donc qu'un degré de liberté » → **M4** *(option CORRIGÉE : elle disait « les deux premières colonnes sont égales » — faux, les colonnes sont $\binom{a+b}{c}$ et $\binom{a+b}{0}$, qui diffèrent, et « les deux premières » de deux est une formulation bancale. Correctif m4, relevé par les deux critiques.)* |
+| **SA-46** | **directe** | **3** | **OBJET REFAIT le 2026-10-20 (b) — passe arithmétique, §3 du rapport.** Deux défauts. **(1) Un modèle faux atteignait la clé** : l'ancien $Q = \left\{\left(\begin{smallmatrix}a+b&a+b\\c&0\end{smallmatrix}\right)\right\}$ était de dimension **2**, exactement ce que M5 lit sur l'indice de $M_2$. Or l'item **porte** M5 (C), la règle du §11.2 s'applique donc. **(2) Le distracteur D**, « 1 : les deux coefficients de la première ligne sont égaux », n'était pas produit par M4, son étiquette. Compter les lettres donnait 3 = B. Le $1$ venait d'un modèle « je ne lis que la première ligne », qu'aucun id déclaré ne porte. **Nouvel objet :** $Q = \left\{\left(\begin{smallmatrix}a+b&c\\d&0\end{smallmatrix}\right)\ /\ a,b,c,d \in \mathbb{R}\right\}$ : dimension ? *(lettre $Q$ conservée, $U$ étant pris par SA-39)* | **3** : $a$ et $b$ n'interviennent que par $a+b$, qui parcourt tout $\mathbb{R}$ ; donc $Q = \mathrm{Vect}(E_{11}, E_{12}, E_{21})$, et cette famille est libre | B « 4 : il y a quatre lettres, $a$, $b$, $c$ et $d$ » → **M4** · C « 4 : $Q$ est un sous-espace de $M_2(\mathbb{R})$, qui est de dimension $4$ » → **M5** · D « 2 : c'est l'ordre des matrices de $M_2(\mathbb{R})$, et $Q$ en est une partie » → **M5** *(D réécrit : c'est la face « ordre » de M5, celle qui atteignait l'ancienne clé, et elle est maintenant produite par son étiquette)* |
 | **SA-47** | synthese | 4 | $N_0 = \left\{\left(\begin{smallmatrix}x&y\\z&t\end{smallmatrix}\right) \in M_2(\mathbb{R})\ /\ x+t = 0\right\}$ : **donner une base de $N_0$**, et sa dimension | **Base $\left(\begin{smallmatrix}1&0\\0&-1\end{smallmatrix}\right), \left(\begin{smallmatrix}0&1\\0&0\end{smallmatrix}\right), \left(\begin{smallmatrix}0&0\\1&0\end{smallmatrix}\right)$ ; $\dim N_0 = 3$** *(en écrivant $t = -x$ : $\left(\begin{smallmatrix}x&y\\z&-x\end{smallmatrix}\right) = x\left(\begin{smallmatrix}1&0\\0&-1\end{smallmatrix}\right) + y E_{12} + z E_{21}$ — méthode du [C9b])* | B « $2$ : la condition $x+t = 0$ retire deux coefficients sur quatre, $x$ et $t$ » → **M4** *(re-étiqueté : l'ancienne option « $2$ : $t=-x$, donc $x$ et $y$ » **oubliait $z$** sans porter aucun modèle — une faute de calcul ne diagnostique rien, I6 ; la nouvelle compte les lettres de l'équation, ce qui EST M4)* · C « $4$ : la condition ne retire rien, $N_0$ est un sous-espace de $M_2(\mathbb{R})$ qui est de dimension $4$ » → **M5** · D « $2$, base $\left(\begin{smallmatrix}1&0\\0&-1\end{smallmatrix}\right)$ et $\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$ » → **M8** *(re-étiqueté : la famille proposée est libre et **n'engendre pas** — elle imposerait $y = z$. C'est la génération non vérifiée, pas une généralisation hâtive.)* |
+
+*Contrôles de SA-46, refaits le 2026-10-20 (b) en arithmétique exacte.*
+- **Génératrice.** $\left(\begin{smallmatrix}a+b&c\\d&0\end{smallmatrix}\right) = (a+b)\,E_{11} + c\,E_{12} + d\,E_{21}$
+  ✓, et $a+b$ parcourt tout $\mathbb{R}$ (prendre $b = 0$).
+- **Libre.** $\alpha E_{11} + \beta E_{12} + \gamma E_{21} = \left(\begin{smallmatrix}\alpha&\beta\\\gamma&0\end{smallmatrix}\right) = O$
+  force $\alpha = \beta = \gamma = 0$ ✓ (rang 3).
+- **Ce que chaque modèle donne.** M4 compte quatre lettres et donne $4$ (B). M5 donne $2$ par
+  l'indice de $M_2$ (D) et $4$ par l'ambiant (C). La clé, $3$, n'est atteinte par **aucun** modèle
+  déclaré. Le lecteur « première ligne » de l'ancien D lirait $a+b$ et $c$, soit $2$ : il tombe sur
+  D, pas sur la clé.
+- **Deux options valent $4$.** B (M4) et C (M5) annoncent le même nombre avec deux raisons
+  différentes. Le précédent est SA-45, dont les trois distracteurs valent $3$, et l'élève choisit sur
+  la raison (§11.2, « chaque choix confesse son raisonnement »).
+- **Habileté et difficulté maintenues : `directe` / 3.** Le geste est celui du [C13], « une somme
+  de lettres parcourt $\mathbb{R}$ », appliqué une fois, puis une lecture sur les $E_{ij}$. La
+  difficulté 3 vient de ce qu'il faut repérer la sur-paramétrisation **avant** de compter. La
+  rupture de lockstep tient.
+- **Originalité.** La forme $\left(\begin{smallmatrix}a+b&c\\d&0\end{smallmatrix}\right)$ n'apparaît
+  ni dans ce document, ni dans les six fichiers de la notion et des sujets (recherche normalisée,
+  journal (b)). La famille $(E_{11}, E_{12}, E_{21})$ est de l'**outillage**, au sens du préambule
+  du §6. *Le lot compte désormais trois items de dimension $3$ dans $M_2(\mathbb{R})$ (SA-46,
+  SA-47, SA-49). C'est assumé : « une contrainte coûte une dimension » est la bonne leçon, et
+  chaque item y arrive par un objet différent.*
 
 **M7 + M6 · reconnaître une application linéaire** *(bloc NEUF : dans la version du 2026-09-28,
 SA-48 était le troisième item du bloc M5 — il y demandait $\dim M_2(\mathbb{R})$. Il change de
@@ -1679,13 +1801,30 @@ reconnaissance (S6), la quatrième mesure de M6 (I9) et une troisième mesure de
 
 | id | hab. | diff | objet et question | clé | distracteurs → modèle |
 |---|---|---|---|---|---|
-| **SA-49** | directe | 2 | $\mathrm{Sym} = \left\{\left(\begin{smallmatrix}a&b\\b&c\end{smallmatrix}\right)\ /\ (a,b,c) \in \mathbb{R}^3\right\}$ : dimension ? | **3** : $\left(\begin{smallmatrix}a&b\\b&c\end{smallmatrix}\right) = a E_{11} + b K + c E_{22}$ avec $K = \left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$, famille génératrice et libre | B « 4, c'est un sous-espace de $M_2(\mathbb{R})$ » → **M5** · C « 2, l'ordre de la matrice » → **M5** · D « 2 : la famille $(I, K)$ engendre $\mathrm{Sym}$ — toute matrice symétrique est combinaison de $I$ et de $K$ » → **M8** *(option REFAITE : l'ancienne, « 4, il y a quatre coefficients à écrire », était une **seconde** face M5 mal étiquetée M4 — I6 — et laissait l'item sans aucune différenciation. La nouvelle s'appuie sur un vrai résultat de la leçon, $G' = \mathrm{Vect}(I,K)$ au [C13], **appliqué hors de son domaine** : $\alpha I + \beta K = \left(\begin{smallmatrix}\alpha&\beta\\\beta&\alpha\end{smallmatrix}\right)$ force $a = c$, donc $\left(\begin{smallmatrix}1&0\\0&2\end{smallmatrix}\right)$ échappe.)* |
-| **SA-50** | non_explicite | 3 | **ITEM ENTIÈREMENT REFAIT. Motifs : (a) F6 — l'ancien prenait $A = \left(\begin{smallmatrix}1&1\\0&1\end{smallmatrix}\right) = M(1,1)$ et $B = \left(\begin{smallmatrix}2&2\\0&2\end{smallmatrix}\right) = M(2,2)$, **deux éléments de l'ensemble du sommet `r-bac`** (`exercises.yaml:165`), nommait son ensemble $E$ et ses générateurs $A, B$ — les noms de la base du [C10] ; (b) S5/F4 — la génération n'avait aucun item.** Dans $\mathbb{R}^3$, la famille $\big((1,2,0),\ (0,1,1),\ (1,3,1)\big)$ **engendre-t-elle $\mathbb{R}^3$ ?** | **Non** : $(1,3,1) = (1,2,0)+(0,1,1)$, donc la famille engendre le même plan que ses deux premiers vecteurs ; les trois vérifient $2x-y+z = 0$, et $(1,0,0)$ non ($2 \neq 0$) — **$(1,0,0)$ n'est pas atteint** | B « oui : trois vecteurs, trois coordonnées — le compte est bon » → **M4** · C « oui : chacune des trois coordonnées apparaît dans au moins un vecteur, la famille couvre donc tout » → **M8** · D « oui : $(1,2,0)$ et $(0,1,1)$ ne sont pas colinéaires, donc la famille est libre, donc génératrice de $\mathbb{R}^3$ » → **M8** *+ double-tag* **M3** |
+| **SA-49** | directe | 2 | $\mathrm{Sym} = \left\{\left(\begin{smallmatrix}a&b\\b&c\end{smallmatrix}\right)\ /\ (a,b,c) \in \mathbb{R}^3\right\}$ : dimension ? | **3** : $\left(\begin{smallmatrix}a&b\\b&c\end{smallmatrix}\right) = a E_{11} + b K + c E_{22}$ avec $K = \left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$, famille génératrice et libre | B « 4, c'est un sous-espace de $M_2(\mathbb{R})$ » → **M5** · C « 2, l'ordre de la matrice » → **M5** · D « 2 : la famille $(I, K)$ engendre $\mathrm{Sym}$ — toute matrice symétrique est combinaison de $I$ et de $K$ » → **M8** *(option REFAITE : l'ancienne, « 4, il y a quatre coefficients à écrire », était une **seconde** face M5 mal étiquetée M4 — I6 — et laissait l'item sans aucune différenciation. La nouvelle s'appuie sur un vrai résultat de la leçon, $G' = \mathrm{Vect}(I,K)$ au [C13], **appliqué hors de son domaine** : $\alpha I + \beta K = \left(\begin{smallmatrix}\alpha&\beta\\\beta&\alpha\end{smallmatrix}\right)$ force $a = c$, donc $\left(\begin{smallmatrix}1&0\\0&2\end{smallmatrix}\right)$ échappe.)* *⚠ **Modèle faux sur la clé — accepté, et écrit le 2026-10-20 (b).** M4 (« trois lettres, donc 3 ») atteint la clé. On ne change pas l'objet, pour trois raisons. (1) Sur $\mathrm{Sym}$, les trois lettres sont des coordonnées **libres** ($aE_{11}+bK+cE_{22}$ est de rang 3) : compter les lettres y coïncide avec compter une base, et M4 y est **muet**, il ne donne pas un mauvais nombre. (2) SA-49 **ne porte pas M4**, ses faces fausses sont M5 (B, C) et M8 (D) : une bonne réponse n'y vaut absence d'aucun modèle que l'item diagnostique. (3) M4 est mesuré par huit items où le compte et la dimension **diffèrent** (§11.0). Rendre $\mathrm{Sym}$ sur-paramétré ferait tomber la face M8 du [C13], qui est la raison d'être de D. Voir la précision de §11.2.* |
+| **SA-50** | non_explicite | 3 | **ITEM ENTIÈREMENT REFAIT. Motifs : (a) F6 — l'ancien prenait $A = \left(\begin{smallmatrix}1&1\\0&1\end{smallmatrix}\right) = M(1,1)$ et $B = \left(\begin{smallmatrix}2&2\\0&2\end{smallmatrix}\right) = M(2,2)$, **deux éléments de l'ensemble du sommet `r-bac`** (`exercises.yaml:165`), nommait son ensemble $E$ et ses générateurs $A, B$ — les noms de la base du [C10] ; (b) S5/F4 — la génération n'avait aucun item.** Dans $\mathbb{R}^3$, la famille $\big((1,0,2),\ (0,3,1),\ (2,3,5)\big)$ **engendre-t-elle $\mathbb{R}^3$ ?** *(**Vecteurs changés le 2026-10-20 (b)** — passe arithmétique, E2 : l'ancienne famille $\big((1,2,0),(0,1,1),(1,3,1)\big)$ reprenait **deux vecteurs du §6**. $(1,2,0)$ est le générateur du [C9b] (i) et le premier vecteur du [C9b] (ii) ; $(0,1,1)$ est le $v_3$ du [C8]. La phrase de contrôle affirmait pourtant le contraire. C'est le défaut même qui avait fait rejeter l'ancien SA-44 (F6).)* | **Non** : $(2,3,5) = 2\cdot(1,0,2) + (0,3,1)$, donc la famille engendre le même plan que ses deux premiers vecteurs ; les trois vérifient $6x+y-3z = 0$, et $(1,0,0)$ non ($6 \neq 0$) — **$(1,0,0)$ n'est pas atteint** | B « oui : trois vecteurs, trois coordonnées — le compte est bon » → **M4** · C « oui : chacune des trois coordonnées apparaît dans au moins un vecteur, la famille couvre donc tout » → **M8** · D « oui : $(1,0,2)$ et $(0,3,1)$ ne sont pas colinéaires, donc la famille est libre, donc génératrice de $\mathbb{R}^3$ » → **M8** *+ double-tag* **M3** |
 
-*Contrôles de SA-50.* $(1,2,0)+(0,1,1) = (1,3,1)$ ✓. Les trois vecteurs vérifient $2x-y+z = 0$ :
-$2-2+0 = 0$ ✓ · $0-1+1 = 0$ ✓ · $2-3+1 = 0$ ✓. Et $(1,0,0)$ : $2-0+0 = 2 \neq 0$ ✓ — donc
-$(1,0,0) \notin \mathrm{Vect}$ de la famille. *Aucun de ces trois vecteurs n'apparaît dans le §6
-ni dans `bank.yaml`/`exercises.yaml` : vérifié contre [C8], [C9], [C9b], [C10a], [C12], [C14].*
+*Contrôles de SA-50, refaits le 2026-10-20 (b) en arithmétique exacte.*
+- **La relation.** $2\cdot(1,0,2) + (0,3,1) = (2,0,4)+(0,3,1) = (2,3,5)$ ✓. Elle n'a **pas** de
+  coefficients $\pm 1$ : ce n'est plus « le troisième est la somme des deux autres », relation déjà
+  vue au [C9], au [C10a], au [C12] et à SA-42.
+- **Le plan.** Les trois vecteurs vérifient $6x+y-3z = 0$ : $6+0-6 = 0$ ✓ · $0+3-3 = 0$ ✓ ·
+  $12+3-15 = 0$ ✓. Le vecteur $(6,1,-3)$ engendre bien les solutions de $\alpha + 2\gamma = 0$,
+  $3\beta + \gamma = 0$, c'est-à-dire la normale au plan de $(1,0,2)$ et $(0,3,1)$.
+- **Le témoin.** Pour $(1,0,0)$ : $6-0-0 = 6 \neq 0$ ✓, donc $(1,0,0) \notin \mathrm{Vect}$ de la
+  famille. Rang de la famille : 2 ; rang avec $(1,0,0)$ : 3.
+- **Prémisses des distracteurs, vraies.** C : chaque coordonnée apparaît dans au moins un vecteur,
+  $x$ dans $(1,0,2)$, $y$ dans $(0,3,1)$, $z$ dans $(1,0,2)$. D : les trois couples sont non
+  colinéaires.
+- **Originalité — ce qui a été vérifié, et contre quoi.** Recherche textuelle normalisée (LaTeX
+  aplati, espaces retirés) de chacun des trois vecteurs, faite le 2026-10-20 (b). Elle couvre le
+  présent document entier, `lesson.md`, `items.yaml`, `checkpoints.yaml`, `bank.yaml` et
+  `exercises.yaml` de la notion, ainsi que `docs/sujets/maths/structures-algebriques.md`. Résultat :
+  **aucune occurrence** ailleurs que dans cette ligne et ses contrôles. Un `grep` sur tout
+  `content/maths` et `docs/sujets/maths` ne trouve que $A(1,0,2)$, **point** d'un repère dans deux
+  items de `geometrie-espace` (`items.yaml:2173`, `:2712`) : autre notion, autre objet. Le témoin
+  $(1,0,0)$ est un vecteur de la base canonique, donc de l'outillage ; il sert déjà de point de
+  contrôle au [C8].
 
 **M6 · `noyau-toujours-nul`**
 
@@ -1703,14 +1842,19 @@ le plancher ne s'appuie plus sur une étiquette discutable.)*
 | id | hab. | diff | objet et question | clé | distracteurs → modèle |
 |---|---|---|---|---|---|
 | **SA-52** | **directe** | **3** | $\varphi : \mathbb{R}^2 \to M_2(\mathbb{R})$, $\varphi(a,b) = \left(\begin{smallmatrix}a+b&0\\0&a+b\end{smallmatrix}\right)$ : $\ker\varphi$ et $\mathrm{Im}\,\varphi$ ? | **$\ker\varphi = \mathrm{Vect}\big((1,-1)\big)$ (dimension 1), $\mathrm{Im}\,\varphi = \mathrm{Vect}(I)$ (dimension 1)** *(car $\varphi(a,b) = (a+b)\,I$)* | B « $\ker\varphi = \{(0,0)\}$ et $\mathrm{Im}\,\varphi = M_2(\mathbb{R})$ » → **M6** · C « $\mathrm{Im}\,\varphi$ est de dimension $4$, puisqu'elle vit dans $M_2(\mathbb{R})$ » → **M5** *(double-tag prévu : notation ↔ image)* · D « $\ker\varphi$ est de dimension $2$ : deux paramètres $a$ et $b$ » → **M4** |
-| **SA-53** | synthese | 4 | $f : (\mathbb{C}^*,\times) \to (\mathbb{R}^*_+,\times)$, $f(z) = \lvert z\rvert$ (morphisme, car $\lvert zz'\rvert = \lvert z\rvert\lvert z'\rvert$) : quel est $\ker f$, et qu'est-ce que cela dit de $f$ ? | **$\ker f = \{z \in \mathbb{C}^*\ /\ \lvert z\rvert = 1\}$, le cercle unité ; c'est un sous-groupe de $(\mathbb{C}^*,\times)$, et $f$ n'est pas injective** *(par exemple $f(1) = f(-1) = f(i) = 1$)* | B « $\ker f = \{1\}$ : un morphisme conserve le neutre, et le noyau est l'ensemble des éléments envoyés sur le neutre » → **M6** *(reformulé : l'ancienne version disait « le noyau d'un morphisme **se réduit au** neutre », un absolu barrable à vue — I8)* · C « $\{\lvert z\rvert = 1\}$, mais ce n'est pas un sous-groupe : il ne contient pas $0$ » → **M2** · D « $f$ est injective : $\lvert z\rvert = \lvert z'\rvert$ entraîne $z = z'$ » → **M6** *(re-étiqueté : c'était `generalisation-hative`, alors que « l'image égale détermine l'antécédent » est **exactement** M6 — I6)* |
+| **SA-53** | synthese | 4 | $f : (\mathbb{C}^*,\times) \to (\mathbb{R}^*_+,\times)$, $f(z) = \lvert z\rvert$ (morphisme, car $\lvert zz'\rvert = \lvert z\rvert\lvert z'\rvert$) : quel est $\ker f$, et qu'est-ce que cela dit de $f$ ? | **$\ker f = \{z \in \mathbb{C}^*\ /\ \lvert z\rvert = 1\}$, le cercle unité ; c'est un sous-groupe de $(\mathbb{C}^*,\times)$, et $f$ n'est pas injective** *(par exemple $f(1) = f(-1) = f(i) = 1$)* | B « $\ker f = \{1\}$ : un morphisme conserve le neutre, et le noyau est l'ensemble des éléments envoyés sur le neutre » → **M6** *(reformulé : l'ancienne version disait « le noyau d'un morphisme **se réduit au** neutre », un absolu barrable à vue — I8)* · C « $\{\lvert z\rvert = 1\}$, mais ce n'est pas un sous-groupe : il ne contient pas $0$ » → **`neutre-non-transporte`** *(**ré-étiqueté le 2026-10-20 (b)**, c'était M2. L'élève cherche dans un groupe **multiplicatif** le neutre $0$, celui de $+$ et du $0_E$ du chapitre, au lieu du neutre $1$ de la loi en jeu. C'est un neutre **recopié** d'une structure à l'autre au lieu d'être recalculé, ce que décrit l'id existant. **Ajustement imparfait, dit comme tel :** le label de `neutre-non-transporte` parle d'un isomorphisme, et ici le neutre est recopié entre deux **lois**, pas à travers une application. C'est l'id déclaré le plus proche ; M2, la liste d'une structure voisine, en décrivait moins bien le geste)* · D « $f$ est injective : $\lvert z\rvert = \lvert z'\rvert$ entraîne $z = z'$ » → **M6** *(re-étiqueté : c'était `generalisation-hative`, alors que « l'image égale détermine l'antécédent » est **exactement** M6 — I6)* |
 
 ### 11.2 Règles de rédaction — non négociables
 - **Ne pas pré-résoudre.** Aucun item ne reprend un objet du §6, ni un objet de `bank.yaml`, **ni
   un objet des deux `exercises.yaml`** (ajout du 2026-10-20 : c'est par là que SA-50 est passé —
   F6). La liste des objets **interdits** est au préambule du §6 ; les 18 objets ci-dessus ont été
   choisis contre elle, un par un, **et les dix refaits ont été re-vérifiés contre elle dans cette
-  session.** *Rappel de la frontière : l'**outillage** de notation ($I$, $O$, $K$, $E_{ij}$) se
+  session.** ⚠ *Corrigé le 2026-10-20 (b) : cette re-vérification était **incomplète**. SA-50
+  reprenait deux vecteurs du §6, et le $J$ de `r8-variation` était la matrice $B$ du [C7]/[C10].
+  Les deux sont refaits. **La re-vérification par machine est désormais la règle** : recherche
+  normalisée de chaque vecteur et de chaque matrice dans ce document et les six fichiers de la
+  notion et des sujets, avec les objets connus comme témoins positifs. Le journal (b) dit pourquoi
+  ces témoins sont nécessaires.* *Rappel de la frontière : l'**outillage** de notation ($I$, $O$, $K$, $E_{ij}$) se
   réemploie librement ; ce qui est interdit, c'est l'objet d'une question.*
 - **Chaque choix confesse son raisonnement** (une affirmation **plus** sa raison), jamais un nombre
   nu : c'est ce qui empêche qu'un élève atteigne la clé avec un modèle faux — le défaut de
@@ -1731,6 +1875,37 @@ le plancher ne s'appuie plus sur une étiquette discutable.)*
     condamnerait serait fausse.)* **Ce qui reste donc reproché à l'ancien SA-43 D est (a) son
     absolu, (b) le fait qu'un élève qui ne lit que les verdicts soit récompensé d'un modèle faux.**
     La nouvelle option dit « libre », ce qui supprime (b) sans rien coûter.
+  - ⚠ **PRÉCISION DU 2026-10-20 (b) — quels modèles faux la règle vise.** La passe arithmétique a
+    trouvé trois endroits où un modèle faux atteint la clé : `cp-r8-pari-notation` (M4 compte
+    quatre lettres, $4$), SA-46 (M5, l'indice de $M_2$, $2$) et SA-49 (M4 compte trois lettres,
+    $3$). La relecture en a ajouté quatre : SA-36, SA-37, SA-38 et SA-41, où M2 appliqué selon la
+    liste du **sous-groupe** trouve le même témoin ou le même verdict que la clé. **La règle exacte
+    est la suivante.**
+    1. **Un modèle que l'item DIAGNOSTIQUE**, c'est-à-dire qu'au moins un de ses distracteurs
+       porte, **ne doit pas atteindre la clé**. Sinon une bonne réponse s'enregistre comme
+       l'absence d'un modèle que l'élève tient. **Remède : changer l'objet.** C'est ce qui a été
+       fait pour SA-46, qui porte M5 et dont la clé passe de $2$ à $3$.
+    2. **Un modèle que l'item ne porte pas** peut atteindre la clé quand, **sur l'objet de
+       l'item**, il coïncide avec la bonne méthode : les lettres sont libres, ou la condition qui
+       tombe est commune aux deux listes. Le modèle est alors **muet** sur cet objet. C'est
+       admissible à trois conditions :
+       - (a) c'est **écrit dans la ligne** de l'item ;
+       - (b) l'item **ne porte pas** ce modèle ;
+       - (c) le modèle est mesuré ailleurs, sur un objet où il **diverge** de la bonne méthode.
+
+       Cas couverts : `cp-r8-pari-notation` (M4), SA-49 (M4), SA-36 et SA-38 (M2, retiré de ces
+       deux items par la même passe).
+    3. **Cas limite, nommé et non masqué : SA-37 et SA-41.** Ces deux items **portent** M2, mais
+       sous une variante précise : « sous-groupe testé sur une seule droite » pour SA-37 D,
+       « sous-anneau » pour SA-41 B. La variante « liste du sous-groupe appliquée correctement »,
+       elle, y atteint la clé, parce que la condition qui tombe ou celle que la question nomme est
+       commune au sous-groupe et au sous-espace. M2 n'est **diagnosticable pur** que là où
+       sous-groupe ✓ et sous-espace ✗, c'est-à-dire à SA-39 et SA-40, ses deux items cibles.
+       *Décision par défaut : garder les deux étiquettes de variante, puisque chacune est produite
+       par son modèle, et le dire ici. Si le propriétaire veut que l'étiquette ne porte qu'un
+       modèle pur, la réponse est de retirer M2 de SA-37 D et de SA-41 B et C. M2 tomberait alors
+       à **2 items** (SA-39, SA-40), sous le plancher, et il faudrait un item M2 de plus.* → à
+       trancher en revue ; rien n'est caché.
 - **Aucun absolu RÉGULATEUR dans une option** — et surtout **pas trois distracteurs sur-affirmants
   contre une clé sobre** : `indice-absolu.mjs` mesure exactement cela (« *la bonne réponse se
   dénonce-t-elle en étant la seule qui ne sur-affirme pas ?* »). *Cinq absolus relevés dans la
@@ -1756,9 +1931,9 @@ le plancher ne s'appuie plus sur une étiquette discutable.)*
   absolus auraient été livrés.*
 - **Un distracteur atteignable par deux modèles se DOUBLE-TAGUE** (ce n'est pas un défaut : la
   co-attribution cible↔distracteur entre compétences se double-tague, seule la contamination de la
-  **bonne réponse** est un défaut d'énoncé). **Double-tags prévus, liste à jour :** SA-41 C
-  (M1 ↔ M2) · SA-42 D et SA-45 D (comptage ↔ liberté) · SA-48 D (M6 ↔ M7) · SA-50 D (M8 ↔ M3) ·
-  SA-52 C (notation ↔ image).
+  **bonne réponse** est un défaut d'énoncé). **Double-tags prévus, liste à jour au 2026-10-20 (b) :**
+  SA-37 D (M2 ↔ `generalisation-hative`, ajouté en (b)) · SA-41 C (M1 ↔ M2) · SA-42 D et SA-45 D
+  (comptage ↔ liberté) · SA-48 D (M6 ↔ M7) · SA-50 D (M8 ↔ M3) · SA-52 C (notation ↔ image).
 - `tags:` `[misconception_driven, maths_structures_alg, <sous-espace|famille-libre|famille-generatrice|base-dimension|application-lineaire>]`
   *(valeur `famille-generatrice` ajoutée : sans elle, le savoir-faire « génération » reste
   invisible à tout filtre — S5.)*
@@ -1850,7 +2025,15 @@ se termine donc sur la question qui l'a causé** — et cette boucle est elle-m�
 > devient un objet **produit**, rédigé, et pas un QCM.
 
 **L'objet, choisi frais et vérifié contre toute la liste d'interdits :**
-$$E = \left\{ M(x,y) = \begin{pmatrix} x & y \\ -y & x+y \end{pmatrix}\ /\ (x,y) \in \mathbb{R}^2 \right\} \subset M_2(\mathbb{R}).$$
+$$E = \left\{ M(x,y) = \begin{pmatrix} x & y \\ -y & x-y \end{pmatrix}\ /\ (x,y) \in \mathbb{R}^2 \right\} \subset M_2(\mathbb{R}).$$
+⚠ *Ensemble changé le 2026-10-20 (b) — passe arithmétique, collision E3. La version (a) posait
+$E = \left\{\left(\begin{smallmatrix}x&y\\-y&x+y\end{smallmatrix}\right)\right\}$, dont le
+$J = M(0,1) = \left(\begin{smallmatrix}0&1\\-1&1\end{smallmatrix}\right)$ est **exactement la
+matrice $B$ du [C7]/[C10]**, la base de $V$, dont la table des lettres (§10.3) réserve le nom.
+Le contrôle d'originalité ci-dessous comparait des **formes d'ensembles**, jamais les **éléments
+nommés** que la question fait calculer : c'est par là que la collision est passée. Le signe du
+coefficient $(2,2)$ change ($x+y \to x-y$), et le nouveau $J = \left(\begin{smallmatrix}0&1\\-1&-1\end{smallmatrix}\right)$
+n'apparaît nulle part ailleurs (recherche normalisée, journal (b)).*
 *Forme $M(x,y)$ avec $(x,y)$ — **la notation des sujets**, pas le $M(a,b)$ de la leçon (correctif
 F11 : 100 % des attestations impriment $M(x,y)$ ; le chapitre doit l'imprimer au moins une fois, et
 c'est ici, dans le beat de forme d'examen).*
@@ -1865,6 +2048,18 @@ $\left(\begin{smallmatrix}x&-y\\y&x\end{smallmatrix}\right)$ · ≠ [C6]
 $\left(\begin{smallmatrix}a&a+b\\a-b&b\end{smallmatrix}\right)$ · ≠ [C13]
 $\left(\begin{smallmatrix}a+b&c\\c&a+b\end{smallmatrix}\right)$ · ≠ SA-39, SA-41, SA-46, SA-47,
 SA-49.
+**Et, depuis la révision (b), élément par élément** — les matrices que la question fait **nommer**
+ne doivent pas non plus être des objets du §6 :
+- $J = M(0,1) = \left(\begin{smallmatrix}0&1\\-1&-1\end{smallmatrix}\right) \neq B = \left(\begin{smallmatrix}0&1\\-1&1\end{smallmatrix}\right)$
+  du [C7]/[C10] ;
+- $J \notin Z$ (SA-41), puisque son coefficient $(2,1)$ vaut $-1$ et son $(1,2)$ vaut $1$ ;
+- l'élément $\left(\begin{smallmatrix}0&1\\1&1\end{smallmatrix}\right)$ de $Z$ n'est pas dans $E$ ;
+- $I$ est le seul élément nommé que $E$ partage avec un autre objet, et c'est de l'**outillage**.
+
+*Ressemblance de famille avec SA-41, assumée :* $Z$ et $E$ contiennent tous deux $I$ et sont tous
+deux stables pour $\times$. Ils diffèrent par **deux** coefficients, $(2,1)$ ($b$ contre $-y$) et
+$(2,2)$ ($a+b$ contre $x-y$) ; la version (a) n'en différait que par un signe. Ce n'est pas une
+collision : aucune question de l'un ne se résout par une conclusion de l'autre.
 
 | champ | valeur |
 |---|---|
@@ -1877,15 +2072,15 @@ SA-49.
 
 **q1 — Montrer que $E$ est un sous-groupe de $(M_2(\mathbb{R}),+)$.**
 - $O = M(0,0) \in E$ ✓ (les quatre coefficients sont nuls) ;
-- stabilité : $M(x,y) + M(x',y') = \left(\begin{smallmatrix} x+x' & y+y' \\ -(y+y') & (x+y)+(x'+y') \end{smallmatrix}\right) = \left(\begin{smallmatrix} x+x' & y+y' \\ -(y+y') & (x+x')+(y+y') \end{smallmatrix}\right) = M(x+x',\ y+y') \in E$ ✓
-  *(contrôle du coefficient $(2,2)$, refait : $(x+y)+(x'+y') = (x+x')+(y+y')$ ✓)* ;
-- opposé : $-M(x,y) = \left(\begin{smallmatrix} -x & -y \\ y & -x-y \end{smallmatrix}\right) = M(-x,-y)$ ✓
-  *(contrôles : coefficient $(2,1) = -(-y) = y$ ✓ ; coefficient $(2,2) = (-x)+(-y) = -x-y$ ✓)*.
+- stabilité : $M(x,y) + M(x',y') = \left(\begin{smallmatrix} x+x' & y+y' \\ -(y+y') & (x-y)+(x'-y') \end{smallmatrix}\right) = \left(\begin{smallmatrix} x+x' & y+y' \\ -(y+y') & (x+x')-(y+y') \end{smallmatrix}\right) = M(x+x',\ y+y') \in E$ ✓
+  *(contrôle du coefficient $(2,2)$, refait : $(x-y)+(x'-y') = (x+x')-(y+y')$ ✓)* ;
+- opposé : $-M(x,y) = \left(\begin{smallmatrix} -x & -y \\ y & -x+y \end{smallmatrix}\right) = M(-x,-y)$ ✓
+  *(contrôles : coefficient $(2,1) = -(-y) = y$ ✓ ; coefficient $(2,2) = (-x)-(-y) = -x+y$ ✓)*.
 
 **q2 — Montrer que $E$ est un sous-espace vectoriel de $(M_2(\mathbb{R}),+,\cdot)$.**
 - non vide : $O \in E$, **q1** ;
 - stable pour $+$ : **q1** ;
-- stable pour $\cdot$ : $\lambda \cdot M(x,y) = \left(\begin{smallmatrix} \lambda x & \lambda y \\ -\lambda y & \lambda(x+y) \end{smallmatrix}\right) = \left(\begin{smallmatrix} \lambda x & \lambda y \\ -\lambda y & \lambda x + \lambda y \end{smallmatrix}\right) = M(\lambda x,\ \lambda y) \in E$ ✓.
+- stable pour $\cdot$ : $\lambda \cdot M(x,y) = \left(\begin{smallmatrix} \lambda x & \lambda y \\ -\lambda y & \lambda(x-y) \end{smallmatrix}\right) = \left(\begin{smallmatrix} \lambda x & \lambda y \\ -\lambda y & \lambda x - \lambda y \end{smallmatrix}\right) = M(\lambda x,\ \lambda y) \in E$ ✓.
 
 **C'est la cascade de l'examen, et l'élève la découvre en la faisant** — deux conditions sur trois
 viennent de la question précédente, **et c'est lui qui doit s'en apercevoir.**
@@ -1893,10 +2088,12 @@ viennent de la question précédente, **et c'est lui qui doit s'en apercevoir.**
 **q3 — On pose $J = M(0,1)$. Montrer que $(I,J)$ est une base de l'espace vectoriel réel
 $(E,+,\cdot)$, puis donner $\dim E$.**
 - $I = M(1,0) = \left(\begin{smallmatrix}1&0\\0&1\end{smallmatrix}\right) \in E$ ✓ *(avec $x=1$,
-  $y=0$ : coefficient $(2,2) = x+y = 1$ ✓)* ; $J = M(0,1) = \left(\begin{smallmatrix}0&1\\-1&1\end{smallmatrix}\right)$ ;
-- **génératrice** : $x I + y J = \left(\begin{smallmatrix}x&0\\0&x\end{smallmatrix}\right) + \left(\begin{smallmatrix}0&y\\-y&y\end{smallmatrix}\right) = \left(\begin{smallmatrix}x&y\\-y&x+y\end{smallmatrix}\right) = M(x,y)$ ✓ — tout élément de $E$ s'écrit donc $xI + yJ$ ;
-- **libre** : $\alpha I + \beta J = \left(\begin{smallmatrix}\alpha&\beta\\-\beta&\alpha+\beta\end{smallmatrix}\right) = O$ donne $\alpha = 0$ (coefficient $(1,1)$) et $\beta = 0$ (coefficient $(1,2)$) ✓ ;
+  $y=0$ : coefficient $(2,2) = x-y = 1$ ✓)* ; $J = M(0,1) = \left(\begin{smallmatrix}0&1\\-1&-1\end{smallmatrix}\right)$ ;
+- **génératrice** : $x I + y J = \left(\begin{smallmatrix}x&0\\0&x\end{smallmatrix}\right) + \left(\begin{smallmatrix}0&y\\-y&-y\end{smallmatrix}\right) = \left(\begin{smallmatrix}x&y\\-y&x-y\end{smallmatrix}\right) = M(x,y)$ ✓ — tout élément de $E$ s'écrit donc $xI + yJ$ ;
+- **libre** : $\alpha I + \beta J = \left(\begin{smallmatrix}\alpha&\beta\\-\beta&\alpha-\beta\end{smallmatrix}\right) = O$ donne $\alpha = 0$ (coefficient $(1,1)$) et $\beta = 0$ (coefficient $(1,2)$) ✓ ;
 - donc **$(I,J)$ est une base de $(E,+,\cdot)$ et $\dim E = 2$.**
+*(q1–q3 refaites le 2026-10-20 (b) sur le nouvel $E$ ; chaque égalité ci-dessus est re-vérifiée en
+arithmétique exacte, journal (b).)*
 
 *Remarque pour l'auteur, à ne PAS écrire dans l'énoncé :* la question « $\dim E$ » est **accolée**
 à la question « base » parce que **la dimension n'est attestée dans aucun sujet de maths de ce
@@ -1980,6 +2177,13 @@ depuis la révision du 2026-10-20) :
 - `bank.yaml:144-175` (SCOPE NOTE 3) — la note dit « *à l'attention du pedagogy-architect si un pont
   explicite … est jugé utile* » : y écrire que le pont existe, et lequel ; **et que `bk-2023-n-x5`
   q1-q2 est désormais jumelé à `r8-bac`**, sur le précédent `r-bac`/`bk-2019-n-x1` (`:43-57`).
+- **`bank.yaml:51-57` — AJOUTÉ le 2026-10-20 (b), relevé par la passe arithmétique (§5).** La
+  note éditoriale d'en-tête liste `bk-2023-n-x5` parmi les annales qui « *ne recoupent aucun autre
+  sommet* » (`:51-57` à la lecture du 2026-10-20 ; la phrase elle-même est aux `:54-55`) et
+  précise : « *exercises.yaml de cette notion ne contient que r-bac … et r-variation* ». **Les deux
+  affirmations deviennent fausses à la livraison** : `r8-bac` transcrit `bk-2023-n-x5` q1-q2, et
+  `exercises.yaml` gagne deux entrées. À réécrire en ajoutant `bk-2023-n-x5` ↔ `r8-bac` au
+  jumelage déjà décrit pour `bk-2019-n-x1` ↔ `r-bac` (`:43-51`).
 - `bank.yaml:1448-1449` — « *q2 mobilise la notion de sous-espace vectoriel (chapitre antérieur,
   jamais enseigné dans lesson.md)* » : **devient faux à la livraison**.
 - `bank.yaml:1490` — le `reasoning` de q2 dit « *mobilise une notion d'un chapitre antérieur du
@@ -1997,7 +2201,12 @@ depuis la révision du 2026-10-20) :
   s'arrête à « morphisme / isomorphisme » : **édition obligatoire** (espace vectoriel, sous-espace,
   combinaison linéaire, **sous-espace engendré**, famille libre/génératrice, base, dimension,
   application linéaire, noyau, image).
-- `items.yaml` — `coverage_summary` (§11.0), **huit** lignes `per_misconception` neuves.
+- `items.yaml` — `coverage_summary` (§11.0), **huit** lignes `per_misconception` neuves, **et quatre
+  lignes existantes à mettre à jour** (ajout du 2026-10-20 (b)) : `generalisation-hative` 17,
+  `cloture-non-verifiee` 10, `axiome-oublie` 8, `neutre-non-transporte` 6. **Et le paragraphe
+  `habilete_ramp_transport_family`**, qui dit les huit items de la famille transport « *les seuls
+  à porter l'étiquette `habilete`* » : c'est déjà faux aujourd'hui (SA-35 la porte, §1.k), et ce
+  sera faux de dix-huit items de plus.
 - **`exercises.yaml` — DEUX entrées neuves** (`r8-bac`, `r8-variation`, §12.2), et l'en-tête du
   fichier (`:1-16`) à compléter : il décrit aujourd'hui une notion à **deux** exercices accrochés
   au chapitre 10.
@@ -2041,13 +2250,17 @@ d'avant ne disait rien de R8, ADR 0033)** · `indice-longueur` · `indice-absolu
 ## 16. Ce que je n'ai pas pu vérifier — dit, pas maquillé
 
 1. **Aucune commande n'a été exécutée.** Tous les comptes du §1 et du §4.2 viennent de l'outil
-   `Grep` (mode `count`, qui rend des **occurrences**) et de lectures directes. Les commandes en
+   `Grep` (mode `count`, qui rend des **lignes correspondantes, pas des occurrences** — libellé
+   corrigé le 2026-10-20 (b) : une ligne qui porte deux renvois compte une fois ; les occurrences
+   vraies sont données à côté au §1.i) et de lectures directes. Les commandes en
    regard **reproduisent** ces relevés ; elles n'ont pas été lancées. **À re-mesurer avant
    édition.**
 2. **Le comportement exact de la porte `carte-chapitres` sur un AJOUT en fin de liste** est **lu
    dans le code** (`:128-136`, `:149`), **pas observé**. Le texte annoncé au §4.2 est celui que le
    code produit à la lecture ; la première exécution reste la preuve.
-3. **Les six sceaux `.base.json`** : je sais qu'ils **nomment** cette notion (grep) ; je n'ai pas
+3. **Les sept sceaux `.base.json`**, ceux du §4.2 : `carte-chapitres` et les six du §14. *Corrigé le
+   2026-10-20 (b) : le texte disait « six », alors que le §4.2 en compte sept, re-comptés par `grep -l`
+   sur `web/scripts/*.base.json`.* Je sais qu'ils **nomment** cette notion (grep) ; je n'ai pas
    ouvert chacun pour établir **ce qui, précisément, y bougera**. Le §14 dit « ils vont bouger »,
    pas « voici de combien ».
 4. **Les numéros de ligne** datent de la lecture du 2026-09-28 ; `lesson.md`, `items.yaml` et
@@ -2083,6 +2296,13 @@ d'avant ne disait rien de R8, ADR 0033)** · `indice-longueur` · `indice-absolu
    SA-48.** *Personne ne les a re-vérifiés indépendamment : les deux critiques ont validé les
    nombres de la version du 2026-09-28, pas ceux-ci.* **À faire re-contrôler avant écriture** —
    c'est le premier élément du travail de review de cette vague.
+   → **FAIT le 2026-10-20** par une passe arithmétique indépendante
+   (`docs/audits/critiques/espaces-vectoriels-arithmetique.md`) : 115 calculs refaits en `Fraction`
+   exacte. Elle trouve **une erreur de mathématiques**, la clé de SA-41, et **deux collisions**,
+   SA-50 et le $J$ de `r8-variation`. Tout le reste est juste. Les trois sont corrigées en
+   révision (b), et chaque nombre changé est re-vérifié par script (journal (b)). *Le défaut que
+   la passe a mis au jour est celui que ce paragraphe nommait : « calculé deux fois à la main par
+   moi » a laissé passer une clé fausse et deux collisions.*
 10. **Le comportement de `rampe-bac` sur un barreau qui gagne deux exercices n'est pas observé.** La
     critique pédagogique indique que la porte mesure **par notion** (`web/scripts/rampe-bac.mjs:11-22`,
     `:40-43`) ; je ne l'ai pas lue. Si c'est exact, la porte **restera verte** après livraison comme
@@ -2263,3 +2483,83 @@ honnête.*
   `docs/audits/DECISIONS-EN-ATTENTE.md` n'a **pas** été lu comme portant une question ouverte sur
   cette spec (vérifié : aucune entrée ne la nomme) — les questions du §15 restent donc **dans ce
   document**, et c'est à l'owner de décider s'il veut les y voir ou les verser au registre.
+
+---
+
+## Revision 2026-10-20 (b) — arithmetic pass
+
+**Contre :** `docs/audits/critiques/espaces-vectoriels-arithmetique.md`, la passe arithmétique
+indépendante. Elle a refait 115 calculs en `Fraction` exacte et a rendu **ERRORS FOUND** :
+- **une erreur de mathématiques** : la clé de SA-41 ;
+- **deux collisions** : SA-50, et le $J$ de `r8-variation` ;
+- des écarts mineurs, et sept distracteurs que leur modèle étiqueté ne produisait pas.
+
+**Seul le présent document a été modifié.** Aucun fichier de la notion, du cadre ni de la banque
+n'a été touché.
+
+### Ce qui a changé
+
+| constat | correction | § |
+|---|---|---|
+| **E1 (bloquant) — SA-41** : la clé « Rien » était fausse. $\lambda I$ est l'élément $(\lambda,0)$ de $Z$, et $\lambda\cdot M = (\lambda I)\times M$, donc l'ancienne option D était valide. | Option (i) du rapport. La **question** devient « *Cette stabilité suffit-elle à conclure que $Z$ est un sous-espace vectoriel ?* ». La clé devient « *Non : elle ne donne ni la non-vacuité ni la stabilité pour $+$ ; ces deux conditions restent à écrire* », muette sur la loi externe, exprès. Distracteurs : B « oui, sous-anneau » → M2 (variante sous-anneau) ; C « il ne reste que la matrice nulle » → M1 + M2 ; D « oui, $\times$ entraîne $+$ et les multiples » → `cloture-non-verifiee`. Chacun est réfuté par $\{I\}$ ou $M_2(\mathbb{Z})$. Les longueurs des canevas sont 114 / 119 / 112 / 106 : la clé n'est ni la plus longue ni la plus courte. `synthese` / 3 est maintenu, avec son motif. Le résidu (M2 « liste du sous-groupe » atteint la clé) est nommé. | §11.1, §11.2 |
+| **E2 — SA-50** : la phrase « aucun de ces vecteurs n'apparaît au §6 » était fausse. $(1,2,0)$ vient du [C9b] et $(0,1,1)$ du $v_3$ du [C8]. | Nouveaux vecteurs $(1,0,2)$, $(0,3,1)$ et $(2,3,5) = 2(1,0,2)+(0,3,1)$, sur le plan $6x+y-3z = 0$, avec le témoin $(1,0,0)$ qui donne $6 \neq 0$. L'énoncé, la clé, les distracteurs et les contrôles sont refaits. La phrase d'originalité dit désormais **contre quoi** elle a été vérifiée, et ce qu'on trouve hors notion ($A(1,0,2)$, un point en géométrie). | §11.1 |
+| **E3 — `r8-variation`** : $J = M(0,1)$ était la matrice $B$ du [C7]/[C10]. | $E = \left\{\left(\begin{smallmatrix}x&y\\-y&x-y\end{smallmatrix}\right)\right\}$, $J = \left(\begin{smallmatrix}0&1\\-1&-1\end{smallmatrix}\right)$. q1 à q3 sont refaites : $O$, la somme, l'opposé, le scalaire, $I = M(1,0)$, $xI+yJ = M(x,y)$, la liberté, $\dim E = 2$. Le contrôle d'originalité porte désormais aussi sur les **éléments nommés**, pas seulement sur les formes d'ensembles. | §12.2.2 |
+| **SA-46** : M5 (l'indice, 2) atteignait la clé 2, alors que l'item porte M5. D (« 1, première ligne ») n'était produit par aucun id déclaré. | Nouvel objet $Q = \left\{\left(\begin{smallmatrix}a+b&c\\d&0\end{smallmatrix}\right)\right\}$, de dimension **3**. M4 donne 4 (B), M5 donne 4 (C) et 2 (D) : la clé n'est atteinte par aucun modèle déclaré. `directe` / 3 est maintenu. | §11.1 |
+| **`cp-r8-pari-notation` et SA-49** : M4 (compter les lettres) atteint la clé. | Les nombres **ne changent pas**, et le motif est écrit en ligne. Sur ces objets les lettres sont libres et M4 y est muet ; l'item ne porte pas M4 ; M4 est mesuré par huit items où il diverge. | §7.3, §11.1 |
+| **Étiquettes** (rapport §3) | SA-36 D → `cloture-non-verifiee` (et réécrit sans l'absolu « c'est la condition qui compte ») · SA-37 D → double étiquette M2 + `generalisation-hative` · SA-38 D → `axiome-oublie` · SA-53 C → `neutre-non-transporte` (ajustement imparfait, dit comme tel). La règle opératoire du §8 gagne trois lignes. | §8, §11.1 |
+| **La règle « un modèle faux ne doit pas atteindre la clé »** était trop large pour être tenue. | Elle est **précisée** au §11.2 : elle vise les modèles que l'item **diagnostique**. Un modèle muet sur l'objet est admissible à trois conditions écrites. Les cas limites SA-37 et SA-41 (M2 par variante) sont nommés, avec l'alternative et son coût : M2 tomberait à 2. | §11.2 |
+| **Mineurs** | §1.i et §4.2 : comptes de **lignes** (34 et 97), avec les occurrences à côté (35 et 110). §16.1 : le libellé est corrigé. §1.k : SA-27…**SA-35**, soit 9 items. §1.g : « 31 » devient 37, et le 0 décisif tient. §16.3 : sceaux **sept**, plus six. §7.5 : M3 porté par **cinq** items. §8.9 n°4 : la dette « huit axiomes » n'est plus portée par aucun distracteur depuis la révision (a). §14 : ajout de `bank.yaml:51-57` (« ne recoupent aucun autre sommet »), des quatre lignes `per_misconception` existantes et de `habilete_ramp_transport_family`. §11.2 : l'affirmation « les dix refaits re-vérifiés » est corrigée. §16.9 : marqué FAIT. | §1, §4.2, §7.5, §8.9, §11.2, §14, §16 |
+
+### Recompte après ré-étiquetage
+
+Le recompte a été extrait **du texte de la table §11.1** par script, puis croisé avec le
+dictionnaire de vérification : les deux sont identiques item par item.
+
+| id | items R8 | liste |
+|---|---|---|
+| M1 | 6 | SA-36, 37, 38, 39, 40, 41 |
+| M2 | **4** (était 7) | SA-37, 39, 40, 41 |
+| M3 | 5 | SA-42, 43, 44, 45, 50 |
+| M4 | 8 | SA-42, 44, 45, 46, 47, 50, 51, 52 |
+| M5 | 6 | SA-45, 46, 47, 49, 51, 52 |
+| M6 | 4 | SA-48, 51, 52, 53 |
+| M7 | 3 | SA-38, 40, 48 |
+| M8 | 3 | SA-47, 49, 50 |
+| `generalisation-hative` | 4 (13 → 17) | SA-36, 37, 43, 44 |
+| `cloture-non-verifiee` | **2** (8 → 10) | SA-36, 41 |
+| `axiome-oublie` | **1** (7 → 8) | SA-38 |
+| `neutre-non-transporte` | **1** (5 → 6) | SA-53 |
+
+Tous les ids neufs restent ≥ 3. Habiletés 7 / 7 / 4 : **inchangées**. Ruptures de lockstep : SA-41,
+44, 46 et 52, **inchangées**. Q1b : 12 items sur 18, SA-42 à SA-53, **inchangé**.
+
+### Comment c'est vérifié
+
+Les scripts sont dans le bloc-notes de session. Ce sont des instruments de travail, **pas des
+fichiers du dépôt**.
+- `verify_b.py` réutilise les fonctions de `ev-arith/check.py`. Il fait **34** vérifications sur
+  les nombres changés, toutes vertes (`ERRORS: 0 / 34`). On y trouve :
+  - pour SA-41, la prémisse, la route $\lambda I$, les contre-exemples $\{I\}$ et
+    $M_2(\mathbb{Z})$, et les longueurs ;
+  - pour SA-50, la relation, le plan, la normale, le témoin, les rangs et les prémisses ;
+  - pour `r8-variation`, q1 à q3 entières et l'absence d'élément commun avec $B$ ou $Z$ ;
+  - pour SA-46, le rang 3 et les valeurs des modèles ;
+  - le recompte.
+- `collide_b.py` reprend la recherche de `ev-arith/collide.py`. **L'instrument a été réparé avant
+  d'être cru.** Sa normalisation supprimait `\ ` **avant** d'avoir protégé les sauts de ligne
+  LaTeX `\\`, si bien qu'une matrice écrite avec des espaces, comme `x & y \\ -y`, ne se trouvait
+  jamais. Une fois réparé, les témoins positifs se retrouvent : l'ancien $E$ à sa ligne d'affichage,
+  l'ancien $J$ au [C7]/[C10], les anciens vecteurs de SA-50 au [C8]/[C9b]. Les nouveaux objets, eux,
+  n'apparaissent **qu'**aux lignes de cette révision. *Corollaire : la recherche **textuelle** de
+  matrices de la passe arithmétique avait le même angle mort. E3 n'en dépendait pas : $J = B$ est
+  aussi comparé en arithmétique dans `check.py`, et $B$ s'écrit sans espaces aux lignes du
+  [C7]/[C10]. Mais une collision de matrice écrite avec des espaces, et non doublée d'une
+  comparaison numérique, lui aurait échappé. C'est à signaler au porteur de l'instrument.*
+
+### Ce que cette révision n'a PAS fait
+
+- **Aucune porte lancée**, aucun sceau touché (`indice-longueur` et `indice-absolu` restent à
+  lancer sur la rédaction finale des options, §11.2).
+- **La ré-écriture finale des options** reste à item-author : les textes du §11.1 sont des
+  canevas.
+- **Le cas M2 par variante (SA-37, SA-41)** est nommé, pas tranché (§11.2, point 3).

@@ -2212,7 +2212,47 @@ de ℓ ; quatre habiletés corrigées. **Deux questions restent au propriétaire
    différentielles » ; la leçon et SO-47/SO-49 vont jusqu'à ω₀ et T₀. **Défaut : dans le cadre** — `:315`
    imprime « établir et exploiter la période propre » en général et `:321` autorise la forme fermée sans
    amortissement, ce qui est le cas ici.
-Reste aussi à faire, hors de cette session : une figure qui oppose les deux enveloppes (« à partir des
-diagrammes x_G(t) », `:315`) dans « Deux types de frottement » ; un item qui fasse ÉTABLIR l'encadrement
+Reste aussi à faire, hors de cette session : ~~une figure qui oppose les deux enveloppes (« à partir des
+diagrammes x_G(t) », `:315`) dans « Deux types de frottement »~~ (faite le 2026-10-20 :
+`systemes-oscillants/media/frottement-fluide-solide.svg`) ; un item qui fasse ÉTABLIR l'encadrement
 de Riemann (le verbe imprimé, `maths-sm.yaml:219`) ; et, pour research-lead, les « LACUNE PRIORITAIRE —
 variable aléatoire / binomiale » de `maths-sm.yaml` et `maths-sexp.yaml`, devenues fausses.
+
+## 38. La numération construite, les espaces vectoriels re-calculés : quatre questions au propriétaire
+
+**LE FAIT.** Les deux critiques de vague 1 sur le chapitre CONSTRUIT « Les systèmes de numération »
+(`arithmetique`, chapitre 10 ; rapports `docs/audits/critiques/numeration-build-{pedagogie,fidelite}.md`) :
+FIX THEN SHIP, aucune sortie du cadre, aucune erreur sur la centaine de nombres recalculés. Une seule
+affirmation fausse, relevée par les DEUX critiques indépendamment : dans le raisonnement de l'exercice,
+« sept entiers consécutifs contiennent UN SEUL multiple de 8 » (au plus un — il peut n'y en avoir aucun).
+Les correctifs (lemme, preuve de l'existence et de l'unicité de l'écriture, deux engagements réels de
+plus, multiplication posée en tableau, opérations entre deux bases, ordre des questions) sont appliqués
+le jour même. La passe arithmétique indépendante de la spec espaces vectoriels a trouvé une clé fausse
+(SA-41) et deux collisions (SA-50, la matrice J de la variation) : révision (b) de la spec, 34/34
+vérifications exactes.
+
+**LES QUESTIONS (défaut écrit, pour ne pas bloquer).**
+
+1. *La notation d'une écriture en base.* La leçon prend l'indice $\overline{a_p\cdots a_0}_{(b)}$ comme
+   forme principale et nomme l'exposant en une phrase. Le rapport de vérification
+   (`docs/cadre/sources/verification-numeration-2026-09-28.md:314-318`) penchait pour l'exposant, sans
+   l'imposer : les trois sources vues se partagent 1–1–1, sans majorité. **Défaut : garder l'indice.**
+   Le jour où un item à réponse libre est écrit sur la numération, il doit accepter les deux formes.
+2. *Les bases au-delà de 10.* Aucune base supérieure à 9 dans le chapitre, donc aucun chiffre-lettre. C'est
+   un CHOIX, pas une frontière : `maths-sm.yaml:332` dit « une base donnée » sans plafond, et la source A
+   (Moustaoui, 2 Bac SM, page vue) donne des exemples en base 2, 8 et **12** (`verification…:89-91`).
+   **Défaut : plafond à 9** tant que la question Q1(b) de la spec n'est pas tranchée ; si elle l'est dans
+   l'autre sens, un exemple en base 12 (deux chiffres neufs) et un item.
+3. *Espaces vectoriels, SA-37 et SA-41.* Les deux portent le modèle M2 seulement sous une variante
+   (« testé sur une seule ligne », « sous-anneau ») ; la forme simple de M2 y atteint la clé. Les retirer
+   ferait tomber M2 à deux items, sous le plancher. **Défaut : garder les étiquettes de variante**, écrites
+   au §11.2 point 3 de la spec.
+4. *Espaces vectoriels, SA-53 C → `neutre-non-transporte`.* L'ajustement est lâche : le libellé de l'id
+   parle d'isomorphisme, ici le neutre est recopié d'une loi à l'autre. **Défaut : garder, la ligne le
+   dit** ; sinon, élargir la description de l'id au moment d'écrire les items.
+
+**FAIT EN PASSANT.** `maths-sexp.yaml` nomme désormais les systèmes de numération dans l'exclusion de
+l'arithmétique (le slug entier était déjà hors SExp ; c'est la liste qui se taisait). Le fait (i) de la
+spec de numération, « aucune ligne ne cite le chapitre 10 ni 11 », était faux dans la lettre : deux
+« chapitres 1 à 10 » (une plage, que `grep -o` ne voit pas) — mis à jour dans le commit du chapitre, et
+la porte `carte-chapitres` lit les plages.
