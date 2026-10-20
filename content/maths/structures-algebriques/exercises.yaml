@@ -317,6 +317,17 @@ exercises:
   # d'étape renvoient au chapitre 11 au lieu d'un « chapitre antérieur du
   # cursus » — la même réécriture est faite dans bank.yaml ; (3) l'intro ne dit
   # PAS ce qui reste à démontrer en q2 : c'est la réponse, c'est à l'élève.
+  # RÉVISION 2026-10-20 (critiques vague 1 sur le chapitre construit,
+  # pédagogie B-1 = fidélité M3, et pédagogie I-3) : le reasoning et les
+  # étapes de q1 recochaient les QUATRE axiomes, associativité comprise — la
+  # rédaction que les chapitres 5 et 11 disent de ne pas écrire. Ils suivent
+  # désormais le critère du sous-groupe du chapitre 5 (O dans E, stable pour
+  # +, opposé), avec « l'associativité est héritée, on ne l'écrit pas » comme
+  # décision d'expert ; le renvoi mort au « sujet 2022 » est retiré. Les
+  # égalités en chaîne de q1 et q2 sont coupées en une transformation par
+  # ligne. Couche maison seulement : stems, barème et énoncé intacts. Même
+  # texte, à l'octet, dans bank.yaml → bk-2023-n-x5 (le jumelage reste
+  # aligné).
   - id: r8-bac
     title: "Exercice de type bac — sous-groupe additif et sous-espace vectoriel de M₂(ℝ) (2023)"
     sourcing:
@@ -350,20 +361,24 @@ exercises:
         stem: |-
           **(0,5 pt)** Montrer que $E$ est un sous-groupe de $(M_2(\mathbb{R}), +)$.
         reasoning: |-
-          Montrer que $E$ est un sous-groupe de $(M_2(\mathbb{R}),+)$, c'est montrer que $(E,+)$ est **lui-même** un groupe — la même démarche qu'au chapitre 4, mais restreinte à $E$ : on recoche les quatre axiomes, un par un, à l'intérieur de $E$. C'est exactement le geste déjà mené pour l'ensemble $E$ du sujet 2022 (matrices à coefficients entiers), ici avec des coefficients réels.
+          C'est le critère du sous-groupe du chapitre 5 : trois conditions — la matrice nulle $O$, neutre de $+$, est dans $E$ ; $E$ est stable pour $+$ ; l'opposé de chaque élément de $E$ reste dans $E$. Pas une de plus : l'associativité de $+$ est héritée de $M_2(\mathbb{R})$, donc on ne l'écrit pas. C'est une décision d'expert, pas un oubli — la redémontrer sur $E$ ne prouverait rien de plus, et ce serait refaire le chapitre 4 sur un ensemble qui l'a déjà reçue de $M_2(\mathbb{R})$.
 
-          La stabilité se lit directement sur l'addition matricielle, coefficient par coefficient : le résultat reste de la forme $M(\cdot,\cdot)$. L'associativité est héritée de $M_2(\mathbb{R})$ tout entier. Le neutre $O=M(0,0)$ et l'opposé $-M(x,y)=M(-x,-y)$ restent eux aussi de cette forme — les quatre axiomes tiennent dans $E$.
+          Pour chaque condition, on calcule, puis on **reconnaît la forme** $M(\cdot,\cdot)$ : la case en haut à droite donne le second paramètre, seul ; la case en haut à gauche, qui vaut leur somme, donne alors le premier ; il reste à vérifier que les deux cases du bas valent bien le double du second et la différence des deux.
         steps:
-          - math: 'M(x,y)+M(a,b) = \begin{pmatrix} x+y & y \\ 2y & x-y \end{pmatrix} + \begin{pmatrix} a+b & b \\ 2b & a-b \end{pmatrix} = \begin{pmatrix} (x+a)+(y+b) & y+b \\ 2(y+b) & (x+a)-(y+b) \end{pmatrix}'
-            note: "Addition matricielle coefficient par coefficient, avec (a,b) pour le second couple."
+          - math: 'O = M(0,0) \in E'
+            note: "Première condition, la plus courte : avec x = 0 et y = 0, les quatre coefficients de M(x,y) sont nuls. La matrice nulle, neutre de +, est dans E."
+          - math: 'M(x,y)+M(a,b) = \begin{pmatrix} (x+y)+(a+b) & y+b \\ 2y+2b & (x-y)+(a-b) \end{pmatrix}'
+            note: "Deuxième condition, stable pour + : deux éléments quelconques, avec (a,b) pour le second couple, additionnés coefficient par coefficient. On ne simplifie rien encore."
+          - math: '\begin{pmatrix} (x+y)+(a+b) & y+b \\ 2y+2b & (x-y)+(a-b) \end{pmatrix} = \begin{pmatrix} (x+a)+(y+b) & y+b \\ 2(y+b) & (x+a)-(y+b) \end{pmatrix}'
+            note: "Le second paramètre se lit en haut à droite : y + b ; la case en haut à gauche donne alors x + a. On regroupe les trois autres cases autour de ces deux sommes."
           - math: 'M(x,y)+M(a,b) = M(x+a,\ y+b) \in E'
-            note: "E est stable pour + : le résultat est encore de la forme M(·,·)."
-          - math: '+ \ \text{associative sur } M_2(\mathbb{R}) \ (\text{fait général}) \ \Longrightarrow\ \text{associative sur } E'
-            note: "Héritée de M2(R) tout entier, comme pour l'ensemble E du sujet 2022."
-          - math: 'O = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} = M(0,0) \in E, \qquad -M(x,y) = M(-x,\ -y) \in E'
-            note: "Le neutre O et l'opposé de chaque élément restent de la forme M(·,·) : ils sont dans E."
+            note: "La somme a la forme M(·,·) : E est stable pour +."
+          - math: '-M(x,y) = \begin{pmatrix} -x-y & -y \\ -2y & -x+y \end{pmatrix}'
+            note: "Troisième condition, l'opposé : chaque coefficient change de signe."
+          - math: '-M(x,y) = M(-x,\ -y) \in E'
+            note: "Second paramètre lu en haut à droite : −y ; en haut à gauche, −x − y donne alors −x. En bas, 2(−y) = −2y et (−x) − (−y) = −x + y : l'opposé est dans E."
           - math: 'E \ \text{est un sous-groupe de} \ (M_2(\mathbb{R}),+)'
-            note: "Les quatre axiomes sont vérifiés dans E."
+            note: "Les trois conditions du critère du chapitre 5 tiennent. Remarque ce qui n'a pas été écrit : pas une ligne sur l'associativité, héritée de M₂(ℝ). La rédiger sur E serait l'erreur inverse — du temps passé à prouver ce qu'on a déjà."
       - id: q2
         stem: |-
           **(0,25 pt)** Montrer que $E$ est un sous-espace vectoriel de $(M_2(\mathbb{R}), +, \cdot)$.
@@ -374,15 +389,21 @@ exercises:
         steps:
           - math: 'E \neq \varnothing \quad (O = M(0,0) \in E,\ \text{q1}), \qquad E \ \text{stable pour} \ + \quad (\text{q1})'
             note: "Deux des trois conditions d'un sous-espace vectoriel (critère du chapitre 11), déjà établies."
-          - math: '\lambda \cdot M(x,y) = \lambda\begin{pmatrix} x+y & y \\ 2y & x-y \end{pmatrix} = \begin{pmatrix} \lambda(x+y) & \lambda y \\ 2\lambda y & \lambda(x-y) \end{pmatrix}'
+          - math: '\lambda \cdot M(x,y) = \begin{pmatrix} \lambda(x+y) & \lambda y \\ 2\lambda y & \lambda(x-y) \end{pmatrix}'
             note: "Multiplication de chaque coefficient de M(x,y) par le réel λ."
-          - math: '= \begin{pmatrix} \lambda x+\lambda y & \lambda y \\ 2\lambda y & \lambda x-\lambda y \end{pmatrix} = M(\lambda x,\ \lambda y) \in E'
+          - math: '\begin{pmatrix} \lambda(x+y) & \lambda y \\ 2\lambda y & \lambda(x-y) \end{pmatrix} = \begin{pmatrix} \lambda x+\lambda y & \lambda y \\ 2\lambda y & \lambda x-\lambda y \end{pmatrix}'
+            note: "Second paramètre lu en haut à droite : λy. On développe les deux cases qui mélangent les paramètres, pour faire apparaître λx."
+          - math: '\lambda \cdot M(x,y) = M(\lambda x,\ \lambda y) \in E'
             note: "Le résultat garde exactement la forme M(·,·) : E est stable pour la multiplication par un scalaire."
           - math: 'E \ \text{est un sous-espace vectoriel de} \ (M_2(\mathbb{R}),+,\cdot)'
             note: "Non vide, stable pour + et pour · : les trois conditions du critère du chapitre 11 sont réunies."
 
   # ── r8-variation — jumeau frais du sommet du chapitre 11 (PAS un vrai sujet) ─
   # Même chaîne que les deux attestations (sous-groupe → sous-espace → base),
+  # puis une q4 qui monte le bloc E du chapitre (application linéaire, noyau,
+  # image : φ(x, y) = M(x, y), ajoutée le 2026-10-20, pédagogie I-2 — aucun
+  # nombre de la banque ni du sommet sourcé ; ker φ = {(0, 0)} et Im φ = E
+  # recalculés à la main sur la définition de E),
   # sur un ensemble qui CONTIENT I, pour que la configuration (I, J) du papier
   # soit marchée au moins une fois (spec §12.2.2, correctif F5). Ensemble de la
   # révision (b) du 2026-10-20 : E = {(x, y ; −y, x − y)}, J = (0, 1 ; −1, −1),
@@ -392,7 +413,7 @@ exercises:
   # sujet de maths du dépôt — l'attesté porte le sommet sourcé, le dérivé porte
   # la variation (spec §12.2.2, remarque pour l'auteur).
   - id: r8-variation
-    title: "Variation fraîche — un autre ensemble de matrices, et sa base (I, J)"
+    title: "Variation fraîche — un autre ensemble de matrices, sa base (I, J), et l'application qui le fabrique"
     sourcing:
       status: not-applicable
       note: >-
@@ -400,12 +421,14 @@ exercises:
         être un sujet réel. Le sujet réel est r8-bac (2023, sourcé). Même
         chaîne que les deux attestations (sous-groupe → sous-espace → base),
         sur un ensemble qui CONTIENT I, afin que la configuration (I, J) du
-        papier soit marchée au moins une fois. Ensemble et nombres choisis
+        papier soit marchée au moins une fois ; puis une question d'application
+        linéaire (noyau et image de φ(x, y) = M(x, y)), qu'aucun sujet du dépôt
+        n'atteste — elle fait monter au sommet le dernier bloc du chapitre. Ensemble et nombres choisis
         pour des vérifications exactes faites à la main, deux fois, puis
         re-vérifiés en arithmétique exacte (spec, journal de la révision (b)
         du 2026-10-20).
     intro: |-
-      Même chaîne que le sujet de 2023, sur un autre ensemble de matrices — et une question de plus, celle de la base. On rappelle que $(M_2(\mathbb{R}),+,\cdot)$ est un espace vectoriel réel, de vecteur nul la matrice $O$, et l'on considère
+      Même chaîne que le sujet de 2023, sur un autre ensemble de matrices — et deux questions de plus : la base, puis l'application qui fabrique les éléments de l'ensemble. On rappelle que $(M_2(\mathbb{R}),+,\cdot)$ est un espace vectoriel réel, de vecteur nul la matrice $O$, et l'on considère
 
       $$E = \left\{ M(x,y) = \begin{pmatrix} x & y \\ -y & x-y \end{pmatrix} \ /\ (x,y) \in \mathbb{R}^2 \right\} \subset M_2(\mathbb{R})$$
 
@@ -471,3 +494,32 @@ exercises:
             note: "Si elle est nulle, la case en haut à gauche donne α = 0, et celle en haut à droite β = 0 : (I, J) est libre."
           - math: '\dim E = 2'
             note: "(I, J) est libre et génératrice : c'est une base de E, de deux matrices."
+      - id: q4
+        part: "Partie C — L'application qui fabrique $E$"
+        stem: |-
+          On considère l'application $\varphi : \mathbb{R}^2 \to M_2(\mathbb{R})$ définie par $\varphi(x,y) = M(x,y)$. Montrer que $\varphi$ est linéaire, déterminer $\ker \varphi$ et $\mathrm{Im}\,\varphi$, puis en déduire que tout élément de $E$ a un antécédent et un seul par $\varphi$.
+        reasoning: |-
+          Trois choses à établir, dans l'ordre où elles se servent l'une l'autre. **La linéarité d'abord**, et elle ne demande aucun calcul neuf : la question 1 a établi $M(x,y) + M(x',y') = M(x+x',\ y+y')$, et la question 2 $\lambda \cdot M(x,y) = M(\lambda x,\ \lambda y)$. Avant d'écrire, relis-les : ce sont exactement les deux formules dont $\varphi$ a besoin.
+
+          **Le noyau ensuite** : les couples $(x,y)$ tels que $M(x,y) = O$, et les paramètres se lisent en haut, là où ils sont seuls. Le réflexe à éviter : écrire « $\ker \varphi = \{(0,0)\}$ puisque $\varphi$ est linéaire ». La linéarité dit seulement que $(0,0)$ est **dans** le noyau ; qu'il y soit seul, c'est le calcul qui le dit. **L'image enfin** : les valeurs de $\varphi$ sont les $M(x,y)$, c'est-à-dire, par définition, les éléments de $E$ — ici, aucun antécédent à construire, l'énoncé l'a donné en définissant $E$.
+
+          La conclusion se lit sur ces deux résultats : un noyau réduit à $(0,0)$ donne l'injectivité, donc au plus un antécédent ; une image égale à $E$ donne au moins un antécédent. Et puisque $\varphi(x,y) = xI + yJ$ (question 3), c'est la base $(I,J)$ lue une seconde fois : « libre » se lit sur le noyau, « génératrice » sur l'image.
+        steps:
+          - math: '\varphi\big(\lambda (x,y) + \mu (x'',y'')\big) = M(\lambda x + \mu x'',\ \lambda y + \mu y'')'
+            note: "Linéarité : on calcule φ sur une combinaison quelconque. Le couple λ(x, y) + μ(x′, y′) a pour coordonnées λx + μx′ et λy + μy′."
+          - math: 'M(\lambda x + \mu x'',\ \lambda y + \mu y'') = M(\lambda x,\ \lambda y) + M(\mu x'',\ \mu y'')'
+            note: "La formule de la somme, établie à la question 1, lue de droite à gauche. Aucun coefficient à recalculer : c'est l'ordre des questions qui travaille."
+          - math: 'M(\lambda x,\ \lambda y) + M(\mu x'',\ \mu y'') = \lambda \cdot M(x,y) + \mu \cdot M(x'',y'')'
+            note: "La formule de la loi externe, établie à la question 2, appliquée deux fois. On obtient λφ(x, y) + μφ(x′, y′) : φ est linéaire."
+          - math: '\varphi(x,y) = O \iff \begin{pmatrix} x & y \\ -y & x-y \end{pmatrix} = O'
+            note: "Le noyau : les couples envoyés sur la matrice nulle. Ne t'arrête pas à φ(0, 0) = O — cela dit que (0, 0) est dans le noyau, pas qu'il y est seul."
+          - math: '\begin{pmatrix} x & y \\ -y & x-y \end{pmatrix} = O \implies x = 0 \ \text{et} \ y = 0'
+            note: "On lit les paramètres là où ils sont seuls : la case en haut à gauche donne x = 0, celle en haut à droite y = 0."
+          - math: '\ker \varphi = \{(0,0)\}'
+            note: "Et réciproquement, φ(0, 0) = M(0, 0) = O : le noyau est réduit à (0, 0). Par l'équivalence démontrée dans le chapitre, φ est injective."
+          - math: '\mathrm{Im}\,\varphi = \{M(x,y) \ /\ (x,y) \in \mathbb{R}^2\}'
+            note: "L'image : l'ensemble des valeurs prises par φ quand (x, y) parcourt ℝ²."
+          - math: '\{M(x,y) \ /\ (x,y) \in \mathbb{R}^2\} = E'
+            note: "C'est mot pour mot la définition de E : tout élément de E est atteint, et φ ne prend aucune valeur hors de E."
+          - math: '\varphi \ \text{est une bijection de} \ \mathbb{R}^2 \ \text{sur} \ E'
+            note: "Injective : au plus un antécédent ; image égale à E : au moins un. Tout élément de E a donc un antécédent et un seul — la même information que « (I, J) est une base de E », puisque φ(x, y) = xI + yJ."

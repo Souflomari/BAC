@@ -2563,3 +2563,23 @@ fichiers du dépôt**.
 - **La ré-écriture finale des options** reste à item-author : les textes du §11.1 sont des
   canevas.
 - **Le cas M2 par variante (SA-37, SA-41)** est nommé, pas tranché (§11.2, point 3).
+
+## Revision 2026-10-20 (c) — after the wave-1 critics on the BUILT chapter
+
+Reports: `docs/audits/critiques/espaces-vectoriels-build-{pedagogie,fidelite}.md` (both FIX THEN SHIP,
+no boundary breach, no arithmetic error). Where the build now departs from this spec, the build wins:
+- **§7.5** — M6 is no longer measured by the end items alone: a fifth engagement point,
+  `cp-r8-pari-noyau` (what does ker f contain, f(x,y,z) = (x − y, y − z)), sits before the derivation
+  of the kernel (pedagogy I-1).
+- **§6.7** — bloc E is no longer « il lit », and `r8-variation` has four questions: q4 makes the
+  student prove φ(x,y) = M(x,y) linear, find ker φ and Im φ, and conclude (pedagogy I-2).
+- **§10.3 / [C6]** — the set V is parametrised as `Y(a,b)`, not `M(a,b)`: the chapter already used
+  M(a,b) for chapter 5's F, with M(1,0) = I (fidelity M2).
+- **§12.2** — `r8-bac` q1's reasoning and steps follow the chapter-5 three-condition criterion
+  (associativity inherited, not written), mirrored in `bank.yaml` (pedagogy B-1 = fidelity M3); the
+  stem and barème are untouched. The rule « repris tels quels » applies to the STEM, not to our notes.
+- **§11** — five items reworked so the key is no longer the only option with its verdict; the bank is
+  ordered by bloc (pedagogy I-5, m-5). dim{0_E} = 0 and « one non-zero vector is free » are now stated
+  in the prose (fidelity M1, L4).
+- Owner points (length, unattested load, checkpoint vocabulary, page order): `DECISIONS-EN-ATTENTE.md`
+  §38 points 5–8.

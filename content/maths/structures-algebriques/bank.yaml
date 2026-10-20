@@ -35,7 +35,7 @@
 # recensement borné aux sujets SM est donc l'état attendu, pas un signal
 # de recherche incomplète ; introuvable = absent, jamais inventé.
 # Raisonnement rédigé à la voix experte de la maison sur 100 % des
-# questions, citant les rungs R1–R7 ; barème transcrit tel quel dans les
+# questions, citant les rungs R1–R8 ; barème transcrit tel quel dans les
 # énoncés ; conventions KaTeX (block scalars pour la prose, KaTeX brut
 # entre apostrophes simples dans steps[].math, notes sans backslash entre
 # guillemets doubles).
@@ -127,6 +127,17 @@
 # chapitre est une amélioration éditoriale identifiée, non faite ici pour
 # ne pas mêler une réécriture de fond à l'ajout d'une entrée — à
 # l'arbitrage de l'owner.
+# >>> MISE À JOUR 2026-10-20 — UNE des cinq est rattachée : bk-2023-n-x5 q1.
+# Jumelée au sommet r8-bac du chapitre 11, elle y enseignait la rédaction à
+# quatre axiomes, associativité comprise, que les chapitres 5 et 11 disent
+# de ne pas écrire (critiques vague 1 du chapitre construit : pédagogie
+# B-1, fidélité M3). Son reasoning et ses étapes suivent désormais le
+# critère du sous-groupe à trois conditions (O dans E, stable pour +,
+# opposé), « l'associativité est héritée, on ne l'écrit pas » en décision
+# d'expert, égalités en chaîne coupées une par ligne — même texte, à
+# l'octet, que r8-bac q1-q2 dans exercises.yaml. Couche maison seulement :
+# stem et barème intacts. Les quatre autres (bk-2019-n-x1 q7, bk-2022-n-x4
+# q1, bk-2023-n-x5 q8, bk-2024-n-x4 q8) restent à l'arbitrage de l'owner.
 #
 # SCOPE NOTE 2 (divulgation honnête, authoring-side — INTÈGRE, nouveau
 # 2026-08-05) : bk-2022-n-x4 (questions 4-a à 4-c) demande de montrer que
@@ -1471,8 +1482,9 @@ entries:
         supposé). MISE À JOUR (revue vague 1, 2026-09-12) : ce vocabulaire
         n'est plus « jamais nommé dans lesson.md » — le chapitre 8
         « Anneau intègre » le définit. Le pont reste valable ; il n'est
-        simplement plus contraint. q1 et q8 relèvent en outre du trou
-        « sous-groupe » déjà documenté (SCOPE NOTE 1).
+        simplement plus contraint. q1 et q8 relevaient en outre du trou
+        « sous-groupe » documenté en SCOPE NOTE 1 ; q1 est rattachée au
+        critère du chapitre 5 depuis le 2026-10-20 (même note), q8 non.
     intro: |-
       **Structures algébriques (examen national, session normale 2023, Sciences Mathématiques).**
 
@@ -1487,20 +1499,24 @@ entries:
         stem: |-
           **(0,5 pt)** Montrer que $E$ est un sous-groupe de $(M_2(\mathbb{R}), +)$.
         reasoning: |-
-          Montrer que $E$ est un sous-groupe de $(M_2(\mathbb{R}),+)$, c'est montrer que $(E,+)$ est **lui-même** un groupe — la même démarche qu'au chapitre 4, mais restreinte à $E$ : on recoche les quatre axiomes, un par un, à l'intérieur de $E$. C'est exactement le geste déjà mené pour l'ensemble $E$ du sujet 2022 (matrices à coefficients entiers), ici avec des coefficients réels.
+          C'est le critère du sous-groupe du chapitre 5 : trois conditions — la matrice nulle $O$, neutre de $+$, est dans $E$ ; $E$ est stable pour $+$ ; l'opposé de chaque élément de $E$ reste dans $E$. Pas une de plus : l'associativité de $+$ est héritée de $M_2(\mathbb{R})$, donc on ne l'écrit pas. C'est une décision d'expert, pas un oubli — la redémontrer sur $E$ ne prouverait rien de plus, et ce serait refaire le chapitre 4 sur un ensemble qui l'a déjà reçue de $M_2(\mathbb{R})$.
 
-          La stabilité se lit directement sur l'addition matricielle, coefficient par coefficient : le résultat reste de la forme $M(\cdot,\cdot)$. L'associativité est héritée de $M_2(\mathbb{R})$ tout entier. Le neutre $O=M(0,0)$ et l'opposé $-M(x,y)=M(-x,-y)$ restent eux aussi de cette forme — les quatre axiomes tiennent dans $E$.
+          Pour chaque condition, on calcule, puis on **reconnaît la forme** $M(\cdot,\cdot)$ : la case en haut à droite donne le second paramètre, seul ; la case en haut à gauche, qui vaut leur somme, donne alors le premier ; il reste à vérifier que les deux cases du bas valent bien le double du second et la différence des deux.
         steps:
-          - math: 'M(x,y)+M(a,b) = \begin{pmatrix} x+y & y \\ 2y & x-y \end{pmatrix} + \begin{pmatrix} a+b & b \\ 2b & a-b \end{pmatrix} = \begin{pmatrix} (x+a)+(y+b) & y+b \\ 2(y+b) & (x+a)-(y+b) \end{pmatrix}'
-            note: "Addition matricielle coefficient par coefficient, avec (a,b) pour le second couple."
+          - math: 'O = M(0,0) \in E'
+            note: "Première condition, la plus courte : avec x = 0 et y = 0, les quatre coefficients de M(x,y) sont nuls. La matrice nulle, neutre de +, est dans E."
+          - math: 'M(x,y)+M(a,b) = \begin{pmatrix} (x+y)+(a+b) & y+b \\ 2y+2b & (x-y)+(a-b) \end{pmatrix}'
+            note: "Deuxième condition, stable pour + : deux éléments quelconques, avec (a,b) pour le second couple, additionnés coefficient par coefficient. On ne simplifie rien encore."
+          - math: '\begin{pmatrix} (x+y)+(a+b) & y+b \\ 2y+2b & (x-y)+(a-b) \end{pmatrix} = \begin{pmatrix} (x+a)+(y+b) & y+b \\ 2(y+b) & (x+a)-(y+b) \end{pmatrix}'
+            note: "Le second paramètre se lit en haut à droite : y + b ; la case en haut à gauche donne alors x + a. On regroupe les trois autres cases autour de ces deux sommes."
           - math: 'M(x,y)+M(a,b) = M(x+a,\ y+b) \in E'
-            note: "E est stable pour + : le résultat est encore de la forme M(·,·)."
-          - math: '+ \ \text{associative sur } M_2(\mathbb{R}) \ (\text{fait général}) \ \Longrightarrow\ \text{associative sur } E'
-            note: "Héritée de M2(R) tout entier, comme pour l'ensemble E du sujet 2022."
-          - math: 'O = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} = M(0,0) \in E, \qquad -M(x,y) = M(-x,\ -y) \in E'
-            note: "Le neutre O et l'opposé de chaque élément restent de la forme M(·,·) : ils sont dans E."
+            note: "La somme a la forme M(·,·) : E est stable pour +."
+          - math: '-M(x,y) = \begin{pmatrix} -x-y & -y \\ -2y & -x+y \end{pmatrix}'
+            note: "Troisième condition, l'opposé : chaque coefficient change de signe."
+          - math: '-M(x,y) = M(-x,\ -y) \in E'
+            note: "Second paramètre lu en haut à droite : −y ; en haut à gauche, −x − y donne alors −x. En bas, 2(−y) = −2y et (−x) − (−y) = −x + y : l'opposé est dans E."
           - math: 'E \ \text{est un sous-groupe de} \ (M_2(\mathbb{R}),+)'
-            note: "Les quatre axiomes sont vérifiés dans E."
+            note: "Les trois conditions du critère du chapitre 5 tiennent. Remarque ce qui n'a pas été écrit : pas une ligne sur l'associativité, héritée de M₂(ℝ). La rédiger sur E serait l'erreur inverse — du temps passé à prouver ce qu'on a déjà."
       - id: q2
         stem: |-
           **(0,25 pt)** Montrer que $E$ est un sous-espace vectoriel de $(M_2(\mathbb{R}), +, \cdot)$.
@@ -1511,9 +1527,11 @@ entries:
         steps:
           - math: 'E \neq \varnothing \quad (O = M(0,0) \in E,\ \text{q1}), \qquad E \ \text{stable pour} \ + \quad (\text{q1})'
             note: "Deux des trois conditions d'un sous-espace vectoriel (critère du chapitre 11), déjà établies."
-          - math: '\lambda \cdot M(x,y) = \lambda\begin{pmatrix} x+y & y \\ 2y & x-y \end{pmatrix} = \begin{pmatrix} \lambda(x+y) & \lambda y \\ 2\lambda y & \lambda(x-y) \end{pmatrix}'
+          - math: '\lambda \cdot M(x,y) = \begin{pmatrix} \lambda(x+y) & \lambda y \\ 2\lambda y & \lambda(x-y) \end{pmatrix}'
             note: "Multiplication de chaque coefficient de M(x,y) par le réel λ."
-          - math: '= \begin{pmatrix} \lambda x+\lambda y & \lambda y \\ 2\lambda y & \lambda x-\lambda y \end{pmatrix} = M(\lambda x,\ \lambda y) \in E'
+          - math: '\begin{pmatrix} \lambda(x+y) & \lambda y \\ 2\lambda y & \lambda(x-y) \end{pmatrix} = \begin{pmatrix} \lambda x+\lambda y & \lambda y \\ 2\lambda y & \lambda x-\lambda y \end{pmatrix}'
+            note: "Second paramètre lu en haut à droite : λy. On développe les deux cases qui mélangent les paramètres, pour faire apparaître λx."
+          - math: '\lambda \cdot M(x,y) = M(\lambda x,\ \lambda y) \in E'
             note: "Le résultat garde exactement la forme M(·,·) : E est stable pour la multiplication par un scalaire."
           - math: 'E \ \text{est un sous-espace vectoriel de} \ (M_2(\mathbb{R}),+,\cdot)'
             note: "Non vide, stable pour + et pour · : les trois conditions du critère du chapitre 11 sont réunies."

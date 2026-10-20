@@ -11,6 +11,15 @@
 # les équivalences et les cinq annotations de raisonnement restent en prose.
 # Tous les nombres sont ceux du §6 de la spec, recalculés en arithmétique
 # exacte avant écriture. Aucun objet d'un bank.yaml ni d'exercises.yaml.
+#
+# Révision du 2026-10-20 (critiques de la vague 1 sur le chapitre construit) :
+# les éléments de V s'écrivent Y(a, b), et non plus M(a, b) — M(a, b) désigne
+# déjà les matrices de F à l'accroche, où M(1, 0) = I (fidélité M2) ; treize
+# notes portent désormais la DÉCISION et le réflexe fautif à l'étape où il
+# frappe, au lieu de redire le geste (pédagogie I-4, modèle :
+# content/pc/rlc-serie/derivations.yaml) ; la note finale de noyau-f
+# s'appuie sur « un seul vecteur non nul forme une famille libre », désormais
+# établi en prose juste après la définition de la dimension (fidélité L4).
 
 notion: structures-algebriques
 
@@ -19,19 +28,19 @@ derivations:
   - id: v-sous-espace
     title: "Les trois conditions, sur V"
     steps:
-      - math: 'O = M(0,0) \in V'
-        note: "Non vide : avec a = 0 et b = 0, les quatre coefficients de M(a, b) sont nuls. On commence par la condition la plus courte."
-      - math: 'M(a,b) + M(a'',b'') = \begin{pmatrix} a+a'' & (a+b)+(a''+b'') \\ (a-b)+(a''-b'') & b+b'' \end{pmatrix}'
-        note: "Stable pour + : deux éléments quelconques, écrits avec des lettres différentes, additionnés coefficient par coefficient. On ne simplifie rien encore."
+      - math: 'O = Y(0,0) \in V'
+        note: "Non vide : avec a = 0 et b = 0, les quatre coefficients de Y(a, b) sont nuls. On commence par la condition la plus courte — sans s'y arrêter : ce premier ✓ est le plus facile des trois, et à lui seul il ne prouve rien."
+      - math: 'Y(a,b) + Y(a'',b'') = \begin{pmatrix} a+a'' & (a+b)+(a''+b'') \\ (a-b)+(a''-b'') & b+b'' \end{pmatrix}'
+        note: "Stable pour + : deux éléments quelconques, écrits avec des lettres différentes, additionnés coefficient par coefficient. Le réflexe fautif serait d'additionner deux exemples chiffrés, ou deux fois Y(a, b) : on aurait vérifié un cas, pas la stabilité."
       - math: '\begin{pmatrix} a+a'' & (a+b)+(a''+b'') \\ (a-b)+(a''-b'') & b+b'' \end{pmatrix} = \begin{pmatrix} a+a'' & (a+a'')+(b+b'') \\ (a+a'')-(b+b'') & b+b'' \end{pmatrix}'
         note: "On lit la diagonale : $a + a'$ et $b + b'$ jouent les rôles de $a$ et de $b$. On regroupe les deux autres cases autour d'eux."
-      - math: '\begin{pmatrix} a+a'' & (a+a'')+(b+b'') \\ (a+a'')-(b+b'') & b+b'' \end{pmatrix} = M(a+a'',\ b+b'') \in V'
+      - math: '\begin{pmatrix} a+a'' & (a+a'')+(b+b'') \\ (a+a'')-(b+b'') & b+b'' \end{pmatrix} = Y(a+a'',\ b+b'') \in V'
         note: "Les deux autres cases valent bien la somme et la différence des paramètres lus : la forme est retrouvée."
-      - math: '\lambda \cdot M(a,b) = \begin{pmatrix} \lambda a & \lambda(a+b) \\ \lambda(a-b) & \lambda b \end{pmatrix}'
+      - math: '\lambda \cdot Y(a,b) = \begin{pmatrix} \lambda a & \lambda(a+b) \\ \lambda(a-b) & \lambda b \end{pmatrix}'
         note: "Stable pour · : un réel λ quelconque multiplie chacun des quatre coefficients."
       - math: '\begin{pmatrix} \lambda a & \lambda(a+b) \\ \lambda(a-b) & \lambda b \end{pmatrix} = \begin{pmatrix} \lambda a & \lambda a + \lambda b \\ \lambda a - \lambda b & \lambda b \end{pmatrix}'
         note: "Diagonale lue : λa et λb. On développe les deux autres cases pour les faire apparaître."
-      - math: '\begin{pmatrix} \lambda a & \lambda a + \lambda b \\ \lambda a - \lambda b & \lambda b \end{pmatrix} = M(\lambda a,\ \lambda b) \in V'
+      - math: '\begin{pmatrix} \lambda a & \lambda a + \lambda b \\ \lambda a - \lambda b & \lambda b \end{pmatrix} = Y(\lambda a,\ \lambda b) \in V'
         note: "Somme et différence des paramètres lus : le multiple a encore la forme voulue. Les trois conditions tiennent."
 
   # [C8] — une famille libre de R^3, par le système.
@@ -39,7 +48,7 @@ derivations:
     title: "Une combinaison nulle, résolue jusqu'au bout"
     steps:
       - math: '\alpha v_1 + \beta v_2 + \gamma v_3 = (\alpha+\beta,\ \beta+\gamma,\ \alpha+\gamma)'
-        note: "On calcule la combinaison générale, coordonnée par coordonnée."
+        note: "On calcule la combinaison générale, coordonnée par coordonnée. Pourquoi une combinaison, et pas les vecteurs deux par deux : « libre » parle des trois ensemble, et seule la combinaison les met ensemble."
       - math: '\alpha+\beta = 0, \qquad \beta+\gamma = 0, \qquad \alpha+\gamma = 0'
         note: "On impose qu'elle soit nulle : trois équations, deux inconnues dans chacune."
       - math: '\beta = -\alpha'
@@ -49,7 +58,7 @@ derivations:
       - math: '2\alpha = 0'
         note: "On reporte γ = α dans la troisième, α + γ = 0. Il ne reste qu'une inconnue : c'est le signal attendu."
       - math: '\alpha = 0, \qquad \beta = 0, \qquad \gamma = 0'
-        note: "Donc α = 0, puis β = −α = 0 et γ = α = 0 : la seule combinaison nulle est celle dont les coefficients sont nuls."
+        note: "Donc α = 0, puis β = −α = 0 et γ = α = 0. Si la dernière ligne avait été « 0 = 0 », α serait resté libre : une combinaison nulle à coefficients non nuls aurait existé, et la famille aurait été liée. Ici rien ne reste libre — la seule combinaison nulle est celle dont les coefficients sont nuls."
 
   # [C9b] (i) — les générateurs se lisent sur l'équation.
   - id: w-generateurs
@@ -73,7 +82,7 @@ derivations:
       - math: '(\alpha,\ 2\alpha+\beta,\ 3\beta) = (0,0,0) \implies \alpha = 0 \ \text{et} \ \beta = 0'
         note: "Libre : la première coordonnée donne α = 0, la troisième β = 0."
       - math: '(\alpha,\ 2\alpha+\beta,\ 3\beta) = (0,0,1)'
-        note: "Engendre-t-elle ℝ³ ? Un seul vecteur à tester, (0, 0, 1) : on cherche α et β."
+        note: "Engendre-t-elle ℝ³ ? Pour dire non, un seul vecteur sans écriture suffit — encore faut-il le choisir. Les deux premières coordonnées fixent déjà α et β ; la troisième n'a plus de marge. On prend donc un vecteur dont le début impose α = β = 0 et dont la fin le refuse : (0, 0, 1)."
       - math: '\alpha = 0 \quad \text{puis} \quad \beta = 0'
         note: "La première coordonnée donne α = 0 ; la deuxième, 2α + β = 0, donne alors β = 0."
       - math: '3\beta = 1 \implies 0 = 1'
@@ -83,10 +92,10 @@ derivations:
   - id: base-de-v
     title: "Génératrice, puis libre"
     steps:
-      - math: 'M(a,b) = aA + bB'
+      - math: 'Y(a,b) = aA + bB'
         note: "Génératrice : c'est l'écriture de l'expert, déjà contrôlée case par case. Tout élément de V est une combinaison de A et de B."
       - math: '\alpha A + \beta B = \begin{pmatrix} \alpha & \alpha+\beta \\ \alpha-\beta & \beta \end{pmatrix}'
-        note: "Libre : on calcule la combinaison générale."
+        note: "Libre, maintenant — une question séparée : avoir écrit tout V avec A et B ne dit rien de la liberté. Le seul test qui tranche est une combinaison quelconque, qu'on égale à O, puisque « libre » parle de la seule combinaison nulle."
       - math: '\begin{pmatrix} \alpha & \alpha+\beta \\ \alpha-\beta & \beta \end{pmatrix} = O \implies \alpha = 0 \ \text{et} \ \beta = 0'
         note: "Elle est nulle : la case en haut à gauche donne α = 0, celle en bas à droite β = 0. On lit les paramètres là où ils sont seuls."
       - math: '\dim V = 2'
@@ -99,7 +108,7 @@ derivations:
       - math: '\begin{pmatrix} x & y \\ z & t \end{pmatrix} = x\,E_{11} + y\,E_{12} + z\,E_{21} + t\,E_{22}'
         note: "Génératrice : chaque coefficient d'une matrice quelconque devient le poids de la matrice élémentaire qui porte sa case."
       - math: 'x\,E_{11} + y\,E_{12} + z\,E_{21} + t\,E_{22} = O \implies x = 0,\ y = 0,\ z = 0,\ t = 0'
-        note: "Libre : cette combinaison est la matrice de coefficients x, y, z, t ; elle n'est nulle que si les quatre le sont."
+        note: "Libre : cette combinaison est la matrice de coefficients x, y, z, t ; elle n'est nulle que si les quatre le sont. C'est cette ligne qui autorise à compter quatre, pas le nombre de lettres écrites : un ensemble de matrices écrit avec trois lettres peut n'avoir que deux dimensions, tu en verras un plus bas."
       - math: '\dim M_2(\mathbb{R}) = 4'
         note: "Quatre matrices, libres et génératrices : une base de quatre vecteurs."
 
@@ -114,7 +123,7 @@ derivations:
       - math: '\alpha u + \beta v + \gamma w = (\alpha+\gamma)\,u + (\beta+\gamma)\,v'
         note: "On remplace w par u + v : toute combinaison des trois s'écrit avec u et v seuls, donc G = Vect(u, v)."
       - math: '\alpha u + \beta v = (\alpha+2\beta,\ 2\alpha+\beta,\ -\alpha+\beta)'
-        note: "Reste à savoir si (u, v) est libre : on calcule la combinaison générale."
+        note: "Le réflexe fautif serait de s'arrêter ici et d'annoncer 2 : retirer w laisse une famille génératrice de deux vecteurs, pas encore une base. Reste à savoir si (u, v) est libre — on calcule la combinaison générale."
       - math: '-\alpha+\beta = 0 \implies \beta = \alpha'
         note: "La troisième équation est la plus courte : β = α."
       - math: '\alpha + 2\alpha = 0 \implies \alpha = 0'
@@ -131,7 +140,7 @@ derivations:
       - math: 'G'' = \mathrm{Vect}(I, K)'
         note: "Quand a et b parcourent ℝ, la somme a + b parcourt tout ℝ (prends b = 0) : les éléments de G′ sont exactement les combinaisons de I et de K."
       - math: '\alpha I + \beta K = \begin{pmatrix} \alpha & \beta \\ \beta & \alpha \end{pmatrix}'
-        note: "(I, K) est-elle libre ? On calcule la combinaison générale."
+        note: "Deux matrices engendrent G′, et ce n'est pas encore « dimension 2 » : il faut que (I, K) soit libre. Combinaison quelconque, qu'on égale à O."
       - math: '\begin{pmatrix} \alpha & \beta \\ \beta & \alpha \end{pmatrix} = O \implies \alpha = 0 \ \text{et} \ \beta = 0'
         note: "La diagonale donne α = 0, les coins β = 0 : (I, K) est libre."
       - math: '\dim G'' = 2'
@@ -152,7 +161,7 @@ derivations:
       - math: '(x,\ y,\ -x-y) = x\,(1,0,-1) + y\,(0,1,-1)'
         note: "L'élément quelconque de P, écrit avec les lettres libres x et y. Les générateurs sont les vecteurs qui les multiplient."
       - math: '\alpha\,(1,0,-1) + \beta\,(0,1,-1) = (\alpha,\ \beta,\ -\alpha-\beta)'
-        note: "La famille est-elle libre ? On calcule la combinaison générale."
+        note: "Deux générateurs lus sur l'équation ne font pas encore une base : la liberté se vérifie, même quand elle a l'air évidente. Combinaison quelconque, égalée au vecteur nul."
       - math: '(\alpha,\ \beta,\ -\alpha-\beta) = (0,0,0) \implies \alpha = 0 \ \text{et} \ \beta = 0'
         note: "Les deux premières coordonnées suffisent : α = 0 et β = 0. La famille est libre."
       - math: '\dim P = 2'
@@ -165,11 +174,11 @@ derivations:
       - math: 'f(x,y,z) = (0,0) \iff x - y = 0 \ \text{et} \ y - z = 0'
         note: "On traduit « f(x, y, z) est le vecteur nul » coordonnée par coordonnée."
       - math: 'x - y = 0 \ \text{et} \ y - z = 0 \iff x = y \ \text{et} \ y = z'
-        note: "Deux équations, trois inconnues : une lettre restera libre."
+        note: "Deux équations, trois inconnues : une lettre restera libre. Le réflexe fautif serait de conclure x = y = z = 0, comme si chaque équation fixait une lettre — c'est lui qui fait croire que le noyau d'une application linéaire se réduit au vecteur nul."
       - math: '\ker f = \{(t,t,t) \ /\ t \in \mathbb{R}\}'
         note: "Les trois coordonnées sont égales ; on nomme t leur valeur commune."
       - math: '\ker f = \mathrm{Vect}\big((1,1,1)\big)'
-        note: "Chaque élément du noyau s'écrit t·(1, 1, 1) : un générateur non nul, donc le noyau est de dimension 1."
+        note: "Chaque élément du noyau s'écrit t·(1, 1, 1). Un seul vecteur non nul forme une famille libre : (1, 1, 1) est une base du noyau, qui est de dimension 1."
 
   # [C16] — l'image de f : compter les degrés de liberté, choisir, remonter.
   - id: image-f
@@ -178,7 +187,7 @@ derivations:
       - math: 'f(x,y,z) = (s,t) \iff x - y = s \ \text{et} \ y - z = t'
         note: "Pour un (s, t) quelconque, on cherche un antécédent : deux équations, trois inconnues."
       - math: 'z = 0'
-        note: "Il reste un degré de liberté : on le dépense en choisissant la valeur la plus commode."
+        note: "Il reste un degré de liberté : on le dépense en choisissant la valeur la plus commode. On ne cherche pas « l'antécédent » — il y en a une infinité, et un seul suffit ; vouloir le trouver unique fait tourner en rond."
       - math: 'y = t'
         note: "On remonte : la seconde équation, y − z = t, donne y."
       - math: 'x = s + t'

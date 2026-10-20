@@ -2971,6 +2971,10 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "mc.math.structures_algebriques.dimension-lue-sur-la-notation",
       "mc.math.structures_algebriques.famille-generatrice-non-verifiee"
     ],
+    "cp-r8-pari-noyau": [
+      "mc.math.structures_algebriques.dimension-compte-parametres",
+      "mc.math.structures_algebriques.noyau-toujours-nul"
+    ],
     "cp-r8-pari-scalaire": [
       "mc.math.structures_algebriques.sous-espace-vs-sous-groupe",
       "mc.math.structures_algebriques.sous-espace-zero-suffit"
