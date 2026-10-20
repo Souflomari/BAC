@@ -130,9 +130,17 @@ $$0 = mg - k\,\Delta L_0 \qquad \Longrightarrow \qquad \Delta L_0 = \frac{mg}{k}
 
 C'est le poids, à lui seul, qui détermine de combien le ressort est déjà étiré avant même que le mouvement commence — c'est la **pré-tension**.
 
-**Recentrer sur l'équilibre.** Pose $x = X - \Delta L_0$, l'écart par rapport à cette position d'équilibre (et non plus par rapport au ressort à vide). Comme $\Delta L_0$ est une constante, $\ddot x = \ddot X$. On substitue :
+**Recentrer sur l'équilibre.** Pose $x = X - \Delta L_0$, l'écart par rapport à cette position d'équilibre (et non plus par rapport au ressort à vide). Comme $\Delta L_0$ est une constante, $\ddot x = \ddot X$, et $X = x + \Delta L_0$. On substitue dans la loi de Newton :
 
-$$m\,\ddot x = mg - k(x+\Delta L_0) = mg - kx - k\Delta L_0 = \underbrace{(mg - k\Delta L_0)}_{=\ 0} - kx$$
+$$m\,\ddot x = mg - k(x+\Delta L_0)$$
+
+On développe la parenthèse :
+
+$$m\,\ddot x = mg - kx - k\Delta L_0$$
+
+On range ensemble les deux termes qui ne contiennent pas $x$ :
+
+$$m\,\ddot x = \underbrace{(mg - k\Delta L_0)}_{=\ 0} - kx$$
 
 Le terme souligné est nul EXACTEMENT parce que $\Delta L_0 = mg/k$ — ce n'est pas une approximation, c'est la condition d'équilibre elle-même. Il reste :
 
