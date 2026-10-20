@@ -257,11 +257,13 @@ $$\cos x = \frac{e^{ix}+e^{-ix}}{2} \qquad \qquad \sin x = \frac{e^{ix}-e^{-ix}}
 
 Ce sont les **formules d'Euler**. Elles font le chemin inverse de la notation posée au chapitre précédent : là-bas, $e^{i\theta}$ se définissait à partir de $\cos\theta$ et $\sin\theta$ ; ici, on isole $\cos x$ (ou $\sin x$) à partir de $e^{ix}$ et $e^{-ix}$.
 
-**Le geste de linéarisation.** Pour linéariser une puissance de $\cos x$ (le principe est identique pour $\sin x$) : on remplace $\cos x$ par $\dfrac{e^{ix}+e^{-ix}}{2}$, on élève à la puissance voulue, on développe avec la formule du binôme, puis on regroupe les termes deux par deux — $e^{ikx}+e^{-ikx}=2\cos(kx)$ — pour faire réapparaître des cosinus.
+**Le geste de linéarisation.** Pour linéariser une puissance de $\cos x$ : on remplace $\cos x$ par $\dfrac{e^{ix}+e^{-ix}}{2}$, on élève à la puissance voulue, on développe avec la formule du binôme, puis on regroupe les termes deux par deux — $e^{ikx}+e^{-ikx}=2\cos(kx)$ — pour faire réapparaître des cosinus. Le principe est le même pour $\sin x$, avec une vigilance de plus : son dénominateur est $2i$, et l'élever à la puissance $n$ élève le $2$ **et** le $i$ — $(2i)^n=2^n\,i^n$, un nombre tantôt réel, tantôt imaginaire pur, dont le signe change avec $n$.
 
 **Exemple travaillé.** Linéariser $\cos^3 x$.
 
-**Prends position avant de lire la suite :** d'après toi, $\cos^3x$ est-il égal à $\cos(3x)$ ? Teste les deux membres en $x=\dfrac{\pi}{3}$ avant de continuer.
+**Prends position avant de lire la suite :** d'après toi, $\cos^3x$ est-il égal à $\cos(3x)$ — et sinon, à quoi ? Teste les deux membres en $x=\dfrac{\pi}{3}$, puis chacune des expressions proposées juste en dessous, avant de continuer.
+
+[[checkpoint:cp-r3-linearisation]]
 
 **Ce qu'on cherche et pourquoi ce geste :** on remplace $\cos x$ par $\dfrac{e^{ix}+e^{-ix}}{2}$, ce qui transforme le problème trigonométrique en un simple développement de puissance — un calcul qu'on sait déjà mener.
 
@@ -584,5 +586,24 @@ Avant de te lancer, un dernier réflexe sur les ensembles de points : tu as vu l
      précédent (lu en $C$ puis en $D$) plutôt qu'une notation neuve — pas
      d'exemple numérique séparé, pour tenir dans le format "une ligne" demandé
      par la tâche.
+
+     NOTE AJOUTÉE (critique pédagogie cadre-GH, 2026-10-20 — docs/audits/
+     critiques/cadre-GH-pedagogie.md, P1 et notes G6 ; correctif 2) :
+     (8) [LIVRÉ] Le « prends position » de la linéarisation (cos³x = cos 3x ?)
+     demandait un test écrit, mais rien n'engageait l'élève. Il est engagé
+     par le point d'arrêt cp-r3-linearisation (checkpoints.yaml), AVANT le
+     calcul : quatre candidats pour cos³x, que le test en π/3 départage tous
+     (cos³(π/3) = 1/8 ; cos(π) = −1 ; (2cos π + 6cos(π/3))/8 = 1/8 ;
+     2cos π + 6cos(π/3) = 1 ; (2cos π + 6cos(π/3))/2 = 1/2). Distracteurs :
+     puissance-confondue-angle-multiple (cos(3x)), linearisation-facteur-2n-
+     oublie (face A, pas de division ; face B, division par 2 au lieu de 2³).
+     La clé est écrite sous la forme non simplifiée (…)/8, une ligne du
+     calcul de la leçon, pour que le dénominateur soit la seule différence
+     visible avec les deux faces du facteur.
+     (9) [LIVRÉ, note basse G6] « Le principe est identique pour sin x »
+     sous-estimait le cas du sinus : la phrase dit maintenant que le
+     dénominateur 2i s'élève tout entier, (2i)ⁿ = 2ⁿ·iⁿ, de valeur et de signe
+     changeants avec n — sans chiffrer de cas particulier, pour ne pas
+     redonner celui que NBCOMPLEX2-50 et NBCOMPLEX2-51 font calculer.
 -->
 

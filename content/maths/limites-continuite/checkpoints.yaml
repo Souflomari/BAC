@@ -31,6 +31,13 @@ skill_code: maths_limites_continuite
 #                                                   factor and a finite
 #                                                   nonzero factor is NOT a
 #                                                   forme indéterminée.
+#   cp-r5-image-non-monotone  (in R5)             — COMMIT gate, ajouté
+#                                                   2026-10-20 (critique
+#                                                   pédagogie cadre-GH, P1) :
+#                                                   « L'image d'un segment »,
+#                                                   x² sur [−3;2], BEFORE the
+#                                                   reveal. Probes both image-
+#                                                   segment pièges.
 #
 # EVERY distractor carries a `misconception:` key from this notion's
 # inventory (items.yaml) — value is a real id, or `null` when the wrong
@@ -432,3 +439,73 @@ checkpoints:
           $x\to-\infty$, $e^{x/2}\to 0$, donc $\left(e^{x/2}-1\right)^2 \to
           (0-1)^2 = 1$ — pas $0$. Le facteur tend vers $1$, un nombre fini
           non nul, comme rappelé dans l'énoncé de la question.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-6 | id: cp-r5-image-non-monotone | placed IN R5, inside « L'image
+  #        d'un segment par une fonction continue », right after the
+  #        « prends position » and BEFORE the reveal. Ajouté 2026-10-20
+  #        (docs/audits/critiques/cadre-GH-pedagogie.md, P1 : the predict
+  #        was rhetorical). x² on [−3;2] (the lesson's example, moved from
+  #        [−1;2] so that both pièges of the section can be offered — see
+  #        lesson.md's note). Options are UNEVALUATED f(·) writings, the
+  #        LIMCONT-33/35 convention, so that « [9;4] is not a segment » cannot
+  #        eliminate one on sight. Faces : bornes recopiées (both ids), bornes
+  #        rangées sans extremum intérieur, maximum lu à droite par défaut.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-image-non-monotone
+    rung: "R5"
+    habilete: raisonnement
+    skill_code: maths_limites_continuite
+    tags: [checkpoint, formative, misconception_driven, maths_limites_continuite, image_segment, predict_commit]
+    primary_misconception: mc.math.maths_limites_continuite.image-segment-extremum-interieur-oublie
+    item_source: original
+    lesson_placement: in_R5
+
+    stem: |
+      $q(x)=x^2$ est continue sur $\mathbb{R}$. **Avant de lire la suite,
+      engage-toi :** laquelle de ces écritures donne l'image du segment
+      $[-3\,;2]$ par $q$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$[q(-3)\\,;q(2)]$"
+        correct: false
+        misconception:
+          - mc.math.maths_limites_continuite.image-segment-ordre-des-bornes-recopie
+          - mc.math.maths_limites_continuite.image-segment-extremum-interieur-oublie
+        feedback: |
+          Modèle détecté : les bornes de $[-3\,;2]$ recopiées dans l'ordre,
+          sans regarder les variations. Or $q(-3)=9$ et $q(2)=4$ : cette
+          écriture vaut $[9\,;4]$, qui n'est même pas un segment. Et $q$ n'est
+          pas monotone sur $[-3\,;2]$ : elle descend jusqu'à $q(0)=0$ avant de
+          remonter.
+      - id: B
+        text: "$[q(2)\\,;q(-3)]$"
+        correct: false
+        misconception: mc.math.maths_limites_continuite.image-segment-extremum-interieur-oublie
+        feedback: |
+          Modèle détecté : les valeurs aux bornes, bien rangées —
+          $q(2)=4$ et $q(-3)=9$ —, mais seules les bornes ont été regardées.
+          $q$ décroît sur $[-3\,;0]$ puis croît sur $[0\,;2]$ : elle passe par
+          $q(0)=0$, plus bas que $4$, en un point intérieur au segment.
+      - id: C
+        text: "$[q(0)\\,;q(2)]$"
+        correct: false
+        misconception: mc.math.maths_limites_continuite.image-segment-ordre-des-bornes-recopie
+        feedback: |
+          Modèle détecté : le minimum intérieur $q(0)=0$ est bien trouvé, mais
+          le maximum a été lu à la borne de droite, par défaut. Il faut
+          comparer les deux bornes : $q(-3)=9$ dépasse $q(2)=4$, et toutes
+          les valeurs comprises entre $4$ et $9$ sont prises par $q$ entre
+          $x=-3$ et $x=-2$.
+      - id: D
+        text: "$[q(0)\\,;q(-3)]$"
+        correct: true
+        feedback: |
+          Exact : $q$ décroît de $9$ à $0$ sur $[-3\,;0]$, puis croît de $0$
+          à $4$ sur $[0\,;2]$. Le minimum est $q(0)=0$, au point de
+          retournement ; le maximum est le plus grand de $q(-3)=9$ et
+          $q(2)=4$. D'où $q([-3\,;2])=[0\,;9]$.

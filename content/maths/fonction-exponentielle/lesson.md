@@ -354,7 +354,9 @@ La formule $a^x=e^{x\ln a}$ redonne donc exactement la puissance entière ordina
 
 **Prends position avant de lire la suite :** d'après toi, est-ce que $(a^x)' = x\cdot a^{x-1}$, comme pour une fonction puissance $x^n$ dont on dérive l'exposant ?
 
-Calcule pour de bon, avant de trancher. $a^x = e^{u(x)}$ avec $u(x) = x\ln a$, donc $u'(x) = \ln a$ (une constante, puisque $a$ est fixé). Par la règle $(e^u)'=u'e^u$ (chapitre 4) :
+[[checkpoint:cp-r4-derivee-base-a]]
+
+Calcule pour de bon, maintenant que tu as tranché. $a^x = e^{u(x)}$ avec $u(x) = x\ln a$, donc $u'(x) = \ln a$ (une constante, puisque $a$ est fixé). Par la règle $(e^u)'=u'e^u$ (chapitre 4) :
 
 $$(a^x)' = \ln(a) \times a^x$$
 
@@ -380,9 +382,25 @@ $$x^\alpha := e^{\alpha\ln x}$$
 
 $$(x^\alpha)' = \frac{\alpha}{x}\times e^{\alpha\ln x} = \frac{\alpha}{x}\times x^\alpha$$
 
+Reste à écrire $\dfrac1x\times x^\alpha$ comme une seule puissance. Avec un exposant entier, tu « ajouterais les exposants » sans y penser ; mais $\alpha$ est ici un réel quelconque, et $x^\alpha$ n'a pas d'autre sens que sa définition $e^{\alpha\ln x}$ — c'est donc elle qu'il faut faire travailler. Écris d'abord $\dfrac1x=e^{-\ln x}$ : c'est $\dfrac{1}{e^{\ln x}}$, puisque $e^{\ln x}=x$ (chapitre 2) et que $e^{-a}=\dfrac{1}{e^{a}}$ (chapitre 3). Alors :
+
+$$\frac1x\times x^\alpha = e^{-\ln x}\times e^{\alpha\ln x}$$
+
+$$\frac1x\times x^\alpha = e^{(\alpha-1)\ln x}$$
+
+$$\frac1x\times x^\alpha = x^{\alpha-1}$$
+
+La deuxième ligne additionne les exposants par la règle $e^{a}\times e^{b}=e^{a+b}$ (chapitre 3) — c'est elle, et non une habitude prise sur les entiers, qui autorise le geste. La troisième relit $e^{(\alpha-1)\ln x}$ avec la définition, pour l'exposant réel $\alpha-1$. D'où :
+
 $$(x^\alpha)' = \alpha\, x^{\alpha-1}$$
 
 C'est exactement la règle de dérivation des puissances que tu appliques depuis longtemps pour $\alpha$ entier — sauf qu'elle est ici établie pour **n'importe quel réel** $\alpha$, entier ou non.
+
+**Prends position avant de lire la suite :** tu as maintenant deux règles qui se ressemblent, $(a^x)'=\ln(a)\times a^x$ et $(x^\alpha)'=\alpha\,x^{\alpha-1}$. Prends $f(x)=x^{6}$ et $g(x)=6^{x}$ sur $]0,+\infty[$ : laquelle se dérive par la règle des puissances, laquelle par celle de l'exponentielle ? Écris les deux dérivées sur ta feuille avant de continuer.
+
+La question qui tranche n'est pas « y a-t-il un exposant ? » — il y en a un dans les deux —, c'est **« qu'est-ce qui varie : la base, ou l'exposant ? »**. Dans $x^{6}$, la base $x$ varie et l'exposant $6$ est fixe : c'est une puissance, et $f'(x)=6x^{5}$. Dans $6^{x}$, la base $6$ est fixe et c'est l'exposant qui varie : c'est une exponentielle, et $g'(x)=\ln(6)\times6^{x}$.
+
+**Le piège à éviter : échanger les deux règles.** Le sens « $x\cdot a^{x-1}$ » a été cassé plus haut ; voici l'autre sens, poussé jusqu'au bout. Dériver $x^{6}$ « comme une exponentielle de base $x$ » donnerait $\ln(x)\times x^{6}$, une expression strictement négative sur $]0,1[$, puisque $\ln x<0$ sur cet intervalle. Si c'était la dérivée, $x^{6}$ y serait décroissante. Or $0{,}5^{6}\approx0{,}016$ est plus petit que $1^{6}=1$ : entre $0{,}5$ et $1$, la fonction a augmenté. Le modèle faux se contredit sur son propre calcul — et la vraie dérivée, $6x^{5}$, est bien positive sur tout $]0,+\infty[$.
 
 **Variations, selon le signe de $\alpha$.** Sur $]0,+\infty[$, $x^\alpha>0$ toujours, donc le signe de $(x^\alpha)' = \frac{\alpha}{x}x^\alpha$ est celui de $\alpha$ (car $\frac1x>0$ et $x^\alpha>0$) : si $\alpha>0$, $x^\alpha$ est strictement **croissante** sur $]0,+\infty[$ ; si $\alpha<0$, $x^\alpha$ est strictement **décroissante** sur $]0,+\infty[$.
 
@@ -649,7 +667,31 @@ Aucun de ces quatre n'est un manque de ce chapitre : ce sont des outils transver
      réel, ni d'étude de puissance réelle). Piège traité : (a^x)' = x·a^{x-1}
      (règle des puissances appliquée à tort à une exponentielle de base
      fixe) ; vérifié numériquement, a=2, x=3 : vraie dérivée ln(2)×2^3 =
-     8ln(2) ≈ 5,55, formule fautive 3×2^2 = 12. Aucun [[checkpoint:...]]
-     ajouté à la question « prends position » — même réserve que la leçon
-     sœur, hors du périmètre de cet auteur qui n'écrit que lesson.md.
+     8ln(2) ≈ 5,55, formule fautive 3×2^2 = 12. (Réserve levée le
+     2026-10-20 : voir la note suivante, point a.)
+
+     NOTE (critique pédagogie cadre-GH, 2026-10-20 — docs/audits/critiques/
+     cadre-GH-pedagogie.md, P1 et P5, correctifs 2 et 8) :
+     (a) ENGAGEMENT RÉEL. Le « prends position » sur (a^x)' = x·a^{x-1}
+     n'était que rhétorique. Il est désormais engagé par le point d'arrêt
+     cp-r4-derivee-base-a (checkpoints.yaml), placé AVANT le calcul qui le
+     tranche : clé ln(a)·a^x ; distracteurs x·a^{x-1}
+     (derivee-base-a-regle-des-puissances), a^x et x·ln(a)·a^x
+     (derivee-exp-composee, faces « u' oublié » et « u au lieu de u' »).
+     Base générale a : aucun nombre de cette leçon ni d'EXP-41 à EXP-46.
+     (b) PAS SAUTÉ. (α/x)·x^α = α·x^{α-1} passait par x^{-1}·x^α = x^{α-1}
+     pour un exposant RÉEL, jamais établi ici. La prose le démontre
+     désormais : 1/x = e^{-ln x}, puis e^{-ln x}·e^{α ln x} = e^{(α-1)ln x}
+     = x^{α-1} — la preuve qu'EXP-45 était seul à porter, dans sa solution.
+     (c) DISCRIMINATION a^x ↔ x^α. Nouveau « prends position » (x^6 contre
+     6^x, les deux dérivées écrites sur la feuille avant de lire), puis le
+     sens MIROIR du piège rompu sur son propre calcul : ln(x)·x^6 < 0 sur
+     ]0,1[ ferait décroître x^6, or 0,5^6 ≈ 0,016 < 1. Laissé en prose, par
+     choix : le modèle (derivee-base-a-regle-des-puissances) a déjà son
+     engagement réel dans ce chapitre (point a). DÉLÉGATION ÉCRITE (gabarit
+     v2 §B) : le test côté banc de ce discernement est EXP-44 (x^4 + 4^x, un
+     distracteur par sens d'échange des deux règles), complété par EXP-45 et
+     EXP-46 pour le sens miroir. Nombres neufs, vérifiés par grep : 6, x^6,
+     6^x, 0,5^6 absents de bank.yaml, exercises.yaml, items.yaml et du reste
+     de la leçon.
 -->

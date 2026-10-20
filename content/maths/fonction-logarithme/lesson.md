@@ -482,11 +482,31 @@ Le logarithme décimal du paragraphe précédent est exactement $\log_{10}$. Et 
 
 **Ce que $\log_a$ hérite de $\ln$, et pourquoi.** $\log_a$ n'est rien d'autre que $\ln$ multipliée par la constante $\dfrac{1}{\ln(a)}$ (non nulle, puisque $a\neq1$), et diviser une égalité par une même constante non nulle la préserve : diviser $\ln(xy)=\ln(x)+\ln(y)$ (chapitre 3) par $\ln(a)$ donne $\log_a(xy) = \log_a(x)+\log_a(y)$ ; diviser $\ln(x^n)=n\ln(x)$ (même chapitre) par $\ln(a)$ donne $\log_a(x^n) = n\log_a(x)$ pour tout entier $n$ ; et diviser $\ln(1/x)=-\ln(x)$ par $\ln(a)$ donne $\log_a(1/x) = -\log_a(x)$.
 
-Le sens de variation, lui, ne se transporte pas automatiquement : il dépend du signe de $\ln(a)$, la constante par laquelle on divise. Diviser une fonction croissante par un nombre POSITIF garde le sens de variation ; diviser par un nombre NÉGATIF l'inverse. Donc : si $a>1$ (où $\ln(a)>0$), $\log_a$ est strictement croissante, comme $\ln$ ; si $0<a<1$ (où $\ln(a)<0$), $\log_a$ est strictement décroissante — le sens s'inverse.
+**Exemple travaillé — faire descendre un exposant inconnu.** Un médicament s'élimine peu à peu : d'une heure à la suivante, la quantité présente dans le sang est multipliée par $0{,}8$. Au bout de combien d'heures entières en reste-t-il moins de $10\,\%$ de la dose de départ ?
+
+**Ce qu'on cherche et pourquoi ce geste :** après $n$ heures, il reste la fraction $0{,}8^{n}$ de la dose, et l'on cherche le plus petit entier $n$ tel que $0{,}8^{n}<0{,}1$. L'inconnue est dans l'**exposant** : c'est exactement ce qu'un logarithme sait faire descendre. Le plus direct est le logarithme de la base même de la puissance, car, par la propriété de la puissance ci-dessus, $\log_{0{,}8}\!\left(0{,}8^{n}\right)=n\log_{0{,}8}(0{,}8)=n$ — puisque $\log_{0{,}8}(0{,}8)=\dfrac{\ln(0{,}8)}{\ln(0{,}8)}=1$. On applique donc $\log_{0{,}8}$ aux deux membres de l'inéquation.
+
+**Prends position avant de lire la suite :** en appliquant $\log_{0{,}8}$ aux deux membres de $0{,}8^{n}<0{,}1$, le sens de l'inégalité reste-t-il le même ?
+
+[[checkpoint:cp-r6-base-inferieure-a-1]]
+
+Tout dépend d'une chose que l'héritage ci-dessus ne dit pas : le **sens de variation** de $\log_a$. Lui ne se transporte pas automatiquement depuis $\ln$ : il dépend du signe de $\ln(a)$, la constante par laquelle on divise. Diviser une fonction croissante par un nombre POSITIF garde le sens de variation ; diviser par un nombre NÉGATIF l'inverse. Donc : si $a>1$ (où $\ln(a)>0$), $\log_a$ est strictement croissante, comme $\ln$ ; si $0<a<1$ (où $\ln(a)<0$), $\log_a$ est strictement décroissante — le sens s'inverse.
+
+Ici $0<0{,}8<1$, donc $\ln(0{,}8)<0$ : $\log_{0{,}8}$ est strictement **décroissante** — et une fonction décroissante **renverse** l'ordre de deux nombres. Le sens de l'inégalité change :
+
+$$0{,}8^{n}<0{,}1 \iff \log_{0{,}8}\!\left(0{,}8^{n}\right)>\log_{0{,}8}(0{,}1)$$
+
+$$0{,}8^{n}<0{,}1 \iff n>\frac{\ln(0{,}1)}{\ln(0{,}8)}$$
+
+Avec $\ln(0{,}1)\approx-2{,}303$ et $\ln(0{,}8)\approx-0{,}223$, ce quotient de deux nombres négatifs vaut environ $10{,}32$ : le plus petit entier qui convient est $n=11$. Contrôle direct : $0{,}8^{10}\approx0{,}107$, encore au-dessus de $0{,}1$, et $0{,}8^{11}\approx0{,}086$, en dessous. Il faut donc attendre **11 heures**.
+
+**Le modèle faux, poussé jusqu'au bout.** Garder le sens de l'inégalité, c'est écrire $n<10{,}32$ : « il reste moins de $10\,\%$ de la dose jusqu'à la dixième heure ». Essaie $n=1$ : $0{,}8^{1}=0{,}8$, soit $80\,\%$ de la dose — rien à voir avec moins de $10\,\%$. Le bon sens le disait déjà : une quantité qui ne fait que diminuer passe sous un seuil **à partir d'un certain moment**, pas jusqu'à un certain moment. Le renversement n'est donc pas une règle de plus à apprendre par cœur : c'est le sens de variation de $\log_{0{,}8}$, lu au bon endroit.
 
 **Prends position avant de lire la suite :** d'après toi, $\log_a(x+y)$ est-il égal à $\log_a(x)+\log_a(y)$ ?
 
-**Le piège à éviter.** Non : la propriété établie ci-dessus transforme un **produit** en somme, jamais une somme en quoi que ce soit de plus simple — $\log_a(x+y)$ ne se décompose pas, il faut calculer $x+y$ avant de prendre le logarithme. Une confusion voisine, tout aussi fréquente : croire qu'un **quotient de deux logarithmes** est le logarithme d'un quotient. Par exemple, $\dfrac{\ln(50)}{\ln(2)}$ et $\ln\!\left(\dfrac{50}{2}\right)=\ln(25)$ sont deux calculs totalement différents : $\dfrac{\ln(50)}{\ln(2)} \approx \dfrac{3{,}912}{0{,}693} \approx 5{,}64$, alors que $\ln(25)\approx3{,}219$. Rien à voir : diviser deux logarithmes n'a jamais été la même opération que prendre le logarithme d'un quotient.
+**Teste cette égalité avant de la croire**, sur le cas le plus simple qui soit : en base $10$, avec $x=y=1$. D'un côté, $\log(1)+\log(1)=0+0=0$. De l'autre, $\log(1+1)=\log(2)\approx0{,}301$ — un nombre qui n'est pas nul, puisque $\log$ est strictement croissante et que $2>1$. Les deux membres diffèrent dès le premier essai : l'égalité est fausse. Ce qui la rendait tentante, c'est sa ressemblance avec $\log_a(xy)=\log_a(x)+\log_a(y)$ ; mais la propriété établie ci-dessus transforme un **produit** en somme, jamais une somme en quoi que ce soit de plus simple — $\log_a(x+y)$ ne se décompose pas, il faut calculer $x+y$ avant de prendre le logarithme.
+
+**Le piège voisin, tout aussi fréquent :** croire qu'un **quotient de deux logarithmes** est le logarithme d'un quotient. Par exemple, $\dfrac{\ln(50)}{\ln(2)}$ et $\ln\!\left(\dfrac{50}{2}\right)=\ln(25)$ sont deux calculs totalement différents : $\dfrac{\ln(50)}{\ln(2)} \approx \dfrac{3{,}912}{0{,}693} \approx 5{,}64$, alors que $\ln(25)\approx3{,}219$. Rien à voir : diviser deux logarithmes n'a jamais été la même opération que prendre le logarithme d'un quotient.
 
 ### Exemple travaillé
 
@@ -601,8 +621,41 @@ Le même squelette, décor renversé : ici la courbe passe **sous** la première
      31 chiffres (vérifié contre la valeur exacte, 1 267 650 600 228 229 401
      496 703 205 376 — 31 chiffres comptés). Piège traité : log_a(x+y) ≠
      log_a(x)+log_a(y), et ln(50)/ln(2) ≈ 5,64 ≠ ln(25) ≈ 3,219 (recalculé :
-     ln(50)≈3,912, ln(2)≈0,693, ln(25)≈3,219). Aucun [[checkpoint:...]] ajouté à
-     la question « prends position » — hors du périmètre de cet auteur, qui
-     n'écrit que lesson.md ; si un commit interactif réel est voulu, une entrée
-     checkpoints.yaml reste à créer par l'auteur habilité.
+     ln(50)≈3,912, ln(2)≈0,693, ln(25)≈3,219). (Pour l'engagement réel des
+     « prends position » de cette section, voir la note suivante.)
+
+     NOTE (critique pédagogie cadre-GH, 2026-10-20 — docs/audits/critiques/
+     cadre-GH-pedagogie.md, P1, P5, P6 ; correctifs 2, 9 et 10) :
+     (a) OUTIL NEUF, EXEMPLE NEUF. « Le logarithme de base a » n'avait pas
+     d'exemple travaillé propre (celui de 2^100 n'emploie que log). Ajouté :
+     faire descendre un exposant inconnu, 0,8^n < 0,1 (médicament, 10 %),
+     résolu par log_{0,8} — n > ln(0,1)/ln(0,8) ≈ 10,32, d'où n = 11 ;
+     recalculé : ln(0,1) ≈ −2,3026, ln(0,8) ≈ −0,2231, quotient 10,3189 ;
+     0,8^10 = 0,10737 > 0,1, 0,8^11 = 0,08590 < 0,1. Exposant ENTIER
+     seulement : l'exponentielle de base a (exposant réel) n'est définie que
+     dans la leçon suivante, et rien ici n'en dépend. Nombres neufs : 0,8
+     (comme base), 0,1, 10,32, 11 absents de bank.yaml, exercises.yaml,
+     items.yaml et du reste de la leçon (grep ; le « −0,8 » de bank.yaml est
+     une borne de f_n(2), pas une base).
+     (b) INVERSION DU SENS, MISE EN SCÈNE ET ENGAGÉE. Le sens de variation
+     renversé pour 0 < a < 1 était énoncé sans prédiction ni piège. Il porte
+     maintenant un « prends position » engagé par le point d'arrêt
+     cp-r6-base-inferieure-a-1 (checkpoints.yaml), AVANT la révélation, puis
+     le modèle faux est poussé jusqu'à sa contradiction (n = 1 donnerait
+     80 % de la dose). Le paragraphe général « le sens de variation ne se
+     transporte pas automatiquement… » a été DÉPLACÉ juste après
+     l'engagement, dont il devient la révélation : laissé avant, il aurait
+     rendu la question creuse (la réponse imprimée trois lignes plus haut —
+     le défaut même que la critique relève sur la prédiction de variance).
+     Distracteurs : lecture-variations-signe (sens de ln
+     transporté, la surface que LOG-38 tague déjà ainsi), regles-quotient-puissance (quotient de
+     logarithmes lu comme logarithme du quotient). Le test côté banc reste
+     LOG-38 (sens de log_{0,3}), qui n'est pas cloné.
+     (c) log_a(x+y) : CONFRONTÉ, PLUS ASSERTÉ. Le « Non » sans
+     contre-exemple est remplacé par un test : en base 10, log(1)+log(1) = 0
+     contre log(1+1) = log(2) ≈ 0,301. Ce « prends position » reste en PROSE,
+     par choix : le modèle visé (produit-somme-confondus, « ln distribué sur
+     une somme ») est déjà engagé par un vrai point d'arrêt au chapitre 3,
+     cp-produit-somme (un distracteur y propose ln(a+b) = ln a + ln b) ; ici c'est une
+     reprise, et c'est l'inversion (b) qui reçoit l'engagement du chapitre.
 -->

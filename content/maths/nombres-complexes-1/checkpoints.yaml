@@ -41,6 +41,16 @@ skill_code: maths_complexes_algebrique
 #                                           Placé juste avant le sujet national
 #                                           (fidélité M6). Probes
 #                                           delta-negatif-aucune-solution.
+#   cp-r4c-retour-a-z    (in R4c)         — COMMIT gate, ajouté 2026-10-20
+#                                           (critique pédagogie cadre-GH, P1) :
+#                                           équation bicarrée z⁴−6z²+25=0, deux
+#                                           valeurs de Z trouvées — engage
+#                                           l'élève sur l'ensemble des
+#                                           solutions z AVANT le retour à z.
+#                                           Probes changement-inconnue-retour-
+#                                           incomplet (faces A et B). Filière
+#                                           SM, comme la section (phrase de
+#                                           filière dans la prose).
 #
 # EVERY distractor carries a named misconception id from this notion's inventory
 # (items.yaml `misconceptions:`). Option lengths are balanced so the correct
@@ -432,3 +442,70 @@ checkpoints:
           $\Delta=-16 \neq 0$. Un $\Delta$ réel strictement négatif donne
           toujours DEUX solutions distinctes et conjuguées, jamais une
           solution double : c'est $\Delta=0$, et lui seul, qui donne ce cas.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-6 | id: cp-r4c-retour-a-z | placed IN R4c, inside « Une équation
+  #        qui se ramène au second degré : le changement d'inconnue
+  #        Z=z² », right after the « prends position » and BEFORE the text
+  #        returns to z. Ajouté 2026-10-20 (docs/audits/critiques/
+  #        cadre-GH-pedagogie.md, P1 : the predict was rhetorical). Uses
+  #        the worked example's own equation (z⁴−6z²+25=0, Z = 3±4i) — it
+  #        commits on the lesson's question, it is not an item : NBCOMPLEX-48
+  #        to 50 keep their own equations. All three distractors carry the
+  #        one declared id, on distinct faces : two stop at Z (one of them
+  #        adds the opposites « because degree 4 »), one takes a single
+  #        square root per value of Z.
+  #        Profondeur SM, comme la section (racines carrées d'un Z non réel).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4c-retour-a-z
+    rung: "R4c"
+    habilete: raisonnement
+    skill_code: maths_complexes_algebrique
+    tags: [checkpoint, formative, misconception_driven, maths_complexes_algebrique, equation_bicarree, predict_commit]
+    primary_misconception: mc.math.maths_complexes_algebrique.changement-inconnue-retour-incomplet
+    item_source: original
+    lesson_placement: in_R4c
+
+    stem: |
+      Pour résoudre $(E)\ :\ z^4-6z^2+25=0$, on a posé $Z=z^2$ et obtenu
+      $Z_1=3+4i$ et $Z_2=3-4i$. **Avant de lire la suite, engage-toi :**
+      quel est l'ensemble des solutions de $(E)$ dans $\mathbb{C}$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$\\{3+4i\\ ;\\ 3-4i\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.changement-inconnue-retour-incomplet
+        feedback: |
+          Modèle détecté : on s'arrête aux valeurs de $Z$ et on les donne
+          pour solutions. Mais $Z=z^2$ n'est qu'un intermédiaire : l'inconnue
+          de $(E)$ est $z$. Teste : pour $z=3+4i$, $z^2=-7+24i$, qui ne vaut
+          ni $Z_1$ ni $Z_2$ — ce $z$ ne résout pas $(E)$.
+      - id: B
+        text: "$\\{2+i\\ ;\\ 2-i\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.changement-inconnue-retour-incomplet
+        feedback: |
+          Modèle détecté : le retour à $z$ est fait, mais à moitié — une
+          seule racine carrée par valeur de $Z$. Or si $(2+i)^2=3+4i$, alors
+          $(-2-i)^2=3+4i$ aussi : pour $Z\neq0$, l'équation $z^2=Z$ a deux
+          solutions opposées. $(E)$, de degré $4$, en a quatre.
+      - id: C
+        text: "$\\{\\pm(3+4i)\\ ;\\ \\pm(3-4i)\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.changement-inconnue-retour-incomplet
+        feedback: |
+          Modèle détecté : quatre éléments, comme l'annonce le degré $4$ —
+          mais ce sont les valeurs de $Z$ et leurs opposées : aucune racine
+          carrée n'a été prise. $(3+4i)^2=-7+24i$, pas $3+4i$. Il faut
+          chercher les $z$ tels que $z^2=Z$, pas les $\pm Z$.
+      - id: D
+        text: "$\\{\\pm(2+i)\\ ;\\ \\pm(2-i)\\}$"
+        correct: true
+        feedback: |
+          Exact : chaque valeur de $Z$, non nulle, redonne deux valeurs
+          opposées de $z$. $(2+i)^2=3+4i$, et par conjugaison
+          $(2-i)^2=3-4i$ : quatre solutions, autant que le degré de $(E)$.

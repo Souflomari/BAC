@@ -158,6 +158,20 @@ misconceptions:
     description: "L'élève traite la variance et l'écart-type comme deux notations du même nombre, ou comme reliés par une division par $2$ plutôt que par une racine carrée : il répond $\\sigma(X)=V(X)$, ou $\\sigma(X)=\\dfrac{V(X)}{2}$, ou rapporte l'une des deux grandeurs quand l'autre est demandée."
     contradicts_principle: "L'écart-type est défini par $\\sigma(X)=\\sqrt{V(X)}$ — une racine carrée, jamais une égalité ni une division par $2$. Les deux grandeurs portent aussi des unités différentes : $V(X)$ se mesure dans l'unité de $X$ au carré, $\\sigma(X)$ dans l'unité de $X$ elle-même — deux nombres distincts qui répondent à deux questions différentes (la dispersion en unité au carré, contre l'écart typique dans l'unité d'origine)."
 
+  # ── M25 : ajouté le 2026-10-20 (critique pédagogie cadre-GH, P1/P5 —
+  # docs/audits/critiques/cadre-GH-pedagogie.md, correctifs 2 et 3). La prose
+  # de R5b nommait en passant, entre parenthèses, le piège « $E(X^2)$, ce qui
+  # n'est pas $\big(E(X)\big)^2$ » sans jamais le mettre en scène ; elle le
+  # fait désormais par un « prends position » engagé (cp-r5b-carre-esperance)
+  # AVANT toute formule. Aucun des vingt-quatre ids ci-dessus ne décrit ce
+  # modèle : `variance-carre-de-moyenne-oublie` retranche E(X) au lieu de son
+  # carré (une autre étape de la même formule), `esperance-sans-ponderation`
+  # oublie les probabilités. Servi par PC-M25-1 à PC-M25-3 — plancher exact.
+  - id: mc.math.sma_prob_conditionnelle.esperance-des-carres-confondue
+    label: "« E(X²) = (E(X))², la moyenne des carrés prise pour le carré de la moyenne »"
+    description: "L'élève obtient l'espérance des carrés $E(X^2)$ en élevant au carré l'espérance déjà connue, $\\big(E(X)\\big)^2$, au lieu de pondérer les carrés des valeurs $x_i^2$ par leurs probabilités — comme si élever au carré puis faire la moyenne revenait à faire la moyenne puis élever au carré. Conséquence visible : la deuxième formule de la variance lui rend alors $V(X)=0$, quelle que soit la loi."
+    contradicts_principle: "$E(X^2)=\\sum_i x_i^2\\,P(X=x_i)$ : on élève chaque VALEUR au carré, puis on pondère. Ce nombre dépasse $\\big(E(X)\\big)^2$ exactement de la variance, $V(X)=E(X^2)-\\big(E(X)\\big)^2\\geq0$ ; les deux ne sont égaux que pour une variable qui ne s'écarte jamais de son espérance (variance nulle)."
+
 items:
 
   # ── M1 · transpose-conditionnel ─────────────────────────────────────────────
@@ -3015,8 +3029,219 @@ items:
       erreur de calcul, typiquement l'oubli du carré dans
       $\big(E(X)\big)^2$.
 
+  # ══════════════════════════════════════════════════════════════════════════
+  # M25 · esperance-des-carres-confondue — critique pédagogie cadre-GH
+  # (2026-10-20, correctifs 2, 3 et 7). Trois items, le plancher exact :
+  #   - PC-M25-1 : calculer E(X²) quand E(X) est déjà connue — le leurre
+  #     (E(X))² est sous les yeux ;
+  #   - PC-M25-2 : la promesse d'ouverture de « La variance et l'écart-type »
+  #     (« même espérance, dispersion différente »), instanciée en mettant
+  #     côte à côte les deux lois de PC-M23-1 et PC-M23-2 — même E = 2,1,
+  #     V = 1,09 contre 0,49. Les deux lois sont REPRISES à dessein (critique
+  #     pédagogie P4 : « the pair the lesson opens on ») ; la question posée
+  #     est la comparaison, pas la variance de l'une ou l'autre ;
+  #   - PC-M25-3 : la deuxième formule lue à l'envers (E et V donnés).
+  # Lois et nombres de PC-M25-1 et PC-M25-3 neufs : ni la loi du cours (0, 1,
+  # 2 ; 0,32/0,38/0,30), ni U et W de la prose, ni celles de PC-M23-1/2, de
+  # bank.yaml ou d'exercises.yaml (grep avant écriture ; les valeurs −1, 2, 5
+  # ont des carrés 1, 4, 25, distincts des {1, 4, 9} et {1, 4, 16} de
+  # PC-M23-1/2, pour qu'aucune moyenne simple ne retombe sur leurs nombres).
+  # Les distracteurs réutilisent, quand le MÊME réflexe joue,
+  # `variance-carre-de-moyenne-oublie`, `esperance-sans-ponderation`,
+  # `esperance-terme-omis` et `ecart-type-variance-confondus`.
+  - id: PC-M25-1
+    rung: "R5b"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, variable_aleatoire, variance]
+    stem: >
+      Une variable aléatoire $X$ prend les valeurs $-1$, $2$ et $5$ avec les
+      probabilités respectives $0{,}5$ ; $0{,}3$ et $0{,}2$. On a déjà trouvé
+      $E(X)=1{,}1$. Que vaut l'espérance des carrés $E(X^2)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$1{,}21$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.esperance-des-carres-confondue
+        also_reveals: []
+        feedback: >
+          Ce choix calcule $\big(E(X)\big)^2=1{,}1^2=1{,}21$ : le carré de
+          l'espérance, pris pour l'espérance des carrés. Ce n'est pas le même
+          nombre — on élève chaque VALEUR au carré, puis on pondère :
+          $(-1)^2\times0{,}5+2^2\times0{,}3+5^2\times0{,}2=6{,}7$. Modèle
+          erroné : la moyenne des carrés confondue avec le carré de la
+          moyenne.
+      - id: B
+        text: "$10$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.esperance-sans-ponderation
+        also_reveals: []
+        feedback: >
+          Ce choix calcule la moyenne simple des carrés,
+          $\dfrac{1+4+25}{3}=10$, sans les pondérer par $0{,}5$ ; $0{,}3$ ;
+          $0{,}2$ — le même réflexe que pour une espérance non pondérée,
+          appliqué ici aux carrés. Modèle erroné : une espérance calculée comme
+          une moyenne NON pondérée.
+      - id: C
+        text: "$6{,}7$"
+        correct: true
+      - id: D
+        text: "$1{,}7$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.esperance-terme-omis
+        also_reveals: []
+        feedback: >
+          Ce choix s'arrête à $(-1)^2\times0{,}5+2^2\times0{,}3=0{,}5+1{,}2=1{,}7$ :
+          le terme de la valeur $5$, $5^2\times0{,}2=5$, est oublié — c'est
+          pourtant le plus lourd. Modèle erroné : une espérance réduite à
+          certains de ses termes.
+    correct_feedback: >
+      $E(X^2)=(-1)^2\times0{,}5+2^2\times0{,}3+5^2\times0{,}2=0{,}5+1{,}2+5=6{,}7$,
+      bien plus que $\big(E(X)\big)^2=1{,}21$.
+    solution: |
+      **L'espérance des carrés :** chaque valeur élevée au carré, puis
+      pondérée par sa probabilité.
+      $$E(X^2) = (-1)^2\times0{,}5 + 2^2\times0{,}3 + 5^2\times0{,}2 = 0{,}5+1{,}2+5 = 6{,}7$$
+
+      **Ce n'est pas le carré de l'espérance :** $\big(E(X)\big)^2=1{,}1^2=1{,}21$.
+      L'écart entre les deux est la variance,
+      $V(X)=6{,}7-1{,}21=5{,}49\geq0$.
+
+  - id: PC-M25-2
+    rung: "R5b"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, variable_aleatoire, variance, dispersion]
+    stem: >
+      Deux variables aléatoires $X$ et $Y$ ont la même espérance, $2{,}1$.
+      $X$ prend les valeurs $1$, $2$, $4$ avec les probabilités $0{,}3$ ;
+      $0{,}5$ ; $0{,}2$, et $Y$ les valeurs $1$, $2$, $3$ avec les
+      probabilités $0{,}2$ ; $0{,}5$ ; $0{,}3$. Laquelle se disperse le plus
+      autour de $2{,}1$ ? Pour trancher, que valent leurs variances ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$V(X)=3{,}4$ et $V(Y)=2{,}8$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.variance-carre-de-moyenne-oublie
+        also_reveals: []
+        feedback: >
+          Ce choix calcule chaque variance par $E(X^2)-E(X)$ :
+          $5{,}5-2{,}1=3{,}4$ et $4{,}9-2{,}1=2{,}8$, en retranchant
+          l'espérance au lieu de son carré, $2{,}1^2=4{,}41$. Modèle erroné :
+          « $V(X)=E(X^2)-E(X)$, le carré de l'espérance oublié ».
+      - id: B
+        text: "$V(X)=V(Y)=0$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.esperance-des-carres-confondue
+        also_reveals: []
+        feedback: >
+          Ce choix remplace $E(X^2)$ et $E(Y^2)$ par le carré de l'espérance
+          commune, $2{,}1^2=4{,}41$ : la deuxième formule rend alors $0$ des
+          deux côtés — et rendrait $0$ pour toute variable. Or
+          $E(X^2)=1\times0{,}3+4\times0{,}5+16\times0{,}2=5{,}5$, pas $4{,}41$.
+          Modèle erroné : l'espérance des carrés confondue avec le carré de
+          l'espérance.
+      - id: C
+        text: "$V(X)=1{,}09$ et $V(Y)=0{,}49$"
+        correct: true
+      - id: D
+        text: "$V(X)=2{,}59$ et $V(Y)\\approx0{,}26$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.esperance-sans-ponderation
+        also_reveals: []
+        feedback: >
+          Ce choix calcule $E(X^2)$ et $E(Y^2)$ comme des moyennes simples des
+          carrés, $\dfrac{1+4+16}{3}=7$ et $\dfrac{1+4+9}{3}\approx4{,}67$,
+          sans les pondérer : d'où $7-4{,}41=2{,}59$ et
+          $4{,}67-4{,}41\approx0{,}26$. Modèle erroné : une espérance calculée
+          comme une moyenne NON pondérée.
+    correct_feedback: >
+      $E(X^2)=5{,}5$ et $E(Y^2)=4{,}9$, avec
+      $\big(E(X)\big)^2=\big(E(Y)\big)^2=2{,}1^2=4{,}41$ : $V(X)=1{,}09$ et
+      $V(Y)=0{,}49$. Même centre, mais $X$ se disperse plus de deux fois plus
+      que $Y$ autour de $2{,}1$ — sa valeur $4$, à $1{,}9$ du centre, apporte
+      à elle seule $1{,}9^2\times0{,}2=0{,}722$ à $V(X)$.
+    solution: |
+      **Le même centre :**
+      $$E(X) = 1\times0{,}3 + 2\times0{,}5 + 4\times0{,}2 = 0{,}3+1{,}0+0{,}8 = 2{,}1$$
+      $$E(Y) = 1\times0{,}2 + 2\times0{,}5 + 3\times0{,}3 = 0{,}2+1{,}0+0{,}9 = 2{,}1$$
+
+      **Les espérances des carrés :**
+      $$E(X^2) = 1\times0{,}3 + 4\times0{,}5 + 16\times0{,}2 = 0{,}3+2{,}0+3{,}2 = 5{,}5$$
+      $$E(Y^2) = 1\times0{,}2 + 4\times0{,}5 + 9\times0{,}3 = 0{,}2+2{,}0+2{,}7 = 4{,}9$$
+
+      **Les variances, par la deuxième formule :**
+      $$V(X) = 5{,}5 - 2{,}1^2 = 5{,}5 - 4{,}41 = 1{,}09$$
+      $$V(Y) = 4{,}9 - 2{,}1^2 = 4{,}9 - 4{,}41 = 0{,}49$$
+
+      **La lecture :** même espérance, et pourtant $V(X)$ dépasse le double de
+      $V(Y)$ — $X$ est la plus dispersée. L'espérance seule ne pouvait pas le
+      dire.
+
+  - id: PC-M25-3
+    rung: "R5b"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, variable_aleatoire, variance]
+    stem: >
+      Une variable aléatoire $X$ a pour espérance $E(X)=3$ et pour variance
+      $V(X)=2$. Que vaut l'espérance des carrés $E(X^2)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$9$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.esperance-des-carres-confondue
+        also_reveals: []
+        feedback: >
+          Ce choix prend $E(X^2)$ égale au carré de l'espérance, $3^2=9$.
+          Mais alors la deuxième formule donnerait $V(X)=9-9=0$, pas $2$ :
+          l'écart entre $E(X^2)$ et $\big(E(X)\big)^2$ est justement la
+          variance. Modèle erroné : l'espérance des carrés confondue avec le
+          carré de l'espérance.
+      - id: B
+        text: "$11$"
+        correct: true
+      - id: C
+        text: "$5$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.variance-carre-de-moyenne-oublie
+        also_reveals: []
+        feedback: >
+          Ce choix part de $V(X)=E(X^2)-E(X)$ et calcule
+          $E(X^2)=V(X)+E(X)=2+3=5$ : c'est l'espérance qui a été retranchée,
+          au lieu de son carré. Avec la vraie formule,
+          $E(X^2)=V(X)+\big(E(X)\big)^2=2+9=11$. Modèle erroné : le carré de
+          l'espérance oublié.
+      - id: D
+        text: "$13$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.ecart-type-variance-confondus
+        also_reveals: []
+        feedback: >
+          Ce choix traite $2$ comme un écart-type et l'élève au carré :
+          $2^2+3^2=13$. Mais $2$ est ici la VARIANCE, déjà un carré — elle
+          s'ajoute telle quelle : $E(X^2)=2+9=11$. Modèle erroné : variance et
+          écart-type confondus.
+    correct_feedback: >
+      La deuxième formule, lue à l'envers :
+      $E(X^2)=V(X)+\big(E(X)\big)^2=2+3^2=11$.
+    solution: |
+      **Isoler $E(X^2)$** dans $V(X)=E(X^2)-\big(E(X)\big)^2$ :
+      $$E(X^2) = V(X) + \big(E(X)\big)^2$$
+      $$E(X^2) = 2 + 3^2 = 11$$
+
+      **Contrôle :** $E(X^2)=11$ dépasse $\big(E(X)\big)^2=9$ d'exactement
+      $V(X)=2$ — l'espérance des carrés dépasse le carré de l'espérance de la
+      valeur de la variance, jamais de moins.
+
 coverage_summary:
-  total_items: 46   # was 27; +15 on 2026-09-27 (GAP-B: VA + loi binomiale); +4 on 2026-09-28 (GAP-A: variance + écart-type, PC-M23-1..4)
+  total_items: 49   # was 27; +15 on 2026-09-27 (GAP-B: VA + loi binomiale); +4 on 2026-09-28 (GAP-A: variance + écart-type, PC-M23-1..4); +3 on 2026-10-20 (critique pédagogie cadre-GH : E(X²) ≠ (E(X))², PC-M25-1..3)
   per_rung:
     R0: 3   # PC-M1-4, PC-M1-5, PC-M1-6 — accroche, lighter comprehension/prediction, confronts M1 (spec §2)
     R1: 2
@@ -3048,7 +3273,7 @@ coverage_summary:
     # dette de ce bloc.
     R6: 1   # PC-M1-3 — INATTEIGNABLE (pas de 7e chapitre) — dette inchangée
     R7: 2   # PC-M8-2, PC-M8-3 — INATTEIGNABLES (pas de 8e chapitre) — dette inchangée
-    R5b: 9   # PC-M9-1..3 (loi de X), PC-M11-1..3 (E(X)), PC-M23-1/2/4 (V(X), σ(X), ajouté 2026-09-28) — barreau réel, chapitre « ## R5b — »
+    R5b: 12  # PC-M9-1..3 (loi de X), PC-M11-1..3 (E(X)), PC-M23-1/2/4 (V(X), σ(X), ajouté 2026-09-28), PC-M25-1..3 (E(X²), même E / dispersion différente, ajouté 2026-10-20) — barreau réel, chapitre « ## R5b — »
     R5c: 10  # PC-M12-1..3 (P(X=k)), PC-M13-1..3 (reconnaissance), PC-M14-1..3 (P(X>=1)), PC-M23-3 (V(X) binomiale, ajouté 2026-09-28) — barreau réel, chapitre « ## R5c — »
   per_misconception:
     mc.math.sma_prob_conditionnelle.transpose-conditionnel: 6          # PC-M1-1, PC-M1-2, PC-M1-3 (R5/R7 canonical family) + PC-M1-4, PC-M1-5, PC-M1-6 (R0 accroche, lighter — ceiling of 6 per spec §5 "do not exceed 6")
@@ -3062,7 +3287,7 @@ coverage_summary:
     # Ajoutés le 2026-09-27 — GAP-B (variable aléatoire, loi binomiale) :
     mc.math.sma_prob_conditionnelle.va-chemins-non-rassembles: 3       # PC-M9-1, PC-M9-2, PC-M9-3
     mc.math.sma_prob_conditionnelle.va-valeurs-equiprobables: 3        # PC-M9-1, PC-M9-2, PC-M9-3 (shares the same 3 items — distinct choice per item)
-    mc.math.sma_prob_conditionnelle.esperance-sans-ponderation: 5      # PC-M11-1, PC-M11-2, PC-M11-3 + PC-M23-1, PC-M23-2 — même réflexe, réutilisé sur E(X^2) (2026-09-28)
+    mc.math.sma_prob_conditionnelle.esperance-sans-ponderation: 7      # PC-M11-1, PC-M11-2, PC-M11-3 + PC-M23-1, PC-M23-2 — même réflexe, réutilisé sur E(X^2) (2026-09-28) + PC-M25-1, PC-M25-2 (2026-10-20)
     mc.math.sma_prob_conditionnelle.binomiale-oubli-coefficient: 3     # PC-M12-1, PC-M12-2, PC-M12-3
     mc.math.sma_prob_conditionnelle.binomiale-hors-cadre: 6            # PC-M13-1/2/3, deux choix chacun (« oui » avec n/p ajusté, deux variantes du même modèle)
     mc.math.sma_prob_conditionnelle.binomiale-complement-echec: 3      # PC-M14-1, PC-M14-2, PC-M14-3
@@ -3072,7 +3297,7 @@ coverage_summary:
     # le ratchet sur les distracteurs neufs (M9-M14). Voir la déclaration en
     # tête de fichier pour chacun.
     mc.math.sma_prob_conditionnelle.va-valeur-confondue: 3                    # PC-M9-1, PC-M9-2, PC-M9-3 (3e choix, distinct du choix M9/M10)
-    mc.math.sma_prob_conditionnelle.esperance-terme-omis: 3                   # PC-M11-1, PC-M11-2, PC-M11-3
+    mc.math.sma_prob_conditionnelle.esperance-terme-omis: 4                   # PC-M11-1, PC-M11-2, PC-M11-3 + PC-M25-1 (terme de E(X^2) oublié, 2026-10-20)
     mc.math.sma_prob_conditionnelle.esperance-associations-inversees: 3       # PC-M11-1, PC-M11-2, PC-M11-3
     mc.math.sma_prob_conditionnelle.binomiale-oubli-echec: 4                  # PC-M12-1, PC-M12-2, PC-M12-3 + PC-M23-3 — même réflexe (un facteur du produit disparaît), réutilisé sur V(X)=np(1-p) (2026-09-28)
     mc.math.sma_prob_conditionnelle.binomiale-condition-erronee: 3            # PC-M13-1, PC-M13-2, PC-M13-3
@@ -3081,10 +3306,13 @@ coverage_summary:
     # Ajoutés le 2026-09-28 — GAP-A (variance, écart-type) : voir les notes
     # « PÉRIMÈTRE » et « GAP-A REMBOURSÉ » au fil des items M9-M15, et le
     # commentaire de tête des items PC-M23-1..4.
-    mc.math.sma_prob_conditionnelle.variance-carre-de-moyenne-oublie: 3       # PC-M23-1, PC-M23-2, PC-M23-4
-    mc.math.sma_prob_conditionnelle.ecart-type-variance-confondus: 6          # PC-M23-1, PC-M23-2, PC-M23-3 (2 manifestations dans le même item, comme binomiale-hors-cadre sur PC-M13), PC-M23-4 (deux aussi, même motif) — 6 occurrences sur 4 items
-  floor_met: true   # all 24 misconceptions have >= 3 items; transpose-conditionnel is at the 6-item ceiling (spec §5), none exceed it
-  distractors_without_misconception: 0   # in PC-M9..PC-M14 (2026-09-27) and PC-M23-1..4 (2026-09-28); older items (M1-M8, R0) still carry pre-existing `misconception: null` distractors, out of these repayments' scope
+    mc.math.sma_prob_conditionnelle.variance-carre-de-moyenne-oublie: 5       # PC-M23-1, PC-M23-2, PC-M23-4 + PC-M25-2, PC-M25-3 (2026-10-20)
+    mc.math.sma_prob_conditionnelle.ecart-type-variance-confondus: 7          # PC-M23-1, PC-M23-2, PC-M23-3 (2 manifestations dans le même item, comme binomiale-hors-cadre sur PC-M13), PC-M23-4 (deux aussi, même motif), PC-M25-3 (2026-10-20) — 7 occurrences sur 5 items
+    # Ajouté le 2026-10-20 — critique pédagogie cadre-GH (correctifs 2, 3, 7) : voir la déclaration M25
+    # en tête de fichier et le commentaire de tête des items PC-M25-1..3. Plancher exact.
+    mc.math.sma_prob_conditionnelle.esperance-des-carres-confondue: 3         # PC-M25-1, PC-M25-2, PC-M25-3
+  floor_met: true   # all 25 misconceptions have >= 3 items (recompté le 2026-10-20 contre web/scripts/lib/couverture-compte.mjs : aucune sous le plancher) ; transpose-conditionnel is at the 6-item ceiling (spec §5), none exceed it
+  distractors_without_misconception: 0   # in PC-M9..PC-M14 (2026-09-27), PC-M23-1..4 (2026-09-28) and PC-M25-1..3 (2026-10-20); older items (M1-M8, R0) still carry pre-existing `misconception: null` distractors, out of these repayments' scope
 
   dual_tagged_distractors:
     # M4 <-> M5 family: "0" and "0,9" on independence-overlap stems

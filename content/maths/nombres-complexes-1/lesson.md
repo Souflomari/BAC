@@ -479,7 +479,7 @@ Les deux solutions sont bien distinctes, puisque l'énoncé suppose $u+v \neq 2i
 
 Cette section est au programme de la filière Sciences Mathématiques ; en Sciences Expérimentales, tu peux passer directement au chapitre suivant.
 
-Certaines équations ne sont pas, à première vue, du second degré, mais s'y ramènent par un changement d'inconnue. Le cas le plus courant : une équation où $z$ n'apparaît qu'à travers $z^2$ et $z^4$ — une équation **bicarrée**.
+Pourquoi s'y arrêter : au-delà du degré $2$, tu n'as plus de formule de résolution — mais certaines équations de degré $4$ en cachent une du second degré, et tout ce que ce chapitre vient de construire redevient alors utilisable. Elles s'y ramènent par un changement d'inconnue. Le cas le plus courant : une équation où $z$ n'apparaît qu'à travers $z^2$ et $z^4$ — une équation **bicarrée**.
 
 **Exemple travaillé.** Résoudre dans $\mathbb{C}$ l'équation $(E)\ :\ z^4-6z^2+25=0$.
 
@@ -493,7 +493,9 @@ $\Delta$ est un réel négatif : $\delta=i\sqrt{64}=8i$ convient — on vérifie
 
 $$Z=\frac{6\pm8i}{2}=3\pm4i \qquad\qquad Z_1=3+4i \qquad\qquad Z_2=3-4i$$
 
-**Prends position avant de lire la suite :** on a maintenant deux valeurs de $Z$. Combien de solutions $z$ l'équation de départ $(E)$ va-t-elle finalement avoir au total — deux, autant que de valeurs de $Z$, ou davantage ?
+**Prends position avant de lire la suite :** on a maintenant deux valeurs de $Z$. Quelles sont les solutions $z$ de l'équation de départ $(E)$ — et combien y en a-t-il au total : deux, autant que de valeurs de $Z$, ou davantage ?
+
+[[checkpoint:cp-r4c-retour-a-z]]
 
 $(E)$ est de degré $4$ en $z$ ; en toute généralité, un polynôme de degré $4$ a $4$ racines dans $\mathbb{C}$, pas $2$. Et c'est exactement ce qui va se passer : chaque valeur de $Z$ va redonner **deux** valeurs de $z$, jamais une seule, parce que $z^2=Z$ (pour $Z\neq0$) a toujours deux solutions opposées — le même mécanisme $\delta$ et $-\delta$ que plus haut, appliqué ici à $z$ lui-même plutôt qu'à une notation auxiliaire.
 
@@ -651,5 +653,20 @@ Puis, pour vérifier que tu as retenu les **gestes** et non les nombres, une var
      national (R6) : pour une équation à COEFFICIENTS RÉELS, Δ<0 ne signifie
      plus « aucune solution » comme dans ℝ. Probe la misconception déjà
      déclarée `delta-negatif-aucune-solution` ; aucun id neuf, rien à
-     transmettre à l'auteur d'items. -->
+     transmettre à l'auteur d'items.
+
+     NOTE (critique pédagogie cadre-GH, 2026-10-20 — docs/audits/critiques/
+     cadre-GH-pedagogie.md, P1 et notes G6 ; correctif 2) :
+     (7) [LIVRÉ] Le « prends position » de la section Z = z² (« combien de
+     solutions z ? ») n'était que rhétorique. Il est engagé par le point
+     d'arrêt cp-r4c-retour-a-z (checkpoints.yaml), AVANT que le texte ne
+     revienne à z : quatre ensembles proposés, la clé ±(2+i), ±(2−i) et trois
+     retours incomplets, tous sous l'id déjà déclaré
+     `changement-inconnue-retour-incomplet` (face A : les valeurs de Z
+     rendues, nues ou avec leurs opposées ; face B : une seule racine carrée
+     par valeur de Z). Recalculé : (3+4i)² = −7+24i, ce n'est donc pas une
+     racine carrée de Z₁ ; (2+i)² = 3+4i ; (2−i)² = 3−4i.
+     (8) [LIVRÉ, note basse G6] La section s'ouvrait sur « Certaines
+     équations… » sans raison de s'y arrêter ; elle dit maintenant pourquoi
+     (pas de formule au-delà du degré 2, mais un second degré caché). -->
 

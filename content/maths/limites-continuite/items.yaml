@@ -215,7 +215,11 @@ misconceptions:
       croit qu'une équation $f(x)=k$ n'a jamais plus d'une solution « par
       définition de fonction », compte un point de jonction comme une
       solution supplémentaire sans vérifier qu'il en est une, ou pense que
-      le TVI exige une expression algébrique explicite de $f$.
+      le TVI exige une expression algébrique explicite de $f$. Au bout d'une
+      dichotomie, la même surinterprétation lit dans l'intervalle final plus
+      que le TVI n'y garantit : la valeur exacte de la solution (le milieu
+      pris pour la solution elle-même), ou une précision plus fine que la
+      largeur $\frac{b-a}{2^n}$ de cet intervalle.
     contradicts_principle: >-
       Le TVI garantit l'EXISTENCE d'au moins une solution à $f(x)=k$ dans
       $[a,b]$ dès que $f$ est CONTINUE sur $[a,b]$ et que $k$ est compris
@@ -225,6 +229,10 @@ misconceptions:
       acquise qu'en ajoutant la stricte monotonie de $f$ sur l'intervalle
       considéré ; sans elle, plusieurs solutions distinctes restent
       possibles, une par intervalle de monotonie où $k$ est atteint.
+      Réappliqué à l'intervalle final d'une dichotomie, il situe la solution
+      DANS cet intervalle, de largeur $\frac{b-a}{2^n}$ : c'est toute la
+      précision acquise, et tout réel de l'intervalle en est une valeur
+      approchée à cette largeur près — aucun n'est la solution elle-même.
 
   - id: mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee
     label: "Identifie mal une asymptote verticale issue d'une limite infinie en un point"
@@ -275,9 +283,21 @@ misconceptions:
   # continuité — n'a pas d'id neuf : `tvi-hypotheses-ou-conclusion-mal-cernees`
   # le décrit déjà en toutes lettres (« ignore que la continuité doit être
   # vérifiée (pas seulement les signes aux bornes) »), et il porte aussi
-  # l'unicité affirmée sans monotonie. La règle d'arrêt (b−a)/2ⁿ ≤ ε est
-  # enseignée sans être nommée comme piège : pas d'id, donc pas d'item qui la
-  # vise (voir le `honest_state`). Même famille, dans une AUTRE notion :
+  # l'unicité affirmée sans monotonie. La règle d'arrêt (b−a)/2ⁿ ≤ ε était
+  # enseignée sans être nommée comme piège, donc sans item. MIS À JOUR le
+  # 2026-10-20 (critique pédagogie cadre-GH, P4, correctif 13) : LIMCONT-39
+  # teste la LECTURE de l'intervalle final comme valeur approchée à une
+  # précision donnée. Pas d'id neuf (il en faudrait trois items) : ses deux
+  # distracteurs de lecture — le milieu pris pour la solution, une précision
+  # annoncée plus fine que la largeur (b−a)/2ⁿ — sont une surinterprétation
+  # de ce que le TVI garantit, ce que dit le libellé de
+  # `tvi-hypotheses-ou-conclusion-mal-cernees` (« ce qu'il garantit ») ; sa
+  # description gagne UNE phrase qui nomme cette face au lieu de la laisser
+  # implicite. Coût assumé, à arbitrer par le propriétaire : cet id, déjà
+  # large, ne sépare pas cette face de l'unicité sans monotonie (critique P3,
+  # granularité des ids). Le COMPTE des étapes (combien d'étapes pour 10⁻²)
+  # reste non testé : aucune erreur de compte n'est déclarée.
+  # Même famille, dans une AUTRE notion :
   # `mc.math.maths_derivabilite_etude_fonctions.intervalle-image-recopie-sans-calcul`
   # (l'intervalle image d'une bijection) — un id est propre à sa notion, d'où
   # la déclaration ici.
@@ -2260,7 +2280,8 @@ items:
   #   - LIMCONT-36/37, dichotomie : plan croisé (moitié gardée × ce qu'on
   #     affirme), pour qu'aucune proposition ne se distingue des trois autres.
   #   - LIMCONT-38 : repérer l'étape fautive d'une dichotomie déjà menée.
-  # Fonctions et nombres originaux : ni 1/x sur [1,3], ni x² sur [−1;2], ni
+  # Fonctions et nombres originaux : ni 1/x sur [1,3], ni x² sur [−1;2] (devenu
+  # x² sur [−3;2] dans la leçon le 2026-10-20 — absent lui aussi), ni
   # x³+x−1 (exemples travaillés du chapitre), ni x³+2x−5 (LIMCONT-18), ni les
   # fonctions de bank.yaml ou du sommet d'exercices.
   - id: LIMCONT-33
@@ -2704,6 +2725,95 @@ items:
       **Contrôle.** $x^2-2x-1=(x-1)^2-2$ s'annule en $1+\sqrt2\approx2{,}414$,
       qui est bien dans $[2{,}375\,;2{,}5]$.
 
+  # ── 2026-10-20 (critique pédagogie cadre-GH, P4, correctif 13) — LIMCONT-39 :
+  # la règle d'arrêt de la dichotomie, côté LECTURE — que vaut l'intervalle
+  # final comme valeur approchée ? Après n étapes depuis [a;b], il a pour
+  # largeur (b−a)/2ⁿ ; ici 1/2⁴ = 0,0625, donc à 10⁻¹ près, pas à 10⁻². Plan :
+  # deux lectures excessives (le milieu pris pour la solution ; une précision
+  # plus fine que la largeur), portées par `tvi-hypotheses-ou-conclusion-
+  # mal-cernees` (voir le bloc G5 en tête de fichier), et la moitié gardée à
+  # tort à la dernière étape (`dichotomie-moitie-sans-changement-de-signe`).
+  # Nombres neufs : [3;4] et ses milieux 3,5 / 3,25 / 3,375 / 3,4375 /
+  # 3,40625 ne figurent ni dans la leçon ([0;1], x³+x−1), ni dans LIMCONT-36
+  # à 38 ([0;4], [1;2], [2;3]), ni dans bank.yaml ou exercises.yaml (grep).
+  - id: LIMCONT-39
+    rung: "R5"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_limites_continuite
+    tags: [dichotomie, regle_d_arret, valeur_approchee]
+    primary_misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+    stem: >
+      On applique la dichotomie à une fonction $h$ continue et strictement
+      croissante sur $[3\,;4]$, avec $h(3)<0<h(4)$. Aux milieux successifs,
+      on trouve $h(3{,}5)>0$, puis $h(3{,}25)<0$, $h(3{,}375)<0$ et enfin
+      $h(3{,}4375)>0$. Que peut-on affirmer, à ce stade, de la solution $c$
+      de l'équation $h(x)=0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $c$ vaut exactement $3{,}40625$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+        feedback: >
+          $3{,}40625$ est le milieu de l'intervalle final
+          $[3{,}375\,;3{,}4375]$, pris pour la solution elle-même. Le TVI,
+          réappliqué à cet intervalle, garantit seulement que $c$ s'y
+          trouve : $c$ peut être n'importe quel réel entre $3{,}375$ et
+          $3{,}4375$, et le milieu n'en est qu'une valeur approchée.
+      - id: B
+        text: >-
+          $3{,}4$ approche $c$ à $10^{-1}$ près
+        correct: true
+      - id: C
+        text: >-
+          $3{,}4$ approche $c$ à $10^{-2}$ près
+        correct: false
+        misconception: mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees
+        feedback: >
+          La précision se lit sur la largeur de l'intervalle final : après
+          quatre étapes depuis $[3\,;4]$, elle vaut $\dfrac{4-3}{2^4}=0{,}0625$.
+          C'est moins que $10^{-1}$, mais plus que $10^{-2}$ : $c$ pourrait
+          valoir $3{,}43$, à $0{,}03$ de $3{,}4$. Pour garantir $10^{-2}$, il
+          faudrait $\dfrac{1}{2^n}\leq0{,}01$, soit au moins $7$ étapes.
+      - id: D
+        text: >-
+          $c$ appartient à l'intervalle $[3{,}4375\,;3{,}5]$
+        correct: false
+        misconception: mc.math.maths_limites_continuite.dichotomie-moitie-sans-changement-de-signe
+        feedback: >
+          Sur $[3{,}4375\,;3{,}5]$, $h(3{,}4375)>0$ et $h(3{,}5)>0$ : même
+          signe aux deux bornes, le TVI n'y garantit rien. C'est la moitié où
+          le signe ne change pas, celle qu'on abandonne. Le changement de
+          signe a lieu entre $h(3{,}375)<0$ et $h(3{,}4375)>0$.
+    correct_feedback: >
+      Après quatre étapes, $c\in[3{,}375\,;3{,}4375]$, un intervalle de
+      largeur $\dfrac{1}{2^4}=0{,}0625\leq10^{-1}$. $3{,}4$ est dans cet
+      intervalle, donc $|c-3{,}4|\leq0{,}0625$ : c'est une valeur approchée de
+      $c$ à $10^{-1}$ près — pas encore à $10^{-2}$ près.
+    solution: |
+      **Le repère, à chaque étape :** on garde la moitié dont les deux bornes
+      donnent à $h$ des signes CONTRAIRES.
+
+      | étape | intervalle | milieu $m$ | signe de $h(m)$ | moitié gardée |
+      |---|---|---|---|---|
+      | 1 | $[3\,;4]$ | $3{,}5$ | $+$ | $[3\,;3{,}5]$ |
+      | 2 | $[3\,;3{,}5]$ | $3{,}25$ | $-$ | $[3{,}25\,;3{,}5]$ |
+      | 3 | $[3{,}25\,;3{,}5]$ | $3{,}375$ | $-$ | $[3{,}375\,;3{,}5]$ |
+      | 4 | $[3{,}375\,;3{,}5]$ | $3{,}4375$ | $+$ | $[3{,}375\,;3{,}4375]$ |
+
+      **La largeur, donc la précision.** Chaque étape divise la largeur par
+      $2$ : après $4$ étapes,
+      $$\frac{4-3}{2^4}=\frac{1}{16}=0{,}0625$$
+      Le TVI garantit $c\in[3{,}375\,;3{,}4375]$, et rien de plus.
+
+      **La lecture.** Tout réel de cet intervalle — $3{,}4$ par exemple —
+      est à moins de $0{,}0625$ de $c$, donc à moins de $10^{-1}$ : une
+      valeur approchée à $10^{-1}$ près. Pour $10^{-2}$, il faudrait
+      $\dfrac{1}{2^n}\leq0{,}01$, soit $2^n\geq100$ : $n=7$ étapes
+      ($2^6=64$, $2^7=128$).
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après LIMCONT-27 à LIMCONT-32. Six familles sous le
 # plancher, dont les quatre pièges du formulaire trigonométrique — coefficient
@@ -2717,6 +2827,11 @@ items:
 # chacun porté à 3 items ; le premier piège de la dichotomie (la continuité) et l'unicité sans
 # monotonie rejoignent `tvi-hypotheses-ou-conclusion-mal-cernees` (4 → 6). R5 passe de 3 à 9 items.
 # Tableau GÉNÉRÉ contre la convention de la chaîne, gardé par web/scripts/resume-couverture.mjs.
+# 2026-10-20 (critique pédagogie cadre-GH, correctif 13) : LIMCONT-39, la règle d'arrêt de la dichotomie
+# côté lecture (intervalle final = valeur approchée à 10⁻¹ près, pas à 10⁻²). Aucun id neuf :
+# `tvi-hypotheses-ou-conclusion-mal-cernees` 6 → 7 (description complétée d'une phrase, voir le bloc G5),
+# `dichotomie-moitie-sans-changement-de-signe` 3 → 4 (sort de la marge nulle). R5 : 9 → 10. Tableau
+# régénéré contre lib/couverture-compte.mjs.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2735,13 +2850,13 @@ coverage_summary:
     mc.math.maths_limites_continuite.sur-generalise-forme-indeterminee:                 { count: 3, items: [LIMCONT-2, LIMCONT-12, LIMCONT-13] }
     mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale: { count: 5, items: [LIMCONT-3, LIMCONT-4, LIMCONT-8, LIMCONT-14, LIMCONT-21] }
     mc.math.maths_limites_continuite.definition-continuite-mal-appliquee:               { count: 4, items: [LIMCONT-5, LIMCONT-15, LIMCONT-16, LIMCONT-21] }
-    mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees:          { count: 6, items: [LIMCONT-6, LIMCONT-17, LIMCONT-18, LIMCONT-20, LIMCONT-36, LIMCONT-37] }
+    mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees:          { count: 7, items: [LIMCONT-6, LIMCONT-17, LIMCONT-18, LIMCONT-20, LIMCONT-36, LIMCONT-37, LIMCONT-39] }
     mc.math.maths_limites_continuite.asymptote-verticale-mal-identifiee:                { count: 3, items: [LIMCONT-10, LIMCONT-30, LIMCONT-32] }
     mc.math.maths_limites_continuite.parite-signe-terme-dominant-mal-geree:             { count: 3, items: [LIMCONT-11, LIMCONT-13, LIMCONT-19] }
     mc.math.maths_limites_continuite.image-segment-ordre-des-bornes-recopie:            { count: 3, items: [LIMCONT-33, LIMCONT-34, LIMCONT-35] }
     mc.math.maths_limites_continuite.image-segment-extremum-interieur-oublie:           { count: 3, items: [LIMCONT-33, LIMCONT-34, LIMCONT-35] }
-    mc.math.maths_limites_continuite.dichotomie-moitie-sans-changement-de-signe:        { count: 3, items: [LIMCONT-36, LIMCONT-37, LIMCONT-38] }
-  total_items: 38
+    mc.math.maths_limites_continuite.dichotomie-moitie-sans-changement-de-signe:        { count: 4, items: [LIMCONT-36, LIMCONT-37, LIMCONT-38, LIMCONT-39] }
+  total_items: 39
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2750,19 +2865,24 @@ coverage_summary:
     R2: 3
     R3: 3
     R4: 4
-    R5: 9
+    R5: 10
     R6: 8
     R7: 3
   honest_state: >-
     Les seize misconceptions déclarées sont couvertes, aucune sous le
-    plancher. Huit y siègent EXACTEMENT (3 items) — dont les trois ids de la
-    vague G5 (2026-10-20) : la marge est nulle et tout retrait d'item la
-    casse. Les deux ids de l'image d'un segment portent la MÊME liste
+    plancher. Sept y siègent EXACTEMENT (3 items) — dont les deux ids de
+    l'image d'un segment (vague G5, 2026-10-20) : la marge est nulle et tout
+    retrait d'item la casse. Le troisième id de la vague,
+    `dichotomie-moitie-sans-changement-de-signe`, en sort avec LIMCONT-39
+    (3 → 4). Les deux ids de l'image d'un segment portent la MÊME liste
     d'items (LIMCONT-33, 34, 35), et c'est voulu, pas un défaut de mesure :
     chacun de ces items offre les deux pièges sur des distracteurs
     distincts, plus un distracteur qui les exhibe ensemble (double
-    marquage) — c'est le choix coché qui les sépare, pas l'item. Ce qui
-    reste NON testé dans les deux sections neuves : la règle d'arrêt de la
-    dichotomie ((b−a)/2ⁿ ≤ ε, compter les étapes) et la lecture de
-    l'intervalle final comme valeur approchée — enseignées, mais non
-    nommées comme pièges par la prose, donc sans id ni item.
+    marquage) — c'est le choix coché qui les sépare, pas l'item. La
+    lecture de l'intervalle final d'une dichotomie comme valeur approchée
+    est testée depuis le 2026-10-20 (LIMCONT-39), sous
+    `tvi-hypotheses-ou-conclusion-mal-cernees` (6 → 7), dont la description
+    nomme désormais cette face — un id large, qui ne la sépare pas de
+    l'unicité sans monotonie : arbitrage de granularité laissé au
+    propriétaire. Reste NON testé : le COMPTE des étapes ((b−a)/2ⁿ ≤ ε
+    résolu en n) — aucune erreur de compte n'est déclarée.

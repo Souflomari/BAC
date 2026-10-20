@@ -29,6 +29,15 @@ skill_code: sma_prob_conditionnelle
 #   cp-bac-loi          (before r-var.)  — rupture gate: mis-reading the loi de X
 #                                          (assemble ALL paths for p(X=2); a loi
 #                                          must sum to 1). Probes M8, with M6.
+#   cp-r5b-carre-esperance (in R5b)      — COMMIT gate, ajouté 2026-10-20
+#                                          (critique pédagogie cadre-GH, P1 :
+#                                          the old variance predict was hollow).
+#                                          E(X²) = (E(X))² ? committed on the
+#                                          running example BEFORE any formula.
+#                                          Probes esperance-des-carres-
+#                                          confondue (M25), with esperance-
+#                                          sans-ponderation and esperance-
+#                                          terme-omis.
 #
 # EVERY distractor carries a named misconception id from this notion's inventory
 # (items.yaml). Option lengths are balanced so the correct choice is never the
@@ -372,3 +381,74 @@ checkpoints:
           conditionnelle de la deuxième branche seule, sans la multiplier par
           $p(a=1)$ ni ajouter l'autre chemin. Modèle erroné : lecture incomplète
           de l'arbre.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-r5b-carre-esperance | placed IN R5b, inside « Un
+  #        raccourci : une deuxième formule de la variance », right after
+  #        the « prends position » and BEFORE E(X²) is computed and the
+  #        formula derived. Ajouté 2026-10-20 (docs/audits/critiques/
+  #        cadre-GH-pedagogie.md, P1 : the previous predict asked for V(X)
+  #        after 0,6196 was already printed). The running example's own
+  #        table (0, 1, 2 ; 0,32 / 0,38 / 0,30 ; E(X) = 0,98) — it commits
+  #        on the lesson's question ; PC-M25-1 to 3 use other numbers.
+  #        Distractors : (E(X))² = 0,9604 (M25, the trap the prose names) ;
+  #        the unweighted mean of squares 5/3 ≈ 1,67 (esperance-sans-
+  #        ponderation, the E(X) reflex one step further) ; the last term
+  #        dropped, 0,38 (esperance-terme-omis).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5b-carre-esperance
+    rung: "R5b"
+    habilete: raisonnement
+    skill_code: sma_prob_conditionnelle
+    tags: [checkpoint, formative, misconception_driven, sma_prob_conditionnelle, variance, predict_commit]
+    primary_misconception: mc.math.sma_prob_conditionnelle.esperance-des-carres-confondue
+    item_source: original
+    lesson_placement: in_R5b
+
+    stem: |
+      Sur le tableau de $X$ — valeurs $0$, $1$, $2$, de probabilités
+      respectives $0{,}32$ ; $0{,}38$ ; $0{,}30$ —, on sait que
+      $E(X)=0{,}98$. **Avant de lire la suite, engage-toi :** que vaut
+      l'espérance des carrés, $E(X^2)$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$0{,}9604$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.esperance-des-carres-confondue
+        feedback: |
+          Modèle détecté : $E(X^2)$ pris pour le carré de l'espérance,
+          $0{,}98^2=0{,}9604$ — comme si élever au carré puis faire la moyenne
+          revenait à faire la moyenne puis élever au carré. Par sa définition,
+          chaque valeur au carré, pondérée :
+          $0^2\times0{,}32+1^2\times0{,}38+2^2\times0{,}30=1{,}58$. Les deux
+          nombres diffèrent, et la suite du texte montre que leur écart a un
+          nom.
+      - id: B
+        text: "$\\approx 1{,}67$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.esperance-sans-ponderation
+        feedback: |
+          Modèle détecté : la moyenne simple des carrés,
+          $\dfrac{0^2+1^2+2^2}{3}=\dfrac53\approx1{,}67$, sans pondération. Les
+          trois valeurs n'ont pas la même probabilité : chaque carré se
+          multiplie par SA probabilité, $0{,}32$ ; $0{,}38$ ; $0{,}30$.
+      - id: C
+        text: "$0{,}38$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.esperance-terme-omis
+        feedback: |
+          Modèle détecté : une somme incomplète,
+          $0^2\times0{,}32+1^2\times0{,}38=0{,}38$ — le terme de la valeur $2$
+          est oublié. C'est pourtant lui qui pèse le plus :
+          $2^2\times0{,}30=1{,}2$. Avec les trois termes, $E(X^2)=1{,}58$.
+      - id: D
+        text: "$1{,}58$"
+        correct: true
+        feedback: |
+          Exact : $0^2\times0{,}32+1^2\times0{,}38+2^2\times0{,}30=1{,}58$ —
+          nettement plus que $\big(E(X)\big)^2=0{,}9604$. La moyenne des carrés
+          n'est pas le carré de la moyenne.

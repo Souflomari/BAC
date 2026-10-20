@@ -20,9 +20,9 @@ skill_code: maths_fonction_exponentielle
 #                                       e^a+e^b ni e^{ab}. Probes M4.
 #   cp-r3-derivee-eu     (after R3)   — rupture gate: (e^u)'=u'·e^u (ni e^u seul,
 #                                       ni u', ni u·e^u). Probes M6.
-#   cp-r4-croissances    (after R4)   — rupture gate: e^x/x → +∞ (∞/∞ n'est pas
+#   cp-r4-croissances    (in R4)      — rupture gate: e^x/x → +∞ (∞/∞ n'est pas
 #                                       une conclusion directe). Probes M7.
-#   cp-r4-asymptote      (after R4)   — rupture gate: e^x → 0 en -∞, asymptote
+#   cp-r4-asymptote      (in R4)      — rupture gate: e^x → 0 en -∞, asymptote
 #                                       y=0 jamais franchie. Probes M8 + M1.
 #   cp-r5-lecture-courbe (after R5)   — rupture gate: lire le tableau/la courbe
 #                                       de exp (croissante partout, pas de min).
@@ -46,6 +46,14 @@ skill_code: maths_fonction_exponentielle
 #                                       (e^{ah}-1)/h -> 1 instead of -> a
 #                                       trap), with a cross-tag to
 #                                       forme-0-sur-0-non-reconnue.
+#   cp-r4-derivee-base-a (in R4)      — COMMIT gate, ajouté 2026-10-20
+#                                       (critique pédagogie cadre-GH, P1) :
+#                                       turns the « prends position » of
+#                                       « Exponentielle de base a » into a
+#                                       real MCQ commit BEFORE the computation
+#                                       that settles it. Probes
+#                                       derivee-base-a-regle-des-puissances,
+#                                       with two derivee-exp-composee faces.
 #
 # EVERY distractor carries a named misconception id from this notion's inventory
 # (items.yaml). Option lengths are balanced so the correct choice is never the
@@ -358,7 +366,10 @@ checkpoints:
           substitution ; il faut d'abord isoler le coefficient $4$.
 
   # ════════════════════════════════════════════════════════════════
-  # CP-3 | id: cp-r4-croissances | placed AFTER R4
+  # CP-3 | id: cp-r4-croissances | placed IN R4 (after « Croissances
+  #        comparées », before « Exponentielle de base a » — étiquette
+  #        after_R4 → in_R4 le 2026-10-20, §11.71 : le marqueur n'est pas en
+  #        fin de chapitre)
   #        Rupture gate: e^x/x → +∞ (∞/∞ n'est pas une conclusion
   #        directe ; e^x écrase x). Clone of EXP-5. Probes M7.
   # ════════════════════════════════════════════════════════════════
@@ -370,7 +381,7 @@ checkpoints:
     tags: [checkpoint, formative, misconception_driven, maths_fonction_exponentielle, limites, croissances_comparees]
     primary_misconception: mc.math.maths_fonction_exponentielle.croissances-comparees-inversees
     item_source: clone_of_EXP-5
-    lesson_placement: after_R4
+    lesson_placement: in_R4
 
     stem: |
       Que vaut $\displaystyle\lim_{x \to +\infty} \dfrac{e^{x}}{x}$ ?
@@ -411,7 +422,8 @@ checkpoints:
           comparées lèvent l'indétermination : la limite existe et vaut $+\infty$.
 
   # ════════════════════════════════════════════════════════════════
-  # CP-4 | id: cp-r4-asymptote | placed AFTER R4
+  # CP-4 | id: cp-r4-asymptote | placed IN R4 (même endroit que CP-3 ;
+  #        étiquette after_R4 → in_R4 le 2026-10-20, §11.71)
   #        Rupture gate: e^x → 0 en -∞, asymptote horizontale y=0 jamais
   #        franchie. Clone of EXP-15. Probes M8 (limite en -∞) + M1.
   # ════════════════════════════════════════════════════════════════
@@ -423,7 +435,7 @@ checkpoints:
     tags: [checkpoint, formative, misconception_driven, maths_fonction_exponentielle, limites, asymptote]
     primary_misconception: mc.math.maths_fonction_exponentielle.limite-exp-moins-infini
     item_source: clone_of_EXP-15
-    lesson_placement: after_R4
+    lesson_placement: in_R4
 
     stem: |
       Que vaut $\displaystyle\lim_{x \to -\infty} e^{x}$, et qu'en déduit-on
@@ -522,3 +534,71 @@ checkpoints:
         feedback: |
           Modèle détecté : mauvaise limite à gauche. $\exp$ reste $>0$ : sa
           limite en $-\infty$ est $0$ (asymptote $y=0$), jamais $-\infty$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-NEW-3 | id: cp-r4-derivee-base-a | placed IN R4, inside
+  #        « Exponentielle de base a », right after the « prends position »
+  #        and BEFORE the computation that settles it. Ajouté 2026-10-20
+  #        (docs/audits/critiques/cadre-GH-pedagogie.md, P1 : the predict
+  #        was rhetorical). Probes derivee-base-a-regle-des-puissances
+  #        ((a^x)' = x·a^{x-1}, the trap the prose names), with the two
+  #        derivee-exp-composee faces that the definition a^x = e^{x ln a}
+  #        makes reachable (u' forgotten : a^x ; u instead of u' :
+  #        x·ln(a)·a^x). General base a — none of the lesson's numbers
+  #        (a=2, x=3) nor of EXP-41 to EXP-46 (5, 3, 4/5, 4, √2, √5).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-derivee-base-a
+    rung: "R4"
+    habilete: raisonnement
+    skill_code: maths_fonction_exponentielle
+    tags: [checkpoint, formative, misconception_driven, maths_fonction_exponentielle, exponentielle_base_a, predict_commit]
+    primary_misconception: mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances
+    item_source: original
+    lesson_placement: in_R4
+
+    stem: |
+      On vient de poser $a^x := e^{x\ln a}$, pour un réel $a>0$ fixé.
+      **Avant de lire la suite, engage-toi :** quelle est la dérivée de
+      $x\mapsto a^x$ sur $\mathbb{R}$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$x\\,a^{x-1}$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-base-a-regle-des-puissances
+        feedback: |
+          Modèle détecté : la règle de $x^n$ — « on descend l'exposant, on lui
+          retire $1$ » — appliquée à $a^x$. Elle vaut quand la base varie et
+          que l'exposant est fixe ; ici c'est l'inverse : la base $a$ est
+          fixe, c'est l'exposant $x$ qui varie. La suite du texte chiffre
+          l'écart entre les deux formules sur un exemple.
+      - id: B
+        text: "$\\ln(a)\\times a^x$"
+        correct: true
+        feedback: |
+          Exact : $a^x=e^{u(x)}$ avec $u(x)=x\ln a$, et $u'(x)=\ln a$ est une
+          constante, puisque $a$ est fixé. La règle $(e^u)'=u'e^u$ donne
+          $\ln(a)\times a^x$ — la dérivée de $e^x$ à un facteur constant
+          près, facteur qui ne vaut $1$ que pour $a=e$.
+      - id: C
+        text: "$a^x$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: |
+          Modèle détecté : $a^x$ dérivée comme $e^x$, qui est sa propre
+          dérivée. Mais $a^x=e^{u}$ avec $u(x)=x\ln a$ : la règle
+          $(e^u)'=u'e^u$ fait apparaître le facteur $u'(x)=\ln a$, qui ne vaut
+          $1$ que pour $a=e$.
+      - id: D
+        text: "$x\\ln(a)\\times a^x$"
+        correct: false
+        misconception: mc.math.maths_fonction_exponentielle.derivee-exp-composee
+        feedback: |
+          Modèle détecté : le facteur placé devant $a^x$ est $u(x)=x\ln a$
+          lui-même, au lieu de sa dérivée $u'(x)=\ln a$. La règle est
+          $(e^u)'=u'e^u$, pas $u\,e^u$ : avec ce $x$ en trop, la dérivée
+          s'annulerait en $0$, alors que $a^x$ (pour $a\neq1$) y varie comme
+          partout ailleurs.

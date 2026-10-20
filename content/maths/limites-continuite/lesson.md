@@ -361,17 +361,19 @@ $$p([1,3]) = \left[p(3)\,;p(1)\right] = \left[\frac{1}{3}\,;1\right]$$
 
 **Et si $f$ n'est pas monotone sur tout l'intervalle ?** Alors les bornes de départ ne suffisent plus : le minimum ou le maximum peuvent très bien être atteints À L'INTÉRIEUR de $[a,b]$, pas à ses extrémités.
 
-**Prends position avant de lire la suite :** l'image de $[-1\,;2]$ par $x \mapsto x^2$ est-elle $[1\,;4]$ ?
+**Prends position avant de lire la suite :** quelle est l'image de $[-3\,;2]$ par $x \mapsto x^2$ ?
 
-Non. Notons $q(x)=x^2$ : $q$ n'est pas monotone sur $[-1,2]$ tout entier, elle est strictement décroissante sur $[-1,0]$, puis strictement croissante sur $[0,2]$ (fonction de référence). Le minimum ne se trouve donc pas à l'une des deux bornes, mais au point de retournement, $x=0$ :
+[[checkpoint:cp-r5-image-non-monotone]]
 
-$$q(-1) = (-1)^2 = 1 \qquad \qquad q(0) = 0^2 = 0 \qquad \qquad q(2) = 2^2 = 4$$
+Notons $q(x)=x^2$. Le réflexe des bornes donne $q(-3)=9$ et $q(2)=4$ : recopiées dans l'ordre, elles forment $[9\,;4]$, qui n'est même pas un segment ; rangées, elles forment $[4\,;9]$ — faux aussi. Car $q$ n'est pas monotone sur $[-3,2]$ tout entier : elle est strictement décroissante sur $[-3,0]$, puis strictement croissante sur $[0,2]$ (fonction de référence). Le minimum ne se trouve donc pas à l'une des deux bornes, mais au point de retournement, $x=0$ :
 
-Sur $[-1,0]$, $q$ décroît de $1$ à $0$ : elle balaie $[0\,;1]$. Sur $[0,2]$, $q$ croît de $0$ à $4$ : elle balaie $[0\,;4]$. La réunion des deux donne l'image complète :
+$$q(-3) = (-3)^2 = 9 \qquad \qquad q(0) = 0^2 = 0 \qquad \qquad q(2) = 2^2 = 4$$
 
-$$q([-1,2]) = [0\,;4]$$
+Sur $[-3,0]$, $q$ décroît de $9$ à $0$ : elle balaie $[0\,;9]$. Sur $[0,2]$, $q$ croît de $0$ à $4$ : elle balaie $[0\,;4]$. La réunion des deux donne l'image complète :
 
-**Le piège à éviter :** citer $f(a)$ et $f(b)$ sans avoir vérifié que $f$ est strictement monotone sur TOUT l'intervalle. Ici, $q(-1)=1$ et $q(2)=4$ sont bien deux valeurs prises par $q$, mais ni l'une ni l'autre n'est le minimum — atteint ailleurs, en $x=0$, un point intérieur à l'intervalle. L'écriture $[f(a)\,;f(b)]$ n'est un raccourci valable que lorsque la stricte monotonie sur tout l'intervalle est acquise ; sans elle, il faut étudier les variations pour localiser le vrai minimum et le vrai maximum.
+$$q([-3,2]) = [0\,;9]$$
+
+**Le piège à éviter :** citer $f(a)$ et $f(b)$ sans avoir vérifié que $f$ est strictement monotone sur TOUT l'intervalle. Ici, $q(-3)=9$ et $q(2)=4$ sont bien deux valeurs prises par $q$, mais ni l'une ni l'autre n'est le minimum — atteint ailleurs, en $x=0$, un point intérieur à l'intervalle. Et une fois ce minimum trouvé, le maximum ne se lit pas davantage « à la borne de droite » par habitude : il faut COMPARER les deux valeurs aux bornes. Ici c'est $q(-3)=9$, à gauche, qui l'emporte sur $q(2)=4$ — écrire $[0\,;4]$ oublierait toutes les valeurs entre $4$ et $9$, prises entre $x=-3$ et $x=-2$. L'écriture $[f(a)\,;f(b)]$ n'est un raccourci valable que lorsque la stricte monotonie sur tout l'intervalle est acquise ; sans elle, il faut étudier les variations pour localiser le vrai minimum et le vrai maximum.
 
 ### La dichotomie : trouver une valeur approchée de la solution
 
@@ -427,7 +429,7 @@ Face à une question du type "montrer que l'équation $f(x)=k$ admet une solutio
 
 La même famille de questions a deux prolongements :
 
-- **Une valeur approchée est demandée ?** Une fois l'existence (et l'unicité, si demandée) établies, poursuivre par dichotomie : diviser l'intervalle en deux, comparer le signe du milieu aux deux bornes actuelles, garder la moitié où le signe change réellement, répéter jusqu'à ce que l'amplitude $\dfrac{b-a}{2^n}$ atteigne la précision voulue.
+- **Une valeur approchée est demandée ?** Une fois l'existence (et l'unicité, si demandée) établies, poursuivre par dichotomie, telle qu'elle est menée plus haut, jusqu'à la règle d'arrêt $\dfrac{b-a}{2^n} \leq \varepsilon$.
 - **C'est l'image d'un intervalle qui est demandée, plutôt qu'une solution ?** Vérifier la continuité (boîte à outils du chapitre 5), puis la stricte monotonie sur TOUT l'intervalle : si elle est acquise, l'image se lit directement aux bornes, dans l'ordre imposé par le sens de variation ; sinon, il faut étudier les variations pour localiser où le minimum et le maximum sont réellement atteints.
 
 ---
@@ -562,4 +564,30 @@ Même machinerie, autre fonction : $g(x)=x(e^{-x}-1)^2$ au lieu de $f(x)=x(e^{x/
      s'appuie sur des limites et une étude de signe, sans tableau de
      variations admis.) À confirmer que cet ordre de progression
      correspond au programme réel.
+
+     NOTE (critique pédagogie cadre-GH, 2026-10-20 — docs/audits/critiques/
+     cadre-GH-pedagogie.md, P1, P4, P8 ; correctifs 2, 13 et 16) :
+     (a) ENGAGEMENT RÉEL. Le « prends position » de « L'image d'un segment »
+     est engagé par le point d'arrêt cp-r5-image-non-monotone
+     (checkpoints.yaml), placé avant la révélation. L'intervalle de
+     l'exemple passe de [−1;2] à [−3;2], et c'est voulu : sur [−1;2], le
+     maximum de x² est à la borne de DROITE, si bien que le réflexe
+     « maximum en b par défaut » (image-segment-ordre-des-bornes-recopie)
+     tombait juste par hasard, et un point d'arrêt ne pouvait offrir qu'un
+     seul distracteur honnête ([1;4]). Sur [−3;2], les deux pièges de la
+     section jouent : bornes recopiées [q(−3);q(2)], bornes rangées
+     [q(2);q(−3)] (extremum intérieur oublié), maximum lu à droite
+     [q(0);q(2)]. Recalculé : q(−3)=9, q(0)=0, q(2)=4, image [0;9] ; les
+     valeurs de 4 à 9 sont prises sur [−3;−2]. x² sur [−3;2] est absent de
+     bank.yaml, exercises.yaml et items.yaml (grep) ; même gabarit d'options
+     que LIMCONT-33 (écritures en f(·), non évaluées, pour qu'aucune ne soit
+     éliminable à vue), sur une autre fonction et un autre intervalle.
+     (b) RÈGLE D'ARRÊT, TESTÉE. Un item neuf, LIMCONT-39 : lire l'intervalle
+     final d'une dichotomie comme une valeur approchée à une précision
+     donnée ((b−a)/2ⁿ = 1/16 = 0,0625 : à 10⁻¹ près, pas à 10⁻²). Voir le
+     bloc de commentaire qui le précède dans items.yaml pour l'id porté.
+     (c) REDITE RETIRÉE. La puce « Une valeur approchée est demandée ? » de
+     « La méthode à retenir » répétait la procédure déjà posée, menée et
+     tabulée plus haut ; elle renvoie maintenant à la dichotomie et à sa
+     règle d'arrêt, en une ligne.
 -->

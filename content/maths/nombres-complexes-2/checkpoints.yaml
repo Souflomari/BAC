@@ -92,6 +92,15 @@ skill_code: maths_complexes_trigo
 #                                      the médiane-de-l'hypoténuse mechanism
 #                                      replaces the Thalès citation, and names
 #                                      "théorème de l'angle inscrit" once.
+#   cp-r3-linearisation (in R3)      — COMMIT gate, ajouté 2026-10-20
+#                                      (critique pédagogie cadre-GH, P1) : the
+#                                      linéarisation's « prends position »
+#                                      (cos³x = cos 3x ?), committed BEFORE
+#                                      the calculation. Four candidates that
+#                                      the test at π/3 separates. Probes
+#                                      puissance-confondue-angle-multiple,
+#                                      with both faces of linearisation-
+#                                      facteur-2n-oublie.
 #
 # EVERY distractor carries a named misconception id from this notion's inventory
 # (items.yaml `misconceptions:`). Option lengths are balanced so the correct
@@ -463,3 +472,74 @@ checkpoints:
           droite). « Imaginaire pur » donne au contraire un angle droit, donc un
           **cercle** (de diamètre $[AB]$). Les deux lignes de la table de lecture
           sont interverties ici.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-6 | id: cp-r3-linearisation | placed IN R3, inside « Linéariser
+  #        une puissance de cosinus ou de sinus », right after the « prends
+  #        position » and BEFORE « Ce qu'on cherche… » starts the
+  #        calculation. Ajouté 2026-10-20 (docs/audits/critiques/
+  #        cadre-GH-pedagogie.md, P1 : the written-test instruction was
+  #        there, no commit). The worked example's own function (cos³x) and
+  #        test value (π/3) — it commits on the lesson's question ;
+  #        NBCOMPLEX2-49 to 52 linearise sin, sin², sin³, cos² instead. The
+  #        key is written unsimplified, (2cos3x+6cos x)/8 (a line of the
+  #        lesson's computation), so that the two faces of the 2ⁿ factor —
+  #        no division at all, division by 2 only — differ from it only by the
+  #        denominator, and the key is not the longest choice.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-linearisation
+    rung: "R3"
+    habilete: raisonnement
+    skill_code: maths_complexes_trigo
+    tags: [checkpoint, formative, misconception_driven, maths_complexes_trigo, linearisation, predict_commit]
+    primary_misconception: mc.math.maths_complexes_trigo.puissance-confondue-angle-multiple
+    item_source: original
+    lesson_placement: in_R3
+
+    stem: |
+      **Avant de lire la suite, engage-toi :** laquelle de ces expressions
+      est égale à $\cos^3x$ pour tout réel $x$ ? Teste-les en
+      $x=\dfrac{\pi}{3}$ avant de choisir.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$2\\cos3x+6\\cos x$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.linearisation-facteur-2n-oublie
+        feedback: |
+          Modèle détecté : le développement est juste, mais la division finale
+          a été oubliée. $\cos x=\dfrac{e^{ix}+e^{-ix}}{2}$, et élever au cube
+          élève aussi ce $2$ : il faut diviser par $2^3=8$. Le test le
+          montre : en $x=\dfrac{\pi}{3}$, cette expression vaut
+          $2\times(-1)+6\times\dfrac12=1$, alors que
+          $\cos^3\dfrac{\pi}{3}=\dfrac18$ — huit fois moins.
+      - id: B
+        text: "$\\dfrac{2\\cos3x+6\\cos x}{2}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.linearisation-facteur-2n-oublie
+        feedback: |
+          Modèle détecté : le $2$ du dénominateur n'a pas été élevé au cube.
+          $\left(\dfrac{e^{ix}+e^{-ix}}{2}\right)^3$ a pour dénominateur
+          $2^3=8$, pas $2$. En $x=\dfrac{\pi}{3}$, cette expression vaut
+          $\dfrac{-2+3}{2}=\dfrac12$, quatre fois $\cos^3\dfrac{\pi}{3}=\dfrac18$.
+      - id: C
+        text: "$\\dfrac{2\\cos3x+6\\cos x}{8}$"
+        correct: true
+        feedback: |
+          Exact : en $x=\dfrac{\pi}{3}$, elle vaut
+          $\dfrac{2\times(-1)+6\times\frac12}{8}=\dfrac18$, comme
+          $\cos^3\dfrac{\pi}{3}=\left(\dfrac12\right)^3$. La suite du texte
+          l'établit pour tout réel $x$, et la simplifie en
+          $\dfrac{\cos3x+3\cos x}{4}$.
+      - id: D
+        text: "$\\cos(3x)$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.puissance-confondue-angle-multiple
+        feedback: |
+          Modèle détecté : l'exposant $3$ pris pour un coefficient de l'angle.
+          Le test tranche : $\cos^3\dfrac{\pi}{3}=\left(\dfrac12\right)^3=\dfrac18$,
+          alors que $\cos\!\left(3\times\dfrac{\pi}{3}\right)=\cos\pi=-1$. Une
+          puissance de cosinus n'est pas le cosinus d'un angle multiplié.

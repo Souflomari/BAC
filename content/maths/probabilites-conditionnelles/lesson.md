@@ -474,19 +474,33 @@ En revanche, elle doit toujours tomber **entre la plus petite et la plus grande 
 
 ### La variance et l'écart-type : mesurer la dispersion autour de la moyenne
 
-L'espérance donne un centre, mais rien sur la façon dont les valeurs de $X$ se dispersent autour de ce centre. Deux variables aléatoires peuvent partager exactement la même espérance et se comporter très différemment — l'une presque toujours proche de sa moyenne, l'autre s'en éloignant souvent. La **variance** mesure précisément cette dispersion.
+L'espérance donne un centre, mais rien sur la façon dont les valeurs de $X$ se dispersent autour de ce centre. Deux variables aléatoires peuvent partager exactement la même espérance et se comporter très différemment — l'une presque toujours proche de sa moyenne, l'autre s'en éloignant souvent. Le cas le plus net : une variable $U$ qui vaut $1$ à coup sûr, et une variable $W$ qui vaut $0$ ou $2$, chacune avec la probabilité $\dfrac12$. Toutes deux ont pour espérance $1$, puisque $E(W) = 0 \times \dfrac12 + 2 \times \dfrac12 = 1$. Pourtant $U$ ne s'écarte jamais de $1$, alors que $W$ s'en écarte d'une unité à chaque fois : l'espérance ne voit aucune différence entre elles. La **variance** mesure précisément cette dispersion.
 
 **Définition.** La variance de $X$ est la moyenne pondérée des carrés des écarts à l'espérance :
 
 $$V(X) = E\big((X - E(X))^2\big) = \sum_i (x_i - E(X))^2 \, P(X = x_i)$$
 
-**Pourquoi le carré :** un écart $x_i - E(X)$ peut être positif ou négatif, et la moyenne pondérée de ces écarts, sans carré, vaudrait toujours $0$ — les écarts positifs et négatifs s'annuleraient exactement (c'est même ce qui fait de $E(X)$ un centre). Élever chaque écart au carré le rend positif, pour que les grands écarts comme les petits comptent réellement dans la moyenne, au lieu de s'annuler entre eux.
+Sur $U$ et $W$ : $V(U) = 0$, puisque l'unique écart est nul, et $V(W) = (0-1)^2 \times \dfrac12 + (2-1)^2 \times \dfrac12 = 1$. La différence que l'espérance ne voyait pas, la variance la chiffre.
 
 Reprenons le tableau du paragraphe précédent — le nombre $X$ de « oui » aux deux questions, d'espérance $E(X) = 0{,}98$ :
 
 | $x_i$ | $0$ | $1$ | $2$ |
 |--|--|--|--|
 | $P(X = x_i)$ | $0{,}32$ | $0{,}38$ | $0{,}30$ |
+
+**Pourquoi le carré :** un écart $x_i - E(X)$ peut être positif ou négatif, et la moyenne pondérée de ces écarts, sans carré, vaut toujours $0$ — les écarts positifs et négatifs s'annulent exactement. Vérifie-le sur ce tableau :
+
+$$(0 - 0{,}98) \times 0{,}32 + (1 - 0{,}98) \times 0{,}38 + (2 - 0{,}98) \times 0{,}30$$
+
+$$= -0{,}3136 + 0{,}0076 + 0{,}306 = 0$$
+
+Ce n'est pas un hasard de ces nombres-là. En développant, pour n'importe quelle variable :
+
+$$\sum_i (x_i - E(X))\,P(X = x_i) = \sum_i x_i\,P(X = x_i) - E(X) \sum_i P(X = x_i)$$
+
+$$\sum_i (x_i - E(X))\,P(X = x_i) = E(X) - E(X) \times 1 = 0$$
+
+C'est même ce qui fait de $E(X)$ un centre : les écarts s'y équilibrent. Élever chaque écart au carré le rend positif, pour que les grands écarts comme les petits comptent réellement dans la moyenne, au lieu de s'annuler entre eux. Avec les carrés, sur le même tableau :
 
 $$V(X) = (0 - 0{,}98)^2 \times 0{,}32 + (1 - 0{,}98)^2 \times 0{,}38 + (2 - 0{,}98)^2 \times 0{,}30$$
 
@@ -496,21 +510,31 @@ $$V(X) = 0{,}307328 + 0{,}000152 + 0{,}31212 = 0{,}6196$$
 
 #### Un raccourci : une deuxième formule de la variance
 
-Calculer chaque écart, l'élever au carré, puis repondérer — c'est trois opérations par valeur de $X$. Il existe une deuxième écriture, qui donne toujours le même nombre :
+Calculer chaque écart, l'élever au carré, puis repondérer — c'est trois opérations par valeur de $X$. Il existe une écriture plus courte, et elle sort d'une question qu'il vaut la peine de se poser d'abord. Note $E(X^2)$ l'**espérance des carrés** : chaque valeur de $X$ élevée au carré, puis pondérée par sa probabilité,
 
-$$V(X) = E(X^2) - \big(E(X)\big)^2$$
+$$E(X^2) = \sum_i x_i^2 \, P(X = x_i)$$
 
-(Certains manuels l'appellent formule de König-Huygens.)
+**Prends position avant de lire la suite :** sur notre tableau, $E(X) = 0{,}98$. L'espérance des carrés, $E(X^2)$, est-elle égale au carré de l'espérance, $\big(E(X)\big)^2 = 0{,}98^2 = 0{,}9604$ ?
 
-**Ce que fait cette formule :** on calcule l'espérance des carrés des valeurs — $E(X^2)$, ce qui n'est pas $\big(E(X)\big)^2$ — puis on retranche le carré de l'espérance déjà connue. Sur le même tableau :
+[[checkpoint:cp-r5b-carre-esperance]]
+
+Calcule-la pour de bon :
 
 $$E(X^2) = 0^2 \times 0{,}32 + 1^2 \times 0{,}38 + 2^2 \times 0{,}30 = 0 + 0{,}38 + 1{,}2 = 1{,}58$$
 
-**Prends position avant de lire la suite : avec $E(X) = 0{,}98$ et $E(X^2) = 1{,}58$, que vaut $V(X)$ d'après cette formule ?**
+$1{,}58$ contre $0{,}9604$ : les deux nombres diffèrent nettement. Élever au carré puis faire la moyenne n'est pas faire la moyenne puis élever au carré — le carré grossit davantage les grandes valeurs, et la seule valeur $2$ apporte $2^2 \times 0{,}30 = 1{,}2$ à $E(X^2)$, déjà plus que $0{,}9604$.
 
-$$V(X) = E(X^2) - \big(E(X)\big)^2 = 1{,}58 - 0{,}98^2 = 1{,}58 - 0{,}9604 = 0{,}6196$$
+Regarde maintenant l'écart entre les deux : $1{,}58 - 0{,}9604 = 0{,}6196$. C'est, au chiffre près, la variance calculée plus haut par la définition. Ce n'est pas une coïncidence : développe le carré dans la définition, puis sépare les trois sommes —
 
-Exactement le nombre trouvé par la définition, au chiffre près. Les deux routes mènent au même endroit — la seconde est presque toujours la plus rapide, puisqu'elle ne demande qu'une espérance de plus, $E(X^2)$, à côté de $E(X)$ déjà connue.
+$$V(X) = \sum_i \Big(x_i^2 - 2\,E(X)\,x_i + \big(E(X)\big)^2\Big)\,P(X = x_i)$$
+
+$$V(X) = E(X^2) - 2\,E(X) \times E(X) + \big(E(X)\big)^2 \times 1$$
+
+$$V(X) = E(X^2) - \big(E(X)\big)^2$$
+
+C'est la **deuxième formule de la variance**. (Certains manuels l'appellent formule de König-Huygens.) Elle répond aussi à la question posée : $E(X^2)$ et $\big(E(X)\big)^2$ ne sont égaux que si $V(X) = 0$, c'est-à-dire pour une variable qui ne s'écarte jamais de son espérance — comme $U$ plus haut.
+
+**Ce que fait cette formule :** une fois $E(X)$ connue, il ne reste qu'une espérance de plus à calculer, $E(X^2)$, puis on retranche le carré de l'espérance. C'est presque toujours la route la plus rapide : plus aucun écart à calculer valeur par valeur.
 
 **Le piège à éviter.** Écrire $V(X) = E(X^2) - E(X)$, en oubliant d'élever l'espérance au carré. Sur cet exemple, ça donnerait $1{,}58 - 0{,}98 = 0{,}60$ — un nombre plausible, dangereusement proche du résultat correct $0{,}6196$, ce qui rend l'erreur difficile à repérer d'un simple coup d'œil sur la grandeur du résultat. La formule retranche $\big(E(X)\big)^2$, **le carré de l'espérance** — jamais $E(X)$ tout seul. Un second réflexe de sécurité, à garder en tête : $V(X)$ est une somme de carrés pondérés par des probabilités, donc **elle ne peut jamais être négative**. Un résultat négatif signale à coup sûr une erreur de calcul — par exemple ce carré oublié.
 
@@ -530,7 +554,7 @@ Sur notre exemple : $\sigma(X) = \sqrt{0{,}6196} \approx 0{,}787$. Ce nombre se 
 
 ## R5c — La loi binomiale : compter les succès d'une expérience répétée
 
-Il existe une situation où la loi de $X$ ne se calcule pas feuille par feuille : elle se lit sur une formule. Elle est fréquente à l'examen, et l'énoncé la signale toujours par les mêmes mots — **on répète la même expérience $n$ fois**, avec remise. Ce chapitre montre d'abord d'où sort la formule sur un cas complet, puis la nomme.
+Il existe une situation où la loi de $X$ ne se calcule pas feuille par feuille : elle se lit sur une formule. L'énoncé la signale par des mots qu'on apprend à reconnaître — **on répète la même expérience $n$ fois**, avec remise. Ce chapitre montre d'abord d'où sort la formule sur un cas complet, puis la nomme.
 
 ### Un premier cas, entièrement déplié
 
@@ -670,4 +694,29 @@ Même machinerie, autre habillage : deux sacs au lieu de deux urnes, un transfer
 <!-- NOTE DE VALIDATION (relecture humaine) — déplacée en commentaire le
      2026-07-03 : elle rendait côté élève (audit externe, classe résiduelle 1).
      **Note de validation (⚠ pour la relecture humaine) :** Deux questions de notation et de périmètre restent ouvertes, conformément au spec §7. (1) Le cadre SM nomme-t-il « théorème de Bayes » explicitement, ou uniquement la lecture inverse de l'arbre ? Si oui, R5 peut se clore par une phrase qui nomme la formule comme résumé de ce que l'arbre fait déjà — mais le mécanisme reste l'arbre. (2) Quelle notation est primaire dans les manuels SM : $P_A(B)$ ou $P(B|A)$ ? Cette leçon utilise les deux à égalité ; l'ordre d'introduction peut être ajusté après confirmation.
+
+     NOTE (critique pédagogie cadre-GH, 2026-10-20 — docs/audits/critiques/
+     cadre-GH-pedagogie.md, P1, P4, P5 ; correctifs 2, 3, 7 et 12) :
+     (a) PRÉDICTION CREUSE REMPLACÉE. L'ancien « prends position » (« que vaut
+     V(X) d'après cette formule ? ») venait APRÈS que la valeur 0,6196 fut
+     imprimée et la formule annoncée « toujours le même nombre » : rien à
+     prédire. Il est remplacé par la question que la prose nommait entre
+     parenthèses sans la mettre en scène — E(X²) = (E(X))² ? —, posée AVANT
+     toute formule et engagée par le point d'arrêt cp-r5b-carre-esperance
+     (checkpoints.yaml). Confrontation sur l'exemple courant : 1,58 contre
+     0,9604 ; l'écart 0,6196 est la variance déjà calculée, d'où la deuxième
+     formule, désormais DÉMONTRÉE (développement du carré) au lieu
+     d'être annoncée. Modèle visé : id neuf
+     `esperance-des-carres-confondue` (items.yaml, PC-M25-1 à PC-M25-3).
+     (b) PROMESSE D'OUVERTURE INSTANCIÉE. « Même espérance, dispersion
+     différente » est montré sur U (1 à coup sûr) et W (0 ou 2, ½ chacun) :
+     E = 1 pour les deux, V(U) = 0, V(W) = 1 — nombres propres à la prose,
+     absents de bank.yaml, exercises.yaml et items.yaml. Les deux lois des
+     items PC-M23-1 et PC-M23-2 (même E = 2,1, V = 1,09 contre 0,49) sont
+     mises côte à côte dans un ITEM (PC-M25-2), pas dans la prose, pour que
+     la leçon ne redonne pas les clés de deux items du banc.
+     (c) « POURQUOI LE CARRÉ » MONTRÉ. La somme des écarts non élevés au
+     carré, annoncée nulle, est calculée sur l'exemple courant
+     (−0,3136 + 0,0076 + 0,306 = 0) puis établie en général
+     (E(X) − E(X)·1 = 0).
 -->

@@ -45,6 +45,15 @@ skill_code: maths_fonction_logarithme
 #                                       x·ln(1+a/x) -> 1 instead of -> a
 #                                       trap), with a cross-tag to
 #                                       forme-0-sur-0-non-reconnue.
+#   cp-r6-base-inferieure-a-1 (in R6) — COMMIT gate, ajouté 2026-10-20
+#                                       (critique pédagogie cadre-GH, P1/P5) :
+#                                       inside « Le logarithme de base a »,
+#                                       in the worked example 0,8^n < 0,1,
+#                                       BEFORE the reveal that log_{0,8}
+#                                       reverses the inequality. Probes
+#                                       lecture-variations-signe (sense of ln
+#                                       carried over unchanged), crossed with
+#                                       regles-quotient-puissance.
 #
 # EVERY distractor carries a named misconception id from this notion's inventory
 # (items.yaml). Option lengths are balanced so the correct choice is never the
@@ -54,8 +63,12 @@ skill_code: maths_fonction_logarithme
 # népérien : domaine, signe, monotonie, propriétés algébriques (produit,
 # quotient, puissance), dérivée de ln(u), limites de référence et croissances
 # comparées, tableau de variation, concavité, bijection / TVI, équations et
-# inéquations, logarithme décimal. Pas de développement en série, pas de log en
-# base quelconque au-delà du log décimal.
+# inéquations, logarithme décimal, et — depuis la vague G4 — logarithme de
+# base a, log_a(x) = ln(x)/ln(a) (« mention possible » au cadre SExp,
+# maths-sexp.yaml:171 ; voir la note de lesson.md). Pas de développement en
+# série. (Mis à jour le 2026-10-20 : la garde disait encore « pas de log en
+# base quelconque au-delà du log décimal », périmée depuis que la leçon
+# enseigne log_a.)
 # ──────────────────────────────────────────────────────────────────────────────
 
 checkpoints:
@@ -533,3 +546,80 @@ checkpoints:
           vers $0$ » n'est pas une règle valable ici — $x\to+\infty$ et
           $\ln(1+5/x)\to0$ forment une forme $\infty\times0$ qui exige un
           changement de variable pour être levée, pas une lecture directe.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-NEW-3 | id: cp-r6-base-inferieure-a-1 | placed IN R6, inside « Le
+  #        logarithme de base a », in the worked example « faire descendre
+  #        un exposant inconnu » (0,8^n < 0,1), BEFORE the reveal that
+  #        log_{0,8} — decreasing, since 0,8 < 1 — reverses the inequality.
+  #        Ajouté 2026-10-20 (docs/audits/critiques/cadre-GH-pedagogie.md,
+  #        P1 + P5 : the inverted monotonicity for 0 < a < 1 was stated,
+  #        never predicted). Plan croisé, as LOG-38 (sens × domaine) :
+  #        here sens × quotient. Sense kept = lecture-variations-signe (the
+  #        sense of ln carried over, the surface LOG-38 already tags so) ;
+  #        quotient of two logarithms read as the logarithm of the quotient =
+  #        regles-quotient-puissance (the « confusion voisine » the prose
+  #        names, tagged so on LOG-35) ; one distractor carries both. Numbers (0,8 ; 0,1)
+  #        distinct from LOG-34 to LOG-38 (4 ; 16 ; 81/3 ; 5 ; 3^41 ; 0,3).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-base-inferieure-a-1
+    rung: "R6"
+    habilete: raisonnement
+    skill_code: maths_fonction_logarithme
+    tags: [checkpoint, formative, misconception_driven, maths_fonction_logarithme, logarithme_base_a, inequations, predict_commit]
+    primary_misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
+    item_source: original
+    lesson_placement: in_R6
+
+    stem: |
+      On cherche le plus petit entier $n$ tel que $0{,}8^{n}<0{,}1$. On
+      applique $\log_{0{,}8}$ aux deux membres, sachant que
+      $\log_{0{,}8}\!\left(0{,}8^{n}\right)=n$. **Avant de lire la suite,
+      engage-toi :** quelle inéquation obtient-on ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$n<\\dfrac{\\ln(0{,}1)}{\\ln(0{,}8)}$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.lecture-variations-signe
+        feedback: |
+          Modèle détecté : le sens de $\ln$, transporté tel quel à
+          $\log_{0{,}8}$. Or $0{,}8<1$, donc $\ln(0{,}8)<0$ : $\log_{0{,}8}$
+          est $\ln$ divisée par un nombre négatif, elle est strictement
+          décroissante et renverse l'ordre. Avec le sens gardé, $n<10{,}32$
+          dirait qu'il reste moins de $10\,\%$ dès la première heure — or
+          $0{,}8^{1}=0{,}8$.
+      - id: B
+        text: "$n>\\ln\\!\\left(\\dfrac{0{,}1}{0{,}8}\\right)$"
+        correct: false
+        misconception: mc.math.maths_fonction_logarithme.regles-quotient-puissance
+        feedback: |
+          Le sens est bien renversé, mais
+          $\log_{0{,}8}(0{,}1)=\dfrac{\ln(0{,}1)}{\ln(0{,}8)}$ — un QUOTIENT de
+          deux logarithmes — a été lu comme le logarithme du quotient,
+          $\ln\!\left(\dfrac{0{,}1}{0{,}8}\right)=\ln(0{,}125)\approx-2{,}08$.
+          Ce sont deux calculs différents : le premier vaut environ $10{,}32$.
+          Avec $n>-2{,}08$, tout entier conviendrait, même $n=0$.
+      - id: C
+        text: "$n>\\dfrac{\\ln(0{,}1)}{\\ln(0{,}8)}$"
+        correct: true
+        feedback: |
+          Exact : $\log_{0{,}8}$ est strictement décroissante ($\ln(0{,}8)<0$),
+          donc elle renverse l'inégalité, et
+          $\log_{0{,}8}(0{,}1)=\dfrac{\ln(0{,}1)}{\ln(0{,}8)}\approx10{,}32$.
+          Le plus petit entier qui convient est $n=11$ :
+          $0{,}8^{10}\approx0{,}107$ et $0{,}8^{11}\approx0{,}086$.
+      - id: D
+        text: "$n<\\ln\\!\\left(\\dfrac{0{,}1}{0{,}8}\\right)$"
+        correct: false
+        misconception: [mc.math.maths_fonction_logarithme.lecture-variations-signe, mc.math.maths_fonction_logarithme.regles-quotient-puissance]
+        feedback: |
+          Deux erreurs se cumulent. Le sens de l'inégalité est gardé, alors
+          que $\log_{0{,}8}$ est décroissante ($\ln(0{,}8)<0$) et le renverse.
+          Et $\log_{0{,}8}(0{,}1)=\dfrac{\ln(0{,}1)}{\ln(0{,}8)}$, un quotient
+          de logarithmes, a été lu comme $\ln\!\left(\dfrac{0{,}1}{0{,}8}\right)
+          \approx-2{,}08$. Avec $n<-2{,}08$, aucun entier ne conviendrait —
+          alors que la quantité finit bien par passer sous $10\,\%$.
