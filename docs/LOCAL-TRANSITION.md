@@ -71,10 +71,9 @@ ARBRE=../BAC-sab PORTE=scene-quotient SABOTAGES=scripts/campagnes/sabotages-quot
 
 ## 3. Git: where things are, and what not to do
 
-- **Everything is on `claude/vibrant-fermi-v1lxj5`** — 1 478 commits ahead of `main`, zero behind.
-  Draft PR **#2** (`claude/vibrant-fermi-v1lxj5 → main`) carries it. Last fully green CI: run 807 on
-  bfe43534 (all 5 jobs); later commits were checked with the local battery (green on ff15dbc2) and
-  CI runs on every push.
+- **Everything is on `claude/vibrant-fermi-v1lxj5`** — 1 481 commits ahead of `main`, zero behind.
+  Draft PR **#2** (`claude/vibrant-fermi-v1lxj5 → main`) carries it. **CI run 810 is green on the
+  handoff head 874626d2 — all 5 jobs**, including the new slope-field gate. CI runs on every push.
 - **`main` is production.** Merging PR #2 is a production deploy *and* brings four database
   migrations (`backend/supabase/migrations/048…051`) that production has never seen. The CLAUDE.md
   non-negotiables apply: a passing `scripts/branch-test.ps1` against staging, a supervised check that
