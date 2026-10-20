@@ -73,8 +73,8 @@ ARBRE=../BAC-sab PORTE=scene-quotient SABOTAGES=scripts/campagnes/sabotages-quot
 
 - **Everything is on `claude/vibrant-fermi-v1lxj5`** — 1516 commits ahead of `main`, zero behind (2026-10-20, `git rev-list --count origin/main..HEAD`).
   Draft PR **#2** (`claude/vibrant-fermi-v1lxj5 → main`) carries it. **CI run 822 is green on
-  e265bcb7 — all 5 jobs;** run 823 (today's head) was green on 4 of 5, its print gate catching one
-  table, fixed and re-checked locally. CI runs on every push except commits marked `[skip ci]` (used for
+  e265bcb7 — all 5 jobs;** run 823 was green on 4 of 5, its print gate catching one table (fixed);
+  **CI run 824 is green on the handoff head 34345bf5 — all 5 jobs.** CI runs on every push except commits marked `[skip ci]` (used for
   intermediate commits, because a normal push cancels a CI run in flight); check the latest run on
   the PR before building on a head.
 - **`main` is production.** Merging PR #2 is a production deploy *and* brings four database
