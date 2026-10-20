@@ -80,9 +80,6 @@ ARBRE=../BAC-sab PORTE=scene-quotient SABOTAGES=scripts/campagnes/sabotages-quot
   non-negotiables apply: a passing `scripts/branch-test.ps1` against staging, a supervised check that
   production's migration state matches local history, and your explicit decision. Nothing in this
   handoff merges anything.
-- **Before merging, deal with the slope-field scene** (§4.1): it is embedded in a lesson and has never
-  passed its own gate. Either get the gate green, or delete the line `[[embed:champ-des-pentes]]` from
-  `content/maths/equations-differentielles/lesson.md` until it does.
 - Old remote branches (`claude/wizardly-hypatia-2fmoui`, `reestablish-state`, `slice-2-prep*`) predate
   this work and were left untouched — yours to keep or delete.
 - Recommended local habit: keep working on this branch (or branch off it), push, let CI run; open a
@@ -96,22 +93,15 @@ Ordered by what most affects a student. "Report" means the full critic report in
 `docs/audits/critiques/`.
 
 ### 4.1 Slope-field scene « Ce que l'équation dit en chaque point » (maths/équations différentielles)
-- **State:** model, renderer, panel, descriptor and lesson embed committed (30ef9de3), unit test
-  green (`node scripts/test-champ-pentes.mjs`, 11/11). Its gate `scripts/scene-champ-pentes.mjs` was
-  run ONCE: **red, 42 of 256 measures, in 5 of 29 families** — log in
-  `docs/wip/scene-champ-pentes-premier-lancement.txt`.
-- **Diagnosis so far (not finished):** most reds look like the *bench*, not the product —
-  (a) `avant-pari` / the segment-at-P check count the ring drawn around P, and the y-axis tick at
-  y = 3, as "a segment" (P = (0 ; 3) sits on the axis); (b) every measured angle is 1,2–1,6° too far
-  from horizontal, on every state — a systematic bias in the PCA of thin antialiased strokes
-  (contamination by neighbouring ink is the first suspect), not a slope error; (c) lengths read
-  11–17,5 px for 16 px segments — the "ink" class keeps only stroke cores, and round caps blur the
-  ends; (d) `ligne-du-palier` asks ≥ 90 % coverage of a *dashed* line (dash 7, gap 5); (e) `frontiere`
-  flags the words « unités » and « examen » in the descriptor — check whether the forbidden list is too
-  broad or the text should change.
-- **Next:** fix the bench one family at a time, re-run until green twice, then `--essai-rouge`, then
-  the 44-sabotage campaign (`scripts/campagnes/sabotages-champ-pentes.py`). Then wire it like the other
-  scenes: `package.json` scripts, a `gates.yml` step in the `scene-champ` job, the battery's list.
+- **State: verified and armed (2026-10-20).** Its gate `scripts/scene-champ-pentes.mjs` is green twice
+  (256 measures, 29 families) and red 29/29 under `--essai-rouge`; it runs in CI (job `telephone`), its
+  unit test `test-champ-pentes` (11/11) in the unit-test step.
+- The first run was red on 42 measures; almost all were the bench (how a thin antialiased stroke was
+  measured), one was the product (P's ring hid two thirds of the answer segment at step 1). What was
+  fixed and why: `docs/audits/INSTRUMENTS.md`, entry `scene-champ-pentes.mjs`.
+- **Still owed:** the product-sabotage campaign (44 sabotages ready:
+  `scripts/campagnes/sabotages-champ-pentes.py`, ~3 h — run it in a separate worktree, see §2), and a
+  wave-2 read (calm/ergonomics critics) like the other scenes had.
 
 ### 4.2 PC waves D–E: what the fidelity critic found that is not yet fixed
 Report: `pc-vagues-DE-fidelite.md`. Already fixed (bfe43534): the ± pairs, refusal options, pH 7,0,
@@ -197,7 +187,7 @@ the AE-43/AE-40 « deux zéros » feedbacks. **Still open, check each before app
 | critic reports only in the session transcript | `docs/audits/critiques/` (4 reports) |
 | uncommitted prose in side clones | committed (ff15dbc2) |
 | unreviewed G3 items in a side clone | `docs/wip/g3-items-calcul-integral.patch` |
-| first slope-field gate log | `docs/wip/scene-champ-pentes-premier-lancement.txt` |
+| the slope-field scene, written but never run | verified: green ×2, red 29/29, armed in CI (§4.1) |
 | — | `.gitattributes` (LF), `.nvmrc` (Node 22) |
 
 The deep history — why every gate exists, what each ADR learned — is unchanged: `docs/HANDOFF.md`,

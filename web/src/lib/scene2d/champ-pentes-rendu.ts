@@ -251,13 +251,13 @@ export function creerRenduChamp(canvas: HTMLCanvasElement, hote: HTMLElement): R
         for (let i = xa; i <= xb; i++) {
           if (surLaRangee(j)) continue;
           // le segment en P est un OBSTACLE pour les étiquettes (à S1 et S2, c'est la réponse)
-          segment(i, j, encreChamp, 1.5, i === px && j === py);
+          segment(i, j, encreChamp, i === px && j === py ? 2 : 1.5, i === px && j === py);
         }
       }
-    } else if (e.champ === "un-point") segment(px, py, encreChamp, 1.5, true);
+    } else if (e.champ === "un-point") segment(px, py, encreChamp, 2, true);
     // le segment du point fixe (S2 révélée), s'il n'est pas déjà dans ce que le champ a tracé
     const dejaTrace = (x: number, y: number) => e.champ === "plan" || (e.champ === "ligne" && y === py) || (e.champ === "un-point" && x === px && y === py);
-    if (e.segmentFixe && e.pointFixe && !dejaTrace(e.pointFixe[0], e.pointFixe[1])) segment(e.pointFixe[0], e.pointFixe[1], encreChamp, 1.5, true);
+    if (e.segmentFixe && e.pointFixe && !dejaTrace(e.pointFixe[0], e.pointFixe[1])) segment(e.pointFixe[0], e.pointFixe[1], encreChamp, 2, true);
     // la rangée plate (S3 révélée) : à l'ACCENT, par-dessus
     if (e.rangeePlate && e.palier) for (let i = xa; i <= xb; i++) segment(i, e.palier.hauteur, accent, 2, true);
     c.lineCap = "butt";
@@ -331,14 +331,18 @@ export function creerRenduChamp(canvas: HTMLCanvasElement, hote: HTMLElement): R
       zones.push({ x0: x - 6, y0: y - 6, x1: x + 6, y1: y + 6 });
       rep[`depart-${dx}-${dy}`] = P(x, y);
     }
-    // le point fixe (S2) et P : des ANNEAUX — le segment qui les traverse reste lisible
+    // le point fixe (S2) et P : des ANNEAUX — le segment qui les traverse reste lisible. Rayon 4 :
+    // à 5,5 l'anneau (Ø 13 px avec son trait) avalait les deux tiers d'un segment de 16 px, et le
+    // segment en P EST la réponse du pari de S1 — il ne dépassait que de 2 px de chaque côté
+    // (premier lancement de la porte, 2026-10-20). Les segments en P et au point fixe sont aussi plus
+    // épais (2 px contre 1,5) : même longueur que le champ, plus présents.
     const anneau = (x: number, y: number) => {
       c.strokeStyle = encre;
-      c.lineWidth = 1.75;
+      c.lineWidth = 1.5;
       c.beginPath();
-      c.arc(x, y, 5.5, 0, 2 * Math.PI);
+      c.arc(x, y, 4, 0, 2 * Math.PI);
       c.stroke();
-      zones.push({ x0: x - 7, y0: y - 7, x1: x + 7, y1: y + 7 });
+      zones.push({ x0: x - 5.5, y0: y - 5.5, x1: x + 5.5, y1: y + 5.5 });
     };
     if (e.pointFixe) {
       anneau(X(e.pointFixe[0]), Y(e.pointFixe[1]));

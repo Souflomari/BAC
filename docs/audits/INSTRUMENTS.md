@@ -2515,14 +2515,27 @@ auto-contrôle. Rejoué : 8/8 attrapés, contre-essai 2017 N tenu, verte 1 023 m
 
 ## `web/scripts/scene-champ-pentes.mjs` — le champ des pentes dit-il, en chaque point, ce que l'équation dit ?
 
-**⚠️ ÉCRITE, JAMAIS LANCÉE (2026-09-28).** Porte de la scène « Ce que l'équation dit en chaque point »
-(maths/equations-differentielles, chapitre 5 ; spec
-`docs/pipeline/propositions/maths-equations-differentielles-scene-pentes.md`). Elle parse ; elle n'a
-tourné ni verte ni rouge — tant que ce n'est pas fait, la scène n'est PAS livrée et cette porte ne
-prouve rien (ADR 0034). Ni en CI, ni dans la batterie. `test-champ-pentes` garde le modèle exact
-(rationnels, deux routes vers le palier qui doivent s'accorder).
+**Armée le 2026-10-20** (job `telephone`, vert puis rouge). Porte de la scène « Ce que l'équation dit en
+chaque point » (maths/equations-differentielles, chapitre 5 ; spec
+`docs/pipeline/propositions/maths-equations-differentielles-scene-pentes.md`). `test-champ-pentes` garde
+le modèle exact (rationnels, deux routes vers le palier qui doivent s'accorder).
 
-**Ce qu'elle doit dire, une fois vérifiée.** Les nombres par une seconde voie (N1–N10) ; l'isotropie
+**Le premier lancement : 42 rouges sur 256, et presque tous étaient le BANC.** (1) Un trait de 1,5 px
+lissé, coupé au seuil « encre » (> 60), devient un escalier dont la pente dépend de la phase du trait
+sur la grille de pixels : 1,2 à 1,6° d'erreur, une colonne sur deux, sur un produit juste. Les segments
+sont désormais lus à leur ASSOMBRISSEMENT au-dessus du fond — le canvas photographié à S1 avant le pari,
+où ne figurent que le repère — dans une bande de 2 px : les moments de la couverture lissée sont ceux
+du trait vrai, le quadrillage et les axes s'annulent ; longueur √(12 σ²). Étendue des longueurs : de
+6,15 px à 0,44. (2) Les étiquettes à fond opaque et leurs filets couvraient des segments voisins :
+ceux-là sont comptés « sous une étiquette », non mesurés. (3) L'étape 2 comparait à −45° au lieu
+d'arctan(−3). (4) Le seuil de la ligne en tirets (90 %) avait été écrit avant le dessin : dérivé du
+tiret (7 px sur 12 → 58 %), il vaut 50 %. (5) `frontiere` lisait « une minute », « une seconde » (un
+second) et « revient » comme des unités et une fréquence d'examen. **Et un défaut du PRODUIT** : à S1, le
+segment en P — la réponse du pari — était avalé aux deux tiers par l'anneau de P (Ø 13 px pour un
+segment de 16) ; anneau ramené à 4 px de rayon, segments en P et au point fixe épaissis à 2 px. Vert
+deux fois (256 mesures, 29 familles), essai rouge 29/29.
+
+**Ce qu'elle mesure.** Les nombres par une seconde voie (N1–N10) ; l'isotropie
 lue aux graduations ; chaque segment à la bonne pente (angle par ACP, ≤ 1°) et à longueur fixe ; le
 palier ; une courbe coupée au cadre, jamais plafonnée ; deux courbes jamais confondues, jamais posées
 sur le palier ; le point fixe ; `palette` avec la règle corrigée de la campagne Qr/K (cos ≤ 0,85) ;

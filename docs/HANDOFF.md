@@ -16706,3 +16706,25 @@ dernière retouche retirée. Bilan de la campagne : **86 retouches sur 86 ont ro
 famille, 8 par une voisine), le contre-essai a tenu. *Leçon* : un cône mort ne se voit pas en
 regardant les deux seuils séparément — 0,6 et 0,85 étaient chacun raisonnables ; c'est l'ESPACE
 entre eux qui n'appartenait à personne.
+
+## §11.217 — Le champ des pentes : quarante-deux rouges au premier lancement, quarante et un dans le banc, un dans le produit
+
+**LE FAIT.** La porte de la quatorzième scène (« Ce que l'équation dit en chaque point »,
+maths/équations différentielles), écrite le 2026-09-28 sans jamais tourner, a été lancée le 2026-10-20 :
+rouge, 42 mesures sur 256. Le détail de chaque correction est à l'entrée `scene-champ-pentes.mjs` de
+`docs/audits/INSTRUMENTS.md` ; la leçon tient en trois lignes.
+
+1. **Un seuil d'encre ment sur la pente d'un trait fin.** Coupé à « plus de 60 de luminance », un trait
+   lissé de 1,5 px devient un escalier dont l'angle dépend de la phase du trait sur la grille de pixels :
+   1,2 à 1,6° d'erreur une colonne sur deux, sur un produit juste. Mesurer l'assombrissement au-dessus
+   d'un FOND photographié (le repère seul) rend au trait ses moments vrais — et annule quadrillage, axes
+   et graduations sans bande d'exclusion. L'étendue des longueurs est passée de 6,15 px à 0,44.
+2. **Un seuil écrit avant le dessin n'est pas un seuil** (ADR 0034) : 90 % de couverture pour une ligne
+   en tirets de 7 px sur 12 ; dérivé du tiret, il vaut 50 %. Et un banc comparait à −45° au lieu
+   d'arctan(−3) : une famille toujours rouge passe l'essai rouge (inversée, elle verdit) — seule
+   l'exigence d'un VERT d'abord l'a démasquée.
+3. **Le seul défaut du produit était pédagogique** : à S1 le segment en P, la réponse du pari, était
+   avalé aux deux tiers par l'anneau de P. La porte le disait mal (« angle 3,7° ») mais le disait.
+
+Vert deux fois, 29/29 à l'essai rouge, armée dans le job `telephone`. Reste dû : la campagne de
+sabotages du produit (44, `scripts/campagnes/sabotages-champ-pentes.py`) et une lecture de vague 2.

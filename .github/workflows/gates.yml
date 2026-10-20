@@ -222,7 +222,11 @@ jobs:
       # bain C (×10 sur [Ag⁺] = deux décades), le pari de S4 (« exposant
       # omis » à deux décades pile), ce qui est atteignable à chaque étape, et
       # K écrit = K qui juge.
-      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange · noyaux · diffraction · tremplin · modulation · électrolyse · plan complexe · rapport · quotient)
+      #
+      # test-champ-pentes garde le modèle EXACT du champ des pentes (rationnels,
+      # 60 états) : la pente, le palier par DEUX routes qui doivent s'accorder,
+      # l'écart au palier, et les écritures que le panneau imprime.
+      - name: Tests unitaires (apprenant · session · typographie · écriture · épreuves · mélange · noyaux · diffraction · tremplin · modulation · électrolyse · plan complexe · rapport · quotient · champ des pentes)
         run: |
           npm run test-learner-model
           npm run test-attempt-events
@@ -238,6 +242,7 @@ jobs:
           npm run test-plan-complexe
           npm run test-plan-complexe-rapport
           npm run test-quotient
+          npm run test-champ-pentes
 
       # PORTE LIENS (2026-09-05). Ce projet se pilote par ses documents :
       # `.claude/CLAUDE.md` envoie vers la vision, la vision vers les règles,
@@ -1427,6 +1432,18 @@ jobs:
           export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
           npm run scene-quotient
           node scripts/scene-quotient.mjs --essai-rouge
+
+      # Le champ des pentes (maths/équations différentielles) : y' = a·y + b
+      # dessiné segment par segment. La porte refait chaque nombre par sa propre
+      # arithmétique, lit chaque segment à son assombrissement sur le fond du
+      # repère (un seuil d'encre fausse la pente d'un trait fin de 1 à 1,5°), et
+      # garde le pari de chaque étape. Deux passes vertes locales (256 mesures,
+      # 29 familles), puis 29/29 familles rouges à l'essai.
+      - name: "Le champ des pentes (vert puis rouge)"
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright-core').chromium.executablePath())")"
+          npm run scene-champ-pentes
+          node scripts/scene-champ-pentes.mjs --essai-rouge
 
   # LE VERDICT DES QCM SUR LE CORPUS ENTIER (DÉCISIONS §17, levée par son
   # prémisse, comme §16). `verdict-qcm` répond à la question la plus grave du

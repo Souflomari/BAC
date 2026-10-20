@@ -278,42 +278,115 @@ const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
 /** Les boîtes des étiquettes et de la légende, en px CSS du canvas (les sondes les évitent). */
 const boitesTexte = (q = panneau) => q.evaluate((el) => {
   const rc = el.querySelector("canvas").getBoundingClientRect();
-  return [...el.querySelectorAll("[data-etiquette], [data-legende]")].filter((e) => getComputedStyle(e).visibility === "visible" && (e.textContent ?? "").trim()).map((e) => { const b = e.getBoundingClientRect(); return { x0: b.left - rc.left - 2, y0: b.top - rc.top - 2, x1: b.right - rc.left + 2, y1: b.bottom - rc.top + 2 }; });
+  return [...el.querySelectorAll("[data-etiquette], [data-legende]")].filter((e) => getComputedStyle(e).visibility === "visible" && (e.textContent ?? "").trim()).map((e) => { const b = e.getBoundingClientRect(); return { nom: e.getAttribute("data-etiquette") ?? "legende", x0: b.left - rc.left - 2, y0: b.top - rc.top - 2, x1: b.right - rc.left + 2, y1: b.bottom - rc.top + 2 }; });
 });
 
 /**
- * Les SEGMENTS DU CHAMP, lus aux pixels d'encre autour de chaque point entier (px CSS) : l'angle
- * (direction principale), la longueur (étendue le long de cette direction), le nombre de pixels.
- * On écarte les bandes des deux axes (2,5 px) et les boîtes données. Après `classer`.
+ * Les ZONES D'ÉTIQUETTES (2026-10-20, premier lancement) : une étiquette à fond opaque ET son filet
+ * couvrent une partie des segments voisins — le produit ne les y interdit pas (seuls le segment en P,
+ * celui du point fixe et la rangée plate sont des obstacles pour `disposer`). Un segment à demi caché
+ * n'a ni longueur ni angle mesurables : il est compté « sous une étiquette » et non mesuré. La zone
+ * d'une étiquette ancrée (P, le point fixe) s'étend jusqu'à son ancre, où court le filet ; celle de la
+ * ligne plate, de sa portée (18 px) au-dessus et au-dessous.
  */
-const segmentsLus = (centres, R, exclus, axe, q = panneau) => q.evaluate((_el, { centres, R, exclus, axe }) => {
-  const { cls, w, h, dpr } = window.__cls;
+const zonesEtiquettes = (boites, P = null) => boites.filter((b) => b.nom?.startsWith("nom-")).map((b) => {
+  const anc = b.nom === "nom-P" && P ? px(P) : b.nom === "nom-fixe" ? px(POINT_FIXE) : null;
+  if (anc) return { x0: Math.min(b.x0, anc.x), y0: Math.min(b.y0, anc.y), x1: Math.max(b.x1, anc.x), y1: Math.max(b.y1, anc.y) };
+  return { x0: b.x0, y0: b.y0 - 18, x1: b.x1, y1: b.y1 + 18 };
+});
+const sousEtiquette = (c, R, zones) => zones.some((z) => c.x + R > z.x0 && c.x - R < z.x1 && c.y + R > z.y0 && c.y - R < z.y1);
+/** Le filet de P : la direction de P vers le centre de son étiquette, à écarter de la mesure du segment en P. */
+const versEtiquetteP = (boites) => { const b = boites.find((x) => x.nom === "nom-P"); return b ? { x: (b.x0 + b.x1) / 2, y: (b.y0 + b.y1) / 2 } : null; };
+
+/**
+ * Les SEGMENTS DU CHAMP, lus aux pixels autour de chaque point entier (px CSS) : l'angle (direction
+ * principale), la longueur, le nombre de pixels d'encre. On écarte les bandes des deux axes (2,5 px),
+ * les boîtes données, et l'ANNEAU de P (et du point fixe) quand on le passe. Après `classer`.
+ *
+ * DEUX PASSES (2026-10-20, premier lancement). La première, sur les pixels classés « encre » (> 60 de
+ * luminance), situe le trait. Elle ne suffit pas pour MESURER : un trait de 1,5 px lissé, coupé à un
+ * seuil, devient un escalier dont la pente dépend de la phase du trait sur la grille de pixels — 1,2 à
+ * 1,6° d'erreur, une colonne sur deux, sur un produit juste. La seconde pondère CHAQUE pixel par son
+ * assombrissement par rapport au FOND (le même canvas photographié à S1 avant le pari : quadrillage,
+ * axes, graduations, aucun segment), dans une bande de 2 px autour du trait : les moments de la
+ * couverture lissée sont ceux du trait vrai, et le quadrillage s'annule par la soustraction. Longueur :
+ * √(12 σ²) le long du trait (un segment uniforme de longueur L a σ² = L²/12). Sans fond (390 px), la
+ * première passe seule.
+ */
+const segmentsLus = (centres, R, exclus, axe, q = panneau, anneaux = []) => q.evaluate((_el, { centres, R, exclus, axe, anneaux }) => {
+  const { cls, w, h, dpr, d } = window.__cls;
+  const fond = window.__fond && window.__fond.w === w && window.__fond.h === h ? window.__fond.d : null;
+  const lum = (t, i) => 0.2126 * t[i] + 0.7152 * t[i + 1] + 0.0722 * t[i + 2];
+  // avec un fond, les axes et leurs graduations s'annulent par la soustraction : la bande des axes
+  // n'est plus écartée — elle avalait un segment raide centré SUR l'axe (P en (0 ; 3), pente −3).
+  const ecarte = (x, y) =>
+    (!fond && (Math.abs(x - axe.x) < 2.5 || Math.abs(y - axe.y) < 2.5)) ||
+    exclus.some((b) => x >= b.x0 && x <= b.x1 && y >= b.y0 && y <= b.y1) ||
+    anneaux.some((a) => {
+      const r = Math.hypot(x - a.x, y - a.y);
+      if (Math.abs(r - a.r) <= 1.75) return true;
+      // le filet vers l'étiquette : un coin de ± 15° au-delà de l'anneau
+      if (a.vers && r > a.r) { const d = Math.abs(Math.atan2(y - a.y, x - a.x) - Math.atan2(a.vers.y - a.y, a.vers.x - a.x)); return Math.min(d, 2 * Math.PI - d) < (15 * Math.PI) / 180; }
+      return false;
+    });
   return centres.map((c) => {
     const xs = [], ys = [];
-    for (let Y = Math.floor((c.y - R) * dpr); Y <= Math.ceil((c.y + R) * dpr); Y++) for (let X = Math.floor((c.x - R) * dpr); X <= Math.ceil((c.x + R) * dpr); X++) {
-      if (X < 0 || Y < 0 || X >= w || Y >= h || cls[Y * w + X] !== 2) continue;
+    const Y0 = Math.floor((c.y - R) * dpr), Y1 = Math.ceil((c.y + R) * dpr), X0 = Math.floor((c.x - R) * dpr), X1 = Math.ceil((c.x + R) * dpr);
+    for (let Y = Y0; Y <= Y1; Y++) for (let X = X0; X <= X1; X++) {
+      if (X < 0 || Y < 0 || X >= w || Y >= h) continue;
+      const k = (Y * w + X) * 4;
+      const encre = fond ? lum(fond, k) - lum(d, k) > 60 : cls[Y * w + X] === 2;
+      if (!encre) continue;
       const x = (X + 0.5) / dpr, y = (Y + 0.5) / dpr;
-      if (Math.hypot(x - c.x, y - c.y) > R) continue;
-      if (Math.abs(x - axe.x) < 2.5 || Math.abs(y - axe.y) < 2.5) continue;
-      if (exclus.some((b) => x >= b.x0 && x <= b.x1 && y >= b.y0 && y <= b.y1)) continue;
+      if (Math.hypot(x - c.x, y - c.y) > R || ecarte(x, y)) continue;
       xs.push(x); ys.push(y);
     }
     const n = xs.length;
     if (n < 6) return { n, angle: null, long: 0 };
-    const mx = xs.reduce((s, v) => s + v, 0) / n, my = ys.reduce((s, v) => s + v, 0) / n;
+    let mx = xs.reduce((s, v) => s + v, 0) / n, my = ys.reduce((s, v) => s + v, 0) / n;
     let sxx = 0, syy = 0, sxy = 0;
     for (let i = 0; i < n; i++) { const dx = xs[i] - mx, dy = ys[i] - my; sxx += dx * dx; syy += dy * dy; sxy += dx * dy; }
-    const th = 0.5 * Math.atan2(2 * sxy, sxx - syy);
-    const ux = Math.cos(th), uy = Math.sin(th);
+    let th = 0.5 * Math.atan2(2 * sxy, sxx - syy);
+    let ux = Math.cos(th), uy = Math.sin(th);
     let lo = Infinity, hi = -Infinity;
     for (let i = 0; i < n; i++) { const t = (xs[i] - mx) * ux + (ys[i] - my) * uy; lo = Math.min(lo, t); hi = Math.max(hi, t); }
+    let long = hi - lo;
+    if (fond) {
+      // la seconde passe : chaque pixel pesé par son assombrissement au-dessus du fond, près du trait
+      let W = 0, Sx = 0, Sy = 0;
+      const px_ = [];
+      for (let Y = Y0; Y <= Y1; Y++) for (let X = X0; X <= X1; X++) {
+        if (X < 0 || Y < 0 || X >= w || Y >= h) continue;
+        const x = (X + 0.5) / dpr, y = (Y + 0.5) / dpr;
+        const t = (x - mx) * ux + (y - my) * uy, perp = Math.abs(-(x - mx) * uy + (y - my) * ux);
+        if (perp > 2 || Math.abs(t) > R || ecarte(x, y)) continue;
+        const k = (Y * w + X) * 4;
+        const p = Math.max(0, lum(fond, k) - lum(d, k));
+        if (p < 3) continue;
+        px_.push([x, y, p]); W += p; Sx += p * x; Sy += p * y;
+      }
+      if (W > 0 && px_.length >= 6) {
+        mx = Sx / W; my = Sy / W;
+        sxx = 0; syy = 0; sxy = 0;
+        for (const [x, y, p] of px_) { const dx = x - mx, dy = y - my; sxx += p * dx * dx; syy += p * dy * dy; sxy += p * dx * dy; }
+        th = 0.5 * Math.atan2(2 * sxy, sxx - syy);
+        ux = Math.cos(th); uy = Math.sin(th);
+        let st = 0;
+        for (const [x, y, p] of px_) { const t = (x - mx) * ux + (y - my) * uy; st += p * t * t; }
+        long = Math.sqrt(12 * st / W);
+        lo = -long / 2; hi = long / 2;
+      }
+    }
     // l'angle en repère MATHÉMATIQUE (y vers le haut), dans ]−90° ; 90°]
     let a = (-th * 180) / Math.PI;
     while (a <= -90) a += 180;
     while (a > 90) a -= 180;
-    return { n, angle: a, long: hi - lo, cx: mx, cy: my, bouts: [{ x: mx + lo * ux, y: my + lo * uy }, { x: mx + hi * ux, y: my + hi * uy }] };
+    return { n, angle: a, long, cx: mx, cy: my, bouts: [{ x: mx + lo * ux, y: my + lo * uy }, { x: mx + hi * ux, y: my + hi * uy }] };
   });
-}, { centres, R, exclus, axe });
+}, { centres, R, exclus, axe, anneaux });
+// L'anneau qui marque P et le point fixe (rayon 4 px au produit) : écarté des mesures du segment qui le
+// traverse, sur une bande de 2,65 à 6,15 px du centre — elle couvre aussi l'ancien rayon de 5,5.
+const ANNEAU = 4.4;
 const ecartAngle = (a, b) => { let d = Math.abs(a - b) % 180; return Math.min(d, 180 - d); };
 const dSegSeg = (p, q2, r, s) => {
   const dPS = (P, A, B) => { const vx = B.x - A.x, vy = B.y - A.y, L2 = vx * vx + vy * vy || 1; const t = Math.max(0, Math.min(1, ((P.x - A.x) * vx + (P.y - A.y) * vy) / L2)); return Math.hypot(P.x - A.x - t * vx, P.y - A.y - t * vy); };
@@ -424,14 +497,14 @@ const FORMES = [
   ["y''", /y''|y\^\{\\prime\\prime\}|y″/u], ["second ordre", /second ordre|équation caractéristique|discriminant|\\Delta\s*=|racine double/iu], ["\\omega", /\\omega|pulsation|\\cos|\\sin|oscill|(^|[^\p{L}])période/iu],
   ["RC", /(^|[^\p{L}])(RC|RL)(?![\p{L}])|u_C|i\(t\)|\\tau|constante de temps/u],
   ["électricité", /condensateur|bobine|résistance|(^|[^\p{L}])(dé)?charge(?![\p{L}])|circuit|intensité|tension|(^|[^\p{L}])volts?(?![\p{L}])|ampère|(^|[^\p{L}])ohm|farad|henry/iu],
-  ["unités", /(^|[^\p{L}])(seconde|minute)s?(?![\p{L}])|°C|degré|°/iu], ["thermique", /température|café|tasse|refroidi/iu], ["radioactivité", /radioactiv|\\lambda|N_0|N\(t\)/u],
+  ["unités", /\d\s*(secondes?|minutes?|s|min)(?![\p{L}])|°C|degrés?(?![\p{L}])|°/iu], ["thermique", /température|café|tasse|refroidi/iu], ["radioactivité", /radioactiv|\\lambda|N_0|N\(t\)/u],
   ["second membre", /second membre|f\(x\)|g\(x\)|variation de la constante|solution particulière/iu],
   ["méthode", /séparation des variables|séparer les variables|\\dfrac\{dy\}\{y\}|\\int|intégrer|logarithme|\\ln|fonction auxiliaire/iu],
   ["Euler", /euler|pas à pas|pas de discrétisation|\\Delta x|\\Delta t|approximation|approché|tangente successive|taylor|développement limité/iu],
   ["systèmes dynamiques", /champ de vecteurs|champ de directions|champ (des|de) pentes|courbe intégrale|isocline|portrait de phase|plan de phase|point d['’]équilibre|équilibre stable|stabilité|attracteur|autonome|(^|[^\p{L}])flot(?![\p{L}])|cauchy|unicité/iu],
   ["algèbre linéaire", /matrice|\\begin\{pmatrix\}|système différentiel|dérivée partielle|\\partial|vecteur propre/iu],
   ["a = 0", /(^|[^\p{L}])a\s*=\s*0(?![\d{,])|y'\s*=\s*b(?![\p{L}])/u],
-  ["examen", /examen|au bac|le bac|les sujets|un sujet|annale|chaque année|presque toujours|le plus courant|(^|[^\p{L}])souvent|(^|[^\p{L}])revient|classique|tombe souvent|on te le demandera/iu],
+  ["examen", /examen|au bac|le bac|les sujets|un sujet|annale|chaque année|presque toujours (au|dans|à l)|le plus courant|(^|[^\p{L}])souvent|revient (souvent|chaque|au bac|dans les sujets)|classique|tombe souvent|on te le demandera/iu],
 ];
 {
   // chaque sonde, contre la forme qu'elle doit voir (une sonde muette sur sa propre forme ne mesure rien)
@@ -441,6 +514,11 @@ const FORMES = [
   // le mot « piège » SEUL reste permis (§9.12) — contre-essai
   noter("frontiere", !FORMES.some(([, re]) => re.test("c'est le piège le plus coûteux de ce chapitre")), "contre-essai : « le piège le plus coûteux de ce chapitre » laisse la frontière VERTE (§9.12)");
 }
+//  2026-10-20, premier lancement : « unités » et « examen » rougissaient sur le français ordinaire du
+//  descripteur — « Oublie-les une minute », « il y en a une seconde » (un second), « la ligne plate
+//  revient sur l'axe », « une règle presque toujours vraie ». Les formes visent une UNITÉ (un nombre
+//  suivi de s, min, °C) et une affirmation de FRÉQUENCE D'EXAMEN, pas ces mots-là. Resserrées ; les
+//  auto-contrôles « 20 °C » et « au bac, souvent » gardent chaque forme vivante.
 const pourFrontiere = (t) => t.replace(/y'\s*=\s*-?\d*\{?,?\}?\d*\\?,?\s*y/gu, "EQ");
 async function frontiere(ou, q = panneau) {
   const t = await texteRendu(q);
@@ -576,9 +654,12 @@ function centresDuChamp(e0, P, marques, j = null) {
 }
 async function champMesure(ou, a, b, { e0 = E0, q = panneau, marques = [], sauterRangee = null, L = 22, toutes = true } = {}) {
   const exclus = await boitesTexte(q);
-  const cs = centresDuChamp(e0, null, marques).filter((c) => sauterRangee === null || c.j !== sauterRangee);
+  const zones = zonesEtiquettes(exclus, marques[0] ?? null);
+  const tous = centresDuChamp(e0, null, marques).filter((c) => sauterRangee === null || c.j !== sauterRangee);
+  const cs = tous.filter((c) => !sousEtiquette(c, L / 2 + 2, zones));
+  const caches = tous.length - cs.length;
   const lus = await segmentsLus(cs.map((c) => ({ x: c.x, y: c.y })), L / 2 + 2, exclus, e0.o, q);
-  const fautes = [], longs = [];
+  const fautes = [], longs = [], longsOu = [];
   let mesures = 0, absents = 0;
   for (let k = 0; k < cs.length; k++) {
     const s = lus[k], c = cs[k];
@@ -589,13 +670,14 @@ async function champMesure(ou, a, b, { e0 = E0, q = panneau, marques = [], saute
     const d = ecartAngle(s.angle, att);
     mesures++;
     if (d > 1 && entier) fautes.push(`(${c.i} ; ${c.j}) : ${s.angle.toFixed(1)}° (attendu ${att.toFixed(1)}°)`);
-    if (entier) longs.push(s.long);
+    if (entier) { longs.push(s.long); longsOu.push([s.long, `(${c.i} ; ${c.j})`]); }
   }
   void absents; void toutes; // la PRÉSENCE des segments est la famille `champ-lisible`, pas celle-ci
-  juger("segment-a-la-bonne-pente", fautes.length === 0 && mesures >= 100, `${ou} : ${mesures} segments mesurés${fautes.length ? ` — ${fautes.slice(0, 4).join(" ; ")}${fautes.length > 4 ? ` (+${fautes.length - 4})` : ""}` : ", chacun à ≤ 1° de arctan(a·y + b)"}`);
+  juger("segment-a-la-bonne-pente", fautes.length === 0 && mesures >= 100, `${ou} : ${mesures} segments mesurés (${caches} sous une étiquette)${fautes.length ? ` — ${fautes.slice(0, 4).join(" ; ")}${fautes.length > 4 ? ` (+${fautes.length - 4})` : ""}` : ", chacun à ≤ 1° de arctan(a·y + b)"}`);
+  const extremes = [...longsOu].sort((x, y) => x[0] - y[0]);
   longs.sort((x, y) => x - y);
   const eta = longs.length ? longs[longs.length - 1] - longs[0] : 99;
-  juger("segment-longueur-fixe", longs.length >= 80 && eta <= 1.5, `${ou} : ${longs.length} longueurs de ${longs[0]?.toFixed(1)} à ${longs[longs.length - 1]?.toFixed(1)} px (étendue ${eta.toFixed(2)}, attendu ≤ 1,5)`);
+  juger("segment-longueur-fixe", longs.length >= 80 && eta <= 1.5, `${ou} : ${longs.length} longueurs de ${longs[0]?.toFixed(1)} à ${longs[longs.length - 1]?.toFixed(1)} px (étendue ${eta.toFixed(2)}, attendu ≤ 1,5)${eta > 1.5 ? ` — les plus courts ${extremes.slice(0, 3).map(([l, o]) => `${o} ${l.toFixed(1)}`).join(", ")}` : ""}`);
   return { cs, lus };
 }
 /** le pas du champ et l'écart entre segments voisins (§6.2 : pas de 1 à toutes les largeurs, écart ≥ 6 px) */
@@ -685,7 +767,7 @@ async function avantPari(k) {
   const cs = centresDuChamp(E0, P, [P, ...(k === 1 ? [POINT_FIXE] : []), ...(k === 4 ? DEPARTS : [])]);
   const lus = await segmentsLus(cs.map((c) => ({ x: c.x, y: c.y })), 13, exclus, E0.o);
   const presents = lus.filter((s) => s.angle !== null && s.n >= 10).length;
-  const enP = (await segmentsLus([px(P)], 13, exclus, E0.o))[0];
+  const enP = (await segmentsLus([px(P)], 13, exclus, E0.o, panneau, [{ ...px(P), r: ANNEAU }]))[0];
   if (k <= 2 && presents > 0) fautes.push(`${presents} segment(s) de champ DÉJÀ tracés`);
   if (k <= 2 && enP.n > 40) fautes.push(`un segment en P DÉJÀ tracé (${enP.n} px)`);
   if (k >= 3 && presents < 0.8 * cs.length) fautes.push(`le champ, énoncé de l'étape, est ABSENT (${presents}/${cs.length})`);
@@ -728,6 +810,8 @@ if (pret) {
   await etatPose(0);
   await classer();
   E0 = await echelleLue();
+  // le FOND de la seconde passe des segments : S1 avant le pari, rien que le repère (voir segmentsLus)
+  await panneau.evaluate(() => { const { d, w, h } = window.__cls; window.__fond = { d: d.slice(), w, h }; });
   if (E0.ok) {
     const iso = Math.abs(E0.sX - E0.sY) / E0.sX;
     const fenetre = E0.fx[0] === XA && E0.fx[1] === XB && E0.fy[0] === YA && E0.fy[1] === YB;
@@ -760,7 +844,7 @@ if (pret) {
       await nombres(`étape 1, P en ${POINTS[p].join(" ; ")}`, "-1", "0", p, "pente");
       await classer();
       const exclus = await boitesTexte();
-      const s = (await segmentsLus([px(POINTS[p])], L22 / 2 + 2, exclus, E0.o))[0];
+      const s = (await segmentsLus([px(POINTS[p])], L22 / 2 + 2, exclus, E0.o, panneau, [{ ...px(POINTS[p]), r: ANNEAU, vers: versEtiquetteP(exclus) }]))[0];
       const att = (Math.atan(penteF("-1", "0", POINTS[p][1])) * 180) / Math.PI;
       const autres = (await segmentsLus(centresDuChamp(E0, null, [POINTS[p]]).map((c) => ({ x: c.x, y: c.y })), 13, exclus, E0.o)).filter((x) => x.angle !== null && x.n >= 10).length;
       juger("segment-a-la-bonne-pente", s.angle !== null && ecartAngle(s.angle, att) <= 1.5 && autres === 0, `étape 1, P en ${POINTS[p].join(" ; ")} : le segment en P ${s.angle === null ? "ABSENT" : `à ${s.angle.toFixed(1)}° (attendu ${att.toFixed(1)}°)`}, ${autres} autre(s) segment(s)`);
@@ -786,9 +870,10 @@ if (pret) {
       const exclus = await boitesTexte();
       const ligne = centresDuChamp(E0, null, [POINTS.decale, POINT_FIXE], 3);
       const lus = await segmentsLus(ligne.map((c) => ({ x: c.x, y: c.y })), L22 / 2 + 2, exclus, E0.o);
-      const ok = lus.filter((s) => s.angle !== null && ecartAngle(s.angle, -45) <= 1.5 && s.n >= 0.6 * L22).length;
+      const att3 = (Math.atan(-3) * 180) / Math.PI; // la pente de y' = −y à la hauteur 3 (la porte comparait à −45° : défaut du BANC, premier lancement)
+      const ok = lus.filter((s) => s.angle !== null && ecartAngle(s.angle, att3) <= 1.5 && s.n >= 0.6 * L22).length;
       const ailleurs = (await segmentsLus(centresDuChamp(E0, null, [], null).filter((c) => c.j !== 3).map((c) => ({ x: c.x, y: c.y })), 13, exclus, E0.o)).filter((s) => s.angle !== null && s.n >= 10).length;
-      juger("segment-a-la-bonne-pente", ok >= ligne.length - 2 && ailleurs === 0, `étape 2 révélée : ${ok}/${ligne.length} segments de l'horizontale y = 3 à −45° (pente −3 : ${(-Math.atan(3) * 180 / Math.PI).toFixed(1)}°… attendu arctan(−3))`.replace("à −45°", `à arctan(−3)`) + `, ${ailleurs} segment(s) ailleurs`);
+      juger("segment-a-la-bonne-pente", ok >= ligne.length - 2 && ailleurs === 0, `étape 2 révélée : ${ok}/${ligne.length} segments de l'horizontale y = 3 à arctan(−3) = ${att3.toFixed(1)}° (± 1,5°), ${ailleurs} segment(s) ailleurs`);
     }
     const vals = [];
     for (const p of Object.keys(POINTS)) {
@@ -823,7 +908,7 @@ if (pret) {
       const yk = px([0, 4]).y;
       const lig = await couvertureRangee(yk, px([XA, 0]).x + 3, px([XB, 0]).x - 3, 1, 1.5);
       const hors = await panneau.evaluate((el, yk) => { const { cls, w, h, dpr } = window.__cls; let n = 0; for (let Y = 0; Y < h; Y++) { const y = (Y + 0.5) / dpr; if (Math.abs(y - yk) <= 12) continue; for (let X = 0; X < w; X++) if (cls[Y * w + X] === 1) n++; } return n; }, yk);
-      juger("avant-pari", lig > 0.9 && hors === 0 && accentN > 0, `étape 3 révélée : l'accent couvre ${(lig * 100).toFixed(0)} % de la rangée y = 4 (ligne + segments plats), ${hors} px d'accent HORS de la rangée (attendu 0 : le champ révélé est à l'encre, pédagogie I9)`);
+      juger("avant-pari", lig > 0.5 && hors === 0 && accentN > 0, `étape 3 révélée : l'accent couvre ${(lig * 100).toFixed(0)} % de la rangée y = 4 (ligne + segments plats), ${hors} px d'accent HORS de la rangée (attendu 0 : le champ révélé est à l'encre, pédagogie I9)`);
     }
     await champMesure("étape 3 révélée (a = −½, b = 2)", "-0.5", "2", { marques: [POINTS.haut], sauterRangee: 4, L: L22 });
     for (const b of TERMES) {
@@ -831,7 +916,10 @@ if (pret) {
       await classer();
       const k = palierF("-0.5", b), yk = px([0, k]).y;
       const lig = await couvertureRangee(yk, px([XA, 0]).x + 3, px([-1, 0]).x, 1, 1.5);
-      juger("ligne-du-palier", lig > 0.9, `étape 3, b = ${b} : la ligne (accent) couvre ${(lig * 100).toFixed(0)} % de y = −b/a = ${k} recalculé (attendu ≥ 90 %)`);
+      // seuil DÉRIVÉ du dessin (2026-10-20 ; il était de 90 %, écrit avant le produit) : un tiret de 7 px
+      // pour 12 couvre 58 % de la rangée à lui seul — 50 % laisse une marge, et une ligne à la mauvaise
+      // hauteur lit près de 0 %. Lu au premier lancement : 84 % (tirets + segments plats).
+      juger("ligne-du-palier", lig > 0.5, `étape 3, b = ${b} : la ligne (accent) couvre ${(lig * 100).toFixed(0)} % de y = −b/a = ${k} recalculé (attendu ≥ 50 % : tiret 7 px sur 12)`);
       await nombres(`étape 3, b = ${b}`, "-0.5", b, "haut", "palier,pente");
       await formule(`étape 3, b = ${b}`, 2);
     }
@@ -997,9 +1085,12 @@ if (pret) {
         const k = palierF(a, b), yk = px([0, k]).y;
         const lig = await couvertureRangee(yk, px([XA, 0]).x + 3, px([-1, 0]).x, 1, 1.5);
         const exclus = await boitesTexte();
-        const rangee = await segmentsLus(centresDuChamp(E0, null, [POINTS.sur], k).filter((c) => c.i < -1).map((c) => ({ x: c.x, y: c.y })), L22 / 2 + 2, exclus, E0.o);
+        const zonesR = zonesEtiquettes(exclus, POINTS.sur);
+        const centresR = centresDuChamp(E0, null, [POINTS.sur], k).filter((c) => c.i < -1 && !sousEtiquette(c, L22 / 2 + 2, zonesR));
+        const rangee = await segmentsLus(centresR.map((c) => ({ x: c.x, y: c.y })), L22 / 2 + 2, exclus, E0.o);
         const plats = rangee.filter((s) => s.angle !== null && s.n >= 6 && ecartAngle(s.angle, 0) <= 1).length, lus_ = rangee.filter((s) => s.angle !== null && s.n >= 6).length;
-        juger("ligne-du-palier", lig > 0.6 && (k === 0 || (lus_ >= 3 && plats === lus_)), `étape 6, a = ${a}, b = ${b} : la ligne couvre ${(lig * 100).toFixed(0)} % de y = ${k} ; ${k === 0 ? "sur l'axe" : `${plats}/${lus_} segments de la rangée plats`}`);
+        const pasPlats = rangee.map((s, i) => [s, centresR[i].i]).filter(([s]) => s.angle !== null && s.n >= 6 && ecartAngle(s.angle, 0) > 1).map(([s, i]) => `x = ${i} : ${s.angle.toFixed(1)}°`);
+        juger("ligne-du-palier", lig > 0.6 && (k === 0 || (lus_ >= 3 && plats === lus_)), `étape 6, a = ${a}, b = ${b} : la ligne couvre ${(lig * 100).toFixed(0)} % de y = ${k} ; ${k === 0 ? "sur l'axe" : `${plats}/${lus_} segments de la rangée plats${pasPlats.length ? ` (${pasPlats.join(", ")})` : ""}`}`);
       }
       juger("nombres", f.length === 0, `étape 6, N10 : ${f.length ? f.join(" ; ") : "palier = b aux quatre crans à a = −1, et seulement à b = 0 aux deux autres"}`);
     }

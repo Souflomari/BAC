@@ -233,6 +233,9 @@ const HORS_CHAMP = new Set([
   // ~1 min locale à 889 mesures ; armée en CI (job `telephone`) ;
   // `node scripts/scene-quotient.mjs --essai-rouge`.
   "scene-quotient.mjs",
+  // scene-champ-pentes, même raison : le champ des pentes (maths/equations-differentielles),
+  // 256 mesures ; armée en CI (job `telephone`) ; `node scripts/scene-champ-pentes.mjs --essai-rouge`.
+  "scene-champ-pentes.mjs",
   // scene-ergonomie lance SEULE, sur les neuf scènes, la famille « ergonomie »
   // que chaque porte de scène lance déjà à sa fin (ADR 0035 : une porte prise
   // dans un agrégat doit pouvoir être lancée seule) : build ET navigateur. Pas
