@@ -71,9 +71,11 @@ ARBRE=../BAC-sab PORTE=scene-quotient SABOTAGES=scripts/campagnes/sabotages-quot
 
 ## 3. Git: where things are, and what not to do
 
-- **Everything is on `claude/vibrant-fermi-v1lxj5`** — 1 481 commits ahead of `main`, zero behind.
-  Draft PR **#2** (`claude/vibrant-fermi-v1lxj5 → main`) carries it. **CI run 810 is green on the
-  handoff head 874626d2 — all 5 jobs**, including the new slope-field gate. CI runs on every push.
+- **Everything is on `claude/vibrant-fermi-v1lxj5`** — 1516 commits ahead of `main`, zero behind (2026-10-20, `git rev-list --count origin/main..HEAD`).
+  Draft PR **#2** (`claude/vibrant-fermi-v1lxj5 → main`) carries it. **CI run 822 is green on
+  e265bcb7 — all 5 jobs.** CI runs on every push except commits marked `[skip ci]` (used for
+  intermediate commits, because a normal push cancels a CI run in flight); check the latest run on
+  the PR before building on a head.
 - **`main` is production.** Merging PR #2 is a production deploy *and* brings four database
   migrations (`backend/supabase/migrations/048…051`) that production has never seen. The CLAUDE.md
   non-negotiables apply: a passing `scripts/branch-test.ps1` against staging, a supervised check that
@@ -92,90 +94,84 @@ Ordered by what most affects a student. "Report" means the full critic report in
 `docs/audits/critiques/`.
 
 ### 4.1 Slope-field scene « Ce que l'équation dit en chaque point » (maths/équations différentielles)
-- **State: verified and armed (2026-10-20).** Its gate `scripts/scene-champ-pentes.mjs` is green twice
-  (256 measures, 29 families) and red 29/29 under `--essai-rouge`; it runs in CI (job `telephone`), its
-  unit test `test-champ-pentes` (11/11) in the unit-test step.
-- The first run was red on 42 measures; almost all were the bench (how a thin antialiased stroke was
-  measured), one was the product (P's ring hid two thirds of the answer segment at step 1). What was
-  fixed and why: `docs/audits/INSTRUMENTS.md`, entry `scene-champ-pentes.mjs`.
-- **Still owed:** the product-sabotage campaign (44 sabotages ready:
-  `scripts/campagnes/sabotages-champ-pentes.py`, ~3 h — run it in a separate worktree, see §2), and a
-  wave-2 read (calm/ergonomics critics) like the other scenes had.
+- **State: verified and armed.** Its gate `scripts/scene-champ-pentes.mjs` is green (256 measures, 29
+  families) and red 29/29 under `--essai-rouge`; it runs in CI (job `telephone`), its unit test
+  `test-champ-pentes` (11/11) in the unit-test step. What the first red run taught (mostly the bench,
+  once the product): `docs/audits/INSTRUMENTS.md`, entry `scene-champ-pentes.mjs`.
+- **Product-sabotage campaign (2026-10-20), run in three parts to stay under the 2-hour cap:**
+  19/19, then 12/12, then 7/7 caught; the tree came back identical each time and the clean gate was
+  green before and after. One sabotage, `courbe-avant-pari`, was INERT as first written (the posed
+  family is always « aucune », so it never changed the screen) — rewritten in cfff3c42, now caught by
+  `avant-pari`. Logs: `/home/user/campagne-scene-champ-pentes{,-p2,-p3a}/campagne.log` in the cloud
+  container (not in the repo).
+- **Still owed:** the last six sabotages (`f-isocline f-unicite f-examen f-second-membre
+  ce-piege-seul import-three`) if the cloud session did not finish them — see the end of this
+  section's update below; and a wave-2 read (calm/ergonomics critics) like the other scenes had.
 
 ### 4.2 PC waves D–E: the fidelity critic's findings — applied (2026-10-20)
-Report: `pc-vagues-DE-fidelite.md`. Fixed in bfe43534, then 248d37b1, 7eaf4a43, 7927fe1b:
+Report: `pc-vagues-DE-fidelite.md`. Fixed in bfe43534, then 248d37b1, 7eaf4a43, 7927fe1b, 4050fc3a:
 - **The two pre-solved summits.** `suivi-temporel-vitesse`'s worked example is now Mg + HCl followed
   by conductimetry (t½ = 6 min, figure `t-demi-sur-sigma.svg` redrawn); `etat-equilibre`'s
   derivation of $Q_{r,eq} = C\tau^2/(1-\tau)$ is removed (EE-28 pays that debt alone).
+- **The S₂O₈²⁻/I⁻ running table no longer gives the summit's t½ = 8 min** (4050fc3a): new data
+  x = 5,0·(1 − 2^(−t/12)), t½ = 12 min, every derived number and STV-11 recomputed; the four x(t)
+  figures keep their pixels (the time axis has no graduation). Known echo, accepted: `r-variation`
+  q4 also asks v at 12 min over 8–16 min, on its own data — copying the lesson gives a wrong answer.
 - The false « deux zéros de la parabole » declaration; AE-43 recast on $E_c(\theta)$; the degrees id
-  broadened to the pendule pesant (AE-42 → R7, and R7 now says the θ² approximation needs
-  radians); stale scope notes, including four STUDENT-VISIBLE bank reasonings that said « la leçon
-  ne montre jamais ce geste »; EH-30 C, OMP-27 D; rungs; β/α; $E_c$; one value for C; R = 8,314
-  dropped; `habilete` on the new items.
-- **Still open:**
-  - LDN-41 D and CMP-46 A/D carry provisional tags until the owner answers DECISIONS §35 q3 (two
-    missing lois-de-Newton ids).
-  - The new `t-demi-sur-sigma.svg` has been checked by CI's figure-preview only; nobody has looked
-    at it rendered, in light and dark.
-  - AE-42's non-converted option (63 m/s) is an outlier by nature (×3283 on θ²).
-  - `suivi-temporel-vitesse` R4's « lecture graphique » (S₂O₈²⁻ data) also prints t½ = 8 min, the
-    summit's answer, on a different reaction.
+  broadened to the pendule pesant; stale scope notes, including four STUDENT-VISIBLE bank reasonings;
+  EH-30 C, OMP-27 D; rungs; β/α; $E_c$; one value for C; R = 8,314 dropped; `habilete` on new items.
+- **Still open:** LDN-41 D and CMP-46 A/D carry provisional tags until the owner answers DECISIONS
+  §35 q3; AE-42's non-converted option (63 m/s) is an outlier by nature.
 
 ### 4.3 Cadre debt, waves G and H (syllabus lines with no chapter — `docs/audits/DETTE-CADRE.md`)
-- **Prose (ff15dbc2):** G3 integrals, G4 log base a / a^x / x^α / n-th root, G5 image of a segment
-  + dichotomy, G6 linearisation + Z = z², G7 variance, H1 oscillators.
-- **Items — all done (2026-10-20):**
+- **Written and reviewed:** G3 integrals, G4 log base a / a^x / x^α / n-th root, G5 image of a
+  segment + dichotomy, G6 linearisation + Z = z², G7 variance, H1 oscillators — prose ff15dbc2,
+  items (CI-59…76, EXP-41…46, LOG-34…38, LIMCONT-33…40, NBCOMPLEX-48…50, NBCOMPLEX2-49…52,
+  PC-M23-1…4 / PC-M25-1…3, SO-44…52). Both wave-1 critics (`cadre-GH-fidelite.md`,
+  `cadre-GH-pedagogie.md`) applied: 0b4c28ce, 03464042, e265bcb7, a976cdee (H1: four checkpoints, the
+  two-envelope friction figure, the composite derivation one step per line), 096a4558 (LIMCONT-40,
+  the dichotomy step COUNT), 9a3b4e39 (the Riemann-rectangles and two-laws figures).
+- **G8 written (3023e605, not yet critic-reviewed):** y''+4y'+13y = 0 worked (complex roots with
+  damping), Δ > 0 tested, sums of consecutive terms worked with the term count staged; EQDIFF-34…39,
+  SUITES-54…56, two new ids. One option (EQDIFF-35 D) states its model in words and is also what kept
+  `eleve-ruse` under its seal — honest, but worth a reviewer's look.
+- **eleve-ruse was re-sealed once** (c0bd7121): its per-notion ratchet compares averages, so honest
+  items exactly at chance can push a below-chance notion over its seal. INSTRUMENTS.md names it.
+- **Still open:** owner questions §37 points 4–5; a wave-1 pass on G8; then H2–H5.
 
-  | wave | items | new misconception ids |
-  |---|---|---|
-  | G3 | CI-59…73 | — |
-  | G4 | EXP-41…46, LOG-34…38 | 1 |
-  | G5 | LIMCONT-33…38 | 3 |
-  | G6 | NBCOMPLEX-48…50, NBCOMPLEX2-49…52 | 3 |
-  | G7 | PC-M23-1…4 | — |
-  | H1 | SO-44…52 | 2 |
+### 4.4 Numeration (SM arithmetic) — built and reviewed (2026-10-20)
+- `## R7b — Les systèmes de numération` in `content/maths/arithmetique/lesson.md` (chapter 10), from
+  the revised spec (35df5738). Both wave-1 critics on the BUILT chapter (`numeration-build-*.md`):
+  FIX THEN SHIP, no cadre breach, one false lemma found by both. Applied in de1fc6bd (five
+  checkpoints now, existence/uniqueness proved, per-column ledgers, a sum across two bases) and
+  7255989e (bank ordered by capacity, AR-51 keyed on b+1, AR-53, AR-54, the lemma fixed).
+- **Still open:** DECISIONS §38 points 1–2 (indice vs exposant notation; bases above 9); the habileté
+  mix over the tagged items is ≈ 50/36/14 against 40/40/20 — the next lot pays it, never a re-tag.
 
-  Every new id has ≥ 3 items. All 62 notions now meet the floor (CI-73 closed the last one).
-- **eleve-ruse was re-sealed** (c0bd7121). Its per-notion ratchet compares averages, so honest
-  items exactly at chance push a below-chance notion over its seal. INSTRUMENTS.md names the
-  property; a measure that would not move is noted there, not armed.
-- **Wave-1 critics, both done and applied (2026-10-20):** `cadre-GH-fidelite.md` (no breach, 0
-  arithmetic errors; the blocking fix — two lesson notes that said « no filière marker » — applied in
-  0b4c28ce) and `cadre-GH-pedagogie.md` (13 rhetorical « Prends position », no checkpoint behind any;
-  applied in 03464042 (G3) and e265bcb7 (G4–G7): 8 checkpoints, the two hollow predicts replaced,
-  the Riemann portmanteau id split, worked examples and items added).
-- **Still open on G/H:** the H1 fixes (four checkpoints, the two-envelope friction figure, the
-  composite derivation one step per line) were being written when this was updated; owner questions
-  §37 points 4–5 (R4b's missing filière sentence; ω₀/T₀ of the composite oscillator); figures for
-  Riemann rectangles and for dispersion (pedagogy critic fix 14) not drawn; counting the dichotomy
-  steps ((b−a)/2ⁿ ≤ ε solved for n) still untested.
-- **Then:** the rest of the plan — G8, H2–H5 (`docs/audits/DETTE-CADRE.md`).
-
-### 4.4 Numeration (SM arithmetic) — BUILT (2026-10-20)
-- Spec revised against both critics (8887cc8b); chapter built from it (35df5738): `## R7b — Les
-  systèmes de numération` in `content/maths/arithmetique/lesson.md` (chapter 10; R8 → 11, chapter map
-  resealed), three checkpoints, the attempt-first exercise `r-numeration`, items AR-41…52, four new ids
-  (N4 « carry at ten » sits at the floor of 3).
-- **Still open:** the cascade figure `numeration-cascade-2025-base7` (being drawn); a wave-1 critic
-  pass on the BUILT chapter (the critics saw only the spec); the habileté mix is ≈ 67/25/8 against
-  40/40/20 — owner question Q11 in the spec; AR-47's « 476₅ » option is strikeable on sight (an
-  illegal digit), kept on purpose by the spec.
-
-### 4.5 Vector spaces (SM structures, a new chapter) — spec revised, arithmetic fixes in progress
-- Spec `docs/pipeline/propositions/maths-structures-espaces-vectoriels.md`, revised against both
-  critics (64c29aae): the three-condition subspace criterion the bank prints, an `r8-bac` on
-  bk-2023-n-x5 q1–q2 and an `r8-variation`, no weight claim, Vect named in French first.
-- An independent arithmetic pass (`espaces-vectoriels-arithmetique.md`) found SA-41's key false and two
-  number collisions; the fixes were being applied when this was updated.
-- **Next:** owner questions Q1a/Q1b, Q7, Q11, Q12 in the spec's §15 (defaults written), then
-  content-author + item-author, then `carte-chapitres --sceller`.
+### 4.5 Vector spaces (SM structures) — BUILT (2026-10-20, fa9fc061)
+- `## R8 — Espaces vectoriels : sous-espace, base, dimension` at the end of
+  `content/maths/structures-algebriques/lesson.md` (chapter 11; nothing displaced, chapter map
+  re-sealed). 15 sections, four checkpoints, eleven step-by-step derivations (`derivations.yaml`), two
+  figures, `r8-bac` (bk-2023-n-x5 q1–q2) and `r8-variation`, items SA-36…SA-53 on eight new ids.
+  Built from the spec after two critics and an arithmetic pass; every owner default of the spec's §15
+  taken. Registers updated: `maths-sm.yaml` lesson_slug, `cadre-couverture.md` §2.1, DETTE-CADRE G2.
+- **Wave-1 critics on the BUILT chapter:** see `docs/audits/critiques/README.md` — if no
+  `espaces-vectoriels-build-*.md` report is listed there, they did not finish in the cloud session:
+  run `pedagogy-critic` and `bac-fidelity-critic` on the chapter first.
+- **Owner:** DECISIONS §38 points 3–4 (two tag calls), and the spec's §15 defaults.
 
 ### 4.6 Smaller loose ends
-- **A+ text in scenes:** vector names now scale with the reader's text size (30ef9de3); not yet
-  looked at, at A and A+, in a browser.
-- **Owner decisions** waiting with a written default: `docs/audits/DECISIONS-EN-ATTENTE.md` §31–§37
-  (notably §37: what SExp students are told to skip, « les deux types d'amortissement », the size of
-  the numeration lot, and redox titration vs the cadre exclusion).
+- **Figures added 2026-10-20** (`t-demi-sur-sigma`, `frottement-fluide-solide`,
+  `numeration-cascade-2025-base7`, `riemann-rectangles`, `deux-lois-meme-esperance`,
+  `sous-espaces-plan`, `echelle-dimensions-r3`): CI's figure gates check them; a human look in light
+  and dark is still worth five minutes (`npm run pw -- figure-preview`).
+- **A+ text in scenes:** vector names scale with the reader's text size (30ef9de3); not yet looked
+  at, at A and A+, in a browser.
+- **validate-content warnings** that need a judgment, not a fix: figure files placed by no
+  marker (`geometrie-espace`, `limites-continuite`, `nombres-complexes-2`, `dipole-rl`, `rc-charge`,
+  `rlc-serie`), and rung tags with no heading (R6/R7 in three maths notions). The nine
+  `lesson_placement` mismatches were fixed (e5ed42c1).
+- **Owner decisions** waiting with a written default: `docs/audits/DECISIONS-EN-ATTENTE.md` §31–§38.
 - **SVT is frozen**; the Andes 3D-scene spec waits for it to thaw.
 
 ---
