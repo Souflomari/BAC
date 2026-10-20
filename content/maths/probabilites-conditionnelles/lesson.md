@@ -488,6 +488,8 @@ Reprenons le tableau du paragraphe précédent — le nombre $X$ de « oui » au
 |--|--|--|--|
 | $P(X = x_i)$ | $0{,}32$ | $0{,}38$ | $0{,}30$ |
 
+[[figure:deux-lois-meme-esperance]]
+
 **Pourquoi le carré :** un écart $x_i - E(X)$ peut être positif ou négatif, et la moyenne pondérée de ces écarts, sans carré, vaut toujours $0$ — les écarts positifs et négatifs s'annulent exactement. Vérifie-le sur ce tableau :
 
 $$(0 - 0{,}98) \times 0{,}32 + (1 - 0{,}98) \times 0{,}38 + (2 - 0{,}98) \times 0{,}30$$
@@ -719,4 +721,20 @@ Même machinerie, autre habillage : deux sacs au lieu de deux urnes, un transfer
      carré, annoncée nulle, est calculée sur l'exemple courant
      (−0,3136 + 0,0076 + 0,306 = 0) puis établie en général
      (E(X) − E(X)·1 = 0).
+     (d) FIGURE (correctif 14, P2 : la dispersion est une forme, et la
+     section n'en montrait aucune). La figure `deux-lois-meme-esperance`
+     (media/deux-lois-meme-esperance.svg + .stages.json, 3 étapes), placée
+     juste après le tableau de X repris, avant « Pourquoi le carré » : la loi
+     de X et une loi Y construite pour la figure — mêmes valeurs 0, 1, 2,
+     probabilités 0,46 ; 0,10 ; 0,44, E(Y) = 0,98 exactement —, l'une sous
+     l'autre sur le même axe ; puis le centre commun ; puis les écarts au
+     centre (−0,98 ; +0,02 ; +1,02), identiques pour les deux lois, seuls les
+     poids différant. V(Y) = 0,8996 n'est écrite nulle part (la prose ne la
+     donne pas), ni aucun carré ni E(X²), que le point d'arrêt
+     cp-r5b-carre-esperance demande plus bas. Aucun point d'arrêt ne demande
+     quelle loi est la plus dispersée : rien à placer avant.
+     MOUVEMENT — STATIQUE ÉTAGÉ SUFFIT (gabarit v2, case A) : rien n'évolue
+     dans le temps ; la dispersion se lit en comparant deux lois immobiles
+     alignées sur le même axe, et l'étagement (lois, centre, écarts) fait
+     l'ordre de lecture.
 -->

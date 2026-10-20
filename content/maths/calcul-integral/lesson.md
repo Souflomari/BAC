@@ -398,6 +398,8 @@ $$T_n \ \leq\ \int_0^1 f(x)\,\mathrm{d}x\ \leq\ S_n$$
 
 **Confronte ta prédiction.** Sur chaque tranche, le rectangle de $S_n$ prend la hauteur du point le plus haut : il **déborde** au-dessus de la courbe. Celui de $T_n$ prend la hauteur du point le plus bas : il reste **sous** la courbe. Si tu avais placé $T_n$ au-dessus, tu avais lu le maximum de la tranche à son bord gauche — c'est l'inverse pour une fonction croissante. Si tu pensais que les deux sommes grossissent quand $n$ grandit, regarde la largeur : chaque rectangle ne mesure que $\frac1n$, donc plus il y en a, plus ils sont fins. Et si tu pensais qu'elles finissent par **égaler** l'intégrale, l'encadrement te répond : pour $f$ strictement croissante, chaque rectangle de $S_n$ dépasse un peu, chaque rectangle de $T_n$ manque un peu, et cela pour tout $n$. L'écart ne disparaît pas ; il se resserre — et c'est ce qu'il reste à montrer.
 
+[[figure:riemann-rectangles]]
+
 En écrivant les deux sommes terme à terme, tous les termes du milieu ($k=1$ à $n-1$) sont **identiques** dans $S_n$ et $T_n$ — ils s'annulent dans la différence, et il ne reste que les deux bords :
 
 $$S_n - T_n = \frac1n\Big(f(1) - f(0)\Big) \xrightarrow[n\to+\infty]{} 0$$
@@ -971,4 +973,22 @@ Une troisième question, toujours dans le registre du bac, sur l'intervalle $[1,
        - l'encadrement inversé (`inegalite-moyenne-sans-longueur`, m et M
          intervertis tranche par tranche) : rompu en prose
          (« Confronte ta prédiction ») et au point d'arrêt.
+
+     NOTE AJOUTÉE (correctif 14, figure, 2026-10-20 — docs/audits/critiques/
+     cadre-GH-pedagogie.md, P2 : « une somme de rectangles », et aucun
+     rectangle) :
+     (14) [LIVRÉ] La figure `riemann-rectangles` (media/riemann-rectangles.svg
+     + .stages.json, 4 étapes), placée APRÈS le point d'arrêt
+     cp-r4-riemann-position et après « Confronte ta prédiction » — elle montre
+     la réponse (T_n sous la courbe, S_n au-dessus, l'écart qui se resserre),
+     donc jamais avant l'engagement — et AVANT le calcul de S_n − T_n, dont
+     son étape 4 donne la forme géométrique (les bandes d'écart empilées en
+     une colonne de largeur 1/n et de hauteur f(1) − f(0)). Fonction du
+     chapitre, x² sur [0, 1] ; n = 4 puis n = 8, côte à côte à la même
+     échelle. Aucune valeur de somme n'est écrite dans la figure.
+     MOUVEMENT — STATIQUE ÉTAGÉ SUFFIT (gabarit v2, case A) : n n'est pas un
+     temps ; ce qui enseigne, c'est la COMPARAISON de deux découpages, et deux
+     panneaux côte à côte la montrent d'un seul regard, là où une animation
+     n'en montrerait qu'un à la fois. Un curseur sur n (voie interactive-svg)
+     reste une amélioration possible, pas une dette.
 -->
