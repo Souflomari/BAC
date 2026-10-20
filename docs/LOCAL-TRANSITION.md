@@ -73,7 +73,8 @@ ARBRE=../BAC-sab PORTE=scene-quotient SABOTAGES=scripts/campagnes/sabotages-quot
 
 - **Everything is on `claude/vibrant-fermi-v1lxj5`** — 1516 commits ahead of `main`, zero behind (2026-10-20, `git rev-list --count origin/main..HEAD`).
   Draft PR **#2** (`claude/vibrant-fermi-v1lxj5 → main`) carries it. **CI run 822 is green on
-  e265bcb7 — all 5 jobs.** CI runs on every push except commits marked `[skip ci]` (used for
+  e265bcb7 — all 5 jobs;** run 823 (today's head) was green on 4 of 5, its print gate catching one
+  table, fixed and re-checked locally. CI runs on every push except commits marked `[skip ci]` (used for
   intermediate commits, because a normal push cancels a CI run in flight); check the latest run on
   the PR before building on a head.
 - **`main` is production.** Merging PR #2 is a production deploy *and* brings four database
@@ -98,15 +99,12 @@ Ordered by what most affects a student. "Report" means the full critic report in
   families) and red 29/29 under `--essai-rouge`; it runs in CI (job `telephone`), its unit test
   `test-champ-pentes` (11/11) in the unit-test step. What the first red run taught (mostly the bench,
   once the product): `docs/audits/INSTRUMENTS.md`, entry `scene-champ-pentes.mjs`.
-- **Product-sabotage campaign (2026-10-20), run in three parts to stay under the 2-hour cap:**
-  19/19, then 12/12, then 7/7 caught; the tree came back identical each time and the clean gate was
-  green before and after. One sabotage, `courbe-avant-pari`, was INERT as first written (the posed
-  family is always « aucune », so it never changed the screen) — rewritten in cfff3c42, now caught by
-  `avant-pari`. Logs: `/home/user/campagne-scene-champ-pentes{,-p2,-p3a}/campagne.log` in the cloud
-  container (not in the repo).
-- **Still owed:** the last six sabotages (`f-isocline f-unicite f-examen f-second-membre
-  ce-piege-seul import-three`) if the cloud session did not finish them — see the end of this
-  section's update below; and a wave-2 read (calm/ergonomics critics) like the other scenes had.
+- **Product-sabotage campaign — done (2026-10-20):** 44 entries in four parts (to stay under the
+  2-hour cap), 43 sabotages caught and 1 counter-test held; the tree came back identical and the
+  clean gate was green before and after every part. One sabotage, `courbe-avant-pari`, was INERT as
+  first written (it never changed the screen) — rewritten in cfff3c42, now caught. Full record:
+  `docs/audits/INSTRUMENTS.md`, entry `scene-champ-pentes.mjs`.
+- **Still owed:** a wave-2 read (calm/ergonomics critics) like the other scenes had.
 
 ### 4.2 PC waves D–E: the fidelity critic's findings — applied (2026-10-20)
 Report: `pc-vagues-DE-fidelite.md`. Fixed in bfe43534, then 248d37b1, 7eaf4a43, 7927fe1b, 4050fc3a:
@@ -155,16 +153,22 @@ Report: `pc-vagues-DE-fidelite.md`. Fixed in bfe43534, then 248d37b1, 7eaf4a43, 
   figures, `r8-bac` (bk-2023-n-x5 q1–q2) and `r8-variation`, items SA-36…SA-53 on eight new ids.
   Built from the spec after two critics and an arithmetic pass; every owner default of the spec's §15
   taken. Registers updated: `maths-sm.yaml` lesson_slug, `cadre-couverture.md` §2.1, DETTE-CADRE G2.
-- **Wave-1 critics on the BUILT chapter:** see `docs/audits/critiques/README.md` — if no
-  `espaces-vectoriels-build-*.md` report is listed there, they did not finish in the cloud session:
-  run `pedagogy-critic` and `bac-fidelity-critic` on the chapter first.
+- **Wave-1 critics on the BUILT chapter — done and applied:** `espaces-vectoriels-build-*.md` (both
+  FIX THEN SHIP, no boundary breach, no arithmetic error). Applied in 2a75f97e (items: five no longer
+  answerable by the odd verdict, bloc order) and 93461c7c (the summit's q1 on the three-condition
+  criterion, a fifth commit before the kernel, a q4 on linear maps in the variation, Y(a,b) for V,
+  dim{0} = 0 stated). Spec revision (c) records where the build now departs from the spec.
 - **Owner:** DECISIONS §38 points 3–4 (two tag calls), and the spec's §15 defaults.
 
 ### 4.6 Smaller loose ends
 - **Figures added 2026-10-20** (`t-demi-sur-sigma`, `frottement-fluide-solide`,
   `numeration-cascade-2025-base7`, `riemann-rectangles`, `deux-lois-meme-esperance`,
-  `sous-espaces-plan`, `echelle-dimensions-r3`): CI's figure gates check them; a human look in light
-  and dark is still worth five minutes (`npm run pw -- figure-preview`).
+  `sous-espaces-plan`, `echelle-dimensions-r3`, and the four rescaled kinetics figures): figure gate
+  green in light and dark, and looked at — one label moved (6daa3e63). The gate's informational
+  « barre » class still lists five labels touched by a line (sous-espaces-plan, echelle-dimensions-r3,
+  t-demi-sur-sigma); all readable, polish if you like. Print, French typography and raw-LaTeX gates
+  were run locally on the eleven pages changed today: green (the print gate had caught the
+  oscillators' summary table 10 px too wide — fixed in 6c334dab).
 - **A+ text in scenes:** vector names scale with the reader's text size (30ef9de3); not yet looked
   at, at A and A+, in a browser.
 - **validate-content warnings** that need a judgment, not a fix: figure files placed by no
