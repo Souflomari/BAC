@@ -241,6 +241,52 @@ $$z^4 = 4(\cos\pi + i\sin\pi) = 4(-1+0i) = -4$$
 
 [[figure:spirale-moivre]]
 
+### Linéariser une puissance de cosinus ou de sinus : les formules d'Euler, à l'envers de Moivre
+
+Moivre part d'un angle $\theta$ et d'un entier $n$, et donne l'angle de $z^n$ : une **puissance** de $z$ devient un **angle multiplié**. Il existe un problème exactement inverse : partir d'une **puissance** de $\cos x$ ou de $\sin x$ — par exemple $\cos^3 x$ — et l'écrire comme une **somme** de $\cos(kx)$ ou $\sin(kx)$, chacun à la puissance $1$. Cette opération s'appelle **linéariser**.
+
+*(Pourquoi c'est utile : le chapitre « Calcul intégral » t'a donné une primitive immédiate de $\cos(kx)$ — c'est $\frac1k\sin(kx)$ — mais aucune formule directe ne donne de primitive à $\cos^3x$ tel quel. Une fois $\cos^3x$ réécrit comme une somme de $\cos(kx)$, chaque terme a une primitive connue : c'est ce qui rend le calcul possible.)*
+
+**Le point de départ : les formules d'Euler.** On a, plus haut dans ce chapitre, la relation $e^{-i\theta} = \cos\theta - i\sin\theta$ (elle a servi à calculer $1/z$) — à côté de la définition $e^{i\theta}=\cos\theta+i\sin\theta$ posée au chapitre précédent. En additionnant ces deux égalités (avec $\theta=x$), les termes en $\sin$ s'annulent ; en les soustrayant, ce sont les termes en $\cos$ qui s'annulent :
+
+$$e^{ix}+e^{-ix} = 2\cos x \qquad \qquad e^{ix}-e^{-ix} = 2i\sin x$$
+
+D'où, en divisant chaque égalité par son coefficient :
+
+$$\cos x = \frac{e^{ix}+e^{-ix}}{2} \qquad \qquad \sin x = \frac{e^{ix}-e^{-ix}}{2i}$$
+
+Ce sont les **formules d'Euler**. Elles font le chemin inverse de la notation posée au chapitre précédent : là-bas, $e^{i\theta}$ se définissait à partir de $\cos\theta$ et $\sin\theta$ ; ici, on isole $\cos x$ (ou $\sin x$) à partir de $e^{ix}$ et $e^{-ix}$.
+
+**Le geste de linéarisation.** Pour linéariser une puissance de $\cos x$ (le principe est identique pour $\sin x$) : on remplace $\cos x$ par $\dfrac{e^{ix}+e^{-ix}}{2}$, on élève à la puissance voulue, on développe avec la formule du binôme, puis on regroupe les termes deux par deux — $e^{ikx}+e^{-ikx}=2\cos(kx)$ — pour faire réapparaître des cosinus.
+
+**Exemple travaillé.** Linéariser $\cos^3 x$.
+
+**Prends position avant de lire la suite :** d'après toi, $\cos^3x$ est-il égal à $\cos(3x)$ ? Teste les deux membres en $x=\dfrac{\pi}{3}$ avant de continuer.
+
+**Ce qu'on cherche et pourquoi ce geste :** on remplace $\cos x$ par $\dfrac{e^{ix}+e^{-ix}}{2}$, ce qui transforme le problème trigonométrique en un simple développement de puissance — un calcul qu'on sait déjà mener.
+
+$$\cos^3 x = \left(\frac{e^{ix}+e^{-ix}}{2}\right)^3 = \frac{\left(e^{ix}+e^{-ix}\right)^3}{8}$$
+
+On développe le cube d'une somme avec l'identité $(A+B)^3=A^3+3A^2B+3AB^2+B^3$, avec $A=e^{ix}$ et $B=e^{-ix}$ :
+
+$$\left(e^{ix}+e^{-ix}\right)^3 = e^{3ix} + 3e^{2ix}e^{-ix} + 3e^{ix}e^{-2ix} + e^{-3ix} = e^{3ix} + 3e^{ix} + 3e^{-ix} + e^{-3ix}$$
+
+On regroupe les deux termes extrêmes d'un côté, les deux termes du milieu de l'autre — chaque paire est de la forme $e^{iky}+e^{-iky}=2\cos(ky)$ :
+
+$$e^{3ix}+3e^{ix}+3e^{-ix}+e^{-3ix} = \left(e^{3ix}+e^{-3ix}\right) + 3\left(e^{ix}+e^{-ix}\right) = 2\cos(3x) + 3\times2\cos x = 2\cos3x + 6\cos x$$
+
+Il reste à diviser par le $8$ mis de côté au début :
+
+$$\cos^3 x = \frac{2\cos3x+6\cos x}{8} = \frac{\cos3x+3\cos x}{4}$$
+
+**Confrontation à la prédiction :** en $x=\dfrac{\pi}{3}$, $\cos\dfrac{\pi}{3}=\dfrac12$, donc $\cos^3\dfrac{\pi}{3} = \dfrac18$. Et $\cos\!\left(3\times\dfrac{\pi}{3}\right) = \cos\pi = -1$. Les deux nombres, $\dfrac18$ et $-1$, sont clairement différents : $\cos^3x \neq \cos(3x)$ — une puissance de cosinus n'est pas un cosinus d'angle multiplié, ce sont deux opérations sans rapport. La formule qu'on vient d'établir, elle, tient : $\dfrac{\cos\pi+3\cos\frac{\pi}{3}}{4} = \dfrac{-1+3\times\frac12}{4} = \dfrac{0{,}5}{4} = \dfrac18$ — exactement la valeur directe.
+
+**Le piège à éviter :** au-delà de la confusion $\cos^3x=\cos(3x)$ qu'on vient d'écarter, une seconde erreur, plus discrète, guette : oublier de diviser par $2^3=8$ à la fin, et s'arrêter à $\cos^3x = 2\cos3x+6\cos x$ — un résultat huit fois trop grand. Ce facteur $\dfrac1{2^n}$ n'est pas une constante à mémoriser : il vient directement de l'écriture $\cos x=\dfrac{e^{ix}+e^{-ix}}2$, où élever à la puissance $n$ élève aussi ce $2$ au dénominateur à la puissance $n$ — un réflexe à refaire à chaque linéarisation.
+
+**Le gain concret**, maintenant que $\cos^3x$ est linéarisé : chaque terme, $\cos(3x)$ et $\cos x$, a une primitive immédiate (une primitive de $\cos(kx)$ est $\frac1k\sin(kx)$), alors qu'aucune formule directe ne donne de primitive à $\cos^3x$ tel quel.
+
+$$\int \cos^3x\,dx = \int \frac{\cos3x+3\cos x}{4}\,dx = \frac14\times\frac{\sin3x}{3} + \frac34\sin x + C = \frac{\sin3x}{12} + \frac34\sin x + C$$
+
 ---
 
 ## R4 — Racines n-ièmes : de l'unité, puis d'un complexe quelconque
@@ -470,6 +516,7 @@ Lis ce même triangle depuis $C$ : $w = \dfrac{\sqrt3}{3}\,i$, imaginaire pur, d
 
 Tu as maintenant tous les outils du chapitre : l'argument et les formes trigonométrique/exponentielle, les règles du produit, du quotient et de Moivre, les racines n-ièmes, et surtout la lecture géométrique d'un rapport de complexes (rotation, orthogonalité, nature d'un triangle, lieux de points). L'exercice de type bac ci-dessous les rassemble.
 
+- linéariser $\cos^nx$ ou $\sin^nx$ : formules d'Euler $\cos x=\frac{e^{ix}+e^{-ix}}2$, $\sin x=\frac{e^{ix}-e^{-ix}}{2i}$, développement au binôme, regroupement en $\cos(kx)$ — l'opération inverse de Moivre.
 - $|c|$ multiplie une longueur, $\arg(c)$ **ajoute** un angle — et cet angle est un **écart**, jamais la direction d'un point.
 - une transformation écrite $z' = az+b$ se caractérise par $|a|$, $\arg(a)$ et $\omega = \dfrac{b}{1-a}$.
 - $w$ se lit **depuis un sommet**, sur les deux **vecteurs** issus de ce sommet — jamais sur les affixes eux-mêmes.

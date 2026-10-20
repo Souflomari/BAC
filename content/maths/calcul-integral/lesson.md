@@ -74,6 +74,44 @@ $$\int_1^x \frac{1}{t}\,\mathrm{d}t = \ln(x)$$
 
 Ce n'est pas une coïncidence ni un nouveau calcul à apprendre : c'est exactement ce que dit la définition de ce chapitre, appliquée à une primitive que tu connais déjà depuis un autre chapitre. L'intégrale et la primitive, ce sont deux regards sur le même objet.
 
+### Une fonction définie par une intégrale : $F(x) = \int_a^x f(t)\,\mathrm{d}t$
+
+Ce que tu viens de voir avec $\ln$ est un cas particulier d'un phénomène plus général, qui marche pour n'importe quelle fonction continue $f$ — même quand tu ne sais pas calculer $f$ explicitement.
+
+**Le mécanisme.** Fixe $a$, et pose, pour $x$ parcourant un intervalle $I$ contenant $a$ où $f$ est continue :
+
+$$F(x) = \int_a^x f(t)\,\mathrm{d}t$$
+
+Prends une primitive $G$ de $f$ sur $I$ — n'importe laquelle, comme tu l'as vu plus haut dans ce chapitre. Par définition de l'intégrale, $F(x) = G(x) - G(a)$ pour tout $x$ : $F$ n'est donc rien d'autre que $G$, décalée d'une constante $-G(a)$. Or une fonction qui diffère d'une primitive par une constante est **elle-même** une primitive (la dérivée d'une constante est nulle), donc :
+
+$$\boxed{F' = f} \qquad \text{et} \qquad F(a) = G(a) - G(a) = 0 \quad \big(\text{convention } \textstyle\int_a^a = 0,\ \text{chapitre 4}\big)$$
+
+$F$ est donc **la** primitive de $f$ qui s'annule en $a$ — sans qu'il soit nécessaire de connaître $G$ explicitement pour l'affirmer.
+
+### Exemple travaillé — lire les variations de $F$ sur le signe de $f$
+
+Prends $f(t)=t$ (continue sur $\mathbb{R}$) et $F(x) = \displaystyle\int_{-2}^{x} t\,\mathrm{d}t$ pour $x \in [-2,3]$. $f$ est négative sur $[-2,0[$, nulle en $0$, positive sur $]0,3]$.
+
+**Ce qu'on cherche et pourquoi ce geste :** d'après le mécanisme ci-dessus, $F$ est une primitive de $f$ : elle est donc décroissante là où $f\leq0$, croissante là où $f\geq0$, avec un minimum en $x=0$.
+
+**Prends position avant de lire la suite :** $f$ devient positive dès que $x$ dépasse $0$. $F(x)$ devient-elle positive elle aussi dès que $x$ dépasse $0$ ?
+
+Calcule $F$ avec une primitive connue de $t\mapsto t$, à savoir $t\mapsto\frac{t^2}{2}$ :
+
+$$F(x) = \left[\frac{t^2}{2}\right]_{-2}^{x} = \frac{x^2}{2} - 2$$
+
+Vérifie d'abord la convention : $F(-2) = \dfrac{4}{2}-2 = 0$ ✓. Et $F'(x) = x = f(x)$ ✓ : $F$ est bien une primitive de $f$.
+
+Les variations : $F$ décroît sur $[-2,0]$ (où $f\leq0$), croît sur $[0,3]$ (où $f\geq0$) — minimum $F(0) = -2$.
+
+Mais regarde le **signe** de $F$, pas seulement ses variations. $F(x)=0 \iff x^2=4 \iff x=\pm2$ ; sur $[-2,3]$, les deux racines sont $x=-2$ et $x=2$. Teste le point milieu, $x=0$ : $F(0)=-2<0$. Donc $F<0$ sur $]-2,2[$, et $F>0$ seulement sur $]2,3]$.
+
+$$\boxed{F(x) < 0 \text{ pour tout } x \in\, ]-2,2[\, ,\quad\text{alors que } f(x) > 0 \text{ dès } x>0}$$
+
+$F$ ne devient positive qu'en $x=2$ — deux unités **après** que $f$ soit devenue positive en $x=0$. Si ta prédiction disait « oui, dès $0$ », regarde pourquoi ce n'est pas le cas.
+
+**Le piège à éviter.** Confondre le signe de $F$ avec celui de $f$. $F(x)$ **accumule** tout ce qui s'est passé depuis $a=-2$ : même quand $f$ redevient positive après $0$, $F$ doit d'abord compenser toute l'aire négative accumulée sur $[-2,0]$ avant de pouvoir redevenir positive elle-même. C'est la dérivée $F'=f$ qui partage le signe de $f$, point par point — jamais $F$ elle-même, qui garde la mémoire du passé.
+
 ### Généraliser : reconnaître u'/u et u'/u² dans une primitive
 
 Le cas $\frac1t$ ci-dessus n'est qu'un cas particulier d'une famille de primitives que les sujets de bac utilisent sans arrêt, toujours sous la même silhouette : une fraction où le haut est, à un facteur près, la dérivée du bas. Deux modèles à reconnaître, sur un intervalle $I$ où la fonction dérivable $u$ ne s'annule pas.
@@ -125,6 +163,64 @@ $$\int_0^2 \frac{-3}{(2x+1)^2}\,\mathrm{d}x = -\frac{6}{5}$$
 Une confusion fréquente à ce stade : penser qu'il faut « la bonne » primitive, celle qui vérifie une condition particulière (par exemple $F(0)=0$), et que choisir une autre primitive changerait le résultat. Ce n'est pas vrai — on vient de le démontrer : la constante s'annule toujours. Prends n'importe quelle primitive, la moins compliquée à écrire, et applique $F(b)-F(a)$.
 
 [[checkpoint:cp-r1-primitive]]
+
+### Une troisième forme : $u'\cdot u^n$
+
+Les deux modèles précédents ($u'/u$ et $u'/u^2$) sont en fait des cas particuliers ($n=-1$ et $n=-2$) d'une famille plus large. Sur un intervalle $I$ où $u$ est dérivable, pour tout entier $n \neq -1$ :
+
+$$\text{une primitive de } u'\cdot u^{n} \text{ est } \dfrac{u^{n+1}}{n+1}$$
+
+Vérifie-le en dérivant : $\left(\dfrac{u^{n+1}}{n+1}\right)' = \dfrac{(n+1)\,u'\,u^{n}}{n+1} = u'\,u^{n}$. Tu as déjà utilisé ce modèle sans le nommer : une primitive de $x$ est $\frac{x^2}{2}$, c'est $u'u^n$ avec $u(x)=x$, $n=1$.
+
+**Exemple travaillé.** Trouve une primitive de $f(x) = x(x^2+1)^3$.
+
+**Ce qu'on cherche et pourquoi ce geste :** repérer $u$ et l'exposant $n$. Ici $u(x)=x^2+1$, $u'(x)=2x$. Le facteur devant $u^3$ n'est pas $u'$ lui-même : $x = \frac12 \times 2x$, donc $f(x) = \frac12\,u'(x)\,u(x)^3$.
+
+**Prends position avant de lire la suite :** propose une primitive de $x(x^2+1)^3$, sans encore vérifier par dérivation. As-tu pensé à un facteur numérique devant $(x^2+1)^4$, ou seulement à l'exposant ?
+
+D'après le modèle, une primitive de $u'u^3$ est $\dfrac{u^4}{4}$, donc une primitive de $\frac12u'u^3$ est $\dfrac12\times\dfrac{u^4}{4} = \dfrac{u^4}{8} = \dfrac{(x^2+1)^4}{8}$.
+
+Vérifie par dérivation : $\left(\dfrac{(x^2+1)^4}{8}\right)' = \dfrac{4(x^2+1)^3\times2x}{8} = \dfrac{8x(x^2+1)^3}{8} = x(x^2+1)^3 = f(x)$ ✓.
+
+**Le piège à éviter.** Écrire $(x^2+1)^4$ sans le facteur $\frac18$ — l'exposant seul, sans ajuster la constante. Vérifie ce que ça donnerait : $\big((x^2+1)^4\big)' = 4(x^2+1)^3\times2x = 8x(x^2+1)^3$, soit $8$ fois $f(x)$, pas $f(x)$. Le réflexe qui protège est le même qu'au modèle $u'/u$ : une fois la primitive écrite, **toujours** vérifier par dérivation avant de la considérer acquise.
+
+### Une forme trigonométrique : $u'\cdot\cos u$ et $u'\cdot\sin u$
+
+Même famille, avec $\cos$ et $\sin$ à la place d'une puissance. Sur un intervalle où $u$ est dérivable :
+
+$$\text{une primitive de } u'\cdot\cos u \text{ est } \sin u \qquad\text{et}\qquad \text{une primitive de } u'\cdot\sin u \text{ est } -\cos u$$
+
+Vérifie le premier en dérivant : $(\sin u)' = u'\cos u$. Le second se vérifie pareil : $(-\cos u)' = u'\sin u$.
+
+**Exemple travaillé.** Calcule $\displaystyle\int_0^{\pi/6} \cos(3x)\,\mathrm{d}x$.
+
+**Ce qu'on cherche et pourquoi ce geste :** $u(x)=3x$, $u'(x)=3$. Le facteur devant $\cos(3x)$ est $1$, pas $3$ : $\cos(3x) = \frac13\times3\cos(3x) = \frac13\,u'(x)\cos(u(x))$.
+
+**Prends position avant de lire la suite :** une primitive de $\cos(3x)$ est-elle $\sin(3x)$, ou $\dfrac13\sin(3x)$ ?
+
+D'après le modèle, une primitive de $u'\cos u$ est $\sin u$, donc une primitive de $\frac13u'\cos u$ est $\frac13\sin(3x)$.
+
+$$\int_0^{\pi/6} \cos(3x)\,\mathrm{d}x = \left[\frac13\sin(3x)\right]_0^{\pi/6} = \frac13\sin\!\left(\frac{\pi}{2}\right) - \frac13\sin(0) = \frac13\times1 - 0 = \frac13$$
+
+**Le piège à éviter.** Écrire $\sin(3x)$ directement, sans le facteur $\frac13$ — l'erreur est invisible tant qu'on ne vérifie pas par dérivation : $\big(\sin(3x)\big)' = 3\cos(3x)$, soit $3$ fois l'intégrande, pas l'intégrande lui-même. Avec cet oubli, le calcul donnerait $\big[\sin(3x)\big]_0^{\pi/6} = 1$, trois fois la valeur correcte $\frac13$ — une erreur qui passe totalement inaperçue si tu ne dérives pas ta primitive avant de l'utiliser.
+
+### Fixer une primitive par une condition
+
+Tu sais depuis le début de ce chapitre qu'une fonction a une infinité de primitives, toutes égales à une constante près. Un énoncé peut te demander, parmi toute cette famille, **une seule** primitive précise — celle qui vérifie une condition supplémentaire, du type $F(x_0)=y_0$. Le geste : écrire la famille complète avec le $+C$, puis utiliser la condition pour déterminer $C$.
+
+**Exemple travaillé.** Détermine la primitive $F$ de $f(x) = 6x(x^2+1)^2$ sur $\mathbb{R}$ qui vérifie $F(0)=5$.
+
+**Ce qu'on cherche et pourquoi ce geste :** d'abord une primitive quelconque, par le modèle $u'u^n$ du paragraphe précédent. Ici $u(x)=x^2+1$, $u'(x)=2x$, et $6x = 3\times2x$, donc $f(x) = 3\,u'(x)\,u(x)^2$. Une primitive de $u'u^2$ est $\frac{u^3}{3}$, donc une primitive de $3u'u^2$ est $u^3 = (x^2+1)^3$. La famille complète de primitives de $f$ est donc $(x^2+1)^3 + C$, $C$ décrivant $\mathbb{R}$.
+
+**Prends position avant de lire la suite :** pour trouver $C$, faut-il remplacer $x$ par $0$ dans $f$, ou dans $(x^2+1)^3+C$ ?
+
+C'est dans la primitive, jamais dans $f$, que la condition se lit : $F(0) = (0^2+1)^3+C = 1+C$. La condition dit $F(0)=5$, donc $1+C=5$, c'est-à-dire $C=4$.
+
+$$\boxed{F(x) = (x^2+1)^3 + 4}$$
+
+**Vérification :** $F(0) = 1+4=5$ ✓, et $F'(x) = 3(x^2+1)^2\times2x = 6x(x^2+1)^2 = f(x)$ ✓.
+
+**Le piège à éviter.** Poser directement $C=y_0$ (ici $C=5$), en oubliant de calculer d'abord la valeur de la primitive de base en $x_0$. Avec cet oubli, tu écrirais $F(x)=(x^2+1)^3+5$, qui donnerait $F(0) = 1+5=6$, pas $5$ : la condition ne serait plus vérifiée. La bonne méthode isole toujours $C$ à partir de l'égalité complète $F(x_0)=y_0$, jamais en recopiant $y_0$ à la place de $C$.
 
 ---
 
@@ -263,6 +359,46 @@ Calcule la borne de droite : $\displaystyle\int_0^1 x\,\mathrm{d}x = \left[\frac
 **Vérification :** la valeur exacte est $\displaystyle\int_0^1 x^2\,\mathrm{d}x = \left[\frac{x^3}{3}\right]_0^1 = \dfrac13$. On a bien $0 \leq \dfrac13 \leq \dfrac12$ — l'encadrement tient.
 
 [[figure:comparaison-aires-nichees]]
+
+### Sommes de Riemann : une somme de rectangles qui devient une intégrale
+
+Ce qui suit est un outil supplémentaire de la filière Sciences Mathématiques ; en Sciences Expérimentales, l'intégrale se construit uniquement à partir de la primitive (chapitre 2), et tu peux passer directement au chapitre suivant.
+
+**Le problème.** Le chapitre 2 a défini $\int_a^b f$ à partir d'une primitive. Mais certains sujets construisent une somme — un nombre de termes qui grandit avec $n$ — et demandent sa limite, sans qu'aucune primitive n'apparaisse dans l'énoncé. Le mécanisme de la comparaison, que tu viens de voir, est exactement l'outil qui relie une telle somme à une intégrale.
+
+**Le mécanisme, sur $f$ continue et croissante sur $[0,1]$.** Découpe $[0,1]$ en $n$ tranches égales de largeur $\frac1n$ : $\left[0,\frac1n\right]$, $\left[\frac1n,\frac2n\right]$, …, $\left[\frac{n-1}{n},1\right]$. Sur la tranche $\left[\frac{k-1}{n},\frac{k}{n}\right]$, $f$ étant croissante, son minimum est à gauche et son maximum à droite :
+
+$$f\!\left(\frac{k-1}{n}\right) \leq f(x) \leq f\!\left(\frac{k}{n}\right) \qquad \text{pour } x \in \left[\frac{k-1}{n},\frac{k}{n}\right]$$
+
+Intègre cet encadrement sur la tranche, de longueur $\frac1n$, grâce à la comparaison de ce chapitre :
+
+$$\frac1n f\!\left(\frac{k-1}{n}\right) \ \leq\ \int_{\frac{k-1}{n}}^{\frac{k}{n}} f(x)\,\mathrm{d}x\ \leq\ \frac1n f\!\left(\frac{k}{n}\right)$$
+
+Somme ces $n$ encadrements pour $k=1,\ldots,n$, et recolle les $n$ intégrales de tranches en une seule, de $0$ à $1$, par la relation de Chasles (chapitre 4) :
+
+$$T_n \ \leq\ \int_0^1 f(x)\,\mathrm{d}x\ \leq\ S_n \qquad\text{où}\qquad S_n = \frac1n\sum_{k=1}^{n} f\!\left(\frac{k}{n}\right), \quad T_n = \frac1n\sum_{k=0}^{n-1} f\!\left(\frac{k}{n}\right)$$
+
+$S_n$ est la somme des rectangles **au-dessus** de la courbe (hauteur au bord droit de chaque tranche), $T_n$ la somme des rectangles **en dessous** (hauteur au bord gauche). Reste à montrer qu'elles se resserrent l'une contre l'autre. En écrivant les deux sommes terme à terme, tous les termes du milieu ($k=1$ à $n-1$) sont **identiques** dans $S_n$ et $T_n$ — ils s'annulent dans la différence, et il ne reste que les deux bords :
+
+$$S_n - T_n = \frac1n\Big(f(1) - f(0)\Big) \xrightarrow[n\to+\infty]{} 0$$
+
+$T_n \leq \int_0^1 f \leq S_n$ et $S_n-T_n\to0$ : par le théorème des gendarmes (chapitre "Suites numériques"), $S_n$ et $T_n$ convergent tous les deux vers $\displaystyle\int_0^1 f(x)\,\mathrm{d}x$.
+
+### Exemple travaillé — la limite d'une somme de Riemann
+
+Calcule $\displaystyle\lim_{n\to+\infty} S_n$ où $S_n = \dfrac1n\displaystyle\sum_{k=1}^{n}\left(\dfrac{k}{n}\right)^2$.
+
+**Ce qu'on cherche et pourquoi ce geste :** $S_n$ a exactement la forme $\frac1n\sum f\!\left(\frac{k}{n}\right)$ avec $f(x)=x^2$, continue et croissante sur $[0,1]$ — le mécanisme ci-dessus s'applique directement, avec $T_n = \frac1n\sum_{k=0}^{n-1}\left(\frac{k}{n}\right)^2$.
+
+**Prends position avant de lire la suite :** $S_n$ (indices $k=1$ à $n$) et $T_n$ (indices $k=0$ à $n-1$) convergent-elles, selon toi, vers la même limite, ou vers deux limites différentes ?
+
+Le mécanisme répond déjà : $S_n - T_n = \frac1n\big(f(1)-f(0)\big) = \frac1n(1-0) = \frac1n \to 0$, donc les deux **ont la même limite**, quelle que soit $f$. Reste à identifier cette limite : $T_n \leq \displaystyle\int_0^1 x^2\,\mathrm{d}x \leq S_n$, et tu as déjà calculé cette intégrale plus haut dans ce chapitre : $\displaystyle\int_0^1 x^2\,\mathrm{d}x = \dfrac13$.
+
+$$\boxed{\lim_{n\to+\infty} S_n = \lim_{n\to+\infty} T_n = \frac13}$$
+
+**Contrôle numérique.** Pour $n=4$ : $S_4 = \frac14\left(\frac1{16}+\frac4{16}+\frac9{16}+\frac{16}{16}\right) = \frac{30}{64} \approx 0{,}469$, et $T_4 = \frac14\left(0+\frac1{16}+\frac4{16}+\frac9{16}\right) = \frac{14}{64}\approx0{,}219$. Bien $T_4 < \frac13 \approx 0{,}333 < S_4$, et l'écart $S_4-T_4 = \frac{16}{64}=\frac14 = \frac1n$, exactement comme prévu.
+
+**Le piège à éviter.** Deux erreurs, à ne pas confondre. La première, la plus grave : **oublier le facteur $\frac1n$**. Sans lui, la somme $\sum_{k=1}^n\left(\frac{k}{n}\right)^2$ seule ne converge vers rien — elle **grandit** avec $n$ (environ $\frac{n}{3}$, en négligeant les termes de degré inférieur), elle diverge vers $+\infty$. C'est ce facteur $\frac1n$, la largeur de chaque tranche, qui transforme une somme qui explose en une moyenne qui converge. La seconde, plus discrète : croire que changer les bornes de sommation ($k=0,\ldots,n-1$ au lieu de $k=1,\ldots,n$) change la limite. Le calcul ci-dessus le montre : les deux sommes ne diffèrent que d'un terme de bord, divisé par $n$ — cet écart s'efface à la limite, et les deux valent $\dfrac13$.
 
 ---
 
@@ -747,4 +883,18 @@ Une troisième question, toujours dans le registre du bac, sur l'intervalle $[1,
      (u=3x-8 sur [1,4]) et des deux exemples travaillés de ce rung. Probe la
      misconception déjà déclarée `u-sur-u-absolue-ou-intervalle-oubliee` ;
      aucun id neuf, rien à transmettre à l'auteur d'items.
+
+     NOTE AJOUTÉE (dette de cadre, vague G3, 2026-09-28) : quatre sections
+     `###` neuves — u'·uⁿ, u'·cos u / u'·sin u, primitive sous condition
+     (chapitre 2), F(x) = ∫ₐˣ f (chapitre 2), sommes de Riemann (chapitre 5).
+     SEULES les sommes de Riemann portent une phrase de filière (« au
+     programme de la filière Sciences Mathématiques ; en Sciences
+     Expérimentales, tu peux passer… ») : c'est la seule ligne que le cadre
+     dit spécifique SM en `research-consensus` (maths-sm.yaml:216, et la
+     limite explicite de maths-sexp.yaml). Les formes trigonométriques et la
+     condition initiale ne sont absentes du cadre SExp que dans une ligne
+     `savoir_faire` DÉRIVÉE (« À VALIDER ») ; dire à un élève SExp de sauter
+     la primitive de cos(3x) sur la foi d'une ligne dérivée serait plus
+     coûteux que l'inverse. Point ouvert pour le propriétaire si le cadre
+     SExp est un jour vérifié.
 -->

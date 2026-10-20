@@ -472,6 +472,52 @@ $$E(X) = 0 \times 0{,}32 + 1 \times 0{,}38 + 2 \times 0{,}30 = 0{,}98$$
 
 En revanche, elle doit toujours tomber **entre la plus petite et la plus grande valeur** de $X$. Ici $0 \leq 0{,}98 \leq 2$ : c'est cohérent. Une espérance hors de cet encadrement signale, à coup sûr, une probabilité mal placée dans la somme.
 
+### La variance et l'écart-type : mesurer la dispersion autour de la moyenne
+
+L'espérance donne un centre, mais rien sur la façon dont les valeurs de $X$ se dispersent autour de ce centre. Deux variables aléatoires peuvent partager exactement la même espérance et se comporter très différemment — l'une presque toujours proche de sa moyenne, l'autre s'en éloignant souvent. La **variance** mesure précisément cette dispersion.
+
+**Définition.** La variance de $X$ est la moyenne pondérée des carrés des écarts à l'espérance :
+
+$$V(X) = E\big((X - E(X))^2\big) = \sum_i (x_i - E(X))^2 \, P(X = x_i)$$
+
+**Pourquoi le carré :** un écart $x_i - E(X)$ peut être positif ou négatif, et la moyenne pondérée de ces écarts, sans carré, vaudrait toujours $0$ — les écarts positifs et négatifs s'annuleraient exactement (c'est même ce qui fait de $E(X)$ un centre). Élever chaque écart au carré le rend positif, pour que les grands écarts comme les petits comptent réellement dans la moyenne, au lieu de s'annuler entre eux.
+
+Reprenons le tableau du paragraphe précédent — le nombre $X$ de « oui » aux deux questions, d'espérance $E(X) = 0{,}98$ :
+
+| $x_i$ | $0$ | $1$ | $2$ |
+|--|--|--|--|
+| $P(X = x_i)$ | $0{,}32$ | $0{,}38$ | $0{,}30$ |
+
+$$V(X) = (0 - 0{,}98)^2 \times 0{,}32 + (1 - 0{,}98)^2 \times 0{,}38 + (2 - 0{,}98)^2 \times 0{,}30$$
+
+$$V(X) = 0{,}9604 \times 0{,}32 + 0{,}0004 \times 0{,}38 + 1{,}0404 \times 0{,}30$$
+
+$$V(X) = 0{,}307328 + 0{,}000152 + 0{,}31212 = 0{,}6196$$
+
+#### Un raccourci : la formule de König-Huygens
+
+Calculer chaque écart, l'élever au carré, puis repondérer — c'est trois opérations par valeur de $X$. Il existe une deuxième écriture, qui donne toujours le même nombre :
+
+$$V(X) = E(X^2) - \big(E(X)\big)^2$$
+
+**Ce que fait cette formule :** on calcule l'espérance des carrés des valeurs — $E(X^2)$, ce qui n'est pas $\big(E(X)\big)^2$ — puis on retranche le carré de l'espérance déjà connue. Sur le même tableau :
+
+$$E(X^2) = 0^2 \times 0{,}32 + 1^2 \times 0{,}38 + 2^2 \times 0{,}30 = 0 + 0{,}38 + 1{,}2 = 1{,}58$$
+
+**Prends position avant de lire la suite : avec $E(X) = 0{,}98$ et $E(X^2) = 1{,}58$, que vaut $V(X)$ d'après cette formule ?**
+
+$$V(X) = E(X^2) - \big(E(X)\big)^2 = 1{,}58 - 0{,}98^2 = 1{,}58 - 0{,}9604 = 0{,}6196$$
+
+Exactement le nombre trouvé par la définition, au chiffre près. Les deux routes mènent au même endroit — la seconde est presque toujours la plus rapide, puisqu'elle ne demande qu'une espérance de plus, $E(X^2)$, à côté de $E(X)$ déjà connue.
+
+**Le piège à éviter.** Écrire $V(X) = E(X^2) - E(X)$, en oubliant d'élever l'espérance au carré. Sur cet exemple, ça donnerait $1{,}58 - 0{,}98 = 0{,}60$ — un nombre plausible, dangereusement proche du résultat correct $0{,}6196$, ce qui rend l'erreur difficile à repérer d'un simple coup d'œil sur la grandeur du résultat. La formule retranche $\big(E(X)\big)^2$, **le carré de l'espérance** — jamais $E(X)$ tout seul. Un second réflexe de sécurité, à garder en tête : $V(X)$ est une somme de carrés pondérés par des probabilités, donc **elle ne peut jamais être négative**. Un résultat négatif signale à coup sûr une erreur de calcul — par exemple ce carré oublié.
+
+**L'écart-type.** La variance se mesure dans l'unité de $X$ **au carré** (ici, en « nombre de oui » au carré) — une unité qui ne représente rien de concret. L'**écart-type** ramène la mesure dans l'unité de $X$ elle-même, par une racine carrée :
+
+$$\sigma(X) = \sqrt{V(X)}$$
+
+Sur notre exemple : $\sigma(X) = \sqrt{0{,}6196} \approx 0{,}787$. Ce nombre se compare directement à $E(X) = 0{,}98$, dans la même unité : en moyenne, $X$ s'écarte de son espérance d'environ $0{,}787$ « oui ».
+
 ### Les deux confusions à surveiller
 
 **Confondre la valeur et sa probabilité.** Dans le tableau, la ligne du haut porte des valeurs ($0$, $1$, $2$ — elles peuvent être négatives, valoir $10$, être des gains en dirhams), la ligne du bas des probabilités (toujours entre $0$ et $1$, et de somme $1$). C'est la ligne du bas qui doit sommer à $1$, jamais celle du haut. Et dans $E(X)$, chaque terme est un produit de l'une par l'autre — jamais deux valeurs entre elles, jamais deux probabilités entre elles.
@@ -530,6 +576,12 @@ $$E(X) = n \, p$$
 
 Sur notre urne : $E(X) = 3 \times 0{,}4 = 1{,}2$. Vérifions-le par la définition, pour voir que les deux chemins coïncident : $0 \times 0{,}216 + 1 \times 0{,}432 + 2 \times 0{,}288 + 3 \times 0{,}064 = 0{,}432 + 0{,}576 + 0{,}192 = 1{,}2$. Le résultat se lit d'ailleurs tout seul : sur trois tirages qui réussissent chacun quatre fois sur dix, on attend $1{,}2$ succès.
 
+**La variance d'une loi binomiale** se lit tout aussi directement, sans refaire la somme pondérée du paragraphe précédent :
+
+$$V(X) = n \, p \, (1-p)$$
+
+Sur notre urne : $V(X) = 3 \times 0{,}4 \times 0{,}6 = 0{,}72$, et l'écart-type qui en découle — même définition que plus haut, $\sigma(X) = \sqrt{V(X)}$ — vaut $\sigma(X) = \sqrt{0{,}72} \approx 0{,}849$.
+
 ### Reconnaître la situation : trois conditions, jamais deux
 
 Avant d'écrire « $X$ suit la loi binomiale », vérifie les trois conditions — c'est ce que demande la question « déterminer les paramètres de la variable aléatoire $X$ ».
@@ -583,7 +635,7 @@ Le tableau ci-dessous donne la progression. Chaque palier augmente la demande en
 | **3.** Indépendance | Confronter la contradiction | Distinguer indépendants et incompatibles. Utiliser le critère $P(A \cap B) = P(A) \cdot P(B)$ pour tester. |
 | **4.** Probabilités totales | Travaillé puis guidé | Assembler $P(B)$ à partir des feuilles de l'arbre. Vérifier par encadrement. |
 | **5.** Lecture inverse | Peu d'aide, tu conduis | Identifier les feuilles $B$, former $P(B)$, calculer $P(A|B)$ en divisant par $P(B)$. |
-| **6.** Variable aléatoire et loi binomiale | Travaillé puis guidé | Dresser la loi de $X$ en regroupant les feuilles, contrôler la somme à 1, calculer une espérance. Reconnaître une répétition d'épreuves identiques et indépendantes, et écrire $P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}$. |
+| **6.** Variable aléatoire et loi binomiale | Travaillé puis guidé | Dresser la loi de $X$ en regroupant les feuilles, contrôler la somme à 1, calculer une espérance, une variance et un écart-type. Reconnaître une répétition d'épreuves identiques et indépendantes, et écrire $P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}$, avec $E(X)=np$ et $V(X)=np(1-p)$. |
 | **7.** Questions de bac authentiques | Sans aide | Reconnaître quelle procédure s'applique sur des questions réelles de l'examen national. |
 | **8.** Variations inédites | Sans aide | Appliquer la même logique sur des contextes jamais vus : filtre anti-spam, deux fournisseurs, tirage dans des ensembles différents. Ce que le bac teste vraiment : reconnaître la structure quand le problème est habillé différemment. |
 

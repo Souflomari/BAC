@@ -50,9 +50,18 @@ misconceptions:
   # aux deux chapitres non numérotés « Variable aléatoire » et « La loi
   # binomiale » — sans un seul item derrière. Aucun item ci-dessous ne teste
   # la variance/l'écart-type : le cadre (maths-sexp.yaml:307, maths-sm.yaml:322)
-  # les nomme, mais lesson.md ne les travaille nulle part (grep "variance"
-  # vide) — GAP-A, hors périmètre de ce remboursement GAP-B (prose requise
-  # d'abord). Owner : à statuer séparément.
+  # les nomme, mais lesson.md ne les travaille nulle part à cette date (grep
+  # "variance" vide) — GAP-A, hors périmètre de ce remboursement GAP-B (prose
+  # requise d'abord). Owner : à statuer séparément.
+  #
+  # GAP-A REMBOURSÉ le 2026-09-28 : le content-author a ajouté la section
+  # « La variance et l'écart-type » dans R5b (König-Huygens, $V(X)=E(X^2)-
+  # (E(X))^2$, $\sigma(X)=\sqrt{V(X)}$) et la variance binomiale $V(X)=np(1-p)$
+  # dans R5c. Voir les misconceptions M23-M24 (variance-carre-de-moyenne-
+  # oublie, ecart-type-variance-confondus) et les items PC-M23-1..4 plus bas.
+  # La note « PÉRIMÈTRE » historique (au fil des items M9-M15) est corrigée
+  # au même endroit plutôt que supprimée, pour garder la trace de la dette
+  # telle qu'elle a existé entre le 2026-09-27 et le 2026-09-28.
   - id: mc.math.sma_prob_conditionnelle.va-chemins-non-rassembles
     label: "« Un seul chemin compte pour P(X=x_i) »"
     description: "En construisant la loi de $X$, l'élève ne retient qu'UN SEUL chemin de l'arbre menant à la valeur $x_i$, alors qu'un autre chemin peut donner la même valeur — il oublie de rassembler toutes les feuilles concernées avant de sommer."
@@ -129,6 +138,25 @@ misconceptions:
     label: "« P(X≥1) confondu avec E(X)=np »"
     description: "Pour répondre à $P(X\\geq1)$, l'élève calcule $n\\times p$ — la formule de l'espérance d'une loi binomiale — en confondant une probabilité (bornée par $1$) avec une espérance (un nombre de succès attendu, qui peut dépasser $1$)."
     contradicts_principle: "$E(X)=np$ et $P(X\\geq1)=1-(1-p)^n$ répondent à deux questions différentes : « combien de succès en moyenne ? » contre « quelle probabilité d'au moins un succès ? ». La première n'est pas bornée par $1$ ; la seconde l'est toujours, par définition d'une probabilité."
+
+  # ── M23-M24 : ajoutés le 2026-09-28, remboursement GAP-A ───────────────────
+  # (voir les notes « PÉRIMÈTRE » et « GAP-A REMBOURSÉ » au fil des items
+  # M9-M15 ci-dessus) : le content-author a ajouté la section « La variance
+  # et l'écart-type » dans R5b (König-Huygens) et la variance binomiale dans
+  # R5c à lesson.md. Ces deux ids couvrent les erreurs propres à CE contenu ;
+  # deux distracteurs des items PC-M23 réutilisent en plus, honnêtement,
+  # des ids déjà déclarés (esperance-sans-ponderation, binomiale-oubli-echec)
+  # quand le MÊME réflexe se reproduit sur une étape de calcul de la variance
+  # — voir le commentaire au fil de chaque item pour la justification exacte.
+  - id: mc.math.sma_prob_conditionnelle.variance-carre-de-moyenne-oublie
+    label: "« V(X) = E(X²) − E(X), le carré de l'espérance oublié »"
+    description: "En appliquant la formule de König-Huygens, l'élève retranche l'espérance $E(X)$ elle-même au lieu de son carré $\\big(E(X)\\big)^2$ — un résultat plausible, souvent proche de la bonne réponse, ce qui rend l'erreur difficile à repérer sur le seul ordre de grandeur du résultat."
+    contradicts_principle: "$V(X) = E(X^2) - \\big(E(X)\\big)^2$ : le second terme est le CARRÉ de l'espérance, jamais l'espérance elle-même. $V(X)$ est par ailleurs une somme de carrés pondérés par des probabilités, donc elle ne peut jamais être négative — un résultat négatif signale à coup sûr cet oubli du carré."
+
+  - id: mc.math.sma_prob_conditionnelle.ecart-type-variance-confondus
+    label: "« σ(X) et V(X) sont interchangeables »"
+    description: "L'élève traite la variance et l'écart-type comme deux notations du même nombre, ou comme reliés par une division par $2$ plutôt que par une racine carrée : il répond $\\sigma(X)=V(X)$, ou $\\sigma(X)=\\dfrac{V(X)}{2}$, ou rapporte l'une des deux grandeurs quand l'autre est demandée."
+    contradicts_principle: "L'écart-type est défini par $\\sigma(X)=\\sqrt{V(X)}$ — une racine carrée, jamais une égalité ni une division par $2$. Les deux grandeurs portent aussi des unités différentes : $V(X)$ se mesure dans l'unité de $X$ au carré, $\\sigma(X)$ dans l'unité de $X$ elle-même — deux nombres distincts qui répondent à deux questions différentes (la dispersion en unité au carré, contre l'écart typique dans l'unité d'origine)."
 
 items:
 
@@ -1748,10 +1776,23 @@ items:
   # lue par le validateur et par le rendu depuis ce jour), qui suivent R5 dans
   # l'ordre de la leçon et ne touchent pas à la dette R6/R7.
   #
-  # PÉRIMÈTRE : aucun item sur la variance / l'écart-type — le cadre les nomme
-  # (maths-sexp.yaml:307, maths-sm.yaml:322) mais lesson.md ne les travaille
-  # nulle part (GAP-A, pas GAP-B ; hors périmètre de ce remboursement, qui ne
-  # paie que ce qui est déjà TRAVAILLÉ).
+  # PÉRIMÈTRE, mesuré le 2026-09-27 : aucun item sur la variance / l'écart-type
+  # — le cadre les nomme (maths-sexp.yaml:307, maths-sm.yaml:322) mais
+  # lesson.md ne les travaille nulle part (GAP-A, pas GAP-B ; hors périmètre
+  # de ce remboursement, qui ne paie que ce qui est déjà TRAVAILLÉ).
+  #
+  # DEVENU FAUX le 2026-09-28 : le content-author a ajouté la section
+  # « La variance et l'écart-type » à la fin de R5b (loi à 3 valeurs,
+  # $V(X)=E\big((X-E(X))^2\big)=E(X^2)-(E(X))^2$ par König-Huygens,
+  # $\sigma(X)=\sqrt{V(X)}$) et la variance binomiale $V(X)=np(1-p)$ dans
+  # R5c. GAP-A est maintenant remboursé par PC-M23-1..4 (misconceptions
+  # M23 · variance-carre-de-moyenne-oublie, M24 · ecart-type-variance-
+  # confondus, déclarées plus haut ; deux distracteurs supplémentaires
+  # réutilisent honnêtement esperance-sans-ponderation et binomiale-oubli-
+  # echec — voir le commentaire au fil de ces items pour la justification
+  # de chaque réutilisation). Cette note reste ici, corrigée plutôt que
+  # supprimée, pour que la trace de la dette telle qu'elle a existé entre
+  # le 2026-09-27 et le 2026-09-28 reste lisible.
 
   # ── va-chemins-non-rassembles + va-valeurs-equiprobables +
   # va-valeur-confondue ────────────────────────────────────────────────────────
@@ -2670,8 +2711,312 @@ items:
     solution: |
       $$P(X \geq 1) = 1 - (1-p)^6 = 1 - 0{,}9^6 = 1 - 0{,}531441 \approx 0{,}469$$
 
+  # ══════════════════════════════════════════════════════════════════════════
+  # M23-M24 · variance-carre-de-moyenne-oublie + ecart-type-variance-confondus
+  # — remboursement GAP-A (2026-09-28). La leçon a ajouté « La variance et
+  # l'écart-type » (R5b) et la variance binomiale $V(X)=np(1-p)$ (R5c) —
+  # jusqu'ici travaillées mais jamais testées (voir les notes « PÉRIMÈTRE »
+  # et « GAP-A REMBOURSÉ » au fil des items M9-M15).
+  #
+  # Lois neuves : PC-M23-1 (1, 2, 4 avec 0,3/0,5/0,2) et PC-M23-2 (1, 2, 3
+  # avec 0,2/0,5/0,3) ne réutilisent ni la loi du cours (0, 1, 2 avec
+  # 0,32/0,38/0,30), ni celles de bank.yaml/exercises.yaml (0,1,2,4 avec
+  # 1/3,1/3,1/4,1/12 ; 2,3,4,5,6 avec 1/4,5/16,1/4,1/8,1/16) — grep vérifié
+  # avant écriture.
+  #
+  # Deux distracteurs réutilisent des ids déjà déclarés, honnêtement, quand
+  # le MÊME réflexe reproduit ailleurs dans le cours se reproduit ici sur une
+  # étape du calcul de la variance :
+  #   - esperance-sans-ponderation (PC-M23-1, PC-M23-2) :
+  #     $E(X^2)$ calculée comme une moyenne NON pondérée des carrés — le
+  #     même réflexe que pour $E(X)$, une étape plus loin.
+  #   - binomiale-oubli-echec (PC-M23-3) : le facteur $(1-p)$
+  #     disparaît de $V(X)=np(1-p)$ — le même réflexe que pour $P(X=k)=
+  #     \binom{n}{k}p^k(1-p)^{n-k}$, sur une autre formule du même chapitre.
+  # Ces deux réutilisations sont EXPLICITÉES dans le feedback de chaque
+  # choix concerné plutôt que silencieuses, pour rester auditables.
+  - id: PC-M23-1
+    rung: "R5b"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, variable_aleatoire, variance]
+    stem: >
+      Une variable aléatoire $X$ prend les valeurs $1$, $2$ et $4$ avec les
+      probabilités respectives $0{,}3$ ; $0{,}5$ et $0{,}2$. Que vaut la
+      variance $V(X)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$1{,}09$"
+        correct: true
+      - id: B
+        text: "$3{,}4$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.variance-carre-de-moyenne-oublie
+        also_reveals: []
+        feedback: >
+          Ce choix calcule $E(X^2)-E(X)=5{,}5-2{,}1=3{,}4$, en retranchant
+          l'espérance elle-même au lieu de son carré. La formule de
+          König-Huygens retranche $\big(E(X)\big)^2=2{,}1^2=4{,}41$, pas
+          $E(X)=2{,}1$. Modèle erroné : « $V(X)=E(X^2)-E(X)$, le carré de
+          l'espérance oublié ».
+      - id: C
+        text: "$2{,}59$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.esperance-sans-ponderation
+        also_reveals: []
+        feedback: >
+          Ce choix calcule $E(X^2)$ comme une moyenne simple des carrés,
+          $\dfrac{1^2+2^2+4^2}{3}=7$, sans les pondérer par leurs
+          probabilités $0{,}3$ ; $0{,}5$ ; $0{,}2$ — le même réflexe que pour
+          $E(X)$, appliqué ici à $E(X^2)$. Puis $V(X)=7-2{,}1^2=2{,}59$, un
+          résultat qui hérite de cette première erreur. Modèle erroné : une
+          espérance calculée comme une moyenne NON pondérée.
+      - id: D
+        text: "$\\approx 1{,}044$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.ecart-type-variance-confondus
+        also_reveals: []
+        feedback: >
+          Ce choix calcule $\sqrt{1{,}09}\approx 1{,}044$ : c'est
+          l'écart-type $\sigma(X)$, pas la variance $V(X)$ qui est
+          demandée. $V(X)$ et $\sigma(X)$ sont deux nombres différents,
+          reliés par une racine carrée — répondre avec l'un quand l'autre
+          est demandé n'est pas la même chose que se tromper de calcul.
+          Modèle erroné : variance et écart-type confondus.
+    correct_feedback: >
+      $E(X)=1\times0{,}3+2\times0{,}5+4\times0{,}2=0{,}3+1{,}0+0{,}8=2{,}1$.
+      $E(X^2)=1\times0{,}3+4\times0{,}5+16\times0{,}2=0{,}3+2{,}0+3{,}2=5{,}5$.
+      $V(X)=E(X^2)-\big(E(X)\big)^2=5{,}5-2{,}1^2=5{,}5-4{,}41=1{,}09$.
+    solution: |
+      **Étape 1 — Espérance :**
+      $$E(X) = 1\times0{,}3 + 2\times0{,}5 + 4\times0{,}2 = 0{,}3+1{,}0+0{,}8 = 2{,}1$$
+
+      **Étape 2 — Espérance des carrés :**
+      $$E(X^2) = 1^2\times0{,}3 + 2^2\times0{,}5 + 4^2\times0{,}2 = 0{,}3+2{,}0+3{,}2 = 5{,}5$$
+
+      **Étape 3 — König-Huygens :**
+      $$V(X) = E(X^2) - \big(E(X)\big)^2 = 5{,}5 - 2{,}1^2 = 5{,}5 - 4{,}41 = 1{,}09$$
+
+      **Contrôle :** $V(X)=1{,}09 \geq 0$ ✓.
+
+  - id: PC-M23-2
+    rung: "R5b"
+    habilete: application_directe
+    difficulty_level: 4
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, variable_aleatoire, variance]
+    stem: >
+      Le temps d'attente $X$ (en minutes) à un guichet suit la loi de
+      probabilité suivante : $P(X=1)=0{,}2$, $P(X=2)=0{,}5$, $P(X=3)=0{,}3$.
+      Que vaut l'écart-type $\sigma(X)$, avec son interprétation ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\sigma(X) = 0{,}7$ minute : en moyenne, le temps d'attente
+          s'écarte d'environ $0{,}7$ minute de son espérance.
+        correct: true
+      - id: B
+        text: >-
+          $\sigma(X) \approx 1{,}673$ minute : en moyenne, le temps
+          d'attente s'écarte d'environ $1{,}673$ minute de son espérance.
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.variance-carre-de-moyenne-oublie
+        also_reveals: []
+        feedback: >
+          Ce choix calcule $V(X)$ par $E(X^2)-E(X)=4{,}9-2{,}1=2{,}8$, en
+          retranchant l'espérance au lieu de son carré, puis prend la
+          racine carrée de ce résultat déjà faux. La formule de
+          König-Huygens retranche $\big(E(X)\big)^2=4{,}41$, pas
+          $E(X)=2{,}1$. Modèle erroné : le carré de l'espérance oublié
+          dans le calcul de $V(X)$.
+      - id: C
+        text: >-
+          $\sigma(X) = 0{,}49$ minute : en moyenne, le temps d'attente
+          s'écarte d'environ $0{,}49$ minute de son espérance.
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.ecart-type-variance-confondus
+        also_reveals: []
+        feedback: >
+          Ce choix retourne $V(X)=0{,}49$ directement, sans appliquer la
+          racine carrée qui mène à $\sigma(X)$. $V(X)$ se mesure en
+          minutes$^2$, une unité qui ne représente rien de concret ;
+          $\sigma(X)=\sqrt{V(X)}$ ramène la mesure en minutes, l'unité de
+          $X$ elle-même. Modèle erroné : variance et écart-type confondus.
+      - id: D
+        text: >-
+          $\sigma(X) \approx 0{,}507$ minute : en moyenne, le temps
+          d'attente s'écarte d'environ $0{,}507$ minute de son espérance.
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.esperance-sans-ponderation
+        also_reveals: []
+        feedback: >
+          Ce choix calcule $E(X^2)$ comme une moyenne simple des carrés,
+          $\dfrac{1^2+2^2+3^2}{3}=\dfrac{14}{3}\approx 4{,}667$, sans les
+          pondérer par $0{,}2$ ; $0{,}5$ ; $0{,}3$ — le même réflexe que
+          pour $E(X)$. La variance qui en découle, puis sa racine carrée,
+          héritent de cette première erreur. Modèle erroné : une espérance
+          calculée comme une moyenne NON pondérée.
+    correct_feedback: >
+      $E(X)=1\times0{,}2+2\times0{,}5+3\times0{,}3=0{,}2+1{,}0+0{,}9=2{,}1$.
+      $E(X^2)=1\times0{,}2+4\times0{,}5+9\times0{,}3=0{,}2+2{,}0+2{,}7=4{,}9$.
+      $V(X)=4{,}9-2{,}1^2=4{,}9-4{,}41=0{,}49$. Donc
+      $\sigma(X)=\sqrt{0{,}49}=0{,}7$ minute.
+    solution: |
+      **Étape 1 — Espérance :**
+      $$E(X) = 1\times0{,}2 + 2\times0{,}5 + 3\times0{,}3 = 0{,}2+1{,}0+0{,}9 = 2{,}1$$
+
+      **Étape 2 — Espérance des carrés :**
+      $$E(X^2) = 1^2\times0{,}2 + 2^2\times0{,}5 + 3^2\times0{,}3 = 0{,}2+2{,}0+2{,}7 = 4{,}9$$
+
+      **Étape 3 — Variance, par König-Huygens :**
+      $$V(X) = E(X^2) - \big(E(X)\big)^2 = 4{,}9 - 2{,}1^2 = 4{,}9 - 4{,}41 = 0{,}49$$
+
+      **Étape 4 — Écart-type :**
+      $$\sigma(X) = \sqrt{V(X)} = \sqrt{0{,}49} = 0{,}7 \text{ minute}$$
+
+      Ce nombre se compare directement à $E(X)=2{,}1$ minutes, dans la
+      même unité : le temps d'attente s'écarte en moyenne de $0{,}7$
+      minute de son espérance.
+
+  - id: PC-M23-3
+    rung: "R5c"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, loi_binomiale, variance]
+    stem: >
+      On répète $n=8$ fois, de façon indépendante, une expérience de
+      Bernoulli de paramètre $p=0{,}25$. Soit $X$ le nombre de succès
+      obtenus. Que vaut la variance $V(X)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$1{,}5$"
+        correct: true
+      - id: B
+        text: "$2$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.binomiale-oubli-echec
+        also_reveals: []
+        feedback: >
+          Ce choix calcule $n\times p=8\times0{,}25=2$, en oubliant
+          complètement le facteur $(1-p)=0{,}75$ dans $V(X)=np(1-p)$ — le
+          même réflexe que celui qui fait écrire $P(X=k)=\binom{n}{k}p^k$
+          sans le facteur d'échec $(1-p)^{n-k}$, ici appliqué à la
+          variance plutôt qu'à $P(X=k)$. Modèle erroné : un facteur de la
+          formule qui disparaît entièrement.
+      - id: C
+        text: "$\\approx 1{,}225$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.ecart-type-variance-confondus
+        also_reveals: []
+        feedback: >
+          Ce choix calcule $\sqrt{np(1-p)}=\sqrt{1{,}5}\approx1{,}225$ :
+          c'est $\sigma(X)$, pas $V(X)$ qui est demandée ici. La variance
+          $V(X)=np(1-p)$ ne demande aucune racine carrée ; c'est
+          l'écart-type qui s'obtient ensuite par $\sigma(X)=\sqrt{V(X)}$.
+          Modèle erroné : variance et écart-type confondus.
+      - id: D
+        text: "$0{,}75$"
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.ecart-type-variance-confondus
+        also_reveals: []
+        feedback: >
+          Ce choix divise $np(1-p)=1{,}5$ par $2$, comme si l'écart-type
+          (ou une variante de la variance) s'obtenait par une simple
+          division par $2$. La relation exacte entre les deux grandeurs
+          est une racine carrée, $\sigma(X)=\sqrt{V(X)}$ — jamais une
+          division par $2$. Modèle erroné : variance et écart-type
+          confondus.
+    correct_feedback: >
+      $V(X)=np(1-p)=8\times0{,}25\times0{,}75=1{,}5$.
+    solution: |
+      **Conditions du schéma de Bernoulli vérifiées :** $n=8$ répétitions
+      indépendantes, même probabilité de succès $p=0{,}25$ à chaque fois.
+
+      $$V(X) = np(1-p) = 8 \times 0{,}25 \times 0{,}75 = 1{,}5$$
+
+      **Contrôle :** $V(X)=1{,}5 \geq 0$ ✓.
+
+  - id: PC-M23-4
+    rung: "R5b"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: sma_prob_conditionnelle
+    tags: [misconception_driven, sma_prob_conditionnelle, variable_aleatoire, variance]
+    stem: >
+      $X$ est une variable aléatoire, d'espérance $E(X)$, de variance
+      $V(X)$ et d'écart-type $\sigma(X)$. Laquelle de ces paires de
+      formules est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $V(X) = E(X^2) - \big(E(X)\big)^2$ et
+          $\sigma(X) = \sqrt{V(X)}$
+        correct: true
+      - id: B
+        text: >-
+          $V(X) = E(X^2) - E(X)$ et
+          $\sigma(X) = \sqrt{V(X)}$
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.variance-carre-de-moyenne-oublie
+        also_reveals: []
+        feedback: >
+          La formule de König-Huygens retranche le CARRÉ de l'espérance,
+          $\big(E(X)\big)^2$, jamais l'espérance elle-même. Un résultat
+          négatif issu de cette formule fautive n'est d'ailleurs pas
+          anodin : $V(X)$, la vraie variance, est une somme de carrés
+          pondérés par des probabilités, donc elle ne peut jamais être
+          négative. Modèle erroné : le carré de l'espérance oublié.
+      - id: C
+        text: >-
+          $V(X) = E(X^2) - \big(E(X)\big)^2$ et
+          $\sigma(X) = V(X)$
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.ecart-type-variance-confondus
+        also_reveals: []
+        feedback: >
+          $V(X)$ et $\sigma(X)$ sont deux nombres distincts, reliés par
+          une racine carrée : $\sigma(X)=\sqrt{V(X)}$. Ils portent aussi
+          des unités différentes — $V(X)$ dans l'unité de $X$ au carré,
+          $\sigma(X)$ dans l'unité de $X$ elle-même — ce qui montre bien
+          qu'ils ne désignent pas le même nombre. Modèle erroné :
+          variance et écart-type confondus.
+      - id: D
+        text: >-
+          $V(X) = E(X^2) - \big(E(X)\big)^2$ et
+          $\sigma(X) = \big(V(X)\big)^2$
+        correct: false
+        misconception: mc.math.sma_prob_conditionnelle.ecart-type-variance-confondus
+        also_reveals: []
+        feedback: >
+          La relation va dans l'autre sens : c'est la variance qui est
+          le carré de l'écart-type, donc $\sigma(X)=\sqrt{V(X)}$. Sur
+          l'exemple du cours, $V(X)=0{,}6196$ donne
+          $\sigma(X)=\sqrt{0{,}6196}\approx 0{,}787$, alors que
+          $0{,}6196^2\approx 0{,}384$. Modèle erroné : variance et
+          écart-type confondus.
+    correct_feedback: >
+      $V(X) = E(X^2) - \big(E(X)\big)^2$ est la formule de König-Huygens,
+      et $V(X)$, une somme de carrés pondérés par des probabilités, ne
+      peut jamais être négative — un résultat négatif signale toujours
+      une erreur de calcul.
+    solution: |
+      **La définition et son raccourci :**
+      $$V(X) = E\big((X-E(X))^2\big) = \sum_i (x_i-E(X))^2 P(X=x_i) = E(X^2) - \big(E(X)\big)^2$$
+
+      Chaque terme de la somme est un carré pondéré par une probabilité
+      (donc positif ou nul), donc $V(X) \geq 0$ pour toute variable
+      aléatoire $X$ — un résultat négatif signale nécessairement une
+      erreur de calcul, typiquement l'oubli du carré dans
+      $\big(E(X)\big)^2$.
+
 coverage_summary:
-  total_items: 42   # was 27; +15 on 2026-09-27, DETTE-EXAMEN GAP-B repayment (VA + loi binomiale)
+  total_items: 46   # was 27; +15 on 2026-09-27 (GAP-B: VA + loi binomiale); +4 on 2026-09-28 (GAP-A: variance + écart-type, PC-M23-1..4)
   per_rung:
     R0: 3   # PC-M1-4, PC-M1-5, PC-M1-6 — accroche, lighter comprehension/prediction, confronts M1 (spec §2)
     R1: 2
@@ -2703,8 +3048,8 @@ coverage_summary:
     # dette de ce bloc.
     R6: 1   # PC-M1-3 — INATTEIGNABLE (pas de 7e chapitre) — dette inchangée
     R7: 2   # PC-M8-2, PC-M8-3 — INATTEIGNABLES (pas de 8e chapitre) — dette inchangée
-    R5b: 6   # PC-M9-1..3 (loi de X), PC-M11-1..3 (E(X)) — barreau réel, chapitre « ## R5b — »
-    R5c: 9   # PC-M12-1..3 (P(X=k)), PC-M13-1..3 (reconnaissance), PC-M14-1..3 (P(X>=1)) — barreau réel, chapitre « ## R5c — »
+    R5b: 9   # PC-M9-1..3 (loi de X), PC-M11-1..3 (E(X)), PC-M23-1/2/4 (V(X), σ(X), ajouté 2026-09-28) — barreau réel, chapitre « ## R5b — »
+    R5c: 10  # PC-M12-1..3 (P(X=k)), PC-M13-1..3 (reconnaissance), PC-M14-1..3 (P(X>=1)), PC-M23-3 (V(X) binomiale, ajouté 2026-09-28) — barreau réel, chapitre « ## R5c — »
   per_misconception:
     mc.math.sma_prob_conditionnelle.transpose-conditionnel: 6          # PC-M1-1, PC-M1-2, PC-M1-3 (R5/R7 canonical family) + PC-M1-4, PC-M1-5, PC-M1-6 (R0 accroche, lighter — ceiling of 6 per spec §5 "do not exceed 6")
     mc.math.sma_prob_conditionnelle.conditionnelle-egale-intersection: 3  # PC-M2-1, PC-M2-2, PC-M2-3 (also appears as a secondary, non-counted distractor on PC-M1-4/5/6 and PC-M8-2 — see dual/secondary notes)
@@ -2717,7 +3062,7 @@ coverage_summary:
     # Ajoutés le 2026-09-27 — GAP-B (variable aléatoire, loi binomiale) :
     mc.math.sma_prob_conditionnelle.va-chemins-non-rassembles: 3       # PC-M9-1, PC-M9-2, PC-M9-3
     mc.math.sma_prob_conditionnelle.va-valeurs-equiprobables: 3        # PC-M9-1, PC-M9-2, PC-M9-3 (shares the same 3 items — distinct choice per item)
-    mc.math.sma_prob_conditionnelle.esperance-sans-ponderation: 3      # PC-M11-1, PC-M11-2, PC-M11-3
+    mc.math.sma_prob_conditionnelle.esperance-sans-ponderation: 5      # PC-M11-1, PC-M11-2, PC-M11-3 + PC-M23-1, PC-M23-2 — même réflexe, réutilisé sur E(X^2) (2026-09-28)
     mc.math.sma_prob_conditionnelle.binomiale-oubli-coefficient: 3     # PC-M12-1, PC-M12-2, PC-M12-3
     mc.math.sma_prob_conditionnelle.binomiale-hors-cadre: 6            # PC-M13-1/2/3, deux choix chacun (« oui » avec n/p ajusté, deux variantes du même modèle)
     mc.math.sma_prob_conditionnelle.binomiale-complement-echec: 3      # PC-M14-1, PC-M14-2, PC-M14-3
@@ -2729,12 +3074,17 @@ coverage_summary:
     mc.math.sma_prob_conditionnelle.va-valeur-confondue: 3                    # PC-M9-1, PC-M9-2, PC-M9-3 (3e choix, distinct du choix M9/M10)
     mc.math.sma_prob_conditionnelle.esperance-terme-omis: 3                   # PC-M11-1, PC-M11-2, PC-M11-3
     mc.math.sma_prob_conditionnelle.esperance-associations-inversees: 3       # PC-M11-1, PC-M11-2, PC-M11-3
-    mc.math.sma_prob_conditionnelle.binomiale-oubli-echec: 3                  # PC-M12-1, PC-M12-2, PC-M12-3
+    mc.math.sma_prob_conditionnelle.binomiale-oubli-echec: 4                  # PC-M12-1, PC-M12-2, PC-M12-3 + PC-M23-3 — même réflexe (un facteur du produit disparaît), réutilisé sur V(X)=np(1-p) (2026-09-28)
     mc.math.sma_prob_conditionnelle.binomiale-condition-erronee: 3            # PC-M13-1, PC-M13-2, PC-M13-3
     mc.math.sma_prob_conditionnelle.binomiale-au-moins-un-confondu-p: 3       # PC-M14-1, PC-M14-2, PC-M14-3
     mc.math.sma_prob_conditionnelle.binomiale-au-moins-un-np-confondu: 3      # PC-M14-1, PC-M14-2, PC-M14-3
-  floor_met: true   # all 22 misconceptions have >= 3 items; transpose-conditionnel is at the 6-item ceiling (spec §5), none exceed it
-  distractors_without_misconception: 0   # in PC-M9..PC-M14 (the items authored 2026-09-27); older items (M1-M8, R0) still carry pre-existing `misconception: null` distractors, out of this repayment's scope
+    # Ajoutés le 2026-09-28 — GAP-A (variance, écart-type) : voir les notes
+    # « PÉRIMÈTRE » et « GAP-A REMBOURSÉ » au fil des items M9-M15, et le
+    # commentaire de tête des items PC-M23-1..4.
+    mc.math.sma_prob_conditionnelle.variance-carre-de-moyenne-oublie: 3       # PC-M23-1, PC-M23-2, PC-M23-4
+    mc.math.sma_prob_conditionnelle.ecart-type-variance-confondus: 6          # PC-M23-1, PC-M23-2, PC-M23-3 (2 manifestations dans le même item, comme binomiale-hors-cadre sur PC-M13), PC-M23-4 (deux aussi, même motif) — 6 occurrences sur 4 items
+  floor_met: true   # all 24 misconceptions have >= 3 items; transpose-conditionnel is at the 6-item ceiling (spec §5), none exceed it
+  distractors_without_misconception: 0   # in PC-M9..PC-M14 (2026-09-27) and PC-M23-1..4 (2026-09-28); older items (M1-M8, R0) still carry pre-existing `misconception: null` distractors, out of these repayments' scope
 
   dual_tagged_distractors:
     # M4 <-> M5 family: "0" and "0,9" on independence-overlap stems

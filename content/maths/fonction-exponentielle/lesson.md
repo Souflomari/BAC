@@ -334,6 +334,88 @@ $$\lim_{x \to +\infty} \big(e^x - x\big) = +\infty$$
 
 [[checkpoint:cp-r4-asymptote]]
 
+### Exponentielle de base $a$
+
+Au chapitre 3, $e^n$ (entier) a été étendu à $e^x$ (réel quelconque) en posant $e^x := \exp(x)$ — une convention justifiée par le fait que $\exp$ coïncide avec la puissance ordinaire sur les entiers. La même idée s'applique à n'importe quelle autre base strictement positive.
+
+**Définition.** Pour tout réel $a>0$ et tout réel $x$ :
+
+$$a^x := e^{x\ln a}$$
+
+**Pourquoi cette définition prolonge bien la puissance ordinaire :** pour un entier $n$, la propriété de la puissance de $\ln$ (leçon précédente, chapitre 3) donne $\ln(a^n) = n\ln(a)$. En appliquant $\exp$ aux deux membres (licite, car $a^n>0$) et en utilisant l'identité $\exp(\ln(t))=t$ (chapitre 2) :
+
+$$a^n = \exp\big(\ln(a^n)\big) = \exp\big(n\ln(a)\big) = e^{n\ln a}$$
+
+La formule $a^x=e^{x\ln a}$ redonne donc exactement la puissance entière ordinaire quand $x=n$ est entier : ce n'est pas une notation nouvelle sans lien avec l'ancienne, c'est son prolongement à tous les réels $x$.
+
+**Pourquoi $a>0$ est indispensable :** la définition repose sur $\ln(a)$, qui n'existe que pour $a>0$. Pour $a\leq0$, $\ln(a)$ n'a pas de sens, donc $a^x$ n'est tout simplement **pas défini** par cette construction — il n'y a rien à corriger, l'expression n'existe pas.
+
+**Domaine et signe.** $a^x=e^{x\ln a}$ est de la forme $e^{(\cdot)}$ : elle est donc définie pour tout réel $x$, et strictement positive pour tout réel $x$ — exactement comme $e^x$ lui-même (chapitre 2).
+
+**Prends position avant de lire la suite :** d'après toi, est-ce que $(a^x)' = x\cdot a^{x-1}$, comme pour une fonction puissance $x^n$ dont on dérive l'exposant ?
+
+Calcule pour de bon, avant de trancher. $a^x = e^{u(x)}$ avec $u(x) = x\ln a$, donc $u'(x) = \ln a$ (une constante, puisque $a$ est fixé). Par la règle $(e^u)'=u'e^u$ (chapitre 4) :
+
+$$(a^x)' = \ln(a) \times a^x$$
+
+**Le piège à éviter.** $x\cdot a^{x-1}$ est faux, et c'est l'erreur la plus fréquente sur cette formule : cette expression est la règle de dérivation d'une puissance dont la **base varie et l'exposant est fixe** ($x^n$, de dérivée $nx^{n-1}$) — ici c'est l'inverse, la **base $a$ est fixe et l'exposant $x$ varie**. Les deux situations n'ont rien à voir, et leurs dérivées non plus. Vérifie sur un cas concret, $a=2$ et $x=3$ : la vraie dérivée en $x=3$ vaut $\ln(2)\times2^3 = 8\ln(2) \approx 8\times0{,}693 \approx 5{,}55$, alors que la formule fautive donnerait $3\times2^2=12$ — même pas le même ordre de grandeur.
+
+**Variations, selon le signe de $\ln(a)$.** Comme $a^x>0$ toujours, le signe de $(a^x)' = \ln(a)\times a^x$ est exactement celui de $\ln(a)$ : si $a>1$, $\ln(a)>0$ (leçon précédente, chapitre 2), donc $a^x$ est strictement **croissante** sur $\mathbb{R}$ ; si $0<a<1$, $\ln(a)<0$ (même référence), donc $a^x$ est strictement **décroissante** sur $\mathbb{R}$.
+
+**Limites.** Poser $X=x\ln a$ ramène tout aux limites de $e^X$ déjà établies plus haut dans ce chapitre : $e^X\to+\infty$ quand $X\to+\infty$, et $e^X\to0$ quand $X\to-\infty$. Si $a>1$ ($\ln a>0$) : quand $x\to+\infty$, $X=x\ln a\to+\infty$, donc $a^x\to+\infty$ ; quand $x\to-\infty$, $X\to-\infty$, donc $a^x\to0$. Si $0<a<1$ ($\ln a<0$) : les deux limites s'échangent — $a^x\to0$ quand $x\to+\infty$, $a^x\to+\infty$ quand $x\to-\infty$. Ces quatre cas se retiennent d'un seul geste : $a^x$ tend toujours vers $+\infty$ du côté où $x\ln a$ tend vers $+\infty$, et vers $0$ de l'autre côté — jamais l'inverse.
+
+### Fonctions puissances $x^\alpha$
+
+Cette section et les deux suivantes sont au programme de la filière Sciences Mathématiques ; en Sciences Expérimentales, tu peux passer directement au chapitre suivant.
+
+Symétriquement, on peut laisser la base $x$ varier et fixer l'exposant à un réel $\alpha$ quelconque — pas seulement un entier.
+
+**Définition.** Pour tout réel $\alpha$ et tout réel $x>0$ :
+
+$$x^\alpha := e^{\alpha\ln x}$$
+
+**Domaine :** contrairement à $a^x$ (défini sur $\mathbb{R}$ tout entier), $x^\alpha$ exige $x>0$, puisque la définition repose sur $\ln(x)$ — il n'y a en revanche aucune restriction sur $\alpha$, qui peut être n'importe quel réel, y compris négatif ou non entier.
+
+**Dérivée.** $x^\alpha = e^{u(x)}$ avec $u(x)=\alpha\ln x$, donc $u'(x) = \dfrac{\alpha}{x}$. Par la règle $(e^u)'=u'e^u$ (chapitre 4) :
+
+$$(x^\alpha)' = \frac{\alpha}{x}\times e^{\alpha\ln x} = \frac{\alpha}{x}\times x^\alpha$$
+
+$$(x^\alpha)' = \alpha\, x^{\alpha-1}$$
+
+C'est exactement la règle de dérivation des puissances que tu appliques depuis longtemps pour $\alpha$ entier — sauf qu'elle est ici établie pour **n'importe quel réel** $\alpha$, entier ou non.
+
+**Variations, selon le signe de $\alpha$.** Sur $]0,+\infty[$, $x^\alpha>0$ toujours, donc le signe de $(x^\alpha)' = \frac{\alpha}{x}x^\alpha$ est celui de $\alpha$ (car $\frac1x>0$ et $x^\alpha>0$) : si $\alpha>0$, $x^\alpha$ est strictement **croissante** sur $]0,+\infty[$ ; si $\alpha<0$, $x^\alpha$ est strictement **décroissante** sur $]0,+\infty[$.
+
+**Limites en $0^+$ et en $+\infty$.** Pose $X=\alpha\ln x$. Quand $x\to0^+$, $\ln x\to-\infty$ (leçon précédente, chapitre 5) ; quand $x\to+\infty$, $\ln x\to+\infty$ (même référence). Si $\alpha>0$ : en $0^+$, $X\to-\infty$, donc $x^\alpha\to0$ ; en $+\infty$, $X\to+\infty$, donc $x^\alpha\to+\infty$. Si $\alpha<0$ : les deux s'échangent — $x^\alpha\to+\infty$ en $0^+$, $x^\alpha\to0$ en $+\infty$.
+
+### La racine $n$-ième, un cas particulier de $x^\alpha$
+
+Prends $\alpha = \dfrac1n$, pour un entier $n\geq2$. La fonction $x\mapsto x^{1/n}$ est, par définition, la **racine $n$-ième** de $x$, notée $\sqrt[n]{x}$ — le réel positif dont la puissance $n$-ième redonne $x$. Elle hérite de tout ce qu'on vient d'établir, avec $\alpha=\frac1n>0$ : strictement croissante sur $]0,+\infty[$, de dérivée
+
+$$\big(x^{1/n}\big)' = \frac1n\, x^{\frac1n-1}$$
+
+**Exemple de calcul.** Vérifie que $8^{1/3}$, calculé avec cette définition, redonne bien la racine cubique usuelle. $8=2^3$, donc $\ln(8) = 3\ln(2)$ (propriétés de $\ln$, leçon précédente, chapitre 3), et :
+
+$$8^{1/3} = e^{\frac13\ln 8} = e^{\frac13\times3\ln(2)} = e^{\ln(2)} = 2$$
+
+On retrouve bien $\sqrt[3]{8}=2$ : la définition par $e^{\alpha\ln x}$ n'est pas une notation abstraite déconnectée du calcul usuel, elle redonne exactement la racine que tu connais déjà.
+
+### Exemple travaillé — étude complète de $f(x) = \sqrt[3]{x} = x^{1/3}$
+
+**Ce qu'on cherche et pourquoi ce geste :** appliquer telle quelle la machinerie qu'on vient d'établir pour $x^\alpha$, avec $\alpha=\dfrac13$, plutôt que de reprendre un calcul depuis zéro.
+
+**Domaine.** $\alpha=\frac13$ ne change rien à la contrainte de domaine : $f$ est définie par $e^{\frac13\ln x}$ sur $]0,+\infty[$, puisqu'il faut $x>0$ pour que $\ln x$ existe.
+
+**Dérivée.** Par la formule $(x^\alpha)'=\alpha x^{\alpha-1}$ établie ci-dessus, avec $\alpha=\frac13$ :
+
+$$f'(x) = \frac13 x^{\frac13-1} = \frac13 x^{-\frac23} = \frac{1}{3x^{2/3}}$$
+
+**Variations.** $\alpha=\frac13>0$, donc (cas établi ci-dessus) $f$ est strictement **croissante** sur $]0,+\infty[$ — ce que confirme directement $f'(x)>0$ pour tout $x>0$ (un dénominateur strictement positif).
+
+**Limites.** $\alpha=\frac13>0$, donc (cas établi ci-dessus) $f(x)\to0$ quand $x\to0^+$, et $f(x)\to+\infty$ quand $x\to+\infty$.
+
+En rassemblant tout : $f$ part de $0$, croît sur tout $]0,+\infty[$ sans jamais s'arrêter — mais de plus en plus lentement, puisque $f'(x)=\dfrac{1}{3x^{2/3}}\to0$ quand $x\to+\infty$.
+
 ---
 
 ## R5 — Étude complète et courbe
@@ -541,4 +623,28 @@ Aucun de ces quatre n'est un manque de ce chapitre : ce sont des outils transver
      Misconception déclarée dans items.yaml : forme-0-sur-0-non-reconnue ;
      items EXP-32 à EXP-39. La leçon sœur (logarithme) traite ln(1+x)/x avec
      sa propre prose : la porte prose-jumelle mesure les deux.
+
+     NOTE (couverture cadre SM, 2026-09-28 — docs/cadre/curriculum/maths-
+     sm.yaml:174/177, maths-sexp.yaml:185 ; voir aussi REVIEW-2026-09-12.md,
+     défaut différé F2) : R4 gagne « Exponentielle de base a » et « Fonctions
+     puissances x^α » (+ racine n-ième comme cas α=1/n), comblant exactement
+     le savoir-faire signalé par F2 comme absent des cinq fichiers de la
+     notion (« Étudier a^x et x^α », maths-sm.yaml:177). Les deux sont
+     SM-seuls : maths-sexp.yaml:185 dit « cœur SExp = e^x » et « pas d'étude
+     systématique des fonctions puissances » ; la racine n-ième est exclue de
+     SExp par maths-sm.yaml:155 (qui la nomme SM-seule aux côtés des
+     puissances réelles et d'arctan). Même convention de filière que la leçon
+     sœur (fonction-logarithme, même date) après la même vérification
+     d'absence de précédent : aucun marqueur inline dans le texte élève — le
+     scope filière se déclare seulement dans cette note, jamais dans la prose
+     lue par l'élève. Étude travaillée ajoutée : f(x) = x^{1/3} (domaine
+     ]0,+∞[, dérivée f'(x)=1/(3x^{2/3}), croissante, limites 0 en 0⁺ et +∞ en
+     +∞) — absente de bank.yaml et exercises.yaml (grep vérifié avant
+     rédaction, aucune occurrence de x^{1/3}, racine cubique, x^\alpha, a^x
+     réel, ni d'étude de puissance réelle). Piège traité : (a^x)' = x·a^{x-1}
+     (règle des puissances appliquée à tort à une exponentielle de base
+     fixe) ; vérifié numériquement, a=2, x=3 : vraie dérivée ln(2)×2^3 =
+     8ln(2) ≈ 5,55, formule fautive 3×2^2 = 12. Aucun [[checkpoint:...]]
+     ajouté à la question « prends position » — même réserve que la leçon
+     sœur, hors du périmètre de cet auteur qui n'écrit que lesson.md.
 -->

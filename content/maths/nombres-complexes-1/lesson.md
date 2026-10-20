@@ -475,6 +475,46 @@ Les deux solutions sont bien distinctes, puisque l'énoncé suppose $u+v \neq 2i
 
 **Le piège à ne pas franchir :** les relations somme/produit donnent $S$ et $P$, jamais $z_1$ et $z_2$ séparément. Tant que tu n'as pas **reconnu** deux nombres dont la somme et le produit collent, elles ne remplacent pas la résolution — elles la contournent seulement quand la forme se laisse lire. Si rien ne se reconnaît, reviens au discriminant du chapitre précédent : c'est lui, la méthode générale.
 
+### Une équation qui se ramène au second degré : le changement d'inconnue $Z=z^2$
+
+Certaines équations ne sont pas, à première vue, du second degré, mais s'y ramènent par un changement d'inconnue. Le cas le plus courant : une équation où $z$ n'apparaît qu'à travers $z^2$ et $z^4$ — une équation **bicarrée**.
+
+**Exemple travaillé.** Résoudre dans $\mathbb{C}$ l'équation $(E)\ :\ z^4-6z^2+25=0$.
+
+**Ce qu'on cherche et pourquoi ce geste :** $(E)$ est du quatrième degré, pas du second — la formule $(-b\pm\delta)/(2a)$ vue plus haut ne s'applique pas telle quelle à un polynôme de degré $4$. Mais $(E)$ ne contient que des puissances **paires** de $z$ : $z^4=(z^2)^2$ et $z^2$. Le réflexe : poser $Z=z^2$. Le membre de gauche de $(E)$ ne dépend alors de $z$ qu'à travers $Z$ — c'est très exactement $Z^2-6Z+25$ — donc résoudre l'équation en $Z$, puis revenir de chaque $Z$ à $z$, revient bien à résoudre $(E)$.
+
+$$Z^2-6Z+25=0$$
+
+$$\Delta = (-6)^2-4\times1\times25 = 36-100=-64$$
+
+$\Delta$ est un réel négatif : $\delta=i\sqrt{64}=8i$ convient — on vérifie plutôt que de croire sur parole : $(8i)^2=64\,i^2=-64$, c'est bien $\Delta$.
+
+$$Z=\frac{6\pm8i}{2}=3\pm4i \qquad\qquad Z_1=3+4i \qquad\qquad Z_2=3-4i$$
+
+**Prends position avant de lire la suite :** on a maintenant deux valeurs de $Z$. Combien de solutions $z$ l'équation de départ $(E)$ va-t-elle finalement avoir au total — deux, autant que de valeurs de $Z$, ou davantage ?
+
+$(E)$ est de degré $4$ en $z$ ; en toute généralité, un polynôme de degré $4$ a $4$ racines dans $\mathbb{C}$, pas $2$. Et c'est exactement ce qui va se passer : chaque valeur de $Z$ va redonner **deux** valeurs de $z$, jamais une seule, parce que $z^2=Z$ (pour $Z\neq0$) a toujours deux solutions opposées — le même mécanisme $\delta$ et $-\delta$ que plus haut, appliqué ici à $z$ lui-même plutôt qu'à une notation auxiliaire.
+
+**Le piège à éviter :** s'arrêter après avoir résolu l'équation en $Z$, et répondre $S=\{3+4i,\ 3-4i\}$ — c'est répondre à une question qu'on ne t'a pas posée. $Z$ n'est qu'un intermédiaire de calcul, jamais la solution cherchée : il faut systématiquement revenir à $z$, et pour **chaque** valeur de $Z$ trouvée, chercher les **deux** racines carrées correspondantes.
+
+**Retour à $z$ : les racines carrées de chaque $Z$.** Il reste, pour $Z_1=3+4i$ puis pour $Z_2=3-4i$, à trouver $z$ tel que $z^2=Z$ — exactement la méthode du filet de sécurité vue plus haut (poser $\delta=x+iy$, résoudre via les modules), avec $\Delta$ remplacé ici par $Z$.
+
+Pour $Z_1=3+4i$ : c'est exactement l'exemple déjà traité par cette méthode plus haut dans cette leçon — on avait trouvé $\delta=2+i$, vérifié par $(2+i)^2=4+4i+i^2=3+4i$. Les deux racines carrées de $Z_1$ sont donc $2+i$ et $-(2+i)=-2-i$.
+
+Pour $Z_2=3-4i=\overline{Z_1}$, pas besoin de refaire tout le calcul : le conjugué d'un carré est le carré du conjugué (chapitre 4), donc si $(2+i)^2=3+4i$, alors $\overline{(2+i)}^{\,2}=\overline{3+4i}$, c'est-à-dire $(2-i)^2=3-4i$. Les deux racines carrées de $Z_2$ sont donc $2-i$ et $-(2-i)=-2+i$.
+
+$$S=\{\,2+i,\ -2-i,\ 2-i,\ -2+i\,\}$$
+
+Quatre solutions en tout — exactement ce que la remarque sur le degré $4$ annonçait.
+
+**Vérification, par substitution directe, sur une des quatre racines.** Prends $z=2+i$ :
+
+$$z^2=(2+i)^2=4+4i+i^2=3+4i \qquad\qquad z^4=(z^2)^2=(3+4i)^2=9+24i+16i^2=-7+24i$$
+
+$$z^4-6z^2+25 = (-7+24i)-6(3+4i)+25 = -7+24i-18-24i+25 = 0$$
+
+$z=2+i$ vérifie bien $(E)$. Les trois autres racines s'en déduisent par la même logique — chercher un $z$ dont le carré vaut $Z_1$ ou $Z_2$ garantit, par construction, qu'il annule $(E)$ — sans qu'il soit besoin de recommencer le calcul quatre fois.
+
 ---
 
 ## R5 — Représentation géométrique : affixe, image, et interprétation de $|z-z'|$

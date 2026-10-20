@@ -470,6 +470,44 @@ $$\log(10^n) = n$$
 
 C'est cette propriété qui rend $\log$ pratique : $\log(x)$ donne directement "l'ordre de grandeur" de $x$ en puissances de $10$ (par exemple $\log(1000)=3$, $\log(0{,}01)=-2$) — un usage qu'on retrouve, entre autres, dans les échelles d'acidité, d'intensité sonore ou de magnitude sismique.
 
+### Le logarithme de base $a$
+
+Le logarithme décimal n'est qu'un cas particulier d'une idée plus générale : rien n'empêche de diviser $\ln$ par $\ln(a)$ pour n'importe quel réel $a>0$, $a \neq 1$ — pas seulement $a=10$.
+
+**Définition.** Pour tout réel $a>0$, $a \neq 1$, et tout réel $x>0$, le **logarithme de $x$ en base $a$** est :
+
+$$\log_a(x) = \frac{\ln(x)}{\ln(a)}$$
+
+Le logarithme décimal du paragraphe précédent est exactement $\log_{10}$. Et $\ln$ lui-même entre dans cette même famille : puisque $\ln(e)=1$ (chapitre 6), $\log_e(x) = \dfrac{\ln(x)}{\ln(e)} = \ln(x)$ — $\ln$ est simplement le logarithme de base $e$.
+
+**Ce que $\log_a$ hérite de $\ln$, et pourquoi.** $\log_a$ n'est rien d'autre que $\ln$ multipliée par la constante $\dfrac{1}{\ln(a)}$ (non nulle, puisque $a\neq1$), et diviser une égalité par une même constante non nulle la préserve : diviser $\ln(xy)=\ln(x)+\ln(y)$ (chapitre 3) par $\ln(a)$ donne $\log_a(xy) = \log_a(x)+\log_a(y)$ ; diviser $\ln(x^n)=n\ln(x)$ (même chapitre) par $\ln(a)$ donne $\log_a(x^n) = n\log_a(x)$ pour tout entier $n$ ; et diviser $\ln(1/x)=-\ln(x)$ par $\ln(a)$ donne $\log_a(1/x) = -\log_a(x)$.
+
+Le sens de variation, lui, ne se transporte pas automatiquement : il dépend du signe de $\ln(a)$, la constante par laquelle on divise. Diviser une fonction croissante par un nombre POSITIF garde le sens de variation ; diviser par un nombre NÉGATIF l'inverse. Donc : si $a>1$ (où $\ln(a)>0$), $\log_a$ est strictement croissante, comme $\ln$ ; si $0<a<1$ (où $\ln(a)<0$), $\log_a$ est strictement décroissante — le sens s'inverse.
+
+**Prends position avant de lire la suite :** d'après toi, $\log_a(x+y)$ est-il égal à $\log_a(x)+\log_a(y)$ ?
+
+**Le piège à éviter.** Non : la propriété établie ci-dessus transforme un **produit** en somme, jamais une somme en quoi que ce soit de plus simple — $\log_a(x+y)$ ne se décompose pas, il faut calculer $x+y$ avant de prendre le logarithme. Une confusion voisine, tout aussi fréquente : croire qu'un **quotient de deux logarithmes** est le logarithme d'un quotient. Par exemple, $\dfrac{\ln(50)}{\ln(2)}$ et $\ln\!\left(\dfrac{50}{2}\right)=\ln(25)$ sont deux calculs totalement différents : $\dfrac{\ln(50)}{\ln(2)} \approx \dfrac{3{,}912}{0{,}693} \approx 5{,}64$, alors que $\ln(25)\approx3{,}219$. Rien à voir : diviser deux logarithmes n'a jamais été la même opération que prendre le logarithme d'un quotient.
+
+### Exemple travaillé
+
+Sans calculer $2^{100}$ explicitement, combien de chiffres possède cet entier, écrit en base dix ?
+
+**Ce qu'on cherche et pourquoi ce geste :** un entier $N$ à $d$ chiffres vérifie $10^{d-1} \leq N < 10^{d}$ — par exemple, $347$ a $3$ chiffres et vérifie bien $10^{2} \leq 347 < 10^{3}$. Comme $\log$ (le cas $a=10$ ci-dessus) est strictement croissant, passer au logarithme décimal dans cet encadrement donne $d-1 \leq \log(N) < d$ : $d-1$ est donc la partie entière de $\log(N)$, et $d$ s'obtient en lui ajoutant $1$.
+
+Calcule $\log(2^{100})$ avec la propriété de la puissance établie ci-dessus :
+
+$$\log(2^{100}) = 100\log(2)$$
+
+Sachant que $\log(2) \approx 0{,}301$ (une valeur qu'on retrouve à partir de $\ln(2)\approx0{,}693$ et $\ln(10)\approx2{,}303$ : $\log(2)=\ln(2)/\ln(10)\approx0{,}693/2{,}303\approx0{,}301$) :
+
+$$\log(2^{100}) \approx 100 \times 0{,}301 = 30{,}1$$
+
+La partie entière de $30{,}1$ est $30$, donc $2^{100}$ possède :
+
+$$d = 30+1 = 31 \text{ chiffres}$$
+
+— sans qu'il ait fallu calculer sa valeur exacte (qui vaut, pour vérification, $1\,267\,650\,600\,228\,229\,401\,496\,703\,205\,376$, soit bien $31$ chiffres).
+
 ---
 
 ## R7 — Pour t'entraîner
@@ -540,4 +578,31 @@ Le même squelette, décor renversé : ici la courbe passe **sous** la première
      LOG-32. Prose réécrite le jour même : la première version reprenait mot
      pour mot celle de l'exponentielle (137 mots communs, porte
      prose-jumelle rouge au run 798).
+
+     NOTE (couverture cadre SM, 2026-09-28 — docs/cadre/curriculum/maths-sm.yaml:162
+     et maths-sexp.yaml:165/171) : R6 gagne « Le logarithme de base a », qui
+     généralise le logarithme décimal déjà présent dans cette même sous-section.
+     Le logarithme décimal lui-même est COMMUN aux deux filières (maths-
+     sexp.yaml:165 le nomme explicitement au programme SExp) — il n'a donc reçu
+     aucun marquage, et n'a pas été touché. Le logarithme de base a général
+     (log_a x = ln x/ln a, a quelconque) est en revanche SM-seul (maths-
+     sexp.yaml:171 : « le cœur SExp est ln (+ log décimal) », fonctions
+     puissances hors cœur SExp). Convention de filière suivie, après vérification
+     qu'aucune autre n'existe dans le corpus : aucun marqueur inline n'apparaît
+     dans le texte élève de cette leçon ni de ses homologues qui portent pourtant
+     un écart SM/SExp comparable (Rolle/TAF dans derivabilite-etude-fonctions,
+     produit mixte dans geometrie-espace, racines n-ièmes dans nombres-
+     complexes-2 — aucun des trois n'est marqué dans le texte lu par l'élève) ;
+     le scope filière se déclare seulement en note de validation, ici, jamais
+     dans la prose. Exemple travaillé ajouté : nombre de chiffres de 2^100
+     (base 10 seulement, pour ne dépendre d'aucun exposant réel — 2^100 reste
+     une puissance ENTIÈRE ordinaire, l'exponentielle de base a n'étant définie
+     qu'au chapitre suivant), recalculé : log(2^100) = 100×log(2) ≈ 30,1, d'où
+     31 chiffres (vérifié contre la valeur exacte, 1 267 650 600 228 229 401
+     496 703 205 376 — 31 chiffres comptés). Piège traité : log_a(x+y) ≠
+     log_a(x)+log_a(y), et ln(50)/ln(2) ≈ 5,64 ≠ ln(25) ≈ 3,219 (recalculé :
+     ln(50)≈3,912, ln(2)≈0,693, ln(25)≈3,219). Aucun [[checkpoint:...]] ajouté à
+     la question « prends position » — hors du périmètre de cet auteur, qui
+     n'écrit que lesson.md ; si un commit interactif réel est voulu, une entrée
+     checkpoints.yaml reste à créer par l'auteur habilité.
 -->

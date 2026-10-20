@@ -333,6 +333,89 @@ C'est exactement le TVI appliqué à $k=0$ : si $f(a)<0$ et $f(b)>0$ (ou l'inver
 
 Les trois conditions sont réunies : par le corollaire d'existence et d'unicité, l'équation $g(x)=0$ admet **une unique** solution $c \in \, ]0,1[$.
 
+### L'image d'un segment par une fonction continue
+
+Le chapitre 6, jusqu'ici, s'intéressait à UN SEUL point $c$ à la fois : montrer qu'il existe, et parfois qu'il est unique. Il existe une question voisine, qui porte sur l'intervalle tout entier plutôt que sur un point : quand $x$ parcourt $[a,b]$, à quoi ressemble l'ENSEMBLE de toutes les valeurs prises par $f(x)$ ?
+
+**Le résultat général (admis).** Si $f$ est continue sur un segment $[a,b]$, l'ensemble de ses valeurs — noté $f([a,b])$ — est lui-même un segment $[m,M]$, où $m$ est la plus petite valeur prise par $f$ sur $[a,b]$ et $M$ la plus grande.
+
+**Pourquoi c'est vrai :** c'est encore l'image du crayon qui ne se lève jamais. Entre la hauteur la plus basse et la hauteur la plus haute atteintes par la courbe sur $[a,b]$, le trait passe forcément par toutes les hauteurs intermédiaires — c'est exactement le TVI. Et comme $[a,b]$ est un segment (fermé, borné), ce minimum et ce maximum sont réellement ATTEINTS quelque part sur $[a,b]$, pas seulement approchés sans jamais être touchés.
+
+**Le cas qui rend ce résultat utilisable sans étude complète.** Si, en plus d'être continue, $f$ est **strictement monotone** sur $[a,b]$, alors le minimum et le maximum ne peuvent être atteints qu'AUX BORNES : une fonction qui ne fait que croître (ou que décroître) sur tout l'intervalle ne peut pas redescendre (ou remonter) pour créer un minimum ou un maximum au milieu. Il suffit alors d'évaluer $f$ en $a$ et en $b$ — en respectant le bon ordre :
+
+$$f \text{ continue et strictement croissante sur } [a,b] \implies f([a,b]) = [f(a)\,;f(b)]$$
+
+$$f \text{ continue et strictement décroissante sur } [a,b] \implies f([a,b]) = [f(b)\,;f(a)]$$
+
+**Exemple travaillé.** Déterminer l'image du segment $[1,3]$ par $p(x) = \dfrac{1}{x}$.
+
+**Ce qu'on cherche et pourquoi ce geste :** $p$ est une fonction rationnelle, continue sur $[1,3]$ puisque $0 \notin [1,3]$ (boîte à outils du chapitre 5). Reste à établir sa monotonie AVANT de se précipiter sur les bornes : $p$ est strictement décroissante sur $]0,+\infty[$ (fonction de référence — plus $x$ grandit, plus $1/x$ rapetisse), donc en particulier sur $[1,3]$.
+
+$$p(1) = \frac{1}{1} = 1 \qquad \qquad p(3) = \frac{1}{3}$$
+
+Puisque $p$ est strictement **décroissante**, l'image n'est pas $[p(1)\,;p(3)]$ — cette écriture n'aurait même aucun sens, puisque $1 > \frac{1}{3}$ et qu'un segment $[u\,;v]$ suppose $u \leq v$. Il faut inverser l'ordre :
+
+$$p([1,3]) = \left[p(3)\,;p(1)\right] = \left[\frac{1}{3}\,;1\right]$$
+
+**Le piège à éviter :** recopier les bornes de $[a,b]$ dans le même ordre pour $f(a)$ et $f(b)$ sans vérifier le sens de variation. Ça marche pour une fonction croissante ; ça donne un résultat écrit à l'envers pour une fonction décroissante.
+
+**Et si $f$ n'est pas monotone sur tout l'intervalle ?** Alors les bornes de départ ne suffisent plus : le minimum ou le maximum peuvent très bien être atteints À L'INTÉRIEUR de $[a,b]$, pas à ses extrémités.
+
+**Prends position avant de lire la suite :** l'image de $[-1\,;2]$ par $x \mapsto x^2$ est-elle $[1\,;4]$ ?
+
+Non. Notons $q(x)=x^2$ : $q$ n'est pas monotone sur $[-1,2]$ tout entier, elle est strictement décroissante sur $[-1,0]$, puis strictement croissante sur $[0,2]$ (fonction de référence). Le minimum ne se trouve donc pas à l'une des deux bornes, mais au point de retournement, $x=0$ :
+
+$$q(-1) = (-1)^2 = 1 \qquad \qquad q(0) = 0^2 = 0 \qquad \qquad q(2) = 2^2 = 4$$
+
+Sur $[-1,0]$, $q$ décroît de $1$ à $0$ : elle balaie $[0\,;1]$. Sur $[0,2]$, $q$ croît de $0$ à $4$ : elle balaie $[0\,;4]$. La réunion des deux donne l'image complète :
+
+$$q([-1,2]) = [0\,;4]$$
+
+**Le piège à éviter :** citer $f(a)$ et $f(b)$ sans avoir vérifié que $f$ est strictement monotone sur TOUT l'intervalle. Ici, $q(-1)=1$ et $q(2)=4$ sont bien deux valeurs prises par $q$, mais ni l'une ni l'autre n'est le minimum — atteint ailleurs, en $x=0$, un point intérieur à l'intervalle. L'écriture $[f(a)\,;f(b)]$ n'est un raccourci valable que lorsque la stricte monotonie sur tout l'intervalle est acquise ; sans elle, il faut étudier les variations pour localiser le vrai minimum et le vrai maximum.
+
+### La dichotomie : trouver une valeur approchée de la solution
+
+Le chapitre 6 vient de montrer que l'équation $x^3+x-1=0$ admet une unique solution $c$ dans $]0,1[$. Mais essaie de la résoudre EXACTEMENT, comme un trinôme : aucune racine évidente ne se présente ($1$ n'annule pas l'expression, $1^3+1-1=1\neq0$ ; ni $-1$, $(-1)^3+(-1)-1=-3\neq0$). Le TVI garantit que $c$ EXISTE ; il ne dit pas où elle se trouve. La **méthode de dichotomie** répond à cette question précise : obtenir une valeur approchée de $c$, à une précision fixée d'avance, sans jamais avoir besoin d'une formule exacte.
+
+**Le principe.** On part de $[a,b]=[0,1]$, où les trois ingrédients du chapitre 6 sont déjà vérifiés pour $g(x)=x^3+x-1$ : continuité (polynôme), $g(0)=-1<0$ et $g(1)=1>0$ (signes contraires), stricte croissance. À chaque étape, on calcule $g$ au milieu $m$ de l'intervalle courant, on compare son signe à celui des deux bornes actuelles, et on garde SEULEMENT la moitié où le signe change réellement — celle où le TVI, réappliqué à ce sous-intervalle plus petit, garantit encore la présence de $c$. On répète jusqu'à ce que l'intervalle soit assez étroit.
+
+**Étape 1.** Milieu de $[0,1]$ : $m_1 = \dfrac{0+1}{2} = 0{,}5$.
+
+$$g(0{,}5) = (0{,}5)^3+0{,}5-1 = 0{,}125+0{,}5-1 = -0{,}375$$
+
+$g(0{,}5)$ est négatif, comme $g(0)$ ; c'est donc entre $0{,}5$ et $1$ que le signe change réellement (de négatif à positif). On garde $[0{,}5\,;1]$ et on abandonne $[0\,;0{,}5]$ pour de bon : sur ce morceau, $g$ a le même signe aux deux bouts, et le TVI n'y garantit plus aucun zéro.
+
+**Étape 2.** Milieu de $[0{,}5\,;1]$ : $m_2 = 0{,}75$.
+
+$$g(0{,}75) = (0{,}75)^3+0{,}75-1 = 0{,}421875+0{,}75-1 = 0{,}171875$$
+
+Positif, comme $g(1)$ : le changement de signe est entre $0{,}5$ et $0{,}75$. On garde $[0{,}5\,;0{,}75]$.
+
+**Étape 3.** Milieu de $[0{,}5\,;0{,}75]$ : $m_3 = 0{,}625$.
+
+$$g(0{,}625) = (0{,}625)^3+0{,}625-1 = 0{,}244140625+0{,}625-1 = -0{,}130859375$$
+
+Négatif, comme $g(0{,}5)$ : on garde $[0{,}625\,;0{,}75]$. Amplitude de cet intervalle : $0{,}75-0{,}625=0{,}125$ — encore trop large pour une précision de $10^{-1}$.
+
+**Étape 4.** Milieu de $[0{,}625\,;0{,}75]$ : $m_4 = 0{,}6875$.
+
+$$g(0{,}6875) = (0{,}6875)^3+0{,}6875-1 = 0{,}324951171875+0{,}6875-1 = 0{,}012451171875$$
+
+Positif, comme $g(0{,}75)$ : on garde $[0{,}625\,;0{,}6875]$. Amplitude : $0{,}6875-0{,}625=0{,}0625 \leq 10^{-1}$ — cette fois, la précision voulue est atteinte.
+
+**Récapitulatif :**
+
+| Étape | Intervalle courant | Milieu $m$ | $g(m)$ | Comparaison de signe | Nouvel intervalle |
+|---|---|---|---|---|---|
+| 1 | $[0\,;1]$ | $0{,}5$ | $-0{,}375$ | même signe que $g(0)$ | $[0{,}5\,;1]$ |
+| 2 | $[0{,}5\,;1]$ | $0{,}75$ | $0{,}171875$ | même signe que $g(1)$ | $[0{,}5\,;0{,}75]$ |
+| 3 | $[0{,}5\,;0{,}75]$ | $0{,}625$ | $-0{,}130859375$ | même signe que $g(0{,}5)$ | $[0{,}625\,;0{,}75]$ |
+| 4 | $[0{,}625\,;0{,}75]$ | $0{,}6875$ | $0{,}012451171875$ | même signe que $g(0{,}75)$ | $[0{,}625\,;0{,}6875]$ |
+
+**La règle d'arrêt.** Chaque étape divise par $2$ la largeur de l'intervalle courant : après $n$ étapes, cette largeur vaut $\dfrac{b-a}{2^n}$ — ici $\dfrac{1}{2^n}$, puisque l'intervalle de départ a pour largeur $1$. Pour garantir une précision $\varepsilon$ donnée, on répète tant que $\dfrac{b-a}{2^n} > \varepsilon$, et on s'arrête dès que $\dfrac{b-a}{2^n} \leq \varepsilon$. Avec $\varepsilon = 10^{-1}$ ici : après $3$ étapes, $\dfrac{1}{2^3}=0{,}125 > 0{,}1$, pas encore assez ; après $4$ étapes, $\dfrac{1}{2^4}=0{,}0625 \leq 0{,}1$, c'est gagné. N'importe quel réel de l'intervalle final $[0{,}625\,;0{,}6875]$ — ses bornes elles-mêmes, ou leur milieu $0{,}65625$ — est alors une valeur approchée de $c$ à $10^{-1}$ près.
+
+**Le piège à éviter.** Deux erreurs guettent cette méthode. La première : oublier de vérifier que $g$ reste continue sur le sous-intervalle avant d'y réappliquer le TVI — sans continuité, un changement de signe entre deux bornes ne garantit RIEN (c'est bien pour ça que la continuité est le tout premier des trois ingrédients vérifiés au départ, jamais un détail qu'on peut sauter). La seconde : garder par erreur la moitié où le signe de $g(m)$ est IDENTIQUE à celui des deux bornes actuelles, au lieu de repérer où le changement de signe a réellement lieu. Le seul repère fiable, à chaque étape : $g(m)$ doit avoir un signe opposé à l'une des deux bornes actuelles — c'est cette moitié-là qu'on garde, l'autre est abandonnée pour de bon.
+
 ### La méthode à retenir pour un exercice de bac
 
 Face à une question du type "montrer que l'équation $f(x)=k$ admet une solution (unique) dans $[a,b]$", la procédure est toujours la même :
@@ -341,6 +424,11 @@ Face à une question du type "montrer que l'équation $f(x)=k$ admet une solutio
 2. Calculer ou comparer $f(a)$ et $f(b)$ à $k$, et vérifier que $k$ est bien compris entre les deux (pour $k=0$ : vérifier que $f(a)$ et $f(b)$ sont de signes contraires).
 3. Si on demande l'**unicité**, établir la stricte monotonie de $f$ sur $[a,b]$ (fonctions de référence, ou un tableau de variations donné dans l'énoncé).
 4. Conclure en citant le théorème (ou son corollaire) explicitement.
+
+La même famille de questions a deux prolongements :
+
+- **Une valeur approchée est demandée ?** Une fois l'existence (et l'unicité, si demandée) établies, poursuivre par dichotomie : diviser l'intervalle en deux, comparer le signe du milieu aux deux bornes actuelles, garder la moitié où le signe change réellement, répéter jusqu'à ce que l'amplitude $\dfrac{b-a}{2^n}$ atteigne la précision voulue.
+- **C'est l'image d'un intervalle qui est demandée, plutôt qu'une solution ?** Vérifier la continuité (boîte à outils du chapitre 5), puis la stricte monotonie sur TOUT l'intervalle : si elle est acquise, l'image se lit directement aux bornes, dans l'ordre imposé par le sens de variation ; sinon, il faut étudier les variations pour localiser où le minimum et le maximum sont réellement atteints.
 
 ---
 

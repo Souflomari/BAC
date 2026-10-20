@@ -110,6 +110,46 @@ $$T_0 = \frac{2\pi}{10} \approx 0{,}628\ \text{s}$$
 
 Un aller-retour complet dure un peu plus d'une demi-seconde. Si on double la masse ($m=0{,}80\ \text{kg}$) sans changer $k$, $T_0$ devient $2\pi\sqrt{0{,}80/40} = 2\pi\sqrt{0{,}02}\approx 0{,}889\ \text{s}$ : le système est plus lent — plus d'inertie à mettre en mouvement, à raideur égale. Si on double $k$ au lieu de $m$, l'inverse se produit : le ressort plus raide rappelle plus fort, l'aller-retour se fait plus vite.
 
+### Et si le ressort n'est pas horizontal ? Vertical et incliné, la même équation
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* jusqu'ici le ressort était horizontal, et le poids ne jouait aucun rôle — sa projection sur l'axe du mouvement était nulle. Un ressort vertical (suspendu au plafond) ou incliné (le long d'une pente) change ce point précis : le poids a maintenant une composante le long de l'axe du mouvement. Voyons ce que ça change vraiment dans l'équation différentielle.
+
+**Prends position avant de lire la suite : sur un ressort vertical, avec une masse accrochée qui oscille de haut en bas, le poids doit-il apparaître dans l'équation différentielle finale, une fois qu'on a écrit la deuxième loi de Newton ?**
+
+Beaucoup répondent oui — après tout, la pesanteur agit bel et bien sur la masse, et l'ignorer semble une erreur. Engage vraiment ta réponse avant de continuer.
+
+**Le ressort vertical.** Accroche le solide $(S)$ à un ressort vertical de raideur $k$, fixé au plafond. Repère la position de $G$ par $X$, l'allongement TOTAL du ressort par rapport à sa longueur à vide, orienté vers le bas (positif). Bilan des forces : le poids $\vec P = m\vec g$ (vers le bas, donc $+mg$ dans ce repère) et la force de rappel $\vec F_{rappel} = -kX\,\vec u$ (vers le haut quand le ressort est étiré, donc $-kX$). La deuxième loi de Newton, projetée :
+
+$$m\,\ddot X = mg - kX$$
+
+**Chercher la position d'équilibre.** À l'équilibre, $\ddot X = 0$, donc le ressort est déjà étiré d'un allongement $\Delta L_0$ tel que :
+
+$$0 = mg - k\,\Delta L_0 \qquad \Longrightarrow \qquad \Delta L_0 = \frac{mg}{k}$$
+
+C'est le poids, à lui seul, qui détermine de combien le ressort est déjà étiré avant même que le mouvement commence — c'est la **pré-tension**.
+
+**Recentrer sur l'équilibre.** Pose $x = X - \Delta L_0$, l'écart par rapport à cette position d'équilibre (et non plus par rapport au ressort à vide). Comme $\Delta L_0$ est une constante, $\ddot x = \ddot X$. On substitue :
+
+$$m\,\ddot x = mg - k(x+\Delta L_0) = mg - kx - k\Delta L_0 = \underbrace{(mg - k\Delta L_0)}_{=\ 0} - kx$$
+
+Le terme souligné est nul EXACTEMENT parce que $\Delta L_0 = mg/k$ — ce n'est pas une approximation, c'est la condition d'équilibre elle-même. Il reste :
+
+$$\boxed{\ddot x + \frac{k}{m}\,x = 0}$$
+
+**La même équation que le ressort horizontal**, au nom des variables près. Le poids n'a pas disparu par oubli : il a été exactement annulé par la pré-tension du ressort, à condition de mesurer $x$ depuis la position d'équilibre — pas depuis la longueur à vide.
+
+**Le ressort incliné.** Même geste sur un plan incliné d'un angle $\alpha$, sans frottement : seule la composante du poids le long de la pente compte, $mg\sin\alpha$ (au lieu de $mg$), et tout le raisonnement se répète à l'identique :
+
+$$\Delta L_0 = \frac{mg\sin\alpha}{k} \qquad \Longrightarrow \qquad \ddot x + \frac{k}{m}\,x = 0$$
+
+**Application numérique — le même système, trois orientations.** Reprends l'oscillateur de l'exemple précédent : $k=40\ \text{N/m}$, $m=0{,}40\ \text{kg}$, $g=10\ \text{m/s}^2$.
+
+- Vertical : $\Delta L_0 = \dfrac{0{,}40\times10}{40} = \dfrac{4{,}0}{40} = 0{,}10\ \text{m} = 10\ \text{cm}$.
+- Incliné à $\alpha=30°$ : $\Delta L_0 = \dfrac{0{,}40\times10\times\sin30°}{40} = \dfrac{4{,}0\times0{,}5}{40} = 0{,}05\ \text{m} = 5\ \text{cm}$.
+- Dans les trois orientations (horizontal, incliné, vertical), $\omega_0=\sqrt{k/m}=10\ \text{rad/s}$ et $T_0\approx0{,}628\ \text{s}$ ne changent PAS — seule la position d'équilibre, donc l'allongement de référence, change.
+
+**Le piège à éviter.** Écrire l'équation autour de l'équilibre ($x$ mesuré depuis $\Delta L_0$) et GARDER $mg$ en plus du terme $-kx$ — par exemple $m\ddot x = mg - kx$. C'est compter le poids deux fois : une fois dans $\Delta L_0$ (qui EST l'effet du poids), une deuxième fois en le laissant traîner dans l'équation finale. Le poids ne doit apparaître QUE dans le calcul de $\Delta L_0$ ; une fois qu'on est passé à $x$ (l'écart par rapport à l'équilibre), il a déjà fait son travail et sort de l'équation.
+
 ---
 
 ## R2 — Les grandeurs du mouvement : amplitude, phase, pulsation et période
@@ -269,6 +309,36 @@ $$T_0 = 2\pi\sqrt{\frac{J_\Delta}{mgd}} = 2\pi\sqrt{\frac{mL^2}{mgL}} = 2\pi\sqr
 
 On retrouve exactement la formule du pendule simple — la masse $m$ se simplifie ici PARCE QUE $J_\Delta = mL^2$ est lui-même proportionnel à $m$. Ce n'est pas une coïncidence : c'est la vérification que les deux résultats sont cohérents entre eux, le pendule simple n'étant qu'un cas particulier (la masse concentrée en un point) du pendule pesant.
 
+### Le pendule simple synchrone d'un pendule pesant quelconque
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* la vérification précédente marche dans un seul sens (partir du pendule pesant, retrouver le pendule simple quand la masse est ponctuelle). Le sens INVERSE est tout aussi utile en pratique : étant donné un pendule pesant QUELCONQUE ($J_\Delta$, $m$, $d$ arbitraires, pas seulement une masse ponctuelle), existe-t-il un pendule simple qui oscille avec exactement la même période ?
+
+**Prends position avant de lire la suite : si un tel pendule simple existe, sa longueur est-elle simplement $d$, la distance entre l'axe $\Delta$ et le centre d'inertie $G$ ?**
+
+Beaucoup répondent oui — $d$ est bien « la distance qui compte » dans le moment du poids. Engage vraiment ta réponse avant de continuer.
+
+On cherche une longueur $\ell$ telle que le pendule simple de longueur $\ell$ ait la même période propre que le pendule pesant $(J_\Delta, m, d)$ :
+
+$$2\pi\sqrt{\frac{\ell}{g}} = 2\pi\sqrt{\frac{J_\Delta}{mgd}} \qquad \Longrightarrow \qquad \frac{\ell}{g} = \frac{J_\Delta}{mgd} \qquad \Longrightarrow \qquad \boxed{\ell = \frac{J_\Delta}{m\,d}}$$
+
+Ce $\ell$ s'appelle la **longueur du pendule simple synchrone** du pendule pesant considéré : un pendule simple de cette longueur précise bat exactement au même rythme, quel que soit le pendule pesant de départ. Il ne coïncide avec $d$ que dans le cas particulier déjà rencontré (masse ponctuelle, $J_\Delta = md^2$) : alors $\ell = md^2/(md) = d$ exactement — le pendule simple lui-même. Dans tous les autres cas, $\ell \neq d$.
+
+**Exemple numérique — une barre pivotée par une extrémité.** Une tige homogène de longueur $L = 1{,}20\ \text{m}$ et de masse $m = 0{,}80\ \text{kg}$, pivotant autour d'un axe horizontal passant par une extrémité, a pour moment d'inertie $J_\Delta = \dfrac{1}{3}mL^2$ (donnée) et son centre d'inertie est à $d = L/2$ de l'axe.
+
+$$J_\Delta = \frac{1}{3}\times0{,}80\times(1{,}20)^2 = \frac{1}{3}\times0{,}80\times1{,}44 = 0{,}384\ \text{kg}\cdot\text{m}^2 \qquad \qquad d = \frac{1{,}20}{2} = 0{,}60\ \text{m}$$
+
+$$\ell = \frac{J_\Delta}{m\,d} = \frac{0{,}384}{0{,}80\times0{,}60} = \frac{0{,}384}{0{,}48} = 0{,}80\ \text{m}$$
+
+Le pendule simple synchrone mesure $0{,}80\ \text{m}$ — bien PLUS que $d=0{,}60\ \text{m}$, la distance à l'axe : confondre les deux aurait donné une longueur trop courte, donc une période trop courte. Vérification, avec $g=10\ \text{m/s}^2$ :
+
+$$T_0 = 2\pi\sqrt{\frac{\ell}{g}} = 2\pi\sqrt{\frac{0{,}80}{10}} = 2\pi\sqrt{0{,}080} \approx 2\pi\times0{,}283 \approx 1{,}777\ \text{s}$$
+
+$$T_0 = 2\pi\sqrt{\frac{J_\Delta}{mgd}} = 2\pi\sqrt{\frac{0{,}384}{0{,}80\times10\times0{,}60}} = 2\pi\sqrt{\frac{0{,}384}{4{,}8}} = 2\pi\sqrt{0{,}080} \approx 1{,}777\ \text{s}$$
+
+Les deux calculs, l'un par $\ell$ et la formule du pendule simple, l'autre directement par la formule du pendule pesant, donnent exactement la même période — c'est la définition même du mot « synchrone ».
+
+**Le piège à éviter.** Confondre $\ell = J_\Delta/(md)$ avec $d$ lui-même. $d$ mesure OÙ se trouve le centre d'inertie par rapport à l'axe ; $\ell$ mesure la longueur d'un pendule simple ÉQUIVALENT EN PÉRIODE — deux grandeurs différentes qui ne coïncident que si toute la masse est concentrée en un seul point à la distance $d$.
+
 ---
 
 ## R4 — Le pendule de torsion : la même équation, un autre contexte
@@ -304,6 +374,56 @@ Les systèmes étudiés obéissent tous à LA MÊME équation différentielle, $
 | (Circuit LC, pour mémoire) | $q$ | $L$ | $1/C$ | $\sqrt{1/(LC)}$ | $2\pi\sqrt{LC}$ |
 
 Ce n'est pas un hasard si la même équation revient à chaque fois : chaque système a une grandeur qui joue le rôle de « l'inertie » (résiste à la mise en mouvement) et une grandeur qui joue le rôle du « rappel » (ramène vers l'équilibre, proportionnellement à l'écart). Dès que ces deux ingrédients sont présents et qu'aucune autre force ou moment ne s'en mêle, l'équation — et donc le comportement sinusoïdal — est la même, qu'il s'agisse de mécanique ou d'électricité.
+
+### Aller plus loin : un oscillateur composé, quand translation et rotation se combinent
+
+*Ce qu'on cherche ici, et pourquoi ce geste :* jusqu'ici, chaque système oscillant était SOIT en translation pure (pendule élastique), SOIT en rotation pure (pendule simple, pesant, de torsion). Un sujet peut aussi accrocher les deux ensemble dans un seul dispositif — typiquement un fil qui passe sur une poulie. Il faut alors écrire DEUX équations (une par méthode), puis les combiner en une seule équation différentielle, exactement comme pour un système {solide en translation, solide en rotation} au chapitre sur la rotation autour d'un axe fixe.
+
+**Le dispositif.** Un solide $(S)$ de masse $m$ pend verticalement, accroché à un fil inextensible et de masse négligeable. Le fil passe sans glisser sur une poulie de rayon $R$ et de moment d'inertie $J_\Delta$ par rapport à son axe fixe $\Delta$ (axe horizontal, sans frottement) — $J_\Delta$ est une donnée, comme toujours pour une poulie réelle. De l'autre côté de la poulie, le fil est attaché à un ressort horizontal de raideur $k$, fixé par son autre extrémité à un mur.
+
+**Prends position avant de lire la suite : cette poulie a sa propre inertie ($J_\Delta \neq 0$) — la période propre de cet oscillateur est-elle la même que si la poulie était idéale, sans masse ni inertie ?**
+
+Beaucoup répondent que la poulie « ne fait que guider le fil » et ne change rien à la période, tant que le fil ne glisse pas. Engage vraiment ta réponse avant de continuer.
+
+**Choix de la variable.** Le fil étant inextensible et ne glissant pas sur la poulie, un déplacement $x$ du solide $(S)$ correspond exactement au même déplacement $x$ du point d'attache du ressort, et à une rotation $\theta = x/R$ de la poulie — une seule variable $x$ décrit tout le système.
+
+**Le solide $(S)$, en translation (deuxième loi de Newton).** Bilan : le poids $mg$ (vers le bas) et la tension $T_1$ du fil (vers le haut). En projetant vers le bas :
+
+$$m\,\ddot x = mg - T_1$$
+
+**La poulie, en rotation (relation fondamentale de la dynamique de rotation, chapitre 5).** Le poids de la poulie et la réaction de l'axe passent par $\Delta$ : moment nul. Restent les deux tensions du fil, appliquées de part et d'autre à la distance $R$ de l'axe, en sens opposés :
+
+$$J_\Delta\,\ddot\theta = T_1 R - T_2 R \qquad \text{avec} \qquad \ddot\theta = \frac{\ddot x}{R}$$
+
+**Le ressort, côté horizontal.** La tension $T_2$ tire sur le ressort, allongé de $X$ par rapport à sa longueur à vide : $T_2 = kX$.
+
+**La position d'équilibre — exactement le geste du ressort vertical, plus haut.** À l'équilibre ($\ddot x = 0$, $\ddot\theta=0$), la relation de la poulie donne $T_{1,eq}=T_{2,eq}$, et celle du solide donne $T_{1,eq}=mg$. Donc $T_{2,eq}=mg=k\,X_{eq}$, soit $X_{eq}=mg/k$ — exactement la même pré-tension que pour le ressort vertical, ici transmise par le fil plutôt que portée directement par le solide.
+
+**Recentrer sur l'équilibre.** Pose $x$ comme l'écart par rapport à cette position d'équilibre (donc $X = x + X_{eq}$, avec $T_2 = k(x+X_{eq})$). En combinant les trois relations et en éliminant $T_1$ et $T_2$ :
+
+$$J_\Delta\,\frac{\ddot x}{R} = R\big[T_1 - T_2\big] = R\Big[(mg - m\ddot x) - k(x+X_{eq})\Big] = R\Big[\underbrace{(mg-kX_{eq})}_{=\ 0} - m\ddot x - kx\Big]$$
+
+Le même terme qu'au ressort vertical s'annule ($mg=kX_{eq}$). Il reste, après multiplication par $R$ :
+
+$$J_\Delta\,\ddot x = -R^2 m\,\ddot x - R^2 k\,x \qquad \Longrightarrow \qquad \boxed{(J_\Delta + mR^2)\,\ddot x + k R^2\,x = 0}$$
+
+**Lire le résultat.** C'est encore la même famille d'équation, $\ddot x + \omega_0^2 x = 0$, mais avec une « inertie » qui n'est plus $m$ seul ni $J_\Delta$ seul : c'est la SOMME $J_\Delta + mR^2$ — le moment d'inertie de la poulie, plus la contribution du solide en translation vue à travers le rayon $R$ (exactement le terme $md^2$ du chapitre sur le moment d'inertie, avec $d=R$).
+
+$$\omega_0 = \sqrt{\frac{kR^2}{J_\Delta+mR^2}} \qquad \qquad T_0 = 2\pi\sqrt{\frac{J_\Delta+mR^2}{kR^2}}$$
+
+**Application numérique.** $m=1{,}0\ \text{kg}$, $k=50\ \text{N/m}$, $R=0{,}10\ \text{m}$, $J_\Delta=1{,}0\times10^{-2}\ \text{kg}\cdot\text{m}^2$, $g=10\ \text{m/s}^2$.
+
+$$mR^2 = 1{,}0\times(0{,}10)^2 = 1{,}0\times10^{-2}\ \text{kg}\cdot\text{m}^2 \qquad J_\Delta+mR^2 = 1{,}0\times10^{-2}+1{,}0\times10^{-2}=2{,}0\times10^{-2}\ \text{kg}\cdot\text{m}^2$$
+
+$$kR^2 = 50\times(0{,}10)^2 = 0{,}50\ \text{kg}\cdot\text{m}^2/\text{s}^2$$
+
+$$\omega_0 = \sqrt{\frac{0{,}50}{2{,}0\times10^{-2}}} = \sqrt{25} = 5{,}0\ \text{rad/s} \qquad \qquad T_0 = \frac{2\pi}{5{,}0} \approx 1{,}257\ \text{s}$$
+
+$$X_{eq} = \frac{mg}{k} = \frac{1{,}0\times10}{50} = 0{,}20\ \text{m} = 20\ \text{cm}$$
+
+Dans cet exemple, $J_\Delta$ et $mR^2$ valent exactement la même chose ($1{,}0\times10^{-2}\ \text{kg}\cdot\text{m}^2$ chacun) : l'inertie de la poulie pèse ici pour EXACTEMENT LA MOITIÉ de l'inertie totale du système — si la poulie était idéale ($J_\Delta=0$), $\omega_0$ vaudrait $\sqrt{kR^2/(mR^2)}=\sqrt{k/m}=\sqrt{50/1{,}0}\approx7{,}07\ \text{rad/s}$, nettement plus rapide. La réponse à la question de départ est donc non : une poulie réelle, avec sa propre inertie, RALENTIT l'oscillateur par rapport à une poulie idéale — elle n'est jamais un simple guide neutre pour le fil.
+
+**Le piège à éviter.** Traiter la poulie comme un point de renvoi sans inertie ($J_\Delta$ absent de l'équation), ou au contraire écrire la relation fondamentale de la poulie SANS relier $\ddot\theta$ à $\ddot x$ par $\ddot\theta = \ddot x/R$ — deux équations qui ne se combinent jamais en une seule tant que cette relation cinématique, imposée par le fil inextensible qui ne glisse pas, n'est pas explicitement posée.
 
 ---
 
@@ -353,6 +473,23 @@ $$-k\,x - h\,\dot{x} = m\,\ddot{x}$$
 $$\boxed{m\,\ddot{x} + h\,\dot{x} + k\,x = 0}$$
 
 C'est l'**équation de l'oscillateur amorti**. Exactement comme pour le circuit RLC, on établit cette équation, et on s'arrête là : la résoudre complètement demande des outils mathématiques hors-programme. Ce qu'on peut faire, en revanche, c'est décrire le comportement qualitativement, expérimentalement, et énergétiquement — et c'est tout aussi utile.
+
+### Deux types de frottement, pas un seul
+
+L'équation qu'on vient d'établir suppose un **frottement fluide** (ou visqueux) : une force proportionnelle à la vitesse, $\vec f = -h\dot x\,\vec u$ — celui d'un solide qui glisse dans l'air ou dans un liquide. Ce n'est pas le seul type de frottement que l'amortissement peut prendre. Un solide qui frotte SEC contre un support (**frottement solide**, ou de Coulomb) subit une force d'intensité à peu près CONSTANTE, indépendante de la vitesse — elle s'oppose toujours au mouvement, mais sans grandir ni rétrécir avec lui.
+
+**Prends position avant de lire la suite : ces deux types de frottement produisent-ils la même allure d'enveloppe pour l'amplitude au cours du temps ?**
+
+Beaucoup répondent que « du frottement, c'est du frottement » — l'amplitude décroît dans les deux cas, alors pourquoi la forme changerait-elle ? Engage vraiment ta réponse avant de continuer.
+
+Le mécanisme qui distingue les deux types tient dans une seule question : la quantité d'énergie perdue à chaque aller-retour dépend-elle de l'amplitude EN COURS, ou reste-t-elle fixe ?
+
+- **Frottement fluide.** La force $-h\dot x$ est proportionnelle à la vitesse, donc plus grande quand l'oscillation est ample (le solide va plus vite), plus petite quand elle s'est déjà réduite. La perte d'énergie par cycle est donc une FRACTION à peu près constante de l'énergie déjà présente — comme un pourcentage prélevé à chaque tour. L'enveloppe qui relie les sommets successifs de $x(t)$ est une courbe qui s'aplatit progressivement, sans jamais toucher tout à fait zéro : en théorie, il faut un temps infini pour s'arrêter complètement.
+- **Frottement solide.** La force de frottement sec a une intensité à peu près constante, indépendante de l'amplitude en cours. La perte d'énergie par cycle est donc une quantité à peu près FIXE, la même que l'amplitude soit grande ou petite. L'enveloppe qui relie les sommets successifs de $x(t)$ est alors une DROITE — un écart constant retranché à chaque aller-retour — et l'oscillation s'arrête NET, après un nombre fini d'allers-retours, dès que la force de rappel du ressort n'est plus assez forte pour vaincre le frottement sec. Le solide s'immobilise alors là où il se trouve à cet instant — tout près de la position d'équilibre, mais pas forcément exactement dessus.
+
+**Illustration.** Deux oscillateurs identiques ($m$, $k$), lâchés avec le même écart initial de $8{,}0\ \text{cm}$, mais freinés différemment : celui à frottement fluide voit son amplitude s'approcher indéfiniment de zéro sans jamais l'atteindre ; celui à frottement solide voit ses sommets successifs baisser d'une même quantité à chaque aller-retour, et s'immobilise net après un nombre fini d'allers-retours (par exemple six), dès que l'écart restant est trop petit pour que le ressort vainque le frottement sec.
+
+**Le piège à éviter.** Croire qu'il n'existe qu'UN SEUL type d'amortissement, ou juger le type d'un enregistrement $x(t)$ seulement à la vitesse à laquelle l'amplitude décroît. Le critère qui distingue les deux types n'est pas la vitesse de décroissance, c'est sa FORME : une enveloppe courbe qui ne touche jamais zéro signe le frottement fluide ; une enveloppe rectiligne, avec un arrêt au bout d'un temps fini, signe le frottement solide. Ne confonds pas non plus ces deux TYPES avec les trois RÉGIMES du paragraphe suivant (pseudo-périodique, critique, apériodique) : le type dit QUELLE force freine ; le régime dit COMMENT le système répond, une fois l'intensité du frottement fixée.
 
 ### Le rythme et l'amplitude : deux choses différentes
 
@@ -498,12 +635,16 @@ C'est la même leçon que celle du dictionnaire translation ↔ rotation : la m�
 ### Récapitulatif express
 
 - Un système oscille selon $\ddot{X} + \omega_0^2 X = 0$ dès qu'une grandeur d'inertie et une grandeur de rappel proportionnelle à l'écart sont en jeu, sans autre force : pendule élastique ($x$, $k/m$), pendule simple ($\theta$, $g/L$), pendule pesant ($\theta$, $mgd/J_\Delta$), pendule de torsion ($\theta$, $C/J$).
+- Un ressort **vertical** ou **incliné** obéit à la MÊME équation $\ddot x + (k/m)x = 0$ qu'à l'horizontale, à condition de mesurer $x$ depuis la position d'équilibre : le poids (ou sa composante $mg\sin\alpha$) ne disparaît pas par oubli, il est exactement annulé par la pré-tension du ressort à l'équilibre ($\Delta L_0 = mg/k$, ou $mg\sin\alpha/k$ sur un plan incliné).
 - La solution est $X(t) = X_m\cos(\omega_0 t + \varphi)$ ; $\omega_0$ et $T_0=2\pi/\omega_0$ sont fixés par le système (masse, raideur, longueur...) ; $X_m$ et $\varphi$ sont fixés par les conditions initiales.
 - **Pulsation $\omega_0$ (rad/s) $\neq$ fréquence $f_0$ (Hz)** : $\omega_0 = 2\pi f_0 = 2\pi/T_0$, toujours ce facteur $2\pi$.
 - Pour le pendule **simple** : $T_0$ ne dépend ni de la masse, ni de l'amplitude — seulement de $L$ et $g$.
 - Pour les **autres** pendules, seule l'indépendance à l'**amplitude** est générale (aux petites oscillations). La masse, elle, ne disparaît pas : elle figure dans $T_0=2\pi\sqrt{m/k}$ (pendule élastique), et elle ne se simplifie pas en général dans $T_0=2\pi\sqrt{J_\Delta/(mgd)}$ (pendule pesant). Ne généralise jamais « la masse ne compte pas » depuis le seul pendule simple.
+- Pour un pendule pesant quelconque, le pendule simple **synchrone** (même période) a pour longueur $\ell = J_\Delta/(md)$ — à ne pas confondre avec $d$, la distance de $G$ à l'axe ; les deux ne coïncident que pour une masse ponctuelle.
+- Un oscillateur **composé** (translation + rotation, par exemple un solide suspendu par un fil passant sur une poulie d'inertie $J_\Delta$, attaché à un ressort) combine la deuxième loi de Newton et la relation fondamentale de la dynamique de rotation en UNE seule équation ; l'inertie totale devient $J_\Delta + mR^2$ — la poulie n'est jamais un simple guide neutre dès qu'elle a sa propre inertie.
 - Sans frottement, l'énergie mécanique $E_m = E_c + E_p$ voyage entre les deux réservoirs sans se perdre — l'aperçu qualitatif est ici, la démonstration complète et les diagrammes sont au chapitre **Aspects énergétiques**.
 - Avec frottement, $E_m$ décroît toujours (le frottement ne fournit jamais d'énergie, il ne fait que la dissiper) ; selon son intensité, le mouvement suit le régime **pseudo-périodique** ($T \approx T_0$, amplitude décroissante), **critique** (retour le plus rapide, sans oscillation), ou **apériodique** (retour plus lent, sans oscillation) — le retour est le plus rapide exactement au régime critique. Un dispositif d'entretien peut compenser cette perte ; son étude complète appartient au chapitre RLC.
+- L'amortissement a deux TYPES distincts, pas un seul : **fluide/visqueux** (force ∝ vitesse, enveloppe qui s'approche de zéro sans jamais l'atteindre) et **solide/sec** (force d'intensité constante, enveloppe rectiligne, arrêt net en temps fini) — à ne pas confondre avec les trois RÉGIMES ci-dessus, qui décrivent comment le système répond une fois l'intensité du frottement fixée.
 - Un **résonateur** (fréquence propre $f_0$ fixe) forcé par un **excitateur** (fréquence $f_{exc}$ réglable) oscille, en régime établi, à $f_{exc}$ — avec une amplitude maximale quand $f_{exc} \approx f_0$ (la résonance). Un amortissement faible donne une résonance aiguë (pic haut, étroit) ; un amortissement fort, une résonance floue (pic bas, large).
 
 ### Exercice de type bac
