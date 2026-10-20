@@ -4471,6 +4471,68 @@ items:
       (chapitre 5)
       $$\lim_{n\to+\infty} S_n=\int_0^1(1+2x)\,\mathrm{d}x=\Big[x+x^2\Big]_0^1=2$$
 
+  # 2026-10-20 : CI-73 rend son troisième item à `u-sur-u-absolue-ou-intervalle-oubliee`
+  # (dette antérieure, 2 items depuis le re-purposage de CI-58). Distinct de CI-52 (u affine,
+  # la valeur absolue écrite dans la clé) et de CI-53 (u s'annule dans l'intervalle) : ici u est
+  # du second degré, strictement négative sur l'intervalle, et la clé est écrite SANS valeur
+  # absolue — l'élève doit voir que |x²−4| = 4−x² sur ]−2;2[.
+  - id: CI-73
+    rung: "R1"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_calcul_integral
+    tags: [primitive_u_sur_u, valeur_absolue]
+    primary_misconception: mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee
+    stem: >
+      Sur l'intervalle $]-2\,;2[$, laquelle de ces fonctions est une
+      primitive de $f(x)=\dfrac{2x}{x^2-4}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$F(x)=\\ln(x^2-4)$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee
+        feedback: >
+          Sur $]-2\,;2[$, $x^2<4$, donc $x^2-4<0$ partout : $\ln(x^2-4)$
+          n'y est définie en aucun point. Le modèle donne $\ln|u|$, et la
+          valeur absolue est ici indispensable — elle n'est pas une
+          précaution d'écriture.
+      - id: B
+        text: "$F(x)=\\ln(4-x^2)$"
+        correct: true
+      - id: C
+        text: "$F(x)=-\\dfrac{1}{x^2-4}$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2
+        feedback: >
+          C'est le modèle $\dfrac{u'}{u^2}\to-\dfrac1u$, appliqué à une
+          fraction dont le dénominateur n'est pas au carré. Dérive-la :
+          tu obtiens $\dfrac{2x}{(x^2-4)^2}$, pas $f(x)$.
+      - id: D
+        text: "$F(x)=\\ln|2x|$"
+        correct: false
+        misconception: mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u
+        feedback: >
+          C'est le numérateur, $u'(x)=2x$, qui a été mis dans le
+          logarithme. C'est $u(x)=x^2-4$, au dénominateur, qui y passe.
+          D'ailleurs $\ln|2x|$ n'est même pas définie en $x=0$, qui est
+          dans l'intervalle.
+    correct_feedback: >
+      $u(x)=x^2-4$, $u'(x)=2x$ : $f=\dfrac{u'}{u}$, de primitive $\ln|u|$
+      sur tout intervalle où $u$ ne s'annule pas. Sur $]-2\,;2[$, $u<0$,
+      donc $|u|=-u=4-x^2$ : $\ln|x^2-4|=\ln(4-x^2)$.
+    solution: |
+      **Reconnaître le modèle :** $u(x)=x^2-4$, $u'(x)=2x$, donc
+      $f(x)=\dfrac{u'(x)}{u(x)}$. Une primitive est $\ln|u|$ sur tout
+      intervalle où $u$ ne s'annule pas.
+
+      **L'intervalle :** $u$ s'annule en $-2$ et en $2$, qui ne sont pas
+      dans $]-2\,;2[$. Sur cet intervalle, $x^2<4$, donc $u(x)<0$ et
+      $|u(x)|=-u(x)=4-x^2$.
+
+      **La primitive :** $F(x)=\ln|x^2-4|=\ln(4-x^2)$. Vérifie en dérivant :
+      $F'(x)=\dfrac{-2x}{4-x^2}=\dfrac{2x}{x^2-4}=f(x)$.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05 (CI-31→CI-34), le 2026-09-23 pour le rung « volume
 # d'un solide de révolution » (CI-35→CI-50, spec-extension.md §7.2), puis
@@ -4560,7 +4622,8 @@ items:
 # Riemann). CI-59→CI-68 écrits par un auteur interrompu, relus : CI-65→CI-68 réécrits (les
 # propositions avouaient leur raisonnement, et la clé était la plus longue ; CI-66 offrait deux fois
 # « H(3) > H(1) »). CI-69→CI-72 écrits pour porter les trois ids neufs au plancher (trig, condition,
-# Riemann : 2, 1, 2 → 3, 3, 3). `u-sur-u-absolue-ou-intervalle-oubliee` reste à 2 : dette antérieure.
+# Riemann : 2, 1, 2 → 3, 3, 3). `u-sur-u-absolue-ou-intervalle-oubliee` restait à 2 (dette antérieure) :
+# CI-73 la porte à 3 le même jour — plancher tenu pour les 25 ids.
 # Tableau GÉNÉRÉ contre la convention de la chaîne, gardé par
 # web/scripts/resume-couverture.mjs.
 coverage_summary:
@@ -4587,21 +4650,21 @@ coverage_summary:
     mc.math.maths_calcul_integral.volume-integrale-sans-pi:               { count: 10, items: [CI-36, CI-37, CI-38, CI-39, CI-41, CI-42, CI-43, CI-44, CI-49, CI-50] }
     mc.math.maths_calcul_integral.volume-carre-mal-place:                 { count: 5, items: [CI-36, CI-37, CI-43, CI-44, CI-50] }
     mc.math.maths_calcul_integral.conversion-unites-volume:               { count: 4, items: [CI-46, CI-47, CI-48, CI-49] }
-    mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee:  { count: 2, items: [CI-52, CI-53] }
-    mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u:           { count: 3, items: [CI-51, CI-53, CI-57] }
-    mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2:                    { count: 4, items: [CI-52, CI-54, CI-55, CI-56] }
+    mc.math.maths_calcul_integral.u-sur-u-absolue-ou-intervalle-oubliee:  { count: 3, items: [CI-52, CI-53, CI-73] }
+    mc.math.maths_calcul_integral.u-sur-u-derivee-au-lieu-de-u:           { count: 4, items: [CI-51, CI-53, CI-57, CI-73] }
+    mc.math.maths_calcul_integral.u-sur-u-vs-u-sur-u2:                    { count: 5, items: [CI-52, CI-54, CI-55, CI-56, CI-73] }
     mc.math.maths_calcul_integral.facteur-constant-non-ajuste:            { count: 6, items: [CI-51, CI-52, CI-53, CI-54, CI-55, CI-56] }
     mc.math.maths_calcul_integral.fonction-cumulee-confondue-avec-f:      { count: 3, items: [CI-58, CI-65, CI-66] }
     mc.math.maths_calcul_integral.u-puissance-n-facteur-non-ajuste:       { count: 5, items: [CI-59, CI-60, CI-61, CI-67, CI-71] }
     mc.math.maths_calcul_integral.trig-facteur-chaine-ou-signe-oublie:    { count: 3, items: [CI-62, CI-63, CI-69] }
     mc.math.maths_calcul_integral.condition-constante-non-isolee:         { count: 3, items: [CI-64, CI-70, CI-71] }
     mc.math.maths_calcul_integral.riemann-somme-mal-identifiee:           { count: 3, items: [CI-67, CI-68, CI-72] }
-  total_items: 69
+  total_items: 70
   floor: 3
-  floor_met: false
+  floor_met: true
   ramp_coverage:
     R0: 3
-    R1: 23
+    R1: 24
     R2: 3
     R3: 4
     R4: 6
@@ -4624,7 +4687,11 @@ coverage_summary:
     pour la dette d'examen vague B du 2026-09-27, révisés wave-1 le même jour)
     portent, eux, un tag sur chaque distracteur.
   honest_state: >-
-    FLOOR NON TENU après la révision wave-1 du 2026-09-27 (voir le
+    FLOOR TENU depuis le 2026-10-20 : CI-73 (u du second degré, négative sur
+    l'intervalle, clé écrite sans valeur absolue) donne son troisième item à
+    `u-sur-u-absolue-ou-intervalle-oubliee`, et la vague G3 avait déjà porté
+    `fonction-cumulee-confondue-avec-f` à 3 (CI-58, CI-65, CI-66). Historique
+    conservé ci-dessous. — FLOOR NON TENU après la révision wave-1 du 2026-09-27 (voir le
     commentaire ci-dessus, points 2 et 4) — signalé ici plutôt que masqué par
     un item de complaisance : `u-sur-u-absolue-ou-intervalle-oubliee` tombe à
     2 items (CI-52, CI-53) et `fonction-cumulee-confondue-avec-f` (neuve,
