@@ -102,35 +102,45 @@ Ordered by what most affects a student. "Report" means the full critic report in
   `scripts/campagnes/sabotages-champ-pentes.py`, ~3 h — run it in a separate worktree, see §2), and a
   wave-2 read (calm/ergonomics critics) like the other scenes had.
 
-### 4.2 PC waves D–E: what the fidelity critic found that is not yet fixed
-Report: `pc-vagues-DE-fidelite.md`. Already fixed (bfe43534): the ± pairs, refusal options, pH 7,0,
-CMP-48 masses, LDN-39/40 rung + honest id, CMP-46 → R5, EE-28 → R4, OMPP-29 wording, STV-19 D,
-the AE-43/AE-40 « deux zéros » feedbacks. **Still open, check each before applying:**
-1. **Two summits pre-solved by prose** (HIGH): `suivi-temporel-vitesse` worked example = the 2021 N
-   summit (same reaction, method, t½ = 8 min); `etat-equilibre` worked example derives exactly summit
-   q2 ($Q_{r,eq} = C\tau^2/(1-\tau)$).
-2. The id `diagramme-largeur-totale-confondue-amplitude` still *declares* « les deux zéros de la
-   parabole »; AE-44 B too; AE-43 plots $E_c(\dot\theta)$, a diagram the bac never prints.
-3. Four bank scope notes say « taught nowhere » about gestures now taught.
-4. Tags whose id description does not cover them: OND-CALC-1 (OMPP-29), LDN-41 D, CMP-46 A/D.
-5. EH-30 C and OMP-27 D: the stated model does not produce the number.
-6. POL-27 → R4, OEM-33 → R2; CMP-46 α → β; $E_C$ → $E_c$; the 0,13 / 0,125 pair; drop R = 8,314.
-7. The degrees→radians id is aimed at torsion, where the bac never uses degrees — move one item to
-   the pendule pesant; and 11 new items carry no `habilete`.
-- **Why it is still open:** the four agents commissioned for it hit the account's session limit
-  before writing a line (2026-09-28, 09:50 UTC reset).
+### 4.2 PC waves D–E: the fidelity critic's findings — applied (2026-10-20)
+Report: `pc-vagues-DE-fidelite.md`. Fixed in bfe43534, then 248d37b1, 7eaf4a43, 7927fe1b:
+- **The two pre-solved summits.** `suivi-temporel-vitesse`'s worked example is now Mg + HCl followed
+  by conductimetry (t½ = 6 min, figure `t-demi-sur-sigma.svg` redrawn); `etat-equilibre`'s
+  derivation of $Q_{r,eq} = C\tau^2/(1-\tau)$ is removed (EE-28 pays that debt alone).
+- The false « deux zéros de la parabole » declaration; AE-43 recast on $E_c(\theta)$; the degrees id
+  broadened to the pendule pesant (AE-42 → R7, and R7 now says the θ² approximation needs
+  radians); stale scope notes, including four STUDENT-VISIBLE bank reasonings that said « la leçon
+  ne montre jamais ce geste »; EH-30 C, OMP-27 D; rungs; β/α; $E_c$; one value for C; R = 8,314
+  dropped; `habilete` on the new items.
+- **Still open:**
+  - LDN-41 D and CMP-46 A/D carry provisional tags until the owner answers DECISIONS §35 q3 (two
+    missing lois-de-Newton ids).
+  - The new `t-demi-sur-sigma.svg` has been checked by CI's figure-preview only; nobody has looked
+    at it rendered, in light and dark.
+  - AE-42's non-converted option (63 m/s) is an outlier by nature (×3283 on θ²).
+  - `suivi-temporel-vitesse` R4's « lecture graphique » (S₂O₈²⁻ data) also prints t½ = 8 min, the
+    summit's answer, on a different reaction.
 
 ### 4.3 Cadre debt, waves G and H (syllabus lines with no chapter — `docs/audits/DETTE-CADRE.md`)
-- **Prose done and committed (ff15dbc2):** G3 integrals (u'·uⁿ, u'·cos u, condition, F = ∫ₐˣ f,
-  Riemann [SM]), G4 log base a / a^x / x^α / n-th root, G5 image of a segment + dichotomy, G6
-  linearisation + Z = z², H1 oscillators (vertical/inclined spring, synchronous pendulum, composed
-  oscillator, fluid vs dry friction), G7 variance — plus its four items.
-- **Items:** G7 done (PC-M23-1…4). G3 done (CI-59…72, 2026-10-20): the ten drafted items reviewed —
-  four rewritten — and four more written so the three new ids reach the floor of three. G4, G5, G6,
-  H1 — no items yet. The prose of every one of them asks the student to « prendre position »: those
-  are prose-only commits until a checkpoint backs them.
-- **Then:** wave-1 critics (pedagogy + bac-fidelity) on all of G/H, and the rest of the plan: G1
-  numeration (4.4), G2 vector spaces (4.5), G8, H2–H5.
+- **Prose (ff15dbc2):** G3 integrals, G4 log base a / a^x / x^α / n-th root, G5 image of a segment
+  + dichotomy, G6 linearisation + Z = z², G7 variance, H1 oscillators.
+- **Items — all done (2026-10-20):**
+
+  | wave | items | new misconception ids |
+  |---|---|---|
+  | G3 | CI-59…73 | — |
+  | G4 | EXP-41…46, LOG-34…38 | 1 |
+  | G5 | LIMCONT-33…38 | 3 |
+  | G6 | NBCOMPLEX-48…50, NBCOMPLEX2-49…52 | 3 |
+  | G7 | PC-M23-1…4 | — |
+  | H1 | SO-44…52 | 2 |
+
+  Every new id has ≥ 3 items. All 62 notions now meet the floor (CI-73 closed the last one).
+- **eleve-ruse was re-sealed** (c0bd7121). Its per-notion ratchet compares averages, so honest
+  items exactly at chance push a below-chance notion over its seal. INSTRUMENTS.md names the
+  property; a measure that would not move is noted there, not armed.
+- **Then:** wave-1 critics on all of G/H (bac-fidelity running 2026-10-20, then pedagogy). The rest
+  of the plan: G1 numeration (4.4), G2 vector spaces (4.5), G8, H2–H5.
 
 ### 4.4 Numeration (SM arithmetic, a new rung R7b) — spec ready for its second draft
 - Spec: `docs/pipeline/propositions/maths-arithmetique-numeration.md`. Reports
