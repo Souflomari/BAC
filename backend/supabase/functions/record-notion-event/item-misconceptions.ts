@@ -1887,6 +1887,9 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
     "LIMCONT-4": [
       "mc.math.maths_limites_continuite.forme-indeterminee-traitee-comme-valeur-litterale"
     ],
+    "LIMCONT-40": [
+      "mc.math.maths_limites_continuite.tvi-hypotheses-ou-conclusion-mal-cernees"
+    ],
     "LIMCONT-5": [
       "mc.math.maths_limites_continuite.definition-continuite-mal-appliquee"
     ],
