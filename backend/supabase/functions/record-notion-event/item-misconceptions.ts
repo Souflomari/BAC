@@ -6355,8 +6355,40 @@ const itemMisconceptions: Record<string, Record<string, string[]>> =
       "M-OSC-LIBRE-1",
       "M-OSC-PHASE-1"
     ],
+    "SO-44": [
+      "M-OSC-EQD-1",
+      "M-OSC-FORM-1"
+    ],
+    "SO-45": [
+      "M-OSC-EQD-1"
+    ],
+    "SO-46": [
+      "M-OSC-FORM-1"
+    ],
+    "SO-47": [
+      "M-OSC-COMP-1",
+      "M-OSC-FORM-1"
+    ],
+    "SO-48": [
+      "M-OSC-COMP-1"
+    ],
+    "SO-49": [
+      "M-OSC-COMP-1",
+      "M-OSC-FORM-1"
+    ],
     "SO-5": [
       "M-OSC-EQD-1"
+    ],
+    "SO-50": [
+      "M-OSC-AMO-1",
+      "M-OSC-AMO-4"
+    ],
+    "SO-51": [
+      "M-OSC-AMO-4"
+    ],
+    "SO-52": [
+      "M-OSC-AMO-3",
+      "M-OSC-AMO-4"
     ],
     "SO-6": [
       "M-OSC-ENER-1"

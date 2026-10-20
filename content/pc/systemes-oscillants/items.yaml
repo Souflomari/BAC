@@ -156,6 +156,55 @@ misconceptions:
       fréquence propre $f_0$, fixée par ses caractéristiques ($m,k$ ou $J,C$),
       qui ne change jamais. La résonance survient quand $f_{exc}$ rejoint ce
       $f_0$ fixe.
+  # ── VAGUE H1 DE LA DETTE DE CADRE (2026-10-20). Deux pièges nommés par la
+  #    prose ajoutée à la leçon ce jour-là, qu'aucune déclaration ci-dessus ne
+  #    décrit : la poulie d'un oscillateur composé (R4) et les deux types de
+  #    frottement (R6). Les deux autres passages neufs — ressort vertical ou
+  #    incliné (R1), pendule simple synchrone (R3) — nomment des erreurs que
+  #    M-OSC-EQD-1 (« laisse un second membre non nul ($mg$) ») et M-OSC-FORM-1
+  #    (« applique au pendule pesant la formule du pendule simple ») décrivent
+  #    déjà ; leurs items portent ces ids.
+  - id: M-OSC-COMP-1
+    label: "La poulie d'un oscillateur composé traitée comme un simple renvoi"
+    description: >-
+      Dans un oscillateur qui combine translation et rotation (solide suspendu
+      à un fil qui passe sans glisser sur une poulie d'inertie $J_\Delta$,
+      ressort), l'élève oublie l'inertie de la poulie (« elle ne fait que
+      guider le fil », d'où $T_1 = T_2$ et $T_0 = 2\pi\sqrt{m/k}$), ou écrit la
+      relation fondamentale de la poulie sans la relier à la translation par
+      $\ddot\theta = \ddot x/R$ — ou avec un lien faux —, si bien que les
+      équations ne se combinent pas, ou se combinent mal. À l'inverse, il peut
+      ne garder que $J_\Delta$ comme inertie, en oubliant le solide entraîné
+      par le fil.
+    contradicts_principle: >-
+      Le fil inextensible qui ne glisse pas impose $\theta = x/R$, donc
+      $\ddot\theta = \ddot x/R$ : une seule variable décrit tout le système. La
+      deuxième loi de Newton (solide) et la relation fondamentale de la
+      dynamique de rotation (poulie), combinées par ce lien, donnent
+      $(J_\Delta + mR^2)\,\ddot x + kR^2\,x = 0$ : l'inertie est la SOMME des
+      deux contributions, et une poulie d'inertie non nulle allonge la période
+      propre, $T_0 = 2\pi\sqrt{(J_\Delta + mR^2)/(kR^2)}$.
+  - id: M-OSC-AMO-4
+    label: "Un seul type de frottement, ou le type jugé à la rapidité de la décroissance"
+    description: >-
+      L'élève croit que tout amortissement produit la même allure (« du
+      frottement, c'est du frottement »), ou juge le type d'un enregistrement
+      $x(t)$ à la RAPIDITÉ avec laquelle l'amplitude diminue (« elle chute
+      vite, donc frottement sec ») au lieu de la FORME de l'enveloppe des
+      sommets. Il attend alors d'un frottement sec la fin d'un frottement
+      fluide — une amplitude qui s'approche de zéro, un retour exact à
+      l'équilibre —, ou déduit le type du régime (« il oscille encore, donc
+      frottement fluide » ; « presque critique, donc frottement sec »).
+    contradicts_principle: >-
+      Deux TYPES distincts. Le frottement fluide (force proportionnelle à la
+      vitesse) retire à chaque aller-retour une FRACTION de l'énergie présente :
+      l'enveloppe est une courbe qui s'aplatit en s'approchant de zéro. Le
+      frottement solide (force d'intensité à peu près constante) retire une
+      QUANTITÉ fixe : l'enveloppe est une droite, et l'arrêt survient net après
+      un nombre fini d'allers-retours, près de l'équilibre mais pas forcément
+      dessus. La rapidité de la décroissance dit l'INTENSITÉ du frottement, pas
+      son type ; et le type (quelle force freine) n'est pas le régime (comment
+      le système répond).
 
 items:
   - id: SO-1
@@ -2805,6 +2854,662 @@ items:
       absolue. En $x = \pm X_m$, tout est potentiel : la vitesse y est nulle.
       Rien ne retire d'énergie au système, donc l'amplitude ne décroît pas.
 
+  # ── SO-44…SO-52 (2026-10-20) — dette de cadre, vague H1 (docs/audits/DETTE-CADRE.md).
+  #    Les quatre passages ajoutés à la leçon le même jour (commit ff15dbc2),
+  #    chacun avec son « prends position » et son piège nommé, n'avaient aucun
+  #    item. Ceux-ci les adossent, au barreau où la prose se trouve :
+  #    • R1, « Et si le ressort n'est pas horizontal ? » — SO-44 (plan incliné),
+  #      SO-45 (ressort vertical, allongement total contre écart à l'équilibre).
+  #      Le piège nommé, garder $mg$ dans l'équation écrite autour de
+  #      l'équilibre, est déjà décrit par M-OSC-EQD-1 (« laisse un second membre
+  #      non nul ($mg$) ») : pas d'id neuf.
+  #    • R3, « Le pendule simple synchrone » — SO-46. Confondre $\ell$ et $d$,
+  #      c'est appliquer au pendule pesant la formule du pendule simple avec
+  #      $L = d$ : M-OSC-FORM-1 le décrit déjà.
+  #    • R4, « Aller plus loin : un oscillateur composé » — SO-47, SO-48, SO-49,
+  #      sur un id neuf, M-OSC-COMP-1. Le titre de la leçon dit « aller plus
+  #      loin », mais le cadre en fait un savoir-faire de ce chapitre
+  #      (docs/cadre/curriculum/pc-physique-chimie.yaml, systemes_oscillants :
+  #      « Appliquer 2e loi + RFD à un système oscillant composé ») et aucune
+  #      limite ne l'écarte : c'est un geste d'examen, d'où trois items.
+  #    • R6, « Deux types de frottement, pas un seul » — SO-50, SO-51, SO-52,
+  #      sur un id neuf, M-OSC-AMO-4 (lecture fluide/solide, défaut du
+  #      propriétaire, docs/audits/DECISIONS-EN-ATTENTE.md §37).
+  #    Le champ `habilete:` n'est posé que sur ces neuf items ; les 43 items
+  #    antérieurs n'en portent pas.
+  - id: SO-44
+    rung: "R1"
+    difficulty_level: 2
+    habilete: utilisation
+    skill_code: pc_systemes_oscillants
+    tags: [plan_incline, equation_differentielle, position_equilibre, periode_propre]
+    stem: >
+      Un solide de masse $m$, accroché à un ressort de raideur $k$ fixé en haut
+      d'un plan incliné d'un angle $\alpha$, glisse sans frottement le long de
+      la pente. On repère son centre d'inertie par $x$, son écart à la position
+      d'équilibre, sur un axe parallèle à la pente orienté vers le bas. Quelle
+      proposition est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $m\ddot{x} + kx = mg\sin\alpha$, avec une période propre
+          $T_0 = 2\pi\sqrt{m/k}$
+        correct: false
+        misconception: M-OSC-EQD-1
+        feedback: >
+          Ce second membre compte le poids deux fois. Sa composante le long de
+          la pente, $mg\sin\alpha$, est déjà compensée à l'équilibre par la
+          tension du ressort, $k\,\Delta L_0 = mg\sin\alpha$ — c'est elle qui
+          fixe l'origine de $x$. Avec cette équation, l'équilibre
+          ($\ddot{x} = 0$) tomberait en $x = mg\sin\alpha/k$, et non en $x = 0$
+          comme le veut la définition même de $x$. La période, elle, est juste.
+      - id: B
+        text: >-
+          $m\ddot{x} + kx = 0$, avec une période propre
+          $T_0 = 2\pi\sqrt{m/k}$
+        correct: true
+      - id: C
+        text: >-
+          $m\ddot{x} + kx = 0$, avec une période propre
+          $T_0 = \sqrt{m/k}$
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          L'équation est juste, mais la période a perdu son facteur $2\pi$ :
+          $\sqrt{m/k}$ vaut $1/\omega_0$, une durée $2\pi$ fois trop courte. La
+          période propre est $T_0 = 2\pi/\omega_0 = 2\pi\sqrt{m/k}$.
+      - id: D
+        text: >-
+          $m\ddot{x} - kx = 0$, avec une période propre
+          $T_0 = 2\pi\sqrt{m/k}$
+        correct: false
+        misconception: M-OSC-EQD-1
+        feedback: >
+          Le signe moins de la force de rappel, $-kx$, a été gardé en passant
+          le terme de l'autre côté de l'égalité : $m\ddot{x} = -kx$ s'écrit
+          $m\ddot{x} + kx = 0$. Avec un moins, les solutions seraient des
+          exponentielles qui s'emballent — il n'y aurait plus de période du
+          tout.
+    correct_feedback: >
+      Mesuré depuis l'équilibre, l'écart $x$ obéit à $m\ddot{x} + kx = 0$ : la
+      composante $mg\sin\alpha$ du poids est exactement compensée par la
+      tension d'équilibre du ressort. D'où la même période propre qu'à
+      l'horizontale, $T_0 = 2\pi\sqrt{m/k}$ ; seule la position d'équilibre a
+      changé.
+    solution: |
+      **Le bilan le long de la pente.** Le poids a une composante
+      $mg\sin\alpha$ vers le bas de la pente ; la réaction du plan, sans
+      frottement, est perpendiculaire à la pente ; le ressort exerce $-kX$,
+      où $X$ est son allongement total.
+      $$m\ddot{X} = mg\sin\alpha - kX$$
+      **L'équilibre.** $\ddot{X} = 0$ donne $k\,\Delta L_0 = mg\sin\alpha$,
+      soit $\Delta L_0 = \dfrac{mg\sin\alpha}{k}$.
+      **Recentrer.** Avec $x = X - \Delta L_0$, et $\ddot{x} = \ddot{X}$ :
+      $$m\ddot{x} = (mg\sin\alpha - k\,\Delta L_0) - kx = -kx \quad\Longrightarrow\quad m\ddot{x} + kx = 0$$
+      $$T_0 = 2\pi\sqrt{\frac{m}{k}}$$
+      Le poids n'apparaît qu'une fois : dans $\Delta L_0$.
+
+  - id: SO-45
+    rung: "R1"
+    difficulty_level: 3
+    habilete: résolution
+    skill_code: pc_systemes_oscillants
+    tags: [ressort_vertical, equation_differentielle, position_equilibre, changement_de_variable]
+    stem: >
+      Un solide de masse $m$ est suspendu à un ressort vertical de raideur $k$.
+      L'axe vertical est orienté vers le bas, et on peut repérer le solide de
+      deux façons : par $X$, l'allongement total du ressort mesuré depuis sa
+      longueur à vide, ou par $x = X - \Delta L_0$, l'écart à la position
+      d'équilibre ($\Delta L_0$ étant l'allongement à l'équilibre). Quelle
+      paire d'équations différentielles est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Pour $X$ : $m\ddot{X} + kX = mg$ ; pour $x$ :
+          $m\ddot{x} + kx = mg$
+        correct: false
+        misconception: M-OSC-EQD-1
+        feedback: >
+          L'équation en $X$ est juste ; celle en $x$ compte le poids deux fois.
+          Le poids est déjà compensé par la tension d'équilibre,
+          $k\,\Delta L_0 = mg$ : c'est ce qui a permis de passer de $X$ à $x$.
+          Le garder en second membre placerait l'équilibre en $x = mg/k$,
+          c'est-à-dire à un allongement total de $2mg/k$ — le double de
+          l'allongement réel.
+      - id: B
+        text: >-
+          Pour $X$ : $m\ddot{X} + kX = 0$ ; pour $x$ :
+          $m\ddot{x} + kx = mg$
+        correct: false
+        misconception: M-OSC-EQD-1
+        feedback: >
+          Les deux seconds membres sont intervertis. C'est l'allongement TOTAL
+          $X$, mesuré depuis la longueur à vide, qui voit le poids :
+          $m\ddot{X} = mg - kX$. En passant à $x = X - \Delta L_0$, le terme
+          $mg - k\,\Delta L_0$ est nul, et c'est l'équation en $x$ qui n'a plus
+          de second membre.
+      - id: C
+        text: >-
+          Pour $X$ : $m\ddot{X} + kX = mg$ ; pour $x$ :
+          $m\ddot{x} + kx = 0$
+        correct: true
+      - id: D
+        text: >-
+          Pour $X$ : $m\ddot{X} - kX = mg$ ; pour $x$ :
+          $m\ddot{x} - kx = 0$
+        correct: false
+        misconception: M-OSC-EQD-1
+        feedback: >
+          Le signe de la force de rappel s'est perdu : vers le bas, elle vaut
+          $-kX$, donc $m\ddot{X} = mg - kX$, soit $m\ddot{X} + kX = mg$. Avec
+          un moins devant le terme de rappel, l'écart s'emballerait au lieu
+          d'osciller.
+    correct_feedback: >
+      Avec $X$, le poids figure en second membre, $m\ddot{X} + kX = mg$ ; à
+      l'équilibre, $k\,\Delta L_0 = mg$. Avec $x = X - \Delta L_0$, ce terme
+      s'annule exactement et il reste $m\ddot{x} + kx = 0$ — la même équation
+      qu'à l'horizontale.
+    solution: |
+      **En $X$.** Vers le bas : le poids $+mg$, la force de rappel $-kX$.
+      $$m\ddot{X} = mg - kX \quad\Longrightarrow\quad m\ddot{X} + kX = mg$$
+      **L'équilibre.** $\ddot{X} = 0$ donne $k\,\Delta L_0 = mg$.
+      **En $x$.** Comme $\Delta L_0$ est constant, $\ddot{x} = \ddot{X}$ :
+      $$m\ddot{x} = mg - k(x + \Delta L_0) = (mg - k\,\Delta L_0) - kx = -kx$$
+      $$m\ddot{x} + kx = 0$$
+      Le poids ne disparaît pas par oubli : il est exactement compensé par la
+      tension d'équilibre, à condition de mesurer l'écart depuis l'équilibre.
+
+  - id: SO-46
+    rung: "R3"
+    difficulty_level: 3
+    habilete: utilisation
+    skill_code: pc_systemes_oscillants
+    tags: [pendule_pesant, pendule_simple_synchrone, moment_inertie]
+    stem: >
+      Une tige homogène de longueur $0{,}90\ \text{m}$ et de masse
+      $0{,}24\ \text{kg}$ oscille autour d'un axe horizontal $\Delta$ passant à
+      $15\ \text{cm}$ de l'une de ses extrémités. Son centre d'inertie $G$ est
+      donc à $d = 0{,}30\ \text{m}$ de l'axe, et son moment d'inertie par
+      rapport à $\Delta$ vaut
+      $J_\Delta = 3{,}78\times10^{-2}\ \text{kg}\cdot\text{m}^2$ (donnée).
+      Quelle est la longueur $\ell$ du pendule simple synchrone de cette tige ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\ell = 0{,}300\\ \\text{m}$"
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          C'est $d$, la distance de l'axe au centre d'inertie : la tige a été
+          traitée comme un pendule simple dont toute la masse serait en $G$. Ce
+          serait vrai si $J_\Delta$ valait
+          $md^2 = 0{,}24\times0{,}30^2 = 2{,}16\times10^{-2}\ \text{kg}\cdot\text{m}^2$ ;
+          il vaut ici $3{,}78\times10^{-2}\ \text{kg}\cdot\text{m}^2$, parce que
+          la masse est étalée le long de la tige. La longueur synchrone se
+          calcule : $\ell = J_\Delta/(md)$.
+      - id: B
+        text: "$\\ell = 0{,}525\\ \\text{m}$"
+        correct: true
+      - id: C
+        text: "$\\ell = 0{,}750\\ \\text{m}$"
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          C'est la distance de l'axe à l'extrémité basse : la tige a été prise
+          pour le fil d'un pendule simple qui porterait sa masse au bout. Sa
+          masse est répartie sur toute sa longueur ; la longueur synchrone ne se
+          lit pas sur l'objet, elle se calcule par $\ell = J_\Delta/(md)$.
+      - id: D
+        text: "$\\ell = 0{,}900\\ \\text{m}$"
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          C'est la longueur de la tige : la formule du pendule simple a été
+          appliquée en prenant pour $L$ la taille de l'objet. Pour un pendule
+          pesant, la période est $2\pi\sqrt{J_\Delta/(mgd)}$, et le pendule
+          simple qui bat au même rythme a pour longueur $\ell = J_\Delta/(md)$
+          — ni la taille de la tige, ni $d$.
+    correct_feedback: >
+      On égale les deux périodes, $2\pi\sqrt{\ell/g} = 2\pi\sqrt{J_\Delta/(mgd)}$,
+      d'où $\ell = J_\Delta/(md) = 0{,}525\ \text{m}$ — plus que
+      $d = 0{,}30\ \text{m}$ : $J_\Delta$ dépasse ici $md^2$, la masse n'étant
+      pas concentrée en $G$.
+    solution: |
+      Le pendule simple synchrone a la même période que la tige :
+      $$2\pi\sqrt{\frac{\ell}{g}} = 2\pi\sqrt{\frac{J_\Delta}{mgd}} \quad\Longrightarrow\quad \ell = \frac{J_\Delta}{m\,d}$$
+      $$\ell = \frac{3{,}78\times10^{-2}}{0{,}24\times0{,}30} = \frac{3{,}78\times10^{-2}}{7{,}2\times10^{-2}} = 0{,}525\ \text{m}$$
+      Ni $g$ ni la longueur de la tige n'entrent dans le résultat. $\ell$ et
+      $d$ ne coïncideraient que si toute la masse était concentrée en $G$,
+      c'est-à-dire si $J_\Delta = md^2$.
+
+  - id: SO-47
+    rung: "R4"
+    difficulty_level: 3
+    habilete: résolution
+    skill_code: pc_systemes_oscillants
+    tags: [oscillateur_compose, poulie, moment_inertie, periode_propre]
+    stem: >
+      Un solide de masse $m = 0{,}30\ \text{kg}$ pend au bout d'un fil
+      inextensible, de masse négligeable, qui passe sans glisser sur une poulie
+      de rayon $R = 3{,}0\ \text{cm}$ et de moment d'inertie
+      $J_\Delta = 1{,}8\times10^{-4}\ \text{kg}\cdot\text{m}^2$, mobile sans
+      frottement autour d'un axe fixe. L'autre extrémité du fil est attachée à
+      un ressort horizontal de raideur $k = 18\ \text{N/m}$, fixé à un mur.
+      Quelle est la période propre $T_0$ des oscillations de ce système ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$T_0 \\approx 0{,}66\\ \\text{s}$"
+        correct: false
+        misconception: M-OSC-COMP-1
+        feedback: >
+          Cette valeur est $2\pi\sqrt{J_\Delta/(kR^2)}$ : seule la poulie a été
+          gardée comme inertie, comme si le solide suspendu ne bougeait pas. Il
+          est pourtant entraîné par le fil : sa contribution
+          $mR^2 = 2{,}7\times10^{-4}\ \text{kg}\cdot\text{m}^2$ s'ajoute à
+          $J_\Delta$ dans l'inertie totale.
+      - id: B
+        text: "$T_0 \\approx 0{,}81\\ \\text{s}$"
+        correct: false
+        misconception: M-OSC-COMP-1
+        feedback: >
+          Cette valeur est $2\pi\sqrt{m/k}$ : la poulie a été traitée comme un
+          simple renvoi, sans inertie. Elle doit pourtant être mise en rotation
+          à chaque aller-retour ; avec $\ddot\theta = \ddot x/R$, son inertie
+          s'ajoute à celle du solide, $(J_\Delta + mR^2)\,\ddot x + kR^2 x = 0$,
+          et la période s'allonge.
+      - id: C
+        text: "$T_0 \\approx 1{,}05\\ \\text{s}$"
+        correct: true
+      - id: D
+        text: "$T_0 \\approx 0{,}17\\ \\text{s}$"
+        correct: false
+        misconception: M-OSC-FORM-1
+        feedback: >
+          Cette valeur est $\sqrt{(J_\Delta + mR^2)/(kR^2)}$ : l'inertie totale
+          est juste, mais le facteur $2\pi$ a disparu — c'est $1/\omega_0$, pas
+          la période. $T_0 = 2\pi/\omega_0$.
+    correct_feedback: >
+      L'inertie totale est
+      $J_\Delta + mR^2 = 4{,}5\times10^{-4}\ \text{kg}\cdot\text{m}^2$ et le
+      rappel $kR^2 = 1{,}62\times10^{-2}\ \text{N}\cdot\text{m}$ ; d'où
+      $\omega_0 = 6{,}0\ \text{rad/s}$ et $T_0 = 2\pi/\omega_0 \approx 1{,}05\ \text{s}$.
+    solution: |
+      **Une seule variable.** Le fil ne glisse pas : $\theta = x/R$, donc
+      $\ddot\theta = \ddot x/R$.
+      **Le solide** (deuxième loi de Newton, axe vers le bas) :
+      $m\ddot x = mg - T_1$.
+      **La poulie** (relation fondamentale de la dynamique de rotation) :
+      $J_\Delta\,\ddot\theta = (T_1 - T_2)R$.
+      **Le ressort** : $T_2 = k(x + X_{eq})$, avec $kX_{eq} = mg$ à
+      l'équilibre.
+      En éliminant $T_1$ et $T_2$ :
+      $$(J_\Delta + mR^2)\,\ddot x + kR^2\,x = 0 \qquad T_0 = 2\pi\sqrt{\frac{J_\Delta + mR^2}{kR^2}}$$
+      $$J_\Delta + mR^2 = 1{,}8\times10^{-4} + 0{,}30\times(3{,}0\times10^{-2})^2 = 4{,}5\times10^{-4}\ \text{kg}\cdot\text{m}^2$$
+      $$kR^2 = 18\times(3{,}0\times10^{-2})^2 = 1{,}62\times10^{-2}\ \text{N}\cdot\text{m}$$
+      $$\omega_0 = \sqrt{\frac{1{,}62\times10^{-2}}{4{,}5\times10^{-4}}} = \sqrt{36} = 6{,}0\ \text{rad/s} \qquad T_0 = \frac{2\pi}{6{,}0} \approx 1{,}05\ \text{s}$$
+      Sans l'inertie de la poulie, on trouverait
+      $2\pi\sqrt{m/k} \approx 0{,}81\ \text{s}$ : la poulie réelle ralentit
+      l'oscillateur.
+
+  - id: SO-48
+    rung: "R4"
+    difficulty_level: 2
+    habilete: utilisation
+    skill_code: pc_systemes_oscillants
+    tags: [oscillateur_compose, poulie, relation_cinematique, equation_differentielle]
+    stem: >
+      Un solide suspendu à un fil inextensible, qui passe sans glisser sur une
+      poulie de rayon $R$ et de moment d'inertie $J_\Delta$, est relié par ce
+      fil à un ressort de raideur $k$. Un élève a écrit trois relations : pour
+      le solide, $m\ddot x = mg - T_1$ ; pour la poulie,
+      $J_\Delta\,\ddot\theta = (T_1 - T_2)R$ ; pour le ressort,
+      $T_2 = k(x + X_{eq})$. Que lui manque-t-il pour en tirer une seule
+      équation différentielle en $x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          L'égalité des tensions, $T_1 = T_2$, le fil transmettant la même
+          tension de part et d'autre de la poulie
+        correct: false
+        misconception: M-OSC-COMP-1
+        feedback: >
+          Poser $T_1 = T_2$, c'est traiter la poulie comme si elle n'avait pas
+          d'inertie : sa relation donnerait alors $J_\Delta\,\ddot\theta = 0$,
+          et la poulie ne pourrait plus accélérer. Les deux tensions diffèrent
+          justement parce qu'il faut un moment pour mettre la poulie en
+          rotation.
+      - id: B
+        text: >-
+          La relation $\ddot\theta = \ddot x/R$, imposée par le fil qui ne
+          glisse pas sur la gorge de la poulie
+        correct: true
+      - id: C
+        text: >-
+          Éliminer $T_1$ et $T_2$ entre ces trois relations suffit, sans
+          autre équation
+        correct: false
+        misconception: M-OSC-COMP-1
+        feedback: >
+          Les trois relations portent quatre grandeurs inconnues qui varient
+          avec le temps — $x$, $\theta$, $T_1$, $T_2$. Éliminer les tensions
+          laisse une équation où figurent à la fois $\ddot\theta$ et
+          $\ddot x$ : tant que le lien imposé par le fil,
+          $\ddot\theta = \ddot x/R$, n'est pas posé, on n'obtient pas
+          d'équation en $x$ seul.
+      - id: D
+        text: >-
+          La relation $\ddot\theta = R\,\ddot x$, la poulie tournant d'autant
+          plus vite que son rayon est plus grand
+        correct: false
+        misconception: M-OSC-COMP-1
+        feedback: >
+          C'est l'inverse : un déplacement $x$ du fil fait tourner la gorge
+          d'un angle $\theta = x/R$ (une longueur d'arc divisée par le rayon),
+          d'autant plus PETIT que le rayon est grand. Avec
+          $\ddot\theta = R\,\ddot x$, on aboutirait à
+          $(J_\Delta + m)\,\ddot x + kx = 0$ — une somme de deux grandeurs qui
+          n'ont même pas la même unité.
+    correct_feedback: >
+      Le fil inextensible qui ne glisse pas impose $\theta = x/R$, donc
+      $\ddot\theta = \ddot x/R$. Avec cette relation, on élimine $T_1$ et $T_2$,
+      et il reste $(J_\Delta + mR^2)\,\ddot x + kR^2\,x = 0$.
+    solution: |
+      Quatre grandeurs varient avec le temps : $x$, $\theta$, $T_1$, $T_2$.
+      Les trois relations ne suffisent pas ; la quatrième est cinématique :
+      $$\theta = \frac{x}{R} \quad\Longrightarrow\quad \ddot\theta = \frac{\ddot x}{R}$$
+      On la reporte dans la relation de la poulie, avec
+      $T_1 = mg - m\ddot x$, $T_2 = k(x + X_{eq})$ et $kX_{eq} = mg$ :
+      $$J_\Delta\,\frac{\ddot x}{R} = R\big[(mg - m\ddot x) - k(x + X_{eq})\big] = R\,(-m\ddot x - kx)$$
+      $$(J_\Delta + mR^2)\,\ddot x + kR^2\,x = 0$$
+
+  - id: SO-49
+    rung: "R4"
+    difficulty_level: 3
+    habilete: résolution
+    skill_code: pc_systemes_oscillants
+    tags: [oscillateur_compose, poulie, moment_inertie, periode_propre]
+    stem: >
+      Un oscillateur est formé d'un solide suspendu à un fil qui passe sans
+      glisser sur une poulie de rayon $R$, le fil étant attaché de l'autre côté
+      à un ressort. On remplace la poulie par une autre de même rayon, mais dont
+      le moment d'inertie est quatre fois plus grand ; le solide et le ressort
+      ne changent pas. Comment la période propre évolue-t-elle ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Elle ne change pas : tant que le fil ne glisse pas sur elle, la
+          poulie se contente de guider le fil
+        correct: false
+        misconception: M-OSC-COMP-1
+        feedback: >
+          Une poulie qui a sa propre inertie ne se contente pas de guider le
+          fil : il faut la mettre en rotation à chaque aller-retour. Son moment
+          d'inertie entre dans l'inertie totale, $J_\Delta + mR^2$, et la
+          période propre $T_0 = 2\pi\sqrt{(J_\Delta + mR^2)/(kR^2)}$ augmente
+          avec lui.
+      - id: B
+        text: >-
+          Elle double, puisque la période varie comme la racine carrée du
+          moment d'inertie de la poulie
+        correct: false
+        misconception: M-OSC-COMP-1
+        feedback: >
+          Le facteur 2 suppose que la période ne dépend que du moment d'inertie
+          de la poulie, comme si le solide suspendu n'ajoutait rien. Or
+          l'inertie totale est $J_\Delta + mR^2$ : quadrupler $J_\Delta$ seul ne
+          quadruple pas la somme, et la période est multipliée par
+          $\sqrt{(4J_\Delta + mR^2)/(J_\Delta + mR^2)}$, qui reste inférieur
+          à 2.
+      - id: C
+        text: >-
+          Elle est multipliée par 4, comme le moment d'inertie de la poulie
+        correct: false
+        misconception: [M-OSC-FORM-1, M-OSC-COMP-1]
+        feedback: >
+          Deux pertes à la fois : la racine carrée de la formule de la période,
+          et la contribution $mR^2$ du solide entraîné. Même pour une poulie
+          seule, quadrupler l'inertie ne ferait que doubler la période ; ici,
+          comme une partie seulement de l'inertie totale $J_\Delta + mR^2$
+          quadruple, le facteur reste compris entre 1 et 2.
+      - id: D
+        text: >-
+          Elle augmente, mais moins que du double : une partie seulement de
+          l'inertie totale a quadruplé
+        correct: true
+    correct_feedback: >
+      $T_0 = 2\pi\sqrt{(J_\Delta + mR^2)/(kR^2)}$. Quand $J_\Delta$ devient
+      $4J_\Delta$, la période est multipliée par
+      $\sqrt{(4J_\Delta + mR^2)/(J_\Delta + mR^2)}$ : plus que 1, puisque
+      l'inertie totale augmente, et moins que 2, puisque $mR^2$ n'a pas changé.
+    solution: |
+      $$\frac{T_0'}{T_0} = \sqrt{\frac{4J_\Delta + mR^2}{J_\Delta + mR^2}}$$
+      Le numérateur dépasse le dénominateur : le rapport est supérieur à 1.
+      Et $4J_\Delta + mR^2 < 4(J_\Delta + mR^2)$ dès que $mR^2 > 0$ : la
+      fraction sous la racine est inférieure à 4, donc le rapport des périodes
+      est inférieur à 2.
+      Il n'atteindrait 2 que si le solide n'avait pas d'inertie, et resterait
+      égal à 1 si la poulie n'en avait pas.
+
+  - id: SO-50
+    rung: "R6"
+    difficulty_level: 2
+    habilete: application_experimentale
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, types_de_frottement, enveloppe, document_experimental]
+    stem: >
+      Un chariot accroché à un ressort horizontal oscille en étant freiné. Sur
+      l'enregistrement $x(t)$, on relève les sommets successifs du côté
+      positif, un par aller-retour : $6{,}6$ ; $4{,}4$ ; $2{,}9$ ; $2{,}0$ ;
+      $1{,}3\ \text{cm}$. Quelle proposition est correcte ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Un frottement solide : l'amplitude a chuté de plus des trois quarts
+          en quatre allers-retours, et un freinage aussi rapide est celui d'un
+          frottement sec
+        correct: false
+        misconception: M-OSC-AMO-4
+        feedback: >
+          La rapidité de la décroissance dit l'INTENSITÉ du frottement, pas son
+          type. Le type se lit à la forme : ici les sommets baissent de
+          $2{,}2$, puis $1{,}5$, puis $0{,}9$, puis $0{,}7\ \text{cm}$ — des
+          écarts qui diminuent, donc une enveloppe courbe, celle d'un frottement
+          fluide. Un frottement sec retrancherait le même écart à chaque
+          aller-retour.
+      - id: B
+        text: >-
+          Un frottement fluide : l'écart entre deux sommets successifs diminue,
+          et l'enveloppe est une courbe qui s'aplatit
+        correct: true
+      - id: C
+        text: >-
+          Les deux types de frottement donnent cette même allure ; ces sommets
+          renseignent sur l'intensité du freinage, pas sur sa nature
+        correct: false
+        misconception: M-OSC-AMO-4
+        feedback: >
+          Les deux types ne donnent pas la même allure. Un frottement fluide
+          retire à chaque aller-retour une fraction de l'énergie présente :
+          l'enveloppe est une courbe qui s'aplatit. Un frottement sec retire une
+          quantité fixe : les sommets baissent d'un même écart, l'enveloppe est
+          une droite. Ici les écarts diminuent ($2{,}2$ ; $1{,}5$ ; $0{,}9$ ;
+          $0{,}7\ \text{cm}$) : c'est la signature d'un frottement fluide.
+      - id: D
+        text: >-
+          Un frottement fluide, et la pseudo-période raccourcit d'un
+          aller-retour à l'autre, à mesure que l'amplitude diminue
+        correct: false
+        misconception: M-OSC-AMO-1
+        feedback: >
+          Le type est bien reconnu, mais la pseudo-période ne suit pas
+          l'amplitude : elle reste voisine de la période propre, fixée par $m$
+          et $k$. C'est l'écart maximal qui décroît, pas la durée d'un
+          aller-retour.
+    correct_feedback: >
+      Les sommets baissent de $2{,}2$, $1{,}5$, $0{,}9$ puis $0{,}7\ \text{cm}$ :
+      des écarts qui diminuent avec l'amplitude. L'enveloppe est donc une
+      courbe qui s'aplatit en s'approchant de zéro — la forme d'un frottement
+      fluide, même si la baisse est rapide.
+    solution: |
+      On calcule l'écart entre deux sommets successifs (en cm) :
+      $$6{,}6 - 4{,}4 = 2{,}2 \qquad 4{,}4 - 2{,}9 = 1{,}5 \qquad 2{,}9 - 2{,}0 = 0{,}9 \qquad 2{,}0 - 1{,}3 = 0{,}7$$
+      Les écarts diminuent à mesure que l'amplitude diminue : la perte par
+      aller-retour dépend de l'amplitude en cours. C'est le frottement fluide
+      (force proportionnelle à la vitesse) : l'enveloppe est une courbe qui
+      s'aplatit. Un frottement sec, d'intensité constante, retrancherait le
+      même écart à chaque aller-retour (enveloppe rectiligne).
+      La baisse est rapide ici : cela dit seulement que le frottement est
+      intense, pas de quel type il est.
+
+  - id: SO-51
+    rung: "R6"
+    difficulty_level: 3
+    habilete: application_experimentale
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, types_de_frottement, enveloppe, document_experimental]
+    stem: >
+      Deux pendules élastiques identiques, lâchés du même écart initial, sont
+      freinés de deux façons différentes. Sur chaque enregistrement $x(t)$, on
+      relève les sommets successifs du côté positif, un par aller-retour.
+      Premier enregistrement : $6{,}4$ ; $4{,}0$ ; $2{,}5$ ;
+      $1{,}6\ \text{cm}$. Second enregistrement : $6{,}4$ ; $5{,}8$ ; $5{,}2$ ;
+      $4{,}6$ ; $4{,}0\ \text{cm}$. Lequel des deux est freiné par un
+      frottement solide ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Le premier, dont l'amplitude chute bien plus vite que celle du second
+        correct: false
+        misconception: M-OSC-AMO-4
+        feedback: >
+          La rapidité de la baisse dit l'INTENSITÉ du frottement, pas son type.
+          Le premier perd $2{,}4$, puis $1{,}5$, puis $0{,}9\ \text{cm}$ : des
+          écarts qui diminuent, une enveloppe courbe — un frottement fluide,
+          intense. Le second perd $0{,}6\ \text{cm}$ à chaque aller-retour :
+          enveloppe rectiligne, frottement solide, même si la baisse est lente.
+      - id: B
+        text: >-
+          Le second, dont les sommets baissent d'un même écart à chaque
+          aller-retour
+        correct: true
+      - id: C
+        text: >-
+          Les deux, puisque leurs amplitudes décroissent ; seule l'intensité du
+          freinage diffère
+        correct: false
+        misconception: M-OSC-AMO-4
+        feedback: >
+          Les deux amplitudes décroissent, mais pas de la même façon, et c'est
+          la forme qui dit le type. Le premier enregistrement perd des écarts
+          qui diminuent ($2{,}4$ ; $1{,}5$ ; $0{,}9\ \text{cm}$) : enveloppe
+          courbe, frottement fluide. Le second perd $0{,}6\ \text{cm}$ à chaque
+          aller-retour : enveloppe rectiligne, frottement solide.
+      - id: D
+        text: >-
+          Le premier : un amortissement aussi marqué le rapproche du régime
+          critique, celui du frottement sec
+        correct: false
+        misconception: M-OSC-AMO-4
+        feedback: >
+          Le type et le régime répondent à deux questions différentes : le type
+          dit quelle force freine ; le régime dit comment le système répond,
+          une fois l'intensité du frottement fixée. Le premier enregistrement
+          oscille encore, avec des écarts décroissants entre sommets :
+          frottement fluide, en régime pseudo-périodique. C'est la forme
+          rectiligne du second qui signe le frottement solide.
+    correct_feedback: >
+      Le second enregistrement perd $0{,}6\ \text{cm}$ à chaque aller-retour :
+      une quantité fixe, une enveloppe rectiligne — la signature d'un
+      frottement solide, d'intensité constante. Le premier perd des écarts qui
+      diminuent : enveloppe courbe, frottement fluide, simplement plus intense.
+    solution: |
+      On compare les écarts entre sommets successifs.
+      Premier : $6{,}4 - 4{,}0 = 2{,}4$ ; $4{,}0 - 2{,}5 = 1{,}5$ ;
+      $2{,}5 - 1{,}6 = 0{,}9\ \text{cm}$ — des écarts qui diminuent, une
+      enveloppe courbe : frottement fluide.
+      Second : $6{,}4 - 5{,}8 = 0{,}6$ ; $5{,}8 - 5{,}2 = 0{,}6$ ;
+      $5{,}2 - 4{,}6 = 0{,}6$ ; $4{,}6 - 4{,}0 = 0{,}6\ \text{cm}$ — un écart
+      constant, une enveloppe rectiligne : frottement solide.
+      Le premier décroît plus vite parce que son frottement est plus intense ;
+      cela ne dit rien de son type.
+
+  - id: SO-52
+    rung: "R6"
+    difficulty_level: 2
+    habilete: utilisation
+    skill_code: pc_systemes_oscillants
+    tags: [amortissement, frottement_solide, arret, energie]
+    stem: >
+      Un solide accroché à un ressort horizontal glisse sur un support qui le
+      freine par frottement sec : une force d'intensité à peu près constante,
+      opposée au mouvement. On l'écarte nettement de sa position d'équilibre,
+      puis on le lâche. Comment son mouvement se termine-t-il ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Ses oscillations s'éteignent sans arrêt net : l'amplitude se rapproche
+          de zéro sans l'atteindre en un temps fini
+        correct: false
+        misconception: M-OSC-AMO-4
+        feedback: >
+          C'est la fin d'un frottement fluide, transposée au frottement sec. Une
+          force fluide s'affaiblit avec la vitesse, d'où une amplitude qui
+          s'approche de zéro sans l'atteindre en un temps fini. Une force sèche
+          garde la même intensité : elle retranche le même écart à chaque
+          aller-retour, et l'arrêt survient net, après un nombre fini
+          d'allers-retours.
+      - id: B
+        text: >-
+          Il s'arrête exactement sur sa position d'équilibre, le seul point où
+          le ressort cesse de tirer
+        correct: false
+        misconception: M-OSC-AMO-4
+        feedback: >
+          À l'arrêt, le ressort n'a pas besoin d'être détendu : il suffit que sa
+          force de rappel soit trop faible pour vaincre le frottement sec. Le
+          solide s'immobilise donc là où il se trouve à cet instant — tout près
+          de l'équilibre, mais en général un peu à côté.
+      - id: C
+        text: >-
+          Il marque un arrêt, puis repart : le frottement sec lui rend
+          l'énergie qu'il lui avait prise
+        correct: false
+        misconception: M-OSC-AMO-3
+        feedback: >
+          Le frottement ne rend pas d'énergie : il la dissipe en chaleur. Un
+          solide arrêté par frottement sec reste arrêté, puisque la force de
+          rappel ne suffit plus à vaincre le frottement ; seul un apport
+          extérieur pourrait le relancer.
+      - id: D
+        text: >-
+          Il s'immobilise net après un nombre fini d'allers-retours, près de
+          l'équilibre, en général un peu à côté
+        correct: true
+    correct_feedback: >
+      Le frottement sec retranche le même écart à chaque aller-retour : les
+      sommets baissent en ligne droite, et le mouvement cesse net dès que la
+      force de rappel ne suffit plus à vaincre le frottement. Le solide reste
+      là où il se trouve — près de l'équilibre, pas forcément dessus.
+    solution: |
+      Le frottement sec a une intensité à peu près constante : il retire à
+      chaque aller-retour une quantité d'énergie à peu près fixe, et les
+      sommets successifs baissent d'un même écart (enveloppe rectiligne).
+      Quand l'écart à l'équilibre devient assez petit, la force de rappel
+      $k|x|$ ne suffit plus à vaincre le frottement sec : le solide
+      s'immobilise net, après un nombre fini d'allers-retours, à l'endroit où
+      il se trouve. Cet endroit est proche de l'équilibre, sans coïncider avec
+      lui en général.
+      Un frottement fluide, au contraire, s'affaiblit avec la vitesse :
+      l'amplitude s'approche de zéro sans l'atteindre en un temps fini.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05. La version précédente annonçait `floor_met: true` en
 # ne comptant que les six ids AMO/RES du cluster amortissement-résonance,
@@ -2829,6 +3534,11 @@ items:
 # Le tableau ci-dessous est désormais GÉNÉRÉ contre la convention de la chaîne
 # (web/scripts/lib/couverture-compte.mjs) et gardé par
 # web/scripts/resume-couverture.mjs.
+#
+# 2026-10-20, vague H1 de la dette de cadre : neuf items (SO-44…SO-52) et deux
+# ids neufs (M-OSC-COMP-1, M-OSC-AMO-4), chacun porté par exactement 3 items.
+# Comptes qui bougent : FORM-1 8 → 12, EQD-1 3 → 5, AMO-1 5 → 6, AMO-3 3 → 4 ;
+# total 43 → 52 ; barreaux R1 4 → 6, R3 3 → 4, R4 3 → 6, R6 12 → 15.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2840,35 +3550,40 @@ coverage_summary:
     aucune n'est au sommet R8.
   per_misconception:
     M-OSC-ISO-1:   { count: 4, items: [SO-1, SO-2, SO-11, SO-22] }
-    M-OSC-FORM-1:  { count: 8, items: [SO-3, SO-4, SO-10, SO-13, SO-14, SO-16, SO-22, SO-24] }
+    M-OSC-FORM-1:  { count: 12, items: [SO-3, SO-4, SO-10, SO-13, SO-14, SO-16, SO-22, SO-24, SO-44, SO-46, SO-47, SO-49] }
     M-OSC-RAID-1:  { count: 3, items: [SO-9, SO-15, SO-42] }
-    M-OSC-EQD-1:   { count: 3, items: [SO-5, SO-42, SO-43] }
+    M-OSC-EQD-1:   { count: 5, items: [SO-5, SO-42, SO-43, SO-44, SO-45] }
     M-OSC-ENER-1:  { count: 4, items: [SO-6, SO-17, SO-18, SO-23] }
     M-OSC-LIBRE-1: { count: 3, items: [SO-7, SO-8, SO-43] }
     M-OSC-PHASE-1: { count: 3, items: [SO-12, SO-42, SO-43] }
-    M-OSC-AMO-1:   { count: 5, items: [SO-20, SO-25, SO-27, SO-28, SO-31] }
+    M-OSC-AMO-1:   { count: 6, items: [SO-20, SO-25, SO-27, SO-28, SO-31, SO-50] }
     M-OSC-AMO-2:   { count: 4, items: [SO-19, SO-26, SO-29, SO-32] }
-    M-OSC-AMO-3:   { count: 3, items: [SO-27, SO-30, SO-33] }
+    M-OSC-AMO-3:   { count: 4, items: [SO-27, SO-30, SO-33, SO-52] }
+    M-OSC-AMO-4:   { count: 3, items: [SO-50, SO-51, SO-52] }
     M-OSC-RES-1:   { count: 4, items: [SO-34, SO-36, SO-37, SO-40] }
     M-OSC-RES-2:   { count: 3, items: [SO-35, SO-38, SO-41] }
     M-OSC-RES-3:   { count: 5, items: [SO-21, SO-35, SO-36, SO-38, SO-39] }
-  total_items: 43
+    M-OSC-COMP-1:  { count: 3, items: [SO-47, SO-48, SO-49] }
+  total_items: 52
   floor: 3
   floor_met: true
   ramp_coverage:
     R0: 3
-    R1: 4
+    R1: 6
     R2: 4
-    R3: 3
-    R4: 3
+    R3: 4
+    R4: 6
     R5: 3
-    R6: 12
+    R6: 15
     R7: 8
     R8: 3
     note: >-
-      Le plancher de barreau (>= 3 items) est tenu partout. R1 et R2 en portent
-      4 depuis l'ajout de SO-43 et SO-42. R6 et R7 sont plus fournis (12 et 8)
-      : ce sont les deux chapitres du cluster amortissement-résonance.
+      Le plancher de barreau (>= 3 items) est tenu partout. R2 porte 4 items
+      depuis l'ajout de SO-42 ; R1, R3, R4 et R6 ont grandi le 2026-10-20 avec
+      les items de la vague H1 (ressort vertical et incliné ; pendule simple
+      synchrone ; oscillateur composé ; deux types de frottement). R6 et R7
+      restent les plus fournis (15 et 8) : ce sont les deux chapitres du
+      cluster amortissement-résonance.
   summit_conversion_note: >-
     La conversion du sommet R8 (« Pour t'entraîner ») a retiré de lesson.md
     l'exercice de bac rédigé et ses variations « À toi » au profit de
@@ -2891,4 +3606,6 @@ coverage_summary:
     hors_cadre_probe: {count: 2, items: [SO-26/D, SO-27/D]}
   gated_floor_met: true
   honest_state: >-
-    Les 13 misconceptions déclarées sont couvertes, aucune sous le plancher.
+    Les 15 misconceptions déclarées sont couvertes, aucune sous le plancher ;
+    les deux ids de la vague H1 (M-OSC-COMP-1, M-OSC-AMO-4) y sont tout juste,
+    à 3 items chacun.
