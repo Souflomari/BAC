@@ -455,6 +455,62 @@ misconceptions:
       donc sur $\theta/2$ (corrigé de $\pi$ si $2\cos(\theta/2)<0$) —
       jamais sur $\theta$ tout entier, qui n'est plus l'angle de la forme
       $re^{i\varphi}$ obtenue.
+  # Deux modèles neufs (dette de cadre, vague G6, 2026-10-20 —
+  # docs/audits/DETTE-CADRE.md ; maths-sm.yaml:256/260, « linéarisation »,
+  # « linéariser cosⁿ/sinⁿ »). La sous-section R3 « Linéariser une puissance de
+  # cosinus ou de sinus : les formules d'Euler, à l'envers de Moivre »
+  # (lesson.md:244-288) nomme DEUX erreurs, et les sépare elle-même : la
+  # confusion $\cos^3x=\cos(3x)$, écartée par son « prends position », puis
+  # « une seconde erreur, plus discrète » — oublier de diviser par $2^3=8$.
+  # Ce sont deux mécanismes distincts (l'un ne fait aucun calcul, l'autre le
+  # fait jusqu'au dernier pas), d'où deux ids. Aucun des vingt-huit ids
+  # ci-dessus ne les couvre : `moivre-argument-mal-transforme` et
+  # `moivre-module-multiplie` portent sur $z^n$ (et sont tagués à côté quand
+  # un calcul $(e^{ix})^n$ ou $(2i)^n$ les fait jouer réellement),
+  # `definition-exponentielle-erronee` sur la définition de $e^{i\theta}$.
+  # Servis par NBCOMPLEX2-49 à -52.
+  - id: mc.math.maths_complexes_trigo.puissance-confondue-angle-multiple
+    label: >-
+      « Une puissance de cosinus (ou de sinus) confondue avec le cosinus d'un
+      angle multiplié : $\cos^nx$ lu comme $\cos(nx)$, ou $\cos(kx)$ lu comme
+      $\cos^kx$ »
+    description: >-
+      L'élève traite $\cos^nx$ — le nombre $\cos x$ élevé à la puissance $n$ —
+      comme $\cos(nx)$, le cosinus de l'angle $nx$ : il « linéarise »
+      $\sin^3x$ en $\sin(3x)$ sans aucun calcul, ou intègre $\cos^2x$ comme
+      s'il s'agissait de $\cos(2x)$. Même confusion dans l'autre sens, au
+      moment de regrouper : il lit $e^{ikx}+e^{-ikx}=2\cos(kx)$ (ou
+      $e^{ikx}-e^{-ikx}=2i\sin(kx)$) comme $2\cos^kx$ (ou $2i\sin^kx$). Dans
+      les deux sens, l'exposant et le coefficient de l'angle sont pris l'un
+      pour l'autre.
+    contradicts_principle: >-
+      $\cos^nx=(\cos x)^n$ est une PUISSANCE d'un nombre compris entre $-1$ et
+      $1$ ; $\cos(nx)$ est le cosinus d'un angle MULTIPLIÉ. Ce sont deux
+      opérations sans rapport — en $x=\dfrac{\pi}{2}$, $\sin^2x$ vaut $1$ et
+      $\sin(2x)$ vaut $0$. Passer de l'une à l'autre écriture est exactement
+      ce que fait la linéarisation, et cela demande un calcul (formules
+      d'Euler, binôme, regroupement), pas un déplacement de l'exposant.
+  - id: mc.math.maths_complexes_trigo.linearisation-facteur-2n-oublie
+    label: >-
+      « Linéarisation : le facteur $\frac1{2^n}$ (ou $\frac1{(2i)^n}$ pour le
+      sinus) est oublié, ou le $2$ du dénominateur n'est pas élevé à la
+      puissance $n$ »
+    description: >-
+      L'élève remplace bien $\cos x$ par $\dfrac{e^{ix}+e^{-ix}}{2}$ (ou
+      $\sin x$ par $\dfrac{e^{ix}-e^{-ix}}{2i}$), élève à la puissance $n$,
+      développe et regroupe correctement — mais traite mal le dénominateur.
+      FACE A : il s'arrête au numérateur développé et regroupé, sans diviser
+      du tout, et rend un résultat $2^n$ fois trop grand. FACE B : il élève
+      tout le reste à la puissance $n$ mais garde le $2$ à la puissance $1$ —
+      il divise par $2$ au lieu de $2^n$, ou par $2i^n$ au lieu de $(2i)^n$ —
+      et rend un résultat $2^{n-1}$ fois trop grand.
+    contradicts_principle: >-
+      Le facteur $\frac1{2^n}$ n'est pas une constante à mémoriser : il vient
+      de l'écriture $\cos x=\dfrac{e^{ix}+e^{-ix}}{2}$, et élever cette
+      fraction à la puissance $n$ élève aussi son dénominateur :
+      $\left(\dfrac{e^{ix}+e^{-ix}}{2}\right)^n=\dfrac{\left(e^{ix}+e^{-ix}\right)^n}{2^n}$.
+      Pour le sinus, $(2i)^n=2^n\,i^n$ : le $2$ ET le $i$ passent tous les deux
+      à la puissance $n$.
 items:
   - id: NBCOMPLEX2-1
     rung: "R1"
@@ -3441,6 +3497,226 @@ items:
       $\cos\theta'=\dfrac{1}{\sqrt2}$, $\sin\theta'=-\dfrac{1}{\sqrt2}$ :
       $\theta'=-\dfrac{\pi}{4}\equiv\dfrac{7\pi}{4}\ [2\pi]$ — cohérent.
 
+  # ── Dette de cadre, vague G6 (2026-10-20) — NBCOMPLEX2-49 à -52 ───────────
+  # La sous-section R3 « Linéariser une puissance de cosinus ou de sinus »
+  # (lesson.md:244-288) n'avait aucun item. Quatre items, sur deux ids neufs :
+  # `puissance-confondue-angle-multiple` (4 items, dans ses deux sens) et
+  # `linearisation-facteur-2n-oublie` (3, plancher exact — face B sur -50/-51,
+  # face A, le piège même que nomme la leçon, sur -52). Cadre : ligne SM
+  # research-consensus (maths-sm.yaml:256/260) que le cadre SExp garde en
+  # limite DÉRIVÉE, « linéarisation simple » (maths-sexp.yaml:283) — ce n'est
+  # donc pas une ligne SM seule, et les quatre items restent simples
+  # (puissance 2 ou 3, rien au-delà du degré de l'exemple travaillé). Aucun ne
+  # reprend la fonction de l'exemple travaillé, son résultat ni sa valeur test ;
+  # bank.yaml et exercises.yaml ne linéarisent rien. -52 porte « le gain » de
+  # la leçon — une primitive — sur une autre fonction que l'exemple.
+
+  - id: NBCOMPLEX2-49
+    rung: "R3"
+    difficulty_level: 2
+    habilete: application_directe
+    skill_code: maths_complexes_trigo
+    tags: ["euler", "linearisation", "regroupement"]
+    primary_misconception: mc.math.maths_complexes_trigo.puissance-confondue-angle-multiple
+    stem: >
+      Pour tout réel $x$, à quoi est égal $\dfrac{e^{3ix}-e^{-3ix}}{2i}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-\\sin 3x$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.definition-exponentielle-erronee
+        feedback: >
+          Le signe s'est inversé dans la définition de l'exponentielle : avec
+          $e^{i\theta}=\cos\theta-i\sin\theta$, la différence vaudrait $-2i\sin 3x$. Or
+          $e^{i\theta}=\cos\theta+i\sin\theta$, avec un « $+$ », donc
+          $e^{3ix}-e^{-3ix}=(\cos3x+i\sin3x)-(\cos3x-i\sin3x)=2i\sin 3x$.
+      - id: B
+        text: "$\\sin^3x$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.puissance-confondue-angle-multiple
+        feedback: >
+          Le $3$ de $e^{3ix}$ multiplie l'ANGLE : $e^{3ix}=\cos(3x)+i\sin(3x)$. Le lire comme
+          un exposant confond $\sin(3x)$ et $\sin^3x$, deux nombres sans rapport : en
+          $x=\dfrac{\pi}{2}$, $\sin\dfrac{3\pi}{2}=-1$ alors que $\sin^3\dfrac{\pi}{2}=1$.
+      - id: C
+        text: "$\\sin 3x$"
+        correct: true
+      - id: D
+        text: "$-i\\sin 3x$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.definition-exponentielle-erronee
+        feedback: >
+          Ce résultat vient d'une définition où cosinus et sinus ont échangé leurs places,
+          $e^{i\theta}=\sin\theta+i\cos\theta$ : la différence vaut alors $2\sin 3x$, sans
+          $i$, et la division par $2i$ laisse un $-i$. Avec la vraie définition, le
+          numérateur vaut $2i\sin 3x$ et le quotient est réel.
+    correct_feedback: >
+      $e^{3ix}=\cos3x+i\sin3x$ et $e^{-3ix}=\cos3x-i\sin3x$ : la différence vaut
+      $2i\sin 3x$, et son quotient par $2i$ vaut $\sin 3x$ — la formule d'Euler du sinus,
+      lue avec l'angle $3x$.
+    solution: |
+      $$e^{3ix}-e^{-3ix}=(\cos3x+i\sin3x)-(\cos3x-i\sin3x)=2i\sin3x$$
+      $$\frac{e^{3ix}-e^{-3ix}}{2i}=\frac{2i\sin3x}{2i}=\sin3x$$
+      C'est le regroupement qui sert à linéariser une puissance de $\sin x$ :
+      $e^{ikx}-e^{-ikx}=2i\sin(kx)$, où $k$ multiplie l'angle.
+
+  - id: NBCOMPLEX2-50
+    rung: "R3"
+    difficulty_level: 3
+    habilete: application_directe
+    skill_code: maths_complexes_trigo
+    tags: ["euler", "linearisation", "sinus"]
+    primary_misconception: mc.math.maths_complexes_trigo.linearisation-facteur-2n-oublie
+    stem: >
+      On linéarise $\sin^2x$ à l'aide des formules d'Euler. Pour tout réel $x$,
+      $\sin^2x$ est égal à :
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{1-\\cos^2 x}{2}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.puissance-confondue-angle-multiple
+        feedback: >
+          Le regroupement a changé un angle en puissance : $e^{2ix}+e^{-2ix}=2\cos(2x)$ — le
+          $2$ multiplie l'angle —, pas $2\cos^2x$. Avec $\cos^2x$, on obtiendrait
+          $\dfrac{1-\cos^2x}{2}=\dfrac{\sin^2x}{2}$, la moitié de ce qu'on cherchait.
+      - id: B
+        text: "$1-\\cos 2x$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.linearisation-facteur-2n-oublie
+        feedback: >
+          Le $2$ du dénominateur n'a pas été élevé au carré : $(2i)^2=2^2\,i^2=-4$, pas
+          $2\,i^2=-2$. En divisant $2\cos 2x-2$ par $-2$ au lieu de $-4$, on obtient un
+          résultat deux fois trop grand — en $x=\dfrac{\pi}{2}$, $1-\cos\pi=2$, alors que
+          $\sin^2\dfrac{\pi}{2}=1$.
+      - id: C
+        text: "$\\dfrac{1-\\cos x}{2}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.moivre-argument-mal-transforme
+        feedback: >
+          L'argument n'a pas été multiplié en élevant au carré : $\left(e^{ix}\right)^2=e^{2ix}$
+          (formule de Moivre), pas $e^{ix}$. Garder $e^{ix}$ et $e^{-ix}$ dans le
+          développement fait réapparaître $\cos x$ là où le carré a doublé l'angle.
+      - id: D
+        text: "$\\dfrac{1-\\cos 2x}{2}$"
+        correct: true
+    correct_feedback: >
+      $\sin^2x=\left(\dfrac{e^{ix}-e^{-ix}}{2i}\right)^2=\dfrac{e^{2ix}-2+e^{-2ix}}{(2i)^2}
+      =\dfrac{2\cos2x-2}{-4}=\dfrac{1-\cos2x}{2}$.
+    solution: |
+      $$\sin^2x=\left(\frac{e^{ix}-e^{-ix}}{2i}\right)^2=\frac{\left(e^{ix}-e^{-ix}\right)^2}{(2i)^2}$$
+      Le numérateur se développe avec $(A-B)^2=A^2-2AB+B^2$, où $AB=e^{ix}e^{-ix}=1$ ; le
+      dénominateur vaut $(2i)^2=4i^2=-4$.
+      $$\left(e^{ix}-e^{-ix}\right)^2=e^{2ix}-2+e^{-2ix}=2\cos 2x-2$$
+      $$\sin^2x=\frac{2\cos2x-2}{-4}=\frac{1-\cos2x}{2}$$
+      Contrôle en $x=\dfrac{\pi}{4}$ : $\sin^2\dfrac{\pi}{4}=\dfrac12$, et
+      $\dfrac{1-\cos\frac{\pi}{2}}{2}=\dfrac12$.
+
+  - id: NBCOMPLEX2-51
+    rung: "R3"
+    difficulty_level: 4
+    habilete: application_non_explicite
+    skill_code: maths_complexes_trigo
+    tags: ["euler", "linearisation", "sinus", "binome"]
+    primary_misconception: mc.math.maths_complexes_trigo.linearisation-facteur-2n-oublie
+    stem: >
+      Pour tout réel $x$, quelle est la forme linéarisée de $\sin^3x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{3\\sin x-\\sin 3x}{3}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.moivre-module-multiplie
+        feedback: >
+          Le dénominateur $(2i)^3$ a été calculé en multipliant le module par $3$ :
+          $(2i)^3=2^3\,i^3=-8i$ — le module $2$ s'élève au cube, il ne se multiplie pas par
+          $3$, ce qui donnerait $-6i$. Diviser $2i\sin3x-6i\sin x$ par $-6i$ au lieu de
+          $-8i$ donne ce quotient par $3$.
+      - id: B
+        text: "$\\sin 3x$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.puissance-confondue-angle-multiple
+        feedback: >
+          Une puissance de sinus n'est pas un sinus d'angle multiplié : en $x=\dfrac{\pi}{2}$,
+          $\sin^3\dfrac{\pi}{2}=1$ alors que $\sin\dfrac{3\pi}{2}=-1$. Linéariser demande le
+          calcul entier — formule d'Euler, cube développé, regroupement —, et $\sin 3x$ n'y
+          apparaît qu'accompagné d'un terme en $\sin x$.
+      - id: C
+        text: "$\\dfrac{3\\sin x-\\sin 3x}{4}$"
+        correct: true
+      - id: D
+        text: "$3\\sin x-\\sin 3x$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.linearisation-facteur-2n-oublie
+        feedback: >
+          Le $2$ du dénominateur n'a pas été élevé au cube : $(2i)^3=2^3\,i^3=-8i$, pas
+          $2\,i^3=-2i$. Diviser par $-2i$ au lieu de $-8i$ rend un résultat quatre fois trop
+          grand — en $x=\dfrac{\pi}{2}$, cette expression vaut $3+1=4$, alors que
+          $\sin^3\dfrac{\pi}{2}=1$.
+    correct_feedback: >
+      $\left(e^{ix}-e^{-ix}\right)^3=2i\sin3x-6i\sin x$ et $(2i)^3=-8i$, d'où
+      $\sin^3x=\dfrac{2i\sin3x-6i\sin x}{-8i}=\dfrac{3\sin x-\sin3x}{4}$.
+    solution: |
+      $$\sin^3x=\left(\frac{e^{ix}-e^{-ix}}{2i}\right)^3=\frac{\left(e^{ix}-e^{-ix}\right)^3}{(2i)^3}$$
+      Le dénominateur : $(2i)^3=2^3\,i^3=8\times(-i)=-8i$.
+
+      Le numérateur, avec $(A-B)^3=A^3-3A^2B+3AB^2-B^3$, $A=e^{ix}$ et $B=e^{-ix}$
+      (donc $A^2B=e^{ix}$ et $AB^2=e^{-ix}$) :
+      $$\left(e^{ix}-e^{-ix}\right)^3=e^{3ix}-3e^{ix}+3e^{-ix}-e^{-3ix}=\left(e^{3ix}-e^{-3ix}\right)-3\left(e^{ix}-e^{-ix}\right)=2i\sin3x-6i\sin x$$
+      $$\sin^3x=\frac{2i\sin3x-6i\sin x}{-8i}=\frac{-\sin3x+3\sin x}{4}=\frac{3\sin x-\sin3x}{4}$$
+      Contrôle en $x=\dfrac{\pi}{2}$ : $\sin^3\dfrac{\pi}{2}=1$, et $\dfrac{3\times1-(-1)}{4}=1$.
+
+  - id: NBCOMPLEX2-52
+    rung: "R3"
+    difficulty_level: 4
+    habilete: application_non_explicite
+    skill_code: maths_complexes_trigo
+    tags: ["linearisation", "primitive", "integrale"]
+    primary_misconception: mc.math.maths_complexes_trigo.puissance-confondue-angle-multiple
+    stem: >
+      Calculer $\displaystyle\int_0^{\pi/4}\cos^2x\,\mathrm{d}x$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$\\dfrac{\\pi}{8}+\\dfrac{\\sqrt2}{4}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.moivre-argument-mal-transforme
+        feedback: >
+          La linéarisation utilisée, $\cos^2x=\dfrac{1+\cos x}{2}$, garde l'angle $x$ là où le
+          carré l'a doublé : $\left(e^{ix}\right)^2=e^{2ix}$ (formule de Moivre), donc le
+          regroupement donne $\cos 2x$, pas $\cos x$. Avec $\cos 2x$, une primitive est
+          $\dfrac x2+\dfrac{\sin2x}{4}$.
+      - id: B
+        text: "$\\dfrac{\\pi}{2}+1$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.linearisation-facteur-2n-oublie
+        feedback: >
+          C'est quatre fois la bonne valeur : le développement
+          $\left(e^{ix}+e^{-ix}\right)^2=2\cos2x+2$ est juste, mais la division par $2^2=4$
+          a été oubliée. Intégrer $2\cos2x+2$ au lieu de $\dfrac{1+\cos2x}{2}$ donne
+          $\dfrac{\pi}{2}+1$.
+      - id: C
+        text: "$\\dfrac{1}{2}$"
+        correct: false
+        misconception: mc.math.maths_complexes_trigo.puissance-confondue-angle-multiple
+        feedback: >
+          C'est l'intégrale de $\cos(2x)$, pas celle de $\cos^2x$ :
+          $\left[\dfrac{\sin2x}{2}\right]_0^{\pi/4}=\dfrac12$. Un cosinus au carré n'est pas
+          le cosinus d'un angle doublé — on linéarise d'abord, $\cos^2x=\dfrac{1+\cos2x}{2}$.
+      - id: D
+        text: "$\\dfrac{\\pi}{8}+\\dfrac{1}{4}$"
+        correct: true
+    correct_feedback: >
+      On linéarise : $\cos^2x=\dfrac{1+\cos2x}{2}$, dont une primitive est
+      $\dfrac x2+\dfrac{\sin2x}{4}$. Entre $0$ et $\dfrac{\pi}{4}$, cela donne
+      $\dfrac{\pi}{8}+\dfrac14$.
+    solution: |
+      **Linéariser d'abord** — aucune formule ne donne directement une primitive de $\cos^2x$ :
+      $$\cos^2x=\left(\frac{e^{ix}+e^{-ix}}{2}\right)^2=\frac{e^{2ix}+2+e^{-2ix}}{4}=\frac{2\cos2x+2}{4}=\frac{1+\cos2x}{2}$$
+      **Puis intégrer terme à terme** — une primitive de $\cos(2x)$ est $\frac12\sin(2x)$ :
+      $$\int_0^{\pi/4}\cos^2x\,\mathrm{d}x=\left[\frac x2+\frac{\sin2x}{4}\right]_0^{\pi/4}=\frac{\pi}{8}+\frac{\sin\frac{\pi}{2}}{4}-0=\frac{\pi}{8}+\frac14$$
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, après NBCOMPLEX2-25 à NBCOMPLEX2-34. Seize familles
 # sous le plancher : le module et son argument, la définition de $e^{i\theta}$,
@@ -3470,6 +3746,16 @@ items:
 # (sa FACE D était un mécanisme indépendant du signe) ; `definition-
 # exponentielle-erronee` gagne un item (46). Tableau GÉNÉRÉ, gardé par
 # web/scripts/resume-couverture.mjs.
+# 2026-10-20 (dette de cadre, vague G6) : NBCOMPLEX2-49 à -52 pour la sous-section neuve de R3
+# (linéarisation par les formules d'Euler, lesson.md:244-288). Deux ids neufs :
+# `puissance-confondue-angle-multiple` (4 items) et `linearisation-facteur-2n-oublie` (3, plancher
+# exact). Ids existants recrutés là où le calcul de l'item les fait réellement jouer :
+# `moivre-argument-mal-transforme` ($(e^{ix})^2$ laissé en $e^{ix}$ : -50, -52 ; 4 → 6),
+# `moivre-module-multiplie` ($(2i)^3$ pris pour $-6i$ : -51 ; 3 → 4, sort de la marge nulle),
+# `definition-exponentielle-erronee` (-49 ; 4 → 5). R3 : 4 → 8. Tableau régénéré en entier contre
+# lib/couverture-compte.mjs ; il portait un écart antérieur à cette vague, corrigé ici sans toucher
+# aucun item : `rotation-sens-inverse` y était à 6 alors qu'un distracteur de NBCOMPLEX2-35 la
+# porte depuis la livraison de cet item — 7.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -3482,11 +3768,11 @@ coverage_summary:
     mc.math.maths_complexes_trigo.argument-un-seul-signe:              { count: 4, items: [NBCOMPLEX2-1, NBCOMPLEX2-10, NBCOMPLEX2-23, NBCOMPLEX2-41] }
     mc.math.maths_complexes_trigo.module-oubli-racine:                 { count: 3, items: [NBCOMPLEX2-10, NBCOMPLEX2-25, NBCOMPLEX2-34] }
     mc.math.maths_complexes_trigo.arg-conjugue-oppose-compose:         { count: 3, items: [NBCOMPLEX2-11, NBCOMPLEX2-25, NBCOMPLEX2-27] }
-    mc.math.maths_complexes_trigo.definition-exponentielle-erronee:    { count: 4, items: [NBCOMPLEX2-13, NBCOMPLEX2-26, NBCOMPLEX2-27, NBCOMPLEX2-46] }
+    mc.math.maths_complexes_trigo.definition-exponentielle-erronee:    { count: 5, items: [NBCOMPLEX2-13, NBCOMPLEX2-26, NBCOMPLEX2-27, NBCOMPLEX2-46, NBCOMPLEX2-49] }
     mc.math.maths_complexes_trigo.produit-modules-additionnes:         { count: 4, items: [NBCOMPLEX2-2, NBCOMPLEX2-12, NBCOMPLEX2-14, NBCOMPLEX2-36] }
     mc.math.maths_complexes_trigo.produit-quotient-argument-operation: { count: 6, items: [NBCOMPLEX2-2, NBCOMPLEX2-12, NBCOMPLEX2-14, NBCOMPLEX2-35, NBCOMPLEX2-42, NBCOMPLEX2-43] }
-    mc.math.maths_complexes_trigo.moivre-module-multiplie:             { count: 3, items: [NBCOMPLEX2-3, NBCOMPLEX2-15, NBCOMPLEX2-26] }
-    mc.math.maths_complexes_trigo.moivre-argument-mal-transforme:      { count: 4, items: [NBCOMPLEX2-3, NBCOMPLEX2-15, NBCOMPLEX2-26, NBCOMPLEX2-27] }
+    mc.math.maths_complexes_trigo.moivre-module-multiplie:             { count: 4, items: [NBCOMPLEX2-3, NBCOMPLEX2-15, NBCOMPLEX2-26, NBCOMPLEX2-51] }
+    mc.math.maths_complexes_trigo.moivre-argument-mal-transforme:      { count: 6, items: [NBCOMPLEX2-3, NBCOMPLEX2-15, NBCOMPLEX2-26, NBCOMPLEX2-27, NBCOMPLEX2-50, NBCOMPLEX2-52] }
     mc.math.maths_complexes_trigo.argument-non-2pi-periodique:         { count: 3, items: [NBCOMPLEX2-15, NBCOMPLEX2-25, NBCOMPLEX2-28] }
     mc.math.maths_complexes_trigo.equation-complexe-cherche-reels:     { count: 3, items: [NBCOMPLEX2-4, NBCOMPLEX2-16, NBCOMPLEX2-28] }
     mc.math.maths_complexes_trigo.racines-nombre-incomplet:            { count: 3, items: [NBCOMPLEX2-4, NBCOMPLEX2-16, NBCOMPLEX2-23] }
@@ -3496,7 +3782,7 @@ coverage_summary:
     mc.math.maths_complexes_trigo.homothetie-rapport-complexe:         { count: 6, items: [NBCOMPLEX2-5, NBCOMPLEX2-29, NBCOMPLEX2-30, NBCOMPLEX2-31, NBCOMPLEX2-36, NBCOMPLEX2-38] }
     mc.math.maths_complexes_trigo.reel-positif-donne-rotation:         { count: 4, items: [NBCOMPLEX2-18, NBCOMPLEX2-30, NBCOMPLEX2-34, NBCOMPLEX2-39] }
     mc.math.maths_complexes_trigo.transformation-centre-oublie:        { count: 4, items: [NBCOMPLEX2-18, NBCOMPLEX2-19, NBCOMPLEX2-22, NBCOMPLEX2-38] }
-    mc.math.maths_complexes_trigo.rotation-sens-inverse:               { count: 6, items: [NBCOMPLEX2-19, NBCOMPLEX2-22, NBCOMPLEX2-32, NBCOMPLEX2-37, NBCOMPLEX2-38, NBCOMPLEX2-40] }
+    mc.math.maths_complexes_trigo.rotation-sens-inverse:               { count: 7, items: [NBCOMPLEX2-19, NBCOMPLEX2-22, NBCOMPLEX2-32, NBCOMPLEX2-35, NBCOMPLEX2-37, NBCOMPLEX2-38, NBCOMPLEX2-40] }
     mc.math.maths_complexes_trigo.rotation-angle-comme-coefficient:    { count: 4, items: [NBCOMPLEX2-19, NBCOMPLEX2-29, NBCOMPLEX2-30, NBCOMPLEX2-31] }
     mc.math.maths_complexes_trigo.ecriture-complexe-oubli-constante:   { count: 3, items: [NBCOMPLEX2-22, NBCOMPLEX2-31, NBCOMPLEX2-32] }
     mc.math.maths_complexes_trigo.lecture-w-module-argument:           { count: 5, items: [NBCOMPLEX2-6, NBCOMPLEX2-20, NBCOMPLEX2-21, NBCOMPLEX2-43, NBCOMPLEX2-44] }
@@ -3506,20 +3792,36 @@ coverage_summary:
     mc.math.maths_complexes_trigo.w-sommet-ignore:                     { count: 3, items: [NBCOMPLEX2-42, NBCOMPLEX2-43, NBCOMPLEX2-44] }
     mc.math.maths_complexes_trigo.demi-angle-coefficient-negatif-mal-corrige: { count: 3, items: [NBCOMPLEX2-46, NBCOMPLEX2-47, NBCOMPLEX2-48] }
     mc.math.maths_complexes_trigo.angle-moitie-perdu:                   { count: 3, items: [NBCOMPLEX2-46, NBCOMPLEX2-47, NBCOMPLEX2-48] }
-  total_items: 48
+    mc.math.maths_complexes_trigo.puissance-confondue-angle-multiple:  { count: 4, items: [NBCOMPLEX2-49, NBCOMPLEX2-50, NBCOMPLEX2-51, NBCOMPLEX2-52] }
+    mc.math.maths_complexes_trigo.linearisation-facteur-2n-oublie:     { count: 3, items: [NBCOMPLEX2-50, NBCOMPLEX2-51, NBCOMPLEX2-52] }
+  total_items: 52
   floor: 3
   floor_met: true
   ramp_coverage:
     R0: 3
     R1: 4
     R2: 8
-    R3: 4
+    R3: 8
     R4: 4
     R5: 14
     R6: 8
     R7: 3
   honest_state: >-
-    Les vingt-cinq misconceptions déclarées sont couvertes, aucune sous le
+    Recompté le 2026-10-20 (vague G6, NBCOMPLEX2-49 à -52) : trente
+    misconceptions déclarées, toutes couvertes, aucune sous le plancher.
+    `linearisation-facteur-2n-oublie` part au plancher EXACT (3 items, marge
+    nulle — face B, le $2$ laissé à la puissance $1$, sur -50 et -51 ; face A,
+    la division oubliée, sur -52) ; `puissance-confondue-angle-multiple` part
+    avec une marge de un (4 items — sens direct sur -51 et -52, sens inverse au
+    regroupement sur -49 et -50). `moivre-module-multiplie` sort de la marge
+    nulle (3 → 4) ; treize ids siègent toujours exactement au plancher, l'id
+    neuf du facteur remplaçant celui-là dans la liste. `rotation-sens-inverse`
+    compte 7 et non 6 : le tableau précédent omettait NBCOMPLEX2-35, qui la
+    porte depuis sa livraison — écart de transcription, aucun item modifié.
+    Cadre : la linéarisation est une ligne SM (research-consensus) que le cadre
+    SExp garde en limite dérivée, « linéarisation simple » — les quatre items
+    s'en tiennent aux puissances 2 et 3. `total_items` 48 → 52 ;
+    `ramp_coverage.R3` 4 → 8. Historique conservé ci-dessous. — Les vingt-cinq misconceptions déclarées sont couvertes, aucune sous le
     plancher. Treize y siègent EXACTEMENT (3 items) : la marge est nulle et
     tout retrait d'item la casse — parmi elles, `multiplication-rotation-par-defaut`
     (modèle neuf, NBCOMPLEX2-39/-40/-41), qui part directement sans marge,

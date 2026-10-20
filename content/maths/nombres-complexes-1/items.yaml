@@ -243,6 +243,34 @@ misconceptions:
     contradicts_principle: >-
       Les relations sont z1+z2 = -b/a et z1z2 = c/a : si a ≠ 1, il faut
       diviser par a, pas seulement lire les coefficients bruts.
+  # ── Ajoutée pour la dette de cadre, vague G6 (2026-10-20 —
+  # docs/audits/DETTE-CADRE.md ; maths-sm.yaml:257, « équations se ramenant au
+  # 2e degré ») : la sous-section R4c « Une équation qui se ramène au second
+  # degré : le changement d'inconnue Z=z² » (lesson.md:478) nomme son piège —
+  # « s'arrêter après avoir résolu l'équation en Z » — et son « prends
+  # position » attend la réponse « deux solutions, autant que de valeurs de
+  # Z ». Les deux sont le même retour incomplet de Z à z, d'où UN id à deux
+  # faces. Aucun des vingt-cinq ids ci-dessus ne le couvre :
+  # `delta-negatif-aucune-solution` écarte une valeur de Z négative (un autre
+  # mécanisme, tagué à côté quand il joue), `carre-parfait-signe-oppose`
+  # choisit le mauvais carré, pas un nombre de racines. Servi par NBCOMPLEX-48
+  # à 50 (face A : 48, 49 ; face B : 49, 50) — plancher exact, marge nulle.
+  - id: mc.math.maths_complexes_algebrique.changement-inconnue-retour-incomplet
+    label: >-
+      « Équation bicarrée : le retour de Z à z reste incomplet (on rend les
+      valeurs de Z, ou une seule racine carrée par valeur de Z) »
+    description: >-
+      Après avoir posé Z = z² et résolu l'équation du second degré en Z,
+      l'élève ne revient pas entièrement à l'inconnue z. FACE A — il s'arrête
+      aux valeurs de Z et les donne comme solutions de l'équation de départ,
+      comme si Z était l'inconnue cherchée. FACE B — il revient bien à z, mais
+      ne garde qu'UNE racine carrée par valeur de Z (δ sans −δ) et annonce
+      deux solutions là où l'équation de degré 4 en a quatre.
+    contradicts_principle: >-
+      Z = z² n'est qu'un intermédiaire de calcul : les solutions cherchées sont
+      des valeurs de z. Et pour Z ≠ 0, l'équation z² = Z a deux solutions
+      opposées, δ et −δ : deux valeurs de Z distinctes et non nulles redonnent
+      quatre valeurs de z — autant que le degré de l'équation de départ.
 items:
   - id: NBCOMPLEX-1
     rung: "R1"
@@ -2722,6 +2750,184 @@ items:
       produit sans calculer les racines.
       $$\frac{1}{z_1}+\frac{1}{z_2} = \frac{z_1+z_2}{z_1z_2} = \frac{3q}{\;5q^2/2\;} = \frac{6q}{5q^2} = \frac{6}{5q}$$
 
+  # ── Dette de cadre, vague G6 (2026-10-20) — NBCOMPLEX-48 à 50 ─────────────
+  # La sous-section R4c « Une équation qui se ramène au second degré : le
+  # changement d'inconnue Z=z² » (lesson.md:478-516) n'avait aucun item. Trois
+  # items, soit le plancher exact de l'id neuf `changement-inconnue-retour-
+  # incomplet` et pas davantage : la ligne de cadre est SM (maths-sm.yaml:257,
+  # « équations se ramenant au 2e degré », research-consensus), et le cadre
+  # SExp n'en dit rien (maths-sexp.yaml:289 : second degré à coefficients
+  # réels seulement). NBCOMPLEX-48 reste faisable avec les seuls outils SExp
+  # (valeurs de Z réelles, l'une négative) ; NBCOMPLEX-49 (racines carrées d'un
+  # Z non réel) et NBCOMPLEX-50 (coefficient complexe) sont de profondeur SM —
+  # même convention que le bloc au-dessus de NBCOMPLEX-38, faute d'un champ
+  # per-item `filiere`. Équations et nombres propres aux items : ni l'équation
+  # de l'exemple travaillé, ni ses valeurs de Z, ni ses racines carrées, rien
+  # de bank.yaml ni d'exercises.yaml. Chaque item garde au moins deux ensembles
+  # à quatre éléments, pour que « degré 4, donc quatre solutions » ne suffise
+  # pas à trouver la clé.
+
+  - id: NBCOMPLEX-48
+    rung: "R4c"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_complexes_algebrique
+    tags: [equation-bicarree, changement-inconnue, coefficients-reels]
+    primary_misconception: mc.math.maths_complexes_algebrique.changement-inconnue-retour-incomplet
+    stem: >
+      Résoudre dans $\mathbb{C}$ l'équation $z^4 - 5z^2 - 36 = 0$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$S = \\left\\{\\, -4\\ ;\\ 9 \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.changement-inconnue-retour-incomplet
+        feedback: >
+          Ce sont les deux valeurs de $Z=z^2$, pas des solutions en $z$ : l'équation en $Z$
+          n'est qu'une étape. D'ailleurs $(-4)^4-5\times(-4)^2-36=256-80-36=140$, pas $0$.
+          Il reste à résoudre $z^2=9$ et $z^2=-4$, qui ont chacune deux solutions.
+      - id: B
+        text: "$S = \\left\\{\\, -2\\ ;\\ 2\\ ;\\ -3i\\ ;\\ 3i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Les valeurs de $Z$ sont sorties avec le mauvais signe : $Z=\dfrac{-b\pm\delta}{2a}$
+          avec $b=-5$, donc $-b=+5$ et $Z=\dfrac{5\pm13}{2}$, soit $9$ et $-4$ — pas $-9$ et
+          $4$. Le retour à $z$ est bien mené, mais à partir de valeurs fausses.
+      - id: C
+        text: "$S = \\left\\{\\, -3\\ ;\\ 3\\ ;\\ -2i\\ ;\\ 2i \\,\\right\\}$"
+        correct: true
+      - id: D
+        text: "$S = \\left\\{\\, -3\\ ;\\ 3 \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution
+        feedback: >
+          $z^2=-4$ n'a pas de solution dans $\mathbb{R}$, mais on résout dans $\mathbb{C}$ :
+          $(2i)^2=-4$ et $(-2i)^2=-4$. Écarter la valeur $Z=-4$ comme on le ferait dans
+          $\mathbb{R}$ fait perdre deux solutions sur quatre.
+    correct_feedback: >
+      Avec $Z=z^2$ : $Z^2-5Z-36=0$, de discriminant $169=13^2$, d'où $Z=9$ ou $Z=-4$. Puis
+      $z^2=9$ donne $\pm3$ et $z^2=-4$ donne $\pm2i$ : quatre solutions, autant que le degré.
+    solution: |
+      **Changement d'inconnue.** L'équation ne contient que $z^4=(z^2)^2$ et $z^2$ : on pose
+      $Z=z^2$.
+      $$Z^2-5Z-36=0 \qquad \Delta=(-5)^2-4\times1\times(-36)=25+144=169=13^2$$
+      $$Z=\frac{5\pm13}{2} \qquad Z_1=9 \qquad Z_2=-4$$
+      **Retour à $z$.** $z^2=9$ donne $z=3$ ou $z=-3$ ; $z^2=-4$ donne $z=2i$ ou $z=-2i$, car
+      $(\pm2i)^2=4i^2=-4$.
+      $$S=\left\{\,-3\ ;\ 3\ ;\ -2i\ ;\ 2i\,\right\}$$
+      **Vérification** en $z=2i$ : $z^2=-4$, $z^4=16$, et $16-5\times(-4)-36=16+20-36=0$.
+
+  - id: NBCOMPLEX-49
+    rung: "R4c"
+    habilete: application_directe
+    difficulty_level: 4
+    skill_code: maths_complexes_algebrique
+    tags: [equation-bicarree, changement-inconnue, racine-carree-complexe]
+    primary_misconception: mc.math.maths_complexes_algebrique.changement-inconnue-retour-incomplet
+    stem: >
+      Résoudre dans $\mathbb{C}$ l'équation $z^4 + 10z^2 + 169 = 0$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$S = \\left\\{\\, -3-2i\\ ;\\ -3+2i\\ ;\\ 3-2i\\ ;\\ 3+2i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.signe-parties-perdu
+        feedback: >
+          Les valeurs de $Z$ ont pris le mauvais signe : avec $b=10$,
+          $Z=\dfrac{-b\pm\delta}{2a}=\dfrac{-10\pm24i}{2}=-5\pm12i$, pas $5\pm12i$. Les
+          racines carrées de $5\pm12i$ sont bien $\pm(3\pm2i)$, mais elles ne résolvent pas
+          cette équation : $(3+2i)^2=5+12i$, et $(5+12i)^2+10(5+12i)+169=100+240i$.
+      - id: B
+        text: "$S = \\left\\{\\, -5-12i\\ ;\\ -5+12i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.changement-inconnue-retour-incomplet
+        feedback: >
+          Ce sont les deux valeurs de $Z=z^2$, pas des solutions en $z$ : $Z$ n'est qu'un
+          intermédiaire de calcul. Il faut encore chercher les deux nombres dont le carré vaut
+          $-5+12i$, puis les deux dont le carré vaut $-5-12i$.
+      - id: C
+        text: "$S = \\left\\{\\, 2-3i\\ ;\\ 2+3i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.changement-inconnue-retour-incomplet
+        feedback: >
+          Le retour à $z$ s'arrête à mi-chemin : $2+3i$ a pour carré $-5+12i$ et $2-3i$ pour
+          carré $-5-12i$, mais leurs opposés $-2-3i$ et $-2+3i$ ont les mêmes carrés. Pour
+          $Z\neq0$, l'équation $z^2=Z$ a deux solutions opposées : quatre en tout ici.
+      - id: D
+        text: "$S = \\left\\{\\, -2-3i\\ ;\\ -2+3i\\ ;\\ 2-3i\\ ;\\ 2+3i \\,\\right\\}$"
+        correct: true
+    correct_feedback: >
+      Avec $Z=z^2$ : $Z^2+10Z+169=0$, de discriminant $-576=(24i)^2$, d'où $Z=-5\pm12i$. Les
+      racines carrées de $-5+12i$ sont $\pm(2+3i)$ ; celles de son conjugué $-5-12i$ sont
+      $\pm(2-3i)$.
+    solution: |
+      **Changement d'inconnue :** on pose $Z=z^2$.
+      $$Z^2+10Z+169=0 \qquad \Delta=10^2-4\times169=100-676=-576=(24i)^2$$
+      $$Z=\frac{-10\pm24i}{2}=-5\pm12i$$
+      **Racines carrées de $Z_1=-5+12i$.** On cherche $z=x+iy$ avec $z^2=Z_1$ :
+      $x^2-y^2=-5$, $2xy=12$, et $x^2+y^2=|Z_1|=\sqrt{25+144}=13$. D'où $x^2=4$, $y^2=9$, et
+      $xy>0$ : $z=2+3i$ ou $z=-2-3i$. Contrôle : $(2+3i)^2=4+12i+9i^2=-5+12i$.
+
+      **Racines carrées de $Z_2=-5-12i=\overline{Z_1}$** : le conjugué d'un carré est le carré
+      du conjugué, donc ce sont $2-3i$ et $-2+3i$.
+      $$S=\left\{\,-2-3i\ ;\ -2+3i\ ;\ 2-3i\ ;\ 2+3i\,\right\}$$
+
+  - id: NBCOMPLEX-50
+    rung: "R4c"
+    habilete: synthese
+    difficulty_level: 5
+    skill_code: maths_complexes_algebrique
+    tags: [equation-bicarree, changement-inconnue, coefficients-complexes]
+    primary_misconception: mc.math.maths_complexes_algebrique.changement-inconnue-retour-incomplet
+    stem: >
+      Résoudre dans $\mathbb{C}$ l'équation $z^4 - 10i\,z^2 - 16 = 0$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$S = \\left\\{\\, -2+2i\\ ;\\ -1+i\\ ;\\ 1-i\\ ;\\ 2-2i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose
+        feedback: >
+          Le carré retenu a le mauvais signe : $(1-i)^2=-2i$ et $(2-2i)^2=-8i$, alors qu'il
+          faut $z^2=2i$ et $z^2=8i$. Ce sont $(1+i)^2=2i$ et $(2+2i)^2=8i$ qui conviennent —
+          un carré deviné se vérifie en le redéveloppant.
+      - id: B
+        text: "$S = \\left\\{\\, -2-2i\\ ;\\ -1-i\\ ;\\ 1+i\\ ;\\ 2+2i \\,\\right\\}$"
+        correct: true
+      - id: C
+        text: "$S = \\left\\{\\, 1+i\\ ;\\ 2+2i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.changement-inconnue-retour-incomplet
+        feedback: >
+          Le retour à $z$ n'est fait qu'à moitié : $1+i$ et $2+2i$ ont bien pour carrés $2i$
+          et $8i$, mais $-1-i$ et $-2-2i$ aussi. Chaque valeur de $Z$ non nulle redonne deux
+          valeurs opposées de $z$ : l'équation, de degré $4$, a quatre solutions.
+      - id: D
+        text: "$S = \\left\\{\\, -1-i\\ ;\\ -1+i\\ ;\\ 1-i\\ ;\\ 1+i \\,\\right\\}$"
+        correct: false
+        misconception: mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels
+        feedback: >
+          Les deux valeurs de $Z$ ne sont pas conjuguées ici : le coefficient $-10i$ n'est pas
+          réel, et la propriété des racines conjuguées ne s'applique plus. Les solutions en
+          $Z$ sont $2i$ et $8i$ (somme $10i$, produit $-16$), pas $2i$ et $-2i$, dont le
+          produit vaut $4$.
+    correct_feedback: >
+      Avec $Z=z^2$ : $Z^2-10iZ-16=0$, de discriminant $-36=(6i)^2$, d'où
+      $Z=\dfrac{10i\pm6i}{2}$, soit $8i$ ou $2i$. Puis $z^2=2i$ donne $\pm(1+i)$, et $z^2=8i$
+      donne $\pm(2+2i)$.
+    solution: |
+      **Changement d'inconnue :** on pose $Z=z^2$ ; le coefficient de $Z$ est complexe.
+      $$Z^2-10iZ-16=0 \qquad \Delta=(-10i)^2-4\times1\times(-16)=-100+64=-36=(6i)^2$$
+      $$Z=\frac{10i\pm6i}{2} \qquad Z_1=8i \qquad Z_2=2i$$
+      Contrôle par la somme et le produit : $Z_1+Z_2=10i$ et $Z_1Z_2=16i^2=-16$.
+
+      **Retour à $z$.** $(1+i)^2=1+2i+i^2=2i$, donc $z^2=2i$ donne $z=1+i$ ou $z=-1-i$.
+      $(2+2i)^2=4+8i+4i^2=8i$, donc $z^2=8i$ donne $z=2+2i$ ou $z=-2-2i$.
+      $$S=\left\{\,-2-2i\ ;\ -1-i\ ;\ 1+i\ ;\ 2+2i\,\right\}$$
+      **Vérification** en $z=1+i$ : $z^2=2i$, $z^4=(2i)^2=-4$, et
+      $-4-10i\times2i-16=-4+20-16=0$.
+
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-27 (wave-1 fixes, dette d'examen B1) — critique par deux
 # critiques de vague 1 sur NBCOMPLEX-34..45, corrigée ainsi :
@@ -2766,6 +2972,14 @@ items:
 # algebrique-exponentielle-conversion), refermées au barreau R6. Tableau
 # GÉNÉRÉ contre web/scripts/lib/couverture-compte.mjs, gardé par
 # web/scripts/resume-couverture.mjs — à régénérer après cette passe.
+# 2026-10-20 (dette de cadre, vague G6) : NBCOMPLEX-48 à 50 pour la sous-section neuve de R4c
+# (équation bicarrée, changement d'inconnue Z = z², lesson.md:478-516). Un id neuf,
+# `changement-inconnue-retour-incomplet` (deux faces), au plancher exact et pas au-delà : la ligne
+# de cadre est SM seule (maths-sm.yaml:257 ; rien au cadre SExp). Ids existants recrutés là où le
+# calcul de l'item les fait réellement jouer : `signe-parties-perdu` (48, 49 : valeurs de Z de
+# signe opposé), `delta-negatif-aucune-solution` (48 : z² = −4 écarté comme dans ℝ ; 3 → 4, sort de
+# la marge nulle), `carre-parfait-signe-oppose` et `racines-conjuguees-hors-reels` (50). R4c : 6 → 9.
+# Tableau régénéré en entier contre la même convention.
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2788,18 +3002,19 @@ coverage_summary:
     mc.math.maths_complexes_algebrique.conjugue-mauvais-axe:                { count: 4, items: [NBCOMPLEX-18, NBCOMPLEX-30, NBCOMPLEX-33, NBCOMPLEX-35] }
     mc.math.maths_complexes_algebrique.imaginaire-pur-mauvaise-partie:      { count: 3, items: [NBCOMPLEX-11, NBCOMPLEX-23, NBCOMPLEX-32] }
     mc.math.maths_complexes_algebrique.puissance-i-cycle-errone:            { count: 3, items: [NBCOMPLEX-13, NBCOMPLEX-26, NBCOMPLEX-28] }
-    mc.math.maths_complexes_algebrique.signe-parties-perdu:                 { count: 20, items: [NBCOMPLEX-1, NBCOMPLEX-2, NBCOMPLEX-10, NBCOMPLEX-11, NBCOMPLEX-12, NBCOMPLEX-17, NBCOMPLEX-34, NBCOMPLEX-35, NBCOMPLEX-36, NBCOMPLEX-37, NBCOMPLEX-38, NBCOMPLEX-39, NBCOMPLEX-40, NBCOMPLEX-41, NBCOMPLEX-42, NBCOMPLEX-43, NBCOMPLEX-44, NBCOMPLEX-45, NBCOMPLEX-46, NBCOMPLEX-47] }
+    mc.math.maths_complexes_algebrique.signe-parties-perdu:                 { count: 22, items: [NBCOMPLEX-1, NBCOMPLEX-2, NBCOMPLEX-10, NBCOMPLEX-11, NBCOMPLEX-12, NBCOMPLEX-17, NBCOMPLEX-34, NBCOMPLEX-35, NBCOMPLEX-36, NBCOMPLEX-37, NBCOMPLEX-38, NBCOMPLEX-39, NBCOMPLEX-40, NBCOMPLEX-41, NBCOMPLEX-42, NBCOMPLEX-43, NBCOMPLEX-44, NBCOMPLEX-45, NBCOMPLEX-46, NBCOMPLEX-47, NBCOMPLEX-48, NBCOMPLEX-49] }
     mc.math.maths_complexes_algebrique.carre-reel-peut-etre-negatif:        { count: 5, items: [NBCOMPLEX-7, NBCOMPLEX-9, NBCOMPLEX-26, NBCOMPLEX-27, NBCOMPLEX-28] }
     mc.math.maths_complexes_algebrique.i-derive-par-racine-usuelle:         { count: 6, items: [NBCOMPLEX-9, NBCOMPLEX-27, NBCOMPLEX-32, NBCOMPLEX-34, NBCOMPLEX-36, NBCOMPLEX-37] }
     mc.math.maths_complexes_algebrique.extension-equation-mal-appariee:     { count: 3, items: [NBCOMPLEX-8, NBCOMPLEX-27, NBCOMPLEX-28] }
     mc.math.maths_complexes_algebrique.module-argument-vs-parties:          { count: 4, items: [NBCOMPLEX-22, NBCOMPLEX-23, NBCOMPLEX-24, NBCOMPLEX-31] }
     mc.math.maths_complexes_algebrique.algebrique-exponentielle-conversion: { count: 3, items: [NBCOMPLEX-24, NBCOMPLEX-31, NBCOMPLEX-33] }
-    mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution:       { count: 3, items: [NBCOMPLEX-34, NBCOMPLEX-36, NBCOMPLEX-37] }
-    mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels:       { count: 4, items: [NBCOMPLEX-38, NBCOMPLEX-39, NBCOMPLEX-40, NBCOMPLEX-41] }
-    mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose:          { count: 4, items: [NBCOMPLEX-38, NBCOMPLEX-39, NBCOMPLEX-40, NBCOMPLEX-41] }
+    mc.math.maths_complexes_algebrique.delta-negatif-aucune-solution:       { count: 4, items: [NBCOMPLEX-34, NBCOMPLEX-36, NBCOMPLEX-37, NBCOMPLEX-48] }
+    mc.math.maths_complexes_algebrique.racines-conjuguees-hors-reels:       { count: 5, items: [NBCOMPLEX-38, NBCOMPLEX-39, NBCOMPLEX-40, NBCOMPLEX-41, NBCOMPLEX-50] }
+    mc.math.maths_complexes_algebrique.carre-parfait-signe-oppose:          { count: 5, items: [NBCOMPLEX-38, NBCOMPLEX-39, NBCOMPLEX-40, NBCOMPLEX-41, NBCOMPLEX-50] }
     mc.math.maths_complexes_algebrique.viete-somme-produit-inverses:        { count: 6, items: [NBCOMPLEX-42, NBCOMPLEX-43, NBCOMPLEX-44, NBCOMPLEX-45, NBCOMPLEX-46, NBCOMPLEX-47] }
     mc.math.maths_complexes_algebrique.viete-coefficient-a-oublie:          { count: 6, items: [NBCOMPLEX-42, NBCOMPLEX-43, NBCOMPLEX-44, NBCOMPLEX-45, NBCOMPLEX-46, NBCOMPLEX-47] }
-  total_items: 47
+    mc.math.maths_complexes_algebrique.changement-inconnue-retour-incomplet: { count: 3, items: [NBCOMPLEX-48, NBCOMPLEX-49, NBCOMPLEX-50] }
+  total_items: 50
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2809,11 +3024,24 @@ coverage_summary:
     R3: 3
     R4: 4
     R4b: 8
-    R4c: 6
+    R4c: 9
     R5: 5
     R6: 5
   honest_state: >-
-    Les vingt-cinq misconceptions déclarées sont couvertes, aucune sous le
+    Recompté le 2026-10-20 (vague G6, NBCOMPLEX-48 à 50) : vingt-six
+    misconceptions déclarées, toutes couvertes, aucune sous le plancher. L'id
+    neuf `changement-inconnue-retour-incomplet` part au plancher EXACT (3 items,
+    marge nulle — face A, les valeurs de Z rendues pour solutions, sur
+    NBCOMPLEX-48 et 49 ; face B, une seule racine carrée par valeur de Z, sur
+    NBCOMPLEX-49 et 50) : lot minimal voulu, la ligne de cadre étant SM seule
+    (maths-sm.yaml:257). `delta-negatif-aucune-solution` sort de la marge nulle
+    (3 → 4, NBCOMPLEX-48) : la liste des dix ids à marge nulle ci-dessous la
+    perd et gagne l'id neuf — ils sont toujours dix. Fidélité filière :
+    NBCOMPLEX-49 (racines carrées d'un Z non réel) et NBCOMPLEX-50 (coefficient
+    complexe) sont de profondeur SM, comme NBCOMPLEX-38 à 45 et 47 ;
+    NBCOMPLEX-48 se résout avec les seuls outils SExp, mais la capacité qu'il
+    teste n'est nommée qu'au cadre SM. R4c compte 9 items (NBCOMPLEX-42 à 50).
+    Historique conservé ci-dessous. — Les vingt-cinq misconceptions déclarées sont couvertes, aucune sous le
     plancher — recompté après le re-dressage de NBCOMPLEX-35/36 et l'ajout de
     NBCOMPLEX-46/47. Dix y siègent EXACTEMENT (3 items), marge nulle :
     produit-non-developpe, quotient-conjugue-incomplet, module-produit-additif,
