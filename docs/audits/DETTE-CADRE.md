@@ -39,7 +39,7 @@ logarithme de base a / `a^x` / `x^α` / racine n-ième (aucune occurrence dans l
 | vague | notion | ce qui manque | état |
 |---|---|---|---|
 | G1 | arithmétique [SM] | systèmes de numération (2.1.4–2.1.6) ; PPCM | numération écrite 2026-10-20 (35df5738, chapitre 10 « Les systèmes de numération » ; vague 1 appliquée de1fc6bd + 7255989e) ; PPCM : voir la ligne de cadre |
-| G2 | structures algébriques [SM] | **espaces vectoriels** (sous-espace, famille libre/génératrice, base, dimension, application linéaire) ; noyau et image d'un morphisme ; items sous-groupe et anneau intègre | spec à écrire (un sous-domaine entier) |
+| G2 | structures algébriques [SM] | **espaces vectoriels** (sous-espace, famille libre/génératrice, base, dimension, application linéaire) ; noyau et image d'un morphisme ; items sous-groupe et anneau intègre | espaces vectoriels et noyau d'un morphisme écrits 2026-10-20 (chapitre 11, items SA-36…53, r8-bac, r8-variation) ; vague 1 sur le chapitre construit à faire ; items sous-groupe et anneau intègre : voir la ligne |
 | G3 | calcul intégral | sommes de Riemann [SM] ; primitives `u'·uⁿ` [commun], `u'·cos u`, `u'·sin u`, primitive sous condition [SM] | écrit 2026-10-20 (prose ff15dbc2, items CI-59…73) |
 | G4 | exponentielle / logarithme [SM] | logarithme décimal et de base a ; `a^x = e^{x ln a}` ; `x^α` ; racine n-ième | écrit 2026-10-20 (prose ff15dbc2, items 49ecdfd2) |
 | G5 | limites et continuité [commun] | image d'un segment ; dichotomie | écrit 2026-10-20 (prose ff15dbc2, items 063259a1) |

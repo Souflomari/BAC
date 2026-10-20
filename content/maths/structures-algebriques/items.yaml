@@ -60,6 +60,152 @@ misconceptions:
     description: "Face à un isomorphisme $\\varphi : E \\to F$, l'élève répond que le neutre de $F$ est le neutre de $E$ tel quel, ou que le symétrique de $\\varphi(x)$ dans $F$ est le symétrique de $x$ dans $E$ laissé tel quel (sans lui appliquer $\\varphi$) — au lieu de calculer explicitement $\\varphi(e_E)$ (ou $\\varphi(x'_E)$), comme le prescrit le transport."
     contradicts_principle: "Le transport relie deux structures par les IMAGES de $\\varphi$, jamais par identité numérique : $e_F = \\varphi(e_E)$, et le symétrique de $\\varphi(x)$ est $\\varphi(x'_E)$ — deux quantités qui ne coïncident avec leur original dans $E$ que par coïncidence numérique, jamais par principe (ex : pour $\\varphi(x)=x+7$, $e_F=\\varphi(0)=7 \\neq 0=e_E$)."
 
+  # ── Les HUIT ids du chapitre « Espaces vectoriels : sous-espace, base,
+  # dimension » (ajoutés le 2026-10-20 ; spec :
+  # docs/pipeline/propositions/maths-structures-espaces-vectoriels.md, §8 —
+  # une face chacun, révision (b) comprise). La frontière entre ids voisins
+  # est la règle opératoire du §8 de la spec : s'arrêter au test du zéro →
+  # sous-espace-zero-suffit ; cocher la liste d'une structure voisine (sous-
+  # groupe, anneau) → sous-espace-vs-sous-groupe ; SAUTER le test du zéro
+  # parce que l'objet a l'air linéaire → sous-espace-affine-confondu ;
+  # vérifier un cas particulier et généraliser → generalisation-hative (id
+  # existant) ; deux conditions sur trois → axiome-oublie (existant) ; une
+  # stabilité supposée sans test → cloture-non-verifiee (existant) ; le neutre
+  # d'une autre loi → neutre-non-transporte (existant) ; affirmer qu'une
+  # famille engendre sans écrire l'élément quelconque →
+  # famille-generatrice-non-verifiee.
+  - id: mc.math.structures_algebriques.sous-espace-zero-suffit
+    label: "« Le test du zéro suffit : $0_E \\in H$, donc $H$ est un sous-espace »"
+    description: >
+      L'élève lit le critère du sous-espace comme une liste d'indices
+      suffisants au lieu d'une conjonction : dès que la condition la plus
+      facile passe — le vecteur nul appartient à la partie — il conclut et
+      s'arrête. Le geste s'arrête au premier ✓, et ce premier ✓ est presque
+      toujours le même.
+    contradicts_principle: >
+      Le critère est une conjonction de TROIS conditions : $0_E \in H$,
+      stabilité pour $+$, stabilité pour la loi externe. La partie
+      $X = \{(x,y)\in\mathbb{R}^2\ /\ xy = 0\}$ contient $(0,0)$ et résiste à
+      toute multiplication par un réel — deux conditions sur trois — et n'est
+      pourtant pas un sous-espace, car $(1,0)+(0,1) = (1,1) \notin X$. Le
+      critère à trois conditions dit laquelle tombe.
+
+  - id: mc.math.structures_algebriques.sous-espace-vs-sous-groupe
+    label: "« Sous-espace, c'est la question d'à côté : je coche ce que demandait le sous-groupe (ou le sous-anneau) et la loi externe n'entre jamais dans le raisonnement »"
+    description: >
+      L'élève transporte la liste de contrôle de la structure voisine. La
+      situation d'examen la fabrique : une question demande le sous-groupe,
+      la suivante le sous-espace, sur le même ensemble — et il répond « déjà
+      fait ». Symptôme inverse, même racine : exiger que la partie contienne
+      $I$, ou qu'elle soit stable pour $\times$, comme on le ferait pour un
+      anneau.
+    contradicts_principle: >
+      Un sous-espace demande une stabilité que le sous-groupe n'a jamais
+      testée : celle pour la loi externe $\lambda\cdot u$, où le réel
+      $\lambda$ n'appartient même pas à l'ensemble. Et la réciproque est
+      fausse : $F = \{M(a,b),\ (a,b)\in\mathbb{Z}^2\}$ est un sous-groupe de
+      $(M_2(\mathbb{R}),+)$ sans être un sous-espace, puisque
+      $\tfrac12\,M(1,0) \notin F$. Ni $I$ ni la stabilité pour $\times$ ne
+      font partie du critère.
+
+  - id: mc.math.structures_algebriques.famille-libre-mal-testee
+    label: "« La famille est libre : aucun vecteur n'est nul et aucun couple n'est colinéaire »"
+    description: >
+      L'élève remplace le test GLOBAL de la liberté (existe-t-il une
+      combinaison nulle à coefficients non tous nuls ?) par un test par
+      paires, ou par la simple absence du vecteur nul. Le test choisi est
+      celui qui se fait de tête.
+    contradicts_principle: >
+      La liberté porte sur toute combinaison de toute la famille. Les
+      vecteurs $w_1 = (1,2,3)$, $w_2 = (2,1,0)$ et $w_3 = (3,3,3)$ sont non
+      nuls et deux à deux non colinéaires, et pourtant
+      $w_1 + w_2 - w_3 = (0,0,0)$. Le seul test
+      qui tranche est le système $\alpha_1u_1 + \dots + \alpha_pu_p = 0_E$,
+      résolu jusqu'au bout.
+
+  - id: mc.math.structures_algebriques.dimension-compte-parametres
+    label: "« La dimension, c'est le nombre de lettres dans la définition (ou le nombre de vecteurs écrits) »"
+    description: >
+      L'élève compte au lieu de vérifier : il prend la famille génératrice qui
+      se lit sur la définition, ne teste pas sa liberté, et annonce son
+      cardinal. Même geste à l'envers : conclure qu'une famille de $n$
+      vecteurs est libre, ou qu'elle engendre, parce que l'espace est de
+      dimension $n$.
+    contradicts_principle: >
+      La dimension est le nombre de vecteurs d'une BASE, c'est-à-dire d'une
+      famille libre ET génératrice.
+      $\mathrm{Vect}\big((1,2,-1),(2,1,1),(3,3,0)\big)$ a trois générateurs et
+      la dimension $2$ ;
+      $\left\{\begin{pmatrix}a+b&c\\c&a+b\end{pmatrix}\right\}$ s'écrit avec
+      trois lettres et a la dimension $2$. Et en dimension $n$, c'est une
+      famille LIBRE de $n$ vecteurs qui est une base — le compte est la
+      conclusion, pas l'hypothèse.
+
+  - id: mc.math.structures_algebriques.dimension-lue-sur-la-notation
+    label: "« La dimension se lit sur l'habillage : $M_2(\\mathbb{R})$ est de dimension 2, un vecteur à trois coordonnées vit en dimension 3, un sous-espace a la dimension de l'espace qui le contient »"
+    description: >
+      L'élève lit la dimension sur un symbole — l'indice $2$ de $M_2$, le
+      nombre de coordonnées écrites, l'espace ambiant — au lieu de la compter
+      sur une base.
+    contradicts_principle: >
+      $\dim M_2(\mathbb{R}) = 4$, base $(E_{11},E_{12},E_{21},E_{22})$ : le
+      « 2 » de $M_2$ est la taille des matrices. Et un sous-espace a une
+      dimension inférieure ou égale à celle de l'espace ambiant, jamais donnée
+      d'avance : un sous-espace de $M_2(\mathbb{R})$ peut être de dimension
+      $2$, un plan de $\mathbb{R}^3$ passant par l'origine est de
+      dimension $2$.
+
+  - id: mc.math.structures_algebriques.noyau-toujours-nul
+    label: "« Le noyau se réduit toujours au neutre — donc une application linéaire (ou un morphisme) est injective, et son image est l'espace d'arrivée tout entier »"
+    description: >
+      L'élève prend la conservation de la structure pour une bijectivité :
+      puisque $f(0) = 0$, il conclut que $0$ est SEUL dans le noyau, et que
+      l'image « remplit » l'arrivée. Variante : disqualifier une application
+      linéaire au motif qu'elle n'est pas injective.
+    contradicts_principle: >
+      $\ker f$ CONTIENT le neutre, il ne s'y réduit pas : pour
+      $f(x,y,z) = (x-y,\ y-z)$, $\ker f = \mathrm{Vect}\big((1,1,1)\big)$ et
+      $f(1,1,1) = f(0,0,0)$ ; pour $x \mapsto x^2$ sur $(\mathbb{R}^*,\times)$,
+      le noyau est $\{1,-1\}$ et l'image $\mathbb{R}^*_+ \neq \mathbb{R}^*$.
+      L'injectivité se démontre, et elle équivaut à $\ker f = \{0_E\}$ (ou
+      $\{e_E\}$).
+
+  - id: mc.math.structures_algebriques.sous-espace-affine-confondu
+    label: "« C'est une droite (un plan, une équation du premier degré) : donc c'est un sous-espace »"
+    description: >
+      L'élève ne s'arrête pas au test du zéro : il le SAUTE, parce que l'objet
+      a la forme d'un sous-espace. Une droite décalée ressemble à une droite,
+      $x+y+z = 1$ ressemble à $x+y+z = 0$, une expression du premier degré
+      s'appelle « linéaire » dans le langage courant. Le mot « linéaire » du
+      collège (fonction affine, graphe droit) survit sous le mot
+      « linéaire » du chapitre.
+    contradicts_principle: >
+      Un terme constant déplace l'objet hors de l'origine, et toute la
+      structure s'effondre : $\{y = 2x+1\}$ ne contient pas $(0,0)$, car
+      $2\times0+1 = 1 \neq 0$ ; $g(x,y) = (x+1,\ y)$ vérifie
+      $g(0,0) = (1,0) \neq (0,0)$ et n'est donc pas linéaire. Le test du zéro
+      tient en une ligne, et c'est la ligne que ce modèle fait sauter.
+
+  - id: mc.math.structures_algebriques.famille-generatrice-non-verifiee
+    label: "« Cette famille couvre tout : ses vecteurs touchent toutes les coordonnées (ou il y en a assez), donc elle engendre »"
+    description: >
+      L'élève traite « génératrice » comme une inspection et non comme une
+      résolution : il regarde si les vecteurs ont l'air de remplir les cases,
+      si leur nombre semble suffisant, ou si la famille est libre, et il
+      n'écrit pas l'élément quelconque comme combinaison. La génération est
+      si souvent offerte par la définition de l'ensemble qu'il croit qu'elle
+      se lit.
+    contradicts_principle: >
+      Une famille engendre $H$ quand TOUT élément de $H$ s'en écrit comme
+      combinaison, et cela se démontre sur un élément quelconque ; un seul
+      élément sans antécédent suffit à le réfuter.
+      $\big(I,\ E_{12},\ E_{21}\big)$ touche les quatre cases de
+      $M_2(\mathbb{R})$ et n'engendre pas : ses combinaisons valent
+      $\begin{pmatrix}\alpha&\beta\\\gamma&\alpha\end{pmatrix}$, et
+      $\begin{pmatrix}1&0\\0&2\end{pmatrix}$ est hors d'atteinte. Et
+      $\big((1,2,0),(0,1,3)\big)$ est libre sans engendrer $\mathbb{R}^3$ : la
+      liberté ne donne pas la génération.
+
 items:
 
   # ── neutre-vs-symetrique ─────────────────────────────────────────────
@@ -2266,6 +2412,1405 @@ items:
       le premier test : $2\ast1=9\neq2$. Et $-\frac27$, trouvé en résolvant
       $2\ast x'=0$, est le symétrique de $2$, pas le neutre de la loi.
 
+  # ── Espaces vectoriels (2026-10-20) — le chapitre « Espaces vectoriels :
+  # sous-espace, base, dimension », dernier titre `## ` de lesson.md, barreau
+  # R8. Dix-huit items, SA-36 → SA-53, écrits depuis
+  # docs/pipeline/propositions/maths-structures-espaces-vectoriels.md, §11.1
+  # (objets, clés, modèles visés) et §11.2 (règles), révisions (a) et (b)
+  # comprises : SA-41 porte la question refaite (« la stabilité pour × suffit-
+  # elle ? », clé muette sur la loi externe), SA-46 l'objet de dimension 3,
+  # SA-50 les vecteurs (1,0,2), (0,3,1), (2,3,5). Défauts §15 pris : Q11 (18
+  # items), Q12 (deux ids au plancher sec, dit dans honest_state).
+  #
+  # NOMBRES. Tous recalculés en arithmétique exacte (fractions) avant écriture :
+  # prémisses vraies des distracteurs, relations, noyaux, rangs, dimensions,
+  # témoins — 298 contrôles, 0 erreur (script de travail, hors dépôt). Objets
+  # cherchés, après normalisation du LaTeX, dans les bank.yaml, exercises.yaml,
+  # lesson.md, checkpoints.yaml et items.yaml de content/maths et dans
+  # docs/sujets/maths : aucune occurrence dans cette notion ni dans la banque ;
+  # seuls des triplets isolés, POINTS ou vecteurs d'autres exercices,
+  # reparaissent dans geometrie-espace (autre notion, autre objet, déjà relevé
+  # par la spec pour (1,0,2)).
+  #
+  # RÉDACTION. Les textes d'options de la spec sont des canevas (§11.2) ;
+  # ils sont ré-rédigés contre les quatre indices mesurés par les portes :
+  # aucun absolu de la liste d'indice-absolu dans une option (« aucun » compris
+  # — d'où « tous trois non nuls », « deux à deux non colinéaires »), aucun
+  # refus, la clé jamais strictement la plus longue ni visiblement la plus
+  # courte (en longueur rendue comme en longueur brute), et jamais un seul
+  # choix qui reprend un mot du tronc. Chaque choix donne un verdict ET sa
+  # raison. La correction finit par « Pourquoi les autres réponses
+  # échouent » — le standard de la notion (§11.2, m7), dans un mot que l'élève
+  # lit sans vocabulaire d'auteur.
+  #
+  # MODÈLES FAUX QUI ATTEIGNENT LA CLÉ — écrits, pas cachés (§11.2,
+  # précision (b)). SA-49 : « compter les lettres » donne 3, la clé ; admis
+  # parce que sur Sym les trois lettres sont des coordonnées libres, que l'item
+  # ne porte pas dimension-compte-parametres, et que cet id est mesuré par huit
+  # items où le compte et la dimension divergent. SA-36 et SA-38 : la liste du
+  # sous-groupe, appliquée, trouve le témoin de la clé ; admis, ces deux items
+  # ne portent pas sous-espace-vs-sous-groupe. SA-37 et SA-41 : cas limite
+  # nommé par la spec — ils portent cet id sous une variante (sous-groupe testé
+  # sur une seule droite ; liste de l'anneau), et la variante « liste du
+  # sous-groupe bien appliquée » atteint la clé. L'id n'est diagnostiquable pur
+  # qu'à SA-39 et SA-40. Le retirer de SA-37 et SA-41 le ferait tomber à 2.
+  #
+  # DOUBLES ÉTIQUETTES (liste du §11.2, à jour de la révision (b)) : SA-37
+  # (sous-groupe + généralisation), SA-41 (zéro + sous-groupe), SA-42 et
+  # SA-45 (comptage + liberté), SA-48 (noyau + affine), SA-50 (génération +
+  # liberté), SA-52 (notation + noyau, l'image prise pour l'arrivée entière).
+
+  - id: SA-36
+    rung: "R8"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, sous-espace]
+    stem: |
+      Dans $\mathbb{R}^2$, on pose
+      $S = \{(x,y)\in\mathbb{R}^2\ /\ y = \lvert x\rvert\}$.
+      $S$ est-il un sous-espace vectoriel de $(\mathbb{R}^2,+,\cdot)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          Non : $(1,1)$ est dans $S$, mais $(-1)\cdot(1,1) = (-1,-1)$ n'y
+          est pas, car $\lvert -1\rvert = 1 \neq -1$.
+        correct: true
+      - id: B
+        text: |
+          Oui : $(0,0)$ est dans $S$, puisque $\lvert 0\rvert = 0$ ; le
+          vecteur nul de $\mathbb{R}^2$ appartient bien à $S$.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-zero-suffit
+        feedback: |
+          Modèle détecté : le test du zéro pris pour le critère entier.
+          $(0,0) \in S$ est exact, mais ce n'est que la première des trois
+          conditions. La troisième tombe : $(1,1) \in S$, et
+          $(-1)\cdot(1,1) = (-1,-1)$ n'est pas dans $S$, car
+          $\lvert -1\rvert = 1 \neq -1$. $S$ n'est pas un sous-espace.
+      - id: C
+        text: |
+          Oui : pour $\lambda \geq 0$,
+          $\lambda\cdot(x,\lvert x\rvert) = (\lambda x,\lvert \lambda x\rvert)$,
+          donc multiplier un point de $S$ par un réel le laisse dans $S$.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Modèle détecté : un cas particulier généralisé. Le calcul est juste
+          pour $\lambda \geq 0$, mais la condition porte sur tout réel
+          $\lambda$. Avec $\lambda = -1$ : $(-1)\cdot(1,1) = (-1,-1)$, et
+          $\lvert -1\rvert = 1 \neq -1$, donc ce multiple sort de $S$. Un seul
+          réel qui fait sortir de $S$ fait tomber la condition.
+      - id: D
+        text: |
+          Oui : $(0,0)$ est dans $S$, et la somme de deux points de $S$ reste
+          dans $S$ ; l'addition ne fait pas sortir de l'ensemble.
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: |
+          Modèle détecté : une stabilité supposée au lieu d'être testée.
+          Essaie deux points : $(1,1)$ et $(-2,2)$ sont dans $S$, mais leur
+          somme $(-1,3)$ n'y est pas, car $\lvert -1\rvert = 1 \neq 3$. $S$
+          n'est pas stable pour $+$ — et la multiplication par $-1$ le fait
+          sortir aussi.
+    correct_feedback: |
+      Une seule paire suffit : $(1,1) \in S$, et son multiple par $-1$,
+      $(-1,-1)$, n'est pas dans $S$. La stabilité pour la loi externe tombe,
+      donc $S$ n'est pas un sous-espace. (La stabilité pour $+$ tombe aussi :
+      $(1,1)+(-2,2) = (-1,3) \notin S$.)
+    solution: |
+      On passe les trois conditions du critère, dans l'ordre.
+
+      Non vide : $(0,0) \in S$, car $\lvert 0\rvert = 0$ ✓.
+
+      Stable pour $+$ : $(1,1)$ et $(-2,2)$ sont dans $S$, mais
+      $$(1,1)+(-2,2) = (-1,3), \qquad \lvert -1\rvert = 1 \neq 3$$
+      donc $(-1,3) \notin S$ ✗.
+
+      Stable pour $\cdot$ : $(1,1) \in S$, mais
+      $$(-1)\cdot(1,1) = (-1,-1), \qquad \lvert -1\rvert = 1 \neq -1$$
+      donc $(-1,-1) \notin S$ ✗.
+
+      Un contre-exemple suffit : $S$ n'est pas un sous-espace vectoriel de
+      $\mathbb{R}^2$.
+
+      **Pourquoi les autres réponses échouent.** S'arrêter à
+      $(0,0) \in S$, c'est prendre la première condition pour le critère
+      entier. Vérifier la multiplication pour $\lambda \geq 0$, c'est
+      généraliser un cas particulier : $\lambda = -1$ fait sortir de $S$.
+      Affirmer que la somme reste dans $S$ sans l'essayer, c'est supposer la
+      stabilité : $(1,1)+(-2,2) = (-1,3)$ la réfute.
+
+  - id: SA-37
+    rung: "R8"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, sous-espace]
+    stem: |
+      Dans $\mathbb{R}^2$, on pose
+      $T = \{(x,y)\in\mathbb{R}^2\ /\ (y-x)(y+2x) = 0\}$.
+      $T$ est-il un sous-espace vectoriel de $(\mathbb{R}^2,+,\cdot)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          Non : $(1,1)$ et $(1,-2)$ sont dans $T$, mais leur somme $(2,-1)$
+          n'y est pas, car $(-1-2)(-1+4) = -9 \neq 0$.
+        correct: true
+      - id: B
+        text: |
+          Oui : $(0,0)$ est dans $T$, et $\lambda\cdot(x,y)$ y reste, puisque
+          le produit $(y-x)(y+2x)$ est alors multiplié par $\lambda^2$.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-zero-suffit
+        feedback: |
+          Modèle détecté : conclure dès que le vecteur nul est là et qu'une
+          seconde vérification passe, sans aller au bout du critère. Les deux
+          constats sont justes, mais la stabilité pour $+$ n'a pas été
+          testée, et c'est elle qui tombe : $(1,1)+(1,-2) = (2,-1)$, et
+          $(-1-2)(-1+4) = -9 \neq 0$.
+      - id: C
+        text: |
+          Oui : $T$ est la réunion des deux droites $y = x$ et $y = -2x$, qui
+          passent par l'origine, et chacune d'elles est un sous-espace.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Modèle détecté : une propriété des morceaux étendue à leur réunion.
+          Chacune des deux droites est bien un sous-espace, mais un point de
+          l'une plus un point de l'autre sort de $T$ : $(1,1)+(1,-2) = (2,-1)$,
+          et $(-1-2)(-1+4) = -9 \neq 0$. La réunion de deux droites distinctes
+          n'est pas stable pour $+$.
+      - id: D
+        text: |
+          Oui : $T$ contient le vecteur nul et les opposés de ses points, et
+          deux points d'une même droite ont leur somme sur cette droite ;
+          c'est un sous-groupe, donc un sous-espace.
+        correct: false
+        misconception: [mc.math.structures_algebriques.sous-espace-vs-sous-groupe, mc.math.structures_algebriques.generalisation-hative]
+        feedback: |
+          Modèle détecté : la liste du sous-groupe cochée à la place du
+          critère, avec une somme testée sur une seule droite. Le vecteur nul
+          et les opposés sont bien dans $T$ ; mais deux points pris sur les
+          deux droites ont une somme hors de $T$ : $(1,1)+(1,-2) = (2,-1)$.
+          $T$ n'est donc pas même un sous-groupe de $(\mathbb{R}^2,+)$ — et
+          un sous-espace demande en plus la stabilité pour la loi externe.
+    correct_feedback: |
+      Exact. Le vecteur nul est dans $T$, et $T$ est stable pour la loi
+      externe ($(\lambda y-\lambda x)(\lambda y+2\lambda x) = \lambda^2(y-x)(y+2x)$),
+      mais la stabilité pour $+$ tombe : $(1,1) \in T$, $(1,-2) \in T$, et
+      $(1,1)+(1,-2) = (2,-1) \notin T$.
+    solution: |
+      $T$ est la réunion des droites $y = x$ et $y = -2x$. On passe les
+      trois conditions.
+
+      Non vide : $(0,0) \in T$ ✓. Stable pour $\cdot$ :
+      $(\lambda y-\lambda x)(\lambda y+2\lambda x) = \lambda^2(y-x)(y+2x) = 0$ ✓.
+
+      Stable pour $+$ : $(1,1) \in T$ (car $y - x = 0$) et $(1,-2) \in T$
+      (car $y + 2x = -2 + 2 = 0$), mais
+      $$(1,1)+(1,-2) = (2,-1), \qquad (-1-2)(-1+4) = (-3)\times3 = -9 \neq 0$$
+      donc $(2,-1) \notin T$ ✗. $T$ n'est pas un sous-espace vectoriel de $\mathbb{R}^2$.
+
+      **Pourquoi les autres réponses échouent.** Le zéro et la loi externe
+      passent, mais deux conditions sur trois ne font pas un sous-espace.
+      Que chaque droite soit un sous-espace ne dit rien de leur réunion : la
+      somme d'un point de chacune en sort. Et la liste du sous-groupe,
+      testée sur une seule droite, passe à côté du même contre-exemple — en
+      plus de laisser de côté la loi externe.
+
+  - id: SA-38
+    rung: "R8"
+    habilete: synthese
+    difficulty_level: 4
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, sous-espace]
+    stem: |
+      Voici quatre parties de $\mathbb{R}^3$, chacune suivie de l'argument
+      avancé pour en faire un sous-espace vectoriel. Laquelle est un
+      sous-espace vectoriel de $(\mathbb{R}^3,+,\cdot)$, pour la raison donnée ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $\{(x,y,z)\ /\ x-2y+z = 0\}$ : elle contient $(0,0,0)$, et
+          $x-2y+z$ reste nul pour une somme et pour un multiple de solutions.
+        correct: true
+      - id: B
+        text: |
+          $\{(x,y,z)\ /\ x^2 = y^2\}$ : elle contient $(0,0,0)$, puisque
+          $0^2 = 0^2$, et ce vecteur est le vecteur nul de $\mathbb{R}^3$.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-zero-suffit
+        feedback: |
+          Modèle détecté : le test du zéro pris pour le critère entier.
+          $(0,0,0)$ est bien là, mais la somme fait sortir de cette partie :
+          $(1,1,0)$ et $(1,-1,0)$ y sont, et $(1,1,0)+(1,-1,0) = (2,0,0)$,
+          avec $2^2 = 4 \neq 0^2$. Des quatre, seule
+          $\{x-2y+z = 0\}$ passe les trois conditions.
+      - id: C
+        text: |
+          $\{(x,y,z)\ /\ x+y+z = 1\}$ : c'est un plan de $\mathbb{R}^3$,
+          défini par une équation du premier degré en $x$, $y$ et $z$.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-affine-confondu
+        feedback: |
+          Modèle détecté : un plan pris pour un sous-espace parce qu'il en a
+          la forme. Le test du zéro, sauté ici, le fait tomber en une ligne :
+          $0+0+0 = 0 \neq 1$, donc $(0,0,0)$ n'est pas dans ce plan. Un plan
+          qui ne passe pas par l'origine n'est pas un sous-espace ; le
+          sous-espace des quatre est $\{x-2y+z = 0\}$.
+      - id: D
+        text: |
+          $\{(x,y,z)\ /\ x \geq 0\}$ : elle contient $(0,0,0)$, et la somme de
+          deux de ses éléments a encore une première coordonnée positive.
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        feedback: |
+          Modèle détecté : deux conditions sur trois, puis la conclusion. Le
+          zéro et la somme passent, mais la stabilité pour la loi externe
+          tombe : $(1,0,0)$ est dans cette partie, et
+          $(-1)\cdot(1,0,0) = (-1,0,0)$ n'y est pas. Des quatre, seule
+          $\{x-2y+z = 0\}$ passe les trois conditions.
+    correct_feedback: |
+      C'est la seule des quatre qui passe les trois conditions. $(0,0,0)$
+      vérifie l'équation ; si $x-2y+z = 0$ et $x'-2y'+z' = 0$, alors
+      $(x+x')-2(y+y')+(z+z') = 0$ ; et
+      $\lambda x-2\lambda y+\lambda z = \lambda(x-2y+z) = 0$.
+    solution: |
+      Pour chaque partie, on cherche la condition qui tombe.
+
+      $\{x-2y+z = 0\}$ : les trois passent — $(0,0,0)$ vérifie l'équation,
+      et la somme comme le multiple de deux solutions en restent, puisque
+      l'expression est linéaire. **C'est un sous-espace.**
+
+      $\{x^2 = y^2\}$ : le zéro et la loi externe passent, la somme tombe :
+      $(1,1,0)+(1,-1,0) = (2,0,0)$ et $4 \neq 0$ ✗.
+
+      $\{x+y+z = 1\}$ : le zéro tombe, $0+0+0 \neq 1$ ✗.
+
+      $\{x \geq 0\}$ : le zéro et la somme passent, la loi externe tombe :
+      $(-1)\cdot(1,0,0) = (-1,0,0)$ ✗.
+
+      **Pourquoi les autres réponses échouent.** Contenir le vecteur nul
+      n'est que la première condition. « C'est un plan » ne dispense pas du
+      test du zéro, et ce plan-là ne passe pas par l'origine. Vérifier le
+      zéro et la somme, c'est oublier la troisième condition — celle qui,
+      avec $\lambda = -1$, porte les opposés.
+
+  - id: SA-39
+    rung: "R8"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, sous-espace]
+    stem: |
+      On pose
+      $U = \left\{\begin{pmatrix}a&0\\a+b&b\end{pmatrix}\ /\ (a,b)\in\mathbb{Z}^2\right\}$,
+      une partie de $M_2(\mathbb{R})$. $U$ est-il un sous-groupe de
+      $(M_2(\mathbb{R}),+)$ ? Un sous-espace vectoriel de
+      $(M_2(\mathbb{R}),+,\cdot)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          Sous-groupe oui, sous-espace non :
+          $\begin{pmatrix}1&0\\1&0\end{pmatrix}$ est dans $U$, mais sa moitié
+          demanderait $a = \tfrac12$, qui n'est pas entier.
+        correct: true
+      - id: B
+        text: |
+          Les deux : $U$ contient la matrice nulle, il est stable pour $+$ et
+          pour les opposés, et cela règle aussi la question du sous-espace.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-vs-sous-groupe
+        feedback: |
+          Modèle détecté : le sous-groupe pris pour le sous-espace. Ces trois
+          conditions sont celles du sous-groupe, et $U$ les remplit. Le
+          sous-espace en échange une contre la stabilité pour la loi
+          externe, et elle tombe :
+          $\tfrac12\begin{pmatrix}1&0\\1&0\end{pmatrix} = \begin{pmatrix}\frac12&0\\\frac12&0\end{pmatrix}$
+          demanderait $a = \tfrac12 \notin \mathbb{Z}$.
+      - id: C
+        text: |
+          Ni l'un ni l'autre : la matrice $I$ ne s'écrit pas sous la forme qui
+          définit $U$, alors que $U$ devrait la contenir.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-vs-sous-groupe
+        feedback: |
+          Modèle détecté : la liste d'une autre structure appliquée ici. Ni un
+          sous-groupe de $(M_2(\mathbb{R}),+)$ ni un sous-espace n'a à
+          contenir $I$ : c'est le neutre de $\times$, une loi qui n'intervient
+          pas. Le neutre attendu est la matrice nulle, et $U$ la contient.
+          $U$ est un sous-groupe ; c'est la loi externe qui l'empêche d'être
+          un sous-espace.
+      - id: D
+        text: |
+          Les deux : $U$ contient la matrice nulle, obtenue pour $a = b = 0$,
+          qui est le neutre de $(M_2(\mathbb{R}),+)$.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-zero-suffit
+        feedback: |
+          Modèle détecté : le test du zéro pris pour le critère entier. La
+          matrice nulle est bien dans $U$, mais un sous-espace doit aussi
+          être stable pour la loi externe, et $U$ ne l'est pas : la moitié de
+          $\begin{pmatrix}1&0\\1&0\end{pmatrix}$ demanderait $a = \tfrac12$,
+          qui n'est pas entier.
+    correct_feedback: |
+      Exact. $U$ contient $O$ ($a = b = 0$), la somme de deux éléments de $U$
+      est l'élément de paramètres $a+a'$ et $b+b'$, entiers, et l'opposé
+      celui de paramètres $-a$ et $-b$ : c'est un sous-groupe. Mais
+      $\tfrac12\begin{pmatrix}1&0\\1&0\end{pmatrix} = \begin{pmatrix}\frac12&0\\\frac12&0\end{pmatrix}$
+      demanderait $a = \tfrac12$ : $U$ n'est pas stable pour la loi externe.
+    solution: |
+      **Sous-groupe** (critère du chapitre 5). La matrice nulle s'obtient
+      pour $a = b = 0$ ✓. Pour deux éléments de paramètres $(a,b)$ et
+      $(a',b')$ entiers :
+      $$\begin{pmatrix}a&0\\a+b&b\end{pmatrix}+\begin{pmatrix}a'&0\\a'+b'&b'\end{pmatrix} = \begin{pmatrix}a+a'&0\\(a+a')+(b+b')&b+b'\end{pmatrix} \in U$$
+      ✓, et l'opposé a pour paramètres $-a$, $-b$, entiers ✓.
+
+      **Sous-espace : non.** La matrice $\begin{pmatrix}1&0\\1&0\end{pmatrix}$
+      est dans $U$ ($a = 1$, $b = 0$), mais
+      $$\tfrac12\begin{pmatrix}1&0\\1&0\end{pmatrix} = \begin{pmatrix}\frac12&0\\\frac12&0\end{pmatrix}$$
+      demanderait $a = \tfrac12$, qui n'est pas entier ✗.
+
+      **Pourquoi les autres réponses échouent.** Les conditions du
+      sous-groupe ne contiennent pas la loi externe : elles règlent la
+      première question, pas la seconde. Exiger $I$, c'est cocher la liste
+      d'une structure à deux lois : le neutre de $+$ est $O$, et $U$ le
+      contient. Et la matrice nulle seule ne fait pas un sous-espace.
+
+  - id: SA-40
+    rung: "R8"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, sous-espace]
+    stem: |
+      Dans $\mathbb{R}^2$, on pose
+      $N = \{(x,y)\in\mathbb{R}^2\ /\ x+y\in\mathbb{Z}\}$.
+      Quelle affirmation est exacte ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $N$ est un sous-groupe de $(\mathbb{R}^2,+)$, pas un sous-espace :
+          $(1,0)$ est dans $N$, mais $\tfrac12\cdot(1,0) = (\tfrac12,0)$ n'y
+          est pas, car $\tfrac12 \notin \mathbb{Z}$.
+        correct: true
+      - id: B
+        text: |
+          $N$ est un sous-espace : il contient $(0,0)$, et la somme comme
+          l'opposé de ses points y restent, exactement comme pour un
+          sous-groupe de $(\mathbb{R}^2,+)$.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-vs-sous-groupe
+        feedback: |
+          Modèle détecté : le sous-groupe pris pour le sous-espace. Les trois
+          constats sont exacts, et ils font de $N$ un sous-groupe. Un
+          sous-espace demande la stabilité pour la loi externe, que le
+          sous-groupe ne teste pas : $(1,0) \in N$, mais
+          $\tfrac12\cdot(1,0) = (\tfrac12,0)$, et $\tfrac12 + 0 \notin \mathbb{Z}$.
+      - id: C
+        text: |
+          $N$ est un sous-espace : il contient le vecteur nul $(0,0)$,
+          puisque $0+0 = 0$ est un entier relatif.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-zero-suffit
+        feedback: |
+          Modèle détecté : le test du zéro pris pour le critère entier.
+          $(0,0) \in N$ est exact, mais la multiplication par un réel fait
+          sortir de $N$ : $\tfrac12\cdot(1,0) = (\tfrac12,0)$, et
+          $\tfrac12 \notin \mathbb{Z}$. $N$ est un sous-groupe de
+          $(\mathbb{R}^2,+)$, pas un sous-espace.
+      - id: D
+        text: |
+          $N$ est un sous-espace : c'est la réunion des droites parallèles
+          d'équation $x+y = k$, pour $k \in \mathbb{Z}$, et une droite est un
+          sous-espace.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-affine-confondu
+        feedback: |
+          Modèle détecté : une droite prise pour un sous-espace parce qu'elle
+          en a la forme. La droite $x+y = 0$ passe par l'origine ; les
+          autres, comme $x+y = 1$, ne contiennent pas $(0,0)$. Et la réunion
+          ne tient pas la loi externe : $\tfrac12\cdot(1,0) = (\tfrac12,0)$
+          tombe entre deux de ces droites. $N$ est un sous-groupe de
+          $(\mathbb{R}^2,+)$, pas un sous-espace.
+    correct_feedback: |
+      Exact. $(0,0) \in N$, la somme de deux points de $N$ a une somme de
+      coordonnées entière, et l'opposé aussi : $N$ est un sous-groupe de
+      $(\mathbb{R}^2,+)$. Mais $\tfrac12\cdot(1,0) = (\tfrac12,0)$ et
+      $\tfrac12 + 0 \notin \mathbb{Z}$ : la stabilité pour la loi externe
+      tombe.
+    solution: |
+      **Sous-groupe.** $(0,0) \in N$ car $0+0 = 0 \in \mathbb{Z}$ ✓. Si
+      $x+y \in \mathbb{Z}$ et $x'+y' \in \mathbb{Z}$, alors
+      $(x+x')+(y+y') \in \mathbb{Z}$ ✓, et $(-x)+(-y) = -(x+y) \in \mathbb{Z}$ ✓.
+
+      **Pas un sous-espace.** $(1,0) \in N$, mais
+      $$\tfrac12\cdot(1,0) = \left(\tfrac12,\ 0\right), \qquad \tfrac12 + 0 = \tfrac12 \notin \mathbb{Z}$$
+      donc $(\tfrac12,0) \notin N$ ✗.
+
+      **Pourquoi les autres réponses échouent.** Les conditions du
+      sous-groupe ne testent pas la multiplication par un réel. Contenir
+      $(0,0)$ n'est que la première condition. Et $N$ est bien une réunion
+      de droites, mais seule la droite $x+y = 0$ passe par l'origine : une
+      droite décalée n'est pas un sous-espace, et la réunion ne l'est pas
+      non plus.
+
+  - id: SA-41
+    rung: "R8"
+    habilete: synthese
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, sous-espace]
+    stem: |
+      On pose
+      $Z = \left\{\begin{pmatrix}a&b\\b&a+b\end{pmatrix}\ /\ (a,b)\in\mathbb{R}^2\right\}$,
+      une partie de $M_2(\mathbb{R})$. Une question précédente a établi que
+      $Z$ est stable pour le produit matriciel $\times$. Cette stabilité
+      suffit-elle à conclure que $Z$ est un sous-espace vectoriel de
+      $(M_2(\mathbb{R}),+,\cdot)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          Non : la stabilité pour $\times$ n'établit ni que $Z$ est non vide,
+          ni qu'il est stable pour $+$ ; ces deux conditions restent à écrire.
+        correct: true
+      - id: B
+        text: |
+          Oui : $Z$ contient $I$, obtenue pour $a = 1$ et $b = 0$, et il est
+          stable pour $\times$ ; c'est ce que l'on vérifie pour un anneau, et
+          le sous-espace en découle.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-vs-sous-groupe
+        feedback: |
+          Modèle détecté : la liste d'une structure voisine, celle de
+          l'anneau, cochée à la place du critère. Contenir $I$ et être stable
+          pour $\times$ ne donne même pas la stabilité pour $+$ : $\{I\}$
+          contient $I$ et vérifie $I\times I = I$, mais $I+I = 2I$ n'est pas
+          dans $\{I\}$. Le sous-espace a ses propres conditions : non vide,
+          stable pour $+$, stable pour la loi externe — et les deux premières
+          restent ici à écrire.
+      - id: C
+        text: |
+          Pas encore : il reste à vérifier que $Z$ contient la matrice nulle,
+          obtenue pour $a = b = 0$ ; la stabilité, elle, est acquise.
+        correct: false
+        misconception: [mc.math.structures_algebriques.sous-espace-zero-suffit, mc.math.structures_algebriques.sous-espace-vs-sous-groupe]
+        feedback: |
+          Modèle détecté : le test du zéro pris pour la dernière étape, et la
+          stabilité pour $\times$ prise pour celle que demande le
+          sous-espace. Celle qu'il faut établir est la stabilité pour $+$, et
+          $\times$ ne la donne pas : $\{I\}$ est stable pour $\times$, mais
+          $I+I = 2I \notin \{I\}$.
+      - id: D
+        text: |
+          Oui : le produit de deux éléments de $Z$ restant dans $Z$, leur
+          somme et leurs multiples par un réel y restent aussi.
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: |
+          Modèle détecté : une stabilité déduite d'une autre au lieu d'être
+          testée. La conclusion est vraie pour ce $Z$ — la somme de deux
+          éléments a la même forme, avec $a+a'$ et $b+b'$ — mais elle se
+          démontre par ce calcul, pas à partir de $\times$ : $\{I\}$ est
+          stable pour $\times$ sans l'être pour $+$.
+    correct_feedback: |
+      Exact. Le produit de deux éléments ne dit rien de leur somme : $\{I\}$
+      est stable pour $\times$ et ne l'est pas pour $+$. Il reste donc à
+      écrire que $Z$ est non vide ($O$ s'obtient pour $a = b = 0$) et stable
+      pour $+$. Pour la loi externe, la stabilité pour $\times$ peut servir :
+      $\lambda I$ est l'élément de $Z$ obtenu pour $a = \lambda$, $b = 0$, et
+      $\lambda\cdot M = (\lambda I)\times M$.
+    solution: |
+      Le critère demande trois conditions : non vide, stable pour $+$,
+      stable pour $\cdot$. La stabilité pour $\times$ n'en établit aucune
+      des deux premières : $\{I\}$ est stable pour $\times$ ($I\times I = I$)
+      sans être stable pour $+$ ($I+I = 2I$).
+
+      Les deux conditions restantes s'écrivent directement :
+      $O \in Z$ ($a = b = 0$) ✓, et
+      $$\begin{pmatrix}a&b\\b&a+b\end{pmatrix}+\begin{pmatrix}a'&b'\\b'&a'+b'\end{pmatrix} = \begin{pmatrix}a+a'&b+b'\\b+b'&(a+a')+(b+b')\end{pmatrix} \in Z$$
+      ✓. Pour la loi externe, on peut soit calculer directement, soit utiliser
+      la stabilité pour $\times$ : $\lambda I \in Z$ ($a = \lambda$, $b = 0$),
+      donc $\lambda\cdot M = (\lambda I)\times M \in Z$ ✓.
+
+      **Pourquoi les autres réponses échouent.** Contenir $I$ et être stable
+      pour $\times$, c'est une partie de la liste de l'anneau, pas le critère
+      du sous-espace. Ajouter la matrice nulle ne suffit pas : la stabilité
+      pour $+$ reste à démontrer. Et déduire la stabilité pour $+$ de celle
+      pour $\times$, c'est la supposer : la conclusion est vraie ici, mais
+      c'est le calcul de la somme qui la prouve.
+
+  - id: SA-42
+    rung: "R8"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, famille-libre]
+    stem: |
+      Dans $\mathbb{R}^3$, on pose $u_1 = (1,-1,2)$, $u_2 = (2,0,1)$ et
+      $u_3 = (3,-1,3)$. La famille $(u_1,u_2,u_3)$ est-elle libre ou liée,
+      et pour quelle raison ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          Liée : $u_1 + u_2 - u_3 = (0,0,0)$, une combinaison nulle de la
+          famille dont les coefficients ne sont pas nuls.
+        correct: true
+      - id: B
+        text: |
+          Libre : $u_1$, $u_2$ et $u_3$ sont tous trois non nuls, donc la
+          famille ne contient pas le vecteur nul de $\mathbb{R}^3$.
+        correct: false
+        misconception: mc.math.structures_algebriques.famille-libre-mal-testee
+        feedback: |
+          Modèle détecté : la liberté testée vecteur par vecteur. Qu'aucun des
+          trois ne soit nul ne dit rien de leurs combinaisons :
+          $u_1 + u_2 - u_3 = (1+2-3,\ -1+0+1,\ 2+1-3) = (0,0,0)$, avec des
+          coefficients non nuls. La famille est liée.
+      - id: C
+        text: |
+          Libre : $u_1$, $u_2$ et $u_3$ sont deux à deux non colinéaires,
+          comme le montre la comparaison de leurs coordonnées.
+        correct: false
+        misconception: mc.math.structures_algebriques.famille-libre-mal-testee
+        feedback: |
+          Modèle détecté : la liberté testée par paires. Les trois couples
+          sont bien non colinéaires, mais la liberté porte sur la famille
+          entière : $u_1 + u_2 = (3,-1,3) = u_3$, donc
+          $u_1 + u_2 - u_3 = (0,0,0)$.
+      - id: D
+        text: |
+          Libre : la famille compte trois vecteurs, et $\mathbb{R}^3$ est de
+          dimension $3$ : c'est le compte d'une base.
+        correct: false
+        misconception: [mc.math.structures_algebriques.dimension-compte-parametres, mc.math.structures_algebriques.famille-libre-mal-testee]
+        feedback: |
+          Modèle détecté : le raccourci de dimension lu à l'envers. En
+          dimension $3$, une famille libre de trois vecteurs est une base ;
+          mais trois vecteurs ne sont pas libres parce qu'ils sont trois. La
+          liberté reste à vérifier, et elle tombe : $u_1 + u_2 - u_3 = (0,0,0)$.
+    correct_feedback: |
+      Exact : $u_1 + u_2 = (1+2,\ -1+0,\ 2+1) = (3,-1,3) = u_3$, donc
+      $1\cdot u_1 + 1\cdot u_2 + (-1)\cdot u_3 = (0,0,0)$, avec des
+      coefficients non tous nuls. La famille est liée.
+    solution: |
+      On cherche les réels $\alpha$, $\beta$, $\gamma$ tels que
+      $\alpha u_1 + \beta u_2 + \gamma u_3 = (0,0,0)$, c'est-à-dire
+      $$\alpha + 2\beta + 3\gamma = 0, \qquad -\alpha - \gamma = 0, \qquad 2\alpha + \beta + 3\gamma = 0.$$
+      La deuxième donne $\alpha = -\gamma$ ; la première devient
+      $2\beta + 2\gamma = 0$, soit $\beta = -\gamma$ ; la troisième,
+      $-2\gamma - \gamma + 3\gamma = 0$, est alors vérifiée. Avec $\gamma = -1$ :
+      $u_1 + u_2 - u_3 = (0,0,0)$. **La famille est liée.**
+
+      **Pourquoi les autres réponses échouent.** Des vecteurs non nuls
+      peuvent être liés. Des vecteurs deux à deux non colinéaires aussi :
+      ici le troisième est la somme des deux premiers. Et « trois vecteurs
+      en dimension $3$ » est la conclusion du raccourci, pas son
+      hypothèse : c'est une famille libre de trois vecteurs qui est une
+      base.
+
+  - id: SA-43
+    rung: "R8"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, famille-libre]
+    stem: |
+      Dans $M_2(\mathbb{R})$, on pose
+      $A_1 = \begin{pmatrix}1&0\\1&1\end{pmatrix}$,
+      $A_2 = \begin{pmatrix}0&1\\1&0\end{pmatrix}$ et
+      $A_3 = \begin{pmatrix}1&2\\3&1\end{pmatrix}$.
+      La famille $(A_1,A_2,A_3)$ est-elle libre ou liée, et pour quelle
+      raison ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          Liée : $A_3 = A_1 + 2A_2$, donc $A_1 + 2A_2 - A_3 = O$, avec des
+          coefficients qui ne sont pas nuls.
+        correct: true
+      - id: B
+        text: |
+          Libre : les trois matrices sont deux à deux non proportionnelles,
+          comme le montrent leurs coefficients.
+        correct: false
+        misconception: mc.math.structures_algebriques.famille-libre-mal-testee
+        feedback: |
+          Modèle détecté : la liberté testée par paires. Aucune des trois
+          n'est proportionnelle à une autre, mais la troisième est une
+          combinaison des deux premières :
+          $A_1 + 2A_2 = \begin{pmatrix}1&2\\3&1\end{pmatrix} = A_3$.
+      - id: C
+        text: |
+          Libre : $A_1$, $A_2$ et $A_3$ sont toutes trois différentes de la
+          matrice nulle $O$.
+        correct: false
+        misconception: mc.math.structures_algebriques.famille-libre-mal-testee
+        feedback: |
+          Modèle détecté : la liberté réduite à l'absence de matrice nulle.
+          Trois matrices non nulles peuvent être liées :
+          $A_1 + 2A_2 - A_3 = O$, avec des coefficients non tous nuls.
+      - id: D
+        text: |
+          Libre : la relation la plus plausible serait $A_1 + A_2 = A_3$, et
+          le calcul l'écarte, car $A_1 + A_2 = \begin{pmatrix}1&1\\2&1\end{pmatrix}$.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Modèle détecté : une seule relation essayée, puis la conclusion. Le
+          calcul de $A_1 + A_2$ est juste, et il écarte cette relation-là ; il
+          n'écarte pas les autres. En résolvant
+          $\alpha A_1 + \beta A_2 + \gamma A_3 = O$ coefficient par
+          coefficient, on trouve $(\alpha,\beta,\gamma) = (1,2,-1)$ :
+          $A_3 = A_1 + 2A_2$.
+    correct_feedback: |
+      Exact. Coefficient par coefficient, $A_1 + 2A_2$ vaut $1+0 = 1$,
+      $0+2 = 2$, $1+2 = 3$ et $1+0 = 1$ : c'est $A_3$. La combinaison
+      $A_1 + 2A_2 - A_3$ est nulle, à coefficients non tous nuls.
+    solution: |
+      On résout $\alpha A_1 + \beta A_2 + \gamma A_3 = O$, coefficient par
+      coefficient :
+      $$\alpha + \gamma = 0, \qquad \beta + 2\gamma = 0, \qquad \alpha + \beta + 3\gamma = 0, \qquad \alpha + \gamma = 0.$$
+      Les deux premières donnent $\alpha = -\gamma$ et $\beta = -2\gamma$ ;
+      la troisième devient $-\gamma - 2\gamma + 3\gamma = 0$, vérifiée pour
+      tout $\gamma$. Avec $\gamma = -1$ : $A_1 + 2A_2 - A_3 = O$.
+      **La famille est liée.**
+
+      **Pourquoi les autres réponses échouent.** Des matrices deux à deux
+      non proportionnelles, ou toutes non nulles, peuvent être liées : la
+      liberté porte sur la famille entière. Et écarter une relation
+      candidate n'écarte pas les autres ; seul le système, résolu jusqu'au
+      bout, tranche.
+
+  - id: SA-44
+    rung: "R8"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, famille-libre]
+    stem: |
+      Dans $\mathbb{R}^3$, on pose $x_1 = (1,3,2)$, $x_2 = (2,-1,1)$ et
+      $x_3 = (8,3,7)$. La famille $(x_1,x_2,x_3)$ est-elle libre ou liée,
+      et pour quelle raison ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          Liée : le système $\alpha x_1 + \beta x_2 + \gamma x_3 = (0,0,0)$
+          admet la solution non nulle $(\alpha,\beta,\gamma) = (2,3,-1)$.
+        correct: true
+      - id: B
+        text: |
+          Libre : les trois vecteurs sont deux à deux non colinéaires, et la
+          somme de deux d'entre eux ne donne pas le troisième.
+        correct: false
+        misconception: mc.math.structures_algebriques.famille-libre-mal-testee
+        feedback: |
+          Modèle détecté : la liberté testée par paires et par sommes de
+          deux. Les deux constats sont exacts, mais la relation qui lie ces
+          vecteurs a d'autres coefficients que $1$ :
+          $2x_1 + 3x_2 = (2+6,\ 6-3,\ 4+3) = (8,3,7) = x_3$. Seul le système,
+          résolu jusqu'au bout, la fait apparaître.
+      - id: C
+        text: |
+          Libre : le système $\alpha x_1 + \beta x_2 + \gamma x_3 = (0,0,0)$
+          a trois équations pour trois inconnues, d'où une seule solution.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Modèle détecté : une règle souvent vraie prise pour une règle sûre.
+          Un système de trois équations à trois inconnues peut avoir une
+          infinité de solutions. Ici, la première donne
+          $\alpha = -2\beta - 8\gamma$, la deuxième $\beta = -3\gamma$, et la
+          troisième devient $0 = 0$. Avec $\gamma = -1$ :
+          $(\alpha,\beta,\gamma) = (2,3,-1)$.
+      - id: D
+        text: |
+          Libre : dans $\mathbb{R}^3$, de dimension $3$, trois vecteurs non
+          nuls forment une base, donc ils sont libres.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-compte-parametres
+        feedback: |
+          Modèle détecté : le nombre de vecteurs pris pour une preuve de
+          liberté. En dimension $3$, c'est une famille libre de trois vecteurs
+          qui est une base ; « trois et non nuls » ne le garantit pas. Ici
+          $2x_1 + 3x_2 - x_3 = (0,0,0)$ : la famille est liée.
+    correct_feedback: |
+      Exact : $2x_1 + 3x_2 = (2+6,\ 6-3,\ 4+3) = (8,3,7) = x_3$. La relation
+      ne se voit pas à l'œil — ni colinéarité, ni somme de deux — et seul le
+      système la fait apparaître.
+    solution: |
+      On résout $\alpha x_1 + \beta x_2 + \gamma x_3 = (0,0,0)$ :
+      $$\alpha + 2\beta + 8\gamma = 0, \qquad 3\alpha - \beta + 3\gamma = 0, \qquad 2\alpha + \beta + 7\gamma = 0.$$
+      De la première, $\alpha = -2\beta - 8\gamma$. Dans la deuxième :
+      $-6\beta - 24\gamma - \beta + 3\gamma = -7\beta - 21\gamma = 0$, donc
+      $\beta = -3\gamma$, puis $\alpha = 6\gamma - 8\gamma = -2\gamma$. La
+      troisième est alors vérifiée : $-4\gamma - 3\gamma + 7\gamma = 0$.
+      Les solutions sont les $\gamma(-2,-3,1)$ : avec $\gamma = -1$,
+      $2x_1 + 3x_2 - x_3 = (0,0,0)$. **La famille est liée.**
+
+      **Pourquoi les autres réponses échouent.** Les couples ne sont pas
+      colinéaires et aucune somme de deux ne donne le troisième — mais la
+      relation a pour coefficients $2$ et $3$. Un système carré peut avoir
+      une infinité de solutions : la dernière ligne devient $0 = 0$. Et
+      trois vecteurs non nuls de $\mathbb{R}^3$ ne forment une base que
+      s'ils sont libres.
+
+  - id: SA-45
+    rung: "R8"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, base-dimension]
+    stem: |
+      Dans $\mathbb{R}^3$, on pose
+      $L = \{(a+2c,\ 3a+b+5c,\ 2b-2c)\ /\ (a,b,c)\in\mathbb{R}^3\}$.
+      Quelle est la dimension de $L$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $2$ : le vecteur qui multiplie $c$, $(2,5,-2)$, vaut
+          $2\cdot(1,3,0) - (0,1,2)$, et ces deux vecteurs-là sont libres.
+        correct: true
+      - id: B
+        text: |
+          $3$ : un élément de $L$ s'écrit avec trois paramètres réels, $a$,
+          $b$ et $c$, qui varient indépendamment l'un de l'autre.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-compte-parametres
+        feedback: |
+          Modèle détecté : la dimension lue sur le nombre de paramètres. Les
+          trois paramètres donnent trois générateurs, $(1,3,0)$, $(0,1,2)$ et
+          $(2,5,-2)$ ; mais le troisième vaut $2\cdot(1,3,0) - (0,1,2)$ et
+          n'ajoute rien. Une base n'en garde que deux : $\dim L = 2$.
+      - id: C
+        text: |
+          $3$ : les éléments de $L$ ont trois coordonnées, comme ceux de
+          $\mathbb{R}^3$, l'espace qui contient $L$.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-lue-sur-la-notation
+        feedback: |
+          Modèle détecté : la dimension lue sur le nombre de coordonnées. Les
+          vecteurs de $L$ ont trois coordonnées parce qu'ils vivent dans
+          $\mathbb{R}^3$ ; la dimension de $L$ se compte sur une base de $L$,
+          et elle vaut $2$, puisque $(2,5,-2) = 2\cdot(1,3,0) - (0,1,2)$.
+      - id: D
+        text: |
+          $3$ : les vecteurs qui multiplient $a$, $b$ et $c$ sont deux à deux
+          non colinéaires, donc ils forment une base de $L$.
+        correct: false
+        misconception: [mc.math.structures_algebriques.famille-libre-mal-testee, mc.math.structures_algebriques.dimension-compte-parametres]
+        feedback: |
+          Modèle détecté : la liberté testée par paires. Les trois
+          générateurs sont bien deux à deux non colinéaires, mais la famille
+          est liée : $2\cdot(1,3,0) - (0,1,2) - (2,5,-2) = (0,0,0)$. Elle
+          n'est donc pas une base, et $\dim L = 2$.
+    correct_feedback: |
+      Exact. Les générateurs se lisent sur les paramètres : $(1,3,0)$ pour
+      $a$, $(0,1,2)$ pour $b$, $(2,5,-2)$ pour $c$. Le troisième est
+      $2\cdot(1,3,0) - (0,1,2)$, donc $L = \mathrm{Vect}\big((1,3,0),(0,1,2)\big)$,
+      et ces deux vecteurs sont libres : $\dim L = 2$.
+    solution: |
+      On lit les générateurs sur les paramètres :
+      $$(a+2c,\ 3a+b+5c,\ 2b-2c) = a\,(1,3,0) + b\,(0,1,2) + c\,(2,5,-2).$$
+      Or $2\cdot(1,3,0) - (0,1,2) = (2,6,0) - (0,1,2) = (2,5,-2)$ : le
+      troisième générateur n'ajoute rien, et
+      $L = \mathrm{Vect}\big((1,3,0),(0,1,2)\big)$. Ces deux vecteurs sont
+      libres : $\alpha(1,3,0) + \beta(0,1,2) = (\alpha,\ 3\alpha+\beta,\ 2\beta) = (0,0,0)$
+      donne $\alpha = 0$ puis $\beta = 0$. **$\dim L = 2$.**
+
+      **Pourquoi les autres réponses échouent.** Trois paramètres donnent
+      trois générateurs, pas trois vecteurs de base. Trois coordonnées
+      disent où vit $L$, pas sa dimension. Et trois générateurs deux à deux
+      non colinéaires peuvent être liés.
+
+  - id: SA-46
+    rung: "R8"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, base-dimension]
+    stem: |
+      On pose
+      $Q = \left\{\begin{pmatrix}a+b&c\\d&0\end{pmatrix}\ /\ (a,b,c,d)\in\mathbb{R}^4\right\}$,
+      un sous-espace vectoriel de $M_2(\mathbb{R})$. Quelle est sa dimension ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $3$ : $a$ et $b$ ne comptent que par $a+b$, qui parcourt
+          $\mathbb{R}$ ; $Q$ est engendré par la famille libre
+          $(E_{11},E_{12},E_{21})$.
+        correct: true
+      - id: B
+        text: |
+          $4$ : l'élément quelconque de $Q$ s'écrit avec quatre lettres, $a$,
+          $b$, $c$ et $d$, qui sont des réels indépendants.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-compte-parametres
+        feedback: |
+          Modèle détecté : la dimension comptée sur les lettres. $a$ et $b$
+          n'apparaissent que dans la somme $a+b$ : ils ne fournissent qu'un
+          seul degré de liberté.
+          $\begin{pmatrix}a+b&c\\d&0\end{pmatrix} = (a+b)E_{11} + cE_{12} + dE_{21}$,
+          et $(E_{11},E_{12},E_{21})$ est libre : $\dim Q = 3$.
+      - id: C
+        text: |
+          $4$ : $Q$ est un sous-espace de $M_2(\mathbb{R})$, et il a la
+          dimension de l'espace qui le contient, ici $4$.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-lue-sur-la-notation
+        feedback: |
+          Modèle détecté : la dimension de l'espace ambiant prêtée au
+          sous-espace. Un sous-espace de $M_2(\mathbb{R})$ a une dimension au
+          plus égale à $4$, pas égale à $4$ d'office : ici le coefficient en
+          bas à droite est nul, $E_{22}$ n'est pas dans $Q$, et $\dim Q = 3$.
+      - id: D
+        text: |
+          $2$ : c'est l'ordre des matrices de $M_2(\mathbb{R})$, dont $Q$ est
+          un sous-espace ; ses éléments sont des matrices $2\times2$.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-lue-sur-la-notation
+        feedback: |
+          Modèle détecté : la dimension lue sur l'indice de $M_2$. Le « 2 »
+          de $M_2$ est la taille des matrices, pas une dimension :
+          $M_2(\mathbb{R})$ est de dimension $4$, et $Q$, engendré par la
+          famille libre $(E_{11},E_{12},E_{21})$, de dimension $3$.
+    correct_feedback: |
+      Exact. $\begin{pmatrix}a+b&c\\d&0\end{pmatrix} = (a+b)E_{11} + cE_{12} + dE_{21}$,
+      et $a+b$ prend toute valeur réelle (avec $b = 0$) : $Q$ est engendré
+      par $(E_{11},E_{12},E_{21})$, famille libre. $\dim Q = 3$.
+    solution: |
+      On écrit l'élément quelconque de $Q$ sur les matrices élémentaires :
+      $$\begin{pmatrix}a+b&c\\d&0\end{pmatrix} = (a+b)\,E_{11} + c\,E_{12} + d\,E_{21}.$$
+      Les lettres $a$ et $b$ n'apparaissent que par leur somme, qui parcourt
+      $\mathbb{R}$ : $Q = \mathrm{Vect}(E_{11},E_{12},E_{21})$. Et cette
+      famille est libre :
+      $\alpha E_{11} + \beta E_{12} + \gamma E_{21} = \begin{pmatrix}\alpha&\beta\\\gamma&0\end{pmatrix} = O$
+      force $\alpha = \beta = \gamma = 0$. **$\dim Q = 3$.**
+
+      **Pourquoi les autres réponses échouent.** Compter quatre lettres,
+      c'est oublier que $a$ et $b$ ne comptent qu'ensemble. Un sous-espace
+      n'hérite pas de la dimension de son ambiant, seulement d'une borne.
+      Et le « 2 » de $M_2$ est la taille des matrices, pas la dimension.
+
+  - id: SA-47
+    rung: "R8"
+    habilete: synthese
+    difficulty_level: 4
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, base-dimension]
+    stem: |
+      Dans $M_2(\mathbb{R})$, on pose
+      $N_0 = \left\{\begin{pmatrix}x&y\\z&t\end{pmatrix}\in M_2(\mathbb{R})\ /\ x+t = 0\right\}$.
+      Quelle proposition donne une base de $N_0$, et la valeur de
+      $\dim N_0$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          La base $\left(\begin{pmatrix}1&0\\0&-1\end{pmatrix}, E_{12}, E_{21}\right)$,
+          obtenue en écrivant $t = -x$ ; donc $\dim N_0 = 3$.
+        correct: true
+      - id: B
+        text: |
+          $\dim N_0 = 2$ : la condition $x+t = 0$ porte sur deux des quatre
+          coefficients, $x$ et $t$, qui disparaissent de l'écriture.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-compte-parametres
+        feedback: |
+          Modèle détecté : la dimension comptée sur les lettres de
+          l'équation. La condition $x+t = 0$ ne retire qu'un degré de
+          liberté : $t = -x$, et $x$ reste libre. Il reste trois lettres
+          libres, $x$, $y$ et $z$ :
+          $\begin{pmatrix}x&y\\z&-x\end{pmatrix} = x\begin{pmatrix}1&0\\0&-1\end{pmatrix} + yE_{12} + zE_{21}$,
+          donc $\dim N_0 = 3$.
+      - id: C
+        text: |
+          $\dim N_0 = 4$ : la condition ne retire rien, puisque $N_0$ est un
+          sous-espace de $M_2(\mathbb{R})$, qui est de dimension $4$.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-lue-sur-la-notation
+        feedback: |
+          Modèle détecté : la dimension de l'ambiant prêtée au sous-espace.
+          $E_{11}$ n'est pas dans $N_0$, puisque $1 + 0 \neq 0$ : $N_0$ est
+          plus petit que $M_2(\mathbb{R})$, et son équation lui coûte une
+          dimension. $\dim N_0 = 3$.
+      - id: D
+        text: |
+          La base $\left(\begin{pmatrix}1&0\\0&-1\end{pmatrix}, \begin{pmatrix}0&1\\1&0\end{pmatrix}\right)$,
+          deux matrices de $N_0$ non proportionnelles ; donc $\dim N_0 = 2$.
+        correct: false
+        misconception: mc.math.structures_algebriques.famille-generatrice-non-verifiee
+        feedback: |
+          Modèle détecté : une famille libre prise pour une famille
+          génératrice. Ces deux matrices sont bien libres et dans $N_0$, mais
+          leurs combinaisons
+          $\alpha\begin{pmatrix}1&0\\0&-1\end{pmatrix} + \beta\begin{pmatrix}0&1\\1&0\end{pmatrix} = \begin{pmatrix}\alpha&\beta\\\beta&-\alpha\end{pmatrix}$
+          ont deux coefficients hors diagonale égaux : $E_{12}$, qui est dans
+          $N_0$, n'est pas atteinte. Une base est
+          $\left(\begin{pmatrix}1&0\\0&-1\end{pmatrix}, E_{12}, E_{21}\right)$,
+          et $\dim N_0 = 3$.
+    correct_feedback: |
+      Exact. Avec $t = -x$, l'élément quelconque de $N_0$ s'écrit
+      $\begin{pmatrix}x&y\\z&-x\end{pmatrix} = x\begin{pmatrix}1&0\\0&-1\end{pmatrix} + yE_{12} + zE_{21}$ :
+      la famille est génératrice, et libre, puisque cette combinaison n'est
+      nulle que pour $x = y = z = 0$. $\dim N_0 = 3$.
+    solution: |
+      On résout l'équation pour une lettre, $t = -x$, et l'on lit les
+      générateurs sur l'élément quelconque :
+      $$\begin{pmatrix}x&y\\z&-x\end{pmatrix} = x\begin{pmatrix}1&0\\0&-1\end{pmatrix} + y\begin{pmatrix}0&1\\0&0\end{pmatrix} + z\begin{pmatrix}0&0\\1&0\end{pmatrix}.$$
+      La famille est génératrice par construction, et libre : la
+      combinaison vaut $O$ seulement si $x = y = z = 0$. C'est une base, et
+      **$\dim N_0 = 3$** : une équation, une dimension de moins que les
+      $4$ de $M_2(\mathbb{R})$.
+
+      **Pourquoi les autres réponses échouent.** L'équation $x + t = 0$
+      fait intervenir deux lettres, mais n'en fixe qu'une. Elle retire bien
+      quelque chose : $E_{11}$ n'est pas dans $N_0$. Et deux matrices libres
+      de $N_0$ n'en font une base que si elles l'engendrent : celles-ci
+      imposent $y = z$ et manquent $E_{12}$.
+
+  - id: SA-48
+    rung: "R8"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, application-lineaire]
+    stem: |
+      On considère trois applications de $\mathbb{R}^2$ dans $\mathbb{R}^2$ :
+      $f(x,y) = (2x-y,\ x+3y)$, $g(x,y) = (x-y+1,\ 2y)$ et
+      $k(x,y) = (x-y,\ y-x)$. Quelle affirmation est exacte ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $f$ et $k$ sont linéaires ; $g$ ne l'est pas, car
+          $g(0,0) = (1,0)$ alors qu'on attendrait $(0,0)$.
+        correct: true
+      - id: B
+        text: |
+          Les trois sont linéaires : chacune de leurs coordonnées est une
+          expression du premier degré en $x$ et $y$.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-affine-confondu
+        feedback: |
+          Modèle détecté : « du premier degré » pris pour « linéaire ». Le
+          terme constant de $g$ la déplace hors de l'origine :
+          $g(0,0) = (1,0) \neq (0,0)$, alors qu'une application linéaire
+          envoie $(0,0)$ sur $(0,0)$. $f$ et $k$, sans terme constant, sont
+          linéaires.
+      - id: C
+        text: |
+          $f$ est linéaire ; $k$ ne l'est pas, car elle envoie $\mathbb{R}^2$
+          sur une droite, et une application linéaire est injective.
+        correct: false
+        misconception: mc.math.structures_algebriques.noyau-toujours-nul
+        feedback: |
+          Modèle détecté : une application linéaire supposée injective. $k$
+          est bien linéaire — $k(\lambda u + \mu v) = \lambda k(u) + \mu k(v)$
+          se vérifie coordonnée par coordonnée — et elle n'est pas
+          injective : son noyau est la droite $y = x$. Être linéaire
+          n'oblige pas à être injective : $f$ et $k$ sont linéaires, $g$ ne
+          l'est pas.
+      - id: D
+        text: |
+          $f$ et $g$ sont linéaires ; $k$ ne l'est pas, car
+          $k(1,1) = (0,0)$ alors que $(1,1) \neq (0,0)$.
+        correct: false
+        misconception: [mc.math.structures_algebriques.noyau-toujours-nul, mc.math.structures_algebriques.sous-espace-affine-confondu]
+        feedback: |
+          Modèle détecté : deux erreurs à la fois. Un noyau qui contient
+          $(1,1)$ ne disqualifie pas $k$ : une application linéaire peut
+          avoir un noyau plus grand que $\{(0,0)\}$. Et $g$ n'est pas
+          linéaire : son terme constant donne $g(0,0) = (1,0) \neq (0,0)$.
+    correct_feedback: |
+      Exact. $f$ et $k$ vérifient $h(\lambda u + \mu v) = \lambda h(u) + \mu h(v)$,
+      coordonnée par coordonnée. $g$ échoue dès le vecteur nul :
+      $g(0,0) = (1,0) \neq (0,0)$, alors qu'une application linéaire envoie
+      $(0,0)$ sur $(0,0)$. Que $k$ ait un noyau non nul ($k(1,1) = (0,0)$) ne
+      l'empêche pas d'être linéaire.
+    solution: |
+      Pour $u = (x,y)$, $v = (x',y')$ et deux réels $\lambda$, $\mu$ :
+      $$f(\lambda u + \mu v) = \big(2(\lambda x+\mu x') - (\lambda y+\mu y'),\ (\lambda x+\mu x') + 3(\lambda y+\mu y')\big) = \lambda f(u) + \mu f(v)$$
+      ✓. Le même calcul vaut pour $k(x,y) = (x-y,\ y-x)$ ✓. Pour $g$, le test
+      du vecteur nul suffit : $g(0,0) = (1,0) \neq (0,0)$, donc $g$ n'est
+      pas linéaire ✗.
+
+      **Pourquoi les autres réponses échouent.** « Du premier degré »
+      n'est pas « linéaire » : un terme constant éloigne l'image de
+      $(0,0)$. Et $k$, linéaire, n'est pas injective — son noyau est la
+      droite $y = x$ — ce qui ne lui retire pas la linéarité.
+
+  - id: SA-49
+    rung: "R8"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, base-dimension]
+    stem: |
+      On pose
+      $\mathrm{Sym} = \left\{\begin{pmatrix}a&b\\b&c\end{pmatrix}\ /\ (a,b,c)\in\mathbb{R}^3\right\}$,
+      l'ensemble des matrices symétriques de $M_2(\mathbb{R})$, et
+      $K = \begin{pmatrix}0&1\\1&0\end{pmatrix}$. Quelle est la dimension
+      de $\mathrm{Sym}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $3$ : la famille $(E_{11},K,E_{22})$ engendre $\mathrm{Sym}$, et elle
+          est libre ; c'est donc une base.
+        correct: true
+      - id: B
+        text: |
+          $4$ : $\mathrm{Sym}$ est un sous-espace de $M_2(\mathbb{R})$, et
+          $M_2(\mathbb{R})$ est de dimension $4$.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-lue-sur-la-notation
+        feedback: |
+          Modèle détecté : la dimension de l'ambiant prêtée au sous-espace.
+          $E_{12}$ n'est pas symétrique : $\mathrm{Sym}$ est plus petit que
+          $M_2(\mathbb{R})$. Une base de $\mathrm{Sym}$ compte trois matrices,
+          $(E_{11},K,E_{22})$ : $\dim\mathrm{Sym} = 3$.
+      - id: C
+        text: |
+          $2$ : c'est l'ordre des matrices de $\mathrm{Sym}$, qui sont des
+          matrices $2\times2$.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-lue-sur-la-notation
+        feedback: |
+          Modèle détecté : la dimension lue sur la taille des matrices. Le
+          « 2 » de $2\times2$ est la taille, pas une dimension ; la dimension
+          se compte sur une base, ici $(E_{11},K,E_{22})$ : elle vaut $3$.
+      - id: D
+        text: |
+          $2$ : la famille $(I,K)$ engendre $\mathrm{Sym}$, et elle est
+          libre ; c'est donc une base de $\mathrm{Sym}$.
+        correct: false
+        misconception: mc.math.structures_algebriques.famille-generatrice-non-verifiee
+        feedback: |
+          Modèle détecté : une génération affirmée sans être écrite. $(I,K)$
+          est libre, mais ses combinaisons
+          $\alpha I + \beta K = \begin{pmatrix}\alpha&\beta\\\beta&\alpha\end{pmatrix}$
+          ont deux coefficients diagonaux égaux : la matrice symétrique
+          $\begin{pmatrix}1&0\\0&2\end{pmatrix}$ n'est pas atteinte.
+    correct_feedback: |
+      Exact. L'élément quelconque de $\mathrm{Sym}$ s'écrit
+      $aE_{11} + bK + cE_{22}$ : la famille $(E_{11},K,E_{22})$ engendre
+      $\mathrm{Sym}$, et elle est libre, puisque cette combinaison n'est nulle
+      que pour $a = b = c = 0$. $\dim\mathrm{Sym} = 3$.
+    solution: |
+      $$\begin{pmatrix}a&b\\b&c\end{pmatrix} = a\begin{pmatrix}1&0\\0&0\end{pmatrix} + b\begin{pmatrix}0&1\\1&0\end{pmatrix} + c\begin{pmatrix}0&0\\0&1\end{pmatrix} = aE_{11} + bK + cE_{22}.$$
+      La famille $(E_{11},K,E_{22})$ engendre $\mathrm{Sym}$, et elle est
+      libre : la combinaison vaut $O$ seulement si $a = b = c = 0$.
+      **$\dim\mathrm{Sym} = 3$.**
+
+      **Pourquoi les autres réponses échouent.** Un sous-espace n'a pas la
+      dimension de son ambiant d'office : $E_{12}$ n'est pas symétrique. La
+      taille $2\times2$ n'est pas une dimension. Et $(I,K)$ est libre sans
+      engendrer : ses combinaisons ont une diagonale constante, et
+      $\begin{pmatrix}1&0\\0&2\end{pmatrix}$ leur échappe.
+
+  - id: SA-50
+    rung: "R8"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, famille-generatrice]
+    stem: |
+      Dans $\mathbb{R}^3$, la famille
+      $\big((1,0,2),\ (0,3,1),\ (2,3,5)\big)$ engendre-t-elle $\mathbb{R}^3$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          Non : $(2,3,5) = 2\cdot(1,0,2) + (0,3,1)$, et le vecteur $(1,0,0)$
+          n'est pas une combinaison de ces trois vecteurs.
+        correct: true
+      - id: B
+        text: |
+          Oui : la famille compte trois vecteurs, autant que les vecteurs de
+          $\mathbb{R}^3$ ont de coordonnées.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-compte-parametres
+        feedback: |
+          Modèle détecté : le nombre de vecteurs pris pour une preuve. Trois
+          vecteurs peuvent rester dans un plan : ici
+          $(2,3,5) = 2\cdot(1,0,2) + (0,3,1)$, et les trois vérifient
+          $6x + y - 3z = 0$. Le vecteur $(1,0,0)$, qui donne $6 \neq 0$, n'est
+          pas atteint.
+      - id: C
+        text: |
+          Oui : chacune des trois coordonnées apparaît dans au moins un des
+          vecteurs, donc la famille couvre $\mathbb{R}^3$.
+        correct: false
+        misconception: mc.math.structures_algebriques.famille-generatrice-non-verifiee
+        feedback: |
+          Modèle détecté : la génération lue à l'œil au lieu d'être écrite.
+          Toucher les trois coordonnées ne suffit pas : les trois vecteurs
+          vérifient $6x + y - 3z = 0$, donc leurs combinaisons aussi, et
+          $(1,0,0)$ n'en est pas une, puisque $6\times1 + 0 - 0 = 6 \neq 0$.
+      - id: D
+        text: |
+          Oui : les trois vecteurs sont deux à deux non colinéaires, la
+          famille est donc libre, et par suite génératrice.
+        correct: false
+        misconception: [mc.math.structures_algebriques.famille-generatrice-non-verifiee, mc.math.structures_algebriques.famille-libre-mal-testee]
+        feedback: |
+          Modèle détecté : la liberté testée par paires, puis la génération
+          déduite de la liberté. Les couples sont bien non colinéaires, mais
+          la famille est liée : $2\cdot(1,0,2) + (0,3,1) - (2,3,5) = (0,0,0)$.
+          Et une famille libre n'engendre pas pour autant : la génération se
+          démontre sur un élément quelconque.
+    correct_feedback: |
+      Exact. $2\cdot(1,0,2) + (0,3,1) = (2,0,4) + (0,3,1) = (2,3,5)$ : la
+      famille engendre le même plan que ses deux premiers vecteurs, le plan
+      $6x + y - 3z = 0$. Le vecteur $(1,0,0)$ donne $6 \neq 0$ : il n'est pas
+      atteint, et un seul témoin suffit.
+    solution: |
+      Le troisième vecteur est une combinaison des deux autres :
+      $$2\cdot(1,0,2) + (0,3,1) = (2,0,4) + (0,3,1) = (2,3,5).$$
+      Les trois vérifient $6x + y - 3z = 0$ : $6+0-6 = 0$, $0+3-3 = 0$,
+      $12+3-15 = 0$. Toute combinaison de la famille vérifie donc aussi
+      cette équation ; or $(1,0,0)$ donne $6 \neq 0$. **$(1,0,0)$ n'est pas
+      atteint : la famille n'engendre pas $\mathbb{R}^3$.**
+
+      **Pourquoi les autres réponses échouent.** Trois vecteurs ne
+      remplissent pas $\mathbb{R}^3$ parce qu'ils sont trois. Toucher
+      chaque coordonnée n'est pas engendrer : il faut écrire un élément
+      quelconque, ou trouver un témoin qui échappe. Et des vecteurs deux à
+      deux non colinéaires peuvent être liés — ici, le troisième vaut
+      $2\cdot(1,0,2) + (0,3,1)$.
+
+  - id: SA-51
+    rung: "R8"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, application-lineaire]
+    stem: |
+      On considère l'application linéaire $f : \mathbb{R}^2 \to \mathbb{R}^2$,
+      $f(x,y) = (x-2y,\ 2x-4y)$. Que valent $\ker f$ et $\mathrm{Im}\,f$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $\ker f = \mathrm{Vect}\big((2,1)\big)$ et
+          $\mathrm{Im}\,f = \mathrm{Vect}\big((1,2)\big)$, puisque
+          $f(x,y) = (x-2y)\cdot(1,2)$.
+        correct: true
+      - id: B
+        text: |
+          $\ker f = \{(0,0)\}$ et $\mathrm{Im}\,f = \mathbb{R}^2$, puisque $f$
+          est linéaire et que $f(0,0) = (0,0)$.
+        correct: false
+        misconception: mc.math.structures_algebriques.noyau-toujours-nul
+        feedback: |
+          Modèle détecté : le noyau réduit d'office au vecteur nul.
+          $f(0,0) = (0,0)$ dit que $(0,0)$ est dans le noyau, pas qu'il y est
+          seul : $f(2,1) = (2-2,\ 4-4) = (0,0)$. Ici
+          $f(x,y) = (x-2y)\cdot(1,2)$ : $\ker f$ est la droite $x = 2y$, et
+          $\mathrm{Im}\,f$ la droite engendrée par $(1,2)$.
+      - id: C
+        text: |
+          $\ker f = \mathrm{Vect}\big((2,1)\big)$ et $\mathrm{Im}\,f = \mathbb{R}^2$,
+          car l'image d'une application linéaire de $\mathbb{R}^2$ dans
+          $\mathbb{R}^2$ est de dimension $2$.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-lue-sur-la-notation
+        feedback: |
+          Modèle détecté : la dimension de l'image lue sur l'espace
+          d'arrivée. Le noyau est juste ; mais toute image de $f$ est un
+          multiple de $(1,2)$, puisque $f(x,y) = (x-2y)\cdot(1,2)$ : $(1,0)$,
+          par exemple, n'est pas atteint. $\mathrm{Im}\,f = \mathrm{Vect}\big((1,2)\big)$,
+          de dimension $1$.
+      - id: D
+        text: |
+          $\ker f$ est de dimension $2$, puisque son équation $x-2y = 0$
+          porte sur deux inconnues, $x$ et $y$.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-compte-parametres
+        feedback: |
+          Modèle détecté : la dimension comptée sur les lettres. L'équation
+          $x - 2y = 0$ fait intervenir deux lettres mais n'en laisse qu'une
+          libre : $x = 2y$, donc $\ker f = \{(2y,y)\} = \mathrm{Vect}\big((2,1)\big)$,
+          de dimension $1$.
+    correct_feedback: |
+      Exact. $2x - 4y = 2(x-2y)$, donc $f(x,y) = (x-2y)\cdot(1,2)$. Le noyau
+      est la droite $x = 2y$, engendrée par $(2,1)$ ; l'image est formée des
+      multiples de $(1,2)$. $f$ n'est donc ni injective ni surjective.
+    solution: |
+      Comme $2x - 4y = 2(x-2y)$ :
+      $$f(x,y) = (x-2y,\ 2(x-2y)) = (x-2y)\cdot(1,2).$$
+      **Noyau** : $f(x,y) = (0,0) \iff x - 2y = 0 \iff x = 2y$, donc
+      $\ker f = \{(2y,y)\ /\ y\in\mathbb{R}\} = \mathrm{Vect}\big((2,1)\big)$.
+      **Image** : toute image est un multiple de $(1,2)$, et
+      $f(1,0) = (1,2)$ ; donc $\mathrm{Im}\,f = \mathrm{Vect}\big((1,2)\big)$.
+
+      **Pourquoi les autres réponses échouent.** $f(0,0) = (0,0)$ met
+      $(0,0)$ dans le noyau sans l'y laisser seul. L'image vit dans
+      $\mathbb{R}^2$ sans le remplir : $(1,0)$ n'est pas atteint. Et une
+      équation à deux inconnues laisse une seule lettre libre : le noyau
+      est une droite.
+
+  - id: SA-52
+    rung: "R8"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, application-lineaire]
+    stem: |
+      On considère l'application linéaire $\varphi : \mathbb{R}^2 \to M_2(\mathbb{R})$,
+      $\varphi(a,b) = \begin{pmatrix}a+b&0\\0&a+b\end{pmatrix}$, et l'on note
+      $I$ la matrice identité. Que valent $\ker\varphi$ et
+      $\mathrm{Im}\,\varphi$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $\ker\varphi = \mathrm{Vect}\big((1,-1)\big)$ et
+          $\mathrm{Im}\,\varphi = \mathrm{Vect}(I)$, de dimension $1$
+          chacun, car $\varphi(a,b) = (a+b)\,I$.
+        correct: true
+      - id: B
+        text: |
+          $\ker\varphi = \{(0,0)\}$ et $\mathrm{Im}\,\varphi = M_2(\mathbb{R})$,
+          puisque $\varphi$ est linéaire et que $\varphi(0,0) = O$.
+        correct: false
+        misconception: mc.math.structures_algebriques.noyau-toujours-nul
+        feedback: |
+          Modèle détecté : le noyau réduit d'office au neutre, et l'image
+          prise pour l'espace d'arrivée. $\varphi(1,-1) = O$ : le noyau
+          contient $(1,-1)$. Et $\varphi(a,b) = (a+b)\,I$ n'atteint que les
+          multiples de $I$ : $E_{12}$, par exemple, n'est pas une image.
+      - id: C
+        text: |
+          $\mathrm{Im}\,\varphi$ est de dimension $4$, puisqu'elle est
+          contenue dans $M_2(\mathbb{R})$, qui est de dimension $4$.
+        correct: false
+        misconception: [mc.math.structures_algebriques.dimension-lue-sur-la-notation, mc.math.structures_algebriques.noyau-toujours-nul]
+        feedback: |
+          Modèle détecté : la dimension de l'image lue sur l'espace qui la
+          contient. $\mathrm{Im}\,\varphi$ est contenue dans $M_2(\mathbb{R})$,
+          donc de dimension au plus $4$ ; ici elle ne contient que les
+          multiples de $I$, puisque $\varphi(a,b) = (a+b)\,I$ : sa dimension
+          est $1$.
+      - id: D
+        text: |
+          $\ker\varphi$ est de dimension $2$, puisque l'application $\varphi$
+          dépend de deux paramètres, $a$ et $b$.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-compte-parametres
+        feedback: |
+          Modèle détecté : la dimension comptée sur les paramètres.
+          $\varphi(a,b) = O$ demande seulement $a + b = 0$ :
+          $\ker\varphi = \{(a,-a)\ /\ a\in\mathbb{R}\} = \mathrm{Vect}\big((1,-1)\big)$,
+          de dimension $1$.
+    correct_feedback: |
+      Exact. $\varphi(a,b) = (a+b)\,I$ : $\varphi(a,b) = O$ si et seulement
+      si $a + b = 0$, donc $\ker\varphi = \mathrm{Vect}\big((1,-1)\big)$ ; et
+      les images sont les multiples de $I$, donc
+      $\mathrm{Im}\,\varphi = \mathrm{Vect}(I)$. Deux sous-espaces de
+      dimension $1$.
+    solution: |
+      $$\varphi(a,b) = \begin{pmatrix}a+b&0\\0&a+b\end{pmatrix} = (a+b)\,I.$$
+      **Noyau** : $\varphi(a,b) = O \iff a + b = 0$, donc
+      $\ker\varphi = \{(a,-a)\ /\ a\in\mathbb{R}\} = \mathrm{Vect}\big((1,-1)\big)$,
+      de dimension $1$.
+      **Image** : les images sont les $(a+b)\,I$, et $a+b$ parcourt
+      $\mathbb{R}$ ; donc $\mathrm{Im}\,\varphi = \mathrm{Vect}(I)$, de
+      dimension $1$.
+
+      **Pourquoi les autres réponses échouent.** $\varphi(0,0) = O$ met
+      $(0,0)$ dans le noyau, sans l'y laisser seul : $\varphi(1,-1) = O$.
+      Être contenue dans $M_2(\mathbb{R})$ borne la dimension de l'image
+      par $4$ sans la fixer à $4$. Et deux paramètres liés par
+      $a + b = 0$ ne laissent qu'un degré de liberté.
+
+  - id: SA-53
+    rung: "R8"
+    habilete: synthese
+    difficulty_level: 4
+    skill_code: maths_structures_alg
+    tags: [misconception_driven, maths_structures_alg, morphisme]
+    stem: |
+      On considère $f : (\mathbb{C}^*,\times) \to (\mathbb{R}_+^*,\times)$,
+      $f(z) = \lvert z\rvert$ ; c'est un morphisme, puisque
+      $\lvert zz'\rvert = \lvert z\rvert\,\lvert z'\rvert$. Quel est
+      $\ker f$, et que dit-il de $f$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: |
+          $\ker f$ est le cercle unité $\{z\in\mathbb{C}^*\ /\ \lvert z\rvert = 1\}$,
+          un sous-groupe de $(\mathbb{C}^*,\times)$ ; $f$ n'est pas injective.
+        correct: true
+      - id: B
+        text: |
+          $\ker f = \{1\}$ : un morphisme conserve le neutre, et le noyau est
+          l'ensemble des éléments envoyés sur le neutre.
+        correct: false
+        misconception: mc.math.structures_algebriques.noyau-toujours-nul
+        feedback: |
+          Modèle détecté : le noyau réduit au neutre. $f(1) = 1$ montre que
+          $1$ est dans le noyau, pas qu'il y est seul :
+          $f(-1) = \lvert -1\rvert = 1$ et $f(i) = \lvert i\rvert = 1$. Le
+          noyau est le cercle unité $\{\lvert z\rvert = 1\}$.
+      - id: C
+        text: |
+          $\ker f = \{z\ /\ \lvert z\rvert = 1\}$, mais ce n'est pas un
+          sous-groupe de $(\mathbb{C}^*,\times)$, car il ne contient pas $0$.
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-non-transporte
+        feedback: |
+          Modèle détecté : le neutre d'une autre loi recopié tel quel. Dans
+          $(\mathbb{C}^*,\times)$, le neutre est $1$, pas $0$ — et $0$ n'est
+          même pas dans $\mathbb{C}^*$. Le cercle unité contient $1$, il est
+          stable pour $\times$ ($\lvert zz'\rvert = 1\times1 = 1$) et pour
+          l'inverse ($\lvert 1/z\rvert = 1$) : c'est un sous-groupe, et
+          comme il ne se réduit pas à $\{1\}$, $f$ n'est pas injective.
+      - id: D
+        text: |
+          $\ker f = \{1\}$, et ce morphisme est injectif, car
+          $\lvert z\rvert = \lvert z'\rvert$ entraîne $z = z'$.
+        correct: false
+        misconception: mc.math.structures_algebriques.noyau-toujours-nul
+        feedback: |
+          Modèle détecté : l'injectivité supposée. Deux complexes de même
+          module ne sont pas égaux pour autant :
+          $\lvert 1\rvert = \lvert -1\rvert = \lvert i\rvert = 1$. Le noyau, le
+          cercle unité, n'est pas réduit au neutre : $f$ n'est pas injective.
+    correct_feedback: |
+      Exact. Le neutre de $(\mathbb{R}_+^*,\times)$ est $1$, donc
+      $\ker f = \{z\in\mathbb{C}^*\ /\ \lvert z\rvert = 1\}$, le cercle unité.
+      C'est un sous-groupe de $(\mathbb{C}^*,\times)$, et comme il contient
+      d'autres éléments que $1$ — par exemple $f(-1) = f(i) = 1 = f(1)$ —
+      $f$ n'est pas injective.
+    solution: |
+      Le neutre de $(\mathbb{R}_+^*,\times)$ est $1$ :
+      $$\ker f = \{z\in\mathbb{C}^*\ /\ \lvert z\rvert = 1\},$$
+      le cercle unité. C'est un sous-groupe de $(\mathbb{C}^*,\times)$ (le
+      critère du chapitre 5) : $\lvert 1\rvert = 1$ ✓ ; si
+      $\lvert z\rvert = \lvert z'\rvert = 1$, alors $\lvert zz'\rvert = 1$ ✓ ;
+      et $\lvert 1/z\rvert = 1/\lvert z\rvert = 1$ ✓. Le noyau contient
+      $1$, $-1$, $i$… : il n'est pas réduit au neutre, donc $f$ n'est pas
+      injective — $f(1) = f(-1) = f(i) = 1$.
+
+      **Pourquoi les autres réponses échouent.** $f(1) = 1$ met le neutre
+      dans le noyau sans l'y laisser seul. Chercher $0$ dans
+      $(\mathbb{C}^*,\times)$, c'est prendre le neutre de l'addition pour
+      celui de la multiplication. Et deux complexes de même module ne sont
+      pas égaux : $\lvert 1\rvert = \lvert -1\rvert$.
+
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
@@ -2276,14 +3821,22 @@ coverage_summary:
   per_misconception:
     mc.math.structures_algebriques.loi-modulaire-mal-calculee: { count: 3, items: [SA-7, SA-25, SA-26] }
     mc.math.structures_algebriques.neutre-vs-symetrique:       { count: 14, items: [SA-1, SA-2, SA-8, SA-12, SA-14, SA-20, SA-23, SA-24, SA-26, SA-30, SA-31, SA-32, SA-34, SA-35] }
-    mc.math.structures_algebriques.axiome-oublie:              { count: 7, items: [SA-3, SA-4, SA-22, SA-27, SA-28, SA-29, SA-33] }
+    mc.math.structures_algebriques.axiome-oublie:              { count: 8, items: [SA-3, SA-4, SA-22, SA-27, SA-28, SA-29, SA-33, SA-38] }
     mc.math.structures_algebriques.groupe-anneau:              { count: 8, items: [SA-5, SA-6, SA-18, SA-19, SA-20, SA-21, SA-33, SA-34] }
-    mc.math.structures_algebriques.cloture-non-verifiee:       { count: 8, items: [SA-3, SA-6, SA-7, SA-8, SA-10, SA-11, SA-12, SA-18] }
+    mc.math.structures_algebriques.cloture-non-verifiee:       { count: 10, items: [SA-3, SA-6, SA-7, SA-8, SA-10, SA-11, SA-12, SA-18, SA-36, SA-41] }
     mc.math.structures_algebriques.assoc-commut-confusion:     { count: 6, items: [SA-9, SA-11, SA-13, SA-15, SA-16, SA-17] }
-    mc.math.structures_algebriques.generalisation-hative:      { count: 13, items: [SA-13, SA-14, SA-15, SA-16, SA-17, SA-18, SA-20, SA-27, SA-28, SA-29, SA-31, SA-32, SA-35] }
+    mc.math.structures_algebriques.generalisation-hative:      { count: 17, items: [SA-13, SA-14, SA-15, SA-16, SA-17, SA-18, SA-20, SA-27, SA-28, SA-29, SA-31, SA-32, SA-35, SA-36, SA-37, SA-43, SA-44] }
     mc.math.structures_algebriques.groupe-implique-commutatif: { count: 5, items: [SA-15, SA-17, SA-22, SA-28, SA-29] }
-    mc.math.structures_algebriques.neutre-non-transporte:      { count: 5, items: [SA-30, SA-31, SA-32, SA-33, SA-34] }
-  total_items: 35
+    mc.math.structures_algebriques.neutre-non-transporte:      { count: 6, items: [SA-30, SA-31, SA-32, SA-33, SA-34, SA-53] }
+    mc.math.structures_algebriques.sous-espace-zero-suffit:          { count: 6, items: [SA-36, SA-37, SA-38, SA-39, SA-40, SA-41] }
+    mc.math.structures_algebriques.sous-espace-vs-sous-groupe:       { count: 4, items: [SA-37, SA-39, SA-40, SA-41] }
+    mc.math.structures_algebriques.famille-libre-mal-testee:         { count: 5, items: [SA-42, SA-43, SA-44, SA-45, SA-50] }
+    mc.math.structures_algebriques.dimension-compte-parametres:      { count: 8, items: [SA-42, SA-44, SA-45, SA-46, SA-47, SA-50, SA-51, SA-52] }
+    mc.math.structures_algebriques.dimension-lue-sur-la-notation:    { count: 6, items: [SA-45, SA-46, SA-47, SA-49, SA-51, SA-52] }
+    mc.math.structures_algebriques.noyau-toujours-nul:               { count: 4, items: [SA-48, SA-51, SA-52, SA-53] }
+    mc.math.structures_algebriques.sous-espace-affine-confondu:      { count: 3, items: [SA-38, SA-40, SA-48] }
+    mc.math.structures_algebriques.famille-generatrice-non-verifiee: { count: 3, items: [SA-47, SA-49, SA-50] }
+  total_items: 53
   floor: 3
   floor_met: true
   ramp_coverage:
@@ -2295,9 +3848,13 @@ coverage_summary:
     R5: 3
     R6: 3
     R7: 11
+    R8: 18
   habilete_ramp_transport_family: >-
-    Sur les huit items de la famille transport (SA-27..SA-34, les seuls à
-    porter l'étiquette `habilete`) : application_directe ×2 (SA-30, SA-31),
+    Sur les huit items de la famille transport (SA-27..SA-34 ; l'étiquette
+    `habilete` n'est pas propre à cette famille — corrigé le 2026-10-20 : la
+    phrase disait « les seuls à la porter », ce qui était déjà faux de SA-35
+    et l'est désormais aussi des dix-huit items R8, chiffrés au paragraphe
+    suivant) : application_directe ×2 (SA-30, SA-31),
     application_non_explicite ×3 (SA-27, SA-28, SA-32), synthese ×3 (SA-29,
     SA-33, SA-34) — soit 25 % / 37,5 % / 37,5 %. Cible du chantier ≈
     40/40/20 ; l'écart est assumé plutôt que maquillé : SA-34 conclut à la
@@ -2308,9 +3865,20 @@ coverage_summary:
     la rampe n'est plus plate (un item de niveau 4, cinq des huit qui ne sont
     plus « choisis la justification » : SA-30/31/32/34 demandent une valeur
     produite, matricielle ou non).
+
+    Barreau R8, espaces vectoriels (SA-36..SA-53, 2026-10-20) :
+    application_directe ×7 (SA-36, -39, -42, -46, -49, -51, -52),
+    application_non_explicite ×7 (SA-37, -40, -43, -44, -45, -48, -50),
+    synthese ×4 (SA-38, -41, -47, -53) — soit 38,9 % / 38,9 % / 22,2 %,
+    contre la cible du cadre 40/40/20 (maths-sm.yaml, habiletés). Habileté et
+    difficulté ne sont PAS un seul champ écrit deux fois : quatre ruptures
+    voulues par la spec (correctif F8), chacune motivée par la difficulté
+    réelle de l'item — SA-41 synthese/3, SA-44 non_explicite/4, SA-46
+    directe/3, SA-52 directe/3. Difficultés : 2 ×5, 3 ×9, 4 ×4.
   honest_state: >-
-    Neuf misconceptions déclarées, toutes au-dessus du plancher de 3 —
-    aucune à zéro marge désormais. `neutre-non-transporte` (dette d'examen
+    État au 2026-09-28, AVANT la vague espaces vectoriels du 2026-10-20 (voir
+    le dernier paragraphe) : neuf misconceptions déclarées, toutes au-dessus
+    du plancher de 3 — aucune à zéro marge alors. `neutre-non-transporte` (dette d'examen
     vague B2, GAP-B transport de structure, docs/audits/dette-examen/maths.md
     ~l.374) est neuve depuis la révision précédente : 4→5 avec SA-34. Wave-1
     (2026-09-27, critique double pédagogie + fidélité) : SA-30 et SA-31,
@@ -2367,3 +3935,47 @@ coverage_summary:
     vienne du calcul, pas du vocabulaire. `habilete: application_directe`
     ajouté ; la référence « chapitre 2 » de l'ancien distracteur B (associa-
     tivité) était fausse — R2 est le chapitre 3 dans cette notion — corrigée.
+
+    VAGUE ESPACES VECTORIELS (2026-10-20 ; spec
+    docs/pipeline/propositions/maths-structures-espaces-vectoriels.md, §8,
+    §11, §14). Le chapitre « Espaces vectoriels : sous-espace, base,
+    dimension » (barreau R8) reçoit dix-huit items, SA-36 → SA-53, et le
+    registre HUIT ids neufs, chacun au plancher ou au-dessus :
+    sous-espace-zero-suffit 6, sous-espace-vs-sous-groupe 4,
+    famille-libre-mal-testee 5, dimension-compte-parametres 8,
+    dimension-lue-sur-la-notation 6, noyau-toujours-nul 4,
+    sous-espace-affine-confondu 3, famille-generatrice-non-verifiee 3. Quatre
+    ids existants gagnent des items R8, après les ré-étiquetages de la passe
+    arithmétique de la spec (révision (b)) : generalisation-hative 13 → 17,
+    cloture-non-verifiee 8 → 10, axiome-oublie 7 → 8, neutre-non-transporte
+    5 → 6 — ce dernier par un ajustement imparfait que la spec écrit comme
+    tel (SA-53 : le neutre $0$ cherché dans un groupe MULTIPLICATIF est
+    recopié d'une loi à l'autre, pas à travers un isomorphisme ; c'est l'id
+    déclaré le plus proche). `total_items` 35 → 53 ; `ramp_coverage.R8` = 18 ;
+    dix-sept ids, aucun sous le plancher.
+
+    Ce que cette vague LAISSE, dit plutôt que masqué. (1) DEUX PLANCHERS
+    SECS : sous-espace-affine-confondu (SA-38, SA-40, SA-48) et
+    famille-generatrice-non-verifiee (SA-47, SA-49, SA-50) sont à exactement
+    3, marge nulle — un seul ré-étiquetage en revue ferait rougir la porte.
+    C'est le défaut pris pour la question Q12 de la spec, laissée sans réponse
+    du propriétaire : accepter le plancher sec plutôt que convertir deux
+    items de dimension. (2) sous-espace-vs-sous-groupe n'a qu'un item de
+    marge, et deux de ses quatre items (SA-37, SA-41) le portent sous une
+    VARIANTE ; la variante « liste du sous-groupe bien appliquée » y atteint
+    la clé, et l'id n'est diagnostiquable pur qu'à SA-39 et SA-40 (spec
+    §11.2, cas limite nommé, non tranché). (3) Un modèle non porté atteint
+    une clé : à SA-49, compter les trois lettres de Sym donne 3 — admis, la
+    spec dit pourquoi (lettres libres sur cet objet, id non porté par l'item,
+    mesuré ailleurs par huit items où il diverge). (4) Quatre modèles rompus
+    en prose ne sont PAS déclarés (spec §8.9) : la réunion de sous-espaces
+    prise pour un sous-espace (portée par SA-37 sous generalisation-hative,
+    étiquette du mécanisme et non du contenu), « revérifier les huit
+    axiomes » (porté par aucun item), « le noyau vit dans l'ensemble
+    d'arrivée », « $\lambda u = 0_E$ entraîne $\lambda = 0$ ET $u = 0_E$ » —
+    trois items de plus chacun s'il fallait les déclarer. (5) La moitié
+    DÉRIVÉE du chapitre (liberté, génération, dimension, applications
+    linéaires) porte douze items sur dix-huit (SA-42 → SA-53) sans
+    attestation d'examen dans le dépôt (spec §15 Q1b) : c'est la première
+    charge à revisiter quand le cadre scanné aura été relu. Les quatre points
+    d'arrêt du chapitre vivent dans checkpoints.yaml et ne comptent pas ici.

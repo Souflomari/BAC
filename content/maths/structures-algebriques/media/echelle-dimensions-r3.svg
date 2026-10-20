@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 400" role="img"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="À gauche, en perspective, le plan P d’équation x plus y plus z égale 0, qui passe par l’origine de l’espace, avec ses deux générateurs (1, 0, moins 1) et (0, 1, moins 1) dessinés dessus : deux vecteurs libres, donc P est de dimension 2. À droite, une échelle de sous-espaces emboîtés : le singleton du vecteur nul, de dimension 0, dans une droite de P, de dimension 1, dans le plan P, de dimension 2, dans l’espace ℝ³ tout entier, de dimension 3. Chaque sous-espace a sa propre dimension, au plus celle de l’espace qui le contient.">
+  <title>Le plan x + y + z = 0 et l’échelle des dimensions dans ℝ³</title>
+  <!--
+    echelle-dimensions-r3.svg — chapitre 11 (R8) de structures-algebriques,
+    placé APRÈS [C14] (« une équation coûte une dimension »), donc après que
+    « dimension » a été définie — correctif I11 de la spec
+    docs/pipeline/propositions/maths-structures-espaces-vectoriels.md §9.
+    type: structural-diagram · tool: svg+katex (coded, never generated).
+
+    step-1 : le plan P : x + y + z = 0 et ses deux générateurs (1, 0, -1) et
+             (0, 1, -1), ceux que la méthode « équation → paramètres » lit.
+    step-2 : l'échelle {0} ⊂ une droite de P ⊂ P ⊂ ℝ³, dimensions 0, 1, 2, 3
+             — l'étape qui porte « la dimension se lit sur l'habillage » :
+             un sous-espace a une dimension À LUI, bornée par celle de
+             l'ambiant, pas égale d'office. La droite choisie est
+             Vect((1, 0, -1)), contenue dans P, pour que l'emboîtement soit
+             vrai et pas seulement suggéré.
+
+    PROJECTION, divulguée : perspective cavalière LINÉAIRE — origine écran
+    (205, 215), e_y = (70, 0), e_z = (0, -70), e_x = (-24,75 ; 24,75)
+    (axe fuyant à 45°, réduit de moitié). Une projection linéaire envoie le
+    plan sur un hexagone exact : on dessine l'intersection de P avec le cube
+    [-1,35 ; 1,35]³, dont les six sommets sont 1,35 × les permutations de
+    (1, -1, 0) — tous vérifient x + y + z = 0. Les deux générateurs sont
+    deux de ces directions, donc dessinés DANS le plan, sans approximation.
+    Seuls les demi-axes positifs sont tracés (lisibilité) ; aucune
+    exagération d'échelle.
+    Accent : UNE idée — le plan P, et son « 2 » ; repris tel quel dans
+    l'échelle. Couleurs : uniquement les jetons figure-surface, ink,
+    ink-soft, grid et accent.
+  -->
+  <rect x="0" y="0" width="780" height="400" fill="var(--figure-surface)"/>
+  <text x="178" y="30" font-size="15" fill="var(--figure-ink)" font-weight="600">Le plan <tspan font-style="italic">x</tspan> + <tspan font-style="italic">y</tspan> + <tspan font-style="italic">z</tspan> = 0, puis l’échelle des dimensions</text>
+  <!-- ══ step-1 — le plan P et ses deux générateurs ══ -->
+  <g id="step-1">
+    <line x1="205" y1="215" x2="143.1" y2="276.9" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <polygon points="143.1,276.9 146.2,268.7 151.3,273.8" fill="var(--figure-ink-soft)"/>
+    <text x="129.1" y="290.9" font-size="12.5" fill="var(--figure-ink-soft)"><tspan font-style="italic">x</tspan></text>
+    <line x1="205" y1="215" x2="369.5" y2="215" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <polygon points="369.5,215 361.5,218.6 361.5,211.4" fill="var(--figure-ink-soft)"/>
+    <text x="377.5" y="219" font-size="12.5" fill="var(--figure-ink-soft)"><tspan font-style="italic">y</tspan></text>
+    <line x1="205" y1="215" x2="205" y2="78.5" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <polygon points="205,78.5 208.6,86.5 201.4,86.5" fill="var(--figure-ink-soft)"/>
+    <text x="212" y="80.5" font-size="12.5" fill="var(--figure-ink-soft)"><tspan font-style="italic">z</tspan></text>
+    <polygon points="77.1,248.4 171.6,342.9 299.5,309.5 332.9,181.6 238.4,87.1 110.5,120.5" fill="var(--figure-accent)" fill-opacity="0.12" stroke="var(--figure-accent)" stroke-width="2" stroke-linejoin="round"/>
+    <text x="193" y="209" font-size="12" text-anchor="end" fill="var(--figure-ink)"><tspan font-style="italic">O</tspan></text>
+    <circle cx="205" cy="215" r="3.4" fill="var(--figure-ink)"/>
+    <line x1="205" y1="215" x2="182.3" y2="302" stroke="var(--figure-ink)" stroke-width="2.2"/>
+    <polygon points="180.3,309.7 178.3,298.9 187.2,301.2" fill="var(--figure-ink)"/>
+    <text x="172.3" y="325.7" font-size="12.5" text-anchor="end" fill="var(--figure-ink)" font-weight="600">(1, 0, −1)</text>
+    <line x1="205" y1="215" x2="269.3" y2="279.3" stroke="var(--figure-ink)" stroke-width="2.2"/>
+    <polygon points="275,285 264.7,281.2 271.2,274.7" fill="var(--figure-ink)"/>
+    <text x="285" y="291" font-size="12.5" fill="var(--figure-ink)" font-weight="600">(0, 1, −1)</text>
+    <text x="259.6" y="130.8" font-size="15" fill="var(--figure-accent)" font-weight="700"><tspan font-style="italic">P</tspan></text>
+    <text x="22" y="378" font-size="12.5" fill="var(--figure-ink)"><tspan font-style="italic">P</tspan> : <tspan font-style="italic">x</tspan> + <tspan font-style="italic">y</tspan> + <tspan font-style="italic">z</tspan> = 0 — deux générateurs libres, dim <tspan font-style="italic">P</tspan> = 2</text>
+  </g>
+  <!-- ══ step-2 — l’échelle {0} ⊂ droite ⊂ P ⊂ ℝ³ ══ -->
+  <g id="step-2">
+    <rect x="430" y="58" width="330" height="296" rx="12" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <text x="444" y="80" font-size="13.5" fill="var(--figure-ink)" font-weight="600">ℝ³</text>
+    <text x="746" y="80" font-size="12.5" text-anchor="end" fill="var(--figure-ink)">dimension 3</text>
+    <rect x="448" y="96" width="294" height="228" rx="12" fill="var(--figure-accent)" fill-opacity="0.08" stroke="var(--figure-accent)" stroke-width="2"/>
+    <text x="462" y="118" font-size="13.5" fill="var(--figure-accent)" font-weight="600">le plan <tspan font-style="italic">P</tspan></text>
+    <text x="728" y="118" font-size="12.5" text-anchor="end" fill="var(--figure-accent)">dimension 2</text>
+    <rect x="466" y="138" width="258" height="140" rx="12" fill="none" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <text x="480" y="160" font-size="13.5" fill="var(--figure-ink)" font-weight="600">une droite de <tspan font-style="italic">P</tspan></text>
+    <text x="710" y="160" font-size="12.5" text-anchor="end" fill="var(--figure-ink)">dimension 1</text>
+    <rect x="484" y="204" width="222" height="56" rx="12" fill="none" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <text x="498" y="226" font-size="13.5" fill="var(--figure-ink)" font-weight="600">{(0, 0, 0)}</text>
+    <text x="692" y="226" font-size="12.5" text-anchor="end" fill="var(--figure-ink)">dimension 0</text>
+    <text x="480" y="184" font-size="11.5" fill="var(--figure-ink-soft)" font-style="italic">engendrée par (1, 0, −1)</text>
+    <text x="595" y="378" font-size="12.5" text-anchor="middle" fill="var(--figure-ink-soft)" font-style="italic">chacun a sa dimension, au plus celle de ℝ³</text>
+  </g>
+</svg>

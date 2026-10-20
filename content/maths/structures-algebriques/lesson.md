@@ -780,3 +780,454 @@ Même chaîne d'outils, un habillage différent : une autre loi, d'autres matric
      déplacé, aucun nouveau checkpoint ajouté par cet auteur.
 -->
 
+---
+
+## R8 — Espaces vectoriels : sous-espace, base, dimension
+
+Certains sujets nationaux de Sciences Mathématiques s'ouvrent sur une phrase qu'on lit vite, parce qu'elle a l'air de ne rien demander :
+
+> On rappelle que $(M_2(\mathbb{R}),+,\cdot)$ est un espace vectoriel réel.
+
+Dans les sujets que nous avons lus, elle annonce la question qui ouvre l'exercice — celle qui vient **avant** l'anneau, et avant l'isomorphisme du chapitre 10 que tu viens de travailler. Que promet-elle, exactement ? Deux opérations, et elles ne sont pas de la même nature. La première, $+$, additionne deux matrices : deux objets du même ensemble, comme toutes les lois rencontrées jusqu'ici. La seconde, $\cdot$, multiplie une matrice par un **réel** — et ce réel, lui, n'appartient pas à l'ensemble des matrices. C'est toute la nouveauté de ce chapitre : une seconde loi dont l'un des deux opérandes vient d'ailleurs.
+
+Mets cette nouveauté à l'épreuve tout de suite, avant toute définition. Reprends l'ensemble du chapitre 5 :
+
+$$F = \left\{ M(a,b) = \begin{pmatrix} a & -b \\ b & a \end{pmatrix} \ /\ (a,b) \in \mathbb{Z}^2 \right\}$$
+
+Tu as démontré qu'il est un sous-groupe de $(M_2(\mathbb{R}),+)$. En est-il un **sous-espace vectoriel** de $(M_2(\mathbb{R}),+,\cdot)$ ? Tu n'as pas encore la définition, et c'est voulu : tranche avec ce que tu as — la phrase de l'énoncé, et les deux lois qu'elle annonce.
+
+[[checkpoint:cp-r8-pari-scalaire]]
+
+**Non.** La matrice $M(1,0)$ est dans $F$, puisque $a = 1$ et $b = 0$ sont des entiers — c'est d'ailleurs l'identité $I$. Multiplie-la par le réel $\tfrac12$ :
+
+$$\tfrac12 \cdot M(1,0) = \begin{pmatrix} \tfrac12 & 0 \\ 0 & \tfrac12 \end{pmatrix}$$
+
+Pour que ce résultat soit dans $F$, il faudrait l'écrire $M(a,b)$ avec $a = \tfrac12$, qui n'est pas un entier. Un seul couple — un réel et une matrice — suffit : $F$ n'est **pas stable pour la loi externe**. Le même ensemble est donc un sous-groupe, et pas un sous-espace. Ce que tu as démontré au chapitre 5 répondait à une question sur $+$ ; la multiplication par un réel en pose une **autre**, et c'est elle que ce chapitre apprend à poser.
+
+### Ce que la phrase de l'énoncé affirme : un espace vectoriel réel
+
+**Définition.** Soit $E$ un ensemble muni d'une loi interne $+$ et d'une loi externe $\cdot$, qui à un réel $\lambda$ et à un élément $u$ de $E$ associe un élément $\lambda \cdot u$ de $E$. On dit que $(E,+,\cdot)$ est un **espace vectoriel réel** si $(E,+)$ est un groupe commutatif — rien de neuf, c'est le chapitre 6 ; on note $0_E$ son neutre — et si, pour tous réels $\lambda, \mu$ et tous $u, v$ de $E$, la loi externe vérifie les quatre égalités suivantes :
+
+$$\lambda \cdot (u + v) = \lambda \cdot u + \lambda \cdot v$$
+
+$$(\lambda + \mu) \cdot u = \lambda \cdot u + \mu \cdot u$$
+
+$$(\lambda \mu) \cdot u = \lambda \cdot (\mu \cdot u)$$
+
+$$1 \cdot u = u$$
+
+Les éléments de $E$ s'appellent des **vecteurs** — même quand ce sont des matrices — et les réels $\lambda$ des **scalaires**.
+
+Trois espaces suffisent à tout ce chapitre : $\mathbb{R}^2$ et $\mathbb{R}^3$, les couples et les triplets de réels, qu'on additionne et qu'on multiplie par un réel coordonnée par coordonnée ; et $M_2(\mathbb{R})$, où l'on fait de même coefficient par coefficient. Dans tous les sujets que nous avons lus, c'est l'énoncé qui pose l'espace ambiant, en une phrase de rappel ; la question porte ensuite sur une **partie** de cet espace. Ces quatre égalités, tu n'as donc pas à les revérifier : on les énonce une fois, pour savoir ce qu'on a le droit d'utiliser. Le même rappel existe en $3 \times 3$, avec $M_3(\mathbb{R})$ : rien ne change au raisonnement, seule la taille des matrices change.
+
+**Deux conséquences, et elles font tout le chapitre.** La première : multiplier par le réel $0$ donne le vecteur nul. Pars de $0 = 0 + 0$ dans $\mathbb{R}$, et distribue grâce à la deuxième égalité :
+
+$$0 \cdot u = (0 + 0) \cdot u$$
+
+$$(0 + 0) \cdot u = 0 \cdot u + 0 \cdot u$$
+
+Ajoute aux deux membres l'opposé de $0 \cdot u$ dans le groupe $(E,+)$ — le geste qui démontre, dans un anneau, que $x \times 0 = 0$. Il reste $0_E = 0 \cdot u$.
+
+La seconde : multiplier par $-1$ donne l'opposé. Calcule $(-1) \cdot u + u$, en écrivant $u = 1 \cdot u$ :
+
+$$(-1) \cdot u + u = (-1) \cdot u + 1 \cdot u$$
+
+$$(-1) \cdot u + 1 \cdot u = (-1 + 1) \cdot u$$
+
+$$(-1 + 1) \cdot u = 0 \cdot u$$
+
+et $0 \cdot u = 0_E$ par la première conséquence. Donc $(-1) \cdot u$ est le symétrique de $u$ pour $+$ : $(-1) \cdot u = -u$. **Retiens la seconde : l'opposé d'un vecteur est déjà un multiple de ce vecteur.** C'est elle qui explique la forme du critère qui suit.
+
+### Le sous-espace vectoriel : un critère, et une condition échangée
+
+Un **sous-espace vectoriel** de $(E,+,\cdot)$ est une partie $H$ de $E$ qui est elle-même un espace vectoriel, pour les mêmes lois. Comme au chapitre 5, une bonne partie des exigences descend gratuitement de $E$ : l'associativité et la commutativité de $+$, et les quatre égalités de la loi externe, sont vraies pour tous les vecteurs de $E$, donc en particulier pour ceux de $H$. Ce qui ne descend pas, c'est tout ce qui demande de **rester dans $H$**.
+
+**Critère.** Soit $(E,+,\cdot)$ un espace vectoriel réel et $H$ une partie de $E$. $H$ est un sous-espace vectoriel de $(E,+,\cdot)$ si et seulement si :
+
+1. $H$ n'est pas vide — en pratique, on montre que $0_E \in H$ ;
+2. pour tous $u, v$ de $H$ : $u + v \in H$ (stable pour la loi interne) ;
+3. pour tout $u$ de $H$ et tout réel $\lambda$ : $\lambda \cdot u \in H$ (stable pour la loi externe).
+
+Les lettres sont exactement celles du chapitre 5 — $E$ l'espace, $H$ la partie à tester — parce que le geste est le même. Mets les deux critères côte à côte :
+
+| | sous-groupe de $(E,\star)$, chapitre 5 | sous-espace de $(E,+,\cdot)$ |
+|---|---|---|
+| 1 | $e \in H$ | $0_E \in H$ — la même |
+| 2 | $x \star y \in H$ | $u + v \in H$ — la même |
+| 3 | le symétrique $x'$ de $x$ est dans $H$ | $\lambda \cdot u \in H$ — **échangée** |
+
+Trois conditions de chaque côté : la troisième n'est pas retirée, elle est **échangée**. Et l'échange est un gain, pas un troc à l'aveugle : la nouvelle condition contient l'ancienne, puisque $-u = (-1) \cdot u$. Dès qu'on a le droit de multiplier par $-1$, le symétrique est gratuit — mais il faut avoir ce droit, et c'est précisément ce que la loi externe apporte. Conséquence, à dire à voix haute : **tout sous-espace vectoriel est un sous-groupe de $(E,+)$**. La réciproque est fausse, et l'ensemble $F$ du début de ce chapitre vient d'en donner le contre-exemple.
+
+### Trois parties du plan : une qui passe, deux qui tombent
+
+**Une droite qui passe par l'origine.** Soit $D = \{(x,y) \in \mathbb{R}^2 \ /\ y = 2x\}$.
+
+**Ce qu'on cherche et pourquoi ce geste.** « Appartenir à $D$ » ne veut dire qu'une chose : la seconde coordonnée vaut deux fois la première. À chaque condition, on ne se demande donc pas au hasard « est-ce dans $D$ ? » : on **fabrique la forme** $(t, 2t)$, en nommant $t$ ce qui occupe la première place, et on regarde si la seconde suit. Nommer la nouvelle première coordonnée, c'est tout le geste.
+
+**Non vide.** $(0,0) \in D$, car $2 \times 0 = 0$. ✓
+
+**Stable pour $+$.** Prends deux éléments quelconques $u = (x, 2x)$ et $v = (x', 2x')$ de $D$ :
+
+$$u + v = (x + x',\ 2x + 2x')$$
+
+$$(x + x',\ 2x + 2x') = \big(x + x',\ 2(x + x')\big)$$
+
+En nommant $t = x + x'$, c'est $(t, 2t)$ : $u + v \in D$. ✓
+
+**Stable pour $\cdot$.** Pour tout réel $\lambda$, $\lambda u = (\lambda x,\ 2\lambda x)$ ; en nommant $s = \lambda x$, c'est $(s, 2s)$ : $\lambda u \in D$. ✓
+
+Les trois conditions tiennent : $D$ est un sous-espace vectoriel de $\mathbb{R}^2$ — une droite qui passe par l'origine.
+
+**La même droite, décalée.** Soit $D' = \{(x,y) \in \mathbb{R}^2 \ /\ y = 2x + 1\}$. Commence par le test du vecteur nul : $2 \times 0 + 1 = 1$, et $1 \neq 0$, donc $(0,0) \notin D'$. ✗ **Une ligne suffit à conclure** : $D'$ n'est pas un sous-espace, et il n'y a rien d'autre à vérifier. Si tu veux voir que les échecs voyagent ensemble, regarde quand même l'addition : $(0,1)$ et $(1,3)$ sont dans $D'$, mais leur somme $(1,4)$ n'y est pas, puisque $2 \times 1 + 1 = 3$ et non $4$.
+
+**Attention, le piège.** « $D'$ est une droite, comme $D$ ; une droite est un sous-espace ; donc $D'$ en est un. » Ce raisonnement ne bute pas sur le test du zéro : il le **saute**, parce que l'objet a l'air linéaire. Le mot « linéaire » du collège — une fonction affine, un graphe bien droit — n'est pas celui de ce chapitre : le terme constant $+1$ déplace l'objet hors de l'origine, et toute la structure s'effondre. Le test du zéro coûte une ligne ; c'est précisément la ligne que ce piège fait sauter.
+
+**Une partie qui passe le test du zéro.** Ce test ne tranche que dans un sens : s'il échoue, c'est fini ; s'il réussit, il reste deux conditions. Voici un ensemble qui le passe — et qui passe aussi une deuxième condition.
+
+[[checkpoint:cp-r8-pari-stabilite]]
+
+Soit $X = \{(x,y) \in \mathbb{R}^2 \ /\ xy = 0\}$ : les points qui sont sur au moins un des deux axes.
+
+**Non vide.** $(0,0) \in X$, car $0 \times 0 = 0$. ✓
+
+**Stable pour $\cdot$.** Pour tout réel $\lambda$ et tout $(x,y)$ de $X$, $(\lambda x)(\lambda y) = \lambda^2 (xy)$, et $\lambda^2 \times 0 = 0$ : $\lambda (x,y) \in X$. ✓
+
+**Stable pour $+$ : non.** $(1,0) \in X$ car $1 \times 0 = 0$, et $(0,1) \in X$ car $0 \times 1 = 0$. Mais
+
+$$(1,0) + (0,1) = (1,1)$$
+
+et $1 \times 1 = 1 \neq 0$ : $(1,1) \notin X$. ✗
+
+$X$ passe deux conditions sur trois, et **n'est pas** un sous-espace. Contenir le vecteur nul ne suffit pas, résister à la multiplication par un réel non plus : le critère demande les trois conditions ensemble. L'avantage de les écrire en trois lignes séparées, c'est qu'on voit **laquelle** tombe. Remarque au passage que chacun des deux axes, pris seul, est un sous-espace — c'est une droite qui passe par l'origine. Leur réunion n'en est pas un : deux points pris sur des axes différents s'additionnent hors des deux.
+
+[[figure:sous-espaces-plan]]
+
+### Le même critère, en habillage matriciel
+
+Dans les sujets que nous avons lus, la partie à tester est un ensemble de matrices à deux paramètres. Soit
+
+$$V = \left\{ M(a,b) = \begin{pmatrix} a & a+b \\ a-b & b \end{pmatrix} \ /\ (a,b) \in \mathbb{R}^2 \right\} \subset M_2(\mathbb{R})$$
+
+**Ce qu'on cherche et pourquoi ce geste.** « Appartenir à $V$ », c'est avoir la forme $M(\cdot,\cdot)$ : deux paramètres libres, et deux cases qui s'en déduisent. À chaque condition, ne compare pas des coefficients au hasard : cherche quels deux nombres joueraient le rôle de $a$ et de $b$. Lis-les sur la diagonale — les cases en haut à gauche et en bas à droite, les deux seules où un paramètre apparaît **seul** — puis vérifie que les deux autres cases valent bien leur somme et leur différence. C'est le geste de la droite $D$, avec deux noms au lieu d'un. Lire les paramètres là où ils sont seuls, c'est ce qui transforme une vérification en lecture.
+
+Avance la vérification une transformation à la fois ; à chaque pas, la note te dit pourquoi c'est le bon geste.
+
+[[derivation:v-sous-espace]]
+
+Les trois conditions tiennent : **$V$ est un sous-espace vectoriel de $(M_2(\mathbb{R}),+,\cdot)$.**
+
+### Deux mots avant d'aller plus loin : combinaison linéaire, sous-espace engendré
+
+**Combinaison linéaire.** Étant donnés des vecteurs $u_1, \dots, u_p$ de $E$, on appelle **combinaison linéaire** de $u_1, \dots, u_p$ tout vecteur de la forme
+
+$$\alpha_1 u_1 + \alpha_2 u_2 + \dots + \alpha_p u_p, \qquad \text{avec } \alpha_1, \dots, \alpha_p \in \mathbb{R}$$
+
+Rien de plus : on multiplie chacun par un réel, puis on additionne — les deux lois du chapitre, dans cet ordre. Dans $\mathbb{R}^2$, avec $u = (1,0)$ et $v = (0,1)$, le vecteur $(3,-2)$ est la combinaison $3u + (-2)v$. Et sur la droite $D$, tout point $(t, 2t)$ est la combinaison $t \cdot (1,2)$ d'un seul vecteur.
+
+**Le critère, en une ligne.** Les conditions 2 et 3 réunies disent exactement : toute combinaison linéaire de deux éléments de $H$ est dans $H$.
+
+$$\text{pour tous } u, v \in H \text{ et tous réels } \lambda, \mu : \quad \lambda u + \mu v \in H$$
+
+Pourquoi c'est la même chose : si les conditions 2 et 3 tiennent, $\lambda u$ et $\mu v$ sont dans $H$ par la 3, donc leur somme aussi par la 2. Réciproquement, $\lambda = \mu = 1$ redonne la condition 2, et $\mu = 0$ redonne la condition 3, puisque $0 \cdot v = 0_E$.
+
+Fais le regroupement toi-même sur $V$ avant de lire la suite : prends deux éléments $M(a,b)$ et $M(a',b')$ de $V$, deux réels $\lambda$ et $\mu$, et pose $s = \lambda a + \mu a'$ et $t = \lambda b + \mu b'$.
+
+$$\lambda M(a,b) + \mu M(a',b') = \begin{pmatrix} s & s+t \\ s-t & t \end{pmatrix}$$
+
+$$\begin{pmatrix} s & s+t \\ s-t & t \end{pmatrix} = M(s,t)$$
+
+et $M(s,t) \in V$. ✓ Sur la diagonale, on lit $s$ et $t$ ; en haut à droite, $\lambda(a+b) + \mu(a'+b')$ se regroupe en $(\lambda a + \mu a') + (\lambda b + \mu b')$, c'est-à-dire $s + t$ ; en bas à gauche, de la même façon, $\lambda(a-b) + \mu(a'-b')$ se regroupe en $s - t$.
+
+**Attention, le piège.** La forme en une ligne est juste, et elle est plus risquée à l'examen : elle oblige à écrire d'un bloc ce que le correcteur attend en trois temps, et une erreur de regroupement y coûte tout. À l'examen, rédige les trois conditions, dans l'ordre. La forme compacte sert à **comprendre** que les conditions 2 et 3 sont deux stabilités qui travaillent ensemble.
+
+**Le sous-espace engendré.** L'ensemble de **toutes** les combinaisons linéaires de $u_1, \dots, u_p$ s'appelle le **sous-espace engendré** par la famille $(u_1, \dots, u_p)$. On le note $\mathrm{Vect}(u_1, \dots, u_p)$ — lis ce symbole comme une abréviation : « l'ensemble de toutes les combinaisons de ces vecteurs ». Et c'est bien un sous-espace ; les trois conditions se vérifient sur place :
+
+1. $0_E = 0\,u_1 + \dots + 0\,u_p$ est une combinaison des $u_i$ ✓ ;
+2. la somme de deux combinaisons en est une : $\sum \alpha_i u_i + \sum \beta_i u_i = \sum (\alpha_i + \beta_i)\, u_i$ ✓ ;
+3. un multiple d'une combinaison en est une : $\lambda \sum \alpha_i u_i = \sum (\lambda \alpha_i)\, u_i$ ✓.
+
+**Le raisonnement d'expert, dit à voix haute.** Avant d'écrire une ligne sur $V$, l'expert écrit $M(a,b)$ comme une combinaison linéaire : il sépare ce qui multiplie $a$ de ce qui multiplie $b$.
+
+$$M(a,b) = a \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix} + b \begin{pmatrix} 0 & 1 \\ -1 & 1 \end{pmatrix}$$
+
+Contrôle, case par case : la première matrice multipliée par $a$ donne $\left(\begin{smallmatrix} a & a \\ a & 0 \end{smallmatrix}\right)$, la seconde multipliée par $b$ donne $\left(\begin{smallmatrix} 0 & b \\ -b & b \end{smallmatrix}\right)$, et leur somme est bien $\left(\begin{smallmatrix} a & a+b \\ a-b & b \end{smallmatrix}\right)$. L'expert **sait déjà** où il va : en notant $A$ et $B$ ces deux matrices fixes, $V$ est l'ensemble de toutes les combinaisons de $A$ et de $B$, c'est-à-dire $V = \mathrm{Vect}(A, B)$ — et un sous-espace engendré est un sous-espace, on vient de le démontrer.
+
+**Attention, le piège.** À l'examen, la réponse qui rapporte le point est le critère rédigé, ses trois conditions dans l'ordre. Le raccourci par le sous-espace engendré n'est légitime que s'il est rédigé comme tel : « $V = \mathrm{Vect}(A, B)$, or un sous-espace engendré est un sous-espace ». L'expert s'en sert pour savoir où il va, pas pour écrire moins.
+
+### Famille génératrice, famille libre
+
+Une famille $(u_1, \dots, u_p)$ de vecteurs de $H$ est **génératrice** de $H$ — on dit qu'elle **engendre** $H$ — si **tout** élément de $H$ s'écrit $\alpha_1 u_1 + \dots + \alpha_p u_p$ : autrement dit, si $H = \mathrm{Vect}(u_1, \dots, u_p)$. La famille $(A, B)$ engendre $V$ : c'est l'écriture $M(a,b) = aA + bB$ de l'expert. Mais attention à ce que cette facilité cache : ici, la famille génératrice se **lisait** sur la définition de $V$. Ce n'est pas toujours le cas, et il y a une méthode ; elle vient juste après.
+
+Une famille $(u_1, \dots, u_p)$ est **libre** si la **seule** combinaison nulle est celle dont tous les coefficients sont nuls : dès que $\alpha_1 u_1 + \dots + \alpha_p u_p = 0_E$, alors $\alpha_1 = 0$, …, $\alpha_p = 0$. Le mot qui compte est « la seule ». Une famille qui n'est pas libre est dite **liée**.
+
+**Une famille libre dans $\mathbb{R}^3$.** Soit $v_1 = (1,0,1)$, $v_2 = (1,1,0)$ et $v_3 = (0,1,1)$.
+
+**Ce qu'on cherche et pourquoi ce geste.** On pose $\alpha v_1 + \beta v_2 + \gamma v_3 = (0,0,0)$, et on résout. Par où commencer ? Par l'équation qui contient le moins d'inconnues ; ici les trois en contiennent deux chacune, donc on en prend une, on en tire une inconnue en fonction d'une autre, et on **reporte**. Le signal que la famille est libre arrive à la dernière ligne : une équation à **une seule** inconnue. Si au contraire la dernière ligne devenait « $0 = 0$ », ce serait le signal inverse — une inconnue resterait libre, et la famille serait liée. On avance là où il y a le moins de choses à porter.
+
+[[derivation:famille-libre-r3]]
+
+La seule combinaison nulle est la combinaison à coefficients nuls : $(v_1, v_2, v_3)$ est **libre**.
+
+### Prends position : cette famille est-elle libre ?
+
+Voici une méthode que beaucoup d'élèves appliquent, et qui a l'air solide. Écoute-la jusqu'au bout :
+
+> Pour savoir si une famille est libre, je regarde les vecteurs deux par deux : si aucun n'est le multiple d'un autre, ils sont indépendants. C'est ce que je fais toujours, et c'est rapide.
+
+Mets-la à l'épreuve sur $w_1 = (1,2,3)$, $w_2 = (2,1,0)$ et $w_3 = (3,3,3)$. **Prends position avant de lire la suite : cette famille est-elle libre ?**
+
+Les vérifications que la méthode demande sont faites, et elles passent toutes. Aucun des trois vecteurs n'est nul. Aucun couple n'est colinéaire : pour $w_1$ et $w_2$, les premières coordonnées sont dans le rapport $2$, les deuxièmes dans le rapport $\tfrac12$ ; pour $w_1$ et $w_3$, les rapports sont $3$ et $\tfrac32$ ; pour $w_2$ et $w_3$, ils sont $\tfrac32$ et $3$. La méthode conclut : libre.
+
+Maintenant, additionne les deux premiers :
+
+$$w_1 + w_2 = (1+2,\ 2+1,\ 3+0)$$
+
+$$(1+2,\ 2+1,\ 3+0) = (3,3,3)$$
+
+C'est $w_3$. Donc
+
+$$1 \cdot w_1 + 1 \cdot w_2 + (-1) \cdot w_3 = (0,0,0)$$
+
+avec des coefficients qui ne sont pas tous nuls : la famille est **liée**. Le test par paires a dit oui ; la définition dit non. L'un des deux est faux, et ce n'est pas la définition.
+
+Le test par paires est un test de **deux** vecteurs ; la liberté est une propriété de la famille **entière**. Trois vecteurs peuvent se tenir deux à deux sans se tenir à trois. Le seul test qui ne se trompe pas est le système : poser $\alpha w_1 + \beta w_2 + \gamma w_3 = (0,0,0)$, et le résoudre jusqu'au bout. Ici la relation se voyait à l'œil ; elle ne se voit pas toujours.
+
+### Engendrer : une méthode, et un témoin
+
+**La méthode.** Pour prouver qu'une famille engendre, on part d'un élément **quelconque** et on l'écrit comme combinaison ; pour prouver qu'elle n'engendre pas, **un seul** élément sans écriture suffit — la même économie que pour la droite décalée, où un seul point manquant réglait la question.
+
+**Une famille qui engendre : les générateurs se lisent sur l'équation.** Soit $W = \{(x,y,z) \in \mathbb{R}^3 \ /\ y = 2x\}$.
+
+[[derivation:w-generateurs]]
+
+On n'a pas deviné la famille : on l'a **lue** sur la solution de l'équation. C'est le geste transférable du chapitre — une partie donnée par une équation, on résout pour une lettre, et les générateurs se lisent sur l'écriture qui reste.
+
+**Une famille libre qui n'engendre pas.** Dans $\mathbb{R}^3$, prends la famille $\big((1,2,0),\ (0,1,3)\big)$.
+
+[[derivation:temoin-non-generatrice]]
+
+Libre et génératrice sont donc **deux questions séparées**, et aucune ne donne l'autre : cette famille est libre sans engendrer $\mathbb{R}^3$, et tu verras plus bas une famille qui engendre sans être libre. C'est pour cela qu'une base demande les deux.
+
+**Attention, le piège.** « Ces vecteurs touchent les trois coordonnées, donc ils engendrent tout. » Ici, $(1,2,0)$ et $(0,1,3)$ ont bien l'air de couvrir $x$, $y$ et $z$ — et $(0,0,1)$ leur échappe. La génération ne s'inspecte pas : elle se démontre, sur un élément quelconque.
+
+### Base et dimension
+
+Une **base** de $H$ est une famille à la fois **libre** et **génératrice** de $H$. La **dimension** de $H$, notée $\dim H$, est le nombre de vecteurs d'une base de $H$ — on admet que toutes les bases d'un même espace ont le même nombre de vecteurs.
+
+**Mais pourquoi exiger « libre » ?** Si une famille engendre $H$, elle écrit déjà tout vecteur de $H$ : à quoi bon la liberté ? Réponse en un mot : l'**unicité** de l'écriture. Une famille génératrice garantit qu'on peut écrire tout vecteur ; une famille libre garantit qu'on ne peut l'écrire que **d'une seule façon**. C'est cette unicité qui fait des coefficients des **coordonnées** — et donc d'un nombre de vecteurs, une dimension.
+
+Pourquoi « libre » donne une seule écriture : si $\alpha_1 u_1 + \dots + \alpha_p u_p = \beta_1 u_1 + \dots + \beta_p u_p$, fais tout passer du même côté.
+
+$$(\alpha_1 - \beta_1)\, u_1 + \dots + (\alpha_p - \beta_p)\, u_p = 0_E$$
+
+C'est une combinaison nulle ; la famille étant libre, tous ses coefficients sont nuls, donc $\alpha_i = \beta_i$ pour chaque $i$. Une seule écriture.
+
+Et ce que « liée » coûte, sur un exemple. Dans $\mathbb{R}^2$, prends $t_1 = (1,4)$, $t_2 = (3,1)$ et $t_3 = (4,5)$. Ici $t_1 + t_2 = (1+3,\ 4+1)$, c'est-à-dire $(4,5)$, qui est $t_3$. Le vecteur $(4,5)$ s'écrit donc de deux façons dans la famille $(t_1, t_2, t_3)$ :
+
+$$1 \cdot t_1 + 1 \cdot t_2 + 0 \cdot t_3 = (4,5)$$
+
+$$0 \cdot t_1 + 0 \cdot t_2 + 1 \cdot t_3 = (4,5)$$
+
+Deux jeux de coefficients pour un même vecteur : « les coordonnées de $(4,5)$ dans cette famille » ne veut plus rien dire. (Le couple $(t_1, t_2)$, lui, est libre : $\alpha(1,4) + \beta(3,1) = (0,0)$ donne $\alpha = -3\beta$ par la première coordonnée, puis $-12\beta + \beta = 0$ par la seconde, soit $-11\beta = 0$ : $\beta = 0$, et $\alpha = 0$.) Voilà ce que la liberté achète : non pas la capacité d'écrire, mais le **droit de parler de coordonnées**. Et c'est de ce droit que vient le mot « dimension ».
+
+**La base de $V$, et sa dimension.** Reprends $A = M(1,0) = \left(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}\right)$ et $B = M(0,1) = \left(\begin{smallmatrix} 0 & 1 \\ -1 & 1 \end{smallmatrix}\right)$.
+
+[[derivation:base-de-v]]
+
+$(A, B)$ est une base de $V$, donc $\dim V = 2$. Remarque qu'ici $A \neq I$, et même $I \notin V$ : il faudrait lire $a = 1$ et $b = 1$ sur la diagonale, mais alors la case en haut à droite vaudrait $a + b = 2$, et non $0$. La base d'un ensemble de matrices n'est donc pas « $I$ et une autre » par nature : c'est le calcul qui la donne. Parfois, en revanche, l'ensemble contient $I$ et une base commence par $I$ — tu rencontreras cette configuration à la fin du chapitre, et c'est toi qui la produiras.
+
+Change maintenant d'échelle : la même question, posée à l'espace qui contient $V$.
+
+[[checkpoint:cp-r8-pari-notation]]
+
+**$\dim M_2(\mathbb{R}) = 4$.** Pose les quatre matrices élémentaires, qui ont chacune un seul coefficient égal à $1$ :
+
+$$E_{11} = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, \quad E_{12} = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, \quad E_{21} = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}, \quad E_{22} = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}$$
+
+[[derivation:base-m2]]
+
+Le « 2 » de $M_2$ est l'ordre des matrices — deux lignes, deux colonnes —, pas la dimension de l'espace. Et $V$ est un sous-espace de dimension $2$ dans un espace de dimension $4$ : un sous-espace n'hérite pas de la dimension de son espace ambiant ; il en hérite seulement une **borne**. De la même façon, $\mathbb{R}^2$ est de dimension $2$ et $\mathbb{R}^3$ de dimension $3$ : leurs bases les plus simples, $\big((1,0),\ (0,1)\big)$ et $\big((1,0,0),\ (0,1,0),\ (0,0,1)\big)$, se vérifient exactement comme celle de $M_2(\mathbb{R})$.
+
+Et la réponse qui avait l'air raisonnable, les trois matrices $I$, $E_{12}$ et $E_{21}$, qui « couvrent » la diagonale et les deux coins ? Écris leur combinaison générale :
+
+$$\alpha I + \beta E_{12} + \gamma E_{21} = \begin{pmatrix} \alpha & \beta \\ \gamma & \alpha \end{pmatrix}$$
+
+Les deux coefficients diagonaux y sont forcément égaux : la matrice $\left(\begin{smallmatrix} 1 & 0 \\ 0 & 2 \end{smallmatrix}\right)$ n'est pas atteinte. Une famille qui a l'air de toucher toutes les cases peut rater l'essentiel — c'est pour cela que « génératrice » se démontre sur un élément quelconque.
+
+Dernière prise de position, sur un sous-espace donné par trois vecteurs.
+
+[[checkpoint:cp-r8-pari-dimension]]
+
+Les vecteurs sont $u = (1,2,-1)$, $v = (2,1,1)$ et $w = (3,3,0)$, et $G = \mathrm{Vect}(u, v, w)$. Avant de compter quoi que ce soit, cherche une relation entre les générateurs.
+
+[[derivation:vect-trois-generateurs]]
+
+Trois générateurs, dimension $2$ : le troisième n'apportait rien. **Compter les vecteurs écrits n'est pas compter une base.** Voilà aussi la famille annoncée plus haut : $(u, v, w)$ engendre $G$ sans être libre.
+
+**Le même piège, en habillage matriciel.** Soit
+
+$$G' = \left\{ N(a,b,c) = \begin{pmatrix} a+b & c \\ c & a+b \end{pmatrix} \ /\ (a,b,c) \in \mathbb{R}^3 \right\}$$
+
+et $K = \left(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}\right)$. Trois lettres dans la définition ; combien de dimensions ?
+
+[[derivation:trois-lettres-deux-dimensions]]
+
+$\dim G' = 2$, avec trois lettres dans la définition : $a$ et $b$ n'interviennent que par leur somme.
+
+### Une équation coûte une dimension
+
+Soit $P = \{(x,y,z) \in \mathbb{R}^3 \ /\ x + y + z = 0\}$. On montre que c'est un sous-espace, puis on en cherche une base.
+
+**Ce qu'on cherche et pourquoi ce geste.** La méthode tient en une phrase, et elle sert partout : une partie décrite par une **équation** se transforme en partie décrite par des **paramètres**. On résout pour la lettre la plus facile à isoler, on réécrit l'élément quelconque avec les lettres restantes, et les générateurs sont les vecteurs qui multiplient ces lettres. Il n'y a rien à deviner — c'est la méthode qui a donné les générateurs de $W$. Et le compte suit : trois lettres, une équation, deux paramètres, deux générateurs. C'est le sens de « une équation coûte une dimension ».
+
+[[derivation:plan-equation]]
+
+$\dim P = 2$ : un plan passant par l'origine, dans un espace de dimension $3$.
+
+[[figure:echelle-dimensions-r3]]
+
+**Un raccourci, admis — énoncé après la méthode directe, jamais à sa place.** Dans un espace de dimension $n$, une famille **libre** de $n$ vecteurs est une base ; une famille **génératrice** de $n$ vecteurs aussi. Il sert de vérification, pas de dispense de calcul.
+
+**Attention, le piège : ce raccourci se lit facilement à l'envers.** Ce qu'il dit : libre **et** $n$ vecteurs en dimension $n$, donc base. Ce qu'il ne dit pas : $n$ vecteurs en dimension $n$, donc libre. Trois vecteurs de $\mathbb{R}^3$ ne sont pas libres parce qu'ils sont trois — la famille $(w_1, w_2, w_3)$ en donnait trois qui ne le sont pas. La liberté reste l'hypothèse ; le compte n'est que la conclusion.
+
+### Applications linéaires, noyau et image
+
+**Définition.** Soit $E$ et $E'$ deux espaces vectoriels réels. Une application $f : E \to E'$ est **linéaire** si, pour tous $u, v$ de $E$ et tous réels $\lambda, \mu$ :
+
+$$f(\lambda u + \mu v) = \lambda f(u) + \mu f(v)$$
+
+Elle transporte les combinaisons linéaires : l'image d'une combinaison est la combinaison des images. Deux conséquences immédiates, qui servent tout de suite : en prenant $\lambda = \mu = 0$, on obtient $f(0_E) = 0_{E'}$ ; en prenant $\lambda = 1$ et $\mu = -1$, on obtient $f(u - v) = f(u) - f(v)$.
+
+**Reconnaître une application linéaire.** Soit $f : \mathbb{R}^3 \to \mathbb{R}^2$ définie par $f(x,y,z) = (x - y,\ y - z)$. Pour $u = (x,y,z)$ et $v = (x',y',z')$, le vecteur $\lambda u + \mu v$ a pour coordonnées $(\lambda x + \mu x',\ \lambda y + \mu y',\ \lambda z + \mu z')$. Calcule les deux coordonnées de son image, et regroupe ce qui multiplie $\lambda$ d'un côté, ce qui multiplie $\mu$ de l'autre :
+
+$$(\lambda x + \mu x') - (\lambda y + \mu y') = \lambda (x - y) + \mu (x' - y')$$
+
+$$(\lambda y + \mu y') - (\lambda z + \mu z') = \lambda (y - z) + \mu (y' - z')$$
+
+Ce sont exactement les coordonnées de $\lambda f(u) + \mu f(v)$ : $f$ est linéaire. ✓
+
+Deux contre-exemples, courts et parlants :
+
+- $g(x,y) = (x + 1,\ y)$ : $g(0,0) = (1,0) \neq (0,0)$. Une application linéaire envoie $0$ sur $0$ ; $g$ ne le fait pas, exactement comme la droite décalée ne passait pas par l'origine. Chaque coordonnée de $g$ est pourtant du premier degré : c'est le terme constant qui la disqualifie. ✗
+- $h(x,y) = (x^2,\ y)$ : $h(2 \cdot (1,0)) = h(2,0) = (4,0)$, alors que $2\, h(1,0) = (2,0)$. ✗
+
+**Noyau et image.** Le **noyau** de $f$ est l'ensemble des vecteurs de $E$ envoyés sur le vecteur nul : $\ker f = \{u \in E \ /\ f(u) = 0_{E'}\}$. Il vit dans l'ensemble de **départ**. L'**image** de $f$ est l'ensemble des vecteurs atteints, $\mathrm{Im}\, f = \{f(u) \ /\ u \in E\}$ ; elle vit dans l'ensemble d'**arrivée**. Calcule-les pour l'application $f$ qu'on vient de reconnaître, en commençant par le noyau.
+
+[[derivation:noyau-f]]
+
+Le noyau n'est pas réduit au vecteur nul : il contient toute une droite. Et cela se lit en termes d'injectivité : $f(1,1,1) = (0,0)$ et $f(0,0,0) = (0,0)$, avec $(1,1,1) \neq (0,0,0)$ — $f$ n'est **pas injective**.
+
+Pour l'image, il faut trouver, pour un $(s,t)$ quelconque de $\mathbb{R}^2$, un antécédent par $f$.
+
+**Ce qu'on cherche et pourquoi ce geste.** L'antécédent ne tombe pas du ciel, et il ne se devine pas. On veut résoudre $f(x,y,z) = (s,t)$, c'est-à-dire $x - y = s$ et $y - z = t$. **Deux équations, trois inconnues** : il reste un degré de liberté, donc on **choisit** la valeur la plus commode pour tuer une variable — ici $z = 0$. La seconde équation donne alors $y = t$, et la première $x = s + y$, soit $x = s + t$. On **remonte**, puis on **vérifie** en recalculant $f$ sur ce qu'on a trouvé. Trois temps, à dire à chaque fois : compter les degrés de liberté, choisir, remonter.
+
+[[derivation:image-f]]
+
+Tout vecteur de $\mathbb{R}^2$ est atteint : $\mathrm{Im}\, f = \mathbb{R}^2$.
+
+**Injective, ou pas : le noyau le dit.** Une équivalence sert partout : $f$ est injective si et seulement si $\ker f = \{0_E\}$. La démonstration tient en trois lignes, avec la seconde conséquence de la définition :
+
+$$f(u) = f(v) \iff f(u) - f(v) = 0_{E'}$$
+
+$$f(u) - f(v) = 0_{E'} \iff f(u - v) = 0_{E'}$$
+
+$$f(u - v) = 0_{E'} \iff u - v \in \ker f$$
+
+Donc, si $\ker f = \{0_E\}$, l'égalité $f(u) = f(v)$ force $u - v = 0_E$, soit $u = v$ : $f$ est injective. Réciproquement, si $f$ est injective, tout $u$ de $\ker f$ vérifie $f(u) = 0_{E'}$ et $f(0_E) = 0_{E'}$, donc $u = 0_E$. Ce n'est pas un théorème de plus à apprendre par cœur : c'est la définition du noyau, lue deux fois — et elle est démontrée, pas admise.
+
+**La paramétrisation est une application linéaire.** Reviens à $V$, et regarde l'application qui fabrique ses éléments :
+
+$$\varphi : \mathbb{R}^2 \to M_2(\mathbb{R}), \qquad \varphi(a,b) = M(a,b)$$
+
+Elle est linéaire, et le calcul est déjà fait : c'est mot pour mot le regroupement de la forme en une ligne. Avec $s = \lambda a + \mu a'$ et $t = \lambda b + \mu b'$, on a $\lambda (a,b) + \mu (a',b') = (s,t)$, puis
+
+$$\varphi\big(\lambda (a,b) + \mu (a',b')\big) = M(s,t)$$
+
+$$M(s,t) = \lambda M(a,b) + \mu M(a',b')$$
+
+Son noyau : $M(a,b) = O$ se lit sur la diagonale, $a = 0$ et $b = 0$, donc $\ker \varphi = \{(0,0)\}$ — **c'est exactement « $(A, B)$ est libre »**. Son image : par construction, c'est $V$ tout entier — **c'est exactement « $(A, B)$ est génératrice »**.
+
+Donc « $(A, B)$ est une base de $V$ » et « $\varphi$ est une bijection de $\mathbb{R}^2$ sur $V$ » sont **la même phrase** : l'injectivité vient de $\ker \varphi = \{(0,0)\}$, par l'équivalence qu'on vient de démontrer, et la surjectivité de $\mathrm{Im}\, \varphi = V$. Les deux espaces ont d'ailleurs la même dimension, $2$. C'est le geste de transport du chapitre 10 — une bijection qui respecte les lois —, joué sur une structure d'espace vectoriel au lieu d'une structure de groupe. On dira simplement que $\varphi$ est une **bijection linéaire**.
+
+### Le même mot chez les groupes : le noyau d'un morphisme
+
+Le mot « noyau » ne sert pas qu'aux espaces vectoriels. Soit $f : (E,\star) \to (E',\top)$ un morphisme de groupes — au sens du chapitre 10 : $f(x \star y) = f(x) \top f(y)$ pour tous $x, y$ de $E$ —, de neutres $e_E$ et $e_{E'}$. Son noyau est $\ker f = \{x \in E \ /\ f(x) = e_{E'}\}$. Le même mot, le même geste, dans la structure d'à côté — et l'équivalence qu'on vient de démontrer se rejoue ligne pour ligne.
+
+**Le neutre va sur le neutre.** D'une part $f(e_E) \top f(e_E) = f(e_E \star e_E)$ ; d'autre part $e_E \star e_E = e_E$. Donc
+
+$$f(e_E) \top f(e_E) = f(e_E)$$
+
+Compose les deux membres par le symétrique de $f(e_E)$ dans $E'$ : il reste $f(e_E) = e_{E'}$.
+
+**Le symétrique va sur le symétrique.** Pour $x$ de $E$ et son symétrique $x'$, on a $f(x) \top f(x') = f(x \star x')$, c'est-à-dire $f(e_E)$, c'est-à-dire $e_{E'}$. Donc $f(x')$ est le symétrique de $f(x)$ : $f(x') = \big(f(x)\big)'$.
+
+**Le noyau est un sous-groupe de $(E,\star)$** — les trois conditions du chapitre 5, sans une de plus :
+
+1. $e_E \in \ker f$, puisque $f(e_E) = e_{E'}$ ✓ ;
+2. si $f(x) = e_{E'}$ et $f(y) = e_{E'}$, alors $f(x \star y) = e_{E'} \top e_{E'}$, c'est-à-dire $e_{E'}$ ✓ ;
+3. si $f(x) = e_{E'}$, alors $f(x') = (e_{E'})'$, c'est-à-dire $e_{E'}$ ✓.
+
+**Injective si et seulement si le noyau est réduit au neutre.** Si $\ker f = \{e_E\}$ et $f(x) = f(y)$, alors $f(x \star y') = f(x) \top \big(f(y)\big)'$, qui vaut $e_{E'}$ ; donc $x \star y' \in \ker f$, c'est-à-dire $x \star y' = e_E$, et en composant à droite par $y$, $x = y$. Réciproquement, si $f$ est injective, un $x$ du noyau vérifie $f(x) = e_{E'}$ et $f(e_E) = e_{E'}$, donc $x = e_E$.
+
+**Un exemple.** Soit $f : (\mathbb{R}^*,\times) \to (\mathbb{R}^*,\times)$ définie par $f(x) = x^2$. C'est un morphisme, puisque $(xy)^2 = x^2 y^2$. Attention au neutre : celui de $(\mathbb{R}^*,\times)$ est $1$, pas $0$. Donc
+
+$$\ker f = \{x \in \mathbb{R}^* \ /\ x^2 = 1\}$$
+
+$$\{x \in \mathbb{R}^* \ /\ x^2 = 1\} = \{1,\ -1\}$$
+
+C'est un sous-groupe à deux éléments : $1$ y est, $(-1) \times (-1) = 1$ y reste, et chacun est son propre symétrique. Le noyau n'est pas réduit au neutre, donc $f$ n'est **pas injective** : $f(2) = 4$ et $f(-2) = 4$. Et $\mathrm{Im}\, f = \mathbb{R}^*_+$, qui n'est pas $\mathbb{R}^*$ : l'image n'est pas non plus l'ensemble d'arrivée tout entier.
+
+### Avant l'exercice : l'ordre des questions est un outil
+
+Trois remarques, et aucune ne donne de réponse.
+
+L'énoncé pose l'espace ambiant **avant** de poser sa question : c'est la phrase de rappel par laquelle ce chapitre a commencé.
+
+Les questions sont **ordonnées**, et cet ordre est une information. Quand un sujet demande une chose, puis une chose voisine sur **le même** ensemble, la seconde question ne repart pas de zéro. Avant de rédiger, relis ce que tu viens d'établir, et demande-toi ce qui, dans la liste des trois conditions, est déjà acquis. C'est un geste de lecture, pas un résultat ; le résultat, c'est à toi de le trouver — maintenant, sur le sujet qui suit.
+
+La suite de l'exercice sort de ce chapitre : l'énoncé enchaîne sur la stabilité pour $\times$ et sur l'anneau (chapitre 7), puis sur un isomorphisme (chapitre 10). Ce chapitre ouvre l'exercice ; il ne le ferme pas.
+
+### Exercice de type bac
+
+Les deux questions ci-dessous ouvrent un sujet d'examen national (Sciences Mathématiques, session normale 2023). Rédige-les toi-même, question par question, avant d'ouvrir le raisonnement expert : ici, on ne te demande pas de reconnaître une réponse, mais d'écrire une démonstration.
+
+[[exercise:r8-bac]]
+
+### Une variation pour ne pas mémoriser
+
+Même chaîne, un autre ensemble de matrices — et une question de plus, celle de la base, que le sujet de 2023 ne posait pas. Si tu as retenu la méthode plutôt que les nombres, celle-ci ne te résistera pas.
+
+[[exercise:r8-variation]]
+
+<!-- NOTE D'AUTEUR (content-author, 2026-10-20) — chapitre 11, construit depuis
+     docs/pipeline/propositions/maths-structures-espaces-vectoriels.md (révision (b)
+     du 2026-10-20, après la passe arithmétique), défauts du §15 pris tels qu'écrits.
+
+     Ordre des morceaux : exactement le §10.2 de la spec — accroche + pari 1
+     (cp-r8-pari-scalaire), bloc A, bloc B (critère à TROIS conditions, table
+     d'échange avec le chapitre 5, [C3] [C4], pari 2 cp-r8-pari-stabilite, [C5],
+     figure sous-espaces-plan à la réponse du pari), [C6] [C6b] [C7], bloc C
+     ([C8], [C9] en voix/test/rupture, [C9b]), bloc D ([C10a], [C10], pari 3
+     cp-r8-pari-notation, [C11], pari 4 cp-r8-pari-dimension, [C12] [C13] [C14],
+     figure echelle-dimensions-r3, raccourci admis + mise en garde sur sa
+     lecture inverse), bloc E ([C15]–[C18]), clôture §6.6, puis r8-bac et
+     r8-variation sous des titres ###. Aucun titre ## ajouté hors du titre du
+     chapitre : la leçon compte 11 chapitres.
+
+     Rédaction composant / prose (§10.3, correctif m2) : [C6], [C8], [C9b] (i)
+     et (ii), [C10], [C11], [C12], [C13], [C14], [C16] (noyau, puis image) sont
+     dans derivations.yaml ; les cinq annotations de raisonnement restent en
+     prose, juste avant leur composant.
+
+     Tous les nombres viennent du §6 (et du §12.2 pour les exercices) ; chacun a
+     été recalculé en arithmétique exacte avant écriture. Écarts au texte de la
+     spec, tous de forme : (1) l'annotation de [C8] ne renvoie plus « au
+     chapitre 2 » — le chapitre 2 (loi interne) ne résout aucun système ; (2) les
+     égalités en chaîne du §6 sont coupées en une transformation par ligne ;
+     (3) une phrase ajoutée après [C11] établit dim ℝ² = 2 et dim ℝ³ = 3, que le
+     pari 4 (option D) et le raccourci admis supposent connus ; (4) une phrase
+     ajoutée au début du bloc B dit ce qu'hérite un sous-espace (même geste
+     qu'au chapitre 5), pour que le critère ait son « pourquoi » ; (5) le
+     raccourci « se lit à l'envers neuf fois sur dix » devient « très souvent » :
+     pas de fréquence chiffrée sans mesure.
+-->

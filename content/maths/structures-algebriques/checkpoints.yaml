@@ -42,6 +42,25 @@ skill_code: maths_structures_alg
 #                                               groupe transporté sans bijectivité
 #                                               est le piège cité par l'audit.
 #                                               Sonde axiome-oublie.
+#   cp-r8-pari-scalaire     (dans R8, à     — pari n°1 du chapitre 11 « Espaces
+#                            l'accroche,       vectoriels », AVANT toute
+#                            avant toute       définition : l'ensemble F du
+#                            définition)       chapitre 5 est-il un sous-espace ?
+#                                               Sonde sous-espace-vs-sous-groupe.
+#   cp-r8-pari-stabilite    (dans R8, après — pari n°2 : X = {xy = 0} passe deux
+#                            la droite         conditions sur trois. Sonde
+#                            décalée)          sous-espace-zero-suffit.
+#   cp-r8-pari-notation     (dans R8, après — pari n°3 : dim M2(ℝ) ? Sonde
+#                            la base de V)     dimension-lue-sur-la-notation.
+#   cp-r8-pari-dimension    (dans R8, après — pari n°4 : dim Vect(u,v,w) avec
+#                            dim M2(ℝ) = 4)    w = u + v. Sonde
+#                                               dimension-compte-parametres.
+#   Les quatre sont posés AVANT la révélation qu'ils engagent ; ils viennent de
+#   docs/pipeline/propositions/maths-structures-espaces-vectoriels.md §7
+#   (révision (b) du 2026-10-20). Les huit ids de misconception du chapitre 11
+#   (M1…M8 de la spec §8) sont déclarés dans items.yaml avec les items
+#   SA-36…SA-53 ; ces checkpoints en portent six (M1, M2, M3, M4, M5, M8) plus
+#   generalisation-hative.
 #
 # CHAQUE distracteur porte un id de misconception nommé de l'inventaire de cette
 # notion (items.yaml, namespace mc.math.structures_algebriques.*). Les longueurs
@@ -50,8 +69,17 @@ skill_code: maths_structures_alg
 #
 # Boundary guard : 2ème Bac Sciences Mathématiques (SM) — lois de composition
 # interne, propriétés (commutativité, associativité, neutre, symétrique),
-# groupe, groupe commutatif, sous-groupe, anneau, corps, morphisme /
-# isomorphisme. Chapitre SM uniquement (absent de SVT / Sc. Physiques).
+# groupe, groupe commutatif, sous-groupe, anneau, anneau intègre, corps,
+# morphisme / isomorphisme, noyau d'un morphisme de groupes ; et, depuis le
+# chapitre 11 (2026-10-20), espace vectoriel réel, sous-espace vectoriel,
+# combinaison linéaire, sous-espace engendré, famille libre / génératrice,
+# base, dimension (en dimension finie), application linéaire, noyau, image.
+# HORS périmètre, par les limites du cadre (maths-sm.yaml) et les défauts de la
+# spec §15 : réduction d'endomorphismes (valeurs / vecteurs propres,
+# diagonalisation), produit scalaire abstrait, dimension infinie, espaces de
+# polynômes, somme et somme directe de sous-espaces, théorème du rang, matrice
+# d'une application linéaire, rang d'une famille. Chapitre SM uniquement
+# (absent de SVT / Sc. Physiques).
 # ──────────────────────────────────────────────────────────────────────────────
 
 checkpoints:
@@ -504,3 +532,336 @@ checkpoints:
           façon hors sujet ici : sans bijectivité, on n'a même pas encore de
           groupe transporté du tout — la question de sa commutativité ne se
           pose pas avant que le transport lui-même soit valide.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-6 | id: cp-r8-pari-scalaire | placé DANS R8 (chapitre 11), à l'accroche,
+  #        AVANT toute définition — pari n°1 de la spec §7.1. L'élève tranche
+  #        sur l'ensemble F du chapitre 5 (sous-groupe sur ℤ) : sous-espace ?
+  #        Sonde sous-espace-vs-sous-groupe (M2). La clé B et le distracteur D
+  #        partagent le verdict « Non » avec deux raisons différentes : c'est
+  #        voulu (spec §11.2, B′.1) — les options sont des énoncés complets.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r8-pari-scalaire
+    rung: "R8"
+    habilete: raisonnement
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, sous-espace, hook_commit]
+    primary_misconception: mc.math.structures_algebriques.sous-espace-vs-sous-groupe
+    item_source: original
+    lesson_placement: in_R8
+
+    stem: |
+      Au chapitre 5, on a démontré que
+      $F = \left\{ M(a,b) = \left(\begin{smallmatrix} a & -b \\ b & a \end{smallmatrix}\right) \ /\ (a,b) \in \mathbb{Z}^2 \right\}$
+      est un sous-groupe de $(M_2(\mathbb{R}),+)$. L'énoncé rappelle maintenant
+      que $(M_2(\mathbb{R}),+,\cdot)$ est un espace vectoriel réel, et demande :
+      **$F$ en est-il un sous-espace vectoriel ?** Prends position avant de
+      lire la suite.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Oui : $F$ est déjà un sous-groupe pour $+$, et c'est précisément ce
+          qu'on demande à un sous-espace vectoriel.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-vs-sous-groupe
+        feedback: |
+          Modèle détecté : « sous-espace, c'est la question du sous-groupe ».
+          Le sous-groupe ne parle que de $+$. Un sous-espace demande en plus la
+          stabilité pour la multiplication par un **réel** — et ce réel n'est
+          pas dans $F$. Ici elle échoue : $M(1,0) = I$ est dans $F$, mais
+          $\tfrac12 \cdot M(1,0)$ demanderait $a = \tfrac12$, qui n'est pas
+          entier. $F$ est un sous-groupe, pas un sous-espace.
+
+      - id: B
+        text: |
+          Non : $M(1,0)$ est dans $F$, mais $\tfrac12 \cdot M(1,0)$ demanderait
+          $a = \tfrac12$, qui n'est pas entier.
+        correct: true
+        feedback: |
+          Exact. $M(1,0)$ est l'identité, et
+          $\tfrac12 \cdot M(1,0) = \left(\begin{smallmatrix} \frac12 & 0 \\ 0 & \frac12 \end{smallmatrix}\right)$
+          ne peut s'écrire $M(a,b)$ qu'avec $a = \tfrac12$, hors de $\mathbb{Z}$.
+          Un seul couple — un réel et une matrice — suffit : $F$ n'est pas
+          stable pour la loi externe. Sous-groupe, oui ; sous-espace, non.
+
+      - id: C
+        text: |
+          Oui : $F$ contient la matrice nulle $M(0,0)$, la condition d'un
+          sous-espace est donc remplie.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-zero-suffit
+        feedback: |
+          Modèle détecté : « la matrice nulle y est, donc c'est un
+          sous-espace ». Contenir $O$ est nécessaire, pas suffisant : il faut
+          aussi rester dans l'ensemble quand on additionne et quand on
+          multiplie par un réel. Ici la multiplication par un réel fait
+          sortir de $F$ : $\tfrac12 \cdot M(1,0)$ demanderait
+          $a = \tfrac12 \notin \mathbb{Z}$. $F$ n'est pas un sous-espace.
+
+      - id: D
+        text: |
+          Non : $F$ n'est pas stable pour le produit de deux de ses matrices,
+          et un sous-espace doit l'être.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-vs-sous-groupe
+        feedback: |
+          Modèle détecté : on réclame d'un sous-espace la liste d'une autre
+          structure — ici la stabilité pour $\times$, celle d'un anneau. Le
+          produit de deux matrices n'intervient pas dans un sous-espace : seuls
+          comptent $+$ et la multiplication par un réel. Et $F$ est d'ailleurs
+          stable pour ce produit :
+          $M(a,b) \times M(c,d) = M(ac - bd,\ ad + bc)$, à coefficients
+          entiers. Le verdict « non » est juste, mais pour une autre raison :
+          $\tfrac12 \cdot M(1,0)$ sort de $F$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-7 | id: cp-r8-pari-stabilite | placé DANS R8 (chapitre 11), après le
+  #        critère à trois conditions et la droite décalée, AVANT la réponse
+  #        sur X = {xy = 0} — pari n°2 de la spec §7.2. Deux conditions sur
+  #        trois passent ; l'élève doit atteindre la troisième. Sonde
+  #        sous-espace-zero-suffit (M1). C → generalisation-hative, D → M2
+  #        (étiquettes de la révision du 2026-10-20, correctif I6).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r8-pari-stabilite
+    rung: "R8"
+    habilete: raisonnement
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, sous-espace]
+    primary_misconception: mc.math.structures_algebriques.sous-espace-zero-suffit
+    item_source: original
+    lesson_placement: in_R8
+
+    stem: |
+      Dans $\mathbb{R}^2$, on pose $X = \{(x,y) \in \mathbb{R}^2 \ /\ xy = 0\}$
+      — les points qui sont sur au moins un des deux axes. Deux des trois
+      conditions se vérifient en une ligne : $(0,0) \in X$ (non vide) ; et pour
+      tout réel $\lambda$, $(\lambda x)(\lambda y) = \lambda^2 xy = 0$, donc
+      $\lambda(x,y)$ reste dans $X$ (stable pour la loi externe).
+      **$X$ est-il un sous-espace vectoriel de $\mathbb{R}^2$ ?** Prends
+      position avant de lire la suite.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Oui : le vecteur nul y est, et la multiplication par un réel n'en fait
+          pas sortir — le critère est rempli.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-zero-suffit
+        feedback: |
+          Modèle détecté : « le vecteur nul y est (et une autre condition
+          passe), donc c'est un sous-espace ». Le critère demande les trois
+          conditions ensemble, et la stabilité pour $+$ n'a pas été vérifiée.
+          Elle échoue : $(1,0)$ et $(0,1)$ sont dans $X$, mais
+          $(1,0) + (0,1) = (1,1)$, et $1 \times 1 = 1 \neq 0$. $X$ n'est pas un
+          sous-espace.
+
+      - id: B
+        text: |
+          Non : $(1,0)$ et $(0,1)$ sont dans $X$, mais leur somme $(1,1)$ n'y
+          est pas, car $1 \times 1 = 1 \neq 0$.
+        correct: true
+        feedback: |
+          Exact. Deux conditions sur trois passent, et la troisième tombe : $X$
+          n'est pas stable pour $+$. Un seul couple suffit, et il faut le
+          chercher sur deux axes **différents** : $(1,0) + (0,1) = (1,1)$ sort
+          des deux axes. $X$ n'est pas un sous-espace de $\mathbb{R}^2$.
+
+      - id: C
+        text: |
+          Oui : la somme de deux points d'un même axe reste sur cet axe, donc
+          $X$ est stable pour l'addition.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Modèle détecté : un cas particulier généralisé. La prémisse est vraie
+          — deux points d'un même axe s'additionnent sur cet axe — mais deux
+          points de $X$ peuvent vivre sur des axes **différents** :
+          $(1,0) + (0,1) = (1,1)$, et $1 \times 1 \neq 0$. $X$ n'est pas stable
+          pour $+$, donc ce n'est pas un sous-espace.
+
+      - id: D
+        text: |
+          Oui : $X$ contient le vecteur nul et l'opposé de chacun de ses points
+          — les conditions du sous-groupe sont remplies, donc c'est un
+          sous-espace.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-vs-sous-groupe
+        feedback: |
+          Modèle détecté : la liste du sous-groupe, cochée à la place du
+          critère. Les opposés sont bien là — l'opposé d'un point d'un axe
+          reste sur cet axe — mais ce n'est pas la question : un sous-espace
+          demande la stabilité pour $+$ **et** pour la multiplication par un
+          réel. Et la prémisse est d'ailleurs fausse : $X$ n'est même pas
+          stable pour $+$, puisque $(1,0) + (0,1) = (1,1) \notin X$. Ce n'est
+          donc pas un sous-groupe non plus, et pas un sous-espace.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-8 | id: cp-r8-pari-notation | placé DANS R8 (chapitre 11), après la
+  #        base de V (dim V = 2), AVANT la réponse « dim M2(ℝ) = 4 » — pari
+  #        n°3 de la spec §7.3 (NEUF, correctif B2). Sonde
+  #        dimension-lue-sur-la-notation (M5) ; D → famille-generatrice-non-
+  #        verifiee (M8). La clé confesse une BASE (génératrice ET libre),
+  #        jamais « quatre coefficients ». Résidu accepté et écrit en spec
+  #        §7.3 : M4 (compter les lettres) atteint aussi la clé, muet sur cet
+  #        objet ; le checkpoint ne porte pas M4, rompu au pari suivant.
+  #        Clé réécrite sans le mot « aucune » de la spec (indice-absolu).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r8-pari-notation
+    rung: "R8"
+    habilete: utilisation
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, base-dimension]
+    primary_misconception: mc.math.structures_algebriques.dimension-lue-sur-la-notation
+    item_source: original
+    lesson_placement: in_R8
+
+    stem: |
+      Tu viens de compter une base de $V$ : deux matrices, donc $\dim V = 2$.
+      La question porte maintenant sur l'espace tout entier, qui contient
+      $V$. **Quelle est la dimension de $M_2(\mathbb{R})$ ?** Prends position
+      avant de lire la suite.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $2$ : c'est l'indice écrit dans $M_2$, c'est-à-dire l'ordre des
+          matrices de cet espace.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-lue-sur-la-notation
+        feedback: |
+          Modèle détecté : la dimension lue sur la notation. Le « 2 » de $M_2$
+          est l'ordre des matrices — deux lignes, deux colonnes —, pas la
+          dimension de l'espace. Une base de $M_2(\mathbb{R})$ compte quatre
+          matrices, celles qui n'ont qu'un coefficient égal à $1$ : donc
+          $\dim M_2(\mathbb{R}) = 4$.
+
+      - id: B
+        text: |
+          $4$ : quatre matrices fixes écrivent
+          $\left(\begin{smallmatrix} x & y \\ z & t \end{smallmatrix}\right)$,
+          et chacune porte une case que les trois autres ne peuvent pas fournir.
+        correct: true
+        feedback: |
+          Exact. Les quatre matrices qui n'ont qu'un coefficient égal à $1$
+          engendrent toute matrice — chaque coefficient devient un poids — et
+          elles sont libres : leur combinaison n'est nulle que si les quatre
+          poids le sont. C'est une base de quatre vecteurs :
+          $\dim M_2(\mathbb{R}) = 4$. Le « 2 » de $M_2$ est l'ordre des
+          matrices, pas la dimension.
+
+      - id: C
+        text: |
+          $2$ : $V$ est de dimension $2$ et $V \subset M_2(\mathbb{R})$ ; un
+          sous-espace et son espace ont la même dimension.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-lue-sur-la-notation
+        feedback: |
+          Modèle détecté : un sous-espace aurait la dimension de l'espace qui
+          le contient. L'espace ambiant ne donne qu'une **borne** : $V$ est de
+          dimension $2$ à l'intérieur de $M_2(\mathbb{R})$, qui est de
+          dimension $4$ — une base de $M_2(\mathbb{R})$ compte quatre
+          matrices, celles qui n'ont qu'un coefficient égal à $1$.
+
+      - id: D
+        text: |
+          $3$ : les trois matrices $I$,
+          $\left(\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix}\right)$ et
+          $\left(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}\right)$
+          suffisent à tout écrire.
+        correct: false
+        misconception: mc.math.structures_algebriques.famille-generatrice-non-verifiee
+        feedback: |
+          Modèle détecté : une famille qui « a l'air de couvrir » prise pour
+          génératrice. Écris la combinaison :
+          $\alpha I + \beta \left(\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix}\right) + \gamma \left(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}\right) = \left(\begin{smallmatrix} \alpha & \beta \\ \gamma & \alpha \end{smallmatrix}\right)$.
+          Ses deux coefficients diagonaux sont égaux, donc
+          $\left(\begin{smallmatrix} 1 & 0 \\ 0 & 2 \end{smallmatrix}\right)$
+          n'est pas atteinte : ces trois matrices n'engendrent pas
+          $M_2(\mathbb{R})$, qui est de dimension $4$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-9 | id: cp-r8-pari-dimension | placé DANS R8 (chapitre 11), après la
+  #        réponse « dim M2(ℝ) = 4 », AVANT la réponse sur G = Vect(u,v,w) —
+  #        pari n°4 de la spec §7.4. Sonde dimension-compte-parametres (M4) ;
+  #        C → famille-libre-mal-testee (M3), D → dimension-lue-sur-la-
+  #        notation (M5). Prémisse de C vraie (trois couples non colinéaires).
+  #        Option C réécrite sans le mot « aucun » de la spec (indice-absolu).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r8-pari-dimension
+    rung: "R8"
+    habilete: raisonnement
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, base-dimension]
+    primary_misconception: mc.math.structures_algebriques.dimension-compte-parametres
+    item_source: original
+    lesson_placement: in_R8
+
+    stem: |
+      Dans $\mathbb{R}^3$, on pose $u = (1,2,-1)$, $v = (2,1,1)$,
+      $w = (3,3,0)$, et $G = \mathrm{Vect}(u,v,w)$, l'ensemble de toutes les
+      combinaisons $\alpha u + \beta v + \gamma w$. Trois vecteurs, trois
+      coefficients. **Quelle est la dimension de $G$ ?** Prends position
+      avant de lire la suite.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $3$ : la famille $(u,v,w)$ engendre $G$, et elle compte trois
+          vecteurs.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-compte-parametres
+        feedback: |
+          Modèle détecté : la dimension prise pour le nombre de vecteurs
+          écrits. Une famille génératrice ne donne la dimension que si elle
+          est aussi **libre**. Ici $u + v = (3,3,0) = w$ : le troisième vecteur
+          n'apporte rien, $G = \mathrm{Vect}(u,v)$ avec $(u,v)$ libre, donc
+          $\dim G = 2$.
+
+      - id: B
+        text: |
+          $2$ : $w = u + v$, donc $w$ n'ajoute rien ; $(u,v)$ engendre $G$ et
+          est libre.
+        correct: true
+        feedback: |
+          Exact. $u + v = (3,3,0)$, c'est $w$ : toute combinaison des trois
+          s'écrit avec $u$ et $v$ seuls. Et $(u,v)$ est libre : la combinaison
+          $\alpha u + \beta v$ n'est nulle que pour $\alpha = \beta = 0$.
+          $(u,v)$ est une base de $G$, et $\dim G = 2$ — trois générateurs,
+          deux dimensions.
+
+      - id: C
+        text: |
+          $3$ : les trois vecteurs sont non nuls et deux à deux non
+          colinéaires, la famille est donc libre.
+        correct: false
+        misconception: mc.math.structures_algebriques.famille-libre-mal-testee
+        feedback: |
+          Modèle détecté : la liberté testée deux par deux. Les prémisses sont
+          vraies — pas de vecteur nul, pas de couple colinéaire — et pourtant
+          $1 \cdot u + 1 \cdot v + (-1) \cdot w = (0,0,0)$ : la famille est
+          liée. La liberté porte sur la famille entière, pas sur ses paires.
+          Ici $w = u + v$, et $\dim G = 2$.
+
+      - id: D
+        text: |
+          $3$ : $G$ est inclus dans $\mathbb{R}^3$, qui est de dimension $3$.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-lue-sur-la-notation
+        feedback: |
+          Modèle détecté : la dimension lue sur l'espace qui contient $G$.
+          $\mathbb{R}^3$ est de dimension $3$, mais un sous-espace n'en hérite
+          qu'une borne. Ici $w = u + v$, et $(u,v)$ est une base de $G$ :
+          $\dim G = 2$.

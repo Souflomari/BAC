@@ -48,14 +48,21 @@
 # préfère l'écarter de la banque pour éviter le recoupement sur la même
 # page — même décision, prise dans le même sens, sur bk-2019-n-x2 de
 # content/maths/nombres-complexes-1/bank.yaml et sur bk-2021-n-x1 de
-# content/pc/reactions-acido-basiques/bank.yaml. bk-2017-n-x1, bk-2020-n-x2,
-# bk-2022-n-x4, bk-2023-n-x5, bk-2023-r-x3, bk-2024-n-x4, bk-2024-r-x4 et
-# bk-2025-n-x4 (bk-2017 ajouté 2026-08-06, bk-2023-n/bk-2025 ajoutés
+# content/pc/reactions-acido-basiques/bank.yaml. MISE À JOUR (2026-10-20,
+# chapitre 11 « Espaces vectoriels ») : bk-2023-n-x5 est désormais jumelé
+# lui aussi, sur la même convenance d'arbitrage — ses questions 1 et 2
+# (Partie I : sous-groupe additif, puis sous-espace vectoriel) sont
+# transcrites par le sommet r8-bac (exercises.yaml, [[exercise:r8-bac]] à
+# R8), stem / reasoning / steps identiques ; le reste de l'entrée (q3 et
+# suivantes) ne recoupe aucun sommet. exercises.yaml porte désormais QUATRE
+# exercices : r-bac (2019, sourcé) et r-variation (jumeau inventé,
+# not-applicable) au chapitre 10, r8-bac (2023 q1-q2, sourcé) et
+# r8-variation (jumeau inventé, not-applicable) au chapitre 11.
+# bk-2017-n-x1, bk-2020-n-x2, bk-2022-n-x4, bk-2023-r-x3, bk-2024-n-x4,
+# bk-2024-r-x4 et bk-2025-n-x4 (bk-2017 ajouté 2026-08-06, bk-2025 ajouté
 # 2026-08-06, bk-2023-r et bk-2024-r ajoutés 2026-08-23) ne recoupent aucun
-# autre sommet : exercises.yaml de cette notion ne contient que r-bac (2019,
-# sourcé) et r-variation (jumeau inventé, anti-mémorisation, status
-# not-applicable) — vérifié par grep, aucun sourcé sur 2017, 2020, 2022,
-# 2023, 2024 ou 2025. bk-2024-n-x4 et bk-2024-r-x4 portent le MÊME label
+# autre sommet — aucun exercice sourcé sur 2017, 2020, 2022, 2023
+# rattrapage, 2024 ou 2025. bk-2024-n-x4 et bk-2024-r-x4 portent le MÊME label
 # « Exercice 4 » de la MÊME année : ce sont deux épreuves distinctes
 # (session normale et session de rattrapage), et le badge rendu les sépare
 # — « Bac 2024 · Normale » contre « Bac 2024 · Rattrapage ». Aucun
@@ -173,6 +180,16 @@
 # structure hors chapitre), sans prétendre le rattacher à un rung de cette
 # notion — à l'attention du pédagogy-architect si un pont explicite avec le
 # chapitre « espaces vectoriels » est jugé utile.
+# MISE À JOUR (2026-10-20) : CE PONT EXISTE. lesson.md porte un chapitre 11
+# « Espaces vectoriels : sous-espace, base, dimension » (le 11e titre ##,
+# code R8 ; spec docs/pipeline/propositions/maths-structures-espaces-
+# vectoriels.md), dont le critère du sous-espace est celui à TROIS conditions
+# que les notes d'étape de q2 imprimaient déjà (non vide, stable pour +,
+# stable pour ·). Le `reasoning` de q2 et ses deux notes d'étape renvoient
+# désormais au chapitre 11 au lieu d'un « chapitre antérieur du cursus ».
+# Et bk-2023-n-x5 q1-q2 est jumelé au sommet r8-bac du chapitre 11
+# (exercises.yaml), sur le précédent r-bac / bk-2019-n-x1 (note éditoriale
+# en tête de fichier). Ce qui précède décrit l'état antérieur.
 #
 # SCOPE NOTE 4 (divulgation honnête, authoring-side — TRANSPORT DE
 # STRUCTURE SUR DEUX LOIS À LA FOIS, nouveau 2026-08-06) : bk-2025-n-x4 q9
@@ -1446,7 +1463,8 @@ entries:
         logique de la lecture, pas par relecture du glyphe. Deux points hors
         du périmètre strict des rungs de cette notion, signalés en tête de
         fichier (SCOPE NOTE 3) : q2 mobilise la notion de sous-espace
-        vectoriel (chapitre antérieur, jamais enseigné dans lesson.md) ; q6
+        vectoriel — enseignée depuis le 2026-10-20 au chapitre 11 « Espaces
+        vectoriels » de lesson.md, dont q1-q2 sont le sommet r8-bac ; q6
         (« (E,+,×) n'est pas un corps ») repose sur un critère de type
         diviseurs de zéro / anneau intègre — bridgé directement via la
         définition du corps du rung R6 (multiplication par l'inverse
@@ -1487,18 +1505,18 @@ entries:
         stem: |-
           **(0,25 pt)** Montrer que $E$ est un sous-espace vectoriel de $(M_2(\mathbb{R}), +, \cdot)$.
         reasoning: |-
-          Montrer que $E$ est un sous-espace vectoriel de $(M_2(\mathbb{R}),+,\cdot)$ mobilise une notion d'un chapitre antérieur du cursus (les espaces vectoriels), rappelée en tête d'énoncé — pas un outil neuf de ce chapitre sur les structures algébriques. Le geste reste néanmoins très proche de la stabilité du chapitre 2 : $E$ est non vide (il contient $O$, question précédente), stable pour $+$ (déjà établi), et il reste seulement à vérifier la stabilité pour la multiplication par un réel $\lambda$.
+          Montrer que $E$ est un sous-espace vectoriel de $(M_2(\mathbb{R}),+,\cdot)$, c'est appliquer le critère du sous-espace du chapitre 11, à trois conditions — l'espace ambiant étant donné par le rappel en tête d'énoncé. Le geste reste très proche de la stabilité du chapitre 2 : $E$ est non vide (il contient $O$, question précédente), stable pour $+$ (déjà établi), et il reste seulement à vérifier la stabilité pour la multiplication par un réel $\lambda$.
 
           Le calcul est direct : multiplier chaque coefficient de $M(x,y)$ par $\lambda$ revient à multiplier $x$ et $y$ par $\lambda$ dans la même formule, donc le résultat reste de la forme $M(\cdot,\cdot)$.
         steps:
           - math: 'E \neq \varnothing \quad (O = M(0,0) \in E,\ \text{q1}), \qquad E \ \text{stable pour} \ + \quad (\text{q1})'
-            note: "Deux des trois conditions d'un sous-espace vectoriel, déjà établies."
+            note: "Deux des trois conditions d'un sous-espace vectoriel (critère du chapitre 11), déjà établies."
           - math: '\lambda \cdot M(x,y) = \lambda\begin{pmatrix} x+y & y \\ 2y & x-y \end{pmatrix} = \begin{pmatrix} \lambda(x+y) & \lambda y \\ 2\lambda y & \lambda(x-y) \end{pmatrix}'
             note: "Multiplication de chaque coefficient de M(x,y) par le réel λ."
           - math: '= \begin{pmatrix} \lambda x+\lambda y & \lambda y \\ 2\lambda y & \lambda x-\lambda y \end{pmatrix} = M(\lambda x,\ \lambda y) \in E'
             note: "Le résultat garde exactement la forme M(·,·) : E est stable pour la multiplication par un scalaire."
           - math: 'E \ \text{est un sous-espace vectoriel de} \ (M_2(\mathbb{R}),+,\cdot)'
-            note: "Non vide, stable pour + et pour · : les trois conditions sont réunies."
+            note: "Non vide, stable pour + et pour · : les trois conditions du critère du chapitre 11 sont réunies."
       - id: q3
         part: "La multiplication sur $E$ : un anneau commutatif et unitaire"
         stem: |-

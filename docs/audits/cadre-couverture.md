@@ -84,12 +84,17 @@ leçon lues ; « Fix » donne le correctif minimal.
   - Déjà au cadre : `maths-sm.yaml:291`, `:453` (« LACUNE PRIORITAIRE »).
   - **Fix :** un chapitre R8 (sous-espace par le critère, famille libre ou génératrice, base et
     dimension en dimension 2 ou 3 sur M₂(ℝ) et ℝ²) et au moins 3 items.
+  - **PAYÉ le 2026-10-20 :** chapitre 11 « Espaces vectoriels : sous-espace, base, dimension »
+    (`## R8`), spec `docs/pipeline/propositions/maths-structures-espaces-vectoriels.md`, items
+    SA-36…SA-53 (huit modèles d'erreur neufs), exercices `r8-bac` et `r8-variation`.
 - **ABSENT (partiel)** : `maths-sm.yaml:285` « Étudier un homomorphisme (noyau, image,
   propriétés) » (`derived`).
   - Lu : R7 `lesson.md:563-680` (isomorphisme, transport de structure, image du neutre). SA-29 et
     SA-30 couvrent l'image ; « noyau » ou « ker » → 0.
   - **Fix :** un paragraphe « noyau d'un morphisme de groupes = sous-groupe, et morphisme injectif
     ⇔ noyau réduit au neutre », avec un exemple et un item.
+  - **PAYÉ le 2026-10-20 :** section « Le même mot chez les groupes : le noyau d'un morphisme » du
+    chapitre 11 (exemple x ↦ x²), item SA-53.
 - **ENSEIGNÉ-NON-TESTÉ (partiel)** : `maths-sm.yaml:280` « Groupe, sous-groupe… » et `:284`
   « …un groupe / sous-groupe ».
   - Lu : section `## Sous-groupe` (`lesson.md:267-363`), qui porte un exemple travaillé dans
