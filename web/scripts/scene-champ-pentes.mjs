@@ -297,7 +297,17 @@ const zonesEtiquettes = (boites, P = null) => boites.filter((b) => b.nom?.starts
 });
 const sousEtiquette = (c, R, zones) => zones.some((z) => c.x + R > z.x0 && c.x - R < z.x1 && c.y + R > z.y0 && c.y - R < z.y1);
 /** Le filet de P : la direction de P vers le centre de son étiquette, à écarter de la mesure du segment en P. */
-const versEtiquetteP = (boites) => { const b = boites.find((x) => x.nom === "nom-P"); return b ? { x: (b.x0 + b.x1) / 2, y: (b.y0 + b.y1) / 2 } : null; };
+// Où FINIT le filet de P : au point de la boîte le plus proche de P — c'est ce que trace le placeur
+// (`filetDe`, Plateau.tsx : P rabattu dans la boîte), pas le centre de l'étiquette. Viser le centre
+// (jusqu'au 2026-10-21) tournait le coin d'exclusion de 16° à côté du filet pour une étiquette large
+// (« P(0 ; −3) », 75 px) : le filet entrait dans l'ajustement du segment et le penchait vers lui —
+// 70,4° pour 71,6° avant Grille, 69,6° après (encre plus sombre, filet plus lourd).
+const versEtiquetteP = (boites, p) => {
+  const b = boites.find((x) => x.nom === "nom-P");
+  if (!b) return null;
+  if (!p) return { x: (b.x0 + b.x1) / 2, y: (b.y0 + b.y1) / 2 };
+  return { x: Math.max(b.x0, Math.min(p.x, b.x1)), y: Math.max(b.y0, Math.min(p.y, b.y1)) };
+};
 
 /**
  * Les SEGMENTS DU CHAMP, lus aux pixels autour de chaque point entier (px CSS) : l'angle (direction
@@ -845,7 +855,7 @@ if (pret) {
       await nombres(`étape 1, P en ${POINTS[p].join(" ; ")}`, "-1", "0", p, "pente");
       await classer();
       const exclus = await boitesTexte();
-      const s = (await segmentsLus([px(POINTS[p])], L22 / 2 + 2, exclus, E0.o, panneau, [{ ...px(POINTS[p]), r: ANNEAU, vers: versEtiquetteP(exclus) }]))[0];
+      const s = (await segmentsLus([px(POINTS[p])], L22 / 2 + 2, exclus, E0.o, panneau, [{ ...px(POINTS[p]), r: ANNEAU, vers: versEtiquetteP(exclus, px(POINTS[p])) }]))[0];
       const att = (Math.atan(penteF("-1", "0", POINTS[p][1])) * 180) / Math.PI;
       const autres = (await segmentsLus(centresDuChamp(E0, null, [POINTS[p]]).map((c) => ({ x: c.x, y: c.y })), 13, exclus, E0.o)).filter((x) => x.angle !== null && x.n >= 10).length;
       juger("segment-a-la-bonne-pente", s.angle !== null && ecartAngle(s.angle, att) <= 1.5 && autres === 0, `étape 1, P en ${POINTS[p].join(" ; ")} : le segment en P ${s.angle === null ? "ABSENT" : `à ${s.angle.toFixed(1)}° (attendu ${att.toFixed(1)}°)`}, ${autres} autre(s) segment(s)`);
