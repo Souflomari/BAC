@@ -441,14 +441,20 @@ function NavPrincipale() {
     { href: "/examens", label: "Examens blancs", actif: chemin.startsWith("/examens") },
   ];
   return (
-    <nav aria-label="Sections" className="hidden h-full flex-1 items-stretch gap-1 pl-8 bp-expanded:flex">
+    // Deux contraintes mesurées par dom-truth (CI 2026-10-21) : une commande
+    // du header plus haute que 48 px se lit comme un REPLI — d'où des liens de
+    // 44 px (h-11), centrés, et non étirés sur les 56 px de la barre ; et à
+    // 200 % de texte (SC 1.4.4) les deux liens poussaient la page de 85 px —
+    // d'où `min-w-0` + `overflow-x-auto` : la bande se resserre et DÉFILE,
+    // rien n'est coupé ni perdu, et à taille normale elle ne défile jamais.
+    <nav aria-label="Sections" className="hidden h-full min-w-0 flex-1 items-center gap-1 overflow-x-auto pl-8 bp-expanded:flex">
       {liens.map((l) => (
         <Link
           key={l.href}
           href={l.href}
           aria-current={l.actif ? "page" : undefined}
           className={cn(
-            "flex items-center border-b-2 px-3 text-body font-medium no-underline",
+            "flex h-11 shrink-0 items-center whitespace-nowrap border-b-2 px-3 text-body font-medium no-underline",
             "transition-colors duration-micro ease-enter focus-ring",
             l.actif ? "border-signal text-primary" : "border-transparent text-secondary hover:text-primary",
           )}

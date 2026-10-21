@@ -12,20 +12,28 @@
  */
 
 import { useEffect, useRef } from "react";
+import { useHydrated } from "@/lib/useHydrated";
 import { monterPilote } from "./logarithme-moteur";
 
 export function LogarithmePilote() {
   const racine = useRef<HTMLDivElement>(null);
+  // ADR 0032 : servies par le serveur, les commandes restent `disabled` +
+  // `aria-busy` jusqu'à ce que React ait la main. Le moteur ne se monte
+  // qu'APRÈS ce rendu : c'est lui qui pose ensuite l'état réel des boutons
+  // (« Retour » inerte à l'étape 1), et React ne repasse plus dessus.
+  const pret = useHydrated();
 
   useEffect(() => {
     const el = racine.current;
-    if (!el) return;
+    if (!el || !pret) return;
     const demonter = monterPilote(el);
     return () => demonter?.();
-  }, []);
+  }, [pret]);
+
+  const attente = pret ? {} : { disabled: true, "aria-busy": true as const };
 
   return (
-    <div ref={racine} className="pilote" data-pilote="logarithme">
+    <div ref={racine} className="pilote" data-pilote="logarithme" aria-busy={pret ? undefined : true}>
       <div className="pilote-barre">
         <div className="pilote-titre">
           <span className="pilote-matiere">Maths · 2ᵉ Bac</span>
@@ -34,10 +42,10 @@ export function LogarithmePilote() {
         </div>
         <nav className="beats" id="beats" aria-label="Parties de la leçon" />
         <div className="pilote-outils">
-          <button type="button" className="tbtn" id="voice" aria-pressed="false">
+          <button type="button" className="tbtn" id="voice" aria-pressed="false" {...attente}>
             Voix
           </button>
-          <button type="button" className="tbtn" id="why">
+          <button type="button" className="tbtn" id="why" {...attente}>
             Pourquoi ce format&#8239;?
           </button>
         </div>
@@ -61,10 +69,10 @@ export function LogarithmePilote() {
           <div className="kicker" id="kicker" />
           <div className="body" id="body" aria-live="polite" />
           <div className="nav">
-            <button type="button" id="prev" className="ghost">
+            <button type="button" id="prev" className="ghost" {...attente}>
               ← Retour
             </button>
-            <button type="button" id="next" className="primary">
+            <button type="button" id="next" className="primary" {...attente}>
               Suivant →
             </button>
           </div>
@@ -96,7 +104,7 @@ export function LogarithmePilote() {
         </ul>
         <p className="small">Leçon pilote : elle sert à valider le format avant de l’étendre aux autres notions.</p>
         <form method="dialog">
-          <button type="submit" className="tbtn">
+          <button type="submit" className="tbtn" {...attente}>
             Fermer
           </button>
         </form>
