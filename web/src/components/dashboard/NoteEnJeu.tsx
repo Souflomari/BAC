@@ -71,8 +71,8 @@ export function NoteEnJeu({ className }: { className?: string }) {
                   aria-busy={!hydrated || undefined}
                   className="flex min-h-touch w-full flex-col items-start gap-1 px-4 py-4 text-left state-layer focus-ring hover:bg-surface-container-low"
                 >
-                  <span className="font-display text-h3 font-bold text-primary">{f.short}</span>
-                  <span className="text-caption text-secondary">{f.name}</span>
+                  <span className="max-w-full font-display text-h3 font-bold text-primary">{f.short}</span>
+                  <span className="max-w-full text-caption text-secondary">{f.name}</span>
                 </button>
               </li>
             ))}

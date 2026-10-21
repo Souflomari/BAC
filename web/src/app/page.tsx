@@ -56,7 +56,7 @@ export default function HomePage() {
 
         <div className="min-w-0 bp-large:col-span-8">
           <header className="mb-6 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-            <h1 className="font-display text-display font-bold text-primary">Ta session</h1>
+            <h1 className="min-w-0 font-display text-display font-bold text-primary">Ta session</h1>
             <p className="text-lead text-secondary">Deux heures calmes, une notion à fond.</p>
           </header>
           <SessionCard notions={notions} />

@@ -37,14 +37,18 @@ function LigneEpreuve({ ep }: { ep: Epreuve }) {
         href={`/examens/${ep.id}`}
         data-epreuve={ep.id}
         className={cn(
-          "grid min-h-touch grid-cols-[4.5rem_minmax(0,1fr)] items-baseline gap-x-4 py-3",
+          // Flex à retour, pas une grille à deux pistes : à 200 % de texte
+          // sur 320 px, « Rattrapage » ne tient plus à côté de l'année et
+          // débordait de 51 px. La base en rem (8rem) ne fait passer le
+          // libellé sous l'année QUE quand le texte est agrandi.
+          "flex min-h-touch flex-wrap items-baseline gap-x-4 py-3",
           "state-layer focus-ring"
         )}
       >
-        <span className="font-display text-h2 font-bold leading-none text-primary wdth-62 tnum">
+        <span className="w-[4.5rem] shrink-0 font-display text-h2 font-bold leading-none text-primary wdth-62 tnum">
           {ep.year}
         </span>
-        <span className="min-w-0">
+        <span className="min-w-0 flex-1 basis-32">
           <span className="flex flex-wrap items-baseline gap-x-2">
             <span className="text-body font-semibold text-primary">
               {ep.session === "normale" ? "Session normale" : "Rattrapage"}
