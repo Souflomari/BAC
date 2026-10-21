@@ -141,3 +141,16 @@
     border-top-width: 1px;
   }
 }
+
+/* ── Les scènes manipulables gardent leur largeur VÉRIFIÉE ──────────────────
+   Toute la colonne de contenu (943 px à 1 280) élargissait le plateau des
+   scènes de 482 à 554 px, et le plan complexe passait alors dans un mode
+   d'affichage que sa porte n'a jamais mesuré (graduation à chaque unité,
+   vecteurs u et v) : 280 manquements sur 646 en CI (2026-10-21). Les quinze
+   portes de scène sont calibrées sur un panneau de 823 px (DÉCISIONS §25.14,
+   plateau de 482 px de 1 280 à 1 920) ; on garde ce panneau, au fer à gauche
+   comme la prose. Agrandir les scènes est un chantier à part : chaque porte
+   devra être relancée — et rendue rouge — à la nouvelle largeur. */
+[data-grille-notion] section[data-scene] {
+  max-width: 823px;
+}
