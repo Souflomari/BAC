@@ -301,7 +301,11 @@ const classer = (q = panneau) => q.evaluate((el, accent) => {
     const c = chroma(d[i], d[i + 1], d[i + 2]).map((x, j) => x - cf[j]), nc = Math.hypot(...c);
     const l = 0.2126 * d[i] + 0.7152 * d[i + 1] + 0.0722 * d[i + 2];
     const cos = nc > 0 ? (c[0] * ca[0] + c[1] * ca[1] + c[2] * ca[2]) / (nc * na) : 0;
-    if (nc > 12 && cos > 0.85) { cls[k] = 1; accentN++; }
+    // Seuil RELATIF à la saturation de l'accent (refonte Grille, 2026-10-21) : 12 fixe valait
+    // ≈ 15 % d'opacité pour le sarcelle (|chroma| ≈ 80), mais ≈ 7 % pour le rouge signal
+    // (|chroma| ≈ 175) — les franges lissées de l'arc passaient pour sa « pointe ». 0,15 × na
+    // redonne 12 au sarcelle (inchangé) et le même 15 % à tout accent plus saturé.
+    if (nc > Math.max(12, 0.15 * na) && cos > 0.85) { cls[k] = 1; accentN++; }
     else if (nc < 25 && Math.abs(l - lf) > 60) cls[k] = 2;
     if (nc > 20 && cos < 0.6) horsPalette++;
   }
