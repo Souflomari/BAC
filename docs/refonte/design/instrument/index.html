@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direction Instrument</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300..800;1,400&family=Chivo+Mono:wght@400;500;600&display=swap">
+<style>
+*{box-sizing:border-box}
+:root{
+  color-scheme:dark;
+  --bg:#0C0E11;--s1:#13161B;--s2:#191D23;--s3:#20252D;--line:#272C35;--line2:#343B46;
+  --ink:#E8EBEF;--ink2:#B7BEC8;--dim:#858E9B;
+  --amber:#F2B544;--amber-s:rgba(242,181,68,.16);--cyan:#5EC4DF;--cyan-s:rgba(94,196,223,.16);
+  --rose:#F28392;--rose-s:rgba(242,131,146,.15);--green:#6FD3A6;--green-s:rgba(111,211,166,.14);
+  --on-amber:#1A1305;
+  --grid:rgba(255,255,255,.035);
+  --sans:"Chivo",system-ui,sans-serif;--mono:"Chivo Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
+  color-scheme:light;
+  --bg:#EDEFF2;--s1:#FFFFFF;--s2:#F6F7F9;--s3:#ECEEF1;--line:#DADEE4;--line2:#C6CCD5;
+  --ink:#101317;--ink2:#3B424D;--dim:#5D6572;
+  --amber:#9A5A00;--amber-s:#FFF0D6;--cyan:#0B7290;--cyan-s:#E1F4F9;--rose:#B32034;--rose-s:#FDE8EB;--green:#13744A;--green-s:#E2F4EB;
+  --on-amber:#FFFFFF;--grid:rgba(16,19,23,.05);
+}}
+:root[data-theme="light"]{
+  color-scheme:light;
+  --bg:#EDEFF2;--s1:#FFFFFF;--s2:#F6F7F9;--s3:#ECEEF1;--line:#DADEE4;--line2:#C6CCD5;
+  --ink:#101317;--ink2:#3B424D;--dim:#5D6572;
+  --amber:#9A5A00;--amber-s:#FFF0D6;--cyan:#0B7290;--cyan-s:#E1F4F9;--rose:#B32034;--rose-s:#FDE8EB;--green:#13744A;--green-s:#E2F4EB;
+  --on-amber:#FFFFFF;--grid:rgba(16,19,23,.05);
+}
+html,body{margin:0;min-height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.mono{font-family:var(--mono)}
+.lbl{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.screen{display:none;min-height:100vh}
+.screen.on{display:grid;grid-template-rows:52px 1fr;min-height:calc(100vh - 40px)}
+body{padding-bottom:40px}
+/* barre d'app */
+.bar{display:flex;align-items:center;gap:28px;padding:0 28px;border-bottom:1px solid var(--line);background:var(--s1)}
+.word{font:600 15px var(--mono);letter-spacing:-.01em}
+.word b{color:var(--amber);font-weight:600}
+.nav{display:flex;gap:4px;height:100%}
+.nav a{display:flex;align-items:center;padding:0 12px;color:var(--dim);text-decoration:none;font-size:14px;border-bottom:2px solid transparent}
+.nav a.on{color:var(--ink);border-bottom-color:var(--amber)}
+.bar .sp{flex:1}
+.who{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--ink2)}
+.who .count{font:500 12px var(--mono);color:var(--amber);border:1px solid var(--line2);padding:5px 8px}
+/* boutons */
+.btn{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 18px;border:1px solid var(--line2);background:transparent;cursor:pointer;font-weight:600;font-size:15px;border-radius:2px}
+.btn.pri{background:var(--amber);border-color:var(--amber);color:var(--on-amber)}
+.btn[disabled]{opacity:.38;cursor:default}
+.kbd{font:500 11px var(--mono);border:1px solid var(--line2);padding:2px 6px;color:var(--dim);border-radius:2px}
+/* sélecteur de maquette (hors produit) */
+.mock{position:fixed;left:0;right:0;bottom:0;height:40px;z-index:50;display:flex;align-items:stretch;justify-content:flex-end;border-top:1px dashed var(--line2);background:var(--bg);font:12px var(--mono)}
+.mock::before{content:"Maquette · direction Instrument — hors produit";margin-right:auto;align-self:center;padding-left:16px;color:var(--dim)}
+.mock a,.mock button{display:flex;align-items:center;padding:0 14px;color:var(--ink2);text-decoration:none;border:0;background:none;cursor:pointer;font:12px var(--mono)}
+.mock a+a,.mock button{border-left:1px solid var(--line2)}
+.mock a.on{background:var(--ink);color:var(--bg)}
+@media (max-width:900px){.bar{gap:12px;padding:0 16px;overflow:hidden}.nav{display:none}}
+</style>
+</head>
+<body>
+<style>
+/* ---------- accueil ---------- */
+.home{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:1px;background:var(--line);min-height:0}
+.home>section{background:var(--bg);padding:28px 32px;min-width:0}
+.h1{font-size:30px;font-weight:600;letter-spacing:-.015em;margin:6px 0 4px}
+.sub{color:var(--ink2);margin:0}
+.ses-bar{display:flex;height:10px;margin:26px 0 10px;gap:3px}
+.ses-bar i{display:block;height:100%}
+.ses-scale{display:flex;justify-content:space-between;font:500 11px var(--mono);color:var(--dim)}
+.steps{list-style:none;margin:22px 0 0;padding:0;border-top:1px solid var(--line)}
+.steps li{display:grid;grid-template-columns:44px 132px minmax(0,1fr) 72px;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.steps .n{font:500 13px var(--mono);color:var(--dim)}
+.steps .t{font-size:17px;font-weight:600}
+.steps .d{font-size:14px;color:var(--ink2);margin-top:2px}
+.steps .min{font:500 14px var(--mono);text-align:right;color:var(--ink2)}
+.tag{display:inline-flex;align-items:center;gap:8px;font:500 11px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase}
+.tag::before{content:"";width:8px;height:8px;background:currentColor}
+.c-amber{color:var(--amber)}.c-cyan{color:var(--cyan)}.c-rose{color:var(--rose)}.c-green{color:var(--green)}
+.go{display:flex;align-items:center;gap:16px;margin-top:22px}
+.go .note{font-size:13px;color:var(--dim)}
+.weak{margin-top:34px}
+.weak h3,.side h3{font-size:15px;font-weight:600;margin:0 0 4px}
+.weak table{width:100%;border-collapse:collapse;margin-top:12px}
+.weak td{padding:12px 0;border-top:1px solid var(--line);vertical-align:middle}
+.weak td.err{font:500 13px var(--mono);color:var(--rose);width:88px}
+.weak td.a{text-align:right;width:170px}
+.weak .x{font-size:15px}
+.weak .why{font-size:13px;color:var(--dim)}
+.link{color:var(--cyan);font-size:14px;font-weight:600;text-decoration:none;border-bottom:1px solid currentColor}
+.side{display:flex;flex-direction:column;gap:30px}
+.big{font:600 64px/0.9 var(--mono);letter-spacing:-.04em}
+.big small{font-size:18px;letter-spacing:0;color:var(--dim);margin-left:8px}
+.meter{display:grid;grid-template-columns:110px minmax(0,1fr) 54px;gap:12px;align-items:center;font-size:14px;padding:7px 0}
+.meter .bar2{position:relative;height:18px;background:var(--s3)}
+.meter .bar2 i{position:absolute;inset:0 auto 0 0;background:var(--ink2)}
+.meter .bar2 b{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(135deg,var(--rose) 0 2px,transparent 2px 6px);opacity:.75}
+.meter .pts{font:600 14px var(--mono);text-align:right;color:var(--rose)}
+.meter .coef{font:500 11px var(--mono);color:var(--dim);display:block}
+.legend{display:flex;gap:18px;font-size:12px;color:var(--dim);margin-top:8px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:12px;height:10px;display:inline-block}
+.dom{display:flex;height:56px;gap:3px;margin-top:14px}
+.dom>div{position:relative;background:var(--s3);overflow:hidden}
+.dom>div i{position:absolute;left:0;right:0;bottom:0;background:var(--cyan-s);border-top:2px solid var(--cyan)}
+.dom>div span{position:absolute;left:10px;top:8px;font-size:12px;font-weight:600;line-height:1.25}
+.dom>div em{position:absolute;right:10px;bottom:8px;font:600 13px var(--mono);font-style:normal}
+.domk{display:flex;gap:3px;margin-top:6px;font:500 11px var(--mono);color:var(--dim)}
+.domk>div{text-align:left}
+</style>
+<div class="screen" id="s-accueil">
+  <header class="bar">
+    <div class="word">bac<b>/</b>sm-a</div>
+    <nav class="nav" aria-label="Navigation principale"><a class="on" href="#accueil">Aujourd’hui</a><a href="#lecon">Matières</a><a href="#examen">Examens blancs</a><a href="#systeme">Progrès</a></nav>
+    <div class="sp"></div>
+    <div class="who"><span class="count">examen national ≈ 33 sem.</span><span>Salma · 2ème Bac SM-A</span></div>
+  </header>
+  <main class="home">
+    <section>
+      <div class="lbl">Mardi 21 octobre · séance du jour</div>
+      <h1 class="h1">45 minutes, quatre gestes.</h1>
+      <p class="sub">Construite à partir de tes erreurs de la semaine et du poids de chaque chapitre au bac.</p>
+      <div class="ses-bar" aria-hidden="true"><i style="flex:5;background:var(--green)"></i><i style="flex:12;background:var(--amber)"></i><i style="flex:15;background:var(--cyan)"></i><i style="flex:13;background:var(--rose)"></i></div>
+      <div class="ses-scale"><span>0 min</span><span>15</span><span>30</span><span>45 min</span></div>
+      <ol class="steps">
+        <li><span class="n">01</span><span class="tag c-green">Rappel</span><div><div class="t">4 questions sur la dérivation</div><div class="d">Ce que tu as vu il y a 9 jours, juste avant de l’oublier.</div></div><span class="min">5 min</span></li>
+        <li><span class="n">02</span><span class="tag c-amber">Leçon</span><div><div class="t">Fonction logarithme — partie 5 « L’aire sous 1/x »</div><div class="d">Étapes 16 à 24 sur 34. Tu t’étais arrêtée sur la règle à calcul.</div></div><span class="min">12 min</span></li>
+        <li><span class="n">03</span><span class="tag c-cyan">Exercices ciblés</span><div><div class="t">8 exercices sur « ln d’une somme »</div><div class="d">Générés pour toi, du plus simple au niveau bac.</div></div><span class="min">15 min</span></li>
+        <li><span class="n">04</span><span class="tag c-rose">Type bac</span><div><div class="t">Étude de fonction avec ln, corrigé pas à pas</div><div class="d">Au format de l’exercice 1 du sujet national.</div></div><span class="min">13 min</span></li>
+      </ol>
+      <div class="go"><button class="btn pri">Commencer la séance <span aria-hidden="true">→</span></button><span class="note">Tu peux t’arrêter après n’importe quel geste : rien n’est perdu.</span></div>
+      <div class="weak">
+        <h3>Erreurs qui reviennent</h3>
+        <table>
+          <tr><td class="err">3 ×</td><td><div class="x">ln(a + b) traité comme ln a + ln b</div><div class="why">Cette semaine. ln transforme les produits, pas les sommes.</div></td><td class="a"><a class="link" href="#">8 exercices prêts</a></td></tr>
+          <tr><td class="err">2 ×</td><td><div class="x">Primitive de u′/u : valeur absolue oubliée</div><div class="why">ln |u|, pas ln u, dès que u peut être négative.</div></td><td class="a"><a class="link" href="#">6 exercices prêts</a></td></tr>
+          <tr><td class="err">2 ×</td><td><div class="x">Récurrence : hérédité non rédigée</div><div class="why">Le barème compte l’hérédité à part : c’est la moitié des points.</div></td><td class="a"><a class="link" href="#">5 exercices prêts</a></td></tr>
+        </table>
+      </div>
+    </section>
+    <section class="side">
+      <div>
+        <div class="lbl">Examen national · juin 2027</div>
+        <div class="big" style="margin-top:12px">33<small>semaines</small></div>
+      </div>
+      <div>
+        <h3>Où se perdent tes points</h3>
+        <p class="sub" style="font-size:13px">Coefficient × ce qu’il te reste à maîtriser. Le plus long trait hachuré est la priorité.</p>
+        <div style="margin-top:12px">
+          <div class="meter"><span>Maths<span class="coef">coef 9 · 58 %</span></span><span class="bar2"><i style="width:58%"></i><b style="left:58%;width:42%"></b></span><span class="pts">3,8</span></div>
+          <div class="meter"><span>Physique-Chimie<span class="coef">coef 7 · 46 %</span></span><span class="bar2" style="width:77.8%"><i style="width:46%"></i><b style="left:46%;width:54%"></b></span><span class="pts">3,8</span></div>
+          <div class="meter"><span>SVT<span class="coef">coef 3 · 31 %</span></span><span class="bar2" style="width:33.3%"><i style="width:31%"></i><b style="left:31%;width:69%"></b></span><span class="pts">2,1</span></div>
+          <div class="meter"><span>Philosophie<span class="coef">coef 2 · 40 %</span></span><span class="bar2" style="width:22.2%"><i style="width:40%"></i><b style="left:40%;width:60%"></b></span><span class="pts">1,2</span></div>
+          <div class="meter"><span>Anglais<span class="coef">coef 2 · 62 %</span></span><span class="bar2" style="width:22.2%"><i style="width:62%"></i><b style="left:62%;width:38%"></b></span><span class="pts">0,8</span></div>
+        </div>
+        <div class="legend"><span><i style="background:var(--ink2)"></i>maîtrisé</span><span><i style="background:repeating-linear-gradient(135deg,var(--rose) 0 2px,transparent 2px 6px)"></i>à gagner</span><span>longueur = coefficient</span></div>
+      </div>
+      <div>
+        <h3>Maths SM — poids officiels du cadre 2025</h3>
+        <p class="sub" style="font-size:13px">Largeur = part de l’épreuve. Hauteur colorée = ta maîtrise.</p>
+        <div class="dom">
+          <div style="flex:50"><i style="height:61%"></i><span>Analyse</span><em>61 %</em></div>
+          <div style="flex:35"><i style="height:52%"></i><span>Complexes<br>+ structures</span><em>52 %</em></div>
+          <div style="flex:15"><i style="height:66%"></i><span>Arith.<br>+ proba</span><em>66 %</em></div>
+        </div>
+        <div class="domk"><div style="flex:50">50 % · 3,9 pts perdus /20</div><div style="flex:35">35 % · 3,4</div><div style="flex:15">15 % · 1,0</div></div>
+      </div>
+    </section>
+  </main>
+</div>
+<style>
+/* ---------- leçon ---------- */
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) 460px;min-height:0}
+.stage{position:relative;background:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:40px 40px;display:flex;flex-direction:column;min-width:0}
+.stage-top{display:flex;align-items:center;gap:18px;padding:16px 24px}
+.parts{display:flex;gap:4px;flex:1;min-width:0}
+.parts div{flex:var(--n);min-width:0}
+.parts span{display:block;font:500 10.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:7px}
+.parts div.on span{color:var(--amber)}
+.parts i{display:block;height:3px;background:var(--line2)}
+.parts i b{display:block;height:100%;background:var(--amber)}
+.stage svg{flex:1;width:100%;min-height:0;display:block}
+.stage-foot{display:flex;justify-content:space-between;padding:10px 24px 14px;font:500 11px var(--mono);color:var(--dim)}
+.sv-ink{stroke:var(--ink)}.sv-dim{stroke:var(--dim)}.sv-t{fill:var(--dim);font:15px var(--mono)}
+.sv-lab{fill:var(--ink);font:italic 600 21px var(--sans)}
+.fa{fill:var(--amber-s);stroke:var(--amber);stroke-width:1.5}.fb{fill:var(--cyan-s);stroke:var(--cyan);stroke-width:1.5}
+.script{background:var(--s1);border-left:1px solid var(--line);display:flex;flex-direction:column;padding:28px 32px 22px;min-height:0}
+.step-k{display:flex;justify-content:space-between;align-items:baseline}
+.say{font-size:22px;line-height:1.5;margin:22px 0 26px;font-weight:400}
+.pari .lbl{margin-bottom:12px;display:block}
+.opt{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:center;width:100%;text-align:left;min-height:56px;padding:12px 14px;margin-bottom:8px;border:1px solid var(--line2);background:var(--s2);cursor:pointer;font-size:17px;border-radius:2px}
+.opt:hover{border-color:var(--ink2)}
+.opt .k{font:600 12px var(--mono);color:var(--dim);border:1px solid var(--line2);height:24px;display:grid;place-items:center}
+.hint{font-size:13px;color:var(--dim);margin-top:6px}
+.navl{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:18px;border-top:1px solid var(--line)}
+</style>
+<div class="screen" id="s-lecon">
+  <header class="bar">
+    <div class="word">bac<b>/</b>sm-a</div>
+    <nav class="nav" aria-label="Navigation principale"><a href="#accueil">Aujourd’hui</a><a class="on" href="#lecon">Matières</a><a href="#examen">Examens blancs</a><a href="#systeme">Progrès</a></nav>
+    <div class="sp"></div>
+    <div class="who"><span>Maths · Fonction logarithme népérien</span><span class="count">séance · 2 / 4</span></div>
+  </header>
+  <main class="lesson">
+    <section class="stage" aria-label="Scène">
+      <div class="stage-top">
+        <div class="parts">
+          <div style="--n:4"><span>Le problème</span><i><b style="width:100%"></b></i></div>
+          <div style="--n:4"><span>La table</span><i><b style="width:100%"></b></i></div>
+          <div style="--n:5"><span>Les trous</span><i><b style="width:100%"></b></i></div>
+          <div style="--n:3"><span>La règle</span><i><b style="width:100%"></b></i></div>
+          <div class="on" style="--n:9"><span>L’aire</span><i><b style="width:33%"></b></i></div>
+          <div style="--n:5"><span>Ce que le bac appelle ln</span><i><b style="width:0"></b></i></div>
+          <div style="--n:4"><span>À toi</span><i><b style="width:0"></b></i></div>
+        </div>
+      </div>
+      <svg id="hyp" viewBox="0 0 1000 660" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Courbe de y = 1/x avec l’aire de 1 à 2 et l’aire de 2 à 4"></svg>
+      <div class="stage-foot"><span>étape 19 / 34</span><span>← → avancer · 1 2 3 parier</span></div>
+    </section>
+    <aside class="script">
+      <div class="step-k"><span class="lbl" style="color:var(--amber)">05 — L’aire</span><span class="lbl">19 / 34</span></div>
+      <p class="say">Voici l’aire entre 2 et 4 : deux fois plus large, mais plus basse. Laquelle est la plus grande ?</p>
+      <div class="pari">
+        <span class="lbl">Ton pari — avant de voir</span>
+        <button class="opt"><span class="k">1</span><span>Celle de 2 à 4</span></button>
+        <button class="opt"><span class="k">2</span><span>Elles sont égales</span></button>
+        <button class="opt"><span class="k">3</span><span>Celle de 1 à 2</span></button>
+        <p class="hint">Pas de mauvaise réponse ici : on vérifie juste après, sans calculer une seule aire.</p>
+      </div>
+      <div class="navl"><button class="btn">← Retour</button><button class="btn pri" disabled>Choisis d’abord</button></div>
+    </aside>
+  </main>
+</div>
+<style>
+/* ---------- examen ---------- */
+.exam{display:grid;grid-template-rows:auto minmax(0,1fr);min-height:0}
+.strip{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:24px;padding:14px 28px;border-bottom:1px solid var(--line);background:var(--s1)}
+.exs{display:flex;gap:3px;height:40px}
+.exs a{position:relative;display:flex;flex-direction:column;justify-content:center;padding:0 10px;background:var(--s3);color:var(--ink2);text-decoration:none;font-size:12px;min-width:0;overflow:hidden;white-space:nowrap}
+.exs a b{font:600 13px var(--mono);color:var(--ink)}
+.exs a.on{background:var(--amber-s);box-shadow:inset 0 -2px 0 var(--amber)}
+.exs a.on b{color:var(--amber)}
+.clock{font:500 30px/1 var(--mono);letter-spacing:.02em}
+.clock small{display:block;font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-top:5px}
+.paper-wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);min-height:0}
+.paper{padding:30px 40px 40px;overflow:auto;border-right:1px solid var(--line);min-height:0}
+.paper .src{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.paper h2{font-size:24px;font-weight:600;margin:20px 0 6px;letter-spacing:-.01em}
+.paper .intro{color:var(--ink2);max-width:72ch;margin:0 0 18px}
+.part{font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin:26px 0 6px}
+.q{display:grid;grid-template-columns:52px minmax(0,1fr) 64px;gap:14px;padding:14px 0;border-top:1px solid var(--line);align-items:start}
+.q .no{font:600 14px var(--mono);color:var(--ink2);padding-top:2px}
+.q .pt{font:600 13px var(--mono);color:var(--dim);text-align:right;padding-top:3px}
+.q.on{background:var(--s2);margin:0 -16px;padding-left:13px;padding-right:16px;border-left:3px solid var(--amber)}
+.q.on .no,.q.on .pt{color:var(--amber)}
+.q.done .no::after{content:" ✓";color:var(--green)}
+.qt{max-width:74ch;font-size:16.5px}
+.m{display:inline}
+.m.d{display:block;margin:10px 0 2px;overflow-x:auto}
+.work{display:grid;grid-template-rows:auto minmax(0,1fr) auto;background:var(--s1);min-height:0}
+.tabs{display:flex;border-bottom:1px solid var(--line);padding:0 24px}
+.tabs button{height:48px;padding:0 14px;border:0;background:none;color:var(--dim);font-size:14px;cursor:pointer;border-bottom:2px solid transparent}
+.tabs button.on{color:var(--ink);border-bottom-color:var(--amber)}
+.tabs button[aria-disabled="true"]{color:var(--dim)}
+.wbody{padding:22px 28px;overflow:auto;min-height:0}
+.wq{font-size:14px;color:var(--ink2);margin:0 0 12px}
+.answer{border:1px solid var(--line2);background:var(--bg);min-height:250px;padding:16px 18px;font-size:16px;line-height:1.7}
+.answer .ph{color:var(--dim)}
+.answer .typed{color:var(--ink)}
+.caret{display:inline-block;width:2px;height:1.1em;background:var(--amber);vertical-align:-3px;margin-left:1px}
+.tools{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.chip{height:34px;padding:0 10px;border:1px solid var(--line2);background:var(--s2);font:13px var(--mono);cursor:pointer;border-radius:2px}
+.photo{display:flex;gap:14px;align-items:center;margin-top:18px;padding:14px 16px;border:1px dashed var(--line2)}
+.photo b{font-size:14px}.photo span{font-size:13px;color:var(--dim)}
+.lock{margin-top:18px;padding:14px 16px;background:var(--s2);border-left:3px solid var(--line2);font-size:14px;color:var(--ink2)}
+.wfoot{display:flex;justify-content:space-between;align-items:center;padding:14px 28px;border-top:1px solid var(--line)}
+</style>
+<div class="screen" id="s-examen">
+  <header class="bar">
+    <div class="word">bac<b>/</b>sm-a</div>
+    <nav class="nav" aria-label="Navigation principale"><a href="#accueil">Aujourd’hui</a><a href="#lecon">Matières</a><a class="on" href="#examen">Examens blancs</a><a href="#systeme">Progrès</a></nav>
+    <div class="sp"></div>
+    <div class="who"><span>Mode examen — conditions réelles, calculatrice interdite</span><button class="btn" style="height:36px">Rendre la copie</button></div>
+  </header>
+  <main class="exam">
+    <div class="strip">
+      <div><div class="lbl">Mathématiques · Sciences Mathématiques</div><div style="font-weight:600;margin-top:5px">Examen national · session normale 2023</div></div>
+      <nav class="exs" aria-label="Exercices">
+        <a class="on" href="#examen" style="flex:7.75"><b>Ex. 1 · 7,75 pts</b>Analyse — ln, suite itérée</a>
+        <a href="#examen" style="flex:2.25"><b>Ex. 2 · 2,25</b>Intégrale</a>
+        <a href="#examen" style="flex:3.5"><b>Ex. 3 · 3,5</b>&nbsp;</a>
+        <a href="#examen" style="flex:3"><b>Ex. 4 · 3</b>&nbsp;</a>
+        <a href="#examen" style="flex:3.5"><b>Ex. 5 · 3,5</b>&nbsp;</a>
+      </nav>
+      <div class="clock" aria-label="Temps restant">03:12:47<small>restant sur 4 h · coef 9</small></div>
+    </div>
+    <div class="paper-wrap">
+      <article class="paper">
+        <div class="src"><span class="lbl">Sujet réel transcrit et vérifié · code NS 24F</span><span class="lbl">Barème</span></div>
+        <h2>Exercice 1 — Analyse</h2>
+        <p class="intro">On encadre <span class="m" data-tex="\ln(1+x)">ln(1 + x)</span>, puis on étudie <span class="m" data-tex="f(x)=g(x)\,e^{-x}">f(x) = g(x)e⁻ˣ</span> et une suite qui converge vers l’unique solution de <span class="m" data-tex="f(x)=3x">f(x) = 3x</span>.</p>
+        <div class="part">Partie I</div>
+        <div class="q done"><span class="no">1-a</span><div class="qt">Montrer que : <span class="m d" data-tex="\forall t \in [0,+\infty[\,;\quad \dfrac{4}{(2+t)^2} \le \dfrac{1}{1+t} \le \dfrac{1}{2}\left(1+\dfrac{1}{(1+t)^2}\right)">∀t ∈ [0, +∞[ ; 4/(2+t)² ≤ 1/(1+t) ≤ ½(1 + 1/(1+t)²)</span></div><span class="pt">0,5</span></div>
+        <div class="q on"><span class="no">1-b</span><div class="qt">En déduire que : <span class="m d" data-tex="\forall x \in [0,+\infty[\,;\quad \dfrac{2x}{2+x} \le \ln(1+x) \le \dfrac{1}{2}\left(\dfrac{x^2+2x}{1+x}\right)">∀x ∈ [0, +∞[ ; 2x/(2+x) ≤ ln(1+x) ≤ ½((x²+2x)/(1+x))</span></div><span class="pt">0,5</span></div>
+        <div class="q"><span class="no">2</span><div class="qt">Soit <span class="m" data-tex="g">g</span> la fonction définie sur <span class="m" data-tex="]0,+\infty[">]0, +∞[</span> par <span class="m" data-tex="g(x)=\frac{\ln(1+x)}{x}">g(x) = ln(1+x)/x</span>. Montrer que : <span class="m d" data-tex="\lim_{x\to 0^+}\dfrac{g(x)-1}{x}=-\dfrac12">lim (g(x) − 1)/x = −1/2 quand x → 0⁺</span></div><span class="pt">0,5</span></div>
+        <div class="part">Partie II</div>
+        <div class="q"><span class="no">1</span><div class="qt">Soit <span class="m" data-tex="f">f</span> définie sur <span class="m" data-tex="[0,+\infty[">[0, +∞[</span> par <span class="m" data-tex="f(0)=1">f(0) = 1</span> et <span class="m" data-tex="f(x)=g(x)\,e^{-x}">f(x) = g(x)e⁻ˣ</span> pour <span class="m" data-tex="x>0">x &gt; 0</span>. Calculer <span class="m" data-tex="\lim_{x\to+\infty} f(x)">lim f(x)</span> puis interpréter graphiquement le résultat.</div><span class="pt">0,5</span></div>
+        <div class="q"><span class="no">2-a</span><div class="qt">Montrer que <span class="m" data-tex="f">f</span> est continue à droite en <span class="m" data-tex="0">0</span>.</div><span class="pt">0,25</span></div>
+        <div class="q"><span class="no">2-b</span><div class="qt">Vérifier que : <span class="m d" data-tex="\forall x\in\,]0,+\infty[\,;\quad \dfrac{f(x)-1}{x}=\left(\dfrac{e^{-x}-1}{x}\right)g(x)+\left(\dfrac{g(x)-1}{x}\right)">(f(x) − 1)/x = ((e⁻ˣ − 1)/x)·g(x) + (g(x) − 1)/x</span></div><span class="pt">0,25</span></div>
+        <div class="q"><span class="no">2-c</span><div class="qt">En déduire que <span class="m" data-tex="f">f</span> est dérivable à droite en <span class="m" data-tex="0">0</span> et déterminer <span class="m" data-tex="f'_d(0)">f′d(0)</span>.</div><span class="pt">0,5</span></div>
+      </article>
+      <section class="work" aria-label="Espace de travail">
+        <div class="tabs" role="tablist"><button class="on" role="tab" aria-selected="true">Ma réponse · 1-b</button><button role="tab">Brouillon</button><button role="tab" aria-disabled="true">Corrigé · verrouillé</button></div>
+        <div class="wbody">
+          <p class="wq">Question 1-b · 0,5 pt — « En déduire » : pars de l’encadrement de 1-a.</p>
+          <div class="answer"><span class="typed">D’après 1-a, pour tout <i>t</i> ∈ [0, <i>x</i>], on a 4/(2+<i>t</i>)² ≤ 1/(1+<i>t</i>) ≤ ½(1 + 1/(1+<i>t</i>)²). On intègre entre 0 et <i>x</i>, les bornes étant dans l’ordre</span><span class="caret"></span></div>
+          <div class="tools"><button class="chip">∫</button><button class="chip">≤</button><button class="chip">ln</button><button class="chip">eˣ</button><button class="chip">√</button><button class="chip">→</button><button class="chip">∀</button><button class="chip">∈</button></div>
+          <div class="photo"><div><b>Tu rédiges sur papier ?</b><br><span>Photographie ta copie : la correction suit le barème, ligne par ligne.</span></div><button class="btn" style="margin-left:auto;height:38px;white-space:nowrap">Ajouter une photo</button></div>
+          <div class="lock">Le corrigé pas à pas s’ouvre quand tu as tenté la question — ou à la fin de l’épreuve.</div>
+        </div>
+        <div class="wfoot"><button class="btn">← 1-a</button><span class="lbl">2 questions sur 17 · 1,0 / 7,75 pt tentés</span><button class="btn pri">Question 2 →</button></div>
+      </section>
+    </div>
+  </main>
+</div>
+<style>
+/* ---------- système ---------- */
+.sys{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1px;background:var(--line);min-height:0}
+.sys>section{background:var(--bg);padding:28px 32px;min-width:0}
+.sys h2{font-size:15px;font-weight:600;margin:0 0 14px}
+.sw{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:28px}
+.sw div{border:1px solid var(--line)}
+.sw i{display:block;height:54px}
+.sw span{display:block;padding:8px 10px;font:500 11px/1.4 var(--mono);color:var(--ink2)}
+.ts{margin-bottom:28px}
+.ts div{display:grid;grid-template-columns:150px minmax(0,1fr);align-items:baseline;gap:16px;padding:8px 0;border-top:1px solid var(--line)}
+.ts span:first-child{font:500 11px var(--mono);color:var(--dim)}
+.comp{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:18px}
+.pari-bet{font-size:15px;line-height:1.6;color:var(--ink2);margin:0}
+.pari-bet li{margin-bottom:8px}
+.pari-bet b{color:var(--ink)}
+.rule{margin:22px 0 0;padding:14px 16px;border-left:3px solid var(--amber);background:var(--amber-s);font-size:14px}
+@media (max-width:900px){
+  .home,.lesson,.paper-wrap,.sys{grid-template-columns:minmax(0,1fr)}
+  .home>section,.sys>section{padding:20px 16px}
+  .steps li{grid-template-columns:32px minmax(0,1fr) 56px}.steps li .tag{display:none}
+  .weak td.a{width:auto}.weak td.err{width:48px}
+  .strip{grid-template-columns:minmax(0,1fr);padding:12px 16px}.exs a{padding:0 6px}.exs a:not(.on) b{font-size:11px}
+  .paper{padding:20px 16px}.q{grid-template-columns:40px minmax(0,1fr) 40px}
+  .m.d{max-width:100%}
+  .script{padding:20px 16px}.stage{min-height:52vh}
+  .sw{grid-template-columns:repeat(2,minmax(0,1fr))}.ts div{grid-template-columns:minmax(0,1fr)}
+  .mock::before{display:none}.mock{justify-content:flex-start;overflow-x:auto}
+  .who .count{display:none}.who span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px}
+  .bar{grid-template-columns:auto}
+}
+</style>
+<div class="screen" id="s-systeme">
+  <header class="bar">
+    <div class="word">bac<b>/</b>sm-a</div>
+    <nav class="nav" aria-label="Navigation principale"><a href="#accueil">Aujourd’hui</a><a href="#lecon">Matières</a><a href="#examen">Examens blancs</a><a class="on" href="#systeme">Système</a></nav>
+    <div class="sp"></div>
+    <div class="who"><span>Direction « Instrument »</span></div>
+  </header>
+  <main class="sys">
+    <section>
+      <h2>Couleurs — sombre d’abord, clair en miroir</h2>
+      <div class="sw">
+        <div><i style="background:var(--bg)"></i><span>fond<br>#0C0E11 / #EDEFF2</span></div>
+        <div><i style="background:var(--s1)"></i><span>surface<br>#13161B / #FFFFFF</span></div>
+        <div><i style="background:var(--ink)"></i><span>encre<br>#E8EBEF / #101317</span></div>
+        <div><i style="background:var(--dim)"></i><span>atténué<br>#858E9B / #5D6572</span></div>
+        <div><i style="background:var(--amber)"></i><span>ambre — action, toi<br>#F2B544 / #9A5A00</span></div>
+        <div><i style="background:var(--cyan)"></i><span>cyan — seconde grandeur<br>#5EC4DF / #0B7290</span></div>
+        <div><i style="background:var(--rose)"></i><span>rose — erreur, points perdus<br>#F28392 / #B32034</span></div>
+        <div><i style="background:var(--green)"></i><span>vert — acquis<br>#6FD3A6 / #13744A</span></div>
+      </div>
+      <h2>Typographie — Chivo + Chivo Mono</h2>
+      <div class="ts">
+        <div><span>Titre · 30 / 600</span><span style="font:600 30px var(--sans);letter-spacing:-.015em;color:var(--ink)">45 minutes, quatre gestes.</span></div>
+        <div><span>Script · 22 / 400</span><span style="font-size:22px;color:var(--ink)">Laquelle est la plus grande ?</span></div>
+        <div><span>Texte · 16 / 400</span><span style="font-size:16px;color:var(--ink)">Construite à partir de tes erreurs de la semaine.</span></div>
+        <div><span>Chiffre · mono 64</span><span style="font:600 64px/1 var(--mono);letter-spacing:-.04em;color:var(--ink)">33</span></div>
+        <div><span>Étiquette · mono 11</span><span class="lbl">Ton pari — avant de voir</span></div>
+      </div>
+      <h2>Composants</h2>
+      <div class="comp"><button class="btn pri">Commencer la séance →</button><button class="btn">← Retour</button><button class="btn pri" disabled>Choisis d’abord</button><span class="kbd">1</span><span class="tag c-amber">Leçon</span><span class="tag c-cyan">Exercices</span><span class="tag c-rose">Type bac</span></div>
+      <div style="max-width:420px"><button class="opt"><span class="k">2</span><span>Elles sont égales</span></button></div>
+    </section>
+    <section>
+      <h2>Le pari de cette direction</h2>
+      <ol class="pari-bet">
+        <li><b>Un instrument, pas un magazine.</b> L’app se lit comme un appareil de mesure : chaque chiffre est une mesure (coefficients, minutes, points perdus), en chasse fixe.</li>
+        <li><b>Sombre d’abord</b>, parce que les séances du soir durent deux heures ; un clair rigoureux existe en miroir.</li>
+        <li><b>Quatre couleurs, quatre sens, jamais de décor</b> : ambre = toi et l’action, cyan = la seconde grandeur, rose = ce qui coûte des points, vert = acquis.</li>
+        <li><b>Risque</b> : trop « technique » ou froid pour un élève qui doute ; la chaleur doit venir de la voix des textes, pas des couleurs.</li>
+        <li><b>Risque</b> : la proximité avec les outils de développeurs (Linear, terminaux) peut lire comme « pas pour moi » ; à tester avec de vrais élèves.</li>
+      </ol>
+      <p class="rule">Règle de largeur : à 1440 px, la scène et l’énoncé prennent la place ; seul le texte courant est borné (≤ 72 caractères).</p>
+    </section>
+  </main>
+</div>
+
+<nav class="mock" aria-label="Maquette : écrans"><a href="#accueil">Accueil</a><a href="#lecon">Leçon</a><a href="#examen">Examen</a><a href="#systeme">Système</a><button id="th" type="button">clair / sombre</button></nav>
+
+<script>
+window.MathJax={startup:{typeset:false,ready(){MathJax.startup.defaultReady();MathJax.startup.promise.then(()=>{window.__mj=true;renderMath();});}},svg:{fontCache:'local'}};
+function renderMath(){if(!window.__mj)return;document.querySelectorAll('.m[data-tex]:not([data-done])').forEach(n=>{try{const node=MathJax.tex2svg(n.dataset.tex,{display:n.classList.contains('d')});n.replaceChildren(node);n.dataset.done='1';}catch(e){}});try{MathJax.startup.document.clear();MathJax.startup.document.updateDocument();}catch(e){}}
+function show(){const h=(location.hash||'#accueil').slice(1);document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id==='s-'+h));document.querySelectorAll('.mock a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+h));if(!document.querySelector('.screen.on'))document.getElementById('s-accueil').classList.add('on');}
+addEventListener('hashchange',show);show();
+(function(){let t=null;try{t=localStorage.getItem('instr-theme');}catch(e){}if(t)document.documentElement.dataset.theme=t;
+document.getElementById('th').addEventListener('click',()=>{const cur=document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');const n=cur==='light'?'dark':'light';document.documentElement.dataset.theme=n;try{localStorage.setItem('instr-theme',n);}catch(e){}});})();
+/* scène : y = 1/x, aires de 1 à 2 et de 2 à 4 */
+(function(){const NS='http://www.w3.org/2000/svg',s=document.getElementById('hyp');const X=x=>80+100*x,Y=y=>575-205*y;
+const E=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);s.appendChild(e);return e;};
+const reg=(a,b)=>{let d=`M${X(a)} ${Y(0)}`;for(let i=0;i<=60;i++){const x=a+(b-a)*i/60;d+=`L${X(x).toFixed(1)} ${Y(1/x).toFixed(1)}`;}return d+`L${X(b)} ${Y(0)}Z`;};
+E('path',{d:reg(1,2),class:'fa'});E('path',{d:reg(2,4),class:'fb'});
+E('line',{x1:X(0),x2:X(8.9),y1:Y(0),y2:Y(0),class:'sv-dim','stroke-width':1.5});E('line',{x1:X(0),x2:X(0),y1:Y(0),y2:Y(2.6),class:'sv-dim','stroke-width':1.5});
+for(let i=1;i<=8;i++){E('line',{x1:X(i),x2:X(i),y1:Y(0),y2:Y(0)+6,class:'sv-dim'});const t=E('text',{x:X(i),y:Y(0)+28,class:'sv-t','text-anchor':'middle'});t.textContent=i;}
+[[.5,'0,5'],[1,'1'],[1.5,'1,5'],[2,'2']].forEach(([v,l])=>{E('line',{x1:X(0)-6,x2:X(0),y1:Y(v),y2:Y(v),class:'sv-dim'});const t=E('text',{x:X(0)-12,y:Y(v)+5,class:'sv-t','text-anchor':'end'});t.textContent=l;});
+let d='';for(let i=0;i<=300;i++){const x=.4+8.5*i/300;d+=(i?'L':'M')+X(x).toFixed(1)+' '+Y(1/x).toFixed(1);}E('path',{d,class:'sv-ink',fill:'none','stroke-width':3});
+const lab=E('text',{x:X(.62)+16,y:Y(1/.62),class:'sv-lab'});lab.textContent='y = 1/x';
+const q1=E('text',{x:X(1.5),y:Y(.25),class:'sv-lab','text-anchor':'middle'});q1.textContent='?';const q2=E('text',{x:X(3),y:Y(.12),class:'sv-lab','text-anchor':'middle'});q2.textContent='?';
+})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js" async></script>
+</body>
+</html>
