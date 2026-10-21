@@ -82,6 +82,8 @@ const URLS = {
   "/matieres/[subject]": "/matieres/pc",
   "/notions/[subject]/[slug]": "/notions/pc/rlc-serie",
   "/options/wide/[v]": "/options/wide/w1",
+  // la leçon pilote au nouveau format (refonte 2026-10) : elle porte le header du site
+  "/pilote/logarithme": "/pilote/logarithme",
 };
 /** Le 404 n'est pas un `page.tsx` : il se mesure par une URL qui n'existe pas. */
 const QUATRE_CENT_QUATRE = "/cette-route-n-existe-pas-porte-header";

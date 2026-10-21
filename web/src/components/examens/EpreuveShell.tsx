@@ -312,7 +312,7 @@ const ExerciceArticle = memo(function ExerciceArticle({
                         className="mt-4 flex flex-wrap items-center gap-2"
                       >
                         <span className="text-body-sm text-secondary">
-                          Ta copie :
+                          {frenchTypography("Ta copie :")}
                         </span>
                         {/* Motif ARIA « radiogroup » (HANDOFF §11.39) : UN arrêt de
                             tabulation par groupe — le radio coché, sinon le premier —
@@ -609,14 +609,12 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
   if (phase === "seuil") {
     const consignes = [
       <>
-        Durée officielle : <span className="font-semibold text-primary tnum">{duree}</span>.
-        Le chrono affiche le temps écoulé, calmement. Tu peux le mettre en
-        pause : c’est une répétition, pas une surveillance.
+        {frenchTypography("Durée officielle : ")}<span className="font-semibold text-primary tnum">{duree}</span>.
+        {frenchTypography(" Le chrono affiche le temps écoulé, calmement. Tu peux le mettre en pause : c’est une répétition, pas une surveillance.")}
       </>,
       <>{frenchTypography("Travaille sur papier, comme le jour J — l’écran sert à lire le sujet.")}</>,
       <>
-        Les corrections n’apparaissent qu’après « Terminer l’épreuve » ; tu
-        t’auto-évalues ensuite question par question, au barème.
+        {frenchTypography("Les corrections n’apparaissent qu’après « Terminer l’épreuve » ; tu t’auto-évalues ensuite question par question, au barème.")}
       </>,
     ];
     if (!epreuve.complete) {
@@ -754,7 +752,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
             </p>
           ) : (
             <p className="min-w-0 text-body-sm text-secondary" aria-live="off">
-              <span className="sr-only">Temps écoulé : </span>
+              <span className="sr-only">{frenchTypography("Temps écoulé : ")}</span>
               <span data-chrono className="font-display text-h3 font-bold text-primary wdth-75 tnum">
                 {formatDuree(secondes)}
               </span>
@@ -793,7 +791,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
             )}
             {enCorrection && (
               <p className="text-body-sm text-tertiary">
-                Temps mis :{" "}
+                {frenchTypography("Temps mis :")}{" "}
                 <span className="font-semibold text-primary tnum">
                   {formatDuree(chronoFinal.current)}
                 </span>

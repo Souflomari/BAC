@@ -24,6 +24,7 @@ import type { Metadata } from "next";
 import { listNotions } from "@/lib/content";
 
 import { Link } from "@/components/ui/Lien";
+import { frenchTypography } from "@/lib/frenchTypography";
 import { PageShell } from "@/components/ui/PageShell";
 import { SessionCard } from "@/components/dashboard/SessionCard";
 import { NextUp } from "@/components/dashboard/NextUp";
@@ -65,7 +66,7 @@ export default function HomePage() {
           {/* Le format de leçon en test (refonte 2026-10) : une entrée
               discrète, jamais une seconde action primaire. */}
           <p className="mt-6 border-l-2 border-signal pl-4 text-body text-secondary">
-            Nouveau format, en test :{" "}
+            {frenchTypography("Nouveau format, en test :")}{" "}
             <Link
               href="/pilote/logarithme"
               data-lien-pilote
