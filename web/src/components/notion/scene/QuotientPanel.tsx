@@ -248,10 +248,12 @@ export function QuotientPanel({ scene, className }: { scene: Scene3DDescriptor; 
         { el: refs.k.current, p: en(ancreK), directions: [[0, -1], [-1, -1], [1, -1], [0, 1], [-1, 1], [1, 1]], portee: 40, filet: 10 },
         { el: refs.especeProduit.current, p: en("espece-produit"), directions: [[1, 0]], portee: 4 },
         { el: refs.especeOxydant.current, p: en("espece-oxydant"), directions: [[1, 0]], portee: 4 },
-        // les rôles : jusqu'à 8 px de leur point (et non 4) — le seul pas qui les sorte de la
-        // surface du liquide, déclarée au placeur ; à 4, « réduit » restait posé dessus (2026-10-21)
-        { el: refs.roleOxyde.current, p: en("role-oxyde", rolesVisibles), surAncre: verdictCourant === "inverse", directions: [[1, 0], [-1, 0], [0, -1]], portee: 8 },
-        { el: refs.roleReduit.current, p: en("role-reduit", rolesVisibles), directions: [[-1, 0], [0, -1], [0, 1]], portee: 8 },
+        // les rôles : jusqu'à 8 px de leur point (et non 4), et les DIAGONALES basses — la surface
+        // du liquide, déclarée au placeur, passe à gauche de l'ion ; le dessous est pris par le nom
+        // de l'espèce, le dessus frôle encore la ligne. En bas à gauche, la place est propre
+        // (2026-10-21 : « réduit » restait posé sur 45 px de surface)
+        { el: refs.roleOxyde.current, p: en("role-oxyde", rolesVisibles), surAncre: verdictCourant === "inverse", directions: [[1, 0], [-1, 0], [1, 1], [-1, 1], [0, -1]], portee: 8 },
+        { el: refs.roleReduit.current, p: en("role-reduit", rolesVisibles), directions: [[-1, 0], [-1, 1], [0, -1], [0, 1]], portee: 8 },
       ],
       s.segments(),
       s.cadre(),
