@@ -25,6 +25,7 @@
  */
 
 import { useCallback, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { useHydrated } from "@/lib/useHydrated";
 import { Link } from "@/components/ui/Lien";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
@@ -56,14 +57,6 @@ interface SiteHeaderProps {
   epreuves?: EpreuvePourPalette[];
 }
 
-/** Marque géométrique — l'arc d'oscillation, inchangé depuis le jour 4. */
-function GlyphMark({ className }: { className?: string }) {
-  return (
-    <svg width="20" height="16" viewBox="0 0 20 16" fill="none" aria-hidden="true" focusable="false" className={className}>
-      <path d="M1 8 C1 2, 6 2, 10 8 C14 14, 19 14, 19 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
-    </svg>
-  );
-}
 
 /** Le bouton Rechercher — ⌘K affiché, l'affordance clavier est l'invitation. */
 function BoutonRecherche({ compact = false }: { compact?: boolean }) {
@@ -436,6 +429,37 @@ function MenuCompact({
   );
 }
 
+/**
+ * GRILLE — la navigation primaire, en toutes lettres (≥ « expanded ») :
+ * deux destinations, la page courante soulignée d'un trait rouge de 2 px.
+ * Les notions restent dans le panneau « Notions » de la barre d'outils.
+ */
+function NavPrincipale() {
+  const chemin = usePathname() ?? "/";
+  const liens: { href: string; label: string; actif: boolean }[] = [
+    { href: "/", label: "Aujourd’hui", actif: chemin === "/" },
+    { href: "/examens", label: "Examens blancs", actif: chemin.startsWith("/examens") },
+  ];
+  return (
+    <nav aria-label="Sections" className="hidden h-full flex-1 items-stretch gap-1 pl-8 bp-expanded:flex">
+      {liens.map((l) => (
+        <Link
+          key={l.href}
+          href={l.href}
+          aria-current={l.actif ? "page" : undefined}
+          className={cn(
+            "flex items-center border-b-2 px-3 text-body font-medium no-underline",
+            "transition-colors duration-micro ease-enter focus-ring",
+            l.actif ? "border-signal text-primary" : "border-transparent text-secondary hover:text-primary",
+          )}
+        >
+          {l.label}
+        </Link>
+      ))}
+    </nav>
+  );
+}
+
 export function SiteHeader({ className, container, notions = [], epreuves = [] }: SiteHeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const { user, mode, signOutMock, signOut } = useAuth();
@@ -469,14 +493,13 @@ export function SiteHeader({ className, container, notions = [], epreuves = [] }
         // `entete-site` (globals.css) : view-transition-name — le chrome
         // reste posé pendant que le CONTENU fond d'une route à l'autre (R4).
         "entete-site sticky top-0 z-header w-full",
-        "transition-[box-shadow,background-color,border-color] duration-standard ease-between",
-        scrolled
-          ? ["header-glass", "shadow-elevation-1", "border-b border-subtle"]
-          : ["bg-surface-base", "shadow-elevation-0", "border-b border-subtle"],
+        // GRILLE : une barre pleine, réglée d'un filet — ni verre ni ombre.
+        "bg-surface-base border-b",
+        scrolled ? "border-soft" : "border-subtle",
         className
       )}
     >
-      <div className={cn(container ?? "mx-auto max-w-page px-gutter w-full", "flex h-14 items-center justify-between gap-3")}>
+      <div className={cn(container ?? "mx-auto max-w-page px-gutter w-full", "flex h-16 items-center justify-between gap-3")}>
         {/* Wordmark — glyphe + BAC, rien d'autre. Le « · sciences » est
             parti : décoratif, il cassait en fenêtre intermédiaire (§3.3)
             et diluait la marque. */}
@@ -489,9 +512,13 @@ export function SiteHeader({ className, container, notions = [], epreuves = [] }
           )}
           aria-label={frenchTypography("Retour à l'accueil")}
         >
-          <GlyphMark className="text-accent flex-shrink-0" />
-          <span className="text-h4 font-semibold tracking-tight">BAC</span>
+          {/* GRILLE : le mot « bac » serré à 75 %, le point en rouge signal. */}
+          <span className="font-display text-h2 font-bold leading-none tracking-tight">
+            bac<span className="text-signal">.</span>
+          </span>
         </Link>
+
+        <NavPrincipale />
 
         {/* Toolbar droite — complète à « expanded », compacte en dessous. */}
         <div className="flex items-center gap-2 bp-large:gap-3">
@@ -522,7 +549,7 @@ export function SiteHeader({ className, container, notions = [], epreuves = [] }
                   role="group"
                   aria-label={`Compte — ${user.displayName}`}
                   className={cn(
-                    "flex h-8 w-8 items-center justify-center rounded-full",
+                    "flex h-8 w-8 items-center justify-center",
                     "bg-accent-subtle text-accent",
                     "text-body-sm font-semibold select-none"
                   )}

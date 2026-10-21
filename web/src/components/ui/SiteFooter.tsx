@@ -28,7 +28,7 @@ export function SiteFooter({ container }: { container: string }) {
         <div className="flex flex-wrap items-baseline justify-between gap-4">
           {/* Wordmark echo — quiet, no glyph (the header carries the mark) */}
           <p className="text-body-sm text-secondary">
-            <span className="font-semibold text-primary">BAC</span>
+            <span className="font-display font-bold text-primary">bac<span className="text-signal">.</span></span>
             <span aria-hidden="true"> · </span>sciences — préparer le bac marocain,
             calmement.
           </p>
