@@ -211,7 +211,9 @@ const BATTERY = [
   { name: "404 hero display", page: "/nonexistent-xyz", sel: "span", text: "404", fontKey: "display", weight: "700" },
   { name: "404 h1", page: "/nonexistent-xyz", sel: "h1", text: "introuvable", fontKey: "h2", weight: "700" },
   // ── survivors (must stay green — regression tripwires) ──
-  { name: "prose rung h2", page: NOTION, sel: ".prose-lesson h2", text: "Accroche", fontPx: PROSE.h2, weight: "600", family: "Archivo" },
+  // GRILLE (2026-10-21) : le titre de chapitre est posé par grille-notion.css — 2,125 rem (34 px),
+  // graisse 700, Archivo serré à 75 % ; il ne suit plus l'échelle de prose de globals.css.
+  { name: "prose rung h2", page: NOTION, sel: ".prose-lesson h2", text: "Accroche", fontPx: 34, weight: "700", family: "Archivo" },
   // Inline-items model (§1.1): questions moved from a single end-of-lesson
   // "Exercices" h2 bank to a per-chapter "Vérifie ta compréhension" h3 block
   // (ChapterQuestions). The heading lives in the DOM on every chapter that has
@@ -262,7 +264,9 @@ const BATTERY = [
   // est que le header a la MÊME largeur sur toutes les routes.
   { name: "spine: footer aligns with main", page: NOTION, sel: "footer > div", alignWith: "main" },
   // ── Day-4 frozen anatomy (A3 band, B1 honest state, C1 footer, LessonEnd) ──
-  { name: "masthead band present (A3)", page: NOTION, sel: "[data-band='masthead']", bgVar: "--color-surface-container-low" },
+  // GRILLE (2026-10-21) : la bande de titre n'a plus de fond (un filet d'encre la ferme) — on
+  // garde sa PRÉSENCE, pas une couleur qui n'existe plus.
+  { name: "masthead band present (A3)", page: NOTION, sel: "[data-band='masthead']", present: true },
   { name: "LessonEnd present", page: NOTION, sel: "[data-lesson-end]", text: "Et maintenant", present: true },
   { name: "footer = C1 contents", page: NOTION, sel: "footer", text: "cadre de référence", present: true },
   { name: "B1 primary action present", page: "/", sel: "main a[class*='btn-primary']", text: "Commencer", present: true },
@@ -295,7 +299,7 @@ const BATTERY = [
   { name: "R7 motion present (entretien-compensation)", page: NOTION, sel: "figure[aria-label*='compense la perte Joule']", present: true },
   // ── Day-7 portability-test acceptance (instruments FIRST: these rows were
   //    committed with the briefs, red until each article lands) ──
-  { name: "DAY7(b): rc-charge notion renders with masthead band", page: "/notions/pc/rc-charge", sel: "[data-band='masthead']", bgVar: "--color-surface-container-low" },
+  { name: "DAY7(b): rc-charge notion renders with masthead band", page: "/notions/pc/rc-charge", sel: "[data-band='masthead']", present: true },
   { name: "DAY7(b): rc-charge rung section renders", page: "/notions/pc/rc-charge", sel: ".prose-lesson h2[data-rung]", present: true, notText: /^R\d/ },
   { name: "DAY7(c): i-de-t derivation present, step 1 only", page: NOTION, sel: "[data-derivation='i-de-t']", present: true, absentSel: "[data-derivation='i-de-t'] [data-step='2']" },
   // (d): data-motif must be the notion's OWN motif — the pc fallback also
@@ -420,7 +424,9 @@ const BATTERY = [
   { name: "R6 subject page: h1 display Archivo", page: "/matieres/pc", sel: "h1", text: "Physique", fontKey: "display", weight: "700", family: "Archivo" },
   // (nom interne next/font "__GeistMono_…" — pas d'espace dans la famille calculée)
   { name: "R6 subject page: couverture réelle en mono (fait du cadre)", page: "/matieres/pc", sel: "header [data-couverture]", text: "chapitre", family: "GeistMono" },
-  { name: "R6 subject page: unités en cartes claires", page: "/matieres/pc", sel: "main section[aria-label]", bgVar: "--color-surface-raised" },
+  // GRILLE (2026-10-21) : les unités ne sont plus des cartes — une liste numérotée continue,
+  // une section par unité, titrée.
+  { name: "R6 subject page: unités en sections titrées", page: "/matieres/pc", sel: "main section[aria-label] h2", present: true },
   { name: "D9 subject page: available chapter links to notion", page: "/matieres/pc", sel: "a[href='/notions/pc/rlc-serie']", present: true },
   // D9.5 content-fill completed every PC chapter (25/25) — /matieres/pc no
   // longer has an un-built chapter to render "À venir" against, so the
