@@ -201,10 +201,18 @@ const longueurLeLong = (x, y, ux, uy, genre, max = 400, depuis = 7) => panneau.e
   };
   // une flèche d'accent peut passer SOUS un vecteur unitaire plus court qu'elle
   // (la plus courte de deux flèches colinéaires est dessinée dessus) : sur l'axe,
-  // l'encre n'est pas un trou — la marche la traverse sans compter
+  // l'encre n'est pas un trou — la marche la traverse sans compter.
+  // Ni l'accent FAIBLE (3) : c'est le mélange de l'encre et de l'accent sous elle,
+  // aux bords lissés du trait. Avec l'encre chaude d'avant Grille (#1D1A14), ce
+  // mélange perdait sa teinte et se lisait encre ; avec l'encre neutre (#0A0A0A),
+  // il garde la teinte de l'accent, affaiblie — compté comme trou, il coupait
+  // a_N à 7,5 px sous u_N (mesuré le 2026-10-21 : classes « 2222322223… » sur
+  // l'axe). Seul le FOND (0) est un trou ; la longueur ne grandit toujours que
+  // sur l'accent fort (`at`), et les tirets du rayon, au-delà de la pointe,
+  // s'arrêtent à leur premier blanc de 4 px.
   const encreSurAxe = (px, py) => {
     const X = Math.round(px * dpr - 0.5), Y = Math.round(py * dpr - 0.5);
-    return X >= 0 && Y >= 0 && X < w && Y < h && cls[Y * w + X] === 2;
+    return X >= 0 && Y >= 0 && X < w && Y < h && (cls[Y * w + X] === 2 || cls[Y * w + X] === 3);
   };
   let dernier = -1, trou = 0;
   for (let d = depuis; d <= max; d += 0.5) {
