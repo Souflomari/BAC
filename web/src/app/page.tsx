@@ -62,6 +62,18 @@ export default function HomePage() {
           <div className="mt-4">
             <NextUp notions={notions} />
           </div>
+          {/* Le format de leçon en test (refonte 2026-10) : une entrée
+              discrète, jamais une seconde action primaire. */}
+          <p className="mt-6 border-l-2 border-signal pl-4 text-body text-secondary">
+            Nouveau format, en test :{" "}
+            <Link
+              href="/pilote/logarithme"
+              data-lien-pilote
+              className="font-semibold text-primary underline underline-offset-4 hover:text-signal focus-ring"
+            >
+              la fonction logarithme en 34 étapes, de Napier à la définition du bac →
+            </Link>
+          </p>
         </div>
       </div>
 
