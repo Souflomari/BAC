@@ -540,7 +540,7 @@ c'est le métier.
 > 17. Le générateur ne modifie jamais le cadre, les misconceptions déclarées ni les annales sources.
 >
 > **Travail**
-> 18. L'état courant tient dans `docs/ETAT.md` : une page, qu'on réécrit au lieu de l'allonger. L'histoire,
+> 18. L'état courant tient dans `ETAT.md` (fichier à créer dans `docs/`) : une page, qu'on réécrit au lieu de l'allonger. L'histoire,
 >     c'est git.
 > 19. Une décision durable fait un ADR court (une page au plus, avec sa section « Retractions and
 >     Corrections »). Pas de journal de session dans un ADR.
@@ -663,7 +663,7 @@ Tout ce qui sera supprimé ensuite se retrouve par `git show archive/avant-refon
 
 **Étape 3 — un commit « docs : archiver 107 fichiers ».**
 - `git rm` de la liste de l'annexe A.2 et de `work-orders/`.
-- `HANDOFF.md` est remplacé par `docs/ETAT.md` (une page : ce qui marche, les fils ouverts, la prochaine
+- `HANDOFF.md` est remplacé par `ETAT.md` (fichier à créer dans `docs/`) (une page : ce qui marche, les fils ouverts, la prochaine
   étape de chacun).
 - `DECISIONS-EN-ATTENTE.md` est condensé aux questions ouvertes ; `README-docs.md` et
   `LOCAL-TRANSITION.md` §2 sont réécrits (nouvelle CI, nouvelle batterie).
