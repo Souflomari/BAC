@@ -429,10 +429,14 @@ export function creerRenduQuotient(canvas: HTMLCanvasElement, hote: HTMLElement)
       rep["depot"] = P(0, 0, false);
     }
 
-    // les deux ions, en COLONNE à droite (le panneau pose leurs étiquettes à droite de ces ancres)
+    // les deux ions, en COLONNE à droite (le panneau pose leurs étiquettes à droite de ces ancres).
+    // L'ion du haut à 0,32 de la hauteur du liquide, et non 0,26 : en sens inverse, « réduit » se
+    // pose AU-DESSUS de lui (à gauche, la lame ; dessous, « oxydé ») — et au téléphone, à 0,26, il
+    // n'y avait que 23 px entre la surface et l'ion pour une pastille de 26 : le mot couvrait la
+    // surface du liquide (2026-10-21, lu au placeur). L'ion du bas suit, à 0,66.
     const xIons = L + 0.6 * bw;
-    rep["espece-produit"] = P(xIons, yLiq + 0.26 * hLiq);
-    rep["espece-oxydant"] = P(xIons, yLiq + 0.62 * hLiq);
+    rep["espece-produit"] = P(xIons, yLiq + 0.32 * hLiq);
+    rep["espece-oxydant"] = P(xIons, yLiq + 0.66 * hLiq);
 
     // les rôles — SEULEMENT révélés, JAMAIS à l'équilibre (§5.5 C, §9)
     const visible = e.accent && e.rolesAutorises && !!e.verdict && e.verdict !== "equilibre";
