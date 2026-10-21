@@ -707,6 +707,26 @@ body {
   border-bottom: none;
 }
 
+/* À l'impression, un tableau ne DÉFILE pas : ce qui sort de sa boîte est
+   perdu sur le papier. Mesuré le 2026-10-21 (porte impression, corrigé de
+   spc-2015-normale) : douze colonnes de mesures (θ, R) faisaient 735 px dans
+   une boîte de 582 — les dernières colonnes étaient coupées. C'était déjà vrai
+   avant Grille, sous le seuil de la porte ; les chiffres d'Archivo, plus larges
+   que ceux du sérif, l'ont fait passer au-dessus de la colonne imprimable. Sur
+   papier, le tableau redevient une table (rien n'est coupé), plus serré et un
+   peu plus petit : 13 px et des cellules de 6 px, lisibles au stylo. */
+@media print {
+  .prose-lesson table {
+    display: table;
+    overflow: visible;
+    font-size: 0.8125rem;
+  }
+  .prose-lesson th,
+  .prose-lesson td {
+    padding: 0.25rem 0.375rem;
+  }
+}
+
 /* Rung boundary (Day-6 followability, §11 section rhythm). Authored `---`
    between rungs. The full-width hairline read as a Wikipedia table border and
    was nearly invisible at reading speed; a SHORT centered rule with more air
