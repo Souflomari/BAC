@@ -133,7 +133,12 @@ export const themes: Record<"light" | "dark", Theme> = {
       "--figure-ink": "#0A0A0A",
       "--figure-ink-soft": "#3D3D3D",
       "--figure-grid": "#E6E6E6",
-      "--figure-accent": "var(--color-signal)",
+      // Les SCÈNES et figures gardent provisoirement le sarcelle d'avant la
+      // refonte : treize portes de scène lisent leurs pixels contre cette
+      // teinte (seuils de chrominance calibrés dessus) ; le rouge signal en
+      // faisait rougir six. Passer les scènes au rouge = un chantier à part,
+      // porte par porte (docs/refonte/00-plan.md).
+      "--figure-accent": "#00746A",
       "--figure-energy-C": "#3C5C98",
       "--figure-energy-L": "#386B3A",
       "--figure-regime-periodic": "#3C5C98",
@@ -206,7 +211,7 @@ export const themes: Record<"light" | "dark", Theme> = {
       "--figure-ink": "#F2F2F2",
       "--figure-ink-soft": "#C4C4C4",
       "--figure-grid": "#262626",
-      "--figure-accent": "var(--color-signal)",
+      "--figure-accent": "#6DC3B8",
       "--figure-energy-C": "#86A5DE",
       "--figure-energy-L": "#83B384",
       "--figure-regime-periodic": "#86A5DE",
