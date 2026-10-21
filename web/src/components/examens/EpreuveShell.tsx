@@ -58,6 +58,8 @@ export interface ExamQuestionData {
 }
 
 export interface ExamExoData {
+  /** Le numéro de l'exercice sur la copie (partagé par ses morceaux), s'il se lit. */
+  numero: number | null;
   subject: string;
   notionSlug: string;
   notionTitle: string;
@@ -75,6 +77,8 @@ export interface EpreuveData {
   pts: number;
   dureeOfficielleMin: number;
   complete: boolean;
+  /** Le nombre d'exercices du SUJET (un exercice peut être servi en morceaux). */
+  nbExercices: number;
   exercices: ExamExoData[];
 }
 
@@ -99,12 +103,103 @@ function formatNote(n: number): string {
 type ExoData = EpreuveData["exercices"][number];
 
 /**
+ * Les exercices DU SUJET : les morceaux consécutifs qui partagent un numéro de
+ * copie forment un seul exercice (SPC 2023 normale : 4 exercices servis en 10
+ * morceaux). Un morceau sans numéro lisible reste seul.
+ */
+interface GroupeExo {
+  numero: number | null;
+  /** Rang du premier morceau (pour l'ancre `#exo-n`). */
+  premier: number;
+  morceaux: number[];
+  /** Somme des barèmes transcrits ; null si aucun morceau n'en porte. */
+  pts: number | null;
+}
+function grouperExercices(exercices: ExoData[]): GroupeExo[] {
+  const groupes: GroupeExo[] = [];
+  exercices.forEach((exo, i) => {
+    const dernier = groupes[groupes.length - 1];
+    if (dernier && exo.numero != null && dernier.numero === exo.numero) {
+      dernier.morceaux.push(i);
+      if (exo.baremeTotal != null) dernier.pts = (dernier.pts ?? 0) + exo.baremeTotal;
+    } else {
+      groupes.push({ numero: exo.numero, premier: i, morceaux: [i], pts: exo.baremeTotal ?? null });
+    }
+  });
+  return groupes;
+}
+const arrondi = (n: number) => Math.round(n * 100) / 100;
+
+/**
+ * GRILLE (refonte 2026-10) — la carte du sujet : une barre découpée au prorata
+ * des points de chaque exercice DU SUJET. Les libellés sont des LIENS vers
+ * l'exercice (ancres `#exo-n`) ; avant « Commencer », ce sont de simples
+ * repères (le sujet n'est pas encore dans le DOM, il n'y a rien où sauter).
+ */
+function CarteSujet({
+  groupes,
+  liens,
+  gagnesParExo,
+}: {
+  groupes: GroupeExo[];
+  liens: boolean;
+  /** En correction : les points que l'élève s'est accordés, par morceau. */
+  gagnesParExo?: number[];
+}) {
+  return (
+    <ol aria-label="Plan du sujet" className="flex w-full gap-1">
+      {groupes.map((g, k) => {
+        const gagnes = gagnesParExo ? g.morceaux.reduce((s, i) => s + gagnesParExo[i], 0) : null;
+        const contenu = (
+          <>
+            <span className="block truncate text-caption font-semibold text-primary tnum">
+              {g.numero != null ? `Ex. ${g.numero}` : "Partie"}
+            </span>
+            <span className="block truncate text-caption text-secondary tnum">
+              {gagnes != null && g.pts != null
+                ? `${formatPoints(arrondi(gagnes))} / ${formatPoints(arrondi(g.pts))}`
+                : g.pts != null
+                  ? `${formatPoints(arrondi(g.pts))} pts`
+                  : ""}
+            </span>
+          </>
+        );
+        return (
+          <li
+            key={k}
+            className="min-w-0 border-t-4 border-accent pt-1.5"
+            style={{ flex: `${g.pts != null && g.pts > 0 ? g.pts : 1} 1 0` }}
+          >
+            {liens ? (
+              <a
+                href={`#exo-${g.premier + 1}`}
+                className="block min-h-touch py-1 hover:underline focus-ring"
+              >
+                {contenu}
+              </a>
+            ) : (
+              <span className="block py-1">{contenu}</span>
+            )}
+          </li>
+        );
+      })}
+    </ol>
+  );
+}
+
+/**
  * Un exercice de l'épreuve, MÉMOÏSÉ (2026-09-05). La révélation progressive
  * fait un commit par question ; sans mémo, chaque commit réconciliait les dix
  * articles — 40 commits × tout l'arbre, et la mesure par question coûtait
  * plus qu'elle n'économisait (le sujet complet passait de 4,8 s à 11,8 s à
  * ×6). Les compteurs reçus sont BORNÉS à l'exercice : un article dont rien ne
  * change garde des props identiques et n'est pas re-rendu.
+ *
+ * GRILLE (refonte 2026-10) : plus de carte ni d'ombre. Un filet épais ouvre
+ * l'exercice ; son numéro et ses points sont imprimés en grand ; chaque
+ * question a sa colonne de barème à gauche — seulement quand le barème est
+ * TRANSCRIT du sujet (tag « (x pt) »). Une part égale calculée n'est jamais
+ * imprimée en marge comme si elle venait du sujet.
  */
 const ExerciceArticle = memo(function ExerciceArticle({
   exo,
@@ -129,149 +224,158 @@ const ExerciceArticle = memo(function ExerciceArticle({
   bareme: Map<string, number>;
 }) {
   return (
-    <li key={i}>
-      <article
-        data-exam-exo
-        className="overflow-hidden rounded-xl border border-subtle bg-surface-raised shadow-elevation-1"
-      >
-        <header className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-subtle bg-surface-container-low px-5 py-3">
-          {/* `min-w-0 break-words` : l'intitulé est un item flex, et un item
-              flex ne descend pas sous son mot le plus long. Sur les vieux
-              sujets SPC l'intitulé EST le titre (« Exercice de Chimie —
-              Première partie : suivi conductimétrique ») ; à 200 % de
-              texte sur 360 px, « conductimétrique » dépassait la carte de
-              44 à 92 px et `overflow-hidden` le coupait (2026-09-05). */}
-          <h2 className="min-w-0 break-words text-h4 font-semibold text-primary">
-            {exo.exerciseLabel ?? `Exercice ${i + 1}`}
-          </h2>
-          {/* Le sous-titre — le SUJET de l'exercice (« Pile fer-zinc : polarité
-              lue sur l'ampèremètre ») — se pliait en « … » sur téléphone :
-              24 sur 24 coupés à 390 px, 155 px visibles sur 654 (HANDOFF
-              §11.38), et `title=` ne sert à rien au doigt. Sur une ligne à
-              lui sous le titre en étroit, dans la ligne en large ; jamais
-              tronqué. */}
-          <p className="min-w-0 basis-full break-words text-body-sm text-secondary bp-medium:basis-auto bp-medium:flex-1">
-            {exo.titre}
-          </p>
-          {exo.baremeTotal != null && (
-            <span className="mono-inline shrink-0 text-body-sm text-tertiary">
-              {formatPoints(exo.baremeTotal)} pts
-            </span>
+    <li key={i} id={`exo-${i + 1}`} className="scroll-mt-40">
+      <article data-exam-exo className="border-t-2 border-accent pt-5">
+        {/* Pas de <header class> ici : la feuille d'impression masque tout
+            `header[class]` (chrome du site) — l'intitulé d'exercice, lui, doit
+            s'imprimer. */}
+        <div className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-5 gap-y-1 bp-medium:grid-cols-[4.5rem_minmax(0,1fr)_auto]">
+          {/* Le numéro de l'exercice SUR LA COPIE (ses morceaux le partagent),
+              jamais le rang du morceau dans la page. */}
+          <span
+            aria-hidden="true"
+            className="font-display text-h1 font-bold leading-none text-primary wdth-62 tnum bp-medium:text-display"
+          >
+            {exo.numero ?? "·"}
+          </span>
+          <div className="min-w-0">
+            {/* `min-w-0 break-words` : sur les vieux sujets SPC l'intitulé EST
+                le titre (« Exercice de Chimie — Première partie : suivi
+                conductimétrique ») ; à 200 % de texte sur 360 px, un mot long
+                débordait la colonne (2026-09-05). */}
+            <h2 className="min-w-0 break-words font-display text-h3 font-bold text-primary">
+              {exo.exerciseLabel ?? `Exercice ${i + 1}`}
+            </h2>
+            {/* Le sujet de l'exercice — jamais tronqué (HANDOFF §11.38). */}
+            <p className="mt-1 min-w-0 break-words text-body-sm text-secondary">
+              {exo.titre}
+            </p>
+          </div>
+          {exo.baremeTotal != null && (
+            <p className="col-start-2 text-body-sm text-secondary bp-medium:col-start-auto bp-medium:text-right">
+              <span className="font-display text-h2 font-bold text-primary wdth-75 tnum">
+                {formatPoints(exo.baremeTotal)}
+              </span>{" "}
+              pts
+            </p>
           )}
-        </header>
-        <div className="space-y-5 px-5 py-5">
-          {exo.intro && nbSujet > 0 && <Md>{exo.intro}</Md>}
+        </div>
+
+        <div className="mt-6 space-y-6">
+          {exo.intro && nbSujet > 0 && (
+            <div className="bp-medium:pl-[5.75rem]">
+              <Md className="max-w-[72ch]">{exo.intro}</Md>
+            </div>
+          )}
           {exo.questions.map((q, k) => {
             if (k >= nbSujet) return null;
             const cle = `${i}:${q.id}`;
             const verdict = verdicts[cle];
-            const qPts = bareme.get(cle) ?? 0;
+            const qPts = bareme.get(cle) ?? 0;
+            const transcrit = ptsDepuisStem(q.stem);
             return (
-              <div key={q.id} className="border-t border-subtle pt-4 first:border-t-0 first:pt-0">
-                {q.part && (
-                  <p className="mb-1 text-caption font-medium uppercase tracking-eyebrow text-tertiary">
-                    <Md inline>{q.part}</Md>
-                  </p>
-                )}
-                <Md>{q.stem}</Md>
-
-                {/* ATTEMPT-FIRST ABSOLU : le raisonnement n’entre dans
-                    le DOM qu’en phase correction — dom-truth l’asserte. */}
-                {enCorrection && k >= nbCorrige && (
-                  <p className="mt-3 text-body-sm text-tertiary" aria-busy="true">
-                    Le corrigé se prépare…
-                  </p>
-                )}
-                {enCorrection && k < nbCorrige && (
-                  <div data-exam-corrige className="mt-3 rounded-lg border border-subtle bg-surface-container-low p-4">
-                    <p className="mb-2 text-caption font-medium uppercase tracking-eyebrow text-secondary">
-                      Raisonnement expert
+              <div
+                key={q.id}
+                className="grid grid-cols-1 gap-x-5 border-t border-subtle pt-5 first:border-t-0 first:pt-0 bp-medium:grid-cols-[4.5rem_minmax(0,1fr)]"
+              >
+                {/* La colonne de barème — le point TRANSCRIT seulement. */}
+                <p className="hidden pt-0.5 text-body-sm font-semibold text-secondary tnum bp-medium:block">
+                  {transcrit != null ? `${formatPoints(transcrit)} pt` : ""}
+                </p>
+                <div className="min-w-0 max-w-[72ch]">
+                  {q.part && (
+                    <p className="mb-1 text-caption font-semibold uppercase tracking-eyebrow text-secondary">
+                      <Md inline>{q.part}</Md>
                     </p>
-                    <Md>{q.reasoning}</Md>
+                  )}
+                  <Md>{q.stem}</Md>
+
+                  {/* ATTEMPT-FIRST ABSOLU : le raisonnement n’entre dans
+                      le DOM qu’en phase correction — dom-truth l’asserte. */}
+                  {enCorrection && k >= nbCorrige && (
+                    <p className="mt-3 text-body-sm text-tertiary" aria-busy="true">
+                      Le corrigé se prépare…
+                    </p>
+                  )}
+                  {enCorrection && k < nbCorrige && (
                     <div
-                      role="radiogroup"
-                      aria-label={frenchTypography(`Auto-évaluation de la question (${formatPoints(qPts)} pt)`)}
-                      className="mt-4 flex flex-wrap items-center gap-2"
+                      data-exam-corrige
+                      className="mt-4 border-l-2 border-accent bg-surface-container-low py-4 pl-5 pr-4"
                     >
-                      <span className="text-body-sm text-secondary">
-                        Ta copie :
-                      </span>
-                      {/* Motif ARIA « radiogroup » (HANDOFF §11.39) : UN arrêt de
-                          tabulation par groupe — le radio coché, sinon le premier —
-                          et les flèches déplacent le focus ET cochent. Avant : 144
-                          radios tabulables pour 48 questions, flèches inertes. */}
-                      {(["juste", "partiel", "faux"] as const).map((v, j, tous) => (
-                        <button
-                          key={v}
-                          type="button"
-                          role="radio"
-                          aria-checked={verdict === v}
-                          tabIndex={verdict === v || (!verdict && j === 0) ? 0 : -1}
-                          onClick={() =>
-                            setVerdicts((prev) => ({ ...prev, [cle]: v }))
-                          }
-                          onKeyDown={(e) => {
-                            const pas = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : 0;
-                            if (!pas) return;
-                            e.preventDefault();
-                            const suivant = tous[(j + pas + tous.length) % tous.length];
-                            setVerdicts((prev) => ({ ...prev, [cle]: suivant }));
-                            const groupe = e.currentTarget.parentElement;
-                            const cibles = groupe ? groupe.querySelectorAll<HTMLButtonElement>("[role=radio]") : null;
-                            cibles?.[(j + pas + tous.length) % tous.length]?.focus();
-                          }}
-                          className={cn(
-                            "min-h-touch rounded-lg border px-3 text-body-sm font-medium",
-                            "state-layer focus-ring [--focus-radius:8px]",
-                            "transition-colors duration-micro ease-enter",
-                            verdict === v
-                              ? "border-field bg-surface-overlay text-primary shadow-elevation-1"
-                              : "border-subtle text-secondary hover:text-primary"
-                          )}
-                        >
-                          {v === "juste"
-                            ? `Juste · ${formatPoints(qPts)} pt`
-                            : v === "partiel"
-                              ? `Partiel · ${formatPoints(qPts / 2)}`
-                              : "Faux · 0"}
-                        </button>
-                      ))}
+                      <p className="mb-2 text-caption font-semibold uppercase tracking-eyebrow text-secondary">
+                        Raisonnement expert
+                      </p>
+                      <Md>{q.reasoning}</Md>
+                      <div
+                        role="radiogroup"
+                        aria-label={frenchTypography(`Auto-évaluation de la question (${formatPoints(qPts)} pt)`)}
+                        className="mt-4 flex flex-wrap items-center gap-2"
+                      >
+                        <span className="text-body-sm text-secondary">
+                          Ta copie :
+                        </span>
+                        {/* Motif ARIA « radiogroup » (HANDOFF §11.39) : UN arrêt de
+                            tabulation par groupe — le radio coché, sinon le premier —
+                            et les flèches déplacent le focus ET cochent. Avant : 144
+                            radios tabulables pour 48 questions, flèches inertes. */}
+                        {(["juste", "partiel", "faux"] as const).map((v, j, tous) => (
+                          <button
+                            key={v}
+                            type="button"
+                            role="radio"
+                            aria-checked={verdict === v}
+                            tabIndex={verdict === v || (!verdict && j === 0) ? 0 : -1}
+                            onClick={() =>
+                              setVerdicts((prev) => ({ ...prev, [cle]: v }))
+                            }
+                            onKeyDown={(e) => {
+                              const pas = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : 0;
+                              if (!pas) return;
+                              e.preventDefault();
+                              const suivant = tous[(j + pas + tous.length) % tous.length];
+                              setVerdicts((prev) => ({ ...prev, [cle]: suivant }));
+                              const groupe = e.currentTarget.parentElement;
+                              const cibles = groupe ? groupe.querySelectorAll<HTMLButtonElement>("[role=radio]") : null;
+                              cibles?.[(j + pas + tous.length) % tous.length]?.focus();
+                            }}
+                            className={cn(
+                              "min-h-touch border px-3 text-body-sm font-semibold tnum",
+                              "state-layer focus-ring",
+                              "transition-colors duration-micro ease-enter",
+                              verdict === v
+                                ? "border-accent bg-accent text-on-accent"
+                                : "border-field bg-surface-raised text-primary"
+                            )}
+                          >
+                            {v === "juste"
+                              ? `Juste · ${formatPoints(qPts)} pt`
+                              : v === "partiel"
+                                ? `Partiel · ${formatPoints(qPts / 2)}`
+                                : "Faux · 0"}
+                          </button>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             );
           })}
           {nbSujet < exo.questions.length && (
-            <p className="text-body-sm text-tertiary" aria-busy="true">
+            <p className="text-body-sm text-tertiary bp-medium:pl-[5.75rem]" aria-busy="true">
               Le sujet se prépare…
             </p>
           )}
           {enCorrection && (
-            <p className="border-t border-subtle pt-4 text-body-sm">
+            <p className="border-t border-subtle pt-4 text-body-sm bp-medium:pl-[5.75rem]">
               <Link
                 href={notionHref(exo.subject, exo.notionSlug)}
                 className={cn(
-                  "font-medium text-accent underline-offset-2 hover:underline",
-                  "focus-ring rounded [--focus-radius:4px]",
-                  //  CIBLE TACTILE (§11.111). Mesuré à 284×18 : sous le plancher
-                  //  AA de 24×24 (WCAG 2.5.8). L'exception « cible en ligne dans
-                  //  une phrase » ne s'applique PAS — ce lien est le seul contenu
-                  //  de son paragraphe, donc une commande de navigation à part
-                  //  entière, pas un mot souligné au fil du texte.
-                  //  `inline-block` + `py-1.5` porte la hauteur de frappe à 30 px
-                  //  sans toucher à la taille du texte.
-                  //
-                  //  `max-w-full break-words` (2026-09-22, §11.183) : une boîte
-                  //  `inline-block` se dimensionne sur son CONTENU et ne descend
-                  //  jamais sous lui. À 320 px et 200 % de texte, ce lien mesurait
-                  //  263 px dans une carte qui en offre ~213 : il sortait de 50 px
-                  //  et l'`overflow-hidden` de la carte le COUPAIT — perte de
-                  //  contenu, WCAG 1.4.4, sur 10 épreuves SPC (les exercices de
-                  //  modulation, dont le titre de notion est le plus long).
-                  //  `max-w-full` borne la boîte ; `break-words` laisse
-                  //  « électromagnétiques » se couper plutôt que de déborder seul.
-                  //  La hauteur de frappe de 30 px n'est pas touchée.
+                  "font-semibold text-primary underline underline-offset-2 hover:text-secondary",
+                  "focus-ring",
+                  //  CIBLE TACTILE (§11.111) : 30 px de hauteur de frappe ;
+                  //  `max-w-full break-words` : jamais de débord à 320 px et
+                  //  200 % de texte (§11.183).
                   "inline-block max-w-full break-words py-1.5"
                 )}
               >
@@ -482,73 +586,129 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
   }, [verdicts, bareme, epreuve]);
 
   const depassement = secondes > epreuve.dureeOfficielleMin * 60;
+  // Part de la durée officielle écoulée — un FAIT, dessiné comme un filet
+  // d'encre qui s'allonge. Jamais de rouge, jamais de compte à rebours.
+  const partDuree = Math.min(1, secondes / Math.max(1, epreuve.dureeOfficielleMin * 60));
+
+  // En correction : les points que l'élève s'est accordés, exercice par
+  // exercice (dérivés de SES verdicts — rien d'autre n'est inventé).
+  const gagnesParExo = useMemo(() => {
+    const g = epreuve.exercices.map(() => 0);
+    for (const [cle, v] of Object.entries(verdicts)) {
+      const i = Number(cle.slice(0, cle.indexOf(":")));
+      const pts = bareme.get(cle) ?? 0;
+      g[i] += v === "juste" ? pts : v === "partiel" ? pts / 2 : 0;
+    }
+    return g;
+  }, [verdicts, bareme, epreuve]);
+
+  const duree = `${epreuve.dureeOfficielleMin / 60} h`;
+  const groupes = useMemo(() => grouperExercices(epreuve.exercices), [epreuve]);
 
   // ── Phase seuil ──────────────────────────────────────────────────────────
   if (phase === "seuil") {
+    const consignes = [
+      <>
+        Durée officielle : <span className="font-semibold text-primary tnum">{duree}</span>.
+        Le chrono affiche le temps écoulé, calmement. Tu peux le mettre en
+        pause : c’est une répétition, pas une surveillance.
+      </>,
+      <>{frenchTypography("Travaille sur papier, comme le jour J — l’écran sert à lire le sujet.")}</>,
+      <>
+        Les corrections n’apparaissent qu’après « Terminer l’épreuve » ; tu
+        t’auto-évalues ensuite question par question, au barème.
+      </>,
+    ];
+    if (!epreuve.complete) {
+      consignes.push(
+        <span className="text-primary">
+          {frenchTypography(
+            `Épreuve partielle : ${formatPoints(epreuve.pts)} pts sur 20 sont disponibles — la note sera ramenée sur 20 par règle de trois, à titre indicatif.`
+          )}
+        </span>
+      );
+    }
     return (
       <>
         {statut}
 
-      <section
-        aria-label="Conditions de l'épreuve"
-        className="rounded-xl border border-subtle bg-surface-raised p-6 shadow-elevation-1 bp-medium:p-8"
-      >
-        <p className="text-caption font-medium uppercase tracking-eyebrow text-secondary">
-          {epreuve.filiereLabel}
-        </p>
-        <h2 className="mt-1 font-display text-h2 font-bold text-primary">
-          Avant de commencer
-        </h2>
-        <ul className="mt-4 space-y-2 text-body text-secondary">
-          <li>
-            Durée officielle :{" "}
-            <span className="mono-inline text-primary">
-              {epreuve.dureeOfficielleMin / 60} h
-            </span>{" "}
-            — le chrono affiche le temps écoulé, calmement. Tu peux le mettre
-            en pause : c’est une répétition, pas une surveillance.
-          </li>
-          <li>
-            {frenchTypography(
-              "Travaille sur papier, comme le jour J — l’écran sert à lire le sujet."
-            )}
-          </li>
-          <li>
-            Les corrections n’apparaissent qu’après « Terminer l’épreuve » ;
-            tu t’auto-évalues ensuite question par question, au barème.
-          </li>
-          {!epreuve.complete && (
-            <li className="text-primary">
-              {frenchTypography(
-                `Épreuve partielle : ${formatPoints(epreuve.pts)} pts sur 20 sont disponibles — la note sera ramenée sur 20 par règle de trois, à titre indicatif.`
-              )}
-            </li>
-          )}
-        </ul>
-        <button
-          type="button"
-          onClick={commencer}
-          disabled={!pret || chargement}
-          aria-busy={!pret || chargement || undefined}
-          data-primary-action
-          className="btn-primary mt-8"
+        <section
+          aria-label="Conditions de l'épreuve"
+          className="grid grid-cols-1 gap-x-12 gap-y-10 border-t-2 border-accent pt-8 bp-large:grid-cols-12"
         >
-          Commencer l’épreuve
-        </button>
-        {/* Avant l'hydratation, c'est la ligne globale « La page se prépare… »
-            (HydrationNotice, §11.28) qui parle ; ici, seulement l'attente du
-            module après l'appui. */}
-        {chargement && (
-          <p className="mt-2 text-caption text-tertiary" role="status">
-            Le sujet se prépare…
-          </p>
-        )}
-        {erreurChargement && (
-          <p className="mt-2 text-caption text-primary" role="alert">
-            Le sujet n’a pas pu se charger — vérifie la connexion et réessaie.
-          </p>
-        )}
-      </section>
+          <div className="bp-large:col-span-7">
+            <h2 className="font-display text-h2 font-bold text-primary">
+              Avant de commencer
+            </h2>
+            <ol className="mt-6 border-t border-subtle">
+              {consignes.map((c, k) => (
+                <li
+                  key={k}
+                  className="grid grid-cols-[3rem_minmax(0,1fr)] items-baseline gap-x-4 border-b border-subtle py-4"
+                >
+                  <span aria-hidden="true" className="font-display text-h2 font-bold leading-none text-primary wdth-62 tnum">
+                    {k + 1}
+                  </span>
+                  <p className="max-w-[64ch] text-body text-secondary">{c}</p>
+                </li>
+              ))}
+            </ol>
+            <button
+              type="button"
+              onClick={commencer}
+              disabled={!pret || chargement}
+              aria-busy={!pret || chargement || undefined}
+              data-primary-action
+              className="btn-primary mt-8"
+            >
+              Commencer l’épreuve
+            </button>
+            {/* Avant l'hydratation, c'est la ligne globale « La page se prépare… »
+                (HydrationNotice, §11.28) qui parle ; ici, seulement l'attente du
+                module après l'appui. */}
+            {chargement && (
+              <p className="mt-2 text-caption text-tertiary" role="status">
+                Le sujet se prépare…
+              </p>
+            )}
+            {erreurChargement && (
+              <p className="mt-2 text-caption text-primary" role="alert">
+                Le sujet n’a pas pu se charger — vérifie la connexion et réessaie.
+              </p>
+            )}
+          </div>
+
+          <div className="bp-large:col-span-5">
+            <h2 className="font-display text-h2 font-bold text-primary">
+              Le sujet
+            </h2>
+            <p className="mt-2 text-body-sm text-secondary">
+              {epreuve.nbExercices} exercice{epreuve.nbExercices > 1 ? "s" : ""} à traiter
+              dans l’ordre de ton choix — la largeur de chaque bloc suit son barème.
+            </p>
+            <div className="mt-6">
+              <CarteSujet groupes={groupes} liens={false} />
+            </div>
+            <ul className="mt-6 border-t border-subtle">
+              {epreuve.exercices.map((exo, i) => (
+                <li
+                  key={i}
+                  className="grid grid-cols-[2.5rem_minmax(0,1fr)_auto] items-baseline gap-x-3 border-b border-subtle py-3"
+                >
+                  <span aria-hidden="true" className="text-body-sm font-semibold text-tertiary tnum">
+                    {exo.numero ?? "·"}
+                  </span>
+                  <span className="min-w-0 break-words text-body-sm text-primary">
+                    {exo.exerciseLabel ?? `Exercice ${i + 1}`}
+                  </span>
+                  <span className="text-body-sm font-semibold text-primary tnum">
+                    {exo.baremeTotal != null ? `${formatPoints(exo.baremeTotal)} pts` : ""}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
       </>
     );
   }
@@ -560,6 +720,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
   const enCorrection = phase === "correction";
   const sujetComplet = reveleSujet >= nbUnites;
   const corrigeComplet = enCorrection && sujetComplet && reveleCorrige >= nbUnites;
+  const aNoter = note.totalQ - note.repondu;
 
   return (
     <div
@@ -567,92 +728,194 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
       data-corrige-complet={corrigeComplet ? "" : undefined}
     >
       {statut}
-      {/* Barre d’épreuve — sticky, discrète. Le chrono est un FAIT en mono,
-          pas une alarme : jamais de rouge, jamais de compte à rebours. */}
+      {/* Barre d’épreuve — sticky, sobre. Le chrono est un FAIT, pas une
+          alarme : jamais de rouge, jamais de compte à rebours. Le PREMIER
+          <p> de la barre est la ligne d'état (chrono, puis note) — la porte
+          score-annonce la lit là. */}
       <div
         data-barre-epreuve
         className={cn(
-          "sticky top-14 z-raised -mx-2 mb-8 flex items-center justify-between gap-3",
-          "rounded-lg border border-subtle bg-surface-raised px-4 py-2 shadow-elevation-1"
+          "sticky top-14 z-raised mb-10 bg-surface-base pt-3",
+          "print:static"
         )}
       >
-        {enCorrection ? (
-          <p className="text-body-sm text-secondary" aria-live="polite" aria-atomic="true">
-            Auto-évaluation —{" "}
-            <span className="mono-inline tabular-nums">
-              {note.repondu}/{note.totalQ}
-            </span>{" "}
-            questions notées ·{" "}
-            <span data-note-indicative className="mono-inline font-medium text-primary">
-              {formatNote(note.sur20)} / 20
-            </span>{" "}
-            <span className="text-tertiary">(indicative)</span>
-          </p>
-        ) : (
-          <p className="text-body-sm text-secondary" aria-live="off">
-            <span data-chrono className="mono-inline tabular-nums">{formatDuree(secondes)}</span>
-            {depassement && (
-              <span className="ml-2 text-tertiary">
-                — au-delà de la durée officielle
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+          {enCorrection ? (
+            <p className="min-w-0 text-body-sm text-secondary" aria-live="polite" aria-atomic="true">
+              Auto-évaluation —{" "}
+              <span className="tnum">
+                {note.repondu}/{note.totalQ}
+              </span>{" "}
+              questions notées ·{" "}
+              <span data-note-indicative className="font-semibold text-primary tnum">
+                {formatNote(note.sur20)} / 20
+              </span>{" "}
+              <span className="text-tertiary">(indicative)</span>
+            </p>
+          ) : (
+            <p className="min-w-0 text-body-sm text-secondary" aria-live="off">
+              <span className="sr-only">Temps écoulé : </span>
+              <span data-chrono className="font-display text-h3 font-bold text-primary wdth-75 tnum">
+                {formatDuree(secondes)}
               </span>
-            )}
-          </p>
-        )}
-        <div className="flex items-center gap-2">
-          {!enCorrection && (
-            <button
-              type="button"
-              onClick={() => setEnPause((p) => !p)}
-              className={cn(
-                "rounded px-2 py-1 text-body-sm font-medium text-secondary hover:text-primary",
-                "state-layer focus-ring [--focus-radius:8px]"
+              <span className="ml-2 text-tertiary">sur {duree}</span>
+              {depassement && (
+                <span className="ml-2 text-tertiary">
+                  — au-delà de la durée officielle
+                </span>
               )}
-            >
-              {enPause ? "Reprendre" : "Pause"}
-            </button>
-          )}
-          {!enCorrection && (
-            <button type="button" onClick={terminer} className="btn-primary">
-              Terminer l’épreuve
-            </button>
-          )}
-          {enCorrection && (
-            <p className="text-body-sm text-tertiary">
-              Temps mis :{" "}
-              <span className="mono-inline tabular-nums">
-                {formatDuree(chronoFinal.current)}
-              </span>
             </p>
           )}
+          <div className="hidden min-w-0 flex-1 bp-large:block print:hidden">
+            <CarteSujet
+              groupes={groupes}
+              liens
+              gagnesParExo={enCorrection ? gagnesParExo : undefined}
+            />
+          </div>
+          <div className="ml-auto flex items-center gap-2">
+            {!enCorrection && (
+              <button
+                type="button"
+                onClick={() => setEnPause((p) => !p)}
+                className={cn(
+                  "min-h-touch border border-field px-4 text-body-sm font-semibold text-primary",
+                  "state-layer focus-ring"
+                )}
+              >
+                {enPause ? "Reprendre" : "Pause"}
+              </button>
+            )}
+            {!enCorrection && (
+              <button type="button" onClick={terminer} className="btn-primary">
+                Terminer l’épreuve
+              </button>
+            )}
+            {enCorrection && (
+              <p className="text-body-sm text-tertiary">
+                Temps mis :{" "}
+                <span className="font-semibold text-primary tnum">
+                  {formatDuree(chronoFinal.current)}
+                </span>
+              </p>
+            )}
+          </div>
+        </div>
+        {/* Le filet du bas de la barre EST la durée : l'encre s'allonge avec
+            le temps écoulé, jusqu'à la durée officielle. */}
+        <div aria-hidden="true" className="mt-3 h-0.5 w-full bg-border-soft">
+          <div
+            className="h-full bg-accent"
+            style={{ width: `${((enCorrection ? 0 : partDuree) * 100).toFixed(2)}%` }}
+          />
         </div>
       </div>
 
       {enPause && !enCorrection && (
-        <p role="status" className="mb-8 rounded-lg border border-subtle bg-surface-container-low px-4 py-3 text-body-sm text-secondary">
+        <p role="status" className="mb-8 border-l-2 border-accent bg-surface-container-low px-4 py-3 text-body-sm text-secondary">
           En pause — le chrono est arrêté. Reprends quand tu es prêt.
         </p>
       )}
 
-      {/* Les exercices, dans l’ordre du sujet réel. */}
-      <ol className="space-y-8" aria-label="Exercices de l'épreuve">
-        {epreuve.exercices.map((exo, i) => (
-          <ExerciceArticle
-            key={i}
-            exo={exo}
-            i={i}
-            nbSujet={Math.min(exo.questions.length, Math.max(0, reveleSujet - debuts[i]))}
-            nbCorrige={enCorrection ? Math.min(exo.questions.length, Math.max(0, reveleCorrige - debuts[i])) : 0}
-            enCorrection={enCorrection}
-            verdicts={verdicts}
-            setVerdicts={setVerdicts}
-            bareme={bareme}
-            Md={Md}
-          />
-        ))}
-      </ol>
+      <div className="grid grid-cols-1 gap-x-12 bp-large:grid-cols-[minmax(0,1fr)_20rem]">
+        {/* Les exercices, dans l’ordre du sujet réel. */}
+        <ol className="min-w-0 space-y-14" aria-label="Exercices de l'épreuve">
+          {epreuve.exercices.map((exo, i) => (
+            <ExerciceArticle
+              key={i}
+              exo={exo}
+              i={i}
+              nbSujet={Math.min(exo.questions.length, Math.max(0, reveleSujet - debuts[i]))}
+              nbCorrige={enCorrection ? Math.min(exo.questions.length, Math.max(0, reveleCorrige - debuts[i])) : 0}
+              enCorrection={enCorrection}
+              verdicts={verdicts}
+              setVerdicts={setVerdicts}
+              bareme={bareme}
+              Md={Md}
+            />
+          ))}
+        </ol>
+
+        {/* La colonne de copie — à partir de « large » seulement ; elle
+            redit ce que la barre dit déjà, en plus posé. Masquée à
+            l'impression : la feuille n'imprime que le sujet. */}
+        <aside
+          aria-label="Ta copie"
+          className="hidden bp-large:block print:hidden"
+        >
+          <div className="sticky top-40 border-t-2 border-accent pt-5">
+            {enCorrection ? (
+              <>
+                <p className="text-caption font-semibold uppercase tracking-eyebrow text-secondary">
+                  Note indicative
+                </p>
+                <p className="mt-2 text-body-sm text-secondary">
+                  <span className="font-display text-display font-bold leading-none text-primary wdth-62 tnum">
+                    {formatNote(note.sur20)}
+                  </span>{" "}
+                  / 20
+                </p>
+                <p className="mt-4 text-body-sm text-secondary">
+                  {aNoter > 0 ? (
+                    <span className="font-semibold text-signal tnum">
+                      {aNoter} question{aNoter > 1 ? "s" : ""} à noter
+                    </span>
+                  ) : (
+                    <span className="font-semibold text-primary">Toutes les questions sont notées.</span>
+                  )}
+                </p>
+                <ul className="mt-6 border-t border-subtle">
+                  {groupes.map((g, k) => (
+                    <li
+                      key={k}
+                      className="flex items-baseline justify-between gap-3 border-b border-subtle py-2.5 text-body-sm"
+                    >
+                      <a href={`#exo-${g.premier + 1}`} className="min-w-0 truncate text-primary hover:underline focus-ring">
+                        {g.numero != null ? `Exercice ${g.numero}` : "Partie"}
+                      </a>
+                      <span className="shrink-0 text-secondary tnum">
+                        {formatPoints(arrondi(g.morceaux.reduce((t, i) => t + gagnesParExo[i], 0)))}
+                        {g.pts != null && ` / ${formatPoints(arrondi(g.pts))}`}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <>
+                <p className="text-caption font-semibold uppercase tracking-eyebrow text-secondary">
+                  Ta copie
+                </p>
+                <p className="mt-3 text-body text-primary">
+                  {frenchTypography("Rédige sur papier, comme le jour J.")}
+                </p>
+                <p className="mt-2 text-body-sm text-secondary">
+                  Les corrigés s’ouvrent après « Terminer l’épreuve » ; tu noteras
+                  alors chaque question au barème.
+                </p>
+                <ul className="mt-6 border-t border-subtle">
+                  {groupes.map((g, k) => (
+                    <li
+                      key={k}
+                      className="flex items-baseline justify-between gap-3 border-b border-subtle py-2.5 text-body-sm"
+                    >
+                      <a href={`#exo-${g.premier + 1}`} className="min-w-0 truncate text-primary hover:underline focus-ring">
+                        {g.numero != null ? `Exercice ${g.numero}` : "Partie"}
+                      </a>
+                      <span className="shrink-0 font-semibold text-primary tnum">
+                        {g.pts != null ? `${formatPoints(arrondi(g.pts))} pts` : ""}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
+        </aside>
+      </div>
 
       {!enCorrection && (
-        <div className="mt-10 flex justify-center">
+        <div className="mt-14 flex border-t-2 border-accent pt-6">
           <button type="button" onClick={terminer} className="btn-primary">
             Terminer l’épreuve
           </button>
@@ -662,21 +925,21 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
       {enCorrection && (
         <section
           aria-label="Bilan de l'auto-évaluation"
-          className="mt-10 rounded-xl border border-subtle bg-surface-raised p-6 shadow-elevation-1"
+          className="mt-14 grid grid-cols-1 gap-x-12 gap-y-4 border-t-2 border-accent pt-6 bp-large:grid-cols-12"
         >
-          <h2 className="font-display text-h3 font-semibold text-primary">
+          <h2 className="font-display text-h2 font-bold text-primary bp-large:col-span-4">
             Ton bilan
           </h2>
-          <p className="mt-2 text-body text-secondary">
+          <p className="max-w-[72ch] text-body text-secondary bp-large:col-span-8">
             {frenchTypography(
               `${formatPoints(note.gagne)} pts sur les ${formatPoints(epreuve.pts)} disponibles, soit`
             )}{" "}
-            <span className="mono-inline font-medium text-primary">
+            <span className="font-semibold text-primary tnum">
               {formatNote(note.sur20)} / 20
             </span>{" "}
             — auto-évaluation indicative
             {!epreuve.complete && ", ramenée sur 20 par règle de trois"}. Le
-            vrai gain est dans les questions marquées « Partiel » ou « Faux » :
+            vrai gain est dans les questions marquées « Partiel » ou « Faux » :
             remonte aux notions par les liens de chaque exercice.
           </p>
         </section>

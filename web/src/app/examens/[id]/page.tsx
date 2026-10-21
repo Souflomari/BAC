@@ -12,6 +12,7 @@ import { PageShell } from "@/components/ui/PageShell";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { listEpreuves, getEpreuve, epreuveTitre, filiereLabel } from "@/lib/examens";
 import { frenchTypography } from "@/lib/frenchTypography";
+import { formatPoints } from "@/lib/bareme";
 import { EpreuveShell, type EpreuveData } from "@/components/examens/EpreuveShell";
 import { manifesteEpreuves } from "@/lib/palette-epreuves";
 import { manifestePourHeader } from "@/lib/palette-notions";
@@ -36,9 +37,33 @@ export function generateMetadata({ params }: { params: { id: string } }): Metada
   };
 }
 
+/**
+ * Le numéro de l'exercice SUR LA COPIE — le même que celui qui fait le compte
+ * « N exercices » de `lib/examens` : le libellé (« Exercice 3 », « Exercice
+ * II ») fait foi ; dans son silence, l'identifiant (`-x3`, convention K-7
+ * bis) ; et une épreuve dont AUCUN libellé n'est numéroté se lit entièrement
+ * sur les identifiants (SPC 2011 normale nomme ses exercices par discipline).
+ * Plusieurs morceaux d'un même exercice partagent ce numéro.
+ */
+const NUMERO_LIBELLE = /Exercice\s+([IVX]+|\d+)/i;
+const ROMAINS: Record<string, number> = { I: 1, II: 2, III: 3, IV: 4, V: 5, VI: 6, VII: 7, VIII: 8, IX: 9, X: 10 };
+function numeroSurLaCopie(label: string | undefined, id: string, parIdentifiant: boolean): number | null {
+  if (!parIdentifiant && label) {
+    const m = label.match(NUMERO_LIBELLE);
+    if (m) {
+      const brut = m[1].toUpperCase();
+      const n = ROMAINS[brut] ?? parseInt(brut, 10);
+      if (!Number.isNaN(n)) return n;
+    }
+  }
+  const m = id.match(/-x(\d+)/i);
+  return m ? parseInt(m[1], 10) : null;
+}
+
 export default function EpreuvePage({ params }: { params: { id: string } }) {
   const ep = getEpreuve(params.id);
   if (!ep) notFound();
+  const parIdentifiant = ep.exercices.every((x) => !NUMERO_LIBELLE.test(x.exerciseLabel ?? ""));
 
   const data: EpreuveData = {
     id: ep.id,
@@ -47,7 +72,9 @@ export default function EpreuvePage({ params }: { params: { id: string } }) {
     pts: ep.pts,
     dureeOfficielleMin: ep.dureeOfficielleMin,
     complete: ep.complete,
+    nbExercices: ep.nbExercices,
     exercices: ep.exercices.map((x) => ({
+      numero: numeroSurLaCopie(x.exerciseLabel, x.entry.id, parIdentifiant),
       subject: x.subject,
       notionSlug: x.notionSlug,
       notionTitle: frenchTypography(x.notionTitle),
@@ -74,9 +101,21 @@ export default function EpreuvePage({ params }: { params: { id: string } }) {
     })),
   };
 
+  const faits: { valeur: string; unite: string; libelle: string }[] = [
+    { valeur: String(ep.dureeOfficielleMin / 60), unite: "h", libelle: "durée officielle" },
+    {
+      valeur: formatPoints(ep.pts),
+      unite: "pts",
+      // « 10,5 pts » nu se lit « épreuve sur 10,5 » : la partielle le dit
+      // tout de suite (SM 2020, la seule du corpus).
+      libelle: ep.complete ? "barème national" : "sur 20 disponibles",
+    },
+    { valeur: String(ep.nbExercices), unite: ep.nbExercices > 1 ? "exercices" : "exercice", libelle: "sur le sujet" },
+  ];
+
   return (
     <PageShell epreuves={manifesteEpreuves()} notions={manifestePourHeader()} width="page">
-      <header className="mb-8">
+      <header className="mb-10">
         <Breadcrumb
           segments={[
             { label: "Accueil", href: "/" },
@@ -84,22 +123,31 @@ export default function EpreuvePage({ params }: { params: { id: string } }) {
             { label: `${ep.year} — ${ep.session === "normale" ? "normale" : "rattrapage"}` },
           ]}
         />
-        <h1 className="font-display text-h1 bp-medium:text-display font-bold text-primary">
-          {epreuveTitre(ep)}
-        </h1>
-        <p className="mt-2 text-body-sm text-secondary">
-          {filiereLabel(ep.filiere)} ·{" "}
-          {/* « 10,5 pts » nu se lit « épreuve sur 10,5 ». Le sous-titre de
-              l'index le dit déjà (« sur 20 disponibles ») ; le masthead de
-              la page, lui, ne le disait qu'un panneau plus bas. La seule
-              épreuve partielle du corpus (SM 2020) portait donc, en tête de
-              page, un nombre dont le sens n'arrivait qu'après. */}
-          <span className="mono-inline tabular-nums">
-            {String(ep.pts).replace(".", ",")} pts
-            {!ep.complete && " sur 20 disponibles"}
-          </span>{" "}
-          · {ep.dureeOfficielleMin / 60} h
-        </p>
+        {/* GRILLE (refonte 2026-10) : le titre à gauche, les trois faits qui
+            décident de la séance à droite, en grands chiffres. */}
+        <div className="grid grid-cols-1 items-end gap-x-12 gap-y-6 bp-large:grid-cols-12">
+          <div className="bp-large:col-span-7">
+            <p className="text-caption font-semibold uppercase tracking-eyebrow text-secondary">
+              {filiereLabel(ep.filiere)}
+            </p>
+            <h1 className="mt-2 font-display text-h1 font-bold text-primary bp-medium:text-display">
+              {epreuveTitre(ep)}
+            </h1>
+          </div>
+          <dl className="grid grid-cols-3 gap-x-6 border-t-2 border-accent pt-3 bp-large:col-span-5">
+            {faits.map((f) => (
+              <div key={f.libelle} className="min-w-0">
+                <dt className="text-caption text-secondary">{f.libelle}</dt>
+                <dd className="mt-1 text-body-sm text-secondary">
+                  <span className="font-display text-h1 font-bold leading-none text-primary wdth-62 tnum">
+                    {f.valeur}
+                  </span>{" "}
+                  {f.unite}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
       </header>
       <EpreuveShell epreuve={data} />
     </PageShell>

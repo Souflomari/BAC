@@ -10,7 +10,7 @@
 import type { Metadata } from "next";
 import { Link } from "@/components/ui/Lien";
 import { PageShell } from "@/components/ui/PageShell";
-import { listEpreuves, epreuveTitre, filiereLabel, type Epreuve } from "@/lib/examens";
+import { listEpreuves, filiereLabel, type Epreuve } from "@/lib/examens";
 import { cn } from "@/lib/utils";
 import { manifesteEpreuves } from "@/lib/palette-epreuves";
 import { manifestePourHeader } from "@/lib/palette-notions";
@@ -22,33 +22,51 @@ export const metadata: Metadata = {
   alternates: { canonical: "/examens" },
 };
 
-function CarteEpreuve({ ep }: { ep: Epreuve }) {
+/**
+ * GRILLE (refonte 2026-10) — une ligne d'horaire : l'année en grand, la
+ * session, puis les faits (exercices, points, durée) alignés en colonnes.
+ * Les contrats de la porte restent sur la ligne : `data-epreuve` sur le lien,
+ * `data-epreuve-exos` (« 4 exercices · 10 parties », le sujet puis les
+ * morceaux) et `data-epreuve-pts` (« 20 pts » ou « 10,5 pts sur 20
+ * disponibles »).
+ */
+function LigneEpreuve({ ep }: { ep: Epreuve }) {
   return (
-    <li className="min-w-0">
+    <li className="min-w-0 border-b border-subtle">
       <Link
         href={`/examens/${ep.id}`}
         data-epreuve={ep.id}
         className={cn(
-          "flex w-full min-w-0 items-baseline gap-3 rounded-lg px-3 py-3 -mx-3",
-          "state-layer focus-ring [--focus-radius:8px]"
+          "grid min-h-touch grid-cols-[4.5rem_minmax(0,1fr)] items-baseline gap-x-4 py-3",
+          "state-layer focus-ring"
         )}
       >
-        <span className="min-w-0 flex-1">
-          <span className="block text-body font-medium text-primary">
-            {epreuveTitre(ep)}
+        <span className="font-display text-h2 font-bold leading-none text-primary wdth-62 tnum">
+          {ep.year}
+        </span>
+        <span className="min-w-0">
+          <span className="flex flex-wrap items-baseline gap-x-2">
+            <span className="text-body font-semibold text-primary">
+              {ep.session === "normale" ? "Session normale" : "Rattrapage"}
+            </span>
+            {!ep.complete && (
+              <span className="border border-field px-1.5 text-caption font-semibold uppercase tracking-eyebrow text-secondary">
+                Partielle
+              </span>
+            )}
           </span>
-          <span className="mt-0.5 block text-body-sm text-secondary">
+          <span className="mt-0.5 block text-body-sm text-secondary tnum">
             <span data-epreuve-exos>
               {ep.nbExercices} exercice{ep.nbExercices > 1 ? "s" : ""}
               {/* Le sujet compte N exercices ; le produit les sert en M
                   morceaux quand un exercice se répartit entre plusieurs
-                  notions. On dit les deux — sinon la carte annonce 4 et la
+                  notions. On dit les deux — sinon la ligne annonce 4 et la
                   page en montre 10. */}
               {ep.exercices.length > ep.nbExercices &&
                 ` · ${ep.exercices.length} parties`}
             </span>{" "}
             ·{" "}
-            <span className="mono-inline tabular-nums" data-epreuve-pts>
+            <span data-epreuve-pts>
               {ep.complete
                 ? `${Math.round(ep.pts)} pts`
                 : `${String(ep.pts).replace(".", ",")} pts sur 20 disponibles`}
@@ -56,11 +74,6 @@ function CarteEpreuve({ ep }: { ep: Epreuve }) {
             · {ep.dureeOfficielleMin / 60} h
           </span>
         </span>
-        {!ep.complete && (
-          <span className="shrink-0 rounded-full border border-subtle px-2.5 py-0.5 text-caption font-medium text-tertiary">
-            Partielle
-          </span>
-        )}
       </Link>
     </li>
   );
@@ -69,41 +82,60 @@ function CarteEpreuve({ ep }: { ep: Epreuve }) {
 export default function ExamensPage() {
   const epreuves = listEpreuves();
   const groupes = [
-    { titre: filiereLabel("SPC"), liste: epreuves.filter((e) => e.filiere === "SPC") },
-    { titre: filiereLabel("SExp"), liste: epreuves.filter((e) => e.filiere === "SExp") },
-    { titre: filiereLabel("SM"), liste: epreuves.filter((e) => e.filiere === "SM") },
+    { id: "SPC", liste: epreuves.filter((e) => e.filiere === "SPC") },
+    { id: "SExp", liste: epreuves.filter((e) => e.filiere === "SExp") },
+    { id: "SM", liste: epreuves.filter((e) => e.filiere === "SM") },
   ].filter((g) => g.liste.length > 0);
 
   return (
     <PageShell epreuves={manifesteEpreuves()} notions={manifestePourHeader()} width="page">
-      <header className="mb-10">
-        <h1 className="font-display text-h1 bp-medium:text-display font-bold text-primary">
-          Examens blancs
-        </h1>
-        <p className="mt-3 max-w-lead text-lead text-secondary">
-          Les épreuves du bac national, reconstituées exercice par exercice
-          depuis les sujets réels. Chronomètre calme, correction après
-          l’épreuve, auto-évaluation au barème.
+      <header className="mb-12 grid grid-cols-1 items-end gap-x-12 gap-y-6 bp-large:grid-cols-12">
+        <div className="bp-large:col-span-7">
+          <h1 className="font-display text-h1 font-bold text-primary bp-medium:text-display">
+            Examens blancs
+          </h1>
+          <p className="mt-4 max-w-[60ch] text-lead text-secondary">
+            Les épreuves du bac national, reconstituées exercice par exercice
+            depuis les sujets réels. Chronomètre calme, correction après
+            l’épreuve, auto-évaluation au barème.
+          </p>
+        </div>
+        <p className="border-t-2 border-accent pt-3 text-body-sm text-secondary bp-large:col-span-5">
+          <span className="font-display text-display font-bold leading-none text-primary wdth-62 tnum">
+            {epreuves.length}
+          </span>{" "}
+          épreuves réelles, dont{" "}
+          <span className="font-semibold text-primary tnum">
+            {epreuves.filter((e) => e.complete).length}
+          </span>{" "}
+          complètes sur 20.
         </p>
       </header>
 
-      <div className="space-y-4 bp-large:columns-2 bp-large:gap-4 bp-large:space-y-0">
-        {groupes.map((g) => (
-          <section
-            key={g.titre}
-            aria-label={g.titre}
-            className="min-w-0 break-inside-avoid rounded-xl border border-subtle bg-surface-raised p-5 shadow-elevation-1 bp-large:mb-4"
-          >
-            <h2 className="mb-2 border-b border-subtle pb-2 text-caption font-medium uppercase tracking-eyebrow text-secondary">
-              {g.titre}
-            </h2>
-            <ul role="list" className="divide-y divide-border-subtle">
-              {g.liste.map((ep) => (
-                <CarteEpreuve key={ep.id} ep={ep} />
-              ))}
-            </ul>
-          </section>
-        ))}
+      <div className="grid grid-cols-1 gap-x-12 gap-y-12 bp-large:grid-cols-3">
+        {groupes.map((g) => {
+          const [matiere, filiere] = filiereLabel(g.id).split(" · ");
+          return (
+            <section key={g.id} aria-label={filiereLabel(g.id)} className="min-w-0">
+              <div className="border-b-2 border-accent pb-3">
+                <p className="text-caption font-semibold uppercase tracking-eyebrow text-secondary">
+                  {matiere}
+                </p>
+                <h2 className="mt-1 flex items-baseline justify-between gap-3 font-display text-h2 font-bold text-primary">
+                  <span className="min-w-0">{filiere ?? matiere}</span>
+                  <span className="shrink-0 text-body-sm font-semibold text-secondary tnum">
+                    {g.liste.length} épreuve{g.liste.length > 1 ? "s" : ""}
+                  </span>
+                </h2>
+              </div>
+              <ul role="list">
+                {g.liste.map((ep) => (
+                  <LigneEpreuve key={ep.id} ep={ep} />
+                ))}
+              </ul>
+            </section>
+          );
+        })}
       </div>
     </PageShell>
   );
