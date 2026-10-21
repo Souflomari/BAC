@@ -38,6 +38,7 @@
  *   node scripts/scene-champ-pentes.mjs --essai-rouge  (chaque famille doit crier)
  */
 import { chromium } from "playwright-core";
+import { avecBanc } from "./lib/banc-navigateur.mjs";
 import { readFileSync } from "node:fs";
 import { erreursKatex } from "./lib/katex-erreurs.mjs";
 import { ergonomie } from "./lib/scene-ergonomie.mjs";
@@ -106,7 +107,7 @@ const arreter = () => { if (serveur?.pid) { try { process.kill(-serveur.pid); } 
 process.on("exit", arreter);
 process.on("SIGINT", () => { arreter(); process.exit(130); });
 
-const lancer = (args = []) => chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium", args });
+const lancer = (args = []) => chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium", args: avecBanc(args) });
 const nav = await lancer();
 const ctx = await nav.newContext({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 1 });
 const page = await ctx.newPage();

@@ -60,6 +60,7 @@
  *   BASE=http://127.0.0.1:3000 node scripts/scene-orbite.mjs --porte
  */
 import { chromium } from "playwright-core";
+import { avecBanc } from "./lib/banc-navigateur.mjs";
 import { ergonomie } from "./lib/scene-ergonomie.mjs";
 
 const ESSAI = process.argv.includes("--essai-rouge");
@@ -130,7 +131,7 @@ process.on("SIGINT", () => { arreter(); process.exit(130); });
 // PW_CHROMIUM_PATH d'abord : la CI installe SON Chromium (§11.180).
 const nav = await chromium.launch({
   executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium",
-  args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader", "--ignore-gpu-blocklist"],
+  args: avecBanc(["--use-angle=swiftshader", "--enable-unsafe-swiftshader", "--ignore-gpu-blocklist"]),
 });
 const ctx = await nav.newContext({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 1 });
 const page = await ctx.newPage();
@@ -475,7 +476,7 @@ await nav.close();
 {
   const nav2 = await chromium.launch({
     executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium",
-    args: ["--disable-webgl", "--disable-3d-apis"],
+    args: avecBanc(["--disable-webgl", "--disable-3d-apis"]),
   });
   const p2 = await (await nav2.newContext({ viewport: { width: 1280, height: 900 } })).newPage();
   await p2.goto(`${BASE}${LECON}?chapitre=${chapitre}`, { waitUntil: "load", timeout: 60000 });
@@ -511,7 +512,7 @@ await nav.close();
 }
 
 // ── Ergonomie : le clavier et le téléphone, sur le rendu (revue du 2026-09-24) ──
-await ergonomie({ lancer: (args) => chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium", args }), url: `${BASE}${LECON}?chapitre=${chapitre}`, scene: "orbite-geostationnaire", noter, essai: ESSAI, course: 0 });
+await ergonomie({ lancer: (args) => chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium", args: avecBanc(args) }), url: `${BASE}${LECON}?chapitre=${chapitre}`, scene: "orbite-geostationnaire", noter, essai: ESSAI, course: 0 });
 
 // ── Verdict ──
 const familles = [...new Set(resultats.map((r) => r.famille))];

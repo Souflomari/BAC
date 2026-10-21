@@ -45,6 +45,7 @@
  *   node scripts/scene-lorentz.mjs --essai-rouge
  */
 import { chromium } from "playwright-core";
+import { avecBanc } from "./lib/banc-navigateur.mjs";
 import { readFileSync } from "node:fs";
 import { ergonomie } from "./lib/scene-ergonomie.mjs";
 
@@ -115,7 +116,7 @@ process.on("exit", arreter);
 process.on("SIGINT", () => { arreter(); process.exit(130); });
 
 // PW_CHROMIUM_PATH d'abord : la CI installe SON Chromium (§11.180).
-const lancer = (args) => chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium", args });
+const lancer = (args) => chromium.launch({ executablePath: process.env.PW_CHROMIUM_PATH || "/opt/pw-browsers/chromium", args: avecBanc(args) });
 const nav = await lancer(["--use-angle=swiftshader", "--enable-unsafe-swiftshader", "--ignore-gpu-blocklist"]);
 const ctx = await nav.newContext({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 1 });
 const page = await ctx.newPage();
