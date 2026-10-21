@@ -245,7 +245,8 @@ async function accentDe(b64) {
  *   - les bras : sur les deux diagonales, de 0,45 R à 0,65 R, un trait à ±0,2 R
  *     (la perspective décale l'empennage, 0,7 cm au-dessus de l'anneau, d'un
  *     pixel ou deux — la tolérance suit l'échelle) ;
- *   - le plein : la part du disque central (ρ ≤ 0,2 R) couverte d'encre opaque.
+ *   - le plein : la part du disque central (ρ ≤ 0,2 R) couverte d'encre douce,
+ *     pesée pixel par pixel (2026-10-21, voir le calcul plus bas) ;
  * ⊗ : anneau ≥ 75 %, bras ≥ 75 %, plein ≤ 50 %. ⊙ : anneau ≥ 75 %, plein ≥
  * 80 %, bras ≤ 35 %. Les deux ne peuvent pas être vrais ensemble.
  *
@@ -296,12 +297,20 @@ async function glypheLu() {
         if (vu) bras++;
       }
     }
-    const opaque = 0.7 * ecart(encreDouce);
+    // Le plein se compte en ENCRE, pas en pixels « pleins » : chaque pixel du
+    // disque central pèse la part d'encre douce qu'il porte (écart au fond ÷
+    // écart de l'encre douce, borné à 1). Le comptage binaire d'avant (un pixel
+    // compte s'il dépasse 70 % de l'encre) se jouait sur 13 pixels : un
+    // décalage d'une FRACTION de pixel de la scène (mise en page Grille,
+    // 2026-10-21) en faisait passer trois sous le seuil, et le ⊙ lisible tombait
+    // à 77 % (seuil 80). Mesuré en encre : ⊙ 98 % avant, 88 % après ; ⊗ 18 %
+    // dans les deux — la séparation des deux symboles est intacte.
+    const encreRef = ecart(encreDouce);
     let pleins = 0, n = 0;
     const rc = 0.2 * R, m = Math.ceil(rc);
     for (let v = -m; v <= m; v++) for (let u = -m; u <= m; u++) {
       if (u * u + v * v > rc * rc) continue;
-      n++; if (ecart(px(cx + u, cy + v)) > opaque) pleins++;
+      n++; pleins += Math.min(1, ecart(px(cx + u, cy + v)) / encreRef);
     }
     return { R: Math.round(R * 10) / 10, anneau: anneau / 24, bras: total ? bras / total : 0, plein: n ? pleins / n : 0 };
   }, { b64, pos, encreDouce });
