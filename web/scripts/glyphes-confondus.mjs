@@ -150,7 +150,12 @@ const resultat = await page.evaluate(
 
     if (essai) {
       // Le fichier Geist BRUT, tel que le site le sert, sans plage unicode.
-      const premiere = corps.pile.split(",")[0].trim().replace(/^["']|["']$/g, "");
+      // La face Geist, nommée par SA variable (--font-geist-sans) et non par la
+      // première police du corps : depuis Grille (2026-10-21), le corps est en
+      // Archivo, et l'essai chargeait le fichier d'Archivo brut sous le nom
+      // « Geist » — qui n'a pas de grec, donc rien à confondre : essai MUET.
+      const varGeist = getComputedStyle(document.documentElement).getPropertyValue("--font-geist-sans");
+      const premiere = (varGeist.trim() ? varGeist : corps.pile).split(",")[0].trim().replace(/^["']|["']$/g, "");
       let src = null;
       for (const f of document.styleSheets) {
         let regles;
