@@ -49,9 +49,14 @@ export function ChapterQuestions({ items }: ChapterQuestionsProps) {
         </p>
       </div>
 
+      {/* Grille : les questions partagent la colonne de la prose (notion-prose)
+          — tout texte courant a la même mesure ; seules les figures et les
+          scènes prennent la largeur. Sans cette borne, la carte suivait la
+          colonne de contenu (943 px à 1280, 1 009 px à 1920) et son énoncé
+          dépassait 75 caractères (dom-truth, « prose measure »). */}
       <ol
         role="list"
-        className="space-y-5"
+        className="notion-prose space-y-5"
         aria-label="Questions de ce chapitre"
       >
         {items.map((item, i) => (

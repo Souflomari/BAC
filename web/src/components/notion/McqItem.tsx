@@ -111,7 +111,7 @@ export function McqItem({ item, index }: McqItemProps) {
         <span
           className={cn(
             "flex-shrink-0",
-            "w-7 h-7 rounded-full",
+            "w-7 h-7",
             "flex items-center justify-center",
             "bg-accent-subtle",
             "text-caption font-semibold text-accent",

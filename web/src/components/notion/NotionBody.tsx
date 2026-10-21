@@ -726,7 +726,10 @@ export function NotionBody({
       if (!item) return null; // Unknown id — silent no-op
 
       return (
-        <div key={key} className="my-10 notion-wide-band">
+        // Grille : le point d'arrêt partage la colonne de la prose
+        // (notion-prose) — c'est du texte courant, pas une figure ; sur la
+        // largeur de la bande, son énoncé dépassait 90 caractères à 1440 px.
+        <div key={key} className="my-10 notion-wide-band notion-prose">
           <CheckpointItem item={item} />
         </div>
       );
@@ -815,6 +818,13 @@ export function NotionBody({
           data-chapter-active={chapter.index === 0 ? "true" : "false"}
           hidden={chapter.index !== 0}
           className="chapter-view"
+          // Le numéro du titre de chapitre (compteur CSS `rung`) est REPOSÉ à
+          // chaque section : les chapitres non actifs portent `hidden`, donc
+          // `display: none`, et un élément non rendu n'incrémente pas un
+          // compteur — le chapitre 3 affiché seul s'annonçait « 1 ». Le
+          // compteur part de l'index du chapitre ; le h2[data-rung] l'incrémente
+          // et affiche index + 1, le même numéro que le rail.
+          style={{ counterSet: `rung ${chapter.index}` }}
         >
           {/* Le « ~N min » par chapitre est PARTI (audit R6, charge-calme
               P0-2, amendement à LESSON-EXPERIENCE-SPEC §1.3) : un budget-

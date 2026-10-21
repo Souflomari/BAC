@@ -109,171 +109,89 @@ export function MarginRail({ headings, hasItems = false, bankCount }: MarginRail
       <p aria-hidden="true" className="mb-3 text-caption text-tertiary">
         ← → pour naviguer
       </p>
-      <ol className="relative flex flex-col pt-1" role="list">
+      {/* GRILLE (refonte 2026-10) : une liste numérotée à la suisse — le
+          numéro en chiffres serrés (Archivo 62 %), le titre à côté, un filet
+          entre chaque entrée. Plus d'épine verticale ni de pastilles : le
+          chapitre courant se lit au numéro rouge signal et au titre en gras,
+          les chapitres déjà vus au numéro à l'encre, les suivants au gris.
+          Le bouton garde sa taille de texte `caption` et ses attributs
+          (aria-current, title, data-bank-rail-count) : les portes les lisent. */}
+      <ol className="flex flex-col border-t border-subtle" role="list">
         {entries.map((entry, i) => {
           const isActive = current === i;
-          // An entry is "read" if it is before or at the active one.
           const isRead = i <= current;
 
           return (
-            <li key={i} className="relative">
-              {/*
-                The spine segment for this entry: a 1px vertical line that
-                bridges from the top of this item to the bottom. Drawn
-                explicitly per-entry so the read portion vs unread can be
-                colored independently. Hidden on the last entry (no segment
-                below).
-              */}
-              {/* Audit R6 (visuel P1-6) : la ligne était en morceaux — les
-                  segments s'arrêtaient au bas de l'item (le haut du suivant,
-                  jusqu'à sa pastille, restait nu) et les pastilles de 6 et
-                  10 px n'avaient pas d'axe commun. Désormais : gabarit fixe
-                  de 10 px pour la colonne des pastilles (axe unique à 5 px),
-                  pastille calée sur la PREMIÈRE ligne (items-start + boîte
-                  d'une ligne), et le segment court de sous cette pastille
-                  jusqu'au bord de la suivante (-bottom déborde dans le li
-                  voisin ; les pastilles, z-10 et pleines, le recouvrent). */}
-              {i < entries.length - 1 && (
-                <span
-                  aria-hidden="true"
-                  className={cn(
-                    "absolute left-[4.5px] top-[21px] -bottom-[13px] w-px",
-                    isRead ? "bg-accent" : "bg-border-subtle"
-                  )}
-                />
-              )}
-
+            <li key={i} className="relative border-b border-subtle">
               <button
                 type="button"
                 onClick={() => goTo(i)}
                 disabled={!hydrated}
                 aria-busy={!hydrated || undefined}
                 title={entry.title}
-                // Active entry exposed to AT, not only by color (July-2026
-                // audit F3 side-finding: color-swap was the sole signal).
-                // "step" (not "location"): this is now a paginated sequence
-                // activated by click, not an in-page anchor jump.
                 aria-current={isActive ? "step" : undefined}
                 className={cn(
-                  // §9 touch target: 48px (raised from 44px per audit finding #2)
-                  // items-start : sur un libellé de 2-3 lignes, la pastille
-                  // reste sur la première ligne au lieu de flotter au milieu.
-                  "group relative flex w-full items-start gap-2 text-left",
-                  "min-h-touch py-2 pr-2 rounded-sm",
+                  "group relative flex w-full items-baseline gap-3 text-left",
+                  "min-h-touch py-2.5 pr-2",
                   "bg-transparent",
                   "text-caption font-medium",
-                  // Unified neutral interaction wash on the rounded hit-area
-                  // (ADR 0024 state-layer). The dot/text-color active+hover
-                  // treatment remains the secondary channel.
                   "state-layer",
-                  // Transition for color changes
                   "transition-colors duration-micro ease-enter",
-                  // Focus ring — migrated from ad-hoc pattern
                   "focus-ring",
-                  isActive
-                    ? "text-accent"
-                    // #1: idle entry label is 12px functional text — must pass 4.5:1.
-                    // Promoted from tertiary to secondary (#4A5568 light ≈7:1, #9AAABF dark ≈6:1).
-                    : "text-secondary hover:text-primary"
+                  isActive ? "text-primary" : "text-secondary hover:text-primary"
                 )}
               >
-                {/* Entry node on the spine — dans une boîte d'UNE ligne de
-                    texte (h-[18px]) et de largeur fixe (w-2.5 = le diamètre
-                    actif) : la pastille se centre sur la première ligne et
-                    sur l'axe commun, quelle que soit sa taille. */}
+                {/* Le numéro : seul repère au palier medium (rail de 56 px),
+                    numéro + titre à partir d'expanded. */}
                 <span
                   aria-hidden="true"
-                  className="flex h-[15px] w-2.5 flex-shrink-0 items-center justify-center"
-                >
-                <span
                   className={cn(
-                    "relative z-10 flex-shrink-0",
-                    // Dot: 6px diameter for read/idle, 8px for active
-                    "rounded-full",
-                    // One-shot scale settle when becoming active:
-                    // transition on transform+opacity with emphasized ease.
-                    // The CSS global reduced-motion rule will collapse this to
-                    // 0.01ms, so no-transition in reduced-motion contexts.
-                    "transition-all duration-standard",
-                    // Tailwind can't express cubic-bezier directly in class,
-                    // so we use the Tailwind token name from tailwind.config.ts
-                    "ease-emphasized",
-                    isActive
-                      ? [
-                          "w-2.5 h-2.5",
-                          "bg-accent",
-                          // Ring halo removed: size-step + accent fill alone say "you are here"
-                          // (calm-load audit finding #5 — three emphasis channels is over-recruited)
-                          "scale-100 opacity-100",
-                        ]
-                      : isRead
-                        ? [
-                            "w-1.5 h-1.5",
-                            "bg-accent/40",
-                            "scale-100 opacity-100",
-                          ]
-                        : [
-                            "w-1.5 h-1.5",
-                            "bg-border-soft",
-                            "group-hover:bg-text-tertiary",
-                            "scale-100 opacity-100",
-                          ]
+                    "w-7 flex-shrink-0 font-display wdth-62 text-h4 font-bold leading-none tnum",
+                    isActive ? "text-signal" : isRead ? "text-primary" : "text-tertiary"
                   )}
-                  aria-hidden="true"
-                />
+                >
+                  {String(i + 1).padStart(2, "0")}
                 </span>
 
-                {/* Entry label — the human section name (audit U3: the R-codes
-                    are spec vocabulary and never render; wayfinding is words).
-                    Text shows from the expanded rail (176px) up; the medium
-                    rail (52px) is dots-only with the full title on hover. */}
-                {/* Never truncate (Day-3 fallout fix): the 208px rail fits every
-                    current name; an unusually long future name wraps to a
-                    second line rather than ellipsizing wayfinding words. */}
-                {/* The ordinal mirrors the in-prose heading counter (Day-6
-                    followability) — rail and page tell one map. Human 1-based
-                    numbering, never the R-codes. */}
-                <span className="hidden bp-expanded:block leading-tight min-w-0">
-                  <span className="tabular-nums">{i + 1}</span>
-                  {" · "}
+                {/* Le titre humain du chapitre — jamais les codes R (audit U3) ;
+                    jamais tronqué : un titre long passe à la ligne. */}
+                <span
+                  className={cn(
+                    "hidden bp-expanded:block min-w-0 text-body-sm leading-snug",
+                    isActive && "font-semibold"
+                  )}
+                >
+                  <span className="sr-only">{i + 1} · </span>
                   {entry.shortTitle}
                   {/* Honest sujet count on the trailing bank entry (BANK-SPEC
                       §1) — a quiet parenthetical, never a progress meter. */}
                   {entry.count != null && (
                     <span
                       data-bank-rail-count
-                      className="ml-1 text-tertiary tabular-nums"
+                      className="ml-1 font-normal text-tertiary tabular-nums"
                     >
                       · {entry.count} sujet{entry.count > 1 ? "s" : ""}
                     </span>
                   )}
                 </span>
 
-                {/*
-                  Hover-reveal title: positioned absolutely so it never shifts
-                  the content column. Fades + slides in from the right of the
-                  label. z-50 to float above everything.
-                  pointer-events-none so it doesn't eat click events meant for
-                  the underlying button.
-                */}
+                {/* Titre au survol — utile au palier medium où seul le numéro
+                    s'affiche. Hors flux, il ne pousse jamais la colonne. */}
                 <span
                   aria-hidden="true"
                   className={cn(
                     "absolute left-full ml-3",
                     "whitespace-nowrap",
-                    "px-2 py-1 rounded",
+                    "px-2 py-1",
                     "text-caption text-secondary",
                     "bg-surface-overlay",
                     "border border-subtle",
-                    "shadow-elevation-2",
                     "pointer-events-none",
-                    "z-50",
-                    // Fade + slide: hidden by default, visible on group hover/focus
+                    "z-overlay",
                     "opacity-0 -translate-x-1",
                     "group-hover:opacity-100 group-hover:translate-x-0",
                     "group-focus-visible:opacity-100 group-focus-visible:translate-x-0",
                     "transition-[opacity,transform] duration-micro ease-enter",
-                    // Cap the tooltip at a reasonable width for long titles
                     "max-w-[28ch] truncate"
                   )}
                 >

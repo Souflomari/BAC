@@ -43,43 +43,51 @@ export interface UnitView {
   chapters: ChapterView[];
 }
 
-function ChapterRow({ subject, chapter }: { subject: string; chapter: ChapterView }) {
+// GRILLE (refonte 2026-10) : une ligne = numéro de chapitre (chiffres
+// serrés, Archivo 62 %) · titre · durée de lecture · flèche. Les lignes sont
+// séparées par des filets ; « À venir » reste la marque honnête d'un chapitre
+// non construit, en capitales calmes, jamais en pilule.
+function ChapterRow({ subject, chapter, numero }: { subject: string; chapter: ChapterView; numero: number }) {
   const inner = (
     <>
+      <span
+        aria-hidden="true"
+        className={cn(
+          "w-10 flex-shrink-0 font-display wdth-62 text-h3 font-bold leading-none tnum",
+          chapter.available ? "text-primary" : "text-tertiary"
+        )}
+      >
+        {String(numero).padStart(2, "0")}
+      </span>
       <span className="min-w-0 flex-1">
         <span
           className={cn(
-            "block text-body",
+            "block text-body-lg leading-snug",
             chapter.available
-              ? "text-primary group-hover:text-accent transition-colors duration-micro"
+              ? "text-primary group-hover:underline underline-offset-4"
               : "text-secondary"
           )}
         >
           {chapter.title}
         </span>
         {chapter.available && chapter.minutes != null && (
-          <span className="mt-0.5 block font-mono text-caption tabular-nums text-tertiary">
-            {chapter.minutes} min
+          <span className="mt-1 block text-caption tabular-nums text-tertiary">
+            {chapter.minutes} min de lecture
           </span>
         )}
       </span>
       {chapter.available ? (
         <span className="flex flex-shrink-0 items-center gap-2">
-          {/* Pas de pilule « Disponible » : sur un programme complet elle se
-              répétait 25 fois à l'identique — du bruit, pas une information
-              (§7, le regard R6). Le lien EST l'affordance ; « À venir »
-              reste la marque honnête de l'exception. */}
-          {/* Audit R6 (visuel P0-2) : 25 flèches à l'accent = l'accent ne
-              signifie plus « l'action ». Tertiaire au repos, accent au
-              survol de la ligne — l'affordance reste, l'inflation part. */}
+          {/* Pas de pilule « Disponible » (§7, le regard R6) : le lien EST
+              l'affordance. Flèche tertiaire au repos, encre au survol. */}
           <Icon
             name="arrow-right"
             size={16}
-            className="text-tertiary group-hover:text-accent translate-x-0 group-hover:translate-x-1 transition-[transform,color] duration-micro ease-out"
+            className="text-tertiary group-hover:text-primary translate-x-0 group-hover:translate-x-1 transition-[transform,color] duration-micro ease-out"
           />
         </span>
       ) : (
-        <span className="flex-shrink-0 rounded-full border border-subtle px-2.5 py-0.5 text-caption font-medium text-tertiary">
+        <span className="flex-shrink-0 text-caption font-medium uppercase tracking-eyebrow text-tertiary">
           À venir
         </span>
       )}
@@ -92,9 +100,9 @@ function ChapterRow({ subject, chapter }: { subject: string; chapter: ChapterVie
         <Link
           href={notionHref(subject, chapter.slug)}
           className={cn(
-            "group flex items-center justify-between gap-4",
-            "rounded-lg -mx-3 px-3 py-3",
-            "state-layer focus-ring [--focus-radius:12px]"
+            "group flex items-baseline justify-between gap-4",
+            "-mx-2 px-2 py-3.5",
+            "state-layer focus-ring"
           )}
         >
           {inner}
@@ -105,7 +113,7 @@ function ChapterRow({ subject, chapter }: { subject: string; chapter: ChapterVie
 
   return (
     <li
-      className="flex items-center justify-between gap-4 -mx-3 px-3 py-3"
+      className="flex items-baseline justify-between gap-4 -mx-2 px-2 py-3.5"
       aria-disabled="true"
     >
       {inner}
@@ -141,30 +149,30 @@ export function ChapterList({ subject, units }: { subject: string; units: UnitVi
     );
   }
 
-  // Studio (R6) : les unités deviennent des CARTES sur la bande large —
-  // même grammaire que la ProgrammeMap de l'accueil (surface la plus
-  // claire, bordure, deux colonnes à `large`). `min-w-0` sur la section :
-  // le piège grid min-width:auto ferait déborder un titre long (mesuré
-  // 509 px à 390 sur l'accueil — même classe de défaut).
+  // GRILLE (refonte 2026-10) : plus de cartes. Chaque unité est un bloc
+  // ouvert par un intitulé en capitales et un filet d'encre, ses chapitres
+  // numérotés en continu dans l'ordre du programme — sur ce qui est affiché
+  // (une filière choisie resserre la liste ; les numéros suivent la liste que
+  // l'élève a sous les yeux). `columns` et non `grid` (audit R6, P0-3) : les
+  // colonnes CSS équilibrent les hauteurs ; break-inside-avoid garde chaque
+  // unité entière. `min-w-0` : un titre long ne fait pas déborder la colonne.
+  let numero = 0;
   return (
-    // `columns` et non `grid` (audit R6, P0-3) : avec la grille, « Nombres
-    // complexes » (2 items) laissait un trou de ~660×330 px face à
-    // « Analyse » (7 items). Les colonnes CSS équilibrent les hauteurs ;
-    // break-inside-avoid garde chaque unité entière.
-    <div className="space-y-4 bp-large:columns-2 bp-large:gap-4 bp-large:space-y-0">
+    <div className="bp-large:columns-2 bp-large:gap-16">
       {visibleUnits.map((unit) => (
         <section
           key={unit.title}
           aria-label={unit.title}
-          className="min-w-0 break-inside-avoid rounded-xl border border-subtle bg-surface-raised p-5 shadow-elevation-1 bp-large:mb-4"
+          className="min-w-0 break-inside-avoid pb-8"
         >
-          <h2 className="mb-2 pb-2 border-b border-subtle text-caption font-medium uppercase tracking-eyebrow text-secondary">
+          <h2 className="border-b-2 border-text-secondary pb-2 text-caption font-semibold uppercase tracking-eyebrow text-primary">
             {unit.title}
           </h2>
           <ul role="list" className="divide-y divide-border-subtle">
-            {unit.chapters.map((c) => (
-              <ChapterRow key={c.slug} subject={subject} chapter={c} />
-            ))}
+            {unit.chapters.map((c) => {
+              numero += 1;
+              return <ChapterRow key={c.slug} subject={subject} chapter={c} numero={numero} />;
+            })}
           </ul>
         </section>
       ))}

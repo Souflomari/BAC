@@ -92,7 +92,7 @@ export function BankCard({
   const bodyId = `bank-body-${entry.id}`;
 
   const badgePill =
-    "inline-flex items-center rounded-full px-2.5 py-0.5 " +
+    "inline-flex items-center px-2 py-0.5 " +
     "text-caption font-medium " +
     "bg-surface-raised text-secondary " +
     "border border-subtle";

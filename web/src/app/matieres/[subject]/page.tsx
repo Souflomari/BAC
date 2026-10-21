@@ -84,58 +84,72 @@ export default function SubjectPage({ params }: { params: { subject: string } })
 
   return (
     <PageShell epreuves={manifesteEpreuves()} notions={manifestePourHeader()} width="page">
-      {/* En-tête matière (Studio, R6 — STUDIO-SPEC §6.1) : le motif de la
-          ProgrammeMap agrandi. La bande pleine-largeur grise du squelette
-          Day-9 est partie — l'accueil et les matières parlent le même
-          langage : point de couleur matière, display, couverture RÉELLE en
-          mono, barre fine. Données du cadre, jamais de % fabriqué. */}
-      <header className="mb-10">
+      {/* GRILLE (refonte 2026-10) — l'en-tête matière : le nom en très grand
+          (Archivo serrée), la phrase de la matière, puis les FAITS du
+          programme en grands chiffres (chapitres du programme, chapitres
+          disponibles s'il en manque, unités). Monochrome : plus de pastille
+          de couleur matière. La couverture garde sa fraction machine dans
+          `data-couverture` (balayage dom-truth) et sa barre n'existe que si
+          la couverture est partielle — alors elle porte une information. */}
+      <header className="mb-10 bp-medium:mb-12">
         <Breadcrumb segments={[{ label: "Accueil", href: "/" }, { label: subjectLabel(subject.id) }]} />
-        <div className="flex items-center gap-3">
-          <span
-            aria-hidden
-            className="h-3 w-3 shrink-0 rounded-full"
-            style={{ background: `var(--subject-${subject.id})` }}
-          />
-          {/* h1 en h1 à compact (« Mathématiques » à 48 px remplissait les
-              390 px au pixel près), display à partir de medium. */}
-          {/* `min-w-0 break-words` : item flex, sinon « Physique-Chimie » à 200 % de
-              texte (SC 1.4.4) refuse de se couper et déborde de 54 px à 360 px. */}
-          <h1 className="min-w-0 break-words font-display text-h1 bp-medium:text-display font-bold text-primary">
-            {subjectLabel(subject.id)}
-          </h1>
+        <div className="grid gap-8 bp-large:grid-cols-12 bp-large:items-end">
+          <div className="min-w-0 bp-large:col-span-8">
+            {/* `min-w-0 break-words` : « Physique-Chimie » à 200 % de texte
+                (SC 1.4.4) doit pouvoir se couper plutôt que déborder. */}
+            <h1 className="min-w-0 break-words font-display text-h1 bp-medium:text-display font-bold text-primary">
+              {subjectLabel(subject.id)}
+            </h1>
+            <p className="mt-4 max-w-lead text-lead text-secondary">
+              {subject.blurb}
+            </p>
+            <p className="mt-3 text-body-sm text-secondary">
+              2ᵉ Bac · Sciences ·{" "}
+              {/* L'attribut garde la fraction machine (sweep dom-truth) ; le
+                  TEXTE visible est calme. nowrap : un « 25 » orphelin en tête
+                  de ligne à 390 px se lisait comme une nouvelle donnée. */}
+              <span data-couverture={`${available}/${total}`} className="mono-inline whitespace-nowrap">
+                {metaLine}
+              </span>
+            </p>
+          </div>
+          {total > 0 && (
+            <dl className="grid grid-cols-3 gap-x-6 border-t border-subtle pt-4 bp-large:col-span-4">
+              <div className="min-w-0">
+                <dt className="sr-only">chapitres au programme</dt>
+                <dd className="font-display wdth-62 text-h1 font-bold leading-none text-primary tnum">{total}</dd>
+                <dd className="mt-2 text-body-sm text-secondary">{total > 1 ? "chapitres" : "chapitre"}</dd>
+              </div>
+              {available < total && (
+                <div className="min-w-0">
+                  <dt className="sr-only">chapitres disponibles</dt>
+                  <dd className="font-display wdth-62 text-h1 font-bold leading-none text-primary tnum">{available}</dd>
+                  <dd className="mt-2 text-body-sm text-secondary">{available > 1 ? "disponibles" : "disponible"}</dd>
+                </div>
+              )}
+              <div className="min-w-0">
+                <dt className="sr-only">unités du programme</dt>
+                <dd className="font-display wdth-62 text-h1 font-bold leading-none text-primary tnum">{subject.units.length}</dd>
+                <dd className="mt-2 text-body-sm text-secondary">{subject.units.length > 1 ? "unités" : "unité"}</dd>
+              </div>
+            </dl>
+          )}
         </div>
-        <p className="mt-3 max-w-lead text-lead text-secondary">
-          {subject.blurb}
-        </p>
-        <p className="mt-3 text-body-sm text-secondary">
-          2ᵉ Bac · Sciences ·{" "}
-          {/* L'attribut garde la fraction machine (sweep dom-truth) ; le
-              TEXTE visible est calme. nowrap : un « 25 » orphelin en tête
-              de ligne à 390 px se lisait comme une nouvelle donnée. */}
-          <span data-couverture={`${available}/${total}`} className="mono-inline whitespace-nowrap">
-            {metaLine}
-          </span>
-        </p>
         {/* La barre n'existe que si elle PORTE une information : couverture
-            partielle. Pleine à 100 %, elle n'était qu'un trait décoratif —
-            l'événement chromatique le plus fort de la page (audit P1-2). */}
+            partielle (audit P1-2). Carrée, encre sur gris clair. */}
         {total > 0 && available < total && (
           <div
-            className="mt-4 h-0.5 max-w-[420px] overflow-hidden rounded-full"
-            style={{ background: `var(--subject-${subject.id}-subtle)` }}
+            className="mt-6 h-1 max-w-[420px] overflow-hidden bg-surface-container-lowest"
             role="img"
             aria-label={`${available} chapitres disponibles sur ${total}`}
           >
             <div
-              className="h-full rounded-full"
-              style={{
-                background: `var(--subject-${subject.id})`,
-                width: `${Math.round((available / Math.max(total, 1)) * 100)}%`,
-              }}
+              className="h-full bg-accent"
+              style={{ width: `${Math.round((available / Math.max(total, 1)) * 100)}%` }}
             />
           </div>
         )}
+        <div aria-hidden="true" className="mt-8 h-0.5 bg-accent" />
       </header>
 
       <ChapterList subject={subject.id} units={units} />

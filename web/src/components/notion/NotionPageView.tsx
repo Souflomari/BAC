@@ -37,13 +37,13 @@ import { Icon } from "@/components/ui/Icon";
 import { LessonEnd } from "@/components/notion/LessonEnd";
 import { ExerciseBank } from "@/components/notion/ExerciseBank";
 import { cn } from "@/lib/utils";
-import { Cover } from "@/components/covers/Cover";
 import { subjectLabel, subjectHref } from "@/lib/subjects";
 import { Breadcrumb as SharedBreadcrumb } from "@/components/ui/Breadcrumb";
 import { MarginNotes, type MarginNote } from "./MarginNotes";
 import { KeyFormulaRail, type KeyFormula } from "./KeyFormulaRail";
 import { manifesteEpreuves } from "@/lib/palette-epreuves";
 import { manifestePourHeader } from "@/lib/palette-notions";
+import "./grille-notion.css";
 
 export { subjectLabel };
 
@@ -101,6 +101,39 @@ function MastheadMeta({ readingMinutes }: { readingMinutes?: number }) {
     <p className="mt-4 text-body-sm text-secondary">
       {parts.join("  ·  ")}
     </p>
+  );
+}
+
+// ── Fiche de la notion (Grille) ────────────────────────────────────────────────
+// Trois faits CALCULÉS, en chiffres serrés : le nombre de chapitres de la
+// leçon (la même règle que le rail, lib/chapters.ts), la durée de lecture
+// autorée, et — seulement si la notion a une banque — le nombre de sujets de
+// bac réels qu'elle propose. Aucun fait n'est inventé pour remplir la grille :
+// une notion sans banque montre deux colonnes, pas trois.
+function NotionFacts({
+  chapters,
+  readingMinutes,
+  bankCount,
+}: {
+  chapters: number;
+  readingMinutes?: number;
+  bankCount?: number;
+}) {
+  const facts: { valeur: string; unite: string }[] = [];
+  if (chapters > 0) facts.push({ valeur: String(chapters), unite: chapters > 1 ? "chapitres" : "chapitre" });
+  if (readingMinutes) facts.push({ valeur: String(readingMinutes), unite: "min de lecture" });
+  if (bankCount != null && bankCount > 0) facts.push({ valeur: String(bankCount), unite: bankCount > 1 ? "sujets de bac" : "sujet de bac" });
+  if (facts.length === 0) return null;
+  return (
+    <dl data-notion-faits className="grid grid-cols-3 gap-x-6 border-t border-subtle pt-4">
+      {facts.map((f) => (
+        <div key={f.unite} className="min-w-0">
+          <dt className="sr-only">{f.unite}</dt>
+          <dd className="font-display wdth-62 text-h1 font-bold leading-none text-primary tnum">{f.valeur}</dd>
+          <dd className="mt-2 text-body-sm text-secondary">{f.unite}</dd>
+        </div>
+      ))}
+    </dl>
   );
 }
 
@@ -244,7 +277,7 @@ export function NotionPageView({
   );
 
   return (
-    <PageShell epreuves={manifesteEpreuves()} notions={manifestePourHeader()} width={wideOption === "w2" ? "notionWide" : "notion"}>
+    <PageShell epreuves={manifesteEpreuves()} notions={manifestePourHeader()} width={wideOption === "w2" ? "notionWide" : wideOption ? "notion" : "page"}>
       {/* Skip-to-content for keyboard users (DESIGN-BIBLE §9) */}
       <a
         href="#lesson-content"
@@ -261,75 +294,36 @@ export function NotionPageView({
       {/* a3: the masthead lives in a full-bleed tonal band ABOVE the grid; the
           band breaks to the viewport edges while its content stays on the page
           spine (margin/padding cancel-out). Grid content starts under it. */}
+      {/* GRILLE (refonte 2026-10) — le bloc-titre remplace la bande grise
+          pleine largeur et l'illustration de couverture : un fil d'Ariane, la
+          matière au rouge signal, le titre en Archivo serrée, la ligne de
+          métadonnées, puis les faits calculés (chapitres, lecture, sujets) en
+          grands chiffres. Un filet d'encre ferme le bloc. `data-band` est
+          gardé : c'est l'ancre que les portes lisent pour trouver le masthead. */}
       {mastheadVariant === "a3" && (
-        <div
-          data-band="masthead"
-          className={cn(
-            "-mt-12 bp-medium:-mt-16 mb-12 py-12",
-            // Set-M2 candidate: the band is BOUNDED to the content width —
-            // page background outside, the wide-viewport void becomes honest
-            // margin instead of empty band interior. All other variants keep
-            // the shipped full-bleed plane.
-            wideOption === "m2"
-              ? "rounded-xl px-8 border border-subtle"
-              : "mx-[calc(50%-50vw)] px-[calc(50vw-50%)] border-b border-subtle",
-            "bg-surface-container-low",
-            // Set-M3 candidate needs a clipping context for its watermark.
-            wideOption === "m3" && "relative overflow-hidden"
-          )}
-        >
-          {/* M1 — EN PRODUCTION depuis le 2026-09-04 (LESSON-EXPERIENCE-SPEC
-              §3.3, direction owner du jour 11 : OWNER-DECIDED, pas
-              FABLE-DECIDED). Le motif de couverture de la notion compose la
-              région droite de la bande au palier large (COVER-SPEC, ancrage
-              masthead — l'écho devient présence, grammaire Imprint). Sombre
-              par construction : la variable de fond de la couverture est
-              celle de la bande, donc seul le motif se lit. Jamais derrière le
-              titre — c'est une cellule de grille à part.
-
-              Le test porte sur `!wideOption` autant que sur "m1" : la route
-              /options/wide/m1 continue de rendre exactement la même chose (on
-              ne casse pas l'historique des options), et la page de production,
-              qui ne passe aucune option, la rend désormais aussi. C'est la
-              fin du « wideOption mort en prod » que la spec réclamait. */}
-          {(wideOption === "m1" || !wideOption) ? (
-            <div className="bp-large:grid bp-large:grid-cols-[1fr_400px] bp-large:items-center bp-large:gap-12">
-              {/* `min-w-0` : un élément de grille a `min-width: auto`, donc sa
-                  piste ne peut pas descendre sous la largeur MIN-CONTENT de
-                  son contenu — ici le plus long mot du titre. À 200 % de
-                  taille de texte (SC 1.4.4), « différentielles » mesure 814 px
-                  à lui seul : la piste 1fr gonflait, poussait la couverture
-                  hors cadre et faisait déborder la page de 139 px. Onze leçons
-                  au titre long faisaient de même. `overflow-wrap: break-word`
-                  (globals.css) autorise la coupure du mot MAIS ne change pas
-                  la taille min-content — il faut les deux. */}
-              <div className="min-w-0">{masthead}</div>
-              <div className="hidden bp-large:block" aria-hidden="true">
-                <Cover
-                  subject={meta.subject}
-                  slug={meta.slug}
-                  className="max-h-[220px] w-auto ml-auto"
-                />
-              </div>
+        <div data-band="masthead" className="mb-10 bp-medium:mb-12">
+          <Breadcrumb subject={meta.subject} title={meta.title} />
+          <div className="grid gap-8 bp-large:grid-cols-12 bp-large:items-end">
+            <div className="min-w-0 bp-large:col-span-8">
+              <p className="mb-3 text-body-sm font-semibold text-signal">
+                {subjectLabel(meta.subject)}
+              </p>
+              <header className="mb-0">
+                <h1 className={cn("font-display font-bold text-primary", "text-h1 bp-medium:text-display bp-large:text-display-lg", "max-w-[22ch]")}>
+                  {meta.title}
+                </h1>
+                <MastheadMeta readingMinutes={meta.readingMinutes} />
+              </header>
             </div>
-          ) : wideOption === "m3" ? (
-            <>
-              {/* Set-M3 candidate: a faint oversized motif watermark holds the
-                  band's right region — typographic composition, no new
-                  information, clipped by the band. */}
-              <div
-                aria-hidden="true"
-                className="hidden bp-large:block absolute -right-16 -top-24 w-[720px] opacity-[0.14] pointer-events-none"
-              >
-                <Cover subject={meta.subject} slug={meta.slug} className="!bg-transparent" />
-              </div>
-              <div className="relative">{masthead}</div>
-            </>
-          ) : (
-            /* Inside the band the masthead spans the notion band, not the
-               prose column — the width is part of the A3 statement. */
-            <div>{masthead}</div>
-          )}
+            <div className="min-w-0 bp-large:col-span-4">
+              <NotionFacts
+                chapters={realChapters}
+                readingMinutes={meta.readingMinutes}
+                bankCount={hasBank ? bank!.entries.length : undefined}
+              />
+            </div>
+          </div>
+          <div aria-hidden="true" className="mt-8 h-0.5 bg-accent" />
         </div>
       )}
 
@@ -347,7 +341,7 @@ export function NotionPageView({
             are behaviorally inert in off/mock builds (emitter hard-gate). */}
         <AttemptEventProvider notionId={`${meta.subject}/${meta.slug}`}>
         <ChapterVisitRecorder />
-        <div className="notion-page-grid">
+        <div className="notion-page-grid" data-grille-notion>
           {lessonMd ? (
             <MarginRail
               headings={chapterHeadings}

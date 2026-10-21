@@ -69,14 +69,13 @@ export function LessonEnd({
           href={notionHref(next.subject, next.slug)}
           className={cn(
             "group mt-4 flex items-center justify-between gap-6",
-            // The -mx-6 bleed (so the state-layer hover extends past the text
-            // measure) only at ≥600px, where the centered notion-prose column
-            // has room for it. At compact width the column is full-bleed and a
-            // 24px negative margin overshoots the 16px page gutter → 8px of
-            // horizontal page scroll (bible §1: never at 390). Compact keeps
-            // the padding, drops the bleed.
-            "px-6 py-6 rounded-xl bp-medium:-mx-6",
-            "state-layer focus-ring [--focus-radius:16px]"
+            // GRILLE (refonte 2026-10) : plus de débord négatif (-mx-6) ni de
+            // coins arrondis — la recommandation est une ligne entre deux
+            // filets, alignée au fer sur la prose. Le débord faisait aussi
+            // sortir le lien de 5 px de la colonne imprimable (722 > 717 px)
+            // dès que la prose occupe toute la colonne, à l'impression.
+            "py-6 border-y border-subtle",
+            "state-layer focus-ring"
           )}
         >
           <span className="min-w-0">
