@@ -195,7 +195,14 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>
 :root {
 ${declarations}
 }
-body { background: var(--color-surface-base); font-family: system-ui, sans-serif; padding: 24px; }
+/* Le fond du CORPS ne doit jamais pouvoir être celui d'une carte : c'est le
+   témoin de l'étage pixel (« fond du corps mesuré » = capture manquée). Avec
+   Grille (2026-10-21), --color-surface-base et --figure-surface valent tous
+   deux #FFFFFF : le témoin prenait chaque carte pour le corps, refusait de
+   juger 22 candidats, et dix faux positifs que les pixels démentaient
+   restaient comptés comme défauts. Un mélange vers l'encre le rend distinct
+   par construction, dans les deux thèmes. */
+body { background: color-mix(in srgb, var(--figure-surface) 92%, var(--figure-ink)); font-family: system-ui, sans-serif; padding: 24px; }
 h2 { font-size: 13px; color: var(--color-text-tertiary); margin: 24px 0 8px; font-weight: 500; }
 .carte { background: var(--figure-surface); border: 1px solid var(--color-border-subtle);
          border-radius: 12px; padding: 12px; width: max-content; max-width: 100%; }
