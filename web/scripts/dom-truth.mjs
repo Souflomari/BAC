@@ -199,25 +199,25 @@ const NOTION = "/notions/pc/rlc-serie";
 const BANK_NOTION = "/notions/pc/reactions-acido-basiques";
 const BATTERY = [
   // ── U1 table (the audit's measured victims) ──
-  { name: "notion masthead h1 (A3 display-lg)", page: NOTION, sel: "h1", text: "Oscillations", fontKey: "display-lg", lineHeight: true, weight: "700", family: "Geist", colorVar: "--color-text-primary" },
-  { name: "home h1", page: "/", sel: "h1", text: "Ta session", fontKey: "display", weight: "700", family: "Geist" },
+  { name: "notion masthead h1 (A3 display-lg)", page: NOTION, sel: "h1", text: "Oscillations", fontKey: "display-lg", lineHeight: true, weight: "700", family: "Archivo", colorVar: "--color-text-primary" },
+  { name: "home h1", page: "/", sel: "h1", text: "Ta session", fontKey: "display", weight: "700", family: "Archivo" },
   { name: "home lead", page: "/", sel: "header p", text: "Deux heures", fontKey: "lead" },
-  { name: "home session-card h2 (Studio: display h1)", page: "/", sel: "section[aria-label*='session'] h2", fontKey: "h1", weight: "700", family: "Geist" },
+  { name: "home session-card h2 (Studio: display h1)", page: "/", sel: "section[aria-label*='session'] h2", fontKey: "h1", weight: "700", family: "Archivo" },
   // (Persistance-wave, 2026-07-07) shelf collapsed per matière — the trigger's
   // subject-label span is the "row title" typography at rest now; the old
   // per-card title only exists once a matière is expanded (see the SWEEP
   // below for the interactive check that opens one and asserts the cover).
-  { name: "programme: titre de matière", page: "/", sel: "[data-programme-matiere='pc'] header a", text: "Physique-Chimie", fontKey: "h4", family: "Geist" },
+  { name: "programme: titre de matière", page: "/", sel: "[data-programme-matiere='pc'] header a", text: "Physique-Chimie", fontKey: "h4", family: "Archivo" },
   { name: "404 hero display", page: "/nonexistent-xyz", sel: "span", text: "404", fontKey: "display", weight: "700" },
   { name: "404 h1", page: "/nonexistent-xyz", sel: "h1", text: "introuvable", fontKey: "h2", weight: "700" },
   // ── survivors (must stay green — regression tripwires) ──
-  { name: "prose rung h2", page: NOTION, sel: ".prose-lesson h2", text: "Accroche", fontPx: PROSE.h2, weight: "600", family: "Geist" },
+  { name: "prose rung h2", page: NOTION, sel: ".prose-lesson h2", text: "Accroche", fontPx: PROSE.h2, weight: "600", family: "Archivo" },
   // Inline-items model (§1.1): questions moved from a single end-of-lesson
   // "Exercices" h2 bank to a per-chapter "Vérifie ta compréhension" h3 block
   // (ChapterQuestions). The heading lives in the DOM on every chapter that has
   // items (hidden chapters included), so this presence+type check holds on the
   // default landing page.
-  { name: "inline chapter questions heading", page: NOTION, sel: "section[aria-label='Questions de compréhension du chapitre'] h3", text: "Vérifie ta compréhension", fontPx: 21, weight: "600", family: "Geist" },
+  { name: "inline chapter questions heading", page: NOTION, sel: "section[aria-label='Questions de compréhension du chapitre'] h3", text: "Vérifie ta compréhension", fontPx: 21, weight: "600", family: "Archivo" },
   // ── code-verified unmeasured victims from the audit ──
   // (The two Eyebrow instances measured on Day 2 were REMOVED in the Day-3
   // doubled-label kill (audit U3) — the masthead eyebrow duplicated the
@@ -234,7 +234,7 @@ const BATTERY = [
   // it ships as the a2 lede — the reading serif at body-lg (not a body-sm
   // caption), preceded by a small accent ordinal (aria-hidden; the aria-live
   // indicator above already announces the stage).
-  { name: "figure step-text (a2 lede: serif body-lg)", page: NOTION, sel: "figcaption span.font-display", fontKey: "body-lg", family: "Geist" },
+  { name: "figure step-text (a2 lede: serif body-lg)", page: NOTION, sel: "figcaption span.font-display", fontKey: "body-lg", family: "Archivo" },
   { name: "figure step-text ordinal is the accent (meaning, not colour alone)", page: NOTION, sel: "figcaption span[aria-hidden='true']", fontKey: "body-sm" },
   // TODO(post-answer states): the solution <summary> and correctness rows only
   // exist after answering an item — battery v2 should drive one interaction.
@@ -417,7 +417,7 @@ const BATTERY = [
   // partie — l'en-tête matière parle le motif ProgrammeMap (point couleur,
   // display, couverture RÉELLE en mono, barre fine) et les unités sont des
   // cartes claires sur la bande `page`.
-  { name: "R6 subject page: h1 display Geist", page: "/matieres/pc", sel: "h1", text: "Physique", fontKey: "display", weight: "700", family: "Geist" },
+  { name: "R6 subject page: h1 display Archivo", page: "/matieres/pc", sel: "h1", text: "Physique", fontKey: "display", weight: "700", family: "Archivo" },
   // (nom interne next/font "__GeistMono_…" — pas d'espace dans la famille calculée)
   { name: "R6 subject page: couverture réelle en mono (fait du cadre)", page: "/matieres/pc", sel: "header [data-couverture]", text: "chapitre", family: "GeistMono" },
   { name: "R6 subject page: unités en cartes claires", page: "/matieres/pc", sel: "main section[aria-label]", bgVar: "--color-surface-raised" },
