@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Source_Serif_4 } from "next/font/google";
+import { Archivo, Source_Serif_4 } from "next/font/google";
 import localFont from "next/font/local";
 // Geist vient du paquet officiel Vercel (fontes auto-hébergées via
 // next/font/local en interne) : le manifeste next/font/google de Next 14.2
@@ -32,6 +32,19 @@ import "./globals.css";
 // corpus (102 fois en serif), est couvert par le sous-ensemble latin. Mesuré
 // sur les 117 pages : reste « ˊ » U+02CA, neuf fois sur deux leçons SVT —
 // dans le MathML masqué de KaTeX (un accent), jamais dessiné par la serif.
+// GRILLE (refonte 2026-10) : Archivo, une grotesque variable dont l'axe de
+// LARGEUR (wdth 62–125) porte la hiérarchie — chiffres géants en 62 %, titres
+// en 75 %, corps en 100 %. Elle devient --font-ui (tokens.ts). Pas de grec
+// dans Archivo : ω, θ, φ… tombent sur la fonte de repli système, et les
+// formules restent en KaTeX.
+const archivo = Archivo({
+  subsets: ["latin", "latin-ext"],
+  axes: ["wdth"],
+  variable: "--font-archivo",
+  display: "swap",
+  preload: true,
+});
+
 const readingSerif = Source_Serif_4({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -167,7 +180,7 @@ export default function RootLayout({
       // <body>) and toggled by ThemeToggle; the server always renders
       // without it, so suppressHydrationWarning covers the class mismatch.
       suppressHydrationWarning
-      className={`${readingSerif.variable} ${GeistSans.variable} ${GeistMono.variable}`}
+      className={`${archivo.variable} ${readingSerif.variable} ${GeistSans.variable} ${GeistMono.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: VEILLE_BOOT }} />

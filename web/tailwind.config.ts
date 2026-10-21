@@ -81,6 +81,12 @@ const config: Config = {
           DEFAULT: v("color-warning"),
           subtle: v("color-warning-subtle"),
         },
+        // Grille : le rouge signal, réservé à ce qui demande d'agir maintenant.
+        signal: {
+          DEFAULT: v("color-signal"),
+          subtle: v("color-signal-subtle"),
+          on: v("color-on-signal"),
+        },
         error: {
           DEFAULT: v("color-error"),
           subtle: v("color-error-subtle"),

@@ -470,10 +470,12 @@ body {
 
 .prose-lesson {
   color: var(--color-text-primary);
-  /* Editorial reading serif (ADR 0023) — warmth + scholarship for long study */
-  font-family: var(--font-reading-serif), Georgia, "Times New Roman", serif;
+  /* GRILLE (refonte 2026-10) : la prose passe à la grotesque (Archivo, largeur
+     100 %) — une seule voix typographique ; la serif de lecture (ADR 0023) est
+     retirée du corps de leçon. */
+  font-family: var(--font-ui), system-ui, sans-serif;
   font-size: 1.0625rem; /* 17px — kinder for long sessions */
-  line-height: 1.65;    /* serif reads comfortably a touch tighter than sans */
+  line-height: 1.6;
   max-width: var(--measure-prose);
   hanging-punctuation: first last; /* progressive enhancement (Safari) — craft signal */
   text-wrap: pretty;               /* avoid orphans/rivers where supported */
@@ -766,7 +768,7 @@ body {
 }
 .prose-lesson .katex .mord.text,
 .prose-lesson .katex .textrm {
-  font-family: var(--font-reading-serif), Georgia, "Times New Roman", serif;
+  font-family: var(--font-ui), system-ui, sans-serif;
 }
 
 /* ── Dashboard grid — SUPPRIMÉ (R6, 2026-08-18). La grille à zones
@@ -1537,3 +1539,14 @@ html.hydratation-perdue [data-hydration-notice] {
   display: none;
 }
 
+
+/* ── GRILLE (refonte 2026-10) — la largeur d'Archivo porte la hiérarchie ──
+   Les titres (`font-display`) sont serrés à 75 % ; les chiffres qui décident
+   du bac passent à 62 % (`.wdth-62`) ; le script de leçon à 88 %. Les
+   chiffres sont tabulaires partout où ils s'alignent (`.tnum`). */
+.font-display { font-variation-settings: "wdth" 75; }
+.wdth-62 { font-variation-settings: "wdth" 62; }
+.wdth-75 { font-variation-settings: "wdth" 75; }
+.wdth-88 { font-variation-settings: "wdth" 88; }
+.wdth-100 { font-variation-settings: "wdth" 100; }
+.tnum { font-variant-numeric: tabular-nums; }
