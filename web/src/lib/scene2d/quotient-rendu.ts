@@ -389,6 +389,10 @@ export function creerRenduQuotient(canvas: HTMLCanvasElement, hote: HTMLElement)
     c.moveTo(L + 1, yLiq);
     c.lineTo(R - 1, yLiq);
     c.stroke();
+    // déclarée au placeur : sans elle, « réduit » et « oxydé » se posaient SUR la
+    // surface du liquide dès qu'une police décalait la mise en page d'un pixel
+    // (Archivo, refonte Grille, 2026-10-21 : 45 et 47 px de trait sous l'étiquette)
+    seg(L + 1, yLiq, R - 1, yLiq);
 
     // la lame : TOUJOURS présente — le métal du sens direct (§5.5 C) ; son symbole PEINT au-dessus
     const lw = Math.max(10, Math.round(0.06 * bw)), xLame = L + 0.17 * bw;

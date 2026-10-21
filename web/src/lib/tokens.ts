@@ -135,9 +135,13 @@ export const themes: Record<"light" | "dark", Theme> = {
       "--figure-grid": "#E6E6E6",
       // Les SCÈNES et figures gardent provisoirement le sarcelle d'avant la
       // refonte : treize portes de scène lisent leurs pixels contre cette
-      // teinte (seuils de chrominance calibrés dessus) ; le rouge signal en
-      // faisait rougir six. Passer les scènes au rouge = un chantier à part,
-      // porte par porte (docs/refonte/00-plan.md).
+      // teinte (seuils de chrominance calibrés dessus). CORRECTION du
+      // 2026-10-21 : les six portes rouges après Grille ne venaient PAS du
+      // rouge — elles restaient rouges avec le sarcelle remis. La cause
+      // mesurée était le lissage sous-pixel du texte (coins carrés du
+      // plateau), fixée sur le banc (`scripts/lib/banc-navigateur.mjs`).
+      // Passer les scènes au rouge reste un chantier à part, porte par porte
+      // (docs/refonte/00-plan.md).
       "--figure-accent": "#00746A",
       "--figure-energy-C": "#3C5C98",
       "--figure-energy-L": "#386B3A",
