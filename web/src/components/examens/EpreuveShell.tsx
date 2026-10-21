@@ -888,8 +888,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
                   {frenchTypography("Rédige sur papier, comme le jour J.")}
                 </p>
                 <p className="mt-2 text-body-sm text-secondary">
-                  Les corrigés s’ouvrent après « Terminer l’épreuve » ; tu noteras
-                  alors chaque question au barème.
+                  {frenchTypography("Les corrigés s’ouvrent après « Terminer l’épreuve » ; tu noteras alors chaque question au barème.")}
                 </p>
                 <ul className="mt-6 border-t border-subtle">
                   {groupes.map((g, k) => (
@@ -935,10 +934,9 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
             <span className="font-semibold text-primary tnum">
               {formatNote(note.sur20)} / 20
             </span>{" "}
-            — auto-évaluation indicative
-            {!epreuve.complete && ", ramenée sur 20 par règle de trois"}. Le
-            vrai gain est dans les questions marquées « Partiel » ou « Faux » :
-            remonte aux notions par les liens de chaque exercice.
+            {frenchTypography(
+              `— auto-évaluation indicative${!epreuve.complete ? ", ramenée sur 20 par règle de trois" : ""}. Le vrai gain est dans les questions marquées « Partiel » ou « Faux » : remonte aux notions par les liens de chaque exercice.`
+            )}
           </p>
         </section>
       )}
