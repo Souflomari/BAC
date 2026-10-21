@@ -44,44 +44,32 @@ export function SessionCard({ notions }: { notions: NotionMeta[] }) {
 
   return (
     <section aria-label="La session du jour">
-      {/* Refonte Studio (R6 avancé) : la carte devient TEXTE D'ABORD. Le
-          panneau Cover de droite est parti — 5 motifs partagés par 61
-          notions, « la feuille seule occupait la moitié de la carte pour un
-          contenu quasi nul » (audit Fable §3.2). Le repérage passe par la
-          couleur de matière (chip), l'espace récupéré va au contenu. */}
-      <div
-        className={cn(
-          "rounded-xl border border-subtle bg-surface-raised",
-          "px-6 py-7 bp-medium:px-8 bp-medium:py-8",
-          "shadow-elevation-1"
-        )}
-      >
-        {/* Audit R6 (charge-calme P1-3/P1-7) : \u00ab COMMENCE ICI \u00bb doublait le
-            bouton qu'il annon\u00e7ait (\u00a711, \u00e9tiquettes doubl\u00e9es) et le libell\u00e9
-            long en capitales track\u00e9es mangeait la carte \u00e0 390 px. La chip
-            courte est le SEUL marqueur \u2014 le fond teint\u00e9 marque d\u00e9j\u00e0, le
-            point int\u00e9rieur \u00e9tait un troisi\u00e8me encodage. */}
-        <p className="flex flex-wrap items-center gap-2 text-caption font-medium uppercase tracking-eyebrow text-secondary">
-          <span
-            className="inline-flex items-center rounded-full px-2.5 py-1"
-            style={{
-              background: `var(--subject-${notion.subject}-subtle)`,
-              color: `var(--subject-${notion.subject})`,
-            }}
-            title={subjectLabel(notion.subject)}
-          >
-            {subjectLabelCourt(notion.subject)}
-          </span>
-        </p>
-        <h2 className="mt-3 max-w-lead font-display text-h1 font-bold text-primary">
+      {/* GRILLE (refonte 2026-10) : la seule action primaire de la page est
+          encadrée d'un filet noir de 2 px — un cadre d'affiche, pas une carte
+          (ni ombre ni coins arrondis). Contrat inchangé : p-8 tout autour au
+          bureau (dom-truth), un seul [data-primary-action], aucune
+          progression sans état réel. */}
+      <div className="border-2 border-accent bg-surface-raised p-6 bp-medium:p-8">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 text-caption font-semibold uppercase tracking-eyebrow text-secondary">
+          <p className="flex flex-wrap items-baseline gap-x-3">
+            <span className="text-primary" title={subjectLabel(notion.subject)}>
+              {subjectLabelCourt(notion.subject)}
+            </span>
+            <span aria-hidden>·</span>
+            <span>Leçon</span>
+          </p>
+          {notion.readingMinutes ? (
+            <p className="tnum normal-case tracking-normal text-body-sm font-normal text-tertiary">
+              ≈ {notion.readingMinutes} min de lecture
+            </p>
+          ) : null}
+        </div>
+        <h2 className="mt-3 max-w-[24ch] font-display text-h1 font-bold text-primary">
           {notion.title}
         </h2>
-        <p className="mt-2 max-w-lead text-body-lg text-secondary">
+        <p className="mt-3 max-w-lead text-body-lg text-secondary">
           {session.kind === "start" ? (
-            <>
-              Nouvelle notion — on la prend depuis le début
-              {notion.readingMinutes ? ` (≈ ${notion.readingMinutes} min de lecture)` : ""}.
-            </>
+            <>Nouvelle notion — on la prend depuis le début.</>
           ) : (
             <>
               Reprise à « {session.position} » — section {session.step} sur{" "}
@@ -93,7 +81,7 @@ export function SessionCard({ notions }: { notions: NotionMeta[] }) {
         {/* Progress renders ONLY from real resume state — never fabricated. */}
         {session.kind === "resume" && (
           <div
-            className="mt-5 h-1 max-w-lead rounded-full bg-border-subtle"
+            className="mt-5 h-1 max-w-lead bg-border-subtle"
             role="progressbar"
             aria-valuenow={Math.round((session.step / session.totalSteps) * 100)}
             aria-valuemin={0}
@@ -101,7 +89,7 @@ export function SessionCard({ notions }: { notions: NotionMeta[] }) {
             aria-label="Progression dans la notion"
           >
             <div
-              className="h-1 rounded-full bg-accent"
+              className="h-1 bg-signal"
               style={{ width: `${(session.step / session.totalSteps) * 100}%` }}
             />
           </div>
@@ -110,7 +98,7 @@ export function SessionCard({ notions }: { notions: NotionMeta[] }) {
         <Link
           href={notionHref(notion.subject, notion.slug)}
           data-primary-action=""
-          className={cn("mt-6 btn-primary focus-ring")}
+          className={cn("mt-7 btn-primary rounded-none focus-ring")}
         >
           {session.kind === "start" ? "Commencer la session" : "Reprendre la session"}
           <Icon name="arrow-right" size={14} />

@@ -51,13 +51,13 @@ export function FiliereChooser({ redirectOnPick = false }: { redirectOnPick?: bo
               disabled={!hydrated}
               aria-busy={!hydrated || undefined}
               className={cn(
-                "group w-full text-left rounded-xl px-6 py-5",
+                "group w-full text-left px-6 py-5",
                 "bg-surface-raised",
-                "border transition-all duration-micro ease-out",
-                "state-layer focus-ring [--focus-radius:16px]",
+                "border-2 transition-colors duration-micro ease-out",
+                "state-layer focus-ring",
                 active
-                  ? "border-accent shadow-elevation-2"
-                  : "border-subtle shadow-elevation-1 hover:shadow-elevation-2 hover:-translate-y-px"
+                  ? "border-accent"
+                  : "border-subtle hover:border-accent"
               )}
             >
               <div className="flex items-baseline justify-between gap-3">
@@ -66,7 +66,7 @@ export function FiliereChooser({ redirectOnPick = false }: { redirectOnPick?: bo
                 </span>
                 <span
                   className={cn(
-                    "flex-shrink-0 rounded-full px-2.5 py-0.5 text-caption font-semibold tabular-nums",
+                    "flex-shrink-0 px-2.5 py-0.5 text-caption font-semibold tabular-nums",
                     active
                       ? "bg-accent text-on-accent"
                       : "bg-accent-subtle text-accent"

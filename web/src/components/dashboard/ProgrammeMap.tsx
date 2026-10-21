@@ -48,33 +48,23 @@ export function ProgrammeMap({ notions }: { notions: NotionMeta[] }) {
   const construits = new Set(notions.map((n) => `${n.subject}/${n.slug}`));
 
   return (
-    <section aria-label="Le programme" className="mt-14">
-      {/* Légende SOUS le titre (audit : flottante à l'extrême droite, elle
-          était à 1000 px de ce qu'elle qualifiait — attention divisée). */}
-      <div>
-        <h2 className="font-display text-h2 font-semibold text-primary">
-          Le programme
-        </h2>
-        <p className="mt-1 text-body-sm text-tertiary">
+    <section aria-label="Le programme" className="mt-16">
+      {/* GRILLE : en-tête sur filet noir, matières en colonnes (4 au bureau),
+          chapitres numérotés dans l'ordre du programme. Contrats inchangés :
+          [data-programme-matiere], [data-couverture] (fraction machine),
+          [data-mastery-token] sur chaque lien de notion. */}
+      <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-1 border-b-2 border-accent pb-3">
+        <h2 className="font-display text-h2 font-bold text-primary">Le programme</h2>
+        <p className="text-body-sm text-tertiary">
           Couverture du cadre officiel, matière par matière.
         </p>
       </div>
 
-      {/* `grid-cols-1` et non `grid` seul : une piste implicite est `auto`, donc
-          au moins aussi large que le mot le plus long d'une carte — et
-          `overflow-wrap: break-word` ne change PAS cette largeur (§8.5). À 200 %
-          de texte (SC 1.4.4), « Mathématiques » fixait la piste à 344 px dans
-          une colonne de 296 : 16 px de débord sur l'accueil. `minmax(0, 1fr)`
-          borne la piste à la colonne ; le mot se coupe ensuite. 2026-09-05. */}
-      <div className="mt-6 grid grid-cols-1 gap-4 bp-large:grid-cols-2">
+      {/* `grid-cols-1` et non `grid` seul : une piste `auto` est au moins aussi
+          large que le mot le plus long — à 200 % de texte, « Mathématiques »
+          débordait de 16 px (§8.5, 2026-09-05). `minmax(0,1fr)` borne la piste. */}
+      <div className="grid grid-cols-1 gap-x-8 bp-expanded:grid-cols-2 bp-large:grid-cols-4">
         {ordre.map((id) => {
-          // L'ORDRE DU PROGRAMME, jamais l'alphabet. Cette carte annonce
-          // « couverture du cadre officiel » : un élève y lit l'ordre de son
-          // année. Trié par titre, elle ouvrait maths sur « Arithmétique »
-          // (rang 13 sur 14) pendant que la carte de session, deux blocs plus
-          // haut sur la même page, proposait « Limites et continuité » — et
-          // que /matieres/maths, à un clic, donnait le bon ordre. Voir
-          // `sortByProgramme` pour la mesure (59 chapitres sur 62 déplacés).
           const liste = sortByProgramme(
             notions.filter(
               (n) =>
@@ -88,94 +78,54 @@ export function ProgrammeMap({ notions }: { notions: NotionMeta[] }) {
           const dispo = sujet ? subjectAvailableCount(sujet, construits) : liste.length;
 
           return (
-            <article
-              key={id}
-              data-programme-matiere={id}
-              className={cn(
-                "rounded-xl border border-subtle bg-surface-raised p-5",
-                "shadow-elevation-1 transition-shadow duration-standard ease-between hover:shadow-elevation-2"
-              )}
-            >
-              {/* flex-wrap + min-w-0 : le compteur nowrap fixait la largeur
-                  minimale de la rangée — 2 px de débord page à 320 (sweep
-                  repli). En colonne très étroite, le compteur replie SOUS
-                  le titre, d'un bloc. */}
-              <header className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
-                <span
-                  aria-hidden
-                  className="h-3 w-3 shrink-0 rounded-full"
-                  style={{ background: `var(--subject-${id})` }}
-                />
+            <article key={id} data-programme-matiere={id} className="min-w-0 pt-6">
+              <header className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-subtle pb-3">
                 <Link
                   href={subjectHref(id)}
-                  // `break-words` : « Mathématiques » est un seul mot ; à 200 % de
-                  // texte (SC 1.4.4) il faisait 290 px dans une colonne de 216 et
-                  // poussait l'accueil de 16 px. `min-w-0` laisse le lien rétrécir,
-                  // `break-words` laisse le mot se couper. Mesuré le 2026-09-05.
-                  className="min-w-0 break-words focus-ring rounded text-h4 font-semibold text-primary hover:underline"
+                  className="min-w-0 break-words focus-ring text-h4 font-semibold text-primary hover:underline underline-offset-4"
                 >
                   {subjectLabel(id)}
                 </Link>
-                {/* Audit R6 (charge-calme P0-3) : « 14/14 » aligné à droite
-                    au-dessus d'une barre pleine EST le vocabulaire du score
-                    — et mesurait la disponibilité, pas la progression.
-                    Quand dispo == total, on dit « 14 chapitres » ; la
-                    fraction n'apparaît que si elle informe. L'attribut
-                    garde la fraction machine (sweep dom-truth). */}
+                {/* « 14 chapitres » quand tout est là ; la fraction n'apparaît
+                    que si elle informe. L'attribut garde la fraction machine. */}
                 <span
                   data-couverture={`${dispo}/${total}`}
-                  className="mono-inline ml-auto whitespace-nowrap text-tertiary"
+                  className="tnum ml-auto whitespace-nowrap text-body-sm text-tertiary"
                 >
                   {dispo === total ? `${total} chapitres` : `${dispo}/${total} chapitres`}
                 </span>
               </header>
 
-              {/* La barre de couverture n'existe qu'en couverture PARTIELLE
-                  — pleine, elle n'était qu'un trait de couleur en
-                  concurrence avec l'action primaire (audit P1-2). */}
               {dispo < total && (
                 <div
-                  className="mt-3 h-1 overflow-hidden rounded-full"
-                  style={{ background: `var(--subject-${id}-subtle)` }}
+                  className="mt-3 h-1 overflow-hidden bg-surface-container-lowest"
                   role="img"
                   aria-label={`${dispo} chapitres disponibles sur ${total} au programme`}
                 >
                   <div
-                    className="h-full rounded-full"
-                    style={{
-                      background: `var(--subject-${id})`,
-                      width: `${Math.round((dispo / Math.max(total, 1)) * 100)}%`,
-                    }}
+                    className="h-full bg-accent"
+                    style={{ width: `${Math.round((dispo / Math.max(total, 1)) * 100)}%` }}
                   />
                 </div>
               )}
 
-              <ol className="mt-4 grid gap-0.5">
-                {liste.map((n) => (
-                  // min-w-0 : un item de grille refuse par défaut de passer
-                  // sous la largeur de son contenu (min-width:auto) — un long
-                  // titre de notion poussait l'article à 493 px sur un écran
-                  // de 390 et TOUTE la page débordait. Le troncage ne peut
-                  // agir que si l'ancêtre a le droit de rétrécir.
-                  <li key={n.slug} className="min-w-0">
+              <ol className="mt-2 grid">
+                {liste.map((n, i) => (
+                  <li key={n.slug} className="min-w-0 border-b border-subtle last:border-b-0">
                     <Link
                       href={notionHref(n.subject, n.slug)}
                       data-mastery-token=""
                       className={cn(
-                        "group flex w-full min-w-0 items-baseline gap-3 rounded-md px-2.5 py-1.5 -mx-2.5",
+                        "group grid w-full min-w-0 grid-cols-[2.25rem_minmax(0,1fr)] items-baseline py-2",
                         "text-body-sm text-secondary hover:text-primary",
-                        "state-layer focus-ring [--focus-radius:6px]",
+                        "state-layer focus-ring",
                         "transition-colors duration-micro ease-between"
                       )}
                     >
-                      {/* Pas de minutes ICI (audit : ~12 valeurs mono avant
-                          le pli = texture de tableau de bord ; et 474 px de
-                          vide entre titre et durée). Les minutes vivent sur
-                          la page matière, où l'élève choisit vraiment. */}
-                      {/* Pas de troncature (HANDOFF §11.38) : à 390 px, 7 titres
-                          sur 62 finissaient en « … » (« Nombres complexes — forme
-                          algébriq… »), 12 à 360 px, 19 à 320 px — et le titre est
-                          le SEUL texte de la ligne. Il se plie sur deux lignes. */}
+                      <span aria-hidden className="tnum text-caption font-semibold text-tertiary group-hover:text-signal">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      {/* Pas de troncature (HANDOFF §11.38) : le titre se plie. */}
                       <span className="min-w-0 break-words">{n.title}</span>
                     </Link>
                   </li>
