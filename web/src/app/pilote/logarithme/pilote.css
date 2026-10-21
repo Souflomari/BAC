@@ -1,0 +1,134 @@
+/* Leçon pilote « logarithme » — habillage Grille (refonte 2026-10).
+   Tout est scopé sous `.pilote` : le moteur pose des classes courtes
+   (opt, pari, fb, say…) qui ne doivent fuir nulle part ailleurs.
+   Couleurs : uniquement les jetons de tokens.ts. Le rouge signal marque
+   l'étape et ce qui compte ; l'encre fait le reste. */
+
+.pilote {
+  --st-bg: var(--color-surface-base);
+  --st-grid: color-mix(in srgb, var(--color-text-primary) 5%, transparent);
+  --st-ink: var(--color-text-primary);
+  --st-dim: var(--color-text-tertiary);
+  --st-a: var(--color-signal);
+  --st-b: var(--color-text-primary);
+  --st-c: var(--color-text-secondary);
+  --st-fa: color-mix(in srgb, var(--color-signal) 16%, transparent);
+  --st-fb: color-mix(in srgb, var(--color-text-primary) 12%, transparent);
+  --st-fc: color-mix(in srgb, var(--color-text-secondary) 18%, transparent);
+  --st-rule: var(--color-surface-container-low);
+  --st-line: var(--color-border-soft);
+  --st-cell: var(--color-surface-raised);
+  --st-glass: color-mix(in srgb, var(--color-signal) 6%, transparent);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  height: calc(100dvh - 4rem);
+  min-height: 560px;
+  background: var(--color-surface-base);
+  color: var(--color-text-primary);
+}
+
+/* barre de leçon */
+.pilote .pilote-barre { display: flex; align-items: center; gap: 28px; padding: 10px var(--gutter); border-bottom: 1px solid var(--color-border-subtle); min-width: 0; }
+.pilote .pilote-titre { display: flex; align-items: baseline; gap: 10px; white-space: nowrap; }
+.pilote .pilote-titre strong { font-size: 1.375rem; font-weight: 700; }
+.pilote .pilote-matiere { font-size: 0.875rem; color: var(--color-text-secondary); }
+.pilote .pilote-badge { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; border: 1px solid var(--color-signal); color: var(--color-signal); padding: 2px 6px; align-self: center; }
+.pilote .beats { flex: 1; display: flex; gap: 6px; min-width: 0; }
+.pilote .beat { flex: var(--n) 1 0; min-width: 0; background: none; border: 0; padding: 4px 0; cursor: pointer; text-align: left; color: var(--color-text-tertiary); font: 500 0.75rem/1.2 var(--font-ui); }
+.pilote .beat span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 6px; }
+.pilote .beat i { display: block; height: 3px; background: var(--color-border-subtle); overflow: hidden; }
+.pilote .beat i b { display: block; height: 100%; width: 0; background: var(--color-text-primary); transition: width .4s ease; }
+.pilote .beat.on { color: var(--color-signal); font-weight: 700; }
+.pilote .beat.on i b { background: var(--color-signal); }
+.pilote .pilote-outils { display: flex; gap: 8px; }
+.pilote .tbtn { font: 500 0.8125rem var(--font-ui); background: transparent; color: var(--color-text-primary); border: 1px solid var(--color-border-soft); padding: 8px 12px; cursor: pointer; white-space: nowrap; }
+.pilote .tbtn[aria-pressed="true"] { background: var(--color-text-primary); color: var(--color-surface-base); border-color: var(--color-text-primary); }
+
+/* scène + script */
+.pilote .pilote-main { display: grid; grid-template-columns: minmax(0, 1fr) clamp(380px, 31vw, 500px); min-height: 0; }
+.pilote .stage-wrap { position: relative; min-height: 0; background-color: var(--st-bg); background-image: linear-gradient(var(--st-grid) 1px, transparent 1px), linear-gradient(90deg, var(--st-grid) 1px, transparent 1px); background-size: 40px 40px; overflow: hidden; display: flex; }
+.pilote [data-pilote-scene] { flex: 1; width: 100%; height: 100%; display: block; touch-action: none; user-select: none; }
+.pilote .plaque { position: absolute; top: 18px; left: 20px; font: 700 0.75rem/1 var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--color-on-signal); background: var(--color-signal); padding: 7px 10px; opacity: 0; transition: opacity .4s; }
+.pilote .plaque.on { opacity: 1; }
+.pilote .stage-foot { position: absolute; left: 20px; right: 20px; bottom: 14px; display: flex; justify-content: space-between; font: 0.75rem var(--font-ui); font-variant-numeric: tabular-nums; color: var(--st-dim); pointer-events: none; }
+.pilote .script { background: var(--color-surface-base); border-left: 1px solid var(--color-text-primary); display: flex; flex-direction: column; padding: 40px 36px 22px; overflow: auto; min-height: 0; }
+.pilote .kicker { font: 700 0.8125rem/1 var(--font-ui); color: var(--color-signal); margin-bottom: 20px; }
+.pilote .body.in { animation: pilote-rise .45s ease both; }
+@keyframes pilote-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.pilote .say { font-size: clamp(1.25rem, 1.6vw, 1.625rem); line-height: 1.3; font-weight: 500; font-variation-settings: "wdth" 88; margin: 0 0 20px; text-wrap: pretty; }
+.pilote .formula { margin: 4px 0 18px; padding: 12px 16px; border-left: 3px solid var(--color-signal); background: var(--color-surface-container-low); font-size: 1.25rem; overflow-x: auto; }
+.pilote .formula .m { display: block; margin: 6px 0; }
+.pilote .pari { margin-top: 6px; border-top: 2px solid var(--color-text-primary); }
+.pilote .pari-k { display: flex; justify-content: space-between; font: 700 0.8125rem/1 var(--font-ui); margin: 12px 0 4px; }
+.pilote .opts { display: grid; }
+.pilote .opt { display: flex; gap: 16px; align-items: baseline; text-align: left; font: 1.0625rem/1.35 var(--font-ui); color: var(--color-text-primary); background: transparent; border: 0; border-bottom: 1px solid var(--color-border-soft); padding: 16px 12px 16px 16px; cursor: pointer; }
+.pilote .opt kbd { font: 700 1.75rem/1 var(--font-ui); font-variation-settings: "wdth" 62; color: var(--color-text-primary); min-width: 1ch; }
+.pilote .opt:hover:not([disabled]) { background: var(--color-surface-container-low); }
+.pilote .opt.sel kbd, .pilote .opt.ko kbd { color: var(--color-signal); }
+.pilote .opt.sel { box-shadow: inset 3px 0 0 var(--color-signal); }
+.pilote .opt.ok kbd { color: var(--color-success); }
+.pilote .opt.ok { box-shadow: inset 3px 0 0 var(--color-success); }
+.pilote .opt.ko { box-shadow: inset 3px 0 0 var(--color-signal); }
+.pilote .opt[disabled] { cursor: default; }
+.pilote .opt[disabled]:not(.sel) { opacity: .45; }
+.pilote .fb { font-size: 1rem; line-height: 1.5; margin-top: 14px; padding-left: 14px; border-left: 3px solid var(--color-border-soft); }
+.pilote .fb:empty { display: none; }
+.pilote .ctl { display: grid; gap: 16px; margin: 6px 0 12px; }
+.pilote .sl { display: grid; gap: 8px; font-size: 1rem; }
+.pilote .sl output { font-weight: 700; font-variant-numeric: tabular-nums; }
+.pilote .sl input { width: 100%; accent-color: var(--color-signal); height: 28px; margin: 0; }
+.pilote .ctl-note { font-size: 1rem; line-height: 1.5; margin: 6px 0 0; padding-left: 14px; border-left: 3px solid var(--color-signal); }
+.pilote .nav { margin-top: auto; padding-top: 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.pilote .nav button { font: 700 1rem var(--font-ui); cursor: pointer; padding: 14px 20px; }
+.pilote .ghost { background: transparent; border: 1px solid var(--color-text-primary); color: var(--color-text-primary); }
+.pilote .primary { background: var(--color-text-primary); color: var(--color-surface-base); border: 1px solid var(--color-text-primary); min-width: 170px; }
+.pilote .nav button:disabled { opacity: .3; cursor: default; }
+.pilote .prof { list-style: none; padding: 0; margin: 0 0 12px; display: grid; gap: 6px; font-size: 1.0625rem; }
+.pilote .prof .ok { color: var(--color-success); }
+.pilote .prof .ko { color: var(--color-signal); }
+.pilote .small { font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.5; }
+.pilote .next { margin-top: 16px; padding: 14px 0; border-top: 2px solid var(--color-text-primary); }
+.pilote .next ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1rem; line-height: 1.45; }
+.pilote dialog { max-width: 660px; border: 2px solid var(--color-text-primary); background: var(--color-surface-base); color: var(--color-text-primary); padding: 28px 32px; font-size: 1.0625rem; line-height: 1.55; }
+.pilote dialog::backdrop { background: color-mix(in srgb, var(--color-text-primary) 45%, transparent); }
+.pilote dialog h2 { margin: 0 0 12px; font-size: 1.5rem; font-weight: 700; font-variation-settings: "wdth" 75; }
+.pilote dialog ul { padding-left: 20px; display: grid; gap: 8px; }
+.pilote dialog form { text-align: right; margin-top: 8px; }
+
+/* scène SVG */
+.pilote [data-pilote-scene] text { font-family: var(--font-ui); }
+.pilote [data-pilote-scene] .mono { font-family: var(--font-ui); font-variant-numeric: tabular-nums; }
+.pilote .scene { transition: opacity .45s ease; pointer-events: none; }
+.pilote .scene.on { pointer-events: auto; }
+.pilote .s-ink { fill: var(--st-ink); } .pilote .s-dim { fill: var(--st-dim); } .pilote .s-a { fill: var(--st-a); }
+.pilote .s-b { fill: var(--st-b); } .pilote .s-c { fill: var(--st-c); } .pilote .s-bg { fill: var(--st-bg); }
+.pilote .k-ink { stroke: var(--st-ink); } .pilote .k-dim { stroke: var(--st-dim); } .pilote .k-a { stroke: var(--st-a); }
+.pilote .k-b { stroke: var(--st-b); } .pilote .k-c { stroke: var(--st-c); } .pilote .k-line { stroke: var(--st-line); }
+.pilote .nofill { fill: none; }
+.pilote .reg { stroke: none; } .pilote .f-a { fill: var(--st-fa); } .pilote .f-b { fill: var(--st-fb); } .pilote .f-c { fill: var(--st-fc); }
+.pilote .cell { fill: var(--st-cell); stroke: var(--st-line); stroke-width: 1.5; }
+.pilote .cell.hl-log { stroke: var(--st-a); }
+.pilote .cell.hl-a { fill: var(--st-fa); stroke: var(--st-a); } .pilote .cell.hl-b { fill: var(--st-fb); stroke: var(--st-b); }
+.pilote .rulebody { fill: var(--st-rule); stroke: var(--st-line); stroke-width: 1.5; }
+.pilote .grab { cursor: grab; }
+.pilote .glass { fill: var(--st-glass); stroke: var(--st-line); }
+.pilote .t-cap { font-size: 17px; } .pilote .t-lab { font-size: 18px; } .pilote .t-lab2 { font-size: 20px; font-weight: 700; }
+.pilote .t-tiny { font-size: 14px; } .pilote .t-tick { font-size: 15px; } .pilote .t-tickb { font-size: 19px; font-weight: 500; }
+.pilote .t-mid { font-size: 26px; } .pilote .t-big { font-size: 30px; } .pilote .t-big2 { font-size: 30px; font-weight: 700; }
+.pilote .t-huge { font-size: 60px; font-weight: 700; font-variation-settings: "wdth" 75; }
+.pilote .t-num { font-size: 64px; font-weight: 700; font-variation-settings: "wdth" 62; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pilote .scene, .pilote .plaque, .pilote .beat i b { transition: none; }
+  .pilote .body.in { animation: none; }
+}
+@media (max-width: 899px) {
+  .pilote { height: auto; }
+  .pilote .pilote-barre { flex-wrap: wrap; gap: 10px; }
+  .pilote .beats { order: 3; flex-basis: 100%; }
+  .pilote .beat span { display: none; }
+  .pilote .pilote-matiere { display: none; }
+  .pilote .pilote-main { grid-template-columns: minmax(0, 1fr); grid-template-rows: 56vh auto; }
+  .pilote .script { border-left: 0; border-top: 1px solid var(--color-text-primary); padding: 22px 16px 18px; }
+  .pilote .stage-foot .keys { display: none; }
+}

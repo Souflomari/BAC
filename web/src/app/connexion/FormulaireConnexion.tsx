@@ -336,7 +336,7 @@ export function FormulaireConnexion() {
                   un élève voyant lisait un bouton gris sans explication
                   pendant qu'un lecteur d'écran, lui, entendait « bientôt
                   disponible ». La même information pour tout le monde. */}
-              <span className="rounded-full bg-surface-container-low px-2 py-0.5 text-caption font-medium text-secondary">
+              <span className="bg-surface-container-low px-2 py-0.5 text-caption font-medium text-secondary">
                 bientôt
               </span>
             </button>

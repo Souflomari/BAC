@@ -192,7 +192,7 @@ function PanneauNotions({
                           "state-layer focus-ring [--focus-radius:6px]"
                         )}
                       >
-                        <span aria-hidden className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ background: `var(--subject-${id})` }} />
+                        <span aria-hidden className="h-2.5 w-2.5 shrink-0" style={{ background: `var(--subject-${id})` }} />
                         <span className="text-body-sm font-semibold text-primary">{subjectLabel(id)}</span>
                         {/* Audit R6 (P0-3) : « 25/25 » nu à côté d'un nom se
                             lit comme UNE PROGRESSION — l'inverse de
@@ -379,7 +379,7 @@ function MenuCompact({
                     "transition-colors duration-micro ease-between"
                   )}
                 >
-                  <span aria-hidden className="h-2 w-2 rounded-full" style={{ background: `var(--subject-${id})` }} />
+                  <span aria-hidden className="h-2 w-2" style={{ background: `var(--subject-${id})` }} />
                   {subjectLabel(id)}
                 </Link>
               </DropdownMenu.Item>
