@@ -735,7 +735,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
       <div
         data-barre-epreuve
         className={cn(
-          "sticky top-16 z-raised mb-10 bg-surface-base pt-3",
+          "sticky top-14 z-raised mb-10 bg-surface-base pt-3",
           "print:static"
         )}
       >
@@ -843,7 +843,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
           aria-label="Ta copie"
           className="hidden bp-large:block print:hidden"
         >
-          <div className="sticky top-44 border-t-2 border-accent pt-5">
+          <div className="sticky top-40 border-t-2 border-accent pt-5">
             {enCorrection ? (
               <>
                 <p className="text-caption font-semibold uppercase tracking-eyebrow text-secondary">

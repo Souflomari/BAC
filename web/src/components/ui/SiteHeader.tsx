@@ -499,7 +499,7 @@ export function SiteHeader({ className, container, notions = [], epreuves = [] }
         className
       )}
     >
-      <div className={cn(container ?? "mx-auto max-w-page px-gutter w-full", "flex h-16 items-center justify-between gap-3")}>
+      <div className={cn(container ?? "mx-auto max-w-page px-gutter w-full", "flex h-14 items-center justify-between gap-3")}>
         {/* Wordmark — glyphe + BAC, rien d'autre. Le « · sciences » est
             parti : décoratif, il cassait en fenêtre intermédiaire (§3.3)
             et diluait la marque. */}
