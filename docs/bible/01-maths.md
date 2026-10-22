@@ -781,8 +781,10 @@ probabilité elle prend chaque valeur ; l'espérance est la moyenne qu'on obtien
 - La somme des probabilités de la loi qui ne fait pas 1 (vérification oubliée).
 - Appliquer la binomiale sans indépendance (tirages sans remise).
 - E(X) prise pour la valeur la plus probable.
-- Fonction de répartition : oublier qu'elle est continue à droite, ou la tracer comme une courbe
-  continue.
+- Fonction de répartition : la tracer comme une courbe continue au lieu d'un escalier, ou mettre le
+  point plein du mauvais côté des sauts. Le côté dépend de la définition : avec F(x) = p(X ≤ x),
+  F est continue à droite ; avec F(x) = p(X < x), à gauche [À VÉRIFIER : la convention des manuels
+  et des sujets marocains ; suivre celle de l'énoncé].
 
 **Représentations.**
 - **Figure** : deux lois de même espérance et d'écarts types différents
