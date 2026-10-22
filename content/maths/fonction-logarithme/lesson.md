@@ -599,7 +599,7 @@ Le même squelette, décor renversé : ici la courbe passe **sous** la première
      pour mot celle de l'exponentielle (137 mots communs, porte
      prose-jumelle rouge au run 798).
 
-     NOTE (couverture cadre SM, 2026-09-28 — docs/cadre/curriculum/maths-sm.yaml:162
+     NOTE (couverture cadre SM, 2026-09-28 — maths-sm.yaml:162 (supprimé le 2026-10-22)
      et maths-sexp.yaml:165/171) : R6 gagne « Le logarithme de base a », qui
      généralise le logarithme décimal déjà présent dans cette même sous-section.
      Le logarithme décimal lui-même est COMMUN aux deux filières (maths-

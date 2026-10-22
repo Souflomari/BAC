@@ -1,11 +1,11 @@
 # Le référentiel officiel du bac (cadres CNEE 2025)
 
-> **Statut : en construction, 2026-10-22.** Ce dossier remplace `docs/cadre/` comme source de vérité
-> sur **ce que l'examen national teste**. L'ancien dossier a été écrit avec le cadre 2015 (annoncé à
-> tort comme en vigueur et illisible), des sources secondaires, et sous des règles de validation qui
-> le laissaient au statut de « proposition ». Il contient des erreurs relevées dans
-> [`docs/refonte/01-programme-bac-maroc.md`](../refonte/01-programme-bac-maroc.md) §7.2. Il sera
-> archivé quand ce référentiel sera complet et relu.
+> **Statut : les 8 cadres scientifiques sont transcrits (2026-10-22), en attente de relecture par
+> le propriétaire.** Ce dossier est la source de vérité sur **ce que l'examen national teste**. Il
+> remplace l'ancien `docs/cadre/` (supprimé le 2026-10-22, lisible avec
+> `git show d3810007:docs/cadre/<fichier>`), écrit avec le cadre 2015, des sources secondaires, et
+> resté au statut de « proposition » ; ses erreurs sont relevées dans
+> [`docs/refonte/01-programme-bac-maroc.md`](../refonte/01-programme-bac-maroc.md) §7.2.
 
 ## Le principe
 
@@ -26,6 +26,8 @@ et sa page. Ce que nous en déduisons (limites, exclusions, conseils) vit ailleu
 | `svt-pc.yaml` | SVT — filière Sciences Physiques | PC |
 | `svt-sma.yaml` | SVT — Sciences Mathématiques A | SM-A |
 | `examen.yaml` | Règles communes : formule de la note, rattrapage, coefficients, calendrier | toutes |
+| `sources/` | Copie du cadre PC-PC 2025 (les autres cadres : lien Drive dans chaque fichier) | — |
+| `philo/` | **Exception** : l'ancienne proposition de périmètre de la philosophie, pas une lecture du cadre (voir [`philo/sources-philo.md`](philo/sources-philo.md)) | toutes |
 
 ## Le format d'un fichier de cadre
 

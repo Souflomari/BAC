@@ -49,7 +49,7 @@ sélecteur de porte : `[data-scene="corde-photo-film"]`.
 - **Filière / matière :** `sciences_physiques` (et SM) / `physique_chimie`.
 - **Domaine → sous-domaine → chapitre :** physique → **`ondes`** →
   **`ondes_mecaniques_progressives`**
-  (`docs/cadre/curriculum/pc-physique-chimie.yaml`, l. 48–57).
+  (`pc-physique-chimie.yaml (supprimé le 2026-10-22)`, l. 48–57).
 - **Poids :** `poids.part_examen: 11 %`, **rang 3 de la physique**. Habiletés du
   sous-domaine : **utilisation 5,5 %**, **application expérimentale 1,65 %**,
   **résolution de problème 3,85 %** (le 50 / 15 / 35 de l'examen appliqué aux 11 %).

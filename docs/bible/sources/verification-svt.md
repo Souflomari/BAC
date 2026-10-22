@@ -42,7 +42,7 @@
    **un sous-domaine** ; la Partie II donne 10 pts à l'autre domaine et 5 pts au **reste** du
    domaine de la Partie I (p. 8-9).
 5. **Le complément est au programme** (« le facteur du complément », C-S1 p. 15) ; l'ancien
-   `docs/cadre/curriculum/svt.yaml` le met en exclusion. Le sujet 2026 l'interroge (1 pt).
+   `svt.yaml (supprimé le 2026-10-22)` le met en exclusion. Le sujet 2026 l'interroge (1 pt).
 6. **Hors cadre mais enseignés** dans nos leçons : le système **Rhésus** (seul ABO est cité,
    p. 15) et les **maladies auto-immunes** (seuls allergie et SIDA, p. 16). La **théorie de la
    tectonique des plaques** n'est pas un sous-domaine de 2ème Bac : c'est un programme de
@@ -179,7 +179,7 @@ l'évaluation pédagogique (C-S1 p. 21, C-S2 p. 18, C-S3 p. 8).
 
 ## 5. L'ancien référentiel (`docs/cadre/`) face aux cadres
 
-| [`svt.yaml`](../../cadre/curriculum/svt.yaml) / [`README-svt.md`](../../cadre/sources/README-svt.md) | Ce que disent les cadres |
+| `svt.yaml` / `README-svt.md` (supprimés le 2026-10-22) | Ce que disent les cadres |
 |---|---|
 | Cadre 2015 en vigueur, PDF illisible, aucune page citable | cadre 2025, lisible ; tout est citable à la page |
 | Statut de l'obduction « incertain » | au cadre : « chaines de subduction, des chaines d'obduction et des chaines de collision » (C-S1 p. 17) |

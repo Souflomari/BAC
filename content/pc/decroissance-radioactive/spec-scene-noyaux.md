@@ -130,7 +130,7 @@ il est inscrit comme tel (§13, question 9).
 
 - **Filière / matière :** `sciences_physiques` (et SM) / `physique_chimie`.
 - **Domaine → sous-domaine → chapitre :** physique → **`transformations_nucleaires`** →
-  **`decroissance_radioactive`** (`docs/cadre/curriculum/pc-physique-chimie.yaml`,
+  **`decroissance_radioactive`** (`pc-physique-chimie.yaml (supprimé le 2026-10-22)`,
   l. 99–123).
 - **Poids :** `poids.part_examen: 8`, rang 4 de la physique. Habiletés du sous-domaine :
   **utilisation 4,0 %**, **application expérimentale 1,2 %**, **résolution de problème

@@ -2,7 +2,7 @@
 
 > **Notion:** Systèmes oscillants (mechanical oscillators)
 > **Subject / stream:** Physique-Chimie — Sciences Physiques (PC), 2ème Bac
-> **Curriculum path:** `domaines → physique → sous_domaines → mecanique → chapitres → systemes_oscillants` (`docs/cadre/curriculum/pc-physique-chimie.yaml`)
+> **Curriculum path:** `domaines → physique → sous_domaines → mecanique → chapitres → systemes_oscillants` (`pc-physique-chimie.yaml (supprimé le 2026-10-22)`)
 > **`skills.code` target:** `systemes_oscillants` (the cadre chapitre id).
 > **This is an EXTENSION spec, not a fresh spec.** The lesson exists (`lesson.md`, R0–R7) and is largely correct. It is **mis-scoped in ONE place (R6)** and **couples with `aspects-energetiques` on the oscillator-energy topic (R5)**. This file specifies exactly what to KEEP / REFOCUS / REMOVE / ADD. Do **not** touch `lesson.md` / `items.yaml` here — those are edited in a later pipeline step against this spec.
 > **Coupled file:** `content/pc/aspects-energetiques/spec-extension.md`. Read both; §8 (reconciliation) is shared and load-bearing.
@@ -281,7 +281,7 @@ See the identical §8 in `content/pc/aspects-energetiques/spec-extension.md`. In
 4. **Montage de résonance** — confirm the preferred TP (pendule élastique driven by vibreur vs pendules couplés / Barton) for C-RES-2.
 
 ### Sources consulted
-- **Curriculum boundary (authoritative):** `docs/cadre/curriculum/pc-physique-chimie.yaml` → `physique/mecanique/systemes_oscillants` (programme, savoir_faire, limites) + `mecanique` (exclusions, poids, habiletes, travaux_pratiques).
+- **Curriculum boundary (authoritative):** `pc-physique-chimie.yaml (supprimé le 2026-10-22)` → `physique/mecanique/systemes_oscillants` (programme, savoir_faire, limites) + `mecanique` (exclusions, poids, habiletes, travaux_pratiques).
 - **Existing lesson:** `content/pc/systemes-oscillants/lesson.md` (R0–R7), `items.yaml`.
 - **Coupled cadre home for energy:** `physique/mecanique/aspects_energetiques` (savoir_faire) — see coupled spec.
 - **Format référence:** `content/pc/rlc-serie/spec.md` (spec conventions, language policy, ADR références).

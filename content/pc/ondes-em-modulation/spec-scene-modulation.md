@@ -262,7 +262,7 @@ l'écrire d'abord dans `lesson.md`, la scène ensuite. *Ne jamais laisser une sc
 
 - **Filière / matière :** `sciences_physiques` (et SM) / `physique_chimie`.
 - **Domaine → sous-domaine → chapitre :** physique → **`electricite`** →
-  **`applications_modulation`** (`docs/cadre/curriculum/pc-physique-chimie.yaml`,
+  **`applications_modulation`** (`pc-physique-chimie.yaml (supprimé le 2026-10-22)`,
   l. 225-239).
 - **Poids :** `poids: { part_examen: 21, rang_physique: 2 }` (cadre p. 18) — le
   **deuxième** sous-domaine de la physique, derrière la mécanique.

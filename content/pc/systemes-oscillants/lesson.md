@@ -705,7 +705,7 @@ C'est la même leçon que celle du dictionnaire translation ↔ rotation : la m�
 [[exercise:r-variation]]
 
 <!-- NOTE DE VALIDATION (dette de cadre, vague H1 — prose ff15dbc2, items SO-44…52 ; jamais dans le rendu).
-     Quatre sections neuves, chacune adossée à une ligne imprimée de docs/cadre/curriculum/pc-physique-chimie.yaml :
+     Quatre sections neuves, chacune adossée à une ligne imprimée de pc-physique-chimie.yaml (supprimé le 2026-10-22) :
      « Et si le ressort n'est pas horizontal ? » — :315 (« horizontal / incliné / vertical ») ;
      « Le pendule simple synchrone… » — :317, attesté par un sujet national vérifié
        (content/pc/rotation-axe-fixe/bank.yaml, « Calculer la valeur de la longueur L du pendule simple

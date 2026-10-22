@@ -21,7 +21,7 @@ rythme des poussées) et 10 ont été rouges, tous causés par 9 seulement des 1
 **À garder.** Les sept non-négociables de production, sans changement. `validate-content`, le build, un
 `dom-truth` aminci, la porte des figures (clair et sombre), la largeur téléphone, les liens internes, le
 rendu des formules, les contrôles numériques (qui sont la graine du futur vérificateur d'exercices), les
-entrées du modèle apprenant, les tests unitaires, le cadre et les annales (`docs/cadre/`, `docs/sujets/`).
+entrées du modèle apprenant, les tests unitaires, le cadre et les annales (`docs/referentiel/`, `docs/sujets/`).
 
 **À couper.** Les instruments qui mesurent d'autres instruments : les essais rouges, la « porte des
 portes », la garde de dérive de la batterie, les campagnes de sabotage. Les 9 sceaux et cliquets.
@@ -522,7 +522,7 @@ c'est le métier.
 >    (au clic), sans théâtre d'engagement, et `prefers-reduced-motion` est respecté.
 > 10. Les maths sont du texte vivant (KaTeX) ; le français est juste (accents, typographie) ; l'arabe
 >     s'affiche dans le bon sens.
-> 11. Rien hors programme : le cadre (`docs/cadre/`) borne chaque leçon et chaque exercice.
+> 11. Rien hors programme : le cadre (`docs/referentiel/`) borne chaque leçon et chaque exercice.
 >
 > **Vérité**
 > 12. « Fait » veut dire que la CI rapide est verte sur le commit poussé. Ce qui n'a pas été vérifié se dit

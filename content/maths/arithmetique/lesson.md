@@ -941,7 +941,7 @@ Une fois le sujet 2019 compris, voici une **variation fraîche** — un autre no
      invoquant aussi l'exclusion « résidus quadratiques » comme motif
      d'incertitude. Les deux affirmations sont maintenant fausses : le cadre
      NOMME le petit théorème de Fermat, au chapitre `arithmetique_z` (bloc
-     « Arithmétique dans ℤ », `docs/cadre/curriculum/maths-sm.yaml`), à la
+     « Arithmétique dans ℤ », `maths-sm.yaml (supprimé le 2026-10-22)`), à la
      fois dans `programme` (capacité 2.1.8, verbatim pdfmath : « Utiliser la
      divisibilité, la division euclidienne, les théorèmes de Gauss, de
      Bézout et de Fermat, le théorème fondamental et les propriétés des

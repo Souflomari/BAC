@@ -4,7 +4,7 @@
 > **Subject / stream:** Physique-Chimie — Sciences Physiques (PC stream / Sciences Expérimentales), 2ème Bac
 > **`skills.code` target:** `rlc_serie` *(the cadre chapitre id; do NOT reuse the legacy old-project skill code `pc_rlc_oscillations` — ADR 0011 / mining report §1. supabase-architect reconciles to the live `skills.id` UUID at encode time, step 7.)*
 > **`subject_code`:** `physics` *(verbatim `subjects.code` per ADR 0008 §2 — NOT `phys`, NOT `pc`)*
-> **Curriculum path:** `domaines → physique → sous_domaines → electricite → chapitres → rlc_serie` (`docs/cadre/curriculum/pc-physique-chimie.yaml`)
+> **Curriculum path:** `domaines → physique → sous_domaines → electricite → chapitres → rlc_serie` (`pc-physique-chimie.yaml (supprimé le 2026-10-22)`)
 > **Pipeline step:** 1 of 7 (`pipeline.md (supprimé le 2026-10-22)`). This spec is the input to content-author (step 2), item-author (step 3), diagram-author, interactive-author.
 > **Authored by:** pedagogy-architect (Opus), autonomously.
 > **Language policy:** This spec's *meta* is English. **Every student-facing string** — lesson prose, item stems, choices, explanations, hints, and each misconception's `label` / `description` / `contradicts_principle` as stored and shown — **MUST be authored in French.** The French exemplars here are the register and substance the authors copy; they are not English placeholders to be translated.
@@ -30,7 +30,7 @@ The mining report (§1) confirms this chain matches the old project's prereq edg
 
 ### 0.2 What the bac asks here — IN SCOPE (the savoir_faire, bound tightly)
 
-The lesson covers **exactly** these eleven savoir_faire and **does not exceed them** (carried verbatim from `rlc_serie.savoir_faire` via `docs/cadre/validation/rlc-scope-check.md`):
+The lesson covers **exactly** these eleven savoir_faire and **does not exceed them** (carried verbatim from `rlc_serie.savoir_faire` via `rlc-scope-check.md (supprimé le 2026-10-22)`):
 
 1. **Définir et reconnaître les trois régimes** : périodique, pseudo-périodique, apériodique.
 2. **Reconnaître / représenter les courbes `u_C(t)`** pour les trois régimes et les exploiter.
@@ -44,7 +44,7 @@ The lesson covers **exactly** these eleven savoir_faire and **does not exceed th
 10. **Exploiter des documents expérimentaux** : tensions, régimes, **influence de R / L / C**, **pseudo-période et période propre**.
 11. **Proposer un montage d'étude** des oscillations libres ; brancher oscilloscope / système d'acquisition.
 
-### 0.3 Targets to design to (cite into items — `docs/cadre/validation/rlc-scope-check.md` §4)
+### 0.3 Targets to design to (cite into items — `rlc-scope-check.md (supprimé le 2026-10-22)` §4)
 
 - **Sous-domaine weight (`electricite.poids.part_examen`): 21 % of the whole exam** (rang physique 2 — the second-heaviest physics sous-domaine, behind mécanique). This notion is high-value; the item bank should be generous and bac-realistic.
 - **Habiletés mix (exam-wide ratios, cadre p.18-19), to match in the item set:**
@@ -432,7 +432,7 @@ Bounce the authored lesson/items back if any of these drift:
 ---
 
 ### Sources consulted (scope verification)
-- **Curriculum boundary (authoritative):** `docs/cadre/curriculum/pc-physique-chimie.yaml` → `physique/electricite/rlc_serie` (savoir_faire, limites) + `electricite` (exclusions, poids, habiletes). Cadre de référence 2025, Sciences Physiques / Physique-Chimie.
-- **Carried-forward boundary:** `docs/cadre/validation/rlc-scope-check.md` (limites/exclusions/targets extracted).
-- **Archive mining (référence only, no prose reused):** `docs/cadre/validation/rlc-mining-report.md`; worked NUMBERS from `backend/supabase/migrations/033_long_lessons_pc.sql` (RC/RL/RLC seeds); behaviour référence `mobile/bac_app/lib/widgets/physics/rlc_simulator_widget.dart`.
+- **Curriculum boundary (authoritative):** `pc-physique-chimie.yaml (supprimé le 2026-10-22)` → `physique/electricite/rlc_serie` (savoir_faire, limites) + `electricite` (exclusions, poids, habiletes). Cadre de référence 2025, Sciences Physiques / Physique-Chimie.
+- **Carried-forward boundary:** `rlc-scope-check.md (supprimé le 2026-10-22)` (limites/exclusions/targets extracted).
+- **Archive mining (référence only, no prose reused):** `rlc-mining-report.md (supprimé le 2026-10-22)`; worked NUMBERS from `backend/supabase/migrations/033_long_lessons_pc.sql` (RC/RL/RLC seeds); behaviour référence `mobile/bac_app/lib/widgets/physics/rlc_simulator_widget.dart`.
 - **Standard:** `docs/product/VISION.md` (notion anatomy; PC confront-the-model profile), `docs/product/DESIGN-BIBLE.md` §3 (typography/KaTeX) + §6 (visual language), ADR 0017 (media taxonomy), ADR 0007/0008/0009/0011 (misconception schéma + authoring conventions + coverage floor + dual-tagging).

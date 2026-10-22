@@ -363,7 +363,7 @@ Habiletés : utilisation des ressources **50 %**, application d'une solution exp
 résolution de problème **35 %** ([OFF] p. 18). Styles d'items : QCM, vrai/faux, appariement,
 réponse courte, développement, synthèse, questions complexes ([OFF] p. 4). Le programme complet
 (chapitres et travaux pratiques) est **annexé au cadre** ([OFF] p. 20-29) et déjà transcrit
-dans `docs/cadre/curriculum/pc-physique-chimie.yaml`.
+dans `pc-physique-chimie.yaml (supprimé le 2026-10-22)`.
 
 Ordre d'enseignement usuel [SEC] (AlloSchool) : ondes (3 chapitres) → nucléaire (2) → RC, RL,
 RLC libre, ondes EM et modulation → mécanique (Newton, chutes, mouvements plans, satellites,
@@ -719,7 +719,7 @@ annales.
 | N13 | Note 013-25 du 5 février 2025 et liste des cadres (relais tawjihnet) | version en vigueur, reconduite en 2026 | https://www.tawjihnet.net/vb/goto/post?id=103676 |
 | C-M1 | Cadre 2025 Maths SM A et B (opt. fr.) | §3.1 | https://drive.google.com/file/d/12D6bY0QnCjk-loZ15suB6iwlhTn4aB56/view |
 | C-M2 | Cadre 2025 Maths Sc. Expérimentales (opt. fr.) | §3.2 | https://drive.google.com/file/d/1NisQChmknNEzTD-109MrepxToJSTauJg/view |
-| C-P1 | Cadre 2025 PC Sc. Physiques (opt. fr.) — aussi `docs/cadre/sources/CDR_EXAM_NAT_BAC_25_PC-PC_Op_FR.pdf` | §3.3 | https://drive.google.com/file/d/1-wXw-Htm5DJh3Ln8oJOLDomT7R7a4Bw6/view |
+| C-P1 | Cadre 2025 PC Sc. Physiques (opt. fr.) — aussi `CDR_EXAM_NAT_BAC_25_PC-PC_Op_FR.pdf (supprimé le 2026-10-22)` | §3.3 | https://drive.google.com/file/d/1-wXw-Htm5DJh3Ln8oJOLDomT7R7a4Bw6/view |
 | C-P2 | Cadre 2025 PC SM A et B (opt. fr.) | §3.4 | https://drive.google.com/file/d/1IQmFZEDJ8YifBaxjbDb28LG6dNDh6-Zh/view |
 | C-P3 | Cadre 2025 PC Sc. Exp. « Sciences agricoles » (donné pour la filière SVT) | §3.5 | https://drive.google.com/file/d/1eU9ywURzL8t-lFfWMjl29HAjeOwzYT6E/view |
 | C-S1 | Cadre 2025 SVT filière SVT (opt. fr.) | §3.6 | https://drive.google.com/file/d/1-IfDCu2r7FvdEge7V9uJxqsNc-6rzxNb/view |

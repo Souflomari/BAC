@@ -6,7 +6,7 @@
 
 ---
 
-## 0. Cadrage cadre (autorité : `docs/cadre/curriculum/pc-physique-chimie.yaml`)
+## 0. Cadrage cadre (autorité : `pc-physique-chimie.yaml (supprimé le 2026-10-22)`)
 
 - **Filière / matière :** sciences_physiques / physique_chimie
 - **Domaine → sous-domaine → chapitre :** physique → `ondes` → `ondes_periodiques`

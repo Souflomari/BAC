@@ -168,7 +168,7 @@ sur un désaccord.
 
 - **Filière / matière :** `sciences_physiques` (et SM) / `physique_chimie`.
 - **Domaine → sous-domaine → chapitre :** physique → **`ondes`** →
-  **`onde_lumineuse`** (`docs/cadre/curriculum/pc-physique-chimie.yaml`,
+  **`onde_lumineuse`** (`pc-physique-chimie.yaml (supprimé le 2026-10-22)`,
   l. 71–83).
 - **Poids :** `poids: { part_examen: 11, rang_physique: 3 }` (cadre p. 18).
   **Habiletés du sous-domaine** (cadre p. 19, le 50 / 15 / 35 de l'examen appliqué
@@ -1877,7 +1877,7 @@ ce sont des **mesures à faire**, pas des affirmations à croire.
    d'arrêt** (tous `utilisation`) et sur l'**absence** du champ dans les 22
    items ; il ne peut pas être calculé item par item.
 7. **Je n'ai pas relu la source du Cadre.** Le §1 recopie
-   `docs/cadre/curriculum/pc-physique-chimie.yaml`, qui est l'autorité (ADR 0018).
+   `pc-physique-chimie.yaml (supprimé le 2026-10-22)`, qui est l'autorité (ADR 0018).
    Les `limites` et les `exclusions` de ce sous-domaine y sont marquées
    `source: derived` — **elles n'ont pas été imprimées dans le Cadre, elles en ont
    été inférées**, et le fichier lui-même dit qu'elles « need human validation ».

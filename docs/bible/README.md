@@ -27,7 +27,7 @@ Elle s'appuie sur la recherche déjà faite, qu'elle ne recopie pas mais organis
   8 cadres 2025, les poids, les créneaux observés ;
 - [`docs/refonte/02-comprendre-en-profondeur.md`](../refonte/02-comprendre-en-profondeur.md) — le
   format de notion v3 et la banque de ≈ 110 accroches historiques sourcées ;
-- [`docs/cadre/curriculum/`](../cadre/curriculum/) — les frontières de programme par matière ;
+- [`docs/referentiel/`](../referentiel/README.md) — les cadres officiels 2025, capacité par capacité ;
 - [`docs/sujets/`](../sujets/) — les annales transcrites, rangées par notion.
 
 ## Les fichiers

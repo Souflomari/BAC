@@ -23,7 +23,7 @@
 | Design Grille | validé, appliqué au site |
 | Format de leçon v3 | **en validation par le propriétaire** sur trois pilotes, liés depuis l'accueil : `/pilote/logarithme` (maths), `/pilote/radioactivite` (physique), `/pilote/expression-genetique` (SVT). Ne pas étendre le format aux autres notions avant son accord. |
 | Bible du bac ([`docs/bible/`](bible/README.md)) | brouillon v0 complet : stratégie d'examen, maths (19 fiches), physique (19), chimie (11, pas encore relue), SVT (26). Version lisible : https://claude.ai/artifact/G2iDVCxMC4mfeEYQ9hCZtk |
-| Référentiel officiel 2025 ([`docs/referentiel/`](referentiel/README.md)) | les 8 cadres faits : maths (73 + 61 capacités), PC (277 + 290 + 201), SVT (94 + 89 + 22) ; règles communes dans `examen.yaml`. Remplacera `docs/cadre/`, puis la liste de `web/src/lib/curriculum.ts`. |
+| Référentiel officiel 2025 ([`docs/referentiel/`](referentiel/README.md)) | les 8 cadres faits : maths (73 + 61 capacités), PC (277 + 290 + 201), SVT (94 + 89 + 22) ; règles communes dans `examen.yaml`. L'ancien `docs/cadre/` est supprimé (la proposition de philosophie et le PDF du cadre PC ont été déplacés dans le référentiel). Reste : générer la liste de `web/src/lib/curriculum.ts` depuis ce référentiel, après relecture du propriétaire. |
 | Allègement du cadre de travail | fait le 2026-10-22 ([ADR 0042](decisions/0042-allegement.md)) |
 | Vérificateur puis générateur d'exercices | à faire, après le format (règles 15 à 17) |
 

@@ -50,7 +50,7 @@ sélecteur de porte : `[data-scene="cuve-a-ondes"]`.
 
 - **Filière / matière :** `sciences_physiques` (et SM) / `physique_chimie`.
 - **Domaine → sous-domaine → chapitre :** physique → **`ondes`** →
-  **`ondes_periodiques`** (`docs/cadre/curriculum/pc-physique-chimie.yaml`,
+  **`ondes_periodiques`** (`pc-physique-chimie.yaml (supprimé le 2026-10-22)`,
   l. 37–69).
 - **Poids :** `poids.part_examen: 11 %`, **rang 3 de la physique**. Habiletés du
   sous-domaine : **utilisation 5,5 %**, **application expérimentale 1,65 %**,

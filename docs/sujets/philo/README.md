@@ -212,7 +212,7 @@ diff** par un autre agent que le transcripteur :
   qui ne listent que **الواجب** et **الحرية**. La leçon `content/philo/le-bonheur/`
   existe pourtant dans l'app — **écart de cadrage à trancher par l'humain**
   (comme pour `l-histoire`, et déjà signalé comme notion contestée dans
-  `docs/cadre/curriculum/philo.yaml`).
+  `philo.yaml (supprimé le 2026-10-22)`).
 
 ### Finding majeur : `l-histoire` (التاريخ) n'est pas examiné en filière scientifique
 

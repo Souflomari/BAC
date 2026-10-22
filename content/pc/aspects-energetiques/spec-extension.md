@@ -2,7 +2,7 @@
 
 > **Notion:** Aspects énergétiques des systèmes mécaniques (oscillator energy)
 > **Subject / stream:** Physique-Chimie — Sciences Physiques (PC), 2ème Bac
-> **Curriculum path:** `domaines → physique → sous_domaines → mecanique → chapitres → aspects_energetiques` (`docs/cadre/curriculum/pc-physique-chimie.yaml`)
+> **Curriculum path:** `domaines → physique → sous_domaines → mecanique → chapitres → aspects_energetiques` (`pc-physique-chimie.yaml (supprimé le 2026-10-22)`)
 > **`skills.code` target:** `aspects_energetiques` (the cadre chapitre id).
 > **This is an EXTENSION spec, not a fresh spec.** The lesson exists (`lesson.md`, R0–R6) but **teaches the WRONG thing for its cadre slot**: it delivers generic 1ère-Bac TEC + gravitational energy, while the cadre assigns this chapitre the **energy of the oscillators** (élastique, torsion, pesant). This file specifies the recentering. Do **not** touch `lesson.md` / `items.yaml` here.
 > **Coupled file:** `content/pc/systemes-oscillants/spec-extension.md`. Read both; §8 (reconciliation) is shared and load-bearing — it decides where `½kx²` and `½Cθ²` live.
@@ -337,7 +337,7 @@ Only what the new derivations need. **The two triangle-area figures are the load
 5. ⚠ **Misconception completeness** — are these nine the places PC students actually fail on oscillator energy? (Human's teaching authority.)
 
 ### Sources consulted
-- **Curriculum boundary (authoritative):** `docs/cadre/curriculum/pc-physique-chimie.yaml` → `physique/mecanique/aspects_energetiques` (programme, savoir_faire) + `mécanique` (limites, exclusions, poids, habiletes).
+- **Curriculum boundary (authoritative):** `pc-physique-chimie.yaml (supprimé le 2026-10-22)` → `physique/mecanique/aspects_energetiques` (programme, savoir_faire) + `mécanique` (limites, exclusions, poids, habiletes).
 - **Existing lesson:** `content/pc/aspects-energetiques/lesson.md` (R0–R6), `items.yaml`.
 - **Coupled source of the misplaced `½kx²`:** `content/pc/systemes-oscillants/lesson.md` R5 + `content/pc/systemes-oscillants/spec-extension.md` §1/§8.
 - **Format référence:** `content/pc/rlc-serie/spec.md`.

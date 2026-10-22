@@ -2,8 +2,8 @@
 
 > **Notion:** `content/maths/calcul-integral` (existing lesson, R0–R9)
 > **Streams:** 2ème Bac **Sciences Expérimentales (SExp)** *and* **Sciences Mathématiques (SM)** — the savoir-faire is explicit in BOTH cadres.
-> **Curriculum path (SExp):** `analyse → calcul_integral → integrale_primitives` (`docs/cadre/curriculum/maths-sexp.yaml:169-182`)
-> **Curriculum path (SM):** `analyse → calcul_integral → integrale_riemann_ipp` (`docs/cadre/curriculum/maths-sm.yaml:179-190`)
+> **Curriculum path (SExp):** `analyse → calcul_integral → integrale_primitives` (`maths-sexp.yaml:169-182 (supprimé le 2026-10-22)`)
+> **Curriculum path (SM):** `analyse → calcul_integral → integrale_riemann_ipp` (`maths-sm.yaml:179-190 (supprimé le 2026-10-22)`)
 > **This is an EXTENSION spec, not a fresh spec.** The lesson is sound; it is **missing one explicit savoir-faire**. This file specifies **one new rung (R9)**, its misconceptions, its checkpoint, its items, its figures and its 3D scene. Do **not** touch `lesson.md` / `items.yaml` / `checkpoints.yaml` / `exercises.yaml` here — downstream authors do that from this spec.
 > **Language policy:** meta is English; **every student-facing string** (prose, stems, choices, feedback, misconception labels, scene text) is authored in **French**, tutoiement, voice-ready.
 >
@@ -702,7 +702,7 @@ en ligne :
 7. ⚠ **Nombre d'items.** 16 items neufs (CI-35 → CI-50) portent la notion de 34 à 50, et le rung R9 à 14 items. C'est délibérément au-dessus du plancher (`honest_state` signale aujourd'hui six modèles à marge nulle). Si le volume doit rester proportionné aux ≈ 4 capacités du cadre SExp, dire lesquels couper — je recommande de couper CI-42 et CI-47 en premier (les plus redondants).
 
 ### Sources consultées
-- **Frontière de programme (autoritaire) :** `docs/cadre/curriculum/maths-sexp.yaml` (`calcul_integral/integrale_primitives`, `limites`, `exclusions_transversales`, `habiletes_ratios_examen`, `poids`) ; `docs/cadre/curriculum/maths-sm.yaml` (`calcul_integral/integrale_riemann_ipp`, idem).
+- **Frontière de programme (autoritaire) :** `maths-sexp.yaml (supprimé le 2026-10-22)` (`calcul_integral/integrale_primitives`, `limites`, `exclusions_transversales`, `habiletes_ratios_examen`, `poids`) ; `maths-sm.yaml (supprimé le 2026-10-22)` (`calcul_integral/integrale_riemann_ipp`, idem).
 - **Précédent d'examen vérifié :** `docs/sujets/_incoming/maths-sm-2023-r.md:80, 115-122, 140-146` (2023 rattrapage SM, Partie III 2c ; `V = \pi/4` cm³), recoupé avec la version publique du sujet et sa correction.
 - **État de la notion :** `content/maths/calcul-integral/lesson.md` (R0–R9), `items.yaml` (registre + `coverage_summary`), `checkpoints.yaml`, `exercises.yaml`, `REVIEW-2026-09-12.md` (S2.6 ; et les blocages ouverts S1.1–S1.5, fid-S5.19/20, péd-F3/F4).
 - **Standard :** `docs/product/VISION.md` (anatomie de la notion, profil maths), `NOTION-TEMPLATE-V2.md (supprimé le 2026-10-22)` (boxes A/B/C/E), `docs/product/DESIGN-BIBLE.md` (calme), ADR 0017 + son amendement du 2026-07-07 (taxonomie média), **ADR 0041** (scènes 3D : critère spatial, contrat de pari, calme, honnêteté des nombres, porte de pixels), ADR 0008/0009/0011 (schéma de misconception, dual-tag, plancher), ADR 0031/0033/0034 (discipline des portes).

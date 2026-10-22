@@ -9,8 +9,8 @@
  * availability, ever).
  *
  * GROUNDING: the four science streams + coefficients are from
- * `docs/cadre/cadre.yaml` (streams block). The Physique-Chimie chapter list is
- * transcribed verbatim from `docs/cadre/curriculum/pc-physique-chimie.yaml`
+ * `cadre.yaml (supprimé le 2026-10-22)` (streams block). The Physique-Chimie chapter list is
+ * transcribed verbatim from `pc-physique-chimie.yaml (supprimé le 2026-10-22)`
  * (the official 2025 PC cadre we hold). Maths / SVT / Philo chapter lists are
  * the standard Moroccan 2ème-Bac programs pending their own cadre extraction
  * (ADR 0018) — marked as such; they are structure to audit, not a validated
@@ -42,7 +42,7 @@ export interface Chapter {
    * means show everything.
    *
    * GROUNDING NOTE: per the new cadre extraction
-   * (docs/cadre/curriculum/maths-sexp.yaml, PROPOSITION status — not yet
+   * (maths-sexp.yaml (supprimé le 2026-10-22), PROPOSITION status — not yet
    * owner-validated), SExp excludes "Arithmétique" and "Structures
    * algébriques" from the maths programme structure it derives entirely,
    * rather than scoping them per-filière the way this field does. Adjust

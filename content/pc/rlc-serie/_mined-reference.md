@@ -1,7 +1,7 @@
 # Recovered reference material — RLC (`rlc_serie`)
 
 > **What this is.** The *worth-keeping* archive material the mining report
-> (`docs/cadre/validation/rlc-mining-report.md`) identified, recovered as
+> (`rlc-mining-report.md (supprimé le 2026-10-22)`) identified, recovered as
 > **INPUT/reference for the producers** — NOT as content to ship. Nothing here is
 > finished content; it is a behaviour spec + worked-number seeds, each screened
 > against the cadre `rlc_serie` boundary.

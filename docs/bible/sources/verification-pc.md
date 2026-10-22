@@ -75,7 +75,7 @@
 
 | Id | Document | Pages | Lecture |
 |---|---|:-:|---|
-| C-P1 | Cadre 2025 PC, filière Sciences Physiques (Drive `1-wXw-Htm5DJh3Ln8oJOLDomT7R7a4Bw6` ; copie du dépôt `docs/cadre/sources/CDR_EXAM_NAT_BAC_25_PC-PC_Op_FR.pdf`) | 29 | les 29 pages de la copie du dépôt, une à une ; la copie Drive est le même scan avec un filigrane tawjihnet (comparaison au pixel hors bandeaux, pages 9, 19, 23 relues) |
+| C-P1 | Cadre 2025 PC, filière Sciences Physiques (Drive `1-wXw-Htm5DJh3Ln8oJOLDomT7R7a4Bw6` ; copie du dépôt `docs/referentiel/sources/CDR_EXAM_NAT_BAC_25_PC-PC_Op_FR.pdf`) | 29 | les 29 pages de la copie du dépôt, une à une ; la copie Drive est le même scan avec un filigrane tawjihnet (comparaison au pixel hors bandeaux, pages 9, 19, 23 relues) |
 | C-P2 | Cadre 2025 PC, Sciences Mathématiques A et B (Drive `1IQmFZEDJ8YifBaxjbDb28LG6dNDh6-Zh`) | 30 | les 30 pages, comparées ligne à ligne à C-P1 |
 | C-P3 | Cadre 2025 PC, Sciences Expérimentales, filière « Sciences agronomiques » (Drive `1eU9ywURzL8t-lFfWMjl29HAjeOwzYT6E`) | 15 | les 15 pages |
 | N26-PC, R26-PC | Sujets NS 28F (normale) et RS 28F (rattrapage) 2026, filière PC | 9 + 8 | texte extrait, questions relues |
@@ -201,7 +201,7 @@ demi-réaction ; le cadre SM perd un seul tiret (électrolyse « transformation 
 | §3.3 : habiletés 50 / 15 / 35 « (p. 18) » | **confirmé** ; la spécification croisée est p. 19 | C-P1 p. 18-19 |
 | §3.3 : styles d'items « (p. 4) » | **confirmé** | C-P1 p. 4 |
 | §3.3 : « programme complet (chapitres et TP) annexé au cadre (p. 20-29) » | **confirmé, à préciser** : programme pp. 20-25, TP pp. 26-28, compétences p. 29 | C-P1 |
-| §3.3 : « déjà transcrit dans `docs/cadre/curriculum/pc-physique-chimie.yaml` » | **partiellement** : ce fichier paraphrase (tirets fusionnés), ne couvre que la filière PC, et calcule un poids « application expérimentale » par sous-domaine que le cadre n'imprime pas (§7) | — |
+| §3.3 : « déjà transcrit dans `pc-physique-chimie.yaml (supprimé le 2026-10-22)` » | **partiellement** : ce fichier paraphrase (tirets fusionnés), ne couvre que la filière PC, et calcule un poids « application expérimentale » par sous-domaine que le cadre n'imprime pas (§7) | — |
 | §3.3 : format observé, chimie 7 pts 10/10, acide-base / dosage 10/10 | **confirmé et étendu** : 7 pts dans les 6 sujets 2026 ; acide-base dans les 6 (§6) | [OFF-sujet] |
 | §3.3 : ondes 8/10 | **à nuancer** : 0 sur les 2 sujets PC 2026 → 8/12 | NS 28F, RS 28F 2026 |
 | §3.3 : électricité 3,5-5, mécanique 5-5,5 | **confirmé** (2026 : 5 et 5,5) | idem |
@@ -300,7 +300,7 @@ dans les sujets de SVT 2026 (`verification-svt.md`).
 
 ---
 
-## 7. L'ancien référentiel (`docs/cadre/curriculum/pc-physique-chimie.yaml`) face aux cadres
+## 7. L'ancien référentiel (`pc-physique-chimie.yaml (supprimé le 2026-10-22)`) face aux cadres
 
 | Ce que dit l'ancien fichier | Ce que disent les cadres |
 |---|---|

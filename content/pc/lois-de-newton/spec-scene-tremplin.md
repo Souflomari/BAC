@@ -67,7 +67,7 @@ Marqueur : `[[embed:tremplin-circulaire]]` · clé de registre : `tremplin-circu
 sélecteur de porte : `[data-scene="tremplin-circulaire"]`.
 
 **Orthographe : « Freinet » ou « Frenet » ?** Mesuré avant d'écrire. Le **cadre**
-imprime **« Freinet »** deux fois (`docs/cadre/curriculum/pc-physique-chimie.yaml`
+imprime **« Freinet »** deux fois (`pc-physique-chimie.yaml (supprimé le 2026-10-22)`
 l. 269 et l. 272) ; la prose du corpus aussi
 (`content/pc/chute-mouvements-plans/lesson.md:339` et `:591`,
 `content/pc/chute-mouvements-plans/items.yaml:427`,
@@ -168,7 +168,7 @@ banc, cette scène **ne doit pas être comptée comme un paiement** :
 
 - **Filière / matière :** `sciences_physiques` (et SM) / `physique_chimie`.
 - **Domaine → sous-domaine → chapitre :** physique → **`mecanique`** →
-  **`lois_de_newton`** (`docs/cadre/curriculum/pc-physique-chimie.yaml`,
+  **`lois_de_newton`** (`pc-physique-chimie.yaml (supprimé le 2026-10-22)`,
   l. 254-275).
 - **Poids :** `poids: { part_examen: 27, rang_physique: 1 }` (cadre p. 18) — **le
   premier sous-domaine de la physique**. **Habiletés du sous-domaine** (cadre

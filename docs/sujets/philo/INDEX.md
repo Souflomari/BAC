@@ -59,7 +59,7 @@ indépendante quand le scan n'est pas OCR-isable — précisé par entrée) ·
     scientifique par 2 sources concordantes (AlloSchool + Kezakoo SPC : seuls
     الواجب et الحرية y figurent). **Écart de cadrage avec la leçon existante
     `content/philo/le-bonheur/` à remonter à l'humain** — cette notion était
-    déjà listée comme contestée dans `docs/cadre/curriculum/philo.yaml`.
+    déjà listée comme contestée dans `philo.yaml (supprimé le 2026-10-22)`.
 - **`analyse-de-texte` (nouvelle leçon-méthode) sourcée en abondance** : 3
   textes réels « نص + حلّل النص وناقشه » (2025 N vérité, 2024 rattrapage liberté,
   2023 rattrapage devoir), ancrés sur l'arabe authentique + traduction FR —

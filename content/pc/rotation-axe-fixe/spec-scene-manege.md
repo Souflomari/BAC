@@ -38,7 +38,7 @@ Marqueur : `[[embed:manege-axe-fixe]]` · clé de registre : `manege-rotation`.
   Habiletés du sous-domaine : **utilisation 13,5 %**, **application expérimentale
   4,05 %**, **résolution de problème 9,45 %** (soit le 50 / 15 / 35 de l'examen
   appliqué aux 27 %).
-- **Chapitre :** `rotation_axe_fixe` (`docs/cadre/curriculum/pc-physique-chimie.yaml`, l. 295–307).
+- **Chapitre :** `rotation_axe_fixe` (`pc-physique-chimie.yaml (supprimé le 2026-10-22)`, l. 295–307).
 - **Savoir-faire que la scène sert :** repérer un point par son abscisse
   angulaire ; connaître l'accélération angulaire et son unité ; exploiter
   $a_T$ en fonction des grandeurs angulaires ; appliquer

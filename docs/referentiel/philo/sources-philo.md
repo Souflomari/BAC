@@ -1,10 +1,14 @@
 # Sources — Cadre de référence PHILOSOPHIE (2ème Bac, filières scientifiques)
 
-> Registre de provenance pour la frontière `docs/cadre/curriculum/philo.yaml`
-> (ADR 0018). **Statut : PROPOSITION.** Non autoritatif tant que les trois portes
-> ne sont pas passées (RULES §5) : relecture longue Gemini = couverture ;
-> research-challenger = couche dérivée ; validation humaine = profondeur.
-> Voir l'en-tête du YAML.
+> **Ce dossier est une exception au référentiel** (2026-10-22). Les autres fichiers de
+> `docs/referentiel/` recopient un cadre officiel lu page par page ; celui-ci est l'ancienne
+> **proposition** de périmètre de la philosophie ([`proposition-philo.yaml`](proposition-philo.yaml)),
+> reconstruite de sources secondaires en septembre 2026, faute d'un cadre lisible. Gardée parce
+> qu'elle est la seule description du périmètre des 12 notions de philosophie de l'application.
+> À remplacer par une lecture du cadre officiel si le propriétaire garde la philosophie
+> ([`docs/bible/QUESTIONS.md`](../../bible/QUESTIONS.md), question 2).
+>
+> Registre de provenance d'origine (ADR 0018) : statut PROPOSITION, non autoritatif.
 
 ---
 
@@ -155,7 +159,7 @@ le cadre officiel.
     - Confirme la structure commune aux trois formats (مقدمة/عرض/خاتمة ; fahm/tahlīl/
       munāqasha/tarkīb). Grille chiffrée non reproduite sur la page.
 17. **Corroboration interne au dépôt**
-    - Fichiers : `docs/cadre/cadre.yaml`, `docs/cadre/bac-reference.md` (§5) — philosophie
+    - Fichiers : `cadre.yaml (supprimé le 2026-10-22)`, `bac-reference.md (supprimé le 2026-10-22)` (§5) — philosophie
       coefficient 2 dans les quatre filières scientifiques. Concorde avec les épreuves réelles.
 
 ---

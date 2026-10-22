@@ -257,7 +257,7 @@ notion.
 
 | # | le fait | la commande qui le produit |
 |---|---|---|
-| **a** | **Le TP du cadre est couvert à 0 %.** Le cadre liste, pour ce sous-domaine, « *Électrolyse en solution aqueuse → réaliser des transformations forcées ; **déterminer la constante de Faraday*** » (`docs/cadre/curriculum/pc-physique-chimie.yaml:529`). La chaîne « déterminer la constante de Faraday » n'apparaît **nulle part** dans la notion — sauf dans la REVIEW qui la signale comme trou. $F$ est **donnée** partout où elle sert : `bank.yaml:193`, `:1087`, `:1343`, `lesson.md:155`, et dans le `stem` de chacun des six items qui l'emploient. | `grep -rn "déterminer la constante de Faraday" content/pc/electrolyse/` ⇒ **1 seule ligne, `REVIEW-2026-09-19.md:104`** |
+| **a** | **Le TP du cadre est couvert à 0 %.** Le cadre liste, pour ce sous-domaine, « *Électrolyse en solution aqueuse → réaliser des transformations forcées ; **déterminer la constante de Faraday*** » (`pc-physique-chimie.yaml:529 (supprimé le 2026-10-22)`). La chaîne « déterminer la constante de Faraday » n'apparaît **nulle part** dans la notion — sauf dans la REVIEW qui la signale comme trou. $F$ est **donnée** partout où elle sert : `bank.yaml:193`, `:1087`, `:1343`, `lesson.md:155`, et dans le `stem` de chacun des six items qui l'emploient. | `grep -rn "déterminer la constante de Faraday" content/pc/electrolyse/` ⇒ **1 seule ligne, `REVIEW-2026-09-19.md:104`** |
 | **b** | **Aucun des 24 items ne déclare son `habilete`.** Le mélange 50 / 15 / 35 du cadre est donc **incalculable** sur la couche qui porte le volume. Les **5** points d'arrêt en portent un (4 `utilisation`, 1 `application`) — c'est tout ce que la notion sait d'elle-même. | `grep -c habilete content/pc/electrolyse/items.yaml` ⇒ **0** ; `grep -c habilete content/pc/electrolyse/checkpoints.yaml` ⇒ **5** |
 | **c** | **Les trois médias de la notion sont FIGÉS**, et aucun n'a de réglage : `cellule-electrolyse` (4 étapes), `seuil-tension-electrolyse` (3 étapes), `electrolyse-eau-cellule`. Aucun ne montre une grandeur qui **change** quand on touche quelque chose, **aucun ne porte un nombre**, aucun ne porte une **durée**, aucun ne porte une **masse**. | `ls content/pc/electrolyse/media/` ⇒ **3 SVG + 3 `.stages.json`, 0 descripteur de manipulable** |
 | **d** | **R4 (chapitre 5) enseigne la chaîne de Faraday en UN exemple et dans UN seul sens.** `lesson.md:165-181` : un couple $(I ; \Delta t)$, une masse. **Ni $I$ ni $\Delta t$ n'y varient jamais** — donc rien, dans toute la notion, ne montre que c'est leur **produit** qui décide. | `grep -n "0,200\|200 mA\|5400" content/pc/electrolyse/lesson.md` ⇒ `:167` seulement |
@@ -331,7 +331,7 @@ disparaît.** Trois conséquences, toutes mesurées :
 
 - **Filière / matière :** `sciences_physiques` (et SM) / `physique_chimie`.
 - **Domaine → sous-domaine → chapitre :** chimie → **`sens_evolution`** →
-  **`transformations_forcees`** (`docs/cadre/curriculum/pc-physique-chimie.yaml`,
+  **`transformations_forcees`** (`pc-physique-chimie.yaml (supprimé le 2026-10-22)`,
   l. 514-525).
 - **Poids :** `poids: { part_examen: 10, rang_chimie: 1 }` (cadre p. 18, YAML l. 485) —
   **premier sous-domaine de la chimie, à égalité**. **Habiletés du sous-domaine** (YAML

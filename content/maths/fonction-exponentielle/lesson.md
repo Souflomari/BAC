@@ -642,8 +642,8 @@ Aucun de ces quatre n'est un manque de ce chapitre : ce sont des outils transver
      items EXP-32 à EXP-39. La leçon sœur (logarithme) traite ln(1+x)/x avec
      sa propre prose : la porte prose-jumelle mesure les deux.
 
-     NOTE (couverture cadre SM, 2026-09-28 — docs/cadre/curriculum/maths-
-     sm.yaml:174/177, maths-sexp.yaml:185 ; voir aussi REVIEW-2026-09-12.md,
+     NOTE (couverture cadre SM, 2026-09-28 — maths-sm.yaml:174/177,
+     maths-sexp.yaml:185, supprimés le 2026-10-22 ; voir aussi REVIEW-2026-09-12.md,
      défaut différé F2) : R4 gagne « Exponentielle de base a » et « Fonctions
      puissances x^α » (+ racine n-ième comme cas α=1/n), comblant exactement
      le savoir-faire signalé par F2 comme absent des cinq fichiers de la
