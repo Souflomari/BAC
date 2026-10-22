@@ -83,6 +83,7 @@ const URLS = {
   // la leçon pilote au nouveau format (refonte 2026-10) : elle porte le header du site
   "/pilote/logarithme": "/pilote/logarithme",
   "/pilote/expression-genetique": "/pilote/expression-genetique",
+  "/pilote/radioactivite": "/pilote/radioactivite",
 };
 /** Le 404 n'est pas un `page.tsx` : il se mesure par une URL qui n'existe pas. */
 const QUATRE_CENT_QUATRE = "/cette-route-n-existe-pas-porte-header";

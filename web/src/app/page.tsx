@@ -65,16 +65,26 @@ export default function HomePage() {
           </div>
           {/* Le format de leçon en test (refonte 2026-10) : une entrée
               discrète, jamais une seconde action primaire. */}
-          <p className="mt-6 border-l-2 border-signal pl-4 text-body text-secondary">
-            {frenchTypography("Nouveau format, en test :")}{" "}
-            <Link
-              href="/pilote/logarithme"
-              data-lien-pilote
-              className="font-semibold text-primary underline underline-offset-4 hover:text-signal focus-ring"
-            >
-              la fonction logarithme en 34 étapes, de Napier à la définition du bac →
-            </Link>
-          </p>
+          <div className="mt-6 border-l-2 border-signal pl-4 text-body text-secondary">
+            <p>{frenchTypography("Nouveau format, en test (trois leçons pilotes) :")}</p>
+            <ul role="list" className="mt-1">
+              {[
+                ["/pilote/logarithme", "la fonction logarithme, de Napier à la définition du bac"],
+                ["/pilote/radioactivite", "la décroissance radioactive, de Becquerel au carbone 14"],
+                ["/pilote/expression-genetique", "du gène à la protéine, la drépanocytose lettre par lettre"],
+              ].map(([href, titre]) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    data-lien-pilote
+                    className="font-semibold text-primary underline underline-offset-4 hover:text-signal focus-ring"
+                  >
+                    {titre} →
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
 

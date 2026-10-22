@@ -56,8 +56,26 @@
 15. **Les prochains pilotes** : la mécanique (27 % de la PC) et l'électricité (21 %) pèsent plus que
     le nucléaire. Après tes retours, on fait un pilote de mécanique ou d'électricité ?
 
-## F. Par matière
+## F. Le format des pilotes (à regarder en les essayant)
+
+16. **Le nombre de paris** : la radioactivité en a 10 en 36 étapes, la génétique 8. Trop, juste, ou
+    trop peu ? Le format v3 proposait 1 à 3 paris par figure-clé.
+17. **Les écrans denses** : l'atelier de mutation et l'exercice « au bac » montrent quatre lignes à la
+    fois. Acceptable pour un écran-outil, ou faut-il découper ?
+18. **Le hasard des dés** : chaque visite tire de nouveaux dés (les textes s'adaptent aux tiens), ou
+    une seule course fixe pour tous ?
+19. **Le lien avec le pilote logarithme** : la radioactivité dit λ = ln(6/5) pour les dés et dérive
+    t½ = ln 2 / λ. Ce pont entre maths et physique te parle-t-il ?
+20. **Le Maroc dans les pilotes** : Jebel Irhoud (ce que le carbone 14 ne peut pas dater) et les
+    allèles marocains de la β-thalassémie. À garder dans ces leçons, ou à déplacer ?
+
+## G. Par matière
 
 Chaque chapitre finit par ses propres questions :
+- Maths : [`01-maths.md`, §6](01-maths.md) — SM ou PC/SVT d'abord, probabilités en SM,
+  dichotomie, mode « problème complet ».
+- Physique : [`02-physique.md`](02-physique.md) — un profil SVT qui masque ce que son cadre exclut,
+  le RLC forcé en SM, les oscillateurs en une seule notion transversale.
+- Chimie : [`03-chimie.md`](03-chimie.md) — commencer par l'acide-base et le dosage.
 - SVT : [`04-svt.md`, §7](04-svt.md) — quelle filière d'abord, débats « exprimer son opinion »,
   séismes marocains en ouverture, expériences réelles, et le sujet PC 2026 (3 h ou 4 h ?).
