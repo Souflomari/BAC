@@ -1,6 +1,11 @@
 # Les portes des scènes manipulables (2D et 3D) : elles lisent les pixels de chaque scène.
 # Lentes (plusieurs minutes chacune), elles ne tournent que si le code d'une scène, ses descripteurs
 # ou le design change, et chaque semaine via hebdo.yml.
+#
+# Le filtre `paths` ci-dessous ne suffit pas : sur une pull request, GitHub l'évalue sur TOUT le diff
+# de la PR, et une longue PR qui a touché une scène une fois relance les scènes à chaque poussée. Le
+# job `detecter` regarde seulement ce que la dernière poussée a changé ; les listes des deux endroits
+# doivent rester identiques.
 name: scenes
 
 on:
@@ -17,6 +22,7 @@ on:
       - "content/**/media/*.json"
       - "web/package-lock.json"
       - ".github/workflows/scenes.yml"
+      - ".github/actions/preparer/**"
   workflow_dispatch:
   workflow_call:
 
@@ -25,7 +31,37 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Dans le doute (première poussée, historique réécrit, lancement manuel ou hebdomadaire), oui.
+  detecter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      scenes: ${{ steps.diff.outputs.scenes }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - id: diff
+        env:
+          EVENEMENT: ${{ github.event_name }}
+          ACTION: ${{ github.event.action }}
+          AVANT: ${{ github.event.before }}
+          APRES: ${{ github.event.pull_request.head.sha }}
+        run: |
+          if [ "$EVENEMENT" != "pull_request" ] || [ "$ACTION" != "synchronize" ] \
+             || ! git cat-file -e "$AVANT^{commit}" 2>/dev/null; then
+            echo "scenes=true" >> "$GITHUB_OUTPUT"; echo "pas de poussée à comparer : scènes lancées"; exit 0
+          fi
+          motif='^(web/src/lib/scene2d/|web/src/lib/scene3d/|web/src/components/notion/scene/|web/src/lib/tokens\.ts$|web/src/app/globals\.css$|web/scripts/scene-[^/]*\.mjs$|web/scripts/figures-manipulables\.mjs$|web/scripts/lib/|content/(.*/)?media/[^/]*\.json$|web/package-lock\.json$|\.github/workflows/scenes\.yml$|\.github/actions/preparer/)'
+          touches=$(git diff --name-only "$AVANT" "$APRES" | grep -E "$motif" || true)
+          if [ -n "$touches" ]; then
+            echo "scenes=true" >> "$GITHUB_OUTPUT"; printf 'cette poussée touche :\n%s\n' "$touches"
+          else
+            echo "scenes=false" >> "$GITHUB_OUTPUT"; echo "cette poussée ne touche aucune scène : rien à relancer"
+          fi
+
   scenes-3d:
+    needs: detecter
+    if: needs.detecter.outputs.scenes == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     defaults:
@@ -42,6 +78,8 @@ jobs:
           done
 
   scenes-2d:
+    needs: detecter
+    if: needs.detecter.outputs.scenes == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     defaults:
