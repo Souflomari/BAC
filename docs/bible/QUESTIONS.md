@@ -29,22 +29,35 @@
    plus. Tu veux plus, autant, ou moins ?
 8. **Hors programme** : a-t-on le droit d'aller au-delà du programme quand c'est éclairant
    (clairement signalé « pour aller plus loin »), ou faut-il rester strictement dans le cadre ?
+   Cas concret : des leçons actuelles enseignent des contenus absents des cadres 2025 (Rhésus,
+   maladies auto-immunes, enzymes de la digestion en SVT). On les retire, on les range en
+   « pour aller plus loin », ou on les garde ?
 9. **Expériences réelles** : préfères-tu des vidéos d'expériences réelles (à trouver ou à tourner)
    ou des simulations codées ? Les deux ont leur place ; laquelle prioriser ?
 10. **Le Maroc dans les exemples** : séismes d'Agadir et d'Al Haouz, Jebel Irhoud, Bou Azzer,
     savants de Marrakech et de Fès. On en met partout où c'est vrai, ou avec parcimonie ?
 
-## D. La langue
+## D. La langue et les conventions
 
 11. **Le vocabulaire arabe** : beaucoup d'élèves ont appris les sciences en arabe avant le BIOF.
     Une glose arabe des mots-clés (et éventuellement darija) serait-elle utile dans les fiches et
     les leçons ?
 
+12. **Les conventions des sujets marocains** : quand elles diffèrent des manuels français (RH₂ en
+    respiration, 38 ATP, « métamorphisme dynamique »), on suit les sujets marocains ? Proposition :
+    oui, puisque c'est ce que le correcteur attend, avec une note quand l'usage diffère ailleurs.
+
 ## E. La méthode de travail
 
-12. **Qui valide le contenu scientifique ?** As-tu un ou une enseignant(e) de maths, de PC ou de SVT
+13. **Qui valide le contenu scientifique ?** As-tu un ou une enseignant(e) de maths, de PC ou de SVT
     qui pourrait relire une fiche par matière ?
-13. **Le format de la bible te convient-il ?** Une fiche par notion, toujours dans le même ordre
+14. **Le format de la bible te convient-il ?** Une fiche par notion, toujours dans le même ordre
     (voir le [README](README.md)). Trop long, trop court, une rubrique manque ?
-14. **Les prochains pilotes** : la mécanique (27 % de la PC) et l'électricité (21 %) pèsent plus que
+15. **Les prochains pilotes** : la mécanique (27 % de la PC) et l'électricité (21 %) pèsent plus que
     le nucléaire. Après tes retours, on fait un pilote de mécanique ou d'électricité ?
+
+## F. Par matière
+
+Chaque chapitre finit par ses propres questions :
+- SVT : [`04-svt.md`, §7](04-svt.md) — quelle filière d'abord, débats « exprimer son opinion »,
+  séismes marocains en ouverture, expériences réelles, et le sujet PC 2026 (3 h ou 4 h ?).

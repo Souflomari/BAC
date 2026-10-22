@@ -22,8 +22,8 @@
 |---|---|
 | Design Grille | validé, appliqué au site |
 | Format de leçon v3 | **en validation par le propriétaire** : `/pilote/logarithme` (maths) en ligne ; les pilotes de physique (décroissance radioactive) et de SVT (expression de l'information génétique) sont en construction. Ne pas étendre le format aux autres notions avant son accord. |
-| Bible du bac ([`docs/bible/`](bible/README.md)) | brouillon v0 en cours d'écriture, à discuter avec le propriétaire |
-| Référentiel officiel 2025 ([`docs/referentiel/`](referentiel/README.md)) | maths fait (73 + 61 capacités) ; PC et SVT en cours. Remplacera `docs/cadre/`, puis la liste de `web/src/lib/curriculum.ts`. |
+| Bible du bac ([`docs/bible/`](bible/README.md)) | brouillon v0 : stratégie d'examen, maths (19 fiches) et SVT (26 fiches) écrits ; physique et chimie en cours. Version lisible : https://claude.ai/artifact/G2iDVCxMC4mfeEYQ9hCZtk |
+| Référentiel officiel 2025 ([`docs/referentiel/`](referentiel/README.md)) | maths (73 + 61 capacités) et SVT (94 + 89 + 22) faits, règles communes dans `examen.yaml` ; PC en cours. Remplacera `docs/cadre/`, puis la liste de `web/src/lib/curriculum.ts`. |
 | Allègement du cadre de travail | fait le 2026-10-22 ([ADR 0042](decisions/0042-allegement.md)) |
 | Vérificateur puis générateur d'exercices | à faire, après le format (règles 15 à 17) |
 
