@@ -1,6 +1,8 @@
 # 03 — Chimie : les 7 points fixes de chaque sujet de physique-chimie
 
-> **Statut : brouillon v0, 2026-10-22, à discuter avec le propriétaire ; pas encore relu par une deuxième lecture.** Les capacités citées
+> **Statut : brouillon v0, 2026-10-22, à discuter avec le propriétaire. Deuxième lecture faite le
+> 2026-10-22** : les 81 identifiants cités existent au référentiel, les citations sont mot pour mot,
+> les calculs refaits (parts de la moyenne, τ, K, rendements), les dates d'histoire contrôlées. Les capacités citées
 > (`pc-pc 2.2.3.13`, `pc-svt 2.2.3.6`) renvoient au référentiel officiel transcrit mot pour mot :
 > [`docs/referentiel/pc-pc.yaml`](../referentiel/pc-pc.yaml), [`pc-sm.yaml`](../referentiel/pc-sm.yaml),
 > [`pc-svt.yaml`](../referentiel/pc-svt.yaml). Identifiant à quatre chiffres : domaine (2 = chimie) ·
@@ -85,8 +87,10 @@ moitié de l'exercice de chimie de n'importe quel sujet.
 ### 2.2 Les écritures exigées par le cadre
 
 Le cadre fixe les **flèches** [OFF] : « Ecrire l'équation de réaction de dosage (**en utilisant une
-seule flèche**) » (`pc-pc 2.2.3.10`) ; « les équations des réactions aux électrodes (**avec double
-flèche**) et l'équation bilan (**avec une seule flèche**) » (`pc-pc 2.3.2.4`, `2.3.3.4`) ; l'acide
+seule flèche**) » (`pc-pc 2.2.3.10`) ; pour la pile, « Ecrire les équations des réactions aux
+électrodes (**avec double flèche**) et l'équation bilan lors du fonctionnement de la pile (**avec une
+seule flèche**) » (`pc-pc 2.3.2.4`), et de même pour l'électrolyse, « l'équation bilan (**simple
+flèche**) » (`pc-pc 2.3.3.4`) ; l'acide
 avec l'eau, limité, s'écrit avec la double flèche (annexe : « modélisation d'une transformation
 chimique limitée par deux réactions inverses et simultanées en utilisant l'écriture ⇄ »).
 Les **états physiques** (aq), (l), (s), (g) sont attendus dans les sujets [À VÉRIFIER avec un
@@ -492,7 +496,7 @@ nom de l'espèce qui domine.
 
 | Prérequis | Niveau | Question-test | Si faux, revoir |
 |---|---|---|---|
-| C3, C4 (τ, Q_r, K) | 2ème Bac | « K = x_f²/… pour l'acide dans l'eau ? » | C3, C4 |
+| C3, C4 (τ, Q_r, K) | 2ème Bac | « HA + H₂O ⇄ A⁻ + H₃O⁺ : Q_r,éq en fonction de C et τ ? » | C3, C4 |
 | Logarithme décimal ; 10^x | 2ème Bac maths (`maths-sexp 1.2.18`), parfois après | « −log(2·10⁻⁵) ≈ ? » | `content/maths/fonction-logarithme/lesson.md` |
 | Brønsted, couples, pH-mètre | 1ère Bac [SEC] | « L'eau est-elle un acide, une base, ou les deux ? » | R1 de la leçon |
 | Propriétés du log : log(a/b), log(a·b) | 2ème Bac maths | « log(K_A1/K_A2) = ? » | maths |
@@ -779,8 +783,8 @@ les flèches inversées.
 **Histoire et personnages.**
 ① **Davy, 1807** : avec la pile, il isole le potassium et le sodium par électrolyse [V]
 ([Humphry Davy](https://en.wikipedia.org/wiki/Humphry_Davy)).
-② **Hall et Héroult, 1886**, chacun de son côté, tous deux âgés de 22 ans, inventent l'électrolyse
-de l'aluminium ; avant, l'aluminium était si précieux qu'on en coiffa le Washington Monument [V]
+② **Hall et Héroult, 1886**, chacun de son côté, inventent l'électrolyse de l'aluminium ; tous deux
+sont nés en 1863 et morts en 1914 ; avant, l'aluminium était si précieux qu'on en coiffa le Washington Monument [V]
 ([Hall–Héroult process](https://en.wikipedia.org/wiki/Hall%E2%80%93H%C3%A9roult_process)).
 ③ Ce que ça a changé : l'aluminium bon marché, le chromage, la recharge des batteries.
 
@@ -869,7 +873,8 @@ SVT : lipides [À VÉRIFIER : pas au cadre SVT de 2ème Bac].
 
 ### C11. Contrôle de l'évolution : anhydride d'acide, catalyse, saponification, rendement, montages   (`controle-catalyse`)
 
-**Filières et poids.** `pc-pc 2.4.2.1` à `2.4.2.8` ; SM : « consignes de sécurité » (`pc-sm 2.4.2.2`) ;
+**Filières et poids.** `pc-pc 2.4.2.1` à `2.4.2.8` ; SM identique à un mot près (« consignes » de
+sécurité au lieu de « règles », `pc-sm 2.4.2.2`) ;
 SVT `pc-svt 2.4.9.1-8`. Sous-domaine : 7 % (SVT 8 %). TP de l'annexe : « Préparation et propriétés
 des savons » (TP 9). Fréquence : 2025 N (suivi cinétique d'une estérification, vrai / faux sur le
 catalyseur) [`docs/sujets/pc/controle-catalyse.md`] ; questions de montage : choisir le montage de
