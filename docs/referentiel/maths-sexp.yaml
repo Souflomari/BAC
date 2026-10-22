@@ -1,0 +1,134 @@
+# Cadre de référence 2025 — Mathématiques — Série Sciences Expérimentales (option français)
+# Filières concernées : Sciences Physiques (PC) et Sciences de la Vie et de la Terre (SVT).
+# Transcription mot pour mot, relue sur les pages scannées le 2026-10-22. Format : README.md.
+# `notions_app` est NOTRE correspondance avec les dossiers content/maths/ (pas le document).
+
+document:
+  titre: "Cadres de référence de l'examen national du baccalauréat — Options internationales du baccalauréat marocain - 2025 - option : français - Discipline : MATHEMATIQUES — Série : Sciences Expérimentales"
+  annee: 2025
+  note_ministerielle: "013-25 du 5 février 2025"
+  editeur: "Centre National des examens scolaires et de l'Evaluation des apprentissages (CNEE)"
+  pages: 5
+  source: "https://drive.google.com/file/d/1NisQChmknNEzTD-109MrepxToJSTauJg/view"
+  lu_le: "2026-10-22"
+  lecture: "lecture visuelle des 5 pages scannées. `page` = page du PDF ; le document numérote à partir de la 2e page du PDF (page imprimée = page PDF − 1)."
+  pied_de_page_arabe: "الإطار المرجعي لاختبار مادة الرياضيات ★ مسلك علوم الحياة والأرض ومسلك العلوم الفيزيائية (خيار فرنسية)"
+filieres: [pc, svt]
+matiere: maths
+
+epreuve:
+  # Le document ne donne ni durée, ni coefficient, ni structure d'épreuve : voir examen.yaml
+  # (en-têtes des sujets NS 22F : 3 h, coefficient 7).
+  habiletes:
+    - { nom: "Application directe des connaissances (définition, propriété, algorithme, formule, technique, règle...).", poids: 50, page: 5 }
+    - { nom: "Evoquer et appliquer des connaissances non explicites dans une question (Définition ; propriété ; théorème ; algorithme ; expression ; technique ; règle…) dans une situation habituelle.", poids: 35, page: 5 }
+    - { nom: "Traiter des situations inhabituelles par synthèse de connaissances et de résultats.", poids: 15, page: 5 }
+
+# Poids : « 3. Tableaux de spécification — 3.1. Suivant les domaines principaux », page PDF 5.
+domaines:
+  - id: "1"
+    nom: "1. Premier domaine principal : Analyse"
+    poids: 55
+    poids_page: 5
+    sous_domaines:
+      - id: "1.1"
+        nom: "1.1. Premier sous-domaine : Suites numériques"
+        capacites:
+          - { id: "1.1.1", page: 2, notions_app: [suites-numeriques], libelle: "Utiliser les suites géométriques et les suites arithmétiques pour étudier des exemples de suites de la forme : u_{n+1} = a·u_n + b ou u_{n+1} = (a·u_n + b)/(c·u_n + d)" }
+          - { id: "1.1.2", page: 2, notions_app: [suites-numeriques], libelle: "Utiliser les limites des suites de référence et les critères de convergence pour déterminer la limite d'une suite numérique." }
+          - { id: "1.1.3", page: 2, notions_app: [suites-numeriques], libelle: "Déterminer la limite de la composée d'une suite et d'une fonction continue (suites de type v_n = f(u_n))" }
+          - { id: "1.1.4", page: 2, notions_app: [suites-numeriques], libelle: "Etudier la convergence d'une suite (u_n) de la forme u_{n+1} = f(u_n) où f est une fonction continue sur un intervalle I et qui vérifie f(I) ⊂ I et déterminer sa limite." }
+          - { id: "1.1.5", page: 2, notions_app: [suites-numeriques], libelle: "Utiliser les suites pour résoudre des problèmes variés issus de domaines différents." }
+      - id: "1.2"
+        nom: "1.2. Deuxième sous-domaine : Continuité, dérivation et étude de fonctions"
+        capacites:
+          - { id: "1.2.1", page: 2, notions_app: [limites-continuite], libelle: "Etudier la continuité d'une fonction numérique en un point en utilisant le calcul des limites." }
+          - { id: "1.2.2", page: 2, notions_app: [limites-continuite], libelle: "Déterminer l'image d'un segment ou d'un intervalle par une fonction continue ou par une fonction continue et strictement monotone." }
+          - { id: "1.2.3", page: 2, notions_app: [limites-continuite], libelle: "Appliquer le théorème des valeurs intermédiaires pour étudier certaines équations et inéquations ou pour étudier le signe de certaines expressions..." }
+          - { id: "1.2.4", page: 2, notions_app: [limites-continuite], libelle: "Appliquer le théorème des valeurs intermédiaires dans le cas d'une fonction continue et strictement monotone sur un intervalle pour prouver l'unicité de la solution de l'équation f(x) = λ" }
+          - { id: "1.2.5", page: 2, notions_app: [derivabilite-etude-fonctions], libelle: "Etudier la dérivabilité d'une fonction numérique en un point et sur un intervalle." }
+          - { id: "1.2.6", page: 2, notions_app: [derivabilite-etude-fonctions], libelle: "Déterminer la fonction dérivée d'une fonction numérique." }
+          - { id: "1.2.7", page: 2, notions_app: [derivabilite-etude-fonctions], libelle: "Déterminer la monotonie d'une fonction." }
+          - { id: "1.2.8", page: 2, notions_app: [derivabilite-etude-fonctions], libelle: "Déterminer le signe d'une fonction à partir de son tableau de variations." }
+          - { id: "1.2.9", page: 2, notions_app: [derivabilite-etude-fonctions], libelle: "Déterminer le signe d'une fonction à partir de sa représentation graphique." }
+          - { id: "1.2.10", page: 2, notions_app: [derivabilite-etude-fonctions], libelle: "Résoudre graphiquement des équations de la forme f(x) = g(x) et des inéquations de la forme f(x) ≤ g(x)" }
+          - { id: "1.2.11", page: 2, notions_app: [derivabilite-etude-fonctions], libelle: "Déterminer la dérivée et la monotonie de la fonction réciproque d'une fonction continue et strictement monotone sur un intervalle et la représenter graphiquement." }
+          - { id: "1.2.12", page: 2, notions_app: [derivabilite-etude-fonctions], libelle: "Résoudre des problèmes d'application concernant les valeurs minimales et les valeurs maximales." }
+          - { id: "1.2.13", page: 2, notions_app: [derivabilite-etude-fonctions], libelle: "Utiliser la dérivée première et la dérivée seconde pour l'étude d'une fonction numérique et pour prouver certaines inégalités..." }
+          - { id: "1.2.14", page: 2, notions_app: [calcul-integral], libelle: "Déterminer les fonctions primitives des fonctions usuelles." }
+          - { id: "1.2.15", page: 2, notions_app: [calcul-integral], libelle: "Utiliser les formules de dérivation pour déterminer les fonctions primitives d'une fonction sur un intervalle." }
+          - { id: "1.2.16", page: 3, notions_app: [fonction-logarithme], libelle: "Maitriser le calcul algébrique sur les logarithmes." }
+          - { id: "1.2.17", page: 3, notions_app: [fonction-logarithme], libelle: "Maitriser la résolution des équations, des inéquations et des systèmes logarithmiques." }
+          - { id: "1.2.18", page: 3, notions_app: [fonction-logarithme], libelle: "Reconnaitre et appliquer le logarithme décimal (en particulier pour résoudre des équations du type 10^x = a et des inéquations du type 10^x ≤ a ou 10^x ≥ a)." }
+          - { id: "1.2.19", page: 3, notions_app: [fonction-logarithme], libelle: "Maitriser les limites logarithmiques de base et les appliquer." }
+          - { id: "1.2.20", page: 3, notions_app: [fonction-exponentielle], libelle: "Maitriser la résolution des équations, des inéquations et des systèmes comportant des exponentiels népériens." }
+          - { id: "1.2.21", page: 3, notions_app: [fonction-exponentielle], libelle: "Maitriser les limites de base de la fonction exponentielle népérienne et les appliquer." }
+          - { id: "1.2.22", page: 3, notions_app: [derivabilite-etude-fonctions, fonction-logarithme, fonction-exponentielle], libelle: "Etudier des fonctions ou des composées de fonctions figurant au programme et les représenter graphiquement (ensemble de définition, éléments de symétrie, périodicité, monotonie, branches infinies, tangentes, concavité, points d'inflexion…)." }
+          - { id: "1.2.23", page: 3, notions_app: [equations-differentielles], libelle: "Résoudre l'équation différentielle de type y' = ay + b , où a ∈ ℝ et b ∈ ℝ", note: "symboles ℝ restitués (cases vides dans le PDF)" }
+          - { id: "1.2.24", page: 3, notions_app: [equations-differentielles], libelle: "Résoudre l'équation différentielle de type y'' + ay' + by = 0, où a ∈ ℝ et b ∈ ℝ", note: "symboles ℝ restitués (cases vides dans le PDF)" }
+      - id: "1.3"
+        nom: "1.3. Troisième sous-domaine : Calcul intégral"
+        nom_imprime: "1.3. Troisième sous-domaine : Calcul i intégral [sic]"
+        capacites:
+          - { id: "1.3.1", page: 3, notions_app: [calcul-integral], libelle: "Utiliser une fonction primitive ou la technique de l'intégration par parties pour calculer l'intégrale d'une fonction." }
+          - { id: "1.3.2", page: 3, notions_app: [calcul-integral], libelle: "Utiliser les propriétés de l'intégrale." }
+          - { id: "1.3.3", page: 3, notions_app: [calcul-integral], libelle: "Calculer l'aire d'un domaine du plan limité par deux courbes." }
+          - { id: "1.3.4", page: 3, notions_app: [calcul-integral], libelle: "Calculer le volume d'un solide de révolution engendré par la rotation de la courbe d'une fonction autour de l'axe des abscisses." }
+
+  - id: "2"
+    nom: "2. Deuxième domaine principal : Algèbre et géométrie"
+    poids: 45
+    poids_page: 5
+    poids_detail:
+      - { sous_domaines: ["2.1", "2.2", "2.3"], poids: 15, note: "Produit scalaire dans V3 + Applications du produit scalaire dans l'espace + Produit vectoriel" }
+      - { sous_domaines: ["2.4", "2.5"], poids: 30, note: "Nombres complexes + Calcul de probabilités" }
+    sous_domaines:
+      - id: "2.1"
+        nom: "2.1. Premier sous-domaine : Produit scalaire dans V3"
+        capacites:
+          - { id: "2.1.1", page: 3, notions_app: [geometrie-espace], libelle: "Exprimer et démontrer l'orthogonalité de deux vecteurs en utilisant le produit scalaire." }
+          - { id: "2.1.2", page: 3, notions_app: [geometrie-espace], libelle: "Exprimer vectoriellement l'orthogonalité et ses propriétés." }
+          - { id: "2.1.3", page: 3, notions_app: [geometrie-espace], libelle: "Exprimer analytiquement l'orthogonalité et ses propriétés." }
+      - id: "2.2"
+        nom: "2.2. Deuxième sous-domaine : Applications du produit scalaire dans l'espace"
+        capacites:
+          - { id: "2.2.1", page: 3, notions_app: [geometrie-espace], libelle: "Déterminer une équation d'un plan défini par un point et un vecteur normal." }
+          - { id: "2.2.2", page: 3, notions_app: [geometrie-espace], libelle: "Déterminer une représentation paramétrique d'une droite passant par un point et orthogonale à un plan." }
+          - { id: "2.2.3", page: 3, notions_app: [geometrie-espace], libelle: "Etudier l'ensemble des points M(x, y, z) tels que : x² + y² + z² + ax + by + cz + d = 0" }
+          - { id: "2.2.4", page: 3, notions_app: [geometrie-espace], libelle: "Déterminer une équation cartésienne d'une sphère définie par son centre et son rayon." }
+          - { id: "2.2.5", page: 3, notions_app: [geometrie-espace], libelle: "Reconnaitre l'ensemble des points M de l'espace vérifiant la relation MA·MB = 0 (vecteurs)" }
+          - { id: "2.2.6", page: 3, notions_app: [geometrie-espace], libelle: "Utiliser la distance d'un point à un plan pour résoudre des problèmes géométriques (positions relatives d'un plan et d'une sphère et d'une droite et d'une sphère …)." }
+      - id: "2.3"
+        nom: "2.3. Troisième sous-domaine : Produit vectoriel"
+        capacites:
+          - { id: "2.3.1", page: 4, notions_app: [geometrie-espace], libelle: "Calculer l'aire d'un triangle en utilisant le produit vectoriel" }
+          - { id: "2.3.2", page: 4, notions_app: [geometrie-espace], libelle: "Déterminer une équation d'un plan défini par trois points non alignés." }
+          - { id: "2.3.3", page: 4, notions_app: [geometrie-espace], libelle: "Utiliser la distance d'un point à une droite pour résoudre des problèmes géométriques." }
+          - { id: "2.3.4", page: 4, notions_app: [geometrie-espace], libelle: "Appliquer le produit vectoriel pour résoudre des problèmes géométriques." }
+      - id: "2.4"
+        nom: "2.4. Quatrième sous - domaine : Nombres complexes"
+        capacites:
+          - { id: "2.4.1", page: 4, notions_app: [nombres-complexes-1, nombres-complexes-2], libelle: "Maitriser le calcul algébrique sur les nombres complexes (dans ses différentes écritures : algébrique, trigonométrique et exponentielle)." }
+          - { id: "2.4.2", page: 4, notions_app: [nombres-complexes-2], libelle: "Passer de l'écriture algébrique à l'écriture trigonométrique d'un complexe et réciproquement." }
+          - { id: "2.4.3", page: 4, notions_app: [nombres-complexes-2], libelle: "Linéariser des monômes trigonométriques en utilisant l'écriture exponentielle d'un nombre complexe." }
+          - { id: "2.4.4", page: 4, notions_app: [nombres-complexes-1, nombres-complexes-2], libelle: "Traduire les notions géométriques suivantes : distance de deux points, mesure des angles, alignement de points, colinéarité et orthogonalité de vecteurs, en utilisant l'outil complexe." }
+          - { id: "2.4.5", page: 4, notions_app: [nombres-complexes-2], libelle: "Exprimer la translation, l'homothétie et la rotation en utilisant l'outil complexe." }
+          - { id: "2.4.6", page: 4, notions_app: [nombres-complexes-2], libelle: "Reconnaitre une translation, une homothétie ou une rotation à partir de leurs expressions complexes." }
+          - { id: "2.4.7", page: 4, notions_app: [nombres-complexes-2], libelle: "Utiliser les nombres complexes pour résoudre des problèmes de géométrie (alignement, orthogonalité ...)." }
+          - { id: "2.4.8", page: 4, notions_app: [nombres-complexes-1], libelle: "Résoudre l'équation az² + bz + c = 0 dans l'ensemble des nombres complexes où a , b et c sont des nombres réels" }
+          - { id: "2.4.9", page: 4, notions_app: [nombres-complexes-1], libelle: "Résoudre des équations dont la résolution se ramène à la résolution d'une équation du second degré à une seule inconnue à coefficients réels." }
+      - id: "2.5"
+        nom: "2.5. Cinquième sous-domaine : Calcul de probabilités"
+        capacites:
+          - { id: "2.5.1", page: 4, notions_app: [denombrement], libelle: "Utiliser le modèle de dénombrement convenable selon la situation étudiée." }
+          - { id: "2.5.2", page: 4, notions_app: [probabilites-conditionnelles], libelle: "Calculer la probabilité de la réunion de deux évènements, de l'évènement contraire d'un évènement et de l'intersection de deux évènements." }
+          - { id: "2.5.3", page: 4, notions_app: [probabilites-conditionnelles], libelle: "Calculer la probabilité conditionnelle et l'appliquer pour le calcul de la probabilité de l'intersection de deux évènements." }
+          - { id: "2.5.4", page: 4, notions_app: [probabilites-conditionnelles], libelle: "Reconnaitre l'indépendance de deux évènements" }
+          - { id: "2.5.5", page: 4, notions_app: [probabilites-conditionnelles], libelle: "Déterminer la loi de probabilité d'une variable aléatoire et calculer ses différents paramètres." }
+          - { id: "2.5.6", page: 4, notions_app: [probabilites-conditionnelles], libelle: "Reconnaitre la loi binomiale et l'appliquer dans des situations variées." }
+
+notes_de_lecture:
+  - "61 capacités : 1.1 (5) · 1.2 (24) · 1.3 (4) · 2.1 (3) · 2.2 (6) · 2.3 (4) · 2.4 (9) · 2.5 (6)."
+  - "Le document ne contient pas de rubrique « conditions de passation » : pas de durée, pas de coefficient, pas de structure d'épreuve."
+  - "Ni dichotomie, ni Rolle / accroissements finis, ni sommes de Riemann, ni fonctions définies par une intégrale, ni volume autour de l'axe des ordonnées, ni puissances réelles, ni z^n = a, ni composées de transformations, ni fonction de répartition : ces capacités sont propres au cadre SM."
+  - "y'' + ay' + by = 0 (1.2.24) est bien au cadre SExp, contrairement à ce qu'affirmait docs/cadre/curriculum/maths-sexp.yaml."
