@@ -1,0 +1,18 @@
+{
+  "slug": "euler-taille-de-pas",
+  "control": {
+    "kind": "slider",
+    "axis": "dt",
+    "domain": [0.01, 0.05],
+    "step": 0.01,
+    "initial": 0.05
+  },
+  "bindings": [
+    { "target": "#euler-live-path", "recompute": "eulerPath" },
+    { "target": "#euler-live-dots", "recompute": "eulerDots" },
+    { "target": "#label-dt", "recompute": "labelDt" },
+    { "target": "#label-comparaison", "recompute": "labelComparaison" }
+  ],
+  "unlockAfterStage": 3,
+  "readoutTemplate": "Δt = {value} s : {labelComparaison}"
+}

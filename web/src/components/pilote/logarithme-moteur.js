@@ -1,0 +1,590 @@
+/* eslint-disable */
+// @ts-nocheck
+/**
+ * Moteur de la leçon pilote « Fonction logarithme » (refonte 2026-10).
+ *
+ * Porté tel quel depuis le prototype autonome
+ * docs/refonte/prototypes/logarithme-v3.html : 34 étapes, scènes SVG
+ * animées à paramètres interpolés, paris avant révélation, contrôles
+ * manipulables. Seules différences : tout est cherché DANS `root` (aucun
+ * document.querySelector global), les maths passent par KaTeX, et la
+ * fonction rend son démontage (écouteur clavier, voix, animations).
+ *
+ * Pilote : ce fichier n'est pas encore le format générique des leçons —
+ * c'est la référence à partir de laquelle on extraira ce format.
+ */
+import katex from "katex";
+
+export function monterPilote(root) {
+
+/* ---------- outils ---------- */
+const NS='http://www.w3.org/2000/svg';
+const svg=root.querySelector('[data-pilote-scene]');
+const $=s=>root.querySelector(s);
+function E(tag,attrs,parent){const e=document.createElementNS(NS,tag);if(attrs)for(const k in attrs){if(k==='text')e.textContent=attrs[k];else e.setAttribute(k,attrs[k]);}(parent||svg).appendChild(e);return e;}
+const lerp=(a,b,t)=>a+(b-a)*t, clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+function fr(x,d=2){const s=Math.abs(x).toFixed(d);return (x<0&&Number(s)!==0?'−':'')+s.replace('.',',');}
+const ty=s=>String(s).replace(/ ([?!;:»])/g,' $1').replace(/« /g,'« ');
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const RM=matchMedia('(prefers-reduced-motion: reduce)');
+const wait=ms=>new Promise(r=>setTimeout(r,RM.matches?0:ms));
+let run=0;const hooks={};
+function integ(x1,x2){const n=400,h=(x2-x1)/n;let s=1/x1+1/x2;for(let i=1;i<n;i++)s+=(i%2?4:2)/(x1+i*h);return s*h/3;}
+function mtext(parent,x,y,str,cls,anchor){const t=E('text',{x,y,class:cls,'text-anchor':anchor||'start'},parent);str.split(/(_[^_]+_)/).forEach(part=>{if(!part)return;const sp=E('tspan',{},t);if(part[0]==='_'&&part.length>2){sp.textContent=part.slice(1,-1);sp.setAttribute('font-style','italic');}else sp.textContent=part;});return t;}
+function svgPt(e){const p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(svg.getScreenCTM().inverse());}
+function show(el,o){el.style.opacity=o;}
+function setMT(t,str){if(t.__s===str)return;t.__s=str;t.textContent='';String(str).split(/(_[^_]+_)/).forEach(part=>{if(!part)return;const sp=E('tspan',{},t);if(part[0]==='_'&&part.length>2){sp.textContent=part.slice(1,-1);sp.setAttribute('font-style','italic');}else sp.textContent=part;});}
+
+const defs=E('defs');
+const mk=E('marker',{id:'arw',viewBox:'0 0 10 10',refX:'8',refY:'5',markerWidth:'8',markerHeight:'8',orient:'auto-start-reverse'},defs);
+E('path',{d:'M0 0L10 5L0 10z',class:'s-dim'},mk);
+
+const scenes={};
+function scene(id,def){const g=E('g',{class:'scene'});g.style.opacity=0;const s=Object.assign({id,g},def);s.defaults={...def.p};s.p={...def.p};s.build(g);s.render();scenes[id]=s;return s;}
+
+/* ---------- 1. le cahier de calcul ---------- */
+scene('ledger',{
+  p:{mul:1,rows:0,res:0,add:0,q:0},
+  build(g){
+    const A=2718281,B=3141592,R=470,CW=18;
+    this.cap=E('text',{x:60,y:72,class:'t-cap s-dim',text:'Une multiplication d’astronome, à la main'},g);
+    this.mg=E('g',{},g);
+    E('text',{x:R,y:150,class:'mono t-big s-ink','text-anchor':'end',text:String(A)},this.mg);
+    E('text',{x:R,y:196,class:'mono t-big s-ink','text-anchor':'end',text:'× '+B},this.mg);
+    E('line',{x1:R-290,x2:R,y1:214,y2:214,class:'k-dim','stroke-width':2},this.mg);
+    const digits=String(B).split('').reverse().map(Number);
+    this.rowEls=digits.map((d,i)=>E('text',{x:R-i*CW,y:252+i*40,class:'mono t-big s-ink','text-anchor':'end',text:String(A*d)},this.mg));
+    this.resG=E('g',{},this.mg);
+    E('line',{x1:R-290,x2:R,y1:512,y2:512,class:'k-dim','stroke-width':2},this.resG);
+    E('text',{x:R,y:552,class:'mono t-big s-a','text-anchor':'end',text:String(A*B)},this.resG);
+    E('text',{x:R,y:598,class:'t-lab s-dim','text-anchor':'end',text:'49 produits · 7 lignes décalées · des retenues'},this.resG);
+    this.ag=E('g',{},g);
+    const RA=880;
+    E('line',{x1:560,x2:560,y1:130,y2:600,class:'k-line'},this.ag);
+    E('text',{x:RA,y:252,class:'mono t-big s-ink','text-anchor':'end',text:String(A)},this.ag);
+    E('text',{x:RA,y:292,class:'mono t-big s-ink','text-anchor':'end',text:'+ '+B},this.ag);
+    E('line',{x1:RA-200,x2:RA,y1:310,y2:310,class:'k-dim','stroke-width':2},this.ag);
+    E('text',{x:RA,y:350,class:'mono t-big s-b','text-anchor':'end',text:String(A+B)},this.ag);
+    E('text',{x:RA,y:398,class:'t-lab s-dim','text-anchor':'end',text:'7 additions de chiffres · une ligne'},this.ag);
+    this.qg=E('g',{},g);
+    const t=mtext(this.qg,500,390,'_f_\u2009(_a_ × _b_) = _f_\u2009(_a_) + _f_\u2009(_b_)','t-huge s-ink','middle');
+    E('tspan',{class:'s-a',text:' ?'},t);
+    E('text',{x:500,y:450,class:'t-lab s-dim','text-anchor':'middle',text:'une fonction qui change les produits en sommes'},this.qg);
+  },
+  render(){
+    const p=this.p,dim=1-.96*p.q;
+    show(this.mg,p.mul*dim);show(this.cap,dim);
+    this.rowEls.forEach((t,i)=>{const o=clamp(p.rows-i,0,1);t.style.opacity=o;t.setAttribute('transform',`translate(0 ${((1-o)*10).toFixed(1)})`);});
+    show(this.resG,p.res);show(this.ag,p.add*dim);show(this.qg,p.q);
+  }
+});
+
+/* ---------- 2. la table des puissances de 2 ---------- */
+scene('table',{
+  p:{cells:0,arrows:0,log:0,gap:0,inter:0,pick:[]},
+  build(g){
+    const X=i=>52+i*82;this.X=X;
+    this.capTop=E('text',{x:52,y:180,class:'t-lab s-dim',text:'Pas — on avance en ajoutant 1'},g);
+    this.capLog=E('text',{x:52,y:180,class:'t-lab2 s-a',text:'Logarithme — le nombre de pas'},g);
+    this.capBot=E('text',{x:52,y:532,class:'t-lab s-dim',text:'Valeur — on avance en multipliant par 2'},g);
+    this.arcs=E('g',{},g);
+    for(let i=0;i<10;i++){
+      const x1=X(i)+38,x2=X(i+1)+38,m=(x1+x2)/2;
+      E('path',{d:`M${x1+8} 240 Q${m} 212 ${x2-8} 240`,class:'k-a nofill','stroke-width':1.5,'marker-end':'url(#arw)'},this.arcs);
+      E('text',{x:m,y:214,class:'t-tiny s-a','text-anchor':'middle',text:'+1'},this.arcs);
+      E('path',{d:`M${x1+8} 460 Q${m} 488 ${x2-8} 460`,class:'k-b nofill','stroke-width':1.5,'marker-end':'url(#arw)'},this.arcs);
+      E('text',{x:m,y:500,class:'t-tiny s-b','text-anchor':'middle',text:'×2'},this.arcs);
+    }
+    this.cells=[];
+    for(let i=0;i<=10;i++){
+      const cg=E('g',{},g);
+      const top=E('rect',{x:X(i),y:245,width:76,height:80,rx:2,class:'cell'},cg);
+      E('text',{x:X(i)+38,y:296,class:'mono t-mid s-ink','text-anchor':'middle','pointer-events':'none',text:String(i)},cg);
+      E('line',{x1:X(i)+38,x2:X(i)+38,y1:325,y2:375,class:'k-line'},cg);
+      const bot=E('rect',{x:X(i),y:375,width:76,height:80,rx:2,class:'cell'},cg);
+      E('text',{x:X(i)+38,y:426,class:'mono t-mid s-ink','text-anchor':'middle','pointer-events':'none',text:String(2**i)},cg);
+      bot.addEventListener('click',()=>this.click(i));
+      this.cells.push({cg,top,bot});
+    }
+    this.ghost=E('g',{},g);
+    [[1,'3'],[2,'5  6  7']].forEach(([i,t])=>{const x=X(i)+79;E('line',{x1:x,x2:x,y1:460,y2:560,class:'k-c','stroke-dasharray':'4 5','stroke-width':1.5},this.ghost);E('text',{x,y:592,class:'mono t-mid s-c','text-anchor':'middle',text:t},this.ghost);});
+    E('text',{x:52,y:640,class:'t-lab s-c',text:'Ces nombres n’ont pas de case. Ni 9 à 15, ni 17 à 31… La table est trouée.'},this.ghost);
+    this.banner=E('text',{x:52,y:612,class:'t-big2 s-ink'},g);
+  },
+  click(i){
+    if(!this.p.inter)return;
+    this.p.pick=this.p.pick.length>=2?[i]:[...this.p.pick,i];
+    this.render();hooks.onPick&&hooks.onPick(this.p.pick);
+  },
+  render(){
+    const p=this.p,pk=p.pick||[];
+    this.cells.forEach((c,i)=>{
+      const o=clamp(p.cells-i,0,1);c.cg.style.opacity=o;c.cg.setAttribute('transform',`translate(0 ${((1-o)*14).toFixed(1)})`);
+      c.bot.style.cursor=p.inter?'pointer':'default';
+      let tc='cell',bc='cell';
+      if(p.inter){if(pk.includes(i)){tc+=' hl-a';bc+=' hl-a';}if(pk.length===2&&i===pk[0]+pk[1]){tc+=' hl-b';bc+=' hl-b';}}
+      else if(p.log>.5)tc+=' hl-log';
+      c.top.setAttribute('class',tc);c.bot.setAttribute('class',bc);
+    });
+    const on=clamp(p.cells,0,1),all=clamp(p.cells-10,0,1);
+    show(this.arcs,p.arrows*(1-.8*p.gap));
+    show(this.capTop,on*(1-p.log));show(this.capLog,p.log);
+    show(this.capBot,all*(1-p.gap));show(this.ghost,p.gap);
+    let txt='',o=0;
+    if(p.inter){o=1;
+      if(pk.length===1)txt=`${2**pk[0]}  →  ${pk[0]} pas`;
+      else if(pk.length===2){const[i,j]=pk,s=i+j;txt=s<=10?`${2**i} × ${2**j}   →   ${i} + ${j} = ${s} pas   →   ${2**s}`:`${i} + ${j} = ${s} pas : hors de la table`;}
+      else txt='Clique deux nombres de la ligne du bas';
+    }else if(p.log>0){o=p.log*(1-p.gap);txt='log₂ 512 = 9 : neuf doublements mènent de 1 à 512';}
+    this.banner.textContent=ty(txt);show(this.banner,o);
+    this.banner.setAttribute('class',pk.length===2||!p.inter?'t-big2 s-ink':'t-big2 s-dim');
+  }
+});
+
+
+/* ---------- 3. des pas minuscules : 1,01^k ---------- */
+scene('fine',{
+  p:{pts:0,m3:0,m7:0,m21:0,swap:0},
+  build(g){
+    const K=323,L=110,R=930,T=70,B=590;this.K=K;
+    const xa=k=>L+(R-L)*k/330,ya=v=>B-(B-T)*v/25,xb=v=>L+(R-L)*v/25,yb=k=>B-(B-T)*k/330;
+    Object.assign(this,{xa,ya,xb,yb});
+    this.vals=[];for(let k=0;k<=K;k++)this.vals.push(1.01**k);
+    E('line',{x1:L,y1:B,x2:R+12,y2:B,class:'k-dim','stroke-width':1.5},g);
+    E('line',{x1:L,y1:B,x2:L,y2:T-12,class:'k-dim','stroke-width':1.5},g);
+    const sup=(par,x,y,base,s,rest,cls,anchor)=>{const t=E('text',{x,y,class:cls,'text-anchor':anchor||'start'},par);E('tspan',{text:base},t);E('tspan',{dy:'-9','font-size':'13',text:s},t);E('tspan',{dy:'9',text:rest},t);return t;};
+    this.ta=E('g',{},g);this.tb=E('g',{},g);
+    for(let k=0;k<=300;k+=50){E('line',{x1:xa(k),x2:xa(k),y1:B,y2:B+6,class:'k-dim'},this.ta);E('text',{x:xa(k),y:B+24,class:'t-tick s-dim','text-anchor':'middle',text:k},this.ta);}
+    for(let v=5;v<=25;v+=5){E('line',{x1:L-6,x2:L,y1:ya(v),y2:ya(v),class:'k-dim'},this.ta);E('text',{x:L-12,y:ya(v)+5,class:'t-tick s-dim','text-anchor':'end',text:v},this.ta);}
+    E('text',{x:R,y:B+94,class:'t-lab s-dim','text-anchor':'end',text:'nombre de pas k — on ajoute 1'},this.ta);
+    sup(this.ta,L+14,T-26,'valeur 1,01','k','  — on multiplie par 1,01','t-lab s-dim');
+    for(let v=5;v<=25;v+=5){E('line',{x1:xb(v),x2:xb(v),y1:B,y2:B+6,class:'k-dim'},this.tb);E('text',{x:xb(v),y:B+24,class:'t-tick s-dim','text-anchor':'middle',text:v},this.tb);}
+    for(let k=50;k<=300;k+=50){E('line',{x1:L-6,x2:L,y1:yb(k),y2:yb(k),class:'k-dim'},this.tb);E('text',{x:L-12,y:yb(k)+5,class:'t-tick s-dim','text-anchor':'end',text:k},this.tb);}
+    E('text',{x:R,y:B+94,class:'t-lab s-dim','text-anchor':'end',text:'valeur'},this.tb);
+    E('text',{x:L+14,y:T-26,class:'t-lab2 s-a',text:'nombre de pas = logarithme de la valeur'},this.tb);
+    const pg=E('g',{},g);this.dots=this.vals.map(()=>E('circle',{r:2.6,class:'s-ink'},pg));
+    this.marks=[110,196,306].map((k,j)=>{const mg=E('g',{},g),v=1.01**k,x=xa(k),y=ya(v),c=['a','b','c'][j];
+      E('line',{x1:x,x2:x,y1:y,y2:B,class:'k-'+c,'stroke-dasharray':'5 6','stroke-width':1.5},mg);
+      E('line',{x1:L,x2:x,y1:y,y2:y,class:'k-'+c,'stroke-dasharray':'5 6','stroke-width':1.5},mg);
+      E('circle',{cx:x,cy:y,r:7,class:'s-'+c},mg);
+      E('text',{x:x-14,y:y-16,'text-anchor':'end',class:'t-lab2 s-'+c,text:`${k} pas → ${fr(v)}`},mg);return mg;});
+    this.sum=E('g',{},g);
+    E('line',{x1:L,x2:xa(110),y1:B+42,y2:B+42,class:'k-a','stroke-width':6},this.sum);
+    E('line',{x1:xa(110),x2:xa(306),y1:B+42,y2:B+42,class:'k-b','stroke-width':6},this.sum);
+    E('text',{x:L,y:B+68,class:'t-lab2 s-c',text:ty('110 + 196 = 306 pas  →  21,0 = 3 × 7')},this.sum);
+    const kx=280,vx=1.01**kx;
+    this.swapLab=E('text',{x:xb(vx)+16,y:yb(kx)+34,class:'t-lab2 s-a',text:'la courbe du logarithme'},g);
+  },
+  render(){
+    const p=this.p,n=p.pts*(this.K+1),s=p.swap;
+    for(let k=0;k<=this.K;k++){const d=this.dots[k],v=this.vals[k];d.setAttribute('cx',lerp(this.xa(k),this.xb(v),s).toFixed(1));d.setAttribute('cy',lerp(this.ya(v),this.yb(k),s).toFixed(1));d.style.opacity=clamp(n-k,0,1);}
+    show(this.ta,1-s);show(this.tb,s);
+    [p.m3,p.m7,p.m21].forEach((o,j)=>show(this.marks[j],o*(1-s)));
+    show(this.sum,p.m21*(1-s));show(this.swapLab,s);
+  }
+});
+
+/* ---------- 4. la règle à calcul ---------- */
+scene('rule',{
+  p:{la:0,lb:0,cur:0,read:0,drag:0,eqd:0},
+  build(g){
+    const x0=90,L=820;this.x0=x0;this.L=L;const pos=v=>x0+L*Math.log10(v);this.pos=pos;
+    const clip=E('clipPath',{id:'ruleclip'},g);E('rect',{x:28,y:200,width:944,height:320},clip);
+    const root=E('g',{'clip-path':'url(#ruleclip)'},g);
+    E('rect',{x:40,y:365,width:920,height:72,rx:2,class:'rulebody'},root);
+    this.ticks(root,365,1);
+    this.C=E('g',{class:'grab'},root);
+    E('rect',{x:x0-52,y:290,width:L+104,height:72,rx:2,class:'rulebody'},this.C);
+    this.ticks(this.C,362,-1);
+    this.eq=E('g',{},g);
+    [[1,2],[2,4],[4,8]].forEach(([a,b])=>{const m=(pos(a)+pos(b))/2;E('path',{d:`M${pos(a)+3} 284 Q${m} 246 ${pos(b)-3} 284`,class:'k-a nofill','stroke-width':2,'marker-end':'url(#arw)'},this.eq);E('text',{x:m,y:250,class:'t-lab2 s-a','text-anchor':'middle',text:'×2'},this.eq);});
+    E('text',{x:500,y:212,class:'t-lab s-dim','text-anchor':'middle',text:'chaque doublement occupe la même longueur'},this.eq);
+    this.cg=E('g',{class:'grab'},g);
+    E('rect',{x:-18,y:262,width:36,height:200,rx:2,class:'glass'},this.cg);
+    E('line',{x1:0,x2:0,y1:254,y2:470,class:'k-c','stroke-width':1.8},this.cg);
+    this.bLab=E('text',{x:0,y:244,class:'t-lab2 s-b','text-anchor':'middle'},this.cg);
+    this.am=E('g',{},g);
+    E('path',{d:'M0 444l-8 14h16z',class:'s-a'},this.am);
+    this.aLab=E('text',{x:0,y:484,class:'t-lab2 s-a','text-anchor':'middle'},this.am);
+    this.read=E('text',{x:500,y:600,class:'t-big2 s-ink','text-anchor':'middle'},g);
+    const drag=(el,key)=>el.addEventListener('pointerdown',e=>{
+      if(!this.p.drag)return;e.preventDefault();el.setPointerCapture(e.pointerId);run++;
+      const x0_=svgPt(e).x,v0=this.p[key];
+      const mv=ev=>{this.p[key]=clamp(v0+(svgPt(ev).x-x0_)/this.L,0,1);this.p.lb=Math.min(this.p.lb,1-this.p.la);this.render();hooks.frame&&hooks.frame();};
+      const up=()=>{el.removeEventListener('pointermove',mv);el.removeEventListener('pointerup',up);el.removeEventListener('pointercancel',up);};
+      el.addEventListener('pointermove',mv);el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up);});
+    drag(this.C,'la');drag(this.cg,'lb');
+  },
+  ticks(par,base,dir){
+    for(let i=10;i<=100;i++){const v=i/10,x=this.pos(v),major=i%10===0,half=i%5===0,len=major?26:half?16:9;
+      E('line',{x1:x,x2:x,y1:base,y2:base+dir*len,class:'k-ink','stroke-width':major?1.6:1},par);
+      if(major)E('text',{x,y:dir>0?base+len+20:base-len-8,class:'mono t-tickb s-ink','text-anchor':'middle',text:String(v)},par);
+      else if(i===15)E('text',{x,y:dir>0?base+len+16:base-len-6,class:'mono t-tiny s-dim','text-anchor':'middle',text:'1,5'},par);}
+  },
+  render(){
+    const p=this.p,a=10**p.la,b=10**p.lb;
+    this.C.setAttribute('transform',`translate(${(this.L*p.la).toFixed(2)} 0)`);
+    this.cg.setAttribute('transform',`translate(${(this.x0+this.L*(p.la+p.lb)).toFixed(2)} 0)`);show(this.cg,p.cur);
+    this.C.style.cursor=this.cg.style.cursor=p.drag?'grab':'default';
+    this.bLab.textContent=`b = ${fr(b)}`;
+    this.am.setAttribute('transform',`translate(${(this.x0+this.L*p.la).toFixed(2)} 0)`);show(this.am,Math.max(p.read,p.drag));
+    this.aLab.textContent=`a = ${fr(a)}`;
+    this.read.textContent=`${fr(a)} × ${fr(b)} ≈ ${fr(a*b)}`;show(this.read,p.read);
+    show(this.eq,p.eqd);
+  }
+});
+
+
+/* ---------- 5. l'aire sous 1/x ---------- */
+scene('hyper',{
+  p:{curve:0,A1:0,A2:0,A3:0,lab:0,tgt:0,m:0,sx:1,sy:1,gen:0,a:2.4,b:1.8,dec:0,strip:0,xs:2.5,h:1.4,lnc:0,ev:0,xe:1,eq:0,eqs:''},
+  build(g){
+    const X=x=>80+100*x,Y=y=>590-210*y;this.X=X;this.Y=Y;
+    E('line',{x1:X(0),x2:X(8.9),y1:Y(0),y2:Y(0),class:'k-dim','stroke-width':1.5},g);
+    E('line',{x1:X(0),x2:X(0),y1:Y(0),y2:Y(2.6),class:'k-dim','stroke-width':1.5},g);
+    for(let i=1;i<=8;i++){E('line',{x1:X(i),x2:X(i),y1:Y(0),y2:Y(0)+6,class:'k-dim'},g);E('text',{x:X(i),y:Y(0)+26,class:'t-tick s-dim','text-anchor':'middle',text:i},g);}
+    [[.5,'0,5'],[1,'1'],[1.5,'1,5'],[2,'2']].forEach(([v,t])=>{E('line',{x1:X(0)-6,x2:X(0),y1:Y(v),y2:Y(v),class:'k-dim'},g);E('text',{x:X(0)-12,y:Y(v)+5,class:'t-tick s-dim','text-anchor':'end',text:t},g);});
+    this.one=E('line',{x1:X(0),x2:X(8.8),y1:Y(1),y2:Y(1),class:'k-dim','stroke-dasharray':'3 7'},g);
+    this.r={};['e','base','A1','A2','A3','g1','d0','g2','strip','mv'].forEach(k=>this.r[k]=E('path',{class:'reg'},g));
+    this.tgt=E('path',{class:'k-ink nofill','stroke-dasharray':'7 6','stroke-width':1.6},g);
+    this.box=E('path',{class:'k-ink nofill','stroke-width':1.6},g);
+    const curve=(f,x1,x2)=>{let d='';for(let i=0;i<=300;i++){const x=x1+(x2-x1)*i/300;d+=(i?'L':'M')+X(x).toFixed(1)+' '+Y(f(x)).toFixed(1);}return d;};
+    this.cv=E('path',{d:curve(x=>1/x,.4,8.9),class:'k-ink nofill','stroke-width':3,pathLength:1000,'stroke-dasharray':'1000 1000'},g);
+    this.lnv=E('path',{d:curve(Math.log,.55,8.9),class:'k-b nofill','stroke-width':3,pathLength:1000,'stroke-dasharray':'1000 1000'},g);
+    this.cvLab=mtext(g,X(.62)+16,Y(1/.62),'_y_ = 1/_x_','t-lab2 s-ink');
+    this.lnLab=mtext(g,X(7.4),Y(Math.log(7.4))+38,'_y_ = ln _x_','t-lab2 s-b','middle');
+    this.L={};['A1','A2','A3','g1','g2','d0'].forEach(k=>this.L[k]=E('text',{class:'t-lab2 s-ink','text-anchor':'middle'},g));
+    this.mvLab=E('text',{class:'t-lab2 s-a','text-anchor':'middle'},g);
+    this.arrow=E('path',{class:'k-dim nofill','stroke-width':1.6,'marker-end':'url(#arw)'},g);
+    this.arrowLab=mtext(g,0,0,'étirer ×_a_, écraser ÷_a_','t-lab s-dim','middle');
+    this.mk={};
+    [['a','_a_','s-b'],['b','_b_','s-a'],['ab','_ab_','s-b'],['x','_x_','s-ink'],['e','','s-ink']].forEach(([k,t,c])=>{const mg=E('g',{},g);E('line',{x1:0,x2:0,y1:Y(0)-6,y2:Y(0)+8,class:'k-ink','stroke-width':2},mg);this.mk[k]={g:mg,t:mtext(mg,0,Y(0)+56,t,'t-lab2 '+c,'middle')};});
+    this.brk=E('g',{},g);this.brkP=E('path',{class:'k-c nofill','stroke-width':2},this.brk);this.brkT=mtext(this.brk,0,Y(0)+104,'aire de 1 à _ab_','t-lab2 s-c','middle');
+    this.hLab=mtext(g,0,0,'hauteur 1/_x_','t-lab2 s-ink','end');
+    this.wP=E('path',{class:'k-ink nofill','stroke-width':1.6},g);
+    this.wLab=mtext(g,0,Y(0)+96,'largeur _h_','t-lab2 s-ink','middle');
+    this.eDot=E('circle',{r:7,class:'s-b'},g);
+    this.eH=E('line',{class:'k-b','stroke-dasharray':'4 5','stroke-width':1.6},g);
+    this.eqT=E('text',{x:935,y:118,class:'t-big2 s-ink','text-anchor':'end'},g);
+  },
+  reg(x1,x2,sx=1,sy=1){if(x2<x1)[x1,x2]=[x2,x1];const X=this.X,Y=this.Y,n=60;let d=`M${X(x1*sx).toFixed(1)} ${Y(0)}`;for(let i=0;i<=n;i++){const x=x1+(x2-x1)*i/n;d+=`L${X(x*sx).toFixed(1)} ${Y(sy/x).toFixed(1)}`;}return d+`L${X(x2*sx).toFixed(1)} ${Y(0)}Z`;},
+  setR(k,x1,x2,o,cls,sx,sy){const e=this.r[k];e.style.opacity=o;if(o>.001)e.setAttribute('d',this.reg(x1,x2,sx,sy));e.setAttribute('class','reg '+cls);},
+  lab(k,x1,x2,txt,o){const t=this.L[k],mid=(x1+x2)/2,hm=1/mid;t.setAttribute('x',this.X(mid));t.setAttribute('y',hm*210>56?this.Y(hm/2)+7:this.Y(hm)-14);t.textContent=txt;t.style.opacity=o;},
+  marker(k,x,o,txt,cls){const m=this.mk[k];m.g.setAttribute('transform',`translate(${this.X(x).toFixed(1)} 0)`);m.g.style.opacity=o;if(txt!=null){m.t.textContent=txt;m.t.setAttribute('class','t-lab2 '+cls);}},
+  render(){
+    const p=this.p,X=this.X,Y=this.Y;
+    this.cv.style.strokeDashoffset=1000*(1-p.curve);show(this.cvLab,clamp(p.curve*2-1,0,1));
+    this.lnv.style.strokeDashoffset=1000*(1-p.lnc);show(this.lnLab,clamp(p.lnc*2-1,0,1));
+    this.setR('A1',1,2,p.A1,'f-a');this.setR('A2',2,4,p.A2,'f-b');this.setR('A3',4,8,p.A3,'f-c');
+    this.lab('A1',1,2,'≈ '+fr(integ(1,2)),p.A1*p.lab);this.lab('A2',2,4,'≈ '+fr(integ(2,4)),p.A2*p.lab);this.lab('A3',4,8,'≈ '+fr(integ(4,8)),p.A3*p.lab);
+    this.tgt.setAttribute('d',this.reg(2,4));show(this.tgt,p.tgt);
+    this.setR('mv',1,2,p.m,'f-a',p.sx,p.sy);
+    const ml=this.mvLab;ml.textContent=`aire × ${fr(p.sx*p.sy)}`;ml.setAttribute('x',X(1.5*p.sx));ml.setAttribute('y',Y(p.sy/1.5)-18);show(ml,p.m);
+    const a=p.a,b=p.b,og=p.gen*(1-p.dec);
+    this.setR('g1',1,b,og,'f-a');this.setR('g2',a,a*b,p.gen,'f-b');this.setR('d0',1,a,p.dec,'f-c');
+    this.lab('g1',1,b,'≈ '+fr(integ(1,b)),og);this.lab('g2',a,a*b,'≈ '+fr(integ(a,a*b)),p.gen);this.lab('d0',1,a,'≈ '+fr(integ(1,a)),p.dec);
+    this.marker('a',a,p.gen);this.marker('b',b,og);this.marker('ab',a*b,p.gen);
+    {const m1=(1+b)/2,m2=a*m1,x1=X(m1),y1=Y(1/m1)-26,x2=X(m2),y2=Y(1/m2)-26,cy=Math.min(y1,y2)-70,ay=.25*y1+.5*cy+.25*y2;
+      this.arrow.setAttribute('d',`M${x1.toFixed(1)} ${y1.toFixed(1)}Q${((x1+x2)/2).toFixed(1)} ${cy.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`);show(this.arrow,og);
+      this.arrowLab.setAttribute('x',(x1+x2)/2);this.arrowLab.setAttribute('y',ay-14);show(this.arrowLab,og);}
+    this.brkP.setAttribute('d',`M${X(1)} ${Y(0)+68}v10H${X(a*b)}v-10`);this.brkT.setAttribute('x',(X(1)+X(a*b))/2);show(this.brk,p.dec);
+    this.setR('base',1,p.xs,p.strip,'f-a');this.setR('strip',p.xs,p.xs+p.h,p.strip,'f-b');
+    const x0=X(p.xs),x1=X(p.xs+p.h),yt=Y(1/p.xs);
+    this.box.setAttribute('d',`M${x0.toFixed(1)} ${Y(0)}V${yt.toFixed(1)}H${x1.toFixed(1)}V${Y(0)}`);show(this.box,p.strip);
+    this.hLab.setAttribute('x',x0-10);this.hLab.setAttribute('y',(yt+Y(0))/2+6);show(this.hLab,p.strip);
+    this.wP.setAttribute('d',`M${x0.toFixed(1)} ${Y(0)+66}v8H${x1.toFixed(1)}v-8`);show(this.wP,p.strip);
+    this.wLab.setAttribute('x',(x0+x1)/2);show(this.wLab,p.strip);
+    this.marker('x',p.xs,p.strip);
+    const xe=p.xe,A=integ(1,xe),hit=Math.abs(A-1)<.004;
+    this.setR('e',Math.min(1,xe),Math.max(1,xe),p.ev,xe>=1?'f-a':'f-c');
+    this.marker('e',xe,p.ev,hit?'e ≈ 2,718':`x = ${fr(xe)}`,hit?'s-a':'s-ink');
+    this.eDot.setAttribute('cx',X(xe));this.eDot.setAttribute('cy',Y(A));show(this.eDot,p.ev*p.lnc);
+    this.eH.setAttribute('x1',X(0));this.eH.setAttribute('x2',X(xe));this.eH.setAttribute('y1',Y(A));this.eH.setAttribute('y2',Y(A));show(this.eH,p.ev*p.lnc);
+    show(this.one,.7*p.ev);
+    if(p.ev>.01){setMT(this.eqT,hit?'ln e = 1':`ln ${fr(xe)} ≈ ${fr(A,3)}`);this.eqT.setAttribute('class','t-big2 '+(hit?'s-a':'s-ink'));show(this.eqT,p.ev);}
+    else{setMT(this.eqT,p.eqs);this.eqT.setAttribute('class','t-big2 s-ink');show(this.eqT,p.eq);}
+  }
+});
+
+/* ---------- 6. vérification ---------- */
+const QUIZ=[
+  {big:'ln 6 = ?',r1:'6 = 2 × 3',r2:'donc  ln 6 = ln 2 + ln 3'},
+  {big:'ln(2 + 3) = ?',r1:'ln 2 + ln 3 = ln 6',r2:'et ln(2 + 3), c’est ln 5 — rien à découper'},
+  {big:'ln(1/8) = ?',r1:'ln(1/8) + ln 8 = ln 1 = 0',r2:'donc  ln(1/8) = −ln 8 = −3 ln 2'}
+];
+scene('quiz',{
+  p:{qi:0,rv:0},
+  build(g){
+    this.tag=E('text',{x:500,y:190,class:'t-lab s-dim','text-anchor':'middle'},g);
+    this.big=E('text',{x:500,y:320,class:'t-huge s-ink','text-anchor':'middle'},g);
+    this.r1=E('text',{x:500,y:440,class:'t-big2 s-a','text-anchor':'middle'},g);
+    this.r2=E('text',{x:500,y:490,class:'t-big2 s-a','text-anchor':'middle'},g);
+  },
+  render(){const q=QUIZ[Math.round(this.p.qi)];this.tag.textContent=`Question ${Math.round(this.p.qi)+1} sur 3`;this.big.textContent=ty(q.big);this.r1.textContent=q.r1;this.r2.textContent=q.r2;show(this.r1,this.p.rv);show(this.r2,clamp(this.p.rv*2-1,0,1));}
+});
+
+/* ---------- 7. ce que tu sais maintenant ---------- */
+scene('end',{
+  p:{n:0},
+  build(g){
+    E('text',{x:90,y:96,class:'t-lab s-dim',text:'Ce que tu as compris'},g);
+    const I=[['Un logarithme compte des pas :','il transforme les × en +.'],['Napier, 1614 : des pas minuscules','bouchent les trous de la table.'],['L’aire sous 1/_x_ fait la même chose :','ln _x_ = l’aire de 1 à _x_.'],['La dérivée de cette aire est 1/_x_ :','c’est la définition de ton cours.']];
+    this.items=I.map((l,i)=>{const gg=E('g',{},g),y=180+i*128;E('text',{x:90,y:y+22,class:'mono t-num s-a',text:String(i+1)},gg);mtext(gg,170,y,ty(l[0]),'t-big s-ink');mtext(gg,170,y+42,ty(l[1]),'t-big s-dim');return gg;});
+  },
+  render(){this.items.forEach((g,i)=>{const o=clamp(this.p.n-i,0,1);g.style.opacity=o;g.setAttribute('transform',`translate(${((1-o)*-16).toFixed(1)} 0)`);});}
+});
+
+
+/* ---------- le script : 34 étapes ---------- */
+const L2=Math.log10(2),L3=Math.log10(3);
+const BEATS=[{name:'Le problème'},{name:'La table'},{name:'Les trous'},{name:'La règle'},{name:'L’aire'},{name:'Ce que le bac appelle ln'},{name:'À toi'}];
+const BET=t=>({opts:t.map(([x,fb])=>({t:x,fb}))});
+const STEPS=[
+/* 0 */ {beat:0,scene:'ledger',tag:'1614 · Édimbourg',set:{mul:1},
+  text:'Édimbourg, 1614. John Napier regarde les astronomes de son temps se noyer dans les calculs. Pour prédire où sera une planète, il faut multiplier des nombres comme ceux-ci — à la main, des centaines de fois.'},
+/* 1 */ {beat:0,scene:'ledger',seq:[{p:{rows:7},d:4200,w:300},{p:{res:1},d:700}],
+  text:'Une seule de ces multiplications : 49 produits de chiffres, sept lignes à décaler, des retenues partout. Une erreur sur un chiffre, et la planète n’est plus là où on l’attend.'},
+/* 2 */ {beat:0,scene:'ledger',seq:[{p:{add:1},d:900,w:200}],
+  text:'Les mêmes nombres, additionnés : sept petites additions, une seule ligne. L’addition est rapide et sûre. La multiplication est lente et fragile.'},
+/* 3 */ {beat:0,scene:'ledger',seq:[{p:{q:1},d:900}],
+  text:'Le rêve de Napier : une fonction <i>f</i> qui transformerait chaque multiplication en addition. Est-ce seulement possible ?',
+  pari:BET([['Oui, ça doit exister','Napier y a cru assez pour y consacrer vingt ans de sa vie. Voyons s’il avait raison.'],['Non, c’est trop beau pour être vrai','Méfiance saine. Mais la réponse tient dans une simple table — regarde.'],['Aucune idée','C’est exactement là qu’en était Napier quand il a commencé. Allons-y.']])},
+/* 4 */ {beat:1,scene:'table',set:{cells:0},seq:[{p:{cells:11},d:3300,w:200}],
+  text:'Écris les puissances de 2. En haut, un nombre de pas. En bas, ce qu’on obtient en partant de 1 et en doublant à chaque pas.'},
+/* 5 */ {beat:1,scene:'table',seq:[{p:{arrows:1},d:1300}],
+  text:'Avance d’une case : en haut on ajoute 1, en bas on multiplie par 2. Les deux lignes avancent ensemble — l’une à coups d’additions, l’autre à coups de multiplications.'},
+/* 6 */ {beat:1,scene:'table',set:{inter:1,pick:[]},ctl:'pick',
+  text:'Calcule 16 × 32 sans multiplier. Clique 16, puis 32 dans la ligne du bas : la table additionne leurs pas, puis redescend.'},
+/* 7 */ {beat:1,scene:'table',set:{inter:0,pick:[]},seq:[{p:{log:1},d:1000}],
+  text:'La ligne du haut a un nom. Napier l’appelle <b>logarithme</b>, du grec <i>logos</i> (le rapport) et <i>arithmos</i> (le nombre) : le nombre qui compte combien de fois on a multiplié.'},
+/* 8 */ {beat:2,scene:'table',set:{log:0},seq:[{p:{gap:1},d:1100}],
+  text:'Un astronome a besoin de 16 × 3. Problème : où est 3 dans la table ?',
+  pari:BET([['Entre 2 et 4','Justement : entre 2 et 4, il n’y a aucune case. Ni 3, ni 5, ni 6, ni 7. La table est trouée.'],['À un pas et demi, environ','Bien vu : il faudrait des demi-pas, des dixièmes de pas… La table, elle, saute de 2 à 4.'],['Nulle part','Exact. Et c’est le cas de presque tous les nombres. Le génie de Napier va être de boucher ces trous.']])},
+/* 9 */ {beat:2,scene:'fine',seq:[{p:{pts:1},d:4500,w:300}],
+  text:'L’idée de Napier : des pas minuscules. Au lieu de doubler, on multiplie par 1,01 à chaque pas. Chaque point est un pas de plus. (Napier, lui, prenait 0,9999999 : il voulait une précision folle.)'},
+/* 10 */ {beat:2,scene:'fine',seq:[{p:{m3:1},d:900},{p:{m7:1},d:900,w:700}],
+  text:'Plus de trous : les valeurs se suivent de près. Au bout de 110 pas, on tombe sur 2,99 — presque 3. Au bout de 196 pas, sur 7,03 — presque 7.'},
+/* 11 */ {beat:2,scene:'fine',
+  text:'Alors 3 × 7 = 21 se trouve à combien de pas ?',
+  pari:{label:'Ton pari',reveal:[{p:{m21:1},d:1400}],opts:[
+    {t:'110 + 196 = 306 pas',ok:true,fb:'Oui. Quand les valeurs se multiplient, les pas s’additionnent. Regarde le point 306 : 21,0.'},
+    {t:'110 × 196 = 21 560 pas',fb:'Ce sont les valeurs qu’on multiplie. Les pas, eux, s’additionnent : 110 + 196 = 306. Regarde le point 306.'},
+    {t:'21 pas',fb:'21 est la valeur, lue sur l’axe vertical. Le nombre de pas vit sur l’axe horizontal : 110 + 196 = 306.'}]}},
+/* 12 */ {beat:2,scene:'fine',seq:[{p:{swap:1},d:3200,w:300}],
+  text:'Lis maintenant la table à l’envers : tu donnes une valeur, elle te rend un nombre de pas. Échange les deux axes… La courbe que tu vois naître, c’est celle du logarithme.'},
+/* 13 */ {beat:3,scene:'rule',tag:'1620 · Londres',seq:[{p:{eqd:1},d:1100,w:500}],
+  text:'Londres, 1620. Edmund Gunter grave ces pas sur une règle. Les nombres n’y sont plus régulièrement espacés : la distance depuis 1, c’est le logarithme. De 1 à 2, de 2 à 4, de 4 à 8 : même longueur.'},
+/* 14 */ {beat:3,scene:'rule',tag:'Vers 1622 · William Oughtred',set:{eqd:0},seq:[{p:{la:L2},d:1700,w:300},{p:{cur:1},d:500},{p:{lb:L3},d:1700},{p:{read:1},d:600}],
+  text:'Vers 1622, William Oughtred fait glisser deux règles l’une contre l’autre. Pour 2 × 3 : on pose le 1 du haut sur le 2 du bas, puis on lit en bas, en face du 3 du haut. Les longueurs s’ajoutent ; les nombres se multiplient.'},
+/* 15 */ {beat:3,scene:'rule',tag:'1622 → 1972',set:{drag:1},ctl:'rule',
+  text:'À toi : fais glisser la règle du haut et le curseur, ici ou sur la scène. Pendant 350 ans, ingénieurs et architectes ont calculé ainsi — les astronautes d’Apollo en emportaient encore une à bord.'},
+/* 16 */ {beat:4,scene:'hyper',seq:[{p:{curve:1},d:2600,w:300}],
+  text:'Une question reste ouverte : ces tables cachent-elles une courbe ? La réponse arrive par un chemin inattendu : l’hyperbole, la courbe de <i>y</i> = 1/<i>x</i>.'},
+/* 17 */ {beat:4,scene:'hyper',seq:[{p:{A1:1},d:1100}],
+  text:'Colorie l’aire sous la courbe entre 1 et 2. Garde-la en tête.'},
+/* 18 */ {beat:4,scene:'hyper',seq:[{p:{A2:1},d:1100}],
+  text:'Voici l’aire entre 2 et 4 : deux fois plus large, mais plus basse. Laquelle est la plus grande ?',
+  pari:BET([['Celle de 2 à 4','Pari noté. Vérifions — sans calculer une seule aire.'],['Elles sont égales','Pari noté. Vérifions — sans calculer une seule aire.'],['Celle de 1 à 2','Pari noté. Vérifions — sans calculer une seule aire.']])},
+/* 19 */ {beat:4,scene:'hyper',set:{A2:0,tgt:1,A1:.35,m:1},seq:[{p:{sx:2},d:2800,w:500}],
+  text:'Prends une copie de la tranche de 1 à 2. Étire-la deux fois en largeur : elle couvre maintenant 2 à 4… mais elle déborde, deux fois trop haute. Son aire a doublé.'},
+/* 20 */ {beat:4,scene:'hyper',seq:[{p:{sy:.5},d:2800,w:300}],
+  text:'Écrase-la de moitié en hauteur : elle épouse exactement la courbe entre 2 et 4. Aire × 2, puis ÷ 2 : elle n’a pas changé.'},
+/* 21 */ {beat:4,scene:'hyper',set:{m:0,tgt:0,A1:1,A2:1,lab:1},seq:[{p:{A3:1},d:1200,w:600}],
+  text:()=>`Les deux aires sont égales ${S.ans[18]===1?'— ton pari était le bon.':'— contre-intuitif, non ?'} Et de 4 à 8 : encore la même. Doubler en bas, ajouter la même aire : c’est la table de Napier.`},
+/* 22 */ {beat:4,scene:'hyper',set:{A1:0,A2:0,A3:0,lab:0,gen:1,a:2.4,b:1.8},ctl:'gen',
+  text:'Ce n’est pas propre au 2. Étire par <i>a</i> et écrase par <i>a</i> : la tranche de 1 à <i>b</i> devient la tranche de <i>a</i> à <i>ab</i>, avec la même aire. Bouge <i>a</i> et <i>b</i>.'},
+/* 23 */ {beat:4,scene:'hyper',set:{eqs:'A(_ab_) = A(_a_) + A(_b_)'},seq:[{p:{dec:1},d:1300},{p:{eq:1},d:600}],
+  text:'Découpe l’aire de 1 à <i>ab</i> en deux : de 1 à <i>a</i>, puis de <i>a</i> à <i>ab</i>. Le second morceau vaut l’aire de 1 à <i>b</i>. L’aire transforme donc les produits en sommes.',
+  tex:[['A(ab) = A(a) + A(b)','A(ab) = A(a) + A(b)']]},
+/* 24 */ {beat:4,scene:'hyper',tag:'1647 · Anvers',
+  text:'Anvers, 1647. Le jésuite Grégoire de Saint-Vincent publie cette propriété des aires sous l’hyperbole. Deux ans plus tard, son élève Alphonse Antonio de Sarasa comprend ce qu’elle veut dire : cette aire <b>est</b> un logarithme. Le rêve de Napier était caché dans une courbe.'},
+/* 25 */ {beat:5,scene:'hyper',set:{gen:0,dec:0,eq:0,strip:1,xs:2.5,h:1.4},seq:[{p:{h:.08},d:4800,w:900}],
+  text:'Pourquoi ton cours parle-t-il de primitive ? Avance <i>x</i> d’un petit pas <i>h</i>. L’aire gagne une bande fine — presque un rectangle de hauteur 1/<i>x</i> et de largeur <i>h</i>. Plus <i>h</i> est petit, plus le « presque » disparaît.'},
+/* 26 */ {beat:5,scene:'hyper',set:{eqs:'A′(_x_) = 1/_x_'},seq:[{p:{eq:1},d:700}],
+  text:'L’aire gagnée vaut environ <i>h</i> × 1/<i>x</i>. Divise par <i>h</i> : le taux d’accroissement tend vers 1/<i>x</i>. La dérivée de l’aire, c’est la hauteur de la courbe.',
+  tex:[["A'(x) = \\dfrac{1}{x} \\qquad A(1) = 0",'A′(x) = 1/x    A(1) = 0']],
+  say:'L’aire gagnée vaut environ h fois un sur x. Divise par h : le taux d’accroissement tend vers un sur x. La dérivée de l’aire, c’est la hauteur de la courbe.'},
+/* 27 */ {beat:5,scene:'hyper',set:{strip:0,eqs:'ln _x_ = aire de 1 à _x_'},seq:[{p:{lnc:1},d:2600,w:300}],
+  text:'Voilà la définition de ton cours — et tu sais maintenant d’où elle sort. La fonction logarithme népérien, notée ln, est la primitive de <i>x</i> ↦ 1/<i>x</i> sur ]0 ; +∞[ qui s’annule en 1.',
+  tex:[["\\ln'(x) = \\dfrac{1}{x} \\qquad \\ln 1 = 0",'ln′(x) = 1/x    ln 1 = 0'],['\\ln(ab) = \\ln a + \\ln b','ln(ab) = ln a + ln b']],
+  say:'Voilà la définition de ton cours, et tu sais maintenant d’où elle sort. La fonction logarithme népérien, notée l n, est la primitive de la fonction un sur x, sur zéro plus l’infini, qui s’annule en 1.'},
+/* 28 */ {beat:5,scene:'hyper',set:{ev:1,xe:1,eq:0},
+  text:'Il existe un nombre où l’aire vaut exactement 1. Avant de le chercher : à ton avis, il est où ?',
+  pari:BET([['Vers 2','Pari noté. Va le chercher.'],['Entre 2 et 3','Pari noté. Va le chercher.'],['Vers 10','Pari noté. Va le chercher.']])},
+/* 29 */ {beat:5,scene:'hyper',ctl:'e',seq:[{p:{xe:2},d:1300,w:200}],
+  text:'Fais glisser <i>x</i> jusqu’à ce que l’aire vaille 1. Va aussi à gauche de 1 : l’aire se compte alors à rebours, en négatif — c’est pour cela que ln <i>x</i> &lt; 0 entre 0 et 1.'},
+/* 30 */ {beat:6,scene:'quiz',set:{qi:0,rv:0},
+  text:'Trois questions. Pas de piège gratuit : chacune vise une erreur classique au bac.',
+  pari:{reveal:[{p:{rv:1},d:900}],opts:[
+    {t:'ln 2 × ln 3',fb:'C’est l’erreur la plus fréquente : ln change le × en +. Le produit 2 × 3 est à l’intérieur ; dehors, c’est une somme.'},
+    {t:'ln 2 + ln 3',ok:true,fb:'Oui : 6 = 2 × 3, et ln transforme ce produit en somme.'},
+    {t:'3 ln 2',fb:'3 ln 2 = ln 2 + ln 2 + ln 2 = ln 8. Ici, 6 = 2 × 3, pas 2 × 2 × 2.'}]}},
+/* 31 */ {beat:6,scene:'quiz',set:{qi:1,rv:0},
+  text:'Et maintenant, une somme à l’intérieur.',
+  pari:{reveal:[{p:{rv:1},d:900}],opts:[
+    {t:'ln 2 + ln 3',fb:'ln 2 + ln 3 = ln(2 × 3) = ln 6, pas ln 5. La règle marche pour les produits, pas pour les sommes.'},
+    {t:'ln 2 × ln 3',fb:'Aucune règle ne transforme une somme en produit. ln(2 + 3), c’est simplement ln 5.'},
+    {t:'ln 5 — aucune formule ne la découpe',ok:true,fb:'Exact : ln(a + b) ne se simplifie pas. C’est un piège classique des copies.'}]}},
+/* 32 */ {beat:6,scene:'quiz',set:{qi:2,rv:0},
+  text:'Dernière question : un inverse.',
+  pari:{reveal:[{p:{rv:1},d:900}],opts:[
+    {t:'−3 ln 2',ok:true,fb:'Oui : ln(1/8) + ln 8 = ln 1 = 0, donc ln(1/8) = −ln 8 = −3 ln 2.'},
+    {t:'1 / ln 8',fb:'Le ln d’un inverse n’est pas l’inverse du ln. ln(1/8) + ln 8 = ln 1 = 0, donc ln(1/8) = −ln 8.'},
+    {t:'ln 1 ÷ ln 8 = 0',fb:'ln ne change pas un quotient en quotient, mais en différence : ln(1/8) = ln 1 − ln 8 = −ln 8.'}]}},
+/* 33 */ {beat:6,scene:'end',seq:[{p:{n:4},d:2800,w:300}],
+  text:'Fin de la séance. Voici ce que l’application retiendrait de toi.',html:()=>profileHTML()}
+];
+
+/* états de scène : chaque étape hérite de la précédente sur la même scène */
+const S={ans:{},first:{},tries:0,eFound:false};
+{const last={};STEPS.forEach((st,i)=>{st.id=i;const sc=scenes[st.scene];const prev=last[st.scene]||{...sc.defaults};st.base={...prev,...(st.set||{})};const f={...st.base};(st.seq||[]).forEach(x=>Object.assign(f,x.p));st.pre={...f};if(st.pari&&st.pari.reveal)st.pari.reveal.forEach(x=>Object.assign(f,x.p));last[st.scene]=f;});}
+
+function profileHTML(){
+  const ids=[30,31,32],names=['ln d’un produit','ln d’une somme','ln d’un inverse'];
+  const res=ids.map(id=>S.first[id]==null?null:!!STEPS[id].pari.opts[S.first[id]].ok);
+  const rows=res.map((ok,i)=>`<li class="${ok===true?'ok':ok===false?'ko':''}">${ok===true?'✓':ok===false?'✗':'·'} ${names[i]}</li>`).join('');
+  const weak=res.map((ok,i)=>ok===false?names[i]:null).filter(Boolean);
+  const bets=[];
+  if(S.ans[18]!=null)bets.push(S.ans[18]===1?'tu as vu juste sur les aires':'les aires égales t’ont surpris');
+  if(S.first[11]!=null)bets.push(STEPS[11].pari.opts[S.first[11]].ok?'tu as additionné les pas d’instinct':'additionner les pas n’était pas encore un réflexe');
+  if(S.eFound)bets.push('tu as trouvé e toi-même');
+  const plan=(weak.length?weak.map(w=>`<li>8 exercices courts sur « ${w} », du plus simple au niveau bac</li>`).join(''):'<li>Aucune erreur : on passe directement au niveau bac</li>')
+    +'<li>1 exercice complet au format bac (étude de fonction avec ln), corrigé étape par étape</li><li>Dans 3 jours : 4 questions de rappel sur cette séance</li>';
+  return ty(`<ul class="prof">${rows}</ul>${bets.length?`<p class="small">Tes paris : ${bets.join(' ; ')}.</p>`:''}<div class="next"><div class="pari-k">Ta prochaine séance, générée pour toi</div><ol>${plan}</ol></div><p class="small">Aperçu de l’idée : la génération d’exercices n’est pas branchée dans ce prototype.</p>`);
+}
+
+
+/* ---------- contrôles par étape ---------- */
+const CTL={
+  pick:{html:()=>'<p class="ctl-note" id="pickfb">Clique deux nombres dans la ligne du bas.</p>',
+    init(){hooks.onPick=pk=>{const fb=$('#pickfb');if(!fb)return;
+      if(pk.length===1){fb.innerHTML=ty(`${2**pk[0]} est à ${pk[0]} pas. Choisis le deuxième nombre.`);return;}
+      S.tries++;const[i,j]=pk,s=i+j;
+      fb.innerHTML=ty(s<=10?`${2**i} × ${2**j} : ${i} + ${j} = ${s} pas → <b>${2**s}</b>. ${S.tries>=3?'Tu calcules comme un astronome de 1620.':'Essaie une autre paire.'}`:`${i} + ${j} = ${s} pas : la table s’arrête à 10. Il faudrait l’agrandir.`);};}},
+  rule:{html:()=>`<div class="ctl"><label class="sl"><span>Règle du haut : <i>a</i> = <output id="oa"></output></span><input id="ra" type="range" min="0" max="1" step="0.001"></label><label class="sl"><span>Curseur : <i>b</i> = <output id="ob"></output></span><input id="rb" type="range" min="0" max="1" step="0.001"></label></div><p class="ctl-note" id="rulefb"></p>`,
+    init(){const sc=scenes.rule,ra=$('#ra'),rb=$('#rb');
+      const sync=()=>{ra.value=sc.p.la;rb.value=sc.p.lb;const a=10**sc.p.la,b=10**sc.p.lb;$('#oa').textContent=fr(a);$('#ob').textContent=fr(b);
+        $('#rulefb').innerHTML=ty(Math.abs(a-2.5)<.04&&Math.abs(b-3.2)<.05?'2,5 × 3,2 = <b>8</b>. Tu viens de multiplier en ajoutant deux longueurs.':'Défi : calcule 2,5 × 3,2. Pose le 1 du haut sur 2,5, puis le curseur sur 3,2.');};
+      ra.addEventListener('input',()=>{run++;sc.p.la=+ra.value;sc.p.lb=Math.min(sc.p.lb,1-sc.p.la);sc.render();sync();});
+      rb.addEventListener('input',()=>{run++;sc.p.lb=Math.min(+rb.value,1-sc.p.la);sc.render();sync();});
+      hooks.frame=sync;sync();}},
+  gen:{html:()=>`<div class="ctl"><label class="sl"><span><i>a</i> = <output id="oa"></output></span><input id="ga" type="range" min="1" max="2.9" step="0.01"></label><label class="sl"><span><i>b</i> = <output id="ob"></output> (entre 1 et <i>a</i>)</span><input id="gb" type="range" min="1" max="2.9" step="0.01"></label></div><p class="ctl-note" id="genfb"></p>`,
+    init(){const sc=scenes.hyper,ga=$('#ga'),gb=$('#gb');
+      const sync=()=>{ga.value=sc.p.a;gb.value=sc.p.b;$('#oa').textContent=fr(sc.p.a);$('#ob').textContent=fr(sc.p.b);
+        $('#genfb').innerHTML=ty(`Aire de 1 à ${fr(sc.p.b)} : <b>${fr(integ(1,sc.p.b),3)}</b><br>Aire de ${fr(sc.p.a)} à ${fr(sc.p.a*sc.p.b)} : <b>${fr(integ(sc.p.a,sc.p.a*sc.p.b),3)}</b>`);};
+      ga.addEventListener('input',()=>{run++;sc.p.a=+ga.value;if(sc.p.b>sc.p.a)sc.p.b=sc.p.a;sc.render();sync();});
+      gb.addEventListener('input',()=>{run++;sc.p.b=Math.min(+gb.value,sc.p.a);sc.render();sync();});
+      hooks.frame=sync;sync();}},
+  e:{html:()=>`<div class="ctl"><label class="sl"><span><i>x</i> = <output id="ox"></output></span><input id="ex" type="range" min="0.55" max="4" step="0.001"></label></div><p class="ctl-note" id="efb"></p>`,
+    init(){const sc=scenes.hyper,ex=$('#ex');
+      const sync=()=>{const xe=sc.p.xe,A=integ(1,xe);ex.value=xe;$('#ox').textContent=fr(xe,3);
+        let m;if(Math.abs(A-1)<.004){S.eFound=true;m='Tu l’as : <b>e ≈ 2,718</b>, et ln e = 1. Ces chiffres te disent quelque chose ? 2\u00a0718\u00a0281… c’était le premier nombre de la multiplication du début. Et le second, 3\u00a0141\u00a0592, c’était π.';}
+        else if(xe<1)m=`Aire comptée à rebours : ln ${fr(xe)} ≈ <b>${fr(A,3)}</b>, négatif.`;
+        else m=`Aire de 1 à ${fr(xe)} : <b>${fr(A,3)}</b>. ${A<1?'Encore un peu.':'Trop loin.'}`;
+        $('#efb').innerHTML=ty(m);};
+      ex.addEventListener('input',()=>{run++;sc.p.xe=+ex.value;sc.render();sync();});
+      hooks.frame=sync;sync();}}
+};
+let dragE=false;
+function moveE(e){run++;const sc=scenes.hyper;sc.p.xe=clamp((svgPt(e).x-80)/100,.55,4);sc.render();hooks.frame&&hooks.frame();}
+svg.addEventListener('pointerdown',e=>{if(cur<0||STEPS[cur].ctl!=='e')return;dragE=true;svg.setPointerCapture(e.pointerId);moveE(e);});
+svg.addEventListener('pointermove',e=>{if(dragE)moveE(e);});
+svg.addEventListener('pointerup',()=>{dragE=false;});svg.addEventListener('pointercancel',()=>{dragE=false;});
+
+/* ---------- moteur ---------- */
+function tweenTo(sc,target,d,my){
+  const from={...sc.p},keys=Object.keys(target).filter(k=>from[k]!==target[k]);
+  if(!keys.length)return Promise.resolve();
+  if(RM.matches)d=0;
+  return new Promise(res=>{const t0=performance.now();
+    const step=now=>{if(my!==run)return res();
+      const t=d?Math.min(1,(now-t0)/d):1,k=ease(t);
+      for(const key of keys){const a=from[key],b=target[key];sc.p[key]=(typeof a==='number'&&typeof b==='number')?lerp(a,b,k):b;}
+      sc.render();hooks.frame&&hooks.frame();
+      if(t<1)requestAnimationFrame(step);else res();};
+    requestAnimationFrame(step);});
+}
+let cur=-1,curScene=null;
+async function animate(sc,st,my,fresh){
+  if(fresh)await wait(300);else await tweenTo(sc,st.base,st.d||750,my);
+  for(const f of st.seq||[]){if(my!==run)return;if(f.w){await wait(f.w);if(my!==run)return;}await tweenTo(sc,f.p,f.d||900,my);}
+  if(st.pari&&st.pari.reveal&&S.ans[st.id]!=null)for(const f of st.pari.reveal){if(my!==run)return;await tweenTo(sc,f.p,f.d||900,my);}
+}
+function go(i){
+  i=clamp(i,0,STEPS.length-1);const st=STEPS[i],sc=scenes[st.scene],my=++run;
+  for(const k in hooks)delete hooks[k];
+  let fresh=false;
+  if(curScene!==sc){if(curScene){curScene.g.style.opacity=0;curScene.g.setAttribute('class','scene');}sc.p={...st.base};sc.render();sc.g.style.opacity=1;sc.g.setAttribute('class','scene on');curScene=sc;fresh=true;}
+  cur=i;renderPanel(st);updateChrome(st);
+  animate(sc,st,my,fresh);speak(st);
+}
+function textOf(st){return typeof st.text==='function'?st.text():st.text;}
+function renderPanel(st){
+  $('#kicker').textContent=`${String(st.beat+1).padStart(2,'0')} — ${BEATS[st.beat].name}`;
+  let h=`<p class="say">${ty(textOf(st))}</p>`;
+  if(st.html)h+=st.html();
+  if(st.tex)h+=`<div class="formula">${st.tex.map(([t,alt])=>`<span class="m" data-display="1" data-tex="${esc(t)}">${esc(alt)}</span>`).join('')}</div>`;
+  if(st.pari)h+=pariHTML(st);
+  if(st.ctl)h+=CTL[st.ctl].html();
+  h+='<div class="fb" id="fb"></div>';
+  const body=$('#body');body.innerHTML=h;body.classList.remove('in');void body.offsetWidth;body.classList.add('in');
+  $('#script').scrollTop=0;
+  if(st.pari){wireOpts(st);if(S.ans[st.id]!=null)$('#fb').innerHTML=ty(st.pari.opts[S.ans[st.id]].fb||'');}
+  if(st.ctl)CTL[st.ctl].init();
+  renderMath(body);updateNav();
+}
+function isQuiz(P){return P.opts.some(o=>o.ok);}
+function pariHTML(st){const P=st.pari,a=S.ans[st.id],q=isQuiz(P);
+  return `<div class="pari"><div class="pari-k">${P.label||(q?'Réponds':'Ton pari')}</div><div class="opts">${P.opts.map((o,j)=>{let c='opt';if(a!=null){if(q){if(o.ok)c+=' ok';else if(a===j)c+=' ko';}else if(a===j)c+=' sel';}
+    return `<button class="${c}" data-j="${j}"${a!=null&&!q?' disabled':''}><kbd>${j+1}</kbd><span>${ty(o.t)}</span></button>`;}).join('')}</div></div>`;}
+function wireOpts(st){root.querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>choose(st,+b.dataset.j)));}
+function choose(st,j){
+  const P=st.pari,q=isQuiz(P),first=S.ans[st.id]==null;
+  if(!first&&!q)return;
+  if(first)S.first[st.id]=j;S.ans[st.id]=j;
+  root.querySelector('.pari').outerHTML=pariHTML(st);wireOpts(st);
+  const btn=root.querySelector(`.opt[data-j="${j}"]`);if(btn&&!btn.disabled)btn.focus();else $('#next').focus();
+  $('#fb').innerHTML=ty(P.opts[j].fb||'');
+  if(first&&P.reveal){const my=++run,sc=scenes[st.scene];(async()=>{const fr0=[{p:{...st.pre,...P.reveal[0].p},d:P.reveal[0].d},...P.reveal.slice(1)];for(const f of fr0){if(my!==run)return;await tweenTo(sc,f.p,f.d||900,my);}})();}
+  updateNav();say(plain(P.opts[j].fb||''));
+}
+function updateNav(){const st=STEPS[cur],n=$('#next'),blocked=!!(st.pari&&S.ans[st.id]==null);
+  n.disabled=blocked;n.textContent=cur===STEPS.length-1?'Recommencer':blocked?'Choisis d’abord':'Suivant →';
+  $('#prev').disabled=cur===0;$('#count').textContent=`étape ${cur+1} / ${STEPS.length}`;}
+function next(){if($('#next').disabled)return;if(cur===STEPS.length-1){S.ans={};S.first={};S.tries=0;S.eFound=false;go(0);}else go(cur+1);}
+
+/* chapitres */
+const beatEls=BEATS.map((b,k)=>{const n=STEPS.filter(s=>s.beat===k).length,btn=document.createElement('button');btn.className='beat';btn.style.setProperty('--n',n);btn.innerHTML=`<span>${b.name}</span><i><b></b></i>`;btn.addEventListener('click',()=>go(STEPS.findIndex(s=>s.beat===k)));$('#beats').appendChild(btn);return btn;});
+function updateChrome(st){
+  BEATS.forEach((b,k)=>{const steps=STEPS.filter(s=>s.beat===k),f=steps[0].id,done=clamp((cur-f+1)/steps.length,0,1);beatEls[k].querySelector('b').style.width=(done*100)+'%';beatEls[k].classList.toggle('on',k===st.beat);if(k===st.beat)beatEls[k].setAttribute('aria-current','step');else beatEls[k].removeAttribute('aria-current');});
+  const pl=$('#plaque');if(st.tag){pl.textContent=st.tag;pl.classList.add('on');}else pl.classList.remove('on');
+}
+
+/* maths : KaTeX (déjà chargé par l'app) */
+const renderMath=function(r){r.querySelectorAll('.m[data-tex]:not([data-done])').forEach(n=>{try{katex.render(n.dataset.tex,n,{displayMode:n.dataset.display==='1',throwOnError:false});n.dataset.done='1';}catch(e){}});};
+
+/* voix */
+let voiceOn=false;
+function plain(h){return String(h).replace(/<[^>]+>/g,'').replace(/ | /g,' ').replace(/&lt;/g,' inférieur à ').replace(/×/g,' fois ').replace(/≈/g,' environ ').replace(/→/g,', ').replace(/1\/x/g,'1 sur x').replace(/−/g,'moins ').replace(/↦/g,' donne ');}
+function say(t){if(!voiceOn||!('speechSynthesis' in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='fr-FR';const vs=speechSynthesis.getVoices();const v=vs.find(v=>/^fr/i.test(v.lang)&&/Google|Amélie|Thomas|Audrey|Marie|Denise|Henri/i.test(v.name))||vs.find(v=>/^fr/i.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u);}
+function speak(st){say(st.say||plain(ty(textOf(st))));}
+$('#voice').addEventListener('click',e=>{voiceOn=!voiceOn;e.currentTarget.setAttribute('aria-pressed',voiceOn);if(voiceOn)speak(STEPS[cur]);else if('speechSynthesis' in window)speechSynthesis.cancel();});
+
+$('#why').addEventListener('click',()=>$('#whyd').showModal());
+$('#next').addEventListener('click',next);$('#prev').addEventListener('click',()=>go(cur-1));
+const surTouche=e=>{
+  if($('#whyd').open)return;const t=e.target;if(t.tagName==='INPUT')return;
+  const st=STEPS[cur];
+  if(st&&st.pari&&/^[1-3]$/.test(e.key)&&+e.key<=st.pari.opts.length){e.preventDefault();choose(st,+e.key-1);return;}
+  if(e.key==='ArrowRight'||e.key==='PageDown'||(e.key===' '&&t.tagName!=='BUTTON')){e.preventDefault();next();}
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(cur-1);}
+};
+window.addEventListener('keydown',surTouche);
+go(0);
+return function demonter(){run++;window.removeEventListener('keydown',surTouche);if('speechSynthesis' in window)speechSynthesis.cancel();};
+
+
+
+
+}

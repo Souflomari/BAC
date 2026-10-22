@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Arbre généalogique de la famille étudiée : I-1 et I-2, sains, ont deux enfants — II-1, atteinte de drépanocytose, et II-2, sain. Génotypes déduits : I-1 A//a, I-2 A//a, II-1 a//a (certains) ; II-2 reste A//A ou A//a, incertain à ce stade.">
+  <title>Arbre généalogique de la famille étudiée : génotypes certains et génotype incertain</title>
+
+  <!--
+    pedigree-drepanocytose.svg — figure STATIQUE (pas de step-groups).
+
+    Cible précise : la leçon consacre le R1 à définir les conventions du
+    pedigree "sous forme de tableau plutôt que de schéma" (texte du R1), puis
+    le R2 déduit les génotypes de cette même famille. Cette figure fournit le
+    schéma que le texte annonce ne PAS dessiner, positionné juste après la
+    déduction du R2, pour que structure (arbre) et contenu (génotypes déduits)
+    se lisent ensemble plutôt qu'en attention divisée.
+
+    Idée UNIQUE portée par l'accent (var(--figure-accent)) : parmi les quatre
+    génotypes de cette famille, TROIS sont certains (I-1, I-2, II-1) et UN
+    seul reste réellement incertain (II-2) — exactement la distinction que le
+    R5 rouvre ("certaines déductions sont certaines, d'autres seulement
+    probables"). Tout le reste de la figure (symboles, liens de parenté,
+    légende) reste en ink/ink-soft neutres : ce ne sont pas les idées que
+    cette figure met en avant, seulement le décor nécessaire pour les lire.
+
+    Conventions standard de pedigree (R1 du texte) :
+      carré = homme, cercle = femme ; case pleine = atteint(e), case vide =
+      sain(e) ; trait horizontal entre parents = union ; ligne verticale +
+      barre de fratrie = filiation vers les enfants.
+
+    Layout (coordonnées) :
+      Génération I  (y-centre 100)  : I-1 carré (230,100), I-2 cercle (410,100)
+      Ligne d'union                 : y=100, x 252→388
+      Descente + barre de fratrie   : x=320 (100→185) puis y=185 (270→370)
+      Génération II (y-centre 245)  : II-1 cercle (270,245), II-2 carré (370,245)
+      Légende                       : y 350→408
+
+    Simplification pédagogique assumée : seule la famille I-II du R1/R2 est
+    représentée (pas III-1 du R5, qui appartient à un couple différent formé
+    plus tard) — cette figure sert le raisonnement du R2, pas le calcul
+    complet du R5.
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="24" text-anchor="middle"
+        font-size="13" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Arbre généalogique de la famille étudiée : les génotypes déduits
+  </text>
+
+  <!-- ── Génération I ──────────────────────────────────────────── -->
+
+  <!-- I-1 : carré, vide (sain) -->
+  <rect x="208" y="78" width="44" height="44" rx="3"
+        fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2"/>
+
+  <!-- I-2 : cercle, vide (saine) -->
+  <circle cx="410" cy="100" r="22"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2"/>
+
+  <!-- Ligne d'union (couple) -->
+  <line x1="252" y1="100" x2="388" y2="100"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Descente vers la barre de fratrie -->
+  <line x1="320" y1="100" x2="320" y2="185"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Barre de fratrie -->
+  <line x1="270" y1="185" x2="370" y2="185"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Chutes verticales vers chaque enfant -->
+  <line x1="270" y1="185" x2="270" y2="223"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="370" y1="185" x2="370" y2="223"
+        stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Numéro de génération I -->
+  <text x="58" y="106" text-anchor="middle"
+        font-size="15" font-weight="600" fill="var(--figure-ink-soft)">I</text>
+
+  <!-- Étiquettes I-1 -->
+  <text x="230" y="140" text-anchor="middle" font-size="12" fill="var(--figure-ink)">
+    I-1 (sain)
+  </text>
+  <text x="230" y="158" text-anchor="middle" font-size="13" fill="var(--figure-ink)">
+    <tspan font-style="italic" font-weight="700">A//a</tspan>
+  </text>
+
+  <!-- Étiquettes I-2 -->
+  <text x="410" y="140" text-anchor="middle" font-size="12" fill="var(--figure-ink)">
+    I-2 (saine)
+  </text>
+  <text x="410" y="158" text-anchor="middle" font-size="13" fill="var(--figure-ink)">
+    <tspan font-style="italic" font-weight="700">A//a</tspan>
+  </text>
+
+  <!-- ── Génération II ─────────────────────────────────────────── -->
+
+  <!-- II-1 : cercle, plein (atteinte) -->
+  <circle cx="270" cy="245" r="22"
+          fill="var(--figure-ink)" stroke="var(--figure-ink)" stroke-width="2"/>
+
+  <!-- II-2 : carré, vide (sain) -->
+  <rect x="348" y="223" width="44" height="44" rx="3"
+        fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2"/>
+
+  <!-- Numéro de génération II -->
+  <text x="53" y="251" text-anchor="middle"
+        font-size="15" font-weight="600" fill="var(--figure-ink-soft)">II</text>
+
+  <!-- Étiquettes II-1 (génotype certain) -->
+  <text x="270" y="291" text-anchor="middle" font-size="12" fill="var(--figure-ink)">
+    II-1 (atteinte)
+  </text>
+  <text x="270" y="309" text-anchor="middle" font-size="13" fill="var(--figure-ink)">
+    <tspan font-style="italic" font-weight="700">a//a</tspan>
+  </text>
+
+  <!-- Étiquettes II-2 (génotype INCERTAIN — l'idée que porte l'accent) -->
+  <text x="370" y="291" text-anchor="middle" font-size="12" fill="var(--figure-ink)">
+    II-2 (sain)
+  </text>
+  <text x="370" y="309" text-anchor="middle" font-size="11" fill="var(--figure-accent)">
+    <tspan font-style="italic" font-weight="700">A//A</tspan><tspan> ou </tspan><tspan font-style="italic" font-weight="700">A//a</tspan><tspan font-weight="700"> ?</tspan>
+  </text>
+  <text x="370" y="323" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">
+    (résolu plus loin)
+  </text>
+
+  <!-- ── Légende ───────────────────────────────────────────────── -->
+
+  <text x="320" y="350" text-anchor="middle"
+        font-size="11" font-weight="600" fill="var(--figure-ink)">
+    Conventions de lecture
+  </text>
+
+  <!-- Rangée 1 : forme = sexe -->
+  <rect x="54" y="364" width="16" height="16" rx="2"
+        fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+  <text x="78" y="376" font-size="11" fill="var(--figure-ink)">carré = homme</text>
+
+  <circle cx="350" cy="372" r="8"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+  <text x="366" y="376" font-size="11" fill="var(--figure-ink)">cercle = femme</text>
+
+  <!-- Rangée 2 : remplissage = phénotype, trait = union -->
+  <rect x="54" y="392" width="16" height="16" rx="2"
+        fill="var(--figure-ink)"/>
+  <text x="78" y="404" font-size="11" fill="var(--figure-ink)">case pleine = atteint(e)</text>
+
+  <line x1="350" y1="400" x2="376" y2="400"
+        stroke="var(--figure-ink)" stroke-width="2"/>
+  <text x="384" y="404" font-size="11" fill="var(--figure-ink)">trait horizontal = union</text>
+</svg>

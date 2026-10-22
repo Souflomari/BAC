@@ -1,0 +1,48 @@
+/* Leçon pilote « décroissance radioactive » — compléments à
+   ../logarithme/pilote.css (habillage Grille). Tout reste scopé sous
+   `.pilote`, et les couleurs ne viennent QUE des variables posées par
+   pilote.css (--st-*) ou de tokens.ts (--color-*). */
+
+/* contrôles du script : boutons de lancer, choix du dé */
+.pilote .ctl-btns { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 4px; }
+.pilote .ctl-btn { font: 700 1rem var(--font-ui); min-height: 48px; padding: 12px 18px; cursor: pointer; background: var(--color-text-primary); color: var(--color-surface-base); border: 1px solid var(--color-text-primary); }
+.pilote .ctl-btn.alt { background: transparent; color: var(--color-text-primary); }
+.pilote .ctl-btn:disabled { opacity: .35; cursor: default; }
+.pilote .seg { display: flex; }
+.pilote .seg button { flex: 1; min-height: 44px; font: 600 0.9375rem var(--font-ui); background: transparent; color: var(--color-text-primary); border: 1px solid var(--color-text-primary); cursor: pointer; }
+.pilote .seg button + button { border-left: 0; }
+.pilote .seg button[aria-pressed="true"] { background: var(--color-text-primary); color: var(--color-surface-base); }
+/* Quand un pari, son retour et sa formule dépassent la hauteur du script,
+   « Suivant » reste visible : la barre de navigation colle au bas du script.
+   (Même mise en page que le pilote logarithme tant que rien ne déborde : le
+   rembourrage du bas passe du script à la barre.) */
+.pilote[data-pilote="radioactivite"] .script { padding-bottom: 0; }
+.pilote[data-pilote="radioactivite"] .nav { position: sticky; bottom: 0; padding-bottom: 22px; background: var(--color-surface-base); }
+@media (max-width: 899px) {
+  .pilote[data-pilote="radioactivite"] .nav { padding-bottom: 18px; }
+}
+.pilote .apres:empty { display: none; }
+.pilote .apres { margin-top: 14px; }
+.pilote .apres .small { margin: 0; }
+
+/* scène SVG */
+.pilote .die { fill: var(--st-cell); stroke: var(--st-ink); stroke-width: 1.5; }
+.pilote .pip { fill: var(--st-ink); }
+.pilote .die-six .die { fill: var(--st-fa); stroke: var(--st-a); stroke-width: 2.5; }
+.pilote .die-six .pip { fill: var(--st-a); }
+.pilote .die-out { opacity: .14; }
+/* La plaque de Becquerel est un OBJET : son papier est noir et ses silhouettes
+   sont noires dans les deux thèmes (le texte le dit). Aucun jeton n'est
+   invariant au thème ; on croise donc deux jetons qui s'inversent l'un l'autre. */
+.pilote[data-pilote="radioactivite"] { --rd-noir: var(--color-text-primary); --rd-clair: var(--color-surface-container-low); }
+.dark .pilote[data-pilote="radioactivite"] { --rd-noir: var(--color-surface-base); --rd-clair: var(--color-text-primary); }
+.pilote .paper { fill: var(--rd-noir); stroke: var(--st-line); stroke-width: 1.5; }
+.pilote .lam { fill: var(--rd-clair); stroke: var(--st-line); stroke-width: 1.5; }
+.pilote .plate { fill: var(--rd-clair); stroke: var(--st-line); stroke-width: 1.5; }
+.pilote .sil { fill: var(--rd-noir); }
+.pilote .sil-flou { fill: var(--rd-noir); stroke: var(--rd-noir); stroke-width: 8; stroke-linejoin: round; opacity: .28; }
+.pilote .bar { fill: var(--st-fa); stroke: var(--st-a); stroke-width: 1.2; }
+.pilote .bar.hl { fill: var(--st-a); }
+.pilote .band { fill: var(--st-fa); }
+/* une étiquette qui croise un trait reste lisible : un liseré couleur de fond */
+.pilote .halo { paint-order: stroke; stroke: var(--st-bg); stroke-width: 6px; stroke-linejoin: round; }

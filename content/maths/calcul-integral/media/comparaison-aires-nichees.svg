@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img"
+     aria-label="Comparaison d’aires emboîtées : sur [0, 1], la courbe de g(x) = x² reste sous la courbe de f(x) = x ; l’aire sous g, 1/3, est visiblement contenue dans l’aire sous f, 1/2, ce qui illustre l’encadrement 0 ≤ ∫ x² ≤ ∫ x.">
+  <title>Positivité et comparaison — aires emboîtées, x² ≤ x sur [0, 1]</title>
+  <!--
+    comparaison-aires-nichees.svg — figure STAGED (3 étapes), rung R4.
+
+    Fonctions et géométrie IDENTIQUES à aire-entre-courbes.svg (même
+    exemple 0 ≤ x² ≤ x sur [0,1], même repère) — les chemins des deux
+    courbes sont réutilisés tels quels pour rester pixel-cohérents entre
+    les deux figures de cette leçon :
+      origine (x=0,y=0) : (140, 330) ; échelle 220 px/unité (les deux axes)
+      x(u) = 140 + 220·u        y_f(u) = 330 − 220·u        (f(x) = x)
+                                 y_g(u) = 330 − 220·u²       (g(x) = x²)
+      légère prolongation décorative au-delà de x=1 (jusqu'à u=1,05), comme
+      dans aire-entre-courbes.svg — habillage statique, hors des aires
+      hachurées qui, elles, s'arrêtent exactement à x=1.
+
+    Aire sous g : ∫₀¹x² dx = 1/3.  Aire sous f : ∫₀¹x dx = 1/2 (le calcul
+    même du R4 : sur [0,1], 0 ≤ x² ≤ x, d'où 0 ≤ ∫₀¹x² ≤ ∫₀¹x = 1/2).
+
+    Rôle des couleurs :
+      courbe de f : --figure-ink · courbe de g : --figure-ink-soft
+        (données — étape 1)
+      aire sous g, aire "reste" sous f, boîte formule : --figure-accent
+        (le foyer, étapes 2 et 3)
+      axes, bornes 0/1 : --figure-ink-soft (chrome neutre)
+
+    Technique des DEUX teintes emboîtées (callout R4 : "la plus petite aire
+    visiblement nichée dans la plus grande") : PAS de superposition — deux
+    formes DISJOINTES, chacune à sa propre opacité directe (la palette n'a
+    qu'un accent, donc l'écart vient de l'opacité, pas de la teinte) :
+      étape 2 : l'aire sous g (le "cœur" nichée)         → opacité 0,28 (foncé)
+      étape 3 : l'aire "reste" entre g et f (l'enveloppe) → opacité 0,13 (clair)
+    Les deux formes ne se recouvrent jamais (elles partagent seulement la
+    courbe de g comme frontière commune) ; ensemble elles recomposent
+    exactement l'aire sous f — le plus sombre visiblement contenu dans
+    l'ensemble plus clair, donnant l'effet d'emboîtement demandé.
+
+    Mise en étapes (LESSON-EXPERIENCE-SPEC §2.5 — graphe, ordre canonique
+    axes → données → lecture ; axes en chrome permanent, non-stepped) :
+      step-1 : les deux courbes f et g, avec 0 et 1 marqués (données).
+      step-2 : l'aire sous g hachurée, 1/3 (lecture 1).
+      step-3 : l'aire "reste" sous f hachurée plus clair, encadrement
+               0 ≤ 1/3 ≤ 1/2 complété dans la boîte formule (lecture 2).
+
+    Les captions sont portées par comparaison-aires-nichees.stages.json —
+    aucun texte de légende baké ici.
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Positivité et comparaison — aires emboîtées, x² ≤ x sur [0, 1]
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="32" width="590" height="350" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- Axes — ink-soft, chrome neutre, toujours visibles -->
+  <line x1="140" y1="330" x2="480" y2="330"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="480,330 468,325.5 468,334.5" fill="var(--figure-ink-soft)"/>
+  <line x1="140" y1="330" x2="140" y2="50"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="140,50 135.5,61 144.5,61" fill="var(--figure-ink-soft)"/>
+  <text x="487" y="334" font-size="12" font-style="italic"
+        fill="var(--figure-ink-soft)">x</text>
+  <text x="132" y="54" text-anchor="end" font-size="12" font-style="italic"
+        fill="var(--figure-ink-soft)">y</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les deux courbes, les bornes 0 et 1 (données)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Courbe de f(x) = x — ink -->
+    <path d="M140,330 L151,319 L162,308 L173,297 L184,286 L195,275
+             L206,264 L217,253 L228,242 L239,231 L250,220
+             L261,209 L272,198 L283,187 L294,176 L305,165
+             L316,154 L327,143 L338,132 L349,121 L360,110 L371,99"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Courbe de g(x) = x² — ink-soft -->
+    <path d="M140,330 L151,329.45 L162,327.8 L173,325.05 L184,321.2 L195,316.25
+             L206,310.2 L217,303.05 L228,294.8 L239,285.45 L250,275
+             L261,263.45 L272,250.8 L283,237.05 L294,222.2 L305,206.25
+             L316,189.2 L327,171.05 L338,151.8 L349,131.45 L360,110 L371,87.45"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- ANCRÉE À DROITE, DU CÔTÉ LIBRE (2026-09-04) : posée à x=248 elle
+         enjambait la droite y = x (qui passe en x≈285 à cette hauteur) et
+         s'en trouvait rayée sur 30 % de sa largeur. Ancrée à droite juste
+         avant la droite, elle reste dans le coin supérieur gauche, vide. -->
+    <text x="275" y="182" text-anchor="end" font-size="13" font-style="italic"
+          fill="var(--figure-ink)">f(x) = x</text>
+    <!-- DESCENDUE SOUS SA PARABOLE (2026-09-04) : à y=300 elle était couchée
+         dessus (28 % rayés). En dessous, entre la parabole et l'axe des
+         abscisses, la bande est vide — mais PAS n'importe où : posée d'abord
+         en (200;330) elle atterrissait sur l'axe des abscisses lui-même
+         (98 % rayés). Plus à droite, la parabole s'est éloignée de l'axe et
+         laisse une vraie bande libre. -->
+    <text x="280" y="300" font-size="13" font-style="italic"
+          fill="var(--figure-ink-soft)">g(x) = x²</text>
+
+    <!-- Bornes 0 et 1 -->
+    <line x1="360" y1="325" x2="360" y2="335"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="140" y="344" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink-soft)">0</text>
+    <text x="360" y="344" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink-soft)">1</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — l'aire sous g, le cœur niché (lecture 1)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="M140,330 L151,329.45 L162,327.8 L173,325.05 L184,321.2 L195,316.25
+             L206,310.2 L217,303.05 L228,294.8 L239,285.45 L250,275
+             L261,263.45 L272,250.8 L283,237.05 L294,222.2 L305,206.25
+             L316,189.2 L327,171.05 L338,151.8 L349,131.45 L360,110 L360,330 Z"
+          fill="var(--figure-accent)" fill-opacity="0.28" stroke="none"/>
+
+    <text x="320" y="280" text-anchor="middle" font-size="12"
+          fill="var(--figure-ink)">1/3</text>
+
+    <!-- Boîte formule — s'agrandit à l'étape 3 (même boîte) -->
+    <rect x="435" y="68" width="180" height="104" rx="8"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="525" y="86" text-anchor="middle" font-size="9.5" font-weight="600"
+          fill="var(--figure-accent)">0 ≤ x² ≤ x sur [0, 1]</text>
+    <text x="525" y="108" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">aire sous x² = 1/3</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — l'aire "reste" sous f, l'enveloppe (lecture 2)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <path d="M140,330 L151,319 L162,308 L173,297 L184,286 L195,275
+             L206,264 L217,253 L228,242 L239,231 L250,220
+             L261,209 L272,198 L283,187 L294,176 L305,165
+             L316,154 L327,143 L338,132 L349,121 L360,110
+             L349,131.45 L338,151.8 L327,171.05 L316,189.2 L305,206.25
+             L294,222.2 L283,237.05 L272,250.8 L261,263.45 L250,275
+             L239,285.45 L228,294.8 L217,303.05 L206,310.2 L195,316.25
+             L184,321.2 L173,325.05 L162,327.8 L151,329.45 Z"
+          fill="var(--figure-accent)" fill-opacity="0.13" stroke="none"/>
+
+    <text x="525" y="130" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">aire sous x = 1/2</text>
+    <text x="525" y="152" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-accent)">0 ≤ 1/3 ≤ 1/2</text>
+  </g><!-- /step-3 -->
+
+</svg>

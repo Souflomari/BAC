@@ -1,0 +1,362 @@
+notion: denombrement
+skill_code: maths_denombrement
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — maths)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong COUNTING model, not just the fact of being wrong. The
+# end-bank ≥3-per-misconception floor lives in items.yaml and is NOT altered by
+# these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict   (in R0)        — COMMIT gate: turns the cadenas hook's
+#                                    "prends position" into a real MCQ commit.
+#                                    Probes M2 (base-exposant-inverse); the two
+#                                    other distractors preview the two other
+#                                    rupture types (remise, ordre).
+#   cp-r2-pliste    (after R2)     — rupture gate: a p-liste is n^p, NOT n×p and
+#                                    NOT an arrangement. Probes M2, with M4/M3.
+#   cp-r3-remise    (after R3)     — rupture gate: avec remise (n^p) vs sans
+#                                    remise (A_n^p), same n and p. Probes M4.
+#   cp-r5-ordre     (after R5)     — rupture gate: l'ordre compte-t-il ? comité
+#                                    (combinaison) vs podium (arrangement).
+#                                    Probes M3, with M4/M1.
+#   cp-r7-proba     (after R7)     — rupture gate: une probabilité est un
+#                                    QUOTIENT de dénombrements, dénominateur
+#                                    card(Ω) entier. Probes M5, with M4.
+#
+# EVERY distractor carries a named misconception id from this notion's inventory
+# (items.yaml). Option lengths are balanced so the correct choice is never the
+# conspicuously longest.
+#
+# Boundary guard: 2ème Bac SExp dénombrement — principes additif/multiplicatif,
+# p-listes (n^p), arrangements (A_n^p), permutations (n!), combinaisons
+# (binom(n,p)) et leurs propriétés, probabilité par équiprobabilité (quotient de
+# cardinaux). Pas de conditionnement, pas d'arbre pondéré, pas de variable
+# aléatoire (ceux-là sont sous probabilites-conditionnelles).
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the cadenas commit)
+  #        Turns "prends position : combien de codes ?" into a real
+  #        MCQ commit before the R2 reveal (10^4 = 10 000).
+  #        Probes M2 (base-exposant-inverse); distractors also preview
+  #        the remise (M4) and ordre (M3) ruptures of the chapter.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: maths_denombrement
+    tags: [checkpoint, formative, misconception_driven, maths_denombrement, hook_commit]
+    primary_misconception: mc.math.maths_denombrement.base-exposant-inverse
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Un cadenas a **4 roues**, chacune portant les chiffres de 0 à 9, et les
+      chiffres peuvent se répéter (0000, 1234, 7777… tout est permis). **Avant de
+      lire la suite, engage-toi :** combien de codes différents ce cadenas
+      possède-t-il en tout ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "10 000 codes — près de 3 heures d'essais au pire, pas « vite » du tout."
+        correct: true
+        feedback: |
+          Exact. Chaque roue offre 10 choix, **indépendamment** des trois autres,
+          et rien n'interdit de répéter un chiffre : c'est une p-liste,
+          $10 \times 10 \times 10 \times 10 = 10^4 = 10\,000$. La plupart des gens
+          sous-estiment ce nombre parce qu'ils imaginent lister les codes un par
+          un au lieu de voir la structure des 4 roues indépendantes.
+
+      - id: B
+        text: "40 codes : il y a 4 roues et 10 chiffres par roue, donc 4 × 10."
+        correct: false
+        misconception: mc.math.maths_denombrement.base-exposant-inverse
+        feedback: |
+          Modèle détecté : on a fait $4 \times 10 = 40$, en multipliant le nombre
+          de roues par le nombre de chiffres. Mais chaque roue ajoute un facteur
+          10 **complet** : il faut multiplier 10 par lui-même 4 fois
+          ($10^4$), pas multiplier 10 par 4. Confondre $n^p$ et $n \times p$ est
+          l'erreur de calcul la plus fréquente du chapitre.
+
+      - id: C
+        text: "5 040 codes : 10 puis 9 puis 8 puis 7, car un chiffre déjà utilisé ne peut plus resservir sur une autre roue."
+        correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
+        feedback: |
+          Modèle détecté : on a compté $10 \times 9 \times 8 \times 7 = 5\,040$,
+          comme un tirage **sans** répétition. Mais les roues sont réglées
+          indépendamment : le code 1111 est parfaitement valide. La répétition est
+          autorisée, donc chaque roue garde 10 choix — c'est $10^4$, pas un
+          arrangement.
+
+      - id: D
+        text: "210 codes : on choisit 4 chiffres parmi 10, sans se soucier de l'ordre."
+        correct: false
+        misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
+        feedback: |
+          Modèle détecté : $\binom{10}{4} = 210$, une combinaison — qui ignore
+          l'ordre. Mais un code EST ordonné : 1234 et 4321 sont deux codes
+          différents. L'ordre compte ici (et la répétition est permise), donc ce
+          n'est pas une combinaison : c'est une p-liste, $10^4$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r2-pliste | placed AFTER R2
+  #        Rupture gate: a p-liste is n^p — NOT n×p (M2), NOT an
+  #        arrangement (M4), NOT a combination (M3). Clone of DENOMB-2.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-pliste
+    rung: "R2"
+    habilete: utilisation
+    skill_code: maths_denombrement
+    tags: [checkpoint, formative, misconception_driven, maths_denombrement, p_liste]
+    primary_misconception: mc.math.maths_denombrement.base-exposant-inverse
+    item_source: clone_of_DENOMB-2
+    lesson_placement: after_R2
+
+    stem: |
+      Un digicode a **3 positions**, chacune un chiffre de 0 à 9, et la
+      répétition d'un même chiffre est autorisée (000, 118 et 707 sont tous
+      valides). Combien de codes différents existe-t-il ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$1\\,000$"
+        correct: true
+        feedback: |
+          Exact : chaque position a 10 choix indépendants et la répétition est
+          permise, donc rien ne change d'une position à l'autre. C'est une
+          p-liste, $10^3 = 1\,000$.
+
+      - id: B
+        text: "$30$"
+        correct: false
+        misconception: mc.math.maths_denombrement.base-exposant-inverse
+        feedback: |
+          C'est $10 \times 3 = 30$ : on a multiplié le nombre de chiffres par le
+          nombre de positions. Il faut $10^3$, c'est-à-dire 10 multiplié par
+          lui-même 3 fois ($10 \times 10 \times 10$), pas $10 \times 3$. Modèle
+          erroné : confondre $n^p$ et $n \times p$.
+
+      - id: C
+        text: "$720$"
+        correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
+        feedback: |
+          C'est $10 \times 9 \times 8 = 720$, le compte d'un tirage **sans**
+          répétition. Mais l'énoncé autorise la répétition : chaque position garde
+          10 choix, pas un de moins à chaque étape. Modèle erroné : traiter un
+          tirage avec remise comme un tirage sans remise.
+
+      - id: D
+        text: "$120$"
+        correct: false
+        misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
+        feedback: |
+          C'est $\binom{10}{3} = 120$, une combinaison qui ignore l'ordre. Or un
+          code est ordonné (118 et 811 sont différents), et la répétition est
+          permise : c'est une p-liste, $10^3$. Modèle erroné : compter un objet
+          ordonné comme s'il était non ordonné.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r3-remise | placed AFTER R3
+  #        Rupture gate: avec remise (n^p) vs sans remise (A_n^p) — same
+  #        n and p, they differ ONLY by whether the drawn item returns.
+  #        Probes M4 (remise-avec-vs-sans).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-remise
+    rung: "R3"
+    habilete: utilisation
+    skill_code: maths_denombrement
+    tags: [checkpoint, formative, misconception_driven, maths_denombrement, tirage_sans_remise]
+    primary_misconception: mc.math.maths_denombrement.remise-avec-vs-sans
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |
+      On tire successivement 3 boules d'une urne de 8 boules numérotées, en
+      notant l'ordre, et **sans remettre** la boule tirée avant le tirage
+      suivant. Combien de tirages ordonnés différents sont possibles ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$336$"
+        correct: true
+        feedback: |
+          Exact : sans remise, chaque tirage retire une boule du réservoir. Il
+          reste 8, puis 7, puis 6 choix : $A_8^3 = 8 \times 7 \times 6 = 336$.
+
+      - id: B
+        text: "$512$"
+        correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
+        feedback: |
+          C'est $8^3 = 512$, le compte d'un tirage **avec** remise. Mais ici la
+          boule n'est pas remise : une fois tirée, elle ne peut plus ressortir, et
+          le nombre de choix diminue à chaque étape (8, puis 7, puis 6). Modèle
+          erroné : traiter un tirage sans remise comme un tirage avec remise.
+
+      - id: C
+        text: "$56$"
+        correct: false
+        misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
+        feedback: |
+          C'est $\binom{8}{3} = 56$, une combinaison — qui ignore l'ordre. Mais
+          l'énoncé note l'ordre du tirage (1er, 2e, 3e) : il faut un arrangement
+          $A_8^3$, pas une combinaison. Modèle erroné : oublier que l'ordre
+          compte.
+
+      - id: D
+        text: "$24$"
+        correct: false
+        misconception: mc.math.maths_denombrement.base-exposant-inverse
+        feedback: |
+          C'est $8 \times 3 = 24$ : on a multiplié le nombre de boules par le
+          nombre de tirages, au lieu d'appliquer le mécanisme de l'arrangement
+          ($8 \times 7 \times 6$). Modèle erroné : mauvais assemblage des nombres
+          $n$ et $p$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r5-ordre | placed AFTER R5
+  #        Rupture gate: l'ordre compte-t-il ? Un comité (sans rôles)
+  #        est une COMBINAISON ; un podium (rôles distincts) serait un
+  #        arrangement. Probes M3 (ordre-arrangement-vs-combinaison).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-ordre
+    rung: "R5"
+    habilete: raisonnement
+    skill_code: maths_denombrement
+    tags: [checkpoint, formative, misconception_driven, maths_denombrement, combinaison]
+    primary_misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |
+      On forme un comité de **3 membres** parmi **8 personnes**, **sans
+      distinction de rôle** entre les membres (pas de président ni de trésorier —
+      juste « faire partie du comité »). Combien de comités différents peut-on
+      former ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$56$"
+        correct: true
+        feedback: |
+          Exact : sans rôle distinct, l'ordre des 3 membres n'a aucune
+          importance — c'est un tirage simultané, une combinaison.
+          $\binom{8}{3} = \dfrac{8 \times 7 \times 6}{3 \times 2 \times 1} = 56$.
+
+      - id: B
+        text: "$336$"
+        correct: false
+        misconception: mc.math.maths_denombrement.ordre-arrangement-vs-combinaison
+        feedback: |
+          C'est $A_8^3 = 8 \times 7 \times 6 = 336$, un arrangement — qui
+          distingue l'ordre. Mais un comité sans rôle ne distingue aucun ordre :
+          chaque groupe de 3 y est compté $3! = 6$ fois. Il faut diviser par $3!$
+          pour ne compter chaque comité qu'une fois. Modèle erroné : compter
+          l'ordre là où il ne compte pas.
+
+      - id: C
+        text: "$512$"
+        correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
+        feedback: |
+          C'est $8^3 = 512$, comme si une même personne pouvait être choisie
+          plusieurs fois (tirage avec remise). Mais un membre ne siège qu'une
+          fois : pas de répétition. Modèle erroné : traiter un tirage sans remise
+          comme un tirage avec remise.
+
+      - id: D
+        text: "$11$"
+        correct: false
+        misconception: mc.math.maths_denombrement.additif-vs-multiplicatif
+        feedback: |
+          C'est $8 + 3 = 11$ : former un comité n'est ni une somme ni une
+          alternative entre deux familles. C'est le choix simultané d'un groupe de
+          3, qui se compte avec $\binom{8}{3}$. Modèle erroné : additionner là où
+          il faut dénombrer un groupe.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r7-proba | placed AFTER R7
+  #        Rupture gate: une probabilité par équiprobabilité est un
+  #        QUOTIENT de dénombrements — jamais un cardinal seul, et le
+  #        dénominateur est card(Ω) TOUT ENTIER. Clone of DENOMB-6.
+  #        Probes M5 (proba-quotient-denombrement).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7-proba
+    rung: "R7"
+    habilete: utilisation
+    skill_code: maths_denombrement
+    tags: [checkpoint, formative, misconception_driven, maths_denombrement, equiprobabilite]
+    primary_misconception: mc.math.maths_denombrement.proba-quotient-denombrement
+    item_source: clone_of_DENOMB-6
+    lesson_placement: after_R7
+
+    stem: |
+      Une urne contient 4 boules blanches et 6 boules noires, indiscernables au
+      toucher. On tire **simultanément** 2 boules. Quelle est la probabilité
+      d'obtenir 2 boules blanches ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$\\dfrac{2}{15}$"
+        correct: true
+        feedback: |
+          Exact : $\text{card}(\Omega) = \binom{10}{2} = 45$ et
+          $\text{card}(E) = \binom{4}{2} = 6$, donc
+          $P(E) = \dfrac{6}{45} = \dfrac{2}{15}$. Une probabilité par
+          équiprobabilité est le quotient des cas favorables par TOUS les cas
+          possibles.
+
+      - id: B
+        text: "$6$"
+        correct: false
+        misconception: mc.math.maths_denombrement.proba-quotient-denombrement
+        feedback: |
+          $\binom{4}{2} = 6$ est le nombre de cas **favorables**, mais une
+          probabilité n'est jamais un cardinal seul — c'est toujours un quotient.
+          Il manque la division par le nombre total de tirages,
+          $\binom{10}{2} = 45$. Modèle erroné : oublier de diviser.
+
+      - id: C
+        text: "$\\dfrac{6}{15}$"
+        correct: false
+        misconception: mc.math.maths_denombrement.proba-quotient-denombrement
+        feedback: |
+          Le dénominateur utilisé ici, $\binom{6}{2} = 15$, ne compte que les
+          tirages de 2 boules **noires** — un sous-groupe. Le dénominateur d'une
+          probabilité par équiprobabilité est toujours $\text{card}(\Omega)$, le
+          nombre total de tirages dans TOUTE l'urne, $\binom{10}{2} = 45$. Modèle
+          erroné : mauvais dénominateur (un sous-groupe au lieu de $\Omega$).
+
+      - id: D
+        text: "$\\dfrac{4}{25}$"
+        correct: false
+        misconception: mc.math.maths_denombrement.remise-avec-vs-sans
+        feedback: |
+          C'est $\dfrac{4}{10} \times \dfrac{4}{10} = \dfrac{4}{25}$, un calcul
+          qui suppose qu'on **remet** la première boule avant de tirer la seconde.
+          Mais un tirage simultané ne permet pas de tirer deux fois la même
+          boule : on compte avec des combinaisons, pas des puissances. Modèle
+          erroné : traiter un tirage sans remise comme un tirage avec remise.

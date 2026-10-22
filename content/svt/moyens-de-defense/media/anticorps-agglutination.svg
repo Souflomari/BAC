@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 500"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="L’anticorps en Y : deux sites de fixation identiques aux extrémités des branches, un pied reconnu par les phagocytes. Un anticorps relie deux bactéries par ses deux sites : c’est le complexe immun. En réseau, de nombreux anticorps relient de nombreuses bactéries en un amas visible : l’agglutination. Les bactéries agglutinées restent intactes — elles sont marquées, pas détruites — c’est ensuite un phagocyte qui les élimine.">
+  <title>L’anticorps : structure en Y, complexe immun, agglutination — marque, ne détruit pas</title>
+
+  <!--
+    anticorps-agglutination.svg — STAGED, 4 étapes cumulatives.
+    step-1 : la structure — un anticorps en Y, deux sites de fixation
+             identiques (mêmes points = même idée répétée, cf. skill,
+             précédent demi-vies), un pied.
+    step-2 : + double liaison — un anticorps relie DEUX bactéries (le
+             complexe immun).
+    step-3 : + agglutination — une zone séparée montre l'échelle « en
+             réseau » : plusieurs bactéries reliées entre elles par
+             plusieurs anticorps, dans un amas visible (contour en
+             pointillés).
+    step-4 : + marquage, pas destruction — un phagocyte arrive au contact
+             de l'amas, EN UN SEUL GESTE (pas les 5 étapes de
+             phagocytose-etapes.svg — ce mécanisme est déjà détaillé
+             ailleurs). Les bactéries restent visuellement intactes
+             (aucune fragmentation, contrairement à la digestion de
+             phagocytose-etapes.svg step-4) : elles sont marquées, non
+             détruites.
+
+    Glyphe bactérie partagé avec phagocytose-etapes.svg (fig. 1) — même
+    capsule à deux cloisons, translatée/pivotée — pour la continuité
+    visuelle demandée par le brief. Glyphe phagocyte également partagé
+    (même contour organique + noyau).
+
+    Convention couleur ("accent = une idée par étape") :
+      step-1 : les deux sites de fixation (répétés = une seule idée : la
+               bivalence) ;
+      step-2 : l'accolade « complexe immun » (l'idée : DEUX cibles pour
+               UN anticorps) ;
+      step-3 : le contour de l'amas (l'idée : le regroupement visible) ;
+      step-4 : le geste du phagocyte (l'idée : quelqu'un d'autre élimine).
+    Les bactéries elles-mêmes restent en --figure-ink / --figure-ink-soft
+    dans les 4 étapes — jamais accentuées, jamais fragmentées : leur
+    intégrité visuelle EST l'argument contre l'idée reçue « l'anticorps
+    détruit ».
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — structure de l'anticorps (Y, deux sites, un pied)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <text x="430" y="22" text-anchor="middle"
+          font-size="12.5" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      L’anticorps : marque et regroupe — il ne détruit jamais lui-même
+    </text>
+
+    <!-- Bras et pied du Y -->
+    <path d="M230,150 L185,90 M230,150 L275,90 M230,150 L230,225"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+
+    <!-- Deux sites de fixation identiques — accent (une seule idée répétée deux fois) -->
+    <circle cx="185" cy="90" r="8" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.4"/>
+    <circle cx="275" cy="90" r="8" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.4"/>
+
+    <line x1="283" y1="90" x2="330" y2="90" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="336" y="86" font-size="10.5" fill="var(--figure-ink)">site de fixation</text>
+    <text x="336" y="100" font-size="9.5" fill="var(--figure-ink-soft)">(×2, identiques)</text>
+
+    <line x1="230" y1="225" x2="230" y2="238" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="230" y="252" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">pied</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — double liaison : le complexe immun
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Bactérie liée au site gauche -->
+    <g transform="translate(148,68) rotate(-30)">
+      <rect x="-18" y="-7" width="36" height="14" rx="7" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+      <line x1="-6" y1="-7" x2="-6" y2="7" stroke="var(--figure-ink-soft)" stroke-width="1" opacity="0.5"/>
+      <line x1="6" y1="-7" x2="6" y2="7" stroke="var(--figure-ink-soft)" stroke-width="1" opacity="0.5"/>
+    </g>
+    <!-- Bactérie liée au site droit -->
+    <g transform="translate(317,68) rotate(30)">
+      <rect x="-18" y="-7" width="36" height="14" rx="7" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+      <line x1="-6" y1="-7" x2="-6" y2="7" stroke="var(--figure-ink-soft)" stroke-width="1" opacity="0.5"/>
+      <line x1="6" y1="-7" x2="6" y2="7" stroke="var(--figure-ink-soft)" stroke-width="1" opacity="0.5"/>
+    </g>
+
+    <!-- Accolade « complexe immun » — accent (l'idée : deux cibles, un seul anticorps) -->
+    <path d="M140,262 L140,270 L320,270 L320,262" fill="none" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="230" y="286" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-accent)">complexe immun</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — agglutination : un amas, à plus grande échelle
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Contour de l'amas — accent (l'idée : le regroupement visible) -->
+    <path d="M470,330 C480,268 542,224 622,224 C712,224 772,262 772,332
+             C772,402 700,438 616,438 C530,438 461,400 470,330 Z"
+          fill="var(--figure-surface)" fill-opacity="0.35" stroke="var(--figure-accent)"
+          stroke-width="1.8" stroke-dasharray="6,4"/>
+    <text x="622" y="214" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-accent)">
+      agglutination : amas visible
+    </text>
+
+    <!-- Six bactéries en réseau -->
+    <g transform="translate(520,270) rotate(10)">
+      <rect x="-16" y="-6" width="32" height="12" rx="6" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    </g>
+    <g transform="translate(612,252) rotate(-15)">
+      <rect x="-16" y="-6" width="32" height="12" rx="6" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    </g>
+    <g transform="translate(695,288) rotate(20)">
+      <rect x="-16" y="-6" width="32" height="12" rx="6" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    </g>
+    <g transform="translate(700,362) rotate(-10)">
+      <rect x="-16" y="-6" width="32" height="12" rx="6" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    </g>
+    <g transform="translate(602,394) rotate(15)">
+      <rect x="-16" y="-6" width="32" height="12" rx="6" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    </g>
+    <g transform="translate(512,362) rotate(-20)">
+      <rect x="-16" y="-6" width="32" height="12" rx="6" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    </g>
+
+    <!-- Liaisons (anticorps simplifiés en pontage) — réseau fermé -->
+    <g stroke="var(--figure-ink-soft)" stroke-width="1.3" fill="none">
+      <line x1="530" y1="262" x2="600" y2="252"/>
+      <line x1="622" y1="258" x2="683" y2="284"/>
+      <line x1="702" y1="300" x2="700" y2="350"/>
+      <line x1="690" y1="368" x2="614" y2="390"/>
+      <line x1="592" y1="392" x2="524" y2="368"/>
+      <line x1="510" y1="352" x2="518" y2="280"/>
+    </g>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — marquage, pas destruction : le phagocyte arrive
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <!-- Phagocyte — un seul geste, pas les 5 étapes détaillées ailleurs -->
+    <g transform="translate(788,282)">
+      <path d="M34,0 C36,-15 25,-26 8,-28 C-11,-30 -26,-19 -31,-3
+               C-36,13 -27,27 -9,33 C8,39 24,31 31,16 C35,9 33,3 34,0 Z"
+            fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+      <ellipse cx="-3" cy="3" rx="10" ry="8" fill="var(--figure-ink-soft)" opacity="0.28"/>
+    </g>
+    <text x="788" y="243" text-anchor="middle" font-size="10.5" fill="var(--figure-ink)">phagocyte</text>
+
+    <!-- Geste d'approche — accent (l'idée : c'est LUI qui élimine, pas l'anticorps) -->
+    <line x1="761" y1="292" x2="722" y2="292"
+          stroke="var(--figure-accent)" stroke-width="1.8" stroke-linecap="round"/>
+    <polygon points="722,292 733,286 733,298" fill="var(--figure-accent)"/>
+
+    <text x="622" y="465" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)">
+      bactéries agglutinées, encore intactes — marquées, pas détruites
+    </text>
+  </g><!-- /step-4 -->
+
+</svg>

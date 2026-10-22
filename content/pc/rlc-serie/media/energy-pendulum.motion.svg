@@ -1,0 +1,427 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 520"
+     font-family="'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif"
+     aria-label="Échanges d’énergie entre le condensateur et la bobine, en antiphase">
+
+  <!--
+    energy-pendulum.motion.svg  (v4 — replace layout fix)
+    ─────────────────────────────────────────────────────────────────────────
+    Engine: MotionStage.tsx (GSAP fill verb for energy bars).
+
+    LAYOUT MODEL: replace
+      Slots:
+        circuit-state-slot  — one label inside the left panel at a time.
+                               beat-0: circuit-state-0 (visible on load)
+                               beat-1: circuit-state-1 replaces circuit-state-0
+                               beat-2: circuit-state-2 replaces circuit-state-1
+        annot-slot          — one annotation row at a time (bottom panel).
+                               beat-0: annot-0 (visible on load)
+                               beat-1: annot-1 replaces annot-0
+                               beat-2: annot-2 replaces annot-1
+        ec-label-slot       — value label on E_C bar.
+                               beat-0: label-ec-max (visible on load)
+                               beat-1: label-ec-zero replaces label-ec-max
+        el-label-slot       — value label on E_L bar.
+                               beat-0: label-el-zero (visible on load)
+                               beat-1: label-el-max replaces label-el-zero
+
+    BEATS
+      beat-0 (settled on load): t=0 — E_C bar FULL, E_L bar EMPTY.
+             circuit-state-0 and annot-0 visible. label-ec-max and
+             label-el-zero visible.
+      beat-1 (Suivant):  t=T/4 — antiphase transfer.
+             bar-ec-cover grows DOWN (fill from:"up") visually empties E_C.
+             bar-el grows UP (fill from:"down" = default bottom) fills E_L.
+             Replace: circuit-state-0 exits / circuit-state-1 enters.
+             Replace: annot-0 exits / annot-1 enters.
+             Replace: label-ec-max exits / label-ec-zero enters.
+             Replace: label-el-zero exits / label-el-max enters.
+      beat-2 (Suivant): Conservation insight.
+             Replace: circuit-state-1 exits / circuit-state-2 enters.
+             Replace: annot-1 exits / annot-2 enters.
+             etotal-group fades in.
+
+    BAR MECHANICS (E_C "draining"):
+      #bar-ec        — always present, full height, var(--figure-energy-C).
+                       Never animated — chrome, always visible.
+      #bar-ec-cover  — same-sized rect in var(--figure-surface), painted ON TOP
+                       of bar-ec (later in SVG order). At beat-0: scaleY=0 via
+                       authored transform + setPre. In beat-1: scaleY grows 0→1
+                       from top (from:"up"), covering bar-ec — visually "empties".
+                       label-ec-max is painted BEFORE the cover in SVG order, so
+                       the cover also paints over it (and the replace exit fades it
+                       via autoAlpha for robustness). label-ec-zero is painted AFTER
+                       the cover, so it is always on top.
+
+    BOUNDARY §0.4: free LC exchange only. No damping, no e^{-αt}, no coefficient.
+    PALETTE: var(--figure-energy-C) / var(--figure-energy-L) for bars.
+
+    NO-FLASH CONTRACT:
+      Elements entering at beat i≥1 are authored opacity="0".
+      Beat-0 elements are authored visible.
+      setPre is idempotent with this.
+  -->
+
+  <!-- ── Background ────────────────────────────────────────────────────── -->
+  <rect width="680" height="520" rx="8" fill="var(--figure-surface)"/>
+
+  <!-- Title -->
+  <text x="340" y="26" text-anchor="middle"
+        font-size="13" font-weight="600" fill="var(--figure-ink)">
+    Échanges d’énergie dans le circuit LC
+  </text>
+  <text x="340" y="44" text-anchor="middle"
+        font-size="10.5" fill="var(--figure-ink-soft)">
+    Cas idéal (R ≈ 0) — condensateur et bobine en antiphase
+  </text>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       LEFT PANEL — Circuit state (always visible chrome)
+       Shows the LC loop with state indicators.
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <rect x="32" y="56" width="296" height="278" rx="6"
+        fill="var(--figure-grid)" opacity="0.22"/>
+
+  <!-- Panel label -->
+  <text x="180" y="78" text-anchor="middle"
+        font-size="11.5" font-weight="600" fill="var(--figure-ink)">
+    Circuit LC (R ≈ 0)
+  </text>
+
+  <!-- Simple LC loop schematic — always visible -->
+  <!-- Top wire -->
+  <line x1="80" y1="130" x2="280" y2="130"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <!-- Bottom wire -->
+  <line x1="80" y1="270" x2="280" y2="270"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <!-- Left wire (capacitor side) -->
+  <line x1="80" y1="130" x2="80" y2="185"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <line x1="80" y1="215" x2="80" y2="270"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <!-- Right wire (inductor side) -->
+  <line x1="280" y1="130" x2="280" y2="240"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <line x1="280" y1="270" x2="280" y2="270"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
+
+  <!-- Capacitor symbol (left) -->
+  <line x1="55" y1="185" x2="105" y2="185"
+        stroke="var(--figure-energy-C)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="55" y1="215" x2="105" y2="215"
+        stroke="var(--figure-energy-C)" stroke-width="3" stroke-linecap="round"/>
+  <text x="48" y="204" text-anchor="middle"
+        font-size="14" font-style="italic" font-weight="600"
+        fill="var(--figure-energy-C)">C</text>
+
+  <!-- Inductor symbol (bottom, coil arcs) -->
+  <path d="M140,270 a12,12 0 0,0 24,0" fill="none"
+        stroke="var(--figure-energy-L)" stroke-width="2.5"/>
+  <path d="M164,270 a12,12 0 0,0 24,0" fill="none"
+        stroke="var(--figure-energy-L)" stroke-width="2.5"/>
+  <path d="M188,270 a12,12 0 0,0 24,0" fill="none"
+        stroke="var(--figure-energy-L)" stroke-width="2.5"/>
+  <text x="215" y="285" font-size="14" font-style="italic" font-weight="600"
+        fill="var(--figure-energy-L)">L</text>
+
+  <!-- Current arrow on top wire -->
+  <line x1="155" y1="130" x2="195" y2="130"
+        stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <polygon points="195,130 183,125 183,135" fill="var(--figure-ink-soft)"/>
+  <text x="175" y="120" text-anchor="middle"
+        font-size="13" font-style="italic" fill="var(--figure-ink-soft)">i</text>
+
+  <!-- Corner nodes -->
+  <circle cx="80"  cy="130" r="3" fill="var(--figure-ink-soft)"/>
+  <circle cx="280" cy="130" r="3" fill="var(--figure-ink-soft)"/>
+  <circle cx="80"  cy="270" r="3" fill="var(--figure-ink-soft)"/>
+  <circle cx="280" cy="270" r="3" fill="var(--figure-ink-soft)"/>
+
+  <!--
+    CIRCUIT-STATE SLOT — exactly ONE group visible at a time.
+    beat-0: circuit-state-0 visible (no opacity attr = 1).
+    beat-1: circuit-state-1 enters (replace: circuit-state-0 exits).
+    beat-2: circuit-state-2 enters (replace: circuit-state-1 exits).
+    All positioned at the same y-band inside the left panel.
+  -->
+
+  <!-- State indicator: beat-0 label (condensateur chargé) — visible on load -->
+  <g id="circuit-state-0">
+    <rect x="92" y="150" width="176" height="50" rx="5"
+          fill="var(--figure-energy-C)" opacity="0.12"/>
+    <text x="180" y="169" text-anchor="middle"
+          font-size="10" font-weight="600" fill="var(--figure-energy-C)">
+      t = 0
+    </text>
+    <text x="180" y="184" text-anchor="middle"
+          font-size="9.5" fill="var(--figure-energy-C)">
+      condensateur chargé à U₀
+    </text>
+    <text x="180" y="197" text-anchor="middle"
+          font-size="9" fill="var(--figure-ink-soft)">courant i = 0</text>
+  </g>
+
+  <!-- State indicator: beat-1 — authored opacity="0" (pre-state for replace enter) -->
+  <g id="circuit-state-1" opacity="0">
+    <rect x="92" y="150" width="176" height="50" rx="5"
+          fill="var(--figure-energy-L)" opacity="0.12"/>
+    <text x="180" y="169" text-anchor="middle"
+          font-size="10" font-weight="600" fill="var(--figure-energy-L)">
+      t = T/4
+    </text>
+    <text x="180" y="184" text-anchor="middle"
+          font-size="9.5" fill="var(--figure-energy-L)">
+      bobine pleine — condensateur vide
+    </text>
+    <text x="180" y="197" text-anchor="middle"
+          font-size="9" fill="var(--figure-ink-soft)">courant i = i<tspan dy="3" font-size="7">max</tspan></text>
+  </g>
+
+  <!-- State indicator: beat-2 — authored opacity="0" (pre-state for replace enter) -->
+  <g id="circuit-state-2" opacity="0">
+    <rect x="92" y="150" width="176" height="50" rx="5"
+          fill="var(--figure-ink-soft)" opacity="0.10"/>
+    <text x="180" y="172" text-anchor="middle"
+          font-size="10" font-weight="600" fill="var(--figure-ink)">
+      Énergie conservée
+    </text>
+    <text x="180" y="190" text-anchor="middle"
+          font-size="9.5" fill="var(--figure-ink-soft)">
+      E<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> + E</tspan><tspan dy="3" font-size="7">L</tspan><tspan dy="-3"> = constante</tspan>
+    </text>
+  </g>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       RIGHT PANEL — Energy bars
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <rect x="362" y="56" width="286" height="278" rx="6"
+        fill="var(--figure-grid)" opacity="0.22"/>
+
+  <text x="505" y="78" text-anchor="middle"
+        font-size="11.5" font-weight="600" fill="var(--figure-ink)">
+    Réserves d’énergie
+  </text>
+
+  <!-- E_max reference line + label -->
+  <line x1="378" y1="108" x2="632" y2="108"
+        stroke="var(--figure-ink-soft)" stroke-width="1"
+        stroke-dasharray="3,3" opacity="0.5"/>
+  <text x="638" y="112" font-size="9" fill="var(--figure-ink-soft)">E<tspan dy="3" font-size="7">max</tspan></text>
+
+  <!-- ── E_C bar column ────────────────────────────────────────────────── -->
+  <!-- Bar container outline -->
+  <rect x="398" y="108" width="100" height="190" rx="5"
+        fill="none"
+        stroke="var(--figure-energy-C)"
+        stroke-width="1.5"
+        opacity="0.30"/>
+
+  <!-- Bar fill — full at beat-0.
+       No tween here → setPre never touches this rect.
+       Chrome: visible at beat-0 and always underneath. -->
+  <rect id="bar-ec"
+        x="398" y="108" width="100" height="190" rx="5"
+        fill="var(--figure-energy-C)"
+        opacity="0.72"/>
+
+  <!--
+    EC-LABEL SLOT — exactly ONE label visible at a time.
+    beat-0: label-ec-max ("MAX") visible, painted BEFORE the cover so the
+            cover can also hide it visually once it grows.
+            The replace exit via autoAlpha is the authoritative hide.
+    beat-1: label-ec-zero ("0") enters, replacing label-ec-max.
+            Painted AFTER the cover so it is always on top of it.
+  -->
+
+  <!-- "MAX" label — visible at beat-0. Positioned ABOVE the bar cap (y≈104,
+       just above the bar top at y=108). Painted before bar-ec-cover so cover
+       can paint on top of it. Replace exit at beat-1 sets autoAlpha:0. -->
+  <text id="label-ec-max" x="448" y="103" text-anchor="middle"
+        font-size="11" font-weight="600"
+        fill="var(--figure-energy-C)">MAX</text>
+
+  <!-- Cover rect — grows from top in beat-1, covering bar-ec AND label-ec-max.
+       Positioned AFTER them in SVG order so it paints on top.
+       Has a fill tween with from:"up" → setPre sets scaleY:0.
+       Authored with transform="scale(1,0)" so no-JS fallback also hides it. -->
+  <rect id="bar-ec-cover"
+        x="398" y="108" width="100" height="190" rx="5"
+        fill="var(--figure-surface)"
+        opacity="1"
+        transform="scale(1,0)"
+        style="transform-origin: 50% 0%; transform-box: fill-box;"/>
+
+  <!-- "0" label — appears AFTER bar-ec-cover in SVG order, so it paints
+       on top of the cover. Positioned ABOVE the bar top (y≈103). Fades in
+       at beat-1 via replace enter. -->
+  <text id="label-ec-zero" x="448" y="103" text-anchor="middle"
+        font-size="11" font-weight="600"
+        fill="var(--figure-energy-C)" opacity="0">0</text>
+
+  <text x="448" y="316" text-anchor="middle"
+        font-size="11" font-style="italic"
+        fill="var(--figure-energy-C)">
+    E<tspan dy="3" font-size="8">C</tspan>
+  </text>
+  <text x="448" y="330" text-anchor="middle"
+        font-size="9" fill="var(--figure-ink-soft)">condensateur</text>
+
+  <!-- ── E_L bar column ────────────────────────────────────────────────── -->
+  <!-- Bar container outline -->
+  <rect x="520" y="108" width="100" height="190" rx="5"
+        fill="none"
+        stroke="var(--figure-energy-L)"
+        stroke-width="1.5"
+        opacity="0.30"/>
+
+  <!-- Bar fill — empty at beat-0, filled in beat-1.
+       Has a fill tween → engine setPre sets scaleY:0.
+       Authored collapsed so no-JS fallback shows empty bar. -->
+  <rect id="bar-el"
+        x="520" y="108" width="100" height="190" rx="5"
+        fill="var(--figure-energy-L)"
+        opacity="0.72"
+        transform="scale(1,0)"
+        style="transform-origin: 50% 100%; transform-box: fill-box;"/>
+
+  <!--
+    EL-LABEL SLOT — exactly ONE label visible at a time.
+    beat-0: label-el-zero ("0") visible at beat-0.
+            Replace exit at beat-1 fades it out via autoAlpha.
+    beat-1: label-el-max ("MAX") enters, replacing label-el-zero.
+            fill="var(--figure-surface)" — sits on top of the filled bar.
+  -->
+
+  <!-- "0" shown at beat-0 — positioned ABOVE the bar top (y≈103).
+       replace exits at beat-1. -->
+  <text id="label-el-zero" x="570" y="103" text-anchor="middle"
+        font-size="11" font-weight="600"
+        fill="var(--figure-energy-L)" opacity="0.5">0</text>
+
+  <!-- "MAX" shown in beat-1 (authored opacity=0, enters via replace).
+       Positioned ABOVE the bar top (y≈103) so it clears the filled bar. -->
+  <text id="label-el-max" x="570" y="103" text-anchor="middle"
+        font-size="11" font-weight="600"
+        fill="var(--figure-energy-L)" opacity="0">MAX</text>
+
+  <text x="570" y="316" text-anchor="middle"
+        font-size="11" font-style="italic"
+        fill="var(--figure-energy-L)">
+    E<tspan dy="3" font-size="8">L</tspan>
+  </text>
+  <text x="570" y="330" text-anchor="middle"
+        font-size="9" fill="var(--figure-ink-soft)">bobine</text>
+
+  <!--
+    Conservation marker (beat-2): the "E_C + E_L = constante" point is already
+    made twice at beat-2 — the left-panel "Énergie conservée" state box and the
+    bottom equation row — and the bars panel has no clear band for a third
+    instance (cap-labels at y=103, axis labels at y=316). A redundant pill here
+    only collided with one or the other, so it is dropped. The group is kept
+    (empty) so the beat-2 `#etotal-group` fade target still resolves as a
+    harmless no-op; the conservation reveal is carried by the left box + the
+    equation row. (calm-load: less is more.)
+  -->
+  <g id="etotal-group" opacity="0"></g>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       ANNOTATION SLOT — exactly ONE annotation group visible at a time.
+       All groups occupy the same y-band (y=344–432). Replace mechanism
+       ensures only the current beat's group is visible.
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <rect x="32" y="344" width="616" height="88" rx="6"
+        fill="var(--figure-grid)" opacity="0.16"/>
+
+  <!-- beat-0 annotation (visible on load — no opacity attr) -->
+  <g id="annot-0">
+    <text x="340" y="368" text-anchor="middle"
+          font-size="12" font-weight="600" fill="var(--figure-energy-C)">
+      t = 0 : E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> = E</tspan><tspan dy="3" font-size="8">max</tspan><tspan dy="-3">,  E</tspan><tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> = 0</tspan>
+    </text>
+    <text x="340" y="386" text-anchor="middle"
+          font-size="10" fill="var(--figure-ink-soft)">
+      Condensateur chargé à U₀ — courant nul, bobine ne stocke rien
+    </text>
+    <!-- Two-column formula row: left = capacitor energy, right = current -->
+    <text x="220" y="410"
+          font-size="10.5" font-style="italic" fill="var(--figure-energy-C)">
+      E<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3"> = ½C·U₀²</tspan>
+    </text>
+    <text x="400" y="410"
+          font-size="10.5" font-style="italic" fill="var(--figure-ink-soft)">
+      i = 0
+    </text>
+  </g>
+
+  <!-- beat-1 annotation (authored opacity="0" — replace enters at beat-1) -->
+  <g id="annot-1" opacity="0">
+    <text x="340" y="368" text-anchor="middle"
+          font-size="12" font-weight="600" fill="var(--figure-energy-L)">
+      t = T/4 : E<tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> = E</tspan><tspan dy="3" font-size="8">max</tspan><tspan dy="-3">,  E</tspan><tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> = 0</tspan>
+    </text>
+    <text x="340" y="386" text-anchor="middle"
+          font-size="10" fill="var(--figure-ink-soft)">
+      Condensateur vide — courant maximal, toute l’énergie dans la bobine
+    </text>
+    <!-- Two-column formula row: left = E_C = 0, right = E_L = ½L·i²_max -->
+    <text x="180" y="410"
+          font-size="10.5" font-style="italic" fill="var(--figure-energy-C)">
+      E<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3"> = 0</tspan>
+    </text>
+    <text x="360" y="410"
+          font-size="10.5" font-style="italic" fill="var(--figure-energy-L)">
+      E<tspan dy="3" font-size="7.5">L</tspan><tspan dy="-3"> = ½L·i</tspan><tspan dy="3" font-size="7.5">max</tspan><tspan dy="-3">²</tspan>
+    </text>
+  </g>
+
+  <!-- beat-2 annotation (authored opacity="0" — replace enters at beat-2) -->
+  <g id="annot-2" opacity="0">
+    <text x="340" y="368" text-anchor="middle"
+          font-size="12" font-weight="600" fill="var(--figure-ink)">
+      E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> + E</tspan><tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> = constante</tspan>
+    </text>
+    <text x="340" y="386" text-anchor="middle"
+          font-size="10" fill="var(--figure-ink-soft)">
+      L’énergie oscille entre les deux — aucune perte (R = 0)
+    </text>
+    <text x="340" y="410" text-anchor="middle"
+          font-size="10.5" font-style="italic" fill="var(--figure-ink)">
+      ½C·u<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3">² + ½L·i² = ½C·U₀²  (conservée)</tspan>
+    </text>
+  </g>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       FOOTER — Legend + boundary note
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <line x1="36"  y1="456" x2="66"  y2="456"
+        stroke="var(--figure-energy-C)" stroke-width="2.5"/>
+  <text x="71" y="460" font-size="10.5"
+        fill="var(--figure-energy-C)">
+    E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3" fill="var(--figure-ink)"> condensateur</tspan>
+  </text>
+
+  <line x1="240" y1="456" x2="270" y2="456"
+        stroke="var(--figure-energy-L)" stroke-width="2.5"/>
+  <text x="275" y="460" font-size="10.5"
+        fill="var(--figure-energy-L)">
+    E<tspan dy="3" font-size="8">L</tspan><tspan dy="-3" fill="var(--figure-ink)"> bobine</tspan>
+  </text>
+
+  <text x="340" y="485" text-anchor="middle"
+        font-size="9" font-style="italic" fill="var(--figure-ink-soft)">
+    Cas idéal — amortissement non représenté. Aucun coefficient affiché.
+  </text>
+  <text x="340" y="499" text-anchor="middle"
+        font-size="9" font-style="italic" fill="var(--figure-ink-soft)">
+    E<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> et E</tspan><tspan dy="3" font-size="7">L</tspan><tspan dy="-3"> en opposition de phase : quand l’une est maximale, l’autre est nulle.</tspan>
+  </text>
+
+</svg>

@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 460" width="760" height="460"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Tableau d’Euler pour la bille de l’exemple travaillé : quatre lignes de valeurs t_i, v_i, a_i, v_i+1, et à droite le schéma géométrique correspondant — les points v0 à v4 reliés par des segments de pente a_i, avec le pas Δt et la montée a_i fois Δt d’un pas mis en évidence.">
+  <title>La méthode d’Euler pas à pas — tableau et construction géométrique</title>
+  <!--
+    tableau-euler-pas-a-pas.svg — figure STAGED (3 étapes). Reprend
+    EXACTEMENT le tableau du R8 (bille de R7 : m=0,20 kg, k=2,0 kg/s,
+    g≈9,8 m/s², Δt=0,020 s, v0=0) :
+      t_i : 0,000 / 0,020 / 0,040 / 0,060
+      v_i : 0,000 / 0,196 / 0,353 / 0,478
+      a_i = 9,8 − 10·v_i : 9,80 / 7,84 / 6,27 / 5,02
+      v_{i+1} = v_i + a_i·Δt : 0,196 / 0,353 / 0,478 / 0,579
+
+    Seuil §2.5 "schémas" : ≥3 couches + geste d'enseignement (le tableau
+    d'abord — donnée déjà connue du texte — puis LA construction qui
+    explique la formule, puis le lien explicite entre les deux).
+
+    Panneau gauche — tableau (grille 4 colonnes × 5 lignes, cellules
+    84×34, origine (40,80), même convention que table-groupe.svg).
+
+    Panneau droit — mini-graphe : les 5 valeurs v_0..v_4 aux instants
+    t=0,0.02,0.04,0.06,0.08 s SONT les points de la polyligne d'Euler
+    (par construction, chaque segment a pour pente EXACTE a_i — ce n'est
+    pas une courbe lissée, Euler produit vraiment des segments droits).
+    Échelle : origine (t=0,v=0)=(460,380) ; scale_t=3000 px/s ;
+    scale_v=400 px/(m/s) :
+      P0 (t=0,v=0)        → (460,380)
+      P1 (t=0,02,v=0,196) → (520,301.6)
+      P2 (t=0,04,v=0,353) → (580,238.8)
+      P3 (t=0,06,v=0,478) → (640,188.8)
+      P4 (t=0,08,v=0,579) → (700,148.4)
+    Vérification pente P0→P1 : (301.6−380)/(−400) / (520−460)/3000... en
+    grandeurs physiques : (v1−v0)/Δt = 0,196/0,020 = 9,8 = a0 ✓ (exact,
+    par construction de la récurrence).
+
+    Rôle des couleurs :
+      polyligne d'Euler (grandeur d'intérêt)        : --figure-accent
+      construction Δt / a0·Δt, table, axes           : --figure-ink-soft
+      formule et surlignage de correspondance        : --figure-accent
+  -->
+
+  <!-- Titre -->
+  <text x="380" y="22" text-anchor="middle" font-size="12" font-weight="600"
+        letter-spacing="0.01em" fill="var(--figure-ink)">
+    Méthode d’Euler, pas à pas — la récurrence v<tspan dy="3" font-size="8.5">i+1</tspan><tspan dy="-3"> = v</tspan><tspan dy="3" font-size="8.5">i</tspan><tspan dy="-3"> + a</tspan><tspan dy="3" font-size="8.5">i</tspan><tspan dy="-3">·Δt</tspan>
+  </text>
+  <text x="380" y="38" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">
+    même bille que dans l’exemple travaillé : m = 0,20 kg, k = 2,0 kg/s, Δt = 0,020 s, v₀ = 0
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — données : le tableau rempli
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <rect id="row1-highlight" x="40" y="114" width="336" height="34" fill="var(--figure-accent)" fill-opacity="0"/>
+    <!-- en-tête -->
+    <rect x="40" y="80" width="336" height="34" fill="var(--figure-ink-soft)" fill-opacity="0.08"/>
+    <rect x="40" y="80" width="336" height="170" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
+    <line x1="40" y1="114" x2="376" y2="114" stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
+    <line x1="124" y1="80" x2="124" y2="250" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="208" y1="80" x2="208" y2="250" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="292" y1="80" x2="292" y2="250" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="40" y1="148" x2="376" y2="148" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="40" y1="182" x2="376" y2="182" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="40" y1="216" x2="376" y2="216" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- en-têtes de colonnes -->
+    <text x="82" y="101" text-anchor="middle" font-size="12" font-style="italic" fill="var(--figure-ink)">t<tspan dy="3" font-size="8">i</tspan><tspan dy="-3"> (s)</tspan></text>
+    <text x="166" y="101" text-anchor="middle" font-size="12" font-style="italic" fill="var(--figure-ink)">v<tspan dy="3" font-size="8">i</tspan><tspan dy="-3"> (m/s)</tspan></text>
+    <text x="250" y="101" text-anchor="middle" font-size="12" font-style="italic" fill="var(--figure-ink)">a<tspan dy="3" font-size="8">i</tspan><tspan dy="-3"> (m/s²)</tspan></text>
+    <text x="334" y="101" text-anchor="middle" font-size="11" font-style="italic" fill="var(--figure-ink)">v<tspan dy="3" font-size="8">i+1</tspan><tspan dy="-3"> (m/s)</tspan></text>
+
+    <!-- ligne 1 -->
+    <text x="82" y="135" text-anchor="middle" font-size="12" fill="var(--figure-ink)">0,000</text>
+    <text x="166" y="135" text-anchor="middle" font-size="12" fill="var(--figure-ink)">0,000</text>
+    <text x="250" y="135" text-anchor="middle" font-size="12" fill="var(--figure-ink)">9,80</text>
+    <text x="334" y="135" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-ink)">0,196</text>
+
+    <!-- ligne 2 -->
+    <text x="82" y="169" text-anchor="middle" font-size="12" fill="var(--figure-ink)">0,020</text>
+    <text x="166" y="169" text-anchor="middle" font-size="12" fill="var(--figure-ink)">0,196</text>
+    <text x="250" y="169" text-anchor="middle" font-size="12" fill="var(--figure-ink)">7,84</text>
+    <text x="334" y="169" text-anchor="middle" font-size="12" fill="var(--figure-ink)">0,353</text>
+
+    <!-- ligne 3 -->
+    <text x="82" y="203" text-anchor="middle" font-size="12" fill="var(--figure-ink)">0,040</text>
+    <text x="166" y="203" text-anchor="middle" font-size="12" fill="var(--figure-ink)">0,353</text>
+    <text x="250" y="203" text-anchor="middle" font-size="12" fill="var(--figure-ink)">6,27</text>
+    <text x="334" y="203" text-anchor="middle" font-size="12" fill="var(--figure-ink)">0,478</text>
+
+    <!-- ligne 4 -->
+    <text x="82" y="237" text-anchor="middle" font-size="12" fill="var(--figure-ink)">0,060</text>
+    <text x="166" y="237" text-anchor="middle" font-size="12" fill="var(--figure-ink)">0,478</text>
+    <text x="250" y="237" text-anchor="middle" font-size="12" fill="var(--figure-ink)">5,02</text>
+    <text x="334" y="237" text-anchor="middle" font-size="12" fill="var(--figure-ink)">0,579</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — mécanisme : le schéma géométrique (le "marcher le long
+       de la tangente")
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- axes du mini-graphe -->
+    <line x1="460" y1="380" x2="715" y2="380" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <polygon points="715,380 705,376 705,384" fill="var(--figure-ink-soft)"/>
+    <line x1="460" y1="380" x2="460" y2="100" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <polygon points="460,100 456,110 464,110" fill="var(--figure-ink-soft)"/>
+    <text x="722" y="384" font-size="10" font-style="italic" fill="var(--figure-ink-soft)">t</text>
+    <text x="452" y="104" text-anchor="end" font-size="10" font-style="italic" fill="var(--figure-ink-soft)">v</text>
+
+    <!-- polyligne d'Euler : segments de pente EXACTE a_i -->
+    <path d="M460,380 L520,301.6 L580,238.8 L640,188.8 L700,148.4"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="460" cy="380" r="3" fill="var(--figure-accent)"/>
+    <circle cx="520" cy="301.6" r="3" fill="var(--figure-accent)"/>
+    <circle cx="580" cy="238.8" r="3" fill="var(--figure-accent)"/>
+    <circle cx="640" cy="188.8" r="3" fill="var(--figure-accent)"/>
+    <circle cx="700" cy="148.4" r="3" fill="var(--figure-accent)"/>
+
+    <text x="460" y="396" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">v₀</text>
+    <text x="520" y="317" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">v₁</text>
+    <text x="580" y="254" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">v₂</text>
+    <text x="640" y="204" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">v₃</text>
+    <text x="700" y="134" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">v₄</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : Δt / a0·Δt, correspondance avec la ligne 1,
+       et la formule générale
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Surlignage : ligne 1 du tableau -->
+    <rect x="40" y="114" width="336" height="34" fill="var(--figure-accent)" fill-opacity="0.14"/>
+
+    <!-- Bracket Δt (horizontal, sous le premier segment) -->
+    <line x1="460" y1="392" x2="520" y2="392" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="460" y1="388" x2="460" y2="396" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="520" y1="388" x2="520" y2="396" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="490" y="408" text-anchor="middle" font-size="10" font-style="italic" fill="var(--figure-ink-soft)">Δt</text>
+
+    <!-- Bracket a0·Δt (vertical, à droite du point d'arrivée du 1er pas) -->
+    <line x1="520" y1="301.6" x2="520" y2="380" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="532" y1="301.6" x2="540" y2="301.6" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="532" y1="380" x2="540" y2="380" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="536" y1="301.6" x2="536" y2="380" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="546" y="345" font-size="10" font-style="italic" fill="var(--figure-ink-soft)">a₀·Δt</text>
+
+    <!-- Surlignage : premier segment de la polyligne (correspond à la ligne 1) -->
+    <path d="M460,380 L520,301.6" fill="none" stroke="var(--figure-accent)" stroke-width="4" stroke-opacity="0.28" stroke-linecap="round"/>
+
+    <!-- Ligne de liaison table ↔ graphe -->
+    <path d="M376,131 C 410,150 440,220 460,300" fill="none" stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="3,2" stroke-opacity="0.6"/>
+
+    <!-- Formule générale -->
+    <rect x="460" y="55" width="255" height="30" rx="5" fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="587" y="75" text-anchor="middle" font-size="13" font-style="italic" fill="var(--figure-accent)">v<tspan dy="4" font-size="9">i+1</tspan><tspan dy="-4"> = v</tspan><tspan dy="4" font-size="9">i</tspan><tspan dy="-4"> + a</tspan><tspan dy="4" font-size="9">i</tspan><tspan dy="-4">·Δt</tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

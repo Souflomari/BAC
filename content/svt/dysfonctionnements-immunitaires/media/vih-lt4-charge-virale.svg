@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 730 400"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Évolution du nombre de LT4 et de la charge virale chez une personne infectée par le VIH, non traitée. Le nombre de LT4 chute brutalement en phase aiguë, remonte partiellement sans revenir à son niveau initial, puis décline lentement pendant la phase chronique de latence. La charge virale suit une évolution presque inverse : pic aigu, chute nette sans s’annuler, plateau bas stable, puis remontée nette. Un seuil critique d’environ 200 LT4 par mm³ délimite le passage à la phase SIDA : c’est le franchissement de ce seuil, et non la seule présence du virus, qui ouvre la porte aux infections opportunistes.">
+  <title>VIH : évolution du nombre de LT4 et de la charge virale au cours du temps</title>
+
+  <!--
+    vih-lt4-charge-virale.svg — STAGED, 4 étapes cumulatives, le graphe
+    canonique du suivi clinique VIH non traité (R3, exemple travaillé).
+    step-1 : les axes — double échelle y (LT4 à gauche, charge virale à
+             droite), partageant le MÊME axe des temps. Rien de tracé.
+    step-2 : la courbe des LT4 (protagoniste — accent) : chute aiguë,
+             remontée partielle (jamais au niveau initial), déclin lent,
+             puis effondrement final.
+    step-3 : la courbe de la charge virale (ink-soft) — le miroir presque
+             inversé : pic aigu, chute nette (jamais à zéro), plateau bas
+             stable, puis remontée nette.
+    step-4 : le seuil critique (≈ 200 LT4/mm³, SEULE valeur numérique
+             nommée, en pointillés gris neutres) et les trois phases qu'il
+             délimite (aiguë / chronique-latence / SIDA), avec la lecture :
+             c'est le franchissement du seuil, pas la seule présence du
+             virus, qui ouvre la porte aux infections opportunistes.
+
+    Formes SCHÉMATIQUES/QUALITATIVES uniquement — aucune donnée chiffrée
+    inventée ; seul le seuil ≈ 200/mm³ est une valeur nommée, et reste
+    approximative (le texte lui-même dit « couramment situé autour de »).
+    Aucune mention d'un traitement antirétroviral (hors-programme ici,
+    le texte le dit explicitement).
+
+    Un seul jeu d'axes partagé par les deux courbes (l'inverse ne se lit
+    que si les deux sont visibles ensemble) — jamais deux graphes séparés.
+    Gauche = LT4 (protagoniste, accent) ; droite = charge virale (ink-soft) ;
+    seuil et bornes de phase en tirets --figure-grid.
+  -->
+
+  <!-- ══════════════════════════════ STEP 1 — les axes ═══════════════════ -->
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="350" y="20" text-anchor="middle"
+          font-size="13" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      VIH : évolution du nombre de LT4 et de la charge virale
+    </text>
+
+    <!-- Fond du panneau -->
+    <rect x="40" y="30" width="630" height="274" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- axe des temps -->
+    <line x1="86" y1="270" x2="632" y2="270" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="632,270 620,265.5 620,274.5" fill="var(--figure-ink-soft)"/>
+    <text x="636" y="274" text-anchor="start" font-size="10" fill="var(--figure-ink-soft)"><tspan font-style="italic">t</tspan> (années)</text>
+
+    <!-- axe gauche : LT4 -->
+    <line x1="86" y1="270" x2="86" y2="52" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="86,52 81.5,63 90.5,63" fill="var(--figure-ink-soft)"/>
+    <text x="80" y="48" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)">LT4/mm³</text>
+    <text x="78" y="274" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">0</text>
+
+    <!-- axe droit : charge virale -->
+    <line x1="632" y1="270" x2="632" y2="52" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="632,52 627.5,63 636.5,63" fill="var(--figure-ink-soft)"/>
+    <text x="636" y="48" text-anchor="start" font-size="9" fill="var(--figure-ink-soft)">charge virale</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════ STEP 2 — courbe LT4 ══════════════════ -->
+  <g id="step-2">
+    <line x1="90" y1="58" x2="104" y2="58" stroke="var(--figure-accent)" stroke-width="2.4"/>
+    <text x="108" y="61" text-anchor="start" font-size="10.5" font-weight="700" fill="var(--figure-accent)">LT4</text>
+
+    <path d="
+      M86,70 L100,120 L112,165 L122,195 L128,202 L138,192 L152,162
+      L180,167 L210,173 L240,178 L270,183 L300,188 L330,192 L360,196
+      L390,200 L420,204 L450,208 L480,212 L500,216 L512,220 L520,228
+      L530,234 L545,242 L560,250 L575,255 L590,259 L605,263 L618,266 L630,268
+    " fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════ STEP 3 — courbe charge virale ═══════ -->
+  <g id="step-3">
+    <!-- LÉGENDE DÉPLACÉE À GAUCHE (2026-09-04) : posée en x=490-600 à hauteur
+         y=244, elle était traversée par la courbe LT4 qui descend justement
+         par là (23 % de sa largeur) — la légende d'une courbe rayée par
+         l'autre. Soixante pixels plus à gauche et vingt plus bas, le palier
+         de la charge virale est plat et la LT4 déjà passée. -->
+    <line x1="412" y1="266" x2="426" y2="266" stroke="var(--figure-ink-soft)" stroke-width="2.2"/>
+    <text x="430" y="269" text-anchor="start" font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">charge virale</text>
+
+    <path d="
+      M86,268 L98,200 L108,140 L118,95 L126,70 L136,90 L148,125 L162,160
+      L178,190 L195,210 L215,220 L240,224 L270,226 L300,227 L330,227
+      L360,227 L390,226 L420,225 L450,223 L480,219 L500,215 L515,210
+      L520,208 L535,190 L550,168 L565,145 L580,120 L595,98 L610,80 L622,70 L630,68
+    " fill="none" stroke="var(--figure-ink-soft)" stroke-width="2.2"
+      stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════ STEP 4 — seuil et phases ═══════════ -->
+  <g id="step-4">
+    <!-- Seuil critique ≈ 200/mm³ -->
+    <line x1="86" y1="228" x2="632" y2="228" stroke="var(--figure-grid)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <text x="80" y="231" text-anchor="end" font-size="9" fill="var(--figure-ink-soft)">≈ 200/mm³</text>
+
+    <!-- Bornes de phase -->
+    <line x1="152" y1="52" x2="152" y2="296" stroke="var(--figure-grid)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="520" y1="52" x2="520" y2="296" stroke="var(--figure-grid)" stroke-width="1" stroke-dasharray="3,3"/>
+
+    <text x="119" y="292" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--figure-ink-soft)">aiguë</text>
+    <text x="336" y="292" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--figure-ink-soft)">chronique (latence)</text>
+    <text x="576" y="292" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--figure-ink-soft)">SIDA</text>
+
+    <!-- Lecture : le franchissement du seuil -->
+    <circle cx="520" cy="228" r="3.2" fill="var(--figure-accent)"/>
+    <line x1="523" y1="226" x2="560" y2="205" stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="566" y="203" text-anchor="start" font-size="9.5" font-weight="600" fill="var(--figure-ink)">seuil franchi</text>
+    <text x="566" y="215" text-anchor="start" font-size="9" fill="var(--figure-ink-soft)">→ infections opportunistes</text>
+  </g><!-- /step-4 -->
+
+</svg>

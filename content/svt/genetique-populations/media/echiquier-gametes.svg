@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 600"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Échiquier des gamètes 2 sur 2 : en marge, la fréquence p du gamète B et la fréquence q du gamète b, en haut et à gauche. Quatre cases, chacune le produit de ses deux marges : B//B = p au carré, B//b = p fois q, B//b = q fois p, b//b = q au carré. Les deux cases B//b sont mises en évidence puis regroupées en 2pq. L’encart final réunit f(B//B) = p au carré, f(B//b) = 2pq, f(b//b) = q au carré, et conclut : p au carré plus 2pq plus q au carré égale 1.">
+  <title>L’échiquier des gamètes — construction de p² + 2pq + q² = 1</title>
+
+  <!--
+    echiquier-gametes.svg — figure STAGÉE (4 étapes, LESSON-EXPERIENCE-SPEC §2).
+    Placement unique : R2, juste après "$$p^2 + 2pq + q^2 = 1$$" (close de
+    "### La loi de Hardy-Weinberg"), avant "On peut aussi retrouver ce
+    résultat par un pur calcul algébrique…". Dérive la même équation par un
+    geste DIFFÉRENT du comptage-alleles.svg voisin (R1, comptage dans un
+    pool) : ici, un tirage de deux gamètes indépendants, croisé en grille
+    2×2 — l'image concrète explicitement nommée dans le texte ("l'échiquier
+    n'est jamais qu'une image concrète de ce carré").
+
+    Grille centrée sur x=320 (viewBox 640 large, cf. comptage-alleles.svg) :
+      colonnes (marge HAUTE)  — gamète B (fréquence p) | gamète b (fréquence q)
+      lignes   (marge GAUCHE) — gamète B (fréquence p) | gamète b (fréquence q)
+    Cases : haut-gauche B//B, haut-droite B//b, bas-gauche B//b, bas-droite b//b
+    — exactement l'ordre du tableau du R2 (ligne = 1er gamète, colonne = 2e).
+
+    step-1 : cadre vide + marges de fréquences (haut et gauche).
+    step-2 : AJOUT (jamais de restyle) — génotype + produit dans chaque case,
+             ton neutre partout (aucun accent pris encore).
+    step-3 : AJOUT — anneau accent (fill-opacity 0,14) sur les deux cases
+             hétérozygotes (haut-droite, bas-gauche) uniquement ; connecteurs
+             tiretés qui les rassemblent vers f(B//b) = pq + qp = 2pq.
+    step-4 : AJOUT — encart de synthèse : les trois fréquences génotypiques,
+             puis p² + 2pq + q² = 1. Seul le jeton "2pq" reste accent dans
+             l'encart (le même fil rouge que step-3) ; p² et q² restent
+             neutres (homozygotes) du début à la fin — DESIGN-BIBLE §6,
+             l'accent ne porte qu'UNE seule idée dans toute la figure.
+
+    Couleurs : cases neutres (homozygotes) = --figure-surface +
+    --figure-ink-soft ; accent (hétérozygotes + 2pq) = --figure-accent
+    (jamais hex/currentColor). Tout le texte mathématique est du <text>/
+    <tspan> natif — p², q², B//B, B//b, b//b avec "//" littéral — jamais du
+    KaTeX sur cette figure.
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — cadre vide + marges de fréquences
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <text x="320" y="26" text-anchor="middle"
+          font-size="13" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      L’échiquier des gamètes : deux tirages indépendants dans le pool
+    </text>
+
+    <!-- Marges HAUTES (colonnes) -->
+    <text x="220" y="104" text-anchor="middle" font-size="12" fill="var(--figure-ink-soft)">
+      Gamète <tspan font-style="italic" font-weight="700">B</tspan>
+    </text>
+    <text x="220" y="120" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">
+      (fréquence <tspan font-style="italic">p</tspan>)
+    </text>
+    <text x="420" y="104" text-anchor="middle" font-size="12" fill="var(--figure-ink-soft)">
+      Gamète <tspan font-style="italic" font-weight="700">b</tspan>
+    </text>
+    <text x="420" y="120" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">
+      (fréquence <tspan font-style="italic">q</tspan>)
+    </text>
+
+    <!-- Marges GAUCHES (lignes) -->
+    <text x="60" y="189" text-anchor="middle" font-size="12" fill="var(--figure-ink-soft)">
+      Gamète <tspan font-style="italic" font-weight="700">B</tspan>
+    </text>
+    <text x="60" y="205" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">
+      (fréquence <tspan font-style="italic">p</tspan>)
+    </text>
+    <text x="60" y="299" text-anchor="middle" font-size="12" fill="var(--figure-ink-soft)">
+      Gamète <tspan font-style="italic" font-weight="700">b</tspan>
+    </text>
+    <text x="60" y="315" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">
+      (fréquence <tspan font-style="italic">q</tspan>)
+    </text>
+
+    <!-- Cadre vide : 4 cases neutres, bords partagés = grille -->
+    <rect x="120" y="140" width="200" height="110"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <rect x="320" y="140" width="200" height="110"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <rect x="120" y="250" width="200" height="110"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <rect x="320" y="250" width="200" height="110"
+          fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — génotype + produit dans chaque case (ton neutre)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Haut-gauche : B//B = p × p = p² -->
+    <text x="220" y="189" text-anchor="middle"
+          font-size="13" font-weight="700" font-style="italic"
+          fill="var(--figure-ink)">B//B</text>
+    <text x="220" y="209" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+      <tspan font-style="italic">p</tspan> × <tspan font-style="italic">p</tspan> = <tspan font-style="italic">p</tspan><tspan dy="-5" font-size="8">2</tspan>
+    </text>
+
+    <!-- Haut-droite : B//b = p × q = pq -->
+    <text x="420" y="189" text-anchor="middle"
+          font-size="13" font-weight="700" font-style="italic"
+          fill="var(--figure-ink)">B//b</text>
+    <text x="420" y="209" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+      <tspan font-style="italic">p</tspan> × <tspan font-style="italic">q</tspan> = <tspan font-style="italic">pq</tspan>
+    </text>
+
+    <!-- Bas-gauche : B//b = q × p = qp -->
+    <text x="220" y="299" text-anchor="middle"
+          font-size="13" font-weight="700" font-style="italic"
+          fill="var(--figure-ink)">B//b</text>
+    <text x="220" y="319" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+      <tspan font-style="italic">q</tspan> × <tspan font-style="italic">p</tspan> = <tspan font-style="italic">qp</tspan>
+    </text>
+
+    <!-- Bas-droite : b//b = q × q = q² -->
+    <text x="420" y="299" text-anchor="middle"
+          font-size="13" font-weight="700" font-style="italic"
+          fill="var(--figure-ink)">b//b</text>
+    <text x="420" y="319" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">
+      <tspan font-style="italic">q</tspan> × <tspan font-style="italic">q</tspan> = <tspan font-style="italic">q</tspan><tspan dy="-5" font-size="8">2</tspan>
+    </text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — accent sur les deux cases hétérozygotes,
+       rassemblées en f(B//b) = pq + qp = 2pq
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Anneaux accent — AJOUTÉS par-dessus les cases du step-1/2, jamais un
+         restyle de leurs rects/textes. -->
+    <rect x="320" y="140" width="200" height="110"
+          fill="var(--figure-accent)" fill-opacity="0.14"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <rect x="120" y="250" width="200" height="110"
+          fill="var(--figure-accent)" fill-opacity="0.14"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+
+    <!-- Connecteurs tiretés : les deux cases B//b se rassemblent -->
+    <path d="M520,195 L555,195 L555,415 L320,415"
+          fill="none" stroke="var(--figure-accent)" stroke-width="1.4"
+          stroke-dasharray="3,3" opacity="0.75"/>
+    <path d="M220,360 L220,415 L320,415"
+          fill="none" stroke="var(--figure-accent)" stroke-width="1.4"
+          stroke-dasharray="3,3" opacity="0.75"/>
+    <circle cx="320" cy="415" r="3" fill="var(--figure-accent)"/>
+
+    <!-- f(B//b) = pq + qp = 2pq -->
+    <text x="320" y="440" text-anchor="middle"
+          font-size="13" font-weight="600" fill="var(--figure-accent)">
+      <tspan font-style="italic">f</tspan>(<tspan font-style="italic" font-weight="700">B//b</tspan>) = <tspan font-style="italic">pq</tspan> + <tspan font-style="italic">qp</tspan> = 2<tspan font-style="italic">pq</tspan>
+    </text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — encart de synthèse : les trois cases, puis
+       p² + 2pq + q² = 1
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <rect x="70" y="470" width="500" height="110" rx="10"
+          fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="1.6"/>
+
+    <!-- Les trois cases génotypiques -->
+    <text x="175" y="500" text-anchor="middle" font-size="12.5" fill="var(--figure-ink)">
+      <tspan font-style="italic">f</tspan>(<tspan font-style="italic" font-weight="700">B//B</tspan>) = <tspan font-style="italic">p</tspan><tspan dy="-5" font-size="8">2</tspan>
+    </text>
+    <text x="320" y="500" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--figure-accent)">
+      <tspan font-style="italic">f</tspan>(<tspan font-style="italic" font-weight="700">B//b</tspan>) = 2<tspan font-style="italic">pq</tspan>
+    </text>
+    <text x="465" y="500" text-anchor="middle" font-size="12.5" fill="var(--figure-ink)">
+      <tspan font-style="italic">f</tspan>(<tspan font-style="italic" font-weight="700">b//b</tspan>) = <tspan font-style="italic">q</tspan><tspan dy="-5" font-size="8">2</tspan>
+    </text>
+
+    <!-- Séparateur discret -->
+    <line x1="100" y1="519" x2="540" y2="519" stroke="var(--figure-ink-soft)" stroke-width="1" opacity="0.4"/>
+
+    <!-- p² + 2pq + q² = 1 — seul "2pq" reste accent, même fil que step-3 -->
+    <text x="320" y="554" text-anchor="middle" font-size="16" font-weight="700" fill="var(--figure-ink)">
+      <tspan font-style="italic">p</tspan><tspan dy="-7" font-size="10">2</tspan><tspan dy="7"> + </tspan><tspan fill="var(--figure-accent)">2</tspan><tspan fill="var(--figure-accent)" font-style="italic">pq</tspan><tspan> + </tspan><tspan font-style="italic">q</tspan><tspan dy="-7" font-size="10">2</tspan><tspan dy="7"> = 1</tspan>
+    </text>
+  </g><!-- /step-4 -->
+
+</svg>

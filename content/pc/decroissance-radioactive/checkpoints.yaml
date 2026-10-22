@@ -1,0 +1,396 @@
+notion: decroissance-radioactive
+skill_code: decroissance_radioactive
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — decroissance-radioactive)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong PHYSICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT
+# altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict        (in R0)      — COMMIT gate: turns the rhetorical
+#                                        "prends position" (le noyau vieux a-t-il
+#                                        plus de chances ?) into a real MCQ
+#                                        commit before the "sans mémoire" reveal.
+#                                        Probes noyau-vieillit.
+#   cp-r2-soddy          (after R2)   — rupture gate: CONSERVATION A/Z (lois de
+#                                        Soddy) sur une désintégration α.
+#                                        Clone of DECRO-11.
+#   cp-r3-loi            (after R3)    — rupture gate: la LOI DE DÉCROISSANCE
+#                                        EXPONENTIELLE (pourquoi e^{-λt} et pas
+#                                        une droite / e^{-t}). Clone of DECRO-13.
+#   cp-r4-activite-noyaux (after R4)   — rupture gate: ACTIVITÉ vs NOMBRE DE
+#                                        NOYAUX (a = λN, le Bq compte des
+#                                        désintégrations/s, pas des noyaux).
+#                                        Clone of DECRO-23.
+#   cp-r4-demi-vie-lambda (after R4)   — rupture gate: DEMI-VIE vs CONSTANTE λ
+#                                        (t_1/2 = ln2/λ ; ni t_1/2 = λ, ni
+#                                        t_1/2 = 1/λ). Clone of DECRO-24.
+#
+# Clone note: cp-r2-soddy clones DECRO-11's stem, cp-r3-loi clones DECRO-13's,
+# cp-r4-activite-noyaux clones DECRO-23's, cp-r4-demi-vie-lambda clones
+# DECRO-24's. Distractors are curated so EVERY distractor carries a named
+# misconception tag. cp-r0-predict is an original commit item (not in the end
+# bank). No end-bank tally is adjusted — inline surfacing does not double-count.
+#
+# Boundary guard: 2ème Bac PC. Désintégrations α/β⁻/β⁺/γ + lois de Soddy ;
+# loi N(t) = N0 e^{-λt} et a(t) = a0 e^{-λt} ; demi-vie t_1/2 = ln2/λ ;
+# constante de temps τ = 1/λ ; activité a = λN en Bq. Pas d'énergie de liaison
+# ici (thème noyaux-masse-energie), pas de datation au-delà de l'inversion de
+# la loi.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns "prends position, vraiment" into a real MCQ commit
+  #        before the "sans mémoire" reveal of R3. Probes:
+  #        noyau-vieillit (the "ampoule usée" prediction).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: decroissance_radioactive
+    tags: [checkpoint, formative, misconception_driven, decroissance_radioactive, hook_commit]
+    primary_misconception: mc.physics.decroissance_radioactive.noyau-vieillit
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Deux noyaux de carbone 14, strictement identiques en tout point mesurable :
+      l'un vient de se former, l'autre existe depuis 3000 ans. **Lequel a le plus
+      de chances de se désintégrer dans la seconde qui vient ?**
+      Engage-toi — c'est ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Le noyau âgé de 3000 ans : il a eu plus de temps pour « s'user », comme
+          une ampoule usée qui finit par griller.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.noyau-vieillit
+        feedback: |
+          Modèle détecté : « le noyau s'use avec l'âge », le modèle de l'ampoule
+          usée. C'est la prédiction la plus fréquente — et elle est fausse ici.
+          Un noyau n'a pas de pièces qui vieillissent : la suite de la leçon
+          (chapitre 4) montre que sa probabilité de se désintégrer par seconde ne dépend
+          **pas** de son âge. La désintégration est « sans mémoire ».
+
+      - id: B
+        text: |
+          Le noyau qui vient de se former : « frais », il serait plus réactif
+          qu'un vieux noyau.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.noyau-fraicheur-instable
+        feedback: |
+          Modèle détecté : l'usure inversée — le « neuf » serait plus instable.
+          C'est encore une dépendance à l'âge, et toute dépendance à l'âge est
+          exclue : la probabilité de se désintégrer par seconde est la même pour
+          un noyau neuf et un noyau ancien du même isotope.
+
+      - id: C
+        text: |
+          Aucun des deux : ils ont exactement la même chance, quel que soit leur
+          âge.
+        correct: true
+        feedback: |
+          Exact — et c'est tout sauf évident. La désintégration radioactive est
+          **sans mémoire** : la probabilité qu'un noyau se désintègre dans la
+          seconde qui vient ne dépend que de la nature de l'isotope (la constante
+          $\lambda$), jamais de son âge. La vraie question commence maintenant :
+          si le hasard règne noyau par noyau, **pourquoi** la population, elle,
+          suit-elle une loi si régulière ? C'est toute la leçon.
+
+      - id: D
+        text: |
+          Impossible à dire sans connaître la température et la pression de
+          chaque noyau.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.lambda-depend-conditions-externes
+        feedback: |
+          Modèle détecté : la vitesse dépendrait des conditions extérieures,
+          comme pour une réaction chimique. Non : $\lambda$ est une propriété
+          intrinsèque du noyau, indépendante de la température, de la pression ou
+          de la liaison chimique. Ces informations ne changeraient rien.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r2-soddy | placed AFTER R2
+  #        Rupture gate: CONSERVATION A/Z (lois de Soddy) sur une
+  #        désintégration α. Clone of DECRO-11 (uranium 238).
+  #        Probes conservation-Z-oubliee / alpha-se-comporte-comme-beta /
+  #        sens-conservation-inverse.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-soddy
+    rung: "R2"
+    habilete: utilisation
+    skill_code: decroissance_radioactive
+    tags: [checkpoint, formative, misconception_driven, decroissance_radioactive]
+    primary_misconception: mc.physics.decroissance_radioactive.conservation-Z-oubliee
+    item_source: clone_of_DECRO-11
+    lesson_placement: after_R2
+
+    stem: |
+      Un noyau d'uranium $^{238}_{92}\text{U}$ se désintègre en émettant une
+      particule $\alpha$ $^{4}_{2}\text{He}$. En appliquant les deux lois de
+      Soddy, quel est le noyau fils obtenu ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $^{234}_{90}\text{Th}$ : $A$ diminue de 4 **et** $Z$ diminue de 2 (les
+          deux lois de conservation ensemble).
+        correct: true
+        feedback: |
+          Exact. Conservation des nucléons : $238 = A + 4 \implies A = 234$.
+          Conservation de la charge : $92 = Z + 2 \implies Z = 90$, soit le
+          thorium. La particule $\alpha$ emporte 4 nucléons ET 2 charges.
+
+      - id: B
+        text: |
+          $^{238}_{90}\text{Th}$ : $Z$ diminue de 2, mais $A$ reste inchangé
+          (comme dans une désintégration $\beta$).
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.alpha-se-comporte-comme-beta
+        feedback: |
+          Modèle détecté : l'$\alpha$ traitée comme une $\beta$ ($A$ inchangé).
+          Or la particule $\alpha$ $^{4}_{2}\text{He}$ emporte 4 nucléons :
+          $A$ **doit** diminuer de 4 (234), pas rester à 238.
+
+      - id: C
+        text: |
+          $^{234}_{92}\text{U}$ : $A$ diminue de 4, mais $Z$ reste celui du
+          père.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.conservation-Z-oubliee
+        feedback: |
+          Modèle détecté : une seule loi appliquée. $A$ est bien corrigé, mais la
+          particule $\alpha$ emporte aussi 2 charges positives : $Z$ doit passer
+          de 92 à 90. Les deux lois de Soddy s'appliquent **ensemble**.
+
+      - id: D
+        text: |
+          $^{242}_{94}\text{Pu}$ : $A$ et $Z$ augmentent (on ajoute la particule
+          au père).
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.sens-conservation-inverse
+        feedback: |
+          Modèle détecté : le sens inversé. Le père **se transforme en** fils
+          plus la particule émise : le fils a forcément **moins** de nucléons et
+          de charge, jamais plus. On retranche, on n'ajoute pas.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r3-loi | placed AFTER R3
+  #        Rupture gate: la LOI DE DÉCROISSANCE EXPONENTIELLE — pourquoi
+  #        N(t) = N0 e^{-λt} (dérivée ∝ fonction), et pas une droite ni
+  #        e^{-t}. Clone of DECRO-13. Probes division-lineaire-demi-vies /
+  #        oubli-lambda-dans-exponentielle.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-loi
+    rung: "R3"
+    habilete: utilisation
+    skill_code: decroissance_radioactive
+    tags: [checkpoint, formative, misconception_driven, decroissance_radioactive]
+    primary_misconception: mc.physics.decroissance_radioactive.division-lineaire-demi-vies
+    item_source: clone_of_DECRO-13
+    lesson_placement: after_R3
+
+    stem: |
+      On cherche la solution de l'équation différentielle
+      $\dfrac{dN}{dt} = -\lambda N$. Pourquoi propose-t-on la fonction
+      $N(t) = N_0\,e^{-\lambda t}$ plutôt qu'une autre fonction du temps ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Parce que seule une exponentielle a une dérivée proportionnelle à elle-même — exactement ce qu'exige l'équation. On vérifie ensuite la condition initiale $N(0) = N_0$.
+        correct: true
+        feedback: |
+          Exact. L'équation dit que $\dfrac{dN}{dt}$ est proportionnelle à $N$ :
+          seule la famille des exponentielles a cette propriété. On dérive
+          $N_0 e^{-\lambda t}$, on retrouve $-\lambda N$, et $N(0) = N_0$ : les
+          deux conditions sont satisfaites, l'hypothèse est confirmée.
+
+      - id: B
+        text: |
+          On pourrait aussi bien proposer une décroissance linéaire $N(t) = N_0 - \lambda t$, puisque l'équation dit seulement que $N$ diminue au fil du temps.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.division-lineaire-demi-vies
+        feedback: |
+          Modèle détecté : décroissance linéaire. Cette fonction a une dérivée
+          constante $-\lambda$, pas $-\lambda N(t)$ : elle ne vérifie l'équation
+          qu'à un seul instant. La décroissance est géométrique (proportionnelle
+          à $N$), pas linéaire — et une droite finirait par passer sous zéro.
+
+      - id: C
+        text: |
+          On pourrait écrire directement $N(t) = N_0\,e^{-t}$, puisque cette fonction vaut elle aussi $N_0$ à l'instant $t = 0$.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.oubli-lambda-dans-exponentielle
+        feedback: |
+          Modèle détecté : $\lambda$ oubliée dans l'exposant. $N_0 e^{-t}$
+          vérifie bien $N(0) = N_0$, mais sa dérivée est $-N(t)$, pas
+          $-\lambda N(t)$ (sauf si $\lambda = 1$). De plus l'exposant doit être
+          sans dimension : c'est $\lambda t$, pas $t$ seul.
+
+      - id: D
+        text: |
+          Le choix de l'exponentielle dépend des conditions extérieures, température et pression, dans lesquelles se trouve l'échantillon.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.lambda-depend-conditions-externes
+        feedback: |
+          Modèle détecté : dépendance aux conditions extérieures. La forme de la
+          solution découle **uniquement** de la structure de l'équation
+          différentielle, pas de la température ni de la pression — qui ne
+          modifient d'ailleurs pas $\lambda$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r4-activite-noyaux | placed AFTER R4 (activité)
+  #        Rupture gate: ACTIVITÉ vs NOMBRE DE NOYAUX — a = λN, le Bq
+  #        compte des désintégrations par seconde, pas des noyaux.
+  #        Clone of DECRO-23. Probes confond-activite-nombre-noyaux.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-activite-noyaux
+    rung: "R4"
+    habilete: résolution
+    skill_code: decroissance_radioactive
+    tags: [checkpoint, formative, misconception_driven, decroissance_radioactive]
+    primary_misconception: mc.physics.decroissance_radioactive.confond-activite-nombre-noyaux
+    item_source: clone_of_DECRO-23
+    lesson_placement: in_R4
+
+    stem: |
+      Un échantillon contient $N_0 = 3{,}0\times10^{18}$ noyaux radioactifs d'un
+      isotope de demi-vie $t_{1/2} = 6{,}0$ jours. Quelle est son activité
+      initiale $A_0$ ? (On rappelle $1\ \text{jour} = 86\,400\ \text{s}$.)
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $A_0 = N_0 = 3{,}0\times10^{18}\ \text{Bq}$ : l'activité, c'est le
+          nombre de noyaux présents dans l'échantillon.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-activite-nombre-noyaux
+        feedback: |
+          Modèle détecté : activité confondue avec le nombre de noyaux.
+          L'activité est le nombre de **désintégrations par seconde** (le Bq),
+          pas le nombre de noyaux présents. Les deux sont reliés par
+          $A = \lambda N$ : $N$ est ici bien plus grand que $A$.
+
+      - id: B
+        text: |
+          $A_0 = \lambda N_0 \approx 4{,}0\times10^{12}\ \text{Bq}$, avec
+          $\lambda = \dfrac{\ln 2}{t_{1/2}}$ convertie en $\text{s}^{-1}$.
+        correct: true
+        feedback: |
+          Exact. $\lambda = \dfrac{\ln 2}{6{,}0\times86\,400} \approx
+          1{,}3\times10^{-6}\ \text{s}^{-1}$, donc
+          $A_0 = \lambda N_0 \approx 4{,}0\times10^{12}\ \text{Bq}$. La
+          conversion de $\lambda$ en $\text{s}^{-1}$ est obligatoire : le Bq est
+          une désintégration par seconde.
+
+      - id: C
+        text: |
+          $A_0 = \dfrac{N_0}{t_{1/2}} = 5{,}0\times10^{17}\ \text{Bq}$, en
+          prenant la demi-vie comme constante radioactive.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda
+        feedback: |
+          Modèle détecté : demi-vie prise pour la constante radioactive. La bonne
+          constante est $\lambda = \dfrac{\ln 2}{t_{1/2}}$ (avec le facteur
+          $\ln 2$, et convertie en $\text{s}^{-1}$), pas $\dfrac{1}{t_{1/2}}$.
+
+      - id: D
+        text: |
+          On ne peut pas calculer $A_0$ sans connaître la température de
+          l'échantillon, dont dépend son activité.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.lambda-depend-conditions-externes
+        feedback: |
+          Modèle détecté : dépendance à la température. $\lambda$ est
+          intrinsèque au noyau : $A_0 = \lambda N_0$ se calcule entièrement avec
+          $t_{1/2}$ et $N_0$, sans aucune donnée extérieure.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r4-demi-vie-lambda | placed AFTER R4 (constante de temps)
+  #        Rupture gate: DEMI-VIE vs CONSTANTE λ — t_1/2 = ln2/λ, ni
+  #        t_1/2 = λ, ni t_1/2 = 1/λ (ça, c'est τ). Clone of DECRO-24.
+  #        Probes confond-demi-vie-constante-lambda.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-demi-vie-lambda
+    rung: "R4"
+    habilete: utilisation
+    skill_code: decroissance_radioactive
+    tags: [checkpoint, formative, misconception_driven, decroissance_radioactive]
+    primary_misconception: mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda
+    item_source: clone_of_DECRO-24
+    lesson_placement: in_R4
+
+    stem: |
+      Un isotope radioactif a une constante radioactive
+      $\lambda = 2{,}0\times10^{-2}\ \text{an}^{-1}$. Quelle est sa demi-vie
+      $t_{1/2}$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $t_{1/2} = \lambda = 2{,}0\times10^{-2}\ \text{an}$ : la demi-vie et la
+          constante radioactive sont une seule et même grandeur.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda
+        feedback: |
+          Modèle détecté : demi-vie et constante $\lambda$ confondues. Ce sont
+          deux grandeurs différentes, même pas de mêmes unités
+          ($\text{an}$ contre $\text{an}^{-1}$). Elles sont reliées par
+          $t_{1/2} = \dfrac{\ln 2}{\lambda}$.
+
+      - id: B
+        text: |
+          $t_{1/2} = \dfrac{1}{\lambda} = 50\ \text{ans}$ : la demi-vie est
+          simplement l'inverse de $\lambda$.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.confond-demi-vie-constante-lambda
+        feedback: |
+          Modèle détecté : demi-vie confondue avec la constante de temps
+          $\tau = \dfrac{1}{\lambda}$. Attention : $\tau$ n'est pas $t_{1/2}$ !
+          Il manque le facteur $\ln 2$ : $t_{1/2} = \tau\ln 2 \approx 0{,}693\,\tau$,
+          donc plus courte que $\tau$.
+
+      - id: C
+        text: |
+          $t_{1/2} = \dfrac{\ln 2}{\lambda} = \dfrac{0{,}693}{2{,}0\times10^{-2}} \approx 35\ \text{ans}$ : le facteur $\ln 2$ vient de la division par deux.
+        correct: true
+        feedback: |
+          Exact. $t_{1/2} = \dfrac{\ln 2}{\lambda}$ : le facteur $\ln 2$ est
+          essentiel. Ici $\dfrac{0{,}693}{0{,}020} \approx 35\ \text{ans}$ —
+          ni $\lambda$ elle-même, ni $\dfrac{1}{\lambda} = 50\ \text{ans}$.
+
+      - id: D
+        text: |
+          $t_{1/2}$ n'est pas fixe : elle dépend de la température et de la
+          pression subies par l'échantillon.
+        correct: false
+        misconception: mc.physics.decroissance_radioactive.lambda-depend-conditions-externes
+        feedback: |
+          Modèle détecté : dépendance aux conditions extérieures. Comme
+          $\lambda$, la demi-vie $t_{1/2} = \dfrac{\ln 2}{\lambda}$ est
+          intrinsèque à l'isotope — invariable, quelles que soient la
+          température et la pression.

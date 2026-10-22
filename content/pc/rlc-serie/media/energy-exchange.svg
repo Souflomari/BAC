@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 412" width="620" height="412"
+     font-family="'Segoe UI', system-ui, sans-serif">
+  <!--
+    energy-exchange.svg — Échange d'énergie E_C ↔ E_L, 4 progressive steps
+    step-1 : E_C seule
+    step-2 : + E_L en antiphase ; instants clés marqués (u_C max/i=0 ; u_C=0/i max)
+    step-3 : + somme plate E_total (idéal, conservée)
+    step-4 : + enveloppe décroissante (amorti, effet Joule) — QUALITATIF, sans e^{-αt}
+
+    Boundary §0.4: NO closed-form envelope, NO damping coefficient, purely qualitative.
+
+    Single plot area: x=80..560 (width=480), y=50..290 (height=240)
+    Origin (0,E=0) at bottom-left: (80,290)
+    E_max at y=50 (i.e. 240px above axis)
+
+    Palette: bg transparent, panel #EDEAE5, E_C #3E5C86, E_L #7E9CC8,
+             E_total (ideal) #5A7A4A, E_total (damped) #B06040,
+             instant markers #B0ADA8, text #2A2A2E, secondary #6B6B72, axis #8A8A92
+
+    DETTE OWNER : figure héritée, dont le SORT est un arbitrage ouvert —
+    HANDOFF §0 point 7bis, « fix or delete, owner eyes ».
+
+    Deux défauts la concernent, et le second est le vrai motif de
+    l'arbitrage :
+      1. les couleurs ci-dessus sont codées en dur, donc elles ne
+         basculent pas avec le thème (mesuré le 2026-09-03 : 41 % de la
+         surface reste claire en thème sombre — les panneaux éclatent) ;
+      2. elle étiquette « T₀ » un intervalle crête-à-crête d'une courbe
+         en cos², alors que la physique dit T₀/2.
+
+    Pourquoi elle n'est PAS repeinte ici : la repeindre reviendrait à
+    décider qu'on la garde, alors que c'est précisément la question
+    posée à l'owner — et corriger l'étiquette de période est un
+    arbitrage de contenu, pas un correctif de style. Aucune leçon ne la
+    référence par un marqueur [[figure:]] : rien n'est servi à l'élève
+    en attendant la décision.
+  -->
+
+  <!-- ── Background: transparent (app surface shows through) ──── -->
+  <!-- Plot panel -->
+  <rect x="76" y="46" width="488" height="252" rx="6" fill="#EDEAE5"/>
+
+  <!-- ── Axes ─────────────────────────────────────────────────── -->
+  <!-- x axis at y=290 -->
+  <line x1="80" y1="290" x2="565" y2="290" stroke="#8A8A92" stroke-width="1.5"/>
+  <polygon points="565,290 555,285 555,295" fill="#8A8A92"/>
+  <!-- y axis at x=80 -->
+  <line x1="80" y1="290" x2="80" y2="46" stroke="#8A8A92" stroke-width="1.5"/>
+  <polygon points="80,46 75,57 85,57" fill="#8A8A92"/>
+  <!-- Axis labels -->
+  <text x="571" y="294" font-size="11" fill="#6B6B72">t</text>
+  <text x="72" y="46" text-anchor="end" font-size="11" font-style="italic" fill="#6B6B72">E</text>
+  <text x="72" y="294" text-anchor="end" font-size="10" fill="#8A8A92">0</text>
+  <!-- E_max tick -->
+  <line x1="76" y1="50" x2="84" y2="50" stroke="#8A8A92" stroke-width="1.2"/>
+  <text x="71" y="54" text-anchor="end" font-size="9.5" fill="#8A8A92">E<tspan dy="3" font-size="7">max</tspan></text>
+
+  <!-- ════════════════════════════════════════════════════════
+       STEP 1 — E_C seule
+       ════════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!--
+      E_C = E_max · cos²(π·t/T₀)
+      Starts at max (x=80,y=50), falls to 0 at x=140 (y=290),
+      rises back to max at x=200 (y=50), etc.
+    -->
+    <path d="
+      M80,50
+      C115,50 125,290 140,290
+      C155,290 165,50 200,50
+      C235,50 245,290 260,290
+      C275,290 285,50 320,50
+      C355,50 365,290 380,290
+      C395,290 405,50 440,50
+      C475,50 485,290 500,290
+      C515,290 525,50 560,50
+    " fill="none" stroke="#3E5C86" stroke-width="2.5"/>
+
+    <!-- E_C label at first peak -->
+    <text x="88" y="44" font-size="11" font-style="italic" fill="#3E5C86">
+      E<tspan dy="4" font-size="8">C</tspan><tspan dy="-4" font-size="9.5"> = ½q²/C</tspan>
+    </text>
+  </g><!-- /step-1 -->
+
+  <!-- ════════════════════════════════════════════════════════
+       STEP 2 — + E_L en antiphase ; instants clés
+       ════════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!--
+      E_L = E_max · sin²(π·t/T₀) = antiphase of E_C
+      Starts at 0 (x=80,y=290), rises to max at x=140 (y=50), etc.
+    -->
+    <path d="
+      M80,290
+      C115,290 125,50 140,50
+      C155,50 165,290 200,290
+      C235,290 245,50 260,50
+      C275,50 285,290 320,290
+      C355,290 365,50 380,50
+      C395,50 405,290 440,290
+      C475,290 485,50 500,50
+      C515,50 525,290 560,290
+    " fill="none" stroke="#7E9CC8" stroke-width="2.5"/>
+
+    <!-- E_L label at first peak -->
+    <text x="148" y="44" font-size="11" font-style="italic" fill="#7E9CC8">
+      E<tspan dy="4" font-size="8">L</tspan><tspan dy="-4" font-size="9.5"> = ½Li²</tspan>
+    </text>
+
+    <!-- ── Instant markers ── -->
+    <!-- x=80: u_C max, i=0 -->
+    <line x1="80" y1="50" x2="80" y2="298" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
+    <circle cx="80" cy="290" r="3" fill="#3E5C86"/>
+    <text x="80" y="310" text-anchor="middle" font-size="9" fill="#3E5C86">u<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> max</tspan></text>
+    <text x="80" y="320" text-anchor="middle" font-size="8.5" fill="#6B6B72">i = 0</text>
+
+    <!-- x=140: u_C=0, i max -->
+    <line x1="140" y1="50" x2="140" y2="298" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
+    <circle cx="140" cy="290" r="3" fill="#7E9CC8"/>
+    <text x="140" y="310" text-anchor="middle" font-size="9" fill="#7E9CC8">u<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> = 0</tspan></text>
+    <text x="140" y="320" text-anchor="middle" font-size="8.5" fill="#6B6B72">i max</text>
+
+    <!-- x=200: u_C min (−), i=0 -->
+    <line x1="200" y1="50" x2="200" y2="298" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
+    <circle cx="200" cy="290" r="3" fill="#3E5C86"/>
+    <text x="200" y="310" text-anchor="middle" font-size="9" fill="#3E5C86">u<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> min</tspan></text>
+    <text x="200" y="320" text-anchor="middle" font-size="8.5" fill="#6B6B72">i = 0</text>
+
+    <!-- x=260: u_C=0, i max (−) -->
+    <line x1="260" y1="50" x2="260" y2="298" stroke="#B0ADA8" stroke-width="1" stroke-dasharray="3,3"/>
+    <circle cx="260" cy="290" r="3" fill="#7E9CC8"/>
+    <text x="260" y="310" text-anchor="middle" font-size="9" fill="#7E9CC8">u<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> = 0</tspan></text>
+    <text x="260" y="320" text-anchor="middle" font-size="8.5" fill="#6B6B72">i max</text>
+
+    <!-- T₀ bracket under axis x=80..200 -->
+    <line x1="80" y1="334" x2="200" y2="334" stroke="#8A8A92" stroke-width="1.3"/>
+    <line x1="80" y1="330" x2="80" y2="338" stroke="#8A8A92" stroke-width="1.3"/>
+    <line x1="200" y1="330" x2="200" y2="338" stroke="#8A8A92" stroke-width="1.3"/>
+    <text x="140" y="348" text-anchor="middle" font-size="10" font-style="italic" fill="#6B6B72">T<tspan dy="3" font-size="7.5">0</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ════════════════════════════════════════════════════════
+       STEP 3 — + somme plate (idéal, conservée)
+       ════════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- E_total = horizontal line at y=50 (E_max) -->
+    <line x1="80" y1="50" x2="560" y2="50" stroke="#5A7A4A" stroke-width="2" stroke-dasharray="8,5"/>
+
+    <!-- E_total label -->
+    <text x="390" y="44" font-size="10" fill="#5A7A4A">
+      E = E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3"> + E<tspan dy="3" font-size="8">L</tspan><tspan dy="-3"> = constante</tspan></tspan>
+    </text>
+  </g><!-- /step-3 -->
+
+  <!-- ════════════════════════════════════════════════════════
+       STEP 4 — + enveloppe décroissante (amorti, qualitatif)
+       NO e^{-αt}, NO damping coefficient — purely qualitative
+       ════════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <!-- Mask (erase) the flat green dashed line from step-3 -->
+    <rect x="79" y="44" width="484" height="13" fill="#EDEAE5"/>
+
+    <!-- Decreasing E_total envelope: qualitative smooth decay -->
+    <path d="
+      M80,50
+      C150,60 220,90 290,130
+      C360,168 440,210 560,252
+    " fill="none" stroke="#B06040" stroke-width="2" stroke-dasharray="8,5"/>
+
+    <!-- Soft fill under the envelope (Joule loss area) -->
+    <path d="
+      M80,50
+      C150,60 220,90 290,130
+      C360,168 440,210 560,252
+      L560,290 L80,290 Z
+    " fill="#D4785A" fill-opacity="0.07"/>
+
+    <!-- Labelling -->
+    <text x="440" y="198" font-size="10" fill="#B06040">E → 0</text>
+    <text x="440" y="211" font-size="9.5" fill="#B06040">effet Joule (R)</text>
+
+    <!-- "énergie dissipée" annotation inside fill area -->
+    <text x="400" y="262" text-anchor="middle" font-size="9" fill="#B06040" font-style="italic">énergie dissipée dans R</text>
+  </g><!-- /step-4 -->
+
+  <!-- ── Legend (two rows) ── -->
+  <g id="legend">
+    <!-- Row 1: E_C and E_L -->
+    <line x1="80" y1="384" x2="106" y2="384" stroke="#3E5C86" stroke-width="2.5"/>
+    <text x="111" y="388" font-size="10" fill="#3E5C86">E<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3" fill="#2A2A2E"> = ½q²/C</tspan></text>
+    <line x1="280" y1="384" x2="306" y2="384" stroke="#7E9CC8" stroke-width="2.5"/>
+    <text x="311" y="388" font-size="10" fill="#7E9CC8">E<tspan dy="3" font-size="7.5">L</tspan><tspan dy="-3" fill="#2A2A2E"> = ½Li²</tspan></text>
+    <!-- Row 2: E total (ideal) and E total (damped) -->
+    <line x1="80" y1="398" x2="106" y2="398" stroke="#5A7A4A" stroke-width="2" stroke-dasharray="6,4"/>
+    <text x="111" y="402" font-size="10" fill="#5A7A4A">E total (idéal, R = 0)</text>
+    <line x1="280" y1="398" x2="306" y2="398" stroke="#B06040" stroke-width="2" stroke-dasharray="6,4"/>
+    <text x="311" y="402" font-size="10" fill="#B06040">E total (amorti, R ≠ 0)</text>
+  </g>
+
+</svg>

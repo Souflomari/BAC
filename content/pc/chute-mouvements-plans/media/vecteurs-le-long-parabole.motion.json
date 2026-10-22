@@ -1,0 +1,51 @@
+{
+  "slug": "vecteurs-le-long-parabole",
+  "viewBox": "0 0 720 460",
+  "label": "Les composantes horizontale et verticale de la vitesse d'un projectile, décomposées en quatre positions le long de la trajectoire parabolique : au lancement, à mi-montée, au sommet, à mi-descente.",
+  "layout": "replace",
+  "regions": {
+    "chrome": { "x": 0, "y": 0, "w": 720, "h": 40 },
+    "stage": { "x": 20, "y": 40, "w": 680, "h": 330 },
+    "chip-slot": { "x": 520, "y": 46, "w": 130, "h": 28 },
+    "footer": { "x": 0, "y": 392, "w": 720, "h": 68 }
+  },
+  "replaces": [
+    { "beat": "beat-1", "slot": "vector-slot", "enter": "pos-1", "exit": "pos-0" },
+    { "beat": "beat-1", "slot": "chip-slot", "enter": "chip-1", "exit": "chip-0" },
+    { "beat": "beat-2", "slot": "vector-slot", "enter": "pos-2", "exit": "pos-1" },
+    { "beat": "beat-2", "slot": "chip-slot", "enter": "chip-2", "exit": "chip-1" },
+    { "beat": "beat-3", "slot": "vector-slot", "enter": "pos-3", "exit": "pos-2" },
+    { "beat": "beat-3", "slot": "chip-slot", "enter": "chip-3", "exit": "chip-2" }
+  ],
+  "beats": [
+    {
+      "id": "beat-0",
+      "caption": "Au lancement, la vitesse initiale se décompose en deux mouvements indépendants : une composante horizontale et une composante verticale.",
+      "tweens": []
+    },
+    {
+      "id": "beat-1",
+      "caption": "À mi-montée, la composante horizontale n'a pas changé — strictement la même longueur qu'au lancement. Seule la composante verticale a raccourci : elle seule ressent la pesanteur.",
+      "tweens": [
+        { "target": "#pos-1", "verb": "fade", "from": "none", "duration": 0.4, "ease": "power3.out", "at": 0 },
+        { "target": "#chip-1", "verb": "fade", "from": "none", "duration": 0.3, "ease": "power3.out", "at": 0.25 }
+      ]
+    },
+    {
+      "id": "beat-2",
+      "caption": "Au sommet, la composante verticale s'annule un instant — mais l'horizontale reste inchangée : la balle n'est jamais immobile, elle continue d'avancer horizontalement. (Et g, rappelé en haut à droite, n'a jamais cessé d'agir.)",
+      "tweens": [
+        { "target": "#pos-2", "verb": "fade", "from": "none", "duration": 0.4, "ease": "power3.out", "at": 0 },
+        { "target": "#chip-2", "verb": "fade", "from": "none", "duration": 0.3, "ease": "power3.out", "at": 0.25 }
+      ]
+    },
+    {
+      "id": "beat-3",
+      "caption": "À mi-descente, la composante horizontale est toujours identique ; la verticale a réapparu, vers le bas cette fois, avec exactement la même longueur qu'à mi-montée. Le mouvement horizontal n'a jamais rien su de la pesanteur.",
+      "tweens": [
+        { "target": "#pos-3", "verb": "fade", "from": "none", "duration": 0.4, "ease": "power3.out", "at": 0 },
+        { "target": "#chip-3", "verb": "fade", "from": "none", "duration": 0.3, "ease": "power3.out", "at": 0.25 }
+      ]
+    }
+  ]
+}

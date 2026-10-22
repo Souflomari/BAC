@@ -1,0 +1,612 @@
+# In-lesson checkpoint items (summit-conversion campaign — philo lane).
+# Formative, calm-core probes placed inside the lesson via
+# [[checkpoint:<id>]] markers — NOT the end bank (items.yaml). Same item
+# schema, but NO score/streak/tally. Wrong-answer feedback names the
+# wrong PHILOSOPHICAL model, not just the fact of being wrong. The
+# end-bank ≥3-per-misconception floor lives in items.yaml's
+# coverage_summary and is NOT altered by these checkpoints (a clone or a
+# fresh item here is surfaced inline, never re-counted toward that floor —
+# house convention, see la-liberte/theorie-experience/analyse-de-texte's
+# checkpoints.yaml headers).
+#
+# EVERY distractor carries a real `misconception:` id (no null tags) — the
+# task's stricter-than-house-default instruction, matched here to
+# items.yaml's inventory (mc.philo.droit_justice.*).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict      (in R0)      — commit-gate. Probes the master
+#                                     model: faux-dilemme-legalite-justice.
+#   cp-r1-rupture      (after R1)   — rupture gate: paires-notions-
+#                                     confondues-synonymes (primary),
+#                                     injustice-ressentie-implique-erreur-
+#                                     juridique + generalisation-abusive-
+#                                     exemple-ponctuel (dual).
+#   cp-r2-rupture      (after R2)   — rupture gate: droit-naturel-mal-
+#                                     defini (primary — the R2 "erreur à
+#                                     éviter" box, plus its Locke corollary),
+#                                     paires-notions-confondues-synonymes
+#                                     (dual).
+#   cp-r3-rupture      (after R3)   — rupture gate: debat-positivisme-
+#                                     jusnaturalisme-mal-restitue (primary),
+#                                     positivisme-separation-mal-comprise
+#                                     (dual — the R3 "erreur à éviter" box).
+#   cp-r4-rupture      (after R4)   — rupture gate: commutative-
+#                                     distributive-inversees (primary — R4's
+#                                     own "erreur la plus fréquente"),
+#                                     formes-justice-non-distinguees (dual).
+#   cp-r5-rupture      (after R5)   — rupture gate: principe-difference-
+#                                     mal-compris (primary), voile-
+#                                     ignorance-mecanisme-mal-compris (dual —
+#                                     the R5 "erreur à éviter" box).
+#   cp-r6-rupture      (after R6)   — rupture gate: legitimite-justifie-
+#                                     desobeissance-automatique (primary —
+#                                     the R6 "erreur à éviter" box),
+#                                     legitimite-reduite-au-pouvoir-de-fait
+#                                     (dual).
+#   cp-bac-positivisme (before [[exercise:r-bac]]) — rupture gate priming
+#                                     the exact tension the r-bac سؤال asks
+#                                     the student to construct (validity
+#                                     per Kelsen vs. the limits R2/R6 place
+#                                     on it). Unlike la-liberte/theorie-
+#                                     experience's bac-priming checkpoints,
+#                                     this one does NOT open a new axis —
+#                                     the verified سؤال maps directly onto
+#                                     R2/R3/R6, already taught — so this
+#                                     checkpoint reinforces rather than
+#                                     primes unfamiliar content.
+#
+# Length rebalance (recipe's philo addendum, mandatory): every stem below
+# was authored with a deliberately varied correct-answer length — never
+# systematically longest, and checked not to be systematically shortest
+# either, verified programmatically (see the task's throwaway length-check
+# script; not committed here).
+
+notion: le-droit-la-justice
+skill_code: philo_droit_justice
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (right after the two
+  #        spontaneous answers are listed, before the reveal "Les deux
+  #        réponses semblent raisonnables..."). Turns "prends position...
+  #        réponds en une phrase" into a real MCQ commit. Probes the
+  #        master model.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    skill_code: philo_droit_justice
+    tags: [checkpoint, formative, misconception_driven, philo_droit_justice, hook_commit]
+    primary_misconception: mc.philo.droit_justice.faux-dilemme-legalite-justice
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |-
+      Avant de lire la suite : engage-toi. Laquelle de ces quatre façons de
+      juger la décision du tribunal (l'usine, la rivière) te semble la
+      meilleure ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Le tribunal a fait exactement ce qu'on attend de lui : il applique la loi telle qu'elle existe, pas ses propres sentiments sur ce qui serait juste — sinon, ce ne sont plus des juges mais des moralistes qui décident."
+        correct: false
+        misconception: mc.philo.droit_justice.faux-dilemme-legalite-justice
+        feedback: |-
+          Modèle détecté : choisir le camp « légal = juste » pour clore la
+          question. Mais alors n'importe quelle loi, aussi injuste
+          soit-elle dans son contenu, devrait être appliquée sans
+          discussion — exactement l'argument invoqué à Nuremberg (chapitre 4), et
+          il pose un problème sérieux.
+
+      - id: B
+        text: "Le tribunal a manqué à sa mission la plus fondamentale : rendre justice. Un enfant malade et une rivière empoisonnée constituent un tort réel, peu importe qu'un texte de loi l'ait, par accident, laissé passer, et aucune sécurité juridique ne pèse plus lourd qu'une vie humaine ou un environnement durablement abîmé."
+        correct: false
+        misconception: mc.philo.droit_justice.faux-dilemme-legalite-justice
+        feedback: |-
+          Modèle détecté : choisir le camp « la justice doit toujours
+          l'emporter sur le légal » pour clore la question. Mais si le
+          sentiment personnel de justice suffit toujours à écarter une
+          loi, qu'est-ce qui distingue encore un tribunal d'une opinion
+          privée parmi d'autres ?
+
+      - id: C
+        text: "Aucune des deux, prise seule, ne suffit : la première ignore qu'une loi votée dans les formes peut rester injuste dans son contenu, la seconde dissoudrait la sécurité juridique — cette tension, non résolue pour l'instant, est ce que la leçon va construire."
+        correct: true
+        feedback: |-
+          Exact — et c'est le réflexe à garder pour toute la leçon : ni
+          « légal = juste » ni « juste doit toujours l'emporter sur légal »
+          ne suffit à rendre compte de cette affaire. Les chapitres qui
+          suivent ne trancheront pas en piochant un camp — ils
+          construiront le problème pièce par pièce.
+
+      - id: D
+        text: "La question ne se pose pas vraiment : « juste » et « légal » désignent en réalité la même chose, vue sous deux angles seulement différents — il n'y a donc, au fond, rien à trancher ici."
+        correct: false
+        misconception: mc.philo.droit_justice.paires-notions-confondues-synonymes
+        feedback: |-
+          Modèle détecté : dissoudre la tension en traitant les deux mots
+          comme des synonymes. Le tribunal lui-même montre que non : sa
+          décision est irréprochable en droit et pourtant discutable en
+          justice — deux jugements distincts, pas un seul.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-rupture | placed AFTER R1
+  #        Probes: paires-notions-confondues-synonymes (primary),
+  #        injustice-ressentie-implique-erreur-juridique (dual, choice C),
+  #        generalisation-abusive-exemple-ponctuel (choice D)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-rupture
+    rung: "R1"
+    skill_code: philo_droit_justice
+    tags: [checkpoint, formative, misconception_driven, philo_droit_justice]
+    primary_misconception: mc.philo.droit_justice.paires-notions-confondues-synonymes
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |-
+      Un camarade te dit : « Puisque le tribunal du chapitre 1 a rendu une
+      décision légale, c'est donc forcément une décision juste — sinon,
+      ça n'aurait pas passé le tribunal. » Que répondre, à la lumière du
+      chapitre 2 ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Il a raison : en droit, « légal » et « juste » désignent très exactement la même propriété, sous deux noms différents employés indifféremment."
+        correct: false
+        misconception: mc.philo.droit_justice.paires-notions-confondues-synonymes
+        feedback: |-
+          Modèle détecté : traiter les deux mots comme des synonymes. Le chapitre 2 les distingue au contraire nettement : le droit positif décrit
+          ce qui est en vigueur, la justice sert de mesure pour évaluer ce
+          contenu.
+
+      - id: B
+        text: "Il confond deux choses : le droit positif décrit ce qui est effectivement en vigueur, la justice sert de mesure pour évaluer ce contenu — une décision peut être irréprochable en droit et rester pourtant discutable en justice."
+        correct: true
+        feedback: |-
+          Exact. C'est précisément le mécanisme des chapitres 1 et 2 : le tribunal n'a
+          commis aucune erreur de droit, mais le sentiment d'injustice
+          porte sur le CONTENU de la règle (ou son silence), jugé à
+          l'aune d'un critère qui n'est pas lui-même une loi.
+
+      - id: C
+        text: "Il a tort, mais pour une autre raison : si la décision paraît injuste, c'est que le tribunal a dû, quelque part, commettre une erreur de droit que le texte ne rapporte pas."
+        correct: false
+        misconception: mc.philo.droit_justice.injustice-ressentie-implique-erreur-juridique
+        feedback: |-
+          Modèle détecté : déduire du seul sentiment d'injustice une
+          erreur juridique. Le texte établit au contraire, explicitement,
+          qu'aucune règle en vigueur n'a été violée — nier cette
+          possibilité efface l'écart même que le chapitre 2 construit.
+
+      - id: D
+        text: "Il a tort, à l'inverse : aucune loi, quel que soit son contenu, ne saurait jamais être qualifiée de juste — droit et justice n'ont, par nature, absolument rien à voir l'un avec l'autre, et il serait donc vain de chercher entre eux le moindre rapport, même partiel."
+        correct: false
+        misconception: mc.philo.droit_justice.generalisation-abusive-exemple-ponctuel
+        feedback: |-
+          Modèle détecté : généraliser abusivement l'écart ponctuel du chapitre 1
+          (le silence de la loi sur un produit précis) en une séparation
+          totale et permanente entre droit et justice. Le chapitre 2 rappelle au
+          contraire que le droit reste, dans l'immense majorité des cas,
+          l'instrument par lequel une société réalise la justice.
+
+    correct_feedback: |-
+      Le droit positif décrit ce qui est effectivement en vigueur ; la
+      justice sert de mesure pour évaluer ce contenu — les deux notions
+      peuvent se dissocier sans jamais se confondre ni s'opposer
+      systématiquement.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-rupture | placed AFTER R2
+  #        Probes: droit-naturel-mal-defini (primary, matches R2's own
+  #        "erreur à éviter" box plus its Locke corollary),
+  #        paires-notions-confondues-synonymes (dual, choice D)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-rupture
+    rung: "R2"
+    skill_code: philo_droit_justice
+    tags: [checkpoint, formative, misconception_driven, philo_droit_justice, jusnaturalisme]
+    primary_misconception: mc.philo.droit_justice.droit-naturel-mal-defini
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |-
+      Un élève affirme : « Le droit naturel, c'est en fait la même chose
+      que les lois de la physique — la loi de la gravitation, par
+      exemple, mais appliquée au droit. » Que répondre, à la lumière du
+      chapitre 3 ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est confondre deux emplois différents du mot « loi » : une loi physique DÉCRIT ce qui se passe nécessairement, le droit naturel PRESCRIT des principes de justice que l'autorité politique devrait respecter."
+        correct: true
+        feedback: |-
+          Exact — exactement l'erreur à éviter nommée par le chapitre 3 : le droit
+          naturel n'est pas une loi de la nature au sens scientifique,
+          c'est un ensemble de principes qui PRESCRIVENT, pas qui
+          décrivent.
+
+      - id: B
+        text: "Il a presque raison, sauf sur un point : c'est en réalité le droit POSITIF qui est universel et immuable comme une loi physique, tandis que le droit naturel varie selon les pays et les époques."
+        correct: false
+        misconception: mc.philo.droit_justice.droit-naturel-mal-defini
+        feedback: |-
+          Modèle détecté : inverser les propriétés des deux notions. C'est
+          l'inverse : c'est le droit naturel que la tradition
+          jusnaturaliste présente comme universel et valable
+          indépendamment des lois écrites ; c'est le droit positif qui est
+          contingent.
+
+      - id: C
+        text: "Il a tort, car le droit naturel n'existe pas indépendamment d'une loi qui l'écrit : c'est l'État, par le contrat social, qui CRÉE intégralement tous les droits, lesquels n'existaient pas avant lui ni même dans l'état de nature qui précédait ce contrat."
+        correct: false
+        misconception: mc.philo.droit_justice.droit-naturel-mal-defini
+        feedback: |-
+          Modèle détecté : nier que des droits précèdent l'État. Locke
+          (chapitre 3) soutient au contraire que des droits naturels existent déjà
+          dans l'état de nature, avant tout contrat — l'État les protège,
+          il ne les crée pas.
+
+      - id: D
+        text: "Il a raison, au fond : droit positif et droit naturel ne sont, en réalité, que deux expressions synonymes employées indifféremment pour désigner les lois écrites d'un pays."
+        correct: false
+        misconception: mc.philo.droit_justice.paires-notions-confondues-synonymes
+        feedback: |-
+          Modèle détecté : traiter les deux notions comme synonymes. Ce
+          n'est pas le cas : le droit naturel est précisément défini par
+          le fait de NE PAS dépendre d'avoir été écrit pour être valable,
+          à la différence du droit positif.
+
+    correct_feedback: |-
+      Une loi physique décrit ce qui se passe nécessairement ; le droit
+      naturel, lui, prescrit des principes valables indépendamment de
+      toute loi écrite — deux emplois du mot « loi » (et du mot
+      « nature ») qu'il ne faut jamais superposer.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r3-rupture | placed AFTER R3
+  #        Probes: debat-positivisme-jusnaturalisme-mal-restitue (primary),
+  #        positivisme-separation-mal-comprise (dual, choice C — the R3
+  #        "erreur à éviter" box)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-rupture
+    rung: "R3"
+    skill_code: philo_droit_justice
+    tags: [checkpoint, formative, misconception_driven, philo_droit_justice, kelsen, nuremberg]
+    primary_misconception: mc.philo.droit_justice.debat-positivisme-jusnaturalisme-mal-restitue
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |-
+      Un élève résume ainsi le débat né des procès de Nuremberg (chapitre 4) :
+      « Le positivisme n'a, en réalité, aucune réponse à faire à
+      l'objection jusnaturaliste — il est bien obligé de l'accepter. »
+      Que répondre ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est faux : le positivisme répond que fixer un « seuil d'injustice extrême » réintroduirait l'incertitude morale que la séparation droit/morale voulait précisément éviter — qui déciderait de ce seuil, sinon un jugement moral aussi contestable ?"
+        correct: true
+        feedback: |-
+          Exact. Le débat reste ouvert : chaque camp reproche à l'autre de
+          désarmer, soit la sécurité juridique, soit la possibilité de
+          juger les pires crimes commis au nom de la loi.
+
+      - id: B
+        text: "Il a presque raison, mais dans l'autre sens : c'est le jusnaturalisme, et non le positivisme, qui n'a rien à répondre à son adversaire dans ce débat précis."
+        correct: false
+        misconception: mc.philo.droit_justice.debat-positivisme-jusnaturalisme-mal-restitue
+        feedback: |-
+          Modèle détecté : inverser les deux camps. Les deux traditions
+          ont chacune une réponse précise à l'autre — ni l'une ni l'autre
+          n'est réduite au silence dans ce débat.
+
+      - id: C
+        text: "Il a raison, d'une certaine manière : Kelsen approuverait moralement n'importe quelle loi qu'il juge valide, y compris celles invoquées à Nuremberg pour la défense."
+        correct: false
+        misconception: mc.philo.droit_justice.positivisme-separation-mal-comprise
+        feedback: |-
+          Modèle détecté : confondre validité juridique et approbation
+          morale chez Kelsen. Sa thèse est méthodologique — séparer
+          l'analyse juridique de l'évaluation morale — pas une apologie du
+          contenu des lois qu'il déclare valides.
+
+      - id: D
+        text: "Il a tort, mais pour une tout autre raison : la question ne s'est jamais réellement posée, car aucune loi n'a jamais été votée ni promulguée dans l'Allemagne de cette période, ce qui rendrait tout le débat né de Nuremberg purement fictif, sans le moindre objet réel."
+        correct: false
+        misconception: mc.philo.droit_justice.debat-positivisme-jusnaturalisme-mal-restitue
+        feedback: |-
+          Modèle détecté : contredire directement le texte, qui rapporte
+          des lois « votées, promulguées, parfaitement valides au sens
+          procédural du terme » — la question se pose bel et bien, avec
+          toute sa difficulté.
+
+    correct_feedback: |-
+      Le positivisme objecte que fixer un seuil d'injustice extrême
+      réintroduirait un jugement moral incertain — le débat reste ouvert,
+      chaque camp reprochant à l'autre de désarmer une exigence
+      différente.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r4-rupture | placed AFTER R4
+  #        Probes: commutative-distributive-inversees (primary — R4's own
+  #        "erreur la plus fréquente"), formes-justice-non-distinguees
+  #        (dual, choices C/D)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-rupture
+    rung: "R4"
+    skill_code: philo_droit_justice
+    tags: [checkpoint, formative, misconception_driven, philo_droit_justice, aristote]
+    primary_misconception: mc.philo.droit_justice.commutative-distributive-inversees
+    item_source: original
+    lesson_placement: after_R4
+
+    stem: |-
+      Une association répartit un fonds d'urgence entre plusieurs
+      familles sinistrées, selon l'ampleur de leurs pertes respectives.
+      Un voisin doit par ailleurs rembourser à un autre exactement la
+      somme qu'il lui avait empruntée, quel que soit le revenu de chacun.
+      Comment Aristote qualifierait-il ces deux répartitions ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Le fonds d'urgence relève de la justice distributive (égalité proportionnelle aux pertes de chacun) ; le remboursement relève de la justice commutative (égalité arithmétique stricte, indépendante du revenu des parties)."
+        correct: true
+        feedback: |-
+          Exact. La répartition d'un bien commun entre plusieurs
+          contributions ou besoins inégaux suit une égalité
+          proportionnelle ; l'échange strict entre deux parties suit une
+          égalité arithmétique stricte.
+
+      - id: B
+        text: "C'est l'inverse : le fonds d'urgence relève de la justice commutative (parts strictement égales pour tous, indépendamment des pertes propres à chacun), et le remboursement relève de la justice distributive (modulé selon le revenu de chacun)."
+        correct: false
+        misconception: mc.philo.droit_justice.commutative-distributive-inversees
+        feedback: |-
+          Modèle détecté : intervertir les deux catégories — l'erreur la
+          plus fréquente sur ce point du programme. Un remboursement de
+          dette est un échange qui exige une égalité stricte
+          (commutative) ; une répartition selon les pertes de chacun exige
+          une proportionnalité (distributive).
+
+      - id: C
+        text: "Les deux relèvent en réalité de la même forme de justice, puisque dans les deux cas une somme d'argent est en jeu entre plusieurs personnes."
+        correct: false
+        misconception: mc.philo.droit_justice.formes-justice-non-distinguees
+        feedback: |-
+          Modèle détecté : nier la distinction d'Aristote. Ce n'est pas la
+          nature de l'objet (une somme d'argent) qui distingue les deux
+          formes, mais le TYPE de rapport en jeu — un échange strict, ou
+          la répartition d'un bien commun.
+
+      - id: D
+        text: "La répartition du fonds d'urgence est « plus juste » que le remboursement, car elle tient compte de la situation réelle de chacun plutôt que d'une règle mécanique et aveugle."
+        correct: false
+        misconception: mc.philo.droit_justice.formes-justice-non-distinguees
+        feedback: |-
+          Modèle détecté : hiérarchiser les deux formes de justice. Ce ne
+          sont pas deux degrés d'une même échelle — l'erreur à éviter
+          du chapitre 5 le précise — mais deux principes adaptés à deux types de
+          situations, ni l'un ni l'autre n'étant « plus juste » en
+          général.
+
+    correct_feedback: |-
+      La justice commutative applique une égalité stricte aux rapports
+      d'échange ; la justice distributive applique une égalité
+      proportionnelle à la répartition de biens communs — deux principes
+      distincts, jamais hiérarchisés l'un par rapport à l'autre.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-r5-rupture | placed AFTER R5
+  #        Probes: principe-difference-mal-compris (primary),
+  #        voile-ignorance-mecanisme-mal-compris (dual, choice C — the R5
+  #        "erreur à éviter" box)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-rupture
+    rung: "R5"
+    skill_code: philo_droit_justice
+    tags: [checkpoint, formative, misconception_driven, philo_droit_justice, rawls]
+    primary_misconception: mc.philo.droit_justice.principe-difference-mal-compris
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |-
+      Un élève conclut, après avoir lu le chapitre 6 : « Le principe de différence
+      de Rawls, au fond, ça veut dire que tout le monde doit toucher
+      exactement la même chose, sinon ce n'est pas juste. » Que
+      répondre ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est inexact : Rawls n'exige pas l'égalité stricte des richesses — il admet des inégalités, à condition qu'elles profitent réellement aux membres les plus désavantagés de la société."
+        correct: true
+        feedback: |-
+          Exact — c'est précisément ce que le chapitre 6 précise : une inégalité qui
+          n'enrichirait que les plus favorisés, sans rien changer pour les
+          plus démunis, resterait injustifiée ; mais une inégalité qui les
+          avantage, elle, peut être acceptée.
+
+      - id: B
+        text: "Il a raison, à un détail près : ce qui compte vraiment pour Rawls, c'est seulement que la richesse totale produite par la société augmente, peu importe qui en profite finalement."
+        correct: false
+        misconception: mc.philo.droit_justice.principe-difference-mal-compris
+        feedback: |-
+          Modèle détecté : confondre le principe de différence avec un
+          critère utilitariste de maximisation globale. Une inégalité qui
+          n'améliore en rien le sort des plus désavantagés reste
+          injustifiée pour Rawls, quelle que soit la richesse totale
+          produite.
+
+      - id: C
+        text: "Il a tort, mais parce qu'il confond deux choses : le voile d'ignorance garantit en réalité que tous les citoyens, une fois la société en place, disposeront exactement des mêmes richesses."
+        correct: false
+        misconception: mc.philo.droit_justice.voile-ignorance-mecanisme-mal-compris
+        feedback: |-
+          Modèle détecté : confondre le voile d'ignorance (une expérience
+          de pensée pour CHOISIR des principes) avec une description de la
+          société réelle une fois ces principes appliqués — une fois le
+          voile levé, chacun retrouve conscience des inégalités
+          existantes.
+
+      - id: D
+        text: "Il a tort, à l'inverse : le principe de différence interdit absolument toute inégalité de richesse, aussi minime soit-elle et quel qu'en soit l'effet sur les plus désavantagés."
+        correct: false
+        misconception: mc.philo.droit_justice.principe-difference-mal-compris
+        feedback: |-
+          Modèle détecté : confondre le principe de différence avec un
+          égalitarisme strict des résultats. Rawls admet au contraire des
+          inégalités, sous condition qu'elles bénéficient aux plus
+          désavantagés — ce n'est pas un égalitarisme absolu.
+
+    correct_feedback: |-
+      Le principe de différence évalue une inégalité à son effet réel sur
+      les plus désavantagés, pas à son ampleur ni à la richesse totale
+      produite — ni une égalité stricte des résultats, ni un simple gain
+      global, n'en tiennent lieu.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-6 | id: cp-r6-rupture | placed AFTER R6
+  #        Probes: legitimite-justifie-desobeissance-automatique
+  #        (primary — the R6 "erreur à éviter" box), legitimite-reduite-
+  #        au-pouvoir-de-fait (dual, choices C/D)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-rupture
+    rung: "R6"
+    skill_code: philo_droit_justice
+    tags: [checkpoint, formative, misconception_driven, philo_droit_justice, legalite, legitimite]
+    primary_misconception: mc.philo.droit_justice.legitimite-justifie-desobeissance-automatique
+    item_source: original
+    lesson_placement: after_R6
+
+    stem: |-
+      Un élève conclut de la distinction légalité/légitimité : « Donc,
+      dès qu'une loi légale me paraît personnellement illégitime, je n'ai
+      plus à lui obéir. » Que peut-on lui objecter, du point de vue du
+      chapitre 7 ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "La distinction sert à ANALYSER pourquoi un décalage entre légalité et légitimité est possible, pas à justifier automatiquement la désobéissance individuelle à toute loi qu'on juge personnellement injuste — question distincte, que la leçon ne tranche pas ici."
+        correct: true
+        feedback: |-
+          Exact — c'est exactement l'erreur à éviter nommée par le chapitre 7 : le
+          décalage possible entre les deux notions ne dispense pas, à lui
+          seul, de se demander si la désobéissance est justifiée dans tel
+          ou tel cas.
+
+      - id: B
+        text: "Il a entièrement raison : dès lors qu'une loi ne me convainc pas personnellement, rien ne m'oblige plus à la respecter, quelles que soient les conséquences pour les autres citoyens."
+        correct: false
+        misconception: mc.philo.droit_justice.legitimite-justifie-desobeissance-automatique
+        feedback: |-
+          Modèle détecté : c'est exactement la conclusion que le chapitre 7 met en
+          garde. Le décalage possible entre légalité et légitimité ne
+          suffit jamais, à lui seul, à justifier automatiquement la
+          désobéissance individuelle.
+
+      - id: C
+        text: "Il a tort, mais pour une autre raison : la légitimité d'une loi ne dépend en réalité que de l'absence de résistance armée qu'elle rencontre au moment de son application."
+        correct: false
+        misconception: mc.philo.droit_justice.legitimite-reduite-au-pouvoir-de-fait
+        feedback: |-
+          Modèle détecté : c'est exactement ce que Rousseau récuse (leçon
+          « L'État », repris au chapitre 7) : la force — ou l'absence de
+          résistance qu'elle impose — ne transforme jamais, à elle seule,
+          une contrainte en droit légitime.
+
+      - id: D
+        text: "Il a tort, pour une autre raison encore : chez Weber, la légitimité se limite au seul monopole institutionnel de la violence physique légalement détenu par l'État, sans le moindre rapport avec le jugement que je porte, à titre personnel, sur le contenu d'une loi."
+        correct: false
+        misconception: mc.philo.droit_justice.legitimite-reduite-au-pouvoir-de-fait
+        feedback: |-
+          Modèle détecté : réduire abusivement la légitimité, chez Weber,
+          à une seule question institutionnelle, en évacuant ce qui est
+          ici en jeu — la reconnaissance, ou non, du contenu d'une loi par
+          ceux qui doivent lui obéir.
+
+    correct_feedback: |-
+      L'écart entre légalité et légitimité permet de nommer un problème,
+      pas de trancher automatiquement la question, distincte, de savoir
+      si la désobéissance individuelle est alors justifiée.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-7 | id: cp-bac-positivisme | placed BEFORE [[exercise:r-bac]]
+  #        Primes the exact tension the r-bac سؤال asks the student to
+  #        construct — reinforcement, not a new-axis prime (see file
+  #        header note on why this differs from la-liberte/theorie-
+  #        experience's bac checkpoints).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-bac-positivisme
+    rung: "R7"
+    skill_code: philo_droit_justice
+    tags: [checkpoint, formative, misconception_driven, philo_droit_justice, bac_style, kelsen]
+    primary_misconception: mc.philo.droit_justice.debat-positivisme-jusnaturalisme-mal-restitue
+    item_source: original
+    lesson_placement: before_bac
+
+    stem: |-
+      Le sujet que tu vas lire pose directement la question : « Le droit
+      est-il ce qu'établissent les lois positives ? » Avant de le lire :
+      laquelle de ces formulations correspond le mieux à ce que la leçon
+      t'a appris pour y répondre ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Le droit EST, au sens de sa validité juridique, ce qu'établissent les lois positives conformément à la procédure qui les habilite (Kelsen, chapitre 4) — mais cette validité procédurale ne suffit pas à garantir que leur contenu soit juste (chapitres 3 et 7)."
+        correct: true
+        feedback: |-
+          Exact — c'est très exactement la tension que le sujet te demande
+          de construire : ni « oui, sans réserve » (ce qui rendrait
+          recevable l'argument invoqué à Nuremberg), ni « non, pas du
+          tout » (ce qui nierait ce que le chapitre 4 établit sur la validité).
+
+      - id: B
+        text: "Oui, sans aucune réserve : puisque Kelsen a raison sur la validité juridique, aucun critère extérieur aux lois positives ne peut jamais entrer en jeu pour juger de leur contenu, quelles qu'en soient les conséquences pour ceux qui les subissent."
+        correct: false
+        misconception: mc.philo.droit_justice.debat-positivisme-jusnaturalisme-mal-restitue
+        feedback: |-
+          Modèle détecté : pousser la thèse de Kelsen jusqu'à nier toute
+          possibilité d'un critère de justice distinct — exactement ce que
+          le chapitre 3 (droit naturel) et le chapitre 7 (légitimité) refusent, chacun à sa
+          façon.
+
+      - id: C
+        text: "Non, pas du tout : le droit positif et le droit naturel désignent en réalité la même chose, donc la question ne se pose même pas dans ces termes."
+        correct: false
+        misconception: mc.philo.droit_justice.droit-naturel-mal-defini
+        feedback: |-
+          Modèle détecté : confondre les deux notions au lieu de les
+          mettre en tension. Le chapitre 3 les distingue précisément — le droit
+          positif est posé et contingent, le droit naturel prescrit des
+          principes valables indépendamment de toute loi écrite.
+
+      - id: D
+        text: "La réponse dépend uniquement de la popularité de la loi dans l'opinion publique au moment de son adoption : plus une loi est approuvée, plus elle « est » le droit."
+        correct: false
+        misconception: mc.philo.droit_justice.critere-de-validite-mal-identifie
+        feedback: |-
+          Modèle détecté : introduire un critère (l'opinion publique)
+          étranger à toute la théorie construite par la leçon. Ni la
+          validité de Kelsen, ni la justice au sens des chapitres 3, 5 et 6, ne se
+          mesurent à la popularité d'une loi.
+
+    correct_feedback: |-
+      Retiens cette tension avant de lire le sujet : la validité juridique
+      et la justice du contenu sont deux questions distinctes — le sujet
+      te demande de les articuler, pas de choisir un camp qui écraserait
+      l'autre.

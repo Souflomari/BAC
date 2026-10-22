@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 520"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Reconnaissance antigène-anticorps par complémentarité de forme. Un antigène porte un site de forme précise, une encoche en creux. Un anticorps spécifique, en forme de Y, s’y emboîte exactement : sa forme complémentaire remplit l’encoche, comme une clé dans sa serrure. Un second anticorps, de forme différente, s’approche du même antigène mais ne s’y ajuste pas : un espace reste visible entre lui et la surface — la reconnaissance antigène-anticorps est spécifique, pas floue.">
+  <title>Antigène et anticorps : la reconnaissance clé-serrure</title>
+
+  <!--
+    specificite-cle-serrure.svg — figure STAGED, 3 étapes cumulatives.
+    Placée au R2 du lesson.md, juste après le paragraphe « Pourquoi cette
+    spécificité est essentielle » (« […] cibler le non-soi sans se détruire
+    lui-même. »), avant « Une même molécule, deux statuts possibles ».
+    Cible précise : rendre visible, en une seule image, ce que le texte
+    affirme en mots — un anticorps ne se lie qu'à l'antigène dont la forme
+    lui correspond EXACTEMENT, « pas une reconnaissance floue ou générale ».
+
+    step-1 : l'antigène seul — une molécule (blob) portant une encoche en
+             creux, de forme précise (l'épitope). Rien d'autre.
+    step-2 : l'anticorps spécifique (Y, accent) arrive : son paratope est
+             un triangle qui comble EXACTEMENT le vide de l'encoche — la
+             clé dans sa serrure. Un halo marque le point de verrouillage.
+    step-3 : un second anticorps (Y, ink-soft, neutre) s'approche d'une
+             autre zone de l'antigène, lisse, sans encoche complémentaire à
+             sa forme — son extrémité reste à distance visible (pointillé),
+             aucune liaison.
+
+    Convention couleur : --figure-accent réservé à UNE seule idée — le
+    couple qui s'emboîte (le paratope-triangle qui comble l'encoche, le
+    halo de verrouillage, l'anticorps spécifique entier, son étiquette).
+    Le second anticorps reste entièrement --figure-ink-soft (inerte) : sa
+    non-liaison est le point de comparaison, jamais mis en avant par la
+    couleur. L'antigène lui-même reste --figure-ink / --figure-surface,
+    neutre dans les trois étapes (le blob n'est jamais repeint : le
+    triangle du step-2 est un nouvel élément ajouté par-dessus, pas une
+    modification du tracé du step-1).
+
+    Simplification pédagogique assumée : schéma qualitatif, formes
+    stylisées (pas une structure moléculaire réelle) ; un seul site de
+    liaison représenté par souci de lisibilité, alors qu'un anticorps réel
+    est bivalent.
+  -->
+
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="350" y="26" text-anchor="middle"
+          font-size="15" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      La reconnaissance antigène-anticorps : le principe clé-serrure
+    </text>
+    <text x="350" y="45" text-anchor="middle"
+          font-size="11.5" fill="var(--figure-ink-soft)">
+      Un anticorps ne se lie qu’à l’antigène dont la forme lui correspond exactement
+    </text>
+
+    <!-- Antigène : blob avec une encoche (épitope) de forme précise -->
+    <path d="M290,205 Q330,212 350,225 Q372,245 385,275 L345,300 L385,325
+             Q372,355 350,375 Q330,388 290,395 Q250,388 230,375
+             Q208,355 195,300 Q208,245 230,225 Q250,212 290,205 Z"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+
+    <text x="290" y="430" text-anchor="middle" font-size="13" font-weight="700"
+          fill="var(--figure-ink)">Antigène</text>
+
+    <!-- pointeur vers l'encoche (épitope) -->
+    <circle cx="388" cy="275" r="2.2" fill="var(--figure-ink-soft)"/>
+    <line x1="388" y1="275" x2="413" y2="272" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="416" y="268" text-anchor="start" font-size="10.5" fill="var(--figure-ink-soft)">site antigénique</text>
+    <text x="416" y="284" text-anchor="start" font-size="10.5" fill="var(--figure-ink-soft)">(épitope)</text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!-- Anticorps spécifique : le paratope (triangle) comble exactement l'encoche -->
+    <polygon points="385,275 345,300 385,325" fill="var(--figure-accent)"/>
+    <circle cx="365" cy="300" r="16" fill="none" stroke="var(--figure-accent)"
+            stroke-width="1.4" opacity="0.55"/>
+
+    <!-- bras de liaison, hinge, second bras libre, tige (Fc) -->
+    <line x1="388" y1="300" x2="470" y2="345" stroke="var(--figure-accent)"
+          stroke-width="5" stroke-linecap="round"/>
+    <line x1="470" y1="345" x2="430" y2="400" stroke="var(--figure-accent)"
+          stroke-width="5" stroke-linecap="round"/>
+    <circle cx="430" cy="400" r="5" fill="var(--figure-accent)"/>
+    <line x1="470" y1="345" x2="520" y2="390" stroke="var(--figure-accent)"
+          stroke-width="5" stroke-linecap="round"/>
+
+    <text x="530" y="335" text-anchor="start" font-size="11.5" font-weight="700"
+          fill="var(--figure-accent)">Anticorps spécifique</text>
+    <text x="530" y="351" text-anchor="start" font-size="10" fill="var(--figure-ink-soft)">forme complémentaire</text>
+    <!-- RENTRÉE DANS L'ANTIGÈNE (2026-09-04) : centrée en x=365, elle
+         chevauchait le contour de l'antigène (23 % rayés) juste à l'endroit
+         de l'encoche. Trente pixels à gauche, elle est franchement à
+         l'intérieur du corps qu'elle décrit, à hauteur du site — et le
+         contour ne la coupe plus. -->
+    <text x="335" y="278" text-anchor="middle" font-size="10" font-weight="700"
+          fill="var(--figure-accent)">s’emboîte</text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- Anticorps non spécifique : forme différente, reste à distance -->
+    <line x1="120" y1="150" x2="195" y2="200" stroke="var(--figure-ink-soft)"
+          stroke-width="4.5" stroke-linecap="round"/>
+    <circle cx="205" cy="205" r="7" fill="var(--figure-ink-soft)"/>
+    <line x1="120" y1="150" x2="70" y2="195" stroke="var(--figure-ink-soft)"
+          stroke-width="4.5" stroke-linecap="round"/>
+    <circle cx="70" cy="195" r="5" fill="var(--figure-ink-soft)"/>
+    <line x1="120" y1="150" x2="55" y2="90" stroke="var(--figure-ink-soft)"
+          stroke-width="4.5" stroke-linecap="round"/>
+
+    <!-- espace visible entre l'anticorps non spécifique et la surface de l'antigène -->
+    <line x1="205" y1="205" x2="230" y2="225" stroke="var(--figure-ink-soft)"
+          stroke-width="1.2" stroke-dasharray="3,3" opacity="0.7"/>
+
+    <text x="12" y="64" text-anchor="start" font-size="11" fill="var(--figure-ink-soft)">Anticorps</text>
+    <text x="12" y="80" text-anchor="start" font-size="11" fill="var(--figure-ink-soft)">non spécifique</text>
+    <text x="140" y="235" text-anchor="middle" font-size="9.5" font-style="italic"
+          fill="var(--figure-ink-soft)">ne s’emboîte pas</text>
+  </g><!-- /step-3 -->
+</svg>

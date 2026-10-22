@@ -1,0 +1,126 @@
+<svg style="text-anchor:middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 470" role="img"
+     aria-label="Arbre pondéré : racine vers A et A barre, puis vers B et B barre, quatre feuilles avec leurs produits ; les deux feuilles où B se produit sont mises en évidence.">
+  <title>Arbre pondéré, étape par étape — construction puis lecture des feuilles B</title>
+  <!--
+    arbre-pondere.svg — STAGED (docs/design/LESSON-EXPERIENCE-SPEC.md §2). Le
+    cas le plus délicat du fan-out (post-fable-work-order.md Item 3) : 3
+    placements dans la leçon (R2 construction, R4 probas totales, R5 lecture
+    inverse), AUCUN groupe step-N avant cette migration.
+
+    initialStage = min(occurrence, stages.length) (§2.3) donne, avec 3
+    stages :
+      placement 1 (R2, "l'arbre pondéré", construction)      -> stage 1
+      placement 2 (R4, probabilités totales, somme des B)    -> stage 2
+      placement 3 (R5, lecture inverse, P(A|B))               -> stage 3
+    Chaque lecteur retrouve l'arbre au niveau exact où sa lecture en a besoin,
+    et peut toujours avancer/reculer pour revoir la construction complète.
+
+    step-1 : racine + première bifurcation (A / A-barre).
+    step-2 : + seconde bifurcation (B / B-barre) + les quatre feuilles,
+             style neutre — "on multiplie le long d'une branche".
+    step-3 : + mise en évidence des DEUX feuilles où B se produit (surbrillance
+             ajoutée par-dessus, jamais une restyle des rects du step-2 —
+             le contrat DOM-absence n'autorise que des AJOUTS) — sert à la
+             fois la somme (P(B), R4) et la lecture inverse (P(A|B), R5).
+
+    Les captions sont portées par arbre-pondere.stages.json — aucun texte de
+    légende baké ici (même convention que les autres figures migrées).
+  -->
+  <style>
+    /* Jetons de thème UNIQUEMENT (contrat de figure). Cette figure portait
+       onze couleurs codées en dur : en thème sombre, ses boîtes quasi
+       blanches éclataient sur la page et ses étiquettes d'arêtes — qui
+       portent pourtant les probabilités conditionnelles, le sujet même de
+       la figure — tombaient à 2:1 de contraste. La police aussi détonnait :
+       Segoe UI quand ses deux sœurs de la même leçon sont en IBM Plex Sans.
+       L'ACCENT marque UNE seule idée, comme le veut le contrat : les deux
+       feuilles où B se produit (l'anneau et son étiquette), c'est-à-dire
+       exactement ce que la troisième étape enseigne. */
+    .apt-edge   { stroke: var(--figure-ink-soft); stroke-width: 2; fill: none; opacity: .65; }
+    .apt-node   { fill: var(--figure-surface); stroke: var(--figure-ink-soft); stroke-width: 1.5; }
+    .apt-root   { fill: var(--figure-grid); stroke: var(--figure-ink-soft); stroke-width: 1.5; }
+    .apt-leaf   { fill: var(--figure-surface); stroke: var(--figure-grid); stroke-width: 1.5; }
+    .apt-leafB-ring { fill: none; stroke: var(--figure-accent); stroke-width: 2; }
+    .apt-nlabel { font: 600 18px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .apt-elabel { font: 500 14px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .apt-leaftop{ font: 600 14px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink); }
+    .apt-leafval{ font: 600 14px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-ink-soft); }
+    .apt-tag    { font: 600 11px 'IBM Plex Sans', system-ui, sans-serif; fill: var(--figure-accent); }
+  </style>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — racine + première bifurcation (A / A-barre)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <line class="apt-edge" x1="62" y1="235" x2="330" y2="130"/>
+    <line class="apt-edge" x1="62" y1="235" x2="330" y2="340"/>
+
+    <text class="apt-elabel" x="188" y="166">P(A) = 0,6</text>
+    <!-- Même règle que ci-dessous : une branche DESCENDANTE rattrape son
+         étiquette sur la longueur du texte. 306 → 318. -->
+    <text class="apt-elabel" x="188" y="318">P(A&#x0305;) = 0,4</text>
+
+    <rect class="apt-root" x="34" y="216" width="56" height="38" rx="11"/>
+    <text class="apt-nlabel" x="62" y="241">&#x3A9;</text>
+
+    <rect class="apt-node" x="306" y="111" width="48" height="38" rx="11"/>
+    <text class="apt-nlabel" x="330" y="136">A</text>
+    <rect class="apt-node" x="306" y="321" width="48" height="38" rx="11"/>
+    <text class="apt-nlabel" x="330" y="346">A&#x0305;</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — seconde bifurcation (B / B-barre) + les quatre feuilles
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line class="apt-edge" x1="330" y1="130" x2="660" y2="70"/>
+    <line class="apt-edge" x1="330" y1="130" x2="660" y2="180"/>
+    <line class="apt-edge" x1="330" y1="340" x2="660" y2="300"/>
+    <line class="apt-edge" x1="330" y1="340" x2="660" y2="410"/>
+
+    <text class="apt-elabel" x="500" y="88">P(B|A) = 0,5</text>
+    <!-- DESCENDUE sous sa branche (2026-09-04) : à y=168 elle était posée sur
+         l'arête A → A∩B̅ (qui passe entre y≈149 et y≈162 sur la longueur du
+         texte) et s'en trouvait rayée sur 41 % de sa largeur. Les trois
+         autres étiquettes d'arête sont déjà du côté EXTÉRIEUR de leur
+         branche — au-dessus pour celles qui montent, en dessous pour celles
+         qui descendent ; celle-ci ne l'était pas. -->
+    <text class="apt-elabel" x="500" y="184">P(B&#x0305;|A) = 0,5</text>
+    <text class="apt-elabel" x="500" y="312">P(B|A&#x0305;) = 0,2</text>
+    <text class="apt-elabel" x="500" y="404">P(B&#x0305;|A&#x0305;) = 0,8</text>
+
+    <g>
+      <rect class="apt-leaf" x="586" y="48" width="156" height="44" rx="12"/>
+      <text class="apt-leaftop" x="664" y="68">A &#x2229; B</text>
+      <text class="apt-leafval" x="664" y="84">= 0,6 &#xD7; 0,5 = 0,30</text>
+    </g>
+    <g>
+      <rect class="apt-leaf" x="586" y="158" width="156" height="44" rx="12"/>
+      <text class="apt-leaftop" x="664" y="178">A &#x2229; B&#x0305;</text>
+      <text class="apt-leafval" x="664" y="194">= 0,6 &#xD7; 0,5 = 0,30</text>
+    </g>
+    <g>
+      <rect class="apt-leaf" x="586" y="278" width="156" height="44" rx="12"/>
+      <text class="apt-leaftop" x="664" y="298">A&#x0305; &#x2229; B</text>
+      <text class="apt-leafval" x="664" y="314">= 0,4 &#xD7; 0,2 = 0,08</text>
+    </g>
+    <g>
+      <rect class="apt-leaf" x="586" y="388" width="156" height="44" rx="12"/>
+      <text class="apt-leaftop" x="664" y="408">A&#x0305; &#x2229; B&#x0305;</text>
+      <text class="apt-leafval" x="664" y="424">= 0,4 &#xD7; 0,8 = 0,32</text>
+    </g>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — mise en évidence des deux feuilles B (surbrillance AJOUTÉE
+       par-dessus, jamais une restyle du step-2)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <rect class="apt-leafB-ring" x="586" y="48" width="156" height="44" rx="12"/>
+    <text class="apt-tag" x="664" y="40">feuille B</text>
+
+    <rect class="apt-leafB-ring" x="586" y="278" width="156" height="44" rx="12"/>
+    <text class="apt-tag" x="664" y="270">feuille B</text>
+  </g><!-- /step-3 -->
+
+</svg>

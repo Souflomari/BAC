@@ -1,0 +1,230 @@
+{
+  "slug": "plan-complexe-rapport",
+  "tool": "scene2d",
+  "type": "manipulable",
+  "scene": "plan-complexe-rapport",
+  "title_fr": "Le rapport lu depuis un sommet : un nombre, un point de vue",
+  "caption_fr": "Trois points, un rapport, et le point d'où on le lit. À chaque étape, tu paries d'abord ; le plan répond ensuite, avec les nombres exacts de la leçon — jamais un décimal.",
+  "boundary": "Cadre (maths, 2ème Bac SM et SExp) : le rapport $w=\\dfrac{z_C-z_A}{z_B-z_A}$ formé depuis un sommet, son module comme rapport de deux longueurs issues de ce sommet et son argument comme écart de deux directions, la nature du triangle (isocèle, rectangle, équilatéral, alignés) lue sur $w$ à un sommet donné ; puis, en profondeur SM (étape 4), l'ensemble des points $M$ tels que $\\left\\vert\\dfrac{z-z_A}{z-z_B}\\right\\vert=1$, confronté aux lieux de l'argument. Hors de la scène : aucun birapport ni cocyclicité, aucun nom de théorème dans le panneau, aucune équation cartésienne de lieu, aucune similitude, aucun décimal ni degré dans les lectures.",
+  "fit_caveat": "1. La scène ne démontre rien : elle exhibe la règle sur 48 états (4 triangles, 4 placements, 3 sommets) et 5 positions de M — un échantillon, pas une preuve ; la démonstration est la prose qui suit, et cinq points ne déterminent pas un lieu. 2. Les nombres sont exacts ; le dessin est arrondi au pixel. 3. L'échelle est isotrope et constante. 4. L'arc est dessiné à un rayon fixe, quelles que soient les longueurs : exagération constante, déclarée. 5. Les quatre triangles partagent le même premier côté, de longueur 4 : ils se comparent d'un coup d'œil, mais la scène ne montre jamais un triangle dont la base change — les longueurs sont écrites à chaque état pour que ce ne soit pas silencieux. 6. L'un des quatre triangles n'allume aucun critère au sommet A : la table de la leçon décrit des cas particuliers, pas une classification. 7. M ne se déplace pas librement : cinq positions, plus un glissement le long d'un lieu déjà révélé — le prix de l'exactitude. 8. L'étape 4 est de profondeur SM. 9. L'ordre de lecture du badge (quel vecteur au dénominateur) est une convention de scène, pas une règle d'examen : le bac écrit l'ordre qui raccourcit le calcul, et la conclusion ne dépend pas de l'ordre. 10. Les étapes 2 et 3 paient sur le même triangle : l'angle droit en C est visible dès l'étape 2 — une aide, pas la réponse du pari de l'étape 3, qui porte sur le sommet. 11. Les libellés « Triangle 1 », « Placement 1 » sont des poignées neutres, sans statut d'examen : un nom descriptif aurait imprimé une réponse.",
+  "fallback_note": "Sans JavaScript et à l'impression, le panneau disparaît. La figure « nature-triangle-w », plus bas dans le chapitre, couvre un seul triangle, à un seul sommet, avec $\\vert w\\vert = 1$ — le cas où le module et les deux longueurs sont indiscernables. L'élève sans JavaScript perd donc les trois faits centraux : le sommet comme point de départ de la mesure, le module comme quotient, et la distinction des lieux du module et de l'argument ; la prose qui suit le marqueur les donne par le calcul.",
+  "pedagogy_wiring": {
+    "why_manipulable": "Les quatre objets qui portent ce rang dans le corpus placent tous le sommet de lecture à l'origine, avec un côté sur l'axe réel : dans ce cas précis, diviser les affixes donne le bon rapport, et rien ne distingue le module d'une longueur ni l'argument d'une direction. Il faut déplacer et tourner la figure pour voir que le rapport ne bouge pas quand les affixes bougent ; il faut changer de sommet pour voir que la nature se lit au sommet où elle se trouve ; il faut faire glisser un point le long d'un lieu pour voir qu'un nombre exact refuse de bouger. Aucune figure figée ne fait ces gestes.",
+    "predict_then_reveal": "Quatre paris, un verdict immédiat : tant que l'élève n'a pas choisi, le contrôle de l'étape et toute lecture qui dépend de l'issue n'existent pas dans le panneau. Après l'engagement, c'est le plan qui répond avant le texte — les flèches se tracent, l'arc s'ouvre au sommet, la longueur se reporte, le petit carré se pose en C, les trois lieux se dessinent — et chaque « suite » fait chercher, jamais relire.",
+    "misconceptions": [
+      "mc.math.maths_complexes_trigo.w-sommet-ignore",
+      "mc.math.maths_complexes_trigo.lecture-w-module-argument",
+      "mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe",
+      "mc.math.maths_complexes_trigo.produit-quotient-argument-operation",
+      "mc.math.maths_complexes_trigo.ensemble-points-locus-confondu"
+    ]
+  },
+  "spec_ref": "docs/pipeline/propositions/maths-nombres-complexes-2-scene-w.md",
+  "adr_ref": "docs/decisions/0041-scenes-3d-de-premiere-partie.md",
+  "etapes": [
+    {
+      "id": "depuis-quel-point",
+      "titre": "Depuis quel point mesure-t-on ?",
+      "consigne": "Trois points : $A$ en $-2+2i$, $B$ en $2+2i$, $C$ en $-2+6i$. On va s'intéresser à un seul nombre, celui que le badge écrit : $w = \\dfrac{z_C - z_A}{z_B - z_A}$. Quand tu auras répondu, deux flèches apparaîtront : la plus épaisse est celle du **dénominateur**.",
+      "pari": {
+        "question": "Que vaut $w$ ?",
+        "choix": [
+          {
+            "id": "affixes",
+            "texte": "$1+2i$ — on divise les affixes : $\\dfrac{z_C}{z_B} = \\dfrac{-2+6i}{2+2i}$",
+            "juste": false,
+            "retour": "$\\dfrac{z_C}{z_B}$ est un vrai rapport, mais il part de $O$, pas de $A$ : c'est le rapport qu'on lirait si l'origine était un sommet de la figure. **Et voici sa conséquence, vérifie-la :** promène la figure sur les quatre placements. **Ton nombre change à chaque fois — et le triangle, lui, ne change pas de forme.** Un nombre qui bouge quand la figure ne fait que se déplacer ne peut rien dire de sa forme. Le badge écrit $\\dfrac{z_C - z_A}{z_B - z_A}$, et lui ne bouge pas.",
+            "misconception": "mc.math.maths_complexes_trigo.w-sommet-ignore"
+          },
+          {
+            "id": "demi-soustraction",
+            "texte": "$1+i$ — on retire $z_A$ au numérateur, pas au dénominateur : $\\dfrac{z_C - z_A}{z_B}$",
+            "juste": false,
+            "retour": "Le geste est bon au numérateur et abandonné au dénominateur. Regarde les deux flèches : elles partent **toutes les deux** de $A$. Celle que tu as gardée part de $A$ ; celle que tu as laissée part de $O$. Deux flèches qui ne partent pas du même point ne se comparent pas — et ton nombre, lui aussi, change dès qu'on déplace la figure.",
+            "misconception": "mc.math.maths_complexes_trigo.w-sommet-ignore"
+          },
+          {
+            "id": "vecteurs",
+            "texte": "$i$",
+            "juste": true,
+            "retour": "Oui. $z_C - z_A = 4i$ et $z_B - z_A = 4$ : **ce sont les deux vecteurs issus de $A$**, pas les deux affixes. $\\dfrac{4i}{4} = i$. Et retiens le mécanisme, pas le résultat : la soustraction $-\\,z_A$ est ce qui fait partir la mesure **de $A$**. Sans elle, on mesurerait depuis l'origine — qui n'est nulle part dans cette figure."
+          },
+          {
+            "id": "ordre-inverse",
+            "texte": "$-i$ — on écrit $\\dfrac{z_B - z_A}{z_C - z_A}$",
+            "juste": false,
+            "retour": "Tu as retourné la fraction. Le badge dit laquelle des deux flèches est au **dénominateur** : la plus épaisse, celle qui va vers $B$. Ta fraction donne $\\dfrac{4}{4i} = -i$, pas $i$ : ce n'est pas le même nombre. **Les deux fractions sont utiles, et le bac écrit celle qui raccourcit le calcul** — mais il faut savoir laquelle on a écrite, parce que ce qu'on lira dessus n'est pas pareil.",
+            "misconception": "mc.math.maths_complexes_trigo.produit-quotient-argument-operation"
+          }
+        ]
+      },
+      "suite": "**Reprends les quatre placements, un par un.** Un seul rend juste le raccourci « je divise les affixes » : lequel, et qu'a-t-il de particulier ?",
+      "controles": [
+        "position"
+      ],
+      "lectures": [
+        "vecteurs",
+        "w"
+      ],
+      "etat": {
+        "forme": "rect-isocele",
+        "position": "posee",
+        "sommet": "A",
+        "mode": "triangle"
+      }
+    },
+    {
+      "id": "deux-lectures",
+      "titre": "Deux nombres, deux lectures",
+      "consigne": "Nouveau triangle, et il est posé de travers exprès. La scène a déjà formé le rapport : $w = \\dfrac{3+\\sqrt3\\,i}{4}$. Dans ce seul nombre, il y en a deux — son **module** et son **argument**. Avant de les lire : que valent-ils ?",
+      "pari": {
+        "question": "$\\vert w\\vert$ et $\\arg(w)$ valent…",
+        "choix": [
+          {
+            "id": "valeurs-absolues",
+            "texte": "$\\vert w\\vert = 2\\sqrt3$ et $\\arg(w) = \\dfrac{2\\pi}{3}$",
+            "juste": false,
+            "retour": "Ces deux nombres existent, et la scène vient de les montrer — mais ce ne sont pas ceux de $w$ : $2\\sqrt3$ est la longueur $AC$ toute seule, et $\\dfrac{2\\pi}{3}$ la direction de $\\vec{AC}$ comptée depuis l'axe réel. **Aucun des deux ne regarde $\\vec{AB}$.** Or $w$ est un rapport : son module compare $AC$ **à $AB$**, son argument compare la direction de $\\vec{AC}$ **à celle de $\\vec{AB}$**. C'est pour ça que déplacer ou tourner le triangle ne change pas $w$, alors que tes deux nombres, eux, tournent avec lui.",
+            "misconception": "mc.math.maths_complexes_trigo.angle-lu-depuis-l-axe"
+          },
+          {
+            "id": "quotient-et-ecart",
+            "texte": "$\\vert w\\vert = \\dfrac{\\sqrt3}{2}$ et $\\arg(w) = \\dfrac{\\pi}{6}$",
+            "juste": true,
+            "retour": "Oui — et regarde ce que la scène vient d'ajouter au dessin : $AC$ reporté sur la direction de $\\vec{AB}$. Il n'atteint pas $B$ : il s'arrête à $\\dfrac{\\sqrt3}{2}$ du chemin. **Le module n'est pas une longueur : c'est une longueur rapportée à une autre**, $\\dfrac{AC}{AB} = \\dfrac{2\\sqrt3}{4}$ — un nombre sans unité. Et l'arc, lui, part de $\\vec{AB}$ et arrive à $\\vec{AC}$ : **un écart de directions, pas une direction** — la règle du chapitre 4, $\\arg\\!\\left(\\frac{z}{z'}\\right) = \\arg z - \\arg z'$."
+          },
+          {
+            "id": "roles-echanges",
+            "texte": "$\\vert w\\vert = \\dfrac{\\pi}{6}$ et $\\arg(w) = \\dfrac{\\sqrt3}{2}$",
+            "juste": false,
+            "retour": "Les deux bons nombres, échangés. Un ordre de grandeur suffit à le voir : un angle de $\\dfrac{\\sqrt3}{2}$ radian fait environ $50°$, et l'arc que la scène vient de tracer en fait $30$. Le **module** compare deux longueurs ; l'**argument** est un angle. Ils ne sont pas interchangeables.",
+            "misconception": "mc.math.maths_complexes_trigo.lecture-w-module-argument"
+          },
+          {
+            "id": "fraction-retournee",
+            "texte": "$\\vert w\\vert = \\dfrac{2\\sqrt3}{3}$ et $\\arg(w) = -\\dfrac{\\pi}{6}$",
+            "juste": false,
+            "retour": "Ce sont les deux nombres de $\\dfrac1w$ — tu as lu la fraction à l'envers. Et c'est instructif : **retourner la fraction retourne le rapport des longueurs** ($\\dfrac{AB}{AC}$ au lieu de $\\dfrac{AC}{AB}$) **et change le signe de l'angle** ($-\\dfrac{\\pi}{6}$ au lieu de $\\dfrac{\\pi}{6}$, l'angle $(\\vec{AC},\\vec{AB})$ au lieu de $(\\vec{AB},\\vec{AC})$). Le badge écrit laquelle des deux tu regardes ; l'arc part du dénominateur.",
+            "misconception": "mc.math.maths_complexes_trigo.produit-quotient-argument-operation"
+          }
+        ]
+      },
+      "suite": "**Change de triangle.** Sur lequel les deux longueurs sont-elles le plus différentes ? Lis-les, ne les devine pas.",
+      "controles": [
+        "forme"
+      ],
+      "lectures": [
+        "w",
+        "module-w",
+        "argument-w",
+        "longueurs"
+      ],
+      "etat": {
+        "forme": "demi-equilateral",
+        "position": "tournee",
+        "sommet": "A",
+        "mode": "triangle"
+      }
+    },
+    {
+      "id": "depuis-quel-sommet",
+      "titre": "Rectangle — mais depuis où ?",
+      "consigne": "Encore un autre triangle, encore ailleurs, encore retourné. Depuis $A$, tu lis $\\vert w\\vert = \\dfrac{\\sqrt3}{2}$ et $\\arg(w) = \\dfrac{\\pi}{6}$ : ni $1$, ni un quart de tour. **Maintenant regarde le triangle lui-même, pas seulement les deux nombres.**",
+      "pari": {
+        "question": "Ce triangle est-il rectangle — et si oui, en quel sommet ?",
+        "choix": [
+          {
+            "id": "aucune-ligne",
+            "texte": "**Non, il n'est rectangle nulle part** : lu depuis $A$, $w$ n'est ni réel ni imaginaire pur, et son module ne vaut pas $1$.",
+            "juste": false,
+            "retour": "Tout ce que tu as lu est juste — **et tu l'as lu à un seul endroit.** $w$ sans sommet n'existe pas : le badge écrit $\\dfrac{z_C-z_A}{z_B-z_A}$, c'est-à-dire le rapport **au sommet $A$**. « Rien au sommet $A$ » ne veut pas dire « rien ». La preuve est déjà sur le dessin : le petit carré s'est posé **en $C$**. Change de sommet, et le nombre change avec lui — les critères que la lecture vérifie aussi.",
+            "misconception": "mc.math.maths_complexes_trigo.w-sommet-ignore"
+          },
+          {
+            "id": "rectangle-partout",
+            "texte": "**Oui, il est rectangle** — et le sommet n'y est pour rien : une fois qu'un triangle est rectangle, il l'est, quel que soit le sommet depuis lequel on forme $w$.",
+            "juste": false,
+            "retour": "La première moitié est juste : le triangle **est** rectangle, et le petit carré est là, en $C$. La seconde ne l'est pas, et elle coûte cher à l'examen. Le rapport que tu formes **dépend du sommet que tu choisis** : au sommet $A$ il vaut $\\dfrac{3+\\sqrt3\\,i}{4}$, au sommet $C$ il vaut $\\dfrac{\\sqrt3}{3}\\,i$ — deux nombres différents, deux lectures différentes. **Le triangle a un seul angle droit ; le critère « imaginaire pur » ne se vérifie qu'au sommet où cet angle se trouve.** Change de sommet et regarde les critères s'allumer, ou pas.",
+            "misconception": "mc.math.maths_complexes_trigo.w-sommet-ignore"
+          },
+          {
+            "id": "rectangle-en-A",
+            "texte": "**Oui — rectangle en $A$**, puisque l'argument de $w$ n'est pas nul.",
+            "juste": false,
+            "retour": "« Rectangle » ne correspond pas à « argument non nul » : il correspond à **$\\pm\\dfrac{\\pi}{2}$ exactement**, c'est-à-dire à un $w$ imaginaire pur. Ici l'argument vaut $\\dfrac{\\pi}{6}$, soit $30°$ — l'arc est sous tes yeux, en $A$, et il n'est pas droit. Le petit carré, lui, s'est posé ailleurs. **Tu regardes la bonne grandeur ; c'est le seuil qui est faux.** Chaque ligne de la table demande une valeur précise, pas « différente de zéro ».",
+            "misconception": "mc.math.maths_complexes_trigo.lecture-w-module-argument"
+          },
+          {
+            "id": "rectangle-en-C",
+            "texte": "**Oui — rectangle en $C$.**",
+            "juste": true,
+            "retour": "Oui. Le petit carré que la scène vient de poser est en $C$ — et regarde ce qu'elle a écrit en $A$ : $\\vert w\\vert = \\dfrac{\\sqrt3}{2}$, qui n'est pas $1$, et $\\arg(w) = \\dfrac{\\pi}{6}$, qui n'est ni $0$, ni $\\pi$, ni un quart de tour. Rien ne s'y allume. Change de sommet et lis : $w_C = \\dfrac{\\sqrt3}{3}\\,i$, imaginaire pur, donc **angle droit en $C$**. Ce que la table classe, ce n'est pas un triangle : c'est un **couple (triangle, sommet)**."
+          }
+        ]
+      },
+      "suite": "**Change de sommet, et lis les critères.** Au sommet $B$, l'argument vaut $-\\dfrac{\\pi}{3}$ — l'angle même du critère « équilatéral ». Qu'est-ce qui, à lui seul, interdit cette conclusion ?",
+      "controles": [
+        "sommet"
+      ],
+      "lectures": [
+        "w",
+        "nature"
+      ],
+      "etat": {
+        "forme": "demi-equilateral",
+        "position": "retournee",
+        "sommet": "A",
+        "mode": "triangle"
+      }
+    },
+    {
+      "id": "le-point-qui-bouge",
+      "titre": "Et si c'était le point de lecture qui se déplaçait ?",
+      "consigne": "On renverse la question. Ici **deux** points sont fixes — $A$ en $-2$, $B$ en $2$ — et c'est **$M$ qui est l'inconnue**. On appelle $u$ le rapport lu **au sommet $M$** : $u = \\dfrac{z - z_A}{z - z_B}$. *(Les deux flèches arrivent en $M$ au lieu d'en partir : les retourner ajoute $\\pi$ aux deux directions, et l'écart ne bouge pas.)* Pour le $M$ à l'écran, $u$ vaut $1-i$. La question n'est pas ce que ça dit de **ce** $M$ : c'est **où sont tous les autres**.",
+      "pari": {
+        "question": "L'ensemble des points $M$ pour lesquels ce rapport a un **module égal à $1$**, c'est…",
+        "choix": [
+          {
+            "id": "mediatrice",
+            "texte": "**la médiatrice de $[AB]$**",
+            "juste": true,
+            "retour": "Oui, et le mécanisme tient en une ligne : $\\vert u\\vert = \\dfrac{MA}{MB}$ — un quotient de deux distances. Il vaut $1$ exactement quand $MA = MB$ : **c'est la définition même de la médiatrice**, et c'est la seule courbe que la scène vient de tracer. Cette figure a deux autres lieux, qui répondent à des conditions sur l'argument : le cercle de diamètre $[AB]$ et la droite $(AB)$ — chacun paraît quand tu y poses $M$, et les trois autres retours t'y envoient. Pose $M$ sur la médiatrice, au cran $2\\sqrt3\\,i$, puis **fais-le glisser sans lâcher** : une des deux lignes du panneau refuse de bouger."
+          },
+          {
+            "id": "cercle-diametre",
+            "texte": "le **cercle de diamètre $[AB]$**",
+            "juste": false,
+            "retour": "Teste-le toi-même : pose $M$ sur ce cercle, **au cran $\\sqrt3+i$**. Le module y vaut $2+\\sqrt3$, pas $1$. Ce cercle est bien un lieu de cette figure — mais c'est celui de l'**argument** (l'angle droit en $M$), pas celui du module. Les deux conditions ne sélectionnent pas les mêmes points, et c'est tout l'enjeu.",
+            "misconception": "mc.math.maths_complexes_trigo.ensemble-points-locus-confondu"
+          },
+          {
+            "id": "cercle-unite",
+            "texte": "le **cercle de centre $O$ et de rayon $1$** : « $\\vert u\\vert = 1$ » veut dire que $M$ est à distance $1$ de l'origine",
+            "juste": false,
+            "retour": "Tu as lu la **valeur** du rapport comme la **position** de $M$. Ce sont deux choses différentes : $\\vert u\\vert$ ne mesure pas où est $M$ par rapport à $O$ — $O$ n'intervient nulle part ici —, il compare $MA$ et $MB$. La preuve est à l'écran, et le cercle unité est tracé juste à côté : **le cran $2\\sqrt3\\,i$** place $M$ à $2\\sqrt3 \\approx 3{,}46$ de l'origine, très loin de ce cercle, et son module vaut pourtant exactement $1$.",
+            "misconception": "mc.math.maths_complexes_trigo.ensemble-points-locus-confondu"
+          },
+          {
+            "id": "droite-ab",
+            "texte": "la **droite $(AB)$**",
+            "juste": false,
+            "retour": "Tu as appliqué au module un critère qui est celui de l'argument : « $M$ sur la droite $(AB)$ » correspond à « $u$ **réel** », c'est-à-dire à un **argument** de $0$ ou $\\pi$ — pas à un module de $1$. Pose $M$ sur la droite, **au cran $4$** : l'argument y vaut bien $0$, et le module vaut $3$. Deux critères, deux grandeurs, deux lieux.",
+            "misconception": "mc.math.maths_complexes_trigo.ensemble-points-locus-confondu"
+          }
+        ]
+      },
+      "suite": "**Fais glisser $M$ le long de chaque lieu, sans lâcher.** Sur chacun, **une des deux lignes du panneau reste écrite et ne bouge pas** : laquelle, et que vaut-elle ?",
+      "controles": [
+        "pointM",
+        "balayage"
+      ],
+      "lectures": [
+        "rapport-lieu"
+      ],
+      "etat": {
+        "mode": "lieu",
+        "pointM": "libre"
+      }
+    }
+  ]
+}

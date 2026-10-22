@@ -1,0 +1,1091 @@
+# bank.yaml — la banque « S'entraîner » de suivi-temporel-vitesse (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation, exercises.yaml), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Chaque entrée est une transcription FIDÈLE d'une entrée
+# « vérifié » de docs/sujets/pc/suivi-temporel-vitesse.md (re-fetch AlloSchool
+# + diff caractère par caractère par un agent-vérificateur, avec, pour 2024,
+# une deuxième passe indépendante et une figure re-mesurée intégralement —
+# voir le détail dans chaque `sourcing.note`). Raisonnement rédigé à la voix
+# experte de la maison sur 100 % des questions, en citant les rungs R1 à R4 de
+# la leçon (lesson.md) là où c'est naturel ; barème transcrit tel quel dans les
+# énoncés (tag « (x,xx pt) » ajouté — la source docs/sujets ne porte que
+# « (x,xx) ») ; conventions KaTeX (block scalars pour la prose, KaTeX brut
+# entre apostrophes simples dans steps[].math, notes sans backslash ni accent).
+#
+# NOTE ÉDITORIALE (pour la revue) : deux sujets « vérifié » couvrent cette
+# notion dans docs/sujets/pc/suivi-temporel-vitesse.md — 2021 N (Exercice I,
+# Partie 1, saponification par conductimétrie) et 2024 N (Exercice 1 Chimie,
+# Partie 1, dégradation de la vitamine C suivie par dosage). Le fichier source
+# liste aussi trois questions isolées relevant de ce thème mais déjà classées
+# ailleurs (2025 N dans controle-catalyse.md, 2023 N dans
+# esterification-hydrolyse.md, pour éviter la duplication d'un exercice classé
+# par sa question dominante) : elles ne sont PAS des entrées « vérifié » de CE
+# fichier source et ne sont donc pas converties ici, conformément à la
+# consigne (seules les deux sections « Statut: vérifié » ci-dessus le sont).
+#
+# Le 2021 N (bk-2021-n-x1) recoupe le sommet de leçon : ce même sujet est déjà
+# r-bac dans exercises.yaml (marqueur [[exercise:r-bac]] à R5 « Exercice de
+# type bac »), mêmes questions, mêmes valeurs numériques (x_f = 10⁻³ mol,
+# t_{1/2} ≈ 8 min, pente de (T) en t₁ = 4 min ≈ -0,01 S.m⁻¹.min⁻¹, v₁ ≈ 0,63
+# mol.m⁻³.min⁻¹), reprises ici à l'identique pour rester cohérentes avec le
+# sommet, avec un raisonnement rédigé à nouveau (pas une copie de
+# exercises.yaml). Il figure ici pour que la banque soit le corpus complet des
+# annales vérifiées de la notion (BANK-SPEC §1) — recoupement assumé, même
+# disposition que dipole-rl bk-2020-n-x4 / r-bac, chute-mouvements-plans
+# bk-2020-n-x5 / r-bac et reactions-acido-basiques bk-2021-n-x1 / rc-charge
+# bk-2019-n-x3. À l'arbitrage de l'owner si l'on préfère écarter cette entrée
+# de la banque pour éviter le recoupement sur la même page.
+#
+# SCOPE NOTE (pour les deux premières entrées) : aucune. Elles mobilisent
+# exactement les méthodes couvertes explicitement par la leçon — tableau
+# d'avancement et réactif limitant (R2), lien entre une grandeur physique
+# mesurée et x via une relation donnée puis dérivation (R1 pour le principe
+# du substitut monotone, R2 pour v = (1/V)(dx/dt), extension algébrique
+# naturelle du même principe pour bk-2021-n-x1 q4/q5), lecture de tangente et
+# de palier (R3), définition et lecture graphique de t_{1/2} (R4), facteurs
+# cinétiques et chocs efficaces (R3, R4). Aucun outil non couvert par la
+# leçon n'est mobilisé ; aucun pont de portée n'a donc été nécessaire.
+#
+# Le 2025 R (bk-2025-r-x1c, ajouté le 2026-08-27) est la TROISIÈME entrée de
+# cette banque — première de session rattrapage. C'est le §3 de l'exercice 1
+# de l'examen 2025 R (cinétique de l'hydrolyse basique — saponification — de
+# l'éthanoate d'éthyle : équation, vrai/faux justifié sur la vitesse
+# volumique, temps de demi-réaction et vitesse volumique lus sur $x(t)$ ;
+# 2,25 pt) ; ses deux autres sous-parties, indépendantes, vivent sous
+# content/pc/reactions-acido-basiques (bk-2025-r-x1) et
+# content/pc/esterification-hydrolyse (bk-2025-r-x1b). Elle porte un
+# CROSS-LIST CLASSEMENT (le contexte d'hydrolyse BASIQUE nomme et renvoie à
+# la notion « Estérification et hydrolyse ») et une SCOPE NOTE (ni cette
+# leçon ni « Estérification et hydrolyse » n'enseignent nommément la variante
+# basique, totale, de l'hydrolyse — reconstruite au point d'usage) ainsi
+# qu'un FLAG DE JUMELAGE avec bk-2021-n-x1 (même réaction chimique, réactif
+# limitant inversé) : voir le commentaire au-dessus de l'entrée pour le
+# détail des trois.
+#
+# Le 2011 N (bk-2011-n-x1, ajouté le 2026-08-29) est la QUATRIÈME entrée de
+# cette banque — Chimie, Partie I (cinétique de l'action de l'acide
+# sulfurique sur le zinc, suivie par mesure de pression). Source :
+# docs/sujets/_incoming/pc-2011-n.md, statut « VÉRIFIÉ — clearé pour
+# conversion » (passe adversariale indépendante du 2026-08-29).
+#
+# ⛔ LA GARDE S1, PORTÉE PAR CETTE ENTRÉE — condition de la clearance du
+# sujet. La figure 1 du sujet officiel (courbe ΔP(t), question 6) est
+# tracée sur une échelle INCOMPATIBLE avec ses propres données : plateau
+# imprimé ≈ 736,9 ± 2 hPa (mesuré au pixel sur le bitmap natif, deux
+# chaînes indépendantes) contre ≈ 227 hPa imposé par les données de
+# l'énoncé (ΔP_max = x_max.R.T/V, x_max établi à la question 3) — un
+# facteur ≈ 3,24. Mécanisme identifié et vérifié à moins de 1 % : la
+# courbe a été tracée avec x_max = n_i(H3O+) = 0,03 mol (comme si l'ion
+# oxonium, et non le zinc, était le réactif limitant) — 0,03×8,314×298 /
+# 10⁻³ ≈ 743,6 hPa, à moins de 1 % du plateau imprimé. AUCUNE valeur
+# absolue de ΔP n'est utilisée nulle part dans l'entrée ci-dessous — la
+# question 6 reste résoluble parce que sa lecture est purement RELATIVE
+# au palier (x(t)/x_max = ΔP(t)/ΔP_max, question 5), insensible à cette
+# échelle fautive : seul l'axe des temps compte. Même traitement que les
+# corrections déjà déclarées de la campagne (PC 2012 N, pK_A1 ; PC 2015
+# N, ρ de l'éthanol) — défaut du sujet OFFICIEL, consigné, jamais réparé
+# en silence, jamais utilisé comme s'il était correct.
+#
+# SCOPE NOTE : aucune. Les 6 questions mobilisent exactement les méthodes
+# du corps enseigné — tableau d'avancement et réactif limitant (R2),
+# principe du substitut monotone appliqué à une mesure de pression plutôt
+# qu'à une absorbance ou une conductivité (R1), et définition/lecture
+# graphique de t_1/2 (R4). Aucun pont de portée n'a été nécessaire.
+
+notion: pc/suivi-temporel-vitesse
+
+entries:
+  # ── bk-2021-n-x1 — 2021 N, Exercice I (Partie 1) : saponification, conductimétrie ──
+  # Même sujet que le sommet de leçon r-bac (exercises.yaml). Voir la note
+  # éditoriale en tête pour le recoupement assumé.
+  - id: bk-2021-n-x1
+    title: "Cinétique de la saponification suivie par conductimétrie : demi-réaction et vitesse volumique lues sur la courbe de conductivité"
+    source:
+      year: 2021
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice I — Partie 1 : Étude cinétique d'une réaction chimique (saponification)"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2021 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28F, AlloSchool element/127287 (Exercice I, Partie
+        1 — étude cinétique de la synthèse d'un savon par conductimétrie ;
+        barème ≈ 2,5 pt sur les 7 pt de l'exercice complet, dont la Partie 2 —
+        dosage d'un acide carboxylique — est transcrite sous
+        reactions-acido-basiques.md). Transcription vérifiée en une passe :
+        re-fetch indépendant AlloSchool + diff caractère par caractère
+        (agent-vérificateur, 2026-07-11 ; docs/sujets/pc/suivi-temporel-vitesse.md,
+        statut « vérifié »). La valeur du palier de la figure 1 (≈ 0,09
+        S.m⁻¹) porte, dans la source, le drapeau « lecture d'échelle à
+        confirmer » — reprise ici telle quelle, non utilisée dans les calculs
+        (les questions exploitent σ = 0,25 S.m⁻¹ à t = 0, la relation σ = f(x)
+        donnée, et la pente de la tangente (T) en t₁ = 4 min, pas le palier).
+        Recoupement assumé avec le sommet de leçon : ce même sujet est déjà le
+        sommet r-bac de exercises.yaml (marqueur [[exercise:r-bac]] à R5
+        « Exercice de type bac ») — mêmes questions, mêmes valeurs numériques
+        (x_f = 10⁻³ mol, t_{1/2} ≈ 8 min, pente dσ/dt en t₁ ≈ -0,01
+        S.m⁻¹.min⁻¹, v₁ ≈ 0,63 mol.m⁻³.min⁻¹) ; raisonnement rédigé de nouveau
+        ici (voix maison), pas copié de exercises.yaml — même disposition que
+        dipole-rl bk-2020-n-x4 / r-bac. À l'arbitrage de l'owner si l'on
+        préfère écarter cette entrée de la banque pour éviter le recoupement
+        sur la même page.
+    intro: |-
+      **Étude cinétique de la synthèse d'un savon (examen national, session normale 2021, Exercice I — Partie 1).**
+
+      L'une des plus anciennes réactions de synthèse est la fabrication du savon. Le savon est un produit composé de molécules obtenues par réaction chimique, entre un composé organique et une solution aqueuse d'hydroxyde de sodium.
+
+      Cette partie de l'exercice se propose d'étudier, par conductimétrie, la cinétique de la réaction de synthèse d'un savon. Cette réaction se produit entre l'éthanoate d'éthyle de formule $\text{CH}_3\text{COOC}_2\text{H}_5$ et une solution aqueuse d'hydroxyde de sodium $\text{Na}^+_{(aq)} + \text{HO}^-_{(aq)}$.
+
+      À un instant choisi comme origine des dates $t = 0$, on introduit, en excès, l'éthanoate d'éthyle dans un ballon contenant une quantité de matière $n_0(\text{HO}^-) = 10^{-3}\ \text{mol}$ d'ions hydroxyde. On obtient un mélange réactionnel ayant un volume $V_0 = 100\ \text{mL}$. Il se produit, sous une température constante, une réaction modélisée par l'équation chimique suivante :
+
+      $$\text{CH}_3\text{COOC}_2\text{H}_{5(aq)} + \text{HO}^-_{(aq)} \rightarrow \text{CH}_3\text{COO}^-_{(aq)} + \text{C}_2\text{H}_5\text{OH}_{(aq)}$$
+
+      On mesure, à chaque instant, la conductivité $\sigma$ du mélange réactionnel. La courbe de la figure 1 donne les variations de la conductivité du mélange réactionnel en fonction du temps. La droite $(T)$ représente la tangente à la courbe au point d'abscisse $t_1 = 4\ \text{min}$. L'expression de la conductivité $\sigma$ du mélange réactionnel en fonction de l'avancement $x$ de la réaction est :
+
+      $$\sigma = 0{,}25 - 160\,x \qquad (\sigma \text{ en } \text{S.m}^{-1},\ x \text{ en mol})$$
+
+      **Figure 1 (courbe).** Axe des ordonnées $\sigma\ (\text{S.m}^{-1})$ gradué $0{,}05,\ 0{,}1,\ 0{,}15,\ 0{,}2,\ 0{,}25$ ; axe des abscisses $t\ (\text{min})$ gradué $4,\ 8,\ 12,\ 16,\ 20$. La courbe part de $\sigma = 0{,}25\ \text{S.m}^{-1}$ à $t = 0$ et décroît (allure exponentielle) vers un palier au voisinage de $\sigma \approx 0{,}09\ \text{S.m}^{-1}$ *(lecture d'échelle à confirmer)*. La tangente $(T)$ (en pointillés) est tracée au point d'abscisse $t_1 = 4\ \text{min}$.
+    questions:
+      - id: q1
+        part: "Partie 1 — Tableau d'avancement et avancement final"
+        stem: |-
+          **(0,75 pt)** Dresser le tableau d'avancement de cette réaction et déterminer la valeur de l'avancement final $x_f$ sachant que cette réaction est totale.
+        reasoning: |-
+          On dresse le tableau d'avancement comme au chapitre 3 : une ligne pour chaque espèce, chacune évoluant selon son coefficient stoechiométrique (ici tous égaux à $1$). Pour $x_f$, on cherche le réactif limitant — celui qui s'annule en premier. L'énoncé précise que l'éthanoate d'éthyle est introduit **en excès** : c'est donc $\text{HO}^-$ qui limite la réaction. La réaction étant totale, $\text{HO}^-$ est intégralement consommé quand l'avancement atteint sa valeur finale, qui vaut alors exactement la quantité initiale d'hydroxyde — pas besoin de comparer deux quotients, l'excès de l'un des réactifs est donné directement par l'énoncé.
+        steps:
+          - math: 'n(\text{HO}^-) = n_0(\text{HO}^-) - x = 10^{-3} - x \quad (\text{mol})'
+            note: "Ion hydroxyde consomme, coefficient 1 ; l'éthanoate d'éthyle, en excès, n'est pas limitant."
+          - math: 'n(\text{HO}^-) = 0 \ \text{pour}\ x = x_f \implies x_f = n_0(\text{HO}^-)'
+            note: "Réaction totale : le réactif limitant (HO-) est entièrement consomme a l'avancement final."
+          - math: '\boxed{x_f = 10^{-3}\ \text{mol} = 1{,}0\ \text{mmol}}'
+            note: "Avancement final, fixe par la quantité initiale d'hydroxyde."
+      - id: q2
+        part: "Partie 1 — Temps de demi-réaction et vitesse volumique"
+        stem: |-
+          **(0,25 pt)** Définir le temps de demi-réaction $t_{1/2}$.
+        reasoning: |-
+          C'est la définition du chapitre 5 : $t_{1/2}$ est l'instant où l'avancement atteint la moitié de sa valeur finale. Cette réaction étant totale, sa valeur finale est l'avancement final $x_f$ calculé à la question précédente, d'où $x(t_{1/2}) = \dfrac{x_f}{2}$. La définition porte sur la courbe d'avancement $x(t)$ elle-même, pas sur une fraction de la durée totale d'observation — et comme $x(t)$ ne fait que croître, de $0$ à $x_f$, sans jamais redescendre, elle traverse cette valeur une fois et une seule : $t_{1/2}$ est donc parfaitement défini.
+      - id: q3
+        stem: |-
+          **(0,5 pt)** À l'aide de l'expression $\sigma = f(x)$ et de la courbe de la figure 1, déterminer la valeur de $t_{1/2}$.
+        reasoning: |-
+          Piège à éviter : on ne lit pas $t_{1/2}$ directement sur l'axe des temps, parce que la courbe fournie donne $\sigma(t)$, pas $x(t)$. Il faut donc traduire la condition du chapitre 5, $x = x_f/2$, en une condition sur $\sigma$ — la seule grandeur portée en ordonnée sur cette figure — grâce à la relation $\sigma = f(x)$ donnée dans l'énoncé. Une fois cette valeur de $\sigma$ calculée, on lit sur la courbe l'abscisse du point où elle est atteinte.
+        steps:
+          - math: 'x = \dfrac{x_f}{2} = \dfrac{10^{-3}}{2} = 0{,}5\times10^{-3}\ \text{mol}'
+            note: "Moitié de l'avancement final trouve en q1 (définition du chapitre 5)."
+          - math: '\sigma\!\left(\tfrac{x_f}{2}\right) = 0{,}25 - 160\times 0{,}5\times10^{-3} = 0{,}25 - 0{,}08'
+            note: "On convertit la condition sur x en condition sur sigma via la relation donnée."
+          - math: '\sigma\!\left(\tfrac{x_f}{2}\right) = 0{,}17\ \text{S.m}^{-1}'
+            note: "Valeur de conductivite correspondant a x = x_f/2."
+          - math: '\boxed{t_{1/2} \approx 8\ \text{min}}'
+            note: "Lecture graphique : abscisse du point de la figure 1 ou sigma = 0,17 S/m."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Montrer que la vitesse volumique de la réaction à un instant $t$ s'écrit sous la forme : $v = -\dfrac{1}{160\,V_0} \cdot \dfrac{d\sigma}{dt}$.
+        reasoning: |-
+          On part de la définition générale du chapitre 3, $v = \dfrac{1}{V_0}\dfrac{dx}{dt}$ — mais ici ce n'est pas $x$ qu'on mesure en continu, c'est $\sigma$. Le principe reste celui du chapitre 2 (une grandeur substitut, liée de façon connue à $x$) : il suffit d'exprimer $x$ en fonction de $\sigma$ en inversant la relation donnée, puis de dériver par rapport au temps. L'inversion fait apparaître un signe moins, qui n'a rien d'anormal : $\sigma$ décroît précisément parce que $x$ croît.
+        steps:
+          - math: 'v = \dfrac{1}{V_0}\dfrac{dx}{dt}'
+            note: "Définition de la vitesse volumique de réaction (chapitre 3)."
+          - math: '\sigma = 0{,}25 - 160\,x \implies x = \dfrac{0{,}25-\sigma}{160}'
+            note: "On inverse la relation sigma = f(x) donnée dans l'énoncé (0,25 est une constante)."
+          - math: '\dfrac{dx}{dt} = -\dfrac{1}{160}\dfrac{d\sigma}{dt}'
+            note: "On derive par rapport au temps : le signe moins vient de la dérivée de -sigma/160."
+          - math: '\boxed{v = \dfrac{1}{V_0}\left(-\dfrac{1}{160}\dfrac{d\sigma}{dt}\right) = -\dfrac{1}{160\,V_0}\dfrac{d\sigma}{dt}}'
+            note: "On reporte dans v = (1/V0)(dx/dt) : forme demandee."
+      - id: q5
+        stem: |-
+          **(0,5 pt)** Déterminer, en $\text{mol.m}^{-3}.\text{min}^{-1}$, la valeur $v_1$ de cette vitesse à l'instant $t_1 = 4\ \text{min}$.
+        reasoning: |-
+          $\dfrac{d\sigma}{dt}$ en $t_1$, c'est la pente de la tangente $(T)$ tracée en ce point (méthode du chapitre 4) : on lit ses coordonnées pour l'estimer. Cette pente est négative, puisque $\sigma$ décroît ; reportée dans la formule de la question précédente, le signe moins devant la compense, et $v_1$ ressort positif, comme il se doit pour une vitesse. Un seul piège reste à surveiller : l'énoncé demande $v_1$ en $\text{mol.m}^{-3}.\text{min}^{-1}$, donc $V_0$ doit être converti en $\text{m}^3$ — pas laissé en litres.
+        steps:
+          - math: '\left.\dfrac{d\sigma}{dt}\right|_{t_1} \approx -0{,}01\ \text{S.m}^{-1}.\text{min}^{-1}'
+            note: "Pente de la tangente (T) lue au point t1 = 4 min sur la figure 1 (chapitre 4), pente négative."
+          - math: 'V_0 = 100\ \text{mL} = 100\times10^{-6}\ \text{m}^3 = 10^{-4}\ \text{m}^3'
+            note: "Conversion en m3, imposée par l'unité demandee (mol.m-3.min-1)."
+          - math: 'v_1 = -\dfrac{1}{160\,V_0}\left.\dfrac{d\sigma}{dt}\right|_{t_1} = -\dfrac{1}{160\times10^{-4}}\times(-0{,}01)'
+            note: "On applique la formule de q4 avec les valeurs numériques."
+          - math: '\boxed{v_1 \approx 0{,}63\ \text{mol.m}^{-3}.\text{min}^{-1}}'
+            note: "Résultat positif : les deux signes moins se compensent."
+
+  # ── bk-2024-n-x1 — 2024 N, Exercice 1 (Chimie), Partie 1 : dégradation de la vitamine C ──
+  - id: bk-2024-n-x1
+    title: "Dégradation de la vitamine C dans un jus d'orange : facteurs cinétiques, demi-réaction et vitesse volumique lues sur x(t)"
+    source:
+      year: 2024
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 1 (Chimie) — Partie 1 : Suivi temporel de la dégradation de la vitamine C"
+    bareme_total: 2.25
+    duration_min: 13
+    sourcing:
+      status: sourced
+      note: >-
+        2024 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28F, AlloSchool element/145763 (Exercice 1,
+        Partie 1 — suivi temporel de la dégradation de la vitamine C dans un
+        jus d'orange, par dosage ; barème de la Partie 1 = 2,25 pt
+        (0,75+0,5+1) sur les 7 pt de l'exercice complet, dont la Partie 2 —
+        dosage d'une solution aqueuse de vitamine C — est transcrite sous
+        reactions-acido-basiques.md). Transcription vérifiée en 2ᵉ passe :
+        vérificateur indépendant (agent-vérificateur-indépendant, 2026-08-07),
+        diff OK, figure 1 re-mesurée intégralement au pixel (étalonnage
+        refait, courbe confirmée partant de l'origine, palier confirmé à
+        ≈ 0,5 mmol, ordonnée à l'origine de la tangente (T) et point de
+        tangence confirmés — docs/sujets/pc/suivi-temporel-vitesse.md, statut
+        « vérifié »). Physique re-dérivée et cohérente avec la source : pente
+        de $(T)$ ≈ 2,5×10⁻³ mmol.h⁻¹ (lecture des deux points transcrits dans
+        l'intro : ordonnée à l'origine ≈ 0,26 mmol, point de tangence à
+        $t_1=60$ h, $x≈0{,}41$ mmol — cohérent avec la valeur plus précise
+        re-dérivée par le vérificateur sur les coordonnées pixel exactes,
+        2,56×10⁻³ mmol.h⁻¹), $v(t_1) = \text{pente}/V ≈ 1{,}3\times10^{-2}\
+        \text{mmol.L}^{-1}.\text{h}^{-1}$ ; $x_{max}≈0{,}5\ \text{mmol}$, d'où
+        $t_{1/2}≈24\ \text{h}$ — les deux valeurs figurent explicitement dans
+        le sourcing de la transcription source comme re-dérivées par le
+        vérificateur.
+    intro: |-
+      **Suivi temporel de la dégradation de la vitamine C dans un jus d'orange (examen national, session normale 2024, Exercice 1 — Chimie, Partie 1).**
+
+      *(Cadrage de l'exercice.)* L'acide ascorbique, de formule brute $\text{C}_6\text{H}_8\text{O}_6$ appelé vitamine C, est un antioxydant présent dans de nombreux fruits et légumes. La vitamine C possède des propriétés rédox et acido-basiques. Cette vitamine se dégrade à la chaleur, à l'air ;…
+
+      On dispose d'une solution $(S)$ de jus d'orange de volume $V = 200\ \text{mL}$ à une température $\theta$. Si on expose ce jus à l'air, la vitamine C qu'il contient se dégrade par oxydation avec le dioxygène.
+
+      On suit, par dosage, l'évolution temporelle de la dégradation de cette vitamine. Le graphe de la figure 1 représente l'évolution temporelle de l'avancement $x$ de la réaction d'oxydation de la vitamine C. La droite $(T)$ dans la figure 1 représente la tangente à la courbe au point d'abscisse $t = t_1 = 60\ \text{h}$.
+
+      **Figure 1 (courbe).** Axe des ordonnées $x\ (\text{mmol})$, gradué (traits principaux chiffrés) $0{,}1$ et $0{,}2$, origine $0$ ; axe des abscisses $t\ (\text{h})$, gradué (traits principaux chiffrés) $40$ et $80$. Courbe croissante et concave (allure de saturation), partant exactement de l'origine $(0\,;\,0)$, montant rapidement puis s'incurvant vers un palier horizontal à $\simeq 0{,}5\ \text{mmol}$. La droite $(T)$, tracée en trait plein, est tangente à la courbe au point marqué d'une croix « $\times$ », situé à $t_1 = 60\ \text{h}$, où $x \simeq 0{,}41\ \text{mmol}$ ; elle coupe l'axe des ordonnées, à $t = 0$, à $\simeq 0{,}26\ \text{mmol}$.
+    questions:
+      - id: q1
+        part: "Partie 1 — Facteurs cinétiques et modèle des chocs efficaces"
+        stem: |-
+          **(0,75 pt)** Répondre par vrai ou faux (sans justification) aux affirmations suivantes :
+
+          a. La concentration initiale des réactifs est un facteur cinétique.
+
+          b. L'évolution d'un système chimique est toujours considérée comme terminée au bout d'une durée égale à deux fois le temps de demi-réaction.
+
+          c. Plus les chocs entre les espèces réactives sont nombreux et efficaces, plus la réaction chimique est rapide.
+        reasoning: |-
+          L'énoncé ne demande pas de justification, mais le raisonnement, lui, ne se saute pas.
+
+          **a. Vrai.** La concentration initiale des réactifs est bien l'un des deux facteurs cinétiques du chapitre précédent, avec la température (rappelés au chapitre 5) : augmenter la concentration initiale augmente la fréquence des chocs entre entités réactives, donc accélère la réaction dès l'instant $t=0$.
+
+          **b. Faux.** C'est le piège de cette série : il n'existe pas de règle universelle qui fixe la fin d'une transformation à un multiple précis de $t_{1/2}$. Le chapitre 4 le rappelle explicitement : une transformation lente s'approche de son état final progressivement, de plus en plus lentement, sans qu'on puisse désigner un instant exact où elle « s'arrête » tout à fait — la courbe $x(t)$ tend vers $x_{max}$ sans jamais l'atteindre exactement. Affirmer que c'est *toujours* terminé à $2\,t_{1/2}$ généralise abusivement un ordre de grandeur en une règle absolue.
+
+          **c. Vrai.** C'est exactement le mécanisme du chapitre 4 : la vitesse d'une réaction dépend directement de la fréquence des chocs efficaces entre entités réactives — plus ils sont nombreux et efficaces, plus la réaction avance vite.
+      - id: q2
+        part: "Partie 1 — Lecture du temps de demi-réaction"
+        stem: |-
+          **(0,5 pt)** Déterminer graphiquement $t_{1/2}$, le temps de demi-réaction.
+        reasoning: |-
+          On applique la méthode du chapitre 5 : on repère d'abord $x_{max}$, le palier vers lequel tend la courbe, on calcule sa moitié, puis on lit sur la courbe l'abscisse du point où cette moitié est atteinte.
+        steps:
+          - math: 'x_{max} \approx 0{,}5\ \text{mmol}'
+            note: "Palier de la courbe, lu sur la figure 1 (méthode du chapitre 5)."
+          - math: '\dfrac{x_{max}}{2} \approx 0{,}25\ \text{mmol}'
+            note: "Moitié de l'avancement maximal."
+          - math: '\boxed{t_{1/2} \approx 24\ \text{h}}'
+            note: "Lecture graphique : abscisse du point de la figure 1 ou x = 0,25 mmol."
+      - id: q3
+        part: "Partie 1 — Vitesse volumique par lecture de tangente"
+        stem: |-
+          **(1 pt)** Déterminer, en unité $\text{mmol.L}^{-1}.\text{h}^{-1}$, la vitesse volumique de la réaction à l'instant $t_1$.
+        reasoning: |-
+          Comme au chapitre 3, $v(t_1) = \dfrac{1}{V}\left.\dfrac{dx}{dt}\right|_{t_1}$, et $\left.\dfrac{dx}{dt}\right|_{t_1}$ est la pente de la tangente $(T)$ tracée en ce point (chapitre 4). On lit deux points sur cette droite plutôt que d'estimer la pente à l'oeil : son ordonnée à l'origine ($t=0$) et le point de tangence marqué par la croix ($t_1=60\ \text{h}$), tous deux transcrits dans l'énoncé. Ici, contrairement au sujet de conductimétrie, $x$ est déjà en mmol et $V$ déjà en litres — l'unité demandée ne réclame aucune conversion supplémentaire.
+        steps:
+          - math: '\text{pente}(T) \approx \dfrac{0{,}41 - 0{,}26}{60 - 0} = \dfrac{0{,}15}{60}'
+            note: "Deux points de (T) : ordonnée à l'origine (t=0, x=0,26 mmol) et point de tangence (t1=60 h, x=0,41 mmol)."
+          - math: '\text{pente}(T) \approx 2{,}5\times10^{-3}\ \text{mmol.h}^{-1}'
+            note: "Pente de la tangente, estimee par lecture graphique (chapitre 4)."
+          - math: 'v(t_1) = \dfrac{1}{V}\times\text{pente}(T) = \dfrac{2{,}5\times10^{-3}}{0{,}200}'
+            note: "Définition de la vitesse volumique (chapitre 3) ; V = 0,200 L, déjà dans l'unité demandee."
+          - math: '\boxed{v(t_1) \approx 1{,}3\times10^{-2}\ \text{mmol.L}^{-1}.\text{h}^{-1}}'
+            note: "Vitesse volumique de la réaction a t1 = 60 h."
+
+  # ── bk-2025-r-x1c — 2025 R, Exercice 1 (§3) : cinetique de l'hydrolyse basique (saponification) de l'ethanoate d'ethyle ──
+  # Ses deux autres sous-parties, independantes, vivent ailleurs : le §1
+  # (solution d'acide ethanoique) sous content/pc/reactions-acido-basiques,
+  # entree bk-2025-r-x1 ; le §2 (esterification, dosage de l'acide restant,
+  # rendement) sous content/pc/esterification-hydrolyse, entree bk-2025-r-x1b.
+  #
+  # CROSS-LIST CLASSEMENT (honore, PAS duplique en entree separee) : cette
+  # sous-partie se deroule dans un contexte d'HYDROLYSE BASIQUE d'un ester
+  # (saponification), qui est un geste nomme de la notion « Esterification et
+  # hydrolyse » (rungs R1-R2), meme si cette lecon-ci (suivi-temporel-vitesse)
+  # est la notion dominante pour x(t), t_1/2 et la vitesse volumique. Le
+  # domaine est nomme et la lecon renvoyee par son nom lisible dans le
+  # raisonnement de la question 3-1.
+  #
+  # SCOPE NOTE (trou signale, pas corrige silencieusement) : NI cette lecon
+  # NI « Esterification et hydrolyse » n'enseignent nommement la variante
+  # BASIQUE de l'hydrolyse (reaction TOTALE, avec HO- qui neutralise l'acide
+  # forme au fur et a mesure). Le rung R2 de « Esterification et hydrolyse »
+  # n'ecrit que l'hydrolyse NEUTRE, reversible, avec l'eau seule
+  # (R-COO-R' + H2O <=> R-COOH + R'-OH). Le raisonnement de la question 3-1
+  # reconstruit la variante basique au point d'usage, en combinant le rung R2
+  # (l'hydrolyse est la reaction inverse de l'esterification du rung R1) et
+  # le PRINCIPE de deplacement d'equilibre par elimination d'un produit du
+  # rung R5 (applique ici en sens inverse : HO- neutralise l'acide carboxylique
+  # forme aussitot qu'il apparait, ce qui retire en permanence un produit de
+  # l'equilibre d'hydrolyse et le tire jusqu'a completion) — pas un outil
+  # invente, une synthese des rungs deja etablis. Signale pour
+  # l'orchestrateur / pedagogy-architect : un futur rung pourrait nommer
+  # explicitement cette variante.
+  #
+  # FLAG DE JUMELAGE avec bk-2021-n-x1 (deja dans cette banque) : MEME
+  # REACTION CHIMIQUE (ethanoate d'ethyle + HO- -> acetate + ethanol), meme
+  # paire de competences (t_1/2, vitesse volumique par tangente). Ce qui
+  # distingue les deux, et justifie de garder les deux :
+  #   (a) LA METHODE DE MESURE. bk-2021-n-x1 suit la reaction par
+  #       CONDUCTIMETRIE : x(t) n'est jamais donne directement, il faut
+  #       d'abord inverser la relation sigma = f(x) fournie (rung 1, principe
+  #       du substitut monotone) avant de deriver. Ici, x(t) est donne
+  #       DIRECTEMENT sur la courbe : aucune inversion, une lecture de
+  #       tangente immediate.
+  #   (b) LE REACTIF LIMITANT EST INVERSE. Dans bk-2021-n-x1, l'ester est
+  #       introduit EN EXCES et HO- est limitant (x_max = n0(HO-) = 1,0 mmol).
+  #       Ici, c'est l'INVERSE : l'ester est limitant (n01 = 0,8 mmol < 1,0
+  #       mmol de HO-), x_max = n01 = 0,8 mmol. Cas discriminant pour l'eleve
+  #       qui aurait automatise « HO- est toujours limitant en saponification ».
+  #   (c) UNE QUESTION ABSENTE DE bk-2021-n-x1 : le vrai/faux justifie sur la
+  #       decroissance de v(t) au cours du temps (question 3-2, rung 3),
+  #       competence testee ici et nulle part ailleurs dans cette banque.
+  # Recommandation : garder les deux. Arbitrage owner.
+  - id: bk-2025-r-x1c
+    title: "Cinétique de l'hydrolyse basique (saponification) de l'éthanoate d'éthyle : x(t), temps de demi-réaction et vitesse volumique lus sur la courbe"
+    source:
+      year: 2025
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — §3 : étude d'une hydrolyse basique d'un ester"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS28F, AlloSchool
+        https://www.alloschool.com/element/145799, scan
+        course-422/upload-87492/0002-big.jpg et 0003-big.jpg, pages 2 et 3
+        sur 6 (Exercice 1 — §3, étude d'une hydrolyse basique d'un ester :
+        équation, vrai/faux justifié sur la vitesse volumique, temps de
+        demi-réaction lu sur $x(t)$, vitesse volumique par tangente
+        convertie en $\text{mmol.L}^{-1}.\text{min}^{-1}$). Barème du §3
+        recompté sur l'énoncé source : 0,5 (3-1) + 0,5 (3-2) + 0,5 (3-3) +
+        0,75 (3-4) = 2,25 pt, sur les 7 pt de l'exercice complet, dont le §1
+        — solution d'acide éthanoïque, 2,75 pt — est transcrit sous
+        content/pc/reactions-acido-basiques, entrée bk-2025-r-x1, et le §2 —
+        estérification et dosage de l'acide restant, 2,0 pt — sous
+        content/pc/esterification-hydrolyse, entrée bk-2025-r-x1b ; la somme
+        des trois, 2,75+2,0+2,25 = 7,0 pt, coïncide avec le recompte en
+        marge du fichier source. Source :
+        docs/sujets/_incoming/pc-spc-2025-r.md, statut « vérifié — re-fetch
+        indépendant + re-dérivation (vérificateur adversarial, 2026-08-23) ».
+        La description de la figure 2 (courbe $x(t)$) est reprise ici AU MOT
+        PRÈS de la version corrigée par le vérificateur. Contre-calcul
+        refait ici, indépendamment de la re-dérivation du vérificateur (qui
+        donne déjà $t_{1/2}=4{,}0\ \text{min}$ et
+        $v(3\ \text{min})=1{,}6\ \text{mmol.L}^{-1}.\text{min}^{-1}$, et que
+        ce contre-calcul confirme) : réactif limitant l'ester
+        ($n_{01}=0{,}8\ \text{mmol} < n_0(HO^-)=1{,}0\ \text{mmol}$), donc
+        $x_{max}=0{,}8\ \text{mmol}$ et $x(t_{1/2})=0{,}4\ \text{mmol}$, lu à
+        $t=4{,}0\ \text{min}$ ; pente de $(T)$ en $t=3\ \text{min}$ :
+        $(0{,}32-0{,}08)/3 = 0{,}08\ \text{mmol.min}^{-1}$ ; $v =
+        0{,}08/0{,}050 = 1{,}6\ \text{mmol.L}^{-1}.\text{min}^{-1}$.
+        CROSS-LIST et SCOPE NOTE : voir le commentaire au-dessus de cette
+        entrée (contexte d'hydrolyse basique, domaine « Estérification et
+        hydrolyse » nommé mais non dupliqué en entrée ; variante basique de
+        l'hydrolyse reconstruite au point d'usage, absente de tout rung).
+        FLAG DE JUMELAGE avec bk-2021-n-x1 : voir le commentaire au-dessus
+        de l'entrée.
+    intro: |-
+      **Étude d'une hydrolyse basique d'un ester (examen national, session de rattrapage 2025 — Exercice 1, §3, 2,25 points).**
+
+      *Cet exercice de 7 points étudie aussi, dans ses deux autres sous-parties : une solution aqueuse d'acide éthanoïque (§1, sous la notion « Réactions acido-basiques ») ; une réaction d'estérification (§2, sous la notion « Estérification et hydrolyse »).*
+
+      On étudie la cinétique chimique de la réaction d'hydrolyse basique (saponification) de l'éthanoate d'éthyle. À un instant choisi comme origine des dates $(t=0)$, on introduit $n_{01} = 0{,}8\ \text{mmol}$ d'éthanoate d'éthyle dans un bécher contenant une solution d'hydroxyde de sodium où $n_0(HO^-_{(aq)}) = 1{,}0\ \text{mmol}$. On obtient ainsi un volume $V = 50\ \text{mL}$ du mélange réactionnel. La réaction est totale et se produit à une température $\theta$.
+
+      La courbe de la figure 2 représente l'évolution temporelle de l'avancement $x$ de la réaction de saponification étudiée. La droite $(T)$ représente la tangente à la courbe au point d'abscisse $t = 3\ \text{min}$.
+
+      **Figure 2 (courbe).** $x\ (\text{mmol})$ en fonction de $t\ (\text{min})$, sur quadrillage à double maille (grands carreaux découpés en $5\times5$). **Abscisse** : grand carreau $=1\ \text{min}$ (petit carreau $=0{,}2\ \text{min}$), traits principaux chiffrés $1$ et $2$ seulement ; le cadre compte **8 grands carreaux**, soit $t$ de $0$ à $\mathbf{8\ \text{min}}$. **Ordonnée** : grand carreau $=0{,}10\ \text{mmol}$ (petit carreau $=0{,}02\ \text{mmol}$), traits principaux chiffrés $0{,}10$ et $0{,}20$ seulement ; le cadre compte **6 grands carreaux**, soit $x$ de $0$ à $\mathbf{0{,}60\ \text{mmol}}$.
+
+      Deux tracés :
+      - la **courbe** $x(t)$, partant exactement de l'origine, croissante et concave (pente décroissante), qui atteint le **coin supérieur droit** du cadre ($t = 8\ \text{min}$, $x = 0{,}60\ \text{mmol}$) sans palier visible ;
+      - la **droite $(T)$**, tangente à la courbe au point d'abscisse $t = 3\ \text{min}$, point de contact marqué d'une **croix** ×. Lectures : la croix est à $(3\ \text{min}\,;\,0{,}32\ \text{mmol})$ et $(T)$ coupe l'axe des ordonnées à $x = 0{,}08\ \text{mmol}$ (4 petits carreaux), d'où une pente $\dfrac{0{,}32-0{,}08}{3} = 0{,}08\ \text{mmol.min}^{-1}$ ; $(T)$ sort du cadre par le haut vers $t \simeq 6{,}5\ \text{min}$, ce qui recoupe la même pente.
+
+      Légende : « Figure 2 ».
+    questions:
+      - id: q1
+        stem: |-
+          **3-1. (0,5 pt)** Écrire, en utilisant les formules semi-développées, l'équation de la réaction associée à l'hydrolyse basique de l'éthanoate d'éthyle.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** L'hydrolyse d'un ester est la réaction **inverse** de l'estérification (chapitre 3 de la notion **Estérification et hydrolyse**) : $R-COO-R' + H_2O \rightleftharpoons R-COOH + R'-OH$. Ici, la réaction se produit en présence d'ions hydroxyde $HO^-$ — c'est une **hydrolyse basique**, une variante que ni cette leçon-ci (« Suivi temporel d'une transformation ») ni « Estérification et hydrolyse » ne construisent nommément. On la reconstruit à partir de ce que ces deux leçons établissent séparément.
+
+          L'éthanoate d'éthyle, $CH_3-COO-CH_2-CH_3$, est l'ester (le seul réactif portant le groupe $-COO-$ entre deux chaînes carbonées — notion sœur « **Estérification et hydrolyse** ») : son hydrolyse donnerait, en milieu neutre, l'acide éthanoïque et l'éthanol (notion sœur « **Estérification et hydrolyse** »). Mais ici, l'ion $HO^-$, base **forte**, neutralise l'acide carboxylique dès qu'il se forme — il le retire donc en permanence de l'équilibre d'hydrolyse, exactement le principe de déplacement d'équilibre par élimination d'un produit établi dans la notion sœur « **Estérification et hydrolyse** » (là-bas, appliqué à retirer l'eau ou l'ester pour pousser l'**estérification** ; ici, c'est l'acide qui est retiré, ce qui pousse l'**hydrolyse**, la réaction inverse). L'équilibre est ainsi tiré jusqu'à sa fin : la réaction devient **totale**, flèche simple — cohérence avec l'énoncé, qui la donne explicitement comme telle.
+
+          $$\boxed{CH_3-COO-CH_2-CH_3 + HO^-_{(aq)} \longrightarrow CH_3-COO^-_{(aq)} + CH_3-CH_2-OH}$$
+
+          **Le piège nommé de cette question.** N'écris pas l'acide éthanoïque neutre $CH_3-COOH$ comme produit : en présence de la base forte $HO^-$, il est instantanément neutralisé en sa base conjuguée $CH_3-COO^-$ (l'ion acétate) — c'est précisément ce qui rend la réaction totale plutôt que limitée, et c'est ce produit-là, l'ion carboxylate, qu'il faut écrire.
+      - id: q2
+        stem: |-
+          **3-2. (0,5 pt)** Répondre par vrai ou faux, en justifiant, à l'affirmation suivante : « La vitesse volumique $v(t)$ de cette réaction diminue au cours du temps ».
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** C'est exactement l'affirmation du chapitre 4 de cette leçon : $v(t)$ est maximale au tout début de la réaction et décroît continûment ensuite, en tendant vers zéro à mesure que la réaction s'achève.
+
+          $$\boxed{\text{VRAI}}$$
+
+          **La justification.** La vitesse volumique dépend directement de la fréquence des chocs efficaces entre entités réactives (chapitre 4) : plus il y a de réactifs par unité de volume, plus ils se croisent souvent. Or les quantités de réactifs restants — l'éthanoate d'éthyle et l'ion hydroxyde — diminuent continûment à mesure que l'avancement $x$ augmente (tableau d'avancement, chapitre 3) : moins de réactifs, c'est moins de chocs efficaces par seconde, donc une vitesse plus faible. C'est visible directement sur la courbe $x(t)$ de la figure 2 : elle est concave, sa pente — donc $v(t)$ — diminue sans cesse depuis l'origine.
+
+          **Le piège nommé de cette question.** Ne confonds pas cette décroissance de $v(t)$ avec une réaction qui « ralentit puis s'arrête à un instant précis » : $v(t)$ tend vers $0$ mais l'avancement, lui, continue de croître (de plus en plus lentement) jusqu'à $x_{max}$ — ce sont deux affirmations différentes, et seule celle sur $v(t)$ est posée ici.
+      - id: q3
+        stem: |-
+          **3-3. (0,5 pt)** Déterminer graphiquement $t_{1/2}$ le temps de demi-réaction.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La méthode du chapitre 5 : repérer $x_{max}$, calculer sa moitié, lire sur la courbe l'abscisse où cette moitié est atteinte — $t_{1/2}$ se lit toujours à $x_{max}/2$, **jamais** à la moitié de la durée totale représentée sur le graphe (un piège d'autant plus tentant ici que le cadre s'arrête pile à $t=8\ \text{min}$, dont la moitié, $4\ \text{min}$, coïncide numériquement avec la bonne réponse — par coïncidence de ce cadre précis, pas par définition).
+
+          **Trouver $x_{max}$ : quel réactif est limitant ?** $n_{01}(\text{ester}) = 0{,}8\ \text{mmol}$ contre $n_0(HO^-) = 1{,}0\ \text{mmol}$ : c'est l'éthanoate d'éthyle qui est en défaut. La réaction étant totale (énoncé), l'ester limitant est intégralement consommé à l'avancement final :
+
+          $$\boxed{x_{max} = n_{01} = 0{,}8\ \text{mmol}}$$
+
+          **La condition sur $x$, puis la lecture.**
+
+          $$x(t_{1/2}) = \frac{x_{max}}{2} = \frac{0{,}8}{2} = 0{,}40\ \text{mmol}$$
+
+          Sur la figure 2, la courbe passe par $x = 0{,}40\ \text{mmol}$ (le 4ᵉ trait principal horizontal) exactement à l'aplomb du 4ᵉ trait principal vertical.
+
+          $$\boxed{t_{1/2} = 4{,}0\ \text{min}}$$
+
+          **Le piège nommé de cette question.** Ne va pas chercher $x_{max}$ du côté de $HO^-$ ($1{,}0\ \text{mmol}$) : $HO^-$ est le réactif **en excès** ici (à la différence d'un autre sujet de cette même banque, où c'était l'inverse — vérifie toujours lequel des deux réactifs s'épuise le premier avant de fixer $x_{max}$). Et ne lis pas $t_{1/2}$ à $t=4\ \text{min}$ « parce que c'est la moitié du cadre » : c'est la définition $x(t_{1/2})=x_{max}/2$ qui commande la lecture, le fait qu'elle tombe au milieu du cadre est une coïncidence de cette figure précise.
+      - id: q4
+        stem: |-
+          **3-4. (0,75 pt)** Déterminer, en unité $\text{mmol.L}^{-1}.\text{min}^{-1}$, la vitesse volumique de la réaction à l'instant $t = 3\ \text{min}$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** $v(t) = \dfrac{1}{V}\dfrac{dx}{dt}$ (chapitre 3), et $\dfrac{dx}{dt}$ à $t=3\ \text{min}$ est la pente de la tangente $(T)$ tracée en ce point (chapitre 4) : on lit deux points de cette droite plutôt que d'estimer sa pente à l'œil.
+
+          **La pente de $(T)$, à partir des deux points donnés.** Le point de contact (croix ×) est à $(3\ \text{min}\,;\,0{,}32\ \text{mmol})$, et $(T)$ coupe l'axe des ordonnées à $(0\,;\,0{,}08\ \text{mmol})$ :
+
+          $$\left.\frac{dx}{dt}\right|_{t=3} = \frac{0{,}32-0{,}08}{3-0}$$
+
+          $$\boxed{\left.\frac{dx}{dt}\right|_{t=3} = 0{,}08\ \text{mmol.min}^{-1}}$$
+
+          **La conversion du volume, imposée par l'unité demandée.** L'énoncé veut $v$ en $\text{mmol.L}^{-1}.\text{min}^{-1}$ : $x$ est déjà en mmol et $t$ déjà en min, mais $V$ est donné en mL — il faut le convertir en litres avant de diviser, sinon l'unité annoncée ne serait pas la bonne.
+
+          $$V = 50\ \text{mL} = 50\times10^{-3}\ \text{L} = 0{,}050\ \text{L}$$
+
+          **Le calcul final.**
+
+          $$v(3\ \text{min}) = \frac{1}{V}\left.\frac{dx}{dt}\right|_{t=3} = \frac{0{,}08}{0{,}050}$$
+
+          $$\boxed{v(3\ \text{min}) \approx 1{,}6\ \text{mmol.L}^{-1}.\text{min}^{-1}}$$
+
+          **Le piège nommé de cette question.** Diviser $0{,}08\ \text{mmol.min}^{-1}$ par $V=50$ (en oubliant la conversion en litres) donnerait un résultat mille fois trop grand, dans la mauvaise unité — alors que l'énoncé demande explicitement des $\text{mmol.L}^{-1}.\text{min}^{-1}$. La conversion $\text{mL}\to\text{L}$ n'est pas optionnelle ici, elle est **imposée par l'énoncé** — contrairement à d'autres sujets de cette même banque où $V$ est déjà donné en litres et où aucune conversion n'est nécessaire.
+
+  # ── bk-2011-n-x1 — 2011 N, Chimie Partie I : cinétique de l'action de
+  #    l'acide sulfurique sur le zinc, par mesure de pression ──
+  # ⛔ GARDE S1 (voir la note éditoriale en tête de fichier) : la figure 1 du
+  # sujet officiel est tracée sur une échelle de ΔP incompatible avec ses
+  # propres données (facteur ≈ 3,24). AUCUNE valeur absolue de ΔP n'est
+  # utilisée dans le raisonnement ci-dessous ; la question 6 lit t_1/2 par
+  # une comparaison purement RELATIVE au palier (question 5), insensible au
+  # défaut.
+  - id: bk-2011-n-x1
+    title: "Action de l'acide sulfurique sur le zinc suivie par mesure de pression : tableau d'avancement, x(t) via la loi des gaz parfaits, et temps de demi-réaction lu à mi-hauteur du palier"
+    source:
+      year: 2011
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Chimie — Partie I : Suivi d'une transformation chimique par mesure de pression"
+    bareme_total: 4.5
+    duration_min: 27
+    sourcing:
+      status: sourced
+      note: >-
+        2011 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28, AlloSchool element/94445 (Chimie, Partie I —
+        suivi de l'action de l'acide sulfurique sur le zinc par mesure de
+        pression ; barème 4,50 pt (0,5+1+0,5+1+0,5+1), 6 questions, sur les
+        07,00 pt de l'exercice de Chimie complet, dont la seconde partie —
+        électrolyse pour l'argenture d'une pièce de cuivre — est transcrite
+        à part sous content/pc/electrolyse/bank.yaml, entrée bk-2011-n-x1b ;
+        pas de double comptage : 4,50+2,50=7,00, le « (07 points) » imprimé
+        page 1). Transcription source vérifiée par une passe adversariale
+        indépendante du 2026-08-29 (docs/sujets/_incoming/pc-2011-n.md,
+        statut « VÉRIFIÉ — clearé pour conversion »), barème recompté par
+        quatre chaînes concordantes (extraction PyMuPDF + lecture visuelle
+        sur planche-contact ×4 des JPG), 27/27 questions du sujet
+        re-dérivées. Un corrigé non officiel (TelmidTice / talamidi.com,
+        même signature interne, MD5 vérifié) confirme les valeurs de cette
+        partie (x_max, t_1/2 ≈ 42 min) à titre de RECOUPEMENT, jamais comme
+        autorité — il ne calcule d'ailleurs jamais ΔP_max depuis les
+        données et ne voit donc pas le défaut S1 ci-dessous.
+
+        ⛔ LA GARDE S1 (condition de la clearance de ce sujet, portée par
+        cette entrée). La figure 1 (courbe ΔP(t), question 6) est tracée
+        par le sujet officiel sur une échelle INCOMPATIBLE avec ses propres
+        données : son plateau imprimé mesure ≈ 736,9 ± 2 hPa (chaîne au
+        pixel sur le bitmap natif, deux passes indépendantes) alors que les
+        données de l'énoncé imposent, par la relation de la question 4,
+        ΔP_max = x_max.R.T/V ≈ 227 hPa (x_max = 9,17×10⁻³ mol, question 3)
+        — un facteur ≈ 3,24. Mécanisme identifié et vérifié à moins de
+        1 % : la courbe a été tracée avec x_max = n_i(H3O+) = 0,03 mol
+        (comme si l'ion oxonium était limitant, à la stœchiométrie 1) au
+        lieu du véritable réactif limitant, le zinc, établi à la question 3
+        — 0,03×8,314×298/10⁻³ ≈ 743,6 hPa, à moins de 1 % du plateau
+        imprimé. AUCUNE valeur absolue de ΔP n'est utilisée nulle part dans
+        le raisonnement ci-dessous, pas même comme intermédiaire de calcul.
+        La question 6 reste résoluble parce que sa lecture est purement
+        RELATIVE au palier (voir le raisonnement de cette question) : par
+        la relation établie en question 5, x(t)/x_max = ΔP(t)/ΔP_max, donc
+        t_1/2 se lit à la MI-HAUTEUR DU PALIER, quelle que soit la valeur —
+        juste ou fausse — que ce palier représente en hPa ; seul l'axe des
+        TEMPS compte, et il n'est pas affecté par ce défaut (t_1/2 mesuré
+        indépendamment à 41,1–41,7 min selon le plateau retenu, soit
+        ≈ 42 min, concordant avec le corrigé non officiel). Défaut du sujet
+        OFFICIEL, consigné ici, jamais réparé en silence — même traitement
+        que les corrections déjà déclarées de la campagne (PC 2012 N,
+        pK_A1 ; PC 2015 N, ρ de l'éthanol).
+
+        Coquilles de langue et de typographie du registre du sujet (G1
+        « peut-être » pour « peut être » ; G2 « Soitent » pour « Soient » ;
+        G3 « intérieur » ; G4 « presssion » ; G5 « Zinc » avec majuscule
+        médiane ; G6 « traçer » ; T6 les deux tirets demi-cadratins de
+        « P – P₀ » ; T7 le barème « 0 ,5 » de la question 1) sont
+        reproduites verbatim dans le chapeau et les énoncés ci-dessous, non
+        corrigées ; T7 est en outre annotée « tel qu'imprimé » directement
+        sur la carte. Voir docs/sujets/_incoming/pc-2011-n.md §9 pour le
+        registre complet des 35 types de défauts du sujet.
+    intro: |-
+      **Suivi de l'action de l'acide sulfurique sur le zinc, par mesure de pression (examen national, session normale 2011 — Chimie, Partie I, 4,50 points sur les 7,00 de l'exercice complet).**
+
+      *La seconde partie de cet exercice — l'argenture d'une pièce de cuivre par électrolyse — est indépendante et traitée à part, sous la notion « Électrolyse » (entrée du sujet 2011). Rien de ce qui suit n'en dépend.*
+
+      Le dihydrogène est considéré comme un combustible possédant une haute énergie non polluante. Il peut-être synthétisé au laboratoire par action des acides sur quelques métaux. *(« peut-être » tel qu'imprimé sur le sujet officiel — trait d'union fautif, sans incidence.)*
+
+      Le but de cet exercice est le suivi de l'action de l'acide sulfurique sur le zinc par mesure de pression.
+
+      **Données :**
+      - Tous les gaz sont considérés comme parfaits ;
+      - Toutes les mesures ont été faites à $25\,^\circ\text{C}$ ;
+      - On rappelle la loi des gaz parfaits : $P.V = n.R.T$ ;
+      - La masse molaire atomique du zinc : $M(Zn) = 65{,}4\ \text{g.mol}^{-1}$.
+
+      On modélise la réaction du zinc $Zn_{(S)}$ avec une solution d'acide sulfurique $\left(2\,H_3O^+_{(aq)} + SO_4^{2-}\right)$, par l'équation chimique suivante :
+
+      $$Zn_{(S)} + 2\,H_3O^+_{(aq)} \rightleftharpoons Zn^{2+}_{(aq)} + H_{2(g)} + 2\,H_2O_{(\ell)}$$
+
+      Pour étudier la cinétique de cette réaction, on introduit dans un ballon de volume constant $V = 1\ \text{L}$, une quantité de masse $m = 0{,}6\ \text{g}$ de poudre de Zinc *(« de Zinc », avec majuscule, tel qu'imprimé)* $Zn_{(S)}$, et on y verse à l'instant $t_0 = 0$, un volume $V_a = 75\ \text{mL}$ de la solution aqueuse d'acide sulfurique de concentration en ions oxonium $[H_3O^+] = 0{,}4\ \text{mol.L}^{-1}$. On mesure la pression $P$ à l'intérieur du ballon, à chaque instant, à l'aide d'un capteur de presssion. *(« intérieur » et « presssion » tels qu'imprimés sur le sujet officiel.)*
+
+      **Figure 1 — la courbe $\Delta P(t)$, telle qu'imprimée sur le sujet officiel.** Repère orthogonal. Axe vertical $\Delta P\ (\text{hPa})$, gradué $0,\ 200,\ 400,\ 600$ ; axe horizontal $t\ (\text{min})$, gradué $50,\ 100,\ 150,\ 200,\ 250$. Quadrillage fin de pas $5\ \text{min} \times 20\ \text{hPa}$. La courbe part de l'origine, croît en décélérant, et plafonne à droite, à une hauteur voisine de la ligne $600$ (soit $\approx 740\ \text{hPa}$ à lire naïvement sur cette échelle imprimée).
+
+      ⛔ *Cette échelle imprimée est un DÉFAUT DU SUJET OFFICIEL, consigné et non réparé — le plateau imprimé (≈ 740 hPa) contredit d'un facteur ≈ 3,24 la valeur que les données de l'énoncé imposent (≈ 227 hPa) ; le mécanisme identifié est une courbe tracée avec le mauvais réactif limitant (voir `sourcing.note` pour le détail complet). **Aucune valeur absolue de ΔP n'est utilisée dans ce qui suit** — seules la FORME de la courbe (croissance, plateau) et une lecture RELATIVE à mi-hauteur du palier, insensible à ce défaut, servent à la question 6.*
+    questions:
+      - id: q1
+        part: "1 — Le tableau d'avancement"
+        stem: |-
+          **(0 ,5 pt)** *(barème tel qu'imprimé — espace avant la virgule, T7.)* Soitent $n_i(H_3O^+)$ et $n_i(Zn)$ les quantités de matière initiales respectivement des ions oxonium et du Zn. Recopier, sur votre copie de rédaction, le tableau descriptif suivant et le compléter. *(« Soitent » tel qu'imprimé, pour « Soient ».)*
+        reasoning: |-
+          C'est exactement la construction du chapitre 3 : une ligne par état d'avancement (initial, intermédiaire, maximal), chaque espèce évoluant selon son coefficient stœchiométrique dans l'équation — $1$ pour $Zn$, $Zn^{2+}$ et $H_2$ ; $2$ pour $H_3O^+$ ; $H_2O$, le solvant, reste « en excès » et n'entre pas dans le compte. On complète chaque colonne en RETRANCHANT le coefficient fois l'avancement pour un réactif, en l'AJOUTANT pour un produit — sans introduire aucune valeur numérique à ce stade : ni le réactif limitant, ni $x_{max}$, ne sont encore connus (ce sera l'objet des questions 2 et 3).
+
+          | État | Avancement | $n(Zn)$ | $n(H_3O^+)$ | $n(Zn^{2+})$ | $n(H_2)$ | $n(H_2O)$ |
+          |---|---|---|---|---|---|---|
+          | Initial | $x=0$ | $n_i(Zn)$ | $n_i(H_3O^+)$ | $0$ | $0$ | en excès |
+          | Intermédiaire | $x$ | $n_i(Zn)-x$ | $n_i(H_3O^+)-2x$ | $x$ | $x$ | en excès |
+          | Maximal | $x_{max}$ | $n_i(Zn)-x_{max}$ | $n_i(H_3O^+)-2x_{max}$ | $x_{max}$ | $x_{max}$ | en excès |
+      - id: q2
+        stem: |-
+          **(1 pt)** Calculer $n_i(H_3O^+)$ et $n_i(Zn)$.
+        reasoning: |-
+          Deux calculs indépendants, chacun une application directe d'une définition : la concentration donne la quantité d'ions oxonium apportée par le volume $V_a$ versé ; la masse molaire donne la quantité de zinc à partir de la masse pesée $m$.
+        steps:
+          - math: 'n_i(H_3O^+) = [H_3O^+]\times V_a = 0{,}4\times0{,}075'
+            note: "Définition de la concentration molaire, avec Va converti en litres."
+          - math: '\boxed{n_i(H_3O^+) = 0{,}03\ \text{mol}}'
+            note: "Quantité initiale d'ions oxonium."
+          - math: 'n_i(Zn) = \frac{m}{M(Zn)} = \frac{0{,}6}{65{,}4}'
+            note: "Quantité de matière à partir de la masse pesee et de la masse molaire du zinc."
+          - math: '\boxed{n_i(Zn) \approx 9{,}17\times10^{-3}\ \text{mol}}'
+            note: "Quantité initiale de zinc."
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Déterminer le réactif limitant et déduire l'avancement maximal $x_{max}$ de la réaction.
+        reasoning: |-
+          Le réactif limitant est celui dont le rapport quantité/coefficient stœchiométrique est le plus petit — c'est lui qui s'annule en premier dans le tableau du chapitre 3. On compare donc $n_i(Zn)/1$ à $n_i(H_3O^+)/2$, pas les deux quantités brutes entre elles (comparer $9{,}17\times10^{-3}$ à $0{,}03$ directement ignorerait que $H_3O^+$ est consommé DEUX FOIS plus vite que $Zn$, à cause du coefficient $2$).
+        steps:
+          - math: '\frac{n_i(Zn)}{1} = 9{,}17\times10^{-3}\ \text{mol} \qquad \frac{n_i(H_3O^+)}{2} = \frac{0{,}03}{2} = 0{,}015\ \text{mol}'
+            note: "On compare les quantités DIVISEES par leur coefficient stoechiométrique, pas les quantités brutes."
+          - math: '9{,}17\times10^{-3} < 0{,}015 \implies Zn\ \text{est le réactif limitant}'
+            note: "Le plus petit rapport designe le réactif limitant : c'est Zn, pas H3O+."
+          - math: '\boxed{x_{max} = n_i(Zn) \approx 9{,}17\times10^{-3}\ \text{mol}}'
+            note: "Zn a un coefficient 1 : x_max vaut directement sa quantité initiale."
+      - id: q4
+        part: "Établir x(t) à partir d'une mesure de pression"
+        stem: |-
+          **(1 pt)** Par application de la loi des gaz parfaits, et à l'aide du tableau descriptif précédent, établir l'expression de l'avancement $x(t)$ de la réaction à un instant $t$ en fonction de $R$, $T$, $V$ et $\Delta P$, où $\Delta P = P - P_0$, avec $P_0$ la pression initiale mesurée à l'instant $t_0 = 0$ et $P$ la pression mesurée à l'instant $t$.
+        reasoning: |-
+          Exactement le principe du chapitre 2 : on ne mesure jamais $x$ directement, on mesure une grandeur SUBSTITUT qui lui est reliée par une loi connue — ici, ce n'est pas une absorbance ou une conductivité, c'est une pression. Le tableau de la question 1 dit que le seul gaz produit est $H_2$, en quantité $x(t)$ à l'instant $t$ : c'est donc l'apparition de ce gaz, seule, qui fait monter la pression au-delà de sa valeur initiale $P_0$. En appliquant la loi des gaz parfaits à ce $H_2$ formé, dans le volume constant $V$ du ballon :
+        steps:
+          - math: 'n(H_2) = x(t) \quad \text{(coefficient 1 dans le tableau, question 1)}'
+            note: "Le seul gaz produit est H2, en quantité égale a l'avancement x(t)."
+          - math: '\Delta P \cdot V = x(t)\cdot R\cdot T'
+            note: "Loi des gaz parfaits P.V=n.R.T appliquee au H2 forme : DeltaP est la pression due a ce gaz, dans le volume V constant."
+          - math: '\boxed{x(t) = \frac{\Delta P \cdot V}{R\cdot T}}'
+            note: "Expression demandee."
+      - id: q5
+        stem: |-
+          **(0,5 pt)** Soit $\Delta P_{max} = P_{max}-P_0$ la variation maximale de la pression et $x_{max}$ l'avancement maximal de la réaction. Montrer la relation : $x(t) = x_{max}\dfrac{\Delta P}{\Delta P_{max}}$.
+        reasoning: |-
+          On applique la MÊME relation qu'à la question précédente, mais cette fois à l'état final, où l'avancement vaut $x_{max}$ et la variation de pression $\Delta P_{max}$. Diviser les deux relations terme à terme fait disparaître le facteur $V/(RT)$ — commun aux deux et jamais donné numériquement dans cet énoncé — et ne laisse plus qu'un rapport entre grandeurs mesurables.
+        steps:
+          - math: '\Delta P_{max}\cdot V = x_{max}\cdot R\cdot T \quad \text{(même relation qu a la question 4, a l état final)}'
+            note: "Loi des gaz parfaits appliquee a l'état final, ou l'avancement vaut x_max."
+          - math: '\frac{x(t)}{x_{max}} = \frac{\Delta P\cdot V/(R\cdot T)}{\Delta P_{max}\cdot V/(R\cdot T)} = \frac{\Delta P}{\Delta P_{max}}'
+            note: "Division terme a terme des deux relations (question 4 et ci-dessus) : V/(RT) se simplifie."
+          - math: '\boxed{x(t) = x_{max}\,\frac{\Delta P}{\Delta P_{max}}}'
+            note: "Relation demandee."
+      - id: q6
+        part: "Lecture graphique de t_1/2 — la garde S1 s'applique ici"
+        stem: |-
+          **(1 pt)** Une étude expérimentale a permis de traçer la courbe de la figure 1, traduisant les variations de $\Delta P$ en fonction du temps. Trouver graphiquement la valeur du temps de demi-réaction $t_{1/2}$. *(« traçer » tel qu'imprimé, pour « tracer ».)*
+        reasoning: |-
+          ⛔ **La garde S1 s'applique intégralement à cette question — voir la note en tête de fiche.** On ne va PAS lire un $\Delta P_{max}$ en hPa sur cette figure : son échelle imprimée est incompatible avec les données (facteur ≈ 3,24, voir `sourcing.note`), et toute valeur qu'on en tirerait serait fausse. On n'en a heureusement pas besoin.
+
+          Par définition (chapitre 5), $t_{1/2}$ est l'instant où $x(t_{1/2}) = x_{max}/2$. Par la relation établie à la question 5, $x(t)/x_{max} = \Delta P(t)/\Delta P_{max}$ — un rapport de deux hauteurs sur CETTE MÊME courbe, quelle que soit l'unité ou la justesse de l'étalonnage vertical. La condition sur $x$ se traduit donc en une condition purement RELATIVE sur la figure :
+
+          $$x(t_{1/2}) = \frac{x_{max}}{2} \iff \Delta P(t_{1/2}) = \frac{\Delta P_{max}}{2}$$
+
+          C'est la MI-HAUTEUR DU PALIER — un point que l'on repère visuellement sans jamais lire le nombre d'hPa qu'il représente : on prend le milieu, en hauteur, entre l'origine et le plateau, et on lit l'abscisse du point de la courbe qui l'atteint. Cette lecture ne dépend que de la FORME de la courbe et de l'axe des temps — le seul des deux axes que le défaut S1 ne touche pas.
+        steps:
+          - math: 'x(t_{1/2}) = \frac{x_{max}}{2} \iff \Delta P(t_{1/2}) = \frac{\Delta P_{max}}{2} \quad \text{(question 5, rapport insensible a l échelle verticale)}'
+            note: "Condition de définition du chapitre 5, traduite en une lecture RELATIVE (mi-hauteur du palier), pas en une valeur absolue de DeltaP."
+          - math: '\boxed{t_{1/2} \approx 42\ \text{min}}'
+            note: "Lecture graphique : abscisse du point de la figure 1 a mi-hauteur du plateau -- aucune valeur absolue de DeltaP utilisée (garde S1)."
+
+  # ── bk-2012-r-x1b — 2012 R, Chimie, Deuxième partie : étude cinétique de l'hydrolyse d'un ester ──
+  #
+  # NOTE ÉDITORIALE — bk-2012-r-x1b (2026-09-04, ajout). Sujet SPC 2012
+  # SESSION DE RATTRAPAGE, code d'examen RS28, converti depuis
+  # docs/sujets/_incoming/pc-2012-r.md — statut « ✅ VÉRIFIÉ », vérifié en
+  # DEUX passes : une passe adversariale du 2026-09-03 (V.1–V.14) puis une
+  # CLÔTURE indépendante du 2026-09-04 qui a re-téléchargé les fichiers et
+  # REJOUÉ elle-même tout ce dont dépend le statut d'un bloc — barème,
+  # valeurs de figure, défauts — plutôt que de contresigner sa devancière.
+  # Six blocs sur six signés, 31/31 questions re-dérivées et résolubles,
+  # barème 20,00 par cinq chemins.
+  #
+  # CHOIX DE L'`id` : le sujet NE NUMÉROTE AUCUN exercice — ni en français
+  # ni en arabe. Sa page 1 imprime « Le sujet se compose de quatre
+  # exercices : Un exercice de chimie et trois exercices de physique », et
+  # son corps nomme les rubriques par discipline. Les identifiants encodent
+  # donc la POSITION SUR LA COPIE (K-7 bis) : la Chimie est le PREMIER
+  # bloc, d'où x1, et ses deux parties portent x1
+  # (content/pc/electrolyse/bank.yaml) et x1b (cette entrée). Les
+  # `exercise_label` restent FIDÈLES à ce que le sujet imprime, sans numéro
+  # inventé — depuis le correctif du 2026-09-03, `lib/examens.ts` lit la
+  # position sur l'identifiant dès qu'aucun libellé de l'épreuve ne porte
+  # « Exercice N », de sorte que l'épreuve compte QUATRE exercices.
+  # RÉPARTITION SANS DOUBLE COMPTAGE : 3,00 (bk-2012-r-x1) + 4,00 (cette
+  # entrée) = 7,00, le sous-total imprimé « Chimie : (07 points) ». Les six
+  # entrées du sujet totalisent 20,00 exactement.
+  #
+  # ══════════════════════════════════════════════════════════════════════
+  # NOTE ÉDITORIALE — ROUTAGE : UNE ALTERNATIVE OWNER EST OUVERTE ICI.
+  # ══════════════════════════════════════════════════════════════════════
+  # ROUTAGE APPLIQUÉ : le bloc reste ENTIER dans `suivi-temporel-vitesse`
+  # (4,00 pt, 6 questions), et ses cross-lists sont honorés dans le
+  # `reasoning`, jamais dédoublés — `esterification-hydrolyse` (le groupe
+  # caractéristique et l'équation d'hydrolyse, questions 1 et 2, 1,00 pt ;
+  # plus la constante d'équilibre de la question 3-4, 0,50 pt),
+  # `transformations-deux-sens` et `etat-equilibre` (le quotient de
+  # réaction à l'équilibre, questions 3-3 et 3-4).
+  #
+  # TROIS RAISONS POUR CE ROUTAGE, telles que le sas les pose (§ 7.2) :
+  # (1) le bandeau imprimé dit « ETUDE CINÉTIQUE de l'hydrolyse d'un
+  # ester » — c'est le titre que le sujet se donne ; (2) la colonne
+  # vertébrale de l'exercice est la courbe x(t) : les questions 3-1 à 3-4
+  # en descendent toutes, y compris le tableau (qui a besoin de x_f) et le
+  # K (qui a besoin du tableau) ; (3) le précédent est direct et récent —
+  # bk-2025-r-x1c, « Cinétique de l'hydrolyse basique (saponification) de
+  # l'éthanoate d'éthyle : x(t), temps de demi-réaction et vitesse
+  # volumique lus sur la courbe », est dans ce même fichier. Même geste,
+  # même notion.
+  #
+  # LA CONTRE-PROPOSITION, NOMMÉE POUR L'ARBITRAGE ET NON RETENUE : router
+  # le bloc vers `esterification-hydrolyse` et honorer la cinétique au
+  # `reasoning`. Elle a pour elle 1,50 pt d'estérification/hydrolyse
+  # « pure » (0,25 + 0,75 + 0,50) contre 1,00 pt de cinétique « pure »
+  # (0,50 + 0,50), le 1,50 du tableau d'avancement étant partagé. Le
+  # partage est serré et l'alternative est sérieuse ; L'OWNER RESTE JUGE,
+  # et elle est chiffrée ici pour qu'il n'ait pas à rouvrir le sujet.
+  # CE QU'IL NE FAUT PAS FAIRE, et le sas le dit sans ambiguïté : DÉCOUPER
+  # LE BLOC EN DEUX ENTRÉES. Les six questions sont enchaînées
+  # (x_f → tableau → K) et un demi-exercice serait un orphelin illisible —
+  # règle du README du sas.
+  # ══════════════════════════════════════════════════════════════════════
+  #
+  # ══════════════════════════════════════════════════════════════════════
+  # ⚠️ GARDE DE VALEUR OPPOSABLE — v(20 min) ≈ 2,5·10⁻², JAMAIS 8,2·10⁻².
+  # ══════════════════════════════════════════════════════════════════════
+  # C'est la deuxième des quatre conditions opposables sous lesquelles le
+  # sas autorise la conversion de ce sujet.
+  #
+  # LE VOLUME EST 50 mL, ET L'ÉNONCÉ LE DIT DEUX FOIS : « pour obtenir un
+  # mélange de volume V = 50 mL », puis, dans la formule même de la
+  # question 3-1, « où V est le volume TOTAL du mélange ». Le corrigé arabe
+  # (element/39378, forums svt-assilah, 2014) divise par 15·10⁻³ L — le
+  # volume d'ESTER — et publie 8,2·10⁻² mol·L⁻¹·min⁻¹. Son arithmétique est
+  # cohérente avec sa propre erreur (1/0,015 × 0,049/40 = 8,17·10⁻²), et la
+  # formule entière a été relue au rendu 600 dpi : ce n'est pas une garble
+  # d'extraction. FACTEUR 50/15 = 3,33. SUR CETTE QUESTION LE CORRIGÉ
+  # CONTREDIT L'ÉNONCÉ, ET C'EST L'ÉNONCÉ QUI GAGNE (K-8).
+  #
+  # VALEUR D'AFFICHAGE RETENUE : v(20 min) ≈ 2,5·10⁻² mol·L⁻¹·min⁻¹, avec
+  # une TOLÉRANCE DÉCLARÉE de 2,4 à 2,6·10⁻², et le volume V = 50 mL dit
+  # explicitement. Les deux chaînes de mesure de la vérification donnent
+  # 2,535 et 2,540·10⁻² (régression sur les 88 parallélogrammes de la
+  # tangente dessinée, |dx/dt| = 1,2675 et 1,2699·10⁻³ mol·min⁻¹) ; la
+  # lecture du corrigé, qui relève les DEUX BOUTS du segment tracé (0,008
+  # et 0,057) et les divise par 40 alors que le segment couvre 39,43 min,
+  # donne 2,45·10⁻². L'écart 2,45 / 2,54 est ENTIÈREMENT une convention de
+  # dénominateur, pas une divergence de lecture du dessin — établi par la
+  # vérification (§ V.9). NE PUBLIER NI 2,45 NI 2,54 COMME « LA » VALEUR :
+  # aucune des deux n'a de précision qui la justifie.
+  #
+  # ET t_1/2 PORTE SA PROPRE FOURCHETTE : ≈ 28 min, TOLÉRANCE 28–29 min.
+  # La clôture du 2026-09-04 a ÉLARGI la fourchette que les sections V
+  # donnaient : chaîne vectorielle 28,13 min, chaîne pixels 29,07 min —
+  # l'écart vient de la calibration d'ordonnée du bitmap (6 533 px/mol par
+  # régression sur le quadrillage détecté contre 6 565 par régression sur
+  # les étiquettes OCRisées). Rien n'est faux ; N'ÉCRIRE PAS UN NOMBRE
+  # UNIQUE. x_f = 0,085 mol, lui, est ferme (0,0849 vectoriel / 0,0852
+  # pixels), et le corrigé le corrobore.
+  # ══════════════════════════════════════════════════════════════════════
+  - id: bk-2012-r-x1b
+    title: "Étude cinétique de l'hydrolyse de l'éthanoate de 3-méthylbutyle : vitesse volumique par la tangente, avancement final et temps de demi-réaction lus sur x(t), puis tableau d'avancement et constante d'équilibre"
+    source:
+      year: 2012
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Chimie — Deuxième partie : Étude cinétique de l'hydrolyse d'un ester"
+    bareme_total: 4.0
+    duration_min: 24
+    sourcing:
+      status: sourced
+      note: >-
+        2012 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code d'examen RS28 (coefficient 7, durée 3 h),
+        AlloSchool element/94455 (édition française, cours course-422 ;
+        jumeaux 94454 / 94456, upload-70323) ; original arabe element/39377
+        et son corrigé element/39378 (cours arabophone course-311). Chimie,
+        Deuxième partie — étude cinétique de l'hydrolyse de l'éthanoate de
+        3-méthylbutyle ; barème 4,00 pt (0,25 + 0,75 + 0,5 + 0,5 + 1,5 +
+        0,5), 6 questions, sur les 07,00 pt imprimés de l'exercice de
+        Chimie. RÉPARTITION SANS DOUBLE COMPTAGE : 3,00 (bk-2012-r-x1,
+        content/pc/electrolyse/bank.yaml, électrolyse d'une solution de
+        bromure de cuivre II) + 4,00 (cette entrée) = 7,00, le sous-total
+        imprimé « Chimie : (07 points) » ; le sujet précise « Les deux
+        parties sont indépendantes ». Source vérifiée EN DEUX PASSES
+        (docs/sujets/_incoming/pc-2012-r.md, statut « ✅ VÉRIFIÉ », 6 blocs
+        sur 6) : passe adversariale du 2026-09-03 puis CLÔTURE INDÉPENDANTE
+        du 2026-09-04, qui a re-téléchargé les fichiers et rejoué elle-même
+        barème, figure et défauts de ce bloc. Barème recompté sur les DEUX
+        éditions — colonne française p. 3 (0,25 · 0,75 · 0,5 · 0,5 · 1,5 ·
+        0,5) appariée à ±5 pt aux questions 1- (y = 135,8), 2- (156,5),
+        3-1- (586,3), 3-2- (696,1), 3-3- (735,3), 3-4- (774,7), le chapeau
+        3- (y = 195,8) ne portant AUCUNE mention ; colonne arabe
+        « سلم التنقيط » : mêmes six valeurs, même ordre, dont le « 0, 5 »
+        avec espace [sic] à la question 3-1 que l'édition française
+        normalise. LA COURBE x(t) A ÉTÉ RE-MESURÉE PAR DEUX CHAÎNES
+        INDÉPENDANTES, refaites à la clôture. Chaîne vectorielle (original
+        arabe p. 3 : 251 primitives, ZÉRO image sur la page) : calibration
+        sur les centres des étiquettes de la couche de texte,
+        x_pt = 1,4244·t + 108,34 (résidu max 0,128 pt) et
+        y_pt = −2857,20·x + 457,11 (résidu max 0,408 pt) ; la courbe est
+        une polyligne unique de 149 segments de (107,04 ; 457,00) à
+        (449,04 ; 215,56) ; le palier est fait de HUIT RECTANGLES PLEINS
+        (et non des « 33 tirets » que la transcription annonçait — erreur
+        corrigée par la vérification puis vérifiée sur les objets
+        eux-mêmes), y dans [213,88 ; 215,32] ; la tangente (T) est un
+        groupe de 88 parallélogrammes, régression de pente −2,5425 pt/pt.
+        Chaîne pixels (bitmap français 940 × 689 à 141 dpi extrait du PDF) :
+        quadrillage majeur détecté à 65,3 px dans les deux sens, palier
+        isolé à y = 96,5 px, tangente ajustée par rejet itératif à 2 sigma
+        (52 points retenus sur 92, rms 1,41 px). Résultats : x_f = 0,08488
+        (vectoriel) / 0,08518 (pixels) → 0,085 mol ; |dx/dt| en t = 20 min
+        = 1,2675 / 1,2699·10⁻³ → 1,27·10⁻³ mol·min⁻¹ ; t_1/2 = 28,13 min
+        (vectoriel) / 29,07 min (pixels). CONTRÔLE DE TANGENCE REFAIT : la
+        droite (T) passe par (20 min ; 0,03401) et la courbe y vaut
+        0,03341 — 0,6 millimole d'écart, la tangente touche bien la courbe
+        en t = 20 min, la question n'est pas piégée ; ses extrémités
+        mesurées sont (−0,744 min ; 0,00797 mol) et (38,683 min ;
+        0,05730 mol). ⚠️ GARDE DE VALEUR OPPOSABLE, la deuxième des quatre
+        conditions du sas : v(20 min) ≈ 2,5·10⁻² mol·L⁻¹·min⁻¹ AVEC UNE
+        TOLÉRANCE 2,4–2,6·10⁻², et le volume V = 50 mL DÉCLARÉ — « le
+        volume TOTAL du mélange », imprimé deux fois dans l'énoncé et
+        retrouvé par OCR aveugle. NE JAMAIS PUBLIER 8,2·10⁻² : le corrigé
+        arabe divise là par 15·10⁻³ L, le volume d'ESTER, au lieu des
+        50·10⁻³ L que l'énoncé impose — formule entière relue au rendu
+        600 dpi, ce n'est pas une garble d'extraction ; facteur 50/15 =
+        3,33, et sur cette question LE CORRIGÉ CONTREDIT L'ÉNONCÉ, C'EST
+        L'ÉNONCÉ QUI GAGNE (K-8). Ne pas publier non plus 2,45 ni 2,54
+        comme « la » valeur : l'écart entre les deux est entièrement une
+        convention de dénominateur (le corrigé divise par 40 min un segment
+        qui en couvre 39,43), pas une divergence de lecture du dessin.
+        SECONDE GARDE DE VALEUR : t_1/2 ≈ 28 min AVEC UNE TOLÉRANCE 28–29
+        min — la clôture a ÉLARGI la fourchette (28,13 vectoriel / 29,07
+        pixels ; l'écart vient de la calibration d'ordonnée du bitmap) ;
+        n'écrire pas un nombre unique. x_f = 0,085 mol est ferme, et le
+        corrigé le corrobore, comme il corrobore le t_1/2 « ≈ 28 min ».
+        Les six re-dérivations, refaites à la clôture : n_i(E) =
+        0,87 × 15/130 = 0,10038 mol, n_i(H2O) = 35/18 = 1,9444 mol,
+        composition finale 0,015 / 1,855 / 0,085 / 0,085 mol,
+        K = 0,085²/(0,015 × 1,855) = 0,2597 → 0,26, taux d'avancement final
+        84,7 %. L'ÉDITION FRANÇAISE EST MINISTÉRIELLE, établie par six
+        preuves (code RS28 au cartouche, mention d'époque
+        « (الترجمة الفرنسية) » sans le cadre anachronique
+        « المسالك الدولية », filière et coefficient de 2012, pieds de page
+        VIDES sur 6/6, colonne « Barème » miroir valeur par valeur de la
+        colonne arabe, gabarit de page 1 identique) : les écarts
+        français/arabe sont donc des défauts du DOCUMENT OFFICIEL
+        francophone, jamais des artefacts de traduction professorale.
+        DIVERGENCE DE STRUCTURE DÉCLARÉE (D11 du registre, confirmée) :
+        l'original arabe numérote cette partie 1, 2, 3 (3.1, 3.2), 4, 5 —
+        le tableau d'avancement y est la question 4 (1,5 pt) et la
+        constante d'équilibre la question 5 (0,5 pt), toutes deux de
+        PREMIER niveau —, là où l'édition française les rétrograde en
+        sous-questions 3-3 et 3-4. Barème identique de part et d'autre ;
+        cette entrée reproduit la numérotation FRANÇAISE, celle que l'élève
+        francophone compose. Coquilles de langue reproduites verbatim, non
+        réparées : « L'éthanoate 3-méthylbutyl » (sans le « e » final, deux
+        occurrences, contre « 3-méthylbutyle » dans les données), la
+        virgule parasite entre sujet et verbe, « l'hydrolyse de
+        L'éthanoate » (majuscule en milieu de phrase), « utilisé comme
+        arum » (pour « arôme »), « dans quelques patisserie », et la
+        notation « g.ml⁻¹ » (litre en minuscule, là où l'arabe imprime
+        « g.mL⁻¹ ») ; registre complet en
+        docs/sujets/_incoming/pc-2012-r.md § 5 et V.12. ⚠️ LE CORRIGÉ ARABE
+        N'EST QU'UN TÉMOIN DE VALEURS, JAMAIS UN ARBITRE (K-8) : il a TORT
+        sur la question 3-1 (le volume d'ester au lieu du volume total), et
+        la vérification lui a trouvé QUATRE coquilles sur l'ensemble du
+        sujet, dont C1 — à la question 4 de l'électrolyse il écrit 3600 et
+        calcule 7200, son quotient imprimé valant 0,592 g et non les 1,18 g
+        qu'il publie. Ses RÉSULTATS corroborent en revanche trois lectures
+        de figure faites AVANT sa lecture (x_f ≈ 0,085 mol, t_1/2 ≈ 28 min,
+        T = 0,15 s au bloc de l'électricité) : c'est un lecteur humain de
+        2014 sur le même dessin, donc un témoin réellement distinct des
+        instruments de la vérification. Aucune étape intermédiaire de ce
+        corrigé n'est reprise, et aucune valeur de cette entrée n'en
+        provient.
+    intro: |-
+      **Étude cinétique de l'hydrolyse d'un ester (examen national, session de rattrapage 2012 — Chimie, Deuxième partie, 4,00 points sur les 07,00 de l'exercice de Chimie).**
+
+      *L'autre partie du même exercice de Chimie est indépendante et vit ailleurs : l'électrolyse d'une solution de bromure de cuivre II (3,00 pt) sous « Électrolyse », entrée du sujet 2012. Le sujet l'écrit lui-même — « Les deux parties sont indépendantes ». 3,00 + 4,00 = 7,00, le barème imprimé.*
+
+      L'éthanoate 3-méthylbutyl, *(sic — sans le « e » final, et virgule parasite entre le sujet et le verbe ; les données du même sujet écrivent, elles, « 3-méthylbutyle »)* est un composé organique caractérisé par une bonne odeur similaire à celle des bananes. Il est utilisé comme arum *(sic, pour « arôme »)* dans quelques patisserie *(sic)*, quelques boissons et yaourts.
+
+      Le but de cette partie de l'exercice est l'étude cinétique de l'hydrolyse de L'éthanoate *(sic — majuscule en milieu de phrase)* 3-méthylbutyl *(sic)*, et la détermination de la constante d'équilibre de cette réaction.
+
+      **Données :**
+      - La formule semi-développée de l'éthanoate de 3-méthylbutyle noté $E$ est dessinée sur deux niveaux : en haut à gauche $\text{CH}_3-$ puis un carbone $\text{C}$, d'où part vers le haut une **double liaison** vers un $\text{O}$ ; du même carbone part vers le bas-droite une liaison simple vers un second $\text{O}$, puis la chaîne horizontale $\text{O}-\text{CH}_2-\text{CH}_2-\text{CH}-\text{CH}_3$ ; du $\text{CH}$ descend une liaison verticale vers un dernier $\text{CH}_3$. Soit, en une ligne : $\text{CH}_3-\text{CO}-\text{O}-\text{CH}_2-\text{CH}_2-\text{CH}(\text{CH}_3)-\text{CH}_3$ ;
+      - La masse molaire du composé $E$ est : $M(E) = 130\ \text{g.mol}^{-1}$ ;
+      - La masse volumique du composé $E$ est : $\rho(E) = 0{,}87\ \text{g.ml}^{-1}$ *(le litre en minuscule est tel qu'imprimé ; l'original arabe écrit « g.mL⁻¹ »)* ;
+      - La masse molaire de l'eau est : $M(\text{H}_2\text{O}) = 18\ \text{g.mol}^{-1}$ ;
+      - La masse volumique de l'eau est : $\rho(\text{H}_2\text{O}) = 1\ \text{g.ml}^{-1}$.
+
+      On pose un ballon contenant un volume $V(\text{H}_2\text{O}) = 35\ \text{mL}$ d'eau distillée, dans un bain-marie de température constante, puis on y ajoute un volume $V(E) = 15\ \text{mL}$ du composé $(E)$, pour obtenir un mélange de **volume $V = 50\ \text{mL}$**.
+
+      ---
+
+      **3-** Le suivi de l'évolution de l'avancement $x(t)$ de la réaction en fonction du temps, permet d'obtenir la courbe représentée sur la figure suivante :
+
+      **La courbe $x(t)$** *(la figure n'est pas reproduite ici : ce qui suit est ce qu'elle porte).*
+
+      - **axes** : $x\ (\text{mol})$ en ordonnée, flèche vers le haut ; $t\ (\text{min})$ en abscisse, flèche vers la droite. Quadrillage fin bleu, quadrillage majeur noir ;
+      - **graduations chiffrées** : en abscisse $0 \cdot 40 \cdot 80 \cdot 120 \cdot 160 \cdot 200$ ; en ordonnée $0{,}02 \cdot 0{,}04 \cdot 0{,}06 \cdot 0{,}08$ ;
+      - **maille** : un carreau majeur vaut $20\ \text{min}$ en abscisse et $0{,}01\ \text{mol}$ en ordonnée — les carreaux majeurs sont carrés ; un carreau fin vaut $2\ \text{min}$ et $0{,}001\ \text{mol}$ ;
+      - **la courbe** part exactement de l'origine, croît en saturant, et vient s'appuyer sur un **palier** matérialisé par une **droite horizontale en tirets épais**. Une petite croix marque la courbe vers $t \approx 200\ \text{min}$, sur ce palier. Le palier est à $x \approx 0{,}085\ \text{mol}$ *(à un carreau fin près)* ;
+      - **la droite $(T)$**, en tirets fins et montante depuis le bas-gauche, porte son étiquette $(T)$ dans un petit cartouche blanc ; c'est la **tangente à la courbe au point d'abscisse $t = 20\ \text{min}$**. Ses deux extrémités mesurées sont $(-0{,}74\ \text{min}\;;\;0{,}008\ \text{mol})$ et $(38{,}68\ \text{min}\;;\;0{,}057\ \text{mol})$ — c'est de ces deux bouts que se tire sa pente. *(Contrôle de tangence refait : $(T)$ passe par $(20\ \text{min}\,;\,0{,}0340)$ et la courbe y vaut $0{,}0334$ — la tangente touche bien la courbe en $t = 20\ \text{min}$, la question n'est pas piégée.)*
+
+      *Quelques valeurs de la courbe elle-même, pour situer : $x(20) = 0{,}033$ ; $x(40) = 0{,}053$ ; $x(100) = 0{,}077$ ; $x(140) = 0{,}082$ ; $x(200) = 0{,}084\ \text{mol}$.*
+    questions:
+      - id: q1
+        part: "Chimie, Deuxième partie — Étude cinétique de l'hydrolyse d'un ester"
+        stem: |-
+          **1-** (0,25 pt) Déterminer le groupe caractéristique du composé $(E)$.
+        reasoning: |-
+          Un quart de point : c'est une lecture de formule, pas un calcul. Il faut regarder **l'enchaînement d'atomes**, pas le nom.
+
+          Dans la formule dessinée, on trouve un carbone qui porte **à la fois** une double liaison vers un oxygène ($\text{C}=\text{O}$) **et** une liaison simple vers un second oxygène, lequel est lui-même relié à une chaîne carbonée. Cet enchaînement $-\text{CO}-\text{O}-$ **encadré des deux côtés par du carbone** est le groupe caractéristique **ester** :
+
+          $$\text{groupe ester} : \quad \text{R}-\underset{\displaystyle \|}{\text{C}}-\text{O}-\text{R}' \quad \text{soit} \quad -\text{CO}-\text{O}-$$
+
+          **Ce qui distingue un ester de ses deux voisins, et c'est là que se perd le quart de point.** L'enchaînement $-\text{CO}-\text{O}-$ se retrouve aussi dans un **acide carboxylique** $-\text{CO}-\text{O}-\text{H}$ : la différence tient au seul atome qui suit le deuxième oxygène — un **hydrogène** pour l'acide, un **carbone** pour l'ester. Ici c'est $-\text{O}-\text{CH}_2-$ : du carbone, donc un ester. Et il ne faut pas confondre non plus avec la simple **cétone** $-\text{CO}-$, qui n'a qu'un seul oxygène.
+
+          *Cette question relève aussi de la notion sœur « **Estérification et hydrolyse** », où le groupe ester est construit — elle est honorée ici sans être dupliquée : le barème est réparti, jamais compté deux fois.*
+
+          **Le contrôle qui ferme.** Le nom donné par l'énoncé — « éthanoate de 3-méthylbutyle » — est déjà un nom d'ester : le suffixe **-oate** nomme la partie acide, le mot en **-yle** la partie alcool. Et la formule brute se compte : $\text{C}_7\text{H}_{14}\text{O}_2$, de masse molaire $7\times12 + 14\times1 + 2\times16 = 130\ \text{g.mol}^{-1}$, exactement le $M(E)$ donné. Formule, nom et masse molaire concordent.
+      - id: q2
+        stem: |-
+          **2-** (0,75 pt) Écrire, en utilisant les formules semi-développées, l'équation modélisant la réaction d'hydrolyse du composé $(E)$.
+        reasoning: |-
+          L'hydrolyse d'un ester est la réaction **inverse** de l'estérification : l'ester réagit avec l'eau pour redonner l'**acide carboxylique** et l'**alcool** dont il est issu. C'est une transformation **limitée**, donc l'équation s'écrit avec une **double flèche** $\rightleftharpoons$ — et ce détail-là n'est pas cosmétique : c'est lui qui rend la question 3-4 possible, puisqu'une transformation totale n'aurait pas de constante d'équilibre à déterminer.
+
+          **Où couper la molécule, et pourquoi là.** La liaison qui se rompt est celle entre le **carbone du groupe $\text{C}=\text{O}$** et l'**oxygène du pont** — pas l'autre. L'eau vient s'insérer à cet endroit :
+
+          - le fragment $\text{CH}_3-\text{CO}-$ récupère le $-\text{OH}$ de l'eau et redevient l'**acide éthanoïque** $\text{CH}_3-\text{CO}-\text{OH}$ ;
+          - le fragment $-\text{O}-\text{CH}_2-\text{CH}_2-\text{CH}(\text{CH}_3)-\text{CH}_3$ récupère le $\text{H}$ et redevient le **3-méthylbutan-1-ol** $\text{HO}-\text{CH}_2-\text{CH}_2-\text{CH}(\text{CH}_3)-\text{CH}_3$.
+
+          Les quatre coefficients stœchiométriques valent $1$ — un ester, une eau, un acide, un alcool. C'est ce qui rendra le tableau d'avancement de la question 3-3 particulièrement simple : toutes les lignes évoluent de $\pm x$.
+
+          **Le contrôle qui ne coûte rien.** Comptons les atomes de part et d'autre : à gauche $\text{C}_7\text{H}_{14}\text{O}_2 + \text{H}_2\text{O}$, soit $\text{C}_7\text{H}_{16}\text{O}_3$ ; à droite $\text{C}_2\text{H}_4\text{O}_2 + \text{C}_5\text{H}_{12}\text{O}$, soit $\text{C}_7\text{H}_{16}\text{O}_3$. L'équation ferme.
+
+          **Le piège de cette question.** Couper du mauvais côté de l'oxygène du pont, et produire un acide en $\text{C}_5$ avec un alcool en $\text{C}_2$ (« acide 3-méthylbutanoïque + éthanol »). Le nom de l'ester dit dans quel sens lire : **éthanoate** de 3-méthylbutyle — la partie **acide** est l'éthanoate, en deux carbones. Un ester porte toujours le nom de son acide en premier.
+        steps:
+          - math: '\text{CH}_3-\text{CO}-\text{O}-\text{CH}_2-\text{CH}_2-\text{CH}(\text{CH}_3)-\text{CH}_3 \;+\; \text{H}_2\text{O} \;\rightleftharpoons\; \text{CH}_3-\text{CO}-\text{OH} \;+\; \text{HO}-\text{CH}_2-\text{CH}_2-\text{CH}(\text{CH}_3)-\text{CH}_3'
+            note: "Hydrolyse de l'ester : acide éthanoïque + 3-methylbutan-1-ol. Double fleche, car la transformation est limitée -- c'est ce qui rend la question 3-4 possible."
+      - id: q3
+        part: "3- Exploitation de la courbe x(t)"
+        stem: |-
+          **3-1-** (0,5 pt) La vitesse volumique de la réaction est donnée par la relation : $v(t) = \dfrac{1}{V}\dfrac{\mathrm{d}x(t)}{\mathrm{d}t}$, où $V$ est le volume total du mélange.
+
+          Calculer, en $\text{mol.L}^{-1}.\text{min}^{-1}$, la valeur de cette vitesse à l'instant $t = 20\ \text{min}$.
+
+          *(La droite $(T)$ représente la tangente à la courbe au point d'abscisse $t = 20\ \text{min}$.)*
+        reasoning: |-
+          C'est le geste du chapitre 3, et il tient en deux temps qu'il ne faut pas mélanger : **une pente, puis une division par un volume**.
+
+          **Temps 1 — la pente de la tangente.** $\dfrac{\mathrm{d}x}{\mathrm{d}t}$ à l'instant $t = 20\ \text{min}$ est, par définition, le **coefficient directeur de la tangente** à la courbe en ce point — et l'énoncé a fait le plus dur en la traçant : c'est la droite $(T)$. On ne dérive rien, on ne devine rien ; on prend **deux points bien séparés sur la droite $(T)$ elle-même**, jamais sur la courbe, et on fait le quotient des accroissements. Les deux bouts du segment tracé sont les points les plus sûrs, parce qu'ils sont les plus éloignés l'un de l'autre — une erreur de lecture d'un carreau y pèse le moins :
+
+          $$\frac{\mathrm{d}x}{\mathrm{d}t}\bigg|_{t=20} = \frac{0{,}057 - 0{,}008}{38{,}68 - (-0{,}74)} = \frac{0{,}049}{39{,}42} \approx 1{,}27\times10^{-3}\ \text{mol.min}^{-1}$$
+
+          **Temps 2 — la division par le volume, et c'est ici que tout se joue.** La relation donnée porte un $\dfrac{1}{V}$, et l'énoncé dit **deux fois** quel $V$ : « pour obtenir un mélange de volume $V = 50\ \text{mL}$ », puis, dans la formule elle-même, « où $V$ est le volume **total** du mélange ». Ce n'est donc **ni** les $15\ \text{mL}$ d'ester, **ni** les $35\ \text{mL}$ d'eau : c'est la somme, $V = 50\ \text{mL} = 50\times10^{-3}\ \text{L}$.
+
+          $$v(20\ \text{min}) = \frac{1{,}27\times10^{-3}}{50\times10^{-3}} \approx 2{,}5\times10^{-2}\ \text{mol.L}^{-1}.\text{min}^{-1}$$
+
+          **⚠️ Le piège de cette question, et il a réellement piégé.** Diviser par le volume d'**ester** ($15\ \text{mL}$) au lieu du volume du **mélange** ($50\ \text{mL}$) donne $8{,}2\times10^{-2}$ — faux d'un facteur $50/15 = 3{,}33$. C'est exactement l'erreur que commet le corrigé non officiel de ce sujet : sa ligne est arithmétiquement cohérente avec sa propre faute, ce qui la rend invisible à qui la relit sans vérifier le $V$. **Le vrai réflexe est de relire la définition avant de diviser** : la vitesse volumique rapporte la vitesse au volume **où la réaction a lieu**, et la réaction a lieu dans tout le mélange, pas dans la seule goutte d'ester.
+
+          **La tolérance, dite honnêtement.** Selon la façon dont on relève les deux points de $(T)$, la pente varie légèrement : toute valeur de $v$ **entre $2{,}4$ et $2{,}6\times10^{-2}\ \text{mol.L}^{-1}.\text{min}^{-1}$** est une lecture recevable de ce tracé. Ce qui ne l'est pas, c'est un résultat trois fois trop grand — celui-là ne vient pas d'une lecture, il vient d'un mauvais volume.
+
+          **Contrôle d'unité, à faire systématiquement.** $\left[\dfrac{\mathrm{d}x}{\mathrm{d}t}\right] = \text{mol.min}^{-1}$, divisé par des litres : on obtient bien des $\text{mol.L}^{-1}.\text{min}^{-1}$, l'unité que la question exige explicitement. Et l'ordre de grandeur — quelques centièmes de mole par litre et par minute pour une hydrolyse d'ester, lente, qui met plus de trois heures à s'achever — est cohérent.
+        steps:
+          - math: '\left.\frac{\mathrm{d}x}{\mathrm{d}t}\right|_{t=20} = \frac{0{,}057 - 0{,}008}{38{,}68 - (-0{,}74)} = \frac{0{,}049}{39{,}42} \approx 1{,}27\times10^{-3}\ \text{mol.min}^{-1}'
+            note: "Pente de la tangente (T), relevée sur ses DEUX EXTRÉMITÉS -- les deux points les plus éloignés, donc les moins sensibles a une erreur de lecture."
+          - math: 'V = V(\text{H}_2\text{O}) + V(E) = 35 + 15 = 50\ \text{mL} = 50\times10^{-3}\ \text{L}'
+            note: "Le volume TOTAL du mélange, impose deux fois par l'énoncé. Ni 15 mL (l'ester seul), ni 35 mL (l'eau seule)."
+          - math: 'v(20\ \text{min}) = \frac{1}{V}\left.\frac{\mathrm{d}x}{\mathrm{d}t}\right|_{t=20} = \frac{1{,}27\times10^{-3}}{50\times10^{-3}}'
+            note: "Définition donnée par l'énoncé : la pente divisée par le volume total."
+          - math: '\boxed{v(20\ \text{min}) \approx 2{,}5\times10^{-2}\ \text{mol.L}^{-1}.\text{min}^{-1}}'
+            note: "Toute lecture entre 2,4 et 2,6 x 10^-2 est recevable. Diviser par 15 mL au lieu de 50 donnerait 8,2 x 10^-2 : faux d'un facteur 3,33."
+      - id: q4
+        stem: |-
+          **3-2-** (0,5 pt) Déterminer graphiquement, la valeur de l'avancement final $x_f$, et le temps de demi-réaction $t_{1/2}$.
+        reasoning: |-
+          Deux lectures graphiques, dans cet ordre — la seconde a besoin de la première.
+
+          **$x_f$ : c'est l'ordonnée du palier.** La courbe cesse de monter et vient s'appuyer sur la droite horizontale en tirets : au-delà, l'avancement ne bouge plus, le système n'évolue plus. C'est **l'état final**, et l'ordonnée de ce palier est $x_f$ :
+
+          $$x_f \approx 0{,}085\ \text{mol}$$
+
+          *(Le tracé se lit à un carreau fin près — un carreau fin vaut $0{,}001\ \text{mol}$.)*
+
+          **$t_{1/2}$ : la définition du chapitre 5, appliquée à la lettre.** Le temps de demi-réaction est l'instant où **l'avancement atteint la moitié de sa valeur finale** — pas la moitié de la durée d'observation, pas la moitié du palier en temps :
+
+          $$x(t_{1/2}) = \frac{x_f}{2} = \frac{0{,}085}{2} = 0{,}0425\ \text{mol}$$
+
+          On porte cette ordonnée sur l'axe vertical, on va horizontalement jusqu'à couper la courbe, puis on redescend verticalement lire l'abscisse. On tombe vers $t_{1/2} \approx 28\ \text{min}$.
+
+          **Pourquoi cet instant est unique, et c'est ce qui rend la lecture légitime.** $x(t)$ ne fait que croître, de $0$ jusqu'à $x_f$, sans jamais redescendre : elle traverse donc la valeur $x_f/2$ **une fois et une seule**. Il n'y a pas d'ambiguïté à lever.
+
+          **La tolérance, dite honnêtement.** Sur ce tracé, la lecture donne entre $28$ et $29\ \text{min}$ selon la finesse avec laquelle on cale l'axe des ordonnées. **Toute lecture entre $28$ et $29\ \text{min}$ est recevable** ; annoncer un nombre à trois chiffres significatifs sur une lecture de graphique serait une fausse précision.
+
+          **Le piège de cette question.** Lire $t_{1/2}$ comme « la moitié du temps qu'il faut pour atteindre le palier ». Le palier est atteint vers $t \approx 200\ \text{min}$ ; sa moitié serait $100\ \text{min}$, presque quatre fois trop. Cette confusion vient de ce que le mot « demi » est **du côté de $x$, pas du côté de $t$** : c'est l'avancement qu'on coupe en deux, et le temps qu'on lit.
+
+          **Le contrôle de vraisemblance.** $x_f = 0{,}085\ \text{mol}$ pour une quantité initiale d'ester de $0{,}100\ \text{mol}$ (calculée à la question suivante) : un taux d'avancement final de $85\ \%$. C'est cohérent avec une hydrolyse en grand excès d'eau — l'eau est ici en quantité vingt fois supérieure, ce qui déplace fortement l'équilibre dans le sens de l'hydrolyse.
+        steps:
+          - math: '\boxed{x_f \approx 0{,}085\ \text{mol}}'
+            note: "Ordonnée du palier : au-dela, l'avancement ne bouge plus."
+          - math: 'x(t_{1/2}) = \frac{x_f}{2} = \frac{0{,}085}{2} = 0{,}0425\ \text{mol}'
+            note: "Définition du chapitre 5 : la MOITIÉ DE L'AVANCEMENT FINAL, pas la moitié de la durée d'observation."
+          - math: '\boxed{t_{1/2} \approx 28\ \text{min}}'
+            note: "Abscisse du point de la courbe d'ordonnée 0,0425 mol. Toute lecture entre 28 et 29 min est recevable."
+      - id: q5
+        stem: |-
+          **3-3-** (1,5 pt) Construire le tableau descriptif de l'évolution du système, puis trouver la composition molaire du mélange à l'équilibre.
+        reasoning: |-
+          C'est la question la plus lourde du bloc — $1{,}5$ point, plus du tiers de l'exercice — et elle se fait en **trois temps**, dont le premier est le seul qui demande un calcul.
+
+          **Temps 1 — les quantités initiales, à partir des volumes.** Ni l'ester ni l'eau ne sont donnés en moles : ils sont donnés en **volumes**, avec leur masse volumique. Il faut donc passer par la masse (chapitre 3) :
+
+          $$n = \frac{m}{M} = \frac{\rho\,V}{M}$$
+
+          - pour l'ester : $n_i(E) = \dfrac{0{,}87 \times 15}{130} = 0{,}100\ \text{mol}$ *(exactement $0{,}10038$)* ;
+          - pour l'eau : $n_i(\text{H}_2\text{O}) = \dfrac{1 \times 35}{18} = 1{,}94\ \text{mol}$ *(exactement $1{,}9444$)*.
+
+          Regarde ces deux nombres avant de continuer : **l'eau est en excès d'un facteur $19$**. C'est elle le solvant, et c'est ce déséquilibre qui pousse l'hydrolyse aussi loin.
+
+          **Temps 2 — le tableau d'avancement.** Les quatre coefficients stœchiométriques valent $1$ (question 2), donc chaque ligne évolue de $\pm x$, sans facteur :
+
+          | | $E$ | $+\ \text{H}_2\text{O}$ | $\rightleftharpoons$ | acide | $+$ alcool |
+          |---|---|---|---|---|---|
+          | **état initial** ($x = 0$) | $0{,}100$ | $1{,}94$ | | $0$ | $0$ |
+          | **état intermédiaire** | $0{,}100 - x$ | $1{,}94 - x$ | | $x$ | $x$ |
+          | **état d'équilibre** ($x = x_{\text{éq}}$) | $0{,}100 - x_{\text{éq}}$ | $1{,}94 - x_{\text{éq}}$ | | $x_{\text{éq}}$ | $x_{\text{éq}}$ |
+
+          **Temps 3 — la composition à l'équilibre.** Le tableau ne devient des nombres qu'une fois $x_{\text{éq}}$ connu — et il l'est : c'est **l'avancement final lu sur la courbe** à la question précédente, $x_{\text{éq}} = x_f = 0{,}085\ \text{mol}$. C'est le point de couture de tout l'exercice : la **cinétique** (la courbe) alimente la **thermodynamique** (le tableau, puis $K$).
+
+          **Le piège de cette question, et il coûte le plus cher du bloc.** Confondre $x_f$ et $x_{max}$. L'avancement **maximal** est celui qu'on atteindrait si la réaction était totale : le réactif limitant est l'ester ($0{,}100 < 1{,}94$), donc $x_{max} = 0{,}100\ \text{mol}$. L'avancement **final** est celui que le système atteint réellement, $x_f = 0{,}085\ \text{mol}$, **lu sur la courbe et non calculé**. Utiliser $0{,}100$ à la place de $0{,}085$ ferait disparaître l'ester du mélange final — et rendrait la question 3-4 impossible, puisqu'on diviserait par zéro.
+
+          **Le contrôle qui ferme, et il vaut d'être fait.** Le taux d'avancement final vaut $\tau = \dfrac{x_f}{x_{max}} = \dfrac{0{,}085}{0{,}100} = 85\ \%$. Une hydrolyse d'ester « ordinaire », à quantités égales, plafonne vers $67\ \%$ ; ici l'énorme excès d'eau la pousse à $85\ \%$. Le chiffre est cohérent, et il n'est pas $100\ \%$ — la transformation reste limitée, comme la double flèche l'annonçait.
+
+          *Ce tableau relève aussi des notions sœurs « **Transformations dans les deux sens** » et « **État d'équilibre** » — elles sont nommées ici et honorées dans ce raisonnement, jamais dupliquées en entrée : le barème est réparti, pas compté deux fois.*
+        steps:
+          - math: 'n_i(E) = \frac{\rho(E)\,V(E)}{M(E)} = \frac{0{,}87 \times 15}{130} \approx 0{,}100\ \text{mol}'
+            note: "Quantité initiale d'ester : les volumes se convertissent en moles par la masse volumique puis la masse molaire."
+          - math: 'n_i(\text{H}_2\text{O}) = \frac{\rho(\text{H}_2\text{O})\,V(\text{H}_2\text{O})}{M(\text{H}_2\text{O})} = \frac{1 \times 35}{18} \approx 1{,}94\ \text{mol}'
+            note: "Quantité initiale d'eau : environ 19 fois celle de l'ester. C'est ce large excès qui pousse l'hydrolyse a 85 pour cent."
+          - math: 'x_{\text{max}} = 0{,}100\ \text{mol} \quad\text{(ester limitant)} \qquad x_{\text{éq}} = x_f = 0{,}085\ \text{mol} \quad\text{(lu sur la courbe)}'
+            note: "Ne pas confondre : x_max est calcule (réactif limitant), x_f est LU sur la courbe. C'est x_f qui remplit le tableau."
+          - math: 'n_f(E) = 0{,}100 - 0{,}085 = 0{,}015\ \text{mol} \qquad n_f(\text{H}_2\text{O}) = 1{,}94 - 0{,}085 = 1{,}855\ \text{mol}'
+            note: "Les deux réactifs à l'équilibre. L'ester n'a pas disparu : la transformation est limitée."
+          - math: '\boxed{n_f(\text{acide}) = n_f(\text{alcool}) = x_{\text{éq}} = 0{,}085\ \text{mol}}'
+            note: "Les deux produits, formes en quantités égales (coefficients stoechiométriques tous égaux a 1)."
+          - math: '\tau = \frac{x_f}{x_{\text{max}}} = \frac{0{,}085}{0{,}100} = 85\ \%'
+            note: "Controle de vraisemblance, non demande : 85 pour cent, cohérent avec un large excès d'eau, et strictement inférieur a 100."
+      - id: q6
+        stem: |-
+          **3-4-** (0,5 pt) Déterminer la constante d'équilibre $K$ associée à la réaction d'hydrolyse du composé $(E)$.
+        reasoning: |-
+          La constante d'équilibre est la valeur que prend le **quotient de réaction** dans l'état d'équilibre. Pour cette réaction, où les quatre espèces sont **en solution dans le même volume** et toutes affectées d'un coefficient stœchiométrique $1$ :
+
+          $$K = \frac{[\text{acide}]_{\text{éq}}\,[\text{alcool}]_{\text{éq}}}{[E]_{\text{éq}}\,[\text{H}_2\text{O}]_{\text{éq}}}$$
+
+          **La simplification qui fait tout le travail, et il faut la justifier plutôt que de la subir.** Chaque concentration s'écrit $\dfrac{n}{V}$ avec **le même $V$** — le volume du mélange. Il y a deux facteurs $\dfrac{1}{V}$ en haut et deux en bas : ils se **simplifient exactement**. Le quotient des concentrations est donc égal au quotient des **quantités de matière**, et l'on n'a pas besoin de connaître $V$ :
+
+          $$K = \frac{n_f(\text{acide})\,n_f(\text{alcool})}{n_f(E)\,n_f(\text{H}_2\text{O})}$$
+
+          C'est particulier à cette équation-ci : autant de moles à droite qu'à gauche. Si les coefficients n'étaient pas équilibrés en nombre, $V$ ne disparaîtrait pas.
+
+          Il ne reste qu'à reporter les quatre nombres du tableau de la question 3-3 :
+
+          $$K = \frac{(0{,}085)^2}{0{,}015 \times 1{,}855} = \frac{7{,}225\times10^{-3}}{2{,}783\times10^{-2}} \approx 0{,}26$$
+
+          **Le piège de cette question.** Oublier l'eau au dénominateur, « parce que c'est le solvant ». Ici l'eau est un **réactif à part entière**, elle figure dans l'équation et donc dans le quotient : la retirer multiplierait $K$ par $1{,}855$ et donnerait $0{,}48$. La règle qui autorise à sortir l'eau du quotient ne vaut que pour l'eau **solvant d'une réaction où elle n'apparaît pas dans l'équation**, ce qui n'est pas le cas d'une hydrolyse.
+
+          **Le contrôle de cohérence, qui vaut d'être fait.** $K \approx 0{,}26$ est **inférieur à $1$** : à quantités comparables, l'équilibre favoriserait donc plutôt l'ester — c'est-à-dire l'**estérification**. Et de fait, $\dfrac{1}{K} = 3{,}9 \approx 4$, la valeur classique de la constante d'estérification d'un ester non encombré. Les deux constantes sont inverses l'une de l'autre parce que les deux réactions sont inverses l'une de l'autre. Si l'hydrolyse est allée si loin ici ($85\ \%$), ce n'est donc pas grâce à $K$ — c'est grâce au **grand excès d'eau**, qui déplace le système sans changer la constante.
+
+          *Cette question relève aussi des notions sœurs « **Estérification et hydrolyse** », « **Transformations dans les deux sens** » et « **État d'équilibre** » — nommées ici, honorées dans ce raisonnement, et jamais dupliquées en entrée.*
+        steps:
+          - math: 'K = \frac{[\text{acide}]_{\text{éq}}\,[\text{alcool}]_{\text{éq}}}{[E]_{\text{éq}}\,[\text{H}_2\text{O}]_{\text{éq}}}'
+            note: "Quotient de réaction dans l'état d'équilibre. L'eau est un RÉACTIF ici : elle reste au dénominateur."
+          - math: 'K = \frac{n_f(\text{acide})\,n_f(\text{alcool})}{n_f(E)\,n_f(\text{H}_2\text{O})}'
+            note: "Les quatre espèces sont dans le même volume et les coefficients sont tous égaux a 1 : les deux facteurs 1/V du haut et du bas se simplifient exactement."
+          - math: 'K = \frac{(0{,}085)^2}{0{,}015 \times 1{,}855} = \frac{7{,}225\times10^{-3}}{2{,}783\times10^{-2}}'
+            note: "Les quatre quantités viennent du tableau de la question 3-3."
+          - math: '\boxed{K \approx 0{,}26}'
+            note: "Valeur exacte 0,2597. Controle : 1/K = 3,9, l'ordre de grandeur attendu pour la constante d'estérification inverse."

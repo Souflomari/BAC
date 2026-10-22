@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 600" width="640" height="600"
+     font-family="'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif"
+     role="img"
+     aria-label="Construction pas à pas de la suite récurrente uₙ₊₁ = f(uₙ), avec f(x) = 0,5x + 10 : montée jusqu’à la droite de f, puis report sur la droite y = x, jusqu’à convergence vers le point fixe ℓ = 20.">
+  <title>Construction en escalier, pas à pas — u(n+1) = f(u_n), suite du réservoir</title>
+
+  <!--
+    escalier-pas-a-pas.motion.svg  (v1 — MotionStage engine, ADR 0022)
+    ─────────────────────────────────────────────────────────────────────────
+    Engine: MotionStage.tsx (GSAP DrawSVGPlugin for the "trace" verb on every
+    staircase segment; "fade" for tick/label reveals; "pulse-settle" for the
+    accent dots marking where the staircase touches the line y = f(x)).
+
+    SAME GEOMETRY AS THE STATIC SIBLING (suite-escalier.svg) — reused
+    pixel-for-pixel so the two figures read as one visual system (motion
+    teaches the gesture here in R8, the static figure recaps it right after):
+
+      u_0 = 100,  u_(n+1) = f(u_n) = 0,5 u_n + 10,  fixed point ℓ = 20
+      u0=100, u1=60, u2=40, u3=30, u4=25, u5=22.5 → converges to ℓ=20
+
+    Screen mapping (identical to suite-escalier.svg): origin (x=0,y=0) at
+    pixel (100,480); scale 4 px/unit; px = 100+4x, py = 480-4y.
+
+      Droite y = f(x) : (0,10)→(108,64)   pixel (100,440) → (532,224)
+      Droite y = x    : (0,0)→(108,108)   pixel (100,480) → (532,48)
+      Point fixe (20,20)                  pixel (180,400)
+
+    Staircase vertices (same as the static path, split into per-beat
+    segments so each gesture — "monter jusqu'à f" / "glisser jusqu'à y=x" —
+    is its own stroke that DRAWS on "Suivant"):
+
+      seg-v1   (500,480)→(500,240)  u0 → f(u0)=u1                [beat-1]
+      seg-h1   (500,240)→(340,240)  u1 devient une abscisse      [beat-2]
+      seg-v2   (340,240)→(340,320)  u1 → f(u1)=u2                [beat-3a]
+      seg-h2   (340,320)→(260,320)  u2 devient une abscisse      [beat-3b]
+      seg-rest (260,320)→(260,360)→(220,360)→(220,380)→(200,380)
+               →(200,390)→(190,390)  u2→u3→u4→u5, en un seul     [beat-4]
+               tracé continu (l'algorithme est acquis ; on ne
+               répète plus le geste pas à pas — on voit converger)
+
+    BEAT MAP:
+      beat-0 (settled on load) — axes, y=x, y=f(x), u0 marqué. Aucune
+        animation : tout est authored VISIBLE directement (comme
+        onde-qui-avance.motion.svg beat-0), tweens: [] dans le .json.
+      beat-1 — trace seg-v1, puis pulse-settle sur le point où la
+        verticale touche f(x) (hauteur lue = u1).
+      beat-2 — trace seg-h1, puis fade-in du repère u1 sur l'axe des
+        abscisses (u1 redevient une abscisse, prête à être réinjectée).
+      beat-3 — même geste, encore : trace seg-v2 (+ pulse-settle du point
+        touchant f(x) pour u2), puis trace seg-h2 (+ fade-in du repère u2).
+      beat-4 — seg-rest se trace en un seul geste continu ; les 3 points
+        de contact restants (u3,u4,u5 sur f(x)) apparaissent ensemble en
+        renfort (fade, subordonné) ; puis les repères pointillés + le point
+        fixe ℓ + son repère sur l'axe se révèlent — convergence.
+
+    NO-FLASH CONTRACT: every element belonging to beat ≥ 1 is authored
+    opacity="0" (paths AND groups) so the no-JS / pre-hydration state shows
+    ONLY beat-0 settled (axes + both lines + u0). The engine's setPre then
+    forces autoAlpha:1 + drawSVG:0% on trace targets (hides them via
+    stroke-dashoffset instead once JS is live) — idempotent, no flash.
+
+    PALETTE (var(--figure-*) only, no hex):
+      axes, y=x line, tick lines (u0/u1/u2), dashed guides → --figure-ink-soft
+      y=f(x) line, axis labels, u0/u1/u2 tick text          → --figure-ink
+      the staircase itself, its touch-dots, and ℓ (tick,
+      dot, guides)                                          → --figure-accent
+      (accent stays the SOLE focus, exactly as the static sibling documents:
+      "seul foyer visuel de la figure".)
+
+    Reduced-motion: engine seeks every beat to its settled state at zero
+    duration; Suivant/Précédent still advance. No loop, no autoplay.
+  -->
+
+  <rect width="640" height="600" fill="var(--figure-surface)"/>
+
+  <!-- ── Chrome: title + subtitle (always visible, region "chrome") ─────── -->
+  <text x="320" y="14" text-anchor="middle" font-size="12.5" font-weight="600"
+        fill="var(--figure-ink)">Construction en escalier, pas à pas : u<tspan dy="3" font-size="9">n+1</tspan><tspan dy="-3"> = f(u</tspan><tspan dy="3" font-size="9">n</tspan><tspan dy="-3">)</tspan></text>
+  <text x="320" y="28" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">réservoir : u<tspan dy="3" font-size="8">0</tspan><tspan dy="-3"> = 100,  u</tspan><tspan dy="3" font-size="8">n+1</tspan><tspan dy="-3"> = 0,5 u</tspan><tspan dy="3" font-size="8">n</tspan><tspan dy="-3"> + 10  &#x2192;  converge vers ℓ = 20</tspan></text>
+
+  <!-- ── Figure frame (region "figure": x20 y34 w600 h506) ───────────────── -->
+  <rect x="20" y="34" width="600" height="506" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- axes (always visible — beat-0) -->
+  <line x1="100" y1="480" x2="574" y2="480" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="574,480 562,475.5 562,484.5" fill="var(--figure-ink-soft)"/>
+  <line x1="100" y1="480" x2="100" y2="48" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="100,40 95.5,51 104.5,51" fill="var(--figure-ink-soft)"/>
+  <text x="580" y="498" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">u<tspan dy="3" font-size="8">n</tspan></text>
+  <text x="72" y="66" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">u<tspan dy="3" font-size="8">n+1</tspan></text>
+
+  <!-- droite y = x (repère, always visible — beat-0) -->
+  <line x1="100" y1="480" x2="532" y2="48" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <text x="538" y="52" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">y = x</text>
+
+  <!-- droite y = f(x) = 0,5x + 10 (always visible — beat-0) -->
+  <line x1="100" y1="440" x2="532" y2="224" stroke="var(--figure-ink)" stroke-width="2"/>
+  <text x="538" y="222" font-size="11" font-style="italic" fill="var(--figure-ink)">f(x) = 0,5x + 10</text>
+
+  <!-- u0 marqué sur l'axe des abscisses (always visible — beat-0) -->
+  <line x1="500" y1="480" x2="500" y2="488" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="500" y="500" text-anchor="middle" font-size="11" font-style="italic" fill="var(--figure-ink)">u<tspan dy="3" font-size="8">0</tspan></text>
+  <circle id="dot-u0" cx="500" cy="480" r="3" fill="var(--figure-accent)"/>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       BEAT 1 — monter jusqu'à f : u0 → u1
+       ══════════════════════════════════════════════════════════════════════ -->
+  <path id="seg-v1" d="M500,480 L500,240"
+        fill="none" stroke="var(--figure-accent)" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" opacity="0"/>
+  <circle id="dot-u1-f" cx="500" cy="240" r="3" fill="var(--figure-accent)" opacity="0"/>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       BEAT 2 — glisser jusqu'à y = x : u1 redevient une abscisse
+       ══════════════════════════════════════════════════════════════════════ -->
+  <path id="seg-h1" d="M500,240 L340,240"
+        fill="none" stroke="var(--figure-accent)" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" opacity="0"/>
+  <g id="tick-u1" opacity="0">
+    <line x1="340" y1="480" x2="340" y2="488" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="340" y="500" text-anchor="middle" font-size="11" font-style="italic" fill="var(--figure-ink)">u<tspan dy="3" font-size="8">1</tspan></text>
+  </g>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       BEAT 3 — même geste, encore : u1 → u2
+       ══════════════════════════════════════════════════════════════════════ -->
+  <path id="seg-v2" d="M340,240 L340,320"
+        fill="none" stroke="var(--figure-accent)" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" opacity="0"/>
+  <circle id="dot-u2-f" cx="340" cy="320" r="3" fill="var(--figure-accent)" opacity="0"/>
+  <path id="seg-h2" d="M340,320 L260,320"
+        fill="none" stroke="var(--figure-accent)" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" opacity="0"/>
+  <g id="tick-u2" opacity="0">
+    <line x1="260" y1="480" x2="260" y2="488" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="260" y="500" text-anchor="middle" font-size="11" font-style="italic" fill="var(--figure-ink)">u<tspan dy="3" font-size="8">2</tspan></text>
+  </g>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       BEAT 4 — convergence : le reste du chemin, en un seul geste continu
+       (u2→u3→u4→u5), puis le point fixe ℓ.
+       ══════════════════════════════════════════════════════════════════════ -->
+  <path id="seg-rest"
+        d="M260,320 L260,360 L220,360 L220,380 L200,380 L200,390 L190,390"
+        fill="none" stroke="var(--figure-accent)" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" opacity="0"/>
+
+  <!-- Points de contact restants avec f(x) (u3, u4, u5) — reveal subordonné,
+       ensemble, après le tracé principal. -->
+  <g id="dots-rest" opacity="0">
+    <circle cx="260" cy="360" r="3" fill="var(--figure-accent)"/>
+    <circle cx="220" cy="380" r="3" fill="var(--figure-accent)"/>
+    <circle cx="200" cy="390" r="3" fill="var(--figure-accent)"/>
+  </g>
+
+  <!-- Repères pointillés vers le point fixe ℓ = 20 -->
+  <g id="fixed-guides" opacity="0">
+    <line x1="180" y1="400" x2="180" y2="480" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="100" y1="400" x2="180" y2="400" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+  </g>
+
+  <circle id="dot-fixed" cx="180" cy="400" r="4" fill="var(--figure-accent)" opacity="0"/>
+
+  <g id="tick-fixed" opacity="0">
+    <line x1="180" y1="480" x2="180" y2="488" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <text x="180" y="500" text-anchor="middle" font-size="12" font-weight="600" font-style="italic" fill="var(--figure-accent)">ℓ</text>
+  </g>
+
+  <!-- ── Footer legend (always visible, region "footer") ─────────────────── -->
+  <text x="320" y="560" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">geste répété : monter jusqu’à la droite de f (lire u<tspan dy="2" font-size="7.5">n+1</tspan><tspan dy="-2">), puis glisser jusqu’à y = x (le reporter en abscisse).</tspan></text>
+  <text x="320" y="577" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">chaque répétition rapproche la suite du point fixe ℓ, où f(ℓ) = ℓ.</text>
+</svg>

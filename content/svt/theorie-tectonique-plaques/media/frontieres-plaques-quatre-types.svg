@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 780"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Quatre coupes empilées, une par type de frontière de plaques, pour les comparer directement. Divergence : une dorsale où le manteau remonte et crée de la lithosphère, les plaques s’écartent. Convergence en subduction : une plaque océanique refroidie et alourdie plonge sous une autre le long d’une fosse, avec un arc volcanique à quelques centaines de kilomètres à l’intérieur des terres. Convergence en collision : deux croûtes continentales, trop légères pour plonger, se plissent et s’épaississent en une chaîne de montagnes, sans volcanisme. Transformante : deux plaques glissent latéralement le long d’une faille, sans création ni destruction de lithosphère, avec une forte sismicité mais sans volcanisme.">
+  <title>Les quatre types de frontières de plaques, comparées</title>
+
+  <!--
+    frontieres-plaques-quatre-types.svg — STAGED, 4 étapes (LESSON-
+    EXPERIENCE-SPEC §2.5 : le geste d'enseignement du R5 est explicitement
+    la COMPARAISON des quatre types une fois tous visibles ensemble).
+
+    DÉVIATION DOCUMENTÉE vis-à-vis du brief pédagogique : le brief demande un
+    "vertically-stacked-panel reveal (one panel per step, NOT dimmed-
+    overlay)" — le mécanisme exact qu'utilise regimes-uc.svg dans rlc-serie,
+    via VERTICALLY_STACKED_PANELS (web/src/components/notion/
+    MediaDiagram.tsx) + le viewBox-crop côté StagedFigure. Cette figure
+    reste dans le périmètre content/svt/theorie-tectonique-plaques/ imposé à
+    cette passe — enregistrer ce slug dans VERTICALLY_STACKED_PANELS
+    demanderait d'éditer web/src/components/notion/MediaDiagram.tsx, hors
+    périmètre. La figure utilise donc le comportement PAR DÉFAUT de
+    StagedFigure : chaque panneau s'ajoute au précédent, les panneaux déjà
+    vus restent visibles mais s'estompent (opacity 0.55) au lieu de
+    disparaître par recadrage du viewBox. Au dernier stade, les quatre
+    panneaux sont TOUS pleinement visibles et directement comparables — le
+    geste pédagogique demandé est donc atteint à l'arrivée, seul le
+    mécanisme intermédiaire diffère (estompage plutôt que recadrage).
+
+    Les quatre panneaux, empilés, une frontière par panneau :
+      panneau 1 (y=20..210)  : divergence — dorsale
+      panneau 2 (y=210..400) : convergence — subduction
+      panneau 3 (y=400..590) : convergence — collision
+      panneau 4 (y=590..780) : coulissage — faille transformante
+    Chaque panneau porte SON PROPRE accent (une idée par panneau) :
+      1: la lithosphère neuve au centre de la dorsale
+      2: le panneau plongeant + la zone sismique inclinée (Benioff) + l'arc volcanique
+      3: le pli/épaississement de la croûte continentale
+      4: la faille + les flèches de glissement latéral
+    Le reste (plaques, manteau, chrome) reste en --figure-ink / --figure-
+    ink-soft / --figure-grid, pour que l'accent de chaque panneau ressorte
+    sans concurrence entre panneaux.
+
+    Simplifications pédagogiques assumées : les quatre coupes sont des
+    schémas de principe (pas à l'échelle réelle les uns par rapport aux
+    autres) ; l'absence de volcanisme (collision, transformante) est
+    signalée par une mention textuelle plutôt que par un symbole barré —
+    conforme au principe de cohérence (pas de détail décoratif).
+  -->
+
+  <text x="350" y="14" text-anchor="middle" font-size="12" font-weight="600"
+        letter-spacing="0.01em" fill="var(--figure-ink)">
+    Les quatre types de frontières de plaques
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       PANNEAU 1 — Divergence (dorsale)              y = 20..210
+       ══════════════════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <text x="30" y="44" font-size="13" font-weight="700" fill="var(--figure-ink)">1 — Divergence : la dorsale</text>
+    <text x="670" y="44" text-anchor="end" font-size="10" font-style="italic" fill="var(--figure-ink-soft)">ex. dorsale médio-atlantique</text>
+
+    <rect x="40" y="100" width="260" height="60" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <rect x="380" y="100" width="260" height="60" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <rect x="320" y="100" width="40" height="60" fill="var(--figure-surface)" stroke="var(--figure-accent)" stroke-width="2.2"/>
+    <line x1="340" y1="155" x2="340" y2="104" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="340,98 333,112 347,112" fill="var(--figure-accent)"/>
+    <text x="340" y="92" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">nouvelle lithosphère</text>
+
+    <rect x="40" y="160" width="600" height="30" fill="var(--figure-grid)" opacity="0.55" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+
+    <line x1="300" y1="130" x2="180" y2="130" stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+    <polygon points="168,130 182,124 182,136" fill="var(--figure-ink)"/>
+    <line x1="380" y1="130" x2="500" y2="130" stroke="var(--figure-ink)" stroke-width="1.8" stroke-linecap="round"/>
+    <polygon points="512,130 498,124 498,136" fill="var(--figure-ink)"/>
+    <text x="240" y="122" text-anchor="middle" font-size="9.5" fill="var(--figure-ink)">écartement</text>
+    <text x="440" y="122" text-anchor="middle" font-size="9.5" fill="var(--figure-ink)">écartement</text>
+
+    <text x="360" y="202" text-anchor="middle" font-size="10" font-style="italic" fill="var(--figure-accent)">
+      nouvelle lithosphère océanique créée à l’axe, plaques écartées
+    </text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       PANNEAU 2 — Convergence, subduction              y = 210..400
+       ══════════════════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line x1="20" y1="210" x2="660" y2="210" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+
+    <text x="30" y="234" font-size="13" font-weight="700" fill="var(--figure-ink)">2 — Convergence : subduction</text>
+    <text x="670" y="234" text-anchor="end" font-size="10" font-style="italic" fill="var(--figure-ink-soft)">ex. fosse Pérou-Chili, Japon</text>
+
+    <path d="M40,290 L300,290 L340,350 L40,350 Z" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <rect x="340" y="290" width="300" height="60" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <!-- La bande de manteau est peinte AVANT le panneau plongeant et ses
+         étiquettes, et non après : dessinée en dernier avec opacity 0.55,
+         elle passait par-dessus « zone sismique / inclinée (Benioff) » et
+         les délavait — on croyait à un choix de couleur, c'était un ordre
+         de peinture. -->
+    <rect x="40" y="350" width="600" height="30" fill="var(--figure-grid)" opacity="0.55" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+
+    <text x="300" y="278" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">fosse</text>
+
+    <line x1="335" y1="345" x2="445" y2="393" stroke="var(--figure-accent)" stroke-width="10" stroke-linecap="round" opacity="0.4"/>
+    <circle cx="355" cy="355" r="2.6" fill="var(--figure-accent)"/>
+    <circle cx="380" cy="368" r="2.6" fill="var(--figure-accent)"/>
+    <circle cx="405" cy="380" r="2.6" fill="var(--figure-accent)"/>
+    <circle cx="425" cy="390" r="2.6" fill="var(--figure-accent)"/>
+    <!-- Remontées de 12 px : la seconde ligne tombait dans la légende du
+         panneau, « densité croît avec l'âge → … » (recouvrement mesuré
+         61 %). -->
+    <text x="468" y="364" font-size="9" fill="var(--figure-accent)">zone sismique</text>
+    <text x="468" y="376" font-size="9" fill="var(--figure-accent)">inclinée (Benioff)</text>
+
+    <polygon points="430,270 415,290 445,290" fill="var(--figure-accent)"/>
+    <text x="430" y="262" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">arc volcanique</text>
+
+    <text x="360" y="392" text-anchor="middle" font-size="10" font-style="italic" fill="var(--figure-accent)">
+      densité croît avec l’âge → la plaque plonge (pas de force extérieure)
+    </text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       PANNEAU 3 — Convergence, collision              y = 400..590
+       ══════════════════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <line x1="20" y1="400" x2="660" y2="400" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+
+    <text x="30" y="424" font-size="13" font-weight="700" fill="var(--figure-ink)">3 — Convergence : collision</text>
+    <text x="670" y="424" text-anchor="end" font-size="10" font-style="italic" fill="var(--figure-ink-soft)">ex. Himalaya</text>
+
+    <rect x="40" y="480" width="260" height="60" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <rect x="380" y="480" width="260" height="60" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+
+    <path d="M300,480 L315,450 L330,465 L345,435 L360,462 L375,432 L390,480 Z"
+          fill="var(--figure-accent)" fill-opacity="0.15" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <text x="345" y="422" text-anchor="middle" font-size="10" font-weight="700" fill="var(--figure-accent)">plis + épaississement</text>
+
+    <text x="500" y="505" text-anchor="middle" font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">(pas de volcanisme d’arc)</text>
+
+    <rect x="40" y="540" width="600" height="30" fill="var(--figure-grid)" opacity="0.55" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+
+    <text x="360" y="582" text-anchor="middle" font-size="10" font-style="italic" fill="var(--figure-accent)">
+      aucune des deux plaques ne plonge — la croûte s’épaissit
+    </text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       PANNEAU 4 — Coulissage, faille transformante    y = 590..780
+       ══════════════════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <line x1="20" y1="590" x2="660" y2="590" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+
+    <text x="30" y="614" font-size="13" font-weight="700" fill="var(--figure-ink)">4 — Coulissage : faille transformante</text>
+    <text x="670" y="614" text-anchor="end" font-size="10" font-style="italic" fill="var(--figure-ink-soft)">ex. faille de San Andreas</text>
+
+    <rect x="40" y="670" width="280" height="60" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <rect x="360" y="670" width="280" height="60" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+
+    <line x1="340" y1="660" x2="340" y2="740" stroke="var(--figure-accent)" stroke-width="2.6"/>
+    <circle cx="340" cy="680" r="2.4" fill="var(--figure-accent)"/>
+    <circle cx="340" cy="700" r="2.4" fill="var(--figure-accent)"/>
+    <circle cx="340" cy="720" r="2.4" fill="var(--figure-accent)"/>
+
+    <line x1="320" y1="720" x2="320" y2="680" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="320,672 314,684 326,684" fill="var(--figure-accent)"/>
+    <line x1="360" y1="680" x2="360" y2="720" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="360,728 354,716 366,716" fill="var(--figure-accent)"/>
+
+    <text x="500" y="695" text-anchor="middle" font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">(pas de volcanisme)</text>
+    <text x="220" y="695" text-anchor="middle" font-size="9.5" fill="var(--figure-accent)">forte sismicité</text>
+
+    <rect x="40" y="730" width="600" height="30" fill="var(--figure-grid)" opacity="0.55" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+
+    <text x="360" y="772" text-anchor="middle" font-size="10" font-style="italic" fill="var(--figure-accent)">
+      ni création ni destruction de lithosphère — glissement latéral
+    </text>
+  </g><!-- /step-4 -->
+
+</svg>

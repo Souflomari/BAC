@@ -1,0 +1,858 @@
+notion: arithmetique
+skill_code: maths_arithmetique
+
+# ──────────────────────────────────────────────────────────────────────────────
+# CHECKPOINTS IN-LEÇON (summit-conversion campaign — maths arithmétique)
+#
+# Sondes FORMATIVES, calmes, placées DANS la leçon — PAS la banque de fin
+# (items.yaml). Même schéma d'item, mais NI score, NI streak, NI décompte. Le
+# feedback d'une mauvaise réponse nomme le MODÈLE arithmétique erroné, pas
+# seulement le fait de s'être trompé. Le plancher ≥3-par-modèle de la banque
+# (items.yaml) n'est PAS modifié par ces checkpoints (clones surfacés inline,
+# non recomptés).
+#
+# Placement (les ids correspondent aux marqueurs [[checkpoint:…]] de lesson.md) :
+#   cp-r0-predict     (dans R0)          — COMMIT gate : transforme le « prends
+#                                          position : possible ou impossible ? »
+#                                          des deux bidons en un vrai engagement,
+#                                          avant la révélation. Sonde
+#                                          diophantienne-critere-existence.
+#   cp-r2-congruence  (fin R2)           — rupture gate : réduire une puissance
+#                                          dans une congruence, et normaliser le
+#                                          reste dans [0, n[. Sonde
+#                                          congruence-puissance-mal-reduite.
+#   cp-r3-pgcd-ppcm   (fin R3)           — rupture gate : PGCD vs PPCM (et vs
+#                                          produit), et « plus grand » diviseur
+#                                          commun. Sonde pgcd-vs-ppcm.
+#   cp-r5-gauss       (fin R5)           — rupture gate : Gauss / a|bc sans la
+#                                          condition PGCD=1. Sonde
+#                                          gauss-condition-ignoree.
+#   cp-r6b-fermat-predict (dans R6b,     — COMMIT gate : transforme une règle
+#                          avant l'énoncé) naïve « a^(p-1)≡1 pour tout a et
+#                                          tout p premier » (sans condition),
+#                                          testée sur p=11, a=22 (11|22), en
+#                                          un vrai engagement AVANT que la
+#                                          rung ne révèle l'énoncé exact.
+#                                          Sonde fermat-condition-ou-exposant
+#                                          (dette d'examen, vague B).
+#   cp-r6-fermat      (avant r-bac)      — rupture gate : petit théorème de
+#                                          Fermat (p premier, p∤a ⟹ a^(p−1)≡1),
+#                                          l'outil de la question 1.d du sujet.
+#                                          `rung: "R6b"` (corrigé le
+#                                          2026-09-27 : portait « R6 », était
+#                                          hors-rung jusqu'à l'ajout de R6b ;
+#                                          placement before_bac inchangé).
+#                                          Sonde
+#                                          fermat-condition-ou-exposant.
+#   cp-r7b-predict-ecriture (dans R7b,   — COMMIT gate : le nombre a-t-il
+#                            accroche)     changé, ou seulement son écriture ?
+#                                          Posé juste après « 2025 en base 2 »,
+#                                          avant l'explication. Sonde
+#                                          numeration-ecriture-prise-pour-le-nombre.
+#   cp-r7b-ordre-restes (dans R7b, entre — COMMIT gate : dans quel ordre lire
+#                        les divisions et   les restes des divisions
+#                        l'écriture)        successives ? Sonde
+#                                          numeration-restes-ordre-inverse.
+#   cp-r7b-retenue    (dans R7b, après   — rupture gate : le report de colonne
+#                      la multiplication)   en base b, sur une multiplication
+#                                          (erreur de seuil non barrable à vue).
+#                                          Sonde numeration-retenue-a-dix.
+#                                          Clone d'AR-48 (nombres frais).
+#   cp-r7b-critere-predict (dans R7b,    — COMMIT gate : quel reste modulo 8
+#                           avant la        pour 5622 en base 7, dont la somme
+#                           rupture du      des chiffres vaut 15 ? Posé AVANT
+#                           critère)        que le réflexe « la somme des
+#                                          chiffres, c'est LE critère » soit
+#                                          dit et cassé. Sonde
+#                                          critere-divisibilite-mal-applique.
+#   cp-r7b-chiffres-predict (dans R7b,   — COMMIT gate : combien des trois
+#                            avant la       couples candidats de 3x = 2y sont
+#                            rupture des    des réponses ? Posé AVANT que (4,6)
+#                            chiffres)      ne casse sur 64 en base 5. Sonde
+#                                          numeration-contraintes-sur-les-chiffres.
+#   Les trois premiers points d'arrêt de la rung de numération (ajoutée le
+#   2026-10-20, spec maths-arithmetique-numeration.md (supprimé le 2026-10-22)
+#   §6) ; les deux derniers ajoutés le même jour par les correctifs de la
+#   critique pédagogique de vague 1 (docs/audits/critiques/
+#   numeration-build-pedagogie.md, constat 1) : les deux ruptures de plus forte
+#   demande n'avaient qu'un engagement écrit.
+#
+# CHAQUE distracteur porte un id de modèle nommé de l'inventaire de la notion
+# (items.yaml). Les longueurs d'options sont équilibrées : la bonne réponse
+# n'est jamais la plus longue.
+#
+# Garde-fou périmètre : 2ème Bac Sciences Mathématiques — divisibilité, division
+# euclidienne, congruences, PGCD/PPCM, algorithme d'Euclide, Bézout, Gauss,
+# nombres premiers, décomposition, équations diophantiennes ax+by=c, systèmes
+# de numération (écriture en base, opérations, comparaison, critères par b−1 et
+# b+1). Le petit théorème de Fermat est au programme SM et légitime pour un
+# sujet type-bac.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placé DANS R0 (l'engagement des deux bidons)
+  #        Transforme « prends position : possible ou impossible ? » en un vrai
+  #        commit, avant la révélation « Voici une suite qui fonctionne ».
+  #        Sonde diophantienne-critere-existence (atteignable ⟺ multiple du PGCD).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, hook_commit]
+    primary_misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Avec un bidon de $3$ L et un bidon de $5$ L, sans graduation (remplir,
+      vider, transvaser), **engage-toi avant de lire la suite** : peux-tu
+      obtenir exactement $1$ L ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Non : avec deux bidons, on ne peut jamais isoler moins d'eau que le
+          plus petit des deux (ici $3$ L).
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: |
+          Modèle détecté : « on ne descend pas sous le plus petit bidon ». Faux :
+          toute quantité atteignable est de la forme $3u + 5v$ (avec
+          $u, v \in \mathbb{Z}$), donc un multiple de $\mathrm{PGCD}(3,5) = 1$ —
+          en particulier $1$ L est atteignable. La taille des
+          bidons n'est pas le critère ; le PGCD l'est.
+      - id: B
+        text: |
+          Oui, c'est possible avec la bonne suite de transvasements.
+        correct: true
+        feedback: |
+          Exact — et ce n'est pas de la chance. $\mathrm{PGCD}(3,5) = 1$ : par
+          Bézout, $3 \times 2 + 5 \times (-1) = 1$, ce qui décrit la manœuvre
+          (remplir deux fois le bidon de $3$ L, retirer l'équivalent d'un bidon de
+          $5$ L). C'est la coprimalité de $3$ et $5$ qui rend $1$ L atteignable,
+          pas leur nature.
+      - id: C
+        text: |
+          Oui, mais uniquement parce que $3$ et $5$ sont deux nombres premiers.
+        correct: false
+        misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
+        feedback: |
+          La conclusion est bonne, la raison non. Ce qui compte, c'est que $3$ et
+          $5$ soient **premiers entre eux** ($\mathrm{PGCD} = 1$), pas qu'ils
+          soient premiers. La paire $(4,9)$, dont aucun terme n'est premier,
+          permet elle aussi de mesurer $1$ L. « Premier » qualifie un nombre ;
+          « premiers entre eux » qualifie une paire.
+      - id: D
+        text: |
+          Non : $1$ litre est plus petit que $3$, donc trop petit pour être
+          mesuré exactement.
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: |
+          Modèle détecté : « trop petit pour être mesuré ». La taille de la cible
+          n'a rien à voir : on isole exactement un volume égal à $\mathrm{PGCD}$
+          des deux capacités. Ici $\mathrm{PGCD}(3,5) = 1$, donc $1$ L est bel et
+          bien atteignable, aussi petit soit-il.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r2-congruence | placé FIN R2
+  #        Rupture gate : réduire une puissance dans une congruence (ramener
+  #        l'exposant via un cycle) ET normaliser le reste dans [0, n[.
+  #        Sonde congruence-puissance-mal-reduite. Clone d'AR-12.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-congruence
+    rung: "R2"
+    habilete: utilisation
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, congruences]
+    primary_misconception: mc.math.maths_arithmetique.congruence-puissance-mal-reduite
+    item_source: clone_of_AR-12
+    lesson_placement: after_R2
+
+    stem: |
+      Quel est le reste de la division euclidienne de $3^{2024}$ par $5$ ?
+      *(On pourra chercher un cycle : $3^1, 3^2, 3^3, 3^4$ modulo $5$.)*
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $3$
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-puissance-mal-reduite
+        feedback: |
+          Modèle détecté : on garde la base sans réduire l'exposant. Le cycle est
+          $3^1 \equiv 3,\ 3^2 \equiv 4,\ 3^3 \equiv 2,\ 3^4 \equiv 1 \pmod 5$ :
+          période $4$. Comme $2024 = 4 \times 506$, on est en fin de cycle,
+          $3^{2024} \equiv 1$, pas $3$.
+      - id: B
+        text: |
+          $1$
+        correct: true
+        feedback: |
+          Exact. $3^4 = 81 \equiv 1 \pmod 5$ : les puissances de $3$ sont
+          périodiques de période $4$. Et $2024 = 4 \times 506$, donc
+          $3^{2024} = (3^4)^{506} \equiv 1^{506} \equiv 1 \pmod 5$.
+      - id: C
+        text: |
+          $0$
+        correct: false
+        misconception: mc.math.maths_arithmetique.prime-divise-produit
+        feedback: |
+          Un reste nul signifierait $5 \mid 3^{2024}$. Mais $5$ est premier et ne
+          divise pas $3$ ; il ne divise donc aucune puissance de $3$ (un premier
+          qui divise un produit divise l'un des facteurs). Le reste ne peut pas
+          être $0$.
+      - id: D
+        text: |
+          $5$
+        correct: false
+        misconception: mc.math.maths_arithmetique.reste-non-normalise
+        feedback: |
+          Un reste modulo $5$ appartient toujours à $\{0, 1, 2, 3, 4\}$ : il ne
+          peut jamais valoir $5$. Un reste doit être ramené dans $[0, 5[$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r3-pgcd-ppcm | placé FIN R3
+  #        Rupture gate : PGCD vs PPCM (et vs produit a×b), et « plus grand »
+  #        diviseur commun. Sonde pgcd-vs-ppcm. Clone d'AR-3.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-pgcd-ppcm
+    rung: "R3"
+    habilete: utilisation
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, pgcd, ppcm]
+    primary_misconception: mc.math.maths_arithmetique.pgcd-vs-ppcm
+    item_source: clone_of_AR-3
+    lesson_placement: after_R3
+
+    stem: |
+      Que vaut $\mathrm{PGCD}(24, 36)$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $72$
+        correct: false
+        misconception: mc.math.maths_arithmetique.pgcd-vs-ppcm
+        feedback: |
+          $72$ est le PPCM (plus petit multiple commun), pas le PGCD. Un PGCD est
+          un **diviseur** commun : il ne peut pas dépasser $24$, le plus petit des
+          deux nombres.
+      - id: B
+        text: |
+          $12$
+        correct: true
+        feedback: |
+          Exact. Par l'algorithme d'Euclide : $36 = 24 \times 1 + 12$, puis
+          $24 = 12 \times 2 + 0$. Le dernier reste non nul, $12$, est le PGCD (et
+          $12$ divise bien $24$ et $36$).
+      - id: C
+        text: |
+          $864$, c'est-à-dire le produit $24 \times 36$.
+        correct: false
+        misconception: mc.math.maths_arithmetique.pgcd-vs-ppcm
+        feedback: |
+          Multiplier les deux nombres ne donne ni le PGCD ni le PPCM. Le produit
+          $a \times b$ vaut $\mathrm{PGCD}(a,b) \times \mathrm{PPCM}(a,b)$ ; le
+          PGCD cherché est un diviseur commun, donc au plus $24$.
+      - id: D
+        text: |
+          $6$
+        correct: false
+        misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
+        feedback: |
+          $6$ divise bien $24$ et $36$, mais ce n'est pas le **plus grand** :
+          $12$ les divise aussi ($24 = 12 \times 2$, $36 = 12 \times 3$). Le PGCD
+          est le plus grand des diviseurs communs.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r5-gauss | placé FIN R5
+  #        Rupture gate : Gauss / a|bc appliqué SANS vérifier PGCD(a,b)=1.
+  #        Sonde gauss-condition-ignoree. Clone d'AR-18.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-gauss
+    rung: "R5"
+    habilete: raisonnement
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, gauss]
+    primary_misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
+    item_source: clone_of_AR-18
+    lesson_placement: after_R5
+
+    stem: |
+      On sait que $12 \mid 8 \times 9$ (car $8 \times 9 = 72 = 12 \times 6$).
+      Peut-on en déduire que $12 \mid 8$ ou $12 \mid 9$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Oui : puisque $12$ divise le produit, il divise forcément l'un des deux
+          facteurs.
+        correct: false
+        misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
+        feedback: |
+          Modèle détecté : Gauss appliqué sans sa condition. La règle
+          « $a \mid bc \Rightarrow a \mid b$ ou $a \mid c$ » ne s'applique que si
+          $a$ est **premier avec** l'un des facteurs. Ici
+          $\mathrm{PGCD}(12,8)=4$ et $\mathrm{PGCD}(12,9)=3$ : la condition
+          manque, et de fait $12 \nmid 8$, $12 \nmid 9$.
+      - id: B
+        text: |
+          Non : Gauss exige $\mathrm{PGCD} = 1$, non vérifié ici.
+        correct: true
+        feedback: |
+          Exact. Le théorème de Gauss réclame $\mathrm{PGCD}(a,b) = 1$. Or
+          $\mathrm{PGCD}(12,8) = 4$ et $\mathrm{PGCD}(12,9) = 3$ : aucune des deux
+          coprimalités n'est satisfaite, donc on ne peut rien conclure — et en
+          effet $12$ ne divise ni $8$ ni $9$.
+      - id: C
+        text: |
+          Oui, car $12 = 4 \times 3$, avec $4 \mid 8$ et $3 \mid 9$.
+        correct: false
+        misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
+        feedback: |
+          Répartir les facteurs de $12$ entre $8$ et $9$ ne prouve pas que $12$
+          divise l'un des deux. $4 \mid 8$ et $3 \mid 9$ sont vrais, mais il
+          faudrait **tout** le facteur $12$ dans un seul nombre : ni $12 \mid 8$
+          ni $12 \mid 9$.
+      - id: D
+        text: |
+          Non, uniquement parce que $12$ n'est pas un nombre premier.
+        correct: false
+        misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
+        feedback: |
+          La conclusion est correcte, la raison non. Ce n'est pas la non-primalité
+          de $12$ qui bloque, mais l'absence de coprimalité entre $12$ et les
+          facteurs. La condition de Gauss porte sur $\mathrm{PGCD} = 1$, pas sur le
+          fait d'être premier.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3b | id: cp-r6b-fermat-predict | placé DANS R6b, AVANT l'énoncé exact
+  #         COMMIT gate : une règle naïve — « a^(p-1)≡1 pour tout entier a et
+  #         tout premier p » (sans la condition p∤a) — testée sur p=11,
+  #         a=22 (11|22), avant que la rung ne révèle l'énoncé et sa
+  #         condition. Sonde fermat-condition-ou-exposant. item_source
+  #         original. Dette d'examen, vague B (GAP-B inverse, Fermat sans
+  #         rung — maths.md (supprimé le 2026-10-22), § arithmetique).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6b-fermat-predict
+    rung: "R6b"
+    habilete: raisonnement
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, fermat, hook_commit]
+    primary_misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+    item_source: original
+    lesson_placement: in_R6b
+
+    stem: |
+      Un camarade te propose la règle suivante : "pour n'importe quel entier
+      $a$ et n'importe quel nombre premier $p$, on a toujours
+      $a^{p-1} \equiv 1 \pmod p$." **Prends position avant de lire la suite** :
+      teste-la toi-même avec $p = 11$ et $a = 22$. Que vaut réellement
+      $22^{10}$ modulo $11$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $1$, en application directe de la règle telle qu'énoncée par ton
+          camarade.
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: |
+          Modèle détecté : la règle appliquée sans vérifier sa condition. Ici
+          $p = 11$ et $a = 22$ : or $11 \mid 22$ (donc $p \mid a$), exactement
+          le cas que la condition $p \nmid a$ exclut. La règle de ton
+          camarade, énoncée sans condition, est fausse — ce contre-exemple le
+          montre.
+      - id: B
+        text: |
+          $0$, car $22 \equiv 0 \pmod{11}$ (puisque $11 \mid 22$), donc
+          $22^{10} \equiv 0^{10} \equiv 0 \pmod{11}$.
+        correct: true
+        feedback: |
+          Exact. $22 = 2 \times 11$ est un multiple de $11$, donc
+          $22 \equiv 0 \pmod{11}$, et $22^{10} \equiv 0^{10} \equiv 0
+          \pmod{11}$ — pas $1$. La règle de ton camarade oubliait la
+          condition $p \nmid a$ : c'est précisément parce que $11 \mid 22$
+          qu'elle échoue ici.
+      - id: C
+        text: |
+          $22$, en confondant avec l'autre forme du théorème
+          ($a^{p} \equiv a$, qui donnerait $22^{11}\equiv 22$, pas
+          $22^{10}$).
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: |
+          Modèle détecté : exposant confondu. La forme $a^{p} \equiv a
+          \pmod p$ (valable pour tout $a$, sans condition) donnerait
+          $22^{11} \equiv 22 \pmod{11}$ — pas $22^{10}$. Les deux formes du
+          petit théorème de Fermat n'ont ni le même exposant, ni la même
+          condition ; il ne faut pas passer de l'une à l'autre sans y
+          penser.
+      - id: D
+        text: |
+          $-1$, c'est-à-dire $10 \pmod{11}$.
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: |
+          Modèle détecté : cette valeur $-1$ est celle qu'on rencontre
+          souvent juste AVANT d'appliquer Fermat dans un sujet de bac (une
+          contradiction du type $-1 \equiv 1$ à exhiber), pas la conclusion
+          de Fermat lui-même — et de toute façon pas le résultat ici, où
+          $p \mid a$ rend même l'énoncé du théorème inapplicable.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-R7b-1 | id: cp-r7b-predict-ecriture | placé DANS R7b, juste après
+  #        l'égalité « 2025 en base 2 », AVANT la phrase qui l'explique.
+  #        COMMIT gate de la rung de numération : le nombre a-t-il changé, ou
+  #        seulement son écriture ? Sonde le modèle racine
+  #        numeration-ecriture-prise-pour-le-nombre ; un distracteur porte
+  #        numeration-contraintes-sur-les-chiffres (moins de chiffres pris pour
+  #        moins de nombres). item_source original. Spec :
+  #        maths-arithmetique-numeration.md (supprimé le 2026-10-22) §6.1.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7b-predict-ecriture
+    rung: "R7b"
+    habilete: raisonnement
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, numeration, hook_commit]
+    primary_misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+    item_source: original
+    lesson_placement: in_R7b
+
+    stem: |
+      $2025 = \overline{11111101001}_{(2)}$. **Prends position avant de lire
+      la suite :** en passant de l'écriture en base $10$ à l'écriture en
+      base $2$, qu'est-ce qui a changé ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Le nombre a changé : avec onze chiffres,
+          $\overline{11111101001}_{(2)}$ est bien plus grand que $2025$.
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: |
+          Modèle détecté : l'écriture prise pour le nombre — ici, « plus de
+          chiffres, donc plus grand ». Recompte avec les poids de la base $2$ :
+          $1024+512+256+128+64+32+8+1 = 2025$. C'est le même entier ; il lui
+          faut simplement plus de colonnes quand les paquets sont plus petits.
+      - id: B
+        text: |
+          Seulement l'écriture : c'est le même entier, compté par paquets de
+          $2$ au lieu de paquets de $10$.
+        correct: true
+        feedback: |
+          Exact. Une base est une taille de paquet, pas une transformation du
+          nombre : $2025$ reste $2025$, que tu le comptes par dix ou par deux.
+      - id: C
+        text: |
+          L'écriture et le nombre : passer à une base plus petite rend le
+          nombre lui-même plus petit.
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: |
+          Modèle détecté : la base crue proportionnelle au nombre. La base ne
+          change que la LONGUEUR de l'écriture : plus la base est petite, plus
+          il faut de colonnes pour écrire le même entier — onze en base $2$,
+          quatre en base $10$.
+      - id: D
+        text: |
+          L'écriture seulement — mais la base $2$ écrit moins de nombres que la
+          base $10$ : il lui manque les chiffres $2$ à $9$.
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+        feedback: |
+          Modèle détecté : moins de chiffres confondu avec moins de nombres. La
+          base $2$ a exactement deux chiffres, $0$ et $1$, et elle écrit tous
+          les entiers naturels : dès qu'une colonne atteint $2$, on forme un
+          paquet de la colonne suivante. Elle utilise juste plus de colonnes.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-R7b-2 | id: cp-r7b-ordre-restes | placé DANS R7b, entre les quatre
+  #        divisions de 2025 par 7 et l'écriture assemblée.
+  #        COMMIT gate sur le modèle signature de la rung : dans quel ordre
+  #        lire les restes ? Sonde numeration-restes-ordre-inverse (lecture
+  #        dans l'ordre de sortie, et demi-renversement) ; un distracteur porte
+  #        numeration-ecriture-prise-pour-le-nombre (les chiffres décimaux
+  #        gardés). Aucun distracteur ne porte de chiffre hors base : rien ne
+  #        se barre à vue. item_source original. Spec §6.2.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7b-ordre-restes
+    rung: "R7b"
+    habilete: raisonnement
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, numeration, predict_commit]
+    primary_misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+    item_source: original
+    lesson_placement: in_R7b
+
+    stem: |
+      Les quatre divisions de $2025$ par $7$ ont donné les restes $2$, $2$,
+      $6$, $5$, dans cet ordre. **Prends position avant de lire la suite :**
+      quelle est l'écriture de $2025$ en base $7$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $\overline{2265}_{(7)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: |
+          Modèle détecté : les restes écrits dans l'ordre où ils sont sortis. Or
+          le premier reste est celui des unités. Recalcule : $\overline{2265}_{(7)}$
+          vaut $2\times343 + 2\times49 + 6\times7 + 5 = 831$, pas $2025$.
+      - id: B
+        text: |
+          $\overline{5226}_{(7)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: |
+          Modèle détecté : un renversement à moitié fait. Le dernier reste est
+          bien en tête, mais les trois autres sont restés dans l'ordre de
+          sortie. Recalcule : $\overline{5226}_{(7)}$ vaut
+          $5\times343 + 2\times49 + 2\times7 + 6 = 1833$, pas $2025$.
+      - id: C
+        text: |
+          $\overline{5622}_{(7)}$
+        correct: true
+        feedback: |
+          Exact. Le premier reste donne les unités, le dernier le chiffre de
+          tête : on lit de bas en haut. Contrôle :
+          $5\times343 + 6\times49 + 2\times7 + 2 = 2025$.
+      - id: D
+        text: |
+          $\overline{2025}_{(7)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: |
+          Modèle détecté : l'écriture prise pour le nombre — les chiffres
+          décimaux gardés, comme si seule l'étiquette de base changeait. Les
+          restes, eux, ont été ignorés. En base $7$, $\overline{2025}_{(7)}$
+          vaut $2\times343 + 0\times49 + 2\times7 + 5 = 705$, pas $2025$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-R7b-3 | id: cp-r7b-retenue | placé DANS R7b, juste après la
+  #        multiplication posée en base 7 et sa rupture (le seuil 10).
+  #        Rupture gate : le report de colonne en base b. Une MULTIPLICATION
+  #        exprès : l'erreur de seuil y produit une écriture bien formée, donc
+  #        non barrable à vue. Sonde numeration-retenue-a-dix (seuil resté à
+  #        10, retenue non reportée) ; un distracteur porte
+  #        numeration-restes-ordre-inverse (conversion par la base 10, restes
+  #        lus dans l'ordre de sortie). Même forme que l'item AR-48, nombres
+  #        frais ; le clone le retire de la liste d'items du chapitre. Spec §6.3.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7b-retenue
+    rung: "R7b"
+    habilete: utilisation
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, numeration, retenue]
+    primary_misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+    item_source: clone_of_AR-48      # même forme, nombres frais
+    lesson_placement: in_R7b
+
+    stem: |
+      Pose et effectue $\overline{25}_{(6)} \times \overline{4}_{(6)}$. Le
+      résultat est attendu en base $6$.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $\overline{100}_{(6)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: |
+          Modèle détecté : le seuil de la base $10$ gardé. $5\times4 = 20$ :
+          tu as écrit $0$ et retenu $2$ ; puis $2\times4+2 = 10$ : tu as écrit
+          $0$ et retenu $1$. L'écriture obtenue est parfaitement légale en
+          base $6$ — c'est pour cela que l'erreur ne se voit pas — mais elle
+          vaut $36$, alors que $\overline{25}_{(6)} \times 4 = 17\times4 = 68$.
+      - id: B
+        text: |
+          $\overline{251}_{(6)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: |
+          Modèle détecté : les restes lus dans l'ordre de sortie. Le passage
+          par la base $10$ est juste ($17\times4 = 68$), et les divisions aussi :
+          $68 = 6\times11+2$, $11 = 6\times1+5$, $1 = 6\times0+1$. Mais le
+          premier reste est le chiffre des unités : il fallait lire $1,5,2$, pas
+          $2,5,1$. Ton écriture vaut $72+30+1 = 103$.
+      - id: C
+        text: |
+          $\overline{22}_{(6)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: |
+          Modèle détecté : la retenue calculée puis oubliée. Tu as bien ramené
+          chaque colonne dans $\{0,\dots,5\}$ — $20$ donne $2$, $8$ donne $2$ —
+          mais sans rien reporter sur la colonne de gauche. Ton écriture vaut
+          $14$ ; le produit vaut $68$.
+      - id: D
+        text: |
+          $\overline{152}_{(6)}$
+        correct: true
+        feedback: |
+          Exact. $5\times4 = 20 = 3\times6+2$ : on écrit $2$, on retient $3$.
+          Puis $2\times4+3 = 11 = 1\times6+5$ : on écrit $5$, on retient $1$.
+          Contrôle : $\overline{152}_{(6)}$ vaut $36+30+2 = 68$, et
+          $\overline{25}_{(6)} \times 4 = 17\times4 = 68$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-R7b-4 | id: cp-r7b-critere-predict | placé DANS R7b, après la
+  #        construction du critère modulo b−1 et AVANT la rupture « la somme
+  #        des chiffres, c'est LE critère » (que la prose dit, teste et casse
+  #        juste après le marqueur).
+  #        COMMIT gate : le reste modulo 8 = b+1 d'un nombre écrit en base 7,
+  #        sur le nombre de l'exemple (5622 en base 7, soit 2025), la somme
+  #        des chiffres donnée dans l'énoncé comme simple donnée.
+  #        Sonde critere-divisibilite-mal-applique (somme employée là où c'est
+  #        la somme alternée ; chiffre des unités pris pour le reste modulo
+  #        autre chose que b) ; un distracteur porte
+  #        numeration-ecriture-prise-pour-le-nombre (5622 lu en base dix).
+  #        Valeurs recalculées, chemin par chemin :
+  #          7 = 15 − 8 (somme des chiffres réduite modulo 8) ;
+  #          2 = chiffre des unités = reste modulo 7 (2025 = 7×289 + 2) ;
+  #          6 = reste de cinq mille six cent vingt-deux (5622 = 8×702 + 6) ;
+  #          1 = la clé (2025 = 8×253 + 1 ; somme alternée 2−2+6−5).
+  #        Contamination de la clé examinée : seul « 15 réduit modulo 7 »
+  #        tombe sur 1, ce qui suppose de réduire modulo 7 une question posée
+  #        modulo 8 — ce n'est pas un modèle déclaré. La somme alternée lue
+  #        depuis la tête (5−6+2−2 = −1, soit 7) n'est pas encore enseignée au
+  #        moment de l'engagement. Quatre réponses à un chiffre, toutes des
+  #        restes possibles modulo 8 : rien ne se barre à vue, aucune longueur
+  #        ne parle. item_source original : AR-52 (base 9, modulo 8 = b−1) et
+  #        AR-51 (base 9, modulo 10 = b+1, re-habillé le 2026-10-20) n'en sont
+  #        pas des clones, et marquer l'un d'eux comme tel le retirerait de la
+  #        liste d'items du chapitre.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7b-critere-predict
+    rung: "R7b"
+    habilete: raisonnement
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, numeration, predict_commit, critere]
+    primary_misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+    item_source: original
+    lesson_placement: in_R7b
+
+    stem: |
+      En base $7$, la somme des chiffres de $\overline{5622}_{(7)}$ vaut $15$.
+      **Prends position avant de lire la suite :** quel est le reste de la
+      division euclidienne de ce nombre par $8$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $7$
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: |
+          Modèle détecté : la somme des chiffres prise pour LE critère, quel
+          que soit le module. $15 = 8+7$ donne bien $7$, mais en base $7$ la
+          somme des chiffres ne renseigne que modulo $b-1 = 6$, parce que
+          $7 \equiv 1 \pmod 6$. Modulo $8$, ce n'est plus vrai. Le nombre vaut
+          $2025$, et $2025 = 8\times253+1$ : le reste est $1$.
+      - id: B
+        text: |
+          $2$
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: |
+          Modèle détecté : le chiffre des unités pris pour le reste. Il donne
+          le reste modulo la base : $2025 = 7\times289+2$. Modulo $8$, c'est
+          une autre division : $2025 = 8\times253+1$, et le reste est $1$.
+      - id: C
+        text: |
+          $1$
+        correct: true
+        feedback: |
+          Exact. $\overline{5622}_{(7)}$ vaut $2025$, et $2025 = 8\times253+1$.
+          La somme des chiffres, elle, aurait annoncé $15 = 8+7$, donc $7$ :
+          modulo $8$, ce n'est pas elle qui parle. La suite dit pourquoi.
+      - id: D
+        text: |
+          $6$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: |
+          Modèle détecté : l'écriture prise pour le nombre. Tu as divisé cinq
+          mille six cent vingt-deux par $8$, comme si les chiffres se lisaient
+          en base dix : $5622 = 8\times702+6$. Mais $\overline{5622}_{(7)}$
+          vaut $2025$, et $2025 = 8\times253+1$ : le reste est $1$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-R7b-5 | id: cp-r7b-chiffres-predict | placé DANS R7b, après la
+  #        résolution de 3x = 2y (Gauss, x chiffre de tête en base 7) et AVANT
+  #        la rupture « (4,6) vérifie l'équation, et 64 en base 5 n'existe
+  #        pas » que la prose met en scène juste après le marqueur.
+  #        COMMIT gate : combien des trois couples candidats (2,3), (4,6),
+  #        (6,9) donnent une solution de xy en base 7 = yx en base 5 ?
+  #        Sonde numeration-contraintes-sur-les-chiffres, ses deux faces :
+  #          « les trois » = aucune borne de chiffre (les trois couples
+  #            vérifient 3x = 2y : 7×4+6 = 5×6+4 = 34, 7×6+9 = 5×9+6 = 51) ;
+  #          « deux » = la borne d'UNE base seulement, la plus large (base 7 :
+  #            le 9 tombe, le 6 reste) — les deux contraintes non croisées.
+  #        TROIS choix, et non quatre — décision écrite à côté du motif
+  #        (ADR 0035/0038) : les modèles de l'inventaire ne produisent que ces
+  #        trois ensembles de réponses (borner par la base 5 seule, ou chaque
+  #        lettre par la base où elle est en tête, donne la clé). Un quatrième
+  #        choix n'aurait porté aucun modèle — un distracteur muet, que le
+  #        fichier s'interdit. Le validateur accepte 2 à 4 choix.
+  #        Longueurs : la clé n'est ni la plus longue ni la plus courte ;
+  #        aucun mot de l'énoncé n'est repris dans un seul choix.
+  #        item_source original : AR-50 (base 9 / base 7, 4x = 3y) n'est pas
+  #        un clone.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7b-chiffres-predict
+    rung: "R7b"
+    habilete: raisonnement
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, numeration, predict_commit, chiffres]
+    primary_misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+    item_source: original
+    lesson_placement: in_R7b
+
+    stem: |
+      Pour $\overline{xy}_{(7)} = \overline{yx}_{(5)}$, l'équation $3x = 2y$
+      a fourni trois candidats : $(2,3)$, $(4,6)$ et $(6,9)$. **Prends
+      position avant de lire la suite :** combien de ces couples sont des
+      réponses ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Les trois
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+        feedback: |
+          Modèle détecté : un chiffre traité comme un entier libre. Les trois
+          couples vérifient bien $3x = 2y$, mais $x$ et $y$ doivent aussi être
+          des chiffres des deux écritures. Le $9$ de $(6,9)$ n'est un chiffre
+          ni de la base $7$ ni de la base $5$, et le $6$ de $(4,6)$ n'est pas
+          un chiffre de la base $5$ : $\overline{64}_{(5)}$ n'existe pas. Un
+          seul couple répond, $(2,3)$.
+      - id: B
+        text: |
+          Deux : $(2,3)$ et $(4,6)$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+        feedback: |
+          Modèle détecté : les chiffres bornés par une seule des deux bases.
+          Tu as écarté $(6,9)$, mais $(4,6)$ demande d'écrire
+          $\overline{64}_{(5)}$, et $6$ n'est pas un chiffre de la base $5$ :
+          cette écriture n'existe pas, même si $7\times4+6$ et $5\times6+4$
+          valent tous deux $34$. Les chiffres doivent appartenir aux deux bases
+          à la fois : un seul couple répond, $(2,3)$.
+      - id: C
+        text: |
+          Un seul : $(2,3)$
+        correct: true
+        feedback: |
+          Exact. $(6,9)$ tombe à cause du $9$, et $(4,6)$ parce que $6$ n'est
+          pas un chiffre de la base $5$, bien que ce couple vérifie
+          l'équation. Reste $(2,3)$ : $\overline{23}_{(7)}$ et
+          $\overline{32}_{(5)}$ valent tous deux $17$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r6-fermat | placé AVANT [[exercise:r-bac]]
+  #        Rupture gate : petit théorème de Fermat (p premier, p∤a ⟹
+  #        a^(p−1) ≡ 1 [p]) — l'outil de la question 1.d du sujet. Était
+  #        « hors-rung » jusqu'au 2026-09-27 ; une rung R6b (lesson.md,
+  #        entre R6 et R7) l'introduit et le démontre désormais. Le champ
+  #        `rung` ci-dessous portait « R6 » alors même que ce checkpoint est
+  #        physiquement placé sous le titre R8 (`lesson_placement:
+  #        before_bac`, INCHANGÉ, choix pédagogique délibéré : un rappel
+  #        juste avant le sujet) — corrigé en « R6b », la rung dont il sonde
+  #        effectivement le théorème, pas celle où il est surfacé dans la
+  #        leçon.
+  #        Reproduit le couple (p = 2969, exposant 2968) de r-bac.
+  #        Sonde fermat-condition-ou-exposant. item_source original.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-fermat
+    rung: "R6b"
+    habilete: raisonnement
+    skill_code: maths_arithmetique
+    tags: [checkpoint, formative, misconception_driven, maths_arithmetique, fermat, bac_style]
+    primary_misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+    item_source: original
+    lesson_placement: before_bac
+
+    stem: |
+      Soit $p$ un nombre premier et $a$ un entier tel que $p \nmid a$. D'après le
+      petit théorème de Fermat, à quoi est congru $a^{p-1}$ modulo $p$ ?
+      *(Par exemple, avec $p = 2969$ : que vaut $a^{2968}$ modulo $2969$ ?)*
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $a^{p-1} \equiv -1 \pmod{p}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: |
+          C'est le piège du sujet 2019 : avant d'appliquer Fermat, on avait
+          $(u\,m)^{2968} \equiv -1$. Le petit théorème de Fermat donne l'autre
+          valeur, $+1$ ; c'est justement la confrontation $-1 \equiv 1$ qui fournit
+          la contradiction. La conclusion de Fermat est $a^{p-1} \equiv 1$.
+      - id: B
+        text: |
+          $a^{p-1} \equiv 1 \pmod{p}$
+        correct: true
+        feedback: |
+          Exact. Petit théorème de Fermat : si $p$ est premier et $p \nmid a$,
+          alors $a^{p-1} \equiv 1 \pmod{p}$. La condition $p \nmid a$ est
+          essentielle — sans elle ($p \mid a$), on aurait $a^{p-1} \equiv 0$. Ici
+          $a^{2968} \equiv 1 \pmod{2969}$.
+      - id: C
+        text: |
+          $a^{p-1} \equiv a \pmod{p}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: |
+          Confusion d'exposant. La forme « $\equiv a$ » est celle de $a^{p}$
+          ($a^p \equiv a \pmod p$, valable pour tout $a$). Le petit théorème de
+          Fermat sur $a^{p-1}$, lui, donne $\equiv 1$ (quand $p \nmid a$).
+      - id: D
+        text: |
+          $a^{p-1} \equiv 0 \pmod{p}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.prime-divise-produit
+        feedback: |
+          $a^{p-1} \equiv 0$ signifierait $p \mid a^{p-1}$, donc $p \mid a$ ($p$
+          premier). Or l'hypothèse est justement $p \nmid a$ : le reste ne peut pas
+          être $0$. Fermat donne $\equiv 1$.

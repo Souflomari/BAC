@@ -1,0 +1,603 @@
+# Cadre de référence 2025 — Physique-Chimie — Sciences Mathématiques A et B (option français)
+# Transcription mot pour mot, relue sur les 30 pages scannées le 2026-10-22. Format : README.md, avec
+# UN NIVEAU DE PLUS : le document range ses capacités (« savoirs et savoir-faire exigibles ») dans des
+# chapitres numérotés (« 1- Dipôle RC ») à l'intérieur de chaque sous-domaine. Identifiant d'une
+# capacité = domaine.sous-domaine.chapitre.rang : `pc-sm 1.3.1.7` = 7ᵉ tiret du chapitre « 1- Dipôle RC »
+# du « Sous domaine 3 : Electricité » du domaine Physique. Domaines, sous-domaines et chapitres sont
+# numérotés par le document ; le rang (4ᵉ chiffre) est l'ordre d'apparition des tirets (reconstitué).
+# Les identifiants suivent le texte de CE document : là où il ajoute des tirets (RLC forcé, champ
+# électrique) ou en retire (électrolyse), les rangs diffèrent de pc-pc.yaml pour le même libellé.
+# `notions_app` est NOTRE correspondance avec les dossiers content/pc/ (pas le document).
+# Formules : notation linéaire (u_C(t), t_1/2, a⃗.v⃗) ; le document les imprime en notation mathématique.
+
+document:
+  titre: "Cadre de référence de l'examen national du baccalauréat — Options internationales du baccalauréat marocain - 2025 - option français- — Discipline : Physique Chimie — Série : Sciences Mathématiques — Filières: \"A\" et \"B\""
+  annee: 2025
+  note_ministerielle: "013-25 du 5 février 2025"
+  note_ministerielle_source: "non imprimée dans le document ; liste des cadres de la note relayée par tawjihnet (docs/refonte/01-programme-bac-maroc.md §2.1)"
+  editeur: "Centre National des Examens scolaires et de l'Evaluation des Apprentissages"
+  pages: 30
+  source: "https://drive.google.com/file/d/1IQmFZEDJ8YifBaxjbDb28LG6dNDh6-Zh/view"
+  lu_le: "2026-10-22"
+  lecture: "lecture visuelle des 30 pages scannées (copie Drive, filigrane tawjihnet en haut et en bas de page) ; pagination du document = pagination du PDF (« Page N sur 30 »). Comparée ligne à ligne à pc-pc.yaml : les différences sont signalées en notes_de_lecture."
+filieres: [sm-a, sm-b]
+matiere: pc
+
+epreuve:
+  # Page 4, « 1.2. Structure de l'épreuve de l'examen national ».
+  composantes:
+    - { page: 4, libelle: "L'épreuve de l'examen national de Physique Chimie du secondaire qualifiant couvre tout le programme de l'année scolaire et a lieu à la fin de la deuxième année du cycle du baccalauréat ;" }
+    - { page: 4, libelle: "L'épreuve de l'examen national de Physique Chimie, série des sciences mathématiques, filières A et B, se compose de 4 ou 5 exercices thématiques." }
+  exercices: "4 ou 5 exercices thématiques"
+  duree_h: 4
+  duree_page: 4
+  # Le document ne donne pas de coefficient : voir examen.yaml (en-têtes des sujets SM : coefficient 7).
+  materiel: "une calculatrice scientifique non programmable ; de quoi écrire et de quoi dessiner."
+  materiel_page: 4
+  grille_correction: { page: 4, libelle: "Elle doit comprendre le numéro de l'exercice et la note qui lui est attribuée ; les numéros des questions ; les éléments de réponse assignés à chaque question ; la note réservée à chaque question ; une colonne qui mentionne la référence de la question, d'après le cadre de référence." }
+  styles_evaluation:
+    page: 4
+    items: ["QCM (questions à choix multiple) ; Vrai/Faux ; appariement… ;", "questions à courte réponse ; questions à développement;", "questions de synthèse ; questions complexes (dont la solution nécessite la mobilisation de savoirs et savoir-faire en rapport avec un ou plusieurs domaines)."]
+  situations_evaluatives:
+    - { page: 3, libelle: "Chacun des ces exercices thématiques peut être introduit par une situation évaluative, comme il peut être présenté sous forme de parties indépendantes les unes des autres, avec des questions à difficulté progressive." }
+    - { page: 4, libelle: "La situation évaluative peut également contenir des questions qui couvrent les différentes parties du programme." }
+  # Page 19, « 3-Tableau des niveaux d'habiletés, leurs composantes et leur poids ».
+  habiletes:
+    - nom: "Utilisation des ressources (connaissances et savoir-faire)"
+      poids: 45
+      page: 19
+      composantes: ["Connaître et utiliser : les symboles - les conventions - les unités - l'ordre de grandeur - les définitions - les lois - les principes - les modèles - les formules - les relations…", "Décrire et expliquer un phénomène.", "Prévoir l'évolution d'un phénomène physique ou d'un système chimique."]
+    - nom: "Application d'une solution expérimentale"
+      poids: 15
+      page: 19
+      composantes: ["Proposer un protocole expérimental.", "Proposer le schéma d'un montage expérimental.", "Distinguer les différentes parties d'un montage expérimental et déterminer la fonction de chaque partie.", "Exploiter les données expérimentales, les analyser et en tirer des conclusions.", "Prévoir les dangers possibles en situation expérimentale et utiliser les moyens de sécurité adéquats."]
+    - nom: "Résolution de problème"
+      poids: 40
+      page: 19
+      composantes: ["Mobiliser les ressources nécessaires.", "Organiser les étapes de résolution.", "Utiliser les outils mathématiques, les courbes et les tableaux.", "Construire une déduction logique ou la prouver.", "Décrire et analyser des données ou résultats scientifiques ; présenter des conclusions pratiques.", "Donner une opinion ou émettre un avis critique"]
+  # Page 20, « 4-Tableau de spécification » : % de l'épreuve, sous-domaine × niveau d'habileté.
+  # La colonne « Application d'une solution expérimentale » est une cellule fusionnée : 10 % pour
+  # toute la physique, 5 % pour toute la chimie.
+  specification:
+    page: 20
+    lignes:
+      - { sous_domaine: "1.1", nom: "Ondes", utilisation: 4.95, resolution: 4.40, total: 11 }
+      - { sous_domaine: "1.2", nom: "Transformations nucléaires", utilisation: 3.60, resolution: 3.20, total: 8 }
+      - { sous_domaine: "1.3", nom: "Electricité", utilisation: 9.45, resolution: 8.40, total: 21 }
+      - { sous_domaine: "1.4", nom: "Mécanique", utilisation: 12.15, resolution: 10.80, total: 27 }
+      - { sous_domaine: "2.1", nom: "Transformations rapides et transformation lentes d'un système chimique", utilisation: 2.70, resolution: 2.40, total: 6 }
+      - { sous_domaine: "2.2", nom: "Transformations non totales d'un système chimique", utilisation: 4.50, resolution: 4, total: 10 }
+      - { sous_domaine: "2.3", nom: "Sens d'évolution d'un système chimique", utilisation: 4.50, resolution: 4, total: 10 }
+      - { sous_domaine: "2.4", nom: "Méthode de contrôle de l'évolution des systèmes chimiques", utilisation: 3.15, resolution: 2.80, total: 7 }
+    application_experimentale: { physique: 10, chimie: 5 }
+    totaux: { utilisation: 45, application: 15, resolution: 40, total: 100 }
+
+# Poids des sous-domaines : « Domaines des contenus et leur poids », page 19 (repris page 20).
+# Le document n'imprime pas de poids par domaine principal ; la somme des sous-domaines donne
+# physique 67 %, chimie 33 % (calcul, non imprimé).
+
+domaines:
+  - id: "1"
+    nom: "PREMIER DOMAINE PRINCIPAL : PHYSIQUE"
+    sous_domaines:
+      - id: "1.1"
+        nom: "Sous domaine 1 : Ondes"
+        poids: 11
+        poids_page: 19
+        chapitres:
+          - id: "1.1.1"
+            nom: "1- Ondes mécaniques progressives"
+            page: 5
+            capacites:
+              - { id: "1.1.1.1", page: 5, notions_app: [ondes-mecaniques-progressives], libelle: "Définir une onde mécanique et sa célérité." }
+              - { id: "1.1.1.2", page: 5, notions_app: [ondes-mecaniques-progressives], libelle: "Définir une onde transversale et une onde longitudinale." }
+              - { id: "1.1.1.3", page: 5, notions_app: [ondes-mecaniques-progressives], libelle: "Définir une onde progressive." }
+              - { id: "1.1.1.4", page: 5, notions_app: [ondes-mecaniques-progressives], libelle: "Connaître la relation entre l'élongation d'un point du milieu de propagation et l'élongation de la source : y_M(t) = y_S(t − τ)." }
+              - { id: "1.1.1.5", page: 5, notions_app: [ondes-mecaniques-progressives], libelle: "Exploiter la relation entre le retard temporel, la distance et la célérité." }
+              - { id: "1.1.1.6", page: 5, notions_app: [ondes-mecaniques-progressives], libelle: "Exploiter des documents expérimentaux et des données pour déterminer : *une distance, la longueur d'onde. *un retard temporel. * une célérité." }
+              - { id: "1.1.1.7", page: 5, notions_app: [ondes-mecaniques-progressives], libelle: "Proposer le schéma d'un montage expérimental permettant la mesure du retard temporel ou de déterminer la célérité lors de la propagation d'une onde." }
+          - id: "1.1.2"
+            nom: "2- Ondes mécaniques progressives périodiques"
+            page: 5
+            capacites:
+              - { id: "1.1.2.1", page: 5, notions_app: [ondes-mecaniques-periodiques], libelle: "Reconnaître une onde progressive périodique et sa période." }
+              - { id: "1.1.2.2", page: 5, notions_app: [ondes-mecaniques-periodiques], libelle: "Définir une onde progressive sinusoïdale, la période, la fréquence et la longueur d'onde." }
+              - { id: "1.1.2.3", page: 5, notions_app: [ondes-mecaniques-periodiques], libelle: "Connaître et exploiter la relation λ = v.T ." }
+              - { id: "1.1.2.4", page: 5, notions_app: [ondes-mecaniques-periodiques], libelle: "Connaitre la condition d'obtention du phénomène de diffraction : dimension de l'ouverture inferieur ou égale à la longueur d'onde.", note: "« inferieur » [sic]" }
+              - { id: "1.1.2.5", page: 5, notions_app: [ondes-mecaniques-periodiques], libelle: "Connaître les caractéristiques de l'onde diffractée." }
+              - { id: "1.1.2.6", page: 5, notions_app: [ondes-mecaniques-periodiques], libelle: "Définir un milieu dispersif." }
+              - { id: "1.1.2.7", page: 5, notions_app: [ondes-mecaniques-periodiques], libelle: "Exploiter des documents expérimentaux pour reconnaître le phénomène de diffraction et mettre en évidence les caractéristiques de l'onde diffractée." }
+              - { id: "1.1.2.8", page: 5, notions_app: [ondes-mecaniques-periodiques], libelle: "Proposer le schéma d'un montage expérimental permettant de mettre en évidence le phénomène de diffraction dans le cas des ondes mécaniques sonores et ultrasonores." }
+          - id: "1.1.3"
+            nom: "3- Propagation d'une onde lumineuse"
+            page: 5
+            capacites:
+              - { id: "1.1.3.1", page: 5, notions_app: [propagation-onde-lumineuse], libelle: "Savoir que la lumière a un aspect ondulatoire, en se basant sur le phénomène de diffraction." }
+              - { id: "1.1.3.2", page: 5, notions_app: [propagation-onde-lumineuse], libelle: "Connaître l'influence de la dimension de l'ouverture ou de l'obstacle sur le phénomène de diffraction." }
+              - { id: "1.1.3.3", page: 5, notions_app: [propagation-onde-lumineuse], libelle: "Exploiter un document ou une figure de diffraction dans le cas des ondes lumineuses." }
+              - { id: "1.1.3.4", page: 5, notions_app: [propagation-onde-lumineuse], libelle: "Connaître et exploiter la relation λ = c / ν." }
+              - { id: "1.1.3.5", page: 5, notions_app: [propagation-onde-lumineuse], libelle: "Définir une lumière monochromatique et une lumière polychromatique." }
+              - { id: "1.1.3.6", page: 6, notions_app: [propagation-onde-lumineuse], libelle: "Connaître les limites des longueurs d'onde dans le vide, du spectre visible et les couleurs correspondantes." }
+              - { id: "1.1.3.7", page: 6, notions_app: [propagation-onde-lumineuse], libelle: "Savoir que la fréquence d'une radiation monochromatique ne change pas lorsqu'elle passe d'un milieu transparent à un autre." }
+              - { id: "1.1.3.8", page: 6, notions_app: [propagation-onde-lumineuse], libelle: "Savoir que les milieux transparents sont plus ou moins dispersifs." }
+              - { id: "1.1.3.9", page: 6, notions_app: [propagation-onde-lumineuse], libelle: "Connaître et exploiter la relation n = c / v ." }
+              - { id: "1.1.3.10", page: 6, notions_app: [propagation-onde-lumineuse], libelle: "Déterminer l'indice de réfraction d'un milieu transparent pour une fréquence donnée." }
+              - { id: "1.1.3.11", page: 6, notions_app: [propagation-onde-lumineuse], libelle: "Proposer le schéma d'un montage expérimental permettant de mettre en évidence le phénomène de diffraction dans le cas des ondes lumineuses." }
+              - { id: "1.1.3.12", page: 6, notions_app: [propagation-onde-lumineuse], libelle: "Connaître et exploiter la relation θ = λ/a et connaitre l'unité et la signification de θ et λ." }
+              - { id: "1.1.3.13", page: 6, notions_app: [propagation-onde-lumineuse], libelle: "Exploiter des mesures expérimentales pour vérifier la relation θ = λ/a ." }
+      - id: "1.2"
+        nom: "Sous domaine 2 : Transformations nucléaires"
+        poids: 8
+        poids_page: 19
+        chapitres:
+          - id: "1.2.1"
+            nom: "1- Décroissance radioactive"
+            page: 6
+            capacites:
+              - { id: "1.2.1.1", page: 6, notions_app: [decroissance-radioactive], libelle: "Connaître la signification du symbole ᴬ_Z X et donner la composition du noyau correspondant." }
+              - { id: "1.2.1.2", page: 6, notions_app: [decroissance-radioactive], libelle: "Reconnaître les isotopes d'un élément chimique." }
+              - { id: "1.2.1.3", page: 6, notions_app: [decroissance-radioactive], libelle: "Reconnaître les domaines de stabilité et d'instabilité des noyaux sur le diagramme (N,Z)." }
+              - { id: "1.2.1.4", page: 6, notions_app: [decroissance-radioactive], libelle: "Exploiter le diagramme (N,Z)." }
+              - { id: "1.2.1.5", page: 6, notions_app: [decroissance-radioactive], libelle: "Définir un noyau radioactif." }
+              - { id: "1.2.1.6", page: 6, notions_app: [decroissance-radioactive], libelle: "Connaître et exploiter les deux lois de conservation." }
+              - { id: "1.2.1.7", page: 6, notions_app: [decroissance-radioactive], libelle: "Définir les radioactivités α , β⁺ , β⁻ et l'émission γ ." }
+              - { id: "1.2.1.8", page: 6, notions_app: [decroissance-radioactive], libelle: "Ecrire l'équation d'une réaction nucléaire en appliquant les deux lois de conservation." }
+              - { id: "1.2.1.9", page: 6, notions_app: [decroissance-radioactive], libelle: "Reconnaître le type de radioactivité à partir de l'équation d'une réaction nucléaire." }
+              - { id: "1.2.1.10", page: 6, notions_app: [decroissance-radioactive], libelle: "Connaître et exploiter la loi de décroissance radioactive et exploiter sa courbe correspondante." }
+              - { id: "1.2.1.11", page: 6, notions_app: [decroissance-radioactive], libelle: "Savoir que 1 Bq est égal à une désintégration par seconde." }
+              - { id: "1.2.1.12", page: 6, notions_app: [decroissance-radioactive], libelle: "Définir la constante de temps τ et la demi-vie t_1/2 ." }
+              - { id: "1.2.1.13", page: 6, notions_app: [decroissance-radioactive], libelle: "Exploiter les relations entre τ, λ et t_1/2 ." }
+              - { id: "1.2.1.14", page: 6, notions_app: [decroissance-radioactive], libelle: "Utiliser l'équation aux dimensions pour déterminer les unités de λ et τ ." }
+              - { id: "1.2.1.15", page: 6, notions_app: [decroissance-radioactive], libelle: "Déterminer le radioélément convenable pour dater un événement donné." }
+          - id: "1.2.2"
+            nom: "2- Noyaux- Masse et énergie"
+            page: 6
+            capacites:
+              - { id: "1.2.2.1", page: 6, notions_app: [noyaux-masse-energie], libelle: "Définir et calculer le défaut de masse et l'énergie de liaison." }
+              - { id: "1.2.2.2", page: 6, notions_app: [noyaux-masse-energie], libelle: "Définir et calculer l'énergie de liaison par nucléon et l'exploiter." }
+              - { id: "1.2.2.3", page: 6, notions_app: [noyaux-masse-energie], libelle: "Utiliser les différentes unités de masse, d'énergie et les relations entre ces unités." }
+              - { id: "1.2.2.4", page: 6, notions_app: [noyaux-masse-energie], libelle: "Exploiter la courbe d'Aston pour identifier les noyaux les plus stables." }
+              - { id: "1.2.2.5", page: 6, notions_app: [noyaux-masse-energie], libelle: "Connaître la relation d'équivalence masse-énergie et calculer l'énergie de masse." }
+              - { id: "1.2.2.6", page: 6, notions_app: [noyaux-masse-energie], libelle: "Définir la fission et la fusion." }
+              - { id: "1.2.2.7", page: 6, notions_app: [noyaux-masse-energie], libelle: "Analyser la courbe d'Aston pour dégager l'intérêt énergétique de la fission et la fusion." }
+              - { id: "1.2.2.8", page: 6, notions_app: [noyaux-masse-energie], libelle: "Ecrire les équations des réactions nucléaires de fission et de fusion en appliquant les deux lois de conservation." }
+              - { id: "1.2.2.9", page: 7, notions_app: [noyaux-masse-energie], libelle: "Reconnaître le type de réaction nucléaire à partir de l'équation de la réaction." }
+              - { id: "1.2.2.10", page: 7, notions_app: [noyaux-masse-energie], libelle: "Faire le bilan énergétique ΔE d'une réaction nucléaire en utilisant : les énergies de masse ; les énergies de liaisons ; le diagramme d'énergie." }
+              - { id: "1.2.2.11", page: 7, notions_app: [noyaux-masse-energie], libelle: "Calculer l'énergie libérée (produite) par une réaction nucléaire : E_libérée = |ΔE| ." }
+              - { id: "1.2.2.12", page: 7, notions_app: [noyaux-masse-energie], libelle: "Reconnaître quelques applications de la radioactivité." }
+              - { id: "1.2.2.13", page: 7, notions_app: [noyaux-masse-energie], libelle: "Connaître quelques dangers de la radioactivité." }
+      - id: "1.3"
+        nom: "Sous domaine 3 : Electricité"
+        poids: 21
+        poids_page: 19
+        chapitres:
+          - id: "1.3.1"
+            nom: "1- Dipôle RC"
+            page: 7
+            capacites:
+              - { id: "1.3.1.1", page: 7, notions_app: [rc-charge], libelle: "Représenter les tensions u_R et u_C en convention récepteur et préciser les signes des charges des deux armatures d'un condensateur." }
+              - { id: "1.3.1.2", page: 7, notions_app: [rc-charge], libelle: "Connaître et exploiter la relation i = dq/dt pour un condensateur en convention récepteur." }
+              - { id: "1.3.1.3", page: 7, notions_app: [rc-charge], libelle: "Connaitre et exploiter la relation q = C.u." }
+              - { id: "1.3.1.4", page: 7, notions_app: [rc-charge], libelle: "Connaître la capacité d'un condensateur, son unité F et ses sous multiples µF, nF et pF ." }
+              - { id: "1.3.1.5", page: 7, notions_app: [rc-charge], libelle: "Déterminer la capacité d'un condensateur graphiquement et par calcul." }
+              - { id: "1.3.1.6", page: 7, notions_app: [rc-charge], libelle: "Connaitre la capacité du condensateur équivalent des montages en série et en parallèle , et l'intérêt de chaque montage." }
+              - { id: "1.3.1.7", page: 7, notions_app: [rc-charge], libelle: "Etablir l'équation différentielle et vérifier sa solution lorsque le dipôle RC est soumis à un échelon de tension." }
+              - { id: "1.3.1.8", page: 7, notions_app: [rc-charge], libelle: "Déterminer l'expression de la tension u_C(t) aux bornes du condensateur lorsque le dipôle RC est soumis à un échelon de tension, et en déduire l'expression de l'intensité du courant dans le circuit et l'expression de la charge du condensateur." }
+              - { id: "1.3.1.9", page: 7, notions_app: [rc-charge], libelle: "Reconnaître et représenter les courbes de variation en fonction du temps, de la tension u_C(t) aux bornes du condensateur et les différentes grandeurs qui lui sont liées, et les exploiter." }
+              - { id: "1.3.1.10", page: 7, notions_app: [rc-charge], libelle: "Connaitre que la tension aux bornes d'un condensateur est une fonction du temps continue, et que l'intensité est une fonction discontinue à t=0." }
+              - { id: "1.3.1.11", page: 7, notions_app: [rc-charge], libelle: "Connaître et exploiter l'expression de la constante de temps." }
+              - { id: "1.3.1.12", page: 7, notions_app: [rc-charge], libelle: "Utiliser les équations aux dimensions." }
+              - { id: "1.3.1.13", page: 7, notions_app: [rc-charge], libelle: "Exploiter des documents expérimentaux pour : * reconnaître les tensions observées. * mettre en évidence l'influence de R et de C sur les opérations de la charge et de la décharge. * déterminer la constante de temps et la durée de charge. * déterminer le type du régime (transitoire - permanent) et l'intervalle temporel de chacun des deux régimes." }
+              - { id: "1.3.1.14", page: 7, notions_app: [rc-charge], libelle: "Proposer le schéma d'un montage expérimental permettant l'étude de la réponse d'un dipôle RC soumis à un échelon de tension." }
+              - { id: "1.3.1.15", page: 7, notions_app: [rc-charge], libelle: "Connaître comment brancher un oscilloscope et un système d'acquisition informatisé pour visualiser les différentes tensions." }
+              - { id: "1.3.1.16", page: 7, notions_app: [rc-charge], libelle: "Déterminer l'influence de R, de C et de l'amplitude de l'échelon de tension sur la réponse d'un dipôle RC." }
+              - { id: "1.3.1.17", page: 7, notions_app: [rc-charge], libelle: "Etablir l'expression de l'énergie électrique emmagasinée dans un condensateur." }
+              - { id: "1.3.1.18", page: 7, notions_app: [rc-charge], libelle: "Connaître et exploiter l'expression de l'énergie électrique emmagasinée dans un condensateur." }
+          - id: "1.3.2"
+            nom: "2- Dipôle RL"
+            page: 8
+            capacites:
+              - { id: "1.3.2.1", page: 8, notions_app: [dipole-rl], libelle: "Représenter les tensions u_R et u_L en convention récepteur." }
+              - { id: "1.3.2.2", page: 8, notions_app: [dipole-rl], libelle: "Connaître et exploiter l'expression de la tension u = r.i + L.di/dt aux bornes d'une bobine en convention récepteur." }
+              - { id: "1.3.2.3", page: 8, notions_app: [dipole-rl], libelle: "Connaître la signification des grandeurs qui interviennent dans l'expression de la tension u aux bornes d'une bobine et leurs unités." }
+              - { id: "1.3.2.4", page: 8, notions_app: [dipole-rl], libelle: "Déterminer les deux caractéristiques d'une bobine (l'inductance L, la résistance r) à partir des résultats expérimentaux." }
+              - { id: "1.3.2.5", page: 8, notions_app: [dipole-rl], libelle: "Etablir l'équation différentielle et vérifier sa solution lorsque le dipôle RL est soumis à un échelon de tension." }
+              - { id: "1.3.2.6", page: 8, notions_app: [dipole-rl], libelle: "Déterminer l'expression de l'intensité du courant i(t) lorsque le dipôle RL est soumis à un échelon de tension et en déduire l'expression de la tension aux bornes de la bobine et aux bornes du conducteur ohmique." }
+              - { id: "1.3.2.7", page: 8, notions_app: [dipole-rl], libelle: "Reconnaître et représenter les courbes de variation, en fonction du temps, de l'intensité du courant i(t) passant dans la bobine et les grandeurs qui lui sont liées et les exploiter." }
+              - { id: "1.3.2.8", page: 8, notions_app: [dipole-rl], libelle: "Connaître qu'une bobine retarde l'établissement et la disparition du courant et que l'intensité i(t) est une fonction du temps continue et que la tension entre ses bornes est une fonction discontinue à t=0." }
+              - { id: "1.3.2.9", page: 8, notions_app: [dipole-rl], libelle: "Connaître et exploiter l'expression de la constante de temps." }
+              - { id: "1.3.2.10", page: 8, notions_app: [dipole-rl], libelle: "Utiliser les équations aux dimensions." }
+              - { id: "1.3.2.11", page: 8, notions_app: [dipole-rl], libelle: "Exploiter des documents expérimentaux pour : * reconnaître les tensions observées. * mettre en évidence l'influence de R et de L sur la réponse d'un dipôle RL. * déterminer la constante de temps." }
+              - { id: "1.3.2.12", page: 8, notions_app: [dipole-rl], libelle: "Proposer le schéma d'un montage expérimental permettant l'étude de la réponse d'un dipôle RL soumis à un échelon de tension." }
+              - { id: "1.3.2.13", page: 8, notions_app: [dipole-rl], libelle: "Connaître comment brancher un oscilloscope et un système d'acquisition informatisé pour visualiser les différentes tensions." }
+              - { id: "1.3.2.14", page: 8, notions_app: [dipole-rl], libelle: "Déterminer l'influence de R, de L et de l'amplitude de l'échelon de tension sur la réponse d'un dipôle RL." }
+              - { id: "1.3.2.15", page: 8, notions_app: [dipole-rl], libelle: "Etablir l'expression de l'énergie magnétique emmagasinée dans une bobine." }
+              - { id: "1.3.2.16", page: 8, notions_app: [dipole-rl], libelle: "Connaître et exploiter l'expression de l'énergie magnétique emmagasinée dans une bobine." }
+          - id: "1.3.3"
+            nom: "3- Circuit RLC série"
+            page: 8
+            capacites:
+              - { id: "1.3.3.1", page: 8, notions_app: [rlc-serie], libelle: "Définir et reconnaitre les régimes périodique, pseudo-périodique et apériodique." }
+              - { id: "1.3.3.2", page: 8, notions_app: [rlc-serie], libelle: "Reconnaître et représenter les courbes de variation de la tension aux bornes du condensateur en fonction du temps pour les trois régimes et les exploiter." }
+              - { id: "1.3.3.3", page: 8, notions_app: [rlc-serie], libelle: "Etablir l'équation différentielle pour la tension aux bornes du condensateur ou pour sa charge q(t) dans le cas d'un amortissement négligeable et vérifier sa solution." }
+              - { id: "1.3.3.4", page: 8, notions_app: [rlc-serie], libelle: "Connaître et exploiter l'expression de la charge q(t) et en déduire l'expression de l'intensité i(t) passant dans le circuit et l'exploiter." }
+              - { id: "1.3.3.5", page: 8, notions_app: [rlc-serie], libelle: "Connaître et exploiter l'expression de la période propre." }
+              - { id: "1.3.3.6", page: 8, notions_app: [rlc-serie], libelle: "Expliquer, du point de vue énergétique, les trois régimes." }
+              - { id: "1.3.3.7", page: 8, notions_app: [rlc-serie], libelle: "Connaître et exploiter les diagrammes d'énergie." }
+              - { id: "1.3.3.8", page: 9, notions_app: [rlc-serie], libelle: "Connaître et exploiter l'expression de l'énergie totale du circuit." }
+              - { id: "1.3.3.9", page: 9, notions_app: [rlc-serie], libelle: "Etablir l'équation différentielle vérifiée par la tension aux bornes du condensateur ou par sa charge dans le cas d'amortissement." }
+              - { id: "1.3.3.10", page: 9, notions_app: [rlc-serie], libelle: "Connaître le rôle du dispositif d'entretien d'oscillations, qui consiste à compenser l'énergie dissipée par effet Joule dans le circuit." }
+              - { id: "1.3.3.11", page: 9, notions_app: [rlc-serie], libelle: "Etablir l'équation différentielle vérifiée par la tension aux bornes du condensateur ou par sa charge q(t) dans le cas d'un circuit RLC entretenu par l'utilisation d'un générateur délivrant une tension proportionnelle à l'intensité : u_G(t) = k.i(t)." }
+              - { id: "1.3.3.12", page: 9, notions_app: [rlc-serie], libelle: "Exploiter des documents expérimentaux pour : * reconnaître les tensions observées ; * reconnaître les régimes d'amortissement ; * mettre en évidence l'influence de R, de L et de C sur le phénomène d'oscillations ; * déterminer la valeur de la pseudo-période et de la période propre." }
+              - { id: "1.3.3.13", page: 9, notions_app: [rlc-serie], libelle: "Proposer le schéma d'un montage expérimental permettant l'étude des oscillations libres dans un circuit RLC série." }
+              - { id: "1.3.3.14", page: 9, notions_app: [rlc-serie], libelle: "Connaître comment brancher un oscilloscope et un système d'acquisition informatisé pour visualiser les différentes tensions." }
+              - { id: "1.3.3.15", page: 9, notions_app: [], libelle: "Distinguer les oscillations libres des oscillations forcées." }
+              - { id: "1.3.3.16", page: 9, notions_app: [], libelle: "Connaitre le rôle de l'excitateur et du résonateur." }
+              - { id: "1.3.3.17", page: 9, notions_app: [], libelle: "Connaitre et exploiter l'expression |φ| = 2.π.τ / T de la phase d'une grandeur par rapport à une autre." }
+              - { id: "1.3.3.18", page: 9, notions_app: [], libelle: "Connaitre et exploiter l'expression de l'impédance Z = U / I du circuit." }
+              - { id: "1.3.3.19", page: 9, notions_app: [], libelle: "Connaitre l'unité de l'impédance (Ω) ." }
+              - { id: "1.3.3.20", page: 9, notions_app: [], libelle: "Reconnaitre le phénomène de résonnance électrique et ses caractéristiques.", note: "« résonnance » [sic]" }
+              - { id: "1.3.3.21", page: 9, notions_app: [], libelle: "Connaitre et exploiter l'expression du facteur de qualité Q = N₀ / ΔN" }
+              - { id: "1.3.3.22", page: 9, notions_app: [], libelle: "Exploiter des documents expérimentaux pour : * connaitre l'influence de la résistance sur le facteur de qualité. * déterminer la largeur de la bande passante à -3dB" }
+              - { id: "1.3.3.23", page: 9, notions_app: [], libelle: "Reconnaitre le phénomène de surtension." }
+              - { id: "1.3.3.24", page: 9, notions_app: [], libelle: "Connaitre la puissance instantanée dans le régime alternatif sinusoïdal." }
+              - { id: "1.3.3.25", page: 9, notions_app: [], libelle: "Etablir et exploiter l'expression de la puissance moyenne P = U.I.cos φ" }
+              - { id: "1.3.3.26", page: 9, notions_app: [], libelle: "Connaitre le facteur de puissance." }
+          - id: "1.3.4"
+            nom: "4- Applications : Production d'ondes électromagnétiques et communication"
+            page: 9
+            capacites:
+              - { id: "1.3.4.1", page: 9, notions_app: [ondes-em-modulation], libelle: "Connaître les principales opérations nécessaires pour la transformation des informations en messages oraux ou écrits." }
+              - { id: "1.3.4.2", page: 9, notions_app: [ondes-em-modulation], libelle: "Connaître la vitesse de transmission des informations." }
+              - { id: "1.3.4.3", page: 9, notions_app: [ondes-em-modulation], libelle: "Connaître que la lumière fait partie des ondes électromagnétiques et correspond à un domaine restreint de fréquences." }
+              - { id: "1.3.4.4", page: 9, notions_app: [ondes-em-modulation], libelle: "Connaître que pour une antenne émettrice, l'onde électromagnétique émise a la même fréquence que celle du signal électrique qui lui est transmis." }
+              - { id: "1.3.4.5", page: 9, notions_app: [ondes-em-modulation], libelle: "Connaître que dans une antenne réceptrice, l'onde électromagnétique engendre un signal électrique de même fréquence." }
+              - { id: "1.3.4.6", page: 9, notions_app: [ondes-em-modulation], libelle: "Connaître l'expression mathématique d'une tension sinusoïdale." }
+              - { id: "1.3.4.7", page: 10, notions_app: [ondes-em-modulation], libelle: "Connaître que la transmission des informations par une onde électromagnétique se fait par transport d'énergie mais sans transport de matière." }
+              - { id: "1.3.4.8", page: 10, notions_app: [ondes-em-modulation], libelle: "Savoir qu'une antenne peut être utilisée comme émetteur et récepteur (cas d'un téléphone portable par exemple)." }
+              - { id: "1.3.4.9", page: 10, notions_app: [ondes-em-modulation], libelle: "Savoir qu'une modulation d'amplitude est de rendre l'amplitude du signal modulé fonction affine de la tension modulante." }
+              - { id: "1.3.4.10", page: 10, notions_app: [ondes-em-modulation], libelle: "Connaître les conditions à remplir pour éviter la surmodulation." }
+              - { id: "1.3.4.11", page: 10, notions_app: [ondes-em-modulation], libelle: "Reconnaître les étapes de la modulation d'amplitude." }
+              - { id: "1.3.4.12", page: 10, notions_app: [ondes-em-modulation], libelle: "Exploiter les différentes courbes obtenues expérimentalement." }
+              - { id: "1.3.4.13", page: 10, notions_app: [ondes-em-modulation], libelle: "Reconnaître, à partir d'un schéma, les différents étages du montage de modulation et de démodulation d'amplitude." }
+              - { id: "1.3.4.14", page: 10, notions_app: [ondes-em-modulation], libelle: "Connaître le rôle des différents filtres utilisés." }
+              - { id: "1.3.4.15", page: 10, notions_app: [ondes-em-modulation], libelle: "Connaître et exploiter le spectre de fréquences." }
+              - { id: "1.3.4.16", page: 10, notions_app: [ondes-em-modulation], libelle: "Reconnaître les étapes de la démodulation." }
+              - { id: "1.3.4.17", page: 10, notions_app: [ondes-em-modulation], libelle: "Connaître les conditions permettant d'obtenir une modulation d'amplitude et une détection d'enveloppe de bonne qualité." }
+              - { id: "1.3.4.18", page: 10, notions_app: [ondes-em-modulation], libelle: "Connaître le rôle sélectif du circuit bouchon LC pour la tension modulée." }
+              - { id: "1.3.4.19", page: 10, notions_app: [ondes-em-modulation], libelle: "Reconnaître les constituants essentiels qui constituent le montage d'un récepteur radio AM, et leurs rôles dans la démodulation." }
+      - id: "1.4"
+        nom: "Sous domaine 4 : Mécanique"
+        poids: 27
+        poids_page: 19
+        chapitres:
+          - id: "1.4.1"
+            nom: "1- Lois de Newton"
+            page: 10
+            capacites:
+              - { id: "1.4.1.1", page: 10, notions_app: [lois-de-newton], libelle: "Connaître et exploiter les expressions du vecteur vitesse instantanée et du vecteur accélération." }
+              - { id: "1.4.1.2", page: 10, notions_app: [lois-de-newton], libelle: "Connaître l'unité de l'accélération." }
+              - { id: "1.4.1.3", page: 10, notions_app: [lois-de-newton], libelle: "Connaître les coordonnées du vecteur accélération dans un repère cartésien et dans la base de Freinet.", note: "« Freinet » [sic] pour Frenet" }
+              - { id: "1.4.1.4", page: 10, notions_app: [lois-de-newton], libelle: "Exploiter le produit a⃗.v⃗ pour déterminer la nature du mouvement (accéléré - retardé)." }
+              - { id: "1.4.1.5", page: 10, notions_app: [lois-de-newton], libelle: "Connaître le référentiel galiléen." }
+              - { id: "1.4.1.6", page: 10, notions_app: [lois-de-newton], libelle: "Connaître la deuxième loi de Newton ΣF⃗ext = m.ΔV⃗G/Δt et ΣF⃗ext = m.a⃗G ; et son domaine de validité." }
+              - { id: "1.4.1.7", page: 10, notions_app: [lois-de-newton], libelle: "Reconnaître le rôle de la masse dans l'inertie d'un système." }
+              - { id: "1.4.1.8", page: 10, notions_app: [lois-de-newton], libelle: "Appliquer la deuxième loi de Newton pour déterminer les grandeurs cinématiques v⃗G et a⃗G et les grandeurs dynamiques et les exploiter." }
+              - { id: "1.4.1.9", page: 10, notions_app: [lois-de-newton], libelle: "Connaître et utiliser la troisième loi de Newton." }
+              - { id: "1.4.1.10", page: 10, notions_app: [lois-de-newton], libelle: "Utiliser les équations aux dimensions." }
+          - id: "1.4.2"
+            nom: "2- Applications"
+            page: 11
+            capacites:
+              - { id: "1.4.2.1", page: 11, notions_app: [chute-mouvements-plans], libelle: "Connaître et exploiter les deux modèles de frottement fluide : F⃗ = −k.v.i⃗ et F⃗ = −k.v².i⃗ ." }
+              - { id: "1.4.2.2", page: 11, notions_app: [chute-mouvements-plans], libelle: "Exploiter la courbe v_G = f(t) pour déterminer : * la vitesse limite v_l * le temps caractéristique τ. * le régime initial et le régime permanent." }
+              - { id: "1.4.2.3", page: 11, notions_app: [chute-mouvements-plans], libelle: "Appliquer la deuxième loi de Newton pour établir l'équation différentielle du mouvement du centre d'inertie d'un solide en chute verticale avec frottement." }
+              - { id: "1.4.2.4", page: 11, notions_app: [chute-mouvements-plans], libelle: "Connaître et appliquer la méthode d'Euler pour la résolution approchée d'une équation différentielle." }
+              - { id: "1.4.2.5", page: 11, notions_app: [chute-mouvements-plans], libelle: "Définir la chute libre verticale." }
+              - { id: "1.4.2.6", page: 11, notions_app: [chute-mouvements-plans], libelle: "Appliquer la deuxième loi de Newton pour établir l'équation différentielle du mouvement du centre d'inertie d'un solide en chute libre verticale et la résoudre." }
+              - { id: "1.4.2.7", page: 11, notions_app: [chute-mouvements-plans], libelle: "Connaître et exploiter les caractéristiques du mouvement rectiligne uniformément varié et ses équations horaires." }
+              - { id: "1.4.2.8", page: 11, notions_app: [chute-mouvements-plans], libelle: "Exploiter le diagramme de la vitesse v_G = f(t)." }
+              - { id: "1.4.2.9", page: 11, notions_app: [chute-mouvements-plans], libelle: "Choisir le référentiel convenable à l'étude du mouvement." }
+              - { id: "1.4.2.10", page: 11, notions_app: [lois-de-newton], libelle: "Appliquer la deuxième loi de Newton pour établir l'équation différentielle du mouvement du centre d'inertie d'un système sur un plan horizontal ou incliné et déterminer les grandeurs cinématiques et dynamiques caractéristiques du mouvement." }
+              - { id: "1.4.2.11", page: 11, notions_app: [chute-mouvements-plans], libelle: "Exploiter un document représentant la trajectoire d'un projectile dans un champ de pesanteur uniforme pour : *déterminer le type du mouvement (plan). *représenter les vecteurs vitesse et accélération. *déterminer les conditions initiales et quelques paramètres caractérisant le mouvement." }
+              - { id: "1.4.2.12", page: 11, notions_app: [chute-mouvements-plans], libelle: "Appliquer la deuxième loi de Newton dans le cas d'un projectile pour : *établir les équations différentielles du mouvement. *en déduire les équations horaires du mouvement et les exploiter. * trouver l'équation de la trajectoire et établir les expressions de la portée et la flèche et les exploiter." }
+              - { id: "1.4.2.13", page: 11, notions_app: [], libelle: "Connaitre et exploiter les relations F⃗ = qE⃗ et E = U / d ." }
+              - { id: "1.4.2.14", page: 11, notions_app: [], libelle: "Appliquer la deuxième loi de Newton dans le cas d'une particule chargée pour : * établir les équations différentielles du mouvement. * établir les équations horaires du mouvement et les exploiter. * trouver l'équation de la trajectoire et l'exploiter pour calculer la déflexion électrostatique." }
+              - { id: "1.4.2.15", page: 11, notions_app: [chute-mouvements-plans], libelle: "Connaître les caractéristiques de la force de Lorentz et la règle pour déterminer son sens." }
+              - { id: "1.4.2.16", page: 11, notions_app: [chute-mouvements-plans], libelle: "Appliquer la deuxième loi de Newton dans le cas d'une particule chargée se trouvant dans un champ magnétique uniforme, avec B⃗ perpendiculaire à v⃗0 pour : * déterminer la nature du mouvement. * calculer la déflexion magnétique." }
+              - { id: "1.4.2.17", page: 11, notions_app: [chute-mouvements-plans], libelle: "Connaître les référentiels héliocentrique et géocentrique." }
+              - { id: "1.4.2.18", page: 11, notions_app: [chute-mouvements-plans], libelle: "Connaître les trois lois de Kepler." }
+              - { id: "1.4.2.19", page: 11, notions_app: [chute-mouvements-plans], libelle: "Appliquer les trois lois de Kepler dans le cas d'une trajectoire circulaire." }
+              - { id: "1.4.2.20", page: 11, notions_app: [chute-mouvements-plans], libelle: "Connaître la loi de gravitation universelle sous sa forme vectorielle." }
+              - { id: "1.4.2.21", page: 11, notions_app: [chute-mouvements-plans], libelle: "Retrouver la troisième loi de Kepler dans le cas où la trajectoire est circulaire." }
+              - { id: "1.4.2.22", page: 12, notions_app: [chute-mouvements-plans], libelle: "Connaître que la force gravitationnelle appliquée au centre d'inertie d'un satellite ou d'une planète est centripète." }
+              - { id: "1.4.2.23", page: 12, notions_app: [chute-mouvements-plans], libelle: "Appliquer la deuxième loi de Newton au centre d'inertie d'un satellite ou d'une planète pour déterminer la nature du mouvement ou l'un des paramètres caractérisant le mouvement." }
+          - id: "1.4.3"
+            nom: "3- Relation quantitative entre la somme des moments ΣM_Δ et l'accélération angulaire θ̈"
+            page: 12
+            capacites:
+              - { id: "1.4.3.1", page: 12, notions_app: [rotation-axe-fixe], libelle: "Repérer un point du solide en rotation autour d'un axe fixe par son abscisse angulaire." }
+              - { id: "1.4.3.2", page: 12, notions_app: [rotation-axe-fixe], libelle: "Connaître l'expression de l'accélération angulaire et son unité." }
+              - { id: "1.4.3.3", page: 12, notions_app: [rotation-axe-fixe], libelle: "Connaître et exploiter les expressions des deux composantes a_N et a_T en fonction des grandeurs angulaires." }
+              - { id: "1.4.3.4", page: 12, notions_app: [rotation-axe-fixe], libelle: "Connaître et appliquer la relation fondamentale de la dynamique dans le cas de la rotation autour d'un axe fixe pour établir l'équation différentielle du mouvement et la résoudre." }
+              - { id: "1.4.3.5", page: 12, notions_app: [rotation-axe-fixe], libelle: "Connaître l'unité du moment d'inertie." }
+              - { id: "1.4.3.6", page: 12, notions_app: [rotation-axe-fixe], libelle: "Connaître et exploiter les caractéristiques du mouvement de rotation uniformément varié et ses équations horaires." }
+              - { id: "1.4.3.7", page: 12, notions_app: [rotation-axe-fixe], libelle: "Appliquer la deuxième loi de Newton et la relation fondamentale de la dynamique dans le cas de la rotation à un système mécanique composé de deux solides , l'un en mouvement de translation rectiligne et l'autre en rotation autour d'un axe fixe, pour établir les équations différentielles du mouvement et déterminer des grandeurs cinématiques et des grandeurs dynamiques." }
+          - id: "1.4.4"
+            nom: "4- Systèmes oscillants"
+            page: 12
+            capacites:
+              - { id: "1.4.4.1", page: 12, notions_app: [systemes-oscillants], libelle: "Connaître le mouvement oscillatoire." }
+              - { id: "1.4.4.2", page: 12, notions_app: [systemes-oscillants], libelle: "Reconnaître les oscillations libres." }
+              - { id: "1.4.4.3", page: 12, notions_app: [systemes-oscillants], libelle: "Reconnaître l'amortissement des oscillations, ses différents types et ses régimes." }
+              - { id: "1.4.4.4", page: 12, notions_app: [systemes-oscillants], libelle: "Connaître que dans le cas d'un amortissement faible (régime pseudopériodique), la pseudo-période est voisine de la période propre" }
+              - { id: "1.4.4.5", page: 12, notions_app: [systemes-oscillants], libelle: "Connaître les caractéristiques de la force de rappel exercée par un ressort sur un solide en mouvement." }
+              - { id: "1.4.4.6", page: 12, notions_app: [systemes-oscillants], libelle: "Exploiter les courbes : x_G(t), v_G(t) et a_G(t)." }
+              - { id: "1.4.4.7", page: 12, notions_app: [systemes-oscillants], libelle: "Appliquer la deuxième loi de Newton à un système oscillant (corps solide-ressort) pour établir l'équation différentielle du mouvement et vérifier sa solution dans les cas où le système oscillant est en position horizontale ou inclinée ou verticale." }
+              - { id: "1.4.4.8", page: 12, notions_app: [systemes-oscillants], libelle: "Déterminer la nature du mouvement du système oscillant (corps solide-ressort) et écrire les équations x_G(t), v_G(t) = dx/dt et ẍ_G(t) et les exploiter.", note: "le point de dérivation est imprimé comme un glyphe manquant (case vide) ; restitué d'après le sens" }
+              - { id: "1.4.4.9", page: 12, notions_app: [systemes-oscillants], libelle: "Connaître la signification des grandeurs physiques intervenant dans l'expression de l'équation horaire x_G(t) du système oscillant (corps solide-ressort) et les déterminer à partir des conditions initiales." }
+              - { id: "1.4.4.10", page: 12, notions_app: [systemes-oscillants], libelle: "Etablir l'expression de la période propre du système oscillant (corps solide-ressort)." }
+              - { id: "1.4.4.11", page: 12, notions_app: [systemes-oscillants], libelle: "Connaître et exploiter l'expression de la période propre et la fréquence propre du système oscillant (corps solide-ressort)." }
+              - { id: "1.4.4.12", page: 12, notions_app: [systemes-oscillants], libelle: "Déterminer les deux types d'amortissement (solide et fluide) à partir des formes des diagrammes d'espace x_G(t)." }
+              - { id: "1.4.4.13", page: 12, notions_app: [systemes-oscillants], libelle: "Connaître l'expression du couple de rappel exercé par un fil de torsion sur un corps solide oscillant." }
+              - { id: "1.4.4.14", page: 13, notions_app: [systemes-oscillants], libelle: "Appliquer la relation fondamentale de la dynamique à un pendule de torsion pour établir l'équation différentielle du mouvement dans le cas des frottements négligeables." }
+              - { id: "1.4.4.15", page: 13, notions_app: [systemes-oscillants], libelle: "Déterminer la nature du mouvement du pendule de torsion, écrire et exploiter les équations du mouvement : θ(t), θ̇(t) = dθ/dt et θ̈(t).", note: "points de dérivation imprimés comme glyphes manquants ; restitués" }
+              - { id: "1.4.4.16", page: 13, notions_app: [systemes-oscillants], libelle: "Connaître la signification des grandeurs physiques intervenant dans l'expression de l'équation horaire θ(t) du pendule de torsion et les déterminer à partir des conditions initiales." }
+              - { id: "1.4.4.17", page: 13, notions_app: [systemes-oscillants], libelle: "Etablir l'expression de la période propre du pendule de torsion." }
+              - { id: "1.4.4.18", page: 13, notions_app: [systemes-oscillants], libelle: "Connaître et exploiter l'expression de la période propre et la fréquence propre du pendule de torsion." }
+              - { id: "1.4.4.19", page: 13, notions_app: [systemes-oscillants], libelle: "Exploiter les diagrammes θ(t), θ̇(t) et θ̈(t) pour déterminer les grandeurs qui caractérisent le mouvement du pendule de torsion." }
+              - { id: "1.4.4.20", page: 13, notions_app: [systemes-oscillants], libelle: "Déterminer les deux types d'amortissement (solide et fluide) à partir des formes des diagrammes θ(t)." }
+              - { id: "1.4.4.21", page: 13, notions_app: [systemes-oscillants], libelle: "Appliquer la relation fondamentale de la dynamique, dans le cas de la rotation, à un pendule pesant pour établir l'équation différentielle du mouvement dans le cas des petites oscillations ; les frottements étant négligeables." }
+              - { id: "1.4.4.22", page: 13, notions_app: [systemes-oscillants], libelle: "Déterminer la nature du mouvement du pendule pesant, dans le cas de faibles oscillations, et écrire et exploiter les équations du mouvement : θ(t), θ̇(t) et θ̈(t)." }
+              - { id: "1.4.4.23", page: 13, notions_app: [systemes-oscillants], libelle: "Connaître la signification des grandeurs physiques intervenant dans l'expression de l'équation horaire θ(t) du pendule pesant, et les déterminer à partir des conditions initiales." }
+              - { id: "1.4.4.24", page: 13, notions_app: [systemes-oscillants], libelle: "Etablir l'expression de la période propre du pendule pesant." }
+              - { id: "1.4.4.25", page: 13, notions_app: [systemes-oscillants], libelle: "Connaître et exploiter l'expression de la période propre et la fréquence propre du pendule pesant dans le cas des petites oscillations." }
+              - { id: "1.4.4.26", page: 13, notions_app: [systemes-oscillants], libelle: "Exploiter les diagrammes θ(t), θ̇(t) et θ̈(t) pour déterminer les grandeurs qui caractérisent le mouvement du pendule pesant dans le cas de faibles oscillations." }
+              - { id: "1.4.4.27", page: 13, notions_app: [systemes-oscillants], libelle: "Définir le pendule simple synchrone au pendule pesant." }
+              - { id: "1.4.4.28", page: 13, notions_app: [systemes-oscillants], libelle: "Connaître l'expression de la période propre d'un pendule simple." }
+              - { id: "1.4.4.29", page: 13, notions_app: [systemes-oscillants], libelle: "Reconnaître l'excitateur, le résonateur et le phénomène de résonance mécanique ainsi que les conditions de sa production." }
+              - { id: "1.4.4.30", page: 13, notions_app: [systemes-oscillants], libelle: "Reconnaître l'influence de l'amortissement sur les régimes de résonance." }
+              - { id: "1.4.4.31", page: 13, notions_app: [systemes-oscillants, rotation-axe-fixe], libelle: "Appliquer la deuxième loi de Newton et la relation fondamentale de la dynamique dans le cas de la rotation à un système mécanique oscillant composé et constitué d'un corps en mouvement de translation rectiligne et d'un autre en rotation autour d'un axe fixe et dans différentes situations, pour établir les équations différentielles du mouvement et déterminer des grandeurs cinématiques et des grandeurs dynamiques." }
+          - id: "1.4.5"
+            nom: "5- Aspects énergétiques"
+            page: 13
+            capacites:
+              - { id: "1.4.5.1", page: 13, notions_app: [aspects-energetiques], libelle: "Déterminer le travail d'une force extérieure exercée par un ressort." }
+              - { id: "1.4.5.2", page: 13, notions_app: [aspects-energetiques], libelle: "Connaître et exploiter l'expression de l'énergie potentielle élastique." }
+              - { id: "1.4.5.3", page: 13, notions_app: [aspects-energetiques], libelle: "Connaître et exploiter la relation entre le travail d'une force appliquée par un ressort et la variation de l'énergie potentielle élastique." }
+              - { id: "1.4.5.4", page: 13, notions_app: [aspects-energetiques], libelle: "Connaître et exploiter l'expression de l'énergie mécanique d'un système solide-ressort." }
+              - { id: "1.4.5.5", page: 13, notions_app: [aspects-energetiques], libelle: "Exploiter la conservation et la non-conservation de l'énergie mécanique d'un système solide-ressort." }
+              - { id: "1.4.5.6", page: 14, notions_app: [aspects-energetiques], libelle: "Exploiter les diagrammes d'énergie." }
+              - { id: "1.4.5.7", page: 14, notions_app: [aspects-energetiques], libelle: "Déterminer le travail du couple de torsion." }
+              - { id: "1.4.5.8", page: 14, notions_app: [aspects-energetiques], libelle: "Connaître et exploiter l'expression de l'énergie potentielle de torsion." }
+              - { id: "1.4.5.9", page: 14, notions_app: [aspects-energetiques], libelle: "Connaître et exploiter la relation entre le travail du couple de torsion et la variation de l'énergie potentielle de torsion." }
+              - { id: "1.4.5.10", page: 14, notions_app: [aspects-energetiques], libelle: "Connaître et exploiter l'expression de l'énergie mécanique du pendule de torsion." }
+              - { id: "1.4.5.11", page: 14, notions_app: [aspects-energetiques], libelle: "Exploiter la conservation et la non-conservation de l'énergie mécanique du pendule de torsion." }
+              - { id: "1.4.5.12", page: 14, notions_app: [aspects-energetiques], libelle: "Exploiter les diagrammes d'énergie." }
+              - { id: "1.4.5.13", page: 14, notions_app: [aspects-energetiques], libelle: "Exploiter l'expression de l'énergie potentielle de pesanteur et l'expression de l'énergie cinétique pour déterminer l'énergie mécanique du pendule pesant dans le cas de faibles oscillations." }
+              - { id: "1.4.5.14", page: 14, notions_app: [aspects-energetiques], libelle: "Exploiter la conservation de l'énergie mécanique du pendule pesant dans le cas de faibles oscillations." }
+          - id: "1.4.6"
+            nom: "6- Atome et mécanique de Newton"
+            page: 14
+            capacites:
+              - { id: "1.4.6.1", page: 14, notions_app: [atome-mecanique-newton], libelle: "Connaître les expressions de la force d'interaction gravitationnelle et de la force d'interaction électrostatique." }
+              - { id: "1.4.6.2", page: 14, notions_app: [atome-mecanique-newton], libelle: "Connaître que l'énergie de l'atome est quantifiée." }
+              - { id: "1.4.6.3", page: 14, notions_app: [atome-mecanique-newton], libelle: "Savoir que la mécanique de Newton ne permet pas d'expliquer la quantification de l'énergie de l'atome." }
+              - { id: "1.4.6.4", page: 14, notions_app: [atome-mecanique-newton], libelle: "Connaître et exploiter la relation ΔE = h.ν ." }
+              - { id: "1.4.6.5", page: 14, notions_app: [atome-mecanique-newton], libelle: "Expliquer le spectre de raies." }
+  - id: "2"
+    nom: "DEUXIEME DOMAINE PRINCIPAL : CHIMIE"
+    sous_domaines:
+      - id: "2.1"
+        nom: "Sous domaine 1 : Transformations rapides et transformations lentes d'un système chimique"
+        poids: 6
+        poids_page: 19
+        chapitres:
+          - id: "2.1.1"
+            nom: "1- Transformations lentes et transformations rapides"
+            page: 15
+            capacites:
+              - { id: "2.1.1.1", page: 15, notions_app: [transformations-lentes-rapides], libelle: "Ecrire l'équation de la réaction modélisant une transformation d'oxydoréduction et identifier les deux couples intervenants." }
+              - { id: "2.1.1.2", page: 15, notions_app: [transformations-lentes-rapides], libelle: "Déterminer, à partir des résultats expérimentaux, l'influence des facteurs cinétiques sur la vitesse de réaction." }
+          - id: "2.1.2"
+            nom: "2- Suivi temporel d'une transformation - vitesse de réaction"
+            page: 15
+            capacites:
+              - { id: "2.1.2.1", page: 15, notions_app: [suivi-temporel-vitesse], libelle: "Justifier les différentes opérations réalisées lors du suivi de l'évolution temporelle d'un système et exploiter les résultats expérimentaux." }
+              - { id: "2.1.2.2", page: 15, notions_app: [suivi-temporel-vitesse], libelle: "Repérer l'équivalence lors d'un titrage et l'exploiter." }
+              - { id: "2.1.2.3", page: 15, notions_app: [suivi-temporel-vitesse], libelle: "Exploiter les différentes courbes d'évolution de la quantité de matière d'une espèce chimique, sa concentration, l'avancement de réaction, sa conductivité électrique, sa conductance, la pression ou le volume d'un réactif ou d'un produit." }
+              - { id: "2.1.2.4", page: 15, notions_app: [suivi-temporel-vitesse], libelle: "Dresser le tableau d'avancement d'une réaction et l'exploiter." }
+              - { id: "2.1.2.5", page: 15, notions_app: [suivi-temporel-vitesse], libelle: "Connaître l'expression de la vitesse volumique de réaction." }
+              - { id: "2.1.2.6", page: 15, notions_app: [suivi-temporel-vitesse], libelle: "Connaître l'influence de la concentration des réactifs et de la température sur la vitesse volumique de réaction." }
+              - { id: "2.1.2.7", page: 15, notions_app: [suivi-temporel-vitesse], libelle: "Interpréter qualitativement la variation de la vitesse de réaction à l'aide d'une des courbes d'évolution tracées." }
+              - { id: "2.1.2.8", page: 15, notions_app: [suivi-temporel-vitesse], libelle: "Déterminer graphiquement la valeur de la vitesse volumique de réaction." }
+              - { id: "2.1.2.9", page: 15, notions_app: [suivi-temporel-vitesse], libelle: "Définir le temps de demi-réaction t_1/2 ." }
+              - { id: "2.1.2.10", page: 15, notions_app: [suivi-temporel-vitesse], libelle: "Déterminer le temps de demi-réaction graphiquement ou en exploitant des résultats expérimentaux." }
+              - { id: "2.1.2.11", page: 15, notions_app: [suivi-temporel-vitesse], libelle: "Interpréter l'influence de la concentration de l'un des réactifs et/ou de la température sur le nombre de chocs efficaces par unité de temps" }
+      - id: "2.2"
+        nom: "Sous domaine 2 : Transformations non totales d'un système chimique"
+        poids: 10
+        poids_page: 19
+        chapitres:
+          - id: "2.2.1"
+            nom: "1- Transformations chimiques qui ont lieu dans les deux sens"
+            page: 15
+            capacites:
+              - { id: "2.2.1.1", page: 15, notions_app: [transformations-deux-sens], libelle: "Définir un acide et une base selon Bronsted." }
+              - { id: "2.2.1.2", page: 15, notions_app: [transformations-deux-sens], libelle: "Ecrire l'équation de la réaction modélisant une transformation acido-basique et identifier les deux couples intervenants." }
+              - { id: "2.2.1.3", page: 15, notions_app: [transformations-deux-sens], libelle: "Déterminer le pH d'une solution aqueuse." }
+              - { id: "2.2.1.4", page: 15, notions_app: [transformations-deux-sens], libelle: "Calculer l'avancement final de la réaction d'un acide avec l'eau, connaissant la valeur de la concentration et du pH de la solution de cet acide, et le comparer à l'avancement maximal." }
+              - { id: "2.2.1.5", page: 15, notions_app: [transformations-deux-sens], libelle: "Définir le taux d'avancement final d'une réaction et le déterminer à partir de données expérimentales." }
+              - { id: "2.2.1.6", page: 15, notions_app: [transformations-deux-sens], libelle: "Interpréter à l'échelle microscopique, l'état d'équilibre d'un système chimique." }
+          - id: "2.2.2"
+            nom: "2- Etat d'équilibre d'un système chimique"
+            page: 16
+            capacites:
+              - { id: "2.2.2.1", page: 16, notions_app: [etat-equilibre], libelle: "Utiliser la relation liant la conductance G, d'une partie de solution, aux concentrations molaires effectives [Xi] des ions Xi en solution." }
+              - { id: "2.2.2.2", page: 16, notions_app: [etat-equilibre], libelle: "Savoir que, lorsque l'état d'équilibre du système est atteint, les quantités de matière n'évoluent plus, et que cet état d'équilibre est dynamique." }
+              - { id: "2.2.2.3", page: 16, notions_app: [etat-equilibre], libelle: "Donner et utiliser l'expression littérale du quotient de réaction Qr à partir de l'équation de la réaction." }
+              - { id: "2.2.2.4", page: 16, notions_app: [etat-equilibre], libelle: "Savoir que le quotient de réaction Q_r,éq , associée à l'équation de la réaction, à l'état d'équilibre d'un système, prend une valeur, indépendante des concentrations, nommée constante d'équilibre K ." }
+              - { id: "2.2.2.5", page: 16, notions_app: [etat-equilibre], libelle: "Savoir que, pour une transformation donnée, le taux d'avancement final dépend de la constante d'équilibre et de l'état initial du système." }
+          - id: "2.2.3"
+            nom: "3- Transformations associées à des réactions acido-basiques en solution aqueuse"
+            page: 16
+            capacites:
+              - { id: "2.2.3.1", page: 16, notions_app: [reactions-acido-basiques], libelle: "Savoir que le produit ionique de l'eau, Ke , est la constante d'équilibre associée à l'équation de la réaction d'autoprotolyse de l'eau." }
+              - { id: "2.2.3.2", page: 16, notions_app: [reactions-acido-basiques], libelle: "Connaitre la relation pKe = − log Ke" }
+              - { id: "2.2.3.3", page: 16, notions_app: [reactions-acido-basiques], libelle: "Déterminer la nature d'une solution aqueuse (acide ou basique ou neutre) à partir de la valeur de son pH" }
+              - { id: "2.2.3.4", page: 16, notions_app: [reactions-acido-basiques], libelle: "Déterminer la valeur du pH d'une solution aqueuse à partir de la concentration molaire des ions H3O⁺ ou HO⁻." }
+              - { id: "2.2.3.5", page: 16, notions_app: [reactions-acido-basiques], libelle: "Ecrire et utiliser l'expression de la constante d'acidité KA associée à l'équation de la réaction d'un acide avec l'eau." }
+              - { id: "2.2.3.6", page: 16, notions_app: [reactions-acido-basiques], libelle: "Connaître la relation pKA = − log KA ." }
+              - { id: "2.2.3.7", page: 16, notions_app: [reactions-acido-basiques], libelle: "Déterminer la constante d'équilibre associée à l'équation d'une réaction acido-basique à l'aide des constantes d'acidité des couples en présence." }
+              - { id: "2.2.3.8", page: 16, notions_app: [reactions-acido-basiques], libelle: "Indiquer l'espèce prédominante connaissant le pH d'une solution aqueuse et le pKA du couple acide/base." }
+              - { id: "2.2.3.9", page: 16, notions_app: [reactions-acido-basiques], libelle: "Exploiter le diagramme de prédominance et de distribution des espèces acides et basiques présentes en solution aqueuse." }
+              - { id: "2.2.3.10", page: 16, notions_app: [reactions-acido-basiques], libelle: "Ecrire l'équation de réaction de dosage (en utilisant une seule flèche)." }
+              - { id: "2.2.3.11", page: 16, notions_app: [reactions-acido-basiques], libelle: "Connaître le dispositif expérimental d'un dosage acido-basique." }
+              - { id: "2.2.3.12", page: 16, notions_app: [reactions-acido-basiques], libelle: "Exploiter la courbe ou les résultats du dosage." }
+              - { id: "2.2.3.13", page: 16, notions_app: [reactions-acido-basiques], libelle: "Repérer et exploiter le point d'équivalence." }
+              - { id: "2.2.3.14", page: 16, notions_app: [reactions-acido-basiques], libelle: "Justifier le choix de l'indicateur coloré adéquat pour repérer l'équivalence." }
+      - id: "2.3"
+        nom: "Sous domaine 3 : Sens d'évolution d'un système chimique"
+        poids: 10
+        poids_page: 19
+        chapitres:
+          - id: "2.3.1"
+            nom: "1- Evolution spontanée d'un système chimique"
+            page: 17
+            capacites:
+              - { id: "2.3.1.1", page: 17, notions_app: [evolution-spontanee], libelle: "Calculer la valeur du quotient de réaction Qr d'un système chimique dans un état donné." }
+              - { id: "2.3.1.2", page: 17, notions_app: [evolution-spontanee], libelle: "Déterminer le sens d'évolution spontanée d'un système chimique." }
+          - id: "2.3.2"
+            nom: "2- Transformations spontanées dans les piles et récupération de l'énergie"
+            page: 17
+            capacites:
+              - { id: "2.3.2.1", page: 17, notions_app: [piles], libelle: "Schématiser une pile (schéma conventionnel, schéma)" }
+              - { id: "2.3.2.2", page: 17, notions_app: [piles], libelle: "Déterminer le sens de déplacement des porteurs de charges dans une pile en utilisant le critère d'évolution spontanée." }
+              - { id: "2.3.2.3", page: 17, notions_app: [piles], libelle: "Interpréter le fonctionnement d'une pile en disposant d'une information parmi les suivantes : le sens de du courant électrique, la f.é.m , les réactions aux électrodes, la polarité des électrodes ou le mouvement des porteurs de charges.", note: "« le sens de du courant » [sic]" }
+              - { id: "2.3.2.4", page: 17, notions_app: [piles], libelle: "Ecrire les équations des réactions aux électrodes (avec double flèche) et l'équation bilan lors du fonctionnement de la pile (avec une seule flèche)." }
+              - { id: "2.3.2.5", page: 17, notions_app: [piles], libelle: "Etablir la relation entre les quantités de matière des espèces formées ou consommées, l'intensité du courant et la durée de fonctionnement de la pile. Utiliser cette relation pour déterminer d'autres grandeurs (quantité d'électricité, l'avancement de la réaction, variation de masse…)." }
+          - id: "2.3.3"
+            nom: "3- Exemples de transformations forcées"
+            page: 17
+            capacites:
+              - { id: "2.3.3.1", page: 17, notions_app: [electrolyse], libelle: "Reconnaitre l'électrode à laquelle se produit la réaction d'oxydation (anode) ou l'électrode à laquelle se produit la réaction de réduction (cathode), connaissant le sens du courant imposé par le générateur." }
+              - { id: "2.3.3.2", page: 17, notions_app: [electrolyse], libelle: "Schématiser le montage expérimental de l'électrolyse." }
+              - { id: "2.3.3.3", page: 17, notions_app: [electrolyse], libelle: "Ecrire les équations des réactions aux électrodes (avec double flèche) et l'équation bilan (simple flèche) lors d'une électrolyse." }
+              - { id: "2.3.3.4", page: 17, notions_app: [electrolyse], libelle: "Etablir la relation entre les quantités de matière des espèces formées ou consommées, l'intensité du courant et la durée de l'électrolyse. Utiliser cette relation pour déterminer d'autres grandeurs (l'avancement de réaction, variation de masse, volume d'un gaz…).", note: "imprimé sans tiret, à la suite de la capacité précédente" }
+      - id: "2.4"
+        nom: "Sous domaine 4 : : Méthode de contrôle de l'évolution des systèmes chimiques"
+        poids: 7
+        poids_page: 19
+        chapitres:
+          - id: "2.4.1"
+            nom: "1- Les réactions d'estérification et d'hydrolyse"
+            page: 17
+            capacites:
+              - { id: "2.4.1.1", page: 17, notions_app: [esterification-hydrolyse], libelle: "Reconnaître dans la formule d'une espèce chimique organique les groupes caractéristiques : –OH (hydroxyle) ; –CO2H (carboxyle) ; –CO2R (ester) ; –CO–O–CO– (anhydride)." }
+              - { id: "2.4.1.2", page: 17, notions_app: [esterification-hydrolyse], libelle: "Écrire les équations des réactions d'estérification et d'hydrolyse." }
+              - { id: "2.4.1.3", page: 17, notions_app: [esterification-hydrolyse], libelle: "Retrouver, à partir de la formule semi-développée de l'ester, les formules de l'acide carboxylique et de l'alcool correspondants." }
+              - { id: "2.4.1.4", page: 17, notions_app: [esterification-hydrolyse], libelle: "Nommer les esters comportant cinq atomes de carbone au maximum." }
+              - { id: "2.4.1.5", page: 17, notions_app: [esterification-hydrolyse], libelle: "Connaitre les caractéristiques des réactions d'estérification et d'hydrolyse (lentes et limitées)." }
+              - { id: "2.4.1.6", page: 17, notions_app: [esterification-hydrolyse], libelle: "Savoir que le catalyseur est une espèce qui augmente la vitesse d'une réaction chimique sans modifier l'état d'équilibre du système." }
+              - { id: "2.4.1.7", page: 18, notions_app: [esterification-hydrolyse], libelle: "Savoir que la présence de l'un des réactifs en excès ou l'élimination de l'un des produits déplace l'état d'équilibre du système dans le sens direct." }
+              - { id: "2.4.1.8", page: 18, notions_app: [esterification-hydrolyse], libelle: "Déterminer la composition du mélange réactionnel à un instant donné." }
+          - id: "2.4.2"
+            nom: "2- Contrôle de l'évolution des systèmes chimiques par changement d'un réactif ou par catalyse."
+            page: 18
+            capacites:
+              - { id: "2.4.2.1", page: 18, notions_app: [controle-catalyse], libelle: "Justifier le choix du matériel expérimental à utiliser : chauffage à reflux, distillation fractionnée, cristallisation, et filtration sous vide." }
+              - { id: "2.4.2.2", page: 18, notions_app: [controle-catalyse], libelle: "Reconnaitre les consignes de sécurité." }
+              - { id: "2.4.2.3", page: 18, notions_app: [controle-catalyse], libelle: "Proposer un protocole expérimental, et justifier ses étapes." }
+              - { id: "2.4.2.4", page: 18, notions_app: [controle-catalyse], libelle: "Écrire l'équation de la réaction d'un anhydride d'acide avec un alcool et celle de l'hydrolyse basique d'un ester." }
+              - { id: "2.4.2.5", page: 18, notions_app: [controle-catalyse], libelle: "Connaitre les caractéristiques de la réaction d'un anhydride d'acide avec un alcool (rapide et totale)." }
+              - { id: "2.4.2.6", page: 18, notions_app: [controle-catalyse], libelle: "Calculer le rendement d'une transformation chimique." }
+              - { id: "2.4.2.7", page: 18, notions_app: [controle-catalyse], libelle: "Reconnaitre la partie hydrophile et la partie hydrophobe d'un ion carboxylate à chaîne longue." }
+              - { id: "2.4.2.8", page: 18, notions_app: [controle-catalyse], libelle: "Connaitre les rôles accélérateur et sélectif du catalyseur." }
+
+# Annexe 1 (pp. 21-26) : « Annexe 1 : Programme de physique chimie ». Mot pour mot ; les contenus
+# d'un chapitre sont recopiés dans l'ordre, un élément par tiret ou par numéro du document.
+programme:
+  - { domaine: "Premier domaine principal : Physique", chapitre: "Introduction : Questions qui se posent au physicien", page: 21, contenus: ["Quelques activités du physicien, et enjeux de la physique dans la société.", "Quelques questions qui se posent au physicien lors de ses activités professionnelles."] }
+  - { domaine: "Physique", sous_domaine: "Sous domaine 1 : Ondes", chapitre: "1. Ondes mécaniques progressives.", page: 21, contenus: ["1.1. Définition d'une onde mécanique, célérité.", "1.2. Ondes longitudinales, transversales, et leurs caractéristiques.", "1.3. Onde progressive à une dimension - Notion de retard temporel."] }
+  - { domaine: "Physique", sous_domaine: "Sous domaine 1 : Ondes", chapitre: "2. Ondes mécaniques progressives périodiques.", page: 21, contenus: ["2.1. Notion d'onde mécanique progressive périodique : périodicité temporelle, périodicité spatiale.", "2.2. Onde progressive sinusoïdale : période, fréquence et longueur d'onde.", "2.3. Mise en évidence expérimentale du phénomène de diffraction dans le cas d'une onde mécanique progressive sinusoïdale."] }
+  - { domaine: "Physique", sous_domaine: "Sous domaine 1 : Ondes", chapitre: "3. Propagation d'une onde lumineuse.", page: 21, contenus: ["3.1. Mise en évidence expérimentale de la diffraction de la lumière.", "3.2. Propagation de la lumière dans le vide : modèle ondulatoire de la lumière.", "3.3. Propagation de la lumière dans les milieux transparents : indice du milieu - mise en évidence du phénomène de dispersion de la lumière par un prisme."] }
+  - { domaine: "Physique", sous_domaine: "Sous domaine 2 : Transformations nucléaires", chapitre: "1. Décroissance radioactive", page: 21, contenus: ["1.1. Stabilité et instabilité des noyaux : composition du noyau - isotopie - notation ᴬ_Z X - diagramme (N, Z).", "1.2. La radioactivité : - radioactivité α, β⁺, β⁻ et émission γ. - lois de conservation de la charge électrique et du nombre de nucléons.", "1.3. Loi de décroissance radioactive : évolution de substance radioactive- importance de l'activité radioactive - demi-vie - application à la datation."] }
+  - { domaine: "Physique", sous_domaine: "Sous domaine 2 : Transformations nucléaires", chapitre: "2. Noyaux - masse et énergie", page: 21, contenus: ["2.1. Equivalence \"masse-énergie\" : défaut de masse - énergie de liaison - unités - énergie de liaison par nucléon- équivalence \" masse-énergie\" - courbe d'Aston.", "2.2. Fission et fusion : exploitation de la courbe d'Aston pour déterminer les domaines de la fission et de la fusion.", "2.3. Bilan de masse et d'énergie d'une transformation nucléaire. Exemples pour les radioactivités α, β⁺ et β⁻ et pour la fission et la fusion.", "2.4. Utilisations de l'énergie nucléaire."] }
+  - { domaine: "Physique", sous_domaine: "Sous domaine 3 : Electricité", chapitre: "1. Dipôle RC", page: 22, contenus: ["1.1. Le condensateur : - description sommaire du condensateur- symbole - charges des armatures - intensité du courant- algébrisation en convention récepteur pour les grandeurs i, u et q. - relation i = dq/dt pour un condensateur en convention récepteur. - relation q = C.u ; Capacité d'un condensateur, son unité. - association des condensateurs en série et en parallèle.", "1.2. Dipôle RC - réponse d'un dipôle RC à un échelon de tension : * étude expérimentale. * étude théorique. - énergie emmagasinée dans un condensateur."] }
+  - { domaine: "Physique", sous_domaine: "Sous domaine 3 : Electricité", chapitre: "2. Dipôle RL", page: 22, contenus: ["2.1. La bobine. - description sommaire d'une bobine - symbole. - tension aux bornes d'une bobine en convention récepteur : u = r.i + L.di/dt - inductance, son unité.", "2.2. Dipôle RL. - réponse d'un dipôle RL à un échelon de tension : * étude expérimentale. * étude théorique. - énergie emmagasinée dans une bobine."] }
+  - { domaine: "Physique", sous_domaine: "Sous domaine 3 : Electricité", chapitre: "3. Circuit RLC série.", page: 22, contenus: ["3.1. Oscillations libres dans un circuit RLC série. - décharge d'un condensateur dans une bobine. - influence de l'amortissement- pseudo-période. - interprétation énergétique : transfert d'énergie entre le condensateur et la bobine, effet Joule. - étude analytique dans le cas d'un amortissement faible (résistance négligeable) - Période propre. - entretien des oscillations : * Etude expérimentale. * Etude théorique.", "3.2. Oscillations forcées dans un circuit RLC série. - Oscillations forcées en régime sinusoïdal dans un circuit RLC série. - Courant alternatif sinusoïdal - Intensité efficace et tension efficace - Impédance du circuit. - Résonance d'intensité - bande passante - facteur de qualité - Puissance en courant alternatif sinusoïdal - facteur de puissance."] }
+  - { domaine: "Physique", sous_domaine: "Sous domaine 3 : Electricité", chapitre: "4. Applications : Production d'ondes électromagnétiques et communication.", page: 23, contenus: ["4.1. Ondes électromagnétiques- Transmission d'informations.", "4.2. Modulation d'une tension sinusoïdale.", "4.3. Modulation d'amplitude : Principe de modulation d'amplitude- Principe de démodulation.", "4.4. Réalisation d'un dispositif permettant de capter une émission radio en modulation d'amplitude."] }
+  - { domaine: "Physique", sous_domaine: "Sous domaine 4 : Mécanique", chapitre: "1. Lois de Newton.", page: 23, contenus: ["1.1. Vecteur vitesse- vecteur accélération- vecteur accélération dans le repère de Freinet.", "1.2. Deuxième loi de Newton : rôle de la masse - importance du choix du référentiel dans l'étude du mouvement du centre d'inertie d'un solide - référentiels galiléens.", "1.3. Troisième loi de Newton : Principe des actions réciproques"] }
+  - { domaine: "Physique", sous_domaine: "Sous domaine 4 : Mécanique", chapitre: "2. Applications :", page: 23, contenus: ["2.1. Chute verticale d'un solide : - chute verticale avec frottement. - chute libre verticale.", "2.2. Mouvements plans : - mouvement d'un solide sur un plan horizontal et sur un plan incliné. - mouvement d'un projectile dans le champ de pesanteur uniforme. - mouvement d'une particule chargée dans un champ électrique uniforme. - mouvement d'une particule chargée dans un champ magnétique uniforme.", "2.3. Satellites artificiels et planètes : - référentiels héliocentriques - référentiels géocentriques. - lois de Kepler (trajectoire circulaire et trajectoire elliptique). - application de la deuxième loi de Newton au centre d'inertie d'un satellite artificiel ou d'une planète : force centripète, accélération radiale, modélisation du mouvement du centre d'inertie d'un satellite artificiel ou d'une planète par un mouvement circulaire uniforme."] }
+  - { domaine: "Physique", sous_domaine: "Sous domaine 4 : Mécanique", chapitre: "3. Relation quantitative entre la somme des moments ΣM/Δ et l'accélération angulaire θ̈", page: 23, contenus: ["3.1. Abscisse angulaire - accélération angulaire.", "3.2. Relation fondamentale de la dynamique dans le cas de la rotation autour d'un axe fixe - rôle du moment d'inertie.", "3.3. Mouvement d'un système mécanique (translation et rotation autour d'un axe fixe)."] }
+  - { domaine: "Physique", sous_domaine: "Sous domaine 4 : Mécanique", chapitre: "4. Systèmes oscillants.", page: 23, contenus: ["4.1. Présentation de systèmes mécaniques oscillants. - pendule pesant, pendule simple, pendule de torsion et le système (solide-ressort) en oscillations libres : position d'équilibre, amplitude et période propre. - amortissement des oscillations.", "4.2. Système oscillant (solide-ressort) : - force de rappel exercée par un ressort - équation différentielle du mouvement d'un solide dans le cas de faibles frottements - période propre- amortissement.", "4.3. Pendule de torsion : - couple de rappel - équation différentielle dans le cas de faibles frottements - période propre – amortissement.", "4.4. Pendule pesant : - équation différentielle - période propre - amortissement.", "4.5. Phénomène de résonnance : - présentation expérimentale du phénomène : excitateur – résonateur - amplitude et période des oscillations - influence de l'amortissement - exemples de résonnance mécanique."] }
+  - { domaine: "Physique", sous_domaine: "Sous domaine 4 : Mécanique", chapitre: "5. Aspects énergétiques.", page: 24, contenus: ["5.1. Travail d'une force extérieure exercée par un ressort - énergie potentielle élastique - énergie mécanique du système (solide-ressort).", "5.2. Energie potentielle de torsion - énergie mécanique d'un pendule de torsion.", "5.3. Energie mécanique d'un pendule pesant."] }
+  - { domaine: "Physique", sous_domaine: "Sous domaine 4 : Mécanique", chapitre: "6. Atome et mécanique de Newton :", page: 24, contenus: ["- limites de la mécanique de Newton- quantification des échanges d'énergie - quantification des niveaux d'énergie d'un atome, d'une molécule et d'un noyau. applications aux spectres - constante de Planck – la relation ΔE = hυ."] }
+  - { domaine: "Deuxième domaine principal : Chimie", chapitre: "Introduction : Questions qui se posent au chimiste", page: 24, contenus: ["- Inventorier les activités du chimiste et les enjeux de la chimie dans la société.", "- Dégager quelques questions qui se posent au chimiste dans ses activités professionnelles."] }
+  - { domaine: "Chimie", sous_domaine: "Sous domaine 1 : Transformations rapides et transformations lentes d'un système chimique.", chapitre: "1. Transformations lentes et transformations rapides.", page: 24, contenus: ["- Rappels sur les couples Ox/Red et écriture des équations de réactions d'oxydo-réduction en utilisant le symbole ⇄ dans l'écriture de la demi-équation caractéristique d'un couple Ox/Red.", "- Mise en évidence expérimentale des transformations lentes et des transformations rapides.", "- Mise en évidence expérimentale des facteurs cinétiques : température et concentration des réactifs"] }
+  - { domaine: "Chimie", sous_domaine: "Sous domaine 1", chapitre: "2. Suivi temporel d'une transformation – vitesse de réaction.", page: 24, contenus: ["- Tracé des courbes d'évolution de la quantité de matière ou de la concentration d'une espèce chimique ou de l'avancement d'une réaction au cours du temps : Utilisation du tableau descriptif d'évolution d'un système chimique et exploitation d'expériences.", "- Vitesse de réaction : Définition de la vitesse volumique de réaction exprimée en unité de quantité de matière par unité de temps et de volume : v = (1/V).dx/dt avec x avancement de la réaction et V volume de la solution.", "- Evolution de la vitesse de réaction au cours du temps.", "- temps de demi-réaction noté (t1/2) : sa définition et méthodes de sa détermination - choix d'une méthode de suivi d'une transformation selon la valeur de (t1/2).", "- interprétation au niveau microscopique : o interprétation de la réaction chimique en termes de chocs efficaces. o interprétation de l'influence de la concentration des entités réactives et de la température sur le nombre de chocs et de chocs efficaces par unité de temps."] }
+  - { domaine: "Chimie", sous_domaine: "Sous domaine 2 : Transformations non totales d'un système chimique", chapitre: "3. Transformations chimiques qui ont lieu dans les deux sens.", page: 25, contenus: ["- introduction de la notion pH - mesure du pH.", "- mise en évidence expérimentale d'un avancement final différent de l'avancement maximal, dans une transformation chimique donnée.", "- modélisation d'une transformation chimique limitée par deux réactions inverses et simultanées en utilisant l'écriture : ⇄ (double flèche)", "- caractérisation d'une transformation limitée (non totale) : avancement x_f < x_max .", "- taux d'avancement final d'une réaction : τ = x_f / x_max , avec τ ≤ 1.", "- interprétation à l'échelle microscopique de l'état d'équilibre en tenant compte des chocs efficaces entre les espèces réactives d'une part et les espèces produites d'autre part."] }
+  - { domaine: "Chimie", sous_domaine: "Sous domaine 2", chapitre: "4. État d'équilibre d'un système chimique.", page: 25, contenus: ["- Quotient de réaction Qr : Expression littérale en fonction des concentrations molaires des espèces chimiques dissoutes pour un état donné du système.", "- Généralisation à différents cas : solution aqueuse homogène ou hétérogène (présence de solides).", "- Détermination de la valeur du quotient de réaction Qr,éq dans un état d'équilibre d'un système.", "- Constante d'équilibre K associée à l'équation d'une réaction, à une température donnée.", "- Influence de l'état initial d'un système sur le taux d'avancement final d'une réaction.", "- Transformations associées à des réactions acido-basiques en solution aqueuse. (tiret en gras, sans numéro)", "- Autoprotolyse de l'eau ;", "- Produit ionique de l'eau, notée Ke - pKe.", "- Echelle de pH : solution acide, solution basique et solution neutre.", "- Constante d'acidité d'un couple acide/ base, notée KA - pKA.", "- Comparaison des comportements, en solution aqueuse, des acides ou des bases ayant même concentration.", "- Constante d'équilibre associée à une réaction acido-basique.", "- Diagrammes de prédominance et de distribution d'espèces acides et basiques en solution aqueuse.", "- Zone de virage d'un indicateur coloré acide-base.", "- Titrage pH-métrique d'un acide ou d'une base en solution aqueuse pour déterminer le volume versé à l'équivalence et choisir un indicateur coloré convenable.", "- Réaction totale : détermination du taux d'avancement finale à partir d'un exemple de dosage acido-basique."] }
+  - { domaine: "Chimie", sous_domaine: "Sous domaine 3 : Sens d'évolution d'un système chimique", chapitre: "1. Evolution spontanée d'un système chimique.", page: 26, contenus: ["- critère d'évolution spontanée : au cours du temps, la valeur du quotient de réaction Qr tend vers la constante d'équilibre K.", "- illustration de ce critère sur des réactions acido-basiques et des réactions d'oxydo-réduction."] }
+  - { domaine: "Chimie", sous_domaine: "Sous domaine 3", chapitre: "7. Transformations spontanées dans les piles et récupération de l'énergie.", page: 26, contenus: ["- Transfert spontané d'électrons entre des espèces chimiques (mélangées ou séparées) de deux couples Ox/Red de type ion métallique/métal, Mⁿ⁺/M(s).", "- Constitution et fonctionnement d'une pile : Observation du sens de circulation du courant électrique, mesure de la force électromotrice E (f.é.m), mouvement des porteurs de charges, rôle du pont salin (jonction électrolytique), réactions aux électrodes.", "- La pile un système hors équilibre au cours de son fonctionnement en générateur. Lors de l'évolution spontanée, la valeur du quotient de réaction tend vers la constante d'équilibre.", "- La pile à l'équilibre \"pile usée\" : quantité d'électricité maximale débitée dans un circuit."] }
+  - { domaine: "Chimie", sous_domaine: "Sous domaine 3", chapitre: "8. Exemples de transformations forcées :", page: 26, contenus: ["- mise en évidence expérimentale de la possibilité de changer, dans certains cas, le sens d'évolution d'un système en imposant un courant de sens inverse à celui observé lorsque le système évolue spontanément (transformation forcée).", "- réactions aux niveaux des électrodes : anode et cathode.", "- application à l'électrolyse : principe et exemples d'applications courantes et industrielles."] }
+  - { domaine: "Chimie", sous_domaine: "Sous domaine 4 : Méthode de contrôle de l'évolution des systèmes chimiques", chapitre: "1. Les réactions d'estérification et d'hydrolyse.", page: 26, contenus: ["- Formation d'un ester à partir d'un acide carboxylique et d'un alcool, écriture de l'équation de la réaction correspondante.", "- Hydrolyse d'un ester, écriture de l'équation de la réaction correspondante.", "- Mise en évidence expérimentale d'un état d'équilibre lors des transformations faisant intervenir des réactions d'estérification et d'hydrolyse.", "- Définition du rendement d'une transformation.", "- Définition d'un catalyseur.", "- Contrôle de la vitesse de réaction : température et catalyseur.", "- Contrôle de l'état final d'un système : excès d'un réactif ou élimination d'un produit."] }
+  - { domaine: "Chimie", sous_domaine: "Sous domaine 4", chapitre: "2. Contrôle de l'évolution de systèmes chimiques.", page: 26, contenus: ["o Par changement d'un réactif.", "- Synthèse d'un ester à partir d'un anhydride d'acide et d'un alcool.", "- Hydrolyse basique des esters : applications à la saponification des corps gras (Préparation du savon, reconnaissance de ses propriétés, relations structure-propriétés).", "o Utilisation de la catalyse. (intitulé sans contenu)"] }
+
+# Annexe 2 (pp. 27-29) : « Annexe 2 : Liste des travaux pratiques ». Aucun TP pour le sous-domaine 2
+# (transformations nucléaires) : le tableau passe de « Sous domaine 1 : Ondes » à « Sous domaine 3 ».
+travaux_pratiques:
+  - { domaine: "Domaine principal 1 : Physique", sous_domaine: "Sous domaine 1 : Ondes", page: 27, experience: "1- Mesure de la célérité d'une onde mécanique.", objectifs: ["Déterminer la vitesse de propagation : * d'une onde mécanique le long d'une corde, ou à la surface de l'eau. * d'une onde sonore.", "Mettre en évidence que la vitesse de propagation est indépendante de la forme de l'onde."] }
+  - { domaine: "physique", sous_domaine: "Sous domaine 1 : Ondes", page: 27, experience: "2- Diffraction d'une onde sonore ou ultrasonore.", objectifs: ["Visualiser la diffraction d'une onde sonore ou ultrasonore.", "Mettre en évidence les valeurs maximales et minimales de l'amplitude des ondes."] }
+  - { domaine: "physique", sous_domaine: "Sous domaine 1 : Ondes", page: 27, experience: "3- Diffraction des ondes lumineuses.", objectifs: ["Mettre en évidence expérimentalement le phénomène.", "Vérifier la relation θ = λ/a ."] }
+  - { domaine: "physique", sous_domaine: "Sous domaine 1 : Ondes", page: 27, experience: "4- Dispersion de la lumière blanche.", objectifs: ["Déterminer l'indice de réfraction d'un milieu transparent."] }
+  - { domaine: "physique", sous_domaine: "Sous domaine 3 : Electricité", page: 27, experience: "1- Charge d'un condensateur par un générateur idéal de courant. - Réponse d'un dipôle RC à un échelon de tension.", objectifs: ["Déterminer la capacité d'un condensateur.", "Mettre en évidence l'influence de R et C sur la réponse du dipôle RC et mesurer la constante du temps."] }
+  - { domaine: "physique", sous_domaine: "Sous domaine 3 : Electricité", page: 27, experience: "2- Tension entre les bornes d'une bobine dans le cas de l'application d'une tension triangulaire. - Réponse d'un dipôle RL à un échelon de tension", objectifs: ["Déterminer l'inductance d'une bobine.", "Mettre en évidence l'influence de R et L sur la réponse du dipôle RL et mesurer la constante du temps."] }
+  - { domaine: "physique", sous_domaine: "Sous domaine 3 : Electricité", page: 27, experience: "3- Oscillations libres dans un circuit RLC série.", objectifs: ["Visualiser l'évolution de l'intensité du courant.", "Visualiser les différents régimes d'oscillations.", "Visualiser l'influence de la résistance du circuit sur les régimes des oscillations."] }
+  - { domaine: "physique", sous_domaine: "Sous domaine 3 : Electricité", page: 27, experience: "4- Circuit RLC série à la résonance.", objectifs: ["Mettre en évidence le phénomène de la résonance électrique.", "Etudier l'influence de la résistance du circuit sur l'acuité de la résonance."] }
+  - { domaine: "physique", sous_domaine: "Sous domaine 3 : Electricité", page: 27, experience: "5- Ondes électromagnétiques", objectifs: ["Etudier expérimentalement : o La modulation d'amplitude. o La démodulation d'une tension modulée en amplitude.", "Réaliser un récepteur radio AM simple."] }
+  - { domaine: "physique", sous_domaine: "Sous domaine 4 : Mécanique", page: 28, experience: "1- Lois de Newton", objectifs: ["Vérifier expérimentalement la deuxième loi de Newton."] }
+  - { domaine: "physique", sous_domaine: "Sous domaine 4 : Mécanique", page: 28, experience: "2- Chute verticale avec frottement.", objectifs: ["Mettre en évidence l'influence des frottements sur la chute verticale d'un solide dans des fluides."] }
+  - { domaine: "physique", sous_domaine: "Sous domaine 4 : Mécanique", page: 28, experience: "3- Mouvement d'un projectile dans un champ de pesanteur uniforme.", objectifs: ["Mettre en évidence les facteurs influençant la trajectoire d'un projectile."] }
+  - { domaine: "physique", sous_domaine: "Sous domaine 4 : Mécanique", page: 28, experience: "4- Relation quantitative entre la somme des moments et l'accélération angulaire.", objectifs: ["Vérifier expérimentalement la relation fondamentale de la dynamique dans le cas de la rotation autour d'un axe fixe."] }
+  - { domaine: "physique", sous_domaine: "Sous domaine 4 : Mécanique", page: 28, experience: "5- Système oscillant : (solide – ressort)", objectifs: ["Mettre en évidence les facteurs physiques influençant la période propre d'un oscillateur.", "Mettre en évidence le phénomène d'amortissement, les différents types d'amortissement et de régimes d'oscillations."] }
+  - { domaine: "physique", sous_domaine: "Sous domaine 4 : Mécanique", page: 28, experience: "6- Pendule de torsion.", objectifs: ["Etudier l'influence du moment d'inertie du pendule et de la constante de torsion du fil sur la période propre."] }
+  - { domaine: "physique", sous_domaine: "Sous domaine 4 : Mécanique", page: 28, experience: "7- Pendule pesant.", objectifs: ["Vérifier la loi de l'isochronisme des petites oscillations dans le cas d'un pendule pesant.", "Etudier l'influence du moment d'inertie du pendule sur la période propre dans le cas des petites oscillations."] }
+  - { domaine: "physique", sous_domaine: "Sous domaine 4 : Mécanique", page: 28, experience: "8- Résonance mécanique", objectifs: ["Etudier l'influence de la période de l'excitateur sur l'amplitude du résonateur.", "Etudier l'influence de l'amortissement sur la résonance."] }
+  - { domaine: "Domaine principal 2 : Chimie", page: 29, experience: "1- Mise en évidence des facteurs cinétiques", objectifs: ["Mettre en évidence l'influence des concentrations des réactifs et de température sur la vitesse d'évolution d'un système chimique."] }
+  - { domaine: "chimie", page: 29, experience: "2- Suivi temporel d'une réaction chimique par mesure de la conductance.", objectifs: ["Mesurer la conductance d'une solution aqueuse au cours et après la fin de la réaction ; déterminer le temps de demi-réaction (t1/2)."] }
+  - { domaine: "chimie", page: 29, experience: "3- Avancement final d'une réaction acide-base.", objectifs: ["Mesurer le pH d'une solution d'acide chlorhydrique, d'une solution d'acide éthanoïque et déterminer l'avancement final de la réaction."] }
+  - { domaine: "chimie", page: 29, experience: "4- Détermination de la constante d'équilibre chimique par mesure de la conductance.", objectifs: ["Calculer le taux d'avancement final et la constante d'équilibre de la réaction d'un acide faible avec l'eau."] }
+  - { domaine: "chimie", page: 29, experience: "5- Dosage par mesure de pH.", objectifs: ["Réaliser le dosage d'un produit de la vie courante."] }
+  - { domaine: "chimie", page: 29, experience: "6- Constituants et fonctionnement d'une pile.", objectifs: ["Réaliser des piles faisant intervenir des couples de type Mⁿ⁺/M et déduire le sens spontané des transformations."] }
+  - { domaine: "chimie", page: 29, experience: "7- Electrolyse en solution aqueuse.", objectifs: ["Réaliser des transformations chimiques forcées.", "Déterminer la constante de Faraday."] }
+  - { domaine: "chimie", page: 29, experience: "8- Estérification et Hydrolyse.", objectifs: ["Etudier l'évolution temporelle d'une réaction d'estérification.", "Déterminer le rendement d'une estérification et le rendement d'une hydrolyse à l'équilibre."] }
+  - { domaine: "chimie", page: 29, experience: "9- Préparation et propriétés des savons.", objectifs: ["Préparer un savon par réaction entre la soude et l'huile.", "Mettre en évidence quelques propriétés du savon."] }
+  - { domaine: "chimie", page: 29, experience: "10- Dosage directe de l'aspirine dans un comprimé.", objectifs: ["Doser l'acide acétylsalicylique dans un comprimé d'aspirine et comparer la masse d'acide acétylsalicylique trouvée avec celle indiquée sur la boite du médicament."] }
+
+# Annexe 3 (p. 30) : « Annexe 3 : Compétences ciblées ».
+competences_ciblees:
+  - { page: 30, domaine: "Ondes", libelle: "Utiliser le modèle ondulatoire pour interpréter les phénomènes liés à la propagation des ondes mécaniques ou optiques et résoudre des situations problème sur la propagation des ondes." }
+  - { page: 30, domaine: "Les transformations nucléaires", libelle: "Modéliser des transformations nucléaires et datation d'un fait par l'application de la loi de désintégration radioactive ; faire le bilan énergétique d'une transformation nucléaire et résoudre des situations problème sur les transformations nucléaires." }
+  - { page: 30, domaine: "Les transformations nucléaires", libelle: "Savoir l'intérêt des transformations nucléaires dans l'évolution technologique et ses effets probables sur l'environnement et les mesures de précaution à prendre." }
+  - { page: 30, domaine: "L'électricité", libelle: "Modéliser le comportement du condensateur et de la bobine dans un circuit électrique et analyser leurs réponses à un échelon de tension ; étudier les oscillations libres dans un circuit RLC série." }
+  - { page: 30, domaine: "L'électricité", libelle: "Interpréter les constituants et le rôle des éléments d'une chaine d'émission et être conscient de son intérêt dans la communication." }
+  - { page: 30, domaine: "La mécanique", libelle: "Analyser, suivre et prévoir l'évolution d'un système mécanique en adoptant un modèle simple." }
+  - { page: 30, domaine: "La mécanique", libelle: "Résoudre une situation problème liée à un système mécanique en mouvement par une étude dynamique ou énergétique." }
+  - { page: 30, domaine: "Transformations rapides et transformations lentes d'un système chimique", libelle: "Contrôler la vitesse de réaction en agissant sur les facteurs cinétiques pour accélérer la synthèse d'une espèce chimique, ou pour éliminer les effets des produits utilisés, ou pour diminuer la vitesse de réaction afin de conserver les produits alimentaires et de les protéger de la corrosion" }
+  - { page: 30, domaine: "Transformations non totales d'un système chimique", libelle: "Utiliser le taux d'avancement final pour distinguer entre la transformation totale et les transformations non totales et déterminer la composition de l'état final d'un système chimique en utilisant la constante d'équilibre dans des différents cas." }
+  - { page: 30, domaine: "Sens d'évolution d'un système chimique", libelle: "Utiliser le critère de l'évolution pour déterminer le sens de l'évolution spontanée d'un système et exploiter ce sens pour récupérer de l'énergie électrique dans le cas des réactions d'oxydo-réduction." }
+  - { page: 30, domaine: "Sens d'évolution d'un système chimique", libelle: "Analyser une transformation chimique forcée et appliquer l'électrolyse pour charger des accumulateurs , purifier les métaux et les protéger de la rouille." }
+  - { page: 30, domaine: "Méthode de contrôle de l'évolution des systèmes chimiques", libelle: "Exécuter un protocole expérimental pour fabriquer une espèce chimique déterminée et augmenter son rendement en utilisant un réactif plus efficace et un catalyseur convenable." }
+
+notes_de_lecture:
+  - "NUMÉROTATION : même principe que pc-pc.yaml (domaines, sous-domaines et chapitres numérotés par le document ; 4ᵉ chiffre = ordre des tirets, reconstitué). Les rangs suivent CE document."
+  - "290 capacités : physique 225 — 1.1 ondes 28 (7 · 8 · 13) · 1.2 nucléaire 28 (15 · 13) · 1.3 électricité 79 (18 · 16 · 26 · 19) · 1.4 mécanique 90 (10 · 23 · 7 · 31 · 14 · 5) ; chimie 65 — 2.1 (2 · 11) · 2.2 (6 · 5 · 14) · 2.3 (2 · 5 · 4) · 2.4 (8 · 8)."
+  - "CE QUE LE CADRE SM AJOUTE au cadre PC (pc-pc.yaml) : (1) dans « 3- Circuit RLC série », 12 tirets sur les oscillations forcées (1.3.3.15 à 1.3.3.26, p. 9 : libres / forcées, excitateur et résonateur, phase |φ| = 2πτ/T, impédance Z = U/I et son unité, résonance électrique, facteur de qualité Q = N₀/ΔN, bande passante à -3 dB, surtension, puissance instantanée, puissance moyenne P = U.I.cos φ, facteur de puissance), et en annexe 1 « 3.2. Oscillations forcées dans un circuit RLC série » (p. 23) et le TP « 4- Circuit RLC série à la résonance » (p. 27) ; (2) dans « 2- Applications » de la mécanique, 2 tirets sur la particule chargée dans un champ électrique uniforme (1.4.2.13-14, p. 11 : F⃗ = qE⃗, E = U/d, équations horaires, trajectoire, déflexion électrostatique), et en annexe 1 « mouvement d'une particule chargée dans un champ électrique uniforme » (p. 23) ; (3) « la longueur d'onde » parmi ce qu'on détermine sur des documents (1.1.1.6)."
+  - "CE QUE LE CADRE SM N'A PAS (par rapport à pc-pc.yaml) : le tiret « Savoir qu'une électrolyse est une transformation forcée. » (PC 2.3.3.1) est absent du chapitre « 3- Exemples de transformations forcées » (p. 17) ; l'électrolyse reste au programme (annexe 1, p. 26 ; TP 7, p. 29)."
+  - "Variantes de mots (même sens) : « Retrouver la troisième loi de Kepler » (SM 1.4.2.21) / « Etablir » (PC) ; « dispositif expérimental d'un dosage » (SM 2.2.3.11) / « montage » (PC) ; « consignes de sécurité » (SM 2.4.2.2) / « règles » (PC) ; « chocs et de chocs efficaces » (annexe 1 SM, p. 25) / « chocs efficaces » (PC)."
+  - "Poids des sous-domaines IDENTIQUES à la filière PC (11 / 8 / 21 / 27 ; 6 / 10 / 10 / 7, p. 19). Seuls les niveaux d'habileté changent : 45 / 15 / 40 (PC : 50 / 15 / 35). Durée 4 h, « 4 ou 5 exercices thématiques » (p. 4)."
+  - "Annexe 1, coquilles de numérotation recopiées : en chimie, le sous-domaine 2 numérote ses chapitres « 3. » et « 4. » (p. 25) et le sous-domaine 3 « 1. », « 7. », « 8. » (p. 26) ; « Transformations associées à des réactions acido-basiques » y est un tiret en gras sans numéro, à l'intérieur de « 4. État d'équilibre » ; « 2. Contrôle de l'évolution de systèmes chimiques » a deux sous-titres, « o Par changement d'un réactif. » et « o Utilisation de la catalyse. », ce dernier sans contenu."
+  - "Coquilles recopiées : « Chacun des ces exercices » (p. 3) ; « inferieur ou égale » (1.1.2.4) ; « résonnance » (1.3.3.20 et annexe 1 p. 24) ; « Sous domaine 4 : : » (p. 17) ; « base de Freinet » (p. 10, p. 23) ; « le sens de du courant » (2.3.2.3). Le tiret 2.3.3.4 (« Etablir la relation … durée de l'électrolyse ») est imprimé sans tiret, à la suite du précédent (p. 17). Un tiret vide termine la liste de la page 18."
+  - "Annexe 3 « Compétences ciblées » (p. 30) : texte identique, mot pour mot, à celui du cadre PC (p. 29). Elle ne mentionne ni les oscillations forcées ni le champ électrique."
+  - "Le document ne contient ni coefficient ni barème par exercice."
