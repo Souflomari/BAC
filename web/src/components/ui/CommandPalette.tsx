@@ -222,10 +222,6 @@ export function CommandPalette({ notions, epreuves = [] }: { notions: NotionPour
             <Icon name="arrow-right" size={14} className="shrink-0 text-accent" />
             Examens blancs — les épreuves réelles
           </Command.Item>
-          <Command.Item value="atelier derivees entrainement interactif" onSelect={() => va("/atelier")} className="palette-item">
-            <Icon name="interactive" size={14} className="shrink-0 text-accent" />
-            Atelier — les dérivées
-          </Command.Item>
           <Command.Item value="accueil session programme" onSelect={() => va("/")} className="palette-item">
             <Icon name="arrow-right" size={14} className="shrink-0 text-tertiary" />
             Accueil

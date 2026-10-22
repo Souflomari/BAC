@@ -45,7 +45,7 @@ interface PageShellProps {
    *                       figures/embeds/motion break to the full band
    * - "page"     1280px — full page width
    */
-  width?: "reading" | "content" | "wide" | "notion" | "notionWide" | "page" | "atelier";
+  width?: "reading" | "content" | "wide" | "notion" | "page";
   className?: string;
 }
 
@@ -68,13 +68,7 @@ export function PageShell({
     // prose, qui tombait de 690 à 496 px — mesuré. La bande ne bouge pas
     // d'un pixel sous ce palier.
     notion:  "max-w-notion bp-xl:max-w-[1484px]",
-    // Set-W2 candidate (Day-8): the notion band may widen at the wide tier;
-    // prose stays 65ch inside — only figures/motion earn the extra width.
-    notionWide: "max-w-notion bp-large:max-w-[1400px]",
     page:    "max-w-page",
-    // La bande la plus large du site : réservée aux surfaces dont le contenu
-    // EST une figure manipulable. Voir tokens.ts `--band-atelier`.
-    atelier: "max-w-atelier",
   }[width];
 
   // THE spine: one container class consumed by main and footer.

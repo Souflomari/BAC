@@ -258,9 +258,6 @@ export const invariant: TokenVars = {
   // texte. Un écran plus large doit montrer plus de choses, pas des phrases
   // plus longues.
   "--band-page": "min(1760px, 100%)",
-  // L'atelier va plus loin que le reste : la scène EST le contenu, et une
-  // figure de 600 px sur un écran de 1900 était le reproche de l'owner.
-  "--band-atelier": "min(2040px, 100%)",
   // Gouttière fluide : elle grandit avec l'écran au lieu de sauter par
   // paliers de 8 px, sans jamais dépasser 4 rem (au-delà, on recrée le vide
   // qu'on vient de supprimer).

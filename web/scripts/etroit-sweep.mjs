@@ -78,7 +78,6 @@ const AUTRES = ESSAI ? ["/"] : [
   "/examens",
   ...examens,
   "/commencer",
-  "/atelier",
 ];
 if (ESSAI) lecons.splice(3);
 

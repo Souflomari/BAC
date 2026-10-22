@@ -74,14 +74,12 @@ process.on("SIGINT", () => { arreter(); process.exit(130); });
  */
 const URLS = {
   "/": "/",
-  "/atelier": "/atelier",
   "/commencer": "/commencer",
   "/connexion": "/connexion",
   "/examens": "/examens",
   "/examens/[id]": "/examens/sm-2025-normale",
   "/matieres/[subject]": "/matieres/pc",
   "/notions/[subject]/[slug]": "/notions/pc/rlc-serie",
-  "/options/wide/[v]": "/options/wide/w1",
   // la leçon pilote au nouveau format (refonte 2026-10) : elle porte le header du site
   "/pilote/logarithme": "/pilote/logarithme",
 };

@@ -41,7 +41,7 @@ const AUTONOME = !process.env.BASE;
 const BASE = process.env.BASE ?? `http://127.0.0.1:${PORT}`;
 
 const pages = [
-  "/", "/examens", "/atelier", "/commencer", "/connexion",
+  "/", "/examens", "/commencer", "/connexion",
   "/matieres/maths", "/matieres/pc", "/matieres/svt", "/matieres/philo", "/matieres/si",
 ];
 for (const s of fs.readdirSync(CONTENU)) {

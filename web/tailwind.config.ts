@@ -184,7 +184,6 @@ const config: Config = {
         // Les bandes de coquille viennent de tokens.ts (jetons CSS) : elles
         // sont fluides et doivent grandir jusqu'aux classes M3 large/XL.
         page: v("band-page"),
-        atelier: v("band-atelier"),
         notion: "1140px",
       },
 

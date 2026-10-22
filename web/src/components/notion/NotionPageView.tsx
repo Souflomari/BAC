@@ -39,8 +39,6 @@ import { ExerciseBank } from "@/components/notion/ExerciseBank";
 import { cn } from "@/lib/utils";
 import { subjectLabel, subjectHref } from "@/lib/subjects";
 import { Breadcrumb as SharedBreadcrumb } from "@/components/ui/Breadcrumb";
-import { MarginNotes, type MarginNote } from "./MarginNotes";
-import { KeyFormulaRail, type KeyFormula } from "./KeyFormulaRail";
 import { manifesteEpreuves } from "@/lib/palette-epreuves";
 import { manifestePourHeader } from "@/lib/palette-notions";
 import "./grille-notion.css";
@@ -138,25 +136,12 @@ function NotionFacts({
 }
 
 // ── Page view ─────────────────────────────────────────────────────────────────
-/** Day-8 wide-viewport option candidates (owner review pending; rendered
- *  only by /options/wide/[v] — the default surface is unchanged):
- *  Set M composes the masthead band (m1 cover-in-band · m2 bounded band ·
- *  m3 watermark); Set W composes the wide content region (w1 margin notes ·
- *  w2 symmetric re-center + earned full-bleed · w3 key-formula rail). */
-export type WideOption = "m1" | "m2" | "m3" | "w1" | "w2" | "w3";
-
 export function NotionPageView({
   id,
   mastheadVariant = "a3",
-  wideOption,
-  marginNotes,
-  keyFormulas,
 }: {
   id: string;
   mastheadVariant?: MastheadVariant;
-  wideOption?: WideOption;
-  marginNotes?: MarginNote[];
-  keyFormulas?: KeyFormula[];
 }) {
   const notion = loadNotion(id);
   if (!notion) notFound();
@@ -277,7 +262,7 @@ export function NotionPageView({
   );
 
   return (
-    <PageShell epreuves={manifesteEpreuves()} notions={manifestePourHeader()} width={wideOption === "w2" ? "notionWide" : wideOption ? "notion" : "page"}>
+    <PageShell epreuves={manifesteEpreuves()} notions={manifestePourHeader()} width="page">
       {/* Skip-to-content for keyboard users (DESIGN-BIBLE §9) */}
       <a
         href="#lesson-content"
@@ -355,7 +340,7 @@ export function NotionPageView({
           {/* Content column. Set-W1/W3 candidates anchor their right-margin
               channel to this column (absolute, outside the container, in the
               wide-tier void the owner circled). */}
-          <div id="lesson-content" className={cn("notion-content", (wideOption === "w1" || wideOption === "w3") && "relative")}>
+          <div id="lesson-content" className="notion-content">
             {/* Jumeau compact du rail (rail display:none sous 600 px).
                 Audit R6 (ergonomie P1-7) : le texte inerte « Chapitre 1/10 »
                 devient un MENU — un <details> fermé par défaut listant les
@@ -375,8 +360,6 @@ export function NotionPageView({
               <ChapterPosition className="mb-6 bp-medium:hidden" />
             )}
 
-            {wideOption === "w1" && marginNotes && <MarginNotes notes={marginNotes} />}
-            {wideOption === "w3" && keyFormulas && <KeyFormulaRail formulas={keyFormulas} />}
             {mastheadVariant !== "a3" && masthead}
 
             {lessonMd ? (

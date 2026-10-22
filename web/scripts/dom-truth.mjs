@@ -724,7 +724,7 @@ try {
   // `dynamicParams` reste vrai : 23 ko de scripts, 0 lien, page blanche 12 s
   // sur 3G lente, blanche pour toujours sans JavaScript). Testé rouge sur le
   // build d'avant `dynamicParams = false` (0 <h1>, 0 <header>).
-  for (const p of ["/examens/nexistepas", "/notions/pc/nexistepas", "/matieres/nexistepas", "/options/wide/nexistepas"]) {
+  for (const p of ["/examens/nexistepas", "/notions/pc/nexistepas", "/matieres/nexistepas"]) {
     console.log(`\n[${p}] SWEEP: adresse inconnue — la page introuvable est servie entière`);
     checks++;
     try {
@@ -3777,18 +3777,18 @@ try {
     checks++;
     await rpage.keyboard.press("Control+k");
     await rpage.waitForSelector(".palette-commande", { timeout: 3000 });
-    await rpage.fill("[cmdk-input]", "atelier");
+    await rpage.fill("[cmdk-input]", "examens");
     await rpage.waitForTimeout(250);
     const premier = await rpage.evaluate(() => {
       const it = document.querySelector("[cmdk-item]");
       return it ? it.textContent.trim() : "aucun";
     });
-    if (!/^Atelier/.test(premier)) {
+    if (!/^Examens blancs/.test(premier)) {
       failures += fail(
-        `palette : « atelier » classe « ${premier.slice(0, 50)} » en tête — le filtre a reflouté`
+        `palette : « examens » classe « ${premier.slice(0, 50)} » en tête — le filtre a reflouté`
       );
     } else {
-      console.log(`  ✓ palette : « atelier » → « ${premier.slice(0, 40)} » en tête`);
+      console.log(`  ✓ palette : « examens » → « ${premier.slice(0, 40)} » en tête`);
     }
     await rpage.close();
   }
@@ -3833,7 +3833,7 @@ try {
     // Les pages HORS LEÇON comptent autant : l'atelier portait
     // « MATHÉMATIQUES · 2ÈME BAC » en surtitre, et la leçon d'à côté
     // « 2ᵉ Bac » dans son masthead. Une porte ne juge que ce qu'on lui donne.
-    const routesJugees = [...routesLecons, "/", "/atelier", "/examens", "/commencer", "/connexion"];
+    const routesJugees = [...routesLecons, "/", "/examens", "/commencer", "/connexion"];
     for (const route of routesJugees) {
       const html = await (await fetch(`${BASE}${route}`)).text();
       const texte = html
@@ -4008,7 +4008,7 @@ try {
   {
     console.log("\n[clavier] SWEEP: le lien d'évitement est premier, visible au focus, et déplace le focus");
     const kpage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
-    for (const route of ["/", "/examens", "/matieres/pc", NOTION, "/atelier", "/commencer"]) {
+    for (const route of ["/", "/examens", "/matieres/pc", NOTION, "/commencer"]) {
       await kpage.goto(`${BASE}${route}`, { waitUntil: "networkidle" });
       await kpage.keyboard.press("Tab");
       checks++;

@@ -46,7 +46,7 @@ const ESSAI_ROUGE = process.argv.includes("--essai-rouge");
 const PORT = Number(process.env.PORT_MOUVEMENT ?? 4700 + (process.pid % 80));
 const BASE = `http://127.0.0.1:${PORT}`;
 
-const routes = ["/", "/commencer", "/examens", "/atelier"];
+const routes = ["/", "/commencer", "/examens"];
 for (const m of fs.readdirSync(path.join(RACINE, "content")).sort()) {
   const dm = path.join(RACINE, "content", m);
   if (!fs.statSync(dm).isDirectory()) continue;
