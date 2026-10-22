@@ -4,7 +4,7 @@
 # 12 à 15 minutes de bout en bout. Les contrôles lents ou qui n'ont rien attrapé depuis longtemps
 # tournent une fois par semaine (hebdo.yml) ; les portes de scène ne tournent que si le code d'une
 # scène change (scenes.yml). L'ancien gates.yml (104 étapes, 52 à 60 min, essais rouges rejoués à
-# chaque poussée) est lisible dans l'historique : git show d3810007:.github/workflows/gates.yml
+# chaque poussée) se relit dans l'historique (commit d3810007, fichier gates.yml).
 name: ci
 
 on:
@@ -45,13 +45,12 @@ jobs:
           node scripts/arithmetique-rendue.mjs --strict
           node scripts/constantes-physiques.mjs --porte
           node scripts/bareme-ferme.mjs --porte
-      - name: Contenu propre (dollars appariés, ids de figures, doublons, prose répétée)
+      - name: Contenu propre (dollars appariés, ids de figures, énoncés jumeaux, prose répétée)
         run: |
           node scripts/dollars-apparies.mjs --porte
           node scripts/figures-id-divergents.mjs --porte
           node scripts/enonces-jumeaux.mjs --porte
           node scripts/prose-jumelle.mjs --porte
-          node scripts/source-en-double.mjs --porte
       - name: QCM sans indice de forme (longueur, absolus, refus, ruses)
         run: |
           node scripts/indice-longueur.mjs --porte
@@ -85,6 +84,8 @@ jobs:
         run: node scripts/syntaxe-vieux-moteurs.mjs --porte
       - name: dom-truth (la vérité rendue)
         run: npm run dom-truth || { echo "::warning::dom-truth relancé (démarrage à froid)"; npm run dom-truth; }
+      - name: Source de leçon servie une seule fois
+        run: node scripts/source-en-double.mjs --porte
       - name: Hydratation sans désaccord
         run: node scripts/desaccords-hydratation.mjs --porte
       - name: Étiquettes de figure non coupées

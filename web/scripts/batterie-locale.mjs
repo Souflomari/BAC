@@ -32,7 +32,6 @@ const ETAPES = [
   ["ids de figures", ["node", "scripts/figures-id-divergents.mjs", "--porte"]],
   ["énoncés jumeaux", ["node", "scripts/enonces-jumeaux.mjs", "--porte"]],
   ["prose répétée", ["node", "scripts/prose-jumelle.mjs", "--porte"]],
-  ["source en double", ["node", "scripts/source-en-double.mjs", "--porte"]],
   ["QCM : longueur", ["node", "scripts/indice-longueur.mjs", "--porte"]],
   ["QCM : absolus", ["node", "scripts/indice-absolu.mjs", "--porte"]],
   ["QCM : refus", ["node", "scripts/indice-refus.mjs", "--porte"]],
